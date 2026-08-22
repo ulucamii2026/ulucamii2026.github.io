@@ -53,7 +53,7 @@ Les cours s’appuient sur les ouvrages suivants :
 - *Camiye Gidiyorum 1* et *Camiye Gidiyorum 2* (édition DİTİB)
 - *Temel Dini Bilgiler* (Connaissances religieuses fondamentales) – Seyfettin Yazıcı (éditions de la Diyanet)
 
-**[Information à confirmer par l’imam : les manuels sont-ils fournis par l’école coranique ou à charge des parents]**
+Les informations sur la fourniture des manuels sont communiquées lors de l’inscription.
 
 ## Procédure d’inscription
 

@@ -53,7 +53,7 @@ Derslerimizde şu kaynak eserler kullanılır:
 - *Camiye Gidiyorum 1* ve *Camiye Gidiyorum 2* (DİTİB yayını)
 - *Temel Dini Bilgiler* – Seyfettin Yazıcı (Diyanet İşleri Başkanlığı Yayınları)
 
-**[Din görevlisi bilgisi: ders kitaplarının veliler tarafından mı temin edileceği, yoksa kurs tarafından mı sağlanacağı]**
+Ders kitaplarının temini hakkında bilgi kayıt sırasında verilir.
 
 ## Kayıt süreci
 

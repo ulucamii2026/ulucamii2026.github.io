@@ -39,13 +39,13 @@ Cami girişindeki bağış kutumuza nakit bağışta bulunabilirsiniz. Cemaatimi
 
 Her yıl Kurban Bayramı öncesinde, Belçika Diyanet Vakfı (BDV) koordinasyonunda düzenlenen vekâletle kurban organizasyonuna katılabilirsiniz. Kesim bedeli ve katılım koşulları her yıl güncellenerek cami panomuzdan ve duyurularımızdan paylaşılır.
 
-**[YK duyurusu: bu yılki vekâletle kurban bedeli ve son başvuru tarihi]**
+Bu yılki kurban bedeli ve son başvuru tarihi her yıl Kurban Bayramı öncesinde camide ve duyurular sayfasında ilan edilir.
 
 ### 6. Kütüphane için kitap bağışı
 
 Camimizde TDV ve Diyanet Yayınları eserleriyle küçük bir kütüphane kurma çalışması sürüyor. Bu çalışmaya kitap bağışıyla da destek olabilirsiniz.
 
-**[YK kararı: kütüphane kitap bağışının nasıl ve nereye teslim edileceği]**
+Kitap bağışı için önce din görevlimiz veya dernek yönetimiyle görüşerek eserleri ve teslim şeklini kararlaştırınız.
 
 ## Şeffaflık
 

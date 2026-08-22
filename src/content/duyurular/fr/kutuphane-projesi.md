@@ -20,7 +20,7 @@ Le budget visé pour ce projet se situe entre **1 000 € et 1 500 €**. Cette 
 
 La liste définitive des ouvrages et leur répartition par catégorie (tafsir, hadith, fiqh, sîra, livres pour enfants et jeunes, etc.) sont encore en cours de décision :
 
-**[Décision du conseil d’administration : liste définitive des ouvrages et répartition par catégorie]**
+La liste définitive des ouvrages et leur répartition par catégorie seront publiées après la décision du conseil d’administration.
 
 ### Comment contribuer ?
 

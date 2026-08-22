@@ -20,7 +20,7 @@ Proje için belirlenen bütçe hedefi **1.000 € – 1.500 €** aralığındad
 
 Kütüphanede yer alacak eserlerin nihai listesi ve kategorik dağılımı (tefsir, hadis, fıkıh, siyer, çocuk ve gençlik kitapları vb.) hakkında karar süreci devam etmektedir:
 
-**[Yönetim kurulu kararı: nihai kitap listesi ve kategorik dağılım]**
+Nihai kitap listesi ve kategorilere göre dağılım, yönetim kurulu kararının ardından bu sayfada yayınlanacaktır.
 
 ### Nasıl katkıda bulunabilirsiniz?
 

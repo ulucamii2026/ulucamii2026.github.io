@@ -39,13 +39,13 @@ Un tronc à dons se trouve à l'entrée de la mosquée, où vous pouvez déposer
 
 Chaque année, avant l'Aïd al-Adha, vous pouvez participer au sacrifice par procuration organisé sous la coordination de la Fondation Diyanet de Belgique (BDV). Le montant et les modalités de participation sont mis à jour chaque année et communiqués via notre panneau d'affichage et nos annonces.
 
-**[Décision du CA : montant du sacrifice par procuration et date limite d'inscription pour cette année]**
+Le montant et la date limite d’inscription de l’année en cours sont annoncés chaque année avant l’Aïd al-Adha, à la mosquée et sur la page des annonces.
 
 ### 6. Don de livres pour la bibliothèque
 
 Un projet de petite bibliothèque, réunissant des ouvrages des éditions TDV et Diyanet, est en cours de préparation à la mosquée. Vous pouvez y contribuer par un don de livres.
 
-**[Décision du CA : modalités de dépôt du don de livres pour la bibliothèque]**
+Pour un don de livres, contactez d’abord l’imam ou le comité afin de convenir des ouvrages et du dépôt.
 
 ## Transparence
 

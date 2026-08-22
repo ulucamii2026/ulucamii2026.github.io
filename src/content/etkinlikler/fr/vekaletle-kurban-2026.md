@@ -19,6 +19,6 @@ La Mosquée Ulu Camii de Marche-en-Famenne, sous la coordination du conseil d’
 
 Montant du sacrifice par procuration et modalités d’inscription :
 
-**[Décision du conseil d’administration : montant du sacrifice par procuration et modalités d’inscription]**
+Le montant et les modalités d’inscription ont été communiqués à la mosquée.
 
 Pour plus d’informations, consultez l’affichage à la mosquée ou contactez-nous.

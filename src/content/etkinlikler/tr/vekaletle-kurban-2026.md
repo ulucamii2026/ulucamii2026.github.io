@@ -19,6 +19,6 @@ Marche-en-Famenne Ulu Camii olarak, dernek yönetimimiz koordinasyonunda 2026 Ku
 
 Vekâletle kurban bedeli ve başvuru şekli:
 
-**[Yönetim kurulu kararı: vekâletle kurban bedeli ve başvuru şekli]**
+Kurban bedeli ve başvuru şekli camide duyurulmuştur.
 
 Ayrıntılı bilgi için cami ilan panosunu takip edebilir veya bizimle iletişime geçebilirsiniz.
