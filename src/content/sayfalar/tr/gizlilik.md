@@ -23,19 +23,29 @@ E-posta: ulucamii.marche@gmail.com
 
 ## Konum Haritası
 
-Sitedeki konum haritası, OpenStreetMap Vakfı'nın sunucularından yüklenir. Harita görüntülendiğinde IP adresiniz bu sunucuya iletilir. Bu işlem bizim kontrolümüz dışında olup OpenStreetMap'in kendi gizlilik kurallarına tabidir.
+Sitedeki konum haritası, OpenStreetMap Vakfı’nın sunucularından yüklenir. Harita görüntülendiğinde IP adresiniz bu sunucuya iletilir. Bu işlem bizim kontrolümüz dışında olup OpenStreetMap’in kendi gizlilik kurallarına tabidir.
+
+## Kur’an Kursu Online Kayıt Formu
+
+Kur’an kursu kayıtları, sitemizden bağlantı verilen ayrı bir **online kayıt formu** üzerinden alınır. Bu form sitemizden bağımsız çalışır; hakkında bilmeniz gerekenler:
+
+- **Toplanan veriler:** öğrencinin kimlik bilgileri (kimlik kartı taranarak otomatik doldurulabilir), doğum tarihi, okulu ve sınıfı, varsa sağlık notu, velinin adı, telefonu, e-postası ve adresi, görüntü (fotoğraf/video) paylaşım izni tercihi, dijital imza.
+- **Amaç ve hukuki dayanak:** kursa kayıt ve kurs–veli sözleşmesinin kurulması (sözleşme); Belçika Din Hizmetleri Müşavirliği’ne yapılan zorunlu kurs bildirimi (yasal yükümlülük); çocuğa ait veriler için velinin rızası.
+- **Saklama yeri ve işleyen:** Form gönderildiğinde doldurulmuş ve imzalı PDF ile kayıt satırı, Google (Google Ireland Ltd.) altyapısında — Google Apps Script, Google Drive ve Google Sheets — kurs idaresinin hesabında saklanır ve kurs idaresine e-posta ile bildirilir. Veriler üçüncü kişilerle paylaşılmaz; yalnızca kurs idaresi ve din görevlisi erişir.
+- **Saklama süresi:** kayıt dönemi + 2 yıl; Müşavirlik bildirim formları ilgili mevzuattaki süre kadar.
+- **Haklarınız:** kayıt bilgilerinize erişme, düzeltme ve silinmesini isteme hakkınız için aşağıdaki iletişim adresini kullanabilirsiniz.
 
 ## İleride Planlanan Üye / Veli Portalı
 
-Şu an için sitede canlı bir üye veya veli portalı **bulunmamaktadır**. İleride devreye alınması planlanan üye ve Kur'an kursu veli/öğrenci takip portalı için öngörülen esaslar şunlardır:
+Şu an için sitede canlı bir üye veya veli portalı **bulunmamaktadır**. İleride devreye alınması planlanan üye ve Kur’an kursu veli/öğrenci takip portalı için öngörülen esaslar şunlardır:
 
 - **Altyapı:** Portal, Google Firebase (Google Ireland Ltd.) üzerinde, e-posta ve şifre ile hesap açma yöntemiyle çalışacaktır.
 - **Veri konumu:** Veriler Avrupa Birliği sınırları içinde, Belçika (europe-west1) bölgesinde barındırılacaktır.
-- **Amaç:** Üyelik ve aidat yönetimi; Kur'an kursu öğrenci devam/program takibi.
-- **Hukuki dayanak:** Üyelik verisi için dernekle üye arasındaki sözleşme ilişkisi; çocuğa ait veri için ise veli/yasal temsilci rızası. Belçika'da 13 yaşın altındaki çocuklara ait veri işleme, ancak veli/yasal temsilcinin rızasıyla hukuka uygun hâle gelir.
-- **Dinî bağlılık verisi:** Cami derneğine üyelik, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR'da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)'de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
+- **Amaç:** Üyelik ve aidat yönetimi; Kur’an kursu öğrenci devam/program takibi.
+- **Hukuki dayanak:** Üyelik verisi için dernekle üye arasındaki sözleşme ilişkisi; çocuğa ait veri için ise veli/yasal temsilci rızası. Belçika’da 13 yaşın altındaki çocuklara ait veri işleme, ancak veli/yasal temsilcinin rızasıyla hukuka uygun hâle gelir.
+- **Dinî bağlılık verisi:** Cami derneğine üyelik, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR’da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)'de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
 - **Veri minimizasyonu:** Portalda millî sicil numarası veya ev adresi gibi gereğinden fazla kimlik verisi tutulmayacaktır; yalnızca amaç için gerekli asgari bilgi işlenecektir.
-- **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur'an kursu öğrenci verisi, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
+- **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur’an kursu öğrenci verisi, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
 
 ## Haklarınız
 
@@ -55,6 +65,6 @@ Kişisel verilerinizi etkileyebilecek bir güvenlik ihlali tespit edilmesi durum
 
 ## Şikâyet Hakkı
 
-Kişisel verilerinizin işlenme biçimiyle ilgili bir şikâyetiniz varsa, doğrudan bize başvurmanızın yanı sıra Belçika Veri Koruma Otoritesi'ne de (Gegevensbeschermingsautoriteit / Autorité de protection des données — GBA/APD) başvurabilirsiniz:
+Kişisel verilerinizin işlenme biçimiyle ilgili bir şikâyetiniz varsa, doğrudan bize başvurmanızın yanı sıra Belçika Veri Koruma Otoritesi’ne de (Gegevensbeschermingsautoriteit / Autorité de protection des données — GBA/APD) başvurabilirsiniz:
 
 Rue de la Presse 35, 1000 Bruxelles — [autoriteprotectiondonnees.be](https://www.autoriteprotectiondonnees.be)

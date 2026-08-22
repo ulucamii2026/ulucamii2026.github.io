@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://ulucamii2026.github.io',
   output: 'static',
   trailingSlash: 'always',
-  integrations: [preact({ compat: false }), sitemap({ i18n: { defaultLocale: 'tr', locales: { tr: 'tr-TR', fr: 'fr-BE' } } })],
+  integrations: [preact({ compat: false }), sitemap()],
   i18n: {
     locales: ['tr', 'fr'],
     defaultLocale: 'tr',

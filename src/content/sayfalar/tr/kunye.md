@@ -1,7 +1,7 @@
 ---
 baslik: Künye
 altBaslik: Bu internet sitesini yayınlayan derneğe ilişkin yasal bilgiler.
-aciklama: Ulu Camii Marche-en-Famenne'yi işleten derneğin resmî adı, KBO numarası, iletişim bilgileri ve site barındırma bilgileri.
+aciklama: Ulu Camii Marche-en-Famenne’yi işleten derneğin resmî adı, KBO numarası, iletişim bilgileri ve site barındırma bilgileri.
 guncelleme: 2026-08-22
 ---
 
@@ -16,7 +16,7 @@ Belçika mevzuatı (Şirketler ve Dernekler Kanunu — WVV/CSA md. 2:20-2:22) ge
 | Hukukî form | ASBL (kâr amacı gütmeyen dernek) |
 | KBO / BCE numarası | 0421.900.807 |
 | Merkez adresi (siège social) | Thier des Corbeaux 14, 6900 Marche-en-Famenne, Belçika |
-| Yetkili mahkeme | Tribunal de l'entreprise de Liège (division Neufchâteau/Marche) |
+| Yetkili mahkeme | Tribunal de l’entreprise de Liège (division Neufchâteau/Marche) |
 
 ## İletişim
 

@@ -37,7 +37,7 @@ const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
     <div class="duz-yazi"><Content /></div>
     {kapak && (
       <aside>
-        <a href={kapak} class="gorsel-cerceve block" target="_blank" rel="noopener"><img src={kapak} alt={d.kapakAlt ?? d.baslik} /></a>
+        <a href={kapak} class="gorsel-cerceve block" target="_blank" rel="noopener"><img src={tur === 'etkinlik' && d.afisKucuk ? d.afisKucuk : kapak} alt={d.kapakAlt ?? d.baslik} loading="lazy" decoding="async" /></a>
         {tur === 'etkinlik' && <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')} ↗</a></p>}
       </aside>
     )}

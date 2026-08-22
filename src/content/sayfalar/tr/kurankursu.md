@@ -7,7 +7,7 @@ guncelleme: 2026-08-22
 
 ## Kursumuz
 
-Kursumuzun resmî adı **“Kur’an-ı Kerim ve Temel Dinî Bilgiler Kursu”**dur. Kursumuz, T.C. Dışişleri Bakanlığı Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’ne (Belçika Din Hizmetleri Müşavirliği) bağlı olarak yürütülür.
+Kursumuzun resmî adı <strong>“Kur’an-ı Kerim ve Temel Dinî Bilgiler Kursu”</strong>dur. Kursumuz, T.C. Dışişleri Bakanlığı Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’ne (Belçika Din Hizmetleri Müşavirliği) bağlı olarak yürütülür.
 
 Amacımız, çocuklarımıza ve gençlerimize Kur’an-ı Kerim’i usulüne uygun okumayı, temel dinî bilgileri ve İslam ahlakını kazandırmaktır.
 

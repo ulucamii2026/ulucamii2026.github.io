@@ -21,7 +21,7 @@ site:
     banka: CBC Banque
     hesapAdi: Communauté Turque de la Mosquée
   cumaSaati: ""
-  kursKayitLinki: https://ridvankayahan6900.github.io/ulucamii-kayit/
+  kursKayitLinki: https://ulucamii2026.github.io/ulucamii-kayit/
   sosyal:
     facebook: https://www.facebook.com/ulu.camii.5
   konsolosluk:
@@ -42,7 +42,8 @@ site:
     fonAdres: Chaussée de Haecht 67, 1210 Bruxelles
     belediyeNufus: "+32 84 32 70 10"
     belediyeGenel: "+32 84 32 70 00"
-    belediyeEposta: info@marche.be
+    belediyeEposta: population@marche.be
+    belediyeGenelEposta: info@marche.be
     mezarlikAd: Cimetière multiconfessionnel de Marche-en-Famenne
     mezarlikAdres: Rue de Tavys, 6900 Aye
     saniportEposta: saniport.zaventem@health.fgov.be

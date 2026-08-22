@@ -3,7 +3,8 @@
 interface Props { enlem: number; boylam: number; baslik: string; yoltarifi: string }
 const { enlem, boylam, baslik, yoltarifi } = Astro.props;
 const d = 0.004;
-const bbox = `${boylam - d * 1.6},${enlem - d},${boylam + d * 1.6},${enlem + d}`;
+const f = (n: number) => n.toFixed(6);
+const bbox = `${f(boylam - d * 1.6)},${f(enlem - d)},${f(boylam + d * 1.6)},${f(enlem + d)}`;
 const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${enlem},${boylam}`;
 const buyuk = `https://www.openstreetmap.org/?mlat=${enlem}&mlon=${boylam}#map=17/${enlem}/${boylam}`;
 const yol = `https://www.google.com/maps/dir/?api=1&destination=${enlem},${boylam}`;

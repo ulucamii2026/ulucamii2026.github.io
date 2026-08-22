@@ -62,7 +62,7 @@ collections:
     fields:
       - { name: baslik, label: Başlık, widget: string, i18n: true }
       - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, i18n: duplicate }
-      - { name: ozet, label: Özet (liste ve paylaşım metni), widget: text, required: false, i18n: true, hint: "En fazla 300 karakter." }
+      - { name: ozet, label: Özet (liste ve paylaşım metni), widget: text, required: false, i18n: true, hint: "En fazla 300 karakter.", pattern: ["^[\\s\\S]{0,300}$", "En fazla 300 karakter"] }
       - { name: kapak, label: Kapak görseli, widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
       - { name: kapakAlt, label: Görsel açıklaması (erişilebilirlik), widget: string, required: false, i18n: true }
       - { name: etiketler, label: Etiketler, widget: list, required: false, i18n: duplicate, default: [] }
@@ -121,7 +121,7 @@ collections:
     fields:
       - { name: baslik, label: Başlık, widget: string, i18n: true }
       - { name: altBaslik, label: Alt başlık, widget: string, required: false, i18n: true }
-      - { name: aciklama, label: Arama motoru açıklaması, widget: string, required: false, i18n: true, hint: "En fazla 160 karakter." }
+      - { name: aciklama, label: Arama motoru açıklaması, widget: string, required: false, i18n: true, hint: "En fazla 160 karakter.", pattern: ["^.{0,200}$", "En fazla 200 karakter"] }
       - { name: kapak, label: Üst görsel, widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/sayfalar, public_folder: /media/yuklenen/sayfalar }
       - { name: guncelleme, label: Son güncelleme, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
@@ -242,7 +242,8 @@ collections:
                   - { name: fonAdres, label: Fon adresi, widget: string }
                   - { name: belediyeNufus, label: Belediye nüfus servisi, widget: string }
                   - { name: belediyeGenel, label: Belediye santral, widget: string }
-                  - { name: belediyeEposta, label: Belediye e-posta, widget: string }
+                  - { name: belediyeEposta, label: Belediye nüfus servisi e-posta, widget: string }
+                  - { name: belediyeGenelEposta, label: Belediye genel e-posta, widget: string, required: false }
                   - { name: mezarlikAd, label: Mezarlık adı, widget: string }
                   - { name: mezarlikAdres, label: Mezarlık adresi, widget: string }
                   - { name: saniportEposta, label: Saniport (laissez-passer) e-posta, widget: string, required: false }

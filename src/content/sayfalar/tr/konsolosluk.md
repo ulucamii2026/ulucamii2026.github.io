@@ -1,7 +1,7 @@
 ---
 baslik: Konsolosluk İşlemleri
 altBaslik: T.C. Brüksel Başkonsolosluğu nezdinde yürütülen başlıca işlemler, randevu süreci ve gerekli belgeler.
-aciklama: Marche-en-Famenne, T.C. Brüksel Başkonsolosluğu'na bağlıdır. Randevu, e-Devlet işlemleri, doğum, evlilik, ölüm/nakil, pasaport, askerlik ve vatandaşlık rehberi.
+aciklama: Marche-en-Famenne, T.C. Brüksel Başkonsolosluğu’na bağlıdır. Randevu, e-Devlet işlemleri, doğum, evlilik, ölüm/nakil, pasaport, askerlik ve vatandaşlık rehberi.
 guncelleme: 2026-08-22
 ---
 
@@ -19,11 +19,11 @@ Tüm şahsi başvurular, resmî randevu portalı **[konsolosluk.gov.tr](https://
 
 Başkonsolosluğa gitmeden, **e-Devlet** üzerinden de bazı işlemler tamamlanabilir:
 
-- Doğum belgesi (Türkiye'de doğanlar için)
+- Doğum belgesi (Türkiye’de doğanlar için)
 - Askerlik durum belgesi
 - Adli sicil belgesi
 - Nüfus kayıt örneği
-- Türkiye'ye giriş-çıkış kaydı belgesi (2009 sonrası)
+- Türkiye’ye giriş-çıkış kaydı belgesi (2009 sonrası)
 - Tapu kaydı, vekâlet bilgisi ve vergi durumu sorgulama
 
 e-Devlet şifreniz yoksa, ilk kez şifre Başkonsolosluktan randevu alınarak temin edilebilir. Ayrıntılı bilgi: [turkiye.gov.tr — Dışişleri Bakanlığı Çevrimiçi Konsolosluk İşlemleri](https://turkiye.gov.tr/disisleri-bakanligi-cki-7890)
@@ -36,7 +36,7 @@ Doğumdan itibaren **60 gün içinde** Başkonsolosluğa bildirim yapılmalıdı
 - Anne ve babanın pasaport/kimlik belgeleri
 - Evlenme cüzdanı (varsa Mavi Kart)
 - İkamet belgesi
-- Çocuğun Belçika'da düzenlenmiş doğum belgesi (acte de naissance / geboorteakte)
+- Çocuğun Belçika’da düzenlenmiş doğum belgesi (acte de naissance / geboorteakte)
 
 **Nasıl yapılır**
 1. Evlilik birliği içinde doğan çocuklar için başvuru **posta yoluyla** da yapılabilir; evlilik birliği dışında doğanlar için **randevulu şahsi başvuru** gerekir.
@@ -50,7 +50,7 @@ Resmî kaynak: [konsolosluk.gov.tr/Procedure/ShowProcedure/1](https://www.konsol
 Belçika belediyesinde (yabancı resmî makam önünde) yapılan evlilik, Türk Başkonsolosluğuna **bildirilmek zorundadır**.
 
 **Gerekli belgeler**
-- Belediyeden alınan evlenme kayıt örneğinin aslı (copie intégrale de l'acte de mariage)
+- Belediyeden alınan evlenme kayıt örneğinin aslı (copie intégrale de l’acte de mariage)
 - Eşlerin doğum belgelerinin asılları (3 aydan eski olmamalı)
 - Eşlerin kimlik/nüfus belgeleri ve fotokopileri
 - Evlenmeye engel hâli olmadığına dair tek doktor imzalı sağlık raporu
@@ -68,18 +68,18 @@ Güncel harç ve belge listesi için: [konsolosluk.gov.tr/Procedure/Index](https
 
 ### Belçika Diyanet Vakfı Cenaze Fonu
 
-Camimizin bağlı olduğu **Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu** (1982'den beri), üyelerinin Belçika'daki teçhiz-tekfin masraflarını, Türkiye'ye nakli ve iki refakatçinin gidiş-dönüş biletini karşılar; Belçika'da defin tercih edilirse en fazla 3.000 € yardım yapar.
+Camimizin bağlı olduğu **Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu** (1982'den beri), üyelerinin Belçika’daki teçhiz-tekfin masraflarını, Türkiye’ye nakli ve iki refakatçinin gidiş-dönüş biletini karşılar; Belçika’da defin tercih edilirse en fazla 3.000 € yardım yapar.
 
 - **Vefat anında acil hat (7/24):** +32 486 245 005 · mesai saatinde: +32 2 218 57 55 · info@diyanet.be
 - **Önemli:** Fonun onayı olmadan başka bir cenaze firmasına iş yaptırılırsa hiçbir yardım yapılmaz.
-- **Üyelik:** Belçika'da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamdadır; üyelik ödemeden 60 gün sonra başlar (kaza hâlinde şart aranmaz). Güncel yıllık aidat ve başvuru formu için fonu arayınız ya da [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu) sayfasına bakınız.
+- **Üyelik:** Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamdadır; üyelik ödemeden 60 gün sonra başlar (kaza hâlinde şart aranmaz). Güncel yıllık aidat ve başvuru formu için fonu arayınız ya da [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu) sayfasına bakınız.
 - **Gerekli belgeler:** Belçika oturum kartı, pasaport, nüfus cüzdanı aslı, doktor ölüm raporu.
 
-**Belçika'da defin:** Marche-en-Famenne'in Aye'deki çok dinli mezarlığında (Rue de Tavys, 6900 Aye) Müslüman parseli bulunmaktadır; belediye nüfus servisi +32 84 32 70 10. Alternatifler: Namur (Chaussée de Waterloo 438), Liège, Charleroi. Yurt dışına nakil için zorunlu *laissez-passer mortuaire* belgesini Saniport (SPF Santé publique) verir; başvuruyu genelde cenaze firması yapar. Tüm süreç ve aranacak numaralar: [Rahmetle Anıyoruz](/tr/rahmetle-aniyoruz/) sayfası.
+**Belçika’da defin:** Marche-en-Famenne’in Aye’deki çok dinli mezarlığında (Rue de Tavys, 6900 Aye) Müslüman parseli bulunmaktadır; belediye nüfus servisi +32 84 32 70 10. Alternatifler: Namur (Chaussée de Waterloo 438), Liège, Charleroi. Yurt dışına nakil için zorunlu *laissez-passer mortuaire* belgesini Saniport (SPF Santé publique) verir; başvuruyu genelde cenaze firması yapar. Tüm süreç ve aranacak numaralar: [Rahmetle Anıyoruz](/tr/rahmetle-aniyoruz/) sayfası.
 
-## Cenaze ve Türkiye'ye nakil
+## Cenaze ve Türkiye’ye nakil
 
-Bir Türk vatandaşının Belçika'da vefatı hâlinde süreç iki aşamada yürütülür: önce Belçika tarafında (belediye / état civil) yerel ölüm belgesi alınır, ardından bu belgelerle Başkonsolosluğa başvurularak **Cenaze Nakil Belgesi** çıkarılır.
+Bir Türk vatandaşının Belçika’da vefatı hâlinde süreç iki aşamada yürütülür: önce Belçika tarafında (belediye / état civil) yerel ölüm belgesi alınır, ardından bu belgelerle Başkonsolosluğa başvurularak **Cenaze Nakil Belgesi** çıkarılır.
 
 **Gerekli belgeler**
 - Vefat edenin nüfus cüzdanı/kimliği ve pasaportu
@@ -89,9 +89,9 @@ Bir Türk vatandaşının Belçika'da vefatı hâlinde süreç iki aşamada yür
 **Nasıl yapılır**
 1. Vefat, öncelikle bulunulan Belçika belediyesine (bkz. aşağıda Marche-en-Famenne belediyesi) bildirilir ve yerel ölüm belgesi alınır.
 2. Ölüm Tescili Başkonsolosluğa **posta yoluyla** da yapılabilir.
-3. Cenazenin Türkiye'ye nakli isteniyorsa, bir cenaze nakil firması gerekli belgelerin asıllarıyla Başkonsolosluğa **randevulu şahsi başvuru** yapar; Başkonsolosluk Cenaze Nakil Belgesini düzenler.
+3. Cenazenin Türkiye’ye nakli isteniyorsa, bir cenaze nakil firması gerekli belgelerin asıllarıyla Başkonsolosluğa **randevulu şahsi başvuru** yapar; Başkonsolosluk Cenaze Nakil Belgesini düzenler.
 4. Uluslararası Ölüm Kayıt Örneği (Formül C) ve tereke başvurusu da aynı kapsamda randevu ile yapılabilir.
-5. Vatandaşlıktan çıkarılmış veya sığınmacı statüsünden geçiş yapmış kişilerde İçişleri Bakanlığı'ndan izin gerekebilir; bu durumda süreç uzayabilir.
+5. Vatandaşlıktan çıkarılmış veya sığınmacı statüsünden geçiş yapmış kişilerde İçişleri Bakanlığı’ndan izin gerekebilir; bu durumda süreç uzayabilir.
 
 Resmî kaynak: [konsolosluk.gov.tr/Procedure/ShowProcedure/8](https://www.konsolosluk.gov.tr/Procedure/ShowProcedure/8)
 
@@ -126,7 +126,7 @@ Güncel harç ve belge listesi için: [konsolosluk.gov.tr/Procedure/Index](https
 
 ### Askerlik (Dövizli)
 
-Dövizle askerlik hakkından yararlanmak için, yurt dışında oturma/çalışma izniyle en az **3 yıl (1095 gün)** fiilen işçi veya işveren olarak çalışmış olmak gerekir (Türkiye'de geçen süreler bu hesaba dahil edilmez).
+Dövizle askerlik hakkından yararlanmak için, yurt dışında oturma/çalışma izniyle en az **3 yıl (1095 gün)** fiilen işçi veya işveren olarak çalışmış olmak gerekir (Türkiye’de geçen süreler bu hesaba dahil edilmez).
 
 **Gerekli belgeler**
 - İkamet izni ve kimliğin ön/arka fotokopisi
@@ -142,7 +142,7 @@ Güncel bedel dönemsel olarak değiştiği için bu sayfada sabit rakam verilme
 
 ### Vatandaşlık ve Mavi Kart
 
-Türk vatandaşlığını kazanma, çok vatandaşlık tescili, vatandaşlıktan çıkış ve **Mavi Kart** işlemleri bu kapsamda yürütülür. Mavi Kart, doğuştan Türk vatandaşı olup 5901 sayılı Kanun'un 28. maddesi kapsamında çıkma izni alarak vatandaşlıktan ayrılanlara verilir.
+Türk vatandaşlığını kazanma, çok vatandaşlık tescili, vatandaşlıktan çıkış ve **Mavi Kart** işlemleri bu kapsamda yürütülür. Mavi Kart, doğuştan Türk vatandaşı olup 5901 sayılı Kanun’un 28. maddesi kapsamında çıkma izni alarak vatandaşlıktan ayrılanlara verilir.
 
 **Gerekli belgeler (Mavi Kart örneği)**
 - Son 6 ayda çekilmiş, beyaz fonlu 3 biyometrik fotoğraf
@@ -157,16 +157,16 @@ Resmî kaynak: [konsolosluk.gov.tr/Procedure/ShowProcedure/7](https://www.konsol
 
 ## Belçika Tarafı: Marche-en-Famenne Belediyesi
 
-Belçika'da meydana gelen doğum, evlilik ve ölüm gibi olaylar önce **Marche-en-Famenne Belediyesi (Commune)** nüfus dairesine (état civil) bildirilir; Türk Başkonsolosluğuna bildirim bu yerel işlemden sonra veya paralel olarak yapılır.
+Belçika’da meydana gelen doğum, evlilik ve ölüm gibi olaylar önce **Marche-en-Famenne Belediyesi (Commune)** nüfus dairesine (état civil) bildirilir; Türk Başkonsolosluğuna bildirim bu yerel işlemden sonra veya paralel olarak yapılır.
 
 **Nüfus dairesi (État civil)**
 - Adres: Hôtel de Ville, Boulevard du Midi 22, 6900 Marche-en-Famenne
-- Telefon: +32 (0)84 32 70 00
+- Telefon: +32 84 32 70 10
 - Randevu ve çevrimiçi işlemler: [eguichet.marche.be](https://eguichet.marche.be) · [marche.guichet-citoyen.be](https://marche.guichet-citoyen.be/demarches/)
 
 **Ölüm bildirimi (décès)**
 
-Belediye sınırları içindeki her ölüm, öğrenilmesinden itibaren **24 saat içinde** état civil'e bildirilmelidir. Gerekli belgeler: doktorun ölüm tespit raporu (model IIIC) ve vefat edenin kimlik belgeleri (kimlik kartı, evlenme cüzdanı, ehliyet, pasaport vb.).
+Belediye sınırları içindeki her ölüm, öğrenilmesinden itibaren **24 saat içinde** état civil’e bildirilmelidir. Gerekli belgeler: doktorun ölüm tespit raporu (model IIIC) ve vefat edenin kimlik belgeleri (kimlik kartı, evlenme cüzdanı, ehliyet, pasaport vb.).
 
 Kaynak: [marche.be — Avis de décès](https://www.marche.be/accueil-citoyen/avis-de-deces-9635/) · [marche.be — État civil](https://www.marche.be/administration/les-services-communaux/etat-civil-86/)
 

@@ -5,6 +5,7 @@ import NamazVakitleri from '../components/NamazVakitleri';
 import { ceviri, tarihBicimle } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { namazVakitleri, siteAyarlari, bugunBrussels } from '../lib/icerik';
+import { hicriCevir } from '../i18n/hicri';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const namaz = namazVakitleri(); const site = await siteAyarlari();
@@ -29,7 +30,7 @@ const not = dil === 'tr'
           {tablo.map((g) => (
             <tr class:list={[g.tarih === bugun && 'bg-(--vurgu)/8 font-semibold']}>
               <td class="whitespace-nowrap">{tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'short', day: 'numeric', month: 'short' })}</td>
-              <td class="text-(--metin-2) text-sm">{g.hicri}</td>
+              <td class="text-(--metin-2) text-sm">{hicriCevir(g.hicri, dil)}</td>
               <td class="mono">{g.imsak}</td><td class="mono">{g.gunes}</td><td class="mono">{g.ogle}</td><td class="mono">{g.ikindi}</td><td class="mono">{g.aksam}</td><td class="mono">{g.yatsi}</td>
             </tr>
           ))}

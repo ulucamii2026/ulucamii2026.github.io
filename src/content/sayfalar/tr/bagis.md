@@ -1,7 +1,7 @@
 ---
 baslik: Bağış
 altBaslik: Camimiz, sizin bağışlarınızla ayakta duruyor.
-aciklama: Banka havalesi, QR kod, düzenli bağış, cami bağış kutusu ve vekâletle kurban ile Marche-en-Famenne Ulu Camii'ne nasıl destek olabileceğinizi öğrenin.
+aciklama: Banka havalesi, QR kod, düzenli bağış, cami bağış kutusu ve vekâletle kurban ile Marche-en-Famenne Ulu Camii’ne nasıl destek olabileceğinizi öğrenin.
 guncelleme: 2026-08-22
 ---
 
@@ -13,7 +13,7 @@ Camimizin ısınmasından aydınlatmasına, bakım-onarımından günlük temizl
 >
 > — Hz. Peygamber (s.a.v.), Sahîh-i Müslim, Vasiyyet, 14 (Hadis No: 1631)
 
-Camiye yapılan bir bağış, sadaka-i câriyeye güzel bir örnektir: burada kılınan her namazın, okunan her Kur'an sayfasının sevabına, bağışta bulunduğunuz sürece ortak olursunuz.
+Camiye yapılan bir bağış, sadaka-i câriyeye güzel bir örnektir: burada kılınan her namazın, okunan her Kur’an sayfasının sevabına, bağışta bulunduğunuz sürece ortak olursunuz.
 
 ## Bağış yolları
 
@@ -21,7 +21,7 @@ Camiye yapılan bir bağış, sadaka-i câriyeye güzel bir örnektir: burada k�
 
 Sağ sütunda yer alan IBAN ve BIC bilgileriyle doğrudan banka üzerinden havale/EFT yapabilirsiniz. Havalenin açıklama (mesaj) alanına "Bağış" yazmanız, derneğimizin bağışları takip edip muhasebeleştirmesini kolaylaştırır.
 
-**Not:** Bazı bankalar, Avrupa Birliği'nin "Alıcı Doğrulama" (Verification of Payee) kuralı gereği havale sırasında hesap adını "Communauté Turque de la Mosquée" gibi farklı bir isimle gösterebilir. IBAN doğru olduğu sürece bağışınız derneğimize ulaşır; bu uyarıdan dolayı endişelenmenize gerek yok.
+**Not:** Bazı bankalar, Avrupa Birliği’nin "Alıcı Doğrulama" (Verification of Payee) kuralı gereği havale sırasında hesap adını "Communauté Turque de la Mosquée" gibi farklı bir isimle gösterebilir. IBAN doğru olduğu sürece bağışınız derneğimize ulaşır; bu uyarıdan dolayı endişelenmenize gerek yok.
 
 ### 2. Bankacılık uygulamanızla QR kod
 
