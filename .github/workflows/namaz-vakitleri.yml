@@ -1,0 +1,31 @@
+name: Namaz vakitlerini güncelle (Diyanet)
+
+on:
+  schedule:
+    - cron: "17 3 1,15 * *"   # her ayın 1'i ve 15'i, 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  guncelle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Diyanet verisini çek
+        run: node scripts/namaz-vakitleri.mjs
+      - name: Değişiklik varsa commit et
+        run: |
+          git config user.name "ulucamii-bot"
+          git config user.email "ulucamii2026@gmail.com"
+          if ! git diff --quiet -- src/data/namaz-vakitleri.json; then
+            git add src/data/namaz-vakitleri.json
+            git commit -m "veri: namaz vakitleri güncellendi ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "Değişiklik yok"
+          fi

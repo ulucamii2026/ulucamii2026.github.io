@@ -1,0 +1,21 @@
+---
+import { tarihBicimle, yol, ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil; slug: string; baslik: string; baslangic: Date; bitis?: Date; saat?: string; yer?: string; afis?: string; afisKucuk?: string; ozet?: string; kategori?: string }
+const { dil, slug, baslik, baslangic, bitis, saat, yer, afis, afisKucuk, ozet, kategori } = Astro.props;
+const t = ceviri(dil);
+const href = yol(dil, 'etkinlikler', slug);
+const tarihStr = bitis && bitis.getTime() !== baslangic.getTime()
+  ? `${tarihBicimle(baslangic, dil, { day: 'numeric', month: 'long' })} – ${tarihBicimle(bitis, dil)}`
+  : tarihBicimle(baslangic, dil);
+---
+<article class="kart overflow-hidden flex flex-col">
+  {(afisKucuk || afis) && <a href={href} class="block bg-(--zemin-3) border-b border-(--cizgi)"><img src={afisKucuk ?? afis} alt={baslik} loading="lazy" class="w-full h-auto max-h-[420px] object-contain" /></a>}
+  <div class="p-5 flex flex-col gap-2 flex-1">
+    <p class="etiket">{kategori && kategori !== 'genel' && <span class="etiket-vurgu">{kategori} · </span>}<time datetime={baslangic.toISOString()}>{tarihStr}</time>{saat && <span> · {saat}</span>}</p>
+    <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>
+    {yer && <p class="text-sm text-(--metin-2)">{t('etkinlik.yer')}: {yer}</p>}
+    {ozet && <p class="text-sm text-(--metin-2) line-clamp-3">{ozet}</p>}
+    <a href={href} class="mt-auto pt-2 text-sm font-semibold no-underline hover:underline">{t('genel.daha')} →</a>
+  </div>
+</article>

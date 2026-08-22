@@ -1,0 +1,201 @@
+galeri:
+  - id: cami-01
+    dosya: /media/galeri/cami-01.webp
+    kucuk: /media/galeri/cami-01-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (01)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (01)
+    tarih: '2024-04-28'
+    sira: 11
+  - id: cami-02
+    dosya: /media/galeri/cami-02.webp
+    kucuk: /media/galeri/cami-02-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (02)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (02)
+    tarih: '2024-04-28'
+    sira: 12
+  - id: cami-03
+    dosya: /media/galeri/cami-03.webp
+    kucuk: /media/galeri/cami-03-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (03)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (03)
+    tarih: '2024-04-28'
+    sira: 13
+  - id: cami-04
+    dosya: /media/galeri/cami-04.webp
+    kucuk: /media/galeri/cami-04-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (04)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (04)
+    tarih: '2024-04-28'
+    sira: 14
+  - id: cami-05
+    dosya: /media/galeri/cami-05.webp
+    kucuk: /media/galeri/cami-05-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (05)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (05)
+    tarih: '2024-04-28'
+    sira: 15
+  - id: cami-06
+    dosya: /media/galeri/cami-06.webp
+    kucuk: /media/galeri/cami-06-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (06)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (06)
+    tarih: '2024-04-28'
+    sira: 16
+  - id: cami-07
+    dosya: /media/galeri/cami-07.webp
+    kucuk: /media/galeri/cami-07-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (07)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (07)
+    tarih: '2024-04-28'
+    sira: 17
+  - id: cami-08
+    dosya: /media/galeri/cami-08.webp
+    kucuk: /media/galeri/cami-08-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (08)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (08)
+    tarih: '2024-04-28'
+    sira: 18
+  - id: cami-09
+    dosya: /media/galeri/cami-09.webp
+    kucuk: /media/galeri/cami-09-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (09)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (09)
+    tarih: '2024-04-28'
+    sira: 19
+  - id: cami-10
+    dosya: /media/galeri/cami-10.webp
+    kucuk: /media/galeri/cami-10-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış mekân (10)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — extérieur (10)
+    tarih: '2024-04-28'
+    sira: 20
+  - id: cami-11
+    dosya: /media/galeri/cami-11.webp
+    kucuk: /media/galeri/cami-11-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (11)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (11)
+    tarih: '2024-04-28'
+    sira: 21
+  - id: cami-12
+    dosya: /media/galeri/cami-12.webp
+    kucuk: /media/galeri/cami-12-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (12)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (12)
+    tarih: '2024-04-28'
+    sira: 22
+  - id: cami-13
+    dosya: /media/galeri/cami-13.webp
+    kucuk: /media/galeri/cami-13-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (13)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (13)
+    tarih: '2024-04-28'
+    sira: 23
+  - id: cami-14
+    dosya: /media/galeri/cami-14.webp
+    kucuk: /media/galeri/cami-14-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (14)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (14)
+    tarih: '2024-04-28'
+    sira: 24
+  - id: cami-15
+    dosya: /media/galeri/cami-15.webp
+    kucuk: /media/galeri/cami-15-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (15)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (15)
+    tarih: '2024-04-28'
+    sira: 25
+  - id: cami-16
+    dosya: /media/galeri/cami-16.webp
+    kucuk: /media/galeri/cami-16-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (16)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (16)
+    tarih: '2024-04-28'
+    sira: 26
+  - id: cami-17
+    dosya: /media/galeri/cami-17.webp
+    kucuk: /media/galeri/cami-17-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (17)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (17)
+    tarih: '2024-04-28'
+    sira: 27
+  - id: cami-18
+    dosya: /media/galeri/cami-18.webp
+    kucuk: /media/galeri/cami-18-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (18)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (18)
+    tarih: '2024-04-28'
+    sira: 28
+  - id: cami-19
+    dosya: /media/galeri/cami-19.webp
+    kucuk: /media/galeri/cami-19-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (19)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (19)
+    tarih: '2024-04-28'
+    sira: 29
+  - id: cami-20
+    dosya: /media/galeri/cami-20.webp
+    kucuk: /media/galeri/cami-20-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (20)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (20)
+    tarih: '2024-04-28'
+    sira: 30
+  - id: cami-21
+    dosya: /media/galeri/cami-21.webp
+    kucuk: /media/galeri/cami-21-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (21)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (21)
+    tarih: '2024-04-28'
+    sira: 31
+  - id: cami-22
+    dosya: /media/galeri/cami-22.webp
+    kucuk: /media/galeri/cami-22-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (22)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (22)
+    tarih: '2024-04-28'
+    sira: 32
+  - id: cami-23
+    dosya: /media/galeri/cami-23.webp
+    kucuk: /media/galeri/cami-23-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân (23)
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur (23)
+    tarih: '2024-04-28'
+    sira: 33
+  - id: cami-24
+    dosya: /media/galeri/cami-24.webp
+    kucuk: /media/galeri/cami-24-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — dış cephe
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — façade
+    tarih: '2024-04-28'
+    sira: 1
+  - id: cami-25
+    dosya: /media/galeri/cami-25.webp
+    kucuk: /media/galeri/cami-25-thumb.webp
+    alt:
+      tr: Marche-en-Famenne Ulu Camii — iç mekân, mihrap ve minber
+      fr: Mosquée Ulu Camii de Marche-en-Famenne — intérieur, mihrab et minbar
+    tarih: '2024-04-28'
+    sira: 2

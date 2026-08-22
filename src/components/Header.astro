@@ -1,0 +1,71 @@
+---
+import { ceviri, yol, digerDilYolu } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const t = ceviri(dil);
+const menu = [
+  { href: yol(dil, 'hakkimizda'), ad: t('nav.hakkimizda') },
+  { href: yol(dil, 'duyurular'), ad: t('nav.duyurular') },
+  { href: yol(dil, 'etkinlikler'), ad: dil === 'tr' ? 'Etkinlikler' : 'Événements' },
+  { href: yol(dil, 'namaz'), ad: t('nav.namaz') },
+  { href: yol(dil, 'kurankursu'), ad: t('nav.kurankursu') },
+  { href: yol(dil, 'bagis'), ad: t('nav.bagis') },
+  { href: yol(dil, 'uyelik'), ad: dil === 'tr' ? 'Üyelik' : 'Adhésion' },
+  { href: yol(dil, 'konsolosluk'), ad: t('nav.konsolosluk') },
+  { href: yol(dil, 'galeri'), ad: t('nav.galeri') },
+  { href: yol(dil, 'iletisim'), ad: t('nav.iletisim') },
+];
+const digerDil: Dil = dil === 'tr' ? 'fr' : 'tr';
+const digerYol = digerDilYolu(Astro.url, digerDil);
+const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
+---
+<header class="sticky top-0 z-40 bg-(--zemin)/95 backdrop-blur border-b border-(--cizgi)">
+  <div class="kilim-serit" aria-hidden="true"></div>
+  <div class="kapsayici flex items-center gap-4 py-3">
+    <a href={yol(dil, 'anasayfa')} class="flex items-center gap-3 no-underline text-(--metin) hover:text-(--metin) min-w-0">
+      <img src="/media/logo/ulu-camii-logo.svg" alt="" width="48" height="48" class="h-12 w-12 shrink-0" />
+      <span class="leading-tight min-w-0">
+        <span class="block font-serif font-semibold text-[1.15rem] sm:text-xl leading-none">{t('site.kisa')}</span>
+        <span class="etiket block mt-1 truncate">Marche-en-Famenne · 1979</span>
+      </span>
+    </a>
+    <nav class="ml-auto hidden xl:flex items-center gap-1" aria-label={t('nav.menu')}>
+      {menu.map((m) => (
+        <a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined}
+           class:list={['px-2.5 py-2 text-[0.9rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
+      ))}
+    </nav>
+    <div class="ml-auto xl:ml-2 flex items-center gap-2">
+      <a href={digerYol} hreflang={digerDil} lang={digerDil} class="mono text-xs tracking-(--tracking-etiket) uppercase px-2.5 py-2 border border-(--cizgi) rounded-(--radius-kose) no-underline text-(--metin) hover:border-(--metin)" aria-label={`${t('nav.dil')}: ${digerDil === 'tr' ? 'Türkçe' : 'Français'}`}>{digerDil}</a>
+      <button type="button" id="tema-dugme" class="px-2.5 py-2 border border-(--cizgi) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-label={dil === 'tr' ? 'Karanlık / aydınlık tema' : 'Thème sombre / clair'}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+      </button>
+      <button type="button" id="menu-dugme" class="xl:hidden px-2.5 py-2 border border-(--cizgi) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-expanded="false" aria-controls="mobil-menu" aria-label={t('nav.menu')}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobil-menu" class="xl:hidden hidden border-t border-(--cizgi) bg-(--zemin)" aria-label={t('nav.menu')}>
+    <ul class="kapsayici py-3 grid gap-0.5 sm:grid-cols-2">
+      <li><a href={yol(dil, 'anasayfa')} class="block px-2 py-2.5 no-underline text-(--metin) hover:bg-(--zemin-3)">{t('nav.anasayfa')}</a></li>
+      {menu.map((m) => <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-2 py-2.5 no-underline text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a></li>)}
+      <li><a href={yol(dil, 'portal')} class="block px-2 py-2.5 no-underline text-(--vurgu-2) font-semibold">{t('nav.portal')} →</a></li>
+    </ul>
+  </nav>
+</header>
+<script>
+  const dugme = document.getElementById('menu-dugme');
+  const menu = document.getElementById('mobil-menu');
+  dugme?.addEventListener('click', () => {
+    const acik = menu?.classList.toggle('hidden') === false;
+    dugme.setAttribute('aria-expanded', String(acik));
+  });
+  document.getElementById('tema-dugme')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const koyu = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    const yeni = koyu ? 'light' : 'dark';
+    root.dataset.theme = yeni;
+    try { localStorage.setItem('tema', yeni); } catch {}
+  });
+</script>

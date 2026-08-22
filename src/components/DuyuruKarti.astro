@@ -1,0 +1,17 @@
+---
+import { tarihBicimle, yol, ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil; slug: string; baslik: string; tarih: Date; ozet?: string; kapak?: string; kapakAlt?: string; etiketler?: string[] }
+const { dil, slug, baslik, tarih, ozet, kapak, kapakAlt = '', etiketler = [] } = Astro.props;
+const t = ceviri(dil);
+const href = yol(dil, 'duyurular', slug);
+---
+<article class="kart overflow-hidden flex flex-col">
+  {kapak && <a href={href} class="block aspect-[16/9] overflow-hidden border-b border-(--cizgi)"><img src={kapak} alt={kapakAlt} loading="lazy" class="h-full w-full object-cover" /></a>}
+  <div class="p-5 flex flex-col gap-2 flex-1">
+    <p class="etiket"><time datetime={tarih.toISOString()}>{tarihBicimle(tarih, dil)}</time>{etiketler.length > 0 && <span> · {etiketler.join(' · ')}</span>}</p>
+    <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>
+    {ozet && <p class="text-sm text-(--metin-2) line-clamp-3">{ozet}</p>}
+    <a href={href} class="mt-auto pt-2 text-sm font-semibold no-underline hover:underline">{t('duyuru.devam')} →</a>
+  </div>
+</article>

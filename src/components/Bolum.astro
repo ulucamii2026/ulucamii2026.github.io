@@ -1,0 +1,15 @@
+---
+/** Bölüm başlığı: etiket + başlık + isteğe bağlı bağlantı */
+interface Props { etiket?: string; baslik: string; href?: string; hrefMetin?: string; id?: string; class?: string }
+const { etiket, baslik, href, hrefMetin, id, class: cls } = Astro.props;
+---
+<section id={id} class:list={['kapsayici py-10 sm:py-14', cls]}>
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-6 cetvel pt-4">
+    <div>
+      {etiket && <p class="etiket etiket-vurgu mb-1">{etiket}</p>}
+      <h2>{baslik}</h2>
+    </div>
+    {href && <a href={href} class="text-sm font-semibold no-underline hover:underline">{hrefMetin} →</a>}
+  </div>
+  <slot />
+</section>

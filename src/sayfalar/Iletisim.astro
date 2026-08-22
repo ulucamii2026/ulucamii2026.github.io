@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import Harita from '../components/Harita.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const m = dil === 'tr' ? {
+  alt: 'Sorularınız, cenaze ve nikâh talepleri, ziyaret ve her türlü konu için bize ulaşın.',
+  not: 'Cenaze, hasta ziyareti ve acil durumlar için din görevlisini doğrudan arayabilirsiniz. Dernek işleri (üyelik, aidat, bağış makbuzu) için cami numarasını kullanın.',
+} : {
+  alt: 'Pour toute question, demande funéraire ou de mariage, visite ou autre sujet, contactez-nous.',
+  not: 'Pour un décès, une visite de malade ou une urgence, appelez directement l’imam. Pour les affaires de l’association (adhésion, cotisation, reçu de don), utilisez le numéro de la mosquée.',
+};
+---
+<Base baslik={t('nav.iletisim')} dil={dil}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.iletisim')} altBaslik={m.alt} />
+  <div class="kapsayici py-10 grid gap-10 lg:grid-cols-2">
+    <div>
+      <dl class="grid gap-5">
+        <div><dt class="etiket">{t('footer.adres')}</dt><dd class="mt-1 text-lg">{site.adres.sokak}<br />{site.adres.posta} {site.adres.sehir}, {site.adres.ulke}</dd></div>
+        <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a></dd></div>
+        <div><dt class="etiket">{t('footer.cami')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a></dd></div>
+        {site.eposta && <div><dt class="etiket">{t('genel.eposta')}</dt><dd class="mt-1 text-lg"><a href={`mailto:${site.eposta}`}>{site.eposta}</a></dd></div>}
+        {site.sosyal.facebook && <div><dt class="etiket">Facebook</dt><dd class="mt-1"><a href={site.sosyal.facebook} target="_blank" rel="noopener">facebook.com/ulu.camii.5 ↗</a></dd></div>}
+      </dl>
+      <p class="bilgi mt-8 text-sm">{m.not}</p>
+    </div>
+    <Harita enlem={site.gps.enlem} boylam={site.gps.boylam} baslik={t('genel.harita')} yoltarifi={t('genel.yoltarifi')} />
+  </div>
+</Base>

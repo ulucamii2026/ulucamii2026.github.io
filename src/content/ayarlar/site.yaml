@@ -1,0 +1,35 @@
+site:
+  dernekAdi: Association Diyanet Mosquée Ulu Camii de Marche en Famenne
+  kisaltma: A.D.M.U.C.M.F.
+  kbo: "0421.900.807"
+  hukukiForm: ASBL
+  adres:
+    sokak: Thier des Corbeaux 14
+    posta: "6900"
+    sehir: Marche-en-Famenne
+    ulke: Belgique
+  gps:
+    enlem: 50.231495
+    boylam: 5.339165
+  telefon:
+    dinGorevlisi: "+32 471 79 46 82"
+    cami: "+32 472 98 50 73"
+  eposta: ulucamii2026@gmail.com
+  banka:
+    iban: BE02 7320 0173 5240
+    bic: CREGBEBB
+    banka: CBC Banque
+    hesapAdi: Communauté Turque de la Mosquée
+  cumaSaati: ""
+  kursKayitLinki: https://ridvankayahan6900.github.io/ulucamii-kayit/
+  sosyal:
+    facebook: https://www.facebook.com/ulu.camii.5
+  konsolosluk:
+    ad: T.C. Brüksel Başkonsolosluğu
+    santral: "+32 2 548 93 40"
+    acil: "+32 486 48 00 90"
+    cagriMerkezi: "+90 312 292 29 29"
+    eposta: consulat.bruxelles@mfa.gov.tr
+    web: https://bruksel-bk.mfa.gov.tr
+    randevu: https://www.konsolosluk.gov.tr
+    edevlet: https://www.turkiye.gov.tr

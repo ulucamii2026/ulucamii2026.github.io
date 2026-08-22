@@ -1,0 +1,21 @@
+---
+/** Künye, gizlilik gibi salt metin sayfaları — içerik src/content/sayfalar/{dil}/{anahtar}.md */
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, tarihBicimle } from '../i18n/utils';
+import type { Dil, SayfaAnahtari } from '../i18n/ui';
+import { sayfa } from '../lib/icerik';
+interface Props { dil: Dil; anahtar: SayfaAnahtari }
+const { dil, anahtar } = Astro.props; const t = ceviri(dil);
+const entry = await sayfa(dil, anahtar);
+if (!entry) throw new Error(`İçerik yok: sayfalar/${dil}/${anahtar}.md`);
+const { Content } = await render(entry);
+---
+<Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama} noindex={anahtar === 'gizlilik'}>
+  <SayfaBasligi etiket={t('footer.yasal')} baslik={entry.data.baslik} altBaslik={entry.data.altBaslik} />
+  <article class="kapsayici py-10 duz-yazi">
+    <Content />
+    {entry.data.guncelleme && <p class="etiket mt-10">{t('genel.guncelleme')}: {tarihBicimle(entry.data.guncelleme, dil)}</p>}
+  </article>
+</Base>

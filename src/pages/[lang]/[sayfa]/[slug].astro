@@ -1,0 +1,46 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import SayfaBasligi from '../../../components/SayfaBasligi.astro';
+import { yollar, type Dil } from '../../../i18n/ui';
+import { ceviri, yol, tarihBicimle } from '../../../i18n/utils';
+import { duyurular, etkinlikler } from '../../../lib/icerik';
+
+export async function getStaticPaths() {
+  const out: any[] = [];
+  for (const lang of ['tr', 'fr'] as Dil[]) {
+    for (const d of await duyurular(lang)) out.push({ params: { lang, sayfa: yollar.duyurular[lang], slug: d.slug }, props: { tur: 'duyuru', entry: d } });
+    for (const e of await etkinlikler(lang)) out.push({ params: { lang, sayfa: yollar.etkinlikler[lang], slug: e.slug }, props: { tur: 'etkinlik', entry: e } });
+  }
+  return out;
+}
+const dil = Astro.params.lang as Dil;
+const { tur, entry } = Astro.props;
+const t = ceviri(dil);
+const { Content } = await render(entry);
+const d = entry.data as any;
+const geri = tur === 'duyuru' ? yol(dil, 'duyurular') : yol(dil, 'etkinlikler');
+const etiket = tur === 'duyuru' ? t('nav.duyurular') : t('nav.etkinlikler');
+const tarih: Date = tur === 'duyuru' ? d.tarih : d.baslangic;
+const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
+---
+<Base baslik={d.baslik} dil={dil} aciklama={d.ozet} kapak={kapak}>
+  <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet}>
+    <p class="etiket mt-4">
+      <time datetime={tarih.toISOString()}>{tarihBicimle(tarih, dil)}</time>
+      {tur === 'etkinlik' && d.bitis && d.bitis.getTime() !== d.baslangic.getTime() && <span> – {tarihBicimle(d.bitis, dil)}</span>}
+      {tur === 'etkinlik' && d.saat && <span> · {d.saat}</span>}
+      {tur === 'etkinlik' && d.yer && <span> · {t('etkinlik.yer')}: {d.yer}</span>}
+    </p>
+  </SayfaBasligi>
+  <article class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+    <div class="duz-yazi"><Content /></div>
+    {kapak && (
+      <aside>
+        <a href={kapak} class="gorsel-cerceve block" target="_blank" rel="noopener"><img src={kapak} alt={d.kapakAlt ?? d.baslik} /></a>
+        {tur === 'etkinlik' && <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')} ↗</a></p>}
+      </aside>
+    )}
+  </article>
+  <p class="kapsayici pb-12"><a href={geri} class="dugme dugme-ikincil">← {t('genel.geri')}</a></p>
+</Base>

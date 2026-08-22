@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Bolum from '../../components/Bolum.astro';
+import DuyuruKarti from '../../components/DuyuruKarti.astro';
+import EtkinlikKarti from '../../components/EtkinlikKarti.astro';
+import NamazVakitleri from '../../components/NamazVakitleri';
+import { ceviri, yol } from '../../i18n/utils';
+import type { Dil } from '../../i18n/ui';
+import { dilYollari, duyurular, yaklasanEtkinlikler, namazVakitleri, siteAyarlari } from '../../lib/icerik';
+import disCephe from '../../assets/foto/dis-cephe.jpg';
+import icMekan from '../../assets/foto/ic-mekan.jpg';
+
+export const getStaticPaths = dilYollari;
+const dil = Astro.params.lang as Dil;
+const t = ceviri(dil);
+const site = await siteAyarlari();
+const sonDuyurular = (await duyurular(dil)).slice(0, 3);
+const etkinlikler = await yaklasanEtkinlikler(dil, 3);
+const namaz = namazVakitleri();
+const hizli = [
+  { href: yol(dil, 'bagis'), ad: t('ana.hizli.bagis'), ikon: '◆' },
+  { href: yol(dil, 'kurankursu'), ad: t('ana.hizli.kurs'), ikon: '✦' },
+  { href: yol(dil, 'uyelik'), ad: t('ana.hizli.uyelik'), ikon: '■' },
+  { href: yol(dil, 'konsolosluk'), ad: t('ana.hizli.konsolosluk'), ikon: '●' },
+  { href: yol(dil, 'konsolosluk') + '#cenaze', ad: t('ana.hizli.cenaze'), ikon: '▲' },
+  { href: yol(dil, 'iletisim'), ad: t('ana.hizli.iletisim'), ikon: '✉' },
+];
+const girisMetni = dil === 'tr'
+  ? 'Marche-en-Famenne Ulu Camii, 1979’da kurulan derneğimizin çatısı altında 1986’dan beri bölgemizdeki Müslümanlara ibadet, eğitim ve dayanışma hizmeti sunmaktadır. Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze hizmetleri ve daha fazlası için camimize bekleriz.'
+  : 'La mosquée Ulu Camii de Marche-en-Famenne, portée par notre association fondée en 1979, accueille depuis 1986 les musulmans de la région pour le culte, l’enseignement et l’entraide. Prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, services funéraires : vous êtes les bienvenus.';
+---
+<Base baslik={t('site.ad')} dil={dil} aciklama={t('site.slogan')}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-(--cizgi)">
+    <Image src={disCephe} alt={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii dış cephesi' : 'Façade de la mosquée Ulu Camii de Marche-en-Famenne'} widths={[640, 1024, 1600, 2400]} sizes="100vw" class="absolute inset-0 h-full w-full object-cover" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-t from-(--color-ceviz-koyu)/85 via-(--color-ceviz-koyu)/45 to-(--color-ceviz-koyu)/20" aria-hidden="true"></div>
+    <div class="kapsayici relative py-20 sm:py-28 lg:py-36 text-(--color-krem)">
+      <p class="etiket text-(--color-ochre-acik)">{t('ana.hos')} · Marche-en-Famenne</p>
+      <h1 class="mt-3 max-w-[18ch] text-(--color-krem) drop-shadow-[0_2px_12px_rgba(0,0,0,.45)]">{t('site.ad')}</h1>
+      <p class="mt-4 max-w-[56ch] text-lg text-(--color-krem)/90">{t('site.slogan')}</p>
+      <p class="arabic mt-6 text-(--color-ochre-acik) text-2xl" lang="ar">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={yol(dil, 'namaz')} class="dugme dugme-birincil">{t('nav.namaz')}</a>
+        <a href={yol(dil, 'bagis')} class="dugme bg-(--color-krem) text-(--color-ceviz-koyu) hover:bg-(--color-krem-koyu) hover:text-(--color-ceviz-koyu)">{t('nav.bagis')}</a>
+        <a href={yol(dil, 'iletisim')} class="dugme border-(--color-krem)/60 text-(--color-krem) hover:border-(--color-krem) hover:text-(--color-krem)">{t('nav.iletisim')}</a>
+      </div>
+    </div>
+    <div class="kilim-serit" aria-hidden="true"></div>
+  </section>
+
+  <!-- Namaz vakitleri -->
+  <Bolum etiket={t('nav.namaz')} baslik={t('ana.bugun')} href={yol(dil, 'namaz')} hrefMetin={t('ana.tumvakitler')}>
+    <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={{ imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') }} />
+    <p class="etiket mt-3">{t('namaz.kaynak')}{site.cumaSaati && <span> · {t('namaz.cuma')}: {site.cumaSaati}</span>}</p>
+  </Bolum>
+
+  <!-- Hızlı erişim -->
+  <section class="bg-(--zemin-2) border-y border-(--cizgi)">
+    <div class="kapsayici py-10 sm:py-12">
+      <p class="etiket etiket-vurgu mb-4">{t('ana.hizli')}</p>
+      <ul class="grid grid-cols-2 md:grid-cols-3 gap-3" role="list">
+        {hizli.map((h) => (
+          <li><a href={h.href} class="kart-kagit flex items-center gap-3 p-4 no-underline text-(--metin) hover:border-(--vurgu) hover:text-(--vurgu) transition-colors h-full"><span class="text-(--vurgu) text-lg" aria-hidden="true">{h.ikon}</span><span class="font-semibold text-[0.95rem] leading-snug">{h.ad}</span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Duyurular -->
+  <Bolum etiket={t('nav.duyurular')} baslik={t('ana.sonduyurular')} href={yol(dil, 'duyurular')} hrefMetin={t('ana.tumduyurular')}>
+    {sonDuyurular.length ? (
+      <div class="grid gap-5 md:grid-cols-3">
+        {sonDuyurular.map((d) => <DuyuruKarti dil={dil} slug={d.slug} baslik={d.data.baslik} tarih={d.data.tarih} ozet={d.data.ozet} kapak={d.data.kapak} kapakAlt={d.data.kapakAlt} etiketler={d.data.etiketler} />)}
+      </div>
+    ) : <p class="text-(--metin-2)">{t('duyuru.bos')}</p>}
+  </Bolum>
+
+  <!-- Etkinlikler -->
+  <Bolum etiket={t('nav.etkinlikler')} baslik={t('ana.etkinlikler')} href={yol(dil, 'etkinlikler')} hrefMetin={t('ana.tumetkinlikler')} class="pt-0">
+    {etkinlikler.length ? (
+      <div class="grid gap-5 md:grid-cols-3">
+        {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}
+      </div>
+    ) : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
+  </Bolum>
+
+  <!-- Tanıtım -->
+  <section class="kapsayici py-10 sm:py-14 grid gap-8 lg:grid-cols-2 items-center cetvel">
+    <div class="gorsel-cerceve">
+      <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı — mihrap ve minber' : 'Intérieur de la mosquée — mihrab et minbar'} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 560px, 100vw" loading="lazy" />
+    </div>
+    <div class="duz-yazi">
+      <p class="etiket etiket-vurgu">{t('nav.hakkimizda')}</p>
+      <h2 class="!mt-1">{dil === 'tr' ? '40 yıldır Marche-en-Famenne’de' : 'Depuis 40 ans à Marche-en-Famenne'}</h2>
+      <p>{girisMetni}</p>
+      <p><a href={yol(dil, 'hakkimizda')} class="dugme dugme-ikincil">{t('genel.daha')}</a></p>
+    </div>
+  </section>
+</Base>

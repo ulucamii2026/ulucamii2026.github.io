@@ -1,0 +1,24 @@
+---
+// Kök: tarayıcı diline göre /tr/ veya /fr/ — JS kapalıysa meta refresh ile TR
+---
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Marche-en-Famenne Ulu Camii</title>
+    <link rel="alternate" hreflang="tr" href="https://ulucamii2026.github.io/tr/" />
+    <link rel="alternate" hreflang="fr-BE" href="https://ulucamii2026.github.io/fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://ulucamii2026.github.io/tr/" />
+    <script is:inline>
+      (function () {
+        var d = (navigator.languages || [navigator.language || 'tr']).map(function (l) { return l.toLowerCase().slice(0, 2); });
+        var hedef = 'tr';
+        for (var i = 0; i < d.length; i++) { if (d[i] === 'tr') { hedef = 'tr'; break; } if (d[i] === 'fr') { hedef = 'fr'; break; } }
+        location.replace('/' + hedef + '/');
+      })();
+    </script>
+    <meta http-equiv="refresh" content="1; url=/tr/" />
+  </head>
+  <body><p><a href="/tr/">Türkçe</a> · <a href="/fr/">Français</a></p></body>
+</html>

@@ -1,0 +1,31 @@
+---
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const k = (await siteAyarlari()).konsolosluk;
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const m = dil === 'tr'
+  ? { santral: 'Santral', acil: 'Acil durum hattı (mesai dışı)', cagri: 'Konsolosluk Çağrı Merkezi', randevu: 'Randevu al', edevlet: 'e-Devlet konsolosluk işlemleri', not: 'Randevular yalnızca konsolosluk.gov.tr üzerinden, ücretsiz alınır. Aracı kişi veya ücretli randevu satışı resmî değildir.' }
+  : { santral: 'Standard', acil: 'Ligne d’urgence (hors heures de bureau)', cagri: 'Centre d’appels consulaire', randevu: 'Prendre rendez-vous', edevlet: 'Démarches consulaires e-Devlet', not: 'Les rendez-vous se prennent gratuitement et uniquement sur konsolosluk.gov.tr. Aucun intermédiaire ni rendez-vous payant n’est officiel.' };
+---
+<IcerikSayfasi dil={dil} anahtar="konsolosluk" etiket={t('nav.konsolosluk')}>
+  <div slot="yan" class="kart p-5">
+    <img src="/media/logo/bruksel-baskonsoloslugu.svg" alt="" width="72" height="72" class="h-18 w-18 mb-3" loading="lazy" />
+    <p class="font-serif font-semibold text-lg leading-tight">{k.ad}</p>
+    <dl class="mt-4 grid gap-3 text-sm">
+      <div><dt class="etiket">{m.santral}</dt><dd><a href={tel(k.santral)} class="mono text-base">{k.santral}</a></dd></div>
+      <div><dt class="etiket">{m.acil}</dt><dd><a href={tel(k.acil)} class="mono text-base">{k.acil}</a></dd></div>
+      <div><dt class="etiket">{m.cagri}</dt><dd><a href={tel(k.cagriMerkezi)} class="mono text-base">{k.cagriMerkezi}</a></dd></div>
+      <div><dt class="etiket">{t('genel.eposta')}</dt><dd><a href={`mailto:${k.eposta}`}>{k.eposta}</a></dd></div>
+      <div><dt class="etiket">{t('genel.web')}</dt><dd><a href={k.web} target="_blank" rel="noopener">{k.web.replace('https://', '')} ↗</a></dd></div>
+    </dl>
+    <div class="mt-5 grid gap-2">
+      <a href={k.randevu} target="_blank" rel="noopener" class="dugme dugme-birincil justify-center">{m.randevu} ↗</a>
+      <a href={k.edevlet} target="_blank" rel="noopener" class="dugme dugme-ikincil justify-center">{m.edevlet} ↗</a>
+    </div>
+  </div>
+  <p slot="yan" class="uyari text-sm">{m.not}</p>
+</IcerikSayfasi>

@@ -1,0 +1,17 @@
+---
+/** OpenStreetMap iframe (API anahtarı/çerez gerektirmez) */
+interface Props { enlem: number; boylam: number; baslik: string; yoltarifi: string }
+const { enlem, boylam, baslik, yoltarifi } = Astro.props;
+const d = 0.004;
+const bbox = `${boylam - d * 1.6},${enlem - d},${boylam + d * 1.6},${enlem + d}`;
+const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${enlem},${boylam}`;
+const buyuk = `https://www.openstreetmap.org/?mlat=${enlem}&mlon=${boylam}#map=17/${enlem}/${boylam}`;
+const yol = `https://www.google.com/maps/dir/?api=1&destination=${enlem},${boylam}`;
+---
+<figure class="gorsel-cerceve">
+  <iframe src={src} title={baslik} loading="lazy" class="w-full aspect-[16/9] border-0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <figcaption class="flex flex-wrap gap-4 justify-between px-1 pt-2 text-sm">
+    <a href={buyuk} target="_blank" rel="noopener">OpenStreetMap ↗</a>
+    <a href={yol} target="_blank" rel="noopener">{yoltarifi} ↗</a>
+  </figcaption>
+</figure>

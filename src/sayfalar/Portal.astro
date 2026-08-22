@@ -1,0 +1,28 @@
+---
+/** Portal giriş kapısı — 2. aşamada Firebase Auth ile doldurulacak */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const m = dil === 'tr' ? {
+  alt: 'Dernek üyeleri ve Kur’an kursu velileri için özel alan.',
+  uye: 'Üye portalı', uyeA: 'Üyelik bilgileriniz, aidat geçmişiniz ve ödeme talimatları.',
+  veli: 'Veli portalı', veliA: 'Öğrencinizin sınıfı, devam durumu, ders programı ve öğretmen notları.',
+  yakinda: 'Portal yakında açılıyor. Hesap oluşturma daveti üyelere ve velilere e-posta ile gönderilecektir.',
+} : {
+  alt: 'Espace réservé aux membres de l’association et aux parents d’élèves de l’école coranique.',
+  uye: 'Portail des membres', uyeA: 'Vos informations d’adhésion, l’historique de vos cotisations et les instructions de paiement.',
+  veli: 'Portail des parents', veliA: 'Classe, présences, horaires et remarques de l’enseignant de votre enfant.',
+  yakinda: 'Le portail ouvrira prochainement. Une invitation à créer un compte sera envoyée par e-mail aux membres et aux parents.',
+};
+---
+<Base baslik={t('nav.portal')} dil={dil} noindex>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.portal')} altBaslik={m.alt} />
+  <div class="kapsayici py-10 grid gap-5 md:grid-cols-2">
+    <div class="kart p-6"><p class="etiket etiket-vurgu">01</p><h2 class="mt-1">{m.uye}</h2><p class="mt-2 text-(--metin-2)">{m.uyeA}</p><p class="mt-4"><a href={yol(dil, 'uyelik')} class="dugme dugme-ikincil">{t('nav.uyelik')}</a></p></div>
+    <div class="kart p-6"><p class="etiket etiket-vurgu">02</p><h2 class="mt-1">{m.veli}</h2><p class="mt-2 text-(--metin-2)">{m.veliA}</p><p class="mt-4"><a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{t('nav.kurankursu')}</a></p></div>
+    <p class="uyari md:col-span-2">{m.yakinda}</p>
+  </div>
+</Base>

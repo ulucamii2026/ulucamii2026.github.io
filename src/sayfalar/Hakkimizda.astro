@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari, galeri } from '../lib/icerik';
+import icMekan from '../assets/foto/ic-mekan.jpg';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const fotolar = (await galeri()).slice(2, 8);
+const m = dil === 'tr'
+  ? { kunye: 'Kısa künye', kurulus: 'Dernek kuruluşu', bina: 'Cami binası', taninma: 'Valon Bölgesi tarafından tanınmış ibadet topluluğu', bagli: 'Belçika Diyanet Vakfı’na bağlı', foto: 'Camimizden kareler', galeri: 'Galeriye git' }
+  : { kunye: 'En bref', kurulus: 'Fondation de l’association', bina: 'Bâtiment de la mosquée', taninma: 'Communauté cultuelle reconnue par la Région wallonne', bagli: 'Affiliée à la Fondation Diyanet de Belgique', foto: 'Images de la mosquée', galeri: 'Voir la galerie' };
+---
+<IcerikSayfasi dil={dil} anahtar="hakkimizda" etiket={t('nav.hakkimizda')}>
+  <div slot="yan" class="gorsel-cerceve">
+    <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı' : 'Intérieur de la mosquée'} widths={[360, 720]} sizes="360px" loading="lazy" />
+  </div>
+  <dl slot="yan" class="kart p-5 grid gap-3 text-sm">
+    <p class="etiket etiket-vurgu">{m.kunye}</p>
+    <div><dt class="etiket">{m.kurulus}</dt><dd class="rakam text-2xl">1979</dd></div>
+    <div><dt class="etiket">{m.bina}</dt><dd class="rakam text-2xl">1986</dd></div>
+    <div><dt class="etiket">ASBL · KBO/BCE</dt><dd class="mono">{site.kbo}</dd></div>
+    <div><dd>✓ {m.taninma}</dd><dd>✓ {m.bagli}</dd></div>
+  </dl>
+  <section slot="alt" class="kapsayici pb-12">
+    <div class="flex items-end justify-between gap-3 cetvel pt-4 mb-4"><p class="etiket etiket-vurgu">{m.foto}</p><a href={yol(dil, 'galeri')} class="text-sm font-semibold no-underline hover:underline">{m.galeri} →</a></div>
+    <ul class="grid grid-cols-3 md:grid-cols-6 gap-2" role="list">
+      {fotolar.map((g) => <li><a href={g.data.dosya} target="_blank" rel="noopener" class="gorsel-cerceve block"><img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover" /></a></li>)}
+    </ul>
+  </section>
+</IcerikSayfasi>

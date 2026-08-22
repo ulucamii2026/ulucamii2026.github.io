@@ -1,0 +1,28 @@
+---
+/** Markdown gövdeli içerik sayfası: başlık bloğu + gövde + sağ sütun (slot="yan") + alt slot */
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from './SayfaBasligi.astro';
+import { ceviri, tarihBicimle } from '../i18n/utils';
+import type { Dil, SayfaAnahtari } from '../i18n/ui';
+import { sayfa } from '../lib/icerik';
+interface Props { dil: Dil; anahtar: SayfaAnahtari; etiket?: string; noindex?: boolean }
+const { dil, anahtar, etiket, noindex = false } = Astro.props;
+const t = ceviri(dil);
+const entry = await sayfa(dil, anahtar);
+if (!entry) throw new Error(`İçerik yok: src/content/sayfalar/${dil}/${anahtar}.md`);
+const { Content } = await render(entry);
+const yanVar = Astro.slots.has('yan');
+---
+<Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama} kapak={entry.data.kapak} noindex={noindex}>
+  <SayfaBasligi etiket={etiket ?? t('site.kisa')} baslik={entry.data.baslik} altBaslik={entry.data.altBaslik} kapak={entry.data.kapak} />
+  <slot name="ust" />
+  <div class:list={['kapsayici py-10 grid gap-10', yanVar && 'lg:grid-cols-[minmax(0,1fr)_360px]']}>
+    <article class="duz-yazi">
+      <Content />
+      {entry.data.guncelleme && <p class="etiket mt-10">{t('genel.guncelleme')}: {tarihBicimle(entry.data.guncelleme, dil)}</p>}
+    </article>
+    {yanVar && <aside class="grid gap-5 content-start lg:sticky lg:top-24"><slot name="yan" /></aside>}
+  </div>
+  <slot name="alt" />
+</Base>

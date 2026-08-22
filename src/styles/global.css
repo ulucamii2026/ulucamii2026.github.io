@@ -1,0 +1,137 @@
+@import "tailwindcss";
+@import "@fontsource-variable/lora";
+@import "@fontsource-variable/work-sans";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/amiri/400.css";
+@import "@fontsource/amiri/700.css";
+
+/* ——— Kilim Kartografyası tasarım dili: dar toprak paleti + tek serin aksan (İznik mavisi) ——— */
+@theme {
+  --color-kiremit: #b5452b;
+  --color-kiremit-koyu: #8f3420;
+  --color-ochre: #c98a2e;
+  --color-ochre-acik: #e9c98a;
+  --color-adacayi: #7e8f6a;
+  --color-adacayi-koyu: #5d6c4c;
+  --color-ceviz: #4a3728;
+  --color-ceviz-koyu: #2f221a;
+  --color-krem: #f5efe3;
+  --color-krem-koyu: #eadfcb;
+  --color-kagit: #fbf8f1;
+  --color-iznik: #1f5f8b;
+  --color-iznik-koyu: #174a6c;
+  --color-murekkep: #24201c;
+
+  --font-serif: "Lora Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Work Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", "Scheherazade New", serif;
+
+  --tracking-etiket: 0.18em;
+  --radius-kose: 2px;
+  --shadow-kart: 0 1px 0 rgb(74 55 40 / 0.08), 0 12px 32px -16px rgb(74 55 40 / 0.35);
+}
+
+:root {
+  color-scheme: light;
+  --zemin: var(--color-kagit);
+  --zemin-2: var(--color-krem);
+  --zemin-3: var(--color-krem-koyu);
+  --metin: var(--color-murekkep);
+  --metin-2: #5b5047;
+  --cizgi: rgb(74 55 40 / 0.18);
+  --vurgu: var(--color-kiremit);
+  --vurgu-2: var(--color-iznik);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --zemin: var(--color-ceviz-koyu);
+    --zemin-2: #3a2a1f;
+    --zemin-3: #4a3728;
+    --metin: var(--color-krem);
+    --metin-2: #cbbfae;
+    --cizgi: rgb(245 239 227 / 0.18);
+    --vurgu: #d9664a;
+    --vurgu-2: #6fa8d3;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --zemin: var(--color-ceviz-koyu);
+  --zemin-2: #3a2a1f;
+  --zemin-3: #4a3728;
+  --metin: var(--color-krem);
+  --metin-2: #cbbfae;
+  --cizgi: rgb(245 239 227 / 0.18);
+  --vurgu: #d9664a;
+  --vurgu-2: #6fa8d3;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--zemin);
+    color: var(--metin);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    /* ince kâğıt tanesi */
+    background-image: radial-gradient(rgb(74 55 40 / 0.045) 0.6px, transparent 0.6px);
+    background-size: 5px 5px;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+  h1 { font-size: clamp(2rem, 1.2rem + 3.2vw, 3.6rem); }
+  h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem); }
+  h3 { font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem); }
+  a { color: var(--vurgu-2); text-underline-offset: 3px; }
+  a:hover { color: var(--vurgu); }
+  :focus-visible { outline: 3px solid var(--vurgu-2); outline-offset: 3px; border-radius: 2px; }
+  ::selection { background: var(--color-ochre-acik); color: var(--color-ceviz-koyu); }
+  [lang="ar"], .arabic { font-family: var(--font-arabic); direction: rtl; font-size: 1.35em; line-height: 1.9; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border-bottom: 1px solid var(--cizgi); padding: 0.55rem 0.75rem; text-align: left; vertical-align: top; }
+  th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); font-weight: 500; }
+}
+
+@layer components {
+  .kapsayici { width: min(100% - 2.5rem, 72rem); margin-inline: auto; }
+  .etiket { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
+  .etiket-vurgu { color: var(--vurgu); }
+  .cetvel { border-top: 1px solid var(--cizgi); }
+  .kart { background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); box-shadow: var(--shadow-kart); }
+  .kart-kagit { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+  .dugme { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.25rem; border-radius: var(--radius-kose); font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid transparent; transition: background 0.15s, color 0.15s, transform 0.15s; }
+  .dugme:active { transform: translateY(1px); }
+  .dugme-birincil { background: var(--color-kiremit); color: #fff; }
+  .dugme-birincil:hover { background: var(--color-kiremit-koyu); color: #fff; }
+  .dugme-ikincil { border-color: var(--cizgi); color: var(--metin); background: transparent; }
+  .dugme-ikincil:hover { border-color: var(--metin); color: var(--metin); }
+  .dugme-iznik { background: var(--color-iznik); color: #fff; }
+  .dugme-iznik:hover { background: var(--color-iznik-koyu); color: #fff; }
+  .duz-yazi { max-width: 68ch; }
+  .duz-yazi > * + * { margin-top: 1rem; }
+  .duz-yazi h2 { margin-top: 2.5rem; }
+  .duz-yazi h3 { margin-top: 1.75rem; }
+  .duz-yazi ul { list-style: square; padding-left: 1.25rem; }
+  .duz-yazi ol { list-style: decimal; padding-left: 1.25rem; }
+  .duz-yazi li + li { margin-top: 0.35rem; }
+  .duz-yazi blockquote { border-left: 3px solid var(--color-ochre); padding-left: 1rem; color: var(--metin-2); font-style: italic; }
+  .duz-yazi strong { font-weight: 650; }
+  .duz-yazi code { font-family: var(--font-mono); font-size: 0.9em; background: var(--zemin-3); padding: 0.1em 0.35em; border-radius: 2px; }
+  .uyari { border: 1px solid var(--color-ochre); background: rgb(201 138 46 / 0.10); padding: 0.9rem 1.1rem; border-radius: var(--radius-kose); }
+  .bilgi { border: 1px solid var(--color-iznik); background: rgb(31 95 139 / 0.08); padding: 0.9rem 1.1rem; border-radius: var(--radius-kose); }
+  .gorsel-cerceve { border: 1px solid var(--cizgi); padding: 6px; background: var(--zemin-2); border-radius: var(--radius-kose); }
+  .gorsel-cerceve img { display: block; width: 100%; height: auto; filter: sepia(0.08) saturate(1.05); }
+  /* sekiz köşeli yıldız dokusu — bölüm ayraçları */
+  .kilim-serit { height: 10px; background-image: linear-gradient(45deg, var(--color-kiremit) 25%, transparent 25%, transparent 50%, var(--color-kiremit) 50%, var(--color-kiremit) 75%, transparent 75%, transparent); background-size: 10px 10px; opacity: 0.9; }
+  .kilim-serit-iznik { background-image: linear-gradient(45deg, var(--color-iznik) 25%, transparent 25%, transparent 50%, var(--color-iznik) 50%, var(--color-iznik) 75%, transparent 75%, transparent); }
+}
+
+@layer utilities {
+  .rakam { font-family: var(--font-serif); font-variant-numeric: tabular-nums lining-nums; }
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+}

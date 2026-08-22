@@ -1,0 +1,36 @@
+---
+import type { Dil, SayfaAnahtari } from '../../../i18n/ui';
+import { yollar } from '../../../i18n/ui';
+import Hakkimizda from '../../../sayfalar/Hakkimizda.astro';
+import Duyurular from '../../../sayfalar/Duyurular.astro';
+import Etkinlikler from '../../../sayfalar/Etkinlikler.astro';
+import Namaz from '../../../sayfalar/Namaz.astro';
+import KuranKursu from '../../../sayfalar/KuranKursu.astro';
+import Bagis from '../../../sayfalar/Bagis.astro';
+import Uyelik from '../../../sayfalar/Uyelik.astro';
+import Konsolosluk from '../../../sayfalar/Konsolosluk.astro';
+import Galeri from '../../../sayfalar/Galeri.astro';
+import Iletisim from '../../../sayfalar/Iletisim.astro';
+import MetinSayfasi from '../../../sayfalar/MetinSayfasi.astro';
+import Portal from '../../../sayfalar/Portal.astro';
+
+export function getStaticPaths() {
+  const yol: { params: { lang: Dil; sayfa: string }; props: { anahtar: SayfaAnahtari } }[] = [];
+  for (const lang of ['tr', 'fr'] as Dil[]) {
+    for (const [anahtar, seg] of Object.entries(yollar) as [SayfaAnahtari, Record<Dil, string>][]) {
+      if (anahtar === 'anasayfa') continue;
+      yol.push({ params: { lang, sayfa: seg[lang] }, props: { anahtar } });
+    }
+  }
+  return yol;
+}
+const dil = Astro.params.lang as Dil;
+const { anahtar } = Astro.props;
+const bilesenler: Record<Exclude<SayfaAnahtari, 'anasayfa'>, any> = {
+  hakkimizda: Hakkimizda, duyurular: Duyurular, etkinlikler: Etkinlikler, namaz: Namaz, kurankursu: KuranKursu,
+  bagis: Bagis, uyelik: Uyelik, konsolosluk: Konsolosluk, galeri: Galeri, iletisim: Iletisim,
+  kunye: MetinSayfasi, gizlilik: MetinSayfasi, portal: Portal,
+};
+const Bilesen = bilesenler[anahtar as Exclude<SayfaAnahtari, 'anasayfa'>];
+---
+<Bilesen dil={dil} anahtar={anahtar} />

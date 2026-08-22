@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import DuyuruKarti from '../components/DuyuruKarti.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { duyurular } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const liste = await duyurular(dil);
+---
+<Base baslik={t('nav.duyurular')} dil={dil}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.duyurular')} altBaslik={dil === 'tr' ? 'Camimizden haberler, duyurular ve bilgilendirmeler.' : 'Nouvelles, annonces et informations de la mosquée.'} />
+  <div class="kapsayici py-10">
+    {liste.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{liste.map((d) => <DuyuruKarti dil={dil} slug={d.slug} baslik={d.data.baslik} tarih={d.data.tarih} ozet={d.data.ozet} kapak={d.data.kapak} kapakAlt={d.data.kapakAlt} etiketler={d.data.etiketler} />)}</div> : <p class="text-(--metin-2)">{t('duyuru.bos')}</p>}
+  </div>
+</Base>

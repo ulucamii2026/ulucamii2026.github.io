@@ -1,0 +1,20 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
+
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://ulucamii2026.github.io',
+  output: 'static',
+  trailingSlash: 'always',
+  integrations: [preact({ compat: false }), sitemap({ i18n: { defaultLocale: 'tr', locales: { tr: 'tr-TR', fr: 'fr-BE' } } })],
+  i18n: {
+    locales: ['tr', 'fr'],
+    defaultLocale: 'tr',
+    routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
+  },
+  vite: { plugins: [tailwindcss()] },
+  image: { service: { entrypoint: 'astro/assets/services/sharp' } },
+});

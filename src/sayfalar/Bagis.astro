@@ -1,0 +1,49 @@
+---
+import QRCode from 'qrcode';
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const ibanDuz = site.banka.iban.replace(/\s+/g, '');
+const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : 'Don Ulu Camii Marche';
+// EPC069-12 "SCT" QR (Belçika bankacılık uygulamalarının tamamı okur)
+const epc = ['BCD', '002', '1', 'SCT', site.banka.bic, site.banka.hesapAdi.normalize('NFD').replace(/[̀-ͯ]/g, '').slice(0, 70), ibanDuz, '', '', '', aciklama].join('\n');
+const qr = await QRCode.toString(epc, { type: 'svg', errorCorrectionLevel: 'M', margin: 1, color: { dark: '#24201c', light: '#fbf8f1' } });
+const m = dil === 'tr' ? {
+  kart: 'Banka havalesi', iban: 'IBAN', bic: 'BIC', banka: 'Banka', hesap: 'Hesap adı', acik: 'Açıklama (önerilen)',
+  qr: 'Bankacılık uygulamanızla tarayın', qrAlt: 'Bağış için EPC QR kodu — IBAN bilgilerini bankacılık uygulamanıza aktarır',
+  kopyala: 'IBAN’ı kopyala', kopyalandi: 'Kopyalandı ✓',
+  yasal: 'Derneğimiz FOD Financiën tarafından vergi indirimli bağış (attestation fiscale) düzenleme yetkisine sahip değildir; bağışlarınız vergi beyannamesinde indirime konu olmaz.',
+} : {
+  kart: 'Virement bancaire', iban: 'IBAN', bic: 'BIC', banka: 'Banque', hesap: 'Titulaire', acik: 'Communication (suggérée)',
+  qr: 'Scannez avec votre application bancaire', qrAlt: 'Code QR EPC pour le don — transfère les coordonnées IBAN dans votre application bancaire',
+  kopyala: 'Copier l’IBAN', kopyalandi: 'Copié ✓',
+  yasal: 'Notre association n’est pas agréée par le SPF Finances pour délivrer des attestations fiscales ; les dons ne sont donc pas déductibles fiscalement.',
+};
+---
+<IcerikSayfasi dil={dil} anahtar="bagis" etiket={t('nav.bagis')}>
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.kart}</p>
+    <dl class="mt-3 grid gap-2 text-sm">
+      <div><dt class="etiket">{m.iban}</dt><dd class="mono text-lg font-medium select-all" id="iban-deger">{site.banka.iban}</dd></div>
+      <div class="grid grid-cols-2 gap-2"><div><dt class="etiket">{m.bic}</dt><dd class="mono">{site.banka.bic}</dd></div><div><dt class="etiket">{m.banka}</dt><dd>{site.banka.banka}</dd></div></div>
+      <div><dt class="etiket">{m.hesap}</dt><dd>{site.banka.hesapAdi}</dd></div>
+      <div><dt class="etiket">{m.acik}</dt><dd class="mono">{aciklama}</dd></div>
+    </dl>
+    <button type="button" id="iban-kopyala" class="dugme dugme-iznik mt-4 w-full justify-center" data-iban={ibanDuz} data-kopyalandi={m.kopyalandi}>{m.kopyala}</button>
+  </div>
+  <figure slot="yan" class="kart p-5 text-center">
+    <div class="mx-auto w-48 [&_svg]:w-full [&_svg]:h-auto" role="img" aria-label={m.qrAlt} set:html={qr} />
+    <figcaption class="etiket mt-3">{m.qr}</figcaption>
+  </figure>
+  <p slot="yan" class="uyari text-sm">{m.yasal}</p>
+</IcerikSayfasi>
+<script>
+  const b = document.getElementById('iban-kopyala') as HTMLButtonElement | null;
+  b?.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(b.dataset.iban ?? ''); const eski = b.textContent; b.textContent = b.dataset.kopyalandi ?? 'OK'; setTimeout(() => (b.textContent = eski), 2000); } catch {}
+  });
+</script>

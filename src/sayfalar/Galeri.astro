@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { galeri } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const liste = await galeri();
+const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar (Nisan 2024).' : 'Photos de l’extérieur et de l’intérieur de la mosquée (avril 2024).';
+---
+<Base baslik={t('nav.galeri')} dil={dil}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.galeri')} altBaslik={altBaslik} />
+  <div class="kapsayici py-10">
+    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" role="list">
+      {liste.map((g) => (
+        <li>
+          <a href={g.data.dosya} class="gorsel-cerceve block overflow-hidden" target="_blank" rel="noopener">
+            <img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

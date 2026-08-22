@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import NamazVakitleri from '../components/NamazVakitleri';
+import { ceviri, tarihBicimle } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { namazVakitleri, siteAyarlari, bugunBrussels } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const namaz = namazVakitleri(); const site = await siteAyarlari();
+const bugun = bugunBrussels();
+const tablo = namaz.gunler.filter((g) => g.tarih >= bugun);
+const etiketler = { imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') };
+const not = dil === 'tr'
+  ? 'Vakitler Diyanet İşleri Başkanlığı takvimine göre Marche-en-Famenne için hesaplanmıştır. Cemaatle kılınan namaz saatleri (özellikle yatsı ve sabah) mevsime göre cami ilan panosunda duyurulur.'
+  : 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Les heures des prières en congrégation (notamment isha et fajr) sont affichées à la mosquée selon la saison.';
+---
+<Base baslik={t('nav.namaz')} dil={dil} aciklama={t('namaz.kaynak')}>
+  <SayfaBasligi etiket="Marche-en-Famenne" baslik={t('nav.namaz')} altBaslik={t('namaz.kaynak')} />
+  <div class="kapsayici py-10">
+    <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={etiketler} />
+    {site.cumaSaati && <p class="bilgi mt-6"><strong>{t('namaz.cuma')}:</strong> {site.cumaSaati}</p>}
+    <p class="mt-6 text-(--metin-2) max-w-prose">{not}</p>
+    <h2 class="mt-12 mb-4">{t('ana.tumvakitler')}</h2>
+    <div class="overflow-x-auto kart-kagit">
+      <table class="min-w-[640px]">
+        <thead><tr><th>{t('namaz.tarih')}</th><th>{t('namaz.hicri')}</th><th>{t('namaz.imsak')}</th><th>{t('namaz.gunes')}</th><th>{t('namaz.ogle')}</th><th>{t('namaz.ikindi')}</th><th>{t('namaz.aksam')}</th><th>{t('namaz.yatsi')}</th></tr></thead>
+        <tbody>
+          {tablo.map((g) => (
+            <tr class:list={[g.tarih === bugun && 'bg-(--vurgu)/8 font-semibold']}>
+              <td class="whitespace-nowrap">{tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'short', day: 'numeric', month: 'short' })}</td>
+              <td class="text-(--metin-2) text-sm">{g.hicri}</td>
+              <td class="mono">{g.imsak}</td><td class="mono">{g.gunes}</td><td class="mono">{g.ogle}</td><td class="mono">{g.ikindi}</td><td class="mono">{g.aksam}</td><td class="mono">{g.yatsi}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="etiket mt-4">{t('genel.guncelleme')}: {tarihBicimle(namaz.guncelleme, dil)} · {namaz.kaynak}</p>
+  </div>
+</Base>

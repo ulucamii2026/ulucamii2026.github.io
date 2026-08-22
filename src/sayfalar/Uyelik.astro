@@ -1,0 +1,29 @@
+---
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const m = dil === 'tr'
+  ? { hesap: 'Aidat hesabı', iban: 'IBAN', bic: 'BIC', hesapAdi: 'Hesap adı', acik: 'Açıklama', acikOrnek: 'Aidat 2026 – Ad Soyad', portal: 'Üye portalı', portalA: 'Aidat geçmişinizi ve üyelik bilgilerinizi görüntüleyin (yakında).', basvuru: 'Üyelik başvurusu için', basvuruA: 'Dernek yönetimine ulaşın; başvuru formunu camide doldurabilirsiniz.' }
+  : { hesap: 'Compte des cotisations', iban: 'IBAN', bic: 'BIC', hesapAdi: 'Titulaire', acik: 'Communication', acikOrnek: 'Cotisation 2026 – Nom Prénom', portal: 'Portail des membres', portalA: 'Consultez l’historique de vos cotisations et vos informations d’adhésion (bientôt).', basvuru: 'Pour adhérer', basvuruA: 'Contactez le comité ; le formulaire d’adhésion se remplit à la mosquée.' };
+---
+<IcerikSayfasi dil={dil} anahtar="uyelik" etiket={t('nav.uyelik')}>
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.hesap}</p>
+    <dl class="mt-3 grid gap-2 text-sm">
+      <div><dt class="etiket">{m.iban}</dt><dd class="mono text-lg font-medium select-all">{site.banka.iban}</dd></div>
+      <div class="grid grid-cols-2 gap-2"><div><dt class="etiket">{m.bic}</dt><dd class="mono">{site.banka.bic}</dd></div><div><dt class="etiket">{m.hesapAdi}</dt><dd>{site.banka.hesapAdi}</dd></div></div>
+      <div><dt class="etiket">{m.acik}</dt><dd class="mono">{m.acikOrnek}</dd></div>
+    </dl>
+  </div>
+  <div slot="yan" class="kart-kagit p-5">
+    <p class="etiket etiket-vurgu">{m.portal}</p>
+    <p class="mt-1 text-sm text-(--metin-2)">{m.portalA}</p>
+    <a href={yol(dil, 'portal')} class="dugme dugme-ikincil mt-3 w-full justify-center">{t('nav.portal')}</a>
+  </div>
+  <p slot="yan" class="text-sm"><span class="etiket">{m.basvuru}</span><br />{m.basvuruA}<br /><a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a></p>
+</IcerikSayfasi>

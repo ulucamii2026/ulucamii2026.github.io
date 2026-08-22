@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import EtkinlikKarti from '../components/EtkinlikKarti.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { etkinlikler } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const liste = await etkinlikler(dil);
+const simdi = Date.now() - 864e5;
+const yaklasan = liste.filter((e) => (e.data.bitis ?? e.data.baslangic).getTime() >= simdi).sort((a, b) => a.data.baslangic.getTime() - b.data.baslangic.getTime());
+const gecmis = liste.filter((e) => (e.data.bitis ?? e.data.baslangic).getTime() < simdi);
+const altBaslik = dil === 'tr'
+  ? 'Bayram ve kandil programları, Ramazan etkinlikleri, kurban organizasyonu, yarışmalar ve afişlerimiz.'
+  : 'Programmes des fêtes et nuits bénies, activités du Ramadan, organisation du sacrifice, concours et affiches.';
+const gecmisBaslik = dil === 'tr' ? 'Geçmiş etkinlikler ve afiş arşivi' : 'Événements passés et archives d’affiches';
+---
+<Base baslik={t('nav.etkinlikler')} dil={dil}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.etkinlikler')} altBaslik={altBaslik} />
+  <div class="kapsayici py-10">
+    <h2 class="etiket etiket-vurgu text-base mb-4">{t('ana.etkinlikler')}</h2>
+    {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
+    {gecmis.length > 0 && (
+      <div>
+        <h2 class="etiket text-base mt-12 mb-4 cetvel pt-4">{gecmisBaslik}</h2>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gecmis.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}</div>
+      </div>
+    )}
+  </div>
+</Base>

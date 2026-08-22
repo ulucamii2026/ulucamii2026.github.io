@@ -1,0 +1,26 @@
+---
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const m = dil === 'tr'
+  ? { kayit: 'Online kayıt formu', kayitA: '2026-2027 dönemi kayıtları açıktır. Formu doldurduktan sonra din görevlimiz sizinle iletişime geçer.', portal: 'Veli portalı', portalA: 'Kayıtlı öğrencilerin velileri için (yakında).', soru: 'Sorularınız için', logoAlt: 'Ulu Camii Kur’an Kursu logosu' }
+  : { kayit: 'Formulaire d’inscription en ligne', kayitA: 'Les inscriptions 2026-2027 sont ouvertes. Après l’envoi du formulaire, l’imam vous contactera.', portal: 'Portail des parents', portalA: 'Pour les parents des élèves inscrits (bientôt).', soru: 'Pour toute question', logoAlt: 'Logo de l’école coranique Ulu Camii' };
+---
+<IcerikSayfasi dil={dil} anahtar="kurankursu" etiket={t('nav.kurankursu')}>
+  <div slot="yan" class="kart p-5 text-center">
+    <img src="/media/logo/kuran-kursu-logo.svg" alt={m.logoAlt} width="120" height="120" class="mx-auto h-28 w-28" loading="lazy" />
+    <p class="mt-4 text-sm text-(--metin-2)">{m.kayitA}</p>
+    {site.kursKayitLinki && <a href={site.kursKayitLinki} target="_blank" rel="noopener" class="dugme dugme-birincil mt-4 w-full justify-center">{m.kayit} ↗</a>}
+  </div>
+  <div slot="yan" class="kart-kagit p-5">
+    <p class="etiket etiket-vurgu">{m.portal}</p>
+    <p class="mt-1 text-sm text-(--metin-2)">{m.portalA}</p>
+    <a href={yol(dil, 'portal')} class="dugme dugme-ikincil mt-3 w-full justify-center">{t('nav.portal')}</a>
+  </div>
+  <p slot="yan" class="text-sm"><span class="etiket">{m.soru}</span><br /><a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a></p>
+</IcerikSayfasi>
