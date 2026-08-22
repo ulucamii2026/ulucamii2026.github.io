@@ -8,8 +8,8 @@ const { dil } = Astro.props; const t = ceviri(dil);
 const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const m = dil === 'tr'
-  ? { hesap: 'Aidat hesabı', iban: 'IBAN', bic: 'BIC', hesapAdi: 'Hesap adı', acik: 'Açıklama', acikOrnek: 'Aidat 2026 – Ad Soyad', portal: 'Üye portalı', portalA: 'Aidat geçmişinizi ve üyelik bilgilerinizi görüntüleyin (yakında).', basvuru: 'Üyelik başvurusu için', basvuruA: 'Dernek yönetimine ulaşın; başvuru formunu camide doldurabilirsiniz.' }
-  : { hesap: 'Compte des cotisations', iban: 'IBAN', bic: 'BIC', hesapAdi: 'Titulaire', acik: 'Communication', acikOrnek: 'Cotisation 2026 – Nom Prénom', portal: 'Portail des membres', portalA: 'Consultez l’historique de vos cotisations et vos informations d’adhésion (bientôt).', basvuru: 'Pour adhérer', basvuruA: 'Contactez le comité ; le formulaire d’adhésion se remplit à la mosquée.' };
+  ? { hesap: 'Aidat hesabı', iban: 'IBAN', bic: 'BIC', hesapAdi: 'Hesap adı', acik: 'Açıklama', acikOrnek: 'Aidat 2026 – Ad Soyad', portal: 'Üye portalı (hazırlanıyor)', portalA: 'Üyelik bilgileri ve aidat geçmişi için özel alan — bu bölüm daha sonra inşa edilecektir.', basvuru: 'Üyelik başvurusu için', basvuruA: 'Dernek yönetimine ulaşın; başvuru formunu camide doldurabilirsiniz.' }
+  : { hesap: 'Compte des cotisations', iban: 'IBAN', bic: 'BIC', hesapAdi: 'Titulaire', acik: 'Communication', acikOrnek: 'Cotisation 2026 – Nom Prénom', portal: 'Portail des membres (en préparation)', portalA: 'Espace réservé aux informations d’adhésion et aux cotisations — cette rubrique sera construite ultérieurement.', basvuru: 'Pour adhérer', basvuruA: 'Contactez le comité ; le formulaire d’adhésion se remplit à la mosquée.' };
 ---
 <IcerikSayfasi dil={dil} anahtar="uyelik" etiket={t('nav.uyelik')}>
   <div slot="yan" class="kart p-5">

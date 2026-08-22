@@ -63,6 +63,8 @@ Belçika belediyesinde (yabancı resmî makam önünde) yapılan evlilik, Türk 
 
 Güncel harç ve belge listesi için: [konsolosluk.gov.tr/Procedure/Index](https://www.konsolosluk.gov.tr/Procedure/Index) → Evlilik
 
+<a id="cenaze"></a>
+
 ## Cenaze ve Türkiye'ye nakil
 
 Bir Türk vatandaşının Belçika'da vefatı hâlinde süreç iki aşamada yürütülür: önce Belçika tarafında (belediye / état civil) yerel ölüm belgesi alınır, ardından bu belgelerle Başkonsolosluğa başvurularak **Cenaze Nakil Belgesi** çıkarılır.

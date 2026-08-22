@@ -63,6 +63,8 @@ Un mariage célébré devant une autorité belge (commune) doit **obligatoiremen
 
 Pour la liste actualisée des frais et documents : [konsolosluk.gov.tr/Procedure/Index](https://www.konsolosluk.gov.tr/Procedure/Index) → Mariage
 
+<a id="cenaze"></a>
+
 ## Décès et rapatriement en Türkiye
 
 En cas de décès d'un ressortissant turc en Belgique, la démarche se déroule en deux temps : d'abord l'obtention de l'acte de décès auprès de la commune belge (état civil), puis, sur cette base, la demande au Consulat général du **certificat de transfert de corps** (Cenaze Nakil Belgesi).
