@@ -13,7 +13,7 @@ Bu sitede işlenen kişisel verilerin sorumlusu:
 
 **Association Diyanet Mosquée Ulu Camii de Marche en Famenne (ASBL)**
 Thier des Corbeaux 14, 6900 Marche-en-Famenne, Belçika
-E-posta: ulucamii2026@gmail.com
+E-posta: ulucamii.marche@gmail.com
 
 ## Bu Siteyi Ziyaret Ettiğinizde
 
@@ -47,7 +47,7 @@ GDPR kapsamında, sizinle ilgili işlenen veriler için şu haklara sahipsiniz:
 - İşlemeye **itiraz** etme
 - Verilerinizin **taşınabilirliğini** talep etme
 
-Bu haklarınızı kullanmak için **ulucamii2026@gmail.com** adresinden bizimle iletişime geçebilirsiniz.
+Bu haklarınızı kullanmak için **ulucamii.marche@gmail.com** adresinden bizimle iletişime geçebilirsiniz.
 
 ## Veri İhlali Bildirimi
 
