@@ -65,6 +65,18 @@ Pour la liste actualisée des frais et documents : [konsolosluk.gov.tr/Procedure
 
 <a id="cenaze"></a>
 
+
+### Fonds funéraire de la Fondation Diyanet de Belgique
+
+Le **Fonds de rapatriement, d'entraide et de solidarité funéraire de la Fondation Diyanet de Belgique** (depuis 1982), auquel notre mosquée est rattachée, prend en charge pour ses affiliés les frais de mise en bière en Belgique, le rapatriement en Turquie et le billet aller-retour de deux accompagnants ; en cas d'inhumation en Belgique, une aide de 3 000 € maximum est accordée.
+
+- **Ligne d'urgence en cas de décès (24h/24) :** +32 486 245 005 · heures de bureau : +32 2 218 57 55 · info@diyanet.be
+- **Important :** sans l'accord du fonds, aucune aide n'est versée si une autre entreprise funéraire est mandatée.
+- **Affiliation :** citoyens turcs résidant légalement en Belgique depuis au moins un an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Pour la cotisation annuelle actuelle et le formulaire, contactez le fonds ou consultez [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu).
+- **Documents requis :** carte de séjour belge, passeport, carte d'identité turque originale, certificat médical de décès.
+
+**Inhumation en Belgique :** le cimetière multiconfessionnel de Marche-en-Famenne à Aye (Rue de Tavys, 6900 Aye) dispose d'une parcelle musulmane ; service population de la commune : +32 84 32 70 10. Alternatives : Namur (Chaussée de Waterloo 438), Liège, Charleroi. Pour tout transfert à l'étranger, le *laissez-passer mortuaire* obligatoire est délivré par Saniport (SPF Santé publique), généralement via l'entreprise funéraire. Toutes les étapes et numéros : page [In memoriam](/fr/in-memoriam/).
+
 ## Décès et rapatriement en Türkiye
 
 En cas de décès d'un ressortissant turc en Belgique, la démarche se déroule en deux temps : d'abord l'obtention de l'acte de décès auprès de la commune belge (état civil), puis, sur cette base, la demande au Consulat général du **certificat de transfert de corps** (Cenaze Nakil Belgesi).

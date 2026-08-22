@@ -33,3 +33,16 @@ site:
     web: https://bruksel-bk.mfa.gov.tr
     randevu: https://www.konsolosluk.gov.tr
     edevlet: https://www.turkiye.gov.tr
+  cenaze:
+    fonAd: Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu
+    fonAcil: "+32 486 245 005"
+    fonMesai: "+32 2 218 57 55"
+    fonEposta: info@diyanet.be
+    fonWeb: https://www.diyanet.be/Cenaze-Nakil-Fonu
+    fonAdres: Chaussée de Haecht 67, 1210 Bruxelles
+    belediyeNufus: "+32 84 32 70 10"
+    belediyeGenel: "+32 84 32 70 00"
+    belediyeEposta: info@marche.be
+    mezarlikAd: Cimetière multiconfessionnel de Marche-en-Famenne
+    mezarlikAdres: Rue de Tavys, 6900 Aye
+    saniportEposta: saniport.zaventem@health.fgov.be

@@ -9,6 +9,7 @@ interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const liste = await vefatlar();
 const site = await siteAyarlari();
+const c = site.cenaze;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const yillar = [...new Set(liste.map((v) => v.data.vefat.getFullYear()))].sort((a, b) => b - a);
 const m = dil === 'tr' ? {
@@ -22,6 +23,12 @@ const m = dil === 'tr' ? {
   hizmetNot: 'Vefat hâlinde gece gündüz din görevlimizi arayabilirsiniz.',
   nakil: 'Cenaze ve Türkiye’ye nakil işlemleri →',
   aileNot: 'Bu sayfadaki kayıtlar ailelerin bilgisi ve isteğiyle yayınlanır. Ekleme, düzeltme veya kaldırma talepleri için dernek yönetimine ulaşın.',
+  acilBaslik: 'Vefat anında aranacak numaralar',
+  acil1: 'Din görevlimiz', acil2: 'BDV Cenaze Fonu — acil hat (7/24)', acil2b: 'mesai saatinde', acil3: 'Başkonsolosluk nöbetçi hattı',
+  surecBaslik: 'Adım adım süreç',
+  surec: ['Vefatı doktora tespit ettirin (ölüm raporu).', 'Din görevlimizi arayın; cenaze namazı ve yıkama planlanır.', 'BDV Cenaze Fonu’nu arayın — fon onayı olmadan başka cenaze firması kullanılırsa masraflar karşılanmaz.', 'Belediyeye (Marche-en-Famenne nüfus servisi) ölüm bildirimi yapılır.', 'Türkiye’ye nakil: Başkonsolosluk cenaze nakil belgesi + Saniport “laissez-passer mortuaire” (genelde cenaze firması yürütür).', 'Belçika’da defin tercih edilirse: Marche-en-Famenne/Aye çok dinli mezarlığı (Müslüman parseli) veya Namur, Liège, Charleroi.'],
+  fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Güncel aidat için fonu arayınız.',
+  belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
 } : {
   alt: 'Nous honorons la mémoire des membres de notre communauté qui nous ont quittés. Les annonces de prières funéraires sont également publiées ici.',
   ayetMeal: '« Nous appartenons à Allah et c’est à Lui que nous retournons. » (Coran, 2/156)',
@@ -33,6 +40,12 @@ const m = dil === 'tr' ? {
   hizmetNot: 'En cas de décès, vous pouvez joindre notre imam à toute heure.',
   nakil: 'Décès et rapatriement en Turquie →',
   aileNot: 'Les avis publiés ici le sont avec l’accord des familles. Pour toute demande d’ajout, de correction ou de retrait, contactez le comité de l’association.',
+  acilBaslik: 'Numéros à appeler en cas de décès',
+  acil1: 'Notre imam', acil2: 'Fonds funéraire BDV — urgence (24h/24)', acil2b: 'heures de bureau', acil3: 'Consulat général — permanence',
+  surecBaslik: 'Démarches étape par étape',
+  surec: ['Faire constater le décès par un médecin (certificat de décès).', 'Appeler notre imam : toilette mortuaire et prière funéraire sont organisées.', 'Appeler le Fonds funéraire BDV — sans l’accord du fonds, les frais d’une autre entreprise funéraire ne sont pas pris en charge.', 'Déclarer le décès à la commune (service population de Marche-en-Famenne).', 'Rapatriement en Turquie : attestation de transport du Consulat + laissez-passer mortuaire (Saniport), généralement gérés par l’entreprise funéraire.', 'Inhumation en Belgique : cimetière multiconfessionnel de Marche-en-Famenne/Aye (parcelle musulmane) ou Namur, Liège, Charleroi.'],
+  fonNot: 'Affiliation au fonds : citoyens turcs résidant en Belgique depuis au moins 1 an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Pour la cotisation actuelle, contactez le fonds.',
+  belediye: 'Service population de la commune', mezarlik: 'Cimetière', fonSayfa: 'Page d’information du fonds ↗',
 };
 ---
 <Base baslik={t('vefat.baslik')} dil={dil} aciklama={m.alt}>
@@ -76,6 +89,13 @@ const m = dil === 'tr' ? {
         </div>
       ))}
       <p class="text-sm text-(--metin-2) cetvel pt-4">{m.aileNot}</p>
+      {c && (
+        <div class="mt-10 kart-kagit p-5 sm:p-6">
+          <h2 class="etiket etiket-vurgu text-base">{m.surecBaslik}</h2>
+          <ol class="mt-3 grid gap-2 list-decimal pl-5 max-w-[70ch]">{m.surec.map((x) => <li>{x}</li>)}</ol>
+          <p class="mt-4 text-sm text-(--metin-2) max-w-[70ch]">{m.fonNot}</p>
+        </div>
+      )}
     </section>
     <aside class="grid gap-5 content-start lg:sticky lg:top-24">
       <div class="kart p-5">
@@ -85,6 +105,21 @@ const m = dil === 'tr' ? {
         <p class="mt-2"><a href={tel(site.telefon.dinGorevlisi)} class="dugme dugme-birincil w-full justify-center mono">{site.telefon.dinGorevlisi}</a></p>
         <p class="mt-3 text-sm"><a href={yol(dil, 'konsolosluk') + '#cenaze'}>{m.nakil}</a></p>
       </div>
+      {c && (
+        <div class="kart p-5 border-(--vurgu)">
+          <p class="etiket etiket-vurgu">{m.acilBaslik}</p>
+          <ol class="mt-3 grid gap-3 text-sm list-decimal pl-5">
+            <li><span class="etiket block">{m.acil1}</span><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base font-semibold">{site.telefon.dinGorevlisi}</a></li>
+            <li><span class="etiket block">{m.acil2}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a><span class="block text-(--metin-2)">{m.acil2b}: <a href={tel(c.fonMesai)} class="mono">{c.fonMesai}</a></span></li>
+            <li><span class="etiket block">{m.acil3}</span><a href={tel(site.konsolosluk.acil)} class="mono text-base font-semibold">{site.konsolosluk.acil}</a></li>
+          </ol>
+          <dl class="mt-4 grid gap-2 text-sm cetvel pt-3">
+            <div><dt class="etiket">{m.belediye}</dt><dd><a href={tel(c.belediyeNufus)} class="mono">{c.belediyeNufus}</a> · <a href={`mailto:${c.belediyeEposta}`}>{c.belediyeEposta}</a></dd></div>
+            <div><dt class="etiket">{m.mezarlik}</dt><dd>{c.mezarlikAd}<br /><span class="text-(--metin-2)">{c.mezarlikAdres}</span></dd></div>
+            <div><dt class="etiket">{c.fonAd}</dt><dd><span class="text-(--metin-2)">{c.fonAdres}</span> · <a href={`mailto:${c.fonEposta}`}>{c.fonEposta}</a><br /><a href={c.fonWeb} target="_blank" rel="noopener">{m.fonSayfa}</a></dd></div>
+          </dl>
+        </div>
+      )}
     </aside>
   </div>
 </Base>

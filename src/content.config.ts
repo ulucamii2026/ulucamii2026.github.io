@@ -68,6 +68,11 @@ const ayarlar = defineCollection({
     konsolosluk: z.object({
       ad: z.string(), santral: z.string(), acil: z.string(), cagriMerkezi: z.string(), eposta: z.string(), web: z.string().url(), randevu: z.string().url(), edevlet: z.string().url(),
     }),
+    cenaze: z.object({
+      fonAd: z.string(), fonAcil: z.string(), fonMesai: z.string(), fonEposta: z.string(), fonWeb: z.string().url(), fonAdres: z.string(),
+      belediyeNufus: z.string(), belediyeGenel: z.string(), belediyeEposta: z.string(),
+      mezarlikAd: z.string(), mezarlikAdres: z.string(), saniportEposta: z.string().optional(),
+    }).optional(),
   }),
 });
 

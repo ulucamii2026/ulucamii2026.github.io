@@ -65,6 +65,18 @@ Güncel harç ve belge listesi için: [konsolosluk.gov.tr/Procedure/Index](https
 
 <a id="cenaze"></a>
 
+
+### Belçika Diyanet Vakfı Cenaze Fonu
+
+Camimizin bağlı olduğu **Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu** (1982'den beri), üyelerinin Belçika'daki teçhiz-tekfin masraflarını, Türkiye'ye nakli ve iki refakatçinin gidiş-dönüş biletini karşılar; Belçika'da defin tercih edilirse en fazla 3.000 € yardım yapar.
+
+- **Vefat anında acil hat (7/24):** +32 486 245 005 · mesai saatinde: +32 2 218 57 55 · info@diyanet.be
+- **Önemli:** Fonun onayı olmadan başka bir cenaze firmasına iş yaptırılırsa hiçbir yardım yapılmaz.
+- **Üyelik:** Belçika'da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamdadır; üyelik ödemeden 60 gün sonra başlar (kaza hâlinde şart aranmaz). Güncel yıllık aidat ve başvuru formu için fonu arayınız ya da [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu) sayfasına bakınız.
+- **Gerekli belgeler:** Belçika oturum kartı, pasaport, nüfus cüzdanı aslı, doktor ölüm raporu.
+
+**Belçika'da defin:** Marche-en-Famenne'in Aye'deki çok dinli mezarlığında (Rue de Tavys, 6900 Aye) Müslüman parseli bulunmaktadır; belediye nüfus servisi +32 84 32 70 10. Alternatifler: Namur (Chaussée de Waterloo 438), Liège, Charleroi. Yurt dışına nakil için zorunlu *laissez-passer mortuaire* belgesini Saniport (SPF Santé publique) verir; başvuruyu genelde cenaze firması yapar. Tüm süreç ve aranacak numaralar: [Rahmetle Anıyoruz](/tr/rahmetle-aniyoruz/) sayfası.
+
 ## Cenaze ve Türkiye'ye nakil
 
 Bir Türk vatandaşının Belçika'da vefatı hâlinde süreç iki aşamada yürütülür: önce Belçika tarafında (belediye / état civil) yerel ölüm belgesi alınır, ardından bu belgelerle Başkonsolosluğa başvurularak **Cenaze Nakil Belgesi** çıkarılır.
