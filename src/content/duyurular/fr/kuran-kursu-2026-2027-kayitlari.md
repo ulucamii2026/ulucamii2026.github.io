@@ -2,6 +2,8 @@
 baslik: Ouverture des inscriptions à l’école coranique 2026-2027
 tarih: 2026-08-21
 ozet: Les inscriptions pour l’année 2026-2027 de l’école coranique et d’instruction religieuse de la Mosquée Ulu Camii sont ouvertes. Gratuit, inscription via un formulaire en ligne.
+kapak: /media/arsiv/kurs-kayit-2026-fr.webp
+kapakAlt: Affiche d’inscription à l’école coranique 2026-2027 (français)
 etiketler:
   - école coranique
   - inscription

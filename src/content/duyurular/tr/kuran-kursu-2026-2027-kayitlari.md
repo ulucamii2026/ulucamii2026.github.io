@@ -2,6 +2,8 @@
 baslik: 2026-2027 Dönemi Kur’an Kursu Kayıtları Başladı
 tarih: 2026-08-21
 ozet: Marche-en-Famenne Ulu Camii Kur’an-ı Kerim ve Temel Dinî Bilgiler Kursu’nda 2026-2027 dönemi kayıtları başladı. Kayıt tamamen ücretsiz, başvurular online formla alınıyor.
+kapak: /media/arsiv/kurs-kayit-2026-tr.webp
+kapakAlt: 2026-2027 dönemi Kur’an kursu kayıt afişi (Türkçe)
 etiketler:
   - kur’an kursu
   - kayıt
