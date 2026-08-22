@@ -1,7 +1,7 @@
 ---
 baslik: Faire un don
 altBaslik: Notre mosquée tient grâce à vos dons.
-aciklama: Virement bancaire, QR code, don régulier, tronc de la mosquée et sacrifice par procuration - comment soutenir la Mosquée Ulu Camii de Marche-en-Famenne.
+aciklama: Virement bancaire, QR code, don régulier, tronc de la mosquée et sacrifice par procuration — comment soutenir la Mosquée Ulu Camii de Marche-en-Famenne.
 guncelleme: 2026-08-22
 ---
 

@@ -13,6 +13,7 @@ const menu = [
   { href: yol(dil, 'bagis'), ad: t('nav.bagis') },
   { href: yol(dil, 'uyelik'), ad: dil === 'tr' ? 'Üyelik' : 'Adhésion' },
   { href: yol(dil, 'konsolosluk'), ad: t('nav.konsolosluk') },
+  { href: yol(dil, 'vefat'), ad: t('nav.vefat') },
   { href: yol(dil, 'galeri'), ad: t('nav.galeri') },
   { href: yol(dil, 'iletisim'), ad: t('nav.iletisim') },
 ];
@@ -22,18 +23,18 @@ const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil
 ---
 <header class="sticky top-0 z-40 bg-(--zemin)/95 backdrop-blur border-b border-(--cizgi)">
   <div class="kilim-serit" aria-hidden="true"></div>
-  <div class="kapsayici flex items-center gap-4 py-3">
-    <a href={yol(dil, 'anasayfa')} class="flex items-center gap-3 no-underline text-(--metin) hover:text-(--metin) min-w-0">
+  <div class="kapsayici flex items-center gap-3 py-2.5">
+    <a href={yol(dil, 'anasayfa')} class="flex items-center gap-3 no-underline text-(--metin) hover:text-(--metin) shrink-0">
       <img src="/media/logo/ulu-camii-logo.svg" alt="" width="48" height="48" class="h-12 w-12 shrink-0" />
-      <span class="leading-tight min-w-0">
+      <span class="leading-tight whitespace-nowrap">
         <span class="block font-serif font-semibold text-[1.15rem] sm:text-xl leading-none">{t('site.kisa')}</span>
-        <span class="etiket block mt-1 truncate">Marche-en-Famenne · 1979</span>
+        <span class="etiket block mt-1">Marche-en-Famenne · 1979</span>
       </span>
     </a>
-    <nav class="ml-auto hidden xl:flex items-center gap-1" aria-label={t('nav.menu')}>
+    <nav class="ml-auto hidden xl:flex flex-wrap justify-end items-center gap-0.5" aria-label={t('nav.menu')}>
       {menu.map((m) => (
         <a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined}
-           class:list={['px-2.5 py-2 text-[0.9rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
+           class:list={['px-2 py-1.5 text-[0.86rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
       ))}
     </nav>
     <div class="ml-auto xl:ml-2 flex items-center gap-2">

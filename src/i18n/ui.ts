@@ -19,6 +19,8 @@ export const ui = {
     'nav.galeri': 'Galeri',
     'nav.iletisim': 'İletişim',
     'nav.portal': 'Portal',
+    'nav.vefat': 'Vefat Haberleri',
+    'vefat.baslik': 'Rahmetle Anıyoruz',
     'nav.menu': 'Menü',
     'nav.kapat': 'Kapat',
     'nav.dil': 'Dil',
@@ -94,6 +96,8 @@ export const ui = {
     'nav.galeri': 'Galerie',
     'nav.iletisim': 'Contact',
     'nav.portal': 'Portail',
+    'nav.vefat': 'Décès',
+    'vefat.baslik': 'In memoriam',
     'nav.menu': 'Menu',
     'nav.kapat': 'Fermer',
     'nav.dil': 'Langue',
@@ -173,5 +177,6 @@ export const yollar = {
   kunye: { tr: 'kunye', fr: 'mentions-legales' },
   gizlilik: { tr: 'gizlilik', fr: 'confidentialite' },
   portal: { tr: 'portal', fr: 'portail' },
+  vefat: { tr: 'rahmetle-aniyoruz', fr: 'in-memoriam' },
 } as const;
 export type SayfaAnahtari = keyof typeof yollar;

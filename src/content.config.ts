@@ -84,5 +84,22 @@ const galeri = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri };
+/** Vefat haberleri / Rahmetle anıyoruz — src/content/vefat/slug.md (dilden bağımsız; metin tr/fr alanlı) */
+const vefat = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/vefat' }),
+  schema: z.object({
+    ad: z.string(),
+    vefat: z.coerce.date(),
+    dogumYili: z.number().int().optional(),
+    memleket: z.string().optional(),
+    foto: z.string().optional(),
+    cenazeNamazi: z.object({ tarih: z.coerce.date().optional(), saat: z.string().optional(), yer: z.string().optional() }).optional(),
+    defin: z.string().optional(),
+    taziye: z.string().optional(),
+    metin: z.object({ tr: z.string().optional(), fr: z.string().optional() }).optional(),
+    taslak: z.boolean().default(false),
+  }),
+});
+
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat };
 export { dil };

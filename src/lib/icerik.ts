@@ -33,6 +33,11 @@ export async function siteAyarlari() {
   return (await getEntry('ayarlar', 'site'))!.data;
 }
 
+export async function vefatlar() {
+  const hepsi = await getCollection('vefat', ({ data }) => !data.taslak);
+  return hepsi.sort((a, b) => b.data.vefat.getTime() - a.data.vefat.getTime());
+}
+
 export async function galeri() {
   return (await getCollection('galeri')).sort((a, b) => a.data.sira - b.data.sira);
 }

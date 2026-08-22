@@ -41,4 +41,4 @@ Sitede yer alan görsel ve yazılı içeriklerin telif hakları, aksi belirtilme
 
 ## Harita Verileri
 
-Sitedeki konum haritası **OpenStreetMap** verileriyle oluşturulmuştur ve OpenStreetMap katkıda bulunanlarına © OpenStreetMap katkıda bulunanları, [ODbL](https://opendatacommons.org/licenses/odbl/) lisansıyla aittir.
+Sitedeki konum haritası **OpenStreetMap** verileriyle oluşturulmuştur; © OpenStreetMap katkıda bulunanları, [ODbL](https://opendatacommons.org/licenses/odbl/) lisansı altındadır.

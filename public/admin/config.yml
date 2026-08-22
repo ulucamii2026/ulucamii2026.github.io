@@ -126,6 +126,42 @@ collections:
       - { name: guncelleme, label: Son güncelleme, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
 
+  - name: vefat
+    label: Vefat Haberleri (Rahmetle Anıyoruz)
+    label_singular: Vefat haberi
+    folder: src/content/vefat
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{ad}}"
+    summary: "{{ad}} — {{vefat}}"
+    sortable_fields: [vefat, ad]
+    fields:
+      - { name: ad, label: Ad Soyad, widget: string }
+      - { name: vefat, label: Vefat tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { name: dogumYili, label: Doğum yılı, widget: number, value_type: int, required: false }
+      - { name: memleket, label: Memleketi, widget: string, required: false }
+      - { name: foto, label: Fotoğraf (isteğe bağlı, aile izniyle), widget: image, required: false, media_folder: public/media/yuklenen/vefat, public_folder: /media/yuklenen/vefat }
+      - name: cenazeNamazi
+        label: Cenaze namazı
+        widget: object
+        required: false
+        fields:
+          - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false }
+          - { name: saat, label: Saat / vakit, widget: string, required: false, hint: "Örn. Öğle namazını müteakip" }
+          - { name: yer, label: Yer, widget: string, required: false, default: "Marche-en-Famenne Ulu Camii" }
+      - { name: defin, label: Defin yeri / nakil bilgisi, widget: string, required: false }
+      - { name: taziye, label: Taziye bilgisi, widget: string, required: false }
+      - name: metin
+        label: Kısa metin
+        widget: object
+        required: false
+        fields:
+          - { name: tr, label: Türkçe, widget: text, required: false }
+          - { name: fr, label: Fransızca, widget: text, required: false }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
+
   - name: ayarlar
     label: Site Ayarları
     files:

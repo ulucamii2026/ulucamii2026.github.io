@@ -1,0 +1,90 @@
+---
+/** Rahmetle Anıyoruz / In memoriam — vefat haberleri ve cenaze hizmetleri */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, yol, tarihBicimle } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { vefatlar, siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const liste = await vefatlar();
+const site = await siteAyarlari();
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const yillar = [...new Set(liste.map((v) => v.data.vefat.getFullYear()))].sort((a, b) => b - a);
+const m = dil === 'tr' ? {
+  alt: 'Cemaatimizden Hakk’a yürüyen kardeşlerimizi rahmetle, minnetle anıyoruz. Cenaze namazı duyuruları da bu sayfada yayınlanır.',
+  ayetMeal: '“Biz Allah’a aidiz ve O’na döneceğiz.” (Bakara, 2/156)',
+  bos: 'Şu anda yayınlanmış vefat haberi bulunmuyor.',
+  cenazeNamazi: 'Cenaze namazı', defin: 'Defin', memleket: 'Memleketi', taziye: 'Taziye', yas: 'yaşında',
+  dua: 'Allah rahmet eylesin, mekânı cennet olsun.',
+  hizmetBaslik: 'Cenaze hizmetlerimiz',
+  hizmet: ['Vefat haberinin cemaate duyurulması (cami, web sitesi, WhatsApp)', 'Gasil (yıkama), kefenleme ve cenaze namazı', 'Türkiye’ye nakil veya Belçika’da defin için Başkonsolosluk ve Belçika Diyanet Vakfı ile koordinasyon', 'Taziye, mevlid ve Kur’an tilaveti programları'],
+  hizmetNot: 'Vefat hâlinde gece gündüz din görevlimizi arayabilirsiniz.',
+  nakil: 'Cenaze ve Türkiye’ye nakil işlemleri →',
+  aileNot: 'Bu sayfadaki kayıtlar ailelerin bilgisi ve isteğiyle yayınlanır. Ekleme, düzeltme veya kaldırma talepleri için dernek yönetimine ulaşın.',
+} : {
+  alt: 'Nous honorons la mémoire des membres de notre communauté qui nous ont quittés. Les annonces de prières funéraires sont également publiées ici.',
+  ayetMeal: '« Nous appartenons à Allah et c’est à Lui que nous retournons. » (Coran, 2/156)',
+  bos: 'Aucun avis de décès publié pour le moment.',
+  cenazeNamazi: 'Prière funéraire', defin: 'Inhumation', memleket: 'Originaire de', taziye: 'Condoléances', yas: 'ans',
+  dua: 'Qu’Allah lui fasse miséricorde et l’accueille au Paradis.',
+  hizmetBaslik: 'Nos services funéraires',
+  hizmet: ['Annonce du décès à la communauté (mosquée, site web, WhatsApp)', 'Toilette mortuaire (ghusl), linceul et prière funéraire', 'Coordination avec le Consulat général et la Fondation Diyanet de Belgique pour le rapatriement en Turquie ou l’inhumation en Belgique', 'Programmes de condoléances, mevlid et récitation du Coran'],
+  hizmetNot: 'En cas de décès, vous pouvez joindre notre imam à toute heure.',
+  nakil: 'Décès et rapatriement en Turquie →',
+  aileNot: 'Les avis publiés ici le sont avec l’accord des familles. Pour toute demande d’ajout, de correction ou de retrait, contactez le comité de l’association.',
+};
+---
+<Base baslik={t('vefat.baslik')} dil={dil} aciklama={m.alt}>
+  <SayfaBasligi etiket={t('nav.vefat')} baslik={t('vefat.baslik')} altBaslik={m.alt}>
+    <p class="arabic mt-6 text-2xl text-(--vurgu)" lang="ar">إِنَّا لِلّٰهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
+    <p class="etiket mt-1">{m.ayetMeal}</p>
+  </SayfaBasligi>
+  <div class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <section>
+      {liste.length === 0 && <p class="text-(--metin-2)">{m.bos}</p>}
+      {yillar.map((yil) => (
+        <div class="mb-10">
+          <h2 class="etiket etiket-vurgu text-base cetvel pt-3 mb-4">{yil}</h2>
+          <ul class="grid gap-4" role="list">
+            {liste.filter((v) => v.data.vefat.getFullYear() === yil).map((v) => {
+              const d = v.data; const yas = d.dogumYili ? yil - d.dogumYili : null;
+              return (
+                <li class="kart p-5 sm:p-6 flex gap-5">
+                  {d.foto ? <img src={d.foto} alt="" width="96" height="120" class="h-[120px] w-24 object-cover rounded-(--radius-kose) border border-(--cizgi) shrink-0 [filter:sepia(.25)]" loading="lazy" /> : <div class="hidden sm:flex h-[120px] w-24 shrink-0 items-center justify-center border border-(--cizgi) rounded-(--radius-kose) text-(--vurgu) text-3xl" aria-hidden="true">✦</div>}
+                  <div class="min-w-0 flex-1">
+                    <h3 class="leading-tight">{d.ad}</h3>
+                    <p class="etiket mt-1">
+                      {d.dogumYili && <span>{d.dogumYili} – </span>}<time datetime={d.vefat.toISOString()}>{tarihBicimle(d.vefat, dil)}</time>
+                      {yas !== null && <span> · {yas} {m.yas}</span>}
+                      {d.memleket && <span> · {m.memleket}: <span class="normal-case tracking-normal">{d.memleket}</span></span>}
+                    </p>
+                    {d.metin?.[dil] && <p class="mt-3 text-(--metin-2)">{d.metin[dil]}</p>}
+                    {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer || d.defin || d.taziye) && (
+                      <dl class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm bilgi">
+                        {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer) && <div><dt class="etiket">{m.cenazeNamazi}</dt><dd>{d.cenazeNamazi?.tarih && tarihBicimle(d.cenazeNamazi.tarih, dil, { weekday: 'long', day: 'numeric', month: 'long' })}{d.cenazeNamazi?.saat && `, ${d.cenazeNamazi.saat}`}{d.cenazeNamazi?.yer && ` — ${d.cenazeNamazi.yer}`}</dd></div>}
+                        {d.defin && <div><dt class="etiket">{m.defin}</dt><dd>{d.defin}</dd></div>}
+                        {d.taziye && <div class="sm:col-span-2"><dt class="etiket">{m.taziye}</dt><dd>{d.taziye}</dd></div>}
+                      </dl>
+                    )}
+                    <p class="mt-3 font-serif italic text-(--vurgu)">{m.dua}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+      <p class="text-sm text-(--metin-2) cetvel pt-4">{m.aileNot}</p>
+    </section>
+    <aside class="grid gap-5 content-start lg:sticky lg:top-24">
+      <div class="kart p-5">
+        <p class="etiket etiket-vurgu">{m.hizmetBaslik}</p>
+        <ul class="mt-3 grid gap-2 text-sm list-[square] pl-4">{m.hizmet.map((h) => <li>{h}</li>)}</ul>
+        <p class="mt-4 text-sm">{m.hizmetNot}</p>
+        <p class="mt-2"><a href={tel(site.telefon.dinGorevlisi)} class="dugme dugme-birincil w-full justify-center mono">{site.telefon.dinGorevlisi}</a></p>
+        <p class="mt-3 text-sm"><a href={yol(dil, 'konsolosluk') + '#cenaze'}>{m.nakil}</a></p>
+      </div>
+    </aside>
+  </div>
+</Base>

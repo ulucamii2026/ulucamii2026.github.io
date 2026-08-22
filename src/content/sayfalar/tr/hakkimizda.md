@@ -13,7 +13,7 @@ Derneğimizin resmî Fransızca adı **25 Aralık 2023**'ten bu yana *Associatio
 
 ## Belçika Diyanet Vakfı'na Bağlılığımız
 
-Camimiz, 1982 yılında kurulan **Belçika Diyanet Vakfı (BDV)**'na bağlı olarak hizmet vermektedir. Din görevlimiz Diyanet İşleri Başkanlığı tarafından görevlendirilir ve BDV bünyesindeki Sosyal İşler Müşavirliği aracılığıyla koordine edilir. Bu bağlılık, ibadet ve din hizmetlerimizin Türkiye Diyanet geleneğiyle uyumlu, düzenli ve sürekli bir şekilde yürütülmesini sağlar.
+Camimiz, 1982 yılında kurulan **Belçika Diyanet Vakfı (BDV)**'ye bağlı olarak hizmet vermektedir. Din görevlimiz Diyanet İşleri Başkanlığı tarafından görevlendirilir ve BDV bünyesindeki Sosyal İşler Müşavirliği aracılığıyla koordine edilir. Bu bağlılık, ibadet ve din hizmetlerimizin Türkiye Diyanet geleneğiyle uyumlu, düzenli ve sürekli bir şekilde yürütülmesini sağlar.
 
 ## Resmî Statümüz
 

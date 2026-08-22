@@ -34,7 +34,7 @@ Sitedeki konum haritası, OpenStreetMap Vakfı'nın sunucularından yüklenir. H
 - **Amaç:** Üyelik ve aidat yönetimi; Kur'an kursu öğrenci devam/program takibi.
 - **Hukuki dayanak:** Üyelik verisi için dernekle üye arasındaki sözleşme ilişkisi; çocuğa ait veri için ise veli/yasal temsilci rızası. Belçika'da 13 yaşın altındaki çocuklara ait veri işleme, ancak veli/yasal temsilcinin rızasıyla hukuka uygun hâle gelir.
 - **Dinî bağlılık verisi:** Cami derneğine üyelik, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR'da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)'de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
-- **Veri minimizasyonu:** Portalda TC kimlik numarası veya ev adresi gibi gereğinden fazla kimlik verisi tutulmayacaktır; yalnızca amaç için gerekli asgari bilgi işlenecektir.
+- **Veri minimizasyonu:** Portalda millî sicil numarası veya ev adresi gibi gereğinden fazla kimlik verisi tutulmayacaktır; yalnızca amaç için gerekli asgari bilgi işlenecektir.
 - **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur'an kursu öğrenci verisi, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
 
 ## Haklarınız
