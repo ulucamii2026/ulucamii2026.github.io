@@ -9,7 +9,7 @@ const { etiket, baslik, href, hrefMetin, id, class: cls } = Astro.props;
       {etiket && <p class="etiket etiket-vurgu mb-1">{etiket}</p>}
       <h2>{baslik}</h2>
     </div>
-    {href && <a href={href} class="text-sm font-semibold no-underline hover:underline">{hrefMetin} →</a>}
+    {href && <a href={href} class="text-sm font-semibold no-underline hover:underline">{hrefMetin}<span aria-hidden="true"> →</span></a>}
   </div>
   <slot />
 </section>

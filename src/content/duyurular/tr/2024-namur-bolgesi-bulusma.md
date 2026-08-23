@@ -23,7 +23,7 @@ oneCikan: false
 taslak: false
 ---
 
-Namur bölgesi camileri tarafından düzenlenen cemaat buluşması, Marche-en-Famenne Ulu Camii’nde gerçekleştirildi. Yatsı namazının ardından Rıdvan Kayahan Hoca gençlik konulu bir sohbet yaptı; koordinatör Fatih Yılmaz Hoca ise sohbeti Fransızcaya çevirerek katılımcılara aktardı. Kadınlar kolumuzun da katkı sunduğu programın sonunda cemaate ikram yapıldı ve başkanlar ile hocaların katıldığı bir bölge toplantısı düzenlendi. Namur Camii cemaatinden otuz beş kişi kendi araçlarıyla gelerek buluşmaya destek verdi; bir sonraki buluşmanın Eyüp Sultan Bertrix Camii’nde yapılması planlandı.
+Namur bölgesi camileri tarafından düzenlenen cemaat buluşması, Marche-en-Famenne Ulu Camii’nde gerçekleştirildi. Yatsı namazının ardından din görevlimiz gençlik konulu bir sohbet yaptı; koordinatör koordinatör hocamız ise sohbeti Fransızcaya çevirerek katılımcılara aktardı. Kadınlar kolumuzun da katkı sunduğu programın sonunda cemaate ikram yapıldı ve başkanlar ile hocaların katıldığı bir bölge toplantısı düzenlendi. Namur Camii cemaatinden otuz beş kişi kendi araçlarıyla gelerek buluşmaya destek verdi; bir sonraki buluşmanın Eyüp Sultan Bertrix Camii’nde yapılması planlandı.
 
 — Ulu Camii Yönetim Kurulu
 

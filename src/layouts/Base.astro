@@ -18,6 +18,8 @@ const dil: Dil = Astro.props.dil ?? dilBul(Astro.url);
 const t = ceviri(dil);
 const { baslik, aciklama = t('site.slogan'), kapak = '/media/galeri/cami-24.webp', noindex = false } = Astro.props;
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
+/** Arama motoru açıklaması: 155 karakteri aşarsa kelime sınırında kısalt */
+const metaAciklama = aciklama.length <= 155 ? aciklama : aciklama.slice(0, 152).replace(/\s+\S*$/, '') + '…';
 const kanonik = new URL(Astro.url.pathname, Astro.site);
 const kapakUrl = new URL(kapak, Astro.site);
 ---
@@ -27,7 +29,7 @@ const kapakUrl = new URL(kapak, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{tamBaslik}</title>
-    <meta name="description" content={aciklama} />
+    <meta name="description" content={metaAciklama} />
     <link rel="canonical" href={kanonik} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {dilListesi.map((d) => <link rel="alternate" hreflang={d === 'tr' ? 'tr' : 'fr-BE'} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
@@ -39,7 +41,7 @@ const kapakUrl = new URL(kapak, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={t('site.ad')} />
     <meta property="og:title" content={tamBaslik} />
-    <meta property="og:description" content={aciklama} />
+    <meta property="og:description" content={metaAciklama} />
     <meta property="og:image" content={kapakUrl} />
     <meta property="og:url" content={kanonik} />
     <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : 'fr_BE'} />

@@ -1,0 +1,37 @@
+---
+/**
+ * Yıl filtresi — arşiv sayfaları (duyurular, hutbeler) için gerçek istemci filtresi.
+ * JS yokken: çipler sayfa-içi çapa, tüm yıllar görünür. JS ile: varsayılan olarak yalnız en yeni yıl görünür;
+ * çip seçimi ilgili yılı gösterir, "Tümü" hepsini açar; #yil-YYYY çapasıyla gelen ziyaretçi doğrudan o yılı görür.
+ * Bölümler: <section data-yil="2026" id="yil-2026">…</section>
+ */
+interface Props { yillar: number[]; dil: 'tr' | 'fr' }
+const { yillar, dil } = Astro.props;
+const m = dil === 'tr' ? { etiket: 'Yıla göre', tumu: 'Tümü' } : { etiket: 'Par année', tumu: 'Toutes' };
+---
+{yillar.length > 1 && (
+  <nav class="mb-8 flex flex-wrap gap-2" aria-label={m.etiket} data-yil-filtresi>
+    {yillar.map((y) => <a href={`#yil-${y}`} data-yil-sec={y} class="yil-cip mono text-xs tracking-(--tracking-etiket) px-3 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) no-underline text-(--metin) hover:border-(--metin)">{y}</a>)}
+    <a href="#tumu" data-yil-sec="tumu" class="yil-cip mono text-xs tracking-(--tracking-etiket) px-3 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) no-underline text-(--metin) hover:border-(--metin)">{m.tumu}</a>
+  </nav>
+)}
+
+<style is:global>
+  .yil-cip[aria-current="true"] { background: var(--metin); color: var(--zemin); border-color: var(--metin); }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-yil-filtresi]');
+  const bolumler = Array.from(document.querySelectorAll<HTMLElement>('[data-yil]'));
+  if (nav && bolumler.length > 1) {
+    const cipler = Array.from(nav.querySelectorAll<HTMLAnchorElement>('[data-yil-sec]'));
+    const goster = (secim: string, kaydir = false) => {
+      bolumler.forEach((b) => { b.hidden = secim !== 'tumu' && b.dataset.yil !== secim; });
+      cipler.forEach((c) => { if (c.dataset.yilSec === secim) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current'); });
+      if (kaydir) nav.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    };
+    const hashYil = location.hash.match(/^#yil-(\d{4})$/)?.[1];
+    goster(location.hash === '#tumu' ? 'tumu' : hashYil && bolumler.some((b) => b.dataset.yil === hashYil) ? hashYil : (bolumler[0].dataset.yil || 'tumu'));
+    cipler.forEach((c) => c.addEventListener('click', (e) => { e.preventDefault(); const s = c.dataset.yilSec || 'tumu'; history.replaceState(null, '', s === 'tumu' ? '#tumu' : `#yil-${s}`); goster(s, true); }));
+  }
+</script>

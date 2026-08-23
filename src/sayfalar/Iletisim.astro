@@ -26,7 +26,7 @@ const m = dil === 'tr' ? {
         <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a></dd></div>
         <div><dt class="etiket">{t('footer.cami')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a></dd></div>
         {site.eposta && <div><dt class="etiket">{t('genel.eposta')}</dt><dd class="mt-1 text-lg"><a href={`mailto:${site.eposta}`}>{site.eposta}</a></dd></div>}
-        {site.sosyal.facebook && <div><dt class="etiket">Facebook</dt><dd class="mt-1"><a href={site.sosyal.facebook} target="_blank" rel="noopener">{dil === 'tr' ? 'Facebook sayfamız' : 'Notre page Facebook'} ↗</a></dd></div>}
+        {site.sosyal.facebook && <div><dt class="etiket">Facebook</dt><dd class="mt-1"><a href={site.sosyal.facebook} target="_blank" rel="noopener">{dil === 'tr' ? 'Facebook sayfamız' : 'Notre page Facebook'}<span aria-hidden="true"> ↗</span></a></dd></div>}
       </dl>
       <p class="bilgi mt-8 text-sm">{m.not}</p>
     </div>

@@ -137,6 +137,9 @@ export interface Metinler {
   imzaYenidenImzala: string;
   imzaBos: string;
   imzaKisa: string;
+  imzaYazarak: string;
+  imzaYazarakEtiket: string;
+  imzaYazarakOnay: string;
 
   // özet
   ozetBaslik: string;
@@ -252,6 +255,9 @@ export function metinler(dil: FormDil): Metinler {
       imzaYenidenImzala: 'Signer à nouveau',
       imzaBos: 'Veuillez apposer votre signature.',
       imzaKisa: 'Le trait est trop court — veuillez signer plus clairement.',
+      imzaYazarak: 'Vous ne pouvez pas dessiner ? Signez en tapant votre nom',
+      imzaYazarakEtiket: 'Nom et prénom (vaut signature)',
+      imzaYazarakOnay: 'Utiliser comme signature',
 
       ozetBaslik: 'Vérifiez vos informations',
       beyanCumlesi: 'Je déclare vouloir, de mon plein gré, embrasser l’islam et je demande respectueusement qu’une attestation de conversion me soit délivrée.',
@@ -361,6 +367,9 @@ export function metinler(dil: FormDil): Metinler {
     imzaYenidenImzala: 'Yeniden imzala',
     imzaBos: 'Lütfen imzanızı atın.',
     imzaKisa: 'Çizgi çok kısa — lütfen daha belirgin imzalayın.',
+    imzaYazarak: 'Çizemiyor musunuz? Adınızı yazarak imzalayın',
+    imzaYazarakEtiket: 'Ad Soyad (imza yerine geçer)',
+    imzaYazarakOnay: 'İmza olarak kullan',
 
     ozetBaslik: 'Bilgilerinizi kontrol edin',
     beyanCumlesi: 'Kendi hür irademle İslam dinine girmek istiyorum. Şahsıma İhtida Belgesi düzenlenmesi hususunda gereğini saygılarımla arz ederim.',

@@ -66,6 +66,7 @@ const yollarSVG: Record<Kart['ikon'], string> = {
   <SayfaBasligi etiket={t('nav.diyanet')} baslik={t('nav.diyanet')} altBaslik={m.altBaslik} />
 
   <div class="kapsayici py-10">
+    <h2 class="sr-only">{dil === 'tr' ? 'Hizmetler' : 'Services'}</h2>
     <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
       {m.kartlar.map((k) => (
         <li class="kart p-5 sm:p-6 flex flex-col gap-3">
@@ -77,7 +78,7 @@ const yollarSVG: Record<Kart['ikon'], string> = {
           <h3 class="text-lg leading-snug">{k.baslik}</h3>
           <p class="text-sm text-(--metin-2) flex-1">{k.ozet}</p>
           <a href={k.href} target={k.disLink ? '_blank' : undefined} rel={k.disLink ? 'noopener' : undefined} class="dugme dugme-ikincil w-full justify-center text-sm mt-1">
-            {m.git}{k.disLink && <span aria-hidden="true"> ↗</span>}
+            {m.git}{k.disLink && <span aria-hidden="true"> <span aria-hidden="true"> ↗</span></span>}
           </a>
         </li>
       ))}
@@ -93,7 +94,7 @@ const yollarSVG: Record<Kart['ikon'], string> = {
         <dl class="grid gap-2.5 text-sm">
           <div><dt class="etiket">{dil === 'tr' ? 'Adres' : 'Adresse'}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
           <div><dt class="etiket">{dil === 'tr' ? 'E-posta' : 'E-mail'}</dt><dd><a href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
-          <div><dt class="etiket">Web</dt><dd><a href="https://www.diyanet.be" target="_blank" rel="noopener">diyanet.be ↗</a></dd></div>
+          <div><dt class="etiket">Web</dt><dd><a href="https://www.diyanet.be" target="_blank" rel="noopener">diyanet.be <span aria-hidden="true"> ↗</span></a></dd></div>
         </dl>
         <p class="mt-4 text-xs text-(--metin-2)">{m.disNot}</p>
         <p class="mt-3 text-sm"><a href={yol(dil, 'iletisim')}>{m.cami}</a></p>

@@ -75,7 +75,7 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
           </ul>
         </div>
       ))}
-      <a href={yol(dil, 'portal')} class="block px-2 py-2 no-underline text-(--vurgu-2) font-semibold sm:col-span-2 border-t border-(--cizgi)">{t('nav.portal')} →</a>
+      <a href={yol(dil, 'portal')} class="block px-2 py-2 no-underline text-(--vurgu-2) font-semibold sm:col-span-2 border-t border-(--cizgi)">{t('nav.portal')}<span aria-hidden="true"> →</span></a>
     </div>
   </nav>
 </header>
@@ -107,5 +107,8 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
     g.addEventListener('focusout', (e) => { if (!g.contains(e.relatedTarget as Node)) kapat(); });
   });
   document.addEventListener('click', (e) => { if (!gruplar.some((g) => g.contains(e.target as Node))) kapatHepsi(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') kapatHepsi(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return; kapatHepsi();
+    if (menu && !menu.classList.contains('hidden')) { menu.classList.add('hidden'); dugme?.setAttribute('aria-expanded', 'false'); dugme?.focus(); }
+  });
 </script>

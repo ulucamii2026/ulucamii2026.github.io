@@ -2,7 +2,7 @@
 baslik: Notre nouveau site internet est en ligne
 tarih: 2026-08-22
 ozet: Le nouveau site de la Mosquée Ulu Camii de Marche-en-Famenne est en ligne. Horaires de prière, dons, inscription à l’école coranique et guide consulaire, tout y est.
-kapak: /media/galeri/cami-24.webp
+kapak: /media/galeri/cami-24-thumb.webp
 kapakAlt: Vue de la façade de la Mosquée Ulu Camii de Marche-en-Famenne
 etiketler:
   - site internet

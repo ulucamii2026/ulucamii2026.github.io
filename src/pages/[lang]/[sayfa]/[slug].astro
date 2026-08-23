@@ -43,7 +43,7 @@ const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : 'Photos';
         <a href={kapak} data-lightbox={grup} data-caption={d.kapakAlt ?? d.baslik} class="gorsel-cerceve block">
           <img src={tur === 'etkinlik' && d.afisKucuk ? d.afisKucuk : kapak} alt={d.kapakAlt ?? d.baslik} loading="lazy" decoding="async" />
         </a>
-        {tur === 'etkinlik' && <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')} ↗</a></p>}
+        {tur === 'etkinlik' && <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')}<span aria-hidden="true"> ↗</span></a></p>}
       </aside>
     )}
   </article>

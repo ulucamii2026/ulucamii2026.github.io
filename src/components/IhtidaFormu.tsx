@@ -179,13 +179,15 @@ interface AlanProps {
 }
 function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti, girdiTuru = 'input', satir = 3, genislik = 'tam' }: AlanProps) {
   const sinif = 'w-full min-h-11 rounded-(--radius-kose) border bg-(--zemin) px-3 py-2.5 text-base focus:outline-none focus:border-(--vurgu-2) transition-colors ' + (hata ? 'border-(--vurgu)' : 'border-(--cizgi)');
+  const hataId = useMemo(() => `hata-${Math.random().toString(36).slice(2, 9)}`, []);
+  const aria = { 'aria-required': zorunlu ? true : undefined, 'aria-invalid': hata ? true : undefined, 'aria-describedby': hata ? hataId : undefined } as any;
   return (
     <label class={`grid gap-1.5 ${genislik === 'yari' ? '' : 'sm:col-span-2'}`}>
       <span class="etiket">{etiket}{zorunlu && ' *'}</span>
       {girdiTuru === 'textarea'
-        ? <textarea class={sinif} rows={satir} value={deger} placeholder={yerTutucu} onInput={(e) => onDegisti((e.target as HTMLTextAreaElement).value)} />
-        : <input class={sinif} type={tip} value={deger} placeholder={yerTutucu} onInput={(e) => onDegisti((e.target as HTMLInputElement).value)} />}
-      {hata && <span class="text-sm text-(--vurgu)" role="alert">{hata}</span>}
+        ? <textarea class={sinif} rows={satir} value={deger} placeholder={yerTutucu} {...aria} onInput={(e) => onDegisti((e.target as HTMLTextAreaElement).value)} />
+        : <input class={sinif} type={tip} value={deger} placeholder={yerTutucu} {...aria} onInput={(e) => onDegisti((e.target as HTMLInputElement).value)} />}
+      {hata && <span id={hataId} class="text-sm text-(--vurgu)" role="alert">{hata}</span>}
     </label>
   );
 }
@@ -193,10 +195,11 @@ function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti
 interface SecimAlaniProps { etiket: string; deger: string; hata?: string; zorunlu?: boolean; secenekler: SecenekOgesi[]; dil: FormDil; onDegisti: (v: string) => void; genislik?: 'tam' | 'yari'; }
 function SecimAlani({ etiket, deger, hata, zorunlu, secenekler, dil, onDegisti, genislik = 'yari' }: SecimAlaniProps) {
   const sinif = 'w-full min-h-11 rounded-(--radius-kose) border bg-(--zemin) px-3 py-2.5 text-base focus:outline-none focus:border-(--vurgu-2) transition-colors ' + (hata ? 'border-(--vurgu)' : 'border-(--cizgi)');
+  const hataId = useMemo(() => `hata-${Math.random().toString(36).slice(2, 9)}`, []);
   return (
     <label class={`grid gap-1.5 ${genislik === 'yari' ? '' : 'sm:col-span-2'}`}>
       <span class="etiket">{etiket}{zorunlu && ' *'}</span>
-      <select class={sinif} value={deger} onChange={(e) => onDegisti((e.target as HTMLSelectElement).value)}>
+      <select class={sinif} value={deger} aria-required={zorunlu ? true : undefined} aria-invalid={hata ? true : undefined} aria-describedby={hata ? hataId : undefined} onChange={(e) => onDegisti((e.target as HTMLSelectElement).value)}>
         <option value="">—</option>
         {secenekler.map((s) => <option value={s.deger}>{s.etiket[dil]}</option>)}
       </select>
@@ -232,12 +235,12 @@ function DosyaAlani({ etiket, deger, hata, zorunlu, m, isleniyor, onSecildi }: D
           {isleniyor ? m.dosyaIsleniyor : (deger ? m.dosyaDegistir : m.dosyaSec)}
         </label>
         <input
-          id={girdiId} type="file" accept="image/*" class="sr-only"
+          id={girdiId} type="file" accept="image/*" class="sr-only" aria-required={zorunlu ? true : undefined} aria-invalid={hata ? true : undefined} aria-describedby={hata ? `${girdiId}-hata` : undefined}
           onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) onSecildi(f); (e.target as HTMLInputElement).value = ''; }}
         />
         <span class="text-sm text-(--metin-2)">{deger ? m.dosyaYuklendi : m.dosyaYok}</span>
       </div>
-      {hata && <span class="text-sm text-(--vurgu)" role="alert">{hata}</span>}
+      {hata && <span id={`${girdiId}-hata`} class="text-sm text-(--vurgu)" role="alert">{hata}</span>}
     </div>
   );
 }
@@ -327,14 +330,25 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
     return Object.keys(yeniHatalar).length === 0;
   }
 
+  /** Adım geçişinde sayfa tepesine değil form kartına kaydır ve adım başlığına odaklan (ekran okuyucu + klavye) */
+  function formaKaydir() {
+    requestAnimationFrame(() => {
+      const kok = document.getElementById('ihtida-form');
+      kok?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      const baslik = kok?.querySelector<HTMLElement>('[data-adim-baslik]'); baslik?.focus({ preventScroll: true });
+    });
+  }
   function ileriGit() {
-    if (!adimGecerliMi(durum.adim)) return;
+    if (!adimGecerliMi(durum.adim)) {
+      requestAnimationFrame(() => document.querySelector<HTMLElement>('#ihtida-form [aria-invalid="true"]')?.focus());
+      return;
+    }
     guncelle('adim', Math.min(TOPLAM_ADIM - 1, durum.adim + 1) as any);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    formaKaydir();
   }
   function geriGit() {
     guncelle('adim', Math.max(0, durum.adim - 1) as any);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    formaKaydir();
   }
 
   function anahtarGetir(): string {
@@ -498,13 +512,12 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   const adimBasligi = ADIM_BASLIKLARI[dil][adim];
 
   return (
-    <div class="grid gap-6 max-w-[720px] mx-auto">
+    <div id="ihtida-form" class="grid gap-6 max-w-[720px] mx-auto scroll-mt-24">
       <div>
         <div class="flex items-baseline justify-between gap-2 mb-2">
-          <p class="etiket etiket-vurgu">{m.adimSayaci(adim + 1, TOPLAM_ADIM)}</p>
-          <p class="etiket">{adimBasligi}</p>
+          <p class="etiket etiket-vurgu" data-adim-baslik tabIndex={-1} aria-live="polite">{m.adimSayaci(adim + 1, TOPLAM_ADIM)} · {adimBasligi}</p>
         </div>
-        <div class="h-1.5 bg-(--zemin-2) rounded-full overflow-hidden" role="progressbar" aria-valuenow={adim + 1} aria-valuemin={1} aria-valuemax={TOPLAM_ADIM}>
+        <div class="h-1.5 bg-(--zemin-2) rounded-full overflow-hidden" role="progressbar" aria-label={adimBasligi} aria-valuetext={m.adimSayaci(adim + 1, TOPLAM_ADIM)} aria-valuenow={adim + 1} aria-valuemin={1} aria-valuemax={TOPLAM_ADIM}>
           <div class="h-full bg-(--vurgu) transition-[width] duration-300" style={{ width: `${((adim + 1) / TOPLAM_ADIM) * 100}%` }} />
         </div>
       </div>
@@ -605,7 +618,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
               <div class="flex justify-between gap-4 cetvel pt-2"><dt class="etiket">{m.adSoyad}</dt><dd class="text-right">{durum.adSoyad}</dd></div>
               <div class="flex justify-between gap-4"><dt class="etiket">{m.dogumTarihi}</dt><dd class="text-right">{durum.dogumTarihi}</dd></div>
               <div class="flex justify-between gap-4"><dt class="etiket">{m.eposta}</dt><dd class="text-right">{durum.eposta}</dd></div>
-              <div class="flex justify-between gap-4"><dt class="etiket">{m.telefon}</dt><dd class="text-right">{durum.telefon}</dd></div>
+              <div class="flex justify-between gap-4"><dt class="etiket">{m.telefon}</dt><dd class="text-right whitespace-nowrap mono">{durum.telefon}</dd></div>
               <div class="flex justify-between gap-4"><dt class="etiket">{m.adres}</dt><dd class="text-right">{durum.adres}</dd></div>
             </dl>
             {durum.imzaDataUrl && <div class="kart-kagit p-3 w-fit"><img src={durum.imzaDataUrl} alt="" class="h-16 w-auto" /></div>}
@@ -619,7 +632,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
         {adim < 7 && (
           <div class="flex justify-between gap-3 mt-2">
             <button type="button" class="dugme dugme-ikincil min-h-11" onClick={geriGit} disabled={adim === 0}>{m.geri}</button>
-            <button type="button" class="dugme dugme-birincil min-h-11" onClick={adim === 0 ? () => { guncelle('adim', 1 as any); window.scrollTo({ top: 0, behavior: 'smooth' }); } : ileriGit}>
+            <button type="button" class="dugme dugme-birincil min-h-11" onClick={adim === 0 ? () => { guncelle('adim', 1 as any); formaKaydir(); } : ileriGit}>
               {adim === 0 ? m.devamEt : m.ileri}
             </button>
           </div>

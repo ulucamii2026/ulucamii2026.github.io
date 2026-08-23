@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   guncelle:
@@ -19,6 +20,7 @@ jobs:
       - name: Diyanet verisini çek
         run: node scripts/namaz-vakitleri.mjs
       - name: Değişiklik varsa commit et
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -26,6 +28,13 @@ jobs:
             git add src/data/namaz-vakitleri.json
             git commit -m "veri: namaz vakitleri güncellendi ($(date -u +%Y-%m-%d))"
             git push
+            echo "degisti=true" >> "$GITHUB_OUTPUT"
           else
             echo "Değişiklik yok"
+            echo "degisti=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Yayını tetikle (GITHUB_TOKEN push'u deploy'u otomatik başlatmaz)
+        if: steps.commit.outputs.degisti == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

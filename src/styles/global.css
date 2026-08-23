@@ -86,6 +86,12 @@
     background-image: radial-gradient(rgb(74 55 40 / 0.03) 0.6px, transparent 0.6px);
     background-size: 5px 5px;
   }
+  body { overflow-wrap: break-word; }
+  a, code { overflow-wrap: anywhere; }
+  /* markdown içindeki tablolar dar ekranda kendi içinde kaydırılır */
+  .duz-yazi table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* dokunma hedefi: gövde içi küçük bağlantılar en az 32px yükseklik */
+  footer a, aside a, .dokun a { display: inline-block; padding-block: 0.2rem; }
   h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
   h1 { font-size: clamp(2rem, 1.2rem + 3.2vw, 3.6rem); }
   h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem); }

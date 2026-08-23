@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
+import YilFiltresi from '../components/YilFiltresi.astro';
 import DuyuruKarti from '../components/DuyuruKarti.astro';
 import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
@@ -16,13 +17,9 @@ const arsivNot = dil === 'tr' ? 'Arşiv' : 'Archives';
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.duyurular')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
     {liste.length === 0 && <p class="text-(--metin-2)">{t('duyuru.bos')}</p>}
-    {yillar.length > 1 && (
-      <nav class="mb-8 flex flex-wrap gap-2" aria-label={dil === 'tr' ? 'Yıla göre' : 'Par année'}>
-        {yillar.map((y) => <a href={`#yil-${y}`} class="mono text-xs tracking-(--tracking-etiket) px-3 py-1.5 border border-(--cizgi-etkilesim) rounded-(--radius-kose) no-underline text-(--metin) hover:border-(--metin)">{y}</a>)}
-      </nav>
-    )}
+    <YilFiltresi yillar={yillar} dil={dil} />
     {yillar.map((y, idx) => (
-      <section id={`yil-${y}`} class:list={[idx > 0 && 'mt-12']}>
+      <section id={`yil-${y}`} data-yil={y} class="[&:not([hidden])~&:not([hidden])]:mt-12">
         <h2 class="etiket etiket-vurgu text-base cetvel pt-3 mb-4">{y}{idx > 0 && <span class="ml-2 text-(--metin-2)">· {arsivNot}</span>}</h2>
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {liste.filter((d) => d.data.tarih.getFullYear() === y).map((d) => <DuyuruKarti dil={dil} slug={d.slug} baslik={d.data.baslik} tarih={d.data.tarih} ozet={d.data.ozet} kapak={d.data.kapak} kapakAlt={d.data.kapakAlt} etiketler={d.data.etiketler} />)}

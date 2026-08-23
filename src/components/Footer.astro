@@ -23,7 +23,7 @@ const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
         </div>
       </div>
       <p class="mt-4 text-sm text-(--metin-2) max-w-prose">{t('site.slogan')}</p>
-      {site.sosyal.facebook && <p class="mt-3 text-sm"><a href={site.sosyal.facebook} rel="noopener" target="_blank">Facebook ↗</a></p>}
+      {site.sosyal.facebook && <p class="mt-3 text-sm"><a href={site.sosyal.facebook} rel="noopener" target="_blank">Facebook<span aria-hidden="true"> ↗</span></a></p>}
     </div>
     <div>
       <h2 class="etiket etiket-vurgu mb-3 text-base">{t('footer.iletisim')}</h2>
@@ -41,7 +41,7 @@ const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
         {site.hukukiForm} · KBO/BCE <span class="mono">{site.kbo}</span><br />
         {adresSatir}, {site.adres.ulke}
       </p>
-      <ul class="mt-3 text-sm leading-7">
+      <ul class="mt-3 text-sm leading-8">
         <li><a href={yol(dil, 'vefat')}>{t('vefat.baslik')}</a></li>
         <li><a href={yol(dil, 'kunye')}>{t('footer.kunye')}</a></li>
         <li><a href={yol(dil, 'gizlilik')}>{t('footer.gizlilik')}</a></li>

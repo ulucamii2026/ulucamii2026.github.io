@@ -25,7 +25,7 @@ const m = dil === 'tr'
     <div><dd>✓ {m.taninma}</dd><dd>✓ {m.bagli}</dd></div>
   </dl>
   <section slot="alt" class="kapsayici pb-12">
-    <div class="flex items-end justify-between gap-3 cetvel pt-4 mb-4"><p class="etiket etiket-vurgu">{m.foto}</p><a href={yol(dil, 'galeri')} class="text-sm font-semibold no-underline hover:underline">{m.galeri} →</a></div>
+    <div class="flex items-end justify-between gap-3 cetvel pt-4 mb-4"><p class="etiket etiket-vurgu">{m.foto}</p><a href={yol(dil, 'galeri')} class="text-sm font-semibold no-underline hover:underline">{m.galeri}<span aria-hidden="true"> →</span></a></div>
     <ul class="grid grid-cols-3 md:grid-cols-6 gap-2" role="list">
       {fotolar.map((g) => <li><a href={g.data.dosya} target="_blank" rel="noopener" class="gorsel-cerceve block"><img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover" /></a></li>)}
     </ul>

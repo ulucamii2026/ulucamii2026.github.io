@@ -87,6 +87,20 @@ function exportDataUrl(strokes: Cizgi[]): string {
   return canvas.toDataURL('image/png');
 }
 
+/** Yazılı imza: adı el yazısı hissi veren eğik serif ile PNG'ye çizer (klavye alternatifi) */
+function yaziliImza(ad: string): string {
+  const olcek = 2, g = 640, y = 200;
+  const canvas = document.createElement('canvas'); canvas.width = g * olcek; canvas.height = y * olcek;
+  const c = canvas.getContext('2d'); if (!c) return '';
+  c.setTransform(olcek, 0, 0, olcek, 0, 0);
+  c.fillStyle = '#121a17'; c.textBaseline = 'middle'; c.textAlign = 'center';
+  let boyut = 64; c.font = `italic ${boyut}px "Lora Variable", Lora, Georgia, serif`;
+  while (c.measureText(ad).width > g - 60 && boyut > 24) { boyut -= 4; c.font = `italic ${boyut}px "Lora Variable", Lora, Georgia, serif`; }
+  c.fillText(ad, g / 2, y / 2);
+  c.strokeStyle = '#121a17'; c.lineWidth = 1.2; c.beginPath(); c.moveTo(60, y / 2 + boyut * 0.6); c.lineTo(g - 60, y / 2 + boyut * 0.6); c.stroke();
+  return canvas.toDataURL('image/png');
+}
+
 export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const strokesRef = useRef<Cizgi[]>([]);
@@ -232,6 +246,14 @@ export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
         <button type="button" class="dugme dugme-ikincil" onClick={geriAl} disabled={bosMu}>{m.imzaGeriAl}</button>
         <button type="button" class="dugme dugme-ikincil" onClick={temizle} disabled={bosMu}>{m.imzaTemizle}</button>
       </div>
+      {/* Klavye / ekran okuyucu alternatifi: adını yazarak imzalama — aynı PNG akışını üretir */}
+      <details class="text-sm">
+        <summary class="cursor-pointer text-(--vurgu-2) min-h-11 inline-flex items-center">{m.imzaYazarak}</summary>
+        <form class="mt-2 flex flex-wrap items-end gap-2" onSubmit={(e) => { e.preventDefault(); const f = e.currentTarget as HTMLFormElement; const ad = (f.elements.namedItem('yazili-imza') as HTMLInputElement).value.trim(); if (ad.length >= 3) onDegisti(yaziliImza(ad)); }}>
+          <label class="grid gap-1 grow"><span class="etiket">{m.imzaYazarakEtiket}</span><input name="yazili-imza" type="text" autocomplete="name" minLength={3} required class="min-h-11 rounded-(--radius-kose) border border-(--cizgi) bg-(--zemin) px-3 py-2 text-base" /></label>
+          <button type="submit" class="dugme dugme-ikincil min-h-11">{m.imzaYazarakOnay}</button>
+        </form>
+      </details>
       {hata && <p class="text-sm text-(--vurgu)" role="alert">{hata}</p>}
     </div>
   );

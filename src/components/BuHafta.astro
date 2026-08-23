@@ -20,7 +20,7 @@ const ikonSec = (s?: string) => (s === 'kurankursu' || s === 'irsat' ? 'kurs' : 
       <li class:list={['grid grid-cols-[3.2rem_minmax(0,1fr)] gap-3 px-4 py-2.5 items-start', bugunMu && 'bg-(--vurgu-2)/8']} aria-current={bugunMu ? 'date' : undefined}>
         <p class="pt-0.5">
           <span class:list={['etiket block', bugunMu && 'text-(--vurgu-2) font-medium']} title={g}>{kisa[i]}</span>
-          {bugunMu && <span class="etiket block text-(--vurgu-2) text-[0.6rem]">{bugunEtiket}</span>}
+          {bugunMu && <span class="etiket block text-(--vurgu-2)">{bugunEtiket}</span>}
         </p>
         <div class="min-w-0">
           {maddeler.length ? maddeler.map((m) => (

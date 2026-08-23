@@ -23,7 +23,7 @@ oneCikan: false
 taslak: false
 ---
 
-La rencontre communautaire organisée par les mosquées de la région de Namur s’est tenue à la Grande Mosquée de Marche-en-Famenne. Après la prière du soir (Ichâ), l’imam Rıdvan Kayahan a donné une causerie sur la jeunesse ; le coordinateur Fatih Yılmaz en a assuré la traduction en français pour les participants. Notre commission féminine a également contribué au programme, qui s’est achevé par un moment convivial et une réunion régionale rassemblant présidents et imams. Trente-cinq membres de la communauté de la mosquée de Namur sont venus par leurs propres moyens pour soutenir cette rencontre ; la prochaine réunion est prévue à la mosquée Eyüp Sultan de Bertrix.
+La rencontre communautaire organisée par les mosquées de la région de Namur s’est tenue à la Grande Mosquée de Marche-en-Famenne. Après la prière du soir (Ichâ), notre imam a donné une causerie sur la jeunesse ; notre coordinateur en a assuré la traduction en français pour les participants. Notre commission féminine a également contribué au programme, qui s’est achevé par un moment convivial et une réunion régionale rassemblant présidents et imams. Trente-cinq membres de la communauté de la mosquée de Namur sont venus par leurs propres moyens pour soutenir cette rencontre ; la prochaine réunion est prévue à la mosquée Eyüp Sultan de Bertrix.
 
 — Conseil d’administration de la Mosquée Ulu Camii
 

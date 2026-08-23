@@ -12,6 +12,6 @@ const href = yol(dil, 'duyurular', slug);
     <p class="etiket"><time datetime={tarih.toISOString()}>{tarihBicimle(tarih, dil)}</time>{etiketler.length > 0 && <span> · {etiketler.join(' · ')}</span>}</p>
     <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>
     {ozet && <p class="text-sm text-(--metin-2) line-clamp-3">{ozet}</p>}
-    <a href={href} class="mt-auto pt-2 text-sm font-semibold no-underline hover:underline">{t('duyuru.devam')} →</a>
+    <a href={href} class="mt-auto pt-2 text-sm font-semibold no-underline hover:underline">{t('duyuru.devam')}<span aria-hidden="true"> →</span></a>
   </div>
 </article>

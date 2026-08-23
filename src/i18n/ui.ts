@@ -147,7 +147,7 @@ export const ui = {
     'etkinlik.afis': 'Voir l’affiche',
     'etkinlik.bos': 'Aucun événement à venir.',
     'footer.yasal': 'Mentions légales',
-    'footer.kunye': 'Mentions légales',
+    'footer.kunye': 'Informations légales (éditeur)',
     'footer.gizlilik': 'Politique de confidentialité',
     'footer.iletisim': 'Contact',
     'footer.adres': 'Adresse',
