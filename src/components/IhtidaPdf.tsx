@@ -13,6 +13,7 @@ export interface IhtidaPdfBasvuran {
   dogumYeri: string;
   uyruk: string;
   belgeNo: string;
+  ulusalNo: string;
   belgeGecerlilikTarihi: string;
   tcVatandasi: boolean;
   tcKimlikNo: string;
@@ -37,7 +38,7 @@ export interface IhtidaPdfCami { ad: string; adres: string; telefon: string; epo
 
 /** Kimlik belgesinden otomatik okunup kontrol hanesi doğrulanan alanlar — özet
  *  tablosunda "kimlikten okundu" notuyla işaretlenir. */
-export type IhtidaOtoAlan = 'soyad' | 'adlar' | 'dogumTarihi' | 'cinsiyet' | 'uyruk' | 'belgeNo' | 'belgeGecerlilikTarihi' | 'tcKimlikNo';
+export type IhtidaOtoAlan = 'soyad' | 'adlar' | 'dogumTarihi' | 'cinsiyet' | 'uyruk' | 'belgeNo' | 'belgeGecerlilikTarihi' | 'tcKimlikNo' | 'ulusalNo';
 
 export interface IhtidaPdfGirdi {
   dil: Dil;
@@ -223,6 +224,7 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
     [et(girdi.m.dogumYeri), b.dogumYeri],
     [etO(girdi.m.uyruk, 'uyruk'), b.uyruk],
     ...(b.belgeNo ? [[etO(girdi.m.belgeNo, 'belgeNo'), b.belgeNo] as [string, string]] : []),
+    ...(b.ulusalNo ? [[etO(girdi.m.ulusalNo, 'ulusalNo'), b.ulusalNo] as [string, string]] : []),
     ...(b.belgeGecerlilikTarihi ? [[etO(girdi.m.belgeGecerlilikTarihi, 'belgeGecerlilikTarihi'), formatTarih(b.belgeGecerlilikTarihi)] as [string, string]] : []),
     ...(b.tcVatandasi ? [[etO(girdi.m.tcKimlikNo, 'tcKimlikNo'), b.tcKimlikNo] as [string, string]] : []),
     [et(girdi.m.oncekiDin), b.oncekiDin],

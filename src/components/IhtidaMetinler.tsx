@@ -84,6 +84,8 @@ export interface Metinler {
   dogumYeri: string;
   uyruk: string;
   belgeNo: string;
+  ulusalNo: string;
+  belgeNoDogrulanamadi: string;
   belgeGecerlilikTarihi: string;
   tcVatandasi: string;
   tcKimlikNo: string;
@@ -228,6 +230,8 @@ export function metinler(dil: Dil): Metinler {
       dogumTarihi: 'Date de naissance',
       dogumYeri: 'Lieu de naissance',
       uyruk: 'Nationalité',
+      ulusalNo: 'Numéro national (Registre national)',
+      belgeNoDogrulanamadi: 'Lu sur la carte mais non vérifié — veuillez le comparer avec votre carte.',
       belgeNo: 'Numéro de la carte / du document (facultatif)',
       belgeGecerlilikTarihi: 'Date de validité du document (facultatif)',
       tcVatandasi: 'Je suis citoyen(ne) turc(que)',
@@ -362,6 +366,8 @@ export function metinler(dil: Dil): Metinler {
       dogumTarihi: 'Date of birth',
       dogumYeri: 'Place of birth',
       uyruk: 'Nationality',
+      ulusalNo: 'National number (Rijksregister / personal ID no)',
+      belgeNoDogrulanamadi: 'Read from the card but not verified — please compare it with your card.',
       belgeNo: 'Card / document number (optional)',
       belgeGecerlilikTarihi: 'Document expiry date (optional)',
       tcVatandasi: 'I am a Turkish citizen',
@@ -495,6 +501,8 @@ export function metinler(dil: Dil): Metinler {
     dogumTarihi: 'Doğum tarihi',
     dogumYeri: 'Doğum yeri',
     uyruk: 'Uyruk',
+    ulusalNo: 'Ulusal numara (Rijksregister / kimlik no)',
+    belgeNoDogrulanamadi: 'Kimlikten okundu ama doğrulanamadı — lütfen karttaki numarayla karşılaştırın.',
     belgeNo: 'Belge / kart numarası (opsiyonel)',
     belgeGecerlilikTarihi: 'Belgenin geçerlilik tarihi (opsiyonel)',
     tcVatandasi: 'T.C. vatandaşıyım',

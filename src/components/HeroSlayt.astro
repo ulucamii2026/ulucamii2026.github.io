@@ -11,11 +11,11 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const m = {
-  tr: { grup: 'Cami fotoğrafları slaytı', git: (i: number) => `${i}. fotoğrafa geç`, alt: ['Ulu Camii dış cephesi', 'Türk ve Belçika bayraklı cami tabelası — 1986', 'Cami iç mekânı, mihrap ve minber', 'Cami avlusu', 'Cami iç mekânı', 'Cami bahçe kapısı'] },
-  fr: { grup: 'Diaporama de la mosquée', git: (i: number) => `Aller à la photo ${i}`, alt: ['Façade de la mosquée Ulu Camii', 'Plaque de la mosquée avec drapeaux turc et belge — 1986', 'Intérieur de la mosquée, mihrab et minbar', 'Cour de la mosquée', 'Intérieur de la mosquée', 'Portail du jardin'] },
-  en: { grup: 'Mosque photo slideshow', git: (i: number) => `Go to photo ${i}`, alt: ['Front of the Ulu Mosque', 'Mosque plaque with the Turkish and Belgian flags — 1986', 'Prayer hall, mihrab and minbar', 'Mosque courtyard', 'Prayer hall', 'Garden gate'] },
+  tr: { grup: 'Cami fotoğrafları slaytı', git: (i: number) => `${i}. fotoğrafa geç`, alt: ['Ulu Camii dış cephesi', 'Türk ve Belçika bayrakları yan yana', 'Cami iç mekânı, mihrap ve minber', 'Cami bahçe kapısı', 'Cami iç mekânı', 'Cami avlusu'] },
+  fr: { grup: 'Diaporama de la mosquée', git: (i: number) => `Aller à la photo ${i}`, alt: ['Façade de la mosquée Ulu Camii', 'Drapeaux turc et belge côte à côte', 'Intérieur de la mosquée, mihrab et minbar', 'Portail du jardin', 'Intérieur de la mosquée', 'Cour de la mosquée'] },
+  en: { grup: 'Mosque photo slideshow', git: (i: number) => `Go to photo ${i}`, alt: ['Front of the Ulu Mosque', 'Turkish and Belgian flags side by side', 'Prayer hall, mihrab and minbar', 'Garden gate', 'Prayer hall', 'Mosque courtyard'] },
 }[dil];
-const SLAYTLAR = [1, 2, 3, 4, 5, 6];
+const SLAYTLAR = [1, 7, 3, 6, 5, 4];
 ---
 <div class="absolute inset-0 overflow-hidden" id="hero-slayt" data-sure="8000">
   {SLAYTLAR.map((n, i) => (

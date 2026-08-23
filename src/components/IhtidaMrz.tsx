@@ -28,8 +28,10 @@ export interface MrzSonuc {
   uyrukKodu: string;          // ISO 3166-1 alpha-3, ör. "TUR"
   uyrukAdi: string;           // Türkçe görünen ad, eşleşme yoksa uyrukKodu
   belgeNo: string;            // belge numarası (kontrol hanesi geçtiyse doldurulur)
+  belgeNoAdayi: string;       // kontrol hanesi geçmese de okunan aday (rozetsiz doldurulur, kullanıcı denetler)
   tcKimlikNo: string;         // opsiyonel veri T.C. algoritmasını geçerse
   rijksregisterNo: string;    // opsiyonel veri Belçika algoritmasını geçerse (biçimlendirilmiş)
+  kisiselNo: string;          // TD3 kişisel numara alanı kontrol hanesiyle doğrulanırsa (TC değilse ham)
 }
 
 const AGIRLIK = [7, 3, 1];
@@ -200,11 +202,25 @@ function td1Ayristir(satirlar: string[]): MrzSonuc | null {
   const gecerlilik = sayisallastir(l2.slice(8, 14));
   const gecerlilikGecerli = kontrolHanesi(gecerlilik) === sayisallastir(l2.slice(14, 15));
 
-  const belgeNoHam = l1.slice(5, 14);
+  // Belge numarası — Belçika eID gibi 9 haneyi aşan numaralar: 15. hane '<' olur,
+  // devam + gerçek kontrol hanesi opsiyonel alanın başında '<' ile biter (ICAO 9303-5).
+  let belgeNoHam = l1.slice(5, 14);
+  let belgeKontrolHanesi = l1.slice(14, 15);
+  let opsiyonel = l1.slice(15, 30);
+  if (belgeKontrolHanesi === '<') {
+    const bolum = opsiyonel.split('<')[0];
+    if (bolum.length >= 2) {
+      belgeKontrolHanesi = bolum.slice(-1);
+      belgeNoHam = belgeNoHam + bolum.slice(0, -1);
+      opsiyonel = opsiyonel.slice(bolum.length + 1);
+    }
+  }
   const belgeNo = belgeNoHam.replace(/</g, '');
-  const belgeGecerli = kontrolHanesi(belgeNoHam) === sayisallastir(l1.slice(14, 15));
-  const opsiyonel = l1.slice(15, 30);
-  const kisisel = kisiselNumarayiCoz(opsiyonel);
+  const belgeGecerli = kontrolHanesi(belgeNoHam) === sayisallastir(belgeKontrolHanesi);
+  // Kişisel numara: önce 1. satır opsiyoneli, yoksa 2. satır opsiyoneli (Belçika ulusal numarası burada)
+  const opsiyonel2 = l2.slice(18, 29);
+  let kisisel = kisiselNumarayiCoz(opsiyonel);
+  if (!kisisel.tcKimlikNo && !kisisel.rijksregisterNo) kisisel = kisiselNumarayiCoz(opsiyonel2);
 
   const uyrukKodu = alfabetiklestir(l2.slice(15, 18)).replace(/</g, '');
 
@@ -218,8 +234,10 @@ function td1Ayristir(satirlar: string[]): MrzSonuc | null {
     uyrukKodu,
     uyrukAdi: uyrukAdiCoz(uyrukKodu),
     belgeNo: belgeGecerli ? belgeNo : '',
+    belgeNoAdayi: belgeGecerli ? '' : belgeNo,
     tcKimlikNo: kisisel.tcKimlikNo,
     rijksregisterNo: kisisel.rijksregisterNo,
+    kisiselNo: '',
   };
 }
 
@@ -257,8 +275,10 @@ function td2Ayristir(satirlar: string[]): MrzSonuc | null {
     uyrukKodu,
     uyrukAdi: uyrukAdiCoz(uyrukKodu),
     belgeNo: belgeGecerli ? belgeNo : '',
+    belgeNoAdayi: belgeGecerli ? '' : belgeNo,
     tcKimlikNo: kisisel.tcKimlikNo,
     rijksregisterNo: kisisel.rijksregisterNo,
+    kisiselNo: '',
   };
 }
 
@@ -284,6 +304,9 @@ function td3Ayristir(satirlar: string[]): MrzSonuc | null {
   const gecerlilikGecerli = kontrolHanesi(gecerlilik) === sayisallastir(l2.slice(27, 28));
   const opsiyonel = l2.slice(28, 42);
   const kisisel = kisiselNumarayiCoz(opsiyonel);
+  // Kişisel numara alanının kendi kontrol hanesi (43. hane) — geçerse TC olmayan numarayı da al
+  const kisiselGecerli = kontrolHanesi(l2.slice(28, 42)) === sayisallastir(l2.slice(42, 43));
+  const kisiselHam = opsiyonel.replace(/</g, '');
   const uyrukKodu = alfabetiklestir(l2.slice(10, 13)).replace(/</g, '');
 
   return {
@@ -296,8 +319,10 @@ function td3Ayristir(satirlar: string[]): MrzSonuc | null {
     uyrukKodu,
     uyrukAdi: uyrukAdiCoz(uyrukKodu),
     belgeNo: belgeGecerli ? belgeNo : '',
+    belgeNoAdayi: belgeGecerli ? '' : belgeNo,
     tcKimlikNo: kisisel.tcKimlikNo,
     rijksregisterNo: kisisel.rijksregisterNo,
+    kisiselNo: kisisel.tcKimlikNo || kisisel.rijksregisterNo ? '' : (kisiselGecerli && kisiselHam.length >= 5 ? kisiselHam : ''),
   };
 }
 

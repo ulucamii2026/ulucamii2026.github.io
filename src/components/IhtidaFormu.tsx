@@ -34,7 +34,7 @@ const TOPLAM_ADIM = 8;
 interface FormState {
   adim: number;
   soyad: string; adlar: string; cinsiyet: string; dogumTarihi: string; dogumYeri: string; uyruk: string;
-  belgeNo: string; belgeGecerlilikTarihi: string;
+  belgeNo: string; belgeGecerlilikTarihi: string; ulusalNo: string;
   tcVatandasi: boolean; tcKimlikNo: string;
   oncekiDin: string; oncekiDinDiger: string;
   ogrenimDurumu: string; anneAdi: string; babaAdi: string; medeniHali: string; meslek: string;
@@ -55,7 +55,7 @@ function bosDurum(): FormState {
   return {
     adim: 0,
     soyad: '', adlar: '', cinsiyet: '', dogumTarihi: '', dogumYeri: '', uyruk: '',
-    belgeNo: '', belgeGecerlilikTarihi: '',
+    belgeNo: '', belgeGecerlilikTarihi: '', ulusalNo: '',
     tcVatandasi: false, tcKimlikNo: '',
     oncekiDin: '', oncekiDinDiger: '',
     ogrenimDurumu: '', anneAdi: '', babaAdi: '', medeniHali: '', meslek: '',
@@ -209,6 +209,12 @@ function mrzAlanlariHesapla(veri: MrzSonuc, mevcut: FormState): { guncellemeler:
   aday('cinsiyet', veri.cinsiyet);
   aday('uyruk', veri.uyrukAdi);
   aday('belgeNo', veri.belgeNo);
+  // Kontrol hanesi geçmese de okunan aday doldurulur ama 'kimlikten okundu' rozeti almaz (kullanıcı denetler)
+  if (!veri.belgeNo && veri.belgeNoAdayi) {
+    const belgeBos = mevcut.belgeNo === '' || otoOnceki.has('belgeNo');
+    if (belgeBos) (guncellemeler as Record<string, unknown>).belgeNo = veri.belgeNoAdayi;
+  }
+  aday('ulusalNo', veri.rijksregisterNo || veri.kisiselNo);
   aday('belgeGecerlilikTarihi', veri.gecerlilikTarihi);
   if (veri.tcKimlikNo) {
     aday('tcKimlikNo', veri.tcKimlikNo);
@@ -224,12 +230,12 @@ function mrzAlanlariHesapla(veri: MrzSonuc, mevcut: FormState): { guncellemeler:
 interface AlanProps {
   etiket: string; deger: string; hata?: string; zorunlu?: boolean; tip?: string;
   yerTutucu?: string; onDegisti: (v: string) => void; girdiTuru?: 'input' | 'textarea';
-  satir?: number; genislik?: 'tam' | 'yari'; rozet?: string;
+  satir?: number; genislik?: 'tam' | 'yari'; rozet?: string; ipucu?: string;
 }
 function Rozet({ metin }: { metin: string }) {
   return <span class="inline-flex items-center rounded-full border border-(--vurgu-2) text-(--vurgu-2) text-[11px] leading-none px-2 py-1">{metin}</span>;
 }
-function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti, girdiTuru = 'input', satir = 3, genislik = 'tam', rozet }: AlanProps) {
+function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti, girdiTuru = 'input', satir = 3, genislik = 'tam', rozet, ipucu }: AlanProps) {
   const sinif = 'w-full min-h-11 rounded-(--radius-kose) border bg-(--zemin) px-3 py-2.5 text-base focus:outline-none focus:border-(--vurgu-2) transition-colors ' + (hata ? 'border-(--vurgu)' : 'border-(--cizgi)');
   const hataId = useMemo(() => `hata-${Math.random().toString(36).slice(2, 9)}`, []);
   const aria = { 'aria-required': zorunlu ? true : undefined, 'aria-invalid': hata ? true : undefined, 'aria-describedby': hata ? hataId : undefined } as any;
@@ -243,6 +249,7 @@ function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti
         ? <textarea class={sinif} rows={satir} value={deger} placeholder={yerTutucu} {...aria} onInput={(e) => onDegisti((e.target as HTMLTextAreaElement).value)} />
         : <input class={sinif} type={tip} value={deger} placeholder={yerTutucu} {...aria} onInput={(e) => onDegisti((e.target as HTMLInputElement).value)} />}
       {hata && <span id={hataId} class="text-sm text-(--vurgu)" role="alert">{hata}</span>}
+      {!hata && ipucu && <span class="text-sm text-(--metin-2)">{ipucu}</span>}
     </label>
   );
 }
@@ -442,7 +449,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
     try {
       const gonderimTarihi = new Date();
       const otoOkunanAlanlar = durum.otoAlanlar.filter((a): a is IhtidaOtoAlan =>
-        ['soyad', 'adlar', 'dogumTarihi', 'cinsiyet', 'uyruk', 'belgeNo', 'belgeGecerlilikTarihi', 'tcKimlikNo'].includes(a));
+        ['soyad', 'adlar', 'dogumTarihi', 'cinsiyet', 'uyruk', 'belgeNo', 'belgeGecerlilikTarihi', 'tcKimlikNo', 'ulusalNo'].includes(a));
       const pdf = await ihtidaPdfUret({
         dil, m,
         basvuran: {
@@ -454,6 +461,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           uyruk: durum.uyruk.trim(),
           belgeNo: durum.belgeNo.trim(),
           belgeGecerlilikTarihi: durum.belgeGecerlilikTarihi,
+          ulusalNo: durum.ulusalNo.trim(),
           tcVatandasi: durum.tcVatandasi,
           tcKimlikNo: durum.tcVatandasi ? durum.tcKimlikNo.trim() : '',
           oncekiDin: durum.oncekiDin === 'diger' ? durum.oncekiDinDiger.trim() : etiketBul(ONCEKI_DIN_SECENEKLERI, durum.oncekiDin, dil),
@@ -488,7 +496,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
         pdfBase64: base64Cevir(pdf.bytes),
         basvuran: {
           adSoyad: `${durum.soyad.trim()} ${durum.adlar.trim()}`.trim(), cinsiyet: durum.cinsiyet, dogumTarihi: durum.dogumTarihi, dogumYeri: durum.dogumYeri.trim(),
-          uyruk: durum.uyruk.trim(), belgeNo: durum.belgeNo.trim(), tcKimlikNo: durum.tcVatandasi ? durum.tcKimlikNo.trim() : '',
+          uyruk: durum.uyruk.trim(), belgeNo: durum.belgeNo.trim(), ulusalNo: durum.ulusalNo.trim(), tcKimlikNo: durum.tcVatandasi ? durum.tcKimlikNo.trim() : '',
           oncekiDin: durum.oncekiDin === 'diger' ? durum.oncekiDinDiger.trim() : durum.oncekiDin,
           eposta: durum.eposta.trim(), telefon: durum.telefon.trim(), adres: durum.adres.trim(),
           ogrenimDurumu: durum.ogrenimDurumu, anneAdi: durum.anneAdi.trim(), babaAdi: durum.babaAdi.trim(),
@@ -681,7 +689,8 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
             <Alan etiket={m.dogumTarihi} deger={durum.dogumTarihi} hata={hatalar.dogumTarihi} zorunlu tip="date" onDegisti={(v) => guncelle('dogumTarihi', v)} genislik="yari" rozet={otoRozet('dogumTarihi')} />
             <Alan etiket={m.dogumYeri} deger={durum.dogumYeri} hata={hatalar.dogumYeri} zorunlu onDegisti={(v) => guncelle('dogumYeri', v)} genislik="yari" />
             <Alan etiket={m.uyruk} deger={durum.uyruk} hata={hatalar.uyruk} zorunlu onDegisti={(v) => guncelle('uyruk', v)} genislik="yari" rozet={otoRozet('uyruk')} />
-            <Alan etiket={m.belgeNo} deger={durum.belgeNo} onDegisti={(v) => guncelle('belgeNo', v)} genislik="yari" rozet={otoRozet('belgeNo')} />
+            <Alan etiket={m.belgeNo} deger={durum.belgeNo} onDegisti={(v) => guncelle('belgeNo', v)} genislik="yari" rozet={otoRozet('belgeNo')} ipucu={durum.belgeNo && durum.otoAlanlar.length > 0 && !durum.otoAlanlar.includes('belgeNo') ? m.belgeNoDogrulanamadi : undefined} />
+            <Alan etiket={m.ulusalNo} deger={durum.ulusalNo} onDegisti={(v) => guncelle('ulusalNo', v)} genislik="yari" rozet={otoRozet('ulusalNo')} />
             <Alan etiket={m.belgeGecerlilikTarihi} deger={durum.belgeGecerlilikTarihi} tip="date" onDegisti={(v) => guncelle('belgeGecerlilikTarihi', v)} genislik="yari" rozet={otoRozet('belgeGecerlilikTarihi')} />
             <div class="grid gap-1.5 content-start">
               <OnayKutusu id="tcVatandasi" isaretli={durum.tcVatandasi} onDegisti={(v) => guncelle('tcVatandasi', v)} cocuk={m.tcVatandasi} />
@@ -760,6 +769,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
                 <div class="flex justify-between gap-4"><dt class="etiket">{m.dogumTarihi}</dt><dd class="text-right">{durum.dogumTarihi}</dd></div>
                 <div class="flex justify-between gap-4"><dt class="etiket">{m.uyruk}</dt><dd class="text-right">{durum.uyruk}</dd></div>
                 {durum.belgeNo && <div class="flex justify-between gap-4"><dt class="etiket">{m.belgeNo}</dt><dd class="text-right mono">{durum.belgeNo}</dd></div>}
+                {durum.ulusalNo && <div class="flex justify-between gap-4"><dt class="etiket">{m.ulusalNo}</dt><dd class="text-right mono whitespace-nowrap">{durum.ulusalNo}</dd></div>}
               </dl>
             </div>
 

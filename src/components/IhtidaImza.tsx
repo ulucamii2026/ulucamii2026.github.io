@@ -40,7 +40,7 @@ function drawStrokes(context: CanvasRenderingContext2D, width: number, height: n
       const p = stroke[i];
       const midX = ((prev.x + p.x) / 2) * width;
       const midY = ((prev.y + p.y) / 2) * height;
-      context.lineWidth = (1.25 + ((prev.weight + p.weight) / 2) * 3.1) * baseScale;
+      context.lineWidth = (2.1 + ((prev.weight + p.weight) / 2) * 3.0) * baseScale;
       context.quadraticCurveTo(prev.x * width, prev.y * height, midX, midY);
       context.stroke();
       context.beginPath();
@@ -83,7 +83,7 @@ function exportDataUrl(strokes: Cizgi[]): string {
   const context = canvas.getContext('2d');
   if (!context) return '';
   context.setTransform(olcek, 0, 0, olcek, (payX - x0) * olcek, (payY - y0) * olcek);
-  drawStrokes(context, TABAN_G, TABAN_B, '#121a17', strokes, 2.8);
+  drawStrokes(context, TABAN_G, TABAN_B, '#0e1a14', strokes, 2.8);
   return canvas.toDataURL('image/png');
 }
 
@@ -124,8 +124,9 @@ export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, width, height);
     context.scale(dpr, dpr);
-    const koyu = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    drawStrokes(context, rect.width, rect.height, koyu ? '#f4ead7' : '#1f2926', strokesRef.current);
+    const tema = document.documentElement.dataset.theme;
+    const koyu = tema ? tema === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    drawStrokes(context, rect.width, rect.height, koyu ? '#f7efe0' : '#0e1a14', strokesRef.current);
     setBosMu(strokesRef.current.length === 0);
   }, []);
 
@@ -149,8 +150,8 @@ export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
     const distance = last ? Math.hypot((x - last.x) * rect.width, (y - last.y) * rect.height) : 0;
     const elapsed = Math.max(1, now - lastTimeRef.current);
     const speed = distance / elapsed;
-    const pressure = e.pressure && e.pressure > 0 ? e.pressure : Math.max(0.2, Math.min(0.7, 0.7 - speed * 0.16));
-    const weight = Math.max(0.12, Math.min(1, pressure * 0.82 + Math.max(0, 0.28 - speed * 0.07)));
+    const pressure = e.pressure && e.pressure > 0 ? e.pressure : Math.max(0.35, Math.min(0.75, 0.75 - speed * 0.1));
+    const weight = Math.max(0.35, Math.min(1, pressure * 0.85 + Math.max(0, 0.25 - speed * 0.05)));
     lastPointRef.current = { x, y };
     lastTimeRef.current = now;
     return { x, y, weight };

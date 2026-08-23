@@ -112,6 +112,17 @@ const jsonLd = {
         </div>
         <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={namazEtiket} vurgulu cumaEtiket={t('namaz.cuma')} cumaSaati={site.cumaSaati} />
         <p class="etiket mt-4">{t('namaz.kaynak')}</p>
+        <!-- Hızlı erişim karoları — vakit sütunundaki boşluğu değerlendirir, iki sütunu dengeler -->
+        <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-px bg-(--cizgi) border border-(--cizgi)" aria-label={m.hizmet} role="list">
+          {hizmetler.map((h) => (
+            <li class="bg-(--zemin)">
+              <a href={h.href} class="group flex items-center gap-3 px-3.5 py-3.5 no-underline text-(--metin) hover:bg-(--zemin-3) transition-colors h-full">
+                <Ikon ad={h.ikon} class="h-6 w-6 shrink-0 text-(--vurgu) transition-transform duration-300 ease-out group-hover:-translate-y-0.5" />
+                <span class="font-semibold text-[0.92rem] leading-snug">{h.ad}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
       <div id="bu-hafta" class="scroll-mt-24">
         <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>
@@ -119,20 +130,6 @@ const jsonLd = {
         <BuHafta dil={dil} program={site.haftalikProgram} bugunIdx={bugunGun} />
       </div>
     </div>
-  </section>
-
-  <!-- ③ Hizmetler — ikonlu şerit (kart ızgarası değil) -->
-  <section class="kapsayici py-10 sm:py-12" aria-label={m.hizmet}>
-    <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-(--cizgi) border border-(--cizgi)" role="list">
-      {hizmetler.map((h) => (
-        <li class="bg-(--zemin)">
-          <a href={h.href} class="group flex sm:flex-col items-center sm:items-start gap-3 px-3 sm:px-5 py-4 sm:py-6 no-underline text-(--metin) hover:bg-(--zemin-2) transition-colors h-full">
-            <Ikon ad={h.ikon} class="h-7 w-7 shrink-0 text-(--vurgu) transition-transform duration-300 ease-out group-hover:-translate-y-0.5" />
-            <span class="font-semibold text-[0.95rem] leading-snug">{h.ad}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
   </section>
 
   <!-- ④ Duyurular — bento: 1 öne çıkan + liste -->
