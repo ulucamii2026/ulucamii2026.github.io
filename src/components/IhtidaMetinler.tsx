@@ -54,9 +54,11 @@ export const BELGE_TURU_SECENEKLERI: SecenekOgesi[] = [
   { deger: 'pasaport', etiket: { tr: 'Pasaport (yalnızca kimlik sayfası)', fr: 'Passeport (page d’identité uniquement)' } },
 ];
 
+/* Sıra: belge yükleme öne alınmıştır (İleri'ye basınca kimlik otomatik taranır ve
+ * bir sonraki adım — Kimlik Bilgileri — okunan verilerle önceden doldurulmuş gelir). */
 export const ADIM_BASLIKLARI: Record<FormDil, string[]> = {
-  tr: ['Hoş Geldiniz', 'Kimlik Bilgileri', 'İletişim ve Adres', 'Tören Tercihi', 'Belge Yükleme', 'Rıza Metni', 'İmza', 'Özet ve Gönder'],
-  fr: ['Bienvenue', 'Informations personnelles', 'Contact et adresse', 'Préférences pour la cérémonie', 'Documents à joindre', 'Consentement', 'Signature', 'Résumé et envoi'],
+  tr: ['Hoş Geldiniz', 'Belge Yükleme', 'Kimlik Bilgileri', 'İletişim ve Adres', 'Tören Tercihi', 'Rıza Metni', 'İmza', 'Özet ve Gönder'],
+  fr: ['Bienvenue', 'Documents à joindre', 'Informations personnelles', 'Contact et adresse', 'Préférences pour la cérémonie', 'Consentement', 'Signature', 'Résumé et envoi'],
 };
 
 export interface Metinler {
@@ -71,11 +73,14 @@ export interface Metinler {
   adimSayaci: (simdi: number, toplam: number) => string;
 
   // kimlik
-  adSoyad: string;
+  soyad: string;
+  adlar: string;
   cinsiyet: string;
   dogumTarihi: string;
   dogumYeri: string;
   uyruk: string;
+  belgeNo: string;
+  belgeGecerlilikTarihi: string;
   tcVatandasi: string;
   tcKimlikNo: string;
   oncekiDin: string;
@@ -87,6 +92,8 @@ export interface Metinler {
   meslek: string;
   opsiyonelBolum: string;
   yasUyari: string;
+  kimlikBilgileriAciklama: string;
+  mrzRozet: string;
 
   // iletişim
   eposta: string;
@@ -106,6 +113,7 @@ export interface Metinler {
   ekNot: string;
 
   // belge yükleme
+  belgeYuklemeAciklama: string;
   belgeTuru: string;
   kimlikOn: string;
   kimlikArka: string;
@@ -117,6 +125,22 @@ export interface Metinler {
   dosyaIsleniyor: string;
   dosyaCokBuyuk: string;
   dosyaGecersiz: string;
+  kameraIleCek: string;
+  galeridenYukle: string;
+  dosyaKaldirEt: string;
+  surukleBirak: string;
+  henuzEklenmedi: string;
+  gorselEklendi: string;
+
+  // MRZ otomatik okuma
+  mrzTaraButonu: string;
+  mrzTaraniyor: string;
+  mrzTaraniyorYuzde: (yuzde: number) => string;
+  mrzBasarili: (adet: number) => string;
+  mrzBasariliDegisiklikYok: string;
+  mrzBasarisiz: string;
+  mrzHenuzYok: string;
+  duzenle: string;
 
   // rıza
   rizaBaslik: string;
@@ -194,11 +218,14 @@ export function metinler(dil: FormDil): Metinler {
       ileri: 'Suivant',
       adimSayaci: (simdi, toplam) => `Étape ${simdi} / ${toplam}`,
 
-      adSoyad: 'Nom et prénom',
+      soyad: 'Nom de famille',
+      adlar: 'Prénom(s)',
       cinsiyet: 'Genre',
       dogumTarihi: 'Date de naissance',
       dogumYeri: 'Lieu de naissance',
       uyruk: 'Nationalité',
+      belgeNo: 'Numéro de la carte / du document (facultatif)',
+      belgeGecerlilikTarihi: 'Date de validité du document (facultatif)',
       tcVatandasi: 'Je suis citoyen(ne) turc(que)',
       tcKimlikNo: 'Numéro d’identité turc (11 chiffres)',
       oncekiDin: 'Religion / confession précédente',
@@ -210,6 +237,8 @@ export function metinler(dil: FormDil): Metinler {
       meslek: 'Profession (facultatif)',
       opsiyonelBolum: 'Informations complémentaires (facultatif)',
       yasUyari: 'Ce formulaire est réservé aux personnes de 18 ans et plus.',
+      kimlikBilgileriAciklama: 'Les informations lisibles sur votre document ont été complétées automatiquement ci-dessous. Merci de vérifier leur exactitude et de compléter les champs manquants.',
+      mrzRozet: 'Lu automatiquement',
 
       eposta: 'E-mail',
       telefon: 'Téléphone (+32...)',
@@ -226,6 +255,7 @@ export function metinler(dil: FormDil): Metinler {
       nasilHaberdar: 'Comment avez-vous connu cette démarche ? (facultatif)',
       ekNot: 'Remarque complémentaire (facultatif)',
 
+      belgeYuklemeAciklama: 'Ajoutez le recto et le verso de votre carte d’identité (ou la page d’identité de votre passeport), ainsi qu’une photo d’identité. En cliquant sur « Suivant », vos informations seront lues automatiquement depuis le document sur cet appareil ; ce qui n’aura pas pu être lu pourra être complété à l’étape suivante.',
       belgeTuru: 'Type de document d’identité',
       kimlikOn: 'Carte d’identité — recto',
       kimlikArka: 'Carte d’identité — verso',
@@ -237,6 +267,21 @@ export function metinler(dil: FormDil): Metinler {
       dosyaIsleniyor: 'Traitement en cours…',
       dosyaCokBuyuk: 'Le fichier est trop volumineux (max. 10 Mo).',
       dosyaGecersiz: 'Fichier invalide — utilisez une image (JPG/PNG).',
+      kameraIleCek: 'Prendre une photo',
+      galeridenYukle: 'Choisir depuis la galerie',
+      dosyaKaldirEt: 'Retirer',
+      surukleBirak: 'Glissez une image ici ou choisissez un fichier',
+      henuzEklenmedi: 'Aucune image ajoutée',
+      gorselEklendi: 'Image ajoutée',
+
+      mrzTaraButonu: 'Relire le document',
+      mrzTaraniyor: 'Lecture du document en cours…',
+      mrzTaraniyorYuzde: (yuzde) => `Lecture du document en cours… ${yuzde} %`,
+      mrzBasarili: (adet) => `${adet} champ${adet > 1 ? 's' : ''} rempli${adet > 1 ? 's' : ''} automatiquement depuis votre document.`,
+      mrzBasariliDegisiklikYok: 'Document lu ; vos informations étaient déjà complètes.',
+      mrzBasarisiz: 'La lecture automatique n’a pas abouti — pas d’inquiétude, complétez simplement les informations ci-dessous à la main.',
+      mrzHenuzYok: 'Vos informations n’ont pas encore été lues automatiquement.',
+      duzenle: 'Modifier',
 
       rizaBaslik: 'Consentement RGPD (EK-10)',
       rizaOzet: 'Dans le cadre de ma démarche de conversion, j’autorise expressément que les données à caractère personnel ou sensibles (y compris ma religion) que je partage soient obtenues, traitées, enregistrées et conservées de manière sécurisée, conformément à l’article 4 de la loi turque n° 6698, et transmises aux autorités compétentes (Conseiller des Affaires religieuses / Présidence des Affaires religieuses). Je reconnais avoir reçu les informations nécessaires et avoir lu et compris ce texte.',
@@ -306,11 +351,14 @@ export function metinler(dil: FormDil): Metinler {
     ileri: 'İleri',
     adimSayaci: (simdi, toplam) => `Adım ${simdi} / ${toplam}`,
 
-    adSoyad: 'Adı Soyadı',
+    soyad: 'Soyadı',
+    adlar: 'Adı',
     cinsiyet: 'Cinsiyet',
     dogumTarihi: 'Doğum tarihi',
     dogumYeri: 'Doğum yeri',
     uyruk: 'Uyruk',
+    belgeNo: 'Belge / kart numarası (opsiyonel)',
+    belgeGecerlilikTarihi: 'Belgenin geçerlilik tarihi (opsiyonel)',
     tcVatandasi: 'T.C. vatandaşıyım',
     tcKimlikNo: 'T.C. Kimlik No (11 hane)',
     oncekiDin: 'Önceki din / mezhep',
@@ -322,6 +370,8 @@ export function metinler(dil: FormDil): Metinler {
     meslek: 'Mesleği (opsiyonel)',
     opsiyonelBolum: 'Ek bilgiler (opsiyonel)',
     yasUyari: 'Bu form yalnızca 18 yaş ve üzeri başvuranlar içindir.',
+    kimlikBilgileriAciklama: 'Belgenizden okunabilen bilgiler aşağıda otomatik olarak dolduruldu. Lütfen doğruluğunu kontrol edin ve eksik alanları tamamlayın.',
+    mrzRozet: 'Kimlikten okundu',
 
     eposta: 'E-posta',
     telefon: 'Telefon (+32...)',
@@ -338,6 +388,7 @@ export function metinler(dil: FormDil): Metinler {
     nasilHaberdar: 'Bu süreçten nasıl haberdar oldunuz? (opsiyonel)',
     ekNot: 'Eklemek istediğiniz not (opsiyonel)',
 
+    belgeYuklemeAciklama: 'Kimlik kartınızın ön ve arka yüzünü (veya pasaportunuzun kimlik sayfasını) ve bir vesikalık fotoğraf ekleyin. “İleri”ye bastığınızda bilgileriniz bu cihazda otomatik olarak okunmaya çalışılacak; okunamayan bilgileri bir sonraki adımda elle tamamlayabilirsiniz.',
     belgeTuru: 'Kimlik belgesi türü',
     kimlikOn: 'Kimlik kartı — ön yüz',
     kimlikArka: 'Kimlik kartı — arka yüz',
@@ -349,6 +400,21 @@ export function metinler(dil: FormDil): Metinler {
     dosyaIsleniyor: 'İşleniyor…',
     dosyaCokBuyuk: 'Dosya çok büyük (azami 10 MB).',
     dosyaGecersiz: 'Geçersiz dosya — bir resim (JPG/PNG) kullanın.',
+    kameraIleCek: 'Kamera ile çek',
+    galeridenYukle: 'Galeriden yükle',
+    dosyaKaldirEt: 'Kaldır',
+    surukleBirak: 'Görseli buraya sürükleyin veya dosya seçin',
+    henuzEklenmedi: 'Henüz görsel eklenmedi',
+    gorselEklendi: 'Görsel eklendi',
+
+    mrzTaraButonu: 'Kimliği yeniden tara',
+    mrzTaraniyor: 'Kimlik okunuyor…',
+    mrzTaraniyorYuzde: (yuzde) => `Kimlik okunuyor… %${yuzde}`,
+    mrzBasarili: (adet) => `Kimlikten ${adet} alan otomatik dolduruldu.`,
+    mrzBasariliDegisiklikYok: 'Kimlik okundu; bilgileriniz zaten eksiksizdi.',
+    mrzBasarisiz: 'Kimlik otomatik okunamadı — sorun değil, aşağıdaki bilgileri elle doldurabilirsiniz.',
+    mrzHenuzYok: 'Bilgileriniz henüz otomatik okunmadı.',
+    duzenle: 'Düzenle',
 
     rizaBaslik: 'KVKK Açık Rıza Metni (EK-10)',
     rizaOzet: 'İhtida işlemlerim kapsamında paylaştığım kişisel veya özel nitelikli kişisel verilerimin (din bilgisi dahil), 6698 sayılı Kişisel Verilerin Korunması Kanunu’nun 4. maddesindeki ilkelere uygun şekilde elde edilmesine, işlenmesine, kaydedilmesine, güvenli şekilde saklanmasına ve ilgili resmî makamlarla (Din Hizmetleri Müşavirliği/Diyanet İşleri Başkanlığı) paylaşılmasına açıkça rıza gösteriyorum. Bu konuda gerekli aydınlatmanın yapıldığını, metni okuyup anladığımı kabul ediyorum.',

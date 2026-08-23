@@ -3,11 +3,20 @@
  *  Apps Script /exec adresine text/plain POST ile iletilir (Kur'an kursu kayıt
  *  sistemiyle aynı desen: ortak sır, gonderimAnahtari ile çift-kayıt koruması,
  *  redirect:'follow', 90 sn AbortController). Servis henüz etkin değilse veya
- *  gönderim başarısız olursa PDF indirme / e-posta / WhatsApp yedek yolları sunulur. */
+ *  gönderim başarısız olursa PDF indirme / e-posta / WhatsApp yedek yolları sunulur.
+ *
+ *  Adım sırası: 0 hoş geldiniz → 1 BELGE YÜKLEME (kimlik/pasaport + vesikalık) →
+ *  "İleri"ye basınca kimlik otomatik taranır (IhtidaKimlikOcr.tsx, MRZ) → 2 KİMLİK
+ *  BİLGİLERİ (okunan alanlar önceden dolu + "kimlikten okundu" rozeti, okunamayanlar
+ *  boş) → 3 iletişim/adres → 4 tören tercihi → 5 rıza → 6 imza → 7 özet/gönder. */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 import IhtidaImza from './IhtidaImza';
-import { ihtidaPdfUret, type IhtidaPdfSonuc } from './IhtidaPdf';
+import IhtidaAdimGostergesi from './IhtidaAdimGostergesi';
+import IhtidaBelgeAlani from './IhtidaBelgeAlani';
+import { ihtidaPdfUret, type IhtidaPdfSonuc, type IhtidaOtoAlan } from './IhtidaPdf';
+import { kimlikTara } from './IhtidaKimlikOcr';
+import type { MrzSonuc } from './IhtidaMrz';
 import {
   metinler, type FormDil,
   CINSIYET_SECENEKLERI, ONCEKI_DIN_SECENEKLERI, OGRENIM_SECENEKLERI, MEDENI_HAL_SECENEKLERI,
@@ -24,7 +33,8 @@ const TOPLAM_ADIM = 8;
 
 interface FormState {
   adim: number;
-  adSoyad: string; cinsiyet: string; dogumTarihi: string; dogumYeri: string; uyruk: string;
+  soyad: string; adlar: string; cinsiyet: string; dogumTarihi: string; dogumYeri: string; uyruk: string;
+  belgeNo: string; belgeGecerlilikTarihi: string;
   tcVatandasi: boolean; tcKimlikNo: string;
   oncekiDin: string; oncekiDinDiger: string;
   ogrenimDurumu: string; anneAdi: string; babaAdi: string; medeniHali: string; meslek: string;
@@ -35,12 +45,17 @@ interface FormState {
   kvkkOnay: boolean; hurIradeOnay: boolean; fotografIzni: boolean;
   imzaDataUrl: string;
   gonderimAnahtari: string;
+  /** MRZ'den okunup şu an alanda görünen değerleri üreten alan adları — rozet + PDF notu için. */
+  otoAlanlar: string[];
+  taramaDurum: 'yok' | 'basarili' | 'basarisiz';
+  taramaAlanSayisi: number;
 }
 
 function bosDurum(): FormState {
   return {
     adim: 0,
-    adSoyad: '', cinsiyet: '', dogumTarihi: '', dogumYeri: '', uyruk: '',
+    soyad: '', adlar: '', cinsiyet: '', dogumTarihi: '', dogumYeri: '', uyruk: '',
+    belgeNo: '', belgeGecerlilikTarihi: '',
     tcVatandasi: false, tcKimlikNo: '',
     oncekiDin: '', oncekiDinDiger: '',
     ogrenimDurumu: '', anneAdi: '', babaAdi: '', medeniHali: '', meslek: '',
@@ -51,6 +66,9 @@ function bosDurum(): FormState {
     kvkkOnay: false, hurIradeOnay: false, fotografIzni: false,
     imzaDataUrl: '',
     gonderimAnahtari: '',
+    otoAlanlar: [],
+    taramaDurum: 'yok',
+    taramaAlanSayisi: 0,
   };
 }
 
@@ -170,20 +188,57 @@ function etiketBul(liste: SecenekOgesi[], deger: string, dil: FormDil): string {
   return liste.find((s) => s.deger === deger)?.etiket[dil] ?? deger;
 }
 
+/** MRZ sonucundan form alanlarına aktarılacak adayları hesaplar. Yalnızca BOŞ olan
+ *  veya daha önce kimlikten okunmuş (henüz elle değiştirilmemiş) alanlar güncellenir;
+ *  başvuranın elle girdiği farklı bir değerin üzerine sessizce yazılmaz. */
+function mrzAlanlariHesapla(veri: MrzSonuc, mevcut: FormState): { guncellemeler: Partial<FormState>; eklenen: string[] } {
+  const otoOnceki = new Set(mevcut.otoAlanlar);
+  const guncellemeler: Partial<FormState> = {};
+  const eklenen: string[] = [];
+  function aday(anahtar: keyof FormState, deger: string) {
+    if (!deger) return;
+    const mevcutDeger = mevcut[anahtar];
+    const bosMu = mevcutDeger === '' || mevcutDeger === undefined;
+    if (!bosMu && !otoOnceki.has(anahtar)) return; // elle girilmiş farklı bir değer — dokunma
+    (guncellemeler as Record<string, unknown>)[anahtar] = deger;
+    eklenen.push(anahtar);
+  }
+  aday('soyad', veri.soyad);
+  aday('adlar', veri.adlar);
+  aday('dogumTarihi', veri.dogumTarihi);
+  aday('cinsiyet', veri.cinsiyet);
+  aday('uyruk', veri.uyrukAdi);
+  aday('belgeNo', veri.belgeNo);
+  aday('belgeGecerlilikTarihi', veri.gecerlilikTarihi);
+  if (veri.tcKimlikNo) {
+    aday('tcKimlikNo', veri.tcKimlikNo);
+    if ('tcKimlikNo' in guncellemeler && !mevcut.tcVatandasi) guncellemeler.tcVatandasi = true;
+  } else if (veri.uyrukKodu === 'TUR' && !mevcut.tcVatandasi) {
+    guncellemeler.tcVatandasi = true;
+  }
+  return { guncellemeler, eklenen };
+}
+
 // ------------------------------------------------------------------ küçük UI parçaları
 
 interface AlanProps {
   etiket: string; deger: string; hata?: string; zorunlu?: boolean; tip?: string;
   yerTutucu?: string; onDegisti: (v: string) => void; girdiTuru?: 'input' | 'textarea';
-  satir?: number; genislik?: 'tam' | 'yari';
+  satir?: number; genislik?: 'tam' | 'yari'; rozet?: string;
 }
-function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti, girdiTuru = 'input', satir = 3, genislik = 'tam' }: AlanProps) {
+function Rozet({ metin }: { metin: string }) {
+  return <span class="inline-flex items-center rounded-full border border-(--vurgu-2) text-(--vurgu-2) text-[11px] leading-none px-2 py-1">{metin}</span>;
+}
+function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti, girdiTuru = 'input', satir = 3, genislik = 'tam', rozet }: AlanProps) {
   const sinif = 'w-full min-h-11 rounded-(--radius-kose) border bg-(--zemin) px-3 py-2.5 text-base focus:outline-none focus:border-(--vurgu-2) transition-colors ' + (hata ? 'border-(--vurgu)' : 'border-(--cizgi)');
   const hataId = useMemo(() => `hata-${Math.random().toString(36).slice(2, 9)}`, []);
   const aria = { 'aria-required': zorunlu ? true : undefined, 'aria-invalid': hata ? true : undefined, 'aria-describedby': hata ? hataId : undefined } as any;
   return (
     <label class={`grid gap-1.5 ${genislik === 'yari' ? '' : 'sm:col-span-2'}`}>
-      <span class="etiket">{etiket}{zorunlu && ' *'}</span>
+      <span class="flex items-center justify-between gap-2">
+        <span class="etiket">{etiket}{zorunlu && ' *'}</span>
+        {rozet && <Rozet metin={rozet} />}
+      </span>
       {girdiTuru === 'textarea'
         ? <textarea class={sinif} rows={satir} value={deger} placeholder={yerTutucu} {...aria} onInput={(e) => onDegisti((e.target as HTMLTextAreaElement).value)} />
         : <input class={sinif} type={tip} value={deger} placeholder={yerTutucu} {...aria} onInput={(e) => onDegisti((e.target as HTMLInputElement).value)} />}
@@ -192,13 +247,16 @@ function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti
   );
 }
 
-interface SecimAlaniProps { etiket: string; deger: string; hata?: string; zorunlu?: boolean; secenekler: SecenekOgesi[]; dil: FormDil; onDegisti: (v: string) => void; genislik?: 'tam' | 'yari'; }
-function SecimAlani({ etiket, deger, hata, zorunlu, secenekler, dil, onDegisti, genislik = 'yari' }: SecimAlaniProps) {
+interface SecimAlaniProps { etiket: string; deger: string; hata?: string; zorunlu?: boolean; secenekler: SecenekOgesi[]; dil: FormDil; onDegisti: (v: string) => void; genislik?: 'tam' | 'yari'; rozet?: string; }
+function SecimAlani({ etiket, deger, hata, zorunlu, secenekler, dil, onDegisti, genislik = 'yari', rozet }: SecimAlaniProps) {
   const sinif = 'w-full min-h-11 rounded-(--radius-kose) border bg-(--zemin) px-3 py-2.5 text-base focus:outline-none focus:border-(--vurgu-2) transition-colors ' + (hata ? 'border-(--vurgu)' : 'border-(--cizgi)');
   const hataId = useMemo(() => `hata-${Math.random().toString(36).slice(2, 9)}`, []);
   return (
     <label class={`grid gap-1.5 ${genislik === 'yari' ? '' : 'sm:col-span-2'}`}>
-      <span class="etiket">{etiket}{zorunlu && ' *'}</span>
+      <span class="flex items-center justify-between gap-2">
+        <span class="etiket">{etiket}{zorunlu && ' *'}</span>
+        {rozet && <Rozet metin={rozet} />}
+      </span>
       <select class={sinif} value={deger} aria-required={zorunlu ? true : undefined} aria-invalid={hata ? true : undefined} aria-describedby={hata ? hataId : undefined} onChange={(e) => onDegisti((e.target as HTMLSelectElement).value)}>
         <option value="">—</option>
         {secenekler.map((s) => <option value={s.deger}>{s.etiket[dil]}</option>)}
@@ -220,31 +278,6 @@ function OnayKutusu({ id, isaretli, onDegisti, cocuk, hata }: { id: string; isar
   );
 }
 
-interface DosyaAlaniProps {
-  etiket: string; deger: string; hata?: string; zorunlu?: boolean; m: ReturnType<typeof metinler>;
-  isleniyor: boolean; onSecildi: (file: File) => void;
-}
-function DosyaAlani({ etiket, deger, hata, zorunlu, m, isleniyor, onSecildi }: DosyaAlaniProps) {
-  const girdiId = useMemo(() => `dosya-${Math.random().toString(36).slice(2, 9)}`, []);
-  return (
-    <div class="grid gap-2">
-      <span class="etiket">{etiket}{zorunlu && ' *'}</span>
-      <div class="flex flex-wrap items-center gap-3">
-        {deger && <img src={deger} alt="" class="h-16 w-16 object-cover rounded-(--radius-kose) border border-(--cizgi)" />}
-        <label for={girdiId} class="dugme dugme-ikincil cursor-pointer min-h-11">
-          {isleniyor ? m.dosyaIsleniyor : (deger ? m.dosyaDegistir : m.dosyaSec)}
-        </label>
-        <input
-          id={girdiId} type="file" accept="image/*" class="sr-only" aria-required={zorunlu ? true : undefined} aria-invalid={hata ? true : undefined} aria-describedby={hata ? `${girdiId}-hata` : undefined}
-          onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) onSecildi(f); (e.target as HTMLInputElement).value = ''; }}
-        />
-        <span class="text-sm text-(--metin-2)">{deger ? m.dosyaYuklendi : m.dosyaYok}</span>
-      </div>
-      {hata && <span id={`${girdiId}-hata`} class="text-sm text-(--vurgu)" role="alert">{hata}</span>}
-    </div>
-  );
-}
-
 // ------------------------------------------------------------------ ana bileşen
 
 interface Props { dil: FormDil; ucNokta: string; cami: { ad: string; adres: string; telefon: string; eposta: string }; ek10Yolu: string }
@@ -254,6 +287,8 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   const [durum, setDurum] = useState<FormState>(() => bosDurum());
   const [hatalar, setHatalar] = useState<Record<string, string>>({});
   const [dosyaIsleniyorAlan, setDosyaIsleniyorAlan] = useState<string>('');
+  const [taraniyor, setTaraniyor] = useState(false);
+  const [taramaYuzde, setTaramaYuzde] = useState(0);
   const [asama, setAsama] = useState<'form' | 'hazirlaniyor' | 'gonderiliyor' | 'basari' | 'hata'>('form');
   const [sunucuHatasi, setSunucuHatasi] = useState('');
   const [referansNo, setReferansNo] = useState('');
@@ -273,7 +308,14 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   }, [durum]);
 
   function guncelle<K extends keyof FormState>(anahtar: K, deger: FormState[K]) {
-    setDurum((s) => ({ ...s, [anahtar]: deger }));
+    setDurum((s) => {
+      const otoDeğişti = s.otoAlanlar.includes(anahtar as string);
+      return {
+        ...s,
+        [anahtar]: deger,
+        otoAlanlar: otoDeğişti ? s.otoAlanlar.filter((a) => a !== anahtar) : s.otoAlanlar,
+      };
+    });
     setHatalar((h) => { if (!h[anahtar as string]) return h; const n = { ...h }; delete n[anahtar as string]; return n; });
   }
 
@@ -293,7 +335,13 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   function adimGecerliMi(adim: number): boolean {
     const yeniHatalar: Record<string, string> = {};
     if (adim === 1) {
-      if (!durum.adSoyad.trim()) yeniHatalar.adSoyad = m.zorunluAlan;
+      if (!durum.kimlikOn) yeniHatalar.kimlikOn = m.zorunluAlan;
+      if (durum.belgeTuru === 'kimlik' && !durum.kimlikArka) yeniHatalar.kimlikArka = m.zorunluAlan;
+      if (!durum.vesikalik) yeniHatalar.vesikalik = m.zorunluAlan;
+    }
+    if (adim === 2) {
+      if (!durum.soyad.trim()) yeniHatalar.soyad = m.zorunluAlan;
+      if (!durum.adlar.trim()) yeniHatalar.adlar = m.zorunluAlan;
       if (!durum.cinsiyet) yeniHatalar.cinsiyet = m.zorunluAlan;
       if (!durum.dogumTarihi) yeniHatalar.dogumTarihi = m.zorunluAlan;
       else {
@@ -307,17 +355,12 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
       if (!durum.oncekiDin) yeniHatalar.oncekiDin = m.zorunluAlan;
       if (durum.oncekiDin === 'diger' && !durum.oncekiDinDiger.trim()) yeniHatalar.oncekiDinDiger = m.zorunluAlan;
     }
-    if (adim === 2) {
+    if (adim === 3) {
       if (!durum.eposta.trim()) yeniHatalar.eposta = m.zorunluAlan;
       else if (!epostaGecerliMi(durum.eposta)) yeniHatalar.eposta = m.gecersizEposta;
       if (!durum.telefon.trim()) yeniHatalar.telefon = m.zorunluAlan;
       else if (!telGecerliMi(durum.telefon)) yeniHatalar.telefon = m.gecersizTelefon;
       if (!durum.adres.trim()) yeniHatalar.adres = m.zorunluAlan;
-    }
-    if (adim === 4) {
-      if (!durum.kimlikOn) yeniHatalar.kimlikOn = m.zorunluAlan;
-      if (durum.belgeTuru === 'kimlik' && !durum.kimlikArka) yeniHatalar.kimlikArka = m.zorunluAlan;
-      if (!durum.vesikalik) yeniHatalar.vesikalik = m.zorunluAlan;
     }
     if (adim === 5) {
       if (!durum.kvkkOnay) yeniHatalar.kvkkOnay = m.onayGerekli;
@@ -338,16 +381,50 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
       const baslik = kok?.querySelector<HTMLElement>('[data-adim-baslik]'); baslik?.focus({ preventScroll: true });
     });
   }
-  function ileriGit() {
+
+  /** Belge yükleme adımından ayrılırken kimliği otomatik tarar; başarısız olursa
+   *  akış durmaz, bir sonraki adıma yine geçilir (alanlar boş kalır). */
+  async function kimligiTara() {
+    setTaraniyor(true);
+    setTaramaYuzde(0);
+    let basarili = false;
+    let ekleme: Partial<FormState> = {};
+    let eklenen: string[] = [];
+    try {
+      const gorseller = durum.belgeTuru === 'kimlik' ? [durum.kimlikArka, durum.kimlikOn] : [durum.kimlikOn];
+      const sonuc = await kimlikTara(gorseller, (bilgi) => setTaramaYuzde(bilgi.yuzde));
+      if (sonuc) {
+        basarili = true;
+        const hesap = mrzAlanlariHesapla(sonuc, durum);
+        ekleme = hesap.guncellemeler;
+        eklenen = hesap.eklenen;
+      }
+    } catch (hata) { console.error(hata); }
+    setDurum((s) => ({
+      ...s,
+      ...ekleme,
+      otoAlanlar: eklenen.length ? Array.from(new Set([...s.otoAlanlar, ...eklenen])) : s.otoAlanlar,
+      taramaDurum: basarili ? 'basarili' : 'basarisiz',
+      taramaAlanSayisi: eklenen.length,
+    }));
+    setTaraniyor(false);
+  }
+
+  async function ileriGit() {
     if (!adimGecerliMi(durum.adim)) {
       requestAnimationFrame(() => document.querySelector<HTMLElement>('#ihtida-form [aria-invalid="true"]')?.focus());
       return;
     }
+    if (durum.adim === 1) await kimligiTara();
     guncelle('adim', Math.min(TOPLAM_ADIM - 1, durum.adim + 1) as any);
     formaKaydir();
   }
   function geriGit() {
     guncelle('adim', Math.max(0, durum.adim - 1) as any);
+    formaKaydir();
+  }
+  function adimaGit(hedef: number) {
+    guncelle('adim', hedef as any);
     formaKaydir();
   }
 
@@ -364,14 +441,19 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
     setSunucuHatasi('');
     try {
       const gonderimTarihi = new Date();
+      const otoOkunanAlanlar = durum.otoAlanlar.filter((a): a is IhtidaOtoAlan =>
+        ['soyad', 'adlar', 'dogumTarihi', 'cinsiyet', 'uyruk', 'belgeNo', 'belgeGecerlilikTarihi', 'tcKimlikNo'].includes(a));
       const pdf = await ihtidaPdfUret({
         dil, m,
         basvuran: {
-          adSoyad: durum.adSoyad.trim(),
+          soyad: durum.soyad.trim(),
+          adlar: durum.adlar.trim(),
           cinsiyet: etiketBul(CINSIYET_SECENEKLERI, durum.cinsiyet, dil),
           dogumTarihi: durum.dogumTarihi,
           dogumYeri: durum.dogumYeri.trim(),
           uyruk: durum.uyruk.trim(),
+          belgeNo: durum.belgeNo.trim(),
+          belgeGecerlilikTarihi: durum.belgeGecerlilikTarihi,
           tcVatandasi: durum.tcVatandasi,
           tcKimlikNo: durum.tcVatandasi ? durum.tcKimlikNo.trim() : '',
           oncekiDin: durum.oncekiDin === 'diger' ? durum.oncekiDinDiger.trim() : etiketBul(ONCEKI_DIN_SECENEKLERI, durum.oncekiDin, dil),
@@ -386,6 +468,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           nasilHaberdar: etiketBul(HABERDAR_SECENEKLERI, durum.nasilHaberdar, dil),
           ekNot: durum.ekNot.trim(),
         },
+        otoOkunanAlanlar,
         belgeTuru: durum.belgeTuru,
         kimlikOn: durum.kimlikOn, kimlikArka: durum.belgeTuru === 'kimlik' ? durum.kimlikArka : '', vesikalik: durum.vesikalik,
         imzaDataUrl: durum.imzaDataUrl,
@@ -404,8 +487,8 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
         sir: ORTAK_SIR,
         pdfBase64: base64Cevir(pdf.bytes),
         basvuran: {
-          adSoyad: durum.adSoyad.trim(), cinsiyet: durum.cinsiyet, dogumTarihi: durum.dogumTarihi, dogumYeri: durum.dogumYeri.trim(),
-          uyruk: durum.uyruk.trim(), tcKimlikNo: durum.tcVatandasi ? durum.tcKimlikNo.trim() : '',
+          adSoyad: `${durum.soyad.trim()} ${durum.adlar.trim()}`.trim(), cinsiyet: durum.cinsiyet, dogumTarihi: durum.dogumTarihi, dogumYeri: durum.dogumYeri.trim(),
+          uyruk: durum.uyruk.trim(), belgeNo: durum.belgeNo.trim(), tcKimlikNo: durum.tcVatandasi ? durum.tcKimlikNo.trim() : '',
           oncekiDin: durum.oncekiDin === 'diger' ? durum.oncekiDinDiger.trim() : durum.oncekiDin,
           eposta: durum.eposta.trim(), telefon: durum.telefon.trim(), adres: durum.adres.trim(),
           ogrenimDurumu: durum.ogrenimDurumu, anneAdi: durum.anneAdi.trim(), babaAdi: durum.babaAdi.trim(),
@@ -483,6 +566,11 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
     return (
       <div class="kart p-6 sm:p-8 grid gap-4 text-center max-w-[560px] mx-auto">
         <p class="etiket etiket-vurgu">{m.basariBaslik}</p>
+        {referansNo && (
+          <div class="kart-kagit mx-auto px-5 py-3 w-fit">
+            <p class="mono text-xl sm:text-2xl tracking-wide">{referansNo}</p>
+          </div>
+        )}
         <p class="text-lg font-serif">{m.basariMetin(referansNo)}</p>
         <p class="text-sm text-(--metin-2)">{m.basariPdfNot}</p>
         <button type="button" class="dugme dugme-ikincil mx-auto mt-4" onClick={yeniBasvuruBaslat}>{m.yeniBasvuru}</button>
@@ -510,15 +598,14 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   const gonderimMeşgul = asama === 'hazirlaniyor' || asama === 'gonderiliyor';
   const adim = durum.adim;
   const adimBasligi = ADIM_BASLIKLARI[dil][adim];
+  const otoRozet = (alan: string) => (durum.otoAlanlar.includes(alan) ? m.mrzRozet : undefined);
 
   return (
     <div id="ihtida-form" class="grid gap-6 max-w-[720px] mx-auto scroll-mt-24">
-      <div>
-        <div class="flex items-baseline justify-between gap-2 mb-2">
+      <div class="grid gap-3">
+        {adim > 0 && <IhtidaAdimGostergesi adim={adim} toplam={TOPLAM_ADIM} />}
+        <div class="flex items-baseline justify-between gap-2">
           <p class="etiket etiket-vurgu" data-adim-baslik tabIndex={-1} aria-live="polite">{m.adimSayaci(adim + 1, TOPLAM_ADIM)} · {adimBasligi}</p>
-        </div>
-        <div class="h-1.5 bg-(--zemin-2) rounded-full overflow-hidden" role="progressbar" aria-label={adimBasligi} aria-valuetext={m.adimSayaci(adim + 1, TOPLAM_ADIM)} aria-valuenow={adim + 1} aria-valuemin={1} aria-valuemax={TOPLAM_ADIM}>
-          <div class="h-full bg-(--vurgu) transition-[width] duration-300" style={{ width: `${((adim + 1) / TOPLAM_ADIM) * 100}%` }} />
         </div>
       </div>
 
@@ -532,16 +619,73 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           </div>
         )}
 
-        {adim === 1 && (
+        {adim === 1 && (taraniyor ? (
+          <div class="grid gap-4 place-items-center text-center py-12">
+            <div class="h-2 w-full max-w-xs rounded-full bg-(--zemin-2) overflow-hidden">
+              <div class="h-full bg-(--vurgu) transition-[width] duration-200" style={{ width: `${taramaYuzde}%` }} />
+            </div>
+            <p class="etiket etiket-vurgu" role="status" aria-live="polite">{m.mrzTaraniyorYuzde(taramaYuzde)}</p>
+          </div>
+        ) : (
+          <div class="grid gap-5">
+            <p class="text-(--metin-2)">{m.belgeYuklemeAciklama}</p>
+            <SecimAlani etiket={m.belgeTuru} deger={durum.belgeTuru} secenekler={BELGE_TURU_SECENEKLERI} dil={dil} onDegisti={(v) => guncelle('belgeTuru', (v || 'kimlik') as any)} genislik="tam" />
+            <IhtidaBelgeAlani
+              etiket={m.kimlikOn} deger={durum.kimlikOn} hata={hatalar.kimlikOn} zorunlu
+              isleniyor={dosyaIsleniyorAlan === 'kimlikOn'}
+              kameraEtiketi={m.kameraIleCek} galeriEtiketi={m.galeridenYukle} kaldirEtiketi={m.dosyaKaldirEt}
+              surukleBirakEtiketi={m.surukleBirak} henuzEklenmediEtiketi={m.henuzEklenmedi} gorselEklendiEtiketi={m.gorselEklendi}
+              isleniyorEtiketi={m.dosyaIsleniyor}
+              onSecildi={(f) => dosyaSecildi('kimlikOn', f)} onKaldir={() => guncelle('kimlikOn', '')}
+            />
+            {durum.belgeTuru === 'kimlik' && (
+              <IhtidaBelgeAlani
+                etiket={m.kimlikArka} deger={durum.kimlikArka} hata={hatalar.kimlikArka} zorunlu
+                isleniyor={dosyaIsleniyorAlan === 'kimlikArka'}
+                kameraEtiketi={m.kameraIleCek} galeriEtiketi={m.galeridenYukle} kaldirEtiketi={m.dosyaKaldirEt}
+                surukleBirakEtiketi={m.surukleBirak} henuzEklenmediEtiketi={m.henuzEklenmedi} gorselEklendiEtiketi={m.gorselEklendi}
+                isleniyorEtiketi={m.dosyaIsleniyor}
+                onSecildi={(f) => dosyaSecildi('kimlikArka', f)} onKaldir={() => guncelle('kimlikArka', '')}
+              />
+            )}
+            <IhtidaBelgeAlani
+              etiket={m.vesikalik} deger={durum.vesikalik} hata={hatalar.vesikalik} zorunlu
+              isleniyor={dosyaIsleniyorAlan === 'vesikalik'}
+              kameraEtiketi={m.kameraIleCek} galeriEtiketi={m.galeridenYukle} kaldirEtiketi={m.dosyaKaldirEt}
+              surukleBirakEtiketi={m.surukleBirak} henuzEklenmediEtiketi={m.henuzEklenmedi} gorselEklendiEtiketi={m.gorselEklendi}
+              isleniyorEtiketi={m.dosyaIsleniyor}
+              onSecildi={(f) => dosyaSecildi('vesikalik', f)} onKaldir={() => guncelle('vesikalik', '')}
+            />
+          </div>
+        ))}
+
+        {adim === 2 && (
           <div class="grid gap-5 sm:grid-cols-2">
-            <Alan etiket={m.adSoyad} deger={durum.adSoyad} hata={hatalar.adSoyad} zorunlu onDegisti={(v) => guncelle('adSoyad', v)} genislik="tam" />
-            <SecimAlani etiket={m.cinsiyet} deger={durum.cinsiyet} hata={hatalar.cinsiyet} zorunlu secenekler={CINSIYET_SECENEKLERI} dil={dil} onDegisti={(v) => guncelle('cinsiyet', v)} />
-            <Alan etiket={m.dogumTarihi} deger={durum.dogumTarihi} hata={hatalar.dogumTarihi} zorunlu tip="date" onDegisti={(v) => guncelle('dogumTarihi', v)} genislik="yari" />
+            <p class="sm:col-span-2 text-sm text-(--metin-2)">{m.kimlikBilgileriAciklama}</p>
+            {durum.taramaDurum !== 'yok' && (
+              <div class={`sm:col-span-2 text-sm ${durum.taramaDurum === 'basarili' ? 'bilgi' : 'uyari'}`} role="status">
+                {durum.taramaDurum === 'basarili'
+                  ? (durum.taramaAlanSayisi > 0 ? m.mrzBasarili(durum.taramaAlanSayisi) : m.mrzBasariliDegisiklikYok)
+                  : m.mrzBasarisiz}
+              </div>
+            )}
+            <div class="sm:col-span-2">
+              <button type="button" class="dugme dugme-ikincil min-h-11" onClick={kimligiTara} disabled={taraniyor}>
+                {taraniyor ? m.mrzTaraniyorYuzde(taramaYuzde) : m.mrzTaraButonu}
+              </button>
+            </div>
+
+            <Alan etiket={m.soyad} deger={durum.soyad} hata={hatalar.soyad} zorunlu onDegisti={(v) => guncelle('soyad', v)} genislik="yari" rozet={otoRozet('soyad')} />
+            <Alan etiket={m.adlar} deger={durum.adlar} hata={hatalar.adlar} zorunlu onDegisti={(v) => guncelle('adlar', v)} genislik="yari" rozet={otoRozet('adlar')} />
+            <SecimAlani etiket={m.cinsiyet} deger={durum.cinsiyet} hata={hatalar.cinsiyet} zorunlu secenekler={CINSIYET_SECENEKLERI} dil={dil} onDegisti={(v) => guncelle('cinsiyet', v)} rozet={otoRozet('cinsiyet')} />
+            <Alan etiket={m.dogumTarihi} deger={durum.dogumTarihi} hata={hatalar.dogumTarihi} zorunlu tip="date" onDegisti={(v) => guncelle('dogumTarihi', v)} genislik="yari" rozet={otoRozet('dogumTarihi')} />
             <Alan etiket={m.dogumYeri} deger={durum.dogumYeri} hata={hatalar.dogumYeri} zorunlu onDegisti={(v) => guncelle('dogumYeri', v)} genislik="yari" />
-            <Alan etiket={m.uyruk} deger={durum.uyruk} hata={hatalar.uyruk} zorunlu onDegisti={(v) => guncelle('uyruk', v)} genislik="yari" />
+            <Alan etiket={m.uyruk} deger={durum.uyruk} hata={hatalar.uyruk} zorunlu onDegisti={(v) => guncelle('uyruk', v)} genislik="yari" rozet={otoRozet('uyruk')} />
+            <Alan etiket={m.belgeNo} deger={durum.belgeNo} onDegisti={(v) => guncelle('belgeNo', v)} genislik="yari" rozet={otoRozet('belgeNo')} />
+            <Alan etiket={m.belgeGecerlilikTarihi} deger={durum.belgeGecerlilikTarihi} tip="date" onDegisti={(v) => guncelle('belgeGecerlilikTarihi', v)} genislik="yari" rozet={otoRozet('belgeGecerlilikTarihi')} />
             <div class="grid gap-1.5 content-start">
               <OnayKutusu id="tcVatandasi" isaretli={durum.tcVatandasi} onDegisti={(v) => guncelle('tcVatandasi', v)} cocuk={m.tcVatandasi} />
-              {durum.tcVatandasi && <Alan etiket={m.tcKimlikNo} deger={durum.tcKimlikNo} hata={hatalar.tcKimlikNo} zorunlu tip="text" onDegisti={(v) => guncelle('tcKimlikNo', v.replace(/\D/g, '').slice(0, 11))} genislik="tam" />}
+              {durum.tcVatandasi && <Alan etiket={m.tcKimlikNo} deger={durum.tcKimlikNo} hata={hatalar.tcKimlikNo} zorunlu tip="text" onDegisti={(v) => guncelle('tcKimlikNo', v.replace(/\D/g, '').slice(0, 11))} genislik="tam" rozet={otoRozet('tcKimlikNo')} />}
             </div>
             <SecimAlani etiket={m.oncekiDin} deger={durum.oncekiDin} hata={hatalar.oncekiDin} zorunlu secenekler={ONCEKI_DIN_SECENEKLERI} dil={dil} onDegisti={(v) => guncelle('oncekiDin', v)} />
             {durum.oncekiDin === 'diger' && <Alan etiket={m.oncekiDinDiger} deger={durum.oncekiDinDiger} hata={hatalar.oncekiDinDiger} zorunlu onDegisti={(v) => guncelle('oncekiDinDiger', v)} genislik="yari" />}
@@ -555,7 +699,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           </div>
         )}
 
-        {adim === 2 && (
+        {adim === 3 && (
           <div class="grid gap-5 sm:grid-cols-2">
             <Alan etiket={m.eposta} deger={durum.eposta} hata={hatalar.eposta} zorunlu tip="email" onDegisti={(v) => guncelle('eposta', v)} genislik="yari" />
             <Alan etiket={m.telefon} deger={durum.telefon} hata={hatalar.telefon} zorunlu tip="tel" yerTutucu="+32 4xx xx xx xx" onDegisti={(v) => guncelle('telefon', v)} genislik="yari" />
@@ -563,7 +707,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           </div>
         )}
 
-        {adim === 3 && (
+        {adim === 4 && (
           <div class="grid gap-5 sm:grid-cols-2">
             <Alan etiket={m.ihtidaSebebi} deger={durum.ihtidaSebebi} girdiTuru="textarea" satir={3} yerTutucu={m.ihtidaSebebiYerTutucu} onDegisti={(v) => guncelle('ihtidaSebebi', v)} genislik="tam" />
             <div class="grid gap-1.5 content-start">
@@ -577,15 +721,6 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
             </div>
             <SecimAlani etiket={m.nasilHaberdar} deger={durum.nasilHaberdar} secenekler={HABERDAR_SECENEKLERI} dil={dil} onDegisti={(v) => guncelle('nasilHaberdar', v)} />
             <Alan etiket={m.ekNot} deger={durum.ekNot} girdiTuru="textarea" satir={2} onDegisti={(v) => guncelle('ekNot', v)} genislik="tam" />
-          </div>
-        )}
-
-        {adim === 4 && (
-          <div class="grid gap-5">
-            <SecimAlani etiket={m.belgeTuru} deger={durum.belgeTuru} secenekler={BELGE_TURU_SECENEKLERI} dil={dil} onDegisti={(v) => guncelle('belgeTuru', (v || 'kimlik') as any)} genislik="tam" />
-            <DosyaAlani etiket={m.kimlikOn} deger={durum.kimlikOn} hata={hatalar.kimlikOn} zorunlu m={m} isleniyor={dosyaIsleniyorAlan === 'kimlikOn'} onSecildi={(f) => dosyaSecildi('kimlikOn', f)} />
-            {durum.belgeTuru === 'kimlik' && <DosyaAlani etiket={m.kimlikArka} deger={durum.kimlikArka} hata={hatalar.kimlikArka} zorunlu m={m} isleniyor={dosyaIsleniyorAlan === 'kimlikArka'} onSecildi={(f) => dosyaSecildi('kimlikArka', f)} />}
-            <DosyaAlani etiket={m.vesikalik} deger={durum.vesikalik} hata={hatalar.vesikalik} zorunlu m={m} isleniyor={dosyaIsleniyorAlan === 'vesikalik'} onSecildi={(f) => dosyaSecildi('vesikalik', f)} />
           </div>
         )}
 
@@ -614,22 +749,50 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
         {adim === 7 && (
           <div class="grid gap-4">
             <h2 class="text-xl">{m.ozetBaslik}</h2>
-            <dl class="grid gap-2 text-sm">
-              <div class="flex justify-between gap-4 cetvel pt-2"><dt class="etiket">{m.adSoyad}</dt><dd class="text-right">{durum.adSoyad}</dd></div>
-              <div class="flex justify-between gap-4"><dt class="etiket">{m.dogumTarihi}</dt><dd class="text-right">{durum.dogumTarihi}</dd></div>
-              <div class="flex justify-between gap-4"><dt class="etiket">{m.eposta}</dt><dd class="text-right">{durum.eposta}</dd></div>
-              <div class="flex justify-between gap-4"><dt class="etiket">{m.telefon}</dt><dd class="text-right whitespace-nowrap mono">{durum.telefon}</dd></div>
-              <div class="flex justify-between gap-4"><dt class="etiket">{m.adres}</dt><dd class="text-right">{durum.adres}</dd></div>
-            </dl>
-            {durum.imzaDataUrl && <div class="kart-kagit p-3 w-fit"><img src={durum.imzaDataUrl} alt="" class="h-16 w-auto" /></div>}
-            <p class="duz-yazi text-sm italic">{m.beyanCumlesi}</p>
+
+            <div class="grid gap-2">
+              <div class="flex items-center justify-between">
+                <p class="etiket etiket-vurgu">{ADIM_BASLIKLARI[dil][2]}</p>
+                <button type="button" class="text-sm text-(--vurgu-2) underline underline-offset-2" onClick={() => adimaGit(2)}>{m.duzenle}</button>
+              </div>
+              <dl class="grid gap-2 text-sm">
+                <div class="flex justify-between gap-4 cetvel pt-2"><dt class="etiket">{m.soyad} {m.adlar}</dt><dd class="text-right">{durum.soyad} {durum.adlar}</dd></div>
+                <div class="flex justify-between gap-4"><dt class="etiket">{m.dogumTarihi}</dt><dd class="text-right">{durum.dogumTarihi}</dd></div>
+                <div class="flex justify-between gap-4"><dt class="etiket">{m.uyruk}</dt><dd class="text-right">{durum.uyruk}</dd></div>
+                {durum.belgeNo && <div class="flex justify-between gap-4"><dt class="etiket">{m.belgeNo}</dt><dd class="text-right mono">{durum.belgeNo}</dd></div>}
+              </dl>
+            </div>
+
+            <div class="grid gap-2">
+              <div class="flex items-center justify-between">
+                <p class="etiket etiket-vurgu">{ADIM_BASLIKLARI[dil][3]}</p>
+                <button type="button" class="text-sm text-(--vurgu-2) underline underline-offset-2" onClick={() => adimaGit(3)}>{m.duzenle}</button>
+              </div>
+              <dl class="grid gap-2 text-sm">
+                <div class="flex justify-between gap-4 cetvel pt-2"><dt class="etiket">{m.eposta}</dt><dd class="text-right">{durum.eposta}</dd></div>
+                <div class="flex justify-between gap-4"><dt class="etiket">{m.telefon}</dt><dd class="text-right whitespace-nowrap mono">{durum.telefon}</dd></div>
+                <div class="flex justify-between gap-4"><dt class="etiket">{m.adres}</dt><dd class="text-right">{durum.adres}</dd></div>
+              </dl>
+            </div>
+
+            {durum.imzaDataUrl && (
+              <div class="grid gap-2">
+                <div class="flex items-center justify-between">
+                  <p class="etiket etiket-vurgu">{ADIM_BASLIKLARI[dil][6]}</p>
+                  <button type="button" class="text-sm text-(--vurgu-2) underline underline-offset-2" onClick={() => adimaGit(6)}>{m.duzenle}</button>
+                </div>
+                <div class="kart-kagit p-3 w-fit"><img src={durum.imzaDataUrl} alt="" class="h-16 w-auto" /></div>
+              </div>
+            )}
+
+            <p class="duz-yazi text-sm italic cetvel pt-4">{m.beyanCumlesi}</p>
             <button type="button" class="dugme dugme-birincil justify-center min-h-11 mt-2" disabled={gonderimMeşgul} onClick={basvuruyuGonder}>
               {asama === 'hazirlaniyor' ? m.hazirlaniyor : asama === 'gonderiliyor' ? m.gonderiliyor : m.gonder}
             </button>
           </div>
         )}
 
-        {adim < 7 && (
+        {adim < 7 && !(adim === 1 && taraniyor) && (
           <div class="flex justify-between gap-3 mt-2">
             <button type="button" class="dugme dugme-ikincil min-h-11" onClick={geriGit} disabled={adim === 0}>{m.geri}</button>
             <button type="button" class="dugme dugme-birincil min-h-11" onClick={adim === 0 ? () => { guncelle('adim', 1 as any); formaKaydir(); } : ileriGit}>

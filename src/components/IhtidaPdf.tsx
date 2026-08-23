@@ -6,11 +6,14 @@
 import type { Metinler } from './IhtidaMetinler';
 
 export interface IhtidaPdfBasvuran {
-  adSoyad: string;
+  soyad: string;
+  adlar: string;
   cinsiyet: string;
   dogumTarihi: string;
   dogumYeri: string;
   uyruk: string;
+  belgeNo: string;
+  belgeGecerlilikTarihi: string;
   tcVatandasi: boolean;
   tcKimlikNo: string;
   oncekiDin: string;
@@ -32,10 +35,15 @@ export interface IhtidaPdfBasvuran {
 
 export interface IhtidaPdfCami { ad: string; adres: string; telefon: string; eposta: string }
 
+/** Kimlik belgesinden otomatik okunup kontrol hanesi doğrulanan alanlar — özet
+ *  tablosunda "kimlikten okundu" notuyla işaretlenir. */
+export type IhtidaOtoAlan = 'soyad' | 'adlar' | 'dogumTarihi' | 'cinsiyet' | 'uyruk' | 'belgeNo' | 'belgeGecerlilikTarihi' | 'tcKimlikNo';
+
 export interface IhtidaPdfGirdi {
   dil: 'tr' | 'fr';
   m: Metinler;
   basvuran: IhtidaPdfBasvuran;
+  otoOkunanAlanlar: IhtidaOtoAlan[];
   belgeTuru: 'kimlik' | 'pasaport';
   kimlikOn: string;
   kimlikArka: string;
@@ -196,14 +204,21 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
 
   // Form etiketleri "(opsiyonel)" / "(+32...)" gibi UI ipuçları taşıyabilir — resmî belgede gereksiz.
   const et = (s: string) => s.replace(/\s*\([^)]*\)\s*$/, '').trim();
+  // Kimlikten otomatik okunup kontrol hanesi doğrulanan alanlar özet tablosunda işaretlenir.
+  const otoNotu = girdi.dil === 'tr' ? ' · kimlikten okundu' : ' · lu automatiquement';
+  const otoMu = (anahtar: IhtidaOtoAlan) => girdi.otoOkunanAlanlar.includes(anahtar);
+  const etO = (s: string, anahtar: IhtidaOtoAlan) => et(s) + (otoMu(anahtar) ? otoNotu : '');
+  const adSoyadEtiket = (girdi.dil === 'tr' ? 'Adı Soyadı' : 'Nom et prénom') + ((otoMu('soyad') || otoMu('adlar')) ? otoNotu : '');
 
   const alanlar: [string, string][] = [
-    [et(girdi.m.adSoyad), b.adSoyad],
-    [et(girdi.m.cinsiyet), b.cinsiyet],
-    [et(girdi.m.dogumTarihi), formatTarih(b.dogumTarihi)],
+    [adSoyadEtiket, `${b.soyad} ${b.adlar}`.trim()],
+    [etO(girdi.m.cinsiyet, 'cinsiyet'), b.cinsiyet],
+    [etO(girdi.m.dogumTarihi, 'dogumTarihi'), formatTarih(b.dogumTarihi)],
     [et(girdi.m.dogumYeri), b.dogumYeri],
-    [et(girdi.m.uyruk), b.uyruk],
-    ...(b.tcVatandasi ? [[et(girdi.m.tcKimlikNo), b.tcKimlikNo] as [string, string]] : []),
+    [etO(girdi.m.uyruk, 'uyruk'), b.uyruk],
+    ...(b.belgeNo ? [[etO(girdi.m.belgeNo, 'belgeNo'), b.belgeNo] as [string, string]] : []),
+    ...(b.belgeGecerlilikTarihi ? [[etO(girdi.m.belgeGecerlilikTarihi, 'belgeGecerlilikTarihi'), formatTarih(b.belgeGecerlilikTarihi)] as [string, string]] : []),
+    ...(b.tcVatandasi ? [[etO(girdi.m.tcKimlikNo, 'tcKimlikNo'), b.tcKimlikNo] as [string, string]] : []),
     [et(girdi.m.oncekiDin), b.oncekiDin],
     ...(b.ogrenimDurumu ? [[et(girdi.m.ogrenimDurumu), b.ogrenimDurumu] as [string, string]] : []),
     ...(b.anneAdi ? [[et(girdi.m.anneAdi), b.anneAdi] as [string, string]] : []),
@@ -326,7 +341,7 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
 
   const bytes = await document.save({ useObjectStreams: false, addDefaultPage: false });
   const blob = new Blob([bytes as BlobPart], { type: 'application/pdf' });
-  const filename = `IhtidaBasvuru_${safeFileName(b.adSoyad)}.pdf`;
+  const filename = `IhtidaBasvuru_${safeFileName(`${b.soyad} ${b.adlar}`)}.pdf`;
   let file: File | Blob;
   try { file = new File([blob], filename, { type: 'application/pdf', lastModified: Date.now() }); }
   catch { file = blob; (file as any).name = filename; }
