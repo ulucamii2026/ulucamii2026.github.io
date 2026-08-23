@@ -11,12 +11,12 @@ type Grup = { ad: string; maddeler: Madde[] };
 const L = (anahtar: SayfaAnahtari, ad?: string): Madde => ({ href: yol(dil, anahtar), ad: ad ?? t(`nav.${anahtar}` as any) });
 /** Gruplu menü: 4 açılır grup + 2 doğrudan bağlantı; mobilde aynı gruplar başlıklı listeler olur */
 const gruplar: Grup[] = dil === 'tr' ? [
-  { ad: 'Cami', maddeler: [L('hakkimizda'), L('namaz'), L('hutbeler'), L('vefat'), L('galeri'), L('iletisim')] },
+  { ad: 'Cami', maddeler: [L('hakkimizda'), L('namaz'), L('hutbeler'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
   { ad: 'Haberler', maddeler: [L('duyurular'), L('etkinlikler', 'Etkinlikler'), L('afisler')] },
   { ad: 'Eğitim', maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
   { ad: 'Hizmetler', maddeler: [L('bagis'), L('uyelik', 'Dernek Üyeliği'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ] : [
-  { ad: 'Mosquée', maddeler: [L('hakkimizda'), L('namaz'), L('hutbeler'), L('vefat'), L('galeri'), L('iletisim')] },
+  { ad: 'Mosquée', maddeler: [L('hakkimizda'), L('namaz'), L('hutbeler'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
   { ad: 'Actualités', maddeler: [L('duyurular'), L('etkinlikler', 'Événements'), L('afisler')] },
   { ad: 'Enseignement', maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
   { ad: 'Services', maddeler: [L('bagis'), L('uyelik', 'Adhésion'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },

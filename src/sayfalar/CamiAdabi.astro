@@ -1,0 +1,46 @@
+---
+/** Cami Adabı — BDV metni (sayfalar/{dil}/adab.md) + dört dilde A3 afiş PDF'leri */
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri } from '../i18n/utils';
+import type { Dil, SayfaAnahtari } from '../i18n/ui';
+import { sayfa } from '../lib/icerik';
+interface Props { dil: Dil; anahtar: SayfaAnahtari }
+const { dil } = Astro.props; const t = ceviri(dil);
+const entry = await sayfa(dil, 'adab');
+if (!entry) throw new Error(`İçerik yok: sayfalar/${dil}/adab.md`);
+const { Content } = await render(entry);
+const m = {
+  tr: { etiket: 'Cami', pdfBaslik: 'Afişler (PDF)', pdfAlt: 'Cami girişinde asılı A3 afişin dört dildeki sürümünü indirebilirsiniz.', kaynak: 'Metin: Belçika Diyanet Vakfı — Haziran 2026 revizyonu.' },
+  fr: { etiket: 'Mosquée', pdfBaslik: 'Affiches (PDF)', pdfAlt: 'Vous pouvez télécharger l’affiche A3 apposée à l’entrée de la mosquée dans les quatre langues.', kaynak: 'Texte : Fondation Diyanet de Belgique — révision de juin 2026.' },
+  en: { etiket: 'Mosque', pdfBaslik: 'Posters (PDF)', pdfAlt: 'You can download the A3 poster displayed at the mosque entrance in four languages.', kaynak: 'Text: Diyanet Foundation of Belgium — June 2026 revision.' },
+}[dil];
+const pdfler = [
+  { ad: 'Türkçe', dosya: '/media/cami-adabi/cami-adabi-tr.pdf' },
+  { ad: 'Français', dosya: '/media/cami-adabi/cami-adabi-fr.pdf' },
+  { ad: 'English', dosya: '/media/cami-adabi/cami-adabi-en.pdf' },
+  { ad: 'العربية', dosya: '/media/cami-adabi/cami-adabi-ar.pdf' },
+];
+---
+<Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama}>
+  <SayfaBasligi etiket={m.etiket} baslik={entry.data.baslik} altBaslik={entry.data.altBaslik} />
+  <article class="kapsayici py-10 duz-yazi max-w-[52rem]">
+    <Content />
+    <p class="etiket mt-8">{m.kaynak}</p>
+  </article>
+  <section class="kapsayici pb-14" aria-label={m.pdfBaslik}>
+    <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-2">{m.pdfBaslik}</h2>
+    <p class="text-(--metin-2) mb-5">{m.pdfAlt}</p>
+    <ul class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-(--cizgi) border border-(--cizgi)" role="list">
+      {pdfler.map((p) => (
+        <li class="bg-(--zemin)">
+          <a href={p.dosya} target="_blank" rel="noopener" class="group flex items-center gap-3 px-4 py-4 no-underline text-(--metin) hover:bg-(--zemin-3) transition-colors h-full">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="shrink-0 text-(--vurgu)" aria-hidden="true"><path d="M14 3v5h5M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M9 13h6M9 17h6"/></svg>
+            <span class="font-semibold text-[0.95rem]">{p.ad}<span class="block etiket mt-0.5">PDF · A3</span></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
