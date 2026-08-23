@@ -1,25 +1,29 @@
 ---
 import { ceviri, yol, digerDilYolu } from '../i18n/utils';
-import type { Dil } from '../i18n/ui';
+import type { Dil, SayfaAnahtari } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
-const menu = [
-  { href: yol(dil, 'hakkimizda'), ad: t('nav.hakkimizda') },
-  { href: yol(dil, 'duyurular'), ad: t('nav.duyurular') },
-  { href: yol(dil, 'etkinlikler'), ad: dil === 'tr' ? 'Etkinlikler' : 'Événements' },
-  { href: yol(dil, 'namaz'), ad: t('nav.namaz') },
-  { href: yol(dil, 'kurankursu'), ad: t('nav.kurankursu') },
-  { href: yol(dil, 'bagis'), ad: t('nav.bagis') },
-  { href: yol(dil, 'uyelik'), ad: dil === 'tr' ? 'Üyelik' : 'Adhésion' },
-  { href: yol(dil, 'konsolosluk'), ad: t('nav.konsolosluk') },
-  { href: yol(dil, 'vefat'), ad: t('nav.vefat') },
-  { href: yol(dil, 'galeri'), ad: t('nav.galeri') },
-  { href: yol(dil, 'iletisim'), ad: t('nav.iletisim') },
+type Madde = { href: string; ad: string; aciklama?: string };
+type Grup = { ad: string; maddeler: Madde[] };
+const L = (anahtar: SayfaAnahtari, ad?: string): Madde => ({ href: yol(dil, anahtar), ad: ad ?? t(`nav.${anahtar}` as any) });
+/** Gruplu menü: 4 açılır grup + 2 doğrudan bağlantı; mobilde aynı gruplar başlıklı listeler olur */
+const gruplar: Grup[] = dil === 'tr' ? [
+  { ad: 'Cami', maddeler: [L('hakkimizda'), L('namaz'), L('hutbeler'), L('vefat'), L('galeri'), L('iletisim')] },
+  { ad: 'Haberler', maddeler: [L('duyurular'), L('etkinlikler', 'Etkinlikler'), L('afisler')] },
+  { ad: 'Eğitim', maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
+  { ad: 'Hizmetler', maddeler: [L('bagis'), L('uyelik', 'Dernek Üyeliği'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
+] : [
+  { ad: 'Mosquée', maddeler: [L('hakkimizda'), L('namaz'), L('hutbeler'), L('vefat'), L('galeri'), L('iletisim')] },
+  { ad: 'Actualités', maddeler: [L('duyurular'), L('etkinlikler', 'Événements'), L('afisler')] },
+  { ad: 'Enseignement', maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
+  { ad: 'Services', maddeler: [L('bagis'), L('uyelik', 'Adhésion'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ];
+const dogrudan: Madde[] = [L('namaz'), L('iletisim')];
 const digerDil: Dil = dil === 'tr' ? 'fr' : 'tr';
 const digerYol = digerDilYolu(Astro.url, digerDil);
 const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
+const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
 ---
 <header class="sticky top-0 z-40 bg-(--zemin)/95 backdrop-blur border-b border-(--cizgi)">
   <div class="kilim-serit" aria-hidden="true"></div>
@@ -31,29 +35,48 @@ const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil
         <span class="etiket hidden sm:block mt-1 whitespace-nowrap">Marche-en-Famenne · 1979</span>
       </span>
     </a>
-    <nav class="ml-auto hidden xl:flex flex-wrap justify-end items-center gap-0.5" aria-label={t('nav.menu')}>
-      {menu.map((m) => (
-        <a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined}
-           class:list={['px-2 py-1.5 text-[0.86rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
+    <nav class="ml-auto hidden lg:flex items-center gap-0.5" aria-label={t('nav.menu')}>
+      {gruplar.map((g, i) => (
+        <div class="relative" data-grup>
+          <button type="button" class:list={['inline-flex items-center gap-1 px-2.5 py-1.5 text-[0.9rem] whitespace-nowrap rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', grupAktif(g) && 'bg-(--zemin-3) font-semibold']} aria-expanded="false" aria-controls={`grup-${i}`} aria-haspopup="true">
+            {g.ad}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul id={`grup-${i}`} class="acilir hidden absolute left-0 top-full mt-1 min-w-[15rem] kart p-1.5 z-50" role="list">
+            {g.maddeler.map((m) => (
+              <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-3 py-2 text-[0.92rem] no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {dogrudan.map((m) => (
+        <a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['hidden xl:inline-block px-2.5 py-1.5 text-[0.9rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
       ))}
     </nav>
-    <div class="ml-auto xl:ml-2 flex items-center gap-1.5 shrink-0">
+    <div class="ml-auto lg:ml-2 flex items-center gap-1.5 shrink-0">
       <a href={yol(dil, 'bagis')} class="hidden md:inline-flex dugme dugme-birincil !py-2 !px-3.5 text-sm">{t('nav.bagis')}</a>
       <a href={digerYol} hreflang={digerDil} lang={digerDil} class="mono text-xs tracking-(--tracking-etiket) uppercase px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) no-underline text-(--metin) hover:border-(--metin)" aria-label={`${t('nav.dil')}: ${digerDil === 'tr' ? 'Türkçe' : 'Français'}`}>{digerDil}</a>
       <button type="button" id="tema-dugme" class="px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-label={dil === 'tr' ? 'Karanlık / aydınlık tema' : 'Thème sombre / clair'}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
       </button>
-      <button type="button" id="menu-dugme" class="xl:hidden px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-expanded="false" aria-controls="mobil-menu" aria-label={t('nav.menu')}>
+      <button type="button" id="menu-dugme" class="lg:hidden px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-expanded="false" aria-controls="mobil-menu" aria-label={t('nav.menu')}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
-  <nav id="mobil-menu" class="xl:hidden hidden border-t border-(--cizgi) bg-(--zemin)" aria-label={t('nav.menu')}>
-    <ul class="kapsayici py-3 grid gap-0.5 sm:grid-cols-2">
-      <li><a href={yol(dil, 'anasayfa')} class="block px-2 py-2.5 no-underline text-(--metin) hover:bg-(--zemin-3)">{t('nav.anasayfa')}</a></li>
-      {menu.map((m) => <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-2 py-2.5 no-underline text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a></li>)}
-      <li><a href={yol(dil, 'portal')} class="block px-2 py-2.5 no-underline text-(--vurgu-2) font-semibold">{t('nav.portal')} →</a></li>
-    </ul>
+  <nav id="mobil-menu" class="lg:hidden hidden border-t border-(--cizgi) bg-(--zemin) max-h-[calc(100dvh-5rem)] overflow-y-auto" aria-label={t('nav.menu')}>
+    <div class="kapsayici py-4 grid gap-5 sm:grid-cols-2">
+      <a href={yol(dil, 'anasayfa')} class="block px-2 py-2 no-underline font-semibold text-(--metin) sm:col-span-2 border-b border-(--cizgi)">{t('nav.anasayfa')}</a>
+      {gruplar.map((g) => (
+        <div>
+          <p class="etiket etiket-vurgu px-2 mb-1">{g.ad}</p>
+          <ul class="grid gap-0.5" role="list">
+            {g.maddeler.map((m) => <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-2 py-2 no-underline text-(--metin) hover:bg-(--zemin-3) rounded-(--radius-kose)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a></li>)}
+          </ul>
+        </div>
+      ))}
+      <a href={yol(dil, 'portal')} class="block px-2 py-2 no-underline text-(--vurgu-2) font-semibold sm:col-span-2 border-t border-(--cizgi)">{t('nav.portal')} →</a>
+    </div>
   </nav>
 </header>
 <script>
@@ -70,4 +93,19 @@ const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil
     root.dataset.theme = yeni;
     try { localStorage.setItem('tema', yeni); } catch {}
   });
+  // Masaüstü açılır gruplar: tıkla/klavye ile aç, dışarı tıklama veya Escape ile kapat, hover ile de açılır
+  const gruplar = Array.from(document.querySelectorAll<HTMLElement>('[data-grup]'));
+  const kapatHepsi = (haric?: HTMLElement) => gruplar.forEach((g) => { if (g !== haric) { g.querySelector('button')?.setAttribute('aria-expanded', 'false'); g.querySelector('.acilir')?.classList.add('hidden'); } });
+  gruplar.forEach((g) => {
+    const b = g.querySelector('button')!; const u = g.querySelector('.acilir')!; let zaman = 0; let fareyle = false;
+    const ac = () => { kapatHepsi(g); b.setAttribute('aria-expanded', 'true'); u.classList.remove('hidden'); };
+    const kapat = () => { b.setAttribute('aria-expanded', 'false'); u.classList.add('hidden'); };
+    // fareyle üzerine gelince açılır; o sırada tıklama kapatmaz (klavye/dokunmatik için tıklama aç/kapat yapar)
+    b.addEventListener('click', () => { if (fareyle && b.getAttribute('aria-expanded') === 'true') return; b.getAttribute('aria-expanded') === 'true' ? kapat() : ac(); });
+    g.addEventListener('mouseenter', () => { clearTimeout(zaman); fareyle = true; ac(); });
+    g.addEventListener('mouseleave', () => { fareyle = false; zaman = window.setTimeout(kapat, 180); });
+    g.addEventListener('focusout', (e) => { if (!g.contains(e.relatedTarget as Node)) kapat(); });
+  });
+  document.addEventListener('click', (e) => { if (!gruplar.some((g) => g.contains(e.target as Node))) kapatHepsi(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') kapatHepsi(); });
 </script>

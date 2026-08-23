@@ -22,7 +22,8 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
   const { bugun, eski, siradaki } = d;
   const tarihStr = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : 'fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(bugun.tarih + 'T12:00:00'));
   const uyari = dil === 'tr' ? 'Vakit tablosu güncellenmeyi bekliyor — lütfen cami ilan panosundaki çizelgeye bakınız.' : 'Le tableau des horaires attend une mise à jour — veuillez consulter l’affichage à la mosquée.';
-  const rakam = vurgulu ? 'text-[1.5rem] sm:text-[1.9rem] xl:text-[2.2rem] tracking-tight' : 'text-2xl sm:text-[1.7rem]';
+  // Rakam boyutu kutunun kendi genişliğine bağlı (container query): 5 karakterlik saat ~2,6em → 31cqw hiçbir genişlikte taşmaz
+  const rakam = vurgulu ? 'text-[min(1.6rem,31cqw)] sm:text-[min(2.1rem,31cqw)] tracking-tight' : 'text-[min(1.7rem,31cqw)]';
   return (
     <div class={kompakt || vurgulu ? '' : 'kart p-5 sm:p-6'}>
       <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
@@ -34,9 +35,9 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
         {SIRA.map((v: Vakit) => {
           const aktif = !!siradaki && siradaki.vakit === v && !siradaki.yarinMi;
           return (
-            <li class={`text-center border rounded-(--radius-kose) py-3 px-1 transition-colors ${aktif ? 'border-(--vurgu) bg-(--vurgu)/8 shadow-[0_8px_24px_-16px_var(--vurgu)]' : 'border-(--cizgi)'} ${vurgulu ? 'bg-(--zemin)/70' : ''}`} aria-current={aktif ? 'time' : undefined}>
+            <li class={`@container min-w-0 text-center border rounded-(--radius-kose) py-3 px-1 transition-colors ${aktif ? 'border-(--vurgu) bg-(--vurgu)/8 shadow-[0_8px_24px_-16px_var(--vurgu)]' : 'border-(--cizgi)'} ${vurgulu ? 'bg-(--zemin)/70' : ''}`} aria-current={aktif ? 'time' : undefined}>
               <span class={`etiket block ${aktif ? 'etiket-vurgu' : ''}`}>{etiketler[v]}</span>
-              <span class={`rakam block mt-1 ${rakam}`}>{bugun[v]}</span>
+              <span class={`rakam block mt-1 leading-none whitespace-nowrap ${rakam}`}>{bugun[v]}</span>
             </li>
           );
         })}

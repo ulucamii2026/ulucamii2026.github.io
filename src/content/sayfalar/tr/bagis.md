@@ -51,6 +51,12 @@ Camimizde TDV ve Diyanet Yayınları eserleriyle küçük bir kütüphane kurma 
 
 Kitap bağışı için önce din görevlimiz veya dernek yönetimiyle görüşerek eserleri ve teslim şeklini kararlaştırınız.
 
+## Zekât ve fitre
+
+Zekât ve fitrenizi cami bağış kutumuza veya yukarıdaki IBAN’a açıklama kısmına “Zekât” ya da “Fitre” yazarak ulaştırabilirsiniz. Dilerseniz Belçika Diyanet Vakfı’nın (BDV) merkezî Zekât-Fitre Fonu’na doğrudan da bağışta bulunabilirsiniz: **fitre miktarı en az 10 €** olarak belirleniyor, hesap bilgileri Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181. Bu fona yapılan bağışların açıklama kısmına “Fitre”, “Zekât”, “Fidye” veya “Genel Bağış” yazılması isteniyor.
+
+Zekât-Fitre Fonu; hac/umre, cenaze fonu, eğitim bursu ve hukuk danışmanlığı gibi diğer BDV hizmetleriyle birlikte [Diyanet Hizmetleri](/tr/diyanet-hizmetleri/) sayfamızda topluca listeleniyor.
+
 ## Şeffaflık
 
 Bağışlarımız, derneğimizin genel kurulunda üyelerimize raporlanır.

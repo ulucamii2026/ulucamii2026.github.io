@@ -51,6 +51,12 @@ Un projet de petite bibliothèque, réunissant des ouvrages des éditions TDV et
 
 Pour un don de livres, contactez d’abord l’imam ou le comité afin de convenir des ouvrages et du dépôt.
 
+## Zakât et fitre
+
+Vous pouvez remettre votre zakât et votre fitre au tronc de la mosquée, ou par virement sur l’IBAN ci-dessus en indiquant « Zakât » ou « Fitre » dans la communication. Vous pouvez également faire un don directement au Fonds Zakât-Fitre central de la Fondation Diyanet de Belgique (BDV) : **le montant du fitre est fixé à au moins 10 €**, coordonnées : Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181. Il est demandé d’indiquer « Fitre », « Zakât », « Fidya » ou « Don général » dans la communication du virement.
+
+Le Fonds Zakât-Fitre est répertorié, avec les autres services de la BDV (hajj/omra, fonds funéraire, bourse d’études, conseil juridique), sur notre page [Services Diyanet](/fr/services-diyanet/).
+
 ## Transparence
 
 Nos dons sont rapportés à nos membres lors de l’assemblée générale de l’association.

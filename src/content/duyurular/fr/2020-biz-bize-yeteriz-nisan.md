@@ -2,6 +2,11 @@
 baslik: Campagne « Biz Bize Yeteriz Türkiyem »
 tarih: 2020-04-24
 ozet: Pendant la pandémie, les personnes souhaitant soutenir les compatriotes en difficulté en Turquie ont été invitées à contacter notre association.
+kapak: /media/duyurular/2020-biz-bize-yeteriz-nisan/01.webp
+kapakAlt: "Campagne « Biz Bize Yeteriz Türkiyem »"
+galeri:
+  - dosya: /media/duyurular/2020-biz-bize-yeteriz-nisan/01.webp
+    kucuk: /media/duyurular/2020-biz-bize-yeteriz-nisan/01-k.webp
 etiketler:
   - arşiv
   - bağış

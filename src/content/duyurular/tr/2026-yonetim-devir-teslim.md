@@ -2,6 +2,11 @@
 baslik: Yönetim Kurulu Devir Teslim Töreni
 tarih: 2026-02-07
 ozet: 7 Şubat 2026 Cumartesi akşamı, yatsı namazının ardından camimizde yönetim kurulu devir teslim töreni gerçekleştirilmiştir. Görevi devreden ve devralan üyelere teşekkür edilmiştir.
+kapak: /media/duyurular/2026-yonetim-devir-teslim/01.webp
+kapakAlt: "Yönetim Kurulu Devir Teslim Töreni"
+galeri:
+  - dosya: /media/duyurular/2026-yonetim-devir-teslim/01.webp
+    kucuk: /media/duyurular/2026-yonetim-devir-teslim/01-k.webp
 etiketler:
   - yönetim kurulu
   - dernek

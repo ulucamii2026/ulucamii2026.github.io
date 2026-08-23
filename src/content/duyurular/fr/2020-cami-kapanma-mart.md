@@ -2,6 +2,11 @@
 baslik: Fermeture de la mosquée et de la salle communautaire
 tarih: 2020-03-13
 ozet: Dans le cadre des mesures liées à la Covid-19, la mosquée et sa salle communautaire ont été fermées jusqu’au 3 avril 2020 ; prières en communauté et cours suspendus.
+kapak: /media/duyurular/2020-cami-kapanma-mart/01.webp
+kapakAlt: "Fermeture de la mosquée et de la salle communautaire"
+galeri:
+  - dosya: /media/duyurular/2020-cami-kapanma-mart/01.webp
+    kucuk: /media/duyurular/2020-cami-kapanma-mart/01-k.webp
 etiketler:
   - archives
   - pandémie

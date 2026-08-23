@@ -23,6 +23,9 @@ const geri = tur === 'duyuru' ? yol(dil, 'duyurular') : yol(dil, 'etkinlikler');
 const etiket = tur === 'duyuru' ? t('nav.duyurular') : t('nav.etkinlikler');
 const tarih: Date = tur === 'duyuru' ? d.tarih : d.baslangic;
 const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
+const grup = tur === 'duyuru' ? 'duyuru' : 'etkinlik';
+const galeri: Array<{ dosya: string; kucuk?: string; alt?: string }> = Array.isArray(d.galeri) ? d.galeri : [];
+const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : 'Photos';
 ---
 <Base baslik={d.baslik} dil={dil} aciklama={d.ozet} kapak={kapak}>
   <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet}>
@@ -37,10 +40,24 @@ const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
     <div class="duz-yazi"><Content /></div>
     {kapak && (
       <aside>
-        <a href={kapak} class="gorsel-cerceve block" target="_blank" rel="noopener"><img src={tur === 'etkinlik' && d.afisKucuk ? d.afisKucuk : kapak} alt={d.kapakAlt ?? d.baslik} loading="lazy" decoding="async" /></a>
+        <a href={kapak} data-lightbox={grup} data-caption={d.kapakAlt ?? d.baslik} class="gorsel-cerceve block">
+          <img src={tur === 'etkinlik' && d.afisKucuk ? d.afisKucuk : kapak} alt={d.kapakAlt ?? d.baslik} loading="lazy" decoding="async" />
+        </a>
         {tur === 'etkinlik' && <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')} ↗</a></p>}
       </aside>
     )}
   </article>
+  {galeri.length > 0 && (
+    <div class="kapsayici pb-12">
+      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4">{galeriBaslik}</h2>
+      <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        {galeri.map((g, i) => (
+          <a href={g.dosya} data-lightbox={grup} data-caption={g.alt ?? d.kapakAlt ?? d.baslik} class="block aspect-square overflow-hidden rounded-(--radius-kose) border border-(--cizgi)">
+            <img src={g.kucuk ?? g.dosya} alt={g.alt ?? `${d.baslik} — ${i + 1}`} loading="lazy" decoding="async" class="h-full w-full object-cover" />
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
   <p class="kapsayici pb-12"><a href={geri} class="dugme dugme-ikincil">← {t('genel.geri')}</a></p>
 </Base>

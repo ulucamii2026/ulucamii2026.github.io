@@ -1,5 +1,6 @@
 ---
 ad: "Hacı Mahmut Şahpaz"
+foto: /media/vefat/2021-mahmut-sahpaz-vefat.webp
 vefat: 2021-05-18
 cenazeNamazi:
   tarih: 2021-05-18

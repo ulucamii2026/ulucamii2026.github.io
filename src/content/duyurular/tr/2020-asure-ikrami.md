@@ -2,6 +2,11 @@
 baslik: Aşure İkramı Duyurusu (2020)
 tarih: 2020-09-06
 ozet: 6 Eylül 2020 Pazar günü öğle namazı sonrasında camimizde Muharrem ayı aşuresi cemaatimize ikram edildi.
+kapak: /media/duyurular/2020-asure-ikrami/01.webp
+kapakAlt: "Aşure İkramı Duyurusu (2020)"
+galeri:
+  - dosya: /media/duyurular/2020-asure-ikrami/01.webp
+    kucuk: /media/duyurular/2020-asure-ikrami/01-k.webp
 etiketler:
   - arşiv
   - aşure

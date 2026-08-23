@@ -1,0 +1,84 @@
+---
+/** Afişler — kronolojik afiş duvarı: kendi afişlerimiz + Belçika Diyanet Vakfı arşivinden seçmeler */
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, tarihBicimle } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+
+const hepsi = await getCollection('afisler', ({ data }) => !data.taslak);
+const liste = hepsi.sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
+
+const KATEGORI: Record<string, Record<Dil, string>> = {
+  kampanya: { tr: 'Kampanya', fr: 'Campagne' },
+  program: { tr: 'Program', fr: 'Programme' },
+  egitim: { tr: 'Eğitim', fr: 'Éducation' },
+  'hac-umre': { tr: 'Hac ve Umre', fr: 'Hajj et Omra' },
+  kurban: { tr: 'Kurban', fr: 'Sacrifice (Kurban)' },
+  zekat: { tr: 'Zekât ve Fitre', fr: 'Zakât et Fitre' },
+  cenaze: { tr: 'Cenaze', fr: 'Funérailles' },
+  ramazan: { tr: 'Ramazan', fr: 'Ramadan' },
+  diger: { tr: 'Diğer', fr: 'Autre' },
+};
+const KAYNAK: Record<string, Record<Dil, string>> = {
+  ulucamii: { tr: 'Ulu Camii', fr: 'Ulu Camii' },
+  bdv: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique' },
+  diyanet: { tr: 'Diyanet İşleri Başkanlığı', fr: 'Présidence des Affaires religieuses' },
+  diger: { tr: 'Diğer kaynak', fr: 'Autre source' },
+};
+
+const kategoriler = [...new Set(liste.map((a) => a.data.kategori))].sort((a, b) => (KATEGORI[a]?.[dil] ?? a).localeCompare(KATEGORI[b]?.[dil] ?? b, dil));
+
+const m = dil === 'tr' ? {
+  altBaslik: 'Camimizin kampanya ve program afişleri; Belçika Diyanet Vakfı’nın hac, umre, kurban, zekât-fitre ve eğitim afişlerinden bir seçki. Bir afişe dokunarak büyütebilirsiniz.',
+  hepsi: 'Tümü', dis: 'Bağlantı ↗',
+} : {
+  altBaslik: 'Affiches de campagnes et de programmes de notre mosquée, ainsi qu’une sélection d’affiches de la Fondation Diyanet de Belgique (hajj, omra, sacrifice, zakât-fitre, éducation). Touchez une affiche pour l’agrandir.',
+  hepsi: 'Toutes', dis: 'Lien ↗',
+};
+---
+<Base baslik={t('nav.afisler')} dil={dil} aciklama={m.altBaslik}>
+  <SayfaBasligi etiket={t('nav.afisler')} baslik={t('nav.afisler')} altBaslik={m.altBaslik} />
+
+  <div class="kapsayici py-10">
+    <div class="flex flex-wrap gap-2 mb-8" role="group" aria-label={t('nav.afisler')}>
+      <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm afis-filtre" data-kategori="hepsi" aria-pressed="true">{m.hepsi}</button>
+      {kategoriler.map((k) => (
+        <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm afis-filtre" data-kategori={k} aria-pressed="false">{KATEGORI[k]?.[dil] ?? k}</button>
+      ))}
+    </div>
+
+    <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" role="list" id="afis-duvari">
+      {liste.map((a) => (
+        <li class="afis-karti" data-kategori={a.data.kategori}>
+          <a href={a.data.gorsel} class="gorsel-cerceve block overflow-hidden group" data-lightbox="afisler" data-caption={a.data.baslik[dil] ?? a.data.baslik.tr}>
+            <img src={a.data.kucuk ?? a.data.gorsel} alt={a.data.baslik[dil] ?? a.data.baslik.tr} loading="lazy" width="480" height="640" class="aspect-[3/4] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+          </a>
+          <div class="mt-2">
+            <p class="text-sm font-semibold leading-snug">{a.data.baslik[dil] ?? a.data.baslik.tr}</p>
+            <p class="etiket mt-1">
+              <time datetime={a.data.tarih.toISOString()}>{tarihBicimle(a.data.tarih, dil, { month: 'short', year: 'numeric' })}</time>
+              <span> · {KAYNAK[a.data.kaynak]?.[dil] ?? a.data.kaynak}</span>
+            </p>
+            {a.data.link && <a href={a.data.link} target="_blank" rel="noopener" class="text-sm">{m.dis}</a>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <script>
+    const dugmeler = document.querySelectorAll<HTMLButtonElement>('.afis-filtre');
+    const kartlar = document.querySelectorAll<HTMLLIElement>('.afis-karti');
+    dugmeler.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        dugmeler.forEach((b) => { b.setAttribute('aria-pressed', 'false'); b.classList.remove('dugme-birincil'); b.classList.add('dugme-ikincil'); });
+        btn.setAttribute('aria-pressed', 'true'); btn.classList.remove('dugme-ikincil'); btn.classList.add('dugme-birincil');
+        const hedef = btn.dataset.kategori;
+        kartlar.forEach((li) => { li.style.display = hedef === 'hepsi' || li.dataset.kategori === hedef ? '' : 'none'; });
+      });
+    });
+  </script>
+</Base>

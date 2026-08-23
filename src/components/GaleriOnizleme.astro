@@ -17,7 +17,7 @@ const hepsi = dil === 'tr' ? 'Tüm galeri' : 'Toute la galerie';
   <ul class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 sm:gap-3" role="list">
     {secim.map((g, i) => (
       <li class:list={[i === 0 && 'col-span-2 row-span-2']}>
-        <a href={g.data.dosya} target="_blank" rel="noopener" class="gorsel-cerceve block h-full overflow-hidden group" aria-label={g.data.alt[dil]}>
+        <a href={g.data.dosya} data-lightbox="anasayfa-galeri" data-caption={g.data.alt[dil]} class="gorsel-cerceve block h-full overflow-hidden group" aria-label={g.data.alt[dil]}>
           <img src={i === 0 ? g.data.dosya : (g.data.kucuk ?? g.data.dosya)} alt={g.data.alt[dil]} loading="lazy" decoding="async" width={i === 0 ? 1600 : 480} height={i === 0 ? 1200 : 360} class="h-full w-full object-cover aspect-[4/3] transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
         </a>
       </li>

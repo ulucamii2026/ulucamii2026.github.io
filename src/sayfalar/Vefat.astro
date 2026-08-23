@@ -12,22 +12,28 @@ const site = await siteAyarlari();
 const c = site.cenaze;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const yillar = [...new Set(liste.map((v) => v.data.vefat.getFullYear()))].sort((a, b) => b - a);
+const monogram = (ad: string) => {
+  const kelimeler = ad.replace(/\(.*?\)/g, '').trim().split(/\s+/).filter(Boolean);
+  const ilk = kelimeler[0]?.[0] ?? '';
+  const son = kelimeler.length > 1 ? kelimeler[kelimeler.length - 1][0] : '';
+  return (ilk + son).toLocaleUpperCase('tr');
+};
 const m = dil === 'tr' ? {
   alt: 'Cemaatimizden Hakk’a yürüyen kardeşlerimizi rahmetle, minnetle anıyoruz. Cenaze namazı duyuruları da bu sayfada yayınlanır.',
   ayetMeal: '“Biz Allah’a aidiz ve O’na döneceğiz.” (Bakara, 2/156)',
   bos: 'Şu anda yayınlanmış vefat haberi bulunmuyor.',
   cenazeNamazi: 'Cenaze namazı', defin: 'Defin', memleket: 'Memleketi', taziye: 'Taziye', yas: 'yaşında',
   dua: 'Allah rahmet eylesin, mekânı cennet olsun.',
-  hizmetBaslik: 'Cenaze hizmetlerimiz',
-  hizmet: ['Vefat haberinin cemaate duyurulması (cami, web sitesi, WhatsApp)', 'Gasil (yıkama), kefenleme ve cenaze namazı', 'Türkiye’ye nakil veya Belçika’da defin için Başkonsolosluk ve Belçika Diyanet Vakfı ile koordinasyon', 'Taziye, mevlid ve Kur’an tilaveti programları'],
-  hizmetNot: 'Vefat hâlinde gece gündüz din görevlimizi arayabilirsiniz.',
+  hizmetBaslik: 'Cenaze hizmetleri kimin sorumluluğunda?',
+  hizmet: ['Gasil (yıkama), techiz-tekfin, Türkiye’ye nakil veya Belçika’da defin ve bütün resmî cenaze işlemleri: Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu (1982’den beri). Vefat hâlinde ilk aranacak yer fondur.', 'Camimizin görevi: cenaze namazının kıldırılması, vefat haberinin cemaate duyurulması (cami, web sitesi, WhatsApp) ve taziye/mevlid programları.', 'Din görevlimiz, cenaze camimize getirilip namazı kılınacağı zaman devreye girer; yıkama ve nakil işlemlerini yürütmez.'],
+  hizmetNot: 'Fonun bilgisi dışında yapılan cenaze işlemleri için fon yardımı yapılmaz. Cenaze namazı için camimizle din görevlimiz üzerinden irtibat kurulur.',
   nakil: 'Cenaze ve Türkiye’ye nakil işlemleri →',
   aileNot: 'Bu sayfadaki kayıtlar ailelerin bilgisi ve isteğiyle yayınlanır. Ekleme, düzeltme veya kaldırma talepleri için dernek yönetimine ulaşın.',
   acilBaslik: 'Vefat anında aranacak numaralar',
-  acil1: 'Din görevlimiz', acil2: 'BDV Cenaze Fonu — acil hat (7/24)', acil2b: 'mesai saatinde', acil3: 'Başkonsolosluk nöbetçi hattı',
+  acil1: 'BDV Cenaze Fonu — vefat hattı', acil1b: 'hafta içi mesai saatinde', acil2: 'Din görevlimiz — cenaze namazı', acil3: 'Başkonsolosluk nöbetçi hattı',
   surecBaslik: 'Adım adım süreç',
-  surec: ['Vefatı doktora tespit ettirin (ölüm raporu).', 'Din görevlimizi arayın; cenaze namazı ve yıkama planlanır.', 'BDV Cenaze Fonu’nu arayın — fon onayı olmadan başka cenaze firması kullanılırsa masraflar karşılanmaz.', 'Belediyeye (Marche-en-Famenne nüfus servisi) ölüm bildirimi yapılır.', 'Türkiye’ye nakil: Başkonsolosluk cenaze nakil belgesi + Saniport “laissez-passer mortuaire” (genelde cenaze firması yürütür).', 'Belçika’da defin tercih edilirse: Marche-en-Famenne/Aye çok dinli mezarlığı (Müslüman parseli) veya Namur, Liège, Charleroi.'],
-  fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Güncel aidat için fonu arayınız.',
+  surec: ['Vefatı doktora tespit ettirin (ölüm raporu).', 'Hemen BDV Cenaze Fonu’nu arayın: yıkama, kefenleme, nakil veya defin ve cenaze firmasıyla bütün işlemleri fon yürütür. Fon onayı olmadan başka firma kullanılırsa masraflar karşılanmaz.', 'Cenaze namazı camimizde kılınacaksa din görevlimizi arayın; namazın günü ve vakti kararlaştırılır, cemaate duyurulur.', 'Belediyeye (Marche-en-Famenne nüfus servisi) ölüm bildirimi yapılır (genellikle cenaze firması yürütür).', 'Türkiye’ye nakil: Başkonsolosluk cenaze nakil belgesi + Saniport “laissez-passer mortuaire” — fon ve cenaze firması takip eder.', 'Belçika’da defin tercih edilirse: Marche-en-Famenne/Aye çok dinli mezarlığı (Müslüman parseli) veya Namur, Liège, Charleroi.'],
+  fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Her yıl Ocak ayının ilk haftası aidat mektubu gönderilir; 25 Ocak’a kadar mektup gelmezse fona bilgi verilmelidir. Aidat, mektup ulaştıktan sonra en geç 10 gün içinde ödenir; doğum, evlenme, boşanma ve adres değişiklikleri fona bildirilir.',
   belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
 } : {
   alt: 'Nous honorons la mémoire des membres de notre communauté qui nous ont quittés. Les annonces de prières funéraires sont également publiées ici.',
@@ -35,16 +41,16 @@ const m = dil === 'tr' ? {
   bos: 'Aucun avis de décès publié pour le moment.',
   cenazeNamazi: 'Prière funéraire', defin: 'Inhumation', memleket: 'Originaire de', taziye: 'Condoléances', yas: 'ans',
   dua: 'Qu’Allah lui fasse miséricorde et l’accueille au Paradis.',
-  hizmetBaslik: 'Nos services funéraires',
-  hizmet: ['Annonce du décès à la communauté (mosquée, site web, WhatsApp)', 'Toilette mortuaire (ghusl), linceul et prière funéraire', 'Coordination avec le Consulat général et la Fondation Diyanet de Belgique pour le rapatriement en Turquie ou l’inhumation en Belgique', 'Programmes de condoléances, mevlid et récitation du Coran'],
-  hizmetNot: 'En cas de décès, vous pouvez joindre notre imam à toute heure.',
+  hizmetBaslik: 'Qui est responsable des funérailles ?',
+  hizmet: ['Toilette mortuaire (ghusl), linceul, rapatriement en Turquie ou inhumation en Belgique et toutes les démarches officielles : le Fonds funéraire de la Fondation Diyanet de Belgique (depuis 1982). En cas de décès, c’est le premier numéro à appeler.', 'Rôle de la mosquée : célébrer la prière funéraire, annoncer le décès à la communauté (mosquée, site web, WhatsApp) et organiser les programmes de condoléances et de mevlid.', 'Notre imam intervient lorsque le défunt est amené à la mosquée pour la prière funéraire ; il ne s’occupe ni de la toilette ni du transport.'],
+  hizmetNot: 'Aucune aide n’est accordée par le fonds pour des démarches entreprises à son insu. Pour la prière funéraire, contactez la mosquée via notre imam.',
   nakil: 'Décès et rapatriement en Turquie →',
   aileNot: 'Les avis publiés ici le sont avec l’accord des familles. Pour toute demande d’ajout, de correction ou de retrait, contactez le comité de l’association.',
   acilBaslik: 'Numéros à appeler en cas de décès',
-  acil1: 'Notre imam', acil2: 'Fonds funéraire BDV — urgence (24h/24)', acil2b: 'heures de bureau', acil3: 'Consulat général — permanence',
+  acil1: 'Fonds funéraire BDV — ligne décès', acil1b: 'heures de bureau en semaine', acil2: 'Notre imam — prière funéraire', acil3: 'Consulat général — permanence',
   surecBaslik: 'Démarches étape par étape',
-  surec: ['Faire constater le décès par un médecin (certificat de décès).', 'Appeler notre imam : toilette mortuaire et prière funéraire sont organisées.', 'Appeler le Fonds funéraire BDV — sans l’accord du fonds, les frais d’une autre entreprise funéraire ne sont pas pris en charge.', 'Déclarer le décès à la commune (service population de Marche-en-Famenne).', 'Rapatriement en Turquie : attestation de transport du Consulat + laissez-passer mortuaire (Saniport), généralement gérés par l’entreprise funéraire.', 'Inhumation en Belgique : cimetière multiconfessionnel de Marche-en-Famenne/Aye (parcelle musulmane) ou Namur, Liège, Charleroi.'],
-  fonNot: 'Affiliation au fonds : citoyens turcs résidant en Belgique depuis au moins 1 an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Pour la cotisation actuelle, contactez le fonds.',
+  surec: ['Faire constater le décès par un médecin (certificat de décès).', 'Appeler immédiatement le Fonds funéraire BDV : toilette, linceul, rapatriement ou inhumation et toutes les démarches avec l’entreprise funéraire sont pris en charge par le fonds. Sans son accord, les frais d’une autre entreprise ne sont pas remboursés.', 'Si la prière funéraire a lieu à la mosquée, appeler notre imam : le jour et l’heure sont fixés et annoncés à la communauté.', 'Déclarer le décès à la commune (service population de Marche-en-Famenne) — généralement effectué par l’entreprise funéraire.', 'Rapatriement en Turquie : attestation de transport du Consulat + laissez-passer mortuaire (Saniport), suivis par le fonds et l’entreprise funéraire.', 'Inhumation en Belgique : cimetière multiconfessionnel de Marche-en-Famenne/Aye (parcelle musulmane) ou Namur, Liège, Charleroi.'],
+  fonNot: 'Affiliation au fonds : citoyens turcs résidant en Belgique depuis au moins 1 an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Chaque année, la lettre de cotisation est envoyée la première semaine de janvier ; si elle n’est pas reçue avant le 25 janvier, prévenir le fonds. La cotisation se paie dans les 10 jours suivant la réception ; naissances, mariages, divorces et changements d’adresse doivent être signalés au fonds.',
   belediye: 'Service population de la commune', mezarlik: 'Cimetière', fonSayfa: 'Page d’information du fonds ↗',
 };
 ---
@@ -64,7 +70,13 @@ const m = dil === 'tr' ? {
               const d = v.data; const yas = d.dogumYili ? yil - d.dogumYili : null;
               return (
                 <li class="kart p-5 sm:p-6 flex gap-5">
-                  {d.foto ? <img src={d.foto} alt="" width="96" height="120" class="h-[120px] w-24 object-cover rounded-(--radius-kose) border border-(--cizgi) shrink-0 [filter:sepia(.25)]" loading="lazy" /> : <div class="hidden sm:flex h-[120px] w-24 shrink-0 items-center justify-center border border-(--cizgi) rounded-(--radius-kose) text-(--vurgu) text-3xl" aria-hidden="true">✦</div>}
+                  {d.foto ? (
+                    <a href={d.foto} data-lightbox="vefat" data-caption={d.ad} class="block h-[120px] w-24 shrink-0 overflow-hidden rounded-(--radius-kose) border border-(--cizgi)">
+                      <img src={d.foto} alt="" width="96" height="120" class="h-[120px] w-24 object-cover [filter:sepia(.25)]" loading="lazy" />
+                    </a>
+                  ) : (
+                    <div class="flex h-[120px] w-24 shrink-0 items-center justify-center border border-(--cizgi) rounded-(--radius-kose) bg-(--zemin-2) font-serif text-2xl tracking-wide text-(--vurgu)" aria-hidden="true">{monogram(d.ad)}</div>
+                  )}
                   <div class="min-w-0 flex-1">
                     <h3 class="leading-tight">{d.ad}</h3>
                     <p class="etiket mt-1">
@@ -102,15 +114,16 @@ const m = dil === 'tr' ? {
         <p class="etiket etiket-vurgu">{m.hizmetBaslik}</p>
         <ul class="mt-3 grid gap-2 text-sm list-[square] pl-4">{m.hizmet.map((h) => <li>{h}</li>)}</ul>
         <p class="mt-4 text-sm">{m.hizmetNot}</p>
-        <p class="mt-2"><a href={tel(site.telefon.dinGorevlisi)} class="dugme dugme-birincil w-full justify-center mono">{site.telefon.dinGorevlisi}</a></p>
+        {c && <p class="mt-2"><a href={tel(c.fonAcil)} class="dugme dugme-birincil w-full justify-center mono">{c.fonAcil}</a></p>}
+        {c && <p class="mt-2 text-xs text-(--metin-2) text-center">{c.fonAd} · <a href={c.fonWeb} rel="noopener">{m.fonSayfa}</a></p>}
         <p class="mt-3 text-sm"><a href={yol(dil, 'konsolosluk') + '#cenaze'}>{m.nakil}</a></p>
       </div>
       {c && (
         <div class="kart p-5 border-(--vurgu)">
           <p class="etiket etiket-vurgu">{m.acilBaslik}</p>
           <ol class="mt-3 grid gap-3 text-sm list-decimal pl-5">
-            <li><span class="etiket block">{m.acil1}</span><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base font-semibold">{site.telefon.dinGorevlisi}</a></li>
-            <li><span class="etiket block">{m.acil2}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a><span class="block text-(--metin-2)">{m.acil2b}: <a href={tel(c.fonMesai)} class="mono">{c.fonMesai}</a></span></li>
+            <li><span class="etiket block">{m.acil1}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a><span class="block text-(--metin-2)">{m.acil1b}: <a href={tel(c.fonMesai)} class="mono">{c.fonMesai}</a></span></li>
+            <li><span class="etiket block">{m.acil2}</span><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base font-semibold">{site.telefon.dinGorevlisi}</a></li>
             <li><span class="etiket block">{m.acil3}</span><a href={tel(site.konsolosluk.acil)} class="mono text-base font-semibold">{site.konsolosluk.acil}</a></li>
           </ol>
           <dl class="mt-4 grid gap-2 text-sm cetvel pt-3">

@@ -2,6 +2,11 @@
 baslik: Brüksel Başkonsolosu Camii Ziyareti
 tarih: 2025-06-16
 ozet: Brüksel Başkonsolosu, Konsolos Yardımcısı, Gümrük Müşaviri ve Eğitim Müşaviri, 16 Haziran 2025’te Ulu Camii’ni ziyaret ederek dernek yöneticileri ve cemaatle bir araya geldi.
+kapak: /media/duyurular/2025-baskonsolos-ziyareti/01.webp
+kapakAlt: "Brüksel Başkonsolosu Camii Ziyareti"
+galeri:
+  - dosya: /media/duyurular/2025-baskonsolos-ziyareti/01.webp
+    kucuk: /media/duyurular/2025-baskonsolos-ziyareti/01-k.webp
 etiketler:
   - başkonsolosluk
   - resmi ziyaret

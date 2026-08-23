@@ -2,6 +2,11 @@
 baslik: 2026 Kurban Vekâleti Duyurusu
 tarih: 2026-03-19
 ozet: Türkiye Diyanet Vakfı’nın vekâletle kurban organizasyonuna bu yıl da Ulu Camimiz aracılığıyla katılabilirsiniz. Yurt dışı kurban bedeli 125 €; son başvuru tarihleri 25 ve 27 Mayıs 2026.
+kapak: /media/duyurular/2026-kurban-vekaleti/01.webp
+kapakAlt: "2026 Kurban Vekâleti Duyurusu"
+galeri:
+  - dosya: /media/duyurular/2026-kurban-vekaleti/01.webp
+    kucuk: /media/duyurular/2026-kurban-vekaleti/01-k.webp
 etiketler:
   - kurban
   - vekalet

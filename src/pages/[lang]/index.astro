@@ -39,7 +39,7 @@ const hizmetler = [
 ];
 const m = dil === 'tr' ? {
   heroUst: 'Marche-en-Famenne · Belçika · 1979’dan beri',
-  heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze hizmetleri — Famenne’deki Müslümanların 40 yıllık ocağı.',
+  heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze namazları — Famenne’deki Müslümanların 40 yıllık ocağı.',
   buHafta: 'Bu hafta camide', buHaftaAlt: 'Haftalık programımız; bugün vurgulu.',
   hizmet: 'Hizmetlerimiz',
   sonDuyuru: 'Son duyurular', tumDuyuru: 'Tüm duyurular',
@@ -50,7 +50,7 @@ const m = dil === 'tr' ? {
   duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
 } : {
   heroUst: 'Marche-en-Famenne · Belgique · depuis 1979',
-  heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, services funéraires — le foyer des musulmans de la Famenne depuis 40 ans.',
+  heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne depuis 40 ans.',
   buHafta: 'Cette semaine à la mosquée', buHaftaAlt: 'Notre programme hebdomadaire ; le jour actuel est mis en évidence.',
   hizmet: 'Nos services',
   sonDuyuru: 'Dernières annonces', tumDuyuru: 'Toutes les annonces',
@@ -106,7 +106,7 @@ const jsonLd = {
         <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={namazEtiket} vurgulu cumaEtiket={t('namaz.cuma')} cumaSaati={site.cumaSaati} />
         <p class="etiket mt-4">{t('namaz.kaynak')}</p>
       </div>
-      <div>
+      <div id="bu-hafta" class="scroll-mt-24">
         <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>
         <p class="mt-1 mb-5 text-sm text-(--metin-2)">{m.buHaftaAlt}</p>
         <BuHafta dil={dil} program={site.haftalikProgram} bugunIdx={bugunGun} />

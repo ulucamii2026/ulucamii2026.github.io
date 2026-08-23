@@ -2,6 +2,11 @@
 baslik: Biz Bize Yeteriz Türkiyem Kampanyası
 tarih: 2020-04-24
 ozet: Salgın döneminde Türkiye’deki muhtaç vatandaşlara destek için başlatılan kampanyaya katılmak isteyenler dernek yönetimine yönlendirildi.
+kapak: /media/duyurular/2020-biz-bize-yeteriz-nisan/01.webp
+kapakAlt: "Biz Bize Yeteriz Türkiyem Kampanyası"
+galeri:
+  - dosya: /media/duyurular/2020-biz-bize-yeteriz-nisan/01.webp
+    kucuk: /media/duyurular/2020-biz-bize-yeteriz-nisan/01-k.webp
 etiketler:
   - arşiv
   - bağış

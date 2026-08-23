@@ -2,6 +2,11 @@
 baslik: Cérémonie de passation du Conseil d’administration
 tarih: 2026-02-07
 ozet: Le samedi 7 février 2026 au soir, après la prière du soir (Yatsı), une cérémonie de passation du Conseil d’administration s’est tenue à la mosquée. Les membres sortants ont été remerciés.
+kapak: /media/duyurular/2026-yonetim-devir-teslim/01.webp
+kapakAlt: "Cérémonie de passation du Conseil d’administration"
+galeri:
+  - dosya: /media/duyurular/2026-yonetim-devir-teslim/01.webp
+    kucuk: /media/duyurular/2026-yonetim-devir-teslim/01-k.webp
 etiketler:
   - conseil d’administration
   - association

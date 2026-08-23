@@ -24,11 +24,11 @@ const not = dil === 'tr'
     <p class="mt-6 text-(--metin-2) max-w-prose">{not}</p>
     <h2 class="mt-12 mb-4">{t('ana.tumvakitler')}</h2>
     <div class="overflow-x-auto kart-kagit">
-      <table class="min-w-[640px]">
+      <table class="min-w-[640px]" id="vakit-tablosu">
         <thead><tr><th>{t('namaz.tarih')}</th><th>{t('namaz.hicri')}</th><th>{t('namaz.imsak')}</th><th>{t('namaz.gunes')}</th><th>{t('namaz.ogle')}</th><th>{t('namaz.ikindi')}</th><th>{t('namaz.aksam')}</th><th>{t('namaz.yatsi')}</th></tr></thead>
         <tbody>
           {tablo.map((g) => (
-            <tr class:list={[g.tarih === bugun && 'bg-(--vurgu)/8 font-semibold']}>
+            <tr data-tarih={g.tarih} class:list={[g.tarih === bugun && 'bg-(--vurgu)/8 font-semibold']}>
               <td class="whitespace-nowrap">{tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'short', day: 'numeric', month: 'short' })}</td>
               <td class="text-(--metin-2) text-sm">{hicriCevir(g.hicri, dil)}</td>
               <td class="mono">{g.imsak}</td><td class="mono">{g.gunes}</td><td class="mono">{g.ogle}</td><td class="mono">{g.ikindi}</td><td class="mono">{g.aksam}</td><td class="mono">{g.yatsi}</td>
@@ -40,3 +40,12 @@ const not = dil === 'tr'
     <p class="etiket mt-4">{t('genel.guncelleme')}: {tarihBicimle(namaz.guncelleme, dil)} · {namaz.kaynak}</p>
   </div>
 </Base>
+<script>
+  // Tablo her gün kendini tazeler: Brüksel saatine göre bugünden önceki satırlar gizlenir, bugün vurgulanır (derleme eski kalsa bile)
+  const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  document.querySelectorAll<HTMLTableRowElement>('#vakit-tablosu tr[data-tarih]').forEach((tr) => {
+    const d = tr.dataset.tarih || '';
+    if (d < bugun) tr.hidden = true;
+    tr.classList.toggle('bg-(--vurgu)/8', d === bugun); tr.classList.toggle('font-semibold', d === bugun);
+  });
+</script>

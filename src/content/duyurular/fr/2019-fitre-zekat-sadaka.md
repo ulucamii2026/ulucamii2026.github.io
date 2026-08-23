@@ -2,6 +2,11 @@
 baslik: Collecte de la Fitra, de la Zakât et de la Sadaka (2019)
 tarih: 2019-05-30
 ozet: Pendant le Ramadan, la Fitra obligatoire (10€), ainsi que la Zakât et la Sadaka, sont collectées par la Diyanet contre reçu.
+kapak: /media/duyurular/2019-fitre-zekat-sadaka/01.webp
+kapakAlt: "Collecte de la Fitra, de la Zakât et de la Sadaka (2019)"
+galeri:
+  - dosya: /media/duyurular/2019-fitre-zekat-sadaka/01.webp
+    kucuk: /media/duyurular/2019-fitre-zekat-sadaka/01-k.webp
 etiketler:
   - archives
   - ramadan

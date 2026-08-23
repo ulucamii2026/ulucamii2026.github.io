@@ -2,6 +2,13 @@
 baslik: Iftar avec le Bourgmestre
 tarih: 2025-03-21
 ozet: Le Bourgmestre de Marche-en-Famenne, accompagné de représentants communaux, a participé à un iftar organisé par notre mosquée le 20 mars 2025.
+kapak: /media/duyurular/2025-belediye-baskani-iftar/01.webp
+kapakAlt: "Iftar avec le Bourgmestre"
+galeri:
+  - dosya: /media/duyurular/2025-belediye-baskani-iftar/01.webp
+    kucuk: /media/duyurular/2025-belediye-baskani-iftar/01-k.webp
+  - dosya: /media/duyurular/2025-belediye-baskani-iftar/02.webp
+    kucuk: /media/duyurular/2025-belediye-baskani-iftar/02-k.webp
 etiketler:
   - ramadan
   - iftar

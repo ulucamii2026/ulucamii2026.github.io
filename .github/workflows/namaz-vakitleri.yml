@@ -2,7 +2,7 @@ name: Namaz vakitlerini güncelle (Diyanet)
 
 on:
   schedule:
-    - cron: "17 3 * * 1"   # her Pazartesi 03:17 UTC (veri + yaklaşan etkinlik listesi tazelenir)
+    - cron: "47 2 * * *"   # her gün 02:47 UTC — veri değiştiyse commit (günlük yayın deploy.yml zamanlayıcısında)
   workflow_dispatch:
 
 permissions:

@@ -11,7 +11,7 @@ const gunler = dil === 'tr' ? ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 
 const kisa = dil === 'tr' ? ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'] : ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 const bosGun = dil === 'tr' ? 'Beş vakit namaz' : 'Cinq prières quotidiennes';
 const bugunEtiket = dil === 'tr' ? 'Bugün' : 'Aujourd’hui';
-const ikonSec = (s?: string) => (s === 'kurankursu' ? 'kurs' : s === 'namaz' ? 'hutbe' : 'takvim');
+const ikonSec = (s?: string) => (s === 'kurankursu' || s === 'irsat' ? 'kurs' : s === 'namaz' ? 'hutbe' : 'takvim');
 ---
 <ol class="kart-kagit divide-y divide-(--cizgi)" role="list">
   {gunler.map((g, i) => {

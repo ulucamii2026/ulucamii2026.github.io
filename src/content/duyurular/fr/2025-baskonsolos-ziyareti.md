@@ -2,6 +2,11 @@
 baslik: Visite du Consul général de Bruxelles à la mosquée
 tarih: 2025-06-16
 ozet: Le Consul général de Bruxelles, le Consul adjoint, le conseiller aux douanes et le conseiller à l’éducation ont visité la Mosquée Ulu Camii le 16 juin 2025, à la rencontre des responsables de l’association et de la communauté.
+kapak: /media/duyurular/2025-baskonsolos-ziyareti/01.webp
+kapakAlt: "Visite du Consul général de Bruxelles à la mosquée"
+galeri:
+  - dosya: /media/duyurular/2025-baskonsolos-ziyareti/01.webp
+    kucuk: /media/duyurular/2025-baskonsolos-ziyareti/01-k.webp
 etiketler:
   - consulat général
   - visite officielle

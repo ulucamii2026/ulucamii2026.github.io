@@ -13,6 +13,7 @@ const duyurular = defineCollection({
     ozet: z.string().max(300).optional(),
     kapak: z.string().optional(),
     kapakAlt: z.string().optional(),
+    galeri: z.array(z.object({ dosya: z.string(), kucuk: z.string().optional(), alt: z.string().optional() })).default([]),
     etiketler: z.array(z.string()).default([]),
     oneCikan: z.boolean().default(false),
     taslak: z.boolean().default(false),
@@ -30,6 +31,7 @@ const etkinlikler = defineCollection({
     yer: z.string().optional(),
     afis: z.string().optional(),
     afisKucuk: z.string().optional(),
+    galeri: z.array(z.object({ dosya: z.string(), kucuk: z.string().optional(), alt: z.string().optional() })).default([]),
     ozet: z.string().max(300).optional(),
     kategori: z.enum(['bayram', 'kandil', 'ramazan', 'kurban', 'bagis', 'kurs', 'yarisma', 'genel']).default('genel'),
     taslak: z.boolean().default(false),
@@ -64,6 +66,8 @@ const ayarlar = defineCollection({
     banka: z.object({ iban: z.string(), bic: z.string(), banka: z.string(), hesapAdi: z.string() }),
     cumaSaati: z.string().optional(),
     kursKayitLinki: z.string().url().optional(),
+    servisler: z.object({ basvuru: z.string().default('') }).default({ basvuru: '' }),
+    imsakiyePdf: z.string().url().optional(),
     sosyal: z.object({ facebook: z.string().url().optional(), instagram: z.string().url().optional(), youtube: z.string().url().optional() }).default({}),
     konsolosluk: z.object({
       ad: z.string(), santral: z.string(), acil: z.string(), cagriMerkezi: z.string(), eposta: z.string(), web: z.string().url(), randevu: z.string().url(), edevlet: z.string().url(),
@@ -112,5 +116,33 @@ const vefat = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat };
+/** Hutbeler — src/content/hutbeler/YYYY-MM-DD-slug.md (dilden bağımsız; başlık/özet tr-fr, PDF'ler public/media/hutbeler/) */
+const hutbeler = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/hutbeler' }),
+  schema: z.object({
+    baslik: z.object({ tr: z.string(), fr: z.string().optional() }),
+    tarih: z.coerce.date(),
+    pdf: z.object({ tr: z.string().optional(), fr: z.string().optional() }).default({}),
+    ozet: z.object({ tr: z.string().optional(), fr: z.string().optional() }).optional(),
+    kaynak: z.string().optional(),
+    taslak: z.boolean().default(false),
+  }),
+});
+
+/** Afişler — src/content/afisler/slug.md (dilden bağımsız; görseller public/media/afisler/) */
+const afisler = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/afisler' }),
+  schema: z.object({
+    baslik: z.object({ tr: z.string(), fr: z.string().optional() }),
+    tarih: z.coerce.date(),
+    gorsel: z.string(),
+    kucuk: z.string().optional(),
+    kaynak: z.enum(['ulucamii', 'bdv', 'diyanet', 'diger']).default('ulucamii'),
+    kategori: z.enum(['kampanya', 'program', 'egitim', 'hac-umre', 'kurban', 'zekat', 'cenaze', 'ramazan', 'diger']).default('diger'),
+    link: z.string().optional(),
+    taslak: z.boolean().default(false),
+  }),
+});
+
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, hutbeler, afisler };
 export { dil };

@@ -95,7 +95,7 @@ En cas de décès d’un ressortissant turc en Belgique, la démarche se déroul
 
 Source officielle : [konsolosluk.gov.tr/Procedure/ShowProcedure/8](https://www.konsolosluk.gov.tr/Procedure/ShowProcedure/8)
 
-**Le soutien de notre mosquée :** notre mosquée accompagne les familles pour la toilette funéraire, la prière des morts et l’organisation du rapatriement. N’hésitez pas à contacter notre imam dans une telle situation.
+**Le rôle de notre mosquée :** la toilette mortuaire, le linceul, le rapatriement et l’inhumation sont entièrement pris en charge par le Fonds funéraire de la Fondation Diyanet de Belgique ; en cas de décès, appelez d’abord le fonds. Notre mosquée célèbre la prière funéraire et annonce le décès à la communauté ; si la prière a lieu à la mosquée, contactez notre imam.
 
 ### Procuration et actes notariés
 

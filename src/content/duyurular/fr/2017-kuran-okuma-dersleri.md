@@ -2,6 +2,11 @@
 baslik: Cours de lecture du Coran pour les femmes
 tarih: 2017-10-09
 ozet: Des cours de lecture du Coran sont proposés aux femmes les mardis et jeudis de 12h30 à 13h30 à la mosquée.
+kapak: /media/duyurular/2017-kuran-okuma-dersleri/01.webp
+kapakAlt: "Cours de lecture du Coran pour les femmes"
+galeri:
+  - dosya: /media/duyurular/2017-kuran-okuma-dersleri/01.webp
+    kucuk: /media/duyurular/2017-kuran-okuma-dersleri/01-k.webp
 etiketler:
   - archives
   - cours

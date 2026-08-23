@@ -2,6 +2,11 @@
 baslik: Annonce des tarifs de Omra (2017-2018)
 tarih: 2017-11-07
 ozet: Les informations tarifaires concernant nos programmes de Omra pour la période 2017-2018 ont été communiquées à nos fidèles.
+kapak: /media/duyurular/2017-umre-fiyatlari/01.webp
+kapakAlt: "Annonce des tarifs de Omra (2017-2018)"
+galeri:
+  - dosya: /media/duyurular/2017-umre-fiyatlari/01.webp
+    kucuk: /media/duyurular/2017-umre-fiyatlari/01-k.webp
 etiketler:
   - archives
   - omra

@@ -2,6 +2,11 @@
 baslik: Fitre-Zekât-Sadaka Toplama Duyurusu (2019)
 tarih: 2019-05-30
 ozet: Ramazan ayında vâcip olan fitre (10€), farz olan zekât ve sadakalar Diyanet İşleri Başkanlığı olarak makbuz karşılığında kabul edilmektedir.
+kapak: /media/duyurular/2019-fitre-zekat-sadaka/01.webp
+kapakAlt: "Fitre-Zekât-Sadaka Toplama Duyurusu (2019)"
+galeri:
+  - dosya: /media/duyurular/2019-fitre-zekat-sadaka/01.webp
+    kucuk: /media/duyurular/2019-fitre-zekat-sadaka/01-k.webp
 etiketler:
   - arşiv
   - ramazan

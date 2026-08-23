@@ -28,7 +28,7 @@ Au-delà de la vie cultuelle, notre mosquée propose un large éventail de servi
 - Les programmes du ramadan et l’organisation des iftars
 - Les programmes des fêtes religieuses et des nuits saintes (kandil)
 - L’organisation du sacrifice par procuration (Qurban)
-- Les services funéraires et le transport des défunts
+- Prières funéraires et avis de décès (toilette, rapatriement et inhumation sont assurés par le Fonds funéraire de la Fondation Diyanet de Belgique)
 - Les services destinés aux personnes découvrant ou embrassant l’islam (conversion)
 - La coordination des demandes de cours de turc
 - Des concours de connaissances religieuses

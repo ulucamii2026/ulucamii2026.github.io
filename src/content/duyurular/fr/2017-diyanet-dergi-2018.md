@@ -2,6 +2,11 @@
 baslik: Abonnement 2018 aux revues du Diyanet
 tarih: 2017-12-27
 ozet: L’abonnement 2018 aux revues du Diyanet (mensuelle, enfants, scientifique) a été annoncé, avec des tarifs annuels de 20 à 30 euros selon la revue.
+kapak: /media/duyurular/2017-diyanet-dergi-2018/01.webp
+kapakAlt: "Abonnement 2018 aux revues du Diyanet"
+galeri:
+  - dosya: /media/duyurular/2017-diyanet-dergi-2018/01.webp
+    kucuk: /media/duyurular/2017-diyanet-dergi-2018/01-k.webp
 etiketler:
   - archives
   - revues du Diyanet

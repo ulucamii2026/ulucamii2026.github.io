@@ -22,6 +22,10 @@ site:
     hesapAdi: Communauté Turque de la Mosquée
   cumaSaati: ""
   kursKayitLinki: https://ulucamii2026.github.io/ulucamii-kayit/
+  # Apps Script web uygulaması (dernek hesabı ulucamii2026@gmail.com) — dağıtım sonrası /exec adresi buraya yazılır
+  servisler:
+    basvuru: ""
+  imsakiyePdf: https://www.diyanet.be/Portals/0/imsakiye/2026/M.FAMENNE.pdf
   sosyal:
     facebook: https://www.facebook.com/profile.php?id=61591465715992
   konsolosluk:
@@ -48,6 +52,14 @@ site:
     mezarlikAdres: Rue de Tavys, 6900 Aye
     saniportEposta: saniport.zaventem@health.fgov.be
   haftalikProgram:
+    - gun: 3
+      baslik: { tr: "Hanımlara irşat programı — Esma AVCI Hoca Hanım", fr: "Séance pour les femmes — Mme Esma AVCI" }
+      saat: { tr: "10:30–12:30 · Kur’an, ana ders, soru-cevap", fr: "10h30–12h30 · Coran, cours, questions-réponses" }
+      sayfa: irsat
+    - gun: 3
+      baslik: { tr: "Genç kızlar atölyesi — Esma AVCI Hoca Hanım", fr: "Atelier des jeunes filles — Mme Esma AVCI" }
+      saat: { tr: "14:00–16:00 · Türkçe/Fransızca", fr: "14h00–16h00 · turc/français" }
+      sayfa: irsat
     - gun: 5
       baslik: { tr: "Cuma namazı ve hutbe", fr: "Prière et prêche du vendredi" }
       saat: { tr: "Öğle vaktinde", fr: "À l’heure de dhuhr" }

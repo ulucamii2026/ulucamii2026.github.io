@@ -2,6 +2,11 @@
 baslik: Institut Notre-Dame Türkçe Dersleri Duyurusu
 tarih: 2018-11-14
 ozet: Institut Notre-Dame öğrencilerine yönelik Türkçe ve Türk kültürü dersleri, 16 Kasım 2018’den itibaren her cuma okul çıkışında verildi.
+kapak: /media/duyurular/2018-notre-dame-turkce-dersi/01.webp
+kapakAlt: "Institut Notre-Dame Türkçe Dersleri Duyurusu"
+galeri:
+  - dosya: /media/duyurular/2018-notre-dame-turkce-dersi/01.webp
+    kucuk: /media/duyurular/2018-notre-dame-turkce-dersi/01-k.webp
 etiketler:
   - arşiv
   - eğitim

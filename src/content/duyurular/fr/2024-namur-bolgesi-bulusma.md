@@ -2,6 +2,19 @@
 baslik: Rencontre communautaire de la région de Namur
 tarih: 2024-01-23
 ozet: Les mosquées de la région de Namur se sont réunies à la Grande Mosquée de Marche-en-Famenne pour une causerie sur la jeunesse, un moment convivial et une réunion régionale, avec le soutien de la communauté de la mosquée de Namur.
+kapak: /media/duyurular/2024-namur-bolgesi-bulusma/01.webp
+kapakAlt: "Rencontre communautaire de la région de Namur"
+galeri:
+  - dosya: /media/duyurular/2024-namur-bolgesi-bulusma/01.webp
+    kucuk: /media/duyurular/2024-namur-bolgesi-bulusma/01-k.webp
+  - dosya: /media/duyurular/2024-namur-bolgesi-bulusma/02.webp
+    kucuk: /media/duyurular/2024-namur-bolgesi-bulusma/02-k.webp
+  - dosya: /media/duyurular/2024-namur-bolgesi-bulusma/03.webp
+    kucuk: /media/duyurular/2024-namur-bolgesi-bulusma/03-k.webp
+  - dosya: /media/duyurular/2024-namur-bolgesi-bulusma/04.webp
+    kucuk: /media/duyurular/2024-namur-bolgesi-bulusma/04-k.webp
+  - dosya: /media/duyurular/2024-namur-bolgesi-bulusma/05.webp
+    kucuk: /media/duyurular/2024-namur-bolgesi-bulusma/05-k.webp
 etiketler:
   - arşiv
   - gençlik

@@ -1,0 +1,108 @@
+---
+/** İhtida (İslam'a giriş) bilgi sayfası — gövde src/content/sayfalar/{dil}/ihtida.md,
+    yan sütunda süreç zaman çizelgesi + gerekli belgeler + iletişim kartı + online başvuru düğmesi. */
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import Ikon from '../components/Ikon.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+
+const m = dil === 'tr'
+  ? {
+      surecBaslik: 'Süreç Nasıl İşler?',
+      surec: [
+        { b: 'Başvuru', a: 'Online formu doldurun veya doğrudan din görevlimizle görüşün.' },
+        { b: 'Görüşme ve tören günü', a: 'Camimizle birlikte uygun bir tören günü belirlenir.' },
+        { b: 'İhtida töreni', a: 'Tilavet, telkin, hür irade sorusu, kelime-i şehadet, tekbir ve tebrik.' },
+        { b: 'Belge takdimi', a: 'Kuşe kâğıda basılan İhtida Belgesi nüshası aynı gün size verilir.' },
+        { b: 'Resmî arşiv kaydı', a: 'Resmî nüsha Müşavirliğe gönderilir; kayıt işlemi birkaç hafta sürebilir.' },
+      ],
+      belgelerBaslik: 'Gerekli Belgeler',
+      belgeler: [
+        'Kimlik kartı (ön-arka) veya pasaport fotokopisi',
+        '1 adet vesikalık fotoğraf',
+        'Doldurulmuş başvuru formu / dilekçe',
+        'KVKK açık rıza onayı (form içinde imzalanır)',
+        'Sizinle gelecek 2 şahit',
+      ],
+      iletisimBaslik: 'Randevu ve Sorularınız İçin',
+      iletisimAlt: 'Süreç hakkında konuşmak isterseniz din görevlimizi arayabilir veya e-posta gönderebilirsiniz.',
+      basvuruBaslik: 'Online Başvuru',
+      basvuruAlt: 'Formu birkaç adımda doldurun; başvurunuz camimize ve size PDF olarak iletilsin.',
+      basvuruButon: 'Online başvuru yapın',
+      indirBaslik: 'Belgeler',
+      ek9: 'İhtida Belgesi (EK-9) — resmî örnek',
+      ek10: 'KVKK Açık Rıza Metni (EK-10) — tam metin',
+      ucretsiz: 'Süreç tamamen ücretsizdir.',
+    }
+  : {
+      surecBaslik: 'Comment se déroule la démarche ?',
+      surec: [
+        { b: 'Demande', a: 'Remplissez le formulaire en ligne ou contactez directement notre imam.' },
+        { b: 'Entretien et date de cérémonie', a: 'Une date de cérémonie est fixée avec la mosquée.' },
+        { b: 'Cérémonie de conversion', a: 'Récitation, discours, question du libre arbitre, chahada, takbir et félicitations.' },
+        { b: 'Remise de l’attestation', a: 'L’exemplaire imprimé sur papier glacé vous est remis le jour même.' },
+        { b: 'Enregistrement officiel', a: 'L’exemplaire officiel est envoyé au Conseiller ; l’enregistrement peut prendre plusieurs semaines.' },
+      ],
+      belgelerBaslik: 'Documents nécessaires',
+      belgeler: [
+        'Carte d’identité (recto-verso) ou copie du passeport',
+        '1 photo d’identité',
+        'Formulaire de demande complété',
+        'Consentement RGPD explicite (signé dans le formulaire)',
+        '2 témoins qui vous accompagnent',
+      ],
+      iletisimBaslik: 'Rendez-vous et questions',
+      iletisimAlt: 'Pour échanger sur la démarche, vous pouvez appeler notre imam ou lui envoyer un e-mail.',
+      basvuruBaslik: 'Demande en ligne',
+      basvuruAlt: 'Complétez le formulaire en quelques étapes ; votre demande est transmise à la mosquée et vous parvient en PDF.',
+      basvuruButon: 'Faire une demande en ligne',
+      indirBaslik: 'Documents',
+      ek9: 'Attestation de conversion (EK-9) — modèle officiel',
+      ek10: 'Consentement RGPD (EK-10) — texte complet',
+      ucretsiz: 'La démarche est entièrement gratuite.',
+    };
+---
+<IcerikSayfasi dil={dil} anahtar="ihtida" etiket={t('nav.ihtida')}>
+  <div slot="yan" class="kart-kagit p-5 border-(--vurgu-2)">
+    <p class="etiket etiket-vurgu">{m.basvuruBaslik}</p>
+    <p class="mt-2 text-sm text-(--metin-2)">{m.basvuruAlt}</p>
+    <a href={yol(dil, 'ihtidaBasvuru')} class="dugme dugme-birincil mt-4 w-full justify-center">{m.basvuruButon}</a>
+    <p class="mt-3 text-sm etiket-vurgu">{m.ucretsiz}</p>
+  </div>
+
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.surecBaslik}</p>
+    <ol class="mt-3 grid gap-3 text-sm list-decimal pl-5">
+      {m.surec.map((s) => <li><span class="font-semibold text-(--metin)">{s.b}</span><br /><span class="text-(--metin-2)">{s.a}</span></li>)}
+    </ol>
+  </div>
+
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.belgelerBaslik}</p>
+    <ul class="mt-3 grid gap-2 text-sm list-[square] pl-4">
+      {m.belgeler.map((b) => <li>{b}</li>)}
+    </ul>
+  </div>
+
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.iletisimBaslik}</p>
+    <p class="mt-2 text-sm text-(--metin-2)">{m.iletisimAlt}</p>
+    <dl class="mt-3 grid gap-2 text-sm">
+      <div class="flex items-center gap-2"><Ikon ad="telefon" class="h-5 w-5 shrink-0 text-(--vurgu)" /><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base">{site.telefon.dinGorevlisi}</a></div>
+      {site.eposta && <div class="flex items-center gap-2"><Ikon ad="iletisim" class="h-5 w-5 shrink-0 text-(--vurgu)" /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></div>}
+    </dl>
+  </div>
+
+  <div slot="yan" class="kart-kagit p-5">
+    <p class="etiket etiket-vurgu">{m.indirBaslik}</p>
+    <ul class="mt-3 grid gap-2 text-sm">
+      <li><a href="/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf" target="_blank" rel="noopener">{m.ek9} ↗</a></li>
+      <li><a href="/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf" target="_blank" rel="noopener">{m.ek10} ↗</a></li>
+    </ul>
+  </div>
+</IcerikSayfasi>

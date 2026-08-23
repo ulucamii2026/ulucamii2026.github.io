@@ -2,6 +2,11 @@
 baslik: Sacrifice du Kurban par procuration (2026)
 tarih: 2026-03-19
 ozet: Cette année encore, vous pouvez participer à l’organisation du sacrifice du Kurban par procuration de la Fondation Diyanet de Turquie, par l’intermédiaire de notre mosquée. Le prix est de 125 €, avec des dates limites fixées aux 25 et 27 mai 2026.
+kapak: /media/duyurular/2026-kurban-vekaleti/01.webp
+kapakAlt: "Sacrifice du Kurban par procuration (2026)"
+galeri:
+  - dosya: /media/duyurular/2026-kurban-vekaleti/01.webp
+    kucuk: /media/duyurular/2026-kurban-vekaleti/01-k.webp
 etiketler:
   - kurban
   - procuration

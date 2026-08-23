@@ -3,6 +3,8 @@ name: Siteyi yayınla (GitHub Pages)
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "30 3 * * *"   # her gün 03:30 UTC — "bugün" esaslı listeler (vakit tablosu, haftalık program, irşat) tazelenir
   workflow_dispatch:
 
 permissions:

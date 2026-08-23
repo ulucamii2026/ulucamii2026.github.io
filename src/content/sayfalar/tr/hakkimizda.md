@@ -28,7 +28,7 @@ Camimiz, ibadet hayatının yanı sıra cemaatimizin dinî ve sosyal ihtiyaçlar
 - Ramazan programları ve iftar organizasyonları
 - Bayram ve kandil programları
 - Vekâletle kurban organizasyonu
-- Cenaze hizmetleri ve cenaze nakil işlemleri
+- Cenaze namazı ve vefat duyuruları (yıkama, nakil ve defin işlemleri Belçika Diyanet Vakfı Cenaze Fonu tarafından yürütülür)
 - İhtida (İslam’ı yeni tanıyan/kabul edenlere yönelik) hizmetleri
 - Türkçe ders talebi koordinasyonu
 - Bilgi yarışmaları

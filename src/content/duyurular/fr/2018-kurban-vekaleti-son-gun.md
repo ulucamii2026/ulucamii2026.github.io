@@ -2,6 +2,11 @@
 baslik: Dernier jour pour le Kurban par procuration (2018)
 tarih: 2018-08-16
 ozet: Notre organisation de sacrifice du Kurban par procuration s’est terminée le 21 août 2018 ; la communauté a été invitée à partager son sacrifice.
+kapak: /media/duyurular/2018-kurban-vekaleti-son-gun/01.webp
+kapakAlt: "Dernier jour pour le Kurban par procuration (2018)"
+galeri:
+  - dosya: /media/duyurular/2018-kurban-vekaleti-son-gun/01.webp
+    kucuk: /media/duyurular/2018-kurban-vekaleti-son-gun/01-k.webp
 etiketler:
   - arşiv
   - kurban

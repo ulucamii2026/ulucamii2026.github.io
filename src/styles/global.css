@@ -16,9 +16,9 @@
   --color-adacayi-koyu: #5d6c4c;
   --color-ceviz: #4a3728;
   --color-ceviz-koyu: #2f221a;
-  --color-krem: #f5efe3;
-  --color-krem-koyu: #eadfcb;
-  --color-kagit: #fbf8f1;
+  --color-krem: #f7f3ea;
+  --color-krem-koyu: #efe7d8;
+  --color-kagit: #fdfbf7; /* ferah kâğıt: bir kademe açık zemin (Ağu 2026) */
   --color-iznik: #1f5f8b;
   --color-iznik-koyu: #174a6c;
   --color-murekkep: #24201c;
@@ -30,7 +30,7 @@
 
   --tracking-etiket: 0.18em;
   --radius-kose: 2px;
-  --shadow-kart: 0 1px 0 rgb(74 55 40 / 0.08), 0 12px 32px -16px rgb(74 55 40 / 0.35);
+  --shadow-kart: 0 1px 0 rgb(74 55 40 / 0.06), 0 12px 32px -18px rgb(74 55 40 / 0.28);
 }
 
 :root {
@@ -39,9 +39,9 @@
   --zemin-2: var(--color-krem);
   --zemin-3: var(--color-krem-koyu);
   --metin: var(--color-murekkep);
-  --metin-2: #5b5047;
-  --cizgi: rgb(74 55 40 / 0.18);
-  --cizgi-etkilesim: rgb(74 55 40 / 0.48);
+  --metin-2: #635850;
+  --cizgi: rgb(74 55 40 / 0.14);
+  --cizgi-etkilesim: rgb(74 55 40 / 0.44);
   --vurgu: var(--color-kiremit);
   --vurgu-2: var(--color-iznik);
 }
@@ -83,7 +83,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     /* ince kâğıt tanesi */
-    background-image: radial-gradient(rgb(74 55 40 / 0.045) 0.6px, transparent 0.6px);
+    background-image: radial-gradient(rgb(74 55 40 / 0.03) 0.6px, transparent 0.6px);
     background-size: 5px 5px;
   }
   h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }

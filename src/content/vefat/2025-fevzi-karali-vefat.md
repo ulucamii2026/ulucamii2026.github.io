@@ -1,5 +1,6 @@
 ---
 ad: "Fevzi Karali"
+foto: /media/vefat/2025-fevzi-karali-vefat.webp
 vefat: 2025-05-14
 memleket: "Rize"
 cenazeNamazi:

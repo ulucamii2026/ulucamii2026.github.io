@@ -1,5 +1,6 @@
 ---
 ad: "Mevlüt Kara"
+foto: /media/vefat/2025-mevlut-kara-vefat.webp
 vefat: 2025-07-15
 cenazeNamazi:
   tarih: 2025-07-16

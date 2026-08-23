@@ -2,6 +2,11 @@
 baslik: Nos calendriers 2018 sont arrivés
 tarih: 2017-11-28
 ozet: Nos calendriers pour l’année 2018 sont arrivés à la mosquée ; les fidèles qui le souhaitent peuvent se les procurer sur place.
+kapak: /media/duyurular/2017-takvim-2018-geldi/01.webp
+kapakAlt: "Nos calendriers 2018 sont arrivés"
+galeri:
+  - dosya: /media/duyurular/2017-takvim-2018-geldi/01.webp
+    kucuk: /media/duyurular/2017-takvim-2018-geldi/01-k.webp
 etiketler:
   - archives
   - calendrier

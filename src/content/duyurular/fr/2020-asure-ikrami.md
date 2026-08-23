@@ -2,6 +2,11 @@
 baslik: Distribution d’Achoura (2020)
 tarih: 2020-09-06
 ozet: Le dimanche 6 septembre 2020, après la prière de dhouhr, de l’Achoura a été distribuée à notre communauté.
+kapak: /media/duyurular/2020-asure-ikrami/01.webp
+kapakAlt: "Distribution d’Achoura (2020)"
+galeri:
+  - dosya: /media/duyurular/2020-asure-ikrami/01.webp
+    kucuk: /media/duyurular/2020-asure-ikrami/01-k.webp
 etiketler:
   - arşiv
   - aşure

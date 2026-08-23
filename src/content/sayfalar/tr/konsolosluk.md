@@ -95,7 +95,7 @@ Bir Türk vatandaşının Belçika’da vefatı hâlinde süreç iki aşamada y�
 
 Resmî kaynak: [konsolosluk.gov.tr/Procedure/ShowProcedure/8](https://www.konsolosluk.gov.tr/Procedure/ShowProcedure/8)
 
-**Camimizin desteği:** Cenaze yıkama, cenaze namazı ve nakil organizasyonunda camimiz ailelere yardımcı olmaktadır. Böyle bir durumda din görevlimize ulaşabilirsiniz.
+**Camimizin rolü:** Cenaze yıkama, kefenleme, nakil ve defin işlemlerinin tamamı Belçika Diyanet Vakfı Cenaze Fonu tarafından yürütülür; vefat hâlinde önce fon aranır. Camimiz cenaze namazını kıldırır ve vefatı cemaate duyurur; cenaze namazı camimizde kılınacaksa din görevlimize ulaşabilirsiniz.
 
 ### Vekâletname ve Noterlik İşlemleri
 

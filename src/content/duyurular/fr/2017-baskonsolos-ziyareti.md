@@ -2,6 +2,11 @@
 baslik: Visite du Consul général de Bruxelles (2017)
 tarih: 2017-12-05
 ozet: Le Consul général de Turquie à Bruxelles, Mme Dilşad Kirbaşlı, a visité la mosquée le jeudi 7 décembre 2017 à 11h00.
+kapak: /media/duyurular/2017-baskonsolos-ziyareti/01.webp
+kapakAlt: "Visite du Consul général de Bruxelles (2017)"
+galeri:
+  - dosya: /media/duyurular/2017-baskonsolos-ziyareti/01.webp
+    kucuk: /media/duyurular/2017-baskonsolos-ziyareti/01-k.webp
 etiketler:
   - archives
   - consulat général

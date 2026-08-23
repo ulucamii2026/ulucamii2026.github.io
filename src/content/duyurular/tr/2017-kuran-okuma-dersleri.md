@@ -2,6 +2,11 @@
 baslik: Bayanlara Yönelik Kur’ân Okuma Dersleri
 tarih: 2017-10-09
 ozet: Salı ve perşembe günleri saat 12.30-13.30 arasında camimizde bayanlarımıza yönelik Kur’an okuma dersleri veriliyor.
+kapak: /media/duyurular/2017-kuran-okuma-dersleri/01.webp
+kapakAlt: "Bayanlara Yönelik Kur’ân Okuma Dersleri"
+galeri:
+  - dosya: /media/duyurular/2017-kuran-okuma-dersleri/01.webp
+    kucuk: /media/duyurular/2017-kuran-okuma-dersleri/01-k.webp
 etiketler:
   - arşiv
   - kurs

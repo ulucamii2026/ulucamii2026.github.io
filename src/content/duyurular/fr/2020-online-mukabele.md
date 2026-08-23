@@ -2,6 +2,11 @@
 baslik: Diffusion en direct de la Mukabala en ligne
 tarih: 2020-04-20
 ozet: En Ramadan 2020, la Mukabala traditionnelle a été diffusée en direct depuis notre page Facebook dès le 21 avril, en raison de la pandémie.
+kapak: /media/duyurular/2020-online-mukabele/01.webp
+kapakAlt: "Diffusion en direct de la Mukabala en ligne"
+galeri:
+  - dosya: /media/duyurular/2020-online-mukabele/01.webp
+    kucuk: /media/duyurular/2020-online-mukabele/01-k.webp
 etiketler:
   - arşiv
   - ramazan

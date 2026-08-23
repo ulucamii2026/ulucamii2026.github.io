@@ -2,6 +2,11 @@
 baslik: Abonnements aux revues de la Diyanet pour 2019
 tarih: 2018-12-27
 ozet: Les inscriptions aux revues de la Diyanet pour 2019 sont ouvertes jusqu’au 31 décembre ; tarifs annuels précisés dans l’annonce.
+kapak: /media/duyurular/2018-diyanet-dergi-abonelik/01.webp
+kapakAlt: "Abonnements aux revues de la Diyanet pour 2019"
+galeri:
+  - dosya: /media/duyurular/2018-diyanet-dergi-abonelik/01.webp
+    kucuk: /media/duyurular/2018-diyanet-dergi-abonelik/01-k.webp
 etiketler:
   - archives
   - diyanet

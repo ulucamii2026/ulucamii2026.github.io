@@ -2,6 +2,11 @@
 baslik: Kurban Bayramı Namazı Saati (2020)
 tarih: 2020-07-30
 ozet: Kurban Bayramı namazı 31 Temmuz 2020 Cuma günü saat 07.00’de, maske ve seccade şartıyla kılındı.
+kapak: /media/duyurular/2020-kurban-bayrami-namazi/01.webp
+kapakAlt: "Kurban Bayramı Namazı Saati (2020)"
+galeri:
+  - dosya: /media/duyurular/2020-kurban-bayrami-namazi/01.webp
+    kucuk: /media/duyurular/2020-kurban-bayrami-namazi/01-k.webp
 etiketler:
   - arşiv
   - bayram

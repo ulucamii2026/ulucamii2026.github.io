@@ -1,0 +1,29 @@
+---
+/** İhtida online başvuru formu sayfası — Preact adası (client:load) IhtidaFormu.tsx'i barındırır.
+    Form mantığı/doğrulama/PDF üretimi/gönderim tamamen istemcide; bu dosya yalnızca
+    sayfa iskeleti + site ayarlarından gelen bağlam (uç nokta, iletişim) sağlar. */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import IhtidaFormu from '../components/IhtidaFormu';
+import { ceviri } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const site = await siteAyarlari();
+const cami = {
+  ad: t('site.ad'),
+  adres: `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}`,
+  telefon: site.telefon.dinGorevlisi,
+  eposta: site.eposta ?? '',
+};
+const m = dil === 'tr'
+  ? { alt: 'Formu birkaç adımda doldurun; belge PDF olarak size ve camimize iletilir. İstediğiniz zaman ayrılıp devam edebilirsiniz — taslağınız bu cihazda saklanır.' }
+  : { alt: 'Complétez le formulaire en quelques étapes ; le document PDF vous est transmis ainsi qu’à la mosquée. Vous pouvez reprendre plus tard — votre brouillon est conservé sur cet appareil.' };
+---
+<Base baslik={t('nav.ihtidaBasvuru')} dil={dil} noindex>
+  <SayfaBasligi etiket={t('nav.ihtida')} baslik={t('nav.ihtidaBasvuru')} altBaslik={m.alt} />
+  <section class="kapsayici py-10 sm:py-14">
+    <IhtidaFormu client:load dil={dil} ucNokta={site.servisler.basvuru} cami={cami} ek10Yolu="/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf" />
+  </section>
+</Base>

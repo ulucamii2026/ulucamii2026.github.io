@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Yönetim Girişi — Marche-en-Famenne Ulu Camii</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { --kiremit: #b5452b; --kiremit-koyu: #8f3420; --ochre: #c98a2e; --ceviz: #4a3728; --murekkep: #24201c; --kagit: #fdfbf7; --krem: #f7f3ea; --cizgi: rgba(74,55,40,.16); --iznik: #1f5f8b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100dvh; display: grid; place-items: center; padding: 1.5rem; background: var(--kagit) radial-gradient(rgba(74,55,40,.03) .6px, transparent .6px) 0 0 / 5px 5px; color: var(--murekkep); font: 17px/1.55 "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .kart { width: min(100%, 26rem); background: #fff; border: 1px solid var(--cizgi); border-radius: 3px; box-shadow: 0 1px 0 rgba(74,55,40,.06), 0 16px 40px -24px rgba(74,55,40,.35); overflow: hidden; }
+      .serit { height: 6px; background: repeating-linear-gradient(90deg, var(--kiremit) 0 14px, var(--ochre) 14px 20px, var(--iznik) 20px 26px, var(--ochre) 26px 32px); }
+      .ic { padding: 1.75rem 1.6rem 1.6rem; }
+      .marka { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.25rem; }
+      .marka img { width: 52px; height: 52px; }
+      .marka b { font-family: Lora, Georgia, serif; font-size: 1.25rem; display: block; line-height: 1.1; }
+      .marka small { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: #635850; }
+      h1 { font: 600 1.35rem/1.2 Lora, Georgia, serif; margin: 0 0 .35rem; }
+      p.alt { margin: 0 0 1.25rem; color: #635850; font-size: .95rem; }
+      label { display: block; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: #635850; margin: .9rem 0 .3rem; }
+      input { width: 100%; min-height: 46px; padding: .55rem .75rem; font: inherit; border: 1px solid rgba(74,55,40,.4); border-radius: 3px; background: var(--kagit); color: inherit; }
+      input:focus-visible { outline: 3px solid var(--iznik); outline-offset: 2px; }
+      button { margin-top: 1.25rem; width: 100%; min-height: 48px; font: 600 1rem "Work Sans", system-ui, sans-serif; color: #fff; background: var(--kiremit); border: 0; border-radius: 3px; cursor: pointer; transition: background .15s; }
+      button:hover { background: var(--kiremit-koyu); }
+      button[disabled] { opacity: .6; cursor: progress; }
+      .hata { display: none; margin-top: 1rem; padding: .6rem .8rem; border-left: 3px solid var(--kiremit); background: rgba(181,69,43,.08); font-size: .92rem; }
+      .hata[data-acik="1"] { display: block; }
+      .not { margin-top: 1.25rem; font-size: .82rem; color: #635850; border-top: 1px solid var(--cizgi); padding-top: .9rem; }
+      .not a { color: var(--iznik); }
+      @media (prefers-color-scheme: dark) {
+        body { background-color: #2f221a; color: #f5efe3; } .kart { background: #3a2a1f; border-color: rgba(245,239,227,.18); } input { background: #2f221a; color: #f5efe3; border-color: rgba(245,239,227,.4); }
+        .marka small, label, p.alt, .not { color: #cbbfae; } .not a { color: #6fa8d3; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="kart">
+      <div class="serit" aria-hidden="true"></div>
+      <div class="ic">
+        <div class="marka"><img src="/media/logo/ulu-camii-logo.svg" alt="" /><span><b>Ulu Camii</b><small>Marche-en-Famenne · Yönetim</small></span></div>
+        <h1>İçerik yönetimine giriş</h1>
+        <p class="alt">Duyuru, etkinlik, afiş, hutbe ve vefat haberlerini eklemek ya da düzenlemek için giriş yapın.</p>
+        <form id="form" autocomplete="on">
+          <label for="kullanici">Kullanıcı adı</label>
+          <input id="kullanici" name="username" autocomplete="username" required autocapitalize="off" spellcheck="false" />
+          <label for="sifre">Şifre</label>
+          <input id="sifre" name="password" type="password" autocomplete="current-password" required />
+          <button id="dugme" type="submit">Giriş yap</button>
+          <p id="hata" class="hata" role="alert"></p>
+        </form>
+        <p class="not">Giriş bilgileri dernek yönetiminde bulunur. Tarayıcınız bu cihazda oturumu hatırlar; ortak bilgisayarlarda işiniz bitince yönetim panelinden çıkış yapın. <a href="/tr/">Siteye dön</a></p>
+      </div>
+    </main>
+    <script>
+      // Şifreli GitHub erişim anahtarı — scripts/admin-sifrele.mjs ile üretilir; kullanıcı adı + şifre olmadan çözülemez
+      const SIFRELI = {"v":1,"iter":600000,"salt":"DGste2wrDyclHI+x6TqhTw==","iv":"/G0NaoUVEpM4VsZI","ct":"o+6UfLXlWfcYIVmlayQFY8DbFMs3huwGx2Nv/o92nXP+bmgyoPO/4srENdNcrywCpHKBkgHugyw="};
+      const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+      const form = document.getElementById('form'), hata = document.getElementById('hata'), dugme = document.getElementById('dugme');
+      const hataGoster = (m) => { hata.textContent = m; hata.dataset.acik = '1'; };
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); hata.dataset.acik = '0'; dugme.disabled = true; dugme.textContent = 'Doğrulanıyor…';
+        try {
+          if (!SIFRELI.ct) throw new Error('kurulum');
+          const ku = document.getElementById('kullanici').value.trim().toLowerCase(); const si = document.getElementById('sifre').value;
+          const enc = new TextEncoder();
+          const km = await crypto.subtle.importKey('raw', enc.encode(`${ku} ${si}`), 'PBKDF2', false, ['deriveKey']);
+          const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SIFRELI.salt), iterations: SIFRELI.iter, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+          const token = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(SIFRELI.iv) }, key, b64(SIFRELI.ct)));
+          localStorage.setItem('sveltia-cms.user', JSON.stringify({ backendName: 'github', token }));
+          location.replace('/admin/');
+        } catch (err) {
+          hataGoster(err && err.message === 'kurulum' ? 'Giriş kapısı henüz kurulmamış (şifreli anahtar yok).' : 'Kullanıcı adı veya şifre hatalı.');
+          dugme.disabled = false; dugme.textContent = 'Giriş yap';
+        }
+      });
+    </script>
+  </body>
+</html>

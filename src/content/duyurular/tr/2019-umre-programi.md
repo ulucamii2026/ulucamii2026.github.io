@@ -2,6 +2,11 @@
 baslik: Umre Programları Duyurusu (2019)
 tarih: 2019-10-09
 ozet: Yılbaşı ve paskalya tatili dönemlerinde düzenlenecek Umre programlarına ilişkin bilgiler ulaşmış olup, bu yıl ayrıca öğrenci Umresi düzenlemesi de bulunmaktadır.
+kapak: /media/duyurular/2019-umre-programi/01.webp
+kapakAlt: "Umre Programları Duyurusu (2019)"
+galeri:
+  - dosya: /media/duyurular/2019-umre-programi/01.webp
+    kucuk: /media/duyurular/2019-umre-programi/01-k.webp
 etiketler:
   - arşiv
   - umre

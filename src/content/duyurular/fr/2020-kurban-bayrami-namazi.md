@@ -2,6 +2,11 @@
 baslik: Horaire de la prière de l’Aïd al-Adha (2020)
 tarih: 2020-07-30
 ozet: La prière de l’Aïd al-Adha a été célébrée le vendredi 31 juillet 2020 à 07h00, masque et tapis de prière obligatoires.
+kapak: /media/duyurular/2020-kurban-bayrami-namazi/01.webp
+kapakAlt: "Horaire de la prière de l’Aïd al-Adha (2020)"
+galeri:
+  - dosya: /media/duyurular/2020-kurban-bayrami-namazi/01.webp
+    kucuk: /media/duyurular/2020-kurban-bayrami-namazi/01-k.webp
 etiketler:
   - arşiv
   - bayram

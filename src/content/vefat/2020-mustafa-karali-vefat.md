@@ -1,5 +1,6 @@
 ---
 ad: "Hacı Mustafa Karali"
+foto: /media/vefat/2020-mustafa-karali-vefat.webp
 vefat: 2020-08-25
 memleket: "Rize"
 cenazeNamazi:

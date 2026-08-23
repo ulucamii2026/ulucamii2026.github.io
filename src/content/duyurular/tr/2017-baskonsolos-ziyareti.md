@@ -2,6 +2,11 @@
 baslik: Brüksel Başkonsolosu Camii Ziyareti (2017)
 tarih: 2017-12-05
 ozet: Brüksel Başkonsolosu Dilşad Kirbaşlı, 7 Aralık 2017 Perşembe günü saat 11.00’de camimizi ziyaret etmiştir.
+kapak: /media/duyurular/2017-baskonsolos-ziyareti/01.webp
+kapakAlt: "Brüksel Başkonsolosu Camii Ziyareti (2017)"
+galeri:
+  - dosya: /media/duyurular/2017-baskonsolos-ziyareti/01.webp
+    kucuk: /media/duyurular/2017-baskonsolos-ziyareti/01-k.webp
 etiketler:
   - arşiv
   - başkonsolosluk

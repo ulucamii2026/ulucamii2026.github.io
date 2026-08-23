@@ -7,7 +7,7 @@ import { galeri } from '../lib/icerik';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const liste = await galeri();
-const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar (Nisan 2024).' : 'Photos de l’extérieur et de l’intérieur de la mosquée (avril 2024).';
+const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar. Bir kareye dokunarak büyütebilir, ok tuşları veya kaydırma ile gezebilirsiniz.' : 'Photos de l’extérieur et de l’intérieur de la mosquée. Touchez une image pour l’agrandir, naviguez avec les flèches ou en glissant.';
 ---
 <Base baslik={t('nav.galeri')} dil={dil}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.galeri')} altBaslik={altBaslik} />
@@ -15,8 +15,8 @@ const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğrafl
     <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" role="list">
       {liste.map((g) => (
         <li>
-          <a href={g.data.dosya} class="gorsel-cerceve block overflow-hidden" target="_blank" rel="noopener">
-            <img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover" />
+          <a href={g.data.dosya} class="gorsel-cerceve block overflow-hidden group" data-lightbox="galeri" data-caption={g.data.alt[dil]}>
+            <img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
           </a>
         </li>
       ))}
