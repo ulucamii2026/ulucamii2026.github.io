@@ -14,7 +14,7 @@ const metni = (mesaj: Mesaj) => mesaj.metin[dil] ?? mesaj.metin.fr ?? mesaj.meti
 const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil, mesaj.sayfa as SayfaAnahtari) : mesaj.baglanti);
 ---
 {mesajlar.length > 0 && (
-  <div id="duyuru-seridi" class="mt-4 max-w-[58ch] relative min-h-[3.4em] sm:min-h-[2.6em]" data-sure="6500">
+  <div id="duyuru-seridi" class="mt-4 max-w-[58ch] relative min-h-[5.5em] sm:min-h-[2.6em]" data-sure="6500">
     {mesajlar.map((mesaj, i) => {
       const h = hedef(mesaj);
       const ic = <><span class="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-ochre-acik)" aria-hidden="true"></span><span>{metni(mesaj)}</span></>;
@@ -34,6 +34,9 @@ const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil,
 <script>
   const kutu = document.getElementById('duyuru-seridi');
   const mesajlar = kutu ? Array.from(kutu.querySelectorAll<HTMLElement>('[data-mesaj]')) : [];
+  // kap yüksekliği: en uzun mesajın yüksekliği (taşma/örtüşme olmasın)
+  const olc = () => { if (!kutu) return; let h = 0; mesajlar.forEach((el) => { h = Math.max(h, el.offsetHeight); }); if (h) kutu.style.minHeight = h + 'px'; };
+  if (kutu) { olc(); addEventListener('resize', olc); if (document.fonts?.ready) document.fonts.ready.then(olc); }
   if (kutu && mesajlar.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const sure = Number(kutu.dataset.sure || 6500);
     let i = 0; let bekle = false;
