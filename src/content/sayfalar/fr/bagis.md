@@ -35,11 +35,15 @@ Si vous souhaitez faire un don chaque mois plutôt qu’un don ponctuel, vous po
 
 Un tronc à dons se trouve à l’entrée de la mosquée, où vous pouvez déposer un don en espèces. Il est particulièrement utilisé le vendredi, jour où notre communauté est la plus nombreuse.
 
+<a id="vekaletle-kurban"></a>
+
 ### 5. Sacrifice par procuration (Kurban)
 
 Chaque année, avant l’Aïd al-Adha, vous pouvez participer au sacrifice par procuration organisé sous la coordination de la Fondation Diyanet de Belgique (BDV). Le montant et les modalités de participation sont mis à jour chaque année et communiqués via notre panneau d’affichage et nos annonces.
 
 Le montant et la date limite d’inscription de l’année en cours sont annoncés chaque année avant l’Aïd al-Adha, à la mosquée et sur la page des annonces.
+
+<a id="kitap-bagisi"></a>
 
 ### 6. Don de livres pour la bibliothèque
 

@@ -68,6 +68,12 @@ const ayarlar = defineCollection({
     konsolosluk: z.object({
       ad: z.string(), santral: z.string(), acil: z.string(), cagriMerkezi: z.string(), eposta: z.string(), web: z.string().url(), randevu: z.string().url(), edevlet: z.string().url(),
     }),
+    haftalikProgram: z.array(z.object({
+      gun: z.number().int().min(1).max(7),
+      baslik: z.object({ tr: z.string(), fr: z.string() }),
+      saat: z.object({ tr: z.string(), fr: z.string() }),
+      sayfa: z.string().optional(),
+    })).default([]),
     cenaze: z.object({
       fonAd: z.string(), fonAcil: z.string(), fonMesai: z.string(), fonEposta: z.string(), fonWeb: z.string().url(), fonAdres: z.string(),
       belediyeNufus: z.string(), belediyeGenel: z.string(), belediyeEposta: z.string(), belediyeGenelEposta: z.string().optional(),

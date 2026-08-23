@@ -43,6 +43,7 @@ const kapakUrl = new URL(kapak, Astro.site);
     <meta property="og:url" content={kanonik} />
     <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : 'fr_BE'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
     <script is:inline>
       // Tema tercihi (localStorage) — sayfa boyanmadan önce uygula
       try { const t = localStorage.getItem('tema'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch {}
@@ -55,5 +56,13 @@ const kapakUrl = new URL(kapak, Astro.site);
       <slot />
     </main>
     <Footer dil={dil} />
+    <script>
+      // Bölüm reveal: görünür olunca .gorunur; reduced-motion'da CSS zaten devre dışı, JS yalnız sınıfı ekler
+      const r = document.querySelectorAll('.reveal');
+      if (r.length) {
+        if (!('IntersectionObserver' in window)) r.forEach((e) => e.classList.add('gorunur'));
+        else { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('gorunur'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }); r.forEach((e) => io.observe(e)); }
+      }
+    </script>
   </body>
 </html>

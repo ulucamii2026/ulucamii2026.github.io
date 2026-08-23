@@ -47,3 +47,16 @@ site:
     mezarlikAd: Cimetière multiconfessionnel de Marche-en-Famenne
     mezarlikAdres: Rue de Tavys, 6900 Aye
     saniportEposta: saniport.zaventem@health.fgov.be
+  haftalikProgram:
+    - gun: 5
+      baslik: { tr: "Cuma namazı ve hutbe", fr: "Prière et prêche du vendredi" }
+      saat: { tr: "Öğle vaktinde", fr: "À l’heure de dhuhr" }
+      sayfa: namaz
+    - gun: 6
+      baslik: { tr: "Kur’an kursu", fr: "École coranique" }
+      saat: { tr: "Kış 10:00–12:40 · Yaz 11:00–13:40", fr: "Hiver 10h00–12h40 · Été 11h00–13h40" }
+      sayfa: kurankursu
+    - gun: 7
+      baslik: { tr: "Kur’an kursu", fr: "École coranique" }
+      saat: { tr: "Kış 10:00–12:40 · Yaz 11:00–13:40", fr: "Hiver 10h00–12h40 · Été 11h00–13h40" }
+      sayfa: kurankursu

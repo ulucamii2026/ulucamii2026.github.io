@@ -229,6 +229,26 @@ collections:
                   - { name: web, label: Web sitesi, widget: string }
                   - { name: randevu, label: Randevu sitesi, widget: string }
                   - { name: edevlet, label: e-Devlet, widget: string }
+              - name: haftalikProgram
+                label: Haftalık program (ana sayfa “Bu hafta camide”)
+                widget: list
+                required: false
+                summary: "{{fields.baslik.tr}} — gün {{fields.gun}}"
+                fields:
+                  - { name: gun, label: Gün (1=Pazartesi … 7=Pazar), widget: number, value_type: int, min: 1, max: 7 }
+                  - name: baslik
+                    label: Başlık
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                  - name: saat
+                    label: Saat
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                  - { name: sayfa, label: Bağlantı (sayfa anahtarı), widget: select, required: false, options: [namaz, kurankursu, etkinlikler, duyurular, bagis, iletisim] }
               - name: cenaze
                 label: Cenaze hizmetleri iletişim (BDV fonu, belediye, mezarlık)
                 widget: object

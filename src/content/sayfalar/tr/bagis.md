@@ -35,11 +35,15 @@ Tek seferlik bağış yerine her ay düzenli bir bağış yapmak isterseniz, ken
 
 Cami girişindeki bağış kutumuza nakit bağışta bulunabilirsiniz. Cemaatimizin en kalabalık olduğu Cuma namazlarında bağış kutumuz özellikle etkin kullanılıyor.
 
+<a id="vekaletle-kurban"></a>
+
 ### 5. Vekâletle kurban
 
 Her yıl Kurban Bayramı öncesinde, Belçika Diyanet Vakfı (BDV) koordinasyonunda düzenlenen vekâletle kurban organizasyonuna katılabilirsiniz. Kesim bedeli ve katılım koşulları her yıl güncellenerek cami panomuzdan ve duyurularımızdan paylaşılır.
 
 Bu yılki kurban bedeli ve son başvuru tarihi her yıl Kurban Bayramı öncesinde camide ve duyurular sayfasında ilan edilir.
+
+<a id="kitap-bagisi"></a>
 
 ### 6. Kütüphane için kitap bağışı
 
