@@ -11,8 +11,8 @@ backend:
     uploadMedia: "medya: {{path}} yüklendi"
     deleteMedia: "medya: {{path}} silindi"
 
-site_url: https://ulucamii2026.github.io
-display_url: https://ulucamii2026.github.io
+site_url: https://ulucamii.be
+display_url: https://ulucamii.be
 logo_url: /media/logo/ulu-camii-logo-128.png
 locale: tr
 

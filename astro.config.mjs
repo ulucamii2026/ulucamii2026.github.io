@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ulucamii2026.github.io',
+  site: 'https://ulucamii.be',
   output: 'static',
   trailingSlash: 'always',
   integrations: [preact({ compat: false }), sitemap()],

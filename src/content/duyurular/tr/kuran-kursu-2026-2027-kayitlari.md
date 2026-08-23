@@ -32,6 +32,6 @@ Kur’an-ı Kerim dersi her gün ilk ders olarak okutulur; bunun yanında İtika
 
 Kayıtlar, aşağıdaki online kayıt formu üzerinden alınmaktadır:
 
-**[Kur’an Kursu Online Kayıt Formu](https://ulucamii2026.github.io/ulucamii-kayit/)**
+**[Kur’an Kursu Online Kayıt Formu](https://ulucamii.be/ulucamii-kayit/)**
 
 Formu doldurduktan sonra kayıt bilgileriniz derneğimize ulaşacaktır. Sorularınız için bizimle iletişime geçebilirsiniz.
