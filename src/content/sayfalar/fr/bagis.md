@@ -61,6 +61,3 @@ Le Fonds Zakât-Fitre est répertorié, avec les autres services de la BDV (hajj
 
 Nos dons sont rapportés à nos membres lors de l’assemblée générale de l’association.
 
-## Information fiscale
-
-Selon la législation belge, seules les organisations disposant d’un agrément officiel du SPF Finances peuvent délivrer une attestation fiscale (modèle 281.71) pour les dons reçus ; les associations à vocation cultuelle ne relèvent pas de cet agrément. Notre mosquée n’entrant pas dans ce cadre, **nous ne sommes pas en mesure de délivrer d’attestation fiscale pour vos dons.** La liste officielle des institutions agréées est consultable sur [finances.belgium.be](https://finances.belgium.be/fr/particuliers/avantages_fiscaux/dons).

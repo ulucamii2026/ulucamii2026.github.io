@@ -61,6 +61,3 @@ Zekât-Fitre Fonu; hac/umre, cenaze fonu, eğitim bursu ve hukuk danışmanlığ
 
 Bağışlarımız, derneğimizin genel kurulunda üyelerimize raporlanır.
 
-## Vergi bilgilendirmesi
-
-Belçika mevzuatı gereği yalnızca Maliye Bakanlığı'nın (SPF Finances) resmî onayını (agrément) almış belirli kuruluşlar bağışlar için vergi indirimi belgesi (attestation fiscale) düzenleyebiliyor; ibadet amaçlı dernekler bu onayın kapsamı dışında tutuluyor. Camimiz bu kapsamda yer almadığından **bağışlarınız için vergi indirimi belgesi düzenleyemiyoruz.** Onaylı kuruluşların güncel resmî listesine [finances.belgium.be](https://finances.belgium.be/fr/particuliers/avantages_fiscaux/dons) adresinden ulaşabilirsiniz.
