@@ -12,11 +12,11 @@ const haritaUrl = `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const diyanetBaslik = dil === 'tr' ? 'Diyanet' : dil === 'en' ? 'Diyanet' : 'Diyanet';
 const diyanetLinkler = [
-  { h: 'https://www.diyanet.tv/canli-izle', ad: dil === 'tr' ? 'Diyanet TV canlı' : dil === 'en' ? 'Diyanet TV live' : 'Diyanet TV en direct' },
-  { h: 'https://www.youtube.com/@alqurantv/live', ad: dil === 'tr' ? 'Kâbe canlı yayını' : dil === 'en' ? 'Makkah live' : 'La Mecque en direct' },
-  { h: 'https://www.diyanet.gov.tr', ad: 'diyanet.gov.tr' },
-  { h: 'https://www.diyanet.be', ad: 'diyanet.be' },
+  { h: 'https://www.diyanet.tv/canli-izle', ad: dil === 'tr' ? 'Diyanet TV canlı yayın' : dil === 'en' ? 'Diyanet TV live' : 'Diyanet TV en direct', logo: '/media/dis-logolar/diyanet-tv.png', g: 135, y: 36 },
+  { h: 'https://www.diyanet.gov.tr', ad: dil === 'tr' ? 'Diyanet İşleri Başkanlığı' : dil === 'en' ? 'Presidency of Religious Affairs (Türkiye)' : 'Présidence des Affaires religieuses (Türkiye)', logo: '/media/dis-logolar/diyanet.png', g: 36, y: 36 },
+  { h: 'https://www.diyanet.be', ad: dil === 'tr' ? 'Belçika Diyanet Vakfı' : dil === 'en' ? 'Diyanet Foundation of Belgium' : 'Fondation Diyanet de Belgique', logo: '/media/dis-logolar/bdv.png', g: 143, y: 36 },
 ];
+const kabe = { h: 'https://www.youtube.com/@alqurantv/live', ad: dil === 'tr' ? 'Kâbe canlı yayını' : dil === 'en' ? 'Makkah live' : 'La Mecque en direct' };
 const siteLinkleri = [
   { h: yol(dil, 'vefat'), ad: t('vefat.baslik') },
   { h: yol(dil, 'kunye'), ad: t('footer.kunye') },
@@ -51,10 +51,20 @@ const siteLinkleri = [
       <ul class="grid grid-cols-2 gap-x-4" role="list">
         {siteLinkleri.map((l) => <li><a href={l.h} rel={l.h === '/admin/' ? 'nofollow' : undefined}>{l.ad}</a></li>)}
       </ul>
-      <p class="etiket mt-4 mb-1.5">{diyanetBaslik}</p>
-      <p class="flex flex-wrap gap-x-3 gap-y-0.5">
-        {diyanetLinkler.map((l) => <a href={l.h} rel="noopener" target="_blank" class="whitespace-nowrap">{l.ad}<span aria-hidden="true"> ↗</span></a>)}
-      </p>
+      <p class="etiket mt-4 mb-2">{diyanetBaslik}</p>
+      <div class="flex flex-wrap items-stretch gap-2">
+        {diyanetLinkler.map((l) => (
+          <a href={l.h} rel="noopener" target="_blank" title={l.ad}
+             class="flex items-center rounded-(--radius-kose) border border-(--cizgi) bg-[#f7f3ea] px-3 py-2 no-underline hover:border-(--vurgu) transition-colors">
+            <img src={l.logo} alt={l.ad} width={l.g} height={l.y} class="h-9 w-auto" loading="lazy" decoding="async" />
+          </a>
+        ))}
+        <a href={kabe.h} rel="noopener" target="_blank" title={kabe.ad}
+           class="flex items-center gap-2 rounded-(--radius-kose) border border-(--cizgi) bg-[#f7f3ea] px-3 py-2 no-underline hover:border-(--vurgu) transition-colors">
+          <span class="relative flex h-2.5 w-2.5" aria-hidden="true"><span class="absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-60 animate-ping"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600"></span></span>
+          <span class="font-semibold text-[0.85rem] leading-tight text-[#3b2f23]">{dil === 'tr' ? 'Kâbe' : dil === 'en' ? 'Makkah' : 'La Mecque'}<span class="block etiket !text-[#8a7a63]">{dil === 'tr' ? 'CANLI' : dil === 'en' ? 'LIVE' : 'DIRECT'}</span></span>
+        </a>
+      </div>
     </nav>
   </div>
   <div class="cetvel">
