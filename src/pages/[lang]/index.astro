@@ -113,7 +113,8 @@ const jsonLd = {
         <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={namazEtiket} vurgulu cumaEtiket={t('namaz.cuma')} cumaSaati={site.cumaSaati} />
         <p class="etiket mt-4">{t('namaz.kaynak')}</p>
         <!-- Hızlı erişim karoları — vakit sütunundaki boşluğu değerlendirir, iki sütunu dengeler -->
-        <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-px bg-(--cizgi) border border-(--cizgi)" aria-label={m.hizmet} role="list">
+        <nav class="mt-8" aria-label={m.hizmet}>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-(--cizgi) border border-(--cizgi)" role="list">
           {hizmetler.map((h) => (
             <li class="bg-(--zemin)">
               <a href={h.href} class="group flex items-center gap-3 px-3.5 py-3.5 no-underline text-(--metin) hover:bg-(--zemin-3) transition-colors h-full">
@@ -123,6 +124,7 @@ const jsonLd = {
             </li>
           ))}
         </ul>
+        </nav>
       </div>
       <div id="bu-hafta" class="scroll-mt-24">
         <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>

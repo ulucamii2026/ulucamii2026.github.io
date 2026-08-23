@@ -34,7 +34,7 @@ const TOPLAM_ADIM = 8;
 interface FormState {
   adim: number;
   soyad: string; adlar: string; cinsiyet: string; dogumTarihi: string; dogumYeri: string; uyruk: string;
-  belgeNo: string; belgeGecerlilikTarihi: string; ulusalNo: string;
+  belgeNo: string; belgeGecerlilikTarihi: string; ulusalNo: string; belgeNoAdayMi: boolean;
   tcVatandasi: boolean; tcKimlikNo: string;
   oncekiDin: string; oncekiDinDiger: string;
   ogrenimDurumu: string; anneAdi: string; babaAdi: string; medeniHali: string; meslek: string;
@@ -55,7 +55,7 @@ function bosDurum(): FormState {
   return {
     adim: 0,
     soyad: '', adlar: '', cinsiyet: '', dogumTarihi: '', dogumYeri: '', uyruk: '',
-    belgeNo: '', belgeGecerlilikTarihi: '', ulusalNo: '',
+    belgeNo: '', belgeGecerlilikTarihi: '', ulusalNo: '', belgeNoAdayMi: false,
     tcVatandasi: false, tcKimlikNo: '',
     oncekiDin: '', oncekiDinDiger: '',
     ogrenimDurumu: '', anneAdi: '', babaAdi: '', medeniHali: '', meslek: '',
@@ -209,10 +209,11 @@ function mrzAlanlariHesapla(veri: MrzSonuc, mevcut: FormState): { guncellemeler:
   aday('cinsiyet', veri.cinsiyet);
   aday('uyruk', veri.uyrukAdi);
   aday('belgeNo', veri.belgeNo);
+  if (veri.belgeNo && 'belgeNo' in guncellemeler) guncellemeler.belgeNoAdayMi = false; // doğrulanmış okuma — eski aday uyarısı kalksın
   // Kontrol hanesi geçmese de okunan aday doldurulur ama 'kimlikten okundu' rozeti almaz (kullanıcı denetler)
   if (!veri.belgeNo && veri.belgeNoAdayi) {
     const belgeBos = mevcut.belgeNo === '' || otoOnceki.has('belgeNo');
-    if (belgeBos) (guncellemeler as Record<string, unknown>).belgeNo = veri.belgeNoAdayi;
+    if (belgeBos) { (guncellemeler as Record<string, unknown>).belgeNo = veri.belgeNoAdayi; guncellemeler.belgeNoAdayMi = true; }
   }
   aday('ulusalNo', veri.rijksregisterNo || veri.kisiselNo);
   aday('belgeGecerlilikTarihi', veri.gecerlilikTarihi);
@@ -320,6 +321,8 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
       return {
         ...s,
         [anahtar]: deger,
+        // Kullanıcı belge numarasını elle değiştirdi — 'doğrulanamadı' ipucu artık geçersiz
+        belgeNoAdayMi: anahtar === 'belgeNo' ? false : s.belgeNoAdayMi,
         otoAlanlar: otoDeğişti ? s.otoAlanlar.filter((a) => a !== anahtar) : s.otoAlanlar,
       };
     });
@@ -689,7 +692,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
             <Alan etiket={m.dogumTarihi} deger={durum.dogumTarihi} hata={hatalar.dogumTarihi} zorunlu tip="date" onDegisti={(v) => guncelle('dogumTarihi', v)} genislik="yari" rozet={otoRozet('dogumTarihi')} />
             <Alan etiket={m.dogumYeri} deger={durum.dogumYeri} hata={hatalar.dogumYeri} zorunlu onDegisti={(v) => guncelle('dogumYeri', v)} genislik="yari" />
             <Alan etiket={m.uyruk} deger={durum.uyruk} hata={hatalar.uyruk} zorunlu onDegisti={(v) => guncelle('uyruk', v)} genislik="yari" rozet={otoRozet('uyruk')} />
-            <Alan etiket={m.belgeNo} deger={durum.belgeNo} onDegisti={(v) => guncelle('belgeNo', v)} genislik="yari" rozet={otoRozet('belgeNo')} ipucu={durum.belgeNo && durum.otoAlanlar.length > 0 && !durum.otoAlanlar.includes('belgeNo') ? m.belgeNoDogrulanamadi : undefined} />
+            <Alan etiket={m.belgeNo} deger={durum.belgeNo} onDegisti={(v) => guncelle('belgeNo', v)} genislik="yari" rozet={otoRozet('belgeNo')} ipucu={durum.belgeNoAdayMi && durum.belgeNo ? m.belgeNoDogrulanamadi : undefined} />
             <Alan etiket={m.ulusalNo} deger={durum.ulusalNo} onDegisti={(v) => guncelle('ulusalNo', v)} genislik="yari" rozet={otoRozet('ulusalNo')} />
             <Alan etiket={m.belgeGecerlilikTarihi} deger={durum.belgeGecerlilikTarihi} tip="date" onDegisti={(v) => guncelle('belgeGecerlilikTarihi', v)} genislik="yari" rozet={otoRozet('belgeGecerlilikTarihi')} />
             <div class="grid gap-1.5 content-start">
