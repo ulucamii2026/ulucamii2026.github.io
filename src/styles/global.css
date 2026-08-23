@@ -161,3 +161,12 @@
   .rakam { font-family: var(--font-serif); font-variant-numeric: tabular-nums lining-nums; }
   .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 }
+
+/* Logo tema varyanti: acik temada siyah amblem, koyu temada krem amblem (kirmizi ogeler sabit) */
+.logo-koyu { display: none; }
+:root[data-theme="dark"] .logo-acik { display: none; }
+:root[data-theme="dark"] .logo-koyu { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo-acik { display: none; }
+  :root:not([data-theme="light"]) .logo-koyu { display: block; }
+}
