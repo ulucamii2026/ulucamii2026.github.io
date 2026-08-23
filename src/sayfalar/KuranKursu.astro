@@ -9,6 +9,8 @@ const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const m = dil === 'tr'
   ? { kayit: 'Online kayıt formu', kayitA: '2026-2027 dönemi kayıtları açıktır. Formu doldurduktan sonra din görevlimiz sizinle iletişime geçer.', portal: 'Veli portalı', portalA: 'Kayıtlı öğrencilerin velileri için (yakında).', soru: 'Sorularınız için', logoAlt: 'Ulu Camii Kur’an Kursu logosu' }
+  : dil === 'en'
+  ? { kayit: 'Online registration form', kayitA: 'Registration for the 2026-2027 term is open. After you submit the form, our imam will contact you.', portal: 'Parents’ portal', portalA: 'For parents of enrolled students (coming soon).', soru: 'For your questions', logoAlt: 'Ulu Camii Qur’an School logo' }
   : { kayit: 'Formulaire d’inscription en ligne', kayitA: 'Les inscriptions 2026-2027 sont ouvertes. Après l’envoi du formulaire, l’imam vous contactera.', portal: 'Portail des parents', portalA: 'Pour les parents des élèves inscrits (bientôt).', soru: 'Pour toute question', logoAlt: 'Logo de l’école coranique Ulu Camii' };
 ---
 <IcerikSayfasi dil={dil} anahtar="kurankursu" etiket={t('nav.kurankursu')}>

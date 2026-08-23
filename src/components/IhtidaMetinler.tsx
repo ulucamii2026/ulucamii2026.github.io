@@ -1,64 +1,68 @@
-/** İhtida Başvuru Formu — TR/FR metin sözlüğü + seçenek listeleri.
+/** İhtida Başvuru Formu — TR/FR/EN metin sözlüğü + seçenek listeleri.
  *  Saf veri dosyası (JSX yok); .tsx uzantısı yalnızca "Ihtida*" dosya adı kuralına uymak içindir. */
+import type { Dil } from '../i18n/ui';
 
-export type FormDil = 'tr' | 'fr';
+/** Geriye dönük uyumluluk için korunan takma ad — site genelindeki `Dil` ile aynıdır. */
+export type FormDil = Dil;
+export type { Dil };
 
-export interface SecenekOgesi { deger: string; etiket: Record<FormDil, string> }
+export interface SecenekOgesi { deger: string; etiket: Record<Dil, string> }
 
 export const CINSIYET_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'kadin', etiket: { tr: 'Kadın', fr: 'Femme' } },
-  { deger: 'erkek', etiket: { tr: 'Erkek', fr: 'Homme' } },
+  { deger: 'kadin', etiket: { tr: 'Kadın', fr: 'Femme', en: 'Female' } },
+  { deger: 'erkek', etiket: { tr: 'Erkek', fr: 'Homme', en: 'Male' } },
 ];
 
 export const ONCEKI_DIN_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'hristiyan-katolik', etiket: { tr: 'Hristiyan — Katolik', fr: 'Chrétien — Catholique' } },
-  { deger: 'hristiyan-protestan', etiket: { tr: 'Hristiyan — Protestan', fr: 'Chrétien — Protestant' } },
-  { deger: 'hristiyan-ortodoks', etiket: { tr: 'Hristiyan — Ortodoks', fr: 'Chrétien — Orthodoxe' } },
-  { deger: 'musevi', etiket: { tr: 'Musevi', fr: 'Juif' } },
-  { deger: 'inancsiz', etiket: { tr: 'İnançsız / Ateist', fr: 'Sans religion / Athée' } },
-  { deger: 'diger', etiket: { tr: 'Diğer', fr: 'Autre' } },
+  { deger: 'hristiyan-katolik', etiket: { tr: 'Hristiyan — Katolik', fr: 'Chrétien — Catholique', en: 'Christian — Catholic' } },
+  { deger: 'hristiyan-protestan', etiket: { tr: 'Hristiyan — Protestan', fr: 'Chrétien — Protestant', en: 'Christian — Protestant' } },
+  { deger: 'hristiyan-ortodoks', etiket: { tr: 'Hristiyan — Ortodoks', fr: 'Chrétien — Orthodoxe', en: 'Christian — Orthodox' } },
+  { deger: 'musevi', etiket: { tr: 'Musevi', fr: 'Juif', en: 'Jewish' } },
+  { deger: 'inancsiz', etiket: { tr: 'İnançsız / Ateist', fr: 'Sans religion / Athée', en: 'No religion / Atheist' } },
+  { deger: 'diger', etiket: { tr: 'Diğer', fr: 'Autre', en: 'Other' } },
 ];
 
 export const OGRENIM_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'ilkogretim', etiket: { tr: 'İlköğretim', fr: 'Primaire' } },
-  { deger: 'lise', etiket: { tr: 'Lise', fr: 'Secondaire' } },
-  { deger: 'onlisans', etiket: { tr: 'Ön lisans', fr: 'Bachelier (court)' } },
-  { deger: 'lisans', etiket: { tr: 'Lisans', fr: 'Bachelier / Master' } },
-  { deger: 'lisansustu', etiket: { tr: 'Lisansüstü', fr: 'Études supérieures (3e cycle)' } },
+  { deger: 'ilkogretim', etiket: { tr: 'İlköğretim', fr: 'Primaire', en: 'Primary education' } },
+  { deger: 'lise', etiket: { tr: 'Lise', fr: 'Secondaire', en: 'Secondary education' } },
+  { deger: 'onlisans', etiket: { tr: 'Ön lisans', fr: 'Bachelier (court)', en: 'Associate degree' } },
+  { deger: 'lisans', etiket: { tr: 'Lisans', fr: 'Bachelier / Master', en: 'Bachelor’s / Master’s degree' } },
+  { deger: 'lisansustu', etiket: { tr: 'Lisansüstü', fr: 'Études supérieures (3e cycle)', en: 'Postgraduate studies' } },
 ];
 
 export const MEDENI_HAL_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'bekar', etiket: { tr: 'Bekâr', fr: 'Célibataire' } },
-  { deger: 'evli', etiket: { tr: 'Evli', fr: 'Marié(e)' } },
-  { deger: 'bosanmis', etiket: { tr: 'Boşanmış', fr: 'Divorcé(e)' } },
-  { deger: 'dul', etiket: { tr: 'Dul', fr: 'Veuf / Veuve' } },
+  { deger: 'bekar', etiket: { tr: 'Bekâr', fr: 'Célibataire', en: 'Single' } },
+  { deger: 'evli', etiket: { tr: 'Evli', fr: 'Marié(e)', en: 'Married' } },
+  { deger: 'bosanmis', etiket: { tr: 'Boşanmış', fr: 'Divorcé(e)', en: 'Divorced' } },
+  { deger: 'dul', etiket: { tr: 'Dul', fr: 'Veuf / Veuve', en: 'Widowed' } },
 ];
 
 export const TOREN_DILI_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'tr', etiket: { tr: 'Türkçe', fr: 'Turc' } },
-  { deger: 'fr', etiket: { tr: 'Fransızca', fr: 'Français' } },
-  { deger: 'nl', etiket: { tr: 'Felemenkçe', fr: 'Néerlandais' } },
-  { deger: 'en', etiket: { tr: 'İngilizce', fr: 'Anglais' } },
+  { deger: 'tr', etiket: { tr: 'Türkçe', fr: 'Turc', en: 'Turkish' } },
+  { deger: 'fr', etiket: { tr: 'Fransızca', fr: 'Français', en: 'French' } },
+  { deger: 'nl', etiket: { tr: 'Felemenkçe', fr: 'Néerlandais', en: 'Dutch' } },
+  { deger: 'en', etiket: { tr: 'İngilizce', fr: 'Anglais', en: 'English' } },
 ];
 
 export const HABERDAR_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'arkadas', etiket: { tr: 'Arkadaş / Tanıdık', fr: 'Ami(e) / Connaissance' } },
-  { deger: 'internet', etiket: { tr: 'İnternet / Site', fr: 'Internet / Site web' } },
-  { deger: 'sosyal-medya', etiket: { tr: 'Sosyal medya', fr: 'Réseaux sociaux' } },
-  { deger: 'cami', etiket: { tr: 'Camiye daha önce geldim', fr: 'Déjà visité la mosquée' } },
-  { deger: 'diger', etiket: { tr: 'Diğer', fr: 'Autre' } },
+  { deger: 'arkadas', etiket: { tr: 'Arkadaş / Tanıdık', fr: 'Ami(e) / Connaissance', en: 'Friend / Acquaintance' } },
+  { deger: 'internet', etiket: { tr: 'İnternet / Site', fr: 'Internet / Site web', en: 'Internet / Website' } },
+  { deger: 'sosyal-medya', etiket: { tr: 'Sosyal medya', fr: 'Réseaux sociaux', en: 'Social media' } },
+  { deger: 'cami', etiket: { tr: 'Camiye daha önce geldim', fr: 'Déjà visité la mosquée', en: 'Visited the mosque before' } },
+  { deger: 'diger', etiket: { tr: 'Diğer', fr: 'Autre', en: 'Other' } },
 ];
 
 export const BELGE_TURU_SECENEKLERI: SecenekOgesi[] = [
-  { deger: 'kimlik', etiket: { tr: 'Kimlik kartı (ön + arka gerekli)', fr: 'Carte d’identité (recto + verso requis)' } },
-  { deger: 'pasaport', etiket: { tr: 'Pasaport (yalnızca kimlik sayfası)', fr: 'Passeport (page d’identité uniquement)' } },
+  { deger: 'kimlik', etiket: { tr: 'Kimlik kartı (ön + arka gerekli)', fr: 'Carte d’identité (recto + verso requis)', en: 'ID card (front + back required)' } },
+  { deger: 'pasaport', etiket: { tr: 'Pasaport (yalnızca kimlik sayfası)', fr: 'Passeport (page d’identité uniquement)', en: 'Passport (identity page only)' } },
 ];
 
 /* Sıra: belge yükleme öne alınmıştır (İleri'ye basınca kimlik otomatik taranır ve
  * bir sonraki adım — Kimlik Bilgileri — okunan verilerle önceden doldurulmuş gelir). */
-export const ADIM_BASLIKLARI: Record<FormDil, string[]> = {
+export const ADIM_BASLIKLARI: Record<Dil, string[]> = {
   tr: ['Hoş Geldiniz', 'Belge Yükleme', 'Kimlik Bilgileri', 'İletişim ve Adres', 'Tören Tercihi', 'Rıza Metni', 'İmza', 'Özet ve Gönder'],
   fr: ['Bienvenue', 'Documents à joindre', 'Informations personnelles', 'Contact et adresse', 'Préférences pour la cérémonie', 'Consentement', 'Signature', 'Résumé et envoi'],
+  en: ['Welcome', 'Documents to Upload', 'Personal Information', 'Contact & Address', 'Ceremony Preferences', 'Consent', 'Signature', 'Summary & Submit'],
 };
 
 export interface Metinler {
@@ -205,7 +209,7 @@ export interface Metinler {
   pdfFiligran: string;
 }
 
-export function metinler(dil: FormDil): Metinler {
+export function metinler(dil: Dil): Metinler {
   if (dil === 'fr') {
     return {
       baslik: 'Demande de conversion à l’islam',
@@ -338,6 +342,140 @@ export function metinler(dil: FormDil): Metinler {
       pdfBilgilendirme: 'Ce document est une pré-demande. L’attestation officielle de conversion (EK-9) est délivrée après la cérémonie à la mosquée, avec la validation du Conseiller des Affaires sociales de l’Ambassade de Turquie à Bruxelles.',
       pdfIletisim: 'Contact',
       pdfFiligran: 'PRÉ-DEMANDE — NON OFFICIEL',
+    };
+  }
+  if (dil === 'en') {
+    return {
+      baslik: 'Application for Conversion to Islam',
+      girisBaslik: 'Before You Begin',
+      girisMetin1: 'This form is a pre-application for the Certificate of Conversion (İhtida Belgesi, Annex EK-9). Your information is shared only with our mosque and, where necessary, with the Counsellor for Social Affairs at the Turkish Embassy in Brussels.',
+      girisMetin2: 'You may complete this form over several sessions — your draft is saved automatically on this device.',
+      girisUyari: 'This form is only for applicants who are of legal age (18 or older). If you are under 18, please contact our imam directly.',
+      devamEt: 'Start',
+      geri: 'Back',
+      ileri: 'Next',
+      adimSayaci: (simdi, toplam) => `Step ${simdi} of ${toplam}`,
+
+      soyad: 'Last name',
+      adlar: 'First name(s)',
+      cinsiyet: 'Gender',
+      dogumTarihi: 'Date of birth',
+      dogumYeri: 'Place of birth',
+      uyruk: 'Nationality',
+      belgeNo: 'Card / document number (optional)',
+      belgeGecerlilikTarihi: 'Document expiry date (optional)',
+      tcVatandasi: 'I am a Turkish citizen',
+      tcKimlikNo: 'Turkish national ID number (11 digits)',
+      oncekiDin: 'Previous religion / denomination',
+      oncekiDinDiger: 'Please specify',
+      ogrenimDurumu: 'Level of education (optional)',
+      anneAdi: 'Mother’s first name (optional)',
+      babaAdi: 'Father’s first name (optional)',
+      medeniHali: 'Marital status (optional)',
+      meslek: 'Occupation (optional)',
+      opsiyonelBolum: 'Additional information (optional)',
+      yasUyari: 'This form is only for applicants aged 18 and over.',
+      kimlikBilgileriAciklama: 'The information legible on your document has been filled in automatically below. Please check that it is correct and complete any missing fields.',
+      mrzRozet: 'Read from ID',
+
+      eposta: 'Email',
+      telefon: 'Phone (+32...)',
+      adres: 'Full address',
+      adresYerTutucu: 'Street, number, postal code, city',
+
+      ihtidaSebebi: 'Why do you wish to embrace Islam? (optional)',
+      ihtidaSebebiYerTutucu: 'A few sentences are enough — this helps us prepare for the ceremony.',
+      yeniIsim: 'Preferred Muslim name (optional)',
+      yeniIsimNot: 'Changing your name is not obligatory.',
+      torenDili: 'Preferred language for the ceremony (optional)',
+      torenTarihi: 'Preferred date for the ceremony (optional, indicative only)',
+      torenTarihiNot: 'The mosque will contact you separately to confirm a definite date.',
+      nasilHaberdar: 'How did you hear about this process? (optional)',
+      ekNot: 'Additional note (optional)',
+
+      belgeYuklemeAciklama: 'Add the front and back of your ID card (or the identity page of your passport), plus a passport-style photo. When you press “Next”, your information will automatically be read from the document on this device; anything that cannot be read can be completed by hand in the next step.',
+      belgeTuru: 'Type of identity document',
+      kimlikOn: 'ID card — front',
+      kimlikArka: 'ID card — back',
+      vesikalik: 'Passport-style photo',
+      dosyaSec: 'Choose a file',
+      dosyaDegistir: 'Change file',
+      dosyaYuklendi: 'File added',
+      dosyaYok: 'No file',
+      dosyaIsleniyor: 'Processing…',
+      dosyaCokBuyuk: 'The file is too large (max. 10 MB).',
+      dosyaGecersiz: 'Invalid file — please use an image (JPG/PNG).',
+      kameraIleCek: 'Take a photo',
+      galeridenYukle: 'Choose from gallery',
+      dosyaKaldirEt: 'Remove',
+      surukleBirak: 'Drag an image here or choose a file',
+      henuzEklenmedi: 'No image added yet',
+      gorselEklendi: 'Image added',
+
+      mrzTaraButonu: 'Re-scan document',
+      mrzTaraniyor: 'Reading document…',
+      mrzTaraniyorYuzde: (yuzde) => `Reading document… ${yuzde}%`,
+      mrzBasarili: (adet) => `${adet} field${adet > 1 ? 's' : ''} filled in automatically from your document.`,
+      mrzBasariliDegisiklikYok: 'Document read; your information was already complete.',
+      mrzBasarisiz: 'Automatic reading was not successful — no problem, simply fill in the information below by hand.',
+      mrzHenuzYok: 'Your information has not yet been read automatically.',
+      duzenle: 'Edit',
+
+      rizaBaslik: 'Personal Data Protection Consent (KVKK Açık Rıza Metni, EK-10)',
+      rizaOzet: 'As part of my conversion process, I expressly consent to the personal and sensitive personal data I share (including information about my religion) being obtained, processed, recorded and securely stored in accordance with Article 4 of Turkish Law No. 6698 on the Protection of Personal Data, and being shared with the relevant authorities (the Counsellor for Religious Affairs / Presidency of Religious Affairs). I acknowledge that I have received the necessary information and that I have read and understood this text.',
+      rizaTamMetin: 'Read the full text (EK-10, 4 languages) ↗',
+      rizaOnay: 'I have read and accept the consent text above.',
+      hurIradeOnay: 'I declare that I wish to embrace Islam of my own free will, without any pressure.',
+      fotografIzniBaslik: 'Photo / testimony',
+      fotografIzniMetin: 'By default, your personal story is never shared publicly. If you wish, you may allow the mosque to use your photo or testimony (only if you choose to).',
+      fotografIzniOnay: 'I allow my photo/testimony to be used by the mosque (optional).',
+      gdprNot: 'Your data is processed solely for the purpose of issuing the Certificate of Conversion and communicating with the relevant authorities.',
+
+      imzaBaslik: 'Handwritten signature',
+      imzaAciklama: 'Sign with your finger, mouse or stylus in the box below.',
+      imzaTemizle: 'Clear',
+      imzaGeriAl: 'Undo last stroke',
+      imzaYenidenImzala: 'Sign again',
+      imzaBos: 'Please provide your signature.',
+      imzaKisa: 'The stroke is too short — please sign more clearly.',
+      imzaYazarak: 'Can’t draw? Sign by typing your name',
+      imzaYazarakEtiket: 'Full name (counts as signature)',
+      imzaYazarakOnay: 'Use as signature',
+
+      ozetBaslik: 'Please review your information',
+      beyanCumlesi: 'I declare that, of my own free will, I wish to embrace Islam, and I respectfully request that a Certificate of Conversion (İhtida Belgesi) be issued in my name.',
+      gonder: 'Submit my application',
+      gonderiliyor: 'Sending…',
+      hazirlaniyor: 'Preparing document…',
+      tekrarDene: 'Try again',
+
+      zorunluAlan: 'This field is required.',
+      gecersizEposta: 'Invalid email address.',
+      gecersizTelefon: 'Invalid phone number (e.g. +32 4xx xx xx xx).',
+      gecersizKimlikNo: 'Invalid Turkish national ID number (11 digits).',
+      onayGerekli: 'This box must be checked to continue.',
+
+      basariBaslik: 'Your application has been received',
+      basariMetin: (ref) => `Reference number: ${ref}. The mosque will contact you to arrange a ceremony date.`,
+      basariPdfNot: 'A PDF copy has been sent to you by email and forwarded to the mosque.',
+      yeniBasvuru: 'New application',
+
+      gonderimHataBaslik: 'Submission failed',
+      servisYokBaslik: 'Online submission not yet available',
+      servisYok: 'The online submission service is not yet active. You can use one of the options below, or contact the mosque directly.',
+      gonderimBasarisiz: 'An error occurred while sending. Your PDF document was created successfully — please use one of the options below.',
+      cokBuyuk: 'The document is too large to send. Please try again with smaller photos.',
+      yedekBaslik: 'Other ways to send',
+      yedekIndir: 'Download PDF',
+      yedekEposta: 'Send by email',
+      yedekWhatsapp: 'Share via WhatsApp',
+
+      pdfBaslik: 'Certificate of Conversion (İhtida Belgesi) — Pre-Application Form',
+      pdfAltBaslik: 'Certificate of Conversion to Islam (İhtida Belgesi)',
+      pdfOnBasvuruUyari: 'PRE-APPLICATION — NOT AN OFFICIAL DOCUMENT',
+      pdfBilgilendirme: 'This document is a pre-application. The official Certificate of Conversion (İhtida Belgesi, Annex EK-9) is issued after the ceremony at our mosque, with the approval of the Counsellor for Social Affairs at the Turkish Embassy in Brussels.',
+      pdfIletisim: 'Contact',
+      pdfFiligran: 'PRE-APPLICATION — NOT OFFICIAL',
     };
   }
   return {

@@ -23,7 +23,7 @@ import DiyanetHizmetleri from '../../../sayfalar/DiyanetHizmetleri.astro';
 
 export function getStaticPaths() {
   const yol: { params: { lang: Dil; sayfa: string }; props: { anahtar: SayfaAnahtari } }[] = [];
-  for (const lang of ['tr', 'fr'] as Dil[]) {
+  for (const lang of ['tr', 'fr', 'en'] as Dil[]) {
     for (const [anahtar, seg] of Object.entries(yollar) as [SayfaAnahtari, Record<Dil, string>][]) {
       if (anahtar === 'anasayfa') continue;
       yol.push({ params: { lang, sayfa: seg[lang] }, props: { anahtar } });

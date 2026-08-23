@@ -19,6 +19,8 @@ const cami = {
 };
 const m = dil === 'tr'
   ? { alt: 'Formu birkaç adımda doldurun; belge PDF olarak size ve camimize iletilir. İstediğiniz zaman ayrılıp devam edebilirsiniz — taslağınız bu cihazda saklanır.' }
+  : dil === 'en'
+  ? { alt: 'Complete the form in a few steps; the document is sent to you and to our mosque as a PDF. You can leave and come back at any time — your draft is saved on this device.' }
   : { alt: 'Complétez le formulaire en quelques étapes ; le document PDF vous est transmis ainsi qu’à la mosquée. Vous pouvez reprendre plus tard — votre brouillon est conservé sur cet appareil.' };
 ---
 <Base baslik={t('nav.ihtidaBasvuru')} dil={dil} noindex>

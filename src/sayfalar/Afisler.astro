@@ -7,26 +7,27 @@ import { ceviri, tarihBicimle } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
+const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
 
 const hepsi = await getCollection('afisler', ({ data }) => !data.taslak);
 const liste = hepsi.sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
 
 const KATEGORI: Record<string, Record<Dil, string>> = {
-  kampanya: { tr: 'Kampanya', fr: 'Campagne' },
-  program: { tr: 'Program', fr: 'Programme' },
-  egitim: { tr: 'Eğitim', fr: 'Éducation' },
-  'hac-umre': { tr: 'Hac ve Umre', fr: 'Hajj et Omra' },
-  kurban: { tr: 'Kurban', fr: 'Sacrifice (Kurban)' },
-  zekat: { tr: 'Zekât ve Fitre', fr: 'Zakât et Fitre' },
-  cenaze: { tr: 'Cenaze', fr: 'Funérailles' },
-  ramazan: { tr: 'Ramazan', fr: 'Ramadan' },
-  diger: { tr: 'Diğer', fr: 'Autre' },
+  kampanya: { tr: 'Kampanya', fr: 'Campagne', en: 'Campaign' },
+  program: { tr: 'Program', fr: 'Programme', en: 'Programme' },
+  egitim: { tr: 'Eğitim', fr: 'Éducation', en: 'Education' },
+  'hac-umre': { tr: 'Hac ve Umre', fr: 'Hajj et Omra', en: 'Hajj and Omra' },
+  kurban: { tr: 'Kurban', fr: 'Sacrifice (Kurban)', en: 'Sacrifice (Kurban)' },
+  zekat: { tr: 'Zekât ve Fitre', fr: 'Zakât et Fitre', en: 'Zakât and Fitr' },
+  cenaze: { tr: 'Cenaze', fr: 'Funérailles', en: 'Funerals' },
+  ramazan: { tr: 'Ramazan', fr: 'Ramadan', en: 'Ramadan' },
+  diger: { tr: 'Diğer', fr: 'Autre', en: 'Other' },
 };
 const KAYNAK: Record<string, Record<Dil, string>> = {
-  ulucamii: { tr: 'Ulu Camii', fr: 'Ulu Camii' },
-  bdv: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique' },
-  diyanet: { tr: 'Diyanet İşleri Başkanlığı', fr: 'Présidence des Affaires religieuses' },
-  diger: { tr: 'Diğer kaynak', fr: 'Autre source' },
+  ulucamii: { tr: 'Ulu Camii', fr: 'Ulu Camii', en: 'Ulu Camii' },
+  bdv: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium' },
+  diyanet: { tr: 'Diyanet İşleri Başkanlığı', fr: 'Présidence des Affaires religieuses', en: 'Presidency of Religious Affairs' },
+  diger: { tr: 'Diğer kaynak', fr: 'Autre source', en: 'Other source' },
 };
 
 const kategoriler = [...new Set(liste.map((a) => a.data.kategori))].sort((a, b) => (KATEGORI[a]?.[dil] ?? a).localeCompare(KATEGORI[b]?.[dil] ?? b, dil));
@@ -34,6 +35,9 @@ const kategoriler = [...new Set(liste.map((a) => a.data.kategori))].sort((a, b) 
 const m = dil === 'tr' ? {
   altBaslik: 'Camimizin kampanya ve program afişleri; Belçika Diyanet Vakfı’nın hac, umre, kurban, zekât-fitre ve eğitim afişlerinden bir seçki. Bir afişe dokunarak büyütebilirsiniz.',
   hepsi: 'Tümü', dis: 'Bağlantı ↗',
+} : dil === 'en' ? {
+  altBaslik: 'Campaign and programme posters from our mosque, alongside a selection of posters from the Diyanet Foundation of Belgium (hajj, omra, sacrifice, zakât-fitre, education). Tap a poster to enlarge it.',
+  hepsi: 'All', dis: 'Link ↗',
 } : {
   altBaslik: 'Affiches de campagnes et de programmes de notre mosquée, ainsi qu’une sélection d’affiches de la Fondation Diyanet de Belgique (hajj, omra, sacrifice, zakât-fitre, éducation). Touchez une affiche pour l’agrandir.',
   hepsi: 'Toutes', dis: 'Lien ↗',
@@ -53,11 +57,11 @@ const m = dil === 'tr' ? {
     <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" role="list" id="afis-duvari">
       {liste.map((a) => (
         <li class="afis-karti" data-kategori={a.data.kategori}>
-          <a href={a.data.gorsel} class="gorsel-cerceve block overflow-hidden group" data-lightbox="afisler" data-caption={a.data.baslik[dil] ?? a.data.baslik.tr}>
-            <img src={a.data.kucuk ?? a.data.gorsel} alt={a.data.baslik[dil] ?? a.data.baslik.tr} loading="lazy" width="480" height="640" class="aspect-[3/4] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+          <a href={a.data.gorsel} class="gorsel-cerceve block overflow-hidden group" data-lightbox="afisler" data-caption={a.data.baslik[icDil] ?? a.data.baslik.tr}>
+            <img src={a.data.kucuk ?? a.data.gorsel} alt={a.data.baslik[icDil] ?? a.data.baslik.tr} loading="lazy" width="480" height="640" class="aspect-[3/4] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
           </a>
           <div class="mt-2">
-            <p class="text-sm font-semibold leading-snug">{a.data.baslik[dil] ?? a.data.baslik.tr}</p>
+            <p class="text-sm font-semibold leading-snug">{a.data.baslik[icDil] ?? a.data.baslik.tr}</p>
             <p class="etiket mt-1">
               <time datetime={a.data.tarih.toISOString()}>{tarihBicimle(a.data.tarih, dil, { month: 'short', year: 'numeric' })}</time>
               <span> · {KAYNAK[a.data.kaynak]?.[dil] ?? a.data.kaynak}</span>

@@ -48,6 +48,13 @@ const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
         <li><a href={yol(dil, 'portal')}>{t('nav.portal')}</a></li>
         <li><a href="/admin/" rel="nofollow">{t('footer.yonetim')}</a></li>
       </ul>
+      <p class="etiket mt-6">{dil === 'tr' ? 'Diyanet bağlantıları' : dil === 'en' ? 'Diyanet links' : 'Liens Diyanet'}</p>
+      <ul class="mt-2 text-sm leading-8">
+        <li><a href="https://www.diyanet.tv/canli-izle" rel="noopener" target="_blank">Diyanet TV — {dil === 'tr' ? 'canlı yayın' : dil === 'en' ? 'live' : 'en direct'}<span aria-hidden="true"> ↗</span></a></li>
+        <li><a href="https://www.youtube.com/@alqurantv/live" rel="noopener" target="_blank">{dil === 'tr' ? 'Kâbe canlı yayını' : dil === 'en' ? 'Makkah live broadcast' : 'La Mecque en direct'}<span aria-hidden="true"> ↗</span></a></li>
+        <li><a href="https://www.diyanet.gov.tr" rel="noopener" target="_blank">{dil === 'tr' ? 'Diyanet İşleri Başkanlığı' : dil === 'en' ? 'Presidency of Religious Affairs' : 'Présidence des affaires religieuses'}<span aria-hidden="true"> ↗</span></a></li>
+        <li><a href="https://www.diyanet.be" rel="noopener" target="_blank">{dil === 'tr' ? 'Belçika Diyanet Vakfı' : dil === 'en' ? 'Diyanet Foundation of Belgium' : 'Fondation Diyanet de Belgique'}<span aria-hidden="true"> ↗</span></a></li>
+      </ul>
     </div>
   </div>
   <div class="cetvel">

@@ -6,17 +6,20 @@ import type { Dil } from '../i18n/ui';
 import { galeri } from '../lib/icerik';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
+const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
 const liste = await galeri();
-const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar. Bir kareye dokunarak büyütebilir, ok tuşları veya kaydırma ile gezebilirsiniz.' : 'Photos de l’extérieur et de l’intérieur de la mosquée. Touchez une image pour l’agrandir, naviguez avec les flèches ou en glissant.';
+const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar. Bir kareye dokunarak büyütebilir, ok tuşları veya kaydırma ile gezebilirsiniz.' : dil === 'en' ? 'Photos of the exterior and interior of the mosque. Tap an image to enlarge it, and browse with the arrow keys or by swiping.' : 'Photos de l’extérieur et de l’intérieur de la mosquée. Touchez une image pour l’agrandir, naviguez avec les flèches ou en glissant.';
+const enNotu = 'Photo captions are written in Turkish and French. An English version is not available.';
 ---
 <Base baslik={t('nav.galeri')} dil={dil}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.galeri')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
+    {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
     <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" role="list">
       {liste.map((g) => (
         <li>
-          <a href={g.data.dosya} class="gorsel-cerceve block overflow-hidden group" data-lightbox="galeri" data-caption={g.data.alt[dil]}>
-            <img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+          <a href={g.data.dosya} class="gorsel-cerceve block overflow-hidden group" data-lightbox="galeri" data-caption={g.data.alt[icDil]}>
+            <img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[icDil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
           </a>
         </li>
       ))}

@@ -6,8 +6,10 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil; fotolar: { data: { dosya: string; kucuk?: string; alt: { tr: string; fr: string } } }[] }
 const { dil, fotolar } = Astro.props; const t = ceviri(dil);
 const secim = fotolar.slice(0, 5);
-const baslik = dil === 'tr' ? 'Camimizden kareler' : 'Images de la mosquée';
-const hepsi = dil === 'tr' ? 'Tüm galeri' : 'Toute la galerie';
+const baslik = dil === 'tr' ? 'Camimizden kareler' : dil === 'en' ? 'Glimpses of our mosque' : 'Images de la mosquée';
+const hepsi = dil === 'tr' ? 'Tüm galeri' : dil === 'en' ? 'Full gallery' : 'Toute la galerie';
+// fotoğraf altyazıları (içerik) yalnız tr/fr sağlıyor; İngilizcede Fransızcaya düşer (içerik src/content kapsam dışı)
+const altDil = dil === 'en' ? 'fr' : dil;
 ---
 <section class="kapsayici py-12 sm:py-16" aria-labelledby="galeri-baslik">
   <div class="flex items-end justify-between gap-3 mb-6 cetvel pt-4">
@@ -17,8 +19,8 @@ const hepsi = dil === 'tr' ? 'Tüm galeri' : 'Toute la galerie';
   <ul class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 sm:gap-3" role="list">
     {secim.map((g, i) => (
       <li class:list={[i === 0 && 'col-span-2 row-span-2']}>
-        <a href={g.data.dosya} data-lightbox="anasayfa-galeri" data-caption={g.data.alt[dil]} class="gorsel-cerceve block h-full overflow-hidden group" aria-label={g.data.alt[dil]}>
-          <img src={i === 0 ? g.data.dosya : (g.data.kucuk ?? g.data.dosya)} alt={g.data.alt[dil]} loading="lazy" decoding="async" width={i === 0 ? 1600 : 480} height={i === 0 ? 1200 : 360} class="h-full w-full object-cover aspect-[4/3] transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+        <a href={g.data.dosya} data-lightbox="anasayfa-galeri" data-caption={g.data.alt[altDil]} class="gorsel-cerceve block h-full overflow-hidden group" aria-label={g.data.alt[altDil]}>
+          <img src={i === 0 ? g.data.dosya : (g.data.kucuk ?? g.data.dosya)} alt={g.data.alt[altDil]} loading="lazy" decoding="async" width={i === 0 ? 1600 : 480} height={i === 0 ? 1200 : 360} class="h-full w-full object-cover aspect-[4/3] transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
         </a>
       </li>
     ))}

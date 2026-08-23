@@ -9,13 +9,15 @@ import { siteAyarlari, bugunBrussels } from '../lib/icerik';
 import veri from '../data/irsat-mufredati.json';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
+/** İngilizce sayfa metni İngilizcedir; ancak 36 haftalık müfredat verisi (irsat-mufredati.json) yalnız tr/fr içerir — EN görünümünde program içerikleri Fransızcaya düşer. */
+const icDil = dil === 'en' ? 'fr' : dil;
 const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const bugun = bugunBrussels(); // YYYY-MM-DD (Brüksel)
 const haftalar = veri.haftalar as Array<{ n?: number; tarih: string; modul?: number; kuran?: { tr: string; fr: string }; hanimlar?: { tr: string; fr: string }; gencKizlar?: { tr: string; fr: string }; not?: { tr: string; fr: string }; tur?: string; tatil?: { tr: string; fr: string } }>;
 const siradaki = haftalar.find((h) => h.tarih >= bugun);
-const tarihUzun = (iso: string) => new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : 'fr-BE', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }).format(new Date(iso + 'T12:00:00'));
-const tarihKisa = (iso: string) => new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : 'fr-BE', { day: 'numeric', month: 'short' }).format(new Date(iso + 'T12:00:00'));
+const tarihUzun = (iso: string) => new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }).format(new Date(iso + 'T12:00:00'));
+const tarihKisa = (iso: string) => new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { day: 'numeric', month: 'short' }).format(new Date(iso + 'T12:00:00'));
 const m = dil === 'tr' ? {
   etiket: 'Her Çarşamba · Esma AVCI Hoca Hanım', baslik: 'Hanımlar ve Genç Kızlar İrşat Programı',
   alt: 'Müşavirliğimizce bölgemize görevlendirilen Esma AVCI Hoca Hanım, her Çarşamba camimizde sabah hanımlara, öğleden sonra genç kızlara yönelik program yürütüyor. Ücretsizdir, kayıt gerekmez.',
@@ -29,6 +31,20 @@ const m = dil === 'tr' ? {
   yontem: ['İsimsiz soru kutusu: cevaplar bir sonraki hafta; mahrem sorular birebir görüşmeyle.', 'Ev ödevi yok, ev sohbeti var: haftanın konusu evde çocuklarla konuşulmak üzere bir cümleye indirgenir.', 'Genç kızlarda anahtar kavramlar Fransızca da verilir; okulda sorulan sorulara birlikte cevap hazırlanır.', 'Kurban haftasında yardım projesi; yıl sonunda sunumlar, sertifika ve ikram.', 'Duyurular: dernek WhatsApp grupları, Kur’an kursu velileri ve cami panosu (haftalık konu yazılır).'],
   notBaslik: 'Not', not: 'Bu müfredat örnek ve öneri niteliğindedir; konuların sırası ve ağırlığı cemaatin ihtiyacına göre Esma AVCI Hoca Hanım tarafından yeniden düzenlenebilir. Başlangıç tarihi Müşavirliğimizin görevlendirme yazısının tebliğine bağlıdır.',
   iletisim: 'Bilgi ve iletişim', iletisimA: 'Program hakkında sorularınız için cami yönetimine ulaşabilirsiniz.', cami: 'Cami', dinGorevlisi: 'Din görevlisi', kurs: 'Kur’an kursu sayfası', anasayfa: 'Haftalık program',
+} : dil === 'en' ? {
+  etiket: 'Every Wednesday · Mrs Esma AVCI', baslik: 'Women and Girls Guidance Programme',
+  alt: 'Mrs Esma AVCI, a religious teacher assigned to our region by our Counsellor’s office, leads a session at our mosque every Wednesday — for women in the morning and for young girls in the afternoon. Free of charge, no registration required.',
+  gun: 'Day', gunD: 'Every Wednesday', oturum: 'Sessions', donem: 'Term', donemD: '2 September 2026 – 30 June 2027 · 36 weeks · 6 modules', gorevli: 'Religious teacher', gorevliD: 'Esma AVCI — assigned by the Diyanet Counsellor’s Office of Belgium', yer: 'Venue', yerD: 'Ulu Camii classroom',
+  buHafta: 'This Wednesday', sonraki: 'Next session', hafta: 'Week', kuran: 'Qur’an', hanimlar: 'Women · main lesson', genc: 'Young girls · workshop', tatil: 'no session', modul: 'Module',
+  akisBaslik: 'Daily schedule', akisAlt: 'Every Wednesday follows the same structure: Qur’an, main lesson, questions and answers. In winter, the afternoon prayer falls during the afternoon session and is performed together with the young girls.',
+  ilkeBaslik: 'Six principles behind the programme', haritaBaslik: 'Year map', haritaAlt: 'The main lesson axis of the women’s session. The young girls’ workshop follows parallel themes in the same weeks.',
+  haftalikBaslik: '36 Wednesdays', haftalikAlt: 'The dates are the Wednesdays of the 2026–2027 school year, excluding Fédération Wallonie-Bruxelles school holidays. Past weeks are shown faded.',
+  kandil: 'Holy night / religious day', ramazan: 'Ramadan', bayram: 'Eid visits',
+  yontemBaslik: 'Method and follow-up',
+  yontem: ['Anonymous question box: answers given the following week; sensitive questions handled in a private conversation.', 'No homework, but a “home conversation”: the week’s topic is condensed into one sentence to discuss with the children at home.', 'For young girls, key concepts are also given in French; answers to questions raised at school are prepared together.', 'A solidarity project during the week of the sacrifice; presentations, certificates and refreshments at year’s end.', 'Announcements: the association’s WhatsApp groups, Qur’an school parents and the mosque noticeboard (the weekly topic is posted).'],
+  notBaslik: 'Note', not: 'This curriculum is indicative and a proposal; the order and weight of the topics may be rearranged by Mrs Esma AVCI according to the community’s needs. The start date depends on the notification of the official assignment from our Counsellor’s office.',
+  iletisim: 'Information and contact', iletisimA: 'For any questions about the programme, you can contact the mosque committee.', cami: 'Mosque', dinGorevlisi: 'Religious teacher', kurs: 'Qur’an school page', anasayfa: 'Weekly programme',
+  icerikNot: 'Programme content is shown in French; sessions are held in Turkish with French support.',
 } : {
   etiket: 'Chaque mercredi · Mme Esma AVCI', baslik: 'Programme pour femmes et jeunes filles',
   alt: 'Mme Esma AVCI, enseignante religieuse affectée à notre région par le Conseil des affaires religieuses (Diyanet), anime chaque mercredi à la mosquée une séance pour les femmes le matin et un atelier pour les jeunes filles l’après-midi. Gratuit, sans inscription.',
@@ -52,7 +68,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
     <div>
       <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
         <div class="flex gap-3"><Ikon ad="takvim" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><dt class="etiket">{m.gun}</dt><dd class="font-serif text-xl font-semibold">{m.gunD}</dd></div></div>
-        <div class="flex gap-3"><Ikon ad="saat" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><dt class="etiket">{m.oturum}</dt><dd><span class="mono">10:30–12:30</span> {veri.oturumlar[0].ad[dil]} · <span class="mono">14:00–16:00</span> {veri.oturumlar[1].ad[dil]}</dd></div></div>
+        <div class="flex gap-3"><Ikon ad="saat" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><dt class="etiket">{m.oturum}</dt><dd><span class="mono">10:30–12:30</span> {veri.oturumlar[0].ad[icDil]} · <span class="mono">14:00–16:00</span> {veri.oturumlar[1].ad[icDil]}</dd></div></div>
         <div class="flex gap-3"><Ikon ad="kurs" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><dt class="etiket">{m.donem}</dt><dd>{m.donemD}</dd></div></div>
         <div class="flex gap-3"><Ikon ad="hutbe" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><dt class="etiket">{m.gorevli}</dt><dd>{m.gorevliD}</dd></div></div>
         <div class="flex gap-3 sm:col-span-2"><Ikon ad="harita" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><dt class="etiket">{m.yer}</dt><dd>{m.yerD} — {site.adres.sokak}, {site.adres.posta} {site.adres.sehir}</dd></div></div>
@@ -63,13 +79,13 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
         <p class="etiket etiket-vurgu">{siradaki.tarih === bugun ? m.buHafta : m.sonraki}</p>
         <p class="font-serif text-2xl font-semibold mt-1 capitalize">{tarihUzun(siradaki.tarih)}</p>
         {siradaki.tatil ? (
-          <p class="mt-2 text-(--metin-2)">{siradaki.tatil[dil]} — {m.tatil}</p>
+          <p class="mt-2 text-(--metin-2)">{siradaki.tatil[icDil]} — {m.tatil}</p>
         ) : (
           <dl class="mt-3 grid gap-2 text-sm">
-            <div><dt class="etiket">{m.hafta} {siradaki.n} · {m.kuran}</dt><dd>{siradaki.kuran?.[dil]}</dd></div>
-            <div><dt class="etiket">{m.hanimlar} · 10:30</dt><dd class="font-medium">{siradaki.hanimlar?.[dil]}</dd></div>
-            <div><dt class="etiket">{m.genc} · 14:00</dt><dd class="font-medium">{siradaki.gencKizlar?.[dil]}</dd></div>
-            {siradaki.not?.[dil] && <div><dd class={`inline-block rounded-(--radius-kose) px-2 py-0.5 text-xs ${turRenk(siradaki.tur)}`}>{siradaki.not[dil]}</dd></div>}
+            <div><dt class="etiket">{m.hafta} {siradaki.n} · {m.kuran}</dt><dd>{siradaki.kuran?.[icDil]}</dd></div>
+            <div><dt class="etiket">{m.hanimlar} · 10:30</dt><dd class="font-medium">{siradaki.hanimlar?.[icDil]}</dd></div>
+            <div><dt class="etiket">{m.genc} · 14:00</dt><dd class="font-medium">{siradaki.gencKizlar?.[icDil]}</dd></div>
+            {siradaki.not?.[icDil] && <div><dd class={`inline-block rounded-(--radius-kose) px-2 py-0.5 text-xs ${turRenk(siradaki.tur)}`}>{siradaki.not[icDil]}</dd></div>}
           </dl>
         )}
       </aside>
@@ -84,14 +100,14 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
         {veri.oturumlar.map((o) => (
           <div class="kart-kagit p-5">
             <div class="flex items-baseline justify-between gap-3 border-b border-(--cizgi) pb-3">
-              <p><span class="etiket etiket-vurgu block">{o.ad[dil]}</span><span class="font-serif text-2xl font-semibold mono">{o.saat}</span></p>
-              <p class="text-sm text-(--metin-2) text-right">{o.yer[dil]}</p>
+              <p><span class="etiket etiket-vurgu block">{o.ad[icDil]}</span><span class="font-serif text-2xl font-semibold mono">{o.saat}</span></p>
+              <p class="text-sm text-(--metin-2) text-right">{o.yer[icDil]}</p>
             </div>
             <ol class="mt-3 grid gap-3" role="list">
               {o.akis.map((a) => (
                 <li class="grid grid-cols-[3.2rem_minmax(0,1fr)] gap-3">
                   <span class="mono text-sm pt-0.5 text-(--vurgu)">{a.saat}</span>
-                  <span><span class="block font-semibold">{a.ad[dil]}</span><span class="block text-sm text-(--metin-2)">{a.aciklama[dil]}</span></span>
+                  <span><span class="block font-semibold">{a.ad[icDil]}</span><span class="block text-sm text-(--metin-2)">{a.aciklama[icDil]}</span></span>
                 </li>
               ))}
             </ol>
@@ -105,7 +121,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
     <h2 class="cetvel pt-4">{m.ilkeBaslik}</h2>
     <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
       {veri.ilkeler.map((i, k) => (
-        <li class="kart p-5"><p class="mono text-xs text-(--vurgu)">0{k + 1}</p><p class="font-serif text-lg font-semibold mt-1">{i.baslik[dil]}</p><p class="mt-1 text-sm text-(--metin-2)">{i.metin[dil]}</p></li>
+        <li class="kart p-5"><p class="mono text-xs text-(--vurgu)">0{k + 1}</p><p class="font-serif text-lg font-semibold mt-1">{i.baslik[icDil]}</p><p class="mt-1 text-sm text-(--metin-2)">{i.metin[icDil]}</p></li>
       ))}
     </ul>
   </section>
@@ -118,7 +134,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
         {veri.moduller.map((md) => (
           <li class="kart-kagit p-4 flex gap-3">
             <span class="font-serif text-3xl font-semibold text-(--vurgu) leading-none">{md.n}</span>
-            <span><span class="etiket block">{md.ay[dil]} · {md.bitis - md.baslangic + 1} {dil === 'tr' ? 'hafta' : 'semaines'}</span><span class="block font-semibold">{md.baslik[dil]}</span><span class="block text-sm text-(--metin-2)">{md.alan[dil]}</span></span>
+            <span><span class="etiket block">{md.ay[icDil]} · {md.bitis - md.baslangic + 1} {dil === 'tr' ? 'hafta' : dil === 'en' ? 'weeks' : 'semaines'}</span><span class="block font-semibold">{md.baslik[icDil]}</span><span class="block text-sm text-(--metin-2)">{md.alan[icDil]}</span></span>
           </li>
         ))}
       </ol>
@@ -135,6 +151,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
       </ul>
     </div>
     <p class="mt-2 text-(--metin-2) max-w-[70ch]">{m.haftalikAlt}</p>
+    {dil === 'en' && <p class="bilgi mt-4 text-sm">{m.icerikNot}</p>}
     <div class="mt-6 border border-(--cizgi) rounded-(--radius-kose) overflow-hidden bg-(--zemin)">
       <div class="hidden lg:grid grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1.3fr)] gap-4 px-4 py-2 bg-(--zemin-2) border-b border-(--cizgi)">
         <span class="etiket">{m.hafta}</span><span class="etiket">{m.kuran}</span><span class="etiket">{m.hanimlar}</span><span class="etiket">{m.genc}</span>
@@ -146,16 +163,16 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
           return (
             <>
               {modulBasi && (
-                <li class="px-4 py-2 bg-(--zemin-2)/70"><span class="etiket etiket-vurgu">{m.modul} {modulBasi.n} · {m.hafta} {modulBasi.baslangic}–{modulBasi.bitis}</span> <span class="font-serif font-semibold ml-2">{modulBasi.baslik[dil]}</span></li>
+                <li class="px-4 py-2 bg-(--zemin-2)/70"><span class="etiket etiket-vurgu">{m.modul} {modulBasi.n} · {m.hafta} {modulBasi.baslangic}–{modulBasi.bitis}</span> <span class="font-serif font-semibold ml-2">{modulBasi.baslik[icDil]}</span></li>
               )}
               {h.tatil ? (
-                <li class={`grid grid-cols-[5.5rem_minmax(0,1fr)] gap-4 px-4 py-2 text-sm ${gecmis ? 'opacity-50' : 'text-(--metin-2)'}`}><span class="mono">{tarihKisa(h.tarih)}</span><span>{h.tatil[dil]} — {m.tatil}</span></li>
+                <li class={`grid grid-cols-[5.5rem_minmax(0,1fr)] gap-4 px-4 py-2 text-sm ${gecmis ? 'opacity-50' : 'text-(--metin-2)'}`}><span class="mono">{tarihKisa(h.tarih)}</span><span>{h.tatil[icDil]} — {m.tatil}</span></li>
               ) : (
                 <li class={`grid gap-x-4 gap-y-1 px-4 py-3 lg:grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1.3fr)] ${gecmis ? 'opacity-55' : ''} ${vurgu ? 'bg-(--vurgu)/6 border-l-2 border-(--vurgu)' : ''}`} aria-current={vurgu ? 'date' : undefined}>
                   <span><span class="mono text-sm block">{tarihKisa(h.tarih)}</span><span class="etiket">{m.hafta} {h.n}</span></span>
-                  <span class="text-sm"><span class="etiket lg:hidden">{m.kuran}: </span>{h.kuran?.[dil]}</span>
-                  <span class="text-sm"><span class="etiket lg:hidden">{m.hanimlar}: </span><span class="font-medium">{h.hanimlar?.[dil]}</span></span>
-                  <span class="text-sm"><span class="etiket lg:hidden">{m.genc}: </span>{h.gencKizlar?.[dil]}{h.not?.[dil] && <span class={`mt-1 block w-fit rounded-(--radius-kose) px-2 py-0.5 text-xs ${turRenk(h.tur) || 'bg-(--zemin-2) text-(--metin-2)'}`}>{h.not[dil]}</span>}</span>
+                  <span class="text-sm"><span class="etiket lg:hidden">{m.kuran}: </span>{h.kuran?.[icDil]}</span>
+                  <span class="text-sm"><span class="etiket lg:hidden">{m.hanimlar}: </span><span class="font-medium">{h.hanimlar?.[icDil]}</span></span>
+                  <span class="text-sm"><span class="etiket lg:hidden">{m.genc}: </span>{h.gencKizlar?.[icDil]}{h.not?.[icDil] && <span class={`mt-1 block w-fit rounded-(--radius-kose) px-2 py-0.5 text-xs ${turRenk(h.tur) || 'bg-(--zemin-2) text-(--metin-2)'}`}>{h.not[icDil]}</span>}</span>
                 </li>
               )}
             </>

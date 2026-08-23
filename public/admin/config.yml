@@ -293,7 +293,24 @@ collections:
                   - { name: banka, label: Banka adı, widget: string }
                   - { name: hesapAdi, label: Hesap adı (bankadaki kayıt), widget: string }
               - { name: cumaSaati, label: Cuma namazı saati (boş bırakılabilir), widget: string, required: false }
-              - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
+              - name: heroMesajlar
+        label: Ana sayfa dönen mesajlar
+        label_singular: Mesaj
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.metin.tr}}"
+        fields:
+          - name: metin
+            label: Metin
+            widget: object
+            fields:
+              - { name: tr, label: Türkçe, widget: string }
+              - { name: fr, label: Fransızca, widget: string }
+              - { name: en, label: İngilizce, widget: string, required: false }
+          - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
+          - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
+      - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
               - name: sosyal
                 label: Sosyal medya
                 widget: object

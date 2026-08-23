@@ -8,7 +8,7 @@ import { duyurular, etkinlikler } from '../../../lib/icerik';
 
 export async function getStaticPaths() {
   const out: any[] = [];
-  for (const lang of ['tr', 'fr'] as Dil[]) {
+  for (const lang of ['tr', 'fr', 'en'] as Dil[]) {
     for (const d of await duyurular(lang)) out.push({ params: { lang, sayfa: yollar.duyurular[lang], slug: d.slug }, props: { tur: 'duyuru', entry: d } });
     for (const e of await etkinlikler(lang)) out.push({ params: { lang, sayfa: yollar.etkinlikler[lang], slug: e.slug }, props: { tur: 'etkinlik', entry: e } });
   }
@@ -25,7 +25,7 @@ const tarih: Date = tur === 'duyuru' ? d.tarih : d.baslangic;
 const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
 const grup = tur === 'duyuru' ? 'duyuru' : 'etkinlik';
 const galeri: Array<{ dosya: string; kucuk?: string; alt?: string }> = Array.isArray(d.galeri) ? d.galeri : [];
-const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : 'Photos';
+const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : dil === 'en' ? 'Photos' : 'Photos';
 ---
 <Base baslik={d.baslik} dil={dil} aciklama={d.ozet} kapak={kapak}>
   <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet}>

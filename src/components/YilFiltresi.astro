@@ -5,9 +5,10 @@
  * çip seçimi ilgili yılı gösterir, "Tümü" hepsini açar; #yil-YYYY çapasıyla gelen ziyaretçi doğrudan o yılı görür.
  * Bölümler: <section data-yil="2026" id="yil-2026">…</section>
  */
-interface Props { yillar: number[]; dil: 'tr' | 'fr' }
+import type { Dil } from '../i18n/ui';
+interface Props { yillar: number[]; dil: Dil }
 const { yillar, dil } = Astro.props;
-const m = dil === 'tr' ? { etiket: 'Yıla göre', tumu: 'Tümü' } : { etiket: 'Par année', tumu: 'Toutes' };
+const m = dil === 'tr' ? { etiket: 'Yıla göre', tumu: 'Tümü' } : dil === 'en' ? { etiket: 'By year', tumu: 'All' } : { etiket: 'Par année', tumu: 'Toutes' };
 ---
 {yillar.length > 1 && (
   <nav class="mb-8 flex flex-wrap gap-2" aria-label={m.etiket} data-yil-filtresi>

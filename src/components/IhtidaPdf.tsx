@@ -3,7 +3,7 @@
  *  Kur'an kursu kayıt sistemindeki assets/pdf.js ile aynı yaklaşım (Lora fontu, çerçeveli
  *  hücreler, "contained" görsel yerleştirme) — burada npm pdf-lib ile, 3 sayfalık ön başvuru
  *  belgesi için sadeleştirilmiş biçimde. */
-import type { Metinler } from './IhtidaMetinler';
+import type { Metinler, Dil } from './IhtidaMetinler';
 
 export interface IhtidaPdfBasvuran {
   soyad: string;
@@ -40,7 +40,7 @@ export interface IhtidaPdfCami { ad: string; adres: string; telefon: string; epo
 export type IhtidaOtoAlan = 'soyad' | 'adlar' | 'dogumTarihi' | 'cinsiyet' | 'uyruk' | 'belgeNo' | 'belgeGecerlilikTarihi' | 'tcKimlikNo';
 
 export interface IhtidaPdfGirdi {
-  dil: 'tr' | 'fr';
+  dil: Dil;
   m: Metinler;
   basvuran: IhtidaPdfBasvuran;
   otoOkunanAlanlar: IhtidaOtoAlan[];
@@ -97,6 +97,12 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
   const MUTED = rgb(0.33, 0.31, 0.28);
   const WHITE = rgb(1, 1, 1);
   const VURGU = rgb(0.71, 0.27, 0.17); // kiremit
+
+  /** PDF gövdesinde dile göre sabit metin seçer (tr/fr/en) — Metinler sözlüğüne
+   *  girmeyen, yalnızca bu belgede geçen kısa etiketler için. */
+  function dilMetni(tr: string, fr: string, en: string): string {
+    return girdi.dil === 'tr' ? tr : (girdi.dil === 'en' ? en : fr);
+  }
 
   const document = await PDFDocument.create();
   document.registerFontkit(fontkit);
@@ -199,16 +205,16 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
   page1.drawText(girdi.m.pdfAltBaslik, { x: MARGIN, y, size: 15, font: fonts.bold, color: VURGU });
   y -= 22;
   const b = girdi.basvuran;
-  page1.drawText(`${girdi.dil === 'tr' ? 'Başvuru tarihi' : 'Date de la demande'}: ${formatZamanDamgasi(girdi.gonderimTarihi)}`, { x: MARGIN, y, size: 9.5, font: fonts.regular, color: MUTED });
+  page1.drawText(`${dilMetni('Başvuru tarihi', 'Date de la demande', 'Application date')}: ${formatZamanDamgasi(girdi.gonderimTarihi)}`, { x: MARGIN, y, size: 9.5, font: fonts.regular, color: MUTED });
   y -= 22;
 
   // Form etiketleri "(opsiyonel)" / "(+32...)" gibi UI ipuçları taşıyabilir — resmî belgede gereksiz.
   const et = (s: string) => s.replace(/\s*\([^)]*\)\s*$/, '').trim();
   // Kimlikten otomatik okunup kontrol hanesi doğrulanan alanlar özet tablosunda işaretlenir.
-  const otoNotu = girdi.dil === 'tr' ? ' · kimlikten okundu' : ' · lu automatiquement';
+  const otoNotu = dilMetni(' · kimlikten okundu', ' · lu automatiquement', ' · read from ID');
   const otoMu = (anahtar: IhtidaOtoAlan) => girdi.otoOkunanAlanlar.includes(anahtar);
   const etO = (s: string, anahtar: IhtidaOtoAlan) => et(s) + (otoMu(anahtar) ? otoNotu : '');
-  const adSoyadEtiket = (girdi.dil === 'tr' ? 'Adı Soyadı' : 'Nom et prénom') + ((otoMu('soyad') || otoMu('adlar')) ? otoNotu : '');
+  const adSoyadEtiket = dilMetni('Adı Soyadı', 'Nom et prénom', 'Full name') + ((otoMu('soyad') || otoMu('adlar')) ? otoNotu : '');
 
   const alanlar: [string, string][] = [
     [adSoyadEtiket, `${b.soyad} ${b.adlar}`.trim()],
@@ -267,20 +273,26 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
 
   curPage.drawLine({ start: { x: MARGIN, y }, end: { x: PAGE_WIDTH - MARGIN, y }, thickness: 0.6, color: LINE });
   y -= 16;
-  const kvkkNot = girdi.dil === 'tr'
-    ? `Bu başvuru ile birlikte EK-10 KVKK Açık Rıza Metni ${formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10))} tarihinde elektronik olarak onaylanmıştır.`
-    : `Le texte de consentement RGPD (EK-10) a été accepté électroniquement le ${formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10))} dans le cadre de cette demande.`;
+  const kvkkNot = dilMetni(
+    `Bu başvuru ile birlikte EK-10 KVKK Açık Rıza Metni ${formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10))} tarihinde elektronik olarak onaylanmıştır.`,
+    `Le texte de consentement RGPD (EK-10) a été accepté électroniquement le ${formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10))} dans le cadre de cette demande.`,
+    `The Personal Data Protection Consent Form (KVKK, Annex EK-10) was accepted electronically on ${formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10))} as part of this application.`,
+  );
   wrapText(kvkkNot, fonts.regular, 9, INNER).forEach((s) => { curPage.drawText(s, { x: MARGIN, y, size: 9, font: fonts.regular, color: MUTED }); y -= 12; });
   if (girdi.fotografIzni) {
     y -= 4;
-    const izinNot = girdi.dil === 'tr' ? 'Başvuran, fotoğraf/hikâyesinin cami tarafından kullanılmasına izin vermiştir.' : 'Le/la demandeur/euse a autorisé l’usage de sa photo/son témoignage par la mosquée.';
+    const izinNot = dilMetni(
+      'Başvuran, fotoğraf/hikâyesinin cami tarafından kullanılmasına izin vermiştir.',
+      'Le/la demandeur/euse a autorisé l’usage de sa photo/son témoignage par la mosquée.',
+      'The applicant has authorised the mosque to use their photo/testimony.',
+    );
     wrapText(izinNot, fonts.regular, 9, INNER).forEach((s) => { curPage.drawText(s, { x: MARGIN, y, size: 9, font: fonts.regular, color: MUTED }); y -= 12; });
   }
 
   // ---- Sayfa 2: ekler -----------------------------------------------------
   const page2 = document.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
   let y2 = drawHeader(page2, girdi.m.pdfIletisim);
-  drawCentered(page2, girdi.dil === 'tr' ? 'EKLER — KİMLİK VE FOTOĞRAF' : 'PIÈCES JOINTES — IDENTITÉ ET PHOTO', fonts.bold, 12, y2);
+  drawCentered(page2, dilMetni('EKLER — KİMLİK VE FOTOĞRAF', 'PIÈCES JOINTES — IDENTITÉ ET PHOTO', 'ATTACHMENTS — ID AND PHOTO'), fonts.bold, 12, y2);
   y2 -= 26;
 
   const onImg = await embedDataImage(girdi.kimlikOn);
@@ -302,7 +314,7 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
     page.drawRectangle({ x: MARGIN, y, width: INNER, height: h, borderColor: LINE, borderWidth: 0.8, color: WHITE });
     if (image) drawImageContained(page, image, MARGIN + 6, y + 6, INNER - 12, h - 12);
     else {
-      const bosMetin = girdi.dil === 'tr' ? 'Görsel eklenmedi' : 'Aucune image';
+      const bosMetin = dilMetni('Görsel eklenmedi', 'Aucune image', 'No image added');
       page.drawText(bosMetin, { x: MARGIN + (INNER - fonts.regular.widthOfTextAtSize(bosMetin, 10)) / 2, y: y + h / 2, size: 10, font: fonts.regular, color: MUTED });
     }
     watermark(page, MARGIN + INNER / 2, y + h / 2);
@@ -318,7 +330,7 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
   // ---- Sayfa 3: bilgilendirme ----------------------------------------------
   const page3 = document.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
   let y3 = drawHeader(page3, girdi.m.pdfIletisim);
-  drawCentered(page3, girdi.dil === 'tr' ? 'BİLGİLENDİRME' : 'INFORMATIONS', fonts.bold, 12, y3);
+  drawCentered(page3, dilMetni('BİLGİLENDİRME', 'INFORMATIONS', 'INFORMATION'), fonts.bold, 12, y3);
   y3 -= 28;
   wrapText(girdi.m.pdfBilgilendirme, fonts.regular, 10.5, INNER).forEach((s) => { page3.drawText(s, { x: MARGIN, y: y3, size: 10.5, font: fonts.regular, color: INK }); y3 -= 15; });
   y3 -= 26;

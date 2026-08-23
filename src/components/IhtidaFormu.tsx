@@ -18,7 +18,7 @@ import { ihtidaPdfUret, type IhtidaPdfSonuc, type IhtidaOtoAlan } from './Ihtida
 import { kimlikTara } from './IhtidaKimlikOcr';
 import type { MrzSonuc } from './IhtidaMrz';
 import {
-  metinler, type FormDil,
+  metinler, type Dil,
   CINSIYET_SECENEKLERI, ONCEKI_DIN_SECENEKLERI, OGRENIM_SECENEKLERI, MEDENI_HAL_SECENEKLERI,
   TOREN_DILI_SECENEKLERI, HABERDAR_SECENEKLERI, BELGE_TURU_SECENEKLERI, ADIM_BASLIKLARI,
   type SecenekOgesi,
@@ -184,7 +184,7 @@ function base64Cevir(bytes: Uint8Array): string {
   return btoa(ikili);
 }
 
-function etiketBul(liste: SecenekOgesi[], deger: string, dil: FormDil): string {
+function etiketBul(liste: SecenekOgesi[], deger: string, dil: Dil): string {
   return liste.find((s) => s.deger === deger)?.etiket[dil] ?? deger;
 }
 
@@ -247,7 +247,7 @@ function Alan({ etiket, deger, hata, zorunlu, tip = 'text', yerTutucu, onDegisti
   );
 }
 
-interface SecimAlaniProps { etiket: string; deger: string; hata?: string; zorunlu?: boolean; secenekler: SecenekOgesi[]; dil: FormDil; onDegisti: (v: string) => void; genislik?: 'tam' | 'yari'; rozet?: string; }
+interface SecimAlaniProps { etiket: string; deger: string; hata?: string; zorunlu?: boolean; secenekler: SecenekOgesi[]; dil: Dil; onDegisti: (v: string) => void; genislik?: 'tam' | 'yari'; rozet?: string; }
 function SecimAlani({ etiket, deger, hata, zorunlu, secenekler, dil, onDegisti, genislik = 'yari', rozet }: SecimAlaniProps) {
   const sinif = 'w-full min-h-11 rounded-(--radius-kose) border bg-(--zemin) px-3 py-2.5 text-base focus:outline-none focus:border-(--vurgu-2) transition-colors ' + (hata ? 'border-(--vurgu)' : 'border-(--cizgi)');
   const hataId = useMemo(() => `hata-${Math.random().toString(36).slice(2, 9)}`, []);
@@ -280,7 +280,7 @@ function OnayKutusu({ id, isaretli, onDegisti, cocuk, hata }: { id: string; isar
 
 // ------------------------------------------------------------------ ana bileşen
 
-interface Props { dil: FormDil; ucNokta: string; cami: { ad: string; adres: string; telefon: string; eposta: string }; ek10Yolu: string }
+interface Props { dil: Dil; ucNokta: string; cami: { ad: string; adres: string; telefon: string; eposta: string }; ek10Yolu: string }
 
 export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   const m = metinler(dil);

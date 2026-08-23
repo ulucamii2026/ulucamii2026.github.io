@@ -7,7 +7,7 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil; banka: { iban: string; bic: string; banka: string; hesapAdi: string } }
 const { dil, banka } = Astro.props;
 const ibanDuz = banka.iban.replace(/\s+/g, '');
-const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : 'Don Ulu Camii Marche';
+const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : dil === 'en' ? 'Donation Ulu Camii Marche' : 'Don Ulu Camii Marche';
 const epc = ['BCD', '002', '1', 'SCT', banka.bic, banka.hesapAdi.normalize('NFD').replace(/[̀-ͯ]/g, '').slice(0, 70), ibanDuz, '', '', '', aciklama].join('\n');
 const qr = await QRCode.toString(epc, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#2f221a', light: '#0000' } });
 const m = dil === 'tr' ? {
@@ -15,6 +15,11 @@ const m = dil === 'tr' ? {
   kopyala: 'IBAN’ı kopyala', kopyalandi: 'Kopyalandı ✓', qr: 'Bankacılık uygulamasıyla okutun', acik: 'Açıklama',
   yollar: [{ a: 'Genel bağış', s: 'Caminin aylık giderleri', h: yol(dil, 'bagis') }, { a: 'Vekâletle kurban', s: 'Her yıl Kurban Bayramı öncesi', h: yol(dil, 'bagis') + '#vekaletle-kurban' }, { a: 'Kütüphaneye kitap', s: 'TDV ve Diyanet yayınları', h: yol(dil, 'bagis') + '#kitap-bagisi' }, { a: 'Dernek üyeliği', s: 'Yıllık aidatla destek', h: yol(dil, 'uyelik') }],
   hepsi: 'Bağış sayfası',
+} : dil === 'en' ? {
+  baslik: 'Our mosque runs on the community’s donations', alt: 'Electricity, heating, maintenance and the Qur’an school are covered solely by your contributions. Scan the code with your banking app or copy the IBAN.',
+  kopyala: 'Copy IBAN', kopyalandi: 'Copied ✓', qr: 'Scan with your banking app', acik: 'Reference',
+  yollar: [{ a: 'General donation', s: 'Monthly running costs of the mosque', h: yol(dil, 'bagis') }, { a: 'Sacrifice by proxy', s: 'Every year before Eid al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' }, { a: 'Books for the library', s: 'TDV and Diyanet publications', h: yol(dil, 'bagis') + '#kitap-bagisi' }, { a: 'Association membership', s: 'Support through annual dues', h: yol(dil, 'uyelik') }],
+  hepsi: 'Donations page',
 } : {
   baslik: 'Notre mosquée vit des dons de la communauté', alt: 'Électricité, chauffage, entretien et école coranique ne sont financés que par vos contributions. Scannez le code avec votre application bancaire ou copiez l’IBAN.',
   kopyala: 'Copier l’IBAN', kopyalandi: 'Copié ✓', qr: 'Scannez avec votre application bancaire', acik: 'Communication',

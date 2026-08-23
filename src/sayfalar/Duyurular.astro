@@ -10,12 +10,14 @@ interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const liste = await duyurular(dil);
 const yillar = [...new Set(liste.map((d) => d.data.tarih.getFullYear()))].sort((a, b) => b - a);
-const altBaslik = dil === 'tr' ? 'Camimizden haberler, duyurular ve bilgilendirmeler — Facebook sayfamızdaki geçmiş duyurular da arşiv olarak burada.' : 'Nouvelles, annonces et informations de la mosquée — les anciennes annonces de notre page Facebook sont archivées ici.';
-const arsivNot = dil === 'tr' ? 'Arşiv' : 'Archives';
+const altBaslik = dil === 'tr' ? 'Camimizden haberler, duyurular ve bilgilendirmeler — Facebook sayfamızdaki geçmiş duyurular da arşiv olarak burada.' : dil === 'en' ? 'News, announcements and information from our mosque — past announcements from our Facebook page are also archived here.' : 'Nouvelles, annonces et informations de la mosquée — les anciennes annonces de notre page Facebook sont archivées ici.';
+const arsivNot = dil === 'tr' ? 'Arşiv' : dil === 'en' ? 'Archive' : 'Archives';
+const enNotu = 'Announcements are published in Turkish and French. An English version is not available.';
 ---
 <Base baslik={t('nav.duyurular')} dil={dil}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.duyurular')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
+    {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
     {liste.length === 0 && <p class="text-(--metin-2)">{t('duyuru.bos')}</p>}
     <YilFiltresi yillar={yillar} dil={dil} />
     {yillar.map((y, idx) => (

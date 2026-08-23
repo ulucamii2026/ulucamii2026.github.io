@@ -2,7 +2,10 @@ import { getCollection, getEntry } from 'astro:content';
 import type { Dil } from '../i18n/ui';
 import namazJson from '../data/namaz-vakitleri.json';
 
-export const dilYollari = () => [{ params: { lang: 'tr' } }, { params: { lang: 'fr' } }];
+export const dilYollari = () => [{ params: { lang: 'tr' } }, { params: { lang: 'fr' } }, { params: { lang: 'en' } }];
+
+/** Markdown içerik dili: İngilizce sürümü olmayan koleksiyonlar Fransızcaya düşer (duyuru/etkinlik arşivi TR+FR yayımlanır) */
+export const icerikDili = (dil: Dil): 'tr' | 'fr' => (dil === 'en' ? 'fr' : dil);
 
 /** Koleksiyon id'si "tr/slug" biçiminde; dile göre süz ve slug'ı ayıkla */
 function dilSuz<T extends { id: string }>(liste: T[], dil: Dil) {
@@ -11,12 +14,12 @@ function dilSuz<T extends { id: string }>(liste: T[], dil: Dil) {
 
 export async function duyurular(dil: Dil) {
   const hepsi = await getCollection('duyurular', ({ data }) => !data.taslak);
-  return dilSuz(hepsi, dil).sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
+  return dilSuz(hepsi, icerikDili(dil)).sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
 }
 
 export async function etkinlikler(dil: Dil) {
   const hepsi = await getCollection('etkinlikler', ({ data }) => !data.taslak);
-  return dilSuz(hepsi, dil).sort((a, b) => b.data.baslangic.getTime() - a.data.baslangic.getTime());
+  return dilSuz(hepsi, icerikDili(dil)).sort((a, b) => b.data.baslangic.getTime() - a.data.baslangic.getTime());
 }
 
 export async function yaklasanEtkinlikler(dil: Dil, adet = 3) {
@@ -26,7 +29,7 @@ export async function yaklasanEtkinlikler(dil: Dil, adet = 3) {
 }
 
 export async function sayfa(dil: Dil, ad: string) {
-  return getEntry('sayfalar', `${dil}/${ad}`);
+  return (await getEntry('sayfalar', `${dil}/${ad}`)) ?? (await getEntry('sayfalar', `${icerikDili(dil)}/${ad}`));
 }
 
 export async function siteAyarlari() {

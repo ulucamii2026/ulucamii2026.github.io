@@ -1,0 +1,79 @@
+---
+/**
+ * Hero arka plan slaytı — camimizin fotoğrafları arasında yavaş çapraz geçiş (8 sn tempo, 1.4 sn geçiş).
+ * - İlk kare eager yüklenir (LCP); sonrakiler yalnız JS ile, ilk geçişten hemen önce önceden indirilir.
+ * - Okunabilirlik güvencesi: görsel ne kadar açık olursa olsun metin bölgesini karartan çift katman
+ *   (alttan üst gradyan + sol metin bölgesi gradyanı) her karede sabittir.
+ * - prefers-reduced-motion: döngü çalışmaz, ilk kare sabit kalır. Sekme gizliyken döngü durur.
+ * - Noktalar: klavyeyle erişilebilir düğmeler; üzerine gelinince döngü bekler.
+ */
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = {
+  tr: { grup: 'Cami fotoğrafları slaytı', git: (i: number) => `${i}. fotoğrafa geç`, alt: ['Ulu Camii dış cephesi', 'Türk ve Belçika bayraklı cami tabelası — 1986', 'Cami iç mekânı, mihrap ve minber', 'Cami avlusu', 'Cami iç mekânı', 'Cami bahçe kapısı'] },
+  fr: { grup: 'Diaporama de la mosquée', git: (i: number) => `Aller à la photo ${i}`, alt: ['Façade de la mosquée Ulu Camii', 'Plaque de la mosquée avec drapeaux turc et belge — 1986', 'Intérieur de la mosquée, mihrab et minbar', 'Cour de la mosquée', 'Intérieur de la mosquée', 'Portail du jardin'] },
+  en: { grup: 'Mosque photo slideshow', git: (i: number) => `Go to photo ${i}`, alt: ['Front of the Ulu Mosque', 'Mosque plaque with the Turkish and Belgian flags — 1986', 'Prayer hall, mihrab and minbar', 'Mosque courtyard', 'Prayer hall', 'Garden gate'] },
+}[dil];
+const SLAYTLAR = [1, 2, 3, 4, 5, 6];
+---
+<div class="absolute inset-0 overflow-hidden" id="hero-slayt" data-sure="8000">
+  {SLAYTLAR.map((n, i) => (
+    <picture>
+      <source media="(max-width: 720px)" srcset={`/media/hero/hero-${n}-m.webp`} />
+      <img
+        src={`/media/hero/hero-${n}.webp`}
+        alt={i === 0 ? m.alt[0] : ''}
+        data-slayt={i}
+        aria-hidden={i === 0 ? undefined : 'true'}
+        loading={i === 0 ? 'eager' : 'lazy'}
+        fetchpriority={i === 0 ? 'high' : 'low'}
+        decoding="async"
+        class:list={['hero-kare absolute inset-0 h-full w-full object-cover', i === 0 ? 'aktif' : '']}
+      />
+    </picture>
+  ))}
+  <!-- Okunabilirlik katmanları: her karede sabit — açık görsellerde de beyaz metin okunur kalır -->
+  <div class="absolute inset-0 bg-gradient-to-t from-(--color-ceviz-koyu) via-(--color-ceviz-koyu)/55 to-(--color-ceviz-koyu)/20" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(100deg,rgb(47_34_26/.66)_0%,rgb(47_34_26/.38)_48%,rgb(47_34_26/.12)_100%)]" aria-hidden="true"></div>
+</div>
+<div class="absolute bottom-24 right-4 sm:bottom-6 sm:right-6 z-10 flex gap-2" role="group" aria-label={m.grup} id="hero-noktalar">
+  {SLAYTLAR.map((n, i) => (
+    <button type="button" data-nokta={i} aria-label={m.git(i + 1)} aria-current={i === 0 ? 'true' : undefined}
+      class="h-2.5 w-2.5 rounded-full border border-(--color-krem)/70 bg-(--color-krem)/25 transition-all duration-300 aria-[current]:bg-(--color-krem) aria-[current]:w-5 hover:bg-(--color-krem)/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-(--color-ochre-acik)"></button>
+  ))}
+</div>
+
+<style is:global>
+  .hero-kare { opacity: 0; transition: opacity 1.4s ease-in-out; }
+  .hero-kare.aktif { opacity: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-kare.aktif { animation: hero-nefes 9.5s ease-in-out both; }
+    @keyframes hero-nefes { from { transform: scale(1); } to { transform: scale(1.045); } }
+  }
+</style>
+
+<script>
+  const kok = document.getElementById('hero-slayt');
+  const noktalar = Array.from(document.querySelectorAll<HTMLButtonElement>('#hero-noktalar [data-nokta]'));
+  const kareler = kok ? Array.from(kok.querySelectorAll<HTMLImageElement>('[data-slayt]')) : [];
+  if (kok && kareler.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const sure = Number(kok.dataset.sure || 8000);
+    let i = 0; let zaman = 0; let bekle = false;
+    const onyukle = (k: number) => { const im = kareler[k % kareler.length]; if (im && !im.dataset.hazir) { im.dataset.hazir = '1'; im.loading = 'eager'; } };
+    const goster = (k: number) => {
+      i = (k + kareler.length) % kareler.length;
+      kareler.forEach((im, j) => im.classList.toggle('aktif', j === i));
+      noktalar.forEach((b, j) => (j === i ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current')));
+      onyukle(i + 1);
+    };
+    const dongu = () => { zaman = window.setTimeout(() => { if (!bekle && !document.hidden) goster(i + 1); dongu(); }, sure); };
+    onyukle(1); dongu();
+    noktalar.forEach((b, j) => b.addEventListener('click', () => { goster(j); clearTimeout(zaman); dongu(); }));
+    const noktaKutu = document.getElementById('hero-noktalar');
+    noktaKutu?.addEventListener('mouseenter', () => { bekle = true; });
+    noktaKutu?.addEventListener('mouseleave', () => { bekle = false; });
+    noktaKutu?.addEventListener('focusin', () => { bekle = true; });
+    noktaKutu?.addEventListener('focusout', () => { bekle = false; });
+  }
+</script>

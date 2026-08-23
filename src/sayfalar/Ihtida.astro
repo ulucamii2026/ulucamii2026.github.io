@@ -39,6 +39,34 @@ const m = dil === 'tr'
       ek10: 'KVKK Açık Rıza Metni (EK-10) — tam metin',
       ucretsiz: 'Süreç tamamen ücretsizdir.',
     }
+  : dil === 'en'
+  ? {
+      surecBaslik: 'How Does the Process Work?',
+      surec: [
+        { b: 'Application', a: 'Fill in the online form or speak directly with our imam.' },
+        { b: 'Interview and ceremony date', a: 'A suitable ceremony date is set together with the mosque.' },
+        { b: 'Conversion ceremony', a: 'Recitation, a short address, the question of free will, the shahada, takbir and congratulations.' },
+        { b: 'Presentation of the certificate', a: 'A copy printed on glossy paper is handed to you the same day.' },
+        { b: 'Official archival record', a: 'The official copy is sent to the Counsellor’s office; registration can take a few weeks.' },
+      ],
+      belgelerBaslik: 'Documents Required',
+      belgeler: [
+        'Copy of your identity card (front and back) or passport',
+        '1 passport-style photo',
+        'Completed application form / letter of request',
+        'Explicit GDPR consent (signed within the form)',
+        '2 witnesses to accompany you',
+      ],
+      iletisimBaslik: 'For Appointments and Questions',
+      iletisimAlt: 'If you would like to discuss the process, you can call our imam or send an e-mail.',
+      basvuruBaslik: 'Online Application',
+      basvuruAlt: 'Fill in the form in a few steps; your application is sent to our mosque and to you as a PDF.',
+      basvuruButon: 'Apply online',
+      indirBaslik: 'Documents',
+      ek9: 'Conversion Certificate (EK-9) — official template',
+      ek10: 'GDPR Explicit Consent Text (EK-10) — full text',
+      ucretsiz: 'The process is entirely free of charge.',
+    }
   : {
       surecBaslik: 'Comment se déroule la démarche ?',
       surec: [

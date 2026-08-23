@@ -1,0 +1,50 @@
+---
+/**
+ * Hero duyuru şeridi — kısa mesajlar arasında yumuşak döngü (6,5 sn; fareyle/odakla bekler).
+ * Mesajlar site.yaml → heroMesajlar (Sveltia'dan yönetilir). JS yokken ilk mesaj sabit görünür.
+ * aria-live kullanılmaz (dekoratif döngü); mesajın bağlantısı varsa tümü tıklanabilir.
+ */
+import { yol } from '../i18n/utils';
+import type { Dil, SayfaAnahtari } from '../i18n/ui';
+import { yollar } from '../i18n/ui';
+interface Mesaj { metin: { tr: string; fr: string; en?: string }; sayfa?: string; baglanti?: string }
+interface Props { dil: Dil; mesajlar: Mesaj[] }
+const { dil, mesajlar } = Astro.props;
+const metni = (mesaj: Mesaj) => mesaj.metin[dil] ?? mesaj.metin.fr ?? mesaj.metin.tr;
+const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil, mesaj.sayfa as SayfaAnahtari) : mesaj.baglanti);
+---
+{mesajlar.length > 0 && (
+  <div id="duyuru-seridi" class="mt-4 max-w-[58ch] relative min-h-[3.4em] sm:min-h-[2.6em]" data-sure="6500">
+    {mesajlar.map((mesaj, i) => {
+      const h = hedef(mesaj);
+      const ic = <><span class="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-ochre-acik)" aria-hidden="true"></span><span>{metni(mesaj)}</span></>;
+      return h
+        ? <a href={h} data-mesaj={i} class:list={['serit-mesaj absolute inset-x-0 top-0 flex items-start gap-2.5 text-lg text-(--color-krem)/92 no-underline hover:text-(--color-krem) hover:underline underline-offset-4', i === 0 && 'aktif']}>{ic}</a>
+        : <p data-mesaj={i} class:list={['serit-mesaj absolute inset-x-0 top-0 flex items-start gap-2.5 text-lg text-(--color-krem)/92', i === 0 && 'aktif']}>{ic}</p>;
+    })}
+  </div>
+)}
+
+<style is:global>
+  .serit-mesaj { opacity: 0; transform: translateY(6px); transition: opacity 700ms ease, transform 700ms ease; pointer-events: none; }
+  .serit-mesaj.aktif { opacity: 1; transform: none; pointer-events: auto; }
+  @media (prefers-reduced-motion: reduce) { .serit-mesaj { transition: none; transform: none; } }
+</style>
+
+<script>
+  const kutu = document.getElementById('duyuru-seridi');
+  const mesajlar = kutu ? Array.from(kutu.querySelectorAll<HTMLElement>('[data-mesaj]')) : [];
+  if (kutu && mesajlar.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const sure = Number(kutu.dataset.sure || 6500);
+    let i = 0; let bekle = false;
+    setInterval(() => {
+      if (bekle || document.hidden) return;
+      i = (i + 1) % mesajlar.length;
+      mesajlar.forEach((el, j) => el.classList.toggle('aktif', j === i));
+    }, sure);
+    kutu.addEventListener('mouseenter', () => { bekle = true; });
+    kutu.addEventListener('mouseleave', () => { bekle = false; });
+    kutu.addEventListener('focusin', () => { bekle = true; });
+    kutu.addEventListener('focusout', () => { bekle = false; });
+  }
+</script>

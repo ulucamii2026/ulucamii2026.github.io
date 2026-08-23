@@ -11,7 +11,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [preact({ compat: false }), sitemap()],
   i18n: {
-    locales: ['tr', 'fr'],
+    locales: ['tr', 'fr', 'en'],
     defaultLocale: 'tr',
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },

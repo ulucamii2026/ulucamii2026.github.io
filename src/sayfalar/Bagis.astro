@@ -8,7 +8,7 @@ interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const site = await siteAyarlari();
 const ibanDuz = site.banka.iban.replace(/\s+/g, '');
-const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : 'Don Ulu Camii Marche';
+const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : dil === 'en' ? 'Donation Ulu Camii Marche' : 'Don Ulu Camii Marche';
 // EPC069-12 "SCT" QR (Belçika bankacılık uygulamalarının tamamı okur)
 const epc = ['BCD', '002', '1', 'SCT', site.banka.bic, site.banka.hesapAdi.normalize('NFD').replace(/[̀-ͯ]/g, '').slice(0, 70), ibanDuz, '', '', '', aciklama].join('\n');
 const qr = await QRCode.toString(epc, { type: 'svg', errorCorrectionLevel: 'M', margin: 1, color: { dark: '#24201c', light: '#fbf8f1' } });
@@ -17,6 +17,11 @@ const m = dil === 'tr' ? {
   qr: 'Bankacılık uygulamanızla tarayın', qrAlt: 'Bağış için EPC QR kodu — IBAN bilgilerini bankacılık uygulamanıza aktarır',
   kopyala: 'IBAN’ı kopyala', kopyalandi: 'Kopyalandı ✓',
   yasal: 'Derneğimiz FOD Financiën tarafından vergi indirimli bağış (attestation fiscale) düzenleme yetkisine sahip değildir; bağışlarınız vergi beyannamesinde indirime konu olmaz.',
+} : dil === 'en' ? {
+  kart: 'Bank transfer', iban: 'IBAN', bic: 'BIC', banka: 'Bank', hesap: 'Account holder', acik: 'Message (suggested)',
+  qr: 'Scan with your banking app', qrAlt: 'EPC QR code for donations — transfers the IBAN details into your banking app',
+  kopyala: 'Copy IBAN', kopyalandi: 'Copied ✓',
+  yasal: 'Our association is not approved by the FOD Financiën (Belgian tax authority) to issue tax-deductible donation certificates (attestation fiscale); your donations are not tax-deductible.',
 } : {
   kart: 'Virement bancaire', iban: 'IBAN', bic: 'BIC', banka: 'Banque', hesap: 'Titulaire', acik: 'Communication (suggérée)',
   qr: 'Scannez avec votre application bancaire', qrAlt: 'Code QR EPC pour le don — transfère les coordonnées IBAN dans votre application bancaire',

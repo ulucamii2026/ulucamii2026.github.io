@@ -7,15 +7,18 @@ import { siteAyarlari, galeri } from '../lib/icerik';
 import icMekan from '../assets/foto/ic-mekan.jpg';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
+const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
 const site = await siteAyarlari();
 const fotolar = (await galeri()).slice(2, 8);
 const m = dil === 'tr'
   ? { kunye: 'Kısa künye', kurulus: 'Dernek kuruluşu', bina: 'Cami binası', taninma: 'Valon Bölgesi tarafından tanınmış ibadet topluluğu', bagli: 'Belçika Diyanet Vakfı’na bağlı', foto: 'Camimizden kareler', galeri: 'Galeriye git' }
+  : dil === 'en'
+  ? { kunye: 'At a glance', kurulus: 'Association founded', bina: 'Mosque building', taninma: 'Place of worship recognised by the Walloon Region', bagli: 'Affiliated with the Diyanet Foundation of Belgium', foto: 'Views of our mosque', galeri: 'Go to gallery' }
   : { kunye: 'En bref', kurulus: 'Fondation de l’association', bina: 'Bâtiment de la mosquée', taninma: 'Communauté cultuelle reconnue par la Région wallonne', bagli: 'Affiliée à la Fondation Diyanet de Belgique', foto: 'Images de la mosquée', galeri: 'Voir la galerie' };
 ---
 <IcerikSayfasi dil={dil} anahtar="hakkimizda" etiket={t('nav.hakkimizda')}>
   <div slot="yan" class="gorsel-cerceve">
-    <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı' : 'Intérieur de la mosquée'} widths={[360, 720]} sizes="360px" loading="lazy" />
+    <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı' : dil === 'en' ? 'Interior of the mosque' : 'Intérieur de la mosquée'} widths={[360, 720]} sizes="360px" loading="lazy" />
   </div>
   <dl slot="yan" class="kart p-5 grid gap-3 text-sm">
     <p class="etiket etiket-vurgu">{m.kunye}</p>
@@ -27,7 +30,7 @@ const m = dil === 'tr'
   <section slot="alt" class="kapsayici pb-12">
     <div class="flex items-end justify-between gap-3 cetvel pt-4 mb-4"><p class="etiket etiket-vurgu">{m.foto}</p><a href={yol(dil, 'galeri')} class="text-sm font-semibold no-underline hover:underline">{m.galeri}<span aria-hidden="true"> →</span></a></div>
     <ul class="grid grid-cols-3 md:grid-cols-6 gap-2" role="list">
-      {fotolar.map((g) => <li><a href={g.data.dosya} target="_blank" rel="noopener" class="gorsel-cerceve block"><img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[dil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover" /></a></li>)}
+      {fotolar.map((g) => <li><a href={g.data.dosya} data-lightbox="hakkimizda" data-caption={g.data.alt[icDil]} class="gorsel-cerceve block"><img src={g.data.kucuk ?? g.data.dosya} alt={g.data.alt[icDil]} loading="lazy" width="480" height="360" class="aspect-[4/3] object-cover" /></a></li>)}
     </ul>
   </section>
 </IcerikSayfasi>

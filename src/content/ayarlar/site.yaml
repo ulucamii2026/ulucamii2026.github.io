@@ -26,6 +26,37 @@ site:
   servisler:
     basvuru: "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec"
   imsakiyePdf: https://www.diyanet.be/Portals/0/imsakiye/2026/M.FAMENNE.pdf
+  # Ana sayfa hero'sunda dönen kısa mesajlar (Sveltia'dan güncellenir; sayfa: site içi bağlantı anahtarı)
+  heroMesajlar:
+    - metin:
+        tr: "Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları — Famenne’deki Müslümanların 40 yıllık ocağı."
+        fr: "Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes — le foyer des musulmans de la Famenne depuis 40 ans."
+        en: "Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes — the home of the Muslims of the Famenne for 40 years."
+    - metin:
+        tr: "Camimizin yeni web sitesi hayırlı olsun — vakitler, duyurular ve başvurular artık tek adreste."
+        fr: "Bienvenue sur le nouveau site de notre mosquée — horaires, annonces et inscriptions à une seule adresse."
+        en: "Welcome to our mosque’s new website — prayer times, announcements and applications in one place."
+      sayfa: duyurular
+    - metin:
+        tr: "2026–2027 Kur’an kursu kayıtları başladı — online kayıt yalnızca birkaç dakika sürer."
+        fr: "Les inscriptions 2026–2027 à l’école coranique sont ouvertes — l’inscription en ligne ne prend que quelques minutes."
+        en: "Enrolment for the 2026–2027 Qur’an school is open — signing up online takes only a few minutes."
+      sayfa: kurankursu
+    - metin:
+        tr: "Hanımlar ve genç kızlar irşat programı — her Çarşamba camimizde, Esma AVCI Hoca Hanım ile."
+        fr: "Programme pour femmes et jeunes filles — chaque mercredi à la mosquée, avec Mme Esma AVCI."
+        en: "Women’s and girls’ programme — every Wednesday at the mosque, with Mrs Esma AVCI."
+      sayfa: irsat
+    - metin:
+        tr: "İhtida başvurusu artık online — bilgi, belgeler ve başvuru formu sitemizde."
+        fr: "La demande de conversion se fait désormais en ligne — informations, documents et formulaire sur notre site."
+        en: "Applying to become Muslim is now online — information, documents and the application form are on our site."
+      sayfa: ihtida
+    - metin:
+        tr: "2027 hac ön kayıtları devam ediyor — ayrıntılar Diyanet Hizmetleri sayfasında."
+        fr: "Les préinscriptions au Hajj 2027 se poursuivent — détails sur la page Services Diyanet."
+        en: "Pre-registration for Hajj 2027 is under way — details on the Diyanet Services page."
+      sayfa: diyanet
   sosyal:
     facebook: https://www.facebook.com/profile.php?id=61591465715992
   konsolosluk:

@@ -9,6 +9,8 @@ const k = (await siteAyarlari()).konsolosluk;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const m = dil === 'tr'
   ? { santral: 'Santral', acil: 'Acil durum hattı (mesai dışı)', cagri: 'Konsolosluk Çağrı Merkezi', randevu: 'Randevu al', edevlet: 'e-Devlet konsolosluk işlemleri', not: 'Randevular yalnızca konsolosluk.gov.tr üzerinden, ücretsiz alınır. Aracı kişi veya ücretli randevu satışı resmî değildir.' }
+  : dil === 'en'
+  ? { santral: 'Switchboard', acil: 'Emergency line (outside office hours)', cagri: 'Consular Call Centre', randevu: 'Book an appointment', edevlet: 'e-Devlet consular procedures', not: 'Appointments are booked free of charge, only via konsolosluk.gov.tr. No intermediary or paid appointment sale is official.' }
   : { santral: 'Standard', acil: 'Ligne d’urgence (hors heures de bureau)', cagri: 'Centre d’appels consulaire', randevu: 'Prendre rendez-vous', edevlet: 'Démarches consulaires e-Devlet', not: 'Les rendez-vous se prennent gratuitement et uniquement sur konsolosluk.gov.tr. Aucun intermédiaire ni rendez-vous payant n’est officiel.' };
 ---
 <IcerikSayfasi dil={dil} anahtar="konsolosluk" etiket={t('nav.konsolosluk')}>

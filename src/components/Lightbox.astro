@@ -5,10 +5,13 @@
  * Aynı data-lightbox değerine sahip bağlantılar bir albüm oluşturur (önceki/sonraki, ok tuşları, kaydırma).
  * Base.astro'da bir kez dahil edilir; sayfada data-lightbox yoksa hiçbir şey yapmaz.
  */
-interface Props { dil: 'tr' | 'fr' }
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil }
 const { dil } = Astro.props;
 const m = dil === 'tr'
   ? { kapat: 'Kapat', onceki: 'Önceki görsel', sonraki: 'Sonraki görsel', goruntuleyici: 'Görsel görüntüleyici' }
+  : dil === 'en'
+  ? { kapat: 'Close', onceki: 'Previous image', sonraki: 'Next image', goruntuleyici: 'Image viewer' }
   : { kapat: 'Fermer', onceki: 'Image précédente', sonraki: 'Image suivante', goruntuleyici: 'Visionneuse d’images' };
 ---
 <dialog id="lightbox" class="lightbox" aria-label={m.goruntuleyici}>

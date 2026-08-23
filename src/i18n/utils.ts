@@ -1,10 +1,10 @@
 import { ui, varsayilanDil, yollar, type Dil, type Anahtar, type SayfaAnahtari } from './ui';
 
-export const dilListesi: Dil[] = ['tr', 'fr'];
+export const dilListesi: Dil[] = ['tr', 'fr', 'en'];
 
 export function dilBul(url: URL): Dil {
   const [, seg] = url.pathname.split('/');
-  return (seg === 'fr' || seg === 'tr') ? seg : varsayilanDil;
+  return (seg === 'fr' || seg === 'tr' || seg === 'en') ? seg : varsayilanDil;
 }
 
 export function ceviri(dil: Dil) {
@@ -25,7 +25,7 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
   const [, mevcutDil, seg, ...kalan] = url.pathname.split('/').filter(Boolean).length
     ? ['', ...url.pathname.split('/').filter(Boolean)]
     : ['', varsayilanDil];
-  const dil = (mevcutDil === 'fr' || mevcutDil === 'tr') ? (mevcutDil as Dil) : varsayilanDil;
+  const dil = (mevcutDil === 'fr' || mevcutDil === 'tr' || mevcutDil === 'en') ? (mevcutDil as Dil) : varsayilanDil;
   if (!seg) return yol(hedef, 'anasayfa');
   for (const [anahtar, degerler] of Object.entries(yollar) as [SayfaAnahtari, Record<Dil, string>][]) {
     if (degerler[dil] === seg) {
@@ -38,5 +38,8 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
 
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
   const d = typeof tarih === 'string' ? new Date(tarih) : tarih;
-  return new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : 'fr-BE', { timeZone: 'Europe/Brussels', ...secenek }).format(d);
+  return new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { timeZone: 'Europe/Brussels', ...secenek }).format(d);
 }
+
+/** hreflang öznitelik değeri */
+export const hreflangKodu = (d: Dil): string => (d === 'tr' ? 'tr' : d === 'en' ? 'en' : 'fr-BE');

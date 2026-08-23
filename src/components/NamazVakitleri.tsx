@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'preact/hooks';
 import { hicriCevir } from '../i18n/hicri';
 import { SIRA, TZ, durumHesapla, sureMetni, type Gun, type Vakit } from '../lib/namaz';
+import type { Dil } from '../i18n/ui';
 
 export type { Gun };
 interface Props {
   gunler: Gun[];
-  dil: 'tr' | 'fr';
+  dil: Dil;
   etiketler: Record<'imsak' | 'gunes' | 'ogle' | 'ikindi' | 'aksam' | 'yatsi' | 'siradaki' | 'kalan' | 'hicri', string>;
   kompakt?: boolean;
   /** Ana sayfadaki vurgulu varyant: daha büyük rakamlar, zeminsiz */
@@ -14,14 +15,23 @@ interface Props {
   cumaSaati?: string;
 }
 
+/** sureMetni yalnız tr/fr biliyor (src/lib/namaz.ts kapsam dışı) — İngilizce burada yerelce eklenir. */
+function sureMetniYerel(dk: number, dil: Dil): string {
+  if (dil === 'en') {
+    const sa = Math.floor(dk / 60), d = dk % 60;
+    return sa > 0 ? `${sa}h ${String(d).padStart(2, '0')}m` : `${d} min`;
+  }
+  return sureMetni(dk, dil);
+}
+
 export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false, vurgulu = false, cumaEtiket, cumaSaati }: Props) {
   const [simdi, setSimdi] = useState(() => new Date());
   useEffect(() => { const id = setInterval(() => setSimdi(new Date()), 1000); return () => clearInterval(id); }, []);
   const d = durumHesapla(gunler, simdi);
   if (!d) return null;
   const { bugun, eski, siradaki } = d;
-  const tarihStr = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : 'fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(bugun.tarih + 'T12:00:00'));
-  const uyari = dil === 'tr' ? 'Vakit tablosu güncellenmeyi bekliyor — lütfen cami ilan panosundaki çizelgeye bakınız.' : 'Le tableau des horaires attend une mise à jour — veuillez consulter l’affichage à la mosquée.';
+  const tarihStr = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(bugun.tarih + 'T12:00:00'));
+  const uyari = dil === 'tr' ? 'Vakit tablosu güncellenmeyi bekliyor — lütfen cami ilan panosundaki çizelgeye bakınız.' : dil === 'en' ? 'The prayer schedule is awaiting an update — please check the notice board at the mosque.' : 'Le tableau des horaires attend une mise à jour — veuillez consulter l’affichage à la mosquée.';
   // Rakam boyutu kutunun kendi genişliğine bağlı (container query): 5 karakterlik saat ~2,6em → 31cqw hiçbir genişlikte taşmaz
   const rakam = vurgulu ? 'text-[min(1.6rem,31cqw)] sm:text-[min(2.1rem,31cqw)] tracking-tight' : 'text-[min(1.7rem,31cqw)]';
   return (
@@ -45,7 +55,7 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
       <div class="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-sm text-(--metin-2)">
         {siradaki && (
           <p>
-            <span class="etiket">{etiketler.siradaki}:</span> <strong class="text-(--metin)">{etiketler[siradaki.vakit]} {siradaki.saat}</strong> · <span class="mono">{sureMetni(siradaki.kalanDk, dil)}</span> {etiketler.kalan}
+            <span class="etiket">{etiketler.siradaki}:</span> <strong class="text-(--metin)">{etiketler[siradaki.vakit]} {siradaki.saat}</strong> · <span class="mono">{sureMetniYerel(siradaki.kalanDk, dil)}</span> {etiketler.kalan}
           </p>
         )}
         {cumaEtiket && cumaSaati && <p><span class="etiket">{cumaEtiket}:</span> <strong class="text-(--metin) mono">{cumaSaati}</strong></p>}

@@ -1,13 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import { ceviri, yol } from '../i18n/utils';
-const t = ceviri('tr'); const f = ceviri('fr');
+const t = ceviri('tr'); const f = ceviri('fr'); const e = ceviri('en');
 ---
 <Base baslik={t('404.baslik')} dil="tr" noindex>
   <div class="kapsayici py-20 text-center">
     <p class="etiket etiket-vurgu">404</p>
-    <h1 class="mt-2">{t('404.baslik')} / {f('404.baslik')}</h1>
-    <p class="mt-4 text-(--metin-2)">{t('404.metin')}<br />{f('404.metin')}</p>
-    <p class="mt-8 flex justify-center gap-3"><a href={yol('tr', 'anasayfa')} class="dugme dugme-birincil">{t('404.anasayfa')}</a><a href={yol('fr', 'anasayfa')} class="dugme dugme-ikincil">{f('404.anasayfa')}</a></p>
+    <h1 class="mt-2">{t('404.baslik')} / {f('404.baslik')} / {e('404.baslik')}</h1>
+    <p class="mt-4 text-(--metin-2)">{t('404.metin')}<br />{f('404.metin')}<br />{e('404.metin')}</p>
+    <p class="mt-8 flex flex-wrap justify-center gap-3"><a href={yol('tr', 'anasayfa')} class="dugme dugme-birincil">{t('404.anasayfa')}</a><a href={yol('fr', 'anasayfa')} class="dugme dugme-ikincil">{f('404.anasayfa')}</a><a href={yol('en', 'anasayfa')} class="dugme dugme-ikincil">{e('404.anasayfa')}</a></p>
   </div>
 </Base>

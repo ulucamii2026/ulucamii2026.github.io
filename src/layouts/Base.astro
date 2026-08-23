@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Lightbox from '../components/Lightbox.astro';
-import { dilBul, ceviri, digerDilYolu, dilListesi } from '../i18n/utils';
+import { dilBul, ceviri, digerDilYolu, dilListesi, hreflangKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 
 interface Props {
@@ -24,7 +24,7 @@ const kanonik = new URL(Astro.url.pathname, Astro.site);
 const kapakUrl = new URL(kapak, Astro.site);
 ---
 <!doctype html>
-<html lang={dil === 'tr' ? 'tr' : 'fr-BE'} dir="ltr">
+<html lang={hreflangKodu(dil)} dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,7 +32,7 @@ const kapakUrl = new URL(kapak, Astro.site);
     <meta name="description" content={metaAciklama} />
     <link rel="canonical" href={kanonik} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    {dilListesi.map((d) => <link rel="alternate" hreflang={d === 'tr' ? 'tr' : 'fr-BE'} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
+    {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(digerDilYolu(Astro.url, 'tr'), Astro.site)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/media/logo/ulu-camii-logo-512.png" />
@@ -44,7 +44,7 @@ const kapakUrl = new URL(kapak, Astro.site);
     <meta property="og:description" content={metaAciklama} />
     <meta property="og:image" content={kapakUrl} />
     <meta property="og:url" content={kanonik} />
-    <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : 'fr_BE'} />
+    <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : dil === 'en' ? 'en_GB' : 'fr_BE'} />
     <meta name="twitter:card" content="summary_large_image" />
     <slot name="head" />
     <script is:inline>

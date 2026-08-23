@@ -13,12 +13,16 @@ const yaklasan = liste.filter((e) => (e.data.bitis ?? e.data.baslangic).getTime(
 const gecmis = liste.filter((e) => (e.data.bitis ?? e.data.baslangic).getTime() < simdi);
 const altBaslik = dil === 'tr'
   ? 'Bayram ve kandil programları, Ramazan etkinlikleri, kurban organizasyonu, yarışmalar ve afişlerimiz.'
+  : dil === 'en'
+  ? 'Eid and holy-night programmes, Ramadan activities, the sacrifice organisation, competitions and our posters.'
   : 'Programmes des fêtes et nuits bénies, activités du Ramadan, organisation du sacrifice, concours et affiches.';
-const gecmisBaslik = dil === 'tr' ? 'Geçmiş etkinlikler ve afiş arşivi' : 'Événements passés et archives d’affiches';
+const gecmisBaslik = dil === 'tr' ? 'Geçmiş etkinlikler ve afiş arşivi' : dil === 'en' ? 'Past events and poster archive' : 'Événements passés et archives d’affiches';
+const enNotu = 'Events are published in Turkish and French. An English version is not available.';
 ---
 <Base baslik={t('nav.etkinlikler')} dil={dil}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.etkinlikler')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
+    {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
     <h2 class="etiket etiket-vurgu text-base mb-4">{t('ana.etkinlikler')}</h2>
     {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
     {gecmis.length > 0 && (

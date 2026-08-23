@@ -7,6 +7,7 @@ import type { Dil } from '../i18n/ui';
 import { vefatlar, siteAyarlari } from '../lib/icerik';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
+const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
 const liste = await vefatlar();
 const site = await siteAyarlari();
 const c = site.cenaze;
@@ -35,6 +36,23 @@ const m = dil === 'tr' ? {
   surec: ['Vefatı doktora tespit ettirin (ölüm raporu).', 'Hemen BDV Cenaze Fonu’nu arayın: yıkama, kefenleme, nakil veya defin ve cenaze firmasıyla bütün işlemleri fon yürütür. Fon onayı olmadan başka firma kullanılırsa masraflar karşılanmaz.', 'Cenaze namazı camimizde kılınacaksa din görevlimizi arayın; namazın günü ve vakti kararlaştırılır, cemaate duyurulur.', 'Belediyeye (Marche-en-Famenne nüfus servisi) ölüm bildirimi yapılır (genellikle cenaze firması yürütür).', 'Türkiye’ye nakil: Başkonsolosluk cenaze nakil belgesi + Saniport “laissez-passer mortuaire” — fon ve cenaze firması takip eder.', 'Belçika’da defin tercih edilirse: Marche-en-Famenne/Aye çok dinli mezarlığı (Müslüman parseli) veya Namur, Liège, Charleroi.'],
   fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Her yıl Ocak ayının ilk haftası aidat mektubu gönderilir; 25 Ocak’a kadar mektup gelmezse fona bilgi verilmelidir. Aidat, mektup ulaştıktan sonra en geç 10 gün içinde ödenir; doğum, evlenme, boşanma ve adres değişiklikleri fona bildirilir.',
   belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
+} : dil === 'en' ? {
+  alt: 'We remember with mercy and gratitude the members of our community who have passed into the presence of Allah. Announcements of funeral prayers are also published on this page.',
+  ayetMeal: '“Indeed we belong to Allah, and indeed to Him we will return.” (Qur’an, 2:156)',
+  bos: 'No obituary has been published at this time.',
+  cenazeNamazi: 'Funeral prayer', defin: 'Burial', memleket: 'Hometown', taziye: 'Condolences', yas: 'years old',
+  dua: 'May Allah have mercy on them and grant them Paradise.',
+  hizmetBaslik: 'Who is responsible for funeral services?',
+  hizmet: ['Ritual washing (ghusl), shrouding, transfer to Turkey or burial in Belgium, and all official funeral procedures: the Diyanet Foundation of Belgium’s Funeral, Mutual Aid and Solidarity Fund (since 1982). In the event of a death, the fund is the first point of contact.', 'The mosque’s role: leading the funeral prayer, announcing the death to the community (mosque, website, WhatsApp), and organising condolence and mevlid programmes.', 'Our imam becomes involved once the deceased is brought to our mosque for the funeral prayer; he does not carry out the washing or the transfer.'],
+  hizmetNot: 'No assistance is provided by the fund for funeral arrangements made without its knowledge. For the funeral prayer, please contact our mosque through our imam.',
+  nakil: 'Death and transfer to Turkey →',
+  aileNot: 'The records on this page are published with the knowledge and consent of the families. For requests to add, correct or remove an entry, please contact the association committee.',
+  acilBaslik: 'Numbers to call at the time of a death',
+  acil1: 'BDV Funeral Fund — death line', acil1b: 'weekday office hours', acil2: 'Our imam — funeral prayer', acil3: 'Consulate General — duty line',
+  surecBaslik: 'Step-by-step process',
+  surec: ['Have the death certified by a doctor (death report).', 'Call the BDV Funeral Fund immediately: washing, shrouding, transfer or burial, and all arrangements with the funeral company are handled by the fund. If another company is used without the fund’s approval, costs will not be covered.', 'If the funeral prayer is to be performed at our mosque, call our imam; the day and time are agreed and announced to the community.', 'The death is reported to the municipality (Marche-en-Famenne population department) — usually handled by the funeral company.', 'Transfer to Turkey: a Consulate transfer certificate plus a Saniport “laissez-passer mortuaire”, followed up by the fund and the funeral company.', 'If burial in Belgium is preferred: the multi-faith cemetery of Marche-en-Famenne/Aye (Muslim section), or Namur, Liège, Charleroi.'],
+  fonNot: 'Fund membership: Turkish citizens with at least 1 year of permanent residence in Belgium; spouses and children under 18 are covered; membership takes effect 60 days after payment (except in case of accident). An annual dues letter is sent in the first week of January each year; if it has not arrived by 25 January, the fund should be informed. Dues must be paid within 10 days of receiving the letter; births, marriages, divorces and address changes must be reported to the fund.',
+  belediye: 'Municipal population department', mezarlik: 'Cemetery', fonSayfa: 'Fund information page ↗',
 } : {
   alt: 'Nous honorons la mémoire des membres de notre communauté qui nous ont quittés. Les annonces de prières funéraires sont également publiées ici.',
   ayetMeal: '« Nous appartenons à Allah et c’est à Lui que nous retournons. » (Coran, 2/156)',
@@ -61,6 +79,7 @@ const m = dil === 'tr' ? {
   </SayfaBasligi>
   <div class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
     <section>
+      {dil === 'en' && <p class="bilgi mb-6 text-sm">Obituary notices are written in Turkish and French. An English version is not available.</p>}
       {liste.length === 0 && <p class="text-(--metin-2)">{m.bos}</p>}
       {yillar.map((yil) => (
         <div class="mb-10">
@@ -84,7 +103,7 @@ const m = dil === 'tr' ? {
                       {yas !== null && <span> · {yas} {m.yas}</span>}
                       {d.memleket && <span> · {m.memleket}: <span class="normal-case tracking-normal">{d.memleket}</span></span>}
                     </p>
-                    {d.metin?.[dil] && <p class="mt-3 text-(--metin-2)">{d.metin[dil]}</p>}
+                    {d.metin?.[icDil] && <p class="mt-3 text-(--metin-2)">{d.metin[icDil]}</p>}
                     {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer || d.defin || d.taziye) && (
                       <dl class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm bilgi">
                         {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer) && <div><dt class="etiket">{m.cenazeNamazi}</dt><dd>{d.cenazeNamazi?.tarih && tarihBicimle(d.cenazeNamazi.tarih, dil, { weekday: 'long', day: 'numeric', month: 'long' })}{d.cenazeNamazi?.saat && `, ${d.cenazeNamazi.saat}`}{d.cenazeNamazi?.yer && ` — ${d.cenazeNamazi.yer}`}</dd></div>}

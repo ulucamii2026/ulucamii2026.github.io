@@ -35,6 +35,25 @@ const m = dil === 'tr' ? {
     { ikon: 'takvim', baslik: 'İmsakiye (Marche-en-Famenne)', ozet: 'Camimizin bulunduğu bölge için hazırlanan yıllık imsakiyeyi PDF olarak indirebilirsiniz.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', disLink: true },
     { ikon: 'takvim', baslik: 'Dinî Günler ve Kandiller', ozet: 'Kandil geceleri, bayramlar ve önemli dinî günlerin tarihlerini Belçika Diyanet Vakfı’nın yıllık takviminden takip edebilirsiniz.', href: 'https://www.diyanet.be/imsakiyeler', disLink: true },
   ] as Kart[],
+} : dil === 'en' ? {
+  altBaslik: 'Our mosque operates under the umbrella of the Diyanet Foundation of Belgium (BDV). Services related to hajj, omra, funerals, sacrifice, zakât-fitre, education, legal counselling and the religious calendar can all be reached here.',
+  kurumsalBaslik: 'About the Diyanet Foundation of Belgium',
+  kurumsal: 'The Diyanet Foundation of Belgium is an "international union" approved by Belgian royal decree of 3 September 1982. It now brings together 73 mosques, a research centre, a boarding-and-day education institute, and more than a hundred associations; through its Funeral, Mutual Aid and Solidarity Fund, with around 38,000 registered member families serving nearly 160,000 people, it continues to serve the Muslim Turkish community living in Belgium.',
+  iletisimBaslik: 'BDV Head Office',
+  disNot: 'You will be redirected to the Diyanet Foundation of Belgium’s own website.',
+  git: 'View',
+  cami: 'Our mosque’s own page →',
+  kartlar: [
+    { ikon: 'harita', baslik: 'Hajj Pre-registration', ozet: 'Pre-registration for the 2027 Hajj has opened. Your arrangements are in safe hands with the Diyanet Foundation of Belgium’s experienced organisation.', href: 'https://www.diyanet.be/onkayit', disLink: true },
+    { ikon: 'harita', baslik: 'Omra Trips', ozet: 'Join the omra trips organised throughout the year under the coordination of the Diyanet Foundation of Belgium, travelling together with the group.', href: 'https://www.diyanet.be/umre', disLink: true },
+    { ikon: 'cenaze', baslik: 'Funeral, Mutual Aid and Solidarity Fund', ozet: 'Every year, in the first week of January, an annual membership letter is sent to members; members who have not received the letter by 25 January should inform the fund.', href: yol(dil, 'vefat'), disLink: false },
+    { ikon: 'kurban', baslik: 'Sacrifice by Proxy (Kurban)', ozet: 'You can have your sacrifice performed by proxy through the Diyanet Foundation of Belgium or our mosque’s own organisation. The fee and application deadline are announced each year.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', disLink: false },
+    { ikon: 'bagis', baslik: 'Zakât and Fitre Fund', ozet: 'The minimum fitre amount is €10. You can donate to the BDV Zakât-Fitre Fund (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181), stating the type of donation in the message field.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', disLink: true },
+    { ikon: 'kurs', baslik: 'Education Services and UİP Scholarship', ozet: 'Alongside Qur’an, religious knowledge, language and computer courses, a one-off education scholarship is granted to UİP and other students from the Fitre-Zakât Fund.', href: 'https://www.diyanet.be/Burs', disLink: true },
+    { ikon: 'hukuk', baslik: 'Legal Counselling', ozet: 'You can make use of the Diyanet Foundation of Belgium’s legal counselling service for legal matters you may encounter while living in Belgium.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', disLink: true },
+    { ikon: 'takvim', baslik: 'Prayer Calendar (Marche-en-Famenne)', ozet: 'You can download the annual prayer-times calendar prepared for our region as a PDF.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', disLink: true },
+    { ikon: 'takvim', baslik: 'Holy Nights and Religious Days', ozet: 'You can follow the dates of holy nights, religious holidays and other important religious days from the Diyanet Foundation of Belgium’s annual calendar.', href: 'https://www.diyanet.be/imsakiyeler', disLink: true },
+  ] as Kart[],
 } : {
   altBaslik: 'Notre mosquée est rattachée à la Fondation Diyanet de Belgique (BDV). Retrouvez ici les services liés au hajj, à l’omra, aux funérailles, au sacrifice, à la zakât-fitre, à l’éducation, au conseil juridique et au calendrier religieux.',
   kurumsalBaslik: 'À propos de la Fondation Diyanet de Belgique',
@@ -66,7 +85,7 @@ const yollarSVG: Record<Kart['ikon'], string> = {
   <SayfaBasligi etiket={t('nav.diyanet')} baslik={t('nav.diyanet')} altBaslik={m.altBaslik} />
 
   <div class="kapsayici py-10">
-    <h2 class="sr-only">{dil === 'tr' ? 'Hizmetler' : 'Services'}</h2>
+    <h2 class="sr-only">{dil === 'tr' ? 'Hizmetler' : dil === 'en' ? 'Services' : 'Services'}</h2>
     <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
       {m.kartlar.map((k) => (
         <li class="kart p-5 sm:p-6 flex flex-col gap-3">
@@ -92,8 +111,8 @@ const yollarSVG: Record<Kart['ikon'], string> = {
       <div class="kart p-6">
         <p class="etiket etiket-vurgu mb-3">{m.iletisimBaslik}</p>
         <dl class="grid gap-2.5 text-sm">
-          <div><dt class="etiket">{dil === 'tr' ? 'Adres' : 'Adresse'}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
-          <div><dt class="etiket">{dil === 'tr' ? 'E-posta' : 'E-mail'}</dt><dd><a href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
+          <div><dt class="etiket">{dil === 'tr' ? 'Adres' : dil === 'en' ? 'Address' : 'Adresse'}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
+          <div><dt class="etiket">{dil === 'tr' ? 'E-posta' : dil === 'en' ? 'E-mail' : 'E-mail'}</dt><dd><a href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
           <div><dt class="etiket">Web</dt><dd><a href="https://www.diyanet.be" target="_blank" rel="noopener">diyanet.be <span aria-hidden="true"> ↗</span></a></dd></div>
         </dl>
         <p class="mt-4 text-xs text-(--metin-2)">{m.disNot}</p>
