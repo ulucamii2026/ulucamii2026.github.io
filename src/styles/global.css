@@ -162,11 +162,9 @@
   .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 }
 
-/* Logo tema varyanti: acik temada siyah amblem, koyu temada krem amblem (kirmizi ogeler sabit) */
-.logo-koyu { display: none; }
-:root[data-theme="dark"] .logo-acik { display: none; }
-:root[data-theme="dark"] .logo-koyu { display: block; }
+/* Logo: koyu temada amblemin arkasina krem madalyon zemini — marka renkleri aynen korunur */
+.logo-amblem { border-radius: 9999px; }
+:root[data-theme="dark"] .logo-amblem { background: var(--color-krem); padding: 2px; box-shadow: 0 0 0 1px rgb(247 243 234 / 0.35); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo-acik { display: none; }
-  :root:not([data-theme="light"]) .logo-koyu { display: block; }
+  :root:not([data-theme="light"]) .logo-amblem { background: var(--color-krem); padding: 2px; box-shadow: 0 0 0 1px rgb(247 243 234 / 0.35); }
 }

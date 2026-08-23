@@ -63,4 +63,4 @@ Our donations are reported to our members at our association’s general assembl
 
 ## Tax information
 
-Under Belgian law, only organisations that have received official approval (agrément) may issue tax-deduction certificates for donations. As our mosque does not hold such approval, **we are unable to issue tax-deduction certificates for donations.**
+Under Belgian law, only organisations officially approved (agréées) by the FPS Finance may issue tax-deduction certificates (attestation fiscale) for donations; associations whose purpose is religious worship fall outside this approval scheme. As our mosque does not hold such approval, **we are unable to issue tax-deduction certificates for donations.** The official list of approved institutions is available at [finances.belgium.be](https://finances.belgium.be/fr/particuliers/avantages_fiscaux/dons).
