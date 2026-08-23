@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import DuyuruKarti from '../../components/DuyuruKarti.astro';
 import EtkinlikKarti from '../../components/EtkinlikKarti.astro';
@@ -9,14 +8,12 @@ import BuHafta from '../../components/BuHafta.astro';
 import HeroSlayt from '../../components/HeroSlayt.astro';
 import DuyuruSeridi from '../../components/DuyuruSeridi.astro';
 import BagisBandi from '../../components/BagisBandi.astro';
-import GaleriOnizleme from '../../components/GaleriOnizleme.astro';
 import IletisimMini from '../../components/IletisimMini.astro';
 import Ikon from '../../components/Ikon.astro';
 import { ceviri, yol, tarihBicimle } from '../../i18n/utils';
 import type { Dil } from '../../i18n/ui';
-import { dilYollari, duyurular, yaklasanEtkinlikler, namazVakitleri, siteAyarlari, galeri } from '../../lib/icerik';
+import { dilYollari, duyurular, yaklasanEtkinlikler, namazVakitleri, siteAyarlari } from '../../lib/icerik';
 import { haftaGunu } from '../../lib/namaz';
-import icMekan from '../../assets/foto/ic-mekan.jpg';
 
 export const getStaticPaths = dilYollari;
 const dil = Astro.params.lang as Dil;
@@ -27,7 +24,6 @@ const oneCikan = tumDuyurular.find((d) => d.data.kapak) ?? tumDuyurular[0];
 const digerDuyurular = tumDuyurular.filter((d) => d !== oneCikan).slice(0, 4);
 const etkinlikler = await yaklasanEtkinlikler(dil, 3);
 const namaz = namazVakitleri();
-const fotolar = await galeri();
 const bugunGun = haftaGunu(new Date());
 const namazEtiket = { imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') };
 const hizmetler = [
@@ -166,38 +162,21 @@ const jsonLd = {
         </ul>
       </div>
     ) : <p class="text-(--metin-2)">{m.duyuruBos}</p>}
+    <div class="mt-10 cetvel pt-5">
+      <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+        <h3 class="text-xl sm:text-2xl" id="etkinlik-baslik">{m.etkinlik}</h3>
+        <a href={yol(dil, 'etkinlikler')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumEtkinlik} <Ikon ad="ok" class="h-4 w-4" /></a>
+      </div>
+      {etkinlikler.length ? (
+        <div class:list={['grid gap-5', etkinlikGrid]}>
+          {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}
+        </div>
+      ) : <p class="text-(--metin-2)">{m.etkinlikBos}</p>}
+    </div>
   </section>
 
   <!-- ⑤ Bağış — çok kanallı koyu bant -->
   <BagisBandi dil={dil} banka={site.banka} />
-
-  <!-- ⑥ Etkinlikler — sayıya göre uyarlanan ızgara -->
-  <section class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="etkinlik-baslik">
-    <div class="flex flex-wrap items-end justify-between gap-3 mb-6 cetvel pt-4">
-      <h2 id="etkinlik-baslik">{m.etkinlik}</h2>
-      <a href={yol(dil, 'etkinlikler')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumEtkinlik} <Ikon ad="ok" class="h-4 w-4" /></a>
-    </div>
-    {etkinlikler.length ? (
-      <div class:list={['grid gap-5', etkinlikGrid]}>
-        {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}
-      </div>
-    ) : <p class="text-(--metin-2)">{m.etkinlikBos}</p>}
-  </section>
-
-  <!-- ⑦ Galeri mozaiği -->
-  <div class="reveal"><GaleriOnizleme dil={dil} fotolar={fotolar} /></div>
-
-  <!-- ⑧ Tanıtım -->
-  <section class="kapsayici py-10 sm:py-14 grid gap-8 lg:grid-cols-2 items-center cetvel reveal">
-    <div class="gorsel-cerceve">
-      <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı — mihrap ve minber' : dil === 'en' ? 'Interior of the mosque — mihrab and minbar' : 'Intérieur de la mosquée — mihrab et minbar'} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 560px, 100vw" loading="lazy" />
-    </div>
-    <div class="duz-yazi">
-      <h2>{m.tanitimBaslik}</h2>
-      <p>{m.tanitim}</p>
-      <p class="flex flex-wrap gap-3"><a href={yol(dil, 'hakkimizda')} class="dugme dugme-ikincil">{m.tanitimCta}</a><a href={yol(dil, 'iletisim')} class="inline-flex items-center gap-1.5 self-center text-sm font-semibold no-underline hover:underline">{m.ziyaret} <Ikon ad="ok" class="h-4 w-4" /></a></p>
-    </div>
-  </section>
 
   <!-- ⑨ Bize ulaşın -->
   <IletisimMini dil={dil} site={site} />

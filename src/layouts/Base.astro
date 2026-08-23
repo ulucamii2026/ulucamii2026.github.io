@@ -46,9 +46,11 @@ const kapakUrl = new URL(kapak, Astro.site);
     <meta property="og:url" content={kanonik} />
     <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : dil === 'en' ? 'en_GB' : 'fr_BE'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <noscript><style>.reveal, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
     <slot name="head" />
     <script is:inline>
       // Tema tercihi (localStorage) — sayfa boyanmadan önce uygula
+      document.documentElement.classList.add('js');
       try { const t = localStorage.getItem('tema'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch {}
     </script>
   </head>
@@ -64,6 +66,8 @@ const kapakUrl = new URL(kapak, Astro.site);
       // Bölüm reveal: görünür olunca .gorunur; reduced-motion'da CSS zaten devre dışı, JS yalnız sınıfı ekler
       const r = document.querySelectorAll('.reveal');
       if (r.length) {
+        // emniyet: gözlemci ne olursa olsun 2,5 sn içinde her şey görünür
+        setTimeout(() => r.forEach((e) => e.classList.add('gorunur')), 2500);
         if (!('IntersectionObserver' in window)) r.forEach((e) => e.classList.add('gorunur'));
         else { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('gorunur'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }); r.forEach((e) => io.observe(e)); }
       }

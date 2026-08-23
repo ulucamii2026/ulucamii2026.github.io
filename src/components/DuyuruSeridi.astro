@@ -37,7 +37,7 @@ const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil,
   // kap yüksekliği: en uzun mesajın yüksekliği (taşma/örtüşme olmasın)
   const olc = () => { if (!kutu) return; let h = 0; mesajlar.forEach((el) => { h = Math.max(h, el.offsetHeight); }); if (h) kutu.style.minHeight = h + 'px'; };
   if (kutu) { olc(); addEventListener('resize', olc); if (document.fonts?.ready) document.fonts.ready.then(olc); }
-  if (kutu && mesajlar.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (kutu && mesajlar.length > 1) {
     const sure = Number(kutu.dataset.sure || 6500);
     let i = 0; let bekle = false;
     setInterval(() => {

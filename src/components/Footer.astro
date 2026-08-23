@@ -10,55 +10,55 @@ const yil = new Date().getFullYear();
 const adresSatir = `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}`;
 const haritaUrl = `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const diyanetBaslik = dil === 'tr' ? 'Diyanet' : dil === 'en' ? 'Diyanet' : 'Diyanet';
+const diyanetLinkler = [
+  { h: 'https://www.diyanet.tv/canli-izle', ad: dil === 'tr' ? 'Diyanet TV canlı' : dil === 'en' ? 'Diyanet TV live' : 'Diyanet TV en direct' },
+  { h: 'https://www.youtube.com/@alqurantv/live', ad: dil === 'tr' ? 'Kâbe canlı yayını' : dil === 'en' ? 'Makkah live' : 'La Mecque en direct' },
+  { h: 'https://www.diyanet.gov.tr', ad: 'diyanet.gov.tr' },
+  { h: 'https://www.diyanet.be', ad: 'diyanet.be' },
+];
+const siteLinkleri = [
+  { h: yol(dil, 'vefat'), ad: t('vefat.baslik') },
+  { h: yol(dil, 'kunye'), ad: t('footer.kunye') },
+  { h: yol(dil, 'gizlilik'), ad: t('footer.gizlilik') },
+  { h: yol(dil, 'portal'), ad: t('nav.portal') },
+  { h: '/admin/', ad: t('footer.yonetim') },
+];
 ---
-<footer class="mt-16 border-t border-(--cizgi) bg-(--zemin-2)">
+<footer class="mt-14 border-t border-(--cizgi) bg-(--zemin-2)">
   <div class="kilim-serit kilim-serit-iznik" aria-hidden="true"></div>
-  <div class="kapsayici py-12 grid gap-10 md:grid-cols-3">
+  <div class="kapsayici py-8 grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]">
     <div>
       <div class="flex items-center gap-3">
-        <img src="/media/logo/ulu-camii-logo.svg" alt="" width="56" height="56" class="h-14 w-14" />
+        <img src="/media/logo/ulu-camii-logo.svg" alt="" width="44" height="44" class="h-11 w-11" />
         <div>
-          <p class="font-serif font-semibold text-lg leading-tight">{t('site.ad')}</p>
-          <p class="etiket">1979 · 1986 · {yil}</p>
+          <p class="font-serif font-semibold leading-tight">{t('site.ad')}</p>
+          <p class="etiket mt-0.5">1979 · 1986 · {yil}</p>
         </div>
       </div>
-      <p class="mt-4 text-sm text-(--metin-2) max-w-prose">{t('site.slogan')}</p>
-      {site.sosyal.facebook && <p class="mt-3 text-sm"><a href={site.sosyal.facebook} rel="noopener" target="_blank">Facebook<span aria-hidden="true"> ↗</span></a></p>}
+      <p class="mt-3 text-sm text-(--metin-2)">{site.dernekAdi} ({site.kisaltma}) · {site.hukukiForm} · KBO/BCE <span class="mono">{site.kbo}</span></p>
+      {site.sosyal.facebook && <p class="mt-1.5 text-sm"><a href={site.sosyal.facebook} rel="noopener" target="_blank">Facebook<span aria-hidden="true"> ↗</span></a></p>}
     </div>
-    <div>
-      <h2 class="etiket etiket-vurgu mb-3 text-base">{t('footer.iletisim')}</h2>
-      <address class="not-italic text-sm leading-7">
-        <span class="block"><span class="etiket">{t('footer.adres')}</span><br />{adresSatir}, {site.adres.ulke} · <a href={haritaUrl} rel="noopener" target="_blank">{t('genel.harita')}</a></span>
-        <span class="block mt-2"><span class="etiket">{t('footer.dingorevlisi')}</span><br /><a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a></span>
-        <span class="block mt-2"><span class="etiket">{t('footer.cami')}</span><br /><a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a></span>
-        {site.eposta && <span class="block mt-2"><span class="etiket">{t('genel.eposta')}</span><br /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></span>}
-      </address>
-    </div>
-    <div>
-      <h2 class="etiket etiket-vurgu mb-3 text-base">{t('footer.yasal')}</h2>
-      <p class="text-sm leading-7">
-        <strong>{site.dernekAdi}</strong> ({site.kisaltma})<br />
-        {site.hukukiForm} · KBO/BCE <span class="mono">{site.kbo}</span><br />
-        {adresSatir}, {site.adres.ulke}
+    <address class="not-italic text-sm leading-6">
+      <p class="etiket etiket-vurgu mb-2">{t('footer.iletisim')}</p>
+      <p>{adresSatir} · <a href={haritaUrl} rel="noopener" target="_blank">{t('genel.harita')}</a></p>
+      <p class="mt-1.5"><span class="etiket">{t('footer.dingorevlisi')}</span> <a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a></p>
+      <p class="mt-1"><span class="etiket">{t('footer.cami')}</span> <a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a></p>
+      {site.eposta && <p class="mt-1"><a href={`mailto:${site.eposta}`}>{site.eposta}</a></p>}
+    </address>
+    <nav class="text-sm leading-6" aria-label={t('footer.yasal')}>
+      <p class="etiket etiket-vurgu mb-2">{t('footer.baglantilar')}</p>
+      <ul class="grid grid-cols-2 gap-x-4" role="list">
+        {siteLinkleri.map((l) => <li><a href={l.h} rel={l.h === '/admin/' ? 'nofollow' : undefined}>{l.ad}</a></li>)}
+      </ul>
+      <p class="etiket mt-4 mb-1.5">{diyanetBaslik}</p>
+      <p class="flex flex-wrap gap-x-3 gap-y-0.5">
+        {diyanetLinkler.map((l) => <a href={l.h} rel="noopener" target="_blank" class="whitespace-nowrap">{l.ad}<span aria-hidden="true"> ↗</span></a>)}
       </p>
-      <ul class="mt-3 text-sm leading-8">
-        <li><a href={yol(dil, 'vefat')}>{t('vefat.baslik')}</a></li>
-        <li><a href={yol(dil, 'kunye')}>{t('footer.kunye')}</a></li>
-        <li><a href={yol(dil, 'gizlilik')}>{t('footer.gizlilik')}</a></li>
-        <li><a href={yol(dil, 'portal')}>{t('nav.portal')}</a></li>
-        <li><a href="/admin/" rel="nofollow">{t('footer.yonetim')}</a></li>
-      </ul>
-      <p class="etiket mt-6">{dil === 'tr' ? 'Diyanet bağlantıları' : dil === 'en' ? 'Diyanet links' : 'Liens Diyanet'}</p>
-      <ul class="mt-2 text-sm leading-8">
-        <li><a href="https://www.diyanet.tv/canli-izle" rel="noopener" target="_blank">Diyanet TV — {dil === 'tr' ? 'canlı yayın' : dil === 'en' ? 'live' : 'en direct'}<span aria-hidden="true"> ↗</span></a></li>
-        <li><a href="https://www.youtube.com/@alqurantv/live" rel="noopener" target="_blank">{dil === 'tr' ? 'Kâbe canlı yayını' : dil === 'en' ? 'Makkah live broadcast' : 'La Mecque en direct'}<span aria-hidden="true"> ↗</span></a></li>
-        <li><a href="https://www.diyanet.gov.tr" rel="noopener" target="_blank">{dil === 'tr' ? 'Diyanet İşleri Başkanlığı' : dil === 'en' ? 'Presidency of Religious Affairs' : 'Présidence des affaires religieuses'}<span aria-hidden="true"> ↗</span></a></li>
-        <li><a href="https://www.diyanet.be" rel="noopener" target="_blank">{dil === 'tr' ? 'Belçika Diyanet Vakfı' : dil === 'en' ? 'Diyanet Foundation of Belgium' : 'Fondation Diyanet de Belgique'}<span aria-hidden="true"> ↗</span></a></li>
-      </ul>
-    </div>
+    </nav>
   </div>
   <div class="cetvel">
-    <p class="kapsayici py-4 etiket flex flex-wrap justify-between gap-2">
+    <p class="kapsayici py-3 etiket flex flex-wrap justify-between gap-2">
       <span>© {yil} {site.kisaltma} · {t('footer.hak')}</span>
       <span>Marche-en-Famenne · Belgique</span>
     </p>

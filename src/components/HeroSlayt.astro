@@ -4,7 +4,7 @@
  * - İlk kare eager yüklenir (LCP); sonrakiler yalnız JS ile, ilk geçişten hemen önce önceden indirilir.
  * - Okunabilirlik güvencesi: görsel ne kadar açık olursa olsun metin bölgesini karartan çift katman
  *   (alttan üst gradyan + sol metin bölgesi gradyanı) her karede sabittir.
- * - prefers-reduced-motion: döngü çalışmaz, ilk kare sabit kalır. Sekme gizliyken döngü durur.
+ * - prefers-reduced-motion: yakınlaşma efekti kapanır, sakin çapraz geçiş sürer. Sekme gizliyken döngü durur.
  * - Noktalar: klavyeyle erişilebilir düğmeler; üzerine gelinince döngü bekler.
  */
 import type { Dil } from '../i18n/ui';
@@ -57,7 +57,8 @@ const SLAYTLAR = [1, 2, 3, 4, 5, 6];
   const kok = document.getElementById('hero-slayt');
   const noktalar = Array.from(document.querySelectorAll<HTMLButtonElement>('#hero-noktalar [data-nokta]'));
   const kareler = kok ? Array.from(kok.querySelectorAll<HTMLImageElement>('[data-slayt]')) : [];
-  if (kok && kareler.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // Not: hareket-azalt tercihînde yakınlaşma (Ken Burns) CSS ile kapanır; sakin çapraz geçiş sürer — döngü içeriktir, süs değil.
+  if (kok && kareler.length > 1) {
     const sure = Number(kok.dataset.sure || 8000);
     let i = 0; let zaman = 0; let bekle = false;
     const onyukle = (k: number) => { const im = kareler[k % kareler.length]; if (im && !im.dataset.hazir) { im.dataset.hazir = '1'; im.loading = 'eager'; } };
