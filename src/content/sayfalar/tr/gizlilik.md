@@ -5,7 +5,7 @@ aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve planlanan üye/veli porta
 guncelleme: 2026-08-24
 ---
 
-<p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz, ziyaretçilerini izlemez ve siteyi gezerken hakkınızda hiçbir veri toplamayız. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur'an kursu kaydı, e-posta göndermeniz) işlenir.</p>
+<p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur'an kursu kaydı, e-posta göndermeniz) işlenir.</p>
 
 Bu sayfa, bu internet sitesini ziyaret ettiğinizde ve ileride devreye alınması planlanan hizmetlerde kişisel verilerinizin nasıl ele alındığını açıklar. Bilgilendirme, Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) esas alınarak hazırlanmıştır.
 
@@ -19,7 +19,8 @@ E-posta: info@ulucamii.be
 
 ## Bu Siteyi Ziyaret Ettiğinizde
 
-- Bu site **çerez kullanmaz** ve **hiçbir ziyaretçi izleme/analitik aracı** çalıştırmaz.
+- Bu site **çerez kullanmaz**.
+- Ziyaret sayıları, gizlilik dostu **GoatCounter** sayacıyla yalnızca **toplu istatistik** olarak ölçülür: hangi sayfanın kaç kez görüntülendiği, hangi ülkeden ve hangi tarayıcı/cihaz türünden gelindiği. Bu ölçümde çerez kullanılmaz, **IP adresiniz saklanmaz** ve sizi kişi olarak tanımlayan hiçbir veri tutulmaz; veriler Avrupa Birliği içinde (Almanya/Finlandiya) barındırılır. Ayrıntı: [GoatCounter gizlilik politikası](https://www.goatcounter.com/help/privacy).
 - Barındırma sağlayıcımız (GitHub Pages) kendi hizmetinin işleyişi için standart teknik sunucu günlükleri (ör. istek zamanı, IP adresi) tutabilir; bu günlükler bizim kontrolümüz dışındadır ve tarafımızca işlenmez.
 - Açık/koyu tema tercihiniz yalnızca kendi tarayıcınızın hafızasında (localStorage) saklanır; bu bilgi bize hiçbir şekilde ulaşmaz.
 

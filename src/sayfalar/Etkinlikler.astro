@@ -19,7 +19,7 @@ const altBaslik = dil === 'tr'
 const gecmisBaslik = dil === 'tr' ? 'Geçmiş etkinlikler ve afiş arşivi' : dil === 'en' ? 'Past events and poster archive' : 'Événements passés et archives d’affiches';
 const enNotu = 'Events are published in Turkish and French. An English version is not available.';
 ---
-<Base baslik={t('nav.etkinlikler')} dil={dil}>
+<Base baslik={t('nav.etkinlikler')} dil={dil} aciklama={dil === 'tr' ? 'Camimizin program takvimi: kandil geceleri, bayram programları, konferanslar, gençlik ve hanımlar etkinlikleri.' : dil === 'en' ? 'Our mosque’s events calendar: holy nights, Eid programmes, lectures, youth and women’s activities.' : 'Calendrier des activités de notre mosquée : nuits bénies, programmes de fêtes, conférences, activités jeunesse et femmes.'}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.etkinlikler')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
     {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}

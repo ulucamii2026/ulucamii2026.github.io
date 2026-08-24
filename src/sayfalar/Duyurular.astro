@@ -14,7 +14,7 @@ const altBaslik = dil === 'tr' ? 'Camimizden haberler, duyurular ve bilgilendirm
 const arsivNot = dil === 'tr' ? 'Arşiv' : dil === 'en' ? 'Archive' : 'Archives';
 const enNotu = 'Announcements are published in Turkish and French. An English version is not available.';
 ---
-<Base baslik={t('nav.duyurular')} dil={dil}>
+<Base baslik={t('nav.duyurular')} dil={dil} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii’nden güncel duyurular: program ve etkinlik haberleri, kayıt dönemleri ve vefat ilanları.' : dil === 'en' ? 'News and announcements from the Ulu Mosque of Marche-en-Famenne: programmes, activities, registration periods and obituaries.' : 'Annonces de la Mosquée Ulu Camii de Marche-en-Famenne : programmes, activités, périodes d’inscription et avis de décès.'}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.duyurular')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
     {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}

@@ -20,7 +20,7 @@ const m = dil === 'tr' ? {
   not: 'Pour un décès, une visite de malade ou une urgence, appelez directement l’imam. Pour les affaires de l’association (adhésion, cotisation, reçu de don), utilisez le numéro de la mosquée.',
 };
 ---
-<Base baslik={t('nav.iletisim')} dil={dil}>
+<Base baslik={t('nav.iletisim')} dil={dil} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii iletişim bilgileri: adres, telefon numaraları, e-posta ve konum haritası.' : dil === 'en' ? 'Contact details of the Ulu Mosque of Marche-en-Famenne: address, phone numbers, e-mail and map.' : 'Coordonnées de la Mosquée Ulu Camii de Marche-en-Famenne : adresse, téléphones, e-mail et plan d’accès.'}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.iletisim')} altBaslik={m.alt} />
   <div class="kapsayici py-10 grid gap-10 lg:grid-cols-2">
     <div>

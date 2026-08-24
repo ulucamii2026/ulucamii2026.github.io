@@ -5,7 +5,7 @@ aciklama: Comment les données personnelles sont traitées sur le site d’Ulu C
 guncelleme: 2026-08-24
 ---
 
-<p class="bilgi"><strong>En bref :</strong> ce site n'utilise aucun cookie, ne trace pas ses visiteurs et ne collecte aucune donnée pendant votre navigation. Des données personnelles ne sont traitées que lorsque vous en prenez l'initiative (p. ex. inscription au cours de Coran, envoi d'un e-mail).</p>
+<p class="bilgi"><strong>En bref :</strong> ce site n'utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n'est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l'initiative (p. ex. inscription au cours de Coran, envoi d'un e-mail).</p>
 
 Cette page explique comment vos données personnelles sont traitées lorsque vous visitez ce site, ainsi que dans le cadre des services dont la mise en place est envisagée à l’avenir. Cette information est établie conformément au Règlement général sur la protection des données (RGPD) de l’Union européenne.
 
@@ -19,7 +19,8 @@ E-mail : info@ulucamii.be
 
 ## Lors de votre visite sur ce site
 
-- Ce site **n’utilise aucun cookie** et **ne fait appel à aucun outil de suivi ou d’analyse des visiteurs**.
+- Ce site **n’utilise aucun cookie**.
+- Les visites sont mesurées uniquement sous forme de **statistiques agrégées** par le compteur respectueux de la vie privée **GoatCounter** : nombre de vues par page, pays et type de navigateur/appareil. Cette mesure n’utilise aucun cookie, **votre adresse IP n’est pas conservée** et aucune donnée permettant de vous identifier n’est stockée ; les données sont hébergées dans l’Union européenne (Allemagne/Finlande). Détails : [politique de confidentialité de GoatCounter](https://www.goatcounter.com/help/privacy).
 - Notre hébergeur (GitHub Pages) peut conserver des journaux techniques standards (ex. horodatage des requêtes, adresse IP) nécessaires au fonctionnement de son propre service ; ces journaux échappent à notre contrôle et ne sont pas traités par nos soins.
 - Votre préférence de thème (clair/sombre) est enregistrée uniquement dans la mémoire locale de votre navigateur (localStorage) ; cette information ne nous parvient jamais.
 

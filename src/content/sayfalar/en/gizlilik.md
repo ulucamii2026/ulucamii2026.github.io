@@ -5,7 +5,7 @@ aciklama: GDPR-compliant information on how personal data is processed on the Ul
 guncelleme: 2026-08-24
 ---
 
-<p class="bilgi"><strong>In short:</strong> this site uses no cookies, does not track its visitors and collects no data while you browse. Personal data is processed only when you initiate it (e.g. Qur'an course registration, sending an e-mail).</p>
+<p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur'an course registration, sending an e-mail).</p>
 
 This page explains how your personal data is handled when you visit this website, and in services planned for future activation. This notice has been prepared on the basis of the European Union’s General Data Protection Regulation (GDPR).
 
@@ -19,7 +19,8 @@ E-mail: info@ulucamii.be
 
 ## When You Visit This Site
 
-- This site **does not use cookies** and runs **no visitor-tracking or analytics tools whatsoever**.
+- This site **does not use cookies**.
+- Visits are measured only as **aggregate statistics** by the privacy-friendly counter **GoatCounter**: page view counts, country and browser/device type. This measurement uses no cookies, **your IP address is not stored**, and no data that could identify you is kept; the data is hosted within the European Union (Germany/Finland). Details: [GoatCounter privacy policy](https://www.goatcounter.com/help/privacy).
 - Our hosting provider (GitHub Pages) may keep standard technical server logs (e.g. request time, IP address) for the operation of its own service; these logs are outside our control and are not processed by us.
 - Your light/dark theme preference is stored only in your own browser’s memory (localStorage); this information never reaches us in any way.
 

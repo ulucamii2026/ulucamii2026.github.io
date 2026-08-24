@@ -72,5 +72,7 @@ const kapakUrl = new URL(kapak, Astro.site);
         else { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('gorunur'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }); r.forEach((e) => io.observe(e)); }
       }
     </script>
+    <!-- Çerezsiz, anonim ziyaret sayacı (GoatCounter) — ayrıntı gizlilik sayfasında -->
+    <script is:inline data-goatcounter="https://ulucamii.goatcounter.com/count" async src="/vendor/sayac.js"></script>
   </body>
 </html>
