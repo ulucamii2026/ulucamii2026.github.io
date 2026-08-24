@@ -1,0 +1,62 @@
+name: Erişilebilirlik denetimi (uptime)
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  denetle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Uç noktaları yokla
+        id: yokla
+        run: |
+          hatalar=""
+          yokla() {
+            local ad="$1" url="$2" bekle="$3"
+            for i in 1 2 3; do
+              kod=$(curl -s -o /tmp/govde -w '%{http_code}' -L --max-time 25 -A "UluCamii-UptimeBot/1.0" "$url" || echo 000)
+              if [ "$kod" = "200" ] && grep -q "$bekle" /tmp/govde; then
+                echo "OK  $ad ($kod)"; return 0
+              fi
+              sleep 15
+            done
+            echo "HATA $ad (son kod: $kod)"
+            hatalar="${hatalar}\n- ${ad}: ${url} (HTTP ${kod})"
+            return 0
+          }
+          yokla "Web sitesi"     "https://ulucamii.be/tr/"   "Ulu Camii"
+          yokla "Kayıt formu"    "https://ulucamii.be/kayit/" "ulucamii"
+          yokla "Kayıt arka ucu" "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec" "ulucamii-alici"
+          if [ -n "$hatalar" ]; then
+            printf 'hatalar<<SON\n%b\nSON\n' "$hatalar" >> "$GITHUB_OUTPUT"
+            echo "durum=hata" >> "$GITHUB_OUTPUT"
+          else
+            echo "durum=ok" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Uyarı e-postası gönder (info@ulucamii.be)
+        if: steps.yokla.outputs.durum == 'hata'
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] ulucamii.be erisim sorunu"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Asagidaki uc nokta(lar) denetimden gecemedi ($(date -u '+%Y-%m-%d %H:%M UTC')):"
+            printf '%b\n' "${{ steps.yokla.outputs.hatalar }}"
+            echo
+            echo "Ayrinti: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari.txt
+          curl -sS --url 'smtps://smtp.purelymail.com:465' \
+            --mail-from 'info@ulucamii.be' --mail-rcpt 'info@ulucamii.be' \
+            --user "info@ulucamii.be:${SMTP_SIFRE}" -T /tmp/uyari.txt
+      - name: Hata durumunda işi kırmızıya boya
+        if: steps.yokla.outputs.durum == 'hata'
+        run: exit 1
