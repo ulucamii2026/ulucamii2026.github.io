@@ -50,6 +50,8 @@ export interface IhtidaPdfGirdi {
   kimlikArka: string;
   vesikalik: string;
   imzaDataUrl: string;
+  /** EK-9'daki iki şahit alanı; boş bırakılabilir (cami görevlileri tamamlar). */
+  sahitler?: { ad: string; imza: string }[];
   fotografIzni: boolean;
   gonderimTarihi: Date;
   cami: IhtidaPdfCami;
@@ -271,6 +273,17 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
     drawImageContained(curPage, imza, MARGIN, y - 44, 160, 44);
   }
   curPage.drawText(formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10)), { x: MARGIN, y: y - 58, size: 9, font: fonts.regular, color: MUTED });
+
+  // Şahit imzaları başvuranın imzasıyla aynı hizada, sağına yerleşir (EK-9'daki iki alan).
+  const sahitler = (girdi.sahitler || []).filter((s) => s && (s.imza || s.ad));
+  for (let i = 0; i < sahitler.length && i < 2; i++) {
+    const s = sahitler[i];
+    const sx = MARGIN + 168 + i * 160;
+    const sImza = await embedDataImage(s.imza);
+    if (sImza) drawImageContained(curPage, sImza, sx, y - 44, 150, 44);
+    const etiket = `${dilMetni('Şahit', 'Témoin', 'Witness')} ${i + 1}${s.ad ? ` · ${s.ad}` : ''}`;
+    curPage.drawText(fitText(etiket, fonts.regular, 8.5, 150), { x: sx, y: y - 58, size: 8.5, font: fonts.regular, color: MUTED });
+  }
   y -= 74;
 
   curPage.drawLine({ start: { x: MARGIN, y }, end: { x: PAGE_WIDTH - MARGIN, y }, thickness: 0.6, color: LINE });

@@ -679,6 +679,7 @@
           }
           if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
           if (pdf.startsWith('http')) araclar.push(`<a class="dugme" href="${kacir(pdf)}" target="_blank" rel="noopener">Form PDF ↗</a>`);
+          if (aktifTur === 'ihtida' && al(r, iRef)) araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
           const ayrinti = b.map((baslik, i) => {
             const d = String(r[i] ?? '').trim();
             if (!d) return '';
@@ -692,7 +693,165 @@
             <details><summary>Tüm bilgiler</summary><table>${ayrinti}</table></details>
           </article>`;
         }).join('');
+        liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
         $('csv').disabled = false;
+      }
+
+      /* ---------------- EK-9 İhtida Belgesi (resmî şablon üzerine) ----------------
+         Belgeyi düzenleyen makam camidir; şahit imzası verilmemişse din görevlisinin
+         (ve gerekiyorsa eşinin) imzasıyla tamamlanır. İmza görselleri yalnız şifreli
+         sır paketinden gelir — hiçbir açık adreste durmaz. */
+      const EK9_ETIKET = {
+        cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme', kadın: 'Kadın / Femme' },
+        oncekiDin: {
+          'hristiyan-katolik': 'Hristiyanlık / Katolik', 'hristiyan-ortodoks': 'Hristiyanlık / Ortodoks',
+          'hristiyan-protestan': 'Hristiyanlık / Protestan', 'hristiyan-diger': 'Hristiyanlık',
+          'musevi': 'Musevilik', 'budist': 'Budizm', 'hindu': 'Hinduizm',
+          'ateist': 'Ateist', 'agnostik': 'Agnostik', 'dinsiz': 'Dinî bağı yok', 'yok': 'Dinî bağı yok',
+        },
+        medeniHali: { bekar: 'Bekâr', evli: 'Evli', bosanmis: 'Boşanmış', dul: 'Dul' },
+        ogrenim: {
+          ilkokul: 'İlkokul', ortaokul: 'Ortaokul', lise: 'Lise', onlisans: 'Ön lisans',
+          lisans: 'Lisans', yukseklisans: 'Yüksek lisans', doktora: 'Doktora', diger: 'Diğer',
+        },
+      };
+      const ek9Etiket = (tur, deger) => {
+        const d = String(deger || '').trim();
+        if (!d) return '';
+        const s = EK9_ETIKET[tur] && EK9_ETIKET[tur][d.toLocaleLowerCase('tr')];
+        return s || (d.charAt(0).toLocaleUpperCase('tr') + d.slice(1));
+      };
+      /** "23.08.2026 20:01" / "1979-04-24" gibi değerleri belgedeki gg/aa/yyyy biçimine getirir. */
+      const ek9Tarih = (deger) => {
+        const d = String(deger || '').trim();
+        if (!d) return '';
+        let e = d.match(/^(\d{2})[.\/](\d{2})[.\/](\d{4})/);
+        if (e) return `${e[1]}/${e[2]}/${e[3]}`;
+        e = d.match(/^(\d{4})-(\d{2})-(\d{2})/);
+        if (e) return `${e[3]}/${e[2]}/${e[1]}`;
+        return d;
+      };
+      const bugunTR = () => {
+        const t = new Date();
+        return `${String(t.getDate()).padStart(2, '0')}/${String(t.getMonth() + 1).padStart(2, '0')}/${t.getFullYear()}`;
+      };
+      /** Kullanıcıdan yerel bir görsel ister (eski başvurularda vesikalık arka uçta saklanmamış olabilir). */
+      function dosyaSec(kabul) {
+        return new Promise((coz) => {
+          const g = document.createElement('input');
+          g.type = 'file'; g.accept = kabul || 'image/*';
+          g.addEventListener('change', () => {
+            const dosya = g.files && g.files[0];
+            if (!dosya) return coz('');
+            const okuyucu = new FileReader();
+            okuyucu.onload = () => coz(String(okuyucu.result || ''));
+            okuyucu.onerror = () => coz('');
+            okuyucu.readAsDataURL(dosya);
+          });
+          g.addEventListener('cancel', () => coz(''));
+          g.click();
+        });
+      }
+
+      let ek9Modul = null, ek9Kaynak = null;
+      async function ek9Hazirla() {
+        if (!ek9Modul) {
+          // pdf-lib/fontkit'in ESM yapıları "pako" gibi çıplak modül adlarını dışarıdan bekler
+          // (tarayıcıda import map olmadan çözülmez) — bu yüzden UMD paketleri script ile yüklenir.
+          const betikYukle = (src) => new Promise((coz, red) => {
+            const b = document.createElement('script');
+            b.src = src; b.onload = () => coz(); b.onerror = () => red(new Error(src + ' yüklenemedi'));
+            document.head.appendChild(b);
+          });
+          if (!window.PDFLib) await betikYukle('/vendor/pdf-lib.min.js');
+          if (!window.fontkit) await betikYukle('/vendor/fontkit.umd.min.js');
+          const modul = await import('/admin/ek9.js');
+          ek9Modul = { pdfLib: window.PDFLib, fontkit: window.fontkit, uret: modul.ek9Uret };
+        }
+        if (!ek9Kaynak) {
+          const al = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
+          const [sablon, font, fontKalin] = await Promise.all([
+            al('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
+            al('/fonts/Lora-Regular.ttf'),
+            al('/fonts/Lora-Bold.ttf'),
+          ]);
+          ek9Kaynak = { sablon, font, fontKalin };
+        }
+      }
+
+      async function ek9Uretimi(dugme) {
+        const ref = dugme.dataset.ek9;
+        const eskiMetin = dugme.textContent;
+        const durumYaz = (metin) => { dugme.textContent = metin; };
+        dugme.disabled = true;
+        try {
+          durumYaz('Hazırlanıyor…');
+          await ek9Hazirla();
+          if (!SIRLAR || !SIRLAR.gas) throw new Error('Erişim paketi eksik — yeniden giriş yapın.');
+
+          const r = await fetch(`${GAS}?islem=belge&ref=${encodeURIComponent(ref)}&anahtar=${encodeURIComponent(SIRLAR.gas)}`, { redirect: 'follow' });
+          const j = await r.json();
+          if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
+          const k = j.kayit || {};
+
+          let vesikalik = j.vesikalik || '';
+          if (!vesikalik) {
+            durumYaz('Fotoğraf seçin…');
+            vesikalik = await dosyaSec('image/*');
+            if (!vesikalik && !confirm('Vesikalık fotoğraf yok. Belge fotoğrafsız üretilsin mi?')) { durumYaz(eskiMetin); dugme.disabled = false; return; }
+          }
+          durumYaz('Belge üretiliyor…');
+
+          const imzalar = (SIRLAR && SIRLAR.imzalar) || {};
+          const yedekler = [];
+          if (imzalar.ridvan) yedekler.push({ ad: 'Rıdvan KAYAHAN', imza: imzalar.ridvan });
+          if (imzalar.yeliz) yedekler.push({ ad: 'Yeliz KAYAHAN', imza: imzalar.yeliz });
+
+          const bytes = await ek9Modul.uret({
+            pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
+            sablonBytes: ek9Kaynak.sablon, fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
+            veri: {
+              adSoyad: k['Adı Soyadı'] || '',
+              belgeNo: '',                                   // Müşavirlik/Müftülük doldurur
+              belgeTarihi: bugunTR(),
+              duzenleyen: 'Marche-en-Famenne Ulu Camii',
+              cinsiyet: ek9Etiket('cinsiyet', k['Cinsiyet']),
+              ogrenim: ek9Etiket('ogrenim', k['Öğrenim durumu']),
+              anneAdi: k['Anne adı'] || '',
+              babaAdi: k['Baba adı'] || '',
+              dogumYeri: k['Doğum yeri'] || '',
+              dogumTarihi: ek9Tarih(k['Doğum tarihi']),
+              medeniHali: ek9Etiket('medeniHali', k['Medeni hali']),
+              meslek: k['Mesleği'] || '',
+              uyruk: k['Uyruk'] || '',
+              tcKimlik: k['T.C. Kimlik No'] || '',
+              oncekiDin: ek9Etiket('oncekiDin', k['Önceki din/mezhep']),
+              ihtidaSebebi: k['İhtida sebebi'] || '',
+              ihtidaTarihi: ek9Tarih(k['Tören tarihi tercihi']) || bugunTR(),
+              eposta: k['E-posta'] || '',
+              telefon: k['Telefon'] || '',
+              adres: k['Adres'] || '',
+              beyanTarihi: ek9Tarih(k['Zaman damgası']) || bugunTR(),
+            },
+            foto: vesikalik,
+            sahitler: j.sahitler || [],
+            yedekImzalar: yedekler,
+            basvuranImza: j.basvuranImza || '',
+            tarih: new Date(),
+          });
+
+          const ad = `EK-9 Ihtida Belgesi ${ref}.pdf`;
+          const bag = document.createElement('a');
+          bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+          bag.download = ad; bag.click();
+          setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
+          durumYaz('✓ İndirildi');
+          setTimeout(() => { durumYaz(eskiMetin); dugme.disabled = false; }, 4000);
+        } catch (hata) {
+          console.error(hata);
+          alert('EK-9 belgesi üretilemedi: ' + (hata && hata.message ? hata.message : hata));
+          durumYaz(eskiMetin); dugme.disabled = false;
+        }
       }
 
       $('basvuru-yenile').addEventListener('click', () => basvuruYukle());

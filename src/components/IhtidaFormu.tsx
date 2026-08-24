@@ -44,6 +44,9 @@ interface FormState {
   kimlikOn: string; kimlikArka: string; vesikalik: string;
   kvkkOnay: boolean; hurIradeOnay: boolean; fotografIzni: boolean;
   imzaDataUrl: string;
+  /** EK-9 belgesindeki iki "ŞAHİT / WITNESS" alanı — tamamı isteğe bağlıdır.
+   *  Boş bırakılanlar belge üretilirken cami görevlilerinin imzasıyla tamamlanır. */
+  sahit1Ad: string; sahit1Imza: string; sahit2Ad: string; sahit2Imza: string;
   gonderimAnahtari: string;
   /** MRZ'den okunup şu an alanda görünen değerleri üreten alan adları — rozet + PDF notu için. */
   otoAlanlar: string[];
@@ -65,6 +68,7 @@ function bosDurum(): FormState {
     kimlikOn: '', kimlikArka: '', vesikalik: '',
     kvkkOnay: false, hurIradeOnay: false, fotografIzni: false,
     imzaDataUrl: '',
+    sahit1Ad: '', sahit1Imza: '', sahit2Ad: '', sahit2Imza: '',
     gonderimAnahtari: '',
     otoAlanlar: [],
     taramaDurum: 'yok',
@@ -85,7 +89,7 @@ function taslakYaz(state: FormState) {
   try { localStorage.setItem(TASLAK_ANAHTARI, JSON.stringify(state)); }
   catch {
     try {
-      const { kimlikOn, kimlikArka, vesikalik, imzaDataUrl, ...rest } = state;
+      const { kimlikOn, kimlikArka, vesikalik, imzaDataUrl, sahit1Imza, sahit2Imza, ...rest } = state;
       localStorage.setItem(TASLAK_ANAHTARI, JSON.stringify(rest));
     } catch { /* depolama yoksa taslak atlanır, form yine çalışır */ }
   }
@@ -378,6 +382,9 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
     }
     if (adim === 6) {
       if (!durum.imzaDataUrl) yeniHatalar.imza = m.imzaBos;
+      // Şahitlik isteğe bağlıdır; ama imza atılmışsa belgeye yazılacak ad da gerekir.
+      if (durum.sahit1Imza && !durum.sahit1Ad.trim()) yeniHatalar.sahit1Ad = m.sahitAdBos;
+      if (durum.sahit2Imza && !durum.sahit2Ad.trim()) yeniHatalar.sahit2Ad = m.sahitAdBos;
     }
     setHatalar(yeniHatalar);
     return Object.keys(yeniHatalar).length === 0;
@@ -483,6 +490,10 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
         belgeTuru: durum.belgeTuru,
         kimlikOn: durum.kimlikOn, kimlikArka: durum.belgeTuru === 'kimlik' ? durum.kimlikArka : '', vesikalik: durum.vesikalik,
         imzaDataUrl: durum.imzaDataUrl,
+        sahitler: [
+          { ad: durum.sahit1Ad.trim(), imza: durum.sahit1Imza },
+          { ad: durum.sahit2Ad.trim(), imza: durum.sahit2Imza },
+        ],
         fotografIzni: durum.fotografIzni,
         gonderimTarihi,
         cami,
@@ -507,6 +518,12 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           yeniIsim: durum.yeniIsim.trim(), torenDili: durum.torenDili, torenTarihi: durum.torenTarihi,
           nasilHaberdar: durum.nasilHaberdar, ekNot: durum.ekNot.trim(),
         },
+        sahitler: [
+          { ad: durum.sahit1Ad.trim(), imza: durum.sahit1Imza },
+          { ad: durum.sahit2Ad.trim(), imza: durum.sahit2Imza },
+        ].filter((x) => x.ad || x.imza),
+        vesikalikBase64: durum.vesikalik,
+        basvuranImzaBase64: durum.imzaDataUrl,
         fotografIzni: durum.fotografIzni,
         gonderimAnahtari: anahtarGetir(),
       };
@@ -755,7 +772,44 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
         )}
 
         {adim === 6 && (
-          <IhtidaImza deger={durum.imzaDataUrl} onDegisti={(v) => guncelle('imzaDataUrl', v)} m={m} hata={hatalar.imza} />
+          <div class="grid gap-6">
+            <IhtidaImza deger={durum.imzaDataUrl} onDegisti={(v) => guncelle('imzaDataUrl', v)} m={m} hata={hatalar.imza} />
+
+            <details class="kart-kagit p-4" open={Boolean(durum.sahit1Imza || durum.sahit2Imza || durum.sahit1Ad || durum.sahit2Ad)}>
+              <summary class="cursor-pointer min-h-11 inline-flex items-center gap-2 text-(--vurgu-2)">
+                <span class="etiket etiket-vurgu">{m.sahitBaslik}</span>
+                <span class="text-sm">· {m.sahitAc}</span>
+              </summary>
+              <div class="grid gap-6 mt-4">
+                <p class="text-sm text-(--metin-2)">{m.sahitAciklama}</p>
+                {([1, 2] as const).map((sira) => {
+                  const adAlani = (sira === 1 ? 'sahit1Ad' : 'sahit2Ad') as 'sahit1Ad' | 'sahit2Ad';
+                  const imzaAlani = (sira === 1 ? 'sahit1Imza' : 'sahit2Imza') as 'sahit1Imza' | 'sahit2Imza';
+                  return (
+                    <div class="grid gap-3 cetvel pt-4" key={sira}>
+                      <label class="grid gap-1">
+                        <span class="etiket">{m.sahitAdEtiket(sira)}</span>
+                        <input
+                          type="text" autocomplete="off" value={durum[adAlani]}
+                          onInput={(e) => guncelle(adAlani, (e.currentTarget as HTMLInputElement).value)}
+                          class="min-h-11 rounded-(--radius-kose) border border-(--cizgi) bg-(--zemin) px-3 py-2 text-base"
+                        />
+                        {hatalar[adAlani] && <span class="text-sm text-(--vurgu)" role="alert">{hatalar[adAlani]}</span>}
+                      </label>
+                      <IhtidaImza
+                        deger={durum[imzaAlani]}
+                        onDegisti={(v) => guncelle(imzaAlani, v)}
+                        m={m}
+                        baslik={m.sahitImzaBaslik(sira)}
+                        aciklama={m.sahitImzaAciklama}
+                      />
+                    </div>
+                  );
+                })}
+                <p class="text-sm text-(--metin-2)">{m.sahitEksikNot}</p>
+              </div>
+            </details>
+          </div>
         )}
 
         {adim === 7 && (
@@ -797,6 +851,27 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
                 <div class="kart-kagit p-3 w-fit"><img src={durum.imzaDataUrl} alt="" class="h-16 w-auto" /></div>
               </div>
             )}
+
+            <div class="grid gap-2">
+              <div class="flex items-center justify-between">
+                <p class="etiket etiket-vurgu">{m.sahitOzet}</p>
+                <button type="button" class="text-sm text-(--vurgu-2) underline underline-offset-2" onClick={() => adimaGit(6)}>{m.duzenle}</button>
+              </div>
+              {(durum.sahit1Imza || durum.sahit2Imza) ? (
+                <div class="flex flex-wrap gap-4">
+                  {([[durum.sahit1Ad, durum.sahit1Imza], [durum.sahit2Ad, durum.sahit2Imza]] as const)
+                    .filter(([, imza]) => Boolean(imza))
+                    .map(([ad, imza], i) => (
+                      <div class="kart-kagit p-3 grid gap-1 w-fit" key={i}>
+                        <img src={imza} alt="" class="h-12 w-auto" />
+                        <span class="text-sm">{ad}</span>
+                      </div>
+                    ))}
+                </div>
+              ) : (
+                <p class="text-sm text-(--metin-2) cetvel pt-2">{m.sahitYok}</p>
+              )}
+            </div>
 
             <p class="duz-yazi text-sm italic cetvel pt-4">{m.beyanCumlesi}</p>
             <button type="button" class="dugme dugme-birincil justify-center min-h-11 mt-2" disabled={gonderimMeşgul} onClick={basvuruyuGonder}>

@@ -171,6 +171,18 @@ export interface Metinler {
   imzaYazarakEtiket: string;
   imzaYazarakOnay: string;
 
+  // şahitler (isteğe bağlı) — EK-9 belgesindeki "ŞAHİT / WITNESS" alanları
+  sahitBaslik: string;
+  sahitAciklama: string;
+  sahitAc: string;
+  sahitAdEtiket: (sira: number) => string;
+  sahitImzaBaslik: (sira: number) => string;
+  sahitImzaAciklama: string;
+  sahitEksikNot: string;
+  sahitAdBos: string;
+  sahitOzet: string;
+  sahitYok: string;
+
   // özet
   ozetBaslik: string;
   beyanCumlesi: string;
@@ -300,6 +312,17 @@ export function metinler(dil: Dil): Metinler {
       fotografIzniMetin: 'Par défaut, votre histoire personnelle n’est jamais partagée publiquement. Vous pouvez toutefois autoriser la mosquée à utiliser votre photo ou votre témoignage (uniquement si vous le souhaitez).',
       fotografIzniOnay: 'J’autorise l’utilisation de ma photo/mon témoignage par la mosquée (facultatif).',
       gdprNot: 'Vos données sont traitées uniquement pour la délivrance de l’attestation de conversion et la communication avec les autorités compétentes.',
+
+      sahitBaslik: 'Témoins (facultatif)',
+      sahitAciklama: 'L’attestation de conversion (EK-9) comporte deux emplacements pour les témoins. Si deux personnes vous accompagnent, vous pouvez enregistrer dès maintenant leur nom et leur signature.',
+      sahitAc: 'Ajouter des témoins',
+      sahitAdEtiket: (sira) => `Nom et prénom du témoin ${sira}`,
+      sahitImzaBaslik: (sira) => `Signature du témoin ${sira}`,
+      sahitImzaAciklama: 'Le témoin signe lui-même dans le cadre ci-dessous.',
+      sahitEksikNot: 'Si vous ne renseignez pas de témoin, les emplacements seront complétés par les responsables de notre mosquée.',
+      sahitAdBos: 'Indiquez également le nom du témoin qui a signé.',
+      sahitOzet: 'Témoins',
+      sahitYok: 'Aucun témoin renseigné — la mosquée s’en charge.',
 
       imzaBaslik: 'Signature manuscrite',
       imzaAciklama: 'Signez avec votre doigt, votre souris ou un stylet dans le cadre ci-dessous.',
@@ -437,6 +460,17 @@ export function metinler(dil: Dil): Metinler {
       fotografIzniOnay: 'I allow my photo/testimony to be used by the mosque (optional).',
       gdprNot: 'Your data is processed solely for the purpose of issuing the Certificate of Conversion and communicating with the relevant authorities.',
 
+      sahitBaslik: 'Witnesses (optional)',
+      sahitAciklama: 'The conversion certificate (EK-9) has two places for witnesses. If two people are with you, you can record their names and signatures now.',
+      sahitAc: 'Add witnesses',
+      sahitAdEtiket: (sira) => `Full name of witness ${sira}`,
+      sahitImzaBaslik: (sira) => `Signature of witness ${sira}`,
+      sahitImzaAciklama: 'The witness signs in the box below.',
+      sahitEksikNot: 'If you do not add witnesses, the mosque staff will sign as witnesses.',
+      sahitAdBos: 'Please also enter the name of the witness who signed.',
+      sahitOzet: 'Witnesses',
+      sahitYok: 'No witnesses entered — the mosque will provide them.',
+
       imzaBaslik: 'Handwritten signature',
       imzaAciklama: 'Sign with your finger, mouse or stylus in the box below.',
       imzaTemizle: 'Clear',
@@ -571,6 +605,17 @@ export function metinler(dil: Dil): Metinler {
     fotografIzniMetin: 'Varsayılan olarak kişisel hikâyeniz asla kamuya açık şekilde paylaşılmaz. Dilerseniz camimizin fotoğrafınızı/hikâyenizi kullanmasına izin verebilirsiniz (yalnızca isterseniz).',
     fotografIzniOnay: 'Fotoğrafımın/hikâyemin cami tarafından kullanılmasına izin veriyorum (opsiyonel).',
     gdprNot: 'Verileriniz yalnızca İhtida Belgesi düzenleme ve ilgili resmî makamlarla iletişim amacıyla işlenir.',
+
+    sahitBaslik: 'Şahitler (isteğe bağlı)',
+    sahitAciklama: 'İhtida Belgesi’nde (EK-9) iki şahit için yer ayrılmıştır. Yanınızda iki kişi varsa adlarını ve imzalarını şimdiden kaydedebilirsiniz.',
+    sahitAc: 'Şahit bilgilerini ekle',
+    sahitAdEtiket: (sira) => `${sira}. şahidin adı soyadı`,
+    sahitImzaBaslik: (sira) => `${sira}. şahidin imzası`,
+    sahitImzaAciklama: 'Şahit, aşağıdaki kutuya kendi imzasını atsın.',
+    sahitEksikNot: 'Şahit girmezseniz belgedeki şahit alanları camimizin görevlilerince tamamlanır.',
+    sahitAdBos: 'İmza atan şahidin adını da yazın.',
+    sahitOzet: 'Şahitler',
+    sahitYok: 'Şahit girilmedi — camimiz tamamlayacak.',
 
     imzaBaslik: 'El ile imza',
     imzaAciklama: 'Aşağıdaki kutu içine parmağınızla, farenizle veya kalemle imzanızı atın.',

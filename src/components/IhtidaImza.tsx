@@ -12,6 +12,9 @@ interface Props {
   onDegisti: (dataUrl: string) => void;
   m: Metinler;
   hata?: string;
+  /** Şahit imzalarında başlık/açıklama değişir; verilmezse başvuranın kendi imzası varsayılır. */
+  baslik?: string;
+  aciklama?: string;
 }
 
 const TABAN_G = 1600;
@@ -101,7 +104,7 @@ function yaziliImza(ad: string): string {
   return canvas.toDataURL('image/png');
 }
 
-export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
+export default function IhtidaImza({ deger, onDegisti, m, hata, baslik, aciklama }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const strokesRef = useRef<Cizgi[]>([]);
   const activeRef = useRef<Cizgi | null>(null);
@@ -211,10 +214,13 @@ export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
     setYenidenCiziyor(true);
   }
 
+  const gosterBaslik = baslik ?? m.imzaBaslik;
+  const gosterAciklama = aciklama ?? m.imzaAciklama;
+
   if (!yenidenCiziyor && deger) {
     return (
       <div class="grid gap-3">
-        <p class="etiket">{m.imzaBaslik}</p>
+        <p class="etiket">{gosterBaslik}</p>
         <div class="kart-kagit p-3 inline-block w-fit">
           <img src={deger} alt="" class="h-20 w-auto" />
         </div>
@@ -225,8 +231,8 @@ export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
 
   return (
     <div class="grid gap-3">
-      <p class="etiket">{m.imzaBaslik}</p>
-      <p class="text-sm text-(--metin-2)">{m.imzaAciklama}</p>
+      <p class="etiket">{gosterBaslik}</p>
+      <p class="text-sm text-(--metin-2)">{gosterAciklama}</p>
       <div
         class="kart-kagit touch-none select-none"
         style={{ height: '220px', background: 'repeating-linear-gradient(0deg, transparent, transparent 39px, var(--cizgi) 40px)' }}
@@ -239,7 +245,7 @@ export default function IhtidaImza({ deger, onDegisti, m, hata }: Props) {
           onPointerMove={pointerMove}
           onPointerUp={pointerUp}
           onPointerCancel={pointerUp}
-          aria-label={m.imzaBaslik}
+          aria-label={gosterBaslik}
           role="img"
         />
       </div>
