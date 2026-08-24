@@ -29,11 +29,6 @@ site:
   # Ana sayfa hero'sunda dönen kısa mesajlar (Sveltia'dan güncellenir; sayfa: site içi bağlantı anahtarı)
   heroMesajlar:
     - metin:
-        tr: "Mevlid Kandili'niz mübarek olsun — yönetim kurulumuz adına tüm cemaatimizin ve İslâm âleminin kandilini tebrik ederiz. 🕌"
-        fr: "Bénie soit votre nuit du Mawlid — au nom du conseil d'administration, meilleurs vœux à toute notre communauté."
-        en: "Blessed Mawlid night — on behalf of the board, best wishes to our whole community."
-      sayfa: etkinlikler
-    - metin:
         tr: "Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları — Famenne’deki Müslümanların 40 yıllık ocağı."
         fr: "Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes — le foyer des musulmans de la Famenne depuis 40 ans."
         en: "Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes — the home of the Muslims of the Famenne for 40 years."
