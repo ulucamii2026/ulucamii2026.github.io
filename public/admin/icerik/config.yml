@@ -13,7 +13,7 @@ backend:
 
 site_url: https://ulucamii.be
 display_url: https://ulucamii.be
-logo_url: /media/logo/ulu-camii-logo-128.png
+logo_url: /media/logo/ulu-camii-logo-madalyon.png
 locale: tr
 
 media_folder: public/media/yuklenen
