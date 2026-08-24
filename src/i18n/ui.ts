@@ -243,7 +243,7 @@ export const ui = {
     'footer.dingorevlisi': 'Imam',
     'footer.cami': 'Mosque / Association',
     'footer.hak': 'All rights reserved.',
-    'footer.yonetim': 'Content management',
+    'footer.yonetim': 'Admin panel',
     'footer.baglantilar': 'Links',
     'genel.daha': 'More',
     'genel.geri': 'Back',
