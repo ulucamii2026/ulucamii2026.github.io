@@ -1,7 +1,7 @@
 ---
-baslik: Notre nouveau site internet est en ligne
-tarih: 2026-08-22
-ozet: Le nouveau site de la Mosquée Ulu Camii de Marche-en-Famenne est en ligne. Horaires de prière, dons, inscription à l’école coranique et guide consulaire, tout y est.
+baslik: Notre site internet est en ligne
+tarih: 2026-08-24
+ozet: Le site officiel de notre mosquée a été mis au service de notre communauté le 24 août 2026, jour béni du Mawlid — le mot du conseil d'administration.
 kapak: /media/afisler/web-sitemiz-yayinda.webp
 kapakAlt: Notre site internet est en ligne — www.ulucamii.be
 etiketler:
@@ -10,23 +10,23 @@ etiketler:
 oneCikan: true
 ---
 
-## Bienvenue sur notre nouveau site
+Chère communauté de Marche-en-Famenne,
 
-La Mosquée Ulu Camii de Marche-en-Famenne met en ligne son nouveau site internet, pour être plus proche de notre communauté et des musulmans de la région. L’objectif : rassembler les informations essentielles sur la mosquée, en turc et en français, au même endroit.
+Afin de mieux vous servir, la page Facebook officielle de notre mosquée avait été mise en ligne ; **en ce jour béni du Mawlid, le 24 août 2026**, nous mettons également à votre service le site internet officiel de notre mosquée : **[www.ulucamii.be](https://www.ulucamii.be)**
+
+Vous y trouverez des informations actualisées sur notre mosquée et sur bien d'autres sujets. Notre objectif est de partager avec vous, de manière continue et actuelle, les activités de notre mosquée, et de nous montrer dignes du soutien matériel et moral que vous lui apportez depuis des années.
+
+Nous remercions notre cher imam **Rıdvan Kayahan** pour le travail accompli dans la réalisation de ce site.
+
+**Au nom de l'Association de la Mosquée Ulu Camii de Marche-en-Famenne**
+**Le Président, Ercan MOLA**
+
+---
 
 ### Que trouverez-vous sur le site ?
 
-- **Horaires de prière** — mis à jour régulièrement
-- **Annonces** — les dernières nouvelles de la mosquée
-- **Événements et affiches** — programmes de fêtes, nuits bénies et occasions particulières
-- **Inscription à l’école coranique** — accès direct au formulaire d’inscription en ligne pour l’année 2026-2027
-- **Dons** — les informations pour soutenir notre association
-- **Guide consulaire** — informations pratiques liées à l’Ambassade de Turquie à Bruxelles
-
-### Bientôt : un espace membres et parents
-
-Un espace dédié à nos membres et aux parents des élèves de l’école coranique sera mis en place prochainement.
-
-### Votre avis compte
-
-Le site venant tout juste d’être lancé, si vous constatez une information manquante ou incorrecte, ou si vous avez une suggestion, n’hésitez pas à nous contacter.
+- **Horaires de prière** et calendrier religieux
+- **Annonces, activités et sermons**
+- **Inscription en ligne aux cours de Coran** — [www.ulucamii.be/kayit](https://www.ulucamii.be/kayit/)
+- Services funéraires, dons, adhésion et guide consulaire
+- E-mail officiel : **info@ulucamii.be**

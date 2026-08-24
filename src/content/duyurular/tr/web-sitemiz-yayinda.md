@@ -1,7 +1,7 @@
 ---
 baslik: Web Sitemiz Yayında
-tarih: 2026-08-22
-ozet: Marche-en-Famenne Ulu Camii’nin yeni web sitesi yayına girdi. Namaz vakitlerinden bağışa, Kur’an kursu kaydından konsolosluk rehberine kadar cemaatimize hizmet veriyor.
+tarih: 2026-08-24
+ozet: Camimizin kurumsal web sitesi, 24 Ağustos 2026 mübarek Mevlid Kandili gününde cemaatimizin hizmetine sunuldu — yönetim kurulumuzun ön yazısı.
 kapak: /media/afisler/web-sitemiz-yayinda.webp
 kapakAlt: Web sitemiz yayında — www.ulucamii.be
 etiketler:
@@ -10,23 +10,23 @@ etiketler:
 oneCikan: true
 ---
 
-## Yeni web sitemize hoş geldiniz
+Saygıdeğer Marche-en-Famenne cemaatimiz,
 
-Marche-en-Famenne Ulu Camii olarak cemaatimize ve bölgemizdeki Müslümanlara daha kolay ulaşabilmek için yeni web sitemizi yayına aldık. Amacımız, camimizle ilgili güncel bilgileri tek bir yerde, hem Türkçe hem Fransızca olarak sunmak.
+Sizlere daha iyi hizmet verebilmek amacıyla camimizin kurumsal Facebook sayfası yayına girmişti; **24 Ağustos 2026 mübarek Mevlid Kandili gününde** camimizin kurumsal web sitesini de hizmetinize sunuyoruz: **[www.ulucamii.be](https://www.ulucamii.be)**
 
-### Sitede neler bulacaksınız?
+Sitemizde camimiz ve daha birçok konu hakkında güncel bilgiler bulacaksınız. Amacımız, camimizin faaliyetlerini sizlerle sürekli ve güncel olarak paylaşmak; yıllardır camimize verdiğiniz maddî ve manevî desteklere lâyık olmaktır.
 
-- **Namaz vakitleri** — güncel vakit çizelgesi
-- **Duyurular** — camimizden güncel haberler
-- **Etkinlikler ve afişler** — bayram programları, kandiller ve özel günler
-- **Kur’an kursu kaydı** — 2026-2027 dönemi online kayıt formuna doğrudan erişim
-- **Bağış** — derneğimize destek olmak isteyenler için bilgiler
-- **Konsolosluk rehberi** — T.C. Brüksel Büyükelçiliği ile ilgili pratik bilgiler
+Bu sitenin hazırlanmasında emeği geçen değerli hocamız **Rıdvan Kayahan**'a teşekkür ederiz.
 
-### Yakında: üye ve veli portalı
+**Marche-en-Famenne Ulu Camii Derneği adına**
+**Başkan Ercan MOLA**
 
-Önümüzdeki dönemde, dernek üyelerimiz ve Kur’an kursu velilerimiz için ayrı bir giriş bölümü (portal) da hizmete girecek.
+---
 
-### Görüşleriniz bizim için değerli
+### Sitede sizi neler bekliyor?
 
-Site yeni yayında olduğu için eksik veya hatalı bir bilgiyle karşılaşırsanız ya da bir öneriniz varsa, bizimle iletişime geçmenizden memnuniyet duyarız.
+- **Namaz vakitleri** ve dinî günler takvimi
+- **Duyurular, etkinlikler ve hutbeler**
+- **Kur'an kursu online kaydı** — [www.ulucamii.be/kayit](https://www.ulucamii.be/kayit/)
+- Cenaze hizmetleri, bağış, dernek üyeliği ve konsolosluk rehberi
+- Resmî e-posta: **info@ulucamii.be**
