@@ -1,46 +1,103 @@
-// Diyanet namaz vakitleri — Marche-en-Famenne (ilçe ID 11890) → src/data/namaz-vakitleri.json
-// Kaynak: ezanvakti.emushaf.net (Diyanet verisinin birebir yansıması). Yedek: Aladhan method=13 (uygulandı, aşağıda).
+// Namaz vakitleri — YALNIZCA Diyanet İşleri Başkanlığı verisi.
+// Kaynak: ezanvakti.emushaf.net (Diyanet'in kendi ülke/şehir/ilçe kimliklerini ve takvimini birebir yansıtır;
+//         ilçe 11890 = M.FAMENNE — Diyanet'in resmî sayfası da aynı kimliği kullanır:
+//         https://namazvakitleri.diyanet.gov.tr/tr-TR/11890/mfamenne-icin-namaz-vakti)
+//
+// TASARIM KARARI (24 Ağu 2026): Hesaplama tabanlı YEDEK KAYNAK YOKTUR.
+//   Daha önce Aladhan (method=13) yedeği vardı; Diyanet ucuna erişilemediği bir günde devreye girdi ve
+//   Diyanet takviminden sapan vakitler yayımlandı (yatsıda 7 dk'ya varan fark). İbadet vakti söz konusu
+//   olduğunda "yaklaşık doğru" veri kabul edilemez. Bu yüzden Diyanet verisi alınamazsa:
+//     - mevcut JSON'a DOKUNULMAZ (elde 4 haftalık geçerli Diyanet verisi zaten vardır),
+//     - betik hata kodu ile çıkar → GitHub Actions işi kırmızı olur ve bildirim gider.
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
-const ILCE = '11890';
+
+const ILCE = '11890';                  // Diyanet ilçe kimliği — M.FAMENNE (Marche-en-Famenne)
+const ILCE_ADI = 'M.FAMENNE';
 const OUT = new URL('../src/data/namaz-vakitleri.json', import.meta.url);
-const LAT = 50.2275, LON = 5.3444; // Marche-en-Famenne
-let gunler;
-try {
-  const r = await fetch(`https://ezanvakti.emushaf.net/vakitler/${ILCE}`, { headers: { 'User-Agent': 'ulucamii-site/1.0' }, signal: AbortSignal.timeout(30000) });
-  if (!r.ok) throw new Error('ezanvakti HTTP ' + r.status);
-  const raw = await r.json();
-  if (!Array.isArray(raw) || raw.length < 7 || !raw[0].Imsak) throw new Error('ezanvakti beklenmeyen yanıt');
-  gunler = raw.map(g => ({
-    tarih: (() => { const k = (g.MiladiTarihKisaIso8601 || g.MiladiTarihKisa || ''); const m = k.match(/^(\d{2})\.(\d{2})\.(\d{4})/); return m ? `${m[3]}-${m[2]}-${m[1]}` : k.slice(0, 10); })(),
-    hicri: g.HicriTarihUzun ?? g.HicriTarihKisa ?? '',
-    imsak: g.Imsak, gunes: g.Gunes, ogle: g.Ogle, ikindi: g.Ikindi, aksam: g.Aksam, yatsi: g.Yatsi,
-  }));
-  console.log('kaynak: ezanvakti (Diyanet ilçe ' + ILCE + ')');
-} catch (e) {
-  // YEDEK: Aladhan, Diyanet yöntemi (method=13) — deneysel; Diyanet resmî verisinden birkaç dakika sapabilir
-  console.warn('ezanvakti başarısız, Aladhan yedeğine geçiliyor:', e.message);
-  const simdi = new Date();
-  const aylar = [[simdi.getUTCFullYear(), simdi.getUTCMonth() + 1], [simdi.getUTCMonth() === 11 ? simdi.getUTCFullYear() + 1 : simdi.getUTCFullYear(), (simdi.getUTCMonth() + 1) % 12 + 1]];
-  const HICRI = ['Muharrem', 'Safer', 'Rebiülevvel', 'Rebiülahir', 'Cemaziyelevvel', 'Cemaziyelahir', 'Recep', 'Şaban', 'Ramazan', 'Şevval', 'Zilkade', 'Zilhicce'];
-  gunler = [];
-  for (const [y, m] of aylar) {
-    const r = await fetch(`https://api.aladhan.com/v1/calendar/${y}/${m}?latitude=${LAT}&longitude=${LON}&method=13&timezonestring=Europe/Brussels`, { signal: AbortSignal.timeout(30000) });
-    if (!r.ok) throw new Error('Aladhan HTTP ' + r.status);
-    const j = await r.json();
-    for (const g of j.data) {
-      const t = g.timings, hm = (s) => s.slice(0, 5), d = g.date.gregorian.date.split('-'); // DD-MM-YYYY
-      gunler.push({ tarih: `${d[2]}-${d[1]}-${d[0]}`, hicri: `${Number(g.date.hijri.day)} ${HICRI[Number(g.date.hijri.month.number) - 1]} ${g.date.hijri.year}`,
-        imsak: hm(t.Fajr), gunes: hm(t.Sunrise), ogle: hm(t.Dhuhr), ikindi: hm(t.Asr), aksam: hm(t.Maghrib), yatsi: hm(t.Isha) });
+const UC = `https://ezanvakti.emushaf.net/vakitler/${ILCE}`;
+const SAAT = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+const bekle = (ms) => new Promise((c) => setTimeout(c, ms));
+const bugunISO = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date());
+
+/** Diyanet ucundan ham listeyi çeker; geçici hatalarda 3 kez dener. */
+async function diyanetVerisiCek() {
+  let sonHata;
+  for (let deneme = 1; deneme <= 3; deneme++) {
+    try {
+      const r = await fetch(UC, { headers: { 'User-Agent': 'ulucamii-site/1.0 (+https://ulucamii.be)' }, signal: AbortSignal.timeout(30000) });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return await r.json();
+    } catch (e) {
+      sonHata = e;
+      console.warn(`deneme ${deneme}/3 başarısız: ${e.message}`);
+      if (deneme < 3) await bekle(10000 * deneme);
     }
   }
-  console.log('kaynak: Aladhan method=13 (YEDEK)');
+  throw sonHata;
 }
-let eski = [];
-if (existsSync(OUT)) { try { eski = JSON.parse(readFileSync(OUT, 'utf8')).gunler ?? []; } catch {} }
-// Eski kayıtlarla birleştir (tarih anahtarı), yeni veri önceliklidir
-const map = new Map(eski.map(g => [g.tarih, g]));
-for (const g of gunler) map.set(g.tarih, g);
-const bugun = new Date().toISOString().slice(0, 10);
-const hepsi = [...map.values()].filter(g => g.tarih >= new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10)).sort((a, b) => a.tarih.localeCompare(b.tarih));
-writeFileSync(OUT, JSON.stringify({ kaynak: 'Diyanet İşleri Başkanlığı — Marche-en-Famenne (ilçe 11890)', guncelleme: new Date().toISOString(), ilce: ILCE, gunler: hepsi }, null, 1));
-console.log(`yazıldı: ${hepsi.length} gün (${hepsi[0]?.tarih} → ${hepsi.at(-1)?.tarih}), bugün ${bugun}`);
+
+/** Ham Diyanet kaydını site biçimine çevirir. */
+function donustur(g) {
+  const k = g.MiladiTarihKisaIso8601 || g.MiladiTarihKisa || '';
+  const m = k.match(/^(\d{2})\.(\d{2})\.(\d{4})/);
+  return {
+    tarih: m ? `${m[3]}-${m[2]}-${m[1]}` : k.slice(0, 10),
+    hicri: g.HicriTarihUzun ?? g.HicriTarihKisa ?? '',
+    imsak: g.Imsak, gunes: g.Gunes, ogle: g.Ogle, ikindi: g.Ikindi, aksam: g.Aksam, yatsi: g.Yatsi,
+  };
+}
+
+/** Yayımlanmadan önce veri sağlığı: eksik/bozuk veri asla yazılmaz. */
+function dogrula(gunler) {
+  if (!Array.isArray(gunler) || gunler.length < 7) throw new Error(`yetersiz gün sayısı (${gunler?.length ?? 0})`);
+  const bugun = bugunISO();
+  for (const g of gunler) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(g.tarih)) throw new Error(`geçersiz tarih: ${g.tarih}`);
+    for (const v of ['imsak', 'gunes', 'ogle', 'ikindi', 'aksam', 'yatsi']) {
+      if (!SAAT.test(g[v] ?? '')) throw new Error(`geçersiz ${v} (${g.tarih}): ${g[v]}`);
+    }
+    // sıra denetimi: imsak < güneş < öğle < ikindi < akşam < yatsı
+    const dk = (s) => Number(s.slice(0, 2)) * 60 + Number(s.slice(3));
+    const s = [g.imsak, g.gunes, g.ogle, g.ikindi, g.aksam, g.yatsi].map(dk);
+    if (!s.every((x, i) => i === 0 || x > s[i - 1])) throw new Error(`vakit sırası bozuk: ${g.tarih}`);
+  }
+  if (!gunler.some((g) => g.tarih === bugun)) throw new Error(`bugün (${bugun}) veride yok — bayat kaynak`);
+}
+
+let ham;
+try {
+  ham = await diyanetVerisiCek();
+} catch (e) {
+  console.error('HATA: Diyanet namaz vakitleri alınamadı — ' + e.message);
+  console.error('Mevcut veri korundu (üzerine yazılmadı). İş bilerek başarısız sonlandırılıyor.');
+  process.exit(1);
+}
+
+const gunler = ham.map(donustur).sort((a, b) => a.tarih.localeCompare(b.tarih));
+try {
+  dogrula(gunler);
+} catch (e) {
+  console.error('HATA: Diyanet verisi doğrulamayı geçemedi — ' + e.message);
+  console.error('Mevcut veri korundu. İş bilerek başarısız sonlandırılıyor.');
+  process.exit(1);
+}
+
+// Eski dosyayla BİRLEŞTİRME YOK: dosya yalnız bu çekimdeki Diyanet günlerini içerir.
+// (Karışık kaynaklı kayıtların birikmesi, 24 Ağu 2026'daki hatanın taşıyıcısıydı.)
+let oncekiKaynak = null;
+if (existsSync(OUT)) { try { oncekiKaynak = JSON.parse(readFileSync(OUT, 'utf8')).kaynakTuru ?? null; } catch { /* yok say */ } }
+
+const cikti = {
+  kaynak: `Diyanet İşleri Başkanlığı — Marche-en-Famenne (ilçe ${ILCE})`,
+  kaynakTuru: 'diyanet',           // veri kökeni damgası; 'diyanet' dışında bir değer görülürse veri şüphelidir
+  ilce: ILCE,
+  ilceAdi: ILCE_ADI,
+  guncelleme: new Date().toISOString(),
+  gunler,
+};
+writeFileSync(OUT, JSON.stringify(cikti, null, 1));
+const b = gunler.find((g) => g.tarih === bugunISO());
+console.log(`yazıldı: ${gunler.length} gün (${gunler[0].tarih} → ${gunler.at(-1).tarih}) · kaynak: Diyanet ilçe ${ILCE} (${ILCE_ADI})`);
+console.log(`bugün ${b.tarih}: imsak ${b.imsak} · güneş ${b.gunes} · öğle ${b.ogle} · ikindi ${b.ikindi} · akşam ${b.aksam} · yatsı ${b.yatsi}`);
+if (oncekiKaynak !== 'diyanet') console.log('NOT: önceki dosyanın kaynak damgası "%s" idi; bu çalıştırmayla Diyanet verisine geçildi.', oncekiKaynak ?? 'yok');
