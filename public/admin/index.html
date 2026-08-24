@@ -573,7 +573,7 @@
       let aktifTur = 'kayit', sonVeri = null, suzgec = '';
       document.querySelectorAll('.sekme').forEach((s) => s.addEventListener('click', () => {
         document.querySelectorAll('.sekme').forEach((x) => x.setAttribute('aria-selected', 'false'));
-        s.setAttribute('aria-selected', 'true'); aktifTur = s.dataset.tur;
+        s.setAttribute('aria-selected', 'true'); aktifTur = s.dataset.tur; sekmeSecildi = true;
         if (sonVeri) basvuruCiz();
       }));
       $('basvuru-ara').addEventListener('input', (e) => { suzgec = e.target.value.trim().toLocaleLowerCase('tr'); if (sonVeri) basvuruCiz(); });
@@ -610,6 +610,17 @@
         }
       }
 
+      /** İlk yüklemede boş sekmede kalınmasın: dolu olan liste öne alınır. */
+      let sekmeSecildi = false;
+      function sekmeyiUyarla() {
+        if (sekmeSecildi || !sonVeri) return;
+        sekmeSecildi = true;
+        const say = (t) => (sonVeri[t] && sonVeri[t].satirlar ? sonVeri[t].satirlar.length : 0);
+        if (aktifTur === 'kayit' && say('kayitlar') === 0 && say('ihtidalar') > 0) {
+          aktifTur = 'ihtida';
+          document.querySelectorAll('.sekme').forEach((x) => x.setAttribute('aria-selected', String(x.dataset.tur === 'ihtida')));
+        }
+      }
       function rozetleriYaz() {
         const k = sonVeri && sonVeri.kayitlar && sonVeri.kayitlar.satirlar ? sonVeri.kayitlar.satirlar.length : 0;
         const i = sonVeri && sonVeri.ihtidalar && sonVeri.ihtidalar.satirlar ? sonVeri.ihtidalar.satirlar.length : 0;
@@ -628,6 +639,7 @@
       };
 
       function basvuruCiz() {
+        sekmeyiUyarla();
         rozetleriYaz();
         const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
         const liste = $('basvuru-liste');
