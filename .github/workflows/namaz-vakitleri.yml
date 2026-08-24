@@ -18,7 +18,28 @@ jobs:
         with:
           node-version: 24
       - name: Diyanet verisini çek
+        id: cek
         run: node scripts/namaz-vakitleri.mjs
+      # KALICI KURAL: vakitler yalnız Diyanet'ten gelir. Çekim başarısızsa mevcut (doğru) veri korunur
+      # ve yerine hesaplama tabanlı bir kaynak KONULMAZ; bunun yerine görevli uyarılır.
+      - name: Başarısızsa uyarı e-postası (info@ulucamii.be)
+        if: failure() && steps.cek.outcome == 'failure'
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] Namaz vakitleri Diyanet'ten alinamadi"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Diyanet namaz vakitleri cekimi bugun basarisiz oldu (ilce 11890 - M.FAMENNE)."
+            echo "Sitedeki mevcut Diyanet verisi KORUNDU; yanlis/hesaplanmis vakit yayimlanmadi."
+            echo "Veri penceresi bitmeden (yaklasik 4 hafta) sorun giderilmelidir."
+            echo
+            echo "Kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari.txt
+          curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd             --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be"             --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari.txt
       - name: Değişiklik varsa commit et
         id: commit
         run: |

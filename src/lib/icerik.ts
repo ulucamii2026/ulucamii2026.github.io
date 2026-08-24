@@ -50,8 +50,29 @@ export async function galeri() {
 }
 
 export type NamazGunu = (typeof namazJson)['gunler'][number];
+type NamazVeri = { kaynak: string; kaynakTuru?: string; guncelleme: string; ilce: string; ilceAdi?: string; gunler: NamazGunu[] };
+
+/** KALICI KURAL: Namaz vakitleri YALNIZCA Diyanet İşleri Başkanlığı verisidir.
+ *  Bu kapı, kaynağı Diyanet olmayan veya bozuk bir vakit dosyasının yayına çıkmasını
+ *  build zamanında imkânsız kılar (24 Ağu 2026'da hesaplama tabanlı bir yedek kaynak
+ *  devreye girip Diyanet'ten sapan vakitler yayımlanmıştı; bir daha olmayacak). */
 export function namazVakitleri() {
-  return namazJson as { kaynak: string; guncelleme: string; ilce: string; gunler: NamazGunu[] };
+  const veri = namazJson as NamazVeri;
+  if (veri.kaynakTuru !== 'diyanet') {
+    throw new Error(
+      `NAMAZ VAKİTLERİ REDDEDİLDİ: kaynakTuru="${veri.kaynakTuru ?? 'yok'}" (beklenen: "diyanet"). ` +
+      'Vakitler yalnız Diyanet verisinden gelir; scripts/namaz-vakitleri.mjs çalıştırılmalı. Build durduruldu.',
+    );
+  }
+  if (!Array.isArray(veri.gunler) || veri.gunler.length < 7) {
+    throw new Error(`NAMAZ VAKİTLERİ REDDEDİLDİ: yetersiz gün sayısı (${veri.gunler?.length ?? 0}). Build durduruldu.`);
+  }
+  const bugun = bugunBrussels();
+  if (!veri.gunler.some((g) => g.tarih === bugun)) {
+    // Yayını engellemez (eski Diyanet verisi yanlış değil, yalnız eksiktir) ama görünür uyarı bırakır.
+    console.warn(`[namaz] UYARI: bugünün (${bugun}) vakitleri veride yok — Diyanet çekimi ${veri.guncelleme} tarihinden beri başarısız olabilir.`);
+  }
+  return veri;
 }
 
 export function bugunBrussels(): string {
