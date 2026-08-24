@@ -2,8 +2,10 @@
 baslik: Politique de confidentialité
 altBaslik: Comment vos données personnelles sont traitées sur ce site.
 aciklama: Comment les données personnelles sont traitées sur le site d’Ulu Camii Marche-en-Famenne et dans le futur espace membres/parents, conformément au RGPD.
-guncelleme: 2026-08-22
+guncelleme: 2026-08-24
 ---
+
+<p class="bilgi"><strong>En bref :</strong> ce site n'utilise aucun cookie, ne trace pas ses visiteurs et ne collecte aucune donnée pendant votre navigation. Des données personnelles ne sont traitées que lorsque vous en prenez l'initiative (p. ex. inscription au cours de Coran, envoi d'un e-mail).</p>
 
 Cette page explique comment vos données personnelles sont traitées lorsque vous visitez ce site, ainsi que dans le cadre des services dont la mise en place est envisagée à l’avenir. Cette information est établie conformément au Règlement général sur la protection des données (RGPD) de l’Union européenne.
 

@@ -7,6 +7,7 @@ import type { Dil } from '../i18n/ui';
 import { namazVakitleri, siteAyarlari, bugunBrussels } from '../lib/icerik';
 import { hicriCevir } from '../i18n/hicri';
 import { SIRA } from '../lib/namaz';
+import { yaklasanDiniGunler } from '../lib/dinigunler';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const namaz = namazVakitleri(); const site = await siteAyarlari();
@@ -18,6 +19,13 @@ const not = dil === 'tr'
   : dil === 'en'
   ? 'Prayer times are calculated for Marche-en-Famenne according to the calendar of the Presidency of Religious Affairs (Diyanet). Congregational prayer times (especially isha and fajr) are announced on the mosque noticeboard according to the season.'
   : 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Les heures des prières en congrégation (notamment isha et fajr) sont affichées à la mosquée selon la saison.';
+
+const gunlerListe = yaklasanDiniGunler(bugun);
+const dg = dil === 'tr'
+  ? { baslik: 'Dinî Günler ve Kandiller', alt: 'Diyanet İşleri Başkanlığı’nın resmî takvimine göre yaklaşan kandil geceleri, bayramlar ve önemli günler.', yaklasan: 'Yaklaşan', kaynakNot: 'Kaynak: Diyanet İşleri Başkanlığı dinî günler takvimi', kandil: 'Kandil', bayram: 'Bayram', gun: 'Önemli gün' }
+  : dil === 'en'
+  ? { baslik: 'Religious Days and Holy Nights', alt: 'Upcoming holy nights, festivals and significant days according to the official calendar of the Turkish Presidency of Religious Affairs (Diyanet).', yaklasan: 'Next', kaynakNot: 'Source: Diyanet official calendar of religious days', kandil: 'Holy night', bayram: 'Festival', gun: 'Significant day' }
+  : { baslik: 'Jours religieux et nuits bénies', alt: 'Les nuits bénies, fêtes et jours importants à venir selon le calendrier officiel de la Présidence des Affaires religieuses (Diyanet).', yaklasan: 'Prochain', kaynakNot: 'Source : calendrier officiel des jours religieux de la Diyanet', kandil: 'Nuit bénie', bayram: 'Fête', gun: 'Jour important' };
 ---
 <Base baslik={t('nav.namaz')} dil={dil} aciklama={t('namaz.kaynak')}>
   <SayfaBasligi etiket="Marche-en-Famenne" baslik={t('nav.namaz')} altBaslik={t('namaz.kaynak')} />
@@ -58,6 +66,29 @@ const not = dil === 'tr'
       </table>
     </div>
     <p class="etiket mt-4">{t('genel.guncelleme')}: {tarihBicimle(namaz.guncelleme, dil)} · {namaz.kaynak}</p>
+
+    <section id="dini-gunler" class="mt-14" aria-label={dg.baslik}>
+      <h2 class="mb-1 cetvel pt-4">{dg.baslik}</h2>
+      <p class="text-(--metin-2) mb-5 max-w-prose">{dg.alt}</p>
+      <ol class="grid gap-2 sm:grid-cols-2" role="list">
+        {gunlerListe.map((g, i) => (
+          <li class:list={['kart-kagit px-4 py-3 flex items-center gap-4', i === 0 && 'border-(--vurgu) bg-(--vurgu)/6']}>
+            <div class="text-center shrink-0 w-16">
+              <span class="block font-serif text-[1.65rem] font-bold leading-none tabular-nums">
+                {new Date(g.tarih + 'T12:00:00').getDate()}{g.bitis ? '–' + new Date(g.bitis + 'T12:00:00').getDate() : ''}
+              </span>
+              <span class="block etiket mt-1">{tarihBicimle(g.tarih + 'T12:00:00', dil, { month: 'short', year: 'numeric' })}</span>
+            </div>
+            <div class="min-w-0 border-l border-(--cizgi) pl-4">
+              <p class="font-semibold leading-snug">{g.ad[dil]}</p>
+              <p class="etiket normal-case tracking-normal mt-0.5">{tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'long' })} · {hicriCevir(g.hicri, dil)}</p>
+            </div>
+            {i === 0 && <span class="etiket etiket-vurgu ml-auto shrink-0">{dg.yaklasan}</span>}
+          </li>
+        ))}
+      </ol>
+      <p class="etiket mt-4">{dg.kaynakNot}</p>
+    </section>
   </div>
 </Base>
 <script>

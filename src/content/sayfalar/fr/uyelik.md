@@ -1,20 +1,42 @@
 ---
-baslik: Adhésion
-altBaslik: Cette rubrique est en préparation — demande d’adhésion, suivi des cotisations et portail des membres arrivent bientôt.
-aciklama: La rubrique adhésion de l’association de la Mosquée Ulu Camii de Marche-en-Famenne est en préparation. Adhésion, cotisations et portail des membres bientôt.
-guncelleme: 2026-08-22
+baslik: Adhésion à l'association
+altBaslik: Devenez membre de l'association qui fait vivre notre mosquée — procédure, cotisation et droits des membres.
+aciklama: Adhérer à l'association (ASBL) de la mosquée Ulu Camii de Marche-en-Famenne — qui peut devenir membre, comment postuler, comment payer la cotisation et quels droits l'adhésion confère.
+guncelleme: 2026-08-24
 ---
 
-## Rubrique en préparation
+Notre mosquée est gérée par l'association sans but lucratif **A.D.M.U.C.M.F.** (ASBL). La gestion de la mosquée, les services religieux, les activités éducatives et l'entretien du bâtiment relèvent de cette association — et ce sont ses membres qui en sont les véritables détenteurs.
 
-La **rubrique adhésion** de notre association est en cours de construction. Une fois achevée, vous y trouverez :
+## Pourquoi devenir membre ?
 
-- **Demande d’adhésion** — qui peut devenir membre, formulaire et procédure d’approbation par le conseil d’administration
-- **Cotisations** — montant annuel, moyens de paiement et guide pour créer un *ordre permanent* dans votre application bancaire
-- **Portail des membres** — espace sécurisé où chaque membre consulte ses informations d’adhésion et l’historique de ses cotisations
+Le chauffage, l'électricité, l'entretien et la continuité des services de notre mosquée sont financés par les cotisations des membres et les dons. L'adhésion n'est pas qu'une contribution financière :
 
-## Comment adhérer en attendant ?
+- **Voix et vote** — vous participez directement aux décisions lors de l'assemblée générale.
+- **Élire et être élu** — vous élisez le conseil d'administration et pouvez vous porter candidat.
+- **Transparence** — les comptes et activités de l'association sont soumis au contrôle des membres en assemblée générale.
+- **Continuité** — des cotisations régulières mettent l'avenir de la mosquée à l'abri des fluctuations des dons.
 
-Pour toute question d’adhésion ou de cotisation, contactez le **comité de l’association** ; le formulaire d’adhésion se remplit à la mosquée. Les numéros de téléphone figurent dans l’encadré ci-contre et sur la page [Contact](/fr/contact/).
+## Qui peut devenir membre ?
 
-> L’ouverture du système d’adhésion sera annoncée sur la page des annonces et au panneau d’affichage de la mosquée.
+Toute personne **majeure (18 ans accomplis)**, fréquentant la mosquée, adhérant au but de l'association et acceptant de respecter ses statuts peut introduire une demande d'adhésion.
+
+## Comment adhérer ?
+
+1. **Formulaire de demande** — à remplir à la mosquée ; vous pouvez l'obtenir auprès de l'imam ou des membres du conseil d'administration.
+2. **Décision du conseil d'administration** — conformément au droit belge des associations (CSA), l'admission est décidée par le conseil d'administration et inscrite au registre des membres.
+3. **Cotisation** — après l'admission, le paiement de la cotisation annuelle rend l'adhésion effective.
+
+## Comment payer la cotisation ?
+
+Le montant de la cotisation annuelle est fixé par les organes de l'association et affiché à la mosquée. Deux possibilités :
+
+- **Virement bancaire** — avec les coordonnées ci-contre ; en communication, indiquez *« Cotisation 2026 – Nom Prénom »*.
+- **En espèces** — à la mosquée, contre reçu.
+
+> **Astuce :** créez un **ordre permanent** annuel dans l'application de votre banque — votre cotisation sera payée automatiquement chaque année.
+
+## L'adhésion au Fonds funéraire est distincte
+
+L'affiliation au **Fonds funéraire, d'entraide et de solidarité** de la Fondation Diyanet de Belgique est un enregistrement **distinct** de l'adhésion à l'association ; l'une n'inclut pas l'autre. Pour plus d'informations, consultez notre page [Services funéraires](/fr/services-funeraires/).
+
+Pour toute question sur l'adhésion et la cotisation, contactez le comité — les numéros figurent dans la colonne de droite et sur la page [Contact](/fr/contact/).

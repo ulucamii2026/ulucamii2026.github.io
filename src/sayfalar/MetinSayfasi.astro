@@ -14,7 +14,7 @@ const { Content } = await render(entry);
 ---
 <Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama} noindex={anahtar === 'gizlilik'}>
   <SayfaBasligi etiket={t('footer.yasal')} baslik={entry.data.baslik} altBaslik={entry.data.altBaslik} />
-  <article class="kapsayici py-10 duz-yazi">
+  <article class="kapsayici py-10 duz-yazi max-w-[52rem]">
     <Content />
     {entry.data.guncelleme && <p class="etiket mt-10">{t('genel.guncelleme')}: {tarihBicimle(entry.data.guncelleme, dil)}</p>}
   </article>

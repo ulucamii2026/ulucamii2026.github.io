@@ -137,6 +137,13 @@
   .duz-yazi .ayet [lang='ar'] + [lang='ar'] { margin-top: 0.35rem; }
   .duz-yazi .ayet .meal { margin-top: 0.8rem; font-style: italic; color: var(--metin-2); }
   .duz-yazi .ayet figcaption { margin-top: 0.7rem; }
+  /* künye vb. — çizgili tanım listesi kartı */
+  .duz-yazi .tanim-listesi { border: 1px solid var(--cizgi); border-radius: var(--radius-kose); overflow: hidden; margin: 1.4rem 0; }
+  .duz-yazi .tanim-listesi > div { display: grid; grid-template-columns: 230px minmax(0,1fr); gap: 0.15rem 1.25rem; padding: 0.7rem 1.1rem; }
+  .duz-yazi .tanim-listesi > div + div { border-top: 1px solid var(--cizgi); }
+  .duz-yazi .tanim-listesi > div:nth-child(even) { background: var(--zemin-2); }
+  .duz-yazi .tanim-listesi dd { margin: 0; overflow-wrap: anywhere; }
+  @media (max-width: 640px) { .duz-yazi .tanim-listesi > div { grid-template-columns: 1fr; } }
   .duz-yazi strong { font-weight: 650; }
   .duz-yazi code { font-family: var(--font-mono); font-size: 0.9em; background: var(--zemin-3); padding: 0.1em 0.35em; border-radius: 2px; }
   .uyari { border: 1px solid var(--color-ochre); background: rgb(201 138 46 / 0.10); padding: 0.9rem 1.1rem; border-radius: var(--radius-kose); }

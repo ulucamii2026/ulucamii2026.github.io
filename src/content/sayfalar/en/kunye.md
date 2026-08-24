@@ -1,31 +1,33 @@
 ---
 baslik: Legal Notice
 altBaslik: Legal information about the association that publishes this website.
-aciklama: The official name, KBO number, contact details and site hosting information of the association that operates Ulu Camii Marche-en-Famenne.
-guncelleme: 2026-08-22
+aciklama: Official name, BCE number, contact details and hosting information of the association running the Ulu Mosque of Marche-en-Famenne.
+guncelleme: 2026-08-24
 ---
 
-Under Belgian law (the Code of Companies and Associations — WVV/CSA, Art. 2:20–2:22), the following information about the association publishing this website is made publicly available.
+In accordance with Belgian law (Code of Companies and Associations — CSA, art. 2:20), the following information about the association publishing this website is made public.
 
 ## Publishing Association
 
-| | |
-|---|---|
-| Official name | Association Diyanet Mosquée Ulu Camii de Marche en Famenne |
-| Abbreviation | A.D.M.U.C.M.F. |
-| Legal form | ASBL (non-profit association) |
-| KBO / BCE number | 0421.900.807 |
-| Registered office (siège social) | Thier des Corbeaux 14, 6900 Marche-en-Famenne, Belgium |
-| Competent court | Tribunal de l’entreprise de Liège (division Neufchâteau/Marche) |
+<dl class="tanim-listesi">
+<div><dt class="etiket">Official name</dt><dd>Association Diyanet Mosquée Ulu Camii de Marche en Famenne</dd></div>
+<div><dt class="etiket">Abbreviation</dt><dd>A.D.M.U.C.M.F.</dd></div>
+<div><dt class="etiket">Legal form</dt><dd>ASBL (non-profit association)</dd></div>
+<div><dt class="etiket">BCE number</dt><dd>0421.900.807</dd></div>
+<div><dt class="etiket">Registered office</dt><dd>Thier des Corbeaux 14, 6900 Marche-en-Famenne, Belgium</dd></div>
+<div><dt class="etiket">Competent court</dt><dd>Tribunal de l'entreprise de Liège (division Neufchâteau/Marche)</dd></div>
+</dl>
 
 ## Contact
 
-- **E-mail:** info@ulucamii.be
-- **Phone:** +32 472 98 50 73
+<dl class="tanim-listesi">
+<div><dt class="etiket">E-mail</dt><dd><a href="mailto:info@ulucamii.be">info@ulucamii.be</a></dd></div>
+<div><dt class="etiket">Phone</dt><dd><span class="mono">+32 472 98 50 73</span></dd></div>
+</dl>
 
-## Publication Manager
+## Editorial Responsibility
 
-Responsibility for the content and publication of this site rests with the association’s board of directors.
+Responsibility for the content and publication of this site lies with the association's board of directors.
 
 ## Hosting
 
@@ -33,12 +35,10 @@ The site is hosted on **GitHub Pages**.
 
 > GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States.
 
-The site’s source code is open source and can be viewed at: [github.com/ulucamii2026/ulucamii2026.github.io](https://github.com/ulucamii2026/ulucamii2026.github.io)
-
 ## Copyright
 
-Unless otherwise stated, copyright in the visual and written content on this site belongs to the association. It may not be used or reproduced without permission.
+Unless stated otherwise, the copyright of the visual and written content on this site belongs to the association. It may not be used or reproduced without permission.
 
 ## Map Data
 
-The location map on this site is built using **OpenStreetMap** data; © OpenStreetMap contributors, licensed under [ODbL](https://opendatacommons.org/licenses/odbl/).
+The location map is built with **OpenStreetMap** data; © OpenStreetMap contributors, licensed under [ODbL](https://opendatacommons.org/licenses/odbl/).

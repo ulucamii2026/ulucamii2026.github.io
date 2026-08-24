@@ -2,8 +2,10 @@
 baslik: Privacy Policy
 altBaslik: Information on how personal data is handled on this website.
 aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the planned member/parent portal.
-guncelleme: 2026-08-22
+guncelleme: 2026-08-24
 ---
+
+<p class="bilgi"><strong>In short:</strong> this site uses no cookies, does not track its visitors and collects no data while you browse. Personal data is processed only when you initiate it (e.g. Qur'an course registration, sending an e-mail).</p>
 
 This page explains how your personal data is handled when you visit this website, and in services planned for future activation. This notice has been prepared on the basis of the European Union’s General Data Protection Regulation (GDPR).
 

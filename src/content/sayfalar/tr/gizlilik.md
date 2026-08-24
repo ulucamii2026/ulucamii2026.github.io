@@ -2,8 +2,10 @@
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
 aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve planlanan üye/veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-08-22
+guncelleme: 2026-08-24
 ---
+
+<p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz, ziyaretçilerini izlemez ve siteyi gezerken hakkınızda hiçbir veri toplamayız. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur'an kursu kaydı, e-posta göndermeniz) işlenir.</p>
 
 Bu sayfa, bu internet sitesini ziyaret ettiğinizde ve ileride devreye alınması planlanan hizmetlerde kişisel verilerinizin nasıl ele alındığını açıklar. Bilgilendirme, Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) esas alınarak hazırlanmıştır.
 
