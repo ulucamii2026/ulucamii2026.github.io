@@ -1,0 +1,32 @@
+---
+/** Kur'an kursu online kayıt bandı — kayıt dönemi boyunca ana sayfada; dönem kapanınca index.astro'dan kaldırılır. */
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil; link?: string }
+const { dil, link } = Astro.props;
+const m = dil === 'tr' ? {
+  baslik: "Kur'an Kursu 2026–2027 — kayıtlar açık",
+  alt: 'Dersler 5 Eylül Cumartesi başlıyor · Kayıt telefonunuzdan 5 dakika sürer',
+  dugme: 'Öğrenci Kaydı Yap',
+} : dil === 'en' ? {
+  baslik: "Qur'an School 2026–2027 — enrolment open",
+  alt: 'Classes start Saturday 5 September · Registration takes 5 minutes on your phone',
+  dugme: 'Register a student',
+} : {
+  baslik: 'Cours de Coran 2026–2027 — inscriptions ouvertes',
+  alt: 'Rentrée le samedi 5 septembre · Inscription en 5 minutes depuis votre téléphone',
+  dugme: 'Inscrire un élève',
+};
+---
+{link && (
+  <aside class="bg-(--color-kiremit) border-y border-(--color-kiremit-koyu)" aria-label={m.baslik}>
+    <div class="kapsayici py-4 sm:py-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+      <p class="min-w-0 text-(--color-krem)">
+        <strong class="block font-serif text-lg sm:text-xl leading-snug">{m.baslik}</strong>
+        <span class="block mt-0.5 text-sm text-(--color-krem)/85">{m.alt}</span>
+      </p>
+      <a href={link} class="dugme bg-(--color-krem) text-(--color-kiremit-koyu) font-bold hover:bg-white hover:text-(--color-kiremit-koyu) shrink-0">
+        {m.dugme}<span aria-hidden="true"> →</span>
+      </a>
+    </div>
+  </aside>
+)}

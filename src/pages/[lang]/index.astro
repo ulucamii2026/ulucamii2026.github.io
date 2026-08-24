@@ -8,6 +8,7 @@ import BuHafta from '../../components/BuHafta.astro';
 import HeroSlayt from '../../components/HeroSlayt.astro';
 import DuyuruSeridi from '../../components/DuyuruSeridi.astro';
 import BagisBandi from '../../components/BagisBandi.astro';
+import KayitBandi from '../../components/KayitBandi.astro';
 import IletisimMini from '../../components/IletisimMini.astro';
 import Ikon from '../../components/Ikon.astro';
 import { ceviri, yol, tarihBicimle } from '../../i18n/utils';
@@ -101,6 +102,8 @@ const jsonLd = {
     </div>
     <div class="kilim-serit" aria-hidden="true"></div>
   </section>
+
+  <KayitBandi dil={dil} link={site.kursKayitLinki} />
 
   <!-- ② Namaz vakitleri (vurgulu) + Bu hafta -->
   <section class="bg-(--zemin-2) border-b border-(--cizgi)" aria-labelledby="vakit-baslik">
