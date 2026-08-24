@@ -83,18 +83,43 @@
       </div>
 
       <h2 id="trafik">Ziyaret İstatistikleri <span class="cizgi"></span></h2>
+      <style>
+        .donem-satir{display:flex;align-items:center;gap:.4rem;margin:0 0 .7rem;flex-wrap:wrap}
+        .donem-dugme.secili{background:var(--vurgu,#b5452b);color:#fff;border-color:var(--vurgu,#b5452b)}
+        .grafik{display:flex;align-items:flex-end;gap:2px;height:130px;padding:.6rem .6rem .4rem;border:1px solid var(--cizgi);border-radius:10px;background:var(--zemin-2,transparent);margin-bottom:.9rem}
+        .grafik .cubuk{flex:1;min-width:2px;background:var(--vurgu,#b5452b);border-radius:2px 2px 0 0;opacity:.85}
+        .grafik .cubuk:hover{opacity:1}
+        .trafik-izgara{display:grid;gap:1rem;grid-template-columns:1fr;align-items:start}
+        @media(min-width:860px){.trafik-izgara{grid-template-columns:3fr 2fr}}
+        .yol-alt{color:var(--metin-2);font-size:.78rem}
+        .oran{height:4px;background:var(--cizgi);border-radius:2px;margin-top:.35rem;overflow:hidden}
+        .oran span{display:block;height:100%;background:var(--vurgu,#b5452b)}
+      </style>
       <div class="kartlar" style="margin-bottom:.8rem">
         <div class="kart"><span class="etiket">Toplam ziyaret</span><span class="deger" id="d-toplam">…</span><span class="alt">Yayından bu yana · çerezsiz sayaç</span></div>
-        <div class="kart" style="display:flex;flex-direction:column;justify-content:center;gap:.5rem">
-          <a class="dugme birincil" id="goat-link" href="#" target="_blank" rel="noopener">Ayrıntılı trafik paneli ↗</a>
-          <span class="alt">Günlük grafik, ülke, tarayıcı, kaynak — GoatCounter</span>
-        </div>
+        <div class="kart"><span class="etiket">Dönem toplamı</span><span class="deger" id="d-donem">…</span><span class="alt" id="a-donem">Son 30 gün · görüntülenme</span></div>
+        <div class="kart"><span class="etiket">Bugün</span><span class="deger" id="d-bugun">…</span><span class="alt" id="a-dun">Dün: …</span></div>
       </div>
-      <div class="tablo-sar">
-        <table aria-label="Sayfa bazında toplam ziyaret">
-          <thead><tr><th>Sayfa</th><th style="text-align:right">Toplam görüntülenme</th></tr></thead>
-          <tbody id="trafik-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
-        </table>
+      <div class="donem-satir" role="group" aria-label="Dönem seçimi">
+        <button type="button" class="dugme donem-dugme" data-gun="7">7 gün</button>
+        <button type="button" class="dugme donem-dugme secili" data-gun="30">30 gün</button>
+        <button type="button" class="dugme donem-dugme" data-gun="90">90 gün</button>
+        <a class="dugme" id="goat-link" href="#" target="_blank" rel="noopener" style="margin-left:auto">GoatCounter ↗</a>
+      </div>
+      <div class="grafik" id="grafik" aria-label="Günlük ziyaret grafiği"><span class="alt">Yükleniyor…</span></div>
+      <div class="trafik-izgara">
+        <div class="tablo-sar">
+          <table aria-label="En çok ziyaret edilen sayfalar">
+            <thead><tr><th>En çok ziyaret edilen sayfalar</th><th style="text-align:right">Görüntülenme</th></tr></thead>
+            <tbody id="trafik-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="tablo-sar">
+          <table aria-label="Ziyaret kaynakları">
+            <thead><tr><th>Nereden geldiler?</th><th style="text-align:right">Ziyaret</th></tr></thead>
+            <tbody id="kaynak-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+          </table>
+        </div>
       </div>
       <p class="alt" style="font-size:.82rem;color:var(--metin-2)">Sayılar, gizlilik dostu GoatCounter sayacından anlık alınır (24 Ağustos 2026'dan itibaren). Reklam engelleyici kullanan ziyaretçiler sayılamayabilir.</p>
 
@@ -156,27 +181,62 @@
         localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-sirlar'); location.replace('/admin/giris.html');
       });
 
-      // --- Trafik ---
-      const SAYFALAR = [
-        ['Ana sayfa (TR)', '/tr/'], ['Ana sayfa (FR)', '/fr/'], ['Ana sayfa (EN)', '/en/'],
-        ['Namaz vakitleri', '/tr/namaz-vakitleri/'], ['Duyurular', '/tr/duyurular/'],
-        ['Kur\'an kursu', '/tr/kuran-kursu/'], ['Kayıt formu', '/kayit/'],
-        ['Cenaze hizmetleri', '/tr/cenaze-hizmetleri/'], ['Bağış', '/tr/bagis/'], ['İletişim', '/tr/iletisim/'],
-      ];
+      // --- Trafik (GoatCounter API v0 — panel içinde grafik, top sayfalar, kaynaklar) ---
       async function sayac(yol) {
         try { const r = await fetch(`${GOAT}/counter/${yol}.json`, { cache: 'no-store' }); if (!r.ok) return null; return (await r.json()).count; }
         catch { return null; }
       }
-      async function trafikYukle() {
-        $('d-toplam').textContent = (await sayac('TOTAL')) ?? '—';
-        const govde = $('trafik-govde'); govde.innerHTML = '';
-        for (const [ad, yol] of SAYFALAR) {
-          const n = await sayac(yol);
-          const tr = document.createElement('tr');
-          tr.innerHTML = `<td>${ad} <span style="color:var(--metin-2);font-size:.8rem">${yol}</span></td><td class="sayi">${n ?? '—'}</td>`;
-          govde.appendChild(tr);
+      async function goatApi(uc, deneme) {
+        const r = await fetch(`${GOAT}/api/v0/${uc}`, { headers: { Authorization: `Bearer ${SIRLAR.goatApi}` }, cache: 'no-store' });
+        if (r.status === 429 && !deneme) { await new Promise((c) => setTimeout(c, 2200)); return goatApi(uc, 1); }
+        if (!r.ok) throw new Error('goat ' + r.status);
+        return r.json();
+      }
+      const tarihStr = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const kacir = (s) => String(s ?? '').replace(/</g, '&lt;');
+      async function trafikYukle(gun) {
+        gun = gun || 30;
+        sayac('TOTAL').then((n) => { $('d-toplam').textContent = n ?? '—'; });
+        if (!SIRLAR || !SIRLAR.goatApi) {
+          $('grafik').innerHTML = '<span class="alt">Grafik için bir kez <a href="/admin/giris.html">yeniden giriş</a> yapın (erişim paketi yenilendi).</span>';
+          $('trafik-govde').innerHTML = '<tr><td colspan="2">Yeniden giriş gerekli</td></tr>';
+          $('kaynak-govde').innerHTML = '<tr><td colspan="2">Yeniden giriş gerekli</td></tr>';
+          return;
+        }
+        const bas = new Date(); bas.setDate(bas.getDate() - (gun - 1));
+        const q = `start=${tarihStr(bas)}`; // end gönderilmez: varsayılan "şu an" (salt tarihli end günün 00:00'ı sayılıp bugünü dışlıyor)
+        try {
+          const [seri, sayfalar, kaynaklar] = await Promise.all([
+            goatApi(`stats/total?${q}`),
+            goatApi(`stats/hits?${q}&limit=10`),
+            goatApi(`stats/toprefs?${q}&limit=8`),
+          ]);
+          $('d-donem').textContent = (seri.total ?? 0).toLocaleString('tr-TR');
+          $('a-donem').textContent = `Son ${gun} gün · görüntülenme`;
+          const bugunStr = tarihStr(new Date());
+          const dunT = new Date(); dunT.setDate(dunT.getDate() - 1);
+          const g = (seri.stats || []).filter((x) => x.day <= bugunStr); // saat dilimi kaymasıyla gelen yarınki boş günü at
+          const gunluk = (t) => { const k = g.find((x) => x.day === t); return k ? k.daily : 0; };
+          $('d-bugun').textContent = gunluk(bugunStr);
+          $('a-dun').textContent = 'Dün: ' + gunluk(tarihStr(dunT));
+          const maks = Math.max(1, ...g.map((x) => x.daily));
+          $('grafik').innerHTML = g.map((x) => {
+            const et = new Date(x.day + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+            return `<div class="cubuk" style="height:${Math.max(3, Math.round(x.daily / maks * 100))}%" title="${et} — ${x.daily} görüntülenme"></div>`;
+          }).join('') || '<span class="alt">Bu dönemde kayıt yok</span>';
+          const hitler = sayfalar.hits || [];
+          const enCok = Math.max(1, ...hitler.map((h) => h.count));
+          $('trafik-govde').innerHTML = hitler.map((h) => `<tr><td><div>${kacir(h.title || h.path)}</div><div class="yol-alt">${kacir(h.path)}</div><div class="oran"><span style="width:${Math.round(h.count / enCok * 100)}%"></span></div></td><td class="sayi">${h.count}</td></tr>`).join('') || '<tr><td colspan="2">Bu dönemde ziyaret yok</td></tr>';
+          $('kaynak-govde').innerHTML = (kaynaklar.stats || []).map((k) => `<tr><td>${kacir(k.name || 'Doğrudan / adres çubuğu')}</td><td class="sayi">${k.count}</td></tr>`).join('') || '<tr><td colspan="2">Bu dönemde kayıt yok</td></tr>';
+        } catch (e) {
+          $('grafik').innerHTML = `<span class="alt">Trafik verisi alınamadı (${kacir(e.message)})</span>`;
         }
       }
+      document.querySelectorAll('.donem-dugme').forEach((b) => b.addEventListener('click', () => {
+        document.querySelectorAll('.donem-dugme').forEach((x) => x.classList.remove('secili'));
+        b.classList.add('secili');
+        trafikYukle(parseInt(b.dataset.gun, 10));
+      }));
       if (SIRLAR && SIRLAR.goat) $('goat-link').href = `${GOAT}/?access-token=${SIRLAR.goat}`;
       else $('goat-link').addEventListener('click', (e) => { e.preventDefault(); alert('Ayrıntılı panel bağlantısı için yeniden giriş yapın.'); });
 
