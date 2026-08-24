@@ -98,10 +98,18 @@
       </div>
       <p class="alt" style="font-size:.82rem;color:var(--metin-2)">Sayılar, gizlilik dostu GoatCounter sayacından anlık alınır (24 Ağustos 2026'dan itibaren). Reklam engelleyici kullanan ziyaretçiler sayılamayabilir.</p>
 
+      <h2 id="degisiklikler">Son Değişiklikler <span class="cizgi"></span></h2>
+      <div class="tablo-sar">
+        <table aria-label="Son içerik değişiklikleri">
+          <thead><tr><th>Ne zaman</th><th>Değişiklik</th></tr></thead>
+          <tbody id="commit-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+        </table>
+      </div>
+
       <h2 id="basvurular">Başvurular <span class="cizgi"></span></h2>
       <div class="sekmeler" role="tablist">
-        <button class="sekme" role="tab" aria-selected="true" data-tur="kayit">Kur'an Kursu Kayıtları</button>
-        <button class="sekme" role="tab" aria-selected="false" data-tur="ihtida">İhtida Başvuruları</button>
+        <button class="sekme" role="tab" aria-selected="true" data-tur="kayit">Kur'an Kursu Kayıtları <span id="rozet-kayit"></span></button>
+        <button class="sekme" role="tab" aria-selected="false" data-tur="ihtida">İhtida Başvuruları <span id="rozet-ihtida"></span></button>
       </div>
       <div class="satir-arac">
         <button class="dugme" id="basvuru-yenile" type="button">Listeyi getir</button>
@@ -208,6 +216,8 @@
             return;
           }
           sonVeri = j; durum.textContent = `Güncellendi: ${new Date().toLocaleTimeString('tr-BE')}`;
+          $('rozet-kayit').textContent = j.kayitlar && j.kayitlar.satirlar ? `(${j.kayitlar.satirlar.length})` : '';
+          $('rozet-ihtida').textContent = j.ihtidalar && j.ihtidalar.satirlar ? `(${j.ihtidalar.satirlar.length})` : '';
           basvuruCiz();
         } catch (e) { durum.textContent = ''; $('basvuru-bilgi').hidden = false; $('basvuru-tablo').hidden = true; $('basvuru-bilgi').textContent = 'Listeye şu an ulaşılamadı — internet bağlantısını kontrol edip yeniden deneyin.'; }
       }
@@ -232,8 +242,24 @@
         a.download = (aktifTur === 'kayit' ? 'kuran-kursu-kayitlari' : 'ihtida-basvurulari') + '.csv'; a.click();
       });
 
+      // --- Son değişiklikler (commit listesi) ---
+      async function degisiklikYukle() {
+        const g = $('commit-govde');
+        try {
+          const r = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=8`);
+          const j = await r.json();
+          if (!Array.isArray(j)) { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; return; }
+          g.innerHTML = j.map((c) => {
+            const t = new Date(c.commit.author.date).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' });
+            const mesaj = c.commit.message.split('
+')[0];
+            return `<tr><td style="white-space:nowrap">${t}</td><td>${mesaj.replace(/</g, '&lt;')}</td></tr>`;
+          }).join('');
+        } catch { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; }
+      }
+
       // --- Yükle / yenile ---
-      function hepsiniYukle() { durumYukle(); trafikYukle(); }
+      function hepsiniYukle() { durumYukle(); trafikYukle(); degisiklikYukle(); }
       $('yenile').addEventListener('click', hepsiniYukle);
       hepsiniYukle();
     </script>

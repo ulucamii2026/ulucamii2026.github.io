@@ -388,3 +388,65 @@ collections:
                   - { name: fr, label: Fransızca, widget: string }
               - { name: tarih, label: Tarih, widget: string, required: false }
               - { name: sira, label: Sıra (küçük önce), widget: number, default: 100 }
+
+  - name: kurulAyar
+    label: Yönetim Kurulu
+    icon: groups
+    files:
+      - name: kurul
+        label: Kurul üyeleri ve görevleri
+        file: src/content/ayarlar/kurul.yaml
+        fields:
+          - name: kurul
+            label: Yönetim Kurulu
+            widget: object
+            collapsed: false
+            fields:
+              - { name: donem, label: Dönem açıklaması, widget: string }
+              - name: uyeler
+                label: Yönetim kurulu üyeleri
+                label_singular: Üye
+                widget: list
+                summary: "{{fields.ad}}"
+                fields:
+                  - { name: ad, label: Ad Soyad, widget: string }
+                  - name: gorev
+                    label: Görev
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string }
+              - name: denetim
+                label: Denetim kurulu
+                label_singular: Üye
+                widget: list
+                summary: "{{fields.ad}}"
+                fields:
+                  - { name: ad, label: Ad Soyad, widget: string }
+                  - name: gorev
+                    label: Görev
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string }
+              - name: dinGorevlisi
+                label: Din görevlisi
+                widget: object
+                fields:
+                  - { name: ad, label: Ad Soyad, widget: string }
+                  - name: gorev
+                    label: Görev
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string }
+              - name: not
+                label: Alt not (dönem/değişiklik açıklaması)
+                widget: object
+                fields:
+                  - { name: tr, label: Türkçe, widget: text }
+                  - { name: fr, label: Fransızca, widget: text }
+                  - { name: en, label: İngilizce, widget: text }

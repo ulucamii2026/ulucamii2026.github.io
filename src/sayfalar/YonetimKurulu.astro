@@ -1,0 +1,91 @@
+---
+/** Yönetim Kurulu — dernek organları tanıtımı (veri: src/content/ayarlar/kurul.yaml, CMS'ten düzenlenebilir) */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { kurulBilgisi, siteAyarlari } from '../lib/icerik';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+const k = await kurulBilgisi();
+const site = await siteAyarlari();
+const m = dil === 'tr' ? {
+  alt: 'Camimizi yaşatan derneğin yönetim ve denetim organları. Dernek, genel kurulda üyelerin seçtiği yönetim kuruluyla yönetilir.',
+  etiket: 'Dernek', kurulBaslik: 'Yönetim Kurulu', denetimBaslik: 'Denetim Kurulu', dinBaslik: 'Din Hizmetleri',
+  iletisimBaslik: 'Yönetime ulaşın', iletisimAlt: 'Dernek işleri (üyelik, aidat, bağış makbuzu, salon/etkinlik) için:',
+  uyeCagri: 'Siz de derneğe üye olarak genel kurulda söz sahibi olabilirsiniz.', uyeDugme: 'Dernek üyeliği',
+  gorevNot: k.not.tr,
+} : dil === 'en' ? {
+  alt: 'The governing and audit bodies of the association that runs our mosque. The association is governed by a board elected by the members at the general assembly.',
+  etiket: 'Association', kurulBaslik: 'Board of Directors', denetimBaslik: 'Audit Committee', dinBaslik: 'Religious Services',
+  iletisimBaslik: 'Contact the board', iletisimAlt: 'For association matters (membership, dues, donation receipts, events):',
+  uyeCagri: 'You too can have a voice at the general assembly by becoming a member.', uyeDugme: 'Membership',
+  gorevNot: k.not.en,
+} : {
+  alt: "Les organes de gestion et de contrôle de l'association qui fait vivre notre mosquée. L'association est dirigée par un conseil élu par les membres lors de l'assemblée générale.",
+  etiket: 'Association', kurulBaslik: "Conseil d'administration", denetimBaslik: 'Comité de contrôle', dinBaslik: 'Services religieux',
+  iletisimBaslik: 'Contacter le conseil', iletisimAlt: "Pour les affaires de l'association (adhésion, cotisation, reçus de dons, activités) :",
+  uyeCagri: "Vous aussi, devenez membre et prenez part aux décisions de l'assemblée générale.", uyeDugme: 'Adhésion',
+  gorevNot: k.not.fr,
+};
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).join('').toLocaleUpperCase('tr-TR');
+---
+<Base baslik={t('nav.yonetim')} dil={dil} aciklama={m.alt}>
+  <SayfaBasligi etiket={m.etiket} baslik={t('nav.yonetim')} altBaslik={m.alt} />
+  <div class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+    <div>
+      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4">{m.kurulBaslik}</h2>
+      <ol class="grid gap-2 sm:grid-cols-2" role="list">
+        {k.uyeler.map((u, i) => (
+          <li class:list={['kart-kagit px-4 py-3 flex items-center gap-4', i === 0 && 'sm:col-span-2 border-(--vurgu) bg-(--vurgu)/6']}>
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu)/12 font-serif text-lg font-bold text-(--vurgu)" aria-hidden="true">{basHarf(u.ad)}</span>
+            <span class="min-w-0">
+              <span class="block font-semibold leading-snug">{u.ad}</span>
+              <span class="block etiket normal-case tracking-normal mt-0.5">{u.gorev[dil]}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4 mt-10">{m.denetimBaslik}</h2>
+      <ol class="grid gap-2 sm:grid-cols-2" role="list">
+        {k.denetim.map((u) => (
+          <li class="kart-kagit px-4 py-3 flex items-center gap-4">
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu-2)/12 font-serif text-lg font-bold text-(--vurgu-2)" aria-hidden="true">{basHarf(u.ad)}</span>
+            <span class="min-w-0">
+              <span class="block font-semibold leading-snug">{u.ad}</span>
+              <span class="block etiket normal-case tracking-normal mt-0.5">{u.gorev[dil]}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4 mt-10">{m.dinBaslik}</h2>
+      <div class="kart-kagit px-4 py-3 flex items-center gap-4 sm:max-w-[26rem]">
+        <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu)/12 font-serif text-lg font-bold text-(--vurgu)" aria-hidden="true">{basHarf(k.dinGorevlisi.ad)}</span>
+        <span class="min-w-0">
+          <span class="block font-semibold leading-snug">{k.dinGorevlisi.ad}</span>
+          <span class="block etiket normal-case tracking-normal mt-0.5">{k.dinGorevlisi.gorev[dil]}</span>
+        </span>
+      </div>
+
+      <p class="mt-8 text-sm text-(--metin-2) max-w-prose">{m.gorevNot}</p>
+    </div>
+
+    <aside class="grid gap-5 content-start lg:sticky lg:top-24">
+      <div class="kart p-5">
+        <p class="etiket etiket-vurgu">{m.iletisimBaslik}</p>
+        <p class="mt-1 text-sm text-(--metin-2)">{m.iletisimAlt}</p>
+        <dl class="mt-3 grid gap-2 text-sm">
+          <div><dt class="etiket">{t('footer.cami')}</dt><dd><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a></dd></div>
+          {site.eposta && <div><dt class="etiket">{t('genel.eposta')}</dt><dd><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></dd></div>}
+        </dl>
+      </div>
+      <div class="kart-kagit p-5">
+        <p class="text-sm">{m.uyeCagri}</p>
+        <a href={yol(dil, 'uyelik')} class="dugme dugme-birincil mt-3 w-full justify-center">{m.uyeDugme}</a>
+      </div>
+    </aside>
+  </div>
+</Base>

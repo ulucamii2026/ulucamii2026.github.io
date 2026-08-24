@@ -1,0 +1,69 @@
+kurul:
+  donem: "Ocak 2026 Genel Kurulu (güncelleme: 30 Haziran 2026)"
+  uyeler:
+    - ad: Ercan Mola
+      gorev:
+        tr: Dernek Başkanı
+        fr: Président
+        en: President
+    - ad: Yasin Ağılönü
+      gorev:
+        tr: Başkan Yardımcısı
+        fr: Vice-président
+        en: Vice-President
+    - ad: Mehmet Sadık Gülkılık
+      gorev:
+        tr: Sekreter
+        fr: Secrétaire
+        en: Secretary
+    - ad: Murat Cırık
+      gorev:
+        tr: Veznedar (Muhasip)
+        fr: Trésorier
+        en: Treasurer
+    - ad: Volkan Kutlu
+      gorev:
+        tr: Yönetim Kurulu Üyesi
+        fr: Membre du conseil
+        en: Board Member
+    - ad: Fehmi Karali
+      gorev:
+        tr: Yönetim Kurulu Üyesi
+        fr: Membre du conseil
+        en: Board Member
+    - ad: Mustafa Topkaya
+      gorev:
+        tr: Yönetim Kurulu Üyesi
+        fr: Membre du conseil
+        en: Board Member
+    - ad: Tekin Biçer
+      gorev:
+        tr: Yönetim Kurulu Üyesi
+        fr: Membre du conseil
+        en: Board Member
+    - ad: Selim Aktan
+      gorev:
+        tr: Yönetim Kurulu Üyesi
+        fr: Membre du conseil
+        en: Board Member
+  denetim:
+    - ad: İsmail Gün
+      gorev:
+        tr: Denetim Kurulu Başkanı
+        fr: Président du comité de contrôle
+        en: Audit Committee Chair
+    - ad: Mehmet Kutlu
+      gorev:
+        tr: Denetim Kurulu Üyesi
+        fr: Membre du comité de contrôle
+        en: Audit Committee Member
+  dinGorevlisi:
+    ad: Rıdvan Kayahan
+    gorev:
+      tr: Din Görevlisi (Diyanet İşleri Başkanlığı görevlendirmesi)
+      fr: Imam (détaché par la Présidence des Affaires religieuses de Türkiye)
+      en: Imam (appointed by the Turkish Presidency of Religious Affairs)
+  not:
+    tr: "9 Ocak 2026 Genel Kurulu'nda seçilen yönetim kuruludur. 30 Haziran 2026 tarihli kurul toplantısında, ayrılan iki üyenin yerine Tekin Biçer ve Selim Aktan kurula katılmış ve görev dağılımı güncellenmiştir."
+    fr: "Conseil d'administration élu lors de l'Assemblée générale du 9 janvier 2026. Lors de la réunion du 30 juin 2026, Tekin Biçer et Selim Aktan ont rejoint le conseil en remplacement de deux membres sortants et la répartition des fonctions a été actualisée."
+    en: "Board elected at the General Assembly of 9 January 2026. At the board meeting of 30 June 2026, Tekin Biçer and Selim Aktan joined the board, replacing two departing members, and duties were reassigned."

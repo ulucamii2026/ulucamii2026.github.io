@@ -145,5 +145,20 @@ const afisler = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, hutbeler, afisler };
+/** Yönetim kurulu (tek dosya) — src/content/ayarlar/kurul.yaml */
+const uc = z.object({ tr: z.string(), fr: z.string(), en: z.string() });
+const kisi = z.object({ ad: z.string(), gorev: uc });
+const kurul = defineCollection({
+  loader: file('./src/content/ayarlar/kurul.yaml', { parser: (text) => [{ id: 'kurul', ...yamlParse(text).kurul }] }),
+  schema: z.object({
+    id: z.string(),
+    donem: z.string(),
+    uyeler: z.array(kisi),
+    denetim: z.array(kisi),
+    dinGorevlisi: kisi,
+    not: uc,
+  }),
+});
+
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, hutbeler, afisler, kurul };
 export { dil };
