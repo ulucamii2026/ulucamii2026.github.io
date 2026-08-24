@@ -20,7 +20,7 @@ Conformément à la législation belge (Code des sociétés et des associations 
 
 ## Contact
 
-- **E-mail :** ulucamii.marche@gmail.com
+- **E-mail :** info@ulucamii.be
 - **Téléphone :** +32 472 98 50 73
 
 ## Responsable de publication

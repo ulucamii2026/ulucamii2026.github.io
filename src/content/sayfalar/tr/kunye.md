@@ -20,7 +20,7 @@ Belçika mevzuatı (Şirketler ve Dernekler Kanunu — WVV/CSA md. 2:20-2:22) ge
 
 ## İletişim
 
-- **E-posta:** ulucamii.marche@gmail.com
+- **E-posta:** info@ulucamii.be
 - **Telefon:** +32 472 98 50 73
 
 ## Yayın Sorumlusu

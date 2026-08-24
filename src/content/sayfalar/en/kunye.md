@@ -20,7 +20,7 @@ Under Belgian law (the Code of Companies and Associations — WVV/CSA, Art. 2:20
 
 ## Contact
 
-- **E-mail:** ulucamii.marche@gmail.com
+- **E-mail:** info@ulucamii.be
 - **Phone:** +32 472 98 50 73
 
 ## Publication Manager

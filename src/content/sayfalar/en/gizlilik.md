@@ -13,7 +13,7 @@ The controller responsible for personal data processed on this site is:
 
 **Association Diyanet Mosquée Ulu Camii de Marche en Famenne (ASBL)**
 Thier des Corbeaux 14, 6900 Marche-en-Famenne, Belgium
-E-mail: ulucamii.marche@gmail.com
+E-mail: info@ulucamii.be
 
 ## When You Visit This Site
 
@@ -57,7 +57,7 @@ Under the GDPR, you have the following rights regarding data processed about you
 - The right to **object** to processing
 - The right to **request portability** of your data
 
-To exercise these rights, you may contact us at **ulucamii.marche@gmail.com**.
+To exercise these rights, you may contact us at **info@ulucamii.be**.
 
 ## Data Breach Notification
 
