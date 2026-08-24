@@ -4,15 +4,238 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>İçerik Yönetimi — Marche-en-Famenne Ulu Camii</title>
+    <title>Yönetim Paneli — Marche-en-Famenne Ulu Camii</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  </head>
-  <body>
     <script>
-      // Giriş kapısı: kullanıcı adı/şifre ile çözülen erişim anahtarı yoksa giriş sayfasına yönlendir (giris.html)
+      // Giriş kapısı: çözülmüş erişim anahtarı yoksa giriş sayfasına
       try { const u = JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null'); if (!u || !u.token) location.replace('/admin/giris.html'); } catch { location.replace('/admin/giris.html'); }
     </script>
-    <!-- Sveltia CMS: https://github.com/sveltia/sveltia-cms — Türkçe arayüz, Git tabanlı içerik -->
-    <script src="https://unpkg.com/@sveltia/cms@0.196.0/dist/sveltia-cms.js" type="module" integrity="sha384-CAkV2ok/JoSJwP/CCrXGYho2VRacSfJ93JUAftvaq7ACeWeVxXpnFrSGE2hpNeKC" crossorigin="anonymous"></script>
+    <style>
+      :root { --kiremit: #b5452b; --kiremit-koyu: #8f3420; --ochre: #c98a2e; --ceviz: #4a3728; --murekkep: #24201c; --kagit: #fdfbf7; --krem: #f7f3ea; --cizgi: rgba(74,55,40,.16); --iznik: #1f5f8b; --zemin-kart: #fff; --metin-2: #635850; --yesil: #256d3b; }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-height: 100dvh; background: var(--kagit) radial-gradient(rgba(74,55,40,.03) .6px, transparent .6px) 0 0 / 5px 5px; color: var(--murekkep); font: 16px/1.55 "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+      a { color: var(--iznik); }
+      .serit { height: 6px; background: repeating-linear-gradient(90deg, var(--kiremit) 0 14px, var(--ochre) 14px 20px, var(--iznik) 20px 26px, var(--ochre) 26px 32px); }
+      header.ust { display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem; background: var(--zemin-kart); border-bottom: 1px solid var(--cizgi); position: sticky; top: 0; z-index: 5; }
+      header.ust img { width: 40px; height: 40px; }
+      header.ust b { font-family: Lora, Georgia, serif; font-size: 1.15rem; display: block; line-height: 1.05; }
+      header.ust small { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--metin-2); }
+      header.ust .sag { margin-left: auto; display: flex; gap: .5rem; align-items: center; }
+      .dugme { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 40px; padding: .35rem .9rem; border-radius: 3px; border: 1px solid var(--cizgi); background: var(--zemin-kart); color: inherit; font: 600 .9rem "Work Sans", system-ui, sans-serif; text-decoration: none; cursor: pointer; }
+      .dugme:hover { border-color: var(--ceviz); }
+      .dugme.birincil { background: var(--kiremit); border-color: var(--kiremit); color: #fff; }
+      .dugme.birincil:hover { background: var(--kiremit-koyu); }
+      main { max-width: 72rem; margin: 0 auto; padding: 1.4rem 1.2rem 3rem; }
+      h2 { font: 600 1.05rem/1.2 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--metin-2); margin: 2rem 0 .8rem; display: flex; align-items: baseline; gap: .6rem; }
+      h2:first-of-type { margin-top: .6rem; }
+      h2 .cizgi { flex: 1; border-top: 1px solid var(--cizgi); }
+      .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); gap: .8rem; }
+      .kart { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; padding: .95rem 1.1rem; box-shadow: 0 1px 0 rgba(74,55,40,.05); }
+      .kart .etiket { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--metin-2); }
+      .kart .deger { font-family: Lora, Georgia, serif; font-size: 1.7rem; font-weight: 700; line-height: 1.15; margin-top: .25rem; display: flex; align-items: center; gap: .5rem; }
+      .kart .alt { font-size: .82rem; color: var(--metin-2); margin-top: .2rem; }
+      .nokta { width: .7rem; height: .7rem; border-radius: 50%; background: #999; display: inline-block; flex: none; }
+      .nokta.iyi { background: var(--yesil); box-shadow: 0 0 0 3px rgba(37,109,59,.18); }
+      .nokta.kotu { background: var(--kiremit); box-shadow: 0 0 0 3px rgba(181,69,43,.2); }
+      table { width: 100%; border-collapse: collapse; background: var(--zemin-kart); border: 1px solid var(--cizgi); font-size: .92rem; }
+      th, td { text-align: left; padding: .5rem .8rem; border-bottom: 1px solid var(--cizgi); }
+      th { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--metin-2); background: rgba(74,55,40,.04); }
+      td.sayi { font-family: "IBM Plex Mono", ui-monospace, monospace; text-align: right; }
+      tr:last-child td { border-bottom: 0; }
+      .satir-arac { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .7rem 0; }
+      .bilgi-kutu { border-left: 3px solid var(--ochre); background: rgba(201,138,46,.09); padding: .7rem .95rem; border-radius: 0 3px 3px 0; font-size: .92rem; }
+      .sekmeler { display: flex; gap: .4rem; margin-bottom: .7rem; flex-wrap: wrap; }
+      .sekme { min-height: 40px; padding: .35rem .9rem; border: 1px solid var(--cizgi); background: var(--zemin-kart); border-radius: 3px; font: 600 .9rem "Work Sans", system-ui, sans-serif; cursor: pointer; color: inherit; }
+      .sekme[aria-selected="true"] { background: var(--ceviz); border-color: var(--ceviz); color: #fff; }
+      .baglantilar { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .8rem; }
+      .baglantilar a { display: block; background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; padding: .9rem 1rem; text-decoration: none; color: inherit; transition: transform .12s, border-color .12s; }
+      .baglantilar a:hover { transform: translateY(-1px); border-color: var(--ceviz); }
+      .baglantilar b { display: block; font-family: Lora, Georgia, serif; font-size: 1.05rem; }
+      .baglantilar span { font-size: .82rem; color: var(--metin-2); }
+      .tablo-sar { overflow-x: auto; }
+      footer { text-align: center; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--metin-2); padding: 1.2rem; border-top: 1px solid var(--cizgi); }
+      @media (prefers-color-scheme: dark) {
+        :root { --kagit: #2f221a; --murekkep: #f5efe3; --zemin-kart: #3a2a1f; --cizgi: rgba(245,239,227,.16); --metin-2: #cbbfae; --iznik: #6fa8d3; --kiremit: #c9573b; --yesil: #4ea36a; }
+        body { background-color: #2f221a; }
+        th { background: rgba(245,239,227,.05); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="serit" aria-hidden="true"></div>
+    <header class="ust">
+      <img src="/media/logo/ulu-camii-logo.svg" alt="" />
+      <span><b>Yönetim Paneli</b><small>Marche-en-Famenne Ulu Camii</small></span>
+      <span class="sag">
+        <a class="dugme" href="/tr/" title="Siteye dön">Site ↗</a>
+        <a class="dugme birincil" href="/admin/icerik/">İçerik Yönetimi</a>
+        <button class="dugme" id="cikis" type="button">Çıkış</button>
+      </span>
+    </header>
+    <main>
+      <h2 id="durum">Durum <span class="cizgi"></span><button class="dugme" id="yenile" type="button" style="text-transform:none;letter-spacing:0">Yenile</button></h2>
+      <div class="kartlar">
+        <div class="kart"><span class="etiket">Web sitesi</span><span class="deger"><span class="nokta" id="n-site"></span><span id="d-site">…</span></span><span class="alt">ulucamii.be</span></div>
+        <div class="kart"><span class="etiket">Kayıt formu</span><span class="deger"><span class="nokta" id="n-kayit"></span><span id="d-kayit">…</span></span><span class="alt">ulucamii.be/kayit</span></div>
+        <div class="kart"><span class="etiket">Son yayın (deploy)</span><span class="deger" id="d-yayin">…</span><span class="alt" id="a-yayin">GitHub Actions</span></div>
+        <div class="kart"><span class="etiket">Erişilebilirlik denetimi</span><span class="deger"><span class="nokta" id="n-uptime"></span><span id="d-uptime">…</span></span><span class="alt" id="a-uptime">30 dakikada bir otomatik</span></div>
+      </div>
+
+      <h2 id="trafik">Ziyaret İstatistikleri <span class="cizgi"></span></h2>
+      <div class="kartlar" style="margin-bottom:.8rem">
+        <div class="kart"><span class="etiket">Toplam ziyaret</span><span class="deger" id="d-toplam">…</span><span class="alt">Yayından bu yana · çerezsiz sayaç</span></div>
+        <div class="kart" style="display:flex;flex-direction:column;justify-content:center;gap:.5rem">
+          <a class="dugme birincil" id="goat-link" href="#" target="_blank" rel="noopener">Ayrıntılı trafik paneli ↗</a>
+          <span class="alt">Günlük grafik, ülke, tarayıcı, kaynak — GoatCounter</span>
+        </div>
+      </div>
+      <div class="tablo-sar">
+        <table aria-label="Sayfa bazında toplam ziyaret">
+          <thead><tr><th>Sayfa</th><th style="text-align:right">Toplam görüntülenme</th></tr></thead>
+          <tbody id="trafik-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="alt" style="font-size:.82rem;color:var(--metin-2)">Sayılar, gizlilik dostu GoatCounter sayacından anlık alınır (24 Ağustos 2026'dan itibaren). Reklam engelleyici kullanan ziyaretçiler sayılamayabilir.</p>
+
+      <h2 id="basvurular">Başvurular <span class="cizgi"></span></h2>
+      <div class="sekmeler" role="tablist">
+        <button class="sekme" role="tab" aria-selected="true" data-tur="kayit">Kur'an Kursu Kayıtları</button>
+        <button class="sekme" role="tab" aria-selected="false" data-tur="ihtida">İhtida Başvuruları</button>
+      </div>
+      <div class="satir-arac">
+        <button class="dugme" id="basvuru-yenile" type="button">Listeyi getir</button>
+        <button class="dugme" id="csv" type="button" disabled>CSV indir</button>
+        <span id="basvuru-durum" style="font-size:.85rem;color:var(--metin-2)"></span>
+      </div>
+      <div id="basvuru-alan">
+        <div class="bilgi-kutu" id="basvuru-bilgi">
+          Başvuru listeleri, kayıt sisteminin arka ucundan (Apps Script) güvenli anahtarla çekilir.
+          <b>«Listeyi getir»</b> düğmesine basın. Arka uç güncellemesi henüz dağıtılmadıysa burada kurulum uyarısı görünür;
+          başvurular bu durumda da kayıt defterine düşmeye devam eder, hiçbir veri kaybolmaz.
+        </div>
+        <div class="tablo-sar" id="basvuru-tablo" hidden></div>
+      </div>
+
+      <h2 id="baglar">Hızlı Bağlantılar <span class="cizgi"></span></h2>
+      <div class="baglantilar">
+        <a href="/admin/icerik/"><b>İçerik Yönetimi</b><span>Duyuru, etkinlik, hutbe, vefat, afiş ekle-düzenle</span></a>
+        <a href="https://purelymail.com/user/login" target="_blank" rel="noopener"><b>E-posta (Webmail) ↗</b><span>info@ulucamii.be kutusu</span></a>
+        <a href="/kayit/" target="_blank" rel="noopener"><b>Kayıt Formu ↗</b><span>Kur'an kursu online kayıt sayfası</span></a>
+        <a href="/tr/" target="_blank" rel="noopener"><b>Web Sitesi ↗</b><span>ulucamii.be — yayındaki site</span></a>
+        <a href="https://github.com/ulucamii2026/ulucamii2026.github.io/actions" target="_blank" rel="noopener"><b>Yayın Geçmişi ↗</b><span>Site derleme ve denetim kayıtları</span></a>
+      </div>
+    </main>
+    <footer>Yönetim Paneli · A.D.M.U.C.M.F. · yalnız yönetim kurulu</footer>
+
+    <script>
+      const REPO = 'ulucamii2026/ulucamii2026.github.io';
+      const GAS = 'https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec';
+      const GOAT = 'https://ulucamii.goatcounter.com';
+      let SIRLAR = null;
+      try { SIRLAR = JSON.parse(localStorage.getItem('panel-sirlar') || 'null'); } catch {}
+      // Eski girişten kalan oturumlarda sır paketi yoktur — yeniden giriş gerekir
+      if (!SIRLAR) {
+        document.addEventListener('DOMContentLoaded', () => {
+          const k = document.createElement('div'); k.className = 'bilgi-kutu'; k.style.margin = '1rem 1.2rem 0';
+          k.innerHTML = 'Panelin tüm özellikleri için bir kez <a href="/admin/giris.html">yeniden giriş</a> yapın (erişim paketi yenilendi).';
+          document.querySelector('main').prepend(k);
+        });
+      }
+
+      const $ = (id) => document.getElementById(id);
+      document.getElementById('cikis').addEventListener('click', () => {
+        localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-sirlar'); location.replace('/admin/giris.html');
+      });
+
+      // --- Trafik ---
+      const SAYFALAR = [
+        ['Ana sayfa (TR)', '/tr/'], ['Ana sayfa (FR)', '/fr/'], ['Ana sayfa (EN)', '/en/'],
+        ['Namaz vakitleri', '/tr/namaz-vakitleri/'], ['Duyurular', '/tr/duyurular/'],
+        ['Kur\'an kursu', '/tr/kuran-kursu/'], ['Kayıt formu', '/kayit/'],
+        ['Cenaze hizmetleri', '/tr/cenaze-hizmetleri/'], ['Bağış', '/tr/bagis/'], ['İletişim', '/tr/iletisim/'],
+      ];
+      async function sayac(yol) {
+        try { const r = await fetch(`${GOAT}/counter/${yol}.json`, { cache: 'no-store' }); if (!r.ok) return null; return (await r.json()).count; }
+        catch { return null; }
+      }
+      async function trafikYukle() {
+        $('d-toplam').textContent = (await sayac('TOTAL')) ?? '—';
+        const govde = $('trafik-govde'); govde.innerHTML = '';
+        for (const [ad, yol] of SAYFALAR) {
+          const n = await sayac(yol);
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${ad} <span style="color:var(--metin-2);font-size:.8rem">${yol}</span></td><td class="sayi">${n ?? '—'}</td>`;
+          govde.appendChild(tr);
+        }
+      }
+      if (SIRLAR && SIRLAR.goat) $('goat-link').href = `${GOAT}/?access-token=${SIRLAR.goat}`;
+      else $('goat-link').addEventListener('click', (e) => { e.preventDefault(); alert('Ayrıntılı panel bağlantısı için yeniden giriş yapın.'); });
+
+      // --- Durum kartları ---
+      async function durumYukle() {
+        const yokla = async (u) => { try { const r = await fetch(u, { method: 'HEAD', cache: 'no-store' }); return r.ok; } catch { return false; } };
+        const site = await yokla('/tr/');
+        $('n-site').className = 'nokta ' + (site ? 'iyi' : 'kotu'); $('d-site').textContent = site ? 'Yayında' : 'ERİŞİLEMİYOR';
+        const kayit = await yokla('/kayit/');
+        $('n-kayit').className = 'nokta ' + (kayit ? 'iyi' : 'kotu'); $('d-kayit').textContent = kayit ? 'Çalışıyor' : 'ERİŞİLEMİYOR';
+        const kosu = async (wf) => { try { const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${wf}/runs?per_page=1`); const j = await r.json(); return (j.workflow_runs || [])[0] || null; } catch { return null; } };
+        const y = await kosu('deploy.yml');
+        if (y) { $('d-yayin').textContent = y.conclusion === 'success' ? 'Başarılı' : (y.status === 'in_progress' ? 'Sürüyor…' : (y.conclusion || y.status)); $('a-yayin').textContent = new Date(y.updated_at).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' }); }
+        else $('d-yayin').textContent = '—';
+        const u = await kosu('uptime.yml');
+        if (u) { const iyi = u.conclusion === 'success'; $('n-uptime').className = 'nokta ' + (iyi ? 'iyi' : (u.conclusion ? 'kotu' : '')); $('d-uptime').textContent = iyi ? 'Sorun yok' : (u.conclusion ? 'SORUN VAR' : 'Sürüyor…'); $('a-uptime').textContent = 'Son denetim: ' + new Date(u.updated_at).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' }); }
+        else { $('d-uptime').textContent = '—'; }
+      }
+
+      // --- Başvurular ---
+      let aktifTur = 'kayit', sonVeri = null;
+      document.querySelectorAll('.sekme').forEach((s) => s.addEventListener('click', () => {
+        document.querySelectorAll('.sekme').forEach((x) => x.setAttribute('aria-selected', 'false'));
+        s.setAttribute('aria-selected', 'true'); aktifTur = s.dataset.tur;
+        if (sonVeri) basvuruCiz();
+      }));
+      async function basvuruYukle() {
+        const durum = $('basvuru-durum'); durum.textContent = 'Yükleniyor…'; $('csv').disabled = true;
+        if (!SIRLAR || !SIRLAR.gas) { durum.textContent = ''; $('basvuru-bilgi').innerHTML = 'Erişim paketi eksik — lütfen <a href="/admin/giris.html">yeniden giriş</a> yapın.'; return; }
+        try {
+          const r = await fetch(`${GAS}?islem=liste&anahtar=${encodeURIComponent(SIRLAR.gas)}`, { redirect: 'follow' });
+          const j = await r.json();
+          if (!j.kayitlar && !j.ihtidalar) {
+            durum.textContent = '';
+            $('basvuru-bilgi').hidden = false; $('basvuru-tablo').hidden = true;
+            $('basvuru-bilgi').innerHTML = '<b>Arka uç güncellemesi bekleniyor.</b> Başvuru listeleme API\'si henüz dağıtılmadı; başvurular yine de kayıt defterine düşüyor, veri kaybı yok. (Dağıtım, dernek Google hesabına bir kez giriş yapılınca tamamlanacak.)';
+            return;
+          }
+          sonVeri = j; durum.textContent = `Güncellendi: ${new Date().toLocaleTimeString('tr-BE')}`;
+          basvuruCiz();
+        } catch (e) { durum.textContent = ''; $('basvuru-bilgi').hidden = false; $('basvuru-tablo').hidden = true; $('basvuru-bilgi').textContent = 'Listeye şu an ulaşılamadı — internet bağlantısını kontrol edip yeniden deneyin.'; }
+      }
+      function basvuruCiz() {
+        const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
+        const alan = $('basvuru-tablo');
+        $('basvuru-bilgi').hidden = true; alan.hidden = false;
+        if (!v || !v.satirlar || !v.satirlar.length) { alan.innerHTML = '<div class="bilgi-kutu">Bu listede henüz başvuru yok.</div>'; $('csv').disabled = true; return; }
+        const b = v.basliklar, rows = v.satirlar;
+        let h = '<table><thead><tr>' + b.map((x) => `<th>${x}</th>`).join('') + '</tr></thead><tbody>';
+        for (const r of rows) h += '<tr>' + r.map((c) => `<td>${String(c ?? '').startsWith('http') ? `<a href="${c}" target="_blank" rel="noopener">aç ↗</a>` : String(c ?? '')}</td>`).join('') + '</tr>';
+        alan.innerHTML = h + '</tbody></table>';
+        $('csv').disabled = false;
+      }
+      $('basvuru-yenile').addEventListener('click', basvuruYukle);
+      $('csv').addEventListener('click', () => {
+        const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
+        const kacir = (s) => '"' + String(s ?? '').replace(/"/g, '""') + '"';
+        const csv = [v.basliklar.map(kacir).join(';'), ...v.satirlar.map((r) => r.map(kacir).join(';'))].join('\r\n');
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
+        a.download = (aktifTur === 'kayit' ? 'kuran-kursu-kayitlari' : 'ihtida-basvurulari') + '.csv'; a.click();
+      });
+
+      // --- Yükle / yenile ---
+      function hepsiniYukle() { durumYukle(); trafikYukle(); }
+      $('yenile').addEventListener('click', hepsiniYukle);
+      hepsiniYukle();
+    </script>
   </body>
 </html>

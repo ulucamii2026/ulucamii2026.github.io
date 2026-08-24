@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>İçerik Yönetimi — Marche-en-Famenne Ulu Camii</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <script>
+      // Giriş kapısı: kullanıcı adı/şifre ile çözülen erişim anahtarı yoksa giriş sayfasına yönlendir (giris.html)
+      try { const u = JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null'); if (!u || !u.token) location.replace('/admin/giris.html'); } catch { location.replace('/admin/giris.html'); }
+    </script>
+    <!-- Sveltia CMS: https://github.com/sveltia/sveltia-cms — Türkçe arayüz, Git tabanlı içerik -->
+    <script src="https://unpkg.com/@sveltia/cms@0.196.0/dist/sveltia-cms.js" type="module" integrity="sha384-CAkV2ok/JoSJwP/CCrXGYho2VRacSfJ93JUAftvaq7ACeWeVxXpnFrSGE2hpNeKC" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -40,8 +40,8 @@
       <div class="serit" aria-hidden="true"></div>
       <div class="ic">
         <div class="marka"><img src="/media/logo/ulu-camii-logo.svg" alt="" /><span><b>Ulu Camii</b><small>Marche-en-Famenne · Yönetim</small></span></div>
-        <h1>İçerik yönetimine giriş</h1>
-        <p class="alt">Duyuru, etkinlik, afiş, hutbe ve vefat haberlerini eklemek ya da düzenlemek için giriş yapın.</p>
+        <h1>Yönetim paneline giriş</h1>
+        <p class="alt">Ziyaret istatistikleri, başvurular, site durumu ve içerik yönetimi — hepsi tek panelde.</p>
         <form id="form" autocomplete="on">
           <label for="kullanici">Kullanıcı adı</label>
           <input id="kullanici" name="username" autocomplete="username" required autocapitalize="off" spellcheck="false" />
@@ -55,7 +55,7 @@
     </main>
     <script>
       // Şifreli GitHub erişim anahtarı — scripts/admin-sifrele.mjs ile üretilir; kullanıcı adı + şifre olmadan çözülemez
-      const SIFRELI = {"v":1,"iter":600000,"salt":"DGste2wrDyclHI+x6TqhTw==","iv":"/G0NaoUVEpM4VsZI","ct":"o+6UfLXlWfcYIVmlayQFY8DbFMs3huwGx2Nv/o92nXP+bmgyoPO/4srENdNcrywCpHKBkgHugyw="};
+      const SIFRELI = {"v":1,"iter":600000,"salt":"EQzcNl6jVeRVi8YCmkWsuw==","iv":"AXlrkolOInzgk2Gw","ct":"toYyrC+642rBzDWSDn2CgV1KCMzTmribi7E38N9QV4DSy1txVH2OGhOW07Xa0RlJREqI7fQoz9bLNH4XjAi+qZl+J5/D1N/IGf5WqhCK04tNxMA3L7+fQDJCfr7wsJcWLGfbIEQfsfETG9WvsmAjsuiwsdU5oBX5vdfmrxfQilx9jo2+KCb/6ApI3/uN11WTV3CHaAPaFPAtsm+KOdk="};
       const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
       const form = document.getElementById('form'), hata = document.getElementById('hata'), dugme = document.getElementById('dugme');
       const hataGoster = (m) => { hata.textContent = m; hata.dataset.acik = '1'; };
@@ -67,7 +67,14 @@
           const enc = new TextEncoder();
           const km = await crypto.subtle.importKey('raw', enc.encode(`${ku} ${si}`), 'PBKDF2', false, ['deriveKey']);
           const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SIFRELI.salt), iterations: SIFRELI.iter, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
-          const token = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(SIFRELI.iv) }, key, b64(SIFRELI.ct)));
+          const cozulen = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(SIFRELI.iv) }, key, b64(SIFRELI.ct)));
+          // Paket JSON ise (yeni biçim): gh -> Sveltia, tamamı -> panel sırları. Düz metinse eski biçim (yalnız GitHub token).
+          let token = cozulen;
+          if (cozulen.trim().startsWith('{')) {
+            const paket = JSON.parse(cozulen);
+            token = paket.gh;
+            localStorage.setItem('panel-sirlar', JSON.stringify(paket));
+          }
           localStorage.setItem('sveltia-cms.user', JSON.stringify({ backendName: 'github', token }));
           location.replace('/admin/');
         } catch (err) {

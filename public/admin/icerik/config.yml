@@ -1,0 +1,390 @@
+# Sveltia CMS — Marche-en-Famenne Ulu Camii içerik yönetimi
+# Giriş: "Sign in with Token" → GitHub fine-grained PAT (Repository: ulucamii2026.github.io, Contents: Read and write)
+backend:
+  name: github
+  repo: ulucamii2026/ulucamii2026.github.io
+  branch: main
+  commit_messages:
+    create: "içerik: {{collection}} “{{slug}}” eklendi"
+    update: "içerik: {{collection}} “{{slug}}” güncellendi"
+    delete: "içerik: {{collection}} “{{slug}}” silindi"
+    uploadMedia: "medya: {{path}} yüklendi"
+    deleteMedia: "medya: {{path}} silindi"
+
+site_url: https://ulucamii.be
+display_url: https://ulucamii.be
+logo_url: /media/logo/ulu-camii-logo-128.png
+locale: tr
+
+media_folder: public/media/yuklenen
+public_folder: /media/yuklenen
+media_libraries:
+  default:
+    config:
+      max_file_size: 15728640
+      slugify_filename: true
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 2048
+        height: 2048
+      svg:
+        optimize: true
+
+i18n:
+  structure: multiple_folders
+  locales: [tr, fr]
+  default_locale: tr
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: duyurular
+    label: Duyurular / Haberler
+    label_singular: Duyuru
+    folder: src/content/duyurular
+    create: true
+    delete: true
+    i18n: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{slug}}"
+    summary: "{{baslik}} — {{tarih}}"
+    sortable_fields: [tarih, baslik]
+    view_filters:
+      - label: Taslaklar
+        field: taslak
+        pattern: true
+    fields:
+      - { name: baslik, label: Başlık, widget: string, i18n: true }
+      - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, i18n: duplicate }
+      - { name: ozet, label: Özet (liste ve paylaşım metni), widget: text, required: false, i18n: true, hint: "En fazla 300 karakter.", pattern: ["^[\\s\\S]{0,300}$", "En fazla 300 karakter"] }
+      - { name: kapak, label: Kapak görseli, widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
+      - { name: kapakAlt, label: Görsel açıklaması (erişilebilirlik), widget: string, required: false, i18n: true }
+      - name: galeri
+        label: Fotoğraf galerisi
+        label_singular: Fotoğraf
+        widget: list
+        required: false
+        i18n: duplicate
+        default: []
+        fields:
+          - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
+          - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: etiketler, label: Etiketler, widget: list, required: false, i18n: duplicate, default: [] }
+      - { name: oneCikan, label: Öne çıkan, widget: boolean, default: false, i18n: duplicate }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false, i18n: duplicate }
+      - { name: body, label: Metin, widget: markdown, i18n: true }
+
+  - name: etkinlikler
+    label: Etkinlikler ve Afişler
+    label_singular: Etkinlik / Afiş
+    folder: src/content/etkinlikler
+    create: true
+    delete: true
+    i18n: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{slug}}"
+    summary: "{{baslik}} — {{baslangic}}"
+    sortable_fields: [baslangic, baslik]
+    fields:
+      - { name: baslik, label: Başlık, widget: string, i18n: true }
+      - { name: baslangic, label: Başlangıç tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, i18n: duplicate }
+      - { name: bitis, label: Bitiş tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
+      - { name: saat, label: Saat / program notu, widget: string, required: false, i18n: true }
+      - { name: yer, label: Yer, widget: string, required: false, i18n: true, default: "Marche-en-Famenne Ulu Camii" }
+      - { name: afis, label: Afiş (büyük görsel), widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/afisler, public_folder: /media/yuklenen/afisler }
+      - { name: afisKucuk, label: Afiş küçük hâli (isteğe bağlı), widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/afisler, public_folder: /media/yuklenen/afisler, hint: "Boş bırakılırsa büyük afiş kullanılır." }
+      - { name: ozet, label: Kısa açıklama, widget: text, required: false, i18n: true }
+      - name: galeri
+        label: Fotoğraf galerisi
+        label_singular: Fotoğraf
+        widget: list
+        required: false
+        i18n: duplicate
+        default: []
+        fields:
+          - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/yuklenen/etkinlikler, public_folder: /media/yuklenen/etkinlikler }
+          - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/yuklenen/etkinlikler, public_folder: /media/yuklenen/etkinlikler }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - name: kategori
+        label: Kategori
+        widget: select
+        i18n: duplicate
+        default: genel
+        options:
+          - { label: Bayram, value: bayram }
+          - { label: Kandil, value: kandil }
+          - { label: Ramazan, value: ramazan }
+          - { label: Kurban, value: kurban }
+          - { label: Bağış kampanyası, value: bagis }
+          - { label: Kur’an kursu, value: kurs }
+          - { label: Yarışma, value: yarisma }
+          - { label: Genel, value: genel }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false, i18n: duplicate }
+      - { name: body, label: Açıklama metni, widget: markdown, i18n: true, required: false }
+
+  - name: sayfalar
+    label: Sayfa Metinleri
+    label_singular: Sayfa
+    folder: src/content/sayfalar
+    create: false
+    delete: false
+    i18n: true
+    format: frontmatter
+    extension: md
+    summary: "{{baslik}}"
+    fields:
+      - { name: baslik, label: Başlık, widget: string, i18n: true }
+      - { name: altBaslik, label: Alt başlık, widget: string, required: false, i18n: true }
+      - { name: aciklama, label: Arama motoru açıklaması, widget: string, required: false, i18n: true, hint: "En fazla 160 karakter.", pattern: ["^.{0,200}$", "En fazla 200 karakter"] }
+      - { name: kapak, label: Üst görsel, widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/sayfalar, public_folder: /media/yuklenen/sayfalar }
+      - { name: guncelleme, label: Son güncelleme, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
+      - { name: body, label: Metin, widget: markdown, i18n: true }
+
+  - name: hutbeler
+    label: Hutbeler
+    label_singular: Hutbe
+    folder: src/content/hutbeler
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{tarih}}-hutbe"
+    summary: "{{tarih}} — {{baslik.tr}}"
+    sortable_fields: [tarih]
+    fields:
+      - name: baslik
+        label: Başlık
+        widget: object
+        fields:
+          - { name: tr, label: Türkçe, widget: string }
+          - { name: fr, label: Fransızca, widget: string, required: false }
+      - { name: tarih, label: Cuma tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - name: pdf
+        label: PDF dosyaları
+        widget: object
+        fields:
+          - { name: tr, label: Türkçe PDF, widget: file, required: false, media_folder: public/media/hutbeler, public_folder: /media/hutbeler }
+          - { name: fr, label: Fransızca PDF, widget: file, required: false, media_folder: public/media/hutbeler, public_folder: /media/hutbeler }
+      - name: ozet
+        label: Özet (1–2 cümle)
+        widget: object
+        required: false
+        fields:
+          - { name: tr, label: Türkçe, widget: text, required: false }
+          - { name: fr, label: Fransızca, widget: text, required: false }
+      - { name: kaynak, label: Kaynak, widget: string, required: false, default: "Marche-en-Famenne Ulu Camii" }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
+      - { name: body, label: Not (isteğe bağlı), widget: markdown, required: false }
+
+  - name: afisler
+    label: Afişler
+    label_singular: Afiş
+    folder: src/content/afisler
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-afis"
+    summary: "{{tarih}} — {{baslik.tr}}"
+    sortable_fields: [tarih]
+    fields:
+      - name: baslik
+        label: Başlık
+        widget: object
+        fields:
+          - { name: tr, label: Türkçe, widget: string }
+          - { name: fr, label: Fransızca, widget: string, required: false }
+      - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { name: gorsel, label: Afiş görseli, widget: image, media_folder: public/media/afisler, public_folder: /media/afisler }
+      - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/afisler, public_folder: /media/afisler }
+      - { name: kaynak, label: Kaynak, widget: select, options: [{ label: "Ulu Camii", value: ulucamii }, { label: "Belçika Diyanet Vakfı", value: bdv }, { label: "Diyanet İşleri Başkanlığı", value: diyanet }, { label: "Diğer", value: diger }], default: ulucamii }
+      - { name: kategori, label: Kategori, widget: select, options: [{ label: "Kampanya", value: kampanya }, { label: "Program", value: program }, { label: "Eğitim", value: egitim }, { label: "Hac / Umre", value: hac-umre }, { label: "Kurban", value: kurban }, { label: "Zekât / Fitre", value: zekat }, { label: "Cenaze", value: cenaze }, { label: "Ramazan", value: ramazan }, { label: "Diğer", value: diger }], default: diger }
+      - { name: link, label: Bağlantı (isteğe bağlı), widget: string, required: false }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
+      - { name: body, label: Açıklama (isteğe bağlı), widget: markdown, required: false }
+
+  - name: vefat
+    label: Vefat Haberleri (Rahmetle Anıyoruz)
+    label_singular: Vefat haberi
+    folder: src/content/vefat
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{ad}}"
+    summary: "{{ad}} — {{vefat}}"
+    sortable_fields: [vefat, ad]
+    fields:
+      - { name: ad, label: Ad Soyad, widget: string }
+      - { name: vefat, label: Vefat tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { name: dogumYili, label: Doğum yılı, widget: number, value_type: int, required: false }
+      - { name: memleket, label: Memleketi, widget: string, required: false }
+      - { name: foto, label: Fotoğraf (isteğe bağlı, aile izniyle), widget: image, required: false, media_folder: public/media/yuklenen/vefat, public_folder: /media/yuklenen/vefat }
+      - name: cenazeNamazi
+        label: Cenaze namazı
+        widget: object
+        required: false
+        fields:
+          - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false }
+          - { name: saat, label: Saat / vakit, widget: string, required: false, hint: "Örn. Öğle namazını müteakip" }
+          - { name: yer, label: Yer, widget: string, required: false, default: "Marche-en-Famenne Ulu Camii" }
+      - { name: defin, label: Defin yeri / nakil bilgisi, widget: string, required: false }
+      - { name: taziye, label: Taziye bilgisi, widget: string, required: false }
+      - name: metin
+        label: Kısa metin
+        widget: object
+        required: false
+        fields:
+          - { name: tr, label: Türkçe, widget: text, required: false }
+          - { name: fr, label: Fransızca, widget: text, required: false }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
+
+  - name: ayarlar
+    label: Site Ayarları
+    files:
+      - name: site
+        label: Künye, iletişim, banka
+        file: src/content/ayarlar/site.yaml
+        fields:
+          - name: site
+            label: Ayarlar
+            widget: object
+            collapsed: false
+            fields:
+              - { name: dernekAdi, label: Dernek resmî adı, widget: string }
+              - { name: kisaltma, label: Kısaltma, widget: string }
+              - { name: kbo, label: KBO / BCE numarası, widget: string }
+              - { name: hukukiForm, label: Hukukî form, widget: string }
+              - name: adres
+                label: Adres
+                widget: object
+                fields:
+                  - { name: sokak, label: Sokak ve numara, widget: string }
+                  - { name: posta, label: Posta kodu, widget: string }
+                  - { name: sehir, label: Şehir, widget: string }
+                  - { name: ulke, label: Ülke, widget: string }
+              - name: gps
+                label: Konum
+                widget: object
+                fields:
+                  - { name: enlem, label: Enlem, widget: number, value_type: float }
+                  - { name: boylam, label: Boylam, widget: number, value_type: float }
+              - name: telefon
+                label: Telefonlar
+                widget: object
+                fields:
+                  - { name: dinGorevlisi, label: Din görevlisi, widget: string }
+                  - { name: cami, label: Cami / dernek, widget: string }
+              - { name: eposta, label: E-posta, widget: string, required: false }
+              - name: banka
+                label: Banka hesabı
+                widget: object
+                fields:
+                  - { name: iban, label: IBAN, widget: string }
+                  - { name: bic, label: BIC, widget: string }
+                  - { name: banka, label: Banka adı, widget: string }
+                  - { name: hesapAdi, label: Hesap adı (bankadaki kayıt), widget: string }
+              - { name: cumaSaati, label: Cuma namazı saati (boş bırakılabilir), widget: string, required: false }
+              - name: heroMesajlar
+                label: Ana sayfa dönen mesajlar
+                label_singular: Mesaj
+                widget: list
+                required: false
+                collapsed: true
+                summary: "{{fields.metin.tr}}"
+                fields:
+                  - name: metin
+                    label: Metin
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string, required: false }
+                  - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
+                  - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
+              - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
+              - name: sosyal
+                label: Sosyal medya
+                widget: object
+                required: false
+                fields:
+                  - { name: facebook, label: Facebook, widget: string, required: false }
+                  - { name: instagram, label: Instagram, widget: string, required: false }
+                  - { name: youtube, label: YouTube, widget: string, required: false }
+              - name: konsolosluk
+                label: Başkonsolosluk bilgileri
+                widget: object
+                fields:
+                  - { name: ad, label: Ad, widget: string }
+                  - { name: santral, label: Santral, widget: string }
+                  - { name: acil, label: Acil durum hattı, widget: string }
+                  - { name: cagriMerkezi, label: Çağrı merkezi, widget: string }
+                  - { name: eposta, label: E-posta, widget: string }
+                  - { name: web, label: Web sitesi, widget: string }
+                  - { name: randevu, label: Randevu sitesi, widget: string }
+                  - { name: edevlet, label: e-Devlet, widget: string }
+              - name: haftalikProgram
+                label: Haftalık program (ana sayfa “Bu hafta camide”)
+                widget: list
+                required: false
+                summary: "{{fields.baslik.tr}} — gün {{fields.gun}}"
+                fields:
+                  - { name: gun, label: Gün (1=Pazartesi … 7=Pazar), widget: number, value_type: int, min: 1, max: 7 }
+                  - name: baslik
+                    label: Başlık
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                  - name: saat
+                    label: Saat
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                  - { name: sayfa, label: Bağlantı (sayfa anahtarı), widget: select, required: false, options: [namaz, kurankursu, etkinlikler, duyurular, bagis, iletisim] }
+              - name: cenaze
+                label: Cenaze hizmetleri iletişim (BDV fonu, belediye, mezarlık)
+                widget: object
+                required: false
+                fields:
+                  - { name: fonAd, label: Fon adı, widget: string }
+                  - { name: fonAcil, label: Fon — vefat anında acil hat, widget: string }
+                  - { name: fonMesai, label: Fon — mesai saatinde, widget: string }
+                  - { name: fonEposta, label: Fon e-posta, widget: string }
+                  - { name: fonWeb, label: Fon web sayfası, widget: string }
+                  - { name: fonAdres, label: Fon adresi, widget: string }
+                  - { name: belediyeNufus, label: Belediye nüfus servisi, widget: string }
+                  - { name: belediyeGenel, label: Belediye santral, widget: string }
+                  - { name: belediyeEposta, label: Belediye nüfus servisi e-posta, widget: string }
+                  - { name: belediyeGenelEposta, label: Belediye genel e-posta, widget: string, required: false }
+                  - { name: mezarlikAd, label: Mezarlık adı, widget: string }
+                  - { name: mezarlikAdres, label: Mezarlık adresi, widget: string }
+                  - { name: saniportEposta, label: Saniport (laissez-passer) e-posta, widget: string, required: false }
+      - name: galeri
+        label: Galeri fotoğrafları
+        file: src/content/galeri/galeri.yaml
+        fields:
+          - name: galeri
+            label: Fotoğraflar
+            widget: list
+            fields:
+              - { name: id, label: Kimlik (benzersiz, ör. cami-26), widget: string }
+              - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/galeri, public_folder: /media/galeri }
+              - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/galeri, public_folder: /media/galeri }
+              - name: alt
+                label: Açıklama
+                widget: object
+                fields:
+                  - { name: tr, label: Türkçe, widget: string }
+                  - { name: fr, label: Fransızca, widget: string }
+              - { name: tarih, label: Tarih, widget: string, required: false }
+              - { name: sira, label: Sıra (küçük önce), widget: number, default: 100 }
