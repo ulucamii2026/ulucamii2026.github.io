@@ -10,7 +10,7 @@ cenazeNamazi:
   yer: "Marche-en-Famenne Ulu Camii"
 defin: "Marche-en-Famenne yeni mezarlığı, Müslüman bölümü"
 metin:
-  tr: "Marche-en-Famenne Belediye Meclisi üyesi (2012’den beri, PS grubu) ve cemaatimizle şehir arasında değerli bir köprü olan kardeşimiz Alain Aydın Mola, uzun süredir mücadele ettiği hastalık sonucu Hakk’a yürümüştür. Vasiyeti üzerine, cemaatimiz ve din görevlimizin eşliğinde Marche-en-Famenne mezarlığında toprağa verilmiştir.\n\nFotoğraf: ailesi tarafından paylaşılan anma fotoğrafı."
-  fr: "Conseiller communal de Marche-en-Famenne depuis 2012 (groupe PS) et précieux trait d’union entre la ville et notre communauté, notre frère Alain Aydın Mola est retourné auprès de Son Seigneur après un long combat contre la maladie. Conformément à sa volonté, il repose au cimetière de Marche-en-Famenne, entouré de notre communauté et de notre imam.\n\nPhoto : portrait souvenir partagé par sa famille."
+  tr: "Marche-en-Famenne Belediye Meclisi üyesi (2012’den beri) ve cemaatimizle şehir arasında değerli bir köprü olan kardeşimiz Alain Aydın Mola, uzun süredir mücadele ettiği hastalık sonucu Hakk’a yürümüştür. Vasiyeti üzerine, cemaatimiz ve din görevlimizin eşliğinde Marche-en-Famenne mezarlığında toprağa verilmiştir."
+  fr: "Conseiller communal de Marche-en-Famenne depuis 2012 et précieux trait d’union entre la ville et notre communauté, notre frère Alain Aydın Mola est retourné auprès de Son Seigneur après un long combat contre la maladie. Conformément à sa volonté, il repose au cimetière de Marche-en-Famenne, entouré de notre communauté et de notre imam."
 taslak: false
 ---
