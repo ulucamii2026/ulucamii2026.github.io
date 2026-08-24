@@ -22,6 +22,10 @@ export function yol(dil: Dil, sayfa: SayfaAnahtari, alt?: string): string {
 
 /** Mevcut sayfanın diğer dildeki karşılığı (hreflang ve dil değiştirici için) */
 export function digerDilYolu(url: URL, hedef: Dil): string {
+  // /kayit dil öneksiz gömülü kayıt uygulamasıdır: TR parametresiz, diğer diller formu Fransızca açar
+  if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
+    return hedef === 'tr' ? '/kayit/' : '/kayit/?lang=fr';
+  }
   const [, mevcutDil, seg, ...kalan] = url.pathname.split('/').filter(Boolean).length
     ? ['', ...url.pathname.split('/').filter(Boolean)]
     : ['', varsayilanDil];

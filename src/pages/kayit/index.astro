@@ -40,13 +40,6 @@ const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online ka
       </a>
     </header>
 
-    <div class="kayit-dil-satiri">
-      <div class="language-switch" role="group" aria-label="Dil / Langue">
-        <button type="button" class="language-button is-active" data-language="tr" lang="tr" aria-pressed="true">TR</button>
-        <button type="button" class="language-button" data-language="fr" lang="fr" aria-pressed="false">FR</button>
-      </div>
-    </div>
-
     <div class="progress-panel" id="progressPanel" hidden>
       <div class="progress-copy">
         <span id="stepName">Kimlik</span>
@@ -415,21 +408,6 @@ const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online ka
 <style is:global>
   /* Gömülü kayıt uygulaması: formun kendi topbar'ı gizli (homeLink DOM'da kalır — app.js bağlanır) */
   .kayit-gomulu .topbar { display: none; }
-  /* Dil anahtarı açık zemin üstünde */
-  .kayit-dil-satiri {
-    width: min(100%, 760px);
-    margin: 0 auto;
-    padding: 14px clamp(18px, 5vw, 42px) 0;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .kayit-dil-satiri .language-switch {
-    background: var(--surface, #fff);
-    border-color: var(--line, #ddd3c6);
-  }
-  .kayit-dil-satiri .language-button { color: var(--pine-800, #b5452b); }
-  .kayit-dil-satiri .language-button:hover { background: var(--pine-100, #f2ded4); }
-  .kayit-dil-satiri .language-button.is-active { background: var(--pine-800, #b5452b); color: #fff; }
   /* İlk adımın min yüksekliği site header'ı ile birlikte taşmasın */
   .kayit-gomulu .step { min-height: 0; }
 </style>
