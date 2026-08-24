@@ -246,16 +246,15 @@
       async function degisiklikYukle() {
         const g = $('commit-govde');
         try {
-          const r = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=8`);
+          const r = await fetch('https://api.github.com/repos/' + REPO + '/commits?per_page=8');
           const j = await r.json();
           if (!Array.isArray(j)) { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; return; }
-          g.innerHTML = j.map((c) => {
+          g.innerHTML = j.map(function (c) {
             const t = new Date(c.commit.author.date).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' });
-            const mesaj = c.commit.message.split('
-')[0];
-            return `<tr><td style="white-space:nowrap">${t}</td><td>${mesaj.replace(/</g, '&lt;')}</td></tr>`;
+            const mesaj = c.commit.message.split(String.fromCharCode(10))[0].replace(/</g, '&lt;');
+            return '<tr><td style="white-space:nowrap">' + t + '</td><td>' + mesaj + '</td></tr>';
           }).join('');
-        } catch { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; }
+        } catch (e) { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; }
       }
 
       // --- Yükle / yenile ---

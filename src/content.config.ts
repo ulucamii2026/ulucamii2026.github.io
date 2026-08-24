@@ -147,7 +147,7 @@ const afisler = defineCollection({
 
 /** Yönetim kurulu (tek dosya) — src/content/ayarlar/kurul.yaml */
 const uc = z.object({ tr: z.string(), fr: z.string(), en: z.string() });
-const kisi = z.object({ ad: z.string(), gorev: uc });
+const kisi = z.object({ ad: z.string(), foto: z.string().optional(), gorev: uc });
 const kurul = defineCollection({
   loader: file('./src/content/ayarlar/kurul.yaml', { parser: (text) => [{ id: 'kurul', ...yamlParse(text).kurul }] }),
   schema: z.object({

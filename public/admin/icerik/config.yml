@@ -410,6 +410,7 @@ collections:
                 summary: "{{fields.ad}}"
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
                     widget: object
@@ -424,6 +425,7 @@ collections:
                 summary: "{{fields.ad}}"
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
                     widget: object
@@ -436,6 +438,7 @@ collections:
                 widget: object
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
                     widget: object
