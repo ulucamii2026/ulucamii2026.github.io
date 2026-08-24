@@ -3,6 +3,7 @@ baslik: Candidatures au Programme international de théologie
 tarih: 2018-02-27
 ozet: Les candidatures 2018 au Programme international de théologie (UİP) du Diyanet, destiné aux enfants de nos concitoyens vivant à l’étranger, ont été ouvertes du 26 février au 6 avril 2018.
 kapak: /media/arsiv/2018-uip-basvuru-paylasim.webp
+kapakAlt: Annonce de candidature au Programme international de théologie (UİP)
 etiketler:
   - archives
   - éducation

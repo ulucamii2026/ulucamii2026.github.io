@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://ulucamii.be',
   output: 'static',
   trailingSlash: 'always',
-  integrations: [preact({ compat: false }), sitemap()],
+  integrations: [preact({ compat: false }), sitemap({ filter: (page) => page !== 'https://ulucamii.be/' })],
   i18n: {
     locales: ['tr', 'fr', 'en'],
     defaultLocale: 'tr',

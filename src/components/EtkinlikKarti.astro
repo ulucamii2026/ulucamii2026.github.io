@@ -17,6 +17,6 @@ const tarihStr = bitis && bitis.getTime() !== baslangic.getTime()
     <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>
     {yer && <p class="text-sm text-(--metin-2)">{t('etkinlik.yer')}: {yer}</p>}
     {ozet && <p class="text-sm text-(--metin-2) line-clamp-3">{ozet}</p>}
-    <a href={href} class="mt-auto pt-2 text-sm font-semibold no-underline hover:underline">{t('genel.daha')}<span aria-hidden="true"> →</span></a>
+    <a href={href} class="mt-auto pt-2 min-h-11 inline-flex items-center text-sm font-semibold no-underline hover:underline">{t('genel.daha')}<span aria-hidden="true"> →</span></a>
   </div>
 </article>

@@ -3,6 +3,7 @@ baslik: Uluslararası İlahiyat Programı Başvuru Duyurusu
 tarih: 2018-02-27
 ozet: Diyanet İşleri Başkanlığı’nın yurtdışındaki vatandaşların çocuklarına yönelik Uluslararası İlahiyat Programı (UİP) 2018 başvuruları 26 Şubat - 6 Nisan 2018 tarihleri arasında alınmıştır.
 kapak: /media/arsiv/2018-uip-basvuru-paylasim.webp
+kapakAlt: Uluslararası İlahiyat Programı Başvuru Duyurusu görseli
 etiketler:
   - arşiv
   - eğitim

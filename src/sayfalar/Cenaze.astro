@@ -82,9 +82,9 @@ const m = dil === 'tr' ? {
         <div class="kart p-5 border-(--vurgu)">
           <p class="etiket etiket-vurgu">{m.acilBaslik}</p>
           <ol class="mt-3 grid gap-3 text-sm list-decimal pl-5">
-            <li><span class="etiket block">{m.acil1}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a><span class="block text-(--metin-2)">{m.acil1b}: <a href={tel(c.fonMesai)} class="mono">{c.fonMesai}</a></span></li>
-            <li><span class="etiket block">{m.acil2}</span><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base font-semibold">{site.telefon.dinGorevlisi}</a></li>
-            <li><span class="etiket block">{m.acil3}</span><a href={tel(site.konsolosluk.acil)} class="mono text-base font-semibold">{site.konsolosluk.acil}</a></li>
+            <li><span class="etiket block">{m.acil1}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold inline-flex items-center min-h-11 -my-2 py-2">{c.fonAcil}</a><span class="block text-(--metin-2)">{m.acil1b}: <a href={tel(c.fonMesai)} class="mono">{c.fonMesai}</a></span></li>
+            <li><span class="etiket block">{m.acil2}</span><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base font-semibold inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a></li>
+            <li><span class="etiket block">{m.acil3}</span><a href={tel(site.konsolosluk.acil)} class="mono text-base font-semibold inline-flex items-center min-h-11 -my-2 py-2">{site.konsolosluk.acil}</a></li>
           </ol>
           <dl class="mt-4 grid gap-2 text-sm cetvel pt-3">
             <div><dt class="etiket">{m.belediye}</dt><dd><a href={tel(c.belediyeNufus)} class="mono">{c.belediyeNufus}</a> · <a href={`mailto:${c.belediyeEposta}`}>{c.belediyeEposta}</a></dd></div>

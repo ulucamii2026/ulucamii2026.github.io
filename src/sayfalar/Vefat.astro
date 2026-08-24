@@ -90,7 +90,7 @@ const m = dil === 'tr' ? {
               return (
                 <li class="kart p-5 sm:p-6 flex gap-5">
                   {d.foto ? (
-                    <a href={d.foto} data-lightbox="vefat" data-caption={d.ad} class="block h-[120px] w-24 shrink-0 overflow-hidden rounded-(--radius-kose) border border-(--cizgi)">
+                    <a href={d.foto} data-lightbox="vefat" data-caption={d.ad} aria-label={d.ad} class="block h-[120px] w-24 shrink-0 overflow-hidden rounded-(--radius-kose) border border-(--cizgi)">
                       <img src={d.foto} alt="" width="96" height="120" class="h-[120px] w-24 object-cover [filter:sepia(.25)]" loading="lazy" />
                     </a>
                   ) : (

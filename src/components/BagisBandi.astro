@@ -47,15 +47,15 @@ const m = dil === 'tr' ? {
     <div class="grid sm:grid-cols-[auto_minmax(0,1fr)] gap-6 items-center bg-(--color-krem) text-(--color-murekkep) rounded-(--radius-kose) p-5 sm:p-6 shadow-[0_24px_48px_-24px_rgba(0,0,0,.6)]">
       <figure class="mx-auto w-40 sm:w-44 [&_svg]:w-full [&_svg]:h-auto" role="img" aria-label={m.qr} set:html={qr} />
       <div class="min-w-0">
-        <p class="etiket">IBAN</p>
+        <p class="etiket etiket-krem-sabit">IBAN</p>
         <p class="mono text-lg sm:text-xl font-medium select-all break-words" id="bagis-iban">{banka.iban}</p>
-        <p class="mt-1 text-sm text-(--metin-2)">{banka.banka} · BIC <span class="mono">{banka.bic}</span></p>
-        <p class="mt-1 text-sm text-(--metin-2)">{m.acik}: <span class="mono">{aciklama}</span></p>
+        <p class="mt-1 text-sm text-(--color-murekkep)/70">{banka.banka} · BIC <span class="mono">{banka.bic}</span></p>
+        <p class="mt-1 text-sm text-(--color-murekkep)/70">{m.acik}: <span class="mono">{aciklama}</span></p>
         <div class="mt-4 flex flex-wrap gap-2">
           <button type="button" class="dugme dugme-birincil iban-kopyala" data-iban={ibanDuz} data-kopyalandi={m.kopyalandi}>{m.kopyala}</button>
           <a href={yol(dil, 'bagis')} class="dugme border-(--color-murekkep)/35 text-(--color-murekkep) hover:border-(--color-murekkep) hover:text-(--color-murekkep) hover:bg-(--color-murekkep)/5">{m.hepsi}</a>
         </div>
-        <p class="etiket mt-3">{m.qr}</p>
+        <p class="etiket etiket-krem-sabit mt-3">{m.qr}</p>
       </div>
     </div>
   </div>
@@ -65,3 +65,9 @@ const m = dil === 'tr' ? {
     try { await navigator.clipboard.writeText(b.dataset.iban ?? ''); const eski = b.textContent; b.textContent = b.dataset.kopyalandi ?? 'OK'; setTimeout(() => (b.textContent = eski), 2000); } catch {}
   }));
 </script>
+<style>
+  /* IBAN kartının zemini temadan bağımsız her zaman açık (--color-krem) kalıyor;
+     bu yüzden .etiket sınıfının tema-bağımlı rengi (var(--metin-2)) yerine burada
+     sabit koyu bir ton kullanılmalı, aksi halde koyu temada metin okunmaz kalır. */
+  .etiket-krem-sabit { color: color-mix(in srgb, var(--color-murekkep) 70%, transparent); }
+</style>
