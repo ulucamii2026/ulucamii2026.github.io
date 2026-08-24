@@ -37,7 +37,14 @@ const siteLinkleri = [
         </div>
       </div>
       <p class="mt-3 text-sm text-(--metin-2)">{site.dernekAdi} ({site.kisaltma}) · {site.hukukiForm} · KBO/BCE <span class="mono">{site.kbo}</span></p>
-      {site.sosyal.facebook && <p class="mt-1.5 text-sm"><a href={site.sosyal.facebook} rel="noopener" target="_blank">Facebook<span aria-hidden="true"> ↗</span></a></p>}
+      {site.sosyal.facebook && (
+        <p class="mt-2.5">
+          <a href={site.sosyal.facebook} rel="noopener" target="_blank" aria-label="Facebook" title="Facebook"
+             class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#1877F2] hover:opacity-85 transition-opacity">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.85c0-.84.23-1.41 1.44-1.41h1.54V4.85c-.27-.04-1.18-.11-2.24-.11-2.22 0-3.74 1.35-3.74 3.83v2.14H8v2.9h2.44V21h3.06Z"/></svg>
+          </a>
+        </p>
+      )}
     </div>
     <address class="not-italic text-sm leading-6">
       <p class="etiket etiket-vurgu mb-2">{t('footer.iletisim')}</p>
@@ -51,21 +58,25 @@ const siteLinkleri = [
       <ul class="grid grid-cols-2 gap-x-4" role="list">
         {siteLinkleri.map((l) => <li><a href={l.h} rel={l.h === '/admin/' ? 'nofollow' : undefined}>{l.ad}</a></li>)}
       </ul>
-      <p class="etiket mt-4 mb-2">{diyanetBaslik}</p>
-      <div class="flex flex-wrap items-stretch gap-2">
+    </nav>
+  </div>
+  <div class="cetvel">
+    <div class="kapsayici py-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <p class="etiket etiket-vurgu shrink-0">{diyanetBaslik}</p>
+      <div class="flex flex-wrap items-stretch gap-2.5">
         {diyanetLinkler.map((l) => (
           <a href={l.h} rel="noopener" target="_blank" title={l.ad}
-             class="flex items-center rounded-(--radius-kose) border border-(--cizgi) bg-[#f7f3ea] px-3 py-2 no-underline hover:border-(--vurgu) transition-colors">
-            <img src={l.logo} alt={l.ad} width={l.g} height={l.y} class="h-9 w-auto" loading="lazy" decoding="async" />
+             class="flex items-center rounded-xl border border-(--cizgi) bg-[#f7f3ea] px-3 py-1.5 no-underline hover:border-(--vurgu) hover:-translate-y-px transition-all">
+            <img src={l.logo} alt={l.ad} width={l.g} height={l.y} class="h-8 w-auto" loading="lazy" decoding="async" />
           </a>
         ))}
         <a href={kabe.h} rel="noopener" target="_blank" title={kabe.ad}
-           class="flex items-center gap-2 rounded-(--radius-kose) border border-(--cizgi) bg-[#f7f3ea] px-3 py-2 no-underline hover:border-(--vurgu) transition-colors">
+           class="flex items-center gap-2 rounded-xl border border-(--cizgi) bg-[#f7f3ea] px-3 py-1.5 no-underline hover:border-(--vurgu) hover:-translate-y-px transition-all">
           <span class="relative flex h-2.5 w-2.5" aria-hidden="true"><span class="absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-60 animate-ping"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600"></span></span>
           <span class="font-semibold text-[0.85rem] leading-tight text-[#3b2f23]">{dil === 'tr' ? 'Kâbe' : dil === 'en' ? 'Makkah' : 'La Mecque'}<span class="block etiket !text-[#8a7a63]">{dil === 'tr' ? 'CANLI' : dil === 'en' ? 'LIVE' : 'DIRECT'}</span></span>
         </a>
       </div>
-    </nav>
+    </div>
   </div>
   <div class="cetvel">
     <p class="kapsayici py-3 etiket flex flex-wrap justify-between gap-2">
