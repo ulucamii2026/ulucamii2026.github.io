@@ -35,7 +35,16 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
   <SayfaBasligi etiket={m.etiket} baslik={t('nav.yonetim')} altBaslik={m.alt} />
   <div class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
     <div>
-      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4">{m.kurulBaslik}</h2>
+      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4">{m.dinBaslik}</h2>
+      <div class="kart-kagit px-4 py-3 flex items-center gap-4 sm:max-w-[26rem]">
+        <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu)/12 font-serif text-lg font-bold text-(--vurgu)" aria-hidden="true">{basHarf(k.dinGorevlisi.ad)}</span>
+        <span class="min-w-0">
+          <span class="block font-semibold leading-snug">{k.dinGorevlisi.ad}</span>
+          <span class="block etiket normal-case tracking-normal mt-0.5">{k.dinGorevlisi.gorev[dil]}</span>
+        </span>
+      </div>
+
+      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4 mt-10">{m.kurulBaslik}</h2>
       <ol class="grid gap-2 sm:grid-cols-2" role="list">
         {k.uyeler.map((u, i) => (
           <li class:list={['kart-kagit px-4 py-3 flex items-center gap-4', i === 0 && 'sm:col-span-2 border-(--vurgu) bg-(--vurgu)/6']}>
@@ -64,15 +73,6 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
           </li>
         ))}
       </ol>
-
-      <h2 class="etiket etiket-vurgu text-base cetvel pt-4 mb-4 mt-10">{m.dinBaslik}</h2>
-      <div class="kart-kagit px-4 py-3 flex items-center gap-4 sm:max-w-[26rem]">
-        <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu)/12 font-serif text-lg font-bold text-(--vurgu)" aria-hidden="true">{basHarf(k.dinGorevlisi.ad)}</span>
-        <span class="min-w-0">
-          <span class="block font-semibold leading-snug">{k.dinGorevlisi.ad}</span>
-          <span class="block etiket normal-case tracking-normal mt-0.5">{k.dinGorevlisi.gorev[dil]}</span>
-        </span>
-      </div>
 
       <p class="mt-8 text-sm text-(--metin-2) max-w-prose">{m.gorevNot}</p>
     </div>
