@@ -32,6 +32,6 @@ Le cours de Coran (Kur’an-ı Kerim) est enseigné en premier chaque jour ; s�
 
 Les inscriptions se font via le formulaire en ligne suivant :
 
-**[Formulaire d’inscription en ligne à l’école coranique](https://ulucamii.be/ulucamii-kayit/)**
+**[Formulaire d’inscription en ligne à l’école coranique](https://www.ulucamii.be/kayit/)**
 
 Une fois le formulaire complété, vos informations d’inscription nous parviendront directement. Pour toute question, n’hésitez pas à nous contacter.

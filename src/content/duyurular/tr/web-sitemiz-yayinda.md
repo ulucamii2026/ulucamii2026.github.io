@@ -2,8 +2,8 @@
 baslik: Web Sitemiz Yayında
 tarih: 2026-08-22
 ozet: Marche-en-Famenne Ulu Camii’nin yeni web sitesi yayına girdi. Namaz vakitlerinden bağışa, Kur’an kursu kaydından konsolosluk rehberine kadar cemaatimize hizmet veriyor.
-kapak: /media/galeri/cami-24-thumb.webp
-kapakAlt: Marche-en-Famenne Ulu Camii dış cepheden görünüm
+kapak: /media/afisler/web-sitemiz-yayinda.webp
+kapakAlt: Web sitemiz yayında — www.ulucamii.be
 etiketler:
   - web sitesi
   - duyuru
