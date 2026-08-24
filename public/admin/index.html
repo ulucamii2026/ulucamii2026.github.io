@@ -86,9 +86,11 @@
       <style>
         .donem-satir{display:flex;align-items:center;gap:.4rem;margin:0 0 .7rem;flex-wrap:wrap}
         .donem-dugme.secili{background:var(--vurgu,#b5452b);color:#fff;border-color:var(--vurgu,#b5452b)}
-        .grafik{display:flex;align-items:flex-end;gap:2px;height:130px;padding:.6rem .6rem .4rem;border:1px solid var(--cizgi);border-radius:10px;background:var(--zemin-2,transparent);margin-bottom:.9rem}
-        .grafik .cubuk{flex:1;min-width:2px;background:var(--vurgu,#b5452b);border-radius:2px 2px 0 0;opacity:.85}
+        .grafik{display:flex;align-items:flex-end;gap:2px;height:130px;padding:.6rem .6rem .4rem;border:1px solid var(--cizgi);border-radius:10px;background:var(--zemin-2,transparent);margin-bottom:.2rem}
+        .grafik .cubuk{flex:1;min-width:2px;background:var(--vurgu,#b5452b);border-radius:2px 2px 0 0;opacity:.55}
         .grafik .cubuk:hover{opacity:1}
+        .grafik .cubuk.bugun{opacity:1;background:#8f3420}
+        .grafik-eksen{display:flex;justify-content:space-between;font-size:.72rem;color:var(--metin-2);padding:0 .6rem;margin-bottom:.9rem}
         .trafik-izgara{display:grid;gap:1rem;grid-template-columns:1fr;align-items:start}
         @media(min-width:860px){.trafik-izgara{grid-template-columns:3fr 2fr}}
         .yol-alt{color:var(--metin-2);font-size:.78rem}
@@ -101,12 +103,14 @@
         <div class="kart"><span class="etiket">Bugün</span><span class="deger" id="d-bugun">…</span><span class="alt" id="a-dun">Dün: …</span></div>
       </div>
       <div class="donem-satir" role="group" aria-label="Dönem seçimi">
+        <button type="button" class="dugme donem-dugme" data-gun="1">Bugün</button>
         <button type="button" class="dugme donem-dugme" data-gun="7">7 gün</button>
         <button type="button" class="dugme donem-dugme secili" data-gun="30">30 gün</button>
         <button type="button" class="dugme donem-dugme" data-gun="90">90 gün</button>
         <a class="dugme" id="goat-link" href="#" target="_blank" rel="noopener" style="margin-left:auto">GoatCounter ↗</a>
       </div>
       <div class="grafik" id="grafik" aria-label="Günlük ziyaret grafiği"><span class="alt">Yükleniyor…</span></div>
+      <div class="grafik-eksen" id="grafik-eksen"></div>
       <div class="trafik-izgara">
         <div class="tablo-sar">
           <table aria-label="En çok ziyaret edilen sayfalar">
@@ -114,11 +118,25 @@
             <tbody id="trafik-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
           </table>
         </div>
-        <div class="tablo-sar">
-          <table aria-label="Ziyaret kaynakları">
-            <thead><tr><th>Nereden geldiler?</th><th style="text-align:right">Ziyaret</th></tr></thead>
-            <tbody id="kaynak-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
-          </table>
+        <div style="display:grid;gap:1rem;align-content:start">
+          <div class="tablo-sar">
+            <table aria-label="Ziyaret kaynakları">
+              <thead><tr><th>Nereden geldiler?</th><th style="text-align:right">Ziyaret</th></tr></thead>
+              <tbody id="kaynak-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="tablo-sar">
+            <table aria-label="Ziyaretçi ülkeleri">
+              <thead><tr><th>Ülkeler</th><th style="text-align:right">Ziyaret</th></tr></thead>
+              <tbody id="ulke-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="tablo-sar">
+            <table aria-label="Cihaz türleri">
+              <thead><tr><th>Cihazlar</th><th style="text-align:right">Görüntülenme</th></tr></thead>
+              <tbody id="cihaz-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+            </table>
+          </div>
         </div>
       </div>
       <p class="alt" style="font-size:.82rem;color:var(--metin-2)">Sayılar, gizlilik dostu GoatCounter sayacından anlık alınır (24 Ağustos 2026'dan itibaren). Reklam engelleyici kullanan ziyaretçiler sayılamayabilir.</p>
@@ -187,8 +205,16 @@
         catch { return null; }
       }
       async function goatApi(uc, deneme) {
-        const r = await fetch(`${GOAT}/api/v0/${uc}`, { headers: { Authorization: `Bearer ${SIRLAR.goatApi}` }, cache: 'no-store' });
-        if (r.status === 429 && !deneme) { await new Promise((c) => setTimeout(c, 2200)); return goatApi(uc, 1); }
+        deneme = deneme || 0;
+        let r;
+        try {
+          r = await fetch(`${GOAT}/api/v0/${uc}`, { headers: { Authorization: `Bearer ${SIRLAR.goatApi}` }, cache: 'no-store' });
+        } catch (agHata) {
+          // hız sınırı yanıtı CORS başlıksız gelir ve fetch TypeError atar — bekleyip yeniden dene
+          if (deneme < 3) { await new Promise((c) => setTimeout(c, 2000 * (deneme + 1))); return goatApi(uc, deneme + 1); }
+          throw agHata;
+        }
+        if (r.status === 429 && deneme < 3) { await new Promise((c) => setTimeout(c, 2000 * (deneme + 1))); return goatApi(uc, deneme + 1); }
         if (!r.ok) throw new Error('goat ' + r.status);
         return r.json();
       }
@@ -203,31 +229,71 @@
           $('kaynak-govde').innerHTML = '<tr><td colspan="2">Yeniden giriş gerekli</td></tr>';
           return;
         }
+        const bugunStr = tarihStr(new Date());
         const bas = new Date(); bas.setDate(bas.getDate() - (gun - 1));
-        const q = `start=${tarihStr(bas)}`; // end gönderilmez: varsayılan "şu an" (salt tarihli end günün 00:00'ı sayılıp bugünü dışlıyor)
+        const basStr = gun === 1 ? bugunStr : tarihStr(bas);
+        const bas2 = new Date(); bas2.setDate(bas2.getDate() - (2 * gun - 1)); // karşılaştırma için seri 2× dönemle çekilir
+        const q = `start=${basStr}`; // end gönderilmez: varsayılan "şu an" (salt tarihli end günün 00:00'ı sayılıp bugünü dışlıyor)
         try {
-          const [seri, sayfalar, kaynaklar] = await Promise.all([
-            goatApi(`stats/total?${q}`),
+          // hız sınırına takılmamak için istekler ikili gruplar hâlinde, arada kısa nefes
+          const [seri, sayfalar] = await Promise.all([
+            goatApi(`stats/total?start=${gun === 1 ? bugunStr : tarihStr(bas2)}`),
             goatApi(`stats/hits?${q}&limit=10`),
-            goatApi(`stats/toprefs?${q}&limit=8`),
           ]);
-          $('d-donem').textContent = (seri.total ?? 0).toLocaleString('tr-TR');
-          $('a-donem').textContent = `Son ${gun} gün · görüntülenme`;
-          const bugunStr = tarihStr(new Date());
+          await new Promise((c) => setTimeout(c, 500));
+          // ikinci grup düşerse ana bölümler yine gösterilir (kısmî dayanıklılık)
+          let kaynaklar = { stats: [] }, ulkeler = { stats: [] }, cihazlar = { stats: [] }, grup2Hata = false;
+          try {
+            [kaynaklar, ulkeler, cihazlar] = await Promise.all([
+              goatApi(`stats/toprefs?${q}&limit=8`),
+              goatApi(`stats/locations?${q}&limit=6`),
+              goatApi(`stats/sizes?${q}`),
+            ]);
+          } catch (e2) { grup2Hata = true; }
           const dunT = new Date(); dunT.setDate(dunT.getDate() - 1);
-          const g = (seri.stats || []).filter((x) => x.day <= bugunStr); // saat dilimi kaymasıyla gelen yarınki boş günü at
-          const gunluk = (t) => { const k = g.find((x) => x.day === t); return k ? k.daily : 0; };
+          const tum = (seri.stats || []).filter((x) => x.day <= bugunStr); // saat dilimi kaymasıyla gelen yarınki boş günü at
+          const g = tum.filter((x) => x.day >= basStr);
+          const gunluk = (t) => { const k = tum.find((x) => x.day === t); return k ? k.daily : 0; };
+          const donemToplam = g.reduce((a, x) => a + x.daily, 0);
+          $('d-donem').textContent = donemToplam.toLocaleString('tr-TR');
+          if (gun === 1) {
+            $('a-donem').textContent = 'Bugün · görüntülenme';
+          } else {
+            const onceki = tum.filter((x) => x.day < basStr).reduce((a, x) => a + x.daily, 0);
+            let kiyas = '';
+            if (onceki > 0) {
+              const fark = Math.round((donemToplam - onceki) / onceki * 100);
+              kiyas = fark >= 0 ? ` · <span style="color:#266343">▲ %${fark}</span>` : ` · <span style="color:#9f2f2a">▼ %${-fark}</span>`;
+            } else if (donemToplam > 0) { kiyas = ' · <span style="color:#266343">▲ yeni</span>'; }
+            $('a-donem').innerHTML = `Son ${gun} gün · önceki ${gun} gün: ${onceki}${kiyas}`;
+          }
           $('d-bugun').textContent = gunluk(bugunStr);
           $('a-dun').textContent = 'Dün: ' + gunluk(tarihStr(dunT));
-          const maks = Math.max(1, ...g.map((x) => x.daily));
-          $('grafik').innerHTML = g.map((x) => {
-            const et = new Date(x.day + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
-            return `<div class="cubuk" style="height:${Math.max(3, Math.round(x.daily / maks * 100))}%" title="${et} — ${x.daily} görüntülenme"></div>`;
-          }).join('') || '<span class="alt">Bu dönemde kayıt yok</span>';
+          const etiket = (t) => new Date(t + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+          if (gun === 1) {
+            const saatler = (g[0] && g[0].hourly) || [];
+            const maksS = Math.max(1, ...saatler);
+            $('grafik').innerHTML = saatler.map((n, i) =>
+              `<div class="cubuk${i === new Date().getHours() ? ' bugun' : ''}" style="height:${Math.max(3, Math.round(n / maksS * 100))}%" title="${String(i).padStart(2, '0')}:00 — ${n} görüntülenme"></div>`
+            ).join('') || '<span class="alt">Bugün henüz kayıt yok</span>';
+            $('grafik-eksen').innerHTML = saatler.length ? '<span>00:00</span><span>12:00</span><span>23:00</span>' : '';
+          } else {
+            const maks = Math.max(1, ...g.map((x) => x.daily));
+            $('grafik').innerHTML = g.map((x) =>
+              `<div class="cubuk${x.day === bugunStr ? ' bugun' : ''}" style="height:${Math.max(3, Math.round(x.daily / maks * 100))}%" title="${etiket(x.day)} — ${x.daily} görüntülenme"></div>`
+            ).join('') || '<span class="alt">Bu dönemde kayıt yok</span>';
+            $('grafik-eksen').innerHTML = g.length ? `<span>${etiket(g[0].day)}</span><span>${etiket(g[Math.floor(g.length / 2)].day)}</span><span>${etiket(g[g.length - 1].day)}</span>` : '';
+          }
           const hitler = sayfalar.hits || [];
           const enCok = Math.max(1, ...hitler.map((h) => h.count));
           $('trafik-govde').innerHTML = hitler.map((h) => `<tr><td><div>${kacir(h.title || h.path)}</div><div class="yol-alt">${kacir(h.path)}</div><div class="oran"><span style="width:${Math.round(h.count / enCok * 100)}%"></span></div></td><td class="sayi">${h.count}</td></tr>`).join('') || '<tr><td colspan="2">Bu dönemde ziyaret yok</td></tr>';
-          $('kaynak-govde').innerHTML = (kaynaklar.stats || []).map((k) => `<tr><td>${kacir(k.name || 'Doğrudan / adres çubuğu')}</td><td class="sayi">${k.count}</td></tr>`).join('') || '<tr><td colspan="2">Bu dönemde kayıt yok</td></tr>';
+          const bosNot = grup2Hata ? '<tr><td colspan="2">Şu an yüklenemedi — 5 dk içinde kendiliğinden tazelenir</td></tr>' : '<tr><td colspan="2">Bu dönemde kayıt yok</td></tr>';
+          $('kaynak-govde').innerHTML = (kaynaklar.stats || []).map((k) => `<tr><td>${kacir(k.name || 'Doğrudan / adres çubuğu')}</td><td class="sayi">${k.count}</td></tr>`).join('') || bosNot;
+          const ULKE_TR = { Belgium: 'Belçika', Turkey: 'Türkiye', France: 'Fransa', Germany: 'Almanya', Netherlands: 'Hollanda', 'United States': 'ABD', 'United Kingdom': 'Birleşik Krallık', Morocco: 'Fas', Luxembourg: 'Lüksemburg', Switzerland: 'İsviçre', Austria: 'Avusturya' };
+          const bayrak = (kod) => /^[A-Za-z]{2}$/.test(kod || '') ? String.fromCodePoint(...[...kod.toUpperCase()].map((c) => 127397 + c.charCodeAt(0))) : '';
+          $('ulke-govde').innerHTML = (ulkeler.stats || []).map((u) => `<tr><td>${bayrak(u.id)} ${kacir(ULKE_TR[u.name] || u.name || u.id || 'Bilinmiyor')}</td><td class="sayi">${u.count}</td></tr>`).join('') || bosNot;
+          const CIHAZ_TR = { phone: '📱 Telefon', tablet: 'Tablet', desktop: '🖥️ Masaüstü' };
+          $('cihaz-govde').innerHTML = (cihazlar.stats || []).filter((c) => c.count > 0).map((c) => `<tr><td>${kacir(CIHAZ_TR[c.id] || c.id || 'Bilinmiyor')}</td><td class="sayi">${c.count}</td></tr>`).join('') || '<tr><td colspan="2">Bu dönemde kayıt yok</td></tr>';
         } catch (e) {
           $('grafik').innerHTML = `<span class="alt">Trafik verisi alınamadı (${kacir(e.message)})</span>`;
         }
@@ -237,6 +303,9 @@
         b.classList.add('secili');
         trafikYukle(parseInt(b.dataset.gun, 10));
       }));
+      // panel açık kaldıkça trafik 5 dakikada bir tazelenir (sekme görünürken)
+      const seciliGun = () => { const s = document.querySelector('.donem-dugme.secili'); return s ? parseInt(s.dataset.gun, 10) : 30; };
+      setInterval(() => { if (document.visibilityState === 'visible') trafikYukle(seciliGun()); }, 300000);
       if (SIRLAR && SIRLAR.goat) $('goat-link').href = `${GOAT}/?access-token=${SIRLAR.goat}`;
       else $('goat-link').addEventListener('click', (e) => { e.preventDefault(); alert('Ayrıntılı panel bağlantısı için yeniden giriş yapın.'); });
 
