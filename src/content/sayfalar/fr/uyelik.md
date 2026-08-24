@@ -28,7 +28,7 @@ Toute personne **majeure (18 ans accomplis)**, fréquentant la mosquée, adhéra
 
 ## Comment payer la cotisation ?
 
-Le montant de la cotisation annuelle est fixé par les organes de l'association et affiché à la mosquée. Deux possibilités :
+La cotisation annuelle s'élève à **50 €**. Deux possibilités de paiement :
 
 - **Virement bancaire** — avec les coordonnées ci-contre ; en communication, indiquez *« Cotisation 2026 – Nom Prénom »*.
 - **En espèces** — à la mosquée, contre reçu.

@@ -28,7 +28,7 @@ Derneğin amacını benimseyen, tüzüğüne uymayı kabul eden ve cami cemaatin
 
 ## Aidat nasıl ödenir?
 
-Yıllık aidat tutarı dernek organlarınca belirlenir ve camide ilan edilir. İki yol vardır:
+Yıllık aidat **50 €**'dur. İki ödeme yolu vardır:
 
 - **Banka havalesi** — sağdaki hesap bilgileriyle; açıklama kısmına *«Aidat 2026 – Ad Soyad»* yazınız.
 - **Elden** — camide, makbuz karşılığında.

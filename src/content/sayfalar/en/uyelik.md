@@ -28,7 +28,7 @@ Anyone **aged 18 or over** who attends the mosque, embraces the association's pu
 
 ## How to pay the dues?
 
-The annual amount is set by the association's bodies and announced at the mosque. Two options:
+The annual dues are **€50**. Two ways to pay:
 
 - **Bank transfer** — using the account details on the right; in the message field write *"Dues 2026 – Full name"*.
 - **In cash** — at the mosque, against a receipt.

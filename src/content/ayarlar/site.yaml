@@ -21,7 +21,7 @@ site:
     banka: CBC Banque
     hesapAdi: Communauté Turque de la Mosquée
   cumaSaati: ""
-  kursKayitLinki: https://ulucamii.be/ulucamii-kayit/
+  kursKayitLinki: https://www.ulucamii.be/kayit/
   # Apps Script web uygulaması (dernek hesabı ulucamii2026@gmail.com) — dağıtım sonrası /exec adresi buraya yazılır
   servisler:
     basvuru: "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec"
