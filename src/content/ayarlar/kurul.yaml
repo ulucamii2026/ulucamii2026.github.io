@@ -26,18 +26,8 @@ kurul:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
         en: Board Member
-    - ad: Mustafa Topkaya
-      gorev:
-        tr: Yönetim Kurulu Üyesi
-        fr: Membre du conseil
-        en: Board Member
     - ad: Tekin Biçer
       foto: /media/kurul/tekin-bicer.webp
-      gorev:
-        tr: Yönetim Kurulu Üyesi
-        fr: Membre du conseil
-        en: Board Member
-    - ad: Selim Aktan
       gorev:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
@@ -60,6 +50,6 @@ kurul:
       fr: Imam (détaché par la Présidence des Affaires religieuses de Türkiye)
       en: Imam (appointed by the Turkish Presidency of Religious Affairs)
   not:
-    tr: "9 Ocak 2026 Genel Kurulu'nda seçilen ve 2026 yılı içinde güncellenen yönetim kuruludur; ayrılan üyelerin yerine Tekin Biçer ve Selim Aktan kurula katılmıştır. (Son güncelleme: 24 Ağustos 2026)"
-    fr: "Conseil d'administration élu lors de l'Assemblée générale du 9 janvier 2026 et actualisé en 2026 ; Tekin Biçer et Selim Aktan ont rejoint le conseil en remplacement de membres sortants. (Dernière mise à jour : 24 août 2026)"
-    en: "Board elected at the General Assembly of 9 January 2026 and updated during 2026; Tekin Biçer and Selim Aktan joined the board, replacing departing members. (Last updated: 24 August 2026)"
+    tr: "9 Ocak 2026 Genel Kurulu'nda seçilen ve 2026 yılı içinde güncellenen yönetim kuruludur. (Son güncelleme: 24 Ağustos 2026)"
+    fr: "Conseil d'administration élu lors de l'Assemblée générale du 9 janvier 2026 et actualisé en 2026. (Dernière mise à jour : 24 août 2026)"
+    en: "Board elected at the General Assembly of 9 January 2026 and updated during 2026. (Last updated: 24 August 2026)"
