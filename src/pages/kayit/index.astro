@@ -53,9 +53,6 @@ const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online ka
     <div id="mainContent">
       <form id="registrationForm" novalidate autocomplete="on">
         <section class="step step-welcome is-active" data-step="0" aria-labelledby="welcomeTitle">
-          <div class="welcome-mark" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
           <div class="welcome-heading">
             <img class="welcome-logo kurs-logo" src="/kayit/assets/kurs-logo.png" alt="Marche-en-Famenne Ulu Camii Kur’an Kursu logosu" width="128" height="128">
             <h1 id="welcomeTitle" data-i18n="courseTitle">Kur’an-ı Kerim ve Temel Dinî Bilgiler Kursu</h1>
@@ -407,10 +404,6 @@ const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online ka
   .kayit-gomulu .topbar { display: none; }
   /* İlk adımın min yüksekliği site header'ı ile birlikte taşmasın */
   .kayit-gomulu .step { min-height: 0; }
-  /* Kurs logosu: koyu temada krem madalyon zemini (sitenin logo kalıbı) */
+  /* Kurs logosu kendi krem halkasıyla her temada kendini taşır */
   .kayit-gomulu .kurs-logo { border-radius: 9999px; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .kayit-gomulu .kurs-logo { background: var(--color-krem); padding: 5px; }
-  }
-  :root[data-theme="dark"] .kayit-gomulu .kurs-logo { background: var(--color-krem); padding: 5px; }
 </style>
