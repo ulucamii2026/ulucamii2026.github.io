@@ -65,7 +65,11 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
       <ol class="grid gap-2 sm:grid-cols-2" role="list">
         {k.denetim.map((u) => (
           <li class="kart-kagit px-4 py-3 flex items-center gap-4">
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu-2)/12 font-serif text-lg font-bold text-(--vurgu-2)" aria-hidden="true">{basHarf(u.ad)}</span>
+            {u.foto ? (
+              <img src={u.foto} alt="" width="96" height="96" loading="lazy" class="h-12 w-12 shrink-0 rounded-full object-cover border border-(--cizgi)" />
+            ) : (
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--vurgu-2)/12 font-serif text-lg font-bold text-(--vurgu-2)" aria-hidden="true">{basHarf(u.ad)}</span>
+            )}
             <span class="min-w-0">
               <span class="block font-semibold leading-snug">{u.ad}</span>
               <span class="block etiket normal-case tracking-normal mt-0.5">{u.gorev[dil]}</span>

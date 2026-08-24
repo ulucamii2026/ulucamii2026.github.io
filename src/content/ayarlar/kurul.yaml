@@ -2,6 +2,7 @@ kurul:
   donem: "2026 Genel Kurulu · son güncelleme: 24 Ağustos 2026"
   uyeler:
     - ad: Ercan Mola
+      foto: /media/kurul/ercan-mola.webp
       gorev:
         tr: Dernek Başkanı
         fr: Président
@@ -39,6 +40,7 @@ kurul:
         fr: Président du comité de contrôle
         en: Audit Committee Chair
     - ad: Mehmet Kutlu
+      foto: /media/kurul/mehmet-kutlu.webp
       gorev:
         tr: Denetim Kurulu Üyesi
         fr: Membre du comité de contrôle
