@@ -53,7 +53,7 @@ const m = dil === 'tr' ? {
         <p class="mt-1 text-sm text-(--metin-2)">{m.acik}: <span class="mono">{aciklama}</span></p>
         <div class="mt-4 flex flex-wrap gap-2">
           <button type="button" class="dugme dugme-birincil iban-kopyala" data-iban={ibanDuz} data-kopyalandi={m.kopyalandi}>{m.kopyala}</button>
-          <a href={yol(dil, 'bagis')} class="dugme dugme-ikincil">{m.hepsi}</a>
+          <a href={yol(dil, 'bagis')} class="dugme border-(--color-murekkep)/35 text-(--color-murekkep) hover:border-(--color-murekkep) hover:text-(--color-murekkep) hover:bg-(--color-murekkep)/5">{m.hepsi}</a>
         </div>
         <p class="etiket mt-3">{m.qr}</p>
       </div>

@@ -17,10 +17,10 @@ const m = {
   en: { etiket: 'Mosque', pdfBaslik: 'Posters (PDF)', pdfAlt: 'You can download the A3 poster displayed at the mosque entrance in four languages.', kaynak: 'Text: Diyanet Foundation of Belgium — June 2026 revision.' },
 }[dil];
 const pdfler = [
-  { ad: 'Türkçe', dosya: '/media/cami-adabi/cami-adabi-tr.pdf' },
-  { ad: 'Français', dosya: '/media/cami-adabi/cami-adabi-fr.pdf' },
-  { ad: 'English', dosya: '/media/cami-adabi/cami-adabi-en.pdf' },
-  { ad: 'العربية', dosya: '/media/cami-adabi/cami-adabi-ar.pdf' },
+  { ad: 'Türkçe', dil: 'tr', dosya: '/media/cami-adabi/cami-adabi-tr.pdf' },
+  { ad: 'Français', dil: 'fr', dosya: '/media/cami-adabi/cami-adabi-fr.pdf' },
+  { ad: 'English', dil: 'en', dosya: '/media/cami-adabi/cami-adabi-en.pdf' },
+  { ad: 'العربية', dil: 'ar', dosya: '/media/cami-adabi/cami-adabi-ar.pdf' },
 ];
 ---
 <Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama}>
@@ -37,7 +37,7 @@ const pdfler = [
         <li class="bg-(--zemin)">
           <a href={p.dosya} target="_blank" rel="noopener" class="group flex items-center gap-3 px-4 py-4 no-underline text-(--metin) hover:bg-(--zemin-3) transition-colors h-full">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="shrink-0 text-(--vurgu)" aria-hidden="true"><path d="M14 3v5h5M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M9 13h6M9 17h6"/></svg>
-            <span class="font-semibold text-[0.95rem]">{p.ad}<span class="block etiket mt-0.5">PDF · A3</span></span>
+            <span class:list={['font-semibold', p.dil === 'ar' ? 'text-[1.2rem] leading-none' : 'text-[0.95rem]']} lang={p.dil} dir="ltr">{p.ad}<span class="block etiket mt-0.5" lang={dil}>PDF · A3</span></span>
           </a>
         </li>
       ))}

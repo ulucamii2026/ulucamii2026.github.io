@@ -10,7 +10,7 @@ const bugun = Astro.props.bugunIdx ?? haftaGunu(new Date());
 const gunler = dil === 'tr' ? ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'] : dil === 'en' ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] : ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 const kisa = dil === 'tr' ? ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'] : dil === 'en' ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] : ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 const bosGun = dil === 'tr' ? 'Beş vakit namaz' : dil === 'en' ? 'Five daily prayers' : 'Cinq prières quotidiennes';
-const bugunEtiket = dil === 'tr' ? 'Bugün' : dil === 'en' ? 'Today' : 'Aujourd’hui';
+const bugunEtiket = dil === 'tr' ? 'Bugün' : dil === 'en' ? 'Today' : 'Auj.';
 const ikonSec = (s?: string) => (s === 'kurankursu' || s === 'irsat' ? 'kurs' : s === 'namaz' ? 'hutbe' : 'takvim');
 // program içeriği (site verisi) yalnız tr/fr sağlıyor; İngilizcede Fransızcaya düşer (içerik src/content kapsam dışı)
 const icerikDil = dil === 'en' ? 'fr' : dil;
