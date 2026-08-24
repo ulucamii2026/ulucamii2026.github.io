@@ -5,14 +5,18 @@ aciklama: Marche-en-Famenne Ulu Camii’nde ibadet huzuru ve kardeşlik ahlakı 
 guncelleme: 2026-07-27
 ---
 
-> بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحيمِ ﴿ وَاَنَّ الْمَسَاجِدَ لِلّٰهِ فَلَا تَدْعُوا مَعَ اللّٰهِ اَحَداً ﴾
->
-> "Şüphesiz mescitler yalnızca Allah'a aittir. O hâlde Allah ile birlikte hiç kimseye ibadet etmeyin." (Cin Suresi, 72/18)
->
-> ﴿ اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ ﴾
->
-> "Camileri yalnız Allah'a iman eden, âhiret gününe inanan, namazı dosdoğru kılan, zekâtı veren ve Allah'tan başkasından korkmayanlar imar eder." (Tevbe Suresi, 9/18)
+<figure class="ayet">
+<p lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحيمِ</p>
+<p lang="ar" dir="rtl">﴿ وَاَنَّ الْمَسَاجِدَ لِلّٰهِ فَلَا تَدْعُوا مَعَ اللّٰهِ اَحَداً ﴾</p>
+<p class="meal">“Şüphesiz mescitler yalnızca Allah’a aittir. O hâlde Allah ile birlikte hiç kimseye ibadet etmeyin.”</p>
+<figcaption class="etiket">Cin Sûresi, 72/18</figcaption>
+</figure>
 
+<figure class="ayet">
+<p lang="ar" dir="rtl">﴿ اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ ﴾</p>
+<p class="meal">“Camileri yalnız Allah’a iman eden, âhiret gününe inanan, namazı dosdoğru kılan, zekâtı veren ve Allah’tan başkasından korkmayanlar imar eder.”</p>
+<figcaption class="etiket">Tevbe Sûresi, 9/18</figcaption>
+</figure>
 
 ## Amaç ve Kapsam
 
@@ -70,29 +74,13 @@ Cami adabına ve kurallarına uymanın, imanımızın bir gereği olduğunu, bir
 
 - Vaaz ve hutbede hatibin herhangi bir ifadesinin yanlış olduğunun düşünülmesi durumunda fevri itiraz, öfke ve yüksek sesle bağırarak tepki vermekten kaçınmalıyız. Bu gibi durumlarda konuyu daha sonra uygun bir ortamda ve münasip bir üslupla dile getirebiliriz.
 
-<table style="width:87%;">
+<figure class="ayet">
+<p lang="ar" dir="rtl">أَحَبُّ الْبِلَادِ إِلَى اللهِ مَسَاجِدُهَا</p>
+<p class="meal">“Allah’a şehirlerin en sevimli yerleri, mescitleridir.”</p>
+<figcaption class="etiket">Müslim, Mesâcid 288</figcaption>
+</figure>
 
-<colgroup>
-
-<col style="width: 87%" />
-
-</colgroup>
-
-<tbody>
-
-<tr>
-
-<td style="text-align: center;"><p><span dir="rtl">﴿ أَحَبُّ الْبِلَادِ إِلَى اللهِ مَسَاجِدُهَا ﴾</span></p>
-
-<p><em>"Allah'a şehirlerin en sevimli yerleri, mescitleridir."</em> <strong>(Müslim, Mesacid 288)</strong></p></td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-> Yüce Rabbimizden, camimizde ibadetlerimize samimiyet ve huzurla devam edebilmeyi, birlik ve beraberliğimizi pekiştirebilmeyi ve nice bereketli etkinlikler yapabilmeyi dileriz. Anlayışınız için siz değerli cemaatimize ve misafirlerimize teşekkür ederiz.
+Yüce Rabbimizden, camimizde ibadetlerimize samimiyet ve huzurla devam edebilmeyi, birlik ve beraberliğimizi pekiştirebilmeyi ve nice bereketli etkinlikler yapabilmeyi dileriz. Anlayışınız için siz değerli cemaatimize ve misafirlerimize teşekkür ederiz.
 
 **Cami Yönetim Kurulu**
 

@@ -5,14 +5,18 @@ aciklama: The rules of conduct (adab) to observe at the Ulu Mosque of Marche-en-
 guncelleme: 2026-07-27
 ---
 
-> بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحيمِ ﴿ وَاَنَّ الْمَسَاجِدَ لِلّٰهِ فَلَا تَدْعُوا مَعَ اللّٰهِ اَحَداً ﴾
->
-> “Indeed, the mosques belong to Allah alone, so do not worship anyone alongside Him.” (Surah al‑Jinn, 72:18)
->
-> ﴿ اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ ﴾
->
-> “The mosques of Allah are maintained only by those who believe in Allah and the Last Day, establish prayer, give Zakat, and fear none but Allah.” (Surah at‑Tawbah, 9:18)
+<figure class="ayet">
+<p lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحيمِ</p>
+<p lang="ar" dir="rtl">﴿ وَاَنَّ الْمَسَاجِدَ لِلّٰهِ فَلَا تَدْعُوا مَعَ اللّٰهِ اَحَداً ﴾</p>
+<p class="meal">“Indeed, the mosques belong to Allah alone, so do not worship anyone alongside Him.”</p>
+<figcaption class="etiket">Surah al-Jinn, 72:18</figcaption>
+</figure>
 
+<figure class="ayet">
+<p lang="ar" dir="rtl">﴿ اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ ﴾</p>
+<p class="meal">“The mosques of Allah are maintained only by those who believe in Allah and the Last Day, establish prayer, give Zakat, and fear none but Allah.”</p>
+<figcaption class="etiket">Surah at-Tawbah, 9:18</figcaption>
+</figure>
 
 ## Purpose and Scope
 
@@ -70,27 +74,11 @@ Let us not forget that observing mosque etiquette and its rules is a requirement
 
 - Should we feel that some statement made by the preacher during the religious talk or the sermon is mistaken, we must avoid reacting with impulsive objection, anger or raised voices. In such cases, we may raise the matter later, in a suitable setting and in an appropriate manner.
 
-<table style="width:86%;">
-
-<colgroup>
-
-<col style="width: 86%" />
-
-</colgroup>
-
-<tbody>
-
-<tr>
-
-<td style="text-align: center;"><p><span dir="rtl">﴿ أَحَبُّ الْبِلَادِ إِلَى اللهِ مَسَاجِدُهَا ﴾</span></p>
-
-<p><em>“The most beloved of places to Allah are the mosques.”</em> <strong>(Muslim, Masajid 288)</strong></p></td>
-
-</tr>
-
-</tbody>
-
-</table>
+<figure class="ayet">
+<p lang="ar" dir="rtl">أَحَبُّ الْبِلَادِ إِلَى اللهِ مَسَاجِدُهَا</p>
+<p class="meal">“The most beloved of places to Allah are the mosques.”</p>
+<figcaption class="etiket">Muslim, Masajid 288</figcaption>
+</figure>
 
 We pray to our Almighty Lord that we may continue our acts of worship in our mosque with sincerity and tranquillity, strengthen our unity and solidarity, and carry out many more blessed activities. We thank our esteemed congregation and guests for their understanding.
 

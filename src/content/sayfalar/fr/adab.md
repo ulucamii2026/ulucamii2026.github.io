@@ -5,18 +5,22 @@ aciklama: Les règles de conduite (adab) à observer à la mosquée Ulu Camii de
 guncelleme: 2026-07-27
 ---
 
-> بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحيمِ ﴿ وَاَنَّ الْمَسَاجِدَ لِلّٰهِ فَلَا تَدْعُوا مَعَ اللّٰهِ اَحَداً ﴾
->
-> « Les mosquées sont consacrées à Allah : n'invoquez donc personne avec Allah. » (Sourate Al‑Jinn, 72/18)
->
-> ﴿ اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ ﴾
->
-> « Ne fréquentent et n'entretiennent les mosquées d'Allah que ceux qui croient en Allah et au Jour dernier, accomplissent la prière, acquittent la Zakat et ne craignent qu'Allah. » (Sourate At‑Tawbah, 9/18)
+<figure class="ayet">
+<p lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحيمِ</p>
+<p lang="ar" dir="rtl">﴿ وَاَنَّ الْمَسَاجِدَ لِلّٰهِ فَلَا تَدْعُوا مَعَ اللّٰهِ اَحَداً ﴾</p>
+<p class="meal">« Les mosquées sont consacrées à Allah : n’invoquez donc personne avec Allah. »</p>
+<figcaption class="etiket">Sourate Al-Jinn, 72/18</figcaption>
+</figure>
 
+<figure class="ayet">
+<p lang="ar" dir="rtl">﴿ اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ ﴾</p>
+<p class="meal">« Ne fréquentent et n’entretiennent les mosquées d’Allah que ceux qui croient en Allah et au Jour dernier, accomplissent la prière, acquittent la Zakat et ne craignent qu’Allah. »</p>
+<figcaption class="etiket">Sourate At-Tawbah, 9/18</figcaption>
+</figure>
 
 ## Objet et Portée
 
-Les mosquées sont des lieux sacrés où nous adorons Allah, trouvons la paix et nous réunissons dans un esprit de fraternité. Afin de préserver la dignité de nos mosquées, d'accomplir nos actes d'adoration dans la sérénité et de préserver l'éthique de la fraternité, il existe des règles que chacun d'entre nous est tenu de respecter. Ces règles sont désignées dans notre tradition islamique sous le terme de «**règles de bienséance à la mosquée** ».
+Les mosquées sont des lieux sacrés où nous adorons Allah, trouvons la paix et nous réunissons dans un esprit de fraternité. Afin de préserver la dignité de nos mosquées, d'accomplir nos actes d'adoration dans la sérénité et de préserver l'éthique de la fraternité, il existe des règles que chacun d'entre nous est tenu de respecter. Ces règles sont désignées dans notre tradition islamique sous le terme de « **règles de bienséance à la mosquée** ».
 
 La responsabilité première concernant l'accomplissement conforme de nos actes d'adoration, de nos services et de nos activités, le maintien de la paix et de la sécurité de la mosquée, ainsi que l'efficacité des services dispensés dans ses locaux incombe aux responsables religieux et au comité de gestion de la mosquée. Il convient donc que nos fidèles se conforment à leurs orientations et à leurs conseils.
 
@@ -70,27 +74,11 @@ N'oublions pas que le respect des règles de bienséance et du règlement de la 
 
 - Si une affirmation de l'orateur durant le prêche ou le sermon semble incorrecte, évitons toute objection impulsive, réaction de colère ou interruption à voix haute. Dans de tels cas, nous pouvons aborder le sujet ultérieurement, dans un cadre approprié et de manière courtoise.
 
-<table style="width:86%;">
-
-<colgroup>
-
-<col style="width: 86%" />
-
-</colgroup>
-
-<tbody>
-
-<tr>
-
-<td style="text-align: center;"><p><span dir="rtl">﴿ أَحَبُّ الْبِلَادِ إِلَى اللهِ مَسَاجِدُهَا ﴾</span></p>
-
-<p><em>« Les lieux les plus aimés d'Allah dans les villes sont leurs mosquées. »</em> <strong>(Mouslim, Masajid 288)</strong></p></td>
-
-</tr>
-
-</tbody>
-
-</table>
+<figure class="ayet">
+<p lang="ar" dir="rtl">أَحَبُّ الْبِلَادِ إِلَى اللهِ مَسَاجِدُهَا</p>
+<p class="meal">« Les lieux les plus aimés d’Allah dans les villes sont leurs mosquées. »</p>
+<figcaption class="etiket">Mouslim, Masajid 288</figcaption>
+</figure>
 
 Nous prions le Seigneur Tout-Puissant de nous accorder de poursuivre nos actes d'adoration dans notre mosquée avec sincérité et sérénité, de renforcer notre unité et notre solidarité, et de réaliser de nombreuses activités bénies. Nous remercions nos chers fidèles et nos visiteurs pour leur compréhension.
 
