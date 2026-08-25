@@ -180,6 +180,7 @@ export interface Metinler {
   sahitImzaAciklama: string;
   sahitEksikNot: string;
   sahitAdBos: string;
+  sahitImzaBos: string;
   sahitOzet: string;
   sahitYok: string;
 
@@ -321,6 +322,7 @@ export function metinler(dil: Dil): Metinler {
       sahitImzaAciklama: 'Le témoin signe lui-même dans le cadre ci-dessous.',
       sahitEksikNot: 'Si vous ne renseignez pas de témoin, les emplacements seront complétés par les responsables de notre mosquée.',
       sahitAdBos: 'Indiquez également le nom du témoin qui a signé.',
+      sahitImzaBos: 'Faites signer ce témoin : sans signature, il ne peut pas figurer sur l’attestation.',
       sahitOzet: 'Témoins',
       sahitYok: 'Aucun témoin renseigné — la mosquée s’en charge.',
 
@@ -468,6 +470,7 @@ export function metinler(dil: Dil): Metinler {
       sahitImzaAciklama: 'The witness signs in the box below.',
       sahitEksikNot: 'If you do not add witnesses, the mosque staff will sign as witnesses.',
       sahitAdBos: 'Please also enter the name of the witness who signed.',
+      sahitImzaBos: 'Please collect this witness’s signature: without it they cannot appear on the certificate.',
       sahitOzet: 'Witnesses',
       sahitYok: 'No witnesses entered — the mosque will provide them.',
 
@@ -614,6 +617,7 @@ export function metinler(dil: Dil): Metinler {
     sahitImzaAciklama: 'Şahit, aşağıdaki kutuya kendi imzasını atsın.',
     sahitEksikNot: 'Şahit girmezseniz belgedeki şahit alanları camimizin görevlilerince tamamlanır.',
     sahitAdBos: 'İmza atan şahidin adını da yazın.',
+    sahitImzaBos: 'Bu şahidin imzasını da alın; imzasız şahit belgeye yazılamaz.',
     sahitOzet: 'Şahitler',
     sahitYok: 'Şahit girilmedi — camimiz tamamlayacak.',
 

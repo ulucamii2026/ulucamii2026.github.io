@@ -182,8 +182,10 @@ export async function ek9Uret(girdi) {
     const [x, taban] = S2_SAG[anahtar];
     const genislik = S2_SAG_SINIR - (x + 7);
     if (satirSayisi === 1) { yaz(s2, kisalt(deger, boyut, genislik), x + 7, taban, boyut, ust2); return; }
+    // İlk satır etiketin sağında durur; alt satırlar İngilizce etiketin ALTINDAN başlar
+    // (aksi hâlde uzun adresin ikinci satırı "Adress" yazısının üstüne biniyordu).
     const satirlar = sar(deger, boyut, genislik, satirSayisi);
-    satirlar.forEach((s, i) => yaz(s2, s, i === 0 ? x + 7 : 448, taban + i * 12, boyut, ust2));
+    satirlar.forEach((s, i) => yaz(s2, s, i === 0 ? x + 7 : 448, taban + (i === 0 ? 0 : 11 + i * 12), boyut, ust2));
   };
   sagYaz('oncekiDin', v.oncekiDin);
   sagYaz('ihtidaSebebi', v.ihtidaSebebi, 1, 8.6);   // alanın altında EN etiketi var: tek satır

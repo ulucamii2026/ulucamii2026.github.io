@@ -382,9 +382,12 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
     }
     if (adim === 6) {
       if (!durum.imzaDataUrl) yeniHatalar.imza = m.imzaBos;
-      // Şahitlik isteğe bağlıdır; ama imza atılmışsa belgeye yazılacak ad da gerekir.
+      // Şahitlik isteğe bağlıdır; ama bir şahit için ad ya da imza girildiyse ikisi de gerekir:
+      // imzasız şahit EK-9'a yazılamaz, adsız imza da kime ait olduğu belirsiz kalır.
       if (durum.sahit1Imza && !durum.sahit1Ad.trim()) yeniHatalar.sahit1Ad = m.sahitAdBos;
       if (durum.sahit2Imza && !durum.sahit2Ad.trim()) yeniHatalar.sahit2Ad = m.sahitAdBos;
+      if (durum.sahit1Ad.trim() && !durum.sahit1Imza) yeniHatalar.sahit1Imza = m.sahitImzaBos;
+      if (durum.sahit2Ad.trim() && !durum.sahit2Imza) yeniHatalar.sahit2Imza = m.sahitImzaBos;
     }
     setHatalar(yeniHatalar);
     return Object.keys(yeniHatalar).length === 0;
@@ -802,6 +805,7 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
                         m={m}
                         baslik={m.sahitImzaBaslik(sira)}
                         aciklama={m.sahitImzaAciklama}
+                        hata={hatalar[imzaAlani]}
                       />
                     </div>
                   );
