@@ -7,7 +7,7 @@ kapakAlt: Web sitemiz yayında — www.ulucamii.be
 etiketler:
   - web sitesi
   - duyuru
-oneCikan: true
+oneCikan: false
 ---
 
 Saygıdeğer Marche-en-Famenne cemaatimiz,

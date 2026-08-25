@@ -7,7 +7,7 @@ kapakAlt: Notre site internet est en ligne — www.ulucamii.be
 etiketler:
   - site internet
   - annonce
-oneCikan: true
+oneCikan: false
 ---
 
 Chère communauté de Marche-en-Famenne,

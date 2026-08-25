@@ -7,7 +7,7 @@ kapakAlt: Affiche du programme de la nuit du Mawlid 2026
 etiketler:
   - nuit bénie
   - programme
-oneCikan: true
+oneCikan: false
 taslak: false
 ---
 

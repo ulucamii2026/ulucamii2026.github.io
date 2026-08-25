@@ -7,7 +7,7 @@ kapakAlt: Mevlid Kandili 2026 program afişi
 etiketler:
   - kandil
   - program
-oneCikan: true
+oneCikan: false
 taslak: false
 ---
 

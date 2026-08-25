@@ -108,6 +108,20 @@ if (DENE) {
   const paket = JSON.parse(readFileSync(PAKET, 'utf8'));
   if (!paket.gh) { console.error('HATA: pakette `gh` (GitHub anahtarı) yok.'); process.exit(2); }
 
+  /* Terminalden şifre almak, tarayıcıdaki girişle arada bir kodlama farkı doğurabilir ve
+     gizli girişte bu görünmez. Tarayıcı aracı aynı kod yolunu kullandığı için tercih edilir. */
+  console.log('\n  ── DİKKAT ────────────────────────────────────────────────────');
+  console.log('  Şifre burada terminalden alınır; yazdığınız ekranda görünmez.');
+  console.log('  Daha güvenli yol, şifreyi tarayıcıda belirlemektir:');
+  console.log('    https://ulucamii.be/admin/sifre-araci.html');
+  console.log('  Orada şifre, giriş sayfasıyla BİREBİR aynı kod yolundan geçer.');
+  console.log('  ──────────────────────────────────────────────────────────────');
+  const onay = (await sor('  Yine de terminalden devam edilsin mi? (evet/hayır) : ')).trim().toLowerCase();
+  if (!/^(e|evet|y|yes)$/.test(onay)) {
+    console.log('\n  Vazgeçildi — hiçbir şey değişmedi. Tarayıcı aracını kullanın.\n');
+    process.exit(0);
+  }
+
   console.log('\nPanel erişim paketi YENİ bir şifreyle yeniden şifrelenecek.');
   console.log('Şifre iki kez sorulacak; ikisi aynı değilse hiçbir şey değişmez.\n');
   const kullanici = (await sor('Kullanıcı adı      : ')).trim();

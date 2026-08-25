@@ -63,6 +63,21 @@ if (!paket.gh) { console.error('HATA: pakette `gh` (GitHub anahtarı) yok — pa
 
 console.log('\nPanel erişim paketi yeniden şifrelenecek.');
 console.log('Panele giriş yaparken kullandığınız kullanıcı adı ve şifre isteniyor.\n');
+/* Şifre burada TERMİNALDEN alınır. 25 Ağustos 2026'da bu yol yüzünden bir gün kaybedildi:
+   gizli girişte ne yazdığınız görünmez, Windows kabuğu ile tarayıcı arasındaki kodlama farkı
+   fark edilmeden pakete işlenebilir. Tarayıcı aracı bu sınıfı tamamen ortadan kaldırır. */
+console.log('  ── DİKKAT ────────────────────────────────────────────────────');
+console.log('  Şifre burada terminalden alınır; yazdığınız ekranda görünmez.');
+console.log('  Daha güvenli yol, şifreyi tarayıcıda belirlemektir:');
+console.log('    https://ulucamii.be/admin/sifre-araci.html');
+console.log('  Orada şifre, giriş sayfasıyla BİREBİR aynı kod yolundan geçer.');
+console.log('  ──────────────────────────────────────────────────────────────');
+const onay = (await sor('  Yine de terminalden devam edilsin mi? (evet/hayır) : ')).trim().toLowerCase();
+if (!/^(e|evet|y|yes)$/.test(onay)) {
+  console.log('\n  Vazgeçildi — hiçbir şey değişmedi. Tarayıcı aracını kullanın.\n');
+  process.exit(0);
+}
+
 const kullanici = (await sor('Kullanıcı adı : ')).trim();
 const sifre = await gizliSor('Şifre         : ');
 if (!kullanici || !sifre) { console.error('HATA: kullanıcı adı ve şifre gerekli.'); process.exit(1); }
