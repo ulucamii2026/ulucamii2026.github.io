@@ -13,8 +13,13 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v9.gs` | **Şu an canlıda olan sürüm** (24 Ağustos 2026'da dağıtıldı) |
-| `ulucamii-Kod-v10.gs` | Hazır, **dağıtılmadı** — aşağıdaki dört düzeltmeyi içerir |
+| `ulucamii-Kod-v10.gs` | **Canlıda** — 25 Ağustos 2026'da dağıtıldı |
+| `ulucamii-Kod-v9.gs` | Önceki sürüm, karşılaştırma için duruyor |
+
+> **Anahtarlar bu dosyalarda YOKTUR.** Depo public olduğu için panel API anahtarı koddan
+> çıkarıldı; yerinde `SCRIPT-PROPERTIES-ICINDE` yer tutucusu durur. Gerçek değer Apps
+> Script'in **komut dosyası özelliklerinde** (`PANEL_ANAHTARI`). Doğrulandı: yer tutucu
+> dizeyle yapılan istek `yetkisiz` döner, gerçek anahtarla çalışır.
 
 ## v10'daki düzeltmeler (25 Ağustos 2026 denetimi)
 
@@ -22,10 +27,9 @@ Dördü de dünkü çok ajanlı hata avında doğrulanmış bulgulardır; ayrın
 `D:\app\marche-cami-sitesi\dokumanlar\16_HATA_AVI_25AGU2026.md`.
 
 1. **Panel API anahtarı Script Properties'ten okunuyor** (bulgu 1). Kaynak kodda düz metin
-   duruyordu. Kod, `PANEL_ANAHTARI` özelliği tanımlı değilse mevcut değere düşer — bu sürüm
-   tek başına dağıtılabilir, panel çalışmaya devam eder. Dağıtımdan sonra:
-   *Apps Script → Proje ayarları → Komut dosyası özellikleri → `PANEL_ANAHTARI` = `UCP-…`*
-   eklenip koddaki yedek değer bir sonraki sürümde silinmelidir.
+   duruyordu. `PANEL_ANAHTARI` özelliği eklendi ve koddaki gerçek değer yer tutucuyla
+   değiştirildi — **tamamlandı**. Proje zaten bu mekanizmayı kullanıyordu (`TABLO_ID`,
+   `KLASOR_ID`, `IHTIDA_TABLO_ID`, `IHTIDA_KLASOR_ID`).
 2. **Görsel okunamadığında sebebi kayda geçiyor** (bulgu 4). 4 MB üstü ya da bozuk bir
    görsel sessizce boş dönüyordu; artık `console.error` ile loglanıyor ve panele
    `okunamayanGorseller` alanıyla bildiriliyor.

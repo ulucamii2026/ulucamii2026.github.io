@@ -37,7 +37,7 @@ function doGet(e) {
    YÖNETİM PANELİ LİSTE API'Sİ (v7) — yalnız gizli anahtarla, SALT OKUR
    Panel: https://ulucamii.be/admin/  (anahtar şifreli pakette taşınır)
    =================================================================== */
-const PANEL = { anahtar: "UCP-0ab0a87af595a967176c069354d2d378" };
+const PANEL = { anahtar: "SCRIPT-PROPERTIES-ICINDE" };
 
 function panelListeIsle(e) {
   try {

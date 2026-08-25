@@ -30,7 +30,7 @@
 function doGet(e) {
   if (e && e.parameter && e.parameter.islem === "liste") return panelListeIsle(e);
   if (e && e.parameter && e.parameter.islem === "belge") return panelBelgeIsle(e);
-  return json({ ok: true, servis: "ulucamii-alici", surum: 9, zaman: new Date().toISOString() });
+  return json({ ok: true, servis: "ulucamii-alici", surum: 10, zaman: new Date().toISOString() });
 }
 
 /* ===================================================================
@@ -49,7 +49,7 @@ function panelAnahtariniOku() {
   } catch (hata) {
     console.error("Script Properties okunamadi, gomulu anahtara donuluyor: " + hata);
   }
-  return "UCP-0ab0a87af595a967176c069354d2d378";
+  return "SCRIPT-PROPERTIES-ICINDE";
 }
 const PANEL = { anahtar: panelAnahtariniOku() };
 
