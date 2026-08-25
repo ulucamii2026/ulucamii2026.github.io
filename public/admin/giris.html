@@ -57,7 +57,7 @@
     </main>
     <script>
       // Şifreli GitHub erişim anahtarı — scripts/admin-sifrele.mjs ile üretilir; kullanıcı adı + şifre olmadan çözülemez
-      const SIFRELI = {"v":1,"iter":600000,"salt":"dS0JnsEuff129Og0EafqTA==","iv":"X6yGvjjbtwiDsQiQ","ct":"NN8373x0Zt3rmkROo/uQEJBXXUtRClzfpIrB51RoMWQQXTi4rEqA0h3JBDgFMGV7Ymg8IrCZMptBwkcUTLsiA4aQ/QDlPYt+Ct7OY1ZIQqOLS9VaxrA9puZCLWLO6i1Xo4qRCNQ3NmiimVgZRTHCQMvDtt3kq2AE1Qms/91SuL+DLFtS+kHURmP7jTiC4hMb0mkOaVlrIhe8T0KAqUht/xHMAk11YFr2NI1Mv4xDX7IpdVsog60AyYnngXKQ/OokCQ5i7ZulNATAjOTm/i08ibQd1U70n8zXvXEC2YVs1wZE5v7TUZW8TRWeWSHf"};
+      const SIFRELI = {"v":1,"iter":600000,"salt":"DNoOQuRGOa8ireQuef3bRg==","iv":"fYYtlRu3AHW++/3H","ct":"6w8v972yQEP6pl9vu66MH8yTushZC46OU+Bk71dTlAvVLMUgaQ5Xv3LbdHuL3Po10Nx9aadQrazBNuSozdTlTV3su59HDuo0KLgOaF55iFT9tz2mcv84eOhkpMYjqf6o0nQHMA5ufqD57gMJlJU/V9yuOePlZBFsZ5RppRaXv+0nI+LyChe6sFiIREAKLZ8nXloH/4ads4dZFtwl+cYhbW1+evTHFlxeWhiZRfgzmbMiE+AwdarzMe0eWyHuSHKKh1QZqAOjF/ZgklgPTStbS/uF2prZGY+poYQnxA=="};
       const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
       const form = document.getElementById('form'), hata = document.getElementById('hata'), dugme = document.getElementById('dugme');
       const hataGoster = (m) => { hata.textContent = m; hata.dataset.acik = '1'; };

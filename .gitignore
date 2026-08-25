@@ -6,3 +6,6 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+
+# Playwright MCP ekran goruntuleri ve anlik ciktilar
+.playwright-mcp/
