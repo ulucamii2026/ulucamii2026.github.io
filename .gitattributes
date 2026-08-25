@@ -1,0 +1,21 @@
+# Depo tekdüze LF kullanır. Gerekçe: dosyaların bir kısmı CRLF, bir kısmı LF idi; VS Code
+# Windows'ta CRLF, komut satırı araçları (npm, sed, node) LF yazdığı için her düzenleme
+# içeriği değişmemiş satırları da "değişmiş" gösteriyordu. 25 Ağustos 2026'da tek seferde
+# normalize edildi (`git add --renormalize .`).
+* text=auto eol=lf
+
+# İkili dosyalar dönüştürülmez.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.webp   binary
+*.ico    binary
+*.pdf    binary
+*.gz     binary
+*.zip    binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.wasm   binary
+*.traineddata binary
