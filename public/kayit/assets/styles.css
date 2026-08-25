@@ -1013,6 +1013,22 @@ main {
   color: var(--success);
 }
 
+/* Kilitli onay kutusuna tiklandiginda "once sozlesmeyi okuyun" uyarisini belirginlestirir. */
+.scroll-status.dikkat {
+  animation: sozlesme-dikkat 1.6s ease-in-out;
+}
+
+@keyframes sozlesme-dikkat {
+  0%, 100% { transform: none; color: var(--gold-700); }
+  12%, 44% { transform: translateX(-4px); color: var(--pine-800, #8a3a26); }
+  28%, 60% { transform: translateX(4px); color: var(--pine-800, #8a3a26); }
+  76% { transform: none; color: var(--pine-800, #8a3a26); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-status.dikkat { animation: none; color: var(--pine-800, #8a3a26); }
+}
+
 .contract-check {
   margin-top: 8px;
 }

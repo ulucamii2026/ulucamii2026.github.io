@@ -367,15 +367,31 @@
     scheduleSave();
   }
 
+  /* Onay kutusunu yeniden kilitler. enableContractAcceptance()'in karsitidir:
+     olmadigi surece kutu bir kez acildiktan sonra (ornegin form sifirlandiginda)
+     acik kaliyor ve veli, sozlesmeyi okumadan isaretleyip "Devam"da anlamsiz bir
+     hata aliyordu. */
+  function disableContractAcceptance() {
+    const checkbox = document.getElementById('contractAccepted');
+    if (!checkbox) return;
+    app.state.contractRead = false;
+    app.state.contractAccepted = false;
+    checkbox.disabled = true;
+    checkbox.checked = false;
+    document.getElementById('contractCheckLabel').classList.add('is-disabled');
+    const status = document.getElementById('contractScrollStatus');
+    status.classList.remove('is-complete');
+    status.lastElementChild.textContent = app.t('contractScrollHint');
+  }
+
   function updateContractScroll() {
     const reader = document.getElementById('contractReader');
+    // Bolum gizliyken tum olculer 0'dir; bu durumda "sonuna ulasildi" sanilip kutu
+    // erkenden acilirdi. Gorunur degilse karar verilmez.
+    if (!reader || reader.clientHeight === 0) return;
     const reached = reader.scrollHeight - reader.scrollTop - reader.clientHeight <= 12;
     if (app.state.contractRead || reached) enableContractAcceptance();
-    else {
-      const status = document.getElementById('contractScrollStatus');
-      status.classList.remove('is-complete');
-      status.lastElementChild.textContent = app.t('contractScrollHint');
-    }
+    else disableContractAcceptance();
   }
 
   /* Formu ve DURUMU tamamen sifirlar. Yalnizca DOM'u bosaltmak yetmez:
@@ -1586,6 +1602,21 @@
     });
     document.getElementById('homeLink').addEventListener('click', (event) => { event.preventDefault(); app.goToStep(0); });
     document.getElementById('contractReader').addEventListener('scroll', updateContractScroll, { passive: true });
+    // Kutu kilitliyken etikete tiklayan veliye sessiz kalmak yerine metni gosterir.
+    document.getElementById('contractCheckLabel').addEventListener('click', function (olay) {
+      const kutu = document.getElementById('contractAccepted');
+      if (!kutu || !kutu.disabled) return;
+      olay.preventDefault();
+      const okuyucu = document.getElementById('contractReader');
+      const durum = document.getElementById('contractScrollStatus');
+      if (okuyucu) okuyucu.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      if (durum) {
+        durum.classList.remove('dikkat');
+        void durum.offsetWidth;              // animasyonu yeniden baslat
+        durum.classList.add('dikkat');
+        setTimeout(function () { durum.classList.remove('dikkat'); }, 1800);
+      }
+    });
     document.getElementById('toastClose').addEventListener('click', () => { document.getElementById('toast').hidden = true; });
     document.getElementById('downloadPdfButton').addEventListener('click', downloadPdf);
     document.getElementById('tesekkurKardes').addEventListener('click', () => {

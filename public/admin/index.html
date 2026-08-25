@@ -664,26 +664,28 @@
           const yeni = /yeni/i.test(durum);
           const tel = al(r, iTel), pdf = al(r, iPdf), eposta = al(r, iEposta);
           const bilgiler = [];
-          if (al(r, iZaman)) bilgiler.push(`<span>${kacir(al(r, iZaman))}</span>`);
+          if (al(r, iZaman)) bilgiler.push(`<span>${kacir(tarihSadelestir(al(r, iZaman)))}</span>`);
           if (aktifTur === 'kayit') {
             if (al(r, iVeli)) bilgiler.push(`<span>Veli: <b>${kacir(al(r, iVeli))}</b></span>`);
             const okul = [al(r, iOkul), al(r, iSinif)].filter(Boolean).join(' · ');
             if (okul) bilgiler.push(`<span>${kacir(okul)}</span>`);
           }
-          if (tel) bilgiler.push(`<span>☎ <b>${kacir(tel)}</b></span>`);
+          if (tel) bilgiler.push(`<span>☎ <b>${kacir(telefonBicim(tel))}</b></span>`);
           const araclar = [];
           if (tel) {
-            const temiz = tel.replace(/[^\d+]/g, '');
-            araclar.push(`<a class="dugme" href="tel:${kacir(temiz)}">Ara</a>`);
-            araclar.push(`<a class="dugme" href="https://wa.me/${kacir(temiz.replace(/^\+/, ''))}" target="_blank" rel="noopener">WhatsApp ↗</a>`);
+            const e164 = telefonE164(tel);
+            araclar.push(`<a class="dugme" href="tel:${kacir(e164)}">Ara</a>`);
+            araclar.push(`<a class="dugme" href="https://wa.me/${kacir(e164.replace(/^\+/, ''))}" target="_blank" rel="noopener">WhatsApp ↗</a>`);
           }
           if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
           if (pdf.startsWith('http')) araclar.push(`<a class="dugme" href="${kacir(pdf)}" target="_blank" rel="noopener">Form PDF ↗</a>`);
           if (aktifTur === 'ihtida' && al(r, iRef)) araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
           const ayrinti = b.map((baslik, i) => {
-            const d = String(r[i] ?? '').trim();
+            const d = tarihSadelestir(String(r[i] ?? '').trim());
             if (!d) return '';
-            const deger = d.startsWith('http') ? `<a href="${kacir(d)}" target="_blank" rel="noopener">aç ↗</a>` : kacir(d);
+            const deger = d.startsWith('http')
+              ? `<a href="${kacir(d)}" target="_blank" rel="noopener">aç ↗</a>`
+              : (/telefon|cep/i.test(baslik) ? kacir(telefonBicim(d)) : kacir(d));
             return `<tr><th>${kacir(baslik)}</th><td>${deger}</td></tr>`;
           }).join('');
           return `<article class="bkart${yeni ? ' yeni' : ''}">
@@ -723,7 +725,7 @@
       };
       /** "23.08.2026 20:01" / "1979-04-24" gibi değerleri belgedeki gg/aa/yyyy biçimine getirir. */
       const ek9Tarih = (deger) => {
-        const d = String(deger || '').trim();
+        const d = tarihSadelestir(String(deger || '').trim());
         if (!d) return '';
         let e = d.match(/^(\d{2})[.\/](\d{2})[.\/](\d{4})/);
         if (e) return `${e[1]}/${e[2]}/${e[3]}`;
@@ -731,8 +733,9 @@
         if (e) return `${e[3]}/${e[2]}/${e[1]}`;
         return d;
       };
-      /** Sheets telefonu sayiya cevirip basindaki "+" isaretini dusuruyor; belgede okunur bicime getirilir. */
-      const ek9Telefon = (deger) => {
+      /** Sheets telefonu sayıya çevirip baştaki "+" işaretini düşürüyor; okunur biçime getirilir.
+       *  Panel kartlarında da kullanılır — `tel:` bağlantısı ülke kodsuz kalırsa yanlış numara aranır. */
+      const telefonBicim = (deger) => {
         const ham = String(deger || '').trim();
         if (!ham) return '';
         const rakam = ham.replace(/\D/g, '');
@@ -742,6 +745,17 @@
         if (rakam.startsWith('0') && rakam.length === 10) return `0${rakam.slice(1, 4)} ${rakam.slice(4, 6)} ${rakam.slice(6, 8)} ${rakam.slice(8)}`;
         return ham.startsWith('+') ? ham : '+' + rakam;
       };
+      const ek9Telefon = telefonBicim;
+      /** `tel:` için E.164: yalnız rakamlar, başında ülke kodu ve "+". */
+      const telefonE164 = (deger) => {
+        const rakam = String(deger || '').replace(/\D/g, '');
+        if (!rakam) return '';
+        if (rakam.startsWith('00')) return '+' + rakam.slice(2);
+        if (rakam.startsWith('0')) return '+32' + rakam.slice(1);      // yerel Belçika numarası
+        return '+' + rakam;
+      };
+      /** Sheets tarih hücreleri "15.06.2015 00:00" gibi döner; salt tarihlerde saat gösterilmez. */
+      const tarihSadelestir = (deger) => String(deger ?? '').replace(/\s00:00$/, '');
       const bugunTR = () => {
         const t = new Date();
         return `${String(t.getDate()).padStart(2, '0')}/${String(t.getMonth() + 1).padStart(2, '0')}/${t.getFullYear()}`;
