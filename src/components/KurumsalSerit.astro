@@ -1,0 +1,65 @@
+---
+/**
+ * Kurumsal kimlik şeridi — hero'nun altında, sayfanın ilk ekranına yakın.
+ *
+ * İki işi var: (1) caminin bağlı olduğu kurumları (T.C. Diyanet İşleri Başkanlığı ve
+ * Belçika Diyanet Vakfı) ilk bakışta göstermek, (2) Türk ve Belçika bayraklarını
+ * görünür bir yere taşımak — daha önce yalnız dil seçicide, dekoratif boyutta duruyorlardı
+ * (25 Ağustos 2026, Rıdvan'ın isteği).
+ *
+ * Tasarım: hero'nun gürültüsünü artırmayacak kadar sakin. Kağıt zemin, tek satır, ince
+ * tipografi; kayıt bandının (kiremit zemin, yüksek kontrast) altında ikinci bir çağrı gibi
+ * durmasın diye vurgusuz bırakıldı. Mobilde ortalanarak sarar.
+ */
+import Bayrak from './Bayrak.astro';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+const m = {
+  tr: {
+    baglilik: 'T.C. Diyanet İşleri Başkanlığı’na bağlı cami',
+    uyelik: 'Belçika Diyanet Vakfı üyesi',
+    dibAlt: 'T.C. Diyanet İşleri Başkanlığı',
+    bdvAlt: 'Belçika Diyanet Vakfı',
+    bayrakAlt: 'Türkiye ve Belçika bayrakları',
+  },
+  fr: {
+    baglilik: 'Mosquée rattachée à la Présidence des Affaires religieuses de Türkiye',
+    uyelik: 'Membre de la Fondation Diyanet de Belgique',
+    dibAlt: 'Présidence des Affaires religieuses de Türkiye',
+    bdvAlt: 'Fondation Diyanet de Belgique',
+    bayrakAlt: 'Drapeaux de la Türkiye et de la Belgique',
+  },
+  en: {
+    baglilik: 'Mosque affiliated with the Presidency of Religious Affairs of Türkiye',
+    uyelik: 'Member of the Diyanet Foundation of Belgium',
+    dibAlt: 'Presidency of Religious Affairs of Türkiye',
+    bdvAlt: 'Diyanet Foundation of Belgium',
+    bayrakAlt: 'Flags of Türkiye and Belgium',
+  },
+}[dil];
+---
+<aside class="bg-(--zemin-2) border-b border-(--cizgi)" aria-label={m.baglilik}>
+  <div class="kapsayici py-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
+    <!-- Bağlılık: amblem + cümle tek grup; ayrılırlarsa amblem sahipsiz kalır -->
+    <a href="https://www.diyanet.gov.tr" target="_blank" rel="noopener"
+       class="group inline-flex items-center gap-2.5 no-underline text-(--metin-2) hover:text-(--metin)">
+      <img src="/media/dis-logolar/diyanet.png" alt="" width="36" height="36"
+           class="h-8 w-auto shrink-0 opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
+      <span class="text-[0.82rem] leading-snug">{m.baglilik}</span>
+    </a>
+    <span class="hidden sm:inline text-(--cizgi-etkilesim)" aria-hidden="true">·</span>
+    <!-- Üyelik: BDV logosu kendi adını taşıdığı için yanında yalnız kısa ibare durur -->
+    <a href="https://www.diyanet.be" target="_blank" rel="noopener"
+       class="group inline-flex items-center gap-2.5 no-underline text-(--metin-2) hover:text-(--metin)">
+      <img src="/media/dis-logolar/bdv.png" alt={m.bdvAlt} width="143" height="36"
+           class="h-6 w-auto shrink-0 opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy" decoding="async" />
+      <span class="text-[0.82rem] leading-snug">{m.uyelik}</span>
+    </a>
+    <span class="shrink-0 inline-flex items-center gap-1.5 sm:ml-1" role="img" aria-label={m.bayrakAlt}>
+      <Bayrak dil="tr" class="h-[1.05rem] w-[1.6rem] rounded-[2px] ring-1 ring-(--cizgi)" />
+      <Bayrak dil="fr" class="h-[1.05rem] w-[1.6rem] rounded-[2px] ring-1 ring-(--cizgi)" />
+    </span>
+  </div>
+</aside>
