@@ -853,7 +853,11 @@
           if (imzalar.ridvan) yedekler.push({ ad: 'Rıdvan KAYAHAN', imza: imzalar.ridvan });
           if (imzalar.yeliz) yedekler.push({ ad: 'Yeliz KAYAHAN', imza: imzalar.yeliz });
 
+          /* Vesikalik verildigi halde gomulemezse (WEBP/HEIC gibi bir bicim tarayicida da
+             cozulemediyse) belge sessizce fotografsiz cikmasin. */
+          const ek9Uyarilari = [];
           const bytes = await ek9Modul.uret({
+            uyar: (kod) => ek9Uyarilari.push(kod),
             pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
             sablonBytes: ek9Kaynak.sablon, fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
             veri: {
@@ -891,7 +895,13 @@
           bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
           bag.download = ad; bag.click();
           setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
-          durumYaz('✓ İndirildi');
+          if (ek9Uyarilari.includes('vesikalik-gomulemedi')) {
+            durumYaz('⚠ Fotoğrafsız');
+            alert('Belge indirildi, ancak vesikalık fotoğraf okunamadığı için belgeye YERLEŞTİRİLEMEDİ.\n\n'
+              + 'Fotoğrafı JPEG veya PNG olarak kaydedip belgeyi yeniden üretin.');
+          } else {
+            durumYaz('✓ İndirildi');
+          }
           setTimeout(() => { durumYaz(eskiMetin); dugme.disabled = false; }, 4000);
         } catch (hata) {
           console.error(hata);

@@ -243,6 +243,22 @@
     y -= headH;
 
     const half = INNER / 2;
+    /* Satirlar sayfa sonunu asmamali. Uzun saglik/ilac aciklamasi tabloyu buyuttugunde
+       sonraki satirlar (veli, adres, acil durum telefonu) sayfa disina ciziliyordu: PDF
+       hatasiz uretiliyor ama bilgiler gorunmuyordu (25 Agustos 2026 denetimi).
+       Her satir cizilmeden once gereken yukseklik olculur; sigmiyorsa yeni sayfa acilir. */
+    const satir = (cells) => {
+      const olcu = cells.map((c) => cellLines(fonts, c.label, c.value, c.width));
+      const h = Math.max(...olcu.map((c) => c.yukseklik));
+      if (y - h < MARGIN + 30) {
+        page = document.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+        y = PAGE_HEIGHT - MARGIN;
+        page.drawText('Öğrenci Kayıt Formu (devam)', { x: MARGIN, y: y - 4, size: 9, font: fonts.regular, color: MUTED });
+        y -= 18;
+      }
+      y = drawRow(page, fonts, y, cells);
+    };
+
     const t = (k) => app.t(k);
     const okul = f.school === '__other__' ? f.otherSchoolName : f.school;
     const engel = f.disability === 'exists' ? f.disabilityDetail : (f.disability === 'none' ? t('none') : '');
@@ -251,36 +267,36 @@
     const veliEtiket = f.relationship === 'mother' ? ('Anne adı')
       : f.relationship === 'guardian' ? ('Vasi adı') : ('Baba adı');
 
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: 'Öğrencinin soyadı', value: f.studentSurname, width: half },
       { label: 'Öğrencinin adı', value: f.studentName, width: half }]);
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: 'Doğum yeri', value: f.birthPlace, width: half },
       { label: 'Doğum tarihi', value: formatDate(f.birthDate), width: half }]);
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: 'Cinsiyeti', value: labelChoice('gender', f.gender), width: half },
       { label: 'Kimlik no', value: f.identityNumber, width: half }]);
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: 'Cep telefonu', value: app.telGosterim('studentPhone'), width: half },
       { label: 'E-posta', value: f.studentEmail, width: half }]);
-    y = drawRow(page, fonts, y, [{ label: 'Engel (özür) durumu var mı?', value: engel, width: INNER }]);
-    y = drawRow(page, fonts, y, [{ label: 'Herhangi bir hastalığı var mı?', value: hastalik, width: INNER }]);
-    if (f.medicine) y = drawRow(page, fonts, y, [{ label: 'Kullandığı ilaç', value: f.medicine, width: INNER }]);
-    y = drawRow(page, fonts, y, [
+    satir([{ label: 'Engel (özür) durumu var mı?', value: engel, width: INNER }]);
+    satir([{ label: 'Herhangi bir hastalığı var mı?', value: hastalik, width: INNER }]);
+    if (f.medicine) satir([{ label: 'Kullandığı ilaç', value: f.medicine, width: INNER }]);
+    satir([
       { label: 'Okuduğu okul', value: okul, width: INNER - 120 },
       { label: 'Sınıfı', value: f.classLevel, width: 120 }]);
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: veliEtiket, value: f.guardianName, width: half },
       { label: 'Mesleği', value: f.occupation, width: half }]);
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: 'Ev telefonu', value: app.telGosterim('homePhone'), width: half },
       { label: 'Cep telefonu', value: app.telGosterim('guardianPhone'), width: half }]);
-    y = drawRow(page, fonts, y, [{ label: 'E-posta', value: f.guardianEmail, width: INNER }]);
-    y = drawRow(page, fonts, y, [{ label: 'Ev adresi', value: adres, width: INNER }]);
-    y = drawRow(page, fonts, y, [
+    satir([{ label: 'E-posta', value: f.guardianEmail, width: INNER }]);
+    satir([{ label: 'Ev adresi', value: adres, width: INNER }]);
+    satir([
       { label: 'Acil durumda aranacak', value: f.emergencyName, width: half },
       { label: 'Acil durum telefonu', value: app.telGosterim('emergencyPhone'), width: half }]);
-    y = drawRow(page, fonts, y, [
+    satir([
       { label: 'Daha önce kursa gitti mi', value: f.previousCourse === 'yes' ? (f.previousLevel ? `${t('yes')} — ${f.previousLevel}` : t('yes')) : t('no'), width: half },
       { label: 'Görüntü izni', value: f.mediaConsent === 'yes' ? t('mediaYes') : t('mediaNo'), width: half }]);
 

@@ -84,10 +84,12 @@ export async function ek9Uret(girdi) {
     for (const k of kelimeler) {
       const aday = satir ? `${satir} ${k}` : k;
       if (font.widthOfTextAtSize(aday, boyut) <= enGenis) satir = aday;
-      else { if (satir) satirlar.push(satir); satir = k; }
+      // Bosluksuz tek uzun kelime (uzun e-posta, birlesik adres) hicbir satira sigmaz;
+      // genislige kirpilmazsa alanin disina tasiyordu (25 Agustos 2026 denetimi).
+      else { if (satir) satirlar.push(kisalt(satir, boyut, enGenis)); satir = k; }
       if (satirlar.length === enFazlaSatir) break;
     }
-    if (satirlar.length < enFazlaSatir && satir) satirlar.push(satir);
+    if (satirlar.length < enFazlaSatir && satir) satirlar.push(kisalt(satir, boyut, enGenis));
     if (satirlar.length === enFazlaSatir && kelimeler.length) {
       const son = satirlar[enFazlaSatir - 1];
       const kalan = kelimeler.slice(satirlar.join(' ').split(' ').length).length;
@@ -104,6 +106,31 @@ export async function ek9Uret(girdi) {
     const g = f.widthOfTextAtSize(String(metin), boyut);
     sayfa.drawText(String(metin), { x: x0 + (x1 - x0 - g) / 2, y: cevir(tabanY), size: boyut, font: f, color: MUREKKEP });
   };
+  /** Telefon kamerasi WEBP/HEIC uretebilir; pdf-lib yalniz PNG ve JPEG gomer.
+   *  Desteklenmeyen bicim eskiden sessizce atlaniyor, EK-9 vesikaliksiz basiliyordu.
+   *  Once dogrudan denenir, olmazsa tarayicinin cozebildigi her bicim canvas uzerinden
+   *  PNG'ye cevrilir (25 Agustos 2026 denetimi). */
+  const pngeCevir = async (veri) => {
+    const kaynak = typeof veri === 'string'
+      ? (veri.startsWith('data:') ? veri : 'data:image/*;base64,' + veri)
+      : URL.createObjectURL(new Blob([veri]));
+    try {
+      const img = await new Promise((coz, sik) => {
+        const g = new Image();
+        g.onload = () => coz(g);
+        g.onerror = () => sik(new Error('gorsel-cozulemedi'));
+        g.src = kaynak;
+      });
+      const tuval = document.createElement('canvas');
+      tuval.width = img.naturalWidth || img.width;
+      tuval.height = img.naturalHeight || img.height;
+      if (!tuval.width || !tuval.height) return null;
+      tuval.getContext('2d').drawImage(img, 0, 0);
+      return tuval.toDataURL('image/png');
+    } finally {
+      if (typeof veri !== 'string') URL.revokeObjectURL(kaynak);
+    }
+  };
   const gorselGom = async (veri) => {
     if (!veri) return null;
     try {
@@ -114,6 +141,10 @@ export async function ek9Uret(girdi) {
       }
       // Uint8Array: PNG imzası 0x89 'P' 'N' 'G'
       return veri[0] === 0x89 ? await belge.embedPng(veri) : await belge.embedJpg(veri);
+    } catch { /* bicim desteklenmiyor olabilir — asagida cevrilir */ }
+    try {
+      const png = await pngeCevir(veri);
+      return png ? await belge.embedPng(png) : null;
     } catch { return null; }
   };
   /** Görseli kutuya sığdırır (oran korunur, ortalanır) — vesikalık için "cover" değil "contain". */
@@ -127,6 +158,9 @@ export async function ek9Uret(girdi) {
   // ---- Sayfa 1: belge yüzü --------------------------------------------------
   const foto = await gorselGom(girdi.foto);
   if (foto) kutuyaCiz(s1, foto, S1.foto.x, S1.foto.y, S1.foto.g, S1.foto.h, ust1);
+  // Vesikalik verildigi halde gomulemediyse cagirana bildirilir; belge sessizce
+  // fotografsiz cikmasin (panel bunu kullaniciya uyari olarak gosterir).
+  else if (girdi.foto && typeof girdi.uyar === 'function') girdi.uyar('vesikalik-gomulemedi');
 
   // Not: büyük harfe çevrilmez — `toLocaleUpperCase('tr')` yabancı isimlerde "i"yi "İ" yapıp
   // POUİLLON gibi hatalı yazıma yol açıyor. İsim kimlikteki gibi, girildiği hâliyle basılır.

@@ -52,7 +52,11 @@
     } catch (_) { return null; }
   }
 
-  function veliProfiliYaz(sonReferans) {
+  /* `guncellemeMi`: mevcut bir kaydin bilgileri duzeltildiyse cocuk sayaci ARTMAZ.
+     Eskiden her gonderim sayaci artiriyordu; bilgilerini iki kez guncelleyen veliye
+     karsilama ekrani "ucuncu cocugunuzu mu kaydediyorsunuz?" diyordu
+     (25 Agustos 2026 denetimi). */
+  function veliProfiliYaz(sonReferans, guncellemeMi) {
     const onceki = veliProfiliOku();
     const alanlar = {};
     VELI_ALANLARI.forEach((ad) => {
@@ -60,10 +64,11 @@
       if (deger !== undefined && deger !== null && String(deger) !== '') alanlar[ad] = deger;
     });
     if (!alanlar.guardianName) return;
+    const oncekiSayi = (onceki && Number(onceki.cocukSayisi)) ? Number(onceki.cocukSayisi) : 0;
     storageSet(VELI_KEY, JSON.stringify({
       surum: 1,
       alanlar: alanlar,
-      cocukSayisi: (onceki && Number(onceki.cocukSayisi) ? Number(onceki.cocukSayisi) : 0) + 1,
+      cocukSayisi: guncellemeMi ? Math.max(1, oncekiSayi) : oncekiSayi + 1,
       sonReferans: sonReferans || (onceki && onceki.sonReferans) || ''
     }));
   }
@@ -1349,7 +1354,7 @@
       app.state.gonderimAnahtari = '';
       /* Kayit artik sunucuda: taslak SILINIR, yalnizca veli profili saklanir.
          Aksi halde ikinci cocuk kaydinda birincinin bilgileri geri gelirdi. */
-      veliProfiliYaz(sonuc.ref);
+      veliProfiliYaz(sonuc.ref, Boolean(sonuc.guncelleme));
       storageRemove(DRAFT_KEY);
       durum.hidden = true;
       tesekkurGoster(sonuc.ref, sonuc.guncelleme);
