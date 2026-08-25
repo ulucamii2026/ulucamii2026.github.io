@@ -46,12 +46,26 @@ const idHavuzu = new Map();
 const icBaglantilar = new Map();
 const mevcutYollar = new Set(sayfalar.map(yol));
 
-// Bir dilin sayfasında görünmemesi gereken, diğer dile özgü sabit ifadeler.
-const SIZINTI = {
-  en: [/\bAller au contenu\b/, /\bMosquée\b(?! Ulu)/, /\bAccueil\b/, /\bNos services\b/, /\bFaire un don\b/, /İçeriğe atla/],
+/* Bir dilin sayfasında görünmemesi gereken, diğer dile özgü sabit ifadeler.
+   ARAYÜZ sızıntısı her zaman hatadır (menü, skip-link, düğme etiketi).
+   İÇERİK sızıntısı ise duyuru/etkinlik arşivinin bilinçli davranışıdır: arşiv yalnız
+   TR+FR yayımlanır, İngilizce sayfa Fransızca metni gösterir (lib/icerik.ts → icerikDili).
+   O sayfalarda ziyaretçiye bunu söyleyen bir not bulunur; not varsa bulgu sayılmaz,
+   YOKSA sayılır — açıklamasız yabancı metin ziyaretçiyi şaşırtır. */
+const SIZINTI_ARAYUZ = {
+  en: [/\bAller au contenu\b/, /\bAccueil\b/, /\bNos services\b/, /\bFaire un don\b/, /İçeriğe atla/],
   fr: [/Skip to content/, /İçeriğe atla/, /\bOur services\b/, /\bDonate\b/],
   tr: [/Skip to content/, /Aller au contenu/],
 };
+/* Not: "Mosquée" tek başına ölçüt olamaz — derneğin yasal adı ("Association Diyanet
+   Mosquée Ulu Camii de Marche en Famenne ASBL") ve banka hesap adı ("Communauté Turque
+   de la Mosquée") her dilde Fransızca kalmak zorundadır. Bunun yerine yalnız Fransızca
+   CÜMLE kalıpları aranır; çevrilmemiş bir arşiv metni bunlardan birini mutlaka içerir. */
+const SIZINTI_ICERIK = {
+  en: [/\bl’occasion\b/, /\bnotre page Facebook\b/, /\bnous remercions\b/i, /\ba rendu visite\b/, /\bs’est déroulé/],
+  fr: [], tr: [],
+};
+const CEVIRI_NOTU = /An English version is not available/;
 
 for (const dosya of sayfalar) {
   const u = yol(dosya);
@@ -88,10 +102,16 @@ for (const dosya of sayfalar) {
     .replace(/<script[\s\S]*?<\/script>/g, ' ')
     .replace(/<style[\s\S]*?<\/style>/g, ' ')
     .replace(/<[^>]+>/g, ' ');
-  if (dil && SIZINTI[dil]) {
-    for (const kalip of SIZINTI[dil]) {
+  if (dil && SIZINTI_ARAYUZ[dil]) {
+    for (const kalip of SIZINTI_ARAYUZ[dil]) {
       const m = govde.match(kalip);
-      if (m) ekle('orta', `${dil} sayfasında yabancı metin`, `${u} → "${m[0]}"`);
+      if (m) ekle('yuksek', `${dil} sayfasında yabancı ARAYÜZ metni`, `${u} → "${m[0]}"`);
+    }
+  }
+  if (dil && SIZINTI_ICERIK[dil] && !CEVIRI_NOTU.test(govde)) {
+    for (const kalip of SIZINTI_ICERIK[dil]) {
+      const m = govde.match(kalip);
+      if (m) ekle('orta', `${dil} sayfasında açıklamasız yabancı içerik`, `${u} → "${m[0]}"`);
     }
   }
 
@@ -155,6 +175,101 @@ for (const d of ['fr', 'en']) {
     if (ileri < 7) ekle('yuksek', 'namaz vakti penceresi daralıyor', `${ileri} gün kaldı`);
     else if (ileri < 14) ekle('orta', 'namaz vakti penceresi', `${ileri} gün kaldı`);
   }
+}
+
+
+/* ---------------------------------------------------------------- iletisim tutarliligi */
+/* Sayfalarda gecen her telefon ve e-posta, icerik ayarlarinda (site.yaml) TANIMLI olmali.
+   Elle yazilmis/eskimis bir numara ya da adres boylece yakalanir; disaridaki kurumlarin
+   (baskonsolosluk, belediye, Diyanet Belcika) bilgileri de ayarlarda durdugu icin dogal
+   olarak beyaz listede olur. Altyapi hesabi ise sitede hic gorunmemeli.
+   (25 Agustos 2026 denetim turu 4.) */
+{
+  const ayarYolu = new URL('../src/content/ayarlar/site.yaml', import.meta.url);
+  const ayarMetni = existsSync(ayarYolu) ? readFileSync(ayarYolu, 'utf8') : '';
+  const normTel = (t) => '+' + String(t).replace(/\D/g, '');
+  const tanimliTel = new Set((ayarMetni.match(/\+\d[\d\s.() -]{7,}/g) || []).map(normTel));
+  const tanimliEposta = new Set((ayarMetni.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || []));
+  // Altyapi hesabi: GitHub/Drive/Firebase sahipligi icin; sitede GOSTERILMEZ (22 Agu 2026 kurali).
+  const YASAK_EPOSTA = ['ulucamii2026@gmail.com'];
+
+  const telKalip = /\+\d[\d\s.() -]{7,}\d/g;
+  const epostaKalip = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
+  const telSayim = new Map(), epostaSayim = new Map();
+  for (const dosya of sayfalar) {
+    const u = yol(dosya);
+    const duz = readFileSync(dosya, 'utf8')
+      .replace(/<script[\s\S]*?<\/script>/g, ' ')
+      .replace(/<style[\s\S]*?<\/style>/g, ' ')
+      .replace(/<[^>]+>/g, ' ');
+    for (const t of duz.match(telKalip) || []) {
+      const n = normTel(t);
+      if (n.length < 10) continue;                 // yil araligi vb. degil, gercek numara
+      if (!telSayim.has(n)) telSayim.set(n, new Set());
+      telSayim.get(n).add(u);
+    }
+    for (const e of duz.match(epostaKalip) || []) {
+      if (!epostaSayim.has(e)) epostaSayim.set(e, new Set());
+      epostaSayim.get(e).add(u);
+    }
+  }
+  if (!tanimliTel.size) ekle('orta', 'iletisim denetimi calismadi', 'site.yaml okunamadi');
+  for (const [tel, yerler] of telSayim) {
+    if (!tanimliTel.has(tel)) ekle('yuksek', 'ayarlarda tanimli olmayan telefon', `${tel} → ${[...yerler].slice(0, 3).join(', ')}`);
+  }
+  for (const [eposta, yerler] of epostaSayim) {
+    if (YASAK_EPOSTA.includes(eposta)) ekle('yuksek', 'altyapi e-postasi sitede gorunuyor', `${eposta} → ${[...yerler].slice(0, 3).join(', ')}`);
+    else if (!tanimliEposta.has(eposta)) ekle('orta', 'ayarlarda tanimli olmayan e-posta', `${eposta} → ${[...yerler].slice(0, 2).join(', ')}`);
+  }
+}
+
+/* ---------------------------------------------------------------- SEO ve paylasim */
+{
+  for (const dosya of sayfalar) {
+    const u = yol(dosya);
+    if (uygulamaSayfasi(u)) continue;
+    const html = readFileSync(dosya, 'utf8');
+    if (/<meta name="robots" content="[^"]*noindex/.test(html)) continue;
+    if (!/<meta name="description" content="[^"]{20,}"/.test(html)) ekle('orta', 'meta description eksik/kisa', u);
+    if (!/<meta property="og:title"/.test(html)) ekle('dusuk', 'og:title yok', u);
+    if (!/<meta property="og:image"/.test(html)) ekle('dusuk', 'og:image yok', u);
+  }
+  for (const ad of ['robots.txt', 'sitemap-index.xml', '404.html']) {
+    existsSync(join(KOK, ad)) ? null : ekle('yuksek', 'dosya uretilmemis', ad);
+  }
+}
+
+/* ---------------------------------------------------------------- erisilebilirlik */
+{
+  for (const dosya of sayfalar) {
+    const u = yol(dosya);
+    const html = readFileSync(dosya, 'utf8');
+    const govde = html.replace(/<script[\s\S]*?<\/script>/g, ' ');
+    // Baslik sirasi atlanmamali (h1 -> h3 gibi)
+    const basliklar = [...govde.matchAll(/<h([1-6])/g)].map((m) => Number(m[1]));
+    for (let i = 1; i < basliklar.length; i++) {
+      if (basliklar[i] - basliklar[i - 1] > 1) {
+        ekle('dusuk', 'baslik seviyesi atlaniyor', `${u} → h${basliklar[i - 1]} sonrasi h${basliklar[i]}`);
+        break;
+      }
+    }
+    // Erisilebilir adi olmayan dugme
+    for (const m of govde.matchAll(/<button([^>]*)>([\s\S]*?)<\/button>/g)) {
+      const oz = m[1], ic = m[2].replace(/<[^>]+>/g, '').trim();
+      if (!ic && !/aria-label=/.test(oz) && !/aria-labelledby=/.test(oz)) {
+        ekle('orta', 'erisilebilir adi olmayan dugme', `${u} → ${m[0].slice(0, 60)}`);
+      }
+    }
+  }
+}
+
+/* ---------------------------------------------------------------- sayfa agirligi */
+{
+  const agir = sayfalar
+    .map((d) => ({ u: yol(d), kb: Math.round(statSync(d).size / 1024) }))
+    .filter((x) => x.kb > 250)
+    .sort((a, b) => b.kb - a.kb);
+  for (const x of agir.slice(0, 5)) ekle('dusuk', 'agir HTML sayfasi', `${x.u} → ${x.kb} KB`);
 }
 
 /* ---------------------------------------------------------------- rapor */

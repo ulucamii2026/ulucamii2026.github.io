@@ -26,6 +26,13 @@ const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
 const grup = tur === 'duyuru' ? 'duyuru' : 'etkinlik';
 const galeri: Array<{ dosya: string; kucuk?: string; alt?: string }> = Array.isArray(d.galeri) ? d.galeri : [];
 const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : dil === 'en' ? 'Photos' : 'Photos';
+/* Duyuru ve etkinlik arşivi yalnız TR ve FR yayımlanır; İngilizce sayfada Fransızca metin
+   gösterilir (lib/icerik.ts → icerikDili). Liste sayfalarında bu not vardı, detayda yoktu:
+   arama motorundan doğrudan gelen ziyaretçi neden Fransızca okuduğunu bilmiyordu
+   (25 Ağustos 2026 denetim turu 4). */
+const enNotu = tur === 'duyuru'
+  ? 'This announcement is published in Turkish and French. An English version is not available.'
+  : 'This event is published in Turkish and French. An English version is not available.';
 ---
 <Base baslik={d.baslik} dil={dil} aciklama={d.ozet} kapak={kapak}>
   <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet}>
@@ -36,6 +43,7 @@ const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : dil === 'en' ? 'Photos' : '
       {tur === 'etkinlik' && d.yer && <span> · {t('etkinlik.yer')}: {d.yer}</span>}
     </p>
   </SayfaBasligi>
+  {dil === 'en' && <div class="kapsayici pt-6"><p class="bilgi text-sm">{enNotu}</p></div>}
   <article class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
     <div class="duz-yazi"><Content /></div>
     {kapak && (
