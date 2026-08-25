@@ -1,6 +1,6 @@
 ---
 import IcerikSayfasi from '../components/IcerikSayfasi.astro';
-import { ceviri, yol } from '../i18n/utils';
+import { ceviri, yol, kayitBaglantisi } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari } from '../lib/icerik';
 interface Props { dil: Dil }
@@ -17,7 +17,7 @@ const m = dil === 'tr'
   <div slot="yan" class="kart p-5 text-center">
     <img src="/media/logo/kuran-kursu-logo.svg" alt={m.logoAlt} width="120" height="120" class="mx-auto h-28 w-28" loading="lazy" />
     <p class="mt-4 text-sm text-(--metin-2)">{m.kayitA}</p>
-    {site.kursKayitLinki && <a href={dil !== 'tr' ? `${site.kursKayitLinki}?lang=fr` : site.kursKayitLinki} target="_blank" rel="noopener" class="dugme dugme-birincil mt-4 w-full justify-center">{m.kayit}<span aria-hidden="true"> ↗</span></a>}
+    {site.kursKayitLinki && <a href={kayitBaglantisi(site.kursKayitLinki, dil)} target="_blank" rel="noopener" class="dugme dugme-birincil mt-4 w-full justify-center">{m.kayit}<span aria-hidden="true"> ↗</span></a>}
   </div>
   <div slot="yan" class="kart-kagit p-5">
     <p class="etiket etiket-vurgu">{m.portal}</p>

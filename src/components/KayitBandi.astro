@@ -1,10 +1,12 @@
 ---
 /** Kur'an kursu online kayıt bandı — kayıt dönemi boyunca ana sayfada; dönem kapanınca index.astro'dan kaldırılır. */
 import type { Dil } from '../i18n/ui';
+import { kayitBaglantisi } from '../i18n/utils';
 interface Props { dil: Dil; link?: string }
 const { dil, link } = Astro.props;
-/* FR ve EN sayfalardan gelenler formu Fransızca görsün; TR parametresiz (QR ile aynı davranış) */
-const kayitLink = link && dil !== 'tr' ? `${link}${link.includes('?') ? '&' : '?'}lang=fr` : link;
+/* Dil tercihi her zaman açıkça taşınır: parametresiz gidilirse formun localStorage'daki eski
+   tercihi (çoğu kez fr) galip gelir ve TR sayfadan gelen veli Fransızca form görür. */
+const kayitLink = link ? kayitBaglantisi(link, dil) : link;
 const m = dil === 'tr' ? {
   baslik: "Kur'an Kursu 2026–2027 — kayıtlar açık",
   alt: 'Dersler 5 Eylül Cumartesi başlıyor · Kayıt telefonunuzdan 5 dakika sürer',

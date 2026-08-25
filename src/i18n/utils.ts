@@ -20,9 +20,9 @@ export function yol(dil: Dil, sayfa: SayfaAnahtari, alt?: string): string {
   return `/${parca}/`.replace(/\/+/g, '/');
 }
 
-/** Mevcut sayfanın diğer dildeki karşılığı (hreflang ve dil değiştirici için) */
+/** Mevcut sayfanın diğer dildeki karşılığı (hreflang/canonical için — parametresiz kanonik adres) */
 export function digerDilYolu(url: URL, hedef: Dil): string {
-  // /kayit dil öneksiz gömülü kayıt uygulamasıdır: TR parametresiz, diğer diller formu Fransızca açar
+  // /kayit dil öneksiz gömülü kayıt uygulamasıdır: kanonik adresi tek ve parametresizdir
   if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
     return hedef === 'tr' ? '/kayit/' : '/kayit/?lang=fr';
   }
@@ -38,6 +38,24 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
     }
   }
   return yol(hedef, 'anasayfa');
+}
+
+/** Dil değiştiricinin (Header) kullandığı gezinme bağlantısı.
+    /kayit gömülü uygulaması dilini localStorage'da tutar; parametresiz açılırsa önceki tercih
+    (çoğu kez fr) galip gelir ve "Türkçe" seçen veli Fransızca form görür. Bu yüzden dil
+    değiştirici HER dil için açık ?lang= verir — URL tercihi ezmeli. Form yalnız tr/fr bilir,
+    en de fr ile açılır. hreflang bu parametreleri kullanmaz: bkz. digerDilYolu. */
+export function dilDegistirYolu(url: URL, hedef: Dil): string {
+  if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
+    return hedef === 'tr' ? '/kayit/?lang=tr' : '/kayit/?lang=fr';
+  }
+  return digerDilYolu(url, hedef);
+}
+
+/** Site içinden /kayit uygulamasına giden bağlantı — dil tercihi her zaman açıkça taşınır. */
+export function kayitBaglantisi(link: string, dil: Dil): string {
+  const ayrac = link.includes('?') ? '&' : '?';
+  return `${link}${ayrac}lang=${dil === 'tr' ? 'tr' : 'fr'}`;
 }
 
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
