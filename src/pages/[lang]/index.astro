@@ -85,7 +85,7 @@ const jsonLd = {
 };
 ---
 <Base baslik={t('site.ad')} dil={dil} aciklama={t('site.slogan')}>
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <!-- ① Hero — gerçek fotoğraf, tek yazılmış giriş hareketi, altında canlı vakit şeridi -->
   <section class="relative overflow-hidden">

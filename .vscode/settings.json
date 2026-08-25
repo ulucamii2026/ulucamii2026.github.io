@@ -1,0 +1,34 @@
+{
+  // Astro dosyalarını Astro eklentisi biçimlendirir; ayrı bir Prettier kurulumu yok.
+  "[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
+
+  // Türkçe içerik: kodlama her zaman UTF-8 olmalı, aksi hâlde ı/ş/ğ/İ bozulur.
+  "files.encoding": "utf8",
+  // Satır sonu depo genelinde LF (bkz. .gitattributes) — Windows varsayılanı CRLF olduğu için açıkça yazılıyor.
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  // Markdown'da satır sonundaki iki boşluk "satır atla" demektir; orada kırpma kapalı.
+  "[markdown]": { "files.trimTrailingWhitespace": false },
+
+  // Tailwind v4: yapılandırma JS dosyasında değil, CSS içindeki @theme bloğunda.
+  "tailwindCSS.experimental.configFile": "src/styles/global.css",
+  "tailwindCSS.includeLanguages": { "astro": "html" },
+
+  // Sveltia CMS yapılandırması YAML eklentisinin şema tahminine takılmasın.
+  "yaml.schemas": {},
+  "files.associations": { "public/admin/icerik/config.yml": "yaml" },
+
+  // Arama gürültüsü: derleme çıktısı ve küçültülmüş vendor kütüphaneleri hariç tutulur.
+  "search.exclude": {
+    "dist": true,
+    "node_modules": true,
+    "public/kayit/vendor": true,
+    "public/vendor": true,
+    "package-lock.json": true
+  },
+  "files.watcherExclude": { "**/dist/**": true, "**/node_modules/**": true },
+
+  "npm.packageManager": "npm",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

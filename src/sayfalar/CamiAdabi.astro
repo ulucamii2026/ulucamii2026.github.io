@@ -3,11 +3,10 @@
 import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import { ceviri } from '../i18n/utils';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 import { sayfa } from '../lib/icerik';
 interface Props { dil: Dil; anahtar: SayfaAnahtari }
-const { dil } = Astro.props; const t = ceviri(dil);
+const { dil } = Astro.props;
 const entry = await sayfa(dil, 'adab');
 if (!entry) throw new Error(`İçerik yok: sayfalar/${dil}/adab.md`);
 const { Content } = await render(entry);

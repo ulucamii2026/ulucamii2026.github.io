@@ -2,11 +2,11 @@
 /** Cenaze Hizmetleri — BDV Cenaze Fonu, vefat anında aranacak numaralar ve adım adım süreç (bilgilendirme) */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import { ceviri, yol } from '../i18n/utils';
+import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari } from '../lib/icerik';
 interface Props { dil: Dil }
-const { dil } = Astro.props; const t = ceviri(dil);
+const { dil } = Astro.props;
 const site = await siteAyarlari();
 const c = site.cenaze;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
