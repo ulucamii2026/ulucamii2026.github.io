@@ -50,6 +50,11 @@ export function durumHesapla(gunler: Gun[], simdi: Date): Durum | null {
       const t = brukselTarih(yarin.tarih, yarin.imsak);
       siradaki = { vakit: 'imsak', saat: yarin.imsak, kalanDk: Math.max(0, Math.ceil((t.getTime() - simdi.getTime()) / 60000)), yarinMi: true };
     }
+    /* Pencerenin son günü bugünse yarın kaydı yoktur: yatsıdan sonra sıradaki vakit
+       bulunamaz ve widget sessizce kaybolurdu. Bu, verinin tükendiği anlamına gelir —
+       `eski` işaretlenir ki çağıran taraf sessiz kaybolmayı bilinçli ele alsın.
+       (25 Ağustos 2026 denetimi; veri penceresini scripts/site-denetim.mjs de ölçer.) */
+    if (!siradaki && !yarin) eski = true;
   }
   return { bugun, yarin, eski, siradaki };
 }

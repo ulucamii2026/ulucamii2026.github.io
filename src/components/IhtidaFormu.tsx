@@ -89,8 +89,11 @@ function taslakYaz(state: FormState) {
   try { localStorage.setItem(TASLAK_ANAHTARI, JSON.stringify(state)); }
   catch {
     try {
+      /* Depolama kotası dolduğunda görseller taslaktan düşer. Şahit imzası düşerken ADI da
+         düşürülür: yoksa "adı var, imzası yok" gibi tutarsız bir ara durum kalıyor ve
+         başvuran şahidi girdiğini sanıyordu (25 Ağustos 2026 denetimi). */
       const { kimlikOn, kimlikArka, vesikalik, imzaDataUrl, sahit1Imza, sahit2Imza, ...rest } = state;
-      localStorage.setItem(TASLAK_ANAHTARI, JSON.stringify(rest));
+      localStorage.setItem(TASLAK_ANAHTARI, JSON.stringify({ ...rest, sahit1Ad: '', sahit2Ad: '' }));
     } catch { /* depolama yoksa taslak atlanır, form yine çalışır */ }
   }
 }
@@ -456,7 +459,19 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
   }
 
   async function basvuruyuGonder() {
-    if (!adimGecerliMi(6)) { guncelle('adim', 6 as any); return; }
+    /* Gönderimden önce BÜTÜN adımlar yeniden doğrulanır, yalnız son adım değil.
+       Telefonun depolama kotası dolduğunda taslak görselleri atıp adım numarasını
+       koruyor; başvuran özet ekranında açılıp gönderebiliyordu — kimlik fotoğrafı ve
+       vesikalık olmadan başvuru sessizce gidiyordu (25 Ağustos 2026 denetimi).
+       İlk geçersiz adıma dönülür ki eksik alan görünsün. */
+    for (let adim = 1; adim <= 6; adim += 1) {
+      if (!adimGecerliMi(adim)) {
+        guncelle('adim', adim as any);
+        formaKaydir();
+        requestAnimationFrame(() => document.querySelector<HTMLElement>('#ihtida-form [aria-invalid="true"]')?.focus());
+        return;
+      }
+    }
     setAsama('hazirlaniyor');
     setSunucuHatasi('');
     try {
@@ -521,10 +536,14 @@ export default function IhtidaFormu({ dil, ucNokta, cami, ek10Yolu }: Props) {
           yeniIsim: durum.yeniIsim.trim(), torenDili: durum.torenDili, torenTarihi: durum.torenTarihi,
           nasilHaberdar: durum.nasilHaberdar, ekNot: durum.ekNot.trim(),
         },
+        /* Şahit sırası korunur — filtrelenmez. Yalnız 2. şahit doldurulduğunda filtre onu
+           1. sıraya kaydırıyor, belgede yanlış şahit alanına yazılıyordu (25 Ağustos 2026
+           denetimi). Boş şahidi belge tarafı zaten atlar ve kuralı gereği yerine cami
+           yetkilisinin imzasını koyar. */
         sahitler: [
           { ad: durum.sahit1Ad.trim(), imza: durum.sahit1Imza },
           { ad: durum.sahit2Ad.trim(), imza: durum.sahit2Imza },
-        ].filter((x) => x.ad || x.imza),
+        ],
         vesikalikBase64: durum.vesikalik,
         basvuranImzaBase64: durum.imzaDataUrl,
         fotografIzni: durum.fotografIzni,

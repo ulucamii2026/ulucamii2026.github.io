@@ -21,7 +21,12 @@ const dil = Astro.params.lang as Dil;
 const t = ceviri(dil);
 const site = await siteAyarlari();
 const tumDuyurular = await duyurular(dil);
-const oneCikan = tumDuyurular.find((d) => d.data.kapak) ?? tumDuyurular[0];
+/* Editörün CMS'te işaretlediği duyuru önce gelir; yoksa kapak görseli olan, o da yoksa en yeni.
+   (Daha önce yalnız `kapak` bakılıyordu; `oneCikan` işareti okunmadığı için editörün seçimi
+   yok sayılıyordu — 25 Ağustos 2026 denetimi.) */
+const oneCikan = tumDuyurular.find((d) => d.data.oneCikan)
+  ?? tumDuyurular.find((d) => d.data.kapak)
+  ?? tumDuyurular[0];
 const digerDuyurular = tumDuyurular.filter((d) => d !== oneCikan).slice(0, 4);
 const etkinlikler = await yaklasanEtkinlikler(dil, 3);
 const namaz = namazVakitleri();

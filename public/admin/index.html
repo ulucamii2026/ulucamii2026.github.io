@@ -7,8 +7,23 @@
     <title>Yönetim Paneli — Marche-en-Famenne Ulu Camii</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script>
-      // Giriş kapısı: çözülmüş erişim anahtarı yoksa giriş sayfasına
-      try { const u = JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null'); if (!u || !u.token) location.replace('/admin/giris.html'); } catch { location.replace('/admin/giris.html'); }
+      /* Giriş kapısı. Üç koşul birden aranır:
+         1) GitHub anahtarı (Sveltia CMS'in beklediği yerde, localStorage),
+         2) panel sırları (sessionStorage — sekme kapanınca silinir; imzalar burada),
+         3) 12 saati aşmamış oturum damgası.
+         Biri eksikse kalıntı temizlenip giriş sayfasına dönülür: yarım kalmış bir oturumla
+         panelin açılıp sessizce çalışmaması için (25 Ağustos 2026 denetimi). */
+      try {
+        const u = JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null');
+        const s = JSON.parse(sessionStorage.getItem('panel-sirlar') || 'null');
+        const o = JSON.parse(localStorage.getItem('panel-oturum') || 'null');
+        const suresiDoldu = !o || !o.baslangic || (Date.now() - o.baslangic) > 12 * 60 * 60 * 1000;
+        if (!u || !u.token || !s || !s.gh || suresiDoldu) {
+          localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-oturum');
+          sessionStorage.removeItem('panel-sirlar');
+          location.replace('/admin/giris.html');
+        }
+      } catch { location.replace('/admin/giris.html'); }
     </script>
     <style>
       :root { --kiremit: #b5452b; --kiremit-koyu: #8f3420; --ochre: #c98a2e; --ceviz: #4a3728; --murekkep: #24201c; --kagit: #fdfbf7; --krem: #f7f3ea; --cizgi: rgba(74,55,40,.16); --iznik: #1f5f8b; --zemin-kart: #fff; --metin-2: #635850; --yesil: #256d3b; }
@@ -245,7 +260,8 @@
       const GAS = 'https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec';
       const GOAT = 'https://ulucamii.goatcounter.com';
       let SIRLAR = null;
-      try { SIRLAR = JSON.parse(localStorage.getItem('panel-sirlar') || 'null'); } catch {}
+      // Sırlar sessionStorage'da: sekme kapanınca cihazdan silinir (bkz. giriş kapısı).
+      try { SIRLAR = JSON.parse(sessionStorage.getItem('panel-sirlar') || 'null'); } catch {}
       if (!SIRLAR) {
         document.addEventListener('DOMContentLoaded', () => {
           const k = document.createElement('div'); k.className = 'bilgi-kutu'; k.style.margin = '1rem 1.2rem 0';
@@ -267,7 +283,8 @@
         return s < 24 ? s + ' saat önce' : new Date(ts).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' });
       }
       $('cikis').addEventListener('click', () => {
-        localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-sirlar');
+        localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-oturum');
+        sessionStorage.removeItem('panel-sirlar');
         localStorage.removeItem('panel-trafik-v3'); localStorage.removeItem('panel-basvuru-v1');
         location.replace('/admin/giris.html');
       });
@@ -742,6 +759,9 @@
         if (rakam.length < 9) return ham;
         if (rakam.startsWith('32') && rakam.length === 11) return `+32 ${rakam.slice(2, 5)} ${rakam.slice(5, 7)} ${rakam.slice(7, 9)} ${rakam.slice(9)}`;
         if (rakam.startsWith('90') && rakam.length === 12) return `+90 ${rakam.slice(2, 5)} ${rakam.slice(5, 8)} ${rakam.slice(8, 10)} ${rakam.slice(10)}`;
+        // Türkiye yerel biçimi: 0 + 10 hane (0532 123 45 67). Belçika yerelinden (0 + 9 hane)
+        // uzunlukla ayrılır; ayrılmazsa "+05321234567" gibi geçersiz bir dize üretiliyordu.
+        if (rakam.startsWith('0') && rakam.length === 11) return `+90 ${rakam.slice(1, 4)} ${rakam.slice(4, 7)} ${rakam.slice(7, 9)} ${rakam.slice(9)}`;
         if (rakam.startsWith('0') && rakam.length === 10) return `0${rakam.slice(1, 4)} ${rakam.slice(4, 6)} ${rakam.slice(6, 8)} ${rakam.slice(8)}`;
         return ham.startsWith('+') ? ham : '+' + rakam;
       };
@@ -751,6 +771,7 @@
         const rakam = String(deger || '').replace(/\D/g, '');
         if (!rakam) return '';
         if (rakam.startsWith('00')) return '+' + rakam.slice(2);
+        if (rakam.startsWith('0') && rakam.length === 11) return '+90' + rakam.slice(1);  // yerel Türkiye numarası
         if (rakam.startsWith('0')) return '+32' + rakam.slice(1);      // yerel Belçika numarası
         return '+' + rakam;
       };
@@ -882,7 +903,15 @@
       $('basvuru-yenile').addEventListener('click', () => basvuruYukle());
       $('csv').addEventListener('click', () => {
         const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
-        const tirnak = (s) => '"' + String(s ?? '').replace(/"/g, '""') + '"';
+        /* Excel/LibreOffice, hücre "=", "+", "-" veya "@" ile başlıyorsa onu FORMÜL sayar.
+           Başvurandan gelen bir metin (ör. adres alanına yazılmış "=cmd|...") böylece
+           din görevlisinin bilgisayarında çalışabilirdi. Zararsız bir tek tırnak öneki
+           hücreyi metin olarak sabitler (25 Ağustos 2026 denetimi). */
+        const tirnak = (s) => {
+          let d = String(s ?? '');
+          if (/^[=+\-@\t\r]/.test(d)) d = "'" + d;
+          return '"' + d.replace(/"/g, '""') + '"';
+        };
         const csv = [v.basliklar.map(tirnak).join(';'), ...v.satirlar.map((r) => r.map(tirnak).join(';'))].join('\r\n');
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));

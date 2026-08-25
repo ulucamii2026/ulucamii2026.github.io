@@ -275,9 +275,12 @@ export async function ihtidaPdfUret(girdi: IhtidaPdfGirdi): Promise<IhtidaPdfSon
   curPage.drawText(formatTarih(girdi.gonderimTarihi.toISOString().slice(0, 10)), { x: MARGIN, y: y - 58, size: 9, font: fonts.regular, color: MUTED });
 
   // Şahit imzaları başvuranın imzasıyla aynı hizada, sağına yerleşir (EK-9'daki iki alan).
-  const sahitler = (girdi.sahitler || []).filter((s) => s && (s.imza || s.ad));
+  // Sıra korunur: dolu olanları filtrelemek, yalnız 2. şahit girildiğinde onu "Şahit 1"
+  // olarak basıyordu (25 Ağustos 2026 denetimi). Boş yer atlanır, kaydırılmaz.
+  const sahitler = girdi.sahitler || [];
   for (let i = 0; i < sahitler.length && i < 2; i++) {
     const s = sahitler[i];
+    if (!s || (!s.imza && !s.ad)) continue;
     const sx = MARGIN + 168 + i * 160;
     const sImza = await embedDataImage(s.imza);
     if (sImza) drawImageContained(curPage, sImza, sx, y - 44, 150, 44);

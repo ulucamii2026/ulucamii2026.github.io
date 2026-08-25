@@ -146,7 +146,33 @@ const varlik = (yol) => readFileSync(new URL(yol, import.meta.url), 'utf8');
     : yanlis('PDF icinde yabanci dil metni', yabanci.join(', '));
 }
 
-/* ---- 3. Dil baglantilari (dist/ uzerinden) ---- */
+/* ---- 3. Ihtida basvurusu: sahit sirasi ve gonderim dogrulamasi ---- */
+console.log('\nIhtida basvurusu koruma kurallari');
+
+{
+  const form = varlik('../src/components/IhtidaFormu.tsx');
+  // Sahit dizisi filtrelenirse yalniz 2. sahit girildiginde 1. siraya kayar ve belgede
+  // yanlis alana yazilir. Sira korunmali.
+  !/\]\.filter\(\(x\) => x\.ad \|\| x\.imza\)/.test(form)
+    ? ok('sahit dizisi filtrelenmiyor (sira korunuyor)')
+    : yanlis('sahit dizisi filtreleniyor', 'yalniz 2. sahit 1. siraya kayar');
+  // Gonderim oncesi butun adimlar dogrulanmali; yalniz son adim yetmez (taslak kota yolu).
+  /for \(let adim = 1; adim <= 6; adim \+= 1\)[\s\S]{0,200}adimGecerliMi\(adim\)/.test(form)
+    ? ok('gonderimde 1-6 adimlarin hepsi dogrulaniyor')
+    : yanlis('gonderimde yalniz son adim dogrulaniyor', 'kimlik/vesikaliksiz basvuru gecebilir');
+  // Kota fallback'inde sahit adi ve imzasi birlikte dusmeli
+  /sahit1Ad: '', sahit2Ad: ''/.test(form)
+    ? ok('kota fallbackinde sahit ad+imza birlikte dusuyor')
+    : yanlis('kota fallbackinde sahit adi kaliyor', 'ad var imza yok tutarsizligi');
+}
+{
+  const pdf = varlik('../src/components/IhtidaPdf.tsx');
+  !/\.filter\(\(s\) => s && \(s\.imza \|\| s\.ad\)\)/.test(pdf)
+    ? ok('on basvuru PDFinde sahit sirasi korunuyor')
+    : yanlis('on basvuru PDFi sahitleri filtreliyor', 'yalniz 2. sahit "Sahit 1" olarak basilir');
+}
+
+/* ---- 4. Dil baglantilari (dist/ uzerinden) ---- */
 console.log('\nKayit formu dil baglantilari');
 
 const dist = new URL('../dist/', import.meta.url);

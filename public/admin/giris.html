@@ -72,13 +72,26 @@
           let token = cozulen;
           if (cozulen.trim().startsWith('{')) {
             const paket = JSON.parse(cozulen);
+            // Paket bozuksa şifre doğru olsa bile panel açılamaz; eskiden bu durumda panel
+            // sessizce giriş sayfasına geri atıyor ve kullanıcı nedenini anlamıyordu.
+            if (!paket.gh) throw new Error('paket-eksik');
             token = paket.gh;
-            localStorage.setItem('panel-sirlar', JSON.stringify(paket));
+            /* Sırlar (GAS anahtarı, GoatCounter anahtarı ve EK-9'da kullanılan el yazısı
+               imzalar) sessionStorage'a yazılır: sekme kapanınca cihazdan silinir. Ortak ya
+               da ödünç bir bilgisayarda "Çıkış"a basılmadan bırakılan panelden imza görseli
+               alınıp sahte belge üretilmesini önler (25 Ağustos 2026 denetimi). */
+            sessionStorage.setItem('panel-sirlar', JSON.stringify(paket));
           }
           localStorage.setItem('sveltia-cms.user', JSON.stringify({ backendName: 'github', token }));
+          // Oturum damgası: panel 12 saatten eski oturumu kabul etmez (bkz. /admin/ giriş kapısı).
+          localStorage.setItem('panel-oturum', JSON.stringify({ baslangic: Date.now() }));
           location.replace('/admin/');
         } catch (err) {
-          hataGoster(err && err.message === 'kurulum' ? 'Giriş kapısı henüz kurulmamış (şifreli anahtar yok).' : 'Kullanıcı adı veya şifre hatalı.');
+          const kod = err && err.message;
+          hataGoster(
+            kod === 'kurulum' ? 'Giriş kapısı henüz kurulmamış (şifreli anahtar yok).'
+            : kod === 'paket-eksik' ? 'Erişim paketi eksik (GitHub anahtarı yok). Paketin yeniden üretilmesi gerekiyor.'
+            : 'Kullanıcı adı veya şifre hatalı.');
           dugme.disabled = false; dugme.textContent = 'Giriş yap';
         }
       });

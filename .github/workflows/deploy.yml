@@ -38,3 +38,30 @@ jobs:
       - name: GitHub Pages'e yayınla
         id: deployment
         uses: actions/deploy-pages@v5
+
+  # Yayin zinciri sessizce kirilmasin: build ya da deploy dustugunde haber gelir
+  # (namaz vakitleri isinde uyari vardi, burada yoktu — 25 Agustos 2026 denetimi).
+  uyari:
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Başarısızsa uyarı e-postası (info@ulucamii.be)
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] Site yayini basarisiz"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Sitenin yayin zinciri (build ya da GitHub Pages deploy) basarisiz oldu."
+            echo "Canlidaki surum DEGISMEDI; son basarili yayin ayakta kalmaya devam ediyor."
+            echo "Yeni icerik ve duzeltmeler siteye cikmaz; kayit sayfasi da guncellenmez."
+            echo
+            echo "Kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari.txt
+          curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd \
+            --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be" \
+            --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari.txt
