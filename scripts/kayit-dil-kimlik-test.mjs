@@ -67,7 +67,86 @@ if (!govde) {
     : yanlis('Belcika numarasi tanninmadi', '85073003328');
 }
 
-/* ---- 2. Dil baglantilari (dist/ uzerinden) ---- */
+/* ---- 2. Dil butunlugu: tr / fr / en her katmanda eksiksiz ---- */
+console.log('\nDil butunlugu (tr / fr / en)');
+
+const DILLER = ['tr', 'fr', 'en'];
+const varlik = (yol) => readFileSync(new URL(yol, import.meta.url), 'utf8');
+
+// i18n.js sozlukleri — ayni anahtarlar, ayni sirada
+{
+  const s = varlik('../public/kayit/assets/i18n.js');
+  const blok = (ad) => { const i = s.indexOf(`const ${ad} = {`); return s.slice(i, s.indexOf('\n  };', i)); };
+  const anahtar = (b) => [...b.matchAll(/^ {4}([A-Za-z0-9_]+):/gm)].map((m) => m[1]);
+  const t = anahtar(blok('tr'));
+  for (const d of DILLER.slice(1)) {
+    const k = anahtar(blok(d));
+    const eksik = t.filter((x) => !k.includes(x));
+    const fazla = k.filter((x) => !t.includes(x));
+    eksik.length === 0 && fazla.length === 0
+      ? ok(`i18n ${d}: ${k.length} anahtar, tr ile birebir`)
+      : yanlis(`i18n ${d} sozlugu tutmuyor`, `eksik: ${eksik.join(', ') || '-'} | fazla: ${fazla.join(', ') || '-'}`);
+  }
+  /^ {2}app\.messages = \{ tr, fr, en \};/m.test(s)
+    ? ok('app.messages uc dili de kaydediyor')
+    : yanlis('app.messages eksik dil', 'tr, fr, en bekleniyordu');
+}
+
+// data.js — sozlesme, beyan ve sinif adlari
+{
+  const s = varlik('../public/kayit/assets/data.js');
+  const app = {};
+  new Function('window', `${s}`)({ KayitApp: app });
+  for (const d of DILLER) {
+    app.declaration?.[d] ? ok(`beyan metni: ${d}`) : yanlis('beyan metni eksik', d);
+    const c = app.contract?.[d];
+    if (!c) { yanlis('sozlesme eksik', d); continue; }
+    const sayi = [c.student?.items?.length, c.guardian?.items?.length, c.classroom?.items?.length];
+    sayi.join(',') === '9,11,14'
+      ? ok(`sozlesme ${d}: 9 + 11 + 14 madde`)
+      : yanlis(`sozlesme ${d} madde sayisi tutmuyor`, sayi.join(', '));
+    c.title && c.closing ? ok(`sozlesme ${d}: baslik + kapanis`) : yanlis(`sozlesme ${d} eksik alan`, 'title/closing');
+  }
+  const sinif = [...(app.classLevels?.fondamental || []), ...(app.classLevels?.secondaire || [])];
+  sinif.length === 16 ? ok('16 sinif seviyesi') : yanlis('sinif sayisi', String(sinif.length));
+  const eksikDil = sinif.filter((x) => DILLER.some((d) => !x[d]));
+  eksikDil.length === 0
+    ? ok('her sinif seviyesi uc dilde')
+    : yanlis('sinif adi eksik dil', JSON.stringify(eksikDil[0]));
+}
+
+// app.js — dil listesi ve yerel ayarlar
+{
+  const s = varlik('../public/kayit/assets/app.js');
+  /const DILLER = \['tr', 'fr', 'en'\];/.test(s)
+    ? ok('app.js dil listesi uc dil')
+    : yanlis('app.js DILLER sabiti', 'tr, fr, en bekleniyordu');
+  /en: 'en-GB'/.test(s)
+    ? ok('app.js tarih bicimi en-GB tanimli')
+    : yanlis('app.js YEREL esleme', 'en-GB eksik');
+  !/app\.lang === 'fr' \? 'fr-BE' : 'tr-TR'/.test(s)
+    ? ok('app.js ikili tarih dallanmasi kalmadi')
+    : yanlis('app.js eski ikili tarih mantigi duruyor', 'YEREL esleme kullanilmali');
+}
+
+// pdf.js — resmi belge HER ZAMAN Turkce (25 Agustos 2026 karari)
+{
+  const s = varlik('../public/kayit/assets/pdf.js');
+  /app\.lang = 'tr';/.test(s) && /finally \{\s*app\.lang = arayuzDili;/.test(s)
+    ? ok('PDF uretimi dili Turkce\'ye sabitliyor ve geri koyuyor')
+    : yanlis('PDF dil sabitlemesi yok', "createPdf icinde app.lang='tr' + finally geri alma bekleniyor");
+  !/const fr = app\.lang === 'fr';/.test(s) && !/\bdl\('/.test(s)
+    ? ok('pdf.js dil dallanmasi kalmadi')
+    : yanlis('pdf.js hala dile gore dallaniyor', 'PDF tek dilli olmali');
+  // Belgede Fransizca/Ingilizce sabit metin kalmamali
+  const yabanci = ['FORMULAIRE', 'PIÈCE D’IDENTITÉ', 'Nom de l’élève', 'STUDENT REGISTRATION FORM', 'Mother’s surname']
+    .filter((k) => s.includes(k));
+  yabanci.length === 0
+    ? ok('belgede yabanci dil metni kalmadi')
+    : yanlis('PDF icinde yabanci dil metni', yabanci.join(', '));
+}
+
+/* ---- 3. Dil baglantilari (dist/ uzerinden) ---- */
 console.log('\nKayit formu dil baglantilari');
 
 const dist = new URL('../dist/', import.meta.url);
@@ -83,10 +162,12 @@ if (!existsSync(kayitHtml)) {
     ? ok('dil degistirici TR -> ?lang=tr')
     : yanlis('dil degistirici TR parametresiz', trBag ? trBag[1] : 'baglanti bulunamadi');
 
-  const frBag = html.match(/href="(\/kayit\/[^"]*)"[^>]*hreflang="fr"/);
-  frBag && frBag[1].includes('lang=fr')
-    ? ok('dil degistirici FR -> ?lang=fr')
-    : yanlis('dil degistirici FR hatali', frBag ? frBag[1] : 'baglanti bulunamadi');
+  for (const d of ['fr', 'en']) {
+    const bag = html.match(new RegExp(`href="(/kayit/[^"]*)"[^>]*hreflang="${d}"`));
+    bag && bag[1].includes(`lang=${d}`)
+      ? ok(`dil degistirici ${d.toUpperCase()} -> ?lang=${d}`)
+      : yanlis(`dil degistirici ${d.toUpperCase()} hatali`, bag ? bag[1] : 'baglanti bulunamadi');
+  }
 
   // Kanonik adres parametresiz kalmali (SEO).
   /rel="canonical" href="[^"]*\/kayit\/"/.test(html)

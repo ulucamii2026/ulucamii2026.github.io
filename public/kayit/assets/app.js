@@ -12,6 +12,10 @@
     'emergencyName', 'emergencyPhone', 'emergencyPhoneCC'
   ];
   const LANGUAGE_KEY = 'uluCamiiKayitLanguage';
+  /* Formun bildigi diller. i18n.js (app.messages) ve data.js (contract/declaration/classLevels)
+     ile birebir ayni olmali; scripts/kayit-dil-kimlik-test.mjs bunu denetler. */
+  const DILLER = ['tr', 'fr', 'en'];
+  const YEREL = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' };
   const MAX_IMAGE_BYTES = 20 * 1024 * 1024;
   const MAX_IMAGE_EDGE = 1600;
   const JPEG_QUALITY = .8;
@@ -146,7 +150,7 @@
 
   const draft = readDraft();
   app.state = draft.state;
-  app.lang = storageGet(LANGUAGE_KEY) === 'fr' ? 'fr' : 'tr';
+  app.lang = DILLER.includes(storageGet(LANGUAGE_KEY)) ? storageGet(LANGUAGE_KEY) : 'tr';
   app.lastPdf = null;
 
   app.showToast = function (message) {
@@ -189,6 +193,34 @@
     saveTimer = setTimeout(app.saveDraft, 280);
   }
 
+  /* /kayit tek adrestir ve site basligi Astro tarafinda Turkce uretilir. Form dili
+     degistiginde baslikta duran dil rozeti de yansitilmali; yoksa Ingilizce form "tr"
+     rozetiyle gorunur (25 Agustos 2026, kullanici bildirimi). Bayrak, dil menusundeki
+     hazir SVG'den klonlanir; boylece app.js'e bayrak cizimi girmez. */
+  function siteDilRozetiniYansit() {
+    document.querySelectorAll('a[hreflang]').forEach((bag) => {
+      const secili = bag.getAttribute('hreflang') === app.lang;
+      if (secili) bag.setAttribute('aria-current', 'true');
+      else bag.removeAttribute('aria-current');
+      if (bag.closest('#mobil-menu')) {
+        bag.classList.toggle('font-semibold', secili);
+        bag.classList.toggle('border-(--metin)', secili);
+        bag.classList.toggle('border-(--cizgi-etkilesim)', !secili);
+      }
+    });
+    const dugme = document.querySelector('button[aria-controls="dil-menu"]');
+    if (!dugme) return;
+    const kaynak = document.querySelector('#dil-menu a[hreflang="' + app.lang + '"] svg');
+    const hedef = dugme.querySelector('svg');
+    if (kaynak && hedef) {
+      const yeni = kaynak.cloneNode(true);
+      yeni.setAttribute('class', hedef.getAttribute('class') || '');
+      hedef.replaceWith(yeni);
+    }
+    const kod = dugme.querySelector('.mono');
+    if (kod) kod.textContent = app.lang;
+  }
+
   function translatePage() {
     document.documentElement.lang = app.lang;
     document.title = `${app.t('courseTitle')} · ${app.t('appTitle')}`;
@@ -209,6 +241,7 @@
       button.classList.toggle('is-active', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
+    siteDilRozetiniYansit();
     document.getElementById('declarationText').textContent = app.declaration[app.lang];
     if (typeof telOrnekleriniYenile === 'function') telOrnekleriniYenile();
     if (typeof sozlesmeOnayiniYenile === 'function') sozlesmeOnayiniYenile();
@@ -223,7 +256,7 @@
   }
 
   app.setLanguage = function (language) {
-    if (!['tr', 'fr'].includes(language)) return;
+    if (!DILLER.includes(language)) return;
     app.lang = language;
     storageSet(LANGUAGE_KEY, language);
     translatePage();
@@ -303,7 +336,7 @@
       liste.forEach((sinif) => {
         const option = document.createElement('option');
         option.value = sinif.fr;
-        option.textContent = app.lang === 'fr' ? sinif.fr : `${sinif.tr} (${sinif.fr})`;
+        option.textContent = app.lang === 'fr' ? sinif.fr : `${sinif[app.lang]} (${sinif.fr})`;
         hedef.append(option);
       });
       if (cokKademe) select.append(hedef);
@@ -915,7 +948,7 @@
     if (!value) return app.t('notProvided');
     const date = new Date(`${value}T12:00:00`);
     if (Number.isNaN(date.getTime())) return value;
-    return new Intl.DateTimeFormat(app.lang === 'fr' ? 'fr-BE' : 'tr-TR', { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
+    return new Intl.DateTimeFormat(YEREL[app.lang] || 'tr-TR', { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
   }
 
   function translatedChoice(name, value) {
@@ -1557,7 +1590,7 @@
     // Sitenin FR/EN sayfalarindan gelen baglantilar formu Fransizca acar (?lang=fr);
     // QR/afis linkleri parametresizdir ve Turkce acilmaya devam eder.
     const urlDili = new URLSearchParams(window.location.search).get('lang');
-    if (urlDili === 'fr' || urlDili === 'tr') app.setLanguage(urlDili);
+    if (DILLER.includes(urlDili)) app.setLanguage(urlDili);
     /* Her giris temiz bir formla baslar; QR yeniden okutuldugunda onceki
        cocugun bilgileri gelmez. */
     document.getElementById('startButton').addEventListener('click', () => {

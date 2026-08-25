@@ -5,7 +5,8 @@
 
   app.declaration = {
     tr: "Yukarıdaki bilgiler tarafımdan doldurulmuş olup, velisi olduğum öğrencinin Kurumunuzun belirlediği kurallar çerçevesinde 'Kur'an-ı Kerim ve Temel Dini Bilgiler Kursu'na kaydının yapılmasını arz ederim. Ayrıca öğrencinin kurs kurallarına uyacağını ve veli olarak üzerime düşen sorumluluklarımı yerine getireceğimi beyan ederim.",
-    fr: "Je certifie avoir rempli moi-même les informations ci-dessus et demande l’inscription de l’élève dont je suis le représentant légal au « Cours de Coran et de connaissances religieuses fondamentales », dans le respect des règles fixées par votre établissement. Je déclare également que l’élève respectera le règlement du cours et que j’assumerai les responsabilités qui m’incombent en tant que représentant légal."
+    fr: "Je certifie avoir rempli moi-même les informations ci-dessus et demande l’inscription de l’élève dont je suis le représentant légal au « Cours de Coran et de connaissances religieuses fondamentales », dans le respect des règles fixées par votre établissement. Je déclare également que l’élève respectera le règlement du cours et que j’assumerai les responsabilités qui m’incombent en tant que représentant légal.",
+    en: "I certify that I have filled in the information above myself and request the enrolment of the student for whom I am the legal guardian in the ‘Qur’an and Basic Religious Knowledge Course’, in accordance with the rules set by your institution. I further declare that the student will observe the course rules and that I will fulfil the responsibilities incumbent upon me as legal guardian."
   };
 
   app.contract = {
@@ -118,6 +119,61 @@
         ]
       },
       closing: 'Le responsable du cours informe les élèves et leurs parents, au moyen de l’un des outils de communication disponibles, des règles ci-dessus et des mesures disciplinaires auxquelles ils peuvent être confrontés en cas de non-respect.'
+    },
+    en: {
+      title: 'COURSE–PARENT CONTRACT',
+      student: {
+        title: 'RESPONSIBILITIES OF THE STUDENT',
+        intro: 'Our aim is that the students attending our courses grow into individuals who embrace religious, national, moral and human values; who love their family, their country and their nation; who respect human rights and the rule of law; and who possess a sense of responsibility.',
+        lead: 'Accordingly, the responsibilities of the students are as follows:',
+        items: [
+          'To observe the rules of the mosque and of the course;',
+          'To attend the course and the lessons regularly and to arrive on time;',
+          'To look after the course premises and equipment as if they were their own property and to make good any damage caused;',
+          'To be truthful, honest, virtuous and hard-working; and to make no distinction on grounds of religion, language, race or sex;',
+          'Not to take part in harmful, divisive, destructive, political or ideological activities; not to carry or keep emblems, posters, badges, publications or similar items relating to them; and not to use information and communication devices for such purposes;',
+          'To behave respectfully and courteously towards the administrators, teachers, staff, fellow students and everyone else around them; not to use coarse language or behaviour; to act in favour of appreciation of others, tolerance, patience, freedom, justice and solidarity; to protect the young and the elderly; and to help people with disabilities and those in need;',
+          'To stay away from substances that are harmful to health or addictive, from all forms of gambling and from the places where such games are played.',
+          'To keep the areas used at the mosque and at the course tidy, orderly and clean;',
+          'To take part, as far as possible, in the activities organised at the mosque and at the course.'
+        ]
+      },
+      guardian: {
+        title: 'RESPONSIBILITIES OF THE PARENT OR LEGAL GUARDIAN',
+        items: [
+          'To ensure that the student comes to the course on time, ready to learn and dressed in accordance with the rules;',
+          'To follow the announcements and publications of the course;',
+          'To stay in contact with the course management and to attend parents’ meetings;',
+          'To support and take part in the social activities organised by the course;',
+          'To contribute to the student’s homework where needed, to give the necessary help and to provide support;',
+          'To manage television and gaming hours so that the student devotes more time to lessons, reading and research.',
+          'To review the day with the student, discussing what they did and learned at the course;',
+          'To pay attention to the student’s sleep and rest hours;',
+          'To attend the family education seminars organised by the course;',
+          'To take the necessary measures so that the student observes the course rules;',
+          'To inform the course in good time of any change in the student’s psychological or physical condition.'
+        ]
+      },
+      classroom: {
+        title: 'CLASSROOM RULES',
+        items: [
+          'To arrive at lessons and enter the classroom on time;',
+          'To have completed their preparations before the lesson begins and to wait for their teacher;',
+          'To leave for the break at the end of the lesson only with the teacher’s permission;',
+          'To bring the necessary books and materials when entering the classroom;',
+          'To follow the lesson and take part in it while it is being taught;',
+          'To ask permission before speaking;',
+          'Not to occupy themselves with anything unrelated to the lesson in class;',
+          'Not to leave the classroom without the teacher’s permission;',
+          'To keep their classroom clean and tidy;',
+          'To sit properly and in an orderly manner and not to walk about without permission;',
+          'Not to behave in ways that disturb the peace of the classroom or prevent the lesson from being taught;',
+          'Not to disturb the other students and to live in harmony with them;',
+          'To be respectful towards their teachers;',
+          'In addition to these rules, class teachers may establish further rules with their students for their own classes.'
+        ]
+      },
+      closing: 'The course administrator informs the students and their parents, using one of the available means of communication, of the rules above and of the disciplinary measures they may face in the event of non-compliance.'
     }
   };
 
@@ -182,24 +238,24 @@
   /* Sinif seviyeleri — okulun turune gore acilir listeye doldurulur. */
   app.classLevels = {
     fondamental: [
-      { v: 'M1', tr: 'Anaokulu 1. yıl', fr: '1re maternelle' },
-      { v: 'M2', tr: 'Anaokulu 2. yıl', fr: '2e maternelle' },
-      { v: 'M3', tr: 'Anaokulu 3. yıl', fr: '3e maternelle' },
-      { v: 'P1', tr: 'İlkokul 1. sınıf', fr: '1re primaire' },
-      { v: 'P2', tr: 'İlkokul 2. sınıf', fr: '2e primaire' },
-      { v: 'P3', tr: 'İlkokul 3. sınıf', fr: '3e primaire' },
-      { v: 'P4', tr: 'İlkokul 4. sınıf', fr: '4e primaire' },
-      { v: 'P5', tr: 'İlkokul 5. sınıf', fr: '5e primaire' },
-      { v: 'P6', tr: 'İlkokul 6. sınıf', fr: '6e primaire' }
+      { v: 'M1', tr: 'Anaokulu 1. yıl', fr: '1re maternelle', en: '1st year nursery' },
+      { v: 'M2', tr: 'Anaokulu 2. yıl', fr: '2e maternelle', en: '2nd year nursery' },
+      { v: 'M3', tr: 'Anaokulu 3. yıl', fr: '3e maternelle', en: '3rd year nursery' },
+      { v: 'P1', tr: 'İlkokul 1. sınıf', fr: '1re primaire', en: '1st year primary' },
+      { v: 'P2', tr: 'İlkokul 2. sınıf', fr: '2e primaire', en: '2nd year primary' },
+      { v: 'P3', tr: 'İlkokul 3. sınıf', fr: '3e primaire', en: '3rd year primary' },
+      { v: 'P4', tr: 'İlkokul 4. sınıf', fr: '4e primaire', en: '4th year primary' },
+      { v: 'P5', tr: 'İlkokul 5. sınıf', fr: '5e primaire', en: '5th year primary' },
+      { v: 'P6', tr: 'İlkokul 6. sınıf', fr: '6e primaire', en: '6th year primary' }
     ],
     secondaire: [
-      { v: 'S1', tr: 'Ortaöğretim 1. sınıf', fr: '1re secondaire' },
-      { v: 'S2', tr: 'Ortaöğretim 2. sınıf', fr: '2e secondaire' },
-      { v: 'S3', tr: 'Ortaöğretim 3. sınıf', fr: '3e secondaire' },
-      { v: 'S4', tr: 'Ortaöğretim 4. sınıf', fr: '4e secondaire' },
-      { v: 'S5', tr: 'Ortaöğretim 5. sınıf', fr: '5e secondaire' },
-      { v: 'S6', tr: 'Ortaöğretim 6. sınıf', fr: '6e secondaire' },
-      { v: 'S7', tr: 'Ortaöğretim 7. sınıf', fr: '7e secondaire' }
+      { v: 'S1', tr: 'Ortaöğretim 1. sınıf', fr: '1re secondaire', en: '1st year secondary' },
+      { v: 'S2', tr: 'Ortaöğretim 2. sınıf', fr: '2e secondaire', en: '2nd year secondary' },
+      { v: 'S3', tr: 'Ortaöğretim 3. sınıf', fr: '3e secondaire', en: '3rd year secondary' },
+      { v: 'S4', tr: 'Ortaöğretim 4. sınıf', fr: '4e secondaire', en: '4th year secondary' },
+      { v: 'S5', tr: 'Ortaöğretim 5. sınıf', fr: '5e secondaire', en: '5th year secondary' },
+      { v: 'S6', tr: 'Ortaöğretim 6. sınıf', fr: '6e secondaire', en: '6th year secondary' },
+      { v: 'S7', tr: 'Ortaöğretim 7. sınıf', fr: '7e secondaire', en: '7th year secondary' }
     ]
   };
 

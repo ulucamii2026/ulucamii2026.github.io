@@ -213,7 +213,6 @@
   async function drawRegistrationForm(document, fonts) {
     let page = document.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
     const f = app.state.fields;
-    const fr = app.lang === 'fr';
 
     // EK-3 ve antet — resmî belgeyle aynı
     page.drawText('EK-3', { x: PAGE_WIDTH - MARGIN - fonts.bold.widthOfTextAtSize('EK-3', 10), y: PAGE_HEIGHT - 48, size: 10, font: fonts.bold, color: INK });
@@ -230,7 +229,7 @@
     const photoW = 118;
     page.drawRectangle({ x: MARGIN, y: y - headH, width: INNER - photoW, height: headH, borderColor: LINE, borderWidth: 0.8, color: WHITE });
     page.drawRectangle({ x: MARGIN + INNER - photoW, y: y - headH, width: photoW, height: headH, borderColor: LINE, borderWidth: 0.8, color: WHITE });
-    const baslik = fr ? 'FORMULAIRE D’INSCRIPTION' : 'ÖĞRENCİ KAYIT FORMU';
+    const baslik = 'ÖĞRENCİ KAYIT FORMU';
     const bw = fonts.bold.widthOfTextAtSize(baslik, 17);
     page.drawText(baslik, { x: MARGIN + (INNER - photoW - bw) / 2, y: y - headH / 2 - 6, size: 17, font: fonts.bold, color: INK });
     // vesikalık: 3:4 oranında, yuvarlak köşeli, kutunun içine ortalanmış
@@ -238,7 +237,7 @@
     const foto = await yuvarlakVesikalik(document, app.state.images.studentPhoto, fW, fH, 6);
     if (foto) page.drawImage(foto, { x: MARGIN + INNER - photoW + (photoW - fW) / 2, y: y - headH + 7, width: fW, height: fH });
     else {
-      const ft = fr ? 'Photo' : 'Fotoğraf';
+      const ft = 'Fotoğraf';
       page.drawText(ft, { x: MARGIN + INNER - photoW + (photoW - fonts.regular.widthOfTextAtSize(ft, 10)) / 2, y: y - headH / 2 - 4, size: 10, font: fonts.regular, color: INK });
     }
     y -= headH;
@@ -249,44 +248,44 @@
     const engel = f.disability === 'exists' ? f.disabilityDetail : (f.disability === 'none' ? t('none') : '');
     const hastalik = f.illness === 'exists' ? f.illnessDetail : (f.illness === 'none' ? t('none') : '');
     const adres = app.adresMetni(f);
-    const veliEtiket = f.relationship === 'mother' ? (fr ? 'Nom de la mère' : 'Anne adı')
-      : f.relationship === 'guardian' ? (fr ? 'Nom du représentant légal' : 'Vasi adı') : (fr ? 'Nom du père' : 'Baba adı');
+    const veliEtiket = f.relationship === 'mother' ? ('Anne adı')
+      : f.relationship === 'guardian' ? ('Vasi adı') : ('Baba adı');
 
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Nom de l’élève' : 'Öğrencinin soyadı', value: f.studentSurname, width: half },
-      { label: fr ? 'Prénom de l’élève' : 'Öğrencinin adı', value: f.studentName, width: half }]);
+      { label: 'Öğrencinin soyadı', value: f.studentSurname, width: half },
+      { label: 'Öğrencinin adı', value: f.studentName, width: half }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Lieu de naissance' : 'Doğum yeri', value: f.birthPlace, width: half },
-      { label: fr ? 'Date de naissance' : 'Doğum tarihi', value: formatDate(f.birthDate), width: half }]);
+      { label: 'Doğum yeri', value: f.birthPlace, width: half },
+      { label: 'Doğum tarihi', value: formatDate(f.birthDate), width: half }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Sexe' : 'Cinsiyeti', value: labelChoice('gender', f.gender), width: half },
-      { label: fr ? 'N° d’identité' : 'Kimlik no', value: f.identityNumber, width: half }]);
+      { label: 'Cinsiyeti', value: labelChoice('gender', f.gender), width: half },
+      { label: 'Kimlik no', value: f.identityNumber, width: half }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Téléphone portable' : 'Cep telefonu', value: app.telGosterim('studentPhone'), width: half },
-      { label: fr ? 'E-mail' : 'E-posta', value: f.studentEmail, width: half }]);
-    y = drawRow(page, fonts, y, [{ label: fr ? 'Situation de handicap ?' : 'Engel (özür) durumu var mı?', value: engel, width: INNER }]);
-    y = drawRow(page, fonts, y, [{ label: fr ? 'Maladie éventuelle ?' : 'Herhangi bir hastalığı var mı?', value: hastalik, width: INNER }]);
-    if (f.medicine) y = drawRow(page, fonts, y, [{ label: fr ? 'Médicaments' : 'Kullandığı ilaç', value: f.medicine, width: INNER }]);
+      { label: 'Cep telefonu', value: app.telGosterim('studentPhone'), width: half },
+      { label: 'E-posta', value: f.studentEmail, width: half }]);
+    y = drawRow(page, fonts, y, [{ label: 'Engel (özür) durumu var mı?', value: engel, width: INNER }]);
+    y = drawRow(page, fonts, y, [{ label: 'Herhangi bir hastalığı var mı?', value: hastalik, width: INNER }]);
+    if (f.medicine) y = drawRow(page, fonts, y, [{ label: 'Kullandığı ilaç', value: f.medicine, width: INNER }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'École fréquentée' : 'Okuduğu okul', value: okul, width: INNER - 120 },
-      { label: fr ? 'Classe' : 'Sınıfı', value: f.classLevel, width: 120 }]);
+      { label: 'Okuduğu okul', value: okul, width: INNER - 120 },
+      { label: 'Sınıfı', value: f.classLevel, width: 120 }]);
     y = drawRow(page, fonts, y, [
       { label: veliEtiket, value: f.guardianName, width: half },
-      { label: fr ? 'Profession' : 'Mesleği', value: f.occupation, width: half }]);
+      { label: 'Mesleği', value: f.occupation, width: half }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Téléphone fixe' : 'Ev telefonu', value: app.telGosterim('homePhone'), width: half },
-      { label: fr ? 'Téléphone portable' : 'Cep telefonu', value: app.telGosterim('guardianPhone'), width: half }]);
-    y = drawRow(page, fonts, y, [{ label: fr ? 'E-mail' : 'E-posta', value: f.guardianEmail, width: INNER }]);
-    y = drawRow(page, fonts, y, [{ label: fr ? 'Adresse' : 'Ev adresi', value: adres, width: INNER }]);
+      { label: 'Ev telefonu', value: app.telGosterim('homePhone'), width: half },
+      { label: 'Cep telefonu', value: app.telGosterim('guardianPhone'), width: half }]);
+    y = drawRow(page, fonts, y, [{ label: 'E-posta', value: f.guardianEmail, width: INNER }]);
+    y = drawRow(page, fonts, y, [{ label: 'Ev adresi', value: adres, width: INNER }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Contact d’urgence' : 'Acil durumda aranacak', value: f.emergencyName, width: half },
-      { label: fr ? 'Tél. d’urgence' : 'Acil durum telefonu', value: app.telGosterim('emergencyPhone'), width: half }]);
+      { label: 'Acil durumda aranacak', value: f.emergencyName, width: half },
+      { label: 'Acil durum telefonu', value: app.telGosterim('emergencyPhone'), width: half }]);
     y = drawRow(page, fonts, y, [
-      { label: fr ? 'Cours de Coran précédent' : 'Daha önce kursa gitti mi', value: f.previousCourse === 'yes' ? (f.previousLevel ? `${t('yes')} — ${f.previousLevel}` : t('yes')) : t('no'), width: half },
-      { label: fr ? 'Photos/vidéos' : 'Görüntü izni', value: f.mediaConsent === 'yes' ? t('mediaYes') : t('mediaNo'), width: half }]);
+      { label: 'Daha önce kursa gitti mi', value: f.previousCourse === 'yes' ? (f.previousLevel ? `${t('yes')} — ${f.previousLevel}` : t('yes')) : t('no'), width: half },
+      { label: 'Görüntü izni', value: f.mediaConsent === 'yes' ? t('mediaYes') : t('mediaNo'), width: half }]);
 
     // beyan bölümü (çerçevenin devamı)
-    const beyanBaslik = fr ? 'À LA DIRECTION DU COURS — MOSQUÉE ULU CAMİİ DE MARCHE-EN-FAMENNE' : 'MARCHE-EN-FAMENNE ULU CAMİİ KURS YÖNETİCİLİĞİNE';
+    const beyanBaslik = 'MARCHE-EN-FAMENNE ULU CAMİİ KURS YÖNETİCİLİĞİNE';
     const beyanSatirlar = wrapText(app.declaration[app.lang], fonts.regular, 10, INNER - 24);
     const imzaBlokH = 88;
     const beyanH = 26 + beyanSatirlar.length * 13 + 14 + imzaBlokH;
@@ -295,7 +294,7 @@
     if (y - beyanH < 44) {
       page = document.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
       y = PAGE_HEIGHT - MARGIN;
-      const devam = fr ? 'Formulaire d’inscription (suite)' : 'Öğrenci Kayıt Formu (devam)';
+      const devam = 'Öğrenci Kayıt Formu (devam)';
       page.drawText(devam, { x: MARGIN, y: y - 4, size: 9, font: fonts.regular, color: MUTED });
       y -= 18;
     }
@@ -308,12 +307,12 @@
     // tarih / veli adı / imza — resmî formdaki gibi sağ blokta
     const bx = MARGIN + INNER * 0.52;
     let by = kalanUst - beyanH + imzaBlokH - 12;
-    page.drawText(`${fr ? 'Date' : 'Tarih'}:  ${formatDate(f.declarationDate)}`, { x: bx, y: by, size: 10, font: fonts.regular, color: INK });
+    page.drawText(`${'Tarih'}:  ${formatDate(f.declarationDate)}`, { x: bx, y: by, size: 10, font: fonts.regular, color: INK });
     by -= 26;
-    page.drawText(`${fr ? 'Nom et prénom du parent' : 'Velinin Adı ve Soyadı'}:`, { x: bx, y: by, size: 10, font: fonts.regular, color: INK });
+    page.drawText(`${'Velinin Adı ve Soyadı'}:`, { x: bx, y: by, size: 10, font: fonts.regular, color: INK });
     page.drawText(fitText(normalize(f.guardianName), fonts.bold, 10, INNER - (bx - MARGIN) - 8), { x: bx, y: by - 13, size: 10, font: fonts.bold, color: INK });
     by -= 38;
-    page.drawText(`${fr ? 'Signature' : 'İmzası'}:`, { x: bx, y: by, size: 10, font: fonts.regular, color: INK });
+    page.drawText(`${'İmzası'}:`, { x: bx, y: by, size: 10, font: fonts.regular, color: INK });
     const imza = await embedDataImage(document, app.state.signatureData);
     if (imza) drawImageContained(page, imza, bx + 50, by - 14, 150, 40);
   }
@@ -362,7 +361,6 @@
   async function drawContract(document, fonts) {
     const c = app.contract[app.lang];
     const w = contractWriter(document, fonts);
-    const fr = app.lang === 'fr';
     w.addPage();
     w.heading(c.title, 12, true, 0, 26);
     w.heading(c.student.title, 11, false, 0, 18);
@@ -385,13 +383,13 @@
     const bx = MARGIN + INNER * 0.52;
     let y = w.getY() - 30;
     const ogrenci = `${f.studentName || ''} ${f.studentSurname || ''}`.trim();
-    page.drawText(`${fr ? 'Nom et prénom de l’élève' : 'Öğrencinin adı soyadı'}:`, { x: bx, y, size: 10.5, font: fonts.regular, color: INK });
+    page.drawText(`${'Öğrencinin adı soyadı'}:`, { x: bx, y, size: 10.5, font: fonts.regular, color: INK });
     page.drawText(fitText(ogrenci, fonts.bold, 10.5, INNER - (bx - MARGIN)), { x: bx, y: y - 13, size: 10.5, font: fonts.bold, color: INK });
     y -= 34;
-    page.drawText(`${fr ? 'Nom et prénom du parent' : 'Velinin adı soyadı'}:`, { x: bx, y, size: 10.5, font: fonts.regular, color: INK });
+    page.drawText(`${'Velinin adı soyadı'}:`, { x: bx, y, size: 10.5, font: fonts.regular, color: INK });
     page.drawText(fitText(normalize(f.guardianName), fonts.bold, 10.5, INNER - (bx - MARGIN)), { x: bx, y: y - 13, size: 10.5, font: fonts.bold, color: INK });
     y -= 34;
-    page.drawText(`${fr ? 'Signature' : 'İmza'}:`, { x: bx, y, size: 10.5, font: fonts.regular, color: INK });
+    page.drawText(`${'İmza'}:`, { x: bx, y, size: 10.5, font: fonts.regular, color: INK });
     const imza = await embedDataImage(document, app.state.signatureData);
     if (imza) drawImageContained(page, imza, bx + 40, y - 16, 160, 44);
     y -= 52;
@@ -401,8 +399,7 @@
   /* ------------------------------------------------------------ KİMLİK SAYFASI */
   async function drawIdentityDocuments(document, fonts) {
     const page = document.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
-    const fr = app.lang === 'fr';
-    drawCentered(page, fr ? 'PIÈCE D’IDENTITÉ' : 'KİMLİK BELGESİ GÖRÜNTÜLERİ', fonts.bold, 12, PAGE_HEIGHT - MARGIN - 4);
+    drawCentered(page, 'KİMLİK BELGESİ GÖRÜNTÜLERİ', fonts.bold, 12, PAGE_HEIGHT - MARGIN - 4);
     const front = await embedDataImage(document, app.state.images.identityFront);
     const back = await embedDataImage(document, app.state.images.identityBack);
     const boxW = INNER;
@@ -439,7 +436,24 @@
       .replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 64);
   }
 
+  /* EK-3 kayit formu, sozlesme ve beyan T.C. Bruksel Buyukelciligi Sosyal Hizmetler
+     Musavirligi'ne giden resmi belgedir: arayuz hangi dilde olursa olsun BELGE HER ZAMAN
+     TURKCE uretilir (25 Agustos 2026, Ridvan karari). Veli sozlesmeyi ekranda kendi dilinde
+     okuyup kabul eder; imzalanan belge Turkce arsiv nushasidir.
+     Uretim boyunca app.lang gecici olarak 'tr' yapilir; boylece app.t(), app.contract[],
+     app.declaration[] ve tarih bicimi tek noktadan Turkce'ye sabitlenir. Arayuz dili
+     degismez: translatePage() cagrilmaz, deger finally ile geri konur. */
   app.createPdf = async function () {
+    const arayuzDili = app.lang;
+    app.lang = 'tr';
+    try {
+      return await belgeUret();
+    } finally {
+      app.lang = arayuzDili;
+    }
+  };
+
+  async function belgeUret() {
     if (!window.PDFLib || !window.fontkit) throw new Error('PDF libraries are unavailable');
     const document = await PDFLib.PDFDocument.create();
     document.registerFontkit(window.fontkit);
@@ -469,5 +483,5 @@
     try { file = new File([blob], filename, { type: 'application/pdf', lastModified: Date.now() }); }
     catch (_) { file = blob; file.name = filename; }
     return { bytes, blob, file, filename };
-  };
+  }
 }());

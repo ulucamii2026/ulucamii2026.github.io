@@ -22,9 +22,11 @@ export function yol(dil: Dil, sayfa: SayfaAnahtari, alt?: string): string {
 
 /** Mevcut sayfanın diğer dildeki karşılığı (hreflang/canonical için — parametresiz kanonik adres) */
 export function digerDilYolu(url: URL, hedef: Dil): string {
-  // /kayit dil öneksiz gömülü kayıt uygulamasıdır: kanonik adresi tek ve parametresizdir
+  // /kayit dil öneksiz gömülü kayıt uygulamasıdır: kanonik adresi tek ve parametresizdir.
+  // TR kanonik adresin kendisi; FR ve EN kendi dil parametreleriyle ayrışır (aksi hâlde iki
+  // hreflang aynı adresi gösterir ve arama motoru ikisini de yok sayar).
   if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
-    return hedef === 'tr' ? '/kayit/' : '/kayit/?lang=fr';
+    return hedef === 'tr' ? '/kayit/' : `/kayit/?lang=${hedef}`;
   }
   const [, mevcutDil, seg, ...kalan] = url.pathname.split('/').filter(Boolean).length
     ? ['', ...url.pathname.split('/').filter(Boolean)]
@@ -42,12 +44,12 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
 
 /** Dil değiştiricinin (Header) kullandığı gezinme bağlantısı.
     /kayit gömülü uygulaması dilini localStorage'da tutar; parametresiz açılırsa önceki tercih
-    (çoğu kez fr) galip gelir ve "Türkçe" seçen veli Fransızca form görür. Bu yüzden dil
-    değiştirici HER dil için açık ?lang= verir — URL tercihi ezmeli. Form yalnız tr/fr bilir,
-    en de fr ile açılır. hreflang bu parametreleri kullanmaz: bkz. digerDilYolu. */
+    galip gelir ve "Türkçe" seçen veli Fransızca form görür. Bu yüzden dil değiştirici HER dil
+    için açık ?lang= verir — URL tercihi ezmeli. Form üç dili de bilir (tr/fr/en).
+    hreflang farklı davranır (TR'de kanonik adres): bkz. digerDilYolu. */
 export function dilDegistirYolu(url: URL, hedef: Dil): string {
   if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
-    return hedef === 'tr' ? '/kayit/?lang=tr' : '/kayit/?lang=fr';
+    return `/kayit/?lang=${hedef}`;
   }
   return digerDilYolu(url, hedef);
 }
@@ -55,7 +57,7 @@ export function dilDegistirYolu(url: URL, hedef: Dil): string {
 /** Site içinden /kayit uygulamasına giden bağlantı — dil tercihi her zaman açıkça taşınır. */
 export function kayitBaglantisi(link: string, dil: Dil): string {
   const ayrac = link.includes('?') ? '&' : '?';
-  return `${link}${ayrac}lang=${dil === 'tr' ? 'tr' : 'fr'}`;
+  return `${link}${ayrac}lang=${dil}`;
 }
 
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
