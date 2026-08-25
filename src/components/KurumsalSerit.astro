@@ -98,10 +98,13 @@ const uye = sonSozcuk(m.uyelik);
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    padding: 0.3rem;
+    /* Daire: iki amblem de dairesel, saran katman da öyle olmalı (Rıdvan'ın kararı).
+       İç boşluk kareden bir tık geniş — daire köşelerde daraldığı için Diyanet
+       ambleminin dış yıldız halkası aynı boşlukta kenara yapışık duruyordu. */
+    padding: 0.38rem;
     background: var(--color-kagit);
     border: 1px solid rgb(74 55 40 / 0.16);
-    border-radius: 6px;
+    border-radius: 50%;
     transition: border-color 0.15s;
   }
   .kurum:hover .plaka { border-color: rgb(74 55 40 / 0.34); }
