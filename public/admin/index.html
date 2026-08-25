@@ -731,6 +731,17 @@
         if (e) return `${e[3]}/${e[2]}/${e[1]}`;
         return d;
       };
+      /** Sheets telefonu sayiya cevirip basindaki "+" isaretini dusuruyor; belgede okunur bicime getirilir. */
+      const ek9Telefon = (deger) => {
+        const ham = String(deger || '').trim();
+        if (!ham) return '';
+        const rakam = ham.replace(/\D/g, '');
+        if (rakam.length < 9) return ham;
+        if (rakam.startsWith('32') && rakam.length === 11) return `+32 ${rakam.slice(2, 5)} ${rakam.slice(5, 7)} ${rakam.slice(7, 9)} ${rakam.slice(9)}`;
+        if (rakam.startsWith('90') && rakam.length === 12) return `+90 ${rakam.slice(2, 5)} ${rakam.slice(5, 8)} ${rakam.slice(8, 10)} ${rakam.slice(10)}`;
+        if (rakam.startsWith('0') && rakam.length === 10) return `0${rakam.slice(1, 4)} ${rakam.slice(4, 6)} ${rakam.slice(6, 8)} ${rakam.slice(8)}`;
+        return ham.startsWith('+') ? ham : '+' + rakam;
+      };
       const bugunTR = () => {
         const t = new Date();
         return `${String(t.getDate()).padStart(2, '0')}/${String(t.getMonth() + 1).padStart(2, '0')}/${t.getFullYear()}`;
@@ -829,7 +840,7 @@
               ihtidaSebebi: k['İhtida sebebi'] || '',
               ihtidaTarihi: ek9Tarih(k['Tören tarihi tercihi']) || bugunTR(),
               eposta: k['E-posta'] || '',
-              telefon: k['Telefon'] || '',
+              telefon: ek9Telefon(k['Telefon']),
               adres: k['Adres'] || '',
               beyanTarihi: ek9Tarih(k['Zaman damgası']) || bugunTR(),
             },
