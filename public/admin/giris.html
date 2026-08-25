@@ -61,9 +61,32 @@
       const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
       const form = document.getElementById('form'), hata = document.getElementById('hata'), dugme = document.getElementById('dugme');
       const hataGoster = (m) => { hata.textContent = m; hata.dataset.acik = '1'; };
+
+      /* Giriş denemesinde kullanılan paket. Kural olarak yukarıdaki gömülü paket, ama
+         girişten hemen önce tazelenir — bkz. paketiTazele(). */
+      let aktifPaket = SIFRELI;
+
+      /* GitHub Pages bu sayfayı 10 dakika önbellekte tutar (Cache-Control: max-age=600).
+         Şifre yenilendikten sonra tarayıcıya ESKİ paket gelir ve DOĞRU şifre "hatalı"
+         görünür — 25 Ağustos 2026'da tam olarak bu yaşandı ve şifre iki kez boşuna
+         değiştirildi. Bu yüzden her giriş denemesinden önce paket önbelleksiz tazelenir.
+         Ağ yoksa gömülü paketle devam edilir; o da geçerli bir pakettir. */
+      async function paketiTazele() {
+        try {
+          const yanit = await fetch(location.pathname + '?t=' + Date.now(), { cache: 'no-store' });
+          if (!yanit.ok) return;
+          const bulunan = (await yanit.text()).match(/const SIFRELI = (\{.*?\});/s);
+          if (!bulunan) return;
+          const taze = JSON.parse(bulunan[1]);
+          if (taze && taze.ct && taze.salt && taze.iv) aktifPaket = taze;
+        } catch { /* çevrimdışı ya da engellenmiş: gömülü paketle devam */ }
+      }
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); hata.dataset.acik = '0'; dugme.disabled = true; dugme.textContent = 'Doğrulanıyor…';
         try {
+          await paketiTazele();
+          const SIFRELI = aktifPaket;
           if (!SIFRELI.ct) throw new Error('kurulum');
           const ku = document.getElementById('kullanici').value.trim().toLowerCase(); const si = document.getElementById('sifre').value;
           const enc = new TextEncoder();
