@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Panel Şifre Aracı — Marche-en-Famenne Ulu Camii</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { --kiremit: #b5452b; --kiremit-koyu: #8f3420; --ochre: #c98a2e; --ceviz: #4a3728; --murekkep: #24201c; --kagit: #fdfbf7; --cizgi: rgba(74,55,40,.16); --iznik: #1f5f8b; --yesil: #2f6b46; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100dvh; padding: 1.5rem; background: var(--kagit) radial-gradient(rgba(74,55,40,.03) .6px, transparent .6px) 0 0 / 5px 5px; color: var(--murekkep); font: 17px/1.55 "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .sar { max-width: 44rem; margin: 0 auto; }
+      .kart { background: #fff; border: 1px solid var(--cizgi); border-radius: 3px; box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 16px 40px -24px rgba(0,0,0,.28); overflow: hidden; margin-bottom: 1.5rem; }
+      .serit { height: 6px; background: repeating-linear-gradient(90deg, var(--kiremit) 0 14px, var(--ochre) 14px 20px, var(--iznik) 20px 26px, var(--ochre) 26px 32px); }
+      .ic { padding: 1.6rem; }
+      h1 { font: 600 1.6rem/1.15 Lora, Georgia, serif; margin: 0 0 .5rem; }
+      h2 { font: 600 1.25rem/1.2 Lora, Georgia, serif; margin: 0 0 .5rem; }
+      p { margin: 0 0 1rem; }
+      p.alt { color: #635850; }
+      label { display: block; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #635850; margin: .9rem 0 .3rem; }
+      input, textarea { width: 100%; min-height: 46px; padding: .55rem .75rem; font: inherit; border: 1px solid rgba(74,55,40,.4); border-radius: 3px; background: var(--kagit); color: inherit; }
+      textarea { min-height: 7rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .8rem; resize: vertical; }
+      input:focus-visible, textarea:focus-visible { outline: 3px solid var(--iznik); outline-offset: 2px; }
+      button { margin-top: 1.1rem; width: 100%; min-height: 48px; font: 600 1rem "Work Sans", system-ui, sans-serif; color: #fff; background: var(--kiremit); border: 0; border-radius: 3px; cursor: pointer; }
+      button:hover { background: var(--kiremit-koyu); }
+      button.ikincil { background: var(--iznik); }
+      button[disabled] { opacity: .6; cursor: progress; }
+      .sonuc { display: none; margin-top: 1rem; padding: .7rem .85rem; border-radius: 3px; border: 1px solid var(--cizgi); }
+      .sonuc[data-acik="1"] { display: block; }
+      .sonuc[data-tur="ok"] { border-color: rgba(47,107,70,.5); background: rgba(47,107,70,.08); }
+      .sonuc[data-tur="hata"] { border-color: rgba(181,69,43,.45); background: rgba(181,69,43,.08); }
+      .uyari { border-left: 3px solid var(--ochre); padding-left: .9rem; color: #635850; }
+      code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .8rem; background: rgba(74,55,40,.07); padding: .1rem .3rem; border-radius: 2px; }
+      .adim { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--kiremit); margin-bottom: .35rem; }
+      @media (prefers-color-scheme: dark) {
+        body { background-color: #2f221a; color: #f5efe3; }
+        .kart { background: #3a2a1f; border-color: rgba(245,239,227,.18); }
+        input, textarea { background: #2f221a; color: #f5efe3; border-color: rgba(245,239,227,.4); }
+        label, p.alt, .uyari { color: #cbbfae; }
+        code { background: rgba(245,239,227,.1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sar">
+      <div class="kart">
+        <div class="serit" aria-hidden="true"></div>
+        <div class="ic">
+          <h1>Panel şifre aracı</h1>
+          <p class="alt">Şifreyi <strong>tarayıcıda</strong> belirlemek içindir. Giriş sayfası da şifreyi
+          tarayıcıda okur; ikisi aynı yolu kullanınca terminal ile tarayıcı arasındaki klavye ve
+          kodlama farkları devre dışı kalır.</p>
+          <p class="uyari">Bu sayfa hiçbir veriyi hiçbir yere göndermez. Yapıştırdığınız paket ve
+          yazdığınız şifre yalnızca bu sekmenin belleğinde kalır; sekmeyi kapatınca silinir.</p>
+        </div>
+      </div>
+
+      <div class="kart">
+        <div class="ic">
+          <div class="adim">1. adım — sınama</div>
+          <h2>Bir şifreyi canlı panelde dene</h2>
+          <p class="alt">Canlı giriş sayfasındaki şifreli paketi indirir ve verdiğiniz bilgilerle
+          açmayı dener. Hiçbir şeyi değiştirmez, istediğiniz kadar deneyebilirsiniz.</p>
+          <label for="s-kullanici">Kullanıcı adı</label>
+          <input id="s-kullanici" autocapitalize="off" spellcheck="false" autocomplete="off" />
+          <label for="s-sifre">Şifre</label>
+          <input id="s-sifre" type="password" autocomplete="off" />
+          <button id="s-dugme" class="ikincil" type="button">Canlı panelde dene</button>
+          <p id="s-sonuc" class="sonuc" role="status"></p>
+        </div>
+      </div>
+
+      <div class="kart">
+        <div class="ic">
+          <div class="adim">2. adım — yeni şifre</div>
+          <h2>Yeni şifre belirle</h2>
+          <p class="alt">Sırların düz metin hâli <code>D:\tmp\panel_paket.json</code> dosyasındadır.
+          Dosyayı seçin ya da içeriğini aşağıya yapıştırın.</p>
+
+          <label for="y-dosya">Paket dosyası</label>
+          <input id="y-dosya" type="file" accept=".json,application/json" />
+
+          <label for="y-paket">…veya paketin içeriği</label>
+          <textarea id="y-paket" spellcheck="false" placeholder='{"gh":"...","goat":"...","gas":"...","goatApi":"..."}'></textarea>
+
+          <label for="y-kullanici">Kullanıcı adı</label>
+          <input id="y-kullanici" autocapitalize="off" spellcheck="false" autocomplete="off" />
+          <label for="y-sifre1">Yeni şifre</label>
+          <input id="y-sifre1" type="password" autocomplete="new-password" />
+          <label for="y-sifre2">Yeni şifre (tekrar)</label>
+          <input id="y-sifre2" type="password" autocomplete="new-password" />
+
+          <button id="y-dugme" type="button">Şifreli bloğu üret</button>
+          <p id="y-sonuc" class="sonuc" role="status"></p>
+
+          <div id="y-cikti" style="display:none">
+            <label for="y-blok">Üretilen blok — Claude'a bu metni verin</label>
+            <textarea id="y-blok" readonly spellcheck="false"></textarea>
+            <button id="y-kopyala" class="ikincil" type="button">Panoya kopyala</button>
+            <p class="alt" style="margin-top:.9rem">Bu blok <strong>şifrelidir</strong>; sır içermez ve
+            zaten sitede yayımlanacaktır. Paylaşmanız güvenlidir. Şifrenizi ise kimseye vermeyin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const enc = new TextEncoder();
+      const b64coz = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+      const b64yap = (u8) => btoa(String.fromCharCode(...new Uint8Array(u8)));
+      const ITER = 600000;
+
+      const goster = (el, tur, metin) => { el.dataset.tur = tur; el.dataset.acik = '1'; el.textContent = metin; };
+
+      /* Giriş sayfasındaki türetmenin BİREBİR aynısı: kullanıcı adı küçük harfe indirilir,
+         araya bir boşluk konur, şifre olduğu gibi eklenir. Buradan sapmak, üretilen paketin
+         giriş sayfasında açılamaması demektir. */
+      async function anahtar(kullanici, sifre, salt, kullanim) {
+        const km = await crypto.subtle.importKey('raw', enc.encode(`${kullanici.trim().toLowerCase()} ${sifre}`), 'PBKDF2', false, ['deriveKey']);
+        return crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: ITER, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, kullanim);
+      }
+
+      // ---- 1. adım: canlı paketi sına ----
+      document.getElementById('s-dugme').addEventListener('click', async () => {
+        const dugme = document.getElementById('s-dugme');
+        const sonuc = document.getElementById('s-sonuc');
+        const kullanici = document.getElementById('s-kullanici').value;
+        const sifre = document.getElementById('s-sifre').value;
+        if (!kullanici.trim() || !sifre) { goster(sonuc, 'hata', 'Kullanıcı adı ve şifre gerekli.'); return; }
+        dugme.disabled = true; dugme.textContent = 'Deneniyor…';
+        sonuc.dataset.acik = '0';
+        try {
+          // Önbellek atlanır: canlı sayfa 10 dakika önbellekte tutuluyor.
+          const yanit = await fetch('/admin/giris.html?t=' + Date.now(), { cache: 'no-store' });
+          const bulunan = (await yanit.text()).match(/const SIFRELI = (\{.*?\});/s);
+          if (!bulunan) throw new Error('paket-yok');
+          const paket = JSON.parse(bulunan[1]);
+          const key = await anahtar(kullanici, sifre, b64coz(paket.salt), ['decrypt']);
+          const acik = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64coz(paket.iv) }, key, b64coz(paket.ct)));
+          const icerik = acik.trim().startsWith('{') ? Object.keys(JSON.parse(acik)).join(', ') : 'tek anahtar';
+          goster(sonuc, 'ok', `AÇILDI — bu kullanıcı adı ve şifre canlı panelde geçerli. Pakette: ${icerik}. Giriş sayfasına gidip aynı bilgilerle girebilirsiniz.`);
+        } catch (e) {
+          goster(sonuc, 'hata', e && e.message === 'paket-yok'
+            ? 'Canlı giriş sayfasında şifreli paket bulunamadı.'
+            : 'AÇILMADI — bu kullanıcı adı ve şifre canlı paketi çözmüyor. Başka bir yazım deneyin (şifrede büyük/küçük harf önemlidir) ya da aşağıdan yeni şifre belirleyin.');
+        } finally { dugme.disabled = false; dugme.textContent = 'Canlı panelde dene'; }
+      });
+
+      // ---- 2. adım: yeni şifreyle blok üret ----
+      document.getElementById('y-dosya').addEventListener('change', async (e) => {
+        const dosya = e.target.files && e.target.files[0];
+        if (!dosya) return;
+        document.getElementById('y-paket').value = (await dosya.text()).trim();
+      });
+
+      document.getElementById('y-dugme').addEventListener('click', async () => {
+        const dugme = document.getElementById('y-dugme');
+        const sonuc = document.getElementById('y-sonuc');
+        const cikti = document.getElementById('y-cikti');
+        const kullanici = document.getElementById('y-kullanici').value;
+        const s1 = document.getElementById('y-sifre1').value;
+        const s2 = document.getElementById('y-sifre2').value;
+        const ham = document.getElementById('y-paket').value.trim();
+        sonuc.dataset.acik = '0'; cikti.style.display = 'none';
+
+        if (!ham) { goster(sonuc, 'hata', 'Önce paket dosyasını seçin ya da içeriğini yapıştırın.'); return; }
+        if (!kullanici.trim() || !s1) { goster(sonuc, 'hata', 'Kullanıcı adı ve şifre gerekli.'); return; }
+        if (s1 !== s2) { goster(sonuc, 'hata', 'İki şifre aynı değil.'); return; }
+
+        let paket;
+        try { paket = JSON.parse(ham); } catch { goster(sonuc, 'hata', 'Paket geçerli bir JSON değil.'); return; }
+        if (!paket.gh) { goster(sonuc, 'hata', 'Pakette `gh` (GitHub anahtarı) yok — panel bu paketle açılamaz.'); return; }
+
+        dugme.disabled = true; dugme.textContent = 'Üretiliyor…';
+        try {
+          const salt = crypto.getRandomValues(new Uint8Array(16));
+          const iv = crypto.getRandomValues(new Uint8Array(12));
+          const govde = JSON.stringify(paket);
+          const key = await anahtar(kullanici, s1, salt, ['encrypt']);
+          const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(govde));
+          const blok = { v: 1, iter: ITER, salt: b64yap(salt), iv: b64yap(iv), ct: b64yap(ct) };
+
+          // Vermeden önce geri çöz: giriş sayfasının izleyeceği yolun aynısıyla doğrula.
+          const kontrolKey = await anahtar(kullanici, s1, b64coz(blok.salt), ['decrypt']);
+          const geri = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64coz(blok.iv) }, kontrolKey, b64coz(blok.ct)));
+          if (geri !== govde) throw new Error('dogrulama');
+
+          document.getElementById('y-blok').value = JSON.stringify(blok);
+          cikti.style.display = 'block';
+          const ku = kullanici.trim().toLowerCase();
+          goster(sonuc, 'ok', `Blok üretildi ve geri çözülerek doğrulandı. Giriş sayfasında kullanıcı adı olarak "${ku}" yazacaksınız.`);
+        } catch {
+          goster(sonuc, 'hata', 'Üretim sırasında hata oldu — hiçbir şey verilmedi. Sayfayı yenileyip tekrar deneyin.');
+        } finally { dugme.disabled = false; dugme.textContent = 'Şifreli bloğu üret'; }
+      });
+
+      document.getElementById('y-kopyala').addEventListener('click', async () => {
+        const alan = document.getElementById('y-blok');
+        try { await navigator.clipboard.writeText(alan.value); }
+        catch { alan.select(); document.execCommand('copy'); }
+        const d = document.getElementById('y-kopyala');
+        d.textContent = 'Kopyalandı'; setTimeout(() => { d.textContent = 'Panoya kopyala'; }, 2000);
+      });
+    </script>
+  </body>
+</html>
