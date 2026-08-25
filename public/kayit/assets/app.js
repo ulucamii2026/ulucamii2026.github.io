@@ -454,7 +454,10 @@
       else element.value = saved;
     });
     document.getElementById('birthDate').max = localDate();
+    // Taslaktan donuldugunde sozlesme yeniden okutulmaz; kardes kaydinda form sifirlaninca
+    // (temizDurum -> restoreFields) kutu yeniden kilitlenir.
     if (app.state.contractRead) enableContractAcceptance();
+    else disableContractAcceptance();
     updateConditionalFields();
   }
 
