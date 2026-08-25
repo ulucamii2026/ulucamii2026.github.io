@@ -78,7 +78,8 @@
       td.sayi { font-family: "IBM Plex Mono", ui-monospace, monospace; text-align: right; white-space: nowrap; }
       tr:last-child td { border-bottom: 0; }
       .satir-arac { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .7rem 0; }
-      .bilgi-kutu { border-left: 3px solid var(--ochre); background: rgba(201,138,46,.09); padding: .7rem .95rem; border-radius: 0 3px 3px 0; font-size: .92rem; }
+      /* Bilgi/uyari kutusu: turu renkten anlasilir ama kenar seridi yerine ince tam cerceve. */
+      .bilgi-kutu { border: 1px solid rgba(201,138,46,.42); background: rgba(201,138,46,.09); padding: .7rem .95rem; border-radius: 3px; font-size: .92rem; }
       .sekmeler { display: flex; gap: .4rem; margin-bottom: .7rem; flex-wrap: wrap; }
       .sekme { min-height: 40px; padding: .35rem .9rem; border: 1px solid var(--cizgi); background: var(--zemin-kart); border-radius: 3px; font: 600 .9rem "Work Sans", system-ui, sans-serif; cursor: pointer; color: inherit; }
       .sekme[aria-selected="true"] { background: var(--ceviz); border-color: var(--ceviz); color: #fff; }
@@ -91,7 +92,7 @@
       footer { text-align: center; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--metin-2); padding: 1.2rem; border-top: 1px solid var(--cizgi); }
 
       /* --- Ziyaret istatistikleri --- */
-      .ozet { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-left: 3px solid var(--kiremit); border-radius: 0 3px 3px 0; padding: .85rem 1.1rem; margin-bottom: .9rem; font-size: 1.02rem; line-height: 1.6; }
+      .ozet { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; padding: .85rem 1.1rem; margin-bottom: .9rem; font-size: 1.02rem; line-height: 1.6; }
       .ozet b { font-family: Lora, Georgia, serif; font-size: 1.15em; }
       .ozet .tazelik { display: block; margin-top: .3rem; font-size: .8rem; color: var(--metin-2); }
       .donem-satir { display: flex; align-items: center; gap: .4rem; margin: 0 0 .7rem; flex-wrap: wrap; }
@@ -120,7 +121,8 @@
       /* --- Başvuru kartları --- */
       .basvuru-liste { display: grid; gap: .7rem; }
       .bkart { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 4px; padding: .85rem 1rem; }
-      .bkart.yeni { border-left: 3px solid var(--ochre); }
+      /* Yeni basvuru: kenar seridi yerine cercevenin kendisi renklenir + cok hafif zemin. */
+      .bkart.yeni { border-color: rgba(201,138,46,.6); background: rgba(201,138,46,.05); }
       .bkart-ust { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
       .bkart-ad { font-family: Lora, Georgia, serif; font-size: 1.18rem; font-weight: 700; }
       .bkart-ref { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .74rem; color: var(--metin-2); }
