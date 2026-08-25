@@ -20,18 +20,32 @@ const SAAT = /^([01]\d|2[0-3]):[0-5]\d$/;
 const bekle = (ms) => new Promise((c) => setTimeout(c, ms));
 const bugunISO = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date());
 
-/** Diyanet ucundan ham listeyi çeker; geçici hatalarda 3 kez dener. */
+/** Diyanet ucundan ham listeyi çeker; geçici hatalarda ısrarla yeniden dener.
+ *  25 Ağustos 2026: çekim GitHub sunucusundan HTTP 403 aldı (aynı istek başka bir ağdan
+ *  her User-Agent ile 200 dönüyor) — yani uç, bulut IP'lerini aralıklı olarak geri
+ *  çeviriyor. Üç hızlı deneme bunu aşmaya yetmiyordu; artık 5 deneme ve giderek uzayan
+ *  bekleme (10s → 30s → 60s → 120s) uygulanıyor, toplam ~3,5 dakika. Kaynak DEĞİŞMEZ:
+ *  yalnız Diyanet. Yine de alınamazsa mevcut Diyanet verisi korunur ve uyarı gider. */
 async function diyanetVerisiCek() {
+  const DENEME = 5;
+  const ARALIK = [10000, 30000, 60000, 120000];
   let sonHata;
-  for (let deneme = 1; deneme <= 3; deneme++) {
+  for (let deneme = 1; deneme <= DENEME; deneme++) {
     try {
-      const r = await fetch(UC, { headers: { 'User-Agent': 'ulucamii-site/1.0 (+https://ulucamii.be)' }, signal: AbortSignal.timeout(30000) });
+      const r = await fetch(UC, {
+        headers: {
+          'User-Agent': 'ulucamii-site/1.0 (+https://ulucamii.be)',
+          'Accept': 'application/json, text/plain, */*',
+          'Accept-Language': 'tr,fr;q=0.8,en;q=0.6',
+        },
+        signal: AbortSignal.timeout(30000),
+      });
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return await r.json();
     } catch (e) {
       sonHata = e;
-      console.warn(`deneme ${deneme}/3 başarısız: ${e.message}`);
-      if (deneme < 3) await bekle(10000 * deneme);
+      console.warn(`deneme ${deneme}/${DENEME} başarısız: ${e.message}`);
+      if (deneme < DENEME) await bekle(ARALIK[deneme - 1]);
     }
   }
   throw sonHata;

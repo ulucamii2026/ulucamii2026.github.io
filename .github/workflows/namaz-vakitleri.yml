@@ -2,7 +2,10 @@ name: Namaz vakitlerini güncelle (Diyanet)
 
 on:
   schedule:
-    - cron: "47 2 * * *"   # her gün 02:47 UTC — veri değiştiyse commit (günlük yayın deploy.yml zamanlayıcısında)
+    # Gunde iki kez: uc bulut IP'lerini araliklı olarak 403 ile geri ceviriyor
+    # (25 Agustos 2026). Biri basarisiz olursa digeri ayni gun yakalar.
+    - cron: "47 2 * * *"    # 02:47 UTC — veri degistiyse commit (gunluk yayin deploy.yml zamanlayicisinda)
+    - cron: "23 11 * * *"   # 11:23 UTC — sabahki cekim basarisizsa ikinci sans
   workflow_dispatch:
 
 permissions:
