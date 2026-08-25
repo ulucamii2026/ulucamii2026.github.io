@@ -30,7 +30,8 @@
       .sonuc[data-acik="1"] { display: block; }
       .sonuc[data-tur="ok"] { border-color: rgba(47,107,70,.5); background: rgba(47,107,70,.08); }
       .sonuc[data-tur="hata"] { border-color: rgba(181,69,43,.45); background: rgba(181,69,43,.08); }
-      .uyari { border-left: 3px solid var(--ochre); padding-left: .9rem; color: #635850; }
+      /* Tam çerçeve — panel görünümünde kenar şeridi kullanılmıyor (25 Ağu 2026 kararı). */
+      .uyari { padding: .7rem .85rem; border: 1px solid rgba(201,138,46,.45); border-radius: 3px; background: rgba(201,138,46,.08); color: #635850; }
       code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .8rem; background: rgba(74,55,40,.07); padding: .1rem .3rem; border-radius: 2px; }
       .adim { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--kiremit); margin-bottom: .35rem; }
       @media (prefers-color-scheme: dark) {
