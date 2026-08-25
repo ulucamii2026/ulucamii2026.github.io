@@ -9,18 +9,24 @@ const t = ceviri(dil);
 type Madde = { href: string; ad: string; aciklama?: string };
 type Grup = { ad: string; maddeler: Madde[] };
 const L = (anahtar: SayfaAnahtari, ad?: string): Madde => ({ href: yol(dil, anahtar), ad: ad ?? t(`nav.${anahtar}` as any) });
-/** Gruplu menü: 4 açılır grup + 2 doğrudan bağlantı; mobilde aynı gruplar başlıklı listeler olur */
-const gruplar: Grup[] = dil === 'tr' ? [
-  { ad: 'Cami', maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('hutbeler'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
-  { ad: 'Haberler', maddeler: [L('duyurular'), L('etkinlikler', 'Etkinlikler'), L('afisler')] },
-  { ad: 'Eğitim', maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
-  { ad: 'Hizmetler', maddeler: [L('bagis'), L('uyelik', 'Dernek Üyeliği'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
-] : [
-  { ad: 'Mosquée', maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('hutbeler'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
-  { ad: 'Actualités', maddeler: [L('duyurular'), L('etkinlikler', 'Événements'), L('afisler')] },
-  { ad: 'Enseignement', maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
-  { ad: 'Services', maddeler: [L('bagis'), L('uyelik', 'Adhésion'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
+/** Gruplu menü: 4 açılır grup + 2 doğrudan bağlantı; mobilde aynı gruplar başlıklı listeler olur.
+    Grup başlıkları menüye özgüdür (ui.ts'te karşılığı yok) — üçü de burada tutulur; ikili
+    `dil === 'tr' ? … : …` kullanılmaz, yoksa İngilizce sayfa Fransızca başlık gösterir. */
+const grupAdi: Record<Dil, [string, string, string, string]> = {
+  tr: ['Cami', 'Haberler', 'Eğitim', 'Hizmetler'],
+  fr: ['Mosquée', 'Actualités', 'Enseignement', 'Services'],
+  en: ['Mosque', 'News', 'Education', 'Services'],
+};
+/** Menüde kısa biçim: ui.ts'teki karşılığı "Etkinlikler & Afişler" gibi uzun. */
+const etkinlikKisa: Record<Dil, string> = { tr: 'Etkinlikler', fr: 'Événements', en: 'Events' };
+const [gCami, gHaber, gEgitim, gHizmet] = grupAdi[dil];
+const gruplar: Grup[] = [
+  { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('hutbeler'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
+  { ad: gHaber, maddeler: [L('duyurular'), L('etkinlikler', etkinlikKisa[dil]), L('afisler')] },
+  { ad: gEgitim, maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
+  { ad: gHizmet, maddeler: [L('bagis'), L('uyelik'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ];
+const temaEtiketi: Record<Dil, string> = { tr: 'Karanlık / aydınlık tema', fr: 'Thème sombre / clair', en: 'Dark / light theme' };
 const dogrudan: Madde[] = [L('namaz'), L('iletisim')];
 const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
 const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
@@ -72,7 +78,7 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
           ))}
         </ul>
       </div>
-      <button type="button" id="tema-dugme" class="inline-flex min-h-10 items-center justify-center px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-label={dil === 'tr' ? 'Karanlık / aydınlık tema' : 'Thème sombre / clair'}>
+      <button type="button" id="tema-dugme" class="inline-flex min-h-10 items-center justify-center px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-label={temaEtiketi[dil]}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
       </button>
       <button type="button" id="menu-dugme" class="inline-flex min-h-10 items-center justify-center lg:hidden px-2.5 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) text-(--metin) hover:border-(--metin)" aria-expanded="false" aria-controls="mobil-menu" aria-label={t('nav.menu')}>
