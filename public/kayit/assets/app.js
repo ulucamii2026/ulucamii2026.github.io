@@ -714,7 +714,7 @@
       const d = rakam.split('').map(Number);
       const tek = d[0] + d[2] + d[4] + d[6] + d[8];
       const cift = d[1] + d[3] + d[5] + d[7];
-      const h10 = ((tek * 7) - cift) % 10;
+      const h10 = ((((tek * 7) - cift) % 10) + 10) % 10;
       const h11 = (d.slice(0, 10).reduce((x, y) => x + y, 0)) % 10;
       if (h10 === d[9] && h11 === d[10]) return 'turkiye';
     }
