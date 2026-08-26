@@ -1,0 +1,24 @@
+name: (geçici) Uç noktalara erişim testi
+on:
+  workflow_dispatch:
+jobs:
+  dene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Uçları yokla
+        run: |
+          for u in \
+            "https://awqatsalah.diyanet.gov.tr/" \
+            "https://awqatsalah.diyanet.gov.tr/api/Place/Countries" \
+            "https://namazvakitleri.diyanet.gov.tr/tr-TR/11890/mfamenne-icin-namaz-vakti" \
+            "https://ezanvakti.emushaf.net/vakitler/11890" ; do
+            k=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 \
+                -H "User-Agent: ulucamii-site/1.0 (+https://ulucamii.be)" "$u" || echo "baglanti-hatasi")
+            echo "SONUC $k  $u"
+          done
+          echo "--- Auth/Login POST (401/400 = ULASILIYOR demektir) ---"
+          k=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 -X POST \
+              -H "Content-Type: application/json" \
+              -d '{"email":"yok@example.com","password":"yok"}' \
+              "https://awqatsalah.diyanet.gov.tr/api/Auth/Login" || echo "baglanti-hatasi")
+          echo "SONUC $k  api/Auth/Login"
