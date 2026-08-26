@@ -15,10 +15,10 @@ const bugun = bugunBrussels();
 const tablo = namaz.gunler.filter((g) => g.tarih >= bugun);
 const etiketler = { imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') };
 const not = dil === 'tr'
-  ? 'Vakitler Diyanet İşleri Başkanlığı takvimine göre Marche-en-Famenne için hesaplanmıştır. Cemaatle kılınan namaz saatleri (özellikle yatsı ve sabah) mevsime göre cami ilan panosunda duyurulur.'
+  ? 'Vakitler Diyanet İşleri Başkanlığı takvimine göre Marche-en-Famenne için hesaplanmıştır. Camimizde sabah namazı, güneş doğmadan yaklaşık 20 dakika önce cemaatle kılınır; diğer vakitlerin cemaat saatleri mevsime göre cami ilan panosunda duyurulur.'
   : dil === 'en'
-  ? 'Prayer times are calculated for Marche-en-Famenne according to the calendar of the Presidency of Religious Affairs (Diyanet). Congregational prayer times (especially isha and fajr) are announced on the mosque noticeboard according to the season.'
-  : 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Les heures des prières en congrégation (notamment isha et fajr) sont affichées à la mosquée selon la saison.';
+  ? 'Prayer times are calculated for Marche-en-Famenne according to the calendar of the Presidency of Religious Affairs (Diyanet). In our mosque the dawn prayer is performed in congregation about 20 minutes before sunrise; congregational times for the other prayers are announced on the mosque noticeboard according to the season.'
+  : 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Dans notre mosquée, la prière de l’aube est accomplie en congrégation environ 20 minutes avant le lever du soleil ; les heures des autres prières en congrégation sont affichées à la mosquée selon la saison.';
 
 const gunlerListe = yaklasanDiniGunler(bugun);
 const dg = dil === 'tr'

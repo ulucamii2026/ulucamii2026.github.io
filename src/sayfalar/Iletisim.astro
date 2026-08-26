@@ -11,13 +11,13 @@ const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const m = dil === 'tr' ? {
   alt: 'Sorularınız, cenaze ve nikâh talepleri, ziyaret ve her türlü konu için bize ulaşın.',
-  not: 'Cenaze, hasta ziyareti ve acil durumlar için din görevlisini doğrudan arayabilirsiniz. Dernek işleri (üyelik, aidat, bağış makbuzu) için cami numarasını kullanın.',
+  not: 'Cenaze, hasta ziyareti ve acil durumlar için din görevlisini doğrudan arayabilirsiniz. Dernek işleri (üyelik, aidat, bağış makbuzu) için cami numarasını kullanın. Din görevlimizin haftalık izin günü çarşambadır.',
 } : dil === 'en' ? {
   alt: 'For any questions, funeral or marriage requests, visits or other matters, please contact us.',
-  not: 'For a death, a visit to a sick person or an emergency, you can call the imam directly. For association matters (membership, dues, donation receipts), use the mosque number.',
+  not: 'For a death, a visit to a sick person or an emergency, you can call the imam directly. For association matters (membership, dues, donation receipts), use the mosque number. The imam’s weekly day off is Wednesday.',
 } : {
   alt: 'Pour toute question, demande funéraire ou de mariage, visite ou autre sujet, contactez-nous.',
-  not: 'Pour un décès, une visite de malade ou une urgence, appelez directement l’imam. Pour les affaires de l’association (adhésion, cotisation, reçu de don), utilisez le numéro de la mosquée.',
+  not: 'Pour un décès, une visite de malade ou une urgence, appelez directement l’imam. Pour les affaires de l’association (adhésion, cotisation, reçu de don), utilisez le numéro de la mosquée. Le jour de congé hebdomadaire de l’imam est le mercredi.',
 };
 ---
 <Base baslik={t('nav.iletisim')} dil={dil} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii iletişim bilgileri: adres, telefon numaraları, e-posta ve konum haritası.' : dil === 'en' ? 'Contact details of the Ulu Mosque of Marche-en-Famenne: address, phone numbers, e-mail and map.' : 'Coordonnées de la Mosquée Ulu Camii de Marche-en-Famenne : adresse, téléphones, e-mail et plan d’accès.'}>
