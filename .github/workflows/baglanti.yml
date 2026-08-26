@@ -1,0 +1,51 @@
+name: Dış bağlantı denetimi
+
+# Dış adresler sessizce ölür. 26 Ağustos 2026'da MSB'nin "Dövizle Askerlik İşlemleri"
+# sayfası 404 dönüyordu ve üç dilde de konsolosluk sayfasında duruyordu — kimse tıklamadan
+# fark edilmezdi. Ayda bir yoklanır; yalnız KALICI kırıklar (404/410) uyarı üretir,
+# aralıklı ağ hataları ve bot koruması "şüpheli" sayılıp işi kırmızıya boyamaz.
+
+on:
+  schedule:
+    - cron: "37 5 1 * *"   # her ayın 1'i, 05:37 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  denetim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Dış bağlantıları yokla
+        id: yokla
+        run: node scripts/dis-baglanti-denetim.mjs --ayrinti | tee /tmp/baglanti.log
+
+      - name: Kırık bağlantı varsa uyarı e-postası (info@ulucamii.be)
+        if: failure() && steps.yokla.outcome == 'failure'
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] Sitede kirik dis baglanti var"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Aylik denetim sitede calismayan dis baglanti buldu."
+            echo "Hangi adres ve hangi sayfalar oldugu asagida:"
+            echo
+            sed -n '/KIRIK BAGLANTI\|KIRIK BAĞLANTI/,$p' /tmp/baglanti.log | head -40
+            echo
+            echo "Tam kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari.txt
+          curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd \
+            --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be" \
+            --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari.txt

@@ -138,7 +138,7 @@ Dövizle askerlik hakkından yararlanmak için, yurt dışında oturma/çalışm
 2. Randevu [konsolosluk.gov.tr](https://www.konsolosluk.gov.tr) üzerinden alınır.
 3. Dövizle askerlik ücreti, diğer işlemlerin aksine randevu gününde **nakit** olarak ödenir.
 
-Güncel bedel dönemsel olarak değiştiği için bu sayfada sabit rakam verilmemiştir; güncel bilgi: [msb.gov.tr — Dövizle Askerlik İşlemleri](https://www.msb.gov.tr/Askeralma/icerik/dovizle-askerlik-islemleri) ve [dovizle.msb.gov.tr](https://dovizle.msb.gov.tr)
+Güncel bedel dönemsel olarak değiştiği için bu sayfada sabit rakam verilmemiştir; güncel bilgi: [msb.gov.tr — Askeralma Genel Müdürlüğü](https://www.msb.gov.tr/Askeralma) ve [dovizle.msb.gov.tr](https://dovizle.msb.gov.tr)
 
 ### Vatandaşlık ve Mavi Kart
 

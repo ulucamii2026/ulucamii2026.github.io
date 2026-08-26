@@ -138,7 +138,7 @@ Pour bénéficier du rachat du service militaire (dövizli askerlik), il faut av
 2. Le rendez-vous se prend via [konsolosluk.gov.tr](https://www.konsolosluk.gov.tr).
 3. Contrairement aux autres démarches, la taxe de rachat se paie **en espèces** le jour du rendez-vous.
 
-Le montant et les conditions évoluant selon les périodes, aucun chiffre n’est indiqué ici ; informations actualisées : [msb.gov.tr — Rachat du service militaire](https://www.msb.gov.tr/Askeralma/icerik/dovizle-askerlik-islemleri) et [dovizle.msb.gov.tr](https://dovizle.msb.gov.tr)
+Le montant et les conditions évoluant selon les périodes, aucun chiffre n’est indiqué ici ; informations actualisées : [msb.gov.tr — Direction générale du recrutement](https://www.msb.gov.tr/Askeralma) et [dovizle.msb.gov.tr](https://dovizle.msb.gov.tr)
 
 ### Nationalité et carte bleue (Mavi Kart)
 

@@ -138,7 +138,7 @@ To benefit from the paid military-service exemption, one must have worked abroad
 2. The appointment is booked via [konsolosluk.gov.tr](https://www.konsolosluk.gov.tr).
 3. Unlike other procedures, the paid-exemption fee is paid **in cash**, in foreign currency, on the day of the appointment.
 
-As the current fee changes periodically, no fixed figure is given on this page; for current information see [msb.gov.tr — Paid Military Service Exemption Procedures](https://www.msb.gov.tr/Askeralma/icerik/dovizle-askerlik-islemleri) and [dovizle.msb.gov.tr](https://dovizle.msb.gov.tr)
+As the current fee changes periodically, no fixed figure is given on this page; for current information see [msb.gov.tr — Directorate General of Recruitment](https://www.msb.gov.tr/Askeralma) and [dovizle.msb.gov.tr](https://dovizle.msb.gov.tr)
 
 ### Citizenship and the Blue Card
 

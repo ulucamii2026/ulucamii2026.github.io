@@ -14,7 +14,8 @@
     "denetim": "node scripts/site-denetim.mjs",
     "test:kayit": "node scripts/kayit-dil-kimlik-test.mjs",
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
-    "dogrula": "npm run build && npm run denetim && npm run test:kayit && npm run test:ek9"
+    "dogrula": "npm run build && npm run denetim && npm run test:kayit && npm run test:ek9",
+    "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",
