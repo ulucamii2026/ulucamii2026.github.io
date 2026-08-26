@@ -1,5 +1,23 @@
 ---
-/** Diyanet Hizmetleri — Belçika Diyanet Vakfı (BDV) çatısı altındaki hizmetlere hızlı erişim kartları */
+/**
+ * Diyanet Hizmetleri — Belçika Diyanet Vakfı (BDV) çatısı altındaki hizmetlere erişim.
+ *
+ * KURGU (26 Ağustos 2026'da gözden geçirildi): önce dokuz hizmet dokuz eşit kart olarak
+ * yan yana duruyordu. Süresi dolmak üzere olan Hac ön kaydı ile yıl boyu geçerli bir bilgi
+ * sayfası aynı görsel ağırlıktaydı; dokuz düğmenin dokuzu da "İncele" diyordu ve nereye
+ * gittiği (dışarısı mı, kendi sayfamız mı) ayırt edilemiyordu.
+ *
+ * Şimdi: (1) süreli bir başvuru varsa en üstte, son tarihiyle birlikte duruyor — umre
+ * aynı bölümün alt şeridinde, çünkü tek başına bir kart üç sütunlu ızgarada yalnız kalıyordu;
+ * (2) kalan hizmetler üç başlık altında toplandı — göz tarayarak bulur;
+ * (3) her bağlantı kendi eylemini söylüyor ("PDF indir", "Ön kayıt formu"…);
+ * (4) dışarı çıkan bağlantılar hedefini adıyla yazıyor (diyanet.be).
+ *
+ * Hac ön kaydının son günü SABİT DEĞİL, tarihle karşılaştırılır: site her gün yeniden
+ * yayımlandığı için (deploy.yml cron) süre dolduğunda kart kendiliğinden sakinleşir.
+ * Kaynak: diyanet.be/onkayit — "2027 Hac Ön kayıtları 20.06.2026 – 30.08.2026 tarihleri
+ * arasında gerçekleşecektir", kişi başı ön kayıt ücreti 2.000 €.
+ */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Ikon from '../components/Ikon.astro';
@@ -11,113 +29,328 @@ const { dil } = Astro.props; const t = ceviri(dil);
 const site = await siteAyarlari();
 const c = site.cenaze;
 
-interface Kart {
-  ikon: 'harita' | 'cenaze' | 'bagis' | 'kurs' | 'takvim' | 'kurban' | 'hukuk';
-  baslik: string; ozet: string; href: string; disLink?: boolean;
-}
+type IkonAd = 'harita' | 'cenaze' | 'bagis' | 'kurs' | 'takvim' | 'kurban' | 'hukuk' | 'kabe' | 'yolculuk' | 'indir' | 'kandil';
+interface Kart { ikon: IkonAd; baslik: string; ozet: string; href: string; eylem: string; disLink?: boolean }
+interface Grup { baslik: string; kartlar: Kart[] }
+
+/* Hac ön kaydı süreli bir işlem: bittiğinde vurgu kendiliğinden kalkar. */
+const HAC_SON_GUN = new Date('2026-08-30T23:59:59+02:00');
+/* Koşullar, gerekli belgeler ve IBAN kendi duyurumuzda — cemaat dış siteyi didiklemesin. */
+const HAC_DUYURU = '2027-hac-on-kayit-son-gunler';
+const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
+const hacSonTarih = { tr: '30 Ağustos 2026', fr: '30 août 2026', en: '30 August 2026' }[dil];
 
 const m = dil === 'tr' ? {
+  etiket: 'Belçika Diyanet Vakfı',
   altBaslik: 'Camimiz, Belçika Diyanet Vakfı (BDV) çatısı altında hizmet veriyor. Hac, umre, cenaze, kurban, zekât-fitre, eğitim, hukuk danışmanlığı ve dinî takvim hizmetlerine buradan ulaşabilirsiniz.',
+  oneCikanEtiket: 'Başvuru sürüyor',
+  oneCikanKapaliEtiket: 'Başvurular kapandı',
+  sonTarihEtiket: 'Son başvuru',
+  kesinKayitEtiket: 'Kesin kayıt',
+  ucretEtiket: 'Ön kayıt ücreti',
+  disKaynak: 'diyanet.be adresinde açılır',
   kurumsalBaslik: 'Belçika Diyanet Vakfı hakkında',
   kurumsal: 'Belçika Diyanet Vakfı, 3 Eylül 1982 tarihli Belçika Kraliyet Kararnamesi ile onaylanmış bir “Uluslararası Birlik”tir. Bugün kendisine bağlı 73 cami, 1 araştırma merkezi, 1 yatılı-gündüzlü eğitim enstitüsü ve yüzden fazla derneğiyle; aile bazında kayıtlı 38.000 üyesi olan ve yaklaşık 160.000 kişiye hizmet veren Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu ile Belçika’da yaşayan Müslüman Türk toplumuna hizmet vermeye devam ediyor.',
   iletisimBaslik: 'BDV Genel Merkezi',
-  disNot: 'Belçika Diyanet Vakfı’nın kendi web sitesine yönlendirir.',
-  git: 'İncele',
-  cami: 'Camimizin kendi sayfası →',
-  kartlar: [
-    { ikon: 'harita', baslik: 'Hac Ön Kayıt', ozet: '2027 Hac ön kayıtları başladı. Vekâletiniz, Belçika Diyanet Vakfı’nın deneyimli organizasyonunda güven altında.', href: 'https://www.diyanet.be/onkayit', disLink: true },
-    { ikon: 'harita', baslik: 'Umre Turları', ozet: 'Yıl boyunca düzenlenen umre turlarına Belçika Diyanet Vakfı koordinasyonunda katılabilir, kafile ile birlikte yolculuk edebilirsiniz.', href: 'https://www.diyanet.be/umre', disLink: true },
-    { ikon: 'cenaze', baslik: 'Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu', ozet: 'Her yıl Ocak ayının ilk haftası üyelere yıllık aidat mektubu gönderilir; 25 Ocak’a kadar mektup ulaşmayan üyelerin fonu bilgilendirmesi gerekir.', href: yol(dil, 'cenaze'), disLink: false },
-    { ikon: 'kurban', baslik: 'Vekâletle Kurban', ozet: 'Kurbanınızı Belçika Diyanet Vakfı koordinasyonunda veya camimizin kendi organizasyonuyla vekâletle kestirebilirsiniz. Bedel ve son başvuru tarihi her yıl duyurulur.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', disLink: false },
-    { ikon: 'bagis', baslik: 'Zekât ve Fitre Fonu', ozet: 'Fitre miktarı en az 10€’dur. BDV Zekât-Fitre Fonu’na (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181) açıklama kısmına bağış türünü yazarak gönderebilirsiniz.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', disLink: true },
-    { ikon: 'kurs', baslik: 'Eğitim Hizmetleri ve UİP Bursu', ozet: 'Kur’an-ı Kerim, dinî bilgiler, dil ve bilgisayar kurslarının yanında; UİP ve diğer öğrencilere Fitre-Zekât Fonu’ndan tek seferlik eğitim bursu sağlanır.', href: 'https://www.diyanet.be/Burs', disLink: true },
-    { ikon: 'hukuk', baslik: 'Hukuk Danışmanlığı', ozet: 'Belçika’da yaşarken karşılaşabileceğiniz hukuki konularda Belçika Diyanet Vakfı’nın hukuk danışmanlığı hizmetinden faydalanabilirsiniz.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', disLink: true },
-    { ikon: 'takvim', baslik: 'İmsakiye (Marche-en-Famenne)', ozet: 'Camimizin bulunduğu bölge için hazırlanan yıllık imsakiyeyi PDF olarak indirebilirsiniz.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', disLink: true },
-    { ikon: 'takvim', baslik: 'Dinî Günler ve Kandiller', ozet: 'Kandil geceleri, bayramlar ve önemli dinî günlerin güncel tarihlerini namaz vakitleri sayfamızdaki takvimden takip edebilirsiniz.', href: yol(dil, 'namaz') + '#dini-gunler', disLink: false },
-  ] as Kart[],
+  cami: 'Camimizin iletişim sayfası',
+  hac: {
+    baslik: '2027 Hac Ön Kaydı',
+    ozetAcik: 'Ön kayıtlar 30 Ağustos 2026’da kapanıyor. Kayıt, Belçika Diyanet Vakfı’nın deneyimli hac organizasyonu üzerinden yapılır; kura sonrası kesin kayda dönüşür.',
+    ozetKapali: '2027 hac ön kayıt dönemi sona erdi. Yeni dönem duyurulduğunda camimizden ve Belçika Diyanet Vakfı’ndan bilgi alabilirsiniz.',
+    ucret: '2.000 € (kişi başı)',
+    kesinKayit: '30 Ağustos – 30 Eylül 2026',
+    eylem: 'Ön kayıt formu',
+    ayrinti: 'Koşullar ve gerekli belgeler',
+  },
+  umre: {
+    baslik: 'Umre Turları',
+    ozet: 'Belçika Diyanet Vakfı yıl boyunca umre turları düzenler; hâlen Taif ziyaretli Aralık umresinin kayıtları sürüyor.',
+    eylem: 'Tur takvimi',
+  },
+  gruplar: [
+    {
+      baslik: 'Fonlar ve yardımlaşma',
+      kartlar: [
+        { ikon: 'cenaze', baslik: 'Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu', ozet: 'Her yıl Ocak ayının ilk haftası üyelere yıllık aidat mektubu gönderilir; 25 Ocak’a kadar mektup ulaşmayan üyelerin fonu bilgilendirmesi gerekir.', href: yol(dil, 'cenaze'), eylem: 'Fonu tanıyın' },
+        { ikon: 'kurban', baslik: 'Vekâletle Kurban', ozet: 'Kurbanınızı Belçika Diyanet Vakfı koordinasyonunda veya camimizin kendi organizasyonuyla vekâletle kestirebilirsiniz. Bedel ve son başvuru tarihi her yıl duyurulur.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', eylem: 'Bağış sayfası' },
+        { ikon: 'bagis', baslik: 'Zekât ve Fitre Fonu', ozet: 'Fitre miktarı en az 10 €’dur. BDV Zekât-Fitre Fonu’na (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181) açıklama kısmına bağış türünü yazarak gönderebilirsiniz.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', eylem: 'Fon bilgileri', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Eğitim ve danışmanlık',
+      kartlar: [
+        { ikon: 'kurs', baslik: 'Eğitim Hizmetleri ve UİP Bursu', ozet: 'Kur’an-ı Kerim, dinî bilgiler, dil ve bilgisayar kurslarının yanında; UİP ve diğer öğrencilere Fitre-Zekât Fonu’ndan tek seferlik eğitim bursu sağlanır.', href: 'https://www.diyanet.be/Burs', eylem: 'Burs koşulları', disLink: true },
+        { ikon: 'hukuk', baslik: 'Hukuk Danışmanlığı', ozet: 'Belçika’da yaşarken karşılaşabileceğiniz hukuki konularda Belçika Diyanet Vakfı’nın hukuk danışmanlığı hizmetinden faydalanabilirsiniz.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', eylem: 'Danışmanlığa ulaşın', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Dinî takvim',
+      kartlar: [
+        { ikon: 'indir', baslik: 'İmsakiye (Marche-en-Famenne)', ozet: 'Camimizin bulunduğu bölge için hazırlanan yıllık imsakiyeyi PDF olarak indirebilirsiniz.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', eylem: 'PDF indir', disLink: true },
+        { ikon: 'kandil', baslik: 'Dinî Günler ve Kandiller', ozet: 'Kandil geceleri, bayramlar ve önemli dinî günlerin güncel tarihlerini namaz vakitleri sayfamızdaki takvimden takip edebilirsiniz.', href: yol(dil, 'namaz') + '#dini-gunler', eylem: 'Takvime git' },
+      ],
+    },
+  ] as Grup[],
 } : dil === 'en' ? {
+  etiket: 'Diyanet Foundation of Belgium',
   altBaslik: 'Our mosque operates under the umbrella of the Diyanet Foundation of Belgium (BDV). Services related to hajj, omra, funerals, sacrifice, zakât-fitre, education, legal counselling and the religious calendar can all be reached here.',
+  oneCikanEtiket: 'Applications open',
+  oneCikanKapaliEtiket: 'Applications closed',
+  sonTarihEtiket: 'Closing date',
+  kesinKayitEtiket: 'Final registration',
+  ucretEtiket: 'Pre-registration fee',
+  disKaynak: 'opens on diyanet.be',
   kurumsalBaslik: 'About the Diyanet Foundation of Belgium',
   kurumsal: 'The Diyanet Foundation of Belgium is an "international union" approved by Belgian royal decree of 3 September 1982. It now brings together 73 mosques, a research centre, a boarding-and-day education institute, and more than a hundred associations; through its Funeral, Mutual Aid and Solidarity Fund, with around 38,000 registered member families serving nearly 160,000 people, it continues to serve the Muslim Turkish community living in Belgium.',
   iletisimBaslik: 'BDV Head Office',
-  disNot: 'You will be redirected to the Diyanet Foundation of Belgium’s own website.',
-  git: 'View',
-  cami: 'Our mosque’s own page →',
-  kartlar: [
-    { ikon: 'harita', baslik: 'Hajj Pre-registration', ozet: 'Pre-registration for the 2027 Hajj has opened. Your arrangements are in safe hands with the Diyanet Foundation of Belgium’s experienced organisation.', href: 'https://www.diyanet.be/onkayit', disLink: true },
-    { ikon: 'harita', baslik: 'Omra Trips', ozet: 'Join the omra trips organised throughout the year under the coordination of the Diyanet Foundation of Belgium, travelling together with the group.', href: 'https://www.diyanet.be/umre', disLink: true },
-    { ikon: 'cenaze', baslik: 'Funeral, Mutual Aid and Solidarity Fund', ozet: 'Every year, in the first week of January, an annual membership letter is sent to members; members who have not received the letter by 25 January should inform the fund.', href: yol(dil, 'cenaze'), disLink: false },
-    { ikon: 'kurban', baslik: 'Sacrifice by Proxy (Kurban)', ozet: 'You can have your sacrifice performed by proxy through the Diyanet Foundation of Belgium or our mosque’s own organisation. The fee and application deadline are announced each year.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', disLink: false },
-    { ikon: 'bagis', baslik: 'Zakât and Fitre Fund', ozet: 'The minimum fitre amount is €10. You can donate to the BDV Zakât-Fitre Fund (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181), stating the type of donation in the message field.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', disLink: true },
-    { ikon: 'kurs', baslik: 'Education Services and UİP Scholarship', ozet: 'Alongside Qur’an, religious knowledge, language and computer courses, a one-off education scholarship is granted to UİP and other students from the Fitre-Zakât Fund.', href: 'https://www.diyanet.be/Burs', disLink: true },
-    { ikon: 'hukuk', baslik: 'Legal Counselling', ozet: 'You can make use of the Diyanet Foundation of Belgium’s legal counselling service for legal matters you may encounter while living in Belgium.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', disLink: true },
-    { ikon: 'takvim', baslik: 'Prayer Calendar (Marche-en-Famenne)', ozet: 'You can download the annual prayer-times calendar prepared for our region as a PDF.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', disLink: true },
-    { ikon: 'takvim', baslik: 'Holy Nights and Religious Days', ozet: 'You can follow the up-to-date dates of holy nights, religious festivals and other significant days in the calendar on our prayer times page.', href: yol(dil, 'namaz') + '#dini-gunler', disLink: false },
-  ] as Kart[],
+  cami: 'Our mosque’s contact page',
+  hac: {
+    baslik: '2027 Hajj Pre-registration',
+    ozetAcik: 'Pre-registration closes on 30 August 2026. Registration is handled through the experienced hajj organisation of the Diyanet Foundation of Belgium and becomes final after the ballot.',
+    ozetKapali: 'The 2027 hajj pre-registration period has ended. When the next period is announced, you can get information from our mosque and from the Diyanet Foundation of Belgium.',
+    ucret: '€2,000 per person',
+    kesinKayit: '30 August – 30 September 2026',
+    eylem: 'Pre-registration form',
+    ayrinti: 'Conditions and required documents',
+  },
+  umre: {
+    baslik: 'Omra Trips',
+    ozet: 'The Diyanet Foundation of Belgium organises omra trips throughout the year; registration for the December omra including a visit to Taif is currently open.',
+    eylem: 'Trip schedule',
+  },
+  gruplar: [
+    {
+      baslik: 'Funds and mutual aid',
+      kartlar: [
+        { ikon: 'cenaze', baslik: 'Funeral, Mutual Aid and Solidarity Fund', ozet: 'Every year, in the first week of January, an annual membership letter is sent to members; members who have not received the letter by 25 January should inform the fund.', href: yol(dil, 'cenaze'), eylem: 'About the fund' },
+        { ikon: 'kurban', baslik: 'Sacrifice by Proxy (Kurban)', ozet: 'You can have your sacrifice performed by proxy through the Diyanet Foundation of Belgium or our mosque’s own organisation. The fee and application deadline are announced each year.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', eylem: 'Donations page' },
+        { ikon: 'bagis', baslik: 'Zakât and Fitre Fund', ozet: 'The minimum fitre amount is €10. You can donate to the BDV Zakât-Fitre Fund (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181), stating the type of donation in the message field.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', eylem: 'Fund details', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Education and counselling',
+      kartlar: [
+        { ikon: 'kurs', baslik: 'Education Services and UİP Scholarship', ozet: 'Alongside Qur’an, religious knowledge, language and computer courses, a one-off education scholarship is granted to UİP and other students from the Fitre-Zakât Fund.', href: 'https://www.diyanet.be/Burs', eylem: 'Scholarship terms', disLink: true },
+        { ikon: 'hukuk', baslik: 'Legal Counselling', ozet: 'You can make use of the Diyanet Foundation of Belgium’s legal counselling service for legal matters you may encounter while living in Belgium.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', eylem: 'Reach counselling', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Religious calendar',
+      kartlar: [
+        { ikon: 'indir', baslik: 'Prayer Calendar (Marche-en-Famenne)', ozet: 'You can download the annual prayer-times calendar prepared for our region as a PDF.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', eylem: 'Download PDF', disLink: true },
+        { ikon: 'kandil', baslik: 'Holy Nights and Religious Days', ozet: 'You can follow the up-to-date dates of holy nights, religious festivals and other significant days in the calendar on our prayer times page.', href: yol(dil, 'namaz') + '#dini-gunler', eylem: 'Go to calendar' },
+      ],
+    },
+  ] as Grup[],
 } : {
+  etiket: 'Fondation Diyanet de Belgique',
   altBaslik: 'Notre mosquée est rattachée à la Fondation Diyanet de Belgique (BDV). Retrouvez ici les services liés au hajj, à l’omra, aux funérailles, au sacrifice, à la zakât-fitre, à l’éducation, au conseil juridique et au calendrier religieux.',
+  oneCikanEtiket: 'Inscriptions ouvertes',
+  oneCikanKapaliEtiket: 'Inscriptions closes',
+  sonTarihEtiket: 'Date limite',
+  kesinKayitEtiket: 'Inscription définitive',
+  ucretEtiket: 'Frais de préinscription',
+  disKaynak: 's’ouvre sur diyanet.be',
   kurumsalBaslik: 'À propos de la Fondation Diyanet de Belgique',
   kurumsal: 'La Fondation Diyanet de Belgique est une « union internationale » agréée par arrêté royal belge du 3 septembre 1982. Elle regroupe aujourd’hui 73 mosquées, un centre de recherche, un institut d’enseignement avec internat, et plus de cent associations ; avec son Fonds funéraire, d’entraide et de solidarité comptant environ 38 000 familles membres et servant près de 160 000 personnes, elle continue de servir la communauté musulmane turque de Belgique.',
   iletisimBaslik: 'Siège de la BDV',
-  disNot: 'Vous serez redirigé vers le site de la Fondation Diyanet de Belgique.',
-  git: 'Découvrir',
-  cami: 'La page de notre mosquée →',
-  kartlar: [
-    { ikon: 'harita', baslik: 'Préinscription au Hajj', ozet: 'Les préinscriptions au Hajj 2027 ont commencé. Votre procuration est entre de bonnes mains, avec l’expérience de la Fondation Diyanet de Belgique.', href: 'https://www.diyanet.be/onkayit', disLink: true },
-    { ikon: 'harita', baslik: 'Voyages d’Omra', ozet: 'Participez aux voyages d’omra organisés toute l’année sous la coordination de la Fondation Diyanet de Belgique, en groupe accompagné.', href: 'https://www.diyanet.be/umre', disLink: true },
-    { ikon: 'cenaze', baslik: 'Fonds funéraire, d’entraide et de solidarité', ozet: 'Chaque année, la première semaine de janvier, une lettre de cotisation annuelle est envoyée aux membres ; sans réception avant le 25 janvier, contactez le fonds.', href: yol(dil, 'cenaze'), disLink: false },
-    { ikon: 'kurban', baslik: 'Sacrifice par procuration (Kurban)', ozet: 'Faites accomplir votre sacrifice par procuration, via la Fondation Diyanet de Belgique ou l’organisation propre de notre mosquée. Montant et date limite annoncés chaque année.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', disLink: false },
-    { ikon: 'bagis', baslik: 'Fonds Zakât et Fitre', ozet: 'Le montant du fitre est d’au moins 10 €. Vous pouvez faire un don au Fonds Zakât-Fitre de la BDV (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181) en précisant le type de don.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', disLink: true },
-    { ikon: 'kurs', baslik: 'Services éducatifs et bourse UİP', ozet: 'Cours de Coran, de catéchisme, de langues et d’informatique ; une bourse ponctuelle est aussi accordée aux étudiants UİP via le Fonds Fitre-Zakât.', href: 'https://www.diyanet.be/Burs', disLink: true },
-    { ikon: 'hukuk', baslik: 'Conseil juridique', ozet: 'Bénéficiez du service de conseil juridique de la Fondation Diyanet de Belgique pour les questions administratives et juridiques que vous rencontrez en Belgique.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', disLink: true },
-    { ikon: 'takvim', baslik: 'Calendrier des prières (Marche-en-Famenne)', ozet: 'Téléchargez le calendrier annuel des heures de prière préparé pour notre région, au format PDF.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', disLink: true },
-    { ikon: 'takvim', baslik: 'Nuits bénies et fêtes religieuses', ozet: 'Suivez les dates actualisées des nuits bénies, des fêtes et des journées religieuses importantes dans le calendrier de notre page des horaires de prière.', href: yol(dil, 'namaz') + '#dini-gunler', disLink: false },
-  ] as Kart[],
+  cami: 'La page de contact de notre mosquée',
+  hac: {
+    baslik: 'Préinscription au Hajj 2027',
+    ozetAcik: 'Les préinscriptions se clôturent le 30 août 2026. L’inscription se fait via l’organisation expérimentée de la Fondation Diyanet de Belgique et devient définitive après le tirage au sort.',
+    ozetKapali: 'La période de préinscription au Hajj 2027 est terminée. Vous serez informé par notre mosquée et par la Fondation Diyanet de Belgique lors de la prochaine ouverture.',
+    ucret: '2 000 € par personne',
+    kesinKayit: '30 août – 30 septembre 2026',
+    eylem: 'Formulaire de préinscription',
+    ayrinti: 'Conditions et documents requis',
+  },
+  umre: {
+    baslik: 'Voyages d’Omra',
+    ozet: 'La Fondation Diyanet de Belgique organise des voyages d’omra toute l’année ; les inscriptions pour l’omra de décembre avec visite de Taïf sont ouvertes.',
+    eylem: 'Calendrier des voyages',
+  },
+  gruplar: [
+    {
+      baslik: 'Fonds et entraide',
+      kartlar: [
+        { ikon: 'cenaze', baslik: 'Fonds funéraire, d’entraide et de solidarité', ozet: 'Chaque année, la première semaine de janvier, une lettre de cotisation annuelle est envoyée aux membres ; sans réception avant le 25 janvier, contactez le fonds.', href: yol(dil, 'cenaze'), eylem: 'Découvrir le fonds' },
+        { ikon: 'kurban', baslik: 'Sacrifice par procuration (Kurban)', ozet: 'Faites accomplir votre sacrifice par procuration, via la Fondation Diyanet de Belgique ou l’organisation propre de notre mosquée. Montant et date limite annoncés chaque année.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', eylem: 'Page des dons' },
+        { ikon: 'bagis', baslik: 'Fonds Zakât et Fitre', ozet: 'Le montant du fitre est d’au moins 10 €. Vous pouvez faire un don au Fonds Zakât-Fitre de la BDV (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181) en précisant le type de don.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', eylem: 'Détails du fonds', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Éducation et conseil',
+      kartlar: [
+        { ikon: 'kurs', baslik: 'Services éducatifs et bourse UİP', ozet: 'Cours de Coran, de catéchisme, de langues et d’informatique ; une bourse ponctuelle est aussi accordée aux étudiants UİP via le Fonds Fitre-Zakât.', href: 'https://www.diyanet.be/Burs', eylem: 'Conditions de bourse', disLink: true },
+        { ikon: 'hukuk', baslik: 'Conseil juridique', ozet: 'Bénéficiez du service de conseil juridique de la Fondation Diyanet de Belgique pour les questions administratives et juridiques que vous rencontrez en Belgique.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', eylem: 'Contacter le conseil', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Calendrier religieux',
+      kartlar: [
+        { ikon: 'indir', baslik: 'Calendrier des prières (Marche-en-Famenne)', ozet: 'Téléchargez le calendrier annuel des heures de prière préparé pour notre région, au format PDF.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', eylem: 'Télécharger le PDF', disLink: true },
+        { ikon: 'kandil', baslik: 'Nuits bénies et fêtes religieuses', ozet: 'Suivez les dates actualisées des nuits bénies, des fêtes et des journées religieuses importantes dans le calendrier de notre page des horaires de prière.', href: yol(dil, 'namaz') + '#dini-gunler', eylem: 'Voir le calendrier' },
+      ],
+    },
+  ] as Grup[],
 };
 
-const yollarSVG: Record<Kart['ikon'], string> = {
+/* Ikon.astro'da bulunmayan dört işaret burada; aynı çizim dili: 24×24, 1.75 kalınlık,
+   yuvarlak uç. Önce Hac ile Umre aynı "harita" işaretini, imsakiye ile kandiller aynı
+   "takvim" işaretini paylaşıyordu — iki çift ayırt edilemiyordu. */
+const ekIkon: Partial<Record<IkonAd, string>> = {
   kurban: '<path d="M4 12a8 4 0 0 0 16 0"/><path d="M4 12V9a8 4 0 0 1 16 0v3"/><path d="M9 6V4M15 6V4M12 5V3"/>',
   hukuk: '<path d="M12 3v18M9 21h6"/><path d="M5 7h14"/><path d="M5 7 2 13a3 3 0 0 0 6 0L5 7Z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0l-3-6Z"/>',
-  harita: '', cenaze: '', bagis: '', kurs: '', takvim: '', // Ikon.astro'daki set kullanılacak
+  kabe: '<path d="M5 8.5 12 5l7 3.5v7L12 19l-7-3.5v-7Z"/><path d="M5 8.5 12 12l7-3.5M12 12v7"/><path d="M4 10.5h16"/>',
+  yolculuk: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5.5-5.5 2 2-5.5 5.5-2Z"/>',
+  indir: '<path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v4h4"/><path d="M12 11v6m0 0-2.5-2.5M12 17l2.5-2.5"/>',
+  kandil: '<path d="M17.5 15.5A7 7 0 0 1 9 5.2a7.5 7.5 0 1 0 8.5 10.3Z"/><path d="m18 4 .8 1.9L21 6.6l-1.9.9L18 9.4l-.8-1.9L15 6.6l2.2-.7L18 4Z"/>',
 };
 ---
 <Base baslik={t('nav.diyanet')} dil={dil} aciklama={m.altBaslik}>
-  <SayfaBasligi etiket={t('nav.diyanet')} baslik={t('nav.diyanet')} altBaslik={m.altBaslik} />
+  <SayfaBasligi etiket={m.etiket} baslik={t('nav.diyanet')} altBaslik={m.altBaslik} />
 
-  <div class="kapsayici py-10">
-    <h2 class="sr-only">{dil === 'tr' ? 'Hizmetler' : dil === 'en' ? 'Services' : 'Services'}</h2>
-    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-      {m.kartlar.map((k) => (
-        <li class="kart p-5 sm:p-6 flex flex-col gap-3">
-          <div class="h-11 w-11 grid place-items-center rounded-full bg-(--zemin-3) text-(--vurgu)" aria-hidden="true">
-            {(k.ikon === 'kurban' || k.ikon === 'hukuk')
-              ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" set:html={yollarSVG[k.ikon]} />
-              : <Ikon ad={k.ikon} class="h-6 w-6" />}
+  <div class="kapsayici py-10 flex flex-col gap-12">
+    {/* Süreli işlem en üstte: tarihi geçince vurgu kendiliğinden kalkar */}
+    <section aria-labelledby="hac-basligi" class={`hac-kart ${hacAcik ? 'hac-acik' : ''} kart p-6 sm:p-8`}>
+      <div class="flex flex-wrap items-center gap-3 mb-3">
+        <span class="hac-ikon grid place-items-center h-11 w-11 rounded-full shrink-0" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" set:html={ekIkon.kabe} />
+        </span>
+        <span class={`rozet ${hacAcik ? 'rozet-acik' : ''}`}>{hacAcik ? m.oneCikanEtiket : m.oneCikanKapaliEtiket}</span>
+      </div>
+
+      <h2 id="hac-basligi" class="font-serif text-2xl sm:text-3xl leading-tight mb-2">{m.hac.baslik}</h2>
+      <p class="text-(--metin-2) max-w-[62ch]">{hacAcik ? m.hac.ozetAcik : m.hac.ozetKapali}</p>
+
+      {hacAcik && (
+        <dl class="hac-kunye mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-3 max-w-[60ch]">
+          <div>
+            <dt class="etiket">{m.sonTarihEtiket}</dt>
+            <dd class="font-semibold mt-0.5"><time datetime="2026-08-30">{hacSonTarih}</time></dd>
           </div>
-          <h3 class="text-lg leading-snug">{k.baslik}</h3>
-          <p class="text-sm text-(--metin-2) flex-1">{k.ozet}</p>
-          <a href={k.href} target={k.disLink ? '_blank' : undefined} rel={k.disLink ? 'noopener' : undefined} class="dugme dugme-ikincil w-full justify-center text-sm mt-1">
-            {m.git}{k.disLink && <span aria-hidden="true"> <span aria-hidden="true"> ↗</span></span>}
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <div class="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-      <div class="kart-kagit p-6 sm:p-8">
-        <p class="etiket etiket-vurgu mb-2">{m.kurumsalBaslik}</p>
-        <p class="text-(--metin-2) max-w-[70ch]">{m.kurumsal}</p>
-      </div>
-      <div class="kart p-6">
-        <p class="etiket etiket-vurgu mb-3">{m.iletisimBaslik}</p>
-        <dl class="grid gap-2.5 text-sm">
-          <div><dt class="etiket">{dil === 'tr' ? 'Adres' : dil === 'en' ? 'Address' : 'Adresse'}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
-          <div><dt class="etiket">{dil === 'tr' ? 'E-posta' : dil === 'en' ? 'E-mail' : 'E-mail'}</dt><dd><a href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
-          <div><dt class="etiket">Web</dt><dd><a href="https://www.diyanet.be" target="_blank" rel="noopener">diyanet.be <span aria-hidden="true"> ↗</span></a></dd></div>
+          <div>
+            <dt class="etiket">{m.kesinKayitEtiket}</dt>
+            <dd class="font-semibold mt-0.5">{m.hac.kesinKayit}</dd>
+          </div>
+          <div>
+            <dt class="etiket">{m.ucretEtiket}</dt>
+            <dd class="font-semibold mt-0.5">{m.hac.ucret}</dd>
+          </div>
         </dl>
-        <p class="mt-4 text-xs text-(--metin-2)">{m.disNot}</p>
-        <p class="mt-3 text-sm"><a href={yol(dil, 'iletisim')}>{m.cami}</a></p>
+      )}
+
+      <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener"
+           class={`dugme ${hacAcik ? 'dugme-birincil' : 'dugme-ikincil'} w-full sm:w-auto justify-center`}>
+          {m.hac.eylem}<span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span>
+        </a>
+        {hacAcik && (
+          <a href={yol(dil, 'duyurular', HAC_DUYURU)} class="metin-baglanti text-sm underline underline-offset-4">
+            {m.hac.ayrinti} <span aria-hidden="true">→</span>
+          </a>
+        )}
       </div>
+
+      {/* Umre hac ile aynı aileden ama süreli değil: kendi başına bir kart olsaydı
+          üç sütunlu ızgarada yalnız kalırdı. Aynı bölümün alt şeridi olarak duruyor. */}
+      <div class="umre-serit mt-7 pt-5 flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
+        <h3 class="text-base font-semibold">{m.umre.baslik}</h3>
+        <p class="text-sm text-(--metin-2) flex-1 min-w-[18ch]">{m.umre.ozet}</p>
+        <a href="https://www.diyanet.be/umre" target="_blank" rel="noopener"
+           class="metin-baglanti text-sm underline underline-offset-4 whitespace-nowrap">
+          {m.umre.eylem}<span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span>
+        </a>
+      </div>
+    </section>
+
+    {m.gruplar.map((g) => (
+      <section aria-labelledby={`grup-${g.baslik.replace(/[^a-zA-Z0-9]/g, '')}`}>
+        <h2 id={`grup-${g.baslik.replace(/[^a-zA-Z0-9]/g, '')}`} class="grup-baslik">{g.baslik}</h2>
+        <ul class={`grid gap-5 sm:grid-cols-2 items-stretch ${g.kartlar.length > 2 ? 'lg:grid-cols-3' : ''}`} role="list">
+          {g.kartlar.map((k) => (
+            <li class="kart p-5 sm:p-6 flex flex-col gap-3 h-full">
+              <div class="h-11 w-11 grid place-items-center rounded-full bg-(--zemin-3) text-(--vurgu) shrink-0" aria-hidden="true">
+                {ekIkon[k.ikon]
+                  ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" set:html={ekIkon[k.ikon]} />
+                  : <Ikon ad={k.ikon as 'harita' | 'cenaze' | 'bagis' | 'kurs' | 'takvim'} class="h-6 w-6" />}
+              </div>
+              <h3 class="text-lg leading-snug">{k.baslik}</h3>
+              <p class="text-sm text-(--metin-2) flex-1">{k.ozet}</p>
+              <a href={k.href} target={k.disLink ? '_blank' : undefined} rel={k.disLink ? 'noopener' : undefined}
+                 class="dugme dugme-ikincil w-full justify-center text-sm mt-1">
+                {k.eylem}{k.disLink && <><span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span></>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <section class="kart-kagit p-6 sm:p-8" aria-labelledby="bdv-hakkinda">
+        <h2 id="bdv-hakkinda" class="font-serif text-xl leading-tight mb-3">{m.kurumsalBaslik}</h2>
+        <p class="text-(--metin-2) max-w-[70ch]">{m.kurumsal}</p>
+      </section>
+      <section class="kart p-6" aria-labelledby="bdv-merkez">
+        <h2 id="bdv-merkez" class="etiket etiket-vurgu mb-3">{m.iletisimBaslik}</h2>
+        <dl class="grid gap-3.5 text-sm">
+          <div><dt class="etiket">{dil === 'tr' ? 'Adres' : dil === 'en' ? 'Address' : 'Adresse'}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
+          <div><dt class="etiket">{dil === 'tr' ? 'E-posta' : dil === 'en' ? 'E-mail' : 'E-mail'}</dt><dd><a class="metin-baglanti" href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
+          <div><dt class="etiket">Web</dt><dd><a class="metin-baglanti" href="https://www.diyanet.be" target="_blank" rel="noopener">diyanet.be <span aria-hidden="true"> ↗</span></a></dd></div>
+        </dl>
+        <p class="mt-4 text-sm"><a class="metin-baglanti" href={yol(dil, 'iletisim')}>{m.cami} <span aria-hidden="true">→</span></a></p>
+      </section>
     </div>
   </div>
 </Base>
+
+<style>
+  /* Grup başlığı: bölümü açar ama kart başlıklarıyla yarışmaz. Üstünde altındakinden
+     fazla boşluk bırakılır — başlık altındaki içeriğe aittir. */
+  .grup-baslik {
+    font-family: var(--font-serif, Lora, Georgia, serif);
+    font-size: 1.15rem;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--cizgi);
+  }
+
+  /* Süreli başvuru kartı: sayfadaki tek "şimdi yapılacak iş". Açıkken kâğıt zemine
+     oturur ve vurgu rengiyle çerçevelenir; süre dolunca sıradan bir karta döner. */
+  .hac-kart { background: var(--zemin); }
+  .hac-kart.hac-acik { border-color: color-mix(in oklab, var(--vurgu, #b5452b) 45%, var(--cizgi)); }
+  .hac-ikon { background: var(--zemin-3); color: var(--metin-2); }
+  .hac-kart.hac-acik .hac-ikon { background: color-mix(in oklab, var(--vurgu, #b5452b) 14%, transparent); color: var(--vurgu, #b5452b); }
+
+  .rozet {
+    font-family: var(--font-mono, "IBM Plex Mono", ui-monospace, monospace);
+    font-size: 0.72rem;
+    letter-spacing: var(--tracking-etiket, 0.16em);
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: var(--zemin-3);
+    color: var(--metin-2);
+  }
+  .rozet-acik {
+    background: color-mix(in oklab, var(--vurgu, #b5452b) 14%, transparent);
+    color: var(--vurgu, #b5452b);
+    font-weight: 600;
+  }
+
+  /* Künye rakamları tabular: son tarih ile ücret alt alta hizalı okunur. */
+  .hac-kunye dd { font-variant-numeric: tabular-nums; }
+
+  /* Umre, hac ile aynı bölümün alt şeridi; ayraç ikisini ayırır ama koparmaz. */
+  .umre-serit { border-top: 1px solid var(--cizgi); }
+
+  /* 16-20 px yüksekliğindeki metin bağlantısı parmakla ıskalanır. Dolgu dokunma
+     alanını 32 px'e çıkarır, negatif kenar boşluğu düzeni olduğu gibi bırakır. */
+  .metin-baglanti {
+    display: inline-block;
+    padding-block: 0.5rem;
+    margin-block: -0.5rem;
+  }
+</style>
