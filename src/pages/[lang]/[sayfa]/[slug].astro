@@ -30,6 +30,9 @@ const galeriBaslik = dil === 'tr' ? 'Fotoğraflar' : dil === 'en' ? 'Photos' : '
    gösterilir (lib/icerik.ts → icerikDili). Liste sayfalarında bu not vardı, detayda yoktu:
    arama motorundan doğrudan gelen ziyaretçi neden Fransızca okuduğunu bilmiyordu
    (25 Ağustos 2026 denetim turu 4). */
+/* Kapak lightbox'ta büyüyor ama bunu gösteren bir şey yoktu: 360 px'lik sütunda
+   afişin yazıları okunmuyor, ziyaretçi tıklanabileceğini bilmiyordu (26 Ağustos 2026). */
+const buyutNotu = dil === 'tr' ? 'Büyütmek için tıklayın' : dil === 'en' ? 'Click to enlarge' : 'Cliquez pour agrandir';
 const enNotu = tur === 'duyuru'
   ? 'This announcement is published in Turkish and French. An English version is not available.'
   : 'This event is published in Turkish and French. An English version is not available.';
@@ -45,13 +48,17 @@ const enNotu = tur === 'duyuru'
   </SayfaBasligi>
   {dil === 'en' && <div class="kapsayici pt-6"><p class="bilgi text-sm">{enNotu}</p></div>}
   <article class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
-    <div class="duz-yazi"><Content /></div>
+    {/* Mobilde tek sütuna inince görsel metnin en altında kalıyordu — kimse oraya kadar
+        inmiyor. Dar ekranda üste alındı, geniş ekranda sağdaki sütunda kalıyor. */}
+    <div class="duz-yazi order-2 lg:order-1"><Content /></div>
     {kapak && (
-      <aside>
+      <aside class="order-1 lg:order-2">
         <a href={kapak} data-lightbox={grup} data-caption={d.kapakAlt ?? d.baslik} class="gorsel-cerceve block">
           <img src={tur === 'etkinlik' && d.afisKucuk ? d.afisKucuk : kapak} alt={d.kapakAlt ?? d.baslik} loading="lazy" decoding="async" />
         </a>
-        {tur === 'etkinlik' && <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')}<span aria-hidden="true"> ↗</span></a></p>}
+        {tur === 'etkinlik'
+          ? <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')}<span aria-hidden="true"> ↗</span></a></p>
+          : <p class="mt-2 text-sm text-(--metin-2)">{buyutNotu}</p>}
       </aside>
     )}
   </article>

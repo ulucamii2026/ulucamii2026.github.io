@@ -1,14 +1,20 @@
 ---
 baslik: "Préinscriptions au Hajj 2027 : dernier jour le 30 août"
 tarih: 2026-08-26
-ozet: "Les préinscriptions au hajj 2027 de la Fondation Diyanet de Belgique se clôturent le 30 août 2026. Frais de préinscription : 2 000 € par personne. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
+ozet: "Les préinscriptions au hajj 2027 de la Fondation Diyanet de Belgique se clôturent le 30 août 2026. Frais : 2 000 € par personne ; les places sont limitées et l'inscription définitive est accordée selon l'ordre des paiements. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
+kapak: /media/duyurular/2027-hac-onkayit-afis.webp
+kapakAlt: Affiche de la Fondation Diyanet de Belgique pour la préinscription au hajj 2027 — du 20 juin au 30 août 2026, 2 000 € par personne
 etiketler:
   - hajj
   - diyanet
 oneCikan: true
 ---
 
-Les **préinscriptions au hajj 2027** de la Fondation Diyanet de Belgique **se clôturent le dimanche 30 août 2026.** Il est important que les membres de notre communauté qui envisagent d'accomplir le pèlerinage ne manquent pas cette date : passé ce délai, aucune inscription n'est acceptée pour l'année en cours.
+<div class="uyari"><p><strong>Date limite : dimanche 30 août 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p></div>
+
+Les **préinscriptions au hajj 2027** de la Fondation Diyanet de Belgique **se clôturent le dimanche 30 août 2026.** Les autorités saoudiennes ayant avancé le traitement des visas, la préinscription comme l'inscription définitive ont été lancées plus tôt que d'habitude cette année.
+
+Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les effectuer lui-même ou se faire aider par les responsables de notre mosquée.
 
 ## Calendrier
 
@@ -18,36 +24,55 @@ Les **préinscriptions au hajj 2027** de la Fondation Diyanet de Belgique **se c
 | Inscription définitive | 30 août – 30 septembre 2026 |
 | Voyage du hajj | 1-3 mai **ou** 24-27 mai 2027 |
 
-## Frais de préinscription
+Les dates du hajj peuvent varier de 1 à 3 jours selon les vols et les hôtels.
 
-**2 000 € par personne**, à verser sur le compte de la Fondation Diyanet de Belgique :
+## Frais de préinscription et paiement
 
-**IBAN : BE40 3630 8397 5263**
-Bureau des Affaires Sociales, Rue Montoyer 4, 1000 Bruxelles
+**2 000 € par personne.** Les dossiers sans paiement ne sont pas traités.
 
-Indiquez en communication les **nom, prénom, adresse et numéro de portable** du futur pèlerin — sans ces informations, le paiement ne peut pas être rattaché au dossier.
+<div class="kart" style="padding:1rem 1.15rem"><p class="etiket">Compte de la Fondation Diyanet de Belgique</p><p style="font-weight:600;font-size:1.05rem;margin-top:.25rem">IBAN : BE40 3630 8397 5263</p><p style="margin-top:.35rem">Bureau des Affaires Sociales<br>Rue Montoyer 4, 1000 Bruxelles</p></div>
+
+Indiquez en communication les **nom, prénom, adresse et numéro de portable** du futur pèlerin. Sans ces informations, le paiement ne peut pas être rattaché au dossier et l'organisation décline toute responsabilité pour les problèmes qui en découleraient.
+
+En cas de désistement pour un motif sérieux avant l'inscription définitive, le montant est remboursé au cours du mois de juillet, déduction faite d'un minimum de 250 € de frais de dossier et des arrhes du billet d'avion.
 
 ## Conditions
 
-- Être titulaire d'un passeport turc
-- Ne pas avoir déjà accompli le hajj
-- Passeport valable au moins jusqu'au **10 mai 2028**
+- Être titulaire d'un **passeport turc**
+- **Ne pas avoir déjà accompli le hajj.** Une personne l'ayant déjà accompli peut partir **par procuration** au nom d'un proche qui, pour raison de santé ou d'âge, ne pourra jamais s'y rendre.
+- Un **parent au premier degré** résidant en Turquie (mère, père, conjoint, frère ou sœur, enfant, grand-parent, petit-enfant) peut être emmené dans la limite des places disponibles, à condition d'avoir participé au tirage au sort du hajj 2027.
 
-## Documents à fournir
+## Vérifiez votre passeport dès aujourd'hui
 
-1. Passeport turc valide (au moins jusqu'au 10.05.2028)
-2. Copie de la carte de séjour belge (valable au moins jusqu'au 10.07.2028)
-3. Certificat de vaccination contre la méningite
-4. Copie de la carte d'identité
-5. Certificat médical
+Votre passeport doit être valable **au moins jusqu'au 10 mai 2028**. S'il expire avant cette date, introduisez **immédiatement** une demande de nouveau passeport :
 
-## Inscription
+- Depuis la Belgique, la procédure prend en moyenne **3 à 4 semaines**.
+- En vacances en Turquie, une demande sur place est délivrée en **7 à 10 jours**.
 
-La préinscription se fait uniquement en ligne : **[www.diyanet.be/onkayit](https://www.diyanet.be/onkayit)**
+Pour les femmes non belges, une **différence de nom de famille entre le passeport et la carte de séjour** peut aller jusqu'au refus d'embarquement ; si vous êtes dans ce cas, entamez la régularisation dès maintenant.
 
-Si le formulaire vous pose difficulté ou si vous avez un doute sur vos documents, passez à la mosquée : nous le remplirons ensemble. Vous pouvez aussi contacter directement la Fondation Diyanet de Belgique au **+32 2 218 57 55** (en semaine 09h00-12h30 / 14h00-17h00).
+## Documents demandés lors de l'inscription définitive
 
-**Imam :** +32 471 79 46 82
-**Mosquée :** +32 472 98 50 73
+Les documents suivants ne sont **pas demandés à la préinscription** : ils sont remis à votre responsable de groupe pendant la période d'inscription définitive ouverte le 30 août et lors du séminaire de formation au hajj.
+
+1. Passeport de la République de Turquie valable au moins jusqu'au **10.05.2028**
+2. Copie **recto verso** de la carte de séjour belge valable au moins jusqu'au **10.07.2028**
+3. Carte de vaccination contre la méningite — il doit s'agir de la **carte jaune internationale** ; une carte délivrée par le médecin traitant n'est pas valable. Les cartes déjà obtenues sont valables 3 ans.
+4. Copie **recto verso** de la carte d'identité de la République de Turquie
+5. Certificat médical attestant l'aptitude au voyage — le modèle se télécharge depuis l'écran de préinscription, s'imprime et se fait signer par le médecin traitant
+
+## Inscription et aide
+
+La préinscription se fait uniquement ici : **[www.diyanet.be/onkayit](https://www.diyanet.be/onkayit)**
+
+<div class="bilgi"><p><strong>Toutes les communications</strong> relatives au hajj se font <strong>par e-mail</strong>. Consultez régulièrement l'adresse indiquée lors de l'inscription et vérifiez vos courriers indésirables.</p></div>
+
+Si le formulaire vous pose difficulté, si vous avez un doute sur vos documents ou si votre passeport arrive à échéance, passez à la mosquée : nous regarderons ensemble et, si besoin, nous compléterons l'inscription avec vous.
+
+- **Imam :** [+32 471 79 46 82](tel:+32471794682)
+- **Mosquée :** [+32 472 98 50 73](tel:+32472985073)
+- **Fondation Diyanet de Belgique :** [+32 2 218 57 55](tel:+3222185755) — en semaine 09h00-12h30 / 14h00-17h00 · [info@diyanet.be](mailto:info@diyanet.be)
 
 Que Dieu facilite le chemin de ceux qui en font l'intention et leur accorde un pèlerinage agréé.
+
+<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Source : Fondation Diyanet de Belgique — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. L'affiche appartient à la Fondation Diyanet de Belgique.</p>
