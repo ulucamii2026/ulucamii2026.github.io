@@ -26,7 +26,7 @@ Bu sitenin hazırlanmasında emeği geçen değerli hocamız **Rıdvan Kayahan**
 ### Sitede sizi neler bekliyor?
 
 - **Namaz vakitleri** ve dinî günler takvimi
-- **Duyurular, etkinlikler ve hutbeler**
+- **Duyurular ve etkinlikler**
 - **Kur'an kursu online kaydı** — [www.ulucamii.be/kayit](https://www.ulucamii.be/kayit/)
 - Cenaze hizmetleri, bağış, dernek üyeliği ve konsolosluk rehberi
 - Resmî e-posta: **info@ulucamii.be**

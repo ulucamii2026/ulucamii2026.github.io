@@ -26,7 +26,7 @@ Nous remercions notre cher imam **Rıdvan Kayahan** pour le travail accompli dan
 ### Que trouverez-vous sur le site ?
 
 - **Horaires de prière** et calendrier religieux
-- **Annonces, activités et sermons**
+- **Annonces et activités**
 - **Inscription en ligne aux cours de Coran** — [www.ulucamii.be/kayit](https://www.ulucamii.be/kayit/)
 - Services funéraires, dons, adhésion et guide consulaire
 - E-mail officiel : **info@ulucamii.be**

@@ -117,19 +117,6 @@ const vefat = defineCollection({
   }),
 });
 
-/** Hutbeler — src/content/hutbeler/YYYY-MM-DD-slug.md (dilden bağımsız; başlık/özet tr-fr, PDF'ler public/media/hutbeler/) */
-const hutbeler = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/hutbeler' }),
-  schema: z.object({
-    baslik: z.object({ tr: z.string(), fr: z.string().optional() }),
-    tarih: z.coerce.date(),
-    pdf: z.object({ tr: z.string().optional(), fr: z.string().optional() }).default({}),
-    ozet: z.object({ tr: z.string().optional(), fr: z.string().optional() }).optional(),
-    kaynak: z.string().optional(),
-    taslak: z.boolean().default(false),
-  }),
-});
-
 /** Afişler — src/content/afisler/slug.md (dilden bağımsız; görseller public/media/afisler/) */
 const afisler = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/afisler' }),
@@ -160,5 +147,5 @@ const kurul = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, hutbeler, afisler, kurul };
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul };
 export { dil };
