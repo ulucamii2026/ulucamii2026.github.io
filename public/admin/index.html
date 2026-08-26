@@ -128,6 +128,10 @@
       .bkart-ref { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .74rem; color: var(--metin-2); }
       .rozet-durum { margin-left: auto; font-size: .74rem; padding: .12rem .5rem; border-radius: 999px; background: rgba(74,55,40,.08); color: var(--metin-2); white-space: nowrap; }
       .rozet-durum.yeni { background: rgba(201,138,46,.18); color: #7a5310; }
+      /* Arka uc, bildirim e-postasi gidemezse defterin durum sutununa "e-posta gonderilemedi"
+         yazar (kayit yine de saglamdir). Bu metin "yeni" iceriyor diye normal kayitla ayni
+         renkte gorunuyordu ve gozden kaciyordu — ayri bir uyari rengi verildi. */
+      .rozet-durum.sorun { background: rgba(181,69,43,.16); color: #8f3420; font-weight: 600; }
       .bkart-satir { display: flex; flex-wrap: wrap; gap: .2rem 1.1rem; margin-top: .4rem; font-size: .92rem; color: var(--metin-2); }
       .bkart-satir span b { color: var(--murekkep); font-weight: 600; font-family: inherit; }
       .bkart-arac { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .6rem; }
@@ -145,6 +149,7 @@
         th { background: rgba(245,239,227,.05); }
         nav.gezinti a.etkin { background: rgba(201,87,59,.18); color: #f0a992; border-color: rgba(201,87,59,.45); }
         .rozet-durum.yeni { background: rgba(201,138,46,.22); color: #e8c07a; }
+        .rozet-durum.sorun { background: rgba(227,127,95,.24); color: #f0b9a6; }
       }
     </style>
   </head>
@@ -684,7 +689,10 @@
         liste.innerHTML = satirlar.map((r) => {
           const ad = [al(r, iAd), al(r, iSoyad)].filter(Boolean).join(' ') || '(isim yok)';
           const durum = al(r, iDurum);
-          const yeni = /yeni/i.test(durum);
+          /* Sira onemli: "Yeni kayit · e-posta gonderilemedi" hem "yeni" hem sorun icerir;
+             sorun kazanmali, yoksa uyari normal kayit gibi gorunur. */
+          const sorun = /gönderilemedi|gonderilemedi|hata|başarısız|basarisiz/i.test(durum);
+          const yeni = !sorun && /yeni/i.test(durum);
           const tel = al(r, iTel), pdf = al(r, iPdf), eposta = al(r, iEposta);
           const bilgiler = [];
           if (al(r, iZaman)) bilgiler.push(`<span>${kacir(tarihSadelestir(al(r, iZaman)))}</span>`);
@@ -712,7 +720,7 @@
             return `<tr><th>${kacir(baslik)}</th><td>${deger}</td></tr>`;
           }).join('');
           return `<article class="bkart${yeni ? ' yeni' : ''}">
-            <div class="bkart-ust"><span class="bkart-ad">${kacir(ad)}</span>${al(r, iRef) ? `<span class="bkart-ref">${kacir(al(r, iRef))}</span>` : ''}${durum ? `<span class="rozet-durum${yeni ? ' yeni' : ''}">${kacir(durum)}</span>` : ''}</div>
+            <div class="bkart-ust"><span class="bkart-ad">${kacir(ad)}</span>${al(r, iRef) ? `<span class="bkart-ref">${kacir(al(r, iRef))}</span>` : ''}${durum ? `<span class="rozet-durum${sorun ? ' sorun' : (yeni ? ' yeni' : '')}">${kacir(durum)}</span>` : ''}</div>
             <div class="bkart-satir">${bilgiler.join('')}</div>
             ${araclar.length ? `<div class="bkart-arac">${araclar.join('')}</div>` : ''}
             <details><summary>Tüm bilgiler</summary><table>${ayrinti}</table></details>
