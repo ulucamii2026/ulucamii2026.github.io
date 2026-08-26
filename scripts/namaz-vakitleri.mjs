@@ -9,7 +9,7 @@
 //   olduğunda "yaklaşık doğru" veri kabul edilemez. Bu yüzden Diyanet verisi alınamazsa:
 //     - mevcut JSON'a DOKUNULMAZ (elde 4 haftalık geçerli Diyanet verisi zaten vardır),
 //     - betik hata kodu ile çıkar → GitHub Actions işi kırmızı olur ve bildirim gider.
-import { writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync, appendFileSync } from 'node:fs';
 
 const ILCE = '11890';                  // Diyanet ilçe kimliği — M.FAMENNE (Marche-en-Famenne)
 const ILCE_ADI = 'M.FAMENNE';
@@ -79,12 +79,30 @@ function dogrula(gunler) {
   if (!gunler.some((g) => g.tarih === bugun)) throw new Error(`bugün (${bugun}) veride yok — bayat kaynak`);
 }
 
+/** Eldeki dosyanın kaç gün daha yettiği. Çekim başarısız olduğunda tek önemli
+ *  soru budur: "yine 403" ile "veri bitmek üzere" aynı uyarı değildir. */
+function kalanGun() {
+  try {
+    const d = JSON.parse(readFileSync(OUT, 'utf8'));
+    const son = d.gunler?.at(-1)?.tarih;
+    if (!son) return null;
+    return Math.round((Date.parse(son + 'T12:00:00Z') - Date.parse(bugunISO() + 'T12:00:00Z')) / 86400000);
+  } catch { return null; }
+}
+
 let ham;
 try {
   ham = await diyanetVerisiCek();
 } catch (e) {
+  const kalan = kalanGun();
   console.error('HATA: Diyanet namaz vakitleri alınamadı — ' + e.message);
   console.error('Mevcut veri korundu (üzerine yazılmadı). İş bilerek başarısız sonlandırılıyor.');
+  console.error(kalan === null
+    ? 'DİKKAT: eldeki verinin ömrü okunamadı — dosya elden geçirilmeli.'
+    : `Eldeki Diyanet verisi ${kalan} gün daha yetiyor (son gün dâhil).`);
+  if (process.env.GITHUB_OUTPUT) {
+    appendFileSync(process.env.GITHUB_OUTPUT, `kalan_gun=${kalan ?? ''}\n`);
+  }
   process.exit(1);
 }
 
@@ -114,4 +132,5 @@ writeFileSync(OUT, JSON.stringify(cikti, null, 1));
 const b = gunler.find((g) => g.tarih === bugunISO());
 console.log(`yazıldı: ${gunler.length} gün (${gunler[0].tarih} → ${gunler.at(-1).tarih}) · kaynak: Diyanet ilçe ${ILCE} (${ILCE_ADI})`);
 console.log(`bugün ${b.tarih}: imsak ${b.imsak} · güneş ${b.gunes} · öğle ${b.ogle} · ikindi ${b.ikindi} · akşam ${b.aksam} · yatsı ${b.yatsi}`);
+console.log(`veri ömrü: ${Math.round((Date.parse(gunler.at(-1).tarih + 'T12:00:00Z') - Date.parse(bugunISO() + 'T12:00:00Z')) / 86400000)} gün`);
 if (oncekiKaynak !== 'diyanet') console.log('NOT: önceki dosyanın kaynak damgası "%s" idi; bu çalıştırmayla Diyanet verisine geçildi.', oncekiKaynak ?? 'yok');

@@ -29,16 +29,32 @@ jobs:
         if: failure() && steps.cek.outcome == 'failure'
         env:
           SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+          KALAN: ${{ steps.cek.outputs.kalan_gun }}
         run: |
+          # Konu, kalan omre gore siddetleniyor: her gun ayni basligi gormek
+          # alarmi korlestiriyor - asil kritik gun ayirt edilebilmeli.
+          if [ -z "$KALAN" ]; then
+            KONU="[UYARI] Namaz vakitleri alinamadi - eldeki verinin omru okunamadi"
+          elif [ "$KALAN" -le 10 ]; then
+            KONU="[ACIL] Namaz vakitleri alinamadi - veri $KALAN gun sonra bitiyor"
+          else
+            KONU="[UYARI] Namaz vakitleri alinamadi - veri $KALAN gun daha yetiyor"
+          fi
           {
             echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
             echo "To: info@ulucamii.be"
-            echo "Subject: [UYARI] Namaz vakitleri Diyanet'ten alinamadi"
+            echo "Subject: $KONU"
             echo "Content-Type: text/plain; charset=utf-8"
             echo
             echo "Diyanet namaz vakitleri cekimi bugun basarisiz oldu (ilce 11890 - M.FAMENNE)."
             echo "Sitedeki mevcut Diyanet verisi KORUNDU; yanlis/hesaplanmis vakit yayimlanmadi."
-            echo "Veri penceresi bitmeden (yaklasik 4 hafta) sorun giderilmelidir."
+            echo "Eldeki veri: ${KALAN:-bilinmiyor} gun."
+            echo
+            echo "Bilinen sebep (27 Agustos 2026): ezanvakti.emushaf.net ucu GitHub Actions"
+            echo "sunucularinin IP'lerini 403 ile geri ceviriyor. Ayni istek Belcika'daki"
+            echo "normal bir baglantidan sorunsuz calisiyor. Gecici cozum: depo klasorunde"
+            echo "  node scripts/namaz-vakitleri.mjs && git add -A && git commit -m veri && git push"
+            echo "komutunu ayda bir kez elle calistirmak yeterlidir."
             echo
             echo "Kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           } > /tmp/uyari.txt
