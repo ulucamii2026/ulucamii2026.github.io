@@ -39,11 +39,13 @@ kurul:
         en: Board Member
   denetim:
     - ad: İsmail Gün
+      foto: /media/kurul/ismail-gun.webp
       gorev:
         tr: Denetim Kurulu Başkanı
         fr: Président du comité de contrôle
         en: Audit Committee Chair
     - ad: Mehmet Kutlu
+      foto: /media/kurul/mehmet-kutlu.webp
       gorev:
         tr: Denetim Kurulu Üyesi
         fr: Membre du comité de contrôle
