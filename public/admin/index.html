@@ -629,23 +629,22 @@
         }
       }
 
-      /** İlk yüklemede boş sekmede kalınmasın: dolu olan liste öne alınır. */
+      /* Panel HER ZAMAN Kur'an kursu kayıtlarıyla açılır. Önceden "boş sekmede kalınmasın"
+         diye dolu olan listeye kendiliğinden geçiliyordu; kayıt 0, ihtida 1 olduğu için panel
+         İhtida Başvuruları ekranıyla açılıyor ve iki defter karışmış gibi görünüyordu
+         (26 Ağustos 2026, Rıdvan bildirdi). Hangi defterde olduğun her zaman seçili sekmeden
+         ve rozetlerden okunur; sekmeyi kullanıcı değiştirir, panel değil. */
       let sekmeSecildi = false;
-      function sekmeyiUyarla() {
-        if (sekmeSecildi || !sonVeri) return;
-        sekmeSecildi = true;
-        const say = (t) => (sonVeri[t] && sonVeri[t].satirlar ? sonVeri[t].satirlar.length : 0);
-        if (aktifTur === 'kayit' && say('kayitlar') === 0 && say('ihtidalar') > 0) {
-          aktifTur = 'ihtida';
-          document.querySelectorAll('.sekme').forEach((x) => x.setAttribute('aria-selected', String(x.dataset.tur === 'ihtida')));
-        }
-      }
+      function sekmeyiUyarla() { sekmeSecildi = true; }
       function rozetleriYaz() {
         const k = sonVeri && sonVeri.kayitlar && sonVeri.kayitlar.satirlar ? sonVeri.kayitlar.satirlar.length : 0;
         const i = sonVeri && sonVeri.ihtidalar && sonVeri.ihtidalar.satirlar ? sonVeri.ihtidalar.satirlar.length : 0;
         $('rozet-kayit').textContent = '(' + k + ')';
         $('rozet-ihtida').textContent = '(' + i + ')';
-        $('gez-rozet').textContent = (k + i) ? '(' + (k + i) + ')' : '';
+        /* Toplam yazmak yanıltıyordu: tek bir "(1)" öğrenci kaydı sanılabiliyordu.
+           İki defter ayrı ayrı okunur — kurs · ihtida. */
+        $('gez-rozet').textContent = (k + i) ? '(' + k + '·' + i + ')' : '';
+        $('gez-rozet').title = 'Kur’an kursu kayıtları: ' + k + ' · İhtida başvuruları: ' + i;
       }
 
       /** Sütun başlığından alan sırası bulur — arka uç şeması değişse de kart doğru kurulur. */
@@ -664,7 +663,12 @@
         const liste = $('basvuru-liste');
         $('basvuru-bilgi').hidden = true;
         if (!v || !v.satirlar || !v.satirlar.length) {
-          liste.innerHTML = `<div class="bilgi-kutu">${aktifTur === 'kayit' ? 'Kur’an kursu için henüz online kayıt gelmedi.' : 'Henüz ihtida başvurusu gelmedi.'} Yeni başvurular buraya kendiliğinden düşer.</div>`;
+          const digerSay = aktifTur === 'kayit'
+            ? (sonVeri && sonVeri.ihtidalar && sonVeri.ihtidalar.satirlar ? sonVeri.ihtidalar.satirlar.length : 0)
+            : (sonVeri && sonVeri.kayitlar && sonVeri.kayitlar.satirlar ? sonVeri.kayitlar.satirlar.length : 0);
+          const digerAd = aktifTur === 'kayit' ? 'İhtida Başvuruları' : 'Kur’an Kursu Kayıtları';
+          const digerNot = digerSay ? ` <b>${digerAd}</b> sekmesinde ${digerSay} kayıt var.` : '';
+          liste.innerHTML = `<div class="bilgi-kutu">${aktifTur === 'kayit' ? 'Kur’an kursu için henüz online kayıt gelmedi.' : 'Henüz ihtida başvurusu gelmedi.'} Yeni başvurular buraya kendiliğinden düşer.${digerNot}</div>`;
           $('csv').disabled = true; return;
         }
         const b = v.basliklar;
