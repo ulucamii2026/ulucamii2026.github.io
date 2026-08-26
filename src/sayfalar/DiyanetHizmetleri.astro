@@ -37,6 +37,12 @@ interface Grup { baslik: string; kartlar: Kart[] }
 const HAC_SON_GUN = new Date('2026-08-30T23:59:59+02:00');
 /* Koşullar, gerekli belgeler ve IBAN kendi duyurumuzda — cemaat dış siteyi didiklemesin. */
 const HAC_DUYURU = '2027-hac-on-kayit-son-gunler';
+/* Umre de süreli: Taif ziyaretli Aralık umresinin son başvurusu 20 Kasım 2026
+   (Belçika kışa 25 Ekim'de geçtiği için +01:00). Tarih geçince şerit genel
+   anlatıma döner — site her gün yeniden yayımlandığından kendiliğinden olur. */
+const UMRE_SON_GUN = new Date('2026-11-20T23:59:59+01:00');
+const UMRE_DUYURU = 'taif-ziyaretli-aralik-umresi';
+const umreAcik = Date.now() <= UMRE_SON_GUN.getTime();
 const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
 const hacSonTarih = { tr: '30 Ağustos 2026', fr: '30 août 2026', en: '30 August 2026' }[dil];
 
@@ -64,8 +70,10 @@ const m = dil === 'tr' ? {
   },
   umre: {
     baslik: 'Umre Turları',
-    ozet: 'Belçika Diyanet Vakfı yıl boyunca umre turları düzenler; hâlen Taif ziyaretli Aralık umresinin kayıtları sürüyor.',
+    ozetAcik: 'Taif ziyaretli Aralık umresi: 20 Aralık 2026 – 1 Ocak 2027, 13 gün 12 gece, yürüme mesafesinde konaklama. Kişi başı 2.290 €’dan başlıyor; son başvuru 20 Kasım 2026.',
+    ozetKapali: 'Belçika Diyanet Vakfı yıl boyunca umre turları düzenler; güncel tur takvimi ve başvuru koşulları vakfın sayfasındadır.',
     eylem: 'Tur takvimi',
+    ayrinti: 'Program, ücretler ve belgeler',
   },
   gruplar: [
     {
@@ -115,8 +123,10 @@ const m = dil === 'tr' ? {
   },
   umre: {
     baslik: 'Omra Trips',
-    ozet: 'The Diyanet Foundation of Belgium organises omra trips throughout the year; registration for the December omra including a visit to Taif is currently open.',
+    ozetAcik: 'December omra with a visit to Taif: 20 December 2026 – 1 January 2027, 13 days and 12 nights, walking-distance accommodation. From €2,290 per person; registration closes on 20 November 2026.',
+    ozetKapali: 'The Diyanet Foundation of Belgium organises omra trips throughout the year; the current schedule and conditions are on the foundation’s website.',
     eylem: 'Trip schedule',
+    ayrinti: 'Programme, prices and documents',
   },
   gruplar: [
     {
@@ -166,8 +176,10 @@ const m = dil === 'tr' ? {
   },
   umre: {
     baslik: 'Voyages d’Omra',
-    ozet: 'La Fondation Diyanet de Belgique organise des voyages d’omra toute l’année ; les inscriptions pour l’omra de décembre avec visite de Taïf sont ouvertes.',
+    ozetAcik: 'Omra de décembre avec visite de Taïf : du 20 décembre 2026 au 1er janvier 2027, 13 jours et 12 nuits, hébergement à distance de marche. À partir de 2.290 € par personne ; clôture le 20 novembre 2026.',
+    ozetKapali: 'La Fondation Diyanet de Belgique organise des voyages d’omra toute l’année ; le calendrier et les conditions figurent sur le site de la Fondation.',
     eylem: 'Calendrier des voyages',
+    ayrinti: 'Programme, tarifs et documents',
   },
   gruplar: [
     {
@@ -254,13 +266,22 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
 
       {/* Umre hac ile aynı aileden ama süreli değil: kendi başına bir kart olsaydı
           üç sütunlu ızgarada yalnız kalırdı. Aynı bölümün alt şeridi olarak duruyor. */}
-      <div class="umre-serit mt-7 pt-5 flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-        <h3 class="text-base font-semibold">{m.umre.baslik}</h3>
-        <p class="text-sm text-(--metin-2) flex-1 min-w-[18ch]">{m.umre.ozet}</p>
-        <a href="https://www.diyanet.be/umre" target="_blank" rel="noopener"
-           class="metin-baglanti text-sm underline underline-offset-4 whitespace-nowrap">
-          {m.umre.eylem}<span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span>
-        </a>
+      <div class="umre-serit mt-7 pt-5">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
+          <h3 class="text-base font-semibold">{m.umre.baslik}</h3>
+          <p class="text-sm text-(--metin-2) flex-1 min-w-[18ch]">{umreAcik ? m.umre.ozetAcik : m.umre.ozetKapali}</p>
+        </div>
+        <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1">
+          {umreAcik && (
+            <a href={yol(dil, 'duyurular', UMRE_DUYURU)} class="metin-baglanti text-sm underline underline-offset-4">
+              {m.umre.ayrinti} <span aria-hidden="true">→</span>
+            </a>
+          )}
+          <a href="https://www.diyanet.be/umre" target="_blank" rel="noopener"
+             class="metin-baglanti text-sm underline underline-offset-4 whitespace-nowrap">
+            {m.umre.eylem}<span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span>
+          </a>
+        </div>
       </div>
     </section>
 

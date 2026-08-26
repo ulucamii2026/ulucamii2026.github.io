@@ -50,7 +50,7 @@ const enNotu = tur === 'duyuru'
   <article class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
     {/* Mobilde tek sütuna inince görsel metnin en altında kalıyordu — kimse oraya kadar
         inmiyor. Dar ekranda üste alındı, geniş ekranda sağdaki sütunda kalıyor. */}
-    <div class="duz-yazi order-2 lg:order-1"><Content /></div>
+    <div class="duz-yazi order-2 lg:order-1 min-w-0"><Content /></div>
     {kapak && (
       <aside class="order-1 lg:order-2">
         <a href={kapak} data-lightbox={grup} data-caption={d.kapakAlt ?? d.baslik} class="gorsel-cerceve block">
