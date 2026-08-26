@@ -13,16 +13,19 @@ kurul:
         fr: Vice-président
         en: Vice-President
     - ad: Mehmet Sadık Gülkılık
+      foto: /media/kurul/mehmet-sadik-gulkilik.webp
       gorev:
         tr: Sekreter
         fr: Secrétaire
         en: Secretary
     - ad: Volkan Kutlu
+      foto: /media/kurul/volkan-kutlu.webp
       gorev:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
         en: Board Member
     - ad: Fehmi Karali
+      foto: /media/kurul/fehmi-karali.webp
       gorev:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
