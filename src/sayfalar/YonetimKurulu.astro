@@ -17,6 +17,17 @@ import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { kurulBilgisi, siteAyarlari } from '../lib/icerik';
 interface Props { dil: Dil }
+/* Portreler mobilde ~350px genişlikte görünüyor; 800px'lik dosyayı indirmek gereksiz.
+   400px'lik eş varsa srcset'e giriyor. Dosya yoksa öznitelik hiç yazılmıyor — eksik
+   bir kaynak yüzünden görsel kırılmasın. */
+import { existsSync } from 'node:fs';
+const srcSet = (f?: string) => {
+  if (!f) return undefined;
+  const k = f.replace(/\.webp$/, '-kucuk.webp');
+  return existsSync('public' + k) ? `${k} 400w, ${f} 800w` : undefined;
+};
+const OLCU = '(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw';
+
 const { dil } = Astro.props; const t = ceviri(dil);
 const k = await kurulBilgisi();
 const site = await siteAyarlari();
@@ -78,7 +89,7 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
           <li class:list={['uye-kart kart-kagit overflow-hidden flex flex-col', i === 0 && 'baskan']}>
             <div class="portre">
               {u.foto
-                ? <img src={u.foto} alt="" width="800" height="1000" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
+                ? <img src={u.foto} srcset={srcSet(u.foto)} sizes={OLCU} alt="" width="800" height="1000" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
                 : <span class="monogram" aria-hidden="true">{basHarf(u.ad)}</span>}
             </div>
             <div class="px-4 py-3.5">
@@ -100,7 +111,7 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
           <li class="uye-kart kart-kagit overflow-hidden flex flex-col">
             <div class="portre">
               {u.foto
-                ? <img src={u.foto} alt="" width="800" height="1000" loading="lazy" decoding="async" />
+                ? <img src={u.foto} srcset={srcSet(u.foto)} sizes={OLCU} alt="" width="800" height="1000" loading="lazy" decoding="async" />
                 : <span class="monogram denetim" aria-hidden="true">{basHarf(u.ad)}</span>}
             </div>
             <div class="px-4 py-3.5">
