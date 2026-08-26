@@ -21,7 +21,7 @@ const grupAdi: Record<Dil, [string, string, string, string]> = {
 const etkinlikKisa: Record<Dil, string> = { tr: 'Etkinlikler', fr: 'Événements', en: 'Events' };
 const [gCami, gHaber, gEgitim, gHizmet] = grupAdi[dil];
 const gruplar: Grup[] = [
-  { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('hutbeler'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
+  { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
   { ad: gHaber, maddeler: [L('duyurular'), L('etkinlikler', etkinlikKisa[dil]), L('afisler')] },
   { ad: gEgitim, maddeler: [L('kurankursu'), L('irsat'), L('ihtida')] },
   { ad: gHizmet, maddeler: [L('bagis'), L('uyelik'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },

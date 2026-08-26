@@ -17,18 +17,24 @@ import Vefat from '../../../sayfalar/Vefat.astro';
 import Irsat from '../../../sayfalar/Irsat.astro';
 import Ihtida from '../../../sayfalar/Ihtida.astro';
 import IhtidaBasvuru from '../../../sayfalar/IhtidaBasvuru.astro';
-import Hutbeler from '../../../sayfalar/Hutbeler.astro';
+// import Hutbeler from '../../../sayfalar/Hutbeler.astro';  // PASİF — aşağıdaki PASIF listesine bak
 import CamiAdabi from '../../../sayfalar/CamiAdabi.astro';
 import YonetimKurulu from '../../../sayfalar/YonetimKurulu.astro';
 import Cenaze from '../../../sayfalar/Cenaze.astro';
 import Afisler from '../../../sayfalar/Afisler.astro';
 import DiyanetHizmetleri from '../../../sayfalar/DiyanetHizmetleri.astro';
 
+/* Yayımı durdurulmuş sayfalar: yol hiç üretilmez — adres 404 döner ve sitemap'e girmez.
+   hutbeler (26 Ağustos 2026, Rıdvan): hutbeler hizmete özel belgelerdir, yayımlanmadan
+   önce Diyanet izni gerekir. Sayfa, 126 kayıt ve 225 PDF duruyor; bu listeden çıkarıp
+   bileşen eşlemesini geri açmak yayına döndürmeye yeter. */
 export function getStaticPaths() {
+  // Astro getStaticPaths'i yalıtılmış çalıştırır: bu liste fonksiyonun İÇİNDE durmalı.
+  const PASIF: SayfaAnahtari[] = ['hutbeler'];
   const yol: { params: { lang: Dil; sayfa: string }; props: { anahtar: SayfaAnahtari } }[] = [];
   for (const lang of ['tr', 'fr', 'en'] as Dil[]) {
     for (const [anahtar, seg] of Object.entries(yollar) as [SayfaAnahtari, Record<Dil, string>][]) {
-      if (anahtar === 'anasayfa') continue;
+      if (anahtar === 'anasayfa' || PASIF.includes(anahtar)) continue;
       yol.push({ params: { lang, sayfa: seg[lang] }, props: { anahtar } });
     }
   }
@@ -40,7 +46,10 @@ const bilesenler: Record<Exclude<SayfaAnahtari, 'anasayfa'>, any> = {
   hakkimizda: Hakkimizda, duyurular: Duyurular, etkinlikler: Etkinlikler, namaz: Namaz, kurankursu: KuranKursu,
   bagis: Bagis, uyelik: Uyelik, konsolosluk: Konsolosluk, galeri: Galeri, iletisim: Iletisim,
   kunye: MetinSayfasi, gizlilik: MetinSayfasi, portal: Portal, vefat: Vefat, cenaze: Cenaze,
-  irsat: Irsat, ihtida: Ihtida, ihtidaBasvuru: IhtidaBasvuru, hutbeler: Hutbeler, adab: CamiAdabi, yonetim: YonetimKurulu, afisler: Afisler, diyanet: DiyanetHizmetleri,
+  irsat: Irsat, ihtida: Ihtida, ihtidaBasvuru: IhtidaBasvuru, adab: CamiAdabi, yonetim: YonetimKurulu, afisler: Afisler, diyanet: DiyanetHizmetleri,
+  /* hutbeler: PASİF — hutbeler hizmete özel belgeler, yayımdan önce Diyanet izni gerekiyor
+     (Rıdvan, 26 Ağustos 2026). Sayfa (src/sayfalar/Hutbeler.astro), 126 kayıt ve 225 PDF
+     duruyor; bu satır geri açılınca /hutbeler ve /sermons yeniden üretilir. */
 };
 const Bilesen = bilesenler[anahtar as Exclude<SayfaAnahtari, 'anasayfa'>];
 ---

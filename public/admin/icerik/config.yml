@@ -149,6 +149,7 @@ collections:
       - { name: body, label: Metin, widget: markdown, i18n: true }
 
   - name: hutbeler
+    hide: true   # PASİF: yayım için Diyanet izni gerekiyor (26 Ağustos 2026)
     label: Hutbeler
     label_singular: Hutbe
     folder: src/content/hutbeler
