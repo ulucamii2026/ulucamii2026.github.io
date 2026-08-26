@@ -155,7 +155,13 @@
 
   const draft = readDraft();
   app.state = draft.state;
-  app.lang = DILLER.includes(storageGet(LANGUAGE_KEY)) ? storageGet(LANGUAGE_KEY) : 'tr';
+  /* Sayfanin dili YOLUNDAN gelir (/kayit/ = tr, /kayit/fr/, /kayit/en/) ve her seyin
+     onundedir: site iskeleti o dilde derlendigi icin form baska bir dile kayarsa sayfa kendi
+     icinde celisir (26 Agu 2026 — menu Turkce, form Fransizca kaliyordu). Depolanan tercih
+     yalniz sayfa dilini soylemiyorsa yedek olarak kullanilir. */
+  app.lang = DILLER.includes(window.KAYIT_DILI)
+    ? window.KAYIT_DILI
+    : (DILLER.includes(storageGet(LANGUAGE_KEY)) ? storageGet(LANGUAGE_KEY) : 'tr');
   app.lastPdf = null;
 
   app.showToast = function (message) {
@@ -226,27 +232,6 @@
     if (kod) kod.textContent = app.lang;
   }
 
-  /* Site iskeleti (ust menu, alt bilgi) bu sayfada TURKCE derlenir: adres tek ve
-     parametresizdir (/kayit/, afis QR'lari). Form dili degisince menu Turkce kaliyordu ve
-     kullanici menuden bir sayfaya gidince site Turkce'ye donuyordu (26 Agu 2026). Harita
-     kayit sayfasinda gomuludur (SITE_YOLLARI) — cunku slug'lar dile gore degisiyor
-     (duyurular -> annonces -> announcements), duz bir /tr/ -> /fr/ degisimi yanlis olurdu. */
-  function siteBaglantilariniYansit() {
-    const harita = window.SITE_YOLLARI;
-    if (!harita) return;
-    document.querySelectorAll('a[href^="/"]').forEach((bag) => {
-      // Turkce yol bir kez saklanir; sonraki cevirilerin kaynagi hep budur.
-      if (!bag.dataset.yolTr) {
-        const simdiki = bag.getAttribute('href');
-        if (!simdiki || !harita[simdiki]) return; // haritada olmayan baglantiya dokunulmaz
-        bag.dataset.yolTr = simdiki;
-      }
-      const kaynak = bag.dataset.yolTr;
-      const hedef = app.lang === 'tr' ? kaynak : (harita[kaynak] || {})[app.lang];
-      if (hedef) bag.setAttribute('href', hedef);
-    });
-  }
-
   function translatePage() {
     document.documentElement.lang = app.lang;
     document.title = `${app.t('courseTitle')} · ${app.t('appTitle')}`;
@@ -268,7 +253,6 @@
       button.setAttribute('aria-pressed', String(selected));
     });
     siteDilRozetiniYansit();
-    siteBaglantilariniYansit();
     document.getElementById('declarationText').textContent = app.declaration[app.lang];
     if (typeof telOrnekleriniYenile === 'function') telOrnekleriniYenile();
     if (typeof sozlesmeOnayiniYenile === 'function') sozlesmeOnayiniYenile();
@@ -286,9 +270,6 @@
     if (!DILLER.includes(language)) return;
     app.lang = language;
     storageSet(LANGUAGE_KEY, language);
-    /* Sitenin dil tercihi de guncellenir: formda Fransizca'ya gecen veli menuden bir
-       sayfaya gittiginde ya da koke (/) dondugunde Turkce'ye dusmesin (26 Agu 2026). */
-    storageSet('uluCamiiSiteDili', language);
     translatePage();
   };
 
@@ -1617,10 +1598,13 @@
 
   function bindActions() {
     document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => app.setLanguage(button.dataset.language)));
-    // Sitenin FR/EN sayfalarindan gelen baglantilar formu Fransizca acar (?lang=fr);
-    // QR/afis linkleri parametresizdir ve Turkce acilmaya devam eder.
+    /* Eski ?lang=fr baglantilari (paylasim, yer imi, basilmis afis) artik kendi sayfasina
+       gonderilir: yalniz formu cevirmek yetmiyordu, menu ve alt bilgi Turkce kaliyordu. */
     const urlDili = new URLSearchParams(window.location.search).get('lang');
-    if (DILLER.includes(urlDili)) app.setLanguage(urlDili);
+    if (DILLER.includes(urlDili) && urlDili !== app.lang) {
+      window.location.replace(urlDili === 'tr' ? '/kayit/' : '/kayit/' + urlDili + '/');
+      return;
+    }
     /* Her giris temiz bir formla baslar; QR yeniden okutuldugunda onceki
        cocugun bilgileri gelmez. */
     document.getElementById('startButton').addEventListener('click', () => {

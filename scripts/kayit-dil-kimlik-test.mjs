@@ -172,44 +172,74 @@ console.log('\nIhtida basvurusu koruma kurallari');
     : yanlis('on basvuru PDFi sahitleri filtreliyor', 'yalniz 2. sahit "Sahit 1" olarak basilir');
 }
 
-/* ---- 4. Dil baglantilari (dist/ uzerinden) ---- */
-console.log('\nKayit formu dil baglantilari');
+/* ---- 4. Dil butunlugu: kayit uygulamasi uc dilde uretilir (dist/ uzerinden) ---- */
+console.log('\nKayit formu dil butunlugu');
 
 const dist = new URL('../dist/', import.meta.url);
-const kayitHtml = new URL('kayit/index.html', dist);
-if (!existsSync(kayitHtml)) {
-  console.log('  atla dist/ yok — once `npm run build`');
+const SAYFALAR = [
+  { dil: 'tr', yol: 'kayit/index.html', adres: '/kayit/', hreflang: 'tr' },
+  { dil: 'fr', yol: 'kayit/fr/index.html', adres: '/kayit/fr/', hreflang: 'fr' },
+  { dil: 'en', yol: 'kayit/en/index.html', adres: '/kayit/en/', hreflang: 'en' },
+];
+
+if (!existsSync(new URL(SAYFALAR[0].yol, dist))) {
+  console.log('  atla dist/ yok - once `npm run build`');
 } else {
-  const html = readFileSync(kayitHtml, 'utf8');
+  for (const { dil, yol, adres } of SAYFALAR) {
+    const dosya = new URL(yol, dist);
+    if (!existsSync(dosya)) { yanlis(adres + ' uretilmemis', yol); continue; }
+    const html = readFileSync(dosya, 'utf8');
 
-  // Dil degistirici: TR de acik parametre almali, yoksa localStorage'daki fr galip gelir.
-  const trBag = html.match(/href="(\/kayit\/[^"]*)"[^>]*hreflang="tr"/);
-  trBag && trBag[1].includes('lang=tr')
-    ? ok('dil degistirici TR -> ?lang=tr')
-    : yanlis('dil degistirici TR parametresiz', trBag ? trBag[1] : 'baglanti bulunamadi');
+    // (a) Form JS'i sayfanin dilini yoldan ogrenmeli.
+    html.includes('KAYIT_DILI') && html.includes('const dil = "' + dil + '"')
+      ? ok(adres + ' form dili ' + dil)
+      : yanlis(adres + ' KAYIT_DILI eksik/yanlis', 'app.js sayfanin dilini bilemez');
 
-  for (const d of ['fr', 'en']) {
-    const bag = html.match(new RegExp(`href="(/kayit/[^"]*)"[^>]*hreflang="${d}"`));
-    bag && bag[1].includes(`lang=${d}`)
-      ? ok(`dil degistirici ${d.toUpperCase()} -> ?lang=${d}`)
-      : yanlis(`dil degistirici ${d.toUpperCase()} hatali`, bag ? bag[1] : 'baglanti bulunamadi');
+    /* (b) ASIL REGRESYON TESTI: site menusu sayfanin diliyle AYNI dilde olmali.
+       26 Agu 2026'da kayit sayfasi tek dilde ureliyordu; form Fransizca'ya gecse bile
+       menudeki 50 baglantinin tamami /tr/ idi ve menu metinleri Turkce kaliyordu. */
+    const sayim = { tr: 0, fr: 0, en: 0 };
+    for (const m of html.matchAll(/href="\/(tr|fr|en)\//g)) sayim[m[1]]++;
+    const yabanci = Object.entries(sayim).filter(([d, n]) => d !== dil && n > 0);
+    yabanci.length === 0 && sayim[dil] > 0
+      ? ok(adres + ' menusu tamamen ' + dil + ' (' + sayim[dil] + ' baglanti)')
+      : yanlis(adres + ' menusunde yabanci dil', JSON.stringify(sayim));
+
+    // (c) Menu METINLERI de cevrilmeli - baglantiyi cevirip yaziyi birakmak yetmez.
+    const metinBekle = { tr: 'Namaz Vakitleri', fr: 'Horaires de prière', en: 'Prayer Times' }[dil];
+    html.includes(metinBekle)
+      ? ok(adres + ' menu metni cevrildi ("' + metinBekle + '")')
+      : yanlis(adres + ' menu metni cevrilmemis', 'beklenen: ' + metinBekle);
+
+    // (d) Kanonik adres kendi sayfasini gostermeli.
+    new RegExp('rel="canonical" href="[^"]*' + adres.replace(/\//g, '\/') + '"').test(html)
+      ? ok(adres + ' kanonik adres dogru')
+      : yanlis(adres + ' kanonik adres yanlis', 'canonical kendi sayfasini gostermiyor');
+
+    // (e) Dil degistirici uc sayfaya da gitmeli (artik sorgu parametresi yok).
+    for (const h of SAYFALAR) {
+      const bag = html.match(new RegExp('href="([^"]*)"[^>]*hreflang="' + h.hreflang + '"'));
+      bag && bag[1].endsWith(h.adres) && !bag[1].includes('lang=')
+        ? ok(adres + ' dil degistirici ' + h.dil.toUpperCase() + ' -> ' + h.adres)
+        : yanlis(adres + ' dil degistirici ' + h.dil.toUpperCase() + ' hatali', bag ? bag[1] : 'baglanti yok');
+    }
   }
 
-  // Kanonik adres parametresiz kalmali (SEO).
-  /rel="canonical" href="[^"]*\/kayit\/"/.test(html)
-    ? ok('kanonik adres parametresiz')
-    : yanlis('kanonik adres degismis', 'hreflang/canonical ayrimi bozulmus olabilir');
-
-  // Site ici baglantilar: TR sayfadan gidenler ?lang=tr tasimali.
-  for (const [ad, yol] of [['ana sayfa bandi', 'tr/index.html'], ['kurs sayfasi', 'tr/kuran-kursu/index.html']]) {
+  /* (f) Site icinden kayit uygulamasina giden baglantilar ziyaretcinin dilinde olmali. */
+  const gidenler = [
+    ['ana sayfa bandi TR', 'tr/index.html', '/kayit/'],
+    ['ana sayfa bandi FR', 'fr/index.html', '/kayit/fr/'],
+    ['ana sayfa bandi EN', 'en/index.html', '/kayit/en/'],
+  ];
+  for (const [ad, yol, beklenen] of gidenler) {
     const dosya = new URL(yol, dist);
-    if (!existsSync(dosya)) { console.log(`  atla ${ad} bulunamadi`); continue; }
+    if (!existsSync(dosya)) { console.log('  atla ' + ad + ' bulunamadi'); continue; }
     const icerik = readFileSync(dosya, 'utf8');
-    const bag = icerik.match(/href="https:\/\/www\.ulucamii\.be\/kayit\/[^"]*"/);
-    if (!bag) { console.log(`  atla ${ad} kayit baglantisi yok`); continue; }
-    bag[0].includes('lang=tr')
-      ? ok(`${ad} TR -> ?lang=tr`)
-      : yanlis(`${ad} parametresiz`, bag[0]);
+    const bag = icerik.match(/href="(?:https:\/\/www\.ulucamii\.be)?(\/kayit\/[a-z]*\/?)"/);
+    if (!bag) { console.log('  atla ' + ad + ' kayit baglantisi yok'); continue; }
+    bag[1] === beklenen
+      ? ok(ad + ' -> ' + beklenen)
+      : yanlis(ad + ' yanlis dile gidiyor', bag[1] + ' (beklenen ' + beklenen + ')');
   }
 }
 

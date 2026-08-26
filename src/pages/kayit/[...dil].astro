@@ -1,32 +1,44 @@
 ---
 /** Kur'an kursu online kayıt — site içine gömülü uygulama (Ağu 2026).
     Form mantığı /public/kayit/assets içindeki betiklerde; bu sayfa yalnız site iskeleti sağlar.
-    Adres sabittir: /kayit/ (afiş QR'ları). ?lang=fr Fransızca açar; topbar gizli tutulur
-    (app.js homeLink'e bağlanır). Dil, sitenin kendi dil seçicisiyle değiştirilir — formun
-    ayrı bir dil düğmesi YOKTUR (app.js'teki [data-language] bağlaması bu sayfada boş küme
-    üzerinde çalışır). */
+
+    ÜÇ DİLDE ÜRETİLİR (26 Ağustos 2026): /kayit/ (TR), /kayit/fr/, /kayit/en/.
+    Önce tek sayfaydı ve iskelet Türkçe sabitti; form Fransızca'ya geçse bile menü Türkçe
+    kalıyordu — ölçüldü: başlıktaki 32 metnin 21'i ("Hakkımızda", "Namaz Vakitleri",
+    "Duyurular"…) çevrilmiyordu. Menüyü JS ile yamamak yerine her dil kendi sayfasını alıyor:
+    çeviri tek kaynaktan (Astro i18n) geliyor, menüye yarın yeni bir bağlantı eklense de
+    kendiliğinden çevriliyor.
+
+    /kayit/ adresi Türkçe olarak SABİT kalır — afiş QR'ları buna bağlı.
+    Eski ?lang=fr bağlantıları app.js tarafından /kayit/fr/ adresine yönlendirilir.
+    Topbar gizli tutulur (app.js homeLink'e bağlanır); formun ayrı bir dil düğmesi yoktur,
+    dil sitenin kendi dil seçicisiyle değişir. */
 import Base from '../../layouts/Base.astro';
-import { yollar, type SayfaAnahtari } from '../../i18n/ui';
-import { yol } from '../../i18n/utils';
-const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online kayıt formu — telefonunuzdan birkaç adımda doldurun, sözleşmeyi imzalayın, kayıt belgeniz e-postanıza gelsin.";
+import type { Dil } from '../../i18n/ui';
 
-/* Bu sayfanın site iskeleti (üst menü, alt bilgi) derleme zamanında Türkçe'ye sabitlenir,
-   çünkü adres tek ve parametresizdir: /kayit/ — afiş QR'ları buna bağlı. Form dili JS ile
-   değiştiğinde menü Türkçe kalıyordu ve kullanıcı menüden bir sayfaya gidince site
-   Türkçe'ye dönüyordu (26 Ağustos 2026'da Rıdvan bildirdi; ölçüldü: /kayit/?lang=fr
-   sayfasında site içi 50 bağlantının tamamı /tr/ idi).
-
-   Bu harita, app.js'in menüyü de forma uydurmasını sağlar. Yol çevirisi BURADA üretilir
-   (yollar sözlüğü tek kaynak), JS yalnızca uygular; slug'lar dile göre değiştiği için
-   (duyurular → annonces → announcements) düz bir /tr/ → /fr/ değişimi yanlış olurdu. */
-const siteYollari: Record<string, Record<'fr' | 'en', string>> = {
-  '/tr/': { fr: '/fr/', en: '/en/' },
-};
-for (const anahtar of Object.keys(yollar) as SayfaAnahtari[]) {
-  siteYollari[yol('tr', anahtar)] = { fr: yol('fr', anahtar), en: yol('en', anahtar) };
+export function getStaticPaths() {
+  return [
+    { params: { dil: undefined }, props: { dil: 'tr' as Dil } },
+    { params: { dil: 'fr' }, props: { dil: 'fr' as Dil } },
+    { params: { dil: 'en' }, props: { dil: 'en' as Dil } },
+  ];
 }
+
+const { dil } = Astro.props as { dil: Dil };
+
+const aciklama = {
+  tr: "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online kayıt formu — telefonunuzdan birkaç adımda doldurun, sözleşmeyi imzalayın, kayıt belgeniz e-postanıza gelsin.",
+  fr: "Formulaire d'inscription en ligne aux cours de Coran 2026–2027 de la Mosquée Ulu Camii de Marche-en-Famenne — remplissez-le depuis votre téléphone, signez le contrat et recevez votre document par e-mail.",
+  en: "Online registration form for the 2026–2027 Qur'an course at Marche-en-Famenne Ulu Mosque — fill it in from your phone, sign the agreement and receive your document by e-mail.",
+}[dil];
+
+const baslik = {
+  tr: 'Kur’an Kursu Online Kayıt',
+  fr: 'Inscription en ligne au cours de Coran',
+  en: 'Qur’an Course Online Registration',
+}[dil];
 ---
-<Base baslik="Kur’an Kursu Online Kayıt" dil="tr" aciklama={aciklama} dilHatirla={false}>
+<Base baslik={baslik} dil={dil} aciklama={aciklama}>
   <Fragment slot="head">
     <script is:inline>
       const CAMI = Object.freeze({
@@ -46,7 +58,7 @@ for (const anahtar of Object.keys(yollar) as SayfaAnahtari[]) {
         ortakSir: 'ULUCAMII-KAYIT-2026'
       });
     </script>
-    <script is:inline define:vars={{ siteYollari }}>window.SITE_YOLLARI = siteYollari;</script>
+    <script is:inline define:vars={{ dil }}>window.KAYIT_DILI = dil;</script>
     <link rel="stylesheet" href="/kayit/assets/styles.css" />
   </Fragment>
 

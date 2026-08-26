@@ -22,11 +22,11 @@ export function yol(dil: Dil, sayfa: SayfaAnahtari, alt?: string): string {
 
 /** Mevcut sayfanın diğer dildeki karşılığı (hreflang/canonical için — parametresiz kanonik adres) */
 export function digerDilYolu(url: URL, hedef: Dil): string {
-  // /kayit dil öneksiz gömülü kayıt uygulamasıdır: kanonik adresi tek ve parametresizdir.
-  // TR kanonik adresin kendisi; FR ve EN kendi dil parametreleriyle ayrışır (aksi hâlde iki
-  // hreflang aynı adresi gösterir ve arama motoru ikisini de yok sayar).
+  // /kayit uygulaması 26 Ağustos 2026'dan beri üç dilde üretilir: /kayit/ (TR, afiş QR'ları
+  // buna bağlı olduğu için sabit), /kayit/fr/, /kayit/en/. Her dilin gerçek bir adresi var;
+  // hreflang artık sorgu parametresine değil ayrı sayfalara işaret ediyor.
   if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
-    return hedef === 'tr' ? '/kayit/' : `/kayit/?lang=${hedef}`;
+    return hedef === 'tr' ? '/kayit/' : `/kayit/${hedef}/`;
   }
   const [, mevcutDil, seg, ...kalan] = url.pathname.split('/').filter(Boolean).length
     ? ['', ...url.pathname.split('/').filter(Boolean)]
@@ -43,21 +43,21 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
 }
 
 /** Dil değiştiricinin (Header) kullandığı gezinme bağlantısı.
-    /kayit gömülü uygulaması dilini localStorage'da tutar; parametresiz açılırsa önceki tercih
-    galip gelir ve "Türkçe" seçen veli Fransızca form görür. Bu yüzden dil değiştirici HER dil
-    için açık ?lang= verir — URL tercihi ezmeli. Form üç dili de bilir (tr/fr/en).
-    hreflang farklı davranır (TR'de kanonik adres): bkz. digerDilYolu. */
+    /kayit üç dilde üretildiği için dil değiştirmek artık sayfa değiştirmektir: form da,
+    menü de, alt bilgi de tek seferde doğru dile geçer. */
 export function dilDegistirYolu(url: URL, hedef: Dil): string {
-  if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
-    return `/kayit/?lang=${hedef}`;
-  }
   return digerDilYolu(url, hedef);
 }
 
-/** Site içinden /kayit uygulamasına giden bağlantı — dil tercihi her zaman açıkça taşınır. */
+/** Site içinden /kayit uygulamasına giden bağlantı — ziyaretçi bulunduğu dilde devam eder.
+    Harici bir adres verilmişse (site ayarlarından) dokunulmaz. */
 export function kayitBaglantisi(link: string, dil: Dil): string {
-  const ayrac = link.includes('?') ? '&' : '?';
-  return `${link}${ayrac}lang=${dil}`;
+  // Bağlantı site ayarlarından gelir ve tam adres olarak yazılmış olabilir
+  // (https://www.ulucamii.be/kayit/). İkisini de tanır; başka bir adrese dokunmaz.
+  const eslesme = link.match(/^(https?:\/\/[^/]+)?(\/kayit)\/?(?:[?#].*)?$/);
+  if (!eslesme) return link;
+  const kok = eslesme[1] ?? '';
+  return kok + (dil === 'tr' ? '/kayit/' : `/kayit/${dil}/`);
 }
 
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
