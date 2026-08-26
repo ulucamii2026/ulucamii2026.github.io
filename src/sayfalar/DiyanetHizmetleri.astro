@@ -224,7 +224,7 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
       <p class="text-(--metin-2) max-w-[62ch]">{hacAcik ? m.hac.ozetAcik : m.hac.ozetKapali}</p>
 
       {hacAcik && (
-        <dl class="hac-kunye mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-3 max-w-[60ch]">
+        <dl class="hac-kunye mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-[repeat(3,max-content)]">
           <div>
             <dt class="etiket">{m.sonTarihEtiket}</dt>
             <dd class="font-semibold mt-0.5"><time datetime="2026-08-30">{hacSonTarih}</time></dd>
@@ -340,7 +340,12 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
     font-weight: 600;
   }
 
-  /* Künye rakamları tabular: son tarih ile ücret alt alta hizalı okunur. */
+  /* Künye rakamları tabular: son tarih ile ücret alt alta hizalı okunur.
+     Etiket ve değer sarmaz — sütunlar içeriğe göre genişlediği için sarmaya gerek
+     de yok; sardıklarında (uzun Fransızca etiketler) üç sütunun temel hizası
+     birbirini tutmuyordu. */
+  .hac-kunye dt,
+  .hac-kunye dd { white-space: nowrap; }
   .hac-kunye dd { font-variant-numeric: tabular-nums; }
 
   /* Umre, hac ile aynı bölümün alt şeridi; ayraç ikisini ayırır ama koparmaz. */
