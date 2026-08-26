@@ -8,6 +8,7 @@ kurul:
         fr: Président
         en: President
     - ad: Yasin Ağılönü
+      foto: /media/kurul/yasin-agilonu.webp
       gorev:
         tr: Başkan Yardımcısı
         fr: Vice-président
@@ -43,7 +44,6 @@ kurul:
         fr: Président du comité de contrôle
         en: Audit Committee Chair
     - ad: Mehmet Kutlu
-      foto: /media/kurul/mehmet-kutlu.webp
       gorev:
         tr: Denetim Kurulu Üyesi
         fr: Membre du comité de contrôle

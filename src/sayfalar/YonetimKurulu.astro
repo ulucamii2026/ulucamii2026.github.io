@@ -90,20 +90,23 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
       </ol>
     </section>
 
-    {/* Denetim kurulu yönetimi denetler, yönetmez: aynı büyüklükte kartlar iki organı eşit
-        gösterirdi. Daha küçük, yatay bir listede duruyor. */}
+    {/* Denetim kurulu da yönetim kuruluyla aynı boyutta portre kartlarında duruyor
+        (Rıdvan'ın isteği). Aynı ızgara ölçüsü kullanıldığı için kartlar üstteki bölümle
+        hizalı çıkıyor; iki kişi olduğu için son sütun boş kalıyor. */}
     <section aria-labelledby="dk-baslik">
       <h2 id="dk-baslik" class="etiket etiket-vurgu text-base cetvel pt-4 mb-5">{m.denetimBaslik}</h2>
-      <ol class="grid gap-3 sm:grid-cols-2 max-w-3xl" role="list">
+      <ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
         {k.denetim.map((u) => (
-          <li class="kart-kagit px-4 py-3 flex items-center gap-4">
-            {u.foto
-              ? <img src={u.foto} alt="" width="112" height="112" loading="lazy" class="h-14 w-14 shrink-0 rounded-full object-cover border border-(--cizgi)" />
-              : <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-(--vurgu-2)/12 font-serif text-lg font-bold text-(--vurgu-2)" aria-hidden="true">{basHarf(u.ad)}</span>}
-            <span class="min-w-0">
-              <span class="block font-semibold leading-snug">{u.ad}</span>
-              <span class="block etiket normal-case tracking-normal mt-0.5">{u.gorev[dil]}</span>
-            </span>
+          <li class="uye-kart kart-kagit overflow-hidden flex flex-col">
+            <div class="portre">
+              {u.foto
+                ? <img src={u.foto} alt="" width="800" height="1000" loading="lazy" decoding="async" />
+                : <span class="monogram denetim" aria-hidden="true">{basHarf(u.ad)}</span>}
+            </div>
+            <div class="px-4 py-3.5">
+              <p class="font-serif text-lg leading-tight">{u.ad}</p>
+              <p class="etiket normal-case tracking-normal mt-1">{u.gorev[dil]}</p>
+            </div>
           </li>
         ))}
       </ol>
@@ -172,6 +175,14 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
     color: color-mix(in oklab, var(--vurgu, #b5452b) 70%, var(--metin-2));
     background:
       radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--vurgu, #b5452b) 11%, transparent), transparent 62%),
+      var(--zemin-3);
+  }
+
+  /* Denetim kurulu levhaları İznik mavisi tonunda: aynı biçim, farklı organ. */
+  .monogram.denetim {
+    color: color-mix(in oklab, var(--vurgu-2, #1f5f8b) 72%, var(--metin-2));
+    background:
+      radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--vurgu-2, #1f5f8b) 11%, transparent), transparent 62%),
       var(--zemin-3);
   }
 
