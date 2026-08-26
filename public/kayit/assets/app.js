@@ -226,6 +226,27 @@
     if (kod) kod.textContent = app.lang;
   }
 
+  /* Site iskeleti (ust menu, alt bilgi) bu sayfada TURKCE derlenir: adres tek ve
+     parametresizdir (/kayit/, afis QR'lari). Form dili degisince menu Turkce kaliyordu ve
+     kullanici menuden bir sayfaya gidince site Turkce'ye donuyordu (26 Agu 2026). Harita
+     kayit sayfasinda gomuludur (SITE_YOLLARI) — cunku slug'lar dile gore degisiyor
+     (duyurular -> annonces -> announcements), duz bir /tr/ -> /fr/ degisimi yanlis olurdu. */
+  function siteBaglantilariniYansit() {
+    const harita = window.SITE_YOLLARI;
+    if (!harita) return;
+    document.querySelectorAll('a[href^="/"]').forEach((bag) => {
+      // Turkce yol bir kez saklanir; sonraki cevirilerin kaynagi hep budur.
+      if (!bag.dataset.yolTr) {
+        const simdiki = bag.getAttribute('href');
+        if (!simdiki || !harita[simdiki]) return; // haritada olmayan baglantiya dokunulmaz
+        bag.dataset.yolTr = simdiki;
+      }
+      const kaynak = bag.dataset.yolTr;
+      const hedef = app.lang === 'tr' ? kaynak : (harita[kaynak] || {})[app.lang];
+      if (hedef) bag.setAttribute('href', hedef);
+    });
+  }
+
   function translatePage() {
     document.documentElement.lang = app.lang;
     document.title = `${app.t('courseTitle')} · ${app.t('appTitle')}`;
@@ -247,6 +268,7 @@
       button.setAttribute('aria-pressed', String(selected));
     });
     siteDilRozetiniYansit();
+    siteBaglantilariniYansit();
     document.getElementById('declarationText').textContent = app.declaration[app.lang];
     if (typeof telOrnekleriniYenile === 'function') telOrnekleriniYenile();
     if (typeof sozlesmeOnayiniYenile === 'function') sozlesmeOnayiniYenile();
@@ -264,6 +286,9 @@
     if (!DILLER.includes(language)) return;
     app.lang = language;
     storageSet(LANGUAGE_KEY, language);
+    /* Sitenin dil tercihi de guncellenir: formda Fransizca'ya gecen veli menuden bir
+       sayfaya gittiginde ya da koke (/) dondugunde Turkce'ye dusmesin (26 Agu 2026). */
+    storageSet('uluCamiiSiteDili', language);
     translatePage();
   };
 

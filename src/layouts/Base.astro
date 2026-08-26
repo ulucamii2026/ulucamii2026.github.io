@@ -13,10 +13,13 @@ interface Props {
   kapak?: string;
   /** Arama motorları için gizle (portal, admin) */
   noindex?: boolean;
+  /** Sayfanın dilini ziyaretçinin tercihi olarak kaydet. /kayit/ hariç her sayfada açık:
+      orada iskelet her zaman Türkçe derlenir, dil formun kendi anahtarıyla yönetilir. */
+  dilHatirla?: boolean;
 }
 const dil: Dil = Astro.props.dil ?? dilBul(Astro.url);
 const t = ceviri(dil);
-const { baslik, aciklama = t('site.slogan'), kapak = '/media/galeri/cami-24.webp', noindex = false } = Astro.props;
+const { baslik, aciklama = t('site.slogan'), kapak = '/media/galeri/cami-24.webp', noindex = false, dilHatirla = true } = Astro.props;
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
 /** Arama motoru açıklaması: 155 karakteri aşarsa kelime sınırında kısalt */
 const metaAciklama = aciklama.length <= 155 ? aciklama : aciklama.slice(0, 152).replace(/\s+\S*$/, '') + '…';
@@ -55,6 +58,14 @@ const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au 
       document.documentElement.classList.add('js');
       try { const t = localStorage.getItem('tema'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch {}
     </script>
+    {dilHatirla && (
+      <script is:inline define:vars={{ sayfaDili: dil }}>
+        /* Ziyaretçinin en son hangi dilde gezdiğini saklar; kök adres (/) bunu tarayıcı
+           dilinden önce dikkate alır. Böylece Fransızca gezen biri /'ye dönünce Türkçe'ye
+           düşmez (26 Ağu 2026). */
+        try { localStorage.setItem('uluCamiiSiteDili', sayfaDili); } catch (e) { /* depolama kapalı */ }
+      </script>
+    )}
   </head>
   <body class="min-h-dvh flex flex-col">
     <a href="#icerik" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-(--zemin) focus:px-4 focus:py-2 focus:border focus:border-(--cizgi)">{atlaEtiketi[dil]}</a>

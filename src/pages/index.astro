@@ -1,5 +1,15 @@
 ---
-// Kök: tarayıcı diline göre /tr/ veya /fr/ — JS kapalıysa meta refresh ile TR
+/** Kök (/) — dil seçmeden gelen ziyaretçiyi doğru dile gönderir.
+ *
+ * Sıra: (1) ziyaretçinin sitede en son kullandığı dil, (2) tarayıcının dil sırası,
+ * (3) hiçbiri tutmuyorsa İngilizce. Üçüncü basamak 26 Ağustos 2026'da Rıdvan'ın kararıyla
+ * Türkçe'den İngilizce'ye çevrildi: Belçika'da Felemenkçe tarayıcı çok yaygın ve bu
+ * ziyaretçiler Türkçe sayfaya düşüyordu — ölçüldü (nl, de, ar, es hepsi /tr/ açıyordu).
+ * Türkçe, Fransızca ve İngilizce tarayıcılar kendi dillerine gider; ortak dil İngilizce.
+ *
+ * JS kapalıysa meta refresh Türkçe'ye gider: tarayıcı dili okunamadığı için tercih
+ * yapılamaz ve caminin ana cemaati Türkçe konuşur (x-default de Türkçe).
+ */
 ---
 <!doctype html>
 <html lang="tr">
@@ -13,10 +23,27 @@
     <link rel="alternate" hreflang="x-default" href="https://ulucamii.be/tr/" />
     <script is:inline>
       (function () {
-        var d = (navigator.languages || [navigator.language || 'tr']).map(function (l) { return l.toLowerCase().slice(0, 2); });
-        var hedef = 'tr';
-        for (var i = 0; i < d.length; i++) { if (d[i] === 'tr') { hedef = 'tr'; break; } if (d[i] === 'fr') { hedef = 'fr'; break; } if (d[i] === 'en') { hedef = 'en'; break; } }
-        location.replace('/' + hedef + '/');
+        var DILLER = ['tr', 'fr', 'en'];
+        var hedef = null;
+
+        // 1) Ziyaretçinin kendi seçimi her şeyin önünde: sitede en son hangi dilde
+        //    gezdiyse oraya döner (Base.astro her sayfada yazar).
+        try {
+          var kayitli = localStorage.getItem('uluCamiiSiteDili');
+          if (DILLER.indexOf(kayitli) !== -1) hedef = kayitli;
+        } catch (e) { /* gizli sekme ya da depolama kapalı: tarayıcı diline düş */ }
+
+        // 2) Tarayıcının tercih sırası — ilk tanıdığımız dil kazanır.
+        if (!hedef) {
+          var istenen = navigator.languages || [navigator.language || ''];
+          for (var i = 0; i < istenen.length; i++) {
+            var kod = String(istenen[i]).toLowerCase().slice(0, 2);
+            if (DILLER.indexOf(kod) !== -1) { hedef = kod; break; }
+          }
+        }
+
+        // 3) Tarayıcı bu üç dilden hiçbirini istemiyorsa ortak dil İngilizce.
+        location.replace('/' + (hedef || 'en') + '/');
       })();
     </script>
     <meta http-equiv="refresh" content="1; url=/tr/" />

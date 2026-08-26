@@ -2,11 +2,31 @@
 /** Kur'an kursu online kayıt — site içine gömülü uygulama (Ağu 2026).
     Form mantığı /public/kayit/assets içindeki betiklerde; bu sayfa yalnız site iskeleti sağlar.
     Adres sabittir: /kayit/ (afiş QR'ları). ?lang=fr Fransızca açar; topbar gizli tutulur
-    (app.js homeLink'e bağlanır), dil anahtarının görünür kopyası progress üstündedir. */
+    (app.js homeLink'e bağlanır). Dil, sitenin kendi dil seçicisiyle değiştirilir — formun
+    ayrı bir dil düğmesi YOKTUR (app.js'teki [data-language] bağlaması bu sayfada boş küme
+    üzerinde çalışır). */
 import Base from '../../layouts/Base.astro';
+import { yollar, type SayfaAnahtari } from '../../i18n/ui';
+import { yol } from '../../i18n/utils';
 const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online kayıt formu — telefonunuzdan birkaç adımda doldurun, sözleşmeyi imzalayın, kayıt belgeniz e-postanıza gelsin.";
+
+/* Bu sayfanın site iskeleti (üst menü, alt bilgi) derleme zamanında Türkçe'ye sabitlenir,
+   çünkü adres tek ve parametresizdir: /kayit/ — afiş QR'ları buna bağlı. Form dili JS ile
+   değiştiğinde menü Türkçe kalıyordu ve kullanıcı menüden bir sayfaya gidince site
+   Türkçe'ye dönüyordu (26 Ağustos 2026'da Rıdvan bildirdi; ölçüldü: /kayit/?lang=fr
+   sayfasında site içi 50 bağlantının tamamı /tr/ idi).
+
+   Bu harita, app.js'in menüyü de forma uydurmasını sağlar. Yol çevirisi BURADA üretilir
+   (yollar sözlüğü tek kaynak), JS yalnızca uygular; slug'lar dile göre değiştiği için
+   (duyurular → annonces → announcements) düz bir /tr/ → /fr/ değişimi yanlış olurdu. */
+const siteYollari: Record<string, Record<'fr' | 'en', string>> = {
+  '/tr/': { fr: '/fr/', en: '/en/' },
+};
+for (const anahtar of Object.keys(yollar) as SayfaAnahtari[]) {
+  siteYollari[yol('tr', anahtar)] = { fr: yol('fr', anahtar), en: yol('en', anahtar) };
+}
 ---
-<Base baslik="Kur’an Kursu Online Kayıt" dil="tr" aciklama={aciklama}>
+<Base baslik="Kur’an Kursu Online Kayıt" dil="tr" aciklama={aciklama} dilHatirla={false}>
   <Fragment slot="head">
     <script is:inline>
       const CAMI = Object.freeze({
@@ -26,6 +46,7 @@ const aciklama = "Marche-en-Famenne Ulu Camii 2026–2027 Kur'an kursu online ka
         ortakSir: 'ULUCAMII-KAYIT-2026'
       });
     </script>
+    <script is:inline define:vars={{ siteYollari }}>window.SITE_YOLLARI = siteYollari;</script>
     <link rel="stylesheet" href="/kayit/assets/styles.css" />
   </Fragment>
 
