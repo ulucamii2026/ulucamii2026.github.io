@@ -529,6 +529,8 @@
       if (profil) Object.assign(app.state.fields, profil.alanlar);
     }
     // imza ve gorseller her cocukta yeniden alinir
+    mrzOtoCalisti = false;
+    otoGecisIptal();
     if (app.signature) {
       app.signature.strokes = [];
       if (typeof app.signature.clear === 'function') app.signature.clear();
@@ -583,6 +585,38 @@
     updateConditionalFields();
   }
 
+  /* Bir alan artik ya tek bir input/select ya da bir radio grubudur; MRZ ve
+     otomatik gecis her ikisini de ayni arayuzden okur ve yazar. */
+  function alanDegeriOku(ad) {
+    const radiolar = document.querySelectorAll('input[name="' + CSS.escape(ad) + '"][type="radio"]');
+    if (radiolar.length) {
+      const secili = document.querySelector('input[name="' + CSS.escape(ad) + '"]:checked');
+      return secili ? secili.value : '';
+    }
+    const alan = document.getElementById(ad);
+    return alan ? String(alan.value || '').trim() : '';
+  }
+
+  function alanDegeriYaz(ad, deger) {
+    const radiolar = [...document.querySelectorAll('input[name="' + CSS.escape(ad) + '"][type="radio"]')];
+    if (radiolar.length) {
+      const hedef = radiolar.find((r) => r.value === deger);
+      if (!hedef) return null;
+      hedef.checked = true;
+      app.state.fields[ad] = deger;
+      clearElementError(hedef);
+      return hedef;
+    }
+    const alan = document.getElementById(ad);
+    if (!alan) return null;
+    if (alan.tagName === 'SELECT' && ![...alan.options].some((o) => o.value === deger)) return null;
+    alan.value = deger;
+    app.state.fields[ad] = deger;
+    clearElementError(alan);
+    alan.classList.add('oto-dolu');
+    return alan;
+  }
+
   function syncElement(element) {
     if (!element.name || element.type === 'file') return;
     if (element.name === 'contractAccepted') {
@@ -632,7 +666,28 @@
         updateDeclaration();
         if (target.id === 'studentName' || target.id === 'studentSurname') sozlesmeOnayiniYenile();
         scheduleSave();
+        /* Yazarken degil, bir alan/secim tamamlandiginda dene; yazmaya devam
+           edilirse bekleyen gecis iptal olur. */
+        if (eventName === 'change') { odakZinciri(target); otoGecisDene(); }
+        else otoGecisIptal();
       });
+    });
+    /* Enter formu gondermek yerine bir sonraki alana gecirir; son alanda
+       "Devam" dugmesini calistirir. */
+    form.addEventListener('keydown', (olay) => {
+      if (olay.key !== 'Enter' || olay.shiftKey) return;
+      const t = olay.target;
+      if (!(t instanceof HTMLInputElement)) return;
+      if (t.type === 'file' || t.type === 'radio' || t.type === 'checkbox' || t.type === 'submit') return;
+      olay.preventDefault();
+      const alanlar = [...form.querySelectorAll('input, select, textarea')]
+        .filter((e) => !e.disabled && e.type !== 'hidden' && e.type !== 'file' && e.offsetParent !== null);
+      const sonraki = alanlar[alanlar.indexOf(t) + 1];
+      if (sonraki) sonraki.focus();
+      else {
+        const ileri = document.getElementById('nextButton');
+        if (ileri && !ileri.hidden) ileri.click();
+      }
     });
   }
 
@@ -877,7 +932,9 @@
     clearStepErrors(step);
     const invalid = [];
     if (step === 2) {
-      ['studentSurname', 'studentName', 'birthPlace', 'birthDate', 'gender', 'identityNumber'].forEach((id) => required(id, invalid));
+      ['studentSurname', 'studentName', 'birthPlace', 'birthDate'].forEach((id) => required(id, invalid));
+      if (!document.querySelector('input[name="gender"]:checked')) invalid.push(groupError('gender', 'requiredError'));
+      required('identityNumber', invalid);
       const birthDate = document.getElementById('birthDate');
       if (birthDate.value && birthDate.value > localDate()) invalid.push(errorFor(birthDate, 'futureBirthError'));
       else {
@@ -914,7 +971,8 @@
       if (app.state.fields.previousCourse === 'yes' && !document.getElementById('previousLevel').value.trim()) invalid.push(errorFor(document.getElementById('previousLevel'), 'requiredError'));
     }
     if (step === 4) {
-      ['relationship', 'guardianName', 'occupation', 'guardianPhone', 'guardianEmail', 'streetName', 'houseNumber', 'postalCode', 'city'].forEach((id) => required(id, invalid));
+      if (!document.querySelector('input[name="relationship"]:checked')) invalid.push(groupError('relationship', 'requiredError'));
+      ['guardianName', 'occupation', 'guardianPhone', 'guardianEmail', 'streetName', 'houseNumber', 'postalCode', 'city'].forEach((id) => required(id, invalid));
       validPhone('homePhone', false, invalid);
       validPhone('guardianPhone', true, invalid);
       validEmail('guardianEmail', true, invalid);
@@ -1230,6 +1288,7 @@
       app.state.images[key] = result.dataUrl;
       updateImageUI();
       app.saveDraft();
+      otoKimlikTaramasi(key);
     } catch (error) {
       app.showToast(app.t(error.message === 'too-large' ? 'imageTooLarge' : 'imageInvalid'));
       setUploadStatus(key, 'notAdded', false);
@@ -1273,6 +1332,105 @@
     });
   }
 
+  /* --- kendiliginden ilerleme -----------------------------------------
+     27 Agustos 2026, Ridvan istedi: secim yaptiktan sonra ayrica bir dugmeye
+     basmak zorunda kalmasin, adim tamamlaninca sonraki adim kendiliginden
+     acilsin. Kurallari dar tutuldu, cunku ekranin altindan kayan bir form
+     yardimci degil sinir bozucu olur:
+       - yalniz ILK doldurmada (currentStep === sonAdim). Geri donup bir seyi
+         duzelten veliyi ileri firlatmaz; duzeltme akisinda da hic calismaz.
+       - yalniz "change" olayinda: yazarken degil, alan/secim bittiginde.
+       - adimin zorunlu alanlari gercekten dolu ve gecerli olmali.
+       - kisa bir gecikme; o sirada yazmaya baslanirsa iptal edilir. */
+  const OTO_GECIS_MS = 650;
+  let otoGecisSayaci = null;
+  let mrzOtoCalisti = false;
+  let mrzCalisiyor = false;
+
+  /* Adim 3'un kosullu alanlari: yalniz acikken zorunludur. */
+  const ADIM_ZORUNLU = {
+    2: ['studentSurname', 'studentName', 'birthPlace', 'birthDate', 'gender', 'identityNumber'],
+    3: ['school', 'classLevel', 'emergencyName', 'emergencyPhone', 'disability', 'illness', 'previousCourse', 'mediaConsent'],
+    4: ['relationship', 'guardianName', 'occupation', 'guardianPhone', 'guardianEmail', 'streetName', 'houseNumber', 'postalCode', 'city']
+  };
+
+  function otoGecisIptal() {
+    if (otoGecisSayaci) { clearTimeout(otoGecisSayaci); otoGecisSayaci = null; }
+  }
+
+  /* Hicbir hata gostermeden: bu adimda doldurulmasi gereken her sey dolu mu? */
+  function adimDoluMu(adim) {
+    if (adim === 1) return Boolean(app.state.images.identityFront && app.state.images.identityBack);
+    if (adim === 5) {
+      const onay = document.getElementById('contractAccepted');
+      return Boolean(app.state.contractRead && onay && onay.checked);
+    }
+    if (adim === 6) {
+      return Boolean(alanDegeriOku('declarationDate')) && Boolean(app.signature) && !app.signature.isEmpty();
+    }
+    let liste = ADIM_ZORUNLU[adim] || [];
+    if (adim === 3) {
+      const f = app.state.fields;
+      const kosullu = { otherSchoolName: f.school === '__other__', disabilityDetail: f.disability === 'exists',
+                        illnessDetail: f.illness === 'exists', previousLevel: f.previousCourse === 'yes' };
+      liste = liste.concat(Object.keys(kosullu).filter((ad) => kosullu[ad]));
+    }
+    return liste.length > 0 && liste.every((ad) => Boolean(alanDegeriOku(ad)));
+  }
+
+  function otoGecisUygunMu(adim) {
+    if (!app.ready) return false;
+    if (!(adim >= 1 && adim <= 6)) return false;
+    // Geri donmus veli (ya da duzeltme akisi): ilerlemeyi veli yonetsin.
+    return adim === Number(app.state.sonAdim || 0);
+  }
+
+  function otoGecisDene(secenekler) {
+    otoGecisIptal();
+    const adim = Number(app.state.currentStep);
+    if (!otoGecisUygunMu(adim) || !adimDoluMu(adim)) return;
+    const gecikme = (secenekler && secenekler.gecikme) || OTO_GECIS_MS;
+    const sessiz = Boolean(secenekler && secenekler.sessiz);
+    otoGecisSayaci = setTimeout(() => {
+      otoGecisSayaci = null;
+      if (Number(app.state.currentStep) !== adim) return;
+      if (!otoGecisUygunMu(adim) || !adimDoluMu(adim)) return;
+      if (!app.validateStep(adim)) return;
+      app.goToStep(adim + 1);
+      if (!sessiz) app.showToast(metin('autoNextToast', { ad: app.t('step' + (adim + 1) + 'Name') }));
+    }, gecikme);
+  }
+
+  /* Kimligin iki yuzu de eklendiginde tarama kendiliginden baslar; veli
+     ayrica "Kimlikten oku" dugmesine basmak zorunda degil. */
+  function otoKimlikTaramasi(key) {
+    if (key !== 'identityFront' && key !== 'identityBack') return;
+    if (!(app.state.images.identityFront && app.state.images.identityBack)) return;
+    if (mrzOtoCalisti || mrzCalisiyor || !app.mrz) return;
+    mrzOtoCalisti = true;
+    mrzDoldur({ otomatik: true });
+  }
+
+  /* Secimden sonra bir sonraki mantikli alana gecer: "Var" dendiginde
+     aciklama kutusu, okul secildiginde sinif listesi. */
+  function odakZinciri(target) {
+    const zincir = {
+      disability: { deger: 'exists', hedef: 'disabilityDetail' },
+      illness: { deger: 'exists', hedef: 'illnessDetail' },
+      previousCourse: { deger: 'yes', hedef: 'previousLevel' },
+      school: { deger: '__other__', hedef: 'otherSchoolName', sonraki: 'classLevel' }
+    };
+    const kural = zincir[target.name];
+    if (!kural) return;
+    const secili = target.type === 'radio' ? (target.checked ? target.value : '') : String(target.value || '');
+    if (!secili) return;
+    const hedefId = secili === kural.deger ? kural.hedef : (kural.sonraki || '');
+    const hedef = hedefId ? document.getElementById(hedefId) : null;
+    if (!hedef || hedef.disabled || hedef.hidden || hedef.closest('[hidden]')) return;
+    // Yeni acilan alan ekran disinda kalabilir; tarayici gerekiyorsa kaydirsin.
+    requestAnimationFrame(() => hedef.focus());
+  }
+
   /* Klavye kullanıcısı için: etiket odaklanınca Enter/Space dosya seçiciyi açar. */
   function dosyaDugmeleriniBagla() {
     document.querySelectorAll('label.file-button').forEach((etiket) => {
@@ -1291,6 +1449,8 @@
     document.querySelectorAll('[data-remove-image]').forEach((button) => {
       button.addEventListener('click', () => {
         app.state.images[button.dataset.removeImage] = '';
+        // Yeni bir kimlik gorseli gelirse tarama yeniden denenmeli.
+        mrzOtoCalisti = false;
         updateImageUI();
         app.saveDraft();
         // Düğme kendini gizledi; odak boşa düşmesin.
@@ -1499,7 +1659,8 @@
 
   /* --- kimlikten otomatik doldurma ------------------------------
      Yalnizca ICAO kontrol haneleri dogrulanan degerler yazilir. */
-  function mrzAlanlariUygula(veri) {
+  function mrzAlanlariUygula(veri, secenekler) {
+    const otomatik = Boolean(secenekler && secenekler.otomatik);
     const eslesme = {
       studentSurname: veri.soyad,
       studentName: veri.adlar,
@@ -1510,22 +1671,17 @@
     let sayac = 0;
     // Dolu ve FARKLI bir alan varsa, üzerine yazmadan önce veliye sorulur.
     const farkli = Object.keys(eslesme).filter((id) => {
-      const alan = document.getElementById(id);
-      const mevcut = alan ? String(alan.value || '').trim() : '';
+      const mevcut = alanDegeriOku(id);
       return eslesme[id] && mevcut && mevcut.toLocaleLowerCase('tr') !== String(eslesme[id]).toLocaleLowerCase('tr');
     });
-    if (farkli.length && !window.confirm(app.t('mrzOverwriteConfirm'))) return 0;
+    /* Kendiliginden calisan tarama kimseye soru sormaz ve DOLU alana dokunmaz;
+       yalniz bos olanlari doldurur. Uzerine yazma, veli dugmeye bastiginda. */
+    if (farkli.length && !otomatik && !window.confirm(app.t('mrzOverwriteConfirm'))) return 0;
     Object.keys(eslesme).forEach((id) => {
       const deger = eslesme[id];
       if (!deger) return;
-      const alan = document.getElementById(id);
-      if (!alan) return;
-      if (alan.tagName === 'SELECT' && ![...alan.options].some((o) => o.value === deger)) return;
-      alan.value = deger;
-      app.state.fields[id] = deger;
-      clearElementError(alan);
-      alan.classList.add('oto-dolu');
-      sayac += 1;
+      if (otomatik && alanDegeriOku(id)) return;
+      if (alanDegeriYaz(id, deger)) sayac += 1;
     });
     if (sayac) {
       updateDeclaration();
@@ -1534,10 +1690,12 @@
     return sayac;
   }
 
-  async function mrzDoldur() {
+  async function mrzDoldur(secenekler) {
+    const otomatik = Boolean(secenekler && secenekler.otomatik);
     const dugme = document.getElementById('mrzOkuButonu');
     const durum = document.getElementById('mrzDurum');
-    if (!dugme || !app.mrz) return;
+    if (!dugme || !app.mrz || mrzCalisiyor) return;
+    mrzCalisiyor = true;
     dugme.disabled = true;
     dugme.setAttribute('aria-busy', 'true');
     durum.classList.remove('mrz-basarisiz');
@@ -1556,7 +1714,7 @@
         durum.classList.add('mrz-basarisiz');
         return;
       }
-      const sayac = mrzAlanlariUygula(veri);
+      const sayac = mrzAlanlariUygula(veri, { otomatik: otomatik });
       if (!sayac) {
         durum.textContent = app.t('mrzFailed');
         durum.classList.add('mrz-basarisiz');
@@ -1569,8 +1727,12 @@
       durum.textContent = app.t('mrzError');
       durum.classList.add('mrz-basarisiz');
     } finally {
+      mrzCalisiyor = false;
       dugme.removeAttribute('aria-busy');
       updateImageUI();
+      /* Kimlik adiminin isi bitti: tarama basarili da olsa olmasa da veli
+         ogrenci bilgilerine gecsin, sonucu orada gorsun. */
+      if (otomatik) otoGecisDene({ sessiz: true, gecikme: 1500 });
     }
   }
 
@@ -1645,6 +1807,8 @@
       if (typeof app.signature.clear === 'function') app.signature.clear();
     }
     app.lastPdf = null;
+    mrzOtoCalisti = false;
+    otoGecisIptal();
     const alan = document.getElementById('updateRef');
     if (alan) alan.value = kayit.ref;
     const kutu = document.getElementById('updateRefBox');
@@ -1899,6 +2063,10 @@
     });
     document.getElementById('toastClose').addEventListener('click', () => { document.getElementById('toast').hidden = true; });
     document.getElementById('downloadPdfButton').addEventListener('click', downloadPdf);
+    /* Imza penceresi kapaninca 6. adim tamamlanmis olabilir; iptal edildiyse
+       imza bos kalir ve adimDoluMu zaten "hayir" der. */
+    const imzaPenceresi = document.getElementById('signatureDialog');
+    if (imzaPenceresi) imzaPenceresi.addEventListener('close', () => otoGecisDene());
     document.getElementById('tesekkurKardes').addEventListener('click', () => {
       temizDurum(true);
       guncellemeNumarasiniTemizle();

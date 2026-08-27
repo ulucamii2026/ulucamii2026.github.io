@@ -752,6 +752,23 @@ main {
   min-width: 0;
 }
 
+/* Izgara hucresinde duran secim kumesi (cinsiyet, veli yakinligi): fieldset
+   varsayilan olarak daralmaz, izgarayi tasirirdi. */
+.form-grid > .choice-group,
+.conditional-grid > .choice-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* legend'in kendi yan bosluğu var; izgarada komsu alan etiketleriyle
+   ayni hizada dursun. */
+.form-grid > .choice-group > legend,
+.conditional-grid > .choice-group > legend {
+  padding-inline: 0;
+}
+
 .field-full {
   grid-column: 1 / -1;
 }
