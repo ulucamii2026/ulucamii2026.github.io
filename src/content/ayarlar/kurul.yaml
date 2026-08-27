@@ -16,9 +16,9 @@ kurul:
     - ad: Mehmet Sadık Gülkılık
       foto: /media/kurul/mehmet-sadik-gulkilik.webp
       gorev:
-        tr: Sekreter
-        fr: Secrétaire
-        en: Secretary
+        tr: "Genel Sekreter - Danışman"
+        fr: "Secrétaire général - Conseiller"
+        en: "Secretary General - Adviser"
     - ad: Volkan Kutlu
       foto: /media/kurul/volkan-kutlu.webp
       gorev:
