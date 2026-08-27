@@ -1,16 +1,16 @@
 ---
 baslik: "Semaine du Mawlid : envoyé comme miséricorde pour l'univers"
 tarih: 2026-08-27
-ozet: "Du 24 au 30 août 2026, nous vivons la Semaine du Mawlid (Mevlid-i Nebî). La Présidence des Affaires religieuses a retenu pour thème de cette année : « En la 1500e année de sa naissance, Muhammad (s.a.w.s.), miséricorde pour l'univers »."
+ozet: "Du 24 au 30 août 2026, nous vivons la Semaine du Mawlid (Mevlid-i Nebî). Que signifie « mawlid », pourquoi cette semaine à ces dates, quel est le sens de la commémoration de la naissance du Prophète ? Nous adressons nos vœux à notre communauté."
 kapak: /media/duyurular/mevlid-i-nebi-haftasi-2026.webp
-kapakAlt: "Visuel de la Semaine du Mawlid 2026 — verset 107 de la sourate Al-Anbiya et thème de l'année"
+kapakAlt: "Visuel de la Semaine du Mawlid 2026 — verset 107 de la sourate Al-Anbiya : Nous ne t'avons envoyé que comme miséricorde pour l'univers"
 etiketler:
   - mevlid
   - diyanet
 oneCikan: true
 ---
 
-<div class="bilgi"><p><strong>Semaine du Mawlid : du 24 au 30 août 2026.</strong> Thème de cette année — <em>« En la 1500<sup>e</sup> année de sa naissance, Muhammad (s.a.w.s.), miséricorde pour l'univers »</em></p></div>
+<div class="bilgi"><p><strong>Semaine du Mawlid : du 24 au 30 août 2026.</strong> La semaine commence avec la Nuit du Mawlid, observée dans la nuit du lundi 24 au mardi 25 août.</p></div>
 
 Nous voici à l'anniversaire du jour où le Prophète de la miséricorde est venu au monde. La Nuit du Mawlid a été observée dans la nuit du lundi 24 au mardi 25 août ; la **Semaine du Mawlid**, qui commence avec cette nuit, se poursuit jusqu'au dimanche 30 août au soir.
 
@@ -28,7 +28,7 @@ Commémorer cette naissance par des cérémonies n'existait ni du vivant du Prop
 
 Longtemps organisées en avril sous le nom de « Semaine de la Naissance bénie », ces manifestations ont été **rattachées au calendrier hégirien en 2017** par la Présidence des Affaires religieuses et sont devenues la Semaine du Mawlid. La semaine coïncide donc chaque année avec le **12 Rabi‘ al-awwal**, jour de la naissance du Prophète.
 
-Cette année revêt une signification particulière : nous sommes entrés dans l'année **1448** de l'hégire, que la Présidence des Affaires religieuses a proclamée **1500<sup>e</sup> année de la naissance du Prophète**. Le thème des programmes organisés toute l'année, en Turquie comme à l'étranger, est : *« En la 1500<sup>e</sup> année de sa naissance, Muhammad (s.a.w.s.), miséricorde pour l'univers »*.
+La Présidence des Affaires religieuses a mené, du 3 septembre 2025 au 23 août 2026, un programme d'un an consacré à la **1500<sup>e</sup> année de la naissance du Prophète**, sous le thème *« En la 1500<sup>e</sup> année de sa naissance, Muhammad (s.a.w.s.), miséricorde pour l'univers »* ; il a couvert 81 provinces et 922 districts en Turquie ainsi que les régions où vivent nos communautés à l'étranger. Le Symposium international du Mawlid, qui s'inscrit dans ce programme, se tiendra du 25 au 27 septembre 2026 à Istanbul.
 
 ## Sens et portée
 

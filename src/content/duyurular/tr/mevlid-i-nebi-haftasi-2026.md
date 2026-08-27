@@ -1,16 +1,16 @@
 ---
 baslik: "Mevlid-i Nebî Haftası: Âlemlere Rahmet Olarak Gönderildi"
 tarih: 2026-08-27
-ozet: "24-30 Ağustos 2026'da Mevlid-i Nebî Haftası'nı idrak ediyoruz. Diyanet İşleri Başkanlığı bu yılın temasını \"Doğumunun 1500. Yılında Âlemlere Rahmet Hz. Muhammed (s.a.s.)\" olarak belirledi. Cemaatimizin haftasını tebrik ediyoruz."
+ozet: "24-30 Ağustos 2026'da Mevlid-i Nebî Haftası'nı idrak ediyoruz. Mevlid ne demektir, hafta neden bu tarihlerde, Peygamberimizin doğumunu anmanın anlamı nedir? Cemaatimizin Mevlid-i Nebî Haftası'nı tebrik ediyoruz."
 kapak: /media/duyurular/mevlid-i-nebi-haftasi-2026.webp
-kapakAlt: "Mevlid-i Nebî Haftası 2026 kapak görseli — Enbiyâ sûresi 107. âyet ve bu yılın teması"
+kapakAlt: "Mevlid-i Nebî Haftası 2026 kapak görseli — Enbiyâ sûresi 107. âyet: Seni ancak âlemlere rahmet olarak gönderdik"
 etiketler:
   - mevlid
   - diyanet
 oneCikan: true
 ---
 
-<div class="bilgi"><p><strong>Mevlid-i Nebî Haftası: 24-30 Ağustos 2026.</strong> Bu yılın teması — <em>“Doğumunun 1500. Yılında Âlemlere Rahmet Hz. Muhammed (s.a.s.)”</em></p></div>
+<div class="bilgi"><p><strong>Mevlid-i Nebî Haftası: 24-30 Ağustos 2026.</strong> Hafta Mevlid Kandili ile başlar; kandili 24 Ağustos Pazartesi’yi 25 Ağustos Salı’ya bağlayan gece idrak ettik.</p></div>
 
 Rahmet Peygamberi'nin dünyayı şereflendirdiği günün yıl dönümündeyiz. Mevlid Kandili'ni 24 Ağustos Pazartesi'yi 25 Ağustos Salı'ya bağlayan gece idrak ettik; bu geceyle başlayan **Mevlid-i Nebî Haftası** 30 Ağustos Pazar akşamına kadar sürüyor.
 
@@ -28,7 +28,7 @@ Doğum gününün törenlerle anılması Hz. Peygamber'in hayatında ve Hulefâ-
 
 Diyanet İşleri Başkanlığı, uzun yıllar nisan ayında “Kutlu Doğum Haftası” adıyla yapılan programları **2017'de hicrî takvime bağlayarak** Mevlid-i Nebî Haftası'na dönüştürdü. Böylece hafta, her yıl Hz. Peygamber'in doğum günü olan **12 Rebîülevvel** ile birlikte idrak ediliyor.
 
-Bu yıl haftanın ayrı bir anlamı var: hicrî takvime göre **1448**'e girdik ve Diyanet İşleri Başkanlığı bu seneyi **Hz. Peygamber'in doğumunun 1500. yılı** olarak ilan etti. Yurt içinde ve yurt dışında yıl boyu süren programların teması: *“Doğumunun 1500. Yılında Âlemlere Rahmet Hz. Muhammed (s.a.s.)”*
+Diyanet İşleri Başkanlığı, Peygamberimizin **doğumunun 1500. yılı** için 3 Eylül 2025'te başlayıp 23 Ağustos 2026'da tamamlanan bir yıllık program yürüttü. Programın teması *“Doğumunun 1500. Yılında Âlemlere Rahmet Hz. Muhammed (s.a.s.)”* idi; yurt içinde 81 il ve 922 ilçeyi, yurt dışında da soydaş ve dindaşlarımızın yaşadığı bölgeleri kapsadı. Aynı programın Uluslararası Mevlid-i Nebî Sempozyumu 25-27 Eylül 2026'da İstanbul'da yapılacak.
 
 ## Anlam ve önemi
 
