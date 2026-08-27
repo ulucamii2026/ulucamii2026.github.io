@@ -45,8 +45,14 @@ const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au 
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(digerDilYolu(Astro.url, 'tr'), Astro.site)} />
+    {/* Simge zinciri. SVG simgeyi desteklemeyen istemciler (WhatsApp, eski tarayıcılar,
+        besleme okuyucuları, yer imi araçları) doğrudan /favicon.ico ister; 27 Ağustos
+        2026'ya kadar orada Astro şablonunun kendi simgesi duruyordu ve paylaşım
+        önizlemelerinde bağlantının yanında o çıkıyordu. apple-touch-icon da opak
+        olmalı — iOS saydam pikselleri siyaha çeviriyor. */}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/media/logo/ulu-camii-logo-512.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#b5452b" />
     <meta property="og:type" content="website" />
