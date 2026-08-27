@@ -132,6 +132,12 @@
          yazar (kayit yine de saglamdir). Bu metin "yeni" iceriyor diye normal kayitla ayni
          renkte gorunuyordu ve gozden kaciyordu — ayri bir uyari rengi verildi. */
       .rozet-durum.sorun { background: rgba(181,69,43,.16); color: #8f3420; font-weight: 600; }
+      /* Duzeltilmis kayit: yeni bir basvuru degil, var olanin yeni surumu. */
+      .rozet-durum.duzeltme { background: rgba(31,95,139,.14); color: #1a4e73; font-weight: 600; }
+      .eski-surum { margin-top: .5rem; }
+      .eski-surum > summary { font-size: .86rem; color: var(--metin-2); }
+      .eski-surum .eski-not { margin: .5rem 0 0; font-size: .84rem; color: var(--metin-2); }
+      .liste-not { margin: .8rem 0 0; font-size: .84rem; color: var(--metin-2); }
       .bkart-satir { display: flex; flex-wrap: wrap; gap: .2rem 1.1rem; margin-top: .4rem; font-size: .92rem; color: var(--metin-2); }
       .bkart-satir span b { color: var(--murekkep); font-weight: 600; font-family: inherit; }
       .bkart-arac { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .6rem; }
@@ -239,6 +245,7 @@
       <div id="basvuru-alan">
         <div class="bilgi-kutu" id="basvuru-bilgi" hidden></div>
         <div class="basvuru-liste" id="basvuru-liste"></div>
+        <p class="liste-not" id="basvuru-not" hidden></p>
       </div>
 
       <h2 id="degisiklikler">Son Değişiklikler <span class="cizgi"></span></h2>
@@ -642,8 +649,9 @@
       let sekmeSecildi = false;
       function sekmeyiUyarla() { sekmeSecildi = true; }
       function rozetleriYaz() {
-        const k = sonVeri && sonVeri.kayitlar && sonVeri.kayitlar.satirlar ? sonVeri.kayitlar.satirlar.length : 0;
-        const i = sonVeri && sonVeri.ihtidalar && sonVeri.ihtidalar.satirlar ? sonVeri.ihtidalar.satirlar.length : 0;
+        /* Satır değil ÖĞRENCİ sayılır: düzeltilmiş bir kayıt defterde iki satırdır. */
+        const k = grupSayisi(sonVeri && sonVeri.kayitlar);
+        const i = grupSayisi(sonVeri && sonVeri.ihtidalar);
         $('rozet-kayit').textContent = '(' + k + ')';
         $('rozet-ihtida').textContent = '(' + i + ')';
         /* Toplam yazmak yanıltıyordu: tek bir "(1)" öğrenci kaydı sanılabiliyordu.
@@ -661,6 +669,35 @@
         return -1;
       };
 
+      /* SÜRÜM GRUPLAMA (27 Ağustos 2026, Rıdvan bildirdi).
+         Bir kaydın düzeltilmesi deftere YENİ bir satır yazar (UC-2026-0002 → -R2) ve
+         eskisini "Güncellendi →" diye işaretler; defter böylece bir denetim izi olur ve
+         bu doğru bir tasarımdır. Ama panel her satırı ayrı kart olarak çiziyordu: aynı
+         öğrenci iki kez kaydedilmiş gibi görünüyor, sayaç da öğrenci değil satır
+         sayıyordu. Artık bir öğrenci bir karttır; eski sürümler kartın içindedir. */
+      const refKok = (d) => String(d ?? '').trim().replace(/-R\d+$/i, '');
+      const refSurum = (d) => { const m = String(d ?? '').trim().match(/-R(\d+)$/i); return m ? Number(m[1]) : 1; };
+
+      function gruplaSurumler(v) {
+        if (!v || !v.satirlar || !v.satirlar.length) return [];
+        const iRef = sut(v.basliklar, 'referans');
+        const sira = [];
+        const harita = new Map();
+        v.satirlar.forEach((r, i) => {
+          const kok = iRef >= 0 ? refKok(r[iRef]) : '';
+          const anahtar = kok || ('satir-' + i);   // referanssız satır kendi başına durur
+          if (!harita.has(anahtar)) { harita.set(anahtar, []); sira.push(anahtar); }
+          harita.get(anahtar).push(r);
+        });
+        return sira.map((a) => {
+          const hepsi = harita.get(a).slice()
+            .sort((x, y) => refSurum(iRef >= 0 ? y[iRef] : '') - refSurum(iRef >= 0 ? x[iRef] : ''));
+          return { hepsi, guncel: hepsi[0], eskiler: hepsi.slice(1) };
+        });
+      }
+
+      const grupSayisi = (v) => gruplaSurumler(v).length;
+
       function basvuruCiz() {
         sekmeyiUyarla();
         rozetleriYaz();
@@ -668,9 +705,8 @@
         const liste = $('basvuru-liste');
         $('basvuru-bilgi').hidden = true;
         if (!v || !v.satirlar || !v.satirlar.length) {
-          const digerSay = aktifTur === 'kayit'
-            ? (sonVeri && sonVeri.ihtidalar && sonVeri.ihtidalar.satirlar ? sonVeri.ihtidalar.satirlar.length : 0)
-            : (sonVeri && sonVeri.kayitlar && sonVeri.kayitlar.satirlar ? sonVeri.kayitlar.satirlar.length : 0);
+          const digerSay = grupSayisi(aktifTur === 'kayit'
+            ? (sonVeri && sonVeri.ihtidalar) : (sonVeri && sonVeri.kayitlar));
           const digerAd = aktifTur === 'kayit' ? 'İhtida Başvuruları' : 'Kur’an Kursu Kayıtları';
           const digerNot = digerSay ? ` <b>${digerAd}</b> sekmesinde ${digerSay} kayıt var.` : '';
           liste.innerHTML = `<div class="bilgi-kutu">${aktifTur === 'kayit' ? 'Kur’an kursu için henüz online kayıt gelmedi.' : 'Henüz ihtida başvurusu gelmedi.'} Yeni başvurular buraya kendiliğinden düşer.${digerNot}</div>`;
@@ -683,16 +719,23 @@
         const iTel = aktifTur === 'kayit' ? sut(b, 'veli cep', 'cep', 'telefon') : sut(b, 'telefon', 'cep');
         const iVeli = sut(b, 'veli adı');
         const iOkul = sut(b, 'okul'), iSinif = sut(b, 'sınıf'), iEposta = sut(b, 'e-posta');
-        const satirlar = v.satirlar.filter((r) => !suzgec || r.join(' ').toLocaleLowerCase('tr').includes(suzgec));
-        if (!satirlar.length) { liste.innerHTML = '<div class="bilgi-kutu">Aramaya uyan başvuru yok.</div>'; $('csv').disabled = false; return; }
+        /* Arama eski sürümlerde de eşleşir: elindeki eski numarayla arayan bulur. */
+        const gruplar = gruplaSurumler(v)
+          .filter((g) => !suzgec || g.hepsi.some((r) => r.join(' ').toLocaleLowerCase('tr').includes(suzgec)));
+        if (!gruplar.length) { liste.innerHTML = '<div class="bilgi-kutu">Aramaya uyan başvuru yok.</div>'; $('csv').disabled = false; return; }
         const al = (r, i) => i >= 0 ? String(r[i] ?? '').trim() : '';
-        liste.innerHTML = satirlar.map((r) => {
+        const duzeltilenVar = gruplar.some((g) => g.eskiler.length);
+        liste.innerHTML = gruplar.map(({ guncel: r, eskiler }) => {
           const ad = [al(r, iAd), al(r, iSoyad)].filter(Boolean).join(' ') || '(isim yok)';
           const durum = al(r, iDurum);
           /* Sira onemli: "Yeni kayit · e-posta gonderilemedi" hem "yeni" hem sorun icerir;
              sorun kazanmali, yoksa uyari normal kayit gibi gorunur. */
           const sorun = /gönderilemedi|gonderilemedi|hata|başarısız|basarisiz/i.test(durum);
-          const yeni = !sorun && /yeni/i.test(durum);
+          const duzeltildi = !sorun && eskiler.length > 0;
+          const yeni = !sorun && !duzeltildi && /yeni/i.test(durum);
+          /* Ham durum metni ("Güncel kayıt (revizyon)") kartta yer tutuyor ama bilgi
+             vermiyordu; kaçıncı sürüm olduğunu söylemek daha faydalı. */
+          const rozetMetni = duzeltildi ? (refSurum(al(r, iRef)) + '. sürüm · düzeltildi') : durum;
           const tel = al(r, iTel), pdf = al(r, iPdf), eposta = al(r, iEposta);
           const bilgiler = [];
           if (al(r, iZaman)) bilgiler.push(`<span>${kacir(tarihSadelestir(al(r, iZaman)))}</span>`);
@@ -711,6 +754,13 @@
           if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
           if (pdf.startsWith('http')) araclar.push(`<a class="dugme" href="${kacir(pdf)}" target="_blank" rel="noopener">Form PDF ↗</a>`);
           if (aktifTur === 'ihtida' && al(r, iRef)) araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
+          const eskiSurumler = eskiler.length ? `<details class="eski-surum"><summary>Önceki sürümler (${eskiler.length})</summary><table>${
+            eskiler.map((e) => {
+              const epdf = al(e, iPdf);
+              return `<tr><th>${kacir(al(e, iRef))}</th><td>${kacir(tarihSadelestir(al(e, iZaman)))}${
+                epdf.startsWith('http') ? ` · <a href="${kacir(epdf)}" target="_blank" rel="noopener">form PDF ↗</a>` : ''}</td></tr>`;
+            }).join('')
+          }</table><p class="eski-not">Bu sürümler veli tarafından düzeltildi. Geçerli olan, yukarıdaki ${kacir(al(r, iRef))} numaralı kayıttır.</p></details>` : '';
           const ayrinti = b.map((baslik, i) => {
             const d = tarihSadelestir(String(r[i] ?? '').trim());
             if (!d) return '';
@@ -720,12 +770,17 @@
             return `<tr><th>${kacir(baslik)}</th><td>${deger}</td></tr>`;
           }).join('');
           return `<article class="bkart${yeni ? ' yeni' : ''}">
-            <div class="bkart-ust"><span class="bkart-ad">${kacir(ad)}</span>${al(r, iRef) ? `<span class="bkart-ref">${kacir(al(r, iRef))}</span>` : ''}${durum ? `<span class="rozet-durum${sorun ? ' sorun' : (yeni ? ' yeni' : '')}">${kacir(durum)}</span>` : ''}</div>
+            <div class="bkart-ust"><span class="bkart-ad">${kacir(ad)}</span>${al(r, iRef) ? `<span class="bkart-ref">${kacir(al(r, iRef))}</span>` : ''}${rozetMetni ? `<span class="rozet-durum${sorun ? ' sorun' : (duzeltildi ? ' duzeltme' : (yeni ? ' yeni' : ''))}">${kacir(rozetMetni)}</span>` : ''}</div>
             <div class="bkart-satir">${bilgiler.join('')}</div>
             ${araclar.length ? `<div class="bkart-arac">${araclar.join('')}</div>` : ''}
             <details><summary>Tüm bilgiler</summary><table>${ayrinti}</table></details>
+            ${eskiSurumler}
           </article>`;
         }).join('');
+        $('basvuru-not').innerHTML = duzeltilenVar
+          ? 'Düzeltilen kayıtların eski sürümleri kartın içindedir; dışa aktarımda yalnız güncel sürümler yer alır.'
+          : '';
+        $('basvuru-not').hidden = !duzeltilenVar;
         liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
         $('csv').disabled = false;
       }
@@ -936,7 +991,10 @@
           if (/^[=+\-@\t\r]/.test(d)) d = "'" + d;
           return '"' + d.replace(/"/g, '""') + '"';
         };
-        const csv = [v.basliklar.map(tirnak).join(';'), ...v.satirlar.map((r) => r.map(tirnak).join(';'))].join('\r\n');
+        /* Yalnız güncel sürümler: düzeltilmiş bir kaydın eski satırı da girseydi
+           sınıf listesinde öğrenci iki kez görünürdü. Denetim izi defterde durur. */
+        const disaAktarilan = gruplaSurumler(v).map((g) => g.guncel);
+        const csv = [v.basliklar.map(tirnak).join(';'), ...disaAktarilan.map((r) => r.map(tirnak).join(';'))].join('\r\n');
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
         a.download = (aktifTur === 'kayit' ? 'kuran-kursu-kayitlari' : 'ihtida-basvurulari') + '.csv'; a.click();

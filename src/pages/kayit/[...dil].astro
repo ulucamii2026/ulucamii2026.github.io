@@ -83,6 +83,13 @@ const baslik = {
       </div>
     </div>
 
+    {/* Düzeltme şeridi: form doldurulurken hangi kaydın düzeltildiğini ve yeni
+        kayıt açılmayacağını her adımda söyler. */}
+    <p class="duzeltme-serit" id="duzeltmeSerit" hidden role="status">
+      <span id="duzeltmeSeritMetin"></span>
+      <button class="link-button" type="button" id="duzeltmeIptal" data-i18n="fixCancel">Vazgeç</button>
+    </p>
+
     <div id="mainContent">
       <form id="registrationForm" novalidate autocomplete="on">
         <section class="step step-welcome is-active" data-step="0" aria-labelledby="welcomeTitle">
@@ -126,6 +133,16 @@ const baslik = {
               <p id="siblingCardBody"></p>
               <button class="button button-primary button-wide" type="button" id="siblingYesButton" data-i18n="siblingYes2">Evet, ikinci çocuğumu kaydet</button>
               <button class="link-button" type="button" id="siblingNoLink" data-i18n="siblingNo">Hayır, bilgiler değişti</button>
+            </article>
+
+            {/* Bu cihazdan gönderilmiş kayıtlar. Bir yazım hatasını düzeltmek için
+                veli eskiden formun tamamını baştan doldurup eski kayıt numarasını
+                elle yazmak zorundaydı (27 Ağustos 2026, Rıdvan bildirdi). */}
+            <article class="karar-kart kayitlarim" id="kayitlarimKart" hidden aria-labelledby="kayitlarimBaslik">
+              <h2 id="kayitlarimBaslik" data-i18n="myRecordsTitle">Bu cihazdan yaptığınız kayıtlar</h2>
+              <p data-i18n="myRecordsIntro">Bir bilgide hata varsa düzeltin: bilgiler forma geri gelir, yeni kayıt açılmaz, aynı kayıt güncellenir.</p>
+              <ul class="kayitlarim-liste" id="kayitlarimListe"></ul>
+              <button class="link-button" type="button" id="kayitlarimSil" data-i18n="myRecordsForget">Bu kayıtları cihazdan sil</button>
             </article>
           </div>
 
@@ -386,6 +403,8 @@ const baslik = {
             <div class="tesekkur-eylem">
               <button class="button button-secondary" type="button" id="tesekkurIndir" data-i18n="downloadPdf">PDF'yi indir</button>
             </div>
+            {/* Hata en çok kayıt biter bitmez fark edilir; düzeltme tam burada dursun. */}
+            <button class="link-button" type="button" id="tesekkurDuzelt" data-i18n="tesekkurDuzelt">Bilgilerde hata mı var? Bu kaydı düzelt</button>
             <button class="link-button" type="button" id="tesekkurFarkli" data-i18n="tesekkurFarkli">Farklı bir veliyle kayıt başlat</button>
             <address class="tesekkur-adres">
               <span data-i18n="institutionShort">Marche Ulu Camii</span><br>

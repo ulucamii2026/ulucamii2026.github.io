@@ -5,6 +5,13 @@
   const DRAFT_KEY = 'uluCamiiKayitDraft:v1';
   /* Yalnizca aileye ait alanlar; cocuga ozel hicbir sey buraya yazilmaz. */
   const VELI_KEY = 'uluCamiiVeliProfili:v1';
+  /* Bu cihazdan gonderilmis kayitlar; tek dokunusla duzeltme icin. Taslakla ayni
+     bicimde ve ayni yerde durur, 60 gun sonra kendiliginden dusulur. */
+  const KAYITLARIM_KEY = 'uluCamiiKayitlarim:v1';
+  const KAYIT_OMRU_GUN = 60;
+  const KAYIT_AZAMI = 6;
+  /* Duzeltme ogrenci bilgileri adiminda acilir: yazim hatalari orada olur. */
+  const DUZELTME_ADIMI = 2;
   const VELI_ALANLARI = [
     'relationship', 'guardianName', 'occupation',
     'guardianPhone', 'guardianPhoneCC', 'homePhone', 'homePhoneCC', 'guardianEmail',
@@ -75,6 +82,77 @@
 
   function veliProfiliSil() {
     storageRemove(VELI_KEY);
+  }
+
+  /* --- bu cihazdan yapilan kayitlar ---------------------------------
+     27 Agustos 2026, Ridvan bildirdi: ikinci cocugun kaydi hatali gitti ve
+     duzeltmek cok zor oldu. O gunku tek yol, karsilama ekranindaki kapali bir
+     kutuyu acip ESKI KAYIT NUMARASINI ELLE YAZMAK, sonra bes adimlik formun
+     tamamini -- kimlik fotograflari, okul, saglik notu, sozlesme, imza --
+     bastan doldurmakti. Numara yanlis yazilirsa sunucu yeni bir kayit aciyordu.
+
+     Artik gonderilen kaydin form icerigi, taslagin ta kendisiyle ayni bicimde
+     bu cihazda saklaniyor: karsilama ekraninda "Bilgileri duzelt" bir dokunusla
+     her seyi geri yukluyor ve guncellenecek numarayi kendisi yaziyor.
+     Imza saklanmaz -- duzeltilmis beyan yeniden imzalanir. */
+  function kayitlarimOku() {
+    const ham = storageGet(KAYITLARIM_KEY);
+    if (!ham) return [];
+    try {
+      const p = JSON.parse(ham);
+      if (!p || p.surum !== 1 || !Array.isArray(p.kayitlar)) return [];
+      const sinir = Date.now() - KAYIT_OMRU_GUN * 86400000;
+      return p.kayitlar
+        .filter((k) => k && k.ref && k.taslak && Number(k.zaman) > sinir)
+        .sort((a, b) => Number(b.zaman) - Number(a.zaman));
+    } catch (_) { return []; }
+  }
+
+  function kayitlarimYaz(liste) {
+    const kirp = liste.slice().sort((a, b) => Number(b.zaman) - Number(a.zaman)).slice(0, KAYIT_AZAMI);
+    if (!kirp.length) { storageRemove(KAYITLARIM_KEY); return; }
+    if (storageSet(KAYITLARIM_KEY, JSON.stringify({ surum: 1, kayitlar: kirp }))) return;
+    /* Depo dolduysa gorseller dusurulur: alanlar geri gelsin yeter, kimlik
+       fotografi yeniden cekilir. Duzeltmenin tamamen kaybolmasindansa iyidir. */
+    storageSet(KAYITLARIM_KEY, JSON.stringify({
+      surum: 1,
+      kayitlar: kirp.map((k) => Object.assign({}, k, {
+        taslak: Object.assign({}, k.taslak, { images: { identityFront: '', identityBack: '', studentPhoto: '' } })
+      }))
+    }));
+  }
+
+  /* UC-2026-0002 ile UC-2026-0002-R2 ayni kayittir; liste bir kere gorunur. */
+  const refKoku = (r) => String(r || '').trim().toUpperCase().replace(/-R\d+$/, '');
+
+  function kayitlarimaEkle(ref) {
+    if (!ref) return;
+    const anlik = draftPayload(true);
+    delete anlik.gonderimAnahtari;
+    anlik.signatureData = '';
+    anlik.signatureStrokes = [];
+    anlik.contractAccepted = false;
+    const f = app.state.fields || {};
+    const kok = refKoku(ref);
+    const kalan = kayitlarimOku().filter((k) => refKoku(k.ref) !== kok);
+    kalan.push({
+      ref: String(ref),
+      ad: String(f.studentName || '').trim(),
+      soyad: String(f.studentSurname || '').trim(),
+      zaman: Date.now(),
+      taslak: anlik
+    });
+    kayitlarimYaz(kalan);
+  }
+
+  function kayitlarimiUnut() {
+    storageRemove(KAYITLARIM_KEY);
+  }
+
+  /* YEREL yukarida zaten tanimli (dosya basi); ikinci bir tablo yapilmaz. */
+  function kisaTarih(ts) {
+    try { return new Date(Number(ts)).toLocaleDateString(YEREL[app.lang] || 'tr-TR', { day: '2-digit', month: '2-digit', year: 'numeric' }); }
+    catch (_) { return ''; }
   }
 
   /* Gönderim anahtarı: aynı kaydın ikinci kez açılmasını önler. Bağlantı
@@ -925,6 +1003,7 @@
     }
     updateProgress();
     updateNavigation();
+    duzeltmeSeridiniYaz();
     if (target === 5) requestAnimationFrame(updateContractScroll);
     if (target === 6) updateDeclaration();
     if (target === 7) renderSummary();
@@ -1361,6 +1440,8 @@
       /* Kayit artik sunucuda: taslak SILINIR, yalnizca veli profili saklanir.
          Aksi halde ikinci cocuk kaydinda birincinin bilgileri geri gelirdi. */
       veliProfiliYaz(sonuc.ref, Boolean(sonuc.guncelleme));
+      /* Durum defaultState()'e donmeden ONCE: duzeltme icin form icerigi saklanir. */
+      kayitlarimaEkle(sonuc.ref);
       storageRemove(DRAFT_KEY);
       durum.hidden = true;
       tesekkurGoster(sonuc.ref, sonuc.guncelleme);
@@ -1488,6 +1569,91 @@
     const kutu = document.getElementById('updateRefBox');
     if (kutu) kutu.open = false;
     if (app.state && app.state.fields) app.state.fields.updateRef = '';
+    duzeltmeSeridiniYaz();
+  }
+
+  /* Serit tek bir kaynaktan okur: alanin KENDISI. Boylece hem listeden baslayan
+     duzeltmede hem de numarayi elle yazan velide dogru calisir, sayfa yenilense
+     bile (numara taslakta saklanir) kaybolmaz. */
+  function duzeltmeSeridiniYaz() {
+    const serit = document.getElementById('duzeltmeSerit');
+    if (!serit) return;
+    const ref = guncellenenRefAl();
+    const goster = Boolean(ref) && Number(app.state.currentStep) > 0;
+    serit.hidden = !goster;
+    if (goster) {
+      const metinAlani = document.getElementById('duzeltmeSeritMetin');
+      if (metinAlani) metinAlani.textContent = metin('fixBanner', { ref: ref });
+    }
+  }
+
+  function duzeltmeyeBasla(ref) {
+    const kayit = kayitlarimOku().find((k) => k.ref === ref);
+    if (!kayit) { app.showToast(app.t('fixNotFound')); return; }
+    const temel = defaultState();
+    const t = kayit.taslak || {};
+    app.state = Object.assign({}, temel, t, {
+      currentStep: DUZELTME_ADIMI,
+      /* Butun adimlar acik kalsin: veli yanlis alan hangisindeyse dogruca oraya
+         gidebilsin, bastan sona tiklamak zorunda kalmasin. */
+      sonAdim: 7,
+      fields: Object.assign({}, temel.fields, t.fields || {}, { updateRef: kayit.ref }),
+      images: Object.assign({}, temel.images, t.images || {}),
+      /* Duzeltilmis beyan yeniden imzalanir; sozlesme yeniden okutulmaz. */
+      signatureData: '',
+      signatureStrokes: [],
+      contractAccepted: false,
+      gonderimAnahtari: '',
+      submittedRef: ''
+    });
+    if (app.signature) {
+      app.signature.strokes = [];
+      if (typeof app.signature.clear === 'function') app.signature.clear();
+    }
+    app.lastPdf = null;
+    const alan = document.getElementById('updateRef');
+    if (alan) alan.value = kayit.ref;
+    const kutu = document.getElementById('updateRefBox');
+    if (kutu) kutu.open = false;
+    const tesekkur = document.getElementById('tesekkurEkrani');
+    if (tesekkur) tesekkur.hidden = true;
+    app.saveDraft();
+    restoreFields();
+    updateImageUI();
+    updateDeclaration();
+    app.goToStep(DUZELTME_ADIMI);
+    app.showToast(app.t('fixStarted'));
+  }
+
+  function kayitlarimiCiz() {
+    const kart = document.getElementById('kayitlarimKart');
+    const liste = document.getElementById('kayitlarimListe');
+    if (!kart || !liste) return [];
+    const kayitlar = kayitlarimOku();
+    kart.hidden = kayitlar.length === 0;
+    if (!kayitlar.length) { liste.innerHTML = ''; return kayitlar; }
+    liste.textContent = '';
+    kayitlar.forEach((k) => {
+      const satir = document.createElement('li');
+      const bilgi = document.createElement('div');
+      const ad = document.createElement('span');
+      ad.className = 'kayitlarim-ad';
+      ad.textContent = [k.ad, k.soyad].filter(Boolean).join(' ') || k.ref;
+      const alt = document.createElement('span');
+      alt.className = 'kayitlarim-ref';
+      alt.textContent = [k.ref, kisaTarih(k.zaman)].filter(Boolean).join(' · ');
+      bilgi.appendChild(ad);
+      bilgi.appendChild(alt);
+      const dugme = document.createElement('button');
+      dugme.type = 'button';
+      dugme.className = 'button button-secondary';
+      dugme.textContent = app.t('myRecordsFix');
+      dugme.addEventListener('click', () => duzeltmeyeBasla(k.ref));
+      satir.appendChild(bilgi);
+      satir.appendChild(dugme);
+      liste.appendChild(satir);
+    });
+    return kayitlar;
   }
 
   /* Karsilama ekrani: yarim kalan kayit ve kardes kaydi ayri ayri, ACIKCA
@@ -1510,6 +1676,11 @@
     draftKart.hidden = !taslakVar;
     kardesKart.hidden = taslakVar || !profil;
     basla.hidden = taslakVar;
+    /* Yarim kalan bir taslak varken tek is onu bitirmektir; duzeltme listesi
+       o an gorunmez, yoksa veli iki farkli yola ayni anda bakar. */
+    const kayitlarimKart = document.getElementById('kayitlarimKart');
+    if (taslakVar) { if (kayitlarimKart) kayitlarimKart.hidden = true; }
+    else kayitlarimiCiz();
 
     if (taslakVar) {
       const ad = [alanlar.studentName, alanlar.studentSurname].filter(Boolean).join(' ').trim();
@@ -1640,6 +1811,27 @@
       guncellemeNumarasiniTemizle();
       app.goToStep(1);
     });
+    const kayitlarimSilDugmesi = document.getElementById('kayitlarimSil');
+    if (kayitlarimSilDugmesi) kayitlarimSilDugmesi.addEventListener('click', () => {
+      if (!window.confirm(app.t('myRecordsForgetConfirm'))) return;
+      kayitlarimiUnut();
+      renderKarsilama();
+      app.showToast(app.t('myRecordsForgotten'));
+    });
+    const duzeltmeIptalDugmesi = document.getElementById('duzeltmeIptal');
+    if (duzeltmeIptalDugmesi) duzeltmeIptalDugmesi.addEventListener('click', () => {
+      if (!window.confirm(app.t('fixCancelConfirm'))) return;
+      guncellemeNumarasiniTemizle();
+      temizDurum(false);
+      storageRemove(DRAFT_KEY);
+      app.goToStep(0);
+    });
+    const tesekkurDuzeltDugmesi = document.getElementById('tesekkurDuzelt');
+    if (tesekkurDuzeltDugmesi) tesekkurDuzeltDugmesi.addEventListener('click', () => {
+      duzeltmeyeBasla(app.state.submittedRef);
+    });
+    const guncellemeAlani = document.getElementById('updateRef');
+    if (guncellemeAlani) guncellemeAlani.addEventListener('input', duzeltmeSeridiniYaz);
     document.getElementById('siblingNoLink').addEventListener('click', () => {
       veliProfiliSil();
       temizDurum(false);
