@@ -1382,6 +1382,18 @@
     hata.textContent = '';
     pdfHata.textContent = '';
 
+    /* SON KAPI (27 Agustos 2026): guncellenecek numara bu cihazda bilinen bir
+       kayda aitse ve gonderilen ogrenci O kayittaki ogrenci DEGILSE, veli
+       uyarilir. Elle yanlis numara yazan veya yarim kalmis bir duzeltmeden
+       sonra yeni cocuk kaydeden veli, sessizce eski kaydi eziyordu. */
+    const uyari = ezmeUyarisi();
+    if (uyari && !window.confirm(uyari)) {
+      app.goToStep(0);
+      const kutu = document.getElementById('updateRefBox');
+      if (kutu) kutu.open = true;
+      return;
+    }
+
     if (!guncellenenRefGecerliMi()) {
       hata.textContent = app.t('updateRefInvalid');
       const refHata = document.getElementById('updateRefError');
@@ -1579,12 +1591,34 @@
     const serit = document.getElementById('duzeltmeSerit');
     if (!serit) return;
     const ref = guncellenenRefAl();
-    const goster = Boolean(ref) && Number(app.state.currentStep) > 0;
+    /* Karsilama ekraninda DA gorunur (27 Agustos 2026 denetimi). Once yalniz
+       form adimlarinda cikiyordu; duzeltmeyi yarida birakip ana ekrana donen
+       veli, numaranin kapali kutuda durdugunu goremiyordu. */
+    const goster = Boolean(ref);
     serit.hidden = !goster;
     if (goster) {
       const metinAlani = document.getElementById('duzeltmeSeritMetin');
       if (metinAlani) metinAlani.textContent = metin('fixBanner', { ref: ref });
     }
+  }
+
+  /** Gonderim baska bir ogrencinin kaydinin ustune mi yazacak? Uyari metni
+      dondurur, sorun yoksa bos dizge. Yalniz bu cihazda taninan kayitlar icin
+      calisir; baska cihazdan gelen numarayi dogrulayamayiz. */
+  function ezmeUyarisi() {
+    const ref = guncellenenRefAl();
+    if (!ref) return '';
+    const kayit = kayitlarimOku().find((k) => refKoku(k.ref) === refKoku(ref));
+    if (!kayit) return '';
+    const f = app.state.fields || {};
+    const simdi = [f.studentName, f.studentSurname].filter(Boolean).join(' ').trim().toLocaleUpperCase('tr');
+    const eski = [kayit.ad, kayit.soyad].filter(Boolean).join(' ').trim().toLocaleUpperCase('tr');
+    if (!simdi || !eski || simdi === eski) return '';
+    return metin('fixMismatchConfirm', {
+      ref: kayit.ref,
+      eski: [kayit.ad, kayit.soyad].filter(Boolean).join(' ').trim(),
+      yeni: [f.studentName, f.studentSurname].filter(Boolean).join(' ').trim()
+    });
   }
 
   function duzeltmeyeBasla(ref) {
@@ -1803,6 +1837,9 @@
       if (!window.confirm(app.t('draftDeleteConfirm'))) return;
       storageRemove(DRAFT_KEY);
       temizDurum(false);
+      /* Taslagi silmek "bu isi birak" demektir; yarim kalan bir duzeltmenin
+         numarasi da birakilir, yoksa sonraki cocuk o kaydin USTUNE yazilirdi. */
+      guncellemeNumarasiniTemizle();
       renderKarsilama();
       app.showToast(app.t('draftDeleted'));
     });
@@ -1835,6 +1872,7 @@
     document.getElementById('siblingNoLink').addEventListener('click', () => {
       veliProfiliSil();
       temizDurum(false);
+      guncellemeNumarasiniTemizle();   // farkli veli = her zaman yeni kayit
       renderKarsilama();
     });
     document.getElementById('backButton').addEventListener('click', () => app.goToStep(app.state.currentStep - 1));
