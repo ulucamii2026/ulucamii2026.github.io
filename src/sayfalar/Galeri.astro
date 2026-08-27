@@ -11,7 +11,7 @@ const liste = await galeri();
 const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar. Bir kareye dokunarak büyütebilir, ok tuşları veya kaydırma ile gezebilirsiniz.' : dil === 'en' ? 'Photos of the exterior and interior of the mosque. Tap an image to enlarge it, and browse with the arrow keys or by swiping.' : 'Photos de l’extérieur et de l’intérieur de la mosquée. Touchez une image pour l’agrandir, naviguez avec les flèches ou en glissant.';
 const enNotu = 'Photo captions are written in Turkish and French. An English version is not available.';
 ---
-<Base baslik={t('nav.galeri')} dil={dil} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii’nin iç ve dış mekânlarından fotoğraflar.' : dil === 'en' ? 'Photographs of the interior and exterior of the Ulu Mosque of Marche-en-Famenne.' : 'Photos de l’intérieur et de l’extérieur de la Mosquée Ulu Camii de Marche-en-Famenne.'}>
+<Base baslik={t('nav.galeri')} dil={dil} kapak={liste[0]?.data.dosya} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii’nin iç ve dış mekânlarından fotoğraflar.' : dil === 'en' ? 'Photographs of the interior and exterior of the Ulu Mosque of Marche-en-Famenne.' : 'Photos de l’intérieur et de l’extérieur de la Mosquée Ulu Camii de Marche-en-Famenne.'}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.galeri')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
     {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}

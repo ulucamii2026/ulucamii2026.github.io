@@ -19,12 +19,18 @@ interface Props {
 }
 const dil: Dil = Astro.props.dil ?? dilBul(Astro.url);
 const t = ceviri(dil);
-const { baslik, aciklama = t('site.slogan'), kapak = '/media/galeri/cami-24.webp', noindex = false, dilHatirla = true } = Astro.props;
+/* Paylaşım görseli (WhatsApp/Facebook): sayfanın kendi görseli varsa o, yoksa camimizin
+   logolu kartı (public/media/og/, 1200x630, üç dil). 27 Ağustos 2026'ya kadar varsayılan
+   ana sayfanın cami fotoğrafıydı; bu yüzden yönetim kurulu gibi ilgisiz sayfaların
+   önizlemesinde de o fotoğraf çıkıyordu. */
+const ogKart = `/media/og/ulu-camii-${dil}.png`;
+const { baslik, aciklama = t('site.slogan'), kapak = ogKart, noindex = false, dilHatirla = true } = Astro.props;
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
 /** Arama motoru açıklaması: 155 karakteri aşarsa kelime sınırında kısalt */
 const metaAciklama = aciklama.length <= 155 ? aciklama : aciklama.slice(0, 152).replace(/\s+\S*$/, '') + '…';
 const kanonik = new URL(Astro.url.pathname, Astro.site);
 const kapakUrl = new URL(kapak, Astro.site);
+const ogKartMi = kapak === ogKart;
 const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au contenu', en: 'Skip to content' };
 ---
 <!doctype html>
@@ -48,9 +54,18 @@ const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au 
     <meta property="og:title" content={tamBaslik} />
     <meta property="og:description" content={metaAciklama} />
     <meta property="og:image" content={kapakUrl} />
+    {ogKartMi && (
+      <Fragment>
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={t('site.ad')} />
+      </Fragment>
+    )}
     <meta property="og:url" content={kanonik} />
     <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : dil === 'en' ? 'en_GB' : 'fr_BE'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={kapakUrl} />
     <noscript><style>.reveal, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
     <slot name="head" />
     <script is:inline>

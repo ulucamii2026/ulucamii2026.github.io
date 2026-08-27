@@ -43,7 +43,7 @@ const m = dil === 'tr' ? {
   hepsi: 'Toutes', dis: 'Lien ↗',
 };
 ---
-<Base baslik={t('nav.afisler')} dil={dil} aciklama={m.altBaslik}>
+<Base baslik={t('nav.afisler')} kapak={liste[0]?.data.gorsel} dil={dil} aciklama={m.altBaslik}>
   <SayfaBasligi etiket={t('nav.afisler')} baslik={t('nav.afisler')} altBaslik={m.altBaslik} />
 
   <div class="kapsayici py-10">

@@ -61,7 +61,7 @@ const m = dil === 'tr' ? {
 };
 const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(--vurgu-2)' : tur === 'ramazan' ? 'bg-(--vurgu)/12 text-(--vurgu)' : tur === 'bayram' ? 'bg-[color-mix(in_oklab,var(--color-ochre)_18%,transparent)] text-(--metin)' : '');
 ---
-<Base baslik={m.baslik} dil={dil} aciklama={m.alt} kapak="/media/galeri/cami-24.webp">
+<Base baslik={m.baslik} dil={dil} aciklama={m.alt}>
   <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} />
 
   <section class="kapsayici py-10 sm:py-12 grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-12">
