@@ -3,13 +3,23 @@
  * Yönetim Kurulu — dernek organları (veri: src/content/ayarlar/kurul.yaml, CMS'ten düzenlenebilir).
  *
  * KURGU (26 Ağustos 2026): önce herkes 48 px'lik yuvarlak avatarlarla iki sütunlu bir
- * listede duruyordu; sekiz kişiden beşinin fotoğrafı yoktu, olanlar da 3-12 KB'lik düşük
- * çözünürlüklü dosyalardı. Sayfa "kim bu insanlar" sorusuna cevap vermiyordu.
+ * listede duruyordu; sekiz kişiden beşinin fotoğrafı yoktu. Sayfa "kim bu insanlar"
+ * sorusuna cevap vermiyordu. O yüzden portreler öne çıkarıldı.
  *
- * Şimdi: yönetim kurulu üyeleri 4:5 portrelerle, ızgarada büyük kartlar hâlinde duruyor.
- * Fotoğrafı olmayan üye için aynı orana oturan bir monogram levhası üretiliyor, böylece
- * ızgara ritmi bozulmuyor. Din görevlisi bu sayfada YER ALMIYOR (Rıdvan'ın 26 Ağustos
- * talebi) — kurul.yaml'daki dinGorevlisi verisi başka sayfalarda kullanılmaya devam ediyor.
+ * TASARIM REVİZYONU (27 Ağustos 2026): portreler 4:5 oranında ve 455 px yüksekliğinde
+ * duruyordu. Sekiz fotoğraf sekiz ayrı makineden geldiği için — stüdyo çekimi, pasaport
+ * fotoğrafı, dantel perde önünde selfie, montlu enstantane — bu ölçek her farkı
+ * büyütüyordu; ızgara bir kurul değil, uyumsuz bir kolaj gibi okunuyordu. Üç değişiklik:
+ *   1) kare kadraj — gereksiz arka planı ve gövdeyi kesiyor, yüzü aynı boyda bırakıyor;
+ *   2) sıcak nötr monokrom — ışık, renk sıcaklığı ve arka plan farklarını tek tona
+ *      indiriyor (denendi: saf s/b soğuk, sepya "hatıra fotoğrafı" gibi duruyordu);
+ *   3) kartlar .kart-kagit yerine .kart — sayfa zemini de kâğıt olduğu için kartlar
+ *      yalnız saç teli çizgiyle ayrılıyordu, artık krem zeminle levha gibi duruyorlar.
+ * Denetim kurulu iki kişi: üç sütunlu ızgarada sağda boş sütun kalıyordu, iki kart
+ * yönetim kurulununkiyle aynı genişlikte tutulup ortalandı.
+ *
+ * Din görevlisi bu sayfada YER ALMIYOR (Rıdvan'ın 26 Ağustos talebi) — kurul.yaml'daki
+ * dinGorevlisi verisi başka sayfalarda kullanılmaya devam ediyor.
  */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
@@ -17,16 +27,16 @@ import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { kurulBilgisi, siteAyarlari } from '../lib/icerik';
 interface Props { dil: Dil }
-/* Portreler mobilde ~350px genişlikte görünüyor; 800px'lik dosyayı indirmek gereksiz.
-   400px'lik eş varsa srcset'e giriyor. Dosya yoksa öznitelik hiç yazılmıyor — eksik
-   bir kaynak yüzünden görsel kırılmasın. */
+/* Portre kutusu mobilde iki sütunda ~165px, tablette ~250px, masaüstünde 370px'te
+   sabitleniyor (kapsayıcı 72rem'de duruyor). 400px'lik eş varsa srcset'e giriyor;
+   dosya yoksa öznitelik hiç yazılmıyor — eksik bir kaynak yüzünden görsel kırılmasın. */
 import { existsSync } from 'node:fs';
 const srcSet = (f?: string) => {
   if (!f) return undefined;
   const k = f.replace(/\.webp$/, '-kucuk.webp');
   return existsSync('public' + k) ? `${k} 400w, ${f} 800w` : undefined;
 };
-const OLCU = '(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw';
+const OLCU = '(min-width: 1280px) 370px, (min-width: 640px) 30vw, 45vw';
 
 const { dil } = Astro.props; const t = ceviri(dil);
 const k = await kurulBilgisi();
@@ -39,7 +49,7 @@ const m = dil === 'tr' ? {
   kurulBaslik: 'Yönetim Kurulu',
   denetimBaslik: 'Denetim Kurulu',
   kunyeBaslik: 'Dernek künyesi',
-  adres: 'Adres', kbo: 'KBO/BCE numarası', hukuk: 'Hukukî form', donemEtiket: 'Görev dönemi',
+  adres: 'Adres', kbo: 'KBO/BCE numarası', hukuk: 'Hukukî form',
   iletisimBaslik: 'Yönetime ulaşın',
   iletisimAlt: 'Dernek işleri (üyelik, aidat, bağış makbuzu, salon/etkinlik) için:',
   uyeCagri: 'Siz de derneğe üye olarak genel kurulda söz sahibi olabilirsiniz.',
@@ -60,7 +70,7 @@ const m = dil === 'tr' ? {
   kurulBaslik: 'Board of Directors',
   denetimBaslik: 'Audit Committee',
   kunyeBaslik: 'Association details',
-  adres: 'Address', kbo: 'KBO/BCE number', hukuk: 'Legal form', donemEtiket: 'Term of office',
+  adres: 'Address', kbo: 'KBO/BCE number', hukuk: 'Legal form',
   iletisimBaslik: 'Contact the board',
   iletisimAlt: 'For association matters (membership, dues, donation receipts, events):',
   uyeCagri: 'You too can have a voice at the general assembly by becoming a member.',
@@ -81,7 +91,7 @@ const m = dil === 'tr' ? {
   kurulBaslik: "Conseil d'administration",
   denetimBaslik: 'Comité de contrôle',
   kunyeBaslik: "Identité de l'association",
-  adres: 'Adresse', kbo: 'Numéro KBO/BCE', hukuk: 'Forme juridique', donemEtiket: 'Mandat',
+  adres: 'Adresse', kbo: 'Numéro KBO/BCE', hukuk: 'Forme juridique',
   iletisimBaslik: 'Contacter le conseil',
   iletisimAlt: "Pour les affaires de l'association (adhésion, cotisation, reçus de dons, activités) :",
   uyeCagri: "Vous aussi, devenez membre et prenez part aux décisions de l'assemblée générale.",
@@ -104,21 +114,21 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
   <SayfaBasligi etiket={m.etiket} baslik={t('nav.yonetim')} altBaslik={m.alt} />
 
   <div class="kapsayici py-10 flex flex-col gap-12">
-    <p class="max-w-[64ch] text-(--metin-2)">{m.giris}</p>
+    <p class="giris">{m.giris}</p>
 
     <section aria-labelledby="yk-baslik">
       <h2 id="yk-baslik" class="etiket etiket-vurgu text-base cetvel pt-4 mb-5">{m.kurulBaslik}</h2>
-      <ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      <ol class="kurul-izgara" role="list">
         {k.uyeler.map((u, i) => (
-          <li class:list={['uye-kart kart-kagit overflow-hidden flex flex-col', i === 0 && 'baskan']}>
+          <li class:list={['uye-kart kart', i === 0 && 'baskan']}>
             <div class="portre">
               {u.foto
                 ? <img src={u.foto} srcset={srcSet(u.foto)} sizes={OLCU} alt="" width="800" height="1000" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
                 : <span class="monogram" aria-hidden="true">{basHarf(u.ad)}</span>}
             </div>
-            <div class="px-4 py-3.5">
-              <p class="font-serif text-lg leading-tight">{u.ad}</p>
-              <p class:list={['etiket normal-case tracking-normal mt-1', i === 0 && 'etiket-vurgu']}>{u.gorev[dil]}</p>
+            <div class="uye-kunye">
+              <p class="uye-ad">{u.ad}</p>
+              <p class:list={['uye-gorev', i === 0 && 'birincil']}>{u.gorev[dil]}</p>
             </div>
           </li>
         ))}
@@ -126,21 +136,21 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
     </section>
 
     {/* Denetim kurulu da yönetim kuruluyla aynı boyutta portre kartlarında duruyor
-        (Rıdvan'ın isteği). Aynı ızgara ölçüsü kullanıldığı için kartlar üstteki bölümle
-        hizalı çıkıyor; iki kişi olduğu için son sütun boş kalıyor. */}
+        (Rıdvan'ın isteği). Kart genişliği üstteki ızgaranın sütun genişliğine eşit
+        tutuluyor, iki kart da ortalanıyor — sağda boş sütun kalmıyor. */}
     <section aria-labelledby="dk-baslik">
       <h2 id="dk-baslik" class="etiket etiket-vurgu text-base cetvel pt-4 mb-5">{m.denetimBaslik}</h2>
-      <ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      <ol class="kurul-izgara ikili" role="list">
         {k.denetim.map((u) => (
-          <li class="uye-kart kart-kagit overflow-hidden flex flex-col">
+          <li class="uye-kart kart">
             <div class="portre">
               {u.foto
                 ? <img src={u.foto} srcset={srcSet(u.foto)} sizes={OLCU} alt="" width="800" height="1000" loading="lazy" decoding="async" />
                 : <span class="monogram denetim" aria-hidden="true">{basHarf(u.ad)}</span>}
             </div>
-            <div class="px-4 py-3.5">
-              <p class="font-serif text-lg leading-tight">{u.ad}</p>
-              <p class="etiket normal-case tracking-normal mt-1">{u.gorev[dil]}</p>
+            <div class="uye-kunye">
+              <p class="uye-ad">{u.ad}</p>
+              <p class="uye-gorev">{u.gorev[dil]}</p>
             </div>
           </li>
         ))}
@@ -157,7 +167,7 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
       <h2 id="sukran-baslik" class="etiket etiket-vurgu text-base cetvel pt-4 mb-5">{m.sukranBaslik}</h2>
       <div class="sukran kart p-6 sm:p-8">
         <p class="sukran-giris">{m.sukranGiris}</p>
-        <div class="mt-5 grid gap-4 max-w-[68ch] text-(--metin-2)">
+        <div class="sukran-metin">
           <p>{m.sukran1}</p>
           <p>{m.sukran2}</p>
           <p>{m.sukran3}</p>
@@ -171,7 +181,9 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
       </div>
     </section>
 
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    {/* items-start olmasa künye kartı yandaki sütunun boyuna geriliyor ve altında
+        130 px'lik boş bir alan kalıyordu. */}
+    <div class="grid gap-6 items-start lg:grid-cols-[minmax(0,1fr)_340px]">
       <section class="kart-kagit p-6" aria-labelledby="kunye-baslik">
         <h2 id="kunye-baslik" class="etiket etiket-vurgu mb-4">{m.kunyeBaslik}</h2>
         <dl class="grid gap-3 sm:grid-cols-2 text-sm">
@@ -202,24 +214,75 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
 </Base>
 
 <style>
-  /* Portreler tek orana (4:5) oturur — fotoğraflar farklı makinelerden geldiği için
-     ızgarayı hizada tutan şey bu oran. Hafif sepya, setteki ton farklarını yumuşatır. */
+  /* Sayfa girişi bir standfirst: gövde metninden bir tık büyük ve tam kontrastlı,
+     çünkü sayfanın "dernek nasıl işliyor" cevabının tamamı bu paragrafta. */
+  .giris {
+    max-width: 62ch;
+    font-size: clamp(1.02rem, 0.98rem + 0.28vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--metin);
+  }
+
+  /* Kurul ızgarası. Mobilde iki sütun: sekiz portre tek sütunda dizilince sayfa
+     390 px'lik ekranda 8259 px'e uzuyordu, iki sütunda 5114 px'e indi. --bosluk
+     değişken, çünkü denetim kurulunun sütun genişliği ondan hesaplanıyor. */
+  .kurul-izgara {
+    --bosluk: 0.85rem;
+    display: grid;
+    gap: var(--bosluk);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (min-width: 640px) {
+    .kurul-izgara {
+      --bosluk: 1.25rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    /* İki kart, üstteki ızgaranın sütun genişliğinde ve ortalanmış. */
+    .kurul-izgara.ikili {
+      grid-template-columns: repeat(2, calc((100% - 2 * var(--bosluk)) / 3));
+      justify-content: center;
+    }
+  }
+
+  .uye-kart {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* KARE KADRAJ: kaynak dosyalar 4:5. Kutu 1:1 olunca cover, alt kenardan yaklaşık
+     %20 kırpıyor — yüz aynı boyda kalırken dantel perde, mont ve gömlek kadraj dışına
+     çıkıyor. Hiza 'top': sekiz portrenin birkaçında baş zaten kaynak dosyanın üst
+     kenarına yakın, %8 ve %22 denendi, ikisinde de Volkan Kutlu'nun saçının üstü
+     kesiliyordu. Üstten hiç kırpmamak tek güvenli seçenek. */
   .portre {
     position: relative;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1;
     background: var(--zemin-3);
     overflow: hidden;
+    border-bottom: 1px solid var(--cizgi);
   }
   .portre img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Dosyalar zaten 4:5 kırpıldı; kutu da 4:5. Yüzde konumlandırma yuvarlama
-       farklarında başın üstünü kırpabiliyordu — ortalamak yeterli. */
-    object-position: center;
-    filter: sepia(0.05) saturate(1.02);
+    object-position: center top;
+    /* SICAK NÖTR MONOKROM: sekiz fotoğrafın ışığını, renk sıcaklığını ve arka planını
+       tek tona indirir. Saf siyah-beyaz denendi, klinik duruyordu; sepya oranı 0.4'e
+       çıkınca "hatıra fotoğrafı" tonuna kaçıyordu. 0.22 sıcak ama canlı kalıyor. */
+    --portre-parlaklik: 1.02;
+    --portre-kontrast: 1.06;
+    filter: grayscale(1) contrast(var(--portre-kontrast)) brightness(var(--portre-parlaklik))
+            sepia(0.22) saturate(1.2) hue-rotate(-8deg);
   }
+  /* Koyu temada fotoğrafların açık arka planları ceviz zeminde parlıyor; bir tık
+     kısılınca levhaya monte edilmiş baskı gibi duruyorlar. İki seçici de gerekli:
+     biri işletim sistemi tercihi, öteki sitedeki tema düğmesi. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .portre img { --portre-parlaklik: 0.9; --portre-kontrast: 1.04; }
+  }
+  :root[data-theme="dark"] .portre img { --portre-parlaklik: 0.9; --portre-kontrast: 1.04; }
 
   /* Fotoğrafı olmayan üye: boş kutu bırakmak yerine aynı orana oturan monogram levhası. */
   .monogram {
@@ -228,13 +291,36 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
     display: grid;
     place-items: center;
     font-family: var(--font-serif, Lora, Georgia, serif);
-    font-size: clamp(2.6rem, 7vw, 3.6rem);
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
     font-weight: 600;
     letter-spacing: 0.02em;
     color: color-mix(in oklab, var(--vurgu, #b5452b) 70%, var(--metin-2));
     background:
       radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--vurgu, #b5452b) 11%, transparent), transparent 62%),
       var(--zemin-3);
+  }
+
+  /* Ad ve görev: portrenin altında, levhanın künye satırı gibi. */
+  .uye-kunye { padding: 0.7rem 0.8rem 0.85rem; }
+  .uye-ad {
+    font-family: var(--font-serif, Lora, Georgia, serif);
+    font-size: clamp(0.95rem, 0.88rem + 0.34vw, 1.15rem);
+    line-height: 1.28;
+    color: var(--metin);
+    text-wrap: balance;
+  }
+  .uye-gorev {
+    margin-top: 0.28rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    color: var(--metin-2);
+  }
+  .uye-gorev.birincil { color: var(--vurgu); }
+  @media (min-width: 640px) {
+    .uye-kunye { padding: 0.9rem 1rem 1rem; }
+    .uye-gorev { font-size: 0.75rem; margin-top: 0.35rem; }
   }
 
   /* Denetim kurulu levhaları İznik mavisi tonunda: aynı biçim, farklı organ. */
@@ -261,6 +347,27 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
     text-wrap: balance;
   }
 
+  /* Panel kapsayıcı genişliğinde duruyor ama metin 68ch'te bitiyordu; masaüstünde
+     sağ yarısı boş kalıyordu. Geniş ekranda üç paragraf iki sütuna akıyor, aradaki
+     saç teli çizgi sayfanın basılı diline uyuyor. Dar ekranda tek sütun. */
+  .sukran-metin {
+    margin-top: 1.4rem;
+    max-width: 68ch;
+    color: var(--metin-2);
+  }
+  .sukran-metin p { margin: 0 0 1rem; }
+  .sukran-metin p:last-child { margin-bottom: 0; }
+  @media (min-width: 1024px) {
+    .sukran-metin {
+      max-width: none;
+      columns: 2;
+      column-gap: 3rem;
+      column-rule: 1px solid var(--cizgi);
+      orphans: 2;
+      widows: 2;
+    }
+  }
+
   /* Hadis, metnin altında bir mühür gibi durur: ince çizgiyle ayrılır, ortalanır. */
   .hadis { margin-top: 2.25rem; padding-top: 1.5rem; text-align: center; }
   .hadis .arabic {
@@ -277,6 +384,23 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
     color: var(--metin);
   }
 
-  /* Başkanın kartı ızgarada aynı boyutta kalır ama çerçevesiyle öne çıkar. */
-  .uye-kart.baskan { border-color: color-mix(in oklab, var(--vurgu, #b5452b) 45%, var(--cizgi)); }
+  /* Başkanın kartı ızgarada aynı boyutta kalır; sırasını çerçevesi, görev satırının
+     rengi ve üst kenardaki sekme gösterir. Sekme sitedeki âyet kutusunun aynısı —
+     vurgu için sayfaya yabancı bir öge katmaya gerek yok. */
+  .uye-kart.baskan {
+    position: relative;
+    border-color: color-mix(in oklab, var(--vurgu, #b5452b) 45%, var(--cizgi));
+  }
+  .uye-kart.baskan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 3px;
+    background: var(--vurgu);
+    border-radius: 0 0 3px 3px;
+    z-index: 1;
+  }
 </style>
