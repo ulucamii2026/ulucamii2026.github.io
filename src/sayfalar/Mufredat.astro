@@ -92,6 +92,10 @@ const m = dil === 'tr' ? {
   .mufredat :global(p) { margin: 0.5rem 0; color: var(--metin-2); max-width: 70ch; }
   .mufredat :global(.tablo-kaydir) { margin: 0.6rem 0 1.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--kagit, #fdfbf7); }
   .mufredat :global(table) { font-size: 0.9rem; min-width: 100%; }
+  /* Dar ekranda tablo sıkışıp her hücre üç satıra sarıyordu (satır 80 px). Asgari
+     genişlik: tablo kendi içinde kayar, satırlar tek satır kalır. */
+  .mufredat :global(.konu-tablosu) { min-width: 640px; }
+  .mufredat :global(.yillik-plan) { min-width: 760px; }
   .mufredat :global(th) { position: sticky; top: 0; background: var(--zemin-2); z-index: 1; white-space: nowrap; }
   .mufredat :global(th), .mufredat :global(td) { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--cizgi); }
   .mufredat :global(.bilgi-tablosu td:first-child) { font-weight: 600; white-space: nowrap; }
