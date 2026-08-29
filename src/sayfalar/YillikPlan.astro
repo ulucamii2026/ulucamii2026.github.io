@@ -75,6 +75,7 @@ const m = dil === 'tr' ? {
   hafta: (n: number) => `Hafta ${n}`, derssiz: 'Ders yapılmayacak',
   bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
   kaynakEt: 'Kaynak', mufredat: 'Müfredat sayfası', pdf: 'PDF indir (A4)',
+  kitapNot: 'Ders kitapları velilerce temin edilir', kitapBag: 'temin bilgileri', kitapCapa: '#ders-kitaplari',
 } : dil === 'en' ? {
   baslik: 'Day-by-Day Lesson Plan 2026-2027',
   alt: `${dersGunleri.length} teaching days, ${toplamDers} lessons. Topic, learning outcome, summary and suggested activity for every lesson.`,
@@ -88,6 +89,7 @@ const m = dil === 'tr' ? {
   hafta: (n: number) => `Week ${n}`, derssiz: 'No lessons',
   bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
   kaynakEt: 'Kaynak', mufredat: 'Curriculum page', pdf: 'Download PDF (A4)',
+  kitapNot: 'Textbooks are obtained by the parents', kitapBag: 'how to obtain', kitapCapa: '#manuels',
 } : {
   baslik: 'Plan annuel des cours 2026-2027, jour par jour',
   alt: `${dersGunleri.length} jours de cours, ${toplamDers} leçons. Sujet, acquis, résumé et activité proposée pour chaque leçon.`,
@@ -101,6 +103,7 @@ const m = dil === 'tr' ? {
   hafta: (n: number) => `Semaine ${n}`, derssiz: 'Pas de cours',
   bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
   kaynakEt: 'Kaynak', mufredat: 'Page du programme', pdf: 'Télécharger le PDF (A4)',
+  kitapNot: 'Les manuels sont à la charge des parents', kitapBag: 'où se les procurer', kitapCapa: '#manuels',
 };
 
 const BLOK: [keyof typeof m.bloklar, string][] = [
@@ -234,6 +237,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
       <a href={yol(dil, 'mufredat')} class="dugme dugme-ikincil">{m.mufredat}</a>
       <a href={PDF} class="dugme dugme-ikincil" download>{m.pdf}</a>
     </p>
+    <p class="kitap-not">{m.kitapNot} — <a href={yol(dil, 'kurankursu') + m.kitapCapa}>{m.kitapBag}</a></p>
   </div>
 </Base>
 
@@ -326,6 +330,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   .plan[data-f='ahlak'] .ders:not([data-k='ahlak']), .plan[data-f='ahlak'] .gun:not([data-kk~='ahlak']), .plan[data-f='ahlak'] .ay-bolum:not([data-kk~='ahlak']) { display: none; }
 
   .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
+  .kitap-not { margin: 0.9rem 0 0; font-size: 0.85rem; color: var(--metin-2); }
 
   @media (max-width: 640px) {
     .ders > summary { grid-template-columns: 5.25rem minmax(0, 1fr); }

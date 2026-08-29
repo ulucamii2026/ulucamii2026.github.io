@@ -41,7 +41,8 @@
           'Öğrencinin uyku ve dinlenme saatlerine dikkat etmek,',
           'Kursun düzenleyeceği aile eğitim seminerlerine katılmak,',
           'Öğrencinin, kurs kurallarına uyması için gerekli önlemleri almak,',
-          'Öğrencinin ruhsal ve fiziksel durumundaki değişmeler hakkında kursa zamanında bilgi vermek.'
+          'Öğrencinin ruhsal ve fiziksel durumundaki değişmeler hakkında kursa zamanında bilgi vermek,',
+          'Kursun ücretsiz olduğunu; ders kitaplarının (Camiye Gidiyorum 1–2, Temel Dinî Bilgiler) ve defter, kalem gibi ders materyallerinin temininin velinin sorumluluğunda olduğunu kabul etmek.'
         ]
       },
       classroom: {
@@ -96,7 +97,8 @@
           'Veiller aux heures de sommeil et de repos de l’élève ;',
           'Participer aux séminaires de formation familiale organisés par le cours ;',
           'Prendre les mesures nécessaires pour que l’élève respecte les règles du cours ;',
-          'Informer le cours en temps utile de tout changement dans l’état psychologique ou physique de l’élève.'
+          'Informer le cours en temps utile de tout changement dans l’état psychologique ou physique de l’élève ;',
+          'Reconnaître que le cours est gratuit et que l’achat des manuels (Camiye Gidiyorum 1–2, Temel Dinî Bilgiler) ainsi que des fournitures scolaires (cahier, stylo, etc.) est à la charge du parent ou représentant légal.'
         ]
       },
       classroom: {
@@ -151,7 +153,8 @@
           'To pay attention to the student’s sleep and rest hours;',
           'To attend the family education seminars organised by the course;',
           'To take the necessary measures so that the student observes the course rules;',
-          'To inform the course in good time of any change in the student’s psychological or physical condition.'
+          'To inform the course in good time of any change in the student’s psychological or physical condition;',
+          'To acknowledge that the course is free of charge and that obtaining the textbooks (Camiye Gidiyorum 1–2, Temel Dinî Bilgiler) and the class materials such as a notebook and a pen is the responsibility of the parent or legal guardian.'
         ]
       },
       classroom: {

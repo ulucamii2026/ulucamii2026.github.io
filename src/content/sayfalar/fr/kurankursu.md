@@ -51,12 +51,38 @@ Notre enseignement couvre cinq domaines :
 - **Biographie du Prophète (sira)** — la vie du Prophète Muhammad (paix sur lui), de sa naissance à sa mission prophétique, présentée dans l’ordre chronologique.
 - **Morale (akhlaq)** — les bonnes paroles et le bon comportement, l’amour de la famille et de la parenté, la fraternité et le partage.
 
-Les cours s’appuient sur les ouvrages suivants :
-
-- *Camiye Gidiyorum 1* et *Camiye Gidiyorum 2* (édition DİTİB)
-- *Temel Dini Bilgiler* (Connaissances religieuses fondamentales) – Seyfettin Yazıcı (éditions de la Diyanet)
-
 Pendant le Ramadan et la veille de l’Aïd al-Adha, le programme est enrichi de contenus spécifiques consacrés au jeûne, à la Nuit du Destin et au rite du sacrifice.
+
+<h2 id="manuels">Manuels et fournitures</h2>
+
+Trois manuels sont utilisés en classe ; le plan annuel précise, pour chaque leçon, l’ouvrage et les pages correspondantes :
+
+- **Camiye Gidiyorum 1** — éditions DİTİB, groupe des 7–9 ans (ISBN 978-3-946689-10-2)
+- **Camiye Gidiyorum 2** — éditions DİTİB, groupe des 10–12 ans (ISBN 978-3-946689-34-8)
+- **Temel Dinî Bilgiler** — Seyfettin Yazıcı, éditions de la Présidence des Affaires religieuses (Diyanet)
+
+**Les cours sont gratuits ; aucune cotisation n’est demandée. L’achat des manuels et des fournitures scolaires (cahier, stylo, etc.) est à la charge des parents.** Nous vous prions de faire en sorte que votre enfant dispose de ses manuels dès le premier jour de cours.
+
+**Où se les procurer ?**
+
+- **Version imprimée :** [ZSU-Shop](https://zsu-shop.de), le distributeur officiel des publications de la DİTİB, expédie vers la Belgique (11,50 € par ouvrage en août 2026, frais de port en sus). Les manuels se trouvent également dans les librairies turques d’Allemagne et d’Autriche.
+- **Lecture en ligne gratuite :** DİTİB Akademi met les deux manuels intégralement à disposition, gratuitement : [Camiye Gidiyorum 1](https://www.ditib-akademie.de/cg1/), [Camiye Gidiyorum 2](https://www.ditib-akademie.de/cg2/). L’[application Android Camiye Gidiyorum](https://play.google.com/store/apps/details?id=com.ditib.camiyegidiyorum), gratuite elle aussi, propose le même contenu.
+- **Temel Dinî Bilgiler :** l’ouvrage est proposé en [livre numérique gratuit](https://dijital.diyanet.gov.tr/e-kitap/temel-dini-bilgiler/seyfettin-yazici/ilmihal-fikih/4218) dans la bibliothèque numérique de la Présidence des Affaires religieuses.
+
+### En venant au cours
+
+Nos élèves viennent à chaque leçon **avec les manuels prévus au programme, un cahier et de quoi écrire**. Préparation pour le premier jour de cours :
+
+- Le manuel correspondant à la leçon du jour dans le plan annuel (Camiye Gidiyorum 1 / 2 ou Temel Dinî Bilgiler)
+- Un cahier ligné, un crayon, une gomme, un taille-crayon ; des crayons de couleur pour les plus jeunes
+- Pour les cours de Coran, le **fascicule Elif-Bâ** et, pour les élèves qui lisent déjà, un **Coran**. Il est aussi possible de travailler avec le [livret Elif-Bâ gratuit](https://egitimhizmetleri.diyanet.gov.tr/Documents/Elif-Ba.pdf) de la Présidence des Affaires religieuses ; pour vous procurer un Elif-Bâ ou un Coran imprimé, adressez-vous à notre imam.
+- Le nom et le prénom de l’élève sont inscrits sur les manuels et les cahiers.
+- Une gourde d’eau et une petite collation pour la pause.
+- Arriver au plus tard 10 minutes avant le cours ; reprendre l’élève à l’heure à la fin du cours.
+- Il est recommandé de venir en état d’ablution aux cours de Coran ; une tenue propre, confortable et conforme aux convenances de la mosquée.
+- Prévenir notre imam à l’avance si l’élève ne peut pas assister au cours.
+
+Nous étudions la possibilité d’une commande groupée ; les parents en seront informés le cas échéant.
 
 ## Inscription
 

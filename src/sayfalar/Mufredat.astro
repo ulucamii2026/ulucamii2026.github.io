@@ -24,6 +24,7 @@ const m = dil === 'tr' ? {
   alt: 'Kur’an-ı Kerim, İtikat, İbadet, Siyer ve Ahlak derslerinin konuları, kaynak kitapları, kazanımları ve gün gün yıllık planı.',
   aciklama: 'Ulu Camii Kur’an Kursu 2026-2027 müfredatı ve yıllık ders planı: 87 ders günü, 261 ders saati, beş ders alanı.',
   pdf: 'PDF indir (A4, 41 sayfa)', yazdir: 'Yazdırılabilir sürüm', kayit: 'Kayıt sayfası',
+  kitapNot: 'Ders kitapları velilerce temin edilir', kitapBag: 'temin bilgileri', kitapCapa: '#ders-kitaplari',
   not: '',
   ozet: [
     ['Ders başlangıcı', '5 Eylül 2026 Cumartesi'], ['Ders bitişi', '6 Haziran 2027 Pazar'],
@@ -36,6 +37,7 @@ const m = dil === 'tr' ? {
   alt: 'Topics, textbooks, learning outcomes and the day-by-day yearly plan for Qur’an, Creed, Worship, Sīrah and Ethics.',
   aciklama: 'Ulu Camii Qur’an School 2026-2027 curriculum and yearly lesson plan: 87 teaching days, 261 lessons, five subjects.',
   pdf: 'Download PDF (A4, 41 pages)', yazdir: 'Printable version', kayit: 'Registration page',
+  kitapNot: 'Textbooks are obtained by the parents', kitapBag: 'how to obtain', kitapCapa: '#manuels',
   not: 'The full document is in Turkish, the language of instruction. The key facts are summarised below; for questions in English or French, contact the imam.',
   ozet: [
     ['Lessons start', 'Saturday 5 September 2026'], ['Lessons end', 'Sunday 6 June 2027'],
@@ -48,6 +50,7 @@ const m = dil === 'tr' ? {
   alt: 'Sujets, manuels, acquis d’apprentissage et plan annuel jour par jour pour le Coran, la croyance, le culte, la Sīra et la morale.',
   aciklama: 'École coranique Ulu Camii, programme et plan annuel 2026-2027 : 87 jours de cours, 261 leçons, cinq matières.',
   pdf: 'Télécharger le PDF (A4, 41 pages)', yazdir: 'Version imprimable', kayit: 'Page d’inscription',
+  kitapNot: 'Les manuels sont à la charge des parents', kitapBag: 'où se les procurer', kitapCapa: '#manuels',
   not: 'Le document complet est en turc, langue d’enseignement. L’essentiel est résumé ci-dessous ; pour toute question en français, contactez l’imam.',
   ozet: [
     ['Début des cours', 'samedi 5 septembre 2026'], ['Fin des cours', 'dimanche 6 juin 2027'],
@@ -76,6 +79,7 @@ const m = dil === 'tr' ? {
       <dl class="kart-kagit p-5 ozet">
         {m.ozet.map(([k, v]) => <div><dt class="etiket">{k}</dt><dd>{v}</dd></div>)}
       </dl>
+      <p class="kitap-not">{m.kitapNot} — <a href={yol(dil, 'kurankursu') + m.kitapCapa}>{m.kitapBag}</a></p>
       <a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil w-full justify-center">{m.kayit}</a>
     </aside>
   </div>
@@ -83,6 +87,7 @@ const m = dil === 'tr' ? {
 
 <style>
   .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+  .kitap-not { margin: 0; font-size: 0.85rem; color: var(--metin-2); }
   .ozet div { padding: 0.55rem 0; border-top: 1px solid var(--cizgi); }
   .ozet div:first-child { border-top: 0; padding-top: 0; }
   .ozet dd { margin: 0.15rem 0 0; }

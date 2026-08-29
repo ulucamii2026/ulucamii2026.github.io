@@ -51,12 +51,38 @@ Our lessons are organised around five main areas:
 - **The Life of the Prophet (Siyer)** — the life of the Prophet Muhammad (peace be upon him); his birth, childhood, youth and prophethood, covered in chronological order.
 - **Moral Education (Ahlak)** — topics such as kind speech and conduct, love of family and kin, brotherhood and sharing.
 
-The following source books are used in lessons:
-
-- *Camiye Gidiyorum 1* and *Camiye Gidiyorum 2* (DİTİB Publications)
-- *Temel Dini Bilgiler* – Seyfettin Yazıcı (Presidency of Religious Affairs Publications)
-
 During Ramadan and on the eve of Eid al-Adha, the curriculum is enriched with content specific to fasting, the Night of Power (Laylat al-Qadr) and the ritual of sacrifice.
+
+<h2 id="manuels">Textbooks and materials</h2>
+
+Three core books are taught in class; the yearly plan states the source book and the pages for every lesson:
+
+- **Camiye Gidiyorum 1** — DİTİB Publications, ages 7–9 (ISBN 978-3-946689-10-2)
+- **Camiye Gidiyorum 2** — DİTİB Publications, ages 10–12 (ISBN 978-3-946689-34-8)
+- **Temel Dinî Bilgiler** — Seyfettin Yazıcı, Presidency of Religious Affairs Publications
+
+**Our course is free of charge and no fees are collected. Obtaining the textbooks and the class materials — notebook, pen and the like — is the responsibility of the parents.** We kindly ask that students have their books by the first day of lessons.
+
+**Where to obtain them**
+
+- **Printed books:** [ZSU-Shop](https://zsu-shop.de), DİTİB’s official publications distributor, ships to Belgium (€11.50 per book as of August 2026, postage extra). The books are also sold in Turkish bookshops in Germany and Austria.
+- **Free online reading:** DİTİB Akademi offers both books in full, free of charge: [Camiye Gidiyorum 1](https://www.ditib-akademie.de/cg1/), [Camiye Gidiyorum 2](https://www.ditib-akademie.de/cg2/). The free [Camiye Gidiyorum Android app](https://play.google.com/store/apps/details?id=com.ditib.camiyegidiyorum) offers the same content.
+- **Temel Dinî Bilgiler:** available as a [free e-book](https://dijital.diyanet.gov.tr/e-kitap/temel-dini-bilgiler/seyfettin-yazici/ilmihal-fikih/4218) in the digital library of the Presidency of Religious Affairs.
+
+### Coming to class
+
+Our students come to every lesson **with the textbooks set out in the curriculum, a notebook and a pen**. Preparing for the first day of lessons:
+
+- The book for that lesson in the yearly plan (Camiye Gidiyorum 1 / 2 or Temel Dinî Bilgiler)
+- A lined notebook, a pencil, an eraser and a sharpener; coloured pencils for the youngest group
+- For Qur’an lessons, an **Elifbâ booklet** and, for students who have started reading, a **Qur’an**. The Presidency of Religious Affairs’ [free Elif-Bâ book](https://egitimhizmetleri.diyanet.gov.tr/Documents/Elif-Ba.pdf) can also be used; for a printed Elifbâ or Qur’an, please ask our imam.
+- The student’s first name and surname are written on the books and notebooks.
+- A water bottle and a small snack for the break.
+- Arrival at least 10 minutes before the lesson; collecting the student on time when the lesson ends.
+- Coming to Qur’an lessons in a state of ablution is recommended; clean, comfortable clothing in keeping with mosque etiquette.
+- If a student cannot attend, please let our imam know in advance.
+
+We are looking into a group purchase; parents will be informed of any developments.
 
 ## Registration
 

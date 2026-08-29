@@ -51,12 +51,38 @@ Derslerimiz beş ana alanda yürütülür:
 - **Siyer** — Hz. Muhammed’in (s.a.s.) hayatı; doğumu, çocukluğu, gençliği ve peygamberliği kronolojik sırayla işlenir.
 - **Ahlak** — güzel söz ve davranış, aile ve akrabalık sevgisi, kardeşlik ve paylaşma gibi konular.
 
-Derslerde şu kaynak kitaplar kullanılır:
-
-- *Camiye Gidiyorum 1* ve *Camiye Gidiyorum 2* (DİTİB Yayınları)
-- *Temel Dini Bilgiler* – Seyfettin Yazıcı (Diyanet İşleri Başkanlığı Yayınları)
-
 Ramazan ayında ve Kurban Bayramı arifesinde müfredat, oruç, Kadir Gecesi ve kurban ibadeti gibi konulara özel içeriklerle zenginleştirilir.
+
+<h2 id="ders-kitaplari">Ders kitapları ve materyaller</h2>
+
+Derslerde üç temel kitap okutulur; yıllık planda her dersin kaynağı ve sayfası belirtilmiştir:
+
+- **Camiye Gidiyorum 1** — DİTİB Yayınları, 7–9 yaş grubu (ISBN 978-3-946689-10-2)
+- **Camiye Gidiyorum 2** — DİTİB Yayınları, 10–12 yaş grubu (ISBN 978-3-946689-34-8)
+- **Temel Dinî Bilgiler** — Seyfettin Yazıcı, Diyanet İşleri Başkanlığı Yayınları
+
+**Kursumuz ücretsizdir; aidat alınmaz. Ders kitapları ile defter, kalem gibi ders materyallerinin temini velilerimizin sorumluluğundadır.** Öğrencilerimizin kitaplarını ilk ders gününe kadar edinmelerini rica ederiz.
+
+**Nereden temin edilir?**
+
+- **Basılı kitap:** DİTİB’in resmî yayın dağıtımcısı [ZSU-Shop](https://zsu-shop.de) Belçika’ya gönderim yapar (Ağustos 2026 itibarıyla kitap başına 11,50 €, kargo ayrıca). Kitaplar Almanya ve Avusturya’daki Türkçe kitabevlerinde de bulunur.
+- **Ücretsiz çevrim içi okuma:** DİTİB Akademi her iki kitabın tamamını ücretsiz sunar: [Camiye Gidiyorum 1](https://www.ditib-akademie.de/cg1/), [Camiye Gidiyorum 2](https://www.ditib-akademie.de/cg2/). Ücretsiz [Camiye Gidiyorum Android uygulaması](https://play.google.com/store/apps/details?id=com.ditib.camiyegidiyorum) da aynı içeriği sunar.
+- **Temel Dinî Bilgiler:** Diyanet İşleri Başkanlığı’nın dijital kütüphanesinde [ücretsiz e-kitap](https://dijital.diyanet.gov.tr/e-kitap/temel-dini-bilgiler/seyfettin-yazici/ilmihal-fikih/4218) olarak sunulur.
+
+### Derslere gelirken
+
+Öğrencilerimiz her derse **müfredatta belirtilen ders kitapları, defter ve kalemle** gelir. İlk ders günü için hazırlık:
+
+- Yıllık planda o derse ait kitap (Camiye Gidiyorum 1 / 2 veya Temel Dinî Bilgiler)
+- Çizgili defter, kurşun kalem, silgi, kalemtıraş; küçük yaş grubu için boya kalemleri
+- Kur’an-ı Kerim dersleri için **Elifbâ cüzü**, okumaya geçen öğrenciler için **Kur’an-ı Kerim**. Diyanet İşleri Başkanlığı’nın [ücretsiz Elif-Bâ kitabı](https://egitimhizmetleri.diyanet.gov.tr/Documents/Elif-Ba.pdf) ile de çalışılabilir; basılı Elifbâ ve Kur’an-ı Kerim temini için din görevlimize danışabilirsiniz.
+- Kitap ve defterlerin üzerine öğrencinin adı ve soyadı yazılır.
+- Ara için su matarası ve küçük bir atıştırmalık.
+- Derse en geç 10 dakika önce geliş; ders bitiminde öğrencinin zamanında teslim alınması.
+- Kur’an-ı Kerim derslerine abdestli gelmek tavsiye edilir; cami adabına uygun, temiz ve rahat giyim.
+- Öğrenci derse gelemeyecekse din görevlimize önceden haber verilmesi.
+
+Toplu temin imkânı araştırılmaktadır; gelişme olursa velilerimize duyurulacaktır.
 
 ## Kayıt
 

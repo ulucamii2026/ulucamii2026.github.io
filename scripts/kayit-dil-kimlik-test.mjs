@@ -102,8 +102,8 @@ const varlik = (yol) => readFileSync(new URL(yol, import.meta.url), 'utf8');
     const c = app.contract?.[d];
     if (!c) { yanlis('sozlesme eksik', d); continue; }
     const sayi = [c.student?.items?.length, c.guardian?.items?.length, c.classroom?.items?.length];
-    sayi.join(',') === '9,11,14'
-      ? ok(`sozlesme ${d}: 9 + 11 + 14 madde`)
+    sayi.join(',') === '9,12,14'
+      ? ok(`sozlesme ${d}: 9 + 12 + 14 madde`)
       : yanlis(`sozlesme ${d} madde sayisi tutmuyor`, sayi.join(', '));
     c.title && c.closing ? ok(`sozlesme ${d}: baslik + kapanis`) : yanlis(`sozlesme ${d} eksik alan`, 'title/closing');
   }

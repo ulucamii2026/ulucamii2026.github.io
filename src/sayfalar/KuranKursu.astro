@@ -9,11 +9,14 @@ const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const m = dil === 'tr'
   ? { mufredat: 'Müfredat ve yıllık ders planı', mufredatA: '2026-2027 dönemi: beş ders alanının konuları, kaynak kitapları ve gün gün yıllık plan.', mufredatPdf: 'PDF (A4)',
+      kitap: 'Ders kitapları', kitapA: 'Öğrenciler derslere müfredatta belirtilen kitaplar, defter ve kalemle gelir; kurs ücretsizdir.', kitapBag: 'Temin bilgileri', kitapCapa: '#ders-kitaplari',
       kayit: 'Online kayıt formu', kayitA: '2026-2027 dönemi kayıtları açıktır. Formu doldurduktan sonra din görevlimiz sizinle iletişime geçer.', portal: 'Veli portalı', portalA: 'Kayıtlı öğrencilerin velileri için (yakında).', soru: 'Sorularınız için', logoAlt: 'Ulu Camii Kur’an Kursu logosu' }
   : dil === 'en'
   ? { mufredat: 'Curriculum & yearly lesson plan', mufredatA: '2026-2027: topics, textbooks and the day-by-day plan for the five subjects (in Turkish).', mufredatPdf: 'PDF (A4)',
+      kitap: 'Textbooks', kitapA: 'Students come to every lesson with the books listed in the curriculum, a notebook and a pen; the course is free of charge.', kitapBag: 'How to obtain', kitapCapa: '#manuels',
       kayit: 'Online registration form', kayitA: 'Registration for the 2026-2027 term is open. After you submit the form, our imam will contact you.', portal: 'Parents’ portal', portalA: 'For parents of enrolled students (coming soon).', soru: 'For your questions', logoAlt: 'Ulu Camii Qur’an School logo' }
   : { mufredat: 'Programme et plan annuel des cours', mufredatA: '2026-2027 : sujets, manuels et plan jour par jour des cinq matières (en turc).', mufredatPdf: 'PDF (A4)',
+      kitap: 'Manuels', kitapA: 'Les élèves viennent à chaque cours avec les manuels prévus au programme, un cahier et de quoi écrire ; le cours est gratuit.', kitapBag: 'Où se les procurer', kitapCapa: '#manuels',
       kayit: 'Formulaire d’inscription en ligne', kayitA: 'Les inscriptions 2026-2027 sont ouvertes. Après l’envoi du formulaire, l’imam vous contactera.', portal: 'Portail des parents', portalA: 'Pour les parents des élèves inscrits (bientôt).', soru: 'Pour toute question', logoAlt: 'Logo de l’école coranique Ulu Camii' };
 ---
 <IcerikSayfasi dil={dil} anahtar="kurankursu" etiket={t('nav.kurankursu')}>
@@ -30,6 +33,16 @@ const m = dil === 'tr'
       <a href="/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf" class="dugme dugme-ikincil justify-center" download>{m.mufredatPdf}</a>
     </div>
     <a href={yol(dil, 'yillikplan')} class="dugme dugme-ikincil mt-2 w-full justify-center">{t('nav.yillikplan')}</a>
+  </div>
+  <div slot="yan" class="kart-kagit p-5">
+    <p class="etiket etiket-vurgu">{m.kitap}</p>
+    <ul class="mt-2 grid gap-1 text-sm text-(--metin-2)">
+      <li>Camiye Gidiyorum 1</li>
+      <li>Camiye Gidiyorum 2</li>
+      <li>Temel Dinî Bilgiler</li>
+    </ul>
+    <p class="mt-2 text-sm text-(--metin-2)">{m.kitapA}</p>
+    <a href={yol(dil, 'kurankursu') + m.kitapCapa} class="dugme dugme-ikincil mt-3 w-full justify-center">{m.kitapBag}</a>
   </div>
   <div slot="yan" class="kart-kagit p-5">
     <p class="etiket etiket-vurgu">{m.portal}</p>
