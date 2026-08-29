@@ -11,13 +11,18 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import govde from '../data/mufredat-2026-2027.html?raw';
+import govdeHam from '../data/mufredat-2026-2027.html?raw';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
 
 const PDF = '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
 const HTML = '/belgeler/kuran-kursu/mufredat-2026-2027.html';
+
+/* Dar ekranda tablo sarmalayıcıları yatayda kayar; klavyeyle kaydırılabilmesi için
+   odaklanabilir olmaları gerekir (WCAG 2.1.1). Gövde üretilen bir dosya olduğundan
+   nitelik derleme anında burada eklenir, veri dosyası elle düzenlenmez. */
+const govde = govdeHam.replace(/<div class="tablo-kaydir">/g, '<div class="tablo-kaydir" tabindex="0">');
 
 const m = dil === 'tr' ? {
   baslik: 'Müfredat ve Yıllık Ders Planı 2026-2027',
@@ -96,7 +101,10 @@ const m = dil === 'tr' ? {
   .mufredat :global(h2:first-of-type) { margin-top: 0; border-top: 0; padding-top: 0; }
   .mufredat :global(h3) { margin: 1.8rem 0 0.5rem; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
   .mufredat :global(p) { margin: 0.5rem 0; color: var(--metin-2); max-width: 70ch; }
-  .mufredat :global(.tablo-kaydir) { margin: 0.6rem 0 1.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--kagit, #fdfbf7); }
+  /* Zemin tema belirtecinden gelir: sabit #fdfbf7 koyu temada açık metni
+     görünmez kılıyordu (kontrast 1,07:1). */
+  .mufredat :global(.tablo-kaydir) { margin: 0.6rem 0 1.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); }
+  .mufredat :global(.tablo-kaydir:focus-visible) { outline: 3px solid var(--vurgu-2); outline-offset: 2px; }
   .mufredat :global(table) { font-size: 0.9rem; min-width: 100%; }
   /* Dar ekranda tablo sıkışıp her hücre üç satıra sarıyordu (satır 80 px). Asgari
      genişlik: tablo kendi içinde kayar, satırlar tek satır kalır. */

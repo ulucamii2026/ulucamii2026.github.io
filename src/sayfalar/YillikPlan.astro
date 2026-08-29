@@ -153,11 +153,12 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
     <div class="cubuk" id="cubuk">
       <div class="cubuk-satir">
         <span class="etiket cubuk-et" id="ay-et">{m.ayEt}</span>
-        <div class="cipler" role="list" aria-labelledby="ay-et">
+        {/* Çipler bir gezinme kümesi: role="listitem" bağlantı anlamını siliyordu. */}
+        <nav class="cipler" aria-labelledby="ay-et">
           {aylar.map((a) => (
-            <a role="listitem" class="cip" href={`#ay-${a.anahtar}`} data-ay={a.anahtar}>{a.ad}</a>
+            <a class="cip" href={`#ay-${a.anahtar}`} data-ay={a.anahtar}>{a.ad}</a>
           ))}
-        </div>
+        </nav>
       </div>
       <div class="cubuk-satir" id="filtre" hidden>
         <span class="etiket cubuk-et" id="alan-et">{m.alanEt}</span>
@@ -165,7 +166,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
           <button type="button" class="cip" data-kod="" aria-pressed="true">{m.tumu}</button>
           {KODLAR.map((k) => (
             <button type="button" class:list={['cip', 'cip-' + k]} data-kod={k} aria-pressed="false">
-              <span class="cip-nokta" aria-hidden="true"></span>{ALAN_ADI[k]}
+              <span class="cip-nokta" aria-hidden="true"></span><span lang="tr">{ALAN_ADI[k]}</span>
             </button>
           ))}
         </div>
@@ -181,8 +182,10 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
                  data-s-ibadet={m.dersAdet(dersSay(a.gunler, 'ibadet'))}
                  data-s-siyer={m.dersAdet(dersSay(a.gunler, 'siyer'))}
                  data-s-ahlak={m.dersAdet(dersSay(a.gunler, 'ahlak'))}>
+          {/* Ad ile sayı arasındaki boşluk gerçek bir metin düğümü: esnek yerleşimde
+              görünmez ama ekran okuyucu "Eylül 20268 ders günü" demez. */}
           <h2 class="ay-baslik">
-            {a.ad}
+            {a.ad}{' '}
             <span class="ay-say" data-varsayilan={m.dersGunu(a.gunler.filter((g) => g.dersler.length).length)}
             >{m.dersGunu(a.gunler.filter((g) => g.dersler.length).length)}</span>
           </h2>
@@ -208,21 +211,26 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
               {g.tatil
                 ? <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>
                 : g.dersler.map((d) => (
-                    <details class="ders" data-k={d.kod}>
+                    /* Dersin tamamı (başlık satırı da, gövde de) öğretim dili Türkçe:
+                       lang tek yerde durur, her satıra tekrar yazılmaz. */
+                    <details class="ders" data-k={d.kod} lang="tr">
                       <summary>
                         <span class="saat">{d.saat}</span>
-                        <span class:list={['alan-rozet', 'a-' + d.kod]} lang="tr">{d.alan}</span>
-                        <span class="konu" lang="tr">{d.konu}</span>
-                        {d.kaynak && <span class="kaynak" lang="tr">{d.kaynak}</span>}
+                        <span class:list={['alan-rozet', 'a-' + d.kod]}>{d.alan}</span>
+                        <span class="konu">{d.konu}</span>
+                        {d.kaynak && <span class="kaynak">{d.kaynak}</span>}
                       </summary>
-                      <div class="ic" lang="tr">
+                      {/* Blok sarmalayıcısı yok: başlık + gövde doğrudan .ic içinde
+                          durur, aradaki boşluğu h3'ün üst kenarı verir. 261 ders ×
+                          dört blok = bin sarmalayıcı eksik. */}
+                      <div class="ic">
                         {BLOK.map(([anahtar]) => d[anahtar].length > 0 && (
-                          <div class="blok">
+                          <>
                             <h3>{m.bloklar[anahtar]}</h3>
                             {d[anahtar].length === 1
                               ? <p>{d[anahtar][0]}</p>
                               : <ul>{d[anahtar].map((s) => <li>{s}</li>)}</ul>}
-                          </div>
+                          </>
                         ))}
                       </div>
                     </details>
@@ -258,7 +266,8 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   .cubuk-et { flex: none; }
   /* Çipler kendi içinde kayar; sayfa yatayda taşmaz (min-width:0 şart). */
   .cipler { display: flex; gap: 0.35rem; min-width: 0; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; scroll-snap-type: x proximity; }
-  .cip { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.34rem 0.7rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); font-size: 0.85rem; line-height: 1.3; white-space: nowrap; text-decoration: none; cursor: pointer; }
+  /* min-height: dokunma hedefi 32 px'in altına düşmesin (ölçülen 31 px idi). */
+  .cip { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; min-height: 2.125rem; gap: 0.4rem; padding: 0.34rem 0.7rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); font-size: 0.85rem; line-height: 1.3; white-space: nowrap; text-decoration: none; cursor: pointer; }
   .cip:hover { border-color: var(--cizgi-etkilesim); color: var(--metin); }
   .cip[aria-current='true'] { border-color: var(--vurgu); color: var(--vurgu); font-weight: 600; }
   .cip[aria-pressed='true'] { background: var(--metin); border-color: var(--metin); color: var(--zemin); font-weight: 600; }
@@ -301,11 +310,12 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   .alan-rozet { justify-self: start; padding: 0.12rem 0.45rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; color: var(--metin); }
   .ders .konu { font-weight: 600; }
   .kaynak { grid-column: 3; font-size: 0.8rem; color: var(--metin-2); }
-  .ic { padding: 0.2rem 0 1rem 6rem; display: grid; gap: 0.9rem; max-width: 74ch; }
-  .blok h3 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--vurgu); margin: 0 0 0.25rem; }
-  .blok p { margin: 0; color: var(--metin-2); }
-  .blok ul { margin: 0; padding-left: 1.1rem; list-style: square; color: var(--metin-2); }
-  .blok li + li { margin-top: 0.3rem; }
+  .ic { padding: 0.2rem 0 1rem 6rem; max-width: 74ch; }
+  .ic h3 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--vurgu); margin: 0.9rem 0 0.25rem; }
+  .ic h3:first-child { margin-top: 0; }
+  .ic p { margin: 0; color: var(--metin-2); }
+  .ic ul { margin: 0; padding-left: 1.1rem; list-style: square; color: var(--metin-2); }
+  .ic li + li { margin-top: 0.3rem; }
 
   /* Ders alanı renkleri: baskı sürümü ve müfredat sayfasıyla aynı; koyu temada karartılır. */
   .a-kuran { background: color-mix(in oklab, #f6e9e0 var(--renk-oran, 100%), var(--zemin)); }
@@ -313,14 +323,18 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   .a-ibadet { background: color-mix(in oklab, #e9f0e3 var(--renk-oran, 100%), var(--zemin)); }
   .a-siyer { background: color-mix(in oklab, #f8eed9 var(--renk-oran, 100%), var(--zemin)); }
   .a-ahlak { background: color-mix(in oklab, #efe6ea var(--renk-oran, 100%), var(--zemin)); }
+  /* Koyu temada rozet metinleri: koyu ceviz zemin üzerinde 4,5:1'i geçen aydınlık
+     tonlar. Ramazan rozeti atlanmıştı; İznik mavisi zeminde 2,25:1 kalıyordu. */
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) .plan, :root:not([data-theme='light']) .simdi, :root:not([data-theme='light']) .cubuk { --renk-oran: 22%; }
-    :root:not([data-theme='light']) .r-tatil { color: var(--color-adacayi); }
-    :root:not([data-theme='light']) .r-bayram, :root:not([data-theme='light']) .r-pazartesi { color: var(--color-ochre-acik); }
+    :root:not([data-theme='light']) .r-tatil { border-color: var(--color-adacayi-acik); color: var(--color-adacayi-acik); }
+    :root:not([data-theme='light']) .r-ramazan { border-color: var(--color-iznik-acik); color: var(--color-iznik-acik); }
+    :root:not([data-theme='light']) .r-bayram, :root:not([data-theme='light']) .r-pazartesi { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
   }
   :root[data-theme='dark'] .plan, :root[data-theme='dark'] .simdi, :root[data-theme='dark'] .cubuk { --renk-oran: 22%; }
-  :root[data-theme='dark'] .r-tatil { color: var(--color-adacayi); }
-  :root[data-theme='dark'] .r-bayram, :root[data-theme='dark'] .r-pazartesi { color: var(--color-ochre-acik); }
+  :root[data-theme='dark'] .r-tatil { border-color: var(--color-adacayi-acik); color: var(--color-adacayi-acik); }
+  :root[data-theme='dark'] .r-ramazan { border-color: var(--color-iznik-acik); color: var(--color-iznik-acik); }
+  :root[data-theme='dark'] .r-bayram, :root[data-theme='dark'] .r-pazartesi { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
 
   /* ——— Filtre: JS yalnızca data-f'i değiştirir, gizlemeyi CSS yapar ——— */
   .plan[data-f='kuran'] .ders:not([data-k='kuran']), .plan[data-f='kuran'] .gun:not([data-kk~='kuran']), .plan[data-f='kuran'] .ay-bolum:not([data-kk~='kuran']) { display: none; }

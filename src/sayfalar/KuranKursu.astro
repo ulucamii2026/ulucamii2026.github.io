@@ -36,7 +36,8 @@ const m = dil === 'tr'
   </div>
   <div slot="yan" class="kart-kagit p-5">
     <p class="etiket etiket-vurgu">{m.kitap}</p>
-    <ul class="mt-2 grid gap-1 text-sm text-(--metin-2)">
+    {/* Kitap adları Türkçe: FR/EN sayfada ekran okuyucu doğru okusun. */}
+    <ul lang="tr" class="mt-2 grid gap-1 text-sm text-(--metin-2)">
       <li>Camiye Gidiyorum 1</li>
       <li>Camiye Gidiyorum 2</li>
       <li>Temel Dinî Bilgiler</li>
