@@ -1,0 +1,115 @@
+---
+/**
+ * Kur'an Kursu 2026-2027 Müfredat ve Yıllık Ders Planı.
+ *
+ * Gövde (src/data/mufredat-2026-2027.html) elle yazılmaz: OneDrive'daki Word
+ * belgesinden D:\app\marche-cami-sitesi\mufredat\mufredat-uret.py üretir; aynı
+ * betik yazdırılabilir HTML'i ve A4 PDF'i de (public/belgeler/kuran-kursu/) yazar.
+ * Belge Türkçedir; FR/EN sayfalar kısa bir giriş verip aynı gövdeyi lang="tr" ile gösterir.
+ */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import govde from '../data/mufredat-2026-2027.html?raw';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const t = ceviri(dil);
+
+const PDF = '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
+const HTML = '/belgeler/kuran-kursu/mufredat-2026-2027.html';
+
+const m = dil === 'tr' ? {
+  baslik: 'Müfredat ve Yıllık Ders Planı 2026-2027',
+  alt: 'Kur’an-ı Kerim, İtikat, İbadet, Siyer ve Ahlak derslerinin konuları, kaynak kitapları, kazanımları ve gün gün yıllık planı.',
+  aciklama: 'Ulu Camii Kur’an Kursu 2026-2027 müfredatı ve yıllık ders planı: 87 ders günü, 261 ders saati, beş ders alanı.',
+  pdf: 'PDF indir (A4, 41 sayfa)', yazdir: 'Yazdırılabilir sürüm', kayit: 'Kayıt sayfası',
+  not: '',
+  ozet: [
+    ['Ders başlangıcı', '5 Eylül 2026 Cumartesi'], ['Ders bitişi', '6 Haziran 2027 Pazar'],
+    ['Ders günleri', 'Cumartesi ve Pazar · tatil haftalarında Pazartesi de'],
+    ['Kış / yaz saati', '10:00–12:40 · 11:00–13:40'], ['Toplam', '87 ders günü · 261 ders saati'],
+    ['Kaynak kitaplar', 'Camiye Gidiyorum 1·2 (DİTİB) · Temel Dinî Bilgiler (DİB)'],
+  ],
+} : dil === 'en' ? {
+  baslik: 'Curriculum & Yearly Lesson Plan 2026-2027',
+  alt: 'Topics, textbooks, learning outcomes and the day-by-day yearly plan for Qur’an, Creed, Worship, Sīrah and Ethics.',
+  aciklama: 'Ulu Camii Qur’an School 2026-2027 curriculum and yearly lesson plan: 87 teaching days, 261 lessons, five subjects.',
+  pdf: 'Download PDF (A4, 41 pages)', yazdir: 'Printable version', kayit: 'Registration page',
+  not: 'The full document is in Turkish, the language of instruction. The key facts are summarised below; for questions in English or French, contact the imam.',
+  ozet: [
+    ['Lessons start', 'Saturday 5 September 2026'], ['Lessons end', 'Sunday 6 June 2027'],
+    ['Teaching days', 'Saturday and Sunday · also Monday during school holiday weeks'],
+    ['Winter / summer hours', '10:00–12:40 · 11:00–13:40'], ['Total', '87 teaching days · 261 lessons'],
+    ['Textbooks', 'Camiye Gidiyorum 1·2 (DİTİB) · Temel Dinî Bilgiler (Diyanet)'],
+  ],
+} : {
+  baslik: 'Programme et plan annuel des cours 2026-2027',
+  alt: 'Sujets, manuels, acquis d’apprentissage et plan annuel jour par jour pour le Coran, la croyance, le culte, la Sīra et la morale.',
+  aciklama: 'École coranique Ulu Camii, programme et plan annuel 2026-2027 : 87 jours de cours, 261 leçons, cinq matières.',
+  pdf: 'Télécharger le PDF (A4, 41 pages)', yazdir: 'Version imprimable', kayit: 'Page d’inscription',
+  not: 'Le document complet est en turc, langue d’enseignement. L’essentiel est résumé ci-dessous ; pour toute question en français, contactez l’imam.',
+  ozet: [
+    ['Début des cours', 'samedi 5 septembre 2026'], ['Fin des cours', 'dimanche 6 juin 2027'],
+    ['Jours de cours', 'samedi et dimanche · le lundi aussi pendant les semaines de congé scolaire'],
+    ['Horaire hiver / été', '10h00–12h40 · 11h00–13h40'], ['Total', '87 jours de cours · 261 leçons'],
+    ['Manuels', 'Camiye Gidiyorum 1·2 (DİTİB) · Temel Dinî Bilgiler (Diyanet)'],
+  ],
+};
+---
+<Base baslik={m.baslik} dil={dil} aciklama={m.aciklama}>
+  <SayfaBasligi etiket={t('nav.kurankursu')} baslik={m.baslik} altBaslik={m.alt} />
+  {/* Tek sütunlu ızgarada da minmax(0,1fr): aksi hâlde geniş tablolar sütunu
+      içerik genişliğine açıp sayfayı yatay kaydırıyordu (mobilde 449 px taşma). */}
+  <div class="kapsayici py-10 grid gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_320px]">
+    <article class="mufredat min-w-0" lang="tr">
+      {m.not && <p class="not" lang={dil}>{m.not}</p>}
+      <Fragment set:html={govde} />
+    </article>
+    <aside class="grid gap-5 content-start lg:sticky lg:top-24">
+      <div class="kart p-5">
+        <img src="/media/logo/kuran-kursu-logo.svg" alt="" width="96" height="96" class="mx-auto h-24 w-24" loading="lazy" />
+        <a href={PDF} class="dugme dugme-birincil mt-4 w-full justify-center" download>{m.pdf}</a>
+        <a href={HTML} class="dugme dugme-ikincil mt-2 w-full justify-center" target="_blank" rel="noopener">{m.yazdir}<span aria-hidden="true"> ↗</span></a>
+      </div>
+      <dl class="kart-kagit p-5 ozet">
+        {m.ozet.map(([k, v]) => <div><dt class="etiket">{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+      <a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil w-full justify-center">{m.kayit}</a>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border-left: 3px solid var(--vurgu-2); color: var(--metin-2); }
+  .ozet div { padding: 0.55rem 0; border-top: 1px solid var(--cizgi); }
+  .ozet div:first-child { border-top: 0; padding-top: 0; }
+  .ozet dd { margin: 0.15rem 0 0; }
+
+  .mufredat :global(h2) { margin: 2.6rem 0 0.6rem; padding-top: 0.8rem; border-top: 2px solid var(--vurgu); color: var(--vurgu); font-size: clamp(1.35rem, 1.05rem + 1.2vw, 1.9rem); }
+  .mufredat :global(h2:first-of-type) { margin-top: 0; border-top: 0; padding-top: 0; }
+  .mufredat :global(h3) { margin: 1.8rem 0 0.5rem; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
+  .mufredat :global(p) { margin: 0.5rem 0; color: var(--metin-2); max-width: 70ch; }
+  .mufredat :global(.tablo-kaydir) { margin: 0.6rem 0 1.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--kagit, #fdfbf7); }
+  .mufredat :global(table) { font-size: 0.9rem; min-width: 100%; }
+  .mufredat :global(th) { position: sticky; top: 0; background: var(--zemin-2); z-index: 1; white-space: nowrap; }
+  .mufredat :global(th), .mufredat :global(td) { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--cizgi); }
+  .mufredat :global(.bilgi-tablosu td:first-child) { font-weight: 600; white-space: nowrap; }
+  .mufredat :global(.konu-tablosu td:first-child) { text-align: center; white-space: nowrap; color: var(--metin-2); font-family: var(--font-mono); font-size: 0.8rem; }
+  .mufredat :global(.konu-tablosu td:nth-child(2)) { font-weight: 600; min-width: 12rem; }
+  .mufredat :global(.konu-tablosu td:last-child) { min-width: 22rem; }
+  .mufredat :global(.yillik-plan) { font-size: 0.84rem; }
+  .mufredat :global(.yillik-plan td:nth-child(-n+4)) { white-space: nowrap; }
+  .mufredat :global(.yillik-plan td:nth-child(6)) { min-width: 16rem; }
+  /* Ders alanı renkleri: baskı sürümüyle aynı, koyu temada karartılır. */
+  .mufredat :global(.d-kuran td) { background: color-mix(in oklab, #f6e9e0 var(--renk-oran, 100%), var(--zemin)); }
+  .mufredat :global(.d-itikat td) { background: color-mix(in oklab, #e6eef5 var(--renk-oran, 100%), var(--zemin)); }
+  .mufredat :global(.d-ibadet td) { background: color-mix(in oklab, #e9f0e3 var(--renk-oran, 100%), var(--zemin)); }
+  .mufredat :global(.d-siyer td) { background: color-mix(in oklab, #f8eed9 var(--renk-oran, 100%), var(--zemin)); }
+  .mufredat :global(.d-ahlak td) { background: color-mix(in oklab, #efe6ea var(--renk-oran, 100%), var(--zemin)); }
+  .mufredat :global(.d-ozel td) { background: color-mix(in oklab, #e9e3d8 var(--renk-oran, 100%), var(--zemin)); font-style: italic; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .mufredat { --renk-oran: 18%; }
+  }
+  :root[data-theme="dark"] .mufredat { --renk-oran: 18%; }
+</style>
