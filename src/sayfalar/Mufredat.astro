@@ -19,9 +19,10 @@ const t = ceviri(dil);
 const PDF = '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
 const HTML = '/belgeler/kuran-kursu/mufredat-2026-2027.html';
 
-/* Dar ekranda tablo sarmalayıcıları yatayda kayar; klavyeyle kaydırılabilmesi için
-   odaklanabilir olmaları gerekir (WCAG 2.1.1). Gövde üretilen bir dosya olduğundan
-   nitelik derleme anında burada eklenir, veri dosyası elle düzenlenmez. */
+/* 640-1023 px arasında yıllık plan sarmalayıcısı yatayda kayar; klavyeyle
+   kaydırılabilmesi için odaklanabilir olması gerekir (WCAG 2.1.1). Üretici bu
+   niteliği zaten yazıyor; aşağıdaki değişim eski bir gövde dosyasına karşı
+   güvencedir. 640 px altında tablolar hiç kaymaz, karta dönüşür. */
 const govde = govdeHam.replace(/<div class="tablo-kaydir">/g, '<div class="tablo-kaydir" tabindex="0">');
 
 const m = dil === 'tr' ? {
@@ -106,28 +107,105 @@ const m = dil === 'tr' ? {
   .mufredat :global(.tablo-kaydir) { margin: 0.6rem 0 1.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); }
   .mufredat :global(.tablo-kaydir:focus-visible) { outline: 3px solid var(--vurgu-2); outline-offset: 2px; }
   .mufredat :global(table) { font-size: 0.9rem; min-width: 100%; }
-  /* Dar ekranda tablo sıkışıp her hücre üç satıra sarıyordu (satır 80 px). Asgari
-     genişlik: tablo kendi içinde kayar, satırlar tek satır kalır. */
-  .mufredat :global(.konu-tablosu) { min-width: 640px; }
-  .mufredat :global(.yillik-plan) { min-width: 760px; }
   .mufredat :global(th) { position: sticky; top: 0; background: var(--zemin-2); z-index: 1; white-space: nowrap; }
   .mufredat :global(th), .mufredat :global(td) { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--cizgi); }
-  .mufredat :global(.bilgi-tablosu td:first-child) { font-weight: 600; white-space: nowrap; }
+  .mufredat :global(.bilgi-tablosu td:first-child) { font-weight: 600; }
+  /* Yalnız anahtar/değer tablosunda tek satır: beş sütunlu çizelgede ilk hücreyi
+     sarmaya zorlamamak tabloyu 706 px'e şişirip dar sütunda kaydırtıyordu. */
+  .mufredat :global(table[data-sutun="2"] td:first-child) { white-space: nowrap; }
   .mufredat :global(.konu-tablosu td:first-child) { text-align: center; white-space: nowrap; color: var(--metin-2); font-family: var(--font-mono); font-size: 0.8rem; }
-  .mufredat :global(.konu-tablosu td:nth-child(2)) { font-weight: 600; min-width: 12rem; }
-  .mufredat :global(.konu-tablosu td:last-child) { min-width: 22rem; }
+  .mufredat :global(.konu-tablosu td:nth-child(2)) { font-weight: 600; }
   .mufredat :global(.yillik-plan) { font-size: 0.84rem; }
   .mufredat :global(.yillik-plan td:nth-child(-n+4)) { white-space: nowrap; }
-  .mufredat :global(.yillik-plan td:nth-child(6)) { min-width: 16rem; }
-  /* Ders alanı renkleri: baskı sürümüyle aynı, koyu temada karartılır. */
-  .mufredat :global(.d-kuran td) { background: color-mix(in oklab, #f6e9e0 var(--renk-oran, 100%), var(--zemin)); }
-  .mufredat :global(.d-itikat td) { background: color-mix(in oklab, #e6eef5 var(--renk-oran, 100%), var(--zemin)); }
-  .mufredat :global(.d-ibadet td) { background: color-mix(in oklab, #e9f0e3 var(--renk-oran, 100%), var(--zemin)); }
-  .mufredat :global(.d-siyer td) { background: color-mix(in oklab, #f8eed9 var(--renk-oran, 100%), var(--zemin)); }
-  .mufredat :global(.d-ahlak td) { background: color-mix(in oklab, #efe6ea var(--renk-oran, 100%), var(--zemin)); }
-  .mufredat :global(.d-ozel td) { background: color-mix(in oklab, #e9e3d8 var(--renk-oran, 100%), var(--zemin)); font-style: italic; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .mufredat { --renk-oran: 18%; }
+  /* Ders alanı renkleri: baskı sürümüyle aynı, koyu temada karartılır.
+     Renk satırda belirteç olarak durur; dar ekranda aynı belirteç rozeti boyar. */
+  .mufredat :global(.d-kuran) { --ders-renk: #f6e9e0; }
+  .mufredat :global(.d-itikat) { --ders-renk: #e6eef5; }
+  .mufredat :global(.d-ibadet) { --ders-renk: #e9f0e3; }
+  .mufredat :global(.d-siyer) { --ders-renk: #f8eed9; }
+  .mufredat :global(.d-ahlak) { --ders-renk: #efe6ea; }
+  .mufredat :global(.d-ozel) { --ders-renk: #e9e3d8; }
+  .mufredat :global(.d-kuran td), .mufredat :global(.d-itikat td), .mufredat :global(.d-ibadet td),
+  .mufredat :global(.d-siyer td), .mufredat :global(.d-ahlak td), .mufredat :global(.d-ozel td) {
+    background: color-mix(in oklab, var(--ders-renk) var(--renk-oran, 100%), var(--zemin));
   }
-  :root[data-theme="dark"] .mufredat { --renk-oran: 18%; }
+  .mufredat :global(.d-ozel td) { font-style: italic; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .mufredat { --renk-oran: 18%; --rozet-oran: 40%; }
+  }
+  :root[data-theme="dark"] .mufredat { --renk-oran: 18%; --rozet-oran: 40%; }
+
+  /* 640-1023: yedi sütunlu yıllık plan sığmıyor, yalnız o kendi içinde kayar. */
+  @media (min-width: 640px) and (max-width: 1023.98px) {
+    .mufredat :global(.yillik-plan) { min-width: 760px; }
+  }
+  /* 1024-1279: yan sütun (320 px) açıldığı için ana sütun 624 px'e düşer. Yıllık
+     plan sıkıştırılır ki kaymadan sığsın; hücre asgari genişlikleri devre dışı. */
+  @media (min-width: 1024px) and (max-width: 1279.98px) {
+    .mufredat :global(.yillik-plan) { font-size: 0.78rem; }
+    .mufredat :global(.yillik-plan th), .mufredat :global(.yillik-plan td) { padding: 0.45rem 0.38rem; }
+  }
+  /* 1280+: ana sütun 792 px; sütunlar rahat okunacak asgari genişliğe kavuşur.
+     Alanlı tabloda asgari genişlik yok — dört uzun sütun 792 px'e sığmıyor. */
+  @media (min-width: 1280px) {
+    .mufredat :global(.konu-tablosu:not(.alanli) td:nth-child(2)) { min-width: 12rem; }
+    .mufredat :global(.konu-tablosu:not(.alanli) td:last-child) { min-width: 22rem; }
+    .mufredat :global(.yillik-plan td:nth-child(6)) { min-width: 12rem; }
+  }
+
+  /* ------------------------------------------------------------------ <640 px
+     Tablo yerine kart listesi: yatay kaydırma yok. Satır ızgaraya dönüştüğü için
+     tablonun örtük semantiği kaybolur — üretici her hücreye role ve data-etiket
+     yazar, başlık satırı da erişilebilirlik ağacında (görsel olarak gizli) kalır.
+     Blok yalnız ekrana bakar: baskı ve PDF çıktısı bu kurallardan etkilenmez. */
+  @media screen and (max-width: 639.98px) {
+    .mufredat :global(.tablo-kaydir) { overflow: visible; border: 0; background: transparent; margin: 0.6rem 0 1.6rem; }
+    .mufredat :global(table) { display: block; width: 100%; min-width: 0; font-size: 0.9rem; }
+    .mufredat :global(thead) { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .mufredat :global(tbody) { display: block; }
+    .mufredat :global(tr) { display: grid; grid-template-columns: auto 1fr; padding: 0 0 0.5rem; margin: 0 0 0.5rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+    .mufredat :global(tbody tr:last-child) { margin-bottom: 0; }
+    .mufredat :global(td) { display: block; grid-column: 1 / -1; padding: 0.12rem 0.7rem; border: 0; background: transparent; font-size: 0.9rem; line-height: 1.5; }
+    .mufredat :global(td:empty) { display: none; }
+    .mufredat :global(td:first-child) { padding-top: 0.5rem; }
+    /* anahtar/değer tablosu: etiket üstte küçük, değer altta */
+    .mufredat :global(table[data-sutun="2"] td:first-child) { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); font-weight: 400; white-space: normal; }
+    /* küçük tablolar: ilk hücre kart başlığı, kalanlar "etiket: değer" */
+    .mufredat :global(.bilgi-tablosu:not([data-sutun="2"]) td:first-child) { font-weight: 700; font-size: 0.95rem; padding-bottom: 0.25rem; white-space: normal; }
+    .mufredat :global(.bilgi-tablosu:not([data-sutun="2"]) td:not(:first-child))::before { content: attr(data-etiket) ": "; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--metin-2); }
+    /* konu tabloları: No + konu üstte, kaynak soluk, kazanım normal metin */
+    .mufredat :global(.konu-tablosu:not(.alanli) td:nth-child(1)) { grid-column: 1; text-align: left; padding: 0.5rem 0 0.12rem 0.7rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--metin-2); }
+    .mufredat :global(.konu-tablosu:not(.alanli) td:nth-child(2)) { grid-column: 2; padding: 0.5rem 0.7rem 0.12rem 0.4rem; font-weight: 700; font-size: 0.95rem; min-width: 0; }
+    .mufredat :global(.konu-tablosu:not(.alanli) td:nth-child(3)) { padding-top: 0.25rem; font-size: 0.78rem; color: var(--metin-2); }
+    .mufredat :global(.konu-tablosu:not(.alanli) td:nth-child(4)) { padding-top: 0.25rem; font-size: 0.88rem; min-width: 0; }
+    /* alanlı konu tablosu: ders alanı rozet, içerik ve kazanım etiketli */
+    .mufredat :global(.alanli td:nth-child(1)) { justify-self: start; margin: 0.5rem 0.7rem 0.15rem; padding: 0.18rem 0.6rem; background: color-mix(in oklab, var(--ders-renk) var(--rozet-oran, 100%), var(--zemin-2)); border: 1px solid var(--cizgi); border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .mufredat :global(.alanli td:nth-child(2)) { font-weight: 700; font-size: 0.95rem; }
+    .mufredat :global(.alanli td:nth-child(3)), .mufredat :global(.alanli td:nth-child(4)) { font-size: 0.88rem; }
+    .mufredat :global(.alanli td:nth-child(3))::before, .mufredat :global(.alanli td:nth-child(4))::before { content: attr(data-etiket); display: block; margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--metin-2); }
+    /* yıllık plan: her gün kendi başlığıyla açılır, dersler ayrı kartlar */
+    .mufredat :global(.yillik-plan) { font-size: 0.9rem; }
+    .mufredat :global(.yillik-plan tr) { margin-bottom: 0.4rem; }
+    .mufredat :global(.yillik-plan tr.gun-basi) { margin-top: 1.5rem; }
+    .mufredat :global(.yillik-plan tbody tr:first-child) { margin-top: 0; }
+    .mufredat :global(.yillik-plan tr:not(.gun-basi) td:nth-child(-n+3)) { display: none; }
+    /* Ders rengi kartın tamamına: hücre hücre boyanınca rozetin çevresinde
+       kart zemini şerit hâlinde görünüyordu. */
+    .mufredat :global(.yillik-plan .d-kuran), .mufredat :global(.yillik-plan .d-itikat),
+    .mufredat :global(.yillik-plan .d-ibadet), .mufredat :global(.yillik-plan .d-siyer),
+    .mufredat :global(.yillik-plan .d-ahlak), .mufredat :global(.yillik-plan .d-ozel) {
+      background: color-mix(in oklab, var(--ders-renk) var(--renk-oran, 100%), var(--zemin));
+    }
+    .mufredat :global(.yillik-plan .d-kuran td), .mufredat :global(.yillik-plan .d-itikat td),
+    .mufredat :global(.yillik-plan .d-ibadet td), .mufredat :global(.yillik-plan .d-siyer td),
+    .mufredat :global(.yillik-plan .d-ahlak td), .mufredat :global(.yillik-plan .d-ozel td) { background: transparent; }
+    .mufredat :global(.yillik-plan .gun-basi td:nth-child(1)) { grid-column: 1 / -1; padding: 0.45rem 0.7rem 0; background: var(--zemin-3); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); text-align: left; font-style: normal; }
+    .mufredat :global(.yillik-plan .gun-basi td:nth-child(1))::before { content: "Hafta "; }
+    .mufredat :global(.yillik-plan .gun-basi td:nth-child(2)) { grid-column: 1; padding: 0 0.5rem 0.45rem 0.7rem; background: var(--zemin-3); font-weight: 700; font-size: 0.95rem; font-style: normal; }
+    .mufredat :global(.yillik-plan .gun-basi td:nth-child(3)) { grid-column: 2; padding: 0 0.7rem 0.45rem 0; background: var(--zemin-3); font-size: 0.88rem; color: var(--metin-2); text-align: left; font-style: normal; }
+    .mufredat :global(.yillik-plan td:nth-child(4)) { grid-column: 1; padding: 0.5rem 0 0.12rem 0.7rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--metin-2); }
+    .mufredat :global(.yillik-plan td:nth-child(5)) { grid-column: 2; justify-self: start; margin: 0.45rem 0.7rem 0 0.4rem; padding: 0.1rem 0.55rem; background: var(--zemin); border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: normal; }
+    .mufredat :global(.yillik-plan td:nth-child(6)) { padding-top: 0.3rem; font-weight: 600; font-size: 0.9rem; min-width: 0; }
+    .mufredat :global(.yillik-plan td:nth-child(7)) { font-size: 0.78rem; color: var(--metin-2); }
+  }
 </style>
