@@ -240,6 +240,8 @@
       return false;
     }
     const dataUrl = exportDataUrl();
+    // Imza hangi gun atildiysa beyan tarihi o gundur.
+    if (typeof app.beyanTarihiniBugunYap === 'function') app.beyanTarihiniBugunYap();
     app.state.signatureData = dataUrl;
     app.state.signatureStrokes = signature.strokes.map((stroke) => stroke.map((point) => ({ ...point })));
     updatePreview();

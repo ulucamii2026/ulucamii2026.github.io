@@ -3,68 +3,8 @@
  "kaynakTuru": "diyanet",
  "ilce": "11890",
  "ilceAdi": "M.FAMENNE",
- "guncelleme": "2026-08-26T23:07:41.359Z",
+ "guncelleme": "2026-08-29T14:37:47.074Z",
  "gunler": [
-  {
-   "tarih": "2026-08-21",
-   "hicri": "8 Rebiulevvel 1448",
-   "imsak": "04:27",
-   "gunes": "06:29",
-   "ogle": "13:47",
-   "ikindi": "17:40",
-   "aksam": "20:55",
-   "yatsi": "22:40"
-  },
-  {
-   "tarih": "2026-08-22",
-   "hicri": "9 Rebiulevvel 1448",
-   "imsak": "04:29",
-   "gunes": "06:31",
-   "ogle": "13:47",
-   "ikindi": "17:39",
-   "aksam": "20:53",
-   "yatsi": "22:37"
-  },
-  {
-   "tarih": "2026-08-23",
-   "hicri": "10 Rebiulevvel 1448",
-   "imsak": "04:32",
-   "gunes": "06:32",
-   "ogle": "13:46",
-   "ikindi": "17:38",
-   "aksam": "20:51",
-   "yatsi": "22:34"
-  },
-  {
-   "tarih": "2026-08-24",
-   "hicri": "11 Rebiulevvel 1448",
-   "imsak": "04:34",
-   "gunes": "06:34",
-   "ogle": "13:46",
-   "ikindi": "17:36",
-   "aksam": "20:49",
-   "yatsi": "22:31"
-  },
-  {
-   "tarih": "2026-08-25",
-   "hicri": "12 Rebiulevvel 1448",
-   "imsak": "04:36",
-   "gunes": "06:35",
-   "ogle": "13:46",
-   "ikindi": "17:35",
-   "aksam": "20:46",
-   "yatsi": "22:29"
-  },
-  {
-   "tarih": "2026-08-26",
-   "hicri": "13 Rebiulevvel 1448",
-   "imsak": "04:39",
-   "gunes": "06:37",
-   "ogle": "13:46",
-   "ikindi": "17:34",
-   "aksam": "20:44",
-   "yatsi": "22:26"
-  },
   {
    "tarih": "2026-08-27",
    "hicri": "14 Rebiulevvel 1448",
@@ -324,6 +264,66 @@
    "ikindi": "16:57",
    "aksam": "19:48",
    "yatsi": "21:18"
+  },
+  {
+   "tarih": "2026-09-22",
+   "hicri": "11 Rebiulahir 1448",
+   "imsak": "05:34",
+   "gunes": "07:18",
+   "ogle": "13:37",
+   "ikindi": "16:56",
+   "aksam": "19:46",
+   "yatsi": "21:16"
+  },
+  {
+   "tarih": "2026-09-23",
+   "hicri": "12 Rebiulahir 1448",
+   "imsak": "05:36",
+   "gunes": "07:19",
+   "ogle": "13:36",
+   "ikindi": "16:54",
+   "aksam": "19:43",
+   "yatsi": "21:13"
+  },
+  {
+   "tarih": "2026-09-24",
+   "hicri": "13 Rebiulahir 1448",
+   "imsak": "05:38",
+   "gunes": "07:21",
+   "ogle": "13:36",
+   "ikindi": "16:53",
+   "aksam": "19:41",
+   "yatsi": "21:11"
+  },
+  {
+   "tarih": "2026-09-25",
+   "hicri": "14 Rebiulahir 1448",
+   "imsak": "05:39",
+   "gunes": "07:22",
+   "ogle": "13:36",
+   "ikindi": "16:51",
+   "aksam": "19:39",
+   "yatsi": "21:08"
+  },
+  {
+   "tarih": "2026-09-26",
+   "hicri": "15 Rebiulahir 1448",
+   "imsak": "05:41",
+   "gunes": "07:24",
+   "ogle": "13:35",
+   "ikindi": "16:49",
+   "aksam": "19:37",
+   "yatsi": "21:06"
+  },
+  {
+   "tarih": "2026-09-27",
+   "hicri": "16 Rebiulahir 1448",
+   "imsak": "05:43",
+   "gunes": "07:25",
+   "ogle": "13:35",
+   "ikindi": "16:48",
+   "aksam": "19:35",
+   "yatsi": "21:04"
   }
  ]
 }

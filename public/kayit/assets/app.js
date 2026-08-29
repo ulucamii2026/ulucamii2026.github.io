@@ -181,6 +181,17 @@
     return cikti;
   }
 
+  /* Beyan tarihini bugune ceker; alan salt okunur oldugu icin DOM da
+     buradan guncellenir. Imza atilirken ve gonderirken cagrilir. */
+  function beyanTarihiniBugunYap() {
+    const bugun = localDate();
+    if (app.state && app.state.fields) app.state.fields.declarationDate = bugun;
+    const alan = document.getElementById('declarationDate');
+    if (alan) alan.value = bugun;
+    return bugun;
+  }
+  app.beyanTarihiniBugunYap = beyanTarihiniBugunYap;
+
   function localDate() {
     const now = new Date();
     const year = now.getFullYear();
@@ -221,7 +232,11 @@
              Aksi halde karsilama ekranindan yapilan ilk kayit ilerlemeyi 1'e
              geri cekerdi. */
           sonAdim: Math.max(1, Math.min(7, Number(stored.currentStep) || 1)),
-          fields: { ...base.fields, ...(stored.fields || {}) },
+          /* BEYAN TARIHI TASLAKTAN GELMEZ (29 Agustos 2026, Mehmet Bey bildirdi):
+             24 Agustos'ta acilip 29'unda gonderilen kayit PDF'te "24/08/2026'da
+             okunmus ve kabul edilmistir" diyordu. Tarih, imza ve gonderim aninda
+             yeniden yazilir; burada her zaman bugunden baslar. */
+          fields: { ...base.fields, ...(stored.fields || {}), declarationDate: localDate() },
           images: { ...base.images, ...(stored.images || {}) },
           signatureStrokes: Array.isArray(stored.signatureStrokes) ? stored.signatureStrokes : []
         }
@@ -520,9 +535,8 @@
      app.state hala eski taslagi tasiyor olurdu ve gonderimde eski degerler
      giderdi. Istege bagli olarak veli profili yeniden doldurulur. */
   function temizDurum(veliDoldur) {
-    const tarih = app.state && app.state.fields ? app.state.fields.declarationDate : null;
+    /* Onceki kaydin tarihi tasinmaz; her kayit kendi gununu alir. */
     app.state = defaultState();
-    if (tarih) app.state.fields.declarationDate = tarih;
     let profil = null;
     if (veliDoldur) {
       profil = veliProfiliOku();
@@ -669,7 +683,7 @@
         /* Yazarken degil, bir alan/secim tamamlandiginda dene; yazmaya devam
            edilirse bekleyen gecis iptal olur. */
         if (eventName === 'change') { odakZinciri(target); otoGecisDene(); }
-        else otoGecisIptal();
+        else { otoGecisIptal(); devamHazirligi(); }
       });
     });
     /* Enter formu gondermek yerine bir sonraki alana gecirir; son alanda
@@ -996,7 +1010,7 @@
       if (beyan.value) {
         const gun = 24 * 60 * 60 * 1000;
         const fark = (new Date(beyan.value + 'T00:00:00').getTime() - new Date(localDate() + 'T00:00:00').getTime()) / gun;
-        if (Number.isNaN(fark) || fark > 1 || fark < -30) invalid.push(errorFor(beyan, 'declarationDateError'));
+        if (Number.isNaN(fark) || fark > 1 || fark < -1) invalid.push(errorFor(beyan, 'declarationDateError'));
       }
       if (app.signature.isEmpty()) {
         document.getElementById('signatureError').textContent = app.t('signatureRequired');
@@ -1061,9 +1075,10 @@
     }
     updateProgress();
     updateNavigation();
+    devamHazirligi();
     duzeltmeSeridiniYaz();
     if (target === 5) requestAnimationFrame(updateContractScroll);
-    if (target === 6) updateDeclaration();
+    if (target === 6) { beyanTarihiniBugunYap(); updateDeclaration(); }
     if (target === 7) renderSummary();
     if (target > 0) scheduleSave();
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1378,15 +1393,34 @@
     return liste.length > 0 && liste.every((ad) => Boolean(alanDegeriOku(ad)));
   }
 
+  /* 29 Agustos 2026, Mehmet Bey bildirdi: veri girisi adimlarinda (2-4) son
+     alan dolunca sayfa kayiyor, alanin altindaki aciklama ve uyarilar
+     (yas uyarisi, kimlik no notu, medya izni aciklamasi) okunamiyordu.
+     Bu adimlarda artik gecis yok; adim tamamlaninca "Devam" dugmesi
+     belirginlesir, veli okuyup kendi basar. Kendiliginden gecis yalniz
+     okunacak bir sey birakmayan adimlarda: 1 (tarama bitti), 5 (sozlesme
+     onaylandi), 6 (imza atildi). */
+  const OTO_GECIS_ADIMLARI = [1, 5, 6];
+
   function otoGecisUygunMu(adim) {
     if (!app.ready) return false;
-    if (!(adim >= 1 && adim <= 6)) return false;
+    if (!OTO_GECIS_ADIMLARI.includes(adim)) return false;
     // Geri donmus veli (ya da duzeltme akisi): ilerlemeyi veli yonetsin.
     return adim === Number(app.state.sonAdim || 0);
   }
 
+  /* Veri girisi adimlarinda gecis yerine: adim tamamsa "Devam" hazir gorunur. */
+  function devamHazirligi() {
+    const adim = Number(app.state.currentStep);
+    const ileri = document.getElementById('nextButton');
+    if (!ileri) return;
+    const hazir = adim >= 2 && adim <= 4 && adim === Number(app.state.sonAdim || 0) && adimDoluMu(adim);
+    ileri.classList.toggle('hazir', hazir);
+  }
+
   function otoGecisDene(secenekler) {
     otoGecisIptal();
+    devamHazirligi();
     const adim = Number(app.state.currentStep);
     if (!otoGecisUygunMu(adim) || !adimDoluMu(adim)) return;
     const gecikme = (secenekler && secenekler.gecikme) || OTO_GECIS_MS;
@@ -1572,6 +1606,9 @@
     let basarili = false;
     try {
       durum.textContent = app.t('hazirlaniyor');
+      /* Beyan tarihi = gonderim gunu. Defter zaten sunucu zaman damgasi
+         tasiyor; PDF'teki tarih de onunla ayni gunu soylemeli. */
+      beyanTarihiniBugunYap();
       app.lastPdf = await app.createPdf();
 
       if (!ayar.ucNokta) throw new Error('uc-nokta-yok');
