@@ -13,7 +13,7 @@ const m = dil === 'tr'
   ? { baslik: 'Contact us', alt: 'In the centre of Marche-en-Famenne, a short walk from the train station. For visits, funerals, weddings or any question — our door is open.', sayfa: 'Contact page', facebook: 'Our Facebook page' }
   : { baslik: 'Nous contacter', alt: 'Au centre de Marche-en-Famenne, à quelques minutes à pied de la gare. Visite, funérailles, mariage ou toute question : notre porte est ouverte.', sayfa: 'Page de contact', facebook: 'Notre page Facebook' };
 ---
-<section class="bg-(--zemin-2) border-y border-(--cizgi)" aria-labelledby="iletisim-baslik">
+<section class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="iletisim-baslik">
   <div class="kapsayici py-12 sm:py-16 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-start">
     <div>
       <h2 id="iletisim-baslik">{m.baslik}</h2>

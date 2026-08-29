@@ -24,11 +24,11 @@ const enNotu = 'Events are published in Turkish and French. An English version i
   <div class="kapsayici py-10">
     {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
     <h2 class="etiket etiket-vurgu text-base mb-4">{t('ana.etkinlikler')}</h2>
-    {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
+    {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e, i) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} />)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
     {gecmis.length > 0 && (
       <div>
         <h2 class="etiket text-base mt-12 mb-4 cetvel pt-4">{gecmisBaslik}</h2>
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gecmis.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}</div>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gecmis.map((e, i) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} />)}</div>
       </div>
     )}
   </div>

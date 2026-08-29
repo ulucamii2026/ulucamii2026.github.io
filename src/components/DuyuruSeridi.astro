@@ -3,6 +3,11 @@
  * Hero duyuru şeridi — kısa mesajlar arasında yumuşak döngü (6,5 sn; fareyle/odakla bekler).
  * Mesajlar site.yaml → heroMesajlar (Sveltia'dan yönetilir). JS yokken ilk mesaj sabit görünür.
  * aria-live kullanılmaz (dekoratif döngü); mesajın bağlantısı varsa tümü tıklanabilir.
+ *
+ * Yükseklik: mesajlar tek bir ızgara gözünde üst üste durur, kap kendiliğinden en uzun
+ * mesaj kadar olur. Daha önce kap min-height ile tahmin ediliyor, sonra JS en uzun mesajı
+ * ölçüp min-height'ı değiştiriyordu; bu, yazı tipleri geldiğinde hero'nun altındaki her
+ * şeyi kaydırıyordu (390 px'te ölçülen düzen kayması ~0,03).
  */
 import { yol } from '../i18n/utils';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
@@ -14,13 +19,13 @@ const metni = (mesaj: Mesaj) => mesaj.metin[dil] ?? mesaj.metin.fr ?? mesaj.meti
 const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil, mesaj.sayfa as SayfaAnahtari) : mesaj.baglanti);
 ---
 {mesajlar.length > 0 && (
-  <div id="duyuru-seridi" class="mt-4 max-w-[58ch] relative min-h-[5.5em] sm:min-h-[2.6em]" data-sure="6500">
+  <div id="duyuru-seridi" class="mt-4 max-w-[58ch] grid items-start" data-sure="6500">
     {mesajlar.map((mesaj, i) => {
       const h = hedef(mesaj);
       const ic = <><span class="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-ochre-acik)" aria-hidden="true"></span><span>{metni(mesaj)}</span></>;
       return h
-        ? <a href={h} data-mesaj={i} class:list={['serit-mesaj absolute inset-x-0 top-0 flex items-start gap-2.5 text-lg text-(--color-krem)/92 no-underline hover:text-(--color-krem) hover:underline underline-offset-4', i === 0 && 'aktif']}>{ic}</a>
-        : <p data-mesaj={i} class:list={['serit-mesaj absolute inset-x-0 top-0 flex items-start gap-2.5 text-lg text-(--color-krem)/92', i === 0 && 'aktif']}>{ic}</p>;
+        ? <a href={h} data-mesaj={i} class:list={['serit-mesaj [grid-area:1/1] flex items-start gap-2.5 text-lg text-(--color-krem)/92 no-underline hover:text-(--color-krem) hover:underline underline-offset-4', i === 0 && 'aktif']}>{ic}</a>
+        : <p data-mesaj={i} class:list={['serit-mesaj [grid-area:1/1] flex items-start gap-2.5 text-lg text-(--color-krem)/92', i === 0 && 'aktif']}>{ic}</p>;
     })}
   </div>
 )}
@@ -34,9 +39,6 @@ const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil,
 <script>
   const kutu = document.getElementById('duyuru-seridi');
   const mesajlar = kutu ? Array.from(kutu.querySelectorAll<HTMLElement>('[data-mesaj]')) : [];
-  // kap yüksekliği: en uzun mesajın yüksekliği (taşma/örtüşme olmasın)
-  const olc = () => { if (!kutu) return; let h = 0; mesajlar.forEach((el) => { h = Math.max(h, el.offsetHeight); }); if (h) kutu.style.minHeight = h + 'px'; };
-  if (kutu) { olc(); addEventListener('resize', olc); if (document.fonts?.ready) document.fonts.ready.then(olc); }
   if (kutu && mesajlar.length > 1) {
     const sure = Number(kutu.dataset.sure || 6500);
     let i = 0; let bekle = false;

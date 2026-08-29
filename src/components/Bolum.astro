@@ -11,5 +11,6 @@ const { etiket, baslik, href, hrefMetin, id, class: cls } = Astro.props;
     </div>
     {href && <a href={href} class="text-sm font-semibold no-underline hover:underline">{hrefMetin}<span aria-hidden="true"> →</span></a>}
   </div>
+  <span class="serit -mt-5 mb-5" aria-hidden="true"></span>
   <slot />
 </section>

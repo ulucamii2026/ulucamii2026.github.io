@@ -8,6 +8,7 @@ const { etiket, baslik, altBaslik, kapak, kapakAlt = '' } = Astro.props;
   <div class="kapsayici relative py-12 sm:py-16">
     {etiket && <p class="etiket etiket-vurgu mb-2">{etiket}</p>}
     <h1>{baslik}</h1>
+    <span class="serit" aria-hidden="true"></span>
     {altBaslik && <p class="mt-3 text-lg text-(--metin-2) max-w-[60ch]">{altBaslik}</p>}
     <slot />
   </div>

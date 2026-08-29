@@ -114,13 +114,14 @@ const jsonLd = {
   <KurumsalSerit dil={dil} />
 
   <!-- ② Namaz vakitleri (vurgulu) + Bu hafta -->
-  <section class="bg-(--zemin-2) border-b border-(--cizgi)" aria-labelledby="vakit-baslik">
+  <section class="bg-(--zemin-2) border-b border-(--cizgi) reveal" aria-labelledby="vakit-baslik">
     <div class="kapsayici py-12 sm:py-16 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-14">
       <div>
-        <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+        <div class="flex flex-wrap items-end justify-between gap-3">
           <h2 id="vakit-baslik">{t('ana.bugun')}</h2>
           <a href={yol(dil, 'namaz')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{t('ana.tumvakitler')} <Ikon ad="ok" class="h-4 w-4" /></a>
         </div>
+        <span class="serit mb-5" aria-hidden="true"></span>
         <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={namazEtiket} vurgulu cumaEtiket={t('namaz.cuma')} cumaSaati={site.cumaSaati} />
         <p class="etiket mt-4">{t('namaz.kaynak')}</p>
         <!-- Hızlı erişim karoları — vakit sütunundaki boşluğu değerlendirir, iki sütunu dengeler -->
@@ -139,7 +140,8 @@ const jsonLd = {
       </div>
       <div id="bu-hafta" class="scroll-mt-24">
         <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>
-        <p class="mt-1 mb-5 text-sm text-(--metin-2)">{m.buHaftaAlt}</p>
+        <span class="serit" aria-hidden="true"></span>
+        <p class="mt-3 mb-5 text-sm text-(--metin-2)">{m.buHaftaAlt}</p>
         <BuHafta dil={dil} program={site.haftalikProgram} bugunIdx={bugunGun} />
       </div>
     </div>
@@ -147,10 +149,11 @@ const jsonLd = {
 
   <!-- ④ Duyurular — bento: 1 öne çıkan + liste -->
   <section class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="duyuru-baslik">
-    <div class="flex flex-wrap items-end justify-between gap-3 mb-6 cetvel pt-4">
+    <div class="flex flex-wrap items-end justify-between gap-3 cetvel pt-4">
       <h2 id="duyuru-baslik">{m.sonDuyuru}</h2>
       <a href={yol(dil, 'duyurular')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumDuyuru} <Ikon ad="ok" class="h-4 w-4" /></a>
     </div>
+    <span class="serit mb-6" aria-hidden="true"></span>
     {oneCikan ? (
       <div class="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
         <article class="kart overflow-hidden flex flex-col">
@@ -173,10 +176,11 @@ const jsonLd = {
       </div>
     ) : <p class="text-(--metin-2)">{m.duyuruBos}</p>}
     <div class="mt-10 cetvel pt-5">
-      <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+      <div class="flex flex-wrap items-end justify-between gap-3">
         <h3 class="text-xl sm:text-2xl" id="etkinlik-baslik">{m.etkinlik}</h3>
         <a href={yol(dil, 'etkinlikler')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumEtkinlik} <Ikon ad="ok" class="h-4 w-4" /></a>
       </div>
+      <span class="serit mb-5" aria-hidden="true"></span>
       {etkinlikler.length ? (
         <div class:list={['grid gap-5', etkinlikGrid]}>
           {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}

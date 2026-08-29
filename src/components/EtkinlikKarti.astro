@@ -1,8 +1,9 @@
 ---
 import { tarihBicimle, yol, ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-interface Props { dil: Dil; slug: string; baslik: string; baslangic: Date; bitis?: Date; saat?: string; yer?: string; afis?: string; afisKucuk?: string; galeri?: Array<{ dosya: string; kucuk?: string; alt?: string }>; ozet?: string; kategori?: string }
-const { dil, slug, baslik, baslangic, bitis, saat, yer, afis, afisKucuk, galeri, ozet, kategori } = Astro.props;
+/** `sira`: ızgaradaki kardeş sırası — verilirse kart kaydırma-belirmeye katılır (60 ms basamak). */
+interface Props { dil: Dil; slug: string; baslik: string; baslangic: Date; bitis?: Date; saat?: string; yer?: string; afis?: string; afisKucuk?: string; galeri?: Array<{ dosya: string; kucuk?: string; alt?: string }>; ozet?: string; kategori?: string; sira?: number }
+const { dil, slug, baslik, baslangic, bitis, saat, yer, afis, afisKucuk, galeri, ozet, kategori, sira } = Astro.props;
 const t = ceviri(dil);
 const href = yol(dil, 'etkinlikler', slug);
 const kapak = afisKucuk ?? afis ?? galeri?.[0]?.kucuk ?? galeri?.[0]?.dosya;
@@ -10,7 +11,7 @@ const tarihStr = bitis && bitis.getTime() !== baslangic.getTime()
   ? `${tarihBicimle(baslangic, dil, { day: 'numeric', month: 'long' })} – ${tarihBicimle(bitis, dil)}`
   : tarihBicimle(baslangic, dil);
 ---
-<article class="kart overflow-hidden flex flex-col">
+<article class:list={['kart overflow-hidden flex flex-col', sira !== undefined && 'reveal']} style={sira === undefined ? undefined : `--i:${sira % 3}`}>
   {kapak && <a href={href} class="block bg-(--zemin-3) border-b border-(--cizgi)"><img src={kapak} alt={baslik} loading="lazy" class="w-full h-auto max-h-[420px] object-contain" /></a>}
   <div class="p-5 flex flex-col gap-2 flex-1">
     <p class="etiket">{kategori && kategori !== 'genel' && <span class="etiket-vurgu">{kategori} · </span>}<time datetime={baslangic.toISOString()}>{tarihStr}</time>{saat && <span> · {saat}</span>}</p>

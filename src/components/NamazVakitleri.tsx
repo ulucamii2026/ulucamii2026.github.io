@@ -45,8 +45,8 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
         {SIRA.map((v: Vakit) => {
           const aktif = !!siradaki && siradaki.vakit === v && !siradaki.yarinMi;
           return (
-            <li class={`@container min-w-0 text-center border rounded-(--radius-kose) py-3 px-1 transition-colors ${aktif ? 'border-(--vurgu) bg-(--vurgu)/8 shadow-[0_8px_24px_-16px_var(--vurgu)]' : 'border-(--cizgi)'} ${vurgulu ? 'bg-(--zemin)/70' : ''}`} aria-current={aktif ? 'time' : undefined}>
-              <span class={`etiket block ${aktif ? 'etiket-vurgu' : ''}`}>{etiketler[v]}</span>
+            <li class={`@container min-w-0 text-center border rounded-(--radius-kose) py-3 px-1 transition-[background-color,border-color,box-shadow] duration-300 ease-out ${aktif ? 'border-(--vurgu-2) bg-(--vurgu-2)/8 shadow-[0_8px_24px_-16px_var(--vurgu-2)]' : 'border-(--cizgi)'} ${vurgulu ? 'bg-(--zemin)/70' : ''}`} aria-current={aktif ? 'time' : undefined}>
+              <span class={`etiket block transition-colors duration-300 ease-out ${aktif ? 'text-(--vurgu-2)' : ''}`}>{etiketler[v]}</span>
               <span class={`rakam block mt-1 leading-none whitespace-nowrap ${rakam}`}>{bugun[v]}</span>
             </li>
           );

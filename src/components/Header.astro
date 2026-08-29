@@ -31,7 +31,7 @@ const dogrudan: Madde[] = [L('namaz'), L('iletisim')];
 const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
 const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
 ---
-<header class="sticky top-0 z-40 bg-(--zemin)/95 backdrop-blur border-b border-(--cizgi)">
+<header class="vt-baslik sticky top-0 z-40 bg-(--zemin)/95 backdrop-blur border-b border-(--cizgi)">
   <div class="kilim-serit" aria-hidden="true"></div>
   <div class="kapsayici flex items-center gap-3 py-2.5">
     <a href={yol(dil, 'anasayfa')} class="flex items-center gap-3 no-underline text-(--metin) hover:text-(--metin) min-w-0">

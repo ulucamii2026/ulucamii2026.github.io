@@ -72,7 +72,7 @@ const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au 
     <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : dil === 'en' ? 'en_GB' : 'fr_BE'} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={kapakUrl} />
-    <noscript><style>.reveal, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
+    <noscript><style>.reveal, .serit, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
     <slot name="head" />
     <script is:inline>
       // Tema tercihi (localStorage) — sayfa boyanmadan önce uygula
@@ -97,8 +97,8 @@ const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au 
     <Footer dil={dil} />
     <Lightbox dil={dil} />
     <script>
-      // Bölüm reveal: görünür olunca .gorunur; reduced-motion'da CSS zaten devre dışı, JS yalnız sınıfı ekler
-      const r = document.querySelectorAll('.reveal');
+      // Bölüm reveal + başlık şeridi: görünür olunca .gorunur; reduced-motion'da CSS zaten devre dışı, JS yalnız sınıfı ekler
+      const r = document.querySelectorAll('.reveal, .serit');
       if (r.length) {
         // emniyet: gözlemci ne olursa olsun 2,5 sn içinde her şey görünür
         setTimeout(() => r.forEach((e) => e.classList.add('gorunur')), 2500);

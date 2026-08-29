@@ -267,7 +267,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   /* Çipler kendi içinde kayar; sayfa yatayda taşmaz (min-width:0 şart). */
   .cipler { display: flex; gap: 0.35rem; min-width: 0; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; scroll-snap-type: x proximity; }
   /* min-height: dokunma hedefi 32 px'in altına düşmesin (ölçülen 31 px idi). */
-  .cip { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; min-height: 2.125rem; gap: 0.4rem; padding: 0.34rem 0.7rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); font-size: 0.85rem; line-height: 1.3; white-space: nowrap; text-decoration: none; cursor: pointer; }
+  .cip { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; min-height: 2.125rem; gap: 0.4rem; padding: 0.34rem 0.7rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); font-size: 0.85rem; line-height: 1.3; white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out; }
   .cip:hover { border-color: var(--cizgi-etkilesim); color: var(--metin); }
   .cip[aria-current='true'] { border-color: var(--vurgu); color: var(--vurgu); font-weight: 600; }
   .cip[aria-pressed='true'] { background: var(--metin); border-color: var(--metin); color: var(--zemin); font-weight: 600; }
@@ -310,7 +310,10 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   .alan-rozet { justify-self: start; padding: 0.12rem 0.45rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; color: var(--metin); }
   .ders .konu { font-weight: 600; }
   .kaynak { grid-column: 3; font-size: 0.8rem; color: var(--metin-2); }
+  /* açılış: yalnız opaklık — yükseklik animasyonu yok, düzen tetiklenmez */
   .ic { padding: 0.2rem 0 1rem 6rem; max-width: 74ch; }
+  .ders[open] > .ic { animation: ic-ac 150ms ease-out; }
+  @keyframes ic-ac { from { opacity: 0; } }
   .ic h3 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--vurgu); margin: 0.9rem 0 0.25rem; }
   .ic h3:first-child { margin-top: 0; }
   .ic p { margin: 0; color: var(--metin-2); }
