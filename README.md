@@ -30,3 +30,12 @@ src/content/ayarlar/site.yaml      künye, telefon, IBAN, konsolosluk
 src/content/galeri/galeri.yaml     galeri listesi
 public/media/                      görseller (WebP)
 ```
+
+## Kur'an kursu müfredatı ve yıllık plan (29 Ağu 2026)
+- Sayfalar: `/tr/kuran-kursu-mufredati/` (+ `/fr/programme-ecole-coranique/`, `/en/quran-school-curriculum/`) ve `/tr/yillik-ders-plani/` (+ FR/EN karşılıkları).
+- Belgeler: `docs/kuran-kursu-mufredati-2026-2027.md`, `docs/kuran-kursu-yillik-plan-ozetli-2026-2027.md`, `public/belgeler/kuran-kursu/` (yazdırılabilir HTML + A4 PDF).
+- Üretim betikleri (`mufredat-uret.py`, `yillik-plan-cikar.py` vb.) bu depoda **değil**, `D:\app\marche-cami-sitesi\mufredat\` altında tutuluyor; buradaki içerik dosyaları onların çıktısıdır.
+
+## Apps Script (kayıt + ihtida arka ucu)
+- Kaynak: `scripts/apps-script/ulucamii-Kod-vNN.gs` — canlı sürüm bu depodaki en yüksek numaralı dosyadır (Ağu 2026 sonu itibarıyla v14: e-posta kimliği, müfredat eki, ders kitapları bilgisi).
+- Dağıtım Apps Script web editöründen yapılır, her seferinde **"Nouvelle version"** seçilir (ayrıntı: `scripts/apps-script/README.md`).
