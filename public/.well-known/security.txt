@@ -1,0 +1,5 @@
+Contact: mailto:info@ulucamii.be
+Contact: tel:+32472985073
+Expires: 2027-08-29T00:00:00.000Z
+Preferred-Languages: fr, nl, en, tr
+Canonical: https://ulucamii.be/.well-known/security.txt
