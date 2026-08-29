@@ -71,6 +71,7 @@ const m = dil === 'tr' ? {
         <img src="/media/logo/kuran-kursu-logo.svg" alt="" width="96" height="96" class="mx-auto h-24 w-24" loading="lazy" />
         <a href={PDF} class="dugme dugme-birincil mt-4 w-full justify-center" download>{m.pdf}</a>
         <a href={HTML} class="dugme dugme-ikincil mt-2 w-full justify-center" target="_blank" rel="noopener">{m.yazdir}<span aria-hidden="true"> ↗</span></a>
+        <a href={yol(dil, 'yillikplan')} class="dugme dugme-ikincil mt-2 w-full justify-center">{t('nav.yillikplan')}</a>
       </div>
       <dl class="kart-kagit p-5 ozet">
         {m.ozet.map(([k, v]) => <div><dt class="etiket">{k}</dt><dd>{v}</dd></div>)}
