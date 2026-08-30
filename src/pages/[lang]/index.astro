@@ -82,6 +82,11 @@ const jsonLd = {
   address: { '@type': 'PostalAddress', streetAddress: site.adres.sokak, postalCode: site.adres.posta, addressLocality: site.adres.sehir, addressCountry: 'BE' },
   geo: { '@type': 'GeoCoordinates', latitude: site.gps.enlem, longitude: site.gps.boylam },
   foundingDate: '1979', sameAs: [site.sosyal.facebook].filter(Boolean), image: new URL('/media/galeri/cami-24.webp', Astro.site).toString(),
+  // İki temas noktası: din görevlisi (imam@) ve dernek (info@) — boş alanlar düşer.
+  contactPoint: [
+    { '@type': 'ContactPoint', contactType: 'imam', telephone: site.telefon.dinGorevlisi, email: site.epostaDinGorevlisi },
+    { '@type': 'ContactPoint', contactType: 'association', telephone: site.telefon.cami, email: site.eposta },
+  ].map((c) => Object.fromEntries(Object.entries(c).filter(([, v]) => v))),
 };
 ---
 <Base baslik={t('site.ad')} dil={dil} aciklama={t('site.slogan')}>

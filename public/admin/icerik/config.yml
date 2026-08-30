@@ -247,7 +247,8 @@ collections:
                 fields:
                   - { name: dinGorevlisi, label: Din görevlisi, widget: string }
                   - { name: cami, label: Cami / dernek, widget: string }
-              - { name: eposta, label: E-posta, widget: string, required: false }
+              - { name: eposta, label: E-posta (dernek), widget: string, required: false }
+              - { name: epostaDinGorevlisi, label: E-posta (din görevlisi), widget: string, required: false }
               - name: banka
                 label: Banka hesabı
                 widget: object
@@ -374,6 +375,7 @@ collections:
                 summary: "{{fields.ad}}"
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: eposta, label: E-posta (@ulucamii.be, isteğe bağlı), widget: string, required: false }
                   - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
@@ -389,6 +391,7 @@ collections:
                 summary: "{{fields.ad}}"
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: eposta, label: E-posta (@ulucamii.be, isteğe bağlı), widget: string, required: false }
                   - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
@@ -402,6 +405,7 @@ collections:
                 widget: object
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: eposta, label: E-posta (@ulucamii.be, isteğe bağlı), widget: string, required: false }
                   - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev

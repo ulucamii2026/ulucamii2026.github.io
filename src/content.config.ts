@@ -63,6 +63,7 @@ const ayarlar = defineCollection({
     gps: z.object({ enlem: z.number(), boylam: z.number() }),
     telefon: z.object({ dinGorevlisi: z.string(), cami: z.string() }),
     eposta: z.string().optional(),
+    epostaDinGorevlisi: z.string().optional(),
     banka: z.object({ iban: z.string(), bic: z.string(), banka: z.string(), hesapAdi: z.string() }),
     cumaSaati: z.string().optional(),
     kursKayitLinki: z.string().url().optional(),
@@ -134,7 +135,7 @@ const afisler = defineCollection({
 
 /** Yönetim kurulu (tek dosya) — src/content/ayarlar/kurul.yaml */
 const uc = z.object({ tr: z.string(), fr: z.string(), en: z.string() });
-const kisi = z.object({ ad: z.string(), foto: z.string().optional(), gorev: uc });
+const kisi = z.object({ ad: z.string(), foto: z.string().optional(), eposta: z.string().optional(), gorev: uc });
 const kurul = defineCollection({
   loader: file('./src/content/ayarlar/kurul.yaml', { parser: (text) => [{ id: 'kurul', ...yamlParse(text).kurul }] }),
   schema: z.object({

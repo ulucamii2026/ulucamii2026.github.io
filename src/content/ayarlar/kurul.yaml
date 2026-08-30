@@ -2,18 +2,21 @@ kurul:
   donem: "2026 Genel Kurulu · son güncelleme: 24 Ağustos 2026"
   uyeler:
     - ad: Ercan Mola
+      eposta: ercanmola@ulucamii.be
       foto: /media/kurul/ercan-mola.webp
       gorev:
         tr: Dernek Başkanı
         fr: Président
         en: President
     - ad: Yasin Ağılönü
+      eposta: yasinagilonu@ulucamii.be
       foto: /media/kurul/yasin-agilonu.webp
       gorev:
         tr: Başkan Yardımcısı
         fr: Vice-président
         en: Vice-President
     - ad: Mehmet Sadık Gülkılık
+      eposta: mehmetgulkilik@ulucamii.be
       foto: /media/kurul/mehmet-sadik-gulkilik.webp
       gorev:
         tr: "Genel Sekreter - Danışman"
@@ -52,6 +55,7 @@ kurul:
         en: Audit Committee Member
   dinGorevlisi:
     ad: Rıdvan Kayahan
+    eposta: imam@ulucamii.be
     gorev:
       tr: Din Görevlisi (Diyanet İşleri Başkanlığı görevlendirmesi)
       fr: Imam (détaché par la Présidence des Affaires religieuses de Türkiye)

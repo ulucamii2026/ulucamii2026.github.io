@@ -122,7 +122,7 @@ const m = dil === 'tr'
     <p class="mt-2 text-sm text-(--metin-2)">{m.iletisimAlt}</p>
     <dl class="mt-3 grid gap-2 text-sm">
       <div class="flex items-center gap-2"><Ikon ad="telefon" class="h-5 w-5 shrink-0 text-(--vurgu)" /><a href={tel(site.telefon.dinGorevlisi)} class="mono text-base">{site.telefon.dinGorevlisi}</a></div>
-      {site.eposta && <div class="flex items-center gap-2"><Ikon ad="iletisim" class="h-5 w-5 shrink-0 text-(--vurgu)" /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></div>}
+      {(site.epostaDinGorevlisi ?? site.eposta) && <div class="flex items-center gap-2"><Ikon ad="iletisim" class="h-5 w-5 shrink-0 text-(--vurgu)" /><a href={`mailto:${site.epostaDinGorevlisi ?? site.eposta}`}>{site.epostaDinGorevlisi ?? site.eposta}</a></div>}
     </dl>
   </div>
 

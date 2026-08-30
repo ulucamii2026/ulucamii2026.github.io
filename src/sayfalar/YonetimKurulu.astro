@@ -129,6 +129,7 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
             <div class="uye-kunye">
               <p class="uye-ad">{u.ad}</p>
               <p class:list={['uye-gorev', i === 0 && 'birincil']}>{u.gorev[dil]}</p>
+              {u.eposta && <p class="uye-eposta"><a href={`mailto:${u.eposta}`}>{u.eposta.split('@')[0]}@<wbr />{u.eposta.split('@')[1]}</a></p>}
             </div>
           </li>
         ))}
@@ -200,8 +201,8 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
           <p class="etiket etiket-vurgu">{m.iletisimBaslik}</p>
           <p class="mt-1 text-sm text-(--metin-2)">{m.iletisimAlt}</p>
           <dl class="mt-3 grid gap-2 text-sm">
-            <div><dt class="etiket">{t('footer.cami')}</dt><dd><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a></dd></div>
-            {site.eposta && <div><dt class="etiket">{t('genel.eposta')}</dt><dd><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></dd></div>}
+            <div><dt class="etiket">{t('footer.cami')}</dt><dd><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></>}</dd></div>
+            <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</dd></div>
           </dl>
         </div>
         <div class="kart-kagit p-5">
@@ -318,9 +319,27 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
     color: var(--metin-2);
   }
   .uye-gorev.birincil { color: var(--vurgu); }
+  /* Üyenin @ulucamii.be adresi (30 Ağustos 2026): görev satırının altında, aynı
+     künye dilinde ama bağlantı renginde. Dar kartta adres "@" işaretinden sonra
+     kırılır (<wbr>); break-word yalnız o da sığmazsa kelime içinden böler.
+     0.74rem mobil tarama eşiğinin (11,5 px) üstünde kalır. */
+  .uye-eposta {
+    margin-top: 0.45rem;
+    font-size: 0.74rem;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+  }
+  .uye-eposta a {
+    color: var(--vurgu);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in oklab, var(--vurgu) 35%, transparent);
+    padding-bottom: 1px;
+  }
+  .uye-eposta a:hover, .uye-eposta a:focus-visible { border-bottom-color: var(--vurgu); }
   @media (min-width: 640px) {
     .uye-kunye { padding: 0.9rem 1rem 1rem; }
     .uye-gorev { font-size: 0.75rem; margin-top: 0.35rem; }
+    .uye-eposta { font-size: 0.8rem; }
   }
 
   /* Denetim kurulu levhaları İznik mavisi tonunda: aynı biçim, farklı organ. */

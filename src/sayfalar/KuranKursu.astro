@@ -50,5 +50,5 @@ const m = dil === 'tr'
     <p class="mt-1 text-sm text-(--metin-2)">{m.portalA}</p>
     <a href={yol(dil, 'portal')} class="dugme dugme-ikincil mt-3 w-full justify-center">{t('nav.portal')}</a>
   </div>
-  <p slot="yan" class="text-sm"><span class="etiket">{m.soru}</span><br /><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a></p>
+  <p slot="yan" class="text-sm"><span class="etiket">{m.soru}</span><br /><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</p>
 </IcerikSayfasi>

@@ -53,9 +53,8 @@ const siteLinkleri = [
     <address class="not-italic text-sm leading-6">
       <p class="etiket etiket-vurgu mb-2">{t('footer.iletisim')}</p>
       <p>{adresSatir} · <a href={haritaUrl} rel="noopener" target="_blank">{t('genel.harita')}</a></p>
-      <p class="mt-1.5"><span class="etiket">{t('footer.dingorevlisi')}</span> <a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a></p>
-      <p class="mt-1"><span class="etiket">{t('footer.cami')}</span> <a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a></p>
-      {site.eposta && <p class="mt-1"><a href={`mailto:${site.eposta}`}>{site.eposta}</a></p>}
+      <p class="mt-1.5"><span class="etiket">{t('footer.dingorevlisi')}</span> <a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`}>{site.epostaDinGorevlisi}</a></>}</p>
+      <p class="mt-1.5"><span class="etiket">{t('footer.cami')}</span> <a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></>}</p>
     </address>
     <nav class="text-sm leading-6" aria-label={t('footer.yasal')}>
       <p class="etiket etiket-vurgu mb-2">{t('footer.baglantilar')}</p>

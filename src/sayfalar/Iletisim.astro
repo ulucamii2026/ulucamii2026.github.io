@@ -26,9 +26,8 @@ const m = dil === 'tr' ? {
     <div>
       <dl class="grid gap-5">
         <div><dt class="etiket">{t('footer.adres')}</dt><dd class="mt-1 text-lg">{site.adres.sokak}<br />{site.adres.posta} {site.adres.sehir}, {site.adres.ulke}</dd></div>
-        <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a></dd></div>
-        <div><dt class="etiket">{t('footer.cami')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a></dd></div>
-        {site.eposta && <div><dt class="etiket">{t('genel.eposta')}</dt><dd class="mt-1 text-lg"><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></dd></div>}
+        <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</dd></div>
+        <div><dt class="etiket">{t('footer.cami')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></>}</dd></div>
         {site.sosyal.facebook && <div><dt class="etiket">Facebook</dt><dd class="mt-1"><a href={site.sosyal.facebook} target="_blank" rel="noopener">{dil === 'tr' ? 'Facebook sayfamız' : dil === 'en' ? 'Our Facebook page' : 'Notre page Facebook'}<span aria-hidden="true"> ↗</span></a></dd></div>}
       </dl>
       <p class="bilgi mt-8 text-sm">{m.not}</p>
