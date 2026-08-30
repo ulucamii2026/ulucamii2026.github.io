@@ -30,13 +30,23 @@ La carte de localisation affichée sur ce site est chargée depuis les serveurs 
 
 ## Formulaire d’inscription en ligne à l’école coranique
 
-Les inscriptions à l’école coranique se font via un **formulaire d’inscription en ligne** distinct, vers lequel notre site renvoie. Ce formulaire fonctionne indépendamment du site ; voici ce qu’il faut savoir :
+Les inscriptions à l’école coranique se font via le formulaire en ligne de notre site (ulucamii.be/kayit/). Ce qu’il faut savoir sur la version en vigueur depuis le 30 août 2026 :
 
-- **Données collectées :** identité de l’élève (le scan de la carte d’identité permet le remplissage automatique), date de naissance, école et classe, remarque de santé éventuelle, nom, téléphone, e-mail et adresse du parent, choix relatif à l’autorisation d’image (photo/vidéo), signature numérique.
-- **Finalité et base juridique :** inscription et conclusion du contrat école–parents (contrat) ; déclaration obligatoire du cours auprès du Conseiller aux affaires religieuses de Belgique (obligation légale) ; consentement du parent pour les données de l’enfant.
-- **Lieu de conservation et sous-traitant :** à l’envoi du formulaire, le PDF complété et signé ainsi que la ligne d’inscription sont conservés sur l’infrastructure de Google (Google Ireland Ltd.) — Google Apps Script, Google Drive et Google Sheets — dans le compte de la direction de l’école, qui en est informée par e-mail. Les données ne sont pas partagées avec des tiers ; seuls la direction de l’école et l’imam y ont accès.
-- **Durée de conservation :** période d’inscription + 2 ans ; formulaires de déclaration au Conseiller selon la durée prévue par la réglementation.
-- **Vos droits :** pour accéder à vos données d’inscription, les rectifier ou en demander la suppression, utilisez l’adresse de contact ci-dessous.
+- **Données collectées :** nom, prénom, sexe, date de naissance, école et classe de l’élève ; lien de parenté, nom, GSM, e-mail et adresse du responsable légal ; une deuxième personne à contacter (facultatif) ; le cas échéant une note de santé utile pendant les cours (uniquement avec votre consentement explicite) ; votre choix concernant les photos/vidéos ; la déclaration électronique d’acceptation du règlement (nom saisi et horodatage).
+- **Données NON collectées :** numéro de Registre national, numéro d’identité turc, copie ou photo de la carte d’identité, photo de l’élève. En droit belge, le numéro de Registre national ne peut être utilisé que par les organismes autorisés par le ministre de l’Intérieur (loi du 8 août 1983, art. 8) et la carte d’identité ne peut être copiée en dehors des cas prévus par la loi ; notre association ne demande ni ne conserve ces données.
+- **Finalité et base juridique :** inscription et conclusion du contrat école–parents (art. 6.1.b RGPD) ; pour les données liées à l’enseignement religieux, l’exception réservée aux associations à finalité religieuse pour leurs membres et contacts réguliers (art. 9.2.d) ; pour la note de santé, votre consentement explicite (art. 9.2.a). Les données de l’enfant sont fournies par le parent ou le représentant légal.
+- **Conservation et sous-traitant :** la ligne d’inscription et l’attestation générée automatiquement (PDF) sont stockées sur l’infrastructure Google (Google Ireland Ltd.) — Google Apps Script, Drive et Sheets — dans le compte de l’association ; une copie PDF est envoyée à l’adresse e-mail du parent. Seules la direction du cours et l’imam y ont accès ; aucun partage avec des tiers.
+- **Durée de conservation :** l’année scolaire concernée + 2 ans.
+- **Vos droits :** accès, rectification, effacement et retrait du consentement via info@ulucamii.be.
+
+## Formulaire de demande de conversion
+
+Les personnes souhaitant embrasser l’islam peuvent utiliser le formulaire en ligne pour préparer l’attestation de conversion :
+
+- **Données collectées :** les informations requises pour l’attestation de conversion (EK-9) de la Présidence des Affaires religieuses (Diyanet) — nom, sexe, date et lieu de naissance, nationalité, prénoms des parents, état civil, niveau d’études, profession, religion précédente, e-mail, téléphone et adresse, langue et date souhaitées pour la cérémonie, noms des témoins (facultatif) et remarques ; consentement explicite et déclaration électronique.
+- **Données NON collectées :** numéro de carte d’identité ou de passeport, copie de la carte, lecture MRZ, photo d’identité, image de signature. La pièce d’identité est seulement présentée à l’imam le jour de la cérémonie ; la photo et la signature manuscrite sont remises en main propre.
+- **Base juridique :** votre consentement explicite pour les données relatives aux convictions religieuses (art. 9.2.a RGPD) et le texte de consentement EK-10 de la Diyanet. L’attestation est transmise au service compétent de la Diyanet (Conseiller aux affaires religieuses, Bruxelles).
+- **Conservation :** sur l’infrastructure Google, dans le compte de l’association utilisé par l’imam ; au maximum 2 ans après la clôture de la demande. Vos demandes : imam@ulucamii.be.
 
 ## Le registre des membres de l’association
 

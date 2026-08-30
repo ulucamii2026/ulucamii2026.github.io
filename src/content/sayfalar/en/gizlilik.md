@@ -30,13 +30,23 @@ The location map on this site is loaded from the servers of the OpenStreetMap Fo
 
 ## Qur’an School Online Registration Form
 
-Qur’an school registrations are taken through a separate **online registration form** linked from our site. This form operates independently of our site; here is what you should know about it:
+Registrations for the Qur’an school are taken through the online form on our site (ulucamii.be/kayit/). What you should know about the version in force since 30 August 2026:
 
-- **Data collected:** the student’s identity details (which can be filled in automatically by scanning an ID card), date of birth, school and class, any health notes, the parent’s name, phone number, e-mail and address, a preference regarding permission to share images (photo/video), and a digital signature.
-- **Purpose and legal basis:** enrolment in the course and the formation of the course–parent agreement (contract); the mandatory course notification made to the Counsellor for Religious Affairs (legal obligation); the parent’s consent for data relating to the child.
-- **Storage location and processor:** once the form is submitted, the completed and signed PDF and the registration entry are stored on Google’s infrastructure (Google Ireland Ltd.) — Google Apps Script, Google Drive and Google Sheets — within the course administration’s account, and the course administration is notified by e-mail. Data is not shared with third parties; only the course administration and our imam have access.
-- **Retention period:** the enrolment period plus 2 years; Counsellor’s office notification forms are kept for the period set out in the relevant legislation.
-- **Your rights:** to exercise your rights to access, correct or request deletion of your registration data, you may use the contact address below.
+- **Data collected:** the student’s first name, surname, gender, date of birth, school and class; the parent’s relationship, name, mobile number, e-mail and address; an optional second contact person; where relevant, a health note useful during lessons (only with your explicit consent); your choice about photos/videos; the electronic declaration accepting the course rules (typed name and timestamp).
+- **Data NOT collected:** Belgian national register number, Turkish ID number, a copy or photo of the identity card, a photo of the student. Under Belgian law the national register number may only be used by bodies authorised by the Minister of the Interior (Act of 8 August 1983, art. 8) and the identity card may not be copied outside the cases provided by law; our association neither requests nor stores these data.
+- **Purpose and legal basis:** registration and the school–parent agreement (GDPR art. 6(1)(b)); for data relating to religious education, the exception for religious associations processing data of their members and regular contacts (art. 9(2)(d)); for the health note, your explicit consent (art. 9(2)(a)). The child’s data are provided by the parent or legal guardian.
+- **Storage and processor:** the registration row and the automatically generated registration document (PDF) are stored on Google infrastructure (Google Ireland Ltd.) — Google Apps Script, Drive and Sheets — in the association’s account; a PDF copy is e-mailed to the parent. Only the course administration and the imam have access; nothing is shared with third parties.
+- **Retention:** the school year concerned + 2 years.
+- **Your rights:** access, rectification, erasure and withdrawal of consent via info@ulucamii.be.
+
+## Conversion Application Form
+
+People wishing to embrace Islam may use the online application form to prepare the conversion certificate:
+
+- **Data collected:** the information required for the conversion certificate (EK-9) of the Presidency of Religious Affairs (Diyanet) — name, gender, date and place of birth, nationality, parents’ names, marital status, education, profession, previous religion, e-mail, phone and address, preferred language and date for the ceremony, optional witness names and remarks; explicit consent and electronic declaration.
+- **Data NOT collected:** identity card or passport number, copy of the card, MRZ scan, passport photo, signature image. The identity document is only shown to the imam on the day of the ceremony; the photo and handwritten signature are handed over in person.
+- **Legal basis:** your explicit consent for data concerning religious beliefs (GDPR art. 9(2)(a)) and the Diyanet EK-10 consent text. The certificate is forwarded to the competent Diyanet office (Counsellor for Religious Affairs, Brussels).
+- **Retention:** on Google infrastructure, in the association account used by the imam; at most 2 years after the application is closed. Requests: imam@ulucamii.be.
 
 ## The Association’s Member Register
 

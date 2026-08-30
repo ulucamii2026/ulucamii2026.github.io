@@ -1,31 +1,24 @@
 ---
-/** İhtida online başvuru formu sayfası — Preact adası (client:load) IhtidaFormu.tsx'i barındırır.
-    Form mantığı/doğrulama/PDF üretimi/gönderim tamamen istemcide; bu dosya yalnızca
-    sayfa iskeleti + site ayarlarından gelen bağlam (uç nokta, iletişim) sağlar. */
+/** İhtida online başvuru sayfası — 30 Ağustos 2026 v2: Preact adası yerine statik Astro bileşeni
+    (src/components/formlar/IhtidaFormu.astro) + hafif betik. PDF sunucuda (Apps Script) üretilir. */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import IhtidaFormu from '../components/IhtidaFormu';
+import IhtidaFormu from '../components/formlar/IhtidaFormu.astro';
 import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
+import { formMetinleri } from '../i18n/formlar';
 import { siteAyarlari } from '../lib/icerik';
+import '../styles/formlar.css';
+
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
+const m = formMetinleri(dil);
 const site = await siteAyarlari();
-const cami = {
-  ad: t('site.ad'),
-  adres: `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}`,
-  telefon: site.telefon.dinGorevlisi,
-  eposta: site.eposta ?? '',
-};
-const m = dil === 'tr'
-  ? { alt: 'Formu birkaç adımda doldurun; belge PDF olarak size ve camimize iletilir. İstediğiniz zaman ayrılıp devam edebilirsiniz — taslağınız bu cihazda saklanır.' }
-  : dil === 'en'
-  ? { alt: 'Complete the form in a few steps; the document is sent to you and to our mosque as a PDF. You can leave and come back at any time — your draft is saved on this device.' }
-  : { alt: 'Complétez le formulaire en quelques étapes ; le document PDF vous est transmis ainsi qu’à la mosquée. Vous pouvez reprendre plus tard — votre brouillon est conservé sur cet appareil.' };
 ---
-<Base baslik={t('nav.ihtidaBasvuru')} dil={dil} noindex>
-  <SayfaBasligi etiket={t('nav.ihtida')} baslik={t('nav.ihtidaBasvuru')} altBaslik={m.alt} />
-  <section class="kapsayici py-10 sm:py-14">
-    <IhtidaFormu client:load dil={dil} ucNokta={site.servisler.basvuru} cami={cami} ek10Yolu="/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf" />
+<Base baslik={t('nav.ihtidaBasvuru')} dil={dil} aciklama={m.ihtida.sayfaAciklama} noindex>
+  <SayfaBasligi etiket={t('nav.ihtida')} baslik={m.ihtida.sayfaBaslik} />
+  <section class="kapsayici py-10 sm:py-14" style="max-width: 52rem">
+    <IhtidaFormu dil={dil} uc={site.servisler.basvuru} eposta={site.epostaDinGorevlisi ?? site.eposta ?? 'info@ulucamii.be'}
+      telefon={site.telefon.dinGorevlisi} ek10Yolu="/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf" />
   </section>
 </Base>

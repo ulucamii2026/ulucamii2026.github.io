@@ -30,13 +30,23 @@ Sitedeki konum haritası, OpenStreetMap Vakfı’nın sunucularından yüklenir.
 
 ## Kur’an Kursu Online Kayıt Formu
 
-Kur’an kursu kayıtları, sitemizden bağlantı verilen ayrı bir **online kayıt formu** üzerinden alınır. Bu form sitemizden bağımsız çalışır; hakkında bilmeniz gerekenler:
+Kur’an kursu kayıtları sitemizdeki online kayıt formuyla (ulucamii.be/kayit/) alınır. 30 Ağustos 2026’dan itibaren geçerli sürüm hakkında bilmeniz gerekenler:
 
-- **Toplanan veriler:** öğrencinin kimlik bilgileri (kimlik kartı taranarak otomatik doldurulabilir), doğum tarihi, okulu ve sınıfı, varsa sağlık notu, velinin adı, telefonu, e-postası ve adresi, görüntü (fotoğraf/video) paylaşım izni tercihi, dijital imza.
-- **Amaç ve hukuki dayanak:** kursa kayıt ve kurs–veli sözleşmesinin kurulması (sözleşme); Belçika Din Hizmetleri Müşavirliği’ne yapılan zorunlu kurs bildirimi (yasal yükümlülük); çocuğa ait veriler için velinin rızası.
-- **Saklama yeri ve işleyen:** Form gönderildiğinde doldurulmuş ve imzalı PDF ile kayıt satırı, Google (Google Ireland Ltd.) altyapısında — Google Apps Script, Google Drive ve Google Sheets — kurs idaresinin hesabında saklanır ve kurs idaresine e-posta ile bildirilir. Veriler üçüncü kişilerle paylaşılmaz; yalnızca kurs idaresi ve din görevlisi erişir.
-- **Saklama süresi:** kayıt dönemi + 2 yıl; Müşavirlik bildirim formları ilgili mevzuattaki süre kadar.
-- **Haklarınız:** kayıt bilgilerinize erişme, düzeltme ve silinmesini isteme hakkınız için aşağıdaki iletişim adresini kullanabilirsiniz.
+- **Toplanan veriler:** öğrencinin adı, soyadı, cinsiyeti, doğum tarihi, okulu ve sınıfı; velinin yakınlığı, adı soyadı, telefonu, e-postası ve adresi; isteğe bağlı ikinci ulaşılacak kişi; varsa kurs sırasında bilinmesi gereken sağlık notu (yalnız açık rızanızla); görüntü (fotoğraf/video) paylaşım izni tercihiniz; kurs kurallarını onayladığınıza dair elektronik beyan (yazdığınız ad soyad ve tarih-saat).
+- **Toplanmayan veriler:** Belçika millî sicil numarası (rijksregisternummer), T.C. kimlik numarası, kimlik kartı kopyası veya fotoğrafı, öğrenci fotoğrafı. Belçika hukukunda millî sicil numarası yalnız İçişleri Bakanlığı’nın izin verdiği kurumlarca kullanılabilir (8 Ağustos 1983 tarihli Kanun, md. 8) ve kimlik kartının kopyası yasal zorunluluk dışında alınamaz; derneğimiz bu verileri istemez ve saklamaz.
+- **Amaç ve hukuki dayanak:** kursa kayıt ve kurs–veli sözleşmesinin kurulması (GDPR md. 6/1-b); dinî eğitime ilişkin veri için derneğin kendi üyeleri ve düzenli temas kişileriyle sınırlı işleme istisnası (md. 9/2-d); sağlık notu için açık rıza (md. 9/2-a). Çocuğa ait veriler veli veya yasal temsilci tarafından verilir.
+- **Saklama yeri ve işleyen:** kayıt satırı ve otomatik üretilen kayıt belgesi (PDF), Google (Google Ireland Ltd.) altyapısında — Google Apps Script, Drive ve Sheets — kurs idaresinin dernek hesabında saklanır; PDF kopyası velinin e-postasına gönderilir. Yalnız kurs idaresi ve din görevlisi erişir; üçüncü kişilerle paylaşılmaz.
+- **Saklama süresi:** kayıt dönemi + 2 yıl.
+- **Haklarınız:** erişme, düzeltme, silme ve rızayı geri alma talepleriniz için info@ulucamii.be.
+
+## İhtida Başvuru Formu
+
+Müslüman olmak isteyenler, ihtida belgesi hazırlığı için sitemizdeki online başvuru formunu kullanabilir:
+
+- **Toplanan veriler:** Diyanet İşleri Başkanlığı’nın ihtida belgesi (EK-9) için gereken bilgiler — ad soyad, cinsiyet, doğum tarihi ve yeri, uyruk, anne ve baba adı, medeni hâl, öğrenim durumu, meslek, önceki din, e-posta, telefon ve adres, tören dili ve tarih tercihi, isteğe bağlı şahit adları ve açıklamalar; açık rıza ve elektronik beyan.
+- **Toplanmayan veriler:** kimlik veya pasaport numarası, kimlik kopyası, MRZ taraması, vesikalık fotoğraf, imza görüntüsü. Kimlik belgesi tören günü din görevlisine yalnız gösterilir; fotoğraf ve ıslak imza törende elden alınır.
+- **Hukuki dayanak:** dinî inanca ilişkin veri için açık rızanız (GDPR md. 9/2-a) ve Diyanet’in EK-10 açık rıza metni. Belge, Diyanet İşleri Başkanlığı’nın yetkili birimine (Brüksel Din Hizmetleri Müşavirliği) iletilir.
+- **Saklama:** Google altyapısında din görevlisinin dernek hesabında; başvuru sonuçlandıktan sonra en fazla 2 yıl. Talepleriniz için imam@ulucamii.be.
 
 ## Dernek Üye Defteri
 

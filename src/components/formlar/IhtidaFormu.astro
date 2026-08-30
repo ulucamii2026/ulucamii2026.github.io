@@ -1,0 +1,288 @@
+---
+/** İhtida başvuru formu (v2, 30 Ağustos 2026) — tek sayfa, altı bölüm, sunucu tarafı PDF.
+    EK-9 belgesinin gerektirdiği alanlar (Diyanet şablonu) toplanır; kimlik numarası, kimlik kopyası,
+    MRZ/OCR, vesikalık ve imza kanvası YOK — bunlar törende elden alınır. Davranış: src/scripts/ihtida-form.ts */
+import type { Dil } from '../../i18n/ui';
+import { yol } from '../../i18n/utils';
+import { formMetinleri, doldur } from '../../i18n/formlar';
+
+interface Props { dil: Dil; uc: string; eposta: string; telefon: string; ek10Yolu: string }
+const { dil, uc, eposta, telefon, ek10Yolu } = Astro.props;
+const m = formMetinleri(dil);
+const h = m.ihtida, o = m.ortak;
+
+const bugun = new Date();
+const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
+const dogumMin = tarihStr(new Date(bugun.getFullYear() - 110, 0, 1));
+const dogumMax = tarihStr(new Date(bugun.getFullYear() - 16, bugun.getMonth(), bugun.getDate()));
+
+const metinJson = JSON.stringify({
+  hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: o.basari.epostaGitti },
+  taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
+});
+---
+<div class="ucf-giris" data-form-ust>
+  <p>{h.giris}</p>
+  <div class="ucf-not mt-4"><span class="simge" aria-hidden="true">ℹ</span><div>{h.kimlikNotu}</div></div>
+</div>
+
+<form class="ucf mt-8" data-form="ihtida" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-IHTIDA-2026"
+      data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
+      novalidate autocomplete="on" aria-describedby="i-giris-not">
+  <script type="application/json" data-metin set:html={metinJson} />
+
+  <div class="ucf-taslak" data-taslak-not hidden>
+    <span>{o.taslakGeriYuklendi}</span>
+    <button type="button" data-taslak-sil>{o.taslakSil}</button>
+  </div>
+  <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
+
+  <!-- 1 · Kişisel bilgiler -->
+  <section class="ucf-bolum" id="b-kisi" aria-labelledby="h-kisi">
+    <h2 id="h-kisi"><span class="no">1</span>{h.bolum.kisi}</h2>
+    <p id="i-giris-not" class="bolum-not"><span class="zorunlu">*</span> {o.zorunluIsaret}</p>
+    <div class="ucf-izgara">
+      <div data-alan class="tam">
+        <label for="i-ad">{h.kisi.adSoyad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-ad" name="basvuran.adSoyad" type="text" required maxlength="80" autocomplete="name" autocapitalize="words" />
+        <p class="yardim">{h.kisi.adSoyadYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <fieldset data-alan>
+        <legend>{h.kisi.cinsiyet} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="i-cins-kadin" type="radio" name="basvuran.cinsiyet" value="kadin" required /><label for="i-cins-kadin">{h.kisi.kadin}</label></span>
+          <span class="secenek"><input id="i-cins-erkek" type="radio" name="basvuran.cinsiyet" value="erkek" /><label for="i-cins-erkek">{h.kisi.erkek}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+      <div data-alan>
+        <label for="i-dogum">{h.kisi.dogumTarihi} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-dogum" name="basvuran.dogumTarihi" type="date" required data-tur="tarih" data-yas-min="16" data-yas-max="110" min={dogumMin} max={dogumMax} autocomplete="bday" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-dogum-yeri">{h.kisi.dogumYeri} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-dogum-yeri" name="basvuran.dogumYeri" type="text" required maxlength="80" placeholder={h.kisi.dogumYeriYardim} />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-uyruk">{h.kisi.uyruk} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-uyruk" name="basvuran.uyruk" type="text" required maxlength="60" autocomplete="country-name" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-anne">{h.kisi.anneAdi} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-anne" name="basvuran.anneAdi" type="text" required maxlength="80" autocomplete="off" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-baba">{h.kisi.babaAdi} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-baba" name="basvuran.babaAdi" type="text" required maxlength="80" autocomplete="off" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Durum -->
+  <section class="ucf-bolum" id="b-durum" aria-labelledby="h-durum">
+    <h2 id="h-durum"><span class="no">2</span>{h.bolum.durum}</h2>
+    <div class="ucf-izgara">
+      <div data-alan>
+        <label for="i-medeni">{h.durum.medeniHali} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <select id="i-medeni" name="basvuran.medeniHali" required>
+          <option value="">{o.seciniz}</option>
+          <option value="bekar">{h.durum.bekar}</option>
+          <option value="evli">{h.durum.evli}</option>
+          <option value="dul">{h.durum.dul}</option>
+          <option value="bosanmis">{h.durum.bosanmis}</option>
+        </select>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-ogrenim">{h.durum.ogrenim} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-ogrenim" name="basvuran.ogrenimDurumu" type="text" required maxlength="80" placeholder={h.durum.ogrenimYardim} />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="i-meslek">{h.durum.meslek} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-meslek" name="basvuran.meslek" type="text" required maxlength="80" autocomplete="organization-title" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · İletişim -->
+  <section class="ucf-bolum" id="b-iletisim" aria-labelledby="h-iletisim">
+    <h2 id="h-iletisim"><span class="no">3</span>{h.bolum.iletisim}</h2>
+    <div class="ucf-izgara">
+      <div data-alan>
+        <label for="i-eposta">{h.iletisim.eposta} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-eposta" name="basvuran.eposta" type="email" required data-tur="eposta" maxlength="120" autocomplete="email" inputmode="email" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-telefon">{h.iletisim.telefon} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-telefon" name="basvuran.telefon" type="tel" required data-tur="telefon" maxlength="24" autocomplete="tel" inputmode="tel" placeholder="+32 470 12 34 56" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="i-adres">{h.iletisim.adres} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-adres" name="basvuran.adres" type="text" required maxlength="200" autocomplete="street-address" placeholder={h.iletisim.adresYardim} />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · İhtida ve tören -->
+  <section class="ucf-bolum" id="b-ihtida" aria-labelledby="h-ihtida">
+    <h2 id="h-ihtida"><span class="no">4</span>{h.bolum.ihtida}</h2>
+    <div class="ucf-izgara">
+      <div data-alan>
+        <label for="i-onceki-din">{h.ihtida.oncekiDin} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-onceki-din" name="basvuran.oncekiDin" type="text" required maxlength="80" placeholder={h.ihtida.oncekiDinYardim} />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-yeni-isim">{h.ihtida.yeniIsim} <span class="istege">({o.istegeBagli})</span></label>
+        <input id="i-yeni-isim" name="basvuran.yeniIsim" type="text" maxlength="60" autocapitalize="words" />
+        <p class="yardim">{h.ihtida.yeniIsimYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="i-sebep">{h.ihtida.sebep} <span class="istege">({o.istegeBagli})</span></label>
+        <textarea id="i-sebep" name="basvuran.ihtidaSebebi" maxlength="600" rows="4"></textarea>
+        <p class="yardim">{h.ihtida.sebepYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-toren-dili">{h.ihtida.torenDili} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <select id="i-toren-dili" name="basvuran.torenDili" required>
+          <option value="">{o.seciniz}</option>
+          <option value="fr" selected={dil === 'fr'}>{h.ihtida.dilFr}</option>
+          <option value="tr" selected={dil === 'tr'}>{h.ihtida.dilTr}</option>
+          <option value="en" selected={dil === 'en'}>{h.ihtida.dilEn}</option>
+          <option value="ar">{h.ihtida.dilAr}</option>
+        </select>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="i-toren-tarihi">{h.ihtida.torenTarihi} <span class="istege">({o.istegeBagli})</span></label>
+        <input id="i-toren-tarihi" name="basvuran.torenTarihi" type="text" maxlength="80" placeholder={h.ihtida.torenTarihiYardim} />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <fieldset data-alan class="tam">
+        <legend>{h.ihtida.sahitler} <span class="istege">({o.istegeBagli})</span></legend>
+        <p class="yardim">{h.ihtida.sahitlerYardim}</p>
+        <div class="ucf-izgara mt-1">
+          <div data-alan>
+            <label for="i-sahit-1">{h.ihtida.sahit1}</label>
+            <input id="i-sahit-1" name="sahit.1" type="text" maxlength="80" autocomplete="off" autocapitalize="words" />
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan>
+            <label for="i-sahit-2">{h.ihtida.sahit2}</label>
+            <input id="i-sahit-2" name="sahit.2" type="text" maxlength="80" autocomplete="off" autocapitalize="words" />
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+        </div>
+      </fieldset>
+      <div data-alan>
+        <label for="i-haberdar">{h.ihtida.nasilHaberdar} <span class="istege">({o.istegeBagli})</span></label>
+        <input id="i-haberdar" name="basvuran.nasilHaberdar" type="text" maxlength="120" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="i-not">{h.ihtida.ekNot} <span class="istege">({o.istegeBagli})</span></label>
+        <textarea id="i-not" name="basvuran.ekNot" maxlength="600" rows="3"></textarea>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Rıza ve beyan -->
+  <section class="ucf-bolum" id="b-riza" aria-labelledby="h-riza">
+    <h2 id="h-riza"><span class="no">5</span>{h.bolum.riza}</h2>
+    <div class="ucf-izgara">
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="i-onay-riza" type="checkbox" name="onay.acikRiza" required />
+          <label for="i-onay-riza">{h.riza.acikRiza}</label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="i-onay-ek10" type="checkbox" name="onay.ek10" required />
+          <label for="i-onay-ek10">{h.riza.ek10} <a href={ek10Yolu} target="_blank" rel="noopener">{h.riza.ek10Baglanti}</a></label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="i-onay-gizlilik" type="checkbox" name="onay.gizlilik" required />
+          <label for="i-onay-gizlilik">{h.riza.gizlilik} <a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa} ↗</a></label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="i-foto-izni" type="checkbox" name="fotografIzni" />
+          <label for="i-foto-izni">{h.riza.fotoIzni}</label>
+        </div>
+        <p class="yardim">{h.riza.fotoAciklama}</p>
+      </div>
+      <div class="tam">
+        <h3 class="font-serif text-lg mt-2 mb-1">{h.riza.beyanBaslik}</h3>
+        <blockquote class="kurallar-kutu" style="max-height:none">{h.riza.beyanMetin}</blockquote>
+      </div>
+      <div data-alan class="tam">
+        <label for="i-beyan">{h.riza.beyanEtiket} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-beyan" name="onay.beyan" type="text" required maxlength="80" data-esle="basvuran.adSoyad" autocomplete="off" autocapitalize="words" />
+        <p class="yardim">{h.riza.beyanYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Özet ve gönderim -->
+  <section class="ucf-bolum" id="b-ozet" aria-labelledby="h-ozet">
+    <h2 id="h-ozet"><span class="no">6</span>{h.bolum.ozet}</h2>
+    <p class="bolum-not">{o.ozetAciklama}</p>
+    <dl class="ozet-liste" data-ozet>
+      {([
+        ['kisi', h.ozet.kisi, '#b-kisi'], ['dogum', h.ozet.dogum, '#b-kisi'], ['uyruk', h.ozet.uyruk, '#b-kisi'], ['aile', h.ozet.aile, '#b-kisi'],
+        ['durum', h.ozet.durum, '#b-durum'], ['iletisim', h.ozet.iletisim, '#b-iletisim'], ['din', h.ozet.din, '#b-ihtida'],
+        ['toren', h.ozet.toren, '#b-ihtida'], ['sahitler', h.ozet.sahitler, '#b-ihtida'],
+      ] as const).map(([anahtar, etiket, hedef]) => (
+        <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd data-ozet-deger>{o.bosDeger}</dd><a href={hedef}>{o.ozetDuzenle}</a></div>
+      ))}
+    </dl>
+    <div class="ucf-not mt-5">
+      <span class="simge" aria-hidden="true">🔒</span>
+      <div><strong>{o.gizlilikKutu.baslik}</strong>{o.gizlilikKutu.metin}</div>
+    </div>
+    <div class="ucf-gonder mt-6">
+      <button type="submit" class="dugme dugme-birincil">{o.gonder}</button>
+      <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+    </div>
+  </section>
+</form>
+
+<section class="ucf-basari mt-8" data-basari hidden aria-live="polite">
+  <h2>{o.basari.baslik}</h2>
+  <div><div class="ref-etiket">{o.basari.referans}</div><div class="ref" data-ref>—</div></div>
+  <p data-eposta-metin></p>
+  <p class="text-sm" style="color: var(--metin-2)">{o.basari.spamNotu}</p>
+  <p>{h.basari.sonrakiAdimlar}</p>
+  <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+  <div class="eylemler">
+    <a class="dugme dugme-ikincil" href={yol(dil, 'ihtida')}>{h.ustEtiket}</a>
+    <a class="dugme dugme-ikincil" href={`/${dil}/`}>{o.anasayfa}</a>
+  </div>
+</section>
+
+<script>
+  import { ihtidaFormuBaslat } from '../../scripts/ihtida-form';
+  ihtidaFormuBaslat();
+</script>

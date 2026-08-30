@@ -1,0 +1,316 @@
+---
+/** Kur'an kursu kayıt formu (v2, 30 Ağustos 2026) — tek sayfa, yedi bölüm, sunucu tarafı PDF.
+    Kimlik numarası, kimlik kopyası, fotoğraf ve imza kanvası YOK (Belçika: 8 Ağu 1983 Kanunu md. 8;
+    APD eID rehberi). Metinler src/i18n/formlar, davranış src/scripts/kayit-form.ts. */
+import type { Dil } from '../../i18n/ui';
+import { yol } from '../../i18n/utils';
+import { formMetinleri, doldur } from '../../i18n/formlar';
+import okulVerisi from '../../data/okullar.json';
+
+interface Props { dil: Dil; uc: string; eposta: string; telefon: string }
+const { dil, uc, eposta, telefon } = Astro.props;
+const m = formMetinleri(dil);
+const k = m.kayit, o = m.ortak;
+
+const bugun = new Date();
+const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
+const dogumMin = tarihStr(new Date(bugun.getFullYear() - 19, bugun.getMonth(), bugun.getDate()));
+const dogumMax = tarihStr(new Date(bugun.getFullYear() - 3, bugun.getMonth(), bugun.getDate()));
+
+const okullar = okulVerisi.okullar as Array<{ ad: string; grup: 'marche' | 'cevre'; tur: 'fondamental' | 'secondaire' }>;
+type Sinif = { v: string; tr: string; fr: string; en: string };
+const siniflar = okulVerisi.siniflar as { fondamental: Sinif[]; secondaire: Sinif[] };
+const sinifJson = JSON.stringify({
+  fondamental: siniflar.fondamental.map((s) => ({ v: s.v, ad: s[dil] })),
+  secondaire: siniflar.secondaire.map((s) => ({ v: s.v, ad: s[dil] })),
+  diger: k.okul.diger, onceOkul: k.okul.onceOkul,
+});
+const metinJson = JSON.stringify({
+  hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: o.basari.epostaGitti },
+  taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
+});
+---
+<div class="ucf-giris" data-form-ust>
+  <p>{k.giris}</p>
+  <p class="ucf-sure"><span aria-hidden="true">⏱</span> {k.sureNotu}</p>
+</div>
+
+<form class="ucf mt-8" data-form="kayit" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-KAYIT-2026"
+      data-taslak="ulucamii:kayit:v2" data-eposta-alani="veli.eposta" data-evet={o.evet} data-hayir={o.hayir}
+      novalidate autocomplete="on" aria-describedby="k-giris-not">
+  <script type="application/json" data-metin set:html={metinJson} />
+  <script type="application/json" data-siniflar set:html={sinifJson} />
+
+  <div class="ucf-taslak" data-taslak-not hidden>
+    <span>{o.taslakGeriYuklendi}</span>
+    <button type="button" data-taslak-sil>{o.taslakSil}</button>
+  </div>
+  <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
+
+  <!-- 1 · Öğrenci -->
+  <section class="ucf-bolum" id="b-ogrenci" aria-labelledby="h-ogrenci">
+    <h2 id="h-ogrenci"><span class="no">1</span>{k.bolum.ogrenci}</h2>
+    <p id="k-giris-not" class="bolum-not"><span class="zorunlu">*</span> {o.zorunluIsaret}</p>
+    <div class="ucf-izgara">
+      <div data-alan>
+        <label for="k-ad">{k.ogrenci.ad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-ad" name="ogrenci.ad" type="text" required maxlength="60" autocomplete="off" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="k-soyad">{k.ogrenci.soyad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-soyad" name="ogrenci.soyad" type="text" required maxlength="60" autocomplete="off" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <fieldset data-alan>
+        <legend>{k.ogrenci.cinsiyet} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-cins-kiz" type="radio" name="ogrenci.cinsiyet" value="kiz" required /><label for="k-cins-kiz">{k.ogrenci.kiz}</label></span>
+          <span class="secenek"><input id="k-cins-erkek" type="radio" name="ogrenci.cinsiyet" value="erkek" /><label for="k-cins-erkek">{k.ogrenci.erkek}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+      <div data-alan>
+        <label for="k-dogum">{k.ogrenci.dogumTarihi} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-dogum" name="ogrenci.dogumTarihi" type="date" required data-tur="tarih" data-yas-min="4" data-yas-max="18" min={dogumMin} max={dogumMax} />
+        <p class="yardim">{k.ogrenci.dogumTarihiYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Okul -->
+  <section class="ucf-bolum" id="b-okul" aria-labelledby="h-okul">
+    <h2 id="h-okul"><span class="no">2</span>{k.bolum.okul}</h2>
+    <div class="ucf-izgara">
+      <div data-alan class="tam">
+        <label for="k-okul">{k.okul.okul} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <select id="k-okul" name="ogrenci.okul" required>
+          <option value="">{o.seciniz}</option>
+          <optgroup label={k.okul.grupMarche}>
+            {okullar.filter((s) => s.grup === 'marche').map((s) => <option value={s.ad} data-tur={s.tur}>{s.ad}</option>)}
+          </optgroup>
+          <optgroup label={k.okul.grupCevre}>
+            {okullar.filter((s) => s.grup === 'cevre').map((s) => <option value={s.ad} data-tur={s.tur}>{s.ad}</option>)}
+          </optgroup>
+          <option value="diger">{k.okul.diger}</option>
+        </select>
+        <p class="yardim">{k.okul.okulYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam" data-kosul="ogrenci.okul=diger" hidden>
+        <label for="k-okul-diger">{k.okul.okulDiger} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-okul-diger" name="ogrenci.okulDiger" type="text" required maxlength="120" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="k-sinif">{k.okul.sinif} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <select id="k-sinif" name="ogrenci.sinif" required disabled><option value="">{k.okul.onceOkul}</option></select>
+        <p class="yardim">{k.okul.sinifYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <fieldset data-alan>
+        <legend>{k.okul.kursDurumu} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-kurs-yeni" type="radio" name="ogrenci.kursDurumu" value="yeni" required /><label for="k-kurs-yeni">{k.okul.yeni}</label></span>
+          <span class="secenek"><input id="k-kurs-devam" type="radio" name="ogrenci.kursDurumu" value="devam" /><label for="k-kurs-devam">{k.okul.devam}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- 3 · Veli -->
+  <section class="ucf-bolum" id="b-veli" aria-labelledby="h-veli">
+    <h2 id="h-veli"><span class="no">3</span>{k.bolum.veli}</h2>
+    <div class="ucf-izgara">
+      <fieldset data-alan class="tam">
+        <legend>{k.veli.yakinlik} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-yak-anne" type="radio" name="veli.yakinlik" value="anne" required /><label for="k-yak-anne">{k.veli.anne}</label></span>
+          <span class="secenek"><input id="k-yak-baba" type="radio" name="veli.yakinlik" value="baba" /><label for="k-yak-baba">{k.veli.baba}</label></span>
+          <span class="secenek"><input id="k-yak-vasi" type="radio" name="veli.yakinlik" value="vasi" /><label for="k-yak-vasi">{k.veli.vasi}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+      <div data-alan>
+        <label for="k-veli-ad">{k.veli.adSoyad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-veli-ad" name="veli.adSoyad" type="text" required maxlength="80" autocomplete="name" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="k-veli-cep">{k.veli.cep} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-veli-cep" name="veli.cep" type="tel" required data-tur="telefon" maxlength="24" autocomplete="tel" inputmode="tel" placeholder="+32 470 12 34 56" />
+        <p class="yardim">{k.veli.cepYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="k-veli-eposta">{k.veli.eposta} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-veli-eposta" name="veli.eposta" type="email" required data-tur="eposta" maxlength="120" autocomplete="email" inputmode="email" />
+        <p class="yardim">{k.veli.epostaYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="k-adres">{k.veli.adres} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-adres" name="veli.adres" type="text" required maxlength="160" autocomplete="street-address" placeholder={k.veli.adresYardim} />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="k-posta">{k.veli.postaKodu} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-posta" name="veli.postaKodu" type="text" required maxlength="10" inputmode="numeric" autocomplete="postal-code" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="k-sehir">{k.veli.sehir} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-sehir" name="veli.sehir" type="text" required maxlength="80" autocomplete="address-level2" value="Marche-en-Famenne" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <fieldset data-alan class="tam">
+        <legend>{k.veli.iletisimDili} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-dil-tr" type="radio" name="veli.iletisimDili" value="tr" required checked={dil === 'tr'} /><label for="k-dil-tr">{k.veli.dilTr}</label></span>
+          <span class="secenek"><input id="k-dil-fr" type="radio" name="veli.iletisimDili" value="fr" checked={dil !== 'tr'} /><label for="k-dil-fr">{k.veli.dilFr}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- 4 · İkinci kişi -->
+  <section class="ucf-bolum" id="b-acil" aria-labelledby="h-acil">
+    <h2 id="h-acil"><span class="no">4</span>{k.bolum.acil} <span class="istege">({o.istegeBagli})</span></h2>
+    <p class="bolum-not">{k.acil.aciklama}</p>
+    <div class="ucf-izgara">
+      <div data-alan>
+        <label for="k-acil-ad">{k.acil.adSoyad}</label>
+        <input id="k-acil-ad" name="acil.adSoyad" type="text" maxlength="80" autocomplete="off" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="k-acil-cep">{k.acil.cep}</label>
+        <input id="k-acil-cep" name="acil.cep" type="tel" data-tur="telefon" maxlength="24" inputmode="tel" autocomplete="off" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Sağlık ve izinler -->
+  <section class="ucf-bolum" id="b-saglik" aria-labelledby="h-saglik">
+    <h2 id="h-saglik"><span class="no">5</span>{k.bolum.saglik}</h2>
+    <div class="ucf-izgara">
+      <fieldset data-alan class="tam">
+        <legend>{k.saglik.soru} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-saglik-hayir" type="radio" name="saglik.var" value="hayir" required /><label for="k-saglik-hayir">{o.hayir}</label></span>
+          <span class="secenek"><input id="k-saglik-evet" type="radio" name="saglik.var" value="evet" /><label for="k-saglik-evet">{o.evet}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+      <div class="tam" data-kosul="saglik.var=evet" hidden>
+        <div class="ucf-izgara">
+          <div data-alan class="tam">
+            <label for="k-saglik-not">{k.saglik.not} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <textarea id="k-saglik-not" name="saglik.not" required maxlength="600" rows="4"></textarea>
+            <p class="yardim">{k.saglik.notYardim}</p>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan class="tam">
+            <div class="onay-kutu">
+              <input id="k-saglik-riza" type="checkbox" name="onay.saglikRiza" required />
+              <label for="k-saglik-riza">{k.saglik.riza}</label>
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+        </div>
+      </div>
+      <fieldset data-alan class="tam">
+        <legend>{k.saglik.goruntuSoru} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-goruntu-evet" type="radio" name="goruntuIzni" value="evet" required /><label for="k-goruntu-evet">{o.evet}</label></span>
+          <span class="secenek"><input id="k-goruntu-hayir" type="radio" name="goruntuIzni" value="hayir" /><label for="k-goruntu-hayir">{o.hayir}</label></span>
+        </div>
+        <p class="yardim">{k.saglik.goruntuAciklama}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- 6 · Kurallar ve onay -->
+  <section class="ucf-bolum" id="b-kurallar" aria-labelledby="h-kurallar">
+    <h2 id="h-kurallar"><span class="no">6</span>{k.bolum.kurallar}</h2>
+    <p class="bolum-not">{k.kurallar.aciklama}</p>
+    <div class="ucf-izgara">
+      <div class="tam">
+        <div class="kurallar-kutu" id="k-kurallar-kutu" data-kaydir tabindex="0" role="region" aria-label={k.kurallar.baslik}>
+          <h3>{k.kurallar.ogrenciBaslik}</h3>
+          <ol>{k.kurallar.ogrenci.map((s) => <li>{s}</li>)}</ol>
+          <h3>{k.kurallar.veliBaslik}</h3>
+          <ol>{k.kurallar.veli.map((s) => <li>{s}</li>)}</ol>
+          <p class="son">{k.kurallar.kitapNotu}</p>
+        </div>
+        <p class="kaydir-not" data-kaydir-not="k-kurallar-kutu"><span aria-hidden="true">↓</span> {k.kurallar.kaydirNotu}</p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="k-onay-kurallar" type="checkbox" name="onay.kurallar" required disabled data-kaydir-kilit="k-kurallar-kutu" />
+          <label for="k-onay-kurallar">{k.kurallar.kutu}</label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="k-onay-gizlilik" type="checkbox" name="onay.gizlilik" required />
+          <label for="k-onay-gizlilik">{o.gizlilikKutu.gizlilikOkudum} <a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa} ↗</a></label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="k-imza">{k.kurallar.imzaEtiket} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="k-imza" name="onay.elektronikImza" type="text" required maxlength="80" data-esle="veli.adSoyad" autocomplete="off" autocapitalize="words" />
+        <p class="yardim">{k.kurallar.imzaYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Özet ve gönderim -->
+  <section class="ucf-bolum" id="b-ozet" aria-labelledby="h-ozet">
+    <h2 id="h-ozet"><span class="no">7</span>{k.bolum.ozet}</h2>
+    <p class="bolum-not">{o.ozetAciklama}</p>
+    <dl class="ozet-liste" data-ozet>
+      {([
+        ['ogrenci', k.ozet.ogrenci, '#b-ogrenci'], ['okul', k.ozet.okul, '#b-okul'], ['sinif', k.ozet.sinif, '#b-okul'],
+        ['veli', k.ozet.veli, '#b-veli'], ['iletisim', k.ozet.iletisim, '#b-veli'], ['acil', k.ozet.acil, '#b-acil'],
+        ['saglik', k.ozet.saglik, '#b-saglik'], ['goruntu', k.ozet.goruntu, '#b-saglik'],
+      ] as const).map(([anahtar, etiket, hedef]) => (
+        <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd data-ozet-deger>{o.bosDeger}</dd><a href={hedef}>{o.ozetDuzenle}</a></div>
+      ))}
+    </dl>
+    <div class="ucf-not mt-5">
+      <span class="simge" aria-hidden="true">🔒</span>
+      <div><strong>{o.gizlilikKutu.baslik}</strong>{o.gizlilikKutu.metin}</div>
+    </div>
+    <div class="ucf-gonder mt-6">
+      <button type="submit" class="dugme dugme-birincil">{o.gonder}</button>
+      <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+    </div>
+  </section>
+</form>
+
+<section class="ucf-basari mt-8" data-basari hidden aria-live="polite">
+  <h2>{o.basari.baslik}</h2>
+  <div><div class="ref-etiket">{o.basari.referans}</div><div class="ref" data-ref>—</div></div>
+  <p data-eposta-metin></p>
+  <p class="text-sm" style="color: var(--metin-2)">{o.basari.spamNotu}</p>
+  <p>{k.basari.sonrakiAdimlar}</p>
+  <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+  <div class="eylemler">
+    <a class="dugme dugme-birincil" href="?kardes=1" title={k.basari.kardesAciklama}>{k.basari.kardes}</a>
+    <a class="dugme dugme-ikincil" href={`/${dil}/`}>{o.anasayfa}</a>
+  </div>
+</section>
+
+<script>
+  import { kayitFormuBaslat } from '../../scripts/kayit-form';
+  kayitFormuBaslat();
+</script>

@@ -1,0 +1,356 @@
+{
+ "okullar": [
+  {
+   "ad": "Athénée Royal (ARMBB) – Section fondamentale",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale d'Aye",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Hargimont",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Hollogne",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Humain",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale d'On",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Waha",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École fondamentale libre d'On",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École libre Saint-Antoine (Marloie)",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École libre Saint-Martin",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École libre Saint-Remacle (Aye)",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "Institut Notre-Dame – Fondamental",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "Institut médico-pédagogique de Marloie – Primaire spécialisé",
+   "grup": "marche",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "Athénée Royal (ARMBB) – Enseignement secondaire",
+   "grup": "marche",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "Institut Saint-Roch",
+   "grup": "marche",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "Institut Sainte-Julie",
+   "grup": "marche",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "Institut Saint-Laurent",
+   "grup": "marche",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "Institut d'enseignement spécialisé de Marloie",
+   "grup": "marche",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "CEFA – Marche-en-Famenne",
+   "grup": "marche",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "Athénée Royal (ARMBB) – Section fondamentale (Barvaux-sur-Ourthe)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "Athénée Royal (ARMBB) – Section fondamentale (Bomal-sur-Ourthe)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale d'Ambly (Nassogne)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Bande (Nassogne)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Barvaux-sur-Ourthe (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Bomal-sur-Ourthe (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Borlon (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Champlon (Tenneville)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Forrières (Nassogne)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Grune (Nassogne)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Hampteau (Hotton)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Heyd (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Hotton",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale d'Izier (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Nassogne",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Petithan (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Rendeux",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Somme-Leuze – Implantation de Bonsin",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Somme-Leuze – Implantation de Heure",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Somme-Leuze – Implantation de Noiseux",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Somme-Leuze – Implantation de Somme-Leuze",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Tenneville",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École communale de Tohogne (Durbuy)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École Enrico Macias (Hotton)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École fondamentale libre de Bourdon (Hotton)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École fondamentale libre de Nassogne",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École fondamentale libre Hotton-Melreux – Implantation de Hotton",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École fondamentale libre Hotton-Melreux – Implantation de Melreux",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "École libre « La P'tite École » (Rendeux)",
+   "grup": "cevre",
+   "tur": "fondamental"
+  },
+  {
+   "ad": "Athénée Royal (ARMBB) – Enseignement secondaire (Bomal-sur-Ourthe)",
+   "grup": "cevre",
+   "tur": "secondaire"
+  },
+  {
+   "ad": "Institut du Sacré-Cœur (Barvaux-sur-Ourthe)",
+   "grup": "cevre",
+   "tur": "secondaire"
+  }
+ ],
+ "siniflar": {
+  "fondamental": [
+   {
+    "v": "M1",
+    "tr": "Anaokulu 1. yıl",
+    "fr": "1re maternelle",
+    "en": "1st year nursery"
+   },
+   {
+    "v": "M2",
+    "tr": "Anaokulu 2. yıl",
+    "fr": "2e maternelle",
+    "en": "2nd year nursery"
+   },
+   {
+    "v": "M3",
+    "tr": "Anaokulu 3. yıl",
+    "fr": "3e maternelle",
+    "en": "3rd year nursery"
+   },
+   {
+    "v": "P1",
+    "tr": "İlkokul 1. sınıf",
+    "fr": "1re primaire",
+    "en": "1st year primary"
+   },
+   {
+    "v": "P2",
+    "tr": "İlkokul 2. sınıf",
+    "fr": "2e primaire",
+    "en": "2nd year primary"
+   },
+   {
+    "v": "P3",
+    "tr": "İlkokul 3. sınıf",
+    "fr": "3e primaire",
+    "en": "3rd year primary"
+   },
+   {
+    "v": "P4",
+    "tr": "İlkokul 4. sınıf",
+    "fr": "4e primaire",
+    "en": "4th year primary"
+   },
+   {
+    "v": "P5",
+    "tr": "İlkokul 5. sınıf",
+    "fr": "5e primaire",
+    "en": "5th year primary"
+   },
+   {
+    "v": "P6",
+    "tr": "İlkokul 6. sınıf",
+    "fr": "6e primaire",
+    "en": "6th year primary"
+   }
+  ],
+  "secondaire": [
+   {
+    "v": "S1",
+    "tr": "Ortaöğretim 1. sınıf",
+    "fr": "1re secondaire",
+    "en": "1st year secondary"
+   },
+   {
+    "v": "S2",
+    "tr": "Ortaöğretim 2. sınıf",
+    "fr": "2e secondaire",
+    "en": "2nd year secondary"
+   },
+   {
+    "v": "S3",
+    "tr": "Ortaöğretim 3. sınıf",
+    "fr": "3e secondaire",
+    "en": "3rd year secondary"
+   },
+   {
+    "v": "S4",
+    "tr": "Ortaöğretim 4. sınıf",
+    "fr": "4e secondaire",
+    "en": "4th year secondary"
+   },
+   {
+    "v": "S5",
+    "tr": "Ortaöğretim 5. sınıf",
+    "fr": "5e secondaire",
+    "en": "5th year secondary"
+   },
+   {
+    "v": "S6",
+    "tr": "Ortaöğretim 6. sınıf",
+    "fr": "6e secondaire",
+    "en": "6th year secondary"
+   },
+   {
+    "v": "S7",
+    "tr": "Ortaöğretim 7. sınıf",
+    "fr": "7e secondaire",
+    "en": "7th year secondary"
+   }
+  ]
+ }
+}
