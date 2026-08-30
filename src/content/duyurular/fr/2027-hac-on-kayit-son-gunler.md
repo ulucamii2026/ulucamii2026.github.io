@@ -1,18 +1,18 @@
 ---
-baslik: "Préinscriptions au Hajj 2027 : dernier jour le 30 août"
-tarih: 2026-08-26
-ozet: "Les préinscriptions au hajj 2027 de la Fondation Diyanet de Belgique se clôturent le 30 août 2026. Frais : 2 000 € par personne ; les places sont limitées et l'inscription définitive est accordée selon l'ordre des paiements. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
+baslik: "Préinscriptions au Hajj 2027 : prolongées jusqu'au 30 septembre"
+tarih: 2026-08-30
+ozet: "La Fondation Diyanet de Belgique a prolongé les préinscriptions au hajj 2027 jusqu'au 30 septembre 2026. Frais : 2 000 € par personne ; les places sont limitées et l'inscription définitive est accordée selon l'ordre des paiements. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
 kapak: /media/duyurular/2027-hac-onkayit-afis.webp
-kapakAlt: Affiche de la Fondation Diyanet de Belgique pour la préinscription au hajj 2027 — du 20 juin au 30 août 2026, 2 000 € par personne
+kapakAlt: Affiche de la Fondation Diyanet de Belgique pour la préinscription au hajj 2027 — du 20 juin au 30 août 2026 (délai prolongé ensuite jusqu'au 30 septembre), 2 000 € par personne
 etiketler:
   - hajj
   - diyanet
 oneCikan: true
 ---
 
-<div class="uyari"><p><strong>Date limite : dimanche 30 août 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p></div>
+<div class="uyari"><p><strong>Délai prolongé — date limite : mercredi 30 septembre 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p></div>
 
-Les **préinscriptions au hajj 2027** de la Fondation Diyanet de Belgique **se clôturent le dimanche 30 août 2026.** Les autorités saoudiennes ayant avancé le traitement des visas, la préinscription comme l'inscription définitive ont été lancées plus tôt que d'habitude cette année.
+La Fondation Diyanet de Belgique **a prolongé les préinscriptions au hajj 2027 jusqu'au mercredi 30 septembre 2026** (la date limite initiale était le 30 août). Les autorités saoudiennes ayant avancé le traitement des visas, la préinscription comme l'inscription définitive ont été lancées plus tôt que d'habitude cette année.
 
 Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les effectuer lui-même ou se faire aider par les responsables de notre mosquée.
 
@@ -20,8 +20,8 @@ Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les eff
 
 | | |
 |---|---|
-| Préinscription | 20 juin – **30 août 2026** |
-| Inscription définitive | 30 août – 30 septembre 2026 |
+| Préinscription | 20 juin – **30 septembre 2026** (prolongée) |
+| Inscription définitive | Communiquée par e-mail aux préinscrits par la Fondation (calendrier initial : 30 août – 30 septembre 2026) |
 | Voyage du hajj | 1-3 mai **ou** 24-27 mai 2027 |
 
 Les dates du hajj peuvent varier de 1 à 3 jours selon les vols et les hôtels.
@@ -53,7 +53,7 @@ Pour les femmes non belges, une **différence de nom de famille entre le passepo
 
 ## Documents demandés lors de l'inscription définitive
 
-Les documents suivants ne sont **pas demandés à la préinscription** : ils sont remis à votre responsable de groupe pendant la période d'inscription définitive ouverte le 30 août et lors du séminaire de formation au hajj.
+Les documents suivants ne sont **pas demandés à la préinscription** : ils sont remis à votre responsable de groupe pendant la période d'inscription définitive et lors du séminaire de formation au hajj.
 
 1. Passeport de la République de Turquie valable au moins jusqu'au **10.05.2028**
 2. Copie **recto verso** de la carte de séjour belge valable au moins jusqu'au **10.07.2028**

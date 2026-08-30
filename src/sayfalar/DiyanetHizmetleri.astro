@@ -15,7 +15,7 @@
  *
  * Hac ön kaydının son günü SABİT DEĞİL, tarihle karşılaştırılır: site her gün yeniden
  * yayımlandığı için (deploy.yml cron) süre dolduğunda kart kendiliğinden sakinleşir.
- * Kaynak: diyanet.be/onkayit — "2027 Hac Ön kayıtları 20.06.2026 – 30.08.2026 tarihleri
+ * Kaynak: diyanet.be/onkayit — "2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri (30 Ağu 2026'da 30.08'den uzatıldı)
  * arasında gerçekleşecektir", kişi başı ön kayıt ücreti 2.000 €.
  */
 import Base from '../layouts/Base.astro';
@@ -34,7 +34,7 @@ interface Kart { ikon: IkonAd; baslik: string; ozet: string; href: string; eylem
 interface Grup { baslik: string; kartlar: Kart[] }
 
 /* Hac ön kaydı süreli bir işlem: bittiğinde vurgu kendiliğinden kalkar. */
-const HAC_SON_GUN = new Date('2026-08-30T23:59:59+02:00');
+const HAC_SON_GUN = new Date('2026-09-30T23:59:59+02:00');
 /* Koşullar, gerekli belgeler ve IBAN kendi duyurumuzda — cemaat dış siteyi didiklemesin. */
 const HAC_DUYURU = '2027-hac-on-kayit-son-gunler';
 /* Umre de süreli: Taif ziyaretli Aralık umresinin son başvurusu 20 Kasım 2026
@@ -44,7 +44,7 @@ const UMRE_SON_GUN = new Date('2026-11-20T23:59:59+01:00');
 const UMRE_DUYURU = 'taif-ziyaretli-aralik-umresi';
 const umreAcik = Date.now() <= UMRE_SON_GUN.getTime();
 const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
-const hacSonTarih = { tr: '30 Ağustos 2026', fr: '30 août 2026', en: '30 August 2026' }[dil];
+const hacSonTarih = { tr: '30 Eylül 2026', fr: '30 septembre 2026', en: '30 September 2026' }[dil];
 
 const m = dil === 'tr' ? {
   etiket: 'Belçika Diyanet Vakfı',
@@ -61,7 +61,7 @@ const m = dil === 'tr' ? {
   cami: 'Camimizin iletişim sayfası',
   hac: {
     baslik: '2027 Hac Ön Kaydı',
-    ozetAcik: 'Ön kayıtlar 30 Ağustos 2026’da kapanıyor. Kayıt Belçika Diyanet Vakfı’nın hac organizasyonu üzerinden yapılır; kontenjan sınırlı olduğu için kesin kayıt hakkı ödeme sırasına göre verilir.',
+    ozetAcik: 'Ön kayıt süresi 30 Eylül 2026’ya uzatıldı. Kayıt Belçika Diyanet Vakfı’nın hac organizasyonu üzerinden yapılır; kontenjan sınırlı olduğu için kesin kayıt hakkı ödeme sırasına göre verilir.',
     ozetKapali: '2027 hac ön kayıt dönemi sona erdi. Yeni dönem duyurulduğunda camimizden ve Belçika Diyanet Vakfı’ndan bilgi alabilirsiniz.',
     ucret: '2.000 € (kişi başı)',
     kesinKayit: '30 Ağustos – 30 Eylül 2026',
@@ -114,7 +114,7 @@ const m = dil === 'tr' ? {
   cami: 'Our mosque’s contact page',
   hac: {
     baslik: '2027 Hajj Pre-registration',
-    ozetAcik: 'Pre-registration closes on 30 August 2026. Registration is handled through the hajj organisation of the Diyanet Foundation of Belgium; places are limited, so the right to final registration is granted in order of payment.',
+    ozetAcik: 'Pre-registration has been extended to 30 September 2026. Registration is handled through the hajj organisation of the Diyanet Foundation of Belgium; places are limited, so the right to final registration is granted in order of payment.',
     ozetKapali: 'The 2027 hajj pre-registration period has ended. When the next period is announced, you can get information from our mosque and from the Diyanet Foundation of Belgium.',
     ucret: '€2,000 per person',
     kesinKayit: '30 August – 30 September 2026',
@@ -167,7 +167,7 @@ const m = dil === 'tr' ? {
   cami: 'La page de contact de notre mosquée',
   hac: {
     baslik: 'Préinscription au Hajj 2027',
-    ozetAcik: 'Les préinscriptions se clôturent le 30 août 2026. L’inscription se fait via l’organisation du hajj de la Fondation Diyanet de Belgique ; les places étant limitées, le droit à l’inscription définitive est accordé selon l’ordre des paiements.',
+    ozetAcik: 'Les préinscriptions ont été prolongées jusqu’au 30 septembre 2026. L’inscription se fait via l’organisation du hajj de la Fondation Diyanet de Belgique ; les places étant limitées, le droit à l’inscription définitive est accordé selon l’ordre des paiements.',
     ozetKapali: 'La période de préinscription au Hajj 2027 est terminée. Vous serez informé par notre mosquée et par la Fondation Diyanet de Belgique lors de la prochaine ouverture.',
     ucret: '2 000 € par personne',
     kesinKayit: '30 août – 30 septembre 2026',
@@ -239,7 +239,7 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
         <dl class="hac-kunye mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-[repeat(3,max-content)]">
           <div>
             <dt class="etiket">{m.sonTarihEtiket}</dt>
-            <dd class="font-semibold mt-0.5"><time datetime="2026-08-30">{hacSonTarih}</time></dd>
+            <dd class="font-semibold mt-0.5"><time datetime="2026-09-30">{hacSonTarih}</time></dd>
           </div>
           <div>
             <dt class="etiket">{m.kesinKayitEtiket}</dt>
