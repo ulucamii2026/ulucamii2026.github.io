@@ -1,4 +1,4 @@
-// pdf-onizleme.mjs — Node'da ulucamii-Kod-v16.gs içindeki SAF PDF şablon
+// pdf-onizleme.mjs — Node'da ulucamii-Kod-v17.gs içindeki SAF PDF şablon
 // fonksiyonlarını (pdfHtmlKayit, pdfHtmlIhtida) çalıştırıp örnek HTML çıktısı üretir.
 //
 // Yöntem: .gs dosyasının TAMAMI `new Function(...)` ile bir fonksiyon gövdesi olarak
@@ -16,7 +16,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v16.gs");
+const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v17.gs");
 const CIKTI_KLASORU = "C:\\Users\\ridva\\AppData\\Local\\Temp\\claude\\D--app-ulucamii-site\\dbce5ab8-af6e-46a6-8c9a-489016d552e9\\scratchpad";
 
 /** Ne şekilde erişilirse erişilsin çökmeyen, kendini yansıtan bir "güdük" (stub) üretir. */

@@ -1,5 +1,5 @@
 /**
- * Marche-en-Famenne Ulu Camii — Ortak Apps Script Alıcı (SÜRÜM 15)
+ * Marche-en-Famenne Ulu Camii — Ortak Apps Script Alıcı (SÜRÜM 17)
  * (Kur'an Kursu Kayıt Alıcı + İhtida Başvuru Alıcı — TEK Web App)
  *
  * 30 Ağustos 2026 — FORM-SÖZLEŞMESİ v2'ye göre baştan yazıldı:
@@ -10,6 +10,10 @@
  *   - Gövde küçük JSON'dur (≤ 20 KB), Content-Type text/plain (CORS ön uçuşu yok).
  *   - Eski (v1) defterler SİLİNMEZ; yalnız salt-okunur geçmiş olarak durur ve
  *     ?islem=eski-kimlik-temizle ile kimlik verisi/görselleri temizlenir.
+ *   - v17: panel (?islem=liste) yalnız v2 defterlerini okuduğu için v1'de kalan
+ *     satırlar panelde görünmüyordu. ?islem=eski-tasi bu satırları v2 defterine
+ *     BİR KEZ taşır (idempotent); v1 defterler silinmez, yalnız "Durum" hücresine
+ *     " | tasindi-v17" eklenir.
  *
  * DAĞITIM NOTU (insan adımı — bu dosya otomatik dağıtılmaz):
  *   1. script.google.com'a DERNEK hesabıyla (ulucamii2026@gmail.com) giriş yapın.
@@ -17,8 +21,9 @@
  *   3. Dağıt → Dağıtımları yönet → kalem simgesi → Sürüm: "Nouvelle version"
  *      (ASLA "Nouveau déploiement" — /exec adresi değişmesin).
  *   4. /exec adresi zaten front-end'lerde kayıtlı; v2 formlar aynı adresi kullanır.
- *   5. ?islem=eski-kimlik-temizle&anahtar=<PANEL_ANAHTARI> uçları PANEL_ANAHTARI
- *      Script Properties'te tanımlıysa çalışır; bir kez elle tetiklenir.
+ *   5. ?islem=eski-kimlik-temizle&anahtar=<PANEL_ANAHTARI> ve ?islem=eski-tasi&anahtar=
+ *      uçları PANEL_ANAHTARI Script Properties'te tanımlıysa çalışır; bir kez elle
+ *      tetiklenir (eski-tasi idempotenttir, tekrar çağrılması zararsızdır).
  *
  * doPost, gövdedeki "tur" alanına göre yönlendirir: "kayit" → kayitPostIsleV2(),
  * "ihtida" → ihtidaPostIsleV2(). Bilinmeyen/eksik tur → {ok:false, hata:"tur-gecersiz"}.
@@ -27,7 +32,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 16;
+var SURUM = 17;
 
 /* ===================================================================
    ORTAK — doGet / doPost yönlendirme, JSON yardımcıları, güvenlik
@@ -41,6 +46,7 @@ function doGet(e) {
     if (e.parameter.islem === "eski-kimlik-temizle") return eskiKimlikTemizleIsle(e);
     if (e.parameter.islem === "test-temizle") return testTemizleIsle(e);
     if (e.parameter.islem === "mufredat-sina") return mufredatSinaIsle(e);
+    if (e.parameter.islem === "eski-tasi") return eskiTasiIsle(e);
   }
   return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, zaman: new Date().toISOString() });
 }
@@ -1510,7 +1516,174 @@ function eskiKimlikTemizleIhtida(sonuc) {
 
 
 /* ===================================================================
-   5) TEST TEMİZLİĞİ — ?islem=test-temizle (v2 defterleri)
+   5) ESKİ SATIRLARI v2'YE TAŞI — ?islem=eski-tasi
+   Panel (?islem=liste) yalnız v2 defterlerini okur; eski-kimlik-temizle v1
+   satırlarının kimliğini/PDF'ini temizledi ama satırları v1'de bıraktı, bu
+   yüzden panelde görünmüyorlardı. Bu uç her v1 satırını (kayıt + ihtida)
+   v2 defterine BİR KEZ taşır — v1 defterler SİLİNMEZ, yalnız "Durum"
+   hücresine " | tasindi-v17" eklenir (idempotent: bu işareti taşıyan veya
+   referansı v2'de zaten bulunan satırlar bir daha işlenmez, atlanan sayılır).
+   "Kimlik no" / "T.C. Kimlik No" sütunlarına HİÇ dokunulmaz — eşleme onları
+   hiç okumaz. v1'de karşılığı olmayan v2 alanları (Kurs durumu, Posta kodu,
+   Şehir, İletişim dili, Açık rıza, Elektronik beyan) boş bırakılır.
+   =================================================================== */
+
+function eskiTasiIsle(e) {
+  if (!panelYetkiTamam(e)) return json({ ok: false, hata: "yetki" });
+  var sonuc = { ok: true, tasinan: { kayit: 0, ihtida: 0 }, atlanan: 0, hatalar: [] };
+  try { sonuc.tasinan.kayit = eskiTasiKayit(sonuc); }
+  catch (hata) { sonuc.hatalar.push("kayit-genel: " + String(hata).slice(0, 200)); }
+  try { sonuc.tasinan.ihtida = eskiTasiIhtida(sonuc); }
+  catch (hata) { sonuc.hatalar.push("ihtida-genel: " + String(hata).slice(0, 200)); }
+  return json(sonuc);
+}
+
+function eskiTasiKayit(sonuc) {
+  var sayfaV1 = v1SayfaBulTablo("TABLO_ID", AYAR.tabloAdi);
+  if (!sayfaV1 || sayfaV1.getLastRow() < 2) return 0;
+  var sonSutun = sayfaV1.getLastColumn();
+  var basliklar = sayfaV1.getRange(1, 1, 1, sonSutun).getValues()[0].map(String);
+  var idx = function (ad) { return basliklar.indexOf(ad); };
+  var iDurum = idx("Durum"), iRef = idx("Referans"), iZaman = idx("Zaman damgası"), iPdf = idx("PDF bağlantısı"),
+      iAnahtar = idx("Gönderim anahtarı"), iSoyad = idx("Öğrenci soyadı"), iAd = idx("Öğrenci adı"),
+      iDogum = idx("Doğum tarihi"), iCinsiyet = idx("Cinsiyet"), iOkul = idx("Okul"), iSinif = idx("Sınıf"),
+      iVYakin = idx("Veli yakınlığı"), iVAd = idx("Veli adı soyadı"), iVCep = idx("Veli cep"),
+      iVEposta = idx("Veli e-posta"), iAdres = idx("Adres"), iSaglikNot = idx("Sağlık notu"), iGoruntu = idx("Görüntü izni");
+
+  var sayfaV2 = kayitV2SayfaGetir();
+  var son = sayfaV1.getLastRow();
+  var veriler = sayfaV1.getRange(2, 1, son - 1, sonSutun).getValues();
+  var tasinan = 0;
+
+  for (var i = 0; i < veriler.length; i++) {
+    var satirNo = i + 2;
+    var satir = veriler[i];
+    try {
+      var durum = String(iDurum >= 0 ? (satir[iDurum] || "") : "");
+      if (durum.indexOf("tasindi-v17") !== -1) { sonuc.atlanan++; continue; }
+
+      var ref = iRef >= 0 ? String(satir[iRef] || "").trim() : "";
+
+      // Referans v2'de zaten varsa (kısmi/tekrar çalıştırma): yalnız işaretle, taşıma.
+      if (ref && satirBulGenel(sayfaV2, ref, SUTUN2.referans) > 0) {
+        if (iDurum >= 0) sayfaV1.getRange(satirNo, iDurum + 1).setValue(durum + " | tasindi-v17");
+        sonuc.atlanan++;
+        continue;
+      }
+
+      var zamanDeger = iZaman >= 0 ? satir[iZaman] : "";
+      var saglikNotu = iSaglikNot >= 0 ? String(satir[iSaglikNot] || "") : "";
+      var goruntu = iGoruntu >= 0 ? String(satir[iGoruntu] || "") : "";
+      var pdfBaglanti = iPdf >= 0 ? String(satir[iPdf] || "") : "";
+      var anahtar = iAnahtar >= 0 ? String(satir[iAnahtar] || "") : "";
+
+      satirEkle(sayfaV2, [
+        zamanDeger, ref,
+        iSoyad >= 0 ? String(satir[iSoyad] || "") : "", iAd >= 0 ? String(satir[iAd] || "") : "",
+        iDogum >= 0 ? String(satir[iDogum] || "") : "", iCinsiyet >= 0 ? String(satir[iCinsiyet] || "") : "",
+        iOkul >= 0 ? String(satir[iOkul] || "") : "", iSinif >= 0 ? String(satir[iSinif] || "") : "",
+        "",                                            // Kurs durumu — v1'de karşılığı yok
+        iVYakin >= 0 ? String(satir[iVYakin] || "") : "", iVAd >= 0 ? String(satir[iVAd] || "") : "",
+        iVCep >= 0 ? String(satir[iVCep] || "") : "", iVEposta >= 0 ? String(satir[iVEposta] || "") : "",
+        iAdres >= 0 ? String(satir[iAdres] || "") : "",
+        "", "",                                        // Posta kodu, Şehir — adres tek hücrede kaldı
+        "",                                             // İletişim dili — v1'de karşılığı yok
+        "", "",                                         // Acil kişi, Acil cep — v1'de karşılığı yok
+        saglikNotu,
+        saglikNotu ? "evet" : "",                       // Sağlık rızası
+        goruntu,
+        "(v1 imzalı PDF)",                               // Elektronik imza
+        "tr",                                            // Form dili
+        pdfBaglanti,                                     // PDF bağlantısı — eski-kimlik-temizle'de yenilenmiş
+        (durum + " | v1'den taşındı"),                   // Durum
+        anahtar                                          // Gönderim anahtarı — aynen
+      ]);
+
+      if (iDurum >= 0) sayfaV1.getRange(satirNo, iDurum + 1).setValue(durum + " | tasindi-v17");
+      tasinan++;
+    } catch (satirHata) {
+      sonuc.hatalar.push("kayit satır " + satirNo + ": " + String(satirHata).slice(0, 200));
+    }
+  }
+  if (tasinan > 0) SpreadsheetApp.flush();
+  return tasinan;
+}
+
+function eskiTasiIhtida(sonuc) {
+  var sayfaV1 = v1SayfaBulTablo("IHTIDA_TABLO_ID", AYAR_IHTIDA.tabloAdi);
+  if (!sayfaV1 || sayfaV1.getLastRow() < 2) return 0;
+  var sonSutun = sayfaV1.getLastColumn();
+  var basliklar = sayfaV1.getRange(1, 1, 1, sonSutun).getValues()[0].map(String);
+  var idx = function (ad) { return basliklar.indexOf(ad); };
+  var iDurum = idx("Durum"), iRef = idx("Referans"), iZaman = idx("Zaman damgası"), iPdf = idx("PDF bağlantısı"),
+      iAnahtar = idx("Gönderim anahtarı"), iAdSoyad = idx("Adı Soyadı"), iCinsiyet = idx("Cinsiyet"),
+      iDogum = idx("Doğum tarihi"), iDogumYeri = idx("Doğum yeri"), iUyruk = idx("Uyruk"),
+      iOncekiDin = idx("Önceki din/mezhep"), iEposta = idx("E-posta"), iTelefon = idx("Telefon"),
+      iAdres = idx("Adres"), iOgrenim = idx("Öğrenim durumu"), iAnne = idx("Anne adı"), iBaba = idx("Baba adı"),
+      iMedeni = idx("Medeni hali"), iMeslek = idx("Mesleği"), iSebep = idx("İhtida sebebi"),
+      iYeniIsim = idx("Yeni isim tercihi"), iTorenDili = idx("Tören dili"), iTorenTarihi = idx("Tören tarihi tercihi"),
+      iNasil = idx("Nasıl haberdar oldu"), iEkNot = idx("Ek not"), iFotoIzni = idx("Fotoğraf izni"),
+      iSahit1 = idx("Şahit 1"), iSahit2 = idx("Şahit 2");
+
+  var sayfaV2 = ihtidaV2SayfaGetir();
+  var son = sayfaV1.getLastRow();
+  var veriler = sayfaV1.getRange(2, 1, son - 1, sonSutun).getValues();
+  var tasinan = 0;
+
+  for (var i = 0; i < veriler.length; i++) {
+    var satirNo = i + 2;
+    var satir = veriler[i];
+    try {
+      var durum = String(iDurum >= 0 ? (satir[iDurum] || "") : "");
+      if (durum.indexOf("tasindi-v17") !== -1) { sonuc.atlanan++; continue; }
+
+      var ref = iRef >= 0 ? String(satir[iRef] || "").trim() : "";
+
+      if (ref && satirBulGenel(sayfaV2, ref, SUTUN2_IHTIDA.referans) > 0) {
+        if (iDurum >= 0) sayfaV1.getRange(satirNo, iDurum + 1).setValue(durum + " | tasindi-v17");
+        sonuc.atlanan++;
+        continue;
+      }
+
+      var zamanDeger = iZaman >= 0 ? satir[iZaman] : "";
+      var pdfBaglanti = iPdf >= 0 ? String(satir[iPdf] || "") : "";
+      var anahtar = iAnahtar >= 0 ? String(satir[iAnahtar] || "") : "";
+
+      satirEkle(sayfaV2, [
+        zamanDeger, ref,
+        iAdSoyad >= 0 ? String(satir[iAdSoyad] || "") : "", iCinsiyet >= 0 ? String(satir[iCinsiyet] || "") : "",
+        iDogum >= 0 ? String(satir[iDogum] || "") : "", iDogumYeri >= 0 ? String(satir[iDogumYeri] || "") : "",
+        iUyruk >= 0 ? String(satir[iUyruk] || "") : "",
+        iOncekiDin >= 0 ? String(satir[iOncekiDin] || "") : "", iEposta >= 0 ? String(satir[iEposta] || "") : "",
+        iTelefon >= 0 ? String(satir[iTelefon] || "") : "", iAdres >= 0 ? String(satir[iAdres] || "") : "",
+        iOgrenim >= 0 ? String(satir[iOgrenim] || "") : "", iAnne >= 0 ? String(satir[iAnne] || "") : "",
+        iBaba >= 0 ? String(satir[iBaba] || "") : "", iMedeni >= 0 ? String(satir[iMedeni] || "") : "",
+        iMeslek >= 0 ? String(satir[iMeslek] || "") : "",
+        iSebep >= 0 ? String(satir[iSebep] || "") : "", iYeniIsim >= 0 ? String(satir[iYeniIsim] || "") : "",
+        iTorenDili >= 0 ? String(satir[iTorenDili] || "") : "", iTorenTarihi >= 0 ? String(satir[iTorenTarihi] || "") : "",
+        iNasil >= 0 ? String(satir[iNasil] || "") : "", iEkNot >= 0 ? String(satir[iEkNot] || "") : "",
+        iFotoIzni >= 0 ? String(satir[iFotoIzni] || "") : "",
+        iSahit1 >= 0 ? String(satir[iSahit1] || "") : "", iSahit2 >= 0 ? String(satir[iSahit2] || "") : "",
+        "", "",                                          // Açık rıza, Elektronik beyan — v1'de karşılığı yok
+        "tr",                                             // Form dili
+        pdfBaglanti,                                      // PDF bağlantısı — eski-kimlik-temizle'de yenilenmiş
+        (durum + " | v1'den taşındı"),                    // Durum
+        anahtar                                           // Gönderim anahtarı — aynen
+      ]);
+
+      if (iDurum >= 0) sayfaV1.getRange(satirNo, iDurum + 1).setValue(durum + " | tasindi-v17");
+      tasinan++;
+    } catch (satirHata) {
+      sonuc.hatalar.push("ihtida satır " + satirNo + ": " + String(satirHata).slice(0, 200));
+    }
+  }
+  if (tasinan > 0) SpreadsheetApp.flush();
+  return tasinan;
+}
+
+
+/* ===================================================================
+   6) TEST TEMİZLİĞİ — ?islem=test-temizle (v2 defterleri)
    =================================================================== */
 
 function testTemizleSayfa(sayfa, klasor, adAlanlari) {
