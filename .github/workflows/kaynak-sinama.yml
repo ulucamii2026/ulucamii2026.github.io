@@ -1,6 +1,9 @@
 name: Namaz kaynak sinama (gecici)
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/kaynak-sinama.yml'
 jobs:
   sina:
     runs-on: ubuntu-latest
