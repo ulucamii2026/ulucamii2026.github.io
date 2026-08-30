@@ -35,8 +35,13 @@ jobs:
           SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
           KALAN: ${{ steps.cek.outputs.kalan_gun }}
         run: |
-          # Konu, kalan omre gore siddetleniyor: her gun ayni basligi gormek
-          # alarmi korlestiriyor - asil kritik gun ayirt edilebilmeli.
+          # 30 Agustos 2026: gecici bir cekim hatasi e-posta gerektirmez - depodaki Diyanet verisi
+          # haftalarca yeter ve is ertesi gun kendiliginden yeniden dener (is yine kirmizi olur).
+          # E-posta yalniz veri gercekten azaldiginda (<= 14 gun) ya da omru okunamadiginda gider.
+          if [ -n "$KALAN" ] && [ "$KALAN" -gt 14 ]; then
+            echo "Cekim basarisiz ama eldeki veri $KALAN gun daha yetiyor - e-posta gonderilmedi."
+            exit 0
+          fi
           if [ -z "$KALAN" ]; then
             KONU="[UYARI] Namaz vakitleri alinamadi - eldeki verinin omru okunamadi"
           elif [ "$KALAN" -le 10 ]; then

@@ -5,7 +5,8 @@ on:
     - cron: '*/30 * * * *'
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  actions: read   # önceki denetimin sonucunu okumak için (aynı kesinti için tek e-posta)
 
 jobs:
   denetle:
@@ -38,8 +39,19 @@ jobs:
           else
             echo "durum=ok" >> "$GITHUB_OUTPUT"
           fi
-      - name: Uyarı e-postası gönder (info@ulucamii.be)
-        if: steps.yokla.outputs.durum == 'hata'
+      # 30 Ağustos 2026: aynı kesinti için her yarım saatte bir e-posta gitmesin. Bir önceki
+      # tamamlanmış denetim de başarısızsa uyarı zaten gönderilmiştir → sessiz kal (iş yine
+      # kırmızı olur). Sorun bitince tek bir "düzeldi" bilgisi gider.
+      - name: Önceki denetimin sonucu
+        id: onceki
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          onceki=$(gh run list -R "${{ github.repository }}" --workflow uptime.yml --status completed --limit 1 --json conclusion -q '.[0].conclusion' 2>/dev/null || echo bilinmiyor)
+          echo "Önceki denetim: ${onceki:-yok}"
+          echo "sonuc=${onceki:-yok}" >> "$GITHUB_OUTPUT"
+      - name: Uyarı e-postası gönder (info@ulucamii.be) — yalnız kesintinin ilk tespitinde
+        if: steps.yokla.outputs.durum == 'hata' && steps.onceki.outputs.sonuc != 'failure'
         env:
           SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
         run: |
@@ -57,6 +69,23 @@ jobs:
           curl -sS --url 'smtps://smtp.purelymail.com:465' \
             --mail-from 'info@ulucamii.be' --mail-rcpt 'info@ulucamii.be' \
             --user "info@ulucamii.be:${SMTP_SIFRE}" -T /tmp/uyari.txt
+      - name: Düzeldi bilgisi (info@ulucamii.be) — yalnız kesinti bittiğinde bir kez
+        if: steps.yokla.outputs.durum == 'ok' && steps.onceki.outputs.sonuc == 'failure'
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [BILGI] ulucamii.be erisim sorunu duzeldi"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Onceki denetimde basarisiz olan uc nokta(lar) $(date -u '+%Y-%m-%d %H:%M UTC') itibariyla yeniden erisilebilir."
+            echo "Ayrinti: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/bilgi.txt
+          curl -sS --url 'smtps://smtp.purelymail.com:465' \
+            --mail-from 'info@ulucamii.be' --mail-rcpt 'info@ulucamii.be' \
+            --user "info@ulucamii.be:${SMTP_SIFRE}" -T /tmp/bilgi.txt
       - name: Hata durumunda işi kırmızıya boya
         if: steps.yokla.outputs.durum == 'hata'
         run: exit 1
