@@ -1,0 +1,21 @@
+name: Namaz kaynak sinama (gecici)
+on:
+  workflow_dispatch:
+jobs:
+  sina:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kaynaklara eris
+        run: |
+          mkdir -p out
+          UA="Mozilla/5.0 (X11; Linux x86_64) ulucamii-site/1.0 (+https://ulucamii.be)"
+          for u in "https://namazvakitleri.diyanet.gov.tr/tr-TR/11890/mfamenne-icin-namaz-vakti" "https://namazvakitleri.diyanet.gov.tr/tr-TR/11890" "https://awqatsalah.diyanet.gov.tr/api/PrayerTime/Daily/11890" "https://ezanvakti.emushaf.net/vakitler/11890" "https://www.diyanet.be/Portals/0/imsakiye/2026/M.FAMENNE.pdf" "https://vakithesaplama.diyanet.gov.tr/temkin.php"; do
+            n=$(echo "$u" | tr -c 'A-Za-z0-9' '_' | cut -c1-70)
+            code=$(curl -s -L -m 40 -A "$UA" -o "out/$n" -w "%{http_code}" "$u" || echo ERR)
+            echo "$code $(stat -c %s "out/$n" 2>/dev/null || echo 0) $u" | tee -a out/ozet.txt
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kaynak-sinama
+          path: out
+          retention-days: 3
