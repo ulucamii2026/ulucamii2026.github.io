@@ -2,10 +2,14 @@ name: Namaz vakitlerini güncelle (Diyanet)
 
 on:
   schedule:
-    # Gunde iki kez: uc bulut IP'lerini araliklı olarak 403 ile geri ceviriyor
-    # (25 Agustos 2026). Biri basarisiz olursa digeri ayni gun yakalar.
+    # Gunde iki kez. Birincil kaynak Diyanet'in resmi sayfasi (namazvakitleri.diyanet.gov.tr,
+    # Actions'tan erisilebilir); yedek kaynak ayna (ezanvakti.emushaf.net, Actions'tan 403).
     - cron: "47 2 * * *"    # 02:47 UTC — veri degistiyse commit (gunluk yayin deploy.yml zamanlayicisinda)
     - cron: "23 11 * * *"   # 11:23 UTC — sabahki cekim basarisizsa ikinci sans
+  push:
+    paths:
+      - scripts/namaz-vakitleri.mjs          # betik degisince hemen bir cekim yap (sinama)
+      - .github/workflows/namaz-vakitleri.yml
   workflow_dispatch:
 
 permissions:
@@ -46,15 +50,15 @@ jobs:
             echo "Subject: $KONU"
             echo "Content-Type: text/plain; charset=utf-8"
             echo
-            echo "Diyanet namaz vakitleri cekimi bugun basarisiz oldu (ilce 11890 - M.FAMENNE)."
+            echo "Diyanet namaz vakitleri cekimi bugun HER IKI kaynaktan da basarisiz oldu (ilce 11890 - M.FAMENNE):"
+            echo "  1) resmi sayfa namazvakitleri.diyanet.gov.tr  2) ayna ezanvakti.emushaf.net"
             echo "Sitedeki mevcut Diyanet verisi KORUNDU; yanlis/hesaplanmis vakit yayimlanmadi."
-            echo "Eldeki veri: ${KALAN:-bilinmiyor} gun."
+            echo "Eldeki kesintisiz veri: ${KALAN:-bilinmiyor} gun."
             echo
-            echo "Bilinen sebep (27 Agustos 2026): ezanvakti.emushaf.net ucu GitHub Actions"
-            echo "sunucularinin IP'lerini 403 ile geri ceviriyor. Ayni istek Belcika'daki"
-            echo "normal bir baglantidan sorunsuz calisiyor. Gecici cozum: depo klasorunde"
+            echo "Yapilacak: bu is bir gun sonra kendiliginden yeniden dener. Ust uste basarisizsa"
+            echo "depo klasorunde su komut yeterlidir (Belcika'dan ayna calisir):"
             echo "  node scripts/namaz-vakitleri.mjs && git add -A && git commit -m veri && git push"
-            echo "komutunu ayda bir kez elle calistirmak yeterlidir."
+            echo "Resmi sayfanin yapisi degistiyse scripts/namaz-vakitleri.mjs icindeki ayristirici guncellenir."
             echo
             echo "Kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           } > /tmp/uyari.txt
@@ -67,6 +71,7 @@ jobs:
           if ! git diff --quiet -- src/data/namaz-vakitleri.json; then
             git add src/data/namaz-vakitleri.json
             git commit -m "veri: namaz vakitleri güncellendi ($(date -u +%Y-%m-%d))"
+            git pull --rebase --autostash origin main
             git push
             echo "degisti=true" >> "$GITHUB_OUTPUT"
           else

@@ -72,7 +72,20 @@ export function namazVakitleri() {
     // Yayını engellemez (eski Diyanet verisi yanlış değil, yalnız eksiktir) ama görünür uyarı bırakır.
     console.warn(`[namaz] UYARI: bugünün (${bugun}) vakitleri veride yok — Diyanet çekimi ${veri.guncelleme} tarihinden beri başarısız olabilir.`);
   }
-  return veri;
+  // Dosya 2027 sonuna kadar biriken Diyanet günlerini tutabilir (resmî sayfanın yıllık
+  // tablosu). Sayfalara yalnız dünden başlayan KESİNTİSİZ dizi, en çok 45 gün verilir:
+  // tablo boşluk atlamaz, ada bileşenlerine gömülen veri küçük kalır. Site her gün
+  // yeniden yayımlandığı için pencere hep tazedir.
+  const dun = new Date(Date.parse(bugun + 'T12:00:00Z') - 86400000).toISOString().slice(0, 10);
+  const sirali = [...veri.gunler].filter((g) => g.tarih >= dun).sort((a, b) => a.tarih.localeCompare(b.tarih));
+  const pencere: NamazGunu[] = [];
+  for (const g of sirali) {
+    const beklenen = pencere.length ? new Date(Date.parse(pencere.at(-1)!.tarih + 'T12:00:00Z') + 86400000).toISOString().slice(0, 10) : g.tarih;
+    if (g.tarih !== beklenen) break;
+    pencere.push(g);
+    if (pencere.length >= 46) break;
+  }
+  return { ...veri, gunler: pencere.length >= 7 ? pencere : veri.gunler };
 }
 
 export function bugunBrussels(): string {
