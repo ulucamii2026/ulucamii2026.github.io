@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Lightbox from '../components/Lightbox.astro';
 import { dilBul, ceviri, digerDilYolu, dilListesi, hreflangKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
+import { siteAyarlari } from '../lib/icerik';
 
 interface Props {
   baslik: string;
@@ -32,6 +33,32 @@ const kanonik = new URL(Astro.url.pathname, Astro.site);
 const kapakUrl = new URL(kapak, Astro.site);
 const ogKartMi = kapak === ogKart;
 const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au contenu', en: 'Skip to content' };
+/* Kurumsal kimlik (schema.org) — her sayfada. Derneğin BCE/KBO numarası, hukuki formu ve
+   resmî sicil kaydı makine tarafından okunabilir olsun diye eklendi (30 Ağu 2026): güvenlik
+   süzgeçleri ve arama motorları için "kayıtlı, gerçek kurum" kanıtı. Değerler site.yaml'dan. */
+const a = await siteAyarlari();
+const kboSade = a.kbo.replace(/\D/g, '');
+const kurumJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'NGO', 'ReligiousOrganization'],
+  '@id': new URL('/#kurum', Astro.site).toString(),
+  name: t('site.ad'),
+  legalName: `${a.dernekAdi} ${a.hukukiForm}`,
+  description: t('site.slogan'),
+  url: Astro.site?.toString(),
+  logo: new URL('/media/og/ulu-camii-tr.png', Astro.site).toString(),
+  foundingDate: '1979-12-19',
+  identifier: [
+    { '@type': 'PropertyValue', name: 'BCE/KBO', value: a.kbo, description: "Banque-Carrefour des Entreprises (Belgique) — numéro d'entreprise" },
+  ],
+  address: { '@type': 'PostalAddress', streetAddress: a.adres.sokak, postalCode: a.adres.posta, addressLocality: a.adres.sehir, addressCountry: 'BE' },
+  telephone: a.telefon.cami,
+  email: a.eposta,
+  sameAs: [
+    `https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=${kboSade}`,
+    a.sosyal?.facebook,
+  ].filter(Boolean),
+};
 ---
 <!doctype html>
 <html lang={hreflangKodu(dil)} dir="ltr">
@@ -73,6 +100,7 @@ const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={kapakUrl} />
     <noscript><style>.reveal, .serit, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(kurumJsonLd)} />
     <slot name="head" />
     <script is:inline>
       // Tema tercihi (localStorage) — sayfa boyanmadan önce uygula
