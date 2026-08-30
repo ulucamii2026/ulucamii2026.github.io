@@ -57,6 +57,11 @@ site:
         fr: "Préinscriptions au Hajj 2027 prolongées jusqu'au 30 septembre — détails sur la page Services Diyanet."
         en: "Hajj 2027 pre-registration extended to 30 September — details on the Diyanet Services page."
       sayfa: diyanet
+    - metin:
+        tr: "İmam-ı Azam Eğitim Merkezi'nde 12–17 yaş hafta sonu yatılı Kur'ân kursu kayıtları başladı — ayrıntılar duyurularda."
+        fr: "Inscriptions ouvertes au cours coranique en internat de week-end (12–17 ans) du centre İmam-ı Azam — détails dans les annonces."
+        en: "Enrolment is open for the İmam-ı Azam centre's weekend boarding Qur'an course (ages 12–17) — details in the announcements."
+      sayfa: duyurular
   sosyal:
     facebook: https://www.facebook.com/profile.php?id=61591465715992
   konsolosluk:
