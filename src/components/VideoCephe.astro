@@ -51,7 +51,9 @@ const gom = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${
   .oynat-rozet { background: var(--color-kiremit); color: var(--color-krem); box-shadow: 0 10px 30px -8px rgb(0 0 0 / .6); transition: transform .2s ease-out, background .2s; }
   .video-dugme:hover .oynat-rozet, .video-dugme:focus-visible .oynat-rozet { transform: translate(-50%, -50%) scale(1.06); background: var(--color-ochre); }
   .video-dugme:focus-visible { outline: 3px solid var(--color-ochre); outline-offset: -3px; }
-  .video-cephe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  /* iframe betikle sonradan yaratılır; Astro'nun kapsam özniteliğini taşımaz → :global şart.
+     (4 Eyl 2026: kapsamlı seçici eşleşmeyince iframe 300×150 varsayılanıyla sol üst köşeye sıkışıyordu.) */
+  .video-cephe :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 </style>
 
 <script>
@@ -61,6 +63,8 @@ const gom = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${
       if (!kutu) return;
       const f = document.createElement('iframe');
       f.src = b.dataset.gom || '';
+      // Kapsamlı CSS'ten bağımsız güvence: konum ve boyut satır içi (Comet/Chromium'da küçük pencere hatası, 4 Eyl 2026)
+      f.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block';
       f.title = b.dataset.baslik || 'Video';
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       f.setAttribute('allowfullscreen', '');
