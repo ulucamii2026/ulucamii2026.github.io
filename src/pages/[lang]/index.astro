@@ -8,6 +8,7 @@ import BuHafta from '../../components/BuHafta.astro';
 import HeroSlayt from '../../components/HeroSlayt.astro';
 import DuyuruSeridi from '../../components/DuyuruSeridi.astro';
 import BagisBandi from '../../components/BagisBandi.astro';
+import HacBandi from '../../components/HacBandi.astro';
 import KayitBandi from '../../components/KayitBandi.astro';
 import KurumsalSerit from '../../components/KurumsalSerit.astro';
 import IletisimMini from '../../components/IletisimMini.astro';
@@ -113,6 +114,9 @@ const jsonLd = {
     </div>
     <div class="kilim-serit" aria-hidden="true"></div>
   </section>
+
+  <!-- ①a Hac ön kaydı — Diyanet takvimine bağlı, 30 Eylül'de kendiliğinden kalkar -->
+  <HacBandi dil={dil} />
 
   <KayitBandi dil={dil} link={site.kursKayitLinki} />
 

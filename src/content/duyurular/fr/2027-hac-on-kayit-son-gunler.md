@@ -56,7 +56,7 @@ Pour les femmes non belges, une **différence de nom de famille entre le passepo
 Les documents suivants ne sont **pas demandés à la préinscription** : ils sont remis à votre responsable de groupe pendant la période d'inscription définitive et lors du séminaire de formation au hajj.
 
 1. Passeport de la République de Turquie valable au moins jusqu'au **10.05.2028**
-2. Copie **recto verso** de la carte de séjour belge valable au moins jusqu'au **10.07.2028**
+2. Copie **recto verso** de la carte de séjour belge valable au moins jusqu'au **10.07.2027**
 3. Carte de vaccination contre la méningite — il doit s'agir de la **carte jaune internationale** ; une carte délivrée par le médecin traitant n'est pas valable. Les cartes déjà obtenues sont valables 3 ans.
 4. Copie **recto verso** de la carte d'identité de la République de Turquie
 5. Certificat médical attestant l'aptitude au voyage — le modèle se télécharge depuis l'écran de préinscription, s'imprime et se fait signer par le médecin traitant
@@ -75,4 +75,4 @@ Si le formulaire vous pose difficulté, si vous avez un doute sur vos documents 
 
 Que Dieu facilite le chemin de ceux qui en font l'intention et leur accorde un pèlerinage agréé.
 
-<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Source : Fondation Diyanet de Belgique — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. L'affiche appartient à la Fondation Diyanet de Belgique.</p>
+<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Mise à jour (30 août 2026) : la Fondation Diyanet de Belgique a prolongé les préinscriptions jusqu'au 30 septembre 2026. Vérification (3 septembre 2026) : le délai a été reconfirmé sur la page de préinscription de la Fondation — « 2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri arasında gerçekleşecektir. » Lors du même contrôle, la date de validité exigée pour la carte de séjour belge a été corrigée en 10.07.2027, conformément au texte de la Fondation (notre page indiquait par erreur 10.07.2028). Source : Fondation Diyanet de Belgique — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. L'affiche appartient à la Fondation Diyanet de Belgique.</p>

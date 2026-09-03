@@ -56,7 +56,7 @@ Belçika vatandaşı olmayan hanımlarda **pasaport ile oturum kartındaki soyad
 Aşağıdaki belgeler **ön kayıtta değil**, kesin kayıt döneminde ve hac eğitim semineri sırasında grup görevlinize teslim edilir:
 
 1. En az **10.05.2028** tarihine kadar geçerli Türkiye Cumhuriyeti pasaportu
-2. En az **10.07.2028** tarihine kadar geçerli Belçika oturum kartının **önlü arkalı** fotokopisi
+2. En az **10.07.2027** tarihine kadar geçerli Belçika oturum kartının **önlü arkalı** fotokopisi
 3. Menenjit aşısı kartı — **uluslararası sarı renkli** kart olmalıdır; aile doktorundan alınan aşı kartı geçersizdir. Daha önce alınmış kartlar 3 yıl geçerlidir.
 4. Türkiye Cumhuriyeti kimlik kartının **önlü arkalı** fotokopisi
 5. Seyahate mâni olmadığına dair sağlık raporu — örnek rapor ön kayıt ekranından indirilir, çıktısı alınıp aile doktoruna imzalatılır
@@ -75,4 +75,4 @@ Formu doldurmakta zorlanırsanız, belgeleriniz konusunda emin değilseniz ya da
 
 Rabbimiz, niyet edenlerin yolunu açık, kabul edilmiş bir hac nasip eylesin.
 
-<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Güncelleme (30 Ağustos 2026): Belçika Diyanet Vakfı ön kayıt süresini 30 Eylül 2026'ya uzattı. Kaynak: Belçika Diyanet Vakfı — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. Afiş Belçika Diyanet Vakfı'na aittir.</p>
+<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Güncelleme (30 Ağustos 2026): Belçika Diyanet Vakfı ön kayıt süresini 30 Eylül 2026'ya uzattı. Doğrulama (3 Eylül 2026): süre Vakfın ön kayıt sayfasından yeniden teyit edildi — “2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri arasında gerçekleşecektir.” Aynı denetimde, kesin kayıtta istenen Belçika oturum kartının geçerlilik tarihi Vakfın metnindeki gibi 10.07.2027 olarak düzeltildi (sayfamızda sehven 10.07.2028 yazıyordu). Kaynak: Belçika Diyanet Vakfı — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. Afiş Belçika Diyanet Vakfı'na aittir.</p>

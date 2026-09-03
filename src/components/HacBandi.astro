@@ -1,0 +1,107 @@
+---
+/** 2027 hac ön kayıt bandı — ana sayfada, yalnız ön kayıt süresi boyunca.
+ *
+ * Neden ayrı bir bant: hac ön kaydı bizim değil, Belçika Diyanet Vakfı'nın takvimine bağlı ve
+ * kaçırılınca telafisi yok (kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre veriliyor).
+ * Duyurular bölümüne kadar aşağı inmeyen ziyaretçi de son tarihi görsün diye hero'nun hemen altında.
+ *
+ * Son gün SABİT DEĞİL, tarihle karşılaştırılır: süre dolduğunda bant kendiliğinden basılmaz,
+ * kimsenin elle kaldırması gerekmez. "Kalan gün" derleme anında hesaplanır; site her gün
+ * 03:30 UTC'de yeniden yayınlandığı için (deploy.yml cron) ertesi sabah kendini tazeler.
+ * Ölçüt DiyanetHizmetleri.astro'daki HAC_SON_GUN ile birebir aynı tutulmalıdır.
+ *
+ * Kaynak: Belçika Diyanet Vakfı ön kayıt sayfası — "2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026
+ * tarihleri arasında gerçekleşecektir." (3 Eylül 2026'da teyit edildi; ilk duyuruda son gün
+ * 30.08.2026'ydı, sonradan uzatıldı.)
+ */
+import type { Dil } from '../i18n/ui';
+import { yol } from '../i18n/utils';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+const SON_GUN = new Date('2026-09-30T23:59:59+02:00');
+const DUYURU = '2027-hac-on-kayit-son-gunler';
+
+const simdi = Date.now();
+const acik = simdi <= SON_GUN.getTime();
+/* Bugün de sayılsın diye yukarı yuvarlanır: son gün sabahı "Son 1 gün" yazar, "0 gün" değil. */
+const kalan = Math.max(1, Math.ceil((SON_GUN.getTime() - simdi) / 86_400_000));
+
+const m = dil === 'tr' ? {
+  rozet: kalan === 1 ? 'Son gün' : `Son ${kalan} gün`,
+  baslik: '2027 Hac ön kayıtları — son başvuru 30 Eylül',
+  alt: 'Ön kayıt 2.000 € · Kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre · Kayıt yalnızca çevrimiçi',
+  dugme: 'Ayrıntılar ve yardım',
+  dis: 'Ön kayıt: diyanet.be/onkayit',
+} : dil === 'en' ? {
+  rozet: kalan === 1 ? 'Last day' : `${kalan} days left`,
+  baslik: 'Hajj 2027 pre-registration — deadline 30 September',
+  alt: 'Pre-registration €2,000 · Limited places, confirmed by order of payment · Online only',
+  dugme: 'Details and help',
+  dis: 'Register: diyanet.be/onkayit',
+} : {
+  rozet: kalan === 1 ? 'Dernier jour' : `Plus que ${kalan} jours`,
+  baslik: 'Préinscriptions au Hajj 2027 — date limite le 30 septembre',
+  alt: 'Préinscription 2 000 € · Places limitées, inscription selon l’ordre des paiements · Uniquement en ligne',
+  dugme: 'Détails et aide',
+  dis: 'Préinscription : diyanet.be/onkayit',
+};
+
+const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)' }[dil];
+---
+{acik && (
+  <aside class="hac-bandi border-y" aria-label={m.baslik}>
+    <div class="kapsayici py-4 sm:py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
+      <p class="min-w-0">
+        <span class="hac-rozet">{m.rozet}</span>
+        <strong class="block font-serif text-lg sm:text-xl leading-snug mt-2">{m.baslik}</strong>
+        <span class="block mt-1 text-sm opacity-90">{m.alt}</span>
+      </p>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <a href={yol(dil, 'duyurular', DUYURU)} class="dugme hac-dugme font-bold shrink-0">
+          {m.dugme}<span aria-hidden="true"> →</span>
+        </a>
+        <a href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener" class="hac-dis text-sm font-semibold break-words min-w-0">
+          {m.dis}<span aria-hidden="true"> ↗</span><span class="sr-only"> {disKaynak}</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+)}
+
+<style>
+  /* Kur'an kursu bandı kiremit; hac bandı İznik mavisi — iki süreli duyuru üst üste gelince
+     ziyaretçi bunların ayrı işler olduğunu renkten anlasın. */
+  .hac-bandi {
+    background: var(--color-iznik);
+    border-color: var(--color-iznik-koyu);
+    color: var(--color-krem);
+  }
+  .hac-rozet {
+    display: inline-block;
+    background: var(--color-ochre);
+    color: var(--color-ceviz-koyu);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+  }
+  .hac-dugme {
+    background: var(--color-krem);
+    color: var(--color-iznik-koyu);
+  }
+  .hac-dugme:hover {
+    background: #fff;
+    color: var(--color-iznik-koyu);
+  }
+  /* Koyu zemin üstünde bağlantı rengi (--vurgu-2) okunmuyor: krem + alt çizgi. */
+  .hac-dis {
+    color: var(--color-krem);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hac-dis:hover { color: #fff; }
+</style>
