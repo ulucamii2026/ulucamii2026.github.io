@@ -86,7 +86,7 @@ Nous étudions la possibilité d’une commande groupée ; les parents en seron
 
 ## Inscription
 
-L’inscription se fait via le bouton **« Formulaire d’inscription en ligne »** situé à droite de cette page. Le formulaire prend environ 5 minutes et est disponible en turc et en français. Vous pouvez scanner la carte d’identité de l’élève pour que ses informations (nom, prénom, date de naissance, etc.) soient remplies automatiquement. Une fois l’envoi terminé, le document d’inscription signé vous est transmis en PDF par e-mail et un **numéro de référence** vous est attribué.
+L’inscription se fait via le bouton **« Formulaire d’inscription en ligne »** situé à droite de cette page. Le formulaire prend environ 5 minutes et est disponible en turc et en français. Une fois l’envoi terminé, le document d’inscription vous est transmis en PDF par e-mail et un **numéro de référence** vous est attribué.
 
 Les inscriptions sont ouvertes toute l’année ; pour inscrire un nouvel élève ou mettre à jour des informations déjà transmises, vous pouvez remplir à nouveau le formulaire avec le même numéro de référence.
 

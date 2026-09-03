@@ -25,7 +25,10 @@ const tumDuyurular = await duyurular(dil);
 /* Editörün CMS'te işaretlediği duyuru önce gelir; yoksa kapak görseli olan, o da yoksa en yeni.
    (Daha önce yalnız `kapak` bakılıyordu; `oneCikan` işareti okunmadığı için editörün seçimi
    yok sayılıyordu — 25 Ağustos 2026 denetimi.) */
-const oneCikan = tumDuyurular.find((d) => d.data.oneCikan)
+/* oneCikanSon (dâhil) geçmişse işaret yok sayılır — site her gün yeniden derlendiği için kendiliğinden. */
+const oneCikanGecerli = (d: (typeof tumDuyurular)[number]) =>
+  d.data.oneCikan && (!d.data.oneCikanSon || d.data.oneCikanSon.getTime() + 86_400_000 > Date.now());
+const oneCikan = tumDuyurular.find(oneCikanGecerli)
   ?? tumDuyurular.find((d) => d.data.kapak)
   ?? tumDuyurular[0];
 const digerDuyurular = tumDuyurular.filter((d) => d !== oneCikan).slice(0, 4);

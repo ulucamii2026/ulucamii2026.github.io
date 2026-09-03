@@ -5,7 +5,7 @@ aciklama: Marche-en-Famenne, T.C. Brüksel Başkonsolosluğu’na bağlıdır. R
 guncelleme: 2026-08-22
 ---
 
-Marche-en-Famenne, posta kodu aralığı itibarıyla **T.C. Brüksel Başkonsolosluğu**'nun görev bölgesi içindedir; bu Başkonsolosluk Brüksel Bölgesi, Brabant Flaman, Brabant-Valon, Liège, Namur, Hainaut ve Luxembourg vilayetini kapsar. Doğum, evlilik, ölüm, pasaport, askerlik, noterlik ve vatandaşlık gibi tüm konsolosluk işlemleri buradan yürütülür. Çalışma saatleri Pazartesi–Cuma 09:00–12:00 / 13:00–16:00'dır. Ödemeler yalnızca banka/kredi kartıyla alınır (dövizle askerlik ücreti hariç).
+Marche-en-Famenne, posta kodu aralığı itibarıyla **T.C. Brüksel Başkonsolosluğu**’nun görev bölgesi içindedir; bu Başkonsolosluk Brüksel Bölgesi, Brabant Flaman, Brabant-Valon, Liège, Namur, Hainaut ve Luxembourg vilayetini kapsar. Doğum, evlilik, ölüm, pasaport, askerlik, noterlik ve vatandaşlık gibi tüm konsolosluk işlemleri buradan yürütülür. Çalışma saatleri pazartesi–cuma 09:00–12:00 / 13:00–16:00’dır. Ödemeler yalnızca banka/kredi kartıyla alınır (dövizle askerlik ücreti hariç).
 
 ## Randevu Sistemi
 

@@ -1,4 +1,6 @@
 ---
+/* Menü/tema betiği /vendor/govde.js içindedir (Base.astro tek sefer yükler); her sayfada aynı
+   satır içi betiği tekrarlamamak için taşındı (performans denetimi, Eylül 2026). */
 import { ceviri, yol, dilDegistirYolu, dilListesi } from '../i18n/utils';
 import { diller } from '../i18n/ui';
 import Bayrak from './Bayrak.astro';
@@ -108,6 +110,4 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
     </div>
   </nav>
 </header>
-<!-- Menü/tema betiği artık /vendor/govde.js içinde (Base.astro'da tek sefer yüklenir) — her sayfada
-     birebir aynı inline betiği tekrarlamamak için (performans denetimi, Eylül 2026). -->
 

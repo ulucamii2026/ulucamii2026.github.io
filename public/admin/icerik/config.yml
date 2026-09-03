@@ -78,6 +78,7 @@ collections:
           - { name: alt, label: Açıklama, widget: string, required: false }
       - { name: etiketler, label: Etiketler, widget: list, required: false, i18n: duplicate, default: [] }
       - { name: oneCikan, label: Öne çıkan, widget: boolean, default: false, i18n: duplicate }
+      - { name: oneCikanSon, label: "Öne çıkarmanın son günü (isteğe bağlı)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu günden sonra duyuru ana sayfadaki öne çıkan yerini kendiliğinden bırakır." }
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
 
@@ -136,7 +137,8 @@ collections:
     folder: src/content/sayfalar
     create: false
     delete: false
-    i18n: true
+    i18n:
+      locales: [tr, fr, en]
     format: frontmatter
     extension: md
     summary: "{{baslik}}"

@@ -157,7 +157,7 @@ Source officielle : [konsolosluk.gov.tr/Procedure/ShowProcedure/7](https://www.k
 
 ## Côté belge : commune de Marche-en-Famenne
 
-Les naissances, mariages et décès survenus en Belgique sont d’abord déclarés au service de l'**état civil de la commune de Marche-en-Famenne** ; la déclaration au Consulat général de Türkiye intervient ensuite, ou en parallèle.
+Les naissances, mariages et décès survenus en Belgique sont d’abord déclarés au service de l’**état civil de la commune de Marche-en-Famenne** ; la déclaration au Consulat général de Türkiye intervient ensuite, ou en parallèle.
 
 **Service de l’état civil**
 - Adresse : Hôtel de Ville, Boulevard du Midi 22, 6900 Marche-en-Famenne

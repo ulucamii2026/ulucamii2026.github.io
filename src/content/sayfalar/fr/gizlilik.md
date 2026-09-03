@@ -5,7 +5,7 @@ aciklama: Comment les données personnelles sont traitées sur le site d’Ulu C
 guncelleme: 2026-08-25
 ---
 
-<p class="bilgi"><strong>En bref :</strong> ce site n'utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n'est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l'initiative (p. ex. inscription au cours de Coran, envoi d'un e-mail).</p>
+<p class="bilgi"><strong>En bref :</strong> ce site n’utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n’est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l’initiative (p. ex. inscription au cours de Coran, envoi d’un e-mail).</p>
 
 Cette page explique comment vos données personnelles sont traitées lorsque vous visitez ce site, ainsi que dans le cadre des services dont la mise en place est envisagée à l’avenir. Cette information est établie conformément au Règlement général sur la protection des données (RGPD) de l’Union européenne.
 

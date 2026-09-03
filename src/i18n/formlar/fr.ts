@@ -1,4 +1,5 @@
 import type { FormMetinleri } from './tipler';
+import { DERS_YILI_ETIKETI } from '../../lib/etkinlik-tarihleri';
 
 /** Français — traduit de tr.ts (source). L'ensemble des clés est imposé par `FormMetinleri`. */
 export const fr: FormMetinleri = {
@@ -50,9 +51,9 @@ export const fr: FormMetinleri = {
   },
 
   kayit: {
-    sayfaBaslik: 'Formulaire d’inscription au cours de Coran 2026-2027',
-    sayfaAciklama: 'Formulaire d’inscription 2026-2027 au cours de Coran de la mosquée Marche-en-Famenne Ulu Camii : à remplir en quelques minutes depuis votre téléphone ; votre attestation d’inscription vous parvient par e-mail. Le cours est gratuit.',
-    ustEtiket: 'Cours de Coran · 2026-2027',
+    sayfaBaslik: `Formulaire d’inscription au cours de Coran ${DERS_YILI_ETIKETI}`,
+    sayfaAciklama: `Formulaire d’inscription ${DERS_YILI_ETIKETI} au cours de Coran de la mosquée Marche-en-Famenne Ulu Camii : à remplir en quelques minutes depuis votre téléphone ; votre attestation d’inscription vous parvient par e-mail. Le cours est gratuit.`,
+    ustEtiket: `Cours de Coran · ${DERS_YILI_ETIKETI}`,
     giris: 'Remplissez ce formulaire pour inscrire votre enfant à notre cours de Coran et de connaissances religieuses de base. Le cours est gratuit. Une fois l’inscription terminée, votre numéro de référence et votre attestation d’inscription signée vous parviennent par e-mail.',
     sureNotu: 'Compte environ 5 minutes. Un formulaire distinct est à remplir pour chaque enfant ; après la première inscription, les informations du parent sont préremplies pour l’inscription d’un frère ou d’une sœur.',
     bolum: {
@@ -66,7 +67,7 @@ export const fr: FormMetinleri = {
     okul: {
       okul: 'École fréquentée', okulYardim: 'Si elle ne figure pas dans la liste, choisissez « Autre » et indiquez son nom.',
       grupMarche: 'Marche-en-Famenne', grupCevre: 'Communes environnantes', diger: 'Autre (absente de la liste)', okulDiger: 'Nom et lieu de l’école',
-      sinif: 'Classe 2026-2027', sinifYardim: 'La liste des classes dépend du niveau de l’école choisie.', onceOkul: 'Choisissez d’abord l’école',
+      sinif: `Classe ${DERS_YILI_ETIKETI}`, sinifYardim: 'La liste des classes dépend du niveau de l’école choisie.', onceOkul: 'Choisissez d’abord l’école',
       kursDurumu: 'Situation par rapport au cours', yeni: 'Première inscription', devam: 'A déjà suivi le cours l’an dernier',
     },
     veli: {

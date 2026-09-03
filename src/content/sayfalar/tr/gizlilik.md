@@ -5,7 +5,7 @@ aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve planlanan üye/veli porta
 guncelleme: 2026-08-25
 ---
 
-<p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur'an kursu kaydı, e-posta göndermeniz) işlenir.</p>
+<p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
 
 Bu sayfa, bu internet sitesini ziyaret ettiğinizde ve ileride devreye alınması planlanan hizmetlerde kişisel verilerinizin nasıl ele alındığını açıklar. Bilgilendirme, Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) esas alınarak hazırlanmıştır.
 
@@ -69,7 +69,7 @@ Derneğe üye olduğunuzda hakkınızda bir üye kaydı tutulur. Bu kayıt **der
 - **Veri konumu:** Veriler Avrupa Birliği sınırları içinde, Belçika (europe-west1) bölgesinde barındırılacaktır.
 - **Amaç:** Üyelik ve aidat yönetimi; Kur’an kursu öğrenci devam/program takibi.
 - **Hukuki dayanak:** Üyelik verisi için dernekle üye arasındaki sözleşme ilişkisi; çocuğa ait veri için ise veli/yasal temsilci rızası. Belçika’da 13 yaşın altındaki çocuklara ait veri işleme, ancak veli/yasal temsilcinin rızasıyla hukuka uygun hâle gelir.
-- **Dinî bağlılık verisi:** Cami derneğine üyelik, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR’da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)'de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
+- **Dinî bağlılık verisi:** Cami derneğine üyelik, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR’da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)’de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
 - **Veri minimizasyonu — defter ile portal aynı şey değildir:** Dernek üye defteri yukarıdaki bölümde sayılan bilgileri içerebilir; **portalda bunların tamamı bulunmaz.** Millî sicil numarası ve ev adresi gibi veriler portala aktarılmayacak; portalda yalnızca üyenin kendi aidat durumunu görmesi ve iletişim bilgilerini güncellemesi için gereken asgari bilgi bulunacaktır.
 - **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur’an kursu öğrenci verisi, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
 

@@ -48,6 +48,6 @@ Bu yüzden Mevlid-i Nebî Haftası, sevgimizi **söze değil hayata** taşıma h
 - **Siyer** okumak; çocuklarımıza O'nun hayatından bir hâtıra anlatmak
 - Küs olduğumuz bir yakınımızla barışmak, akraba ve komşu ziyareti yapmak
 - Bir yetimi, bir yaşlıyı, bir muhtacı gözetmek
-- Cuma namazına ve camideki programlara ailece katılmak
+- cuma namazına ve camideki programlara ailece katılmak
 
 <p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Kaynaklar: Hafta ve tema bilgisi <a style="padding-block:.55rem" href="https://www.diyanet.gov.tr" target="_blank" rel="noopener">Diyanet İşleri Başkanlığı</a>; mevlidin tanımı, doğum tarihi ve kutlamaların tarihçesi <a style="padding-block:.55rem" href="https://islamansiklopedisi.org.tr/mevlid" target="_blank" rel="noopener">TDV İslâm Ansiklopedisi, “Mevlid” maddesi</a>; hicrî tarihler Diyanet İşleri Başkanlığı takvimine göredir.</p>

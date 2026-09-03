@@ -36,7 +36,7 @@ Fransızca konuşan adaylar için tören Fransızca da yürütülebilir; kelime-
 **İhtida Belgesi (EK-9)**, T.C. Diyanet İşleri Başkanlığı tarafından düzenlenen, İslam’a giriş beyanınızı ve tören bilgilerinizi resmî olarak belgeleyen çift dilli (TR/EN) bir belgedir. Sizin, iki şahidin ve Diyanet İşleri Başkanlığı yetkilisinin (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği) imzasını taşır.
 
 - **Ücretsizdir.** Süreç için sizden herhangi bir ücret talep edilmez.
-- **Nerede işe yarar?** Belgenin, **Suudi Arabistan makamlarının Hac/Umre vizesi başvurusunda** talep edilen "Certificate of Conversion" olarak kullanıldığı bilinmektedir. Diğer resmî işlemlerde talep edilmesi hâlinde de ibraz edilebilir; ancak her kurumun kendi kabul kriteri farklı olabileceğinden, özel bir kullanım amacınız varsa önceden ilgili kurumla teyit etmenizi öneririz.
+- **Nerede işe yarar?** Belgenin, **Suudi Arabistan makamlarının Hac/Umre vizesi başvurusunda** talep edilen “Certificate of Conversion” olarak kullanıldığı bilinmektedir. Diğer resmî işlemlerde talep edilmesi hâlinde de ibraz edilebilir; ancak her kurumun kendi kabul kriteri farklı olabileceğinden, özel bir kullanım amacınız varsa önceden ilgili kurumla teyit etmenizi öneririz.
 - **Nasıl düzenlenir?** Törenin ardından kuşe kâğıda basılan bir nüsha size takdim edilir; resmî arşiv nüshası ise T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’ne gönderilerek kayıt altına alınır.
 
 > Bu site üzerinden doldurduğunuz online form, resmî EK-9’un **ön başvurusu/dilekçesi** niteliğindedir; resmî belge yalnızca camimizdeki tören ve Müşavirlik onayı ile düzenlenir.

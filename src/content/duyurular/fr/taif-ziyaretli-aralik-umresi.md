@@ -1,7 +1,7 @@
 ---
 baslik: "Omra de décembre avec visite de Taïf : inscriptions ouvertes"
 tarih: 2026-08-27
-ozet: "La Fondation Diyanet de Belgique organise une omra de 13 jours et 12 nuits : départ le 20 décembre 2026 vers Médine, retour le 1er janvier 2027 depuis Djeddah. Hôtels à distance de marche ; à partir de 2.290 € par personne en chambre de 4. Clôture des inscriptions le 20 novembre 2026."
+ozet: "La Fondation Diyanet de Belgique organise une omra de 13 jours et 12 nuits : départ le 20 décembre 2026 vers Médine, retour le 1er janvier 2027 depuis Djeddah. Hôtels à distance de marche ; à partir de 2 290 € par personne en chambre de 4. Clôture des inscriptions le 20 novembre 2026."
 kapak: /media/duyurular/taif-umresi-2026-afis.webp
 kapakAlt: "Affiche de la Fondation Diyanet de Belgique pour l'omra de décembre avec visite de Taïf — départ 20.12.2026 Médine, retour 01.01.2027 Djeddah, clôture le 20 novembre 2026"
 etiketler:
@@ -33,9 +33,9 @@ Les prix s'entendent par personne et varient selon le type de chambre.
 
 | Type de chambre | Adulte | 0-2 ans | 3-5 ans | 6-11 ans | 12-24 ans (étudiant) |
 |---|---|---|---|---|---|
-| 4 personnes | **2.290 €** | 690 € | 1.290 € | 1.400 € | 1.790 € |
-| 3 personnes | **2.390 €** | 690 € | 1.290 € | 1.400 € | 1.890 € |
-| 2 personnes | **2.490 €** | 690 € | 1.290 € | 1.400 € | 1.990 € |
+| 4 personnes | **2 290 €** | 690 € | 1 290 € | 1 400 € | 1.790 € |
+| 3 personnes | **2 390 €** | 690 € | 1 290 € | 1 400 € | 1.890 € |
+| 2 personnes | **2 490 €** | 690 € | 1 290 € | 1 400 € | 1.990 € |
 
 Pour bénéficier du tarif étudiant, il faut avoir entre 12 et 24 ans et fournir une attestation de scolarité.
 

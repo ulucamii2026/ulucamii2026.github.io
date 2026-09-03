@@ -3,6 +3,7 @@
  *  Ders başlangıcından önce/sonra alt metin otomatik değişir; elle kaldırma gerekmez. */
 import type { Dil } from '../i18n/ui';
 import { kayitBaglantisi } from '../i18n/utils';
+import { DERS_YILI_ETIKETI } from '../lib/etkinlik-tarihleri';
 interface Props { dil: Dil; link?: string }
 const { dil, link } = Astro.props;
 /* Dil tercihi her zaman açıkça taşınır: parametresiz gidilirse formun localStorage'daki eski
@@ -11,19 +12,19 @@ const kayitLink = link ? kayitBaglantisi(link, dil) : link;
 const DERS_BASLANGIC = new Date('2026-09-05T00:00:00+02:00');
 const baslamadi = Date.now() < DERS_BASLANGIC.getTime();
 const m = dil === 'tr' ? {
-  baslik: 'Kur’an Kursu 2026–2027 — kayıtlar açık',
+  baslik: `Kur’an Kursu ${DERS_YILI_ETIKETI} — kayıtlar açık`,
   alt: baslamadi
     ? 'Dersler 5 Eylül Cumartesi başlıyor · Kayıt telefonunuzdan 5 dakika sürer'
     : 'Dersler başladı · Kayıt telefonunuzdan 5 dakika sürer',
   dugme: 'Öğrenci Kaydı Yap',
 } : dil === 'en' ? {
-  baslik: 'Qur’an School 2026–2027 — enrolment open',
+  baslik: `Qur’an School ${DERS_YILI_ETIKETI} — enrolment open`,
   alt: baslamadi
     ? 'Classes start Saturday 5 September · Registration takes 5 minutes on your phone'
     : 'Classes have started · Registration takes 5 minutes on your phone',
   dugme: 'Register a student',
 } : {
-  baslik: 'Cours de Coran 2026–2027 — inscriptions ouvertes',
+  baslik: `Cours de Coran ${DERS_YILI_ETIKETI} — inscriptions ouvertes`,
   alt: baslamadi
     ? 'Rentrée le samedi 5 septembre · Inscription en 5 minutes depuis votre téléphone'
     : 'Les cours ont commencé · Inscription en 5 minutes depuis votre téléphone',

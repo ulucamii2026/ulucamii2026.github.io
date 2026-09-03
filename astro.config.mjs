@@ -1,5 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { existsSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -19,11 +21,19 @@ export default defineConfig({
         !/\/(portal|portail|privacy|confidentialite|gizlilik|conversion-application|demande-de-conversion|ihtida-basvurusu)\/$/.test(
           page,
         ),
-      // xmlns:xhtml bildirilen ad alanını fiilen dolduracak hreflang alternate
-      // (xhtml:link) girişleri üretir; kodlar src/i18n/utils.ts:hreflangKodu ile birebir
-      i18n: {
-        defaultLocale: 'tr',
-        locales: { tr: 'tr', fr: 'fr-BE', en: 'en' },
+      // hreflang alternatifleri: eklentinin i18n eşleştirmesi yalnız aynı yolu paylaşan sayfaları
+      // (/tr/afisler ↔ /fr/afisler) yakalar; bizim yollar yerelleştirilmiş olduğundan (/tr/duyurular ↔
+      // /fr/annonces) 390 adresin 17'sinde kalıyordu. Kaynak olarak her sayfanın kendi <head>'indeki
+      // <link rel="alternate" hreflang> etiketleri okunur (Base.astro üretir, üç dil + x-default) —
+      // tek doğruluk kaynağı, çift bakım yok. Sitemap derleme sonunda yazıldığı için dist hazırdır.
+      serialize(item) {
+        const yol = new URL(item.url).pathname;
+        const dosya = fileURLToPath(new URL('./dist' + yol + 'index.html', import.meta.url));
+        if (!existsSync(dosya)) return item;
+        const bas = readFileSync(dosya, 'utf8').slice(0, 30000);
+        const links = [...bas.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map(([, lang, url]) => ({ lang, url }));
+        if (links.length) item.links = links;
+        return item;
       },
     }),
   ],

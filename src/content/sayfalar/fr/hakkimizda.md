@@ -13,7 +13,7 @@ Depuis le **25 décembre 2023**, la dénomination officielle française de notre
 
 ## Notre rattachement à la Fondation Diyanet de Belgique
 
-Notre mosquée exerce ses activités sous l’égide de la **Fondation Diyanet de Belgique (FDB)**, créée en 1982. Notre imam est désigné par la Présidence des Affaires religieuses de Turquie (Diyanet) et son activité est coordonnée par le Conseiller aux Affaires sociales rattaché à la FDB. Ce rattachement garantit que nos services cultuels s’inscrivent dans la tradition du Diyanet turc, avec régularité et continuité.
+Notre mosquée exerce ses activités sous l’égide de la **Fondation Diyanet de Belgique (BDV)**, créée en 1982. Notre imam est désigné par la Présidence des Affaires religieuses de Turquie (Diyanet) et son activité est coordonnée par le Conseiller aux Affaires sociales rattaché à la BDV. Ce rattachement garantit que nos services cultuels s’inscrivent dans la tradition du Diyanet turc, avec régularité et continuité.
 
 ## Notre statut officiel
 

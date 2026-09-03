@@ -1,7 +1,7 @@
 ---
 baslik: "Taif Ziyaretli Aralık Umresi: Kayıtlar Açık"
 tarih: 2026-08-27
-ozet: "Belçika Diyanet Vakfı'nın 13 gün 12 gecelik umre programı 20 Aralık 2026'da Medine'ye gidiş, 1 Ocak 2027'de Cidde'den dönüşle düzenleniyor. Oteller yürüme mesafesinde; ücret 4 kişilik odada kişi başı 2.290 €'dan başlıyor. Son başvuru 20 Kasım 2026."
+ozet: "Belçika Diyanet Vakfı’nın 13 gün 12 gecelik umre programı 20 Aralık 2026’da Medine’ye gidiş, 1 Ocak 2027’de Cidde’den dönüşle düzenleniyor. Oteller yürüme mesafesinde; ücret 4 kişilik odada kişi başı 2.290 €’dan başlıyor. Son başvuru 20 Kasım 2026."
 kapak: /media/duyurular/taif-umresi-2026-afis.webp
 kapakAlt: "Belçika Diyanet Vakfı Taif ziyaretli Aralık umresi afişi — gidiş 20.12.2026 Medine, dönüş 01.01.2027 Cidde, son başvuru 20 Kasım 2026"
 etiketler:
@@ -12,16 +12,16 @@ oneCikan: true
 
 <div class="uyari"><p><strong>Son başvuru: 20 Kasım 2026.</strong> Kontenjan sınırlıdır; kayıtlar yalnızca çevrimiçi alınır.</p></div>
 
-Belçika Diyanet Vakfı, 2026-2027 sezonunun **Taif ziyaretli Aralık umresi** için kayıtları açtı. Program **13 gün 12 gece** sürüyor ve konaklama Harem'e **yürüme mesafesindeki** otellerde yapılıyor.
+Belçika Diyanet Vakfı, 2026-2027 sezonunun **Taif ziyaretli Aralık umresi** için kayıtları açtı. Program **13 gün 12 gece** sürüyor ve konaklama Harem’e **yürüme mesafesindeki** otellerde yapılıyor.
 
-Yolculuk, Hz. Peygamber'in tebliğ için gittiği ve orada büyük eziyet gördüğü **Tâif**'e bir ziyareti de kapsıyor.
+Yolculuk, Hz. Peygamber’in tebliğ için gittiği ve orada büyük eziyet gördüğü **Tâif**’e bir ziyareti de kapsıyor.
 
 ## Künye
 
 | | |
 |---|---|
-| Gidiş | **20 Aralık 2026** — Medine'ye |
-| Dönüş | **1 Ocak 2027** — Mekke'den (Cidde) |
+| Gidiş | **20 Aralık 2026** — Medine’ye |
+| Dönüş | **1 Ocak 2027** — Mekke’den (Cidde) |
 | Süre | 13 gün, 12 gece |
 | Konaklama | Yürüme mesafesinde |
 | Kontenjan | Sınırlı |
@@ -62,4 +62,4 @@ Kayıt işlemini kendiniz yapabileceğiniz gibi camimizdeki görevliden yardım 
 - **Cami (dernek başkanı):** <a href="tel:+32472985073">+32 472 98 50 73</a>
 - **Belçika Diyanet Vakfı:** <a href="tel:+3222185755">02 218 57 55</a> · <a href="mailto:info@diyanet.be">info@diyanet.be</a>
 
-<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Kaynak: Belçika Diyanet Vakfı'nın <a style="padding-block:.55rem" href="https://www.diyanet.be/Anasayfa/xBlog/ArticleID/3341/Taif-Ziyaretli-Aralk-Umresi" target="_blank" rel="noopener">Taif Ziyaretli Aralık Umresi</a> duyurusu ve resmî afişi. Tarih, ücret ve koşullarda değişiklik olabileceğinden başvurudan önce <a style="padding-block:.55rem" href="https://www.diyanet.be/umre" target="_blank" rel="noopener">diyanet.be/umre</a> sayfasını kontrol ediniz.</p>
+<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Kaynak: Belçika Diyanet Vakfı’nın <a style="padding-block:.55rem" href="https://www.diyanet.be/Anasayfa/xBlog/ArticleID/3341/Taif-Ziyaretli-Aralk-Umresi" target="_blank" rel="noopener">Taif Ziyaretli Aralık Umresi</a> duyurusu ve resmî afişi. Tarih, ücret ve koşullarda değişiklik olabileceğinden başvurudan önce <a style="padding-block:.55rem" href="https://www.diyanet.be/umre" target="_blank" rel="noopener">diyanet.be/umre</a> sayfasını kontrol ediniz.</p>

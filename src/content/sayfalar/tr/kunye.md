@@ -1,7 +1,7 @@
 ---
 baslik: Künye
 altBaslik: Bu internet sitesini yayınlayan derneğe ilişkin yasal bilgiler.
-aciklama: Ulu Camii Marche-en-Famenne'yi işleten derneğin resmî adı, KBO numarası, iletişim bilgileri ve site barındırma bilgileri.
+aciklama: Ulu Camii Marche-en-Famenne’yi işleten derneğin resmî adı, KBO numarası, iletişim bilgileri ve site barındırma bilgileri.
 guncelleme: 2026-08-24
 ---
 

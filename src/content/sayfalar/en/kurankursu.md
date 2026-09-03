@@ -86,7 +86,7 @@ We are looking into a group purchase; parents will be informed of any developmen
 
 ## Registration
 
-Registration is done through the **“Online registration form”** button on the right of this page. Filling in the form takes about 5 minutes; it is available in Turkish and French. You can scan your identity card with the form’s camera to automatically fill in details such as the student’s first name, surname and date of birth. Once submitted, your signed registration document is sent to your e-mail as a PDF, and you are given a **reference number**.
+Registration is done through the **“Online registration form”** button on the right of this page. Filling in the form takes about 5 minutes; it is available in Turkish and French. Once submitted, your registration document is sent to your e-mail as a PDF, and you are given a **reference number**.
 
 Registration is open throughout the year; if you wish to register a new student or update previously entered information, you can fill in the form again using the same reference number.
 

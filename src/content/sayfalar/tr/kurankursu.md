@@ -15,7 +15,7 @@ Kursumuz **7 yaş ve üzerindeki**, her milletten öğrenciye açıktır. **Kay�
 
 ## Ders günleri ve saatleri
 
-Dersler normal haftalarda **Cumartesi ve Pazar** günleri işlenir. Okulların tam hafta tatilde olduğu haftalarda programa ayrıca **Pazartesi** günü eklenir; o haftalarda ders 3 gün sürer.
+Dersler normal haftalarda **cumartesi ve pazar** günleri işlenir. Okulların tam hafta tatilde olduğu haftalarda programa ayrıca **pazartesi** günü eklenir; o haftalarda ders 3 gün sürer.
 
 | Dönem | Ders saatleri |
 |---|---|
@@ -86,7 +86,7 @@ Toplu temin imkânı araştırılmaktadır; gelişme olursa velilerimize duyurul
 
 ## Kayıt
 
-Kayıt, bu sayfanın sağındaki **“Online kayıt formu”** düğmesinden yapılır. Form doldurmak ortalama 5 dakika sürer; Türkçe ve Fransızca seçenekleriyle sunulur. Kimlik kartınızı formun kamerasıyla taratarak öğrencinin adı, soyadı, doğum tarihi gibi bilgilerin otomatik doldurulmasını sağlayabilirsiniz. Gönderim tamamlandığında imzalı kayıt belgeniz PDF olarak e-postanıza gönderilir ve size bir **referans numarası** verilir.
+Kayıt, bu sayfanın sağındaki **“Online kayıt formu”** düğmesinden yapılır. Form doldurmak ortalama 5 dakika sürer; Türkçe ve Fransızca seçenekleriyle sunulur. Gönderim tamamlandığında kayıt belgeniz PDF olarak e-postanıza gönderilir ve size bir **referans numarası** verilir.
 
 Kayıt yıl boyunca açıktır; yeni bir öğrenci kaydettirmek veya daha önce girilen bilgileri güncellemek istediğinizde formu aynı referans numarasıyla tekrar doldurabilirsiniz.
 
@@ -116,7 +116,7 @@ Kursumuz ayrıca Namur bölgesinde düzenlenen **bilgi yarışmalarına** katıl
 ## Kursumuz rakamlarla
 
 - **23 öğrenci** (Ekim 2025)
-- **Cumartesi – Pazar** ders günleri
+- **cumartesi – pazar** ders günleri
 - Yılda **261 ders saati**
 - Kayıt ve dersler **tamamen ücretsiz**
 

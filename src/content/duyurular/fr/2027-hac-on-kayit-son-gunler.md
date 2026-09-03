@@ -8,6 +8,7 @@ etiketler:
   - hajj
   - diyanet
 oneCikan: true
+oneCikanSon: 2026-09-30
 ---
 
 <div class="uyari"><p><strong>Délai prolongé — date limite : mercredi 30 septembre 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p></div>

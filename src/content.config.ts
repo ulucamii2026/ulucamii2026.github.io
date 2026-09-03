@@ -16,6 +16,9 @@ const duyurular = defineCollection({
     galeri: z.array(z.object({ dosya: z.string(), kucuk: z.string().optional(), alt: z.string().optional() })).default([]),
     etiketler: z.array(z.string()).default([]),
     oneCikan: z.boolean().default(false),
+    /* Öne çıkarmanın son günü (dâhil). Süreli kampanyalar (hac ön kaydı gibi) bu tarihten sonra
+       ana sayfadaki öne çıkan yerini kendiliğinden bırakır; alan boşsa süresiz. */
+    oneCikanSon: z.coerce.date().optional(),
     taslak: z.boolean().default(false),
   }),
 });

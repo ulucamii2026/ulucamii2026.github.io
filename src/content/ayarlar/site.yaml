@@ -44,7 +44,7 @@ site:
         en: "Enrolment for the 2026–2027 Qur’an school is open — signing up online takes only a few minutes."
       sayfa: kurankursu
     - metin:
-        tr: "Hanımlar ve genç kızlar irşat programı — her Çarşamba camimizde, Esma AVCI Hoca Hanım ile."
+        tr: "Hanımlar ve genç kızlar irşat programı — her çarşamba camimizde, Esma AVCI Hoca Hanım ile."
         fr: "Programme pour femmes et jeunes filles — chaque mercredi à la mosquée, avec Mme Esma AVCI."
         en: "Women’s and girls’ programme — every Wednesday at the mosque, with Mrs Esma AVCI."
       sayfa: irsat
@@ -54,14 +54,14 @@ site:
         en: "Applying to become Muslim is now online — information, documents and the application form are on our site."
       sayfa: ihtida
     - metin:
-        tr: "2027 hac ön kayıtları sürüyor — başvuru 30 Eylül'e kadar, kontenjan sınırlı."
+        tr: "2027 hac ön kayıtları sürüyor — başvuru 30 Eylül’e kadar, kontenjan sınırlı."
         fr: "Préinscriptions au Hajj 2027 en cours — clôture le 30 septembre, places limitées."
         en: "Hajj 2027 pre-registration is open — closes 30 September, places are limited."
       sayfa: diyanet
     - metin:
-        tr: "İmam-ı Azam Eğitim Merkezi'nde 12–17 yaş hafta sonu yatılı Kur'an kursu kayıtları başladı — ayrıntılar duyurularda."
+        tr: "İmam-ı Azam Eğitim Merkezi’nde 12–17 yaş hafta sonu yatılı Kur’an kursu kayıtları başladı — ayrıntılar duyurularda."
         fr: "Inscriptions ouvertes au cours coranique en internat de week-end (12–17 ans) du centre İmam-ı Azam — détails dans les annonces."
-        en: "Enrolment is open for the İmam-ı Azam centre's weekend boarding Qur'an course (ages 12–17) — details in the announcements."
+        en: "Enrolment is open for the İmam-ı Azam centre’s weekend boarding Qur’an course (ages 12–17) — details in the announcements."
       sayfa: duyurular
   sosyal:
     facebook: https://www.facebook.com/profile.php?id=61591465715992

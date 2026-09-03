@@ -74,8 +74,10 @@ const kurumJsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{tamBaslik}</title>
     <meta name="description" content={metaAciklama} />
-    <link rel="canonical" href={kanonik} />
+    {/* noindex sayfada (404, portal, gizlilik) canonical çelişkili sinyal olur; 404 için /404/ diye adres de yok. */}
+    {!noindex && <link rel="canonical" href={kanonik} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(digerDilYolu(Astro.url, 'tr'), Astro.site)} />
     {/* Simge zinciri. SVG simgeyi desteklemeyen istemciler (WhatsApp, eski tarayıcılar,

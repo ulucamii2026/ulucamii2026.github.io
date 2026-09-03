@@ -1,18 +1,19 @@
 ---
-baslik: "2027 Hac Ön Kayıtları 30 Eylül'e Uzatıldı"
+baslik: "2027 Hac Ön Kayıtları 30 Eylül’e Uzatıldı"
 tarih: 2026-08-30
-ozet: "Belçika Diyanet Vakfı 2027 hac ön kayıt süresini 30 Eylül 2026'ya uzattı. Ön kayıt ücreti kişi başı 2.000 €; kontenjan sınırlı ve kesin kayıt hakkı ödeme sırasına göre veriliyor. Başvuru diyanet.be/onkayit adresinden yapılır; camimizden yardım alabilirsiniz."
+ozet: "Belçika Diyanet Vakfı 2027 hac ön kayıt süresini 30 Eylül 2026’ya uzattı. Ön kayıt ücreti kişi başı 2.000 €; kontenjan sınırlı ve kesin kayıt hakkı ödeme sırasına göre veriliyor. Başvuru diyanet.be/onkayit adresinden yapılır; camimizden yardım alabilirsiniz."
 kapak: /media/duyurular/2027-hac-onkayit-afis.webp
-kapakAlt: Belçika Diyanet Vakfı'nın 2027 hac ön kayıt afişi — ön kayıt 20 Haziran – 30 Ağustos 2026 (süre sonradan 30 Eylül'e uzatıldı), ücret kişi başı 2.000 €
+kapakAlt: Belçika Diyanet Vakfı’nın 2027 hac ön kayıt afişi — ön kayıt 20 Haziran – 30 Ağustos 2026 (süre sonradan 30 Eylül’e uzatıldı), ücret kişi başı 2.000 €
 etiketler:
   - hac
   - diyanet
 oneCikan: true
+oneCikanSon: 2026-09-30
 ---
 
 <div class="uyari"><p><strong>Süre uzatıldı — son başvuru: 30 Eylül 2026 Çarşamba.</strong> Kontenjan sınırlıdır ve kesin kayıt hakkı, ön kayıt ödemesinin sırasına göre verilmektedir — erken başvuran öne geçer.</p></div>
 
-Belçika Diyanet Vakfı, **2027 yılı hac ön kayıt süresini 30 Eylül 2026 Çarşamba gününe kadar uzattı** (ilk duyurudaki son gün 30 Ağustos'tu). Suudi Arabistan makamlarının vize işlemlerini erken tarihe çekmesi sebebiyle bu yıl hem ön kayıt hem kesin kayıt süreci normalden erken başlatıldı.
+Belçika Diyanet Vakfı, **2027 yılı hac ön kayıt süresini 30 Eylül 2026 Çarşamba gününe kadar uzattı** (ilk duyurudaki son gün 30 Ağustos’tu). Suudi Arabistan makamlarının vize işlemlerini erken tarihe çekmesi sebebiyle bu yıl hem ön kayıt hem kesin kayıt süreci normalden erken başlatıldı.
 
 Kayıtlar **yalnızca çevrimiçi** olarak alınıyor. İşlemi hacı adayı kendisi yapabileceği gibi, camimizdeki görevlilerden yardım alarak da tamamlayabilir.
 
@@ -40,14 +41,14 @@ Kesin kayıttan önce makul ve zorlayıcı bir sebeple vazgeçilirse, asgari 250
 
 - **Türk pasaportu** sahibi olanlar
 - **Daha önce hacca gitmemiş** olanlar. Daha önce hacca gitmiş biri, sağlık veya yaşlılık sebebiyle hiç gidemeyecek durumdaki bir yakını adına **vekâleten** gidebilir.
-- Türkiye'den **birinci derece akraba** (anne, baba, eş, kardeş, çocuk, dede, nine, torun) sınırlı kontenjanla götürülebilir; bu kişilerin 2027 hac kurasına katılmış olması gerekir.
+- Türkiye’den **birinci derece akraba** (anne, baba, eş, kardeş, çocuk, dede, nine, torun) sınırlı kontenjanla götürülebilir; bu kişilerin 2027 hac kurasına katılmış olması gerekir.
 
 ## Pasaportunuzu bugün kontrol edin
 
-Pasaportunuzun **en az 10 Mayıs 2028**'e kadar geçerli olması şarttır. Süresi bu tarihten önce dolacaksa yeni pasaport başvurusunu **hemen** yapın:
+Pasaportunuzun **en az 10 Mayıs 2028**’e kadar geçerli olması şarttır. Süresi bu tarihten önce dolacaksa yeni pasaport başvurusunu **hemen** yapın:
 
-- Belçika'dan başvuru ortalama **3-4 hafta** sürüyor.
-- Türkiye'ye izne gidenler, orada başvurduklarında pasaportu **7-10 gün** içinde alabiliyor.
+- Belçika’dan başvuru ortalama **3-4 hafta** sürüyor.
+- Türkiye’ye izne gidenler, orada başvurduklarında pasaportu **7-10 gün** içinde alabiliyor.
 
 Belçika vatandaşı olmayan hanımlarda **pasaport ile oturum kartındaki soyadının farklı olması** uçağa alınmamaya kadar varan sorunlar çıkarabiliyor; bu durumdaysanız şimdiden düzeltme işlemine başlayın.
 
@@ -75,4 +76,4 @@ Formu doldurmakta zorlanırsanız, belgeleriniz konusunda emin değilseniz ya da
 
 Rabbimiz, niyet edenlerin yolunu açık, kabul edilmiş bir hac nasip eylesin.
 
-<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Güncelleme (30 Ağustos 2026): Belçika Diyanet Vakfı ön kayıt süresini 30 Eylül 2026'ya uzattı. Doğrulama (3 Eylül 2026): süre Vakfın ön kayıt sayfasından yeniden teyit edildi — “2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri arasında gerçekleşecektir.” Aynı denetimde, kesin kayıtta istenen Belçika oturum kartının geçerlilik tarihi Vakfın metnindeki gibi 10.07.2027 olarak düzeltildi (sayfamızda sehven 10.07.2028 yazıyordu). Kaynak: Belçika Diyanet Vakfı — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. Afiş Belçika Diyanet Vakfı'na aittir.</p>
+<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Güncelleme (30 Ağustos 2026): Belçika Diyanet Vakfı ön kayıt süresini 30 Eylül 2026’ya uzattı. Doğrulama (3 Eylül 2026): süre Vakfın ön kayıt sayfasından yeniden teyit edildi — “2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri arasında gerçekleşecektir.” Aynı denetimde, kesin kayıtta istenen Belçika oturum kartının geçerlilik tarihi Vakfın metnindeki gibi 10.07.2027 olarak düzeltildi (sayfamızda sehven 10.07.2028 yazıyordu). Kaynak: Belçika Diyanet Vakfı — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. Afiş Belçika Diyanet Vakfı’na aittir.</p>

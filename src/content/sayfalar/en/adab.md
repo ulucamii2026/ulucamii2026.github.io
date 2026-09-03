@@ -44,7 +44,7 @@ Let us not forget that observing mosque etiquette and its rules is a requirement
 
 - Mosques are a shared value that all of us, as believers, must cherish and keep alive. We must give priority to consulting the religious official and the mosque management first on matters relating to the mosque's services, activities or administration. Let us not forget that a lack of transparency, avoiding the resolution of matters through dialogue, and acting individually on one's own accord lead us into discord and division, and harm our brotherhood.
 
-- Out of respect for their sanctity, we must place copies of the Holy Qur'an in elevated, clean places, and avoid leaving them on the floor or placing other objects on top of them.
+- Out of respect for their sanctity, we must place copies of the Holy Qur’an in elevated, clean places, and avoid leaving them on the floor or placing other objects on top of them.
 
 - We must pay attention to cleanliness inside the mosque and its premises. We must take care to leave the ablution areas and toilets clean, and avoid littering.
 

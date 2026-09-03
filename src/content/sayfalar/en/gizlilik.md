@@ -5,7 +5,7 @@ aciklama: GDPR-compliant information on how personal data is processed on the Ul
 guncelleme: 2026-08-25
 ---
 
-<p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur'an course registration, sending an e-mail).</p>
+<p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur’an course registration, sending an e-mail).</p>
 
 This page explains how your personal data is handled when you visit this website, and in services planned for future activation. This notice has been prepared on the basis of the European Union’s General Data Protection Regulation (GDPR).
 

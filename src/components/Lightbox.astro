@@ -1,4 +1,6 @@
 ---
+/* Lightbox betiği /vendor/govde.js içindedir (Base.astro tek sefer yükler); her sayfada aynı
+   satır içi betiği tekrarlamamak için taşındı (performans denetimi, Eylül 2026). */
 /**
  * Lightbox — sayfa içinde büyük görsel görüntüleyici (kullanıcı sekmeden kopmaz).
  * Kullanım: <a href="/media/x.webp" data-lightbox="galeri" data-caption="..."><img .../></a>
@@ -56,5 +58,3 @@ const m = dil === 'tr'
   @media (prefers-reduced-motion: reduce) { .lb-govde img { animation: none; } .lightbox::backdrop { backdrop-filter: none; } }
 </style>
 
-<!-- Lightbox betiği artık /vendor/govde.js içinde (Base.astro'da tek sefer yüklenir) — her sayfada
-     birebir aynı inline betiği tekrarlamamak için (performans denetimi, Eylül 2026). -->
