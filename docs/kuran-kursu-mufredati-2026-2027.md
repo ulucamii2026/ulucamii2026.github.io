@@ -19,7 +19,7 @@ Marche-en-Famenne / Belçika · Kur'an-ı Kerim · İtikat · İbadet · Siyer �
 Programın uygulama takvimi, ders saatleri, dönüşüm mantığı ve özel dönem kuralları bu bölümde özetlenmiştir.
 
 | **Konu** | **Açıklama** |
-|----|----|
+|:--:|----|
 | Öğretim yılı | 5 Eylül 2026 Cumartesi - 6 Haziran 2027 Pazar (Haziran'ın ilk haftası) |
 | Ders günleri | Her hafta Cumartesi ve Pazar. Okulların tam hafta tatil olduğu dönemlerde ayrıca Pazartesi (haftada 3 gün). |
 | Günlük süre | 3 ders saati. Her ders 40 dakika, dersler arası 20 dakika teneffüs. |
@@ -33,30 +33,30 @@ Programın uygulama takvimi, ders saatleri, dönüşüm mantığı ve özel dön
 ### 1.1. Günlük Ders Çizelgesi
 
 | **Ders** | **Yaz saati** | **Kış saati** | **Ders alanı** | **Açıklama**            |
-|:--------:|:-------------:|:-------------:|----------------|-------------------------|
-| 1\. ders |  11:00-11:40  |  10:00-10:40  | Kur'an-ı Kerim | Her gün sabit           |
-| Teneffüs |  11:40-12:00  |  10:40-11:00  | \-             | 20 dakika               |
-| 2\. ders |  12:00-12:40  |  11:00-11:40  | Dönüşümlü      | Sıradaki 1. branş dersi |
-| Teneffüs |  12:40-13:00  |  11:40-12:00  | \-             | 20 dakika               |
-| 3\. ders |  13:00-13:40  |  12:00-12:40  | Dönüşümlü      | Sıradaki 2. branş dersi |
+|:--------:|---------------|---------------|----------------|-------------------------|
+| 1\. ders | 11:00-11:40   | 10:00-10:40   | Kur'an-ı Kerim | Her gün sabit           |
+| Teneffüs | 11:40-12:00   | 10:40-11:00   | \-             | 20 dakika               |
+| 2\. ders | 12:00-12:40   | 11:00-11:40   | Dönüşümlü      | Sıradaki 1. branş dersi |
+| Teneffüs | 12:40-13:00   | 11:40-12:00   | \-             | 20 dakika               |
+| 3\. ders | 13:00-13:40   | 12:00-12:40   | Dönüşümlü      | Sıradaki 2. branş dersi |
 
 ### 1.2. Branş Dersleri Dönüşüm Düzeni
 
 İtikat - İbadet - Siyer - Ahlak sırası kesintisiz döner; her ders günü bu sıradan iki ders işlenir. Böylece iki ders gününde dört branşın tamamı bir tur tamamlanmış olur.
 
-| **Ders günü**       | **2. ders** | **3. ders** | **Sonuç**        |
-|---------------------|:-----------:|:-----------:|------------------|
-| 1\. gün (Cumartesi) |   İtikat    |   İbadet    | Turun ilk yarısı |
-| 2\. gün (Pazar)     |    Siyer    |    Ahlak    | Tur tamamlandı   |
-| 3\. gün             |   İtikat    |   İbadet    | Yeni tur başlar  |
-| 4\. gün             |    Siyer    |    Ahlak    | ...              |
+|    **Ders günü**    | **2. ders** | **3. ders** | **Sonuç**        |
+|:-------------------:|-------------|-------------|------------------|
+| 1\. gün (Cumartesi) | İtikat      | İbadet      | Turun ilk yarısı |
+|   2\. gün (Pazar)   | Siyer       | Ahlak       | Tur tamamlandı   |
+|       3\. gün       | İtikat      | İbadet      | Yeni tur başlar  |
+|       4\. gün       | Siyer       | Ahlak       | ...              |
 
 ### 1.3. Okul Tatilleri ve İlâve Pazartesi Dersleri
 
 Fédération Wallonie-Bruxelles 2026-2027 okul takviminde tam hafta tatil olan dönemler ve bu dönemlerde programa eklenen Pazartesi ders günleri:
 
 | **Tatil dönemi** | **Tarih aralığı** | **İlâve Pazartesi ders günleri** |
-|----|:--:|----|
+|:--:|----|----|
 | Sonbahar tatili (Congé d'automne) | 19-30 Ekim 2026 | 19 Ekim 2026, 26 Ekim 2026 |
 | Kış tatili (Vacances d'hiver) | 21 Aralık 2026 - 1 Ocak 2027 | 21 Aralık 2026, 28 Aralık 2026 |
 | Dinlenme tatili (Congé de détente) | 22 Şubat - 5 Mart 2027 | 22 Şubat 2027, 1 Mart 2027 |
@@ -65,7 +65,7 @@ Fédération Wallonie-Bruxelles 2026-2027 okul takviminde tam hafta tatil olan d
 ### 1.4. Dinî Günler: Bayram Tatilleri ve Ramazan Programı
 
 | **Dinî gün / dönem** | **Tarih** | **Programa etkisi** |
-|----|:--:|----|
+|:--:|----|----|
 | Ramazan ayı | 8 Şubat - 8 Mart 2027 | Bu dönemdeki bütün dersler Ramazan'a özel programla işlenir (bk. Bölüm 2.6). |
 | Ramazan'a hazırlık hafta sonu | 6-7 Şubat 2027 | Ramazan programının giriş dersleri işlenir. |
 | Ramazan Bayramı | 9-11 Mart 2027 (Salı-Perşembe) | Ders yok. Hafta içine denk geldiğinden ders günlerini etkilemez. |
@@ -165,9 +165,9 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 
 | **No** | **Ders konusu** | **Kaynak** | **Kazanım** |
 |:--:|----|----|----|
-| 1 | Benim dinim İslam'dır | Camiye Gidiyorum 1 s. 11–16 | • Öğrenci, İslam dininin Allah tarafından Hz. Muhammed (s.a.s.) aracılığıyla gönderildiğini ve bu dine mensup kişiye 'Müslüman' denildiğini açıklar. • Öğrenci, İslam'ın inanç, ibadet ve güzel ahlâk olmak üzere üç temel boyutunu sıralar ve her birine günlük yaşamdan örnek verir. • Öğrenci, Kelime-i Tevhid'in Türkçe anlamını ve Almancasını ezbere söyler ve yazar. • Öğrenci, cami, kilise ve sinagogu ilgili dinlerle (İslam, Hristiyanlık, Yahudilik) doğru biçimde eşleştirir ve aralarındaki farkı ayırt eder. • Öğrenci, farklı dinlerden insanlarla yardımlaşma ve saygı çerçevesinde ilişki kurmanın önemini kendi cümleleriyle ifade eder. • Öğrenci, yemek öncesinde Besmele çekmeyi ve yemek sonrasında Elhamdülillah demeyi Allah'a şükretmenin somut bir ifadesi olarak uygular. |
-| 2 | Kutsal kitabımız Kur'an'dır | Camiye Gidiyorum 1 s. 31–36 | • Öğrenci, Kur'an-ı Kerim'in Allah tarafından vahiy yoluyla Hz. Muhammed'e gönderilmiş kutsal bir kitap olduğunu açıklar. • Öğrenci, Bakara Suresi 2. ayeti ve mealini okuyarak Kur'an'ın 'rehberlik' niteliğini kendi cümleleriyle ifade eder. • Öğrenci, Kur'an'a gösterilmesi gereken saygı kurallarını (abdestli tutma, yere bırakmama, sayfaları yırtmama vb.) en az üç madde hâlinde sıralar. • Öğrenci, 'reçete' metaforundan hareketle Kur'an'ı yalnızca okumakla yetinmeyip hayata geçirmenin önemini kendi sözcükleriyle açıklar. • Öğrenci, Kur'an'ın diğer kitaplardan farkını örneklerle ayırt eder. • Öğrenci, '571'de Bir Güneş Doğdu' ilahisini sınıfta söyleyerek Hz. Peygamber'in hayatındaki temel dönemleri (doğum, peygamberlik, mücadele) tanır. |
-| 3 | Yaratıcımız Allah'tır | Camiye Gidiyorum 1 s. 49–54 | • Öğrenci, Allah'ın kâinattaki canlıları ve varlıkları yoktan var ettiğini açıklar. • Öğrenci, 'yaratmak' ile 'imal etmek' arasındaki farkı en az üç örnekle ayırt eder. • Öğrenci, İhlas Suresi'ni Arapça olarak ezberler ve anlamını kendi cümleleriyle ifade eder. • Öğrenci, Allah'ın Semî', Basîr, Alîm, Rahîm ve Vedûd isimlerini sayar ve her birinin anlamını açıklar. • Öğrenci, tevhid kavramını 'Allah'ın bir ve eşsiz olması' şeklinde tanımlar. • Öğrenci, peygamber sevgisini anlatan ilahiyi sınıfta söyleyerek Hz. Peygamber'e karşı sevgi ve saygı duygusunu ifade eder. |
+| 1 | Benim dinim İslam'dır | Camiye Gidiyorum 1 s. 11–16 | • Öğrenci, İslam dininin Allah tarafından Hz. Muhammed (s.a.s.) aracılığıyla gönderildiğini ve bu dine mensup kişiye 'Müslüman' denildiğini açıklar. • Öğrenci, İslam'ın inanç, ibadet ve güzel ahlâk olmak üzere üç temel boyutunu sıralar ve her birine günlük yaşamdan örnek verir. • Öğrenci, Kelime-i Tevhid'in Türkçe anlamını ve Almancasını ezbere söyler ve yazar. • Öğrenci, Müslüman, Hristiyan ve Yahudi adlarını ilgili dinle (İslam, Hristiyanlık, Yahudilik) doğru eşleştirir. • Öğrenci, farklı dinlerden insanlarla yardımlaşma ve saygı çerçevesinde ilişki kurmanın önemini kendi cümleleriyle ifade eder. • Öğrenci, yemek öncesinde Besmele çekmeyi ve yemek sonrasında Elhamdülillah demeyi Allah'a şükretmenin somut bir ifadesi olarak uygular. |
+| 2 | Kutsal kitabımız Kur'an'dır | Camiye Gidiyorum 1 s. 31–36 | • Öğrenci, Kur'an-ı Kerim'in Allah tarafından vahiy yoluyla Hz. Muhammed'e gönderilmiş kutsal bir kitap olduğunu açıklar. • Öğrenci, Bakara Suresi 2. ayeti ve mealini okuyarak Kur'an'ın 'rehberlik' niteliğini kendi cümleleriyle ifade eder. • Öğrenci, Kur'an'a gösterilmesi gereken saygı kurallarını (abdestli tutma, yere bırakmama, sayfaları yırtmama vb.) en az üç madde hâlinde sıralar. • Öğrenci, 'reçete' metaforundan hareketle Kur'an'ı yalnızca okumakla yetinmeyip hayata geçirmenin önemini kendi sözcükleriyle açıklar. • Öğrenci, Kur'an'ın diğer kitaplardan farkını örneklerle ayırt eder. |
+| 3 | Yaratıcımız Allah'tır | Camiye Gidiyorum 1 s. 49–54 | • Öğrenci, Allah'ın kâinattaki canlıları ve varlıkları yoktan var ettiğini açıklar. • Öğrenci, 'yaratmak' ile 'imal etmek' arasındaki farkı en az üç örnekle ayırt eder. • Öğrenci, İhlas Suresi'ni Arapça olarak ezberler ve anlamını kendi cümleleriyle ifade eder. • Öğrenci, Allah'ın Semî', Basîr, Alîm, Rahîm ve Vedûd isimlerini sayar ve her birinin anlamını açıklar. • Öğrenci, tevhid kavramını 'Allah'ın bir ve eşsiz olması' şeklinde tanımlar. |
 | 4 | İman ağacımız | Camiye Gidiyorum 1 s. 85–90 | • Öğrenci, imanın ne anlama geldiğini günlük yaşam örnekleriyle açıklar. • Öğrenci, İslam'ın iman esaslarını (altı şart) sırasıyla sıralar ve ezberler. • Öğrenci, iman ağacı metaforunu kullanarak her iman şartını temsil eden dalı tanımlar ve anlamını açıklar. • Öğrenci, Allah'a, meleklere ve kitaplara iman şartlarının günlük ibadet ve öğrenme pratiğiyle ilişkisini örnek vererek ifade eder. • Öğrenci, peygamberlere, ahirete ve kadere imanın insanın sorumlu davranışına katkısını kendi cümleleriyle açıklar. • Öğrenci, 'Durmaz Yanar Vücudum Allah' ilahisini sınıf arkadaşlarıyla birlikte söyler. |
 | 5 | Allah'a iman ediyorum | Camiye Gidiyorum 1 s. 121–126 | • Öğrenci, imanın birinci şartının Allah'a iman olduğunu ifade eder. • Öğrenci, Allah'a ve ahirete inananın dünyada daha anlamlı bir hayat yaşadığını açıklar. • Öğrenci, Amentü duasını Arapça olarak ezberler ve 'âmentü' kelimesinin anlamını söyler. • Öğrenci, Amentü'nün imanın şartlarını özetlediğini bilir ve bu şartları sıralar. • Öğrenci, İslam, Yahudilik ve Hristiyanlığın Yaratıcı'ya inanış biçimleri arasındaki temel benzerlikleri ve farklılıkları ayırt eder. • Öğrenci, 'Er-rızku alellah' ifadesinin anlamını söyler ve rızkın Allah'tan geldiği inancını örnekle açıklar. |
 | 6 | Kutsal kitapları tanıyalım | Camiye Gidiyorum 1 s. 141–146 | • Öğrenci, dört büyük ilahî kitabın (Kur'an-ı Kerim, İncil, Tevrat, Zebur) adlarını ve her birinin hangi peygambere vahyedildiğini sıralar. • Öğrenci, her kutsal kitabın hangi millete ve hangi şehirde/yerde indirildiğini açıklar. • Öğrenci, dört kutsal kitabın Almanca karşılıklarını (der Koran, Neues Testament, Thora, Psalmen) tanır ve doğru eşleştirir. • Öğrenci, kutsal kitaplara inanmanın imanın şartlarından biri olduğunu ifade eder. • Öğrenci, Allah'ın birden fazla kutsal kitap göndermesinin hikmetini kendi cümleleriyle açıklar. • Öğrenci, din eğitiminde sorumluluk ve ödev bilincinin önemini Esma ve Enes'in hikâyeleri üzerinden örnek vererek anlatır. |
@@ -182,7 +182,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 15 | Tekrar ve Değerlendirme 2 | — | • Öğrenci, işlenen konulardaki temel kavramları hatırlar ve örneklendirir. |
 | 16 | Temel Dinî Kaynaklarımı Biliyorum (1/2) | Camiye Gidiyorum 2 s. 26–29 | • Öğrenci, Kur'an-ı Kerim'in Allah'ın sözü olduğunu ve Hz. Cebrail aracılığıyla Hz. Peygamber'e vahyedildiğini açıklar. • Öğrenci, Kur'an-ı Kerim'in yapısını (sure, ayet, cüz, besmele) sıralar ve bu kavramları birbirinden ayırt eder. • Öğrenci, Kur'an-ı Kerim'e verilen diğer isimleri (Furkan, Zikr, Kitap, Nur) tanır ve bu isimlerin anlamlarını kısaca açıklar. |
 | 17 | Temel Dinî Kaynaklarımı Biliyorum (2/2) | Camiye Gidiyorum 2 s. 26–29 | • Öğrenci, Hadis'in tanımını yapar; sünnetin Hz. Peygamber'in söz, eylem ve onaylarını kapsadığını ifade eder. • Öğrenci, bir hadisin sened ve metin bölümlerini örnekler üzerinden birbirinden ayırt eder. • Öğrenci, Kur'an ve Hadis'in İslam'daki temel kaynak değerini kavrayarak bu kaynaklardan öğrenilen değerleri günlük hayatına uygulamaya istekli olduğunu gösterir. |
-| 18 | Allah'ın Meleklerine İnanıyorum | Camiye Gidiyorum 2 s. 46–55 | • Öğrenci, İslam'ın iman esaslarından biri olan meleklere imanın Amentü içindeki yerini açıklar. • Öğrenci, Kur'an'da bahsedilen görünmeyen varlıkları (melekler, cinler, şeytan) isimlendirir ve temel özelliklerini ayırt eder. • Öğrenci, meleklerin Allah'ın emirlerine kesinlikle itaat eden nurdan varlıklar olduğunu ifade eder. • Öğrenci, şeytanın insanı saptırmaya çalıştığını bilir ve bu tehlikeye karşı Allah'a sığınmanın önemini açıklar. • Öğrenci, tövbenin anlamını ve günahlardan arınmadaki rolünü Hz. Peygamber'in hadisine dayanarak açıklar. • Öğrenci, Seyyidü'l İstiğfar duasını ezberler ve günlük hayatta tövbe ve istiğfar etme bilincini uygular. |
+| 18 | Allah'ın Meleklerine İnanıyorum | Camiye Gidiyorum 2 s. 46–57 | • Öğrenci, İslam'ın iman esaslarından biri olan meleklere imanın Amentü içindeki yerini açıklar. • Öğrenci, Kur'an'da bahsedilen görünmeyen varlıkları (melekler, cinler, şeytan) isimlendirir ve temel özelliklerini ayırt eder. • Öğrenci, meleklerin Allah'ın emirlerine kesinlikle itaat eden nurdan varlıklar olduğunu ifade eder. • Öğrenci, şeytanın insanı saptırmaya çalıştığını bilir ve bu tehlikeye karşı Allah'a sığınmanın önemini açıklar. • Öğrenci, tövbenin anlamını ve günahlardan arınmadaki rolünü Hz. Peygamber'in hadisine dayanarak açıklar. • Öğrenci, Seyyidü'l İstiğfar duasını ezberler ve günlük hayatta tövbe ve istiğfar etme bilincini uygular. • Öğrenci, meleklerin yaratılış özellikleri ile başlıca görevlerini (vahiy iletmek, can almak, amel kaydetmek, kıyamette sûra üflemek vb.) sıralar ve Cebrail, Azrail, Mikail, İsrafil ile Kirâmen Kâtibîn'i tanır. • Öğrenci, melekler ile şeytanın farkını (yaratılış, itaat, günah işleyip işlememe) ayırt eder ve şeytandan korunmak için Nâs suresine başvurmanın önemini açıklar. |
 | 19 | Kur'an Bize Kendisini Tanıtıyor | Camiye Gidiyorum 2 s. 71–74 | • Öğrenci, Kur'an-ı Kerim'in Allah kelamı olduğunu ve Hz. Muhammed (s.a.s.)'e vahiy yoluyla indirildiğini açıklar. • Öğrenci, Kur'an'ın sure, ayet ve cüz sayılarını (114 sure, 6.236 ayet, 30 cüz) doğru olarak sıralar. • Öğrenci, Besmele'nin ve sure başlıklarının Kur'an'daki yerini ve önemini ifade eder. • Öğrenci, Kur'an'ın insanlara yol gösterici ve hayata uygulanması gereken bir rehber olduğunu kendi cümleleriyle tanımlar. • Öğrenci, mushaftan istediği bir sureyi bulur, ismini ve genel özelliklerini sınıfa sunar. • Öğrenci, duanın Allah ile kul arasındaki manevi bağı güçlendiren bir ibadet olduğunu açıklar ve günlük hayattaki örneklerini verir. |
 | 20 | Kitaplara İnanıyorum | Camiye Gidiyorum 2 s. 92–97 | • Öğrenci, kitaplara imanın şartlarından biri olduğunu ifade eder ve dört büyük ilahî kitabı (Tevrat, Zebur, İncil, Kur'an) adlarıyla sıralar. • Öğrenci, her ilahî kitabın hangi peygambere indirildiğini eşleştirir. • Öğrenci, Kur'an-ı Kerim'in vahyedilme sürecini (sözlü ezberleme, yazıya geçirilme, mushaf hâlinde derleme ve çoğaltma) kendi cümleleriyle açıklar. • Öğrenci, Kur'an'ın diğer kutsal kitaplardan farkını (değişmeden korunmuş olması, tüm insanlığa gönderilmiş olması) ayırt eder. • Öğrenci, Hristiyanların kutsal kitabının (Kitâb-ı Mukaddes) Eski Ahit ve Yeni Ahit bölümlerinden oluştuğunu, İncil'in ise Hz. İsa'ya indirilen ilâhî kitap olduğunu bilir ve dört İncil yazarının adlarını sayar. • Öğrenci, Nisâ Suresi 136. ayet başta olmak üzere kitaplara imana dair ayetlerin içeriğini kendi cümleleriyle özetler. |
 | 21 | Kur'an'ın Oluşumunu Biliyorum | Camiye Gidiyorum 2 s. 118–123 | • Öğrenci, Kur'an-ı Kerim'in Hz. Peygamber'e Cebrail aracılığıyla yaklaşık 23 yılda vahyedildiğini açıklar. • Öğrenci, vahiy kâtiplerinin görevini ve vahyin yazıya geçirilme sürecini kendi cümleleriyle anlatır. • Öğrenci, Kur'an'ın kitap hâline getirilme sürecindeki tarihî aşamaları (Hz. Ebu Bekir ve Hz. Osman dönemleri) sıralar. • Öğrenci, nokta ve hareke sisteminin Kur'an metnine ne zaman ve neden eklendiğini açıklar. • Öğrenci, 'hafız' kavramını tanımlar ve hafızların Kur'an'ın korunmasındaki tarihî rolünü örnek vererek ifade eder. • Öğrenci, Kur'an'ın en uzun ve en kısa surelerini araştırarak isimlerini söyler. |
@@ -225,7 +225,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 16 | Sadaka ve Zekât İbadetini Öğreniyorum | Camiye Gidiyorum 2 s. 189–192 | • Öğrenci, zekâtın İslam'ın beş temel ibadetinden biri olduğunu ve farz niteliği taşıdığını açıklar. • Öğrenci, nisap kavramını tanımlar ve zekât yükümlülüğünün hangi koşullarda doğduğunu ifade eder. • Öğrenci, sadaka ve zekâta ilişkin ayet ve hadisleri örnek vererek bu ibadetlerin Kur'an ve Sünnet'teki dayanaklarını belirtir. • Öğrenci, sadakanın maddi yardımın ötesine geçen biçimlerini (gülümsemek, yol göstermek, engel kaldırmak) sıralar ve bunları kendi hayatından örneklerle açıklar. • Öğrenci, zekât ve sadakanın bireyi arındırdığını ve toplumsal dayanışmayı güçlendirdiğini kendi cümleleriyle ifade eder. • Öğrenci, 'Askıda Giysi' gibi sosyal sorumluluk projelerini inceler ve okulunda benzer bir yardım girişimi için plan önerisinde bulunur. |
 | 17 | Kur'an-ı Kerim ile Çalışmayı Öğreniyoruz | Camiye Gidiyorum 2 s. 200–202 | • Öğrenci, Kur'an-ı Kerim'in cüz, sûre ve ayet sayılarını doğru biçimde ifade eder. • Öğrenci, bir sûrenin Mekkî mi yoksa Medenî mi olduğunu açıklar ve bu ayrımın tefsirdeki önemini belirtir. • Öğrenci, Kur'an fihristini (dizinini) kullanarak verilen bir sûre veya ayet referansını kitapta bulur. • Öğrenci, sûre numarası, ayet numarası ve sayfa/cüz bilgisini birleştirerek arama yapar ve ilgili metni tespit eder. • Öğrenci, belirli bir konuya (gözle ilgili, gökyüzüyle ilgili vb.) dair ayetleri tematik kavram listeleriyle araştırır. • Öğrenci, Kur'an'ın vahiy süreci ve yazıya geçirilme tarihi hakkında temel bilgileri sıralar. |
 | 18 | Hac, Umre ve Kurban İbadetini Öğreniyorum | Camiye Gidiyorum 2 s. 222–231 | • Öğrenci, hac ibadetinin İslam'ın beş şartından biri olduğunu ve kime farz olduğunu açıklar. • Öğrenci, Kâbe'nin inşasını Hz. İbrahim, Hz. Hacer ve Hz. İsmail kıssasıyla ilişkilendirerek anlatır. • Öğrenci, ihram, tavaf, sa'y, Arafat vakfesi ve şeytan taşlama gibi hac ibadetinin temel unsurlarını sıralar. • Öğrenci, Telbiye duasını tanır ve bu duanın hac yolculuğundaki önemini açıklar. • Öğrenci, hac ibadetinin sembolik anlamlarını (eşitlik, birlik, Allah'a teslimiyet) örnek vererek ifade eder. • Öğrenci, hac ile umre arasındaki temel farkı ayırt eder. |
-| 19 | Namazı Öğreniyorum | Camiye Gidiyorum 2 s. 246–258 | • Öğrenci, İslam medeniyetinin bilim, sanat ve edebiyat alanlarındaki önemli temsilcilerinden en az beşini adıyla sıralar. • Öğrenci, Osmanlı hat sanatının İslam kültüründeki yerini ve işlevini kendi cümleleriyle açıklar. • Öğrenci, namazın şartlarını (namaz öncesi ve namaz içi), rükünlerini, vaciplerini ve sünnetlerini listeler. • Öğrenci, namazı bozan ve namazı mekruh kılan durumları birbirinden ayırt eder. • Öğrenci, sabah ve öğle namazlarının sünnet ve farzlarını doğru sıra ile kılar; her harekette okunacak duayı söyler. • Öğrenci, niyet, Sübhaneke, rükû-secde zikirlerini, Tahiyyat, Salli-Bârik dualarını ve selamı eksiksiz okur. |
+| 19 | Namazı Öğreniyorum | Camiye Gidiyorum 2 s. 98–109; s. 251–258 (Çocuk İlmihali) | • Öğrenci, namazın şartlarını (namaz öncesi ve namaz içi), rükünlerini, vaciplerini ve sünnetlerini listeler. • Öğrenci, namazı bozan ve namazı mekruh kılan durumları birbirinden ayırt eder. • Öğrenci, sabah ve öğle namazlarının sünnet ve farzlarını doğru sıra ile kılar; her harekette okunacak duayı söyler. • Öğrenci, niyet, Sübhaneke, rükû-secde zikirlerini, Tahiyyat, Salli-Bârik dualarını ve selamı eksiksiz okur. |
 | 20 | İbadet | Temel Dinî Bilgiler (S. Yazıcı) s. 56–58 | • Öğrenci ibadet kavramını kendi cümleleriyle tanımlar ve Allah'a kullukla ilişkisini açıklar. • Öğrenci ibadetleri bedenî, malî ve karma olmak üzere üç türe ayırır ve her türe örnek verir. • Öğrenci farz, vacip ve nafile kavramlarını birbirinden ayırt eder ve aralarındaki derece farkını sıralar. • Öğrenci ibadetlerin insan üzerindeki bireysel yararlarını (bedensel sağlık, sabır, şükür) somut örneklerle açıklar. • Öğrenci ibadetlerin toplumsal işlevlerini (dayanışma, yardımlaşma) ifade eder. • Öğrenci niçin ibadet etmemiz gerektiğini yaratılış amacı ve nimete şükran çerçevesinde gerekçelendirir. |
 | 21 | İslam | Temel Dinî Bilgiler (S. Yazıcı) s. 59–63 | • Öğrenci, İslam'ın tanımını kendi cümleleriyle açıklar. • Öğrenci, İslam'ın beş şartını sıralar ve her birinin kısa tanımını verir. • Öğrenci, mükellef kavramını tanımlar ve mükellef olmanın şartlarını (akıl ve ergenlik) sayar. • Öğrenci, farz-ı ayn ile farz-ı kifâyeyi birbirinden ayırt eder ve her birine örnek verir. • Öğrenci, vacip, sünnet, müstehap, mübah, haram, mekruh ve müfsit kavramlarını tanımlayarak aralarındaki hiyerarşik farkı açıklar. • Öğrenci, sünnet-i müekkede ile sünnet-i gayr-ı müekkede arasındaki farkı örnek vererek açıklar. |
 | 22 | Temizlik (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 64–77 | • Öğrenci, İslam'da temizliğin imanla olan ilişkisini ayet ve hadise dayandırarak açıklar. • Öğrenci, abdest, gusül ve teyemmümün farzlarını sıralar ve her birinin ne zaman gerektiğini ayırt eder. • Öğrenci, suları temizleyicilik özelliklerine göre sınıflandırır ve ibadete elverişli olan ile olmayanı birbirinden ayırt eder. |
@@ -255,10 +255,10 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 4 | Hz. Muhammed (s.a.s.) peygamber oluyor | Camiye Gidiyorum 1 s. 181–186 | • Öğrenci, Hz. Muhammed'in (s.a.s.) peygamberliğinden önce Mekke toplumunda var olan başlıca sosyal sorunları en az üç örnekle sıralar. • Öğrenci, Hz. Muhammed'in Hira Mağarası'na çekilme sebebini kendi cümleleriyle açıklar. • Öğrenci, ilk vahyin Cebrail (as) aracılığıyla ve 'Oku!' emriyle geldiğini anlatır. • Öğrenci, 'vahiy', 'Rab' ve 'Cebrail' kavramlarını kısaca tanımlar. • Öğrenci, Alak Suresi'nin ilk beş ayetinin mealini okur ve bu ayetlerin önemini ifade eder. • Öğrenci, 'Bizden Selam Götürün' ilahisini sınıfta söyler ve ilahide geçen kutsal mekânları tanır. |
 | 5 | Hz. Muhammed (s.a.s.) İslam'ı anlatıyor | Camiye Gidiyorum 1 s. 215–220 | • Öğrenci, Hz. Muhammed'in ilk vahyi alışında Hz. Hatice'nin oynadığı destek ve güven rolünü kendi cümleleriyle açıklar. • Öğrenci, ilk Müslümanlar arasında Hz. Ali, Hz. Ömer gibi isimleri sıralar ve her birinin İslam'a geçiş hikâyesinin temel özelliğini tanır. • Öğrenci, Hz. Muhammed'in İslam'ı tebliğ sürecinde karşılaştığı zorlukları (Ebu Leheb'in baskısı, toplumun ilk tepkisi) örnek vererek ifade eder. • Öğrenci, hicretin 622 yılında gerçekleştiğini ve Hz. Peygamber'in Medine'de ilahiyle karşılandığını belirtir. • Öğrenci, 'Taleal Bedru' ilahisinin hangi tarihi olayla bağlantılı olduğunu açıklar ve ilahiyi tanır. • Öğrenci, ilk Müslümanların inançlarını korumak için gösterdikleri cesaret ve kararlılığı kendi yaşantısına uygun örneklerle ilişkilendirir. |
 | 6 | Tekrar ve Değerlendirme 1 | — | • Öğrenci, işlenen konulardaki temel kavramları hatırlar ve örneklendirir. |
-| 7 | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (1/4) | Camiye Gidiyorum 2 s. 30–54 | • Öğrenci, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine kadar yaşadığı önemli olayları (annesini ve babasını kaybetmesi, sütannenin yanında büyümesi, dede ve amcasının himayesi) sıralar. • Öğrenci, Hz. Muhammed'in 'el-Emîn' lakabını kazanmasına yol açan dürüstlük ve güvenilirlik özelliklerini somut örneklerle açıklar. |
-| 8 | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (2/4) | Camiye Gidiyorum 2 s. 30–54 | • Öğrenci, Hilfü'l-Fudûl'un kuruluş amacını ve Hz. Muhammed'in bu toplumsal oluşumdaki rolünü tanımlar. • Öğrenci, meleklerin yaratılış özellikleri ile başlıca görevlerini (vahiy iletmek, can almak, amel kaydetmek, kıyamette sûra üflemek vb.) sıralar ve Cebrail, Azrail, Mikail, İsrafil ile Kirâmen Kâtibîn'i tanır. |
-| 9 | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (3/4) | Camiye Gidiyorum 2 s. 30–54 | • Öğrenci, melekler ile şeytanın farkını (yaratılış, itaat, günah işleyip işlememe) ayırt eder ve şeytandan korunmak için Nâs suresine başvurmanın önemini açıklar. |
-| 10 | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (4/4) | Camiye Gidiyorum 2 s. 30–54 | • Öğrenci, Hz. Muhammed'in hayatından çıkardığı güvenilirlik, dürüstlük ve toplumsal sorumluluk gibi ahlaki değerleri gündelik yaşamına nasıl uygulayabileceğini örnek vererek ifade eder. |
+| 7 | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (1/4) | Camiye Gidiyorum 2 s. 30–39 | • Öğrenci, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine kadar yaşadığı önemli olayları (annesini ve babasını kaybetmesi, sütannenin yanında büyümesi, dede ve amcasının himayesi) sıralar. • Öğrenci, Hz. Muhammed'in 'el-Emîn' lakabını kazanmasına yol açan dürüstlük ve güvenilirlik özelliklerini somut örneklerle açıklar. |
+| 8 | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (2/4) | Camiye Gidiyorum 2 s. 30–39 | • Öğrenci, Hilfü'l-Fudûl'un kuruluş amacını ve Hz. Muhammed'in bu toplumsal oluşumdaki rolünü tanımlar. |
+| 9 | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (3/4) | Camiye Gidiyorum 2 s. 30–39 | • Öğrenci, Hz. Muhammed'in (s.a.s.) ticaret hayatındaki dürüstlüğünü ve Hz. Hatice ile evliliğini anlatır; dürüst ticaretin günlük hayattaki karşılığına bir örnek verir. |
+| 10 | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (4/4) | Camiye Gidiyorum 2 s. 30–39 | • Öğrenci, Hz. Muhammed'in hayatından çıkardığı güvenilirlik, dürüstlük ve toplumsal sorumluluk gibi ahlaki değerleri gündelik yaşamına nasıl uygulayabileceğini örnek vererek ifade eder. • Öğrenci, Kâbe hakemliği olayını anlatarak adaletli çözümün ve uzlaştırmanın önemini açıklar. |
 | 11 | Hz. Muhammed'in (s.a.s.) Vahiy Sonrası Hayatı: Mekke Dönemi | Camiye Gidiyorum 2 s. 75–83 | • Öğrenci, Hz. Muhammed'in (s.a.s.) ilk vahyi aldığı ortamı ve olayın nasıl gerçekleştiğini kendi cümleleriyle açıklar. • Öğrenci, Habeşistan hicretini, İsra-Miraç'ı, Akabe Biatları'nı ve Medine'ye hicreti kronolojik sırayla sıralar. • Öğrenci, Alak suresinin 1-5. ayetlerini ilk vahyin bağlamıyla ilişkilendirerek Türkçe mealini yorumlar. • Öğrenci, Hz. Peygamber'in Tâif yolculuğundaki tutumundan yola çıkarak sabır ve affetme değerlerini somut örneklerle açıklar. • Öğrenci, Ensar ve Muhacir kavramlarını tanımlayarak Akabe Biatları'nın hicret açısından önemini ifade eder. • Öğrenci, geçmişteki hicret deneyimini günümüzdeki göç olgusuna bağlayarak empati kurduğunu yansıtan bir değerlendirme yazar. |
 | 12 | Hz. Muhammed'in (s.a.s.) Hicreti | Camiye Gidiyorum 2 s. 124–131 | • Öğrenci, hicretin neden gerçekleştiğini ve Mekke'deki Müslümanlara yönelik baskıları kendi cümleleriyle açıklar. • Öğrenci, hicret planında görev alan kişileri (Hz. Ebu Bekir, yol göstericiler, yardımcılar) ve üstlendikleri görevleri sıralar. • Öğrenci, hicretin İslam tarihi açısından önemini en az iki somut sonuçla (şehir-devletin kuruluşu, İslam takviminin başlangıcı) örnek vererek ifade eder. • Öğrenci, kendi veya ailesinin göç deneyimini Hz. Peygamber'in hicretiyle karşılaştırarak benzerlik ve farklılıkları ayırt eder. • Öğrenci, 622 yılındaki hicretin tarihini ve güzergâhındaki önemli durakları (Sevr Mağarası, Küba, Medine) tanır. • Öğrenci, hicrete katılanların fedakârlık ve dayanışma örneğini değerlendirerek günümüzdeki anlamını yorumlar. |
 | 13 | Hz. Muhammed'in (s.a.s.) Hayatı: Medine'de Yapılanlar | Camiye Gidiyorum 2 s. 164–173 | • Öğrenci, hicretin nedenlerini ve Mekke'den Medine'ye göçün tarihsel arka planını kendi cümleleriyle açıklar. • Öğrenci, Muhacir ve Ensar kavramlarını tanımlayarak iki grup arasında kurulan kardeşlik bağının (muahât) önemini örnek vererek ifade eder. • Öğrenci, Mescid-i Nebevî'nin ibadet, eğitim ve sosyal dayanışma gibi çok yönlü işlevlerini sıralar. • Öğrenci, ezan geleneğinin nasıl başladığını ve ilk müezzin Hz. Bilâl'in bu süreçteki rolünü anlatır. • Öğrenci, Medine Sözleşmesi'nin temel ilkelerini (adalet, eşitlik, din özgürlüğü, ortak yaşam) ayırt eder ve sözleşmenin İslam devlet anlayışındaki önemini açıklar. • Öğrenci, 'Ay doğdu üzerimize' ilahisini Hz. Peygamber'in Medine'ye gelişiyle ilişkilendirerek ilahinin duygusal ve tarihsel anlamını yorumlar. |
@@ -277,14 +277,14 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 26 | Boykot ve Hüzün Yılları (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 237–241 | • Öğrenci, I. ve II. Akabe Biatları arasındaki farkları (katılımcı sayısı, içerik, tarih) ayırt eder ve bu biatların İslam tarihindeki önemini ifade eder. • Öğrenci, İsrâ ve Miraç mucizelerini tanımlar; Miraç'ın gerçekleştiği güzergahı ve ilahi hediye olarak namazın bu gece farz kılındığını açıklar. • Öğrenci, beş vakit namazın Miraç gecesiyle bağlantısını kurarak namazın bir ibadet olarak Müslümanlar için taşıdığı anlamı değerlendirir. |
 | 27 | Hicret ve Medine'de İlk Yıllar | Temel Dinî Bilgiler (S. Yazıcı) s. 242–246 | • Öğrenci, hicretin gerçekleştiği tarihsel bağlamı ve Mekke'deki baskıların hicrete zemin hazırlayan nedenlerini açıklar. • Öğrenci, hicret yolculuğunun önemli aşamalarını (ayrılış, Sevr Mağarası, Medine'ye varış) sıralar. • Öğrenci, Ensar ve Muhacir kavramlarını tanımlar ve aralarındaki muâhât uygulamasını örnek vererek açıklar. • Öğrenci, Mescid-i Nebevî'nin ibadet işlevinin yanı sıra toplumsal hayattaki merkezi rolünü ve inşa sürecini anlatır. • Öğrenci, Ashab-ı Suffa'nın kimler olduğunu ve Suffa'nın İslam eğitim tarihindeki önemini değerlendirir. • Öğrenci, hicret hadisesinin İslam tarihindeki dönüm noktası niteliğini ve dayanışma değerini gerekçeleriyle savunur. |
 | 28 | Peygamberimiz (s.a.s.)'in Savaşları (I) | Temel Dinî Bilgiler (S. Yazıcı) s. 247–256 | • Öğrenci, Bedir, Uhud, Hendek savaşları ile Hudeybiye Antlaşması'nı hicri ve miladi tarihleriyle birlikte sıralar. • Öğrenci, her savaşın gerçekleşmesine yol açan temel sebepleri ve sonuçlarını kendi cümleleriyle açıklar. • Öğrenci, Uhud Savaşı'ndan çıkarılması gereken ahlaki dersleri (itaat, disiplin, görev terk etmemenin önemi) somut örneklerle ifade eder. • Öğrenci, Hudeybiye Antlaşması'nın kısa vadede ağır görünen şartlarına karşın İslam açısından stratejik bir kazanım olduğunu gerekçeleriyle açıklar. • Öğrenci, Hz. Peygamber'in davet mektupları aracılığıyla tebliği uluslararası boyuta taşıdığını ve Hayber ile Kaza Umresi'nin önemini tanımlar. • Öğrenci, bu dönemdeki olayları İslam'ın yayılma sürecindeki genel bir çizgide birbirine bağlayarak yorumlar. |
-| 29 | Peygamberimiz (s.a.s.)'in Savaşları (II) (1/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Mekke'nin fethinin gerçekleştiği tarihi, koşulları ve fethin kansız geçmesinin Hz. Peygamber'in insanlık anlayışına yansımasını açıklar. |
-| 30 | Peygamberimiz (s.a.s.)'in Savaşları (II) (2/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Veda Hutbesi'nin içerdiği temel evrensel ilkeleri (can dokunulmazlığı, ırk eşitliği, kadın hakları, takva ölçütü) sıralar ve bunları günümüz insan hakları anlayışıyla ilişkilendirir. |
-| 31 | Peygamberimiz (s.a.s.)'in Savaşları (II) (3/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Aşere-i Mübeşşere'nin kimler olduğunu sayar ve ashap kavramını Muhacir ile Ensar ayrımı çerçevesinde tanımlar. |
-| 32 | Peygamberimiz (s.a.s.)'in Savaşları (II) (4/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, abdestin farz ve sünnet adımlarını doğru sırayla uygular ve her adımda okunan duanın ahiret yönelimli içeriğini kavrar. |
-| 33 | Peygamberimiz (s.a.s.)'in Savaşları (II) (5/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, namazın temel rükünlerini (kıyam, rükû, secde, ka'de, selam) doğru sırayla sıralar ve her rükünde okunan dua/tesbihi ayırt eder. |
-| 34 | Peygamberimiz (s.a.s.)'in Savaşları (II) (6/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, namazda okunan kısa surelerin (İhlâs, Felâk, Nâs, Kâfirûn, Kevser vb.) Arapça metinlerini tanır ve her surenin ana mesajını kısaca açıklar. |
-| 35 | Peygamberimiz (s.a.s.)'in Savaşları (II) (7/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn, Taif ve Tebük gibi seferlerin savunma amacı taşıdığı ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihî Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini ilan etmiştir. |
-| 36 | Peygamberimiz (s.a.s.)'in Savaşları (II) (8/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn, Taif ve Tebük gibi seferlerin savunma amacı taşıdığı ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihî Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini ilan etmiştir. |
+| 29 | İslam'a Davet Mektupları | Temel Dinî Bilgiler (S. Yazıcı) s. 247–256 | • Öğrenci, Hudeybiye Antlaşması'ndan sonra Peygamberimizin Bizans, İran, Habeşistan, Mısır ve çevre emirliklerin hükümdarlarına gönderdiği İslam'a davet mektuplarının amacını ve üslubunu açıklar; İslam'ın bütün insanlığa gönderildiğini örnekle ifade eder. |
+| 30 | Huneyn Savaşı | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Mekke'nin fethinden hemen sonra yapılan Huneyn Savaşı'nda (h. 8 / 630) sayı çokluğuna güvenmenin getirdiği ilk sarsıntıyı, Peygamberimizin sebatını ve sonrasındaki zaferi Tevbe suresi 25-26. ayetler ışığında açıklar. |
+| 31 | Evtas Savaşı ve Tâif Kuşatması: Taşlanan Şehre Dua | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302; TDV İslâm Ansiklopedisi, 'Tâif' maddesi | • Öğrenci, Huneyn'den kaçan düşmanın Evtas'ta yenilgisini ve yaklaşık bir ay süren Tâif kuşatmasının kaldırılmasını anlatır; peygamberliğinin onuncu yılında kendisini taşlayan Tâiflilere Peygamberimizin beddua etmeyip hidayet dilemesini ve Sakîf heyetinin h. 9'da Müslüman olmasını affetme ve sabır değerleriyle ilişkilendirir. |
+| 32 | Tebük Seferi | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Tebük Seferi'nin (h. 9 / 630) zor şartlarda yapıldığını ve sahabenin fedakârlığını örneklerle anlatır. |
+| 33 | Veda Haccı | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Peygamberimizin ilk ve tek haccı olan Veda Haccı'nın (h. 10 / 632) nasıl yapıldığını ve haccın temel duraklarını sıralar. |
+| 34 | Veda Hutbesi: Evrensel İlkeler | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Veda Hutbesi'nin içerdiği temel evrensel ilkeleri (can, mal ve namus dokunulmazlığı, ırk eşitliği, kadın hakları, emanet Kur'an) sıralar ve günümüzle ilişkilendirir. |
+| 35 | Peygamberimizin Vefatı | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, Peygamberimizin son günlerini, vefatını (13 Rebîülevvel 11 / 8 Haziran 632, Medine) ve Hz. Ebû Bekir'in ashabı teselli eden sözünü (Âl-i İmrân 144) anlatır. |
+| 36 | Ashâb-ı Kirâm ve Aşere-i Mübeşşere | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 | • Öğrenci, ashap kavramını Muhacir ve Ensar ayrımıyla tanımlar; dört halifeyi ve cennetle müjdelenen on sahabiyi sayar. |
 | 37 | Yıl Sonu Genel Değerlendirme | — | • Öğrenci, bu dönemde kazandığı bilgi ve becerileri bütüncül olarak ortaya koyar. |
 
 ### 2.5. Ahlak (toplam 43 ders saati · genel program 37 ders)
@@ -313,10 +313,10 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 20 | Toplumsal Görev ve Sorumluluklarımı Biliyorum | Camiye Gidiyorum 2 s. 110–116 | • Öğrenci, İslam'ın toplumsal ilişkilerdeki temel ilkelerini (yardımseverlik, dürüstlük, saygı, hoşgörü) açıklar. • Öğrenci, 'kul hakkı' kavramını tanımlar ve haksızlık yapmanın dinî ve ahlakî sonuçlarını ifade eder. • Öğrenci, günlük hayatta karşılaşılan çatışma ve anlaşmazlık durumlarında uygulanabilecek çözüm yollarını örnek verir. • Öğrenci, Hz. Peygamber'in (s.a.s.) toplumsal ilişkilere dair hadislerini kendi sözleriyle aktarır. • Öğrenci, kendi toplumsal davranışlarını öz-değerlendirme yöntemiyle düzenli olarak gözden geçirir ve geliştirilmesi gereken alanları belirler. • Öğrenci, helalleşmenin ve hakkı helal ettirmenin İslam'daki yerini ve önemini açıklar. |
 | 21 | Öğrenmeyi, Çalışkan ve Üretken Olmayı İstiyorum | Camiye Gidiyorum 2 s. 132–136 | • Öğrenci, İslam'ın eğitim ve öğrenmeye verdiği önemi Kur'an'ın ilk emri olan 'Oku!' ayetiyle ilişkilendirerek açıklar. • Öğrenci, Hz. Peygamber'in çalışma ve helâl kazanca dair hadislerinden en az ikisini kendi cümlesiyle yorumlar. • Öğrenci, çalışkanlık, üretkenlik ve tembellik kavramlarını tanımlayarak aralarındaki farkı somut örneklerle ayırt eder. • Öğrenci, insanlara ve hayvanlara iyilik etmenin Allah'ın sevgisini kazandıran davranışlar arasında yer aldığını açıklar. • Öğrenci, dayanışma ve yardımlaşmanın toplumsal önemini günlük hayattan örnekler vererek ifade eder. • Öğrenci, iyi bir Müslümanın hem kendisi hem de çevresi için faydalı olmaya çalışması gerektiğini uygulama örnekleriyle açıklar. |
 | 22 | İslam: Sevgi ve Barışın Dili | Camiye Gidiyorum 2 s. 155–159 | • Öğrenci, 'Selamün Aleyküm' ifadesinin anlamını ve İslam'daki önemini açıklar. • Öğrenci, sözlü ve sözsüz (el sıkışma, sarılma, el öpme, gülümseme) selamlama biçimlerini sıralar ve aralarındaki farkları ayırt eder. • Öğrenci, Hucurât Suresi 13. ayetini örnek vererek İslam'ın insanlar arasında eşitlik, kardeşlik ve saygı ilkelerini benimsediğini açıklar. • Öğrenci, Yunus Emre'nin düşünce dünyasını tanır ve sevgi ile hoşgörünün İslam ahlakındaki yerini kendi cümleleriyle ifade eder. • Öğrenci, kıskançlık, gıybet ve iftira gibi olumsuz davranışların birey ve toplum üzerindeki zararlarını açıklar ve bu duygularla baş etme yollarını örnek vererek sıralar. • Öğrenci, Kur'an'ın insanlığa sunduğu rehberlik işlevini kısaca özetler. |
-| 23 | Kur'an-ı Kerim ve Güzel Ahlak | Camiye Gidiyorum 2 s. 151–180 | • Öğrenci, oruç ibadetinin ruhsal boyutunu (arınma, sabır, kötü söz ve davranıştan kaçınma) hadisler aracılığıyla açıklar. • Öğrenci, Ramazan'a özgü ibadetleri (mukabele, teravih) ve bayram geleneklerini sıralar. • Öğrenci, Kur'an-ı Kerim'in yapısal unsurlarını (sure, ayet, cüz, hizb, mushaf) tanır ve bunları mushaf sayfası üzerinde gösterir. • Öğrenci, 'kökü sağlam ağaç' benzetmesini kullanarak iman ile güzel ahlak arasındaki ilişkiyi kendi cümleleriyle ifade eder. • Öğrenci, insanın Allah tarafından en güzel biçimde yaratıldığı (ahseni takvim) ilkesinden yola çıkarak güzel düşünce ve davranışın önemini örnek vererek açıklar. • Öğrenci, hat, tezhip, çini, minyatür ve ebru gibi İslam sanat dallarını tanır ve fotoğraflarla eşleştirir. |
+| 23 | Kur'an-ı Kerim ve Güzel Ahlak | Camiye Gidiyorum 2 s. 148–154; s. 160–163; s. 174–180; s. 232–234 | • Öğrenci, oruç ibadetinin ruhsal boyutunu (arınma, sabır, kötü söz ve davranıştan kaçınma) hadisler aracılığıyla açıklar. • Öğrenci, Ramazan'a özgü ibadetleri (mukabele, teravih) ve bayram geleneklerini sıralar. • Öğrenci, Kur'an-ı Kerim'in yapısal unsurlarını (sure, ayet, cüz, hizb, mushaf) tanır ve bunları mushaf sayfası üzerinde gösterir. • Öğrenci, 'kökü sağlam ağaç' benzetmesini kullanarak iman ile güzel ahlak arasındaki ilişkiyi kendi cümleleriyle ifade eder. • Öğrenci, insanın Allah tarafından en güzel biçimde yaratıldığı (ahseni takvim) ilkesinden yola çıkarak güzel düşünce ve davranışın önemini örnek vererek açıklar. • Öğrenci, hat, tezhip, çini, minyatür ve ebru gibi İslam sanat dallarını tanır ve fotoğraflarla eşleştirir. |
 | 24 | Ramazan Öncesi Genel Tekrar | — | • Öğrenci, bu dönemde kazandığı bilgi ve becerileri bütüncül olarak ortaya koyar. |
-| 25 | İslam Estetiğe Önem Verir (1/2) | Camiye Gidiyorum 2 s. 174–174 | • Öğrenci, İslam'ın güzelliğe ve estetiğe verdiği önemi kendi cümleleriyle açıklar. • Öğrenci, doğada ve günlük yaşamda gözlemlediği güzelliklere en az beş örnek verir. • Öğrenci, güzellik kavramını kendi sözcükleriyle tanımlamaya çalışır. |
-| 26 | İslam Estetiğe Önem Verir (2/2) | Camiye Gidiyorum 2 s. 174–174 | • Öğrenci, gözlemlediği güzelliklerin Allah'ın yaratışıyla ilişkisini fark eder. • Öğrenci, güzellik algısını kavram haritası oluşturarak görselleştirir. |
+| 25 | İslam Estetiğe Önem Verir (1/2) | Camiye Gidiyorum 2 s. 174–180 | • Öğrenci, İslam'ın güzelliğe ve estetiğe verdiği önemi kendi cümleleriyle açıklar. • Öğrenci, doğada ve günlük yaşamda gözlemlediği güzelliklere en az beş örnek verir. • Öğrenci, güzellik kavramını kendi sözcükleriyle tanımlamaya çalışır. |
+| 26 | İslam Estetiğe Önem Verir (2/2) | Camiye Gidiyorum 2 s. 174–180; s. 246–250 | • Öğrenci, gözlemlediği güzelliklerin Allah'ın yaratışıyla ilişkisini fark eder. • Öğrenci, güzellik algısını kavram haritası oluşturarak görselleştirir. • Öğrenci, İslam medeniyetinin bilim, sanat ve edebiyat alanlarındaki önemli temsilcilerinden en az beşini adıyla sıralar. • Öğrenci, Osmanlı hat sanatının İslam kültüründeki yerini ve işlevini kendi cümleleriyle açıklar. |
 | 27 | Dinim güzel ahlâklı olmamı ister | Camiye Gidiyorum 2 s. 194–198 | • Öğrenci, güzel ahlâklı bir insanın temel özelliklerini (dürüstlük, yardımseverlik, alçakgönüllülük, sabır, affedicilik) sıralar. • Öğrenci, Kur'an ayetleri ve hadislerden hareketle iyilik yapmanın ve güzel ahlâkın İslam'daki yerini açıklar. • Öğrenci, İslam dininin emrettiği ve yasakladığı davranışları ayırt ederek örnek verir. • Öğrenci, Nisâ suresi 36. ayetindeki aile, komşu ve toplumsal sorumluluklara dair emirleri tanır ve yorumlar. • Öğrenci, sadakanın yalnızca maddi yardımla sınırlı olmadığını; güler yüz ve dürüst davranışın da sadaka olduğunu somut örnekle ifade eder. • Öğrenci, kendi günlük yaşantısındaki davranışlarını İslam ahlâkı ölçütlerine göre değerlendirir. |
 | 28 | Müslümanlar Dünya Medeniyetine Katkıda Bulunmuşlardır | Camiye Gidiyorum 2 s. 210–214 | • Öğrenci, medeniyetin insanlığın ortak birikimi olduğunu açıklar ve buna somut örnekler verir. • Öğrenci, Abbasi dönemindeki Beytü'l-Hikme gibi İslam ilim merkezlerinin tarihî önemini tanır. • Öğrenci, İbn Sina, Bîrûnî, Pîrî Reis ve Uluğ Bey gibi Müslüman âlimlerin tıp, matematik, coğrafya ve astronomi alanlarındaki katkılarını sıralar. • Öğrenci, Kur'an ayetleri ve hadislerden hareketle İslam'ın ilme verdiği önemi ifade eder. • Öğrenci, farklı milletlerin bilimsel buluşlarını araştırarak medeniyetin paylaşıma dayalı gelişimini açıklar. • Öğrenci, İslam âlimlerinin çalıştığı bilim dallarından birini seçerek o alandaki öncü isimler hakkında bilgi edinir ve sunar. |
 | 29 | Kötü Alışkanlıklara Yaklaşmam | Camiye Gidiyorum 2 s. 232–234 | • Öğrenci, kötü alışkanlıkların (sigara, bağımlılık, zorbalık vb.) ne olduğunu tanımlar ve örnekler verir. • Öğrenci, kötü alışkanlıkların başlama ve sürdürülme nedenlerini açıklar. • Öğrenci, olumsuz baskılar ve tuzak durumlar karşısında 'hayır' diyebilmenin yollarını sıralar. • Öğrenci, İslam'ın kötü alışkanlıkları yasaklamasının temel gerekçelerini (insan onuru, akıl, sağlık koruma) açıklar. • Öğrenci, kendisi için değerli olan şeyleri listeler ve bu değerlerin önemini kendi cümleleriyle gerekçelendirir. • Öğrenci, Kıyamet suresi 4. ayetle Allah'ın insanı koruduğunu ilişkilendirerek kötülüklerden uzak durma iradesini pekiştirir. |
@@ -334,7 +334,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 Ramazan ayı boyunca genel müfredat askıya alınır; her ders alanı Ramazan temasıyla işlenir. Kur'an-ı Kerim dersi Ramazan-Kur'an ilişkisi ve mukabele üzerine kurgulanmıştır. Toplam 12 ders günü (36 ders saati).
 
 | **Ders alanı** | **Ders konusu** | **İçerik** | **Kazanım / Etkinlik** |
-|----|----|----|----|
+|:--:|----|----|----|
 | Kur'an-ı Kerim | Ramazan: Kur'an Ayı | Ramazan ayının Kur'an-ı Kerim'in indirildiği ay olduğu, Bakara suresi 185. ayet ışığında anlatılır. Kur'an ile Ramazan arasındaki bağ, çocuğun kendi okuma hedefini belirlemesiyle somutlaştırılır. | • Öğrenci, Ramazan ayının Kur'an'ın indirildiği ay olduğunu ayete dayanarak açıklar. · Her öğrenci 'Bu Ramazan'da Kur'an hedefim' kartını doldurup panoya asar. |
 | Kur'an-ı Kerim | Mukabele Nedir, Nasıl Yapılır? | Mukabele geleneği; bir kişinin okuyup diğerlerinin takip etmesi usulü tanıtılır. Camide mukabeleye katılma adabı ve dinleme edebi uygulamalı gösterilir. | • Öğrenci, mukabelenin ne olduğunu açıklar ve dinleyici olarak uygun edebi sergiler. · Sınıfta küçük bir mukabele halkası kurulur; her öğrenci birer satır okur. |
 | Kur'an-ı Kerim | Kur'an'ın İndirilişi ve İlk Vahiy: Alak Suresi 1-5 | İlk vahyin geliş anı ve 'Oku!' emri işlenir. Alak suresinin ilk beş ayeti harf harf, hareke hareke okutulur; meali çocuk diliyle açıklanır. | • Öğrenci, Alak suresinin ilk beş ayetini doğru okur ve mealini kendi cümleleriyle anlatır. · 'İlk emir: Oku' başlıklı afiş çalışması. |
@@ -375,7 +375,7 @@ Ramazan ayı boyunca genel müfredat askıya alınır; her ders alanı Ramazan t
 ### 2.7. Kurban Bayramı Arifesi Programı (15 Mayıs 2027 Cumartesi)
 
 | **Ders alanı** | **Ders konusu** | **İçerik** | **Kazanım / Etkinlik** |
-|----|----|----|----|
+|:--:|----|----|----|
 | Kur'an-ı Kerim | Kevser Suresi ve Kurban Ayeti | Kevser suresi okunur ve meali işlenir; 'Rabbin için namaz kıl ve kurban kes' ayeti üzerinde durulur. | • Öğrenci, Kevser suresini doğru okur ve kurbanla ilişkisini açıklar. · Sure mealini resimleme. |
 | İtikat | Hz. İbrahim ve Hz. İsmail'in Teslimiyeti | Kurban ibadetinin dayandığı teslimiyet kıssası anlatılır; Allah'a güven ve itaat kavramları işlenir. | • Öğrenci, kurbanın dayandığı kıssayı ve teslimiyetin anlamını anlatır. · Kıssayı kendi cümleleriyle anlatma. |
 | İbadet | Kurban İbadeti, Bayram Namazı ve Bayram Adabı | Kurbanın hükmü, kimlere vacip olduğu, etinin paylaşımı; bayram namazı ve teşrik tekbirleri öğretilir. | • Öğrenci, kurban etinin nasıl paylaşılacağını ve teşrik tekbirini söyler. · Kurban paylaşım şeması çizimi. |
@@ -391,10 +391,10 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 **Renk Lejandı**
 
 | **Kur'an-ı Kerim** | **İtikat** | **İbadet** | **Siyer** | **Ahlak** | **Özel gün / tatil** |
-|----|----|----|----|----|----|
+|:--:|----|----|----|----|----|
 
 | **Hf.** | **Tarih** | **Gün** | **Saat** | **Ders** | **Konu** | **Kaynak / Not** |
-|:--:|:--:|:--:|:--:|----|----|----|
+|:--:|----|----|----|----|----|----|
 | 1 | 5 Eylül 2026 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Elif Grubu Harfleri | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Benim dinim İslam'dır | Camiye Gidiyorum 1 s. 11–16 |
 |  |  |  | 13:00-13:40 | İbadet | İslam'ın şartları | Camiye Gidiyorum 1 s. 17–24 |
@@ -435,25 +435,25 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 |  |  |  | 12:00-12:40 | İtikat | Tekrar ve Değerlendirme 1 | — |
 |  |  |  | 13:00-13:40 | İbadet | Allah'a dua ediyorum ve şükrediyorum | Camiye Gidiyorum 1 s. 127–132 |
 | 7 | 18 Ekim 2026 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Hemze | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (1/4) | Camiye Gidiyorum 2 s. 30–54 |
+|  |  |  | 12:00-12:40 | Siyer | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (1/4) | Camiye Gidiyorum 2 s. 30–39 |
 |  |  |  | 13:00-13:40 | Ahlak | Dinim, dostluk ve kardeşlik içinde olmamı ister | Camiye Gidiyorum 1 s. 133–140 |
 | 7 | 19 Ekim 2026 | Pazartesi | 11:00-11:40 | Kur'an-ı Kerim | Üstün | Elifbâ / Kur'an-ı Kerim · Sonbahar tatili (Congé d'automne) |
 |  |  |  | 12:00-12:40 | İtikat | Allah'ın elçileri: Peygamberler | Camiye Gidiyorum 1 s. 147–152 |
 |  |  |  | 13:00-13:40 | İbadet | Tekrar ve Değerlendirme 1 | — |
 | 8 | 24 Ekim 2026 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Esre | Elifbâ / Kur'an-ı Kerim · Sonbahar tatili (Congé d'automne) |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (2/4) | Camiye Gidiyorum 2 s. 30–54 |
+|  |  |  | 12:00-12:40 | Siyer | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (2/4) | Camiye Gidiyorum 2 s. 30–39 |
 |  |  |  | 13:00-13:40 | Ahlak | Tekrar ve Değerlendirme 1 | — |
 | 8 | 25 Ekim 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Ötre | Elifbâ / Kur'an-ı Kerim · Sonbahar tatili (Congé d'automne) |
 |  |  |  | 11:00-11:40 | İtikat | Meleklere ve kadere iman ediyorum (1/2) | Camiye Gidiyorum 1 s. 161–164 |
 |  |  |  | 12:00-12:40 | İbadet | Teyemmüm ve gusül abdestini öğreniyorum | Camiye Gidiyorum 1 s. 165–168 |
 | 8 | 26 Ekim 2026 | Pazartesi | 10:00-10:40 | Kur'an-ı Kerim | Harekeli Kelime Okuma | Elifbâ / Kur'an-ı Kerim · Sonbahar tatili (Congé d'automne) |
-|  |  |  | 11:00-11:40 | Siyer | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (3/4) | Camiye Gidiyorum 2 s. 30–54 |
+|  |  |  | 11:00-11:40 | Siyer | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (3/4) | Camiye Gidiyorum 2 s. 30–39 |
 |  |  |  | 12:00-12:40 | Ahlak | Çevrem bana emanet | Camiye Gidiyorum 1 s. 153–159 |
 | 9 | 31 Ekim 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Hareke Pekiştirmesi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | İtikat | Meleklere ve kadere iman ediyorum (2/2) | Camiye Gidiyorum 1 s. 161–164 |
 |  |  |  | 12:00-12:40 | İbadet | İbadet yerlerini öğreniyorum | Camiye Gidiyorum 1 s. 197–204 |
 | 9 | 1 Kasım 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Cezm | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 11:00-11:40 | Siyer | Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (4/4) | Camiye Gidiyorum 2 s. 30–54 |
+|  |  |  | 11:00-11:40 | Siyer | Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (4/4) | Camiye Gidiyorum 2 s. 30–39 |
 |  |  |  | 12:00-12:40 | Ahlak | Ailem ve görevlerim | Camiye Gidiyorum 1 s. 169–174 |
 | 10 | 7 Kasım 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Cezmli Kelime Okuma | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | İtikat | Hadislerle buluşuyoruz | Camiye Gidiyorum 1 s. 175–180 |
@@ -498,14 +498,14 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 |  |  |  | 11:00-11:40 | Siyer | Peygamberimizin Hayatından Sahneler | Camiye Gidiyorum 2 s. 240–245 |
 |  |  |  | 12:00-12:40 | Ahlak | Dinimizin Kültürümüze Etkisi | Camiye Gidiyorum 2 s. 40–44 |
 | 16 | 21 Aralık 2026 | Pazartesi | 10:00-10:40 | Kur'an-ı Kerim | Kelimeden Cümleye Geçiş | Elifbâ / Kur'an-ı Kerim · Kış tatili (Vacances d'hiver / Noël) |
-|  |  |  | 11:00-11:40 | İtikat | Allah'ın Meleklerine İnanıyorum | Camiye Gidiyorum 2 s. 46–55 |
+|  |  |  | 11:00-11:40 | İtikat | Allah'ın Meleklerine İnanıyorum | Camiye Gidiyorum 2 s. 46–57 |
 |  |  |  | 12:00-12:40 | İbadet | Hac, Umre ve Kurban İbadetini Öğreniyorum | Camiye Gidiyorum 2 s. 222–231 |
 | 17 | 26 Aralık 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Cümle Okuma | Elifbâ / Kur'an-ı Kerim · Kış tatili (Vacances d'hiver / Noël) |
 |  |  |  | 11:00-11:40 | Siyer | Hz. Muhammed (s.a.s.)'in Doğumu ve Çocukluğu (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 218–222 |
 |  |  |  | 12:00-12:40 | Ahlak | Bireysel Görev ve Sorumluluklarımı Biliyorum | Camiye Gidiyorum 2 s. 64–70 |
 | 17 | 27 Aralık 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Kur'an Satırını Tanıma | Elifbâ / Kur'an-ı Kerim · Kış tatili (Vacances d'hiver / Noël) |
 |  |  |  | 11:00-11:40 | İtikat | Kur'an Bize Kendisini Tanıtıyor | Camiye Gidiyorum 2 s. 71–74 |
-|  |  |  | 12:00-12:40 | İbadet | Namazı Öğreniyorum | Camiye Gidiyorum 2 s. 246–258 |
+|  |  |  | 12:00-12:40 | İbadet | Namazı Öğreniyorum | Camiye Gidiyorum 2 s. 98–109; s. 251–258 (Çocuk İlmihali) |
 | 17 | 28 Aralık 2026 | Pazartesi | 10:00-10:40 | Kur'an-ı Kerim | Amme Cüzü Satırları | Elifbâ / Kur'an-ı Kerim · Kış tatili (Vacances d'hiver / Noël) |
 |  |  |  | 11:00-11:40 | Siyer | Hz. Muhammed (s.a.s.)'in Doğumu ve Çocukluğu (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 218–222 |
 |  |  |  | 12:00-12:40 | Ahlak | Takvimler Hayatımızı Düzenler | Camiye Gidiyorum 2 s. 84–90 |
@@ -532,7 +532,7 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 |  |  |  | 12:00-12:40 | İbadet | Temizlik (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 64–77 |
 | 21 | 24 Ocak 2027 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | İklâb | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | Siyer | Davetin Açıklanması | Temel Dinî Bilgiler (S. Yazıcı) s. 230–235 |
-|  |  |  | 12:00-12:40 | Ahlak | Kur'an-ı Kerim ve Güzel Ahlak | Camiye Gidiyorum 2 s. 151–180 |
+|  |  |  | 12:00-12:40 | Ahlak | Kur'an-ı Kerim ve Güzel Ahlak | Camiye Gidiyorum 2 s. 148–154; s. 160–163; s. 174–180; s. 232–234 |
 | 22 | 30 Ocak 2027 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | İdgâm | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | İtikat | Ramazan Öncesi Genel Tekrar | — |
 |  |  |  | 12:00-12:40 | İbadet | Ramazan Öncesi Genel Tekrar | — |
@@ -580,13 +580,13 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 |  |  |  | 12:00-12:40 | İbadet | Namaz (I) (1/4) | Temel Dinî Bilgiler (S. Yazıcı) s. 78–104 |
 | 28 | 14 Mart 2027 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Tevhid İfadeleri | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | Siyer | Boykot ve Hüzün Yılları (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 237–241 |
-|  |  |  | 12:00-12:40 | Ahlak | İslam Estetiğe Önem Verir (1/2) | Camiye Gidiyorum 2 s. 174–174 |
+|  |  |  | 12:00-12:40 | Ahlak | İslam Estetiğe Önem Verir (1/2) | Camiye Gidiyorum 2 s. 174–180 |
 | 29 | 20 Mart 2027 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Âmentü | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | İtikat | Hadisleri Öğrenmek Önemlidir | Camiye Gidiyorum 2 s. 235–239 |
 |  |  |  | 12:00-12:40 | İbadet | Namaz (I) (2/4) | Temel Dinî Bilgiler (S. Yazıcı) s. 78–104 |
 | 29 | 21 Mart 2027 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Sübhâneke | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | Siyer | Boykot ve Hüzün Yılları (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 237–241 |
-|  |  |  | 12:00-12:40 | Ahlak | İslam Estetiğe Önem Verir (2/2) | Camiye Gidiyorum 2 s. 174–174 |
+|  |  |  | 12:00-12:40 | Ahlak | İslam Estetiğe Önem Verir (2/2) | Camiye Gidiyorum 2 s. 174–180; s. 246–250 |
 | 30 | 27 Mart 2027 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Fâtiha Suresi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 11:00-11:40 | İtikat | İslam Dini ve Özellikleri | Temel Dinî Bilgiler (S. Yazıcı) s. 7–11 |
 |  |  |  | 12:00-12:40 | İbadet | Namaz (I) (3/4) | Temel Dinî Bilgiler (S. Yazıcı) s. 78–104 |
@@ -603,50 +603,50 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 |  |  |  | 12:00-12:40 | İtikat | Allah'a İman | Temel Dinî Bilgiler (S. Yazıcı) s. 18–22 |
 |  |  |  | 13:00-13:40 | İbadet | Namaz (II) (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 106–124 |
 | 32 | 11 Nisan 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Namaz Çağrısı | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (1/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | İslam'a Davet Mektupları | Temel Dinî Bilgiler (S. Yazıcı) s. 247–256 |
 |  |  |  | 13:00-13:40 | Ahlak | Kötü Alışkanlıklara Yaklaşmam | Camiye Gidiyorum 2 s. 232–234 |
 | 33 | 17 Nisan 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Ezber Değerlendirmesi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Meleklere İman (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 23–25 |
 |  |  |  | 13:00-13:40 | İbadet | Namaz (II) (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 106–124 |
 | 33 | 18 Nisan 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Muavvizeteyn Sureleri | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (2/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Huneyn Savaşı | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
 |  |  |  | 13:00-13:40 | Ahlak | İslam ve Ahlak | Temel Dinî Bilgiler (S. Yazıcı) s. 156–161 |
 | 34 | 24 Nisan 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | İhlâs Suresi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Meleklere İman (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 23–25 |
 |  |  |  | 13:00-13:40 | İbadet | Oruç | Temel Dinî Bilgiler (S. Yazıcı) s. 125–132 |
 | 34 | 25 Nisan 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Çok Kısa Sureler | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (3/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Evtas Savaşı ve Tâif Kuşatması: Taşlanan Şehre Dua | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302; TDV İslâm Ansiklopedisi, 'Tâif' maddesi |
 |  |  |  | 13:00-13:40 | Ahlak | Ahlaki Görevlerimiz | Temel Dinî Bilgiler (S. Yazıcı) s. 163–171 |
 | 34 | 26 Nisan 2027 | Pazartesi | 11:00-11:40 | Kur'an-ı Kerim | Tebbet Suresi | Elifbâ / Kur'an-ı Kerim · İlkbahar tatili (Vacances de printemps / Pâques) |
 |  |  |  | 12:00-12:40 | İtikat | Kitaplara İman | Temel Dinî Bilgiler (S. Yazıcı) s. 26–32 |
 |  |  |  | 13:00-13:40 | İbadet | Zekât (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 134–138 |
 | 35 | 1 Mayıs 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Kâfirûn Suresi | Elifbâ / Kur'an-ı Kerim · İlkbahar tatili (Vacances de printemps / Pâques) |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (4/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Tebük Seferi | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
 |  |  |  | 13:00-13:40 | Ahlak | Ailemize karşı Görevlerimiz | Temel Dinî Bilgiler (S. Yazıcı) s. 172–180 |
 | 35 | 2 Mayıs 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Mâûn Suresi | Elifbâ / Kur'an-ı Kerim · İlkbahar tatili (Vacances de printemps / Pâques) |
 |  |  |  | 12:00-12:40 | İtikat | Peygamberlere İman | Temel Dinî Bilgiler (S. Yazıcı) s. 33–39 |
 |  |  |  | 13:00-13:40 | İbadet | Zekât (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 134–138 |
 | 35 | 3 Mayıs 2027 | Pazartesi | 11:00-11:40 | Kur'an-ı Kerim | Kâbe Sureleri | Elifbâ / Kur'an-ı Kerim · İlkbahar tatili (Vacances de printemps / Pâques) |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (5/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Veda Haccı | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
 |  |  |  | 13:00-13:40 | Ahlak | Vatan ve Milletimize karşı Görevlerimiz (I) (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 181–194 |
 | 36 | 8 Mayıs 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Sure Değerlendirmesi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Ahiret Gününe İman | Temel Dinî Bilgiler (S. Yazıcı) s. 40–45 |
 |  |  |  | 13:00-13:40 | İbadet | Hac | Temel Dinî Bilgiler (S. Yazıcı) s. 139–144 |
 | 36 | 9 Mayıs 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Hümeze Suresi | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (6/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Veda Hutbesi: Evrensel İlkeler | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
 |  |  |  | 13:00-13:40 | Ahlak | Vatan ve Milletimize karşı Görevlerimiz (I) (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 181–194 |
 | 37 | 15 Mayıs 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Kevser Suresi ve Kurban Ayeti | Kurban Bayramı özel programı |
 |  |  |  | 12:00-12:40 | İtikat | Hz. İbrahim ve Hz. İsmail'in Teslimiyeti | Kurban Bayramı özel programı |
 |  |  |  | 13:00-13:40 | İbadet | Kurban İbadeti, Bayram Namazı ve Bayram Adabı | Kurban Bayramı özel programı |
 | **37** | **16 Mayıs 2027** | **Pazar** | **-** | **TATİL** | **Kurban Bayramı 1. gün — ders yok (bayram tatili)** |  |
 | 38 | 22 Mayıs 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Tekâsür Suresi | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (7/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Peygamberimizin Vefatı | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
 |  |  |  | 13:00-13:40 | Ahlak | Vatan ve Milletimize karşı Görevlerimiz (II) | Temel Dinî Bilgiler (S. Yazıcı) s. 195–204 |
 | 38 | 23 Mayıs 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Kâria Suresi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Kader ve Kazaya İman (1/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 46–53 |
 |  |  |  | 13:00-13:40 | İbadet | Kurban | Temel Dinî Bilgiler (S. Yazıcı) s. 145–149 |
 | 39 | 29 Mayıs 2027 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Âdiyât Suresi | Elifbâ / Kur'an-ı Kerim |
-|  |  |  | 12:00-12:40 | Siyer | Peygamberimiz (s.a.s.)'in Savaşları (II) (8/8) | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
+|  |  |  | 12:00-12:40 | Siyer | Ashâb-ı Kirâm ve Aşere-i Mübeşşere | Temel Dinî Bilgiler (S. Yazıcı) s. 257–302 |
 |  |  |  | 13:00-13:40 | Ahlak | Bütün İnsanlara karşı Görevlerimiz | Temel Dinî Bilgiler (S. Yazıcı) s. 206–216 |
 | 39 | 30 Mayıs 2027 | Pazar | 11:00-11:40 | Kur'an-ı Kerim | Zilzâl Suresi | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Kader ve Kazaya İman (2/2) | Temel Dinî Bilgiler (S. Yazıcı) s. 46–53 |

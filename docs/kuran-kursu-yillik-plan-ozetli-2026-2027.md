@@ -4,7 +4,7 @@
 > düzeltmeler `mufredat/ozet-duzeltmeler.json` üzerinden yapılır.
 
 - **Kaynak:** Ulu Camii Kuran Kursu 2026-2027 Mufredat ve Yillik Ders Plani.docx + Ulu Camii Kuran Kursu 2026-2027 Yillik Plan.html
-- **Üretim:** 2026-08-29T18:15:25+02:00
+- **Üretim:** 2026-09-03T20:29:31+02:00
 - **Kapsam:** 87 ders günü · 261 ders saati · beş ders alanı
 
 ## Eylül 2026 — 8 ders günü
@@ -20,8 +20,8 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 **12:00-12:40 · İtikat · Benim dinim İslam'dır**  
 Kaynak: Camiye Gidiyorum 1 s. 11–16
 
-- *Kazanım:* Öğrenci, İslam dininin Allah tarafından Hz. Muhammed (s.a.s.) aracılığıyla gönderildiğini ve bu dine mensup kişiye 'Müslüman' denildiğini açıklar. • Öğrenci, İslam'ın inanç, ibadet ve güzel ahlâk olmak üzere üç temel boyutunu sıralar ve her birine günlük yaşamdan örnek verir. • Öğrenci, Kelime-i Tevhid'in Türkçe anlamını ve Almancasını ezbere söyler ve yazar. • Öğrenci, cami, kilise ve sinagogu ilgili dinlerle (İslam, Hristiyanlık, Yahudilik) doğru biçimde eşleştirir ve aralarındaki farkı ayırt eder. • Öğrenci, farklı dinlerden insanlarla yardımlaşma ve saygı çerçevesinde ilişki kurmanın önemini kendi cümleleriyle ifade eder. • Öğrenci, yemek öncesinde Besmele çekmeyi ve yemek sonrasında Elhamdülillah demeyi Allah'a şükretmenin somut bir ifadesi olarak uygular.
-- *Konu özeti:* Birinci ünite, "Benim dinim İslam'dır" başlığı altında 7 yaş ve üzeri çocuklara İslam'ın temel kimliğini ve anlayışını kazandırmayı hedefler. Önce İslam'ın Hz. Muhammed (s.a.s.) aracılığıyla gönderilmiş bir din olduğu, bu dine bağlı kişiye "Müslüman" denildiği öğretilir; inanç, ibadet ve güzel ahlâkın birlikte İslam'ın üç temel boyutunu oluşturduğu vurgulanır. Çocuklar, Allah'a iman etmenin insanı dürüst, güvenilir ve güzel sözlü kıldığını somut örnekler ve boşluk doldurma etkinlikleriyle kavrar. Ünite daha sonra karşılaştırmalı bir perspektif açarak Hristiyanlık, Yahudilik ve İslam'ı ibadethaneleri bakımından karşılaştırır; farklı dinlerden insanlarla saygıyla yaşamanın önemi vurgulanır.
+- *Kazanım:* Öğrenci, İslam dininin Allah tarafından Hz. Muhammed (s.a.s.) aracılığıyla gönderildiğini ve bu dine mensup kişiye 'Müslüman' denildiğini açıklar. • Öğrenci, İslam'ın inanç, ibadet ve güzel ahlâk olmak üzere üç temel boyutunu sıralar ve her birine günlük yaşamdan örnek verir. • Öğrenci, Kelime-i Tevhid'in Türkçe anlamını ve Almancasını ezbere söyler ve yazar. • Öğrenci, Müslüman, Hristiyan ve Yahudi adlarını ilgili dinle (İslam, Hristiyanlık, Yahudilik) doğru eşleştirir. • Öğrenci, farklı dinlerden insanlarla yardımlaşma ve saygı çerçevesinde ilişki kurmanın önemini kendi cümleleriyle ifade eder. • Öğrenci, yemek öncesinde Besmele çekmeyi ve yemek sonrasında Elhamdülillah demeyi Allah'a şükretmenin somut bir ifadesi olarak uygular.
+- *Konu özeti:* Birinci ünite, "Benim dinim İslam'dır" başlığı altında 7 yaş ve üzeri çocuklara İslam'ın temel kimliğini ve anlayışını kazandırmayı hedefler. Önce İslam'ın Hz. Muhammed (s.a.s.) aracılığıyla gönderilmiş bir din olduğu, bu dine bağlı kişiye "Müslüman" denildiği öğretilir. inanç, ibadet ve güzel ahlâkın birlikte İslam'ın üç temel boyutunu oluşturduğu vurgulanır. Çocuklar, Allah'a iman etmenin insanı dürüst, güvenilir ve güzel sözlü kıldığını somut örnekler ve boşluk doldurma etkinlikleriyle kavrar. Ünite daha sonra karşılaştırmalı bir perspektif açarak Hristiyanlık, Yahudilik ve İslam'ı ibadethaneleri bakımından karşılaştırır. farklı dinlerden insanlarla saygıyla yaşamanın önemi vurgulanır.
 - *Etkinlik önerisi:* Mutlu bir anımı defterime çiziyorum. / Güzel davranışları defterime çiziyorum. / Rabbime nasıl şükredeceğimi düşünüyorum.
 
 **13:00-13:40 · İbadet · İslam'ın şartları**  
@@ -64,9 +64,9 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 **12:00-12:40 · İtikat · Kutsal kitabımız Kur'an'dır**  
 Kaynak: Camiye Gidiyorum 1 s. 31–36
 
-- *Kazanım:* Öğrenci, Kur'an-ı Kerim'in Allah tarafından vahiy yoluyla Hz. Muhammed'e gönderilmiş kutsal bir kitap olduğunu açıklar. • Öğrenci, Bakara Suresi 2. ayeti ve mealini okuyarak Kur'an'ın 'rehberlik' niteliğini kendi cümleleriyle ifade eder. • Öğrenci, Kur'an'a gösterilmesi gereken saygı kurallarını (abdestli tutma, yere bırakmama, sayfaları yırtmama vb.) en az üç madde hâlinde sıralar. • Öğrenci, 'reçete' metaforundan hareketle Kur'an'ı yalnızca okumakla yetinmeyip hayata geçirmenin önemini kendi sözcükleriyle açıklar. • Öğrenci, Kur'an'ın diğer kitaplardan farkını örneklerle ayırt eder. • Öğrenci, '571'de Bir Güneş Doğdu' ilahisini sınıfta söyleyerek Hz. Peygamber'in hayatındaki temel dönemleri (doğum, peygamberlik, mücadele) tanır.
+- *Kazanım:* Öğrenci, Kur'an-ı Kerim'in Allah tarafından vahiy yoluyla Hz. Muhammed'e gönderilmiş kutsal bir kitap olduğunu açıklar. • Öğrenci, Bakara Suresi 2. ayeti ve mealini okuyarak Kur'an'ın 'rehberlik' niteliğini kendi cümleleriyle ifade eder. • Öğrenci, Kur'an'a gösterilmesi gereken saygı kurallarını (abdestli tutma, yere bırakmama, sayfaları yırtmama vb.) en az üç madde hâlinde sıralar. • Öğrenci, 'reçete' metaforundan hareketle Kur'an'ı yalnızca okumakla yetinmeyip hayata geçirmenin önemini kendi sözcükleriyle açıklar. • Öğrenci, Kur'an'ın diğer kitaplardan farkını örneklerle ayırt eder.
 - *Konu özeti:* Dördüncü ünite, çocukları Kur'an-ı Kerim'in ne olduğu ve neden özel bir kitap olduğuyla tanıştırarak başlar. Kur'an'ın Allah tarafından vahiy yoluyla Hz. Muhammed'e gönderildiği, insanlara doğru yolu gösterdiği ve içinde hiçbir şüphe bulunmadığı Bakara Suresi'nin ikinci ayetiyle pekiştirilir. Ardından ünite, soyut kavramı somutlaştırmak için bir çocuğun gözünden kurgusal bir anlatıya geçer: evdeki kitaplık, babanın Kur'an okuma alışkanlığı ve Kur'an'ın diğer kitaplardan farkını keşfetme süreci çocuğun kendi deneyimiyle buluşturulur. Sonraki aşamada bilişsel öğrenmeden davranışsal öğrenmeye geçilerek Kur'an'a gösterilmesi gereken saygı kuralları öğretilir.
-- *Etkinlik önerisi:* Kutsal kitabın diğer kitaplardan farkını sınıfça tartışma ve değerlendirme. / Sınıfta Kur'an okuyan öğrencileri araştırma ve arkadaşlara tanıtma. / Kur'an-ı Kerim'i ne kadar sevdiğini anlatan kişisel araştırma yapma.
+- *Etkinlik önerisi:* Kutsal kitabın diğer kitaplardan farkını sınıfça tartışma ve değerlendirme. / Sınıfta Kur'an okuyan öğrencileri araştırma ve arkadaşlara tanıtma. / Kur'an-ı Kerim'i ne kadar sevdiğini anlatan kişisel araştırma yapma. / İlahi: '571'de Bir Güneş Doğdu' (isteğe bağlı)
 
 **13:00-13:40 · İbadet · Abdest alıyorum, temizleniyorum (1/2)**  
 Kaynak: Camiye Gidiyorum 1 s. 55–58
@@ -108,9 +108,9 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 **12:00-12:40 · İtikat · Yaratıcımız Allah'tır**  
 Kaynak: Camiye Gidiyorum 1 s. 49–54
 
-- *Kazanım:* Öğrenci, Allah'ın kâinattaki canlıları ve varlıkları yoktan var ettiğini açıklar. • Öğrenci, 'yaratmak' ile 'imal etmek' arasındaki farkı en az üç örnekle ayırt eder. • Öğrenci, İhlas Suresi'ni Arapça olarak ezberler ve anlamını kendi cümleleriyle ifade eder. • Öğrenci, Allah'ın Semî', Basîr, Alîm, Rahîm ve Vedûd isimlerini sayar ve her birinin anlamını açıklar. • Öğrenci, tevhid kavramını 'Allah'ın bir ve eşsiz olması' şeklinde tanımlar. • Öğrenci, peygamber sevgisini anlatan ilahiyi sınıfta söyleyerek Hz. Peygamber'e karşı sevgi ve saygı duygusunu ifade eder.
+- *Kazanım:* Öğrenci, Allah'ın kâinattaki canlıları ve varlıkları yoktan var ettiğini açıklar. • Öğrenci, 'yaratmak' ile 'imal etmek' arasındaki farkı en az üç örnekle ayırt eder. • Öğrenci, İhlas Suresi'ni Arapça olarak ezberler ve anlamını kendi cümleleriyle ifade eder. • Öğrenci, Allah'ın Semî', Basîr, Alîm, Rahîm ve Vedûd isimlerini sayar ve her birinin anlamını açıklar. • Öğrenci, tevhid kavramını 'Allah'ın bir ve eşsiz olması' şeklinde tanımlar.
 - *Konu özeti:* Yedinci ünite, "Yaratıcımız Allah'tır" başlığı altında çocuklara Allah'ın varlığını, birliğini ve sıfatlarını somut gözlemler ve hikâyeler aracılığıyla tanıtmaktadır. Ünite, Elif ve Alperen adlı iki çocuğun hayvanat bahçesi gezisiyle açılır; böcekler, kuşlar ve diğer canlıların çeşitliliği üzerinden Allah'ın yarattığı evrene dikkat çekilir ve bu düşünce Bakara Suresi'nin 29. ayetiyle pekiştirilir. Ardından "yaratmak" kavramının yalnızca Allah'a ait olduğu öğretilir: yoktan var etmek ile var olan maddelerden bir şeyler üretmek (imal etmek) arasındaki temel fark örneklerle açıklanır. Ünitenin merkezinde İhlas Suresi ile Allah'ın Semî', Basîr, Alîm, Rahîm ve Vedûd isimleri yer alır.
-- *Etkinlik önerisi:* İhlas Suresi'ni kendi sözcükleriyle açıklama etkinliği yapılır. / Allah'ın yarattığı şeyler ile insanların imal ettiği şeyler karşılaştırmalı tablo şeklinde beş örnekle deftere yazılır ve arkadaşla konuşulur. / En çok kime güvenildiği ve nedeni arkadaşla paylaşılır.
+- *Etkinlik önerisi:* İhlas Suresi'ni kendi sözcükleriyle açıklama etkinliği yapılır. / Allah'ın yarattığı şeyler ile insanların imal ettiği şeyler karşılaştırmalı tablo şeklinde beş örnekle deftere yazılır ve arkadaşla konuşulur. / En çok kime güvenildiği ve nedeni arkadaşla paylaşılır. / Peygamber sevgisini anlatan bir ilahi söyleme (isteğe bağlı)
 
 **13:00-13:40 · İbadet · Abdest alıyorum, temizleniyorum (2/2)**  
 Kaynak: Camiye Gidiyorum 1 s. 55–58
@@ -309,11 +309,11 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Kazanım:* Öğrenci, hemzeyi farklı yazılışlarda tanıyıp seslendirir.
 - *Konu özeti:* Hemzenin yazılış yerleri ve okuma sesi basit örneklerle tanıtılır. Öğrenciler hemzeli heceleri öğretmenin ardından tekrar eder ve kartlardan hemzeyi seçer.
 
-**12:00-12:40 · Siyer · Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (1/4)**  
-Kaynak: Camiye Gidiyorum 2 s. 30–54
+**12:00-12:40 · Siyer · Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (1/4)**  
+Kaynak: Camiye Gidiyorum 2 s. 30–39
 
 - *Kazanım:* Öğrenci, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine kadar yaşadığı önemli olayları (annesini ve babasını kaybetmesi, sütannenin yanında büyümesi, dede ve amcasının himayesi) sıralar. • Öğrenci, Hz. Muhammed'in 'el-Emîn' lakabını kazanmasına yol açan dürüstlük ve güvenilirlik özelliklerini somut örneklerle açıklar.
-- *Konu özeti:* Bu ünite, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine uzanan yaşam serüvenini ve inanç esaslarından melekler konusunu bir arada ele almaktadır. Peygamber Efendimiz, babası Abdullah henüz doğmadan vefat ettiği için yetim olarak dünyaya gelmiş; sütannesi Halîme'nin yanında büyümüş, ardından annesi Âmine'yi de erken yaşta kaybetmiştir. Dedesi Abdülmuttalib ve amcası Ebû Tâlib'in şefkatli himayesinde yetişen Hz. Muhammed, ticaret kervanlarına katılarak geniş bir dünya deneyimi kazanmış ve dürüstlüğüyle kısa sürede "el-Emîn" (güvenilir) lakabını hak etmiştir. Toplumsal adaleti savunan Hilfü'l-fudûl'e de katılmıştır. Bu derste doğumdan gençliğe uzanan olaylar ve 'el-Emîn' lakabı işlenir.
+- *Konu özeti:* Hz. Muhammed (s.a.s.) 571 yılında Mekke'de doğdu; babası Abdullah o doğmadan vefat etmişti. Sütannesi Halîme'nin yanında büyüdü, altı yaşında annesi Âmine'yi kaybetti; önce dedesi Abdülmuttalib'in, onun vefatından sonra amcası Ebû Tâlib'in himayesinde yetişti. Derste yetim kalışının ve aile şefkatinin onun kişiliğine etkisi konuşulur.
 - *Etkinlik önerisi:* Hz. Peygamber hakkında bildiklerini arkadaşlarınla paylaşarak konu için kavram haritası hazırlama. / Dedesi Abdülmuttalib'in Hz. Muhammed için yaptıklarını okuyup sınıfta tartışma. / Hz. Muhammed'in çocukken aile sorumluluklarına ve güvenilirliğine dair araştırma yapma.
 
 **13:00-13:40 · Ahlak · Dinim, dostluk ve kardeşlik içinde olmamı ister**  
@@ -359,11 +359,11 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Kazanım:* Öğrenci, esreli harfleri üstünlü harflerden ayırt ederek okur.
 - *Konu özeti:* Esre harekesinin harfe kısa i sesi verdiği anlatılır. Öğrenciler esreli harfleri dudak ve çene hareketine dikkat ederek okur, ardından üstünle karşılaştırma yapar.
 
-**12:00-12:40 · Siyer · Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (2/4)**  
-Kaynak: Camiye Gidiyorum 2 s. 30–54
+**12:00-12:40 · Siyer · Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (2/4)**  
+Kaynak: Camiye Gidiyorum 2 s. 30–39
 
-- *Kazanım:* Öğrenci, Hilfü'l-Fudûl'un kuruluş amacını ve Hz. Muhammed'in bu toplumsal oluşumdaki rolünü tanımlar. • Öğrenci, meleklerin yaratılış özellikleri ile başlıca görevlerini (vahiy iletmek, can almak, amel kaydetmek, kıyamette sûra üflemek vb.) sıralar ve Cebrail, Azrail, Mikail, İsrafil ile Kirâmen Kâtibîn'i tanır.
-- *Konu özeti:* Bu ünite, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine uzanan yaşam serüvenini ve inanç esaslarından melekler konusunu bir arada ele almaktadır. Peygamber Efendimiz, babası Abdullah henüz doğmadan vefat ettiği için yetim olarak dünyaya gelmiş; sütannesi Halîme'nin yanında büyümüş, ardından annesi Âmine'yi de erken yaşta kaybetmiştir. Dedesi Abdülmuttalib ve amcası Ebû Tâlib'in şefkatli himayesinde yetişen Hz. Muhammed, ticaret kervanlarına katılarak geniş bir dünya deneyimi kazanmış ve dürüstlüğüyle kısa sürede "el-Emîn" (güvenilir) lakabını hak etmiştir. Toplumsal adaleti savunan Hilfü'l-fudûl'e de katılmıştır. Bu derste Hilfü'l-fudûl ile meleklerin özellikleri ve görevleri işlenir.
+- *Kazanım:* Öğrenci, Hilfü'l-Fudûl'un kuruluş amacını ve Hz. Muhammed'in bu toplumsal oluşumdaki rolünü tanımlar.
+- *Konu özeti:* Gençliğinde, Mekke'de haksızlığa uğrayanları korumak için kurulan Hilfü'l-Fudûl'e (Erdemliler Antlaşması) katıldı; peygamberliğinden sonra da bu antlaşmayı övdü. Derste haksızlığa karşı durmanın Müslümanın görevi olduğu okul ve mahalle örnekleriyle işlenir.
 - *Etkinlik önerisi:* Arabistan'daki kabileler hakkında araştırma yapıp öğrenilenleri kayıt altına alma. / Hz. Muhammed'in babasını hiç tanımadan büyümesinin anlamı üzerine düşünme ve paylaşma. / Mekke'de Peygamber döneminde çocukların toplumsal rollerine ilişkin özet hazırlama.
 
 **13:00-13:40 · Ahlak · Tekrar ve Değerlendirme 1**  
@@ -409,11 +409,11 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Kazanım:* Öğrenci, temel harekelerle yazılmış kısa kelimeleri bütün olarak okur.
 - *Konu özeti:* Üstün, esre ve ötre bulunan iki ve üç harfli kelimeler çalışılır. Öğrenciler kelimeyi önce heceleyerek, sonra bütün hâlinde ve ritimli biçimde okur.
 
-**11:00-11:40 · Siyer · Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (3/4)**  
-Kaynak: Camiye Gidiyorum 2 s. 30–54
+**11:00-11:40 · Siyer · Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (3/4)**  
+Kaynak: Camiye Gidiyorum 2 s. 30–39
 
-- *Kazanım:* Öğrenci, melekler ile şeytanın farkını (yaratılış, itaat, günah işleyip işlememe) ayırt eder ve şeytandan korunmak için Nâs suresine başvurmanın önemini açıklar.
-- *Konu özeti:* Bu ünite, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine uzanan yaşam serüvenini ve inanç esaslarından melekler konusunu bir arada ele almaktadır. Peygamber Efendimiz, babası Abdullah henüz doğmadan vefat ettiği için yetim olarak dünyaya gelmiş; sütannesi Halîme'nin yanında büyümüş, ardından annesi Âmine'yi de erken yaşta kaybetmiştir. Dedesi Abdülmuttalib ve amcası Ebû Tâlib'in şefkatli himayesinde yetişen Hz. Muhammed, ticaret kervanlarına katılarak geniş bir dünya deneyimi kazanmış ve dürüstlüğüyle kısa sürede "el-Emîn" (güvenilir) lakabını hak etmiştir. Toplumsal adaleti savunan Hilfü'l-fudûl'e de katılmıştır. Bu derste melek ile şeytan arasındaki fark ve Nâs suresi işlenir.
+- *Kazanım:* Öğrenci, Hz. Muhammed'in (s.a.s.) ticaret hayatındaki dürüstlüğünü ve Hz. Hatice ile evliliğini anlatır; dürüst ticaretin günlük hayattaki karşılığına bir örnek verir.
+- *Konu özeti:* Amcasıyla ticaret kervanlarına katıldı; dürüstlüğü ve güvenilirliğiyle tanındı (1. derste işlenen 'el-Emîn' lakabı hatırlatılır). Hz. Hatice'nin ticaret malını Şam'a götürdü; onun teklifiyle yirmi beş yaşında evlendi. Derste dürüst ticaret ve güvene dayalı ilişkiler örneklerle konuşulur.
 - *Etkinlik önerisi:* Peygamber Efendimizin çocukluğuna dair bilgileri yazılı olarak ifade etme. / Atalardan kalan değerlerin insan hayatındaki önemine dair görüşleri sınıfla paylaşma. / Hilfü'l-fudûl'ün kuruluş amacını araştırıp sınıfta paylaşma.
 
 **12:00-12:40 · Ahlak · Çevrem bana emanet**  
@@ -455,11 +455,11 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Kazanım:* Öğrenci, cezmli harfi önceki harfe bağlayarak okur.
 - *Konu özeti:* Cezmin harfi sâkin yaptığı ve önceki harekeli harfe bağladığı anlatılır. Öğrenciler cezmli heceleri öğretmenin ağzından dinler, sonra yavaş ve net tekrar eder.
 
-**11:00-11:40 · Siyer · Peygamberimiz Hz. Muhammed'in (s.a.s.) Hayatı ve Melekler (4/4)**  
-Kaynak: Camiye Gidiyorum 2 s. 30–54
+**11:00-11:40 · Siyer · Peygamberlik Öncesi Hz. Muhammed'in (s.a.s.) Hayatı (4/4)**  
+Kaynak: Camiye Gidiyorum 2 s. 30–39
 
-- *Kazanım:* Öğrenci, Hz. Muhammed'in hayatından çıkardığı güvenilirlik, dürüstlük ve toplumsal sorumluluk gibi ahlaki değerleri gündelik yaşamına nasıl uygulayabileceğini örnek vererek ifade eder.
-- *Konu özeti:* Bu ünite, Hz. Muhammed'in (s.a.s.) doğumundan gençliğine uzanan yaşam serüvenini ve inanç esaslarından melekler konusunu bir arada ele almaktadır. Peygamber Efendimiz, babası Abdullah henüz doğmadan vefat ettiği için yetim olarak dünyaya gelmiş; sütannesi Halîme'nin yanında büyümüş, ardından annesi Âmine'yi de erken yaşta kaybetmiştir. Dedesi Abdülmuttalib ve amcası Ebû Tâlib'in şefkatli himayesinde yetişen Hz. Muhammed, ticaret kervanlarına katılarak geniş bir dünya deneyimi kazanmış ve dürüstlüğüyle kısa sürede "el-Emîn" (güvenilir) lakabını hak etmiştir. Toplumsal adaleti savunan Hilfü'l-fudûl'e de katılmıştır. Bu derste dürüstlük ve sorumluluğun günlük hayata uygulanması işlenir.
+- *Kazanım:* Öğrenci, Hz. Muhammed'in hayatından çıkardığı güvenilirlik, dürüstlük ve toplumsal sorumluluk gibi ahlaki değerleri gündelik yaşamına nasıl uygulayabileceğini örnek vererek ifade eder. • Öğrenci, Kâbe hakemliği olayını anlatarak adaletli çözümün ve uzlaştırmanın önemini açıklar.
+- *Konu özeti:* Peygamberlik öncesi hayatından çıkarılan değerler toparlanır: güvenilirlik, dürüstlük, haksızlığa karşı durma, aileye bağlılık ve emeğiyle geçinme. Kâbe onarımında Hacerülesved'in yerine konulmasındaki hakemliği (otuz beş yaş) örnek olay olarak anlatılır; öğrenciler kendi hayatlarından örnekler verir.
 - *Etkinlik önerisi:* Hz. Muhammed'in annesini kaybettiğinde neler hissetmiş olabileceğini hayal ederek duygularını aktarma. / Hz. Muhammed'in ilk ticari yolculuğundan çıkarılan dersleri yazılı olarak ifade etme. / Bir kervan mirasının adil biçimde nasıl paylaşılacağını sınıfta tartışma.
 
 **12:00-12:40 · Ahlak · Ailem ve görevlerim**  
@@ -612,7 +612,9 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 Kaynak: Camiye Gidiyorum 2 s. 6–12
 
 - *Kazanım:* Öğrenci, Kelime-i Tevhid ve Kelime-i Şehadet'i Arapça olarak doğru okur ve Türkçe anlamını açıklar. • Öğrenci, Kur'an-ı Kerim'in Müslümanlar için inanç, ibadet ve ahlak alanlarında rehber işlevi gördüğünü ifade eder. • Öğrenci, Esma-i Hüsna kavramını tanır; 'Esma' ve 'Hüsna' kelimelerinin anlamlarını açıklar ve Haşr suresi 22-24. ayetlerde geçen isimleri örnek verir. • Öğrenci, Allah'ın zatî sıfatlarını (Vücûd, Kıdem, Bekâ, Vahdâniyyet, Muhalefetün li'l-havâdis, Kıyam bi-nefsihî) ve sübûtî sıfatlarını (Hayat, İlim, Semi', Basar, İrade, Kudret, Kelâm, Tekvin) sıralar. • Öğrenci, Mümin, Müslüman, Kâfir, Münafık ve Ehl-i Kitap kavramlarını ayırt eder ve Kelime-i Şehadet ile olan bağlantısını açıklar. • Öğrenci, Allah'ın isimlerini ve sıfatlarını günlük hayattan somut örneklerle ilişkilendirir.
-- *Konu özeti:* Bu ünite, Allah'a imanın temel kavramlarını çocuklara yaşına uygun bir biçimde tanıtmaktadır. Başlangıçta Kelime-i Tevhid ve Kelime-i Şehadet ele alınarak İslam'ın inanç temelinin sözlü ifadesi hatırlatılmakta; ardından Kur'an-ı Kerim'in Müslümanların hayatında inanç, ibadet ve ahlak açısından bir rehber olduğu açıklanmaktadır. Konunun ikinci boyutunu Allah'ın güzel isimleri (Esma-i Hüsna) oluşturmaktadır: A'raf suresi 180. ayet ve Haşr suresinin son üç ayeti üzerinden Allah'ın isimlerinin O'nu tanımamıza ve O'na dua etmemize nasıl yardımcı olduğu işlenmektedir. Tüm 99 isim Arapça ve Türkçe anlamlarıyla verilmektedir. Allah'ın zatî ve sübûtî sıfatları da ele alınmaktadır.
+- *Konu özeti:*
+    - Bu ünite, Allah'a imanın temel kavramlarını çocuklara yaşına uygun bir biçimde tanıtmaktadır. Başlangıçta Kelime-i Tevhid ve Kelime-i Şehadet ele alınarak İslam'ın inanç temelinin sözlü ifadesi hatırlatılmakta; ardından Kur'an-ı Kerim'in Müslümanların hayatında inanç, ibadet ve ahlak açısından bir rehber olduğu açıklanmaktadır. Konunun ikinci boyutunu Allah'ın güzel isimleri (Esma-i Hüsna) oluşturmaktadır: A'raf suresi 180. ayet ve Haşr suresinin son üç ayeti üzerinden Allah'ın isimlerinin O'nu tanımamıza ve O'na dua etmemize nasıl yardımcı olduğu işlenmektedir. Tüm 99 isim Arapça ve Türkçe anlamlarıyla verilmektedir. Allah'ın zatî ve sübûtî sıfatları da ele alınmaktadır.
+    - Seviye notu: zâtî ve sübûtî sıfatların tam listesi 7-9 yaş grubunda atlanır, 10-12 yaş grubuna verilir.
 - *Etkinlik önerisi:* Kelime-i Şehadet ve Kelime-i Tevhid'in Arapçasını sınıfa okuma ve Türkçe anlamını açıklama etkinliği. / Kelime-i Şehadet ile Mümin, Müslüman, Kâfir, Münafık ve Ehl-i Kitap kavramları arasındaki bağlantıyı açıklama; bu kavramların önceki konulardaki yerini bulma etkinliği. / "Esma" ve "Hüsna" kelimelerinin anlamlarını metin inceleyerek bulma; renkli isimlerin farklı anlamlarını araştırma görevi.
 
 **12:00-12:40 · İbadet · Oruç İbadetini Öğreniyorum**  
@@ -797,9 +799,9 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Konu özeti:* Öğrenciler daha önce çözdükleri kelimeleri kısa Kur'an cümleleri içinde okur. Öğretmen kelimeler arasında göz takibi yaptırır ve heceye geri dönmeden bütün okuma çalıştırır.
 
 **11:00-11:40 · İtikat · Allah'ın Meleklerine İnanıyorum**  
-Kaynak: Camiye Gidiyorum 2 s. 46–55
+Kaynak: Camiye Gidiyorum 2 s. 46–57
 
-- *Kazanım:* Öğrenci, İslam'ın iman esaslarından biri olan meleklere imanın Amentü içindeki yerini açıklar. • Öğrenci, Kur'an'da bahsedilen görünmeyen varlıkları (melekler, cinler, şeytan) isimlendirir ve temel özelliklerini ayırt eder. • Öğrenci, meleklerin Allah'ın emirlerine kesinlikle itaat eden nurdan varlıklar olduğunu ifade eder. • Öğrenci, şeytanın insanı saptırmaya çalıştığını bilir ve bu tehlikeye karşı Allah'a sığınmanın önemini açıklar. • Öğrenci, tövbenin anlamını ve günahlardan arınmadaki rolünü Hz. Peygamber'in hadisine dayanarak açıklar. • Öğrenci, Seyyidü'l İstiğfar duasını ezberler ve günlük hayatta tövbe ve istiğfar etme bilincini uygular.
+- *Kazanım:* Öğrenci, İslam'ın iman esaslarından biri olan meleklere imanın Amentü içindeki yerini açıklar. • Öğrenci, Kur'an'da bahsedilen görünmeyen varlıkları (melekler, cinler, şeytan) isimlendirir ve temel özelliklerini ayırt eder. • Öğrenci, meleklerin Allah'ın emirlerine kesinlikle itaat eden nurdan varlıklar olduğunu ifade eder. • Öğrenci, şeytanın insanı saptırmaya çalıştığını bilir ve bu tehlikeye karşı Allah'a sığınmanın önemini açıklar. • Öğrenci, tövbenin anlamını ve günahlardan arınmadaki rolünü Hz. Peygamber'in hadisine dayanarak açıklar. • Öğrenci, Seyyidü'l İstiğfar duasını ezberler ve günlük hayatta tövbe ve istiğfar etme bilincini uygular. • Öğrenci, meleklerin yaratılış özellikleri ile başlıca görevlerini (vahiy iletmek, can almak, amel kaydetmek, kıyamette sûra üflemek vb.) sıralar ve Cebrail, Azrail, Mikail, İsrafil ile Kirâmen Kâtibîn'i tanır. • Öğrenci, melekler ile şeytanın farkını (yaratılış, itaat, günah işleyip işlememe) ayırt eder ve şeytandan korunmak için Nâs suresine başvurmanın önemini açıklar.
 - *Konu özeti:* Bu ünite, İslam inanç esaslarından biri olan meleklere imanı merkeze alarak görünmeyen varlıklar dünyasını çocuklara tanıtmaktadır. Amentü duasının tekrar hatırlatılmasıyla başlayan ünite, meleklerin yanı sıra cinler ve şeytan gibi gözle görülemeyen varlıkların Kur'an ayetleriyle sabit olduğunu öğretmektedir. Meleklerin Allah'ın emirlerini eksiksiz yerine getiren, O'nun izni olmaksızın hiçbir şeye güç yetiremeyen nurdan varlıklar olduğu vurgulanmaktadır. Kuşaklar arası bir diyalog üzerinden, meleklere inanmanın hem akla hem de vicdana uygun olduğu gösterilmekte; inanç ile akıl arasındaki uyuma dikkat çekilmektedir.
 - *Etkinlik önerisi:* Amentü'deki iman şartlarını Fransızca karşılıklarıyla birlikte sayıp sınıfça tekrar etme. / Fotoğraflardaki batıl inançları tespit etme; Sineya'nın düşüncelerini değerlendirip doğru inançla karşılaştırma. / Kur'an ayetlerini okuyarak görünmeyen varlıkların isimlerini belirleme ve tabloya yazma (sütunlar: Görünmeyen varlık / İnsanın yapması gereken).
 
@@ -851,10 +853,10 @@ Kaynak: Camiye Gidiyorum 2 s. 71–74
 - *Etkinlik önerisi:* Mushaftan yirmi altıncı surenin ismini bulma ve sınıfa söyleme. / Kur'an'da yüksek sesle okunduğunda güzel hissettiren bir sure seçme ve sınıfa sunma. / Mushaftan kendi seçilen bir sureyi açıp farklı nitelikleriyle (ismi, yeri, ayet sayısı vb.) inceleme.
 
 **12:00-12:40 · İbadet · Namazı Öğreniyorum**  
-Kaynak: Camiye Gidiyorum 2 s. 246–258
+Kaynak: Camiye Gidiyorum 2 s. 98–109; s. 251–258 (Çocuk İlmihali)
 
-- *Kazanım:* Öğrenci, İslam medeniyetinin bilim, sanat ve edebiyat alanlarındaki önemli temsilcilerinden en az beşini adıyla sıralar. • Öğrenci, Osmanlı hat sanatının İslam kültüründeki yerini ve işlevini kendi cümleleriyle açıklar. • Öğrenci, namazın şartlarını (namaz öncesi ve namaz içi), rükünlerini, vaciplerini ve sünnetlerini listeler. • Öğrenci, namazı bozan ve namazı mekruh kılan durumları birbirinden ayırt eder. • Öğrenci, sabah ve öğle namazlarının sünnet ve farzlarını doğru sıra ile kılar; her harekette okunacak duayı söyler. • Öğrenci, niyet, Sübhaneke, rükû-secde zikirlerini, Tahiyyat, Salli-Bârik dualarını ve selamı eksiksiz okur.
-- *Konu özeti:* Bu ünite, bir yanda İslam medeniyetinin sanat ve edebiyat boyutunu tanıtırken öte yanda namazın bütün unsurlarını adım adım öğretmeyi hedefleyen kapsamlı bir yapı sunar. İlk bölümde Müslümanların tarih boyunca bilim, sanat ve edebiyata katkıları ele alınmakta; Türkçenin köklü bir edebiyat dili olarak gelişimi, İslam dünyasında ilmin ve sanatın zirveye ulaştığı dönemdeki atılımlar ile Anadolu'daki Müslüman âlimlerin mirası tanıtılmaktadır. Osmanlı hat sanatının camiler ve Kur'an-ı Kerim aracılığıyla kuşaktan kuşağa taşındığına da dikkat çekilmektedir. İkinci ve ağırlıklı bölümde ise namazın şartları, rükünleri, vacipleri ve sünnetleri ile namazı bozan durumlar adım adım öğretilir.
+- *Kazanım:* Öğrenci, namazın şartlarını (namaz öncesi ve namaz içi), rükünlerini, vaciplerini ve sünnetlerini listeler. • Öğrenci, namazı bozan ve namazı mekruh kılan durumları birbirinden ayırt eder. • Öğrenci, sabah ve öğle namazlarının sünnet ve farzlarını doğru sıra ile kılar; her harekette okunacak duayı söyler. • Öğrenci, niyet, Sübhaneke, rükû-secde zikirlerini, Tahiyyat, Salli-Bârik dualarını ve selamı eksiksiz okur.
+- *Konu özeti:* Namazın dışındaki şartları (hazırlık) ve içindeki rükünleri özetlenir; namazı bozan ve mekruh kılan durumlar örneklerle ayırt edilir; sabah ve öğle namazlarının sünnet ve farzları sınıfta uygulamalı kılınır, her harekette okunan dua ve zikirler tekrar edilir.
 - *Etkinlik önerisi:* Namazın şartlarını (namaz öncesi ve namaz içi) ve rükünlerini bir tabloya yerleştirerek sınıfça tamamlayın. / Sabah namazının sünnet ve farzını mescitte adım adım uygulamalı olarak kılın; her hareketin adını ve okunacak duayı sesli tekrar edin. / Sübhâneke, Ettehiyyâtü, Allâhümme Salli-Bârik dualarını ikişerli eşleşerek birbirinize dinletin ve eksikleri not edin.
 
 ### 28 Aralık 2026 · Pazartesi · Hafta 17
@@ -936,7 +938,9 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 Kaynak: Camiye Gidiyorum 2 s. 118–123
 
 - *Kazanım:* Öğrenci, Kur'an-ı Kerim'in Hz. Peygamber'e Cebrail aracılığıyla yaklaşık 23 yılda vahyedildiğini açıklar. • Öğrenci, vahiy kâtiplerinin görevini ve vahyin yazıya geçirilme sürecini kendi cümleleriyle anlatır. • Öğrenci, Kur'an'ın kitap hâline getirilme sürecindeki tarihî aşamaları (Hz. Ebu Bekir ve Hz. Osman dönemleri) sıralar. • Öğrenci, nokta ve hareke sisteminin Kur'an metnine ne zaman ve neden eklendiğini açıklar. • Öğrenci, 'hafız' kavramını tanımlar ve hafızların Kur'an'ın korunmasındaki tarihî rolünü örnek vererek ifade eder. • Öğrenci, Kur'an'ın en uzun ve en kısa surelerini araştırarak isimlerini söyler.
-- *Konu özeti:* Kur'an-ı Kerim, Hz. Peygamber'e (s.a.s.) yaklaşık 23 yıl boyunca Cebrail aracılığıyla vahiy yoluyla, sure ve ayetler hâlinde parça parça indirilmiştir. Vahyin geldiği her seferinde Hz. Peygamber'in yanında bulunan vahiy kâtipleri bu ayetleri taş, deri, kemik gibi çeşitli materyaller üzerine yazıya dökmüştür. Sahabeler de aynı ayetleri hafızalarına işleyerek koruma altına almıştır. Hz. Peygamber'in vefatının ardından ilk halife Hz. Ebu Bekir döneminde bu dağınık parçalar bir araya getirilerek Kur'an ilk kez tek bir cilt hâline getirilmiştir. Halife Hz. Osman döneminde ise standart bir metin oluşturularak çoğaltılmıştır.
+- *Konu özeti:*
+    - Kur'an-ı Kerim, Hz. Peygamber'e (s.a.s.) yaklaşık 23 yıl boyunca Cebrail aracılığıyla vahiy yoluyla, sure ve ayetler hâlinde parça parça indirilmiştir. Vahyin geldiği her seferinde Hz. Peygamber'in yanında bulunan vahiy kâtipleri bu ayetleri taş, deri, kemik gibi çeşitli materyaller üzerine yazıya dökmüştür. Sahabeler de aynı ayetleri hafızalarına işleyerek koruma altına almıştır. Hz. Peygamber'in vefatının ardından ilk halife Hz. Ebu Bekir döneminde bu dağınık parçalar bir araya getirilerek Kur'an ilk kez tek bir cilt hâline getirilmiştir. Halife Hz. Osman döneminde ise standart bir metin oluşturularak çoğaltılmıştır.
+    - Seviye notu: mushaflaşma tarihinin ayrıntıları 7-9 yaş grubunda atlanır, 10-12 yaş grubuna verilir.
 - *Etkinlik önerisi:* Kur'an-ı Kerim'in en uzun suresinin hangisi olduğunu araştırma. / Kur'an-ı Kerim'in en kısa suresinin hangisi olduğunu araştırma. / Yakın çevredeki bir büyüğe veya birkaç kişiye 'Vahiy neden parça parça indi?' sorusunu sorarak cevapları not etme.
 
 **12:00-12:40 · İbadet · İslam**  
@@ -985,7 +989,9 @@ Kaynak: Camiye Gidiyorum 2 s. 138–147
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 64–77
 
 - *Kazanım:* Öğrenci, İslam'da temizliğin imanla olan ilişkisini ayet ve hadise dayandırarak açıklar. • Öğrenci, abdest, gusül ve teyemmümün farzlarını sıralar ve her birinin ne zaman gerektiğini ayırt eder. • Öğrenci, suları temizleyicilik özelliklerine göre sınıflandırır ve ibadete elverişli olan ile olmayanı birbirinden ayırt eder.
-- *Konu özeti:* Bu ilk derste sular, abdest, gusül ve teyemmümün farzları üzerinde durulur. İslam'ın ibadet anlayışının temel şartlarından biri olan temizlik (taharet), bu ünitede kavramsal ve pratik boyutlarıyla ele alınmaktadır. Ünitenin odak noktasını sular, abdest, gusül ve teyemmüm olmak üzere dört temel temizlik yöntemi oluşturmaktadır. Sular, temizleme açısından taşıdıkları özelliklere göre çeşitli kategorilere ayrılmakta; mutlak, müsta'mel ve mukayyed su gibi kavramların ibadet geçerliliği üzerindeki etkileri açıklanmaktadır. Abdest konusunda yalnızca farzlarla sınırlı kalınmamış; fazileti, sünnetleri, âdâbı, mekruhları ve abdesti bozan durumlar gibi yönleriyle de ele alınmaktadır.
+- *Konu özeti:*
+    - Bu ilk derste sular, abdest, gusül ve teyemmümün farzları üzerinde durulur. İslam'ın ibadet anlayışının temel şartlarından biri olan temizlik (taharet), bu ünitede kavramsal ve pratik boyutlarıyla ele alınmaktadır. Ünitenin odak noktasını sular, abdest, gusül ve teyemmüm olmak üzere dört temel temizlik yöntemi oluşturmaktadır. Sular, temizleme açısından taşıdıkları özelliklere göre çeşitli kategorilere ayrılmakta; mutlak, müsta'mel ve mukayyed su gibi kavramların ibadet geçerliliği üzerindeki etkileri açıklanmaktadır. Abdest konusunda yalnızca farzlarla sınırlı kalınmamış; fazileti, sünnetleri, âdâbı, mekruhları ve abdesti bozan durumlar gibi yönleriyle de ele alınmaktadır.
+    - Seviye notu: mest, sargı, özür hâli ve kadınlara özel hâller 7-9 yaş grubunda atlanır, 10-12 yaş grubuna verilir.
 
 ### 17 Ocak 2027 · Pazar · Hafta 20
 
@@ -1044,7 +1050,7 @@ Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 230–235
 - *Konu özeti:* İslam davetinin gizli dönemden çıkarak aleni bir hal aldığı bu ünite, Hz. Peygamber'in Safa tepesinde yaptığı ilk kamuya açık davetle başlar ve ardından hız kazanan zulüm-direniş sarmalını inceler. Hz. Muhammed (s.a.s.) açık tebliğe başladığında, Kureyş'in siyasi ve ekonomik çıkarlarını tehdit eden bu çağrıya karşı Ebu Leheb, Ebu Cehil ve Ümeyye b. Halef gibi önde gelen müşrikler organize bir düşmanlık başlattı. İlk Müslümanlar, başta köle sahabi Bilâl b. Rebâh (Bilâl-i Habeşî) olmak üzere, inançlarından dönmeleri için ağır fiziksel baskı ve işkenceye maruz kaldı; ancak bu zorlu ortamda sabır ve kararlılıkla direndiler.
 
 **12:00-12:40 · Ahlak · Kur'an-ı Kerim ve Güzel Ahlak**  
-Kaynak: Camiye Gidiyorum 2 s. 151–180
+Kaynak: Camiye Gidiyorum 2 s. 148–154; s. 160–163; s. 174–180; s. 232–234
 
 - *Kazanım:* Öğrenci, oruç ibadetinin ruhsal boyutunu (arınma, sabır, kötü söz ve davranıştan kaçınma) hadisler aracılığıyla açıklar. • Öğrenci, Ramazan'a özgü ibadetleri (mukabele, teravih) ve bayram geleneklerini sıralar. • Öğrenci, Kur'an-ı Kerim'in yapısal unsurlarını (sure, ayet, cüz, hizb, mushaf) tanır ve bunları mushaf sayfası üzerinde gösterir. • Öğrenci, 'kökü sağlam ağaç' benzetmesini kullanarak iman ile güzel ahlak arasındaki ilişkiyi kendi cümleleriyle ifade eder. • Öğrenci, insanın Allah tarafından en güzel biçimde yaratıldığı (ahseni takvim) ilkesinden yola çıkarak güzel düşünce ve davranışın önemini örnek vererek açıklar. • Öğrenci, hat, tezhip, çini, minyatür ve ebru gibi İslam sanat dallarını tanır ve fotoğraflarla eşleştirir.
 - *Konu özeti:* Bu ünite iki ana tema çevresinde şekillenmektedir: Ramazan ayı ibadeti ve Kur'an-ı Kerim'in öğretileri ışığında güzel ahlak. İlk bölümde oruç ibadeti, Hz. Peygamber'in (s.a.s.) hadisleri ekseninde ele alınmakta; orucun yalnızca açlık değil, kötü söz ve davranışlardan kaçınmayı da kapsayan ruhsal bir arınma olduğu vurgulanmaktadır. Ramazan'a özgü mukabele ve teravih gibi ibadetler ile bayram hazırlıkları ve gelenekler de bu bağlamda işlenmektedir. İkinci bölümde Kur'an-ı Kerim'in yapısı ayrıntılı biçimde tanıtılmakta; sure, ayet, cüz, hizb gibi temel kavramlar öğrencilere tanıtılmaktadır.
@@ -1440,7 +1446,7 @@ Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 237–241
 - *Konu özeti:* Hz. Peygamber'in Mekke'deki son yılları, Müslümanlara yönelik yoğunlaşan baskıların gölgesinde geçmiştir. Müşrikler, İslam'ın yayılmasını durdurmak amacıyla Müslümanları toplumsal ve ekonomik açıdan tecrit etmeyi hedefleyen bir boykot kararı almış; bu kararla alışveriş, evlilik ve her türlü sosyal ilişki yasaklanmıştır. Uzun süren bu zor dönemin ardından boykot nihayetinde kaldırılmış, ancak kısa süre içinde Hz. Peygamber iki büyük acıyla sınanmıştır: Kendisini her koşulda desteklemiş olan amcası Ebu Talib ile müminlerin annesi Hz. Hatice aynı yıl vefat etmiş, bu derin üzüntü nedeniyle söz konusu yıl Hüzün Yılı olarak anılmıştır. Bu derste boykot ve Tâif yolculuğu ele alınır.
 
 **12:00-12:40 · Ahlak · İslam Estetiğe Önem Verir (1/2)**  
-Kaynak: Camiye Gidiyorum 2 s. 174–174
+Kaynak: Camiye Gidiyorum 2 s. 174–180
 
 - *Kazanım:* Öğrenci, İslam'ın güzelliğe ve estetiğe verdiği önemi kendi cümleleriyle açıklar. • Öğrenci, doğada ve günlük yaşamda gözlemlediği güzelliklere en az beş örnek verir. • Öğrenci, güzellik kavramını kendi sözcükleriyle tanımlamaya çalışır.
 - *Konu özeti:* Bu ünite, İslam'ın estetik ve güzellik anlayışını çocuklara kazandırmayı hedefleyen bir giriş ünitesidir. İslam'a göre güzellik, Allah'ın bir lütfu ve yaratışının yansımasıdır; bu nedenle Müslümanlar güzelliği fark etmeyi, takdir etmeyi ve korumayı öğrenirler. Öğrenciler, doğada ve günlük yaşamda karşılaştıkları güzellikleri gözlemleyerek bunları tanımlamaya ve ifade etmeye davet edilir. Güzellik yalnızca görünüşle sınırlı değildir; davranış, söz ve çevre düzenlemesi de İslam estetiğinin kapsamına girer. Ünite, çocukların hem duyusal hem de düşünsel düzeyde güzellik kavramıyla yüzleşmelerini sağlamayı amaçlamaktadır. Bu derste doğadaki ve günlük hayattaki güzellikler örneklendirilir.
@@ -1486,10 +1492,12 @@ Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 237–241
 - *Konu özeti:* Hz. Peygamber'in Mekke'deki son yılları, Müslümanlara yönelik yoğunlaşan baskıların gölgesinde geçmiştir. Müşrikler, İslam'ın yayılmasını durdurmak amacıyla Müslümanları toplumsal ve ekonomik açıdan tecrit etmeyi hedefleyen bir boykot kararı almış; bu kararla alışveriş, evlilik ve her türlü sosyal ilişki yasaklanmıştır. Uzun süren bu zor dönemin ardından boykot nihayetinde kaldırılmış, ancak kısa süre içinde Hz. Peygamber iki büyük acıyla sınanmıştır: Kendisini her koşulda desteklemiş olan amcası Ebu Talib ile müminlerin annesi Hz. Hatice aynı yıl vefat etmiş, bu derin üzüntü nedeniyle söz konusu yıl Hüzün Yılı olarak anılmıştır. Bu derste Akabe Biatları ile İsrâ ve Miraç olayı işlenir.
 
 **12:00-12:40 · Ahlak · İslam Estetiğe Önem Verir (2/2)**  
-Kaynak: Camiye Gidiyorum 2 s. 174–174
+Kaynak: Camiye Gidiyorum 2 s. 174–180; s. 246–250
 
-- *Kazanım:* Öğrenci, gözlemlediği güzelliklerin Allah'ın yaratışıyla ilişkisini fark eder. • Öğrenci, güzellik algısını kavram haritası oluşturarak görselleştirir.
-- *Konu özeti:* Bu ünite, İslam'ın estetik ve güzellik anlayışını çocuklara kazandırmayı hedefleyen bir giriş ünitesidir. İslam'a göre güzellik, Allah'ın bir lütfu ve yaratışının yansımasıdır; bu nedenle Müslümanlar güzelliği fark etmeyi, takdir etmeyi ve korumayı öğrenirler. Öğrenciler, doğada ve günlük yaşamda karşılaştıkları güzellikleri gözlemleyerek bunları tanımlamaya ve ifade etmeye davet edilir. Güzellik yalnızca görünüşle sınırlı değildir; davranış, söz ve çevre düzenlemesi de İslam estetiğinin kapsamına girer. Ünite, çocukların hem duyusal hem de düşünsel düzeyde güzellik kavramıyla yüzleşmelerini sağlamayı amaçlamaktadır. Bu derste güzellik algısı kavram haritasıyla görselleştirilir.
+- *Kazanım:* Öğrenci, gözlemlediği güzelliklerin Allah'ın yaratışıyla ilişkisini fark eder. • Öğrenci, güzellik algısını kavram haritası oluşturarak görselleştirir. • Öğrenci, İslam medeniyetinin bilim, sanat ve edebiyat alanlarındaki önemli temsilcilerinden en az beşini adıyla sıralar. • Öğrenci, Osmanlı hat sanatının İslam kültüründeki yerini ve işlevini kendi cümleleriyle açıklar.
+- *Konu özeti:*
+    - Bu ünite, İslam'ın estetik ve güzellik anlayışını çocuklara kazandırmayı hedefleyen bir giriş ünitesidir. İslam'a göre güzellik, Allah'ın bir lütfu ve yaratışının yansımasıdır; bu nedenle Müslümanlar güzelliği fark etmeyi, takdir etmeyi ve korumayı öğrenirler. Öğrenciler, doğada ve günlük yaşamda karşılaştıkları güzellikleri gözlemleyerek bunları tanımlamaya ve ifade etmeye davet edilir. Güzellik yalnızca görünüşle sınırlı değildir; davranış, söz ve çevre düzenlemesi de İslam estetiğinin kapsamına girer. Ünite, çocukların hem duyusal hem de düşünsel düzeyde güzellik kavramıyla yüzleşmelerini sağlamayı amaçlamaktadır. Bu derste güzellik algısı kavram haritasıyla görselleştirilir.
+    - Aynı derste 36. Ünite'den İslam sanatları (hat, tezhip, ebru, çini) ve edebiyatı (Yunus Emre) örneklenir.
 - *Etkinlik önerisi:* Etkinlik b: Güzel olduğunu düşündüğümüz beş yeri listeleyip her birinin neden güzel olduğunu açıklama.
 
 ### 27 Mart 2027 · Cumartesi · Hafta 30
@@ -1575,7 +1583,9 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 247–256
 
 - *Kazanım:* Öğrenci, Bedir, Uhud, Hendek savaşları ile Hudeybiye Antlaşması'nı hicri ve miladi tarihleriyle birlikte sıralar. • Öğrenci, her savaşın gerçekleşmesine yol açan temel sebepleri ve sonuçlarını kendi cümleleriyle açıklar. • Öğrenci, Uhud Savaşı'ndan çıkarılması gereken ahlaki dersleri (itaat, disiplin, görev terk etmemenin önemi) somut örneklerle ifade eder. • Öğrenci, Hudeybiye Antlaşması'nın kısa vadede ağır görünen şartlarına karşın İslam açısından stratejik bir kazanım olduğunu gerekçeleriyle açıklar. • Öğrenci, Hz. Peygamber'in davet mektupları aracılığıyla tebliği uluslararası boyuta taşıdığını ve Hayber ile Kaza Umresi'nin önemini tanımlar. • Öğrenci, bu dönemdeki olayları İslam'ın yayılma sürecindeki genel bir çizgide birbirine bağlayarak yorumlar.
-- *Konu özeti:* Bu ünite, İslam tarihinin erken döneminde Müslümanların varoluş mücadelesi açısından belirleyici olan dört önemli askeri ve diplomatik olayı ele almaktadır. Hicretin ikinci yılında yaşanan Bedir Savaşı, sayıca az ve donanım bakımından zayıf Müslümanların Mekkeli müşrikler karşısında kazandığı ilk büyük zaferdir; bu zafer yeni kurulan İslam devletinin meşruiyetini ve gücünü dünyaya kanıtlamıştır. Hicretin üçüncü yılındaki Uhud Savaşı ise disiplin ve itaatin ne denli hayati önem taşıdığını acı bir deneyimle öğreten bir dönüm noktasıdır; okçuların mevzilerini terk etmesi sonucu kazanılmak üzere olan savaş ağır bir kayba dönüşmüştür.
+- *Konu özeti:*
+    - Bu ünite, İslam tarihinin erken döneminde Müslümanların varoluş mücadelesi açısından belirleyici olan dört önemli askeri ve diplomatik olayı ele almaktadır. Hicretin ikinci yılında yaşanan Bedir Savaşı, sayıca az ve donanım bakımından zayıf Müslümanların Mekkeli müşrikler karşısında kazandığı ilk büyük zaferdir; bu zafer yeni kurulan İslam devletinin meşruiyetini ve gücünü dünyaya kanıtlamıştır. Hicretin üçüncü yılındaki Uhud Savaşı ise disiplin ve itaatin ne denli hayati önem taşıdığını acı bir deneyimle öğreten bir dönüm noktasıdır; okçuların mevzilerini terk etmesi sonucu kazanılmak üzere olan savaş ağır bir kayba dönüşmüştür.
+    - Not: Kitapta Hayber'in fethi 'H. 6' olarak basılmıştır; doğrusu hicrî 7 / 628'dir (TDV İslâm Ansiklopedisi, 'Hayber'). Hudeybiye Antlaşması h. 6 / 628.
 
 **13:00-13:40 · Ahlak · Müslümanlar Dünya Medeniyetine Katkıda Bulunmuşlardır**  
 Kaynak: Camiye Gidiyorum 2 s. 210–214
@@ -1604,7 +1614,9 @@ Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 18–22
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 106–124
 
 - *Kazanım:* Öğrenci, sehiv ve tilavet secdesinin ne zaman ve nasıl yapılacağını açıklar. • Öğrenci, cemaatle namazın faziletini hadisle temellendirerek caminin bölümlerini ve cami adabı kurallarını sıralar. • Öğrenci, müdrik, lâhik ve mesbuk kavramlarını ayırt ederek imama farklı rekâtlarda yetişen kişinin uygulaması gereken adımları açıklar.
-- *Konu özeti:* Namaz (II) ünitesi, namazın günlük beş vaktin ötesinde hangi özel durum ve çerçevelerde nasıl kılınacağını bütünlüklü bir şekilde ele almaktadır. Namazda unutarak bir rüknün (farzın) geciktirilmesi, tekrarlanması ya da öne alınması yahut bir vacibin terk edilmesi, geciktirilmesi veya değiştirilmesi hâlinde yapılan sehiv secdesi ile Kur'an tilavetinde secde ayeti geçtiğinde yerine getirilen tilavet secdesi, ibadetin eksiksiz ifa edilmesi bilincini pekiştirir. Cemaatle namaz konusunda toplumsal boyut öne çıkarılmakta; hadis-i şeriflerle cemaat faziletinin önemi vurgulanmakta, caminin fiziksel unsurları ve cami adabı öğretilmektedir. İmama uyma (iktida) kuralları müdrik, lâhik ve mesbuk kavramlarıyla ele alınır.
+- *Konu özeti:*
+    - Namaz (II) ünitesi, namazın günlük beş vaktin ötesinde hangi özel durum ve çerçevelerde nasıl kılınacağını bütünlüklü bir şekilde ele almaktadır. Namazda unutarak bir rüknün (farzın) geciktirilmesi, tekrarlanması ya da öne alınması yahut bir vacibin terk edilmesi, geciktirilmesi veya değiştirilmesi hâlinde yapılan sehiv secdesi ile Kur'an tilavetinde secde ayeti geçtiğinde yerine getirilen tilavet secdesi, ibadetin eksiksiz ifa edilmesi bilincini pekiştirir. Cemaatle namaz konusunda toplumsal boyut öne çıkarılmakta; hadis-i şeriflerle cemaat faziletinin önemi vurgulanmakta, caminin fiziksel unsurları ve cami adabı öğretilmektedir. İmama uyma (iktida) kuralları müdrik, lâhik ve mesbuk kavramlarıyla ele alınır.
+    - Seviye notu: lâhik-mesbûk, sehiv ve tilâvet secdesi 7-9 yaş grubunda atlanır, 10-12 yaş grubuna verilir.
 
 ### 11 Nisan 2027 · Pazar · Hafta 32
 
@@ -1616,11 +1628,12 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Ezan ve Kâmet
 - *Ezber:* Ezan ve Kâmet
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (1/8)**  
-Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
+**12:00-12:40 · Siyer · İslam'a Davet Mektupları**  
+Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 247–256
 
-- *Kazanım:* Öğrenci, Mekke'nin fethinin gerçekleştiği tarihi, koşulları ve fethin kansız geçmesinin Hz. Peygamber'in insanlık anlayışına yansımasını açıklar.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Hudeybiye Antlaşması'ndan sonra Peygamberimizin Bizans, İran, Habeşistan, Mısır ve çevre emirliklerin hükümdarlarına gönderdiği İslam'a davet mektuplarının amacını ve üslubunu açıklar; İslam'ın bütün insanlığa gönderildiğini örnekle ifade eder.
+- *Konu özeti:* Hudeybiye'nin sağladığı barış ortamında Peygamberimiz komşu devlet başkanlarına elçilerle davet mektupları gönderdi; mektuplardaki nazik ve kararlı üslup, hükümdarların farklı tepkileri ve Habeş necâşîsinin Müslüman oluşu anlatılır. Ders: tebliğde nezaket, kararlılık ve evrensellik.
+- *Etkinlik önerisi:* Davet mektubu etkinliği: her öğrenci İslam'ı bir cümleyle anlatan kısa bir mektup yazar. / Harita üzerinde mektup gönderilen ülkelerin gösterilmesi.
 
 **13:00-13:40 · Ahlak · Kötü Alışkanlıklara Yaklaşmam**  
 Kaynak: Camiye Gidiyorum 2 s. 232–234
@@ -1647,7 +1660,9 @@ Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 23–25
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 106–124
 
 - *Kazanım:* Öğrenci, Cuma, bayram ve teravih namazlarının hükümlerini, şartlarını ve kılınış biçimlerini karşılaştırır. • Öğrenci, yolcu namazı ile kaza namazının uygulama koşullarını örnek durumlar üzerinden tanır. • Öğrenci, cenaze namazının farz-ı kifaye niteliğini belirtir ve erkek, kadın ile çocuk cenazeleri için okunan dua farklılıklarını açıklar.
-- *Konu özeti:* Namaz (II) ünitesi, namazın günlük beş vaktin ötesinde hangi özel durum ve çerçevelerde nasıl kılınacağını bütünlüklü bir şekilde ele almaktadır. Namazda unutarak bir rüknün (farzın) geciktirilmesi, tekrarlanması ya da öne alınması yahut bir vacibin terk edilmesi, geciktirilmesi veya değiştirilmesi hâlinde yapılan sehiv secdesi ile Kur'an tilavetinde secde ayeti geçtiğinde yerine getirilen tilavet secdesi, ibadetin eksiksiz ifa edilmesi bilincini pekiştirir. Cemaatle namaz konusunda toplumsal boyut öne çıkarılmakta; hadis-i şeriflerle cemaat faziletinin önemi vurgulanmakta, caminin fiziksel unsurları ve cami adabı öğretilmektedir. İmama uyma (iktida) kuralları müdrik, lâhik ve mesbuk kavramlarıyla ele alınır.
+- *Konu özeti:*
+    - Namaz (II) ünitesi, namazın günlük beş vaktin ötesinde hangi özel durum ve çerçevelerde nasıl kılınacağını bütünlüklü bir şekilde ele almaktadır. Namazda unutarak bir rüknün (farzın) geciktirilmesi, tekrarlanması ya da öne alınması yahut bir vacibin terk edilmesi, geciktirilmesi veya değiştirilmesi hâlinde yapılan sehiv secdesi ile Kur'an tilavetinde secde ayeti geçtiğinde yerine getirilen tilavet secdesi, ibadetin eksiksiz ifa edilmesi bilincini pekiştirir. Cemaatle namaz konusunda toplumsal boyut öne çıkarılmakta; hadis-i şeriflerle cemaat faziletinin önemi vurgulanmakta, caminin fiziksel unsurları ve cami adabı öğretilmektedir. İmama uyma (iktida) kuralları müdrik, lâhik ve mesbuk kavramlarıyla ele alınır.
+    - Seviye notu: ayrıntılı kaza hükümleri 7-9 yaş grubunda atlanır, 10-12 yaş grubuna verilir.
 
 ### 18 Nisan 2027 · Pazar · Hafta 33
 
@@ -1659,11 +1674,12 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Felak; Nâs
 - *Ezber:* Felak; Nâs
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (2/8)**  
+**12:00-12:40 · Siyer · Huneyn Savaşı**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
 
-- *Kazanım:* Öğrenci, Veda Hutbesi'nin içerdiği temel evrensel ilkeleri (can dokunulmazlığı, ırk eşitliği, kadın hakları, takva ölçütü) sıralar ve bunları günümüz insan hakları anlayışıyla ilişkilendirir.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Mekke'nin fethinden hemen sonra yapılan Huneyn Savaşı'nda (h. 8 / 630) sayı çokluğuna güvenmenin getirdiği ilk sarsıntıyı, Peygamberimizin sebatını ve sonrasındaki zaferi Tevbe suresi 25-26. ayetler ışığında açıklar.
+- *Konu özeti:* Hevâzin ve Sakîf kabilelerinin Mekke ile Tâif arasındaki Huneyn vadisinde toplanması; on iki bin kişilik ordunun ilk baskında dağılması, Peygamberimizin 'Ben Allah'ın Resûlüyüm, yalan yok; ben Abdülmuttalib'in oğluyum' diyerek yerinde durması ve Müslümanların toparlanıp kazanması anlatılır. Ders: başarı sayıya değil Allah'a güvene bağlıdır.
+- *Etkinlik önerisi:* 'Güç kimde?' sohbeti: başarıyı sayıya değil Allah'a bağlamak. / Olay sırası kartlarıyla dizme oyunu (Mekke'nin fethi → Huneyn).
 
 **13:00-13:40 · Ahlak · İslam ve Ahlak**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 156–161
@@ -1703,11 +1719,12 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Kevser; Asr; Nasr
 - *Ezber:* Kevser; Asr; Nasr
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (3/8)**  
-Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
+**12:00-12:40 · Siyer · Evtas Savaşı ve Tâif Kuşatması: Taşlanan Şehre Dua**  
+Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302; TDV İslâm Ansiklopedisi, 'Tâif' maddesi
 
-- *Kazanım:* Öğrenci, Aşere-i Mübeşşere'nin kimler olduğunu sayar ve ashap kavramını Muhacir ile Ensar ayrımı çerçevesinde tanımlar.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Huneyn'den kaçan düşmanın Evtas'ta yenilgisini ve yaklaşık bir ay süren Tâif kuşatmasının kaldırılmasını anlatır; peygamberliğinin onuncu yılında kendisini taşlayan Tâiflilere Peygamberimizin beddua etmeyip hidayet dilemesini ve Sakîf heyetinin h. 9'da Müslüman olmasını affetme ve sabır değerleriyle ilişkilendirir.
+- *Konu özeti:* Huneyn'den kaçanlar Evtas'ta yenildi; Sakîf kabilesi Tâif kalesine sığındı. Kuşatma yaklaşık bir ay sürdü, sonuç alınamayınca istişareyle kaldırıldı. Dönüşte sahabe Tâiflilere beddua etmesini istedi; Peygamberimiz 'Allahım, Sakîfoğullarına hidayet ver, onları Müslüman olarak bize gönder' diye dua etti. Hicretin 9. yılında Sakîf heyeti Medine'ye gelip Müslüman oldu. Mekke döneminde Tâif'te taşlanışı ('Boykot ve Hüzün Yılları' dersi) hatırlatılarak sabrın ve affın meyvesi konuşulur.
+- *Etkinlik önerisi:* 'Beddua yerine dua' sohbeti: bana kötülük yapana nasıl davranırım? / Olay sırası kartları: Tâif yolculuğu (620) → Tâif kuşatması (630) → Sakîf heyeti (630-631).
 
 **13:00-13:40 · Ahlak · Ahlaki Görevlerimiz**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 163–171
@@ -1753,11 +1770,12 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Kâfirûn
 - *Ezber:* Kâfirûn
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (4/8)**  
+**12:00-12:40 · Siyer · Tebük Seferi**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
 
-- *Kazanım:* Öğrenci, abdestin farz ve sünnet adımlarını doğru sırayla uygular ve her adımda okunan duanın ahiret yönelimli içeriğini kavrar.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Tebük Seferi'nin (h. 9 / 630) zor şartlarda yapıldığını ve sahabenin fedakârlığını örneklerle anlatır.
+- *Konu özeti:* Sıcak ve kıtlık döneminde Bizans sınırına yapılan uzun sefer; 'zorluk ordusu' (ceyşü'l-usre); Hz. Ebû Bekir'in bütün malını, Hz. Osman'ın büyük yardımını getirmesi; sefere katılmayanların durumu ve tövbelerinin kabulü işlenir.
+- *Etkinlik önerisi:* 'Ben neyi paylaşabilirim?' — sınıf yardım kutusu etkinliği. / Harita üzerinde Medine–Tebük yolunun gösterilmesi.
 
 **13:00-13:40 · Ahlak · Ailemize karşı Görevlerimiz**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 172–180
@@ -1801,11 +1819,13 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Fîl; Kureyş
 - *Ezber:* Fîl; Kureyş
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (5/8)**  
+**12:00-12:40 · Siyer · Veda Haccı**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
 
-- *Kazanım:* Öğrenci, namazın temel rükünlerini (kıyam, rükû, secde, ka'de, selam) doğru sırayla sıralar ve her rükünde okunan dua/tesbihi ayırt eder.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Peygamberimizin ilk ve tek haccı olan Veda Haccı'nın (h. 10 / 632) nasıl yapıldığını ve haccın temel duraklarını sıralar.
+- *Konu özeti:* Medine'den yola çıkış, ihram, Kâbe tavafı, Arafat vakfesi, Müzdelife ve Mina; on binlerce Müslümanın Peygamberimizle birlikte hac yapması ve 'hac ibadetinizi benden öğrenin' uygulaması anlatılır.
+- *Etkinlik önerisi:* Hac duraklarını resimli kartlarla sıralama. / Kâbe'nin etrafında tavaf canlandırması (sınıfta halka).
+- *Ezber:* Telbiye: Lebbeyk Allahümme lebbeyk…
 
 **13:00-13:40 · Ahlak · Vatan ve Milletimize karşı Görevlerimiz (I) (1/2)**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 181–194
@@ -1843,11 +1863,12 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Hümeze
 - *Ezber:* Hümeze
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (6/8)**  
+**12:00-12:40 · Siyer · Veda Hutbesi: Evrensel İlkeler**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
 
-- *Kazanım:* Öğrenci, namazda okunan kısa surelerin (İhlâs, Felâk, Nâs, Kâfirûn, Kevser vb.) Arapça metinlerini tanır ve her surenin ana mesajını kısaca açıklar.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Veda Hutbesi'nin içerdiği temel evrensel ilkeleri (can, mal ve namus dokunulmazlığı, ırk eşitliği, kadın hakları, emanet Kur'an) sıralar ve günümüzle ilişkilendirir.
+- *Konu özeti:* Arafat'ta okunan hutbenin ana maddeleri çocuk diliyle işlenir: herkesin canı ve malı kutsaldır, Arap'ın Arap olmayana üstünlüğü yoktur, kadınlara iyi davranın, faiz ve kan davası kaldırıldı, size Kur'an'ı bırakıyorum; 'Tebliğ ettim mi?' sorusu ve sahabenin cevabı.
+- *Etkinlik önerisi:* Hutbe maddelerini 'sınıf anayasası' olarak panoya yazma. / Rol oyunu: 'Herkes eşittir' cümlesini günlük hayattan örnekle anlatma.
 
 **13:00-13:40 · Ahlak · Vatan ve Milletimize karşı Görevlerimiz (I) (2/2)**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 181–194
@@ -1896,11 +1917,15 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Tekâsür
 - *Ezber:* Tekâsür
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (7/8)**  
+**12:00-12:40 · Siyer · Peygamberimizin Vefatı**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
 
-- *Kazanım:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn, Taif ve Tebük gibi seferlerin savunma amacı taşıdığı ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihî Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini ilan etmiştir.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, Peygamberimizin son günlerini, vefatını (13 Rebîülevvel 11 / 8 Haziran 632, Medine) ve Hz. Ebû Bekir'in ashabı teselli eden sözünü (Âl-i İmrân 144) anlatır.
+- *Konu özeti:*
+    - Hastalık günleri, Hz. Ebû Bekir'in imamlığa geçmesi, son öğütler (namaz ve emanetler), Hz. Âişe'nin odasında vefat, sahabenin üzüntüsü ve Hz. Ebû Bekir'in 'Muhammed'e tapan bilsin ki Muhammed ölmüştür; Allah'a tapan bilsin ki Allah diridir' sözü; Ravza-i Mutahhara.
+    - Not: Temel Dinî Bilgiler'de bu bölümün başlığı 'H. 10 / M. 632' olarak basılmıştır; doğru tarih hicrî 11. yıldır (TDV İslâm Ansiklopedisi, 'Muhammed').
+- *Etkinlik önerisi:* Peygamberimize salavat ve sevgi mektubu yazma. / 'Peygamberimizden bize kalan en güzel şey nedir?' sohbeti.
+- *Ezber:* Salât-ı ümmiye (kısa salavat)
 
 **13:00-13:40 · Ahlak · Vatan ve Milletimize karşı Görevlerimiz (II)**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 195–204
@@ -1940,11 +1965,13 @@ Kaynak: Elifbâ / Kur'an-ı Kerim
 - *Etkinlik önerisi:* Âdiyât
 - *Ezber:* Âdiyât
 
-**12:00-12:40 · Siyer · Peygamberimiz (s.a.s.)'in Savaşları (II) (8/8)**  
+**12:00-12:40 · Siyer · Ashâb-ı Kirâm ve Aşere-i Mübeşşere**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 257–302
 
-- *Kazanım:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn, Taif ve Tebük gibi seferlerin savunma amacı taşıdığı ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihî Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini ilan etmiştir.
-- *Konu özeti:* Bu ünite, İslam tarihinin son ve en önemli sayfalarından birini —Hz. Peygamber'in (s.a.s.) Mekke'yi fethetmesinden vefatına uzanan dönemi— ayrıntılı biçimde ele almakta; ardından namaz ibadetinin pratik boyutlarını (abdest, dualar, sureler ve namazın kılınışı) öğrenciye kazandırmaktadır. Huneyn ve Tebük seferlerinin saldırıyı önleme amacı taşıdığı, Tâif kuşatmasının ise Huneyn'in devamı olarak yürütüldüğü ve Hz. Peygamber'in şiddete zorlanmaksızın son çare olarak savaşa başvurduğu vurgulanmaktadır. Veda Haccı'nda irad edilen tarihi Veda Hutbesi, can ve mal dokunulmazlığı, kadın hakları, faizin kaldırılması ve ırk eşitliği gibi evrensel insanlık değerlerini içerdiği için ayrıca ele alınır.
+- *Kazanım:* Öğrenci, ashap kavramını Muhacir ve Ensar ayrımıyla tanımlar; dört halifeyi ve cennetle müjdelenen on sahabiyi sayar.
+- *Konu özeti:* Sahabenin Peygamberimize bağlılığı; Muhacirler ve Ensar; Hulefâ-yı Râşidîn (Hz. Ebû Bekir, Hz. Ömer, Hz. Osman, Hz. Ali); Aşere-i Mübeşşere: dört halife ile Talha b. Ubeydullah, Zübeyr b. Avvâm, Abdurrahman b. Avf, Sa'd b. Ebî Vakkâs, Saîd b. Zeyd ve Ebû Ubeyde b. Cerrâh.
+- *Etkinlik önerisi:* Sahabi isim kartlarıyla eşleştirme oyunu. / Her öğrenci bir sahabinin bir güzel özelliğini anlatır.
+- *Ezber:* Dört halifenin isimleri
 
 **13:00-13:40 · Ahlak · Bütün İnsanlara karşı Görevlerimiz**  
 Kaynak: Temel Dinî Bilgiler (S. Yazıcı) s. 206–216
