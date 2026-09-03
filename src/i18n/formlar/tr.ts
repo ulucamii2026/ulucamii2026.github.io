@@ -81,11 +81,16 @@ export const tr: FormMetinleri = {
       adSoyad: 'Adı soyadı', cep: 'Telefonu',
     },
     saglik: {
+      aciklama: 'Bu bölümde iki ayrı konu soruyoruz. Sağlık bilgisi yalnız siz isterseniz ve açık rızanızla kaydedilir; fotoğraf ve video izinleri bundan bağımsızdır ve kaydı etkilemez.',
+      altSaglik: 'Sağlık bilgisi',
       soru: 'Kurs sırasında bilmemiz gereken bir sağlık durumu (alerji, düzenli ilaç, özel gereksinim) var mı?',
-      not: 'Açıklama', notYardim: 'Yalnız kurs ekibinin çocuğunuza doğru davranması için gereken bilgiyi yazın; tanı ve rapor istemiyoruz.',
-      riza: 'Bu sağlık bilgisinin, yalnız kurs sırasında çocuğuma doğru şekilde bakılabilmesi amacıyla kurs ekibi tarafından işlenmesine açık rıza veriyorum (GDPR md. 9). Bu rızayı istediğim zaman geri alabilirim.',
-      goruntuSoru: 'Kurs etkinliklerinde çekilen fotoğraf ve videolarda çocuğunuz yer alabilir mi?',
-      goruntuAciklama: 'Görüntüler yalnız camimizin duyurularında ve sosyal medya hesaplarında kullanılır; izninizi istediğiniz zaman geri alabilirsiniz. “Hayır” demeniz kaydı etkilemez.',
+      not: 'Açıklama',
+      notYardim: 'Yalnız kurs ekibinin çocuğunuza doğru davranması için gereken bilgiyi yazın (ör. «fıstık alerjisi; çantasında EpiPen var», «astım; spreyi yanında»); tanı ve rapor istemiyoruz.',
+      riza: 'Bu sağlık bilgisinin, yalnız kurs sırasında çocuğuma doğru şekilde bakılabilmesi amacıyla kurs ekibi tarafından işlenmesine açık rıza veriyorum (GDPR md. 9/2-a). Bu rızayı istediğim zaman {eposta} adresine yazarak geri alabilirim.',
+      altGoruntu: 'Fotoğraf ve video izinleri',
+      goruntuSoru: 'Kurs etkinliklerinde çekilen fotoğraf ve videolarda çocuğunuz camimizin web sitesinde ve kendi duyurularında (afiş, pano) yer alabilir mi?',
+      goruntuSosyalSoru: 'Aynı görüntüler camimizin sosyal medya hesaplarında (Facebook vb.) da paylaşılabilir mi?',
+      goruntuAciklama: 'Her mecra için ayrı karar verebilirsiniz; izinlerinizi istediğiniz zaman geri alabilirsiniz ve «Hayır» demeniz kaydı etkilemez. Çocuğunuz kendi görüşünü söyleyebilecek yaştaysa (özellikle 12 yaş ve üzeri), karar vermeden önce ona da sormanızı öneririz.',
     },
     kurallar: {
       baslik: 'Kurs kuralları ve kurs–veli sözleşmesi',
@@ -117,7 +122,7 @@ export const tr: FormMetinleri = {
       kitapNotu: 'Ders kitapları camimizde satılmaz; temin yolları kayıt onay e-postasında ve sitemizin Kur’an kursu sayfasında yer alır.',
     },
     ozet: {
-      ogrenci: 'Öğrenci', okul: 'Okul', sinif: 'Sınıf', veli: 'Veli', iletisim: 'İletişim', acil: 'İkinci kişi', saglik: 'Sağlık notu', goruntu: 'Görüntü izni',
+      ogrenci: 'Öğrenci', okul: 'Okul', sinif: 'Sınıf', veli: 'Veli', iletisim: 'İletişim', acil: 'İkinci kişi', saglik: 'Sağlık notu', goruntu: 'Görüntü izni (site ve duyurular)', goruntuSosyal: 'Görüntü izni (sosyal medya)',
     },
     basari: {
       kardes: 'Kardeş kaydı yap',

@@ -82,11 +82,16 @@ export const fr: FormMetinleri = {
       adSoyad: 'Nom et prénom', cep: 'Téléphone',
     },
     saglik: {
+      aciklama: 'Nous posons ici deux questions distinctes. L’information de santé n’est enregistrée que si vous le souhaitez et avec votre consentement explicite ; les autorisations photo et vidéo en sont indépendantes et n’ont aucune incidence sur l’inscription.',
+      altSaglik: 'Information de santé',
       soru: 'Y a-t-il un élément de santé que nous devrions connaître pendant le cours (allergie, traitement régulier, besoin particulier) ?',
-      not: 'Précisions', notYardim: 'Indiquez uniquement ce dont l’équipe du cours a besoin pour bien s’occuper de votre enfant ; nous ne demandons ni diagnostic ni certificat médical.',
-      riza: 'Je donne mon consentement explicite (art. 9 RGPD) au traitement de cette information de santé par l’équipe du cours, dans le seul but d’assurer un encadrement adapté de mon enfant pendant le cours. Je peux retirer ce consentement à tout moment.',
-      goruntuSoru: 'Votre enfant peut-il apparaître sur des photos et vidéos prises lors des activités du cours ?',
-      goruntuAciklama: 'Les images ne sont utilisées que dans les annonces de notre mosquée et sur ses réseaux sociaux ; vous pouvez retirer votre autorisation à tout moment. Répondre « Non » n’a aucune incidence sur l’inscription.',
+      not: 'Précisions',
+      notYardim: 'Indiquez uniquement ce dont l’équipe du cours a besoin pour bien s’occuper de votre enfant (p. ex. « allergie aux arachides ; EpiPen dans le sac », « asthme ; inhalateur sur lui ») ; nous ne demandons ni diagnostic ni certificat médical.',
+      riza: 'Je donne mon consentement explicite (art. 9.2.a RGPD) au traitement de cette information de santé par l’équipe du cours, dans le seul but d’assurer un encadrement adapté de mon enfant pendant le cours. Je peux retirer ce consentement à tout moment en écrivant à {eposta}.',
+      altGoruntu: 'Autorisations photo et vidéo',
+      goruntuSoru: 'Votre enfant peut-il apparaître sur des photos et vidéos prises lors des activités du cours, publiées sur le site web de notre mosquée et dans ses propres annonces (affiches, panneau) ?',
+      goruntuSosyalSoru: 'Ces mêmes images peuvent-elles aussi être partagées sur les réseaux sociaux de notre mosquée (Facebook, etc.) ?',
+      goruntuAciklama: 'Vous pouvez décider séparément pour chaque support ; vous pouvez retirer vos autorisations à tout moment et répondre « Non » n’a aucune incidence sur l’inscription. Si votre enfant est en âge d’exprimer son avis (en particulier à partir de 12 ans), nous vous conseillons de le lui demander avant de décider.',
     },
     kurallar: {
       baslik: 'Règlement du cours et accord cours-parents',
@@ -118,7 +123,7 @@ export const fr: FormMetinleri = {
       kitapNotu: 'Les manuels (« Camiye Gidiyorum 1-2 » : Je vais à la mosquée 1-2 ; « Temel Dinî Bilgiler » : Connaissances religieuses de base) ne sont pas vendus à la mosquée ; les moyens de vous les procurer figurent dans l’e-mail de confirmation d’inscription et sur la page « Cours de Coran » de notre site.',
     },
     ozet: {
-      ogrenci: 'Élève', okul: 'École', sinif: 'Classe', veli: 'Parent', iletisim: 'Contact', acil: 'Deuxième personne', saglik: 'Note de santé', goruntu: 'Autorisation image',
+      ogrenci: 'Élève', okul: 'École', sinif: 'Classe', veli: 'Parent', iletisim: 'Contact', acil: 'Deuxième personne', saglik: 'Note de santé', goruntu: 'Autorisation image (site et annonces)', goruntuSosyal: 'Autorisation image (réseaux sociaux)',
     },
     basari: {
       kardes: 'Inscrire un frère ou une sœur',

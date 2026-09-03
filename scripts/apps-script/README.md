@@ -85,3 +85,14 @@ silin — Drive'da toplu silme yasaktır (24 Ağustos'ta başvuru defteri bu yü
 | Başvuru defteri | Sheets `1hYAhwkiKxDCbc-aFDrCP95PMNMSs2DLwM8TniKGptp0` |
 | Siteden bağlantı | `src/content/ayarlar/site.yaml → servisler.basvuru` |
 | Bildirim | `ulucamii.marche@gmail.com`, `info@ulucamii.be` |
+
+## v18 (3 Eylül 2026 gece) — Sağlık ve izinler bölümü
+
+- `goruntuSosyalIzni` (boolean, eksikse false): görüntü izni mecra başına ayrıldı (site/duyurular ↔ sosyal
+  medya; APD «Images d'activités scolaires»). Defterde yeni sütun **sona** eklendi («Sosyal medya izni»),
+  eski satırlar kaymaz. PDF'te ayrı satır; etiketler formdaki özetle aynı («Sağlık notu», «Görüntü izni (…)»).
+- PDF sağlık başlığı üç dilli (EN dalı eklendi). **Drive'daki arşiv PDF'i sağlık notunu taşımaz**
+  (`meta.saglikGizle`); veliye e-postayla giden kopya tam metni taşır.
+- Yeni uç `?islem=saglik-temizle&anahtar=…&oncesi=YYYY-MM-DD`: verilen tarihten önceki kayıtların sağlık
+  notunu defterden siler, rıza hücresine «silindi gg.aa.yyyy» yazar. **Her Temmuz bir kez çağrılır**
+  (gizlilik bildirimi: not yalnız ilgili ders yılı boyunca tutulur).

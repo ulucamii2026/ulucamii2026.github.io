@@ -81,11 +81,16 @@ export const en: FormMetinleri = {
       adSoyad: 'Full name', cep: 'Phone number',
     },
     saglik: {
+      aciklama: 'This section asks two separate things. Health information is recorded only if you wish and with your explicit consent; the photo and video permissions are independent of it and do not affect the registration.',
+      altSaglik: 'Health information',
       soru: 'Is there anything about your child’s health we should know during the course (allergy, regular medication, special needs)?',
-      not: 'Details', notYardim: 'Please give only the information the course staff need to look after your child properly; we do not ask for a diagnosis or medical certificate.',
-      riza: 'I give my explicit consent (GDPR Art. 9) for this health information to be processed by the course staff, solely so that my child can be looked after properly during the course. I may withdraw this consent at any time.',
-      goruntuSoru: 'May your child appear in photos and videos taken during course activities?',
-      goruntuAciklama: 'Images are used only in our mosque’s announcements and social media accounts; you may withdraw your permission at any time. Answering “No” does not affect the registration.',
+      not: 'Details',
+      notYardim: 'Please give only the information the course staff need to look after your child properly (e.g. “peanut allergy; EpiPen in the bag”, “asthma; inhaler with them”); we do not ask for a diagnosis or medical certificate.',
+      riza: 'I give my explicit consent (GDPR Art. 9(2)(a)) for this health information to be processed by the course staff, solely so that my child can be looked after properly during the course. I may withdraw this consent at any time by writing to {eposta}.',
+      altGoruntu: 'Photo and video permissions',
+      goruntuSoru: 'May your child appear in photos and videos taken during course activities that are published on our mosque’s website and in its own announcements (posters, notice board)?',
+      goruntuSosyalSoru: 'May the same images also be shared on our mosque’s social media accounts (Facebook, etc.)?',
+      goruntuAciklama: 'You can decide separately for each channel; you may withdraw your permissions at any time, and answering “No” does not affect the registration. If your child is old enough to express their own view (especially from age 12), we recommend asking them before you decide.',
     },
     kurallar: {
       baslik: 'Course rules and course–parent agreement',
@@ -117,7 +122,7 @@ export const en: FormMetinleri = {
       kitapNotu: 'The textbooks (“Camiye Gidiyorum 1–2”: I Am Going to the Mosque 1–2; “Temel Dinî Bilgiler”: Basic Religious Knowledge) are not sold at the mosque; ways to obtain them are given in the registration confirmation e-mail and on the Qur’an course page of our website.',
     },
     ozet: {
-      ogrenci: 'Student', okul: 'School', sinif: 'Class', veli: 'Parent', iletisim: 'Contact', acil: 'Second contact', saglik: 'Health note', goruntu: 'Image permission',
+      ogrenci: 'Student', okul: 'School', sinif: 'Class', veli: 'Parent', iletisim: 'Contact', acil: 'Second contact', saglik: 'Health note', goruntu: 'Image permission (website and announcements)', goruntuSosyal: 'Image permission (social media)',
     },
     basari: {
       kardes: 'Register a sibling',

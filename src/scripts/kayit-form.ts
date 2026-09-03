@@ -71,6 +71,7 @@ export function kayitFormuBaslat() {
         acil: { adSoyad: acil.adSoyad ?? '', cep: acil.cep ? telefonNormalle(String(acil.cep)) ?? acil.cep : '' },
         saglik: { var: saglikVar, not: saglikVar ? String(saglik.not ?? '') : '' },
         goruntuIzni: v.goruntuIzni === 'evet',
+        goruntuSosyalIzni: v.goruntuSosyalIzni === 'evet',
         onay: { kurallar: onay.kurallar === true, gizlilik: onay.gizlilik === true, saglikRiza: saglikVar ? onay.saglikRiza === true : false, elektronikImza: onay.elektronikImza },
       };
     },
@@ -93,6 +94,7 @@ export function kayitFormuBaslat() {
         acil: [acil.adSoyad, acil.cep].filter(Boolean).join(' · '),
         saglik: saglik.var === 'evet' ? String(saglik.not ?? '') : saglik.var === 'hayir' ? evetHayir('hayir') : '',
         goruntu: evetHayir(v.goruntuIzni),
+        goruntuSosyal: evetHayir(v.goruntuSosyalIzni),
       };
     },
     basarida(v) {

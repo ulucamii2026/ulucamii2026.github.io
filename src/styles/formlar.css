@@ -2,6 +2,13 @@
    Tek sayfa, numaralı bölümler, büyük dokunma hedefleri, belirgin hata/başarı durumları. */
 
 .ucf { display: grid; gap: 1.75rem; }
+/* Hata rengi form içi jeton: kiremit jetonları yalnız açık tema için tanımlı, karanlık zeminde kontrast
+   WCAG 1.4.3/1.4.11 eşiğinin altına düşüyordu (3 Eyl 2026 incelemesi). */
+.ucf { --form-hata: var(--color-kiremit-koyu); --form-hata-cizgi: var(--color-kiremit); --form-hata-halka: rgb(163 74 48 / 0.14); --form-hata-zemin: rgb(163 74 48 / 0.1); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ucf { --form-hata: #f2a58c; --form-hata-cizgi: #e8896c; --form-hata-halka: rgb(242 165 140 / 0.22); --form-hata-zemin: rgb(242 165 140 / 0.12); }
+}
+:root[data-theme="dark"] .ucf { --form-hata: #f2a58c; --form-hata-cizgi: #e8896c; --form-hata-halka: rgb(242 165 140 / 0.22); --form-hata-zemin: rgb(242 165 140 / 0.12); }
 .ucf-giris { max-width: 68ch; }
 .ucf-giris p + p { margin-top: 0.6rem; }
 .ucf-sure { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.9rem; font-size: 0.85rem; color: var(--metin-2); }
@@ -33,8 +40,13 @@
 [data-alan] .zorunlu { color: var(--vurgu); font-weight: 700; margin-left: 0.15rem; }
 [data-alan] .istege { font-weight: 400; color: var(--metin-2); font-size: 0.8rem; margin-left: 0.35rem; }
 .yardim { margin: 0; font-size: 0.82rem; color: var(--metin-2); line-height: 1.4; }
-.hata { margin: 0; font-size: 0.84rem; font-weight: 600; color: var(--color-kiremit-koyu); line-height: 1.35; }
+.hata { margin: 0; font-size: 0.84rem; font-weight: 600; color: var(--form-hata); line-height: 1.35; }
 .hata::before { content: '⚠ '; }
+.sayac { margin: 0; font-size: 0.78rem; color: var(--metin-2); text-align: right; font-variant-numeric: tabular-nums; }
+.sayac[data-yakin="1"] { color: var(--form-hata); font-weight: 600; }
+/* Bölüm içi alt başlık (Sağlık bilgisi / Fotoğraf ve video izinleri) — kurallar-kutu h3 ile aynı ses. */
+.ucf-bolum h3.alt-baslik { margin: 0.35rem 0 -0.35rem; font-family: var(--font-serif); font-size: 1.08rem; font-weight: 700; color: var(--metin); }
+.ucf-bolum h3.alt-baslik:first-child { margin-top: 0; }
 .hata[hidden] { display: none; }
 
 .ucf input[type="text"], .ucf input[type="email"], .ucf input[type="tel"], .ucf input[type="date"],
@@ -49,7 +61,7 @@
   background-repeat: no-repeat; background-position: right 0.8rem center; }
 .ucf select:disabled { opacity: 0.6; cursor: not-allowed; }
 .ucf :is(input, select, textarea):focus-visible { outline: none; border-color: var(--color-iznik); box-shadow: 0 0 0 3px rgb(31 81 128 / 0.18); }
-.ucf [aria-invalid="true"] { border-color: var(--color-kiremit); box-shadow: 0 0 0 3px rgb(163 74 48 / 0.14); }
+.ucf [aria-invalid="true"] { border-color: var(--form-hata-cizgi); box-shadow: 0 0 0 3px var(--form-hata-halka); }
 .ucf input[type="date"] { min-width: 0; }
 
 /* Radyo / onay kutuları — büyük, dokunmaya uygun */
@@ -62,7 +74,7 @@
 }
 .secenek input:checked + label { border-color: var(--color-iznik); background: var(--color-iznik); color: #fff; }
 .secenek input:focus-visible + label { box-shadow: 0 0 0 3px rgb(31 81 128 / 0.25); }
-.secenek input[aria-invalid="true"] + label { border-color: var(--color-kiremit); }
+.secenek input[aria-invalid="true"] + label { border-color: var(--form-hata-cizgi); }
 
 .onay-kutu { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; padding: 0.85rem 0.95rem;
   background: var(--zemin); border: 1.5px solid var(--cizgi); border-radius: calc(var(--radius-kose) * 0.6); }
@@ -70,7 +82,7 @@
 .onay-kutu input[type="checkbox"]:disabled { cursor: not-allowed; opacity: 0.45; }
 .onay-kutu label { font-weight: 500; font-size: 0.93rem; line-height: 1.45; cursor: pointer; }
 .onay-kutu:has(input:checked) { border-color: var(--color-iznik); }
-.onay-kutu:has([aria-invalid="true"]) { border-color: var(--color-kiremit); }
+.onay-kutu:has([aria-invalid="true"]) { border-color: var(--form-hata-cizgi); }
 
 /* Kurallar kutusu — sonuna kadar okunmadan onay açılmaz */
 .kurallar-kutu {
@@ -83,7 +95,7 @@
 .kurallar-kutu li + li { margin-top: 0.3rem; }
 .kurallar-kutu p.son { margin: 0.9rem 0 0; font-style: italic; color: var(--metin-2); }
 .kaydir-not { display: flex; align-items: center; gap: 0.4rem; margin: 0.4rem 0 0; font-size: 0.82rem; color: var(--metin-2); }
-.kaydir-not.dikkat { color: var(--color-kiremit-koyu); font-weight: 600; }
+.kaydir-not.dikkat { color: var(--form-hata); font-weight: 600; }
 .kaydir-not[hidden] { display: none; }
 
 /* Bilgi kutuları */
@@ -103,7 +115,7 @@
 
 /* Mesaj, gönder, başarı */
 .ucf-mesaj { padding: 0.9rem 1rem; border-radius: calc(var(--radius-kose) * 0.6); font-weight: 600; font-size: 0.93rem; line-height: 1.45; }
-.ucf-mesaj[data-tur="hata"] { background: rgb(163 74 48 / 0.1); border: 1.5px solid var(--color-kiremit); color: var(--color-kiremit-koyu); }
+.ucf-mesaj[data-tur="hata"] { background: var(--form-hata-zemin); border: 1.5px solid var(--form-hata-cizgi); color: var(--form-hata); }
 .ucf-mesaj[data-tur="bilgi"] { background: var(--color-adacayi-acik); border: 1.5px solid var(--color-adacayi); color: var(--metin); }
 .ucf-mesaj[hidden] { display: none; }
 .ucf-taslak { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; padding: 0.7rem 0.95rem; font-size: 0.88rem;

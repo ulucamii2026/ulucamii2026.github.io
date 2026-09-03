@@ -245,6 +245,7 @@ function taslakYaz(anahtar: string, form: HTMLFormElement, gonderimAnahtari: str
   const alanlarKayit: Record<string, string> = {};
   for (const a of alanlar(form)) {
     if (a.name.startsWith('onay.')) continue;                         // onaylar saklanmaz
+    if (a.disabled) continue;                                          // gizli koşullu blok (ör. sağlık notu) taslağa yazılmaz
     if (a instanceof HTMLInputElement && a.type === 'radio') { if (a.checked) alanlarKayit[a.name] = a.value; continue; }
     if (a instanceof HTMLInputElement && a.type === 'checkbox') { alanlarKayit[a.name] = a.checked ? '1' : ''; continue; }
     alanlarKayit[a.name] = a.value;
@@ -286,6 +287,20 @@ function hataIdleriKur(form: HTMLFormElement) {
   });
 }
 
+/** [data-sayac] textarea'ları için canlı «yazılan / azami» sayacı (aynı [data-alan] içindeki [data-sayac-metin]).
+ *  Görsel yardımcıdır (aria-hidden); ekran okuyucu sınırı alanın maxlength'inden öğrenir. */
+function sayaclariKur(form: HTMLFormElement) {
+  form.querySelectorAll<HTMLTextAreaElement>('textarea[data-sayac]').forEach((ta) => {
+    const kutu = ta.closest('[data-alan]')?.querySelector<HTMLElement>('[data-sayac-metin]');
+    const azami = ta.maxLength > 0 ? ta.maxLength : 0;
+    if (!kutu || !azami) return;
+    const yaz = () => { kutu.textContent = `${ta.value.length} / ${azami}`; kutu.dataset.yakin = azami - ta.value.length <= 60 ? '1' : ''; };
+    ta.addEventListener('input', yaz);
+    form.addEventListener('reset', () => setTimeout(yaz, 0));
+    yaz();
+  });
+}
+
 export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   hataIdleriKur(form);
   const m = JSON.parse(form.querySelector('script[data-metin]')?.textContent || '{}') as Metinler;
@@ -308,6 +323,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     gonderimAnahtari = taslak.anahtar || gonderimAnahtari;
     if (taslakNotu) taslakNotu.hidden = false;
   }
+  sayaclariKur(form);
   form.querySelector<HTMLButtonElement>('[data-taslak-sil]')?.addEventListener('click', () => {
     try { localStorage.removeItem(taslakAnahtari); } catch { /* yok say */ }
     form.reset(); gonderimAnahtari = uuid();

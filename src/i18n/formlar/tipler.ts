@@ -73,7 +73,8 @@ export interface KayitMetinler {
   };
   acil: { aciklama: string; adSoyad: string; cep: string };
   saglik: {
-    soru: string; not: string; notYardim: string; riza: string; goruntuSoru: string; goruntuAciklama: string;
+    aciklama: string; altSaglik: string; altGoruntu: string;
+    soru: string; not: string; notYardim: string; riza: string; goruntuSoru: string; goruntuSosyalSoru: string; goruntuAciklama: string;
   };
   kurallar: {
     baslik: string; aciklama: string; kaydirNotu: string; kutu: string;
@@ -81,7 +82,7 @@ export interface KayitMetinler {
     ogrenciBaslik: string; ogrenci: string[]; veliBaslik: string; veli: string[]; kitapNotu: string;
   };
   ozet: {
-    ogrenci: string; okul: string; sinif: string; veli: string; iletisim: string; acil: string; saglik: string; goruntu: string;
+    ogrenci: string; okul: string; sinif: string; veli: string; iletisim: string; acil: string; saglik: string; goruntu: string; goruntuSosyal: string;
   };
   basari: { kardes: string; kardesAciklama: string; sonrakiAdimlar: string };
 }

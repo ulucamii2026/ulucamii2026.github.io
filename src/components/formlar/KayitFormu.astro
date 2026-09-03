@@ -200,15 +200,20 @@ const metinJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- 5 · Sağlık ve izinler -->
+  <!-- 5 · Sağlık ve izinler (3 Eyl 2026 gece yeniden): iki ayrı konu — sağlık bilgisi (yalnız Evet'te, açık rıza,
+       GDPR md. 9/2-a) ve MECRA BAŞINA ayrı görüntü izni (APD/jedecide.be «Images d'activités scolaires»: her yayın
+       mecrası formda ayrı belirtilir, veli birine izin verip diğerini reddedebilir). Radyo sırası iki soruda da
+       Hayır/Evet; required her iki seçenekte (ekran okuyucu ikinci seçeneğe odaklanınca da duyar). -->
   <section class="ucf-bolum" id="b-saglik" aria-labelledby="h-saglik">
     <h2 id="h-saglik"><span class="no">5</span>{k.bolum.saglik}</h2>
+    <p class="bolum-not">{k.saglik.aciklama}</p>
     <div class="ucf-izgara">
+      <h3 class="alt-baslik tam">{k.saglik.altSaglik}</h3>
       <fieldset data-alan class="tam">
         <legend>{k.saglik.soru} <span class="zorunlu" aria-hidden="true">*</span></legend>
         <div class="secenekler">
           <span class="secenek"><input id="k-saglik-hayir" type="radio" name="saglik.var" value="hayir" required /><label for="k-saglik-hayir">{o.hayir}</label></span>
-          <span class="secenek"><input id="k-saglik-evet" type="radio" name="saglik.var" value="evet" /><label for="k-saglik-evet">{o.evet}</label></span>
+          <span class="secenek"><input id="k-saglik-evet" type="radio" name="saglik.var" value="evet" required /><label for="k-saglik-evet">{o.evet}</label></span>
         </div>
         <p class="hata" aria-live="polite" hidden></p>
       </fieldset>
@@ -216,24 +221,34 @@ const metinJson = JSON.stringify({
         <div class="ucf-izgara">
           <div data-alan class="tam">
             <label for="k-saglik-not">{k.saglik.not} <span class="zorunlu" aria-hidden="true">*</span></label>
-            <textarea id="k-saglik-not" name="saglik.not" required maxlength="600" rows="4"></textarea>
+            <textarea id="k-saglik-not" name="saglik.not" required maxlength="600" rows="4" data-sayac></textarea>
             <p class="yardim">{k.saglik.notYardim}</p>
+            <p class="sayac" data-sayac-metin aria-hidden="true"></p>
             <p class="hata" aria-live="polite" hidden></p>
           </div>
           <div data-alan class="tam">
             <div class="onay-kutu">
               <input id="k-saglik-riza" type="checkbox" name="onay.saglikRiza" required />
-              <label for="k-saglik-riza">{k.saglik.riza}</label>
+              <label for="k-saglik-riza">{doldur(k.saglik.riza, { eposta })}</label>
             </div>
             <p class="hata" aria-live="polite" hidden></p>
           </div>
         </div>
       </div>
+      <h3 class="alt-baslik tam">{k.saglik.altGoruntu}</h3>
       <fieldset data-alan class="tam">
         <legend>{k.saglik.goruntuSoru} <span class="zorunlu" aria-hidden="true">*</span></legend>
         <div class="secenekler">
+          <span class="secenek"><input id="k-goruntu-hayir" type="radio" name="goruntuIzni" value="hayir" required /><label for="k-goruntu-hayir">{o.hayir}</label></span>
           <span class="secenek"><input id="k-goruntu-evet" type="radio" name="goruntuIzni" value="evet" required /><label for="k-goruntu-evet">{o.evet}</label></span>
-          <span class="secenek"><input id="k-goruntu-hayir" type="radio" name="goruntuIzni" value="hayir" /><label for="k-goruntu-hayir">{o.hayir}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+      <fieldset data-alan class="tam">
+        <legend>{k.saglik.goruntuSosyalSoru} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="k-goruntu-sosyal-hayir" type="radio" name="goruntuSosyalIzni" value="hayir" required /><label for="k-goruntu-sosyal-hayir">{o.hayir}</label></span>
+          <span class="secenek"><input id="k-goruntu-sosyal-evet" type="radio" name="goruntuSosyalIzni" value="evet" required /><label for="k-goruntu-sosyal-evet">{o.evet}</label></span>
         </div>
         <p class="yardim">{k.saglik.goruntuAciklama}</p>
         <p class="hata" aria-live="polite" hidden></p>
@@ -287,7 +302,7 @@ const metinJson = JSON.stringify({
       {([
         ['ogrenci', k.ozet.ogrenci, '#b-ogrenci'], ['okul', k.ozet.okul, '#b-okul'], ['sinif', k.ozet.sinif, '#b-okul'],
         ['veli', k.ozet.veli, '#b-veli'], ['iletisim', k.ozet.iletisim, '#b-veli'], ['acil', k.ozet.acil, '#b-acil'],
-        ['saglik', k.ozet.saglik, '#b-saglik'], ['goruntu', k.ozet.goruntu, '#b-saglik'],
+        ['saglik', k.ozet.saglik, '#b-saglik'], ['goruntu', k.ozet.goruntu, '#b-saglik'], ['goruntuSosyal', k.ozet.goruntuSosyal, '#b-saglik'],
       ] as const).map(([anahtar, etiket, hedef]) => (
         <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd><span data-ozet-deger>{o.bosDeger}</span> <a href={hedef}>{o.ozetDuzenle}</a></dd></div>
       ))}
