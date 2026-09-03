@@ -276,7 +276,7 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string, required: false }
-                  - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
+                  - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, uip, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
                   - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
               - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
               - name: servisler

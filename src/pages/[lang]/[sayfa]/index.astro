@@ -24,6 +24,7 @@ import YonetimKurulu from '../../../sayfalar/YonetimKurulu.astro';
 import Cenaze from '../../../sayfalar/Cenaze.astro';
 import Afisler from '../../../sayfalar/Afisler.astro';
 import DiyanetHizmetleri from '../../../sayfalar/DiyanetHizmetleri.astro';
+import Uip from '../../../sayfalar/Uip.astro';
 
 export function getStaticPaths() {
   const yol: { params: { lang: Dil; sayfa: string }; props: { anahtar: SayfaAnahtari } }[] = [];
@@ -41,7 +42,7 @@ const bilesenler: Record<Exclude<SayfaAnahtari, 'anasayfa'>, any> = {
   hakkimizda: Hakkimizda, duyurular: Duyurular, etkinlikler: Etkinlikler, namaz: Namaz, kurankursu: KuranKursu, mufredat: Mufredat, yillikplan: YillikPlan,
   bagis: Bagis, uyelik: Uyelik, konsolosluk: Konsolosluk, galeri: Galeri, iletisim: Iletisim,
   kunye: MetinSayfasi, gizlilik: MetinSayfasi, portal: Portal, vefat: Vefat, cenaze: Cenaze,
-  irsat: Irsat, ihtida: Ihtida, ihtidaBasvuru: IhtidaBasvuru, adab: CamiAdabi, yonetim: YonetimKurulu, afisler: Afisler, diyanet: DiyanetHizmetleri,
+  irsat: Irsat, ihtida: Ihtida, ihtidaBasvuru: IhtidaBasvuru, adab: CamiAdabi, yonetim: YonetimKurulu, afisler: Afisler, diyanet: DiyanetHizmetleri, uip: Uip,
 };
 const Bilesen = bilesenler[anahtar as Exclude<SayfaAnahtari, 'anasayfa'>];
 ---

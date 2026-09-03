@@ -28,6 +28,10 @@ E-posta: info@ulucamii.be
 
 Sitedeki konum haritası, OpenStreetMap Vakfı’nın sunucularından yüklenir. Harita görüntülendiğinde IP adresiniz bu sunucuya iletilir. Bu işlem bizim kontrolümüz dışında olup OpenStreetMap’in kendi gizlilik kurallarına tabidir.
 
+## Gömülü Videolar (YouTube)
+
+Bazı sayfalarımızda (örneğin Uluslararası İlahiyat Programı tanıtımı) YouTube videoları yer alır. Bu videolar sayfa açıldığında **yüklenmez**: yalnız yerel bir kapak görseli ve oynat düğmesi gösterilir. Oynat düğmesine bastığınızda video, YouTube’un gizlilik güçlendirilmiş alanından (youtube-nocookie.com) yüklenir ve o andan itibaren IP adresiniz Google’a iletilir; bu işlem Google’ın kendi gizlilik kurallarına tabidir. Düğmeye basmadığınız sürece YouTube’a hiçbir istek gitmez.
+
 ## Kur’an Kursu Online Kayıt Formu
 
 Kur’an kursu kayıtları sitemizdeki online kayıt formuyla (ulucamii.be/kayit/) alınır. 30 Ağustos 2026’dan itibaren geçerli sürüm hakkında bilmeniz gerekenler:

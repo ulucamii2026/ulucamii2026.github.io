@@ -28,6 +28,10 @@ E-mail: info@ulucamii.be
 
 The location map on this site is loaded from the servers of the OpenStreetMap Foundation. When the map is displayed, your IP address is transmitted to that server. This process is outside our control and is subject to OpenStreetMap’s own privacy rules.
 
+## Embedded Videos (YouTube)
+
+Some pages (for example the International Theology Programme presentation) contain YouTube videos. These videos are **not loaded** when the page opens: only a local cover image and a play button are shown. When you press play, the video is loaded from YouTube’s privacy-enhanced domain (youtube-nocookie.com) and from that moment your IP address is transmitted to Google; this processing is subject to Google’s own privacy rules. As long as you do not press the button, no request is sent to YouTube.
+
 ## Qur’an School Online Registration Form
 
 Registrations for the Qur’an school are taken through the online form on our site (ulucamii.be/kayit/). What you should know about the version in force since 30 August 2026:

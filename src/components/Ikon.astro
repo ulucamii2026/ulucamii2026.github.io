@@ -1,6 +1,6 @@
 ---
 /** Tutarlı tek çizgi kalınlığında (1.75) 24px outline ikon seti — yazılmış SVG, emoji/unicode yok */
-interface Props { ad: 'bagis' | 'kurs' | 'uyelik' | 'konsolosluk' | 'cenaze' | 'iletisim' | 'galeri' | 'harita' | 'takvim' | 'telefon' | 'cami' | 'ok' | 'saat' | 'qr' | 'facebook'; class?: string; boyut?: number }
+interface Props { ad: 'bagis' | 'kurs' | 'uyelik' | 'konsolosluk' | 'cenaze' | 'iletisim' | 'galeri' | 'harita' | 'takvim' | 'telefon' | 'cami' | 'ok' | 'saat' | 'qr' | 'facebook' | 'mezuniyet' | 'dunya' | 'belge' | 'ucak'; class?: string; boyut?: number }
 const { ad, class: cls = 'h-6 w-6', boyut = 24 } = Astro.props;
 const yollar: Record<Props['ad'], string> = {
   bagis: '<path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z"/>',
@@ -17,6 +17,11 @@ const yollar: Record<Props['ad'], string> = {
   ok: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   saat: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   qr: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v7M14 20h3"/>',
+  // UİP sayfası (Eylül 2026): mezuniyet kepi, dünya, belge, uçak — aynı 1.75 çizgi diliyle
+  mezuniyet: '<path d="m2.5 9 9.5-4 9.5 4-9.5 4-9.5-4Z"/><path d="M6.5 11v4.5c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3V11"/><path d="M21.5 9v5"/>',
+  dunya: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/>',
+  belge: '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9.5 13h5M9.5 17h5"/>',
+  ucak: '<path d="M2.5 14.5 21 4l-4.5 16.5-4-6.5-6-1.5Z"/><path d="m12.5 14 8.5-10"/>',
   facebook: '<path d="M14 8h2.5V4.5H14a4 4 0 0 0-4 4V11H7.5v3.5H10V21h3.5v-6.5h2.7l.5-3.5H13.5V8.8c0-.5.3-.8.5-.8Z"/>',
 };
 ---

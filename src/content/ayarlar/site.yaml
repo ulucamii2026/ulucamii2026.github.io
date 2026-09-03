@@ -49,6 +49,11 @@ site:
         en: "Women’s and girls’ programme — every Wednesday at the mosque, with Mrs Esma AVCI."
       sayfa: irsat
     - metin:
+        tr: "Liseyi bitiren gençlere Türkiye’de Diyanet burslu ilahiyat lisansı — Uluslararası İlahiyat Programı’nı (UİP) tanıyın, başvuruda yanınızdayız."
+        fr: "Une licence de théologie en Turquie avec bourse Diyanet pour les jeunes diplômés du secondaire — découvrez le Programme international de théologie (UİP), nous vous accompagnons."
+        en: "A Diyanet-funded theology degree in Türkiye for secondary-school graduates — discover the International Theology Programme (UİP); we help you apply."
+      sayfa: uip
+    - metin:
         tr: "İhtida başvurusu artık online — bilgi, belgeler ve başvuru formu sitemizde."
         fr: "La demande de conversion se fait désormais en ligne — informations, documents et formulaire sur notre site."
         en: "Applying to become Muslim is now online — information, documents and the application form are on our site."

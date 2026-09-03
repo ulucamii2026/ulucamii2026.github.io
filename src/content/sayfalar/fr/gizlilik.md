@@ -28,6 +28,10 @@ E-mail : info@ulucamii.be
 
 La carte de localisation affichée sur ce site est chargée depuis les serveurs de l’OpenStreetMap Foundation. Lorsque la carte s’affiche, votre adresse IP est transmise à ce serveur. Cette opération échappe à notre contrôle et relève de la politique de confidentialité propre à OpenStreetMap.
 
+## Vidéos intégrées (YouTube)
+
+Certaines pages (par exemple la présentation du Programme international de théologie) contiennent des vidéos YouTube. Ces vidéos ne sont **pas chargées** à l’ouverture de la page : seules une image de couverture locale et un bouton de lecture sont affichés. Lorsque vous appuyez sur le bouton, la vidéo est chargée depuis le domaine « confidentialité renforcée » de YouTube (youtube-nocookie.com) et, à partir de ce moment, votre adresse IP est transmise à Google ; ce traitement relève de la politique de confidentialité de Google. Tant que vous n’appuyez pas sur le bouton, aucune requête n’est envoyée à YouTube.
+
 ## Formulaire d’inscription en ligne à l’école coranique
 
 Les inscriptions à l’école coranique se font via le formulaire en ligne de notre site (ulucamii.be/kayit/). Ce qu’il faut savoir sur la version en vigueur depuis le 30 août 2026 :

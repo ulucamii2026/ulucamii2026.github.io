@@ -1,0 +1,265 @@
+---
+/** Uluslararası İlahiyat Programı (UİP) — tanıtım, şartlar, takvim, başvuru adımları, belgeler.
+ *
+ * Metin: src/i18n/uip.ts (tr) + uip-fr.ts + uip-en.ts — kılavuz sayfa atıflı, tutar/2027 tarihi yazılmaz.
+ * Dönem tarihleri: src/lib/etkinlik-tarihleri.ts (UIP_*) — sayfa her gece yeniden derlendiği için
+ * "başvurular açık / kapandı / yakında" bandı kendiliğinden değişir.
+ * Video: diyanet.be ana sayfasındaki Diyanet tanıtım filmi, web için 540p'ye dönüştürülüp kendi
+ * sunucumuzdan verilir (preload=none → ziyaretçi oynatmadan tek bayt inmez); YouTube'daki diğer
+ * iki video tıkla-yükle cephesiyle (VideoCephe) gömülür. */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import VideoCephe from '../components/VideoCephe.astro';
+import Ikon from '../components/Ikon.astro';
+import { yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { uipMetin } from '../i18n/uip';
+import { siteAyarlari, bugunBrussels } from '../lib/icerik';
+import { UIP_DONEM, UIP_BASVURU_BASLANGIC, UIP_BASVURU_SON } from '../lib/etkinlik-tarihleri';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = uipMetin[dil];
+const site = await siteAyarlari();
+const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const yerel = dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE';
+const tarihUzun = (iso: string) => new Intl.DateTimeFormat(yerel, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso + 'T12:00:00'));
+const bugun = bugunBrussels();
+const durum: 'yakinda' | 'acik' | 'kapandi' = bugun < UIP_BASVURU_BASLANGIC ? 'yakinda' : bugun <= UIP_BASVURU_SON ? 'acik' : 'kapandi';
+const doldur = (s: string) => s.replace(/\{\{donem\}\}/g, String(UIP_DONEM)).replace(/\{\{son\}\}/g, tarihUzun(UIP_BASVURU_SON)).replace(/\{\{baslangic\}\}/g, tarihUzun(UIP_BASVURU_BASLANGIC));
+const durumMetni = doldur(m.durum[durum]);
+const BASVURU = 'https://dibbys.diyanet.gov.tr/IKYS/Sinav/KurumDisi/DisIliskiler/UIPBasvuru.aspx';
+const KILAVUZ = '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf';
+const OG = `/media/uip/uip-og-${dil}.webp`;
+const BDV_TEL = '+32 2 218 57 55', BDV_EPOSTA = 'info@diyanet.be', MUSAVIRLIK_TEL = '+32 2 506 11 73';
+const kariyerIkon = ['cami', 'kurs', 'dunya', 'belge', 'mezuniyet', 'kurs'] as const;
+const bolumler: Array<[string, string]> = [
+  ['video', m.video.baslik], ['nedir', m.nedir.baslik], ['imkanlar', m.imkan.baslik], ['fakulteler', m.fakulte.baslik],
+  ['sartlar', m.sart.baslik], ['takvim', doldur(m.takvim.baslik)], ['basvuru', m.adim.baslik], ['belcika', m.belcika.baslik],
+  ['belgeler', m.belge.baslik], ['kariyer', m.kariyer.baslik], ['sss', m.sss.baslik], ['ekler', m.ekler.baslik], ['iletisim', m.iletisim.baslik],
+];
+const sssJsonLd = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: m.sss.liste.map((x) => ({ '@type': 'Question', name: x.s, acceptedAnswer: { '@type': 'Answer', text: x.c } })),
+};
+const afisler = [
+  { href: '/media/afisler/bdv-2026-uip-basvurulari.webp', kucuk: '/media/afisler/bdv-2026-uip-basvurulari-thumb.webp', alt: m.ekler.afisUip, w: 480, h: 256 },
+  { href: `/media/uip/diyanet-burslari-2026-${dil}.webp`, kucuk: `/media/uip/diyanet-burslari-2026-${dil}-thumb.webp`, alt: m.ekler.afisBurs, w: 448, h: 640 },
+];
+---
+<Base baslik={m.baslik} dil={dil} aciklama={m.metaAciklama} kapak={OG} ekJsonLd={[sssJsonLd]}>
+  <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} kapak="/media/uip/uip-kapak.webp" />
+
+  <nav aria-label={m.baslik} class="border-b border-(--cizgi) bg-(--zemin)">
+    <ul class="kapsayici flex gap-x-5 gap-y-1 overflow-x-auto whitespace-nowrap py-2.5 text-sm [scrollbar-width:thin]">
+      {bolumler.map(([id, ad]) => <li class="shrink-0"><a href={`#${id}`} class="inline-flex min-h-9 items-center no-underline text-(--metin-2) hover:text-(--vurgu) hover:underline">{ad}</a></li>)}
+    </ul>
+  </nav>
+
+  <div class="kapsayici py-8 sm:py-10 reveal">
+    <div class={durum === 'acik' ? 'uyari' : 'bilgi'} role="status">
+      <div class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+        <p class="m-0"><Ikon ad="takvim" class="mr-1.5 inline h-5 w-5 -mt-0.5 text-(--vurgu)" />{durumMetni}</p>
+        <div class="flex flex-wrap gap-2">
+          {durum === 'acik' && <a href={BASVURU} target="_blank" rel="noopener" class="dugme dugme-birincil">{m.ekler.baglantilar[0].ad.split(' (')[0]}<span aria-hidden="true"> ↗</span></a>}
+          <a href={KILAVUZ} class="dugme dugme-ikincil" target="_blank" rel="noopener"><Ikon ad="belge" class="h-4 w-4" />{m.durum.kilavuz}</a>
+          <a href="https://www.diyanet.be" target="_blank" rel="noopener" class="dugme dugme-ikincil">{m.durum.takip}<span aria-hidden="true"> ↗</span></a>
+        </div>
+      </div>
+    </div>
+    <dl class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {m.ozet.map((o) => <div class="kart-kagit px-4 py-4"><dd class="font-serif text-3xl font-bold leading-none text-(--vurgu)">{o.sayi}</dd><dt class="mt-1.5 font-semibold">{o.ad}</dt><dd class="text-sm text-(--metin-2)">{o.not}</dd></div>)}
+    </dl>
+  </div>
+
+  <section id="video" class="kapsayici pb-10 sm:pb-14 reveal" aria-labelledby="video-baslik">
+    <h2 id="video-baslik">{m.video.baslik}</h2>
+    <p class="mt-2 max-w-[70ch] text-(--metin-2)">{m.video.alt}</p>
+    <figure class="kart mt-5 overflow-hidden">
+      <video controls preload="none" playsinline poster="/media/uip/video-uip-tanitim.webp" width="960" height="540" lang="tr" class="block aspect-video w-full bg-(--color-ceviz-koyu)">
+        <source src="/media/uip/uip-tanitim-filmi-540p.mp4" type="video/mp4" />
+        <p class="p-4">{m.video.oynatilamaz} <a href="/media/uip/uip-tanitim-filmi-540p.mp4">MP4</a></p>
+      </video>
+      <figcaption class="px-4 py-3 text-sm text-(--metin-2)">{m.video.kaynak}</figcaption>
+    </figure>
+    <h3 class="mt-8 text-xl">{m.video.digerBaslik}</h3>
+    <div class="mt-3 grid gap-5 md:grid-cols-2">
+      <VideoCephe id="jS8tgY_R9_w" baslik={m.video.tdv} poster="/media/uip/video-tdv-uip.webp" dil={dil} altyazi="2014 · 3:31" />
+      <VideoCephe id="hLeGbadVi58" baslik={m.video.diyanettv} poster="/media/uip/video-diyanettv-yeni-donem.webp" dil={dil} altyazi="2015 · 2:26" />
+    </div>
+    <p class="mt-3 text-sm"><a href="https://www.youtube.com/watch?v=oxK8DyQ2N44" target="_blank" rel="noopener">{m.video.eksen}<span aria-hidden="true"> ↗</span></a></p>
+  </section>
+
+  <section id="nedir" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="nedir-baslik">
+    <div class="kapsayici py-10 sm:py-14 grid gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+      <div>
+        <h2 id="nedir-baslik">{m.nedir.baslik}</h2>
+        <p class="mt-3 max-w-[70ch]">{m.nedir.p1}</p>
+        <p class="mt-3 max-w-[70ch]">{m.nedir.p2}</p>
+      </div>
+      <div class="kart p-5 sm:p-6">
+        <h3 class="text-lg">{m.nedir.amacBaslik}</h3>
+        <ol class="mt-3 grid gap-2.5 list-decimal pl-5 text-sm">{m.nedir.amaclar.map((a) => <li>{a}</li>)}</ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="imkanlar" class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="imkan-baslik">
+    <h2 id="imkan-baslik">{m.imkan.baslik}</h2>
+    <p class="mt-2 max-w-[70ch] text-(--metin-2)">{m.imkan.alt}</p>
+    <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {m.imkan.kartlar.map((k, i) => <li class="kart p-4"><Ikon ad={(['bagis', 'cami', 'kurs', 'belge'] as const)[i]} class="h-6 w-6 text-(--vurgu)" /><h3 class="mt-2 text-lg">{k.baslik}</h3><p class="mt-1 text-sm text-(--metin-2)">{k.metin}</p></li>)}
+    </ul>
+    <p class="mt-4 text-sm"><strong>{m.imkan.kapsamDisi}</strong></p>
+    <p class="bilgi mt-3 text-sm">{m.imkan.teminat}</p>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <div><h3 class="text-lg">{m.imkan.stajBaslik}</h3><ul class="mt-2 grid gap-1.5 list-disc pl-5 text-sm">{m.imkan.staj.map((x) => <li>{x}</li>)}</ul></div>
+      <div><h3 class="text-lg">{m.imkan.tamamlayiciBaslik}</h3><ul class="mt-2 grid gap-1.5 list-disc pl-5 text-sm">{m.imkan.tamamlayici.map((x) => <li>{x}</li>)}</ul></div>
+      <div><h3 class="text-lg">{m.imkan.sosyalBaslik}</h3><ul class="mt-2 grid gap-1.5 list-disc pl-5 text-sm">{m.imkan.sosyal.map((x) => <li>{x}</li>)}</ul></div>
+    </div>
+  </section>
+
+  <section id="fakulteler" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="fakulte-baslik">
+    <div class="kapsayici py-10 sm:py-14">
+      <h2 id="fakulte-baslik">{m.fakulte.baslik}</h2>
+      <p class="mt-2 max-w-[75ch] text-(--metin-2)">{m.fakulte.alt}</p>
+      <ol class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {m.fakulte.liste.map((f) => <li class="kart-kagit flex gap-3 p-4"><Ikon ad="mezuniyet" class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><p class="font-semibold leading-snug">{f.ad}</p><p class="mt-1 text-sm text-(--metin-2)">{f.sehir} · <span class="mono" title={m.fakulte.katilim}>{f.yil}</span></p></div></li>)}
+      </ol>
+      <p class="mt-4 max-w-[75ch] text-sm">{m.fakulte.diploma}</p>
+    </div>
+  </section>
+
+  <section id="sartlar" class="kapsayici py-10 sm:py-14 grid gap-8 lg:grid-cols-2 reveal" aria-labelledby="sart-baslik">
+    <div class="min-w-0">
+      <h2 id="sart-baslik">{m.sart.baslik}</h2>
+      <p class="mt-2 text-(--metin-2)">{m.sart.alt}</p>
+      <ol class="mt-4 grid gap-2.5 list-decimal pl-5">{m.sart.liste.map((x) => <li>{doldur(x)}</li>)}</ol>
+      <p class="uyari mt-4 text-sm">{m.sart.not}</p>
+    </div>
+    <div id="takvim" class="min-w-0">
+      <h2>{doldur(m.takvim.baslik)}</h2>
+      <p class="mt-2 text-(--metin-2)">{m.takvim.alt}</p>
+      <div class="kart mt-4 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead><tr class="bg-(--zemin-2) text-left"><th scope="col" class="px-4 py-2.5 font-semibold">{m.takvim.islem}</th><th scope="col" class="px-4 py-2.5 font-semibold">{m.takvim.tarih}</th></tr></thead>
+          <tbody>{m.takvim.satirlar.map(([a, b]) => <tr class="border-t border-(--cizgi)"><td class="px-4 py-2.5">{a}</td><td class="px-4 py-2.5 mono whitespace-nowrap">{b}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="basvuru" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="adim-baslik">
+    <div class="kapsayici py-10 sm:py-14">
+      <h2 id="adim-baslik">{m.adim.baslik}</h2>
+      <p class="mt-2 max-w-[70ch] text-(--metin-2)">{m.adim.alt}</p>
+      <ol class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {m.adim.liste.map((a, i) => <li class="kart p-5 flex gap-4"><span aria-hidden="true" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--vurgu) font-serif text-xl font-bold text-(--color-krem)">{i + 1}</span><div><h3 class="text-lg leading-tight">{a.baslik}</h3><p class="mt-1.5 text-sm text-(--metin-2)">{a.metin}</p></div></li>)}
+      </ol>
+      <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+        <div><h3 class="text-xl">{m.adim.mulakatBaslik}</h3><p class="mt-2 max-w-[70ch]">{m.adim.mulakat}</p><p class="mt-2 text-sm text-(--metin-2)">{m.adim.sonuc}</p></div>
+        <div class="kart-kagit p-5"><h3 class="text-lg">{m.adim.konuBaslik}</h3><ul class="mt-2 grid gap-1.5 list-disc pl-5 text-sm">{m.adim.konular.map((x) => <li>{x}</li>)}</ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="belcika" class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="belcika-baslik">
+    <h2 id="belcika-baslik">{m.belcika.baslik}</h2>
+    <div class="mt-4 grid gap-8 lg:grid-cols-2">
+      <div>
+        <p class="max-w-[70ch]">{m.belcika.p1}</p>
+        <ol class="mt-3 grid gap-2 list-decimal pl-5">{m.belcika.adimlar.map((x) => <li>{x}</li>)}</ol>
+        <address class="kart-kagit mt-5 p-4 not-italic text-sm">
+          <p class="font-semibold">{m.belcika.musavirlik.ad}</p>
+          <p class="mt-1">{m.belcika.musavirlik.adres}</p>
+          <p class="mt-1">{m.belcika.musavirlik.telEtiket}: <a href={tel(MUSAVIRLIK_TEL)} class="mono">{MUSAVIRLIK_TEL}</a></p>
+          <p class="mt-2 text-(--metin-2)">{m.belcika.musavirlik.not}</p>
+        </address>
+      </div>
+      <div class="kart p-5 sm:p-6">
+        <h3 class="text-xl">{m.belcika.camiBaslik}</h3>
+        <ul class="mt-3 grid gap-2.5">{m.belcika.cami.map((x) => <li class="flex gap-3"><Ikon ad="ok" class="mt-1 h-4 w-4 shrink-0 text-(--vurgu)" /><span>{x}</span></li>)}</ul>
+        <p class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          <a href={tel(site.telefon.dinGorevlisi)} class="inline-flex min-h-11 items-center gap-1.5 no-underline"><Ikon ad="telefon" class="h-4 w-4" /><span class="mono">{site.telefon.dinGorevlisi}</span></a>
+          <a href={`mailto:${site.epostaDinGorevlisi ?? site.eposta}`} class="inline-flex min-h-11 items-center">{site.epostaDinGorevlisi ?? site.eposta}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="belgeler" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="belge-baslik">
+    <div class="kapsayici py-10 sm:py-14">
+      <h2 id="belge-baslik">{m.belge.baslik}</h2>
+      <div class="mt-5 grid gap-6 md:grid-cols-2">
+        <div class="kart p-5"><h3 class="text-lg">{m.belge.basvuruBaslik}</h3><ul class="mt-3 grid gap-2 list-disc pl-5 text-sm">{m.belge.basvuru.map((x) => <li>{x}</li>)}</ul></div>
+        <div class="kart p-5"><h3 class="text-lg">{m.belge.kayitBaslik}</h3><ul class="mt-3 grid gap-2 list-disc pl-5 text-sm">{m.belge.kayit.map((x) => <li>{x}</li>)}</ul></div>
+      </div>
+      <p class="uyari mt-4 text-sm">{m.belge.not}</p>
+      <div id="taahhutname" class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+        <div><h3 class="text-xl">{m.taahhut.baslik}</h3><p class="mt-2 text-(--metin-2)">{m.taahhut.alt}</p><a href="/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf" target="_blank" rel="noopener" class="dugme dugme-ikincil mt-4"><Ikon ad="belge" class="h-4 w-4" />{m.taahhut.pdf}</a></div>
+        <ol class="kart-kagit p-5 grid gap-2 list-decimal pl-9 text-sm">{m.taahhut.liste.map((x) => <li>{x}</li>)}</ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="kariyer" class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="kariyer-baslik">
+    <h2 id="kariyer-baslik">{m.kariyer.baslik}</h2>
+    <p class="mt-2 text-(--metin-2)">{m.kariyer.alt}</p>
+    <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {m.kariyer.liste.map((k, i) => <li class="kart-kagit p-4 flex gap-3"><Ikon ad={kariyerIkon[i]} class="h-6 w-6 shrink-0 text-(--vurgu)" /><div><h3 class="text-lg leading-tight">{k.baslik}</h3><p class="mt-1 text-sm text-(--metin-2)">{k.metin}</p></div></li>)}
+    </ul>
+    <div class="bilgi mt-6 text-sm">
+      <p class="font-semibold">{m.kariyer.udyipBaslik}</p>
+      <p class="mt-1">{m.kariyer.udyip} <a href="/belgeler/uip/udyip-duyuru-2026.pdf" target="_blank" rel="noopener">{m.kariyer.udyipPdf}<span aria-hidden="true"> ↗</span></a></p>
+    </div>
+  </section>
+
+  <section id="sss" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="sss-baslik">
+    <div class="kapsayici py-10 sm:py-14">
+      <h2 id="sss-baslik">{m.sss.baslik}</h2>
+      <div class="mt-5 grid gap-2 max-w-[80ch]">
+        {m.sss.liste.map((x) => <details class="kart-kagit group px-4 py-1"><summary class="flex min-h-11 cursor-pointer items-center justify-between gap-3 py-2 font-semibold list-none [&::-webkit-details-marker]:hidden"><span>{x.s}</span><Ikon ad="ok" class="h-4 w-4 shrink-0 rotate-90 transition-transform group-open:-rotate-90" /></summary><p class="pb-3 text-sm text-(--metin-2)">{x.c}</p></details>)}
+      </div>
+    </div>
+  </section>
+
+  <section id="ekler" class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="ekler-baslik">
+    <h2 id="ekler-baslik">{m.ekler.baslik}</h2>
+    <p class="mt-2 max-w-[70ch] text-(--metin-2)">{m.ekler.alt}</p>
+    <ul class="mt-5 grid gap-3 md:grid-cols-2">
+      {m.ekler.belgeler.map((b) => <li class="kart"><a href={b.href} target="_blank" rel="noopener" class="flex gap-4 p-4 no-underline text-(--metin)"><Ikon ad="belge" class="mt-0.5 h-6 w-6 shrink-0 text-(--vurgu)" /><span class="min-w-0"><span class="block font-semibold">{b.ad}</span><span class="mt-0.5 block text-sm text-(--metin-2)">{b.aciklama}</span><span class="mono mt-1 block text-xs text-(--metin-2)">{b.boyut}</span></span></a></li>)}
+    </ul>
+    <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+      <div>
+        <h3 class="text-xl">{m.ekler.baglantiBaslik}</h3>
+        <ul class="mt-3 grid gap-1.5 text-sm">{m.ekler.baglantilar.map((b) => <li><a href={b.href} target="_blank" rel="noopener">{b.ad}<span aria-hidden="true"> ↗</span></a></li>)}</ul>
+        <h3 class="mt-6 text-xl">{m.ekler.ilgiliBaslik}</h3>
+        <p class="mt-2 max-w-[65ch] text-sm">{m.ekler.ilgili} <a href="https://diyanetburslari.tdv.org" target="_blank" rel="noopener">diyanetburslari.tdv.org<span aria-hidden="true"> ↗</span></a></p>
+      </div>
+      <div>
+        <p class="etiket">{m.ekler.afisAlt}</p>
+        <ul class="mt-3 grid grid-cols-2 gap-3 items-start">
+          {afisler.map((a) => <li><a href={a.href} data-lightbox="uip" data-caption={a.alt} class="gorsel-cerceve block overflow-hidden"><img src={a.kucuk} alt={a.alt} loading="lazy" decoding="async" width={a.w} height={a.h} class="w-full object-cover" /></a></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="iletisim" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="iletisim-baslik">
+    <div class="kapsayici py-10 sm:py-14">
+      <h2 id="iletisim-baslik">{m.iletisim.baslik}</h2>
+      <p class="mt-2 max-w-[70ch]">{m.iletisim.alt}</p>
+      <dl class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-sm">
+        <div class="kart p-4"><dt class="etiket">{m.iletisim.dinGorevlisi}</dt><dd class="mt-1"><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex min-h-11 items-center">{site.telefon.dinGorevlisi}</a></dd><dt class="etiket mt-2">{m.iletisim.cami}</dt><dd class="mt-1"><a href={tel(site.telefon.cami)} class="mono inline-flex min-h-11 items-center">{site.telefon.cami}</a></dd></div>
+        <div class="kart p-4"><dt class="etiket">{m.iletisim.adres}</dt><dd class="mt-1">{site.adres.sokak}<br />{site.adres.posta} {site.adres.sehir}</dd><dt class="etiket mt-2">{m.iletisim.eposta}</dt><dd class="mt-1"><a href={`mailto:${site.eposta}`} class="inline-flex min-h-11 items-center">{site.eposta}</a></dd></div>
+        <div class="kart p-4"><dt class="etiket">{m.iletisim.bdv}</dt><dd class="mt-1"><a href={tel(BDV_TEL)} class="mono inline-flex min-h-11 items-center">{BDV_TEL}</a><br /><a href={`mailto:${BDV_EPOSTA}`}>{BDV_EPOSTA}</a></dd><dd class="mt-1 text-(--metin-2)">{m.iletisim.mesai}</dd></div>
+        <div class="kart p-4"><dt class="etiket">{m.iletisim.musavirlik}</dt><dd class="mt-1">{m.belcika.musavirlik.adres}</dd><dd class="mt-1"><a href={tel(MUSAVIRLIK_TEL)} class="mono inline-flex min-h-11 items-center">{MUSAVIRLIK_TEL}</a></dd></div>
+      </dl>
+      <p class="mt-6 text-sm"><a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{dil === 'tr' ? 'Kur’an kursu sayfası' : dil === 'fr' ? 'Page de l’école coranique' : 'Qur’an school page'}</a> <a href={yol(dil, 'diyanet')} class="dugme dugme-ikincil">{dil === 'tr' ? 'Diyanet hizmetleri' : dil === 'fr' ? 'Services Diyanet' : 'Diyanet services'}</a></p>
+    </div>
+  </section>
+
+  <footer class="kapsayici py-8 text-xs text-(--metin-2)">
+    <p class="font-semibold">{m.kaynak.baslik}</p>
+    <p class="mt-1 max-w-[90ch]">{m.kaynak.metin}</p>
+  </footer>
+</Base>

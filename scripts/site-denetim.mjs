@@ -194,6 +194,12 @@ for (const d of ['fr', 'en']) {
      buraya degil site.yaml'a girer. */
   const disKurumTel = new Set([
     '+32498399502', // Imam-i Azam Egitim Merkezi (BDV) — 2026 hafta sonu yatili Kur'an kursu duyurusu
+    '+3225061173',  // T.C. Bruksel Buyukelciligi Sosyal Isler Musavirligi — UIP sayfasi (Musavirlik yazisi 27.02.2024)
+  ]);
+  /* Dis kurumlarin sitede gosterilen kendi e-postalari (bizim adreslerimiz site.yaml'da). */
+  const disKurumEposta = new Set([
+    'info@diyanet.be',              // Belcika Diyanet Vakfi
+    'disiliskiler@diyanet.gov.tr',  // DIB Dis Iliskiler Genel Mudurlugu — UIP kilavuzu/brosuru
   ]);
   const tanimliEposta = new Set((ayarMetni.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || []));
   // Altyapi hesabi: GitHub/Drive/Firebase sahipligi icin; sitede GOSTERILMEZ (22 Agu 2026 kurali).
@@ -225,7 +231,7 @@ for (const d of ['fr', 'en']) {
   }
   for (const [eposta, yerler] of epostaSayim) {
     if (YASAK_EPOSTA.includes(eposta)) ekle('yuksek', 'altyapi e-postasi sitede gorunuyor', `${eposta} → ${[...yerler].slice(0, 3).join(', ')}`);
-    else if (!tanimliEposta.has(eposta)) ekle('orta', 'ayarlarda tanimli olmayan e-posta', `${eposta} → ${[...yerler].slice(0, 2).join(', ')}`);
+    else if (!tanimliEposta.has(eposta) && !disKurumEposta.has(eposta)) ekle('orta', 'ayarlarda tanimli olmayan e-posta', `${eposta} → ${[...yerler].slice(0, 2).join(', ')}`);
   }
 }
 
