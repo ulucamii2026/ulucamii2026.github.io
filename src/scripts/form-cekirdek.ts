@@ -361,6 +361,15 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     });
   }
   ozetGuncelle();
+  /* Özetteki "Düzenle" çapası bölümü görünüme getirir ama tek başına odak taşımaz; klavye ve ekran
+     okuyucu kullanıcısı için hedef bölümdeki ilk alana odaklanılır (gönderim hatası kalıbıyla aynı). */
+  form.querySelector<HTMLElement>('[data-ozet]')?.addEventListener('click', (e) => {
+    const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+    if (!a) return;
+    const bolum = document.getElementById(a.getAttribute('href')!.slice(1));
+    const ilk = bolum?.querySelector<Alan>('input:not([type="hidden"]):not([tabindex="-1"]), select, textarea');
+    if (ilk) window.setTimeout(() => ilk.focus({ preventScroll: true }), 350);
+  });
   sec.hazir?.(form, verileriTopla(form));
 
   // Gönderim

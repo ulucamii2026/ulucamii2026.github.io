@@ -19,7 +19,7 @@ Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les eff
 
 ## Calendrier
 
-| | |
+| Étape | Date |
 |---|---|
 | Préinscription | 20 juin – **30 septembre 2026** (prolongée) |
 | Inscription définitive | Communiquée par e-mail aux préinscrits par la Fondation (calendrier initial : 30 août – 30 septembre 2026) |

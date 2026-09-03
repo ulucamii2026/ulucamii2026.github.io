@@ -3,6 +3,7 @@ baslik: "Centre İmam-ı Azam : inscriptions ouvertes au cours coranique en inte
 tarih: 2026-08-30
 ozet: "Le centre de formation İmam-ı Azam de la Fondation Diyanet de Belgique (Houthalen) ouvre les inscriptions 2026–2027 à son cours coranique en internat de week-end pour garçons de 12 à 17 ans. Programme de trois ans préparant à l'UİP ; frais : 175 €. Inscription sur imamiazam.org."
 kapak: /media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu.webp
+kapakKucuk: /media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu-kucuk.webp
 kapakAlt: Affiche du centre de formation İmam-ı Azam de la Fondation Diyanet de Belgique — cours coranique en internat de week-end pour les 12–17 ans, frais 175 €, contact +32 498 39 95 02, inscriptions ouvertes
 etiketler:
   - éducation

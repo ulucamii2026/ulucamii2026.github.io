@@ -95,11 +95,11 @@
 
 /* Özet */
 .ozet-liste { display: grid; gap: 0; margin: 0; border: 1px solid var(--cizgi); border-radius: calc(var(--radius-kose) * 0.6); overflow: hidden; background: var(--zemin); }
-.ozet-liste > div { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; padding: 0.7rem 0.95rem; border-top: 1px solid var(--cizgi); }
+.ozet-liste > div { display: grid; gap: 0.15rem; padding: 0.7rem 0.95rem; border-top: 1px solid var(--cizgi); }
 .ozet-liste > div:first-child { border-top: 0; }
-.ozet-liste dt { grid-column: 1; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
-.ozet-liste dd { grid-column: 1; margin: 0; font-size: 0.95rem; overflow-wrap: anywhere; }
-.ozet-liste a { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 0.82rem; font-weight: 600; color: var(--color-iznik); text-decoration: underline; text-underline-offset: 2px; }
+.ozet-liste dt { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
+.ozet-liste dd { margin: 0; font-size: 0.95rem; overflow-wrap: anywhere; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.3rem 0.75rem; }
+.ozet-liste a { font-size: 0.82rem; font-weight: 600; color: var(--vurgu-2); text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
 
 /* Mesaj, gönder, başarı */
 .ucf-mesaj { padding: 0.9rem 1rem; border-radius: calc(var(--radius-kose) * 0.6); font-weight: 600; font-size: 0.93rem; line-height: 1.45; }

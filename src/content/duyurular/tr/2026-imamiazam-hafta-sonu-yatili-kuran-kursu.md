@@ -3,6 +3,7 @@ baslik: "İmam-ı Azam Eğitim Merkezi: 12–17 Yaş Hafta Sonu Yatılı Kur’a
 tarih: 2026-08-30
 ozet: "Belçika Diyanet Vakfı’nın Houthalen’deki İmam-ı Azam Eğitim Merkezi, 12–17 yaş erkek öğrenciler için 2026–2027 hafta sonu yatılı Kur’an kursu kayıtlarını açtı. Üç yıllık program UİP’ye hazırlıktır; ücret 175 €. Kayıt imamiazam.org üzerinden; camimizden yardım alabilirsiniz."
 kapak: /media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu.webp
+kapakKucuk: /media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu-kucuk.webp
 kapakAlt: Belçika Diyanet Vakfı İmam-ı Azam Eğitim Merkezi’nin afişi — 12–17 yaş hafta sonu yatılı Kur’an kursu, ücret 175 €, irtibat +32 498 39 95 02, kayıtlar başladı
 etiketler:
   - eğitim

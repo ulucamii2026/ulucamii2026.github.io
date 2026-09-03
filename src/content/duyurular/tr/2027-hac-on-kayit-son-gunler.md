@@ -19,7 +19,7 @@ Kayıtlar **yalnızca çevrimiçi** olarak alınıyor. İşlemi hacı adayı ken
 
 ## Takvim
 
-| | |
+| Aşama | Tarih |
 |---|---|
 | Ön kayıt | 20 Haziran – **30 Eylül 2026** (uzatıldı) |
 | Kesin kayıt | Ön kayıt yapanlara Belçika Diyanet Vakfı e-posta ile bildirir (ilk duyurudaki takvim: 30 Ağustos – 30 Eylül 2026) |

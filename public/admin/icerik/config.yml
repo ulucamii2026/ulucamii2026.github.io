@@ -64,6 +64,7 @@ collections:
       - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, i18n: duplicate }
       - { name: ozet, label: Özet (liste ve paylaşım metni), widget: text, required: false, i18n: true, hint: "En fazla 300 karakter.", pattern: ["^[\\s\\S]{0,300}$", "En fazla 300 karakter"] }
       - { name: kapak, label: Kapak görseli, widget: image, required: false, i18n: duplicate, media_folder: public/media/duyurular, public_folder: /media/duyurular }
+      - { name: kapakKucuk, label: "Kapak görseli küçük hâli (isteğe bağlı, liste kartları için ~740 px)", widget: image, required: false, i18n: duplicate, media_folder: public/media/duyurular, public_folder: /media/duyurular, hint: "Boşsa kartlarda büyük kapak kullanılır." }
       - { name: kapakAlt, label: Görsel açıklaması (erişilebilirlik), widget: string, required: false, i18n: true }
       - name: galeri
         label: Fotoğraf galerisi

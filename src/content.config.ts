@@ -12,6 +12,7 @@ const duyurular = defineCollection({
     tarih: z.coerce.date(),
     ozet: z.string().max(300).optional(),
     kapak: z.string().optional(),
+    kapakKucuk: z.string().optional(),
     kapakAlt: z.string().optional(),
     galeri: z.array(z.object({ dosya: z.string(), kucuk: z.string().optional(), alt: z.string().optional() })).default([]),
     etiketler: z.array(z.string()).default([]),

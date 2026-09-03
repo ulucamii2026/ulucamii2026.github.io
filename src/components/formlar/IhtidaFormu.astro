@@ -261,7 +261,7 @@ const metinJson = JSON.stringify({
         ['durum', h.ozet.durum, '#b-durum'], ['iletisim', h.ozet.iletisim, '#b-iletisim'], ['din', h.ozet.din, '#b-ihtida'],
         ['toren', h.ozet.toren, '#b-ihtida'], ['sahitler', h.ozet.sahitler, '#b-ihtida'],
       ] as const).map(([anahtar, etiket, hedef]) => (
-        <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd data-ozet-deger>{o.bosDeger}</dd><a href={hedef}>{o.ozetDuzenle}</a></div>
+        <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd><span data-ozet-deger>{o.bosDeger}</span> <a href={hedef}>{o.ozetDuzenle}</a></dd></div>
       ))}
     </dl>
     <div class="ucf-not mt-5">

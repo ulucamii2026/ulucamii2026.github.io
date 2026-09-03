@@ -24,7 +24,7 @@ const enNotu = 'Announcements are published in Turkish and French. An English ve
       <section id={`yil-${y}`} data-yil={y} class="[&:not([hidden])~&:not([hidden])]:mt-12">
         <h2 class="etiket etiket-vurgu text-base cetvel pt-3 mb-4">{y}{idx > 0 && <span class="ml-2 text-(--metin-2)">· {arsivNot}</span>}</h2>
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {liste.filter((d) => d.data.tarih.getFullYear() === y).map((d, i) => <DuyuruKarti dil={dil} slug={d.slug} baslik={d.data.baslik} tarih={d.data.tarih} ozet={d.data.ozet} kapak={d.data.kapak} kapakAlt={d.data.kapakAlt} etiketler={d.data.etiketler} sira={i} />)}
+          {liste.filter((d) => d.data.tarih.getFullYear() === y).map((d, i) => <DuyuruKarti dil={dil} slug={d.slug} baslik={d.data.baslik} tarih={d.data.tarih} ozet={d.data.ozet} kapak={d.data.kapak} kapakKucuk={d.data.kapakKucuk} kapakAlt={d.data.kapakAlt} etiketler={d.data.etiketler} sira={i} />)}
         </div>
       </section>
     ))}

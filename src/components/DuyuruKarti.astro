@@ -2,13 +2,13 @@
 import { tarihBicimle, yol, ceviri, normalizeAra } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 /** `sira`: ızgaradaki kardeş sırası — verilirse kart kaydırma-belirmeye katılır (60 ms basamak). */
-interface Props { dil: Dil; slug: string; baslik: string; tarih: Date; ozet?: string; kapak?: string; kapakAlt?: string; etiketler?: string[]; sira?: number }
-const { dil, slug, baslik, tarih, ozet, kapak, kapakAlt = '', etiketler = [], sira } = Astro.props;
+interface Props { dil: Dil; slug: string; baslik: string; tarih: Date; ozet?: string; kapak?: string; kapakKucuk?: string; kapakAlt?: string; etiketler?: string[]; sira?: number }
+const { dil, slug, baslik, tarih, ozet, kapak, kapakKucuk, kapakAlt = '', etiketler = [], sira } = Astro.props;
 const t = ceviri(dil);
 const href = yol(dil, 'duyurular', slug);
 ---
 <article class:list={['kart overflow-hidden flex flex-col', sira !== undefined && 'reveal']} style={sira === undefined ? undefined : `--i:${sira % 3}`} data-arama={normalizeAra(`${baslik} ${ozet ?? ''}`)}>
-  {kapak && <a href={href} class="block aspect-[16/9] overflow-hidden border-b border-(--cizgi)"><img src={kapak} alt={kapakAlt} loading="lazy" class="h-full w-full object-cover" /></a>}
+  {kapak && <a href={href} class="block aspect-[16/9] overflow-hidden border-b border-(--cizgi)"><img src={kapakKucuk ?? kapak} alt={kapakAlt} loading="lazy" class="h-full w-full object-cover" /></a>}
   <div class="p-5 flex flex-col gap-2 flex-1">
     <p class="etiket"><time datetime={tarih.toISOString()}>{tarihBicimle(tarih, dil)}</time>{etiketler.length > 0 && <span> · {etiketler.join(' · ')}</span>}</p>
     <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>

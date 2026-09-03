@@ -12,7 +12,7 @@ const tarihStr = bitis && bitis.getTime() !== baslangic.getTime()
   : tarihBicimle(baslangic, dil);
 ---
 <article class:list={['kart overflow-hidden flex flex-col', sira !== undefined && 'reveal']} style={sira === undefined ? undefined : `--i:${sira % 3}`}>
-  {kapak && <a href={href} class="block bg-(--zemin-3) border-b border-(--cizgi)"><img src={kapak} alt={baslik} loading="lazy" class="w-full h-auto max-h-[420px] object-contain" /></a>}
+  {kapak && <a href={href} class="block aspect-[16/9] bg-(--zemin-3) border-b border-(--cizgi) overflow-hidden"><img src={kapak} alt={baslik} loading="lazy" class="w-full h-full object-contain" /></a>}
   <div class="p-5 flex flex-col gap-2 flex-1">
     <p class="etiket">{kategori && kategori !== 'genel' && <span class="etiket-vurgu">{t(`kategori.${kategori}` as any)} · </span>}<time datetime={baslangic.toISOString()}>{tarihStr}</time>{saat && <span> · {saat}</span>}</p>
     <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>
