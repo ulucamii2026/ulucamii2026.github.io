@@ -30,7 +30,7 @@ The location map on this site is loaded from the servers of the OpenStreetMap Fo
 
 ## Embedded Videos (YouTube)
 
-Some pages (for example the International Theology Programme presentation) contain YouTube videos. These videos are **not loaded** when the page opens: only a local cover image and a play button are shown. When you press play, the video is loaded from YouTube’s privacy-enhanced domain (youtube-nocookie.com) and from that moment your IP address is transmitted to Google; this processing is subject to Google’s own privacy rules. As long as you do not press the button, no request is sent to YouTube. Videos served from our own server (for example the UİP introductory film) are likewise loaded only when you press play, and no request is sent to any third party.
+Some pages (for example the International Theology Programme presentation) contain YouTube videos. These videos are **not loaded** when the page opens: only a local cover image and a play button are shown. When you press play, the video is loaded from YouTube’s privacy-enhanced domain (youtube-nocookie.com) and from that moment your IP address is transmitted to Google; this processing is subject to Google’s own privacy rules. As long as you do not press the button, no request is sent to YouTube. The UİP introductory film is served from the Diyanet Foundation of Belgium’s server (diyanet.be): it is likewise loaded only when you press play, and from that moment your IP address is transmitted to diyanet.be; this processing is subject to the Foundation’s own privacy policy.
 
 ## Qur’an School Online Registration Form
 

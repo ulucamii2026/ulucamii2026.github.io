@@ -28,6 +28,7 @@ export const en: UipMetin = {
     baslik: 'Promotional film',
     alt: 'The UİP promotional film produced by the Presidency of Religious Affairs (Diyanet); the version published on the homepage of the Diyanet Foundation of Belgium (diyanet.be). The video only loads once you press play.',
     kaynak: 'Source: Presidency of Religious Affairs (Diyanet) · diyanet.be · 9 min',
+    sunucu: 'The video streams from the Diyanet Foundation of Belgium’s server (diyanet.be); nothing is downloaded until you press play. The file is high definition (1080p, about 560 MB): on mobile data, Wi-Fi is recommended.',
     digerBaslik: 'Other videos',
     tdv: 'Turkish Diyanet Foundation (TDV) — International Theology Programme',
     diyanettv: 'Diyanet TV — A New Session for the International Theology Programme',
@@ -252,6 +253,7 @@ export const en: UipMetin = {
     alt: 'Young people interested in the programme and their families are welcome to visit our mosque or call our imam. The meeting is free of charge; act early for the letter of recommendation.',
     dinGorevlisi: 'Imam', cami: 'Mosque', adres: 'Address', bdv: 'Diyanet Foundation of Belgium', musavirlik: 'Office of the Social Affairs Counsellor', eposta: 'Email', mesai: 'weekdays 9:00 am–12:30 pm / 2:00–5:00 pm',
   },
+  nav: { buSayfada: 'ON THIS PAGE', icindekiler: 'Contents', basaDon: 'Back to top' },
   kaynak: {
     baslik: 'Sources',
     metin: 'The information on this page has been compiled from the Presidency of Religious Affairs’ (Diyanet) 2026 UİP Presentation and Application Guide (40 pp.), the 2026 UİP brochures (FR/EN/DE), the letter circulated by the Office of the Social Affairs Counsellor at the Embassy of Türkiye in Brussels dated 27 February 2024, the UDYİP 2026 announcement, and diyanet.be (accessed 3 September 2026). Requirements and dates may change each year with a new guide; Diyanet’s current guide is the authoritative source.',

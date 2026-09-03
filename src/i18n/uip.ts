@@ -27,6 +27,8 @@ export interface UipMetin {
   sss: { baslik: string; liste: Array<{ s: string; c: string }> };
   ekler: { baslik: string; alt: string; belgeler: Array<{ ad: string; aciklama: string; href: string; boyut: string }>; baglantiBaslik: string; baglantilar: Array<{ ad: string; href: string }>; ilgiliBaslik: string; ilgili: string; afisAlt: string; afisUip: string; afisBurs: string };
   iletisim: { baslik: string; alt: string; dinGorevlisi: string; cami: string; adres: string; bdv: string; musavirlik: string; eposta: string; mesai: string };
+  video: { baslik: string; alt: string; kaynak: string; sunucu: string; digerBaslik: string; tdv: string; diyanettv: string; eksen: string };
+  nav: { buSayfada: string; icindekiler: string; basaDon: string };
   kaynak: { baslik: string; metin: string };
 }
 
@@ -53,6 +55,7 @@ export const tr: UipMetin = {
     baslik: 'Tanıtım filmi',
     alt: 'Diyanet İşleri Başkanlığının UİP tanıtım filmi; Belçika Diyanet Vakfı’nın (diyanet.be) ana sayfasında yayımlanan sürüm. Video, siz oynatana kadar yüklenmez.',
     kaynak: 'Kaynak: Diyanet İşleri Başkanlığı · diyanet.be · 9 dk',
+    sunucu: 'Video, Belçika Diyanet Vakfı’nın sunucusundan (diyanet.be) yüklenir; oynatana kadar hiçbir veri inmez. Dosya yüksek çözünürlüklü (1080p, yaklaşık 560 MB): mobil veride Wi-Fi önerilir.',
     digerBaslik: 'Diğer videolar',
     tdv: 'Türkiye Diyanet Vakfı — Uluslararası İlahiyat Programı',
     diyanettv: 'Diyanet TV — Uluslararası İlahiyat’ta Yeni Dönem',
@@ -277,6 +280,7 @@ export const tr: UipMetin = {
     alt: 'Programla ilgilenen gençler ve aileleri camimize gelebilir ya da din görevlimizi arayabilir. Görüşme ücretsizdir; tavsiye mektubu için erken davranın.',
     dinGorevlisi: 'Din görevlisi', cami: 'Cami', adres: 'Adres', bdv: 'Belçika Diyanet Vakfı', musavirlik: 'Sosyal İşler Müşavirliği', eposta: 'E-posta', mesai: 'hafta içi 09.00–12.30 / 14.00–17.00',
   },
+  nav: { buSayfada: 'BU SAYFADA', icindekiler: 'İçindekiler', basaDon: 'Başa dön' },
   kaynak: {
     baslik: 'Kaynaklar',
     metin: 'Bu sayfadaki bilgiler T.C. Diyanet İşleri Başkanlığının 2026 UİP Tanıtım ve Başvuru Kılavuzu (40 s.), 2026 UİP broşürleri (FR/EN/DE), T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliğinin 27 Şubat 2024 tarihli dağıtım yazısı, UDYİP 2026 duyurusu ve diyanet.be’den derlenmiştir (erişim: 3 Eylül 2026). Şartlar ve tarihler her yıl yeni kılavuzla değişebilir; bağlayıcı olan Diyanet’in güncel kılavuzudur.',

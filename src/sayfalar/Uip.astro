@@ -4,9 +4,11 @@
  * Metin: src/i18n/uip.ts (tr) + uip-fr.ts + uip-en.ts — kılavuz sayfa atıflı, tutar/2027 tarihi yazılmaz.
  * Dönem tarihleri: src/lib/etkinlik-tarihleri.ts (UIP_*) — sayfa her gece yeniden derlendiği için
  * "başvurular açık / kapandı / yakında" bandı kendiliğinden değişir.
- * Video: diyanet.be ana sayfasındaki Diyanet tanıtım filmi, web için 540p'ye dönüştürülüp kendi
- * sunucumuzdan verilir (preload=none → ziyaretçi oynatmadan tek bayt inmez); YouTube'daki diğer
- * iki video tıkla-yükle cephesiyle (VideoCephe) gömülür. */
+ * Video: UİP tanıtım filmi Belçika Diyanet Vakfı'nın (diyanet.be) sunucusundan dış kaynak olarak
+ * akıtılır (1080p, ~560 MB) — Pages trafiğini korumak için kopyası barındırılmaz; tıkla-yükle
+ * cephesi (VideoCephe) sayesinde oynatılmadan tek bayt inmez. YouTube'daki diğer iki video da aynı
+ * cepheyle gömülür.
+ * Sayfa içi gezinme: «BU SAYFADA» içindekiler kartı + kart geçilince beliren sabit bölüm çubuğu. */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import VideoCephe from '../components/VideoCephe.astro';
@@ -35,6 +37,9 @@ const kanonikUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const waMetin = `${m.baslik} — ${kanonikUrl}`;
 const waEtiket = dil === 'tr' ? "WhatsApp'ta paylaş" : dil === 'en' ? 'Share on WhatsApp' : 'Partager sur WhatsApp';
 const kariyerIkon = ['cami', 'kurs', 'dunya', 'belge', 'mezuniyet', 'kurs'] as const;
+/** Tanıtım filmi — Belçika Diyanet Vakfı'nın ana sayfasındaki dosya (1080p, ~560 MB, moov sonda; sunucu Range destekliyor) */
+const FILM = 'https://www.diyanet.be/portals/0/uip/sinevizyon.mov';
+const bolumBag = 'inline-flex min-h-9 w-full items-center gap-3 no-underline text-(--metin) hover:text-(--vurgu) hover:underline';
 const bolumler: Array<[string, string]> = [
   ['video', m.video.baslik], ['nedir', m.nedir.baslik], ['imkanlar', m.imkan.baslik], ['fakulteler', m.fakulte.baslik],
   ['sartlar', m.sart.baslik], ['takvim', doldur(m.takvim.baslik)], ['basvuru', m.adim.baslik], ['belcika', m.belcika.baslik],
@@ -51,17 +56,6 @@ const afisler = [
 ---
 <Base baslik={m.baslik} dil={dil} aciklama={m.metaAciklama} kapak={OG} kapakAlt={m.baslik} ekJsonLd={[sssJsonLd]}>
   <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} kapak="/media/uip/uip-kapak.webp" />
-
-  <nav aria-label={dil === 'tr' ? 'Sayfa bölümleri' : dil === 'fr' ? 'Sections de la page' : 'Page sections'} class="uip-nav border-b border-(--cizgi) bg-(--zemin)">
-    <div class="kapsayici relative">
-      <ul class="flex gap-x-5 gap-y-1 overflow-x-auto whitespace-nowrap py-2.5 text-sm [scrollbar-width:thin]">
-        {bolumler.map(([id, ad]) => <li class="shrink-0"><a href={`#${id}`} class="inline-flex min-h-9 items-center no-underline text-(--metin-2) hover:text-(--vurgu) hover:underline">{ad}</a></li>)}
-      </ul>
-      {/* Kaydırılabilir listenin sağ kenarında sabit soluklaşma: mobilde son öğenin ortadan kesik
-          görünmesi kaydırılabilir olduğuna dair tek ipucuydu; JS gerektirmeyen statik çözüm. */}
-      <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-(--zemin) to-transparent"></div>
-    </div>
-  </nav>
 
   <div class="kapsayici py-8 sm:py-10 reveal">
     <div class={durum === 'acik' ? 'uyari' : 'bilgi'} role="status">
@@ -81,6 +75,39 @@ const afisler = [
           Standard) ihlal etme riskini kökten kaldırır. */}
       {m.ozet.map((o) => <div class="kart-kagit px-4 py-4"><p class="font-serif text-3xl font-bold leading-none text-(--vurgu)">{o.sayi}</p><p class="mt-1.5 font-semibold">{o.ad}</p><p class="text-sm text-(--metin-2)">{o.not}</p></div>)}
     </div>
+    {/* İçindekiler kartı (3 Eyl 2026): eski yatay kaydırmalı şerit 13 öğeyi sığdıramıyor, kaydırma çubuğu
+        çirkin duruyordu (Rıdvan). Yerine sütunlu numaralı liste; kart görünümden çıkınca aşağıdaki ince
+        çubuk belirir (bulunulan bölüm + aynı listeyi açan menü + başa dön). */}
+    <nav id="icindekiler" class="kart-kagit mt-6 px-5 py-4 sm:px-6" aria-labelledby="icindekiler-baslik" data-icindekiler>
+      <p id="icindekiler-baslik" class="mono text-xs tracking-[0.18em] text-(--vurgu)">{m.nav.buSayfada}</p>
+      {/* CSS çok sütun (grid değil): grid'de iki satıra sarılan bir başlık aynı satırdaki kısa komşuların altında
+          boşluk bırakıyordu; sütunlar bağımsız akar ve numaralı liste kitap içindekileri gibi yukarıdan aşağı okunur. */}
+      <ol class="mt-2 columns-1 gap-x-8 text-sm sm:columns-2 lg:columns-3" data-bolum-listesi>
+        {bolumler.map(([id, ad], i) => <li class="break-inside-avoid"><a href={`#${id}`} data-ad={ad} class={bolumBag}><span aria-hidden="true" class="mono w-5 shrink-0 text-xs text-(--vurgu)">{String(i + 1).padStart(2, '0')}</span>{ad}</a></li>)}
+      </ol>
+    </nav>
+  </div>
+
+  <div class="uip-cubuk fixed inset-x-0 z-20 border-b border-(--cizgi) bg-(--zemin)/95 backdrop-blur" data-uip-cubuk data-gorunur="0">
+    <div class="kapsayici flex items-center justify-between gap-3 py-1">
+      <details class="bolum-menu relative min-w-0" data-bolum-menu>
+        <summary class="inline-flex min-h-10 max-w-full cursor-pointer list-none items-center gap-2 text-sm">
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="shrink-0 text-(--vurgu)"><path d="M3 5h14M3 10h14M3 15h9"/></svg>
+          <span class="mono shrink-0 text-xs text-(--vurgu)" data-cubuk-no>01</span>
+          <span class="truncate font-medium" data-cubuk-ad>{bolumler[0][1]}</span>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cevir shrink-0 transition-transform"><path d="M5 8l5 5 5-5"/></svg>
+          <span class="sr-only">· {m.nav.icindekiler}</span>
+        </summary>
+        <div class="kart-kagit absolute left-0 top-full mt-2 w-[min(calc(100vw-2rem),40rem)] p-4 shadow-xl">
+          <p class="mono text-xs tracking-[0.18em] text-(--vurgu)">{m.nav.buSayfada}</p>
+          <ol class="mt-2 columns-1 gap-x-6 text-sm sm:columns-2" data-bolum-listesi>
+            {bolumler.map(([id, ad], i) => <li class="break-inside-avoid"><a href={`#${id}`} data-ad={ad} class={bolumBag}><span aria-hidden="true" class="mono w-5 shrink-0 text-xs text-(--vurgu)">{String(i + 1).padStart(2, '0')}</span>{ad}</a></li>)}
+          </ol>
+        </div>
+      </details>
+      {/* Dar ekranda yalnız ok (40×40 dokunma hedefi); etiket ekran okuyucuya kalır, sm+ görünür — bölüm adına yer açar. */}
+      <a href="#top" class="inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center gap-1 text-sm text-(--metin-2) no-underline hover:text-(--vurgu) hover:underline"><span aria-hidden="true">↑</span><span class="sr-only sm:not-sr-only">{m.nav.basaDon}</span></a>
+    </div>
   </div>
 
   <section id="video" class="kapsayici pb-10 sm:pb-14 reveal" aria-labelledby="video-baslik">
@@ -88,7 +115,9 @@ const afisler = [
     <p class="mt-2 max-w-[70ch] text-(--metin-2)">{m.video.alt}</p>
     <div class="mt-5">
       {/* Kapak: filmin kütüphane karesi üstüne tasarlanmış üç dilli kapak (scratchpad uip_kapak.py); başlık kapakta olduğu için kapakYazili */}
-      <VideoCephe src="/media/uip/uip-tanitim-filmi-540p.mp4" baslik={`${m.baslik} · ${m.video.baslik}`} poster={`/media/uip/video-kapak-${dil}.webp`} dil={dil} altyazi={m.video.kaynak} kapakYazili />
+      {/* Film diyanet.be'nin sunucusundan (Rıdvan, 3 Eyl 2026: kendi 33 MB'lık 540p kopyamız Pages trafiğimizi tüketmesin);
+          .mov (H.264/AAC, Range destekli) Chromium/Firefox/WebKit'te doğrulandı. Kapak bizde kalır. */}
+      <VideoCephe src={FILM} baslik={`${m.baslik} · ${m.video.baslik}`} poster={`/media/uip/video-kapak-${dil}.webp`} dil={dil} altyazi={m.video.kaynak} not={m.video.sunucu} kapakYazili />
     </div>
     <h3 class="mt-8 text-xl">{m.video.digerBaslik}</h3>
     <div class="mt-3 grid gap-5 md:grid-cols-2">
@@ -277,33 +306,80 @@ const afisler = [
 </Base>
 
 <script>
-  // Bölüm-içi gezinme (nav) site başlığının altına sabitlenir; başlık ve nav yüksekliği
-  // dile/ekran genişliğine göre değiştiği için ölçülüp CSS değişkenine yazılır
-  // (aynı desen: src/sayfalar/YillikPlan.astro, .cubuk/--yp-ust).
-  const nav = document.querySelector<HTMLElement>('.uip-nav');
-  if (nav) {
+  // Bölüm çubuğu: içindekiler kartı görünür alandan çıkınca site başlığının altında belirir; kaydırdıkça
+  // bulunulan bölümün numarası/adı güncellenir ve her iki listede aria-current işaretlenir (scroll-spy).
+  // Site başlığının yüksekliği dile/genişliğe göre değiştiği için ölçülüp --yp-ust'a yazılır
+  // (aynı desen: src/sayfalar/YillikPlan.astro). JS yoksa çubuk hiç görünmez; içindekiler kartı yeter.
+  const cubuk = document.querySelector<HTMLElement>('[data-uip-cubuk]');
+  const kart = document.querySelector<HTMLElement>('[data-icindekiler]');
+  if (cubuk && kart) {
     const kok = document.documentElement;
+    const listeler = Array.from(document.querySelectorAll<HTMLElement>('[data-bolum-listesi]'));
+    const bagler = listeler.map((l) => Array.from(l.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')));
+    const bolumler = bagler[0].map((a) => document.getElementById(a.getAttribute('href')!.slice(1))).filter((e): e is HTMLElement => !!e);
+    const no = cubuk.querySelector<HTMLElement>('[data-cubuk-no]');
+    const ad = cubuk.querySelector<HTMLElement>('[data-cubuk-ad]');
+    const menu = cubuk.querySelector<HTMLDetailsElement>('[data-bolum-menu]');
+    let ust = 79;
     const olc = () => {
       const bas = document.querySelector<HTMLElement>('body > header');
-      kok.style.setProperty('--yp-ust', (bas ? bas.offsetHeight : 79) + 'px');
-      kok.style.setProperty('--uip-nav', nav.offsetHeight + 'px');
+      ust = bas ? bas.offsetHeight : 79;
+      kok.style.setProperty('--yp-ust', ust + 'px');
     };
-    olc();
-    addEventListener('resize', olc, { passive: true });
+    let simdiki = -2;
+    const guncelle = () => {
+      cubuk.dataset.gorunur = kart.getBoundingClientRect().bottom < ust ? '1' : '0';
+      if (cubuk.dataset.gorunur === '0' && menu?.open) menu.open = false; // gizlenirken açık menü de kapanır (odak body'ye düşmesin)
+      const esik = ust + cubuk.offsetHeight + 12;
+      // Eşiği geçmiş en aşağıdaki bölüm; masaüstünde yan yana duran Şartlar/Takvim gibi eşit üst
+      // kenarlı bölümlerde ilki kazanır (katı büyüktür), yoksa sağdaki sütun soldakini gölgeler.
+      let i = -1, enUst = -Infinity;
+      bolumler.forEach((b, k) => { const t = b.getBoundingClientRect().top; if (t <= esik && t > enUst) { enUst = t; i = k; } });
+      if (i === simdiki) return;
+      simdiki = i;
+      const g = Math.max(i, 0);
+      if (no) no.textContent = String(g + 1).padStart(2, '0');
+      if (ad) ad.textContent = bagler[0][g]?.dataset.ad ?? '';
+      bagler.forEach((liste) => liste.forEach((a, k) => { if (k === i) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); }));
+    };
+    let bekliyor = false;
+    const tetik = () => { if (bekliyor) return; bekliyor = true; requestAnimationFrame(() => { bekliyor = false; guncelle(); }); };
+    olc(); guncelle();
+    addEventListener('scroll', tetik, { passive: true });
+    // Site başlığının yüksekliği yalnız pencere boyutuyla değil, mobil menü açılınca da değişir (resize olayı
+    // gelmez) → ResizeObserver; desteklenmeyen tarayıcıda resize dinleyicisi.
+    const bas = document.querySelector<HTMLElement>('body > header');
+    if (bas && 'ResizeObserver' in window) new ResizeObserver(() => { olc(); tetik(); }).observe(bas);
+    else addEventListener('resize', () => { olc(); tetik(); }, { passive: true });
+    if (menu) {
+      // Açılır liste: bağlantıya tıklayınca, Escape'te ve dışına tıklayınca kapanır.
+      menu.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) menu.open = false; });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector<HTMLElement>('summary')?.focus(); } });
+      document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target as Node)) menu.open = false; });
+    }
   }
 </script>
 <style>
-  /* Sabit site başlığının altına yapışan bölüm-içi gezinme (nav) — --yp-ust script'te ölçülür. */
-  .uip-nav { position: sticky; top: var(--yp-ust, 79px); z-index: 20; }
-  /* Nav sticky olduğundan, tıklanan bölüm başlığı hem site başlığının hem de nav'ın arkasında kalmasın. */
+  /* Bölüm çubuğu sabit (fixed) ve site başlığının hemen altında; --yp-ust script'te ölçülür. Gizliyken
+     yukarı kayar ve görünmez olur (visibility: sekme sırasından da çıkar). */
+  .uip-cubuk { top: var(--yp-ust, 79px); transition: transform .25s ease, visibility .25s; }
+  .uip-cubuk[data-gorunur="0"] { transform: translateY(-110%); visibility: hidden; }
+  @media (prefers-reduced-motion: reduce) { .uip-cubuk { transition: none; } }
+  .bolum-menu > summary::-webkit-details-marker { display: none; }
+  /* Açılır liste sabit çubuğun içinde; kısa/yatay ekranlarda görünür alanı aşmasın, kendi içinde kaysın. */
+  .bolum-menu > div { max-height: calc(100dvh - var(--yp-ust, 79px) - 4.5rem); overflow-y: auto; }
+  .bolum-menu[open] > summary .cevir { transform: rotate(180deg); }
+  [data-bolum-listesi] a[aria-current="true"] { color: var(--vurgu); font-weight: 600; }
+  /* Tıklanan bölüm başlığı site başlığının ve çubuğun (48 px + pay) arkasında kalmasın. */
   #video, #nedir, #imkanlar, #fakulteler, #sartlar, #takvim, #basvuru, #belcika, #belgeler, #kariyer, #sss, #ekler, #iletisim {
-    scroll-margin-top: calc(var(--yp-ust, 79px) + var(--uip-nav, 45px));
+    scroll-margin-top: calc(var(--yp-ust, 79px) + 56px);
   }
   /* Yazdırmada sabit başlık/altbilgi, video ve sekme-nav kaldırılır; şartlar/takvim/belgeler bölünmeden kalır.
      Header/Footer Base.astro'da render edildiğinden (bu sayfanın kendi kapsamı dışında), :global() gerekir. */
   @media print {
     :global(header.vt-baslik), :global(footer.vt-altbilgi), :global(.kilim-serit), :global(#tema-dugme), :global(#menu-dugme) { display: none !important; }
-    #video, .uip-nav { display: none !important; }
+    /* İçindekiler kartı yazdırmada kalır (baskıda genel bakış işe yarar); sabit çubuk ve video kaldırılır. */
+    #video, .uip-cubuk { display: none !important; }
     #sartlar, #takvim, #belgeler { break-inside: avoid; }
   }
 </style>

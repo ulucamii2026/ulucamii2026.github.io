@@ -30,7 +30,7 @@ Sitedeki konum haritası, OpenStreetMap Vakfı’nın sunucularından yüklenir.
 
 ## Gömülü Videolar (YouTube)
 
-Bazı sayfalarımızda (örneğin Uluslararası İlahiyat Programı tanıtımı) YouTube videoları yer alır. Bu videolar sayfa açıldığında **yüklenmez**: yalnız yerel bir kapak görseli ve oynat düğmesi gösterilir. Oynat düğmesine bastığınızda video, YouTube’un gizlilik güçlendirilmiş alanından (youtube-nocookie.com) yüklenir ve o andan itibaren IP adresiniz Google’a iletilir; bu işlem Google’ın kendi gizlilik kurallarına tabidir. Düğmeye basmadığınız sürece YouTube’a hiçbir istek gitmez. Kendi sunucumuzdan sunduğumuz videolar (örneğin UİP tanıtım filmi) da aynı şekilde ancak oynat düğmesine bastığınızda yüklenir ve hiçbir üçüncü tarafa istek gönderilmez.
+Bazı sayfalarımızda (örneğin Uluslararası İlahiyat Programı tanıtımı) YouTube videoları yer alır. Bu videolar sayfa açıldığında **yüklenmez**: yalnız yerel bir kapak görseli ve oynat düğmesi gösterilir. Oynat düğmesine bastığınızda video, YouTube’un gizlilik güçlendirilmiş alanından (youtube-nocookie.com) yüklenir ve o andan itibaren IP adresiniz Google’a iletilir; bu işlem Google’ın kendi gizlilik kurallarına tabidir. Düğmeye basmadığınız sürece YouTube’a hiçbir istek gitmez. UİP tanıtım filmi ise Belçika Diyanet Vakfı’nın sunucusundan (diyanet.be) sunulur: yine yalnız oynat düğmesine bastığınızda yüklenir ve o andan itibaren IP adresiniz diyanet.be’ye iletilir; bu işlem vakfın kendi gizlilik kurallarına tabidir.
 
 ## Kur’an Kursu Online Kayıt Formu
 

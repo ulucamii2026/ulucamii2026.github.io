@@ -28,6 +28,7 @@ export const fr: UipMetin = {
     baslik: 'Film de présentation',
     alt: 'Le film de présentation de l’UİP réalisé par la Présidence des Affaires religieuses (Diyanet) ; la version publiée sur la page d’accueil de la Fondation Diyanet de Belgique (diyanet.be). La vidéo ne se charge que lorsque vous la lancez.',
     kaynak: 'Source : Présidence des Affaires religieuses (Diyanet) · diyanet.be · 9 min',
+    sunucu: 'La vidéo est lue depuis le serveur de la Fondation Diyanet de Belgique (diyanet.be) ; rien n’est téléchargé avant la lecture. Le fichier est en haute définition (1080p, environ 560 Mo) : en données mobiles, le Wi-Fi est recommandé.',
     digerBaslik: 'Autres vidéos',
     tdv: 'Fondation Diyanet de Turquie (TDV) — Programme international de théologie',
     diyanettv: 'Diyanet TV — Une nouvelle session pour le Programme international de théologie',
@@ -252,6 +253,7 @@ export const fr: UipMetin = {
     alt: 'Les jeunes intéressés par le programme et leurs familles peuvent se rendre à notre mosquée ou appeler notre imam. L’entretien est gratuit ; pour la lettre de recommandation, agissez tôt.',
     dinGorevlisi: 'Imam', cami: 'Mosquée', adres: 'Adresse', bdv: 'Fondation Diyanet de Belgique', musavirlik: 'Bureau du Conseiller aux Affaires sociales', eposta: 'E-mail', mesai: 'en semaine, 9h00–12h30 / 14h00–17h00',
   },
+  nav: { buSayfada: 'SUR CETTE PAGE', icindekiler: 'Sommaire', basaDon: 'Haut de page' },
   kaynak: {
     baslik: 'Sources',
     metin: 'Les informations de cette page ont été compilées à partir du Guide de présentation et de candidature UİP 2026 de la Présidence des Affaires religieuses (Diyanet) (40 p.), des brochures UİP 2026 (FR/EN/DE), de la lettre de diffusion du Bureau du Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles datée du 27 février 2024, de l’annonce UDYİP 2026 et du site diyanet.be (consulté le 3 septembre 2026). Les conditions et les dates peuvent changer chaque année avec le nouveau guide ; seul le guide actuel du Diyanet fait foi.',
