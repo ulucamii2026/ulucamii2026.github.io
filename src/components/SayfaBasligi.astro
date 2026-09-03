@@ -4,7 +4,7 @@ interface Props { etiket?: string; baslik: string; altBaslik?: string; kapak?: s
 const { etiket, baslik, altBaslik, kapak, kapakAlt = '' } = Astro.props;
 ---
 <header class="relative border-b border-(--cizgi) bg-(--zemin-2) overflow-hidden">
-  {kapak && <img src={kapak} alt={kapakAlt} class="absolute inset-0 h-full w-full object-cover opacity-20 [filter:sepia(.3)_saturate(1.1)]" loading="eager" />}
+  {kapak && <img src={kapak} alt={kapakAlt} class="absolute inset-0 h-full w-full object-cover opacity-20 [filter:sepia(.3)_saturate(1.1)]" loading="eager" fetchpriority="high" />}
   <div class="kapsayici relative py-12 sm:py-16">
     {etiket && <p class="etiket etiket-vurgu mb-2">{etiket}</p>}
     <h1>{baslik}</h1>

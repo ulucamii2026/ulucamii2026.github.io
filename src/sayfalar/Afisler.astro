@@ -3,8 +3,9 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import { ceviri, tarihBicimle } from '../i18n/utils';
-import type { Dil } from '../i18n/ui';
+import { ceviri, tarihBicimle, yol } from '../i18n/utils';
+import { yollar } from '../i18n/ui';
+import type { Dil, SayfaAnahtari } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
@@ -34,13 +35,13 @@ const kategoriler = [...new Set(liste.map((a) => a.data.kategori))].sort((a, b) 
 
 const m = dil === 'tr' ? {
   altBaslik: 'Camimizin kampanya ve program afişleri; Belçika Diyanet Vakfı’nın hac, umre, kurban, zekât-fitre ve eğitim afişlerinden bir seçki. Bir afişe dokunarak büyütebilirsiniz.',
-  hepsi: 'Tümü', dis: 'Bağlantı ↗',
+  hepsi: 'Tümü', dis: 'Bağlantı ↗', sayfa: 'Sayfaya git →',
 } : dil === 'en' ? {
   altBaslik: 'Campaign and programme posters from our mosque, alongside a selection of posters from the Diyanet Foundation of Belgium (hajj, omra, sacrifice, zakât-fitre, education). Tap a poster to enlarge it.',
-  hepsi: 'All', dis: 'Link ↗',
+  hepsi: 'All', dis: 'Link ↗', sayfa: 'Go to page →',
 } : {
   altBaslik: 'Affiches de campagnes et de programmes de notre mosquée, ainsi qu’une sélection d’affiches de la Fondation Diyanet de Belgique (hajj, omra, sacrifice, zakât-fitre, éducation). Touchez une affiche pour l’agrandir.',
-  hepsi: 'Toutes', dis: 'Lien ↗',
+  hepsi: 'Toutes', dis: 'Lien ↗', sayfa: 'Voir la page →',
 };
 ---
 <Base baslik={t('nav.afisler')} kapak={liste[0]?.data.gorsel} dil={dil} aciklama={m.altBaslik}>
@@ -66,6 +67,8 @@ const m = dil === 'tr' ? {
               <time datetime={a.data.tarih.toISOString()}>{tarihBicimle(a.data.tarih, dil, { month: 'short', year: 'numeric' })}</time>
               <span> · {KAYNAK[a.data.kaynak]?.[dil] ?? a.data.kaynak}</span>
             </p>
+            {/* Site içi hedef (sayfa anahtarı) dile göre çözülür; dış bağlantı olduğu gibi basılır (4 Eyl 2026). */}
+            {a.data.sayfa && a.data.sayfa in yollar && <a href={yol(dil, a.data.sayfa as SayfaAnahtari)} class="text-sm">{m.sayfa}</a>}
             {a.data.link && <a href={a.data.link} target="_blank" rel="noopener" class="text-sm">{m.dis}</a>}
           </div>
         </li>

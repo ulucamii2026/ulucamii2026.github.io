@@ -175,6 +175,7 @@ collections:
       - { name: kaynak, label: Kaynak, widget: select, options: [{ label: "Ulu Camii", value: ulucamii }, { label: "Belçika Diyanet Vakfı", value: bdv }, { label: "Diyanet İşleri Başkanlığı", value: diyanet }, { label: "Diğer", value: diger }], default: ulucamii }
       - { name: kategori, label: Kategori, widget: select, options: [{ label: "Kampanya", value: kampanya }, { label: "Program", value: program }, { label: "Eğitim", value: egitim }, { label: "Hac / Umre", value: hac-umre }, { label: "Kurban", value: kurban }, { label: "Zekât / Fitre", value: zekat }, { label: "Cenaze", value: cenaze }, { label: "Ramazan", value: ramazan }, { label: "Diğer", value: diger }], default: diger }
       - { name: link, label: Bağlantı (isteğe bağlı), widget: string, required: false }
+      - { name: sayfa, label: "Site içi sayfa anahtarı (isteğe bağlı: uip, kurankursu, irsat, ihtida, diyanet, bagis…)", widget: string, required: false }
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
       - { name: body, label: Açıklama (isteğe bağlı), widget: markdown, required: false }
 

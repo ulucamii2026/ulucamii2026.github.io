@@ -30,7 +30,7 @@ La carte de localisation affichée sur ce site est chargée depuis les serveurs 
 
 ## Vidéos intégrées (YouTube)
 
-Certaines pages (par exemple la présentation du Programme international de théologie) contiennent des vidéos YouTube. Ces vidéos ne sont **pas chargées** à l’ouverture de la page : seules une image de couverture locale et un bouton de lecture sont affichés. Lorsque vous appuyez sur le bouton, la vidéo est chargée depuis le domaine « confidentialité renforcée » de YouTube (youtube-nocookie.com) et, à partir de ce moment, votre adresse IP est transmise à Google ; ce traitement relève de la politique de confidentialité de Google. Tant que vous n’appuyez pas sur le bouton, aucune requête n’est envoyée à YouTube.
+Certaines pages (par exemple la présentation du Programme international de théologie) contiennent des vidéos YouTube. Ces vidéos ne sont **pas chargées** à l’ouverture de la page : seules une image de couverture locale et un bouton de lecture sont affichés. Lorsque vous appuyez sur le bouton, la vidéo est chargée depuis le domaine « confidentialité renforcée » de YouTube (youtube-nocookie.com) et, à partir de ce moment, votre adresse IP est transmise à Google ; ce traitement relève de la politique de confidentialité de Google. Tant que vous n’appuyez pas sur le bouton, aucune requête n’est envoyée à YouTube. Les vidéos servies depuis notre propre serveur (par exemple le film de présentation du UİP) ne sont, de la même manière, chargées qu’au moment où vous lancez la lecture, sans aucune requête vers un tiers.
 
 ## Formulaire d’inscription en ligne à l’école coranique
 

@@ -31,6 +31,9 @@ const BASVURU = 'https://dibbys.diyanet.gov.tr/IKYS/Sinav/KurumDisi/DisIliskiler
 const KILAVUZ = '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf';
 const OG = `/media/uip/uip-og-${dil}.webp`;
 const BDV_TEL = '+32 2 218 57 55', BDV_EPOSTA = 'info@diyanet.be', MUSAVIRLIK_TEL = '+32 2 506 11 73';
+const kanonikUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const waMetin = `${m.baslik} — ${kanonikUrl}`;
+const waEtiket = dil === 'tr' ? "WhatsApp'ta paylaş" : dil === 'en' ? 'Share on WhatsApp' : 'Partager sur WhatsApp';
 const kariyerIkon = ['cami', 'kurs', 'dunya', 'belge', 'mezuniyet', 'kurs'] as const;
 const bolumler: Array<[string, string]> = [
   ['video', m.video.baslik], ['nedir', m.nedir.baslik], ['imkanlar', m.imkan.baslik], ['fakulteler', m.fakulte.baslik],
@@ -46,13 +49,18 @@ const afisler = [
   { href: `/media/uip/diyanet-burslari-2026-${dil}.webp`, kucuk: `/media/uip/diyanet-burslari-2026-${dil}-thumb.webp`, alt: m.ekler.afisBurs, w: 448, h: 640 },
 ];
 ---
-<Base baslik={m.baslik} dil={dil} aciklama={m.metaAciklama} kapak={OG} ekJsonLd={[sssJsonLd]}>
+<Base baslik={m.baslik} dil={dil} aciklama={m.metaAciklama} kapak={OG} kapakAlt={m.baslik} ekJsonLd={[sssJsonLd]}>
   <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} kapak="/media/uip/uip-kapak.webp" />
 
-  <nav aria-label={m.baslik} class="border-b border-(--cizgi) bg-(--zemin)">
-    <ul class="kapsayici flex gap-x-5 gap-y-1 overflow-x-auto whitespace-nowrap py-2.5 text-sm [scrollbar-width:thin]">
-      {bolumler.map(([id, ad]) => <li class="shrink-0"><a href={`#${id}`} class="inline-flex min-h-9 items-center no-underline text-(--metin-2) hover:text-(--vurgu) hover:underline">{ad}</a></li>)}
-    </ul>
+  <nav aria-label={dil === 'tr' ? 'Sayfa bölümleri' : dil === 'fr' ? 'Sections de la page' : 'Page sections'} class="uip-nav border-b border-(--cizgi) bg-(--zemin)">
+    <div class="kapsayici relative">
+      <ul class="flex gap-x-5 gap-y-1 overflow-x-auto whitespace-nowrap py-2.5 text-sm [scrollbar-width:thin]">
+        {bolumler.map(([id, ad]) => <li class="shrink-0"><a href={`#${id}`} class="inline-flex min-h-9 items-center no-underline text-(--metin-2) hover:text-(--vurgu) hover:underline">{ad}</a></li>)}
+      </ul>
+      {/* Kaydırılabilir listenin sağ kenarında sabit soluklaşma: mobilde son öğenin ortadan kesik
+          görünmesi kaydırılabilir olduğuna dair tek ipucuydu; JS gerektirmeyen statik çözüm. */}
+      <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-(--zemin) to-transparent"></div>
+    </div>
   </nav>
 
   <div class="kapsayici py-8 sm:py-10 reveal">
@@ -60,27 +68,28 @@ const afisler = [
       <div class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <p class="m-0"><Ikon ad="takvim" class="mr-1.5 inline h-5 w-5 -mt-0.5 text-(--vurgu)" />{durumMetni}</p>
         <div class="flex flex-wrap gap-2">
-          {durum === 'acik' && <a href={BASVURU} target="_blank" rel="noopener" class="dugme dugme-birincil">{m.ekler.baglantilar[0].ad.split(' (')[0]}<span aria-hidden="true"> ↗</span></a>}
+          {durum === 'acik' && <a href={BASVURU} target="_blank" rel="noopener" class="dugme dugme-birincil">{m.durum.basvuruDugmesi}<span aria-hidden="true"> ↗</span></a>}
           <a href={KILAVUZ} class="dugme dugme-ikincil" target="_blank" rel="noopener"><Ikon ad="belge" class="h-4 w-4" />{m.durum.kilavuz}</a>
           <a href="https://www.diyanet.be" target="_blank" rel="noopener" class="dugme dugme-ikincil">{m.durum.takip}<span aria-hidden="true"> ↗</span></a>
+          <a href={`https://wa.me/?text=${encodeURIComponent(waMetin)}`} target="_blank" rel="noopener" class="dugme dugme-ikincil">{waEtiket}<span aria-hidden="true"> ↗</span></a>
         </div>
       </div>
     </div>
-    <dl class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-      {m.ozet.map((o) => <div class="kart-kagit px-4 py-4"><dd class="font-serif text-3xl font-bold leading-none text-(--vurgu)">{o.sayi}</dd><dt class="mt-1.5 font-semibold">{o.ad}</dt><dd class="text-sm text-(--metin-2)">{o.not}</dd></div>)}
-    </dl>
+    <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {/* dl/dt/dd değil: her kart gerçek bir terim/tanım çifti değil, tek bir istatistik birimi
+          (sayı + etiket + not) — düz paragraflarla işaretlemek dt/dd sıra kuralını (HTML Living
+          Standard) ihlal etme riskini kökten kaldırır. */}
+      {m.ozet.map((o) => <div class="kart-kagit px-4 py-4"><p class="font-serif text-3xl font-bold leading-none text-(--vurgu)">{o.sayi}</p><p class="mt-1.5 font-semibold">{o.ad}</p><p class="text-sm text-(--metin-2)">{o.not}</p></div>)}
+    </div>
   </div>
 
   <section id="video" class="kapsayici pb-10 sm:pb-14 reveal" aria-labelledby="video-baslik">
     <h2 id="video-baslik">{m.video.baslik}</h2>
     <p class="mt-2 max-w-[70ch] text-(--metin-2)">{m.video.alt}</p>
-    <figure class="kart mt-5 overflow-hidden">
-      <video controls preload="none" playsinline poster="/media/uip/video-uip-tanitim.webp" width="960" height="540" lang="tr" class="block aspect-video w-full bg-(--color-ceviz-koyu)">
-        <source src="/media/uip/uip-tanitim-filmi-540p.mp4" type="video/mp4" />
-        <p class="p-4">{m.video.oynatilamaz} <a href="/media/uip/uip-tanitim-filmi-540p.mp4">MP4</a></p>
-      </video>
-      <figcaption class="px-4 py-3 text-sm text-(--metin-2)">{m.video.kaynak}</figcaption>
-    </figure>
+    <div class="mt-5">
+      {/* Kapak: filmin kütüphane karesi üstüne tasarlanmış üç dilli kapak (scratchpad uip_kapak.py); başlık kapakta olduğu için kapakYazili */}
+      <VideoCephe src="/media/uip/uip-tanitim-filmi-540p.mp4" baslik={`${m.baslik} · ${m.video.baslik}`} poster={`/media/uip/video-kapak-${dil}.webp`} dil={dil} altyazi={m.video.kaynak} kapakYazili />
+    </div>
     <h3 class="mt-8 text-xl">{m.video.digerBaslik}</h3>
     <div class="mt-3 grid gap-5 md:grid-cols-2">
       <VideoCephe id="jS8tgY_R9_w" baslik={m.video.tdv} poster="/media/uip/video-tdv-uip.webp" dil={dil} altyazi="2014 · 3:31" />
@@ -129,15 +138,18 @@ const afisler = [
     </div>
   </section>
 
-  <section id="sartlar" class="kapsayici py-10 sm:py-14 grid gap-8 lg:grid-cols-2 reveal" aria-labelledby="sart-baslik">
-    <div class="min-w-0">
+  {/* Şartlar ve Takvim, tek section içinde iki h2 taşıyordu ama section'ın aria-labelledby'si
+      yalnız birini kapsıyordu (WCAG 1.3.1); iki bölüm artık kendi section+aria-labelledby'sine
+      sahip, iki-sütunlu kilim ızgarası dış div'de aynen korunuyor. */}
+  <div class="kapsayici py-10 sm:py-14 grid gap-8 lg:grid-cols-2 reveal">
+    <section id="sartlar" class="min-w-0" aria-labelledby="sart-baslik">
       <h2 id="sart-baslik">{m.sart.baslik}</h2>
       <p class="mt-2 text-(--metin-2)">{m.sart.alt}</p>
       <ol class="mt-4 grid gap-2.5 list-decimal pl-5">{m.sart.liste.map((x) => <li>{doldur(x)}</li>)}</ol>
       <p class="uyari mt-4 text-sm">{m.sart.not}</p>
-    </div>
-    <div id="takvim" class="min-w-0">
-      <h2>{doldur(m.takvim.baslik)}</h2>
+    </section>
+    <section id="takvim" class="min-w-0" aria-labelledby="takvim-baslik">
+      <h2 id="takvim-baslik">{doldur(m.takvim.baslik)}</h2>
       <p class="mt-2 text-(--metin-2)">{m.takvim.alt}</p>
       <div class="kart mt-4 overflow-x-auto">
         <table class="w-full text-sm">
@@ -145,8 +157,8 @@ const afisler = [
           <tbody>{m.takvim.satirlar.map(([a, b]) => <tr class="border-t border-(--cizgi)"><td class="px-4 py-2.5">{a}</td><td class="px-4 py-2.5 mono whitespace-nowrap">{b}</td></tr>)}</tbody>
         </table>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <section id="basvuru" class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="adim-baslik">
     <div class="kapsayici py-10 sm:py-14">
@@ -251,7 +263,7 @@ const afisler = [
       <dl class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-sm">
         <div class="kart p-4"><dt class="etiket">{m.iletisim.dinGorevlisi}</dt><dd class="mt-1"><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex min-h-11 items-center">{site.telefon.dinGorevlisi}</a></dd><dt class="etiket mt-2">{m.iletisim.cami}</dt><dd class="mt-1"><a href={tel(site.telefon.cami)} class="mono inline-flex min-h-11 items-center">{site.telefon.cami}</a></dd></div>
         <div class="kart p-4"><dt class="etiket">{m.iletisim.adres}</dt><dd class="mt-1">{site.adres.sokak}<br />{site.adres.posta} {site.adres.sehir}</dd><dt class="etiket mt-2">{m.iletisim.eposta}</dt><dd class="mt-1"><a href={`mailto:${site.eposta}`} class="inline-flex min-h-11 items-center">{site.eposta}</a></dd></div>
-        <div class="kart p-4"><dt class="etiket">{m.iletisim.bdv}</dt><dd class="mt-1"><a href={tel(BDV_TEL)} class="mono inline-flex min-h-11 items-center">{BDV_TEL}</a><br /><a href={`mailto:${BDV_EPOSTA}`}>{BDV_EPOSTA}</a></dd><dd class="mt-1 text-(--metin-2)">{m.iletisim.mesai}</dd></div>
+        <div class="kart p-4"><dt class="etiket">{m.iletisim.bdv}</dt><dd class="mt-1"><a href={tel(BDV_TEL)} class="mono inline-flex min-h-11 items-center">{BDV_TEL}</a><br /><a href={`mailto:${BDV_EPOSTA}`} class="inline-flex min-h-11 items-center">{BDV_EPOSTA}</a></dd><dd class="mt-1 text-(--metin-2)">{m.iletisim.mesai}</dd></div>
         <div class="kart p-4"><dt class="etiket">{m.iletisim.musavirlik}</dt><dd class="mt-1">{m.belcika.musavirlik.adres}</dd><dd class="mt-1"><a href={tel(MUSAVIRLIK_TEL)} class="mono inline-flex min-h-11 items-center">{MUSAVIRLIK_TEL}</a></dd></div>
       </dl>
       <p class="mt-6 text-sm"><a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{dil === 'tr' ? 'Kur’an kursu sayfası' : dil === 'fr' ? 'Page de l’école coranique' : 'Qur’an school page'}</a> <a href={yol(dil, 'diyanet')} class="dugme dugme-ikincil">{dil === 'tr' ? 'Diyanet hizmetleri' : dil === 'fr' ? 'Services Diyanet' : 'Diyanet services'}</a></p>
@@ -263,3 +275,35 @@ const afisler = [
     <p class="mt-1 max-w-[90ch]">{m.kaynak.metin}</p>
   </footer>
 </Base>
+
+<script>
+  // Bölüm-içi gezinme (nav) site başlığının altına sabitlenir; başlık ve nav yüksekliği
+  // dile/ekran genişliğine göre değiştiği için ölçülüp CSS değişkenine yazılır
+  // (aynı desen: src/sayfalar/YillikPlan.astro, .cubuk/--yp-ust).
+  const nav = document.querySelector<HTMLElement>('.uip-nav');
+  if (nav) {
+    const kok = document.documentElement;
+    const olc = () => {
+      const bas = document.querySelector<HTMLElement>('body > header');
+      kok.style.setProperty('--yp-ust', (bas ? bas.offsetHeight : 79) + 'px');
+      kok.style.setProperty('--uip-nav', nav.offsetHeight + 'px');
+    };
+    olc();
+    addEventListener('resize', olc, { passive: true });
+  }
+</script>
+<style>
+  /* Sabit site başlığının altına yapışan bölüm-içi gezinme (nav) — --yp-ust script'te ölçülür. */
+  .uip-nav { position: sticky; top: var(--yp-ust, 79px); z-index: 20; }
+  /* Nav sticky olduğundan, tıklanan bölüm başlığı hem site başlığının hem de nav'ın arkasında kalmasın. */
+  #video, #nedir, #imkanlar, #fakulteler, #sartlar, #takvim, #basvuru, #belcika, #belgeler, #kariyer, #sss, #ekler, #iletisim {
+    scroll-margin-top: calc(var(--yp-ust, 79px) + var(--uip-nav, 45px));
+  }
+  /* Yazdırmada sabit başlık/altbilgi, video ve sekme-nav kaldırılır; şartlar/takvim/belgeler bölünmeden kalır.
+     Header/Footer Base.astro'da render edildiğinden (bu sayfanın kendi kapsamı dışında), :global() gerekir. */
+  @media print {
+    :global(header.vt-baslik), :global(footer.vt-altbilgi), :global(.kilim-serit), :global(#tema-dugme), :global(#menu-dugme) { display: none !important; }
+    #video, .uip-nav { display: none !important; }
+    #sartlar, #takvim, #belgeler { break-inside: avoid; }
+  }
+</style>

@@ -199,7 +199,6 @@ for (const d of ['fr', 'en']) {
   /* Dis kurumlarin sitede gosterilen kendi e-postalari (bizim adreslerimiz site.yaml'da). */
   const disKurumEposta = new Set([
     'info@diyanet.be',              // Belcika Diyanet Vakfi
-    'disiliskiler@diyanet.gov.tr',  // DIB Dis Iliskiler Genel Mudurlugu — UIP kilavuzu/brosuru
   ]);
   const tanimliEposta = new Set((ayarMetni.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || []));
   // Altyapi hesabi: GitHub/Drive/Firebase sahipligi icin; sitede GOSTERILMEZ (22 Agu 2026 kurali).

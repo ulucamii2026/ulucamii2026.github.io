@@ -12,9 +12,8 @@ import { en } from './uip-en';
 
 export interface UipMetin {
   etiket: string; baslik: string; alt: string; metaAciklama: string;
-  durum: { kapandi: string; acik: string; yakinda: string; takip: string; kilavuz: string };
+  durum: { kapandi: string; acik: string; yakinda: string; takip: string; kilavuz: string; basvuruDugmesi: string };
   ozet: Array<{ sayi: string; ad: string; not: string }>;
-  video: { baslik: string; alt: string; kaynak: string; oynatilamaz: string; digerBaslik: string; tdv: string; diyanettv: string; eksen: string };
   nedir: { baslik: string; p1: string; p2: string; amacBaslik: string; amaclar: string[] };
   imkan: { baslik: string; alt: string; kartlar: Array<{ baslik: string; metin: string }>; kapsamDisi: string; teminat: string; stajBaslik: string; staj: string[]; tamamlayiciBaslik: string; tamamlayici: string[]; sosyalBaslik: string; sosyal: string[] };
   fakulte: { baslik: string; alt: string; liste: Array<{ ad: string; sehir: string; yil: string }>; diploma: string; katilim: string };
@@ -37,11 +36,12 @@ export const tr: UipMetin = {
   alt: 'Belçika’da liseyi bitiren gençler için Türkiye’nin altı ilahiyat fakültesinde burslu lisans eğitimi: barınma, yemek ve harç Diyanet tarafından karşılanır; mezunlar yurt dışında din görevlisi, akademisyen ve rehber olarak hizmet eder.',
   metaAciklama: 'Uluslararası İlahiyat Programı (UİP): Diyanet bursuyla Türkiye’de ilahiyat lisansı. Şartlar, takvim, başvuru adımları, belgeler, Belçika’daki süreç ve Marche-en-Famenne Ulu Camii’nin desteği.',
   durum: {
-    kapandi: '{{donem}} dönemi başvuruları {{son}} tarihinde kapandı. Bir sonraki dönemin tarihleri Diyanet İşleri Başkanlığınca her yıl şubat ayı civarında yeni kılavuzla ilan edilir; duyurulur duyurulmaz bu sayfada ve camimizde paylaşılacaktır.',
+    kapandi: '{{donem}} dönemi başvuruları {{son}} tarihinde kapandı. Bir sonraki dönemin tarihleri Diyanet İşleri Başkanlığınca her yıl şubat ayı civarında yeni kılavuzla ilan edilir; duyurulur duyurulmaz bu sayfada ve camimizde paylaşılacaktır. Bu arada din görevlimizle tanışabilir, mülakat hazırlığına (Kur’an okuma, dinî bilgiler) şimdiden başlayabilirsiniz.',
     acik: '{{donem}} dönemi başvuruları açık — son gün {{son}}. Belgelerinizi son güne bırakmayın; tavsiye mektubu için din görevlimizle erken görüşün.',
     yakinda: '{{donem}} dönemi başvuruları {{baslangic}} tarihinde açılıyor. Şimdiden belgelerinizi hazırlayabilir ve din görevlimizle görüşebilirsiniz.',
     takip: 'Diyanet duyuruları',
     kilavuz: 'Kılavuzu indir (PDF)',
+    basvuruDugmesi: 'Çevrim içi başvuru sayfası',
   },
   ozet: [
     { sayi: '6', ad: 'ilahiyat fakültesi', not: 'Ankara · İstanbul · Konya · Bursa' },
@@ -53,7 +53,6 @@ export const tr: UipMetin = {
     baslik: 'Tanıtım filmi',
     alt: 'Diyanet İşleri Başkanlığının UİP tanıtım filmi; Belçika Diyanet Vakfı’nın (diyanet.be) ana sayfasında yayımlanan sürüm. Video, siz oynatana kadar yüklenmez.',
     kaynak: 'Kaynak: Diyanet İşleri Başkanlığı · diyanet.be · 9 dk',
-    oynatilamaz: 'Tarayıcınız videoyu oynatamıyor.',
     digerBaslik: 'Diğer videolar',
     tdv: 'Türkiye Diyanet Vakfı — Uluslararası İlahiyat Programı',
     diyanettv: 'Diyanet TV — Uluslararası İlahiyat’ta Yeni Dönem',
@@ -61,7 +60,7 @@ export const tr: UipMetin = {
   },
   nedir: {
     baslik: 'Program nedir?',
-    p1: 'Uluslararası İlahiyat Programı, Diyanet İşleri Başkanlığının başlattığı ve koordine ettiği bir burs programıdır. Yurt dışında yaşayan Türk gençlerine ve Türkiye kökenli olmayan adaylara, Türkiye’deki ilahiyat fakültelerinde lisans düzeyinde dinî yükseköğrenim imkânı sağlar [Kılavuz 2026, s. 5]. 2006’da Ankara Üniversitesi İlahiyat Fakültesinde başlayan program bugün altı fakültede yürütülmektedir.',
+    p1: 'Uluslararası İlahiyat Programı, Diyanet İşleri Başkanlığının başlattığı ve koordine ettiği bir burs programıdır. Yurt dışında yaşayan Türk gençlerine ve Türkiye kökenli olmayan adaylara, Türkiye’deki ilahiyat fakültelerinde lisans düzeyinde dinî yükseköğrenim imkânı sağlar [Kılavuz 2026, s. 3]. 2006’da Ankara Üniversitesi İlahiyat Fakültesinde başlayan program bugün altı fakültede yürütülmektedir.',
     p2: 'Şartları taşıyan ve mülakatta başarılı olan adaylar kontenjan dâhilinde fakültelere yerleştirilir; öğrenciler fakültenin müfredatını takip eder ve mezuniyette İlahiyat Lisans Diploması alır. Bursu, barınmayı ve öğrenim giderlerini Türkiye Diyanet Vakfı karşılar; Belçika Diyanet Vakfı da bölgedeki öğrencilere ek destek sunar.',
     amacBaslik: 'Programın beş amacı',
     amaclar: [
@@ -74,14 +73,14 @@ export const tr: UipMetin = {
   },
   imkan: {
     baslik: 'Neler sağlanır?',
-    alt: 'Kayıt yapılıp taahhütname imzalandıktan sonra öğrenci şu desteklerden yararlanır [Kılavuz 2026, s. 7-10]:',
+    alt: 'Kayıt yapılıp taahhütname imzalandıktan sonra öğrenci şu desteklerden yararlanır [Kılavuz 2026, s. 5-8]:',
     kartlar: [
       { baslik: 'Burs', metin: 'Aylık maddi destek (tutar her yıl Başkanlıkça belirlenir; kılavuzda rakam verilmez).' },
       { baslik: 'Barınma', metin: 'Türkiye Diyanet Vakfı yurtlarında ücretsiz konaklama; eğitim-öğretim yılı boyunca.' },
       { baslik: 'Yemek', metin: 'İaşe desteği (yurt ve fakülte yemekhaneleri).' },
       { baslik: 'Öğrenim harcı', metin: 'Fakültenin temel eğitim giderleri Başkanlıkça karşılanır.' },
     ],
-    kapsamDisi: 'Kapsam dışı: ulaşım (uçak bileti), kitap-kırtasiye ve sağlık sigortası öğrenciye aittir [s. 8].',
+    kapsamDisi: 'Kapsam dışı: ulaşım (uçak bileti), kitap-kırtasiye ve sağlık sigortası öğrenciye aittir [s. 6].',
     teminat: 'Kesin kayıtta öğrenciden 1.000 € teminat alınır; programı burslu olarak tamamlayana iade edilir, programı yarıda bırakan veya taahhütnameye aykırılık nedeniyle çıkarılana iade edilmez [s. 20].',
     stajBaslik: 'Mesleki eğitim ve staj',
     staj: [
@@ -98,7 +97,7 @@ export const tr: UipMetin = {
   },
   fakulte: {
     baslik: 'Altı ilahiyat fakültesi',
-    alt: 'Eğitim dili Türkçedir; ihtiyaç hâlinde İngilizce ilahiyat programına yerleştirme yapılabilir. Lisans eğitimi hazırlık hariç 4 yıldır (8 dönem). Hazırlık sınıfı zorunlu ve Arapça ağırlıklıdır; Türkçe bilmeyen öğrenciler ayrıca bir yıl Türkçe hazırlık görür [Kılavuz 2026, s. 12].',
+    alt: 'Eğitim dili Türkçedir; ihtiyaç hâlinde İngilizce ilahiyat programına yerleştirme yapılabilir. Lisans eğitimi hazırlık hariç 4 yıldır (8 dönem). Hazırlık sınıfı zorunlu ve Arapça ağırlıklıdır; Türkçe bilmeyen öğrenciler ayrıca bir yıl Türkçe hazırlık görür [Kılavuz 2026, s. 10].',
     liste: [
       { ad: 'Ankara Üniversitesi İlahiyat Fakültesi', sehir: 'Ankara', yil: '2006' },
       { ad: 'Marmara Üniversitesi İlahiyat Fakültesi', sehir: 'İstanbul', yil: '2007' },
@@ -107,7 +106,7 @@ export const tr: UipMetin = {
       { ad: 'Uludağ Üniversitesi İlahiyat Fakültesi', sehir: 'Bursa', yil: '2012' },
       { ad: '29 Mayıs Üniversitesi İlahiyat Fakültesi', sehir: 'İstanbul', yil: '2012' },
     ],
-    diploma: 'Programı başarıyla tamamlayanlara İlahiyat Lisans Diploması verilir. Bölümler: Temel İslam Bilimleri, Felsefe ve Din Bilimleri, İslam Tarihi ve Sanatları [s. 13].',
+    diploma: 'Programı başarıyla tamamlayanlara İlahiyat Lisans Diploması verilir. Bölümler: Temel İslam Bilimleri, Felsefe ve Din Bilimleri, İslam Tarihi ve Sanatları [s. 10-11].',
     katilim: 'Programa katılım yılı',
   },
   sart: {
@@ -125,7 +124,7 @@ export const tr: UipMetin = {
   },
   takvim: {
     baslik: '{{donem}} başvuru takvimi',
-    alt: 'Kılavuz 2026, s. 15 ve 20-21. Bir sonraki dönemin tarihleri yayımlanmadı; geçmiş yıllarda başvurular şubat sonunda açılıp mayıs sonunda kapandı.',
+    alt: 'Kılavuz 2026, s. 15 ve 18-19. Bir sonraki dönemin tarihleri yayımlanmadı; geçmiş yıllarda başvurular şubat sonunda açılıp mayıs sonunda kapandı.',
     islem: 'İşlem', tarih: 'Tarih',
     satirlar: [
       ['Çevrim içi başvuru ve belge teslimi', '23 Şubat – 29 Mayıs 2026'],
@@ -198,7 +197,7 @@ export const tr: UipMetin = {
   },
   taahhut: {
     baslik: 'Bursluluk taahhütnamesi',
-    alt: 'Programa kabul edilen öğrenci şu hususları kabul eder (2026 kılavuzu, s. 25 — özet):',
+    alt: 'Programa kabul edilen öğrenci şu hususları kabul eder (2026 kılavuzu, s. 23 — özet):',
     liste: [
       'Yerleştirildiği fakültede öğrenimine devam eder; mevzuat dışı yatay geçiş istemez.',
       'Fakültenin ve programın yönetmeliklerine uyar.',
@@ -211,7 +210,7 @@ export const tr: UipMetin = {
       'Kesin kayıttan sonra ayrılırsa ya da kurallara aykırılıkla çıkarılırsa teminat iade edilmez.',
       'Desteklerin kesilmesi Burs Programları Prosedürü ve Öğrenci Talimatnamesi’ne göre yürütülür.',
     ],
-    pdf: 'Taahhütnamenin tam metni (PDF, kılavuz s. 25)',
+    pdf: 'Taahhütnamenin tam metni (PDF, kılavuz s. 23)',
   },
   kariyer: {
     baslik: 'Mezuniyetten sonra',
@@ -241,14 +240,16 @@ export const tr: UipMetin = {
       { s: 'Eğitim kaç yıl sürer?', c: 'Lisans 4 yıldır; buna zorunlu hazırlık sınıfı, Türkçe bilmeyenler için ayrıca bir yıl Türkçe hazırlık eklenir.' },
       { s: 'Mezun olunca Belçika’ya din görevlisi olarak dönülebilir mi?', c: 'Kılavuz, sınavda başarılı olan mezunların kendi ülkelerinde din görevlisi olarak çalışabileceğini belirtir; atama sınav ve kadro şartına bağlıdır.' },
       { s: 'Bir sonraki başvuru dönemi ne zaman?', c: 'Resmî tarih yayımlanmadı. Geçmiş yıllarda başvurular şubat sonunda açılıp mayıs sonunda kapandı; kesin tarihler Diyanet’in yeni kılavuzuyla ilan edilecek ve bu sayfada güncellenecektir.' },
+      { s: 'Kız öğrenciler de başvurabilir mi?', c: 'Evet. Program karmadır; kılavuzda kız öğrenciler için Ankara ve 29 Mayıs kız yurtları, erkek öğrenciler için Bursa ve Konya erkek yurtları ayrı ayrı listelenir (2026 kılavuzu, s. 5).' },
+      { s: 'Bu yıl kabul edilmezsem tekrar başvurabilir miyim?', c: 'Evet. Kılavuz yalnızca daha önce kabul edilip ilişiği kesilenlerin veya kazanıp mazeretsiz kayıt yaptırmayanların tekrar başvuramayacağını söyler [Kılavuz 2026, s. 15, madde 5]; mülakatta bu yıl seçilemeyen adaylar için bir sonraki dönemde başvurma engeli yoktur.' },
     ],
   },
   ekler: {
     baslik: 'Belgeler ve bağlantılar',
     alt: 'Başvuru usul ve esaslarını içeren resmî belgeler. Kılavuz web için sıkıştırılmıştır; aslı diyanet.be’de yayımlanmıştır.',
     belgeler: [
-      { ad: '2026 UİP Tanıtım ve Başvuru Kılavuzu', aciklama: 'Diyanet İşleri Başkanlığı · 40 sayfa · şartlar, takvim, adımlar, belgeler, taahhütname, fakülteler, kariyer', href: '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf', boyut: 'PDF · 2,6 MB' },
-      { ad: 'Bursluluk Taahhütnamesi (2026)', aciklama: 'Kılavuzun 25. sayfası · başvuruda imzalanıp sisteme yüklenir', href: '/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf', boyut: 'PDF · 72 KB' },
+      { ad: '2026 UİP Tanıtım ve Başvuru Kılavuzu', aciklama: 'Diyanet İşleri Başkanlığı · 40 sayfa · şartlar, takvim, adımlar, belgeler, taahhütname, fakülteler, kariyer', href: '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf', boyut: 'PDF · 2,5 MB' },
+      { ad: 'Bursluluk Taahhütnamesi (2026)', aciklama: 'Kılavuzun 23. sayfası · başvuruda imzalanıp sisteme yüklenir', href: '/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf', boyut: 'PDF · 72 KB' },
       { ad: 'Tavsiye Mektubu (örnek, 2024 sürümü)', aciklama: 'Aday ve din görevlisi bölümleri · güncel sürümünü din görevlimizden ya da Müşavirlikten alınız', href: '/belgeler/uip/tavsiye-mektubu-2024-ornek.pdf', boyut: 'PDF · 50 KB' },
       { ad: 'Broşür 2026 — Fransızca', aciklama: 'Programme international de théologie · 2 sayfa', href: '/belgeler/uip/uip-brosur-2026-fr.pdf', boyut: 'PDF · 825 KB' },
       { ad: 'Broşür 2026 — İngilizce', aciklama: 'International Divinity Program · 2 sayfa', href: '/belgeler/uip/uip-brosur-2026-en.pdf', boyut: 'PDF · 826 KB' },

@@ -54,6 +54,8 @@ Program aynı zamanda **Uluslararası İlahiyat Programı’na (UİP) hazırlık
 2. Sırasıyla **cinsiyet** (Erkek), **doğum tarihi**, **dersler** ve **genel bilgi** adımlarını doldurun.
 3. Ön kayıt sonrasında merkez sizinle iletişime geçer; ders günleri, başlangıç tarihi ve ücretin kapsamı gibi ayrıntıları merkezden öğrenebilirsiniz.
 
+Bu kurs, Uluslararası İlahiyat Programı’na (UİP) hazırlıktır. UİP hakkında ayrıntılı bilgi için [UİP sayfamıza](/tr/uluslararasi-ilahiyat-programi) bakabilirsiniz.
+
 ## Camimizden yardım
 
 Kayıt formunu doldurmakta yardım isteyenler ya da kurs hakkında soru sormak isteyenler camimize başvurabilir:

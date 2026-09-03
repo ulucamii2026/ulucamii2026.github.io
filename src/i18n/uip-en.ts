@@ -8,14 +8,15 @@ import type { UipMetin } from './uip';
 export const en: UipMetin = {
   etiket: 'Presidency of Religious Affairs (Diyanet) · since 2006',
   baslik: 'International Theology Programme (UİP)',
-  alt: 'A fully funded undergraduate education at one of Türkiye’s six faculties of theology, for young people who have finished secondary school in Belgium: accommodation, meals and tuition fees are covered by Diyanet; graduates go on to serve abroad as imams, academics and religious guides.',
-  metaAciklama: 'International Theology Programme (UİP): a fully funded theology degree in Türkiye through the Diyanet scholarship. Requirements, timeline, application steps, documents, the process in Belgium, and support from Marche-en-Famenne Grand Mosque.',
+  alt: 'A Diyanet-funded undergraduate education at one of Türkiye’s six faculties of theology, for young people who have finished secondary school in Belgium: accommodation, meals and tuition fees are covered by Diyanet; graduates go on to serve abroad as imams, academics and religious guides.',
+  metaAciklama: 'International Theology Programme (UİP): a Diyanet-funded theology degree in Türkiye through the Diyanet scholarship. Requirements, timeline, application steps, documents, the process in Belgium, and support from Marche-en-Famenne Grand Mosque.',
   durum: {
-    kapandi: 'Applications for the {{donem}} session closed on {{son}}. The dates for the next session are announced each year, usually around February, by the Presidency of Religious Affairs (Diyanet) in a new guide; as soon as they are announced, they will be shared on this page and at our mosque.',
+    kapandi: 'Applications for the {{donem}} session closed on {{son}}. The dates for the next session are announced each year, usually around February, by the Presidency of Religious Affairs (Diyanet) in a new guide; as soon as they are announced, they will be shared on this page and at our mosque. In the meantime, you can already meet our imam and start preparing for the interview (Qur’an recitation, religious knowledge).',
     acik: 'Applications for the {{donem}} session are open — deadline: {{son}}. Do not leave your documents until the last day; for the letter of recommendation, contact our imam early.',
     yakinda: 'Applications for the {{donem}} session open on {{baslangic}}. You can already prepare your documents and meet with our imam.',
     takip: 'Diyanet announcements',
     kilavuz: 'Download the guide (PDF)',
+    basvuruDugmesi: 'Online application page',
   },
   ozet: [
     { sayi: '6', ad: 'faculties of theology', not: 'Ankara · Istanbul · Konya · Bursa' },
@@ -27,7 +28,6 @@ export const en: UipMetin = {
     baslik: 'Promotional film',
     alt: 'The UİP promotional film produced by the Presidency of Religious Affairs (Diyanet); the version published on the homepage of the Diyanet Foundation of Belgium (diyanet.be). The video only loads once you press play.',
     kaynak: 'Source: Presidency of Religious Affairs (Diyanet) · diyanet.be · 9 min',
-    oynatilamaz: 'Your browser cannot play this video.',
     digerBaslik: 'Other videos',
     tdv: 'Turkish Diyanet Foundation (TDV) — International Theology Programme',
     diyanettv: 'Diyanet TV — A New Session for the International Theology Programme',
@@ -35,7 +35,7 @@ export const en: UipMetin = {
   },
   nedir: {
     baslik: 'What is the programme?',
-    p1: 'The International Theology Programme (UİP) — officially the International Divinity Program (IDP) in Diyanet’s own English-language publications — is a scholarship programme set up and coordinated by the Presidency of Religious Affairs (Diyanet). It gives Turkish young people living abroad, as well as applicants not of Turkish origin, the opportunity to pursue undergraduate-level religious higher education at the faculties of theology in Türkiye [Guide 2026, p. 5]. Launched in 2006 at Ankara University’s Faculty of Theology, the programme is now offered at six faculties.',
+    p1: 'The International Theology Programme (UİP) — officially the International Divinity Program (IDP) in Diyanet’s own English-language publications — is a scholarship programme set up and coordinated by the Presidency of Religious Affairs (Diyanet). It gives Turkish young people living abroad, as well as applicants not of Turkish origin, the opportunity to pursue undergraduate-level religious higher education at the faculties of theology in Türkiye [Guide 2026, p. 3]. Launched in 2006 at Ankara University’s Faculty of Theology, the programme is now offered at six faculties.',
     p2: 'Applicants who meet the requirements and succeed at interview are placed in the faculties within the available quota; students follow the faculty’s curriculum and, on graduation, receive a Bachelor’s Degree in Divinity. The scholarship, accommodation and tuition costs are covered by the Turkish Diyanet Foundation (TDV); the Diyanet Foundation of Belgium also provides additional support to students from the region.',
     amacBaslik: 'The programme’s five objectives',
     amaclar: [
@@ -48,14 +48,14 @@ export const en: UipMetin = {
   },
   imkan: {
     baslik: 'What is provided?',
-    alt: 'Once enrolment is complete and the scholarship undertaking is signed, the student benefits from the following support [Guide 2026, p. 7-10]:',
+    alt: 'Once enrolment is complete and the scholarship undertaking is signed, the student benefits from the following support [Guide 2026, p. 5-8]:',
     kartlar: [
       { baslik: 'Scholarship', metin: 'Monthly financial support (the amount is set each year by the Presidency; the guide gives no figure).' },
       { baslik: 'Accommodation', metin: 'Free lodging in Turkish Diyanet Foundation (TDV) dormitories, for the whole academic year.' },
       { baslik: 'Meals', metin: 'Catering support (dormitory and faculty cafeterias).' },
       { baslik: 'Tuition fees', metin: 'The faculty’s basic education costs are covered by the Presidency.' },
     ],
-    kapsamDisi: 'Not covered: transport (airfare), books and stationery, and health insurance are the student’s responsibility [p. 8].',
+    kapsamDisi: 'Not covered: transport (airfare), books and stationery, and health insurance are the student’s responsibility [p. 6].',
     teminat: 'A deposit of €1,000 is collected from the student at final enrolment; it is refunded to a student who completes the programme as a scholarship holder, but is not refunded to one who leaves the programme before completion or is dismissed for breaching the scholarship undertaking [p. 20].',
     stajBaslik: 'Vocational training and internships',
     staj: [
@@ -72,16 +72,16 @@ export const en: UipMetin = {
   },
   fakulte: {
     baslik: 'Six faculties of theology',
-    alt: 'The language of instruction is Turkish; where needed, placement in an English-medium theology programme is possible. The undergraduate degree lasts 4 years excluding the preparatory year (8 semesters). The preparatory year is compulsory and mainly focused on Arabic; students who do not know Turkish also take a one-year Turkish preparatory course [Guide 2026, p. 12].',
+    alt: 'The language of instruction is Turkish; where needed, placement in an English-medium theology programme is possible. The undergraduate degree lasts 4 years excluding the preparatory year (8 semesters). The preparatory year is compulsory and mainly focused on Arabic; students who do not know Turkish also take a one-year Turkish preparatory course [Guide 2026, p. 10].',
     liste: [
       { ad: 'Ankara University Faculty of Theology', sehir: 'Ankara', yil: '2006' },
       { ad: 'Marmara University Faculty of Theology', sehir: 'Istanbul', yil: '2007' },
-      { ad: 'İstanbul University Faculty of Theology', sehir: 'Istanbul', yil: '2011' },
+      { ad: 'Istanbul University Faculty of Theology', sehir: 'Istanbul', yil: '2011' },
       { ad: 'Necmettin Erbakan University Faculty of Theology', sehir: 'Konya', yil: '2012' },
       { ad: 'Uludağ University Faculty of Theology', sehir: 'Bursa', yil: '2012' },
       { ad: '29 Mayıs University Faculty of Theology', sehir: 'Istanbul', yil: '2012' },
     ],
-    diploma: 'Students who successfully complete the programme are awarded the Bachelor’s Degree in Divinity. Departments: Basic Islamic Sciences, Philosophy and Religious Sciences, Islamic History and Arts [p. 13].',
+    diploma: 'Students who successfully complete the programme are awarded the Bachelor’s Degree in Divinity. Departments: Basic Islamic Sciences, Philosophy and Religious Sciences, Islamic History and Arts [p. 10-11].',
     katilim: 'Year joined the programme',
   },
   sart: {
@@ -99,7 +99,7 @@ export const en: UipMetin = {
   },
   takvim: {
     baslik: '{{donem}} application calendar',
-    alt: 'Guide 2026, p. 15 and 20-21. The dates for the next session have not yet been published; in previous years, applications opened at the end of February and closed at the end of May.',
+    alt: 'Guide 2026, p. 15 and 18-19. The dates for the next session have not yet been published; in previous years, applications opened at the end of February and closed at the end of May.',
     islem: 'Step', tarih: 'Date',
     satirlar: [
       ['Online application and document submission', '23 February – 29 May 2026'],
@@ -172,7 +172,7 @@ export const en: UipMetin = {
   },
   taahhut: {
     baslik: 'Scholarship undertaking',
-    alt: 'A student admitted to the programme accepts the following (2026 guide, p. 25 — summary):',
+    alt: 'A student admitted to the programme accepts the following (2026 guide, p. 23 — summary):',
     liste: [
       'Continuing studies at the faculty where placed; not requesting a transfer outside the applicable regulations.',
       'Complying with the regulations of the faculty and the programme.',
@@ -185,14 +185,14 @@ export const en: UipMetin = {
       'If the student withdraws after final enrolment, or is dismissed for a breach of the rules, the deposit is not refunded.',
       'Support being discontinued in accordance with the Scholarship Programmes Procedure and the Student Regulations.',
     ],
-    pdf: 'Full text of the scholarship undertaking (PDF, guide p. 25)',
+    pdf: 'Full text of the scholarship undertaking (PDF, guide p. 23)',
   },
   kariyer: {
     baslik: 'After graduation',
     alt: 'Career paths listed in the guide [p. 13-14]:',
     liste: [
-      { baslik: 'Religious service abroad', metin: 'Through an examination; successful candidates may serve in their own country or, if they meet the requirements, in another country.' },
-      { baslik: 'Advanced Religious Specialisation', metin: 'Those selected by interview continue their training at specialisation centres; graduates are appointed abroad as contracted religious officials.' },
+      { baslik: 'Serving as an imam abroad', metin: 'Through an examination; successful candidates may serve in their own country or, if they meet the requirements, in another country.' },
+      { baslik: 'Advanced Religious Specialisation', metin: 'Those selected by interview continue their training at specialisation centres; graduates are appointed abroad as contracted imams (religious officials).' },
       { baslik: 'Mosque guidance', metin: 'As foreign-language proficiency is required, UİP graduates have an advantage; this involves guiding foreign visitors to mosques.' },
       { baslik: 'Diyanet expertise', metin: 'Expertise at the High Council of Religious Affairs and Religious Affairs expertise, by examination after serving as assistant expert.' },
       { baslik: 'Postgraduate study', metin: 'Master’s and doctoral studies, in Türkiye or abroad; a TDV scholarship is possible.' },
@@ -213,16 +213,18 @@ export const en: UipMetin = {
       { s: 'Where is the interview held?', c: 'In the applicant’s country of residence, in person or online. If necessary, the applicant may be invited to a centre in another country.' },
       { s: 'Is the programme fee-paying?', c: 'Tuition fees, accommodation and meals are covered by Diyanet; a monthly scholarship is paid. A deposit of €1,000 is collected at enrolment and refunded to those who complete the programme. Airfare, books and health insurance are the student’s responsibility.' },
       { s: 'How long does the programme last?', c: 'The undergraduate degree lasts 4 years; to this is added the compulsory preparatory year and, for those who do not know Turkish, a further one-year Turkish preparatory course.' },
-      { s: 'Can a graduate return to Belgium as an imam?', c: 'The guide states that graduates who pass the examination may work as religious officials in their own country; appointment depends on passing the examination and on post availability.' },
+      { s: 'Can a graduate return to Belgium as an imam?', c: 'The guide states that graduates who pass the examination may work as imams in their own country; appointment depends on passing the examination and on post availability.' },
       { s: 'When is the next application session?', c: 'The official date has not yet been published. In previous years, applications opened at the end of February and closed at the end of May; the final dates will be announced in Diyanet’s new guide and updated on this page.' },
+      { s: 'Can girls apply as well?', c: 'Yes. The programme is mixed; the guide lists separate dormitories for girls (Ankara and 29 Mayıs) and for boys (Bursa and Konya) (2026 guide, p. 5).' },
+      { s: 'If I am not accepted this year, can I apply again?', c: 'Yes. The guide only bars candidates who were previously admitted and then dismissed, or who were accepted but failed to enrol without a valid excuse, from applying again [Guide 2026, p. 15, item 5]; there is no bar on a future application for someone not selected at interview this year.' },
     ],
   },
   ekler: {
     baslik: 'Documents and links',
     alt: 'Official documents setting out the application procedures and conditions. The guide has been compressed for the web; the original is published on diyanet.be.',
     belgeler: [
-      { ad: '2026 UİP Presentation and Application Guide', aciklama: 'Presidency of Religious Affairs (Diyanet) · 40 pages · requirements, timeline, steps, documents, scholarship undertaking, faculties, careers', href: '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf', boyut: 'PDF · 2.6 MB' },
-      { ad: 'Scholarship Undertaking (2026)', aciklama: 'Guide, page 25 · signed and uploaded to the system when applying', href: '/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf', boyut: 'PDF · 72 KB' },
+      { ad: '2026 UİP Presentation and Application Guide', aciklama: 'Presidency of Religious Affairs (Diyanet) · 40 pages · requirements, timeline, steps, documents, scholarship undertaking, faculties, careers', href: '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf', boyut: 'PDF · 2.5 MB' },
+      { ad: 'Scholarship Undertaking (2026)', aciklama: 'Guide, page 23 · signed and uploaded to the system when applying', href: '/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf', boyut: 'PDF · 72 KB' },
       { ad: 'Letter of Recommendation (sample, 2024 version)', aciklama: 'Applicant and imam sections · obtain the current version from our imam or the Counsellor’s office', href: '/belgeler/uip/tavsiye-mektubu-2024-ornek.pdf', boyut: 'PDF · 50 KB' },
       { ad: 'Brochure 2026 — French', aciklama: 'Programme international de théologie · 2 pages', href: '/belgeler/uip/uip-brosur-2026-fr.pdf', boyut: 'PDF · 825 KB' },
       { ad: 'Brochure 2026 — English', aciklama: 'International Divinity Program · 2 pages', href: '/belgeler/uip/uip-brosur-2026-en.pdf', boyut: 'PDF · 826 KB' },

@@ -54,6 +54,8 @@ Il s'agit également d'un **programme de trois ans** conçu comme une **prépara
 2. Complétez les étapes **sexe** (garçon), **date de naissance**, **cours** et **informations générales**.
 3. Après la préinscription, le centre vous contacte ; il vous précisera les jours de cours, la date de début et ce que couvrent les frais.
 
+Ce cours prépare au Programme international de théologie (UİP). Pour plus d'informations, consultez notre [page UİP](/fr/programme-international-de-theologie).
+
 ## Aide à la mosquée
 
 Pour de l'aide avec le formulaire ou des questions sur le cours, vous pouvez vous adresser à notre mosquée :

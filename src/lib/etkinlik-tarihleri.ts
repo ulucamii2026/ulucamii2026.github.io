@@ -8,7 +8,7 @@ export const UMRE_DUYURU_SLUG = 'taif-ziyaretli-aralik-umresi';
 
 /** Uluslararası İlahiyat Programı (UİP) başvuru dönemi — tek kaynak (src/sayfalar/Uip.astro).
  * Diyanet her yıl şubatta yeni kılavuzla ilan eder; yeni dönemde yalnız bu üç satır güncellenir
- * (ISO gün, Brüksel takvimine göre karşılaştırılır). Kaynak: 2026 UİP Tanıtım ve Başvuru Kılavuzu, s. 15/20. */
+ * (ISO gün, Brüksel takvimine göre karşılaştırılır). Kaynak: 2026 UİP Tanıtım ve Başvuru Kılavuzu, s. 15/18. */
 export const UIP_DONEM = 2026;
 export const UIP_BASVURU_BASLANGIC = '2026-02-23';
 export const UIP_BASVURU_SON = '2026-05-29';

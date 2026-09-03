@@ -133,6 +133,8 @@ const afisler = defineCollection({
     kaynak: z.enum(['ulucamii', 'bdv', 'diyanet', 'diger']).default('ulucamii'),
     kategori: z.enum(['kampanya', 'program', 'egitim', 'hac-umre', 'kurban', 'zekat', 'cenaze', 'ramazan', 'diger']).default('diger'),
     link: z.string().optional(),
+    /** Site içi hedef: yollar anahtarı (ör. uip, kurankursu) — dil bağımsız, Afisler.astro yol(dil, sayfa) ile basar */
+    sayfa: z.string().optional(),
     taslak: z.boolean().default(false),
   }),
 });

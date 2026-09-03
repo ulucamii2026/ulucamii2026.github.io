@@ -11,11 +11,12 @@ export const fr: UipMetin = {
   alt: 'Une formation universitaire boursière dans l’une des six facultés de théologie de Turquie, pour les jeunes ayant terminé leurs études secondaires en Belgique : hébergement, repas et frais de scolarité sont pris en charge par le Diyanet ; les diplômés exercent ensuite à l’étranger comme imams, universitaires ou guides religieux.',
   metaAciklama: 'Programme international de théologie (UİP) : une licence de théologie en Turquie grâce à la bourse du Diyanet. Conditions, calendrier, étapes de candidature, documents, procédure en Belgique et soutien de la Grande Mosquée de Marche-en-Famenne.',
   durum: {
-    kapandi: 'Les candidatures de la session {{donem}} se sont clôturées le {{son}}. Les dates de la prochaine session sont annoncées chaque année, généralement vers février, par la Présidence des Affaires religieuses (Diyanet) dans un nouveau guide ; dès leur publication, elles seront relayées sur cette page et à notre mosquée.',
+    kapandi: 'Les candidatures de la session {{donem}} se sont clôturées le {{son}}. Les dates de la prochaine session sont annoncées chaque année, généralement vers février, par la Présidence des Affaires religieuses (Diyanet) dans un nouveau guide ; dès leur publication, elles seront relayées sur cette page et à notre mosquée. En attendant, vous pouvez déjà rencontrer notre imam et commencer à préparer l’entretien (lecture du Coran, connaissances religieuses).',
     acik: 'Les candidatures de la session {{donem}} sont ouvertes — date limite : {{son}}. Ne laissez pas vos documents à la dernière minute ; pour la lettre de recommandation, contactez notre imam sans tarder.',
     yakinda: 'Les candidatures de la session {{donem}} ouvrent le {{baslangic}}. Vous pouvez dès à présent préparer vos documents et rencontrer notre imam.',
     takip: 'Annonces du Diyanet',
     kilavuz: 'Télécharger le guide (PDF)',
+    basvuruDugmesi: 'Page de candidature en ligne',
   },
   ozet: [
     { sayi: '6', ad: 'facultés de théologie', not: 'Ankara · Istanbul · Konya · Bursa' },
@@ -27,7 +28,6 @@ export const fr: UipMetin = {
     baslik: 'Film de présentation',
     alt: 'Le film de présentation de l’UİP réalisé par la Présidence des Affaires religieuses (Diyanet) ; la version publiée sur la page d’accueil de la Fondation Diyanet de Belgique (diyanet.be). La vidéo ne se charge que lorsque vous la lancez.',
     kaynak: 'Source : Présidence des Affaires religieuses (Diyanet) · diyanet.be · 9 min',
-    oynatilamaz: 'Votre navigateur ne peut pas lire cette vidéo.',
     digerBaslik: 'Autres vidéos',
     tdv: 'Fondation Diyanet de Turquie (TDV) — Programme international de théologie',
     diyanettv: 'Diyanet TV — Une nouvelle session pour le Programme international de théologie',
@@ -35,7 +35,7 @@ export const fr: UipMetin = {
   },
   nedir: {
     baslik: 'Qu’est-ce que le programme ?',
-    p1: 'Le Programme international de théologie (UİP) — officiellement l’« International Divinity Program » (IDP) dans les publications en anglais du Diyanet — est un programme de bourses mis en place et coordonné par la Présidence des Affaires religieuses (Diyanet). Il offre aux jeunes Turcs vivant à l’étranger, ainsi qu’aux candidats non issus de Turquie, la possibilité de suivre des études supérieures religieuses de niveau licence dans les facultés de théologie de Turquie [Guide 2026, p. 5]. Lancé en 2006 à la Faculté de théologie de l’Université d’Ankara, le programme est aujourd’hui dispensé dans six facultés.',
+    p1: 'Le Programme international de théologie (UİP) — officiellement l’« International Divinity Program » (IDP) dans les publications en anglais du Diyanet — est un programme de bourses mis en place et coordonné par la Présidence des Affaires religieuses (Diyanet). Il offre aux jeunes Turcs vivant à l’étranger, ainsi qu’aux candidats non issus de Turquie, la possibilité de suivre des études supérieures religieuses de niveau licence dans les facultés de théologie de Turquie [Guide 2026, p. 3]. Lancé en 2006 à la Faculté de théologie de l’Université d’Ankara, le programme est aujourd’hui dispensé dans six facultés.',
     p2: 'Les candidats qui remplissent les conditions requises et réussissent l’entretien sont affectés aux facultés dans la limite des places disponibles ; les étudiants suivent le programme scolaire de la faculté et reçoivent, à l’issue de leurs études, une Licence de théologie. La bourse, l’hébergement et les frais de scolarité sont pris en charge par la Fondation Diyanet de Turquie (TDV) ; la Fondation Diyanet de Belgique apporte également un soutien complémentaire aux étudiants de la région.',
     amacBaslik: 'Les cinq objectifs du programme',
     amaclar: [
@@ -48,14 +48,14 @@ export const fr: UipMetin = {
   },
   imkan: {
     baslik: 'Quels sont les avantages ?',
-    alt: 'Une fois l’inscription effectuée et l’engagement de boursier signé, l’étudiant bénéficie des aides suivantes [Guide 2026, p. 7-10] :',
+    alt: 'Une fois l’inscription effectuée et l’engagement de boursier signé, l’étudiant bénéficie des aides suivantes [Guide 2026, p. 5-8] :',
     kartlar: [
       { baslik: 'Bourse', metin: 'Aide financière mensuelle (le montant est fixé chaque année par la Présidence ; le guide n’indique aucun chiffre).' },
       { baslik: 'Hébergement', metin: 'Logement gratuit dans les résidences de la Fondation Diyanet de Turquie (TDV), pendant toute l’année scolaire.' },
       { baslik: 'Repas', metin: 'Aide alimentaire (restaurants des résidences et des facultés).' },
       { baslik: 'Frais de scolarité', metin: 'Les frais de base de la faculté sont pris en charge par la Présidence.' },
     ],
-    kapsamDisi: 'Non couverts : le transport (billet d’avion), les livres et fournitures ainsi que l’assurance maladie restent à la charge de l’étudiant [p. 8].',
+    kapsamDisi: 'Non couverts : le transport (billet d’avion), les livres et fournitures ainsi que l’assurance maladie restent à la charge de l’étudiant [p. 6].',
     teminat: 'Lors de l’inscription définitive, une caution de 1 000 € est demandée à l’étudiant ; elle est restituée à celui qui achève le programme en tant que boursier, mais n’est pas remboursée à celui qui abandonne en cours de route ou qui est exclu pour manquement à l’engagement de boursier [p. 20].',
     stajBaslik: 'Formation professionnelle et stages',
     staj: [
@@ -72,7 +72,7 @@ export const fr: UipMetin = {
   },
   fakulte: {
     baslik: 'Six facultés de théologie',
-    alt: 'La langue d’enseignement est le turc ; si besoin, un placement dans un programme de théologie en anglais est possible. La licence dure 4 ans hors année préparatoire (8 semestres). L’année préparatoire est obligatoire et à dominante arabe ; les étudiants qui ne maîtrisent pas le turc suivent en outre une année préparatoire de turc [Guide 2026, p. 12].',
+    alt: 'La langue d’enseignement est le turc ; si besoin, un placement dans un programme de théologie en anglais est possible. La licence dure 4 ans hors année préparatoire (8 semestres). L’année préparatoire est obligatoire et à dominante arabe ; les étudiants qui ne maîtrisent pas le turc suivent en outre une année préparatoire de turc [Guide 2026, p. 10].',
     liste: [
       { ad: 'Faculté de théologie de l’Université d’Ankara', sehir: 'Ankara', yil: '2006' },
       { ad: 'Faculté de théologie de l’Université de Marmara', sehir: 'Istanbul', yil: '2007' },
@@ -81,7 +81,7 @@ export const fr: UipMetin = {
       { ad: 'Faculté de théologie de l’Université Uludağ', sehir: 'Bursa', yil: '2012' },
       { ad: 'Faculté de théologie de l’Université 29 Mayıs', sehir: 'Istanbul', yil: '2012' },
     ],
-    diploma: 'Les étudiants qui achèvent le programme avec succès reçoivent le diplôme de Licence de théologie. Départements : Sciences islamiques fondamentales, Philosophie et sciences religieuses, Histoire et arts islamiques [p. 13].',
+    diploma: 'Les étudiants qui achèvent le programme avec succès reçoivent le diplôme de Licence de théologie. Départements : Sciences islamiques fondamentales, Philosophie et sciences religieuses, Histoire et arts islamiques [p. 10-11].',
     katilim: 'Année d’entrée dans le programme',
   },
   sart: {
@@ -99,7 +99,7 @@ export const fr: UipMetin = {
   },
   takvim: {
     baslik: 'Calendrier des candidatures {{donem}}',
-    alt: 'Guide 2026, p. 15 et 20-21. Les dates de la prochaine session n’ont pas encore été publiées ; les années précédentes, les candidatures ouvraient fin février et se clôturaient fin mai.',
+    alt: 'Guide 2026, p. 15 et 18-19. Les dates de la prochaine session n’ont pas encore été publiées ; les années précédentes, les candidatures ouvraient fin février et se clôturaient fin mai.',
     islem: 'Étape', tarih: 'Date',
     satirlar: [
       ['Candidature en ligne et dépôt des documents', '23 février – 29 mai 2026'],
@@ -172,7 +172,7 @@ export const fr: UipMetin = {
   },
   taahhut: {
     baslik: 'Engagement de boursier',
-    alt: 'L’étudiant admis au programme accepte les points suivants (guide 2026, p. 25 — résumé) :',
+    alt: 'L’étudiant admis au programme accepte les points suivants (guide 2026, p. 23 — résumé) :',
     liste: [
       'Il poursuit ses études dans la faculté où il a été affecté ; il ne demande pas de transfert en dehors des dispositions réglementaires.',
       'Il se conforme aux règlements de la faculté et du programme.',
@@ -185,14 +185,14 @@ export const fr: UipMetin = {
       'S’il se retire après l’inscription définitive, ou s’il est exclu pour non-respect des règles, la caution n’est pas remboursée.',
       'La suspension des aides s’effectue conformément à la Procédure des programmes de bourses et au Règlement des étudiants.',
     ],
-    pdf: 'Texte intégral de l’engagement de boursier (PDF, guide p. 25)',
+    pdf: 'Texte intégral de l’engagement de boursier (PDF, guide p. 23)',
   },
   kariyer: {
     baslik: 'Après l’obtention du diplôme',
     alt: 'Les débouchés indiqués par le guide [p. 13-14] :',
     liste: [
-      { baslik: 'Fonction religieuse à l’étranger', metin: 'Sur concours ; les lauréats peuvent exercer dans leur propre pays ou, s’ils remplissent les conditions, dans un autre pays.' },
-      { baslik: 'Spécialisation religieuse supérieure', metin: 'Les candidats sélectionnés sur entretien poursuivent leur formation dans des centres de spécialisation ; les diplômés sont nommés à l’étranger comme agents religieux contractuels.' },
+      { baslik: 'Fonction d’imam à l’étranger', metin: 'Sur concours ; les lauréats peuvent exercer dans leur propre pays ou, s’ils remplissent les conditions, dans un autre pays.' },
+      { baslik: 'Spécialisation religieuse supérieure', metin: 'Les candidats sélectionnés sur entretien poursuivent leur formation dans des centres de spécialisation ; les diplômés sont nommés à l’étranger comme imams (agents religieux) contractuels.' },
       { baslik: 'Guide de mosquée', metin: 'Une maîtrise d’une langue étrangère étant requise, les diplômés de l’UİP sont avantagés ; il s’agit de guider les visiteurs étrangers des mosquées.' },
       { baslik: 'Expertise au Diyanet', metin: 'Expertise auprès du Haut Conseil des affaires religieuses et expertise des affaires religieuses, sur concours après un poste d’expert adjoint.' },
       { baslik: 'Études supérieures', metin: 'Master et doctorat, en Turquie ou à l’étranger ; une bourse de la TDV est possible.' },
@@ -213,16 +213,18 @@ export const fr: UipMetin = {
       { s: 'Où se déroule l’entretien ?', c: 'Dans le pays de résidence du candidat, en présentiel ou en ligne. Si nécessaire, le candidat peut être invité dans un centre situé dans un autre pays.' },
       { s: 'Le programme est-il payant ?', c: 'Les frais de scolarité, l’hébergement et les repas sont pris en charge par le Diyanet ; une bourse mensuelle est versée. Une caution de 1 000 € est demandée à l’inscription et remboursée à celui qui achève le programme. Le billet d’avion, les livres et l’assurance maladie restent à la charge de l’étudiant.' },
       { s: 'Combien de temps dure la formation ?', c: 'La licence dure 4 ans ; s’y ajoutent l’année préparatoire obligatoire et, pour ceux qui ne maîtrisent pas le turc, une année préparatoire de turc supplémentaire.' },
-      { s: 'Un diplômé peut-il revenir en Belgique comme imam ?', c: 'Le guide indique que les diplômés reçus au concours peuvent exercer comme agents religieux dans leur propre pays ; la nomination dépend de la réussite au concours et de la disponibilité d’un poste.' },
+      { s: 'Un diplômé peut-il revenir en Belgique comme imam ?', c: 'Le guide indique que les diplômés reçus au concours peuvent exercer comme imams dans leur propre pays ; la nomination dépend de la réussite au concours et de la disponibilité d’un poste.' },
       { s: 'Quand aura lieu la prochaine session de candidatures ?', c: 'La date officielle n’a pas encore été publiée. Les années précédentes, les candidatures ouvraient fin février et se clôturaient fin mai ; les dates définitives seront annoncées dans le nouveau guide du Diyanet et mises à jour sur cette page.' },
+      { s: 'Les jeunes filles peuvent-elles également postuler ?', c: 'Oui. Le programme est mixte ; le guide liste séparément les résidences pour jeunes filles (Ankara et 29 Mayıs) et pour jeunes hommes (Bursa et Konya) (guide 2026, p. 5).' },
+      { s: 'Si je ne suis pas admis(e) cette année, puis-je repostuler ?', c: 'Oui. Le guide précise seulement que les candidats déjà admis puis exclus, ou reçus mais non inscrits sans motif valable, ne peuvent pas repostuler [Guide 2026, p. 15, point 5] ; rien n’empêche un candidat non retenu à l’entretien cette année de postuler lors d’une session suivante.' },
     ],
   },
   ekler: {
     baslik: 'Documents et liens',
     alt: 'Documents officiels décrivant les modalités et conditions de candidature. Le guide a été compressé pour le web ; l’original est publié sur diyanet.be.',
     belgeler: [
-      { ad: '2026 — Guide de présentation et de candidature UİP', aciklama: 'Présidence des Affaires religieuses (Diyanet) · 40 pages · conditions, calendrier, étapes, documents, engagement de boursier, facultés, débouchés', href: '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf', boyut: 'PDF · 2,6 MB' },
-      { ad: 'Engagement de boursier (2026)', aciklama: 'Guide, page 25 · à signer et à télécharger sur le système lors de la candidature', href: '/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf', boyut: 'PDF · 72 KB' },
+      { ad: '2026 — Guide de présentation et de candidature UİP', aciklama: 'Présidence des Affaires religieuses (Diyanet) · 40 pages · conditions, calendrier, étapes, documents, engagement de boursier, facultés, débouchés', href: '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf', boyut: 'PDF · 2,5 MB' },
+      { ad: 'Engagement de boursier (2026)', aciklama: 'Guide, page 23 · à signer et à télécharger sur le système lors de la candidature', href: '/belgeler/uip/bursluluk-taahhutnamesi-2026.pdf', boyut: 'PDF · 72 KB' },
       { ad: 'Lettre de recommandation (modèle, version 2024)', aciklama: 'Parties candidat et imam · procurez-vous la version actuelle auprès de notre imam ou du Bureau du Conseiller', href: '/belgeler/uip/tavsiye-mektubu-2024-ornek.pdf', boyut: 'PDF · 50 KB' },
       { ad: 'Brochure 2026 — français', aciklama: 'Programme international de théologie · 2 pages', href: '/belgeler/uip/uip-brosur-2026-fr.pdf', boyut: 'PDF · 825 KB' },
       { ad: 'Brochure 2026 — anglais', aciklama: 'International Divinity Program · 2 pages', href: '/belgeler/uip/uip-brosur-2026-en.pdf', boyut: 'PDF · 826 KB' },

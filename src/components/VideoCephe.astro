@@ -1,49 +1,62 @@
 ---
-/** YouTube için tıkla-yükle cephesi (click-to-load facade).
+/** Video için tıkla-yükle cephesi (click-to-load facade) — YouTube ya da kendi sunucumuzdaki MP4.
  *
  * Neden: sayfa açılır açılmaz YouTube iframe'i yüklenirse ziyaretçi daha videoya dokunmadan Google'a
- * bağlanır (çerez/parmak izi) ve sayfa ~500 KB ağırlaşır. Burada yalnız yerel bir kapak görseli ve
- * bir oynat düğmesi basılır; iframe ancak ziyaretçi tıklayınca, gizlilik güçlendirilmiş
- * youtube-nocookie.com alanından yüklenir. Gizlilik sayfası bu davranışı açıklar.
+ * bağlanır (çerez/parmak izi) ve sayfa ~500 KB ağırlaşır; yerel bir MP4 de `preload` ne olursa olsun
+ * bazı tarayıcılarda baştan inmeye başlar. Burada yalnız yerel bir kapak görseli ve bir oynat düğmesi
+ * basılır; iframe/video ancak ziyaretçi kapağın HERHANGİ bir yerine tıklayınca yaratılır — YouTube
+ * gizlilik güçlendirilmiş youtube-nocookie.com alanından, yerel video ise kendi adresimizden.
+ * Gizlilik sayfası bu davranışı açıklar.
  *
- * Erişilebilirlik: düğmenin erişilebilir adı videonun başlığını taşır; iframe title alır;
- * klavye (Enter/Space) düğmeyi tetikler; hareket azaltma tercihinde hover büyütme kapalıdır.
+ * Erişilebilirlik: düğmenin erişilebilir adı videonun başlığını taşır; iframe title alır; klavye
+ * (Enter/Space) düğmeyi tetikler; hareket azaltma tercihinde hover büyütme kapalıdır.
+ *
+ * 4 Eyl 2026: betikle yaratılan iframe Astro'nun kapsam özniteliğini taşımadığı için kapsamlı seçici
+ * uymuyor, iframe 300×150 sol üstte kalıyordu → :global seçici + satır içi konum/boyut. Aynı gün
+ * Rıdvan'ın isteğiyle yerel film de bu cepheye alındı: kapağın her yeri tıklanınca oynatır.
  */
 import type { Dil } from '../i18n/ui';
 interface Props {
-  /** YouTube video kimliği (11 karakter) */
-  id: string;
+  /** YouTube video kimliği (11 karakter) — `src` ile birlikte verilmez */
+  id?: string;
+  /** Kendi sunucumuzdaki MP4 (/media/...) — `id` ile birlikte verilmez */
+  src?: string;
   baslik: string;
   /** Yerel kapak görseli (16:9) — /media/... */
   poster: string;
   dil: Dil;
   /** İsteğe bağlı: süre / kaynak notu, kapak altında küçük yazı */
   altyazi?: string;
+  /** Kapak görseli başlığı zaten taşıyorsa (tasarlanmış kapak) alt köşedeki başlık yazısı basılmaz; erişilebilir ad yine `baslik` */
+  kapakYazili?: boolean;
 }
-const { id, baslik, poster, dil, altyazi } = Astro.props;
-if (!/^[A-Za-z0-9_-]{11}$/.test(id)) throw new Error(`VideoCephe: geçersiz YouTube kimliği "${id}"`);
+const { id, src, baslik, poster, dil, altyazi, kapakYazili = false } = Astro.props;
+if (Boolean(id) === Boolean(src)) throw new Error('VideoCephe: ya id (YouTube) ya src (yerel MP4) verilmeli, ikisi birden değil');
+if (id && !/^[A-Za-z0-9_-]{11}$/.test(id)) throw new Error(`VideoCephe: geçersiz YouTube kimliği "${id}"`);
 const m = {
-  tr: { oynat: 'Videoyu oynat', not: 'Oynattığınızda video YouTube’un (Google) gizlilik güçlendirilmiş alanından yüklenir; o ana kadar YouTube’a hiçbir istek gitmez.', ac: 'YouTube’da aç' },
-  fr: { oynat: 'Lire la vidéo', not: 'À la lecture, la vidéo est chargée depuis le domaine « confidentialité renforcée » de YouTube (Google) ; jusque-là, aucune requête n’est envoyée à YouTube.', ac: 'Ouvrir sur YouTube' },
-  en: { oynat: 'Play video', not: 'When you press play, the video loads from YouTube’s (Google) privacy-enhanced domain; until then no request is sent to YouTube.', ac: 'Open on YouTube' },
+  tr: { oynat: 'Videoyu oynat', not: 'Oynattığınızda video YouTube’un (Google) gizlilik güçlendirilmiş alanından yüklenir; o ana kadar YouTube’a hiçbir istek gitmez.', ac: 'YouTube’da aç', yerelNot: 'Video kendi sunucumuzdan yüklenir; oynatana kadar hiçbir veri inmez.', indir: 'MP4 olarak indir' },
+  fr: { oynat: 'Lire la vidéo', not: 'À la lecture, la vidéo est chargée depuis le domaine « confidentialité renforcée » de YouTube (Google) ; jusque-là, aucune requête n’est envoyée à YouTube.', ac: 'Ouvrir sur YouTube', yerelNot: 'La vidéo est servie depuis notre propre serveur ; rien n’est téléchargé avant la lecture.', indir: 'Télécharger en MP4' },
+  en: { oynat: 'Play video', not: 'When you press play, the video loads from YouTube’s (Google) privacy-enhanced domain; until then no request is sent to YouTube.', ac: 'Open on YouTube', yerelNot: 'The video is served from our own server; nothing is downloaded until you press play.', indir: 'Download as MP4' },
 }[dil];
-const izle = `https://www.youtube.com/watch?v=${id}`;
-const gom = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${dil}`;
+const izle = id ? `https://www.youtube.com/watch?v=${id}` : src!;
+const gom = id ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${dil}` : undefined;
 ---
 <figure class="video-cephe kart overflow-hidden" data-video-cephe>
   <div class="relative aspect-video bg-(--color-ceviz-koyu)">
-    <button type="button" class="video-dugme group absolute inset-0 h-full w-full cursor-pointer" data-gom={gom} data-baslik={baslik} aria-label={`${m.oynat}: ${baslik}`}>
+    <button type="button" class="video-dugme group absolute inset-0 h-full w-full cursor-pointer" data-gom={gom} data-src={src} data-poster={src ? poster : undefined} data-baslik={baslik} aria-label={`${m.oynat}: ${baslik}`}>
       <img src={poster} alt="" width="1280" height="720" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]" />
       <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-(--color-ceviz-koyu)/70 via-transparent to-transparent"></span>
       <span aria-hidden="true" class="oynat-rozet absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-20 w-20 items-center justify-center rounded-full">
         <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
       </span>
-      <span aria-hidden="true" class="absolute bottom-4 left-4 right-4 text-left text-(--color-krem) font-serif text-lg sm:text-xl leading-snug drop-shadow">{baslik}</span>
+      {!kapakYazili && <span aria-hidden="true" class="absolute bottom-4 left-4 right-4 text-left text-(--color-krem) font-serif text-lg sm:text-xl leading-snug drop-shadow">{baslik}</span>}
     </button>
   </div>
   <figcaption class="px-4 py-3 text-sm text-(--metin-2) flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-    <span>{altyazi ? `${altyazi} · ` : ''}{m.not}</span>
-    <a href={izle} target="_blank" rel="noopener" class="shrink-0">{m.ac}<span aria-hidden="true"> ↗</span></a>
+    <span>{altyazi ? `${altyazi} · ` : ''}{id ? m.not : m.yerelNot}</span>
+    {id
+      ? <a href={izle} target="_blank" rel="noopener" class="shrink-0">{m.ac}<span aria-hidden="true"> ↗</span></a>
+      : <a href={izle} download class="shrink-0">{m.indir}</a>}
   </figcaption>
 </figure>
 
@@ -51,9 +64,8 @@ const gom = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${
   .oynat-rozet { background: var(--color-kiremit); color: var(--color-krem); box-shadow: 0 10px 30px -8px rgb(0 0 0 / .6); transition: transform .2s ease-out, background .2s; }
   .video-dugme:hover .oynat-rozet, .video-dugme:focus-visible .oynat-rozet { transform: translate(-50%, -50%) scale(1.06); background: var(--color-ochre); }
   .video-dugme:focus-visible { outline: 3px solid var(--color-ochre); outline-offset: -3px; }
-  /* iframe betikle sonradan yaratılır; Astro'nun kapsam özniteliğini taşımaz → :global şart.
-     (4 Eyl 2026: kapsamlı seçici eşleşmeyince iframe 300×150 varsayılanıyla sol üst köşeye sıkışıyordu.) */
-  .video-cephe :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  /* iframe/video betikle sonradan yaratılır; Astro'nun kapsam özniteliğini taşımaz → :global şart. */
+  .video-cephe :global(iframe), .video-cephe :global(video) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 </style>
 
 <script>
@@ -61,16 +73,31 @@ const gom = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${
     b.addEventListener('click', () => {
       const kutu = b.parentElement;
       if (!kutu) return;
-      const f = document.createElement('iframe');
-      f.src = b.dataset.gom || '';
-      // Kapsamlı CSS'ten bağımsız güvence: konum ve boyut satır içi (Comet/Chromium'da küçük pencere hatası, 4 Eyl 2026)
-      f.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block';
-      f.title = b.dataset.baslik || 'Video';
-      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-      f.setAttribute('allowfullscreen', '');
-      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-      b.replaceWith(f);
-      f.focus();
+      let el: HTMLIFrameElement | HTMLVideoElement;
+      if (b.dataset.src) {
+        const v = document.createElement('video');
+        v.src = b.dataset.src;
+        v.poster = b.dataset.poster || '';
+        v.controls = true;
+        v.autoplay = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('aria-label', b.dataset.baslik || 'Video');
+        el = v;
+      } else {
+        const f = document.createElement('iframe');
+        f.src = b.dataset.gom || '';
+        f.title = b.dataset.baslik || 'Video';
+        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.setAttribute('allowfullscreen', '');
+        f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        el = f;
+      }
+      // Kapsamlı CSS'ten bağımsız güvence: konum ve boyut satır içi (4 Eyl 2026 köşeye sıkışma hatası)
+      el.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block';
+      b.replaceWith(el);
+      if (el instanceof HTMLVideoElement) el.play().catch(() => {});
+      el.focus();
     });
   });
 </script>

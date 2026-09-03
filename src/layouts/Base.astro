@@ -12,6 +12,12 @@ interface Props {
   aciklama?: string;
   dil?: Dil;
   kapak?: string;
+  /** Sayfaya özel kapak görseli verildiğinde (kapak ≠ varsayılan ogKart) og:image:width/height/type/alt
+      basılması için: alt metin zorunlu opt-in sinyali, boyut/tip 1200x630 webp varsayılanla. */
+  kapakAlt?: string;
+  kapakGenislik?: number;
+  kapakYukseklik?: number;
+  kapakTipi?: string;
   /** Arama motorları için gizle (portal, admin) */
   noindex?: boolean;
   /** Sayfanın dilini ziyaretçinin tercihi olarak kaydet. /kayit/ hariç her sayfada açık:
@@ -29,7 +35,7 @@ const t = ceviri(dil);
    ana sayfanın cami fotoğrafıydı; bu yüzden yönetim kurulu gibi ilgisiz sayfaların
    önizlemesinde de o fotoğraf çıkıyordu. */
 const ogKart = `/media/og/ulu-camii-${dil}.png`;
-const { baslik, aciklama = t('site.slogan'), kapak = ogKart, noindex = false, dilHatirla = true, ogTuru = 'website', ekJsonLd = [] } = Astro.props;
+const { baslik, aciklama = t('site.slogan'), kapak = ogKart, kapakAlt, kapakGenislik = 1200, kapakYukseklik = 630, kapakTipi = 'image/webp', noindex = false, dilHatirla = true, ogTuru = 'website', ekJsonLd = [] } = Astro.props;
 /** Yalnız ana sayfada masaüstü hero görselini erkenden bildir (LCP); afis/1600px görsel büyük olduğu için mobil kırpmasını değil bunu hedefler. */
 const anaSayfaMi = /^\/(tr|fr|en)\/$/.test(Astro.url.pathname);
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
@@ -112,6 +118,17 @@ const kurumJsonLd = {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={t('site.ad')} />
+      </Fragment>
+    )}
+    {/* Sayfaya özel kapak (UİP gibi): boyut/tip yalnız çağıran sayfa kapakAlt vererek açıkça
+        onayladığında basılır — Afisler/Galeri gibi kapak={ilk öge} kullanan, gerçek boyutu bu
+        katmanda bilinmeyen sayfalar için yanlış boyut yayınlanmasın diye. */}
+    {!ogKartMi && kapakAlt && (
+      <Fragment>
+        <meta property="og:image:type" content={kapakTipi} />
+        <meta property="og:image:width" content={String(kapakGenislik)} />
+        <meta property="og:image:height" content={String(kapakYukseklik)} />
+        <meta property="og:image:alt" content={kapakAlt} />
       </Fragment>
     )}
     <meta property="og:url" content={kanonik} />
