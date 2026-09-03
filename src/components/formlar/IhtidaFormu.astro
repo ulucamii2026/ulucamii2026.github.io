@@ -31,6 +31,12 @@ const metinJson = JSON.stringify({
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script type="application/json" data-metin set:html={metinJson} />
 
+  <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
+  <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+    <label for="i-web">Web sitenizi bırakmayın</label>
+    <input type="text" id="i-web" name="web" tabindex="-1" autocomplete="off" />
+  </div>
+
   <div class="ucf-taslak" data-taslak-not hidden>
     <span>{o.taslakGeriYuklendi}</span>
     <button type="button" data-taslak-sil>{o.taslakSil}</button>
@@ -221,7 +227,7 @@ const metinJson = JSON.stringify({
       <div data-alan class="tam">
         <div class="onay-kutu">
           <input id="i-onay-gizlilik" type="checkbox" name="onay.gizlilik" required />
-          <label for="i-onay-gizlilik">{h.riza.gizlilik} <a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa} ↗</a></label>
+          <label for="i-onay-gizlilik">{h.riza.gizlilik} <a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa}<span aria-hidden="true"> ↗</span></a></label>
         </div>
         <p class="hata" aria-live="polite" hidden></p>
       </div>

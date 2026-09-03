@@ -1,18 +1,18 @@
 ---
 baslik: "Mevlid-i Nebî Haftası: Âlemlere Rahmet Olarak Gönderildi"
 tarih: 2026-08-27
-ozet: "24-30 Ağustos 2026'da Mevlid-i Nebî Haftası'nı idrak ediyoruz. Mevlid ne demektir, hafta neden bu tarihlerde, Peygamberimizin doğumunu anmanın anlamı nedir? Cemaatimizin Mevlid-i Nebî Haftası'nı tebrik ediyoruz."
+ozet: "24-30 Ağustos 2026'da Mevlid-i Nebî Haftası'nı idrak ettik. Mevlid ne demektir, hafta neden bu tarihlerde, Peygamberimizin doğumunu anmanın anlamı nedir? Cemaatimizin Mevlid-i Nebî Haftası'nı tebrik ettik."
 kapak: /media/duyurular/mevlid-i-nebi-haftasi-2026.webp
 kapakAlt: "Mevlid-i Nebî Haftası 2026 kapak görseli — Enbiyâ sûresi 107. âyet: Seni ancak âlemlere rahmet olarak gönderdik"
 etiketler:
   - mevlid
   - diyanet
-oneCikan: true
+oneCikan: false
 ---
 
 <div class="bilgi"><p><strong>Mevlid-i Nebî Haftası: 24-30 Ağustos 2026.</strong> Hafta Mevlid Kandili ile başlar; kandili 24 Ağustos Pazartesi’yi 25 Ağustos Salı’ya bağlayan gece idrak ettik.</p></div>
 
-Rahmet Peygamberi'nin dünyayı şereflendirdiği günün yıl dönümündeyiz. Mevlid Kandili'ni 24 Ağustos Pazartesi'yi 25 Ağustos Salı'ya bağlayan gece idrak ettik; bu geceyle başlayan **Mevlid-i Nebî Haftası** 30 Ağustos Pazar akşamına kadar sürüyor.
+Rahmet Peygamberi'nin dünyayı şereflendirdiği günün yıl dönümündeyiz. Mevlid Kandili'ni 24 Ağustos Pazartesi'yi 25 Ağustos Salı'ya bağlayan gece idrak ettik; bu geceyle başlayan **Mevlid-i Nebî Haftası** 30 Ağustos Pazar akşamına kadar sürdü.
 
 Cemaatimizin ve bütün İslâm âleminin Mevlid-i Nebî Haftası'nı tebrik ediyor, Rabbimizden bu haftanın gönüllerimize huzur, evlerimize bereket, insanlığa barış getirmesini niyaz ediyoruz.
 
@@ -32,7 +32,7 @@ Diyanet İşleri Başkanlığı, Peygamberimizin **doğumunun 1500. yılı** iç
 
 ## Anlam ve önemi
 
-Kur'ân-ı Kerîm, Peygamberimizin dünyaya gelişini bir rahmet olarak anlatır:
+Kur'an-ı Kerim, Peygamberimizin dünyaya gelişini bir rahmet olarak anlatır:
 
 > **“Seni ancak âlemlere rahmet olarak gönderdik.”**
 > <span class="etiket">Enbiyâ sûresi, 107. âyet</span>
@@ -44,7 +44,7 @@ Bu yüzden Mevlid-i Nebî Haftası, sevgimizi **söze değil hayata** taşıma h
 ## Bu haftayı nasıl değerlendirebiliriz?
 
 - Peygamberimize **salât ü selâm** getirmeyi çoğaltmak
-- Kur'ân-ı Kerîm okumak, meâlinden bir bölüm de olsa anlamına bakmak
+- Kur'an-ı Kerim okumak, meâlinden bir bölüm de olsa anlamına bakmak
 - **Siyer** okumak; çocuklarımıza O'nun hayatından bir hâtıra anlatmak
 - Küs olduğumuz bir yakınımızla barışmak, akraba ve komşu ziyareti yapmak
 - Bir yetimi, bir yaşlıyı, bir muhtacı gözetmek

@@ -14,7 +14,7 @@ const tarihStr = bitis && bitis.getTime() !== baslangic.getTime()
 <article class:list={['kart overflow-hidden flex flex-col', sira !== undefined && 'reveal']} style={sira === undefined ? undefined : `--i:${sira % 3}`}>
   {kapak && <a href={href} class="block bg-(--zemin-3) border-b border-(--cizgi)"><img src={kapak} alt={baslik} loading="lazy" class="w-full h-auto max-h-[420px] object-contain" /></a>}
   <div class="p-5 flex flex-col gap-2 flex-1">
-    <p class="etiket">{kategori && kategori !== 'genel' && <span class="etiket-vurgu">{kategori} · </span>}<time datetime={baslangic.toISOString()}>{tarihStr}</time>{saat && <span> · {saat}</span>}</p>
+    <p class="etiket">{kategori && kategori !== 'genel' && <span class="etiket-vurgu">{t(`kategori.${kategori}` as any)} · </span>}<time datetime={baslangic.toISOString()}>{tarihStr}</time>{saat && <span> · {saat}</span>}</p>
     <h3 class="leading-snug"><a href={href} class="no-underline text-(--metin) hover:text-(--vurgu)">{baslik}</a></h3>
     {yer && <p class="text-sm text-(--metin-2)">{t('etkinlik.yer')}: {yer}</p>}
     {ozet && <p class="text-sm text-(--metin-2) line-clamp-3">{ozet}</p>}

@@ -67,3 +67,14 @@ export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateT
 
 /** hreflang öznitelik değeri */
 export const hreflangKodu = (d: Dil): string => (d === 'tr' ? 'tr' : d === 'en' ? 'en' : 'fr-BE');
+
+/** Arama karşılaştırması için normalizasyon: 'tr' locale ile küçültür, kesme işaretlerini ve
+    aksan/diyakritikleri temizler — böylece "İftar" veya "Kur'an" gibi kelimeler ASCII/aksansız
+    sorgularla da eşleşir (bkz. src/components/YilFiltresi.astro, DuyuruKarti.astro). */
+export function normalizeAra(metin: string): string {
+  return metin
+    .replace(/['’ʼ]/g, '')
+    .toLocaleLowerCase('tr')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+}

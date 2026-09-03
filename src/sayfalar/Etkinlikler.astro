@@ -18,18 +18,45 @@ const altBaslik = dil === 'tr'
   : 'Programmes des fêtes et nuits bénies, activités du Ramadan, organisation du sacrifice, concours et affiches.';
 const gecmisBaslik = dil === 'tr' ? 'Geçmiş etkinlikler ve afiş arşivi' : dil === 'en' ? 'Past events and poster archive' : 'Événements passés et archives d’affiches';
 const enNotu = 'Events are published in Turkish and French. An English version is not available.';
+// "genel" etiketsiz kabul edilir (bkz. EtkinlikKarti.astro) — filtre listesinden hariç tutulur
+const kategoriler = [...new Set(liste.map((e) => e.data.kategori).filter((k) => k && k !== 'genel'))].sort();
+const filtreHepsi = dil === 'tr' ? 'Tümü' : dil === 'en' ? 'All' : 'Toutes';
 ---
 <Base baslik={t('nav.etkinlikler')} dil={dil} aciklama={dil === 'tr' ? 'Camimizin program takvimi: kandil geceleri, bayram programları, konferanslar, gençlik ve hanımlar etkinlikleri.' : dil === 'en' ? 'Our mosque’s events calendar: holy nights, Eid programmes, lectures, youth and women’s activities.' : 'Calendrier des activités de notre mosquée : nuits bénies, programmes de fêtes, conférences, activités jeunesse et femmes.'}>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.etkinlikler')} altBaslik={altBaslik} />
   <div class="kapsayici py-10">
     {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
     <h2 class="etiket etiket-vurgu text-base mb-4">{t('ana.etkinlikler')}</h2>
-    {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e, i) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} />)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
+    {kategoriler.length > 1 && (
+      <div class="flex flex-wrap gap-2 mb-4" role="group" aria-label={t('nav.etkinlikler')}>
+        <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm etkinlik-filtre" data-kategori="hepsi" aria-pressed="true">{filtreHepsi}</button>
+        {kategoriler.map((k) => <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm etkinlik-filtre" data-kategori={k} aria-pressed="false">{t(`kategori.${k}` as any)}</button>)}
+      </div>
+    )}
+    {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e, i) => <div class="etkinlik-sarmal" data-kategori={e.data.kategori}><EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} /></div>)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
     {gecmis.length > 0 && (
       <div>
         <h2 class="etiket text-base mt-12 mb-4 cetvel pt-4">{gecmisBaslik}</h2>
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gecmis.map((e, i) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} />)}</div>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gecmis.map((e, i) => <div class="etkinlik-sarmal" data-kategori={e.data.kategori}><EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} /></div>)}</div>
       </div>
     )}
   </div>
+
+  <style>
+    /* sarmal yalnız filtre için data-kategori taşır — grid'in gerçek hücresi hâlâ EtkinlikKarti'nin <article>'ı olsun diye kutu üretmez */
+    .etkinlik-sarmal { display: contents; }
+  </style>
+
+  <script>
+    const dugmeler = document.querySelectorAll<HTMLButtonElement>('.etkinlik-filtre');
+    const kartlar = document.querySelectorAll<HTMLDivElement>('.etkinlik-sarmal');
+    dugmeler.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        dugmeler.forEach((b) => { b.setAttribute('aria-pressed', 'false'); b.classList.remove('dugme-birincil'); b.classList.add('dugme-ikincil'); });
+        btn.setAttribute('aria-pressed', 'true'); btn.classList.remove('dugme-ikincil'); btn.classList.add('dugme-birincil');
+        const hedef = btn.dataset.kategori;
+        kartlar.forEach((div) => { div.style.display = hedef === 'hepsi' || div.dataset.kategori === hedef ? '' : 'none'; });
+      });
+    });
+  </script>
 </Base>

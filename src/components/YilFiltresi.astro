@@ -5,11 +5,21 @@
  * çip seçimi ilgili yılı gösterir, "Tümü" hepsini açar; #yil-YYYY çapasıyla gelen ziyaretçi doğrudan o yılı görür.
  * Bölümler: <section data-yil="2026" id="yil-2026">…</section>
  */
+import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 interface Props { yillar: number[]; dil: Dil }
 const { yillar, dil } = Astro.props;
+const t = ceviri(dil);
 const m = dil === 'tr' ? { etiket: 'Yıla göre', tumu: 'Tümü' } : dil === 'en' ? { etiket: 'By year', tumu: 'All' } : { etiket: 'Par année', tumu: 'Toutes' };
 ---
+{yillar.length > 0 && (
+  <div class="mb-6 max-w-sm">
+    <label for="duyuru-arama" class="sr-only">{t('duyuru.ara')}</label>
+    <input id="duyuru-arama" type="search" placeholder={t('duyuru.ara')} data-arama-kutusu autocomplete="off"
+      class="w-full px-3 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) bg-(--zemin) text-(--metin) text-sm placeholder:text-(--metin-2)" />
+  </div>
+)}
+{yillar.length > 0 && <p data-arama-bos hidden class="text-(--metin-2) text-sm mb-6">{t('duyuru.aramaBos')}</p>}
 {yillar.length > 1 && (
   <nav class="mb-8 flex flex-wrap gap-2" aria-label={m.etiket} data-yil-filtresi>
     {yillar.map((y) => <a href={`#yil-${y}`} data-yil-sec={y} class="yil-cip mono text-xs tracking-(--tracking-etiket) px-3 py-2 border border-(--cizgi-etkilesim) rounded-(--radius-kose) no-underline text-(--metin) hover:border-(--metin)">{y}</a>)}
@@ -24,15 +34,50 @@ const m = dil === 'tr' ? { etiket: 'Yıla göre', tumu: 'Tümü' } : dil === 'en
 <script>
   const nav = document.querySelector<HTMLElement>('[data-yil-filtresi]');
   const bolumler = Array.from(document.querySelectorAll<HTMLElement>('[data-yil]'));
+  // Kullanıcı "hareketi azalt" tercih ettiyse otomatik kaydırma animasyonunu kapat.
+  const azaltilmisHareket = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cipler: HTMLAnchorElement[] = [];
+  let goster = (_secim: string, _kaydir = false) => {};
   if (nav && bolumler.length > 1) {
-    const cipler = Array.from(nav.querySelectorAll<HTMLAnchorElement>('[data-yil-sec]'));
-    const goster = (secim: string, kaydir = false) => {
+    cipler = Array.from(nav.querySelectorAll<HTMLAnchorElement>('[data-yil-sec]'));
+    goster = (secim: string, kaydir = false) => {
       bolumler.forEach((b) => { b.hidden = secim !== 'tumu' && b.dataset.yil !== secim; });
       cipler.forEach((c) => { if (c.dataset.yilSec === secim) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current'); });
-      if (kaydir) nav.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      if (kaydir) nav.scrollIntoView({ block: 'start', behavior: azaltilmisHareket ? 'auto' : 'smooth' });
     };
     const hashYil = location.hash.match(/^#yil-(\d{4})$/)?.[1];
     goster(location.hash === '#tumu' ? 'tumu' : hashYil && bolumler.some((b) => b.dataset.yil === hashYil) ? hashYil : (bolumler[0].dataset.yil || 'tumu'));
     cipler.forEach((c) => c.addEventListener('click', (e) => { e.preventDefault(); const s = c.dataset.yilSec || 'tumu'; history.replaceState(null, '', s === 'tumu' ? '#tumu' : `#yil-${s}`); goster(s, true); }));
+  }
+
+  const arama = document.querySelector<HTMLInputElement>('[data-arama-kutusu]');
+  const kartlar = Array.from(document.querySelectorAll<HTMLElement>('[data-arama]'));
+  const bosMsj = document.querySelector<HTMLElement>('[data-arama-bos]');
+  // data-arama build zamanında normalizeAra (src/i18n/utils.ts) ile üretiliyor; burada aynı
+  // mantık satır içi tekrarlanır (client script bağımsız derlendiğinden import edilemiyor).
+  const normalizeAra = (s: string) => s.replace(/['’ʼ]/g, '').toLocaleLowerCase('tr').normalize('NFD').replace(/[̀-ͯ]/g, '');
+  if (arama && kartlar.length) {
+    arama.addEventListener('input', () => {
+      const q = normalizeAra(arama.value.trim());
+      if (q) {
+        goster('tumu');
+        let eslesen = 0;
+        kartlar.forEach((k) => {
+          const g = (k.dataset.arama || '').includes(q);
+          k.hidden = !g;
+          if (g) eslesen++;
+        });
+        bolumler.forEach((b) => { b.hidden = !Array.from(b.querySelectorAll<HTMLElement>('[data-arama]')).some((k) => !k.hidden); });
+        if (bosMsj) bosMsj.hidden = eslesen > 0;
+      } else {
+        kartlar.forEach((k) => { k.hidden = false; });
+        // goster() tek bölümlü/çipsiz sayfalarda no-op kalabilir (bkz. üstteki tanım) — bu yüzden
+        // bölümleri burada açıkça geri açıyoruz, çip varsa goster() aktif filtreyi yine uygular.
+        bolumler.forEach((b) => { b.hidden = false; });
+        if (bosMsj) bosMsj.hidden = true;
+        const aktif = cipler.find((c) => c.getAttribute('aria-current') === 'true');
+        goster(aktif ? (aktif.dataset.yilSec || 'tumu') : 'tumu');
+      }
+    });
   }
 </script>

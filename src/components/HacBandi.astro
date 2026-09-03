@@ -8,7 +8,7 @@
  * Son gün SABİT DEĞİL, tarihle karşılaştırılır: süre dolduğunda bant kendiliğinden basılmaz,
  * kimsenin elle kaldırması gerekmez. "Kalan gün" derleme anında hesaplanır; site her gün
  * 03:30 UTC'de yeniden yayınlandığı için (deploy.yml cron) ertesi sabah kendini tazeler.
- * Ölçüt DiyanetHizmetleri.astro'daki HAC_SON_GUN ile birebir aynı tutulmalıdır.
+ * Ölçüt src/lib/etkinlik-tarihleri.ts'te tek kaynaktan gelir.
  *
  * Kaynak: Belçika Diyanet Vakfı ön kayıt sayfası — "2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026
  * tarihleri arasında gerçekleşecektir." (3 Eylül 2026'da teyit edildi; ilk duyuruda son gün
@@ -16,17 +16,15 @@
  */
 import type { Dil } from '../i18n/ui';
 import { yol } from '../i18n/utils';
+import { HAC_SON_GUN, HAC_DUYURU_SLUG } from '../lib/etkinlik-tarihleri';
 
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 
-const SON_GUN = new Date('2026-09-30T23:59:59+02:00');
-const DUYURU = '2027-hac-on-kayit-son-gunler';
-
 const simdi = Date.now();
-const acik = simdi <= SON_GUN.getTime();
+const acik = simdi <= HAC_SON_GUN.getTime();
 /* Bugün de sayılsın diye yukarı yuvarlanır: son gün sabahı "Son 1 gün" yazar, "0 gün" değil. */
-const kalan = Math.max(1, Math.ceil((SON_GUN.getTime() - simdi) / 86_400_000));
+const kalan = Math.max(1, Math.ceil((HAC_SON_GUN.getTime() - simdi) / 86_400_000));
 
 const m = dil === 'tr' ? {
   rozet: kalan === 1 ? 'Son gün' : `Son ${kalan} gün`,
@@ -59,7 +57,7 @@ const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(extern
         <span class="block mt-1 text-sm opacity-90">{m.alt}</span>
       </p>
       <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-        <a href={yol(dil, 'duyurular', DUYURU)} class="dugme hac-dugme font-bold shrink-0">
+        <a href={yol(dil, 'duyurular', HAC_DUYURU_SLUG)} class="dugme hac-dugme font-bold shrink-0">
           {m.dugme}<span aria-hidden="true"> →</span>
         </a>
         <a href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener" class="hac-dis text-sm font-semibold break-words min-w-0">

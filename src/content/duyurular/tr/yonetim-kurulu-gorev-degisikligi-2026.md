@@ -15,6 +15,8 @@ taslak: false
 
 Bu iki arkadaşımızın da yönetime katılmasıyla işlerin verimliliğini artırmak ve düzeni sağlamak amacıyla görev taksimi yeniden yapılmıştır. Tüm yönetim kurulundaki arkadaşlarımıza yeni görevlerinde hayırlı olsun diler, başarılar dileriz. Allah yardımcıları olsun.
 
+**Güncelleme (Eylül 2026):** Yönetim kurulu üyelik listesi zaman içinde değişebilir; güncel ve resmî üye listesi için lütfen [Yönetim Kurulu](/tr/yonetim-kurulu) sayfasını esas alınız.
+
 — Ulu Camii Yönetim Kurulu
 
 Kaynak: Facebook sayfamız, 5 Temmuz 2026

@@ -7,7 +7,6 @@ export const fr: FormMetinleri = {
     istegeBagli: 'facultatif',
     gonder: 'Envoyer le formulaire',
     gonderiliyor: 'Envoi en cours…',
-    tekrarDene: 'Réessayer',
     anasayfa: 'Retour à l’accueil',
     taslakGeriYuklendi: 'Le formulaire que vous aviez commencé sur cet appareil a été restauré.',
     taslakSil: 'Supprimer le brouillon et recommencer',

@@ -1,24 +1,24 @@
 ---
-baslik: "İmam-ı Azam Eğitim Merkezi: 12–17 Yaş Hafta Sonu Yatılı Kur'ân Kursu Kayıtları Başladı"
+baslik: "İmam-ı Azam Eğitim Merkezi: 12–17 Yaş Hafta Sonu Yatılı Kur'an Kursu Kayıtları Başladı"
 tarih: 2026-08-30
-ozet: "Belçika Diyanet Vakfı'nın Houthalen'deki İmam-ı Azam Eğitim Merkezi, 12–17 yaş erkek öğrenciler için 2026–2027 hafta sonu yatılı Kur'ân kursu kayıtlarını açtı. Üç yıllık program UİP'ye hazırlıktır; ücret 175 €. Kayıt imamiazam.org üzerinden; camimizden yardım alabilirsiniz."
+ozet: "Belçika Diyanet Vakfı'nın Houthalen'deki İmam-ı Azam Eğitim Merkezi, 12–17 yaş erkek öğrenciler için 2026–2027 hafta sonu yatılı Kur'an kursu kayıtlarını açtı. Üç yıllık program UİP'ye hazırlıktır; ücret 175 €. Kayıt imamiazam.org üzerinden; camimizden yardım alabilirsiniz."
 kapak: /media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu.webp
-kapakAlt: Belçika Diyanet Vakfı İmam-ı Azam Eğitim Merkezi'nin afişi — 12–17 yaş hafta sonu yatılı Kur'ân kursu, ücret 175 €, irtibat +32 498 39 95 02, kayıtlar başladı
+kapakAlt: Belçika Diyanet Vakfı İmam-ı Azam Eğitim Merkezi'nin afişi — 12–17 yaş hafta sonu yatılı Kur'an kursu, ücret 175 €, irtibat +32 498 39 95 02, kayıtlar başladı
 etiketler:
   - eğitim
   - diyanet
 oneCikan: true
 ---
 
-<div class="uyari"><p><strong>Kayıtlar başladı.</strong> 12–17 yaş arası erkek öğrenciler için, Houthalen'deki İmam-ı Azam Eğitim Merkezi'nde hafta sonu yatılı Kur'ân kursu. Kayıt yalnızca <a href="https://imamiazam.org" rel="noopener">imamiazam.org</a> üzerinden yapılır.</p></div>
+<div class="uyari"><p><strong>Kayıtlar başladı.</strong> 12–17 yaş arası erkek öğrenciler için, Houthalen'deki İmam-ı Azam Eğitim Merkezi'nde hafta sonu yatılı Kur'an kursu. Kayıt yalnızca <a href="https://imamiazam.org" rel="noopener">imamiazam.org</a> üzerinden yapılır.</p></div>
 
-Belçika Diyanet Vakfı'na bağlı **İmam-ı Azam Eğitim Merkezi** (Houthalen, Limburg), 2026–2027 eğitim-öğretim yılı için **hafta sonu yatılı Kur'ân kursu** kayıtlarını açtı. Kurs, gençlerin dinî ilimlerde sağlam bir temel kazanmalarını, ahlâkî ve manevî yönden gelişmelerini hedefleyen kapsamlı bir eğitim programıdır.
+Belçika Diyanet Vakfı'na bağlı **İmam-ı Azam Eğitim Merkezi** (Houthalen, Limburg), 2026–2027 eğitim-öğretim yılı için **hafta sonu yatılı Kur'an kursu** kayıtlarını açtı. Kurs, gençlerin dinî ilimlerde sağlam bir temel kazanmalarını, ahlâkî ve manevî yönden gelişmelerini hedefleyen kapsamlı bir eğitim programıdır.
 
 Program aynı zamanda **Uluslararası İlahiyat Programı'na (UİP) hazırlık** niteliğinde, **üç yıllık** bir eğitimdir: öğrenciler bu süreçte hem dinî ilimlerde sağlam bir altyapı kazanır hem de ileri düzey ilahiyat eğitimine hazırlanır.
 
 ## Üç yıllık eğitim programı
 
-**Kur'ân-ı Kerîm**
+**Kur'an-ı Kerim**
 
 - Yüzünden okuma
 - Tecvid

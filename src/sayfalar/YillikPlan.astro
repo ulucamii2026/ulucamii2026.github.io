@@ -371,7 +371,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
     // ekran genişliğine göre değiştiği için ölçülerek yazılır.
     const kok = document.documentElement;
     const olc = () => {
-      const bas = document.querySelector('body > header');
+      const bas = document.querySelector<HTMLElement>('body > header');
       kok.style.setProperty('--yp-ust', (bas ? bas.offsetHeight : 79) + 'px');
       kok.style.setProperty('--yp-cubuk', cubuk.offsetHeight + 'px');
     };

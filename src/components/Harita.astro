@@ -1,7 +1,7 @@
 ---
 /** OpenStreetMap iframe (API anahtarı/çerez gerektirmez) */
-interface Props { enlem: number; boylam: number; baslik: string; yoltarifi: string }
-const { enlem, boylam, baslik, yoltarifi } = Astro.props;
+interface Props { enlem: number; boylam: number; baslik: string; yoltarifi: string; disKaynak?: string }
+const { enlem, boylam, baslik, yoltarifi, disKaynak } = Astro.props;
 const d = 0.004;
 const f = (n: number) => n.toFixed(6);
 const bbox = `${f(boylam - d * 1.6)},${f(enlem - d)},${f(boylam + d * 1.6)},${f(enlem + d)}`;
@@ -12,7 +12,7 @@ const yol = `https://www.google.com/maps/dir/?api=1&destination=${enlem},${boyla
 <figure class="gorsel-cerceve">
   <iframe src={src} title={baslik} loading="lazy" class="w-full aspect-[16/9] border-0" referrerpolicy="no-referrer-when-downgrade"></iframe>
   <figcaption class="flex flex-wrap gap-4 justify-between px-1 pt-2 text-sm">
-    <a href={buyuk} target="_blank" rel="noopener">OpenStreetMap <span aria-hidden="true"> ↗</span></a>
-    <a href={yol} target="_blank" rel="noopener">{yoltarifi}<span aria-hidden="true"> ↗</span></a>
+    <a href={buyuk} target="_blank" rel="noopener">OpenStreetMap <span aria-hidden="true"> ↗</span>{disKaynak && <span class="sr-only"> {disKaynak}</span>}</a>
+    <a href={yol} target="_blank" rel="noopener">{yoltarifi}<span aria-hidden="true"> ↗</span>{disKaynak && <span class="sr-only"> {disKaynak}</span>}</a>
   </figcaption>
 </figure>

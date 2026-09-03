@@ -101,3 +101,11 @@ const dg = dil === 'tr'
     tr.classList.toggle(kart ? 'bg-(--vurgu)/6' : 'bg-(--vurgu)/8', d === bugun); tr.classList.toggle(kart ? 'border-(--vurgu)' : 'font-semibold', d === bugun);
   });
 </script>
+<style>
+  /* Yazdırmada sabit başlık/altbilgi ve süsler kaldırılır; tablo/kart satırları sayfa arasında bölünmez.
+     Header/Footer Base.astro'da render edildiğinden (bu sayfanın kendi kapsamı dışında), :global() gerekir. */
+  @media print {
+    :global(header.vt-baslik), :global(footer.vt-altbilgi), :global(.kilim-serit), :global(#tema-dugme), :global(#menu-dugme) { display: none !important; }
+    #vakit-tablosu tr, #vakit-kartlari li { break-inside: avoid; }
+  }
+</style>

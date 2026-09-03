@@ -37,7 +37,13 @@ export function durumHesapla(gunler: Gun[], simdi: Date): Durum | null {
   const sirali = [...gunler].sort((a, b) => a.tarih.localeCompare(b.tarih));
   let idx = sirali.findIndex((g) => g.tarih === bugunStr);
   let eski = false;
-  if (idx < 0) { idx = sirali.findIndex((g) => g.tarih > bugunStr); if (idx < 0) { idx = sirali.length - 1; eski = true; } }
+  if (idx < 0) {
+    idx = sirali.findIndex((g) => g.tarih > bugunStr);
+    if (idx < 0) idx = sirali.length - 1;
+    // Bugünün kaydı yoksa (veri bitmiş ya da ortasında boşluk var) ileri/geri bir günü
+    // "bugün" gibi sunma: eski-veri uyarısı çıkar, sıradaki vakit hesaplanmaz.
+    eski = true;
+  }
   const bugun = sirali[idx], yarin = sirali[idx + 1];
   let siradaki: Durum['siradaki'] = null;
   if (!eski) {

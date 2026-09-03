@@ -17,6 +17,10 @@ interface Props {
   /** Sayfanın dilini ziyaretçinin tercihi olarak kaydet. /kayit/ hariç her sayfada açık:
       orada iskelet her zaman Türkçe derlenir, dil formun kendi anahtarıyla yönetilir. */
   dilHatirla?: boolean;
+  /** og:type — duyuru/etkinlik detay sayfaları "article" ister, geri kalan "website". */
+  ogTuru?: 'website' | 'article';
+  /** Sayfaya özel yapısal veri (Event/NewsArticle/BreadcrumbList…) — kurumJsonLd'nin yanına eklenir. */
+  ekJsonLd?: object[];
 }
 const dil: Dil = Astro.props.dil ?? dilBul(Astro.url);
 const t = ceviri(dil);
@@ -25,7 +29,9 @@ const t = ceviri(dil);
    ana sayfanın cami fotoğrafıydı; bu yüzden yönetim kurulu gibi ilgisiz sayfaların
    önizlemesinde de o fotoğraf çıkıyordu. */
 const ogKart = `/media/og/ulu-camii-${dil}.png`;
-const { baslik, aciklama = t('site.slogan'), kapak = ogKart, noindex = false, dilHatirla = true } = Astro.props;
+const { baslik, aciklama = t('site.slogan'), kapak = ogKart, noindex = false, dilHatirla = true, ogTuru = 'website', ekJsonLd = [] } = Astro.props;
+/** Yalnız ana sayfada masaüstü hero görselini erkenden bildir (LCP); afis/1600px görsel büyük olduğu için mobil kırpmasını değil bunu hedefler. */
+const anaSayfaMi = /^\/(tr|fr|en)\/$/.test(Astro.url.pathname);
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
 /** Arama motoru açıklaması: 155 karakteri aşarsa kelime sınırında kısalt */
 const metaAciklama = aciklama.length <= 155 ? aciklama : aciklama.slice(0, 152).replace(/\s+\S*$/, '') + '…';
@@ -81,8 +87,19 @@ const kurumJsonLd = {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {anaSayfaMi && (
+      <>
+        {/* HeroSlayt.astro'daki <picture>/<source> ile birebir eşleşen iki preload:
+            mobil dikey kırpma vs. diğer tüm durumlar (masaüstü kırpma). srcset yok
+            çünkü gerçek <picture> de kullanmıyor — tek href, gerçek seçimle örtüşüyor. */}
+        <link rel="preload" as="image" href="/media/hero/hero-1-m.webp" fetchpriority="high"
+              media="(max-width: 720px) and (orientation: portrait)" />
+        <link rel="preload" as="image" href="/media/hero/hero-1.webp" fetchpriority="high"
+              media="not ((max-width: 720px) and (orientation: portrait))" />
+      </>
+    )}
     <meta name="theme-color" content="#b5452b" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogTuru} />
     <meta property="og:site_name" content={t('site.ad')} />
     <meta property="og:title" content={tamBaslik} />
     <meta property="og:description" content={metaAciklama} />
@@ -101,6 +118,7 @@ const kurumJsonLd = {
     <meta name="twitter:image" content={kapakUrl} />
     <noscript><style>.reveal, .serit, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(kurumJsonLd)} />
+    {ekJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
     <slot name="head" />
     <script is:inline>
       // Tema tercihi (localStorage) — sayfa boyanmadan önce uygula
@@ -124,16 +142,9 @@ const kurumJsonLd = {
     </main>
     <Footer dil={dil} />
     <Lightbox dil={dil} />
-    <script>
-      // Bölüm reveal + başlık şeridi: görünür olunca .gorunur; reduced-motion'da CSS zaten devre dışı, JS yalnız sınıfı ekler
-      const r = document.querySelectorAll('.reveal, .serit');
-      if (r.length) {
-        // emniyet: gözlemci ne olursa olsun 2,5 sn içinde her şey görünür
-        setTimeout(() => r.forEach((e) => e.classList.add('gorunur')), 2500);
-        if (!('IntersectionObserver' in window)) r.forEach((e) => e.classList.add('gorunur'));
-        else { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('gorunur'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }); r.forEach((e) => io.observe(e)); }
-      }
-    </script>
+    <!-- Menü/tema, lightbox ve bölüm-reveal mantığı: tek harici dosya, tarayıcı önbelleğe alır
+         (400 sayfada birebir aynı inline betiği tekrarlamamak için, performans denetimi Eylül 2026). -->
+    <script is:inline defer src="/vendor/govde.js"></script>
     <!-- Çerezsiz, anonim ziyaret sayacı (GoatCounter) — ayrıntı gizlilik sayfasında -->
     <script is:inline data-goatcounter="https://ulucamii.goatcounter.com/count" async src="/vendor/sayac.js"></script>
   </body>

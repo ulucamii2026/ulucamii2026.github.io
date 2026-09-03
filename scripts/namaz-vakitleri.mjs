@@ -194,6 +194,14 @@ try {
   process.exit(1);
 }
 
+// dogrula() yalniz 7 gunluk asgariyi zorunlu kilar; asil hedef (icerik.ts) 45 gundur.
+// Kisa pencere build'i kirmaz ama gorevliye erken haber verir.
+const pencere = kalanGun(gunler);
+if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `pencere_gun=${pencere ?? ''}\n`);
+if (pencere !== null && pencere < 45) {
+  console.warn(`[namaz] UYARI: kesintisiz pencere yalnız ${pencere} gün (hedef 45)`);
+}
+
 const ayniMi = eldeki && JSON.stringify(eldeki.gunler) === JSON.stringify(gunler);
 if (ayniMi) {
   console.log(`değişiklik yok: ${gunler.length} gün (${gunler[0].tarih} → ${gunler.at(-1).tarih}) · kontrol kaynağı: ${kaynakAdi}`);

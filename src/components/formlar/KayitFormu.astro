@@ -14,8 +14,8 @@ const k = m.kayit, o = m.ortak;
 
 const bugun = new Date();
 const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
-const dogumMin = tarihStr(new Date(bugun.getFullYear() - 19, bugun.getMonth(), bugun.getDate()));
-const dogumMax = tarihStr(new Date(bugun.getFullYear() - 3, bugun.getMonth(), bugun.getDate()));
+const dogumMin = tarihStr(new Date(bugun.getFullYear() - 18, bugun.getMonth(), bugun.getDate()));
+const dogumMax = tarihStr(new Date(bugun.getFullYear() - 4, bugun.getMonth(), bugun.getDate()));
 
 const okullar = okulVerisi.okullar as Array<{ ad: string; grup: 'marche' | 'cevre'; tur: 'fondamental' | 'secondaire' }>;
 type Sinif = { v: string; tr: string; fr: string; en: string };
@@ -40,6 +40,12 @@ const metinJson = JSON.stringify({
       novalidate autocomplete="on" aria-describedby="k-giris-not">
   <script type="application/json" data-metin set:html={metinJson} />
   <script type="application/json" data-siniflar set:html={sinifJson} />
+
+  <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
+  <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+    <label for="k-web">Web sitenizi bırakmayın</label>
+    <input type="text" id="k-web" name="web" tabindex="-1" autocomplete="off" />
+  </div>
 
   <div class="ucf-taslak" data-taslak-not hidden>
     <span>{o.taslakGeriYuklendi}</span>
@@ -260,7 +266,7 @@ const metinJson = JSON.stringify({
       <div data-alan class="tam">
         <div class="onay-kutu">
           <input id="k-onay-gizlilik" type="checkbox" name="onay.gizlilik" required />
-          <label for="k-onay-gizlilik">{o.gizlilikKutu.gizlilikOkudum} <a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa} ↗</a></label>
+          <label for="k-onay-gizlilik">{o.gizlilikKutu.gizlilikOkudum} <a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa}<span aria-hidden="true"> ↗</span></a></label>
         </div>
         <p class="hata" aria-live="polite" hidden></p>
       </div>

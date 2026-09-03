@@ -19,9 +19,10 @@ permissions:
 jobs:
   guncelle:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
       - name: Diyanet verisini çek
@@ -83,8 +84,41 @@ jobs:
             echo "Değişiklik yok"
             echo "degisti=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Pencere daralıyorsa erken uyarı e-postası (info@ulucamii.be)
+        # dogrula() yalniz 7 gunluk asgariyi zorunlu kilar (icerik.ts hedefi 45 gun);
+        # bu adim build'i kirmadan pencere 14 gunun altina inince gorevliyi erkenden haberdar eder.
+        # Yalniz cekim BASARILIYSA (basarisiz cekimin kendi e-postasi yukarida; ikisi birden gitmesin)
+        # ve gunde en fazla bir kez (sabah cron'u ya da elle calistirma; 11:23 ikinci sans atlanir).
+        if: success() && steps.cek.outputs.pencere_gun != '' && (github.event_name != 'schedule' || github.event.schedule == '47 2 * * *')
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+          PENCERE: ${{ steps.cek.outputs.pencere_gun }}
+        run: |
+          # Her gun degil, esik gunlerinde yaz: 14, 10, 7, 5, 3, 2, 1 (aksi halde iki hafta boyunca gunluk e-posta).
+          case "$PENCERE" in
+            14|10|7|5|3|2|1) ;;
+            *) echo "Pencere $PENCERE gun - esik gunu degil, e-posta gonderilmedi."; exit 0 ;;
+          esac
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] Namaz vakitleri penceresi daralıyor"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Namaz vakitleri penceresi daralıyor - yalnız $PENCERE gün kesintisiz veri var (hedef 45),"
+            echo "Diyanet kaynağında veri boşluğu olabilir. Site şimdilik doğru vakit gösteriyor."
+            echo
+            echo "Kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari-pencere.txt
+          curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd \
+            --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be" \
+            --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari-pencere.txt
       - name: Yayını tetikle (GITHUB_TOKEN push'u deploy'u otomatik başlatmaz)
-        if: steps.commit.outputs.degisti == 'true'
+        # Yalniz 02:47 UTC'lik sabah cron'unda tetiklemeyi atla: deploy.yml'nin kendi
+        # gunluk 03:30 UTC cron'u zaten ~43 dakika icinde ayni veriyi yayimlar. 11:23 UTC'lik
+        # "ikinci sans" cron'u ve elle calistirma (workflow_dispatch/push) icin ATLAMA —
+        # aksi halde o degisiklik ancak ERTESI GUNKU 03:30 cron'unda yayima girer.
+        if: steps.commit.outputs.degisti == 'true' && github.event.schedule != '47 2 * * *'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run deploy.yml --ref main

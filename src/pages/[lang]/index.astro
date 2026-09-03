@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import DuyuruKarti from '../../components/DuyuruKarti.astro';
 import EtkinlikKarti from '../../components/EtkinlikKarti.astro';
 import NamazVakitleri from '../../components/NamazVakitleri';
 import SiradakiVakit from '../../components/SiradakiVakit';
@@ -64,6 +63,7 @@ const m = dil === 'tr' ? {
   tanitim: 'Marche-en-Famenne Ulu Mosque, carried by our association founded in 1979, has served the Muslims of our region with worship, education and mutual support since 1986. Recognised by the Walloon Region as a place of worship and affiliated with the Diyanet Foundation of Belgium, our door is open to neighbours of every background.',
   tanitimCta: 'About us', ziyaret: 'A guide for those wishing to visit the mosque',
   duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
+  fallbackNotu: 'Announcements, events and the weekly schedule below are published in Turkish and French. An English version is not available.',
 } : {
   heroUst: 'Marche-en-Famenne · Belgique · depuis 1979',
   heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne depuis 40 ans.',
@@ -77,12 +77,16 @@ const m = dil === 'tr' ? {
   duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
 };
 const etkinlikGrid = etkinlikler.length >= 3 ? 'md:grid-cols-3' : etkinlikler.length === 2 ? 'sm:grid-cols-2 max-w-4xl' : 'max-w-md';
-const jsonLd = {
-  '@context': 'https://schema.org', '@type': 'Mosque', name: t('site.ad'), alternateName: site.dernekAdi,
-  url: new URL(yol(dil, 'anasayfa'), Astro.site).toString(), telephone: site.telefon.cami, email: site.eposta,
-  address: { '@type': 'PostalAddress', streetAddress: site.adres.sokak, postalCode: site.adres.posta, addressLocality: site.adres.sehir, addressCountry: 'BE' },
+/* Base.astro zaten her sayfada tek bir kurumsal kayıt (kurumJsonLd, @id: #kurum) yayınlıyor.
+   Burada ayrı bir Organization/Mosque bloğu AÇMIYORUZ — aynı @id ile ekJsonLd üzerinden
+   yalnız oradaki kaydın eksik alanlarını (geo, image, alternateName, contactPoint) tamamlıyoruz;
+   foundingDate tekrarlanmıyor ki tek gerçek değer (1979-12-19) çelişkiye düşmesin
+   (3 Eylül 2026 denetimi: önceden bağımsız bir Mosque şeması '1979' yazıyordu). */
+const anaSayfaJsonLd = {
+  '@context': 'https://schema.org', '@type': 'Mosque', '@id': new URL('/#kurum', Astro.site).toString(),
   geo: { '@type': 'GeoCoordinates', latitude: site.gps.enlem, longitude: site.gps.boylam },
-  foundingDate: '1979', sameAs: [site.sosyal.facebook].filter(Boolean), image: new URL('/media/galeri/cami-24.webp', Astro.site).toString(),
+  image: new URL('/media/galeri/cami-24.webp', Astro.site).toString(),
+  alternateName: site.dernekAdi,
   // İki temas noktası: din görevlisi (imam@) ve dernek (info@) — boş alanlar düşer.
   contactPoint: [
     { '@type': 'ContactPoint', contactType: 'imam', telephone: site.telefon.dinGorevlisi, email: site.epostaDinGorevlisi },
@@ -90,9 +94,7 @@ const jsonLd = {
   ].map((c) => Object.fromEntries(Object.entries(c).filter(([, v]) => v))),
 };
 ---
-<Base baslik={t('site.ad')} dil={dil} aciklama={t('site.slogan')}>
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
-
+<Base baslik={t('site.ad')} dil={dil} aciklama={t('site.slogan')} ekJsonLd={[anaSayfaJsonLd]}>
   <!-- ① Hero — gerçek fotoğraf, tek yazılmış giriş hareketi, altında canlı vakit şeridi -->
   <section class="relative overflow-hidden">
     <HeroSlayt dil={dil} />
@@ -100,7 +102,7 @@ const jsonLd = {
       <div class="hero-giris max-w-[46rem]">
         <p class="etiket text-(--color-ochre-acik)">{m.heroUst}</p>
         <h1 class="mt-3 text-(--color-krem) drop-shadow-[0_2px_14px_rgba(0,0,0,.45)] text-[clamp(2.4rem,1.4rem+4vw,4.4rem)]">{t('site.ad')}</h1>
-        <p class="arabic mt-5 text-left text-(--color-ochre-acik) text-[1.6rem] sm:text-[2rem]" lang="ar">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+        <p class="arabic mt-5 text-left text-(--color-ochre-acik) text-[1.6rem] sm:text-[2rem]" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
         <DuyuruSeridi dil={dil} mesajlar={site.heroMesajlar ?? []} />
         <div class="mt-8 flex flex-wrap gap-3">
           <a href={yol(dil, 'namaz')} class="dugme dugme-birincil"><Ikon ad="saat" class="h-5 w-5" />{t('nav.namaz')}</a>
@@ -151,6 +153,7 @@ const jsonLd = {
         <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>
         <span class="serit" aria-hidden="true"></span>
         <p class="mt-3 mb-5 text-sm text-(--metin-2)">{m.buHaftaAlt}</p>
+        {dil === 'en' && <p class="bilgi text-sm mb-4">{m.fallbackNotu}</p>}
         <BuHafta dil={dil} program={site.haftalikProgram} bugunIdx={bugunGun} />
       </div>
     </div>
@@ -163,6 +166,7 @@ const jsonLd = {
       <a href={yol(dil, 'duyurular')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumDuyuru} <Ikon ad="ok" class="h-4 w-4" /></a>
     </div>
     <span class="serit mb-6" aria-hidden="true"></span>
+    {dil === 'en' && <p class="bilgi text-sm mb-6">{m.fallbackNotu}</p>}
     {oneCikan ? (
       <div class="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
         <article class="kart overflow-hidden flex flex-col">

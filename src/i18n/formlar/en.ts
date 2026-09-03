@@ -7,7 +7,6 @@ export const en: FormMetinleri = {
     istegeBagli: 'optional',
     gonder: 'Submit the form',
     gonderiliyor: 'Submitting…',
-    tekrarDene: 'Try again',
     anasayfa: 'Back to homepage',
     taslakGeriYuklendi: 'The form you had started on this device has been restored.',
     taslakSil: 'Delete draft and start over',

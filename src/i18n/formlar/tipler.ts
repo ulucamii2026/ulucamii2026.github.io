@@ -7,7 +7,6 @@ export interface OrtakMetinler {
   istegeBagli: string;
   gonder: string;
   gonderiliyor: string;
-  tekrarDene: string;
   anasayfa: string;
   taslakGeriYuklendi: string;
   taslakSil: string;

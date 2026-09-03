@@ -43,6 +43,8 @@ export interface Metinler {
 }
 
 const ZAMAN_ASIMI_MS = 60_000;
+// Kullanıcı "hareketi azalt" tercih ettiyse otomatik kaydırma animasyonlarını kapat.
+const AZALTILMIS_HAREKET = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export function doldur(metin: string, degerler: Record<string, string | number>): string {
   return metin.replace(/\{(\w+)\}/g, (_, k) => (k in degerler ? String(degerler[k]) : `{${k}}`));
@@ -219,7 +221,7 @@ function kaydirmaKilidiKur(form: HTMLFormElement) {
     const ilk = () => { if (kutu.clientHeight > 0) kontrol(); };
     requestAnimationFrame(ilk);
     kilit.closest('[data-alan]')?.addEventListener('click', () => {
-      if (kilit.disabled) { kutu.scrollIntoView({ behavior: 'smooth', block: 'center' }); not?.classList.add('dikkat'); }
+      if (kilit.disabled) { kutu.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' }); not?.classList.add('dikkat'); }
     });
   });
 }
@@ -263,7 +265,29 @@ export function alanlariDoldur(form: HTMLFormElement, degerler: Record<string, s
 
 /* ---------- ana giriş ---------- */
 
+/** Her [data-alan] kabındaki .yardim/.hata paragraflarına kararlı id verir ve içindeki
+ *  alanları aria-describedby ile bu id'lere bağlar (ekran okuyucu hata metnini duysun diye). */
+function hataIdleriKur(form: HTMLFormElement) {
+  form.querySelectorAll<HTMLElement>('[data-alan]').forEach((kap) => {
+    const hata = kap.querySelector<HTMLElement>('.hata');
+    const yardim = kap.querySelector<HTMLElement>('.yardim');
+    const alanlarBu = Array.from(kap.querySelectorAll<Alan>('input[name], select[name], textarea[name]'));
+    if (!alanlarBu.length) return;
+    const taban = (alanlarBu[0].id || alanlarBu[0].name).replace(/[^a-zA-Z0-9_-]/g, '-');
+    const idler: string[] = [];
+    if (yardim) { if (!yardim.id) yardim.id = `${taban}-yardim`; idler.push(yardim.id); }
+    if (hata) { if (!hata.id) hata.id = `${taban}-hata`; idler.push(hata.id); }
+    if (!idler.length) return;
+    for (const a of alanlarBu) {
+      const mevcut = (a.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+      const birlesik = Array.from(new Set([...mevcut, ...idler])).join(' ');
+      a.setAttribute('aria-describedby', birlesik);
+    }
+  });
+}
+
 export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
+  hataIdleriKur(form);
   const m = JSON.parse(form.querySelector('script[data-metin]')?.textContent || '{}') as Metinler;
   const taslakAnahtari = form.dataset.taslak || `ulucamii:${form.dataset.form}:v2`;
   const mesaj = form.querySelector<HTMLElement>('[data-mesaj]');
@@ -274,7 +298,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   const mesajGoster = (metin: string | null, tur: 'hata' | 'bilgi' = 'hata') => {
     if (!mesaj) return;
     mesaj.hidden = !metin; mesaj.textContent = metin ?? ''; mesaj.dataset.tur = tur;
-    if (metin) mesaj.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (metin) mesaj.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
   };
 
   // Taslak
@@ -344,6 +368,11 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     e.preventDefault();
     tumHatalariTemizle(form); mesajGoster(null);
     const veriler = verileriTopla(form);
+    if ((form.querySelector<HTMLInputElement>('input[name="web"]')?.value ?? '').trim() !== '') {
+      // Honeypot doldurulmuş: bot. Kullanıcıya normal başarı görünümü göster, sunucuya istek atma.
+      basariGoster(form, 'BOT-' + Date.now().toString(36), '', m);
+      return;
+    }
     const hatalar: Array<[string, string]> = [];
     for (const a of alanlar(form)) {
       if (a instanceof HTMLInputElement && a.type === 'radio' && hatalar.some(([ad]) => ad === a.name)) continue;
@@ -355,7 +384,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       for (const [ad, h] of hatalar) hataYaz(form, ad, h);
       mesajGoster(m.hata.formHatali);
       const ilk = form.querySelector<Alan>(`[name="${CSS.escape(hatalar[0][0])}"]`);
-      ilk?.closest('[data-alan]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      ilk?.closest('[data-alan]')?.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
       window.setTimeout(() => ilk?.focus({ preventScroll: true }), 350);
       return;
     }
@@ -404,6 +433,6 @@ function basariGoster(form: HTMLFormElement, ref: string, eposta: string, m: Met
   document.querySelectorAll<HTMLElement>('[data-form-ust]').forEach((el) => { el.hidden = true; });
   panel.hidden = false;
   panel.setAttribute('tabindex', '-1');
-  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  panel.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'start' });
   panel.focus({ preventScroll: true });
 }

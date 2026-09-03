@@ -16,8 +16,8 @@ display_url: https://ulucamii.be
 logo_url: /media/logo/ulu-camii-logo-madalyon.png
 locale: tr
 
-media_folder: public/media/yuklenen
-public_folder: /media/yuklenen
+media_folder: public/media
+public_folder: /media
 media_libraries:
   default:
     config:
@@ -63,7 +63,7 @@ collections:
       - { name: baslik, label: Başlık, widget: string, i18n: true }
       - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, i18n: duplicate }
       - { name: ozet, label: Özet (liste ve paylaşım metni), widget: text, required: false, i18n: true, hint: "En fazla 300 karakter.", pattern: ["^[\\s\\S]{0,300}$", "En fazla 300 karakter"] }
-      - { name: kapak, label: Kapak görseli, widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
+      - { name: kapak, label: Kapak görseli, widget: image, required: false, i18n: duplicate, media_folder: public/media/duyurular, public_folder: /media/duyurular }
       - { name: kapakAlt, label: Görsel açıklaması (erişilebilirlik), widget: string, required: false, i18n: true }
       - name: galeri
         label: Fotoğraf galerisi
@@ -73,8 +73,8 @@ collections:
         i18n: duplicate
         default: []
         fields:
-          - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
-          - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/yuklenen/duyurular, public_folder: /media/yuklenen/duyurular }
+          - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/duyurular, public_folder: /media/duyurular }
+          - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/duyurular, public_folder: /media/duyurular }
           - { name: alt, label: Açıklama, widget: string, required: false }
       - { name: etiketler, label: Etiketler, widget: list, required: false, i18n: duplicate, default: [] }
       - { name: oneCikan, label: Öne çıkan, widget: boolean, default: false, i18n: duplicate }
@@ -99,8 +99,8 @@ collections:
       - { name: bitis, label: Bitiş tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
       - { name: saat, label: Saat / program notu, widget: string, required: false, i18n: true }
       - { name: yer, label: Yer, widget: string, required: false, i18n: true, default: "Marche-en-Famenne Ulu Camii" }
-      - { name: afis, label: Afiş (büyük görsel), widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/afisler, public_folder: /media/yuklenen/afisler }
-      - { name: afisKucuk, label: Afiş küçük hâli (isteğe bağlı), widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/afisler, public_folder: /media/yuklenen/afisler, hint: "Boş bırakılırsa büyük afiş kullanılır." }
+      - { name: afis, label: Afiş (büyük görsel), widget: image, required: false, i18n: duplicate, media_folder: public/media/etkinlikler, public_folder: /media/etkinlikler }
+      - { name: afisKucuk, label: Afiş küçük hâli (isteğe bağlı), widget: image, required: false, i18n: duplicate, media_folder: public/media/etkinlikler, public_folder: /media/etkinlikler, hint: "Boş bırakılırsa büyük afiş kullanılır." }
       - { name: ozet, label: Kısa açıklama, widget: text, required: false, i18n: true }
       - name: galeri
         label: Fotoğraf galerisi
@@ -110,8 +110,8 @@ collections:
         i18n: duplicate
         default: []
         fields:
-          - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/yuklenen/etkinlikler, public_folder: /media/yuklenen/etkinlikler }
-          - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/yuklenen/etkinlikler, public_folder: /media/yuklenen/etkinlikler }
+          - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/etkinlikler, public_folder: /media/etkinlikler }
+          - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/etkinlikler, public_folder: /media/etkinlikler }
           - { name: alt, label: Açıklama, widget: string, required: false }
       - name: kategori
         label: Kategori
@@ -143,8 +143,8 @@ collections:
     fields:
       - { name: baslik, label: Başlık, widget: string, i18n: true }
       - { name: altBaslik, label: Alt başlık, widget: string, required: false, i18n: true }
-      - { name: aciklama, label: Arama motoru açıklaması, widget: string, required: false, i18n: true, hint: "En fazla 160 karakter.", pattern: ["^.{0,200}$", "En fazla 200 karakter"] }
-      - { name: kapak, label: Üst görsel, widget: image, required: false, i18n: duplicate, media_folder: public/media/yuklenen/sayfalar, public_folder: /media/yuklenen/sayfalar }
+      - { name: aciklama, label: Arama motoru açıklaması, widget: string, required: false, i18n: true, hint: "En fazla 200 karakter.", pattern: ["^.{0,200}$", "En fazla 200 karakter"] }
+      - { name: kapak, label: Üst görsel, widget: image, required: false, i18n: duplicate, media_folder: public/media/sayfalar, public_folder: /media/sayfalar }
       - { name: guncelleme, label: Son güncelleme, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
 
@@ -191,7 +191,7 @@ collections:
       - { name: vefat, label: Vefat tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
       - { name: dogumYili, label: Doğum yılı, widget: number, value_type: int, required: false }
       - { name: memleket, label: Memleketi, widget: string, required: false }
-      - { name: foto, label: Fotoğraf (isteğe bağlı, aile izniyle), widget: image, required: false, media_folder: public/media/yuklenen/vefat, public_folder: /media/yuklenen/vefat }
+      - { name: foto, label: Fotoğraf (isteğe bağlı, aile izniyle), widget: image, required: false, media_folder: public/media/vefat, public_folder: /media/vefat }
       - name: cenazeNamazi
         label: Cenaze namazı
         widget: object
@@ -276,6 +276,12 @@ collections:
                   - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
                   - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
               - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
+              - name: servisler
+                label: Servisler (arka uç bağlantıları)
+                widget: object
+                fields:
+                  - { name: basvuru, label: "Kayıt/başvuru formu betiği (Apps Script) URL'si", widget: string, hint: "Google Apps Script web uygulaması dağıtım adresi (…/exec ile biten link)." }
+              - { name: imsakiyePdf, label: "Yıllık imsakiye PDF bağlantısı (diyanet.be)", widget: string, required: false }
               - name: sosyal
                 label: Sosyal medya
                 widget: object

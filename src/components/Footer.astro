@@ -10,7 +10,7 @@ const yil = new Date().getFullYear();
 const adresSatir = `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}`;
 const haritaUrl = `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
-const diyanetBaslik = dil === 'tr' ? 'Diyanet' : dil === 'en' ? 'Diyanet' : 'Diyanet';
+const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)' }[dil];
 const diyanetLinkler = [
   { h: 'https://www.diyanet.tv/canli-izle', ad: dil === 'tr' ? 'Diyanet TV canlı yayın' : dil === 'en' ? 'Diyanet TV live' : 'Diyanet TV en direct', logo: '/media/dis-logolar/diyanet-tv.png', g: 135, y: 36 },
   { h: 'https://www.diyanet.gov.tr', ad: dil === 'tr' ? 'Diyanet İşleri Başkanlığı' : dil === 'en' ? 'Presidency of Religious Affairs (Türkiye)' : 'Présidence des Affaires religieuses (Türkiye)', logo: '/media/dis-logolar/diyanet.png', g: 36, y: 36 },
@@ -37,15 +37,17 @@ const siteLinkleri = [
       <p class="mt-3 text-sm text-(--metin-2)">{site.dernekAdi} ({site.kisaltma}) · {site.hukukiForm} · KBO/BCE <span class="mono">{site.kbo}</span></p>
       <div class="mt-3 flex flex-wrap items-center gap-2">
         {site.sosyal.facebook && (
-          <a href={site.sosyal.facebook} rel="noopener" target="_blank" aria-label="Facebook" title="Facebook"
+          <a href={site.sosyal.facebook} rel="noopener" target="_blank" aria-label={`Facebook ${disKaynak}`} title="Facebook"
              class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#1877F2] hover:opacity-85 transition-opacity shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.85c0-.84.23-1.41 1.44-1.41h1.54V4.85c-.27-.04-1.18-.11-2.24-.11-2.22 0-3.74 1.35-3.74 3.83v2.14H8v2.9h2.44V21h3.06Z"/></svg>
+            <span class="sr-only"> {disKaynak}</span>
           </a>
         )}
         {diyanetLinkler.map((l) => (
           <a href={l.h} rel="noopener" target="_blank" title={l.ad}
              class="flex items-center rounded-lg border border-(--cizgi) bg-[#f7f3ea] px-2 py-1 no-underline hover:border-(--vurgu) hover:-translate-y-px transition-all">
             <img src={l.logo} alt={l.ad} width={l.g} height={l.y} class="h-6 w-auto" loading="lazy" decoding="async" />
+            <span class="sr-only"> {disKaynak}</span>
           </a>
         ))}
       </div>

@@ -3,8 +3,9 @@ import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import SayfaBasligi from '../../../components/SayfaBasligi.astro';
 import { yollar, type Dil } from '../../../i18n/ui';
-import { ceviri, yol, tarihBicimle } from '../../../i18n/utils';
-import { duyurular, etkinlikler } from '../../../lib/icerik';
+import { ceviri, yol, tarihBicimle, hreflangKodu } from '../../../i18n/utils';
+import { duyurular, etkinlikler, siteAyarlari } from '../../../lib/icerik';
+import { etkinlikIcsUret, saatAyristir, brukselYerelSaatiUtcyeCevir } from '../../../lib/ics';
 
 export async function getStaticPaths() {
   const out: any[] = [];
@@ -36,14 +37,96 @@ const buyutNotu = dil === 'tr' ? 'Büyütmek için tıklayın' : dil === 'en' ? 
 const enNotu = tur === 'duyuru'
   ? 'This announcement is published in Turkish and French. An English version is not available.'
   : 'This event is published in Turkish and French. An English version is not available.';
+/* İngilizce sayfada <meta name="description">/og:description Fransızca özete düşüyordu (icerikDili
+   fallback'i) — hreflang="en" içerik diliyle çelişiyordu. Arama sonucu/paylaşım kartı artık önce
+   bu notu, ardından mevcut özeti gösteriyor (25 Ağustos 2026 denetim turu 4, seo-yapisal#1). */
+const enMetaOneki = tur === 'duyuru'
+  ? 'This announcement is available in Turkish and French only. '
+  : 'This event is available in Turkish and French only. ';
+const enAciklama = dil === 'en' ? enMetaOneki + (d.ozet ?? '') : d.ozet;
+
+const kanonikUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const waMetin = `${d.baslik} — ${kanonikUrl}`;
+const waEtiket = dil === 'tr' ? "WhatsApp'ta paylaş" : dil === 'en' ? 'Share on WhatsApp' : 'Partager sur WhatsApp';
+
+/* Yapısal veri: sitewide Organization'ın yanına sayfaya özel NewsArticle/Event + BreadcrumbList
+   (zengin arama sonuçları için, seo-yapisal#3 + iyilestirme#5). Adres kurumJsonLd ile aynı kaynaktan. */
+const site = await siteAyarlari();
+const kurumId = new URL('/#kurum', Astro.site).toString();
+const mutlakGorsel = kapak ? new URL(kapak, Astro.site).toString() : undefined;
+const camiAdresi = { '@type': 'PostalAddress', streetAddress: site.adres.sokak, postalCode: site.adres.posta, addressLocality: site.adres.sehir, addressCountry: 'BE' };
+const anaSayfaEtiket = dil === 'tr' ? 'Ana Sayfa' : dil === 'en' ? 'Home' : 'Accueil';
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: anaSayfaEtiket, item: new URL(yol(dil, 'anasayfa'), Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: etiket, item: new URL(geri, Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: d.baslik, item: kanonikUrl },
+  ],
+};
+/* Event startDate: içerikteki 'saat' alanı ayrıştırılabiliyorsa (ör. "20.00") Europe/Brussels
+   yerel saati olarak doğru UTC ana çevrilir; aksi hâlde (serbest metin saat) tarih-yalnız
+   (00:00Z) davranışı korunur — .ics üretimiyle (lib/ics.ts) aynı mantık (jsonld#3). */
+const etkinlikSaati = tur === 'etkinlik' ? saatAyristir(d.saat) : null;
+const etkinlikBaslangicTarihi: Date = etkinlikSaati
+  ? brukselYerelSaatiUtcyeCevir(
+      (d.baslangic as Date).getUTCFullYear(),
+      (d.baslangic as Date).getUTCMonth(),
+      (d.baslangic as Date).getUTCDate(),
+      etkinlikSaati.saat,
+      etkinlikSaati.dakika,
+    )
+  : (d.baslangic as Date);
+const icerikJsonLd = tur === 'duyuru'
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      headline: d.baslik,
+      datePublished: (d.tarih as Date).toISOString(),
+      ...(mutlakGorsel ? { image: [mutlakGorsel] } : {}),
+      author: { '@id': kurumId },
+      publisher: { '@id': kurumId },
+      inLanguage: hreflangKodu(dil),
+      mainEntityOfPage: kanonikUrl,
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      name: d.baslik,
+      /* Saat yoksa schema.org'un salt-tarih biçimi (YYYY-MM-DD): "00:00Z" gece 02:00 diye okunmasın. */
+      startDate: etkinlikSaati ? etkinlikBaslangicTarihi.toISOString() : etkinlikBaslangicTarihi.toISOString().slice(0, 10),
+      ...(d.bitis
+        ? { endDate: etkinlikSaati
+            ? brukselYerelSaatiUtcyeCevir((d.bitis as Date).getUTCFullYear(), (d.bitis as Date).getUTCMonth(), (d.bitis as Date).getUTCDate(), etkinlikSaati.saat, etkinlikSaati.dakika).toISOString()
+            : (d.bitis as Date).toISOString().slice(0, 10) }
+        : {}),
+      location: d.yer
+        ? { '@type': 'Place', name: d.yer, address: camiAdresi }
+        : { '@type': 'Place', name: 'Ulu Camii', address: camiAdresi },
+      ...(mutlakGorsel ? { image: [mutlakGorsel] } : {}),
+      organizer: { '@id': kurumId },
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+    };
+const ekJsonLd = [icerikJsonLd, breadcrumbJsonLd];
+
+/* "Takvime ekle" (.ics): yalnız etkinliklerde, data: URI ile (statik dosya/derleme bağımlılığı yok). */
+const icsHref = tur === 'etkinlik'
+  ? `data:text/calendar;charset=utf-8,${encodeURIComponent(etkinlikIcsUret({ slug: entry.slug, baslik: d.baslik, baslangic: d.baslangic, bitis: d.bitis, saat: d.saat, yer: d.yer }, dil))}`
+  : undefined;
 ---
-<Base baslik={d.baslik} dil={dil} aciklama={d.ozet} kapak={kapak}>
+<Base baslik={d.baslik} dil={dil} aciklama={enAciklama} kapak={kapak} ogTuru="article" ekJsonLd={ekJsonLd}>
   <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet}>
     <p class="etiket mt-4">
       <time datetime={tarih.toISOString()}>{tarihBicimle(tarih, dil)}</time>
       {tur === 'etkinlik' && d.bitis && d.bitis.getTime() !== d.baslangic.getTime() && <span> – {tarihBicimle(d.bitis, dil)}</span>}
       {tur === 'etkinlik' && d.saat && <span> · {d.saat}</span>}
       {tur === 'etkinlik' && d.yer && <span> · {t('etkinlik.yer')}: {d.yer}</span>}
+    </p>
+    <p class="mt-2 text-sm">
+      <a href={`https://wa.me/?text=${encodeURIComponent(waMetin)}`} target="_blank" rel="noopener">{waEtiket}<span aria-hidden="true"> ↗</span></a>
+      {icsHref && <>{' · '}<a href={icsHref} download={`${entry.slug}.ics`}>{t('etkinlik.takvimeEkle')}</a></>}
     </p>
   </SayfaBasligi>
   {dil === 'en' && <div class="kapsayici pt-6"><p class="bilgi text-sm">{enNotu}</p></div>}

@@ -1,18 +1,18 @@
 ---
 baslik: "Semaine du Mawlid : envoyé comme miséricorde pour l'univers"
 tarih: 2026-08-27
-ozet: "Du 24 au 30 août 2026, nous vivons la Semaine du Mawlid (Mevlid-i Nebî). Que signifie « mawlid », pourquoi cette semaine à ces dates, quel est le sens de la commémoration de la naissance du Prophète ? Nous adressons nos vœux à notre communauté."
+ozet: "Du 24 au 30 août 2026, nous avons vécu la Semaine du Mawlid (Mevlid-i Nebî). Que signifie « mawlid », pourquoi cette semaine à ces dates, quel est le sens de la commémoration de la naissance du Prophète ? Nous avons adressé nos vœux à notre communauté."
 kapak: /media/duyurular/mevlid-i-nebi-haftasi-2026.webp
 kapakAlt: "Visuel de la Semaine du Mawlid 2026 — verset 107 de la sourate Al-Anbiya : Nous ne t'avons envoyé que comme miséricorde pour l'univers"
 etiketler:
   - mevlid
   - diyanet
-oneCikan: true
+oneCikan: false
 ---
 
 <div class="bilgi"><p><strong>Semaine du Mawlid : du 24 au 30 août 2026.</strong> La semaine commence avec la Nuit du Mawlid, observée dans la nuit du lundi 24 au mardi 25 août.</p></div>
 
-Nous voici à l'anniversaire du jour où le Prophète de la miséricorde est venu au monde. La Nuit du Mawlid a été observée dans la nuit du lundi 24 au mardi 25 août ; la **Semaine du Mawlid**, qui commence avec cette nuit, se poursuit jusqu'au dimanche 30 août au soir.
+Nous voici à l'anniversaire du jour où le Prophète de la miséricorde est venu au monde. La Nuit du Mawlid a été observée dans la nuit du lundi 24 au mardi 25 août ; la **Semaine du Mawlid**, qui a commencé avec cette nuit, s'est poursuivie jusqu'au dimanche 30 août au soir.
 
 Nous adressons nos meilleurs vœux à notre communauté et à l'ensemble du monde musulman, et nous prions pour que cette semaine apporte la sérénité à nos cœurs, la bénédiction à nos foyers et la paix à l'humanité.
 

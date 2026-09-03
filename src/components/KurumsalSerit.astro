@@ -53,6 +53,7 @@ function sonSozcuk(metin: string) {
 }
 const bagli = sonSozcuk(m.baglilik);
 const uye = sonSozcuk(m.uyelik);
+const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)' }[dil];
 ---
 <aside class="bg-(--zemin-2) border-b border-(--cizgi)" aria-label={m.bolge}>
   <div class="kapsayici py-3 flex flex-wrap items-center justify-start sm:justify-center gap-x-10 gap-y-3">
@@ -61,7 +62,7 @@ const uye = sonSozcuk(m.uyelik);
       <span class="plaka">
         <img src="/media/dis-logolar/diyanet.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
       </span>
-      <span class="metin">{bagli.bas} <span class="son">{bagli.son}<Bayrak dil="tr" class="" /></span></span>
+      <span class="metin">{bagli.bas} <span class="son">{bagli.son}<Bayrak dil="tr" class="" /></span></span><span class="sr-only"> {disKaynak}</span>
     </a>
 
     <!-- Üyelik: BDV'nin dairesel amblemi — çevresinde kurumun adı yazılı olduğu için
@@ -71,7 +72,7 @@ const uye = sonSozcuk(m.uyelik);
       <span class="plaka">
         <img src="/media/dis-logolar/bdv-amblem.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
       </span>
-      <span class="metin">{uye.bas} <span class="son">{uye.son}<Bayrak dil="fr" class="" /></span></span>
+      <span class="metin">{uye.bas} <span class="son">{uye.son}<Bayrak dil="fr" class="" /></span></span><span class="sr-only"> {disKaynak}</span>
     </a>
   </div>
 </aside>

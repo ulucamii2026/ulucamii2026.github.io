@@ -7,7 +7,6 @@ export const tr: FormMetinleri = {
     istegeBagli: 'isteğe bağlı',
     gonder: 'Formu gönder',
     gonderiliyor: 'Gönderiliyor…',
-    tekrarDene: 'Tekrar dene',
     anasayfa: 'Ana sayfaya dön',
     taslakGeriYuklendi: 'Daha önce bu cihazda başladığınız form geri yüklendi.',
     taslakSil: 'Taslağı sil ve boş başla',

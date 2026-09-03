@@ -19,25 +19,31 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Depoyu al
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Astro ile derle ve yükle
-        uses: withastro/action@v6
+        uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
         with:
           node-version: 24
           package-manager: npm@latest
+      # Kritik kapı: namaz vakti kaynağı Diyanet değilse (site-denetim.mjs:171)
+      # betik hata koduyla çıkar ve bu adım build'i düşürür.
+      - name: Site denetimi (yalnız kritik)
+        run: node scripts/site-denetim.mjs
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: GitHub Pages'e yayınla
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
   # Yayin zinciri sessizce kirilmasin: build ya da deploy dustugunde haber gelir
   # (namaz vakitleri isinde uyari vardi, burada yoktu — 25 Agustos 2026 denetimi).
@@ -45,6 +51,7 @@ jobs:
     needs: [build, deploy]
     if: failure()
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Başarısızsa uyarı e-postası (info@ulucamii.be)
         env:

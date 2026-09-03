@@ -189,6 +189,12 @@ for (const d of ['fr', 'en']) {
   const ayarMetni = existsSync(ayarYolu) ? readFileSync(ayarYolu, 'utf8') : '';
   const normTel = (t) => '+' + String(t).replace(/\D/g, '');
   const tanimliTel = new Set((ayarMetni.match(/\+\d[\d\s.() -]{7,}/g) || []).map(normTel));
+  /* Ayarlarda olmayan ama bir duyuruda MESRU olarak gecen dis kurum numaralari (duyurunun konusu
+     olan kurumun kendi irtibati). Eklerken yanina kurumu ve duyuruyu yaz; bizim numaralarimiz
+     buraya degil site.yaml'a girer. */
+  const disKurumTel = new Set([
+    '+32498399502', // Imam-i Azam Egitim Merkezi (BDV) — 2026 hafta sonu yatili Kur'an kursu duyurusu
+  ]);
   const tanimliEposta = new Set((ayarMetni.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || []));
   // Altyapi hesabi: GitHub/Drive/Firebase sahipligi icin; sitede GOSTERILMEZ (22 Agu 2026 kurali).
   const YASAK_EPOSTA = ['ulucamii2026@gmail.com'];
@@ -215,7 +221,7 @@ for (const d of ['fr', 'en']) {
   }
   if (!tanimliTel.size) ekle('orta', 'iletisim denetimi calismadi', 'site.yaml okunamadi');
   for (const [tel, yerler] of telSayim) {
-    if (!tanimliTel.has(tel)) ekle('yuksek', 'ayarlarda tanimli olmayan telefon', `${tel} → ${[...yerler].slice(0, 3).join(', ')}`);
+    if (!tanimliTel.has(tel) && !disKurumTel.has(tel)) ekle('yuksek', 'ayarlarda tanimli olmayan telefon', `${tel} → ${[...yerler].slice(0, 3).join(', ')}`);
   }
   for (const [eposta, yerler] of epostaSayim) {
     if (YASAK_EPOSTA.includes(eposta)) ekle('yuksek', 'altyapi e-postasi sitede gorunuyor', `${eposta} → ${[...yerler].slice(0, 3).join(', ')}`);

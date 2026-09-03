@@ -23,6 +23,7 @@ import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Ikon from '../components/Ikon.astro';
 import { ceviri, yol } from '../i18n/utils';
 import { siteAyarlari } from '../lib/icerik';
+import { HAC_SON_GUN, HAC_DUYURU_SLUG, UMRE_SON_GUN, UMRE_DUYURU_SLUG } from '../lib/etkinlik-tarihleri';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
@@ -33,15 +34,6 @@ type IkonAd = 'harita' | 'cenaze' | 'bagis' | 'kurs' | 'takvim' | 'kurban' | 'hu
 interface Kart { ikon: IkonAd; baslik: string; ozet: string; href: string; eylem: string; disLink?: boolean }
 interface Grup { baslik: string; kartlar: Kart[] }
 
-/* Hac ön kaydı süreli bir işlem: bittiğinde vurgu kendiliğinden kalkar. */
-const HAC_SON_GUN = new Date('2026-09-30T23:59:59+02:00');
-/* Koşullar, gerekli belgeler ve IBAN kendi duyurumuzda — cemaat dış siteyi didiklemesin. */
-const HAC_DUYURU = '2027-hac-on-kayit-son-gunler';
-/* Umre de süreli: Taif ziyaretli Aralık umresinin son başvurusu 20 Kasım 2026
-   (Belçika kışa 25 Ekim'de geçtiği için +01:00). Tarih geçince şerit genel
-   anlatıma döner — site her gün yeniden yayımlandığından kendiliğinden olur. */
-const UMRE_SON_GUN = new Date('2026-11-20T23:59:59+01:00');
-const UMRE_DUYURU = 'taif-ziyaretli-aralik-umresi';
 const umreAcik = Date.now() <= UMRE_SON_GUN.getTime();
 const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
 const hacSonTarih = { tr: '30 Eylül 2026', fr: '30 septembre 2026', en: '30 September 2026' }[dil];
@@ -258,7 +250,7 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
           {m.hac.eylem}<span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span>
         </a>
         {hacAcik && (
-          <a href={yol(dil, 'duyurular', HAC_DUYURU)} class="metin-baglanti text-sm underline underline-offset-4">
+          <a href={yol(dil, 'duyurular', HAC_DUYURU_SLUG)} class="metin-baglanti text-sm underline underline-offset-4">
             {m.hac.ayrinti} <span aria-hidden="true">→</span>
           </a>
         )}
@@ -273,7 +265,7 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
         </div>
         <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1">
           {umreAcik && (
-            <a href={yol(dil, 'duyurular', UMRE_DUYURU)} class="metin-baglanti text-sm underline underline-offset-4">
+            <a href={yol(dil, 'duyurular', UMRE_DUYURU_SLUG)} class="metin-baglanti text-sm underline underline-offset-4">
               {m.umre.ayrinti} <span aria-hidden="true">→</span>
             </a>
           )}

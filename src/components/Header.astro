@@ -108,36 +108,6 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
     </div>
   </nav>
 </header>
-<script>
-  const dugme = document.getElementById('menu-dugme');
-  const menu = document.getElementById('mobil-menu');
-  dugme?.addEventListener('click', () => {
-    const acik = menu?.classList.toggle('hidden') === false;
-    dugme.setAttribute('aria-expanded', String(acik));
-  });
-  document.getElementById('tema-dugme')?.addEventListener('click', () => {
-    const root = document.documentElement;
-    const koyu = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    const yeni = koyu ? 'light' : 'dark';
-    root.dataset.theme = yeni;
-    try { localStorage.setItem('tema', yeni); } catch {}
-  });
-  // Masaüstü açılır gruplar: tıkla/klavye ile aç, dışarı tıklama veya Escape ile kapat, hover ile de açılır
-  const gruplar = Array.from(document.querySelectorAll<HTMLElement>('[data-grup]'));
-  const kapatHepsi = (haric?: HTMLElement) => gruplar.forEach((g) => { if (g !== haric) { g.querySelector('button')?.setAttribute('aria-expanded', 'false'); g.querySelector('.acilir')?.classList.add('hidden'); } });
-  gruplar.forEach((g) => {
-    const b = g.querySelector('button')!; const u = g.querySelector('.acilir')!; let zaman = 0; let fareyle = false;
-    const ac = () => { kapatHepsi(g); b.setAttribute('aria-expanded', 'true'); u.classList.remove('hidden'); };
-    const kapat = () => { b.setAttribute('aria-expanded', 'false'); u.classList.add('hidden'); };
-    // fareyle üzerine gelince açılır; o sırada tıklama kapatmaz (klavye/dokunmatik için tıklama aç/kapat yapar)
-    b.addEventListener('click', () => { if (fareyle && b.getAttribute('aria-expanded') === 'true') return; b.getAttribute('aria-expanded') === 'true' ? kapat() : ac(); });
-    g.addEventListener('mouseenter', () => { clearTimeout(zaman); fareyle = true; ac(); });
-    g.addEventListener('mouseleave', () => { fareyle = false; zaman = window.setTimeout(kapat, 180); });
-    g.addEventListener('focusout', (e) => { if (!g.contains(e.relatedTarget as Node)) kapat(); });
-  });
-  document.addEventListener('click', (e) => { if (!gruplar.some((g) => g.contains(e.target as Node))) kapatHepsi(); });
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return; kapatHepsi();
-    if (menu && !menu.classList.contains('hidden')) { menu.classList.add('hidden'); dugme?.setAttribute('aria-expanded', 'false'); dugme?.focus(); }
-  });
-</script>
+<!-- Menü/tema betiği artık /vendor/govde.js içinde (Base.astro'da tek sefer yüklenir) — her sayfada
+     birebir aynı inline betiği tekrarlamamak için (performans denetimi, Eylül 2026). -->
+
