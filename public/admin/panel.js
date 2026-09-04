@@ -446,18 +446,22 @@ const kosuMetni = (k, iyiMetin, kotuMetin) => {
 async function durumYukle() {
   const sira = ++durumSira;
   const yokla = async (u) => { try { const r = await fetch(u, { method: 'HEAD', cache: 'no-store' }); return r.ok; } catch { return false; } };
-  const kosu = async (wf) => {
+  /* Tek istekte son 40 koşu (saatlik uptime + günlük deploy/namaz bir güne sığar): anahtarsız GitHub API'si
+     saatte 60 istek tanır; iş akışı başına ayrı istek bu payı üç kat hızlı tüketiyordu (5 Eyl 2026 canlı test). */
+  const kosular = async () => {
     try {
-      const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${wf}/runs?per_page=1`);
+      const r = await fetch(`https://api.github.com/repos/${REPO}/actions/runs?per_page=40`);
       if (r.status === 403 || r.status === 429) return { githubSinir: true };
-      const j = await r.json(); return (j.workflow_runs || [])[0] || null;
+      const j = await r.json(); const son = {};
+      for (const k of (j.workflow_runs || [])) { const ad = String(k.path || '').split('/').pop(); if (!son[ad]) son[ad] = k; }
+      return son;
     } catch { return null; }
   };
   const durumJson = async () => { try { const r = await fetch('/admin/durum.json', { cache: 'no-store' }); return r.ok ? await r.json() : null; } catch { return null; } };
-  const [site, kayit, yayin, uptime, namazKosu, d] = await Promise.all([
-    yokla('/tr/'), yokla('/kayit/'), kosu('deploy.yml'), kosu('uptime.yml'), kosu('namaz-vakitleri.yml'), durumJson(),
-  ]);
+  const [site, kayit, hepsi, d] = await Promise.all([yokla('/tr/'), yokla('/kayit/'), kosular(), durumJson()]);
   if (sira !== durumSira) return;   // bu arada Yenile'ye yeniden basıldı; eski cevap ekranı ezmesin
+  const kosu = (ad) => !hepsi ? null : (hepsi.githubSinir ? hepsi : (hepsi[ad] || null));
+  const yayin = kosu('deploy.yml'), uptime = kosu('uptime.yml'), namazKosu = kosu('namaz-vakitleri.yml');
   pilYaz('pil-site', site ? 'iyi' : 'kotu', site ? 'yayında' : 'ERİŞİLEMİYOR');
   pilYaz('pil-kayit', kayit ? 'iyi' : 'kotu', kayit ? 'çalışıyor' : 'ERİŞİLEMİYOR', 'ulucamii.be/kayit/');
   const kosuPili = (id, k, iyiMetin, kotuMetin, ipucu) => {
