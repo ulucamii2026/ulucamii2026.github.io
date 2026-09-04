@@ -196,7 +196,8 @@ async function siraliCek(ucler) {
 }
 
 const ULKE_TR = { Belgium: 'Belçika', Turkey: 'Türkiye', France: 'Fransa', Germany: 'Almanya', Netherlands: 'Hollanda', 'United States': 'ABD', 'United Kingdom': 'Birleşik Krallık', Morocco: 'Fas', Luxembourg: 'Lüksemburg', Switzerland: 'İsviçre', Austria: 'Avusturya', Italy: 'İtalya', Spain: 'İspanya', Canada: 'Kanada', Algeria: 'Cezayir', Tunisia: 'Tunus' };
-const CIHAZ_TR = { phone: '📱 Telefon', tablet: '📲 Tablet', desktop: '🖥️ Masaüstü', unknown: 'Bilinmiyor' };
+/* GoatCounter'ın ekran kovaları: phone / largephone / tablet / desktop / desktophd — ikisi eksikti, ham ad («desktophd») görünüyordu. */
+const CIHAZ_TR = { phone: '📱 Telefon', largephone: '📱 Büyük telefon', tablet: '📲 Tablet', desktop: '🖥️ Masaüstü', desktophd: '🖥️ Geniş ekran', unknown: 'Bilinmiyor' };
 const bayrak = (kod) => /^[A-Za-z]{2}$/.test(kod || '') ? String.fromCodePoint(...[...kod.toUpperCase()].map((c) => 127397 + c.charCodeAt(0))) : '';
 const gunEtiket = (t) => new Date(t + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 /** Özel isme doğru ayrılma eki ekler: Belçika'dan, Türkiye'den, Fas'tan, Krallık'tan. */
