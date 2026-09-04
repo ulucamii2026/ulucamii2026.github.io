@@ -58,10 +58,13 @@ const m = dil === 'tr' ? {
 )}
 
 <style>
-  /* İkincil biçim: kâğıt zemin, solda kiremit mühür — bant hâlâ görünür ama sıra beklediği bellidir. */
+  /* İkincil biçim: kâğıt zemin, üstte ince kiremit çizgi — bant hâlâ görünür ama sıra beklediği
+     bellidir. Renk bağını üst çizgi ve kiremit düğme kuruyor; sol kenara kalın şerit konmuyor:
+     bant tam genişlikte olduğu için o şerit ekranın en solunda içerikten kopuk bir çubuk olarak
+     duruyordu (VefatBandi ile aynı bant dili: üst çizgi + kâğıt zemin). */
   .kayit-ikincil {
     background: var(--zemin-2);
-    border-block: 1px solid var(--cizgi);
-    border-inline-start: 4px solid var(--color-kiremit);
+    border-top: 2px solid var(--color-kiremit);
+    border-bottom: 1px solid var(--cizgi);
   }
 </style>
