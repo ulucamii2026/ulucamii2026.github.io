@@ -96,3 +96,33 @@ silin — Drive'da toplu silme yasaktır (24 Ağustos'ta başvuru defteri bu yü
 - Yeni uç `?islem=saglik-temizle&anahtar=…&oncesi=YYYY-MM-DD`: verilen tarihten önceki kayıtların sağlık
   notunu defterden siler, rıza hücresine «silindi gg.aa.yyyy» yazar. **Her Temmuz bir kez çağrılır**
   (gizlilik bildirimi: not yalnız ilgili ders yılı boyunca tutulur).
+
+## v19 (4 Eylül 2026) — Kayıt PDF'i «kalemle doldurulmuş basılı form» görünümünde
+
+Rıdvan'ın isteği: çevrim içi formdan sonra gelen PDF'te doldurulan alanlar mavi kalemle el yazısıyla
+yazılmış gibi olsun.
+
+- **Yazı tipi:** Caveat (SIL OFL 1.1, ayrılmış ad yok), wght 500 statik örnek, Latin / Latin-1 / Latin Ext-A
+  alt kümesi (336 glif, 124 KB TTF; Türkçe ı İ ş ğ ve Fransızca é è ê œ « » tam). Dosyanın sonunda
+  `EL_YAZISI_B64` sabiti olarak gömülü; `@font-face` data: URI. Üretim: fontTools `instancer` + `subset`
+  (`dokumanlar/27`). Dönüştürücü **Chromium/Skia**'dır (pdffonts: `Caveat-Regular` gömülü çıkıyor) — dış
+  adresten yazı tipi yüklemez, gömülü olan tek yol.
+- **Görünüm:** etiketler ve sabit metin basılı (Arial, siyah); velinin yazdığı her değer `elYazisi()` ile
+  mavi mürekkep (`#1c3e9e`, 15 pt); seçenekli sorular `secenekKutulari()` / `evetHayirKutu()` ile tüm
+  seçenekleri basılı kare kutuyla dizer, seçilen kutuya kalemle çarpı; sözleşme bloğunda üç onay kutusu
+  (kurallar, gizlilik, varsa sağlık rızası) ve tarih / elektronik imza satırı (velinin yazdığı ad el yazısıyla;
+  basılı not bunun elektronik onay olduğunu söyler). Boş alan kalemle kısa çizgi. Yeni satır «Bildirilecek
+  sağlık bilgisi: Hayır/Evet». Drive arşiv kopyası (`saglikGizle`) notu yine taşımaz (basılı italik not).
+  İhtida PDF'i değişmedi.
+- **Yedek:** `kayitPdfUret()` dönüşüm gömülü yazı tipiyle takılırsa aynı belgeyi yazı tipsiz (`meta.sade`)
+  üretir — kayıt PDF görünümü yüzünden düşmez.
+- **Yeni uç:** `?islem=pdf-ornek&anahtar=…&dil=tr|fr|en[&saglik=0][&gizle=1][&sade=1]` → uydurma örnek
+  veriyle (`ornekKayitVerisi`) PDF üretir, base64 döndürür; defter/Drive/e-postaya dokunmaz. Şablon
+  değişikliklerini gerçek kayıt oluşturmadan görmek için. Node önizlemesi: `node scripts/pdf-onizleme.mjs`.
+- **Denetim düzeltmeleri (aynı gün, üçüncü dağıtım):** `tarihKisa` tarihle başlamayan zamanda boş kalır; v1
+  temizlik göçü (`eskiKimlikTemizleKayit`) Drive kopyasını artık `saglikGizle` + `kayitPdfUret` ile üretir
+  (önceden sağlık notunu Drive'a yazıyordu — gizlilik bildirimine aykırı); yeni uç
+  `?islem=arsiv-saglik-gizle&anahtar=…[&uygula=1]` sağlık notu olan kayıtların Drive arşiv PDF'ini notsuz
+  yeniden üretir (eski dosya kimliğiyle çöpe, «Durum» ` | arsiv-notsuz-v19`, idempotent; `uygula=1` yoksa sayar).
+- **Dağıtım:** `D:\tmp\gas\kaydet_v19_dev.py` kodu editöre kaydedip **test dağıtımı (/dev)** üzerinden
+  pdf-ornek çağırır (canlıya dokunmadan doğrulama); sonra `dagit_v19.py` «Nouvelle version».
