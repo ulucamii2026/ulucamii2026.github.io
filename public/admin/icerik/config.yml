@@ -280,6 +280,8 @@ collections:
                   - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, uip, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
                   - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
               - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
+                  - { name: baslangic, label: Gösterim başlangıcı, widget: date, format: YYYY-MM-DD, required: false, hint: "Boşsa hemen gösterilir" }
+                  - { name: son, label: Son gösterim günü, widget: date, format: YYYY-MM-DD, required: false, hint: "Bu günden sonra mesaj kendiliğinden kalkar (site her sabah yeniden yayımlanır)" }
               - name: servisler
                 label: Servisler (arka uç bağlantıları)
                 widget: object

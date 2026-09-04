@@ -10,9 +10,10 @@
  * 03:30 UTC'de yeniden yayınlandığı için (deploy.yml cron) ertesi sabah kendini tazeler.
  * Ölçüt src/lib/etkinlik-tarihleri.ts'te tek kaynaktan gelir.
  *
- * Kaynak: Belçika Diyanet Vakfı ön kayıt sayfası — "2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026
- * tarihleri arasında gerçekleşecektir." (3 Eylül 2026'da teyit edildi; ilk duyuruda son gün
- * 30.08.2026'ydı, sonradan uzatıldı.)
+ * Kaynak: Müşavirliğin 4 Eylül 2026 tarihli yazısı — "2027 Hac ön kayıtları 11.09.2026 tarihine kadar
+ * devam etmektedir"; ön kayıt yapanlara 07.09.2026'dan itibaren kesin kayıt e-postası; kesin kayıt son
+ * günü 30.10.2026'ya uzatıldı. (Vakfın ön kayıt sayfası aynı gün hâlâ 30.09 yazıyordu; ilk duyuruda
+ * 30.08'di. Müşavirlik takvimi esas alındı.)
  */
 import type { Dil } from '../i18n/ui';
 import { yol } from '../i18n/utils';
@@ -28,20 +29,20 @@ const kalan = Math.max(1, Math.ceil((HAC_SON_GUN.getTime() - simdi) / 86_400_000
 
 const m = dil === 'tr' ? {
   rozet: kalan === 1 ? 'Son gün' : `Son ${kalan} gün`,
-  baslik: '2027 Hac ön kayıtları — son başvuru 30 Eylül',
-  alt: 'Ön kayıt 2.000 € · Kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre · Kayıt yalnızca çevrimiçi',
+  baslik: '2027 Hac ön kayıtları — son başvuru 11 Eylül',
+  alt: 'Ön kayıt 2.000 € · Kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre · Yalnızca çevrimiçi · Ön kayıt yapanlar: kesin kayıt e-postanızı takip edin (son gün 30 Ekim)',
   dugme: 'Ayrıntılar ve yardım',
   dis: 'Ön kayıt: diyanet.be/onkayit',
 } : dil === 'en' ? {
   rozet: kalan === 1 ? 'Last day' : `${kalan} days left`,
-  baslik: 'Hajj 2027 pre-registration — deadline 30 September',
-  alt: 'Pre-registration €2,000 · Limited places, confirmed by order of payment · Online only',
+  baslik: 'Hajj 2027 pre-registration — deadline 11 September',
+  alt: 'Pre-registration €2,000 · Limited places, confirmed by order of payment · Online only · Already pre-registered? Watch for the final-registration e-mail (deadline 30 October)',
   dugme: 'Details and help',
   dis: 'Register: diyanet.be/onkayit',
 } : {
   rozet: kalan === 1 ? 'Dernier jour' : `Plus que ${kalan} jours`,
-  baslik: 'Préinscriptions au Hajj 2027 — date limite le 30 septembre',
-  alt: 'Préinscription 2 000 € · Places limitées, inscription selon l’ordre des paiements · Uniquement en ligne',
+  baslik: 'Préinscriptions au Hajj 2027 — date limite le 11 septembre',
+  alt: 'Préinscription 2 000 € · Places limitées, inscription selon l’ordre des paiements · Uniquement en ligne · Déjà préinscrit ? Surveillez l’e-mail d’inscription définitive (date limite le 30 octobre)',
   dugme: 'Détails et aide',
   dis: 'Préinscription : diyanet.be/onkayit',
 };

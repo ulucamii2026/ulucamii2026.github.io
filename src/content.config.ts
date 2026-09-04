@@ -72,7 +72,7 @@ const ayarlar = defineCollection({
     cumaSaati: z.string().optional(),
     kursKayitLinki: z.string().url().optional(),
     servisler: z.object({ basvuru: z.string().default('') }).default({ basvuru: '' }),
-    heroMesajlar: z.array(z.object({ metin: z.object({ tr: z.string(), fr: z.string(), en: z.string().optional() }), sayfa: z.string().optional(), baglanti: z.string().optional() })).default([]),
+    heroMesajlar: z.array(z.object({ metin: z.object({ tr: z.string(), fr: z.string(), en: z.string().optional() }), sayfa: z.string().optional(), baglanti: z.string().optional(), baslangic: z.coerce.date().optional(), son: z.coerce.date().optional() })).default([]),
     imsakiyePdf: z.string().url().optional(),
     sosyal: z.object({ facebook: z.string().url().optional(), instagram: z.string().url().optional(), youtube: z.string().url().optional() }).default({}),
     konsolosluk: z.object({

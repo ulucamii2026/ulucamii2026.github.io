@@ -59,10 +59,18 @@ site:
         en: "Applying to become Muslim is now online — information, documents and the application form are on our site."
       sayfa: ihtida
     - metin:
-        tr: "2027 hac ön kayıtları sürüyor — başvuru 30 Eylül’e kadar, kontenjan sınırlı."
-        fr: "Préinscriptions au Hajj 2027 en cours — clôture le 30 septembre, places limitées."
-        en: "Hajj 2027 pre-registration is open — closes 30 September, places are limited."
+        tr: "2027 hac ön kayıtları 11 Eylül’de kapanıyor — kontenjan sınırlı, gecikmeyin."
+        fr: "Préinscriptions au Hajj 2027 : clôture le 11 septembre — places limitées, ne tardez pas."
+        en: "Hajj 2027 pre-registration closes on 11 September — places are limited, don’t wait."
       sayfa: diyanet
+      son: "2026-09-11"
+    - metin:
+        tr: "Hac ön kaydı yapanlar: kesin kayıt e-postanızı takip edin — son gün 30 Ekim."
+        fr: "Préinscrits au Hajj : surveillez l’e-mail d’inscription définitive — date limite le 30 octobre."
+        en: "Pre-registered for Hajj? Watch for the final-registration e-mail — deadline 30 October."
+      sayfa: diyanet
+      baslangic: "2026-09-12"
+      son: "2026-10-30"
     - metin:
         tr: "İmam-ı Azam Eğitim Merkezi’nde 12–17 yaş hafta sonu yatılı Kur’an kursu kayıtları başladı — ayrıntılar duyurularda."
         fr: "Inscriptions ouvertes au cours coranique en internat de week-end (12–17 ans) du centre İmam-ı Azam — détails dans les annonces."

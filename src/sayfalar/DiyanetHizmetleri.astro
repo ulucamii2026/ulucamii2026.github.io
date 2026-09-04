@@ -15,15 +15,16 @@
  *
  * Hac ön kaydının son günü SABİT DEĞİL, tarihle karşılaştırılır: site her gün yeniden
  * yayımlandığı için (deploy.yml cron) süre dolduğunda kart kendiliğinden sakinleşir.
- * Kaynak: diyanet.be/onkayit — "2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri (30 Ağu 2026'da 30.08'den uzatıldı)
- * arasında gerçekleşecektir", kişi başı ön kayıt ücreti 2.000 €.
+ * Kaynak: Müşavirliğin 4 Eylül 2026 yazısı — ön kayıt 11.09.2026'ya kadar; kesin kayıt e-postaları 07.09'dan
+ * itibaren; kesin kayıt son günü 30.10.2026 (uzatıldı). Ön kayıt ücreti 2.000 €/kişi (diyanet.be/onkayit).
+ * Üç evre: ön kayıt açık → kesin kayıt dönemi (e-posta hatırlatması) → kapalı.
  */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Ikon from '../components/Ikon.astro';
 import { ceviri, yol } from '../i18n/utils';
 import { siteAyarlari } from '../lib/icerik';
-import { HAC_SON_GUN, HAC_DUYURU_SLUG, UMRE_SON_GUN, UMRE_DUYURU_SLUG } from '../lib/etkinlik-tarihleri';
+import { HAC_SON_GUN, HAC_KESIN_SON_GUN, HAC_DUYURU_SLUG, UMRE_SON_GUN, UMRE_DUYURU_SLUG } from '../lib/etkinlik-tarihleri';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
@@ -36,7 +37,9 @@ interface Grup { baslik: string; kartlar: Kart[] }
 
 const umreAcik = Date.now() <= UMRE_SON_GUN.getTime();
 const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
-const hacSonTarih = { tr: '30 Eylül 2026', fr: '30 septembre 2026', en: '30 September 2026' }[dil];
+/* Ön kayıt kapandıktan sonra kesin kayıt dönemi: ön kayıt yapanlar e-postalarını takip etsin (30 Ekim'e kadar). */
+const hacKesin = !hacAcik && Date.now() <= HAC_KESIN_SON_GUN.getTime();
+const hacSonTarih = { tr: '11 Eylül 2026', fr: '11 septembre 2026', en: '11 September 2026' }[dil];
 
 const m = dil === 'tr' ? {
   etiket: 'Belçika Diyanet Vakfı',
@@ -53,10 +56,11 @@ const m = dil === 'tr' ? {
   cami: 'Camimizin iletişim sayfası',
   hac: {
     baslik: '2027 Hac Ön Kaydı',
-    ozetAcik: 'Ön kayıt süresi 30 Eylül 2026’ya uzatıldı. Kayıt Belçika Diyanet Vakfı’nın hac organizasyonu üzerinden yapılır; kontenjan sınırlı olduğu için kesin kayıt hakkı ödeme sırasına göre verilir.',
+    ozetAcik: 'Ön kayıt için son gün 11 Eylül 2026. Kayıt Belçika Diyanet Vakfı’nın hac organizasyonu üzerinden yapılır; kontenjan sınırlı olduğu için kesin kayıt hakkı ödeme sırasına göre verilir. Ön kayıt yapanlara kesin kayıt e-postası 7 Eylül’den itibaren gönderiliyor.',
+    ozetKesin: 'Ön kayıt dönemi 11 Eylül 2026’da sona erdi. Ön kayıt yapanlara kesin kayıt için e-posta gönderiliyor; kesin kayıt son günü 30 Ekim 2026. E-postanızı (istenmeyen klasörü dâhil) düzenli kontrol edin ve işlemlerinizi zamanında tamamlayın.',
     ozetKapali: '2027 hac ön kayıt dönemi sona erdi. Yeni dönem duyurulduğunda camimizden ve Belçika Diyanet Vakfı’ndan bilgi alabilirsiniz.',
     ucret: '2.000 € (kişi başı)',
-    kesinKayit: '30 Ağustos – 30 Eylül 2026',
+    kesinKayit: '7 Eylül – 30 Ekim 2026 (e-posta ile)',
     eylem: 'Ön kayıt formu',
     ayrinti: 'Koşullar ve gerekli belgeler',
   },
@@ -107,10 +111,11 @@ const m = dil === 'tr' ? {
   cami: 'Our mosque’s contact page',
   hac: {
     baslik: '2027 Hajj Pre-registration',
-    ozetAcik: 'Pre-registration has been extended to 30 September 2026. Registration is handled through the hajj organisation of the Diyanet Foundation of Belgium; places are limited, so the right to final registration is granted in order of payment.',
+    ozetAcik: 'Pre-registration closes on 11 September 2026. Registration is handled through the hajj organisation of the Diyanet Foundation of Belgium; places are limited, so the right to final registration is granted in order of payment. Those already pre-registered receive the final-registration e-mail from 7 September.',
+    ozetKesin: 'Pre-registration ended on 11 September 2026. Pre-registered pilgrims are being invited by e-mail to complete their final registration; the deadline is 30 October 2026. Check your e-mail (including spam) regularly and complete the steps in time.',
     ozetKapali: 'The 2027 hajj pre-registration period has ended. When the next period is announced, you can get information from our mosque and from the Diyanet Foundation of Belgium.',
     ucret: '€2,000 per person',
-    kesinKayit: '30 August – 30 September 2026',
+    kesinKayit: '7 September – 30 October 2026 (by e-mail)',
     eylem: 'Pre-registration form',
     ayrinti: 'Conditions and required documents',
   },
@@ -161,10 +166,11 @@ const m = dil === 'tr' ? {
   cami: 'La page de contact de notre mosquée',
   hac: {
     baslik: 'Préinscription au Hajj 2027',
-    ozetAcik: 'Les préinscriptions ont été prolongées jusqu’au 30 septembre 2026. L’inscription se fait via l’organisation du hajj de la Fondation Diyanet de Belgique ; les places étant limitées, le droit à l’inscription définitive est accordé selon l’ordre des paiements.',
+    ozetAcik: 'Les préinscriptions se clôturent le 11 septembre 2026. L’inscription se fait via l’organisation du hajj de la Fondation Diyanet de Belgique ; les places étant limitées, le droit à l’inscription définitive est accordé selon l’ordre des paiements. Les préinscrits reçoivent l’e-mail d’inscription définitive à partir du 7 septembre.',
+    ozetKesin: 'La période de préinscription s’est terminée le 11 septembre 2026. Les préinscrits sont invités par e-mail à finaliser leur inscription définitive ; date limite : le 30 octobre 2026. Consultez régulièrement votre messagerie (courriers indésirables compris) et complétez les démarches à temps.',
     ozetKapali: 'La période de préinscription au Hajj 2027 est terminée. Vous serez informé par notre mosquée et par la Fondation Diyanet de Belgique lors de la prochaine ouverture.',
     ucret: '2 000 € par personne',
-    kesinKayit: '30 août – 30 septembre 2026',
+    kesinKayit: '7 septembre – 30 octobre 2026 (par e-mail)',
     eylem: 'Formulaire de préinscription',
     ayrinti: 'Conditions et documents requis',
   },
@@ -219,22 +225,22 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
 
   <div class="kapsayici py-10 flex flex-col gap-12">
     {/* Süreli işlem en üstte: tarihi geçince vurgu kendiliğinden kalkar */}
-    <section aria-labelledby="hac-basligi" class={`hac-kart ${hacAcik ? 'hac-acik' : ''} kart p-6 sm:p-8`}>
+    <section aria-labelledby="hac-basligi" class={`hac-kart ${hacAcik || hacKesin ? 'hac-acik' : ''} kart p-6 sm:p-8`}>
       <div class="flex flex-wrap items-center gap-3 mb-3">
         <span class="hac-ikon grid place-items-center h-11 w-11 rounded-full shrink-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" set:html={ekIkon.kabe} />
         </span>
-        <span class={`rozet ${hacAcik ? 'rozet-acik' : ''}`}>{hacAcik ? m.oneCikanEtiket : m.oneCikanKapaliEtiket}</span>
+        <span class={`rozet ${hacAcik || hacKesin ? 'rozet-acik' : ''}`}>{hacAcik ? m.oneCikanEtiket : hacKesin ? m.kesinKayitEtiket : m.oneCikanKapaliEtiket}</span>
       </div>
 
       <h2 id="hac-basligi" class="font-serif text-2xl sm:text-3xl leading-tight mb-2">{m.hac.baslik}</h2>
-      <p class="text-(--metin-2) max-w-[62ch]">{hacAcik ? m.hac.ozetAcik : m.hac.ozetKapali}</p>
+      <p class="text-(--metin-2) max-w-[62ch]">{hacAcik ? m.hac.ozetAcik : hacKesin ? m.hac.ozetKesin : m.hac.ozetKapali}</p>
 
       {hacAcik && (
         <dl class="hac-kunye mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-[repeat(3,max-content)]">
           <div>
             <dt class="etiket">{m.sonTarihEtiket}</dt>
-            <dd class="font-semibold mt-0.5"><time datetime="2026-09-30">{hacSonTarih}</time></dd>
+            <dd class="font-semibold mt-0.5"><time datetime="2026-09-11">{hacSonTarih}</time></dd>
           </div>
           <div>
             <dt class="etiket">{m.kesinKayitEtiket}</dt>
@@ -252,7 +258,7 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
            class={`dugme ${hacAcik ? 'dugme-birincil' : 'dugme-ikincil'} w-full sm:w-auto justify-center`}>
           {m.hac.eylem}<span aria-hidden="true"> ↗</span><span class="sr-only"> ({m.disKaynak})</span>
         </a>
-        {hacAcik && (
+        {(hacAcik || hacKesin) && (
           <a href={yol(dil, 'duyurular', HAC_DUYURU_SLUG)} class="metin-baglanti text-sm underline underline-offset-4">
             {m.hac.ayrinti} <span aria-hidden="true">→</span>
           </a>

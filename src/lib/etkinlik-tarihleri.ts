@@ -1,6 +1,10 @@
 /** Süreli duyuru tarihleri — tek kaynak. HacBandi.astro ve DiyanetHizmetleri.astro buradan
  * import eder; iki dosyada ayrı ayrı kopyalanmaz, senkron kaybı riski ortadan kalkar. */
-export const HAC_SON_GUN = new Date('2026-09-30T23:59:59+02:00');
+/** Ön kayıt son günü — Müşavirliğin 4 Eylül 2026 yazısı: «2027 Hac ön kayıtları 11.09.2026 tarihine
+ * kadar devam etmektedir». Vakfın ön kayıt sayfası aynı gün hâlâ 30.09.2026 yazıyordu; Müşavirlik takvimi esastır. */
+export const HAC_SON_GUN = new Date('2026-09-11T23:59:59+02:00');
+/** Kesin kayıt son günü — aynı yazı: 30.10.2026'ya uzatıldı; kesin kayıt e-postaları 07.09.2026'dan itibaren. */
+export const HAC_KESIN_SON_GUN = new Date('2026-10-30T23:59:59+01:00');
 export const HAC_DUYURU_SLUG = '2027-hac-on-kayit-son-gunler';
 
 export const UMRE_SON_GUN = new Date('2026-11-20T23:59:59+01:00');

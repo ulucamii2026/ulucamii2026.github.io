@@ -12,15 +12,19 @@
 import { yol } from '../i18n/utils';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 import { yollar } from '../i18n/ui';
-interface Mesaj { metin: { tr: string; fr: string; en?: string }; sayfa?: string; baglanti?: string }
+/* baslangic/son: süreli mesajlar (ör. hac ön kaydı) o günler dışında derlemeye girmez; site her gün
+   yeniden yayımlandığı için (deploy.yml cron) kimsenin elle silmesi gerekmez. `son` günü dâhildir. */
+interface Mesaj { metin: { tr: string; fr: string; en?: string }; sayfa?: string; baglanti?: string; baslangic?: Date; son?: Date }
 interface Props { dil: Dil; mesajlar: Mesaj[] }
 const { dil, mesajlar } = Astro.props;
 const metni = (mesaj: Mesaj) => mesaj.metin[dil] ?? mesaj.metin.fr ?? mesaj.metin.tr;
+const simdi = Date.now();
+const gecerli = mesajlar.filter((m) => (!m.baslangic || simdi >= m.baslangic.getTime()) && (!m.son || simdi < m.son.getTime() + 86_400_000));
 const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil, mesaj.sayfa as SayfaAnahtari) : mesaj.baglanti);
 ---
-{mesajlar.length > 0 && (
+{gecerli.length > 0 && (
   <div id="duyuru-seridi" class="mt-4 max-w-[58ch] pr-14 sm:pr-0 grid items-start" data-sure="6500">
-    {mesajlar.map((mesaj, i) => {
+    {gecerli.map((mesaj, i) => {
       const h = hedef(mesaj);
       const ic = <><span class="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-ochre-acik)" aria-hidden="true"></span><span>{metni(mesaj)}</span></>;
       return h
