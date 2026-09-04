@@ -1,5 +1,5 @@
 /**
- * Marche-en-Famenne Ulu Camii — Ortak Apps Script Alıcı (SÜRÜM 19)
+ * Marche-en-Famenne Ulu Camii — Ortak Apps Script Alıcı (SÜRÜM 20)
  * (Kur'an Kursu Kayıt Alıcı + İhtida Başvuru Alıcı — TEK Web App)
  *
  * 30 Ağustos 2026 — FORM-SÖZLEŞMESİ v2'ye göre baştan yazıldı:
@@ -23,6 +23,9 @@
  *     takılırsa kayitPdfUret() aynı belgeyi yazı tipsiz üretir (kayıt PDF yüzünden düşmez).
  *     ?islem=arsiv-saglik-gizle&anahtar=…[&uygula=1]: sağlık notu olan kayıtların Drive arşiv PDF'ini
  *     notsuz yeniden üretir (v18 öncesi kopyalar notu taşıyordu); uygula=1 verilmezse yalnız sayar.
+ *   - v20 (4 Eylül 2026 öğle): kayıt PDF'i İKİ SAYFA — 1. sayfa form (bölüm şeritli tablo, sağlık notu
+ *     tabloda), 2. sayfa veli sözleşmesi (kurallar TR | FR iki sütun, onay kutuları, tarih / imza);
+ *     @page alt bilgi (ref + sayfa numarası). Rıdvan'ın isteği: sözleşme ayrı sayfada olsun.
  *
  * DAĞITIM NOTU (insan adımı — bu dosya otomatik dağıtılmaz):
  *   1. script.google.com'a DERNEK hesabıyla (ulucamii2026@gmail.com) giriş yapın.
@@ -41,7 +44,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 19;
+var SURUM = 20;
 
 /* ===================================================================
    ORTAK — doGet / doPost yönlendirme, JSON yardımcıları, güvenlik
@@ -241,38 +244,73 @@ var ENUM_FORM_DILI = {
   fr: { tr: "Fransızca", fr: "Français", en: "French" },
   en: { tr: "İngilizce", fr: "Anglais", en: "English" }
 };
+var DEVAM_METIN = { tr: "Kurallar, onaylar ve imza 2. sayfadadır.", fr: "Règlement, consentements et signature en page 2.", en: "Rules, consents and signature are on page 2." };
+var SOZLESME_BASLIK = { tr: "Kurs kuralları ve kurs–veli sözleşmesi", fr: "Règlement du cours et engagement parent–cours", en: "Course rules and parent–course agreement" };
+var DERS_YILI_ETIKET = { tr: "Ders yılı", fr: "Année scolaire", en: "School year" };
+var ONAY_BASLIK = { tr: "Onaylar", fr: "Consentements", en: "Consents" };
+var ONAY_GIRIS = { tr: "Aşağıdaki kutuları işaretleyerek veli olarak beyan ederim:", fr: "En cochant les cases ci-dessous, je déclare en tant que parent :", en: "By ticking the boxes below, I declare as the parent:" };
 var ONAY_METIN = {
   kurallar: { tr: "Kurs kurallarını ve kurs–veli sözleşmesini okudum, kabul ediyorum.", fr: "J'ai lu et j'accepte le règlement du cours et l'engagement parent–cours.", en: "I have read and accept the course rules and the parent–course agreement." },
   gizlilik: { tr: "Gizlilik bildirimini okudum.", fr: "J'ai lu la notice de confidentialité.", en: "I have read the privacy notice." },
   saglikRiza: { tr: "Sağlık bilgisinin işlenmesine açık rıza veriyorum (GDPR md. 9/2-a).", fr: "Je consens explicitement au traitement de l'information de santé (art. 9.2.a RGPD).", en: "I give explicit consent to the processing of the health information (Art. 9(2)(a) GDPR)." }
 };
 
-/** Kayıt PDF'ine eklenen ek CSS: gömülü el yazısı yazı tipi + kutu/imza düzeni. */
-function elYazisiCss(sade) {
+/** Kayıt PDF'ine eklenen ek CSS: gömülü el yazısı yazı tipi, bölüm şeritli form, iki sayfalık düzen, sözleşme sayfası. */
+function kayitCss(sade, ref, devamMetni) {
+  var cssMetin = function (m) { return String(m || "").replace(/["\\]/g, "").replace(/\s+/g, " "); };
+  var altYazi = "Marche-en-Famenne Ulu Camii \u00b7 Kur'an Kursu Kay\u0131t Formu / Formulaire d'inscription \u00b7 Ref " + cssMetin(ref);
   return [
     sade ? "" : '@font-face{font-family:"ElYazisi";src:url(data:font/ttf;base64,' + EL_YAZISI_B64 + ') format("truetype");font-weight:normal;font-style:normal;}',
-    '.el{font-family:"ElYazisi","Caveat","Segoe Script",cursive;color:' + MUREKKEP + ';font-size:15pt;line-height:1.1;}',
-    "table.bilgi td{padding:3px 8px 1px;}",
+    // Sayfa kenarlığı: her sayfanın altında belge adı + ref (sol) ve sayfa numarası (sağ)
+    '@page{margin:15mm 14mm 19mm;@bottom-left{content:"' + altYazi + '";font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;color:#666;}@bottom-right{content:counter(page) " / " counter(pages);font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;color:#666;}}',
+    // İlk sayfanın alt-sol kutusu: «kurallar, onaylar ve imza 2. sayfada» — akışta yer kaplamaz, taşma yapmaz
+    devamMetni ? '@page:first{@bottom-left{content:"\u2192 ' + cssMetin(devamMetni) + '";}}' : "",
+    '.el{font-family:"ElYazisi","Caveat","Segoe Script",cursive;color:' + MUREKKEP + ';font-size:15pt;line-height:1.08;}',
+    // Google'ın dönüştürücüsü arka planları basmaz (Chromium yazdırma varsayılanı) → bölüm şeritleri ve etiket zemini için zorunlu
+    "html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}",
+    "header.ust{margin-bottom:10px;}",
+    ".ref-kutu .yil{font-size:8.5pt;color:#444;}",
+    "h1{margin-bottom:8px;}",
+    "table.bilgi{margin-bottom:4px;}",
+    "table.bilgi th{width:40%;font-size:9pt;padding:3px 8px;line-height:1.3;}",
+    "table.bilgi td{padding:2px 8px 1px;}",
+    ".not .el{font-size:13.5pt;line-height:1.12;}",
+    ".not .el.el-k{font-size:12pt;line-height:1.15;}",
+    "table.bilgi tr.bolum th{width:auto;background:#1F4E4E;color:#fff;font-size:8pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-color:#1F4E4E;}",
+    ".kucuk{font-weight:400;font-size:8pt;color:#555;}",
+    ".kunye{font-size:8pt;}",
     ".secenek{display:inline-block;white-space:nowrap;margin:1px 14px 1px 0;font-size:10pt;}",
-    ".kutu{display:inline-block;width:12px;height:12px;border:1px solid #333;margin-right:5px;vertical-align:-2px;text-align:center;line-height:10px;overflow:visible;}",
+    ".kutu{display:inline-block;width:12px;height:12px;border:1px solid #333;margin-right:7px;vertical-align:-2px;text-align:center;line-height:10px;overflow:visible;}",
     ".kutu .el{font-size:16.5pt;line-height:10px;position:relative;top:-1px;left:1px;}",
-    ".saglik-not{margin:2px 0 4px;}",
-    ".sistem-not{font-style:italic;color:#444;font-size:9.5pt;margin:2px 0;}",
-    ".onay-kutular{margin-top:8px;font-size:10pt;}",
-    ".onay-kutular .secenek{display:block;white-space:normal;margin:3px 0;}",
-    "table.imza{width:100%;border-collapse:collapse;margin-top:12px;page-break-inside:avoid;}",
+    ".sistem-not{font-style:italic;color:#444;font-size:9.5pt;}",
+    // 2. sayfa: veli sözleşmesi
+    "section.sozlesme{break-before:page;page-break-before:always;}",
+    "section.sozlesme h1{font-size:14pt;margin:0 0 6px;}",
+    ".s-kimlik{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid #1F4E4E;padding-bottom:5px;margin-bottom:12px;font-size:10pt;}",
+    ".s-kimlik .ref{font-size:9pt;color:#444;white-space:nowrap;}",
+    "table.kurallar{width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:12px;}",
+    "table.kurallar td{width:50%;vertical-align:top;padding:8px 10px;border:1px solid #cfd8d6;background:#FAFBFB;font-size:9.5pt;line-height:1.45;}",
+    "table.kurallar h3{margin:0 0 5px;font-size:10.5pt;color:#1F4E4E;}",
+    "table.kurallar p{margin:0 0 7px;}",
+    "table.kurallar p:last-child{margin-bottom:0;}",
+    "h2.onay-baslik{font-size:11.5pt;color:#1F4E4E;margin:14px 0 4px;}",
+    ".onay-giris{margin:0 0 4px;font-size:10pt;}",
+    ".onay-kutular{margin-top:2px;font-size:10pt;}",
+    ".onay-kutular .secenek{display:block;white-space:normal;margin:4px 0;}",
+    "table.imza{width:100%;border-collapse:collapse;margin-top:22px;page-break-inside:avoid;}",
     "table.imza td{vertical-align:bottom;padding:0 18px 0 0;}",
     "table.imza td.dar{width:32%;}",
-    ".imza-cizgi{border-bottom:1px solid #444;min-height:36px;padding:0 6px 2px;}",
+    ".imza-cizgi{border-bottom:1px solid #444;min-height:40px;padding:0 6px 2px;}",
     ".imza-cizgi .el{font-size:21pt;line-height:1;}",
     ".imza-etiket{font-size:8.5pt;color:#444;margin-top:2px;}",
-    ".onay-not{font-size:8.5pt;color:#444;margin:8px 0 0;}"
+    ".onay-not{font-size:8.5pt;color:#444;margin:10px 0 0;}",
+    "footer{margin-top:16px;}"
   ].join("\n");
 }
 /** Velinin yazdığı metni mavi el yazısı olarak basar; boş alan kalemle kısa çizgi. */
-function elYazisi(deger) {
+function elYazisi(deger, ekSinif) {
   var s = (deger === undefined || deger === null) ? "" : String(deger).trim();
-  return '<span class="el">' + (s ? kacis(s) : "–") + "</span>";
+  return '<span class="el' + (ekSinif ? " " + ekSinif : "") + '">' + (s ? kacis(s) : "–") + "</span>";
 }
 /** Basılı kare kutu (+ işaretliyse kalemle çarpı) ve yanında basılı etiket (etiketHtml kaçışlı olmalı). */
 function kutu(isaretli, etiketHtml) {
@@ -360,7 +398,8 @@ var ETIKET_KAYIT = {
   formDili: { tr: "Form dili", fr: "Langue du formulaire", en: "Form language" },
   elektronikImza: { tr: "Elektronik imza (veli)", fr: "Signature électronique (parent)", en: "Electronic signature (parent)" },
   saglikVar: { tr: "Bildirilecek sağlık bilgisi", fr: "Information de santé à signaler", en: "Health information to report" },
-  tarih: { tr: "Tarih", fr: "Date", en: "Date" }
+  tarih: { tr: "Tarih", fr: "Date", en: "Date" },
+  postaSehir: { tr: "Posta kodu ve şehir", fr: "Code postal et localité", en: "Postal code and city" }
 };
 
 var ETIKET_IHTIDA = {
@@ -413,16 +452,17 @@ var PDF_CSS = [
 ].join("\n");
 
 /** Üst bilgi + referans/tarih kutusu + başlık — iki şablon de aynı düzeni kullanır. */
-function pdfUst(baslikTr, baslikDil, dil, ref, zaman) {
+function pdfUst(baslikTr, baslikDil, dil, ref, zaman, ekSatirHtml) {
   var baslik = kacis(baslikTr) + ((dil !== "tr" && baslikDil) ? " / " + kacis(baslikDil) : "");
   return '<header class="ust"><div class="kunye">Marche-en-Famenne Ulu Camii — Association Diyanet Mosquée Ulu Camii de Marche en Famenne ASBL — KBO 0421.900.807 — Thier des Corbeaux 14, 6900 Marche-en-Famenne — info@ulucamii.be</div>'
-    + '<div class="ref-kutu">Ref: <b>' + kacis(ref) + '</b><br>' + kacis(zaman) + '</div></header>'
+    + '<div class="ref-kutu">Ref: <b>' + kacis(ref) + '</b><br>' + kacis(zaman) + (ekSatirHtml ? "<br>" + ekSatirHtml : "") + '</div></header>'
     + '<h1>' + baslik + '</h1>';
 }
 
 /** [ [etiketHtml, degerHtml], ... ] dizisinden iki sütunlu tablo üretir. */
 function pdfTablo(satirlar) {
   var iç = satirlar.map(function (s) {
+    if (s && s.bolum) return '<tr class="bolum"><th colspan="2">' + s.bolum + "</th></tr>"; // v20: bölüm şeridi
     return "<tr><th>" + s[0] + "</th><td>" + s[1] + "</td></tr>";
   }).join("");
   return '<table class="bilgi">' + iç + "</table>";
@@ -450,64 +490,86 @@ function pdfHtmlKayit(veri, meta) {
   var onay = veri.onay || {};
   var ref = meta.ref || "";
   var zaman = meta.zaman || "";
+  // Ders yılı: defter adındaki "2026-2027" (tek kaynak) — meta.dersYili verilirse o
+  var dersYili = String(meta.dersYili || ((typeof AYAR2 !== "undefined" && AYAR2 && AYAR2.tabloAdi) ? (String(AYAR2.tabloAdi).match(/\d{4}-\d{4}/) || [""])[0] : "")).replace("-", "\u2013");
 
   var okulGoster = (o.okul === "diger" && o.okulDiger) ? o.okulDiger : (o.okul || "");
   var E = function (anahtar) { return ikiDilliEtiket(ETIKET_KAYIT[anahtar], dil); };
+  var D = function (sozluk) { return ikiDilliEtiket(sozluk, dil); };
+  var bolum = function (tr, fr, en) { return { bolum: ikiDilliEtiket({ tr: tr, fr: fr, en: en }, dil) }; };
+  var ogrenciAd = ((o.ad || "") + " " + (o.soyad || "")).trim();
+  var tarihKisa = (String(zaman).match(/^\d{2}\.\d{2}\.\d{4}/) || [""])[0]; // tarihle başlamıyorsa kutu boş kalır
+  var formDiliBuyuk = kacis((veri.dil || "tr").toUpperCase());
 
-  // v19: velinin yazdığı her değer mavi el yazısı; seçenekli sorular basılı kutu + kalemle çarpı
+  // Sağlık notu hücresi: veliye giden kopyada el yazısı; Drive arşiv kopyasında (meta.saglikGizle) basılı sistem notu —
+  // not yalnız defterde tutulur ve ders yılı sonunda silinir (gizlilik bildirimi).
+  var saglikNotHucre = "";
+  if (saglik.var) {
+    saglikNotHucre = meta.saglikGizle
+      ? '<span class="sistem-not">' + (dil === "fr" ? "Conservée uniquement dans le registre d’inscription ; non reprise dans ce document."
+         : dil === "en" ? "Kept only in the registration register; not included in this document."
+         : "Yalnız kayıt defterinde tutulur; bu belgeye yazılmamıştır.") + "</span>"
+      : '<span class="not">' + elYazisi(saglik.not, String(saglik.not || "").length > 300 ? "el-k" : "") + "</span>";
+  }
+  var rizaNotu = dil === "fr" ? "communiquée avec consentement explicite" : dil === "en" ? "shared with explicit consent" : "açık rızayla verilmiştir";
+
+  // 1. SAYFA — form: velinin yazdığı her değer mavi el yazısı; seçenekli sorular basılı kutu + kalemle çarpı
   var satirlar = [
-    [E("ogrenciAdSoyad"), elYazisi(((o.ad || "") + " " + (o.soyad || "")).trim())],
+    bolum("Öğrenci", "Élève", "Student"),
+    [E("ogrenciAdSoyad"), elYazisi(ogrenciAd)],
     [E("ogrenciDogum"), elYazisi(tarihGoster(o.dogumTarihi))],
     [E("ogrenciCinsiyet"), secenekKutulari(ENUM_CINSIYET_OGRENCI, o.cinsiyet, dil)],
     [E("okul"), elYazisi(okulGoster)],
     [E("sinif"), elYazisi(o.sinif)],
     [E("kursDurumu"), secenekKutulari(ENUM_KURS_DURUMU, o.kursDurumu, dil)],
+    bolum("Veli", "Parent", "Parent"),
     [E("veliYakinlik"), secenekKutulari(ENUM_YAKINLIK, veli.yakinlik, dil)],
     [E("veliAdSoyad"), elYazisi(veli.adSoyad)],
     [E("veliCep"), elYazisi(veli.cep)],
     [E("veliEposta"), elYazisi(veli.eposta)],
     [E("adres"), elYazisi(veli.adres)],
-    [E("postaKodu"), elYazisi(veli.postaKodu)],
-    [E("sehir"), elYazisi(veli.sehir)],
+    [E("postaSehir"), elYazisi(((veli.postaKodu || "") + " " + (veli.sehir || "")).trim())],
     [E("iletisimDili"), secenekKutulari(ENUM_ILETISIM_DILI, veli.iletisimDili, dil)],
+    bolum("Acil durum", "Urgence", "Emergency"),
     [E("acilKisi"), elYazisi(acil.adSoyad)],
     [E("acilCep"), elYazisi(acil.cep)],
+    bolum("Sağlık ve izinler", "Santé et autorisations", "Health and permissions"),
     [E("saglikVar"), evetHayirKutu(!!saglik.var, dil)],
+    saglik.var ? [E("saglikBilgisi") + ' <span class="kucuk">(' + rizaNotu + ")</span>", saglikNotHucre] : null,
     [E("goruntuIzni"), evetHayirKutu(!!veri.goruntuIzni, dil)],
     [E("goruntuSosyalIzni"), evetHayirKutu(!!veri.goruntuSosyalIzni, dil)],
     [E("formDili"), secenekKutulari(ENUM_FORM_DILI, veri.dil || "tr", dil)]
-  ];
+  ].filter(Boolean);
 
-  var saglikBlok = "";
-  if (saglik.var) {
-    // v18: Drive'daki arşiv kopyasına (meta.saglikGizle) notun kendisi yazılmaz — not yalnız defterde tutulur
-    // ve ders yılı sonunda silinir (gizlilik bildirimi); veliye e-postayla giden kopya tam metni taşır.
-    var saglikIc = meta.saglikGizle
-      ? '<p class="sistem-not">' + (dil === "fr" ? "Conservée uniquement dans le registre d’inscription ; non reprise dans ce document."
-         : dil === "en" ? "Kept only in the registration register; not included in this document."
-         : "Yalnız kayıt defterinde tutulur; bu belgeye yazılmamıştır.") + "</p>"
-      : '<p class="saglik-not">' + elYazisi(saglik.not) + "</p>";
-    saglikBlok = '<section class="blok"><h2>' + E("saglikBilgisi")
-      + ' — ' + (dil === "fr" ? "communiquée avec consentement explicite" : dil === "en" ? "shared with explicit consent" : "açık rızayla verilmiştir")
-      + "</h2>" + saglikIc + "</section>";
-  }
+  var dersYiliHtml = dersYili ? '<span class="yil">' + D(DERS_YILI_ETIKET) + " " + kacis(dersYili) + "</span>" : "";
+  var sayfa1 = pdfUst("Kur'an Kursu Kayıt Formu", dil === "fr" ? "Formulaire d'inscription à l'école coranique" : dil === "en" ? "Qur'an course registration form" : "", dil, ref, zaman, dersYiliHtml)
+    + pdfTablo(satirlar);
 
-  // Onay kutuları (kalemle çarpı) + tarih / imza satırı. İmza alanındaki ad, velinin forma yazdığı addır;
-  // altındaki basılı not bunun elektronik onay olduğunu açıkça söyler (ıslak imza izlenimi verilmez).
-  var tarihKisa = (String(zaman).match(/^\d{2}\.\d{2}\.\d{4}/) || [""])[0]; // tarihle başlamıyorsa kutu boş kalır
+  // 2. SAYFA — veli sözleşmesi: kurallar TR | FR yan yana, onay kutuları (kalemle çarpı), tarih / imza satırı.
+  // İmza alanındaki ad velinin forma yazdığı addır; basılı not bunun elektronik onay olduğunu söyler.
+  var kuralParagraf = function (metin) {
+    var i = String(metin).indexOf(":");
+    return i > 0 ? "<b>" + kacis(String(metin).slice(0, i + 1)) + "</b>" + kacis(String(metin).slice(i + 1)) : kacis(metin);
+  };
+  var sozlesmeBaslik = kacis(SOZLESME_BASLIK.tr) + (dil !== "tr" && SOZLESME_BASLIK[dil] ? " / " + kacis(SOZLESME_BASLIK[dil]) : "");
   var onayKutular = '<div class="onay-kutular">'
-    + kutu(!!onay.kurallar, ikiDilliEtiket(ONAY_METIN.kurallar, dil))
-    + kutu(!!onay.gizlilik, ikiDilliEtiket(ONAY_METIN.gizlilik, dil))
-    + (saglik.var ? kutu(!!onay.saglikRiza, ikiDilliEtiket(ONAY_METIN.saglikRiza, dil)) : "")
+    + kutu(!!onay.kurallar, D(ONAY_METIN.kurallar))
+    + kutu(!!onay.gizlilik, D(ONAY_METIN.gizlilik))
+    + (saglik.var ? kutu(!!onay.saglikRiza, D(ONAY_METIN.saglikRiza)) : "")
     + "</div>";
   var imzaBlok = '<table class="imza"><tr>'
     + '<td class="dar"><div class="imza-cizgi">' + elYazisi(tarihKisa) + '</div><div class="imza-etiket">' + E("tarih") + "</div></td>"
     + '<td><div class="imza-cizgi">' + elYazisi(onay.elektronikImza) + '</div><div class="imza-etiket">' + E("elektronikImza") + "</div></td>"
     + "</tr></table>";
-  var formDiliBuyuk = kacis((veri.dil || "tr").toUpperCase());
-  var kurallarBlok = '<section class="blok"><h2>Kurs kuralları ve kurs–veli sözleşmesi (özet) / Règlement du cours et engagement parent–cours (résumé)</h2>'
-    + "<h3>Türkçe</h3><ul><li>" + kacis(KURALLAR_OGRENCI_TR) + "</li><li>" + kacis(KURALLAR_VELI_TR) + "</li></ul>"
-    + "<h3>Français</h3><ul><li>" + kacis(KURALLAR_OGRENCI_FR) + "</li><li>" + kacis(KURALLAR_VELI_FR) + "</li></ul>"
+  var sayfa2 = '<section class="sozlesme">'
+    + "<h1>" + sozlesmeBaslik + "</h1>"
+    + '<div class="s-kimlik"><span>' + E("ogrenciAdSoyad") + ": " + elYazisi(ogrenciAd) + '</span><span class="ref">Ref ' + kacis(ref) + (dersYili ? " \u00b7 " + D(DERS_YILI_ETIKET) + " " + kacis(dersYili) : "") + "</span></div>"
+    + '<table class="kurallar"><tr>'
+    + "<td><h3>Türkçe</h3><p>" + kuralParagraf(KURALLAR_OGRENCI_TR) + "</p><p>" + kuralParagraf(KURALLAR_VELI_TR) + "</p></td>"
+    + "<td><h3>Français</h3><p>" + kuralParagraf(KURALLAR_OGRENCI_FR) + "</p><p>" + kuralParagraf(KURALLAR_VELI_FR) + "</p></td>"
+    + "</tr></table>"
+    + '<h2 class="onay-baslik">' + D(ONAY_BASLIK) + "</h2>"
+    + '<p class="onay-giris">' + D(ONAY_GIRIS) + "</p>"
     + onayKutular + imzaBlok
     + '<p class="onay-not">Bu belge çevrim içi formla oluşturulmuş, veli tarafından ' + kacis(zaman) + " tarihinde elektronik olarak onaylanmıştır (form dili: " + formDiliBuyuk + "); imza alanındaki ad, velinin forma yazdığı addır. / "
     + "Ce document a été généré via le formulaire en ligne et approuvé électroniquement par le parent le " + kacis(zaman) + " (langue du formulaire : " + formDiliBuyuk + ") ; le nom dans la case signature est celui saisi par le parent dans le formulaire.</p>"
@@ -519,11 +581,9 @@ function pdfHtmlKayit(veri, meta) {
     + "Pour accéder, corriger ou supprimer vos données : info@ulucamii.be</footer>";
 
   return "<!DOCTYPE html><html lang=\"" + kacis(dil) + "\"><head><meta charset=\"utf-8\"><title>" + kacis(ref)
-    + "</title><style>" + PDF_CSS + "\n" + elYazisiCss(!!meta.sade) + "</style></head><body>"
-    + pdfUst("Kur'an Kursu Kayıt Formu", "Formulaire d'inscription à l'école coranique", dil, ref, zaman)
-    + pdfTablo(satirlar)
-    + saglikBlok
-    + kurallarBlok
+    + "</title><style>" + PDF_CSS + "\n" + kayitCss(!!meta.sade, ref, D(DEVAM_METIN)) + "</style></head><body>"
+    + sayfa1
+    + sayfa2
     + altBilgi
     + "</body></html>";
 }

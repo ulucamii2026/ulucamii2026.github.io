@@ -126,3 +126,24 @@ yazılmış gibi olsun.
   yeniden üretir (eski dosya kimliğiyle çöpe, «Durum» ` | arsiv-notsuz-v19`, idempotent; `uygula=1` yoksa sayar).
 - **Dağıtım:** `D:\tmp\gas\kaydet_v19_dev.py` kodu editöre kaydedip **test dağıtımı (/dev)** üzerinden
   pdf-ornek çağırır (canlıya dokunmadan doğrulama); sonra `dagit_v19.py` «Nouvelle version».
+
+## v20 (4 Eylül 2026 öğle) — Kayıt PDF'i iki sayfa: 1. sayfa form, 2. sayfa veli sözleşmesi
+
+Rıdvan'ın isteği: form ilk sayfada, veli sözleşmesi ikinci sayfada olsun; tasarım elden geçsin.
+
+- **1. sayfa — form:** üst bilgi + ref kutusu (artık ders yılı da yazar; defter adındaki «2026-2027»
+  tek kaynak), dört bölüm şeritli tablo (ÖĞRENCİ · VELİ · ACİL DURUM · SAĞLIK VE İZİNLER), sağlık notu
+  tabloda kendi satırında (uzun notta el yazısı küçülür: >300 karakterde 12 pt), «Posta kodu ve şehir»
+  tek satır. Alt kenar boşluğunda «→ Kurallar, onaylar ve imza 2. sayfadadır» (yalnız ilk sayfa) ve sayfa
+  numarası.
+- **2. sayfa — veli sözleşmesi:** başlık + öğrenci adı (el yazısı) + ref/ders yılı satırı, kurallar
+  **TR | FR yan yana** iki sütun, «Onaylar» giriş cümlesi + üç onay kutusu, tarih / elektronik imza
+  satırı, basılı elektronik onay notu, gizlilik alt bilgisi. Alt kenar: belge adı + ref, sayfa numarası.
+- **Sayfa kenarlıkları** `@page` kenar kutularıyla (`@bottom-left`, `@bottom-right`, `@page:first`);
+  Google'ın dönüştürücüsü (Chromium 151) basıyor. **Arka planlar** için `print-color-adjust: exact`
+  şart — dönüştürücü yazdırma varsayılanıyla zemin renklerini atıyordu (v19'da etiket hücreleri bu
+  yüzden beyazdı).
+- Yedi varyant (tr/fr/en, 600 karakter sağlık notu + uzun adres, Drive arşiv görünümü, sağlıksız)
+  yerelde ve /dev'de iki sayfaya sığdı. `kayitCss(sade, ref, devamMetni)` yalnız kayıt PDF'ine eklenir.
+- Dosyalar: `ulucamii-Kod-v20.gs` canlıda; v19 dosyası depodan kaldırıldı (git geçmişinde; 165 KB
+  gömülü yazı tipi her sürümde yinelenmesin), v18 son yazı tipsiz sürüm olarak duruyor.
