@@ -13,13 +13,15 @@
     "check": "astro check",
     "denetim": "node scripts/site-denetim.mjs",
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
-    "dogrula": "npm run build && npm run denetim && npm run test:ek9",
+    "dogrula": "npm run denetim:panel && npm run build && npm run denetim && npm run test:ek9",
     "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs",
     "onizle": "astro preview --port 4399",
     "test:anasayfa": "py -3.14 scripts/anasayfa-testi.py",
     "olc": "py -3.14 scripts/web-vitals-olc.py",
     "hero:gorsel": "node scripts/hero-gorsel-uret.mjs",
-    "arapca:altkume": "py -3.14 scripts/arapca-alt-kume.py"
+    "arapca:altkume": "py -3.14 scripts/arapca-alt-kume.py",
+    "denetim:panel": "node --check public/admin/panel.js && node --check public/admin/kapi.js && node --check public/admin/ek9.js",
+    "panel:fontlar": "py -3.14 scripts/panel-fontlar-uret.py"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",

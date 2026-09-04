@@ -4,1148 +4,144 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="color-scheme" content="light dark" />
     <title>Yönetim Paneli — Marche-en-Famenne Ulu Camii</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      /* Giriş kapısı. Üç koşul birden aranır:
-         1) GitHub anahtarı (Sveltia CMS'in beklediği yerde, localStorage),
-         2) panel sırları (sessionStorage — sekme kapanınca silinir; imzalar burada),
-         3) 12 saati aşmamış oturum damgası.
-         Biri eksikse kalıntı temizlenip giriş sayfasına dönülür: yarım kalmış bir oturumla
-         panelin açılıp sessizce çalışmaması için (25 Ağustos 2026 denetimi). */
-      try {
-        const u = JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null');
-        const s = JSON.parse(sessionStorage.getItem('panel-sirlar') || 'null');
-        const o = JSON.parse(localStorage.getItem('panel-oturum') || 'null');
-        const suresiDoldu = !o || !o.baslangic || (Date.now() - o.baslangic) > 12 * 60 * 60 * 1000;
-        if (!u || !u.token || !s || !s.gh || suresiDoldu) {
-          localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-oturum');
-          sessionStorage.removeItem('panel-sirlar');
-          location.replace('/admin/giris.html');
-        }
-      } catch { location.replace('/admin/giris.html'); }
-    </script>
-    <style>
-      :root { --kiremit: #b5452b; --kiremit-koyu: #8f3420; --ochre: #c98a2e; --ceviz: #4a3728; --murekkep: #24201c; --kagit: #fdfbf7; --krem: #f7f3ea; --cizgi: rgba(74,55,40,.16); --iznik: #1f5f8b; --zemin-kart: #fff; --metin-2: #635850; --yesil: #256d3b; }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; scroll-padding-top: var(--ustlik-yukseklik, 7.5rem); }
-      body { margin: 0; min-height: 100dvh; background: var(--kagit) radial-gradient(rgba(74,55,40,.03) .6px, transparent .6px) 0 0 / 5px 5px; color: var(--murekkep); font: 16px/1.55 "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
-      a { color: var(--iznik); }
-      .serit { height: 6px; background: repeating-linear-gradient(90deg, var(--kiremit) 0 14px, var(--ochre) 14px 20px, var(--iznik) 20px 26px, var(--ochre) 26px 32px); }
-      .ustlik { position: sticky; top: 0; z-index: 6; }
-      header.ust { display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem; background: var(--zemin-kart); border-bottom: 1px solid var(--cizgi); }
-      header.ust img { width: 40px; height: 40px; }
-      header.ust b { font-family: Lora, Georgia, serif; font-size: 1.15rem; display: block; line-height: 1.05; }
-      header.ust small { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--metin-2); }
-      header.ust .sag { margin-left: auto; display: flex; gap: .5rem; align-items: center; }
-      .dugme { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 40px; padding: .35rem .9rem; border-radius: 3px; border: 1px solid var(--cizgi); background: var(--zemin-kart); color: inherit; font: 600 .9rem "Work Sans", system-ui, sans-serif; text-decoration: none; cursor: pointer; }
-      .dugme:hover { border-color: var(--ceviz); }
-      .dugme.birincil { background: var(--kiremit); border-color: var(--kiremit); color: #fff; }
-      .dugme.birincil:hover { background: var(--kiremit-koyu); }
-      .dugme[disabled] { opacity: .5; cursor: default; }
-      /* Tablo içi «form PDF» düğmesi: bağlantı gibi görünür, ama Drive'a gitmez (bkz. formPdfAc). */
-      .pdf-bag { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
-      .pdf-bag[disabled] { opacity: .5; cursor: default; }
-
-      /* Bölüm gezintisi — telefonda uzun sayfayı tek dokunuşla dolaşmak için */
-      nav.gezinti { display: flex; gap: .3rem; padding: .45rem .8rem; background: var(--zemin-kart); border-bottom: 1px solid var(--cizgi); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-      nav.gezinti::-webkit-scrollbar { display: none; }
-      nav.gezinti a { flex: none; padding: .35rem .75rem; border-radius: 999px; text-decoration: none; color: var(--metin-2); font: 600 .82rem "Work Sans", system-ui, sans-serif; white-space: nowrap; border: 1px solid transparent; }
-      nav.gezinti a.etkin { background: rgba(181,69,43,.1); color: var(--kiremit); border-color: rgba(181,69,43,.3); }
-      nav.gezinti .rozet { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .7rem; }
-
-      @media (max-width: 560px) {
-        header.ust { gap: .5rem; padding: .55rem .7rem; }
-        header.ust img { width: 32px; height: 32px; }
-        header.ust b { font-size: .98rem; }
-        header.ust small { display: none; }
-        header.ust .sag { gap: .3rem; }
-        header.ust .dugme { min-height: 36px; padding: .3rem .55rem; font-size: .8rem; }
-        header.ust .sag a[href="/tr/"] { display: none; }   /* siteye dönüş bağlantısı alttaki Hızlı Bağlantılar'da da var */
-      }
-      main { max-width: 72rem; margin: 0 auto; padding: 1.4rem 1.2rem 3rem; }
-      h2 { font: 600 1.05rem/1.2 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--metin-2); margin: 2.2rem 0 .8rem; display: flex; align-items: baseline; gap: .6rem; }
-      h2:first-of-type { margin-top: .6rem; }
-      h2 .cizgi { flex: 1; border-top: 1px solid var(--cizgi); }
-      .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); gap: .8rem; }
-      .kart { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; padding: .95rem 1.1rem; box-shadow: 0 1px 0 rgba(74,55,40,.05); }
-      .kart .etiket { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--metin-2); }
-      .kart .deger { font-family: Lora, Georgia, serif; font-size: 1.7rem; font-weight: 700; line-height: 1.15; margin-top: .25rem; display: flex; align-items: center; gap: .5rem; }
-      .kart .alt { font-size: .82rem; color: var(--metin-2); margin-top: .2rem; }
-      .nokta { width: .7rem; height: .7rem; border-radius: 50%; background: #999; display: inline-block; flex: none; }
-      .nokta.iyi { background: var(--yesil); box-shadow: 0 0 0 3px rgba(37,109,59,.18); }
-      .nokta.kotu { background: var(--kiremit); box-shadow: 0 0 0 3px rgba(181,69,43,.2); }
-      table { width: 100%; border-collapse: collapse; background: var(--zemin-kart); border: 1px solid var(--cizgi); font-size: .92rem; }
-      th, td { text-align: left; padding: .5rem .8rem; border-bottom: 1px solid var(--cizgi); }
-      th { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--metin-2); background: rgba(74,55,40,.04); }
-      td.sayi { font-family: "IBM Plex Mono", ui-monospace, monospace; text-align: right; white-space: nowrap; }
-      tr:last-child td { border-bottom: 0; }
-      .satir-arac { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .7rem 0; }
-      /* Bilgi/uyari kutusu: turu renkten anlasilir ama kenar seridi yerine ince tam cerceve. */
-      .bilgi-kutu { border: 1px solid rgba(201,138,46,.42); background: rgba(201,138,46,.09); padding: .7rem .95rem; border-radius: 3px; font-size: .92rem; }
-      .sekmeler { display: flex; gap: .4rem; margin-bottom: .7rem; flex-wrap: wrap; }
-      .sekme { min-height: 40px; padding: .35rem .9rem; border: 1px solid var(--cizgi); background: var(--zemin-kart); border-radius: 3px; font: 600 .9rem "Work Sans", system-ui, sans-serif; cursor: pointer; color: inherit; }
-      .sekme[aria-selected="true"] { background: var(--ceviz); border-color: var(--ceviz); color: #fff; }
-      .baglantilar { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .8rem; }
-      .baglantilar a { display: block; background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; padding: .9rem 1rem; text-decoration: none; color: inherit; transition: transform .12s, border-color .12s; }
-      .baglantilar a:hover { transform: translateY(-1px); border-color: var(--ceviz); }
-      .baglantilar b { display: block; font-family: Lora, Georgia, serif; font-size: 1.05rem; }
-      .baglantilar span { font-size: .82rem; color: var(--metin-2); }
-      .tablo-sar { overflow-x: auto; }
-      footer { text-align: center; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--metin-2); padding: 1.2rem; border-top: 1px solid var(--cizgi); }
-
-      /* --- Ziyaret istatistikleri --- */
-      .ozet { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; padding: .85rem 1.1rem; margin-bottom: .9rem; font-size: 1.02rem; line-height: 1.6; }
-      .ozet b { font-family: Lora, Georgia, serif; font-size: 1.15em; }
-      .ozet .tazelik { display: block; margin-top: .3rem; font-size: .8rem; color: var(--metin-2); }
-      .donem-satir { display: flex; align-items: center; gap: .4rem; margin: 0 0 .7rem; flex-wrap: wrap; }
-      .donem-dugme.secili { background: var(--kiremit); color: #fff; border-color: var(--kiremit); }
-      .grafik-kutu { border: 1px solid var(--cizgi); border-radius: 4px; background: var(--zemin-kart); padding: .5rem .6rem .35rem; margin-bottom: .9rem; }
-      .grafik-okuma { min-height: 1.4rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .78rem; color: var(--metin-2); padding: 0 .2rem .25rem; }
-      .grafik { display: flex; align-items: flex-end; gap: 2px; height: 128px; touch-action: pan-y; }
-      .grafik .cubuk { flex: 1; min-width: 3px; background: var(--kiremit); border-radius: 2px 2px 0 0; opacity: .5; transition: opacity .12s; }
-      .grafik .cubuk:hover, .grafik .cubuk.sec { opacity: 1; }
-      .grafik .cubuk.bugun { opacity: 1; background: var(--kiremit-koyu); }
-      .grafik-eksen { display: flex; justify-content: space-between; font-size: .72rem; color: var(--metin-2); padding: .3rem .2rem 0; }
-      .trafik-izgara { display: grid; gap: 1rem; grid-template-columns: 1fr; align-items: start; }
-      @media (min-width: 900px) { .trafik-izgara { grid-template-columns: 3fr 2fr; } }
-      .yol-alt { color: var(--metin-2); font-size: .78rem; }
-      .oran { height: 4px; background: var(--cizgi); border-radius: 2px; margin-top: .35rem; overflow: hidden; }
-      .oran span { display: block; height: 100%; background: var(--kiremit); }
-      details.katlanir { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 3px; }
-      details.katlanir > summary { cursor: pointer; padding: .6rem .8rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--metin-2); list-style: none; display: flex; align-items: center; gap: .4rem; }
-      details.katlanir > summary::-webkit-details-marker { display: none; }
-      details.katlanir > summary::after { content: '▾'; margin-left: auto; font-size: .9rem; }
-      details.katlanir[open] > summary::after { content: '▴'; }
-      details.katlanir > summary:hover { color: var(--murekkep); }
-      details.katlanir table { border: 0; border-top: 1px solid var(--cizgi); }
-      .ikincil-izgara { display: grid; gap: .6rem; align-content: start; }
-
-      /* --- Başvuru kartları --- */
-      .basvuru-liste { display: grid; gap: .7rem; }
-      .bkart { background: var(--zemin-kart); border: 1px solid var(--cizgi); border-radius: 4px; padding: .85rem 1rem; }
-      /* Yeni basvuru: kenar seridi yerine cercevenin kendisi renklenir + cok hafif zemin. */
-      .bkart.yeni { border-color: rgba(201,138,46,.6); background: rgba(201,138,46,.05); }
-      .bkart-ust { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
-      .bkart-ad { font-family: Lora, Georgia, serif; font-size: 1.18rem; font-weight: 700; }
-      .bkart-ref { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .74rem; color: var(--metin-2); }
-      .rozet-durum { margin-left: auto; font-size: .74rem; padding: .12rem .5rem; border-radius: 999px; background: rgba(74,55,40,.08); color: var(--metin-2); white-space: nowrap; }
-      .rozet-durum.yeni { background: rgba(201,138,46,.18); color: #7a5310; }
-      /* Arka uc, bildirim e-postasi gidemezse defterin durum sutununa "e-posta gonderilemedi"
-         yazar (kayit yine de saglamdir). Bu metin "yeni" iceriyor diye normal kayitla ayni
-         renkte gorunuyordu ve gozden kaciyordu — ayri bir uyari rengi verildi. */
-      .rozet-durum.sorun { background: rgba(181,69,43,.16); color: #8f3420; font-weight: 600; }
-      /* Duzeltilmis kayit: yeni bir basvuru degil, var olanin yeni surumu. */
-      .rozet-durum.duzeltme { background: rgba(31,95,139,.14); color: #1a4e73; font-weight: 600; }
-      .eski-surum { margin-top: .5rem; }
-      .eski-surum > summary { font-size: .86rem; color: var(--metin-2); }
-      .eski-surum .eski-not { margin: .5rem 0 0; font-size: .84rem; color: var(--metin-2); }
-      .liste-not { margin: .8rem 0 0; font-size: .84rem; color: var(--metin-2); }
-      .bkart-satir { display: flex; flex-wrap: wrap; gap: .2rem 1.1rem; margin-top: .4rem; font-size: .92rem; color: var(--metin-2); }
-      .bkart-satir span b { color: var(--murekkep); font-weight: 600; font-family: inherit; }
-      .bkart-arac { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .6rem; }
-      .bkart-arac a, .bkart-arac button { min-height: 34px; padding: .2rem .7rem; font-size: .84rem; }
-      .bkart details { margin-top: .55rem; }
-      .bkart details summary { cursor: pointer; font-size: .84rem; color: var(--iznik); }
-      .bkart details table { margin-top: .5rem; font-size: .88rem; border: 1px solid var(--cizgi); }
-      .bkart details th { width: 40%; }
-      .ara-kutu { min-height: 40px; padding: .35rem .7rem; font: inherit; font-size: .92rem; border: 1px solid var(--cizgi); border-radius: 3px; background: var(--zemin-kart); color: inherit; min-width: 12rem; flex: 1; max-width: 22rem; }
-      .sekme .say { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .78rem; opacity: .85; }
-
-      @media (prefers-color-scheme: dark) {
-        :root { --kagit: #2f221a; --murekkep: #f5efe3; --zemin-kart: #3a2a1f; --cizgi: rgba(245,239,227,.16); --metin-2: #cbbfae; --iznik: #6fa8d3; --kiremit: #c9573b; --yesil: #4ea36a; }
-        body { background-color: #2f221a; }
-        th { background: rgba(245,239,227,.05); }
-        nav.gezinti a.etkin { background: rgba(201,87,59,.18); color: #f0a992; border-color: rgba(201,87,59,.45); }
-        .rozet-durum.yeni { background: rgba(201,138,46,.22); color: #e8c07a; }
-        .rozet-durum.sorun { background: rgba(227,127,95,.24); color: #f0b9a6; }
-      }
-    </style>
+    <!-- Giriş kapısı: çizimden önce, eşzamanlı (bkz. kapi.js — /admin/icerik/ ile ortak) -->
+    <script src="/admin/kapi.js"></script>
+    <link rel="preload" href="/fonts/panel/work-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/panel/work-sans-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/panel/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/panel/lora-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/admin/panel.css" />
   </head>
   <body>
     <div class="serit" aria-hidden="true"></div>
     <div class="ustlik">
-    <header class="ust">
-      <img src="/media/logo/ulu-camii-logo.svg" alt="" />
-      <span><b>Yönetim Paneli</b><small>Marche-en-Famenne Ulu Camii</small></span>
-      <span class="sag">
-        <a class="dugme" href="/tr/" title="Siteye dön">Site ↗</a>
-        <a class="dugme birincil" href="/admin/icerik/">İçerik Yönetimi</a>
-        <button class="dugme" id="cikis" type="button">Çıkış</button>
-      </span>
-    </header>
-    <nav class="gezinti" aria-label="Panel bölümleri">
-      <a href="#durum">Durum</a>
-      <a href="#trafik">Ziyaretler</a>
-      <a href="#basvurular">Başvurular <span class="rozet" id="gez-rozet"></span></a>
-      <a href="#degisiklikler">Değişiklikler</a>
-      <a href="#baglar">Bağlantılar</a>
-    </nav>
+      <header class="ust">
+        <img src="/media/logo/ulu-camii-logo.svg" alt="" width="40" height="40" />
+        <span><h1>Yönetim Paneli</h1><small>Marche-en-Famenne Ulu Camii</small></span>
+        <span class="sag">
+          <a class="dugme" href="/tr/" title="Siteye dön">Site ↗</a>
+          <a class="dugme birincil" href="/admin/icerik/">İçerik Yönetimi</a>
+          <button class="dugme" id="cikis" type="button">Çıkış</button>
+        </span>
+      </header>
+      <nav class="gezinti" aria-label="Panel bölümleri">
+        <a href="#durum">Durum</a>
+        <a href="#basvurular">Başvurular <span class="rozet" id="gez-rozet"></span></a>
+        <a href="#trafik">Ziyaretler</a>
+        <a href="#degisiklikler">Değişiklikler</a>
+        <a href="#baglar">Bağlantılar</a>
+      </nav>
     </div>
     <main>
-      <h2 id="durum">Durum <span class="cizgi"></span><button class="dugme" id="yenile" type="button" style="text-transform:none;letter-spacing:0">Yenile</button></h2>
-      <div class="kartlar">
-        <div class="kart"><span class="etiket">Web sitesi</span><span class="deger"><span class="nokta" id="n-site"></span><span id="d-site">…</span></span><span class="alt">ulucamii.be</span></div>
-        <div class="kart"><span class="etiket">Kayıt formu</span><span class="deger"><span class="nokta" id="n-kayit"></span><span id="d-kayit">…</span></span><span class="alt">ulucamii.be/kayit</span></div>
-        <div class="kart"><span class="etiket">Son yayın (deploy)</span><span class="deger" id="d-yayin">…</span><span class="alt" id="a-yayin">GitHub Actions</span></div>
-        <div class="kart"><span class="etiket">Erişilebilirlik denetimi</span><span class="deger"><span class="nokta" id="n-uptime"></span><span id="d-uptime">…</span></span><span class="alt" id="a-uptime">30 dakikada bir otomatik</span></div>
-      </div>
-
-      <h2 id="trafik">Ziyaretler <span class="cizgi"></span></h2>
-      <p class="ozet" id="ozet">Ziyaret verileri getiriliyor…<span class="tazelik" id="ozet-tazelik"></span></p>
-      <div class="donem-satir" role="group" aria-label="Dönem seçimi">
-        <button type="button" class="dugme donem-dugme" data-gun="1">Bugün</button>
-        <button type="button" class="dugme donem-dugme secili" data-gun="7">7 gün</button>
-        <button type="button" class="dugme donem-dugme" data-gun="30">30 gün</button>
-        <button type="button" class="dugme donem-dugme" data-gun="90">90 gün</button>
-        <a class="dugme" id="goat-link" href="#" target="_blank" rel="noopener" style="margin-left:auto">GoatCounter ↗</a>
-      </div>
-      <div class="kartlar" style="margin-bottom:.9rem">
-        <div class="kart"><span class="etiket">Dönem görüntülenme</span><span class="deger" id="d-donem">…</span><span class="alt" id="a-donem">Sayfa açılışı sayısı</span></div>
-        <div class="kart"><span class="etiket">Bugün</span><span class="deger" id="d-bugun">…</span><span class="alt" id="a-dun">Dün: …</span></div>
-        <div class="kart"><span class="etiket">Toplam ziyaretçi</span><span class="deger" id="d-toplam">…</span><span class="alt">Yayından bu yana · çerezsiz sayaç</span></div>
-      </div>
-      <div class="grafik-kutu">
-        <div class="grafik-okuma" id="grafik-okuma">&nbsp;</div>
-        <div class="grafik" id="grafik" aria-label="Ziyaret grafiği"></div>
-        <div class="grafik-eksen" id="grafik-eksen"></div>
-      </div>
-      <div class="trafik-izgara">
-        <div class="tablo-sar">
-          <table aria-label="En çok ziyaret edilen sayfalar">
-            <thead><tr><th>En çok ziyaret edilen sayfalar</th><th style="text-align:right">Görüntülenme</th></tr></thead>
-            <tbody id="trafik-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
-          </table>
+      <!-- DURUM: kart değil pil satırı — bir bakışta okunur, sorun varsa yalnız o kızarır -->
+      <section id="durum" aria-labelledby="durum-baslik">
+        <h2 id="durum-baslik">Durum <span class="cizgi"></span><button class="dugme" id="yenile" type="button">Yenile</button></h2>
+        <div class="durum-serit" id="durum-pilleri" role="status" aria-live="polite">
+          <span class="pil" id="pil-site"><i class="nokta"></i><span class="etiket">Site</span><span class="deger">…</span></span>
+          <span class="pil" id="pil-kayit"><i class="nokta"></i><span class="etiket">Kayıt formu</span><span class="deger">…</span></span>
+          <span class="pil" id="pil-yayin"><i class="nokta"></i><span class="etiket">Son yayın</span><span class="deger">…</span></span>
+          <span class="pil" id="pil-uptime"><i class="nokta"></i><span class="etiket">Erişim denetimi</span><span class="deger">…</span></span>
+          <span class="pil" id="pil-namaz"><i class="nokta"></i><span class="etiket">Namaz vakitleri</span><span class="deger">…</span></span>
         </div>
-        <div class="ikincil-izgara">
-          <details class="katlanir" id="kat-kaynak">
-            <summary>Nereden geldiler?</summary>
-            <table><tbody id="kaynak-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody></table>
-          </details>
-          <details class="katlanir" id="kat-ulke">
-            <summary>Ülkeler</summary>
-            <table><tbody id="ulke-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody></table>
-          </details>
-          <details class="katlanir" id="kat-cihaz">
-            <summary>Cihazlar ve tarayıcılar</summary>
-            <table><tbody id="cihaz-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody></table>
-          </details>
+        <div class="yayinda" id="yayinda" hidden></div>
+      </section>
+
+      <!-- BAŞVURULAR: yöneticinin asıl işi — en üstte -->
+      <section id="basvurular" aria-labelledby="basvurular-baslik">
+        <h2 id="basvurular-baslik">Başvurular <span class="cizgi"></span></h2>
+        <div class="sekmeler" role="tablist" aria-label="Başvuru defterleri">
+          <button class="sekme" role="tab" id="sekme-kayit" aria-selected="true" aria-controls="basvuru-alan" data-tur="kayit">Kur’an Kursu Kayıtları <span class="say" id="rozet-kayit"></span></button>
+          <button class="sekme" role="tab" id="sekme-ihtida" aria-selected="false" aria-controls="basvuru-alan" tabindex="-1" data-tur="ihtida">İhtida Başvuruları <span class="say" id="rozet-ihtida"></span></button>
         </div>
-      </div>
-      <p class="alt" style="font-size:.82rem;color:var(--metin-2);margin-top:.7rem">Sayılar, gizlilik dostu GoatCounter sayacından alınır (24 Ağustos 2026'dan itibaren) ve panel açıkken 5 dakikada bir kendiliğinden tazelenir. Reklam engelleyici kullanan ziyaretçiler sayılamayabilir.</p>
-
-      <h2 id="basvurular">Başvurular <span class="cizgi"></span></h2>
-      <div class="sekmeler" role="tablist">
-        <button class="sekme" role="tab" aria-selected="true" data-tur="kayit">Kur'an Kursu Kayıtları <span class="say" id="rozet-kayit"></span></button>
-        <button class="sekme" role="tab" aria-selected="false" data-tur="ihtida">İhtida Başvuruları <span class="say" id="rozet-ihtida"></span></button>
-      </div>
-      <div class="satir-arac">
-        <input class="ara-kutu" id="basvuru-ara" type="search" placeholder="Ara: ad, telefon, referans…" aria-label="Başvurularda ara" />
-        <button class="dugme" id="basvuru-yenile" type="button">↻ Tazele</button>
-        <button class="dugme" id="csv" type="button" disabled>CSV indir</button>
-        <span id="basvuru-durum" style="font-size:.85rem;color:var(--metin-2)"></span>
-      </div>
-      <div id="basvuru-alan">
-        <div class="bilgi-kutu" id="basvuru-bilgi" hidden></div>
-        <div class="basvuru-liste" id="basvuru-liste"></div>
-        <p class="liste-not" id="basvuru-not" hidden></p>
-      </div>
-
-      <h2 id="degisiklikler">Son Değişiklikler <span class="cizgi"></span></h2>
-      <details class="katlanir" id="kat-degisiklik">
-        <summary>Sitede en son ne değişti?</summary>
-        <div class="tablo-sar">
-          <table aria-label="Son içerik değişiklikleri">
-            <tbody id="commit-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
-          </table>
+        <div class="satir-arac">
+          <input class="ara-kutu" id="basvuru-ara" type="search" placeholder="Ara: ad, telefon, referans…" aria-label="Başvurularda ara" />
+          <button class="dugme" id="basvuru-yenile" type="button">↻ Tazele</button>
+          <button class="dugme" id="csv" type="button" disabled>CSV indir</button>
+          <span id="basvuru-durum" aria-live="polite" style="font-size:.85rem;color:var(--metin-2)"></span>
         </div>
-      </details>
+        <div id="basvuru-alan" role="tabpanel" aria-labelledby="sekme-kayit">
+          <div class="bilgi-kutu" id="basvuru-bilgi" hidden></div>
+          <div class="basvuru-liste" id="basvuru-liste"></div>
+          <p class="liste-not" id="basvuru-not" hidden></p>
+        </div>
+      </section>
 
-      <h2 id="baglar">Hızlı Bağlantılar <span class="cizgi"></span></h2>
-      <div class="baglantilar">
-        <a href="/admin/icerik/"><b>İçerik Yönetimi</b><span>Duyuru, etkinlik, vefat, afiş ekle-düzenle</span></a>
-        <a href="https://purelymail.com/user/login" target="_blank" rel="noopener"><b>E-posta (Webmail) ↗</b><span>info@ulucamii.be kutusu</span></a>
-        <a href="/kayit/" target="_blank" rel="noopener"><b>Kayıt Formu ↗</b><span>Kur'an kursu online kayıt sayfası</span></a>
-        <a href="/tr/" target="_blank" rel="noopener"><b>Web Sitesi ↗</b><span>ulucamii.be — yayındaki site</span></a>
-        <a href="https://github.com/ulucamii2026/ulucamii2026.github.io/actions" target="_blank" rel="noopener"><b>Yayın Geçmişi ↗</b><span>Site derleme ve denetim kayıtları</span></a>
-      </div>
+      <section id="trafik" aria-labelledby="trafik-baslik">
+        <h2 id="trafik-baslik">Ziyaretler <span class="cizgi"></span></h2>
+        <p class="ozet" id="ozet">Ziyaret verileri getiriliyor…<span class="tazelik" id="ozet-tazelik"></span></p>
+        <div class="donem-satir" role="group" aria-label="Dönem seçimi">
+          <button type="button" class="dugme donem-dugme" data-gun="1">Bugün</button>
+          <button type="button" class="dugme donem-dugme secili" data-gun="7">7 gün</button>
+          <button type="button" class="dugme donem-dugme" data-gun="30">30 gün</button>
+          <button type="button" class="dugme donem-dugme" data-gun="90">90 gün</button>
+          <a class="dugme" id="goat-link" href="#" target="_blank" rel="noopener" style="margin-left:auto">GoatCounter ↗</a>
+        </div>
+        <div class="kartlar" style="margin-bottom:.9rem">
+          <div class="kart"><span class="etiket">Dönem görüntülenme</span><span class="deger" id="d-donem">…</span><span class="alt" id="a-donem">Sayfa açılışı sayısı</span></div>
+          <div class="kart"><span class="etiket">Bugün</span><span class="deger" id="d-bugun">…</span><span class="alt" id="a-dun">Dün: …</span></div>
+          <div class="kart"><span class="etiket">Toplam ziyaretçi</span><span class="deger" id="d-toplam">…</span><span class="alt">Yayından bu yana · çerezsiz sayaç</span></div>
+        </div>
+        <div class="grafik-kutu">
+          <div class="grafik-okuma" id="grafik-okuma" aria-live="polite">&nbsp;</div>
+          <div class="grafik" id="grafik" role="group" aria-label="Ziyaret grafiği — çubuklar klavyeyle gezilebilir"></div>
+          <div class="grafik-eksen" id="grafik-eksen" aria-hidden="true"></div>
+        </div>
+        <div class="trafik-izgara">
+          <div class="tablo-sar">
+            <table aria-label="En çok ziyaret edilen sayfalar">
+              <thead><tr><th>En çok ziyaret edilen sayfalar</th><th style="text-align:right">Görüntülenme</th></tr></thead>
+              <tbody id="trafik-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="ikincil-izgara">
+            <details class="katlanir" id="kat-kaynak">
+              <summary>Nereden geldiler?</summary>
+              <table><tbody id="kaynak-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody></table>
+            </details>
+            <details class="katlanir" id="kat-ulke">
+              <summary>Ülkeler</summary>
+              <table><tbody id="ulke-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody></table>
+            </details>
+            <details class="katlanir" id="kat-cihaz">
+              <summary>Cihazlar ve tarayıcılar</summary>
+              <table><tbody id="cihaz-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody></table>
+            </details>
+          </div>
+        </div>
+        <p class="yol-alt" style="margin-top:.7rem">Sayılar, gizlilik dostu GoatCounter sayacından alınır (24 Ağustos 2026’dan itibaren) ve panel açıkken 5 dakikada bir kendiliğinden tazelenir. Reklam engelleyici kullanan ziyaretçiler sayılamayabilir.</p>
+      </section>
+
+      <section id="degisiklikler" aria-labelledby="degisiklikler-baslik">
+        <h2 id="degisiklikler-baslik">Son Değişiklikler <span class="cizgi"></span></h2>
+        <details class="katlanir" id="kat-degisiklik">
+          <summary>Sitede en son ne değişti?</summary>
+          <div class="tablo-sar">
+            <table aria-label="Son değişiklik kayıtları">
+              <tbody id="commit-govde"><tr><td colspan="2">Yükleniyor…</td></tr></tbody>
+            </table>
+          </div>
+          <p class="not">Bunlar geliştirici kayıt notlarıdır (depo geçmişi). Duyuru, etkinlik ve vefat haberleri için İçerik Yönetimi’ne bakın.</p>
+        </details>
+      </section>
+
+      <section id="baglar" aria-labelledby="baglar-baslik">
+        <h2 id="baglar-baslik">Hızlı Bağlantılar <span class="cizgi"></span></h2>
+        <div class="baglantilar">
+          <a href="/admin/icerik/"><b>İçerik Yönetimi</b><span>Duyuru, etkinlik, vefat, afiş ekle-düzenle</span></a>
+          <a href="/admin/icerik/#/collections/duyurular/new"><b>Yeni duyuru ekle</b><span>Doğrudan boş duyuru formu</span></a>
+          <a href="/admin/icerik/#/collections/vefat/new"><b>Vefat haberi ekle</b><span>Cenaze namazı ve baş sağlığı bandı için</span></a>
+          <a href="/kayit/" target="_blank" rel="noopener"><b>Kayıt Formu<span class="ok" aria-hidden="true">↗</span></b><span>Kur’an kursu online kayıt sayfası</span></a>
+          <a href="/tr/ihtida-basvurusu/" target="_blank" rel="noopener"><b>İhtida Başvuru Formu<span class="ok" aria-hidden="true">↗</span></b><span>Başvuranın doldurduğu sayfa</span></a>
+          <a href="https://purelymail.com/user/login" target="_blank" rel="noopener"><b>E-posta<span class="ok" aria-hidden="true">↗</span></b><span>info@ulucamii.be kutusu (webmail)</span></a>
+          <a href="/tr/" target="_blank" rel="noopener"><b>Web Sitesi<span class="ok" aria-hidden="true">↗</span></b><span>ulucamii.be — yayındaki site</span></a>
+          <a href="https://github.com/ulucamii2026/ulucamii2026.github.io/actions" target="_blank" rel="noopener"><b>Yayın Geçmişi<span class="ok" aria-hidden="true">↗</span></b><span>Site derleme ve denetim kayıtları</span></a>
+        </div>
+      </section>
     </main>
-    <footer>Yönetim Paneli · A.D.M.U.C.M.F. · yalnız yönetim kurulu</footer>
-
-    <script>
-      const REPO = 'ulucamii2026/ulucamii2026.github.io';
-      const GAS = 'https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec';
-      const GOAT = 'https://ulucamii.goatcounter.com';
-      let SIRLAR = null;
-      // Sırlar sessionStorage'da: sekme kapanınca cihazdan silinir (bkz. giriş kapısı).
-      try { SIRLAR = JSON.parse(sessionStorage.getItem('panel-sirlar') || 'null'); } catch {}
-      if (!SIRLAR) {
-        document.addEventListener('DOMContentLoaded', () => {
-          const k = document.createElement('div'); k.className = 'bilgi-kutu'; k.style.margin = '1rem 1.2rem 0';
-          k.innerHTML = 'Panelin tüm özellikleri için bir kez <a href="/admin/giris.html">yeniden giriş</a> yapın (erişim paketi yenilendi).';
-          document.querySelector('main').prepend(k);
-        });
-      }
-
-      const $ = (id) => document.getElementById(id);
-      const kacir = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-      const bekle = (ms) => new Promise((c) => setTimeout(c, ms));
-      const tarihStr = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-      const sayiTR = (n) => Number(n || 0).toLocaleString('tr-TR');
-      function neZaman(ts) {
-        const dk = Math.round((Date.now() - ts) / 60000);
-        if (dk < 1) return 'az önce';
-        if (dk < 60) return dk + ' dakika önce';
-        const s = Math.round(dk / 60);
-        return s < 24 ? s + ' saat önce' : new Date(ts).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' });
-      }
-      $('cikis').addEventListener('click', () => {
-        localStorage.removeItem('sveltia-cms.user'); localStorage.removeItem('panel-oturum');
-        sessionStorage.removeItem('panel-sirlar');
-        localStorage.removeItem('panel-trafik-v3'); localStorage.removeItem('panel-basvuru-v1');
-        location.replace('/admin/giris.html');
-      });
-
-      // Bölüm gezintisi: kaydırdıkça etkin bölümü işaretle
-      (function gezintiKur() {
-        const baglar = [...document.querySelectorAll('nav.gezinti a')];
-        const hedefler = baglar.map((a) => $(a.getAttribute('href').slice(1))).filter(Boolean);
-        const ustlik = document.querySelector('.ustlik');
-        if (!hedefler.length || !ustlik) return;
-        const yuksekligiYaz = () => document.documentElement.style.setProperty('--ustlik-yukseklik', (ustlik.offsetHeight + 12) + 'px');
-        yuksekligiYaz();
-        addEventListener('resize', yuksekligiYaz);
-        let bekleyen = false;
-        const guncelle = () => {
-          const esik = scrollY + ustlik.offsetHeight + 48;
-          let etkin = hedefler[0].id;
-          for (const h of hedefler) if (h.offsetTop <= esik) etkin = h.id;
-          baglar.forEach((a) => a.classList.toggle('etkin', a.getAttribute('href') === '#' + etkin));
-        };
-        addEventListener('scroll', () => {
-          if (bekleyen) return;
-          bekleyen = true;
-          requestAnimationFrame(() => { bekleyen = false; guncelle(); });
-        }, { passive: true });
-        guncelle();
-      })();
-
-      /* ============================ ZİYARETLER ============================ */
-      const TRAFIK_ONBELLEK = 'panel-trafik-v3';
-      async function sayac(yol) {
-        try { const r = await fetch(`${GOAT}/counter/${yol}.json`, { cache: 'no-store' }); if (!r.ok) return null; const j = await r.json(); return j.count_unique ?? j.count; }
-        catch { return null; }
-      }
-      async function goatApi(uc, deneme) {
-        deneme = deneme || 0;
-        let r;
-        try {
-          r = await fetch(`${GOAT}/api/v0/${uc}`, { headers: { Authorization: `Bearer ${SIRLAR.goatApi}` }, cache: 'no-store' });
-        } catch (agHata) {
-          // hız sınırı yanıtı CORS başlıksız gelir ve fetch TypeError atar — bekleyip yeniden dene
-          if (deneme < 3) { await bekle(1500 * (deneme + 1)); return goatApi(uc, deneme + 1); }
-          throw agHata;
-        }
-        if (r.status === 429 && deneme < 3) { await bekle(1500 * (deneme + 1)); return goatApi(uc, deneme + 1); }
-        if (!r.ok) throw new Error('goat ' + r.status);
-        return r.json();
-      }
-      /** İstekleri sıraya dizer: eşzamanlı çağrı hız sınırını tetikliyordu. Düşen uç diğerlerini düşürmez. */
-      async function siraliCek(ucler) {
-        const c = [];
-        for (let i = 0; i < ucler.length; i++) {
-          try { c.push(await goatApi(ucler[i])); } catch { c.push(null); }
-          if (i < ucler.length - 1) await bekle(280);
-        }
-        return c;
-      }
-
-      const ULKE_TR = { Belgium: 'Belçika', Turkey: 'Türkiye', France: 'Fransa', Germany: 'Almanya', Netherlands: 'Hollanda', 'United States': 'ABD', 'United Kingdom': 'Birleşik Krallık', Morocco: 'Fas', Luxembourg: 'Lüksemburg', Switzerland: 'İsviçre', Austria: 'Avusturya', Italy: 'İtalya', Spain: 'İspanya', Canada: 'Kanada', Algeria: 'Cezayir', Tunisia: 'Tunus' };
-      const CIHAZ_TR = { phone: '📱 Telefon', tablet: '📲 Tablet', desktop: '🖥️ Masaüstü', unknown: 'Bilinmiyor' };
-      const bayrak = (kod) => /^[A-Za-z]{2}$/.test(kod || '') ? String.fromCodePoint(...[...kod.toUpperCase()].map((c) => 127397 + c.charCodeAt(0))) : '';
-      const gunEtiket = (t) => new Date(t + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
-      /** Özel isme doğru ayrılma eki ekler: Belçika'dan, Türkiye'den, Fas'tan, Krallık'tan. */
-      const EK_OZEL = { 'ABD': "'den", 'BAE': "'den" };
-      function ekDan(kelime) {
-        const k = String(kelime || '');
-        if (EK_OZEL[k]) return EK_OZEL[k];
-        const unlu = 'aeıioöuüAEIİOÖUÜ';
-        let son = '';
-        for (let i = k.length - 1; i >= 0; i--) { if (unlu.includes(k[i])) { son = k[i].toLocaleLowerCase('tr'); break; } }
-        const kalin = 'aıou'.includes(son);
-        const sonHarf = k.replace(/[^A-Za-zÇĞİÖŞÜçğıöşü]/g, '').slice(-1).toLocaleLowerCase('tr');
-        const sert = 'fstkçşhp'.includes(sonHarf);
-        return "'" + (sert ? (kalin ? 'tan' : 'ten') : (kalin ? 'dan' : 'den'));
-      }
-      /** Uzun sayfa başlıklarını özet cümlesi için okunur kısa ada indirger. */
-      function kisaBaslik(baslik, yol) {
-        const y = String(yol || '').replace(/\/$/, '');
-        if (/^\/(tr|fr|en)?$/.test(y)) return 'Ana sayfa';
-        let t = String(baslik || y || '').split('—')[0].trim();     // "Sayfa — Site adı" → "Sayfa"
-        if (t.includes('·')) t = t.split('·').pop().trim();         // "Site adı · Sayfa" → "Sayfa"
-        if (!t) t = y;
-        return t.length > 34 ? t.slice(0, 32).trimEnd() + '…' : t;
-      }
-
-      /** Ham API yanıtlarını çizime hazır sade bir modele indirger (önbelleğe de bu yazılır). */
-      function modelKur(gun, [seri, sayfalar, kaynaklar, ulkeler, cihazlar, tarayicilar]) {
-        const bugunStr = tarihStr(new Date());
-        const bas = new Date(); bas.setDate(bas.getDate() - (gun - 1));
-        const basStr = gun === 1 ? bugunStr : tarihStr(bas);
-        const tum = ((seri && seri.stats) || []).filter((x) => x.day <= bugunStr); // UTC kaymasıyla gelen yarınki boş günü at
-        const donem = tum.filter((x) => x.day >= basStr);
-        const onceki = tum.filter((x) => x.day < basStr).reduce((a, x) => a + x.daily, 0);
-        return {
-          gun, bugunStr, basStr,
-          eksik: !seri,
-          gunler: donem.map((x) => ({ gun: x.day, sayi: x.daily })),
-          saatler: gun === 1 ? ((donem[0] && donem[0].hourly) || []) : null,
-          saatlerBugun: (tum.find((x) => x.day === bugunStr) || {}).hourly || [],
-          donemToplam: donem.reduce((a, x) => a + x.daily, 0),
-          oncekiToplam: onceki,
-          bugun: (tum.find((x) => x.day === bugunStr) || {}).daily || 0,
-          dun: (tum.find((x) => x.day === tarihStr(new Date(Date.now() - 86400000))) || {}).daily || 0,
-          sayfalar: sayfalar ? (sayfalar.hits || []).map((h) => ({ yol: h.path, baslik: h.title || h.path, sayi: h.count })) : null,
-          kaynaklar: kaynaklar ? (() => {
-            // Kendi alan adımızdan gelen satırlar dış kaynak değil, site içi gezinmedir: tek satırda toplanır
-            const ham = (kaynaklar.stats || []).map((k) => ({ ad: k.name || '', sayi: k.count }));
-            const ici = ham.filter((k) => /ulucamii\.be/i.test(k.ad)).reduce((a, k) => a + k.sayi, 0);
-            const dis = ham.filter((k) => !/ulucamii\.be/i.test(k.ad));
-            if (ici > 0) dis.push({ ad: '↩ Site içi gezinme', sayi: ici, ici: true });
-            return dis.sort((a, b) => b.sayi - a.sayi);
-          })() : null,
-          ulkeler: ulkeler ? (ulkeler.stats || []).map((u) => ({ id: u.id, ad: u.name, sayi: u.count })) : null,
-          cihazlar: cihazlar ? (cihazlar.stats || []).filter((c) => c.count > 0).map((c) => ({ id: c.id, sayi: c.count })) : null,
-          tarayicilar: tarayicilar ? (tarayicilar.stats || []).filter((t) => t.count > 0).map((t) => ({ ad: t.name || t.id, sayi: t.count })) : null,
-        };
-      }
-
-      function ozetYaz(m, zaman) {
-        const donemAd = m.gun === 1 ? 'Bugün' : `Son ${m.gun} günde`;
-        const parcalar = [];
-        parcalar.push(`${donemAd} <b>${sayiTR(m.donemToplam)}</b> sayfa görüntülenmesi`);
-        if (m.sayfalar && m.sayfalar.length) {
-          const e = m.sayfalar[0];
-          parcalar.push(`en çok bakılan sayfa <b>${kacir(kisaBaslik(e.baslik, e.yol))}</b> (${sayiTR(e.sayi)})`);
-        }
-        if (m.cihazlar && m.cihazlar.length) {
-          const top = m.cihazlar.reduce((a, c) => a + c.sayi, 0);
-          const tel = (m.cihazlar.find((c) => c.id === 'phone') || {}).sayi || 0;
-          if (top > 0) parcalar.push(`<b>%${Math.round(tel / top * 100)}</b> telefondan`);
-        }
-        if (m.ulkeler && m.ulkeler.length) {
-          const ulke = ULKE_TR[m.ulkeler[0].ad] || m.ulkeler[0].ad || '';
-          if (ulke) parcalar.push(`ziyaretlerin çoğu <b>${kacir(ulke)}</b>${ekDan(ulke)}`);
-        }
-        let kiyas = '';
-        if (m.gun > 1 && m.oncekiToplam > 0) {
-          const fark = Math.round((m.donemToplam - m.oncekiToplam) / m.oncekiToplam * 100);
-          kiyas = fark >= 0
-            ? ` <span style="color:#266343">▲ önceki ${m.gun} güne göre %${fark} artış.</span>`
-            : ` <span style="color:#9f2f2a">▼ önceki ${m.gun} güne göre %${-fark} azalış.</span>`;
-        }
-        $('ozet').innerHTML = parcalar.join(', ') + '.' + kiyas +
-          `<span class="tazelik" id="ozet-tazelik">${zaman ? 'Veriler ' + neZaman(zaman) + ' alındı.' : ''}</span>`;
-      }
-
-      function ciz(m, zaman) {
-        ozetYaz(m, zaman);
-        $('d-donem').textContent = sayiTR(m.donemToplam);
-        $('a-donem').textContent = m.gun === 1 ? 'Bugün · sayfa açılışı' : `Son ${m.gun} gün · önceki dönem: ${sayiTR(m.oncekiToplam)}`;
-        $('d-bugun').textContent = sayiTR(m.bugun);
-        $('a-dun').textContent = 'Dün: ' + sayiTR(m.dun);
-
-        // Grafik — verinin başladığı günden itibaren çizilir; öncesindeki boş günler bilgi taşımadığı için kırpılır
-        const okuma = $('grafik-okuma');
-        if (m.gun === 1) {
-          const s = m.saatler || [];
-          const maks = Math.max(1, ...s);
-          $('grafik').innerHTML = s.map((n, i) =>
-            `<div class="cubuk${i === new Date().getHours() ? ' bugun' : ''}" data-etiket="${String(i).padStart(2, '0')}:00 — ${n} görüntülenme" style="height:${Math.max(3, Math.round(n / maks * 100))}%"></div>`
-          ).join('') || '<span class="yol-alt">Bugün henüz ziyaret yok</span>';
-          $('grafik-eksen').innerHTML = s.length ? '<span>00:00</span><span>12:00</span><span>23:00</span>' : '';
-          okuma.textContent = s.length ? 'Saatlik dağılım — çubuğa dokunun' : '';
-        } else if (m.gunler.filter((x) => x.sayi > 0).length < 3 && m.saatlerBugun.some((x) => x > 0)) {
-          // Dönemde yalnız bir-iki gün veri varsa günlük çubuklar bilgi taşımaz; bugünün saatlik dağılımı gösterilir
-          const s = m.saatlerBugun;
-          const maks = Math.max(1, ...s);
-          $('grafik').innerHTML = s.map((n, i) =>
-            `<div class="cubuk${i === new Date().getHours() ? ' bugun' : ''}" data-etiket="${String(i).padStart(2, '0')}:00 — ${n} görüntülenme" style="height:${Math.max(3, Math.round(n / maks * 100))}%"></div>`
-          ).join('');
-          $('grafik-eksen').innerHTML = '<span>00:00</span><span>12:00</span><span>23:00</span>';
-          okuma.textContent = 'Sayaç yeni kuruldu — bugünün saatlik dağılımı gösteriliyor';
-        } else {
-          let g = m.gunler;
-          const ilkDolu = g.findIndex((x) => x.sayi > 0);
-          const kirpildi = ilkDolu > 0;
-          if (ilkDolu > 0) g = g.slice(ilkDolu);
-          const maks = Math.max(1, ...g.map((x) => x.sayi));
-          $('grafik').innerHTML = g.map((x) =>
-            `<div class="cubuk${x.gun === m.bugunStr ? ' bugun' : ''}" data-etiket="${gunEtiket(x.gun)} — ${x.sayi} görüntülenme" style="height:${Math.max(3, Math.round(x.sayi / maks * 100))}%"></div>`
-          ).join('') || '<span class="yol-alt">Bu dönemde ziyaret yok</span>';
-          $('grafik-eksen').innerHTML = g.length ? `<span>${gunEtiket(g[0].gun)}</span><span>${gunEtiket(g[Math.floor(g.length / 2)].gun)}</span><span>${gunEtiket(g[g.length - 1].gun)}</span>` : '';
-          okuma.textContent = g.length ? (kirpildi ? `Grafik ${gunEtiket(g[0].gun)} tarihinde başlıyor (sayaç bu tarihte kuruldu)` : 'Günlük dağılım — çubuğa dokunun') : '';
-        }
-
-        const bosNot = (v) => v === null ? '<tr><td colspan="2">Şu an alınamadı — 5 dk içinde kendiliğinden tazelenir</td></tr>' : '<tr><td colspan="2">Bu dönemde kayıt yok</td></tr>';
-        const s = m.sayfalar;
-        if (s && s.length) {
-          const enCok = Math.max(1, ...s.map((h) => h.sayi));
-          const satir = (h, gizli) =>
-            `<tr${gizli ? ' class="fazla" hidden' : ''}><td><div>${kacir(h.baslik)}</div><div class="yol-alt">${kacir(h.yol)}</div><div class="oran"><span style="width:${Math.round(h.sayi / enCok * 100)}%"></span></div></td><td class="sayi">${sayiTR(h.sayi)}</td></tr>`;
-          let govde = s.slice(0, 6).map((h) => satir(h, false)).join('') + s.slice(6).map((h) => satir(h, true)).join('');
-          if (s.length > 6) govde += `<tr id="fazla-satir"><td colspan="2" style="text-align:center"><button class="dugme" type="button" id="fazla-dugme" style="min-height:32px;font-size:.84rem">Kalan ${s.length - 6} sayfayı göster</button></td></tr>`;
-          $('trafik-govde').innerHTML = govde;
-          const fd = $('fazla-dugme');
-          if (fd) fd.addEventListener('click', () => {
-            document.querySelectorAll('#trafik-govde tr.fazla').forEach((t) => { t.hidden = false; });
-            $('fazla-satir').remove();
-          });
-        } else $('trafik-govde').innerHTML = bosNot(s);
-
-        $('kaynak-govde').innerHTML = (m.kaynaklar && m.kaynaklar.length)
-          ? m.kaynaklar.map((k) => `<tr><td>${kacir(k.ad || 'Doğrudan / adres çubuğu')}</td><td class="sayi">${sayiTR(k.sayi)}</td></tr>`).join('')
-          : bosNot(m.kaynaklar);
-        $('ulke-govde').innerHTML = (m.ulkeler && m.ulkeler.length)
-          ? m.ulkeler.map((u) => `<tr><td>${bayrak(u.id)} ${kacir(ULKE_TR[u.ad] || u.ad || u.id || 'Bilinmiyor')}</td><td class="sayi">${sayiTR(u.sayi)}</td></tr>`).join('')
-          : bosNot(m.ulkeler);
-        const cihazSat = (m.cihazlar || []).map((c) => `<tr><td>${kacir(CIHAZ_TR[c.id] || c.id)}</td><td class="sayi">${sayiTR(c.sayi)}</td></tr>`);
-        const tarSat = (m.tarayicilar || []).map((t) => `<tr><td style="color:var(--metin-2)">${kacir(t.ad)}</td><td class="sayi">${sayiTR(t.sayi)}</td></tr>`);
-        $('cihaz-govde').innerHTML = (cihazSat.length || tarSat.length) ? cihazSat.concat(tarSat).join('') : bosNot(m.cihazlar);
-      }
-
-      // Grafikte çubuk okuma (fare + dokunmatik)
-      (function grafikOkumaKur() {
-        const gr = $('grafik'), ok = $('grafik-okuma');
-        let varsayilan = '';
-        const goster = (e) => {
-          const c = e.target.closest && e.target.closest('.cubuk');
-          if (!c) return;
-          if (!varsayilan) varsayilan = ok.textContent;
-          gr.querySelectorAll('.cubuk.sec').forEach((x) => x.classList.remove('sec'));
-          c.classList.add('sec');
-          ok.textContent = c.dataset.etiket;
-        };
-        gr.addEventListener('pointerdown', goster);
-        gr.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse' || e.buttons) goster(e); });
-        gr.addEventListener('pointerleave', () => { gr.querySelectorAll('.cubuk.sec').forEach((x) => x.classList.remove('sec')); if (varsayilan) { ok.textContent = varsayilan; varsayilan = ''; } });
-      })();
-
-      let trafikMesgul = false;
-      async function trafikYukle(gun, sessiz) {
-        gun = gun || seciliGun();
-        if (trafikMesgul) return;
-        trafikMesgul = true;
-        sayac('TOTAL').then((n) => { $('d-toplam').textContent = n != null ? sayiTR(n) : '—'; });
-        if (!SIRLAR || !SIRLAR.goatApi) {
-          $('ozet').innerHTML = 'Ziyaret verileri için bir kez <a href="/admin/giris.html">yeniden giriş</a> yapın (erişim paketi yenilendi).';
-          ['trafik-govde', 'kaynak-govde', 'ulke-govde', 'cihaz-govde'].forEach((i) => { $(i).innerHTML = '<tr><td colspan="2">Yeniden giriş gerekli</td></tr>'; });
-          trafikMesgul = false; return;
-        }
-        const bugunStr = tarihStr(new Date());
-        const bas = new Date(); bas.setDate(bas.getDate() - (gun - 1));
-        const basStr = gun === 1 ? bugunStr : tarihStr(bas);
-        const bas2 = new Date(); bas2.setDate(bas2.getDate() - (2 * gun - 1)); // kıyas için seri iki dönem geriden çekilir
-        const q = `start=${basStr}`; // end gönderilmez: salt tarihli end günün 00:00'ı sayılıp bugünü dışlıyor
-        if (!sessiz) $('ozet-tazelik') && ($('ozet-tazelik').textContent = 'Tazeleniyor…');
-        try {
-          const yanit = await siraliCek([
-            `stats/total?start=${gun === 1 ? bugunStr : tarihStr(bas2)}`,
-            `stats/hits?${q}&limit=10`,
-            `stats/toprefs?${q}&limit=8`,
-            `stats/locations?${q}&limit=6`,
-            `stats/sizes?${q}`,
-            `stats/browsers?${q}&limit=5`,
-          ]);
-          if (!yanit[0] && !yanit[1]) throw new Error('veri alınamadı');
-          const m = modelKur(gun, yanit);
-          const zaman = Date.now();
-          ciz(m, zaman);
-          try { localStorage.setItem(TRAFIK_ONBELLEK, JSON.stringify({ zaman, model: m })); } catch {}
-        } catch (e) {
-          $('ozet').innerHTML = `Ziyaret verileri şu an alınamadı. <button class="dugme" type="button" id="trafik-tekrar" style="margin-left:.5rem">Tekrar dene</button>`;
-          $('trafik-tekrar').addEventListener('click', () => trafikYukle(seciliGun()));
-        } finally { trafikMesgul = false; }
-      }
-      const seciliGun = () => { const s = document.querySelector('.donem-dugme.secili'); return s ? parseInt(s.dataset.gun, 10) : 7; };
-      document.querySelectorAll('.donem-dugme').forEach((b) => b.addEventListener('click', () => {
-        document.querySelectorAll('.donem-dugme').forEach((x) => x.classList.remove('secili'));
-        b.classList.add('secili');
-        trafikYukle(parseInt(b.dataset.gun, 10));
-      }));
-      // Önbellekten anında çizim: panel açılır açılmaz sayılar ekranda olur, tazeleme arkada sürer
-      (function onbellektenCiz() {
-        try {
-          const o = JSON.parse(localStorage.getItem(TRAFIK_ONBELLEK) || 'null');
-          if (o && o.model && o.model.gun === seciliGun() && Date.now() - o.zaman < 86400000) ciz(o.model, o.zaman);
-        } catch {}
-      })();
-      // Geniş ekranda ikincil tablolar açık, telefonda katlı gelir
-      if (window.matchMedia('(min-width: 900px)').matches) ['kat-kaynak', 'kat-ulke', 'kat-cihaz', 'kat-degisiklik'].forEach((i) => { $(i).open = true; });
-      setInterval(() => { if (document.visibilityState === 'visible') trafikYukle(seciliGun(), true); }, 300000);
-      if (SIRLAR && SIRLAR.goat) $('goat-link').href = `${GOAT}/?access-token=${SIRLAR.goat}`;
-      else $('goat-link').addEventListener('click', (e) => { e.preventDefault(); alert('Ayrıntılı panel bağlantısı için yeniden giriş yapın.'); });
-
-      /* ============================ DURUM ============================ */
-      async function durumYukle() {
-        const yokla = async (u) => { try { const r = await fetch(u, { method: 'HEAD', cache: 'no-store' }); return r.ok; } catch { return false; } };
-        const site = await yokla('/tr/');
-        $('n-site').className = 'nokta ' + (site ? 'iyi' : 'kotu'); $('d-site').textContent = site ? 'Yayında' : 'ERİŞİLEMİYOR';
-        const kayit = await yokla('/kayit/');
-        $('n-kayit').className = 'nokta ' + (kayit ? 'iyi' : 'kotu'); $('d-kayit').textContent = kayit ? 'Çalışıyor' : 'ERİŞİLEMİYOR';
-        const kosu = async (wf) => { try { const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${wf}/runs?per_page=1`); const j = await r.json(); return (j.workflow_runs || [])[0] || null; } catch { return null; } };
-        const y = await kosu('deploy.yml');
-        if (y) { $('d-yayin').textContent = y.conclusion === 'success' ? 'Başarılı' : (y.status === 'in_progress' ? 'Sürüyor…' : (y.conclusion || y.status)); $('a-yayin').textContent = new Date(y.updated_at).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' }); }
-        else $('d-yayin').textContent = '—';
-        const u = await kosu('uptime.yml');
-        if (u) { const iyi = u.conclusion === 'success'; $('n-uptime').className = 'nokta ' + (iyi ? 'iyi' : (u.conclusion ? 'kotu' : '')); $('d-uptime').textContent = iyi ? 'Sorun yok' : (u.conclusion ? 'SORUN VAR' : 'Sürüyor…'); $('a-uptime').textContent = 'Son denetim: ' + new Date(u.updated_at).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' }); }
-        else { $('d-uptime').textContent = '—'; }
-      }
-
-      /* ============================ BAŞVURULAR ============================ */
-      const BASVURU_ONBELLEK = 'panel-basvuru-v1';
-      let aktifTur = 'kayit', sonVeri = null, suzgec = '';
-      document.querySelectorAll('.sekme').forEach((s) => s.addEventListener('click', () => {
-        document.querySelectorAll('.sekme').forEach((x) => x.setAttribute('aria-selected', 'false'));
-        s.setAttribute('aria-selected', 'true'); aktifTur = s.dataset.tur; sekmeSecildi = true;
-        if (sonVeri) basvuruCiz();
-      }));
-      $('basvuru-ara').addEventListener('input', (e) => { suzgec = e.target.value.trim().toLocaleLowerCase('tr'); if (sonVeri) basvuruCiz(); });
-
-      async function basvuruYukle(sessiz) {
-        const durum = $('basvuru-durum');
-        if (!sessiz) durum.textContent = 'Yükleniyor…';
-        if (!SIRLAR || !SIRLAR.gas) {
-          durum.textContent = '';
-          $('basvuru-bilgi').hidden = false;
-          $('basvuru-bilgi').innerHTML = 'Erişim paketi eksik — lütfen <a href="/admin/giris.html">yeniden giriş</a> yapın.';
-          return;
-        }
-        try {
-          const r = await fetch(`${GAS}?islem=liste&anahtar=${encodeURIComponent(SIRLAR.gas)}`, { redirect: 'follow' });
-          const j = await r.json();
-          if (!j.kayitlar && !j.ihtidalar) {
-            durum.textContent = '';
-            $('basvuru-bilgi').hidden = false; $('basvuru-liste').innerHTML = '';
-            $('basvuru-bilgi').innerHTML = '<b>Arka uç güncellemesi bekleniyor.</b> Başvuru listeleme henüz dağıtılmadı; başvurular yine de kayıt defterine düşüyor, veri kaybı yok.';
-            return;
-          }
-          sonVeri = j;
-          try { localStorage.setItem(BASVURU_ONBELLEK, JSON.stringify({ zaman: Date.now(), veri: j })); } catch {}
-          durum.textContent = 'Güncellendi: ' + new Date().toLocaleTimeString('tr-BE', { hour: '2-digit', minute: '2-digit' });
-          basvuruCiz();
-        } catch (e) {
-          durum.textContent = '';
-          if (!sonVeri) {
-            $('basvuru-bilgi').hidden = false;
-            $('basvuru-bilgi').innerHTML = 'Listeye şu an ulaşılamadı. <button class="dugme" type="button" id="basvuru-tekrar" style="margin-left:.5rem">Tekrar dene</button>';
-            $('basvuru-tekrar').addEventListener('click', () => basvuruYukle());
-          }
-        }
-      }
-
-      /* Panel HER ZAMAN Kur'an kursu kayıtlarıyla açılır. Önceden "boş sekmede kalınmasın"
-         diye dolu olan listeye kendiliğinden geçiliyordu; kayıt 0, ihtida 1 olduğu için panel
-         İhtida Başvuruları ekranıyla açılıyor ve iki defter karışmış gibi görünüyordu
-         (26 Ağustos 2026, Rıdvan bildirdi). Hangi defterde olduğun her zaman seçili sekmeden
-         ve rozetlerden okunur; sekmeyi kullanıcı değiştirir, panel değil. */
-      let sekmeSecildi = false;
-      function sekmeyiUyarla() { sekmeSecildi = true; }
-      function rozetleriYaz() {
-        /* Satır değil ÖĞRENCİ sayılır: düzeltilmiş bir kayıt defterde iki satırdır. */
-        const k = grupSayisi(sonVeri && sonVeri.kayitlar);
-        const i = grupSayisi(sonVeri && sonVeri.ihtidalar);
-        $('rozet-kayit').textContent = '(' + k + ')';
-        $('rozet-ihtida').textContent = '(' + i + ')';
-        /* Toplam yazmak yanıltıyordu: tek bir "(1)" öğrenci kaydı sanılabiliyordu.
-           İki defter ayrı ayrı okunur — kurs · ihtida. */
-        $('gez-rozet').textContent = (k + i) ? '(' + k + '·' + i + ')' : '';
-        $('gez-rozet').title = 'Kur’an kursu kayıtları: ' + k + ' · İhtida başvuruları: ' + i;
-      }
-
-      /** Sütun başlığından alan sırası bulur — arka uç şeması değişse de kart doğru kurulur. */
-      const sut = (basliklar, ...adaylar) => {
-        for (const a of adaylar) {
-          const i = basliklar.findIndex((b) => String(b).toLocaleLowerCase('tr').includes(a));
-          if (i !== -1) return i;
-        }
-        return -1;
-      };
-
-      /* SÜRÜM GRUPLAMA (27 Ağustos 2026, Rıdvan bildirdi).
-         Bir kaydın düzeltilmesi deftere YENİ bir satır yazar (UC-2026-0002 → -R2) ve
-         eskisini "Güncellendi →" diye işaretler; defter böylece bir denetim izi olur ve
-         bu doğru bir tasarımdır. Ama panel her satırı ayrı kart olarak çiziyordu: aynı
-         öğrenci iki kez kaydedilmiş gibi görünüyor, sayaç da öğrenci değil satır
-         sayıyordu. Artık bir öğrenci bir karttır; eski sürümler kartın içindedir. */
-      const refKok = (d) => String(d ?? '').trim().replace(/-R\d+$/i, '');
-      const refSurum = (d) => { const m = String(d ?? '').trim().match(/-R(\d+)$/i); return m ? Number(m[1]) : 1; };
-
-      function gruplaSurumler(v) {
-        if (!v || !v.satirlar || !v.satirlar.length) return [];
-        const iRef = sut(v.basliklar, 'referans');
-        const sira = [];
-        const harita = new Map();
-        v.satirlar.forEach((r, i) => {
-          const kok = iRef >= 0 ? refKok(r[iRef]) : '';
-          const anahtar = kok || ('satir-' + i);   // referanssız satır kendi başına durur
-          if (!harita.has(anahtar)) { harita.set(anahtar, []); sira.push(anahtar); }
-          harita.get(anahtar).push(r);
-        });
-        return sira.map((a) => {
-          const hepsi = harita.get(a).slice()
-            .sort((x, y) => refSurum(iRef >= 0 ? y[iRef] : '') - refSurum(iRef >= 0 ? x[iRef] : ''));
-          return { hepsi, guncel: hepsi[0], eskiler: hepsi.slice(1) };
-        });
-      }
-
-      const grupSayisi = (v) => gruplaSurumler(v).length;
-
-      function basvuruCiz() {
-        sekmeyiUyarla();
-        rozetleriYaz();
-        const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
-        const liste = $('basvuru-liste');
-        $('basvuru-bilgi').hidden = true;
-        if (!v || !v.satirlar || !v.satirlar.length) {
-          const digerSay = grupSayisi(aktifTur === 'kayit'
-            ? (sonVeri && sonVeri.ihtidalar) : (sonVeri && sonVeri.kayitlar));
-          const digerAd = aktifTur === 'kayit' ? 'İhtida Başvuruları' : 'Kur’an Kursu Kayıtları';
-          const digerNot = digerSay ? ` <b>${digerAd}</b> sekmesinde ${digerSay} kayıt var.` : '';
-          liste.innerHTML = `<div class="bilgi-kutu">${aktifTur === 'kayit' ? 'Kur’an kursu için henüz online kayıt gelmedi.' : 'Henüz ihtida başvurusu gelmedi.'} Yeni başvurular buraya kendiliğinden düşer.${digerNot}</div>`;
-          $('csv').disabled = true; return;
-        }
-        const b = v.basliklar;
-        const iZaman = sut(b, 'zaman'), iRef = sut(b, 'referans'), iDurum = sut(b, 'durum'), iPdf = sut(b, 'pdf');
-        const iAd = aktifTur === 'kayit' ? sut(b, 'öğrenci adı', 'adı') : sut(b, 'adı soyadı', 'adı');
-        const iSoyad = aktifTur === 'kayit' ? sut(b, 'öğrenci soyadı', 'soyadı') : -1;
-        const iTel = aktifTur === 'kayit' ? sut(b, 'veli cep', 'cep', 'telefon') : sut(b, 'telefon', 'cep');
-        const iVeli = sut(b, 'veli adı');
-        const iOkul = sut(b, 'okul'), iSinif = sut(b, 'sınıf'), iEposta = sut(b, 'e-posta');
-        /* Arama eski sürümlerde de eşleşir: elindeki eski numarayla arayan bulur. */
-        const gruplar = gruplaSurumler(v)
-          .filter((g) => !suzgec || g.hepsi.some((r) => r.join(' ').toLocaleLowerCase('tr').includes(suzgec)));
-        if (!gruplar.length) { liste.innerHTML = '<div class="bilgi-kutu">Aramaya uyan başvuru yok.</div>'; $('csv').disabled = false; return; }
-        const al = (r, i) => i >= 0 ? String(r[i] ?? '').trim() : '';
-        const duzeltilenVar = gruplar.some((g) => g.eskiler.length);
-        liste.innerHTML = gruplar.map(({ guncel: r, eskiler }) => {
-          const ad = [al(r, iAd), al(r, iSoyad)].filter(Boolean).join(' ') || '(isim yok)';
-          const durum = al(r, iDurum);
-          /* Sira onemli: "Yeni kayit · e-posta gonderilemedi" hem "yeni" hem sorun icerir;
-             sorun kazanmali, yoksa uyari normal kayit gibi gorunur. */
-          const sorun = /gönderilemedi|gonderilemedi|hata|başarısız|basarisiz/i.test(durum);
-          const duzeltildi = !sorun && eskiler.length > 0;
-          const yeni = !sorun && !duzeltildi && /yeni/i.test(durum);
-          /* Ham durum metni ("Güncel kayıt (revizyon)") kartta yer tutuyor ama bilgi
-             vermiyordu; kaçıncı sürüm olduğunu söylemek daha faydalı. */
-          const rozetMetni = duzeltildi ? (refSurum(al(r, iRef)) + '. sürüm · düzeltildi') : durum;
-          const tel = al(r, iTel), pdf = al(r, iPdf), eposta = al(r, iEposta);
-          const bilgiler = [];
-          if (al(r, iZaman)) bilgiler.push(`<span>${kacir(tarihSadelestir(al(r, iZaman)))}</span>`);
-          if (aktifTur === 'kayit') {
-            if (al(r, iVeli)) bilgiler.push(`<span>Veli: <b>${kacir(al(r, iVeli))}</b></span>`);
-            const okul = [al(r, iOkul), al(r, iSinif)].filter(Boolean).join(' · ');
-            if (okul) bilgiler.push(`<span>${kacir(okul)}</span>`);
-          }
-          if (tel) bilgiler.push(`<span>☎ <b>${kacir(telefonBicim(tel))}</b></span>`);
-          const araclar = [];
-          if (tel) {
-            const e164 = telefonE164(tel);
-            araclar.push(`<a class="dugme" href="tel:${kacir(e164)}">Ara</a>`);
-            araclar.push(`<a class="dugme" href="https://wa.me/${kacir(e164.replace(/^\+/, ''))}" target="_blank" rel="noopener">WhatsApp ↗</a>`);
-          }
-          if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
-          if (pdf.startsWith('http')) araclar.push(pdfDugmesi(pdf, `${al(r, iRef) || 'form'} - ${ad}.pdf`, 'Form PDF', 'dugme'));
-          if (aktifTur === 'ihtida' && al(r, iRef)) araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
-          const eskiSurumler = eskiler.length ? `<details class="eski-surum"><summary>Önceki sürümler (${eskiler.length})</summary><table>${
-            eskiler.map((e) => {
-              const epdf = al(e, iPdf);
-              return `<tr><th>${kacir(al(e, iRef))}</th><td>${kacir(tarihSadelestir(al(e, iZaman)))}${
-                epdf.startsWith('http') ? ` · ${pdfDugmesi(epdf, `${al(e, iRef) || 'form'} - ${ad}.pdf`, 'form PDF', 'pdf-bag')}` : ''}</td></tr>`;
-            }).join('')
-          }</table><p class="eski-not">Bu sürümler veli tarafından düzeltildi. Geçerli olan, yukarıdaki ${kacir(al(r, iRef))} numaralı kayıttır.</p></details>` : '';
-          const ayrinti = b.map((baslik, i) => {
-            const d = tarihSadelestir(String(r[i] ?? '').trim());
-            if (!d) return '';
-            const deger = d.startsWith('http')
-              ? pdfDugmesi(d, `${al(r, iRef) || 'form'} - ${ad}.pdf`, 'aç', 'pdf-bag')
-              : (/telefon|cep/i.test(baslik) ? kacir(telefonBicim(d)) : kacir(d));
-            return `<tr><th>${kacir(baslik)}</th><td>${deger}</td></tr>`;
-          }).join('');
-          return `<article class="bkart${yeni ? ' yeni' : ''}">
-            <div class="bkart-ust"><span class="bkart-ad">${kacir(ad)}</span>${al(r, iRef) ? `<span class="bkart-ref">${kacir(al(r, iRef))}</span>` : ''}${rozetMetni ? `<span class="rozet-durum${sorun ? ' sorun' : (duzeltildi ? ' duzeltme' : (yeni ? ' yeni' : ''))}">${kacir(rozetMetni)}</span>` : ''}</div>
-            <div class="bkart-satir">${bilgiler.join('')}</div>
-            ${araclar.length ? `<div class="bkart-arac">${araclar.join('')}</div>` : ''}
-            <details><summary>Tüm bilgiler</summary><table>${ayrinti}</table></details>
-            ${eskiSurumler}
-          </article>`;
-        }).join('');
-        $('basvuru-not').innerHTML = duzeltilenVar
-          ? 'Düzeltilen kayıtların eski sürümleri kartın içindedir; dışa aktarımda yalnız güncel sürümler yer alır.'
-          : '';
-        $('basvuru-not').hidden = !duzeltilenVar;
-        liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
-        liste.querySelectorAll('[data-pdf]').forEach((d) => d.addEventListener('click', () => formPdfAc(d)));
-        $('csv').disabled = false;
-      }
-
-      /* ---------------- Form PDF (Drive'dan, panel anahtarıyla) ----------------
-         Defterdeki «PDF bağlantısı» Drive'ın yalnız dosya sahibine (dernek hesabı) açık
-         adresidir; panele başka bir Google hesabıyla girmiş yönetici o bağlantıda Drive'ın
-         «erişim isteyin» sayfasına düşüyordu (4 Eylül 2026). Dosya artık GAS ?islem=pdf ucundan
-         panel anahtarıyla alınır ve tarayıcıda blob olarak açılır; Drive dosyaları özel kalır.
-
-         Sekme TIKLAMA ANINDA açılır (eşzamanlı, kullanıcı jesti sürerken); GAS cevabı 2-6 sn
-         sürebilir ve o kadar sonra çağrılan window.open açılır-pencere engeline takılır —
-         yani tam da istenmeyen "izin" sorusu çıkar. Boş sekme «hazırlanıyor» der, dosya
-         gelince oraya yüklenir. Aynı dosya ikinci tıklamada önbellekten anında açılır. */
-      const PDF_ONBELLEK = new Map();   // Drive kimliği → { url, ad } (sekme ömrü boyunca, en çok PDF_ONBELLEK_SINIR)
-      const PDF_ONBELLEK_SINIR = 12;
-      const onbellegeKoy = (id, girdi) => {
-        PDF_ONBELLEK.set(id, girdi);
-        /* Üst sınır: en eski blob serbest bırakılır (4 Eyl 2026 incelemesi: sınırsız Map'te onlarca 100 KB'lık
-           PDF sekme ömrü boyunca bellekte kalıyordu). Açık sekmede yüklü belge etkilenmez; yalnız o sekmeyi
-           yenilemek yeni istek gerektirir. */
-        while (PDF_ONBELLEK.size > PDF_ONBELLEK_SINIR) {
-          const [eskiId, eski] = PDF_ONBELLEK.entries().next().value;
-          URL.revokeObjectURL(eski.url); PDF_ONBELLEK.delete(eskiId);
-        }
-      };
-      const driveKimligi = (url) => {
-        const m = String(url ?? '').match(/\/d\/([A-Za-z0-9_-]{10,})/) || String(url ?? '').match(/[?&]id=([A-Za-z0-9_-]{10,})/);
-        return m ? m[1] : '';
-      };
-      /* Drive bağlantısıysa panel içinden açan düğme; değilse (ileride başka bir depo olursa) düz bağlantı. */
-      const pdfDugmesi = (url, dosyaAdi, etiket, sinif) => {
-        const id = driveKimligi(url);
-        if (!id) return `<a class="${sinif}" href="${kacir(url)}" target="_blank" rel="noopener">${kacir(etiket)} ↗</a>`;
-        return `<button class="${sinif}" type="button" data-pdf="${kacir(id)}" data-pdf-ad="${kacir(dosyaAdi)}">${kacir(etiket)}</button>`;
-      };
-      /* iPadOS 13+ kendini Mac olarak tanıtır; çok noktalı dokunma ile ayırt edilir. */
-      const mobilCihaz = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform));
-      /* Açılan sekmeyi PDF'e çevirir. Masaüstünde ince bir üst çubuk (dosya adı · İndir · Yazdır) + iframe:
-         blob adresinin dosya adı olmadığından görüntüleyicinin kendi «indir»i rastgele bir ad verirdi (inceleme
-         bulgusu); İndir bağlantısı download özniteliğiyle gerçek adı — GAS'ın döndürdüğü Drive adını — verir.
-         Telefon/tablette iframe'li PDF güvenilir değildir (iOS Safari yalnız ilk sayfayı gösterir, Android
-         Chrome göstermez): orada sekme doğrudan blob'a gider, sistemin PDF görüntüleyicisi açılır. */
-      function pdfSekmesiniDoldur(pencere, url, ad) {
-        if (mobilCihaz()) { pencere.location.href = url; return; }
-        const d = pencere.document;
-        d.title = ad;
-        d.body.replaceChildren();
-        d.body.style.cssText = 'margin:0;height:100vh;display:flex;flex-direction:column;font:14px system-ui,sans-serif;background:#24201c;color:#f7f3ea';
-        const bar = d.createElement('div');
-        bar.style.cssText = 'display:flex;align-items:center;gap:.8rem;padding:.45rem .9rem;background:#2f2924;border-bottom:1px solid rgba(255,255,255,.12)';
-        const isim = d.createElement('span');
-        isim.textContent = ad; isim.style.cssText = 'flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
-        const indir = d.createElement('a'); indir.href = url; indir.download = ad; indir.textContent = 'İndir';
-        const yazdir = d.createElement('button'); yazdir.type = 'button'; yazdir.textContent = 'Yazdır';
-        for (const el of [indir, yazdir]) el.style.cssText = 'color:#f7f3ea;background:none;border:1px solid rgba(255,255,255,.4);border-radius:3px;padding:.3rem .7rem;font:inherit;line-height:1.2;text-decoration:none;cursor:pointer';
-        const cerceve = d.createElement('iframe');
-        cerceve.src = url; cerceve.title = ad; cerceve.style.cssText = 'flex:1;border:0;width:100%';
-        yazdir.addEventListener('click', () => { try { cerceve.contentWindow.focus(); cerceve.contentWindow.print(); } catch { pencere.print(); } });
-        bar.append(isim, indir, yazdir);
-        d.body.append(bar, cerceve);
-      }
-      async function formPdfAc(dugme) {
-        const id = dugme.dataset.pdf;
-        if (!SIRLAR || !SIRLAR.gas) { alert('Erişim paketi eksik — lütfen yeniden giriş yapın.'); return; }
-        const hazir = PDF_ONBELLEK.get(id);
-        const pencere = window.open('', '_blank');
-        /* Yalnız AÇILIŞ engellendiyse aynı sekmeye düşülür. Kullanıcının bekleme sırasında boş sekmeyi
-           kapatması ayrı durumdur: o zaman panel sekmesine DOKUNULMAZ (inceleme bulgusu, 4 Eyl 2026 —
-           pencere.closed'a bakan eski koşul panelin kendisini PDF'e çeviriyordu). */
-        const engellendi = !pencere;
-        if (hazir) {
-          if (engellendi) window.location.assign(hazir.url); else pdfSekmesiniDoldur(pencere, hazir.url, hazir.ad);
-          return;
-        }
-        const ad0 = dugme.dataset.pdfAd || 'form.pdf';
-        if (!engellendi) {
-          try {
-            pencere.document.title = ad0;
-            const not = pencere.document.createElement('p');
-            not.style.cssText = 'font:16px system-ui,sans-serif;color:#4a3728;padding:2rem';
-            not.textContent = 'Form hazırlanıyor… (' + ad0 + ')';
-            pencere.document.body.replaceChildren(not);
-          } catch {}
-        }
-        const eskiMetin = dugme.textContent;
-        dugme.disabled = true; dugme.textContent = 'Açılıyor…';
-        try {
-          /* İki deneme: dağıtımdan hemen sonraki ilk çağrıda Google'ın echo sunucusu bir kez
-             HTML "sayfa bulunamadı" (404) döndürdü (4 Eyl 2026 ölçümü, 37 sn); ikinci istek 3 sn'de geldi. */
-          let j = null;
-          for (let deneme = 1; deneme <= 2 && !j; deneme++) {
-            try {
-              const r = await fetch(`${GAS}?islem=pdf&id=${encodeURIComponent(id)}&anahtar=${encodeURIComponent(SIRLAR.gas)}`, { redirect: 'follow' });
-              j = await r.json();
-            } catch (gecici) { if (deneme === 2) throw gecici; await new Promise((c) => setTimeout(c, 800)); }
-          }
-          if (!j.ok || !j.pdfB64) {
-            throw new Error(j.hata === 'bulunamadi' ? 'Bu form Drive\'da bulunamadı (silinmiş ya da taşınmış olabilir).'
-              : j.hata === 'yetki' ? 'Erişim anahtarı geçersiz — lütfen yeniden giriş yapın.'
-              : 'Form alınamadı; arka uç henüz güncellenmemiş olabilir.');
-          }
-          const ikili = atob(j.pdfB64);
-          const bayt = new Uint8Array(ikili.length);
-          for (let i = 0; i < ikili.length; i++) bayt[i] = ikili.charCodeAt(i);
-          const ad = j.ad || ad0;
-          const url = URL.createObjectURL(new File([bayt], ad, { type: 'application/pdf' }));
-          onbellegeKoy(id, { url, ad });
-          if (engellendi) window.location.assign(url);              // sekme hiç açılamadı: aynı sekmede; geri tuşu panele döner
-          else if (!pencere.closed) pdfSekmesiniDoldur(pencere, url, ad);
-          // kapatıldıysa: dosya önbellekte, bir sonraki tıklama anında açar
-        } catch (e) {
-          if (pencere && !pencere.closed) pencere.close();
-          alert(e.message || 'Form alınamadı.');
-        } finally {
-          dugme.disabled = false; dugme.textContent = eskiMetin;
-        }
-      }
-
-      /* ---------------- EK-9 İhtida Belgesi (resmî şablon üzerine) ----------------
-         Belgeyi düzenleyen makam camidir; şahit imzası verilmemişse din görevlisinin
-         (ve gerekiyorsa eşinin) imzasıyla tamamlanır. İmza görselleri yalnız şifreli
-         sır paketinden gelir — hiçbir açık adreste durmaz. */
-      const EK9_ETIKET = {
-        cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme', kadın: 'Kadın / Femme' },
-        oncekiDin: {
-          'hristiyan-katolik': 'Hristiyanlık / Katolik', 'hristiyan-ortodoks': 'Hristiyanlık / Ortodoks',
-          'hristiyan-protestan': 'Hristiyanlık / Protestan', 'hristiyan-diger': 'Hristiyanlık',
-          'musevi': 'Musevilik', 'budist': 'Budizm', 'hindu': 'Hinduizm',
-          'ateist': 'Ateist', 'agnostik': 'Agnostik', 'dinsiz': 'Dinî bağı yok', 'yok': 'Dinî bağı yok',
-        },
-        medeniHali: { bekar: 'Bekâr', evli: 'Evli', bosanmis: 'Boşanmış', dul: 'Dul' },
-        ogrenim: {
-          ilkokul: 'İlkokul', ortaokul: 'Ortaokul', lise: 'Lise', onlisans: 'Ön lisans',
-          lisans: 'Lisans', yukseklisans: 'Yüksek lisans', doktora: 'Doktora', diger: 'Diğer',
-        },
-      };
-      const ek9Etiket = (tur, deger) => {
-        const d = String(deger || '').trim();
-        if (!d) return '';
-        const s = EK9_ETIKET[tur] && EK9_ETIKET[tur][d.toLocaleLowerCase('tr')];
-        return s || (d.charAt(0).toLocaleUpperCase('tr') + d.slice(1));
-      };
-      /** "23.08.2026 20:01" / "1979-04-24" gibi değerleri belgedeki gg/aa/yyyy biçimine getirir. */
-      const ek9Tarih = (deger) => {
-        const d = tarihSadelestir(String(deger || '').trim());
-        if (!d) return '';
-        let e = d.match(/^(\d{2})[.\/](\d{2})[.\/](\d{4})/);
-        if (e) return `${e[1]}/${e[2]}/${e[3]}`;
-        e = d.match(/^(\d{4})-(\d{2})-(\d{2})/);
-        if (e) return `${e[3]}/${e[2]}/${e[1]}`;
-        return d;
-      };
-      /** Sheets telefonu sayıya çevirip baştaki "+" işaretini düşürüyor; okunur biçime getirilir.
-       *  Panel kartlarında da kullanılır — `tel:` bağlantısı ülke kodsuz kalırsa yanlış numara aranır. */
-      const telefonBicim = (deger) => {
-        const ham = String(deger || '').trim();
-        if (!ham) return '';
-        const rakam = ham.replace(/\D/g, '');
-        if (rakam.length < 9) return ham;
-        if (rakam.startsWith('32') && rakam.length === 11) return `+32 ${rakam.slice(2, 5)} ${rakam.slice(5, 7)} ${rakam.slice(7, 9)} ${rakam.slice(9)}`;
-        if (rakam.startsWith('90') && rakam.length === 12) return `+90 ${rakam.slice(2, 5)} ${rakam.slice(5, 8)} ${rakam.slice(8, 10)} ${rakam.slice(10)}`;
-        // Türkiye yerel biçimi: 0 + 10 hane (0532 123 45 67). Belçika yerelinden (0 + 9 hane)
-        // uzunlukla ayrılır; ayrılmazsa "+05321234567" gibi geçersiz bir dize üretiliyordu.
-        if (rakam.startsWith('0') && rakam.length === 11) return `+90 ${rakam.slice(1, 4)} ${rakam.slice(4, 7)} ${rakam.slice(7, 9)} ${rakam.slice(9)}`;
-        if (rakam.startsWith('0') && rakam.length === 10) return `0${rakam.slice(1, 4)} ${rakam.slice(4, 6)} ${rakam.slice(6, 8)} ${rakam.slice(8)}`;
-        return ham.startsWith('+') ? ham : '+' + rakam;
-      };
-      const ek9Telefon = telefonBicim;
-      /** `tel:` için E.164: yalnız rakamlar, başında ülke kodu ve "+". */
-      const telefonE164 = (deger) => {
-        const rakam = String(deger || '').replace(/\D/g, '');
-        if (!rakam) return '';
-        if (rakam.startsWith('00')) return '+' + rakam.slice(2);
-        if (rakam.startsWith('0') && rakam.length === 11) return '+90' + rakam.slice(1);  // yerel Türkiye numarası
-        if (rakam.startsWith('0')) return '+32' + rakam.slice(1);      // yerel Belçika numarası
-        return '+' + rakam;
-      };
-      /** Sheets tarih hücreleri "15.06.2015 00:00" gibi döner; salt tarihlerde saat gösterilmez. */
-      const tarihSadelestir = (deger) => String(deger ?? '').replace(/\s00:00$/, '');
-      const bugunTR = () => {
-        const t = new Date();
-        return `${String(t.getDate()).padStart(2, '0')}/${String(t.getMonth() + 1).padStart(2, '0')}/${t.getFullYear()}`;
-      };
-      /** Kullanıcıdan yerel bir görsel ister (eski başvurularda vesikalık arka uçta saklanmamış olabilir). */
-      function dosyaSec(kabul) {
-        return new Promise((coz) => {
-          const g = document.createElement('input');
-          g.type = 'file'; g.accept = kabul || 'image/*';
-          g.addEventListener('change', () => {
-            const dosya = g.files && g.files[0];
-            if (!dosya) return coz('');
-            const okuyucu = new FileReader();
-            okuyucu.onload = () => coz(String(okuyucu.result || ''));
-            okuyucu.onerror = () => coz('');
-            okuyucu.readAsDataURL(dosya);
-          });
-          g.addEventListener('cancel', () => coz(''));
-          g.click();
-        });
-      }
-
-      let ek9Modul = null, ek9Kaynak = null;
-      async function ek9Hazirla() {
-        if (!ek9Modul) {
-          // pdf-lib/fontkit'in ESM yapıları "pako" gibi çıplak modül adlarını dışarıdan bekler
-          // (tarayıcıda import map olmadan çözülmez) — bu yüzden UMD paketleri script ile yüklenir.
-          const betikYukle = (src) => new Promise((coz, red) => {
-            const b = document.createElement('script');
-            b.src = src; b.onload = () => coz(); b.onerror = () => red(new Error(src + ' yüklenemedi'));
-            document.head.appendChild(b);
-          });
-          if (!window.PDFLib) await betikYukle('/vendor/pdf-lib.min.js');
-          if (!window.fontkit) await betikYukle('/vendor/fontkit.umd.min.js');
-          const modul = await import('/admin/ek9.js');
-          ek9Modul = { pdfLib: window.PDFLib, fontkit: window.fontkit, uret: modul.ek9Uret };
-        }
-        if (!ek9Kaynak) {
-          const al = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
-          const [sablon, font, fontKalin] = await Promise.all([
-            al('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
-            al('/fonts/Lora-Regular.ttf'),
-            al('/fonts/Lora-Bold.ttf'),
-          ]);
-          ek9Kaynak = { sablon, font, fontKalin };
-        }
-      }
-
-      async function ek9Uretimi(dugme) {
-        const ref = dugme.dataset.ek9;
-        const eskiMetin = dugme.textContent;
-        const durumYaz = (metin) => { dugme.textContent = metin; };
-        dugme.disabled = true;
-        try {
-          durumYaz('Hazırlanıyor…');
-          await ek9Hazirla();
-          if (!SIRLAR || !SIRLAR.gas) throw new Error('Erişim paketi eksik — yeniden giriş yapın.');
-
-          const r = await fetch(`${GAS}?islem=belge&ref=${encodeURIComponent(ref)}&anahtar=${encodeURIComponent(SIRLAR.gas)}`, { redirect: 'follow' });
-          const j = await r.json();
-          if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
-          const k = j.kayit || {};
-
-          let vesikalik = j.vesikalik || '';
-          if (!vesikalik) {
-            durumYaz('Fotoğraf seçin…');
-            vesikalik = await dosyaSec('image/*');
-            if (!vesikalik && !confirm('Vesikalık fotoğraf yok. Belge fotoğrafsız üretilsin mi?')) { durumYaz(eskiMetin); dugme.disabled = false; return; }
-          }
-          durumYaz('Belge üretiliyor…');
-
-          const imzalar = (SIRLAR && SIRLAR.imzalar) || {};
-          const yedekler = [];
-          if (imzalar.ridvan) yedekler.push({ ad: 'Rıdvan KAYAHAN', imza: imzalar.ridvan });
-          if (imzalar.yeliz) yedekler.push({ ad: 'Yeliz KAYAHAN', imza: imzalar.yeliz });
-
-          /* Vesikalik verildigi halde gomulemezse (WEBP/HEIC gibi bir bicim tarayicida da
-             cozulemediyse) belge sessizce fotografsiz cikmasin. */
-          const ek9Uyarilari = [];
-          const bytes = await ek9Modul.uret({
-            uyar: (kod) => ek9Uyarilari.push(kod),
-            pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
-            sablonBytes: ek9Kaynak.sablon, fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
-            veri: {
-              adSoyad: k['Adı Soyadı'] || '',
-              belgeNo: '',                                   // Müşavirlik/Müftülük doldurur
-              belgeTarihi: bugunTR(),
-              duzenleyen: 'Marche-en-Famenne Ulu Camii',
-              cinsiyet: ek9Etiket('cinsiyet', k['Cinsiyet']),
-              ogrenim: ek9Etiket('ogrenim', k['Öğrenim durumu']),
-              anneAdi: k['Anne adı'] || '',
-              babaAdi: k['Baba adı'] || '',
-              dogumYeri: k['Doğum yeri'] || '',
-              dogumTarihi: ek9Tarih(k['Doğum tarihi']),
-              medeniHali: ek9Etiket('medeniHali', k['Medeni hali']),
-              meslek: k['Mesleği'] || '',
-              uyruk: k['Uyruk'] || '',
-              tcKimlik: k['T.C. Kimlik No'] || '',
-              oncekiDin: ek9Etiket('oncekiDin', k['Önceki din/mezhep']),
-              ihtidaSebebi: k['İhtida sebebi'] || '',
-              ihtidaTarihi: ek9Tarih(k['Tören tarihi tercihi']) || bugunTR(),
-              eposta: k['E-posta'] || '',
-              telefon: ek9Telefon(k['Telefon']),
-              adres: k['Adres'] || '',
-              beyanTarihi: ek9Tarih(k['Zaman damgası']) || bugunTR(),
-            },
-            foto: vesikalik,
-            sahitler: j.sahitler || [],
-            yedekImzalar: yedekler,
-            basvuranImza: j.basvuranImza || '',
-            tarih: new Date(),
-          });
-
-          const ad = `EK-9 Ihtida Belgesi ${ref}.pdf`;
-          const bag = document.createElement('a');
-          bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
-          bag.download = ad; bag.click();
-          setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
-          if (ek9Uyarilari.includes('vesikalik-gomulemedi')) {
-            durumYaz('⚠ Fotoğrafsız');
-            alert('Belge indirildi, ancak vesikalık fotoğraf okunamadığı için belgeye YERLEŞTİRİLEMEDİ.\n\n'
-              + 'Fotoğrafı JPEG veya PNG olarak kaydedip belgeyi yeniden üretin.');
-          } else {
-            durumYaz('✓ İndirildi');
-          }
-          setTimeout(() => { durumYaz(eskiMetin); dugme.disabled = false; }, 4000);
-        } catch (hata) {
-          console.error(hata);
-          alert('EK-9 belgesi üretilemedi: ' + (hata && hata.message ? hata.message : hata));
-          durumYaz(eskiMetin); dugme.disabled = false;
-        }
-      }
-
-      $('basvuru-yenile').addEventListener('click', () => basvuruYukle());
-      $('csv').addEventListener('click', () => {
-        const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
-        /* Excel/LibreOffice, hücre "=", "+", "-" veya "@" ile başlıyorsa onu FORMÜL sayar.
-           Başvurandan gelen bir metin (ör. adres alanına yazılmış "=cmd|...") böylece
-           din görevlisinin bilgisayarında çalışabilirdi. Zararsız bir tek tırnak öneki
-           hücreyi metin olarak sabitler (25 Ağustos 2026 denetimi). */
-        const tirnak = (s) => {
-          let d = String(s ?? '');
-          if (/^[=+\-@\t\r]/.test(d)) d = "'" + d;
-          return '"' + d.replace(/"/g, '""') + '"';
-        };
-        /* Yalnız güncel sürümler: düzeltilmiş bir kaydın eski satırı da girseydi
-           sınıf listesinde öğrenci iki kez görünürdü. Denetim izi defterde durur. */
-        const disaAktarilan = gruplaSurumler(v).map((g) => g.guncel);
-        const csv = [v.basliklar.map(tirnak).join(';'), ...disaAktarilan.map((r) => r.map(tirnak).join(';'))].join('\r\n');
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
-        a.download = (aktifTur === 'kayit' ? 'kuran-kursu-kayitlari' : 'ihtida-basvurulari') + '.csv'; a.click();
-      });
-      // Önbellekten anında çizim, ardından arka planda tazeleme
-      (function basvuruOnbellek() {
-        try {
-          const o = JSON.parse(localStorage.getItem(BASVURU_ONBELLEK) || 'null');
-          if (o && o.veri && Date.now() - o.zaman < 604800000) { sonVeri = o.veri; basvuruCiz(); $('basvuru-durum').textContent = neZaman(o.zaman) + ' alındı'; }
-        } catch {}
-      })();
-      setInterval(() => { if (document.visibilityState === 'visible') basvuruYukle(true); }, 300000);
-
-      /* ============================ SON DEĞİŞİKLİKLER ============================ */
-      async function degisiklikYukle() {
-        const g = $('commit-govde');
-        try {
-          const r = await fetch('https://api.github.com/repos/' + REPO + '/commits?per_page=8');
-          const j = await r.json();
-          if (!Array.isArray(j)) { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; return; }
-          g.innerHTML = j.map(function (c) {
-            const t = new Date(c.commit.author.date).toLocaleString('tr-BE', { dateStyle: 'short', timeStyle: 'short' });
-            const mesaj = kacir(c.commit.message.split('\n')[0]);
-            return '<tr><td style="white-space:nowrap">' + t + '</td><td>' + mesaj + '</td></tr>';
-          }).join('');
-        } catch (e) { g.innerHTML = '<tr><td colspan="2">Şu an alınamadı.</td></tr>'; }
-      }
-
-      /* ============================ YÜKLE / YENİLE ============================ */
-      function hepsiniYukle() { durumYukle(); trafikYukle(seciliGun()); basvuruYukle(); degisiklikYukle(); }
-      $('yenile').addEventListener('click', hepsiniYukle);
-      hepsiniYukle();
-    </script>
+    <footer>Yönetim Paneli · Association Diyanet Mosquée Ulu Camii de Marche-en-Famenne ASBL · Yalnız yönetim kurulu<br />Panel sürümü: Eylül 2026</footer>
+    <script src="/admin/panel.js"></script>
   </body>
 </html>
