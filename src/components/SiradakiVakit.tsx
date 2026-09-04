@@ -25,9 +25,13 @@ export default function SiradakiVakit({ gunler, dil, etiketler }: Props) {
     <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm sm:text-base drop-shadow-[0_1px_8px_rgba(0,0,0,.5)]" aria-live="off">
       <span class="etiket text-(--color-ochre-acik)">{etiketler.siradaki}</span>
       <span class="font-serif font-semibold text-lg sm:text-xl">{etiketler[siradaki.vakit]} <span class="mono">{siradaki.saat}</span></span>
-      <span class="text-(--color-krem)/85"><span class="mono">{sureMetniYerel(siradaki.kalanDk, dil)}</span> {etiketler.kalan}</span>
-      <span class="hidden sm:inline text-(--color-krem)/65">·</span>
-      <span class="hidden sm:inline text-(--color-krem)/85">{hicriCevir(bugun.hicri, dil)}</span>
+      {/* basis-full: geri sayımın uzunluğu ("9 dk" ↔ "11 sa 47 dk") dar ekranda satır sayısını
+          değiştiriyordu; derleme anındaki değer ziyaret anındakinden farklı olduğu için sayfa
+          hemen her açılışta 24 px kayıyordu (canlı ölçüm 4 Eyl 2026: CLS payı 0,0113). Artık
+          sm altında geri sayım DAİMA kendi satırında; md+ (768 px) tek satıra sığdığı üç dilde de ölçüldü. */}
+      <span class="basis-full md:basis-auto text-(--color-krem)/85"><span class="mono">{sureMetniYerel(siradaki.kalanDk, dil)}</span> {etiketler.kalan}</span>
+      <span class="hidden md:inline text-(--color-krem)/65">·</span>
+      <span class="hidden md:inline text-(--color-krem)/85">{hicriCevir(bugun.hicri, dil)}</span>
     </p>
   );
 }
