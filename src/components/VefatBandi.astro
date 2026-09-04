@@ -1,0 +1,77 @@
+---
+/**
+ * Vefat / cenaze namazı bandı — ana sayfada, YALNIZ yakın tarihli bir kayıt varsa.
+ *
+ * Neden var: cemaatin bir haberi kaçırmaya en tahammülsüz olduğu an cenazedir; namazın günü ve
+ * saati birkaç saat içinde herkese ulaşmalıdır. Vefat kayıtları sitede vardı ama ana sayfadan
+ * hiçbir bağı yoktu — tek yol alt bilgideki küçük bağlantıydı (4 Eylül 2026 denetimi).
+ *
+ * Kendiliğinden görünür ve kendiliğinden kalkar (HacBandi ile aynı desen): cenaze namazı tarihi
+ * geçmemişse ya da vefat son 10 gün içindeyse basılır, sonra derlemeye hiç girmez. Site her gün
+ * 03:30 UTC'de yeniden yayımlandığı için kimsenin elle kaldırması gerekmez.
+ *
+ * Ton: bu bir duyuru değil, bir baş sağlığıdır. Renkli/aceleci bant dili (hac mavisi, kayıt kiremiti)
+ * burada kullanılmaz; sakin kâğıt zemin, ince ceviz kenar, tek satır âyet. Yalnız EN YAKIN kayıt.
+ */
+import { tarihBicimle, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { vefatlar } from '../lib/icerik';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+const simdi = Date.now();
+const GUN = 86_400_000;
+const hepsi = await vefatlar();
+/* Cenaze namazı henüz geçmediyse (o günün sonuna kadar) ya da vefat son 10 gün içindeyse göster. */
+const yakin = hepsi.filter((v) => {
+  const cenaze = v.data.cenazeNamazi?.tarih?.getTime();
+  if (cenaze && cenaze + GUN > simdi) return true;
+  return v.data.vefat.getTime() + 10 * GUN > simdi;
+});
+const kayit = yakin[0];
+
+const m = {
+  tr: { etiket: 'Vefat', tumu: 'Vefat edenlerimiz', namaz: 'Cenaze namazı', defin: 'Defin', bas: 'Ailesine ve cemaatimize baş sağlığı dileriz.' },
+  fr: { etiket: 'Décès', tumu: 'Nos défunts', namaz: 'Prière funéraire', defin: 'Inhumation', bas: 'Nous présentons nos condoléances à sa famille et à notre communauté.' },
+  en: { etiket: 'Bereavement', tumu: 'Our departed', namaz: 'Funeral prayer', defin: 'Burial', bas: 'Our condolences to the family and to our community.' },
+}[dil];
+
+const icerikDili = dil === 'en' ? 'fr' : dil;
+const govde = kayit?.data.metin?.[icerikDili] ?? kayit?.data.metin?.tr;
+const cenaze = kayit?.data.cenazeNamazi;
+const cenazeMetni = cenaze
+  ? [cenaze.tarih ? tarihBicimle(cenaze.tarih, dil) : null, cenaze.saat, cenaze.yer].filter(Boolean).join(' · ')
+  : null;
+---
+{kayit && (
+  <aside class="vefat-bandi" aria-label={`${m.etiket}: ${kayit.data.ad}`}>
+    <div class="kapsayici py-4 sm:py-5 flex flex-wrap items-start justify-between gap-x-8 gap-y-3">
+      <div class="min-w-0 max-w-[62ch]">
+        <p class="etiket">{m.etiket}</p>
+        <p class="font-serif text-lg sm:text-xl font-semibold leading-snug mt-1">
+          {kayit.data.ad}
+          {kayit.data.dogumYili && <span class="font-normal text-(--metin-2)"> ({kayit.data.dogumYili}–{kayit.data.vefat.getFullYear()})</span>}
+        </p>
+        {govde && <p class="mt-1.5 text-sm text-(--metin-2)">{govde}</p>}
+        {cenazeMetni && <p class="mt-1.5 text-sm"><span class="etiket">{m.namaz}:</span> <strong>{cenazeMetni}</strong></p>}
+        {kayit.data.defin && <p class="mt-0.5 text-sm"><span class="etiket">{m.defin}:</span> {kayit.data.defin}</p>}
+      </div>
+      <div class="flex flex-col items-start gap-2">
+        <p class="arabic arabic-ana text-(--vurgu) text-[1.25rem] leading-none" lang="ar" dir="rtl">إِنَّا لِلّٰهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
+        <p class="text-sm text-(--metin-2) max-w-[34ch]">{m.bas}</p>
+        <a href={yol(dil, 'vefat')} class="text-sm font-semibold min-h-11 inline-flex items-center">{m.tumu}<span aria-hidden="true">&#160;→</span></a>
+      </div>
+    </div>
+  </aside>
+)}
+
+<style>
+  /* Sakin: kâğıt zemin, üstte ince ceviz çizgi — hac/kayıt bantlarının renkli diliyle
+     bilinçli olarak aynı ailede değil; bu bir çağrı değil, bir bildirimdir. */
+  .vefat-bandi {
+    background: var(--zemin-2);
+    border-top: 3px solid var(--color-ceviz);
+    border-bottom: 1px solid var(--cizgi);
+  }
+</style>

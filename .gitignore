@@ -10,3 +10,8 @@ Thumbs.db
 # Playwright MCP ekran goruntuleri ve anlik ciktilar
 .playwright-mcp/
 .serena/
+
+# Hero görsellerinin sıkıştırma öncesi kopyaları (scripts/hero-gorsel-uret.mjs).
+# Depoya girmez: 2,4 MB'lık ikinci kopya hem Pages yayınını şişirir hem gereksizdir —
+# asılları git geçmişinde durur (bkz. betiğin başlığındaki geri getirme komutu).
+public/media/hero/_kaynak/

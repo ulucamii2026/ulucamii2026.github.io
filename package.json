@@ -14,7 +14,12 @@
     "denetim": "node scripts/site-denetim.mjs",
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
     "dogrula": "npm run build && npm run denetim && npm run test:ek9",
-    "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs"
+    "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs",
+    "onizle": "astro preview --port 4399",
+    "test:anasayfa": "py -3.14 scripts/anasayfa-testi.py",
+    "olc": "py -3.14 scripts/web-vitals-olc.py",
+    "hero:gorsel": "node scripts/hero-gorsel-uret.mjs",
+    "arapca:altkume": "py -3.14 scripts/arapca-alt-kume.py"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",

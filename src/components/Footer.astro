@@ -45,7 +45,7 @@ const siteLinkleri = [
         )}
         {diyanetLinkler.map((l) => (
           <a href={l.h} rel="noopener" target="_blank" title={l.ad}
-             class="flex items-center rounded-lg border border-(--cizgi) bg-[#f7f3ea] px-2 py-1 no-underline hover:border-(--vurgu) hover:-translate-y-px transition-all">
+             class="flex items-center rounded-(--radius-kose) border border-(--cizgi) bg-[#f7f3ea] px-2 py-1 no-underline hover:border-(--vurgu) hover:-translate-y-px transition-all">
             <img src={l.logo} alt={l.ad} width={l.g} height={l.y} class="h-6 w-auto" loading="lazy" decoding="async" />
             <span class="sr-only"> {disKaynak}</span>
           </a>

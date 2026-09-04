@@ -10,12 +10,16 @@ import BagisBandi from '../../components/BagisBandi.astro';
 import HacBandi from '../../components/HacBandi.astro';
 import KayitBandi from '../../components/KayitBandi.astro';
 import KurumsalSerit from '../../components/KurumsalSerit.astro';
+import VefatBandi from '../../components/VefatBandi.astro';
+import Tanitim from '../../components/Tanitim.astro';
 import IletisimMini from '../../components/IletisimMini.astro';
 import Ikon from '../../components/Ikon.astro';
 import { ceviri, yol, tarihBicimle } from '../../i18n/utils';
 import type { Dil } from '../../i18n/ui';
 import { dilYollari, duyurular, yaklasanEtkinlikler, namazVakitleri, siteAyarlari } from '../../lib/icerik';
 import { haftaGunu } from '../../lib/namaz';
+import { HAC_SON_GUN } from '../../lib/etkinlik-tarihleri';
+import { gorselOlcu, cerceve, oranCss, kucukSurum } from '../../lib/gorsel';
 
 export const getStaticPaths = dilYollari;
 const dil = Astro.params.lang as Dil;
@@ -32,64 +36,80 @@ const oneCikan = tumDuyurular.find(oneCikanGecerli)
   ?? tumDuyurular.find((d) => d.data.kapak)
   ?? tumDuyurular[0];
 const digerDuyurular = tumDuyurular.filter((d) => d !== oneCikan).slice(0, 4);
+/* Öne çıkan duyurunun kapağı çoğu kez DİKEY bir afiştir. Sabit 16:9 + object-cover afişin ortasından
+   yatay bir dilim kesiyordu ve hac afişinde bu dilim bomboş beyaz bir bant olduğu için ana sayfanın
+   en büyük görsel alanı BOŞ görünüyordu (4 Eylül 2026 ekran denetimi). Artık kapak, oranı ölçülüp
+   ona göre yerleştirilir: dikeyse yanda küçük afiş + metin, yataysa eskisi gibi üstte geniş görsel. */
+/* Kart kapağı en çok ~250 px genişliğinde görünür: içerikte küçük sürüm verilmemişse otomatik
+   bulunanı kullan (216 KB'lık afiş yerine 41 KB'lık küçüğü — 4 Eylül 2026 ağırlık ölçümü). */
+const kapakYolu = oneCikan?.data.kapakKucuk ?? kucukSurum(oneCikan?.data.kapak) ?? oneCikan?.data.kapak;
+const kapakOlcu = await gorselOlcu(kapakYolu);
+const kapakKutu = cerceve(kapakOlcu);
 const etkinlikler = await yaklasanEtkinlikler(dil, 3);
 const namaz = namazVakitleri();
+/* Ana sayfa adacıklarına 46 günün tamamı değil, kısa bir pencere gider: iki adacığın props'u
+   sayfanın dörtte birini (≈23 KB) kaplıyordu. Yedi gün, günlük yeniden yayın bir hafta üst üste
+   başarısız olsa bile vakitlerin doğru kalmasına yeter; tam tablo /namaz-vakitleri sayfasındadır. */
+const namazPenceresi = namaz.gunler.slice(0, 7);
 const bugunGun = haftaGunu(new Date());
 const namazEtiket = { imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') };
+/* Hızlı erişim: yalnız "işlem" değil, "öğren/katıl" da olsun. Hanımlar & genç kızlar programı ve
+   ilk ziyaret rehberi ana sayfada hiç görünmüyordu; ikisi de menünün içine gömülüydü. */
 const hizmetler = [
   { href: yol(dil, 'bagis'), ad: t('ana.hizli.bagis'), ikon: 'bagis' as const },
   { href: yol(dil, 'kurankursu'), ad: t('ana.hizli.kurs'), ikon: 'kurs' as const },
-  { href: yol(dil, 'uyelik'), ad: t('ana.hizli.uyelik'), ikon: 'uyelik' as const },
-  { href: yol(dil, 'konsolosluk'), ad: t('ana.hizli.konsolosluk'), ikon: 'konsolosluk' as const },
+  { href: yol(dil, 'irsat'), ad: t('ana.hizli.irsat'), ikon: 'uyelik' as const },
+  { href: yol(dil, 'adab'), ad: t('ana.hizli.adab'), ikon: 'cami' as const },
   { href: yol(dil, 'cenaze'), ad: t('ana.hizli.cenaze'), ikon: 'cenaze' as const },
+  { href: yol(dil, 'konsolosluk'), ad: t('ana.hizli.konsolosluk'), ikon: 'konsolosluk' as const },
+  { href: yol(dil, 'uyelik'), ad: t('ana.hizli.uyelik'), ikon: 'mezuniyet' as const },
   { href: yol(dil, 'iletisim'), ad: t('ana.hizli.iletisim'), ikon: 'iletisim' as const },
 ];
 const m = dil === 'tr' ? {
-  heroUst: 'Marche-en-Famenne · Belçika · 1979’dan beri',
-  heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze namazları — Famenne’deki Müslümanların 40 yıllık ocağı.',
+  heroUst: 'Marche-en-Famenne · Belçika · 1986’dan beri',
+  heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze namazları — Famenne’deki Müslümanların ocağı.',
   buHafta: 'Bu hafta camide', buHaftaAlt: 'Haftalık programımız; bugün vurgulu.',
   hizmet: 'Hizmetlerimiz',
   sonDuyuru: 'Son duyurular', tumDuyuru: 'Tüm duyurular',
   etkinlik: 'Yaklaşan etkinlikler', tumEtkinlik: 'Tüm etkinlikler ve afişler',
-  tanitimBaslik: '40 yıldır Marche-en-Famenne’de',
-  tanitim: 'Marche-en-Famenne Ulu Camii, 1979’da kurulan derneğimizin çatısı altında 1986’dan beri bölgemizdeki Müslümanlara ibadet, eğitim ve dayanışma hizmeti sunmaktadır. Valon Bölgesi tarafından tanınmış bir ibadet topluluğu olarak Belçika Diyanet Vakfı’na bağlıyız; kapımız her milletten komşumuza açıktır.',
-  tanitimCta: 'Hakkımızda', ziyaret: 'Camiyi ziyaret etmek isteyenler için rehber',
   duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
 } : dil === 'en' ? {
-  heroUst: 'Marche-en-Famenne · Belgium · since 1979',
-  heroAlt: 'Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes, and funeral prayers — home to the Muslims of the Famenne for 40 years.',
+  heroUst: 'Marche-en-Famenne · Belgium · since 1986',
+  heroAlt: 'Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes, and funeral prayers — home to the Muslims of the Famenne.',
   buHafta: 'This week at the mosque', buHaftaAlt: 'Our weekly programme; today is highlighted.',
   hizmet: 'Our services',
   sonDuyuru: 'Latest announcements', tumDuyuru: 'All announcements',
   etkinlik: 'Upcoming events', tumEtkinlik: 'All events and posters',
-  tanitimBaslik: '40 years in Marche-en-Famenne',
-  tanitim: 'Marche-en-Famenne Ulu Mosque, carried by our association founded in 1979, has served the Muslims of our region with worship, education and mutual support since 1986. Recognised by the Walloon Region as a place of worship and affiliated with the Diyanet Foundation of Belgium, our door is open to neighbours of every background.',
-  tanitimCta: 'About us', ziyaret: 'A guide for those wishing to visit the mosque',
   duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
-  fallbackNotu: 'Announcements, events and the weekly schedule below are published in Turkish and French. An English version is not available.',
+  fallbackNotu: 'Announcement and event titles below are published in Turkish and French; only the dates are shown in English. For a summary in English, write to info@ulucamii.be.',
 } : {
-  heroUst: 'Marche-en-Famenne · Belgique · depuis 1979',
-  heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne depuis 40 ans.',
+  heroUst: 'Marche-en-Famenne · Belgique · depuis 1986',
+  heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne.',
   buHafta: 'Cette semaine à la mosquée', buHaftaAlt: 'Notre programme hebdomadaire ; le jour actuel est mis en évidence.',
   hizmet: 'Nos services',
   sonDuyuru: 'Dernières annonces', tumDuyuru: 'Toutes les annonces',
   etkinlik: 'Événements à venir', tumEtkinlik: 'Tous les événements et affiches',
-  tanitimBaslik: 'Depuis 40 ans à Marche-en-Famenne',
-  tanitim: 'La mosquée Ulu Camii de Marche-en-Famenne, portée par notre association fondée en 1979, accueille depuis 1986 les musulmans de la région pour le culte, l’enseignement et l’entraide. Communauté cultuelle reconnue par la Région wallonne et rattachée à la Fondation Diyanet de Belgique, notre porte est ouverte à tous nos voisins, de toutes origines.',
-  tanitimCta: 'À propos', ziyaret: 'Guide pour visiter la mosquée',
   duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
 };
-const etkinlikGrid = etkinlikler.length >= 3 ? 'md:grid-cols-3' : etkinlikler.length === 2 ? 'sm:grid-cols-2 max-w-4xl' : 'max-w-md';
+const tekEtkinlik = etkinlikler.length === 1;
+const etkinlikGrid = etkinlikler.length >= 3 ? 'md:grid-cols-3' : etkinlikler.length === 2 ? 'sm:grid-cols-2 max-w-4xl' : '';
+/* Aynı anda iki tam dolgu bant (İznik mavisi hac + kiremit kayıt) hero'nun altında çarpışıyordu.
+   Hac ön kaydının son günü var, kurs kaydı yıl boyunca açık: süre baskısı olan bant tam dolgu
+   kalır, öbürü ikincil biçime geçer. Ön kayıt kapanınca kayıt bandı kendiliğinden tam dolguya döner. */
+const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
 /* Base.astro zaten her sayfada tek bir kurumsal kayıt (kurumJsonLd, @id: #kurum) yayınlıyor.
    Burada ayrı bir Organization/Mosque bloğu AÇMIYORUZ — aynı @id ile ekJsonLd üzerinden
-   yalnız oradaki kaydın eksik alanlarını (geo, image, alternateName, contactPoint) tamamlıyoruz;
-   foundingDate tekrarlanmıyor ki tek gerçek değer (1979-12-19) çelişkiye düşmesin
-   (3 Eylül 2026 denetimi: önceden bağımsız bir Mosque şeması '1979' yazıyordu). */
+   yalnız oradaki kaydın eksik alanlarını (geo, image, alternateName, contactPoint, hasMap)
+   tamamlıyoruz; foundingDate tekrarlanmıyor ki tek gerçek değer (1979-12-19) çelişkiye düşmesin
+   (3 Eylül 2026 denetimi: önceden bağımsız bir Mosque şeması '1979' yazıyordu).
+   Base.astro tüm kayıtları tek bir @graph içinde birleştirir. */
 const anaSayfaJsonLd = {
-  '@context': 'https://schema.org', '@type': 'Mosque', '@id': new URL('/#kurum', Astro.site).toString(),
+  '@type': 'Mosque', '@id': new URL('/#kurum', Astro.site).toString(),
   geo: { '@type': 'GeoCoordinates', latitude: site.gps.enlem, longitude: site.gps.boylam },
   image: new URL('/media/galeri/cami-24.webp', Astro.site).toString(),
   alternateName: site.dernekAdi,
+  // Harita.astro'daki "büyük harita" adresiyle birebir aynı formül.
+  hasMap: `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`,
   // İki temas noktası: din görevlisi (imam@) ve dernek (info@) — boş alanlar düşer.
   contactPoint: [
     { '@type': 'ContactPoint', contactType: 'imam', telephone: site.telefon.dinGorevlisi, email: site.epostaDinGorevlisi },
@@ -97,62 +117,74 @@ const anaSayfaJsonLd = {
   ].map((c) => Object.fromEntries(Object.entries(c).filter(([, v]) => v))),
 };
 ---
-<Base baslik={t('site.ad')} dil={dil} aciklama={t('site.slogan')} ekJsonLd={[anaSayfaJsonLd]}>
+<Base baslik={t('site.ad')} dil={dil} aciklama={m.heroAlt} ekJsonLd={[anaSayfaJsonLd]}>
   <!-- ① Hero — gerçek fotoğraf, tek yazılmış giriş hareketi, altında canlı vakit şeridi -->
   <section class="relative overflow-hidden">
     <HeroSlayt dil={dil} />
-    <div class="kapsayici relative pt-20 pb-10 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-14 text-(--color-krem)">
+    <div class="kapsayici relative pt-14 pb-10 sm:pt-24 sm:pb-12 lg:pt-32 lg:pb-14 text-(--color-krem)">
       <div class="hero-giris max-w-[46rem]">
-        <p class="etiket text-(--color-ochre-acik)">{m.heroUst}</p>
+        <p class="etiket text-(--color-ochre-acik) drop-shadow-[0_1px_8px_rgba(0,0,0,.6)]">{m.heroUst}</p>
         <h1 class="mt-3 text-(--color-krem) drop-shadow-[0_2px_14px_rgba(0,0,0,.45)] text-[clamp(2.4rem,1.4rem+4vw,4.4rem)]">{t('site.ad')}</h1>
-        <p class="arabic mt-5 text-left text-(--color-ochre-acik) text-[1.6rem] sm:text-[2rem]" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+        <p class="arabic arabic-ana mt-5 text-left text-(--color-ochre-acik) text-[1.6rem] sm:text-[2rem] drop-shadow-[0_1px_10px_rgba(0,0,0,.5)]" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
+        <!-- Caminin ne yaptığını söyleyen tek cümle: üç dilde yazılmıştı ama sayfada hiç basılmıyordu
+             (4 Eylül 2026 denetimi). Sayfanın meta açıklaması da artık bu cümledir. -->
+        <p class="mt-4 max-w-[52ch] text-base sm:text-lg text-(--color-krem)/90 drop-shadow-[0_1px_8px_rgba(0,0,0,.55)]">{m.heroAlt}</p>
         <DuyuruSeridi dil={dil} mesajlar={site.heroMesajlar ?? []} />
         <div class="mt-8 flex flex-wrap gap-3">
           <a href={yol(dil, 'namaz')} class="dugme dugme-birincil"><Ikon ad="saat" class="h-5 w-5" />{t('nav.namaz')}</a>
           <a href={yol(dil, 'bagis')} class="dugme bg-(--color-krem) text-(--color-ceviz-koyu) hover:bg-(--color-krem-koyu) hover:text-(--color-ceviz-koyu)"><Ikon ad="bagis" class="h-5 w-5" />{t('nav.bagis')}</a>
-          <a href={yol(dil, 'kurankursu')} class="dugme border-(--color-krem)/60 text-(--color-krem) hover:border-(--color-krem) hover:text-(--color-krem)">{t('ana.hizli.kurs')}</a>
+          <a href={yol(dil, 'iletisim')} class="dugme border-(--color-krem)/60 text-(--color-krem) hover:border-(--color-krem) hover:text-(--color-krem)">{t('nav.iletisim')}</a>
         </div>
       </div>
       <div class="mt-10 sm:mt-14 border-t border-(--color-krem)/25 pt-4 hero-serit-cizgi">
-        <SiradakiVakit client:load gunler={namaz.gunler} dil={dil} etiketler={namazEtiket} />
+        <SiradakiVakit client:load gunler={namazPenceresi} dil={dil} etiketler={namazEtiket} />
       </div>
     </div>
     <div class="kilim-serit" aria-hidden="true"></div>
   </section>
 
-  <!-- ①a Hac ön kaydı — Diyanet takvimine bağlı, 11 Eylül'de kendiliğinden kalkar (HAC_SON_GUN) -->
+  <!-- ① a Kurumsal bağlılık — nötr şerit; iki renkli bandın hero'ya yapışmasını da engeller -->
+  <KurumsalSerit dil={dil} />
+
+  <!-- ① b Hac ön kaydı — Diyanet takvimine bağlı, 11 Eylül'de kendiliğinden kalkar (HAC_SON_GUN) -->
   <HacBandi dil={dil} />
 
-  <KayitBandi dil={dil} link={site.kursKayitLinki} />
+  <KayitBandi dil={dil} link={site.kursKayitLinki} ikincil={hacAcik} />
 
-  <KurumsalSerit dil={dil} />
+  <!-- ① c Vefat / cenaze namazı — yalnız yakın tarihli bir kayıt varsa basılır, sonra kendiliğinden kalkar -->
+  <VefatBandi dil={dil} />
 
   <!-- ② Namaz vakitleri (vurgulu) + Bu hafta -->
   <section class="bg-(--zemin-2) border-b border-(--cizgi) reveal" aria-labelledby="vakit-baslik">
-    <div class="kapsayici py-12 sm:py-16 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-14">
-      <div>
+    <!-- Izgara yerleşimi mobil sırayı belirler: vakitler → bu hafta → hızlı erişim. Karolar
+         telefonda üstteki menüyle aynı bağlantıları tekrarlayıp haftalık programı ekranlarca
+         aşağı itiyordu (4 Eylül 2026 denetimi). Masaüstünde sol sütun iki satır (vakitler +
+         karolar), sağ sütun tek blok (bu hafta) olarak eski düzenine döner. -->
+    <div class="kapsayici py-12 sm:py-16 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-x-14 lg:gap-y-9">
+      <div class="lg:col-start-1 lg:row-start-1">
         <div class="flex flex-wrap items-end justify-between gap-3">
           <h2 id="vakit-baslik">{t('ana.bugun')}</h2>
-          <a href={yol(dil, 'namaz')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{t('ana.tumvakitler')} <Ikon ad="ok" class="h-4 w-4" /></a>
+          <a href={yol(dil, 'namaz')} class="min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{t('ana.tumvakitler')} <Ikon ad="ok" class="h-4 w-4" /></a>
         </div>
         <span class="serit mb-5" aria-hidden="true"></span>
-        <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={namazEtiket} vurgulu cumaEtiket={t('namaz.cuma')} cumaSaati={site.cumaSaati} />
+        <NamazVakitleri client:visible gunler={namazPenceresi} dil={dil} etiketler={namazEtiket} vurgulu cumaEtiket={t('namaz.cuma')} cumaKisaEtiket={t('namaz.cumaKisa')} cumaSaati={site.cumaSaati} cumaAciklama={t('namaz.cumaAciklama')} />
         <p class="etiket mt-4">{t('namaz.kaynak')}</p>
-        <!-- Hızlı erişim karoları — vakit sütunundaki boşluğu değerlendirir, iki sütunu dengeler -->
-        <nav class="mt-8" aria-label={m.hizmet}>
-        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-(--cizgi) border border-(--cizgi)" role="list">
+      </div>
+      <nav class="lg:col-start-1 lg:row-start-2" aria-label={m.hizmet}>
+        {/* Sekiz karo, her kırılımda iki sütun: üç sütunda son satır tek kalıyor, dört sütunda
+            "Cenaze ve nakil hizmetleri" gibi uzun etiketler 150 px'e sığmıyordu. */}
+        <ul class="grid grid-cols-2 gap-px bg-(--cizgi) border border-(--cizgi)" role="list">
           {hizmetler.map((h) => (
             <li class="bg-(--zemin)">
-              <a href={h.href} class="group flex items-center gap-3 px-3.5 py-3.5 no-underline text-(--metin) hover:bg-(--zemin-3) transition-colors h-full">
+              <a href={h.href} class="group flex items-center gap-3 px-3.5 py-3.5 no-underline text-(--metin) hover:bg-(--zemin-3) transition-colors h-full min-h-[3.5rem]">
                 <Ikon ad={h.ikon} class="h-6 w-6 shrink-0 text-(--vurgu) transition-transform duration-300 ease-out group-hover:-translate-y-0.5" />
                 <span class="font-semibold text-[0.92rem] leading-snug">{h.ad}</span>
               </a>
             </li>
           ))}
         </ul>
-        </nav>
-      </div>
-      <div id="bu-hafta" class="scroll-mt-24">
+      </nav>
+      <div id="bu-hafta" class="scroll-mt-24 lg:col-start-2 lg:row-start-1 lg:row-span-2">
         <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>
         <span class="serit" aria-hidden="true"></span>
         <p class="mt-3 mb-5 text-sm text-(--metin-2)">{m.buHaftaAlt}</p>
@@ -162,23 +194,33 @@ const anaSayfaJsonLd = {
     </div>
   </section>
 
-  <!-- ④ Duyurular — bento: 1 öne çıkan + liste -->
-  <section class="kapsayici py-10 sm:py-14 reveal" aria-labelledby="duyuru-baslik">
+  <!-- ③ Duyurular — bento: 1 öne çıkan + liste -->
+  <section class="kapsayici py-12 sm:py-16 reveal" aria-labelledby="duyuru-baslik">
     <div class="flex flex-wrap items-end justify-between gap-3 cetvel pt-4">
       <h2 id="duyuru-baslik">{m.sonDuyuru}</h2>
-      <a href={yol(dil, 'duyurular')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumDuyuru} <Ikon ad="ok" class="h-4 w-4" /></a>
+      <a href={yol(dil, 'duyurular')} class="min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumDuyuru} <Ikon ad="ok" class="h-4 w-4" /></a>
     </div>
     <span class="serit mb-6" aria-hidden="true"></span>
     {dil === 'en' && <p class="bilgi text-sm mb-6">{m.fallbackNotu}</p>}
     {oneCikan ? (
-      <div class="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <article class="kart overflow-hidden flex flex-col">
-          {oneCikan.data.kapak && <a href={yol(dil, 'duyurular', oneCikan.slug)} class="block aspect-[16/9] overflow-hidden border-b border-(--cizgi)"><img src={oneCikan.data.kapak} alt={oneCikan.data.kapakAlt ?? ''} loading="lazy" decoding="async" width="1400" height="788" class="h-full w-full object-cover" /></a>}
-          <div class="p-6 sm:p-7 flex flex-col gap-3">
+      <div class="grid gap-6 items-start lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+        <article class:list={['kart overflow-hidden', kapakKutu.dikey ? 'grid grid-cols-[7rem_minmax(0,1fr)] sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] items-start' : 'flex flex-col']}>
+          {kapakYolu && (
+            <a
+              href={yol(dil, 'duyurular', oneCikan.slug)}
+              class:list={['block overflow-hidden bg-(--zemin-3) border-(--cizgi)', kapakKutu.dikey ? 'border-e' : 'border-b']}
+              style={`aspect-ratio:${oranCss(kapakKutu.oran)}`}
+            >
+              <img src={kapakYolu} alt={oneCikan.data.kapakAlt ?? ''} loading="lazy" decoding="async"
+                width={kapakOlcu?.genislik} height={kapakOlcu?.yukseklik}
+                class:list={['h-full w-full', kapakKutu.oturma === 'cover' ? 'object-cover' : 'object-contain']} />
+            </a>
+          )}
+          <div class="p-5 sm:p-7 flex flex-col gap-3">
             <p class="etiket"><time datetime={oneCikan.data.tarih.toISOString()}>{tarihBicimle(oneCikan.data.tarih, dil)}</time></p>
-            <h3 class="text-[1.5rem] sm:text-[1.8rem] leading-tight"><a href={yol(dil, 'duyurular', oneCikan.slug)} class="no-underline text-(--metin) hover:text-(--vurgu)">{oneCikan.data.baslik}</a></h3>
-            {oneCikan.data.ozet && <p class="text-(--metin-2)">{oneCikan.data.ozet}</p>}
-            <a href={yol(dil, 'duyurular', oneCikan.slug)} class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{t('duyuru.devam')} <Ikon ad="ok" class="h-4 w-4" /></a>
+            <h3 class="text-[1.3rem] sm:text-[1.55rem] leading-tight"><a href={yol(dil, 'duyurular', oneCikan.slug)} class="no-underline text-(--metin) hover:text-(--vurgu)">{oneCikan.data.baslik}</a></h3>
+            {oneCikan.data.ozet && <p class="text-(--metin-2) text-[0.95rem]">{oneCikan.data.ozet}</p>}
+            <a href={yol(dil, 'duyurular', oneCikan.slug)} class="mt-auto min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{t('duyuru.devam')} <Ikon ad="ok" class="h-4 w-4" /></a>
           </div>
         </article>
         <ul class="grid content-start divide-y divide-(--cizgi) border-y border-(--cizgi)" role="list">
@@ -191,23 +233,29 @@ const anaSayfaJsonLd = {
         </ul>
       </div>
     ) : <p class="text-(--metin-2)">{m.duyuruBos}</p>}
-    <div class="mt-10 cetvel pt-5">
-      <div class="flex flex-wrap items-end justify-between gap-3">
-        <h3 class="text-xl sm:text-2xl" id="etkinlik-baslik">{m.etkinlik}</h3>
-        <a href={yol(dil, 'etkinlikler')} class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumEtkinlik} <Ikon ad="ok" class="h-4 w-4" /></a>
-      </div>
-      <span class="serit mb-5" aria-hidden="true"></span>
-      {etkinlikler.length ? (
-        <div class:list={['grid gap-5', etkinlikGrid]}>
-          {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} {...e.data} />)}
-        </div>
-      ) : <p class="text-(--metin-2)">{m.etkinlikBos}</p>}
-    </div>
   </section>
 
-  <!-- ⑤ Bağış — çok kanallı koyu bant -->
+  <!-- ④ Yaklaşan etkinlikler — duyuruların ALT bölümü değil, eşi: kendi h2'si ve kendi bölümü
+       (kartlar h3; iç içe h3 hiyerarşiyi düzleştiriyordu — 4 Eylül 2026 erişilebilirlik denetimi) -->
+  <section class="kapsayici pb-12 sm:pb-16 reveal" aria-labelledby="etkinlik-baslik">
+    <div class="flex flex-wrap items-end justify-between gap-3 cetvel pt-5">
+      <h2 id="etkinlik-baslik" class="text-[1.35rem] sm:text-2xl">{m.etkinlik}</h2>
+      <a href={yol(dil, 'etkinlikler')} class="min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumEtkinlik} <Ikon ad="ok" class="h-4 w-4" /></a>
+    </div>
+    <span class="serit mb-5" aria-hidden="true"></span>
+    {etkinlikler.length ? (
+      <div class:list={['grid gap-5', etkinlikGrid]}>
+        {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} yatay={tekEtkinlik} {...e.data} />)}
+      </div>
+    ) : <p class="text-(--metin-2)">{m.etkinlikBos}</p>}
+  </section>
+
+  <!-- ⑤ Kim olduğumuz — camiyi hiç bilmeyen ziyaretçi için tek paragraf + ziyaret rehberi -->
+  <Tanitim dil={dil} />
+
+  <!-- ⑥ Bağış — çok kanallı koyu bant -->
   <BagisBandi dil={dil} banka={site.banka} />
 
-  <!-- ⑨ Bize ulaşın -->
+  <!-- ⑦ Bize ulaşın -->
   <IletisimMini dil={dil} site={site} />
 </Base>

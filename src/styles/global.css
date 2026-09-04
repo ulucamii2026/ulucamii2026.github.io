@@ -3,8 +3,37 @@
 @import "@fontsource-variable/work-sans";
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
+/* Amiri yalnız 400: sitede kalın Arapça kullanılmıyor; 700 ağırlığı Arapça sayfalarda
+   boşuna ~120 KB indiriyordu (4 Eylül 2026 ölçümü). Kalın gerekirse buraya geri eklenir. */
 @import "@fontsource/amiri/400.css";
-@import "@fontsource/amiri/700.css";
+
+/* "Amiri Ana": ana sayfadaki SABİT Arapça satırlar (hero selamı, vefat bandı âyeti) için 27,6 KB'lık
+   alt küme — tam Amiri Arapça alt kümesi 106 KB'dır ve ana sayfada tek satır için indiriliyordu.
+   Üretimi: scripts/arapca-alt-kume.py (metin değişirse yeniden çalıştırılmalı).
+   font-display: block — dosya ana sayfada preload edildiği için birkaç yüz ms içinde gelir; `swap`
+   ile satır önce fallback yazı tipiyle çizilip sonra yeniden akıyor ve hero'nun altındaki her şeyi
+   kaydırıyordu (ölçülen CLS payı 0,036 — sayfanın en büyük düzen kayması). */
+/* ——— Yedek yazı tipi ölçüleri (CLS) ———
+   Web yazı tipi gelene kadar metin sistem yazı tipiyle çizilir; Georgia Lora'dan %8 GENİŞ,
+   sistem sans'ı Work Sans'tan %9 DARdır. Bu fark yüzünden hero başlığı önce farklı sarıyor,
+   yazı tipi gelince yeniden akıyor ve altındaki her şeyi kaydırıyordu (4 Eylül 2026'da ölçülen
+   CLS payı 0,03-0,05 — sayfanın kalan tek düzen kayması).
+   `size-adjust` yedek yazı tipini asıl yazı tipinin genişliğine ayarlar: satır sayısı değişmez,
+   metin yerinden oynamaz. Oranlar aynı gün tarayıcıda ölçüldü (100 px'te "Marche-en-Famenne Ulu
+   Camii": Lora 1492,6 · Georgia 1614,4 · Work Sans 1537,5 · Segoe UI 1406,5 · Arial 1461,4).
+   `local()` bulunamazsa aile sessizce atlanır ve zincirdeki bir sonrakine düşülür. */
+@font-face { font-family: "Lora Yedek"; src: local("Georgia"); size-adjust: 92.5%; font-display: swap; }
+@font-face { font-family: "WorkSans Yedek Segoe"; src: local("Segoe UI"); size-adjust: 109.3%; font-display: swap; }
+@font-face { font-family: "WorkSans Yedek Arial"; src: local("Arial"), local("Helvetica Neue"); size-adjust: 105.2%; font-display: swap; }
+
+@font-face {
+  font-family: "Amiri Ana";
+  src: url("/fonts/amiri-ana.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+0020, U+0600-06FF;
+}
 
 /* ——— Kilim Kartografyası tasarım dili: dar toprak paleti + tek serin aksan (İznik mavisi) ——— */
 @theme {
@@ -25,8 +54,8 @@
   --color-iznik-acik: #86b6d6; /* koyu temada İznik mavisi rozet metni okunur kalsın */
   --color-murekkep: #24201c;
 
-  --font-serif: "Lora Variable", Georgia, "Times New Roman", serif;
-  --font-sans: "Work Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Lora Variable", "Lora Yedek", Georgia, "Times New Roman", serif;
+  --font-sans: "Work Sans Variable", "WorkSans Yedek Segoe", "WorkSans Yedek Arial", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
   --font-arabic: "Amiri", "Noto Naskh Arabic", "Scheherazade New", serif;
 
@@ -46,6 +75,7 @@
   --cizgi-etkilesim: rgb(74 55 40 / 0.44);
   --vurgu: var(--color-kiremit);
   --vurgu-2: var(--color-iznik);
+  --shadow-kart-vurgu: 0 2px 0 rgb(74 55 40 / 0.08), 0 18px 36px -18px rgb(74 55 40 / 0.45);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,6 +90,9 @@
     --cizgi-etkilesim: rgb(245 239 227 / 0.5);
     --vurgu: #e37f5f;
     --vurgu-2: #6fa8d3;
+  /* Gölge koyu temada kahverengi tabanla kaybolur; siyah tabanlı, daha derin bir karşılığı gerekir. */
+  --shadow-kart: 0 1px 0 rgb(0 0 0 / 0.32), 0 14px 34px -16px rgb(0 0 0 / 0.6);
+  --shadow-kart-vurgu: 0 2px 0 rgb(0 0 0 / 0.4), 0 20px 40px -16px rgb(0 0 0 / 0.72);
   }
 }
 :root[data-theme="dark"] {
@@ -73,6 +106,8 @@
   --cizgi-etkilesim: rgb(245 239 227 / 0.5);
   --vurgu: #e37f5f;
   --vurgu-2: #6fa8d3;
+  --shadow-kart: 0 1px 0 rgb(0 0 0 / 0.32), 0 14px 34px -16px rgb(0 0 0 / 0.6);
+  --shadow-kart-vurgu: 0 2px 0 rgb(0 0 0 / 0.4), 0 20px 40px -16px rgb(0 0 0 / 0.72);
 }
 
 @layer base {
@@ -183,7 +218,7 @@
   .js .serit { transform: scaleX(0); transform-origin: left; transition: transform 500ms cubic-bezier(.16,1,.3,1); }
   .js .serit.gorunur { transform: none; }
   .kart, .kart-kagit { transition: transform .18s ease-out, box-shadow .18s ease-out, border-color .18s ease-out; }
-  a.kart:hover, a.kart-kagit:hover, .kart:has(> a:hover) { transform: translateY(-2px); box-shadow: 0 2px 0 rgb(74 55 40 / 0.08), 0 18px 36px -18px rgb(74 55 40 / 0.45); }
+  a.kart:hover, a.kart-kagit:hover, .kart:has(> a:hover) { transform: translateY(-2px); box-shadow: var(--shadow-kart-vurgu, 0 2px 0 rgb(74 55 40 / 0.08), 0 18px 36px -18px rgb(74 55 40 / 0.45)); }
   /* geri bildirim: dokunuşun karşılığı — 100 ms'lik 0.98 basma */
   .dugme:active, button:active { transform: scale(0.98); }
   button { transition: transform .1s ease-out, background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out; }
@@ -215,6 +250,8 @@
 
 @layer utilities {
   .rakam { font-family: var(--font-serif); font-variant-numeric: tabular-nums lining-nums; }
+  /* Ana sayfanın sabit Arapça satırları — alt küme yazı tipi, tam Amiri'ye düşerek yedeklenir. */
+  .arabic-ana { font-family: "Amiri Ana", var(--font-arabic); }
   .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 }
 

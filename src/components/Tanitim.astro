@@ -1,0 +1,91 @@
+---
+/**
+ * "Kim olduğumuz" — ana sayfanın kurumsal tanıtım bölümü.
+ *
+ * Neden var: bu metin üç dilde YAZILMIŞTI (index.astro içinde tanitimBaslik / tanitim / tanitimCta /
+ * ziyaret anahtarları) ama hiçbir yerde basılmıyordu — ana sayfada caminin ne olduğunu, kime bağlı
+ * olduğunu ve komşuların davetli olduğunu söyleyen tek paragraf eksikti (4 Eylül 2026 denetimi).
+ *
+ * Kilometre taşları hakkimizda.md'deki resmî bilgilerden gelir ve UYDURULMAZ:
+ *   1979 → dernek 19 Aralık 1979'da tescil edildi · 1986 → cami binası hizmete açıldı
+ *   Valon Bölgesi tarafından tanınmış ibadet topluluğu (communauté locale reconnue)
+ * Yıl sayıları sabit değil, içinde bulunulan yıldan hesaplanır: site her gün yeniden derlendiği
+ * için "40. yıl" ifadesi kendiliğinden ilerler.
+ */
+import { Image } from 'astro:assets';
+import icMekan from '../assets/foto/ic-mekan.jpg';
+import Ikon from './Ikon.astro';
+import { yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+const DERNEK_YILI = 1979;
+const CAMI_YILI = 1986;
+const buYil = Number(new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric' }).format(new Date()));
+const camiYas = buYil - CAMI_YILI;
+
+const m = dil === 'tr' ? {
+  etiket: 'Kim olduğumuz',
+  baslik: `${camiYas} yıldır Marche-en-Famenne’de`,
+  govde: 'Marche-en-Famenne Ulu Camii, 1979’da kurulan derneğimizin çatısı altında 1986’dan beri bölgemizdeki Müslümanlara ibadet, eğitim ve dayanışma hizmeti sunmaktadır. Valon Bölgesi tarafından tanınmış bir ibadet topluluğu olarak Belçika Diyanet Vakfı’na bağlıyız; kapımız her milletten komşumuza açıktır.',
+  taslar: [
+    { yil: String(DERNEK_YILI), ad: 'Derneğimiz tescil edildi' },
+    { yil: String(CAMI_YILI), ad: 'Cami binamız hizmete açıldı' },
+    { yil: '✓', ad: 'Valon Bölgesi’nce tanınmış ibadet topluluğu' },
+  ],
+  cta: 'Hakkımızda',
+  ziyaret: 'Camiyi ziyaret etmek isteyenler için rehber',
+  fotoAlt: 'Ulu Camii iç mekânı',
+} : dil === 'en' ? {
+  etiket: 'Who we are',
+  baslik: `${camiYas} years in Marche-en-Famenne`,
+  govde: 'Marche-en-Famenne Ulu Mosque, carried by our association founded in 1979, has served the Muslims of our region with worship, education and mutual support since 1986. Recognised by the Walloon Region as a place of worship and affiliated with the Diyanet Foundation of Belgium, our door is open to neighbours of every background.',
+  taslar: [
+    { yil: String(DERNEK_YILI), ad: 'Our association was registered' },
+    { yil: String(CAMI_YILI), ad: 'The mosque building opened' },
+    { yil: '✓', ad: 'Place of worship recognised by the Walloon Region' },
+  ],
+  cta: 'About us',
+  ziyaret: 'A guide for those wishing to visit the mosque',
+  fotoAlt: 'Interior of the mosque',
+} : {
+  etiket: 'Qui sommes-nous',
+  baslik: `Depuis ${camiYas} ans à Marche-en-Famenne`,
+  govde: 'La mosquée Ulu Camii de Marche-en-Famenne, portée par notre association fondée en 1979, accueille depuis 1986 les musulmans de la région pour le culte, l’enseignement et l’entraide. Communauté cultuelle reconnue par la Région wallonne et rattachée à la Fondation Diyanet de Belgique, notre porte est ouverte à tous nos voisins, de toutes origines.',
+  taslar: [
+    { yil: String(DERNEK_YILI), ad: 'Enregistrement de notre association' },
+    { yil: String(CAMI_YILI), ad: 'Ouverture du bâtiment de la mosquée' },
+    { yil: '✓', ad: 'Communauté cultuelle reconnue par la Région wallonne' },
+  ],
+  cta: 'À propos',
+  ziyaret: 'Guide pour visiter la mosquée',
+  fotoAlt: 'Intérieur de la mosquée',
+};
+---
+<section class="bg-(--zemin) reveal" aria-labelledby="tanitim-baslik">
+  <div class="kapsayici py-12 sm:py-16 grid gap-8 lg:gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-center">
+    <div>
+      <p class="etiket">{m.etiket}</p>
+      <h2 id="tanitim-baslik" class="mt-2">{m.baslik}</h2>
+      <span class="serit mb-5" aria-hidden="true"></span>
+      <p class="text-(--metin-2) max-w-[60ch]">{m.govde}</p>
+      <dl class="mt-7 grid gap-px bg-(--cizgi) border border-(--cizgi) sm:grid-cols-3">
+        {m.taslar.map((t) => (
+          <div class="bg-(--zemin-2) px-4 py-3.5">
+            <dt class="rakam text-2xl leading-none text-(--vurgu)">{t.yil}</dt>
+            <dd class="etiket mt-1.5 normal-case tracking-normal text-[0.78rem] leading-snug">{t.ad}</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href={yol(dil, 'hakkimizda')} class="dugme dugme-ikincil">{m.cta}</a>
+        <a href={yol(dil, 'adab')} class="dugme dugme-ikincil"><Ikon ad="cami" class="h-5 w-5" />{m.ziyaret}</a>
+      </div>
+    </div>
+    <figure class="gorsel-cerceve">
+      <Image src={icMekan} alt={m.fotoAlt} widths={[520, 1040]} sizes="(min-width: 1024px) 520px, 100vw" loading="lazy" decoding="async" />
+    </figure>
+  </div>
+</section>

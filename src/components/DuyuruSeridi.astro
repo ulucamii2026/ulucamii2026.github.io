@@ -28,8 +28,8 @@ const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil,
       const h = hedef(mesaj);
       const ic = <><span class="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-ochre-acik)" aria-hidden="true"></span><span>{metni(mesaj)}</span></>;
       return h
-        ? <a href={h} data-mesaj={i} class:list={['serit-mesaj [grid-area:1/1] flex items-start gap-2.5 text-lg text-(--color-krem)/92 no-underline hover:text-(--color-krem) hover:underline underline-offset-4', i === 0 && 'aktif']}>{ic}</a>
-        : <p data-mesaj={i} class:list={['serit-mesaj [grid-area:1/1] flex items-start gap-2.5 text-lg text-(--color-krem)/92', i === 0 && 'aktif']}>{ic}</p>;
+        ? <a href={h} data-mesaj={i} class:list={['serit-mesaj [grid-area:1/1] flex items-start gap-2.5 text-base sm:text-lg text-(--color-krem)/92 drop-shadow-[0_1px_8px_rgba(0,0,0,.55)] no-underline hover:text-(--color-krem) hover:underline underline-offset-4', i === 0 && 'aktif']}>{ic}</a>
+        : <p data-mesaj={i} class:list={['serit-mesaj [grid-area:1/1] flex items-start gap-2.5 text-base sm:text-lg text-(--color-krem)/92 drop-shadow-[0_1px_8px_rgba(0,0,0,.55)]', i === 0 && 'aktif']}>{ic}</p>;
     })}
   </div>
 )}
@@ -46,8 +46,12 @@ const hedef = (mesaj: Mesaj) => (mesaj.sayfa && mesaj.sayfa in yollar ? yol(dil,
   if (kutu && mesajlar.length > 1) {
     const sure = Number(kutu.dataset.sure || 6500);
     let i = 0; let bekle = false;
+    /* Otomatik dönüş, hero'daki duraklat düğmesinin durumuna bağlıdır (WCAG 2.2.2 — Pause, Stop,
+       Hide): tek denetim sayfadaki tüm otomatik hareketi yönetir. Durum kök öğede tutulur ve
+       hareket azaltma tercihi olan ziyaretçide varsayılan olarak duruktur (Base.astro). */
+    const duruyor = () => document.documentElement.dataset.hareket === 'durdu';
     setInterval(() => {
-      if (bekle || document.hidden) return;
+      if (bekle || duruyor() || document.hidden) return;
       i = (i + 1) % mesajlar.length;
       mesajlar.forEach((el, j) => el.classList.toggle('aktif', j === i));
     }, sure);

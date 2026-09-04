@@ -11,8 +11,10 @@ const yol = `https://www.google.com/maps/dir/?api=1&destination=${enlem},${boyla
 ---
 <figure class="gorsel-cerceve">
   <iframe src={src} title={baslik} loading="lazy" class="w-full aspect-[16/9] border-0" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  <figcaption class="flex flex-wrap gap-4 justify-between px-1 pt-2 text-sm">
-    <a href={buyuk} target="_blank" rel="noopener">OpenStreetMap <span aria-hidden="true"> ↗</span>{disKaynak && <span class="sr-only"> {disKaynak}</span>}</a>
-    <a href={yol} target="_blank" rel="noopener">{yoltarifi}<span aria-hidden="true"> ↗</span>{disKaynak && <span class="sr-only"> {disKaynak}</span>}</a>
+  {/* Dokunma hedefi: figcaption bağlantıları 20 px yüksekliğindeydi (WCAG 2.5.8 asgari 24 px) —
+      global.css'teki `.dokun a` kuralı bu figürü kapsamıyor, bu yüzden burada açıkça verilir. */}
+  <figcaption class="flex flex-wrap gap-4 justify-between px-1 pt-1 text-sm">
+    <a href={buyuk} target="_blank" rel="noopener" class="min-h-11 inline-flex items-center">OpenStreetMap <span aria-hidden="true"> ↗</span>{disKaynak && <span class="sr-only"> {disKaynak}</span>}</a>
+    <a href={yol} target="_blank" rel="noopener" class="min-h-11 inline-flex items-center">{yoltarifi}<span aria-hidden="true"> ↗</span>{disKaynak && <span class="sr-only"> {disKaynak}</span>}</a>
   </figcaption>
 </figure>

@@ -1,15 +1,21 @@
 ---
 /**
  * Hero arka plan slaytı — camimizin fotoğrafları arasında yavaş çapraz geçiş (8 sn tempo, 1.4 sn geçiş).
- * - İlk kare eager yüklenir (LCP); sonrakiler yalnız JS ile, ilk geçişten hemen önce önceden indirilir.
+ * - İlk kare eager yüklenir (LCP); sonrakiler yalnız JS ile, sayfa YÜKLENDİKTEN sonra önceden indirilir
+ *   (4 Eylül 2026: ikinci kare hemen indirilmeye başlıyor ve LCP görseliyle bant genişliği yarışıyordu).
+ * - Biçim: her kare AVIF + WebP olarak durur (scripts/hero-gorsel-uret.mjs üretir). AVIF'i destekleyen
+ *   tarayıcı ~%65 daha küçük dosya indirir; desteklemeyen WebP'ye düşer, kadraj ikisinde de aynıdır.
  * - Okunabilirlik güvencesi: görsel ne kadar açık olursa olsun metin bölgesini karartan çift katman
  *   (alttan üst gradyan + sol metin bölgesi gradyanı) her karede sabittir.
+ * - HAREKET DENETİMİ (WCAG 2.2.2 — Pause, Stop, Hide): noktaların yanındaki duraklat/oynat düğmesi
+ *   hem bu slaydı hem hero'daki duyuru şeridini kalıcı olarak durdurur; tercih localStorage'da saklanır
+ *   ve `prefers-reduced-motion: reduce` diyen ziyaretçide varsayılan DURMUŞtur (Base.astro belirler).
+ *   Fareyle/odakla geçici bekletme de sürer.
  * - prefers-reduced-motion: yakınlaşma efekti kapanır, sakin çapraz geçiş sürer. Sekme gizliyken döngü durur.
- * - Noktalar: klavyeyle erişilebilir düğmeler; üzerine gelinince döngü bekler.
  * - Gösterim sırası DÖNÜŞÜMLÜ (3 Eylül 2026, Rıdvan'ın isteği): bayraklı kare her cami karesinden sonra
  *   yeniden gelir — cami, bayrak, cami, bayrak… Görseller DOM'da bir kez durur (bayrak dâhil); yalnız
  *   sıra (data-sira) dönüşümlüdür, noktalar yine altı benzersiz görseli temsil eder.
- * - Sanat yönetimi: telefonda (≤720px, portre) `hero-N-m.webp` 9:16 DİKEY kırpmalardır — odak noktası elle seçildi
+ * - Sanat yönetimi: telefonda (≤720px, portre) `hero-N-m.*` 9:16 DİKEY kırpmalardır — odak noktası elle seçildi
  *   (dış cephe için ayrı dikey çekim, bayraklar için TR üst / BE alt dikey kompozisyon). Yatay görselin ortadan
  *   kırpılması (bulanık + kompozisyonsuz) yerine her kare telefonda kendi kadrajıyla görünür.
  */
@@ -17,19 +23,22 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const m = {
-  tr: { grup: 'Cami fotoğrafları slaytı', git: (i: number) => `${i}. fotoğrafa geç`, alt: ['Ulu Camii dış cephesi', 'Türk ve Belçika bayrakları yan yana', 'Cami iç mekânı, mihrap ve minber', 'Cami bahçe kapısı', 'Cami iç mekânı', 'Cami avlusu'] },
-  fr: { grup: 'Diaporama de la mosquée', git: (i: number) => `Aller à la photo ${i}`, alt: ['Façade de la mosquée Ulu Camii', 'Drapeaux turc et belge côte à côte', 'Intérieur de la mosquée, mihrab et minbar', 'Portail du jardin', 'Intérieur de la mosquée', 'Cour de la mosquée'] },
-  en: { grup: 'Mosque photo slideshow', git: (i: number) => `Go to photo ${i}`, alt: ['Front of the Ulu Mosque', 'Turkish and Belgian flags side by side', 'Prayer hall, mihrab and minbar', 'Garden gate', 'Prayer hall', 'Mosque courtyard'] },
+  tr: { grup: 'Cami fotoğrafları slaytı', git: (i: number) => `${i}. fotoğrafa geç`, durdur: 'Otomatik geçişi durdur', oynat: 'Otomatik geçişi başlat', alt: ['Ulu Camii dış cephesi', 'Türk ve Belçika bayrakları yan yana', 'Cami iç mekânı, mihrap ve minber', 'Cami bahçe kapısı', 'Cami iç mekânı', 'Cami avlusu'] },
+  fr: { grup: 'Diaporama de la mosquée', git: (i: number) => `Aller à la photo ${i}`, durdur: 'Arrêter le défilement automatique', oynat: 'Reprendre le défilement automatique', alt: ['Façade de la mosquée Ulu Camii', 'Drapeaux turc et belge côte à côte', 'Intérieur de la mosquée, mihrab et minbar', 'Portail du jardin', 'Intérieur de la mosquée', 'Cour de la mosquée'] },
+  en: { grup: 'Mosque photo slideshow', git: (i: number) => `Go to photo ${i}`, durdur: 'Stop the automatic slideshow', oynat: 'Start the automatic slideshow', alt: ['Front of the Ulu Mosque', 'Turkish and Belgian flags side by side', 'Prayer hall, mihrab and minbar', 'Garden gate', 'Prayer hall', 'Mosque courtyard'] },
 }[dil];
 const SLAYTLAR = [1, 7, 3, 6, 5, 4];
 /* Bayraklı kare (hero-7) SLAYTLAR'da 1. sırada; gösterim sırası: 0,1,2,1,3,1,4,1,5,1 (ilk kare cami — LCP). */
 const BAYRAK = 1;
 const SIRA = SLAYTLAR.flatMap((_n, i) => (i === BAYRAK ? [] : [i, BAYRAK]));
+const MOBIL = '(max-width: 720px) and (orientation: portrait)';
 ---
 <div class="absolute inset-0 overflow-hidden" id="hero-slayt" data-sure="8000" data-sira={SIRA.join(',')}>
   {SLAYTLAR.map((n, i) => (
     <picture>
-      <source media="(max-width: 720px) and (orientation: portrait)" srcset={`/media/hero/hero-${n}-m.webp`} />
+      <source media={MOBIL} type="image/avif" srcset={`/media/hero/hero-${n}-m.avif`} />
+      <source media={MOBIL} type="image/webp" srcset={`/media/hero/hero-${n}-m.webp`} />
+      <source type="image/avif" srcset={`/media/hero/hero-${n}.avif`} />
       <img
         src={`/media/hero/hero-${n}.webp`}
         alt={i === 0 ? m.alt[0] : ''}
@@ -42,17 +51,26 @@ const SIRA = SLAYTLAR.flatMap((_n, i) => (i === BAYRAK ? [] : [i, BAYRAK]));
       />
     </picture>
   ))}
-  <!-- Okunabilirlik katmanları: her karede sabit — açık görsellerde de beyaz metin okunur kalır -->
-  <div class="absolute inset-0 bg-gradient-to-t from-(--color-ceviz-koyu) via-(--color-ceviz-koyu)/55 to-(--color-ceviz-koyu)/20" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-[linear-gradient(100deg,rgb(47_34_26/.66)_0%,rgb(47_34_26/.38)_48%,rgb(47_34_26/.12)_100%)]" aria-hidden="true"></div>
+  <!-- Okunabilirlik katmanları: her karede sabit — açık görsellerde de beyaz metin okunur kalır.
+       4 Eylül 2026'da iki kez güçlendirildi. Ölçüm: altı karenin metin bölgesindeki EN AÇIK piksele
+       karşı ochre etiket rengi 3,46:1 kalıyordu — küçük metin için WCAG 1.4.3 AA sınırı 4,5:1'dir
+       (krem gövde metni zaten geçiyordu). Değerler ölçüle ölçüle seçildi; fotoğrafı gereğinden fazla
+       karartmamak için en düşük geçen ayar alındı. -->
+  <div class="absolute inset-0 bg-gradient-to-t from-(--color-ceviz-koyu) via-(--color-ceviz-koyu)/64 to-(--color-ceviz-koyu)/52" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(100deg,rgb(47_34_26/.8)_0%,rgb(47_34_26/.6)_52%,rgb(47_34_26/.2)_100%)]" aria-hidden="true"></div>
 </div>
-<div class="absolute top-1/2 -translate-y-1/2 right-2.5 flex-col sm:top-auto sm:translate-y-0 sm:bottom-4 sm:right-4 sm:flex-row z-10 flex gap-1 sm:gap-0.5" role="group" aria-label={m.grup} id="hero-noktalar">
+<div class="absolute z-10 bottom-5 right-3 sm:bottom-6 sm:right-4 flex items-center gap-1 rounded-full bg-(--color-ceviz-koyu)/45 backdrop-blur-[2px] px-1 py-0.5" id="hero-noktalar" role="group" aria-label={m.grup}>
   {SLAYTLAR.map((_n, i) => (
     <button type="button" data-nokta={i} aria-label={m.git(i + 1)} aria-current={i === 0 ? 'true' : undefined}
-      class="group flex h-9 w-9 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-(--color-ochre-acik)">
-      <span aria-hidden="true" class="h-2.5 w-2.5 rounded-full border border-(--color-krem)/70 bg-(--color-krem)/25 transition-all duration-300 group-aria-[current]:bg-(--color-krem) group-aria-[current]:h-5 sm:group-aria-[current]:h-2.5 sm:group-aria-[current]:w-5 group-hover:bg-(--color-krem)/70"></span>
+      class="group flex h-9 w-8 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-(--color-ochre-acik)">
+      <span aria-hidden="true" class="h-2.5 w-2.5 rounded-full border border-(--color-krem)/70 bg-(--color-krem)/25 transition-all duration-300 group-aria-[current]:bg-(--color-krem) group-aria-[current]:w-5 group-hover:bg-(--color-krem)/70"></span>
     </button>
   ))}
+  <button type="button" id="hero-duraklat" aria-pressed="false" data-durdur={m.durdur} data-oynat={m.oynat} aria-label={m.durdur}
+    class="ml-0.5 flex h-9 w-9 items-center justify-center rounded-full text-(--color-krem) hover:bg-(--color-krem)/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-(--color-ochre-acik)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" class="hero-ikon-durdur"><rect x="7" y="5" width="3.4" height="14" rx="1" /><rect x="13.6" y="5" width="3.4" height="14" rx="1" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" class="hero-ikon-oynat"><path d="M8 5.2v13.6a1 1 0 0 0 1.53.85l10.2-6.8a1 1 0 0 0 0-1.7L9.53 4.35A1 1 0 0 0 8 5.2Z" /></svg>
+  </button>
 </div>
 
 <style is:global>
@@ -62,13 +80,40 @@ const SIRA = SLAYTLAR.flatMap((_n, i) => (i === BAYRAK ? [] : [i, BAYRAK]));
     .hero-kare.aktif { animation: hero-nefes 9.5s ease-in-out both; }
     @keyframes hero-nefes { from { transform: scale(1); } to { transform: scale(1.045); } }
   }
+  /* Duraklat/oynat düğmesi tek ikon gösterir; hangisi olduğunu belge kökündeki hareket durumu söyler. */
+  .hero-ikon-oynat { display: none; }
+  :root[data-hareket='durdu'] .hero-ikon-oynat { display: block; }
+  :root[data-hareket='durdu'] .hero-ikon-durdur { display: none; }
+  /* Hareket durdurulduğunda yakınlaşma da durur — düğme "hareketi durdur" sözünü tam tutar. */
+  :root[data-hareket='durdu'] .hero-kare.aktif { animation: none; }
 </style>
 
 <script>
   const kok = document.getElementById('hero-slayt');
   const noktalar = Array.from(document.querySelectorAll<HTMLButtonElement>('#hero-noktalar [data-nokta]'));
   const kareler = kok ? Array.from(kok.querySelectorAll<HTMLImageElement>('[data-slayt]')) : [];
-  // Not: hareket-azalt tercihînde yakınlaşma (Ken Burns) CSS ile kapanır; sakin çapraz geçiş sürer — döngü içeriktir, süs değil.
+  const duraklat = document.getElementById('hero-duraklat') as HTMLButtonElement | null;
+  const belge = document.documentElement;
+
+  /** Sayfadaki tüm otomatik dönen içerik (hero slaydı + duyuru şeridi) tek anahtarla yönetilir. */
+  const durduMu = () => belge.dataset.hareket === 'durdu';
+  const dugmeyiTazele = () => {
+    if (!duraklat) return;
+    const d = durduMu();
+    duraklat.setAttribute('aria-pressed', String(d));
+    const etiket = d ? duraklat.dataset.oynat : duraklat.dataset.durdur;
+    if (etiket) duraklat.setAttribute('aria-label', etiket);
+  };
+  dugmeyiTazele();
+  duraklat?.addEventListener('click', () => {
+    const yeni = durduMu() ? 'acik' : 'durdu';
+    belge.dataset.hareket = yeni;
+    try { localStorage.setItem('uluCamiiHareket', yeni); } catch { /* depolama kapalı */ }
+    dugmeyiTazele();
+    document.dispatchEvent(new CustomEvent('ulucamii:hareket', { detail: { duruyor: yeni === 'durdu' } }));
+  });
+
+  // Not: hareket-azalt tercihînde yakınlaşma (Ken Burns) CSS ile kapanır ve döngü varsayılan olarak durur.
   if (kok && kareler.length > 1) {
     const sure = Number(kok.dataset.sure || 8000);
     // Gösterim sırası (kare indeksleri): dönüşümlü — cami, bayrak, cami, bayrak… Boşsa düz sıra.
@@ -83,8 +128,14 @@ const SIRA = SLAYTLAR.flatMap((_n, i) => (i === BAYRAK ? [] : [i, BAYRAK]));
       noktalar.forEach((b, j) => (j === i ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current')));
       onyukle(sira[(adim + 1) % sira.length]);
     };
-    const dongu = () => { zaman = window.setTimeout(() => { if (!bekle && !document.hidden) goster(adim + 1); dongu(); }, sure); };
-    onyukle(sira[1 % sira.length]); dongu();
+    const dongu = () => { zaman = window.setTimeout(() => { if (!bekle && !durduMu() && !document.hidden) goster(adim + 1); dongu(); }, sure); };
+    /* İkinci kareyi ANCAK sayfa yüklendikten (ya da 2,5 sn geçtikten) sonra indir: daha önce
+       betik çalışır çalışmaz indiriliyordu ve LCP görselinin bant genişliğini paylaşıyordu. */
+    const ikinciyiHazirla = () => onyukle(sira[1 % sira.length]);
+    if (document.readyState === 'complete') ikinciyiHazirla();
+    else window.addEventListener('load', ikinciyiHazirla, { once: true });
+    window.setTimeout(ikinciyiHazirla, 2500);
+    dongu();
     // Nokta = benzersiz görsel; tıklanınca o görselin sıradaki ilk konumundan devam edilir (dönüşüm bozulmaz).
     noktalar.forEach((b, j) => b.addEventListener('click', () => { goster(Math.max(0, sira.indexOf(j))); clearTimeout(zaman); dongu(); }));
     const noktaKutu = document.getElementById('hero-noktalar');

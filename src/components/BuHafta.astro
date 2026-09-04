@@ -27,7 +27,7 @@ const icerikDil = dil === 'en' ? 'fr' : dil;
         <div class="min-w-0">
           {maddeler.length ? maddeler.map((m) => (
             <a href={m.sayfa ? yol(dil, m.sayfa as SayfaAnahtari) : undefined} class="group flex items-start gap-2.5 no-underline text-(--metin) py-0.5">
-              <Ikon ad={ikonSec(m.sayfa)} class="h-5 w-5 shrink-0 mt-0.5 text-(--vurgu)" />
+              <Ikon ad={ikonSec(m.sayfa)} class:list={['h-5 w-5 shrink-0 mt-0.5 transition-colors', bugunMu ? 'text-(--vurgu-2)' : 'text-(--vurgu)']} />
               <span class="min-w-0"><span class="block font-semibold leading-snug group-hover:underline">{m.baslik[icerikDil]}</span><span class="block text-xs text-(--metin-2) mt-0.5">{m.saat[icerikDil]}</span></span>
             </a>
           )) : <p class="text-sm text-(--metin-2) py-0.5">{bosGun}</p>}

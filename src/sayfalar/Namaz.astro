@@ -30,7 +30,7 @@ const dg = dil === 'tr'
 <Base baslik={t('nav.namaz')} dil={dil} aciklama={t('namaz.kaynak')}>
   <SayfaBasligi etiket="Marche-en-Famenne" baslik={t('nav.namaz')} altBaslik={t('namaz.kaynak')} />
   <div class="kapsayici py-10">
-    <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={etiketler} />
+    <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={etiketler} cumaEtiket={t('namaz.cuma')} cumaKisaEtiket={t('namaz.cumaKisa')} cumaSaati={site.cumaSaati} cumaAciklama={t('namaz.cumaAciklama')} />
     {site.cumaSaati && <p class="bilgi mt-6"><strong>{t('namaz.cuma')}:</strong> {site.cumaSaati}</p>}
     <p class="mt-6 text-(--metin-2) max-w-prose">{not}</p>
     <h2 class="mt-12 mb-4">{t('ana.tumvakitler')}</h2>

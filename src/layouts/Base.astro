@@ -70,6 +70,22 @@ const kurumJsonLd = {
     `https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=${kboSade}`,
     a.sosyal?.facebook,
   ].filter(Boolean),
+  knowsLanguage: ['tr', 'fr', 'en', 'ar'],
+  areaServed: { '@type': 'AdministrativeArea', name: 'Marche-en-Famenne, Luxembourg, Wallonie' },
+  isAccessibleForFree: true,
+  publicAccess: true,
+};
+/* TEK yapısal veri bloğu (@graph). Daha önce Base bir <script>, sayfalar ayrı <script>'ler
+   basıyordu; ana sayfada iki blok AYNI @id'yi (#kurum) paylaşıyordu. Arama motorları bunları
+   çoğu kez birleştirir ama garanti değil — tek @graph içinde birleştirmek belirsizliği kaldırır.
+   Alt kayıtların kendi @context'i @graph içinde geçersizdir; üst seviyeye bir kez yazılır. */
+const baglamsiz = (o: object) => {
+  const { '@context': _atla, ...geri } = o as Record<string, unknown>;
+  return geri;
+};
+const yapisalVeri = {
+  '@context': 'https://schema.org',
+  '@graph': [kurumJsonLd, ...ekJsonLd].map(baglamsiz),
 };
 ---
 <!doctype html>
@@ -99,11 +115,16 @@ const kurumJsonLd = {
       <>
         {/* HeroSlayt.astro'daki <picture>/<source> ile birebir eşleşen iki preload:
             mobil dikey kırpma vs. diğer tüm durumlar (masaüstü kırpma). srcset yok
-            çünkü gerçek <picture> de kullanmıyor — tek href, gerçek seçimle örtüşüyor. */}
-        <link rel="preload" as="image" href="/media/hero/hero-1-m.webp" fetchpriority="high"
+            çünkü gerçek <picture> de kullanmıyor — tek href, gerçek seçimle örtüşüyor.
+            `type` verildiği için AVIF'i desteklemeyen tarayıcı bu isteği hiç açmaz ve
+            <picture> ona WebP'yi verir; çift indirme olmaz (4 Eylül 2026). */}
+        <link rel="preload" as="image" type="image/avif" href="/media/hero/hero-1-m.avif" fetchpriority="high"
               media="(max-width: 720px) and (orientation: portrait)" />
-        <link rel="preload" as="image" href="/media/hero/hero-1.webp" fetchpriority="high"
+        <link rel="preload" as="image" type="image/avif" href="/media/hero/hero-1.avif" fetchpriority="high"
               media="not ((max-width: 720px) and (orientation: portrait))" />
+        {/* Hero selamının Arapça alt kümesi (27,6 KB, sabit ad): erken gelirse satır tek seferde
+            Amiri ile çizilir — geç gelen yazı tipi hero'nun altındaki her şeyi kaydırıyordu. */}
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/amiri-ana.woff2" crossorigin />
       </>
     )}
     <meta name="theme-color" content="#b5452b" />
@@ -134,15 +155,23 @@ const kurumJsonLd = {
     <meta property="og:url" content={kanonik} />
     <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : dil === 'en' ? 'en_GB' : 'fr_BE'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={tamBaslik} />
+    <meta name="twitter:description" content={metaAciklama} />
     <meta name="twitter:image" content={kapakUrl} />
     <noscript><style>.reveal, .serit, .hero-giris > * { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(kurumJsonLd)} />
-    {ekJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(yapisalVeri)} />
     <slot name="head" />
     <script is:inline>
       // Tema tercihi (localStorage) — sayfa boyanmadan önce uygula
       document.documentElement.classList.add('js');
       try { const t = localStorage.getItem('tema'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch {}
+      // Otomatik dönen içerik (hero slaydı, duyuru şeridi) durumu — WCAG 2.2.2 duraklatma denetimi.
+      // Ziyaretçi hareket azaltma istiyorsa VARSAYILAN durmuştur; düğmeyle her zaman değiştirilebilir.
+      try {
+        var h = localStorage.getItem('uluCamiiHareket');
+        if (h !== 'acik' && h !== 'durdu') h = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'durdu' : 'acik';
+        document.documentElement.dataset.hareket = h;
+      } catch (e) { document.documentElement.dataset.hareket = 'acik'; }
     </script>
     {dilHatirla && (
       <script is:inline define:vars={{ sayfaDili: dil }}>
