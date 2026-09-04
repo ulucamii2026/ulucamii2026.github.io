@@ -13,7 +13,9 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v11.gs` | **Canlıda** — 26 Ağustos 2026'da dağıtıldı (Sheets formül koruması) |
+| `ulucamii-Kod-v21.gs` | **Canlıda** — 4 Eylül 2026 akşamı dağıtıldı (panel «Form PDF» ucu) |
+| `ulucamii-Kod-v20.gs` | Önceki sürüm (kayıt PDF'i iki sayfa) |
+| `ulucamii-Kod-v11.gs` | 26 Ağustos 2026 (Sheets formül koruması) |
 | `ulucamii-Kod-v10.gs` | Önceki sürüm |
 | `ulucamii-Kod-v9.gs` | Karşılaştırma için duruyor |
 
@@ -147,3 +149,39 @@ Rıdvan'ın isteği: form ilk sayfada, veli sözleşmesi ikinci sayfada olsun; t
   yerelde ve /dev'de iki sayfaya sığdı. `kayitCss(sade, ref, devamMetni)` yalnız kayıt PDF'ine eklenir.
 - Dosyalar: `ulucamii-Kod-v20.gs` canlıda; v19 dosyası depodan kaldırıldı (git geçmişinde; 165 KB
   gömülü yazı tipi her sürümde yinelenmesin), v18 son yazı tipsiz sürüm olarak duruyor.
+
+## v21 (4 Eylül 2026 akşam) — Panel «Form PDF» düğmesi: Drive'ın «erişim isteyin» sayfası kalktı
+
+**Sorun.** Panelde bir öğrencinin «Form PDF» düğmesi, defterdeki Drive bağlantısını
+(`https://drive.google.com/file/d/<id>/view`) yeni sekmede açıyordu. Dosya yalnız dosya
+sahibine — dernek Google hesabına — özel olduğu için (anonim istek 401), panele başka bir
+Google hesabıyla girmiş yönetici her tıklamada Drive'ın «erişim isteyin / demander l'accès»
+sayfasına düşüyordu (Rıdvan, 4 Eylül 2026).
+
+**Neden dosyalar paylaşıma açılmadı.** «Bağlantıyı bilen herkes» ayarı çocuk ve veli
+verisi taşıyan bir PDF'i, bağlantı nereye sızarsa oraya açardı. Bunun yerine dosya, panel
+anahtarının arkasındaki yeni uçtan verilir; Drive'daki dosyalar özel kalır.
+
+**Yeni uç.** `?islem=pdf&id=<Drive kimliği>&anahtar=<PANEL_ANAHTARI>` → `panelPdfIsle()`:
+`{ok, surum, ad, boyut, pdfB64}`. Sınırlar, sırayla: anahtar (`yetki`), kimlik biçimi
+(`id-gecersiz`), dosya var ve çöpte değil (`bulunamadi`), **ebeveyni kayıt ya da ihtida
+klasörü** (`bulunamadi` — betiğin sahibi hesabın Drive'ındaki başka hiçbir dosya, kimliği
+bilinse bile çıkmaz), MIME PDF (`pdf-degil` — kayıt defteri de aynı klasörde durduğu için
+bu sınır defteri korur; canlıda denendi).
+
+**Panel tarafı** (`public/admin/index.html`, `formPdfAc`): sekme tıklama anında (eşzamanlı)
+açılır, GAS cevabı gelince blob PDF oraya yüklenir — cevabı bekleyip sonra `window.open`
+çağırmak açılır-pencere engeline takılır, yani tam da istenmeyen «izin» sorusunu çıkarır.
+Aynı dosya ikinci tıklamada önbellekten anında açılır. Kart düğmesi, «Önceki sürümler» ve
+«Tüm bilgiler» tablolarındaki bağlantılar aynı yoldan geçer; Drive'a giden bağlantı kalmadı.
+
+Masaüstünde sekme: üst çubuk (dosya adı · İndir · Yazdır) + PDF çerçevesi; İndir, GAS'ın
+döndürdüğü gerçek Drive adını verir. Telefonda sekme doğrudan PDF'e gider. Bekleme sırasında
+kapatılan boş sekme panele dokunmaz; önbellek en çok 12 dosya (eski blob serbest bırakılır).
+Bu üç davranış bağımsız inceleme bulgularıyla eklendi (rapor `29_PANEL_FORM_PDF_4EYL2026.md`).
+
+Canlı ölçüm (4 Eylül): iki kayıt PDF'i ~100 KB, uç 3-4 sn'de döndü. Dağıtımdan hemen sonraki
+ilk çağrı Google'ın echo sunucusundan bir kez HTML 404 aldı (37 sn); panel bu yüzden isteği
+bir kez daha dener.
+
+Dağıtım: `D:\tmp\gas\dagit_v21.py` (v20'nin kopyası; «Nouvelle version»).

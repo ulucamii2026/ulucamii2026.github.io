@@ -43,6 +43,9 @@
       .dugme.birincil { background: var(--kiremit); border-color: var(--kiremit); color: #fff; }
       .dugme.birincil:hover { background: var(--kiremit-koyu); }
       .dugme[disabled] { opacity: .5; cursor: default; }
+      /* Tablo içi «form PDF» düğmesi: bağlantı gibi görünür, ama Drive'a gitmez (bkz. formPdfAc). */
+      .pdf-bag { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+      .pdf-bag[disabled] { opacity: .5; cursor: default; }
 
       /* Bölüm gezintisi — telefonda uzun sayfayı tek dokunuşla dolaşmak için */
       nav.gezinti { display: flex; gap: .3rem; padding: .45rem .8rem; background: var(--zemin-kart); border-bottom: 1px solid var(--cizgi); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
@@ -752,20 +755,20 @@
             araclar.push(`<a class="dugme" href="https://wa.me/${kacir(e164.replace(/^\+/, ''))}" target="_blank" rel="noopener">WhatsApp ↗</a>`);
           }
           if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
-          if (pdf.startsWith('http')) araclar.push(`<a class="dugme" href="${kacir(pdf)}" target="_blank" rel="noopener">Form PDF ↗</a>`);
+          if (pdf.startsWith('http')) araclar.push(pdfDugmesi(pdf, `${al(r, iRef) || 'form'} - ${ad}.pdf`, 'Form PDF', 'dugme'));
           if (aktifTur === 'ihtida' && al(r, iRef)) araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
           const eskiSurumler = eskiler.length ? `<details class="eski-surum"><summary>Önceki sürümler (${eskiler.length})</summary><table>${
             eskiler.map((e) => {
               const epdf = al(e, iPdf);
               return `<tr><th>${kacir(al(e, iRef))}</th><td>${kacir(tarihSadelestir(al(e, iZaman)))}${
-                epdf.startsWith('http') ? ` · <a href="${kacir(epdf)}" target="_blank" rel="noopener">form PDF ↗</a>` : ''}</td></tr>`;
+                epdf.startsWith('http') ? ` · ${pdfDugmesi(epdf, `${al(e, iRef) || 'form'} - ${ad}.pdf`, 'form PDF', 'pdf-bag')}` : ''}</td></tr>`;
             }).join('')
           }</table><p class="eski-not">Bu sürümler veli tarafından düzeltildi. Geçerli olan, yukarıdaki ${kacir(al(r, iRef))} numaralı kayıttır.</p></details>` : '';
           const ayrinti = b.map((baslik, i) => {
             const d = tarihSadelestir(String(r[i] ?? '').trim());
             if (!d) return '';
             const deger = d.startsWith('http')
-              ? `<a href="${kacir(d)}" target="_blank" rel="noopener">aç ↗</a>`
+              ? pdfDugmesi(d, `${al(r, iRef) || 'form'} - ${ad}.pdf`, 'aç', 'pdf-bag')
               : (/telefon|cep/i.test(baslik) ? kacir(telefonBicim(d)) : kacir(d));
             return `<tr><th>${kacir(baslik)}</th><td>${deger}</td></tr>`;
           }).join('');
@@ -782,7 +785,123 @@
           : '';
         $('basvuru-not').hidden = !duzeltilenVar;
         liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
+        liste.querySelectorAll('[data-pdf]').forEach((d) => d.addEventListener('click', () => formPdfAc(d)));
         $('csv').disabled = false;
+      }
+
+      /* ---------------- Form PDF (Drive'dan, panel anahtarıyla) ----------------
+         Defterdeki «PDF bağlantısı» Drive'ın yalnız dosya sahibine (dernek hesabı) açık
+         adresidir; panele başka bir Google hesabıyla girmiş yönetici o bağlantıda Drive'ın
+         «erişim isteyin» sayfasına düşüyordu (4 Eylül 2026). Dosya artık GAS ?islem=pdf ucundan
+         panel anahtarıyla alınır ve tarayıcıda blob olarak açılır; Drive dosyaları özel kalır.
+
+         Sekme TIKLAMA ANINDA açılır (eşzamanlı, kullanıcı jesti sürerken); GAS cevabı 2-6 sn
+         sürebilir ve o kadar sonra çağrılan window.open açılır-pencere engeline takılır —
+         yani tam da istenmeyen "izin" sorusu çıkar. Boş sekme «hazırlanıyor» der, dosya
+         gelince oraya yüklenir. Aynı dosya ikinci tıklamada önbellekten anında açılır. */
+      const PDF_ONBELLEK = new Map();   // Drive kimliği → { url, ad } (sekme ömrü boyunca, en çok PDF_ONBELLEK_SINIR)
+      const PDF_ONBELLEK_SINIR = 12;
+      const onbellegeKoy = (id, girdi) => {
+        PDF_ONBELLEK.set(id, girdi);
+        /* Üst sınır: en eski blob serbest bırakılır (4 Eyl 2026 incelemesi: sınırsız Map'te onlarca 100 KB'lık
+           PDF sekme ömrü boyunca bellekte kalıyordu). Açık sekmede yüklü belge etkilenmez; yalnız o sekmeyi
+           yenilemek yeni istek gerektirir. */
+        while (PDF_ONBELLEK.size > PDF_ONBELLEK_SINIR) {
+          const [eskiId, eski] = PDF_ONBELLEK.entries().next().value;
+          URL.revokeObjectURL(eski.url); PDF_ONBELLEK.delete(eskiId);
+        }
+      };
+      const driveKimligi = (url) => {
+        const m = String(url ?? '').match(/\/d\/([A-Za-z0-9_-]{10,})/) || String(url ?? '').match(/[?&]id=([A-Za-z0-9_-]{10,})/);
+        return m ? m[1] : '';
+      };
+      /* Drive bağlantısıysa panel içinden açan düğme; değilse (ileride başka bir depo olursa) düz bağlantı. */
+      const pdfDugmesi = (url, dosyaAdi, etiket, sinif) => {
+        const id = driveKimligi(url);
+        if (!id) return `<a class="${sinif}" href="${kacir(url)}" target="_blank" rel="noopener">${kacir(etiket)} ↗</a>`;
+        return `<button class="${sinif}" type="button" data-pdf="${kacir(id)}" data-pdf-ad="${kacir(dosyaAdi)}">${kacir(etiket)}</button>`;
+      };
+      /* iPadOS 13+ kendini Mac olarak tanıtır; çok noktalı dokunma ile ayırt edilir. */
+      const mobilCihaz = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform));
+      /* Açılan sekmeyi PDF'e çevirir. Masaüstünde ince bir üst çubuk (dosya adı · İndir · Yazdır) + iframe:
+         blob adresinin dosya adı olmadığından görüntüleyicinin kendi «indir»i rastgele bir ad verirdi (inceleme
+         bulgusu); İndir bağlantısı download özniteliğiyle gerçek adı — GAS'ın döndürdüğü Drive adını — verir.
+         Telefon/tablette iframe'li PDF güvenilir değildir (iOS Safari yalnız ilk sayfayı gösterir, Android
+         Chrome göstermez): orada sekme doğrudan blob'a gider, sistemin PDF görüntüleyicisi açılır. */
+      function pdfSekmesiniDoldur(pencere, url, ad) {
+        if (mobilCihaz()) { pencere.location.href = url; return; }
+        const d = pencere.document;
+        d.title = ad;
+        d.body.replaceChildren();
+        d.body.style.cssText = 'margin:0;height:100vh;display:flex;flex-direction:column;font:14px system-ui,sans-serif;background:#24201c;color:#f7f3ea';
+        const bar = d.createElement('div');
+        bar.style.cssText = 'display:flex;align-items:center;gap:.8rem;padding:.45rem .9rem;background:#2f2924;border-bottom:1px solid rgba(255,255,255,.12)';
+        const isim = d.createElement('span');
+        isim.textContent = ad; isim.style.cssText = 'flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+        const indir = d.createElement('a'); indir.href = url; indir.download = ad; indir.textContent = 'İndir';
+        const yazdir = d.createElement('button'); yazdir.type = 'button'; yazdir.textContent = 'Yazdır';
+        for (const el of [indir, yazdir]) el.style.cssText = 'color:#f7f3ea;background:none;border:1px solid rgba(255,255,255,.4);border-radius:3px;padding:.3rem .7rem;font:inherit;line-height:1.2;text-decoration:none;cursor:pointer';
+        const cerceve = d.createElement('iframe');
+        cerceve.src = url; cerceve.title = ad; cerceve.style.cssText = 'flex:1;border:0;width:100%';
+        yazdir.addEventListener('click', () => { try { cerceve.contentWindow.focus(); cerceve.contentWindow.print(); } catch { pencere.print(); } });
+        bar.append(isim, indir, yazdir);
+        d.body.append(bar, cerceve);
+      }
+      async function formPdfAc(dugme) {
+        const id = dugme.dataset.pdf;
+        if (!SIRLAR || !SIRLAR.gas) { alert('Erişim paketi eksik — lütfen yeniden giriş yapın.'); return; }
+        const hazir = PDF_ONBELLEK.get(id);
+        const pencere = window.open('', '_blank');
+        /* Yalnız AÇILIŞ engellendiyse aynı sekmeye düşülür. Kullanıcının bekleme sırasında boş sekmeyi
+           kapatması ayrı durumdur: o zaman panel sekmesine DOKUNULMAZ (inceleme bulgusu, 4 Eyl 2026 —
+           pencere.closed'a bakan eski koşul panelin kendisini PDF'e çeviriyordu). */
+        const engellendi = !pencere;
+        if (hazir) {
+          if (engellendi) window.location.assign(hazir.url); else pdfSekmesiniDoldur(pencere, hazir.url, hazir.ad);
+          return;
+        }
+        const ad0 = dugme.dataset.pdfAd || 'form.pdf';
+        if (!engellendi) {
+          try {
+            pencere.document.title = ad0;
+            const not = pencere.document.createElement('p');
+            not.style.cssText = 'font:16px system-ui,sans-serif;color:#4a3728;padding:2rem';
+            not.textContent = 'Form hazırlanıyor… (' + ad0 + ')';
+            pencere.document.body.replaceChildren(not);
+          } catch {}
+        }
+        const eskiMetin = dugme.textContent;
+        dugme.disabled = true; dugme.textContent = 'Açılıyor…';
+        try {
+          /* İki deneme: dağıtımdan hemen sonraki ilk çağrıda Google'ın echo sunucusu bir kez
+             HTML "sayfa bulunamadı" (404) döndürdü (4 Eyl 2026 ölçümü, 37 sn); ikinci istek 3 sn'de geldi. */
+          let j = null;
+          for (let deneme = 1; deneme <= 2 && !j; deneme++) {
+            try {
+              const r = await fetch(`${GAS}?islem=pdf&id=${encodeURIComponent(id)}&anahtar=${encodeURIComponent(SIRLAR.gas)}`, { redirect: 'follow' });
+              j = await r.json();
+            } catch (gecici) { if (deneme === 2) throw gecici; await new Promise((c) => setTimeout(c, 800)); }
+          }
+          if (!j.ok || !j.pdfB64) {
+            throw new Error(j.hata === 'bulunamadi' ? 'Bu form Drive\'da bulunamadı (silinmiş ya da taşınmış olabilir).'
+              : j.hata === 'yetki' ? 'Erişim anahtarı geçersiz — lütfen yeniden giriş yapın.'
+              : 'Form alınamadı; arka uç henüz güncellenmemiş olabilir.');
+          }
+          const ikili = atob(j.pdfB64);
+          const bayt = new Uint8Array(ikili.length);
+          for (let i = 0; i < ikili.length; i++) bayt[i] = ikili.charCodeAt(i);
+          const ad = j.ad || ad0;
+          const url = URL.createObjectURL(new File([bayt], ad, { type: 'application/pdf' }));
+          onbellegeKoy(id, { url, ad });
+          if (engellendi) window.location.assign(url);              // sekme hiç açılamadı: aynı sekmede; geri tuşu panele döner
+          else if (!pencere.closed) pdfSekmesiniDoldur(pencere, url, ad);
+          // kapatıldıysa: dosya önbellekte, bir sonraki tıklama anında açar
+        } catch (e) {
+          if (pencere && !pencere.closed) pencere.close();
+          alert(e.message || 'Form alınamadı.');
+        } finally {
+          dugme.disabled = false; dugme.textContent = eskiMetin;
+        }
       }
 
       /* ---------------- EK-9 İhtida Belgesi (resmî şablon üzerine) ----------------
