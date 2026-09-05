@@ -32,6 +32,10 @@ jobs:
       # betik hata koduyla çıkar ve bu adım build'i düşürür.
       - name: Site denetimi (yalnız kritik)
         run: node scripts/site-denetim.mjs
+      # İçerik yönetimi yapılandırması (config.yml) çözümlenemiyorsa yayın durur — 4 Eyl 2026'da
+      # yanlış girintili iki alan CMS'i bir gün kapalı bıraktı, site derlemesi bunu görmüyordu.
+      - name: İçerik yönetimi yapılandırma denetimi
+        run: node scripts/cms-config-denetim.mjs
 
   deploy:
     needs: build

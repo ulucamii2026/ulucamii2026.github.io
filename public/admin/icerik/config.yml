@@ -14,23 +14,25 @@ backend:
 site_url: https://ulucamii.be
 display_url: https://ulucamii.be
 logo_url: /media/logo/ulu-camii-logo-madalyon.png
-locale: tr
 
 media_folder: public/media
 public_folder: /media
+# Yükleme dönüştürmeleri `config` ALTINDA olmalı (Sveltia şeması: DefaultMediaLibrary → config → transformations).
+# 5 Eyl 2026'ya kadar `default`ın yanında duruyordu; Sveltia sessizce yok sayıyor, görseller WebP'ye çevrilmeden
+# ham yükleniyordu.
 media_libraries:
   default:
     config:
       max_file_size: 15728640
       slugify_filename: true
-    transformations:
-      raster_image:
-        format: webp
-        quality: 85
-        width: 2048
-        height: 2048
-      svg:
-        optimize: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2048
+          height: 2048
+        svg:
+          optimize: true
 
 i18n:
   structure: multiple_folders
@@ -54,7 +56,7 @@ collections:
     extension: md
     slug: "{{year}}-{{slug}}"
     summary: "{{baslik}} — {{tarih}}"
-    sortable_fields: [tarih, baslik]
+    sortable_fields: { fields: [tarih, baslik], default: { field: tarih, direction: descending } }   # liste en yeniden başlar
     view_filters:
       - label: Taslaklar
         field: taslak
@@ -94,7 +96,7 @@ collections:
     extension: md
     slug: "{{year}}-{{slug}}"
     summary: "{{baslik}} — {{baslangic}}"
-    sortable_fields: [baslangic, baslik]
+    sortable_fields: { fields: [baslangic, baslik], default: { field: baslangic, direction: descending } }
     fields:
       - { name: baslik, label: Başlık, widget: string, i18n: true }
       - { name: baslangic, label: Başlangıç tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, i18n: duplicate }
@@ -161,7 +163,7 @@ collections:
     extension: md
     slug: "{{year}}-{{month}}-{{day}}-afis"
     summary: "{{tarih}} — {{baslik.tr}}"
-    sortable_fields: [tarih]
+    sortable_fields: { fields: [tarih], default: { field: tarih, direction: descending } }
     fields:
       - name: baslik
         label: Başlık
@@ -189,13 +191,13 @@ collections:
     extension: md
     slug: "{{year}}-{{ad}}"
     summary: "{{ad}} — {{vefat}}"
-    sortable_fields: [vefat, ad]
+    sortable_fields: { fields: [vefat, ad], default: { field: vefat, direction: descending } }
     fields:
       - { name: ad, label: Ad Soyad, widget: string }
       - { name: vefat, label: Vefat tarihi, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
       - { name: dogumYili, label: Doğum yılı, widget: number, value_type: int, required: false }
       - { name: memleket, label: Memleketi, widget: string, required: false }
-      - { name: foto, label: Fotoğraf (isteğe bağlı, aile izniyle), widget: image, required: false, media_folder: public/media/vefat, public_folder: /media/vefat }
+      - { name: foto, label: "Fotoğraf (isteğe bağlı, aile izniyle)", widget: image, required: false, media_folder: public/media/vefat, public_folder: /media/vefat }
       - name: cenazeNamazi
         label: Cenaze namazı
         widget: object
@@ -279,9 +281,9 @@ collections:
                       - { name: en, label: İngilizce, widget: string, required: false }
                   - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, uip, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
                   - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
+                  - { name: baslangic, label: Gösterim başlangıcı, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, hint: "Boşsa hemen gösterilir" }
+                  - { name: son, label: Son gösterim günü, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, hint: "Bu günden sonra mesaj kendiliğinden kalkar (site her sabah yeniden yayımlanır)" }
               - { name: kursKayitLinki, label: Kur’an kursu online kayıt linki, widget: string, required: false }
-                  - { name: baslangic, label: Gösterim başlangıcı, widget: date, format: YYYY-MM-DD, required: false, hint: "Boşsa hemen gösterilir" }
-                  - { name: son, label: Son gösterim günü, widget: date, format: YYYY-MM-DD, required: false, hint: "Bu günden sonra mesaj kendiliğinden kalkar (site her sabah yeniden yayımlanır)" }
               - name: servisler
                 label: Servisler (arka uç bağlantıları)
                 widget: object
@@ -354,7 +356,7 @@ collections:
             label: Fotoğraflar
             widget: list
             fields:
-              - { name: id, label: Kimlik (benzersiz, ör. cami-26), widget: string }
+              - { name: id, label: "Kimlik (benzersiz, ör. cami-26)", widget: string }
               - { name: dosya, label: Fotoğraf, widget: image, media_folder: public/media/galeri, public_folder: /media/galeri }
               - { name: kucuk, label: Küçük hâli (isteğe bağlı), widget: image, required: false, media_folder: public/media/galeri, public_folder: /media/galeri }
               - name: alt
@@ -387,7 +389,7 @@ collections:
                 summary: "{{fields.ad}}"
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
-                  - { name: eposta, label: E-posta (@ulucamii.be, isteğe bağlı), widget: string, required: false }
+                  - { name: eposta, label: "E-posta (@ulucamii.be, isteğe bağlı)", widget: string, required: false }
                   - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
@@ -403,7 +405,7 @@ collections:
                 summary: "{{fields.ad}}"
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
-                  - { name: eposta, label: E-posta (@ulucamii.be, isteğe bağlı), widget: string, required: false }
+                  - { name: eposta, label: "E-posta (@ulucamii.be, isteğe bağlı)", widget: string, required: false }
                   - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
@@ -417,7 +419,7 @@ collections:
                 widget: object
                 fields:
                   - { name: ad, label: Ad Soyad, widget: string }
-                  - { name: eposta, label: E-posta (@ulucamii.be, isteğe bağlı), widget: string, required: false }
+                  - { name: eposta, label: "E-posta (@ulucamii.be, isteğe bağlı)", widget: string, required: false }
                   - { name: foto, label: Fotoğraf (isteğe bağlı), widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
                   - name: gorev
                     label: Görev
