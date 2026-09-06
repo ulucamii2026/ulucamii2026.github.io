@@ -181,6 +181,44 @@ collections:
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
       - { name: body, label: Açıklama (isteğe bağlı), widget: markdown, required: false }
 
+  # Kalıcı ders materyalleri (güne bağlı olmayan): ezber kartı, alıştırma sayfası, harf/dua tablosu, veli rehberi, sınav…
+  # Günlük ders belgeleri (plan + sunumlar) buradan DEĞİL, kurs projesindeki site-materyal-yayinla.py betiğiyle yayınlanır.
+  - name: materyaller
+    label: Ders Materyalleri (kalıcı)
+    label_singular: Materyal
+    folder: src/content/materyaller
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.baslik.tr}}"
+    summary: "{{tarih}} — {{baslik.tr}}"
+    sortable_fields: { fields: [tarih], default: { field: tarih, direction: descending } }
+    fields:
+      - name: baslik
+        label: Başlık
+        widget: object
+        fields:
+          - { name: tr, label: Türkçe, widget: string }
+          - { name: fr, label: Fransızca, widget: string, required: false }
+          - { name: en, label: İngilizce (boşsa Fransızca gösterilir), widget: string, required: false }
+      - name: aciklama
+        label: Kısa açıklama (isteğe bağlı)
+        widget: object
+        required: false
+        fields:
+          - { name: tr, label: Türkçe, widget: string, required: false }
+          - { name: fr, label: Fransızca, widget: string, required: false }
+          - { name: en, label: İngilizce, widget: string, required: false }
+      - { name: tarih, label: Tarih, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { name: donem, label: "Dönem (örn. 2026-2027)", widget: string, required: false, default: "2026-2027" }
+      - { name: kategori, label: Tür, widget: select, options: [{ label: "Ezber kartı", value: ezber }, { label: "Alıştırma / çalışma sayfası", value: alistirma }, { label: "Tablo (harf, dua, namaz…)", value: tablo }, { label: "Veli / öğrenci rehberi", value: rehber }, { label: "Sınav / değerlendirme", value: sinav }, { label: "Ses kaydı", value: ses }, { label: "Video", value: video }, { label: "Diğer", value: diger }], default: diger }
+      - { name: alan, label: Ders alanı, widget: select, options: [{ label: "Kur'an-ı Kerim", value: kuran }, { label: "İtikat", value: itikat }, { label: "İbadet", value: ibadet }, { label: "Siyer", value: siyer }, { label: "Ahlak", value: ahlak }, { label: "Genel", value: genel }], default: genel }
+      - { name: dosya, label: "Dosya (PDF, ses, Word… — en çok 15 MB; büyük dosya için aşağıdaki bağlantıyı kullanın)", widget: file, required: false, media_folder: public/media/materyaller, public_folder: /media/materyaller }
+      - { name: link, label: "Bağlantı (büyük dosya GitHub Releases'ta ya da dış adres; dosya yüklenmediyse zorunlu)", widget: string, required: false }
+      - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
+      - { name: body, label: "Açıklama (isteğe bağlı, uzun)", widget: markdown, required: false }
+
   - name: vefat
     label: Vefat Haberleri (Rahmetle Anıyoruz)
     label_singular: Vefat haberi

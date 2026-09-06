@@ -178,6 +178,43 @@ for (const d of ['fr', 'en']) {
 }
 
 
+/* ---------------------------------------------------------------- ders materyalleri verisi */
+/* src/data/ders-materyalleri.json betik ciktisidir (kurs projesi site-materyal-yayinla.py). Elle bozulmus
+   bir kayit (eksik url, yanlis etiket, cift tarih) sayfada kirik indirme dugmesi olur — burada yakalanir.
+   (6 Eylul 2026, ders materyalleri bolumu.) */
+{
+  const p = new URL('../src/data/ders-materyalleri.json', import.meta.url);
+  if (existsSync(p)) {
+    const v = JSON.parse(readFileSync(p, 'utf8'));
+    const gunler = Array.isArray(v.gunler) ? v.gunler : [];
+    const tarihler = new Set();
+    const dosyaKontrol = (g, d, ad) => {
+      if (!d) return;
+      const beklenen = `https://github.com/${v.depo}/releases/download/${g.etiket}/${d.dosya}`;
+      if (!d.dosya || !/^[A-Za-z0-9._-]+$/.test(d.dosya)) ekle('yuksek', 'ders materyali dosya adı ASCII değil', `${g.tarih} ${ad}: ${d.dosya}`);
+      if (d.url !== beklenen) ekle('yuksek', 'ders materyali url etiketle uyuşmuyor', `${g.tarih} ${ad}: ${d.url}`);
+      if (!(d.boyut > 0)) ekle('orta', 'ders materyali boyutu yok', `${g.tarih} ${ad}`);
+    };
+    for (const g of gunler) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(g.tarih || '')) ekle('yuksek', 'ders materyali tarihi bozuk', String(g.tarih));
+      if (tarihler.has(g.tarih)) ekle('yuksek', 'ders materyali günü iki kez', g.tarih);
+      tarihler.add(g.tarih);
+      if (g.etiket !== `ders-${g.tarih}`) ekle('yuksek', 'ders materyali etiketi tarihle uyuşmuyor', `${g.tarih}: ${g.etiket}`);
+      dosyaKontrol(g, g.plan, 'plan');
+      const nolar = new Set();
+      for (const s of g.sunumlar || []) {
+        if (nolar.has(s.no)) ekle('orta', 'aynı ders numarası iki sunumda', `${g.tarih} ${s.no}`);
+        nolar.add(s.no);
+        if (!s.konuFr || !s.baslik?.fr) ekle('dusuk', 'sunumun Fransızca başlığı/konusu boş', `${g.tarih} sunum ${s.no}`);
+        dosyaKontrol(g, s, `sunum ${s.no}`);
+        dosyaKontrol(g, s.pdf, `sunum ${s.no} pdf`);
+      }
+      for (const e of g.ekler || []) dosyaKontrol(g, e, `ek ${e.dosya}`);
+      if (!g.plan && !(g.sunumlar || []).length) ekle('orta', 'ders materyali günü boş', g.tarih);
+    }
+  }
+}
+
 /* ---------------------------------------------------------------- iletisim tutarliligi */
 /* Sayfalarda gecen her telefon ve e-posta, icerik ayarlarinda (site.yaml) TANIMLI olmali.
    Elle yazilmis/eskimis bir numara ya da adres boylece yakalanir; disaridaki kurumlarin

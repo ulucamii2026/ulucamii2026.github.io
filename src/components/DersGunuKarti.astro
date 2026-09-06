@@ -1,0 +1,103 @@
+---
+/**
+ * Ders günü kartı — DersMateryalleri.astro'nun «güncel» ve «arşiv» bölümlerinde aynı kart.
+ * Satırlar: plan (PDF) · sunumlar (PowerPoint sesli + sessiz PDF) · ekler. Her satır data-kod taşır (alan filtresi).
+ */
+import { tarihBicimle, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+export type Dosya = { dosya: string; url: string; boyut: number };
+export type Sunum = Dosya & { no: number; saat: string; alan: string; kod: string; konu: string; konuFr?: string;
+  baslik: { tr: string; fr: string }; slayt: number; pdf?: Dosya };
+export type Ek = Dosya & { tur: string; baslik: { tr: string; fr?: string } };
+export type Gun = { tarih: string; hafta: number; gun: string; etiket: string;
+  plan: (Dosya & { sayfa: number }) | null; sunumlar: Sunum[]; ekler?: Ek[] };
+export type Metin = {
+  plan: string; sayfa: (n: number) => string; slayt: (n: number) => string; ders: (n: number) => string;
+  indir: string; pptxSesli: string; pdfSessiz: string; hafta: (h: number) => string; planGun: string; ekler: string; bugun: string;
+};
+interface Props { g: Gun; dil: Dil; m: Metin; bugun: string; sira?: number }
+const { g, dil, m, bugun, sira = 0 } = Astro.props;
+const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
+const tarih = (secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(g.tarih + 'T12:00:00'), dil, secenek);
+const konuMetni = (s: Sunum) => (dil === 'tr' ? s.konu : (s.konuFr || s.konu));
+const alanMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
+const ekBaslik = (e: Ek) => (dil === 'tr' ? e.baslik.tr : (e.baslik.fr || e.baslik.tr));
+const kodlar = [...new Set(g.sunumlar.map((s) => s.kod).filter(Boolean))].join(' ');
+---
+<article class="gun kart-kagit p-5 reveal" id={`g-${g.tarih}`} data-gun={g.tarih} data-kodlar={kodlar} style={`--i:${sira}`}>
+  <header class="gun-bas">
+    <p class="gun-tarih">
+      <time datetime={g.tarih}><b>{tarih({ day: 'numeric' })}</b>
+        <span>{tarih({ month: 'short' })}<br />{tarih({ weekday: 'long' })}</span></time>
+      {g.tarih === bugun && <span class="etiket etiket-vurgu bugun">{m.bugun}</span>}
+    </p>
+    <p class="gun-bilgi"><span class="etiket">{m.hafta(g.hafta)}</span>
+      <a href={`${yol(dil, 'yillikplan')}#g-${g.tarih}`} class="plan-bag">{m.planGun} →</a></p>
+  </header>
+
+  {g.plan && (
+    <p class="satir plan-satir" data-satir="plan">
+      <span class="satir-ad"><b>{m.plan}</b> <span class="kucuk">PDF · {m.sayfa(g.plan.sayfa)} · {mb(g.plan.boyut)}</span></span>
+      <a href={g.plan.url} class="dugme dugme-birincil dugme-kucuk" download>{m.indir} (PDF)</a>
+    </p>
+  )}
+
+  <ul class="sunum-liste" role="list">
+    {g.sunumlar.map((s) => (
+      <li class="satir" data-satir="sunum" data-kod={s.kod}>
+        <span class="satir-ad">
+          <span class="etiket">{m.ders(s.no)} · {s.saat}</span>
+          <b class={'alan a-' + s.kod}>{alanMetni(s)}</b>
+          <span class="konu" lang={dil === 'tr' || !s.konuFr ? 'tr' : 'fr'}>{konuMetni(s)}</span>
+          <span class="kucuk">{m.slayt(s.slayt)}</span>
+        </span>
+        <span class="dugmeler">
+          {s.pdf && <a href={s.pdf.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.pdfSessiz} · {mb(s.pdf.boyut)}</a>}
+          <a href={s.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.pptxSesli} · {mb(s.boyut)}</a>
+        </span>
+      </li>
+    ))}
+  </ul>
+
+  {(g.ekler?.length ?? 0) > 0 && (
+    <div class="ekler">
+      <p class="etiket ekler-bas">{m.ekler}</p>
+      <ul class="sunum-liste" role="list">
+        {g.ekler!.map((e) => (
+          <li class="satir" data-satir="ek">
+            <span class="satir-ad"><span class="tur">{e.tur}</span><b>{ekBaslik(e)}</b><span class="kucuk">{mb(e.boyut)}</span></span>
+            <a href={e.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.indir}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</article>
+
+<style>
+  .gun-bas { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 0.9rem; }
+  .gun-tarih { margin: 0; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .gun-tarih time { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .gun-tarih b { font-size: 2rem; line-height: 1; font-family: var(--font-serif); }
+  .gun-tarih span:not(.bugun) { font-size: 0.85rem; line-height: 1.2; color: var(--metin-2); text-transform: capitalize; }
+  .bugun { padding: 0.15rem 0.5rem; border: 1px solid var(--vurgu); border-radius: 999px; }
+  .gun-bilgi { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+  .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
+  .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.7rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
+  .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; flex: 1 1 20rem; }
+  .satir .kucuk { font-size: 0.85rem; color: var(--metin-2); }
+  .sunum-liste { list-style: none; margin: 0; padding: 0; }
+  .alan { font-weight: 700; }
+  .konu { color: var(--metin-2); }
+  .dugmeler { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-left: auto; flex: 0 0 auto; }
+  .satir > .dugme { margin-left: auto; flex: 0 0 auto; }
+  .dugme-kucuk { padding: 0.4rem 0.85rem; font-size: 0.875rem; }
+  .ekler { margin-top: 0.6rem; }
+  .ekler-bas { margin: 0.2rem 0 0; }
+  .tur { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.4rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 4px; color: var(--metin-2); }
+  @media (max-width: 480px) {
+    .dugmeler, .satir > .dugme { width: 100%; }
+    .dugmeler .dugme { flex: 1 1 auto; justify-content: center; }
+    .satir > .dugme { justify-content: center; }
+  }
+</style>

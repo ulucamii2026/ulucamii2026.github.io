@@ -1,6 +1,7 @@
 {
   "guncelleme": "2026-09-06",
   "depo": "ulucamii2026/ulucamii2026.github.io",
+  "donem": "2026-2027",
   "gunler": [
     {
       "tarih": "2026-09-05",
@@ -28,7 +29,12 @@
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
           "boyut": 15450492,
           "slayt": 30,
-          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-1-Kuran-i-Kerim.pptx"
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 1428677,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-1-Kuran-i-Kerim.pdf"
+          }
         },
         {
           "no": 2,
@@ -44,7 +50,12 @@
           "dosya": "Sunum-2-Itikat-Benim-Dinim-Islamdir.pptx",
           "boyut": 15977761,
           "slayt": 21,
-          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-2-Itikat-Benim-Dinim-Islamdir.pptx"
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-2-Itikat-Benim-Dinim-Islamdir.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Itikat-Benim-Dinim-Islamdir.pdf",
+            "boyut": 1346093,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-2-Itikat-Benim-Dinim-Islamdir.pdf"
+          }
         },
         {
           "no": 3,
@@ -60,9 +71,15 @@
           "dosya": "Sunum-3-Ibadet-Islamin-Sartlari.pptx",
           "boyut": 17122742,
           "slayt": 23,
-          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-3-Ibadet-Islamin-Sartlari.pptx"
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-3-Ibadet-Islamin-Sartlari.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ibadet-Islamin-Sartlari.pdf",
+            "boyut": 1187992,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-3-Ibadet-Islamin-Sartlari.pdf"
+          }
         }
-      ]
+      ],
+      "ekler": []
     },
     {
       "tarih": "2026-09-06",
@@ -90,7 +107,12 @@
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
           "boyut": 17886280,
           "slayt": 30,
-          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-1-Kuran-i-Kerim.pptx"
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 1258201,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-1-Kuran-i-Kerim.pdf"
+          }
         },
         {
           "no": 2,
@@ -106,7 +128,12 @@
           "dosya": "Sunum-2-Siyer-Peygamberimizi-Taniyorum.pptx",
           "boyut": 19928244,
           "slayt": 22,
-          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-2-Siyer-Peygamberimizi-Taniyorum.pptx"
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-2-Siyer-Peygamberimizi-Taniyorum.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Siyer-Peygamberimizi-Taniyorum.pdf",
+            "boyut": 1465040,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-2-Siyer-Peygamberimizi-Taniyorum.pdf"
+          }
         },
         {
           "no": 3,
@@ -122,9 +149,15 @@
           "dosya": "Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pptx",
           "boyut": 23069760,
           "slayt": 28,
-          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pptx"
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pdf",
+            "boyut": 1997626,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pdf"
+          }
         }
-      ]
+      ],
+      "ekler": []
     }
   ]
 }

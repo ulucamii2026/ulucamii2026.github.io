@@ -1,78 +1,146 @@
 ---
 /**
- * Ders materyalleri — Kur'an kursunun günlük ders belgeleri (Word planı PDF + sesli PowerPoint sunumları).
- * Veri: src/data/ders-materyalleri.json — elle yazılmaz; ders hazırlık projesindeki
- * scripts/site-materyal-yayinla.py betiği dosyaları GitHub Releases'a yükler ve bu dosyayı günceller (6 Eyl 2026).
- * Dosyalar depoda değil, sürüm eklerinde durur (her ders günü ≈ 60 MB; depo hafif kalır).
+ * Ders materyalleri — Kur'an kursunun günlük ders belgeleri + kalıcı materyaller (6 Eyl 2026; yeni düzen 6 Eyl öğleden önce).
+ *
+ * Kaynaklar:
+ *  - src/data/ders-materyalleri.json — ders günleri (plan PDF + sesli pptx + sessiz PDF + ekler). ELLE YAZILMAZ: kurs projesindeki
+ *    scripts/site-materyal-yayinla.py dosyaları GitHub Releases'a (ders-<tarih>) yükler ve bu dosyayı günceller.
+ *  - src/content/materyaller/*.md — güne bağlı olmayan kalıcı materyaller (ezber kartı, alıştırma, tablo, rehber…), Sveltia'dan girilir.
+ *  - src/data/yillik-plan-2026-2027.json — «sıradaki ders günü» satırı.
+ *
+ * Düzen: «Bu hafta» (bu haftadan itibaren yayımlanmış günler; yoksa son ders günü) → alan filtresi → önceki günler ay ay katlanır
+ *        (<details>; JS ile #g-<tarih> çapası kapalı ayı açar) → kalıcı materyaller. Site her gece yeniden yayımlandığı için
+ *        «bugün» ve hafta hesapları derleme anında yapılır.
  */
+import { statSync } from 'node:fs';
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
+import DersGunuKarti from '../components/DersGunuKarti.astro';
+import type { Gun, Metin } from '../components/DersGunuKarti.astro';
 import { ceviri, tarihBicimle, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import veri from '../data/ders-materyalleri.json';
+import plan from '../data/yillik-plan-2026-2027.json';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 
-type Sunum = { no: number; saat: string; alan: string; kod: string; konu: string; baslik: { tr: string; fr: string }; konuFr?: string;
-               dosya: string; url: string; boyut: number; slayt: number };
-type Gun = { tarih: string; hafta: number; gun: string; etiket: string;
-             plan: { dosya: string; url: string; boyut: number; sayfa: number } | null; sunumlar: Sunum[] };
-const gunler = ([...(veri.gunler as Gun[])]).sort((a, b) => b.tarih.localeCompare(a.tarih));
+const gunler = ([...(veri.gunler as unknown as Gun[])]).sort((a, b) => b.tarih.localeCompare(a.tarih));
+
+/* «bugün» Brüksel saatiyle; hafta Pazartesi–Pazar */
+const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date());
+const bugunD = new Date(bugun + 'T12:00:00');
+const pzt = new Date(bugunD); pzt.setDate(pzt.getDate() - ((pzt.getDay() + 6) % 7));
+const haftaBasi = pzt.toISOString().slice(0, 10);
+const pazar = new Date(pzt); pazar.setDate(pazar.getDate() + 6);
+const haftaSonu = pazar.toISOString().slice(0, 10);
+const guncel = gunler.filter((g) => g.tarih >= haftaBasi);
+const oneCikan = guncel.length ? guncel : gunler.slice(0, 1);
+const oneCikanTarih = new Set(oneCikan.map((g) => g.tarih));
+const buHafta = guncel.length > 0 && guncel.every((g) => g.tarih <= haftaSonu);
+const arsiv = gunler.filter((g) => !oneCikanTarih.has(g.tarih));
+const aylar = [...new Set(arsiv.map((g) => g.tarih.slice(0, 7)))];
+const enYeniAy = aylar[0];
+const buAy = bugun.slice(0, 7);
+
+/* sıradaki ders günü (yıllık plandan): bugünden sonraki ilk gün; materyali henüz yoksa not düşülür */
+type PlanGun = { tarih: string; gun: string; dersler: { no?: number; sira?: number; alan: string; kod: string; konu: string }[] };
+const planGunleri = (plan as { gunler: PlanGun[] }).gunler;
+const siradaki = planGunleri.find((g) => g.tarih > bugun);
+const siradakiHazir = siradaki ? oneCikanTarih.has(siradaki.tarih) : false;
+
+/* kalıcı materyaller (Sveltia) */
+const kalici = (await getCollection('materyaller', ({ data }) => !data.taslak)).sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
+const dosyaBoyutu = (d?: string, verilen?: number) => {
+  if (verilen) return verilen;
+  if (!d) return 0;
+  try { return statSync(new URL('../../public' + d, import.meta.url)).size; } catch { return 0; }
+};
+
+const alanAdi: Record<Dil, Record<string, string>> = {
+  tr: { kuran: 'Kur’an-ı Kerim', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak', genel: 'Genel' },
+  fr: { kuran: 'Le Saint Coran', itikat: 'Croyance', ibadet: 'Adoration', siyer: 'Vie du Prophète', ahlak: 'Morale', genel: 'Général' },
+  en: { kuran: 'The Qur’an', itikat: 'Creed', ibadet: 'Worship', siyer: 'Life of the Prophet', ahlak: 'Ethics', genel: 'General' },
+};
+const kategoriAdi: Record<Dil, Record<string, string>> = {
+  tr: { ezber: 'Ezber kartı', alistirma: 'Alıştırma', tablo: 'Tablo', rehber: 'Rehber', sinav: 'Sınav', ses: 'Ses', video: 'Video', diger: 'Diğer' },
+  fr: { ezber: 'Carte de mémorisation', alistirma: 'Exercice', tablo: 'Tableau', rehber: 'Guide', sinav: 'Évaluation', ses: 'Audio', video: 'Vidéo', diger: 'Autre' },
+  en: { ezber: 'Memorisation card', alistirma: 'Exercise', tablo: 'Table', rehber: 'Guide', sinav: 'Test', ses: 'Audio', video: 'Video', diger: 'Other' },
+};
+const filtreKodlari = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].filter((k) =>
+  gunler.some((g) => g.sunumlar.some((s) => s.kod === k)) || kalici.some((e) => e.data.alan === k));
 
 const m = dil === 'tr' ? {
   altBaslik: 'Kur’an kursumuzda her ders günü için hazırlanan belgeler: hocaların ders planı (PDF) ve sınıfta kullanılan sesli, iki dilli PowerPoint sunumları. Veliler evde tekrar için, öğrenciler ders öncesi hazırlık için indirebilir.',
   nasil: 'Nasıl kullanılır?',
   nasilListe: [
     'Ders planı PDF’dir; telefon ve bilgisayarda doğrudan açılır.',
-    'Sunumlar PowerPoint (.pptx) dosyasıdır: her slaytta önce Türkçe, sonra Fransızca kısa anlatım kendiliğinden çalar; Arapça kartlarda hoparlör düğmesine dokununca Türk hafız kıraati veya dua dinlenir. Telefonda ücretsiz Microsoft PowerPoint uygulamasıyla, bilgisayarda Slayt Gösterisi (F5) ile açın.',
+    'Her sunumun iki hâli var: «PDF» sessiz, küçük ve her cihazda açılır; «PowerPoint (sesli)» ise .pptx dosyasıdır — her slaytta önce Türkçe, sonra Fransızca kısa anlatım kendiliğinden çalar, Arapça kartlarda hoparlör düğmesine dokununca Türk hafız kıraati veya dua dinlenir. Telefonda ücretsiz Microsoft PowerPoint uygulamasıyla, bilgisayarda Slayt Gösterisi (F5) ile açın.',
     'Sunumlardaki videolar YouTube’dan oynar; internet bağlantısı gerekir.',
     'Materyaller Diyanet İşleri Başkanlığı kaynaklarına dayanır; Peygamberimiz, ailesi ve sahâbe tasvir edilmez.',
   ],
+  buHafta: 'Bu haftanın dersleri', guncel: 'Güncel dersler', sonDers: 'Son ders günü',
+  siradaki: 'Sıradaki ders günü', siradakiNot: 'Materyaller ders gününden önce bu sayfada yayımlanır.', planBag: 'Yıllık planda gör',
+  arsiv: 'Önceki ders günleri', gunSay: (n: number) => `${n} ders günü`,
+  filtre: 'Alana göre süz', tumu: 'Tümü', filtreBos: 'Bu alanda henüz materyal yok.',
+  kalici: 'Kalıcı materyaller', kaliciA: 'Güne bağlı olmayan yardımcı belgeler: ezber kartları, alıştırma sayfaları, tablolar, rehberler.',
+  ac: 'Aç', indir: 'İndir',
   plan: 'Ders planı', sayfa: (n: number) => `${n} sayfa`, slayt: (n: number) => `${n} slayt`, ders: (n: number) => `${n}. ders`,
-  indir: 'İndir', pptx: 'PowerPoint', hafta: (h: number) => `${h}. hafta`, planGun: 'Yıllık planda bu gün',
+  pptxSesli: 'PowerPoint (sesli)', pdfSessiz: 'PDF', hafta: (h: number) => `${h}. hafta`, planGun: 'Yıllık planda bu gün', ekler: 'Ek belgeler', bugun: 'bugün',
   bos: 'Henüz yayımlanmış materyal yok; ilk ders gününden sonra burada görünecek.',
-  kaynak: 'Dosyalar caminin GitHub deposunun sürüm eklerinde barındırılır; boyutlar yaklaşık değerlerdir.',
+  kaynak: 'Dosyalar caminin GitHub deposunun sürüm eklerinde barındırılır; boyutlar yaklaşık değerlerdir. Kısa adres: ulucamii.be/materyal',
   mufredat: 'Müfredat ve yıllık plan', kurs: 'Kur’an kursu sayfası',
 } : dil === 'en' ? {
   altBaslik: 'Documents prepared for every lesson day of our Qur’an school: the teachers’ lesson plan (PDF) and the bilingual PowerPoint decks with audio used in class. Parents can download them for revision at home, students to prepare before the lesson.',
   nasil: 'How to use',
   nasilListe: [
     'The lesson plan is a PDF; it opens directly on phones and computers.',
-    'The presentations are PowerPoint (.pptx) files: on every slide a short narration plays automatically, first in Turkish then in French; on the Arabic cards, tapping the speaker plays a Turkish reciter or a prayer. Open them with the free Microsoft PowerPoint app on a phone, or in Slide Show mode (F5) on a computer.',
+    'Every deck comes in two forms: “PDF” is silent, small and opens on any device; “PowerPoint (audio)” is the .pptx file — on every slide a short narration plays automatically, first in Turkish then in French, and on the Arabic cards tapping the speaker plays a Turkish reciter or a prayer. Open it with the free Microsoft PowerPoint app on a phone, or in Slide Show mode (F5) on a computer.',
     'Videos inside the decks play from YouTube and need an internet connection.',
     'The materials follow the sources of the Turkish Presidency of Religious Affairs (Diyanet); the Prophet, his family and the Companions are never depicted.',
   ],
+  buHafta: 'This week’s lessons', guncel: 'Current lessons', sonDers: 'Latest lesson day',
+  siradaki: 'Next lesson day', siradakiNot: 'Materials are published on this page before the lesson day.', planBag: 'See in the yearly plan',
+  arsiv: 'Previous lesson days', gunSay: (n: number) => `${n} lesson day${n === 1 ? '' : 's'}`,
+  filtre: 'Filter by subject', tumu: 'All', filtreBos: 'No materials in this subject yet.',
+  kalici: 'Permanent materials', kaliciA: 'Supporting documents not tied to a lesson day: memorisation cards, exercise sheets, tables, guides.',
+  ac: 'Open', indir: 'Download',
   plan: 'Lesson plan', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} slides`, ders: (n: number) => `Lesson ${n}`,
-  indir: 'Download', pptx: 'PowerPoint', hafta: (h: number) => `Week ${h}`, planGun: 'This day in the yearly plan',
+  pptxSesli: 'PowerPoint (audio)', pdfSessiz: 'PDF', hafta: (h: number) => `Week ${h}`, planGun: 'This day in the yearly plan', ekler: 'Extra documents', bugun: 'today',
   bos: 'No materials published yet; they will appear here after the first lesson day.',
-  kaynak: 'Files are hosted as release assets of the mosque’s GitHub repository; sizes are approximate.',
+  kaynak: 'Files are hosted as release assets of the mosque’s GitHub repository; sizes are approximate. Short address: ulucamii.be/materyal',
   mufredat: 'Curriculum and yearly plan', kurs: 'Qur’an school page',
 } : {
   altBaslik: 'Les documents préparés pour chaque jour de cours de notre école coranique : le plan de cours des enseignants (PDF) et les présentations PowerPoint bilingues et sonores utilisées en classe. Les parents peuvent les télécharger pour réviser à la maison, les élèves pour se préparer avant le cours.',
   nasil: 'Comment les utiliser ?',
   nasilListe: [
     'Le plan de cours est un PDF ; il s’ouvre directement sur téléphone et ordinateur.',
-    'Les présentations sont des fichiers PowerPoint (.pptx) : sur chaque diapositive, une courte narration démarre toute seule, d’abord en turc puis en français ; sur les cartes en arabe, le bouton haut-parleur fait entendre un récitateur turc ou une invocation. Ouvrez-les avec l’application gratuite Microsoft PowerPoint sur téléphone, ou en mode Diaporama (F5) sur ordinateur.',
+    'Chaque présentation existe en deux versions : « PDF », silencieuse, légère et lisible sur tout appareil ; « PowerPoint (sonore) », le fichier .pptx — sur chaque diapositive, une courte narration démarre toute seule, d’abord en turc puis en français, et sur les cartes en arabe le bouton haut-parleur fait entendre un récitateur turc ou une invocation. Ouvrez-le avec l’application gratuite Microsoft PowerPoint sur téléphone, ou en mode Diaporama (F5) sur ordinateur.',
     'Les vidéos des présentations sont lues depuis YouTube ; une connexion internet est nécessaire.',
     'Les supports suivent les sources de la Présidence des Affaires religieuses de Turquie (Diyanet) ; le Prophète, sa famille et les Compagnons ne sont jamais représentés.',
   ],
+  buHafta: 'Les cours de cette semaine', guncel: 'Cours en cours', sonDers: 'Dernier jour de cours',
+  siradaki: 'Prochain jour de cours', siradakiNot: 'Les supports sont publiés sur cette page avant le jour du cours.', planBag: 'Voir dans le plan annuel',
+  arsiv: 'Jours de cours précédents', gunSay: (n: number) => `${n} jour${n === 1 ? '' : 's'} de cours`,
+  filtre: 'Filtrer par matière', tumu: 'Toutes', filtreBos: 'Pas encore de support dans cette matière.',
+  kalici: 'Supports permanents', kaliciA: 'Documents d’appui non liés à un jour de cours : cartes de mémorisation, fiches d’exercices, tableaux, guides.',
+  ac: 'Ouvrir', indir: 'Télécharger',
   plan: 'Plan de cours', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} diapositives`, ders: (n: number) => `Cours ${n}`,
-  indir: 'Télécharger', pptx: 'PowerPoint', hafta: (h: number) => `Semaine ${h}`, planGun: 'Ce jour dans le plan annuel',
+  pptxSesli: 'PowerPoint (sonore)', pdfSessiz: 'PDF', hafta: (h: number) => `Semaine ${h}`, planGun: 'Ce jour dans le plan annuel', ekler: 'Documents complémentaires', bugun: 'aujourd’hui',
   bos: 'Aucun support publié pour l’instant ; ils apparaîtront ici après le premier jour de cours.',
-  kaynak: 'Les fichiers sont hébergés dans les publications (releases) du dépôt GitHub de la mosquée ; les tailles sont approximatives.',
+  kaynak: 'Les fichiers sont hébergés dans les publications (releases) du dépôt GitHub de la mosquée ; les tailles sont approximatives. Adresse courte : ulucamii.be/materyal',
   mufredat: 'Programme et plan annuel', kurs: 'Page de l’école coranique',
 };
-
+const kartMetni: Metin = m;
 const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (iso: string, secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(iso + 'T12:00:00'), dil, secenek);
-const konuMetni = (s: Sunum) => (dil === 'tr' ? s.konu : (s.konuFr || s.konu));
-const alanMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
-const aylar = [...new Set(gunler.map((g) => g.tarih.slice(0, 7)))];
+const uclu = (o: { tr?: string; fr?: string; en?: string } | undefined) => (o ? (dil === 'tr' ? o.tr : dil === 'en' ? (o.en || o.fr || o.tr) : (o.fr || o.tr)) || '' : '');
+const oneCikanBaslik = guncel.length === 0 ? m.sonDers : buHafta ? m.buHafta : m.guncel;
 ---
 <Base baslik={t('nav.dersmateryalleri')} dil={dil} aciklama={m.altBaslik}>
   <SayfaBasligi etiket={t('nav.kurankursu')} baslik={t('nav.dersmateryalleri')} altBaslik={m.altBaslik} />
 
-  <div class="kapsayici py-10">
+  <div class="kapsayici py-10" data-materyal>
     <section class="kart-kagit p-5 mb-8">
       <p class="etiket etiket-vurgu">{m.nasil}</p>
       <ul class="mt-2 grid gap-1.5 text-sm text-(--metin-2) liste">
@@ -82,46 +150,74 @@ const aylar = [...new Set(gunler.map((g) => g.tarih.slice(0, 7)))];
 
     {gunler.length === 0 && <p class="not">{m.bos}</p>}
 
-    {aylar.map((ay) => (
-      <section class="ay" id={`ay-${ay}`}>
-        <h2 class="ay-baslik">{tarih(ay + '-01', { month: 'long', year: 'numeric' })}</h2>
+    {filtreKodlari.length > 1 && (
+      <nav class="filtre" aria-label={m.filtre} data-filtre hidden>
+        <span class="etiket">{m.filtre}</span>
+        <button type="button" class="cip" data-alan="tumu" aria-pressed="true">{m.tumu}</button>
+        {filtreKodlari.map((k) => <button type="button" class={'cip cip-' + k} data-alan={k} aria-pressed="false">{alanAdi[dil][k]}</button>)}
+      </nav>
+    )}
+    <p class="not" data-filtre-bos hidden>{m.filtreBos}</p>
+
+    {oneCikan.length > 0 && (
+      <section class="bolum" data-bolum>
+        <h2 class="bolum-baslik">{oneCikanBaslik}</h2>
         <div class="grid gap-5">
-          {gunler.filter((g) => g.tarih.startsWith(ay)).map((g) => (
-            <article class="gun kart-kagit p-5 reveal" id={`g-${g.tarih}`}>
-              <header class="gun-bas">
-                <p class="gun-tarih">
-                  <time datetime={g.tarih}><b>{tarih(g.tarih, { day: 'numeric' })}</b>
-                    <span>{tarih(g.tarih, { month: 'short' })}<br />{tarih(g.tarih, { weekday: 'long' })}</span></time>
-                </p>
-                <p class="gun-bilgi"><span class="etiket">{m.hafta(g.hafta)}</span>
-                  <a href={`${yol(dil, 'yillikplan')}#g-${g.tarih}`} class="plan-bag">{m.planGun} →</a></p>
-              </header>
-
-              {g.plan && (
-                <p class="satir plan-satir">
-                  <span class="satir-ad"><b>{m.plan}</b> <span class="kucuk">PDF · {m.sayfa(g.plan.sayfa)} · {mb(g.plan.boyut)}</span></span>
-                  <a href={g.plan.url} class="dugme dugme-birincil !py-1.5 !px-3.5 text-sm" download>{m.indir} (PDF)</a>
-                </p>
-              )}
-
-              <ul class="sunum-liste" role="list">
-                {g.sunumlar.map((s) => (
-                  <li class="satir">
-                    <span class="satir-ad">
-                      <span class="etiket">{m.ders(s.no)} · {s.saat}</span>
-                      <b class={'alan a-' + s.kod}>{alanMetni(s)}</b>
-                      <span class="konu" lang={dil === 'tr' || !s.konuFr ? 'tr' : 'fr'}>{konuMetni(s)}</span>
-                      <span class="kucuk">{m.slayt(s.slayt)} · {mb(s.boyut)}</span>
-                    </span>
-                    <a href={s.url} class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm" download>{m.indir} ({m.pptx})</a>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          {oneCikan.map((g, i) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} sira={i} />)}
         </div>
       </section>
-    ))}
+    )}
+
+    {siradaki && !siradakiHazir && (
+      <p class="siradaki">
+        <span class="etiket etiket-vurgu">{m.siradaki}</span>
+        <b>{tarih(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' })}</b>
+        <span class="siradaki-konu">{siradaki.dersler.map((d) => `${d.sira ?? d.no}. ${alanAdi[dil][d.kod] || d.alan}`).join(' · ')}</span>
+        <span class="kucuk">{m.siradakiNot}</span>
+        <a href={`${yol(dil, 'yillikplan')}#g-${siradaki.tarih}`} class="plan-bag">{m.planBag} →</a>
+      </p>
+    )}
+
+    {arsiv.length > 0 && (
+      <section class="bolum" data-bolum>
+        <h2 class="bolum-baslik">{m.arsiv} <span class="kucuk">· {m.gunSay(arsiv.length)}</span></h2>
+        {aylar.map((ay) => (
+          <details class="ay" id={`ay-${ay}`} data-ay open={ay === enYeniAy || ay === buAy}>
+            <summary><span>{tarih(ay + '-01', { month: 'long', year: 'numeric' })}</span>
+              <span class="kucuk">{m.gunSay(arsiv.filter((g) => g.tarih.startsWith(ay)).length)}</span></summary>
+            <div class="grid gap-5 ay-icerik">
+              {arsiv.filter((g) => g.tarih.startsWith(ay)).map((g, i) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} sira={i} />)}
+            </div>
+          </details>
+        ))}
+      </section>
+    )}
+
+    {kalici.length > 0 && (
+      <section class="bolum" id="kalici" data-bolum>
+        <h2 class="bolum-baslik">{m.kalici}</h2>
+        <p class="bolum-alt">{m.kaliciA}</p>
+        <ul class="kalici-liste kart-kagit" role="list">
+          {kalici.map((e) => {
+            const href = e.data.dosya || e.data.link || '#';
+            const boyut = dosyaBoyutu(e.data.dosya, e.data.boyut);
+            const disBag = !e.data.dosya;
+            return (
+              <li class="satir" data-satir="kalici" data-kod={e.data.alan}>
+                <span class="satir-ad">
+                  <span class="tur">{kategoriAdi[dil][e.data.kategori]}</span>
+                  <b>{uclu(e.data.baslik)}</b>
+                  {e.data.alan !== 'genel' && <span class="konu">{alanAdi[dil][e.data.alan]}</span>}
+                  {uclu(e.data.aciklama) && <span class="konu">{uclu(e.data.aciklama)}</span>}
+                  <span class="kucuk">{tarih(e.data.tarih.toISOString().slice(0, 10), { day: 'numeric', month: 'short', year: 'numeric' })}{boyut > 0 && ` · ${mb(boyut)}`}</span>
+                </span>
+                <a href={href} class="dugme dugme-ikincil dugme-kucuk" download={!disBag} target={disBag ? '_blank' : undefined} rel={disBag ? 'noopener' : undefined}>{disBag ? m.ac : m.indir}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
 
     <p class="kaynak-not">{m.kaynak}</p>
     <p class="alt-baglantilar">
@@ -131,26 +227,85 @@ const aylar = [...new Set(gunler.map((g) => g.tarih.slice(0, 7)))];
   </div>
 </Base>
 
+<script>
+  /* Alan filtresi (yalnız JS ile; JS yokken çipler gizli, her şey görünür) + kapalı ayı çapayla açma. */
+  const kok = document.querySelector('[data-materyal]');
+  if (kok) {
+    const filtre = kok.querySelector<HTMLElement>('[data-filtre]');
+    const bosNot = kok.querySelector<HTMLElement>('[data-filtre-bos]');
+    const uygula = (alan: string) => {
+      let gorunen = 0;
+      kok.querySelectorAll<HTMLElement>('[data-satir][data-kod]').forEach((s) => {
+        const kod = s.dataset.kod;
+        const gizli = alan !== 'tumu' && kod !== alan && kod !== 'genel';
+        s.hidden = gizli; if (!gizli) gorunen++;
+      });
+      kok.querySelectorAll<HTMLElement>('[data-satir="plan"], [data-satir="ek"]').forEach((s) => { s.hidden = alan !== 'tumu'; });
+      kok.querySelectorAll<HTMLElement>('[data-gun]').forEach((g) => {
+        g.hidden = alan !== 'tumu' && !g.querySelector('[data-satir][data-kod]:not([hidden])');
+      });
+      kok.querySelectorAll<HTMLDetailsElement>('[data-ay]').forEach((ay) => {
+        const dolu = !!ay.querySelector('[data-gun]:not([hidden])');
+        ay.hidden = !dolu; if (alan !== 'tumu' && dolu) ay.open = true;
+      });
+      kok.querySelectorAll<HTMLElement>('[data-bolum]').forEach((b) => {
+        b.hidden = alan !== 'tumu' && !b.querySelector('[data-gun]:not([hidden]), [data-satir][data-kod]:not([hidden])');
+      });
+      if (bosNot) bosNot.hidden = !(alan !== 'tumu' && gorunen === 0);
+      filtre?.querySelectorAll<HTMLButtonElement>('[data-alan]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.alan === alan)));
+    };
+    if (filtre) {
+      filtre.hidden = false;
+      filtre.addEventListener('click', (e) => {
+        const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-alan]');
+        if (b) uygula(b.dataset.alan || 'tumu');
+      });
+    }
+    const capa = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const hedef = id && document.getElementById(id);
+      if (!hedef) return;
+      const ay = hedef.closest<HTMLDetailsElement>('details[data-ay]');
+      if (ay && !ay.open) { ay.open = true; requestAnimationFrame(() => hedef.scrollIntoView({ block: 'start' })); }
+    };
+    capa(); addEventListener('hashchange', capa);
+  }
+</script>
+
 <style>
   .liste { padding-left: 1.2rem; list-style: disc; }
   .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
-  .ay { margin-bottom: 2.2rem; }
-  .ay-baslik { font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem); margin: 0 0 1rem; text-transform: capitalize; }
-  .gun-bas { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 0.9rem; }
-  .gun-tarih { margin: 0; }
-  .gun-tarih time { display: inline-flex; align-items: center; gap: 0.6rem; }
-  .gun-tarih b { font-size: 2rem; line-height: 1; font-family: var(--font-baslik, inherit); }
-  .gun-tarih span { font-size: 0.85rem; line-height: 1.2; color: var(--metin-2); text-transform: capitalize; }
-  .gun-bilgi { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
-  .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
-  .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.7rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
-  .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; flex: 1 1 22rem; }
-  .satir .kucuk { font-size: 0.85rem; color: var(--metin-2); }
-  .sunum-liste { list-style: none; margin: 0; padding: 0; }
-  .alan { font-weight: 700; }
-  .konu { color: var(--metin-2); }
+  .bolum { margin-bottom: 2.4rem; }
+  .bolum-baslik { font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem); margin: 0 0 1rem; }
+  .bolum-baslik .kucuk { font-size: 0.9rem; font-weight: 400; color: var(--metin-2); font-family: var(--font-sans); }
+  .bolum-alt { margin: -0.5rem 0 1rem; color: var(--metin-2); font-size: 0.95rem; }
+  .filtre { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 1.4rem; }
+  .filtre .etiket { margin-right: 0.3rem; }
+  .cip { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.85rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
+  .cip:hover { border-color: var(--metin); }
+  .cip[aria-pressed="true"] { background: var(--metin); color: var(--zemin); border-color: var(--metin); }
+  .siradaki { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; margin: -0.8rem 0 2.4rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px dashed var(--cizgi-etkilesim); border-radius: var(--radius-kose); }
+  .siradaki b { font-size: 1.05rem; text-transform: capitalize; }
+  .siradaki .kucuk, .siradaki-konu { font-size: 0.9rem; color: var(--metin-2); }
+  .siradaki .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); margin-left: auto; }
+  .ay { border-top: 1px solid var(--cizgi); }
+  .ay:last-of-type { border-bottom: 1px solid var(--cizgi); }
+  .ay > summary { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.9rem 0.2rem; cursor: pointer; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; text-transform: capitalize; list-style: none; }
+  .ay > summary::-webkit-details-marker { display: none; }
+  .ay > summary::before { content: '▸'; font-size: 0.9rem; color: var(--metin-2); margin-right: 0.5rem; transition: transform 0.15s; }
+  .ay[open] > summary::before { transform: rotate(90deg); }
+  .ay > summary .kucuk { margin-left: auto; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400; color: var(--metin-2); text-transform: none; }
+  .ay-icerik { padding: 0.2rem 0 1.4rem; }
+  .kalici-liste { list-style: none; margin: 0; padding: 0.2rem 1.1rem; }
+  .kalici-liste .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.75rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
+  .kalici-liste .satir:first-child { border-top: 0; }
+  .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; flex: 1 1 20rem; }
+  .satir > .dugme { margin-left: auto; flex: 0 0 auto; }
+  .dugme-kucuk { padding: 0.4rem 0.85rem; font-size: 0.875rem; }
+  .konu, .kucuk { color: var(--metin-2); }
+  .kucuk { font-size: 0.85rem; }
+  .tur { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.4rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 4px; color: var(--metin-2); }
   .kaynak-not { margin-top: 1.5rem; font-size: 0.85rem; color: var(--metin-2); }
   .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
-  .satir > .dugme { margin-left: auto; flex: 0 0 auto; }
-  @media (max-width: 480px) { .satir > .dugme { width: 100%; justify-content: center; } }
+  @media (max-width: 480px) { .satir > .dugme { width: 100%; justify-content: center; } .siradaki .plan-bag { margin-left: 0; } }
 </style>

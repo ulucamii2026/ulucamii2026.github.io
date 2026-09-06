@@ -154,5 +154,24 @@ const kurul = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul };
+/** Ders materyalleri — güne bağlı olmayan kalıcı belgeler (ezber kartı, alıştırma, tablo, rehber…); src/content/materyaller/*.md
+ *  Küçük dosya (≤15 MB) CMS'ten `dosya` ile yüklenir (public/media/materyaller), büyük dosya GitHub Releases'a konup `link` verilir.
+ *  Günlük ders belgeleri (plan + sunumlar) burada DEĞİL, src/data/ders-materyalleri.json'dadır (betik üretir). */
+const materyaller = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/materyaller' }),
+  schema: z.object({
+    baslik: z.object({ tr: z.string(), fr: z.string().optional(), en: z.string().optional() }),
+    aciklama: z.object({ tr: z.string().optional(), fr: z.string().optional(), en: z.string().optional() }).optional(),
+    tarih: z.coerce.date(),
+    donem: z.string().optional(),
+    kategori: z.enum(['ezber', 'alistirma', 'tablo', 'rehber', 'sinav', 'ses', 'video', 'diger']).default('diger'),
+    alan: z.enum(['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak', 'genel']).default('genel'),
+    dosya: z.string().optional(),
+    link: z.string().optional(),
+    boyut: z.number().optional(),
+    taslak: z.boolean().default(false),
+  }).refine((d) => Boolean(d.dosya || d.link), { message: 'dosya ya da link zorunlu' }),
+});
+
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller };
 export { dil };

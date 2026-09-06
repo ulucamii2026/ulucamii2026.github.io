@@ -37,10 +37,12 @@ public/media/                      görseller (WebP)
 - Üretim betikleri (`mufredat-uret.py`, `yillik-plan-cikar.py` vb.) bu depoda **değil**, `D:\app\marche-cami-sitesi\mufredat\` altında tutuluyor; buradaki içerik dosyaları onların çıktısıdır.
 
 ## Kur'an kursu ders materyalleri (6 Eyl 2026)
-- Sayfa: `/tr/ders-materyalleri/` (+ `/fr/supports-de-cours/`, `/en/lesson-materials/`) — `src/sayfalar/DersMateryalleri.astro`, yol anahtarı `dersmateryalleri`. Kurs sayfasında yan kart, yıllık plan gün kartlarında `#g-<tarih>` bağlantısı.
-- Veri: `src/data/ders-materyalleri.json` (gün başına plan PDF + 3 sunum: dosya adı, boyut, sayfa/slayt, konu TR/FR, indirme URL'si). **Elle yazılmaz.**
-- Dosyalar depoda **değil**: GitHub Releases'ta `ders-<tarih>` etiketli sürüm ekleri (gün başına ≈ 60 MB; `https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-<tarih>/<dosya>`).
-- Üretim ve yayın ders hazırlık projesinde: `D:\ulu-camii-kuran-kursu\scripts\site-materyal-yayinla.py <gün-klasörü>` (Python 3.14; dernek hesabı `gh auth token --user ulucamii2026`) → sürüm ekini yükler + JSON'u günceller; sonra burada `npm run check && npx astro build`, commit + push.
+- Sayfa: `/tr/ders-materyalleri/` (+ `/fr/supports-de-cours/`, `/en/lesson-materials/`; kısa adres `ulucamii.be/materyal`) — `src/sayfalar/DersMateryalleri.astro` + kart bileşeni `src/components/DersGunuKarti.astro`, yol anahtarı `dersmateryalleri`, üst menü «Eğitim». Kurs sayfasında yan kart, yıllık plan gün kartlarında `#g-<tarih>` bağlantısı.
+- Düzen: «Bu haftanın dersleri» (bu haftadan itibaren yayımlanan günler; yoksa son ders günü) → alan filtresi (JS) → «Önceki ders günleri» ay ay katlanır (`<details>`) → «Kalıcı materyaller». «Sıradaki ders günü» satırı yıllık plandan gelir. Site her gece yeniden yayımlandığı için bugün/hafta hesabı derleme anındadır.
+- **Günlük belgeler** — veri `src/data/ders-materyalleri.json` (gün başına plan PDF + 3 sunum: sesli .pptx ve sessiz PDF hâli + isteğe bağlı `ekler[]`; `donem` kökte). **Elle yazılmaz.** Dosyalar depoda **değil**: GitHub Releases `ders-<tarih>` sürüm ekleri (`…/releases/download/ders-<tarih>/<dosya>`).
+- **Kalıcı materyaller** (güne bağlı olmayan ezber kartı, alıştırma, tablo, rehber, sınav…) — içerik koleksiyonu `src/content/materyaller/*.md`, Sveltia'da «Ders Materyalleri (kalıcı)»: küçük dosya (≤ 15 MB) `dosya` ile `public/media/materyaller/` altına yüklenir, büyük dosya Releases'a konup `link` verilir. Şema `src/content.config.ts`, CMS `public/admin/icerik/config.yml` (`npm run denetim:cms`).
+- Yayın (kurs projesi): `"C:/Users/ridva/AppData/Local/Programs/Python/Python314/python.exe" D:\ulu-camii-kuran-kursu\scripts\site-materyal-yayinla.py <gün-klasörü>` — sürümde aynı ad/boyut/tarihle duran dosyayı atlar (`--zorla` hepsini yükler); sessiz PDF'ler `scripts\sunum-pdf.ps1 <gün>` ile (PowerPoint COM) üretilir; ekler `dersler/<gün>/ekler/` (ASCII ad, `basliklar.json`). Sonra burada `npm run check && npx astro build`, commit + push.
+- Denetim: `scripts/site-denetim.mjs` JSON'u doğrular (tarih/etiket/url/boyut, tekrar eden gün); dış bağlantı denetimi sürüm eklerini yoklar.
 - Kural: materyallerde hoca, öğrenci ve veli adı, telefon, e-posta yer almaz (depo ve sürüm ekleri herkese açık); yayın öncesi PDF gizlilik taraması yapılır.
 
 ## Apps Script (kayıt + ihtida arka ucu)
