@@ -366,8 +366,12 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
      Etiket ve değer sarmaz — sütunlar içeriğe göre genişlediği için sarmaya gerek
      de yok; sardıklarında (uzun Fransızca etiketler) üç sütunun temel hizası
      birbirini tutmuyordu. */
-  .hac-kunye dt,
-  .hac-kunye dd { white-space: nowrap; }
+  /* Dar ekranda (640 px altı) satır kırılmasına izin verilir: FR/EN «kesin kayıt» değeri 360-390 px
+     genişlikte nowrap yüzünden sayfayı yatay kaydırıyordu (6 Eyl 2026 mobil taraması). */
+  @media (min-width: 640px) {
+    .hac-kunye dt,
+    .hac-kunye dd { white-space: nowrap; }
+  }
   .hac-kunye dd { font-variant-numeric: tabular-nums; }
 
   /* Umre, hac ile aynı bölümün alt şeridi; ayraç ikisini ayırır ama koparmaz. */
