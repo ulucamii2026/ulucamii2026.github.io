@@ -26,10 +26,11 @@ const veri = {
 <Base baslik="Hoca ekranı" dil="tr" aciklama="Kur’an kursu hoca ekranı: yoklama, ilerleme, ezber-ödev, duyuru." noindex dilHatirla={false}>
   <SayfaBasligi etiket="Kur’an kursu" baslik="Hoca ekranı" altBaslik="Yoklama, ilerleme, haftalık ezber-ödev, duyurular ve veli bildirimleri." />
   <div class="kapsayici py-10">
-    <div id="hoca-ekrani" data-veli-yolu={yol('tr', 'veli')} class="portal hoca" aria-live="polite">
+    <div id="hoca-ekrani" data-veli-yolu={yol('tr', 'veli')} class="portal hoca">
       <p class="not">Yükleniyor…</p>
       <noscript><p class="not">Bu sayfa JavaScript gerektirir.</p></noscript>
     </div>
+    <div id="hoca-durum" class="portal-durum" role="status" aria-live="polite" hidden></div>
     <script type="application/json" id="hoca-veri" set:html={JSON.stringify(veri)} />
   </div>
 </Base>
@@ -42,7 +43,7 @@ const veri = {
 <style is:global>
   .portal .not { margin: 0 0 1rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
   .portal .hata { border-color: var(--color-kiremit); color: var(--color-kiremit); background: color-mix(in srgb, var(--color-kiremit) 8%, var(--zemin)); }
-  .portal .basari { border-color: var(--color-adacayi, #6b8e6b); color: var(--metin); }
+  .portal .basari { --dr: var(--color-adacayi); border-color: color-mix(in oklab, var(--dr) 34%, var(--cizgi)); color: color-mix(in oklab, var(--dr) 74%, var(--metin)); background: color-mix(in oklab, var(--dr) 12%, var(--zemin)); }
   .portal form.kutu, .portal .kutu { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem; }
   .portal .giris-izgara { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); max-width: 52rem; }
   .portal label { display: block; font-size: 0.85rem; font-weight: 600; margin: 0.6rem 0 0.25rem; }
@@ -55,34 +56,59 @@ const veri = {
   .portal .satir-dugmeler { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; align-items: center; }
   .portal .ust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 1rem; }
   .portal .sekmeler { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.2rem; }
-  .portal .sekme { font: inherit; font-size: 0.9rem; font-weight: 600; padding: 0.45rem 0.9rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
-  .portal .sekme[aria-selected=true] { background: var(--metin); color: var(--zemin); border-color: var(--metin); }
-  .portal .bolum { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; }
-  .portal .bolum h2 { font-size: 1.1rem; margin: 0 0 0.6rem; }
-  .portal .bolum h3 { font-size: 0.95rem; margin: 0.9rem 0 0.3rem; }
+  .portal .sekme { display: inline-flex; align-items: center; gap: 0.4rem; font: inherit; font-size: 0.9rem; font-weight: 600; padding: 0.45rem 0.9rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin-2); cursor: pointer; min-height: 38px; transition: color .15s, border-color .15s, background .15s; }
+  .portal .sekme:hover { color: var(--metin); border-color: var(--metin-2); }
+  .portal .sekme .simge { width: 1rem; height: 1rem; flex: none; }
+  .portal .sekme[aria-selected=true] { background: color-mix(in oklab, var(--vurgu) 13%, var(--zemin)); color: var(--vurgu); border-color: color-mix(in oklab, var(--vurgu) 42%, var(--cizgi)); }
+  .portal .bolum { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem 1.4rem; margin-bottom: 1.25rem; box-shadow: var(--shadow-kart); }
+  .portal .bolum h2 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin: 0 0 0.75rem; display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+  .portal .bolum h2 .simge { width: 1.2rem; height: 1.2rem; color: var(--vurgu); flex: none; }
+  .portal .bolum h3 { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); margin: 1.3rem 0 0.4rem; }
   .portal .liste { list-style: none; margin: 0; padding: 0; }
   .portal .liste li { padding: 0.5rem 0; border-top: 1px solid var(--cizgi); display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; }
   .portal .liste li:first-child { border-top: 0; }
   .portal .liste li .buyu { flex: 1 1 12rem; }
   .portal .kucuk { font-size: 0.85rem; color: var(--metin-2); }
-  .portal .rozet { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; border: 1px solid var(--cizgi-etkilesim); }
-  .portal .rozet.var, .portal .yk-dugme.var[aria-pressed=true] { background: #e3efe3; color: #245c2a; border-color: #b6d4b8; }
-  .portal .rozet.yok, .portal .yk-dugme.yok[aria-pressed=true] { background: #f8e1dc; color: #8b2e1c; border-color: #eab7ad; }
-  .portal .rozet.mazeret, .portal .yk-dugme.mazeret[aria-pressed=true] { background: #fff3d6; color: #7a5200; border-color: #f0d59a; }
-  .portal .rozet.gec, .portal .yk-dugme.gec[aria-pressed=true] { background: #e7ecf6; color: #2f4a7a; border-color: #b9c7e3; }
-  .portal .yk-dugme { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.7rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
-  .portal .yk-satir { display: grid; grid-template-columns: minmax(9rem, 1.2fr) auto minmax(8rem, 1fr); gap: 0.5rem 0.8rem; align-items: center; padding: 0.5rem 0; border-top: 1px solid var(--cizgi); }
-  .portal .yk-satir:first-child { border-top: 0; }
-  .portal .yk-satir .yk-dugmeler { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  @media (max-width: 40rem) { .portal .yk-satir { grid-template-columns: 1fr; } }
+  .portal .rozet { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; padding: 0.16rem 0.5rem; border-radius: var(--radius-kose); white-space: nowrap;
+    --dr: var(--cizgi-etkilesim); background: color-mix(in oklab, var(--dr) 13%, var(--zemin)); color: color-mix(in oklab, var(--dr) 70%, var(--metin)); border: 1px solid color-mix(in oklab, var(--dr) 32%, var(--cizgi)); }
+  .portal .rozet.var, .portal .yk-dugme.var[aria-pressed=true] { --dr: var(--color-adacayi); }
+  .portal .rozet.yok, .portal .yk-dugme.yok[aria-pressed=true] { --dr: var(--color-kiremit); }
+  .portal .rozet.mazeret, .portal .yk-dugme.mazeret[aria-pressed=true] { --dr: var(--color-ochre); }
+  .portal .rozet.gec, .portal .yk-dugme.gec[aria-pressed=true] { --dr: var(--color-iznik); }
+  .portal .yk-dugme { font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.4rem 0.75rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: transparent; color: var(--metin-2); cursor: pointer; min-height: 36px; transition: color .12s, border-color .12s, background .12s; }
+  .portal .yk-dugme:hover { color: var(--metin); border-color: var(--metin-2); }
+  .portal .yk-dugme[aria-pressed=true] { background: color-mix(in oklab, var(--dr) 24%, var(--zemin)); color: color-mix(in oklab, var(--dr) 82%, var(--metin)); border-color: color-mix(in oklab, var(--dr) 60%, var(--cizgi)); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--dr) 34%, transparent); }
+  .portal .yk-satir { display: block; padding: 0.85rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .yk-satir:first-child { border-top: 0; padding-top: 0.2rem; }
+  .portal .yk-ogr { margin-bottom: 0.5rem; }
+  .portal .yk-ders { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; padding: 0.28rem 0; }
+  .portal .yk-ders-et { flex: 1 1 11rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--metin); }
+  .portal .yk-ders-no { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; flex: none; border-radius: var(--radius-kose); background: var(--zemin-3); border: 1px solid var(--cizgi); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--metin-2); }
+  .portal .yk-dugmeler { display: flex; gap: 0.3rem; flex-wrap: wrap; }
   .portal .izgara-2 { display: grid; gap: 0.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
   .portal .izgara-3 { display: grid; gap: 0.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
   .portal table.tablo { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-  .portal table.tablo td, .portal table.tablo th { padding: 0.35rem 0.4rem; border-top: 1px solid var(--cizgi); text-align: left; vertical-align: middle; }
+  .portal table.tablo td, .portal table.tablo th { padding: 0.4rem 0.45rem; border-top: 1px solid var(--cizgi); text-align: left; vertical-align: middle; }
+  .portal table.tablo th { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--metin-2); font-weight: 600; }
   .portal table.tablo select { padding: 0.3rem 0.4rem; }
   .portal .kaydirilir { overflow-x: auto; }
-  .portal .baglanti-dugme { background: none; border: 0; padding: 0; font: inherit; color: var(--vurgu, var(--color-kiremit)); text-decoration: underline; cursor: pointer; }
-  .portal .duyuru { padding: 0.6rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .baglanti-dugme { background: none; border: 0; padding: 0; font: inherit; color: var(--vurgu, var(--color-kiremit)); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  .portal .baglanti-dugme:hover { text-decoration-thickness: 2px; }
+  .portal .duyuru { padding: 0.7rem 0; border-top: 1px solid var(--cizgi); }
   .portal .duyuru:first-child { border-top: 0; }
-  .portal .duyuru p { margin: 0.2rem 0 0; white-space: pre-line; }
+  .portal .duyuru p { margin: 0.25rem 0 0; white-space: pre-line; }
+  /* --- hero --- */
+  .portal .hoca-hero { position: relative; overflow: hidden; background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); box-shadow: var(--shadow-kart); padding: 1.2rem 1.4rem 1.25rem; margin-bottom: 1.25rem; }
+  .portal .hoca-hero .hero-serit { position: absolute; inset: 0 0 auto 0; height: 6px; background-image: linear-gradient(45deg, var(--color-kiremit) 25%, transparent 25%, transparent 50%, var(--color-kiremit) 50%, var(--color-kiremit) 75%, transparent 75%, transparent); background-size: 10px 10px; opacity: 0.9; }
+  .portal .hoca-hero .hero-ust { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0.6rem 1rem; margin-top: 0.45rem; }
+  .portal .hoca-hero .selam { margin: 0; }
+  .portal .hoca-hero .selam .ad { display: block; font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; line-height: 1.15; margin-top: 0.15rem; }
+  /* --- boş durum --- */
+  .portal .bos { display: flex; align-items: center; gap: 0.6rem; padding: 0.9rem 0; color: var(--metin-2); font-size: 0.92rem; }
+  .portal .bos .simge { width: 1.15rem; height: 1.15rem; flex: none; color: var(--metin-2); }
+  /* --- durum bildirimi (a11y, kalıcı, ekrandan bağımsız) --- */
+  .portal-durum { position: fixed; z-index: 60; left: 50%; bottom: 1.25rem; transform: translateX(-50%); max-width: min(30rem, calc(100vw - 2rem)); padding: 0.7rem 1rem; border-radius: var(--radius-kose); font-size: 0.9rem; font-weight: 500; box-shadow: var(--shadow-kart); border: 1px solid var(--cizgi); background: var(--zemin); color: var(--metin); }
+  .portal-durum.basari { --dr: var(--color-adacayi); background: color-mix(in oklab, var(--dr) 14%, var(--zemin)); color: color-mix(in oklab, var(--dr) 74%, var(--metin)); border-color: color-mix(in oklab, var(--dr) 34%, var(--cizgi)); }
+  .portal-durum.hata { --dr: var(--color-kiremit); background: color-mix(in oklab, var(--dr) 14%, var(--zemin)); color: color-mix(in oklab, var(--dr) 74%, var(--metin)); border-color: color-mix(in oklab, var(--dr) 36%, var(--cizgi)); }
+  @media (prefers-reduced-motion: no-preference) { .portal-durum:not([hidden]) { animation: hoca-durum-belir .25s ease both; } @keyframes hoca-durum-belir { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } } }
 </style>

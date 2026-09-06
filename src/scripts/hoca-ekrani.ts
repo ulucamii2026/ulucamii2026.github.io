@@ -9,7 +9,7 @@ type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
 type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string> };
 type Ogr = { ref: string; ad: string; soyad: string; veliler?: string[]; dil?: string; durum?: string; grup?: string; kayitRef?: string };
 type Aile = { eposta: string; ogrenciler: string[]; dil?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string };
-type Yok = { ref: string; tarih: string; durum: string; not?: string };
+type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum?: string; not?: string };
 type Ilerleme = { kuranAdim?: number; ezber?: Record<string, string>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string };
 type Kayit = Record<string, unknown> & { id: string };
 
@@ -32,6 +32,25 @@ const secenekler = (o: Record<string, string>, secili: string) => Object.entries
 const zamanMs = (z: unknown) => { const t = z as { toDate?: () => Date } | string | undefined; return typeof t === 'string' ? Date.parse(t) : t?.toDate ? t.toDate().getTime() : 0; };
 const zamanYaz = (z: unknown) => { const ms = zamanMs(z); return ms ? new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ms)) : ''; };
 
+/* çizili tek-çizgi ikonlar (currentColor; craft: emoji/glyph değil) */
+const SIMGELER: Record<string, string> = {
+  takvim: '<rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>',
+  grafik: '<path d="M4 4v16h16"/><path d="M7.5 14.5l3-3.5 2.5 2 4.5-6"/>',
+  yildiz: '<path d="M12 3.6l2.5 5.1 5.6.8-4 4 1 5.6-5-2.6-5 2.6 1-5.6-4-4 5.6-.8z"/>',
+  not: '<path d="M20 4H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h4v3.5L13.5 16H20a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>',
+  duyuru: '<path d="M4 10v4h3l7 4V6l-7 4H4z"/><path d="M17.5 9a3.5 3.5 0 0 1 0 6"/>',
+  gonder: '<path d="M21 3L3 10.6l7 2.5L12.5 20 21 3z"/><path d="M10 13.1L21 3"/>',
+  ayar: '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.3"/><circle cx="9" cy="17" r="2.3"/>',
+  kitap: '<path d="M12 6.5C10.5 5 8 4.6 4 5.1v12.8c4-.5 6.5-.1 8 1.4 1.5-1.5 4-1.9 8-1.4V5.1c-4-.5-6.5-.1-8 1.4z"/><path d="M12 6.5v12.2"/>',
+  ogrenci: '<path d="M12 4L2 9l10 5 10-5-10-5z"/><path d="M6 11.2V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-3.8"/>',
+  aile: '<circle cx="9" cy="8.5" r="3"/><path d="M3.8 19c0-2.9 2.3-4.6 5.2-4.6s5.2 1.7 5.2 4.6"/><path d="M15.5 6.2a3 3 0 0 1 .2 5.7M16.8 14.6c2.3.4 3.7 1.9 3.7 4.4"/>',
+  kilit: '<rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
+  zarf: '<rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6 8.5-6"/>',
+  cikis: '<path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8"/><path d="M17 8l4 4-4 4M9.5 12H21"/>',
+};
+const simge = (ad: string) => `<svg class="simge" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${SIMGELER[ad] || ''}</svg>`;
+const bosDurum = (ikon: string, metin: string) => `<p class="bos">${simge(ikon)}<span>${esc(metin)}</span></p>`;
+
 export async function hocaEkrani(): Promise<void> {
   const kok = document.getElementById('hoca-ekrani');
   const veriEl = document.getElementById('hoca-veri');
@@ -52,9 +71,14 @@ export async function hocaEkrani(): Promise<void> {
     const p = form?.querySelector<HTMLElement>('[data-mesaj]'); if (!p) { if (metin) ustMesaj(metin, tur); return; }
     p.textContent = metin; p.className = 'not ' + tur; p.hidden = !metin;
   };
+  const durumBolge = document.getElementById('hoca-durum');
+  let durumZaman = 0;
   const ustMesaj = (metin: string, tur: 'hata' | 'basari' | '' = '') => {
-    const p = kok.querySelector<HTMLElement>('[data-ust-mesaj]'); if (!p) return;
-    p.textContent = metin; p.className = 'not ' + tur; p.hidden = !metin; p.scrollIntoView({ block: 'nearest' });
+    const el = durumBolge; if (!el) return;
+    window.clearTimeout(durumZaman);
+    el.className = 'portal-durum' + (tur ? ' ' + tur : '');
+    el.textContent = metin; el.hidden = !metin;
+    if (metin) durumZaman = window.setTimeout(() => { el.hidden = true; el.textContent = ''; }, 6000);
   };
 
   /* ---------------------------------------------------------------- giriş */
@@ -97,7 +121,7 @@ export async function hocaEkrani(): Promise<void> {
 
   /* ---------------------------------------------------------------- durum */
   type Durum = {
-    uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: Record<string, { durum: string; not: string }>;
+    uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: Record<string, { dersler: Record<string, string>; not: string }>;
     secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
   };
   let S: Durum | null = null;
@@ -122,7 +146,7 @@ export async function hocaEkrani(): Promise<void> {
   };
   const yoklamaYukle = async () => {
     if (!S) return; const k = await kayitlar('yoklama', fs.where('tarih', '==', S.tarih));
-    S.yoklama = {}; (k as unknown as Yok[]).forEach((y) => { S!.yoklama[y.ref] = { durum: y.durum, not: y.not || '' }; });
+    S.yoklama = {}; (k as unknown as Yok[]).forEach((y) => { const ders = y.dersler && typeof y.dersler === 'object' ? { ...y.dersler } : (y.durum ? { '1': y.durum, '2': y.durum, '3': y.durum } : {}); S!.yoklama[y.ref] = { dersler: ders, not: y.not || '' }; });
   };
   const ogrenciYukle = async (ref: string) => {
     if (!S) return;
@@ -148,31 +172,35 @@ export async function hocaEkrani(): Promise<void> {
     let govde = '';
     if (S.sekme === 'yoklama') {
       const g = veri.gunler.find((x) => x.tarih === S!.tarih);
+      const gunDersler = g ? g.dersler : [];
       govde = `<section class="bolum">
-        <h2>Yoklama</h2>
+        <h2>${simge('takvim')}Yoklama</h2>
         <div class="izgara-2">
           <label>Ders günü<select data-yoklama-tarih>${veri.gunler.map((x) => `<option value="${x.tarih}" ${x.tarih === S!.tarih ? 'selected' : ''}>${esc(tarihYaz(x.tarih, { weekday: 'short', day: 'numeric', month: 'short' }))} · ${x.hafta}. hafta</option>`).join('')}</select></label>
-          <div><label>&nbsp;</label><button type="button" class="dugme dugme-ikincil" data-eylem="hepsiVar">Hepsini «var» yap</button></div>
+          <div><label>&nbsp;</label><button type="button" class="dugme dugme-ikincil" data-eylem="hepsiVar">Tümünü «geldi» işaretle</button></div>
         </div>
-        ${g ? `<p class="kucuk">${g.dersler.map((d) => `${d.no}. ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p>` : ''}
+        ${gunDersler.length ? `<p class="kucuk">${gunDersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p><p class="kucuk">Her öğrencinin üç dersi ayrı ayrı işaretlenir; yalnız işaretlenen dersler kaydedilir.</p>` : '<p class="kucuk">Bu gün ders yok (tatil).</p>'}
         ${S.yukleniyor ? '<p class="not">Yükleniyor…</p>' : ''}
-        <div ${S.yukleniyor ? 'hidden' : ''}>${aktif.map((o) => { const y = S!.yoklama[o.ref] || { durum: '', not: '' }; return `<div class="yk-satir">
-            <div><b>${esc(o.ad)} ${esc(o.soyad)}</b> <span class="kucuk">${esc(o.grup || '')}</span></div>
-            <div class="yk-dugmeler">${Object.entries(DURUMLAR).map(([k, v]) => `<button type="button" class="yk-dugme ${k}" aria-pressed="${y.durum === k}" data-yok="${esc(o.ref)}" data-durum="${k}">${v}</button>`).join('')}</div>
-            <input type="text" placeholder="Not (isteğe bağlı)" data-yok-not="${esc(o.ref)}" value="${esc(y.not)}" maxlength="200">
+        <div ${S.yukleniyor ? 'hidden' : ''}>${aktif.map((o) => { const y = S!.yoklama[o.ref] || { dersler: {}, not: '' }; return `<div class="yk-satir">
+            <div class="yk-ogr"><b>${esc(o.ad)} ${esc(o.soyad)}</b> ${o.grup ? `<span class="kucuk">${esc(o.grup)}</span>` : ''}</div>
+            ${gunDersler.map((d) => { const sr = String(d.no); return `<div class="yk-ders">
+              <span class="yk-ders-et"><span class="yk-ders-no">${esc(sr)}</span>${esc(ALANLAR[d.kod] || d.kod)}</span>
+              <div class="yk-dugmeler">${Object.entries(DURUMLAR).map(([k, v]) => `<button type="button" class="yk-dugme ${k}" aria-pressed="${y.dersler[sr] === k}" data-yok="${esc(o.ref)}" data-ders="${esc(sr)}" data-durum="${k}" aria-label="${esc(o.ad)} ${esc(o.soyad)} — ${esc(sr)}. ders — ${esc(v)}">${v}</button>`).join('')}</div>
+            </div>`; }).join('')}
+            <input type="text" placeholder="Gün için not (isteğe bağlı)" data-yok-not="${esc(o.ref)}" value="${esc(y.not)}" maxlength="200" style="margin-top:.5rem">
           </div>`; }).join('')}</div>
-        ${aktif.length ? '' : '<p class="kucuk">Aktif öğrenci yok.</p>'}
-        <div class="satir-dugmeler"><button type="button" class="dugme dugme-birincil" data-eylem="yoklamaKaydet">Yoklamayı kaydet</button><span class="kucuk">Seçili olmayan öğrenciler için kayıt yazılmaz.</span></div>
+        ${aktif.length ? '' : bosDurum('ogrenci', 'Aktif öğrenci yok.')}
+        <div class="satir-dugmeler"><button type="button" class="dugme dugme-birincil" data-eylem="yoklamaKaydet">Yoklamayı kaydet</button><span class="kucuk">Hiç ders işaretlenmemiş öğrenci için kayıt yazılmaz.</span></div>
       </section>`;
     } else if (S.sekme === 'ogrenci') {
       const o = S.ogrenciler.find((x) => x.ref === S!.secili);
-      govde = `<section class="bolum"><h2>Öğrenciler <span class="kucuk">(${S.ogrenciler.length})</span></h2>
+      govde = `<section class="bolum"><h2>${simge('ogrenci')}Öğrenciler <span class="kucuk">(${S.ogrenciler.length})</span></h2>
         <ul class="liste">${S.ogrenciler.map((x) => `<li><button type="button" class="baglanti-dugme buyu" data-ogr="${esc(x.ref)}" style="text-align:left"><b>${esc(x.ad)} ${esc(x.soyad)}</b></button><span class="kucuk">${esc(x.ref)}</span><span class="kucuk">${(x.veliler || []).length} veli</span>${x.durum === 'pasif' ? '<span class="rozet">pasif</span>' : ''}</li>`).join('')}</ul>
         <p class="kucuk" style="margin-top:.6rem">Yeni öğrenci: «Aileler · Davet» sekmesinden kayıt defterinden yenile.</p></section>`;
       if (o) {
         const ile = S.ilerleme || {};
         govde += `<section class="bolum" id="ogrenci-karti">
-          <h2>${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
+          <h2>${simge('ogrenci')}${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
           <form data-form="ogrenciAyar" class="izgara-3">
             <label>Durum<select name="durum">${secenekler({ aktif: 'Aktif', pasif: 'Pasif' }, o.durum === 'pasif' ? 'pasif' : 'aktif')}</select></label>
             <label>Grup / sınıf<input type="text" name="grup" value="${esc(o.grup || '')}" maxlength="40"></label>
@@ -224,7 +252,7 @@ export async function hocaEkrani(): Promise<void> {
       const planEzber = [...new Set(h.gunler.flatMap((g) => g.dersler.flatMap((d) => d.ezber)))];
       const ez = (mevcut?.ezber as Record<string, string> | undefined) || {}; const od = (mevcut?.odev as Record<string, string> | undefined) || {};
       const materyalVar = h.gunler.some((g) => veri.materyalGunleri.includes(g.tarih));
-      govde = `<section class="bolum"><h2>Haftalık ezber ve ödev</h2>
+      govde = `<section class="bolum"><h2>${simge('kitap')}Haftalık ezber ve ödev</h2>
         <label>Hafta<select data-hafta>${haftalar.map((x) => `<option value="${x.hafta}" ${x.hafta === h.hafta ? 'selected' : ''}>${x.hafta}. hafta · ${esc(x.gunler.map((g) => tarihYaz(g.tarih, { day: 'numeric', month: 'short' })).join(' – '))}${S!.odevler.some((o) => o.tarih === x.tarih) ? ' ✓' : ''}</option>`).join('')}</select></label>
         <p class="kucuk">${h.gunler.map((g) => `<b>${esc(tarihYaz(g.tarih, { weekday: 'long' }))}:</b> ${g.dersler.map((d) => esc(d.konu)).join(' · ')}`).join('<br>')}</p>
         <form data-form="odev">
@@ -240,7 +268,7 @@ export async function hocaEkrani(): Promise<void> {
           <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Kaydet</button>${mevcut ? `<button type="button" class="baglanti-dugme" data-sil="odevler" data-id="${esc(mevcut.id)}">bu haftanın kaydını sil</button>` : ''}</div>
         </form></section>`;
     } else if (S.sekme === 'duyuru') {
-      govde = `<section class="bolum"><h2>Duyurular</h2>
+      govde = `<section class="bolum"><h2>${simge('duyuru')}Duyurular</h2>
         ${S.duyurular.map((d) => { const b = d.baslik as Record<string, string>; const m = d.metin as Record<string, string>; return `<div class="duyuru"><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span> <span class="rozet">${d.yayin ? 'yayında' : 'taslak'}</span> <button type="button" class="baglanti-dugme" data-yayin="duyurular" data-id="${esc(d.id)}" data-deger="${d.yayin ? '0' : '1'}">${d.yayin ? 'yayından kaldır' : 'yayınla'}</button> <button type="button" class="baglanti-dugme" data-sil="duyurular" data-id="${esc(d.id)}">sil</button><br><b>${esc(b?.tr || '')}</b>${b?.fr ? ` <span class="kucuk">· ${esc(b.fr)}</span>` : ''}<p>${esc(m?.tr || '')}</p></div>`; }).join('') || '<p class="kucuk">Henüz duyuru yok.</p>'}
         <h3>Yeni duyuru</h3>
         <form data-form="duyuru">
@@ -253,10 +281,10 @@ export async function hocaEkrani(): Promise<void> {
           <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Duyuruyu kaydet</button></div>
         </form></section>`;
     } else if (S.sekme === 'bildirim') {
-      govde = `<section class="bolum"><h2>Veli bildirimleri <span class="kucuk">(${S.bildirimler.filter((b) => !b.okundu).length} okunmamış)</span></h2>
+      govde = `<section class="bolum"><h2>${simge('zarf')}Veli bildirimleri <span class="kucuk">(${S.bildirimler.filter((b) => !b.okundu).length} okunmamış)</span></h2>
         <ul class="liste">${S.bildirimler.map((b) => `<li style="${b.okundu ? 'opacity:.7' : ''}"><span class="kucuk">${esc(zamanYaz(b.zaman))}</span><b>${esc(TUR[String(b.tur)] || b.tur)}</b><span>${esc(ogrAdi(String(b.ref)))}</span>${b.tarih ? `<span class="rozet">${esc(tarihYaz(String(b.tarih), { weekday: 'short', day: 'numeric', month: 'short' }))}</span>` : ''}<span class="kucuk">${esc(b.eposta)}</span><span class="buyu" style="flex-basis:100%;white-space:pre-line">${esc(b.metin)}</span><button type="button" class="baglanti-dugme" data-okundu="${esc(b.id)}" data-deger="${b.okundu ? '0' : '1'}">${b.okundu ? 'okunmadı yap' : 'okundu'}</button><button type="button" class="baglanti-dugme" data-sil="bildirimler" data-id="${esc(b.id)}">sil</button></li>`).join('') || '<li class="kucuk">Bildirim yok.</li>'}</ul></section>`;
     } else if (S.sekme === 'aile') {
-      govde = `<section class="bolum"><h2>Aileler <span class="kucuk">(${S.aileler.length})</span></h2>
+      govde = `<section class="bolum"><h2>${simge('aile')}Aileler <span class="kucuk">(${S.aileler.length})</span></h2>
         <p class="kucuk">«Davet gönder»: veliye kendi dilinde tek kullanımlık giriş bağlantısı e-postalanır; veli bağlantıyı açıp şifresini belirler. Google'ın ücretsiz planı günde en fazla <b>5</b> davet e-postası gönderir; toplu davet için yönetici betiği (info@ulucamii.be üzerinden) kullanılır.</p>
         <ul class="liste">${S.aileler.map((f) => `<li><span class="buyu"><b>${esc(f.eposta)}</b><br><span class="kucuk">${esc(f.adSoyad || '')} · ${esc(DIL_ADI[f.dil || ''] || f.dil || '')} · ${esc((f.ogrenciler || []).map(ogrAdi).join(', '))}</span></span>
           <span class="rozet">${f.sifreVar ? 'şifre belirledi' : 'henüz girmedi'}</span>${f.sonGiris ? `<span class="kucuk">son giriş ${esc(tarihYaz(f.sonGiris))}</span>` : ''}
@@ -266,14 +294,18 @@ export async function hocaEkrani(): Promise<void> {
         <p class="kucuk">Online kayıt defterindeki güncel öğrencileri (ad, soyad, veli e-postası, dil) portala aktarır; başka veri aktarılmaz. Var olan kayıtlar korunur.</p>
         <div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="iceAktar">Kayıt defterinden yenile</button></div></section>`;
     } else if (S.sekme === 'hesap') {
-      govde = `<section class="bolum"><h2>Hesap</h2><p>${esc(S.ad)} · <span class="kucuk">${esc(a.currentUser?.email || '')}</span></p>
+      govde = `<section class="bolum"><h2>${simge('ayar')}Hesap</h2><p>${esc(S.ad)} · <span class="kucuk">${esc(a.currentUser?.email || '')}</span></p>
         <form data-form="sifreDegistir" style="max-width:28rem"><label>Yeni şifre<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label><p data-mesaj hidden class="not"></p>
         <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Şifreyi değiştir</button></div></form>
         <p class="kucuk" style="margin-top:1rem">Veli portalı: <a href="${esc(veri.veliYollari.tr)}">${esc(location.origin + veri.veliYollari.tr)}</a></p></section>`;
     }
-    kok.innerHTML = `<div class="ust"><div><p class="etiket etiket-vurgu">Hoş geldiniz, ${esc(S.ad)}</p><p class="kucuk">${esc(veri.donem)} dönemi</p></div><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button></div>
-      <div class="sekmeler" role="tablist">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" class="sekme" aria-selected="${k === S!.sekme}" data-sekme="${k}">${v}</button>`).join('')}</div>
-      <p data-ust-mesaj hidden class="not"></p>${govde}`;
+    const SEKME_IKON: Record<string, string> = { yoklama: 'takvim', ogrenci: 'ogrenci', odev: 'kitap', duyuru: 'duyuru', bildirim: 'zarf', aile: 'aile', hesap: 'ayar' };
+    kok.innerHTML = `<div class="hoca-hero"><div class="hero-serit" aria-hidden="true"></div>
+        <p class="etiket etiket-vurgu">Hoca ekranı · ${esc(veri.donem)} dönemi</p>
+        <div class="hero-ust"><p class="selam"><small class="kucuk">Hoş geldiniz</small><span class="ad">${esc(S.ad)}</span></p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}Çıkış</button></div>
+      </div>
+      <div class="sekmeler" role="tablist" aria-label="Bölümler">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span></button>`).join('')}</div>
+      <div id="hoca-panel" role="tabpanel" aria-labelledby="hoca-tab-${S.sekme}">${govde}</div>`;
   };
 
   /* ---------------------------------------------------------------- olaylar */
@@ -297,17 +329,18 @@ export async function hocaEkrani(): Promise<void> {
         await auth.sendPasswordResetEmail(a, ep, { url: sayfaAdresi }); localStorage.setItem('hocaEposta', ep);
         mesaj(form, `Şifre sıfırlama bağlantısı gönderildi: ${ep}. Bağlantıyı açıp yeni şifrenizi belirleyin, sonra giriş yapın.`, 'basari'); return;
       }
-      if (el.dataset.sekme) { await sekmeyeGec(el.dataset.sekme); return; }
+      if (el.dataset.sekme) { const ad = el.dataset.sekme; await sekmeyeGec(ad); kok.querySelector<HTMLElement>('#hoca-tab-' + ad)?.focus(); return; }
       if (!S) return;
-      if (el.dataset.yok) { const ref = el.dataset.yok; const d = el.dataset.durum || ''; const y = S.yoklama[ref] || { durum: '', not: '' }; y.durum = y.durum === d ? '' : d; S.yoklama[ref] = y;
-        el.parentElement!.querySelectorAll<HTMLElement>('.yk-dugme').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.durum === y.durum))); return; }
-      if (el.dataset.eylem === 'hepsiVar') { S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { S!.yoklama[o.ref] = { durum: 'var', not: S!.yoklama[o.ref]?.not || '' }; }); ciz(); return; }
+      if (el.dataset.yok) { const ref = el.dataset.yok; const sr = el.dataset.ders || '1'; const d = el.dataset.durum || ''; const y = S.yoklama[ref] || { dersler: {}, not: '' }; y.dersler[sr] = y.dersler[sr] === d ? '' : d; S.yoklama[ref] = y;
+        el.parentElement!.querySelectorAll<HTMLElement>('.yk-dugme').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.durum === y.dersler[sr]))); return; }
+      if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '' }; }); ciz(); return; }
       if (el.dataset.eylem === 'yoklamaKaydet') {
         kok.querySelectorAll<HTMLInputElement>('[data-yok-not]').forEach((i) => { const y = S!.yoklama[i.dataset.yokNot!]; if (y) y.not = i.value.trim(); });
         const b = fs.writeBatch(db); let n = 0;
         for (const [ref, y] of Object.entries(S.yoklama)) {
           const id = fs.doc(db, 'yoklama', `${ref}_${S.tarih}`);
-          if (y.durum) { b.set(id, { ref, tarih: S.tarih, durum: y.durum, not: y.not || '', kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
+          const dersler: Record<string, string> = {}; for (const s of Object.keys(y.dersler)) if (y.dersler[s]) dersler[s] = y.dersler[s];
+          if (Object.keys(dersler).length) { b.set(id, { ref, tarih: S.tarih, dersler, not: y.not || '', kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
         }
         await b.commit(); ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
       }
@@ -332,6 +365,17 @@ export async function hocaEkrani(): Promise<void> {
     } catch (e) { ustMesaj(hata(e), 'hata'); }
   });
 
+  kok.addEventListener('keydown', (ev) => {
+    const tab = (ev.target as HTMLElement).closest<HTMLElement>('[role=tab]');
+    if (!tab || !S) return;
+    const keys = Object.keys(SEKMELER); const cur = keys.indexOf(S.sekme); let h = -1;
+    if (ev.key === 'ArrowRight') h = (cur + 1) % keys.length;
+    else if (ev.key === 'ArrowLeft') h = (cur - 1 + keys.length) % keys.length;
+    else if (ev.key === 'Home') h = 0;
+    else if (ev.key === 'End') h = keys.length - 1;
+    else return;
+    ev.preventDefault(); const ad = keys[h]; sekmeyeGec(ad).then(() => kok.querySelector<HTMLElement>('#hoca-tab-' + ad)?.focus());
+  });
   kok.addEventListener('change', async (ev) => {
     const t = ev.target as HTMLSelectElement;
     if (!S) return;
