@@ -39,7 +39,7 @@ export async function hocaEkrani(): Promise<void> {
   const veri = JSON.parse(veriEl.textContent || '{}') as Veri;
   const kuranSirasi = veri.gunler.flatMap((g) => g.dersler.filter((x) => x.kod === 'kuran').map((x) => ({ tarih: g.tarih, konu: x.konu }))).filter((x, i, d) => d.findIndex((y) => y.konu === x.konu) === i); // her Kur'an konusu bir adım (ilk işlendiği gün)
   const ezberListesi = [...new Set(veri.gunler.flatMap((g) => g.dersler.flatMap((x) => x.ezber)))];
-  const haftalar = [...new Map(veri.gunler.map((g) => [g.hafta, g])).values()].map((g) => ({ hafta: g.hafta, tarih: g.tarih, gunler: veri.gunler.filter((x) => x.hafta === g.hafta) }));
+  const haftalar = veri.gunler.filter((g, i, d) => d.findIndex((y) => y.hafta === g.hafta) === i).map((g) => ({ hafta: g.hafta, tarih: g.tarih, gunler: veri.gunler.filter((x) => x.hafta === g.hafta) })); // tarih = haftanın İLK ders günü (odevler/{tarih} belge kimliği)
 
   const [{ firebaseUygulamasi }, auth, fs] = await Promise.all([import('../lib/firebase'), import('firebase/auth'), import('firebase/firestore/lite')]);
   const app = firebaseUygulamasi();
