@@ -158,6 +158,162 @@
         }
       ],
       "ekler": []
+    },
+    {
+      "tarih": "2026-09-12",
+      "hafta": 2,
+      "gun": "Cumartesi",
+      "etiket": "ders-2026-09-12",
+      "plan": {
+        "dosya": "Ders-Plani-2026-09-12.pdf",
+        "boyut": 4708332,
+        "sayfa": 17,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Ders-Plani-2026-09-12.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Şîn grubu harfleri — ve Ezber köşesi: İhlâs, Tebbet",
+          "konuFr": "Les lettres du groupe Şin — et coin mémorisation : Al-Ikhlâs, Tebbet",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 8294961,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 1216848,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "İtikat",
+          "kod": "itikat",
+          "konu": "İtikat · Camiye Gidiyorum 1, s. 31-36",
+          "konuFr": "Croyance · Camiye Gidiyorum 1, p. 31-36",
+          "baslik": {
+            "tr": "Kutsal Kitabımız Kur'an'dır",
+            "fr": "Notre livre sacré est le Coran"
+          },
+          "dosya": "Sunum-2-Itikat-Kutsal-Kitabimiz-Kuran.pptx",
+          "boyut": 5991122,
+          "slayt": 23,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Sunum-2-Itikat-Kutsal-Kitabimiz-Kuran.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Itikat-Kutsal-Kitabimiz-Kuran.pdf",
+            "boyut": 1013305,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Sunum-2-Itikat-Kutsal-Kitabimiz-Kuran.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "İbadet",
+          "kod": "ibadet",
+          "konu": "İbadet · Camiye Gidiyorum 1, s. 55-58",
+          "konuFr": "Culte · Camiye Gidiyorum 1, p. 55-58",
+          "baslik": {
+            "tr": "Abdest Alıyorum, Temizleniyorum (1)",
+            "fr": "Je fais mes ablutions, je me purifie (1)"
+          },
+          "dosya": "Sunum-3-Ibadet-Abdest-Aliyorum.pptx",
+          "boyut": 6473080,
+          "slayt": 22,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Sunum-3-Ibadet-Abdest-Aliyorum.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ibadet-Abdest-Aliyorum.pdf",
+            "boyut": 1132978,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-12/Sunum-3-Ibadet-Abdest-Aliyorum.pdf"
+          }
+        }
+      ],
+      "ekler": []
+    },
+    {
+      "tarih": "2026-09-13",
+      "hafta": 2,
+      "gun": "Pazar",
+      "etiket": "ders-2026-09-13",
+      "plan": {
+        "dosya": "Ders-Plani-2026-09-13.pdf",
+        "boyut": 4654866,
+        "sayfa": 17,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Ders-Plani-2026-09-13.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Ayn grubu harfleri — Ayın, Gayın, Fe, Kaf, Kef",
+          "konuFr": "Les lettres du groupe Ayn — Ayn, Ghayn, Fe, Kaf, Kef",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 7343474,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 1198885,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "Siyer",
+          "kod": "siyer",
+          "konu": "Siyer · Camiye Gidiyorum 1, s. 71-76",
+          "konuFr": "Vie du Prophète · Camiye Gidiyorum 1, p. 71-76",
+          "baslik": {
+            "tr": "Hz. Muhammed (s.a.s.) Büyüyor",
+            "fr": "Notre Prophète grandit"
+          },
+          "dosya": "Sunum-2-Siyer-Peygamberimiz-Buyuyor.pptx",
+          "boyut": 6019854,
+          "slayt": 24,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Sunum-2-Siyer-Peygamberimiz-Buyuyor.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Siyer-Peygamberimiz-Buyuyor.pdf",
+            "boyut": 1378279,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Sunum-2-Siyer-Peygamberimiz-Buyuyor.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "Ahlak",
+          "kod": "ahlak",
+          "konu": "Ahlak · Camiye Gidiyorum 1, s. 43-47",
+          "konuFr": "Morale · Camiye Gidiyorum 1, p. 43-47",
+          "baslik": {
+            "tr": "Sevincimi Paylaşıyorum",
+            "fr": "Je partage ma joie"
+          },
+          "dosya": "Sunum-3-Ahlak-Sevincimi-Paylasiyorum.pptx",
+          "boyut": 5995357,
+          "slayt": 23,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Sunum-3-Ahlak-Sevincimi-Paylasiyorum.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ahlak-Sevincimi-Paylasiyorum.pdf",
+            "boyut": 1141578,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-13/Sunum-3-Ahlak-Sevincimi-Paylasiyorum.pdf"
+          }
+        }
+      ],
+      "ekler": []
     }
   ]
 }
