@@ -1,0 +1,95 @@
+---
+/**
+ * Veli portalı — /tr/veli-portali/ · /fr/portail-parents/ · /en/parents-portal/ (noindex).
+ * Kimlik: Firebase Authentication (e-posta bağlantısı → şifre belirleme; sonra e-posta + şifre). Veri: Cloud Firestore,
+ * kurallar firebase/firestore.rules (veli yalnız kendi öğrencilerini okur). Uygulama: src/scripts/veli-portali.ts.
+ * Sunucu tarafı yok; bu sayfa yalnız kabuk + yıllık planın küçültülmüş hâli (ders günleri, ezberler, materyal günleri).
+ */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { veliMetni } from '../i18n/veli';
+import plan from '../data/yillik-plan-2026-2027.json';
+import materyal from '../data/ders-materyalleri.json';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil); const m = veliMetni(dil);
+
+type PlanGun = { tarih: string; hafta: number; gun: string; dersler: { no?: number; sira?: number; alan: string; kod: string; konu: string; ezber?: string[] }[] };
+const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
+  tarih: g.tarih, hafta: g.hafta,
+  dersler: g.dersler.map((d) => ({ no: d.sira ?? d.no ?? 0, kod: d.kod, alan: d.alan, konu: d.konu, ezber: d.ezber || [] })),
+}));
+const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
+const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri, materyalYolu: yol(dil, 'dersmateryalleri'), gizlilikYolu: yol(dil, 'gizlilik'), kursYolu: yol(dil, 'kurankursu'),
+  dilYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli') } };
+---
+<Base baslik={t('nav.veli')} dil={dil} aciklama={m.altBaslik} noindex>
+  <SayfaBasligi etiket={t('nav.kurankursu')} baslik={t('nav.veli')} altBaslik={m.altBaslik} />
+  <div class="kapsayici py-10">
+    <div id="veli-portal" data-dil={dil} class="portal" aria-live="polite">
+      <p class="not">{m.yukleniyor}</p>
+      <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript.</p></noscript>
+    </div>
+    <script type="application/json" id="veli-veri" set:html={JSON.stringify(veri)} />
+    <p class="alt-baglantilar">
+      <a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{m.kurs}</a>
+      <a href={yol(dil, 'gizlilik')} class="dugme dugme-ikincil">{m.gizlilik}</a>
+    </p>
+  </div>
+</Base>
+
+<script>
+  import { veliPortali } from '../scripts/veli-portali';
+  veliPortali();
+</script>
+
+<style is:global>
+  .portal .not { margin: 0 0 1rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+  .portal .hata { border-color: var(--color-kiremit); color: var(--color-kiremit); background: color-mix(in srgb, var(--color-kiremit) 8%, var(--zemin)); }
+  .portal .basari { border-color: var(--color-adacayi, #6b8e6b); color: var(--metin); }
+  .portal form.kutu, .portal .kutu { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem; }
+  .portal .giris-izgara { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); max-width: 52rem; }
+  .portal label { display: block; font-size: 0.85rem; font-weight: 600; margin: 0.6rem 0 0.25rem; }
+  .portal input[type=email], .portal input[type=password], .portal input[type=text], .portal input[type=date], .portal select, .portal textarea {
+    width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); font: inherit; }
+  .portal textarea { min-height: 5rem; }
+  .portal .dugme { cursor: pointer; }
+  .portal .dugme[disabled] { opacity: 0.6; cursor: wait; }
+  .portal .satir-dugmeler { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
+  .portal .ust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 1rem; }
+  .portal .sekmeler { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.2rem; }
+  .portal .sekme { font: inherit; font-size: 0.9rem; font-weight: 600; padding: 0.45rem 0.9rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
+  .portal .sekme[aria-selected=true] { background: var(--metin); color: var(--zemin); border-color: var(--metin); }
+  .portal .bolumler { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); align-items: start; }
+  .portal .bolum { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.1rem 1.25rem; }
+  .portal .bolum.genis { grid-column: 1 / -1; }
+  .portal .bolum h2 { font-size: 1.1rem; margin: 0 0 0.6rem; }
+  .portal .bolum h3 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; }
+  .portal .liste { list-style: none; margin: 0; padding: 0; }
+  .portal .liste li { padding: 0.5rem 0; border-top: 1px solid var(--cizgi); display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: baseline; }
+  .portal .liste li:first-child { border-top: 0; }
+  .portal .kucuk { font-size: 0.85rem; color: var(--metin-2); }
+  .portal .rozet { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; border: 1px solid var(--cizgi-etkilesim); }
+  .portal .rozet.var { background: #e3efe3; color: #245c2a; border-color: #b6d4b8; }
+  .portal .rozet.yok { background: #f8e1dc; color: #8b2e1c; border-color: #eab7ad; }
+  .portal .rozet.mazeret { background: #fff3d6; color: #7a5200; border-color: #f0d59a; }
+  .portal .rozet.gec { background: #e7ecf6; color: #2f4a7a; border-color: #b9c7e3; }
+  .portal .rozet.ogrendi { background: #e3efe3; color: #245c2a; }
+  .portal .rozet.tekrar { background: #fff3d6; color: #7a5200; }
+  .portal .cubuk { height: 0.55rem; background: var(--zemin-2); border-radius: 999px; overflow: hidden; border: 1px solid var(--cizgi); }
+  .portal .cubuk > span { display: block; height: 100%; background: var(--color-kiremit); }
+  .portal .dereceler { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 0.5rem; }
+  .portal .derece { padding: 0.5rem 0.7rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+  .portal .derece b { display: block; font-size: 0.85rem; }
+  .portal .noktalar { letter-spacing: 0.15rem; color: var(--color-kiremit); }
+  .portal .duyuru { padding: 0.6rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .duyuru:first-child { border-top: 0; }
+  .portal .duyuru p { margin: 0.2rem 0 0; white-space: pre-line; }
+  .portal .yoklama-izgara { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .portal .gun-kutu { width: 3.4rem; text-align: center; padding: 0.35rem 0.2rem; border-radius: var(--radius-kose); border: 1px solid var(--cizgi); font-size: 0.75rem; line-height: 1.2; }
+  .portal .gun-kutu b { display: block; font-size: 0.95rem; }
+  .portal .gun-kutu.var { background: #e3efe3; } .portal .gun-kutu.yok { background: #f8e1dc; } .portal .gun-kutu.mazeret { background: #fff3d6; } .portal .gun-kutu.gec { background: #e7ecf6; }
+  .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  @media (prefers-color-scheme: dark) { .portal .rozet.var, .portal .gun-kutu.var { background: #1f3a22; color: #cfe8cf; } .portal .rozet.yok, .portal .gun-kutu.yok { background: #4a2019; color: #f3cfc6; } .portal .rozet.mazeret, .portal .gun-kutu.mazeret { background: #4a3a10; color: #f4e2b0; } .portal .rozet.gec, .portal .gun-kutu.gec { background: #22304a; color: #cddaf3; } }
+</style>

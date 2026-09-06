@@ -1,8 +1,8 @@
 ---
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
-aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve planlanan üye/veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-08-25
+aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve Kur’an kursu veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
+guncelleme: 2026-09-06
 ---
 
 <p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
@@ -65,17 +65,20 @@ Derneğe üye olduğunuzda hakkınızda bir üye kaydı tutulur. Bu kayıt **der
 - **Erişim:** Üye defterine yalnızca yönetim kurulunun görevli üyeleri erişir. Veriler üçüncü kişilere satılmaz, devredilmez; WhatsApp grupları gibi ortamlarda paylaşılmaz.
 - **İşleme kaydı:** Derneğimiz, GDPR md. 30 uyarınca veri işleme faaliyetlerinin yazılı kaydını tutar.
 
-## İleride Planlanan Üye / Veli Portalı
+## Veli Portalı (Kur’an Kursu) ve İleride Planlanan Üye Portalı
 
-Şu an için sitede canlı bir üye veya veli portalı **bulunmamaktadır**. İleride devreye alınması planlanan üye ve Kur’an kursu veli/öğrenci takip portalı için öngörülen esaslar şunlardır:
+Kur’an kursu **veli portalı** 6 Eylül 2026’dan itibaren canlıdır: [/tr/veli-portali/](/tr/veli-portali/). Üye portalı henüz açılmamıştır; aşağıdaki esaslar her ikisi için geçerlidir.
 
-- **Altyapı:** Portal, Google Firebase (Google Ireland Ltd.) üzerinde, e-posta ve şifre ile hesap açma yöntemiyle çalışacaktır.
-- **Veri konumu:** Veriler Avrupa Birliği sınırları içinde, Belçika (europe-west1) bölgesinde barındırılacaktır.
-- **Amaç:** Üyelik ve aidat yönetimi; Kur’an kursu öğrenci devam/program takibi.
-- **Hukuki dayanak:** Üyelik verisi için dernekle üye arasındaki sözleşme ilişkisi; çocuğa ait veri için ise veli/yasal temsilci rızası. Belçika’da 13 yaşın altındaki çocuklara ait veri işleme, ancak veli/yasal temsilcinin rızasıyla hukuka uygun hâle gelir.
-- **Dinî bağlılık verisi:** Cami derneğine üyelik, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR’da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)’de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
-- **Veri minimizasyonu — defter ile portal aynı şey değildir:** Dernek üye defteri yukarıdaki bölümde sayılan bilgileri içerebilir; **portalda bunların tamamı bulunmaz.** Millî sicil numarası ve ev adresi gibi veriler portala aktarılmayacak; portalda yalnızca üyenin kendi aidat durumunu görmesi ve iletişim bilgilerini güncellemesi için gereken asgari bilgi bulunacaktır.
-- **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur’an kursu öğrenci verisi, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
+- **Altyapı:** Portal, Google Firebase üzerinde çalışır: hesap ve giriş için *Firebase Authentication*, portal verileri için *Cloud Firestore*. Google bu hizmetlerde veri işleyen sıfatıyla hareket eder (Firebase Veri İşleme ve Güvenlik Şartları). Sitenin sayfaları GitHub Pages’te barındırılır; portal verileri GitHub’dan geçmez.
+- **Veri konumu:** Portal verileri (Cloud Firestore) Avrupa Birliği sınırları içinde, Belçika (europe-west1) bölgesinde barındırılır. Kimlik doğrulama hizmeti ise Google tarafından yalnızca ABD veri merkezlerinde işletilir; bu nedenle giriş verileri (e-posta adresi, şifre özeti, giriş sırasındaki IP adresi ve tarayıcı bilgisi) ABD’de işlenir. Bu aktarım, Google LLC’nin AB–ABD Veri Gizliliği Çerçevesi (Data Privacy Framework) sertifikası ve AB standart sözleşme maddeleri kapsamındadır. Google, giriş IP kayıtlarını birkaç hafta tutar; hesap silindiğinde kimlik doğrulama verileri en geç 180 gün içinde silinir.
+- **Hesap açma:** Kayıt formunda verilen veli e-posta adresine tek kullanımlık bir giriş bağlantısı gönderilir; veli bağlantıyı açarak şifresini kendisi belirler. Kimlik numarası, doğum tarihi ya da başka bir kişisel bilgi giriş için istenmez ve kullanılmaz.
+- **Portalda bulunan veriler:** öğrencinin adı ve soyadı, kayıt referansı, grubu, veli e-posta adresi ve iletişim dili; ders günlerine ait yoklama kayıtları; hocanın girdiği ilerleme, değerlendirme ve notlar; haftalık ezber-ödev bilgileri ve kurs duyuruları; velinin hocaya gönderdiği mesajlar (mazeret, iletişim, soru). **Portalda millî sicil numarası, ev adresi, telefon numarası, doğum tarihi ya da fotoğraf bulunmaz.**
+- **Kimler görür:** Her veli yalnızca kendi çocuğunun kayıtlarını görür; bu sınır sunucu tarafındaki güvenlik kurallarıyla uygulanır. Kurs hocaları kursun bütün öğrencilerinin kayıtlarını görür ve veri girişini yapar.
+- **Amaç:** Kur’an kursu öğrencisinin devam, ilerleme ve ödev takibi ile veli–hoca iletişimi; ileride üyelik ve aidat yönetimi.
+- **Hukuki dayanak:** Üyelik verisi için dernekle üye arasındaki sözleşme ilişkisi; çocuğa ait veri için ise kayıt sırasında alınan veli/yasal temsilci rızası. Belçika’da 13 yaşın altındaki çocuklara ait veri işleme, ancak veli/yasal temsilcinin rızasıyla hukuka uygun hâle gelir.
+- **Dinî bağlılık verisi:** Cami derneğine üyelik ve Kur’an kursuna kayıt, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR’da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)’de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
+- **Veri minimizasyonu — defter ile portal aynı şey değildir:** Kayıt defteri ve dernek üye defteri yukarıdaki bölümlerde sayılan bilgileri içerebilir; **portalda bunların tamamı bulunmaz.** Millî sicil numarası ve ev adresi gibi veriler portala aktarılmaz; portalda yalnızca takip ve iletişim için gereken asgari bilgi bulunur.
+- **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur’an kursu öğrenci verisi ve portal kayıtları, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Veli hesabı, talep üzerine (info@ulucamii.be) daha erken silinir. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
 
 ## Haklarınız
 

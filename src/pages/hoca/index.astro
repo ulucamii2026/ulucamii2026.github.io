@@ -1,0 +1,88 @@
+---
+/**
+ * Hoca ekranı — /hoca/ (yalnız Türkçe, noindex). Kur'an kursu hocaları yoklama, ilerleme, değerlendirme, not,
+ * haftalık ezber-ödev ve duyuru girer; veli bildirimlerini okur; aileleri yönetir ve davet e-postası gönderir.
+ * Kimlik: Firebase Authentication (hocalar/{uid} belgesi olan hesaplar). Veri: Cloud Firestore (firebase/firestore.rules).
+ * Uygulama: src/scripts/hoca-ekrani.ts. Bu sayfa kabuk + yıllık planın küçültülmüş hâli.
+ */
+import Base from '../../layouts/Base.astro';
+import SayfaBasligi from '../../components/SayfaBasligi.astro';
+import { yol } from '../../i18n/utils';
+import plan from '../../data/yillik-plan-2026-2027.json';
+import materyal from '../../data/ders-materyalleri.json';
+
+type PlanGun = { tarih: string; hafta: number; gun: string; dersler: { no?: number; sira?: number; alan: string; kod: string; konu: string; ezber?: string[] }[] };
+const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
+  tarih: g.tarih, hafta: g.hafta, gun: g.gun,
+  dersler: g.dersler.map((d) => ({ no: d.sira ?? d.no ?? 0, kod: d.kod, alan: d.alan, konu: d.konu, ezber: d.ezber || [] })),
+}));
+const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
+const veri = {
+  donem: (plan as { donem: string }).donem, gunler, materyalGunleri,
+  materyalYolu: yol('tr', 'dersmateryalleri'),
+  veliYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli') },
+};
+---
+<Base baslik="Hoca ekranı" dil="tr" aciklama="Kur’an kursu hoca ekranı: yoklama, ilerleme, ezber-ödev, duyuru." noindex dilHatirla={false}>
+  <SayfaBasligi etiket="Kur’an kursu" baslik="Hoca ekranı" altBaslik="Yoklama, ilerleme, haftalık ezber-ödev, duyurular ve veli bildirimleri." />
+  <div class="kapsayici py-10">
+    <div id="hoca-ekrani" data-veli-yolu={yol('tr', 'veli')} class="portal hoca" aria-live="polite">
+      <p class="not">Yükleniyor…</p>
+      <noscript><p class="not">Bu sayfa JavaScript gerektirir.</p></noscript>
+    </div>
+    <script type="application/json" id="hoca-veri" set:html={JSON.stringify(veri)} />
+  </div>
+</Base>
+
+<script>
+  import { hocaEkrani } from '../../scripts/hoca-ekrani';
+  hocaEkrani();
+</script>
+
+<style is:global>
+  .portal .not { margin: 0 0 1rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+  .portal .hata { border-color: var(--color-kiremit); color: var(--color-kiremit); background: color-mix(in srgb, var(--color-kiremit) 8%, var(--zemin)); }
+  .portal .basari { border-color: var(--color-adacayi, #6b8e6b); color: var(--metin); }
+  .portal form.kutu, .portal .kutu { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem; }
+  .portal .giris-izgara { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); max-width: 52rem; }
+  .portal label { display: block; font-size: 0.85rem; font-weight: 600; margin: 0.6rem 0 0.25rem; }
+  .portal label.satir { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; }
+  .portal input[type=email], .portal input[type=password], .portal input[type=text], .portal input[type=url], .portal input[type=date], .portal select, .portal textarea {
+    width: 100%; padding: 0.55rem 0.7rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); font: inherit; }
+  .portal textarea { min-height: 4.5rem; }
+  .portal .dugme { cursor: pointer; }
+  .portal .dugme[disabled] { opacity: 0.6; cursor: wait; }
+  .portal .satir-dugmeler { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; align-items: center; }
+  .portal .ust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 1rem; }
+  .portal .sekmeler { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.2rem; }
+  .portal .sekme { font: inherit; font-size: 0.9rem; font-weight: 600; padding: 0.45rem 0.9rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
+  .portal .sekme[aria-selected=true] { background: var(--metin); color: var(--zemin); border-color: var(--metin); }
+  .portal .bolum { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; }
+  .portal .bolum h2 { font-size: 1.1rem; margin: 0 0 0.6rem; }
+  .portal .bolum h3 { font-size: 0.95rem; margin: 0.9rem 0 0.3rem; }
+  .portal .liste { list-style: none; margin: 0; padding: 0; }
+  .portal .liste li { padding: 0.5rem 0; border-top: 1px solid var(--cizgi); display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; }
+  .portal .liste li:first-child { border-top: 0; }
+  .portal .liste li .buyu { flex: 1 1 12rem; }
+  .portal .kucuk { font-size: 0.85rem; color: var(--metin-2); }
+  .portal .rozet { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; border: 1px solid var(--cizgi-etkilesim); }
+  .portal .rozet.var, .portal .yk-dugme.var[aria-pressed=true] { background: #e3efe3; color: #245c2a; border-color: #b6d4b8; }
+  .portal .rozet.yok, .portal .yk-dugme.yok[aria-pressed=true] { background: #f8e1dc; color: #8b2e1c; border-color: #eab7ad; }
+  .portal .rozet.mazeret, .portal .yk-dugme.mazeret[aria-pressed=true] { background: #fff3d6; color: #7a5200; border-color: #f0d59a; }
+  .portal .rozet.gec, .portal .yk-dugme.gec[aria-pressed=true] { background: #e7ecf6; color: #2f4a7a; border-color: #b9c7e3; }
+  .portal .yk-dugme { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.7rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
+  .portal .yk-satir { display: grid; grid-template-columns: minmax(9rem, 1.2fr) auto minmax(8rem, 1fr); gap: 0.5rem 0.8rem; align-items: center; padding: 0.5rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .yk-satir:first-child { border-top: 0; }
+  .portal .yk-satir .yk-dugmeler { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  @media (max-width: 40rem) { .portal .yk-satir { grid-template-columns: 1fr; } }
+  .portal .izgara-2 { display: grid; gap: 0.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+  .portal .izgara-3 { display: grid; gap: 0.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
+  .portal table.tablo { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .portal table.tablo td, .portal table.tablo th { padding: 0.35rem 0.4rem; border-top: 1px solid var(--cizgi); text-align: left; vertical-align: middle; }
+  .portal table.tablo select { padding: 0.3rem 0.4rem; }
+  .portal .kaydirilir { overflow-x: auto; }
+  .portal .baglanti-dugme { background: none; border: 0; padding: 0; font: inherit; color: var(--vurgu, var(--color-kiremit)); text-decoration: underline; cursor: pointer; }
+  .portal .duyuru { padding: 0.6rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .duyuru:first-child { border-top: 0; }
+  .portal .duyuru p { margin: 0.2rem 0 0; white-space: pre-line; }
+</style>

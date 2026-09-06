@@ -45,6 +45,15 @@ public/media/                      görseller (WebP)
 - Denetim: `scripts/site-denetim.mjs` JSON'u doğrular (tarih/etiket/url/boyut, tekrar eden gün); dış bağlantı denetimi sürüm eklerini yoklar.
 - Kural: materyallerde hoca, öğrenci ve veli adı, telefon, e-posta yer almaz (depo ve sürüm ekleri herkese açık); yayın öncesi PDF gizlilik taraması yapılır.
 
+## Veli portalı ve hoca ekranı (6 Eyl 2026)
+- Sayfalar: veli portalı `/tr/veli-portali/` (+ `/fr/portail-parents/`, `/en/parents-portal/`; `src/sayfalar/Veli.astro` + `src/scripts/veli-portali.ts`, metinler `src/i18n/veli.ts`), hoca ekranı `/hoca/` (yalnız TR; `src/pages/hoca/index.astro` + `src/scripts/hoca-ekrani.ts`). İkisi de `noindex`; Firebase yalnız bu sayfalarda dinamik import ile yüklenir (`src/lib/firebase.ts`, yapılandırma herkese açık).
+- Altyapı: Firebase projesi `ulucamii-portal` (dernek hesabı; Firestore europe-west1, Spark planı, Functions/Storage yok). Kimlik: Firebase Authentication — veli e-postasına tek kullanımlık bağlantı → veli şifresini belirler; sonra e-posta + şifre. Kimlik numarasıyla giriş yoktur (hukuki karar, 30 Ağu 2026).
+- Güvenlik: `firebase/firestore.rules` (dağıtım `npm run firebase:kurallar`). Hoca = `hocalar/{uid}` belgesi; veli = `aileler/{e-posta}` belgesi ve yalnız kendi `ogrenciler` listesindeki kayıtlar. Veli sorguları `where('ref','==',…)` / `yayin==true` / `veliyeGorunur==true` ile kurulur (kural kanıtlanabilir olsun); bileşik indeks yok.
+- Koleksiyonlar: `ogrenciler/{ref}`, `aileler/{e-posta}`, `yoklama/{ref}_{tarih}`, `ilerleme/{ref}`, `degerlendirme`, `notlar`, `odevler/{hafta ilk günü}`, `duyurular`, `bildirimler` (veli → hoca: mazeret/iletişim/soru), `hocalar`, `ayarlar/portal` (dönem, kayıt defteri anahtarı — yalnız hoca okur).
+- Kişisel veri sınırı: portalda ad, soyad, kayıt referansı, grup, veli e-postası, dil ve ders kayıtları bulunur; **kimlik numarası, adres, telefon, doğum tarihi, fotoğraf girilmez.** Öğrenci verisi depoya girmez (Firestore'da durur).
+- Yönetim (Claude): `~/.claude/skills/ulucamii-site/scripts/portal-yonetim.py` — `ice-aktar` (kayıt defteri → Firestore), `hoca-ekle`, `ayar`, `listele`, `sil`. Hoca ekranında da «Kayıt defterinden yenile» ve «Davet gönder» var.
+- Gizlilik sayfası (3 dil) portal bölümü canlı duruma göre yazıldı: Firestore verisi Belçika'da, kimlik doğrulama hizmeti Google'ın ABD veri merkezlerinde (DPF + SCC), saklama 2 yıl, hesap silme info@ulucamii.be.
+
 ## Apps Script (kayıt + ihtida arka ucu)
 - Kaynak: `scripts/apps-script/ulucamii-Kod-vNN.gs` — canlı sürüm bu depodaki en yüksek numaralı dosyadır (Ağu 2026 sonu itibarıyla v14: e-posta kimliği, müfredat eki, ders kitapları bilgisi).
 - Dağıtım Apps Script web editöründen yapılır, her seferinde **"Nouvelle version"** seçilir (ayrıntı: `scripts/apps-script/README.md`).

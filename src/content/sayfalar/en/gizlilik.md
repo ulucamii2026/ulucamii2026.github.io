@@ -1,8 +1,8 @@
 ---
 baslik: Privacy Policy
 altBaslik: Information on how personal data is handled on this website.
-aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the planned member/parent portal.
-guncelleme: 2026-08-25
+aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the Qur’an school parents’ portal.
+guncelleme: 2026-09-06
 ---
 
 <p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur’an course registration, sending an e-mail).</p>
@@ -65,17 +65,20 @@ When you join the association, a member record is kept about you. This register 
 - **Access:** only mandated members of the administrative body have access to the register. Data is never sold, transferred, or shared in WhatsApp groups or similar channels.
 - **Record of processing:** the association maintains a written record of its processing activities in accordance with Article 30 GDPR.
 
-## Future Member / Parent Portal
+## Parents’ Portal (Qur’an School) and Future Member Portal
 
-At present, this site does **not** have a live member or parent portal. The principles envisaged for the member and Qur’an-school parent/student tracking portal planned for future activation are as follows:
+The Qur’an school **parents’ portal** has been live since 6 September 2026: [/en/parents-portal/](/en/parents-portal/). The member portal is not yet open; the principles below apply to both.
 
-- **Infrastructure:** the portal will run on Google Firebase (Google Ireland Ltd.), using an e-mail and password account-creation method.
-- **Data location:** data will be hosted within the European Union, in the Belgium (europe-west1) region.
-- **Purpose:** management of membership and dues; tracking of Qur’an school student attendance and programme.
-- **Legal basis:** for membership data, the contractual relationship between the association and the member; for data relating to a child, the consent of the parent/legal guardian. In Belgium, the processing of data relating to children under 13 is lawful only with the consent of the parent/legal guardian.
-- **Data on religious affiliation:** membership of a mosque association is, by its nature, information indicating religious affiliation, and is classified as “special category data” under the GDPR. This data is processed under the association exemption defined in GDPR Art. 9(2)(d): it is limited strictly to members, former members, and persons who maintain regular contact with the association’s activities, and it is **never disclosed outside the association** without the explicit consent of the data subject.
-- **Data minimisation — the register and the portal are not the same thing:** the member register may contain the information described in the previous section; **the portal will not contain all of it.** National register numbers and home addresses will not be transferred to the portal; it will hold only the minimum a member needs in order to view their own dues status and update their contact details.
-- **Retention periods:** membership data is kept for at most 2 years from the end of membership; Qur’an school student data is kept for at most 2 years from the end of the relevant academic period. Legal accounting records are kept separately and for longer, in line with the general retention period under Belgian law (approximately 7 years).
+- **Infrastructure:** the portal runs on Google Firebase: *Firebase Authentication* for accounts and sign-in, *Cloud Firestore* for the portal data. For these services Google acts as data processor (Firebase Data Processing and Security Terms). The site’s pages are hosted on GitHub Pages; portal data does not pass through GitHub.
+- **Data location:** portal data (Cloud Firestore) is hosted within the European Union, in the Belgium (europe-west1) region. The authentication service, however, is operated by Google only from data centres in the United States, so sign-in data (e-mail address, password hash, IP address and browser information at sign-in) is processed in the United States. This transfer is covered by Google LLC’s certification under the EU-U.S. Data Privacy Framework and by the EU Standard Contractual Clauses. Google keeps sign-in IP logs for a few weeks; when an account is deleted, authentication data is removed within at most 180 days.
+- **Creating an account:** a one-time sign-in link is sent to the parent’s e-mail address given on the registration form; the parent opens the link and chooses their own password. No identity number, date of birth or any other personal data is requested or used for sign-in.
+- **Data held in the portal:** the student’s first and last name, registration reference, group, the parent’s e-mail address and contact language; attendance records per lesson day; progress, evaluations and notes entered by the teacher; weekly memorisation and homework, school announcements; the parent’s messages to the teacher (absence excuse, contact, question). **The portal holds no national register number, home address, phone number, date of birth or photo.**
+- **Who can see it:** each parent sees only their own child’s records; this limit is enforced by server-side security rules. The school’s teachers see all students’ records and enter the data.
+- **Purpose:** tracking the Qur’an school student’s attendance, progress and homework, and parent–teacher communication; later, membership and dues management.
+- **Legal basis:** for membership data, the contractual relationship between the association and the member; for data relating to a child, the consent of the parent/legal guardian given at registration. In Belgium, the processing of data relating to children under 13 is lawful only with the consent of the parent/legal guardian.
+- **Data on religious affiliation:** membership of a mosque association and enrolment in the Qur’an school are, by their nature, information indicating religious affiliation, and are classified as “special category data” under the GDPR. This data is processed under the association exemption defined in GDPR Art. 9(2)(d): it is limited strictly to members, former members, and persons who maintain regular contact with the association’s activities, and it is **never disclosed outside the association** without the explicit consent of the data subject.
+- **Data minimisation — the register and the portal are not the same thing:** the registration register and the member register may contain the information described in the previous sections; **the portal does not contain all of it.** National register numbers and home addresses are not transferred to the portal; it holds only the minimum needed for tracking and communication.
+- **Retention periods:** membership data is kept for at most 2 years from the end of membership; Qur’an school student data and portal records are kept for at most 2 years from the end of the relevant academic period. A parent’s account is deleted earlier on request (info@ulucamii.be). Legal accounting records are kept separately and for longer, in line with the general retention period under Belgian law (approximately 7 years).
 
 ## Your Rights
 

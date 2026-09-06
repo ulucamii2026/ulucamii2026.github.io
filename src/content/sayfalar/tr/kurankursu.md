@@ -120,6 +120,6 @@ Kursumuz ayrıca Namur bölgesinde düzenlenen **bilgi yarışmalarına** katıl
 - Yılda **261 ders saati**
 - Kayıt ve dersler **tamamen ücretsiz**
 
-## Veli portalı (yakında)
+## Veli portalı
 
-Kayıtlı öğrencilerin velileri için bir **veli portalı** hazırlanmaktadır. Portal üzerinden öğrencinin **devam durumu**, haftalık **ders programı** ve kursla ilgili **duyurular** takip edilebilecektir; durumu sağdaki kutudan izleyebilirsiniz. Bu özellik hayata geçtiğinde ayrıca duyurulacaktır.
+Kayıtlı öğrencilerin velileri için **veli portalı** açıldı: [ulucamii.be/tr/veli-portali/](/tr/veli-portali/). Portalda öğrencinin **yoklama** kayıtları, **ilerleme** ve değerlendirmeleri, haftalık **ezber-ödev** bilgileri ve kurs **duyuruları** görülür; veli mazeret bildirebilir, hocaya soru gönderebilir. Giriş için kayıt formunda verdiğiniz veli e-posta adresi yeterlidir: adresinize gelen tek kullanımlık bağlantıyla şifrenizi kendiniz belirlersiniz. Portal Türkçe, Fransızca ve İngilizce çalışır; tutulan veriler [gizlilik sayfasında](/tr/gizlilik/) açıklanmıştır.

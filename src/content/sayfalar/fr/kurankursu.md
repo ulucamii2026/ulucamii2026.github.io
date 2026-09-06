@@ -120,6 +120,6 @@ Notre école participe également aux **concours de connaissances religieuses** 
 - **261 heures** de cours par an
 - Inscription et cours **entièrement gratuits**
 
-## Portail des parents (bientôt)
+## Portail des parents
 
-Un **portail des parents** est en préparation pour les parents des élèves inscrits. Il permettra de suivre la **présence** de l’élève, le **programme hebdomadaire** des cours et les **annonces** liées à l’école coranique ; vous pourrez suivre son avancement dans l’encart à droite de cette page.
+Le **portail des parents** est ouvert aux parents des élèves inscrits : [ulucamii.be/fr/portail-parents/](/fr/portail-parents/). Il présente les **présences** de l’élève, sa **progression** et ses évaluations, la **mémorisation et les devoirs** de la semaine ainsi que les **annonces** de l’école ; le parent peut y justifier une absence ou poser une question à l’enseignant. Pour se connecter, l’adresse e-mail du parent indiquée dans le formulaire d’inscription suffit : un lien à usage unique vous est envoyé et vous choisissez vous-même votre mot de passe. Le portail est disponible en turc, en français et en anglais ; les données conservées sont décrites sur la [page de confidentialité](/fr/confidentialite/).

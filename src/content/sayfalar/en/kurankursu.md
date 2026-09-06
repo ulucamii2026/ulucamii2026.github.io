@@ -120,6 +120,6 @@ Our school also takes part in **knowledge competitions** held in the Namur regio
 - **261 lesson hours** per year
 - Registration and lessons are **entirely free of charge**
 
-## Parents’ Portal (coming soon)
+## Parents’ portal
 
-A **parents’ portal** is being prepared for parents of enrolled students. Through the portal, a student’s **attendance record**, weekly **lesson schedule** and school-related **announcements** will be available to follow; you can track its status from the box on the right. This feature will be announced separately once it goes live.
+The **parents’ portal** is open to parents of enrolled students: [ulucamii.be/en/parents-portal/](/en/parents-portal/). It shows the student’s **attendance**, **progress** and evaluations, the week’s **memorisation and homework** and the school’s **announcements**; parents can report an absence or send the teacher a question. To sign in, the parent e-mail address given on the registration form is enough: a one-time link is sent to it and you choose your own password. The portal works in Turkish, French and English; the data held is described on the [privacy page](/en/privacy/).

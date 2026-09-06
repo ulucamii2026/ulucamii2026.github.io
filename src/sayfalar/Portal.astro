@@ -1,5 +1,5 @@
 ---
-/** Portal giriş kapısı — 2. aşamada Firebase Auth ile doldurulacak */
+/** Portal giriş kapısı — veli portalı canlı (6 Eyl 2026, Firebase Auth + Firestore, src/sayfalar/Veli.astro); üye portalı henüz yok */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yol } from '../i18n/utils';
@@ -9,25 +9,25 @@ const { dil } = Astro.props; const t = ceviri(dil);
 const m = dil === 'tr' ? {
   alt: 'Dernek üyeleri ve Kur’an kursu velileri için özel alan.',
   uye: 'Üye portalı', uyeA: 'Üyelik bilgileriniz, aidat geçmişiniz ve ödeme talimatları.',
-  veli: 'Veli portalı', veliA: 'Öğrencinizin sınıfı, devam durumu, ders programı ve öğretmen notları.',
-  yakinda: 'Portal yakında açılıyor. Hesap oluşturma daveti üyelere ve velilere e-posta ile gönderilecektir.',
+  veli: 'Veli portalı', veliA: 'Öğrencinizin yoklama kayıtları, ilerlemesi, haftalık ezber-ödevi, hoca notları ve kurs duyuruları. Giriş: kayıt formundaki veli e-postası.',
+  yakinda: 'Üye portalı yakında açılıyor; hesap oluşturma daveti üyelere e-posta ile gönderilecektir. Veli portalı açıktır.',
 } : dil === 'en' ? {
   alt: 'A private area for association members and Qur’an school parents.',
   uye: 'Members’ portal', uyeA: 'Your membership information, dues history and payment instructions.',
-  veli: 'Parents’ portal', veliA: 'Your child’s class, attendance, timetable and teacher’s notes.',
-  yakinda: 'The portal is opening soon. An invitation to create an account will be sent by e-mail to members and parents.',
+  veli: 'Parents’ portal', veliA: 'Your child’s attendance, progress, weekly memorisation and homework, teacher’s notes and school announcements. Sign in with the parent e-mail from the registration form.',
+  yakinda: 'The members’ portal is opening soon; an invitation to create an account will be sent to members by e-mail. The parents’ portal is open.',
 } : {
   alt: 'Espace réservé aux membres de l’association et aux parents d’élèves de l’école coranique.',
   uye: 'Portail des membres', uyeA: 'Vos informations d’adhésion, l’historique de vos cotisations et les instructions de paiement.',
-  veli: 'Portail des parents', veliA: 'Classe, présences, horaires et remarques de l’enseignant de votre enfant.',
-  yakinda: 'Le portail ouvrira prochainement. Une invitation à créer un compte sera envoyée par e-mail aux membres et aux parents.',
+  veli: 'Portail des parents', veliA: 'Présences, progression, mémorisation et devoirs de la semaine, remarques de l’enseignant et annonces de l’école pour votre enfant. Connexion avec l’e-mail du parent indiqué à l’inscription.',
+  yakinda: 'L’espace membres ouvrira prochainement ; une invitation à créer un compte sera envoyée par e-mail aux membres. Le portail des parents est ouvert.',
 };
 ---
 <Base baslik={t('nav.portal')} dil={dil} noindex>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.portal')} altBaslik={m.alt} />
   <div class="kapsayici py-10 grid gap-5 md:grid-cols-2">
     <div class="kart p-6"><p class="etiket etiket-vurgu">01</p><h2 class="mt-1">{m.uye}</h2><p class="mt-2 text-(--metin-2)">{m.uyeA}</p><p class="mt-4"><a href={yol(dil, 'uyelik')} class="dugme dugme-ikincil">{t('nav.uyelik')}</a></p></div>
-    <div class="kart p-6"><p class="etiket etiket-vurgu">02</p><h2 class="mt-1">{m.veli}</h2><p class="mt-2 text-(--metin-2)">{m.veliA}</p><p class="mt-4"><a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{t('nav.kurankursu')}</a></p></div>
+    <div class="kart p-6"><p class="etiket etiket-vurgu">02</p><h2 class="mt-1">{m.veli}</h2><p class="mt-2 text-(--metin-2)">{m.veliA}</p><p class="mt-4"><a href={yol(dil, 'veli')} class="dugme dugme-birincil">{t('nav.veli')}</a></p></div>
     <p class="uyari md:col-span-2">{m.yakinda}</p>
   </div>
 </Base>
