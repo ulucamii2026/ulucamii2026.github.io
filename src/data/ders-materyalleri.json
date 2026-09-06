@@ -3,6 +3,68 @@
   "depo": "ulucamii2026/ulucamii2026.github.io",
   "gunler": [
     {
+      "tarih": "2026-09-05",
+      "hafta": 1,
+      "gun": "Cumartesi",
+      "etiket": "ders-2026-09-05",
+      "plan": {
+        "dosya": "Ders-Plani-2026-09-05.pdf",
+        "boyut": 4600190,
+        "sayfa": 15,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Ders-Plani-2026-09-05.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Elif grubu harfleri — Elif, Be, Te, Se, Cim, Ha",
+          "konuFr": "Les lettres du groupe Elif — Elif, Be, Te, Se, Cim, Ha",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 15450184,
+          "slayt": 30,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "İtikat",
+          "kod": "itikat",
+          "konu": "İtikat · Camiye Gidiyorum 1, s. 11-16",
+          "konuFr": "Croyance · Camiye Gidiyorum 1, p. 11-16",
+          "baslik": {
+            "tr": "Benim Dinim İslam'dır",
+            "fr": "Ma religion est l'islam"
+          },
+          "dosya": "Sunum-2-Itikat-Benim-Dinim-Islamdir.pptx",
+          "boyut": 15977451,
+          "slayt": 21,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-2-Itikat-Benim-Dinim-Islamdir.pptx"
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "İbadet",
+          "kod": "ibadet",
+          "konu": "İbadet · Camiye Gidiyorum 1, s. 17-24",
+          "konuFr": "Adoration · Camiye Gidiyorum 1, p. 17-24",
+          "baslik": {
+            "tr": "İslam'ın Şartları",
+            "fr": "Les piliers de l'islam"
+          },
+          "dosya": "Sunum-3-Ibadet-Islamin-Sartlari.pptx",
+          "boyut": 17122433,
+          "slayt": 23,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-05/Sunum-3-Ibadet-Islamin-Sartlari.pptx"
+        }
+      ]
+    },
+    {
       "tarih": "2026-09-06",
       "hafta": 1,
       "gun": "Pazar",
@@ -19,7 +81,7 @@
           "saat": "11:00-11:40",
           "alan": "Kur'an-ı Kerim",
           "kod": "kuran",
-          "konu": "Hı Grubu Harfleri",
+          "konu": "Hı grubu harfleri — Hı, Dal, Zel, Ra, Ze, Sin",
           "konuFr": "Les lettres du groupe Khâ — Khâ, Dâl, Dhâl, Râ', Zây, Sîn",
           "baslik": {
             "tr": "Kur'an-ı Kerim",
@@ -35,7 +97,7 @@
           "saat": "12:00-12:40",
           "alan": "Siyer",
           "kod": "siyer",
-          "konu": "Peygamberimizi tanıyorum",
+          "konu": "Siyer · Camiye Gidiyorum 1, s. 37-42",
           "konuFr": "Vie du Prophète · Camiye Gidiyorum 1, p. 37-42",
           "baslik": {
             "tr": "Peygamberimizi Tanıyorum",
@@ -51,7 +113,7 @@
           "saat": "13:00-13:40",
           "alan": "Ahlak",
           "kod": "ahlak",
-          "konu": "Dinim, güzel söz ve davranışı öğütler",
+          "konu": "Ahlak · Camiye Gidiyorum 1, s. 25-30",
           "konuFr": "Morale · Camiye Gidiyorum 1, p. 25-30",
           "baslik": {
             "tr": "Dinim, Güzel Söz ve Davranışı Öğütler",
