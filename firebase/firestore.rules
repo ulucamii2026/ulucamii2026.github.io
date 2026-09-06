@@ -67,7 +67,16 @@ service cloud.firestore {
         && request.resource.data.tur in ['mazeret', 'iletisim', 'soru']
         && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000
         && request.resource.data.okundu == false;
-      allow update, delete: if hoca();
+      // Veli, hoca HENÜZ OKUMADIYSA kendi mesajını düzeltebilir (geri alma = silme her zaman kendi mesajında serbest).
+      allow update: if hoca()
+        || (aile()
+          && resource.data.eposta == eposta() && resource.data.okundu == false
+          && request.resource.data.eposta == resource.data.eposta
+          && request.resource.data.okundu == false
+          && request.resource.data.ref in aileOgrencileri()
+          && request.resource.data.tur in ['mazeret', 'iletisim', 'soru']
+          && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000);
+      allow delete: if hoca() || (girisli() && resource.data.eposta == eposta());
     }
   }
 }

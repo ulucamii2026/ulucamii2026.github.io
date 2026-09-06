@@ -53,6 +53,8 @@ export async function veliPortali(): Promise<void> {
     ok: '<path d="M9 5l7 7-7 7"/>',
     disari: '<path d="M7 17L17 7M8.5 7H17v8.5"/>',
     cikis: '<path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8"/><path d="M17 8l4 4-4 4M9.5 12H21"/>',
+    kalem: '<path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.83-2.83L5 17.5z"/><path d="M14 7l3 3"/>',
+    geri: '<path d="M9 7L4 12l5 5"/><path d="M4 12h11a5 5 0 0 1 0 10h-1.5"/>',
   };
   const simge = (ad: string) => `<svg class="simge" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${SIMGELER[ad] || ''}</svg>`;
   const bosDurum = (ikon: string, metin: string) => `<p class="bos">${simge(ikon)}<span>${esc(metin)}</span></p>`;
@@ -146,6 +148,7 @@ export async function veliPortali(): Promise<void> {
   type Durum = { eposta: string; aile: { ogrenciler: string[]; dil?: string; sifreVar?: boolean }; ogrenciler: Ogrenci[]; secili: number;
     odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[] }> };
   let durum: Durum | null = null;
+  let duzenlenenBildirim: string | null = null; // veli bir gönderdiği mesajı düzenliyorsa id'si
 
   const veriYukle = async (user: { email: string | null }): Promise<Durum | null> => {
     const eposta = (user.email || '').toLowerCase();
@@ -210,6 +213,7 @@ export async function veliPortali(): Promise<void> {
     if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.length }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
     const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
+    const duzen = duzenlenenBildirim ? d.bildirimler.find((b) => b.id === duzenlenenBildirim) || null : null;
 
     kok.innerHTML = `
       <div class="pano-hero">
@@ -271,26 +275,32 @@ export async function veliPortali(): Promise<void> {
         <section class="bolum">
           ${bas('gonder', m.bildir)}
           <p class="kucuk">${esc(m.bildirA)}</p>
-          <form data-form="bildir" novalidate>
-            <label>${esc(m.ogrenci)}<select name="ref">${d.ogrenciler.map((x) => `<option value="${esc(x.ref)}" ${x.ref === o?.ref ? 'selected' : ''}>${esc(x.ad)} ${esc(x.soyad)}</option>`).join('')}</select></label>
-            <label>${esc(m.bildir)}<select name="tur">${Object.entries(m.bildirTur).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('')}</select></label>
-            <label data-tarih-alani>${esc(m.bildirTarih)}<select name="tarih">${gelecekGunler.map((g) => `<option value="${g.tarih}">${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</option>`).join('')}</select></label>
-            <label>${esc(m.bildirMetin)}<textarea name="metin" maxlength="1000" required></textarea></label>
+          <form data-form="bildir" novalidate class="${duzen ? 'duzenleme' : ''}">
+            ${duzen ? `<p class="duzen-not">${simge('kalem')}<span>${esc(m.mesajDuzenle)}</span></p>` : ''}
+            <label>${esc(m.ogrenci)}<select name="ref">${d.ogrenciler.map((x) => `<option value="${esc(x.ref)}" ${x.ref === (duzen ? duzen.ref : o?.ref) ? 'selected' : ''}>${esc(x.ad)} ${esc(x.soyad)}</option>`).join('')}</select></label>
+            <label>${esc(m.bildir)}<select name="tur">${Object.entries(m.bildirTur).map(([k, v]) => `<option value="${k}" ${duzen && duzen.tur === k ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select></label>
+            <label data-tarih-alani>${esc(m.bildirTarih)}<select name="tarih">${gelecekGunler.map((g) => `<option value="${g.tarih}" ${duzen && duzen.tarih === g.tarih ? 'selected' : ''}>${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</option>`).join('')}</select></label>
+            <label>${esc(m.bildirMetin)}<textarea name="metin" maxlength="1000" required>${duzen ? esc(duzen.metin) : ''}</textarea></label>
             <p data-mesaj hidden class="not"></p>
-            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${simge('gonder')}${esc(m.gonder)}</button></div>
+            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${simge('gonder')}${esc(duzen ? m.guncelle : m.gonder)}</button>${duzen ? `<button type="button" class="dugme dugme-ikincil" data-eylem="bildirVazgec">${esc(m.vazgec)}</button>` : ''}</div>
           </form>
-          ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span>${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet ${x.okundu ? 'ogrendi' : ''}">${esc(x.okundu ? m.okundu : m.okunmadi)}</span><span class="kucuk" style="flex-basis:100%">${esc(x.metin)}</span></li>`).join('')}</ul>` : ''}
+          ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste mesajlar">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span class="kucuk">${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet ${x.okundu ? 'ogrendi' : 'mazeret'}">${esc(x.okundu ? m.okundu : m.okunmadi)}</span><span class="m-metin">${esc(x.metin)}</span>${!x.okundu && x.id ? `<span class="msj-eylem"><button type="button" class="kucuk-dugme" data-bildir-duzelt="${esc(x.id)}">${simge('kalem')}${esc(m.duzelt)}</button><button type="button" class="kucuk-dugme sil" data-bildir-sil="${esc(x.id)}">${simge('geri')}${esc(m.geriAl)}</button></span>` : ''}</li>`).join('')}</ul>` : ''}
         </section>
 
         <section class="bolum">
           ${bas('ayar', m.hesap)}
           <label>${esc(m.dil)}<select name="dil" data-dil-sec>${(['tr', 'fr', 'en'] as Dil[]).map((x) => `<option value="${x}" ${x === dil ? 'selected' : ''}>${x === 'tr' ? 'Türkçe' : x === 'fr' ? 'Français' : 'English'}</option>`).join('')}</select></label>
-          <p class="kucuk" style="margin:.75rem 0 0">${esc(m.girisBilgisi)}: <b>${esc(d.eposta)}</b></p>
-          <form data-form="sifreDegistir" novalidate style="margin-top:.3rem">
-            <label>${esc(m.yeniSifre)}<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label>
-            <p data-mesaj hidden class="not"></p>
-            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${esc(m.sifreDegistir)}</button></div>
-          </form>
+          <p class="kucuk" style="margin:.9rem 0 .1rem">${esc(m.girisBilgisi)}</p>
+          <p style="margin:0;font-weight:600;overflow-wrap:anywhere">${esc(d.eposta)}</p>
+          <details class="katlanir" style="margin-top:.95rem">
+            <summary>${simge('kilit')}<span>${esc(m.sifreDegistir)}</span></summary>
+            <form data-form="sifreDegistir" novalidate class="govde">
+              <p class="kucuk" style="margin-top:0">${esc(m.sifreDegistirA)}</p>
+              <label>${esc(m.yeniSifre)}<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label>
+              <p data-mesaj hidden class="not"></p>
+              <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${esc(m.kaydet)}</button></div>
+            </form>
+          </details>
         </section>
       </div>`;
     const turSec = kok.querySelector<HTMLSelectElement>('select[name=tur]'); const tarihAlani = kok.querySelector<HTMLElement>('[data-tarih-alani]');
@@ -322,9 +332,29 @@ export async function veliPortali(): Promise<void> {
   kok.addEventListener('click', async (ev) => {
     const devamBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-devam]');
     if (devamBtn) { const art = devamBtn.closest('.duyuru'); if (art) { const acik = art.classList.toggle('acik'); devamBtn.textContent = acik ? m.dahaAz : m.devaminiOku; } return; }
+    const silBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-bildir-sil]');
+    if (silBtn && durum) {
+      const id = silBtn.dataset.bildirSil as string;
+      if (!confirm(m.geriAlOnay)) return;
+      try {
+        await fs.deleteDoc(fs.doc(db, 'bildirimler', id));
+        durum.bildirimler = durum.bildirimler.filter((b) => b.id !== id);
+        if (duzenlenenBildirim === id) duzenlenenBildirim = null;
+        panoCiz(); kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.geriAlindi)}</p>`);
+      } catch (e) { kok.insertAdjacentHTML('afterbegin', `<p class="not hata">${esc(hataMetni(e))}</p>`); }
+      return;
+    }
+    const duzeltBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-bildir-duzelt]');
+    if (duzeltBtn && durum) {
+      duzenlenenBildirim = duzeltBtn.dataset.bildirDuzelt as string;
+      panoCiz();
+      kok.querySelector<HTMLElement>('form[data-form=bildir]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
     const hedef = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem], [data-sec]');
     if (!hedef) return;
-    if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); localStorage.removeItem('veliEposta'); durum = null; girisEkrani(); return; }
+    if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); localStorage.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
+    if (hedef.dataset.eylem === 'bildirVazgec') { duzenlenenBildirim = null; panoCiz(); return; }
     if (hedef.dataset.eylem === 'atla' && a.currentUser) { await panoyaGec(a.currentUser); return; }
     if (hedef.dataset.eylem === 'sifremiUnuttum') {
       const form = hedef.closest('form') as HTMLFormElement; const eposta = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();
@@ -400,11 +430,21 @@ export async function veliPortali(): Promise<void> {
           const tur = al('tur'); const ref = al('ref'); const metin = al('metin');
           if (!metin) { mesaj(form, m.bildirMetin, 'hata'); break; }
           const ogr = durum.ogrenciler.find((x) => x.ref === ref);
+          const ogrenciAd = ogr ? `${ogr.ad} ${ogr.soyad}` : '';
+          const tarih = tur === 'mazeret' ? al('tarih') : null;
+          if (duzenlenenBildirim) {
+            const dbid = duzenlenenBildirim;
+            await fs.updateDoc(fs.doc(db, 'bildirimler', dbid), { ref, tur, metin: metin.slice(0, 1000), ogrenciAd, dil, tarih });
+            const yer = durum.bildirimler.find((b) => b.id === dbid);
+            if (yer) { yer.ref = ref; yer.tur = tur; yer.metin = metin; yer.tarih = tarih || undefined; }
+            duzenlenenBildirim = null;
+            panoCiz(); kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.guncellendi)}</p>`); break;
+          }
           const kayit: Record<string, unknown> = { ref, tur, metin: metin.slice(0, 1000), eposta: durum.eposta, okundu: false, zaman: fs.serverTimestamp(),
-            ogrenciAd: ogr ? `${ogr.ad} ${ogr.soyad}` : '', dil };
-          if (tur === 'mazeret') kayit.tarih = al('tarih');
+            ogrenciAd, dil };
+          if (tur === 'mazeret') kayit.tarih = tarih;
           const yeni = await fs.addDoc(fs.collection(db, 'bildirimler'), kayit);
-          durum.bildirimler.push({ id: yeni.id, ref, tur, metin, okundu: false, tarih: kayit.tarih as string | undefined, zaman: new Date().toISOString() });
+          durum.bildirimler.push({ id: yeni.id, ref, tur, metin, okundu: false, tarih: tarih || undefined, zaman: new Date().toISOString() });
           panoCiz(); kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.gonderildi)}</p>`); break;
         }
       }

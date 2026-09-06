@@ -187,6 +187,30 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .alt-serit .kucuk { display: inline-flex; align-items: center; gap: 0.4rem; }
   .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 
+  /* --- gönderilen mesajlar (düzelt / geri al) --- */
+  .portal .mesajlar .m-metin { flex-basis: 100%; margin: 0.15rem 0 0; color: var(--metin); font-size: 0.9rem; line-height: 1.5; }
+  .portal .mesajlar .msj-eylem { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem; }
+  .portal .kucuk-dugme { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; padding: 0.42rem 0.7rem; border-radius: var(--radius-kose); border: 1px solid var(--cizgi-etkilesim); background: transparent; color: var(--metin-2); cursor: pointer; transition: color .15s, border-color .15s, background .15s; }
+  .portal .kucuk-dugme:hover { color: var(--metin); border-color: var(--metin-2); background: var(--zemin-2); }
+  .portal .kucuk-dugme .simge { width: 0.85rem; height: 0.85rem; flex: none; }
+  .portal .kucuk-dugme.sil { --k: var(--color-kiremit); color: color-mix(in oklab, var(--k) 78%, var(--metin)); border-color: color-mix(in oklab, var(--k) 34%, var(--cizgi)); }
+  .portal .kucuk-dugme.sil:hover { background: color-mix(in oklab, var(--k) 12%, var(--zemin)); border-color: color-mix(in oklab, var(--k) 52%, var(--cizgi)); color: color-mix(in oklab, var(--k) 82%, var(--metin)); }
+
+  /* --- mesaj düzenleme kipi --- */
+  .portal form.duzenleme { background: color-mix(in oklab, var(--vurgu-2) 7%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--vurgu-2) 26%, var(--cizgi)); border-radius: var(--radius-kose); padding: 0.9rem 0.85rem 1rem; margin-top: 0.35rem; }
+  .portal .duzen-not { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.75rem; padding: 0.42rem 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em; background: color-mix(in oklab, var(--vurgu-2) 14%, var(--zemin)); color: color-mix(in oklab, var(--vurgu-2) 72%, var(--metin)); border: 1px solid color-mix(in oklab, var(--vurgu-2) 30%, var(--cizgi)); border-radius: var(--radius-kose); }
+  .portal .duzen-not .simge { width: 0.9rem; height: 0.9rem; flex: none; }
+
+  /* --- katlanır (şifre değiştir) --- */
+  .portal .katlanir summary { cursor: pointer; display: flex; align-items: center; gap: 0.55rem; font-weight: 600; font-size: 0.92rem; padding: 0.62rem 0.75rem; list-style: none; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); transition: border-color .15s; }
+  .portal .katlanir summary:hover { border-color: var(--cizgi-etkilesim); }
+  .portal .katlanir summary::-webkit-details-marker { display: none; }
+  .portal .katlanir summary .simge { color: var(--vurgu-2); width: 1rem; height: 1rem; flex: none; }
+  .portal .katlanir summary::after { content: ''; width: 0.72rem; height: 0.72rem; margin-left: auto; background-color: var(--metin-2); -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E") no-repeat center / contain; mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E") no-repeat center / contain; transform: rotate(-90deg); transition: transform .2s; }
+  .portal .katlanir[open] summary { border-color: var(--cizgi-etkilesim); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+  .portal .katlanir[open] summary::after { transform: rotate(0); }
+  .portal .katlanir .govde { padding: 0.95rem 0.85rem 0.3rem; border: 1px solid var(--cizgi); border-top: 0; border-radius: 0 0 var(--radius-kose) var(--radius-kose); }
+
   /* --- giriş sonrası hareket (bir kez) --- */
   @media (prefers-reduced-motion: no-preference) {
     .portal .pano-hero, .portal .cocuk-sec, .portal .bolum, .portal .giris-kart, .portal .giris-hos { animation: portal-belir 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
