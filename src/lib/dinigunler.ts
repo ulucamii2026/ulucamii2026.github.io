@@ -34,5 +34,7 @@ export const DINI_GUNLER: DiniGun[] = [
 
 /** Bugünden (Brüksel) itibaren yaklaşan günler; çok günlü bayramlar son günü geçene dek listede kalır. */
 export function yaklasanDiniGunler(bugun: string): DiniGun[] {
-  return DINI_GUNLER.filter((g) => (g.bitis ?? g.tarih) >= bugun);
+  // .sort(): DINI_GUNLER elle kronolojik tutulsa da sıralamayı garanti altına al —
+  // Namaz.astro'daki «Yaklaşan» rozeti gunlerListe[0]'ın gerçekten en yakın gün olmasına dayanır.
+  return DINI_GUNLER.filter((g) => (g.bitis ?? g.tarih) >= bugun).sort((a, b) => a.tarih.localeCompare(b.tarih));
 }

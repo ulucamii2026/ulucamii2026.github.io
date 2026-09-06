@@ -84,7 +84,12 @@ function katla(satir: string): string {
 }
 
 export function etkinlikIcsUret(e: IcsEtkinlik, dil: 'tr' | 'fr' | 'en'): string {
-  const ayristirilan = saatAyristir(e.saat);
+  // Çok günlü etkinlikte `saat` çoğu kez tekrarlayan/aralıklı bir programı anlatır
+  // (ör. "Cuma günleri, saat 12.00"); tek bir saati hem başlangıca hem bitişe uygulamak
+  // haftalarca süren kesintisiz tek bir randevu üretir. Bu durumda tüm-gün dalına düşülür
+  // ("yanlış saat göstermektense tüm gün" — bu dosyanın kuralı).
+  const cokGunlu = !!e.bitis && e.bitis.getTime() !== e.baslangic.getTime();
+  const ayristirilan = cokGunlu ? null : saatAyristir(e.saat);
   const satirlar: string[] = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',

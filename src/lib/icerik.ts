@@ -22,9 +22,19 @@ export async function etkinlikler(dil: Dil) {
   return dilSuz(hepsi, icerikDili(dil)).sort((a, b) => b.data.baslangic.getTime() - a.data.baslangic.getTime());
 }
 
+/** Brüksel takvim gününe göre bir Date'in 'YYYY-MM-DD' karşılığı (içerik tarihleri UTC gece
+ *  yarısı; derleme makinesinin saati ne olursa olsun doğru takvim gününü verir). */
+export const gunBrussels = (d: Date): string => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+/** Dünün Brüksel tarihi — etkinlik "yaklaşan/geçmiş" sınırı (dün dâhil). Sabit 24 saatlik
+ *  kayan pencere yerine takvim günü kullanılır: sonuç, derlemenin günün hangi saatinde
+ *  koştuğuna bağlı olmaz (site her gün 03:30 UTC'de yeniden yayımlanır). */
+export const dunBrussels = (): string => new Date(Date.parse(bugunBrussels() + 'T12:00:00Z') - 86400000).toISOString().slice(0, 10);
+/** Bir etkinliğin (bitişi varsa bitiş, yoksa başlangıç) Brüksel takvim günü. */
+export const etkinlikGunu = (e: { data: { baslangic: Date; bitis?: Date } }): string => gunBrussels(e.data.bitis ?? e.data.baslangic);
+
 export async function yaklasanEtkinlikler(dil: Dil, adet = 3) {
-  const simdi = Date.now() - 864e5; // dün dahil
-  const liste = (await etkinlikler(dil)).filter((e) => (e.data.bitis ?? e.data.baslangic).getTime() >= simdi);
+  const dun = dunBrussels();
+  const liste = (await etkinlikler(dil)).filter((e) => etkinlikGunu(e) >= dun);
   return liste.sort((a, b) => a.data.baslangic.getTime() - b.data.baslangic.getTime()).slice(0, adet);
 }
 

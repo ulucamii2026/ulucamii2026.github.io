@@ -68,7 +68,10 @@ const breadcrumbJsonLd = {
 /* Event startDate: içerikteki 'saat' alanı ayrıştırılabiliyorsa (ör. "20.00") Europe/Brussels
    yerel saati olarak doğru UTC ana çevrilir; aksi hâlde (serbest metin saat) tarih-yalnız
    (00:00Z) davranışı korunur — .ics üretimiyle (lib/ics.ts) aynı mantık (jsonld#3). */
-const etkinlikSaati = tur === 'etkinlik' ? saatAyristir(d.saat) : null;
+// Çok günlü etkinlikte 'saat' tekrarlayan programı anlatır; tek saati başlangıç+bitişe
+// uygulamak yanlış Event aralığı üretir — tarih-yalnız davran (lib/ics.ts ile aynı mantık).
+const cokGunluEtkinlik = tur === 'etkinlik' && !!d.bitis && (d.bitis as Date).getTime() !== (d.baslangic as Date).getTime();
+const etkinlikSaati = tur === 'etkinlik' && !cokGunluEtkinlik ? saatAyristir(d.saat) : null;
 const etkinlikBaslangicTarihi: Date = etkinlikSaati
   ? brukselYerelSaatiUtcyeCevir(
       (d.baslangic as Date).getUTCFullYear(),

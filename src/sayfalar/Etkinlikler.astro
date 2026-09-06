@@ -4,13 +4,13 @@ import SayfaBasligi from '../components/SayfaBasligi.astro';
 import EtkinlikKarti from '../components/EtkinlikKarti.astro';
 import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { etkinlikler } from '../lib/icerik';
+import { etkinlikler, dunBrussels, etkinlikGunu } from '../lib/icerik';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const liste = await etkinlikler(dil);
-const simdi = Date.now() - 864e5;
-const yaklasan = liste.filter((e) => (e.data.bitis ?? e.data.baslangic).getTime() >= simdi).sort((a, b) => a.data.baslangic.getTime() - b.data.baslangic.getTime());
-const gecmis = liste.filter((e) => (e.data.bitis ?? e.data.baslangic).getTime() < simdi);
+const dun = dunBrussels(); // dün dâhil; Brüksel takvim günü (derleme saatinden bağımsız)
+const yaklasan = liste.filter((e) => etkinlikGunu(e) >= dun).sort((a, b) => a.data.baslangic.getTime() - b.data.baslangic.getTime());
+const gecmis = liste.filter((e) => etkinlikGunu(e) < dun);
 const altBaslik = dil === 'tr'
   ? 'Bayram ve kandil programları, Ramazan etkinlikleri, kurban organizasyonu, yarışmalar ve afişlerimiz.'
   : dil === 'en'

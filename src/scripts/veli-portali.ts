@@ -34,7 +34,7 @@ export async function veliPortali(): Promise<void> {
   const m: VeliMetin = veliMetni(dil);
   const veri = JSON.parse(veriEl.textContent || '{}') as Veri;
   const tarihYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }) =>
-    new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00'));
+    iso ? new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00')) : '';
   const cok = (o: Record<string, string> | undefined) => (o ? (o[dil] || o.fr || o.tr || '') : '');
   // Duyuru/ödev metnindeki https bağlantılarını tıklanabilir yapar (önce kaçış, sonra bağlantı; sondaki noktalama bağlantıya girmez)
   const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
@@ -217,11 +217,16 @@ export async function veliPortali(): Promise<void> {
     const durumAd = (k: string) => (m.durum as Record<string, string>)[k] || k;
     const kunyeler: { ikon: string; deger: string; etiket: string }[] = [];
     if (toplamDers) kunyeler.push({ ikon: 'takvim', deger: `${say.var}/${toplamDers}`, etiket: m.ozetDevam });
-    if (kuranNo >= 0) kunyeler.push({ ikon: 'grafik', deger: `${kuranNo + 1}/${kuranSirasi.length}`, etiket: m.ozetKuran });
+    if (kuranNo >= 0 && kuranSirasi[kuranNo]) kunyeler.push({ ikon: 'grafik', deger: `${kuranNo + 1}/${kuranSirasi.length}`, etiket: m.ozetKuran });
     if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.reduce((s, g) => s + g.dersler.length, 0) }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
     const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
     const duzen = duzenlenenBildirim ? d.bildirimler.find((b) => b.id === duzenlenenBildirim) || null : null;
+    // Mazeret düzenlenirken orijinal tarih gelecek penceresinin dışına düşmüşse seçeneklerin başına
+    // eklenir; yoksa hiçbir <option> selected olmaz, tarayıcı sessizce ilk günü gösterir ve kaydeder.
+    const bildirTarihleri = duzen?.tarih && !gelecekGunler.some((g) => g.tarih === duzen.tarih)
+      ? [duzen.tarih, ...gelecekGunler.map((g) => g.tarih)]
+      : gelecekGunler.map((g) => g.tarih);
 
     kok.innerHTML = `
       <div class="pano-hero">
@@ -288,7 +293,7 @@ export async function veliPortali(): Promise<void> {
             ${duzen ? `<p class="duzen-not">${simge('kalem')}<span>${esc(m.mesajDuzenle)}</span></p>` : ''}
             <label>${esc(m.ogrenci)}<select name="ref">${d.ogrenciler.map((x) => `<option value="${esc(x.ref)}" ${x.ref === (duzen ? duzen.ref : o?.ref) ? 'selected' : ''}>${esc(x.ad)} ${esc(x.soyad)}</option>`).join('')}</select></label>
             <label>${esc(m.bildir)}<select name="tur">${Object.entries(m.bildirTur).map(([k, v]) => `<option value="${k}" ${duzen && duzen.tur === k ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select></label>
-            <label data-tarih-alani>${esc(m.bildirTarih)}<select name="tarih">${gelecekGunler.map((g) => `<option value="${g.tarih}" ${duzen && duzen.tarih === g.tarih ? 'selected' : ''}>${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</option>`).join('')}</select></label>
+            <label data-tarih-alani>${esc(m.bildirTarih)}<select name="tarih">${bildirTarihleri.map((gt) => `<option value="${gt}" ${duzen && duzen.tarih === gt ? 'selected' : ''}>${esc(tarihYaz(gt, { weekday: 'long', day: 'numeric', month: 'long' }))}</option>`).join('')}</select></label>
             <label>${esc(m.bildirMetin)}<textarea name="metin" maxlength="1000" required>${duzen ? esc(duzen.metin) : ''}</textarea></label>
             <p data-mesaj hidden class="not"></p>
             <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${simge('gonder')}${esc(duzen ? m.guncelle : m.gonder)}</button>${duzen ? `<button type="button" class="dugme dugme-ikincil" data-eylem="bildirVazgec">${esc(m.vazgec)}</button>` : ''}</div>

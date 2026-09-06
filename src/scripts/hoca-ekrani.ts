@@ -369,12 +369,12 @@ export async function hocaEkrani(): Promise<void> {
         el.parentElement!.querySelectorAll<HTMLElement>('.yk-dugme').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.durum === y.dersler[sr]))); return; }
       if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '' }; }); ciz(); return; }
       if (el.dataset.eylem === 'yoklamaKaydet') {
-        kok.querySelectorAll<HTMLInputElement>('[data-yok-not]').forEach((i) => { const y = S!.yoklama[i.dataset.yokNot!]; if (y) y.not = i.value.trim(); });
+        kok.querySelectorAll<HTMLInputElement>('[data-yok-not]').forEach((i) => { const ref = i.dataset.yokNot!; const not = i.value.trim(); const y = S!.yoklama[ref]; if (y) y.not = not; else if (not) S!.yoklama[ref] = { dersler: {}, not }; });
         const b = fs.writeBatch(db); let n = 0;
         for (const [ref, y] of Object.entries(S.yoklama)) {
           const id = fs.doc(db, 'yoklama', `${ref}_${S.tarih}`);
           const dersler: Record<string, string> = {}; for (const s of Object.keys(y.dersler)) if (y.dersler[s]) dersler[s] = y.dersler[s];
-          if (Object.keys(dersler).length) { b.set(id, { ref, tarih: S.tarih, dersler, not: y.not || '', kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
+          if (Object.keys(dersler).length || y.not) { b.set(id, { ref, tarih: S.tarih, dersler, not: y.not || '', kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
         }
         await b.commit(); ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
       }
