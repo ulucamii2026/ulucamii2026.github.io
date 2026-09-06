@@ -33,6 +33,8 @@ export async function veliPortali(): Promise<void> {
   const tarihYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }) =>
     new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00'));
   const cok = (o: Record<string, string> | undefined) => (o ? (o[dil] || o.fr || o.tr || '') : '');
+  // Duyuru/ödev metnindeki https bağlantılarını tıklanabilir yapar (önce kaçış, sonra bağlantı; sondaki noktalama bağlantıya girmez)
+  const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
   const alanAdi = (kod: string) => (m.alan as Record<string, string>)[kod] || kod;
 
   const [{ firebaseUygulamasi }, auth, fs] = await Promise.all([import('../lib/firebase'), import('firebase/auth'), import('firebase/firestore/lite')]);
@@ -185,8 +187,8 @@ export async function veliPortali(): Promise<void> {
               <span>${g.dersler.map((x) => `${x.no}. ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span>`).join(' · ')}</span>
               ${g.dersler.some((x) => x.ezber.length) ? `<span class="rozet">${esc(m.ezber)}: <span lang="tr">${esc(g.dersler.flatMap((x) => x.ezber).join(', '))}</span></span>` : ''}
               ${veri.materyalGunleri.includes(g.tarih) ? `<a href="${esc(veri.materyalYolu)}#g-${g.tarih}">${esc(m.materyal)} →</a>` : ''}</li>`).join('')}</ul>` : ''}
-          ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p style="white-space:pre-line">${esc(cok(haftaOdev.ezber) || '—')}</p>
-            <h3>${esc(m.odev)}</h3><p style="white-space:pre-line">${esc(cok(haftaOdev.odev) || '—')}</p>
+          ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p style="white-space:pre-line">${bagla(cok(haftaOdev.ezber) || '—')}</p>
+            <h3>${esc(m.odev)}</h3><p style="white-space:pre-line">${bagla(cok(haftaOdev.odev) || '—')}</p>
             ${haftaOdev.materyal ? `<p><a href="${esc(haftaOdev.materyal)}">${esc(m.materyal)} →</a></p>` : ''}` : `<p class="kucuk">${esc(m.odevYok)}</p>`}
           ${siradaki ? `<p class="kucuk" style="margin-top:.8rem"><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</p>` : ''}
         </section>
@@ -221,7 +223,7 @@ export async function veliPortali(): Promise<void> {
 
         <section class="bolum">
           <h2>${esc(m.duyurular)}</h2>
-          ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => `<div class="duyuru"><span class="kucuk">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><br><b>${esc(cok(x.baslik))}</b><p>${esc(cok(x.metin))}</p></div>`).join('') : `<p class="kucuk">${esc(m.duyuruYok)}</p>`}
+          ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => `<div class="duyuru"><span class="kucuk">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><br><b>${esc(cok(x.baslik))}</b><p>${bagla(cok(x.metin))}</p></div>`).join('') : `<p class="kucuk">${esc(m.duyuruYok)}</p>`}
         </section>
 
         <section class="bolum">
