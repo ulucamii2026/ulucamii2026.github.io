@@ -195,6 +195,10 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   /* --- gönderilen mesajlar (düzelt / geri al) --- */
   .portal .mesajlar .m-metin { flex-basis: 100%; margin: 0.15rem 0 0; color: var(--metin); font-size: 0.9rem; line-height: 1.5; }
   .portal .mesajlar .msj-eylem { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem; }
+  .portal .hoca-yanit { flex-basis: 100%; margin: 0.5rem 0 0; padding: 0.6rem 0.75rem; border-radius: var(--radius-kose); background: color-mix(in oklab, var(--color-adacayi) 12%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--color-adacayi) 30%, var(--cizgi)); }
+  .portal .hoca-yanit .hy-bas { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in oklab, var(--color-adacayi) 70%, var(--metin)); }
+  .portal .hoca-yanit .hy-bas .simge { width: 0.85rem; height: 0.85rem; }
+  .portal .hoca-yanit p { margin: 0.3rem 0 0; white-space: pre-line; line-height: 1.5; font-size: 0.9rem; color: var(--metin); }
   .portal .kucuk-dugme { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; padding: 0.42rem 0.7rem; border-radius: var(--radius-kose); border: 1px solid var(--cizgi-etkilesim); background: transparent; color: var(--metin-2); cursor: pointer; transition: color .15s, border-color .15s, background .15s; }
   .portal .kucuk-dugme:hover { color: var(--metin); border-color: var(--metin-2); background: var(--zemin-2); }
   .portal .kucuk-dugme .simge { width: 0.85rem; height: 0.85rem; flex: none; }

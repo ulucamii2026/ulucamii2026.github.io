@@ -19,7 +19,7 @@ type Degerlendirme = { tarih: string; alan: string; olcut?: string; derece?: num
 type Not = { tarih: string; metin: string };
 type Odev = { tarih: string; hafta?: number; ezber?: Record<string, string>; odev?: Record<string, string>; materyal?: string; yayin: boolean };
 type Duyuru = { tarih: string; baslik: Record<string, string>; metin: Record<string, string>; yayin: boolean };
-type Bildirim = { id?: string; ref: string; tur: string; tarih?: string; metin: string; okundu: boolean; zaman?: { toDate?: () => Date } | string };
+type Bildirim = { id?: string; ref: string; tur: string; tarih?: string; metin: string; okundu: boolean; zaman?: { toDate?: () => Date } | string; yanit?: string; yanitZaman?: { toDate?: () => Date } | string };
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
 const yerel: Record<Dil, string> = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' };
@@ -293,7 +293,7 @@ export async function veliPortali(): Promise<void> {
             <p data-mesaj hidden class="not"></p>
             <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${simge('gonder')}${esc(duzen ? m.guncelle : m.gonder)}</button>${duzen ? `<button type="button" class="dugme dugme-ikincil" data-eylem="bildirVazgec">${esc(m.vazgec)}</button>` : ''}</div>
           </form>
-          ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste mesajlar">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span class="kucuk">${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet ${x.okundu ? 'ogrendi' : 'mazeret'}">${esc(x.okundu ? m.okundu : m.okunmadi)}</span><span class="m-metin">${esc(x.metin)}</span>${!x.okundu && x.id ? `<span class="msj-eylem"><button type="button" class="kucuk-dugme" data-bildir-duzelt="${esc(x.id)}">${simge('kalem')}${esc(m.duzelt)}</button><button type="button" class="kucuk-dugme sil" data-bildir-sil="${esc(x.id)}">${simge('geri')}${esc(m.geriAl)}</button></span>` : ''}</li>`).join('')}</ul>` : ''}
+          ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste mesajlar">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span class="kucuk">${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet ${x.yanit ? 'ogrendi' : x.okundu ? 'gec' : 'mazeret'}">${esc(x.yanit ? m.yanitlandi : x.okundu ? m.okundu : m.okunmadi)}</span><span class="m-metin">${esc(x.metin)}</span>${x.yanit ? `<div class="hoca-yanit"><span class="hy-bas">${simge('gonder')}${esc(m.hocaYaniti)}${x.yanitZaman ? ` · ${esc(zamanZ(x.yanitZaman))}` : ''}</span><p>${esc(x.yanit)}</p></div>` : ''}${!x.okundu && x.id ? `<span class="msj-eylem"><button type="button" class="kucuk-dugme" data-bildir-duzelt="${esc(x.id)}">${simge('kalem')}${esc(m.duzelt)}</button><button type="button" class="kucuk-dugme sil" data-bildir-sil="${esc(x.id)}">${simge('geri')}${esc(m.geriAl)}</button></span>` : ''}</li>`).join('')}</ul>` : ''}
         </section>
 
         <section class="bolum">
@@ -318,6 +318,7 @@ export async function veliPortali(): Promise<void> {
   };
   const zamanMs = (b: Bildirim) => { const z = b.zaman as { toDate?: () => Date } | string | undefined; return typeof z === 'string' ? Date.parse(z) : z?.toDate ? z.toDate().getTime() : 0; };
   const zamanYaz = (b: Bildirim) => { const ms = zamanMs(b); return ms ? new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ms)) : ''; };
+  const zamanZ = (z: { toDate?: () => Date } | string | undefined) => { const ms = typeof z === 'string' ? Date.parse(z) : z?.toDate ? z.toDate().getTime() : 0; return ms ? new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ms)) : ''; };
 
   const kayitYokEkrani = () => {
     kok.innerHTML = `<div class="giris-sar"><div class="giris-kart"><p class="not hata">${esc(m.kayitYok)}</p><div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}${esc(m.cikis)}</button></div></div></div>`;
