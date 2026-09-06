@@ -389,6 +389,7 @@ export async function hocaEkrani(): Promise<void> {
     if (!S) return;
     const ayar = await fs.getDoc(fs.doc(db, 'ayarlar', 'portal'));
     const anahtar = (ayar.data() as { gasAnahtari?: string } | undefined)?.gasAnahtari;
+    const atlanan = new Set<string>(((ayar.data() as { atlanan?: string[] } | undefined)?.atlanan) || []); // ayarlar/portal.atlanan: mükerrer/deneme kayıtlar (portal-yonetim.py ile aynı)
     if (!anahtar) { ustMesaj('ayarlar/portal.gasAnahtari yok.', 'hata'); return; }
     const j = await (await fetch(`${GAS}?islem=liste&anahtar=${encodeURIComponent(anahtar)}`)).json() as { ok?: boolean; kayitlar?: { basliklar: string[]; satirlar: string[][] } };
     if (!j.ok || !j.kayitlar) { ustMesaj('Kayıt defteri okunamadı.', 'hata'); return; }
@@ -398,14 +399,16 @@ export async function hocaEkrani(): Promise<void> {
     const guncel: Record<string, string[]> = {};
     for (const s of j.kayitlar.satirlar) {
       const ref = al(s, 'Referans'); if (!ref) continue;
-      if (trBuyuk(al(s, 'Öğrenci soyadı') + al(s, 'Öğrenci adı')).includes('TESTOGLU') || kokRef(ref) === 'UC-2026-0003') continue;
+      if (trBuyuk(al(s, 'Öğrenci soyadı') + al(s, 'Öğrenci adı')).includes('TESTOGLU') || kokRef(ref) === 'UC-2026-0003' || atlanan.has(kokRef(ref))) continue;
       const k = kokRef(ref); if (!guncel[k] || surum(ref) > surum(al(guncel[k], 'Referans'))) guncel[k] = s;
     }
     const b = fs.writeBatch(db); const simdi = new Date().toISOString(); let yeni = 0;
     for (const k of Object.keys(guncel).sort()) {
       const s = guncel[k]; const ep = al(s, 'Veli e-posta').toLowerCase(); const dil = (al(s, 'İletişim dili') || al(s, 'Form dili') || 'tr').toLowerCase();
       if (!S.ogrenciler.some((o) => o.ref === k)) yeni++;
-      b.set(fs.doc(db, 'ogrenciler', k), { ad: trBaslik(al(s, 'Öğrenci adı')), soyad: trBuyuk(al(s, 'Öğrenci soyadı')), veliler: fs.arrayUnion(ep), dil, kayitRef: al(s, 'Referans'), guncelleme: simdi, ...(S.ogrenciler.some((o) => o.ref === k) ? {} : { durum: 'aktif', grup: '' }) }, { merge: true });
+      const mevcut = S.ogrenciler.find((o) => o.ref === k);
+      const adAlanlari = mevcut && (mevcut as { adSabit?: boolean }).adSabit ? {} : { ad: trBaslik(al(s, 'Öğrenci adı')), soyad: trBuyuk(al(s, 'Öğrenci soyadı')) }; // adSabit: ad/soyad portalda düzeltildi, defterden ezilmez
+      b.set(fs.doc(db, 'ogrenciler', k), { ...adAlanlari, veliler: fs.arrayUnion(ep), dil, kayitRef: al(s, 'Referans'), guncelleme: simdi, ...(mevcut ? {} : { durum: 'aktif', grup: '' }) }, { merge: true });
       if (ep) b.set(fs.doc(db, 'aileler', ep), { ogrenciler: fs.arrayUnion(k), dil, adSoyad: trBaslik(al(s, 'Veli adı soyadı')), guncelleme: simdi }, { merge: true });
     }
     await b.commit();
