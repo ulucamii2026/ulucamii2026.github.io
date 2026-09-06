@@ -218,7 +218,7 @@ export async function veliPortali(): Promise<void> {
     const kunyeler: { ikon: string; deger: string; etiket: string }[] = [];
     if (toplamDers) kunyeler.push({ ikon: 'takvim', deger: `${say.var}/${toplamDers}`, etiket: m.ozetDevam });
     if (kuranNo >= 0) kunyeler.push({ ikon: 'grafik', deger: `${kuranNo + 1}/${kuranSirasi.length}`, etiket: m.ozetKuran });
-    if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.length }), etiket: m.ozetHafta });
+    if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.reduce((s, g) => s + g.dersler.length, 0) }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
     const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
     const duzen = duzenlenenBildirim ? d.bildirimler.find((b) => b.id === duzenlenenBildirim) || null : null;

@@ -21,6 +21,9 @@ const not = dil === 'tr'
   : 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Dans notre mosquée, la prière de l’aube est accomplie en congrégation environ 20 minutes avant le lever du soleil ; les heures des autres prières en congrégation sont affichées à la mosquée selon la saison.';
 
 const gunlerListe = yaklasanDiniGunler(bugun);
+// «Yaklaşan» vurgusu tek bir güne değil, en yakın tarihe düşen TÜM günlere verilir
+// (ör. Üç Ayların Başlangıcı ile Regaib Kandili aynı gün: ikisi de işaretlenir).
+const enYakinTarih = gunlerListe[0]?.tarih;
 const dg = dil === 'tr'
   ? { baslik: 'Dinî Günler ve Kandiller', alt: 'Diyanet İşleri Başkanlığı’nın resmî takvimine göre yaklaşan kandil geceleri, bayramlar ve önemli günler.', yaklasan: 'Yaklaşan', kaynakNot: 'Kaynak: Diyanet İşleri Başkanlığı dinî günler takvimi', kandil: 'Kandil', bayram: 'Bayram', gun: 'Önemli gün' }
   : dil === 'en'
@@ -71,8 +74,8 @@ const dg = dil === 'tr'
       <h2 class="mb-1 cetvel pt-4">{dg.baslik}</h2>
       <p class="text-(--metin-2) mb-5 max-w-prose">{dg.alt}</p>
       <ol class="grid gap-2 sm:grid-cols-2" role="list">
-        {gunlerListe.map((g, i) => (
-          <li class:list={['kart-kagit px-4 py-3 flex items-center gap-4', i === 0 && 'border-(--vurgu) bg-(--vurgu)/6']}>
+        {gunlerListe.map((g) => (
+          <li class:list={['kart-kagit px-4 py-3 flex items-center gap-4', g.tarih === enYakinTarih && 'border-(--vurgu) bg-(--vurgu)/6']}>
             <div class="text-center shrink-0 w-16">
               <span class="block font-serif text-[1.65rem] font-bold leading-none tabular-nums">
                 {new Date(g.tarih + 'T12:00:00').getDate()}{g.bitis ? '–' + new Date(g.bitis + 'T12:00:00').getDate() : ''}
@@ -83,7 +86,7 @@ const dg = dil === 'tr'
               <p class="font-semibold leading-snug">{g.ad[dil]}</p>
               <p class="etiket normal-case tracking-normal mt-0.5">{tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'long' })} · {hicriCevir(g.hicri, dil)}</p>
             </div>
-            {i === 0 && <span class="etiket etiket-vurgu ml-auto shrink-0">{dg.yaklasan}</span>}
+            {g.tarih === enYakinTarih && <span class="etiket etiket-vurgu ml-auto shrink-0">{dg.yaklasan}</span>}
           </li>
         ))}
       </ol>

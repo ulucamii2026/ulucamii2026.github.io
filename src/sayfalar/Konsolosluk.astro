@@ -7,11 +7,12 @@ interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const k = (await siteAyarlari()).konsolosluk;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
+const luksTel = '+352 44 32 810';
 const m = dil === 'tr'
-  ? { santral: 'Santral', acil: 'Acil durum hattı (mesai dışı)', cagri: 'Konsolosluk Çağrı Merkezi', randevu: 'Randevu al', edevlet: 'e-Devlet konsolosluk işlemleri', not: 'Randevular yalnızca konsolosluk.gov.tr üzerinden, ücretsiz alınır. Aracı kişi veya ücretli randevu satışı resmî değildir.' }
+  ? { santral: 'Santral', acil: 'Acil durum hattı (mesai dışı)', cagri: 'Konsolosluk Çağrı Merkezi', randevu: 'Randevu al', edevlet: 'e-Devlet konsolosluk işlemleri', not: 'Randevular yalnızca konsolosluk.gov.tr üzerinden, ücretsiz alınır. Aracı kişi veya ücretli randevu satışı resmî değildir.', edevletBilgi: `<strong>e-Devlet şifresi</strong> işlemleri için Lüksemburg’daki Türkiye Büyükelçiliği’ne <strong>randevusuz</strong> gidebilirsiniz. Gitmeden önce güncel çalışma saatlerini teyit etmeniz önerilir: <a href="${tel(luksTel)}" class="mono">${luksTel}</a>.` }
   : dil === 'en'
-  ? { santral: 'Switchboard', acil: 'Emergency line (outside office hours)', cagri: 'Consular Call Centre', randevu: 'Book an appointment', edevlet: 'e-Devlet consular procedures', not: 'Appointments are booked free of charge, only via konsolosluk.gov.tr. No intermediary or paid appointment sale is official.' }
-  : { santral: 'Standard', acil: 'Ligne d’urgence (hors heures de bureau)', cagri: 'Centre d’appels consulaire', randevu: 'Prendre rendez-vous', edevlet: 'Démarches consulaires e-Devlet', not: 'Les rendez-vous se prennent gratuitement et uniquement sur konsolosluk.gov.tr. Aucun intermédiaire ni rendez-vous payant n’est officiel.' };
+  ? { santral: 'Switchboard', acil: 'Emergency line (outside office hours)', cagri: 'Consular Call Centre', randevu: 'Book an appointment', edevlet: 'e-Devlet consular procedures', not: 'Appointments are booked free of charge, only via konsolosluk.gov.tr. No intermediary or paid appointment sale is official.', edevletBilgi: `For your <strong>e-Devlet password</strong>, you can visit the Embassy of Türkiye in Luxembourg <strong>without an appointment</strong>. It is advisable to check the current opening hours before going: <a href="${tel(luksTel)}" class="mono">${luksTel}</a>.` }
+  : { santral: 'Standard', acil: 'Ligne d’urgence (hors heures de bureau)', cagri: 'Centre d’appels consulaire', randevu: 'Prendre rendez-vous', edevlet: 'Démarches consulaires e-Devlet', not: 'Les rendez-vous se prennent gratuitement et uniquement sur konsolosluk.gov.tr. Aucun intermédiaire ni rendez-vous payant n’est officiel.', edevletBilgi: `Pour le <strong>mot de passe e-Devlet</strong>, vous pouvez vous rendre <strong>sans rendez-vous</strong> à l’Ambassade de Türkiye à Luxembourg. Il est conseillé de vérifier les horaires d’ouverture avant de vous déplacer : <a href="${tel(luksTel)}" class="mono">${luksTel}</a>.` };
 ---
 <IcerikSayfasi dil={dil} anahtar="konsolosluk" etiket={t('nav.konsolosluk')}>
   <div slot="yan" class="kart p-5">
@@ -29,5 +30,6 @@ const m = dil === 'tr'
       <a href={k.edevlet} target="_blank" rel="noopener" class="dugme dugme-ikincil justify-center">{m.edevlet}<span aria-hidden="true"> ↗</span></a>
     </div>
   </div>
+  <p slot="yan" class="bilgi text-sm" set:html={m.edevletBilgi}></p>
   <p slot="yan" class="uyari text-sm">{m.not}</p>
 </IcerikSayfasi>
