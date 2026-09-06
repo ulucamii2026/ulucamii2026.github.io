@@ -56,7 +56,7 @@ const m = dil === 'tr' ? {
     'Les vidéos des présentations sont lues depuis YouTube ; une connexion internet est nécessaire.',
     'Les supports suivent les sources de la Présidence des Affaires religieuses de Turquie (Diyanet) ; le Prophète, sa famille et les Compagnons ne sont jamais représentés.',
   ],
-  plan: 'Plan de cours', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} diapositives`, ders: (n: number) => `${n}${n === 1 ? 'er' : 'e'} cours`,
+  plan: 'Plan de cours', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} diapositives`, ders: (n: number) => `Cours ${n}`,
   indir: 'Télécharger', pptx: 'PowerPoint', hafta: (h: number) => `Semaine ${h}`, planGun: 'Ce jour dans le plan annuel',
   bos: 'Aucun support publié pour l’instant ; ils apparaîtront ici après le premier jour de cours.',
   kaynak: 'Les fichiers sont hébergés dans les publications (releases) du dépôt GitHub de la mosquée ; les tailles sont approximatives.',
@@ -144,13 +144,13 @@ const aylar = [...new Set(gunler.map((g) => g.tarih.slice(0, 7)))];
   .gun-bilgi { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
   .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
   .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.7rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
-  .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; }
+  .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; flex: 1 1 22rem; }
   .satir .kucuk { font-size: 0.85rem; color: var(--metin-2); }
   .sunum-liste { list-style: none; margin: 0; padding: 0; }
   .alan { font-weight: 700; }
   .konu { color: var(--metin-2); }
   .kaynak-not { margin-top: 1.5rem; font-size: 0.85rem; color: var(--metin-2); }
   .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
-  .satir > .dugme { margin-left: auto; }
+  .satir > .dugme { margin-left: auto; flex: 0 0 auto; }
   @media (max-width: 480px) { .satir > .dugme { width: 100%; justify-content: center; } }
 </style>

@@ -36,6 +36,13 @@ public/media/                      görseller (WebP)
 - Belgeler: `docs/kuran-kursu-mufredati-2026-2027.md`, `docs/kuran-kursu-yillik-plan-ozetli-2026-2027.md`, `public/belgeler/kuran-kursu/` (yazdırılabilir HTML + A4 PDF).
 - Üretim betikleri (`mufredat-uret.py`, `yillik-plan-cikar.py` vb.) bu depoda **değil**, `D:\app\marche-cami-sitesi\mufredat\` altında tutuluyor; buradaki içerik dosyaları onların çıktısıdır.
 
+## Kur'an kursu ders materyalleri (6 Eyl 2026)
+- Sayfa: `/tr/ders-materyalleri/` (+ `/fr/supports-de-cours/`, `/en/lesson-materials/`) — `src/sayfalar/DersMateryalleri.astro`, yol anahtarı `dersmateryalleri`. Kurs sayfasında yan kart, yıllık plan gün kartlarında `#g-<tarih>` bağlantısı.
+- Veri: `src/data/ders-materyalleri.json` (gün başına plan PDF + 3 sunum: dosya adı, boyut, sayfa/slayt, konu TR/FR, indirme URL'si). **Elle yazılmaz.**
+- Dosyalar depoda **değil**: GitHub Releases'ta `ders-<tarih>` etiketli sürüm ekleri (gün başına ≈ 60 MB; `https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-<tarih>/<dosya>`).
+- Üretim ve yayın ders hazırlık projesinde: `D:\ulu-camii-kuran-kursu\scripts\site-materyal-yayinla.py <gün-klasörü>` (Python 3.14; dernek hesabı `gh auth token --user ulucamii2026`) → sürüm ekini yükler + JSON'u günceller; sonra burada `npm run check && npx astro build`, commit + push.
+- Kural: materyallerde hoca, öğrenci ve veli adı, telefon, e-posta yer almaz (depo ve sürüm ekleri herkese açık); yayın öncesi PDF gizlilik taraması yapılır.
+
 ## Apps Script (kayıt + ihtida arka ucu)
 - Kaynak: `scripts/apps-script/ulucamii-Kod-vNN.gs` — canlı sürüm bu depodaki en yüksek numaralı dosyadır (Ağu 2026 sonu itibarıyla v14: e-posta kimliği, müfredat eki, ders kitapları bilgisi).
 - Dağıtım Apps Script web editöründen yapılır, her seferinde **"Nouvelle version"** seçilir (ayrıntı: `scripts/apps-script/README.md`).
