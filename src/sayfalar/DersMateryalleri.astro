@@ -1,0 +1,155 @@
+---
+/**
+ * Ders materyalleri — Kur'an kursunun günlük ders belgeleri (Word planı PDF + sesli PowerPoint sunumları).
+ * Veri: src/data/ders-materyalleri.json — elle yazılmaz; ders hazırlık projesindeki
+ * scripts/site-materyal-yayinla.py betiği dosyaları GitHub Releases'a yükler ve bu dosyayı günceller (6 Eyl 2026).
+ * Dosyalar depoda değil, sürüm eklerinde durur (her ders günü ≈ 60 MB; depo hafif kalır).
+ */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { ceviri, tarihBicimle, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import veri from '../data/ders-materyalleri.json';
+interface Props { dil: Dil }
+const { dil } = Astro.props; const t = ceviri(dil);
+
+type Sunum = { no: number; saat: string; alan: string; kod: string; konu: string; baslik: { tr: string; fr: string }; konuFr?: string;
+               dosya: string; url: string; boyut: number; slayt: number };
+type Gun = { tarih: string; hafta: number; gun: string; etiket: string;
+             plan: { dosya: string; url: string; boyut: number; sayfa: number } | null; sunumlar: Sunum[] };
+const gunler = ([...(veri.gunler as Gun[])]).sort((a, b) => b.tarih.localeCompare(a.tarih));
+
+const m = dil === 'tr' ? {
+  altBaslik: 'Kur’an kursumuzda her ders günü için hazırlanan belgeler: hocaların ders planı (PDF) ve sınıfta kullanılan sesli, iki dilli PowerPoint sunumları. Veliler evde tekrar için, öğrenciler ders öncesi hazırlık için indirebilir.',
+  nasil: 'Nasıl kullanılır?',
+  nasilListe: [
+    'Ders planı PDF’dir; telefon ve bilgisayarda doğrudan açılır.',
+    'Sunumlar PowerPoint (.pptx) dosyasıdır: her slaytta önce Türkçe, sonra Fransızca kısa anlatım kendiliğinden çalar; Arapça kartlarda hoparlör düğmesine dokununca Türk hafız kıraati veya dua dinlenir. Telefonda ücretsiz Microsoft PowerPoint uygulamasıyla, bilgisayarda Slayt Gösterisi (F5) ile açın.',
+    'Sunumlardaki videolar YouTube’dan oynar; internet bağlantısı gerekir.',
+    'Materyaller Diyanet İşleri Başkanlığı kaynaklarına dayanır; Peygamberimiz, ailesi ve sahâbe tasvir edilmez.',
+  ],
+  plan: 'Ders planı', sayfa: (n: number) => `${n} sayfa`, slayt: (n: number) => `${n} slayt`, ders: (n: number) => `${n}. ders`,
+  indir: 'İndir', pptx: 'PowerPoint', hafta: (h: number) => `${h}. hafta`, planGun: 'Yıllık planda bu gün',
+  bos: 'Henüz yayımlanmış materyal yok; ilk ders gününden sonra burada görünecek.',
+  kaynak: 'Dosyalar caminin GitHub deposunun sürüm eklerinde barındırılır; boyutlar yaklaşık değerlerdir.',
+  mufredat: 'Müfredat ve yıllık plan', kurs: 'Kur’an kursu sayfası',
+} : dil === 'en' ? {
+  altBaslik: 'Documents prepared for every lesson day of our Qur’an school: the teachers’ lesson plan (PDF) and the bilingual PowerPoint decks with audio used in class. Parents can download them for revision at home, students to prepare before the lesson.',
+  nasil: 'How to use',
+  nasilListe: [
+    'The lesson plan is a PDF; it opens directly on phones and computers.',
+    'The presentations are PowerPoint (.pptx) files: on every slide a short narration plays automatically, first in Turkish then in French; on the Arabic cards, tapping the speaker plays a Turkish reciter or a prayer. Open them with the free Microsoft PowerPoint app on a phone, or in Slide Show mode (F5) on a computer.',
+    'Videos inside the decks play from YouTube and need an internet connection.',
+    'The materials follow the sources of the Turkish Presidency of Religious Affairs (Diyanet); the Prophet, his family and the Companions are never depicted.',
+  ],
+  plan: 'Lesson plan', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} slides`, ders: (n: number) => `Lesson ${n}`,
+  indir: 'Download', pptx: 'PowerPoint', hafta: (h: number) => `Week ${h}`, planGun: 'This day in the yearly plan',
+  bos: 'No materials published yet; they will appear here after the first lesson day.',
+  kaynak: 'Files are hosted as release assets of the mosque’s GitHub repository; sizes are approximate.',
+  mufredat: 'Curriculum and yearly plan', kurs: 'Qur’an school page',
+} : {
+  altBaslik: 'Les documents préparés pour chaque jour de cours de notre école coranique : le plan de cours des enseignants (PDF) et les présentations PowerPoint bilingues et sonores utilisées en classe. Les parents peuvent les télécharger pour réviser à la maison, les élèves pour se préparer avant le cours.',
+  nasil: 'Comment les utiliser ?',
+  nasilListe: [
+    'Le plan de cours est un PDF ; il s’ouvre directement sur téléphone et ordinateur.',
+    'Les présentations sont des fichiers PowerPoint (.pptx) : sur chaque diapositive, une courte narration démarre toute seule, d’abord en turc puis en français ; sur les cartes en arabe, le bouton haut-parleur fait entendre un récitateur turc ou une invocation. Ouvrez-les avec l’application gratuite Microsoft PowerPoint sur téléphone, ou en mode Diaporama (F5) sur ordinateur.',
+    'Les vidéos des présentations sont lues depuis YouTube ; une connexion internet est nécessaire.',
+    'Les supports suivent les sources de la Présidence des Affaires religieuses de Turquie (Diyanet) ; le Prophète, sa famille et les Compagnons ne sont jamais représentés.',
+  ],
+  plan: 'Plan de cours', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} diapositives`, ders: (n: number) => `${n}${n === 1 ? 'er' : 'e'} cours`,
+  indir: 'Télécharger', pptx: 'PowerPoint', hafta: (h: number) => `Semaine ${h}`, planGun: 'Ce jour dans le plan annuel',
+  bos: 'Aucun support publié pour l’instant ; ils apparaîtront ici après le premier jour de cours.',
+  kaynak: 'Les fichiers sont hébergés dans les publications (releases) du dépôt GitHub de la mosquée ; les tailles sont approximatives.',
+  mufredat: 'Programme et plan annuel', kurs: 'Page de l’école coranique',
+};
+
+const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
+const tarih = (iso: string, secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(iso + 'T12:00:00'), dil, secenek);
+const konuMetni = (s: Sunum) => (dil === 'tr' ? s.konu : (s.konuFr || s.konu));
+const alanMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
+const aylar = [...new Set(gunler.map((g) => g.tarih.slice(0, 7)))];
+---
+<Base baslik={t('nav.dersmateryalleri')} dil={dil} aciklama={m.altBaslik}>
+  <SayfaBasligi etiket={t('nav.kurankursu')} baslik={t('nav.dersmateryalleri')} altBaslik={m.altBaslik} />
+
+  <div class="kapsayici py-10">
+    <section class="kart-kagit p-5 mb-8">
+      <p class="etiket etiket-vurgu">{m.nasil}</p>
+      <ul class="mt-2 grid gap-1.5 text-sm text-(--metin-2) liste">
+        {m.nasilListe.map((s) => <li>{s}</li>)}
+      </ul>
+    </section>
+
+    {gunler.length === 0 && <p class="not">{m.bos}</p>}
+
+    {aylar.map((ay) => (
+      <section class="ay" id={`ay-${ay}`}>
+        <h2 class="ay-baslik">{tarih(ay + '-01', { month: 'long', year: 'numeric' })}</h2>
+        <div class="grid gap-5">
+          {gunler.filter((g) => g.tarih.startsWith(ay)).map((g) => (
+            <article class="gun kart-kagit p-5 reveal" id={`g-${g.tarih}`}>
+              <header class="gun-bas">
+                <p class="gun-tarih">
+                  <time datetime={g.tarih}><b>{tarih(g.tarih, { day: 'numeric' })}</b>
+                    <span>{tarih(g.tarih, { month: 'short' })}<br />{tarih(g.tarih, { weekday: 'long' })}</span></time>
+                </p>
+                <p class="gun-bilgi"><span class="etiket">{m.hafta(g.hafta)}</span>
+                  <a href={`${yol(dil, 'yillikplan')}#g-${g.tarih}`} class="plan-bag">{m.planGun} →</a></p>
+              </header>
+
+              {g.plan && (
+                <p class="satir plan-satir">
+                  <span class="satir-ad"><b>{m.plan}</b> <span class="kucuk">PDF · {m.sayfa(g.plan.sayfa)} · {mb(g.plan.boyut)}</span></span>
+                  <a href={g.plan.url} class="dugme dugme-birincil !py-1.5 !px-3.5 text-sm" download>{m.indir} (PDF)</a>
+                </p>
+              )}
+
+              <ul class="sunum-liste" role="list">
+                {g.sunumlar.map((s) => (
+                  <li class="satir">
+                    <span class="satir-ad">
+                      <span class="etiket">{m.ders(s.no)} · {s.saat}</span>
+                      <b class={'alan a-' + s.kod}>{alanMetni(s)}</b>
+                      <span class="konu" lang={dil === 'tr' || !s.konuFr ? 'tr' : 'fr'}>{konuMetni(s)}</span>
+                      <span class="kucuk">{m.slayt(s.slayt)} · {mb(s.boyut)}</span>
+                    </span>
+                    <a href={s.url} class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm" download>{m.indir} ({m.pptx})</a>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <p class="kaynak-not">{m.kaynak}</p>
+    <p class="alt-baglantilar">
+      <a href={yol(dil, 'mufredat')} class="dugme dugme-ikincil">{m.mufredat}</a>
+      <a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{m.kurs}</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .liste { padding-left: 1.2rem; list-style: disc; }
+  .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+  .ay { margin-bottom: 2.2rem; }
+  .ay-baslik { font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem); margin: 0 0 1rem; text-transform: capitalize; }
+  .gun-bas { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 0.9rem; }
+  .gun-tarih { margin: 0; }
+  .gun-tarih time { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .gun-tarih b { font-size: 2rem; line-height: 1; font-family: var(--font-baslik, inherit); }
+  .gun-tarih span { font-size: 0.85rem; line-height: 1.2; color: var(--metin-2); text-transform: capitalize; }
+  .gun-bilgi { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+  .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
+  .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.7rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
+  .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; }
+  .satir .kucuk { font-size: 0.85rem; color: var(--metin-2); }
+  .sunum-liste { list-style: none; margin: 0; padding: 0; }
+  .alan { font-weight: 700; }
+  .konu { color: var(--metin-2); }
+  .kaynak-not { margin-top: 1.5rem; font-size: 0.85rem; color: var(--metin-2); }
+  .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  @media (max-width: 480px) { .satir > .dugme { width: 100%; justify-content: center; } }
+</style>

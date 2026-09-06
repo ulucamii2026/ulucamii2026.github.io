@@ -15,6 +15,8 @@ import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import plan from '../data/yillik-plan-2026-2027.json';
+import materyal from '../data/ders-materyalleri.json';
+const materyalGunleri = new Set((materyal.gunler as { tarih: string }[]).map((g) => g.tarih));
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
@@ -74,6 +76,7 @@ const m = dil === 'tr' ? {
   dersGunu: (n: number) => `${n} ders günü`, dersAdet: (n: number) => `${n} ders`,
   hafta: (n: number) => `Hafta ${n}`, derssiz: 'Ders yapılmayacak',
   bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Ders materyalleri: plan (PDF) ve sesli sunumlar →',
   kaynakEt: 'Kaynak', mufredat: 'Müfredat sayfası', pdf: 'PDF indir (A4)',
   kitapNot: 'Ders kitapları velilerce temin edilir', kitapBag: 'temin bilgileri', kitapCapa: '#ders-kitaplari',
 } : dil === 'en' ? {
@@ -88,6 +91,7 @@ const m = dil === 'tr' ? {
   dersGunu: (n: number) => `${n} teaching days`, dersAdet: (n: number) => `${n} lessons`,
   hafta: (n: number) => `Week ${n}`, derssiz: 'No lessons',
   bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Lesson materials: plan (PDF) and audio decks →',
   kaynakEt: 'Kaynak', mufredat: 'Curriculum page', pdf: 'Download PDF (A4)',
   kitapNot: 'Textbooks are obtained by the parents', kitapBag: 'how to obtain', kitapCapa: '#manuels',
 } : {
@@ -102,6 +106,7 @@ const m = dil === 'tr' ? {
   dersGunu: (n: number) => `${n} jours de cours`, dersAdet: (n: number) => `${n} leçons`,
   hafta: (n: number) => `Semaine ${n}`, derssiz: 'Pas de cours',
   bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Supports de cours : plan (PDF) et présentations sonores →',
   kaynakEt: 'Kaynak', mufredat: 'Page du programme', pdf: 'Télécharger le PDF (A4)',
   kitapNot: 'Les manuels sont à la charge des parents', kitapBag: 'où se les procurer', kitapCapa: '#manuels',
 };
@@ -235,6 +240,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
                       </div>
                     </details>
                   ))}
+              {materyalGunleri.has(g.tarih) && <a href={`${yol(dil, 'dersmateryalleri')}#g-${g.tarih}`} class="materyal-bag">{m.materyal}</a>}
             </article>
           ))}
         </section>
@@ -250,6 +256,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
 </Base>
 
 <style>
+  .materyal-bag { display: inline-flex; margin-top: 0.7rem; font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
   .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
 
   /* ——— Sıradaki ders günü ——— */

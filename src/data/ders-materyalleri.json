@@ -1,0 +1,68 @@
+{
+  "guncelleme": "2026-09-06",
+  "depo": "ulucamii2026/ulucamii2026.github.io",
+  "gunler": [
+    {
+      "tarih": "2026-09-06",
+      "hafta": 1,
+      "gun": "Pazar",
+      "etiket": "ders-2026-09-06",
+      "plan": {
+        "dosya": "Ders-Plani-2026-09-06.pdf",
+        "boyut": 4595146,
+        "sayfa": 16,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Ders-Plani-2026-09-06.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Hı Grubu Harfleri",
+          "konuFr": "Les lettres du groupe Khâ — Khâ, Dâl, Dhâl, Râ', Zây, Sîn",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 17886126,
+          "slayt": 30,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "Siyer",
+          "kod": "siyer",
+          "konu": "Peygamberimizi tanıyorum",
+          "konuFr": "Vie du Prophète · Camiye Gidiyorum 1, p. 37-42",
+          "baslik": {
+            "tr": "Peygamberimizi Tanıyorum",
+            "fr": "Je découvre notre Prophète"
+          },
+          "dosya": "Sunum-2-Siyer-Peygamberimizi-Taniyorum.pptx",
+          "boyut": 19928244,
+          "slayt": 22,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-2-Siyer-Peygamberimizi-Taniyorum.pptx"
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "Ahlak",
+          "kod": "ahlak",
+          "konu": "Dinim, güzel söz ve davranışı öğütler",
+          "konuFr": "Morale · Camiye Gidiyorum 1, p. 25-30",
+          "baslik": {
+            "tr": "Dinim, Güzel Söz ve Davranışı Öğütler",
+            "fr": "Ma religion conseille la bonne parole et la bonne action"
+          },
+          "dosya": "Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pptx",
+          "boyut": 23069452,
+          "slayt": 28,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-06/Sunum-3-Ahlak-Guzel-Soz-ve-Davranis.pptx"
+        }
+      ]
+    }
+  ]
+}
