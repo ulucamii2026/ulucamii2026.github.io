@@ -390,6 +390,7 @@ export async function hocaEkrani(): Promise<void> {
     const ayar = await fs.getDoc(fs.doc(db, 'ayarlar', 'portal'));
     const anahtar = (ayar.data() as { gasAnahtari?: string } | undefined)?.gasAnahtari;
     const atlanan = new Set<string>(((ayar.data() as { atlanan?: string[] } | undefined)?.atlanan) || []); // ayarlar/portal.atlanan: mükerrer/deneme kayıtlar (portal-yonetim.py ile aynı)
+    const epostaDuzelt = ((ayar.data() as { epostaDuzelt?: Record<string, string> } | undefined)?.epostaDuzelt) || {}; // defterde yanlış yazılmış veli e-postaları → doğrusu
     if (!anahtar) { ustMesaj('ayarlar/portal.gasAnahtari yok.', 'hata'); return; }
     const j = await (await fetch(`${GAS}?islem=liste&anahtar=${encodeURIComponent(anahtar)}`)).json() as { ok?: boolean; kayitlar?: { basliklar: string[]; satirlar: string[][] } };
     if (!j.ok || !j.kayitlar) { ustMesaj('Kayıt defteri okunamadı.', 'hata'); return; }
@@ -404,7 +405,7 @@ export async function hocaEkrani(): Promise<void> {
     }
     const b = fs.writeBatch(db); const simdi = new Date().toISOString(); let yeni = 0;
     for (const k of Object.keys(guncel).sort()) {
-      const s = guncel[k]; const ep = al(s, 'Veli e-posta').toLowerCase(); const dil = (al(s, 'İletişim dili') || al(s, 'Form dili') || 'tr').toLowerCase();
+      const s = guncel[k]; const epHam = al(s, 'Veli e-posta').toLowerCase(); const ep = epostaDuzelt[epHam] || epHam; const dil = (al(s, 'İletişim dili') || al(s, 'Form dili') || 'tr').toLowerCase();
       if (!S.ogrenciler.some((o) => o.ref === k)) yeni++;
       const mevcut = S.ogrenciler.find((o) => o.ref === k);
       const adAlanlari = mevcut && (mevcut as { adSabit?: boolean }).adSabit ? {} : { ad: trBaslik(al(s, 'Öğrenci adı')), soyad: trBuyuk(al(s, 'Öğrenci soyadı')) }; // adSabit: ad/soyad portalda düzeltildi, defterden ezilmez
