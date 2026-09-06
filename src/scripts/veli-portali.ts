@@ -37,6 +37,26 @@ export async function veliPortali(): Promise<void> {
   const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
   const alanAdi = (kod: string) => (m.alan as Record<string, string>)[kod] || kod;
 
+  /* çizili tek-çizgi ikonlar (currentColor; craft: emoji/glyph değil) */
+  const SIMGELER: Record<string, string> = {
+    takvim: '<rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>',
+    grafik: '<path d="M4 4v16h16"/><path d="M7.5 14.5l3-3.5 2.5 2 4.5-6"/>',
+    yildiz: '<path d="M12 3.6l2.5 5.1 5.6.8-4 4 1 5.6-5-2.6-5 2.6 1-5.6-4-4 5.6-.8z"/>',
+    not: '<path d="M20 4H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h4v3.5L13.5 16H20a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>',
+    duyuru: '<path d="M4 10v4h3l7 4V6l-7 4H4z"/><path d="M17.5 9a3.5 3.5 0 0 1 0 6"/>',
+    gonder: '<path d="M21 3L3 10.6l7 2.5L12.5 20 21 3z"/><path d="M10 13.1L21 3"/>',
+    ayar: '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.3"/><circle cx="9" cy="17" r="2.3"/>',
+    kitap: '<path d="M12 6.5C10.5 5 8 4.6 4 5.1v12.8c4-.5 6.5-.1 8 1.4 1.5-1.5 4-1.9 8-1.4V5.1c-4-.5-6.5-.1-8 1.4z"/><path d="M12 6.5v12.2"/>',
+    ogrenci: '<path d="M12 4L2 9l10 5 10-5-10-5z"/><path d="M6 11.2V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-3.8"/>',
+    kilit: '<rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
+    zarf: '<rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6 8.5-6"/>',
+    ok: '<path d="M9 5l7 7-7 7"/>',
+    disari: '<path d="M7 17L17 7M8.5 7H17v8.5"/>',
+    cikis: '<path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8"/><path d="M17 8l4 4-4 4M9.5 12H21"/>',
+  };
+  const simge = (ad: string) => `<svg class="simge" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${SIMGELER[ad] || ''}</svg>`;
+  const bosDurum = (ikon: string, metin: string) => `<p class="bos">${simge(ikon)}<span>${esc(metin)}</span></p>`;
+
   const [{ firebaseUygulamasi }, auth, fs] = await Promise.all([import('../lib/firebase'), import('firebase/auth'), import('firebase/firestore/lite')]);
   const app = firebaseUygulamasi();
   const a = auth.getAuth(app);
@@ -63,22 +83,30 @@ export async function veliPortali(): Promise<void> {
   /* ---------------------------------------------------------------- giriş ekranı */
   const girisEkrani = (onMesaj = '') => {
     kok.innerHTML = `
-      ${onMesaj ? `<p class="not basari">${esc(onMesaj)}</p>` : ''}
-      <div class="giris-izgara">
-        <form class="kutu" data-form="giris" novalidate>
-          <h2>${esc(m.girisBaslik)}</h2>
+      <div class="giris-sar">
+        ${onMesaj ? `<p class="not basari">${esc(onMesaj)}</p>` : ''}
+        <div class="giris-hos">
+          <span class="simge-cerceve">${simge('ogrenci')}</span>
+          <p>${esc(m.girisHos)}</p>
+        </div>
+        <form class="giris-kart" data-form="giris" novalidate>
+          <h2>${simge('kilit')}${esc(m.girisBaslik)}</h2>
           <label>${esc(m.eposta)}<input type="email" name="eposta" required autocomplete="username" inputmode="email"></label>
           <label>${esc(m.sifre)}<input type="password" name="sifre" required autocomplete="current-password"></label>
           <p data-mesaj hidden class="not"></p>
-          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${esc(m.girisYap)}</button><button type="button" class="dugme dugme-ikincil" data-eylem="sifremiUnuttum">${esc(m.sifremiUnuttum)}</button></div>
+          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${esc(m.girisYap)}</button></div>
         </form>
-        <form class="kutu" data-form="bag" novalidate>
-          <h2>${esc(m.bagBaslik)}</h2>
-          <p class="kucuk">${esc(m.bagAciklama)}</p>
-          <label>${esc(m.eposta)}<input type="email" name="eposta" required autocomplete="username" inputmode="email"></label>
-          <p data-mesaj hidden class="not"></p>
-          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${esc(m.bagGonder)}</button></div>
-        </form>
+        <details class="ilk-giris">
+          <summary>${simge('ok')}<span>${esc(m.ilkKez)}</span></summary>
+          <div class="govde">
+            <form class="giris-kart" data-form="bag" novalidate>
+              <p class="kucuk">${esc(m.bagAciklama)}</p>
+              <label>${esc(m.eposta)}<input type="email" name="eposta" required autocomplete="username" inputmode="email"></label>
+              <p data-mesaj hidden class="not"></p>
+              <div class="satir-dugmeler"><button type="submit" class="dugme dugme-iznik">${simge('zarf')}${esc(m.bagGonder)}</button><button type="button" class="dugme dugme-ikincil" data-eylem="sifremiUnuttum">${esc(m.sifremiUnuttum)}</button></div>
+            </form>
+          </div>
+        </details>
       </div>`;
     const kayitli = localStorage.getItem('veliEposta');
     if (kayitli) kok.querySelectorAll<HTMLInputElement>('input[name=eposta]').forEach((i) => { i.value = kayitli; });
@@ -86,28 +114,32 @@ export async function veliPortali(): Promise<void> {
 
   const bagTamamlaEkrani = () => {
     kok.innerHTML = `
-      <form class="kutu" data-form="bagTamamla" style="max-width:32rem" novalidate>
-        <h2>${esc(m.girisBaslik)}</h2>
-        <p class="kucuk">${esc(m.bagTamamla)}</p>
-        <label>${esc(m.eposta)}<input type="email" name="eposta" required autocomplete="username" inputmode="email"></label>
-        <p data-mesaj hidden class="not"></p>
-        <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${esc(m.bagOnayla)}</button></div>
-      </form>`;
+      <div class="giris-sar">
+        <form class="giris-kart" data-form="bagTamamla" novalidate>
+          <h2>${simge('zarf')}${esc(m.girisBaslik)}</h2>
+          <p class="kucuk">${esc(m.bagTamamla)}</p>
+          <label>${esc(m.eposta)}<input type="email" name="eposta" required autocomplete="username" inputmode="email"></label>
+          <p data-mesaj hidden class="not"></p>
+          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${esc(m.bagOnayla)}</button></div>
+        </form>
+      </div>`;
   };
 
   const sifreEkrani = (zorunluDegil: boolean) => {
     kok.innerHTML = `
-      <form class="kutu" data-form="sifreBelirle" style="max-width:32rem" novalidate>
-        <h2>${esc(m.sifreBelirleBaslik)}</h2>
-        <p class="kucuk">${esc(m.sifreBelirleA)}</p>
-        <label>${esc(m.sifre)}<input type="password" name="sifre" required minlength="8" autocomplete="new-password"></label>
-        <label>${esc(m.sifreTekrar)}<input type="password" name="sifre2" required minlength="8" autocomplete="new-password"></label>
-        <p data-mesaj hidden class="not"></p>
-        <div class="satir-dugmeler">
-          <button type="submit" class="dugme dugme-birincil">${esc(m.kaydet)}</button>
-          ${zorunluDegil ? `<button type="button" class="dugme dugme-ikincil" data-eylem="atla">${esc(m.atla)}</button>` : ''}
-        </div>
-      </form>`;
+      <div class="giris-sar">
+        <div class="giris-hos"><span class="simge-cerceve">${simge('kilit')}</span><p>${esc(m.sifreBelirleA)}</p></div>
+        <form class="giris-kart" data-form="sifreBelirle" novalidate>
+          <h2>${simge('kilit')}${esc(m.sifreBelirleBaslik)}</h2>
+          <label>${esc(m.sifre)}<input type="password" name="sifre" required minlength="8" autocomplete="new-password"></label>
+          <label>${esc(m.sifreTekrar)}<input type="password" name="sifre2" required minlength="8" autocomplete="new-password"></label>
+          <p data-mesaj hidden class="not"></p>
+          <div class="satir-dugmeler">
+            <button type="submit" class="dugme dugme-birincil">${esc(m.kaydet)}</button>
+            ${zorunluDegil ? `<button type="button" class="dugme dugme-ikincil" data-eylem="atla">${esc(m.atla)}</button>` : ''}
+          </div>
+        </form>
+      </div>`;
   };
 
   /* ---------------------------------------------------------------- pano */
@@ -171,63 +203,73 @@ export async function veliPortali(): Promise<void> {
     const gelecekGunler = veri.gunler.filter((g) => g.tarih >= bugun).slice(0, 10);
     const dereceAdi = (n: number) => (m.derece as Record<string, string>)[String(n)] || String(n);
 
+    const durumAd = (k: string) => (m.durum as Record<string, string>)[k] || k;
+    const kunyeler: { ikon: string; deger: string; etiket: string }[] = [];
+    if (yk.length) kunyeler.push({ ikon: 'takvim', deger: `${say.var}/${yk.length}`, etiket: m.ozetDevam });
+    if (kuranNo >= 0) kunyeler.push({ ikon: 'grafik', deger: `${kuranNo + 1}/${kuranSirasi.length}`, etiket: m.ozetKuran });
+    if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.length }), etiket: m.ozetHafta });
+    else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
+    const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
+
     kok.innerHTML = `
-      <div class="ust">
-        <div><p class="etiket etiket-vurgu">${esc(m.hosgeldin)}</p><p class="kucuk">${esc(d.eposta)}</p></div>
-        <button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${esc(m.cikis)}</button>
+      <div class="pano-hero">
+        <div class="hero-serit" aria-hidden="true"></div>
+        <div class="hero-ust">
+          <p class="selam"><small>${esc(m.hosgeldin)}</small><span class="cocuk-adi">${o ? esc(o.ad) + ' ' + esc(o.soyad) : esc(d.eposta)}</span></p>
+          <button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}${esc(m.cikis)}</button>
+        </div>
+        ${kunyeler.length ? `<div class="kunye-serit">${kunyeler.map((k) => `<div class="kunye">${simge(k.ikon)}<div><span class="k-deger">${esc(k.deger)}</span><span class="k-etiket">${esc(k.etiket)}</span></div></div>`).join('')}</div>` : ''}
       </div>
-      ${d.ogrenciler.length > 1 ? `<div class="sekmeler" role="tablist" aria-label="${esc(m.cocuklar)}">
-        ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" class="sekme" aria-selected="${i === d.secili}" data-sec="${i}">${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
+      ${d.ogrenciler.length > 1 ? `<div class="cocuk-sec" role="tablist" aria-label="${esc(m.cocuklar)}">
+        ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" class="cocuk-dugme" aria-selected="${i === d.secili}" data-sec="${i}">${simge('ogrenci')}${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
-      ${o ? `<h2 style="margin:0 0 1rem">${esc(m.ogrenci)}: ${esc(o.ad)} ${esc(o.soyad)}</h2>` : ''}
       <div class="bolumler">
-        <section class="bolum genis">
-          <h2>${esc(m.buHafta)} <span class="kucuk">· ${esc(tarihYaz(pzt))} – ${esc(tarihYaz(paz))}${haftaGunleri[0] ? ' · ' + esc(yerlestir(m.hafta, { n: haftaGunleri[0].hafta })) : ''}</span></h2>
-          ${haftaGunleri.length ? `<ul class="liste">${haftaGunleri.map((g) => `<li><b>${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'short' }))}</b>
-              <span>${g.dersler.map((x) => `${x.no}. ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span>`).join(' · ')}</span>
-              ${g.dersler.some((x) => x.ezber.length) ? `<span class="rozet">${esc(m.ezber)}: <span lang="tr">${esc(g.dersler.flatMap((x) => x.ezber).join(', '))}</span></span>` : ''}
-              ${veri.materyalGunleri.includes(g.tarih) ? `<a href="${esc(veri.materyalYolu)}#g-${g.tarih}">${esc(m.materyal)} →</a>` : ''}</li>`).join('')}</ul>` : ''}
+        <section class="bolum oncelik genis">
+          ${bas('kitap', m.buHafta, `${tarihYaz(pzt)} – ${tarihYaz(paz)}${haftaGunleri[0] ? ' · ' + yerlestir(m.hafta, { n: haftaGunleri[0].hafta }) : ''}`)}
+          ${haftaGunleri.length ? `<div>${haftaGunleri.map((g) => `<div class="hafta-gun"><span class="g-tarih">${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'short' }))}</span>
+              <span class="g-dersler">${g.dersler.map((x) => `<span class="g-ders"><span class="g-no">${x.no}.</span> ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span></span>`).join('')}
+              ${g.dersler.some((x) => x.ezber.length) ? `<span class="rozet ogrendi">${esc(m.ezber)}: <span lang="tr">${esc(g.dersler.flatMap((x) => x.ezber).join(', '))}</span></span>` : ''}
+              ${veri.materyalGunleri.includes(g.tarih) ? `<a class="ic-bag" href="${esc(veri.materyalYolu)}#g-${g.tarih}">${esc(m.materyal)}${simge('disari')}</a>` : ''}</span></div>`).join('')}</div>` : ''}
           ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p style="white-space:pre-line">${bagla(cok(haftaOdev.ezber) || '—')}</p>
             <h3>${esc(m.odev)}</h3><p style="white-space:pre-line">${bagla(cok(haftaOdev.odev) || '—')}</p>
-            ${haftaOdev.materyal ? `<p><a href="${esc(haftaOdev.materyal)}">${esc(m.materyal)} →</a></p>` : ''}` : `<p class="kucuk">${esc(m.odevYok)}</p>`}
-          ${siradaki ? `<p class="kucuk" style="margin-top:.8rem"><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</p>` : ''}
+            ${haftaOdev.materyal ? `<p style="margin-top:.7rem"><a class="ic-bag" href="${esc(haftaOdev.materyal)}">${esc(m.materyal)}${simge('disari')}</a></p>` : ''}` : bosDurum('kitap', m.odevYok)}
+          ${siradaki ? `<p class="kucuk" style="margin-top:1rem;display:flex;align-items:center;gap:.45rem">${simge('takvim')}<span><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</span></p>` : ''}
         </section>
 
         <section class="bolum">
-          <h2>${esc(m.yoklama)}</h2>
-          ${yk.length ? `<p class="kucuk">${esc(yerlestir(m.yoklamaOzet, say))}</p>
-            <div class="yoklama-izgara">${yk.map((y) => `<div class="gun-kutu ${y.durum}" title="${esc((m.durum as Record<string, string>)[y.durum])}${y.not ? ' · ' + esc(y.not) : ''}"><b>${esc(tarihYaz(y.tarih, { day: 'numeric' }))}</b>${esc(tarihYaz(y.tarih, { month: 'short' }))}<br><span class="kucuk">${esc((m.durum as Record<string, string>)[y.durum])}</span></div>`).join('')}</div>`
-            : `<p class="kucuk">${esc(m.yoklamaYok)}</p>`}
+          ${bas('takvim', m.yoklama)}
+          ${yk.length ? `<div class="devam-ozet"><span><b>${say.var}</b> ${esc(durumAd('var'))}</span>${say.yok ? `<span><b>${say.yok}</b> ${esc(durumAd('yok'))}</span>` : ''}${say.mazeret ? `<span><b>${say.mazeret}</b> ${esc(durumAd('mazeret'))}</span>` : ''}${say.gec ? `<span><b>${say.gec}</b> ${esc(durumAd('gec'))}</span>` : ''}</div>
+            <div class="yoklama-serit">${yk.map((y) => `<div class="gun-cip ${y.durum}" title="${esc(durumAd(y.durum))}${y.not ? ' · ' + esc(y.not) : ''}"><b>${esc(tarihYaz(y.tarih, { day: 'numeric' }))}</b><span class="g-ay">${esc(tarihYaz(y.tarih, { month: 'short' }))}</span></div>`).join('')}</div>`
+            : bosDurum('takvim', m.yoklamaYok)}
         </section>
 
         <section class="bolum">
-          <h2>${esc(m.ilerleme)}</h2>
+          ${bas('grafik', m.ilerleme, ile && ile.guncelleme ? tarihYaz(ile.guncelleme, { day: 'numeric', month: 'short' }) : '')}
           ${ile ? `
-            ${kuranKonu ? `<h3>${esc(m.kuranAdim)}</h3><p lang="tr"><b>${esc(kuranKonu)}</b> <span class="kucuk">(${kuranNo + 1}/${kuranSirasi.length})</span></p><div class="cubuk"><span style="width:${yuzde}%"></span></div>` : ''}
+            ${kuranKonu ? `<h3>${esc(m.kuranAdim)}</h3><div class="ilerleme-not"><b lang="tr">${esc(kuranKonu)}</b><span class="kucuk">${kuranNo + 1}/${kuranSirasi.length}</span></div><div class="cubuk"><span style="width:${yuzde}%"></span></div>` : ''}
             ${ile.ezber && Object.keys(ile.ezber).length ? `<h3>${esc(m.ezberler)}</h3><ul class="liste">${Object.entries(ile.ezber).map(([ad, dr]) => `<li><span lang="tr">${esc(ad)}</span><span class="rozet ${esc(dr)}">${esc((m.ezberDurum as Record<string, string>)[dr] || dr)}</span></li>`).join('')}</ul>` : ''}
-            ${ile.alanlar && Object.keys(ile.alanlar).length ? `<h3>${esc(m.alanlar)}</h3><div class="dereceler">${Object.entries(ile.alanlar).map(([k, n]) => `<div class="derece"><b>${esc(alanAdi(k))}</b><span class="noktalar" aria-hidden="true">${'●'.repeat(n)}${'○'.repeat(Math.max(0, 5 - n))}</span> <span class="kucuk">${esc(dereceAdi(n))}</span></div>`).join('')}</div>` : ''}
-            ${ile.hocaNotu ? `<h3>${esc(m.hocaNotu)}</h3><p style="white-space:pre-line">${esc(ile.hocaNotu)}</p>` : ''}
-            ${ile.guncelleme ? `<p class="kucuk">${esc(tarihYaz(ile.guncelleme, { day: 'numeric', month: 'long', year: 'numeric' }))}</p>` : ''}`
-            : `<p class="kucuk">${esc(m.ilerlemeYok)}</p>`}
+            ${ile.alanlar && Object.keys(ile.alanlar).length ? `<h3>${esc(m.alanlar)}</h3><div class="dereceler">${Object.entries(ile.alanlar).map(([k, n]) => `<div class="derece"><b>${esc(alanAdi(k))}</b><span class="pipler" aria-hidden="true">${Array.from({ length: 5 }, (_, i) => `<span class="pip ${i < n ? 'dolu' : ''}"></span>`).join('')}</span><span class="d-ad">${esc(dereceAdi(n))}</span></div>`).join('')}</div>` : ''}
+            ${ile.hocaNotu ? `<h3>${esc(m.hocaNotu)}</h3><p style="white-space:pre-line">${esc(ile.hocaNotu)}</p>` : ''}`
+            : bosDurum('grafik', m.ilerlemeYok)}
         </section>
 
         <section class="bolum">
-          <h2>${esc(m.degerlendirme)}</h2>
-          ${c && c.degerlendirme.length ? `<ul class="liste">${c.degerlendirme.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><b>${esc(alanAdi(x.alan))}</b>${x.olcut ? `<span lang="tr">${esc(x.olcut)}</span>` : ''}${x.derece ? `<span class="rozet">${esc(dereceAdi(x.derece))}</span>` : ''}${x.not ? `<span class="kucuk">${esc(x.not)}</span>` : ''}</li>`).join('')}</ul>` : `<p class="kucuk">${esc(m.degerlendirmeYok)}</p>`}
+          ${bas('yildiz', m.degerlendirme)}
+          ${c && c.degerlendirme.length ? `<ul class="liste">${c.degerlendirme.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><b>${esc(alanAdi(x.alan))}</b>${x.olcut ? `<span lang="tr">${esc(x.olcut)}</span>` : ''}${x.derece ? `<span class="rozet derece">${esc(dereceAdi(x.derece))}</span>` : ''}${x.not ? `<span class="kucuk" style="flex-basis:100%">${esc(x.not)}</span>` : ''}</li>`).join('')}</ul>` : bosDurum('yildiz', m.degerlendirmeYok)}
         </section>
 
         <section class="bolum">
-          <h2>${esc(m.notlar)}</h2>
-          ${c && c.notlar.length ? `<ul class="liste">${c.notlar.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><span style="white-space:pre-line">${esc(x.metin)}</span></li>`).join('')}</ul>` : `<p class="kucuk">${esc(m.notYok)}</p>`}
+          ${bas('not', m.notlar)}
+          ${c && c.notlar.length ? `<ul class="liste">${c.notlar.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><span style="white-space:pre-line;flex-basis:100%">${esc(x.metin)}</span></li>`).join('')}</ul>` : bosDurum('not', m.notYok)}
+        </section>
+
+        <section class="bolum genis">
+          ${bas('duyuru', m.duyurular)}
+          ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => { const g = cok(x.metin); const uzun = g.length > 240; return `<article class="duyuru${uzun ? ' uzun' : ''}"><span class="d-tarih">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><h3>${esc(cok(x.baslik))}</h3><p class="d-govde">${bagla(g)}</p><button type="button" class="d-devam" data-devam>${esc(m.devaminiOku)}</button></article>`; }).join('') : bosDurum('duyuru', m.duyuruYok)}
         </section>
 
         <section class="bolum">
-          <h2>${esc(m.duyurular)}</h2>
-          ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => `<div class="duyuru"><span class="kucuk">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><br><b>${esc(cok(x.baslik))}</b><p>${bagla(cok(x.metin))}</p></div>`).join('') : `<p class="kucuk">${esc(m.duyuruYok)}</p>`}
-        </section>
-
-        <section class="bolum">
-          <h2>${esc(m.bildir)}</h2>
+          ${bas('gonder', m.bildir)}
           <p class="kucuk">${esc(m.bildirA)}</p>
           <form data-form="bildir" novalidate>
             <label>${esc(m.ogrenci)}<select name="ref">${d.ogrenciler.map((x) => `<option value="${esc(x.ref)}" ${x.ref === o?.ref ? 'selected' : ''}>${esc(x.ad)} ${esc(x.soyad)}</option>`).join('')}</select></label>
@@ -235,20 +277,20 @@ export async function veliPortali(): Promise<void> {
             <label data-tarih-alani>${esc(m.bildirTarih)}<select name="tarih">${gelecekGunler.map((g) => `<option value="${g.tarih}">${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</option>`).join('')}</select></label>
             <label>${esc(m.bildirMetin)}<textarea name="metin" maxlength="1000" required></textarea></label>
             <p data-mesaj hidden class="not"></p>
-            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${esc(m.gonder)}</button></div>
+            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${simge('gonder')}${esc(m.gonder)}</button></div>
           </form>
-          ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span>${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet">${esc(x.okundu ? m.okundu : m.okunmadi)}</span><span class="kucuk" style="flex-basis:100%">${esc(x.metin)}</span></li>`).join('')}</ul>` : ''}
+          ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span>${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet ${x.okundu ? 'ogrendi' : ''}">${esc(x.okundu ? m.okundu : m.okunmadi)}</span><span class="kucuk" style="flex-basis:100%">${esc(x.metin)}</span></li>`).join('')}</ul>` : ''}
         </section>
 
         <section class="bolum">
-          <h2>${esc(m.hesap)}</h2>
+          ${bas('ayar', m.hesap)}
           <label>${esc(m.dil)}<select name="dil" data-dil-sec>${(['tr', 'fr', 'en'] as Dil[]).map((x) => `<option value="${x}" ${x === dil ? 'selected' : ''}>${x === 'tr' ? 'Türkçe' : x === 'fr' ? 'Français' : 'English'}</option>`).join('')}</select></label>
-          <form data-form="sifreDegistir" novalidate>
+          <p class="kucuk" style="margin:.75rem 0 0">${esc(m.girisBilgisi)}: <b>${esc(d.eposta)}</b></p>
+          <form data-form="sifreDegistir" novalidate style="margin-top:.3rem">
             <label>${esc(m.yeniSifre)}<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label>
             <p data-mesaj hidden class="not"></p>
             <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${esc(m.sifreDegistir)}</button></div>
           </form>
-          <p class="kucuk" style="margin-top:.8rem"><a href="${esc(veri.gizlilikYolu)}">${esc(m.gizlilik)}</a></p>
         </section>
       </div>`;
     const turSec = kok.querySelector<HTMLSelectElement>('select[name=tur]'); const tarihAlani = kok.querySelector<HTMLElement>('[data-tarih-alani]');
@@ -259,7 +301,7 @@ export async function veliPortali(): Promise<void> {
   const zamanYaz = (b: Bildirim) => { const ms = zamanMs(b); return ms ? new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ms)) : ''; };
 
   const kayitYokEkrani = () => {
-    kok.innerHTML = `<div class="kutu" style="max-width:40rem"><p class="not hata">${esc(m.kayitYok)}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${esc(m.cikis)}</button></div>`;
+    kok.innerHTML = `<div class="giris-sar"><div class="giris-kart"><p class="not hata">${esc(m.kayitYok)}</p><div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}${esc(m.cikis)}</button></div></div></div>`;
   };
 
   const panoyaGec = async (user: { email: string | null }, onMesaj = '') => {
@@ -278,6 +320,8 @@ export async function veliPortali(): Promise<void> {
 
   /* ---------------------------------------------------------------- olaylar */
   kok.addEventListener('click', async (ev) => {
+    const devamBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-devam]');
+    if (devamBtn) { const art = devamBtn.closest('.duyuru'); if (art) { const acik = art.classList.toggle('acik'); devamBtn.textContent = acik ? m.dahaAz : m.devaminiOku; } return; }
     const hedef = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem], [data-sec]');
     if (!hedef) return;
     if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); localStorage.removeItem('veliEposta'); durum = null; girisEkrani(); return; }
