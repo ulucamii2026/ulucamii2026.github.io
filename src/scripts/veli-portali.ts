@@ -10,7 +10,10 @@ type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
 type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; gizlilikYolu: string; kursYolu: string; dilYollari: Record<Dil, string> };
 type Ogrenci = { ref: string; ad: string; soyad: string; durum?: string };
-type Yoklama = { ref: string; tarih: string; durum: 'var' | 'yok' | 'mazeret' | 'gec'; not?: string };
+type DurumTip = 'var' | 'yok' | 'mazeret' | 'gec';
+// Yoklama artık gün başına DERS DERS tutulur: dersler = { "1": durum, "2": durum, "3": durum } (gün-içi sıra → durum).
+// Eski belgeler tek `durum` taşıyordu; okuyucular geriye-dönük uyumlu (o durumu üç derse de uygular).
+type Yoklama = { ref: string; tarih: string; dersler?: Record<string, DurumTip>; durum?: DurumTip; not?: string };
 type Ilerleme = { kuranAdim?: number; ezber?: Record<string, 'ogrendi' | 'tekrar' | 'baslamadi'>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string };
 type Degerlendirme = { tarih: string; alan: string; olcut?: string; derece?: number; not?: string };
 type Not = { tarih: string; metin: string };
@@ -36,6 +39,11 @@ export async function veliPortali(): Promise<void> {
   // Duyuru/ödev metnindeki https bağlantılarını tıklanabilir yapar (önce kaçış, sonra bağlantı; sondaki noktalama bağlantıya girmez)
   const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
   const alanAdi = (kod: string) => (m.alan as Record<string, string>)[kod] || kod;
+  // Bir yoklama gününü ders ders normalleştirir (yeni `dersler` haritası ya da eski tek `durum`dan).
+  const dersDurumlari = (y: Yoklama): { sira: string; durum: DurumTip }[] => {
+    const h = y.dersler && typeof y.dersler === 'object' ? y.dersler : (y.durum ? { '1': y.durum, '2': y.durum, '3': y.durum } : {});
+    return Object.keys(h).filter((s) => h[s]).sort().map((s) => ({ sira: s, durum: h[s] }));
+  };
 
   /* çizili tek-çizgi ikonlar (currentColor; craft: emoji/glyph değil) */
   const SIMGELER: Record<string, string> = {
@@ -199,7 +207,7 @@ export async function veliPortali(): Promise<void> {
     const haftaGunleri = veri.gunler.filter((g) => g.tarih >= pzt && g.tarih <= paz);
     const siradaki = veri.gunler.find((g) => g.tarih > bugun);
     const haftaOdev = d.odevler.find((x) => x.tarih >= pzt && x.tarih <= paz);
-    const yk = c ? c.yoklama : []; const say = { var: 0, yok: 0, mazeret: 0, gec: 0 } as Record<string, number>; yk.forEach((y) => { say[y.durum] = (say[y.durum] || 0) + 1; });
+    const yk = c ? c.yoklama : []; const say = { var: 0, yok: 0, mazeret: 0, gec: 0 } as Record<string, number>; let toplamDers = 0; yk.forEach((y) => dersDurumlari(y).forEach((p) => { say[p.durum] = (say[p.durum] || 0) + 1; toplamDers++; }));
     const ile = c?.ilerleme || null;
     const kuranNo = ile?.kuranAdim ?? -1; const kuranKonu = kuranNo >= 0 && kuranSirasi[kuranNo] ? kuranSirasi[kuranNo].konu : '';
     const yuzde = kuranNo >= 0 ? Math.round(((kuranNo + 1) / kuranSirasi.length) * 100) : 0;
@@ -208,7 +216,7 @@ export async function veliPortali(): Promise<void> {
 
     const durumAd = (k: string) => (m.durum as Record<string, string>)[k] || k;
     const kunyeler: { ikon: string; deger: string; etiket: string }[] = [];
-    if (yk.length) kunyeler.push({ ikon: 'takvim', deger: `${say.var}/${yk.length}`, etiket: m.ozetDevam });
+    if (toplamDers) kunyeler.push({ ikon: 'takvim', deger: `${say.var}/${toplamDers}`, etiket: m.ozetDevam });
     if (kuranNo >= 0) kunyeler.push({ ikon: 'grafik', deger: `${kuranNo + 1}/${kuranSirasi.length}`, etiket: m.ozetKuran });
     if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.length }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
@@ -242,8 +250,9 @@ export async function veliPortali(): Promise<void> {
 
         <section class="bolum">
           ${bas('takvim', m.yoklama)}
-          ${yk.length ? `<div class="devam-ozet"><span><b>${say.var}</b> ${esc(durumAd('var'))}</span>${say.yok ? `<span><b>${say.yok}</b> ${esc(durumAd('yok'))}</span>` : ''}${say.mazeret ? `<span><b>${say.mazeret}</b> ${esc(durumAd('mazeret'))}</span>` : ''}${say.gec ? `<span><b>${say.gec}</b> ${esc(durumAd('gec'))}</span>` : ''}</div>
-            <div class="yoklama-serit">${yk.map((y) => `<div class="gun-cip ${y.durum}" title="${esc(durumAd(y.durum))}${y.not ? ' · ' + esc(y.not) : ''}"><b>${esc(tarihYaz(y.tarih, { day: 'numeric' }))}</b><span class="g-ay">${esc(tarihYaz(y.tarih, { month: 'short' }))}</span></div>`).join('')}</div>`
+          ${yk.length ? `<p class="kucuk">${esc(yerlestir(m.yoklamaBilgi, { n: toplamDers }))}</p>
+            <div class="devam-ozet"><span><b>${say.var}</b> ${esc(durumAd('var'))}</span>${say.yok ? `<span><b>${say.yok}</b> ${esc(durumAd('yok'))}</span>` : ''}${say.mazeret ? `<span><b>${say.mazeret}</b> ${esc(durumAd('mazeret'))}</span>` : ''}${say.gec ? `<span><b>${say.gec}</b> ${esc(durumAd('gec'))}</span>` : ''}</div>
+            <div class="yoklama-liste">${yk.slice().reverse().slice(0, 10).map((y) => { const gun = veri.gunler.find((gg) => gg.tarih === y.tarih); const pd = dersDurumlari(y); return `<div class="yoklama-gun"><span class="yg-tarih">${esc(tarihYaz(y.tarih, { weekday: 'short', day: 'numeric', month: 'short' }))}</span><div class="yg-dersler">${pd.map((p) => { const ders = gun && gun.dersler ? gun.dersler.find((dd) => String(dd.no) === p.sira) : null; const ad = ders ? alanAdi(ders.kod) : yerlestir(m.dersNo, { n: p.sira }); return `<span class="ders-kayit"><span class="dk-ad"><span class="dk-no">${esc(p.sira)}</span>${esc(ad)}</span><span class="rozet ${p.durum}">${esc(durumAd(p.durum))}</span></span>`; }).join('')}</div>${y.not ? `<p class="yg-not">${simge('not')}<span>${esc(y.not)}</span></p>` : ''}</div>`; }).join('')}</div>`
             : bosDurum('takvim', m.yoklamaYok)}
         </section>
 

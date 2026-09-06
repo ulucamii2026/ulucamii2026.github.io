@@ -145,11 +145,16 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .rozet.derece { --dr: var(--vurgu-2); }
 
   /* --- devam durumu --- */
-  .portal .yoklama-serit { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
-  .portal .gun-cip { --dr: var(--cizgi-etkilesim); width: 3.15rem; text-align: center; padding: 0.4rem 0.2rem 0.35rem; border-radius: var(--radius-kose); border: 1px solid color-mix(in oklab, var(--dr) 34%, var(--cizgi)); background: color-mix(in oklab, var(--dr) 13%, var(--zemin)); color: color-mix(in oklab, var(--dr) 72%, var(--metin)); font-size: 0.66rem; line-height: 1.25; }
-  .portal .gun-cip b { display: block; font-size: 1rem; font-family: var(--font-serif); font-variant-numeric: tabular-nums; }
-  .portal .gun-cip .g-ay { text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.6rem; opacity: 0.85; }
-  .portal .gun-cip.var { --dr: var(--color-adacayi); } .portal .gun-cip.yok { --dr: var(--color-kiremit); } .portal .gun-cip.mazeret { --dr: var(--color-ochre); } .portal .gun-cip.gec { --dr: var(--color-iznik); }
+  .portal .yoklama-liste { display: flex; flex-direction: column; margin-top: 0.3rem; }
+  .portal .yoklama-gun { padding: 0.6rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .yoklama-gun:first-child { border-top: 0; padding-top: 0; }
+  .portal .yoklama-gun .yg-tarih { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .portal .yoklama-gun .yg-dersler { display: flex; flex-direction: column; gap: 0.3rem; }
+  .portal .ders-kayit { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+  .portal .ders-kayit .dk-ad { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--metin); }
+  .portal .ders-kayit .dk-no { display: inline-flex; align-items: center; justify-content: center; width: 1.35rem; height: 1.35rem; flex: none; border-radius: var(--radius-kose); background: var(--zemin-3); border: 1px solid var(--cizgi); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--metin-2); }
+  .portal .yoklama-gun .yg-not { display: flex; align-items: flex-start; gap: 0.4rem; margin: 0.5rem 0 0 1.85rem; font-size: 0.85rem; color: var(--metin-2); }
+  .portal .yoklama-gun .yg-not .simge { width: 0.9rem; height: 0.9rem; flex: none; margin-top: 0.12rem; color: var(--metin-2); }
   .portal .devam-ozet { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin: 0 0 0.9rem; }
   .portal .devam-ozet span { display: inline-flex; align-items: baseline; gap: 0.3rem; font-size: 0.85rem; color: var(--metin-2); }
   .portal .devam-ozet span b { font-size: 1.05rem; color: var(--metin); font-variant-numeric: tabular-nums; }
