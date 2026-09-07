@@ -29,7 +29,7 @@ service cloud.firestore {
       allow create, delete: if hoca();
       allow update: if hoca()
         || (girisli() && eposta() == ep
-            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['dil', 'cep', 'adSoyad', 'sonGiris', 'sifreVar']));
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['dil', 'cep', 'adSoyad', 'sonGiris', 'sifreVar', 'kitapSecim']));
     }
     match /ogrenciler/{ref} {
       allow read: if hoca() || veliOkur(ref);

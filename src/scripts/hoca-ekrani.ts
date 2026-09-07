@@ -10,7 +10,9 @@ type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
 type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string> };
 type Ogr = { ref: string; ad: string; soyad: string; veliler?: string[]; dil?: string; durum?: string; grup?: string; kayitRef?: string };
-type Aile = { eposta: string; ogrenciler: string[]; dil?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string };
+type Aile = { eposta: string; ogrenciler: string[]; dil?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string;
+  /* Veli portalındaki «Ders kitabı ve materyal» kartının yanıtı: öğrenci ref'i → {secim, zaman} */
+  kitapSecim?: Record<string, { secim: string; zaman: string }> };
 type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum?: string; not?: string };
 type Ilerleme = { kuranAdim?: number; ezber?: Record<string, string>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string };
 type Kayit = Record<string, unknown> & { id: string };
@@ -21,6 +23,7 @@ const EZBER_DURUM: Record<string, string> = { '': '—', baslamadi: 'Başlamadı
 const DERECE: Record<string, string> = { '0': '—', '1': 'Zayıf', '2': 'Gelişmeli', '3': 'Orta', '4': 'İyi', '5': 'Çok iyi' }; // kurs yoklama-değerlendirme şablonuyla aynı ölçek (1 = zayıf … 5 = çok iyi)
 const OLCUTLER = ['Mahreç', 'Hareke / Med', 'Tecvid', 'Akıcılık', 'Ezber', 'Harf tanıma', 'Hece okuma', 'Dua / sure ezberi'];
 const TUR: Record<string, string> = { mazeret: 'Mazeret', iletisim: 'İletişim', soru: 'Soru' };
+const KITAP_ADI: Record<string, string> = { var: 'kitabı var', satin: 'satın alacak', fotokopi: 'fotokopi · 10 €' };
 const DIL_ADI: Record<string, string> = { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce' };
 const GAS = 'https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec';
 
@@ -332,10 +335,17 @@ export async function hocaEkrani(): Promise<void> {
         </article>`; }).join('') || bosDurum('zarf', 'Henüz veli bildirimi yok. Veliler mazeret, iletişim değişikliği ya da soru gönderdiğinde burada görünür.')}
       </section>`;
     } else if (S.sekme === 'aile') {
+      const kitapSay = { var: 0, satin: 0, fotokopi: 0, yok: 0 };
+      for (const f of S.aileler) for (const r of f.ogrenciler || []) {
+        const v = (f.kitapSecim || {})[r];
+        if (v && v.secim in kitapSay) kitapSay[v.secim as keyof typeof kitapSay]++; else kitapSay.yok++;
+      }
       govde = `<section class="bolum"><h2>${simge('aile')}Aileler <span class="kucuk">(${S.aileler.length})</span></h2>
+        <p class="kucuk"><b>Ders kitabı durumu:</b> ${kitapSay.var} kitabı var · ${kitapSay.satin} satın alacak · ${kitapSay.fotokopi} fotokopi (10 €) · ${kitapSay.yok} yanıt yok</p>
         <p class="kucuk">«Davet gönder»: veliye kendi dilinde tek kullanımlık giriş bağlantısı e-postalanır; veli bağlantıyı açıp şifresini belirler. Google'ın ücretsiz planı günde en fazla <b>5</b> davet e-postası gönderir; toplu davet için yönetici betiği (info@ulucamii.be üzerinden) kullanılır.</p>
         <ul class="liste">${S.aileler.map((f) => `<li><span class="buyu"><b>${esc(f.eposta)}</b><br><span class="kucuk">${esc(f.adSoyad || '')} · ${esc(DIL_ADI[f.dil || ''] || f.dil || '')} · ${esc((f.ogrenciler || []).map(ogrAdi).join(', '))}</span></span>
           <span class="rozet">${f.sifreVar ? 'şifre belirledi' : 'henüz girmedi'}</span>${f.sonGiris ? `<span class="kucuk">son giriş ${esc(tarihYaz(f.sonGiris))}</span>` : ''}
+          <span class="kucuk">${(f.ogrenciler || []).map((r) => { const v = (f.kitapSecim || {})[r]; return `${esc(ogrAdi(r))}: <span class="rozet ${v ? (v.secim === 'var' ? 'ogrendi' : v.secim === 'fotokopi' ? 'gec' : 'mazeret') : ''}">${esc(v ? (KITAP_ADI[v.secim] || v.secim) : 'kitap yanıtı yok')}</span>`; }).join(' · ')}</span>
           <button type="button" class="dugme dugme-ikincil" data-davet="${esc(f.eposta)}" data-dil="${esc(f.dil || 'tr')}">Davet gönder</button></li>`).join('') || '<li class="kucuk">Aile yok.</li>'}</ul>
         <p data-ust-mesaj hidden class="not"></p>
         <h3>Kayıt defteri</h3>

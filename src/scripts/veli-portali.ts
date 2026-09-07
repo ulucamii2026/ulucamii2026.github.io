@@ -159,7 +159,10 @@ export async function veliPortali(): Promise<void> {
   };
 
   /* ---------------------------------------------------------------- pano */
-  type Durum = { eposta: string; aile: { ogrenciler: string[]; dil?: string; sifreVar?: boolean }; ogrenciler: Ogrenci[]; secili: number;
+  type Durum = { eposta: string; aile: { ogrenciler: string[]; dil?: string; sifreVar?: boolean;
+      /* kitapSecim: öğrenci ref'i → {secim: 'var'|'satin'|'fotokopi', zaman}. Veli kendi belgesine yazar
+         (firestore.rules aileler update izin listesinde). Hoca ekranı bu haritayı okuyup hazırlık yapar. */
+      kitapSecim?: Record<string, { secim: string; zaman: string }> }; ogrenciler: Ogrenci[]; secili: number;
     odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[] }> };
   let durum: Durum | null = null;
   let duzenlenenBildirim: string | null = null; // veli bir gönderdiği mesajı düzenliyorsa id'si
@@ -227,6 +230,41 @@ export async function veliPortali(): Promise<void> {
     if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.reduce((s, g) => s + g.dersler.length, 0) }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
     const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
+    /* Ders kitabı / materyal kartı: her öğrenci için tek seferlik üç seçenek. Yanıtlanmamış öğrenci
+       varsa kart vurgulu ve en üstte durur; hepsi yanıtlanınca özet satırlarına iner. */
+    const kitapKarti = () => {
+      const sec = d.aile.kitapSecim || {};
+      const eksik = d.ogrenciler.some((x) => !sec[x.ref]);
+      const adlar = m.kitapSecildi as Record<string, string>;
+      const satirlar = d.ogrenciler.map((x) => {
+        const v = sec[x.ref];
+        return `<div class="kitap-satir${v ? '' : ' acik'}">
+          <span class="ks-ad">${simge('ogrenci')}<b>${esc(x.ad)} ${esc(x.soyad)}</b></span>
+          ${v
+            ? `<span class="ks-yanit"><span class="rozet ogrendi">${esc(adlar[v.secim] || v.secim)}</span>
+                 <button type="button" class="kucuk-dugme" data-kitap-degistir="${esc(x.ref)}">${simge('kalem')}${esc(m.kitapDegistir)}</button></span>`
+            : `<span class="ks-secenek">
+                 <button type="button" class="ks-dugme" data-kitap="var" data-ref="${esc(x.ref)}">${esc(m.kitapVar)}</button>
+                 <button type="button" class="ks-dugme" data-kitap="satin" data-ref="${esc(x.ref)}">${esc(m.kitapSatin)}</button>
+                 <button type="button" class="ks-dugme" data-kitap="fotokopi" data-ref="${esc(x.ref)}">${esc(m.kitapFoto)}</button>
+               </span>`}
+        </div>`;
+      }).join('');
+      return `<section class="bolum genis kitap-kart${eksik ? ' oncelik' : ''}" id="kitap">
+        ${bas('kitap', m.kitapBaslik, eksik ? m.kitapBekliyor : '')}
+        <p class="kucuk">${esc(m.kitapA)}</p>
+        ${satirlar}
+        <div class="kitap-bilgi">
+          <p class="kucuk"><b>${esc(m.kitapSatin)}</b> — ${esc(m.kitapSatinNot)}</p>
+          <p class="kitap-baglar">
+            <a class="ic-bag" href="https://zsu-shop.de" target="_blank" rel="noopener">${esc(m.kitapSatinBag)}${simge('disari')}</a>
+            <a class="ic-bag" href="https://www.ditib-akademie.de/cg1/" target="_blank" rel="noopener">${esc(m.kitapCg1)}${simge('disari')}</a>
+            <a class="ic-bag" href="https://www.ditib-akademie.de/cg2/" target="_blank" rel="noopener">${esc(m.kitapCg2)}${simge('disari')}</a>
+          </p>
+          <p class="kucuk"><b>${esc(m.kitapFoto)}</b> — ${esc(m.kitapFotoNot)}</p>
+        </div>
+      </section>`;
+    };
     const duzen = duzenlenenBildirim ? d.bildirimler.find((b) => b.id === duzenlenenBildirim) || null : null;
     // Mazeret düzenlenirken orijinal tarih gelecek penceresinin dışına düşmüşse seçeneklerin başına
     // eklenir; yoksa hiçbir <option> selected olmaz, tarayıcı sessizce ilk günü gösterir ve kaydeder.
@@ -247,6 +285,7 @@ export async function veliPortali(): Promise<void> {
         ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" class="cocuk-dugme" aria-selected="${i === d.secili}" data-sec="${i}">${simge('ogrenci')}${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
       <div class="bolumler">
+        ${kitapKarti()}
         <section class="bolum oncelik genis">
           ${bas('kitap', m.buHafta, `${tarihYaz(pzt)} – ${tarihYaz(paz)}${haftaGunleri[0] ? ' · ' + yerlestir(m.hafta, { n: haftaGunleri[0].hafta }) : ''}`)}
           ${haftaGunleri.length ? `<div>${haftaGunleri.map((g) => `<div class="hafta-gun"><span class="g-tarih">${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'short' }))}</span>
@@ -353,6 +392,32 @@ export async function veliPortali(): Promise<void> {
   kok.addEventListener('click', async (ev) => {
     const devamBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-devam]');
     if (devamBtn) { const art = devamBtn.closest('.duyuru'); if (art) { const acik = art.classList.toggle('acik'); devamBtn.textContent = acik ? m.dahaAz : m.devaminiOku; } return; }
+    const kitapBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-kitap]');
+    if (kitapBtn && durum) {
+      const ref = kitapBtn.dataset.ref as string;
+      const secim = kitapBtn.dataset.kitap as string;
+      // Nokta yollu alan adı kullanılmaz: öğrenci ref'i tire içerir (UC-2026-0001) ve Firestore
+      // alan yolu olarak geçersizdir. Harita bütün olarak yazılır.
+      const yeni = { ...(durum.aile.kitapSecim || {}), [ref]: { secim, zaman: new Date().toISOString() } };
+      try {
+        await fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { kitapSecim: yeni });
+        durum.aile.kitapSecim = yeni; panoCiz();
+        kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.kitapTesekkur)}</p>`);
+      } catch (e) { kok.insertAdjacentHTML('afterbegin', `<p class="not hata">${esc(hataMetni(e))}</p>`); }
+      return;
+    }
+    const kitapDegBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-kitap-degistir]');
+    if (kitapDegBtn && durum) {
+      const ref = kitapDegBtn.dataset.kitapDegistir as string;
+      const yeni = { ...(durum.aile.kitapSecim || {}) };
+      delete yeni[ref];
+      try {
+        await fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { kitapSecim: yeni });
+        durum.aile.kitapSecim = yeni; panoCiz();
+        kok.querySelector('#kitap')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (e) { kok.insertAdjacentHTML('afterbegin', `<p class="not hata">${esc(hataMetni(e))}</p>`); }
+      return;
+    }
     const silBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-bildir-sil]');
     if (silBtn && durum) {
       const id = silBtn.dataset.bildirSil as string;

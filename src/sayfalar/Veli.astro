@@ -124,6 +124,20 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .liste li { padding: 0.6rem 0; border-top: 1px solid var(--cizgi); display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; align-items: baseline; }
   .portal .liste li:first-child { border-top: 0; padding-top: 0; }
   .portal .kucuk { font-size: 0.85rem; color: var(--metin-2); }
+  /* Ders kitabı / materyal kartı: yanıt bekleyen öğrenci varsa .oncelik ile vurgulanır. */
+  .portal .kitap-satir { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; padding: 0.7rem 0; border-top: 1px solid var(--cizgi); }
+  .portal .kitap-satir:first-of-type { border-top: none; }
+  .portal .kitap-satir .ks-ad { display: inline-flex; align-items: center; gap: 0.4rem; min-width: 11rem; }
+  .portal .kitap-satir .ks-ad .simge { width: 1.05rem; height: 1.05rem; color: var(--vurgu-2); }
+  .portal .ks-secenek { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .portal .ks-yanit { display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .portal .ks-dugme { font-size: 0.85rem; font-weight: 600; line-height: 1.25; min-height: 2.35rem; padding: 0.4rem 0.8rem;
+    border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin);
+    color: var(--metin); cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
+  .portal .ks-dugme:hover { border-color: var(--vurgu); color: var(--vurgu); background: color-mix(in oklab, var(--vurgu) 7%, var(--zemin)); }
+  .portal .ks-dugme:focus-visible { outline: none; border-color: var(--vurgu-2); box-shadow: 0 0 0 3px color-mix(in oklab, var(--vurgu-2) 26%, transparent); }
+  .portal .kitap-bilgi { margin-top: 0.9rem; padding-top: 0.85rem; border-top: 1px solid var(--cizgi); display: grid; gap: 0.5rem; }
+  .portal .kitap-baglar { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; }
   .portal a.ic-bag { font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.3rem; }
 
   /* --- bu hafta --- */
