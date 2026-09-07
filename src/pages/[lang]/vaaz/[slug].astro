@@ -3,12 +3,14 @@
  * Vaaz detay — uzun soluklu okuma sayfası (Read modu). İçerik anonim ve Türkçe; Word/PDF indirilebilir.
  * Ayrı «/vaaz/<slug>» yolu bilinçli: statik segment dinamik [sayfa]'dan önceliklidir, [slug].astro'ya
  * dokunmadan çakışmasız çalışır. Liste yolu ise yerelleştirilmiş (yollar.vaazlar → vaazlar/sermons).
+ * Düzen (7 Eyl 2026): masaüstünde okuma sütunu + sağda yapışkan indirme paneli — sayfa site genişliğini
+ * kullanır, satır ölçüsü ~80 karakterde kalır; 1024 px altında tek sütun (panel başlığın altına iner).
  */
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import SayfaBasligi from '../../../components/SayfaBasligi.astro';
 import { yol } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
+import { katAd } from '../../../i18n/vaaz-kategori';
 
 export async function getStaticPaths() {
   const vaazlar = (await getCollection('vaazlar')).filter((v) => !v.data.taslak);
@@ -22,12 +24,16 @@ const { Content } = await render(entry);
 const d = entry.data;
 
 const m = {
-  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null as string | null, paylas: "WhatsApp'ta paylaş" },
-  fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp' },
-  en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp' },
+  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null as string | null, paylas: "WhatsApp'ta paylaş",
+        pdfNot: 'Orijinal belge', wordNot: 'Düzenlenebilir', serbest: 'Anonim metin — okuyabilir, indirebilir, serbestçe kullanabilirsiniz.' },
+  fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp',
+        pdfNot: 'Document original', wordNot: 'Modifiable', serbest: 'Texte anonyme — à lire, télécharger et utiliser librement.' },
+  en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp',
+        pdfNot: 'Original document', wordNot: 'Editable', serbest: 'Anonymous text — read, download and use freely.' },
 }[dil];
 
 const okumaDk = d.kelime ? Math.max(1, Math.round(d.kelime / 180)) : null;
+const kat = d.kategori ? (katAd[d.kategori]?.[dil] ?? d.kategori) : null;
 const kanonik = new URL(Astro.url.pathname, Astro.site).toString();
 const wa = `https://wa.me/?text=${encodeURIComponent(`${d.baslik} — ${kanonik}`)}`;
 const jsonLd = {
@@ -35,38 +41,50 @@ const jsonLd = {
   ...(d.ozet ? { description: d.ozet } : {}), isAccessibleForFree: true,
   publisher: { '@type': 'Organization', name: 'Ulu Camii Marche-en-Famenne' },
 };
+const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 ---
 <Base baslik={d.baslik} aciklama={d.ozet} dil={dil} noindex={false} ogTuru="article" ekJsonLd={[jsonLd]}>
   <article class="kapsayici py-8 sm:py-12">
-    <div class="vaaz-en">
-      <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
+    <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
 
+    <div class="vaaz-yerlesim">
       <header class="vaaz-bas">
         <p class="etiket etiket-vurgu">{m.etiket}</p>
         <h1>{d.baslik}</h1>
         {d.ozet && <p class="vaaz-ozet">{d.ozet}</p>}
         <p class="vaaz-meta">
+          {kat && <span class="vaaz-kat">{kat}</span>}
           {okumaDk && <span>{okumaDk} {m.okuma}</span>}
-          {d.kelime && <span>· {d.kelime.toLocaleString('tr-TR')} {m.kelime}</span>}
+          {d.kelime && <span>{d.kelime.toLocaleString('tr-TR')} {m.kelime}</span>}
         </p>
+        {m.trNot && <p class="vaaz-not">{m.trNot}</p>}
+      </header>
+
+      <aside class="vaaz-yan" aria-label={m.indir}>
         {(d.docx || d.pdf) && (
-          <div class="vaaz-indir">
-            {d.pdf && (
-              <a href={d.pdf} class="indir-dugme" download>
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
-                PDF
-              </a>
-            )}
-            {d.docx && (
-              <a href={d.docx} class="indir-dugme" download>
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
-                Word
-              </a>
-            )}
+          <div class="yan-kutu">
+            <p class="yan-baslik">{m.indir}</p>
+            <div class="vaaz-indir">
+              {d.pdf && (
+                <a href={d.pdf} class="indir-dugme" download>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={indirIkon} />
+                  <span class="indir-ad">PDF</span>
+                  <small>{m.pdfNot}</small>
+                </a>
+              )}
+              {d.docx && (
+                <a href={d.docx} class="indir-dugme" download>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={indirIkon} />
+                  <span class="indir-ad">Word</span>
+                  <small>{m.wordNot}</small>
+                </a>
+              )}
+            </div>
+            <p class="yan-not">{m.serbest}</p>
           </div>
         )}
-        {m.trNot && <p class="bilgi text-sm mt-4">{m.trNot}</p>}
-      </header>
+        <a href={wa} target="_blank" rel="noopener" class="baglanti-dugme yan-paylas">{m.paylas}</a>
+      </aside>
 
       <div class="vaaz-govde">
         <Content />
@@ -81,39 +99,65 @@ const jsonLd = {
 </Base>
 
 <style>
-  .vaaz-en { max-width: 44rem; margin-inline: auto; }
   .geri-bag { display: inline-block; font-size: 0.85rem; color: var(--metin-2); text-decoration: none; margin-bottom: 1.5rem; }
   .geri-bag:hover { color: var(--vurgu); }
 
-  .vaaz-bas { border-bottom: 1px solid var(--cizgi); padding-bottom: 1.5rem; margin-bottom: 2rem; }
-  .vaaz-bas h1 { font-family: var(--font-serif, Lora), serif; font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.15; margin: 0.4rem 0 0; letter-spacing: -0.01em; }
-  .vaaz-ozet { font-family: var(--font-serif, Lora), serif; font-size: 1.1rem; color: var(--metin-2); font-style: italic; margin: 0.9rem 0 0; line-height: 1.5; }
-  .vaaz-meta { font-size: 0.82rem; color: var(--metin-2); letter-spacing: 0.02em; text-transform: uppercase; margin: 1rem 0 0; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  /* Yerleşim: tek sütun; ≥1024 px'te okuma sütunu + sağda yapışkan panel (kapsayıcının iki kenarına yaslanır) */
+  .vaaz-yerlesim { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "bas" "yan" "govde" "alt"; }
+  .vaaz-bas { grid-area: bas; } .vaaz-yan { grid-area: yan; } .vaaz-govde { grid-area: govde; } .vaaz-alt { grid-area: alt; }
+  .vaaz-bas, .vaaz-govde, .vaaz-alt { max-width: 46rem; }   /* ≈80 karakterlik rahat satır ölçüsü */
 
-  .vaaz-indir { display: flex; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap; }
-  .indir-dugme { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.6rem; padding: 0 1rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); font-size: 0.9rem; font-weight: 600; color: var(--metin); text-decoration: none; background: var(--zemin); transition: border-color 0.15s, color 0.15s; }
-  .indir-dugme:hover { border-color: var(--vurgu); color: var(--vurgu); }
-  .indir-dugme svg { color: var(--vurgu); }
+  .vaaz-bas { border-bottom: 1px solid var(--cizgi); padding-bottom: 1.5rem; margin-bottom: 1.75rem; }
+  .vaaz-bas h1 { font-family: var(--font-serif, Lora), serif; font-size: clamp(1.8rem, 4.5vw, 2.7rem); line-height: 1.12; margin: 0.4rem 0 0; letter-spacing: -0.012em; text-wrap: balance; }
+  .vaaz-ozet { font-family: var(--font-serif, Lora), serif; font-size: 1.12rem; color: var(--metin-2); font-style: italic; margin: 0.9rem 0 0; line-height: 1.55; text-wrap: pretty; }
+  .vaaz-meta { font-size: 0.8rem; color: var(--metin-2); letter-spacing: 0.03em; text-transform: uppercase; margin: 1.1rem 0 0; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .vaaz-meta > span + span::before { content: "·"; margin-inline-end: 0.5rem; color: var(--cizgi-etkilesim); }
+  .vaaz-kat { color: var(--vurgu-2); font-weight: 700; }
+  .vaaz-not { margin: 0.9rem 0 0; padding-inline-start: 0.75rem; border-inline-start: 3px solid var(--vurgu-2); font-size: 0.88rem; color: var(--metin-2); }
+
+  /* Panel */
+  .vaaz-yan { margin: 0 0 2rem; }
+  .yan-kutu { border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); padding: 1rem 1.1rem 1.05rem; }
+  .yan-baslik { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); margin: 0 0 0.7rem; }
+  .vaaz-indir { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.55rem; }
+  .indir-dugme { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 0.65rem; align-items: center; min-height: 3.4rem; padding: 0.6rem 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); text-decoration: none; transition: border-color 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s; }
+  .indir-dugme svg { grid-row: 1 / span 2; color: var(--vurgu); }
+  .indir-ad { font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+  .indir-dugme small { display: block; font-size: 0.74rem; color: var(--metin-2); letter-spacing: 0.02em; line-height: 1.3; }
+  .indir-dugme:hover { border-color: var(--vurgu); color: var(--vurgu); transform: translateY(-1px); box-shadow: 0 6px 18px -12px color-mix(in oklab, var(--vurgu) 50%, transparent); }
+  .yan-not { margin: 0.8rem 0 0; font-size: 0.8rem; line-height: 1.5; color: var(--metin-2); text-wrap: pretty; }
+  .yan-paylas { display: none; }
+
+  @media (min-width: 1024px) {
+    .vaaz-yerlesim { grid-template-columns: minmax(0, 46rem) 17rem; justify-content: space-between; column-gap: clamp(2.5rem, 5vw, 5rem); grid-template-areas: "bas yan" "govde yan" "alt yan"; }
+    .vaaz-yan { position: sticky; top: 6rem; align-self: start; margin: 0.35rem 0 0; }
+    .vaaz-indir { grid-template-columns: 1fr; }
+    .yan-paylas { display: inline-flex; width: 100%; justify-content: center; margin-top: 0.75rem; box-sizing: border-box; }
+  }
 
   /* Okuma gövdesi — serif, rahat ölçü, İznik/kiremit vurgular; Arapça için Amiri font yığında */
-  .vaaz-govde { font-family: var(--font-serif, Lora), Amiri, serif; font-size: 1.08rem; line-height: 1.85; color: var(--metin); }
+  .vaaz-govde { font-family: var(--font-serif, Lora), Amiri, serif; font-size: 1.1rem; line-height: 1.8; color: var(--metin); text-wrap: pretty; }
   .vaaz-govde :global(p) { margin: 0 0 1.15rem; }
-  .vaaz-govde :global(h2) { font-family: var(--font-serif, Lora), serif; font-size: 1.4rem; line-height: 1.25; margin: 2.4rem 0 0.9rem; padding-top: 0.4rem; color: var(--vurgu); letter-spacing: -0.01em; }
+  .vaaz-govde :global(h2) { font-family: var(--font-serif, Lora), serif; font-size: 1.45rem; line-height: 1.25; margin: 2.4rem 0 0.9rem; padding-top: 0.4rem; color: var(--vurgu); letter-spacing: -0.01em; text-wrap: balance; }
   .vaaz-govde :global(h3) { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--vurgu-2); margin: 2rem 0 0.7rem; font-family: var(--font-sans); }
   .vaaz-govde :global(h3 + p),
   .vaaz-govde :global(h2 + p) { margin-top: 0; }
   .vaaz-govde :global(strong) { font-weight: 700; color: var(--metin); }
   .vaaz-govde :global(em) { color: var(--metin-2); }
-  .vaaz-govde :global(blockquote) { border-inline-start: 3px solid var(--vurgu); background: var(--zemin-2); margin: 1.4rem 0; padding: 0.8rem 1.2rem; border-radius: 0 var(--radius-kose) var(--radius-kose) 0; color: var(--metin-2); }
+  .vaaz-govde :global(blockquote) { border-inline-start: 3px solid var(--vurgu); background: var(--zemin-2); margin: 1.4rem 0; padding: 0.8rem 1.2rem; border-radius: 0 var(--radius-kose) var(--radius-kose) 0; }
+  .vaaz-govde :global(blockquote p:last-child) { margin-bottom: 0; }
   .vaaz-govde :global(ul), .vaaz-govde :global(ol) { margin: 0 0 1.15rem; padding-inline-start: 1.4rem; }
   .vaaz-govde :global(li) { margin: 0.3rem 0; }
   .vaaz-govde :global(hr) { border: 0; border-top: 1px solid var(--cizgi); margin: 2rem 0; }
-  /* Arapça satırlar (âyet/besmele): daha büyük, Amiri, sağdan sola akış otomatik değil ama okunaklı */
-  .vaaz-govde :global(p:lang(ar)) { font-family: Amiri, serif; font-size: 1.5rem; line-height: 2; text-align: center; direction: rtl; }
+  .vaaz-govde :global(a) { color: var(--vurgu-2); text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+  /* Arapça satırlar (âyet/besmele): daha büyük, Amiri, sağdan sola */
+  .vaaz-govde :global(p:lang(ar)) { font-family: Amiri, serif; font-size: 1.55rem; line-height: 2; text-align: center; direction: rtl; }
 
   @media (max-width: 640px) {
-    .vaaz-govde { font-size: 1.04rem; line-height: 1.8; }
+    .vaaz-govde { font-size: 1.04rem; line-height: 1.78; }
+    .vaaz-govde :global(p:lang(ar)) { font-size: 1.4rem; }
+    .vaaz-yan { margin-bottom: 1.6rem; }
   }
 
-  .vaaz-alt { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
+  .vaaz-alt { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
 </style>
