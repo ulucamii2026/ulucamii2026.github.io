@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import SayfaBasligi from '../../../components/SayfaBasligi.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
+import istatistik from '../../../data/istatistik.json';
 import { yollar, type Dil } from '../../../i18n/ui';
 import { ceviri, yol, tarihBicimle, hreflangKodu } from '../../../i18n/utils';
 import { duyurular, etkinlikler, siteAyarlari } from '../../../lib/icerik';
@@ -22,6 +23,10 @@ const t = ceviri(dil);
 const { Content } = await render(entry);
 const d = entry.data as any;
 const geri = tur === 'duyuru' ? yol(dil, 'duyurular') : yol(dil, 'etkinlikler');
+/* Görüntülenme tohumu: sayaç ucu iki saat önbellekli, derleme verisi sayfa açılır açılmaz görünsün. */
+const sayacYollar = (istatistik as { yollar: Record<string, number> }).yollar ?? {};
+const buYol = `${geri}${entry.slug}`.replace(/\/+$/, '');
+const goruntulenmeTohum = sayacYollar[buYol] ?? sayacYollar[`${buYol}/`] ?? 0;
 const etiket = tur === 'duyuru' ? t('nav.duyurular') : t('nav.etkinlikler');
 const tarih: Date = tur === 'duyuru' ? d.tarih : d.baslangic;
 const kapak: string | undefined = tur === 'duyuru' ? d.kapak : d.afis;
@@ -127,7 +132,7 @@ const icsHref = tur === 'etkinlik'
       {tur === 'etkinlik' && d.bitis && d.bitis.getTime() !== d.baslangic.getTime() && <span> – {tarihBicimle(d.bitis, dil)}</span>}
       {tur === 'etkinlik' && d.saat && <span> · {d.saat}</span>}
       {tur === 'etkinlik' && d.yer && <span> · {t('etkinlik.yer')}: {d.yer}</span>}
-      <Goruntulenme dil={dil} onek=" · " />
+      <Goruntulenme dil={dil} onek=" · " baslangic={goruntulenmeTohum} />
     </p>
     <p class="mt-2 text-sm">
       <a href={`https://wa.me/?text=${encodeURIComponent(waMetin)}`} target="_blank" rel="noopener">{waEtiket}<span aria-hidden="true"> ↗</span></a>

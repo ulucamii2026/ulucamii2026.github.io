@@ -8,11 +8,13 @@
  *   <Goruntulenme dil={dil} />                  → bu sayfanın görüntülenme sayısı
  *   <Goruntulenme dil={dil} kapsam="site" />    → sitenin toplam ziyaret sayısı
  *   onek=" · " → sayı gerçekten geldiğinde ayraç da yazılır (boşta sarkan ayraç kalmaz)
+ *   baslangic={n} → derleme anındaki sayı (src/data/istatistik.json). Sayfa açılır açılmaz
+ *     görünür, JavaScript kapalıyken de kaybolmaz; istemci canlı sayıyı alınca günceller.
  */
 import type { Dil } from '../i18n/ui';
 
-interface Props { dil: Dil; sinif?: string; kapsam?: 'sayfa' | 'site'; onek?: string }
-const { dil, sinif, kapsam = 'sayfa', onek = '' } = Astro.props;
+interface Props { dil: Dil; sinif?: string; kapsam?: 'sayfa' | 'site'; onek?: string; baslangic?: number }
+const { dil, sinif, kapsam = 'sayfa', onek = '', baslangic } = Astro.props;
 
 const adlar = {
   sayfa: { tr: ['görüntülenme', 'görüntülenme'], fr: ['vue', 'vues'], en: ['view', 'views'] },
@@ -20,8 +22,12 @@ const adlar = {
 }[kapsam];
 const ad = adlar[dil];
 const yerel = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
+const hazirMetin = typeof baslangic === 'number'
+  ? `${onek}${new Intl.NumberFormat(yerel).format(baslangic)} ${baslangic === 1 ? ad[0] : ad[1]}`
+  : '';
 ---
-<span class={sinif} data-goruntulenme data-kapsam={kapsam} data-onek={onek} data-tekil={ad[0]} data-cogul={ad[1]} data-yerel={yerel} hidden></span>
+<span class={sinif} data-goruntulenme data-kapsam={kapsam} data-onek={onek} data-tekil={ad[0]}
+      data-cogul={ad[1]} data-yerel={yerel} data-baslangic={baslangic ?? ''} hidden={!hazirMetin}>{hazirMetin}</span>
 
 <script>
   // GoatCounter sayaç ucu: {"count":"1,234","count_unique":"…"} döner; bilinmeyen yolda 404 + 0.
@@ -37,9 +43,12 @@ const yerel = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
     fetch(`https://ulucamii.goatcounter.com/counter/${anahtar}.json`)
       .then((y) => (y.ok ? y.json() : null))
       .then((veri) => {
-        const n = Number(String(veri?.count ?? '').replace(/[^0-9]/g, ''));
-        if (!n) return;
+        const gelen = Number(String(veri?.count ?? '').replace(/[^0-9]/g, ''));
+        if (!Number.isFinite(gelen)) return;
         for (const o of grup) {
+          // Derleme anındaki sayı, sayaç ucunun önbelleğinden yeni olabilir → büyüğü gösterilir.
+          const taban = Number(o.dataset.baslangic || 0);
+          const n = Math.max(gelen, Number.isFinite(taban) ? taban : 0);
           const sayi = new Intl.NumberFormat(o.dataset.yerel || 'tr-TR').format(n);
           o.textContent = `${o.dataset.onek || ''}${sayi} ${n === 1 ? o.dataset.tekil : o.dataset.cogul}`;
           o.hidden = false;

@@ -232,6 +232,6 @@ Kurbanlık hayvanın gerekli yaşını tamamladığı halde henüz kapak atmamı
 
 Kurban etlerinin mutlaka yedi fakire dağıtılması gerektiği şeklindeki anlayış doğru değildir. Kişi udhiyye kurbanını kestikten sonra bunun bir kısmını ihtiyaç sahiplerine, bir kısmını akraba ve komşularına verdikten sonra geriye kalan kısmını kendi evi için kullanabilir. Bu hüküm adak olmayan udhiyye kurbanlarıyla ilgilidir. Vekâletle kurban kesen kuruluşların da udhiyye kurbanlarının etlerini söz verdikleri yerlerin dışına dağıtmamaları, vekâlete aykırı davranmamaları gerekir.
 
-Kurbanlık hayvana ortak olanların bazılarının adak veya akika niyetiyle kurbana iştirak etmesinin kurbana engel olduğu şeklindeki anlayış hatalıdır. Ortakların her birinin niyetinin Allah rızası için kurban kesmek olması, kurbanın geçerli olması için yeterlidir.(https://kurul.diyanet.gov.tr/Duyuru-Detay/Duyurular/876/kurban-ibadetiyle-ilgili-aciklama)
+Kurbanlık hayvana ortak olanların bazılarının adak veya akika niyetiyle kurbana iştirak etmesinin kurbana engel olduğu şeklindeki anlayış hatalıdır. Ortakların her birinin niyetinin Allah rızası için kurban kesmek olması, kurbanın geçerli olması için yeterlidir.(https://www.diyanet.gov.tr/tr-tr/Kurumsal/Detay/33577/din-isleri-yuksek-kurulundan-kurban-ibadetiyle-ilgili-aciklama)
 
 Vaaz içeriğinde ki soru-cevaplar, D.İ.B. “Fetvalar”, Kurban Sıkça Sorulan Sorular kitapçığı ve sayfasından doğrudan alıntılanmıştır.

@@ -9,6 +9,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
+import istatistik from '../../../data/istatistik.json';
 import { yol } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
 import { katAd } from '../../../i18n/vaaz-kategori';
@@ -43,6 +44,14 @@ const m = {
 }[dil];
 
 const okumaDk = d.kelime ? Math.max(1, Math.round(d.kelime / 180)) : null;
+
+/* Görüntülenme sayısının derleme anındaki değeri (scripts/istatistik-cek.mjs → istatistik.json).
+   GoatCounter'ın herkese açık sayaç ucu yanıtı İKİ SAAT önbelleklendiği için yeni sayfalarda
+   uzun süre 0 dönüyor; bu tohum değeri sayının sayfa açılır açılmaz görünmesini sağlar,
+   istemci canlı sayıyı alınca büyüğü gösterilir. GoatCounter yolları eğik çizgisiz saklar. */
+const sayacYollar = (istatistik as { yollar: Record<string, number> }).yollar ?? {};
+const buYol = `/${dil}/vaaz/${entry.id}`;
+const goruntulenmeTohum = sayacYollar[buYol] ?? sayacYollar[`${buYol}/`] ?? 0;
 const kat = d.kategori ? (katAd[d.kategori]?.[dil] ?? d.kategori) : null;
 const kanonik = new URL(Astro.url.pathname, Astro.site).toString();
 const wa = `https://wa.me/?text=${encodeURIComponent(`${d.baslik} — ${kanonik}`)}`;
@@ -66,7 +75,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
           {kat && <span class="vaaz-kat">{kat}</span>}
           {okumaDk && <span>{okumaDk} {m.okuma}</span>}
           {d.kelime && <span>{d.kelime.toLocaleString('tr-TR')} {m.kelime}</span>}
-          <Goruntulenme dil={dil} />
+          <Goruntulenme dil={dil} baslangic={goruntulenmeTohum} />
         </p>
         {m.trNot && <p class="vaaz-not">{m.trNot}</p>}
       </header>
