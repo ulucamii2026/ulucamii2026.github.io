@@ -232,6 +232,8 @@ for (const d of ['fr', 'en']) {
   const disKurumTel = new Set([
     '+32498399502', // Imam-i Azam Egitim Merkezi (BDV) — 2026 hafta sonu yatili Kur'an kursu duyurusu
     '+3225061173',  // T.C. Bruksel Buyukelciligi Sosyal Isler Musavirligi — UIP sayfasi (Musavirlik yazisi 27.02.2024)
+    '+3524432810',  // T.C. Luksemburg Buyukelciligi santral — e-Devlet sifresi icin randevusuz basvuru (Konsolosluk sayfasi).
+                    // Dogrulandi 7 Eyl 2026: luksemburg-be.mfa.gov.tr/Mission/Contact
   ]);
   /* Dis kurumlarin sitede gosterilen kendi e-postalari (bizim adreslerimiz site.yaml'da). */
   const disKurumEposta = new Set([

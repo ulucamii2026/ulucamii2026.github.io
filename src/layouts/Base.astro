@@ -166,10 +166,14 @@ const yapisalVeri = {
       document.documentElement.classList.add('js');
       try { const t = localStorage.getItem('tema'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch {}
       // Otomatik dönen içerik (hero slaydı, duyuru şeridi) durumu — WCAG 2.2.2 duraklatma denetimi.
-      // Ziyaretçi hareket azaltma istiyorsa VARSAYILAN durmuştur; düğmeyle her zaman değiştirilebilir.
+      // 7 Eyl 2026: hareket azaltma tercihinde slayt ARTIK DURMUYOR, yalnız HAREKETİ kalkıyor —
+      // yakınlaşma (Ken Burns) ve kaydırma kapanır, geçiş kısa bir solmaya iner, tempo yavaşlar.
+      // Gerekçe: Windows'ta «animasyon efektleri» kapalı olan makinelerde (Rıdvan'ınki dâhil)
+      // tarayıcı reduce bildiriyor ve arka plan fotoğrafları hiç dönmüyordu; oysa bu ayar
+      // «web sayfası içeriği değişmesin» demek değil. Durdurma düğmesi yerinde, tercih kalıcı.
       try {
         var h = localStorage.getItem('uluCamiiHareket');
-        if (h !== 'acik' && h !== 'durdu') h = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'durdu' : 'acik';
+        if (h !== 'acik' && h !== 'durdu') h = 'acik';
         document.documentElement.dataset.hareket = h;
       } catch (e) { document.documentElement.dataset.hareket = 'acik'; }
     </script>
