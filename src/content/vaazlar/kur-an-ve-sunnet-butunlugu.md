@@ -38,7 +38,6 @@ Kur’an-ı Kerim, İslamın/şeriatın esası ve güvencesidir. Sünnet ise onu
 
 Ey iman edenler! Allah'a itaat edin. Peygamber'e ve sizden olan ülü'l-emre (idarecilere) de itaat edin. Eğer bir hususta anlaşmazlığa düşerseniz Allah'a ve ahirete gerçekten inanıyorsanız onu Allah'a ve Resûl'e götürün (onların talimatına göre halledin); bu hem hayırlı, hem de netice bakımından daha güzeldir. (Nisa, 4/59)
 
-
 <p lang="ar" dir="rtl" class="ayet">لَقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ لِّمَن كَانَ يَرْجُو اللَّهَ وَالْيَوْمَ الْآخِرَ وَذَكَرَ اللَّهَ كَثِيراً</p>
 
 Andolsun Allâh'ın Elçisinde sizin için Allah'a ve âhiret gününe kavuşmaya inanan ve Allâh'ı çok anan kimseler için, (uyulacak) en güzel bir örnek vardır. (Ahzab, 33/21)

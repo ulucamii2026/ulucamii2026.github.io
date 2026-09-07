@@ -8,7 +8,6 @@ pdf: "/vaazlar/kadir-gecesi.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 
-
 *Bin aydan hayırlı mübarek gece*
 
 <p lang="ar" dir="rtl" class="ayet">لَيْلَةُ الْقَدْرِ</p>

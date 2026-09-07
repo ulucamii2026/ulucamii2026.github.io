@@ -141,7 +141,9 @@ Namaz, müminin hayatına çeki düzen verir; onu her türü çirkinliklerden, h
 
 <p lang="ar" dir="rtl" class="ayet">ِۜاُﺗْﻞُ ﻣَٓﺎ اُو۫ﺣِﻲَ اِﻟَﯿْﻚَ ﻣِﻦَ اﻟْﻜِﺘَﺎبِ وَاَﻗِﻢِ اﻟﺼﱠﻠٰﻮةَۜ اِنﱠ اﻟﺼﱠﻠٰﻮةَ ﺗَﻨْﮭٰﻰ ﻋَﻦِ اﻟْﻔَﺤْﺸَٓﺎءِ وَاﻟْﻤُﻨْﻜَﺮ</p>
 
-وَﻟَﺬِﻛْﺮُ ﻠﻟااﱣ ِ َاَﻛْﺒَﺮُۜ وَﻠﻟااﱣ ُ ﯾَﻌْﻠَﻢُ ﻣَﺎ ﺗَﺼْﻨَﻌُﻮن “(Ey Muhammed!) Kitaptan sana vahyolunanı oku, namazı da dosdoğru kıl. Çünkü namaz, insanı hayâsızlıktan ve kötülükten alıkoyar. Allah’ı anmak (olan namaz) elbette en büyük ibadettir. Allah yaptıklarınızı biliyor.” (Ankebut, 29/45)
+<p lang="ar" dir="rtl" class="ayet">وَﻟَﺬِﻛْﺮُ ﻠﻟااﱣ ِ َاَﻛْﺒَﺮُۜ وَﻠﻟااﱣ ُ ﯾَﻌْﻠَﻢُ ﻣَﺎ ﺗَﺼْﻨَﻌُﻮن</p>
+
+ “(Ey Muhammed!) Kitaptan sana vahyolunanı oku, namazı da dosdoğru kıl. Çünkü namaz, insanı hayâsızlıktan ve kötülükten alıkoyar. Allah’ı anmak (olan namaz) elbette en büyük ibadettir. Allah yaptıklarınızı biliyor.” (Ankebut, 29/45)
 
 7. Kıyamet Günü İlk Soru Namazdan Olacaktır
 İnsanlar öldükten sonra dirilecekler ve Allah'ın huzurunda dünyada yaptıklarının hesabını vereceklerdir. O gün ibadetlerden ilk sorgulama namazdan olacaktır. Nitekim Peygamberimiz (s.a.s) şöyle buyurmuştur;

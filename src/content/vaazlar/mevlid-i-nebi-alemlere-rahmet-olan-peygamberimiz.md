@@ -33,7 +33,6 @@ Bir gün Ashab-ı kiram Rasûlüllah (s.a.s)’den hayatının ilk günlerini an
 
 Hz. İbrahim ile oğlu Hz. İsmail’in yapmış oldukları dualar bu gece gerçekleşmiş oldu. Kur’an-ı Kerim’de anlatıldığına göre Hz. İbrahim ile oğlu Hz. İsmail, Kâbe’yi inşa ederlerken şöyle dua etmişlerdi:
 
-
 “Hani İbrahim, İsmail ile birlikte evin (Kâbe'nin) temellerini yükseltiyor, ‘Ey Rabbimiz! Bizden kabul buyur! Şüphesiz sen hakkıyla işitensin, hakkıyla bilensin’ diyorlardı. (Bakara 2/127)
 
 ‘Rabbimiz! Bizi sana teslim olmuş kimseler kıl. Soyumuzdan da sana teslim olmuş bir ümmet kıl. Bize ibadet yerlerini ve ilkelerini göster. Tövbemizi kabul et. Çünkü sen, tövbeleri çok kabul edensin, çok merhametli olansın.’ (Bakara 2/128)

@@ -1,0 +1,36 @@
+---
+/**
+ * Sayfa görüntülenme sayısı — GoatCounter'ın herkese açık sayaç ucundan okunur
+ * (`/counter/<yol>.json`, CORS açık, çerezsiz; kişisel veri yok, ziyaretçi izlenmez).
+ * Sayı gelene kadar, sıfırken ve hata durumunda öge gizli kalır — sayfa yerleşimi kaymaz.
+ * Kullanım: <Goruntulenme dil={dil} /> — bir satır içi <span> üretir.
+ */
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil; sinif?: string }
+const { dil, sinif } = Astro.props;
+
+const ad = { tr: ['görüntülenme', 'görüntülenme'], fr: ['vue', 'vues'], en: ['view', 'views'] }[dil];
+const yerel = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
+---
+<span class={sinif} data-goruntulenme data-tekil={ad[0]} data-cogul={ad[1]} data-yerel={yerel} hidden></span>
+
+<script>
+  // GoatCounter sayaç ucu: {"count":"1,234","count_unique":"…"} döner; bilinmeyen yolda 404 + 0.
+  // Sayı binlik ayraçlı metin gelir → rakamlar süzülüp sayfanın diline göre yeniden biçimlenir.
+  const ogeler = Array.from(document.querySelectorAll<HTMLElement>('[data-goruntulenme]'));
+  if (ogeler.length) {
+    fetch(`https://ulucamii.goatcounter.com/counter/${encodeURIComponent(location.pathname)}.json`)
+      .then((y) => (y.ok ? y.json() : null))
+      .then((veri) => {
+        const n = Number(String(veri?.count ?? '').replace(/[^0-9]/g, ''));
+        if (!n) return;
+        for (const o of ogeler) {
+          const sayi = new Intl.NumberFormat(o.dataset.yerel || 'tr-TR').format(n);
+          o.textContent = `${sayi} ${n === 1 ? o.dataset.tekil : o.dataset.cogul}`;
+          o.hidden = false;
+        }
+      })
+      .catch(() => { /* sayaç erişilemezse sessizce gizli kalır */ });
+  }
+</script>

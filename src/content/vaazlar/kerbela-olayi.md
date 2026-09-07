@@ -38,8 +38,6 @@ Rasulullah buyurdu ki:
 
 *“Onları seven beni sever, onlara buğz eden bana buğz etmiş olur.”*
 
-
-
 Rasulullah buyurdu ki:
 
 <p lang="ar" dir="rtl" class="ayet">الْحَسَنُ وَالْحُسَيْنُ سَيِّدَا شَبَابِ أهْلِ الْجَنَّةِ.وَأبُوهُمَا خَيْرٌ مِنْهُمَا</p>

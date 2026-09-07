@@ -16,7 +16,7 @@ Sözlükte ölçü, miktar, bir şeyi belirli bir ölçüyle yapmak ve belirleme
 
 Kaza ve kadere iman, Allah’a iman etmenin bir gereğidir. Bu bakımdan, Allah’a ve sıfatlarına iman eden bir insan, kaza ve kadere de iman eder. Kaza ve kadere iman etmek; sevap ve günah, iyi ve kötü, acı ve tatlı, canlı ve cansız, faydalı ve faydasız, kısacası hayır ve şer her ne varsa, bunların Yüce Allah’ın bilmesi, dilemesi ve yaratmasıyla olduğuna ve ondan başka yaratıcı bulunmadığına inanmak demektir. Kaza ve kader, Allah’ın âlemde koyduğu plan ve programıdır. Kader konusu, İslâm dininde iman edilmesi farz olan esaslardan biridir. Nitekim Allah Teâlâ Hadid suresinin 22. ayeti kerimesinde buna işaret etmektedir.
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">ْمََٓا اَصَابَ مِنْ مُصِيبَةٍ فِي الْاَرْضِ وَلَا فِي اَنْفُسِكُمْ اِل َّا فِي كِتَابٍ مِنٌۚ قَبْلِ اَنْ نَبْرَاَهَاۜ اِن َّ ذّٰلِكَ عَلَى الل ّٰهِ يَسِير</p>
 
@@ -24,7 +24,7 @@ Kaza ve kadere iman, Allah’a iman etmenin bir gereğidir. Bu bakımdan, Allah�
 
 Resûlullah’ın (s.a.s.) halkın arasında bulunduğu bir gün, yanına gelen bir adam ona gelerek “İman nedir yâ Resûlallah?” diye sordu. Allah Resûlü (s.a.s.) de şöyle buyurdu:
 
-H A D Î S - İ Ş E R Î F
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">ِأَنْ تُؤْمِن بِالل َّهِ وملائِكَتِهِ ، وكُتُبِهِ ورُسُلِهِ ، والْيَوْمِ الآخِرِ ، وتُؤْمِنَ بِالْقَدَرِ خَيْرِه وشَر ِه</p>
 
@@ -38,7 +38,7 @@ Hicretin on yedinci senesinde Ebû Ubeyde b. el-Cerrâh (r.a.) komutasındaki İ
 
 Nitekim şu ayette bu konuyu desteklemektedir.
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">ِمَنْ عَمِلَ صَالِحًا فَلِنَفْسِهِ وَمَنْ أَسَاءَ فَعَلَيْهَا وَمَا رَب ُّكَ بِظَل َّامٍ لِلْعَبِيد</p>
 
@@ -59,13 +59,13 @@ Kader konusunda iradeyi ikiye ayırabiliriz.
 
 Birincisinin meydana gelmesine, insanlar irade ve arzuları ile kendileri sebep olmaktadırlar. Şöyle ki: Cenâb-ı Hak fertlerin ve cemiyetlerin dünya ve ahiret saadetleri için takip etmeleri gereken yolu tayin ve takdir etmiştir. Bu yolda gidenler saadet ve selâmete ererler; aksi yolda gidenler felâket ve yoksulluğa düşerler. Çünkü Allah, saadet sebeplerine uyanlara saadet, felâket sebeplerine teşebbüs edenlere de felâket takdir buyurmuştur. Kur’ân-ı Kerîm’de, bir toplumun kendi ahlâkını olumsuz anlamda değiştirmedikçe, Allah’ın o kavmin nimet ve saadetini değiştirmeyeceği beyan edilmektedir;
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">ذّٰلِكَ بِاَن َّ الل ّٰهَ لَمْ يَكُ مُغَي ِرًا نِعْمَةً اَنْعَمَهَا عَلّٰى قَوْمٍ حَت ّٰى يُغَي ِرُوا مَاْۙ بِاَنْفُسِهِمْْۙ وَاَن َّ الل ّٰهَ سَمِيع عَلِيم</p>
 
 “Bu da, bir millet kendilerinde bulunanı (güzel ahlâk ve meziyetleri) değiştirinceye kadar Allah’ın onlara verdiği nimeti değiştirmeyeceğinden dolayıdır. Gerçekten Allah işitendir, bilendir.” (Enfal, 8/53)
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">ْۜاِن َّ الل ّٰهَ لَا يُغَي ِرُ مَا بِقَوْمٍ حَت ّٰى يُغَي ِرُوا مَا بِاَنْفُسِهِم</p>
 
@@ -81,7 +81,7 @@ Allah’tan çocuk istemenin yolu evlenmek, meyve istemenin yolu ağaç dikmek o
 
 Tevekkül gerekli tedbirleri alıp sonucu Allah’a havale etmektir. Maddî ve manevî sebeplerin hepsine başvurduktan ve alınması gereken bütün tedbirleri alıp yapacak başka bir şey kalmadıktan sonra, Allah’a güvenip dayanmak ve gerisini O’na bırakmak demektir. Nitekim Enes b. Mâlik’in (r.a.) anlattığına göre bir adam, “Ey Allah’ın Resûlü! Devemi bağlayıp da mı Allah’a tevekkül edeyim, yoksa salıp da mı tevekkül edeyim?” diye sordu. Resûlullah (s.a.s.) da, “Önce onu bağla, sonra (Allah’a) tevekkül et!” buyurdu. (Tirmizî, Sıfatü’l- kıyâme, 60) Ayrıca şurası iyi bilinmelidir ki gerçek tevekkül, Allah Teâlâ’nın takdir ettiği sebepleri elde etmek için çalışmaya aykırı bir durum değildir. Bu Allah’ın kâinattaki koyduğu kanunun bir gereği ve dünyadaki hâdiselerin oluşumunun temel esasıdır. Zira Allah Teâlâ tevekkülü emir buyurduğu gibi sebepleri elde etmek için gayret göstermeyi de emir buyurmuştur. Bunun için sadece şu ayeti kerimeye bakmak bile yeterlidir:
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يََٓا اَي ُّهَا ال َّذِينَ اّٰمَنُوا خُذُوا حِذْرَكُمْ فَانْفِرُوا ثُبَاتٍ اَوِ انْفِرُوا جَمِيعًا</p>
 
@@ -93,7 +93,7 @@ Sebeplere başvurmadan, “Kader ne ise o olur.” tarzında bir anlayış ise t
 
 Sevgili Peygamberimiz (s.a.s.), Yüce Allah’tan hicret iznini aldığı günün öğlen vaktinde Hz. Ebû Bekir’in (r.a.) yanına gitti. Hicretteki yol arkadaşı Hz. Ebû Bekir (r.a.) ile birlikte Medine’ye doğru yola çıktığında müşrikler onları her tarafta arıyorlardı. Allah Resûlü (s.a.s.) birçok tedbiri alarak (iyi bir yol arkadaşı, rehber, istihbarat sağlama, değişik bir güzergâh kullanma vb.) Mekke’den ayrıldı. Medine’ye gittiğini kâfirler bilmesin diye yola gündüz değil gece çıkmışlardı. Yine takip edilmemek ve müşrikleri şaşırtmak amacıyla Hz. Peygamber (s.a.s.) ve yol arkadaşı Medine tarafına değil tam aksi yöndeki Sevr Dağı tarafına yöneldiler. Oradaki bir mağarada birkaç gün saklandılar. Buna rağmen kâfirler onların izini bulup mağaranın önüne gelip dayandılar. Acaba başvurdukları tedbir bir fayda vermemiş miydi? Yol arkadaşı çok endişeliydi. Çünkü müşriklerden bir grup üst üste binmiş kayalardan oluşan bu mağaranın üzerinde gezinip durduğu esnada Hz. Ebû Bekir (r.a.), onların ayaklarını görmüş ve endişesini, “Onlardan birisi ayaklarının dibine bakacak olsa kesin bizi görür.” sözüyle dile getirmişti. Bunun üzerine Allah’a karşı her an tam bir güven ve tevekkül içinde bulunan Hz. Peygamber (s.a.s.), “Üçüncüsü Allah olan iki kişiye sen ne (olacağını) zannediyorsun?” diye onu teselli etmiş ve Allah’ın kendilerini koruyacağına olan güvenini ve tevekkülünü göstermiştir. (Müslim, Zühd ve Rekaik, 75) Hz. Ebû Bekir’i (r.a.) “Üzülme! Çünkü Allah bizimle beraber.” sözleriyle teskin etmiş, Allah onun üzerine bir güven ve huzur indirmiş ve görünmez ordularıyla onları desteklemişti. (Tevbe 9/40) Böylece Peygamberimiz (s.a.s.) gerçek tevekkülün nasıl olması gerektiğini bize öğretmişti. Çünkü onun hicreti, başlı başına bir tevekkül örnekliği teşkil etmekteydi. Hz. Peygamber’in (s.a.s.) bu denli güçlü bir tevekkül duygusuna sahip olması onun sağlam imanıyla da yakından ilişkilidir. Tevekkül, imanın ve Müslümanlığın olgunluğunu gösteren alâmetlerdendir. Kur’an-ı Kerim’de Hz. Musa’nın (a.s.):
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">َوَقَالَ مُوسّٰى يَا قَوْمِ اِنْ كُنْتُمْ اّٰمَنْتُمْ بِالل ّٰهِ فَعَلَيْهِ تَوَك َّلَُٓوا اِنْ كُنْتُمْ مُسْلِمِين</p>
 
@@ -105,7 +105,7 @@ Cenâb-ı Hak; Hz. İbrâhim (a.s.), Hz. İsmâil (a.s.) ve Hâcer vâlidemizi, 
 
 1) Hz. İbrâhim (a.s.), mancınıkla ateşe atılacağı zaman, melekler heyecanlandı. Bir kısmı, Hz. İbrâhim’e (a.s.) yardım etmek için Allah Teâlâ’dan izin istedi. Melekler, Hz. İbrâhim’e (a.s.) bir isteği olup olmadığını sordular. O ise: “–Dostla dostun arasına girmeyin!” buyurdu. Daha sonra Cebrâîl (a.s.) geldi: “–Bana ihtiyâcın var mı?” diye sordu. İbrâhim (a.s.): “–Sana ihtiyâcım yok. O bana yetişir; O ne güzel Vekîl’dir!” buyurdu. (Buhârî, Tefsîrû sûre (3), 13) Nitekim Halîlullâh’ın bu yüce teslîmiyeti ve yalnız Hakk’a tevekkülü üzerine, O daha ateşin içine düşmeden Allah Teâlâ ateşe emretti:
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">َْۙقُلْنَا يَا نَارُ كُونِي بَرْدًا وَسَلَامًا عَلَّٰٓى اِبْرّٰهِيم</p>
 
@@ -113,7 +113,7 @@ Cenâb-ı Hak; Hz. İbrâhim (a.s.), Hz. İsmâil (a.s.) ve Hâcer vâlidemizi, 
 
 2) Peygamber Efendimiz (s.a.s.) şöyle anlatır: Hz. İbrâhim (a.s.), Hz. Hâcer ile henüz süt çağındaki oğlu İsmâil’i (a.s.) alıp Mekke’ye getirmişti. Hz. İbrâhim (a.s.), âilesi ile oğlunu, yanlarına bir dağarcık hurma ve bir kırba su koyarak birçok hikmete binâen orada bıraktı. Hz. İbrâhim (a.s.) arkasını dönüp giderken Hz. Hâcer: –“İbrâhim! Bizi konuşup görüşecek bir kimsenin, yiyip içecek bir şeyin bulunmadığı bu vâdide, tek başımıza bırakıp da nereye gidiyorsun?” diye sordu. Bu soruyu birkaç defa tekrarladıysa da Hz. İbrâhim (a.s.) susuyordu. Sonunda Hâcer vâlidemiz: –“Bunu böyle yapmanı sana Allâh mı emretti?” dedi. Bu defâ Hz. İbrâhim (a.s.): –“Evet, Allâh emretti.” dedi. (Bu cevap üzerine rahatlayan Hâcer vâlidemizin dilinden, Allâh’a teslîmiyetin zirvesini gösteren) şu sözler döküldü: –“Öyleyse Allâh bizi korur, zâyî etmez!” Daha sonra geri döndü. Hz. İbrâhim (a.s.) da yürüyüp gitti. Kimsenin kendisini göremediği Seniyye mevkiine varınca, yüzünü Kâbe tarafına çevirdi, ellerini kaldırarak şöyle duâ etti:
 
-Â Y E T - İ K E R Î M E
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">رَب َّنََٓا اِن ِي اَسْكَنْتُ مِنْ ذُر ِي َّتِي بِوَادٍ غَيْرِ ذِي زَرْعٍ عِنْدَ بَيْتِكَ الْمُحَر َّمِْۙ رَب َّنَا َلِيُقِيمُوا الص َّلّٰوةَ فَاجْعَلْ اَفْـِدَةً مِنَ الن َّاسِ تَهْوِي اِلَيْهِمْ وَارْزُقْهُمْ مِن َالث َّمَرَاتِ لَعَل َّهُمْ يَشْكُرُون</p>
 
@@ -140,31 +140,31 @@ Kur’an duramaz, nezd-i ilâhîye dönerdi.
 
 Abdullah b. Abbâs (r.a.), bir gün aynı binit üzerinde Allah Resûlü’nün (s.a.s.) arkasındayken onun kendisine şöyle dediğini anlattı:
 
-H A D Î S - İ Ş E R Î F
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا غُلَامُ إِن ِي مُعَل ِمُكَ كَلِمَات</p>
 
 “Delikanlı! Sana bazı şeyler öğreteceğim.
 
-H A D Î S - İ Ş E R Î F
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">َاِحْفَظْ الل َّهَ يَحْفَظْكَ احْفَظْ الل َّهَ تَجِدْهُ تُجَاهَك</p>
 
 Allah’ı gözet ki Allah da seni gözetsin. Allah’ı gözet ki Allah’ı (daima) yanında bulasın.
 
-H A D Î S - İ Ş E R Î F
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">ِوَإِذَا سَأَلْتَ فَلْتَسْأَلْ الل َّهَ وَإِذَا اسْتَعَنْتَ فَاسْتَعِنْ بِالل َّه</p>
 
 Bir şey istediğinde Allah’tan iste! Yardıma muhtaç olduğunda Allah’tan yardım dile!
 
-H A D Î S - İ Ş E R Î F
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">ُوَاعْلَمْ أَن َّ الْأُم َّةَ لَوْ اجْتَمَعَتْ عَلَى أَنْ يَنْفَعُوكَ لَمْ يَنْفَعُوكَ إِل َّا بِشَيْء قَدْ كَتَبَهُ الل َّه َلَك</p>
 
 Şunu bil ki bütün insanlar sana fayda vermek için toplansa Allah’ın takdiri dışında sana faydalı olamazlar.
 
-H A D Î S - İ Ş E R Î F
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">ْوَلَوْ اجْتَمَعُوا عَلَى أَنْ يَضُر ُوكَ لَمْ يَضُر ُوكَ إِل َّا بِشَيْء قَدْ كَتَبَهُ الل َّهُ عَلَيْكَ رُفِعَت ُالْأَقْلَامُ وَجَف َّتْ الص ُحُف</p>
 

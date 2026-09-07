@@ -8,6 +8,7 @@
  */
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
+import Goruntulenme from '../../../components/Goruntulenme.astro';
 import { yol } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
 import { katAd } from '../../../i18n/vaaz-kategori';
@@ -56,6 +57,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
           {kat && <span class="vaaz-kat">{kat}</span>}
           {okumaDk && <span>{okumaDk} {m.okuma}</span>}
           {d.kelime && <span>{d.kelime.toLocaleString('tr-TR')} {m.kelime}</span>}
+          <Goruntulenme dil={dil} />
         </p>
         {m.trNot && <p class="vaaz-not">{m.trNot}</p>}
       </header>
@@ -111,7 +113,9 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
   .vaaz-bas h1 { font-family: var(--font-serif, Lora), serif; font-size: clamp(1.8rem, 4.5vw, 2.7rem); line-height: 1.12; margin: 0.4rem 0 0; letter-spacing: -0.012em; text-wrap: balance; }
   .vaaz-ozet { font-family: var(--font-serif, Lora), serif; font-size: 1.12rem; color: var(--metin-2); font-style: italic; margin: 0.9rem 0 0; line-height: 1.55; text-wrap: pretty; }
   .vaaz-meta { font-size: 0.8rem; color: var(--metin-2); letter-spacing: 0.03em; text-transform: uppercase; margin: 1.1rem 0 0; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
-  .vaaz-meta > span + span::before { content: "·"; margin-inline-end: 0.5rem; color: var(--cizgi-etkilesim); }
+  /* :global — görüntülenme sayısı ayrı bir bileşenden gelir (Goruntulenme.astro); kapsamlı seçici onun
+     <span>'ini tutmaz, ayraç eksik kalırdı (7 Eyl 2026). */
+  .vaaz-meta > :global(span + span)::before { content: "·"; margin-inline-end: 0.5rem; color: var(--cizgi-etkilesim); }
   .vaaz-kat { color: var(--vurgu-2); font-weight: 700; }
   .vaaz-not { margin: 0.9rem 0 0; padding-inline-start: 0.75rem; border-inline-start: 3px solid var(--vurgu-2); font-size: 0.88rem; color: var(--metin-2); }
 
@@ -152,6 +156,10 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
   .vaaz-govde :global(a) { color: var(--vurgu-2); text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
   /* Arapça satırlar (âyet/besmele): daha büyük, Amiri, sağdan sola */
   .vaaz-govde :global(p:lang(ar)) { font-family: Amiri, serif; font-size: 1.55rem; line-height: 2; text-align: center; direction: rtl; }
+  /* Belge tasarımındaki kutu etiketi (Âyet-i Kerîme / Hadîs-i Şerîf / Kur’ân-ı Kerîm): küçük ortalı başlık */
+  .vaaz-govde :global(p.vaaz-etiket) { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vurgu-2); text-align: center; margin: 1.6rem 0 0.25rem; }
+  .vaaz-govde :global(p.vaaz-etiket + p) { margin-top: 0; }
+  .vaaz-govde :global(p.vaaz-sair) { text-align: end; font-style: italic; color: var(--metin-2); margin-top: -0.6rem; }
 
   @media (max-width: 640px) {
     .vaaz-govde { font-size: 1.04rem; line-height: 1.78; }

@@ -20,8 +20,9 @@ Müttaki: Takva sahibi; Allah’tan gereği gibi sakınan, O’nun emirlerine ti
 
 Müttaki müminin en temel özelliği, "gayba iman etmek"tir. Yani gözüyle görmediği, eliyle tutmadığı imani meselelere kalbiyle inanmasıdır. Bu, imanın özüdür, esasıdır. Rabbimiz şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-ِ ب الْغَيْب َِيُؤْم نُون َِال َّذ ين ََۙل لْمُت َّق ين هُدًى ِ ف يه َِ رَيْب ِلَا ُِالْك تَاب َِذٰل ك
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">ِ ب الْغَيْب َِيُؤْم نُون َِال َّذ ين ََۙل لْمُت َّق ين هُدًى ِ ف يه َِ رَيْب ِلَا ُِالْك تَاب َِذٰل ك</p>
 
 “İşte kitap; onda asla şüphe yoktur. O, günahtan sakınanlar için bir rehberdir. (Onlar) gayba iman ederler” (Bakara, 2/2-3)
 
@@ -33,15 +34,17 @@ Peygamber Efendimiz (s.a.v.) Miraç hadisesini anlattığında, müşrikler "Bu 
 
 Önemli bir özellik, müttaki müminlerin namaza verdiği önemdir. O, namazı sadece bir görev değil; Allah ile arasındaki bir görüşme, bir bağ, bir can suyu olarak görür. Rabbimiz şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-﴾ َِالص َّلٰوة َِوَيُق يمُون ﴿
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">﴾ َِالص َّلٰوة َِوَيُق يمُون ﴿</p>
 
 “Namazı dosdoğru kılarlar.” (Bakara, 2/3)
 
 Bu ayet-i kerime, "ikame" kelimesiyle namazı sadece kılmak değil, onu hakkıyla, edebiyle, huşûyla kılmayı emreder. "Kıyam" namazı kılmaktır; "ikame" ise namazı hakkıyla kılmaktır. Muttaki, namazını kılar ama aynı zamanda o namazın ruhunu da yaşar. Namazda huşû bulur, ağlar, dua eder, Allah'la konuştuğunu bilir. Resulullah (s.a.v.) şöyle buyurmuştur:
 
-H A D Î S - İ Ş E R Î F
-َ الد ِّين َ ه د م َ ف ق د َت ر ك ه ا َ و م ن ، الد ِّين َ أَق ام َ ف ق د َأَق ام ه ا َ و م ن ،ِّالد ِّين َ عِّم اد َ الص َّل اة
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">َ الد ِّين َ ه د م َ ف ق د َت ر ك ه ا َ و م ن ، الد ِّين َ أَق ام َ ف ق د َأَق ام ه ا َ و م ن ،ِّالد ِّين َ عِّم اد َ الص َّل اة</p>
 
 “Namaz dinin direğidir. Onu koruyan dinini korumuş olur, kim onu terk ederse dinini yıkmıştır.” (Tirmizi, İman, 8)
 
@@ -49,8 +52,9 @@ Bu hadis-i şerif, namazın dindeki merkezi yerini gösterir. Muttaki, namazın�
 
 İmrân b. Husayn (r.a.) diyor ki: “Hastalığım vardı. Bu sebeple Hz. Peygamber’e (s.a.v) gelerek nasıl namaz kılacağımı sordum.” Hz. Peygamber (s.a.v) şu cevabı verdi:
 
-H A D Î S - İ Ş E R Î F
-َ ج ن ب ف ع ل ى َ ت س ت ط ِِّع َ ل م َ ف إِن ،ف ق اعِّدًا َ ت س ت ط ِِّع َ ل م َ ف إِن ،ق ائِّمًا َِّ ص ل
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">َ ج ن ب ف ع ل ى َ ت س ت ط ِِّع َ ل م َ ف إِن ،ف ق اعِّدًا َ ت س ت ط ِِّع َ ل م َ ف إِن ،ق ائِّمًا َِّ ص ل</p>
 
 “Namazı ayakta kıl, buna gücün yetmezse oturarak kıl, buna da gücün yetmezse yan üstü yatarak kıl.” (Buhârî, Taksîru’s-salât, 19)
 
@@ -62,8 +66,9 @@ Günümüzde namaz "kılınması gereken bir şey" haline gelmiş, ruhu kaybolmu
 
 Üçüncü özellik, muttakinin infak etmesi, Allah’ın kendisine verdiği nimetlerden harcamasıdır. O, Allah'ın kendisine verdiği her şeyin aslında Allah'ın malı olduğunu bilir ve bu malı Allah yolunda harcar. Rabbimiz şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-﴾ َِيُنْف قُون ِْرَزَقْنَاهُم وَم م َّا ﴿
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">﴾ َِيُنْف قُون ِْرَزَقْنَاهُم وَم م َّا ﴿</p>
 
 "Kendilerine verdiklerimizden hayra harcarlar" (Bakara, 2/3)
 
@@ -71,15 +76,17 @@ Bu ayet-i kerime, "infak" kavramını ortaya koyar. İnfak, sadece zekât değil
 
 Başka bir ayette ise Cenab-ı Allah geç olmadan infak etme hususunda şöyle buyurmaktadır:
 
-Â Y E T - İ K E R Î M E
-َِ فَيَقُول ُِالْمَوْت ُِاَحَدَكُم َِيَأْت ي ِْاَن ِ قَبْل ِْم ن ِْرَزَقْنَاكُم م م َّا وَاَنْف قُوا َِ م ن ِْوَاَكُن َِفَاَص َّد َّق َۙ قَرٖيب ِ اَجَل ا لٰٰٓى اَخ َّرْتَـنٰٖٓي لَوْلَٰٓا ِ رَب َِ الص َّال ح ٖين
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">َِ فَيَقُول ُِالْمَوْت ُِاَحَدَكُم َِيَأْت ي ِْاَن ِ قَبْل ِْم ن ِْرَزَقْنَاكُم م م َّا وَاَنْف قُوا َِ م ن ِْوَاَكُن َِفَاَص َّد َّق َۙ قَرٖيب ِ اَجَل ا لٰٰٓى اَخ َّرْتَـنٰٖٓي لَوْلَٰٓا ِ رَب َِ الص َّال ح ٖين</p>
 
 “Her birinize ölüm gelip, “Rabbim! Ne olur bana azıcık daha süre tanısan da gönüllü yardımlarda bulunsam ve iyi kişilerden olsam!” diye yalvarmadan önce size verdiğimiz rızıklardan başkaları için de harcayın.” (Münâfikûn,63/10)
 
 Ebu Hureyre’den (r.a.) rivayetle, Nebi (s.a.v.) şöyle buyurdu:
 
-H A D Î S - İ Ş E R Î F
-َِّ أَع ط ََّ ا لل َّه م أَح د ه م ا؛ َ ف ي ق ول ،ِّي ن زِّلا ن َِّم ل ك ان ََّ إِلا ،ِّفِّيه َ ال عِّب اد َ ي ص ب ح َ ي و م َ مِّن َم ا َ ت ل فًا م م سِّكًا َِّأَع ط ََّ ا لل َّه م ال آخ ر ؛ َ و ي ق ول ،خ ل فًا َم ن فِّقًا
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">َِّ أَع ط ََّ ا لل َّه م أَح د ه م ا؛ َ ف ي ق ول ،ِّي ن زِّلا ن َِّم ل ك ان ََّ إِلا ،ِّفِّيه َ ال عِّب اد َ ي ص ب ح َ ي و م َ مِّن َم ا َ ت ل فًا م م سِّكًا َِّأَع ط ََّ ا لل َّه م ال آخ ر ؛ َ و ي ق ول ،خ ل فًا َم ن فِّقًا</p>
 
 “Kulların sabaha erdiği her gün içerisinde iki melek iner. Bu iki melekten biri: Ey Allah’ım! İnfak edene Sen de bir bedelini ver der. Diğeri de: Ey Allah’ım! (malını) tutana (yani infak etmeyene) Sen de onun malını telef et, der.” (Buhari ,3/1364)
 
@@ -93,8 +100,9 @@ Tesbih: Sübhanallah demektir. Tahmid: Elhamdülillah demektir. Tehlil: La ilahe
 
 Dördüncü özellik, müttakinin hem Kur'an'a hem de daha önceki ilahi kitaplara iman etmesidir. O, Allah'ın tüm peygamberlerine ve kitaplarına saygı duyar. Rabbimiz şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-َِ قَبْل ك ِْم ن َِأُنْز ل وَمَا َِإِلَيْك َِأُنْز ل ب مَا َِيُؤْم نُون َِوَال َّذ ين
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">َِ قَبْل ك ِْم ن َِأُنْز ل وَمَا َِإِلَيْك َِأُنْز ل ب مَا َِيُؤْم نُون َِوَال َّذ ين</p>
 
 “Sana indirilene ve senden önce indirilene iman ederler“ (Bakara, 2/4)
 
@@ -104,8 +112,9 @@ Bu ayet-i kerime, İslam'ın önceki dinlerle bağını koparmadığını, aksin
 
 Beşinci özellik, müttakinin ahirete olan kesin inancıdır. O, bu dünyanın fani, ahiretin ebedi olduğunu bilir ve hayatını buna göre düzenler. Rabbimiz şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-﴾ َِيُوق نُون ِْهُم ِ وَب الْآخ رَة ﴿
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">﴾ َِيُوق نُون ِْهُم ِ وَب الْآخ رَة ﴿</p>
 
 "Ahirete kesin olarak inanırlar." (Bakara, 2/4)
 
@@ -115,8 +124,9 @@ Bu ayet-i kerime, "yakîn" kelimesiyle kesin, şüphesiz bir inancı ifade eder.
 
 Şeddâd b. Evs’ten (r.a.) nakledildiğine göre, Hz. Peygamber (s.a.v) şöyle buyurmuştur:
 
-H A D Î S - İ Ş E R Î F
-َه و اه ا َ ن ف س ه َ أَت ب ع َ م ن َ و ال ع اجِّز ،ِّال م و ت َ ب ع د َلِّم ا َ و ع مِّل َ ن ف س ه  د ان َ م ن َ ال ك ي ِّس َِّ الل َّه َع ل ى و ت م ن َّى
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">َه و اه ا َ ن ف س ه َ أَت ب ع َ م ن َ و ال ع اجِّز ،ِّال م و ت َ ب ع د َلِّم ا َ و ع مِّل َ ن ف س ه  د ان َ م ن َ ال ك ي ِّس َِّ الل َّه َع ل ى و ت م ن َّى</p>
 
 “Akıllı kişi kendisini hesaba çeken ve ölümden sonrası için çalışandır. Âciz kişi ise arzularına uyup bir de Allah’tan (bağışlanma) umandır.” (Tirmizî, Sıfatü"l-kıyâme, 25)
 
@@ -126,8 +136,9 @@ Akıllı insan, nefsini hesaba çekip sorumluluk alarak ahiret için çalışır
 
 Altıncı özellik, müttakinin zorluklara rağmen hayırda yarışmasıdır. O, "imkân yok" demez, "imkân oluşturur". Rabbimiz şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-ُِ الس َّمٰوَات عَرْضُهَا ِ وَجَن َّة ِْرَب كُم ِْم ن ِ مَغْف رَة ا لٰى وَسَار عُٰٓوا ِ وَالض َّر َّاء ِ الس َّر َّاء ِف ي َِيُنْف قُون َِال َّذ ين ََۙل لْمُت َّقٖين ِْاُع د َّت َُۙوَالْاَرْض ََۚ الْمُحْس نٖين ُِ يُح ب ُِوَالل ٰه ِؕ الن َّاس ِ عَن َِوَالْعَافٖين َِالْغَيْظ َِوَالْكَاظ مٖين
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">ُِ الس َّمٰوَات عَرْضُهَا ِ وَجَن َّة ِْرَب كُم ِْم ن ِ مَغْف رَة ا لٰى وَسَار عُٰٓوا ِ وَالض َّر َّاء ِ الس َّر َّاء ِف ي َِيُنْف قُون َِال َّذ ين ََۙل لْمُت َّقٖين ِْاُع د َّت َُۙوَالْاَرْض ََۚ الْمُحْس نٖين ُِ يُح ب ُِوَالل ٰه ِؕ الن َّاس ِ عَن َِوَالْعَافٖين َِالْغَيْظ َِوَالْكَاظ مٖين</p>
 
 “Rabbinizin mağfiretine mazhar olmak ve takvâ sahipleri için hazırlanmış olup gökler ve yer kadar geniş olan cennete girmek için yarışın! Onlar (takvâ sahipleri) bollukta da darlıkta da Allah yolunda harcarlar, öfkelerini yenerler, insanları affederler. Allah işini güzel yapanları sever.” (Âl-i İmrân, 133-134)
 
@@ -137,8 +148,9 @@ Bu âyette geçen فِّي َِّالس َّر َّاء (serrâ’) kelimesi tef
 
 Ebû Hüreyre (r.a.) anlatıyor: “Bir adam Hz. Peygamber’e (s.a.v), "Ey Allah’ın Resûlü, hangi sadaka en faziletlidir?" diye sordu. Hz. Peygamber (s.a.v.):
 
-H A D Î S - İ Ş E R Î F
-ح ت َّى َ ت م هِّل َ و لا ، ال ف ق ر و ت خ ش ى ،ال غِّن ى َ ت أْم ل ،ٌح رِّيص ٌَص حِّيح َ و أَن ت َ ت ص د َّق َ أَن َ ال ح ل ق وم َِّب ل غ ت إِذ ا
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">ح ت َّى َ ت م هِّل َ و لا ، ال ف ق ر و ت خ ش ى ،ال غِّن ى َ ت أْم ل ،ٌح رِّيص ٌَص حِّيح َ و أَن ت َ ت ص د َّق َ أَن َ ال ح ل ق وم َِّب ل غ ت إِذ ا</p>
 
 “Sağlıklı iken ve fakirlik endişesi ve zengin olma hırsı ile hareket ederken tasaddukta bulunabilmendir. (Sadaka vermeyi) can boğaza gelip de (son nefesini yaşadığın âna kadar) erteleme...” buyurdu.” (Buhârî, Vesâyâ, 7)
 
@@ -150,8 +162,9 @@ Verilen sadakanın azlığı çokluğu, küçüklüğü büyüklüğü kadar hel
 
 Yedinci özellik, öfkesini kontrol etmesi ve affetmesidir. Bu, nefsin en büyük zaferidir. Rabbimiz, aynı ayetin devamında şöyle buyurur:
 
-Â Y E T - İ K E R Î M E
-ِ الن َّاس ِ عَن َِوَالْعَاف ين َِالْغَيْظ َِوَالْكَاظ م ين
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">ِ الن َّاس ِ عَن َِوَالْعَاف ين َِالْغَيْظ َِوَالْكَاظ م ين</p>
 
 “Öfkelerini yenerler, insanları affederler.” (Âl-i İmrân, 3/134)
 
@@ -161,8 +174,9 @@ Bu ayet-i kerime, öfkeyi yutmayı, içine atmayı, kontrol etmeyi ifade eder. M
 
 Resulullah (s.a.v.) şöyle buyurmuştur:
 
-H A D Î S - İ Ş E R Î F
-َِّ ال غ ض ب َ عِّن د َ ن ف س ه َ ي م لِّك ال َّذِّي َ الش َّدِّيد َإِن َّم ا ،ِّبِّالص ُّر ع ة َ الش َّدِّيد َ ل ي س
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">َِّ ال غ ض ب َ عِّن د َ ن ف س ه َ ي م لِّك ال َّذِّي َ الش َّدِّيد َإِن َّم ا ،ِّبِّالص ُّر ع ة َ الش َّدِّيد َ ل ي س</p>
 
 “Gerçek babayiğit, güreşte rakibini yenen değil, öfkelendiği zaman nefsine hâkim olandır.” (Buhârî, Edeb, 76)
 
@@ -176,8 +190,9 @@ Müttaki mümin bilir ki; affetmek, kendi nefsini kurtarmaktır. Öfke, cehennem
 
 Müttaki bir mümin günah işlediğinde hatasını fark eder ve gecikmeden tövbe eder. Günahta ısrar etmez, hemen döner. Rabbimiz, bu özelliği şöyle açıklar:
 
-Â Y E T - İ K E R Î M E
-َِ الل ٰه ذَكَرُوا ِْاَنْفُسَهُم ظَلَمُٰٓوا ِْاَو ًِفَاح شَة ِفَعَلُوا ا ذَا َِوَال َّذٖين عَلٰى ِيُص ر ُوا ْوَلَم ُُۖالل ٰه ا ل َّا َِالذ ُنُوب ُِيَغْف ر ِْوَمَن ُْۖل ذُنُوب ه م فَاسْتَغْفَرُوا َِ يَعْلَمُون ِْوَهُم فَعَلُوا مَا
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">َِ الل ٰه ذَكَرُوا ِْاَنْفُسَهُم ظَلَمُٰٓوا ِْاَو ًِفَاح شَة ِفَعَلُوا ا ذَا َِوَال َّذٖين عَلٰى ِيُص ر ُوا ْوَلَم ُُۖالل ٰه ا ل َّا َِالذ ُنُوب ُِيَغْف ر ِْوَمَن ُْۖل ذُنُوب ه م فَاسْتَغْفَرُوا َِ يَعْلَمُون ِْوَهُم فَعَلُوا مَا</p>
 
 “Onlar çirkin bir şey yaptıkları veya kendilerine kötülük ettikleri zaman Allah’ı hatırlarlar da hemen günahlarının bağışlanmasını dilerler. Zaten günahları Allah’tan başka kim bağışlayabilir ki? Onlar, yaptıklarında bile bile ısrar etmezler.” (Âl-i İmrân, 3/135)
 
@@ -185,8 +200,9 @@ Bu ayet-i kerime, müminin günah işlediğinde çaresiz kalmadığını, tövbe
 
 Ebu Hureyre’den (ra.) merfû olarak rivayet edilen bir hadis-i şerife göre Peygamberimiz (s.a.v.):
 
-H A D Î S - İ Ş E R Î F
-ًَ م ر َّة َ س ب عِّين من َ أَك ث ر َِّاليوم في َِّإليه َ وأَت وب َ الله َ لأَس ت غ فِّر إني َِّو الله
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+<p lang="ar" dir="rtl" class="ayet">ًَ م ر َّة َ س ب عِّين من َ أَك ث ر َِّاليوم في َِّإليه َ وأَت وب َ الله َ لأَس ت غ فِّر إني َِّو الله</p>
 
 “Vallahi ben Allah'a günde yetmiş defadan çok istiğfar ediyorum.” (Müslim., Zikr, 41; Ebû Dâvud, Vitr, 26) buyurmuştur.
 
@@ -201,8 +217,9 @@ Unutmayalım ki, bu ayetler sadece bir tanım değil; bir davet, bir yol haritas
 
 Bakara Suresi'nde Rabbimiz, takva sahipleri için şöyle buyuruyor:
 
-Â Y E T - İ K E R Î M E
-َِ مُحْس نُون ِْهُم َِوَال َّذٖين ِات َّقَوْا َِال َّذٖين َِمَع َِالل ٰه َِّ ا ن
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+
+<p lang="ar" dir="rtl" class="ayet">َِ مُحْس نُون ِْهُم َِوَال َّذٖين ِات َّقَوْا َِال َّذٖين َِمَع َِالل ٰه َِّ ا ن</p>
 
 “Çünkü Allah takvâ ile hareket edip iyiliği seçenlerin yanındadır.” (Nahl, 16/128)
 
