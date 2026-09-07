@@ -49,6 +49,14 @@ function gez(kaynak: Node, hedef: Node, doc: Document): void {
       }
       gez(el, yeni, doc);
       hedef.appendChild(yeni);
+    } else if (tag === 'FONT') {
+      // execCommand('foreColor') styleWithCSS kapalıyken (tarayıcı varsayılanı) <font color="…">
+      // üretir; güvenli renkli span'a çevir ki renk kayıtta/render'da düşmesin.
+      const yeni = doc.createElement('span');
+      const renk = renkGuvenli(el.getAttribute('color') || el.style?.color || '');
+      if (renk) (yeni as HTMLElement).style.color = renk;
+      gez(el, yeni, doc);
+      hedef.appendChild(yeni);
     } else {
       gez(el, hedef, doc); // izinsiz ama zararsız etiket: kendini at, içeriğini koru
     }
