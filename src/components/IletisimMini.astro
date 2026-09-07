@@ -2,6 +2,7 @@
 /** Ana sayfa alt bölümü: adres + telefonlar + harita, footer'a inmeden ulaşım */
 import Ikon from './Ikon.astro';
 import Harita from './Harita.astro';
+import WhatsappBaglanti from './WhatsappBaglanti.astro';
 import { yol, ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil; site: any }
@@ -20,7 +21,7 @@ const m = dil === 'tr'
       <p class="mt-3 text-(--metin-2) max-w-[48ch]">{m.alt}</p>
       <ul class="mt-6 grid gap-4 dokun" role="list">
         <li class="flex gap-3"><Ikon ad="harita" class="h-6 w-6 shrink-0 text-(--vurgu)" /><span><span class="etiket block">{t('footer.adres')}</span>{site.adres.sokak}, {site.adres.posta} {site.adres.sehir}</span></li>
-        <li class="flex gap-3"><Ikon ad="telefon" class="h-6 w-6 shrink-0 text-(--vurgu)" /><span><span class="etiket block">{t('footer.dingorevlisi')}</span><a href={tel(site.telefon.dinGorevlisi)} class="mono text-lg">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`}>{site.epostaDinGorevlisi}</a></>}</span></li>
+        <li class="flex gap-3"><Ikon ad="telefon" class="h-6 w-6 shrink-0 text-(--vurgu)" /><span><span class="etiket block">{t('footer.dingorevlisi')}</span>{site.whatsapp ? <WhatsappBaglanti site={site} buyuk /> : <a href={tel(site.telefon.dinGorevlisi)} class="mono text-lg">{site.telefon.dinGorevlisi}</a>}{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`}>{site.epostaDinGorevlisi}</a></>}</span></li>
         <li class="flex gap-3"><Ikon ad="telefon" class="h-6 w-6 shrink-0 text-(--vurgu)" /><span><span class="etiket block">{t('footer.cami')}</span><a href={tel(site.telefon.cami)} class="mono text-lg">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></>}</span></li>
         {site.sosyal?.facebook && <li class="flex gap-3"><Ikon ad="facebook" class="h-6 w-6 shrink-0 text-(--vurgu)" /><span><span class="etiket block">Facebook</span><a href={site.sosyal.facebook} target="_blank" rel="noopener">{m.facebook}<span aria-hidden="true"> ↗</span><span class="sr-only"> {m.disKaynak}</span></a></span></li>}
       </ul>

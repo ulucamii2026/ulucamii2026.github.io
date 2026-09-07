@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Harita from '../components/Harita.astro';
+import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari } from '../lib/icerik';
@@ -11,13 +12,13 @@ const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const m = dil === 'tr' ? {
   alt: 'Sorularınız, cenaze ve nikâh talepleri, ziyaret ve her türlü konu için bize ulaşın.',
-  not: 'Cenaze, hasta ziyareti ve acil durumlar için din görevlisini doğrudan arayabilirsiniz. Dernek işleri (üyelik, aidat, bağış makbuzu) için cami numarasını kullanın. Din görevlimizin haftalık izin günü çarşambadır.',
+  not: 'Cenaze, hasta ziyareti ve acil durumlar için din görevlisine WhatsApp’tan ulaşabilirsiniz (mesaj veya arama). Dernek işleri (üyelik, aidat, bağış makbuzu) için cami numarasını kullanın. Din görevlimizin haftalık izin günü çarşambadır.',
 } : dil === 'en' ? {
   alt: 'For any questions, funeral or marriage requests, visits or other matters, please contact us.',
-  not: 'For a death, a visit to a sick person or an emergency, you can call the imam directly. For association matters (membership, dues, donation receipts), use the mosque number. The imam’s weekly day off is Wednesday.',
+  not: 'For a death, a visit to a sick person or an emergency, you can reach the imam on WhatsApp (message or call). For association matters (membership, dues, donation receipts), use the mosque number. The imam’s weekly day off is Wednesday.',
 } : {
   alt: 'Pour toute question, demande funéraire ou de mariage, visite ou autre sujet, contactez-nous.',
-  not: 'Pour un décès, une visite de malade ou une urgence, appelez directement l’imam. Pour les affaires de l’association (adhésion, cotisation, reçu de don), utilisez le numéro de la mosquée. Le jour de congé hebdomadaire de l’imam est le mercredi.',
+  not: 'Pour un décès, une visite de malade ou une urgence, vous pouvez joindre l’imam sur WhatsApp (message ou appel). Pour les affaires de l’association (adhésion, cotisation, reçu de don), utilisez le numéro de la mosquée. Le jour de congé hebdomadaire de l’imam est le mercredi.',
 };
 ---
 <Base baslik={t('nav.iletisim')} dil={dil} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii iletişim bilgileri: adres, telefon numaraları, e-posta ve konum haritası.' : dil === 'en' ? 'Contact details of the Ulu Mosque of Marche-en-Famenne: address, phone numbers, e-mail and map.' : 'Coordonnées de la Mosquée Ulu Camii de Marche-en-Famenne : adresse, téléphones, e-mail et plan d’accès.'}>
@@ -26,7 +27,7 @@ const m = dil === 'tr' ? {
     <div>
       <dl class="grid gap-5">
         <div><dt class="etiket">{t('footer.adres')}</dt><dd class="mt-1 text-lg">{site.adres.sokak}<br />{site.adres.posta} {site.adres.sehir}, {site.adres.ulke}</dd></div>
-        <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</dd></div>
+        <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd class="mt-1 text-lg">{site.whatsapp ? <WhatsappBaglanti site={site} buyuk /> : <a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>}{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</dd></div>
         <div><dt class="etiket">{t('footer.cami')}</dt><dd class="mt-1 text-lg"><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></>}</dd></div>
         {site.sosyal.facebook && <div><dt class="etiket">Facebook</dt><dd class="mt-1"><a href={site.sosyal.facebook} target="_blank" rel="noopener">{dil === 'tr' ? 'Facebook sayfamız' : dil === 'en' ? 'Our Facebook page' : 'Notre page Facebook'}<span aria-hidden="true"> ↗</span></a></dd></div>}
       </dl>

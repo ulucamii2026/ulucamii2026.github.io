@@ -10,6 +10,7 @@
  * cepheyle gömülür.
  * Sayfa içi gezinme: «BU SAYFADA» içindekiler kartı + kart geçilince beliren sabit bölüm çubuğu. */
 import Base from '../layouts/Base.astro';
+import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import VideoCephe from '../components/VideoCephe.astro';
 import Ikon from '../components/Ikon.astro';
@@ -220,7 +221,7 @@ const afisler = [
         <h3 class="text-xl">{m.belcika.camiBaslik}</h3>
         <ul class="mt-3 grid gap-2.5">{m.belcika.cami.map((x) => <li class="flex gap-3"><Ikon ad="ok" class="mt-1 h-4 w-4 shrink-0 text-(--vurgu)" /><span>{x}</span></li>)}</ul>
         <p class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-          <a href={tel(site.telefon.dinGorevlisi)} class="inline-flex min-h-11 items-center gap-1.5 no-underline"><Ikon ad="telefon" class="h-4 w-4" /><span class="mono">{site.telefon.dinGorevlisi}</span></a>
+          <WhatsappBaglanti site={site} />
           <a href={`mailto:${site.epostaDinGorevlisi ?? site.eposta}`} class="inline-flex min-h-11 items-center">{site.epostaDinGorevlisi ?? site.eposta}</a>
         </p>
       </div>
@@ -290,7 +291,7 @@ const afisler = [
       <h2 id="iletisim-baslik">{m.iletisim.baslik}</h2>
       <p class="mt-2 max-w-[70ch]">{m.iletisim.alt}</p>
       <dl class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-sm">
-        <div class="kart p-4"><dt class="etiket">{m.iletisim.dinGorevlisi}</dt><dd class="mt-1"><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex min-h-11 items-center">{site.telefon.dinGorevlisi}</a></dd><dt class="etiket mt-2">{m.iletisim.cami}</dt><dd class="mt-1"><a href={tel(site.telefon.cami)} class="mono inline-flex min-h-11 items-center">{site.telefon.cami}</a></dd></div>
+        <div class="kart p-4"><dt class="etiket">{m.iletisim.dinGorevlisi}</dt><dd class="mt-1"><WhatsappBaglanti site={site} /></dd><dt class="etiket mt-2">{m.iletisim.cami}</dt><dd class="mt-1"><a href={tel(site.telefon.cami)} class="mono inline-flex min-h-11 items-center">{site.telefon.cami}</a></dd></div>
         <div class="kart p-4"><dt class="etiket">{m.iletisim.adres}</dt><dd class="mt-1">{site.adres.sokak}<br />{site.adres.posta} {site.adres.sehir}</dd><dt class="etiket mt-2">{m.iletisim.eposta}</dt><dd class="mt-1"><a href={`mailto:${site.eposta}`} class="inline-flex min-h-11 items-center">{site.eposta}</a></dd></div>
         <div class="kart p-4"><dt class="etiket">{m.iletisim.bdv}</dt><dd class="mt-1"><a href={tel(BDV_TEL)} class="mono inline-flex min-h-11 items-center">{BDV_TEL}</a><br /><a href={`mailto:${BDV_EPOSTA}`} class="inline-flex min-h-11 items-center">{BDV_EPOSTA}</a></dd><dd class="mt-1 text-(--metin-2)">{m.iletisim.mesai}</dd></div>
         <div class="kart p-4"><dt class="etiket">{m.iletisim.musavirlik}</dt><dd class="mt-1">{m.belcika.musavirlik.adres}</dd><dd class="mt-1"><a href={tel(MUSAVIRLIK_TEL)} class="mono inline-flex min-h-11 items-center">{MUSAVIRLIK_TEL}</a></dd></div>

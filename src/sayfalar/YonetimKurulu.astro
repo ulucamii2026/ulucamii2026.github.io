@@ -22,6 +22,7 @@
  * dinGorevlisi verisi başka sayfalarda kullanılmaya devam ediyor.
  */
 import Base from '../layouts/Base.astro';
+import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
@@ -202,7 +203,7 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
           <p class="mt-1 text-sm text-(--metin-2)">{m.iletisimAlt}</p>
           <dl class="mt-3 grid gap-2 text-sm">
             <div><dt class="etiket">{t('footer.cami')}</dt><dd><a href={tel(site.telefon.cami)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.eposta}</a></>}</dd></div>
-            <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</dd></div>
+            <div><dt class="etiket">{t('footer.dingorevlisi')}</dt><dd><WhatsappBaglanti site={site} />{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</dd></div>
           </dl>
         </div>
         <div class="kart-kagit p-5">

@@ -293,6 +293,13 @@ collections:
                   - { name: cami, label: Cami / dernek, widget: string }
               - { name: eposta, label: E-posta (dernek), widget: string, required: false }
               - { name: epostaDinGorevlisi, label: E-posta (din görevlisi), widget: string, required: false }
+              - name: whatsapp
+                label: WhatsApp (din görevlisi)
+                widget: object
+                required: false
+                fields:
+                  - { name: kullanici, label: "Kullanıcı adı (@ olmadan)", widget: string }
+                  - { name: numara, label: "Numara (wa.me bağlantısı için; sitede gösterilmez)", widget: string }
               - name: banka
                 label: Banka hesabı
                 widget: object

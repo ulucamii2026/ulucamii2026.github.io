@@ -68,6 +68,7 @@ const ayarlar = defineCollection({
     telefon: z.object({ dinGorevlisi: z.string(), cami: z.string() }),
     eposta: z.string().optional(),
     epostaDinGorevlisi: z.string().optional(),
+    whatsapp: z.object({ kullanici: z.string(), numara: z.string() }).optional(),
     banka: z.object({ iban: z.string(), bic: z.string(), banka: z.string(), hesapAdi: z.string() }),
     cumaSaati: z.string().optional(),
     kursKayitLinki: z.string().url().optional(),
@@ -173,5 +174,21 @@ const materyaller = defineCollection({
   }).refine((d) => Boolean(d.dosya || d.link), { message: 'dosya ya da link zorunlu' }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller };
+/** Vaazlar — anonim, açık kaynak cami vaazları (src/content/vaazlar/*.md; yalnız Türkçe içerik).
+ *  Kişisel/vaiz bilgisi taşımaz; her vaazın web sayfası + indirilebilir Word/PDF karşılığı olur. */
+const vaazlar = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/vaazlar' }),
+  schema: z.object({
+    baslik: z.string(),
+    ozet: z.string().optional(),
+    kategori: z.enum(['ibadet', 'ahlak', 'iman', 'ramazan', 'kandil', 'aile', 'siyer', 'toplum', 'genel']).default('genel'),
+    kelime: z.number().optional(),
+    docx: z.string().optional(),
+    pdf: z.string().optional(),
+    siraNo: z.number().optional(),
+    taslak: z.boolean().default(false),
+  }),
+});
+
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller, vaazlar };
 export { dil };

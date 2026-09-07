@@ -16,6 +16,11 @@ site:
     cami: "+32 472 98 50 73"
   eposta: info@ulucamii.be
   epostaDinGorevlisi: imam@ulucamii.be
+  # Din görevlisinin WhatsApp'ı: sitede numara gösterilmez, kullanıcı adı görünür; bağlantı wa.me ile
+  # numaradan açılır (WhatsApp kullanıcı adlarının herkese açık tıklanabilir bağlantısı yoktur).
+  whatsapp:
+    kullanici: ridvankayahan
+    numara: "+32 471 79 46 82"
   banka:
     iban: BE02 7320 0173 5240
     bic: CREGBEBB

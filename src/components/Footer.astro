@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import { ceviri, yol } from '../i18n/utils';
+import WhatsappBaglanti from './WhatsappBaglanti.astro';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
@@ -55,7 +56,7 @@ const siteLinkleri = [
     <address class="not-italic text-sm leading-6">
       <p class="etiket etiket-vurgu mb-2">{t('footer.iletisim')}</p>
       <p>{adresSatir} · <a href={haritaUrl} rel="noopener" target="_blank">{t('genel.harita')}</a></p>
-      <p class="mt-1.5"><span class="etiket">{t('footer.dingorevlisi')}</span> <a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`}>{site.epostaDinGorevlisi}</a></>}</p>
+      <p class="mt-1.5"><span class="etiket">{t('footer.dingorevlisi')}</span> {site.whatsapp ? <WhatsappBaglanti site={site} /> : <a href={tel(site.telefon.dinGorevlisi)} class="mono">{site.telefon.dinGorevlisi}</a>}{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`}>{site.epostaDinGorevlisi}</a></>}</p>
       <p class="mt-1.5"><span class="etiket">{t('footer.cami')}</span> <a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></>}</p>
     </address>
     <nav class="text-sm leading-6" aria-label={t('footer.yasal')}>

@@ -1,5 +1,6 @@
 ---
 import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import { ceviri, yol, kayitBaglantisi } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari } from '../lib/icerik';
@@ -61,5 +62,5 @@ const m = dil === 'tr'
     <p class="mt-1 text-sm text-(--metin-2)">{dil === 'tr' ? 'Türkiye’de Diyanet burslu ilahiyat lisansı: Uluslararası İlahiyat Programı (UİP). Şartlar, takvim ve başvuru desteği.' : dil === 'fr' ? 'Une licence de théologie en Turquie avec bourse Diyanet : le Programme international de théologie (UİP). Conditions, calendrier et aide à la candidature.' : 'A Diyanet-funded theology degree in Türkiye: the International Theology Programme (UİP). Conditions, timeline and application support.'}</p>
     <a href={yol(dil, 'uip')} class="dugme dugme-ikincil mt-3 w-full justify-center">{t('nav.uip')}</a>
   </div>
-  <p slot="yan" class="text-sm"><span class="etiket">{m.soru}</span><br /><a href={tel(site.telefon.dinGorevlisi)} class="mono inline-flex items-center min-h-11 -my-2 py-2">{site.telefon.dinGorevlisi}</a>{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</p>
+  <p slot="yan" class="text-sm"><span class="etiket">{m.soru}</span><br /><WhatsappBaglanti site={site} />{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`} class="inline-flex items-center min-h-11 -my-2 py-2">{site.epostaDinGorevlisi}</a></>}</p>
 </IcerikSayfasi>
