@@ -314,6 +314,84 @@
         }
       ],
       "ekler": []
+    },
+    {
+      "tarih": "2026-09-19",
+      "hafta": 3,
+      "gun": "Cumartesi",
+      "etiket": "ders-2026-09-19",
+      "plan": {
+        "dosya": "Ders-Plani-2026-09-19.pdf",
+        "boyut": 701096,
+        "sayfa": 19,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ders-Plani-2026-09-19.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Lâm grubu harfleri — Lâm, Mîm, Nûn, Vâv, He, Ye · Ezber köşesi: Sübhâneke, İhlâs, med harfleri",
+          "konuFr": "Les lettres du groupe Lâm — Lâm, Mîm, Nûn, Vâv, He, Ye · coin mémorisation : Subhânaka, Al-Ikhlâs, lettres d'allongement",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 6022672,
+          "slayt": 25,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 869745,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "İtikat",
+          "kod": "itikat",
+          "konu": "İtikat · Camiye Gidiyorum 1, s. 49-54",
+          "konuFr": "Croyance · Camiye Gidiyorum 1, p. 49-54",
+          "baslik": {
+            "tr": "Yaratıcımız Allah'tır",
+            "fr": "Notre Créateur est Allah"
+          },
+          "dosya": "Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
+          "boyut": 8268958,
+          "slayt": 21,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Itikat-Yaraticimiz-Allahtir.pdf",
+            "boyut": 1434998,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-2-Itikat-Yaraticimiz-Allahtir.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "İbadet",
+          "kod": "ibadet",
+          "konu": "İbadet · Camiye Gidiyorum 1, s. 55-58",
+          "konuFr": "Adoration · Camiye Gidiyorum 1, p. 55-58",
+          "baslik": {
+            "tr": "Abdest Alıyorum, Temizleniyorum (2/2)",
+            "fr": "Je fais mes ablutions, je me purifie (2/2)"
+          },
+          "dosya": "Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
+          "boyut": 8174354,
+          "slayt": 21,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ibadet-Abdest-Temizleniyorum.pdf",
+            "boyut": 1126889,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-3-Ibadet-Abdest-Temizleniyorum.pdf"
+          }
+        }
+      ],
+      "ekler": []
     }
   ]
 }
