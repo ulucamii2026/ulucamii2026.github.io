@@ -84,3 +84,14 @@ export function metniSadelestir(html: string): string {
 export function bosMu(html: string): boolean {
   return metniSadelestir(html).length === 0;
 }
+
+/**
+ * Metin zengin editörden gelen HTML mi, yoksa eski textarea'dan gelen düz metin mi?
+ * Editörün innerHTML'i özel karakteri her zaman HTML varlığına (`&lt;`) çevirir ve biçim/satır için
+ * kapanış etiketi ya da `<br>` içerir; eski düz metinde bunların hiçbiri bulunmaz. Bu ayrım olmadan
+ * "a<b olacak" gibi düz bir cümle yanlışlıkla HTML sanılıp `temizleHtml`'e verilir ve sahte etiketten
+ * sonrası sessizce yutulur (veri kaybı). Kapanış etiketi/`<br>`/varlık — üçü de düz metinde olmaz.
+ */
+export function zenginMi(html: string): boolean {
+  return /<\/[a-z]|<br\s*\/?>|&(?:[a-z]+|#\d+|#x[0-9a-f]+);/i.test(html || '');
+}

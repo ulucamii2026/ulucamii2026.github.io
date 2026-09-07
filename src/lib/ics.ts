@@ -104,10 +104,10 @@ export function etkinlikIcsUret(e: IcsEtkinlik, dil: 'tr' | 'fr' | 'en'): string
       e.baslangic.getUTCFullYear(), e.baslangic.getUTCMonth(), e.baslangic.getUTCDate(),
       ayristirilan.saat, ayristirilan.dakika,
     );
-    // Bitiş saati belirtilmemişse (saat metninde yalnız başlangıç varsa) 2 saatlik makul bir varsayılan kullanılır.
-    const bit = e.bitis
-      ? brukselYerelSaatiUtcyeCevir(e.bitis.getUTCFullYear(), e.bitis.getUTCMonth(), e.bitis.getUTCDate(), ayristirilan.saat, ayristirilan.dakika)
-      : new Date(bas.getTime() + 2 * 60 * 60 * 1000);
+    // Saatli tek gün etkinliği: bitiş için 2 saatlik makul varsayılan. Bu dala yalnız `cokGunlu`
+    // false iken girilir; yani `bitis` ya yok ya da başlangıçla aynı gün — her iki durumda da ayrı
+    // bir bitiş anı yoktur, `bitis`'i başlangıç saatiyle hesaplamak sıfır süreli etkinlik üretirdi.
+    const bit = new Date(bas.getTime() + 2 * 60 * 60 * 1000);
     satirlar.push(`DTSTART:${damgaUtc(bas)}`, `DTEND:${damgaUtc(bit)}`);
   } else {
     // Saat ayrıştırılamadı: tüm-gün etkinlik olarak üret. DTEND (VALUE=DATE) dışlayıcıdır, bir gün eklenir.

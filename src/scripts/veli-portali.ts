@@ -5,7 +5,7 @@
  */
 import type { Dil } from '../i18n/ui';
 import { veliMetni, yerlestir, type VeliMetin } from '../i18n/veli';
-import { temizleHtml, metniSadelestir } from '../lib/zengin-metin';
+import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
@@ -39,8 +39,11 @@ export async function veliPortali(): Promise<void> {
   const cok = (o: Record<string, string> | undefined) => (o ? (o[dil] || o.fr || o.tr || '') : '');
   // Duyuru/ödev metnindeki https bağlantılarını tıklanabilir yapar (önce kaçış, sonra bağlantı; sondaki noktalama bağlantıya girmez)
   const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
-  // Duyuru metni: HTML (yeni zengin duyuru) ise sanitize; düz metin (eski) ise kaçış + bağlantı + satır sonu
-  const duyuruHtml = (s: string) => /<[a-z][\s\S]*>/i.test(s) ? temizleHtml(s) : bagla(s).replace(/\n/g, '<br>');
+  // Duyuru metni: zengin editör HTML'i ise sanitize; düz metin (eski) ise kaçış + bağlantı + satır sonu.
+  // zenginMi ile kesin ayrım — «a<b olacak» gibi düz metin yanlışlıkla HTML sanılıp yutulmaz.
+  const duyuruHtml = (s: string) => zenginMi(s) ? temizleHtml(s) : bagla(s).replace(/\n/g, '<br>');
+  // Uzunluk/kırpma için düz metin biçimi (zengin ise etiketleri at, düz ise olduğu gibi).
+  const duyuruDuz = (s: string) => (zenginMi(s) ? metniSadelestir(s) : s).replace(/\s+/g, ' ').trim();
   const alanAdi = (kod: string) => (m.alan as Record<string, string>)[kod] || kod;
   // Bir yoklama gününü ders ders normalleştirir (yeni `dersler` haritası ya da eski tek `durum`dan).
   const dersDurumlari = (y: Yoklama): { sira: string; durum: DurumTip }[] => {
@@ -286,7 +289,7 @@ export async function veliPortali(): Promise<void> {
 
         <section class="bolum genis">
           ${bas('duyuru', m.duyurular)}
-          ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => { const g = cok(x.metin); const uzun = metniSadelestir(g).length > 240; return `<article class="duyuru${uzun ? ' uzun' : ''}"><span class="d-tarih">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><h3>${esc(cok(x.baslik))}</h3><p class="d-govde">${duyuruHtml(g)}</p><button type="button" class="d-devam" data-devam>${esc(m.devaminiOku)}</button></article>`; }).join('') : bosDurum('duyuru', m.duyuruYok)}
+          ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => { const g = cok(x.metin); const uzun = duyuruDuz(g).length > 240; return `<article class="duyuru${uzun ? ' uzun' : ''}"><span class="d-tarih">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><h3>${esc(cok(x.baslik))}</h3><div class="d-govde">${duyuruHtml(g)}</div><button type="button" class="d-devam" data-devam>${esc(m.devaminiOku)}</button></article>`; }).join('') : bosDurum('duyuru', m.duyuruYok)}
         </section>
 
         <section class="bolum">

@@ -29,15 +29,23 @@ const yakin = hepsi.filter((v) => {
   if (cenaze && cenaze + GUN > simdi) return true;
   return v.data.vefat.getTime() + 10 * GUN > simdi;
 });
-// Bandın amacı bekleyen cenaze namazını duyurmak; bu yüzden en son vefat edeni değil, cenaze
-// namazı henüz gelmemiş (en yakın) kaydı öne al — böyle bir kayıt yoksa en son vefata düş.
+// Bandın amacı bekleyen/az önceki cenaze namazını duyurmak; bu yüzden en son vefat edeni değil,
+// duyuru penceresindeki (filtreyle aynı: yaklaşan ya da son 24 saatteki) cenazeyi öne al. Filtre
+// «cenaze + GUN > simdi» ile kaydı yakın sayıp da sıralamanın onu geçmişte bırakması tutarsızdı:
+// yaklaşan olanlar en yakını, geçmiştekiler en yenisi önde; hiçbirinde cenaze yoksa en son vefat.
+const pencere = (v: (typeof yakin)[number]) => {
+  const t = v.data.cenazeNamazi?.tarih?.getTime();
+  return t && t + GUN > simdi ? t : null;
+};
 const kayit = [...yakin].sort((a, b) => {
-  const ac = a.data.cenazeNamazi?.tarih?.getTime();
-  const bc = b.data.cenazeNamazi?.tarih?.getTime();
-  const aBekleyen = ac && ac > simdi ? ac : Infinity;
-  const bBekleyen = bc && bc > simdi ? bc : Infinity;
-  if (aBekleyen !== bBekleyen) return aBekleyen - bBekleyen;
-  return b.data.vefat.getTime() - a.data.vefat.getTime();
+  const at = pencere(a), bt = pencere(b);
+  if (at && bt) {
+    const aGelecek = at > simdi, bGelecek = bt > simdi;
+    if (aGelecek !== bGelecek) return aGelecek ? -1 : 1; // yaklaşan cenaze, geçmiş olanın önünde
+    return aGelecek ? at - bt : bt - at;                 // yaklaşanda en yakın; geçmişte en yeni
+  }
+  if (at || bt) return at ? -1 : 1;                       // cenazesi olan, olmayanın önünde
+  return b.data.vefat.getTime() - a.data.vefat.getTime(); // ikisinde de yok: en son vefat
 })[0];
 
 const m = {

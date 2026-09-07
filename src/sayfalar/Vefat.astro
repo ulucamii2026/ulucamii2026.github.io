@@ -86,7 +86,7 @@ const m = dil === 'tr' ? {
           <h2 class="etiket etiket-vurgu text-base cetvel pt-3 mb-4">{yil}</h2>
           <ul class="grid gap-4" role="list">
             {liste.filter((v) => v.data.vefat.getFullYear() === yil).map((v) => {
-              const d = v.data; const yas = d.dogumYili ? yil - d.dogumYili : null;
+              const d = v.data; const yas = d.dogumYili && yil - d.dogumYili >= 0 ? yil - d.dogumYili : null;
               return (
                 <li class="kart p-5 sm:p-6 flex gap-5">
                   {d.foto ? (

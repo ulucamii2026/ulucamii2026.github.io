@@ -4,7 +4,7 @@
  * modelini besler: yoklama/{ref}_{tarih}, ilerleme/{ref}, degerlendirme, notlar, odevler/{tarih}, duyurular, bildirimler.
  * Kişisel veri en azda tutulur (ad, soyad, veli e-postası, dil); kimlik numarası, adres, fotoğraf asla girilmez.
  */
-import { temizleHtml, metniSadelestir } from '../lib/zengin-metin';
+import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
@@ -301,10 +301,10 @@ export async function hocaEkrani(): Promise<void> {
           <span class="za-ayr"></span>
           ${['🕌', '📖', '📅', '✅', '⭐', '❗', '🤲', '🎉'].map((e) => `<button type="button" class="za-b za-emoji" data-zk="emoji" data-emoji="${e}" title="Ekle">${e}</button>`).join('')}
         </div>
-        <div class="za-yaz" contenteditable="true" role="textbox" aria-multiline="true" aria-label="${etiket}" data-zengin="${ad}"${gerekli ? ' data-gerekli="1"' : ''}>${temizleHtml(deger || '')}</div>
+        <div class="za-yaz" contenteditable="true" role="textbox" aria-multiline="true" aria-label="${etiket}" data-zengin="${ad}"${gerekli ? ' data-gerekli="1"' : ''}>${zenginMi(deger || '') ? temizleHtml(deger || '') : esc(deger || '').replace(/\n/g, '<br>')}</div>
       </div>`;
       govde = `<section class="bolum"><h2>${simge('duyuru')}Duyurular</h2>
-        ${S.duyurular.map((d) => { const b = d.baslik as Record<string, string>; const m = d.metin as Record<string, string>; return `<div class="duyuru${d.id === duzenlenenDuyuru ? ' duzenlenen' : ''}"><div class="duyuru-ust"><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span> <span class="rozet ${d.yayin ? 'var' : ''}">${d.yayin ? 'yayında' : 'taslak'}</span><span class="duyuru-eylem"><button type="button" class="baglanti-dugme" data-duyuru-duzelt="${esc(d.id)}">düzenle</button> <button type="button" class="baglanti-dugme" data-yayin="duyurular" data-id="${esc(d.id)}" data-deger="${d.yayin ? '0' : '1'}">${d.yayin ? 'yayından kaldır' : 'yayınla'}</button> <button type="button" class="baglanti-dugme" data-sil="duyurular" data-id="${esc(d.id)}">sil</button></span></div><b>${esc(b?.tr || '')}</b>${b?.fr ? ` <span class="kucuk">· ${esc(b.fr)}</span>` : ''}<p>${esc(metniSadelestir(m?.tr || ''))}</p></div>`; }).join('') || '<p class="kucuk">Henüz duyuru yok.</p>'}
+        ${S.duyurular.map((d) => { const b = d.baslik as Record<string, string>; const m = d.metin as Record<string, string>; return `<div class="duyuru${d.id === duzenlenenDuyuru ? ' duzenlenen' : ''}"><div class="duyuru-ust"><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span> <span class="rozet ${d.yayin ? 'var' : ''}">${d.yayin ? 'yayında' : 'taslak'}</span><span class="duyuru-eylem"><button type="button" class="baglanti-dugme" data-duyuru-duzelt="${esc(d.id)}">düzenle</button> <button type="button" class="baglanti-dugme" data-yayin="duyurular" data-id="${esc(d.id)}" data-deger="${d.yayin ? '0' : '1'}">${d.yayin ? 'yayından kaldır' : 'yayınla'}</button> <button type="button" class="baglanti-dugme" data-sil="duyurular" data-id="${esc(d.id)}">sil</button></span></div><b>${esc(b?.tr || '')}</b>${b?.fr ? ` <span class="kucuk">· ${esc(b.fr)}</span>` : ''}<p>${esc(zenginMi(m?.tr || '') ? metniSadelestir(m?.tr || '') : (m?.tr || ''))}</p></div>`; }).join('') || '<p class="kucuk">Henüz duyuru yok.</p>'}
         <h3>${duz ? simge('kalem') + 'Duyuruyu düzenle' : simge('duyuru') + 'Yeni duyuru'}</h3>
         <form data-form="duyuru" class="${duz ? 'duzenleme' : ''}">
           ${duz ? `<p class="duzen-not">${simge('kalem')}<span>Var olan bir duyuruyu düzenliyorsunuz.</span></p>` : ''}
