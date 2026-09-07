@@ -238,7 +238,7 @@ HADÎS-İ ŞERÎF
 
 <p lang="ar" dir="rtl" class="ayet">الْجَالِبُ مَرْزُوقٌ وَالْمُحْتَكِرُ مَلْعُونٌ</p>
 
-*“İnsanlara satmak üzere mal getiren rızıklandırılır, malını stoklayıp karaborsaya düşüren ise lanetlenir.” (*İbn Mace, Ticaret, 6)
+“İnsanlara satmak üzere mal getiren rızıklandırılır, malını stoklayıp karaborsaya düşüren ise lanetlenir.” (İbn Mace, Ticaret, 6)
 
 Ticaret erbabının kazanması, sermayesini çoğaltması pek tabii normaldir. Ancak fiyatların yükselmesi için malı stok yapması, insanların ihtiyacı varken satmaması hem dînî hem de insanî olarak doğru kabul edilmez. Hadis-i şeriflerde bu durum şiddetle yasaklanmıştır. (Hadislerle İslâm, 5/205)
 

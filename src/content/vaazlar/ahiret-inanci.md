@@ -24,7 +24,7 @@ Allah, hayatı ve ölümü belirli bir amaçla yaratmış, insanlara doğruyu ve
 
 <p lang="ar" dir="rtl" class="ayet">الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا وَهُوَ الْعَزِيزُ الْغَفُورُ</p>
 
-**O ki, hanginizin daha güzel davranacağını sınamak için ölümü ve hayatı yaratmıştır. O, mutlak galiptir, çok bağışlayıcıdır**. (Mülk, 67/2)
+O ki, hanginizin daha güzel davranacağını sınamak için ölümü ve hayatı yaratmıştır. O, mutlak galiptir, çok bağışlayıcıdır. (Mülk, 67/2)
 
 Bu amacın özü insanın her şeyden önce kendisini yaratan Rabbini gereği gibi tanıyıp takdir edebilmesi, O’nun emirlerini ve koymuş olduğu yasakları titizlikle koruması, dünya hayatının geçici ve sahte bir süsten ibaret olduğunu fark edebilmesi, hayatını ahireti hedef alarak düzenlemesidir.
 
@@ -88,7 +88,7 @@ Allah Resûlü'ne
 
 <p lang="ar" dir="rtl" class="ayet">, قَالَ فَأَىُّ الْمُؤْمِنِينَ أَكْيَسُ قَالَ : « أَكْثَرُهُمْ لِلْمَوْتِ ذِكْرًا وَأَحْسَنُهُمْ لِمَا بَعْدَهُ اسْتِعْدَادًا أُولَئِكَ الأَكْيَاسُ</p>
 
-**Müminlerin en akıllısı (şuurlusu) kimdir?** diye sorulduğunda o, “Ölümü en çok hatırlayan ve ölümden sonraki hayatı için en güzel şekilde hazırlanan kimsedir.” (İbn Mâce, Zühd, 31) diye cevap vermiştir. Âhirete imanı içtenlikle benimseyen mümin, “yaptığı hiçbir iyiliğin mükâfatsız kalmayacağını hem dünyada hem de âhirette karşılığının tam olarak verileceğini” bilir. Diğer taraftan âhirete inanan kişi, ebedî hayatta kendisinin tek yoldaşının ameli yani dünyada yapıp ettikleri olduğunu idrak eder. Çünkü Allah Resûlü,
+Müminlerin en akıllısı (şuurlusu) kimdir? diye sorulduğunda o, “Ölümü en çok hatırlayan ve ölümden sonraki hayatı için en güzel şekilde hazırlanan kimsedir.” (İbn Mâce, Zühd, 31) diye cevap vermiştir. Âhirete imanı içtenlikle benimseyen mümin, “yaptığı hiçbir iyiliğin mükâfatsız kalmayacağını hem dünyada hem de âhirette karşılığının tam olarak verileceğini” bilir. Diğer taraftan âhirete inanan kişi, ebedî hayatta kendisinin tek yoldaşının ameli yani dünyada yapıp ettikleri olduğunu idrak eder. Çünkü Allah Resûlü,
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم « يَتْبَعُ الْمَيِّتَ ثَلاَثَةٌ أَهْلُهُ وَمَالُهُ وَعَمَلُهُ فَيَرْجِعُ اثْنَانِ أَهْلُهُ وَمَالُهُ وَيَبْقَى وَاحِدٌ عَمَلُهُ » .</p>
 
@@ -124,33 +124,33 @@ Rasulullah (sav) bu konuda bizim için en iyi örnektir. Bu konuyla alakalı ola
 
 <p lang="ar" dir="rtl" class="ayet">فَقَالَ رَسُولُ اللَّهِ (صعلم) اللَّهُمَّ لَا عَيْشَ إِلَّا عَيْشُ الْآخِرَهْ</p>
 
-**Allah’ım hayat ancak ahiret hayatıdır**. (Müslim, Cihad, 4773)
+Allah’ım hayat ancak ahiret hayatıdır. (Müslim, Cihad, 4773)
 
 Yüce Allah Kur’an-ı Kerim’de şöyle buyuruyor:
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا هَذِهِ الْحَيَاةُ الدُّنْيَا إِلَّا لَهْوٌ وَلَعِبٌ وَإِنَّ الدَّارَ الْآخِرَةَ لَهِيَ الْحَيَوَانُ لَوْ كَانُوا يَعْلَمُونَ</p>
 
-**Bu dünya hayatı sadece bir eğlenceden, bir oyundan ibarettir. Ahiret yurduna (oradaki hayata) gelince, işte asıl yaşama odur. Keşke bilmiş olsalardı**! (Ankebut, 29/64)
+Bu dünya hayatı sadece bir eğlenceden, bir oyundan ibarettir. Ahiret yurduna (oradaki hayata) gelince, işte asıl yaşama odur. Keşke bilmiş olsalardı! (Ankebut, 29/64)
 
 <p lang="ar" dir="rtl" class="ayet">وَقِيلَ لِلَّذِينَ اتَّقَوْاْ مَاذَا أَنزَلَ رَبُّكُمْ قَالُواْ خَيْرًا لِّلَّذِينَ أَحْسَنُواْ فِي هَذِهِ الدُّنْيَا حَسَنَةٌ وَلَدَارُ الآخِرَةِ خَيْرٌ وَلَنِعْمَ دَارُ الْمُتَّقِينَ</p>
 
-**(Kötülüklerden) sakınanlara: Rabbiniz ne indirdi? Denildiğinde, "Hayır (indirdi)" derler. Bu dünyada güzel davrananlara, güzel mükâfat vardır. Ahiret yurdu ise daha hayırlıdır. Takvâ sahiplerinin yurdu gerçekten güzeldir!** (Nahl, 16/30)
+(Kötülüklerden) sakınanlara: Rabbiniz ne indirdi? Denildiğinde, "Hayır (indirdi)" derler. Bu dünyada güzel davrananlara, güzel mükâfat vardır. Ahiret yurdu ise daha hayırlıdır. Takvâ sahiplerinin yurdu gerçekten güzeldir! (Nahl, 16/30)
 
 <p lang="ar" dir="rtl" class="ayet">وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَى</p>
 
-**Gerçekten senin için ahiret dünyadan daha hayırlıdır**. (Duha, 93/4)
+Gerçekten senin için ahiret dünyadan daha hayırlıdır. (Duha, 93/4)
 
 İnsan, sorumluluk taşıyan bir varlıktır. Bu, onun temel özelliklerinden birisidir. Allah'ın emirlerine uymak ve yasaklarından sakınmakla yükümlü olan insan, mutlaka bir gün O'nun huzurunda, dünyada yaptıklarından sorgulanacaktır. Çünkü o, tesadüfen dünyaya gelmiş değil, Allah'ın takdir ve yaratması ile var olmuştur. Hem de Allah Teâlâ, kâinatta olan her şeyi onun hizmetine vermiştir. Kur'an-ı Kerim'de:
 
 <p lang="ar" dir="rtl" class="ayet">أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ</p>
 
-**Sizi sadece boş yere yarattığımızı ve sizin gerçekten huzurumuza geri getirilmeyeceğinizi mi sandınız**. (Mü'minûn, 23/115) Buyurulmuş ve insanın bir gün hesaba çekileceği bildirilmiştir.
+Sizi sadece boş yere yarattığımızı ve sizin gerçekten huzurumuza geri getirilmeyeceğinizi mi sandınız. (Mü'minûn, 23/115) Buyurulmuş ve insanın bir gün hesaba çekileceği bildirilmiştir.
 
 Öldükten sonra dirilip Allah'ın huzuruna getirileceğimiz bu güne "Hesap Günü" diyoruz. Bugün, insanın en dehşetli günlerinden bir gündür. Peygamberler bile bugünün dehşetinden Allah'a sığınmışlardır. İşte bu peygamberlerden biri, İbrahim aleyhi's-selâm'dır. Bakın O, Allah Teâlâ'ya nasıl dua ediyor:
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تُخْزِنِي يَوْمَ يُبْعَثُونَ (87) يَوْمَ لَا يَنْفَعُ مَالٌ وَلَا بَنُونَ (88) إِلَّا مَنْ أَتَى اللَّهَ بِقَلْبٍ سَلِيمٍ</p>
 
-**(Ey Rabbim) İnsanların dirilecekleri (ve huzuruna gelip hesap verecekleri) gün, beni utandırma. O gün ne mal fayda verir, ne evlat. Ancak Allah'a temiz bir kalb ile gelenler başka.** (Şuarâ, 26/87-89.)
+(Ey Rabbim) İnsanların dirilecekleri (ve huzuruna gelip hesap verecekleri) gün, beni utandırma. O gün ne mal fayda verir, ne evlat. Ancak Allah'a temiz bir kalb ile gelenler başka. (Şuarâ, 26/87-89.)
 
 Hz. İbrahim bu duası ile bize örnek oluyor, yol gösteriyor. Zaten onun yaptığı bu duanın Kur'an-ı Kerim'de yer almasının hikmeti de budur. Ayet-i Kerime'de şu hususlara dikkatimiz çekiliyor. Ey insanlar, Öleceksiniz fakat sonradan dirilip Allah'ın huzurunda hesap vereceksiniz. Bunu hatırınızdan çıkarmayın, hazırlıklı olun, İbrahim aleyhis selâm bir peygamber olduğu, hatta Allah'ın dostu olma şerefi ile şereflendiği halde hesap gününü unutmuyor ve o gün mahcup duruma düşmemesini Allah Teâlâ'dan niyaz ediyor. Bu peygamberi örnek alın; Allah'a yönelin, yalvarın ve o gün hesabınızın kolay geçmesini Allah'tan dileyin. Kimseye güvenmeyin, Allah'ın rızasını kazanmaya çalışın. O, razı olmadıkça kimsenin size bir iyilik yapamayacağını unutmayın. Çünkü Allah izin vermedikçe hiç kimsenin bir başkasına şefaat etmesi de söz konusu değildir. O halde yapacağınız şey, Allah'ın rızasını kazanmaktır. Bu da ancak O'nun emirlerine itaat etmek ve yasaklarından sakınmakla olur.
 
@@ -158,13 +158,13 @@ O gün mal ve evladın fayda vermeyeceği bir gündür. Nitekim başka bir Ayet-
 
 <p lang="ar" dir="rtl" class="ayet">يَاأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمْ وَاخْشَوْا يَوْمًا لَا يَجْزِي وَالِدٌ عَنْ وَلَدِهِ وَلَا مَوْلُودٌ هُوَ جَازٍ عَنْ وَالِدِهِ شَيْئًا إِنَّ وَعْدَ اللَّهِ حَقٌّ فَلَا تَغُرَّنَّكُمُ الْحَيَاةُ الدُّنْيَا وَلَا يَغُرَّنَّكُمْ بِاللَّهِ الْغَرُورُ</p>
 
-**Ey insanlar! Rabbinize karşı gelmekten sakının. Ne babanın evlâdı, ne evladın babası namına bir şey ödeyemeyeceği günden (kıyamet gününden) çekinin. Bilin ki, Allah'ın verdiği söz gerçektir. Sakın dünya hayatı sizi aldatmasın ve şeytan Allah'ın affına güvendirerek sizi yanıltmasın.** (Lokman, 31/33)
+Ey insanlar! Rabbinize karşı gelmekten sakının. Ne babanın evlâdı, ne evladın babası namına bir şey ödeyemeyeceği günden (kıyamet gününden) çekinin. Bilin ki, Allah'ın verdiği söz gerçektir. Sakın dünya hayatı sizi aldatmasın ve şeytan Allah'ın affına güvendirerek sizi yanıltmasın. (Lokman, 31/33)
 
 Ahiret günü, hesap günü düşünmesi bile insana dehşet veren, herkesin kendisi ile meşgul olacağı, başkası ile ilgilenmeye ayıracak zamanı olmayacak bir gündür. Nitekim Kur'an-ı Kerim'de şöyle buyurulmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">يَوْمَ يَفِرُّ الْمَرْءُ مِنْ أَخِيهِ (34) وَأُمِّهِ وَأَبِيهِ (35) وَصَاحِبَتِهِ وَبَنِيهِ (36) لِكُلِّ امْرِئٍ مِنْهُمْ يَوْمَئِذٍ شَأْنٌ يُغْنِيهِ</p>
 
-**O gün kişi kardeşinden, annesinden babasından, eşinden ve çocuklarından kaçar. O gün herkesin kendine yetip artacak bir derdi vardır.** (Abese, 80/34-37)
+O gün kişi kardeşinden, annesinden babasından, eşinden ve çocuklarından kaçar. O gün herkesin kendine yetip artacak bir derdi vardır. (Abese, 80/34-37)
 
 İnsan dünyada bu yakınlarından birisi ile karşılaşsa sevinir ve onları sevgi ile kucaklar. Ama o gün, değil başkalarından, en yakınlarından bile kaçacaktır. Bir kısmı kendi derdi ile meşgul olduğu için kaçacak, bir kısmı da sorguya çekilirim endişesiyle kaçacaktır. Çünkü kardeş, "Sen bana dünyada yardım etmedin"; anne-baba, "Sen bize iyilikte kusur ettin"; eşi, "Sen bana haram yedirdin", çocuklar, "Sen bize dinimizi öğreterek bizi uyarmadın" deyip yakasına sarılırlar diye onlardan kaçacaktır.
 
@@ -176,17 +176,17 @@ Allah Teâlâ:
 
 <p lang="ar" dir="rtl" class="ayet">وَأَنْذِرْ عَشِيرَتَكَ الْأَقْرَبِينَ</p>
 
-**Ey Muhammed! En yakın akrabanı uyar.** (Şuarâ, 26/214.) Âyet-i Kerimesini indirdiği zaman, Peygamberimiz akrabalarını çağırarak Safâ tepesinde onlara yaptığı bir konuşmada şöyle buyurdu:
+Ey Muhammed! En yakın akrabanı uyar. (Şuarâ, 26/214.) Âyet-i Kerimesini indirdiği zaman, Peygamberimiz akrabalarını çağırarak Safâ tepesinde onlara yaptığı bir konuşmada şöyle buyurdu:
 
-**Ey Kureyş topluluğu!** Kendinizi Allah'tan satın alın (Allah'ın azabından koruyun) yoksa ben Allah'ın azabından hiçbir şeyi sizden menedemem.
+Ey Kureyş topluluğu! Kendinizi Allah'tan satın alın (Allah'ın azabından koruyun) yoksa ben Allah'ın azabından hiçbir şeyi sizden menedemem.
 
-**Ey Abdi Menaf oğulları!** Allah'ın azabından hiçbir şeyi sizden uzaklaştıramam.
+Ey Abdi Menaf oğulları! Allah'ın azabından hiçbir şeyi sizden uzaklaştıramam.
 
-**Ey Abdülmuttalip oğlu Abbas,** Senden de Allah'ın azabından hiçbir şeyi menedemem.
+Ey Abdülmuttalip oğlu Abbas, Senden de Allah'ın azabından hiçbir şeyi menedemem.
 
-**Ey Peygamberin halası Safiyye!** Benim, Allah'ın azabından kurtarmak için sana hiçbir yararım olmaz.
+Ey Peygamberin halası Safiyye! Benim, Allah'ın azabından kurtarmak için sana hiçbir yararım olmaz.
 
-**Ey Muhammed (s.a.s.)'in kızı Fatıma!** Malımdan ne dilersen iste, vereyim fakat Allah'ın azabından hiçbir şeyi senden men edemem. (Buhârî, Vesâyâ, 11; Müslim, İman, 89.)
+Ey Muhammed (s.a.s.)'in kızı Fatıma! Malımdan ne dilersen iste, vereyim fakat Allah'ın azabından hiçbir şeyi senden men edemem. (Buhârî, Vesâyâ, 11; Müslim, İman, 89.)
 
 Peygamberimiz, insanların dünya ve ahiret efendisi olduğu halde, "Kıyamet günü ne olacağım, nasıl hesap vereceğim" derdi.
 
@@ -196,7 +196,7 @@ Evet, yapacağımız şeyi peygamberimiz bize şöyle hatırlatıyor:
 
 <p lang="ar" dir="rtl" class="ayet">" حَاسِبُوا أَنْفُسَكُمْ قَبْلَ أَنْ تُحَاسَبُوا،</p>
 
-**Hesaba çekilmeden önce kendinizi hesaba çekiniz**. (Tirmizî, Kıyâme, 25.)
+Hesaba çekilmeden önce kendinizi hesaba çekiniz. (Tirmizî, Kıyâme, 25.)
 
 İşte ahiret inancı, insanın, duygu, düşünce ve davranışları üzerinde böyle olumlu etkiler yapar. Ne mutlu o hesap gününe hazırlananlara. Yine ne mutlu o günü hiç unutmayanlara.
 
@@ -208,10 +208,10 @@ Ahiret inancı, İslam inancının en önemli ilkelerinden biridir. Kur’an’�
 
 <p lang="ar" dir="rtl" class="ayet">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْراًيَرَهُ:وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرّاً يَرَهُ:</p>
 
-**Zerre kadar hayır yapan mükâfatını görecek, zerre kadar kötülük yapan da cezasını görecektir**. (Zilzal Suresi 99/7–8.)
+Zerre kadar hayır yapan mükâfatını görecek, zerre kadar kötülük yapan da cezasını görecektir. (Zilzal Suresi 99/7–8.)
 
 Kur'an-ı Kerim'in en son nazil olduğu, Abdullah İbn Abbas (r.a.) tarafından rivayet edilen Âyet-i Kerime'de Allah Teâlâ şöyle buyuruyor:
 
 <p lang="ar" dir="rtl" class="ayet">وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ ثُمَّ تُوَفَّى كُلُّ نَفْسٍ مَا كَسَبَتْ وَهُمْ لَا يُظْلَمُونَ</p>
 
-**Öyle bir günden korkunuz ki, o gün Allah'a döndürüleceksiniz. Sonra da herkese kazancı tamamı ile ödenecek ve hiç kimse haksızlığa uğramayacaktır**. (Bakara, 2/281.)
+Öyle bir günden korkunuz ki, o gün Allah'a döndürüleceksiniz. Sonra da herkese kazancı tamamı ile ödenecek ve hiç kimse haksızlığa uğramayacaktır. (Bakara, 2/281.)

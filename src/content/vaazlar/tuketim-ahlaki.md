@@ -76,15 +76,15 @@ Allah Teâlâ kulların irade, istek ve çabaları doğrultusunda rızkı yaratm
 
 <p lang="ar" dir="rtl" class="ayet">لاَ تَزُولُ قَدَمَا ابْنِ آدَمَ يَوْمَ الْقِيَامَةِ مِنْ عِنْدِ رَبِّهِ حَتَّى يُسْأَلَ عَنْ خَمْسٍ عَنْ عُمْرِهِ فِيمَا أَفْنَاهُ وَعَنْ شَبَابِهِ فِيمَا أَبْلاَهُ وَمَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَ أَنْفَقَهُ وَمَاذَا عَمِلَ فِيمَا عَلِمَ</p>
 
-*“İnsanoğlu kıyamet günü beş şeyden; ömrünü nerede ve nasıl tükettiğinden, gençliğini nerede ve nasıl geçirdiğinden, malını nerden kazanıp nerede harcadığından, öğrendiği bilgilerle yaşayıp yaşamadığından hesaba çekilmedikçe hiçbir tarafa hareket edemeyecek, yerinden kımıldayamayacaktır.”*** (Tirmizî, Sıfatü’l-kıyâme, 1.) O halde insan, sınırsız bir tüketim yerine temiz, helal ve hesabını verebileceği bir tüketim veya kullanım içerisinde olmalıdır. Bu yüzden;
+*“İnsanoğlu kıyamet günü beş şeyden; ömrünü nerede ve nasıl tükettiğinden, gençliğini nerede ve nasıl geçirdiğinden, malını nerden kazanıp nerede harcadığından, öğrendiği bilgilerle yaşayıp yaşamadığından hesaba çekilmedikçe hiçbir tarafa hareket edemeyecek, yerinden kımıldayamayacaktır.”* (Tirmizî, Sıfatü’l-kıyâme, 1.) O halde insan, sınırsız bir tüketim yerine temiz, helal ve hesabını verebileceği bir tüketim veya kullanım içerisinde olmalıdır. Bu yüzden;
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الْحَلاَلَ بَيِّنٌ وَإِنَّ الْحَرَامَ بَيِّنٌ وَبَيْنَهُمَا مُشْتَبِهَاتٌ لاَ يَعْلَمُهُنَّ كَثِيرٌ مِنَ النَّاسِ، فَمَنِ اتَّقَى الشُّبُهَاتِ اسْتَبْرَأَ لِدِينِهِ وَعِرْضِهِ، وَمَنْ وَقَعَ فِى الشُّبُهَاتِ وَقَعَ فِى الْحَرَامِ...</p>
 
-*“Helâl bellidir; haram da bellidir. İkisinin arasında ise birtakım şüpheli şeyler vardır ki insanların çoğu bunları bilmezler. Kim şüpheli şeylerden sakınırsa, dinini ve ırzını (namus ve haysiyetini) korumuş olur. Kim de şüpheli şeylere düşerse, harama düşmüş olur...”*** (Müslim, Müsâkât, 107) buyrularak haramların ve helallerin belli olduğu ancak bu sınırlara riayet edilirse kişinin dinini koruyabileceği ifade edilmiştir.
+*“Helâl bellidir; haram da bellidir. İkisinin arasında ise birtakım şüpheli şeyler vardır ki insanların çoğu bunları bilmezler. Kim şüpheli şeylerden sakınırsa, dinini ve ırzını (namus ve haysiyetini) korumuş olur. Kim de şüpheli şeylere düşerse, harama düşmüş olur...”* (Müslim, Müsâkât, 107) buyrularak haramların ve helallerin belli olduğu ancak bu sınırlara riayet edilirse kişinin dinini koruyabileceği ifade edilmiştir.
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَأْكُلُٓوا اَمْوَالَكُمْ بَيْنَكُمْ بِالْبَاطِلِ</p>
 
-*“Aranızda birbirinizin mallarını haksız yere yemeyin…”*** (Bakara,2/188) ayeti faiz, kumar, aldatma, hırsızlık vb. meşru olmayan her türlü kazancın haramlığını ortaya koymaktadır. Peygamber Efendimiz de;
+*“Aranızda birbirinizin mallarını haksız yere yemeyin…”* (Bakara,2/188) ayeti faiz, kumar, aldatma, hırsızlık vb. meşru olmayan her türlü kazancın haramlığını ortaya koymaktadır. Peygamber Efendimiz de;
 
 <p lang="ar" dir="rtl" class="ayet">حَرُمَ مَا وَدَعُوا حَلَّ مَا خُذُوا</p>
 
@@ -100,7 +100,7 @@ Helal kazanç hassasiyetine insanların zamanla dikkat etmeyeceğini Resul-i Ekr
 
 <p lang="ar" dir="rtl" class="ayet">مٍ لَيَأْتِيَنَّ عَلَى النَّاسِ زَمَانٌ لاَ يُبَالِى الْمَرْءُ بِمَا أَخَذَ الْمَالَ ، أَمِنْ حَلاَلٍ أَمْ مِنْ حَرَا</p>
 
-“*Öyle bir zaman gelecek ki, kişi, malını helâlden mi yoksa haramdan mı elde ettiğine bakmayacak!”*** (Buhârî, Büyû’, 23)
+“*Öyle bir zaman gelecek ki, kişi, malını helâlden mi yoksa haramdan mı elde ettiğine bakmayacak!”* (Buhârî, Büyû’, 23)
 
 Kişinin helal kazanç ve tüketimi cenneti kazanmasına vesile olurken, haram kazanç ve tüketimi ise azaba sebep olacaktır.
 
@@ -116,7 +116,7 @@ Hz. Peygamber (s.a.s.)’e birisi geldi ve:
 
 “Ey Allah’ın elçisi! Bana işlediğim zaman beni hem Allah’ın ve hem de insanların seveceği bir iş/amel söyle” dedi. Bunun üzerine Resulüllah (s.a.s.) şu tavsiyede bulundu:
 
-*“Dünyaya karşı tok gözlü ol, Allah seni sever. İnsanların elindekine göz dikme, insanlar seni severler.”*** (İbn Mace, Zühd, 1; Hakim, Müstedrek, IV, 348; Beyhai Şüabül İman, XIII, 116) Hadisi şerif kalben dünyanın terkine, insanların sahip olduğu mal ve mülke karşı aç gözlü ve tamahkar olunmamasına işaret etmektedir.
+*“Dünyaya karşı tok gözlü ol, Allah seni sever. İnsanların elindekine göz dikme, insanlar seni severler.”* (İbn Mace, Zühd, 1; Hakim, Müstedrek, IV, 348; Beyhai Şüabül İman, XIII, 116) Hadisi şerif kalben dünyanın terkine, insanların sahip olduğu mal ve mülke karşı aç gözlü ve tamahkar olunmamasına işaret etmektedir.
 
 Gönül tokluğu, Allah'ın verdiği rızka razı olma temeline dayanır. Bu, en büyük zenginlik ve izzettir. Çünkü bunun sonucu Allah'ın taksimine ve emirlerine teslimiyettir. Allah'ın verdiğine razı olmamak, insanı, neye sahip olursa olsun, hırsa, sınırsızlığa ve sonu gelmez bir tatminsizliğe sürükler. Kişi için varlık içinde yokluk böylece başlar.
 
@@ -136,7 +136,7 @@ Bir gün Abdullah b. Amr (r.a.) Resûlullah’ın (s.a.s.) yanına gelerek, “G
 
 <p lang="ar" dir="rtl" class="ayet">كُلُوا وَتَصَدَّقُوا وَالْبَسُوا فِى غَيْرِ إِسْرَافٍ وَلاَ مَخِيلَةٍ</p>
 
-*“Kibre düşmeden ve israfa kaçmadan (dilediğinizce) yiyin, sadaka verin ve giyinin!”*** (Nesâî, Zekât, 66)
+*“Kibre düşmeden ve israfa kaçmadan (dilediğinizce) yiyin, sadaka verin ve giyinin!”* (Nesâî, Zekât, 66)
 
 ### 5. Cimrilikten Sakınmak, Cömert Olmak
 
@@ -154,7 +154,7 @@ Mâlik b. Nadle(r.a) anlatıyor: “Dağınık bir kıyafetle Hz. Peygamber’in
 
 <p lang="ar" dir="rtl" class="ayet">فَإِذَا أَتَاكَ اللَّهُ مَالاً فَلْيُرَ أَثَرُ نِعْمَةِ اللَّهِ عَلَيْكَ وَكَرَامَتِهِ</p>
 
-*“Allah sana mal mülk ihsan etmişse, Allah’ın nimetinin ve ikramının eseri, üzerinde (kılık kıyafetinde) görünsün.”*** (Ebû Dâvûd, Libâs, 14) buyurdu.
+*“Allah sana mal mülk ihsan etmişse, Allah’ın nimetinin ve ikramının eseri, üzerinde (kılık kıyafetinde) görünsün.”* (Ebû Dâvûd, Libâs, 14) buyurdu.
 
 ### 6. Mal Ve Serveti İsraf Etmemek
 
@@ -218,7 +218,7 @@ Nimetlerden Hesaba Çekileceğiz
 
 <p lang="ar" dir="rtl" class="ayet">ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ</p>
 
-*“Nihayet o gün (dünyada yararlandığınız) nimetlerden elbette ve elbette hesaba çekileceksiniz.”***(Tekasür, 101/8) Ayet-i kerime’si bu hesabın mutlak surette olacağını haber vermektedir.
+*“Nihayet o gün (dünyada yararlandığınız) nimetlerden elbette ve elbette hesaba çekileceksiniz.”*(Tekasür, 101/8) Ayet-i kerime’si bu hesabın mutlak surette olacağını haber vermektedir.
 
 Resûlullah (s.a.s.) Medine’de bir gece kimseye rastlayamayacağı bir saatte evinden dışarı çıkmıştı. Bu esnada Hz. Ebu Bekir (r.a.) çıkageldi. Peygamber Efendimiz (s.a.s.): “Seni buraya getiren sebep nedir ey Ebu Bekir?” diye sordu. Hz. Ebu Bekir (r.a.) “Allah Resulü (s.a.s.) ile buluşup onun yüzünü görür ve ona selam veririm düşüncesiyle çıktım” der. Biraz sonra Hz. Ömer (r.a.) gelir. Resulüllah ona da aynı soruyu sorar. Hz. Ömer (r.a.) “Açlık ya Resulüllah” diye cevap verir. Peygamber Efendimiz (s.a.s.), “Ben de biraz açım” buyururlar. Sonra beraberce koyun ve hurması çok olan Ensar’dan Ebu’l-Heysem b. Teyyihan’ın evine doğru yürürler. Allah Resulünü (s.a.s.) ve şerefli arkadaşlarını Ebu’l-Heysem’in hanımı karşılar. Ebu’l-Heysem’in nerede olduğu sorulur. Ebu’l-Heysem su getirmek için evinden çıkmıştır, çok geçmeden gelir. Geldiğinde Allah Resulünü (s.a.s.) ve iki arkadaşını gördüğünde “Anam babam sana feda olsun ya Resulallah” diyerek sarıldı. Ebu’l-Heysem misafirlerini bahçeye götürür, bir yaygı serer ve bir hurma dalı getirir. Hurma yenir, tatlı su içilir ve Allah Resulü (s.a.s.):
 

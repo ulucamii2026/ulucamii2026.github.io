@@ -8,9 +8,9 @@ pdf: "/vaazlar/ahiret-yolcusuna-son-gorevlerimiz.pdf"
 ---
 Ebediyet arzusunda olan insan, ömrünün sonu anlamına gelen ölümden korkar, kendisinin ya da sevdiklerinin bir gün öleceği düşüncesinden olabildiğince uzaklaşmak ister. Fakat İslâm inancında ölüm, dünya hayatının sonu olmakla beraber eşsiz güzelliklerle dolu, yepyeni, ebedî bir hayatın başlangıcı demektir. Şairin de dediği gibi:
 
-“***Ölüm güzel şey budur perde ardından haber,
+“Ölüm güzel şey budur perde ardından haber,
 
-Hiç güzel olmasaydı ölür müydü Peygamber.”*
+Hiç güzel olmasaydı ölür müydü Peygamber.”
 
 N. F. Kısakürek
 
@@ -30,7 +30,7 @@ Güzel sözlerle teselli etmek: Henüz şuuru açık ve rahat konuşabiliyorsa A
 
 <p lang="ar" dir="rtl" class="ayet">عن أُمِّ سَلَمة رضيَ الله عنها قالت: قالَ رَسُولُ الله صلى الله عليه وسلم: إذَا حَضرْتُمُ المَرِيضَ، أَوِ المَيّتَ، فَقُولُوا خَيْراً، فَإنَّ المَلائِكَةَ يُؤَمِّنُونَ عَلَى مَا تَقُولُونَ</p>
 
-Ümmü Seleme (r.a)’dan rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu: *“Hasta veya ölünün başında bulunduğunuz zaman güzel sözler söyleyiniz. Zira melekler sizin dualarınıza âmin derler”.*** ( Müslim, Cenâiz, 6)
+Ümmü Seleme (r.a)’dan rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu: *“Hasta veya ölünün başında bulunduğunuz zaman güzel sözler söyleyiniz. Zira melekler sizin dualarınıza âmin derler”.* ( Müslim, Cenâiz, 6)
 
 Tövbeye Teşvik Etmek, Kelime-i Şehadet veya Kelime-i Tevhid Telkin Etmek:
 
@@ -64,7 +64,7 @@ Yakınlarını, ölen kimse ile hak ve borç ilişkisi bulunan kimseleri haberda
 
 <p lang="ar" dir="rtl" class="ayet">وعنها قالت: سمعتُ رسولَ الله صلى الله عليه وسلم يقول: مَا مِنْ عَبْدٍ تُصِيبُهُ مُصِيبَةٌ، فيقولُ: إنَّا لله وَإنَّا إلَيْهِ رَاجِعُونَ: اللَّهُمَّ أؤجرني في مُصِيبَتي، وَاخْلُف لي خَيْراً مِنْهَا، إلاّ أَجَرَهُ الله تَعَالى في مُصِيبَتِهِ وَأَخْلَفَ له خَيْراً مِنْهَا</p>
 
-Yine Ümmü Seleme (r.a)’dan rivayet edildiğine göre şöyle dedi: Resûlullah (s.a.v)’i şöyle buyururken dinledim: *“Herhangi bir kul sıkıntıya düşer de “Biz Allah’tan geldik, Allah’a döneceğiz. Allah’ım, başıma gelen musibetin ecrini ver ve bana bundan daha hayırlısını lutfet” diye dua ederse, Allah Teâlâ onu uğradığı sıkıntıdan dolayı mükâfatlandırır ve ona kaybettiğinden daha hayırlısını verir. ”*** (Müslim, Cenâiz, 4)
+Yine Ümmü Seleme (r.a)’dan rivayet edildiğine göre şöyle dedi: Resûlullah (s.a.v)’i şöyle buyururken dinledim: *“Herhangi bir kul sıkıntıya düşer de “Biz Allah’tan geldik, Allah’a döneceğiz. Allah’ım, başıma gelen musibetin ecrini ver ve bana bundan daha hayırlısını lutfet” diye dua ederse, Allah Teâlâ onu uğradığı sıkıntıdan dolayı mükâfatlandırır ve ona kaybettiğinden daha hayırlısını verir. ”* (Müslim, Cenâiz, 4)
 
 Ölünün ardından yüksek sesle olmamak kaydıyla ağlamakta sakınca yoktur.
 
@@ -124,7 +124,7 @@ Kefen, cenazenin yıkanıp kurulanmasında sonra sarıldığı bez olup bir yön
 
 Cenaze namazı Allah’a ibadet, ölüye de dua niyetiyle kılınması farz-ı kifaye olan bir namazdır.
 
-Maddî ve mânevî kirlerinden arınarak tertemiz, bembeyaz bir örtüyle bezenen cenaze musallaya getirilir, artık namaz için hazırdır. إِذَا صَلَّيْتُمْ عَلَى الْمَيِّتِ فَأَخْلِصُوا لَهُ الدُّعَاءَ *“Cenaze namazı kıldığınız zaman ölen kimseye samimiyetle dua edin.”***(Ebû Dâvûd, Cenâiz, 54) buyuran Allah Resûlü (s.a.v), ölen her mümin için namaz kılınmasını istemiştir.
+Maddî ve mânevî kirlerinden arınarak tertemiz, bembeyaz bir örtüyle bezenen cenaze musallaya getirilir, artık namaz için hazırdır. إِذَا صَلَّيْتُمْ عَلَى الْمَيِّتِ فَأَخْلِصُوا لَهُ الدُّعَاءَ *“Cenaze namazı kıldığınız zaman ölen kimseye samimiyetle dua edin.”*(Ebû Dâvûd, Cenâiz, 54) buyuran Allah Resûlü (s.a.v), ölen her mümin için namaz kılınmasını istemiştir.
 
 Bu namazı kılmak suretiyle Müslümanlar, günahlarının affedilmesi, hatalarının giderilmesi, varacağı yerde cehennem azabından korunmuş bir şekilde selâmetle ve ikramla karşılanması için Yüce Rabbe niyaz ederek mümin kardeşlerini son yolculuğuna uğurlarlar.
 
@@ -172,7 +172,7 @@ Cenaze namazı kılınmış bir ölünün kabre kadar taşınması müslümanlar
 
 <p lang="ar" dir="rtl" class="ayet">عن أبي هُرَيْرَةَ رَضِيَ الله عَنْهُ، عَنِ النَّبِيِّ صلى الله عليه وسلم قال: أَسْرِعُوا بِالجِنَازَةِ، فَإنْ تَكُ صَالِحَةً، فَخَيْرٌ تُقَدِّمُونَهَا إلَيْهِ، وَإنْ تَكُ سِوَى ذلِكَ، فَشَرٌّ تَضعُونَهُ عَنْ رِقَابِكُم.</p>
 
-Ebû Hüreyre (r.a)’den rivayet edildiğine göre Hz. Peygamber (s.a.v) şöyle buyurdu: *“Cenâzeyi süratli taşıyın. Eğer o iyi bir kişi ise, bu onun için bir hayırdır; onu bir an evvel kabirdeki hayır ve sevabına kavuşturmuş olursunuz. Yok eğer iyi bir kişi değilse, bu da bir şerdir; onu çabucak omuzlarınızdan atmış olursunuz***.” (Buhârî, Cenâiz,52)
+Ebû Hüreyre (r.a)’den rivayet edildiğine göre Hz. Peygamber (s.a.v) şöyle buyurdu: *“Cenâzeyi süratli taşıyın. Eğer o iyi bir kişi ise, bu onun için bir hayırdır; onu bir an evvel kabirdeki hayır ve sevabına kavuşturmuş olursunuz. Yok eğer iyi bir kişi değilse, bu da bir şerdir; onu çabucak omuzlarınızdan atmış olursunuz*.” (Buhârî, Cenâiz,52)
 
 <p lang="ar" dir="rtl" class="ayet">عن أبي سعيدٍ الخُدْرِيِّ رضي الله عنه قَالَ: كَانَ النَّبِيُّ صلى الله عليه وسلم يَقُولُ: إذا وُضِعَتِ الجِنَازَةُ، فَاحْتَمَلَهَا الرِّجَالُ عَلى أَعْنَاقِهِمْ، فَإنْ كَانَتْ صَالِحَةً، قَالَتْ: قَدِّمُوني، وَإنْ كَانَتْ غَيْرَ صَالِحَةٍ، قَالَتْ لأَهْلِهَا: يَا وَيْلَهَا أَيْنَ تَذْهَبُونَ بِهَا؟ يَسْمَعُ صَوْتَهَا كُلُّ شَيْءٍ إلاَّ الإنْسانَ، وَلَوْ سَمعَ الإنْسَانُ لَصَعِقَ.</p>
 
@@ -200,7 +200,7 @@ Hz. Âişe (r.a)’dan rivayet edildiğine göre, Peygamber (s.a.v)’e bir adam
 
 Cenaze sahiplerinin ölünün ardından belirli günlerde yemek vermeleri konusunda herhangi bir sünnet bulunmamaktadır.
 
-Çoğu yöremizde bu yemek verme âdeti cenaze sahipleri için büyük sıkıntılara sebep olmakta ve yanlış şekilde dinî bir görev gibi algılanmaktadır. Cenaze sahipleri gerek üzüntüleri gerekse gelenlerle ilgilenmeleri sebebiyle yemek hazırlamada zorluk çekeceklerinden, bazı yörelerimizde görüldüğü üzere ilk üç gün boyunca komşuların yemek hazırlayıp getirmeleri güzel bir adettir. Nitekim Peygamber Efendimiz (s.a.v), Mute Harbi’nde Ca’fer b. Ebû Tâlib’in şehit olduğu haberi gelince, *“Ca’fer ailesi için yemek hazırlayın, çünkü başlarına kendilerini meşgul edecek bir hâl geldi.”*** (Tirmizî, Cenâiz, 21) buyurarak bu yönde tavsiyede bulunmuştur.
+Çoğu yöremizde bu yemek verme âdeti cenaze sahipleri için büyük sıkıntılara sebep olmakta ve yanlış şekilde dinî bir görev gibi algılanmaktadır. Cenaze sahipleri gerek üzüntüleri gerekse gelenlerle ilgilenmeleri sebebiyle yemek hazırlamada zorluk çekeceklerinden, bazı yörelerimizde görüldüğü üzere ilk üç gün boyunca komşuların yemek hazırlayıp getirmeleri güzel bir adettir. Nitekim Peygamber Efendimiz (s.a.v), Mute Harbi’nde Ca’fer b. Ebû Tâlib’in şehit olduğu haberi gelince, *“Ca’fer ailesi için yemek hazırlayın, çünkü başlarına kendilerini meşgul edecek bir hâl geldi.”* (Tirmizî, Cenâiz, 21) buyurarak bu yönde tavsiyede bulunmuştur.
 
 ### Ölen Kişiyi Hayırla Anmak
 
@@ -208,7 +208,7 @@ Hz. Peygamber (s.a.v) ***“Ölülerinizin güzel işlerini yâdedin, kötü tar
 
 <p lang="ar" dir="rtl" class="ayet">عن أنسٍ رضي الله عنه قال: مَرُّوا بجِنَازَةٍ، فَأَثْنَوا عَلَيْهَا خَيْراً، فقال النبيُّ صلى الله عليه وسلم: وَجَبَتْ. ثم مَرُّوا بِأُخْرَى، فَأَثْنَوْا عَليها شَرًّا، فَقَالَ النَّبِيُّ صلى الله عليه وسلم: وَجَبَتْ، فَقَالَ عُمَر بنُ الخَطَّابِ رَضِيَ الله عَنْهُ: ما وجَبَتْ؟ قَالَ: هَذا أَثْنَيْتُمْ عَلَيْهِ خَيراً، فَوَجَبَتْ لَهُ الجَنَّةُ، وهذا أَثنَيتُم عليه شَرًّا، فَوَجَبَتْ لَهُ النَّارُ، أَنتُم شُهَداءُ الله في الأرضِ.</p>
 
-Enes (r.a) şöyle dedi: Hz. Peygamber (s.a.v), bazı sahâbîler ile birlikte bulunurlarken onların yanından bir cenaze geçti. Ashâptan bazıları o cenazeyi hayırla anı. Bunun üzerine Nebî (s.a.v): “***Kesinleşti***” buyurdu. Sonra bir cenaze daha geçti. Orada bulunanlar onu da kötülükle andılar. Resûl–i Ekrem (s.a.v) yine: “***Kesinleşti***” buyurdu. Bunun üzerine Ömer İbnu’l–Hattâb (r.a.): Ne kesinleşti Ya Resûlallah? diye sordu. Peygamber (s.a.v) da şöyle buyurdu: “*Şu önce geçen cenazeyi hayırla andınız; bu sebeple onun cennete girmesi kesinleşti. Bu berikini kötülükle andınız; onun da cehenneme girmesi kesinleşti. Çünkü siz (mü’minler), yeryüzünde Allah’ın şahitlerisiniz. ”*** (Buhârî, Cenâiz,86)
+Enes (r.a) şöyle dedi: Hz. Peygamber (s.a.v), bazı sahâbîler ile birlikte bulunurlarken onların yanından bir cenaze geçti. Ashâptan bazıları o cenazeyi hayırla anı. Bunun üzerine Nebî (s.a.v): “***Kesinleşti***” buyurdu. Sonra bir cenaze daha geçti. Orada bulunanlar onu da kötülükle andılar. Resûl–i Ekrem (s.a.v) yine: “***Kesinleşti***” buyurdu. Bunun üzerine Ömer İbnu’l–Hattâb (r.a.): Ne kesinleşti Ya Resûlallah? diye sordu. Peygamber (s.a.v) da şöyle buyurdu: “*Şu önce geçen cenazeyi hayırla andınız; bu sebeple onun cennete girmesi kesinleşti. Bu berikini kötülükle andınız; onun da cehenneme girmesi kesinleşti. Çünkü siz (mü’minler), yeryüzünde Allah’ın şahitlerisiniz. ”* (Buhârî, Cenâiz,86)
 
 ## Cenaze İle İlgili Bidatler
 

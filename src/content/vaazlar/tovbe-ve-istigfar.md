@@ -50,7 +50,7 @@ Yüce Rabbimiz Kur’an-ı Kerim’de şöyle buyurmaktadır:
 
 İnsanoğlu Allah Teâlâ’nın razı olmadığı hatalara ve yanlışlara düşebilen bir varlıktır. Nitekim insan günahtan korunmuş bir varlık değildir. Günahtan korunmuş olmayı ifade eden ismet sıfatı, insanlar arasında yalnızca peygamberlere has bir sıfattır.
 
-Öyleyse günahlar karşısında esas olan hatalardan rücu ederek, tövbe etmektir. Bundandır ki Allah Resûlü (s.a.s.): ***“Âdemoğlunun hepsi hata eder. Hata edenlerin en hayırlısı ise tövbe edenlerdir.”* buyurmuştur. (İbn Mâce, Zühd, 30)
+Öyleyse günahlar karşısında esas olan hatalardan rücu ederek, tövbe etmektir. Bundandır ki Allah Resûlü (s.a.s.): *“Âdemoğlunun hepsi hata eder. Hata edenlerin en hayırlısı ise tövbe edenlerdir.”* buyurmuştur. (İbn Mâce, Zühd, 30)
 
 Tövbe, kulun Rabbine yönelişidir. Tövbe, müminin nefsini ve ruhunu tezkiye eden, arındıran ve huzura kavuşturan bir nimettir. Bununla birlikte kul, tövbe nimetinden istifade etmez, günahında ısrar ederse Allah’ın rahmet kapılarını kendisi kapatmış olur.
 

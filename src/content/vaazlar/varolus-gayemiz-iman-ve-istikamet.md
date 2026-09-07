@@ -148,7 +148,7 @@ Peygamberimiz (s.a.s.), bir gün bir buğday yığınının yanına gelmiş, eli
 
 <p lang="ar" dir="rtl" class="ayet">أَفَلَا جَعَلْتَهُ فَوْقَ الطَّعَامِ كَيْ يَرَاهُ النَّاسُ ‏ ‏مَنْ غَشَّ فَلَيْسَ مِنّ۪ي</p>
 
-"**O ıslak kısmı, insanların görmesi için üste çıkarsaydın ya. Aldatan benden değildir**"
+"O ıslak kısmı, insanların görmesi için üste çıkarsaydın ya. Aldatan benden değildir"
 (Müslim, İman, 43)
 
 ### İstikamet Üzere Olanlarla Arkadaşlık:

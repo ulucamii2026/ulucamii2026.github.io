@@ -16,9 +16,9 @@ Kuran okumak ibadettir. Hz. Peygamber Efendimiz’in müjdesiyle okuyan için he
 
 “Kur’an okuyunuz. Çünkü Kur’an, kıyamet gününde kendisini okuyanlara şefaatçi olarak gelecektir”
 
-**Değerli Müslümanlar,**
+Değerli Müslümanlar,
 
-**Değerli kardeşlerim,** bugün sizlerle Ramazan'ın manevi atmosferinde, birlik ve beraberliğin önemine değinmek istiyorum. Gönüllerimizin sarsıldığı, yüreklerimizin bir araya geldiği bu mübarek ayda, dayanışma ve paylaşmanın önemine değinerek, hepimizin bu değerler üzerine düşünmesini diliyorum.
+Değerli kardeşlerim, bugün sizlerle Ramazan'ın manevi atmosferinde, birlik ve beraberliğin önemine değinmek istiyorum. Gönüllerimizin sarsıldığı, yüreklerimizin bir araya geldiği bu mübarek ayda, dayanışma ve paylaşmanın önemine değinerek, hepimizin bu değerler üzerine düşünmesini diliyorum.
 
 Birlik ve beraberlik, güçlü bir toplumun temelini oluşturur. Aynı acılara göğüs gerip, aynı umutları paylaşan insanlar olarak, niyetlerimizi, dualarımızı ve sevinçlerimizi bir araya getirerek, kenetlenmeliyiz. Ramazan, bu anlamda bize fırsat sunar. İslam'ın harcıyla bağlanarak, sımsıkı ve sapasağlam bir toplum oluşturmalıyız.
 
@@ -28,7 +28,7 @@ Ramazan, aynı zamanda oruç tutma ve oruca tutunma zamanıdır. İyilikle iyile
 
 11 ayın sultanı Ramazan, şifa ve rahmetle yeryüzünü sarıp sarmalayacak. Ruhlarımız ferahlayacak sabır yağmurlarında ve her zorluğun ardından gelen kolaylığın müjdesiyle, sıkıntıların gecesi bir seherle son bulacak. Ağaracak bir bayram sabahı ve dudaklarımızda yalnızca bir bayramın tebessümü ve tekbirleri kalacak.
 
-**Değerli kardeşlerim,** bu mübarek Ramazan mevsiminde, hep birlikte dayanışma vakti, oruç tutma ve oruca tutunma vaktini idrak edelim. Ey vakitlerin en güzeli, bizleri sımsıkı tut ve kalplerimizi bırakma diyerek dua edelim. Ramazan misafirdir, razı edip yolcu edelim ve geleni razı et ki, gönderen razı olsun anlayışını taşıyalım.
+Değerli kardeşlerim, bu mübarek Ramazan mevsiminde, hep birlikte dayanışma vakti, oruç tutma ve oruca tutunma vaktini idrak edelim. Ey vakitlerin en güzeli, bizleri sımsıkı tut ve kalplerimizi bırakma diyerek dua edelim. Ramazan misafirdir, razı edip yolcu edelim ve geleni razı et ki, gönderen razı olsun anlayışını taşıyalım.
 
 Rabbim, bu Ramazan ayında birliğimizi, beraberliğimizi ve dayanışma ruhumuzu güçlendir. Bizleri birbirimize destek olmaya ve iyilik yolunda yarışmaya teşvik et. Âmin.
 

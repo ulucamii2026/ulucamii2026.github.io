@@ -18,7 +18,7 @@ Akıl; doğru işlerde ve hakka uygun olarak kullanılmadığı; ilâhî vahiy v
 
 <p lang="ar" dir="rtl" class="ayet">اُنْظُرْ كَيْف َ نُصَرِّف ُ الآيات لَعَلَّهُمْ يَفْقَهُون</p>
 
-**"Bak, anlasınlar diye ayetlerimizi nasıl açıklıyoruz!"** (En’am, 6/65) mealindeki ayet ve benzeri birçok ayet bu gerçeği dile getirmektedir. Yüce Allah kâfir, müşrik ve münafıkları gerçekleri anlamadıkları için yermektedir. Bu itibarla dinimizi, onun ana kaynakları olan Kur'an ve Sünneti, dinî konu ve kavramları çok iyi anlamamız ve öğrenmemiz gerekmektedir.
+"Bak, anlasınlar diye ayetlerimizi nasıl açıklıyoruz!" (En’am, 6/65) mealindeki ayet ve benzeri birçok ayet bu gerçeği dile getirmektedir. Yüce Allah kâfir, müşrik ve münafıkları gerçekleri anlamadıkları için yermektedir. Bu itibarla dinimizi, onun ana kaynakları olan Kur'an ve Sünneti, dinî konu ve kavramları çok iyi anlamamız ve öğrenmemiz gerekmektedir.
 
 Kur’an-ı Kerim’de,
 
@@ -34,7 +34,7 @@ Yeryüzünde şirki ve zulmü ortadan kaldırarak tevhid ve adaleti hâkim kılm
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ يَصُدُّونَ عَنْ سَبٖيلِ اللّٰهِ وَيَبْغُونَهَا عِوَجاًۚ وَهُمْ بِالْاٰخِرَةِ كَافِرُونَؕ</p>
 
-*“Onlar (Zalimler), Allah yolundan alıkoyan ve onu eğip bükmek isteyenlerdir; onlar ahireti de inkâr edenlerdir.”*** (A’raf 7/45)
+*“Onlar (Zalimler), Allah yolundan alıkoyan ve onu eğip bükmek isteyenlerdir; onlar ahireti de inkâr edenlerdir.”* (A’raf 7/45)
 
 Bu ayetlerde geçen cihad/mücadele ifadeleri hangi anlamlarda kullanılmıştır, bunlara hep birlikte göz atalım;
 
@@ -44,7 +44,7 @@ Sözlükte; gayret etmek, bir işi yapabilmek için bütün imkânları kullanma
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا النَّبِيُّ جَاهِدِ الْكُفَّارَ وَالْمُنَافِقٖينَ وَاغْلُظْ عَلَيْهِمْؕ وَمَأْوٰيهُمْ جَهَنَّمُؕ وَبِئْسَ الْمَصٖيرُ</p>
 
-**"Ey peygamber! İnkârcılara ve münafıklara karşı cihad et, onlara sert davran; onların varacağı yer cehennemdir ve bu ne kötü bir sondur!"** (Tevbe, 9/73) mealindeki ayette, Peygamberimiz'e (s.a.v) emredilen kâfir ve münafıklarla cihad, "kıtal" anlamında cihad değildir.
+"Ey peygamber! İnkârcılara ve münafıklara karşı cihad et, onlara sert davran; onların varacağı yer cehennemdir ve bu ne kötü bir sondur!" (Tevbe, 9/73) mealindeki ayette, Peygamberimiz'e (s.a.v) emredilen kâfir ve münafıklarla cihad, "kıtal" anlamında cihad değildir.
 
 Çünkü münafıklarla ve inkarcılarla fiili bir savaş yapılmamıştır. Dolayısıyla ayetteki cihad kavramı; münafıklarla hak uğrunda dil ile mücadele etmek, İslâm gerçeği ile ilgili delilleri anlatmak, inkarcı ve münafıkların fitne ve fesatlarına engel olmak anlamındadır.
 
@@ -52,11 +52,11 @@ Mekke'de ve henüz fiili savaşa izin verilmeyen bir dönemde inen
 
 <p lang="ar" dir="rtl" class="ayet">ثُمَّ اِنَّ رَبَّكَ لِلَّذٖينَ هَاجَرُوا مِنْ بَعْدِ مَا فُتِنُوا ثُمَّ جَاهَدُوا وَصَبَرُٓواۙ اِنَّ رَبَّكَ مِنْ بَعْدِهَا لَغَفُورٌ رَحٖيمٌ</p>
 
-**"Öte yandan, bilesin ki Rabbin, eziyetlerle sınandıktan sonra yurtlarından göçenlerin, ardından çabalarını sürdürüp sabır gösterenlerin yardımcısıdır; artık bu yapılanlardan sonra Rabbin elbette çok bağışlayıcı, çok merhametlidir."** (Nahl, 16/110) mealindeki ayette geçen cihad kavramı ile Furkan suresinin,
+"Öte yandan, bilesin ki Rabbin, eziyetlerle sınandıktan sonra yurtlarından göçenlerin, ardından çabalarını sürdürüp sabır gösterenlerin yardımcısıdır; artık bu yapılanlardan sonra Rabbin elbette çok bağışlayıcı, çok merhametlidir." (Nahl, 16/110) mealindeki ayette geçen cihad kavramı ile Furkan suresinin,
 
 <p lang="ar" dir="rtl" class="ayet">فَلَا تُطِعِ الْكَافِرٖينَ وَجَاهِدْهُمْ بِهٖ جِهَاداً كَبٖيراً</p>
 
-**"Öyleyse artık inkârcılara boyun eğme, bu Kur’an’la onlara karşı bütün gücünle mücadeleni sür."** (Furkan, 25/52) anlamındaki ayette geçen "kâfirlere karşı büyük cihad", fiilen savaşmayı değil, onlara karşı Kur'ânî delillerle mücadele etmeyi ifade eder.
+"Öyleyse artık inkârcılara boyun eğme, bu Kur’an’la onlara karşı bütün gücünle mücadeleni sür." (Furkan, 25/52) anlamındaki ayette geçen "kâfirlere karşı büyük cihad", fiilen savaşmayı değil, onlara karşı Kur'ânî delillerle mücadele etmeyi ifade eder.
 
 Müfessir Kâdî Beydâvî'nin (ö, 691/1292) dediği gibi, gerçeği göremeyen ve aklını bu yönde kullanamayan kimselere karşı deliller ortaya koyarak mücadele etmek, düşmanlara karşı fiilen savaşmaktan daha büyüktür. (Beydâvî, IV/450.)
 
@@ -64,7 +64,7 @@ Bu ayetler, cihadın İslâm’ın doğuşundan beri var olduğunun ve doğrudan
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ اٰمَنُوا وَهَاجَرُوا وَجَاهَدُوا فٖي سَبٖيلِ اللّٰهِ بِاَمْوَالِهِمْ وَاَنْفُسِهِمْۙ اَعْظَمُ دَرَجَةً عِنْدَ اللّٰهِؕ وَاُو۬لٰٓئِكَ هُمُ الْفَٓائِزُونَ</p>
 
-**“İnanan, hicret eden, Allah yolunda mallarıyla ve canlarıyla cihad edenlerin Allah katındaki mertebeleri pek büyüktür. Muradına erecek olanlar da onlardır.”** (Tevbe, 9/20.) mealindeki ayette sözü edilen cihad, fiili savaş anlamındadır.
+“İnanan, hicret eden, Allah yolunda mallarıyla ve canlarıyla cihad edenlerin Allah katındaki mertebeleri pek büyüktür. Muradına erecek olanlar da onlardır.” (Tevbe, 9/20.) mealindeki ayette sözü edilen cihad, fiili savaş anlamındadır.
 
 Bu anlamda mesela Peygamberimiz ve ashabı, Bedir ve Uhud’da müşriklerin saldırılarına karşı cihad etmiş ve vatanlarını korumuşlardır. Milletimiz Çanakkale ve Kurtuluş savaşlarında yurdumuza saldıran düşmanlara karşı büyük bir cihad etmiş ve vatanımızı düşman istilasından kurtarmıştır.
 
@@ -90,7 +90,7 @@ Yukarıda zikredilen ayet ve hadisleri birlikte değerlendirdiğimizde; cihadın
 
 <p lang="ar" dir="rtl" class="ayet">“فَلَا تُطِعِ الْكَافِرٖينَ وَجَاهِدْهُمْ بِهٖ جِهَاداً كَبٖيراً”</p>
 
-**"Öyleyse artık inkârcılara boyun eğme, bu Kur’an’la onlara karşı bütün gücünle mücadeleni sür."** (Furkan, 25/52.) ayetinde geçen *“Kur’an ile mücadeleni sür”* hükmü sözle yapılan cihadın kanıtıdır.
+"Öyleyse artık inkârcılara boyun eğme, bu Kur’an’la onlara karşı bütün gücünle mücadeleni sür." (Furkan, 25/52.) ayetinde geçen *“Kur’an ile mücadeleni sür”* hükmü sözle yapılan cihadın kanıtıdır.
 
 Aynı şekilde;
 
@@ -102,7 +102,7 @@ Aynı şekilde;
 
 <p lang="ar" dir="rtl" class="ayet">“وَمَنْ جَاهَدَ فَاِنَّمَا يُجَاهِدُ لِنَفْسِهٖؕ اِنَّ اللّٰهَ لَغَنِيٌّ عَنِ الْعَالَمٖينَ”</p>
 
-**“Her kim elinden gelen çabayı gösterirse yalnız kendi iyiliği için çabalamış̧ olur; çünkü Allah’ın, hiç̧ kimsenin hiçbir şeyine ihtiyacı yoktur” (Ankebut, 29/6)** buyrulur. Bu ayet, nefisle mücadele etmenin ya da başka bir deyişle nefisle cihad etmenin kanıtıdır.
+“Her kim elinden gelen çabayı gösterirse yalnız kendi iyiliği için çabalamış̧ olur; çünkü Allah’ın, hiç̧ kimsenin hiçbir şeyine ihtiyacı yoktur” (Ankebut, 29/6) buyrulur. Bu ayet, nefisle mücadele etmenin ya da başka bir deyişle nefisle cihad etmenin kanıtıdır.
 
 Yine aynı şekilde;
 
@@ -114,13 +114,13 @@ c) Üçüncü cihad çeşidi ise; mal ve can ile Allah yolunda yapılan cihaddı
 
 <p lang="ar" dir="rtl" class="ayet">“اِنْفِرُوا خِفَافاً وَثِقَالاً وَجَاهِدُوا بِاَمْوَالِكُمْ وَاَنْفُسِكُمْ فٖي سَبٖيلِ اللّٰهِؕ ذٰلِكُمْ خَيْرٌ لَكُمْ اِنْ كُنْتُمْ تَعْلَمُونَ”</p>
 
-**“Kolay da olsa zor da olsa sefere çıkın ve mallarınızla canlarınızla Allah yolunda cihad edin. Bilirseniz, bu sizin kendi iyiliğinizedir”** (Tevbe, 9/41) buyrulmuştur.
+“Kolay da olsa zor da olsa sefere çıkın ve mallarınızla canlarınızla Allah yolunda cihad edin. Bilirseniz, bu sizin kendi iyiliğinizedir” (Tevbe, 9/41) buyrulmuştur.
 
 Aynı şekilde;
 
 <p lang="ar" dir="rtl" class="ayet">“مَنْ جهَّزَ غَازِيًا في سبيلِ اللَّهِ فَقَدْ غَزَا”</p>
 
-*“Kim savaşa katılacak bir kimseyi savaş̧ araç̧ gereci ile donatırsa, o kimse bizzat Allah yolunda savaşmış̧ gibi olur”*** *(*Müslim, İmâre, 135) hadisi de bunu desteklemektedir.
+*“Kim savaşa katılacak bir kimseyi savaş̧ araç̧ gereci ile donatırsa, o kimse bizzat Allah yolunda savaşmış̧ gibi olur”* (Müslim, İmâre, 135) hadisi de bunu desteklemektedir.
 
 Maldan vazgeçmek de her yiğidin harcı değildir. Hele candan vazgeçmek hiç kolay değildir. Beşikten mezara kadar Müslümanın hayat ölçülerini belirleyen dinimiz, dünya hayatının bir oyun ve eğlenceden ibaret olduğunu sıklıkla hatırlatır, buraya geliş gayemizi zihnimizin bir köşesinde hep diri tutmamızı bizden ister. Küçüklükten yetişkinliğine kadar ki hayatında Müslümanların zaferlerini dinleyen, onların gerektiğinde her türlü fedakarlığı yaptığını/yapması gerektiğini yürekten hisseden bir kul, sermaye sahibi olduğunda malından, gerektiğinde de canından geçebilecektir. Bu konuda hepimize ayrı ayrı sorumluluklar düşmektedir. Eğitimci olan kişilerin çocuklara aşılayabileceği en büyük şuur, hiç şüphesiz iman ve vatan şuurudur. Anne babaların çocuklarına dünya ve ahiret saadetini kazanmaları için yönlendirmeleri gerekmektedir. Televizyon programcıları ve içerik üreticiler bu hususu kendilerine bir vazife edinmeli, tepeden tırnağa bilinçli bir toplum inşa edebilmenin derdi ve gayreti içerisinde olmalıdır.
 
@@ -130,25 +130,25 @@ Rabbimiz bir ayetinde şöyle buyurmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">“اِنَّ اللّٰهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتّٰى يُغَيِّرُوا مَا بِاَنْفُسِهِمْؕ وَاِذَٓا اَرَادَ اللّٰهُ بِقَوْمٍ سُٓوءاً فَلَا مَرَدَّ لَهُۚ وَمَا لَهُمْ مِنْ دُونِهٖ مِنْ وَالٍ”</p>
 
-**“Bir toplum kendisindekini değiştirmedikçe Allah onlarda bulunanı değiştirmez. Allah herhangi bir toplumun başına bir kötülük gelmesini diledi mi, artık onun geri çevrilmesi mümkün değildir. Onların Allah’tan başka yardımcıları da bulunmaz”.** (Ra’d, 13/11.) Şanlı tarihimize baktığımız zaman biz Kur’an’ı Kerim'i ve Efendimiz’i rehber edindiğimiz zaman dünyanın en büyük devleti olmuşuz.
+“Bir toplum kendisindekini değiştirmedikçe Allah onlarda bulunanı değiştirmez. Allah herhangi bir toplumun başına bir kötülük gelmesini diledi mi, artık onun geri çevrilmesi mümkün değildir. Onların Allah’tan başka yardımcıları da bulunmaz”. (Ra’d, 13/11.) Şanlı tarihimize baktığımız zaman biz Kur’an’ı Kerim'i ve Efendimiz’i rehber edindiğimiz zaman dünyanın en büyük devleti olmuşuz.
 
 Bu noktada şu ayet-i hatırlamakta fayda var.
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ اشْتَرٰى مِنَ الْمُؤْمِنٖينَ اَنْفُسَهُمْ وَاَمْوَالَهُمْ بِاَنَّ لَهُمُ الْجَنَّةَؕ يُقَاتِلُونَ فٖي سَبٖيلِ اللّٰهِ فَيَقْتُلُونَ وَيُقْتَلُونَ وَعْداً عَلَيْهِ حَقاًّ فِي التَّوْرٰيةِ وَالْاِنْجٖيلِ وَالْقُرْاٰنِؕ وَمَنْ اَوْفٰى بِعَهْدِهٖ مِنَ اللّٰهِ فَاسْتَبْشِرُوا بِبَيْعِكُمُ الَّذٖي بَايَعْتُمْ بِهٖؕ وَذٰلِكَ هُوَ الْفَوْزُ الْعَظٖيمُ</p>
 
-**“Allah, kendi yolunda çarpışırken öldüren ve öldürülen müminlerin canlarını ve mallarını, karşılığında cennet vermek üzere satın almıştır. Bu, Allah’ın Tevrat’ta, İncil’de ve Kur’an’da yer almış gerçek bir vaadidir. Kim Allah’tan daha fazla sözüne bağlı olabilir! O halde yaptığınız bu alışverişten ötürü sevinin. İşte büyük bahtiyarlık da budur**. “(Tevbe, 9/111)
+“Allah, kendi yolunda çarpışırken öldüren ve öldürülen müminlerin canlarını ve mallarını, karşılığında cennet vermek üzere satın almıştır. Bu, Allah’ın Tevrat’ta, İncil’de ve Kur’an’da yer almış gerçek bir vaadidir. Kim Allah’tan daha fazla sözüne bağlı olabilir! O halde yaptığınız bu alışverişten ötürü sevinin. İşte büyük bahtiyarlık da budur. “(Tevbe, 9/111)
 
 İnsanların en faziletlisi cihad eden mümin, cihad da en faziletli amellerden biridir.
 
 <p lang="ar" dir="rtl" class="ayet">“ عَيْنَانِ لا تَمَسُّهُمَا النّار؟ عَيْنٌ بَكَتْ مِنْ خَشْيَةِ اللّهِ، وَعَيْنٌ بَاتَتْ تَحْرُسُ في سَبِيلِ اللّهِ”</p>
 
-**“İki göz vardır, onlara ateş değemez; Allah için ağlayan göz ile, Allah yolunda uyanık sabahlayan göz.”** (Tirmizi, “Fedailu'l-Cihad”, 7)
+“İki göz vardır, onlara ateş değemez; Allah için ağlayan göz ile, Allah yolunda uyanık sabahlayan göz.” (Tirmizi, “Fedailu'l-Cihad”, 7)
 
 Sahabeden Ebu Said (r.a.)'in bildirdiğine göre
 
 <p lang="ar" dir="rtl" class="ayet">“قِيلَ يَا رسولَ اللّهِ: أىُّ النَّاسِ أفْضَلُ؟ قال: مُؤمِنٌ مُجَاهِدٌ بِنَفْسِهِ وَمَالِهِ في سَبِيلِ اللّهِ.”</p>
 
-**"Ey Allah'ın Elçisi! İnsanların en faziletlisi hangisidir"** diye sorulması üzerine Hz. Peygamber (s.a.s.), **"Malı ve canı ile Allah yolunda cihad eden mümindir"** buyurmuştur. (Müslim, İmâre, 123)
+"Ey Allah'ın Elçisi! İnsanların en faziletlisi hangisidir" diye sorulması üzerine Hz. Peygamber (s.a.s.), "Malı ve canı ile Allah yolunda cihad eden mümindir" buyurmuştur. (Müslim, İmâre, 123)
 
 Sonuç olarak; ilk insandan beri var olan tevhid esasına dayalı hak din İslâm'ın temel amacı, yeryüzünün halifesi olan Âdemoğlunun; malının, canının, aklının, neslinin ve dininin korunmasıdır. Bunların korunabilmesi için insanların; sulh ve sükûn, güven ve huzur içinde yaşamaları gerekir. Bu amaçla bütün peygamberler insanları, dünya ve âhiret mutluluğunu sağlayacak ilâhî prensiplere davet etmişlerdir. Son Peygamber Hz. Muhammed (s.a.s.) ve ona indirilen Kur'an, insanlığın barış ve huzurunu amaçlamıştır. Savaş; ancak saldırı olduğu zaman barışın korunması, baskının ve zulmün önlenmesi, can ve mal güvenliğinin sağlanması amacına yönelik olarak meşru olur. Dolayısıyla Kur'an'da "cihad", "harp", "mücadele" ve "kıtal" gibi savaşı ifade eden kavramların, bu bağlamda değerlendirilip anlaşılması gerekir.
 

@@ -15,7 +15,7 @@ Bu Yüce Kitab’ın ilk ve en büyük muhatabı da hiç şüphesiz Hz. Peygambe
 
 <p lang="ar" dir="rtl" class="ayet">قَالَتْ أَلَسْتَ تَقْرَأُ الْقُرْآنَ قُلْتُ بَلَى . قَالَتْ فَإِنَّ خُلُقَ نَبِىِّ اللَّهِ صلى الله عليه وسلم كَانَ الْقُرْآنَ</p>
 
-*“Sen hiç Kur’an okumuyor musun? diye sordu. (Soruyu soran ) Bilakis evet, dedi. Hz. Aişe (r.a.): O’nun ahlâkı Kur’an’dı.”*** ( Müslim, Müsâfirîn, 139) diye cevap verdi.
+*“Sen hiç Kur’an okumuyor musun? diye sordu. (Soruyu soran ) Bilakis evet, dedi. Hz. Aişe (r.a.): O’nun ahlâkı Kur’an’dı.”* ( Müslim, Müsâfirîn, 139) diye cevap verdi.
 
 O (s.a.v), Kur’an’ı sadece okuyan değil, Kur’an’ı yaşayan en güzel örnekti. O’nun her hâli, her sözü, her davranışı Kur’an’ın bir yansımasıydı. O’na bakmak, Kur’an’ı görmek demekti. Bugün bizler de Kur’an’ın hayata nasıl yansıdığını görmek istiyorsak, Resulullah’ın (s.a.v) örnekliğine bakmalıyız. Şimdi geliniz, Kur’an’ın öğütlediği o yüce ahlâkın Peygamber Efendimiz’in (s.a.v) hayatında nasıl tecelli ettiğini birlikte görelim…
 
@@ -31,7 +31,7 @@ Bu ilahi emrin Sevgili Peygamberimiz’in (s.a.v) hayatında nasıl can bulduğu
 
 <p lang="ar" dir="rtl" class="ayet">أَتَيْتُ رسُولَ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم وَهُو يُصلِّي ولجوْفِهِ أَزِيزٌ كَأَزِيزِ المرْجَلِ مِنَ البُكَاءِ</p>
 
-*“Bir keresinde Resûlullah’ın (s.a.v) yanına gitmiştim. Namaz kılıyor ve ağlamaktan dolayı göğsünden kaynayan kazan sesi gibi sesler geliyordu.”*** (Ebû Dâvûd, Salât 158)
+*“Bir keresinde Resûlullah’ın (s.a.v) yanına gitmiştim. Namaz kılıyor ve ağlamaktan dolayı göğsünden kaynayan kazan sesi gibi sesler geliyordu.”* (Ebû Dâvûd, Salât 158)
 
 Hazreti Peygamber’in (s.a.v) arkadaşlarından Huzeyfe b. Yemân (r.a.), O’nun arkasında kıldığı bir gece namazını şöyle anlatmıştı:
 
@@ -45,17 +45,17 @@ Kıymetli Müslümanlar, insanlığın en çok ihtiyaç duyduğu erdemlerden bir
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ يَأْمُرُكُمْ اَنْ تُؤَدُّوا الْاَمَانَاتِ اِلٰٓى اَهْلِهَاۙ وَاِذَا حَكَمْتُمْ بَيْنَ النَّاسِ اَنْ تَحْكُمُوا بِالْعَدْلِۜ اِنَّ اللّٰهَ نِعِمَّا يَعِظُكُمْ بِهِ اِنَّ اللّٰهَ كَانَ سَمِيعًا بَصِيرًا</p>
 
-*“Şüphesiz Allah size emanetleri ehline vermenizi ve insanlar arasında hükmettiğinizde adâletle hükmetmenizi emrediyor. Böylece Allah size ne güzel öğüt veriyor! Doğrusu Allah her şeyi hakkıyla işiten, kemâliyle görendir.”*** (Nisâ, 4/58)
+*“Şüphesiz Allah size emanetleri ehline vermenizi ve insanlar arasında hükmettiğinizde adâletle hükmetmenizi emrediyor. Böylece Allah size ne güzel öğüt veriyor! Doğrusu Allah her şeyi hakkıyla işiten, kemâliyle görendir.”* (Nisâ, 4/58)
 
 Resûlullah (s.a.v.) zamanında bir kadın hırsızlık yapmıştı. Kureyş kabilesinden bazı ileri gelenler, onu affettirmeye aracı oldular. Hz. Peygamber (s.a.v) bu aracıları dikkatle dinledi. Ardından ayağa kalktı, bir hutbe okudu; Allah-u Teâlâ’ya hamd-ü sena etti. Daha sonra, bütün çağlara ders olacak şu sözleri buyurdu:
 
 <p lang="ar" dir="rtl" class="ayet">فَإِنَّمَا أَهْلَكَ النَّاسَ قَبْلَكُمْ أَنَّهُمْ كَانُوا إِذَا سَرَقَ فِيهِمُ الشَّرِيفُ تَرَكُوهُ ، وَإِذَا سَرَقَ فِيهِمِ الضَّعِيفُ أَقَامُوا عَلَيْهِ الْحَدَّ ، وَالَّذِى نَفْسُ مُحَمَّدٍ بِيَدِهِ ، لَوْ أَنَّ فَاطِمَةَ بِنْتَ مُحَمَّدٍ سَرَقَتْ لَقَطَعْتُ يَدَهَا</p>
 
-*“Sizden önceki toplumların helâk olmasının sebeplerinden biri, aralarında ileri gelen (zengin) kimseler hırsızlık yapınca suçun cezasını vermemek; zayıf ve fakir kimseler hırsızlık yapınca ceza uygulamaktır. Nefsim kudretinde olan Allah’a yemin olsun ki! Muhammed’in kızı Fâtıma hırsızlık yapsa, onun da elini keserdim.”*** (Müslim, Hudûd, 9)
+*“Sizden önceki toplumların helâk olmasının sebeplerinden biri, aralarında ileri gelen (zengin) kimseler hırsızlık yapınca suçun cezasını vermemek; zayıf ve fakir kimseler hırsızlık yapınca ceza uygulamaktır. Nefsim kudretinde olan Allah’a yemin olsun ki! Muhammed’in kızı Fâtıma hırsızlık yapsa, onun da elini keserdim.”* (Müslim, Hudûd, 9)
 
 Bu söz, sadece o dönemin değil, bütün zamanların adalet ölçüsünü bize göstermektedir. Peygamber Efendimiz (s.a.v), adaletin yakınlığa, zenginliğe veya makama göre değil, hak ve hakikate göre uygulanması gerektiğini bize bizzat yaşamıyla göstermiştir.
 
-Peygamber Efendimiz (s.a.v) bir babanın, bir miktar malı sadece bir çocuğuna hibe edip diğerlerine vermemesi üzerine onu uyararak*,* ***“Allah’tan korkunuz; çocuklarınız arasında adaletli davranınız”*** (Müslim, Hibât, 13) buyurması, Peygamberimiz’in (s.a.v) Kur’an’ı hayatına nasıl tatbik ettiğini bir kez daha gözler önüne sermektedir.
+Peygamber Efendimiz (s.a.v) bir babanın, bir miktar malı sadece bir çocuğuna hibe edip diğerlerine vermemesi üzerine onu uyararak, ***“Allah’tan korkunuz; çocuklarınız arasında adaletli davranınız”*** (Müslim, Hibât, 13) buyurması, Peygamberimiz’in (s.a.v) Kur’an’ı hayatına nasıl tatbik ettiğini bir kez daha gözler önüne sermektedir.
 
 ### Sabır ve Tevekkül
 
@@ -63,7 +63,7 @@ Peygamber Efendimiz (s.a.v) bir babanın, bir miktar malı sadece bir çocuğuna
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذِينَ اٰمَنُوا اصْبِرُوا وَصَابِرُوا وَرَابِطُوا وَاتَّقُوا اللّٰهَ لَعَلَّكُمْ تُفْلِحُونَ</p>
 
-*“Ey iman edenler! Sabredin, kararlılıkta yarışın, düşmana karşı hazırlıklı olun (birbirinize dayanıp bağlanın), Allah’a karşı gelmekten sakının ki başarıya ulaşabilesiniz.”*** (Âl-i İmran 3/200)
+*“Ey iman edenler! Sabredin, kararlılıkta yarışın, düşmana karşı hazırlıklı olun (birbirinize dayanıp bağlanın), Allah’a karşı gelmekten sakının ki başarıya ulaşabilesiniz.”* (Âl-i İmran 3/200)
 
 Allah Resûlü (s.a.v) Peygamberliğinin dokuzuncu yılında peş peşe çok ağır imtihanlarla karşılaştı. Önce kendisini çocukluğundan beri himaye eden amcası Ebû Tâlib’i, ardından da gönül yoldaşı, en büyük destekçisi Hz. Hatice (r.a.) validemizi kaybetti. Bu iki büyük kayıp, Peygamber Efendimizin (s.a.v) kalbinde derin bir hüzün bıraktı. İnsanlar arasında yalnız kaldı, acıları katlanılmaz bir hâl aldı.
 
@@ -81,7 +81,7 @@ Hazreti Peygamber’in (s.a.v) hayatı baştan sona sabır ve metanetin en yüce
 
 <p lang="ar" dir="rtl" class="ayet">وَعِبَادُ الرَّحْمٰنِ الَّذٖينَ يَمْشُونَ عَلَى الْاَرْضِ هَوْناً وَاِذَا خَاطَبَهُمُ الْجَاهِلُونَ قَالُوا سَلَاماً</p>
 
-*“Rahmân’ın has kulları yeryüzünde vakarla (tevazuyla) yürüyen, cahiller onlara laf attığı zaman, “selâm” deyip geçen kullardır.”*** *(*Furkan, 25/63)
+*“Rahmân’ın has kulları yeryüzünde vakarla (tevazuyla) yürüyen, cahiller onlara laf attığı zaman, “selâm” deyip geçen kullardır.”* (Furkan, 25/63)
 
 Ayette “ağır başlılık” olarak çevrilen “hevn” kelimesi, tefsirlerde genellikle sükûnet, vakar, yumuşaklık, tevazu gibi anlamlarla açıklanmış ve tüm bu nitelikleri kapsayan hilm kavramıyla ilişkilendirilmiştir. Ayette vurgulanan bu özellik, Kur’an’da sıkça eleştirilen ve cahiliye toplumunda yaygın olan kibirli, gururlu ve zorba tavır anlamındaki müstekbir kelimesinin tam zıddı olarak gösterilmektedir. (Kur'an Yolu Tefsiri, 4/ 137-138)
 
@@ -105,21 +105,21 @@ Tevazu, sadece sözde değil, hayatta da tatbik edilmesi gereken bir ahlakı tem
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُٓوا اَنْفِقُوا مِمَّا رَزَقْنَاكُمْ مِنْ قَبْلِ اَنْ يَاْتِىَ يَوْمٌ لَا بَيْعٌ فٖيهِ وَلَا خُلَّةٌ وَلَا شَفَاعَةٌۜ وَالْكَافِرُونَ هُمُ الظَّالِمُونَ</p>
 
-*“Ey iman edenler! Alım satım, dostluk ve aracılığın olmadığı bir gün gelip çatmadan Allah’ın size verdiklerinden O’nun için harcama yapın. Kâfirler zalimlerin ta kendileridir.”*** *(*Bakara, 2/286)
+*“Ey iman edenler! Alım satım, dostluk ve aracılığın olmadığı bir gün gelip çatmadan Allah’ın size verdiklerinden O’nun için harcama yapın. Kâfirler zalimlerin ta kendileridir.”* (Bakara, 2/286)
 
 Bu ayeti hayatında en güzel şekilde tatbik eden Hz. Muhammed’dir (s.a.v). Gelin, O’nun (s.a.v) Allah yolunda infak etme ve cömertlikteki örnekliğini, sahabe efendilerimizin anlattıkları üzerinden daha yakından görelim ve öğrenelim:
 
 <p lang="ar" dir="rtl" class="ayet">فَلَرَسُولُ اللَّهِ صلى الله عليه وسلم أَجْوَدُ بِالْخَيْرِ مِنَ الرِّيحِ الْمُرْسَلَةِ</p>
 
-“*Rasülüllah, esen rüzgârdan daha cömert idi.”*** *(*Buhârî, Bed’ü’l-vahy, 1)
+“*Rasülüllah, esen rüzgârdan daha cömert idi.”* (Buhârî, Bed’ü’l-vahy, 1)
 
 <p lang="ar" dir="rtl" class="ayet">مَا سُئِلَ رَسُولُ اللَّهِ صلى الله عليه وسلم شَيْئًا قَطُّ فَقَالَ لاَ</p>
 
-*“Allah Resûlü (s.a.v) kendisinden istenilen hiçbir şeyde ‘Hayır’ cevabını vermemiştir.”*** (Müslim, Fedâil, 56)
+*“Allah Resûlü (s.a.v) kendisinden istenilen hiçbir şeyde ‘Hayır’ cevabını vermemiştir.”* (Müslim, Fedâil, 56)
 
 Gördüğümüz üzere Peygamberimiz (s.a.v) Kur’an’ı tam anlamıyla yaşamaktaydı. Nitekim bir gün, sahâbî kadınlardan biri, kendi elleriyle ördüğü bir giysiyi Peygamber Efendimiz’e (s.a.v)getirmiş ve şöyle demişti:
 
-*“Bunu, giyesin diye ördüm.”***
+*“Bunu, giyesin diye ördüm.”*
 
 Hazreti Peygamber (s.a.v.) hediyeyi büyük bir incelik ve tevazu ile kabul etmiş, onu giyip ashâbının yanına gitmişti. Bu sırada bir sahâbî, Peygamber Efendimizin (s.a.v) üzerindeki hırkayı görüp, “Ne kadar da güzelmiş! Bunu bana verseniz.” demişti. İnsanların en cömerdi olan Peygamber Efendimizin (s.a.v), hemen *“Peki”* demiş, biraz orada oturduktan sonra hırkayı nazikçe katlayıp isteyen sahâbîye göndermiştir. (İbn Mâce, Libâs, 1)
 
@@ -131,7 +131,7 @@ Efendimizin (s.a.v) güzel ahlâkı, sahâbe efendilerimizin gönlünde öyle bi
 
 Bir gün bir adam, açlıktan takatsiz bir hâlde Peygamber Efendimiz’e (s.a.v) gelerek, *“Yâ Resûlallah! Açlıktan bitap düştüm*.” dedi. Allah Resûlü (s.a.v), onu doyurmaları için hanımlarına haber gönderdi; fakat evlerinde yiyecek hiçbir şey yoktu. Bunun üzerine Peygamber Efendimiz (s.a.v), “*Bu gece şu kardeşimizi misafir edip Allah’ın rahmetine nail olmak isteyen yok mu?*” buyurdu.
 
-Ensardan Sâbit b. Kays (r.a.) hemen ayağa kalktı: “*Ben varım yâ Resûlallah*!” dedi. Misafiri evine götürdü. Eşi, “*Evde sadece çocuklarımızın yiyeceği kadar az bir şey var*.” deyince, Sâbit (r.a.) şöyle dedi: “*Öyleyse çocukları uyut, kandili söndür, biz de karanlıkta yemiş gibi yapalım. Geceyi aç geçirelim.”* O gece kendileri aç kaldılar ama misafirleri doydu. Sabah olunca Resûlullah (s.a.v) buyurdu ki: “*Bu gece Allah, sizin bu davranışınızdan hoşnut oldu.”*** (Buhârî, Menâkıbü’l-ensâr, 10)
+Ensardan Sâbit b. Kays (r.a.) hemen ayağa kalktı: “*Ben varım yâ Resûlallah*!” dedi. Misafiri evine götürdü. Eşi, “*Evde sadece çocuklarımızın yiyeceği kadar az bir şey var*.” deyince, Sâbit (r.a.) şöyle dedi: “*Öyleyse çocukları uyut, kandili söndür, biz de karanlıkta yemiş gibi yapalım. Geceyi aç geçirelim.”* O gece kendileri aç kaldılar ama misafirleri doydu. Sabah olunca Resûlullah (s.a.v) buyurdu ki: “*Bu gece Allah, sizin bu davranışınızdan hoşnut oldu.”* (Buhârî, Menâkıbü’l-ensâr, 10)
 
 Sahabeyi bu mertebeye ulaştıran şey; Resûlullah’ın (s.a.v) güzel ahlâkıydı, cömertlikti, Allah rızasını her şeyin önüne koymaktı.
 
@@ -141,15 +141,15 @@ Sahabeyi bu mertebeye ulaştıran şey; Resûlullah’ın (s.a.v) güzel ahlâk�
 
 <p lang="ar" dir="rtl" class="ayet">وَعَاشِرُوهُنَّ بِالْمَعْرُوفِۚ</p>
 
-*“…Onlarla(eşlerinizle) iyi geçinin…”*** (Nisâ, 4/19)
+*“…Onlarla(eşlerinizle) iyi geçinin…”* (Nisâ, 4/19)
 
 Hazreti Peygamber (s.a.v) bu ilahî emri en güzel şekilde hayatına tatbik etmiş, aile fertleriyle her zaman güzel geçinmiş, onlara sevgi, merhamet ve anlayışla muamele etmiştir. Zira o, aileye verilen önemi bizzat yaşayarak ümmetine göstermiş ve bu hususta şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">خَيْرُكُمْ خَيْرُكُمْ لِأَهْلِهِ، وَأَنَا خَيْرُكُمْ لِأَهْلِى</p>
 
-*“Sizin en hayırlınız, ailesine karşı en hayırlı olanınızdır ben de aileme karşı en hayırlı olanınızım!”*** (Tirmizî, Menâkıb, 63)
+*“Sizin en hayırlınız, ailesine karşı en hayırlı olanınızdır ben de aileme karşı en hayırlı olanınızım!”* (Tirmizî, Menâkıb, 63)
 
-Esved b. Yezîd anlatıyor: Âişe’ye (r.a.)*,* ***“Hz. Peygamber (s.a.v) evinde ne yapardı?” diye sordum. Şöyle cevap verdi: “Ailesinin işlerini görür, ezanı duyunca (namaz için dışarı) çıkardı.”*** (*Buhârî*, Nafakât, 8)
+Esved b. Yezîd anlatıyor: Âişe’ye (r.a.), ***“Hz. Peygamber (s.a.v) evinde ne yapardı?” diye sordum. Şöyle cevap verdi: “Ailesinin işlerini görür, ezanı duyunca (namaz için dışarı) çıkardı.”*** (*Buhârî*, Nafakât, 8)
 
 Bir başka defasında ise Hz. Aişe (r.a.) Peygamber Efendimiz’i (s.a.v) şöyle anlatmıştı;
 

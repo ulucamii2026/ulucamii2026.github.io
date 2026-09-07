@@ -84,9 +84,9 @@ Maalesef gün geçtikçe insanoğlu bu kavramlara daha fazla ihtiyaç duymaktad�
 
 Hz. Ali (r.a) de şu beyitleriyle hayâ kavramını güzel bir şekilde nitelemiştir:
 
-<p lang="ar" dir="rtl" class="ayet">لَيسَ الجَمالُ بِأَثوابٍ تُزَيِّنُنا \* إِنَّ الجَمالَ جَمالُ العَقلِ وَالأَدَبِ</p>
+<p lang="ar" dir="rtl" class="ayet">لَيسَ الجَمالُ بِأَثوابٍ تُزَيِّنُنا * إِنَّ الجَمالَ جَمالُ العَقلِ وَالأَدَبِ</p>
 
-<p lang="ar" dir="rtl" class="ayet">لَيسَ اليَتيمُ الَّذي قَد ماتَ والِدُهُ\*إِنَّ اليَتيمَ يَتيمُ العِلمِ وَالأَدَبِ</p>
+<p lang="ar" dir="rtl" class="ayet">لَيسَ اليَتيمُ الَّذي قَد ماتَ والِدُهُ*إِنَّ اليَتيمَ يَتيمُ العِلمِ وَالأَدَبِ</p>
 
 Güzellik, bizi süsleyen elbiselerin güzel olmasında değildir. Asıl güzellik ilim ve edep güzelliğidir. Ana babası ölen yetim değildir. Asıl yetim, ilim ve edepten yoksun kimsedir.
 

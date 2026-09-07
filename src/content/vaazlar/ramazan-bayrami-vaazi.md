@@ -16,7 +16,7 @@ Bayram Müslümanların bir araya gelmesinin en güzel vasıtasıdır. Bir araya
 
 <p lang="ar" dir="rtl" class="ayet">قال رسولُ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم : « وَالَّذِي نَفْسِي بِيَدِهِ لا تَدْخُلُوا الجَنَّةَ حَتَّى تُؤْمِنُوا ، ولا تُؤْمِنُوا حَتَّى تَحَابُّوا ، أَوَ لا أَدُلُّكُمْ عَلَى شَيءٍ إِذَا فَعَلْتُمُوه تَحَابَبْتُمْ ؟ أَفْشُوا السَّلامَ بينَكم »رواه مسلم.</p>
 
-Ebû Hüreyre *radıyallahu anh*’den rivâyet edildiğine göre Resûlullah *sallallahu aleyhi ve sellem* şöyle buyurdu:“***Canım kudret elinde olan Allah’a yemin ederim ki sizler iman etmedikçe cennete giremezsiniz. Birbirinizi sevmedikçe de iman etmiş olmazsınız. Yaptığınız takdirde birbirinizi seveceğiniz bir şey söyleyeyim mi? Aranızda selâmı yayınız*!”Müslim, Îmân 93–94
+Ebû Hüreyre *radıyallahu anh*’den rivâyet edildiğine göre Resûlullah *sallallahu aleyhi ve sellem* şöyle buyurdu:“*Canım kudret elinde olan Allah’a yemin ederim ki sizler iman etmedikçe cennete giremezsiniz. Birbirinizi sevmedikçe de iman etmiş olmazsınız. Yaptığınız takdirde birbirinizi seveceğiniz bir şey söyleyeyim mi? Aranızda selâmı yayınız*!”Müslim, Îmân 93–94
 
 Müslümanların en önemli sevinç günleri olan bayramlar; birbirlerini tebrik etmekle sevgi, saygı, ikram ve cömertlik gibi erdemlerin ortaya çıkmasına dolayısıyla da milli birlik ve beraberliğin oluşmasına en büyük katkıyı sağlar.
 
@@ -28,7 +28,7 @@ Ukbe bin Amir (R.A) Peygamberimizin şöyle dediğini rivayet ediyor;***’’Ar
 
 - وعن مُعَاذٍ رضي اللَّه عنه قال : سمِعتُ رسول اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم يقول : قَالَ اللَّهُ عَزَّ وَجَلَّ : المُتَحَابُّونَ في جَلالي ، لَهُمْ مَنَابِرُ مِنْ نُورٍ يَغْبِطُهُمْ النَّبِيُّونَ وَالشَّهَدَاءُ »
 
-Muâz *radıyallahu anh*, Resûlullah *sallallahu aleyhi ve sellem*’i şöyle buyururken dinledim dedi: Allah Teâlâ; “***Benim rızâm uğrunda birbirlerini sevenler için peygamberlerin ve şehidlerin bile imreneceği nurdan minberler vardır*” buyurmuştur. Tirmizî, Zühd 53
+Muâz *radıyallahu anh*, Resûlullah *sallallahu aleyhi ve sellem*’i şöyle buyururken dinledim dedi: Allah Teâlâ; “*Benim rızâm uğrunda birbirlerini sevenler için peygamberlerin ve şehidlerin bile imreneceği nurdan minberler vardır*” buyurmuştur. Tirmizî, Zühd 53
 
 İbni Abbas (R.A) Rasulullah efendimizin şöyle buyurduğunu rivayet ediyor; ‘***’Farzlardan sonra amellerin Allah’a en sevimli olanı Müslümanların kalplerine sevinç sokmaktır.***’’ (-Metcer Er-Rabih, shf:540)
 
@@ -48,15 +48,15 @@ Cuma günleri hutbeden inmeden hemen önce okuduğumuz ayet-i kerimde;
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ يَأْمُرُ بِالْعَدْلِ وَالْاِحْسَانِ وَا۪يتَٓائِ ذِي الْقُرْبٰى وَيَنْهٰى عَنِ الْفَحْشَٓاءِ وَالْمُنْكَرِ وَالْبَغْيِۚ يَعِظُكُمْ لَعَلَّكُمْ تَذَكَّرُونَ</p>
 
-*“Allah şüphesiz adaleti, iyilik yapmayı, yakınlara bakmayı emreder; hayâsızlığı, fenalığı ve haddi aşmayı yasak eder. Tutasınız diye size öğüt verir***.” Nahl, 16/90. Buyurmaktadır.
+*“Allah şüphesiz adaleti, iyilik yapmayı, yakınlara bakmayı emreder; hayâsızlığı, fenalığı ve haddi aşmayı yasak eder. Tutasınız diye size öğüt verir*.” Nahl, 16/90. Buyurmaktadır.
 
 Bizim için en güzel örnek olan Allah Resûlü, Akrabalar arası ilişkinin önemini bizzat yaşayarak öğrenmiş ve bizlere de öğretmiştir. O, Babasını hiç göremeyen bir yetim olarak dünyaya gelmiştir. Annesini de dayılarını ziyarete gittikleri zaman Medine dönüşünde kaybetmiş, önce dedesinin, sonra da kendisine çok şey borçlu olduğu amcası Ebû Tâlib'in himayesinde yetişmiştir. Resûl-i Ekrem, son nefesine kadar kendisini destekleyen ama İslâm'ı seçmeyen amcası Ebû Tâlib ile aralarındaki rahim bağının, rahmete dönüşmesi için çok çabalamış, hatta sırf bu yüzden ilâhî itaba (azarlanmaya) bile muhatap olmuştur. (Tevbe 9/113)
 
-Rivayete göre, Resul-i Ekrem (s.a.), amcası Ebu Talip’e vefat etmeden önce hitaben şöyle buyurmuştu*: “La ilahe illallah” de ki, kıyamet günü senin lehine şehadette bulunayım.*** Ebu Talip ise*, “*Kureyş kadınları beni kınarlar, korkudan bunu söyledi derler. Eğer böyle demeyecek olsalardı, müslüman olup seni sevindirirdim” demişti. Hz. Peygamber’in, çok sevdiği, önemli yardımlarını gördüğü amcasının hidayeti için böyle çırpınışı üzerine
+Rivayete göre, Resul-i Ekrem (s.a.), amcası Ebu Talip’e vefat etmeden önce hitaben şöyle buyurmuştu: “La ilahe illallah” de ki, kıyamet günü senin lehine şehadette bulunayım. Ebu Talip ise, “Kureyş kadınları beni kınarlar, korkudan bunu söyledi derler. Eğer böyle demeyecek olsalardı, müslüman olup seni sevindirirdim” demişti. Hz. Peygamber’in, çok sevdiği, önemli yardımlarını gördüğü amcasının hidayeti için böyle çırpınışı üzerine
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّكَ لَا تَهْد۪ي مَنْ اَحْبَبْتَ وَلٰكِنَّ اللّٰهَ يَهْد۪ي مَنْ يَشَٓاءُۚ وَهُوَ اَعْلَمُ بِالْمُهْتَد۪ينَ</p>
 
-*“(Resûlüm!) Sen sevdiğini hidayete erdiremezsin; bilakis, Allah dilediğine hidayet verir ve hidayete girecek olanları en iyi O bilir***.” Kasas, 28/56 *ayeti nazil oldu.*
+*“(Resûlüm!) Sen sevdiğini hidayete erdiremezsin; bilakis, Allah dilediğine hidayet verir ve hidayete girecek olanları en iyi O bilir*.” Kasas, 28/56 *ayeti nazil oldu.*
 
 Akrabalarımıza karşı olan ilişkilerimizde bu duyarlılığı göstererek Rasülullahı örnek almaya çalışmalıyız. Peygamberimiz akrabaya o kadar önem verirdi ki; Hz. Hatice annemiz peygamberimize ilk vahiy gelip te eve geldiğinde peygamberimizin heyecanını yatıştırırken söylediği cümle
 
@@ -94,7 +94,7 @@ Yine peygamberimiz tarafından
 
 <p lang="ar" dir="rtl" class="ayet">السُّوءِ فَلْيَتَّقِ اللَّهَ وَلْيَصِلْ رَحِمَهُ</p>
 
-*“Ömrünün uzamasını (bereketlenmesini), rızkının genişletilmesini ve kötü bir şekilde ölmekten kurtulmayı isteyene akrabalarla ilişkilerini sürdürmesi tavsiye edilmiştir***”. İbn Hanbel, I, 143.
+*“Ömrünün uzamasını (bereketlenmesini), rızkının genişletilmesini ve kötü bir şekilde ölmekten kurtulmayı isteyene akrabalarla ilişkilerini sürdürmesi tavsiye edilmiştir*”. İbn Hanbel, I, 143.
 
 Bir bedevi adam Hz. Peygamber'e gelerek, “Bana, yaptığımda beni cennete sokacak bir amel haber ver!” der. Orada bulunanlar, “Buna da ne oluyor!” derler. Hz. Peygamber
 
@@ -112,7 +112,7 @@ Resûl-i Ekrem’in bizlere öğrettiğine göre, sıla-i rahim sadece iyiliğe 
 
 “Sıla-i rahim yapan, akrabasından gördüğü iyiliğe iyilikle karşılık veren kimse değil, akrabası kendisine iyiliği kestiğinde dahi onlara iyilik yapandır.” Buhârî, Edeb, 15. Buyurmuştur. Atalarımız da; “İyiliğe iyilik her kişinin, kötülüğe de iyilik er kişinin harcıdır” derler.
 
-Konuyla ilgili çeşitli rivayetlerde Hz. Peygamber, قَالَ أَفْضَلُ الْفَضَائِلِ أَنْ تَصِلَ مَنْ قَطَعَكَ وَتُعْطِيَ مَنْ مَنَعَكَ وَتَصْفَحَ عَمَّنْ شَتَمَكَ *akrabalık ilişkisini kesenle ilişki kurmayı, vermeyene vermeyi ve sataşanı affetmeyi, faziletlerin en üstünü olarak anmıştır***. İbn Hanbel, III, 439.
+Konuyla ilgili çeşitli rivayetlerde Hz. Peygamber, قَالَ أَفْضَلُ الْفَضَائِلِ أَنْ تَصِلَ مَنْ قَطَعَكَ وَتُعْطِيَ مَنْ مَنَعَكَ وَتَصْفَحَ عَمَّنْ شَتَمَكَ *akrabalık ilişkisini kesenle ilişki kurmayı, vermeyene vermeyi ve sataşanı affetmeyi, faziletlerin en üstünü olarak anmıştır*. İbn Hanbel, III, 439.
 
 Allah Resûlü'nün dostlarından Ukbe b. Âmir anlatıyor: “Bir gün Resûlullah (sav) ile karşılaştım. Hemen elimi uzattım ama o benden evvel davranıp benim elimi tuttu ve
 
@@ -130,13 +130,13 @@ Allah Resûlü'nün dostlarından Ukbe b. Âmir anlatıyor: “Bir gün Resûlul
 
 Nitekim malı mülkü olan sahâbîlerden Mâlik b. Nadle el-Cüşemî,
 
-قَالَ قُلْتُ يَا رَسُولَ اللَّهِ يَأْتِينِى ابْنُ عَمِّى فَأَحْلِفُ أَنْ لاَ أُعْطِيَهُ وَلاَ أَصِلَهُ . قَالَ « كَفِّرْ عَنْ يَمِينِكَ » *amcasının oğluna bir şey vermemeye ve onunla ilişkiyi sürdürmemeye yemin ettiğini söyleyince Hz. Peygamber ondan, daha hayırlı olanı yapmasını ve yemininin kefaretini ödemesini istemiştir***. Nesâî, Eymân, 16; İbn Mâce, Kefâret, 7
+قَالَ قُلْتُ يَا رَسُولَ اللَّهِ يَأْتِينِى ابْنُ عَمِّى فَأَحْلِفُ أَنْ لاَ أُعْطِيَهُ وَلاَ أَصِلَهُ . قَالَ « كَفِّرْ عَنْ يَمِينِكَ » *amcasının oğluna bir şey vermemeye ve onunla ilişkiyi sürdürmemeye yemin ettiğini söyleyince Hz. Peygamber ondan, daha hayırlı olanı yapmasını ve yemininin kefaretini ödemesini istemiştir*. Nesâî, Eymân, 16; İbn Mâce, Kefâret, 7
 
 Bütün bu ayet ve hadislerden sonra Bugün özellikle şehirleşmenin ve maddeye, menfaate önem vermenin getirmiş olduğu aileler arasındaki soğukluğu, hatta parçalanmaları ve akrabalar arasındaki bağların kopmasını düzeltmek için bu günleri fırsat bilerek yeniden canlılaştırmamız gerekmektedir. Çünkü biz insanız. Sevinçlerimizi paylaşmakla çoğaltır, üzüntülerimiz paylaşmakla azaltırız. Bu sebeple Bayramın vermiş olduğu bu sıcak iklim çerçevesinde ana-babımızı, akrabalarımızı ve huzurevinde unuttuğumuz büyüklerimizi yeniden hatırlamalı onlara el uzatmalıyız.
 
 Unutmayalım ki, bir gün bizimde bünyelerimiz yaşlanacak ve bugün yaşlılarımıza layık gördüğümüz davranışları yarın kendimize yapılmasını asla istemeyeceğiz. Hz. Peygamber (s.a.v.) :
 
-لا يُؤْمِنُ أَحدُكُمْ حتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ “***Kendisi için istediğini mümin kardeşi için istemeyen iman etmiş olmaz***” Müslim, Îmân 71-72; Buhârî, Îmân 7 buyurarak bu hususa işaret etmektedir. Yaşadığımız dünya, etme-bulma dünyası değil midir? Peygamberi ifadeyle مَن لا يَرْحمْ لا يُرْحَمْ “***Merhamet edilmeyene merhamet edilmemektedir.*” Riyazü’s-Salihin, Hadis No:227,229 Ayrıca Kutsal Kitabımız Kur’an-ı Kerim’de “***Muhammed, Allah’ın Resulüdür. Onunla beraber olanlar, inkârcılara karşı çetin, birbirlerine karşı da merhametlidirler.*” Fetih, 48/29 buyrularak, Müminlerin en temel özellikleri arasında, inananların birbirlerine merhamet duymaları gerekliliği vurgulanmıştır.
+لا يُؤْمِنُ أَحدُكُمْ حتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ “***Kendisi için istediğini mümin kardeşi için istemeyen iman etmiş olmaz***” Müslim, Îmân 71-72; Buhârî, Îmân 7 buyurarak bu hususa işaret etmektedir. Yaşadığımız dünya, etme-bulma dünyası değil midir? Peygamberi ifadeyle مَن لا يَرْحمْ لا يُرْحَمْ “*Merhamet edilmeyene merhamet edilmemektedir.*” Riyazü’s-Salihin, Hadis No:227,229 Ayrıca Kutsal Kitabımız Kur’an-ı Kerim’de “*Muhammed, Allah’ın Resulüdür. Onunla beraber olanlar, inkârcılara karşı çetin, birbirlerine karşı da merhametlidirler.*” Fetih, 48/29 buyrularak, Müminlerin en temel özellikleri arasında, inananların birbirlerine merhamet duymaları gerekliliği vurgulanmıştır.
 
 Bayramlar sadece aile içi ziyaretlerinin yaşandığı bir zaman dilimi olmamalıdır. Hastanede hasta olarak yatan kardeşlerimizi unutmamalı, geçmiş olsun ziyaretlerine devam etmeli ve kendilerinden hayır dua almaya özen göstermeliyiz. Peygamber Efendimiz hasta ziyaretlerinde bulunanlara şu müjdeyi vermiştir.
 

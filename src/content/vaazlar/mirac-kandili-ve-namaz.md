@@ -3,7 +3,6 @@ baslik: "Miraç Kandili ve Namaz"
 ozet: "İsra ve Mi’rac’ın Anlamı Resûl-i Ekrem’in bir gece Mescid-i Harâm’dan Mescid-i Aksâ’ya yaptığı yolculuğa isrâ, oradan göklere yükselmesine mi’rac denilmiştir. Sery…"
 kategori: ibadet
 kelime: 2880
-docx: "/vaazlar/mirac-kandili-ve-namaz.docx"
 pdf: "/vaazlar/mirac-kandili-ve-namaz.pdf"
 ---
 ## İsra ve Mi’rac’ın Anlamı
@@ -121,30 +120,30 @@ Namazın farziyeti; ًاِنﱠ اﻟﺼﱠﻠٰﻮةَ ﻛَﺎﻧَﺖْ ﻋَ
 "Namazı kılın, zekâtı verin ve Allah'a samimiyetle bağlanın. O, sizin Mevlânızdır. O, ne güzel Mevlâ ve ne güzel yardımcıdır"( Hacc, 22/78)
 
 ## Namazın İnsana Kazandırdıkları
-**1. Namaz Allah'ı Hatırlatır**
+1. Namaz Allah'ı Hatırlatır
 ِﻓَﺎذْﻛُﺮُوﻧِﻲ أَذْﻛُﺮْﻛُﻢْ وَاﺷْﻜُﺮُواْ ﻟِﻲ وَﻻَ ﺗَﻜْﻔُﺮُون “O halde beni anın, ben de sizi anayım. Bana şükredin de nankörlük etmeyin. ” (Bakara, 2/152)
 
-**2. Namaz Dinin Direğidir**
+2. Namaz Dinin Direğidir
 ِاﻟﺼﱠﻼةُ ﻋِﻤَﺎدُ اﻟﺪِّﯾﻦ Efendimiz (a.s); "Namaz dinin direğidir." buyurdu. (Beyhaki, Sünen)
 
-**3. Namaz Verilen Nimetlere Karşı Allah'a Bir Teşekkürdür**
+3. Namaz Verilen Nimetlere Karşı Allah'a Bir Teşekkürdür
 ٌﻟَﺌِﻦ ﺷَﻜَﺮْﺗُﻢْ ﻷَزِﯾﺪَﻧﱠﻜُﻢْ وَﻟَﺌِﻦ ﻛَﻔَﺮْﺗُﻢْ إِنﱠ ﻋَﺬَاﺑِﻲ ﻟَﺸَﺪِﯾﺪ “Hani rabbiniz, ‘Eğer şükrederseniz size (nimetimi) daha çok vereceğim, nankörlük ederseniz hiç şüphesiz azabım pek şiddetlidir!’ diye bildirmişti.”” (İbrahim, 14/7)
 
-**4. Namaz Vaktin Kıymetini Öğretir**
+4. Namaz Vaktin Kıymetini Öğretir
 Namaz kılan kimse, her daim Rabbi ile ve meleklerle beraber olduğunu bilir. Bu konuda Peygamberimiz’in (s.a.s) şu hadisi oldukça dikkat çekicidir:
 ْﯾَﺘَﻌَﺎﻗَﺒُﻮنَ ﻓِﯿﻜُﻢْ ﻣَﻼَﺋِﻜَﺔٌ ﺑِﺎﻟﻠﱠﯿْﻞِ وَﻣَﻼَﺋِﻜَﺔٌ ﺑِﺎﻟﻨﱠﮭَﺎرِ، وَﯾَﺠْﺘَﻤِﻌُﻮنَ ﻓِﻲ ﺻَﻼَةِ اﻟْﻔَﺠْﺮِ وَﺻَﻼَةِ اﻟ ﻌَﺼْﺮِ، ﺛُﻢﱠ ُﯾَﻌْﺮُجُ اﻟﱠﺬِﯾﻦَ ﺑَﺎﺗُﻮا ﻓِﯿﻜُﻢْ، ﻓَﯿَﺴْﺄَﻟُﮭُﻢْ وَھْﻮَ أَﻋْﻠَﻢُ ﺑِﮭِﻢْ ﻛَﯿْﻒَ ﺗَﺮَﻛْﺘُﻢْ ﻋِﺒَﺎدِي ﻓَﯿَﻘُﻮﻟُﻮنَ ﺗَﺮَﻛْﻨَﺎھ ﻢْ وَھُﻢْ َﯾُﺼَﻠﱡﻮنَ، وَأَﺗَﯿْﻨَﺎھُﻢْ وَھُﻢْ ﯾُﺼَﻠﱡﻮن “Gece ve gündüz melekleri sizi takip ederler. Sabah ve ikindi namazlarında toplanırlar. Sonra sizinle geceleyen melekler, ilâhî huzura çıkarlar. Rab’leri onlara, “onları en iyi bir şekilde bildiği halde- kullarımı nasıl terk ettiniz?” diye sorar. Melekler, “Onları namaz kılarken bırakmıştık ve namaz kılarken bulduk.” cevabını verirler” (Buhârî, Mevâkît, 16)
 
-**5. Namaz İnsanların Eşit Olduğunu Hatırlatır**
+5. Namaz İnsanların Eşit Olduğunu Hatırlatır
 Namaz; zengini fakiri, âmiri memuru ve her seviyedeki insanı camide yan yana getirir ve insan olarak Allah katında eşit olduklarını, aralarında insan olmak bakımından bir fark olmadığını öğretir.
 
-**6. Namaz Kişiyi Kötülüklerden Alıkoyar**
+6. Namaz Kişiyi Kötülüklerden Alıkoyar
 Namaz, müminin hayatına çeki düzen verir; onu her türü çirkinliklerden, haram ve yasakları işlemekten men eder.
 
 <p lang="ar" dir="rtl" class="ayet">ِۜاُﺗْﻞُ ﻣَٓﺎ اُو۫ﺣِﻲَ اِﻟَﯿْﻚَ ﻣِﻦَ اﻟْﻜِﺘَﺎبِ وَاَﻗِﻢِ اﻟﺼﱠﻠٰﻮةَۜ اِنﱠ اﻟﺼﱠﻠٰﻮةَ ﺗَﻨْﮭٰﻰ ﻋَﻦِ اﻟْﻔَﺤْﺸَٓﺎءِ وَاﻟْﻤُﻨْﻜَﺮ</p>
 
 وَﻟَﺬِﻛْﺮُ ﻠﻟااﱣ ِ َاَﻛْﺒَﺮُۜ وَﻠﻟااﱣ ُ ﯾَﻌْﻠَﻢُ ﻣَﺎ ﺗَﺼْﻨَﻌُﻮن “(Ey Muhammed!) Kitaptan sana vahyolunanı oku, namazı da dosdoğru kıl. Çünkü namaz, insanı hayâsızlıktan ve kötülükten alıkoyar. Allah’ı anmak (olan namaz) elbette en büyük ibadettir. Allah yaptıklarınızı biliyor.” (Ankebut, 29/45)
 
-**7. Kıyamet Günü İlk Soru Namazdan Olacaktır**
+7. Kıyamet Günü İlk Soru Namazdan Olacaktır
 İnsanlar öldükten sonra dirilecekler ve Allah'ın huzurunda dünyada yaptıklarının hesabını vereceklerdir. O gün ibadetlerden ilk sorgulama namazdan olacaktır. Nitekim Peygamberimiz (s.a.s) şöyle buyurmuştur;
 
 ْإِنﱠ أَوﱠلَ ﻣَﺎ ﯾُﺤَﺎﺳَﺐُ ﺑِﮫِ اﻟْﻌَﺒْﺪُ ﯾَﻮْمَ اﻟْﻘِﯿَﺎﻣَﺔِ ﻣِﻦْ ﻋَﻤَﻠِﮫِ ﺻَﻼَﺗُﮫُ ﻓَﺈِنْ ﺻَﻠُﺤَﺖْ ﻓَﻘَﺪْ أَﻓْﻠَﺢَ وَأَﻧ ﺠَﺢَ وَإِنْ َﻓَﺴَﺪَتْ ﻓَﻘَﺪْ ﺧَﺎبَ وَﺧَﺴِﺮ “Kulun kıyamet gününde, hesabı ilk önce sorulacak ameli namazdır. Eğer namazı dürüst çıkarsa kurtulmuş ve kazanmıştır. Eğer namazı düzgün çıkmazsa kaybetmiştir.” (Tirmizî, Salât, 305) Bir başka hadislerinde de: “Kıyamet gününde kulun ilk hesaba çekileceği şey farz namazdır. Eğer bu namazı tam olarak yerine getirmişse ne güzel. Aksi halde şöyle denilir: Bakın bakalım, bunun nafile namazı var mıdır? Eğer nafile namazları varsa, farzların eksiği bu nafilelerle tamamlanır. Sonra diğer farzlar için de aynı şeyler yapılır.” (Ebû Dâvûd, Salât, 145; Tirmizî, Salât, 188) buyurmuştur.

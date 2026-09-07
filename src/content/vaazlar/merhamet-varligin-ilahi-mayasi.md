@@ -38,7 +38,7 @@ Onlar da “Hayır.” diye cevap verdiler. Bunun üzerine Hz. Peygamber,
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُ أَرْحَمُ بِعِبَادِهِ مِنْ هَذِهِ بِوَلَدِهَا</p>
 
-“**Bilin ki, Allah’ın kullarına olan rahmeti, bu kadının çocuğuna olan şefkat ve merhametinden çok daha fazladır.” (Buhârî, Edeb, 18; Hadislerle İslam, 3/90)
+“Bilin ki, Allah’ın kullarına olan rahmeti, bu kadının çocuğuna olan şefkat ve merhametinden çok daha fazladır.” (Buhârî, Edeb, 18; Hadislerle İslam, 3/90)
 
 Şefkat ve merhamette anne semboldür. Allah (c.c.) kullarına bir annenin yavrusuna olan merhametinden kat kat daha merhametlidir. Zira anneye şefkat ve merhamet duygusunu veren rabbimizdir. Rabbimiz:
 
@@ -56,7 +56,7 @@ Bir kutsî hadiste,
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ رَحْمَتِى سَبَقَتْ غَضَبِى</p>
 
-“**Rahmetim gazabımı geçti.” (Buhârî, Tevhîd, 22) buyrulmuştur.
+“Rahmetim gazabımı geçti.” (Buhârî, Tevhîd, 22) buyrulmuştur.
 
 ### HZ. PEYGAMBER’İN MERHAMETİ
 

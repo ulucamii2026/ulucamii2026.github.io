@@ -38,7 +38,7 @@ Rasulullah buyurdu ki:
 
 *“Onları seven beni sever, onlara buğz eden bana buğz etmiş olur.”*
 
-******
+
 
 Rasulullah buyurdu ki:
 

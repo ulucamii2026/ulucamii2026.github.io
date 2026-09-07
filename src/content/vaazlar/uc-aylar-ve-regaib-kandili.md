@@ -14,7 +14,7 @@ Kur’an-ı Kerim’de Rabbimiz haram aylara şöyle işaret etmiş:
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ عِدَّةَ الشُّهُورِ عِنْدَ اللّٰهِ اثْنَا عَشَرَ شَهْرًا فِي كِتَابِ اللّٰهِ يَوْمَ خَلَقَ السَّمٰوَاتِ وَالْاَرْضَ مِنْهَٓا اَرْبَعَةٌ حُرُمٌۜ ذٰلِكَ الدِّينُ الْقَيِّمُ فَلَا تَظْلِمُوا فِيهِنَّ اَنْفُسَكُمْ</p>
 
-*“Allah’ın gökleri ve yeri yönettiği günkü yazısına göre ayların sayısı on ikidir. Bunlardan dördü haram aylarıdır. Bu, dosdoğru bir nizamdır. Öyleyse o aylar içinde kendinize yazık etmeyin...”*** (Tevbe, 9/36)
+*“Allah’ın gökleri ve yeri yönettiği günkü yazısına göre ayların sayısı on ikidir. Bunlardan dördü haram aylarıdır. Bu, dosdoğru bir nizamdır. Öyleyse o aylar içinde kendinize yazık etmeyin...”* (Tevbe, 9/36)
 
 Hz. Peygamber (s.a.s) de ayet-i kerimede işaret edilen haram ayların Zilkade, Zilhicce, Muharrem ve Receb ayları olduğunu şu hadisiyle açıklamıştır:
 
@@ -42,7 +42,7 @@ Mübarek aylar arasında, kulları ruhen ve bedenen Ramazan’a hazırlayan Rece
 
 Nitekim Zünnun-i Mısri üç aylar hakkında şöyle demiştir:
 
-*“Recep tohum ekme ayıdır, Şaban sulama ayıdır, Ramazan hasat ayıdır. Herkes ne ekerse onu biçer. Ne yaparsa cezasını çeker.”*** Demek ki Receb ayı bizi Ramazana hazırlayan bir mevsimin ilk adımı oluyor. Ramazan ayına mümin kendisini hazırlayarak, derleyip toplayarak giriyor. Onun için, Receb ayı tevbe, Şaban ayı ibadetlere devam etme, Ramazan da mükâfatlarını alma ayıdır denilerek bu ayların birbirleriyle irtibatlı olduğu beyan edilmiştir.
+*“Recep tohum ekme ayıdır, Şaban sulama ayıdır, Ramazan hasat ayıdır. Herkes ne ekerse onu biçer. Ne yaparsa cezasını çeker.”* Demek ki Receb ayı bizi Ramazana hazırlayan bir mevsimin ilk adımı oluyor. Ramazan ayına mümin kendisini hazırlayarak, derleyip toplayarak giriyor. Onun için, Receb ayı tevbe, Şaban ayı ibadetlere devam etme, Ramazan da mükâfatlarını alma ayıdır denilerek bu ayların birbirleriyle irtibatlı olduğu beyan edilmiştir.
 
 Receb ayının değerini yücelten önemli bir hadise de İsra ve Mirac’tır. Peygamber Efendimizin (s.a.s) Mescid-i Harâm’dan Mescid-i Aksâ’ya gittiğini ifade eden İsrâ, oradan da yedi kat semaya yükseldiğini ifade eden Mirac olayı rivayetlere göre Receb ayında gerçekleşmiştir. (İbn Hacer, Fethu’l-bâri, VII, 203) Mirac’ta, Resûl-i Ekrem’e (s.a.s) beş vakit namazın, Âmenerrasûlü olarak bilinen Bakara sûresinin son 2 âyetinin ve “Allah’a şirk koşmayanların büyük günahlarının bağışlanabileceği” müjdesinin verilmesi (Müslim, Îmân, 279) Receb ayı için bir bereket vesilesidir.
 
@@ -94,7 +94,7 @@ Regaib Gecesinde isteklerimizi, arzularımızı gözden geçirmeliyiz. İstekler
 
 <p lang="ar" dir="rtl" class="ayet">وَهُوَ الَّذِي يَقْبَلُ التَّوْبَةَ عَنْ عِبَادِهِ وَيَعْفُوا عَنِ السَّيِّـَٔاتِ وَيَعْلَمُ مَا تَفْعَلُونَ</p>
 
-*“O, kullarının tevbesini kabul eden, günahlarını bağışlayan ve yaptıklarınızı bilendir.”*** (Şûrâ, 42/25) buyuran Rabbimiz, sonsuz merhamet sahibidir.
+*“O, kullarının tevbesini kabul eden, günahlarını bağışlayan ve yaptıklarınızı bilendir.”* (Şûrâ, 42/25) buyuran Rabbimiz, sonsuz merhamet sahibidir.
 
 Tevbe ile başlayalım gecenin ihyasına ve dua ile devam edelim. Rabbimiz:
 
@@ -108,7 +108,7 @@ Rabbimiz, kendisinden isteyeni asla kapısından kovmaz. Cenab-ı Hak, samimi bi
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ قَالَ مَنْ عَادَى لِى وَلِيًّا فَقَدْ آذَنْتُهُ بِالْحَرْبِ ، وَمَا تَقَرَّبَ إِلَىَّ عَبْدِى بِشَىْءٍ أَحَبَّ إِلَىَّ مِمَّا افْتَرَضْتُ عَلَيْهِ ، وَمَا يَزَالُ عَبْدِى يَتَقَرَّبُ إِلَىَّ بِالنَّوَافِلِ حَتَّى أُحِبَّهُ ، فَإِذَا أَحْبَبْتُهُ كُنْتُ سَمْعَهُ الَّذِى يَسْمَعُ بِهِ ، وَبَصَرَهُ الَّذِى يُبْصِرُ بِهِ ، وَيَدَهُ الَّتِى يَبْطُشُ بِهَا وَرِجْلَهُ الَّتِى يَمْشِى بِهَا ، وَإِنْ سَأَلَنِى لأُعْطِيَنَّهُ ، وَلَئِنِ اسْتَعَاذَنِى لأُعِيذَنَّهُ ، وَمَا تَرَدَّدْتُ عَنْ شَىْءٍ أَنَا فَاعِلُهُ تَرَدُّدِى عَنْ نَفْسِ الْمُؤْمِنِ ، يَكْرَهُ الْمَوْتَ وَأَنَا أَكْرَهُ مَسَاءَتَهُ</p>
 
-“*Kim benim bir veli kuluma (dostuma) düşmanlık ederse, ben de ona harp ilân ederim. Kulum, kendisine farz kıldığım şeylerden daha sevimli bir şeyle bana yaklaşamaz. Kulum nafile ibadetlerle de bana yaklaşmaya devam eder, ta ki ben onu severim. (Sevince de) artık onun işiten kulağı, gören gözü, tutan eli, yürüyen ayağı olurum. Benden isterse muhakkak ona (istediğini) veririm. Bana sığınırsa muhakkak onu korur ve kollarım.”*** (Buhârî, Rikâk, 38)
+“*Kim benim bir veli kuluma (dostuma) düşmanlık ederse, ben de ona harp ilân ederim. Kulum, kendisine farz kıldığım şeylerden daha sevimli bir şeyle bana yaklaşamaz. Kulum nafile ibadetlerle de bana yaklaşmaya devam eder, ta ki ben onu severim. (Sevince de) artık onun işiten kulağı, gören gözü, tutan eli, yürüyen ayağı olurum. Benden isterse muhakkak ona (istediğini) veririm. Bana sığınırsa muhakkak onu korur ve kollarım.”* (Buhârî, Rikâk, 38)
 
 Hadis-i kutside -manası Cenab-ı Hakka, sözü Hz. Peygamber’e (s.a.s) ait hadisler- Allah Teâlâ buyuruyor ki:
 
@@ -140,4 +140,4 @@ Regaib Kandili istekleri, arzuları, yönelişleri gözden geçirme vaktidir. Re
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ بَارِكْ لَنَا فِى رَجَبٍ وَشَعْبَانَ وَبَارِكْ لَنَا فِى رَمَضَان</p>
 
-“*Allah’ım! Receb ve Şaban’ı hakkımızda mübarek eyle, bizi Ramazan’a ulaştır...”*** (Taberânî, el-Mucemü’l-Evsat, IV, 189) Rabbimiz sağlık ve afiyet içerisinde kendisine kul olabilmeyi, O’na yönelebilmeyi lütfeylesin. Kandiliniz mübarek olsun.
+“*Allah’ım! Receb ve Şaban’ı hakkımızda mübarek eyle, bizi Ramazan’a ulaştır...”* (Taberânî, el-Mucemü’l-Evsat, IV, 189) Rabbimiz sağlık ve afiyet içerisinde kendisine kul olabilmeyi, O’na yönelebilmeyi lütfeylesin. Kandiliniz mübarek olsun.

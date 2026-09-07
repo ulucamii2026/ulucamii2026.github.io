@@ -66,7 +66,7 @@ Mekke’den Medine’ye hicret edenleri karşılayan onlara yardım elini uzatan
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذِينَ تَبَوَّؤُوا الدَّارَ وَالْإِيمَانَ مِن قَبْلِهِمْ يُحِبُّونَ مَنْ هَاجَرَ إِلَيْهِمْ وَلَا يَجِدُونَ فِي صُدُورِهِمْ حَاجَةً مِّمَّا أُوتُوا وَيُؤْثِرُونَ عَلَى أَنفُسِهِمْ وَلَوْ كَانَ بِهِمْ خَصَاصَةٌ وَمَن يُوقَ شُحَّ نَفْسِهِ فَأُوْلَئِكَ هُمُ الْمُفْلِحُونَ</p>
 
-**Onlardan (muhacirlerden) önce o yurda (Medine’ye) yerleşmiş ve imanı da gönüllerine yerleştirmiş olanlar, hicret edenleri severler. Onlara verilenlerden dolayı içlerinde bir rahatsızlık duymazlar. Kendileri son derece ihtiyaç içinde bulunsalar bile onları kendilerine tercih ederler. Kim nefsinin cimriliğinden, hırsından korunursa, işte onlar kurtuluşa erenlerin ta kendileridir**.” (Haşr Suresi 9)
+Onlardan (muhacirlerden) önce o yurda (Medine’ye) yerleşmiş ve imanı da gönüllerine yerleştirmiş olanlar, hicret edenleri severler. Onlara verilenlerden dolayı içlerinde bir rahatsızlık duymazlar. Kendileri son derece ihtiyaç içinde bulunsalar bile onları kendilerine tercih ederler. Kim nefsinin cimriliğinden, hırsından korunursa, işte onlar kurtuluşa erenlerin ta kendileridir.” (Haşr Suresi 9)
 
 Günümüzde de ister maddi ister manevi olsun yaşanılan güçlüklerden dolayı yerlerinden ayrılan başka yerlere göç etmiş kardeşlerimiz olabilir. Bizlerde bu durumla karşılan kardeşlerimize insanlığımıza ve Müslümanlığımıza yakışır şekilde davranışlarda bulunmalıyız.
 

@@ -44,9 +44,9 @@ Kur’an metninin uygulanması ve hayat sahnesine konmuş halini “Rasülullah�
 
 Hz. Peygamber, manası kapalı pek çok kelime ve ayeti açıklamakla birlikte Kur'an'da detaya girilmeden genel olarak işaret edilmiş birçok konuda ayrıntılı açıklamalar yapmıştır. Söz gelimi Kur'an'da namaz kılmak emredilmiş olmasına rağmen namazın nasıl kılınacağına değinilmemiş, buna karşın Peygamber Efendimiz;
 
-**صَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي**
+<p lang="ar" dir="rtl" class="ayet">صَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي</p>
 
-**"Namazı benden gördüğünüz gibi kılın."**(Buhari, Ezan, 18) buyurarak namazın kılınış şeklini ve vakitlerini ashabına uygulamalı olarak öğretmişti. Aynı şekilde hac konusunda da, **"Hac ibadetinin gereklerini benden öğrenin.”** (Müslim, Hac, 310) buyurarak haccın menasikini de yaşayarak öğretmişti. Bu ve benzer birçok ibadetin uygulanışını sünnetten öğrenmekteyiz. Bu ve benzeri örnekler Peygamberimizin hüküm koymada aktif bir rol aldığını göstermektedir. Bundan dolayı sünnet, Kur'an'dan sonra ikinci bilgi ve uygulama kaynağı olmuştur.
+"Namazı benden gördüğünüz gibi kılın."(Buhari, Ezan, 18) buyurarak namazın kılınış şeklini ve vakitlerini ashabına uygulamalı olarak öğretmişti. Aynı şekilde hac konusunda da, "Hac ibadetinin gereklerini benden öğrenin.” (Müslim, Hac, 310) buyurarak haccın menasikini de yaşayarak öğretmişti. Bu ve benzer birçok ibadetin uygulanışını sünnetten öğrenmekteyiz. Bu ve benzeri örnekler Peygamberimizin hüküm koymada aktif bir rol aldığını göstermektedir. Bundan dolayı sünnet, Kur'an'dan sonra ikinci bilgi ve uygulama kaynağı olmuştur.
 
 Sahâbîler, Hz. Peygamberin vefatından sonra bir mesele ile karşılaştıklarında, Kur'an da yer almayan konularda sünnete başvurmuşlardır. Peygamber Efendimizin, kıyamet günü âlimlerin önünde yürüyeceğini söyleyerek ilmî kişiliğini övdüğü genç sahâbîsi Muâz b. Cebel'i Yemen'e vali olarak göndereceği zaman aralarında şöyle bir konuşma geçmişti:
 
@@ -62,7 +62,7 @@ Sahâbîler, Hz. Peygamberin vefatından sonra bir mesele ile karşılaştıklar
 
 -Kendi görüşümle içtihad ederek bir karara varacak ve ona göre hüküm vereceğim.
 
-Bunun üzerine Hz. Peygamber: **"Resul’ünün elçisini (Resûlü'nün arzuladığı cevabı vermeye) muvaffak kılan Allah'a hamdolsun."** buyurmuştu. (Tirmizi, Ahkâm, 3)
+Bunun üzerine Hz. Peygamber: "Resul’ünün elçisini (Resûlü'nün arzuladığı cevabı vermeye) muvaffak kılan Allah'a hamdolsun." buyurmuştu. (Tirmizi, Ahkâm, 3)
 
 ### PEYGAMBERLERE KARŞI GÖREVLERİMİZ
 
@@ -72,15 +72,15 @@ Bunun üzerine Hz. Peygamber: **"Resul’ünün elçisini (Resûlü'nün arzulad
 
 “Resûlullah’a itaat eden Allah’a itaat etmiş olur, yüz çevirenlere gelince seni onlara bekçi olarak göndermedik.” (Nisa 4/80)
 
-**مَنْ أَطَاعَنِى فَقَدْ أَطَاعَ اللَّهَ وَمَنْ عَصَانِى فَقَدْ عَصَى اللَّهَ**
+<p lang="ar" dir="rtl" class="ayet">مَنْ أَطَاعَنِى فَقَدْ أَطَاعَ اللَّهَ وَمَنْ عَصَانِى فَقَدْ عَصَى اللَّهَ</p>
 
-**“Bana itaat eden Allah’a itaat etmiş olur; bana isyan eden de Allah’a karşı gelmiş olur.”** (İbn Mace, Mukaddime, 3)
+“Bana itaat eden Allah’a itaat etmiş olur; bana isyan eden de Allah’a karşı gelmiş olur.” (İbn Mace, Mukaddime, 3)
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اِنْ كُنْتُمْ تُحِبُّونَ اللّٰهَ فَاتَّبِعُونٖي يُحْبِبْكُمُ اللّٰهُ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْؕ وَاللّٰهُ غَفُورٌ رَحٖيمٌ</p>
 
 De ki: “Eğer Allah’ı seviyorsanız bana uyun ki Allah da sizi sevsin ve günahlarınızı bağışlasın. Allah çok bağışlayıcı, çok esirgeyicidir.” (Al-i İmran 3/31)
 
-Hz. Peygamber'in şu hadisi de Kur'an'ı ön plana alıp sünneti öteleyen zihniyete karşı bize bir uyarı niteliğindedir: **"Sizden birinizi, emrettiğim veya yasakladığım bir konu kendisine iletildiğinde, sakın köşesine yaslanmış olarak (cahilce), 'Biz Allah'ın Kitabı'nda ne bulursak ona uyarız (hadis tanımayız!) derken bulmayayım!”** (Tirmizi, İlim 10)
+Hz. Peygamber'in şu hadisi de Kur'an'ı ön plana alıp sünneti öteleyen zihniyete karşı bize bir uyarı niteliğindedir: "Sizden birinizi, emrettiğim veya yasakladığım bir konu kendisine iletildiğinde, sakın köşesine yaslanmış olarak (cahilce), 'Biz Allah'ın Kitabı'nda ne bulursak ona uyarız (hadis tanımayız!) derken bulmayayım!” (Tirmizi, İlim 10)
 
 HER ŞEYDEN VE HERKESTEN DAHA ÇOK SEVMEK
 
@@ -88,11 +88,11 @@ HER ŞEYDEN VE HERKESTEN DAHA ÇOK SEVMEK
 
 “Peygamber, mü’minler için kendi canlarından ileridir.” (Ahzab 33/6)
 
-**لاَ يُؤْمِنُ أَحَدُكُمْ حَتَّى أَكُونَ أَحَبَّ إِلَيْهِ مِنْ وَالِدِهِ وَوَلَدِهِ وَالنَّاسِ أَجْمَعِينَ**
+<p lang="ar" dir="rtl" class="ayet">لاَ يُؤْمِنُ أَحَدُكُمْ حَتَّى أَكُونَ أَحَبَّ إِلَيْهِ مِنْ وَالِدِهِ وَوَلَدِهِ وَالنَّاسِ أَجْمَعِينَ</p>
 
-**“Sizden biriniz, beni anasından-babasından, çoluk-çocuğundan ve bütün insanlardan daha çok sevmedikçe iman etmiş olmaz.”** (Buhâri, İman 8; Müslim, İmân 70)
+“Sizden biriniz, beni anasından-babasından, çoluk-çocuğundan ve bütün insanlardan daha çok sevmedikçe iman etmiş olmaz.” (Buhâri, İman 8; Müslim, İmân 70)
 
-Enes (r.a)’den şöyle dediği rivayet olunmuştur: Bir bedevi Resûlullah (s.a.s)’e: Kıyamet ne zaman kopacak? diye sordu. Efendimiz: **“Kıyamet için ne hazırladın?”** buyurdu. Allah ve Resûlünün sevgisini, dedi. Bunun üzerine Hz. Peygamber: **“O halde sen, sevdiğin ile berabersin.”** buyurdu. (Buhârî, Edeb, 96)
+Enes (r.a)’den şöyle dediği rivayet olunmuştur: Bir bedevi Resûlullah (s.a.s)’e: Kıyamet ne zaman kopacak? diye sordu. Efendimiz: “Kıyamet için ne hazırladın?” buyurdu. Allah ve Resûlünün sevgisini, dedi. Bunun üzerine Hz. Peygamber: “O halde sen, sevdiğin ile berabersin.” buyurdu. (Buhârî, Edeb, 96)
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اِنْ كَانَ اٰبَٓاؤُ۬كُمْ وَاَبْنَٓاؤُ۬كُمْ وَاِخْوَانُكُمْ وَاَزْوَاجُكُمْ وَعَشٖيرَتُكُمْ وَاَمْوَالٌۨ اقْتَرَفْتُمُوهَا وَتِجَارَةٌ تَخْشَوْنَ كَسَادَهَا وَمَسَاكِنُ تَرْضَوْنَـهَٓا اَحَبَّ اِلَيْكُمْ مِنَ اللّٰهِ وَرَسُولِهٖ وَجِهَادٍ فٖي سَبٖيلِهٖ فَتَرَبَّصُوا حَتّٰى يَأْتِيَ اللّٰهُ بِاَمْرِهٖؕ وَاللّٰهُ لَا يَهْدِي الْقَوْمَ الْفَاسِقٖينَ</p>
 
@@ -132,13 +132,13 @@ Ticareti, alışverişi, ortaklığı, çarşı pazarı, alacaklı olmayı, bor�
 
 Günümüz insanı, peygamberimizi örnek almayı, onun gibi eş, onun gibi baba, onun gibi komşu, onun gibi vatandaş, hasılı onun gibi insan olmak şeklinde anladığı ve bunu gerçekleştirmeye koyulduğu zaman, gündelik hayatı da dâhil, toplum hayatında ne kadar büyük bir değişikliğin ve manevi zenginliğin meydana geldiğini kendiliğinden fark edecektir.
 
-**قَالَ رَسُولُ اللَّهِ صَلَّي اللَّهُ عَلَيْهِ وَسَلَّمَ :تَرَكْتُ فِيكُمْ أَمْرَيْنِ لَنْ تَضِلُّوا مَا تَمَسَّكْتُمْ بِهِمَا كِتَابَ اللَّهِ وَسُنَّةَ نَبِيِّهِ**
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ صَلَّي اللَّهُ عَلَيْهِ وَسَلَّمَ :تَرَكْتُ فِيكُمْ أَمْرَيْنِ لَنْ تَضِلُّوا مَا تَمَسَّكْتُمْ بِهِمَا كِتَابَ اللَّهِ وَسُنَّةَ نَبِيِّهِ</p>
 
-Hz. Peygamber (s.a.v) şöyle buyurmuştur: **“Size iki şey bırakıyorum. Onlara sımsıkı sarıldığınız sürece yolunuzu asla şaşırmazsınız: Bunlar, Allah’ın Kitabı ve Peygamberinin sünnetidir.”** (Muvatta’, Kader, 3)
+Hz. Peygamber (s.a.v) şöyle buyurmuştur: “Size iki şey bırakıyorum. Onlara sımsıkı sarıldığınız sürece yolunuzu asla şaşırmazsınız: Bunlar, Allah’ın Kitabı ve Peygamberinin sünnetidir.” (Muvatta’, Kader, 3)
 
-**مَنْ اَحْيَا سُنَّتِى فَقَدْ اَحَبّنى وَمنْ اَحَبَّنِى كَانَ مَعِى فِى الْجَنَّةِ**
+<p lang="ar" dir="rtl" class="ayet">مَنْ اَحْيَا سُنَّتِى فَقَدْ اَحَبّنى وَمنْ اَحَبَّنِى كَانَ مَعِى فِى الْجَنَّةِ</p>
 
-**“Kim benim sünnetimi ihya ederse beni sevmiş olur. Beni seven de cennette benimle beraber olur.”** (Tirmizi, Sünen, İlim, 39/16)
+“Kim benim sünnetimi ihya ederse beni sevmiş olur. Beni seven de cennette benimle beraber olur.” (Tirmizi, Sünen, İlim, 39/16)
 
 Kıssa: Hayber'in fethi esnasında İslam'la şereflenen İmrân b. Husayn mescitte oturduğu bir esnada, şefaat ile ilgili konuşurlarken adamın biri, "Ey Ebû Nüceyd! Bize Kur'an'da bulunmayan konulardan bahsediyorsunuz!" diyerek onun Kur'an'dan değil de Hz. Peygamber'in sünnetinden bahsetmesinden rahatsız olmuştu. Bunun üzerine İmrân öfkelenerek: Sen Kur'an'ı okuyorsun (değil mi?) -Evet.
 
@@ -152,11 +152,11 @@ Bu hadise de bize Efendimizin Kur’an’ı açıklama ve hüküm koyma yetkisin
 
 <p lang="ar" dir="rtl" class="ayet">وَمَٓا اٰتٰيكُمُ الرَّسُولُ فَخُذُوهُ وَمَا نَهٰيكُمْ عَنْهُ فَانْتَهُواۚ</p>
 
-**"Peygamber size ne verdiyse onu alın, size ne yasakladıysa ondan da sakının."**(Haşr 59/7) emri de bu anlamı içermekteydi. Aynı hususu Peygamber (sav) de belirtmekteydi:
+"Peygamber size ne verdiyse onu alın, size ne yasakladıysa ondan da sakının."(Haşr 59/7) emri de bu anlamı içermekteydi. Aynı hususu Peygamber (sav) de belirtmekteydi:
 
-**عَنْ أَبِي هُرَيْرَةَ ، قَال : قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ : مَا أَمَرْتُكُمْ بِهِ فَخُذُوهُ ، وَمَا نَهَيْتُكُمْ عَنْهُ فَانْتَهُوا**
+<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِي هُرَيْرَةَ ، قَال : قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ : مَا أَمَرْتُكُمْ بِهِ فَخُذُوهُ ، وَمَا نَهَيْتُكُمْ عَنْهُ فَانْتَهُوا</p>
 
-Ebû Hüreyre'den (ra) rivayet edildiğine göre Resûlullah (sav) şöyle buyurmuştur: **"Size ne emrettimse onu yapınız; size neyi yasakladımsa ondan sakınınız"**(İbn Mâce, Sünnet, 1)
+Ebû Hüreyre'den (ra) rivayet edildiğine göre Resûlullah (sav) şöyle buyurmuştur: "Size ne emrettimse onu yapınız; size neyi yasakladımsa ondan sakınınız"(İbn Mâce, Sünnet, 1)
 
 En Güzel Mükâfat: Cennet
 
@@ -178,9 +178,9 @@ En Güzel Mükâfat: Cennet
 
 Ebû Hüreyre'den nakledildiğine göre, bir gün Resulullah (sav) şöyle buyurmuştu:
 
-**عَنْ أَبِي هُرَيْرَةَ ، أَنّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ , قَالَ : كُلُّ أُمَّتِي يَدْخُلُ الْجَنَّةَ يَوْمَ الْقِيَامَةِ إِلَّا مَنْ أَبَى قَالُوا: وَمَنْ يَأْبَى يَا رَسُولَ اللَّهِ ؟ قَالَ : مَنْ أَطَاعَنِي دَخَلَ الْجَنَّةَ ، وَمَنْ عَصَانِي فَقَدْ أَبَى**
+<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِي هُرَيْرَةَ ، أَنّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ , قَالَ : كُلُّ أُمَّتِي يَدْخُلُ الْجَنَّةَ يَوْمَ الْقِيَامَةِ إِلَّا مَنْ أَبَى قَالُوا: وَمَنْ يَأْبَى يَا رَسُولَ اللَّهِ ؟ قَالَ : مَنْ أَطَاعَنِي دَخَلَ الْجَنَّةَ ، وَمَنْ عَصَانِي فَقَدْ أَبَى</p>
 
-**"Ümmetimin hepsi cennete girecektir, yüz çeviren müstesna!"** Orada bulunanlar **"Ey Allah'ın Resulü, yüz çeviren kim?"** diye sorunca, Hz. Peygamber **"Bana itaat eden cennete girer. Bana isyan eden yüz çevirmiş demektir."** şeklinde cevap vermişti. (Buhari, İ’tisam, 2)
+"Ümmetimin hepsi cennete girecektir, yüz çeviren müstesna!" Orada bulunanlar "Ey Allah'ın Resulü, yüz çeviren kim?" diye sorunca, Hz. Peygamber "Bana itaat eden cennete girer. Bana isyan eden yüz çevirmiş demektir." şeklinde cevap vermişti. (Buhari, İ’tisam, 2)
 
 <p lang="ar" dir="rtl" class="ayet">فَاسْتَمْسِكْ بِالَّـذٖٓي اُو۫حِيَ اِلَيْكَۚ اِنَّكَ عَلٰى صِرَاطٍ مُسْتَقٖيمٍ</p>
 

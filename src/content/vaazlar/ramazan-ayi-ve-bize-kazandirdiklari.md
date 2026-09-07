@@ -18,7 +18,7 @@ Kâinatta hiçbir şey boş yere yaratılmamış, varolan her şey bir hikmet ve
 
 Hayat kitabımız Kur’an-ı Kerim yaratılış gayemizin Allah Teala’ya ibadet etmek olduğunu ifade ediyor: وَمَا خَلَقْتُ الْجِنَّ وَالْاِنْسَ اِلَّا لِيَعْبُدُونِ
 
-*Ben cinleri ve insanları, ancak bana kulluk etsinler diye yarattım.*** *(Zariyat, 51/56).*
+*Ben cinleri ve insanları, ancak bana kulluk etsinler diye yarattım.* *(Zariyat, 51/56).*
 
 Demek ki; Ademoğlunun varoluşunun, yaratılışının gerçek amacı Allah Teala’ya kullukta bulunmak, O’na kul olmak, O’na ibadet etmektir. Kişi bu gayeyi gerçekleştirebildiği ölçüde hem bu dünyada mutlu ve mesut olacak, hem de ahiret aleminde ebedi olarak mutlu ve bahtiyar olacağı bir yurda yerleşecek. Bu gayeyi gerçekleştirebilme adına hiçbir şey yapmaz, haramları çiğner, farzları yerine getirmez, hasılı Allah Teala’ya sırtını döner, heva ve hevesine kapılırsa işte o zaman bu dünyada da huzura eremez, ahirette de hüsrana uğrayanlardan olur.
 
@@ -88,7 +88,7 @@ Allah katında "yalancı/kezzâb" olarak tescillenir.” حَتَّى يُكْت
 
 Ramazan ayında oruçlarımızın kabulü için ve oruçlarımızdan elde edeceğimiz sevapların heba olmaması için yalan sözden nasıl uzak kaldıysak, bundan sonraki yaşantımızda da aynı hassasiyeti devam ettirelim. Müslümana yakışan her daim doğru olmak, doğru sözlü ve güvenilir olmaktır. قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم: كَفَى بِالْمَرْءِ كَذِبًا أَنْ يُحَدِّثَ بِكُلِّ مَا سَمِعَ
 
-“Her işittiğini aktarmak kişiye yalan olarak yeter*.*” (Müslim, Mukaddime, 5).
+“Her işittiğini aktarmak kişiye yalan olarak yeter.” (Müslim, Mukaddime, 5).
 
 Sabrı kuşandık.
 
@@ -120,25 +120,25 @@ Namaz üzerimize beş vakit olarak farz kılınmış bir ibadettir. Kur’an-ı 
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الصَّلٰوةَ كَانَتْ عَلَى الْمُؤْمِن۪ينَ كِتَاباً مَوْقُوتاً</p>
 
-*Şüphesiz namaz, mü'minlere belirli vakitlere bağlı olarak farz kılınmıştır.*** *(Nisa, 4/103).*
+*Şüphesiz namaz, mü'minlere belirli vakitlere bağlı olarak farz kılınmıştır.* *(Nisa, 4/103).*
 
 Hz. Peygamber (sav), namazı dinin direği diye nitelendirmiş, beş vakit namazı rukularına, secdelerine, abdestine ve vakitlerine riayet ederek kılmaya devam eden ve bu namazın Allah’tan gelen bir emr-i Hakk olduğunu kabul eden kimselerin cennete gireceğini müjdelemiştir.
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ (صَ لَّى اللَّهُ عَلَيْهِ وَ سَلَّم) : “قَالَ اللَّهُ عَزَّ وجَلَّ: إِنِّى فَرَضْتُ عَلَى أُمَّتِكَ خَمْسَ صَلَوَاتٍ وَعَهِدْتُ عِنْدِى عَهْدًا أَنَّهُ مَنْ جَاءَ يُحَافِظُ عَلَيْهِنَّ لِوَقْتِهِنَّ أَدْخَلْتُهُ الْجَنَّةَ وَمَنْ لَمْ يُحَافِظْ عَلَيْهِنَّ فَلاَ عَهْدَ لَهُ عِنْدِى</p>
 
-*Yüce Allah şöyle buyurdu: ‘Senin ümmetine beş vakit namazı farz kıldım ve onları, vaktinde ve hakkını vererek kılanları cennete koyacağımı kendi katımda vaad ettim. Namazları düzenli kılmayanlar için ise katımda böyle bir vaad yoktur.’*** *”(Ebû Dâvûd, Salât, 9).*
+*Yüce Allah şöyle buyurdu: ‘Senin ümmetine beş vakit namazı farz kıldım ve onları, vaktinde ve hakkını vererek kılanları cennete koyacağımı kendi katımda vaad ettim. Namazları düzenli kılmayanlar için ise katımda böyle bir vaad yoktur.’* *”(Ebû Dâvûd, Salât, 9).*
 
 Namaz, oruç gibi sadece ramazan ayında farz kılınmış değildir. Her gün beş vakit olmak üzere vakitli olarak her müslümana farz kılınmış bir ibadettir. Namazı sadece ramazan ayına hasretmek, sadece ramazanda kılıp diğer zamanlarda terketmek müslümana yakışan bir tutum değildir. Zira Allah Rasulü (sav), namazı mü’minin miracı olarak nitelemiş, gözümün nuru diye anmış, son zamanlarındaki hastalığına rağmen namaz kılmaya çabalamış, namazı kesinlikle hiçbir zaman aksatmamış, hele hiç ihmal etmemiştir. Kur’an-ı Kerim, namazın Allah’tan gereği gibi sakınanlardan başkasına ağır geleceğini haber vermektedir.
 
 <p lang="ar" dir="rtl" class="ayet">وَاسْتَع۪ينُوا بِالصَّبْرِ وَالصَّلٰوةِۜ وَاِنَّهَا لَكَب۪يرَةٌ اِلَّا عَلَى الْخَاشِع۪ينَۙ</p>
 
-*Sabrederek ve namaz kılarak (Allah'tan) yardım dileyin. Şüphesiz namaz, Allah'a derinden saygı duyanlardan başkasına ağır gelir.*** *(Bakara, 2/45).*
+*Sabrederek ve namaz kılarak (Allah'tan) yardım dileyin. Şüphesiz namaz, Allah'a derinden saygı duyanlardan başkasına ağır gelir.* *(Bakara, 2/45).*
 
 Namazlarını ihmal eden kardeşlerimiz Ramazan ayında namazlarını kılmaya başladılar. Ancak Ramazan ayı geçtikten sonra da namazlarımızı kılmaya devam etmeliyiz. Unutmayalım ki, namaz bizim Allah Teala ile irtibatımızı sağlayan en önemli ibadettir.
 
 <p lang="ar" dir="rtl" class="ayet">حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلٰوةِ الْوُسْطٰى وَقُومُوا لِلّٰهِ قَانِت۪ينَ</p>
 
-*Namazlara ve orta namaza devam edin. Allah'a gönülden boyun eğerek namaza durun.*** *(Bakara, 2/238).*
+*Namazlara ve orta namaza devam edin. Allah'a gönülden boyun eğerek namaza durun.* *(Bakara, 2/238).*
 
 Zekat ve sadakalarımızı verdik.
 
@@ -184,7 +184,7 @@ Allah Rasulu Kur’an-ı Kerim okuyan mü’min ile okumayan mü’min ve dahas�
 
 <p lang="ar" dir="rtl" class="ayet">« إِنَّ الَّذِى لَيْسَ فِى جَوْفِهِ شَىْءٌ مِنَ الْقُرْآنِ كَالْبَيْتِ الْخَرِبِ »</p>
 
-*“Kalbinde Kur’an’dan bir miktar bulunmayan kimse harap ev gibidir.”*** *(Tirmizî, Fedâilü’l-Kur’ân, 18).*
+*“Kalbinde Kur’an’dan bir miktar bulunmayan kimse harap ev gibidir.”* *(Tirmizî, Fedâilü’l-Kur’ân, 18).*
 
 Ömür boyu ibadet.
 
@@ -198,7 +198,7 @@ Gerek İbrahim (as) gerek Musa (as) kendi oğullarına ölünceye kadar Allah Te
 
 Hz. Peygamber (sav) de hayatı boyunca Allah Teala’ya kulluk vazifelerini yerine getirmiş, hiçbir zaman bıkkınlık yahut tembellik göstermemiş, her daim Allah-ü Zü’l-Celal’in hoşnutluk ve rızasını gözetmiştir.
 
-***Sana ölüm gelinceye kadar Rabbine ibadet et. (Hicr, 15/99).***وَاعْبُدْ رَبَّكَ حَتّٰى يَأْتِيَكَ الْيَق۪ينُ
+Sana ölüm gelinceye kadar Rabbine ibadet et. (Hicr, 15/99).وَاعْبُدْ رَبَّكَ حَتّٰى يَأْتِيَكَ الْيَق۪ينُ
 
 Kur’an-ı Kerim bizlere ahiret hayatı hakkında bilgi verir ve o günde, dünya hayatına kapılıp ahireti için hiçbir şey yapmayanların pişmanlıklarını dile getirir.
 

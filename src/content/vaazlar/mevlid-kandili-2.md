@@ -64,16 +64,16 @@ Günümüz insanı, peygamberimizi örnek almayı, onun gibi eş, onun gibi baba
 
 İslam toplumlarının bugün karşı karşıya bulunduğu problemlerin çözümünde, ifade etmeye çalıştığımız bu örnek almanın çok büyük rolü olacaktır. Ancak, peygamberimizi örnek alma işinin söylendiği kadar kolay bir iş olmadığı da açıktır. Ama dindar insandan beklenen, öncelikle bu zora tâlip olması, onu gerçekleştirmek için çaba sarf etmesidir. Bunun gerçekleşmesi, öncelikle onun hayatının iyi öğrenilmesi ve doğru değerlendirilmesiyle mümkün olabilecek bir konudur. Çünkü bir şeyin örneğini, çıkarma işleminde olduğu gibi, bir insanı örnek alma hususunda da, örneği alınacak insanın doğru tanınması ve hakkında yeterli bilgi sahibi olunması zaruridir. Bu bakımdan sevgili peygamberimizin hayatının; inanan insan için özel bir anlamı vardır, çünkü inanan kişi, dini hükümlerin yaşantı haline dönüştüğünü, ahlaki değerlerin de somutlaştığını görür O'nu örnek almak demek;
 
-*   **Güvenilir olmak demek,** (Emanetlerini O'na veriyorlar, "Emin" diyorlardı.)
-*   **Affedici olmak demek,** (Mekkelileri toptan affetmişti.)
-*   **Merhametli olmak demek,** (Ağır tahriklere rağmen beddua etmemiştir. Taif..)
-*   **Sözünde durmak demek,** (Hudeybiye günü Ebu Cendel'i geri vermesi.)
-*   **Cömert olmak demek,** (Ölüm hastalığında yanında bulunan üç dinarı dağıtmak..)
-*   **Alçakgönüllü olmak demek,** (Ben kurutulmuş et yiyen bir kadının oğluyum…)
-*   **Çalışkan olmak demek,** (İşlerini kendisi yapmak isterdi, söküğünü dikerdi..)
-*   **Dosdoğru olmak demek,** (Size bir düşman saldıracak desem bana inanır mısınız?)
-*   **Adaletli olmak demek,** (Kızım Fatıma dahi çalsa…)
-*   **Vefakar olmak demek,** (Geceler boyu ayakta durup ibadet etmek.)
+*   Güvenilir olmak demek, (Emanetlerini O'na veriyorlar, "Emin" diyorlardı.)
+*   Affedici olmak demek, (Mekkelileri toptan affetmişti.)
+*   Merhametli olmak demek, (Ağır tahriklere rağmen beddua etmemiştir. Taif..)
+*   Sözünde durmak demek, (Hudeybiye günü Ebu Cendel'i geri vermesi.)
+*   Cömert olmak demek, (Ölüm hastalığında yanında bulunan üç dinarı dağıtmak..)
+*   Alçakgönüllü olmak demek, (Ben kurutulmuş et yiyen bir kadının oğluyum…)
+*   Çalışkan olmak demek, (İşlerini kendisi yapmak isterdi, söküğünü dikerdi..)
+*   Dosdoğru olmak demek, (Size bir düşman saldıracak desem bana inanır mısınız?)
+*   Adaletli olmak demek, (Kızım Fatıma dahi çalsa…)
+*   Vefakar olmak demek, (Geceler boyu ayakta durup ibadet etmek.)
 
 ## Peygamber
 
@@ -152,7 +152,7 @@ Bu gece rahmet iklimine açılma gecesi. Bu gece arınma gecesi. Bu gece bağı�
 
 Bu gece ellerimizi semaya gönlümüzü Mevla’ya açalım. Bu gece günahlardan ve günaha götürebilecek şeylerden olabildiğince kaçmaya çalışalım. Bu gece en güzel kelimeleri söylemeye, dualarla niyazda bulunalım. Kuran’ı okumaya, Salat-u Selamları getirmeye gayret gösterelim. Unutmayalım ki, bu gece bizler için büyük bir lütuf. Kandil Gecelerini ihya etmek, gönlümüzü ihya etmektir. Böyle günler ve geceler bizler için birer fırsattır. Bu sebeple bu gecede şu hususları yerine getirmemiz, İnşallah bu günün feyiz ve bereketinden yararlanmamıza vesile olacaktır.
 
-1.  **Tevbe ve istiğfar yapmak:** Hayatımızın her anında hataya düşen biz kullar için vazgeçemeyeceğimiz en temel husustur tevbe ve istiğfar. Yapmış olduğumuz hatalarımızı gözden geçirmenin en güzel anlarından biride bu kandil geceleridir. Bu gece Rabbimizin bizlerden istediği Nasuh tövbesi için bir fırsat gecesidir. Ayette
+1.  Tevbe ve istiğfar yapmak: Hayatımızın her anında hataya düşen biz kullar için vazgeçemeyeceğimiz en temel husustur tevbe ve istiğfar. Yapmış olduğumuz hatalarımızı gözden geçirmenin en güzel anlarından biride bu kandil geceleridir. Bu gece Rabbimizin bizlerden istediği Nasuh tövbesi için bir fırsat gecesidir. Ayette
 
 <p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الاذِينَ آمَنُوا تُوبُوا إِلَى ّللاا ِ تَوْبَةً ناصُوحًا</p>
 
@@ -162,21 +162,21 @@ Bu gece ellerimizi semaya gönlümüzü Mevla’ya açalım. Bu gece günahlarda
 
 “Hepiniz Allah’a tövbe edin, ey mü’minler! Belki böylece korktuğunuzdan kurtulur, umduğunuzu elde edebilirsiniz.”(Nur, 24/31)ayrım yapmadan hacımız hocamız herkes tevbe etmelidir. Bu sebeple, bu gecede Yüce Rabbimize yapmış olduğumuz günah, hata ve isyanlarımız için tevbe edelim, istiğfarda bulunalım. Sevgili Peygamberimize tabi olarak tövbemizi çokça yapalım. Çünkü peygamber “ben günde 100 kez allah’ tevbe ediyorum” buyurmuştur. Günahlar insanların sırtında yüktür. Bu gece ise bu yükü hafifletme vaktidir. Onun yolu ise tövbedir.
 
-2.  **Kur’an-ı Kerim okumak:** Bizlere hidayet rehberi olarak gönderilen, gözümüzün nuru, kutsal kitabımız Kuran- Kerimi okumak bu geceye daha güzel bir anlam katacaktır. Faziletlerin en büyüğü olan Kuran- ı Kerim’i bu gecemizde okumaya özen gösterelim. Çünkü Sevgili Peygamberimiz şöyle buyurmaktadır.
+2.  Kur’an-ı Kerim okumak: Bizlere hidayet rehberi olarak gönderilen, gözümüzün nuru, kutsal kitabımız Kuran- Kerimi okumak bu geceye daha güzel bir anlam katacaktır. Faziletlerin en büyüğü olan Kuran- ı Kerim’i bu gecemizde okumaya özen gösterelim. Çünkü Sevgili Peygamberimiz şöyle buyurmaktadır.
 
 <p lang="ar" dir="rtl" class="ayet">ِاقْرَؤُا القُرْآنَ فإِناهُ يَأْتي يَوْم القيامةِ شَفِيعاً ألصْحابِه</p>
 
 “Kur’an okuyunuz. Çünkü Kur’an, kıyamet gününde kendisini okuyanlara şefaatçi olarak gelecektir”(Riyazü’s-Salihin, Hadis No: 993)Geçmişlerimizi Kuranın nuruyla nurlandıralım. Ölmüşlerimizin ruhlarını Yasinlerle, Mülklerile, Amme suresiyle, en azından fatiha ve ihlas sürelerini okumak suretiyle ruhlarını şad edelim.
 
-3.  **Salâtü-Selâm getirmek:** Alemlere rahmet olarak gönderilen Sevgililer Sevgilisi Efendimiz Hz. Muhammed Mustafa (s.a.s.) salat ve selam olsun. Her daim kendisine yapılan selama karşılık veren Sevgili Peygamberimize bu gecede olan bağlılığımızı ve O’na olan sevgimizi çokça salat ve selam getirmekle ifade edeceğiz. Çünkü bu Yüce Rabbimizin bizlere bir emridir. Kur’an-ı Kerimde şöyle buyrulmaktadır.
+3.  Salâtü-Selâm getirmek: Alemlere rahmet olarak gönderilen Sevgililer Sevgilisi Efendimiz Hz. Muhammed Mustafa (s.a.s.) salat ve selam olsun. Her daim kendisine yapılan selama karşılık veren Sevgili Peygamberimize bu gecede olan bağlılığımızı ve O’na olan sevgimizi çokça salat ve selam getirmekle ifade edeceğiz. Çünkü bu Yüce Rabbimizin bizlere bir emridir. Kur’an-ı Kerimde şöyle buyrulmaktadır.
 
 <p lang="ar" dir="rtl" class="ayet">إِنا ّللاا َ وَمَالَئِكَتَهُ يُصَلُّونَ عَلَى ًالنابِيهِ يَا أَيُّهَا الاذِينَآمَنُوا صَلُّوا عَلَيْهِ وَسَلهِمُوا تَسْلِيما</p>
 
 “Şüphesiz Allah ve melekleri Peygamber’e salât ediyorlar. Ey iman edenler! Siz de ona salât edin, selam edin.”(Ahzab, 33/56)
 
-4.  **Kaza veya Nafile Namaz Kılmak:** Geçmiş günlerimizde kılamadığımız namazlarımız var ise bu geceyi kaza namazıyla geçirelim. Hiç değilse, Bu Kandil Gecesinde en az beş vakit (bir günlük) geçmiş namazlardan kaza edelim. Üzerimizde kaza borcu yok ise nafile namaz kılalım kandil gecesini ibadetle ihya etmiş, değerlendirmiş oluruz.
+4.  Kaza veya Nafile Namaz Kılmak: Geçmiş günlerimizde kılamadığımız namazlarımız var ise bu geceyi kaza namazıyla geçirelim. Hiç değilse, Bu Kandil Gecesinde en az beş vakit (bir günlük) geçmiş namazlardan kaza edelim. Üzerimizde kaza borcu yok ise nafile namaz kılalım kandil gecesini ibadetle ihya etmiş, değerlendirmiş oluruz.
 
-5.  **Ziyaretleşme:** Anne ve babalarımızın hayatta ve yanımızda ise ellerini öpmeli, onların hayır dualarını almalı, uzakta iseler bir telefon açmak suretiyle bu feyizli gecede kendilerini memnun etmeye çaba göstermeli, dualarıyla hayatımızı güzelleştirmeliyiz. Yüce Allah hem erkeğe hem de kadına ana-babasına karşı saygılı olmasını istemiştir. Nitekim Kur’an-ı Kerim’de bu hususa şöyle işaret edilmektedir.
+5.  Ziyaretleşme: Anne ve babalarımızın hayatta ve yanımızda ise ellerini öpmeli, onların hayır dualarını almalı, uzakta iseler bir telefon açmak suretiyle bu feyizli gecede kendilerini memnun etmeye çaba göstermeli, dualarıyla hayatımızı güzelleştirmeliyiz. Yüce Allah hem erkeğe hem de kadına ana-babasına karşı saygılı olmasını istemiştir. Nitekim Kur’an-ı Kerim’de bu hususa şöyle işaret edilmektedir.
 
 <p lang="ar" dir="rtl" class="ayet">َوَقَضٰى رَبُّكَ اََّلا تَعْبُدُُٓوا اَِّلا ُٓ اِيااهُ وَبِالْوَالِدَيْنِ اِحْسَانًاۜ اِماا يَبْلُغَنا عِنْدَكَ الْكِبَرَ اَح دُهُمَُٓا اَوْ كِالَهُمَا فَالَ تَقُلْ لَهُمَُٓا اُفه وََّلَ تَنْهَرْهُمَا وَقُلْ لَهُمَا قَوَّْلً كَر۪يمًا َوَاخْفِضْ لَهُمَا جَنَاحَ الذُّلهِ مِن ۜالراحْمَةِ وَقُلْ رَبهِ ارْحَمْهُمَا كَمَا رَبايَان۪ي صَغ۪يرًا</p>
 

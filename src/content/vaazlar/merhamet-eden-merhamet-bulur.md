@@ -32,15 +32,15 @@ Allah’ın rahmetinin ne kadar derin, şefkatinin ne denli nihayetsiz olduğuna
 
 <p lang="ar" dir="rtl" class="ayet">أَتَرَوْنَ هَذِهِ الْمَرْأَةَ طَارِحَةً وَلَدَهَا فِى النَّارِ</p>
 
-*“Bu kadın hakkında ne dersiniz? Çocuğunu ateşe atar mı?”*** buyurdu.
+*“Bu kadın hakkında ne dersiniz? Çocuğunu ateşe atar mı?”* buyurdu.
 
 <p lang="ar" dir="rtl" class="ayet">. قُلْنَا لاَ وَاللَّهِ وَهِىَ تَقْدِرُ عَلَى أَنْ لاَ تَطْرَحَهُ</p>
 
-Sahabe*, “Vallahi atamamaya gücü yettiği müddetçe asla.”* dedi. Bunun üzerine Hz. Peygamber (s.a.s.),
+Sahabe, “Vallahi atamamaya gücü yettiği müddetçe asla.” dedi. Bunun üzerine Hz. Peygamber (s.a.s.),
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُ أَرْحَمُ بِعِبَادِهِ مِنْ هَذِهِ بِوَلَدِهَا</p>
 
-*“Allah kullarına bu kadının çocuğuna olan merhametinden çok daha merhametlidir”*** buyurdu.(Buhârî, Edeb, 18; Hadislerle İslam, 3/90)
+*“Allah kullarına bu kadının çocuğuna olan merhametinden çok daha merhametlidir”* buyurdu.(Buhârî, Edeb, 18; Hadislerle İslam, 3/90)
 
 Anne, şefkat ve merhametin sembolüdür. Allah (c.c.) kullarına bir annenin yavrusuna olan merhametinden kat kat daha merhametlidir. Zira anneye şefkat ve merhamet duygusunu veren Rabbimizdir. Rabbimiz şöyle buyurmaktadır:
 
@@ -52,7 +52,7 @@ Ebu Hüreyre’nin (r.a.) işittiğine göre, Resûlullah (s.a.s.) şöyle buyur
 
 <p lang="ar" dir="rtl" class="ayet">جَعَلَ اللَّهُ الرَّحْمَةَ مِائَةَ جُزْءٍ فَأَمْسَكَ عِنْدَهُ تِسْعَةً وَتِسْعِينَ جُزْءًا، وَأَنْزَلَ فِى الْأَرْضِ جُزْءًا وَاحِدًا، فَمِنْ ذَلِكَ الْجُزْءِ يَتَرَاحَمُ الْخَلْقُ، حَتَّى تَرْفَعَ الْفَرَسُ حَافِرَهَا عَنْ وَلَدِهَا خَشْيَةَ أَنْ تُصِيبَهُ</p>
 
-*“Allah rahmeti yüz parçaya ayırdı, doksan dokuz parçasını yanında tuttu, bir parçasını ise yeryüzüne indirdi. İşte bu bir parça (rahmet) sayesinde bütün mahlûklar birbirlerine merhametli davranırlar. Hatta kısrak (yavrusunu emzirirken) basıp da ona zarar verme korkusuyla ayağını (bu rahmetin eseriyle) kaldırır.”*** (Buhârî, Edeb,19) Hadis-i şerif, Cenab-ı Hakk’ın rahmetinin ne kadar geniş olduğunu anlatmaktadır.
+*“Allah rahmeti yüz parçaya ayırdı, doksan dokuz parçasını yanında tuttu, bir parçasını ise yeryüzüne indirdi. İşte bu bir parça (rahmet) sayesinde bütün mahlûklar birbirlerine merhametli davranırlar. Hatta kısrak (yavrusunu emzirirken) basıp da ona zarar verme korkusuyla ayağını (bu rahmetin eseriyle) kaldırır.”* (Buhârî, Edeb,19) Hadis-i şerif, Cenab-ı Hakk’ın rahmetinin ne kadar geniş olduğunu anlatmaktadır.
 
 Başka bir hadiste Cenab-ı Hakk’ın rahmeti şöyle anlatılır: Bir adam yanındaki çocukla Hz. Peygamber'e (s.a.s.) geldi. Adam çocuğu bağrına basıyordu. Hz. Peygamber (s.a.s.) ***"Ona karşı merhametlisin değil mi?"*** diye sorunca adam: "Evet" dedi. Bunun üzerine O, ***"Allah O'na karşı senden daha merhametlidir. O, merhametlilerin en merhametlisidir"*** buyurdu. (Buhârî, Edebü'l-Müfred, 137)
 
@@ -60,7 +60,7 @@ Bir kutsî hadiste,
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ رَحْمَتِى سَبَقَتْ غَضَبِى</p>
 
-*“***Rahmetim gazabımı geçti.” (Buhârî, Tevhîd, 22) buyrulmuştur.
+“Rahmetim gazabımı geçti.” (Buhârî, Tevhîd, 22) buyrulmuştur.
 
 ## HZ. PEYPEYGAMBER’İN (S.A.S.) MERHAMETİ
 
@@ -108,7 +108,7 @@ Yine bir gün torunu Hz. Hasan’ı (r.a.) öpüp kokladığı bir sırada yeni 
 
 <p lang="ar" dir="rtl" class="ayet">مَن لا يَرحَمْ، لا يُرحَمْ</p>
 
-*“Merhamet etmeyene merhamet olunmaz.”*** (Buhari, Edeb, 18; Müslim, Fadail, 65) buyurdu.
+*“Merhamet etmeyene merhamet olunmaz.”* (Buhari, Edeb, 18; Müslim, Fadail, 65) buyurdu.
 
 Allah Resûlü (s.a.s.), aile fertlerine samimi ve içten davranan, değer verdiğini hissettiren, sevinçleriyle sevinen, üzüntüleriyle üzülen bir aile reisiydi. Onlarla ilişkilerinde sevgi, saygı ve nezakete dayalı sıcak ve ahenkli bir üslûbu benimsemişti. Nitekim Allah Resûlü (s.a.s.),
 
@@ -124,7 +124,7 @@ Hz. Âişe’nin (r.a.) anlattığına göre,
 
 <p lang="ar" dir="rtl" class="ayet">مَا ضَرَبَ رَسُولُ اللَّهِ صلى الله عليه وسلم شَيْئًا قَطُّ بِيَدِهِ وَلاَ امْرَأَةً وَلاَ خَادِمًا إِلاَّ أَنْ يُجَاهِدَ فِى سَبِيلِ اللَّهِ</p>
 
-*“Resûlullah (s.a.s.), Allah yolunda cihad hâriç eliyle hiç kimseye vurmadı. Ne bir kadına ne de bir hizmetçiye!..”*** (Müslim, Fedâil, 79) Aksine zaman zaman onları onurlandıran ince davranışlarda bulunurdu.
+*“Resûlullah (s.a.s.), Allah yolunda cihad hâriç eliyle hiç kimseye vurmadı. Ne bir kadına ne de bir hizmetçiye!..”* (Müslim, Fedâil, 79) Aksine zaman zaman onları onurlandıran ince davranışlarda bulunurdu.
 
 Uzun yıllar Resûlullah’ın hizmetinde bulunan ve onun yaşantısına yakından tanık olma imkânına sahip olan Enes b. Mâlik (r.a.), “Ailesine karşı Resûlullah’tan (s.a.s.) daha şefkatli olan bir kimse görmedim.” (Müslim, Fedâil, 63; İbn Hanbel, III, 112) sözü ile Peygamber Efendimizin (s.a.s.) ailesine ne kadar merhametli olduğunu ifade etmiştir. (Hadislerle İslâm, 6/370-375)
 
@@ -154,7 +154,7 @@ Peygamber Efendimiz (s.a.s.) Enes b. Mâlik’e (r.a.) şöyle tavsiyede bulunmu
 
 <p lang="ar" dir="rtl" class="ayet">يَا أَنَسُ وَقِّرِ الْكَبِيرَ وَارْحَمِ الصَّغِيرَ تُرَافِقُنِي فِي الْجَنَّةِ</p>
 
-*“Enes! Büyüklerine saygı, küçüklerine sevgi ve şefkat göster ki, Cennet’te benimle olabilesin.”*** (Beyhakî, Şu’abu’l-Îmân, 13/355)
+*“Enes! Büyüklerine saygı, küçüklerine sevgi ve şefkat göster ki, Cennet’te benimle olabilesin.”* (Beyhakî, Şu’abu’l-Îmân, 13/355)
 
 Peygamber Efendimiz (s.a.s.) başka bir hadislerinde Allah’ın rahmetine mazhar olmanın yolunu şöyle haber vermiştir:
 
@@ -172,7 +172,7 @@ Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَانُ ارْحَمُوا أَهْلَ الْأَرْضِ يَرْحَمْكُمْ مَنْ فِى السَّمَاءِ</p>
 
-*“Merhametliler (var ya!)... Rahmân, işte onlara merhamet eder. Siz yeryüzündekilere merhamet edin ki gökyüzündeki(ler) de size merhamet etsin.”*** (Ebû Dâvûd, Edeb, 58; Tirmizî, Birr, 16)
+*“Merhametliler (var ya!)... Rahmân, işte onlara merhamet eder. Siz yeryüzündekilere merhamet edin ki gökyüzündeki(ler) de size merhamet etsin.”* (Ebû Dâvûd, Edeb, 58; Tirmizî, Birr, 16)
 
 Bir seferinde Rahmet Peygamberi (s.a.s.), Medineli Müslümanlardan birinin bahçesine girdi. Oradaki bir deve, onu görünce inledi ve gözlerinden yaşlar akıttı. Nebî (s.a.s.) deveye yaklaşarak başının arka/üst tarafını okşamaya başlayınca hayvan sakinleşti. Peygamber Efendimiz (s.a.s) devenin sahibinin kim olduğunu sordu, ensardan bir genç de onun kendisinde ait olduğunu söyledi. Bunun üzerine Hz. Peygamber (s.a.s.), o gence nasihatte bulunarak şöyle buyurdu:
 

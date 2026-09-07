@@ -86,7 +86,7 @@ Bütün peygamberler Allah katında tek din olan İslam’ı tebliğ etmişlerdi
 
 <p lang="ar" dir="rtl" class="ayet">قَدْ كَانَتْ لَكُمْ اُسْوَةٌ حَسَنَةٌ ف۪يٓ اِبْرٰه۪يمَ وَالَّذ۪ينَ مَعَهُۚ</p>
 
-*“İbrahim’de ve onunla birlikte bulunanlarda sizin için güzel bir örnek vardır.”* **(Mümtehine, 60/4)**. Ayetiyle bildirildiği üzere Hz. Âdem (a.s.)’dan başlayarak peygamberimize kadar bütün peygamberler insanlık için model alınması gereken en güzel örnektirler. Bu manada İslam’ın en son ve en mükemmel insan modeli Yüce Rabbimizin
+*“İbrahim’de ve onunla birlikte bulunanlarda sizin için güzel bir örnek vardır.”* (Mümtehine, 60/4). Ayetiyle bildirildiği üzere Hz. Âdem (a.s.)’dan başlayarak peygamberimize kadar bütün peygamberler insanlık için model alınması gereken en güzel örnektirler. Bu manada İslam’ın en son ve en mükemmel insan modeli Yüce Rabbimizin
 
 <p lang="ar" dir="rtl" class="ayet">وَاِنَّكَ لَعَلٰى خُلُقٍ عَظِيمٍ</p>
 
@@ -100,11 +100,11 @@ Buyurarak ahlakını övdüğü,
 
 <p lang="ar" dir="rtl" class="ayet">هُوَالَّذ۪ي بَعَثَ فِي الْاُمِّيّ۪نَ رَسُولًا مِنْهُمْ يَتْلُوا عَلَيْهِمْ اٰيَاتِه۪ وَيُزَكّ۪يهِمْ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَۗ</p>
 
-*“O (Allah)ki, ümmîler içinde kendilerinden olan, onları arındıran temizleyen, onlara Kitap ve Hikmeti öğreten bir peygamber gönderdi.”* **(Cuma, 62/2)**
+*“O (Allah)ki, ümmîler içinde kendilerinden olan, onları arındıran temizleyen, onlara Kitap ve Hikmeti öğreten bir peygamber gönderdi.”* (Cuma, 62/2)
 
 <p lang="ar" dir="rtl" class="ayet">لَقَدْ كَانَ لَكُمْ ف۪ي رَسُولِ اللّٰهِ اُسْوَةٌ حَسَنَةٌ لِمَنْ كَانَ يَرْجُوا اللّٰهَ وَالْيَوْمَ الْاٰخِرَ وَذَكَرَ اللّٰهَ كَث۪يرًا</p>
 
-*“Andolsun ki Allah'ın elçisinde sizin için, Allah’a ve ahiret gününe kavuşmayı umanlar ve Allah’ı çok zikredenler için güzel bir örnek vardır.”* **(Ahzâb, 33/21)**
+*“Andolsun ki Allah'ın elçisinde sizin için, Allah’a ve ahiret gününe kavuşmayı umanlar ve Allah’ı çok zikredenler için güzel bir örnek vardır.”* (Ahzâb, 33/21)
 
 Ayet-i kerimelerden de anlaşılacağı gibi peygamberimiz “bizden içimizden” olup “bizi” tezkiye etmek için gelmiştir. Ve Allah’a ve ahret gününe kavuşmayı umanlar için örnek alınması gereken bir resuldür. Bu noktada şuna dikkat etmek gerekir; model deyince sadece fikir, proje akla gelmemelidir. O fikrin ete kemiğe büründüğü, ortaya çıktığı bir modeldir. Örneğin bir otomobil yapmayı istiyoruz. Önce arabanın nasıl yapılacağını düşünür ve ortaya bir proje sunulur. Sonra bu fikrin yani projenin prototipi yani örnek modelini üretilir. Sonra seri üretime geçilir.
 
@@ -200,9 +200,9 @@ Bizlerin de diğer peygamberiızâmla birlikte son Peygamber Hz. Muhammed'i (s.a
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اَط۪يعُوا اللّٰهَ وَالرَّسُولَۚ فَاِنْ تَوَلَّوْا فَاِنَّ اللّٰهَ لَا يُحِبُّ الْكَافِر۪ينَ</p>
 
-**31. De ki: "Allah'ı seviyorsanız bana uyun. Allah da sizi sevsin ve günahlarınızı bağışlasın. Allah affeder ve merhamet eder".**
+31. De ki: "Allah'ı seviyorsanız bana uyun. Allah da sizi sevsin ve günahlarınızı bağışlasın. Allah affeder ve merhamet eder".
 
-**32. De ki: "Allah'a ve Peygambere itaat edin". Yüz çevirirlerse bilsinler ki, Allah inkâr edenleri sevmez.** **(Ali-i İmran; 31-32)**
+32. De ki: "Allah'a ve Peygambere itaat edin". Yüz çevirirlerse bilsinler ki, Allah inkâr edenleri sevmez. (Ali-i İmran; 31-32)
 
 Allah (c.c.) kendisine olan sevginin belirtisini Resulüne itaate bağlamış ve peygamberimize itaati emretmiştir.
 
@@ -210,36 +210,36 @@ En başta genel olarak belirttiğimiz Olgun müminde bulunması gereken özellik
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذ۪ينَ يُنْفِقُونَ فِى السَّرَّاءِ وَالضَّرَّاءِ وَالْكَاظِم۪ينَ الْغَيْظَ وَالْعَاف۪ينَ عَنِ النَّاسِ وَاللّٰهُ يُحِبُّ الْمُحْسِن۪ينَ الَّذ۪ينَ اِذَا فَعَلُوا فَاحِشَةً اَوْ ظَلَمُوا اَنْفُسَهُمْ ذَكَرُوا اللّٰهَ فَاسْتَغْفَرُوا لِذُنُوبِهِمْ وَمَنْ يَغْفِرُ الذُّنُوبَ اِلَّا اللّٰهُ وَلَمْ يُصِرُّوا عَلٰى مَا فَعَلُوا وَهُمْ يَعْلَمُونَ</p>
 
-*“Onlar bollukta ve darlıkta Allah yolunda harcayanlar, öfkelerini yenenler, insanları affedenlerdir. Allah, iyilik edenleri sever. Yine onlar, çirkin bir iş yaptıkları yahut nefislerine zulmettikleri zaman Allah’ı hatırlayıp hemen günahlarının bağışlanmasını isteyenler -ki Allah’tan başka günahları kim bağışlar- ve bile bile, işledikleri (günah) üzerinde ısrar etmeyenlerdir.”* **(Âl-i İmrân;134–135.)**
+*“Onlar bollukta ve darlıkta Allah yolunda harcayanlar, öfkelerini yenenler, insanları affedenlerdir. Allah, iyilik edenleri sever. Yine onlar, çirkin bir iş yaptıkları yahut nefislerine zulmettikleri zaman Allah’ı hatırlayıp hemen günahlarının bağışlanmasını isteyenler -ki Allah’tan başka günahları kim bağışlar- ve bile bile, işledikleri (günah) üzerinde ısrar etmeyenlerdir.”* (Âl-i İmrân;134–135.)
 
 *Yine Furkan süresinde has müminlerin özellikleri şöyle sıralanır:*
 
 <p lang="ar" dir="rtl" class="ayet">وَعِبَادُ الرَّحْمٰنِ الَّذ۪ينَ يَمْشُونَ عَلَى الْاَرْضِ هَوْنًا وَاِذَا خَاطَبَهُمُ الْجَاهِلُونَ قَالُوا سَلَامًا ﴿63﴾ وَالَّذ۪ينَ يَب۪يتُونَ لِرَبِّهِمْ سُجَّدًا وَقِيَامًا ﴿64﴾ وَالَّذ۪ينَ يَقُولُونَ رَبَّنَا اصْرِفْ عَنَّا عَذَابَ جَهَنَّمَۗ اِنَّ عَذَابَهَا كَانَ غَرَامًاۗ ﴿65﴾ اِنَّهَا سَٓاءَتْ مُسْتَقَرًّا وَمُقَامًا ﴿66﴾ وَالَّذ۪ينَ اِذَٓا اَنْفَقُوا لَمْ يُسْرِفُوا وَلَمْ يَقْتُرُوا وَكَانَ بَيْنَ ذٰلِكَ قَوَامًا ﴿67﴾ وَالَّذ۪ينَ لَا يَدْعُونَ مَعَ اللّٰهِ اِلٰهًا اٰخَرَ وَلَا يَقْتُلُونَ النَّفْسَ الَّت۪ي حَرَّمَ اللّٰهُ اِلَّا بِالْحَقِّ وَلَا يَزْنُونَۚ وَمَنْ يَفْعَلْ ذٰلِكَ يَلْقَ اَثَامًاۙ</p>
 
-**63. Rahman’ın(has) kulları onlardır ki, yeryüzünde tevazu ile yürürler ve kendini bilmez kimseler onlara laf attığında (incitmeksizin) "Selam!" derler (geçerler);**
-**Gecelerini Rablerine secde ederek ve kıyam durarak geçirirler64.**
-**65. Ve şöyle derler: Rabbimiz! Cehennem azabını üzerimizden sav. Doğrusu onun azabı gelip geçici değil, devamlıdır.**
+63. Rahman’ın(has) kulları onlardır ki, yeryüzünde tevazu ile yürürler ve kendini bilmez kimseler onlara laf attığında (incitmeksizin) "Selam!" derler (geçerler);
+Gecelerini Rablerine secde ederek ve kıyam durarak geçirirler64.
+65. Ve şöyle derler: Rabbimiz! Cehennem azabını üzerimizden sav. Doğrusu onun azabı gelip geçici değil, devamlıdır.
 
-**Orası cidden ne kötü bir yerleşme ve ikamet yeridir!66.**
+Orası cidden ne kötü bir yerleşme ve ikamet yeridir!66.
 
-**67. Onlar, harcadıklarında ne israf ne de cimrilik edenlerdir. Onların harcamaları, bu ikisi arası dengeli bir harcamadır.**
+67. Onlar, harcadıklarında ne israf ne de cimrilik edenlerdir. Onların harcamaları, bu ikisi arası dengeli bir harcamadır.
 
-**68.Onlar, Allah ile beraber başka bir ilaha kulluk etmeyen, haksız yere, Allah'ın haram kıldığı cana kıymayan ve zina etmeyen kimselerdir. Kim bunları yaparsa ağır azaba uğrar.**
+68.Onlar, Allah ile beraber başka bir ilaha kulluk etmeyen, haksız yere, Allah'ın haram kıldığı cana kıymayan ve zina etmeyen kimselerdir. Kim bunları yaparsa ağır azaba uğrar.
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذِينَ لَا يَشْهَدُونَ الزُّورَ وَإِذَا مَرُّوا بِاللَّغْوِ مَرُّوا كِرَامًا ﴿٧٢﴾</p>
 
-**72. (O kullar), yalan yere şahitlik etmezler, boş sözlerle karşılaştıklarında vakar ile (oradan) geçip giderler.**
+72. (O kullar), yalan yere şahitlik etmezler, boş sözlerle karşılaştıklarında vakar ile (oradan) geçip giderler.
 وَالَّذِينَ إِذَا ذُكِّرُوا بِآيَاتِ رَبِّهِمْ لَمْ يَخِرُّوا عَلَيْهَا صُمًّا وَعُمْيَانًا ﴿٧٣﴾
 
-**73. Kendilerine Rablerinin âyetleri hatırlatıldığında ise, onlara karşı sağır ve kör davranmazlar;**
+73. Kendilerine Rablerinin âyetleri hatırlatıldığında ise, onlara karşı sağır ve kör davranmazlar;
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا ﴿٧٤﴾</p>
 
-**74. (Ve o kullar): Rabbimiz! Bize gözümüzü aydınlatacak eşler ve zürriyetler bağışla ve bizi takvâ sahiplerine önder kıl! derler.**
+74. (Ve o kullar): Rabbimiz! Bize gözümüzü aydınlatacak eşler ve zürriyetler bağışla ve bizi takvâ sahiplerine önder kıl! derler.
 
 <p lang="ar" dir="rtl" class="ayet">أُوْلَئِكَ يُجْزَوْنَ الْغُرْفَةَ بِمَا صَبَرُوا وَيُلَقَّوْنَ فِيهَا تَحِيَّةً وَسَلَامًا ﴿٧٥﴾</p>
 
-**75. İşte onlara, sabretmelerine karşılık cennetin en yüksek makamı verilecek, orada hürmet ve selamla karşılanacaklardır.** (Furkan süresi; 63-75)
+75. İşte onlara, sabretmelerine karşılık cennetin en yüksek makamı verilecek, orada hürmet ve selamla karşılanacaklardır. (Furkan süresi; 63-75)
 
 Ayetlerini yaşadığımızda üzerinde bütün bu özellikleri en mükemmel şekliyle taşıyan peygamberimizi örnek almış olur bizlerde diğer insanlara model olmuş oluruz.
 

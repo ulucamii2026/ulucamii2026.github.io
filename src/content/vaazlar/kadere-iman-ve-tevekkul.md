@@ -54,8 +54,8 @@ Allah Teâlâ’nın meydana gelen her işte iradesi bulunmakla birlikte, rızas
 
 Kader konusunda iradeyi ikiye ayırabiliriz.
 
-1) **Cüzi irade:** İnsanın kendi irade ve kudretiyle işlediği fiil ve amellerdir.
-2) **Külli irade:** İnsanın irade ve kudreti dışında meydana gelen hâdise ve hâllerdir.
+1) Cüzi irade: İnsanın kendi irade ve kudretiyle işlediği fiil ve amellerdir.
+2) Külli irade: İnsanın irade ve kudreti dışında meydana gelen hâdise ve hâllerdir.
 
 Birincisinin meydana gelmesine, insanlar irade ve arzuları ile kendileri sebep olmaktadırlar. Şöyle ki: Cenâb-ı Hak fertlerin ve cemiyetlerin dünya ve ahiret saadetleri için takip etmeleri gereken yolu tayin ve takdir etmiştir. Bu yolda gidenler saadet ve selâmete ererler; aksi yolda gidenler felâket ve yoksulluğa düşerler. Çünkü Allah, saadet sebeplerine uyanlara saadet, felâket sebeplerine teşebbüs edenlere de felâket takdir buyurmuştur. Kur’ân-ı Kerîm’de, bir toplumun kendi ahlâkını olumsuz anlamda değiştirmedikçe, Allah’ın o kavmin nimet ve saadetini değiştirmeyeceği beyan edilmektedir;
 
@@ -134,7 +134,7 @@ Mîrâs-ı diyânetle yaşar mıydı bu millet?
 Çoktan kürenin meş’al-i tevhîdi sönerdi;
 Kur’an duramaz, nezd-i ilâhîye dönerdi.
 
-— **Mehmet Âkif Ersoy**, Safahat
+— Mehmet Âkif Ersoy, Safahat
 
 ### G. PEYGAMBERİMİZ’DEN (s.a.s.) TEVEKKÜL DERSİ
 

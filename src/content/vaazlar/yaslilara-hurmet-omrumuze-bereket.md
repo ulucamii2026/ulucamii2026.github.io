@@ -43,7 +43,7 @@ Hayatın doğal bir gerçeği olan yaşlılık, toplumumuzun giderek büyüyen b
 
 <p lang="ar" dir="rtl" class="ayet">لَوْلاَ عِبَادٌ للَّهِ رُكَّعٌ وَصِبْيَةٌ رُضَّعٌ وَبَهَائِمُ رُتَّعٌ لَصُبَّ عَلَيْكُمُ الْعَذَابُ صَبًّا ثُمَّ لَتُرَضُّنَّ رَضًّا</p>
 
-*“Beli bükülmüş ihtiyarlar, süt emen bebekler ve otlayan hayvanlar olmasa idi, üzerinize azap yağardı”*** (Taberânî, el-Mu’cemü’l-kebîr, XXII, 309) buyurarak ağarmış saçı, bükülmüş beli ile yaşlıların, içinde yaşadıkları toplum için bir rahmet kaynağı olduklarını, diğer insanların onlar sayesinde nimete kavuştuğunu bildirir. Bundan dolayı yaşlılara yapılacak ziyaretler onların kendilerini daha iyi hissetmelerini sağlayacaktır. Özellikle eşlerini kaybetmiş ihtiyar kimseleri yahut da çocuklarından uzak kalmış anne babaları ziyaret etmek onları hayata bağlayacak, yalnızlığın sebep olacağı sıkıntı ve bunalımlara engel olacaktır.
+*“Beli bükülmüş ihtiyarlar, süt emen bebekler ve otlayan hayvanlar olmasa idi, üzerinize azap yağardı”* (Taberânî, el-Mu’cemü’l-kebîr, XXII, 309) buyurarak ağarmış saçı, bükülmüş beli ile yaşlıların, içinde yaşadıkları toplum için bir rahmet kaynağı olduklarını, diğer insanların onlar sayesinde nimete kavuştuğunu bildirir. Bundan dolayı yaşlılara yapılacak ziyaretler onların kendilerini daha iyi hissetmelerini sağlayacaktır. Özellikle eşlerini kaybetmiş ihtiyar kimseleri yahut da çocuklarından uzak kalmış anne babaları ziyaret etmek onları hayata bağlayacak, yalnızlığın sebep olacağı sıkıntı ve bunalımlara engel olacaktır.
 
 ### Anne Babayı Ziyaret Etmek
 
@@ -91,19 +91,19 @@ Rasulullah (s.a.s.) ihtiyarlığı devası ve şifası yaratılmayan bir hastal�
 
 <p lang="ar" dir="rtl" class="ayet">تَدَاوَوْا عِبَادَ اللَّهِ فَإِنَّ اللَّهَ سُبْحَانَهُ لَمْ يَضَعْ دَاءً إِلَّا وَضَعَ مَعَهُ شِفَاءً إِلَّا الْهَرَمَ</p>
 
-“*Tedavi olunuz, ey Allah'ın kulları. Çünkü doğrusu Allah yaşlılıktan başka yarattığı her hastalıkla beraber bir deva (ilâç) da yaratmıştır”*** buyurdu. (İbn Mace, Tıbb, 1/3436)
+“*Tedavi olunuz, ey Allah'ın kulları. Çünkü doğrusu Allah yaşlılıktan başka yarattığı her hastalıkla beraber bir deva (ilâç) da yaratmıştır”* buyurdu. (İbn Mace, Tıbb, 1/3436)
 
 Başka bir hadiste Hz. Peygamber (s.a.s.) yaşlılığın sonuçlarının ne derece sıkıntılar getirdiğine işaret ederek şöyle dua etmiştir:
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ الْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْهَرَمِ وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ</p>
 
-*“Allah’ım, acizlikten, tembellikten, korkaklıktan, düşkünlük derecesine varan ihtiyarlıktan sana sığınırım. Hayat ve ölüm fitnesinden sana sığınırım. Kabir azabından sana sığınırım.”*** (Müslim, Zikir, 50)
+*“Allah’ım, acizlikten, tembellikten, korkaklıktan, düşkünlük derecesine varan ihtiyarlıktan sana sığınırım. Hayat ve ölüm fitnesinden sana sığınırım. Kabir azabından sana sığınırım.”* (Müslim, Zikir, 50)
 
 İhtiyarlara hürmet bir yönüyle de sosyal hayatı düzenlemeye yardımcı olur. Bir gün ihtiyarlayacak olan genç, yaşlılara hürmet göstermekle bu düzene katkıda bulunarak aslında kendi geleceğine de yatırım yapmaktadır. Allah Resûlü (s.a.s.) bu gerçeğe şöyle işaret eder:
 
 <p lang="ar" dir="rtl" class="ayet">مَا أَكْرَمَ شَابٌّ شَيْخًا لِسِنِّهِ إِلاَّ قَيَّضَ اللَّهُ لَهُ مَنْ يُكْرِمُهُ عِنْدَ سِنِّهِ</p>
 
-*“Bir genç, ihtiyar bir kimseye yaşından dolayı hürmet ederse, Allah da ona yaşlılığında kendisine hürmet edecek birisini hazırlar.”*** ( Tirmizî, Birr, 75)
+*“Bir genç, ihtiyar bir kimseye yaşından dolayı hürmet ederse, Allah da ona yaşlılığında kendisine hürmet edecek birisini hazırlar.”* ( Tirmizî, Birr, 75)
 
 Küçüklerin büyüklere selâm vermesi ve söz hakkının öncelikle büyüklere verilmesi, bu düzeni sağlamaya yönelik uygulamalardır. Peygamberimiz (s.a.s.), cemaatle namaz kılarken arkasında en yaşlılardan başlanarak saf tutulması gerektiğini bildirir. Uygulamanın gerekçesi ise dikkat çekicidir: ***“Pazar yerlerindeki gibi karmakarışık olmaktan sakının!”*** (Müslim, Salât, 123) Ayrıca o, namaz kıldırabilecek kişilerin yeterlilik açısından eşit olmaları durumunda, yaşı büyük olanın imam olmasını tavsiye ederek yaşlıların toplum içerisindeki itibarını korur.
 
@@ -113,11 +113,11 @@ Peygamberimiz (s.a.s.), bizzat yaşlılara hürmet etmeye özen göstermiştir. 
 
 <p lang="ar" dir="rtl" class="ayet">لَيْسَ مِنَّا مَنْ لَمْ يَرْحَمْ صَغِيرَنَا وَيَعْرِفْ شَرَفَ كَبِيرَنَا</p>
 
-*“Küçüğümüze merhamet etmeyen ve büyüğümüzün saygınlığını kabul etmeyen bizden değildir.”*** (Tirmizî, Birr, 15) buyurarak Müslüman toplumunun sadece bir ahlaki kurallar bütünü olmadığını, aynı zamanda kuşaklar arası bağların çok güçlü olduğu, birbirine sahip çıkan ve birbirinin değerini bilen bir yapıya sahip olması gerektiğini anlatır. Bu bağlar zayıfladığında, yani ne küçüklere merhamet edilip ne de büyüklere saygı gösterildiğinde, o toplumun temel bağları kopmuş ve Peygamber'in öğretilerinden uzaklaşmış olacağı ifade edilir. Sevgili Peygamberimiz (s.a.s.),
+*“Küçüğümüze merhamet etmeyen ve büyüğümüzün saygınlığını kabul etmeyen bizden değildir.”* (Tirmizî, Birr, 15) buyurarak Müslüman toplumunun sadece bir ahlaki kurallar bütünü olmadığını, aynı zamanda kuşaklar arası bağların çok güçlü olduğu, birbirine sahip çıkan ve birbirinin değerini bilen bir yapıya sahip olması gerektiğini anlatır. Bu bağlar zayıfladığında, yani ne küçüklere merhamet edilip ne de büyüklere saygı gösterildiğinde, o toplumun temel bağları kopmuş ve Peygamber'in öğretilerinden uzaklaşmış olacağı ifade edilir. Sevgili Peygamberimiz (s.a.s.),
 
 <p lang="ar" dir="rtl" class="ayet">رَغِمَ أَنْفُهُ ثُمَّ رَغِمَ أَنْفُهُ ثُمَّ رَغِمَ أَنْفُهُ</p>
 
-*“Burnu yere sürtünsün!”*** buyurur. Ve bu sitem dolu ifadeyi üç defa tekrarlar. Ashâb,
+*“Burnu yere sürtünsün!”* buyurur. Ve bu sitem dolu ifadeyi üç defa tekrarlar. Ashâb,
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ يَا رَسُولَ اللَّهِ</p>
 
@@ -125,13 +125,13 @@ Peygamberimiz (s.a.s.), bizzat yaşlılara hürmet etmeye özen göstermiştir. 
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ أَدْرَكَ وَالِدَيْهِ عِنْدَ الْكِبَرِ أَحَدُهُمَا أَوْ كِلَيْهِمَا ثُمَّ لَمْ يَدْخُلِ الْجَنَّةَ</p>
 
-*“Yanında annesi ile babasından biri yahut her ikisi ihtiyarlayıp da cennete giremeyen kişidir.”*** ( Müslim, Birr, 10) açıklamasını yaparak cennete gitmeyi anne babanın hoşnutluğu ile ilişkilendirir.
+*“Yanında annesi ile babasından biri yahut her ikisi ihtiyarlayıp da cennete giremeyen kişidir.”* ( Müslim, Birr, 10) açıklamasını yaparak cennete gitmeyi anne babanın hoşnutluğu ile ilişkilendirir.
 
 Rasulullah (s.a.s.) buyurdu ki:
 
 <p lang="ar" dir="rtl" class="ayet">مَا أَكْرَمَ شَابٌّ شَيْخًا لِسِنِّهِ إِلَّا قَيَّضَ اللَّهُ لَهُ مَنْ يُكْرِمُهُ عِنْدَ سِنِّهِ</p>
 
-*“Herhangi bir genç, yaşından dolayı bir ihtiyara hürmet ederse Allah da yaşlılığında ona hizmet edecek kimseler halk edecektir. ”***
+*“Herhangi bir genç, yaşından dolayı bir ihtiyara hürmet ederse Allah da yaşlılığında ona hizmet edecek kimseler halk edecektir. ”*
 
 İnsanların saygı, hürmet ve merhametine mazhar olan ihtiyar, yaşı ilerledikçe Allah’ın rahmetinden ve bağışlamasından daha da fazla nasiplenir. Yarattığı insanı çok iyi tanıyan Allah (cc), insanı bu çağa ulaştığında bazı mükellefiyetlerden muaf tutmuş, bazı sorumlulukları da onun için hafifletmiştir. Örneğin Peygamberimiz (s.a.s.), “Biriniz insanlara namaz kıldıracak olursa, hafif tutsun. Çünkü içlerinde zayıf olanı, hasta olanı, yaşlı olanı var. Kendi kendine namaz kıldığında ise (namazını) istediği kadar uzatsın.” (Buhârî, Ezân, 62) buyurmuştur.
 
@@ -139,10 +139,10 @@ Hz. Peygamber (s.a.s.) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ مِنْ إِجْلَالِ اللَّهِ إِكْرَامَ ذِي الشَّيْبَةِ الْمُسْلِمِ وَحَامِلِ الْقُرْآنِ غَيْرِ الْغَالِي فِيهِ وَالْجَافِي عَنْهُ وَإِكْرَامَ ذِي السُّلْطَانِ الْمُقْسِطِ</p>
 
-*“Muhakkak ki ihtiyar Müslümana, Kur’an’ı terk etmeyen ve yasaklarını çiğnemeyen Kur’an hafızlarına ve adaletli devlet başkanına hürmet etmek, Allah'a saygıdandır.”***(Ebu Davud, Edeb, 20)
+*“Muhakkak ki ihtiyar Müslümana, Kur’an’ı terk etmeyen ve yasaklarını çiğnemeyen Kur’an hafızlarına ve adaletli devlet başkanına hürmet etmek, Allah'a saygıdandır.”*(Ebu Davud, Edeb, 20)
 
 Kendi ihtiyaçlarını gideremeyecek derecede düşkün bir hâle gelmek ve yaşlılığın bunaklığa dönüşmesi ise istenilmeyen durumlardır. Resûlullah (s.a.s.) bu hâle düşmemek için dualarında Rabbine şöyle yalvarır:
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اغْسِلْ خَطَايَاىَ بِمَاءِ الثَّلْجِ وَالْبَرَدِ وَنَقِّ قَلْبِى مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأَبْيَضَ مِنَ الدَّنَسِ وَبَاعِدْ بَيْنِى وَبَيْنَ خَطَايَاىَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ اللَّهُمَّ فَإِنِّى أَعُوذُ بِكَ مِنَ الْكَسَلِ وَالْهَرَمِ وَالْمَأْثَمِ وَالْمَغْرَمِ</p>
 
-*“...Allah’ım! Günahlarımı kar ve dolu suyu ile temizle ve beyaz elbiseyi kirden arındırdığın gibi kalbimi hatalardan arındır. Benimle hatalarımın arasını da doğu ile batının arasını açtığın gibi aç. Allah’ım! Tembellikten, bunaklık derecesinde yaşlılıktan, günahtan ve borçlu kalmaktan sana sığınırım.”*** (Müslim, Zikir, 49)
+*“...Allah’ım! Günahlarımı kar ve dolu suyu ile temizle ve beyaz elbiseyi kirden arındırdığın gibi kalbimi hatalardan arındır. Benimle hatalarımın arasını da doğu ile batının arasını açtığın gibi aç. Allah’ım! Tembellikten, bunaklık derecesinde yaşlılıktan, günahtan ve borçlu kalmaktan sana sığınırım.”* (Müslim, Zikir, 49)

@@ -26,17 +26,17 @@ Fetih, Hucurat ve Şuara Surelerinde geçen takva kelimeleri bu manada kullanıl
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الَّذٖينَ يَغُضُّونَ اَصْوَاتَهُمْ عِنْدَ رَسُولِ اللّٰهِ اُو۬لٰٓئِكَ الَّذٖينَ امْتَحَنَ اللّٰهُ قُلُوبَهُمْ لِلتَّقْوٰىؕ لَهُمْ مَغْفِرَةٌ وَاَجْرٌ عَظٖيمٌ ﴿٣﴾</p>
 
-*Allah resulünün yanında seslerini alçaltanlar var ya, işte onlar, Allah’ın kalplerini takvâ hususunda sınadığı kimselerdir. Onlar için büyük bağışlanma ve büyük bir ödül vardır.*** (Hucurât Sûresi 3)
+*Allah resulünün yanında seslerini alçaltanlar var ya, işte onlar, Allah’ın kalplerini takvâ hususunda sınadığı kimselerdir. Onlar için büyük bağışlanma ve büyük bir ödül vardır.* (Hucurât Sûresi 3)
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذْ نَادٰى رَبُّكَ مُوسٰٓى اَنِ ائْتِ الْقَوْمَ الظَّالِمٖينَۙ ﴿١٠﴾ قَوْمَ فِرْعَوْنَؕ اَلَا يَتَّقُونَ ﴿١١﴾</p>
 
-*Hani rabbin Mûsâ’ya, şöyle seslenmişti: “O zalimler topluluğuna, Firavun’un kavmine git. Onlar (zulümden) hâlâ sakınmayacaklar mı?”*** (Şuarâ Sûresi 10 - 11)
+*Hani rabbin Mûsâ’ya, şöyle seslenmişti: “O zalimler topluluğuna, Firavun’un kavmine git. Onlar (zulümden) hâlâ sakınmayacaklar mı?”* (Şuarâ Sûresi 10 - 11)
 
 2- Tövbe Manasında kullanılmıştır.
 
 <p lang="ar" dir="rtl" class="ayet">وَلَوْ اَنَّ اَهْلَ الْقُرٰٓى اٰمَنُوا وَاتَّقَوْا لَفَتَحْنَا عَلَيْهِمْ بَرَكَاتٍ مِنَ السَّمَٓاءِ وَالْاَرْضِ وَلٰكِنْ كَذَّبُوا فَاَخَذْنَاهُمْ بِمَا كَانُوا يَكْسِبُونَ ﴿٩٦﴾</p>
 
-***O ülkelerin halkı inansalar ve günahtan sakınsalardı, elbette onların üstüne gökten ve yerden nice bereket kapıları açardık. Fakat yalanladılar; biz de ettikleri yüzünden onları yakalayıverdik.* (A'râf Sûresi 96)
+*O ülkelerin halkı inansalar ve günahtan sakınsalardı, elbette onların üstüne gökten ve yerden nice bereket kapıları açardık. Fakat yalanladılar; biz de ettikleri yüzünden onları yakalayıverdik.* (A'râf Sûresi 96)
 
 3- İtaat Anlamında Kullanılmıştır
 
@@ -48,7 +48,7 @@ Fetih, Hucurat ve Şuara Surelerinde geçen takva kelimeleri bu manada kullanıl
 
 <p lang="ar" dir="rtl" class="ayet">يَسْـَٔلُونَكَ عَنِ الْاَهِلَّةِؕ قُلْ هِيَ مَوَاقٖيتُ لِلنَّاسِ وَالْحَجِّؕ وَلَيْسَ الْبِرُّ بِاَنْ تَأْتُوا الْبُيُوتَ مِنْ ظُهُورِهَا وَلٰكِنَّ الْبِرَّ مَنِ اتَّقٰىۚ وَأْتُوا الْبُيُوتَ مِنْ اَبْوَابِهَاࣕ وَاتَّقُوا اللّٰهَ لَعَلَّكُمْ تُفْلِحُونَ ﴿١٨٩﴾</p>
 
-*Sana hilâlleri soruyorlar. De ki: “Onlar insanlar ve hac için vakit ölçüleridir. Erdemlilik asla evlere arkalarından gelip girmeniz değildir; fakat erdemlilik kişinin Allah’a saygılı olmasıdır. Evlere kapılarından gelin; Allah’a saygılı olun ki kurtuluşa eresiniz.*** ( Bakara Sûresi 189)
+*Sana hilâlleri soruyorlar. De ki: “Onlar insanlar ve hac için vakit ölçüleridir. Erdemlilik asla evlere arkalarından gelip girmeniz değildir; fakat erdemlilik kişinin Allah’a saygılı olmasıdır. Evlere kapılarından gelin; Allah’a saygılı olun ki kurtuluşa eresiniz.* ( Bakara Sûresi 189)
 
 5- İhlas Manasındadır.
 
@@ -60,7 +60,7 @@ Fetih, Hucurat ve Şuara Surelerinde geçen takva kelimeleri bu manada kullanıl
 
 Kur’an-ı Kerimde takvanın üç mertebesi olduğu bildirilmektedir. Bunlardan ilki ebedi olarak cehennem azabından korunmak için Allah' a ortak koşmaktan, küfür ve nifaktan korunarak imana sarılmaktır. Bu takvanın ilk basamağı ve ilk mertebesidir.
 
-Fetih suresinin 26. ayetinde geçenوَاَلْزَمَهُمْ كَلِمَةَ التَّقْوٰى *Onları takvâ sözüne bağlı kıldı*** "takva kelimesi" bu anlamdadır. Ayette geçen takva kelimesi, kelime-i şehadet, kelime-i tevhittir. Peygamberimiz (sav) takva kelimesini "la ilahe illallah" Allahtan başka ilah yoktur diyerek tefsir etmiştir. ( Tirmizi Tefsir 48 )
+Fetih suresinin 26. ayetinde geçenوَاَلْزَمَهُمْ كَلِمَةَ التَّقْوٰى *Onları takvâ sözüne bağlı kıldı* "takva kelimesi" bu anlamdadır. Ayette geçen takva kelimesi, kelime-i şehadet, kelime-i tevhittir. Peygamberimiz (sav) takva kelimesini "la ilahe illallah" Allahtan başka ilah yoktur diyerek tefsir etmiştir. ( Tirmizi Tefsir 48 )
 
 2. İman sahibi olduktan sonra büyük günahlar işlemekten, küçük günahlarda ısrar etmekten kendini alıkoyarak emredilen dini görevleri ve farzları yerine getirmek, işlernek veya terketmek suretiyle kazanılan günahlardan sakınmaktır. Rabbimiz Kur’an-ı Kerimde şöyle buyurmaktadır;
 
@@ -134,7 +134,7 @@ Peygamberimiz (sav) namaz için, "Namaz dinin direğidir” buyurmuş, dini ayak
 
 <p lang="ar" dir="rtl" class="ayet">بَلٰٓىۙ اِنْ تَصْبِرُوا وَتَتَّقُوا وَيَأْتُوكُمْ مِنْ فَوْرِهِمْ هٰذَا يُمدِدْكُمْ رَبُّكُمْ بِخَمْسَةِ اٰلَافٍ مِنَ الْمَلٰٓئِكَةِ مُسَوِّمٖينَ ﴿١٢٥﴾</p>
 
-*Evet, eğer siz sabır gösterip itaatsizlikten sakınırsanız, onlar şu anda süratle üzerinize gelseler bile rabbiniz size nişanlı beş bin melekle yardım edecektir.*** (Âl-i İmrân Sûresi 125)
+*Evet, eğer siz sabır gösterip itaatsizlikten sakınırsanız, onlar şu anda süratle üzerinize gelseler bile rabbiniz size nişanlı beş bin melekle yardım edecektir.* (Âl-i İmrân Sûresi 125)
 
 6. Allah, muttakilere iyi ile kötüyü ayırabilecek bir anlayış verir ve onların kötülüklerini örtüp bağışlar.
 
@@ -146,15 +146,15 @@ Peygamberimiz (sav) namaz için, "Namaz dinin direğidir” buyurmuş, dini ayak
 
 <p lang="ar" dir="rtl" class="ayet">فَتِلْكَ بُيُوتُهُمْ خَاوِيَةً بِمَا ظَلَمُواؕ اِنَّ فٖي ذٰلِكَ لَاٰيَةً لِقَوْمٍ يَعْلَمُونَ ﴿٥٢﴾ وَاَنْجَيْنَا الَّذٖينَ اٰمَنُوا وَكَانُوا يَتَّقُونَ ﴿٥٣﴾</p>
 
-*İşte haksızlıkları yüzünden çökmüş evleri! Anlayan bir kavim için elbette bunda ibret vardır.
+İşte haksızlıkları yüzünden çökmüş evleri! Anlayan bir kavim için elbette bunda ibret vardır.
 
-İman edip Allah’a karşı gelmekten sakınanları ise o felâketten kurtardık.* (Neml Sûresi 52 - 53)
+İman edip Allah’a karşı gelmekten sakınanları ise o felâketten kurtardık. (Neml Sûresi 52 - 53)
 
 8. Yerin, göğün bereketleri açılır ve ummadıkları yerden rızıklanırlar.
 
 <p lang="ar" dir="rtl" class="ayet">وَلَوْ اَنَّ اَهْلَ الْقُرٰٓى اٰمَنُوا وَاتَّقَوْا لَفَتَحْنَا عَلَيْهِمْ بَرَكَاتٍ مِنَ السَّمَٓاءِ وَالْاَرْضِ وَلٰكِنْ كَذَّبُوا فَاَخَذْنَاهُمْ بِمَا كَانُوا يَكْسِبُونَ ﴿٩٦﴾</p>
 
-***O ülkelerin halkı inansalar ve günahtan sakınsalardı, elbette onların üstüne gökten ve yerden nice bereket kapıları açardık. Fakat yalanladılar; biz de ettikleri yüzünden onları yakalayıverdik.* (A'râf Sûresi 96)
+*O ülkelerin halkı inansalar ve günahtan sakınsalardı, elbette onların üstüne gökten ve yerden nice bereket kapıları açardık. Fakat yalanladılar; biz de ettikleri yüzünden onları yakalayıverdik.* (A'râf Sûresi 96)
 
 9. Allah Muttakilere kolaylıklar ihsan eder.
 
@@ -166,7 +166,7 @@ Peygamberimiz (sav) namaz için, "Namaz dinin direğidir” buyurmuş, dini ayak
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّهُمْ لَنْ يُغْنُوا عَنْكَ مِنَ اللّٰهِ شَيْـٔاًؕ وَاِنَّ الظَّالِمٖينَ بَعْضُهُمْ اَوْلِيَٓاءُ بَعْضٍۚ وَاللّٰهُ وَلِيُّ الْمُتَّقٖينَ ﴿١٩﴾</p>
 
-*Şüphesiz onlar, Allah’a karşı sana hiçbir fayda sağlayamazlar ve kuşkusuz haktan sapanlar birbirlerinin dostları ve koruyucularıdır, Allah da itaatsizlikten sakınanların dostudur.*** (Câsiye Sûresi 19)
+*Şüphesiz onlar, Allah’a karşı sana hiçbir fayda sağlayamazlar ve kuşkusuz haktan sapanlar birbirlerinin dostları ve koruyucularıdır, Allah da itaatsizlikten sakınanların dostudur.* (Câsiye Sûresi 19)
 
 11. Allah'ın merhametine mazhar olurlar.
 
@@ -178,7 +178,7 @@ Peygamberimiz (sav) namaz için, "Namaz dinin direğidir” buyurmuş, dini ayak
 
 <p lang="ar" dir="rtl" class="ayet">وَلَقَدْ نَصَرَكُمُ اللّٰهُ بِبَدْرٍ وَاَنْتُمْ اَذِلَّةٌۚ فَاتَّقُوا اللّٰهَ لَعَلَّكُمْ تَشْكُرُونَ ﴿١٢٣﴾</p>
 
-***Andolsun ki Allah size, zayıf ve çaresiz iken Bedir’de de yardım etmişti. Allah’a isyandan sakının ki şükretmiş olasınız.* ( Âl-i İmrân Sûresi 123)
+*Andolsun ki Allah size, zayıf ve çaresiz iken Bedir’de de yardım etmişti. Allah’a isyandan sakının ki şükretmiş olasınız.* ( Âl-i İmrân Sûresi 123)
 
 13. Cennete kavuşurlar.
 

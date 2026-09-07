@@ -120,7 +120,7 @@ Bu mübarek günde her mümin, kendini denetlemeye, değerlendirmeye çalışsı
 
 Evet, bütün bunları kendimize sorup bir durum değerlendirmesi yapmak, bu mübarek gün ve gecelerin şuuruna varmak demektir. Her an günah lekeleriyle kirlenen dudakları duaya, gönülleri dergâha yöneltmek için verilmiş olan büyük bir fırsattır. İnsanların hayat defterine hayırların kaydedilmesine, hataların affedilmesine, sevapların verilmesine vesile teşkil eden bir nimettir.
 
-## 2- Tevbe istiğfar:Nefis muhasebesiyle ortaya koyduğumuz hata ve günahlarımızı tevbe ve istiğfarla yok etmeye çalışalım.
+2- Tevbe istiğfar:Nefis muhasebesiyle ortaya koyduğumuz hata ve günahlarımızı tevbe ve istiğfarla yok etmeye çalışalım.
 
 <p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحاً عَسَى رَبُّكُمْ أَن يُكَفِّرَ عَنكُمْ سَيِّئَاتِكُمْ وَيُدْخِلَكُمْ جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ</p>
 
@@ -180,9 +180,9 @@ Bu ayet ibadette, başka bir deyimle kullukta devamlı olmayı vurgulamaktadır.
 
 ## 10- Küslüklere, kırgınlıklara bir son verelim.
 
-## 11- Yaklaşmakta olan rahmet ve mağfiret ayı olan Ramazan-I şerif ayında affolunanlardan olabilme hedefini kendimize çizelim ve bu yolda taviz vermeden gitmeye niyet edelim.
+11- Yaklaşmakta olan rahmet ve mağfiret ayı olan Ramazan-I şerif ayında affolunanlardan olabilme hedefini kendimize çizelim ve bu yolda taviz vermeden gitmeye niyet edelim.
 
-## 12- Madden yanlarında olmaya gayret ettiğimiz filistinli kardeşlerimiz dularımızda nutmayalım.
+12- Madden yanlarında olmaya gayret ettiğimiz filistinli kardeşlerimiz dularımızda nutmayalım.
 
 ## 13- Zalime ve zulme asla rıza göstermeyelim.
 

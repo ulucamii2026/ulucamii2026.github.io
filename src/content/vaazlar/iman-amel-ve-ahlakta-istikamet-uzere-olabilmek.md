@@ -40,7 +40,7 @@ Doğruluk demek olan istikâmet; ehl-i hakikatçe, itikatta, amelde, yemede, iç
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الَّذٖينَ قَالُوا رَبُّنَا اللّٰهُ ثُمَّ اسْتَقَامُوا تَـتَنَزَّلُ عَلَيْهِمُ الْمَلٰٓئِكَةُ اَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَاَبْشِرُوا بِالْجَنَّةِ الَّتٖي كُنْتُمْ تُوعَدُونَ</p>
 
-“*Rabbimiz Allah’tır deyip de istikamet üzere yaşayanlar, işte onların üzerine melekler şu müjdeyle inerler: Korkmayın, kederlenmeyin, size vaad olunan cennetle sevinin!” (Fussilet, 41/30.)***
+“*Rabbimiz Allah’tır deyip de istikamet üzere yaşayanlar, işte onların üzerine melekler şu müjdeyle inerler: Korkmayın, kederlenmeyin, size vaad olunan cennetle sevinin!” (Fussilet, 41/30.)*
 
 Kısaca istikamet, Müslümanın Müslümana yakışan bir tavır ve davranış sergilemesidir. “Ya olduğun gibi görün ya da göründüğün gibi ol “demektir. Kendileri istikamet üzere olmayan insanlar dahi Müslümanın istikametinden taviz vermesini yadırgayıp doğru ve dürüst olmasını beklerler.
 
@@ -48,7 +48,7 @@ Rabbimizin bizden istediği de budur. Yüce Kitabımızda bizlere şöyle buyrul
 
 <p lang="ar" dir="rtl" class="ayet">فَاسْتَقِمْ كَمَٓا اُمِرْتَ وَمَنْ تَابَ مَعَكَ وَلَا تَطْغَوْاۜ اِنَّهُ بِمَا تَعْمَلُونَ بَص۪يرٌ</p>
 
-*"Öyle ise emrolunduğun gibi dosdoğru ol. Beraberindeki tövbe edenler de dosdoğru olsunlar. Hak ve adalet ölçülerini aşmayın. Şüphesiz O yaptıklarınızı hakkıyla görür." (Hud, 11/ 112)***
+*"Öyle ise emrolunduğun gibi dosdoğru ol. Beraberindeki tövbe edenler de dosdoğru olsunlar. Hak ve adalet ölçülerini aşmayın. Şüphesiz O yaptıklarınızı hakkıyla görür." (Hud, 11/ 112)*
 
 Ashab-ı kiramdan birisi, Peygamber Efendimiz (s.a.s)’e gelerek *“Ya Resûlallah! Bana İslam hakkında öyle bir şey söyle ki bu konuda başka hiç kimseye soru sorma ihtiyacı hissetmeyeyim” dedi. Allah Resûlü (s.a.v) ona şöyle buyurdu: “Allah’a iman ettim de, sonra da istikamet üzere ol.” (Müslim, İman, 62)*
 
@@ -62,7 +62,7 @@ Amelde (İbadette) istikamet üzere yaşamak, *“Ey Rabbimiz! Ancak sana kulluk
 
 <p lang="ar" dir="rtl" class="ayet">وَلَقَدْ فَتَنَّا الَّذٖينَ مِنْ قَبْلِهِمْ فَلَيَعْلَمَنَّ اللّٰهُ الَّذٖينَ صَدَقُوا وَلَيَعْلَمَنَّ الْكَاذِبٖينَ</p>
 
-*“İnsanlar, imtihandan geçirilmeden, sadece ‘İman ettik’ demekle bırakılacaklarını mı sanıyorlar? Andolsun, biz onlardan öncekileri de sınamıştık. Allah, elbette doğru olanları ortaya çıkaracaktır; O, yalancıları da mutlaka ortaya çıkaracaktır.” (Ankebût, 29/1-3.)***
+*“İnsanlar, imtihandan geçirilmeden, sadece ‘İman ettik’ demekle bırakılacaklarını mı sanıyorlar? Andolsun, biz onlardan öncekileri de sınamıştık. Allah, elbette doğru olanları ortaya çıkaracaktır; O, yalancıları da mutlaka ortaya çıkaracaktır.” (Ankebût, 29/1-3.)*
 
 Bu ayetler bize şunu öğretmektedir iman kuru bir sözden ibaret değildir. İbadetlerimizle, özümüzle, sözümüzle, tüm benliğimizle istikamet üzere yaşama gayretidir.
 
@@ -76,7 +76,7 @@ Ahlakta istikametimiz ise; çağa ayak uydurmak değil, hangi çağda olursak ol
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ عَمِلَ صَالِحاً مِنْ ذَكَرٍ اَوْ اُنْثٰى وَهُوَ مُؤْمِنٌ فَلَنُحْيِيَنَّهُ حَيٰوةً طَيِّبَةًۚ وَلَنَجْزِيَنَّهُمْ اَجْرَهُمْ بِاَحْسَنِ مَا كَانُوا يَعْمَلُونَ</p>
 
-*“Erkek ya da kadın, kim mümin olarak salih amel işlerse, elbette ona hoş bir hayat yaşatacağız ve onların mükâfatlarını yapmakta olduklarının en güzeliyle vereceğiz.” (Nahl, 16/97)***
+*“Erkek ya da kadın, kim mümin olarak salih amel işlerse, elbette ona hoş bir hayat yaşatacağız ve onların mükâfatlarını yapmakta olduklarının en güzeliyle vereceğiz.” (Nahl, 16/97)*
 
 Sevgili Peygamberimiz de *“Müminlerin iman bakımından en olgun olanları ahlakı en güzel olanlarıdır.” (Tirmizî, Radâ, 11.)* buyurarak iman ile ahlak arasındaki bağın vazgeçilemez olduğuna işaret etmiştir.
 

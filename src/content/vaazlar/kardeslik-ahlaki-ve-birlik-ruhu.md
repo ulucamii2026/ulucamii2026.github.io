@@ -68,7 +68,7 @@ Başka bir hadisi şerifte efendimiz:
 
 <p lang="ar" dir="rtl" class="ayet">قال رسولُ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم: « مثَلُ الْمُؤْمِنِينَ فِي تَوَادِّهِمْ وتَرَاحُمِهِمْ وتَعاطُفِهِمْ ، مَثَلُ الْجَسَدِ إِذَا اشْتَكَى مِنْهُ عُضْوٌ تَداعَى لهُ سائِرُ الْجسدِ بالسهَرِوالْحُمَّى“</p>
 
-*Mü’minler birbirlerini sevmekte, birbirlerine acımakta ve birbirlerini korumakta bir vücuda benzerler. Vücudun bir uzvu hasta olduğu zaman, diğer uzuvlar da bu sebeple uykusuzluğa ve ateşli hastalığa tutulurlar.***” (Buhârî, Edeb, 27)
+*Mü’minler birbirlerini sevmekte, birbirlerine acımakta ve birbirlerini korumakta bir vücuda benzerler. Vücudun bir uzvu hasta olduğu zaman, diğer uzuvlar da bu sebeple uykusuzluğa ve ateşli hastalığa tutulurlar.*” (Buhârî, Edeb, 27)
 
 Peygamber efendimiz bu hadisi şeriflerde toplumu bir binaya ve insan vücûduna benzetmiş: Binanın bir bölümü sakat ve organlarının bir kısmı hasta olan insanın bedeni nasıl zayıf ve güçsüz düşerse; ihtilafların çoğaldığı, düşmanlıkların yaygınlaştığı ve birlik ruhunun kaybolduğu toplumlar da öyle güçsüzleşirler. Bu da düşmanın işini kolaylaştırır.
 
@@ -134,7 +134,7 @@ Yüce Rabbimiz Ali, Imran Suresi 105. ayette şöyle buyurur:
 
 <p lang="ar" dir="rtl" class="ayet">“وَلَا تَكُونُوا كَالَّذ۪ينَ تَفَرَّقُوا وَاخْتَلَفُوا مِنْ بَعْدِ مَا جَٓاءَهُمُ الْبَيِّنَاتُۜ وَاُو۬لٰٓئِكَ لَهُمْ عَذَابٌ عَظ۪يمٌ ”</p>
 
-***"Kendilerine apaçık deliller geldikten sonra parçalanıp ayrılığa düşenler gibi olmayın. İşte onlar için büyük bir azap vardır*”.
+*"Kendilerine apaçık deliller geldikten sonra parçalanıp ayrılığa düşenler gibi olmayın. İşte onlar için büyük bir azap vardır*”.
 
 Görüldüğü gibi Allah (cc) ayeti kerimede; ihtilaf ve tefrikayı kesin ifadelerle yasaklamış ve bölücüleri ağır bir azapla tehdit etmiştir. Tarih yoktan sebeplerle ihtilafa düşen, ayrılan, parçalanan, sömürülen ve yok olan milletlerin örnek ve acı tecrübeleriyle doludur. Ve maalesef tarihten ders, ibret alınmadığı için aynı tecrübeler günümüzde de yaşanmaya devam etmektedir.
 

@@ -34,7 +34,7 @@ Mü’minler için en güzel örnekleri şahsında toplayan Peygamberimiz Hz. Mu
 
 <p lang="ar" dir="rtl" class="ayet">عن أنس بن مالك قال: " لًعَنَ رَسولُ الله صلى الله عليه وسلم في الخَمْرِ عَشَرَةً: عاصِرَها، ومُعْتَصِرَها، وشارِبَها، وحاملَها، والمَحْمولَةَ إليه، وساقِيَها، وبائِعَها، وآكلَ ثمنها، والمشتري لها، والمشتراةَ له</p>
 
-Hz.Enes(r.a); "Resulullah (a.s.) içkiyle ilgili olarak on kişiye; **'Üretene, kendisi için üretilene, içene, taşıyana ve taşıtana, sunana, satana ve bunun parasını yiyene, satın alana ve satın aldırana' lanet etti**" demiştir. (Tirmizî,Büyü 59,III,589)
+Hz.Enes(r.a); "Resulullah (a.s.) içkiyle ilgili olarak on kişiye; 'Üretene, kendisi için üretilene, içene, taşıyana ve taşıtana, sunana, satana ve bunun parasını yiyene, satın alana ve satın aldırana' lanet etti" demiştir. (Tirmizî,Büyü 59,III,589)
 
 Peygamberimizin içkiyi üretenlere, içenlere ve bu konuda hizmet verenlere "lanet" etmesi, bu kimselerin Allah'ın rahmetinden uzak olmasını dilemesidir. Peygamberin lanetine uğramak mümin için iyi ve hoş olmayan bir durumdur.
 

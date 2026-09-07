@@ -10,11 +10,11 @@ Peygamber Efendimiz (s.a.v):
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الأَخْلَاقِ</p>
 
-*“Ben, güzel ahlâkı tamamlamak için gönderildim”*** (Muvatta, *Hüsnü’l-Huluk*, 8) buyurarak, insanlığın en yüce hedefinin ahlaki olgunluk olduğunu bildirmiştir. Güzel ahlak, sadece iyiliğe iyilikle karşılık vermek değil; kötülüğe dahi iyilikle mukabele edebilme erdemini göstermektir. Çünkü kalpleri dönüştüren, öfkeyi dindiren ve düşmanlıkları dostluğa çeviren güç, ancak bu yüce ahlakla mümkündür. İşte Resûlullah’ın (s.a.v) getirdiği ahlak anlayışı da tam olarak budur: İnsanın kendi nefsine rağmen, Allah rızası için affedebilmesi, iyiliği her durumda üstün tutabilmesi, kötülüklere iyilikle engel olabilmesidir.
+*“Ben, güzel ahlâkı tamamlamak için gönderildim”* (Muvatta, *Hüsnü’l-Huluk*, 8) buyurarak, insanlığın en yüce hedefinin ahlaki olgunluk olduğunu bildirmiştir. Güzel ahlak, sadece iyiliğe iyilikle karşılık vermek değil; kötülüğe dahi iyilikle mukabele edebilme erdemini göstermektir. Çünkü kalpleri dönüştüren, öfkeyi dindiren ve düşmanlıkları dostluğa çeviren güç, ancak bu yüce ahlakla mümkündür. İşte Resûlullah’ın (s.a.v) getirdiği ahlak anlayışı da tam olarak budur: İnsanın kendi nefsine rağmen, Allah rızası için affedebilmesi, iyiliği her durumda üstün tutabilmesi, kötülüklere iyilikle engel olabilmesidir.
 
 <p lang="ar" dir="rtl" class="ayet">اتَّقِ اللَّهَ حَيْثُمَا كُنْتَ، وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا، وَخَالِقِ النَّاسَ بِخُلُقٍ حَسَن</p>
 
-*“Allah’tan nerede olursan ol kork; bir kötülük yaptığında hemen ardından onu yok edecek bir iyilik yap; insanlara güzel ahlâkla muamele et.”*** (Tirmizî, Birr, 55) hadisi, insana hem nefsiyle hem de toplumla olan ilişkilerinde bir ahlâk rehberi sunar. Çünkü kötülüğe kötülükle karşılık vermek sadece düşmanlığı büyütür; oysa kötülüğü iyilikle karşılamak hem kalpleri yumuşatır hem de şeytanın vesvesesini boşa çıkarır.
+*“Allah’tan nerede olursan ol kork; bir kötülük yaptığında hemen ardından onu yok edecek bir iyilik yap; insanlara güzel ahlâkla muamele et.”* (Tirmizî, Birr, 55) hadisi, insana hem nefsiyle hem de toplumla olan ilişkilerinde bir ahlâk rehberi sunar. Çünkü kötülüğe kötülükle karşılık vermek sadece düşmanlığı büyütür; oysa kötülüğü iyilikle karşılamak hem kalpleri yumuşatır hem de şeytanın vesvesesini boşa çıkarır.
 
 Bir insan sana haksızlık ettiğinde sen affetmeyi, biri seni kırdığında sen tatlı bir sözle karşılık vermeyi seçersen, kötülük iyiliğe yenik düşer. Bu davranış, sadece karşındaki kişiyi değil, seni de arındırır. Nefret yerine merhamet, öfke yerine sabır doğar.
 
@@ -26,7 +26,7 @@ Bir gün Hz. Ebû Zer (r.a.) ile Bilâl b. Rebâh (r.a.) arasında bir münakaş
 
 Ebû Zer (r.a.)’ın Bilâl b. Rebâh (r.a.) söylediği kırıcı söz, nefsinin bir anlık taşkınlığıydı. Fakat hemen ardından duyduğu pişmanlık, kalbinin hâlâ diri olduğunu gösterdi. Vicdanı onu harekete geçirdi; yaptığı kötülüğün arkasından bir iyilik yaparak kendini arındırmak istedi.
 
-İnsanın fıtratı kötülüğe karşı kendini korur, iyiliğe ise meyleder. Kötülük ona yabancıdır; tıpkı Kur’an’ın ifade ettiği gibi, kötülük *“münker”*dir; yani tanıdık olmayan, yadırganan, ürküten şeydir. İyilik ise *“maruf”*tur; yani tanınan, bilinen, içe işleyen, kalbin hemen ısındığı şey.
+İnsanın fıtratı kötülüğe karşı kendini korur, iyiliğe ise meyleder. Kötülük ona yabancıdır; tıpkı Kur’an’ın ifade ettiği gibi, kötülük “münker”dir; yani tanıdık olmayan, yadırganan, ürküten şeydir. İyilik ise “maruf”tur; yani tanınan, bilinen, içe işleyen, kalbin hemen ısındığı şey.
 
 İyilik, bir hatayı onarırken kalpte yeni bir ışık yakar; kötülükse o ışığı söndürmeye çalışır. İnsan, her yanlışının ardından bir iyilik yapma alışkanlığı kazanırsa, nefsinin kötülüğe alışmasını önler, kalbi diri kalır, vicdanı canlı olur.
 
@@ -34,27 +34,27 @@ Peygamber Efendimiz’in (s.a.v) hayatında kötülüğe iyilikle karşılık ve
 
 <p lang="ar" dir="rtl" class="ayet">اِدْفَعْ بِالَّتِي هِيَ اَحْسَنُ فَاِذَا الَّذِي بَيْنَكَ وَبَيْنَهُ عَدَاوَةٌ كَاَنَّهُ وَلِيٌّ حَمِيمٌ</p>
 
-*“Kötülüğü en güzel bir tavırla sav. O zaman seninle arasında düşmanlık bulunan kimse sanki sıcak bir dost oluverir.”*** (Fussilet 41/34) Bu ayet, kötülüğe karşı en güzel şekilde karşılık vermeyi emrediyor. Düşmanlık besleyen kimselerin bile bu yolla dost olabileceği vurgulanıyor. İslâm ahlâkının özü de budur.
+*“Kötülüğü en güzel bir tavırla sav. O zaman seninle arasında düşmanlık bulunan kimse sanki sıcak bir dost oluverir.”* (Fussilet 41/34) Bu ayet, kötülüğe karşı en güzel şekilde karşılık vermeyi emrediyor. Düşmanlık besleyen kimselerin bile bu yolla dost olabileceği vurgulanıyor. İslâm ahlâkının özü de budur.
 
 <p lang="ar" dir="rtl" class="ayet">وَيَدْرَءُونَ بِالْحَسَنَةِ السَّيِّئَةَ وَأُولٰٓئِكَ لَهُمْ عُقْبَى الدَّارِ</p>
 
-*“Onlar kötülüğü iyilikle savarlar; işte onlara ebedî yurdun (cennetin) sonucu vardır.”*** (Ra’d 13/22) Bu ayet, sabreden, namaz kılan ve kötülüğe karşı iyilikle karşılık veren müminlerin cennetle mükâfatlandırılacağını bildirir. Burada iyiliğin pasif değil, aktif bir ahlâkî duruş olduğu görülür.
+*“Onlar kötülüğü iyilikle savarlar; işte onlara ebedî yurdun (cennetin) sonucu vardır.”* (Ra’d 13/22) Bu ayet, sabreden, namaz kılan ve kötülüğe karşı iyilikle karşılık veren müminlerin cennetle mükâfatlandırılacağını bildirir. Burada iyiliğin pasif değil, aktif bir ahlâkî duruş olduğu görülür.
 
 <p lang="ar" dir="rtl" class="ayet">وَيَدْرَؤُونَ بِالْحَسَنَةِ السَّيِّئَةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَ</p>
 
-*“Onlar kötülüğü iyilikle savarlar ve kendilerine verdiğimiz rızıktan harcarlar.”*** (Kasas 28/54) Bu ayette Allah, kötülüğe iyilikle karşılık verenleri övmekte ve böyle davrananlar hem ahlâkî olarak yüce bir mertebededirler hem de cömerttirler.
+*“Onlar kötülüğü iyilikle savarlar ve kendilerine verdiğimiz rızıktan harcarlar.”* (Kasas 28/54) Bu ayette Allah, kötülüğe iyilikle karşılık verenleri övmekte ve böyle davrananlar hem ahlâkî olarak yüce bir mertebededirler hem de cömerttirler.
 
 ## Öfkeyi Kontrol Edebilmek
 
 <p lang="ar" dir="rtl" class="ayet">وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِۜ وَاللّٰهُ يُحِبُّ الْمُحْسِنِينَ</p>
 
-*“Onlar öfkelendiklerinde öfkelerini yutarlar, insanları affederler. Allah, iyilik edenleri sever.”*** (Âl-i İmrân 3/134)
+*“Onlar öfkelendiklerinde öfkelerini yutarlar, insanları affederler. Allah, iyilik edenleri sever.”* (Âl-i İmrân 3/134)
 
 Kötülüğe iyilikle karşılık vermenin en açık biçimi öfkeyi yutmak ve affetmektir. Allah, bu hasleti taşıyan kullarını “muhsin” (en güzel davranan) olarak tanımlar. Resûlullah (s.a.v) öfke anında kişinin fiziksel duruşunu değiştirmesini tavsiye etmiştir. Bu tavsiye, hem psikolojik hem de fizyolojik olarak öfkenin etkisini azaltan derin bir hikmete dayanır.
 
 <p lang="ar" dir="rtl" class="ayet">إِذَا غَضِبَ أَحَدُكُمْ وَهُوَ قَائِمٌ، فَلْيَجْلِسْ، فَإِنْ ذَهَبَ عَنْهُ الْغَضَبُ وَإِلَّا فَلْيَضْطَجِعْ</p>
 
-*“Biriniz öfkelendiğinde ayakta ise otursun; eğer öfkesi geçerse (ne güzel), geçmezse uzansın.”*** (Ebû Dâvûd, Edeb, 3)
+*“Biriniz öfkelendiğinde ayakta ise otursun; eğer öfkesi geçerse (ne güzel), geçmezse uzansın.”* (Ebû Dâvûd, Edeb, 3)
 
 İmam Nevevî der ki: “Bu hadis, öfke hâlinde bedensel değişiklik yaparak nefsin şiddetini yatıştırmanın sünnet olduğunu gösterir. Çünkü öfke, hareketle beslenir; sükûnetle söner.” (Şerh-u Sahîh-i Müslim, c. 16, s. 157) İbn Hacer el-Askalânî ise şöyle der: “Öfke ateşi şeytandandır. İnsan ayakta iken şeytanın tahrikiyle hareket etmeye daha yakındır. Oturmak, o ateşin sönmesine vesile olur.” (Fethu’l-Bârî, c. 10, s. 520)
 
@@ -70,15 +70,15 @@ Dava ve mücadele yolunda da aynı prensip geçerlidir. İnsan davasına kini, n
 
 <p lang="ar" dir="rtl" class="ayet">وَجَزَاءُ سَيِّئَةٍ سَيِّئَةٌ مِثْلُهَا فَمَنْ عَفَا وَأَصْلَحَ فَأَجْرُهُ عَلَى اللّٰهِۜ اِنَّهُ لَا يُحِبُّ الظَّالِمِينَ</p>
 
-*“Bir kötülüğün karşılığı onun dengi bir kötülüktür; ama kim affeder ve düzeltmeye yönelirse, onun ödülü Allah’a aittir. Şüphesiz Allah zalimleri sevmez.”*** (Şûrâ, 42/40)
+*“Bir kötülüğün karşılığı onun dengi bir kötülüktür; ama kim affeder ve düzeltmeye yönelirse, onun ödülü Allah’a aittir. Şüphesiz Allah zalimleri sevmez.”* (Şûrâ, 42/40)
 
 Kur’an’da kötülüğe iyilikle karşılık vermek, kötülüklere iyilikle engel olmak bireysel ahlâkın zirvesidir, toplumsal barışı ve kalp yumuşamasını sağlar affedicilik, sabır ve yumuşak huyluluk kavramlarıyla doğrudan bağlantılıdır, cennete giden yolda en büyük ahlâkî meziyetlerden biridir.
 
-Hz. Âişe (r.a.) Peygamberimize (s.a.v), “Uhud gününden daha zor bir gün yaşadın mı?” diye sordu. Rasûlullah (s.a.v.) şöyle buyurdu: ***“Kavminden çok eziyet gördüm. Onlardan en ağır olanı, kendimi Abdüyâlîl b. Abd-i Külâl’e anlattığım Taif günüdür. O beni reddetti. Üzgün bir şekilde oradan ayrıldım. Kendime geldiğimde Karnü’s-Seâlib denilen yerdeydim. Başımı kaldırdım, bir bulutun beni gölgelediğini gördüm. Bulutta Cebrâil vardı. Cebrâil bana, ‘Allah kavminin sana söylediklerini ve yaptıklarını işitti. İşte Allah, dağlar meleğini sana gönderdi. Dilersen onları iki dağ arasına sıkıştırır.’ dedi. Dağlar meleği selam verdi ve dedi ki: ‘Ey Muhammed! Ne emredersen onu yapayım. Dilersen şu iki dağı onların üzerine kapatayım.’ Bunun üzerine Rasûlullah (s.a.v) buyurdu ki:*
+Hz. Âişe (r.a.) Peygamberimize (s.a.v), “Uhud gününden daha zor bir gün yaşadın mı?” diye sordu. Rasûlullah (s.a.v.) şöyle buyurdu: *“Kavminden çok eziyet gördüm. Onlardan en ağır olanı, kendimi Abdüyâlîl b. Abd-i Külâl’e anlattığım Taif günüdür. O beni reddetti. Üzgün bir şekilde oradan ayrıldım. Kendime geldiğimde Karnü’s-Seâlib denilen yerdeydim. Başımı kaldırdım, bir bulutun beni gölgelediğini gördüm. Bulutta Cebrâil vardı. Cebrâil bana, ‘Allah kavminin sana söylediklerini ve yaptıklarını işitti. İşte Allah, dağlar meleğini sana gönderdi. Dilersen onları iki dağ arasına sıkıştırır.’ dedi. Dağlar meleği selam verdi ve dedi ki: ‘Ey Muhammed! Ne emredersen onu yapayım. Dilersen şu iki dağı onların üzerine kapatayım.’ Bunun üzerine Rasûlullah (s.a.v) buyurdu ki:*
 
 <p lang="ar" dir="rtl" class="ayet">بَلْ أَرْجُو أَنْ يُخْرِجَ اللَّهُ مِنْ أَصْلَابِهِمْ مَنْ يَعْبُدُ اللَّهَ وَحْدَهُ لَا يُشْرِكُ بِهِ شَيْئًا</p>
 
-*‘Hayır, ben Allah’ın onların soyundan yalnızca Allah’a ibadet eden bir nesil çıkarmasını umarım.”*** (Buhârî, “Bed’ü’l-Halk”, 7; Müslim, Cihâd, 111)
+*‘Hayır, ben Allah’ın onların soyundan yalnızca Allah’a ibadet eden bir nesil çıkarmasını umarım.”* (Buhârî, “Bed’ü’l-Halk”, 7; Müslim, Cihâd, 111)
 
 Bu olay, “kötülüğe karşı iyilikle mukabele, kötülüğe iyilikle engel olma” ilkesinin en çarpıcı örneklerinden biridir. Peygamberimiz (s.a.v) davet için gittiği Taif’te taşlanıp ağır şekilde incitildi. Kanlar içinde kaldığı halde onlara beddua etmedi, merhamet etmişti. Bu da onun âlemlere rahmet oluşunun en güzel delilidir.
 
@@ -96,11 +96,11 @@ Kur’an’da bu ilkenin fiilen yaşandığı örneklerden biri de Hz. Yusuf (a.
 
 ### Hz. Peygamber’in (s.a.v) Mekkelileri Affetmesi
 
-Abdullah b. Amr (r.a.) anlatıyor: Resûlullah (s.a.v) Mekke’yi fethettiğinde şöyle buyurdu: ***“Siz ne söylüyorsunuz ve benden ne umuyorsunuz?”*** Onlar dediler ki: *“Sen asil bir kardeşsin, asil bir kardeşin oğlusun; biz senden ancak iyilik bekleriz.”*** Bunun üzerine Efendimiz (s.a.v) şöyle buyurdu:
+Abdullah b. Amr (r.a.) anlatıyor: Resûlullah (s.a.v) Mekke’yi fethettiğinde şöyle buyurdu: ***“Siz ne söylüyorsunuz ve benden ne umuyorsunuz?”*** Onlar dediler ki: *“Sen asil bir kardeşsin, asil bir kardeşin oğlusun; biz senden ancak iyilik bekleriz.”* Bunun üzerine Efendimiz (s.a.v) şöyle buyurdu:
 
 <p lang="ar" dir="rtl" class="ayet">إِنِّي أَقُولُ لَكُمْ كَمَا قَالَ يُوسُفُ لِإِخْوَتِهِ: لَا تَثْرِيبَ عَلَيْكُمُ الْيَوْمَ، اذْهَبُوا فَأَنْتُمُ الطُّلَقَاءُ</p>
 
-*“Ben de size kardeşim Yusuf’un kardeşlerine dediği gibi diyorum: ‘Bugün size kınama yok. Gidin, hepiniz serbestsiniz (özgürsünüz).”*** (İbn Hişâm, *es-Sîretü’n-Nebeviyye*, 4/54–55; İbn Sa‘d, *et-Tabakâtü’l-Kübrâ*,2/142)
+*“Ben de size kardeşim Yusuf’un kardeşlerine dediği gibi diyorum: ‘Bugün size kınama yok. Gidin, hepiniz serbestsiniz (özgürsünüz).”* (İbn Hişâm, *es-Sîretü’n-Nebeviyye*, 4/54–55; İbn Sa‘d, *et-Tabakâtü’l-Kübrâ*,2/142)
 
 Mekke’nin fethinde Peygamber Efendimiz (s.a.v), yıllarca kendisine düşmanlık eden, savaşlar çıkaran, müminlere zulmeden kimselerle karşı karşıya kaldı. Ebu Süfyan, Hind bint Utbe, İkrime b. Ebî Cehil, Safvân b. Ümeyye, Suheyl b. Amr gibi isimler, bir zamanlar İslam’ın en şiddetli düşmanlarıydı. O gün affedilenlerin çoğu, bu merhametin etkisiyle İslam’ı benimsediler.
 
@@ -110,7 +110,7 @@ Peygamber Efendimiz (s.a.v) ashabı bir hata yaptığında onlara kızmak ve ba�
 
 <p lang="ar" dir="rtl" class="ayet">فَبِمَا رَحْمَةٍ مِّنَ اللّٰهِ لِنتَ لَهُمْۚ وَلَوْ كُنتَ فَظًّا غَلِيظَ الْقَلْبِ لَانفَضُّوا مِنْ حَوْلِكَۖ فَاعْفُ عَنْهُمْ وَاسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِي الْاَمْرِۖ فَاِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللّٰهِۜ اِنَّ اللّٰهَ يُحِبُّ الْمُتَوَكِّلٖينَ</p>
 
-*“Sen, Allah’tan bir rahmet sayesinde onlara yumuşak davrandın. Eğer kaba, katı yürekli olsaydın, şüphesiz etrafından dağılıp giderlerdi. Öyleyse onları affet, onlar için Allah’tan bağışlanma dile ve işlerde onlara danış. Artık kararını verdiğinde de Allah’a tevekkül et. Şüphesiz Allah tevekkül edenleri sever.”*** (Âl-i İmrân, 3/159)
+*“Sen, Allah’tan bir rahmet sayesinde onlara yumuşak davrandın. Eğer kaba, katı yürekli olsaydın, şüphesiz etrafından dağılıp giderlerdi. Öyleyse onları affet, onlar için Allah’tan bağışlanma dile ve işlerde onlara danış. Artık kararını verdiğinde de Allah’a tevekkül et. Şüphesiz Allah tevekkül edenleri sever.”* (Âl-i İmrân, 3/159)
 
 ## Kötülüğe İyilikle Karşılık Verebilmek Yolunda Neler Yapabiliriz
 
@@ -126,7 +126,7 @@ Dördüncü adım, dua ve tefekkürle nefsi yumuşatmaktır. Kalbe her gün şu 
 
 Ve nihayet, günlük muhasebe yapmak gerekir. Her akşam insan kendine sormalıdır: “Bugün bana yapılan kötülüklere nasıl karşılık verdim? Gönlüm kırıldığında affedebildim mi?” Bu sorular, kalbin aynasını temizler.
 
-## Sonuç:
+## Sonuç
 
 Kötülüğe iyilikle karşılık veren insan zamanla şunu fark eder: affetmek acizlik değil, yüceliktir; kötülüğe iyilikle karşılık vermek yenilgi değil, zaferdir. Çünkü bu yol, Allah’a yaklaşmanın yoludur.
 
@@ -140,7 +140,7 @@ Kötülüğe iyilikle karşılık vermek ya da kötülüğe iyilikle engel olmak
 
 <p lang="ar" dir="rtl" class="ayet">لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ</p>
 
-*“Asıl pehlivan, güreşte rakibini yenen değil, öfkelendiği zaman nefsine hâkim olandır.”*** (Buhârî, Edeb, 76) buyurarak bu hakikati beyan etmiştir.
+*“Asıl pehlivan, güreşte rakibini yenen değil, öfkelendiği zaman nefsine hâkim olandır.”* (Buhârî, Edeb, 76) buyurarak bu hakikati beyan etmiştir.
 
 Kötülüğe iyilikle karşılık vermek, kısa vadede zor görünse de uzun vadede hem kalıcı hem de dönüştürücü bir etkiye sahiptir. Çünkü iyilik, insanın fıtratına hitap eder; en katı kalpleri bile zamanla yumuşatır.
 

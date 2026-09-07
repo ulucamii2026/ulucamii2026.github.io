@@ -26,7 +26,7 @@ Rabbimize karşı sorumluluk bilincinde olup günahlardan uzak durmamız bizim b
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا خَلَقْتُ الْجِنَّ وَالْاِنْسَ اِلَّا لِيَعْبُدُونِ ﴿٥٦﴾</p>
 
-*“Ben cinleri ve insanları, başka değil, sırf bana kulluk etsinler diye yarattım.”*** (Zariyat 51/56)
+*“Ben cinleri ve insanları, başka değil, sırf bana kulluk etsinler diye yarattım.”* (Zariyat 51/56)
 
 Büyük şair Necip Fazıl Kısakürek dizelerinde ne güzel ifade etmiştir:
 
@@ -52,11 +52,11 @@ Gönül kırmak, üzmek, gıybet etmek, su-i zanda bulunmak şeklinde ki günahl
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ كَانَتْ عِندَهُ مَظْلَمَةٌ لِأَخِيهِ، مِنْ عِرْضِهِ أو مِنْ شَيْءٍ، فَلْيَتَحَلَّلْهُ مِنْهُ اليومَ قَبْلَ أَن لا يَكُونَ دِينَارٌ ولا دِرْهَمٌ</p>
 
-"***Kimde başkasının malı ve namusu ile ilgili hakkı varsa, paranın ve malın geçerli olmadığı kıyamet gününden önce o kişiden helallik alsın.”*
+"*Kimde başkasının malı ve namusu ile ilgili hakkı varsa, paranın ve malın geçerli olmadığı kıyamet gününden önce o kişiden helallik alsın.”*
 
 <p lang="ar" dir="rtl" class="ayet">إِنْ كَانَ لَهُ عَمَلٌ صَالِحٌ أُخِذَ مِنْهُ بِقَدْرِ مَظْلَمَتِهِ، وَإِنْ لَمْ تَكُنْ لَهُ حَسَنَاتٌ أُخِذَ مِنْ سَيِّئَاتِ صَاحِبِهِ فَحُمِلَ عَلَيْهِ</p>
 
-*“Aksi takdirde o kişinin iyiliklerinden alınarak, yaptığı haksızlıklara mukabil hak sahibine verilir. O kişinin iyiliği yoksa hak sahibinin günahlarından alınarak haksızlık edene yüklenir.”*** (Buhari, Mezalim, 10)
+*“Aksi takdirde o kişinin iyiliklerinden alınarak, yaptığı haksızlıklara mukabil hak sahibine verilir. O kişinin iyiliği yoksa hak sahibinin günahlarından alınarak haksızlık edene yüklenir.”* (Buhari, Mezalim, 10)
 
 "Allah hakkı" ile ilgili günaha tövbe etmede üç şartın birlikte bulunması gerekir:
 
@@ -76,7 +76,7 @@ Kulluk hayatımızda acizliğimizden ve unutkanlık hastalığımızdan dolayı 
 
 *“Ey iman edenler! İçten ve samimi bir tövbe ile Allah’a yönelin. Umulur ki Rabbiniz günahlarınızı örter ve sizi içinde ırmaklar akan cennetlere yerleştirir. O gün Allah Peygamber’i ve onunla beraberindeki mü’minleri utandırmayacak, hayal kırıklığına uğratmayacaktır.*” (Tahrim 66/8)
 
-Ayet-i kerime’de Rabbimiz nasuh tövbe etmemizi ister. "***Tövbe-i nasûh***" samîmî olarak yapılan, insanın halini düzelten ve kişinin bir daha o günaha dönmesine engel olan tövbe demektir. Hz. Ömer, Übey ibn Ka'b ve Muâz bin Cebel nasûh tövbesini şöyle tanımlamışlardır: “***Tövbe-i nasûh, sütün memeye dönmediği gibi kişinin tövbe ettiği günaha bir daha dönmemesidir*.”( Bağavî, Hüseyin b. Mes'ûd, Meaâlimü't-Tenzîl, VIII, 169. Dâru Taybe, Beyrut 1993)
+Ayet-i kerime’de Rabbimiz nasuh tövbe etmemizi ister. "***Tövbe-i nasûh***" samîmî olarak yapılan, insanın halini düzelten ve kişinin bir daha o günaha dönmesine engel olan tövbe demektir. Hz. Ömer, Übey ibn Ka'b ve Muâz bin Cebel nasûh tövbesini şöyle tanımlamışlardır: “*Tövbe-i nasûh, sütün memeye dönmediği gibi kişinin tövbe ettiği günaha bir daha dönmemesidir*.”( Bağavî, Hüseyin b. Mes'ûd, Meaâlimü't-Tenzîl, VIII, 169. Dâru Taybe, Beyrut 1993)
 
 ## Tövbe Kul İçin Ümit Kapısıdır
 
@@ -90,7 +90,7 @@ Peygamber Efendimiz de (s.a.v) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذِي نَفْسِي بِيَدِهِ لَوْ لَمْ تُذْنِبُوا لَذَهَبَ اللَّهُ بِكُمْ وَلَجَاءَ بِقَوْمٍ يُذْنِبُونَ فَيَسْتَغْفِرُونَ اللَّهَ فَيَغْفِرُ لَهُمْ</p>
 
-*"Nefsim kudret elinde tutan Allah’a yemin ederim ki; eğer siz hiç günah işlemeseydiniz, Allah Teâla hazretleri sizi helak eder ve yerinize, günah işleyecek (fakat tövbeleri sebebiyle) mağfiret edeceği kimseler yaratırdı."*** (Müslim, Tevbe, 9)
+*"Nefsim kudret elinde tutan Allah’a yemin ederim ki; eğer siz hiç günah işlemeseydiniz, Allah Teâla hazretleri sizi helak eder ve yerinize, günah işleyecek (fakat tövbeleri sebebiyle) mağfiret edeceği kimseler yaratırdı."* (Müslim, Tevbe, 9)
 
 <p lang="ar" dir="rtl" class="ayet">كُلُّ بَنِي آدَمَ خَطَّاءٌ وَخَيْرُ الْخَطَّائِينَ اَلتَّوَّابُونَ</p>
 
@@ -100,7 +100,7 @@ Peygamber Efendimiz de (s.a.v) şöyle buyurmuştur:
 
 Ebû Saîd Sa`d İbni Mâlik İbni Sinân el-Hudrî (r.a)’den rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu:
 
-“*Vaktiyle doksan dokuz kişiyi öldürmüş bir adam vardı. Bu zât yeryüzünde en büyük âlimin kim olduğunu soruşturdu. Ona bir râhibi gösterdiler.
+“Vaktiyle doksan dokuz kişiyi öldürmüş bir adam vardı. Bu zât yeryüzünde en büyük âlimin kim olduğunu soruşturdu. Ona bir râhibi gösterdiler.
 
 Bu adam râhibe giderek: “Doksan dokuz adam öldürdüm. Tövbe etsem kabul olur mu?” diye sordu.
 
@@ -118,7 +118,7 @@ Bu sırada insan kılığına girmiş bir melek çıkageldi. Melekler onu aralar
 
 Hakem olan melek: “Geldiği yerle gittiği yeri ölçün. Hangisine daha yakınsa, adam o tarafa aittir” dedi.
 
-Melekler iki mesâfeyi de ölçtüler. Gitmek istediği yerin daha yakın olduğunu gördüler. Bunun üzerine onu rahmet melekleri alıp götürdü.*” (*Buharî, Enbiya 50; Müslim, Tövbe 46)*
+Melekler iki mesâfeyi de ölçtüler. Gitmek istediği yerin daha yakın olduğunu gördüler. Bunun üzerine onu rahmet melekleri alıp götürdü.” (Buharî, Enbiya 50; Müslim, Tövbe 46)
 
 ## Tövbe Ertelenmeye Gelmez
 
@@ -164,7 +164,7 @@ Rasulullah (s.a.v) buyurdu ki:
 
 <p lang="ar" dir="rtl" class="ayet">وَإِنْ عَادَ زِيدَ فِيهَا حَتَّى تَعْلُوَ قَلْبَهُ وَهُوَ الرَّانُ الَّذِي ذَكَرَ اللَّهُ ‏: ‏(‏ كَلَّا بَلْ رَانَ عَلَى قُلُوبِهِمْ مَا كَانُوا يَكْسِبُونَ ‏)‏</p>
 
-“*Eğer tövbe etmezse siyah nokta artırılır ve neticede bütün kalbini istila eder. İşte Allah’ın, "gerçek şu ki onların kazanmış oldukları günahlar, kalplerini örtmüştür." (Mutaffifin, 83/14) diye zikrettiği örtü budur.”*** (Müslim, Tevbe,10)
+“*Eğer tövbe etmezse siyah nokta artırılır ve neticede bütün kalbini istila eder. İşte Allah’ın, "gerçek şu ki onların kazanmış oldukları günahlar, kalplerini örtmüştür." (Mutaffifin, 83/14) diye zikrettiği örtü budur.”* (Müslim, Tevbe,10)
 
 ## Nasıl Tövbe Etmeliyiz?
 

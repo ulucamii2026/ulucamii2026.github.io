@@ -70,9 +70,9 @@ Hz. Ebû Hüreyre'nin rivayetinde şöyle gelmiştir: “Rasûlullah (s.a.s.) bu
 
 *“Mü’minin başka hiç kimsede bulunmayan ilginç bir hali vardır; O’nun her işi hayırdır. Eğer bir genişliğe (nimete) kavuşursa şükreder ve bu onun için bir hayır olur. Eğer bir darlığa (musibete) uğrarsa sabreder ve bu da onun için bir hayır olur.”* ***(Müslim, Zühd, 64)***
 
-**HİKÂYE:** Hikâye edildiğine göre; hâfızlardan birisi maddî yönden iyice daralmıştı. Bir gece rüyasında, bütün Kur’ân’ın sûrelerini kendisine sayarak: "Meselâ, Bakara sûresini unutsan da bunun yerine bin altının olsa bunu ister misin?" dediler. Hâfiz: "Hayır, buna razı olmam." dedi. Böylece bütün sûreleri birçok para karşılığında kendisine saydılar ve hiçbirini para karşılığı unutmaya razı olmadı. Bunun üzerine: "Baksana, sende yüz bin altın değerinde servet var, daha nasıl oluyor da fakirlikten şikâyet ediyorsun?" dediler. Adam uykudan uyanınca artık yoksulluk sıkıntısını unuttu.
+HİKÂYE: Hikâye edildiğine göre; hâfızlardan birisi maddî yönden iyice daralmıştı. Bir gece rüyasında, bütün Kur’ân’ın sûrelerini kendisine sayarak: "Meselâ, Bakara sûresini unutsan da bunun yerine bin altının olsa bunu ister misin?" dediler. Hâfiz: "Hayır, buna razı olmam." dedi. Böylece bütün sûreleri birçok para karşılığında kendisine saydılar ve hiçbirini para karşılığı unutmaya razı olmadı. Bunun üzerine: "Baksana, sende yüz bin altın değerinde servet var, daha nasıl oluyor da fakirlikten şikâyet ediyorsun?" dediler. Adam uykudan uyanınca artık yoksulluk sıkıntısını unuttu.
 
-**HİKÂYE:** Bir adam fakirliğinden Ebu Tâlib el-Mekkî’ye şikâyet eder. Allah dostu sorar: 10 bin altın karşılığında gözünü verir misin, 10 bin altın karşılığında kulağını verir misin, 10 bin altın karşılığında elini verir misin… aklını verir misin? Bak şimdiden ne kadar da zenginsin.
+HİKÂYE: Bir adam fakirliğinden Ebu Tâlib el-Mekkî’ye şikâyet eder. Allah dostu sorar: 10 bin altın karşılığında gözünü verir misin, 10 bin altın karşılığında kulağını verir misin, 10 bin altın karşılığında elini verir misin… aklını verir misin? Bak şimdiden ne kadar da zenginsin.
 
 Kulluk ile şükür arasında çok güçlü bir ilişki vardır. Şükürden uzak duran bir insanın, kulluk bilincini de yitirmesi kaçınılmazdır. Bu sebeple şeytanın bütün çabası kulları şükürden alıkoymaya yöneliktir. Şu ayeti kerime bu gerçeği ortaya koyuyor:
 
@@ -88,7 +88,7 @@ Kulluk ile şükür arasında çok güçlü bir ilişki vardır. Şükürden uza
 
 *Hani rabbiniz, “Eğer şükrederseniz size (nimetimi) daha çok vereceğim, nankörlük ederseniz hiç şüphesiz azabım pek şiddetlidir!’ diye bildirmişti.”* ***(İbrahim-14/7)***
 
-**KISSA:** Behlül Dânâ, bir gün Harun Reşid’den bir vazife istedi. Harun Reşid de ona çarşı pazar ağalığını (denetimini) verdi. Behlül hemen işe koyuldu. İlk olarak bir fırına gitti. Birkaç ekmek tarttı ve hepsi normal gramajından noksan geldi. Dönüp fırıncıya sordu: “Hayatından memnun musun, geçinebiliyor musun, çoluk-çocuğunla ağzının tadı var mı?” Adam her soruya olumsuz cevap verdi. Memnun olduğu bir şey yoktu.
+KISSA: Behlül Dânâ, bir gün Harun Reşid’den bir vazife istedi. Harun Reşid de ona çarşı pazar ağalığını (denetimini) verdi. Behlül hemen işe koyuldu. İlk olarak bir fırına gitti. Birkaç ekmek tarttı ve hepsi normal gramajından noksan geldi. Dönüp fırıncıya sordu: “Hayatından memnun musun, geçinebiliyor musun, çoluk-çocuğunla ağzının tadı var mı?” Adam her soruya olumsuz cevap verdi. Memnun olduğu bir şey yoktu.
 
 Behlül Dânâ bir şey demeden oradan ayrıldı ve bir başka fırına geçti. Orada da birkaç ekmek tarttı ve gördü ki bütün ekmekler gramajından fazla geliyor, eksik gelmiyor.
 
@@ -104,9 +104,9 @@ Bir hocamız anlatıyor; Bir öğrencim vardı. Göz kapaklarının kasları eri
 
 Hangimiz sabah uyandığımızda Allah’ım sana şükürler olsun bugün nefes alıyorum, göz kapaklarım çalışıyor diye şükrediyor!
 
-**ANEKDOT:** Bir hocamız anlatıyor; Bir öğrencimiz vardı. Anlayacağımız avam lisanıyla ağız kanseri oldu. Ağzı tükürük üretmiyor, yutkunamıyor, yemek yiyemiyor. Ağzına yapay tükürük pompalıyorlar ki ağzındaki nemi oluşturabilsinler. Babası Türkiye’nin en meşhur iş adamlarından biri ağlayarak şöyle diyordu; Trilyonluk mallarımla çaresiz kaldım. Gücüm bir damla tükürüğü üretmeye yetmiyor. Sokakta görüp iğrendiğimiz, kıymetsiz zannettiğimiz tükürüğümüz…
+ANEKDOT: Bir hocamız anlatıyor; Bir öğrencimiz vardı. Anlayacağımız avam lisanıyla ağız kanseri oldu. Ağzı tükürük üretmiyor, yutkunamıyor, yemek yiyemiyor. Ağzına yapay tükürük pompalıyorlar ki ağzındaki nemi oluşturabilsinler. Babası Türkiye’nin en meşhur iş adamlarından biri ağlayarak şöyle diyordu; Trilyonluk mallarımla çaresiz kaldım. Gücüm bir damla tükürüğü üretmeye yetmiyor. Sokakta görüp iğrendiğimiz, kıymetsiz zannettiğimiz tükürüğümüz…
 
-**HİKÂYE:** Bir gün yaşlı bir adam aniden hastalanır, hastaneye kaldırılır. Gerekli muayeneler yapıldıktan sonra oksijen bağlanır. Beş günlük tedavinin ardından yaşlı adam kendine gelip canlanır. Nihayet taburcu olurken, hastane masrafları için beş bin liralık fatura önüne konulur. Adam “Ne yaptınız ki bu kadar para istiyorsunuz?” diye sorar. Derler ki “Amcacığım, sana beş gün boyunca oksijen verdik.” Adam ağlamaya başlar. “Üzülme amca, paran yoksa taksitle de ödeyebilirsin.” diye teselli etmeye çalışırlar. Yaşlı adam; “Hayır, param da var kartım da... Ödeme sorun değil.” der. Görevliler şaşırır. “Peki, sorun ne?” diye merak ederler. Bunun üzerine yaşlı adam şöyle der: “Siz benden beş günlük oksijen için beş bin lira istiyorsunuz. Rabbim bana yetmiş beş yıldır oksijen veriyor. Ben bunun hesabını nasıl öderim!”
+HİKÂYE: Bir gün yaşlı bir adam aniden hastalanır, hastaneye kaldırılır. Gerekli muayeneler yapıldıktan sonra oksijen bağlanır. Beş günlük tedavinin ardından yaşlı adam kendine gelip canlanır. Nihayet taburcu olurken, hastane masrafları için beş bin liralık fatura önüne konulur. Adam “Ne yaptınız ki bu kadar para istiyorsunuz?” diye sorar. Derler ki “Amcacığım, sana beş gün boyunca oksijen verdik.” Adam ağlamaya başlar. “Üzülme amca, paran yoksa taksitle de ödeyebilirsin.” diye teselli etmeye çalışırlar. Yaşlı adam; “Hayır, param da var kartım da... Ödeme sorun değil.” der. Görevliler şaşırır. “Peki, sorun ne?” diye merak ederler. Bunun üzerine yaşlı adam şöyle der: “Siz benden beş günlük oksijen için beş bin lira istiyorsunuz. Rabbim bana yetmiş beş yıldır oksijen veriyor. Ben bunun hesabını nasıl öderim!”
 
 <p lang="ar" dir="rtl" class="ayet">اَللّٰهُ الَّذي جَعَلَ لَكُمُ الَّيْلَ لِتَسْكُنُوا ف۪يهِ وَالنَّهَارَ مُبْصِراًۜ اِنَّ اللّٰهَ لَذُو فَضْلٍ عَلَى النَّاسِ وَلٰكِنَّ اَكْثَرَ النَّاسِ لَا يَشْكُرُونَ</p>
 
@@ -143,7 +143,7 @@ Her şeyiyle nimet verene itaat etmek ve O’nun bütün emirlerini yerine getir
 2- Allah Teâlâ’nın verdiği her şeye razı olmak.
 3- Verilen nimetten istifade edildiği müddetçe, Allah Teâlâ’ya isyan etmemek.
 
-Bişr-i Hâfî bu husûsu şöyle izah eder: “Âzâları içinde yalnız dili ile şükreden kimsenin şükrü az olur. Çünkü gözün şükrü, bir hayır gördüğü zaman onu almak, şer görürse onu örtmektir. Kulağın şükrü, bir hayır işittiği zaman onu ezberlemek, şer işitirse onu unutmaktır. Ellerin şükrü, onlarla hakkı olandan başkasını tutmamaktır. Midenin şükrü, helâl ile gıdalanmak, akıl ve kalbin şükrü, ilim ve hilm ile dolu olmak; ayakların şükrü de iyilikten başkasına gitmemektir. Kim böyle yaparsa *hakîkaten şükredenlerden olur.”(Buhârî, Cenâiz, 27)***
+Bişr-i Hâfî bu husûsu şöyle izah eder: “Âzâları içinde yalnız dili ile şükreden kimsenin şükrü az olur. Çünkü gözün şükrü, bir hayır gördüğü zaman onu almak, şer görürse onu örtmektir. Kulağın şükrü, bir hayır işittiği zaman onu ezberlemek, şer işitirse onu unutmaktır. Ellerin şükrü, onlarla hakkı olandan başkasını tutmamaktır. Midenin şükrü, helâl ile gıdalanmak, akıl ve kalbin şükrü, ilim ve hilm ile dolu olmak; ayakların şükrü de iyilikten başkasına gitmemektir. Kim böyle yaparsa *hakîkaten şükredenlerden olur.”(Buhârî, Cenâiz, 27)*
 
 Makbûl bir şükür, yalnızca sözle ifade edilen şükür değildir. Gerçek bir şükür, birbirine bağlı üç unsurdan oluşur. Bunlar; ilim, hâl ve ameldir.
 
@@ -174,7 +174,7 @@ Her güzel iş bir şükürdür: Namaz bir şükürdür. Oruç bir şükürdür.
 
 Yapılan hayırlar bir şükürdür. Namaz ve oruç gibi ibadetler bedenin; zekât, sadaka ve diğer hayırlar malın şükrüdür. Dilin şükrü ise Allah’a hamd etmektir.
 
-**KISSA:** Bir adam İmam-ı Azam’ın (r.a) yanına gelip “senin ticaret mallarının getiren kervan soyuldu” diye haber verir. İmam-ı Azam’a (r.a), “elhamdülillah” der. Daha sonra başka bir haber gelir. “Soyulan kervan senin eşyalarının bulunduğu kervan değilmiş, eşyalarına bir şey olmamış.” denilir. İmam-ı Azam rh.a. yine “elhamdülillah” der. Bu iki hamdin sebebi sorulunca da şu cevabı verir: “Bana kervan soyuldu denince kalbimi kontrol ettim, dünya malını kaybetmekten dolayı üzüntü duymadı. Bu yüzden elhamdülillah dedim. Soyulan kervanın benim malımı taşıyan kervan olmadığını öğrenince yine kalbimi kontrol ettim. Mala kavuşma sevinci de yoktu. Bunun için de elhamdülillah dedim.”
+KISSA: Bir adam İmam-ı Azam’ın (r.a) yanına gelip “senin ticaret mallarının getiren kervan soyuldu” diye haber verir. İmam-ı Azam’a (r.a), “elhamdülillah” der. Daha sonra başka bir haber gelir. “Soyulan kervan senin eşyalarının bulunduğu kervan değilmiş, eşyalarına bir şey olmamış.” denilir. İmam-ı Azam rh.a. yine “elhamdülillah” der. Bu iki hamdin sebebi sorulunca da şu cevabı verir: “Bana kervan soyuldu denince kalbimi kontrol ettim, dünya malını kaybetmekten dolayı üzüntü duymadı. Bu yüzden elhamdülillah dedim. Soyulan kervanın benim malımı taşıyan kervan olmadığını öğrenince yine kalbimi kontrol ettim. Mala kavuşma sevinci de yoktu. Bunun için de elhamdülillah dedim.”
 
 ### HER DAİM ŞÜKRETMEK
 Fudayl b. Amr anlatıyor:
@@ -215,7 +215,7 @@ Kanaatkarlık ise insanı önce rahatlatır. Malı Allah’ın bir emaneti olara
 
 <p lang="ar" dir="rtl" class="ayet">لَيْسَ الْغِنَى عَنْ كَثْرَةِ الْعَرَضِ، وَلَكِنَّ الْغِنَى غِنَى النَّفْسِ</p>
 
-*“*Gerçek zenginlik, mal çokluğu değil, gönül tokluğudur.” ***(Buhârî, Rikâk 15)***
+“Gerçek zenginlik, mal çokluğu değil, gönül tokluğudur.” ***(Buhârî, Rikâk 15)***
 
 ### SONUÇ
 
@@ -223,16 +223,16 @@ Kanaatkarlık ise insanı önce rahatlatır. Malı Allah’ın bir emaneti olara
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا كَانَ لِنَفْسٍ اَنْ تَمُوتَ اِلَّا بِاِذْنِ اللّهِ كِتَابًا مُؤَجَّلًا وَمَنْ يُرِدْ ثَوَابَ الدُّنْيَا نُؤْتِه مِنْهَا وَمَنْ يُرِدْ ثَوَابَ الْاخِرَةِ نُؤْتِه مِنْهَا وَسَنَجْزِى الشَّاكِرينَ</p>
 
-*“Hiçbir kimse Allah’ın yazılıp bir süreye bağlanmış izni olmadan ölmez. Kim dünya nimetini isterse ondan kendisine veririz; kim âhiret nimetini isterse ona da ondan veririz ve şükredenleri ödüllendireceğiz.” (Âl-i İmran 3/145)***
+*“Hiçbir kimse Allah’ın yazılıp bir süreye bağlanmış izni olmadan ölmez. Kim dünya nimetini isterse ondan kendisine veririz; kim âhiret nimetini isterse ona da ondan veririz ve şükredenleri ödüllendireceğiz.” (Âl-i İmran 3/145)*
 
 Yüce Rabbimiz bizleri nimetlerin farkına varan, elindeki sayısız nimete kanaat eden, nimetlerinden O’nun razı olduğu şekilde istifade eden ve O’nun razı olacağı şekilde şükredebilen kullardan eylesin. Âmin!
 
 <p lang="ar" dir="rtl" class="ayet">مَا يَفْعَلُ اللهُ بِعَذَابِكُمْ إِنْ شَكَرْتُمْ وَآمَنْتُمْ وَكَانَ اللهُ شَاكِرًا عَلِيمًا</p>
 
-*‘Eğer siz iman eder ve şükrederseniz, Allah size neden azap etsin! Allah şükre karşılık veren ve her şeyi hakkıyla bilendir.’(Nisa 4/147)
+‘Eğer siz iman eder ve şükrederseniz, Allah size neden azap etsin! Allah şükre karşılık veren ve her şeyi hakkıyla bilendir.’(Nisa 4/147)
 
-Birgün Muâz ibni Cebel’in elinden tutmuş ve her namazdan sonra şu duayı mutlaka okumasını tavsiye etmiştir: “Allâhümme einnî alâ zikrike ve şükrike ve hüsni ibâdetik:* ***(Ebû Dâvûd, Vitir 26)***
+Birgün Muâz ibni Cebel’in elinden tutmuş ve her namazdan sonra şu duayı mutlaka okumasını tavsiye etmiştir: “Allâhümme einnî alâ zikrike ve şükrike ve hüsni ibâdetik: ***(Ebû Dâvûd, Vitir 26)***
 
 Sevgili Peygamberimiz, dilinin şükürden ve zikirden geri kalmamasını böyle isterdi. Bu isteğini bazen da şöyle dile getirirdi:
 
-*“Yâ Rabbî! Beni; sana çok şükreden,*** *seni çok zikreden, senden çok korkan, Sana çok itaat eden bir kul eyle!”* ***(Tirmizî, De'avât 103).***
+*“Yâ Rabbî! Beni; sana çok şükreden,* *seni çok zikreden, senden çok korkan, Sana çok itaat eden bir kul eyle!”* ***(Tirmizî, De'avât 103).***

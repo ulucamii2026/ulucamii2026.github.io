@@ -33,7 +33,7 @@ Yardımlaşma ve dayanışma da ölçü iyilik, hayır ve takvadadır. Günah, h
 
 “Onlardan Allah’ın izniyle hayırlarda öne geçenler vardır. İşte bu büyük lütuftur.” (Fatır, 35/32) buyrulmuştur. Allah’ın rızasını kazanmak, rahmetine ulaşmak için çalışan kullara; iyi amellerde, hayırda yarışan ve önde gidenlere ne mutlu!
 
-Ashab-ı kiram kendi arasında yarışırlardı. Hz. Ömer (r.a.), Allah Resûlü (s.a.s.) bize sadaka vermemizi emretti. Bu durum bende mal bulunan bir zamana rastladı. Kendi kendime “Eğer geçeceksem bu gün Ebû Bekir’i geçerim.” dedim ve malımın yarısını getirdim. Resulüllah (s.a.s.) **“Ailene geride ne bıraktın?”** buyurdu. Bunun kadarını bıraktım, dedim. Hz. Ebû Bekir (r.a.) malının hepsiyle gelmişti. Allah Resulü (s.a.s.) ona da **“Ailene geride ne bıraktın?”** buyurdu. Hz. Ebu Bekir (r.a.), “Onlara Allah ve Resulünü bıraktım.” dedi. Bunun üzerine Hz. Ömer (r.a.), “Vallahi asla onu geçemem”, demiştir. (Ebû Dâvûd, Zekât, 40; Tirmizî, Menâkıb, 16)
+Ashab-ı kiram kendi arasında yarışırlardı. Hz. Ömer (r.a.), Allah Resûlü (s.a.s.) bize sadaka vermemizi emretti. Bu durum bende mal bulunan bir zamana rastladı. Kendi kendime “Eğer geçeceksem bu gün Ebû Bekir’i geçerim.” dedim ve malımın yarısını getirdim. Resulüllah (s.a.s.) “Ailene geride ne bıraktın?” buyurdu. Bunun kadarını bıraktım, dedim. Hz. Ebû Bekir (r.a.) malının hepsiyle gelmişti. Allah Resulü (s.a.s.) ona da “Ailene geride ne bıraktın?” buyurdu. Hz. Ebu Bekir (r.a.), “Onlara Allah ve Resulünü bıraktım.” dedi. Bunun üzerine Hz. Ömer (r.a.), “Vallahi asla onu geçemem”, demiştir. (Ebû Dâvûd, Zekât, 40; Tirmizî, Menâkıb, 16)
 
 ## DAYANIŞMA RUHU VE İNFAK
 
@@ -63,9 +63,9 @@ Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">هَلْ تُنْصَرُونَ وَ تُرْزَقُونَ إلاَّ بِضُعَفَائِكُمْ</p>
 
-**“Size ancak zayıflarınız sebebiyle yardım ediliyor ve rızık veriliyor değil mi?”** (Buhari, Cihad, 76)
+“Size ancak zayıflarınız sebebiyle yardım ediliyor ve rızık veriliyor değil mi?” (Buhari, Cihad, 76)
 
-Bayramlar, aynı zamanda dayanışma ve yardımlaşma içerisinde müminlerin birbirlerine kenetlendikleri günlerdir. Nitekim bir bayram namazından sonra Hz. Peygamber (s.a.s.), Hz. Bilâl (r.a.) ile birlikte hanımların yanına giderek onlara, **“Ey hanımlar topluluğu! Sadaka verin, zira sadaka sizin için daha hayırlıdır!”** buyurmuş, yoksullar için onlardan yardım talep etmişti. Resûlullah’ın (s.a.s.) bu çağrısına kadınlar yüzüklerini, küpelerini ve çeşitli ziynet eşyalarını bağışlamak suretiyle cevap vermişlerdi. (Müslim, Îdeyn, 2; Hadislerle İslâm, 7/ 510)
+Bayramlar, aynı zamanda dayanışma ve yardımlaşma içerisinde müminlerin birbirlerine kenetlendikleri günlerdir. Nitekim bir bayram namazından sonra Hz. Peygamber (s.a.s.), Hz. Bilâl (r.a.) ile birlikte hanımların yanına giderek onlara, “Ey hanımlar topluluğu! Sadaka verin, zira sadaka sizin için daha hayırlıdır!” buyurmuş, yoksullar için onlardan yardım talep etmişti. Resûlullah’ın (s.a.s.) bu çağrısına kadınlar yüzüklerini, küpelerini ve çeşitli ziynet eşyalarını bağışlamak suretiyle cevap vermişlerdi. (Müslim, Îdeyn, 2; Hadislerle İslâm, 7/ 510)
 
 ## KARDEŞLİK
 
@@ -117,7 +117,7 @@ Peygamber Efendimiz (s.a.s.) hadis-i şeriflerinde şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">تَرٰى الْمُؤْمِنِينَ فِي تَوَادِّهِمْ وَتَرَاحُمِهِمْ وَ تَعَاطُفِهِمْ كَمَثَلِ الْجَسَدِ اِذَا اشْتَكٰى عُضْوًا تَدَاعَى لَهُ سَائِرُ الْجَسَدِ بِالسَّهَرِ وَالحُمَّى</p>
 
-**“Birbirlerini sevmekte, birbirlerine acımakta ve birbirlerine şefkat hususunda müminleri âdeta tek bir vücut (beden) gibi görürsün. Mümin bir uzvundan şikâyet ederse, vücudun diğer uzuvları da uykusuzluk ve ateşle ona iştirak ederler.”** (Müslim, Birr, 66)
+“Birbirlerini sevmekte, birbirlerine acımakta ve birbirlerine şefkat hususunda müminleri âdeta tek bir vücut (beden) gibi görürsün. Mümin bir uzvundan şikâyet ederse, vücudun diğer uzuvları da uykusuzluk ve ateşle ona iştirak ederler.” (Müslim, Birr, 66)
 
 Vücudun her bir uzvu nasıl değerli ve vazgeçilmezse; İslam toplumu içerisinde yaşayan her birey aynı değerdedir. Hadiste Müslüman toplum, bir vücuda benzetilmektedir. Vücudun işlevi, hareketi, sağlıklı yaşamı tüm organların uyum içerisinde çalışmasına bağlıdır. Vücuttaki herhangi bir rahatsızlık tüm vücudu nasıl etkilerse, İslam ümmeti ve toplumu da böyledir. Toplumun her bir bireyi değerlidir. Fertler bir araya geldiğinde birliği ve dayanışmayı oluşturur. Toplum bireylerin bir araya gelmesiyle, dayanışmasıyla anlam kazanır ve güçlenir. Bir araba düşünelim, tekerlek, direksiyon, motor vb. parçaları tek tek ayrılsa arabanın bir işlevi ve anlamı olmaz. O parçalar birleştiğinde araba meydana gelir.
 
@@ -135,7 +135,7 @@ Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الْمُؤْمِنَ لِلْمُؤْمِنِ كَالْبُنْيَانِ يَشُدُّ بَعْضُهُ بَعْضًا</p>
 
-**“Müminin mümine göre konumu, parçaları (bölümleri) birbirini destekleyen bir tek bina gibidir.”** (Buhârî, Salât, 88) Bu hadisi şerifte ise Allah Resulü (s.a.s.) inananları bir binaya benzetiyor. Bina, tuğlaların yan yana ve üst üste dizilmesi ile oluşur. Tuğlaları birleştiren harçtır. Her bir mümin tuğla, İslam toplumu ise bina, kardeşlik tuğlaları birleştiren harçtır.
+“Müminin mümine göre konumu, parçaları (bölümleri) birbirini destekleyen bir tek bina gibidir.” (Buhârî, Salât, 88) Bu hadisi şerifte ise Allah Resulü (s.a.s.) inananları bir binaya benzetiyor. Bina, tuğlaların yan yana ve üst üste dizilmesi ile oluşur. Tuğlaları birleştiren harçtır. Her bir mümin tuğla, İslam toplumu ise bina, kardeşlik tuğlaları birleştiren harçtır.
 
 Peygamber Efendimiz (s.a.s.) insanlara değer verirdi. Allâh Resûlü (s.a.s.) biriyle tokalaştığında, o şahıs elini bırakmadıkça bırakmazdı. Karşısındaki yüzünü çevirmeden o yüzünü çevirmezdi. (İbn Mâce, Edeb, 21) İnsanların renklerine, tenlerine bakmaz; zengin, fakir, efendi, köle, yerli-yabancı ayrımı yapmazdı. Uzun zaman Peygamber Efendimizin (s.a.s.) yakın dostu olan Bilal-i Habeşi (r.a.) siyahi, Selman-ı Farisi (r.a.) İranlı idi. Kur’an’da Yüce Rabbimiz Efendimiz’ in (s.a.s.) bu ahlakını şöyle övmektedir:
 
@@ -145,13 +145,13 @@ Peygamber Efendimiz (s.a.s.) insanlara değer verirdi. Allâh Resûlü (s.a.s.) 
 
 Bu ayet Hz. Peygamber’in (s.a.s.) büyüklüğünü, yüksek ahlâkını ve yüreğinin katı olmadığını, aksine şefkat ve merhametle dolu olduğunu gösterir. O, Allah’ın kendisine lütfettiği bu özellikleri sayesinde arkadaşlarına, özellikle Uhud Savaşı’nda emrine muhalefet ederek İslâm ordusunun yenilmesine sebep olanlara ve Müslümanları imha edilme tehlikesiyle karşı karşıya getirmiş bulunanlara merhametle muamele etmiştir. Eğer onlara karşı katı davransaydı ve onları sert bir şekilde cezalandırsaydı, çevresindekiler dağılıp giderlerdi. Hz. Peygamber’in (s.a.s.) sahâbeye karşı yumuşak ve merhametli davranması sahâbe üzerinde büyük bir etki göstermiştir. Nitekim Uhud Savaşı’ndaki hataları affedilen sahâbîler bir daha böyle bir hata yapmamaya gayret göstermiş ve girdiği bütün savaşlarda Hz. Peygamber’in (s.a.s.) ve komutanlarının emirlerine titizlikle uyarak zaferler kazanmışlardır. Hz. Peygamber’in (s.a.s.) Müslümanlara karşı bu şekilde merhametli davranması neticesinde birçok kimsenin Müslüman olduğu da rivayet edilmiştir. (Kur'an Yolu Tefsiri, I/700-703)
 
-Bir defasında Ebu Zer Gıfari (r.a.), Bilali Habeşi (r.a.)ile tartışmış ve Ebu Zer (r.a.), Bilali Habeşi’ye (r.a.) **"Siyah kadının oğlu"** diye hitap etmiş ve Hz. Bilal (r.a.) buna çok üzülmüştü. Durumdan haberdar olan Hz. Peygamber (s.a.s.), **“Ebu Zer, sen onu annesinden dolayı mı ayıplıyorsun? Sende hala cahiliye adetleri görüyorum.”** (Buhari, İman, 22) diyerek uyarmıştı. Ebu Zer (r.a.)yanağını yere koyup, **“Bilal ayağıyla yanağıma basmadıkça yanağımı yerden kaldırmayacağım.”** (Tecridi Sarih Tercümesi ve Şerhi, I/42) diyerek özrünü beyan etmişti.
+Bir defasında Ebu Zer Gıfari (r.a.), Bilali Habeşi (r.a.)ile tartışmış ve Ebu Zer (r.a.), Bilali Habeşi’ye (r.a.) "Siyah kadının oğlu" diye hitap etmiş ve Hz. Bilal (r.a.) buna çok üzülmüştü. Durumdan haberdar olan Hz. Peygamber (s.a.s.), “Ebu Zer, sen onu annesinden dolayı mı ayıplıyorsun? Sende hala cahiliye adetleri görüyorum.” (Buhari, İman, 22) diyerek uyarmıştı. Ebu Zer (r.a.)yanağını yere koyup, “Bilal ayağıyla yanağıma basmadıkça yanağımı yerden kaldırmayacağım.” (Tecridi Sarih Tercümesi ve Şerhi, I/42) diyerek özrünü beyan etmişti.
 
 Allah Resulü (s.a.s.) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">اَلْمُؤْمِنُ مَأْلَفٌ وَلَا خَيْرَ فِيمَنْ لَا يَأْلَفُ وَلَا يُؤْلَفُ</p>
 
-**“Müslüman, uzlaşmacıdır. Başkasıyla iyi geçinmeyen, kendisiyle de iyi geçinilemeyen kimsede hayır yoktur.”** (Ahmed b. Hanbel, 37/492) Mümin, sert, kaba, katı kalpli, insanları inciten, zarar veren kimse değildir. Bilakis, cana yakındır. İlişkilerinde samimi ve içtendir.
+“Müslüman, uzlaşmacıdır. Başkasıyla iyi geçinmeyen, kendisiyle de iyi geçinilemeyen kimsede hayır yoktur.” (Ahmed b. Hanbel, 37/492) Mümin, sert, kaba, katı kalpli, insanları inciten, zarar veren kimse değildir. Bilakis, cana yakındır. İlişkilerinde samimi ve içtendir.
 
 Şair ne güzel ifade etmiştir:
 
@@ -163,13 +163,13 @@ Kardeşlik bağlarını bozan hususlardan sakınılmalıdır. Haset, gıybet, if
 
 <p lang="ar" dir="rtl" class="ayet">إِيَّاكُمْ وَالظَّنَّ فَإِنَّ الظَّنَّ أَكْذَبُ الْحَدِيثِ وَلاَ تَحَسَّسُوا، وَلاَ تَجَسَّسُوا، وَلاَ تَنَافَسُوا، وَلاَ تَحَاسَدُوا، وَلاَ تَبَاغَضُوا، وَلاَتَدَابَرُوا، وَكُونُوا عِبَادَ اللّٰهِ إِخْوَانًا</p>
 
-**Sakın zanna yer vermeyin. Zira zan, sözlerin en yalanıdır. Tecessüs etmeyin, rekabet etmeyin, hasetleşmeyin, birbirinize buğz etmeyin, birbirinize sırt çevirmeyin, ey Allah'ın kulları kardeş olun.”** (Müslim, Birr, 9)
+Sakın zanna yer vermeyin. Zira zan, sözlerin en yalanıdır. Tecessüs etmeyin, rekabet etmeyin, hasetleşmeyin, birbirinize buğz etmeyin, birbirinize sırt çevirmeyin, ey Allah'ın kulları kardeş olun.” (Müslim, Birr, 9)
 
 Birbirini Allah için sevenler ise hadis-i kutside şöyle müjdelenmiştir;
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ يَقُولُ يَوْمَ الْقِيَامَةِ أَيْنَ الْمُتَحَابُّونَ بِجَلاَلِى الْيَوْمَ أُظِلُّهُمْ فِى ظِلِّى يَوْمَ لاَ ظِلَّ إِلاَّ ظِلِّى</p>
 
-**“Benim rızam için birbirini sevenler nerede! Sığınacak hiçbir gölgenin bulunmadığı bugün, ben onları arşımın gölgesinde ferahlatacağım.”** (Müslim, Birr, 37)
+“Benim rızam için birbirini sevenler nerede! Sığınacak hiçbir gölgenin bulunmadığı bugün, ben onları arşımın gölgesinde ferahlatacağım.” (Müslim, Birr, 37)
 
 Yunus Emre’nin ifadesiyle;
 
@@ -189,7 +189,7 @@ Gönüller yapmaya geldim.
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ نَفَّسَ عَنْ مُسْلِمٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ الْقِيَامَةِ، وَمَنْ يَسَّرَ عَلَى مُعْسِرٍ يَسَّرَ اللَّهُ عَلَيْهِ فِى الدُّنْيَا وَالْآخِرَةِ، وَمَنْ سَتَرَ عَلَى مُسْلِمٍ سَتَرَ اللَّهُ عَلَيْهِ فِى الدُّنْيَا وَالْآخِرَةِ، وَاللَّهُ فِى عَوْنِ الْعَبْدِ مَا كَانَ الْعَبْدُ فِى عَوْنِ أَخِيهِ.</p>
 
-**“Kim bir Müslüman’ın dünya sıkıntılarından bir sıkıntıyı giderirse, Allah da onun kıyamet günündeki sıkıntılarından birini giderir. Kim darda kalan bir kimsenin işini kolaylaştırırsa, Allah da dünya ve âhirette onun işlerini kolaylaştırır. Kim bir Müslüman’ın ayıbını örterse, Allah da dünya ve âhirette onun ayıplarını örter. Kul, kardeşinin yardımında olduğu sürece, Allah da onun yardımcısı olur.”** (Ebû Dâvûd, Edeb, 60)
+“Kim bir Müslüman’ın dünya sıkıntılarından bir sıkıntıyı giderirse, Allah da onun kıyamet günündeki sıkıntılarından birini giderir. Kim darda kalan bir kimsenin işini kolaylaştırırsa, Allah da dünya ve âhirette onun işlerini kolaylaştırır. Kim bir Müslüman’ın ayıbını örterse, Allah da dünya ve âhirette onun ayıplarını örter. Kul, kardeşinin yardımında olduğu sürece, Allah da onun yardımcısı olur.” (Ebû Dâvûd, Edeb, 60)
 
 Geçici olan şu dünya hayatında her vesile ile Rabbimizin rızasını aramaya gayret edelim. Kurban bayramını idrak ettiğimiz bu Cuma gününde akraba ve dostlarımızı ziyaret edelim. Gönül almaya, gönül yapmaya gayret edelim. Kestiğimiz kurbanların etlerinden ihtiyaç sahiplerine, komşularımıza, akrabalarımıza ikram edelim.
 

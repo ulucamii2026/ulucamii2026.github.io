@@ -26,7 +26,7 @@ Bu olayla birlikte Cuma Müslümanların bayramı olarak kabul edilmiştir. Zira
 
 <p lang="ar" dir="rtl" class="ayet">خَيْرُ يَوْمٍ طَلَعَتْ عَلَيْهِ الشَّمْسُ يَوْمُ الْجُمُعَةِ فِيهِ خُلِقَ آدَمُ وَفِيهِ أُدْخِلَ الْجَنَّةَ وَفِيهِ أُخْرِجَ مِنْهَا وَلاَ تَقُومُ السَّاعَةُ إِلاَّ فِى يَوْمِ الْجُمُعَة</p>
 
-“*Güneşin doğduğu en hayırlı gün, cuma günüdür. Âdem o gün yaratıldı, o gün cennete konuldu ve o gün cennetten çıkarıldı. Kıyamet de ancak cuma günü kopacaktır.”*** (Müslim, Cum’a, 18)
+“*Güneşin doğduğu en hayırlı gün, cuma günüdür. Âdem o gün yaratıldı, o gün cennete konuldu ve o gün cennetten çıkarıldı. Kıyamet de ancak cuma günü kopacaktır.”* (Müslim, Cum’a, 18)
 
 Cumayı bu kadar faziletli yapan en önemli unsurlar, şüphesiz cuma namazı ile namaz öncesindeki hutbedir. Peygamber Efendimiz (s.a.v) müslümanların cuma namazına mümkün olduğunca erken gelmelerini isterdi. Bununla ilgili olarak Peygamber Efendimiz (s.a.v) şöyle buyurmuştur:
 
@@ -116,7 +116,7 @@ Güzel koku sürünmek ve temiz elbiseleri giymek: Müslümanların haftalık ba
 
 “*Bulûğa ermiş olan herkesin cuma günü gusletmesi, misvak kullanması ve mümkün olduğu kadar koku sürünmesi gerekir.*” (Müslim, Cam’a, 7)
 
-Hutbeyi Sessiz Bir Şekilde Dinlemek: Hutbe cumanın sıhhat şartlarından kabul edilmiş ve okunması sırasında dikkat ve ciddiyet gerektirdiği vurgulanmıştır. Çünkü Cumayı bu kadar faziletli yapan en önemli unsurlar, şüphesiz cuma namazı ile namaz öncesindeki hutbedir. Nitekim Hz. Peygamber’in (s.a.v) huzurunda yaşanan şu ilginç hâdise, bu konuda nasıl davranılması gerektiğinin de öğrenilmesine vesile olmuştu. Cabir b. Abdullah’ın anlattığına göre, Peygamber Efendimiz (s.a.v) bir cuma günü hutbe okuyordu. Bu sırada Şam’dan bir kervan gelmişti. Bu kervandan yapılacak alışveriş sahabe için önem arz etmekteydi. Dikkatleri dağılan ashab, Hz. Peygamber’in (s.a.v) konuşuyor olduğunu unutarak mescidi boşaltmışlardı. Hz. Peygamber (s.a.v) ayakta hutbesine devam ederken mescitte sadece on iki kişi kalmıştı. Bunun üzerine Resulullah, (s.a.v) “***Varlığım kendi elinde olan Yüce Allah’a yemin olsun ki, şayet onların peşinden tümünüz gitseydiniz de burada hiç kimse kalmamış olsaydı, sizin için şu vadi ateş olup akardı*.” diyerek öfkesini ve üzüntüsünü belirtmiş; Cenâb-ı Allah da,
+Hutbeyi Sessiz Bir Şekilde Dinlemek: Hutbe cumanın sıhhat şartlarından kabul edilmiş ve okunması sırasında dikkat ve ciddiyet gerektirdiği vurgulanmıştır. Çünkü Cumayı bu kadar faziletli yapan en önemli unsurlar, şüphesiz cuma namazı ile namaz öncesindeki hutbedir. Nitekim Hz. Peygamber’in (s.a.v) huzurunda yaşanan şu ilginç hâdise, bu konuda nasıl davranılması gerektiğinin de öğrenilmesine vesile olmuştu. Cabir b. Abdullah’ın anlattığına göre, Peygamber Efendimiz (s.a.v) bir cuma günü hutbe okuyordu. Bu sırada Şam’dan bir kervan gelmişti. Bu kervandan yapılacak alışveriş sahabe için önem arz etmekteydi. Dikkatleri dağılan ashab, Hz. Peygamber’in (s.a.v) konuşuyor olduğunu unutarak mescidi boşaltmışlardı. Hz. Peygamber (s.a.v) ayakta hutbesine devam ederken mescitte sadece on iki kişi kalmıştı. Bunun üzerine Resulullah, (s.a.v) “*Varlığım kendi elinde olan Yüce Allah’a yemin olsun ki, şayet onların peşinden tümünüz gitseydiniz de burada hiç kimse kalmamış olsaydı, sizin için şu vadi ateş olup akardı*.” diyerek öfkesini ve üzüntüsünü belirtmiş; Cenâb-ı Allah da,
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذَا رَاَوْا تِجَارَةً اَوْ لهوا انفضوا اِلَيْهَا وَتَرَكُوكَ قائما قُلْ مَا عِنْدَ اللّٰهِ خَيْرٌ مِنَ اللَّهْوِ وَمِنَ التجارة وَاللّٰهُ خَيْرُ الرازقين</p>
 

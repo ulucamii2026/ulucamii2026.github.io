@@ -112,27 +112,27 @@ Beş vakit namaz, Peygamberimiz (as)’e peygamberlik geldikten 1,5 yıl sonra M
 
 ### مروا أولادَكم بالصَّلاةِ وهم أولاد سبعٍ
 
-***“Çocuklarınıza yedi yaşına geldiklerinde namaz kılmalarını emredin”* (Ebu Davud, Salat, 417)***
+***“Çocuklarınıza yedi yaşına geldiklerinde namaz kılmalarını emredin”* (Ebu Davud, Salat, 417)**
 
 Böylece çocuklar, ergenlik çağına gelip namaz kendilerine farz olunca, namaza karşı yabancılık çekmemiş olurlar. Namaz, Allah’a karşı yapılması gereken kulluk görevlerinin en önemlisidir. Çünkü Allah, imandan sonra namazdan daha üstün bir ibadeti emretmemiştir. Namaz, Kur’an’ın pek çok yerinde, çeşitli vesilelerle zikredilmektedir. Namaz, kalp, söz ve bedenle yapılan ibadetleri bir araya toplamış bulunmaktadır. Namazın insan için pek çok yararları vardır. Çünkü Allah, bizlere yararı olmayan bir şeyi emretmemiştir. Zira Allah hiçbir şeye muhtaç değildir. İhtiyacı olan bizleriz, yapılmasını emrettiği her şeyde bizler için pek çok yararlar vardır. Namazın yararları şu şekilde sıralanabilir:
 
 1-) NAMAZ, ALLAH’I HATIRLATIR: İnsan başkasına el avuç açmadan, muhtaç olmadan yaşamak için çalışmak zorundadır. Kendisini çalışmaya veren kimse ise çoğu zaman ölümü ve ölüm ötesindeki hesabı unutur. Bu yüzden her an günah işleyebilir ve günah işlemeyi adet haline getirebilir. Bunun en güzel örneği, kumarbazlarla zevk ve eğlenceye düşkün olanlardır. Bunlar kumar oynamaktan, içki içmekten, zevk ve eğlenceden başka bir şey düşünmezler. Ne ölümü ne ahireti ne de ahiretteki hesabı düşünürler. Hiç ölmeyeceklerini ve dünyanın sona ermeyeceğini zannederler. Derken ölüm gelip çatar ve bunları hazırlıksız olarak yakalar. Pişman olurlar ama bu pişmanlıkları bir fayda sağlamaz. İşte ***“Beni anmak için namazı dosdoğru kıl.” (Tâhâ 20/35)*** âyeti namazın bu hikmetine işaret etmektedir. Hiç şüphe yok ki namaz, Allah’ı anmak için kılınır. Bu yalnız namazın değil, diğer ibadetlerin de esasını teşkil eder. Daha doğrusu hangi suret ve biçimde olursa olsun, Allah’ı anmak gerçek bir ibadettir. Kur’an şöyle buyurur:
 
-***يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اذْكُرُوا اللّٰهَ ذِكْراً كَثٖيراًۙ - وَسَبِّحُوهُ بُكْرَةً وَاَصٖيلاً
+<p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اذْكُرُوا اللّٰهَ ذِكْراً كَثٖيراًۙ - وَسَبِّحُوهُ بُكْرَةً وَاَصٖيلاً</p>
 
-“Ey Müminler, Allah’ı çokça anın, O’nu sabah akşam tesbih edin.” (el-Ahzâb 33/41,42)***
+“Ey Müminler, Allah’ı çokça anın, O’nu sabah akşam tesbih edin.” (el-Ahzâb 33/41,42)
 
 Allah’ı anmanın en büyük ibadet olduğunu Peygamberimiz (as) şu hadisiyle ifade eder:
 
-***ألا أُنبِّئُكم بخَيرِ أعمالِكم، وأزكاها عندَ مَليكِكم، وأَرْفعِها في دَرَجاتِكم، وخَيرٍ لكم مِن إنفاقِ الذهَبِ والوَرِقِ، وخَيرٍ لكم مِن أنْ تلقَوْا عدُوَّكم، فتضرِبوا أعناقَهم؟ قالوا: بلى. قال: ذِكْرُ اللهِ تعالى
+<p lang="ar" dir="rtl" class="ayet">ألا أُنبِّئُكم بخَيرِ أعمالِكم، وأزكاها عندَ مَليكِكم، وأَرْفعِها في دَرَجاتِكم، وخَيرٍ لكم مِن إنفاقِ الذهَبِ والوَرِقِ، وخَيرٍ لكم مِن أنْ تلقَوْا عدُوَّكم، فتضرِبوا أعناقَهم؟ قالوا: بلى. قال: ذِكْرُ اللهِ تعالى</p>
 
-Peygamberimiz (as), Ashabına: “Ben size yaptıklarınızın en iyisini, Allah katında en çok razı olunan, derecelerinizi en çok yükselten, altın ve gümüşü (Allah yolunda) vermekten daha hayırlı olan ve düşmanlarınızla karşılaşıp ta sizin onların boyunlarını vurmanızdan ve onların sizi şehit etmelerinden daha faziletli bir işi haber vereyim mi?” buyurdu. Ashab: “Bu hangi iştir?” dedi. Peygamberimiz (as): “Allah’ı anmaktır.” buyurdular. (İbn Mace, Edep, 53)***
+Peygamberimiz (as), Ashabına: “Ben size yaptıklarınızın en iyisini, Allah katında en çok razı olunan, derecelerinizi en çok yükselten, altın ve gümüşü (Allah yolunda) vermekten daha hayırlı olan ve düşmanlarınızla karşılaşıp ta sizin onların boyunlarını vurmanızdan ve onların sizi şehit etmelerinden daha faziletli bir işi haber vereyim mi?” buyurdu. Ashab: “Bu hangi iştir?” dedi. Peygamberimiz (as): “Allah’ı anmaktır.” buyurdular. (İbn Mace, Edep, 53)
 
 Görülüyor ki; bütün ibadetlerden maksat, Allah’ı anmaktır. Allah’ı anmanın en güzel şekli de namazdır. Diğer taraftan insana Allah’ı unutturacak şeylere karşı en çok koruyucu bir siper de yine namazdır. Çünkü belli aralıklarla Allah’ı hatırlayan kimse kötü duygular taşıyamaz. Başkalarına hile ve haksızlık düşünemez. Bir gün yaptığı her şeyin hesabını Allah’a vereceğini düşünerek ölçülü hareket eder. Böylece namaz insan ruhu üzerinde daha etkili, nefsin heva ve hevesine yönelmesine daha çok engel ve her işte dürüstlüğe daha çok özendiricidir. Kur’an şöyle buyurur:
 
-***اُتْلُ مَٓا اُو۫حِيَ اِلَيْكَ مِنَ الْكِتَابِ وَاَقِمِ الصَّلٰوةَؕ اِنَّ الصَّلٰوةَ تَنْهٰى عَنِ الْفَحْشَٓاءِ وَالْمُنْكَرِؕ وَلَذِكْرُ اللّٰهِ اَكْبَرُؕ وَاللّٰهُ يَعْلَمُ مَا تَصْنَعُونَ
+<p lang="ar" dir="rtl" class="ayet">اُتْلُ مَٓا اُو۫حِيَ اِلَيْكَ مِنَ الْكِتَابِ وَاَقِمِ الصَّلٰوةَؕ اِنَّ الصَّلٰوةَ تَنْهٰى عَنِ الْفَحْشَٓاءِ وَالْمُنْكَرِؕ وَلَذِكْرُ اللّٰهِ اَكْبَرُؕ وَاللّٰهُ يَعْلَمُ مَا تَصْنَعُونَ</p>
 
-“Muhakkak ki namaz, hayâsızlıktan ve kötülükten alıkoyar.” (el-Ankebût 29/45)***
+“Muhakkak ki namaz, hayâsızlıktan ve kötülükten alıkoyar.” (el-Ankebût 29/45)
 
 Hiç şüphe yok ki namazdaki belli hareketler; oturup kalkmak, alnı yere koymak, tekbir ve tehlil getirmek, namazın amacını yerine getirmeye yetmez. Bunlar namaz için gerekli olmakla birlikte, gerçek namazın bunlardan ibaret olduğu söylenemez. Gerçek namaz, ruhu önce Allah’a karşı boyun eğme, yüce yaratıcının huzurunda benliğini silme, sonra da Hak ile ilgilenmeye engel her türlü endişe ve kuşkudan sıyrılmadır. Bunun için Kur’an okuyarak, dua ederek, tekbir ve tehlil getirerek dilini, diğer organlarını meşgul etmek, namaz kılana gereklidir. Bütün bunlarla birlikte kâinatı yaratan ve yöneten yüce yaratıcının huzurunda bulunduğunu aklından çıkarmamasıdır. Bunun içindir ki, namaz kılan, namaz esnasında kimseyle konuşmayacağı gibi, namazın rükün ve adabı dışında namaza aykırı herhangi bir harekette de bulunmayacaktır.
 
@@ -148,9 +148,9 @@ Esasen nankörlük kötü bir huydur, eriştiği nimetlerin kadrini bilmeyen ve 
 
 4- NAMAZ, VAKTİN KIYMETİNİ ÖĞRETİR: Namaz için belirli vakitler vardır. Namazlar bu vakitlerde kılınır. Peygamberimiz (as), namazın vaktinde kılınmasına büyük önem verirdi. Bir yolculukta Ashap yorulmuş, bir yerde konaklayıp dinlenmek istemişlerdi. Peygamberimiz (SAV) yolculuk şartlarında bile namazı düşünmüş ve: “Korkarım uyuya kalıp namazı kaçırırsınız.” buyurmuştu. Peygamberimiz (as)’in müezzini Bilal-i Habeşi: “Ben sizi uyandırırım.” deyince, bu güvence üzerine hep beraber istirahata çekilmişlerdi. Hz. Bilal (ra) ta uyuya kalmış, uyandıklarında güneşin doğduğunu ve sabah namazı vaktini kaçırdıklarını görmüşler ve üzülmüşlerdi. Peygamberimiz (as), kendilerini uyaracağını söyleyen Hz. Bilal (ra)’a: “Bilal, verdiğin söz ne oldu?” buyurmuş ve ona üzüntülerini bildirmişti. Peygamberimiz (as)’in hiç kimseye beddua etme âdeti yoktu. Çünkü O, âlemlere rahmet olarak gönderilmişti. Ancak, Hendek savaşında ikindi namazını vaktinde eda etme imkânı bulamadığı için kendisine bu fırsatı vermeyen düşmanlarına beddua etmiş:
 
-***مَلَأَ اللَّهُ عليهم بُيُوتَهُمْ وقُبُورَهُمْ نارًا، كما شَغَلُونا عن صَلاةِ الوُسْطى حتّى غابَتِ الشَّمْسُ
+<p lang="ar" dir="rtl" class="ayet">مَلَأَ اللَّهُ عليهم بُيُوتَهُمْ وقُبُورَهُمْ نارًا، كما شَغَلُونا عن صَلاةِ الوُسْطى حتّى غابَتِ الشَّمْسُ</p>
 
-“Güneş batıncaya kadar, bizi ikindi namazını vaktinde kılmaktan alıkoydular. Allah, onların kabirlerini ateşle doldursun.” buyurmuş, namazın vaktinde kılınmasının önemine dikkatlerimizi çekmişti. (Dârimî, Salât, 28)*
+“Güneş batıncaya kadar, bizi ikindi namazını vaktinde kılmaktan alıkoydular. Allah, onların kabirlerini ateşle doldursun.” buyurmuş, namazın vaktinde kılınmasının önemine dikkatlerimizi çekmişti. (Dârimî, Salât, 28)
 
 5-) NAMAZ, İNSANLARIN EŞİT OLDUKLARINI HATIRLATIR: İnsanlar eşit haklara sahip olarak doğarlar. Sosyal ve ekonomik durumları farklı olsa da Allah katında aralarında hiçbir fark yoktur. Ancak görevlerini yapanlarla yapmayanlar elbette eşit değillerdir. Suçlu ile suçsuzun eşit olacağını kimse söyleyemez. Namaz; zengini fakiri, amiri memuru ve her seviyedeki insanı camide yan yana getirir ve insan olarak Allah katında eşit olduklarını, aralarında insan olmak bakımından bir fark olmadığını öğretir.
 
@@ -162,9 +162,9 @@ Esasen nankörlük kötü bir huydur, eriştiği nimetlerin kadrini bilmeyen ve 
 
 8-) KIYAMET GÜNÜ İLK SORU NAMAZDANDIR: İnsanlar öldükten sonra dirilecekler ve Allah’ın huzurunda dünyada yaptıklarının hesabını vereceklerdir. O gün ibadetlerden ilk sorgulama namazdan olacaktır. Peygamberimiz (as) şöyle buyurur:
 
-***إن أولَ ما يحاسبُ به العبدُ بصلاتِه، فإن صَلَحت فقد أفلح وأنجح، وإن فسدتْ فقد خاب
+<p lang="ar" dir="rtl" class="ayet">إن أولَ ما يحاسبُ به العبدُ بصلاتِه، فإن صَلَحت فقد أفلح وأنجح، وإن فسدتْ فقد خاب</p>
 
-“Kulun kıyamet gününde, hesabı ilk önce sorulacak ameli namazdır. Eğer namazı dürüst çıkarsa kurtulmuş ve kazanmıştır. Eğer namazı düzgün çıkmazsa kaybetmiştir.” (Tirmizî, Mevâkît 188)***
+“Kulun kıyamet gününde, hesabı ilk önce sorulacak ameli namazdır. Eğer namazı dürüst çıkarsa kurtulmuş ve kazanmıştır. Eğer namazı düzgün çıkmazsa kaybetmiştir.” (Tirmizî, Mevâkît 188)
 
 Hesap gününde insanın, ilk önce namazdan sorguya çekilmesi, namazın ibadetler arasındaki önemini açıkça ortaya koymaktadır. Esasen günde beş defa insanın Allah’ın huzuruna çıkmasına vesile olan bir ibadetle hiçbir şeyin mukayese edilemeyeceği açıktır.
 

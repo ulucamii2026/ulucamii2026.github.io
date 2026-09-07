@@ -12,15 +12,15 @@ Oruç sadece Allah rızası için imsak vaktinden güneş batıncaya (iftar vakt
 
 Bakara Süresinde peş peşe gelen 183-185 ayetlerinde öncelikle oruçtan bahsedilmekte, orucun İslam Dininden önceki dinlerde de emredile gelen bir ibadet olduğuna vurgu yapılmakta, sonra Ramazan ayının fazileti dile getirilerek farz olarak tutulacak orucun bu ayda tutulması emredilmektedir. Yüce Rabbimiz şöyle buyurmaktadır.
 
-*يَا أَيُّهَا الَّذِينَ آمَنُواْ كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ {} أَيَّاماً مَّعْدُودَاتٍ فَمَن كَانَ مِنكُم مَّرِيضاً أَوْ عَلَى سَفَرٍ فَعِدَّةٌ مِّنْ أَيَّامٍ أُخَرَ وَعَلَى الَّذِينَ يُطِيقُونَهُ فِدْيَةٌ طَعَامُ مِسْكِينٍ فَمَن تَطَوَّعَ خَيْراً فَهُوَ خَيْرٌ لَّهُ وَأَن تَصُومُواْ خَيْرٌ لَّكُمْ إِن كُنتُمْ تَعْلَمُونَ {} شهر رمضان الَّذِيَ أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَى وَالْفُرْقَانِ فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ وَمَن كَانَ مَرِيضاً أَوْ عَلَى سَفَرٍ فَعِدَّةٌ مِّنْ أَيَّامٍ أُخَرَ يُرِيدُ اللّهُ بِكُمُ الْيُسْرَ وَلاَ يُرِيدُ بِكُمُ الْعُسْرَ وَلِتُكْمِلُواْ الْعِدَّةَ وَلِتُكَبِّرُواْ اللّهَ عَلَى مَا هَدَاكُمْ وَلَعَلَّكُمْ تَشْكُرُونَ
+<p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُواْ كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ {} أَيَّاماً مَّعْدُودَاتٍ فَمَن كَانَ مِنكُم مَّرِيضاً أَوْ عَلَى سَفَرٍ فَعِدَّةٌ مِّنْ أَيَّامٍ أُخَرَ وَعَلَى الَّذِينَ يُطِيقُونَهُ فِدْيَةٌ طَعَامُ مِسْكِينٍ فَمَن تَطَوَّعَ خَيْراً فَهُوَ خَيْرٌ لَّهُ وَأَن تَصُومُواْ خَيْرٌ لَّكُمْ إِن كُنتُمْ تَعْلَمُونَ {} شهر رمضان الَّذِيَ أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَى وَالْفُرْقَانِ فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ وَمَن كَانَ مَرِيضاً أَوْ عَلَى سَفَرٍ فَعِدَّةٌ مِّنْ أَيَّامٍ أُخَرَ يُرِيدُ اللّهُ بِكُمُ الْيُسْرَ وَلاَ يُرِيدُ بِكُمُ الْعُسْرَ وَلِتُكْمِلُواْ الْعِدَّةَ وَلِتُكَبِّرُواْ اللّهَ عَلَى مَا هَدَاكُمْ وَلَعَلَّكُمْ تَشْكُرُونَ</p>
 
-“Ey iman edenler! Allah’a karşı gelmekten sakınmanız için oruç, sizden öncekilere farz kılındığı gibi, size de farz kılındı. Oruç, sayılı günlerdedir. Sizden kim hasta, ya da yolculukta olursa, tutamadığı günler sayısınca başka günlerde tutar. Oruca gücü yetmeyenler ise bir yoksul doyumu fidye verir. Bununla birlikte, gönülden kim bir iyilik yaparsa (mesela fidyeyi fazla verirse) o kendisi için daha hayırlıdır. Eğer bilirseniz oruç tutmanız sizin için daha hayırlıdır. (O sayılı günler), insanlar için bir hidayet rehberi, doğru yolun ve hak ile batılı birbirinden ayırmanın apaçık delilleri olarak Kur’an’ın kendisinde indirildiği Ramazan ayıdır. Öyle ise içinizden kim bu aya ulaşırsa onu oruçla geçirsin. Kim de hasta veya yolcu olursa tutamadığı günler sayısınca başka günlerde tutsun. Allah size kolaylık diler, zorluk dilemez. Bu da sayıyı tamamlamanız ve hidayete ulaştırmasına karşılık Allah’ı yüceltmeniz ve şükretmeniz içindir.”*
+“Ey iman edenler! Allah’a karşı gelmekten sakınmanız için oruç, sizden öncekilere farz kılındığı gibi, size de farz kılındı. Oruç, sayılı günlerdedir. Sizden kim hasta, ya da yolculukta olursa, tutamadığı günler sayısınca başka günlerde tutar. Oruca gücü yetmeyenler ise bir yoksul doyumu fidye verir. Bununla birlikte, gönülden kim bir iyilik yaparsa (mesela fidyeyi fazla verirse) o kendisi için daha hayırlıdır. Eğer bilirseniz oruç tutmanız sizin için daha hayırlıdır. (O sayılı günler), insanlar için bir hidayet rehberi, doğru yolun ve hak ile batılı birbirinden ayırmanın apaçık delilleri olarak Kur’an’ın kendisinde indirildiği Ramazan ayıdır. Öyle ise içinizden kim bu aya ulaşırsa onu oruçla geçirsin. Kim de hasta veya yolcu olursa tutamadığı günler sayısınca başka günlerde tutsun. Allah size kolaylık diler, zorluk dilemez. Bu da sayıyı tamamlamanız ve hidayete ulaştırmasına karşılık Allah’ı yüceltmeniz ve şükretmeniz içindir.”
 
 Oruç bir ibadettir. Herhangi bir ayda tutulabilirdi. Ama Yüce Rabbimiz Oruç ibadetini Ramazan ayında tutmamızı emretmektedir. Bu ay pek kıymetli bir aydır. Çünkü Ramazan ayında son ilahi kitap Kur’an-ı Kerim inmeye başlamıştır. Bu aya kıymet veren en önemli husus budur.
 
 Sevgili Peygamberimizden Orucun fazileti ile ilgili birçok hadis bizlere ulaşmıştır. Dünya ve ahiret hayatı için bizlere birçok müjdeler içeren bu hadislerden birkaçını sizlerle paylaşmak isterim.
 
-*مَنْ صَامَ رَمَضَانَ إِيمَاناً واحْتِساباً، غُفِرَ لَهُ ما تَقَدَّمَ مِنْ ذنْبِهِ
+<p lang="ar" dir="rtl" class="ayet">مَنْ صَامَ رَمَضَانَ إِيمَاناً واحْتِساباً، غُفِرَ لَهُ ما تَقَدَّمَ مِنْ ذنْبِهِ</p>
 
 "Kim, faziletine inanarak ve karşılığını Allah'tan bekleyerek ramazan orucunu tutarsa, geçmiş günahları bağışlanır."
 
@@ -40,7 +40,7 @@ Oruç kalkandır. Biriniz oruç tuttuğu gün kötü söz söylemesin ve kavga e
 
 Muhammed'in canı kudret elinde olan Allah'a yemin ederim ki, oruçlunun ağız kokusu, Allah katında misk kokusundan daha güzeldir.
 
-Oruçlunun rahatlayacağı iki sevinç anı vardır: Birisi, iftar ettiği zaman, diğeri de orucunun sevabıyla Rabbine kavuştuğu andır.”*
+Oruçlunun rahatlayacağı iki sevinç anı vardır: Birisi, iftar ettiği zaman, diğeri de orucunun sevabıyla Rabbine kavuştuğu andır.”
 
 Oruç inananları kötülükten korur. Orucun kişiyi koruması hem dünyevi hem de uhrevidir. Vaazımızın girişinde sizlerle paylaşmış olduğum ayette Yüce Rabbimiz orucu bizlere emretmekte, oruç tutmak suretiyle korunabileceğimizi bizlere bildirmektedir. Oruç bir koruyucu kalkan gibidir. Kişiyi fuhşiyata düşmekten, yanlışlar içerisinde olmaktan kurur. Peygamberimiz bir hadislerinde şöyle buyurmaktadır. "Oruç bir kalkandır, o halde oruçlu kötü söz söylemesin. Kendisi ile çekişip kavga etmek isteyen kimseye iki defa, "ben oruçluyum" desin." Kalkanda delikler olur veya çok zayıf bir kalkan nasıl ki kişiyi koruyamaz ise, oruç kalkanını ahlakımızı güzelleştirmememiz zayıflatmaktadır.
 
@@ -60,9 +60,9 @@ Ahass'ul-Havass'ın Orucu: Kalbi, dünyevî düşüncelerden tamamen arındırı
 
 Oruç iradeyi kuvvetlendirir. Kişiye zorluklara karşı sabırla davranmayı öğretir. Çünkü *“Oruç sabrın yarısıdır.”* Aç kalmanın ne demek olduğunu bildirir. Fakirliğin, muhtaç olmanın ve yiyecek bir şey bulamamanın ne kadar sıkıntılı bir hal olduğunun farkına vardırır. Elde bulunan nimetlere şükür getirilmesi gerektiğini hatırlatır. Şükür ise nimetin artmasına vesiledir. Bir ayette şöyle buyrulmaktadır.
 
-*وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لأَزِيدَنَّكُمْ وَلَئِن كَفَرْتُمْ إِنَّ عَذَابِي لَشَدِيدٌ
+<p lang="ar" dir="rtl" class="ayet">وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لأَزِيدَنَّكُمْ وَلَئِن كَفَرْتُمْ إِنَّ عَذَابِي لَشَدِيدٌ</p>
 
-“Andolsun, eğer şükrederseniz elbette size nimetimi artırırım. Eğer nankörlük ederseniz hiç şüphesiz azabım çok şiddetlidir.”*
+“Andolsun, eğer şükrederseniz elbette size nimetimi artırırım. Eğer nankörlük ederseniz hiç şüphesiz azabım çok şiddetlidir.”
 
 Oruç, Kalbi dünyaya daldırmaktan kurtarır. Nefsi temizler. Oruç ayrıca bedene sıhhat kazandırmaktadır. Özellikle tıbbın gelişmesi ve incelemelerin sıklaştırılması ile orucun bedene kazandırdığı birçok faydalar ortaya çıkmakta, bazı doktorlar tedavi amaçlı orucu tavsiye etmektedirler. Peygamber Efendimiz bu hususu çağlar öncesinden “Oruç tutunuz, sağlık bulunuz” ifadeleriyle bizlere bildirmektedir. 11 ay boyunca hiç durmadan çalışan midemiz bu vesile ile dinlenmekte, yağ depolayan vücudumuz oruç ile yağlarını yakmaktadır. Böylece gelecek bir yıla hazırlık yapılmaktadır.
 

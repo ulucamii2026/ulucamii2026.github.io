@@ -3,7 +3,6 @@ baslik: "Kadir Gecesi ve Kur'an"
 ozet: "Ne büyük bir nimet. Yeni bir kadir gecesine daha kavuşacağız. Ne büyük bir lütuf Rabbimiz bize bir fırsat daha verdi. Ne büyük bir rahmet. Rahmetin tecellisi olan…"
 kategori: kandil
 kelime: 3350
-docx: "/vaazlar/kadir-gecesi-ve-kur-an.docx"
 pdf: "/vaazlar/kadir-gecesi-ve-kur-an.pdf"
 ---
 Ne büyük bir nimet. Yeni bir kadir gecesine daha kavuşacağız. Ne büyük bir lütuf Rabbimiz bize bir fırsat daha verdi. Ne büyük bir rahmet. Rahmetin tecellisi olan Cebrail (a.s.)'ın Rabbimizin inayetiyle dünya semasına indiği bir geceyle daha buluşacağız. Ne büyük bir mağfiret. Affa uğrayabileceğimiz bir gece daha fani ömrümüzde bizlere nasip olacak. Bizlere nimetlerini bahşeden, sayısız lütuflarla bize rahmet eden, bağışlanmamız için bizlere fırsatlar yaratan ve bizleri mübarek bir güne daha kavuşturacak olan Rabbimize sonsuz şükürler olsun.

@@ -3,46 +3,45 @@ baslik: "Gençliğin Önemi ve Sorumlulukları"
 ozet: "Sevgili Gençler, Allah’ın selamı rahmeti bereketi hepinizin üzerine olsun! Bugün burada sizlerle bir araya geldik. Bu etkinlikte, gençlerimizin İslam'a olan…"
 kategori: siyer
 kelime: 3738
-docx: "/vaazlar/gencligin-onemi-ve-sorumluluklari.docx"
 pdf: "/vaazlar/gencligin-onemi-ve-sorumluluklari.pdf"
 ---
 Sevgili Gençler, Allah’ın selamı rahmeti bereketi hepinizin üzerine olsun! Bugün burada sizlerle bir araya geldik. Bu etkinlikte, gençlerimizin İslam'a olan bağlılığını artırmak ve sorumluluklarını anlamalarına yardımcı olmak için bir araya geldik. Biliyorum ki, genç olmak zorlu bir dönemdir. İçinde bulunduğunuz bu dönemde, birçok değişim yaşayacaksınız ve kendinizi keşfetmeye çalışacaksınız. Ancak, İslam dininin size sunduğu değerleri ve öğretileri anlayarak, kendinizi daha iyi bir insan olarak yetiştirebilirsiniz. Gençliğinizin kıymetini bilmelisiniz. Sizler, geleceğimizin teminatısınız ve İslam dininin yayılmasında büyük bir rol oynayacaksınız. Bu nedenle, İslam'a olan bağlılığınızı güçlendirmelisiniz. İslam, bizlere doğru yolu gösteren ve hayatımızda bize rehberlik eden bir din olarak öğretilir. Bu yüzden, İslam dinine olan bağlılığınızı artırmak için Kur'an-ı Kerim'i okumalı, namaz kılmalı, oruç tutmalı ve zekât vermeliyiz. Ayrıca, gençliğinizin sorumluluklarını da anlamalısınız. İslam dinine olan bağlılığınız, sadece kişisel bir sorumluluk değildir. Aynı zamanda, toplumunuzda ve dünyada yaşayan diğer Müslümanlar için de bir sorumluluktur. İslam'a olan bağlılığınızı artırmak, sizleri daha güçlü, daha dayanıklı ve daha yardımsever bir insan yapacaktır. Gençler, sizlerin hayatınızda İslam'ın ne kadar önemli olduğunu anlamak ve ona bağlılığınızı artırmak için bu etkinliği düzenledik. İslam, sadece dini bir inanç değil, aynı zamanda bir yaşam tarzıdır. İslam, bizlere insanlarla nasıl ilişki kurulacağı, toplumda nasıl yer alınacağı, doğruyu ve yanlışı nasıl ayırt edeceğimizi öğretir. İslam, bizi iyilik yapmaya, hoşgörülü ve saygılı olmaya teşvik eder. Bu nedenle, gençlerimiz olarak, İslam'ın öğretilerini anlamalı ve onları hayatımızda uygulamalıyız. İslam'a olan bağlılığımızı güçlendirerek hem kendimizi hem de etrafımızdaki insanları daha iyi bir hale getirebiliriz. Ayrıca, İslam dininin bizlere verdiği değerleri ve öğretileri anlamak için, kendimizi eğitmemiz gerektiğini unutmamalıyız. Kur'an-ı Kerim, İslam dininin temel kaynağıdır ve İslam dininin öğretilerini anlamak için onu okumalıyız. Ayrıca, Peygamber Efendimiz'in hayatını ve öğretilerini öğrenmek de önemlidir. İslam dininin önemli bir parçası da birlik ve beraberliktir. İslam, birbirimize saygı duymayı ve yardımlaşmayı öğretir. Bu nedenle, bizler de birbirimize destek olmalı ve birlikte hareket etmeliyiz. Gençler, İslam dinine olan bağlılığınız, sadece bugün için değil, geleceğiniz için de önemlidir. İslam dininin öğretilerini anlayarak, kendinizi ve çevrenizi daha iyi bir hale getirebilirsiniz. İslam'a olan bağlılığınızı artırmak, sizi daha güçlü, daha dayanıklı ve daha hoşgörülü bir insan yapacaktır. Bugün burada, sizlerle bir araya gelerek vaktimizin önemini ve vaktimizi iyi ve güzel işlerde harcamamızın önemini konuşacağız. Vakit, hayatımızın en önemli kaynaklarından biridir. Zamanımızın nasıl kullanıldığı, hayatımızın kalitesini etkiler. Bu nedenle, zamanımızı iyi ve güzel işlerde harcamalıyız. Allah'ın bize bahşettiği bu hayatın değerini anlamalı ve hayatımızı anlamlı kılmak için vaktimizi iyi kullanmalıyız. İyilik yapmak, sevdiklerimizle vakit geçirmek, öğrenmek, kendimizi geliştirmek ve Allah'ın emirlerini yerine getirmek için vakit ayırmalıyız. Ayrıca, zamanımızı harcarken seçici olmalıyız. Zamanımızı, boş yere harcayacak aktivitelerden kaçınmalı ve onun yerine hayatımızı geliştirecek işlere yönelmeliyiz. İslam dininde de vakit kaybetmekten kaçınmamız gerektiği öğretilir. Hayatımızda birçok fırsat sunulduğunda, bizler de bu fırsatları en iyi şekilde değerlendirmeliyiz. İyilik yapmak, topluma faydalı olmak ve Allah'ın hoşnutluğunu kazanmak için zamanımızı iyi kullanmalıyız. Bugün burada, zararlı alışkanlıklardan korunmanın önemini konuşacağız. Bu alışkanlıklar, bizim hayatımızı olumsuz etkiler ve bizi hem fiziksel hem de psikolojik olarak zararlı hale getirebilir. Zararlı alışkanlıkların birçok çeşidi vardır. Bunlar arasında sigara, alkol, uyuşturucu, kumar ve internet bağımlılığı yer alır. Bu alışkanlıklar, hayatımızı olumsuz etkiler ve bizi geleceğimizden mahrum bırakabilir. Sigara içmek, özellikle de düzenli olarak içmek, sağlık açısından son derece zararlıdır. Sigara, akciğer kanseri, kalp rahatsızlıkları ve diğer birçok hastalığa neden olabilir. Aynı şekilde, alkol ve uyuşturucu kullanımı da fiziksel ve zihinsel sağlık açısından ciddi zararlara neden olabilir. Kumar oynamak, diğer alışkanlıklardan farklıdır ancak yine de zararlıdır. Kumar bağımlılığı, maddi sıkıntılara neden olabilir ve sosyal hayatımızı etkileyebilir. İnternet bağımlılığı da sosyal ve akademik yaşamımızı olumsuz etkileyebilir. Bu zararlı alışkanlıklardan korunmak için, bilinçli bir şekilde hareket etmeliyiz. Kendimizi bu tür alışkanlıklardan korumak için doğru kararlar vermemiz gerekiyor. Bunun için öncelikle bilinçli olmalıyız. Bu zararlı alışkanlıkların sağlığımıza ve yaşamımıza neden olabileceği zararları anlamalıyız. Ayrıca, sosyal çevremizi de dikkatle seçmeliyiz. İyi arkadaşlar edinmek, bizim hayatımızı olumlu yönde etkileyebilir ve bu tür alışkanlıklardan uzak durmamıza yardımcı olabilir. Kendimize güvenmeli ve olumlu bir tutum sergilemeliyiz. Bu etkinlikte sizlerle bir araya gelmemiz, İslam dininin birbirimize olan bağlarımızı güçlendirdiğini ve bir arada yaşamayı nasıl öğrettiğini gösterir. Bu etkinliğe katıldığınız için teşekkür ederim ve İslam dinine olan bağlılığınızın artmasına yardımcı olacağına inanıyorum. Sohbetimizin devam eden kısmında ayet ve hadislerle devam etmek istiyorum. Ayrıca Sahabi efendilerimizin hayatından örneklere bakacağız. Gençlik ile ilgili ayet ve hadisler
 
 ## Gençlik Nimetinin Kıymetini Bilmek
 
-**ِثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنْ النَّعِيم**
+<p lang="ar" dir="rtl" class="ayet">ِثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنْ النَّعِيم</p>
 
 Sonra o gün nimetlerden mutlaka sorulacaksınız. (Tekasür, 102/8)
 
 Resulullah buyurdu ki:
 
-**ِنِعْمَتَان ُمَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ اَلص ِحَّةُ وَالْفَرَاغ**
+<p lang="ar" dir="rtl" class="ayet">ِنِعْمَتَان ُمَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ اَلص ِحَّةُ وَالْفَرَاغ</p>
 
-İki nimet vardır ki insanlardan çoğu bu konuda aldanmıştır: «**Sağlık ve boş zaman**»
+İki nimet vardır ki insanlardan çoğu bu konuda aldanmıştır: «Sağlık ve boş zaman»
 
 Resulullah buyurdu ki:
 
-**َاِغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ: شَبَابَكَ قَبْلَ هَرَمِكَ وَصِحَّتَكَ قَبْلَ سَقَمِكَ وَغِنَاءَكَ قَبْل َفَقْرِك َوَفَرَاغَكَ قَبْلَ شُغْلِكَ وَحَيَاتَكَ قَبْلَ مَوْتِك**
+<p lang="ar" dir="rtl" class="ayet">َاِغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ: شَبَابَكَ قَبْلَ هَرَمِكَ وَصِحَّتَكَ قَبْلَ سَقَمِكَ وَغِنَاءَكَ قَبْل َفَقْرِك َوَفَرَاغَكَ قَبْلَ شُغْلِكَ وَحَيَاتَكَ قَبْلَ مَوْتِك</p>
 
 Beş şey gelmeden, beş şeyi ganimet bil:
 
-*   **Yaşlılıktan önce gençliği,**
-*   **Hastalıktan önce sağlığı,**
-*   **Fakirlikten önce zenginliği,**
-*   **Meşguliyetten önce boş vakti**
-*   **Ölümden önce hayatı.**
+*   Yaşlılıktan önce gençliği,
+*   Hastalıktan önce sağlığı,
+*   Fakirlikten önce zenginliği,
+*   Meşguliyetten önce boş vakti
+*   Ölümden önce hayatı.
 
 Resulullah buyurdu ki:
 
-**َِلَ تَزُولُ قَدَمُ ابْنِ آدَمَ يَوْمَ الْقِيَامَةِ مِنْ عِنْد ْرَب ِهِ حَتَّى يُسْأَلَ عَنْ خَمْسٍ، عَن عُمُرِهِ فِيمَ أَفْنَاهُ، وَعَنْ شَبَابِهِ فِيمَ أَبَْلَهُ، وَمَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَ أَنْفَقَهُ، وَمَاذَا َعَمِلَ فِيمَا عَلِم**
+<p lang="ar" dir="rtl" class="ayet">َِلَ تَزُولُ قَدَمُ ابْنِ آدَمَ يَوْمَ الْقِيَامَةِ مِنْ عِنْد ْرَب ِهِ حَتَّى يُسْأَلَ عَنْ خَمْسٍ، عَن عُمُرِهِ فِيمَ أَفْنَاهُ، وَعَنْ شَبَابِهِ فِيمَ أَبَْلَهُ، وَمَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَ أَنْفَقَهُ، وَمَاذَا َعَمِلَ فِيمَا عَلِم</p>
 
 “Kıyamet gününde insan şu hususlarda sorgulanmadan, hesap meydanından ayrılamaz:
 
-*   **Ömrünü nerede tükettiğinden,**
-*   **Gençliğini nerede ve ne şekilde yıprattığından,**
-*   **Malını nereden kazandığından,**
-*   **Malını nerelere harcadığından**
-*   **Bildikleriyle amel edip etmediğinden.”**
+*   Ömrünü nerede tükettiğinden,
+*   Gençliğini nerede ve ne şekilde yıprattığından,
+*   Malını nereden kazandığından,
+*   Malını nerelere harcadığından
+*   Bildikleriyle amel edip etmediğinden.”
 
 ## Gençlik Döneminin Önemi
 
@@ -52,13 +51,13 @@ Gençlik dönemi; insan hayatının en önemli, en kritik ve en sorunlu dönemid
 
 Resulullah buyurdu ki:
 
-**ِحُفَّتِ الْجَن ة ُ بِالْمَكارِهِ وَحُفَّتِ النَّارُ بِالشَّهَوَات**
+<p lang="ar" dir="rtl" class="ayet">ِحُفَّتِ الْجَن ة ُ بِالْمَكارِهِ وَحُفَّتِ النَّارُ بِالشَّهَوَات</p>
 
 “Cennet zorluk ve meşakkatlerle, cehennem ise nefsani ve şehevi arzularla kuşatılmıştır”
 
 Resulullah buyurdu ki:
 
-**ْيَا مَعْشَرَ الشَّبَابِ مَنِ اسْتَطَاعَ مِنْكُمُ الْبَاءَةَ فَل ِيَتَزَوَّجْ فَإِنَّهُ أَغَضُّ لِلْبَصَر ٌوَأَحْصَنُ لِلْفَرْجِ وَمَنْ لَمْ يَسْتَطِعْ فَعَلَيْهِ بِالصَّوْمِ فَإِنَّهُ لَهُ وِجَاء**
+<p lang="ar" dir="rtl" class="ayet">ْيَا مَعْشَرَ الشَّبَابِ مَنِ اسْتَطَاعَ مِنْكُمُ الْبَاءَةَ فَل ِيَتَزَوَّجْ فَإِنَّهُ أَغَضُّ لِلْبَصَر ٌوَأَحْصَنُ لِلْفَرْجِ وَمَنْ لَمْ يَسْتَطِعْ فَعَلَيْهِ بِالصَّوْمِ فَإِنَّهُ لَهُ وِجَاء</p>
 
 “Ey gençler! Sizden evliliğe gücü yetenler evlensin. Çünkü evlilik gözü harama bakmaktan korur, kişiyi zinadan alıkoyar. Evlenmeye gücü yetmeyen kimseye oruç tutmasını tavsiye ederim. Çünkü orucun şehveti kıran bir gücü özelliği vardır.
 
@@ -74,21 +73,21 @@ Peygamberimiz, gençlik döneminde Rabbine ibadet eden ve haramlardan uzak duran
 
 Resulullah buyurdu ki:
 
-**ُسَبْعَةٌ يُظِلُّهُمُ َّللاَُّ فِي ظِل ِهِ يَوْمَ َلَ ظِلَّ إَِلَّ ظِلُّهُ: اَْلِْمَام الْعَادِلُ، وَشَاب ،ِنَشَأَ فِي عِبَادَةِ رَب ِه ،ِوَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي الْمَسَاجِد ،ِوَرَجَُلَنِ تَحَابَّا فِي َّللاَِّ اِجْتَمَعَا عَلَيْهِ وَتَفَرَّقَا عَلَيْه ٍوَرَجُلٌ طَلَبَتْهُ اِمْرَأَةٌ ذَاتُ مَنْصِبٍ وَجَمَال ََّفَقَالَ إِن ِي أَخَافُ َّللا َوَرَجُلٌ تَص ََّدَّقَ أَخْفَى حَتَّى َلَ تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ، وَرَجُلٌ ذَكَرَ َّللا ُخَالِيًا فَفَاضَتْ عَيْنَاه**
+<p lang="ar" dir="rtl" class="ayet">ُسَبْعَةٌ يُظِلُّهُمُ َّللاَُّ فِي ظِل ِهِ يَوْمَ َلَ ظِلَّ إَِلَّ ظِلُّهُ: اَْلِْمَام الْعَادِلُ، وَشَاب ،ِنَشَأَ فِي عِبَادَةِ رَب ِه ،ِوَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي الْمَسَاجِد ،ِوَرَجَُلَنِ تَحَابَّا فِي َّللاَِّ اِجْتَمَعَا عَلَيْهِ وَتَفَرَّقَا عَلَيْه ٍوَرَجُلٌ طَلَبَتْهُ اِمْرَأَةٌ ذَاتُ مَنْصِبٍ وَجَمَال ََّفَقَالَ إِن ِي أَخَافُ َّللا َوَرَجُلٌ تَص ََّدَّقَ أَخْفَى حَتَّى َلَ تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ، وَرَجُلٌ ذَكَرَ َّللا ُخَالِيًا فَفَاضَتْ عَيْنَاه</p>
 
 "Allah, yedi sınıf insanı hiçbir gölgenin bulunmadığı kıyamet gününde (arşının) gölgesinde gölgelendirecektir. Bunlar:
 
-*   **Adil yöneticiler,**
-*   **Rabbine ibadet ile yetişen gençler,**
-*   **Kalbi mescitlere bağlı olanlar,**
-*   **Allah için birbirlerini seven, Allah için bir araya gelen ve Allah için ayrılan kimseler,**
-*   **Asil ve güzel bir kadın kendisini arzu ettiği halde 'ben Allah'tan korkarım' diyerek iltifat etmeyen kimseler,**
-*   **Sağ elinin verdiğini sol eli bilmeyecek kadar gizli sadaka verenler,**
-*   **Tenha yerlerde Allah'ı anıp gözyaşı dökebilenler.**
+*   Adil yöneticiler,
+*   Rabbine ibadet ile yetişen gençler,
+*   Kalbi mescitlere bağlı olanlar,
+*   Allah için birbirlerini seven, Allah için bir araya gelen ve Allah için ayrılan kimseler,
+*   Asil ve güzel bir kadın kendisini arzu ettiği halde 'ben Allah'tan korkarım' diyerek iltifat etmeyen kimseler,
+*   Sağ elinin verdiğini sol eli bilmeyecek kadar gizli sadaka verenler,
+*   Tenha yerlerde Allah'ı anıp gözyaşı dökebilenler.
 
 Resulullah buyurdu ki:
 
-**ُإِنَّ هللاَ لَيَعْجَبُ مِنَ الشَّاب ِ لَيْسَتْ لَه**
+<p lang="ar" dir="rtl" class="ayet">ُإِنَّ هللاَ لَيَعْجَبُ مِنَ الشَّاب ِ لَيْسَتْ لَه</p>
 
 Allah, gençliğini Allah'a itaatle (arzularının peşinden gitmeyen, haramlardan kaçınan) geçiren genci beğenir, sever”
 
@@ -104,7 +103,7 @@ Peygamberliğinin ilk yıllarında Hz. Peygamber’in Erkam’ın evindeki (Daru
 
 Resulullah buyurdu ki:
 
-**ْأَكْرِمُوا أَوَْلَدَكُمْ، وَأَحْسِنُوا أَدَبَهُم**
+<p lang="ar" dir="rtl" class="ayet">ْأَكْرِمُوا أَوَْلَدَكُمْ، وَأَحْسِنُوا أَدَبَهُم</p>
 
 Çocuklarınıza güzel davranıp iyilikte ve ikramda bulununuz, onları en güzel şekilde terbiye ediniz.
 
@@ -124,11 +123,11 @@ Zararlı alışkanlıklar, insanlar tarafından genç yaşta edinilir ve hayatla
 
 #### İçki ve kumar
 
-**ِيَا أَيُّهَا الَّذِينَ آمَنُواْ إِنَّمَا الْخَمْرُ وَالْمَيْسِرُ وَاألَنصَابُ وَاألَزَْلَمُ رِجْسٌ مِ نْ عَمَل َالشَّيْطَانِ فَاجْتَنِبُوهُ لَعَلَّكُمْ تُفْلِحُون**
+<p lang="ar" dir="rtl" class="ayet">ِيَا أَيُّهَا الَّذِينَ آمَنُواْ إِنَّمَا الْخَمْرُ وَالْمَيْسِرُ وَاألَنصَابُ وَاألَزَْلَمُ رِجْسٌ مِ نْ عَمَل َالشَّيْطَانِ فَاجْتَنِبُوهُ لَعَلَّكُمْ تُفْلِحُون</p>
 
 Ey mü’minler! Şarap, kumar, dikili taşlar (putlar), fal ve şans okları birer şeytan işi pisliktir. Bunlardan uzak durunuz ki, kurtuluş eresiniz. (Maide, 5/90)
 
-**ِإِنَّمَا يُرِيدُ الشَّيْطَانُ أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاء فِي الْخَمْر ِوَالْمَيْسِر َوَيَصُدَّكُمْ عَن ذِكْرِ َّللا ِ وَعَنِ الصََّلَةِ فَهَلْ أَنتُم مُّنتَهُون**
+<p lang="ar" dir="rtl" class="ayet">ِإِنَّمَا يُرِيدُ الشَّيْطَانُ أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاء فِي الْخَمْر ِوَالْمَيْسِر َوَيَصُدَّكُمْ عَن ذِكْرِ َّللا ِ وَعَنِ الصََّلَةِ فَهَلْ أَنتُم مُّنتَهُون</p>
 
 Şeytan içkide ve kumarda ancak aranıza düşmanlık ve kin sokmak; sizi Allah'ı anmaktan ve namazdan alıkoymak ister. Artık vazgeçtiniz değil mi? (Maide, 5/91)
 
@@ -142,7 +141,7 @@ Uyuşturucu ve sigara gibi alışkanlıklar da gençlerimizi olumsuz yönde etki
 
 Hayatımızı şekillendirecek ve yönlendirecek emir ve yasakları, Rabbimiz bizlere bildirmiştir. Peygamber efendimiz de bunları hayatında tatbik ederek hem örnek olmuş hem de açıklamıştır. Gençlerimizi kendi heva ve arzularına göre değil peygamberimizin ahlak ve sünnetiyle yetiştirmeliyiz. Onu model şahsiyet almaları sağlanmalıdır.
 
-**ًأَرَأَيْتَ مَنِ اتَّخَذَ إِلَهَهُ هَوَاهُ أَفَأَنتَ تَكُونُ عَلَيْهِ وَكِيَل**
+<p lang="ar" dir="rtl" class="ayet">ًأَرَأَيْتَ مَنِ اتَّخَذَ إِلَهَهُ هَوَاهُ أَفَأَنتَ تَكُونُ عَلَيْهِ وَكِيَل</p>
 
 Kendi nefsinin arzusunu kendisine ilah edineni gördün mü? Ona sen mi vekil olacaksın? (Furkan, 25/43)
 
@@ -156,7 +155,7 @@ Gençleri şiddete, mafyaya, fuhşa, ahlaksızlığa, inançsızlığa kişiliks
 
 Kitap okumanın ne kadar ehemmiyetli olduğunu anlamak ve anlatmak ancak okuyan insanların anlayabileceği bir şeydir. Nitekim bir düşünür “Dünyayı yöneten, kalem, mürekkep ve kâğıttır” diyor, haksızda değil. (James Howell) Kitaplar sayesinde bilgiler tecrübeler sonraki nesillere aktarılır. Dünyadaki bilgilere ulaşmanın en kolay yolu okumaktır. Okuma oranı ne kadar artarsa toplumumuzda kültür ve medeniyet o oranda gelişir. Bunun için gençlerimize ne yapıp edip okuma alışkanlığı kazandırmamız gerekmektedir. Çünkü gençler geleceğimizin teminatıdır. Zaten Rabbimiz şöyle buyurmuyor mu?
 
-**َاِقْرَأْ بِاسْمِ رَبِ كَ الَّذِي خَلَق**
+<p lang="ar" dir="rtl" class="ayet">َاِقْرَأْ بِاسْمِ رَبِ كَ الَّذِي خَلَق</p>
 
 Yaratan Rabbinin adıyla oku! (Alak, 96/1)
 

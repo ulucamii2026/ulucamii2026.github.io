@@ -16,7 +16,7 @@ pdf: "/vaazlar/affetmek-ve-ofkeyi-yutmak.pdf"
 
 ### اِذَا مَسَّهُ الشَّرُّ جَزُوعاًۙ
 
-20. *“Başına bir fenalık geldi mi sızlanır durur. ”***
+20. *“Başına bir fenalık geldi mi sızlanır durur. ”*
 
 ### وَاِذَا مَسَّهُ الْخَيْرُ مَنُوعاًۙ
 
@@ -32,13 +32,13 @@ Akıl ve teenniden çok duygularının etkileriyle davranma eğiliminde olan Câ
 
 <p lang="ar" dir="rtl" class="ayet">وَجَزٰٓؤُ۬ا سَيِّئَةٍ سَيِّئَةٌ مِثْلُهَاۚ فَمَنْ عَفَا وَاَصْلَحَ فَاَجْرُهُ عَلَى اللّٰهِؕ اِنَّهُ لَا يُحِبُّ الظَّالِمٖينَ</p>
 
-*“Bir kötülüğün karşılığı ona denk bir kötülüktür; ama kim bağışlar, düzeltme yolunu tutarsa onun mükâfatını Allah verir. Hiç şüphe yok ki O, haksızlık edenleri sevmez.”*** (Şura, 42/40) Fazilet ve erdem affetmektedir. Zira affedenin Allah katında mükâfatı büyüktür.
+*“Bir kötülüğün karşılığı ona denk bir kötülüktür; ama kim bağışlar, düzeltme yolunu tutarsa onun mükâfatını Allah verir. Hiç şüphe yok ki O, haksızlık edenleri sevmez.”* (Şura, 42/40) Fazilet ve erdem affetmektedir. Zira affedenin Allah katında mükâfatı büyüktür.
 
 Rabbimizin Kur’an-ı Kerim’de en çok zikredilen sıfatlarından birisi de affedici oluşudur. Cenab-ı Hak, Hz. Peygamber’in şahsında bütün müminlere şöyle buyurmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">خُذِ الْعَفْوَ وَاْمُرْ بِالْعُرْفِ وَاَعْرِضْ عَنِ الْجَاهِل۪ينَ</p>
 
-*“Sen af yolunu tut, iyiliği emret ve cahillerden yüz çevir.”*** (Arâf, 7/199) Affedici olmak, insanların kusurlarını bağışlamak, özür dileyenleri affetmek, iyiliği emretmek, kendini bilmezlerden yüz çevirmek bir müminde olması gereken güzel hasletlerdendir.
+*“Sen af yolunu tut, iyiliği emret ve cahillerden yüz çevir.”* (Arâf, 7/199) Affedici olmak, insanların kusurlarını bağışlamak, özür dileyenleri affetmek, iyiliği emretmek, kendini bilmezlerden yüz çevirmek bir müminde olması gereken güzel hasletlerdendir.
 
 Taberî’nin kaydettiği bir rivayete göre bu ayet geldiğinde Resulullah’ın bir sorusu üzerine Cebrâil, *“Rabbin sana kötülük edene senin iyilik etmeni, sana vermeyene senin vermeni ve senden uzak kalıp ilgileri koparanlarla senin dostluk ve akrabalık ilişkini sürdürmeni emrediyor”* diyerek ayete örnekleme yoluyla açıklama getirmiştir. Yüce Allah bu ayette peygamberine hitap etmişse de esasında bütün kullarını eğitmeyi amaçlamıştır. (Kur’an Yolu Tefsiri, 2/648-650)
 
@@ -62,7 +62,7 @@ Resulullah’ın nasıl bir ahlâka sahip olduğu sorulduğunda Hz. Aişe şöyl
 
 <p lang="ar" dir="rtl" class="ayet">لَمْ يَكُنْ فَاحِشًا وَلاَ مُتَفَحِّشًا وَلاَ صَخَّابًا فِى الأَسْوَاقِ وَلاَ يَجْزِى بِالسَّيِّئَةِ السَّيِّئَةَ وَلَكِنْ يَعْفُو وَيَصْفَحُ</p>
 
-*“O, kötü sözlü ve çirkin ağızlı değildi, çarşı pazarda bağırıp çağırmaz, kötülüğe kötülükle karşılık vermezdi; bilakis bağışlar ve hoş görürdü.”*** (Tirmizi, Birr, 69)
+*“O, kötü sözlü ve çirkin ağızlı değildi, çarşı pazarda bağırıp çağırmaz, kötülüğe kötülükle karşılık vermezdi; bilakis bağışlar ve hoş görürdü.”* (Tirmizi, Birr, 69)
 
 Elbette ki Hz. Peygamber’in ahlakının her yönü güzeldi. Ancak Hz. Aişe annemiz bu hadiste Resul-i Ekrem’in güzel ahlakından bağışlayan, affeden ve hoş gören yönlerini öne çıkarmıştır. Bizler de ümmeti olarak onun ahlakını örnek almalıyız.
 
@@ -76,11 +76,11 @@ Mekke Müşrikleri, Peygamber Efendimize hakarette bulunmuş, alay etmiş hatta 
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ لَا تَثْرٖيبَ عَلَيْكُمُ الْيَوْمَؕ يَغْفِرُ اللّٰهُ لَكُمْؗ وَهُوَ اَرْحَمُ الرَّاحِمٖينَ ﴿٩٢﴾</p>
 
-*“Bugün size kınama yok. Allah sizi bağışlasın. O, merhametlilerin en merhametlisidir.” diyorum,*** dedi (Yusuf, 12/92) ve ekledi:
+*“Bugün size kınama yok. Allah sizi bağışlasın. O, merhametlilerin en merhametlisidir.” diyorum,* dedi (Yusuf, 12/92) ve ekledi:
 
 ### اِذْهَبُوا فَأَنْتُمُ الطُّلَقَاءُ
 
-“*Haydi gidin, hepiniz serbestsiniz.”*** (Beyhakî, es-Sünenü’l-kübrâ, 9/195)
+“*Haydi gidin, hepiniz serbestsiniz.”* (Beyhakî, es-Sünenü’l-kübrâ, 9/195)
 
 Böyle bir bağışlama karşısında kalpleri kin, nefret ve düşmanlık duygularından arınan Mekkeliler kısa süre içerisinde İslâm’a girmekte tereddüt etmediler.
 
@@ -90,7 +90,7 @@ Bu hususta Rabbimiz bize şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُؕ اِدْفَعْ بِالَّتٖي هِيَ اَحْسَنُ فَاِذَا الَّذٖي بَيْنَكَ وَبَيْنَهُ عَدَاوَةٌ كَاَنَّهُ وَلِيٌّ حَمٖيمٌ ﴿٣٤﴾</p>
 
-*“İyilikle kötülük bir olmaz. Kötülüğü en güzel bir şekilde sav. Bir de bakarsın ki, seninle arasında düşmanlık bulunan kimse sanki sıcak bir dost oluvermiştir.”*** (Fussilet, 41/34) Zemahşerî, kötülüğün en güzel davranışla savılmasını şöyle açıklar: *“Biri sana kötülük ettiğinde onu affetmen bir iyiliktir; ama bundan da iyi olanı, onun sana yaptığı kötülüğe iyilikle karşılık vermendir... Eğer bunu yaparsan amansız düşmanın sıcak bir dost haline gelir.”* Her Müslümanın iyiliğe en güzel davranışla karşılık vermek gibi yüksek erdemlerle donanması ahlâkî bir görevdir; buna göre ayet, bütün Müslümanlar için bir ahlâk ilkesi koymaktadır. (Kur'an Yolu Tefsiri, 4/708-710)
+*“İyilikle kötülük bir olmaz. Kötülüğü en güzel bir şekilde sav. Bir de bakarsın ki, seninle arasında düşmanlık bulunan kimse sanki sıcak bir dost oluvermiştir.”* (Fussilet, 41/34) Zemahşerî, kötülüğün en güzel davranışla savılmasını şöyle açıklar: *“Biri sana kötülük ettiğinde onu affetmen bir iyiliktir; ama bundan da iyi olanı, onun sana yaptığı kötülüğe iyilikle karşılık vermendir... Eğer bunu yaparsan amansız düşmanın sıcak bir dost haline gelir.”* Her Müslümanın iyiliğe en güzel davranışla karşılık vermek gibi yüksek erdemlerle donanması ahlâkî bir görevdir; buna göre ayet, bütün Müslümanlar için bir ahlâk ilkesi koymaktadır. (Kur'an Yolu Tefsiri, 4/708-710)
 
 ### Taiflileri Affetmesi
 
@@ -102,7 +102,7 @@ Bir defasında Hz. Aişe, Allah Resul’üne başındaki miğferin kırıldığ�
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اغْفِرْ لِقَوْمِى فَإِنَّهُمْ لاَ يَعْلَمُونَ</p>
 
-*“Allah’ım! Kavmimi bağışla, çünkü onlar bilmiyorlar.”*** (Buhârî, Enbiyâ, 54) O gün Resul-i Ekrem’in onları bağışlaması 12 yıl gibi kısa bir süre içinde meyvesini verecek, Tâifliler Medine’ye bir heyet gönderip kendi istekleriyle İslâm Dini’ni kabul ettiklerini bildireceklerdi. (Hadislerle İslam, 3/320-321)
+*“Allah’ım! Kavmimi bağışla, çünkü onlar bilmiyorlar.”* (Buhârî, Enbiyâ, 54) O gün Resul-i Ekrem’in onları bağışlaması 12 yıl gibi kısa bir süre içinde meyvesini verecek, Tâifliler Medine’ye bir heyet gönderip kendi istekleriyle İslâm Dini’ni kabul ettiklerini bildireceklerdi. (Hadislerle İslam, 3/320-321)
 
 ### Vahşi’yi Affetmesi
 
@@ -126,7 +126,7 @@ Hz. Ebû Bekir, teyzesinin torunu olan Mistah’ı yetim bir çocuk olarak büy�
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا يَأْتَلِ اُو۬لُوا الْفَضْلِ مِنْكُمْ وَالسَّعَةِ اَنْ يُؤْتُٓوا اُو۬لِي الْقُرْبٰى وَالْمَسَاكٖينَ وَالْمُهَاجِرٖينَ فٖي سَبٖيلِ اللّٰهِࣕ وَلْيَعْفُوا وَلْيَصْفَحُواؕ اَلَا تُحِبُّونَ اَنْ يَغْفِرَ اللّٰهُ لَكُمْؕ وَاللّٰهُ غَفُورٌ رَحٖيمٌ</p>
 
-*“İçinizden yardım sever ve zengin olanlar akrabaya, yoksullara ve Allah yolunda hicret edenlere artık bir şey vermeyeceğiz diye yemin etmesinler. Bağışlasınlar, hoş görsünler; Allah’ın sizi bağışlamasını arzu etmez misiniz? Allah çok bağışlayıcıdır, çok esirgeyicidir.”*** (Nur, 24/22)
+*“İçinizden yardım sever ve zengin olanlar akrabaya, yoksullara ve Allah yolunda hicret edenlere artık bir şey vermeyeceğiz diye yemin etmesinler. Bağışlasınlar, hoş görsünler; Allah’ın sizi bağışlamasını arzu etmez misiniz? Allah çok bağışlayıcıdır, çok esirgeyicidir.”* (Nur, 24/22)
 
 Bu ayetin nazil olmasının akabinde Hz. Ebû Bekir, *“Vallahi Allah’ın beni bağışlamasını arzu ederim, bunu her şeye tercih ederim”* diyerek yeminini bozdu ve yardıma devam kararı aldı. (Kur'an Yolu Tefsiri, 4/63)
 
@@ -142,11 +142,11 @@ Bir kişinin, kendisine zarar veren birini affetmemesi beden ve zihin sağlığ�
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ يُنْفِقُونَ فِي السَّرَّٓاءِ وَالضَّرَّٓاءِ وَالْكَاظِمٖينَ الْغَيْظَ وَالْعَافٖينَ عَنِ النَّاسِؕ وَاللّٰهُ يُحِبُّ الْمُحْسِنٖينَۚ</p>
 
-*“Onlar (takvâ sahipleri) bollukta da darlıkta da Allah yolunda harcarlar, öfkelerini yenerler, insanları affederler. Allah işini güzel yapanları sever.”*** (Ali İmran, 3/134) Bu ayet-i kerimede takva sahibi müminlerin şu üç özelliğinden bahsedilmektedir:
+*“Onlar (takvâ sahipleri) bollukta da darlıkta da Allah yolunda harcarlar, öfkelerini yenerler, insanları affederler. Allah işini güzel yapanları sever.”* (Ali İmran, 3/134) Bu ayet-i kerimede takva sahibi müminlerin şu üç özelliğinden bahsedilmektedir:
 
 1. Bollukta ve darlıkta Allah yolunda infak ederler, yani mallarını iyilik yolunda harcarlar. Her iki durumda onların davranışlarını değiştirmez: Bolluk, kendilerini bencilleştirip aldatmadığı gibi darlık da onlara Allah yolunda harcamayı unutturmaz.
 
-2. Öfkelerini yenerler. “Öfke” diye çevrilen “gayz” kelimesi terim olarak *“hoşlanılmadık bir şeye karşı insanın duyduğu heyecan”* anlamına gelir. Ayetin tasvirine göre insanlardaki takvâ duygusu bu konularda da etkili olmakta ve olaylar karşısında öfkeyi yenmelerini ve insanları bağışlamalarını sağlamaktadır. Nitekim ayette geçen kâzım (çoğulu kâzımîn) kelimesi ***“öfkesini yenen, gücü yettiği halde, zarar gördüğü kimselere karşı intikama kalkışmayan, sabreden*” anlamlarına gelmektedir.
+2. Öfkelerini yenerler. “Öfke” diye çevrilen “gayz” kelimesi terim olarak *“hoşlanılmadık bir şeye karşı insanın duyduğu heyecan”* anlamına gelir. Ayetin tasvirine göre insanlardaki takvâ duygusu bu konularda da etkili olmakta ve olaylar karşısında öfkeyi yenmelerini ve insanları bağışlamalarını sağlamaktadır. Nitekim ayette geçen kâzım (çoğulu kâzımîn) kelimesi *“öfkesini yenen, gücü yettiği halde, zarar gördüğü kimselere karşı intikama kalkışmayan, sabreden*” anlamlarına gelmektedir.
 
 3. İnsanların kusurlarını bağışlar, affederler. (Kur’an Yolu Tefsiri, 1/ 671-674)
 
@@ -154,13 +154,13 @@ Bir kişinin, kendisine zarar veren birini affetmemesi beden ve zihin sağlığ�
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ يَجْتَنِبُونَ كَـبَٓائِرَ الْاِثْمِ وَالْفَوَاحِشَ وَاِذَا مَا غَضِبُوا هُمْ يَغْفِرُونَۚ</p>
 
-*“Onlar büyük günahlardan ve hayâsızlıklardan kaçınırlar, öfkelendiklerinde dahi bağışlarlar.”*** (Şura, 42/37) İnsan, tabiatı gereği öfkelenebilir; erdemlilik asla öfkelenmemek değil böyle bir durumda öfkesine mağlûp olmamak, gerektiğinde özveride bulunabilmek ve bağışlayıcı davranabilmektir. (Kur'an Yolu Tefsiri, 4/753-754)
+*“Onlar büyük günahlardan ve hayâsızlıklardan kaçınırlar, öfkelendiklerinde dahi bağışlarlar.”* (Şura, 42/37) İnsan, tabiatı gereği öfkelenebilir; erdemlilik asla öfkelenmemek değil böyle bir durumda öfkesine mağlûp olmamak, gerektiğinde özveride bulunabilmek ve bağışlayıcı davranabilmektir. (Kur'an Yolu Tefsiri, 4/753-754)
 
 Abdullah b. Mübârek’e, “*Güzel ahlâkı bir cümle ile anlat*” denildiğinde o, güzel ahlâkın öfkelenmemekten ibaret olduğunu söylemiştir. Affedebilmek için kişi önce öfkesini kontrol edebilmeyi öğrenmelidir.
 
 <p lang="ar" dir="rtl" class="ayet">وعنْ أَبِي هُريْرَةَ رَضيَ اللَّهُ عنهُ أَنَّ رَجُلاً قَالَ للنَّبِيِّ صَلّى اللهُ عَلَيْهِ وسَلَّم : أوْصِني ، قَالَ : لا تَغضَبْ » فَردَّدَ مِراراً قَالَ ، لا تَغْضَبْ</p>
 
-Ebû Hüreyre’den rivayet edildiğine göre bir adam Hz. Peygamber’e: Bana öğüt ver, dedi. O da: ***“Kızma!”*** buyurdu. O zât isteğini birkaç defa tekrarladı. Resul-i Ekrem de her defasında ***“Kızma!*” buyurdu. (Buhârî, Edeb 76; Tirmizî, Birr, 73)
+Ebû Hüreyre’den rivayet edildiğine göre bir adam Hz. Peygamber’e: Bana öğüt ver, dedi. O da: ***“Kızma!”*** buyurdu. O zât isteğini birkaç defa tekrarladı. Resul-i Ekrem de her defasında *“Kızma!*” buyurdu. (Buhârî, Edeb 76; Tirmizî, Birr, 73)
 
 ## KISSA: İNSAN NEDEN BAĞIRIR
 
@@ -184,7 +184,7 @@ Bütün güzelliklere ulaşabilmenin, bütün kötülüklerden uzak kalabilmenin
 
 <p lang="ar" dir="rtl" class="ayet">لَيس الشَّديدُ بِالصُّرعَةِ ، إِنَّما الشديدُ الذي يَملِكُ نفسهُ عِند الغضبِ</p>
 
-*“Yiğit dediğin, güreşte rakibini yenen kimse değildir; asıl yiğit kızdığı zaman öfkesini yenendir.”*** (Buhârî, Edeb 76; Müslim, Birr 107, 108) Resul-i Ekrem bu hadislerinde, öfke kontrolünün ne kadar da önemli olduğunu ifade etmişlerdir.
+*“Yiğit dediğin, güreşte rakibini yenen kimse değildir; asıl yiğit kızdığı zaman öfkesini yenendir.”* (Buhârî, Edeb 76; Müslim, Birr 107, 108) Resul-i Ekrem bu hadislerinde, öfke kontrolünün ne kadar da önemli olduğunu ifade etmişlerdir.
 
 ## ÖFKENİN ÖNLENMESİNE DAİR BAZI TAVSİYELER
 
@@ -206,7 +206,7 @@ Affedebilen kişi öfkesini kontrol edebilir. İnsan akıllı ve irade sahibidir
 
 <p lang="ar" dir="rtl" class="ayet">وَاِمَّا يَنْزَغَنَّكَ مِنَ الشَّيْطَانِ نَزْغٌ فَاسْتَعِذْ بِاللّٰهِۜ اِنَّهُ هُوَ السَّمِيعُ الْعَل۪يمُ</p>
 
-*“Eğer şeytandan sana bir fitleme gelirse hemen Allah’a sığın! Allah işitendir, bilendir.”*** (Fussilet, 41/36) İnsan öfkesine hâkim olduğu zaman, kendisini kızıp bağırmaya teşvik eden şeytanı yenmiş olur.
+*“Eğer şeytandan sana bir fitleme gelirse hemen Allah’a sığın! Allah işitendir, bilendir.”* (Fussilet, 41/36) İnsan öfkesine hâkim olduğu zaman, kendisini kızıp bağırmaya teşvik eden şeytanı yenmiş olur.
 
 ## SONUÇ
 
@@ -224,6 +224,6 @@ Sohbetimi şu hadis-i şerif ile bitiriyorum: Ebû Hüreyre’nin rivayet ettiğ
 
 <p lang="ar" dir="rtl" class="ayet">…وَمَا زَادَ اللَّهُ عَبْدًا بِعَفْوٍ إِلاَّ عِزًّا…</p>
 
-*“…Allah, affeden bir kulunun ancak şerefini artırır…”*** (Müslim, Birr, 69)
+*“…Allah, affeden bir kulunun ancak şerefini artırır…”* (Müslim, Birr, 69)
 
 Rabbim bizleri öfkesini yenen, hata ettiğinde hatasından vazgeçen, af dileyen, bağışlayan ve bağışlanan kullarından eylesin.

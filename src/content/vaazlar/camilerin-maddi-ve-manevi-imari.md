@@ -10,11 +10,11 @@ Kâbe’nin birer şubesi olan camilerimiz İslam’ın sembolü ve mührüdür.
 
 <p lang="ar" dir="rtl" class="ayet">فِي بُيُوتٍ اَذِنَ اللّٰهُ اَنْ تُرْفَعَ وَيُذْكَرَ فِيهَا اسْمُهُۙ يُسَبِّحُ لَهُ فِيهَا بِالْغُدُوِّ وَالْاٰصَالِۙ</p>
 
-*“Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.”*** (Nur, 24/36) Allah’ın zikredildiği, tespih edildiği bu yerler camilerdir. Peygamber Efendimiz şöyle buyurdu:
+*“Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.”* (Nur, 24/36) Allah’ın zikredildiği, tespih edildiği bu yerler camilerdir. Peygamber Efendimiz şöyle buyurdu:
 
 <p lang="ar" dir="rtl" class="ayet">أَحَبُّ الْبِلاَدِ إِلَى اللَّهِ مَسَاجِدُهَا</p>
 
-*“Allah’a en sevimli yerler mescidlerdir/camilerdir.”*** (Müslim, Mesâcid, 288) Camiler, ibadet, zikir, takva gibi kulluğun tam manada gerçekleştiği yerlerdir. Camide bulunan bir mümin pek çok kötülükten uzak dururken, Rabbine ise daha çok yaklaşmanın yollarını arar.
+*“Allah’a en sevimli yerler mescidlerdir/camilerdir.”* (Müslim, Mesâcid, 288) Camiler, ibadet, zikir, takva gibi kulluğun tam manada gerçekleştiği yerlerdir. Camide bulunan bir mümin pek çok kötülükten uzak dururken, Rabbine ise daha çok yaklaşmanın yollarını arar.
 
 ## CAMİLERİN İNŞASI, BAKIMI, ONARIMI VE TEMİZLİĞİ
 
@@ -22,7 +22,7 @@ Rabbimiz:
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ فَعَسٰٓى اُو۬لٰٓئِكَ اَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ</p>
 
-*“Allah’ın mescidlerini ancak Allah’a ve âhiret gününe inanan, namazını kılan, zekâtını veren ve yalnız Allah’tan korkup çekinen kimseler imar edebilirler. İşte bunların doğru yolu bulanlardan olmaları umulur.”*** (Tevbe, 9/18) buyurmuştur.
+*“Allah’ın mescidlerini ancak Allah’a ve âhiret gününe inanan, namazını kılan, zekâtını veren ve yalnız Allah’tan korkup çekinen kimseler imar edebilirler. İşte bunların doğru yolu bulanlardan olmaları umulur.”* (Tevbe, 9/18) buyurmuştur.
 
 Camileri/mescidleri imar etmek, maddî anlamda imar yani inşa, onarım, bakım, temizlik anlamında olduğu gibi manevi yönden de caminin canlı ve aktif olması, ilim ve irfan meclisi olması, içerisinde cemaatle namaz kılınması gibi de anlaşılmalıdır. Bu ayetin daha iyi anlaşılması için Hz. Peygamber dönemindeki mescitlerin konumunun ve işlevinin iyi anlaşılması gerekmektedir.
 
@@ -42,13 +42,13 @@ Cami, şehrin ruhu ve manevi çekim merkezidir. Camilerin ihtiyacını gidermek,
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ مِمَّا يَلْحَقُ الْمُؤْمِنَ مِنْ عَمَلِهِ وَحَسَنَاتِهِ بَعْدَ مَوْتِهِ : عِلْمًا عَلَّمَهُ وَنَشَرَهُ ، وَوَلَدًا صَالِحًا تَرَكَهُ ، وَمُصْحَفًا وَرَّثَهُ ، أَوْ مَسْجِدًا بَنَاهُ ، أَوْ بَيْتًا لابْنِ السَّبِيلِ بَنَاهُ ، أَوْ نَهْرًا أَجْرَاهُ ، أَوْ صَدَقَةً أَخْرَجَهَا مِنْ مَالِهِ فِي صِحَّتِهِ وَحَيَاتِهِ ، يَلْحَقُهُ مِنْ بَعْدِ مَوْتِهِ</p>
 
-*“Mümin kişi vefat ettikten sonra sevabı kendisine ulaşan iyiliklerinden bir kısmı şunlardır: Öğrettiği ve yaydığı ilim, geride bıraktığı iyi bir evlat, miras bıraktığı Mushaf, yaptırdığı mescit, yolcuların barınması için inşa ettiği misafirhane, akıttığı su, sağlığı yerinde iken malından çıkarıp verdiği sadakadır. Bunlardan hangisini yapmış ise öldükten sonra onun sevabı kendisine ulaşır.”*** (İbn Mâce, Mukaddime, 20)
+*“Mümin kişi vefat ettikten sonra sevabı kendisine ulaşan iyiliklerinden bir kısmı şunlardır: Öğrettiği ve yaydığı ilim, geride bıraktığı iyi bir evlat, miras bıraktığı Mushaf, yaptırdığı mescit, yolcuların barınması için inşa ettiği misafirhane, akıttığı su, sağlığı yerinde iken malından çıkarıp verdiği sadakadır. Bunlardan hangisini yapmış ise öldükten sonra onun sevabı kendisine ulaşır.”* (İbn Mâce, Mukaddime, 20)
 
 Allah Resulü Medine’de Mescid-i Nebi’nin inşa edilmesinde bizzat kendisi çalışmış ve cami inşa edenler hakkında da şu müjdeyi vermiştir:
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ فِى الْجَنَّةِ مِثْلَهُ</p>
 
-*“Her kim Allah için bir mescit bina ederse, Allah ona cennette bu mescidin benzeri (bir köşk) bina eder."*** (Müslim, Zühd, 44)
+*“Her kim Allah için bir mescit bina ederse, Allah ona cennette bu mescidin benzeri (bir köşk) bina eder."* (Müslim, Zühd, 44)
 
 Peygamber Efendimizin döneminde Mescid-i Nebi düzenli olarak temizlenirdi. Ümmi Mihcen adında siyahi bir kadın, Mescid-i Nebi’nin temizliğini gönüllü yapardı. Bu kadın vefat ettiğinde, ashab-ı kiram vefatını Peygamber Efendimize bildirmeden defnetmişlerdi. Resul-i Ekrem kadını göremeyince: ***“Kadına ne oldu?”*** diye sormuş, sahabe vefat ettiğini bildirmişti. Bunun üzerine Peygamber Efendimiz : ***“Bana vefat ettiğini haber vermeli değil miydiniz?”*** buyurmuştu. Sonrasında mescidine emek veren bu hanımın kabrine giderek onun için bizzat cenaze namazı kılmıştı. (Buhârî, Salât, 74; Müslim, Cenâiz, 71) Resulullah , Ümmü Mihcen’in Mescid-i Nebi’ye olan hizmetinden ve emeğinden dolayı ona ayrı bir değer vermişti.
 
@@ -98,7 +98,7 @@ Herkesin birbirinden kaçacağı kıyamet gününde, dünyada yaptıkları amell
 
 <p lang="ar" dir="rtl" class="ayet">سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِى ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ:... وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِى الْمَسَاجِدِ</p>
 
-*“Yedi sınıf insan, Allah’ın (Arşı’nın) gölgesinden başka hiçbir gölgenin bulunmayacağı kıyamet gününde onun gölgesinde gölgelenecektir. “... Kalbi mescidlere bağlı olan kimse…”*** (Müslim, Zekât, 91) Kıyamet günü arş-ı âlânın gölgesinde gölgelenecek yedi sınıftan birisi de kalbi mescide bağlı olan yani namazlarını devamlı camide kılan kişilerdir.
+*“Yedi sınıf insan, Allah’ın (Arşı’nın) gölgesinden başka hiçbir gölgenin bulunmayacağı kıyamet gününde onun gölgesinde gölgelenecektir. “... Kalbi mescidlere bağlı olan kimse…”* (Müslim, Zekât, 91) Kıyamet günü arş-ı âlânın gölgesinde gölgelenecek yedi sınıftan birisi de kalbi mescide bağlı olan yani namazlarını devamlı camide kılan kişilerdir.
 
 ### Camilerin Manevi İmarı: Eğitim
 
@@ -121,13 +121,13 @@ Camide bulunmanın ve cemaatle namazı eda etmenin adabı vardır:
 
 Güzelce abdest alındıktan sonra, namazın şartlarından olan setr-i avrete uygun kıyafet giyilmelidir. Peygamber Efendimiz döneminde bir cuma günü bazı sahabiler hurmalıklarında çalıştıktan sonra toz toprak içinde ve terlemiş bir şekilde mescide geldiklerinde Resûlullah onlara, ***“Keşke yıkansaydınız!”*** buyurmuştu. (Buhârî, Büyû’, 15) Camiye gelirken aşırıya kaçmamak ve başkasını rahatsız edici olmamak şartıyla güzel koku sürülebilir. Camiye gelmeden önce soğan, sarımsak gibi kokusu hoş olmayan yiyeceklerden sakınılmalıdır.
 
-*   Camiye girildiğinde vaaz ediliyor veya Kur’an-ı Kerim okunuyor ise sükûnetle dinlenmelidir. Ayrıca Cuma veya bayram günlerinde hutbe okunurken konuşmak, başka şeylerle ilgilenmek, cep telefonuyla meşgul olmak ibadetin özünden uzaklaşmaya ve sevabından mahrum kalmaya sebep olacağından bu davranışlardan sakınılmalıdır. Unutmayalım ki hutbe, namazın bir parçasıdır. Hutbeyi namazdaymış gibi dinlemek gerekir. Hutbe esnasında ilgi ve alakamızı sadece hatibe ve hutbeye verelim. Peygamber Efendimiz , bir müminin hutbe esnasında göstermesi gereken duyarlılığı şöyle ifade etmiştir: ***“Cuma günü imam hutbe okurken konuşan arkadaşına: ‘Sus!’ bile desen hatalı bir iş yapmış olursun.”* (Buhârî, Cuma, 36)
+*   Camiye girildiğinde vaaz ediliyor veya Kur’an-ı Kerim okunuyor ise sükûnetle dinlenmelidir. Ayrıca Cuma veya bayram günlerinde hutbe okunurken konuşmak, başka şeylerle ilgilenmek, cep telefonuyla meşgul olmak ibadetin özünden uzaklaşmaya ve sevabından mahrum kalmaya sebep olacağından bu davranışlardan sakınılmalıdır. Unutmayalım ki hutbe, namazın bir parçasıdır. Hutbeyi namazdaymış gibi dinlemek gerekir. Hutbe esnasında ilgi ve alakamızı sadece hatibe ve hutbeye verelim. Peygamber Efendimiz , bir müminin hutbe esnasında göstermesi gereken duyarlılığı şöyle ifade etmiştir: *“Cuma günü imam hutbe okurken konuşan arkadaşına: ‘Sus!’ bile desen hatalı bir iş yapmış olursun.”* (Buhârî, Cuma, 36)
 
 <p lang="ar" dir="rtl" class="ayet">قَدْ اَفْلَحَ الْمُؤْمِنُونَۙ اَلَّذٖينَ هُمْ فٖي صَلَاتِهِمْ خَاشِعُونَۙ</p>
 
-*“Müminler kesinlikle kurtuluşa ermiştir. Onlar, namazlarında derin bir saygı hali yaşarlar.”*** (Müminun, 23/1-2) Sessiz ve sakin durmak, tevazu göstermek, boyun eğmek gibi anlamları olan *“huşû*” kavramı, insanın Cenab-ı Hakk’ın huzurunda tevazu ve teslimiyet içerisinde bulunmasını, kalben ve bedenen O’na hürmet ve itaat ederek boyun eğmesini ifade etmektedir. Huşû insanın Allah’a imanının ve O’na eşsiz bağlılığının yalnızca kalp ile değil aynı zamanda saygı, edep ve vakar dolu bir duruş sergileyerek de ifade edilmesidir.
+*“Müminler kesinlikle kurtuluşa ermiştir. Onlar, namazlarında derin bir saygı hali yaşarlar.”* (Müminun, 23/1-2) Sessiz ve sakin durmak, tevazu göstermek, boyun eğmek gibi anlamları olan *“huşû*” kavramı, insanın Cenab-ı Hakk’ın huzurunda tevazu ve teslimiyet içerisinde bulunmasını, kalben ve bedenen O’na hürmet ve itaat ederek boyun eğmesini ifade etmektedir. Huşû insanın Allah’a imanının ve O’na eşsiz bağlılığının yalnızca kalp ile değil aynı zamanda saygı, edep ve vakar dolu bir duruş sergileyerek de ifade edilmesidir.
 
-Namazın manevi temeli olan huşûnun gerçekleşmesinde önemli rolü bulunan tadil-i erkâna riayet edilmesi gerekir. Namazın kıyam, rükû ve secde gibi rükünlerini yerli yerinde, acele etmeden ve sükûnet içinde yerine getirmeye *tadil-i erkân* denir. Peygamber Efendimiz , ***“Rükû ve secdeleri tam yapın.”*** (Buhârî, “Eymân”, 3) Bir diğer hadisinde de, “*Hırsızın en kötüsü namazından çalandır.”*** buyurmuştur. *“Kişi namazından nasıl çalar?”* diye sorulunca Allah Resulü , *“Rükû ve secdesini tam yapmayarak.”* cevabını vermiştir. (el-Muvaṭṭaʾ, Ḳasru’s-Salat, 72; Abdullah Kahraman, Tadili Erkan, DİA, 39/366)
+Namazın manevi temeli olan huşûnun gerçekleşmesinde önemli rolü bulunan tadil-i erkâna riayet edilmesi gerekir. Namazın kıyam, rükû ve secde gibi rükünlerini yerli yerinde, acele etmeden ve sükûnet içinde yerine getirmeye *tadil-i erkân* denir. Peygamber Efendimiz , ***“Rükû ve secdeleri tam yapın.”*** (Buhârî, “Eymân”, 3) Bir diğer hadisinde de, “*Hırsızın en kötüsü namazından çalandır.”* buyurmuştur. *“Kişi namazından nasıl çalar?”* diye sorulunca Allah Resulü , *“Rükû ve secdesini tam yapmayarak.”* cevabını vermiştir. (el-Muvaṭṭaʾ, Ḳasru’s-Salat, 72; Abdullah Kahraman, Tadili Erkan, DİA, 39/366)
 
 *   Cami içerisinde cep telefonları kapatılmalı veya sessiz konuma alınmalıdır.
 *   Camiye girildiğinde ezan okunmamış ve mekruh vakit değil ise iki rekât Tahiyyetü'l-Mescid namazı kılınması sünnettir.
@@ -141,7 +141,7 @@ Namazın manevi temeli olan huşûnun gerçekleşmesinde önemli rolü bulunan t
 
 <p lang="ar" dir="rtl" class="ayet">سَوُّوا صُفُوفَكُمْ فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلاَةِ</p>
 
-*“Saflarınızı düz tutunuz. Zira safların düz olması namazın tamam olmasını sağlayan hususlardan biridir.”*** (Müslim, Salât, 124)
+*“Saflarınızı düz tutunuz. Zira safların düz olması namazın tamam olmasını sağlayan hususlardan biridir.”* (Müslim, Salât, 124)
 
 <p lang="ar" dir="rtl" class="ayet">لَوْ يَعْلَمُ النَّاسُ مَا فِي النِّدَاءِ وَالصَّفِّ الأَوَّلِ، ثُمَّ لَمْ يَجِدُوا إِلاَّ أَنْ يَسْتَهِمُوا عَلَيْهِ لاَسْتَهَمُوا، وَلَوْ يَعْلَمُونَ مَا فِي التَّهْجِيرِ لاَسْتَبَقُوا إِلَيْهِ، وَلَوْ يَعْلَمُونَ مَا فِي الْعَتَمَةِ وَالصُّبْحِ لأَتَوْهُمَا وَلَوْ حَبْوًا ‏</p>
 

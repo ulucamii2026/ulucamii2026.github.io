@@ -48,7 +48,7 @@ Dünya hayatında insanın zorluklarla, haksızlıklarla mücadele ettiği halde
 
 Kur’an-ı Kerim’de dünya ile ahiret hayatı bir takım benzetmelerle anlatılmıştır.
 
-a) **Dünya Hayatı Aldatıcıdır:**
+a) Dünya Hayatı Aldatıcıdır:
 
 <p lang="ar" dir="rtl" class="ayet">اِعْلَمُٓوا اَنَّمَا الْحَيٰوةُ الدُّنْيَا لَعِبٌ وَلَهْوٌ وَزٖينَةٌ وَتَفَاخُرٌ بَيْنَكُمْ وَتَكَاثُرٌ فِي الْاَمْوَالِ وَالْاَوْلَادِؕ كَمَثَلِ غَيْثٍ اَعْجَبَ الْكُفَّارَ نَبَاتُهُ ثُمَّ يَهٖيجُ فَتَرٰيهُ مُصْفَراًّ ثُمَّ يَكُونُ حُطَاماًؕ وَفِي الْاٰخِرَةِ عَذَابٌ شَدٖيدٌۙ وَمَغْفِرَةٌ مِنَ اللّٰهِ وَرِضْوَانٌؕ وَمَا الْحَيٰوةُ الدُّنْيَٓا اِلَّا مَتَاعُ الْغُرُورِ</p>
 
@@ -90,7 +90,7 @@ Dünya bir penceredir
 
 Her gelen baktı geçti
 
-b) **Asıl Yurt Ahiret Yurdudur:**
+b) Asıl Yurt Ahiret Yurdudur:
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا هٰذِهِ الْحَيٰوةُ الدُّنْيَٓا اِلَّا لَهْوٌ وَلَعِبٌؕ وَاِنَّ الدَّارَ الْاٰخِرَةَ لَهِيَ الْحَيَوَانُۘ لَوْ كَانُوا يَعْلَمُونَ</p>
 
@@ -122,7 +122,7 @@ Dünyaya yerinde ve yeterince kıymet vermek ahirete hazırlık yapmak gerekir.
 
 “İnsan, “Keşke (âhiret) hayatım için daha önce bir şeyler yapmış olsaydım!” der. (Fecr, 89/23-24)
 
-c) **Dünya Ahirete Hazırlanma Yeridir**
+c) Dünya Ahirete Hazırlanma Yeridir
 
 Dünya hayatı, insanın ahiret yolculuğunun önemli duraklarından bir tanesidir. İnsan ahiretini dünyada kazanır. İnsan dünyada ektiği tohumun ürününü ahirette hasat edecektir. Bir çeşit dünya ahiretin tarlasıdır. Rabbimiz şöyle buyurmuştur:
 
@@ -150,7 +150,7 @@ Kıssa: Harun Reşid bir gün sarayın avlusunda rastladığı Behlül Dana’ya
 
 -“Dediler ki, burada ateş olmaz. Herkes ateşini kendisi getirir dünyadan”
 
-d) **Ölüm Ve Öldükten Sonra Diriliş**
+d) Ölüm Ve Öldükten Sonra Diriliş
 
 O demde ki perdeler kalkar, perdeler iner;
 
@@ -206,9 +206,9 @@ Ahirette amel defterleri dağıtıldıktan sonra hesap terazileri kurulacaktır.
 
 İnsanlar amel defterlerini ellerine aldıktan ve yaptıklarının en ince detayına kadar yazıldığını gördükten sonra Allah Teâlâ tarafından hesaba çekileceklerdir. Hesap ve sorgulama sırasında amel defterlerinden başka, insanın organları ve yeryüzündeki mevcûdat da insanın yaptıklarına şahitlik edecektir. Dünyadaki iman ve amellerine göre insanların amel defteri sağından veya solundan verilecektir.
 
-**Kitabı sağ tarafından verilen kimse der ki “Alın kitabımı okuyun; Doğrusu ben, hesabımla karşılaşacağımı zaten bekliyordum.” Artık o, hoşnut olacağı bir hayat içindedir; . Meyveleri kolayca devşirilebilir yüce bir cennettedir. Onlara “Geçmiş günlerde yaptıklarınıza karşılık olarak âfiyetle yiyin için” denir.
+Kitabı sağ tarafından verilen kimse der ki “Alın kitabımı okuyun; Doğrusu ben, hesabımla karşılaşacağımı zaten bekliyordum.” Artık o, hoşnut olacağı bir hayat içindedir; . Meyveleri kolayca devşirilebilir yüce bir cennettedir. Onlara “Geçmiş günlerde yaptıklarınıza karşılık olarak âfiyetle yiyin için” denir.
 
-Kitabı sol tarafından verilene gelince o, “Keşke” der, “Bana kitabım verilmeseydi de hesabımın ne olduğunu bilmeseydim! Keşke ölümüm her şeyi bitirseydi! Malım bana hiç fayda sağlamadı; Güç ve saltanatım elimden çıkıp gitti.” (Hakka Suresi 19-29)**
+Kitabı sol tarafından verilene gelince o, “Keşke” der, “Bana kitabım verilmeseydi de hesabımın ne olduğunu bilmeseydim! Keşke ölümüm her şeyi bitirseydi! Malım bana hiç fayda sağlamadı; Güç ve saltanatım elimden çıkıp gitti.” (Hakka Suresi 19-29)
 
 Çeşitli hadislerde de bütün insanların, aracı olmaksızın Allah tarafından hesaba çekileceği, müminler sorulan sorulara kolaylıkla cevap verirlerken, kâfirlerin ince ve titiz bir hesap ve sorgulamadan geçirilecekleri haber verilmektedir. (Buhârî, Rikak, 49; Müslim, Zekât, 20; İlmihal, 1/127-128)
 

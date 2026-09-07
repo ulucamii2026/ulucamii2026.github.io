@@ -150,7 +150,7 @@ Nitekim Yüce Allah bu durumu şu ayetleriyle net bir şekilde ortaya koymuştur
 
 Bundan dolayıdır ki, Müslüman her yerde ve her ortamda Müslümandır. Gerçek dünyada da sanal dünyada da onun Müslüman kimlik bilinci ve sorumlulukları devam etmektedir.
 
-**Dijital Platform /Sanal Dünya Bir İmtihandır...**
+Dijital Platform /Sanal Dünya Bir İmtihandır...
 
 Bugün Müslümanlar olarak sanal dünya ile sınanmakta olduğumuz bir gerçektir. Bu sınavı başarılı bir şekilde geçmenin yolu, (يَٓا اَيُّهَا الَّذ۪ينَ اٰمَنُٓوا اٰمِنُوا ) “Ey iman edenler! İman edin…” (Nisa, 4/136.) ayetiyle ifade edildiği gibi imanımızın, şahsiyetimizin ve Müslüman kimliğimizin farkında olmaktır.
 

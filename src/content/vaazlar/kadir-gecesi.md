@@ -35,11 +35,11 @@ A. KADİR GECESİ: ANLAM VE MAHİYET
 
 ’Kadir’ kelimesi, Arapçada birden fazla anlam taşıyan zengin bir kavramdır. Bu anlamların her biri, geceyi farklı bir boyuttan aydınlatmaktadır:
 
-**Değer ve Şeref:** ’Kadir’ kelimesi ’yüce değer, büyük şeref’ demektir. Bu gece, tüm zamanlar içinde en değerli ve en şerefli gecedir. Allah Teâlâ bu geceye o kadar yüce bir değer biçmiştir ki, ona özel bir sure ayırmıştır. (el-Alak suresi)
+Değer ve Şeref: ’Kadir’ kelimesi ’yüce değer, büyük şeref’ demektir. Bu gece, tüm zamanlar içinde en değerli ve en şerefli gecedir. Allah Teâlâ bu geceye o kadar yüce bir değer biçmiştir ki, ona özel bir sure ayırmıştır. (el-Alak suresi)
 
-**Kader ve Takdir:** Bu gece, her türlü meseleye hükmedilir. Kulların rızıkları, ecelleri, yolculukları, hastalık ve sağlık halleri — kısaca yeni yıl için belirlenen bütün hükümler bu gece meleklere teslim edilir. (Kadir Suresi, 97/4)
+Kader ve Takdir: Bu gece, her türlü meseleye hükmedilir. Kulların rızıkları, ecelleri, yolculukları, hastalık ve sağlık halleri — kısaca yeni yıl için belirlenen bütün hükümler bu gece meleklere teslim edilir. (Kadir Suresi, 97/4)
 
-**Darlık ve Sıkışma:** Bir diğer anlama göre ’kadir’, ’dar’ demektir. O gece yeryüzü, sayısız inen meleklerle dolup taşar; o kadar çok melek iner ki yeryüzü âdeta daralır. (İbn Abbas’tan rivayet)
+Darlık ve Sıkışma: Bir diğer anlama göre ’kadir’, ’dar’ demektir. O gece yeryüzü, sayısız inen meleklerle dolup taşar; o kadar çok melek iner ki yeryüzü âdeta daralır. (İbn Abbas’tan rivayet)
 
 İşte bu üç anlam bir arada düşünüldüğünde, Kadir Gecesi’nin ne denli kapsamlı ve derin bir gece olduğu daha iyi anlaşılmaktadır.
 
@@ -107,11 +107,11 @@ Sahabe-i kiram bu ayeti duyunca büyük sevinç yaşamıştır. Çünkü Hz. Mus
 
 Bu ayet, Kadir Gecesi’nin bir diğer muhteşem boyutunu gözler önüne sermektedir: Meleklerin ve Cebrail’in (a.s.) yeryüzüne inişi. Bu inişin üç önemli boyutu vardır:
 
-**Rableri’nin izniyle** — Melekler Allah’ın emri ve izni olmadan hiçbir şey yapamazlar. Bu gecenin kutsiyeti, Allah’ın bizzat yönetimi ve denetimi altında gerçekleşmektedir.
+Rableri’nin izniyle — Melekler Allah’ın emri ve izni olmadan hiçbir şey yapamazlar. Bu gecenin kutsiyeti, Allah’ın bizzat yönetimi ve denetimi altında gerçekleşmektedir.
 
-**Ruh’un inişi** — ’Ruh’ ifadesi, Cebrail’i (a.s.) kasteder. O, vahyin taşıyıcısı, Allah ile peygamberleri arasındaki ulak olan büyük melektir. O’nun bu gece de yeryüzüne inmesi, geceye ayrı bir anlam katmaktadır.
+Ruh’un inişi — ’Ruh’ ifadesi, Cebrail’i (a.s.) kasteder. O, vahyin taşıyıcısı, Allah ile peygamberleri arasındaki ulak olan büyük melektir. O’nun bu gece de yeryüzüne inmesi, geceye ayrı bir anlam katmaktadır.
 
-**Her türlü iş için** — Bu gece yeni yıl içinde gerçekleşecek tüm olaylar, rızıklar, eceller, sağlık ve hastalıklar, sefere çıkacaklar ve geri dönecekler belirlenip meleklere teslim edilir. Duhan suresinin 4. ayeti de buna işaret eder: ’O gece her hikmetli iş ayrılıp belirlenir.’
+Her türlü iş için — Bu gece yeni yıl içinde gerçekleşecek tüm olaylar, rızıklar, eceller, sağlık ve hastalıklar, sefere çıkacaklar ve geri dönecekler belirlenip meleklere teslim edilir. Duhan suresinin 4. ayeti de buna işaret eder: ’O gece her hikmetli iş ayrılıp belirlenir.’
 
 *   Beşinci Ayet
 

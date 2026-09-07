@@ -64,7 +64,7 @@ Oruçtaki asıl gaye nefisleri terbiye ederek takva duygusunu hâkim kılmak ve 
 
 “Sizden öncekilere...” den maksat başta Yahudiler ve Hristiyanlar olmak üzere Hz. Peygamberden önceki ümmetlerdir. (İbn Âşûr, I, 157; Matta, 6/16) Hz. Peygamber (sas), “Allah’ın en çok sevdiği oruç Dâvût peygamberin orucudur. O, bir gün açar (yer), bir gün oruç tutardı” buyurmuştur. (Buhârî, “Savm”, 56; Müslim, “Sıyâm”, 181-202) Bu hadis, daha başka peygamberlerin getirdikleri ilâhî dinlerde de oruç ibadetinin bulunduğunu göstermektedir. “Sakınmanız için, sakınasınız diye” ifadesi oruç ibadetinin hikmetine ışık tutmaktadır. Orucun stratejisini ortaya koymaktadır. Günahlardan uzaklaşabilmek için yalnızca üzerinde düşünmek yetmez; itici duygular ve içgüdülerin baskısını azaltacak veya bu baskıya karşı iradenin gücünü arttıracak uygun araçlarla eğitime ihtiyaç vardır. Oruç bu eğitim için en ideal yoldur.
 
-**Hadisler**
+Hadisler
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ أَنَسِ بْنِ مَالِك َ قَالَ: كَانَ رَسُولُ اّللََِ (صَلََى اّللََُ عَلَيْهِ و :َسَلََمْ) إِذَا دَخَلَ رَجَبٌ، قَال ََ“اَللََهُم َبَارِكْ لَنَا فِي رَجَب ، وَشَعْبَانَ، وَبَلَِغْنَا رَمَضَان.”</p>
 

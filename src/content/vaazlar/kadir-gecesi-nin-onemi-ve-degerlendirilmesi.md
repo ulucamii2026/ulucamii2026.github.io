@@ -3,7 +3,6 @@ baslik: "Kadir Gecesi'nin Önemi ve Değerlendirilmesi"
 ozet: "“Biz onu (Kur’an’ı) Kadir gecesinde indirdik. Bilir misin nedir Kadir gecesi? Kadir gecesi bin aydan hayırlıdır. O gece melekler ve ruh, rablerinin izniyle her bir…"
 kategori: kandil
 kelime: 1784
-docx: "/vaazlar/kadir-gecesi-nin-onemi-ve-degerlendirilmesi.docx"
 pdf: "/vaazlar/kadir-gecesi-nin-onemi-ve-degerlendirilmesi.pdf"
 ---
 ## Kadir Gecesi

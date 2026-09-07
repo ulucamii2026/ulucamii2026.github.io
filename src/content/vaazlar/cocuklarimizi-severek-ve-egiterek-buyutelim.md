@@ -14,13 +14,13 @@ pdf: "/vaazlar/cocuklarimizi-severek-ve-egiterek-buyutelim.pdf"
 
 “Ey inananlar! Kendinizi ve ailenizi, yakıtı insanlar ve taşlar olan ateşten koruyun...” (Tahrîm, 66/6) Bu ayet-i kerime anne babaya sorumluluklar yüklemektedir.
 
-Hz. Ömer (r.a.): “Ya Resûlallah! Nefislerimizi koruruz fakat ehlimizi nasıl koruyabiliriz?” demişti. Allah Resûlü (s.a.s.) de şöyle buyurdu: ***“Allah'ın sizi nehyettiği şeylerden onları nehyeder ve Allah'ın size emrettiği şeyleri onlara emrederseniz. İşte bu onları korumak demektir.*” (Elmalılı Hamdi Yazır, Hakk Dini Kur'an Dili, Sad. İ. Karaçam, E. Işık, Nusrettin Boleli vd., 8/161)
+Hz. Ömer (r.a.): “Ya Resûlallah! Nefislerimizi koruruz fakat ehlimizi nasıl koruyabiliriz?” demişti. Allah Resûlü (s.a.s.) de şöyle buyurdu: *“Allah'ın sizi nehyettiği şeylerden onları nehyeder ve Allah'ın size emrettiği şeyleri onlara emrederseniz. İşte bu onları korumak demektir.*” (Elmalılı Hamdi Yazır, Hakk Dini Kur'an Dili, Sad. İ. Karaçam, E. Işık, Nusrettin Boleli vd., 8/161)
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurdu:
 
 <p lang="ar" dir="rtl" class="ayet">إذا مَاتَ الإنسَانُ انقطَعَ عمَلُهُ إلاَّ مِنْ ثَلاثٍ : صَدقَةٍ جاريَةٍ ، أوْ عِلم يُنْتَفَعُ بِهِ ، أَوْ وَلَدٍ صَالحٍ يَدعُو له</p>
 
-*“İnsan ölünce, üç ameli dışında bütün amellerinin sevabı kesilir: Sadaka-i câriye (faydası süregelen hayır), kendisinden istifade edilen ilim, arkasından dua eden hayırlı evlât.”*** (Müslim, Vasiyyet 14) Ölümle birlikte kişinin dünyada amellerinin kaydının tutulduğu amel defteri kapanmaktadır. Ancak hadiste zikredilen üç husus kişinin amel defterinin kapanmasının önüne geçmektedir. Bunlardan bir tanesi kişinin yetiştirdiği hayırlı evladıdır. Kişinin vefatından sonra geride bıraktığı salih ve saliha evlat hem toplum hem de o anne baba için kazançtır.
+*“İnsan ölünce, üç ameli dışında bütün amellerinin sevabı kesilir: Sadaka-i câriye (faydası süregelen hayır), kendisinden istifade edilen ilim, arkasından dua eden hayırlı evlât.”* (Müslim, Vasiyyet 14) Ölümle birlikte kişinin dünyada amellerinin kaydının tutulduğu amel defteri kapanmaktadır. Ancak hadiste zikredilen üç husus kişinin amel defterinin kapanmasının önüne geçmektedir. Bunlardan bir tanesi kişinin yetiştirdiği hayırlı evladıdır. Kişinin vefatından sonra geride bıraktığı salih ve saliha evlat hem toplum hem de o anne baba için kazançtır.
 
 Çocuk, cinsiyeti, rızkı ve eceli Rabbimizin takdirinde olan ilahî ihsandır. Aynı zamanda çocuk, bir imtihandır. Anne ve babalar çocuklarıyla, çocuklarda anne ve babalarıyla imtihan olunur. Rabbimiz şöyle buyurmuştur:
 
@@ -42,11 +42,11 @@ Dünyanın süsü, zîneti olan mal ve çocuk nasıl baki âleme taşınır? Nas
 
 <p lang="ar" dir="rtl" class="ayet">مَا نَحَلَ وَالِدٌ وَلَدًا مِنْ نَحْلٍ أَفْضَلَ مِنْ أَدَبٍ حَسَنٍ</p>
 
-*“Hiçbir anne baba, çocuğuna güzel terbiyeden daha kıymetli bir bağışta bulunmamıştır.”*** (Tirmizi, Birr, 33; İbn Hanbel, IV, 77) buyurmuştur. Bir başka seferinde Hz. Peygamber (s.a.s.):
+*“Hiçbir anne baba, çocuğuna güzel terbiyeden daha kıymetli bir bağışta bulunmamıştır.”* (Tirmizi, Birr, 33; İbn Hanbel, IV, 77) buyurmuştur. Bir başka seferinde Hz. Peygamber (s.a.s.):
 
 <p lang="ar" dir="rtl" class="ayet">أَكْرِمُوا أَوْلَادَكُمْ وَأَحْسِنُوا أَدَبَهُمْ</p>
 
-*“Çocuklarınıza hoş muamelede bulunun ve onları güzel terbiye edin.”*** buyurmuştur. (İbn Mace, Edeb, 3) Hadis-i şerifler anne babanın çocuğunu güzel ahlak üzere yetiştirme sorumluluğu olduğunu hatırlatmakta, güzel ahlakın çocuğa bırakılacak en büyük miras olacağına dikkat çekmektedir.
+*“Çocuklarınıza hoş muamelede bulunun ve onları güzel terbiye edin.”* buyurmuştur. (İbn Mace, Edeb, 3) Hadis-i şerifler anne babanın çocuğunu güzel ahlak üzere yetiştirme sorumluluğu olduğunu hatırlatmakta, güzel ahlakın çocuğa bırakılacak en büyük miras olacağına dikkat çekmektedir.
 
 Anne baba çocuklarının sahibi değil emanetçisidir. Kendilerine verilen bu emanete gözleri gibi bakmakla, onu örselemeden yetiştirmekle ve yıpratmadan hayata kazandırmakla yükümlüdürler. Emanet olduğuna göre, çocukları üstünde istedikleri gibi tasarrufta bulunma hakkına da sahip değillerdir. Onu doyururken, okuturken, ödüllendirirken, cezalandırırken, kısacası büyütüp kişiliğini şekillendirirken Yüce Allah’ın rızasına uygun hareket etmek zorundadırlar. Zira gün gelecek, emanetin sahibi ona nasıl davrandıklarını, neler verdiklerini ya da neleri esirgediklerini soracaktır. (Hadislerle İslam, 4/145-146)
 
@@ -64,7 +64,7 @@ Bu hadis-i şerif ırk, renk ve cinsiyet farkı olmaksızın her çocuğun iyiyi
 
 <p lang="ar" dir="rtl" class="ayet">كُلُّكُم راعٍ ، وكُلُّكُمْ مسؤولٌ عنْ رعِيتِهِ : الإمامُ راعٍ ومَسْؤُولٌ عَنْ رعِيَّتِهِ ، والرَّجُلُ رَاعٍ في أهلِهِ وَمسؤولٌ عنْ رَعِيَّتِهِ ، وَالمَرأَةُ راعيةٌ في بيتِ زَوجها وَمسؤولةًّ عَنْ رعِيَّتِها ، والخَادِمُ رَاعٍ في مال سَيِّدِهِ وَمَسْؤُولٌ عَنْ رَعِيتِهِ ، وكُلُّكُم راع ومسؤُولٌ عَنْ رعِيَّتِهِ</p>
 
-“*Hepiniz çobansınız ve hepiniz elinizin altındakilerden sorumlusunuz. Yönetici bir çobandır. Erkek, aile halkının çobanıdır. Kadın, kocasının evi ve çocukları için çobandır. Hepiniz çobansınız ve hepiniz çobanlık yaptıklarınızdan sorumlusunuz.”*** (Buhari, Nikah, 91)
+“*Hepiniz çobansınız ve hepiniz elinizin altındakilerden sorumlusunuz. Yönetici bir çobandır. Erkek, aile halkının çobanıdır. Kadın, kocasının evi ve çocukları için çobandır. Hepiniz çobansınız ve hepiniz çobanlık yaptıklarınızdan sorumlusunuz.”* (Buhari, Nikah, 91)
 
 Hadiste, ailesinin çobanı olduğu bildirilen anne babanın, aile bireylerinin maddi-manevi ihtiyaçlarını karşılamak, onları her türlü tehlikeye karşı korumak, çocuklarının iyi yetişmesi için elinden gelen gayreti göstermekle sorumlu olduğu bildirilmektedir.
 
@@ -110,7 +110,7 @@ Bu olay Hz. Peygamber’in (s.a.s.) bir gence verdiği değeri gösteren olaylar
 
 ### Çocuklarla Zaman Geçirilmeli ve Onların Seviyesine İnilmeli
 
-Enes b. Malik (r.a.) bizlere şunları aktarmıştır. “***Peygamber (s.a.s.) bizim aramıza karışırdı ve güler yüzle biz çocuklara latife ederdi.”* (Buhari Edep, 81)
+Enes b. Malik (r.a.) bizlere şunları aktarmıştır. “*Peygamber (s.a.s.) bizim aramıza karışırdı ve güler yüzle biz çocuklara latife ederdi.”* (Buhari Edep, 81)
 
 Medine’nin Hazrec kabilesine mensup bir ailenin çocuğu olan Mahmûd b. Rebî’, beş yaşında iken Resûlullah’ın (s.a.s.) kendilerine ait olan kuyudan çektiği suyu yüzüne püskürttüğüne dair bir hatırasını anlatmaktadır. (Buhârî, İlim, 18)
 
@@ -120,7 +120,7 @@ Medine’nin Hazrec kabilesine mensup bir ailenin çocuğu olan Mahmûd b. Rebî
 
 Râfi’ b. Amr çocukken bir gün Ensar’ın hurmalarını taşlarken yakalanmış ve Allah Resûlü’nün (s.a.s.) huzuruna getirilmişti. Resûlullah (s.a.s.) onu derhâl cezalandırmak yerine önce, ***“Çocuğum, hurmaları neden taşlıyorsun?”*** diye sormuş, o da “*Yemek için.”* diye karşılığını vermişti. Bunun üzerine Peygamberimiz (s.a.s.), ***“Hurmaları taşlama da altına düşenlerden ye.”*** buyurarak ona doğruyu öğretmiş, başını okşamış ve ***“Allah’ım, onun karnını doyur.”*** diyerek dua etmişti. (Ebû Dâvûd, Cihâd, 85; Tirmizî, Büyû’, 54; Hadislerle İslam, 6/393)
 
-Bir başka seferinde, yemek yerken tabağın içinde elini rastgele dolaştıran Ömer b. Ebû Seleme’nin bu yanlış hareketine müdahale eden Allah Resûlü (s.a.s.), doğrusunu öğretmeyi de ihmal etmemiş, ***“Yavrum, Besmele çek, sağ elinle ve önünden ye.”* buyurmuştur. (Buhârî, Et’ıme, 2; Müslim, Eşribe, 108; Hadislerle İslam,4/148)
+Bir başka seferinde, yemek yerken tabağın içinde elini rastgele dolaştıran Ömer b. Ebû Seleme’nin bu yanlış hareketine müdahale eden Allah Resûlü (s.a.s.), doğrusunu öğretmeyi de ihmal etmemiş, *“Yavrum, Besmele çek, sağ elinle ve önünden ye.”* buyurmuştur. (Buhârî, Et’ıme, 2; Müslim, Eşribe, 108; Hadislerle İslam,4/148)
 
 ### Çocukların İbadet Eğitimine Önem Verilmeli
 
@@ -166,19 +166,19 @@ Anne ve babanın çocuklarına farklı davranması, bir kısmına bağış yapar
 
 ## ÇOCUKLARINI GÜZEL YETİŞTİREN ANNE BABANIN MÜKÂFATI
 
-Peygamber Efendimiz (s.a.s.) ***“Kişinin çocuğunun eğitimi ile uğraşması, bir sa’/ölçek sadaka vermesinden daha iyidir (sevaptır).”* (Tirmizi, Birr, 33) buyurmuştur.
+Peygamber Efendimiz (s.a.s.) *“Kişinin çocuğunun eğitimi ile uğraşması, bir sa’/ölçek sadaka vermesinden daha iyidir (sevaptır).”* (Tirmizi, Birr, 33) buyurmuştur.
 
 Kız çocuğunun istenmediği, diri diri toprağa gömüldüğü bir dönemde Allah Resulü (s.a.s.) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ عَالَ ثَلاَثَ بَنَاتٍ، فَأَدَّبَهُنَّ وَزَوَّجَهُنَّ، وَأَحْسَنَ إِلَيْهِنَّ، فَلَهُ الْجَنَّةُ</p>
 
-“*Kim üç kız çocuğunun geçimini üstlenir, onları terbiye edip evlendirir ve onlara güzel davranırsa, ona cennet vardır.”*** (Ebu Davud, Edeb, 120-121; İbn Hanbel, III, 96) Hadis-i şerifte çocuğunun maddi ve manevi ihtiyaçlarını karşılayan, sevgi ve merhametle terbiye eden, vakti geldiğinde de yuva kurmasına destek olan anne babanın bu gayretlerinin mükâfatı müjdelenmektedir.
+“*Kim üç kız çocuğunun geçimini üstlenir, onları terbiye edip evlendirir ve onlara güzel davranırsa, ona cennet vardır.”* (Ebu Davud, Edeb, 120-121; İbn Hanbel, III, 96) Hadis-i şerifte çocuğunun maddi ve manevi ihtiyaçlarını karşılayan, sevgi ve merhametle terbiye eden, vakti geldiğinde de yuva kurmasına destek olan anne babanın bu gayretlerinin mükâfatı müjdelenmektedir.
 
 Evlâdına yeterince emek vermeyen, onu ciddiye almayan ve Allah’ın rızasına uygun yetiştirmeyenler ise kıyamet günü hem kendilerini hem de yavrularını hüsrana sürüklemiş olacaklardır. (Hadislerle İslam, 4/146) Peygamber Efendimizin (s.a.s.) şu hadis-i şerifi bize bu görevi hatırlatmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">كَفي بِالمرْءِ إِثْماً أَنْ يُضَيِّعَ مَنْ يقُوتُ</p>
 
-*“Geçimini sağlaması gerekenleri ihmâl etmek, insana günah olarak yeter.”*** (Ebû Dâvûd, Zekât, 45)
+*“Geçimini sağlaması gerekenleri ihmâl etmek, insana günah olarak yeter.”* (Ebû Dâvûd, Zekât, 45)
 
 ## SONUÇ
 

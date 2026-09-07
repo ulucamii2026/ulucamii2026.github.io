@@ -10,7 +10,7 @@ Kardeşlik nedir diye sorulduğunda hepimiz farklı cevaplar veririz. Nesep kard
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّمَا الْمُؤْمِنُونَ اِخْوَةٌ</p>
 
-*“Müminler ancak kardeştirler…”*** (Hucurat 49/10)
+*“Müminler ancak kardeştirler…”* (Hucurat 49/10)
 
 Bu ayetten de açıkça anlaşıldığı üzere, ancak iman bağıyla bir araya gelenler kardeş olarak kabul edilmektedir. Buna göre, yeryüzünün neresinde yaşıyor olurlarsa olsunlar, hangi dili konuşurlarsa konuşsunlar, hangi kavim ve renge sahip olurlarsa olsunlar, bütün Müminler birbirlerinin kardeşleridir. Yani birbirlerinin sadık dostlarıdır.
 
@@ -18,13 +18,13 @@ Aynı dili konuşanlar değil, aynı duyguları ve hisleri paylaşanlar daha iyi
 
 <p lang="ar" dir="rtl" class="ayet">وَاعْتَصِمُوا بِحَبْلِ اللّٰهِ جَمٖيعًا وَلَا تَفَرَّقُوا وَاذْكُرُوا نِعْمَتَ اللّٰهِ عَلَيْكُمْ اِذْ كُنْتُمْ اَعْدَاءً فَاَلَّفَ بَيْنَ قُلُوبِكُمْ فَاَصْبَحْتُمْ بِنِعْمَتِهٖ اِخْوَانًا وَكُنْتُمْ عَلٰى شَفَا حُفْرَةٍ مِنَ النَّارِ فَاَنْقَذَكُمْ مِنْهَا كَذٰلِكَ يُبَيِّنُ اللّٰهُ لَكُمْ اٰيَاتِهٖ لَعَلَّكُمْ تَهْتَدُونَ</p>
 
-*“Hep birlikte Allah’ın ipine (İslâm’a) sımsıkı yapışın; parçalanmayın. Allah’ın size olan nimetini hatırlayın: Hani siz birbirinize düşman kişiler idiniz de O, gönüllerinizi birleştirmişti ve O’nun nimeti sayesinde kardeş kimseler olmuştunuz. Yine siz bir ateş çukurunun tam kenarında iken oradan da sizi O kurtarmıştı. İşte Allah size ayetlerini böyle açıklar ki doğru yolu bulasınız.”*** (Âli Imrân, 3/103)
+*“Hep birlikte Allah’ın ipine (İslâm’a) sımsıkı yapışın; parçalanmayın. Allah’ın size olan nimetini hatırlayın: Hani siz birbirinize düşman kişiler idiniz de O, gönüllerinizi birleştirmişti ve O’nun nimeti sayesinde kardeş kimseler olmuştunuz. Yine siz bir ateş çukurunun tam kenarında iken oradan da sizi O kurtarmıştı. İşte Allah size ayetlerini böyle açıklar ki doğru yolu bulasınız.”* (Âli Imrân, 3/103)
 
 Başka bir ayet-i kerimede ise Rabbimiz şöyle buyurmaktadır;
 
 <p lang="ar" dir="rtl" class="ayet">وَاَلَّفَ بَيْنَ قُلُوبِهِمْ لَوْ اَنْفَقْتَ مَا فِى الْاَرْضِ جَمٖيعًا مَا اَلَّفْتَ بَيْنَ قُلُوبِهِمْ وَلٰـكِنَّ اللّٰهَ اَلَّفَ بَيْنَهُمْ اِنَّهُ عَزٖيزٌ حَكٖيمٌ</p>
 
-*“Ve (Allah), onların kalplerini birleştirmiştir. Sen yeryüzünde bulunan her şeyi verseydin, yine onların gönüllerini birleştiremezdin, fakat Allah onların aralarını bulup kaynaştırdı. Çünkü O, mutlak galiptir, hikmet sahibidir.”***(Enfâl,8/ 63)
+*“Ve (Allah), onların kalplerini birleştirmiştir. Sen yeryüzünde bulunan her şeyi verseydin, yine onların gönüllerini birleştiremezdin, fakat Allah onların aralarını bulup kaynaştırdı. Çünkü O, mutlak galiptir, hikmet sahibidir.”*(Enfâl,8/ 63)
 
 Yukarıda ifade ettiğimiz bu iki ayeti kerimeyi incelediğimizde kalpleri birbirine yaklaştıranın Rabbimiz olduğunu açıkça görmekteyiz.
 
@@ -34,7 +34,7 @@ Kardeşlikle ilgili Peygamberimiz’in (s.a.s.)hadislerine baktığımızda da a
 
 ***“Müminler, bir bina gibidir.”*** (Buhari, Edeb, 36)
 
-***“Müminler, bir vücudun organları gibidir.”*** (Buhari, Edeb, 27; Müslimi Birr, 66***)***
+***“Müminler, bir vücudun organları gibidir.”*** (Buhari, Edeb, 27; Müslimi Birr, 66)
 
 Bizler bu hadislerden ne anlıyoruz? Allah Resulü’nün (s.a.s.) emrine ne kadar riayet ediyoruz? Bunları düşünmeliyiz.
 
@@ -42,11 +42,11 @@ Sevgili Peygamberimiz (s.a.s.) şöyle buyurur:
 
 <p lang="ar" dir="rtl" class="ayet">إنَّ أحَدَكُمْ مِرْآةُ أخِيهِ، فإن رَأى بِهِ أذَى فَلْيُمِطْهُ عَنْهُ</p>
 
-*“…Her biriniz, kardeşinin aynasıdır, onda bir rahatsızlık görürse bunu ondan izale etsin.”*** *(Müslim, İman 95)*
+*“…Her biriniz, kardeşinin aynasıdır, onda bir rahatsızlık görürse bunu ondan izale etsin.”* *(Müslim, İman 95)*
 
 <p lang="ar" dir="rtl" class="ayet">المُؤمِنُ لِلمؤمنِ كَالبُنْيَان يَشُدُّ بَعْضُهُ بَعْضاً</p>
 
-*“Müminin mümine karşı durumu, bir parçası diğer parçasını sımsıkı kenetleyip tutan binalar gibidir.”*** *(Nesâî, Zekât, 66)*
+*“Müminin mümine karşı durumu, bir parçası diğer parçasını sımsıkı kenetleyip tutan binalar gibidir.”* *(Nesâî, Zekât, 66)*
 
 Bir binanın yapımında demir, kum, çimento ve tuğla gibi malzemeler kullanılır. Bu malzemeler o binanın ayakta kalmasını sağlar. Bu malzemelerden birinin eksik olması, çürük olması veya düşmesi, binanın ayakta kalmasını zorlaştırdığı gibi bir Müminin sıkıntısı diğer Müslümanı rahatsız eder. Aramızda meydana gelen istenmeyen durumlar, kardeşlik yapımızı olumsuz etkiler. Müminler, bir binanın tuğlaları gibi olmalı, birbirlerini kırmamalı, kardeşlik duygusu içinde yaşamalıdırlar.
 
@@ -74,7 +74,7 @@ Kardeş olmak ve kardeşlik bilincini diri tutmak, bize dünyada birlik ve berab
 
 <p lang="ar" dir="rtl" class="ayet">سَبْعَةٌ يُظِلُّهُمُ اللَّهُ في ظِلِّهِ يَوْمَ لا ظِلَّ إلَّا ظِلُّهُ: وَرَجُلانِ تَحَابَّا في اللَّه: اجتَمَعا عَلَيهِ، وتَفَرَّقَا عَلَيهِ،</p>
 
-*“Başka bir gölgenin bulunmadığı Kıyamet gününde Allah Teâlâ, yedi (sınıf) insanı, arşının gölgesinde barındıracaktır: … Birbirlerini Allah için sevip buluşmaları da ayrılmaları da Allah için olan iki insan.”*** (Buhâri,Ezan,36)
+*“Başka bir gölgenin bulunmadığı Kıyamet gününde Allah Teâlâ, yedi (sınıf) insanı, arşının gölgesinde barındıracaktır: … Birbirlerini Allah için sevip buluşmaları da ayrılmaları da Allah için olan iki insan.”* (Buhâri,Ezan,36)
 
 <p lang="ar" dir="rtl" class="ayet">وَمَنْ يُطِـعِ اللّٰهَ وَالرَّسُولَ فَاُو۬لٰٓئِكَ مَعَ الَّذٖينَ اَنْعَمَ اللّٰهُ عَلَيْهِمْ مِنَ النَّبِيّٖنَ وَالصِّدّٖيقٖينَ وَالشُّهَدَٓاءِ وَالصَّالِحٖينَۚ وَحَسُنَ اُو۬لٰٓئِكَ رَفٖيقاًؕ</p>
 
@@ -84,24 +84,24 @@ Yüce Rabbimiz bir kudsi hadisinde ise;
 
 <p lang="ar" dir="rtl" class="ayet">إنَّ اللَّهَ يقولُ يَومَ القِيامَةِ: أيْنَ المُتَحابُّونَ بجَلالِي؟ اليومَ أُظِلُّهُمْ في ظِلِّي، يَومَ لا ظِلَّ إلَّا ظِلِّي</p>
 
-*“Nerede benim rızâm için birbirlerini sevenler? Gölgemden başka gölgenin bulunmadığı bugün onları, kendi arşımın gölgesinde gölgelendireceğim”*** *buyurur.* (Müslim, Birr, 37)
+*“Nerede benim rızâm için birbirlerini sevenler? Gölgemden başka gölgenin bulunmadığı bugün onları, kendi arşımın gölgesinde gölgelendireceğim”* *buyurur.* (Müslim, Birr, 37)
 
 Kardeşliğimiz, imanımız ile de bağlantılıdır. Bir mümini sevmek, imanın lezzeti olarak tarif edilmiştir. Peygamberimiz (s.a.s) şöyle buyurmuştur:
 
 ثَلَاثٌ مَنْ كُنَّ فِيهِ وَجَدَ حَلَاوَةَ الْإِيمَانِ أَنْ يَكُونَ اللَّهُ وَرَسُولُهُ أَحَبَّ إِلَيْهِ مِمَّا سِوَاهُمَا وَأَنْ يُحِبَّ الْمَرْءَ لَا يُحِبُّهُ إِلَّا لِلَّهِ وَأَنْ يَكْرَهَ أَنْ يَعُودَ فِي الْكُفْرِ كَمَا يَكْرَهُ أَنْ يُقْذَفَ فِي النَّارِ
-*“Şu üç özellik kimde bulunursa o imanın tadını almış demektir: Allah ve Resûlünün o kimseye her şeyden daha fazla sevimli olmasıdır. Sevdiği kişiyi Allah için sevmek. Allah kendisini küfür bataklığından kurtardıktan sonra küfre dönmeyi, ateşe atılmak gibi çirkin ve tehlikeli görmek***.” (Buhârî, Îmân 9)
+*“Şu üç özellik kimde bulunursa o imanın tadını almış demektir: Allah ve Resûlünün o kimseye her şeyden daha fazla sevimli olmasıdır. Sevdiği kişiyi Allah için sevmek. Allah kendisini küfür bataklığından kurtardıktan sonra küfre dönmeyi, ateşe atılmak gibi çirkin ve tehlikeli görmek*.” (Buhârî, Îmân 9)
 
 Allah Teâlâ bir kudsi hadiste şöyle buyurmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">قالَ اللَّهُ تَعاَلَى وَجَبَتْ مَـحبَّتِي لِلْمُتَحَابِّينَ فيَّ ، والمُتَجالِسِينَ فيَّ ، وَالمُتَزَاوِرِينَ فيَّ ، وَالمُتَباذِلِينَ فِيَّ</p>
 
-*“Sırf benim için birbirini seven, benim rızam için toplanan, benim rızam uğrunda birbirini ziyaret eden ve sadece benim rızam için sadaka verip iyilik edenler, benim sevgimi hak ederler”*** (Muvatta’, Şa’r, 16)
+*“Sırf benim için birbirini seven, benim rızam için toplanan, benim rızam uğrunda birbirini ziyaret eden ve sadece benim rızam için sadaka verip iyilik edenler, benim sevgimi hak ederler”* (Muvatta’, Şa’r, 16)
 
 Peygamberimiz (s.a.s.) bir hadis-i şerifinde şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">لاَ يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ</p>
 
-*“Sizden biriniz, kendisi için arzu edip istediği şeyi, din kardeşi için de arzu edip istemedikçe, (gerçek anlamda) iman etmiş olmaz.”*** (Buhârî, Îmân 7; Müslim, Îmân 71-72)
+*“Sizden biriniz, kendisi için arzu edip istediği şeyi, din kardeşi için de arzu edip istemedikçe, (gerçek anlamda) iman etmiş olmaz.”* (Buhârî, Îmân 7; Müslim, Îmân 71-72)
 
 ## İslam Kardeşliğinde Olması Gereken Bir Diğer Husus: İsar Ruhu
 

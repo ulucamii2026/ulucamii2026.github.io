@@ -12,7 +12,7 @@ Hz. Peygamber (s.a.v.) Hira mağarasında vahiy meleğinin sesini işitip kendis
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الْمُدَّثِّرُۙ قُمْ فَاَنْذِرْۙ وَرَبَّكَ فَكَبِّرْۙ وَثِيَابَكَ فَطَهِّرْ وَالرُّجْزَ فَاهْجُرْۙ</p>
 
-**“Ey örtüsüne bürünen! Kalk ve uyar! Sadece rabbinin büyüklüğünü dile getir. Elbiseni tertemiz tut.”** (Müddessir, 74/1-5)
+“Ey örtüsüne bürünen! Kalk ve uyar! Sadece rabbinin büyüklüğünü dile getir. Elbiseni tertemiz tut.” (Müddessir, 74/1-5)
 
 4. Ayette “Elbiseni temiz tut” emri ise Hz. Peygamber’in (s.a.v.) maddî olarak elbisesini necâset vb. pisliklerden temiz tutması, mânevî olarak da güzel ahlâkla bağdaşmayan davranışlardan ve günahlardan nefsini arındırması anlamında yorumlanmıştır. (Zemahşerî, IV, 180-181) Buradaki temizlik maddî mânada alındığında “elbise” bir örnek olup genel olarak beden temizliğinin, kezâ ev bark, mâbed vb. özel veya ortak alanların temizliğinin de bu buyruğun kapsamına girdiğinde kuşku yoktur. 5. âyette “Her türlü pislikten uzak dur” ayeti de dış temizlikten sonra inanç ve ahlâk temizliğini, iç arınmayı vurgulamaktadır. (Bkz. Komisyon, Kur'an Yolu Tefsiri, V, 494-495)
 
@@ -36,7 +36,7 @@ Kısaca ifade etmek gerekirse maddi temizlik görünen kirlere, manevi temizlik 
 
 Kur’an-ı Kerîm’de Allah Teâlâ bizlere şöyle hitâp ediyor:
 
-يَآاَيُّهَا الَّذِينَ اَمَنُوا اِذَا قُمْتُمْ اِلَى الصَّلوَةِ فَاغْسِلُوا وُجُوهَكُمْ وَاَيْدِيَكُمْ اِلَى الْمَرَافِقِ وَامْسَحُوا بِرُؤُسِكُمْ وَاَرْجُلَكُمْ اِلَى الْكَعْبَيْنِ وَاِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُوا وَاِنْ كُنْتُمْ مَرْضَى اَوْ عَلَى سَفَرٍ اَوْ جَاءَ اَحَدٌ مِنْكُمْ مِنَ الْغَائِطِ اَوْ لاَمَسْتُمُ النِّسَاءَ فَلَمْ تَجِدُوا مَاءً فَتَيَمَّمُوا صَعِيدًا طَيِّبًا فَامْسَحُوا بِوُجُوهِكُمْ وَاَيْدِيَكُمْ مِنْهُ مَا يُرِيدُ اللهُ لِيَجْعَلَ عَلَيْكُمْ مِنْ حَرَجٍ وَلَكِنْ يُرِيدُ لِيُطَهِّرَكُمْ وَلِيُتِمَّ نِعْمَتَهُ عَلَيْكُمْ لَعَلَّكُمْ تَشْكُرُونَ **“Ey iman edenler! Namaz kılmaya kalkacağınız zaman yüzlerinizi, dirseklere kadar ellerinizi yıkayın; başlarınızı meshedin, ayaklarınızı da topuk kemiklerine kadar (yıkayın). Eğer cünüp olursanız temizlenin. Şayet hasta veya yolculuk halinde bulunursanız veya içinizden biri ayak yolundan gelirse yahut kadınlarla cinsel ilişkide bulunursa, bu hallerde su bulamadığınız takdirde temiz bir toprağa yönelin (teyemmüm edin), yüzünüzü ve ellerinizi onunla meshedin. Allah size herhangi bir güçlük çıkarmak istemez, fakat O sizi tertemiz kılmak ve üzerinizdeki nimetini tamamlamak ister ki şükredesiniz.”** (Maide, 5/6)
+يَآاَيُّهَا الَّذِينَ اَمَنُوا اِذَا قُمْتُمْ اِلَى الصَّلوَةِ فَاغْسِلُوا وُجُوهَكُمْ وَاَيْدِيَكُمْ اِلَى الْمَرَافِقِ وَامْسَحُوا بِرُؤُسِكُمْ وَاَرْجُلَكُمْ اِلَى الْكَعْبَيْنِ وَاِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُوا وَاِنْ كُنْتُمْ مَرْضَى اَوْ عَلَى سَفَرٍ اَوْ جَاءَ اَحَدٌ مِنْكُمْ مِنَ الْغَائِطِ اَوْ لاَمَسْتُمُ النِّسَاءَ فَلَمْ تَجِدُوا مَاءً فَتَيَمَّمُوا صَعِيدًا طَيِّبًا فَامْسَحُوا بِوُجُوهِكُمْ وَاَيْدِيَكُمْ مِنْهُ مَا يُرِيدُ اللهُ لِيَجْعَلَ عَلَيْكُمْ مِنْ حَرَجٍ وَلَكِنْ يُرِيدُ لِيُطَهِّرَكُمْ وَلِيُتِمَّ نِعْمَتَهُ عَلَيْكُمْ لَعَلَّكُمْ تَشْكُرُونَ “Ey iman edenler! Namaz kılmaya kalkacağınız zaman yüzlerinizi, dirseklere kadar ellerinizi yıkayın; başlarınızı meshedin, ayaklarınızı da topuk kemiklerine kadar (yıkayın). Eğer cünüp olursanız temizlenin. Şayet hasta veya yolculuk halinde bulunursanız veya içinizden biri ayak yolundan gelirse yahut kadınlarla cinsel ilişkide bulunursa, bu hallerde su bulamadığınız takdirde temiz bir toprağa yönelin (teyemmüm edin), yüzünüzü ve ellerinizi onunla meshedin. Allah size herhangi bir güçlük çıkarmak istemez, fakat O sizi tertemiz kılmak ve üzerinizdeki nimetini tamamlamak ister ki şükredesiniz.” (Maide, 5/6)
 
 Okuduğumuz ayeti kerimede de ifade edildiği üzere abdestin farzları, ibadet niyetiyle yüzü ve dirseklere kadar kolları yıkamak, başı mesh etmek, ayakları topuklara kadar yıkamaktır. Gusül (boy abdesti)’nin farzı ağız ve burun içi dâhil olmak üzere- bütün vücudun temiz su ile yıkanmasıdır.
 
@@ -48,19 +48,19 @@ Abdestin hakkının verilerek alınması konusunda oldukça titiz davranan Resû
 
 <p lang="ar" dir="rtl" class="ayet">أَسْبِغِ الْوُضُوءَ وَخَلِّلْ بَيْنَ الأَصَابِعِ وَبَالِغْ فِى الاِسْتِنْشَاقِ إِلاَّ أَنْ تَكُونَ صَائِمًا</p>
 
-**“Abdest organlarını güzel bir şekilde, özenerek yıka. Parmaklarının arasına suyu geçir. Oruçlu değilsen ağız ve buruna su verirken içine iyice çek.”** (Tirmizî, Savm, 69)
+“Abdest organlarını güzel bir şekilde, özenerek yıka. Parmaklarının arasına suyu geçir. Oruçlu değilsen ağız ve buruna su verirken içine iyice çek.” (Tirmizî, Savm, 69)
 
 Allah Resûlü’nün (s.a.v) abdest konusundaki bu hassasiyetine şahit olan Abdullah b. Amr, bir yolculuk esnasında namazı yetiştirmek için acele ederek ve mesh edercesine az su kullanarak abdest aldıkları sırada, Hz. Peygamber’in (s.a.v) kendilerini gördüğünü ve ses tonunu yükselterek onlara,
 
 <p lang="ar" dir="rtl" class="ayet">وَيْلٌ لِلأَعْقَابِ مِنَ النَّارِ أَسْبِغُوا الْوُضُوءَ</p>
 
-**“Vay o topuklara ki ateşten ne çekecek onlar! (Hiçbir yeri kuru bırakmadan) abdestinizi güzelce alın!”** demişti. (Buhârî, İlim, 30)
+“Vay o topuklara ki ateşten ne çekecek onlar! (Hiçbir yeri kuru bırakmadan) abdestinizi güzelce alın!” demişti. (Buhârî, İlim, 30)
 
 Resûlullah (s.a.v), uzuvlarını üçer kere yıkamak suretiyle abdest aldıktan sonra,
 
 <p lang="ar" dir="rtl" class="ayet">هَذَا وُضُوئِى وَوُضُوءُ الْمُرْسَلِينَ مِنْ قَبْلِى</p>
 
-**“İşte bu benim ve benden önceki peygamberlerin abdestidir.”** (İbn Mâce, Tahâret, 47) dediğine dair rivayetler bulunmaktadır. Böylece, abdestin önceki peygamberler ve ümmetleri tarafından da bilindiği ortaya çıkmaktadır.
+“İşte bu benim ve benden önceki peygamberlerin abdestidir.” (İbn Mâce, Tahâret, 47) dediğine dair rivayetler bulunmaktadır. Böylece, abdestin önceki peygamberler ve ümmetleri tarafından da bilindiği ortaya çıkmaktadır.
 
 Yüce Rabbimiz, bizleri yoktan var edip sayısız nimetlerle donatırken, bu hayat yolculuğunda tertemiz bir fıtrat üzerine yaşayıp, huzuruna yine o paklıkla dönmemizi murat etmiştir. İslam dini, sadece kalplerin ıslahı için değil, aynı zamanda bedenin, çevrenin ve ruhun her türlü kirden arındırılması için gönderilmiş bir “temizlik” dinidir.
 
@@ -78,7 +78,7 @@ Peygamber Efendimiz (s.a.v) bir hadis-i şeriflerinde şöyle buyurmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">اَلطُّهُورُ شَطْرُ الْا۪يمَانِ</p>
 
-**“Temizlik imanın yarısıdır.”** (Müslim, Tahâret, 1)
+“Temizlik imanın yarısıdır.” (Müslim, Tahâret, 1)
 
 Buradaki “yarısı” ifadesi, ibadetlerin kabul şartının temizliğe bağlı olduğunu gösterir. Namaz kılmak için, Kabe’yi tavaf etmek için veya Mushaf’a dokunmak için temizlik şarttır. Maddi kirlerden arınmayan bir beden, manevi huzura tam anlamıyla eremez.
 
@@ -86,7 +86,7 @@ Yine Efendimiz (s.a.v) başka bir hadisi şeriflerinde şöyle buyurmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">اذا تَوَضَّأَ العبدُ المُسلِم أَوِ المؤْمِنُ فَغَسل وجهَهُ خَرجَ مِنْ وَجهِهِ كلُّ خطِيئَة نَظَر إِلَيْهَا بِعيْنيْهِ مع الماءِ أَوْ معَ آخرِ قَطْرِ الماءِ ، فَإِذا غَسل يديهِ ، خَرج مِنْ يديهِ كُلُّ خَطيئَةٍ كانَ بطَشَتْهَا يداهُ مَعَ المَاءِ أَوْ مع آخِر قَطْرِ الماءِ ، فَإِذا غَسلَ رِجَليْهِ ، خَرَجَتْ كُلُّ خَطِيئَةٍ مَشَتها رِجلاه مع الماءِ أَوْ مَع آخرِ قَطرِ الماءِ ، حتى يخرُجَ نَقِيًّا مِن الذُّنُوبِ</p>
 
-**“Bir Müslüman (veya mümin) abdest aldığı zaman, yüzünü yıkarken gözleriyle işlediği günahlar abdest suyu (veya suyun son damlası) ile dökülür gider. Ellerini yıkadığında elleri ile işlediği günahlar abdest suyu (veya suyun son damlası) ile dökülür (öyle ki kişi bütün günahlardan arınır ve tertemiz olur). Ayaklarını yıkadığında da ayaklarıyla işlediği günahları abdest suyu (veaz suyun son damlaları) ile akıp gider. Nihayet o müslüman günahlarından tamamıyla arınmış olur.”** (Müslim, “Tahâret”, 32; Tirmizî, “Tahâret”, 2)
+“Bir Müslüman (veya mümin) abdest aldığı zaman, yüzünü yıkarken gözleriyle işlediği günahlar abdest suyu (veya suyun son damlası) ile dökülür gider. Ellerini yıkadığında elleri ile işlediği günahlar abdest suyu (veya suyun son damlası) ile dökülür (öyle ki kişi bütün günahlardan arınır ve tertemiz olur). Ayaklarını yıkadığında da ayaklarıyla işlediği günahları abdest suyu (veaz suyun son damlaları) ile akıp gider. Nihayet o müslüman günahlarından tamamıyla arınmış olur.” (Müslim, “Tahâret”, 32; Tirmizî, “Tahâret”, 2)
 
 Burada bizler aslında abdestin bir de iç yüzü olan günahları temizleme özelliğini de anlamış oluyoruz. Biz abdest alırken sadece tozdan, kirden arınmış olmayız; o suyla beraber günahlarımızın da döküldüğünü peygamberimiz bizlere bildiriyor.
 
@@ -94,7 +94,7 @@ Abdestli gezmenin ve her daim abdestli dolaşmanın bizler içinde bir diğer ma
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ أُمَّتِي يُدْعَوْنَ يَوْمَ الْقِيَامَةِ غُرًّا مُحَجَّلِينَ مِنْ آثَارِ الْوُضُوءِ</p>
 
-**“Şüphesiz benim ümmetim, kıyamet gününde abdest izlerinden dolayı yüzleri nurlu, elleri ve ayakları bembeyaz parlar bir halde çağrılacaklardır.”** (Buhârî, Vudû, 3)
+“Şüphesiz benim ümmetim, kıyamet gününde abdest izlerinden dolayı yüzleri nurlu, elleri ve ayakları bembeyaz parlar bir halde çağrılacaklardır.” (Buhârî, Vudû, 3)
 
 İslam fıkhında temizlik (tahâret), sadece bir hazırlık değil, bizatihi bir ibadettir. Gelin şimdi, ibadetlerimizin anahtarı olan bu iki büyük temizliğin fıkhî inceliklerine, mezhep imamlarımızın da içtihatları ışığında daha yakından bakalım.
 
@@ -122,7 +122,7 @@ Hz. Peygamber (s.a.v), abdest aldıktan sonra yapılmasını hoş karşıladığ
 
 <p lang="ar" dir="rtl" class="ayet">أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ اللَّهُمَّ اجْعَلْنِى مِنَ التَّوَّابِينَ وَاجْعَلْنِى مِنَ الْمُتَطَهِّرِينَ فُتِحَتْ لَهُ ثَمَانِيَةُ أَبْوَابِ الْجَنَّةِ يَدْخُلُ مِنْ أَيِّهَا شَاءَ</p>
 
-**“Şehâdet ederim ki, tek olan, hiçbir ortağı bulunmayan Allah’tan başka hiçbir ilâh yoktur ve şehâdet ederim ki, Muhammed O’nun kulu ve elçisidir. Allah’ım beni tövbe edenlerden ve temizlenenlerden eyle!”** (Tirmizî, Tahâret, 41) denilmesinin cennete girmeye vesile olacağını haber vermiştir.
+“Şehâdet ederim ki, tek olan, hiçbir ortağı bulunmayan Allah’tan başka hiçbir ilâh yoktur ve şehâdet ederim ki, Muhammed O’nun kulu ve elçisidir. Allah’ım beni tövbe edenlerden ve temizlenenlerden eyle!” (Tirmizî, Tahâret, 41) denilmesinin cennete girmeye vesile olacağını haber vermiştir.
 
 Bu yüzden abdest aldığı sırada insanın Rabbine tam bir teslimiyetle dua etmesi, özellikle her bir azayı yıkarken onunla ilgili duada bulunması, abdest vesilesiyle huzura ermek ve hakiki bir temizlik için önemlidir.
 
@@ -148,13 +148,13 @@ Kur’an-ı Kerim’de cünüplükten temizlenmenin yolunun gusül olduğu belir
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا جُنُبًا اِلَّا عَابِرٖى سَبٖيلٍ حَتّٰى تَغْتَسِلُواۜ … يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا لَا تَقْرَبُوا الصَّلٰوةَ</p>
 
-**“Ey iman edenler! …cünüp iken de -yolcu olan müstesna- gusül edinceye kadar namaza yaklaşmayın. ...”** (Nisâ, 4/43)
+“Ey iman edenler! …cünüp iken de -yolcu olan müstesna- gusül edinceye kadar namaza yaklaşmayın. ...” (Nisâ, 4/43)
 
 Yine Maide Suresi 6. Ayette Allah Teâla cünüp olunduğunda gusül alınması (yıkanılması) gerektiğini emretmiştir:
 
 <p lang="ar" dir="rtl" class="ayet">وَاِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُواۜ</p>
 
-**“…Eğer cünüp olursanız temizlenin...”** (Maide,5/6)
+“…Eğer cünüp olursanız temizlenin...” (Maide,5/6)
 
 ### Gusül Abdesti Nasıl Alınır?
 
@@ -206,12 +206,12 @@ Cünüp olan kimse Kâbe’yi tavaf edemez. Tavaf edebilmek için gusül yapmı�
 
 SONUÇ:
 
-Temizlenenleri seven Cenâb-ı Hakk’ın (Bakara, 2/222) huzuruna çıkmadan önce kul, dıştan içe doğru bir temizlik yapar. Şartlara göre kimi zaman abdest kimi zaman gusül bazen de teyemmümle, yalnız bedenini değil, ruhunu, nefsini ve gönlünü arındırır, bu şekilde huzur-ı âlî’ye varmaya lâyık hâle gelir. Abdest suyunun paklığında veya temizleyici olan toprağın saflığında manevî bir iklime doğru ilk adımını atar. İçtenlikle arınmaya niyet eden insan, yıkadığı her bir uzuvla sadece görünen kirlerden değil, günahlarından da kurtulur. Yalnız ibadetlerin değil, hakkı verildiğinde cennetin de anahtarı olabilecek bu arınmayla (Tirmizî, Tahâret, 1; İbn Hanbel, III, 341) kişi, dış dünyanın stresinden kendisini soyutlayarak huzura kavuşur. Mümin, Resûl-i Ekrem’in (s.a.v) gösterdiği hassasiyetle ve hissettiği samimiyetle abdestini aldığında, şüphesiz temizliğin verdiği gönül rahatlığını tadacak ve ibadetin tadına varabilecektir. Abdesti Peygamber Efendimizin (s.a.v) ve ashâbının abdestine ne kadar benzerse, hayatının da onlarınki gibi berraklaşması mümkün olabilecektir. Her zaman abdestli bulunmaya özen gösteren mümin, abdestin serinliğini, safiyetini, şuurunu ve huzurunu iliklerinde hissederek her anlamda temizlenecektir. Zira **“Abdeste ancak mümin kimse müdavim olur.”** (Muvatta’, Tahâret, 6) buyuran Allah Resûlü (s.a.v), hayatın her anını abdest temizliğinde yaşama şuuruna ancak inananların sahip olabileceğini bildirmiştir.
+Temizlenenleri seven Cenâb-ı Hakk’ın (Bakara, 2/222) huzuruna çıkmadan önce kul, dıştan içe doğru bir temizlik yapar. Şartlara göre kimi zaman abdest kimi zaman gusül bazen de teyemmümle, yalnız bedenini değil, ruhunu, nefsini ve gönlünü arındırır, bu şekilde huzur-ı âlî’ye varmaya lâyık hâle gelir. Abdest suyunun paklığında veya temizleyici olan toprağın saflığında manevî bir iklime doğru ilk adımını atar. İçtenlikle arınmaya niyet eden insan, yıkadığı her bir uzuvla sadece görünen kirlerden değil, günahlarından da kurtulur. Yalnız ibadetlerin değil, hakkı verildiğinde cennetin de anahtarı olabilecek bu arınmayla (Tirmizî, Tahâret, 1; İbn Hanbel, III, 341) kişi, dış dünyanın stresinden kendisini soyutlayarak huzura kavuşur. Mümin, Resûl-i Ekrem’in (s.a.v) gösterdiği hassasiyetle ve hissettiği samimiyetle abdestini aldığında, şüphesiz temizliğin verdiği gönül rahatlığını tadacak ve ibadetin tadına varabilecektir. Abdesti Peygamber Efendimizin (s.a.v) ve ashâbının abdestine ne kadar benzerse, hayatının da onlarınki gibi berraklaşması mümkün olabilecektir. Her zaman abdestli bulunmaya özen gösteren mümin, abdestin serinliğini, safiyetini, şuurunu ve huzurunu iliklerinde hissederek her anlamda temizlenecektir. Zira “Abdeste ancak mümin kimse müdavim olur.” (Muvatta’, Tahâret, 6) buyuran Allah Resûlü (s.a.v), hayatın her anını abdest temizliğinde yaşama şuuruna ancak inananların sahip olabileceğini bildirmiştir.
 
 Vaazımızı Rasulullah’ın (s.a.v), manevî kirlilikten kurtulmak için guslünü tamamladıktan sonra yaptığı dua ile tamamlıyoruz:
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ طَهِّرْنِى مِنَ الذُّنُوبِ كَمَا يُطَهَّرُ الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ</p>
 
-**“Allah’ım! Beyaz elbisenin kirden arınması gibi beni de günahlardan arındır.”** (Nesâî, Gusül ve teyemmüm, 4)
+“Allah’ım! Beyaz elbisenin kirden arınması gibi beni de günahlardan arındır.” (Nesâî, Gusül ve teyemmüm, 4)
 
 Cenab-ı Hak, bizleri abdestin nuruyla parlayan, ibadetlerini tertemiz bir beden ve pak bir kalp ile eda eden kullarından eylesin. Maddi ve manevi her türlü kirden bizleri muhafaza buyursun.

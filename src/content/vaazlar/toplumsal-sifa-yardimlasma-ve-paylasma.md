@@ -86,7 +86,7 @@ Başka bir hadisi şerifte infak eden kişiye infak edileceği haber verilmekted
 
 <p lang="ar" dir="rtl" class="ayet">أنَّ رَسُولَ اللهِ - صلى الله عليه وسلم -، قَالَ : قَالَ اللهُ تَعَالَى : أَنْفِقْ يَا ابْنَ آدَمَ يُنْفَقْ عَلَيْكَ</p>
 
-Resulullah (s.a.s) “Allah Teâlâ şöyle buyurdu” demiştir: “Ey âdemoğlu! (Allah için) infak et ki, sana da infak olunsun!” (Buhâri, Tevhid 35; Müslim, Zekât 36, 37*)* Allah için infak eden kişiye, Allah Teâlâ infak ile karşılık verir.
+Resulullah (s.a.s) “Allah Teâlâ şöyle buyurdu” demiştir: “Ey âdemoğlu! (Allah için) infak et ki, sana da infak olunsun!” (Buhâri, Tevhid 35; Müslim, Zekât 36, 37) Allah için infak eden kişiye, Allah Teâlâ infak ile karşılık verir.
 
 ### Sahabeden İnfak ve Paylaşma Örnekleri:
 
@@ -96,7 +96,7 @@ Mekke’den Medine’ye hicretten altı ay sonra Peygamber Efendimiz (s.a.v.) mu
 
 “Onlardan (muhacirlerden) önce o yurda (Medine'ye) yerleşmiş ve imanı da gönüllerine yerleştirmiş olanlar, hicret edenleri severler. Onlara verilenlerden dolayı içlerinde bir rahatsızlık duymazlar. Kendileri son derece ihtiyaç içinde bulunsalar bile onları kendilerine tercih ederler.” (Haşr, 59/9)
 
-Bir gün Peygamber Efendimize bir adam gelerek, “Ya Resulallah! Açlıktan bitap düştüm, hâlsiz kaldım.” der. Resulullah onu doyurmaları için hanımlarına haber gönderir, fakat onların saadet hanelerinde yiyecek hiçbir şey yoktur. Bunun üzerine Resulullah, “Bu gece şu adamı konuk edip yemek yedirerek Allah’ın merhametine nail olmak isteyen kimse yok mu?” buyurur. Derhâl ensardan bir zât ayağa kalkar ve “Ben varım, yâ Resûlallah!” diye cevap verir. Bu zât Sâbit b. Kays’tır. Akabinde o adamı alıp evine götürür. Hanımına hitaben, “İşte bu kişi Allah Resûlü’nün konuğudur. Evde ne varsa ona ikram edelim.” der. Evin hanımı, “Vallahi evimizde çocuklarımızın yiyeceğinden başka hiçbir şey yok.” diyerek karşılık verir. Eşinden bu üzüntü verici cevabı alan sahâbî, eşine der ki: “O hâlde çocuklar akşam yemek istedikleri vakit onları uyut. Sonra gel, kandili söndür. Biz bu gece karanlıkta karnımızı doyuruyormuş gibi yapalım ve geceyi aç geçirelim.” Kadın, kocasının dediklerini yapar. Kendileri ve çocukları aç kalmıştır ama Allah Resûlü’nün emaneti olan misafirleri doymuştur. Sabah olunca misafirlerini uğurlarlar. Konuk olduğu evden ev sahiplerinin ikram ve izzetleri ile memnun olarak ayrılan misafir, doğruca Resûlullah’ın huzuruna varır. Misafiri karşısında karnı doymuş, memnun olarak gören Allah Resûlü, *“***Bu gece Allah sizin yaptığınızdan hoşnut olmuştur.” buyurur. (Buhârî, Menâkıbü’l-ensâr, 10; Hadislerle İslam, 3/250)
+Bir gün Peygamber Efendimize bir adam gelerek, “Ya Resulallah! Açlıktan bitap düştüm, hâlsiz kaldım.” der. Resulullah onu doyurmaları için hanımlarına haber gönderir, fakat onların saadet hanelerinde yiyecek hiçbir şey yoktur. Bunun üzerine Resulullah, “Bu gece şu adamı konuk edip yemek yedirerek Allah’ın merhametine nail olmak isteyen kimse yok mu?” buyurur. Derhâl ensardan bir zât ayağa kalkar ve “Ben varım, yâ Resûlallah!” diye cevap verir. Bu zât Sâbit b. Kays’tır. Akabinde o adamı alıp evine götürür. Hanımına hitaben, “İşte bu kişi Allah Resûlü’nün konuğudur. Evde ne varsa ona ikram edelim.” der. Evin hanımı, “Vallahi evimizde çocuklarımızın yiyeceğinden başka hiçbir şey yok.” diyerek karşılık verir. Eşinden bu üzüntü verici cevabı alan sahâbî, eşine der ki: “O hâlde çocuklar akşam yemek istedikleri vakit onları uyut. Sonra gel, kandili söndür. Biz bu gece karanlıkta karnımızı doyuruyormuş gibi yapalım ve geceyi aç geçirelim.” Kadın, kocasının dediklerini yapar. Kendileri ve çocukları aç kalmıştır ama Allah Resûlü’nün emaneti olan misafirleri doymuştur. Sabah olunca misafirlerini uğurlarlar. Konuk olduğu evden ev sahiplerinin ikram ve izzetleri ile memnun olarak ayrılan misafir, doğruca Resûlullah’ın huzuruna varır. Misafiri karşısında karnı doymuş, memnun olarak gören Allah Resûlü, “Bu gece Allah sizin yaptığınızdan hoşnut olmuştur.” buyurur. (Buhârî, Menâkıbü’l-ensâr, 10; Hadislerle İslam, 3/250)
 
 Mümin olmak başkasını düşünme sorumluluğunu yükler. Mümin bencil kişi olamaz. Hz. Peygamber (s.a.v) üç defa yemin ederek, “gerçekten iman etmiş olmaz” der. Ashap, “kim ey Allah'ın elçisi?” diye sorunca;
 
@@ -152,7 +152,7 @@ Ahirette pişman olmamak için bugün imkanımız ölçüsünde yardım etmeye, 
 
 <p lang="ar" dir="rtl" class="ayet">يَقُولُ يَا لَيْتَنٖي قَدَّمْتُ لِحَيَاتٖيۚ</p>
 
-İnsan, “Keşke (âhiret) hayatım için daha önce bir şeyler yapmış olsaydım!” der. (Fecr, 89/24) Surede, Kıyamet sahnelerini tasvir eden âyetlerden sonra, benlik iddiasına, mal-mülk sevdasına kapılarak Allah’a ve insanlara karşı sorumluluğunu unutan insana, hayatın geçiciliğini, kıyametin dehşetini, bunun ardından kendisini bekleyen, hak ettiği büyük cezayı ve sonuç vermeyecek pişmanlığı hatırlatılmaktadır. (Kur'an Yolu Tefsiri, 5/621*)* Böyle bir kişi kıyamet günü “Ah ne olurdu bu hayatım için hayırlar yapmış, iyi ameller göndermiş olsaydım!” diyecek, dünyada yapmadıklarından pişman olacaktır.
+İnsan, “Keşke (âhiret) hayatım için daha önce bir şeyler yapmış olsaydım!” der. (Fecr, 89/24) Surede, Kıyamet sahnelerini tasvir eden âyetlerden sonra, benlik iddiasına, mal-mülk sevdasına kapılarak Allah’a ve insanlara karşı sorumluluğunu unutan insana, hayatın geçiciliğini, kıyametin dehşetini, bunun ardından kendisini bekleyen, hak ettiği büyük cezayı ve sonuç vermeyecek pişmanlığı hatırlatılmaktadır. (Kur'an Yolu Tefsiri, 5/621) Böyle bir kişi kıyamet günü “Ah ne olurdu bu hayatım için hayırlar yapmış, iyi ameller göndermiş olsaydım!” diyecek, dünyada yapmadıklarından pişman olacaktır.
 
 ### Her Hal Üzere İnfak Etmek:
 
@@ -184,9 +184,9 @@ Peygamber Efendimiz de (s.a.s.):
 
 “Kul, din kardeşine yardımcı olduğu sürece Allah da onun yardımcısı olur.” (İbn Hanbel, 2/252) buyurmuştur. Paylaşarak, yardımlaşarak geçici dünya malını ahiret yurduna taşıyabiliriz. İnşallah Cennetin Reyyan kapısı oruç açıldığı gibi, Sadaka kapısı hayır, hasenatımız ve yardımlarımızla açılacaktır.
 
-Bayramlar, aynı zamanda dayanışma ve yardımlaşma içerisinde müminlerin birbirlerine kenetlendikleri günlerdi. Nitekim bir bayram namazından sonra Hz. Peygamber, Bilâl ile birlikte hanımların yanına giderek onlara, *“***Ey hanımlar topluluğu! Sadaka verin, zira sadaka sizin için daha hayırlıdır!” buyurmuş, yoksullar için onlardan yardım talep etmişti. Resûlullah’ın bu çağrısına kadınlar yüzüklerini, küpelerini ve çeşitli ziynet eşyalarını bağışlamak suretiyle cevap vermişlerdi. (Müslim, Îdeyn, 2; Hadislerle İslâm, 7/ 510)
+Bayramlar, aynı zamanda dayanışma ve yardımlaşma içerisinde müminlerin birbirlerine kenetlendikleri günlerdi. Nitekim bir bayram namazından sonra Hz. Peygamber, Bilâl ile birlikte hanımların yanına giderek onlara, “Ey hanımlar topluluğu! Sadaka verin, zira sadaka sizin için daha hayırlıdır!” buyurmuş, yoksullar için onlardan yardım talep etmişti. Resûlullah’ın bu çağrısına kadınlar yüzüklerini, küpelerini ve çeşitli ziynet eşyalarını bağışlamak suretiyle cevap vermişlerdi. (Müslim, Îdeyn, 2; Hadislerle İslâm, 7/ 510)
 
-### Sonuç:
+### Sonuç
 
 Mal ve servet helal yollardan kazanılıp, meşru alanlarda harcanır, ibadet olarak zekat ve fıtır sadakası verilir, kurban kesilip eti dağıtılır, gönülden infakta bulunulursa cennet kapılarını açan anahtar, rıza-i Bari’ye vesile bir salih amel olur. Unutulmamalıdır ki sıkıntı, cefa ile mal ve servet biriktirenler bir gün bunları bırakıp gideceklerdir. Ahirette de infak etmedikleri için pişman olacaklardır. Âhirete ancak yaratılış gayesine uygun olarak Allah’ın istediği yerlere harcanan malların sevapları götürülmektedir.
 

@@ -42,7 +42,7 @@ B. MEDİNE’YE HİCRET
 
 ✦
 
-*Mekke’yle Medine arası yollar;
+Mekke’yle Medine arası yollar;
 
 Çizik çizik, hasret yarası yollar.
 
@@ -60,7 +60,7 @@ Bunlar iki dostun ayakları ki,
 
 Yolları göklere bağlayan
 
-Bu çıplak yollarda ne in, ne de cin;*
+Bu çıplak yollarda ne in, ne de cin;
 
 — Necip Fazıl Kısakürek
 
@@ -138,13 +138,13 @@ Peygamberlerinin yola çıktığını haber alan Medineli Müslümanlar, her gü
 
 12 Rebîulevvel/24 Eylül 622 Cuma günü kuşluk vaktinin sonlarına doğru Kubâ’dan ayrılan Hz. Peygamber (s.a.s.), Rânûnâ vadisinde Sâlimoğulları mahallesinde beraberindekilere ilk Cuma namazını kıldırdı. Cuma namazından sonra da Hz. Enes’in deyimiyle bir bayram havası içerisinde Medine’ye girdi. Peygamber Efendimizin (s.a.s.) teşrifi Müslümanları büyük sevince boğdu. Kimileri evlerinin damına çıkmış, kimileri de yollara dökülmüş, âlemlere rahmet olarak gönderilen Nebî’yi karşılıyorlardı. Kadınlar ve çocuklar hep bir ağızdan;
 
-***Talea’l- bedru aleynâ min seniyyâtil vedâ
+Talea’l- bedru aleynâ min seniyyâtil vedâ
 
-Vecebe’ş-şükrü aleynâ mâ de’â lillahi dâ’***
+Vecebe’ş-şükrü aleynâ mâ de’â lillahi dâ’
 
-*Ay doğdu üzerimize / Veda tepesinden
+Ay doğdu üzerimize / Veda tepesinden
 
-Şükür gerekti bizlere / Allah’a davetinden*
+Şükür gerekti bizlere / Allah’a davetinden
 
 diye şiirler okurlarken kimileri de mızrakları ile sevinç gösterisinde bulunuyorlardı. (Önkal, 461; Ağırman, 29; Hadislerle İslam, 7/31)
 

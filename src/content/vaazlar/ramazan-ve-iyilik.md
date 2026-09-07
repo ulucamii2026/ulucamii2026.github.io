@@ -160,11 +160,11 @@ Enes b. Malik (r.a.) Peygamber Efendimizin (s.a.s.) en çok yaptığı duanın n
 
 Ebû Hüreyre’den (r.a.) rivayet edildiğine göre Resûlullah *(s.a.s.)* şöyle buyurdu: “ Allah Teâlâ kıyâmet gününde şöyle buyurur:
 
--“***Ey âdemoğlu! Hastalandım, beni ziyaret etmedin.”* Âdemoğlu:
+-“*Ey âdemoğlu! Hastalandım, beni ziyaret etmedin.”* Âdemoğlu:
 
 - Sen âlemlerin Rabbi iken ben seni nasıl ziyaret edebilirdim? der. Allah Teâlâ:
 
-- *“Falan kulum hastalandı, ziyaretine gitmedin. Onu ziyaret etseydin, beni onun yanında bulurdun. Bunu bilmiyor musun? Ey Âdemoğlu! Beni doyurmanı istedim, doyurmadın.***” buyurur. Âdemoğlu:
+- *“Falan kulum hastalandı, ziyaretine gitmedin. Onu ziyaret etseydin, beni onun yanında bulurdun. Bunu bilmiyor musun? Ey Âdemoğlu! Beni doyurmanı istedim, doyurmadın.*” buyurur. Âdemoğlu:
 
 - Sen âlemlerin Rabbi iken ben seni nasıl doyurabilirdim? der. Allah Teâlâ:
 

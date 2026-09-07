@@ -260,15 +260,15 @@ Elde bulunan paraların değeri altın nisabına ulaştığı takdirde zekâta t
 
 Alacaklar Üç Kısımdır.
 
-a.  **Kuvvetli alacak:**
+a.  Kuvvetli alacak:
 
 Ödünç olarak verilen paralar ile ticaret mallarının bedeli olan alacaklardır. Bunlar tahsil edildikleri zaman geçmiş yıllarının zekâtlarını da vermek gerekir.
 
-b.  **Orta dereceli alacak:**
+b.  Orta dereceli alacak:
 
 Ticaret için olmayan mal karşılığı alacaklardır. Kullanılmış elbise bedeli gibi. Bunların bedeli tahsil edildikten sonra zekâta tabi olur. Ancak bunlardan nisap miktarı ele geçmedikçe zekât vermek gerekmez.
 
-c.  **Zayıf alacak:**
+c.  Zayıf alacak:
 
 Bunlar, herhangi bir mal karşılığı olmayan alacaklardır. Miras ve vasiyet malı karşılığı gibi. Bu mallar, ele geçtiği andan itibaren nisap miktarına ulaşır ve üzerinden bir yıl geçerse zekât verilmesi gerekir.
 

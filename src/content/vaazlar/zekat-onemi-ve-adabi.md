@@ -172,11 +172,11 @@ Fakirin hakkı çıkarılarak malı, cimrilik kirinden arındırarak da şahsı 
 
 <p lang="ar" dir="rtl" class="ayet">خُذْ مِنْ اَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا وَصَلِّ عَلَيْهِمْ اِنَّ صَلاَتَكَ سَكَنٌ لَهُمْ وَاللهُ سَمِيعٌ عَلِيمٌ</p>
 
-**Ey Muhammed! Mallarının bir kısmını kendilerini temizleyip arıtacak sadaka olarak al** ve
+Ey Muhammed! Mallarının bir kısmını kendilerini temizleyip arıtacak sadaka olarak al ve
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا اَنْفَقْتُمْ مِنْ شيء فَهُوَ يُخْلِفُهُ وَهُوَ خَيْرُ الرَّازِقِينَ</p>
 
-**. . . Sarfettiğiniz herhangi bir şeyin yerine O daha iyisini koyar.** Buyurulur.
+. . . Sarfettiğiniz herhangi bir şeyin yerine O daha iyisini koyar. Buyurulur.
 
 Zekâta sadaka da denilir. Bu ismin verilmesinin sebebi zekâtın malı temizleyip sıhhat ve kemaline sebep olması, zekât verenin de imanındaki sadakat ve olgunluğuna delalet etmesidir. Ancak sadaka hem farz hem de nafile olan malî ibadetler için kullanıldığı halde zekât sadece farz olanına mahsustur.
 
@@ -208,10 +208,10 @@ Buna göre; Müslüman olmayanlara, delilere, çocuklara ve hürriyetini kaybetm
 
 Zekâtın farz olmasına engel olan akıl hastalığında (delilik) iki hal düşünülebilir:
 
-*   **Çocukluktan itibaren deli olanlar:** Bunların hastalığı devam ettiği müddetçe mallarına zekât gerekmez. Erginlik çağına geldikten sonra sıhhate kavuşacak olurlarsa, o tarihten itibaren kendilerine zekât farz olur.
-*   **Erginlik çağına geldikleri zaman akıllı oldukları halde sonradan akıl hastalığına tutulanlar:** Bu durumda olanların hastalıkları bir sene aralıksız devam ederse, o sene kendilerine zekât gerekmez. Fakat sene içerisinde bir iki gün gibi az bir zaman için de olsa sıhhat bulana o senenin zekâtı farz olur. Bu söylenilenler İmam Muhammed'in görüşüdür. İmam Ebû Yusuf'a göre; senenin çoğunu sıhhatli geçirmeyen akıl hastalarına o sene için zekât gerekmez. Bunaklık da delilik hükmündedir.
+*   Çocukluktan itibaren deli olanlar: Bunların hastalığı devam ettiği müddetçe mallarına zekât gerekmez. Erginlik çağına geldikten sonra sıhhate kavuşacak olurlarsa, o tarihten itibaren kendilerine zekât farz olur.
+*   Erginlik çağına geldikleri zaman akıllı oldukları halde sonradan akıl hastalığına tutulanlar: Bu durumda olanların hastalıkları bir sene aralıksız devam ederse, o sene kendilerine zekât gerekmez. Fakat sene içerisinde bir iki gün gibi az bir zaman için de olsa sıhhat bulana o senenin zekâtı farz olur. Bu söylenilenler İmam Muhammed'in görüşüdür. İmam Ebû Yusuf'a göre; senenin çoğunu sıhhatli geçirmeyen akıl hastalarına o sene için zekât gerekmez. Bunaklık da delilik hükmündedir.
 
-Zengin olan çocukların; erginlik çağına geldikleri an**dan**, küçükken akıl hastası olup da erginlik çağına geldikten sonra sıhhat bulanların da sıhhat buldukları andan itibaren bir sene geçince zekât vermeleri gerekir.
+Zengin olan çocukların; erginlik çağına geldikleri andan, küçükken akıl hastası olup da erginlik çağına geldikten sonra sıhhat bulanların da sıhhat buldukları andan itibaren bir sene geçince zekât vermeleri gerekir.
 
 Toprak mahsullerinde hem çocuklara hem de delilere zekât gerekir. Buna; öşür denilir.
 
@@ -254,13 +254,13 @@ Zekât verilirken, onun zekât olduğunun fakire bildirilmesi şart değildir. H
 
 Mallar; açık (zahire) ve gizli (bâtıne) olmak üzere iki kısma ayrılır.
 
-Yılın altı ayından fazlası kırlarda otlayarak beslenen ve ticaret için değil de, eti, sütü, yünü vs. için tutulan (Sâime) hayvanlar, bazı toprak mahsulleri, madenleri, yer altından çıkartılan defineler ve gümrüklerden geçen ticaret malları açık (**ZÂHİR**) mallardır. Nakit paralar, altın, gümüş ve depolarda ya da mağazalarda bulunan ticaret malları da gizli (**BÂTIN**) mallardandırlar. Bu mallardan her biri belirli ölçülerde zekâta tabidirler.
+Yılın altı ayından fazlası kırlarda otlayarak beslenen ve ticaret için değil de, eti, sütü, yünü vs. için tutulan (Sâime) hayvanlar, bazı toprak mahsulleri, madenleri, yer altından çıkartılan defineler ve gümrüklerden geçen ticaret malları açık (ZÂHİR) mallardır. Nakit paralar, altın, gümüş ve depolarda ya da mağazalarda bulunan ticaret malları da gizli (BÂTIN) mallardandırlar. Bu mallardan her biri belirli ölçülerde zekâta tabidirler.
 
 ### HAYVANLARIN ZEKÂTI
 
 Senenin yarıdan çoğunu kırlarda otlayarak geçiren sâime hayvanlar; eti, sütü ve yünü için beslendikleri takdirde özel nisaplarla zekâta tabi olurlar. Bu hayvanlar; koyun, keçi, sığır ve develerdir. Koyun ve keçiler aynı sınıf olarak mütalaa edilirler.
 
-**Koyunlar ve keçilerin zekâtları:**
+Koyunlar ve keçilerin zekâtları:
 
 Koyun ve keçilerin nisâbı kırktır. Daha aşağısına zekât gerekmez. Bunlar birbirlerine ilâve edilirler. Erkek ve dişileri arasında fark yoktur.
 
@@ -268,7 +268,7 @@ Sayıları kırktan fazla olan koyun ve keçilerin zekâtları şöyledir:
 
 Bundan sonraki her yüzde bir koyun veya keçi verilir. Bu rakamların arası zekâttan muaftır. Yani 40 koyun için bir koyun verileceği gibi,120 koyun için de bir tek koyun zekât verilir.
 
-**Sığır ve mandaların zekâtı:**
+Sığır ve mandaların zekâtı:
 
 Sığır ve mandalarda zekât otuzdan başla. Bundan sonrası için zekât şu şekilde verilir:
 
@@ -276,13 +276,13 @@ Altmış sığırdan itibaren hesap; ilk nisab olan otuz üzerine otuz veya kır
 
 Zekât olarak verilecek hayvanın erkek veya dişi olması arasında fark yoktur.
 
-**Develerin Zekâtı:**
+Develerin Zekâtı:
 
 Develerin nisabı beştir. Deve sayısı beşten yirmi beşe varıncaya kadar her beş için bir koyun zekât verilir. Yirmi beşten sonra zekât; devenin kendi cinsinden verilir. Ancak, sayı arttıkça verilecek devenin yaşı ve sayısı değişir.
 
 Develerin erkekleri ve dişileri zekâta konu olma yönünden aynıdırlar. Ancak, zekâtın dişi develerden verilmesi icap eder.
 
-Yukarıya aldığımız nisaplar; sâime olan hayvanlara aittir. Senenin yarıdan çoğunu kırlarda otlamayıp, ahırlarda veya paralı otlaklarda beslenen hayvanlara; **ALÛFE** denilir. Alûfeler ticaret için tutulmadıkları takdirde kendilerine zekât gerekmez. Ticaret için beslenen besi hayvanları, ticaret malı olarak zekâta tabi olurlar.
+Yukarıya aldığımız nisaplar; sâime olan hayvanlara aittir. Senenin yarıdan çoğunu kırlarda otlamayıp, ahırlarda veya paralı otlaklarda beslenen hayvanlara; ALÛFE denilir. Alûfeler ticaret için tutulmadıkları takdirde kendilerine zekât gerekmez. Ticaret için beslenen besi hayvanları, ticaret malı olarak zekâta tabi olurlar.
 
 ### ALTIN, GÜMÜŞ VE NAKİT PARANIN ZEKÂTI
 
@@ -306,11 +306,11 @@ Elde bulunan nakit paralar veya her an paraya çevrilebilen tahviller, aynen alt
 
 Para elde değil de başkasının zimmetinde alacak olarak bulunursa alacağın çeşidine göre zekât durumlarında farklılıklar olur.
 
-A- **Kuvvetli alacakla:** Satılan ticaret malının bedeli ve borç olarak verilen paranın karşılığı olan alacaklardır. Bu alacaklar, borçlular tarafından inkâr edilmedikçe, borçlunun zimmetinde kaldıkları sürenin zekâtı alacaklar tahsil edilince ödenir.
+A- Kuvvetli alacakla: Satılan ticaret malının bedeli ve borç olarak verilen paranın karşılığı olan alacaklardır. Bu alacaklar, borçlular tarafından inkâr edilmedikçe, borçlunun zimmetinde kaldıkları sürenin zekâtı alacaklar tahsil edilince ödenir.
 
-B- **Orta alacaklar:** Ticaret için olmayan bir malın satılması karşılığında olan alacak ve kira bedelleridir. Bu tür alacaklar da zekâta tabi olma yönünden birinci maddedekiler gibidir. Fakat tam nisâb miktarı kadarı tahsil edilmedikçe zekâtlarının hemen verilmesi gerekmez.
+B- Orta alacaklar: Ticaret için olmayan bir malın satılması karşılığında olan alacak ve kira bedelleridir. Bu tür alacaklar da zekâta tabi olma yönünden birinci maddedekiler gibidir. Fakat tam nisâb miktarı kadarı tahsil edilmedikçe zekâtlarının hemen verilmesi gerekmez.
 
-C- **Zayıf alacaklar:** Kadının kocasından alacağı, mehir, vârisin elinde kalan vasiyet bedeli gibi, bir mal karşılığı olmayan alacaklardır. Bu türden olan alacaklarda geçmiş seneler için zekât gerekmez. Tahsil edilip, üzerlerinden bir sene geçtikten sonra zekâtlarının verilmesi gerekir.
+C- Zayıf alacaklar: Kadının kocasından alacağı, mehir, vârisin elinde kalan vasiyet bedeli gibi, bir mal karşılığı olmayan alacaklardır. Bu türden olan alacaklarda geçmiş seneler için zekât gerekmez. Tahsil edilip, üzerlerinden bir sene geçtikten sonra zekâtlarının verilmesi gerekir.
 
 Borçlu olan kişi önce borcunu inkâr eder, birkaç sene sonraki borcunu kabul edip alacaklıya öderse geçmiş senelere ait olan zekâtın ödenmesi gerekmez.
 
@@ -338,15 +338,15 @@ Toprak mahsullerinden alınan bu zekâta; öşür denilir.
 
 Zekâta konu olmaları yönünden madenler üç çeşittir:
 
-A- **Ateşte eriyenler** (demir, bakır vb): Bu madenlerin %20'si zekât olarak devlete aittir. Kalanı madenin bulunduğu arazi sahibinindir. Devlet arazisinde bulunan madenler tamamıyla devlete aittir.
+A- Ateşte eriyenler (demir, bakır vb): Bu madenlerin %20'si zekât olarak devlete aittir. Kalanı madenin bulunduğu arazi sahibinindir. Devlet arazisinde bulunan madenler tamamıyla devlete aittir.
 
-B- **Ateşte erimeyenler** (mermer, alçı vb): Bu madenlerin aynına zekât gerekmez. Maden, bulunduğu arazinin sahibi varsa ona, yoksa bulana aittir.
+B- Ateşte erimeyenler (mermer, alçı vb): Bu madenlerin aynına zekât gerekmez. Maden, bulunduğu arazinin sahibi varsa ona, yoksa bulana aittir.
 
-C- **Sıvı halinde olanlar** (petrol vb): Bunlar da, ikinci maddedeki madenler gibidirler.
+C- Sıvı halinde olanlar (petrol vb): Bunlar da, ikinci maddedeki madenler gibidirler.
 
 Ancak, bu madenleri işletenler, madenden ellerine geçen paranın zekâtını verirler.
 
-**Define:** Önceden toprak altına gömülüp, sonradan başkaları tarafından bulunan mal ve paradır. Bunların zektları da definenin durumuna göre farklılık gösterir.
+Define: Önceden toprak altına gömülüp, sonradan başkaları tarafından bulunan mal ve paradır. Bunların zektları da definenin durumuna göre farklılık gösterir.
 
 ### Fabrika, Kiralık Bina ve Ticarî Maksatla Kullanılan Taşıt Araçlarının Zekâtı
 

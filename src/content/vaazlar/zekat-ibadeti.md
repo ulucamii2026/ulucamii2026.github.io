@@ -36,15 +36,15 @@ Nitekim Hz. Peygamber (s.a.s.) de şöyle buyurur:
 
 <p lang="ar" dir="rtl" class="ayet">عَنِ ابْنِ عَبَّاسٍ قَالَ قَالَ رَسُولُ اللّٰهِ صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ إِنَّ اللّٰهَ لَمْ يَفْرِضِ الزَّكَاةَ إِلاَّ لِيُطَيِّبَ مَا بَقِىَ مِنْ أَمْوَالِكُمْ</p>
 
-İbn Abbâs’tan nakledildiğine göre, Allah Resûlü (s.a.s.) şöyle buyurmuştur: *“**Allah, zekâtı ancak mallarınızın kalan kısmını temizlemek için farz kıldı.**”* (Ebû Dâvûd, Zekât, 32)
+İbn Abbâs’tan nakledildiğine göre, Allah Resûlü (s.a.s.) şöyle buyurmuştur: *“Allah, zekâtı ancak mallarınızın kalan kısmını temizlemek için farz kıldı.”* (Ebû Dâvûd, Zekât, 32)
 
 Zekât;
 
-*“Zengini arındırır kibirden;
+“Zengini arındırır kibirden;
 
 Fakiri arındırır kinden;
 
-Malı arındırır kirden”*
+Malı arındırır kirden”
 
 ## Zekât Malı Bereketlendirir ve Çoğalmasını Sağlar
 
@@ -58,7 +58,7 @@ Zekât, geçici olan malı, kalıcı yapmanın en güzel yoludur. Kişinin düny
 
 <p lang="ar" dir="rtl" class="ayet">يَقُولُ ابْنُ آدَمَ مَالِى مَالِى - قَالَ - وَهَلْ لَكَ يَا ابْنَ آدَمَ مِنْ مَالِكَ إِلاَّ مَا أَكَلْتَ فَأَفْنَيْتَ أَوْ لَبِسْتَ فَأَبْلَيْتَ أَوْ تَصَدَّقْتَ فَأَمْضَيْتَ</p>
 
-*“**Âdemoğlu 'Malım, malım!' der. Ey âdemoğlu! Acaba yiyip tükettiğinden, giyip eskittiğinden ve sadaka verip (âhirette karşılığını almak üzere) önden gönderdiğinden başkası senin malın mıdır?'**”* (Müslim, Zühd, 3)
+*“Âdemoğlu 'Malım, malım!' der. Ey âdemoğlu! Acaba yiyip tükettiğinden, giyip eskittiğinden ve sadaka verip (âhirette karşılığını almak üzere) önden gönderdiğinden başkası senin malın mıdır?'”* (Müslim, Zühd, 3)
 
 Cömertlik asla alın teriyle bin bir zahmetle kazanılan servetin yok olması, malın boşu boşuna başkalarına gitmesi, heba olması değildir. Bilakis kişinin malını, mülkünü kalıcı kılması, bu dünyada kazandıklarıyla âhiretini imar etmesidir. Bir gün Allah Resûlü'nün evinde bir koyun kesilir. Âişe annemiz koyunun ön kolu hâriç etin tamamını komşularına dağıtır. Hz. Peygamber evine geldiği zaman, “Koyundan ne kadar kaldı?” diye sorar. Âişe validemiz ona der ki: “Koyunun şu ön kolu hâriç hiçbir şey kalmadı.” Sevgili eşinin sözlerine karşılık Peygamberimizin verdiği cevap çok anlamlıdır:
 
@@ -90,7 +90,7 @@ Bir kimsenin zekât vermekle mükellef olması için Müslüman, hür, akıllı,
 
 #### Nisap Ne Demektir?
 
-**Nisap**, zekât, sadaka-i fıtır ve kurban gibi ibadetler için konulan bir zenginlik ölçüsüdür. Borcundan ve aslî ihtiyaçlarından fazla olarak bu kadar mala sahip olan kişi dinen zengin sayılır.
+Nisap, zekât, sadaka-i fıtır ve kurban gibi ibadetler için konulan bir zenginlik ölçüsüdür. Borcundan ve aslî ihtiyaçlarından fazla olarak bu kadar mala sahip olan kişi dinen zengin sayılır.
 
 Böyle bir kişi, zekât veya sadaka alamayacağı gibi; sadaka-i fıtır vermek ve kurban kesmekle de yükümlü olur. Fazla olan bu malın artıcı olması ve üstünden bir yıl geçmesi halinde zekâtının verilmesi gerekir.
 
@@ -118,7 +118,7 @@ Bunlar, genel olarak, nafaka, oturulan ev, ev eşyası, ihtiyaç duyulan elbise,
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ وَابْنِ السَّبِيلِ فَرِيضَةً مِنَ اللَّهِ وَاللَّهُ عَلِيمٌ حَكِيمٌ</p>
 
-*Sadakalar (zekâtlar) Allah'tan bir farz olarak ancak, yoksullara, düşkünlere, (zekât toplayan) memurlara, gönülleri (İslâm'a) ısındırılacak olanlara, (hürriyetlerini satın almaya çalışan) kölelere, borçlulara, Allah yolunda çalışıp cihad edenlere, yolcuya mahsustur. Allah pek iyi bilendir, hikmet sahibidir.** (Tevbe, 60.)
+Sadakalar (zekâtlar) Allah'tan bir farz olarak ancak, yoksullara, düşkünlere, (zekât toplayan) memurlara, gönülleri (İslâm'a) ısındırılacak olanlara, (hürriyetlerini satın almaya çalışan) kölelere, borçlulara, Allah yolunda çalışıp cihad edenlere, yolcuya mahsustur. Allah pek iyi bilendir, hikmet sahibidir. (Tevbe, 60.)
 
 #### Zekât Verilirken Gözetilecek Sıra:
 

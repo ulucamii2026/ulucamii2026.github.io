@@ -14,12 +14,12 @@ Zaman kıymettir ve biz onu nasıl geçirirsek, öyle bir hayat inşa ederiz. Za
 
 <p lang="ar" dir="rtl" class="ayet">نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ وَالْفَرَاغُ</p>
 
-*"İki nimet vardır ki insanların çoğu onların kıymetini bilmez: Sağlık ve boş vakit."***
+*"İki nimet vardır ki insanların çoğu onların kıymetini bilmez: Sağlık ve boş vakit."*
 (Buhârî, Rikâk, 1) buyurarak bu acı gerçeği gözler önüne sermektedir. Zaman kaybedildiğinde telafisi mümkün olmayan, insan için en önemli sermayedir.
 
 <p lang="ar" dir="rtl" class="ayet">لَا تَزُولُ قَدَمَا عَبْدٍ يَوْمَ القِيَامَةِ حَتَّى يُسْأَلَ عَنْ أَرْبَعٍ: عَنْ عُمُرِهِ فِيمَا أَفْنَاهُ، وَعَنْ شَبَابِهِ فِيمَا أَبْلَاهُ، وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَا أَنْفَقَهُ، وَعَنْ عِلْمِهِ مَاذَا عَمِلَ فِيهِ</p>
 
-*“İnsanoğlu kıyamet günü şu dört şeyden sorguya çekilmedikçe yerinden kıpırdayamaz: Ömrünü nerede tükettiğinden, gençliğini nerede yıprattığından, malını nereden kazanıp nereye harcadığından ve bildiğiyle amel edip etmediğinden.”*** (Tirmizî, Kıyâmet, 1) Doğru ve faydalı şeylerle meşgul olmak zamanı değerlendirmenin en verimli yöntemidir. İlim öğrenmek, ibadetle meşgul olmak, kişinin sevdikleriyle beraber hoş, eğlenceli vakit geçirmesi, hâsılı her gün bir önceki güne kıyasla bireyin kendine maddi-manevi olumlu nitelikler katmasıdır.
+*“İnsanoğlu kıyamet günü şu dört şeyden sorguya çekilmedikçe yerinden kıpırdayamaz: Ömrünü nerede tükettiğinden, gençliğini nerede yıprattığından, malını nereden kazanıp nereye harcadığından ve bildiğiyle amel edip etmediğinden.”* (Tirmizî, Kıyâmet, 1) Doğru ve faydalı şeylerle meşgul olmak zamanı değerlendirmenin en verimli yöntemidir. İlim öğrenmek, ibadetle meşgul olmak, kişinin sevdikleriyle beraber hoş, eğlenceli vakit geçirmesi, hâsılı her gün bir önceki güne kıyasla bireyin kendine maddi-manevi olumlu nitelikler katmasıdır.
 
 Yine kişi kendisine verilen bu ömürde yapılması gerekenleri ertelemeyip bir an önce yerine getirmelidir:
 
@@ -33,7 +33,7 @@ Kur’an-ı Kerim’in “on geceye” şöyle yemin edilmektedir:
 
 <p lang="ar" dir="rtl" class="ayet">وَلَيَالٍ عَشْرٍۙ ﴿٢﴾</p>
 
-*“ Yemin olsun şafak vaktine; On geceye…***” (Fecr, 89/1-2)
+*“ Yemin olsun şafak vaktine; On geceye…*” (Fecr, 89/1-2)
 
 Yemin edilen bu on geceyle ilgili olarak bazı müfessirler bunun Muharrem ayının ilk on gecesi olduğunu ifade etmişlerdir. (Elmalılı Hamdi Yazır, *Hak Dini Kur’an Dili*, Fecr 2)
 
@@ -69,7 +69,7 @@ Hz. Aişe *radıyallahu anha*’dan rivâyet edildiğine göre Peygamberimiz (s.
 
 <p lang="ar" dir="rtl" class="ayet">كانَ يَوْمُ عاشُوراءَ تَصُومُهُ قُرَيْشٌ في الجاهِلِيَّةِ، وكانَ رَسولُ اللَّهِ ﷺ يَصُومُهُ، فَلَمّا قَدِمَ المَدِينَةَ صامَهُ، وأَمَرَ بصِيامِهِ، فَلَمّا فُرِضَ رَمَضانُ تَرَكَ يَومَ عاشُوراءَ، فمَن شاءَ صامَهُ، ومَن شاءَ تَرَكَهُ</p>
 
-*“Kureyş, cahiliye devrinde aşûre günü oruç tutardı. Peygamberlikten önce Rasûlullah (s.a.v) de aşûre günü oruç tutardı. Rasûlullah (s.a.v) Medine’ye geldiği vakit de aşûreyi tuttu ve o günde oruç tutulmasını emretti. Ramazan orucu farz kılınınca aşûre terk olundu, isteyen tuttu, isteyen terk etti.”*** (Buhâri, Savm, 69)
+*“Kureyş, cahiliye devrinde aşûre günü oruç tutardı. Peygamberlikten önce Rasûlullah (s.a.v) de aşûre günü oruç tutardı. Rasûlullah (s.a.v) Medine’ye geldiği vakit de aşûreyi tuttu ve o günde oruç tutulmasını emretti. Ramazan orucu farz kılınınca aşûre terk olundu, isteyen tuttu, isteyen terk etti.”* (Buhâri, Savm, 69)
 
 <p lang="ar" dir="rtl" class="ayet">عن ابن عباس أنه قال قَدِمَ النَّبيُّ ﷺ المَدِينَةَ فَرَأى اليَهُودَ تَصُومُ يَومَ عاشُوراءَ، فَقالَ: ما هذا؟ قالوا: هذا يَوْمٌ صالِحٌ؛ هذا يَوْمٌ نَجّى اللَّهُ بَنِي إسْرائِيلَ مِن عَدُوِّهِمْ، فَصامَهُ مُوسى. قالَ: فأنا أحَقُّ بمُوسى مِنكُمْ، فَصامَهُ، وأَمَرَ بصِيامِهِ</p>
 
@@ -93,13 +93,13 @@ Resûl-i Ekrem (s.a.v.):
 
 <p lang="ar" dir="rtl" class="ayet">صِيَامُ يَوْمِ عَاشُورَاءَ أَحْتَسِبُ عَلَى اللَّهِ أَنْ يُكَفِّرَ السَّنَةَ الَّتِي قَبْلَهُ</p>
 
-*“Âşûrâ günü orucunun, bir önceki yılın günahlarına kefaret olmasını Allah’tan ümit ediyorum.”*** diyerek Âşûrâ orucu tutmaya teşvik etmiştir. (Tirmizî, Savm, 48)
+*“Âşûrâ günü orucunun, bir önceki yılın günahlarına kefaret olmasını Allah’tan ümit ediyorum.”* diyerek Âşûrâ orucu tutmaya teşvik etmiştir. (Tirmizî, Savm, 48)
 
 ### Kerbela Hadisesi ve Ehli Beyt Sevgisi
 
-***Düştü Hüseyn atından sahray-ı Kerbela’ya
+Düştü Hüseyn atından sahray-ı Kerbela’ya
 
-Cibril var haber ver Sultanı Enbiyaya***
+Cibril var haber ver Sultanı Enbiyaya
 
 Kağızmanlı Aşık Cemal
 
@@ -107,7 +107,7 @@ Kağızmanlı Aşık Cemal
 
 Hz. Hüseyin’in (r.a.) şehadeti ayrılığa, gruplaşmaya sebep olmamalıdır. Peygamber Efendimiz (s.a.v.), Hz. Hasan (r.a.) ve Hüseyin’i (r.a.) çok sever, onlar hakkında:
 
-***“Hasan ve Hüseyin, benim dünyada kokladığım iki çiçeğimdir.”* (İbn Hanbel, II, 288)
+*“Hasan ve Hüseyin, benim dünyada kokladığım iki çiçeğimdir.”* (İbn Hanbel, II, 288)
 
 ***“Allah'ım! Ben, bunları seviyorum. Sen de sev bunları.”*** (Tirmizi, Menakıb, 31) buyurmuştur.
 

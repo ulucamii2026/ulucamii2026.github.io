@@ -142,7 +142,7 @@ e) Mescide girildiğinde ezan okunmamış ve mekruh vakit değil ise, iki rekât
 
 f) Camiye temiz elbiseler ile gelinmelidir.
 
-g) Önce ilk saf tamamlanmalı, sonra ikinci saf tamamlanmalıdır. Ebû Mes’ud anlatıyor: “Resulullah (s.a.v.) namazda omuzlarımıza dokunur ve şöyle buyurdu: **‘Düzgün durun, karışık durmayın ki kalpleriniz de karmakarışık olmasın!’**” (Müslim, Salât, 122)
+g) Önce ilk saf tamamlanmalı, sonra ikinci saf tamamlanmalıdır. Ebû Mes’ud anlatıyor: “Resulullah (s.a.v.) namazda omuzlarımıza dokunur ve şöyle buyurdu: ‘Düzgün durun, karışık durmayın ki kalpleriniz de karmakarışık olmasın!’” (Müslim, Salât, 122)
 
 h) Camiden çıkarken önce sol ayak dışarı atılmalıdır.
 
@@ -166,9 +166,9 @@ Allah Resulü (s.a.s.) Efendimiz insanların hidayeti, İslam’ın insanlara ul
 
 “Ey Muhammed! Mümin olmuyorlar diye adeta kendini helak edeceksin!” (Şuara, 26/3) Dinin yayılması için adeta kendini parçalarcasına dert edinen, inanmadıkları için üzülen bir Peygamberimiz var bizim. Allah Resulü’nden bize sünnettir Hak yolunun davetçisi olmak. Etrafını aydınlatan bir kandil misali cehalet ve dalalet karanlığına meydan okumak.
 
-**“Alimler peygamberlerin varisleridir. Peygamberler altın ve gümüşü miras olarak bırakmazlar, onlar sadece ilmi miras bırakmışlardır. İşte o mirasa konan kimse de bol nasib ve kısmet almış olur.”** (Ebu Davud, İlim, 1; Tirmizi, İlim, 19)
+“Alimler peygamberlerin varisleridir. Peygamberler altın ve gümüşü miras olarak bırakmazlar, onlar sadece ilmi miras bırakmışlardır. İşte o mirasa konan kimse de bol nasib ve kısmet almış olur.” (Ebu Davud, İlim, 1; Tirmizi, İlim, 19)
 
-## Sonuç:
+## Sonuç
 
 Cennete giden yollar, mescitlerden geçiyor.
 

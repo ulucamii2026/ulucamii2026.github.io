@@ -132,7 +132,7 @@ Rabbimiz:
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ لِلْمُؤْمِنٖينَ يَغُضُّوا مِنْ اَبْصَارِهِمْ وَيَحْفَظُوا فُرُوجَهُمْۚ</p>
 
-*“Mümin erkeklere söyle, gözlerini haramdan sakınsınlar ve iffetlerini korusunlar.”* (Nûr, 24/30) buyurmuştur. *“Gözlerini haramdan sakınsınlar”*dan maksat insanı harama götürebilecek bakışlardır. Nitekim sevgili Peygamberimiz Hz. Ali’ye (r.a.) hitaben, “*Bir baktığında arkadan bir daha bakma, birinci bakış hoş görülür ama ikinci bakışa hakkın yoktur.”* (Ebû Dâvûd, Nikâh, 43) buyurarak bu mânaya açıklık getirmiştir. İmanımız, gözlerimizi harama bakmaktan sakındırır.
+*“Mümin erkeklere söyle, gözlerini haramdan sakınsınlar ve iffetlerini korusunlar.”* (Nûr, 24/30) buyurmuştur. “Gözlerini haramdan sakınsınlar”dan maksat insanı harama götürebilecek bakışlardır. Nitekim sevgili Peygamberimiz Hz. Ali’ye (r.a.) hitaben, “*Bir baktığında arkadan bir daha bakma, birinci bakış hoş görülür ama ikinci bakışa hakkın yoktur.”* (Ebû Dâvûd, Nikâh, 43) buyurarak bu mânaya açıklık getirmiştir. İmanımız, gözlerimizi harama bakmaktan sakındırır.
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 

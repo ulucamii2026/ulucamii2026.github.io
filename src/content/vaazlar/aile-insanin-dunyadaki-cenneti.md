@@ -1,12 +1,13 @@
 ---
 baslik: "Aile: İnsanın Dünyadaki Cenneti"
-ozet: "Giriş İnsan, cana yakın, kendisiyle ünsiyet ve ülfet kurulan, uyumlu, sosyal bir varlıktır. İnsan, bir ailede dünyaya gözlerini açar. Küçücük bu bedenin dünya…"
+ozet: "İnsan, cana yakın, kendisiyle ünsiyet ve ülfet kurulan, uyumlu, sosyal bir varlıktır. İnsan, bir ailede dünyaya gözlerini açar. Küçücük bu bedenin dünya serüveni…"
 kategori: aile
 kelime: 2096
 docx: "/vaazlar/aile-insanin-dunyadaki-cenneti.docx"
 pdf: "/vaazlar/aile-insanin-dunyadaki-cenneti.pdf"
 ---
 ## Giriş
+
 İnsan, cana yakın, kendisiyle ünsiyet ve ülfet kurulan, uyumlu, sosyal bir varlıktır. İnsan, bir ailede dünyaya gözlerini açar. Küçücük bu bedenin dünya serüveni aile ile başlar. Onu sımsıcak saran, bağırlarına basan, geceleri uykularından vazgeçen anne ve babası onun hep yanı başındadır. Onun ilk öğretmeni bu iki değerli varlıktır. Onlardan aldığı terbiye ile hayata atılır ve topluma girer. Ve bir gün ayrılık vakti geldiğinde bu dünyadan yine en sevdiği ailesi tarafından uğurlanır.
 
 Allah-u Teâlâ önce Hz. Âdem’i sonra ona eş olarak Hz. Havva’yı yaratmış, ilahi emirle Cennette kurulan bu ilk aile, daha sonra dünyada devam etmiştir. Rabbimiz,

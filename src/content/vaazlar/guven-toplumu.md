@@ -92,7 +92,7 @@ Allahu Teâla Kur’an’ı Kerim’de müminlerin özelliklerinden bahsederken;
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ هُمْ لِاَمَانَاتِهِمْ وَعَهْدِهِمْ رَاعُونَۙ</p>
 
-*“Yine o müminler emanetlerine ve ahidlerine sadakat gösterirler”*** (Müminun, 23/8) buyurarak güvenilirlik vasfını ön plana çıkarmıştır. Allah Resûlü (s.a.s) de yaptığı bir tanımda, müminin diğer insanlarla olan ilişkisindeki güven unsurunu öne çıkarmıştır;
+*“Yine o müminler emanetlerine ve ahidlerine sadakat gösterirler”* (Müminun, 23/8) buyurarak güvenilirlik vasfını ön plana çıkarmıştır. Allah Resûlü (s.a.s) de yaptığı bir tanımda, müminin diğer insanlarla olan ilişkisindeki güven unsurunu öne çıkarmıştır;
 
 <p lang="ar" dir="rtl" class="ayet">الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ وَالْمُؤْمِنُ مَنْ أَمِنَهُ النَّاسُ عَلَى دِمَائِهِمْ وَأَمْوَالِهِمْ</p>
 
@@ -122,7 +122,7 @@ Erkek ve kadın arasındaki adaletin ve itidalin sağlanması güven hususunda s
 
 <p lang="ar" dir="rtl" class="ayet">أَلا إِنَّ لَكُمْ عَلَى نِسَائِكُمْ حَقًّا، وَلِنِسَائِكُمْ عَلَيْكُمْ حَقًّا</p>
 
-“***Dikkat edin! Sizin hanımlarınız üzerinde hakkınız olduğu gibi, hanımlarınızın da sizin üzerinizde hakkı vardır.”*( Tirmizî, Radâ, 11) uyarısı da buna yöneliktir.
+“*Dikkat edin! Sizin hanımlarınız üzerinde hakkınız olduğu gibi, hanımlarınızın da sizin üzerinizde hakkı vardır.”*( Tirmizî, Radâ, 11) uyarısı da buna yöneliktir.
 
 Yuvamızda inşa edeceğimiz güven temelli bir iletişim süreci ve ilişki ortamı çocuklarımızı tehlikeli sanal ortamlardan, arkadaşlıklardan koruyacaktır. Çocuklarımızın sorunlarını, problemlerini rahatlıkla anlatabilecekleri bir iletişim süreci oluşturmak, onları dışarıdan gelecek her türlü tehdit ve tacize karşı koruyacaktır. Eşlerin arasında sağlıklı bir iletişimin olması ise karı-koca arasındaki sevgi ve saygıyı artıracağı gibi güven problemi doğuracak iletişim hatalarının da önüne geçecektir.
 
@@ -140,9 +140,9 @@ Bu ifadeler müminlerin mallarını, canlarını, iffetlerini ilahi bir güvence
 
 Allah Resûlü’nün (s.a.s) toplumsal güveni inşa ederken müminleri bir ailenin fertleri gibi dayanışmaya teşvik etmesini göz ardı etmemek gerekir. Bu uygulama yeryüzünde örneği olmayan bir icraattır. Allah Resûlü (s.a.s), müminler topluluğunu birbirlerini destekleyen bir yapının elemanlarına benzetmiş ve şöyle buyurmuştur:
 
-*اِنَّ الْمُؤْمِنَ لِلْمُؤْمِنِ كَالْبُنْيَانِ يَشُدُّ بَعْضُهُ بَعْضًا
+<p lang="ar" dir="rtl" class="ayet">اِنَّ الْمُؤْمِنَ لِلْمُؤْمِنِ كَالْبُنْيَانِ يَشُدُّ بَعْضُهُ بَعْضًا</p>
 
-“Müminin mümine göre konumu, parçaları (bölümleri) birbirini destekleyen bir bina gibidir.”*** (Buhârî, Salât, 88) Toplumda güvenin tesis edilmesi, bireylerin ihlas ve samimiyetle birbirlerine karşı görevlerini yerine getirmeleri ve güven vermeleriyle mümkündür. Böylelikle toplum bir arada ve ayakta durur.
+“Müminin mümine göre konumu, parçaları (bölümleri) birbirini destekleyen bir bina gibidir.” (Buhârî, Salât, 88) Toplumda güvenin tesis edilmesi, bireylerin ihlas ve samimiyetle birbirlerine karşı görevlerini yerine getirmeleri ve güven vermeleriyle mümkündür. Böylelikle toplum bir arada ve ayakta durur.
 
 Bunun yanında Allah Resûlü (s.a.s) toplumu oluşturan bireyleri bir vücudun organlarına benzetmiştir;
 
@@ -188,11 +188,11 @@ Güven duygusu zail olduğu zaman insanların birbirlerine itimadı kalmaz ve ah
 
 <p lang="ar" dir="rtl" class="ayet">‏ أَرْبَعٌ مَنْ كُنَّ فِيهِ كَانَ مُنَافِقًا خَالِصًا، وَمَنْ كَانَتْ فِيهِ خَصْلَةٌ مِنْهُنَّ كَانَتْ فِيهِ خَصْلَةٌ مِنَ النِّفَاقِ حَتَّى يَدَعَهَا إِذَا اؤْتُمِنَ خَانَ وَإِذَا حَدَّثَ كَذَبَ وَإِذَا عَاهَدَ غَدَرَ، وَإِذَا خَاصَمَ فَجَرَ ‏</p>
 
-“***Dört haslet vardır ki, bunlar kimde bulunursa, o kimse saf münafık olur. Kimde de bu hasletlerden birisi bulunursa, onu bırakıncaya kadar kendisinde nifaktan bir haslet var demektir: Konuştuğunda yalan söyler. Söz verdiğinde sözünde durmaz. Vaat ettiğinde vaadinden döner. Tartıştığında haksızlık eder.*” (Buhari, İman,24)
+“*Dört haslet vardır ki, bunlar kimde bulunursa, o kimse saf münafık olur. Kimde de bu hasletlerden birisi bulunursa, onu bırakıncaya kadar kendisinde nifaktan bir haslet var demektir: Konuştuğunda yalan söyler. Söz verdiğinde sözünde durmaz. Vaat ettiğinde vaadinden döner. Tartıştığında haksızlık eder.*” (Buhari, İman,24)
 
-Hz. Peygamber (s.a.s) yalan söylemeyi, verilen sözde durmamayı ve emanete hıyanet edip insanların güvenini boşa çıkarmayı münafıklığın göstergelerinden saymıştır. İdeal bir İslam toplumu özlemini dile getirirken kullandığı ölçüt “*bir kadının Allah’tan başka hiç kimseden korku duymadan (tek başına ve güven içinde) Hîre’den*** (Irak'ta Kufe'de bulunan antik bir şehir) ***kalkıp gelerek Kâbe’yi tavaf edebilmesi***” dir. (Buhârî, *Menâkıb*, 25)
+Hz. Peygamber (s.a.s) yalan söylemeyi, verilen sözde durmamayı ve emanete hıyanet edip insanların güvenini boşa çıkarmayı münafıklığın göstergelerinden saymıştır. İdeal bir İslam toplumu özlemini dile getirirken kullandığı ölçüt “*bir kadının Allah’tan başka hiç kimseden korku duymadan (tek başına ve güven içinde) Hîre’den* (Irak'ta Kufe'de bulunan antik bir şehir) ***kalkıp gelerek Kâbe’yi tavaf edebilmesi***” dir. (Buhârî, *Menâkıb*, 25)
 
-**SONUÇ:**
+SONUÇ:
 
 Kur’an ve sünnetin hedeflediği güven toplumunu oluşturmak için önce gönüllerimizi imanla inşa etmeliyiz. Aile karı-koca arasında güven ve adalet temeli üzerinde kurulmalı, eşler ve çocuklar sorunlarını rahatça paylaşabildikleri ve çözebildikleri sağlıklı bir iletişim süreci oluşturmalıdır. Toplumda bireyler arsında ki ilişkiler doğruluk ve güven üzerine kurmalı. Her mümin bir başkasının malını, canını, iffetini Mekke-Kabe gibi kutsal görebilmeli, bir vücut gibi birbirinin derdini ve sıkıntısını hissederek deva olmaya çalışmalıdır. Toplumsal güveni sarsacak yalan ve sözünde durmamak gibi kötü davranışlardan uzak durmalıdır.
 
@@ -200,7 +200,7 @@ Maalesef İslam Coğrafyası tarihin en zorlu süreçlerinden geçiyor. Gün ge�
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّمَا الْمُؤْمِنُونَ اِخْوَةٌ</p>
 
-*“Müminler ancak kardeştirler…”***(Hucurat, 49/10) ayetinin manasını kavramalı, kardeşliği ailemizden başlayarak toplum içerisinde yeniden tesis etmeli ve;
+*“Müminler ancak kardeştirler…”*(Hucurat, 49/10) ayetinin manasını kavramalı, kardeşliği ailemizden başlayarak toplum içerisinde yeniden tesis etmeli ve;
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ لاَ يَنْظُرُ إِلَى صُوَرِكُمْ وَأَمْوَالِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ وَأَعْمَالِكُمْ</p>
 

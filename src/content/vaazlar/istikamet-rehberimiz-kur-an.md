@@ -28,7 +28,7 @@ Resulullah buyurdu ki: “Kuran öyle bir kitaptır ki: "O'nda, sizden önceki (
 
 Yüce Allah, insanlara yol gösterici olarak daha önce sayfalar şeklinde pek çok öğüt ve bunlara ilaveten üç büyük kitap indirmiştir. Ancak insanlar bu kutsal kitapları zaman içerisinde tahrif ederek değişikliğe uğratmışlardır. Bu yüzden Rabbimiz de insanlara son yol gösterici olarak Kur’an’ı indirmiştir. İşte Rabbimizin, Cebrail (AS) aracılığı ile sevgili Peygamberimiz Hz. Muhammed (SAV)’e vahiy ettiği bu kitabın, Allah’ın kelamı olduğunda da hiçbir şüphemiz yoktur. Niçin Kur’an’ın bütün insanları karanlıklardan aydınlığa çıkarmak için gönderilen son ilahî kitap olduğunda hiçbir şüphemiz yoktur? Çünkü o öyle bir kitaptır ki, içinde hiçbir çelişki ve yanlışlık yoktur. Zira onu şu mükemmel kâinatı ve bizleri yaratan Rabbimiz indirmiştir.
 
-Kur’an-ı Kerim, kendisini okuyanlara şefaat edecektir. Sevgili Peygamberimiz bu durumu şöyle beyan ediyor: *“Kur’an okuyunuz. Çünkü Kur’an, kıyamet gününde kendisini okuyanlara şefaatçi olarak gelecektir.”*** (Müslim, “Müsâfirîn”, 252) Allah’ın sadece okunması için bir kitap göndermeyeceğini her aklıselim kabul eder. Şayet öyle olsaydı, Kur’an birtakım itikadi, amelî ve ahlaki hükümler vazedip aynı zamanda bunlara eksiksiz uyulmasını emretmez, Hz. Peygamber de bunları sadece insanlara tebliğ etmekle yetinir, uygulanması ve hayat tarzı hâline getirilmesi için ömür boyunca her türlü eziyete katlanmaz, hicret etmez, cihada katılmaz, zahmetsiz ve külfetsiz bir hayatı tercih ederdi. O halde, Kur’an-ı Kerim’i okumaktan haz duyan bizler, yalnız onu okumakla yetinmemeli, orada beyan buyurulan ve bizim için hidayet ve rahmet sebebi olan Rabbimizin emirlerini anlamaya ve hayatımıza yansıtmaya çalışmalıyız. Bu takdirde, yüce Rabbimizin razı olduğu Müslümanlardan oluruz.
+Kur’an-ı Kerim, kendisini okuyanlara şefaat edecektir. Sevgili Peygamberimiz bu durumu şöyle beyan ediyor: *“Kur’an okuyunuz. Çünkü Kur’an, kıyamet gününde kendisini okuyanlara şefaatçi olarak gelecektir.”* (Müslim, “Müsâfirîn”, 252) Allah’ın sadece okunması için bir kitap göndermeyeceğini her aklıselim kabul eder. Şayet öyle olsaydı, Kur’an birtakım itikadi, amelî ve ahlaki hükümler vazedip aynı zamanda bunlara eksiksiz uyulmasını emretmez, Hz. Peygamber de bunları sadece insanlara tebliğ etmekle yetinir, uygulanması ve hayat tarzı hâline getirilmesi için ömür boyunca her türlü eziyete katlanmaz, hicret etmez, cihada katılmaz, zahmetsiz ve külfetsiz bir hayatı tercih ederdi. O halde, Kur’an-ı Kerim’i okumaktan haz duyan bizler, yalnız onu okumakla yetinmemeli, orada beyan buyurulan ve bizim için hidayet ve rahmet sebebi olan Rabbimizin emirlerini anlamaya ve hayatımıza yansıtmaya çalışmalıyız. Bu takdirde, yüce Rabbimizin razı olduğu Müslümanlardan oluruz.
 
 ## Hidayet için Kur’an’dan Örnekler
 
@@ -122,7 +122,7 @@ Her mükellef insana akıl, kabiliyet, anlayış ve zaruri bilgiler vermesiyle:
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ رَبُّنَا الَّذِي أَعْطَىكُلَّ شَيْءٍ خَلْقَهُ ثُمَّ هَدَى:</p>
 
-“(***Musa***), ‘***Rabbimiz, her şeye yaratılışını veren sonra ona doğru yolu gösterendir.’ dedi.”*** (Taha, 20/50)
+“(***Musa), ‘Rabbimiz, her şeye yaratılışını veren sonra ona doğru yolu gösterendir.’ dedi.”*** (Taha, 20/50)
 
 Ayetinde geçen “hidayet” bu anlamdadır.
 

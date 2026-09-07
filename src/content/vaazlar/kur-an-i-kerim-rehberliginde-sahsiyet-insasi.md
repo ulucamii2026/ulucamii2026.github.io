@@ -20,7 +20,7 @@ Kur’an-ı Kerim'de Allah insanı, "ahsen-i takvim" yani en güzel şekilde yar
 
 <p lang="ar" dir="rtl" class="ayet">لَقَدْ خَلَقْنَا الْاِنْسَانَ فٖٓي اَحْسَنِ تَقْوٖيمٍؗ ﴿٤﴾</p>
 
-“*Muhakkak* ***ki biz insanı en mükemmel biçimde yarattık*” (Tin Suresi, 95/4)
+“*Muhakkak* *ki biz insanı en mükemmel biçimde yarattık*” (Tin Suresi, 95/4)
 
 Konuyla ilgili başka bir ayet-i kerimede Rabbimiz;
 
@@ -38,11 +38,11 @@ Mükemmel özelliklerle yaratılan insan annesinin karnından aslında hiçbir �
 
 <p lang="ar" dir="rtl" class="ayet">وَهُوَ الَّـذٖٓي اَحْيَاكُمْؗ ثُمَّ يُمٖيتُكُمْ ثُمَّ يُحْيٖيكُمْؕ اِنَّ الْاِنْسَانَ لَكَفُورٌ ﴿٦٦﴾</p>
 
-“***Size hayat veren Allah’tır. Sonra sizi öldürecek, daha sonra sizi tekrar diriltecek olan da O’dur. Ama insan, gerçekten pek nankördür*. “(22/66) buyurarak insanın nankörlük özelliğine dikkat çeker. Bir başka ayet-i kerimede;
+“*Size hayat veren Allah’tır. Sonra sizi öldürecek, daha sonra sizi tekrar diriltecek olan da O’dur. Ama insan, gerçekten pek nankördür*. “(22/66) buyurarak insanın nankörlük özelliğine dikkat çeker. Bir başka ayet-i kerimede;
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذَٓا اَنْعَمْنَا عَلَى الْاِنْسَانِ اَعْرَضَ وَنَاٰ بِجَانِبِهٖۚ وَاِذَا مَسَّهُ الشَّرُّ كَانَ يَؤُ۫ساً ﴿٨٣﴾</p>
 
-“*İnsana bir nimet verdiğimiz zaman kibir ve çalım içinde Allah’ı anmaktan yan çizer, hiç umursamaz olur. Başına bir kötülük geldiğine ise derin bir ümitsizliğe düşer.*** ” (İsrâ, 17/83) buyurarak insanın olaylar karşısında takınabileceği tavırları ve duyguları ile ilgili bilgi verir.
+“*İnsana bir nimet verdiğimiz zaman kibir ve çalım içinde Allah’ı anmaktan yan çizer, hiç umursamaz olur. Başına bir kötülük geldiğine ise derin bir ümitsizliğe düşer.* ” (İsrâ, 17/83) buyurarak insanın olaylar karşısında takınabileceği tavırları ve duyguları ile ilgili bilgi verir.
 
 Diğer bir ayet-i kerime’de;
 
@@ -92,11 +92,11 @@ Kendisine bunca nimet verilen insan, boşuna mı yaratılmıştı? Tabi ki hayı
 
 <p lang="ar" dir="rtl" class="ayet">أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لاتُرْجَعُونَ</p>
 
-***“Sizi boş yere yarattığımızı ve bize geri döndürülmeyeceğinizi mi sandınız?*” (Müminun, 23/115 ) buyurmaktadır. İnsan, mademki boş yere yaratılmadı acaba yaratılışındaki hikmet ne idi, niçin yaratılmıştı? Bu sorumuzun cevabını almak için yaratılış amacımızı bildiren ayete kulak verelim:
+*“Sizi boş yere yarattığımızı ve bize geri döndürülmeyeceğinizi mi sandınız?*” (Müminun, 23/115 ) buyurmaktadır. İnsan, mademki boş yere yaratılmadı acaba yaratılışındaki hikmet ne idi, niçin yaratılmıştı? Bu sorumuzun cevabını almak için yaratılış amacımızı bildiren ayete kulak verelim:
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنْسَ إِلَّا لِيَعْبُدُونِ</p>
 
-“*Ben cinleri ve insanları, ancak bana kulluk etsinler diye yarattım.”*** (Zariyat,51/ 56)
+“*Ben cinleri ve insanları, ancak bana kulluk etsinler diye yarattım.”* (Zariyat,51/ 56)
 
 O halde, dünyadaki hiçbir şey boşuna değildir. Cinler ve insanların da Allah’a (c.c.) kulluk yapmak, O’nu yegâne yaratıcı bilip sadece O’na ibadet etmek gibi çok önemli sorumlulukları vardır. Kur’an’ın öngördüğü şahsiyetli insanın yaratılış amacı Allah’a kulluktur. Kulluk aynı zamanda eşrefi mahlûkat olarak yaratılan, akıl, irade ve vicdan sahibi olarak diğer varlıklardan farklı olan insanın yüklendiği bir sorumluluktur. Rabbimiz Kur’an’ı Kerim’ de;
 
@@ -120,7 +120,7 @@ Kur’an-ı Kerim incelendiğinde insanın şahsiyetini inşa ederken önerdiği
 
 <p lang="ar" dir="rtl" class="ayet">قَدْ كَانَتْ لَكُمْ اُسْوَةٌ حَسَنَةٌ فٖٓي اِبْرٰهٖيمَ وَالَّذٖينَ مَعَهُۚ</p>
 
-***“İbrahim’de ve onunla birlikte bulunanlarda sizin için güzel bir örnek vardır.”*** (Mümtehine, 60/4)*.* Ayetiyle bildirildiği üzere Hz. Âdem (a.s.)’den başlayarak Peygamberimize kadar bütün peygamberler insanlık için model alınması gereken en güzel örnektirler. Kur'an-ı Kerim, insanın şahsiyetini inşa ederken örnek almanın ve örnek olmanın önemini vurgular. Peygamberlerin ve kavimlerinin yaşadıklarından hareketle şahsiyetin nasıl inşa edilmesi gerektiğini uygulamalı olarak gösterir. ***“İbrahim’de ve onunla birlikte bulunanlarda sizin için güzel bir örnek vardır***.” (Mümtehine, 60/4) Kur’an-ı Kerim’de, Hz. Âdem’in tövbesi, Hz. Nuh’un azim ve kararlığı, Hz. Yusuf ’un iffeti, Hz. Eyüp’ün sabrı, Hz. Salih’in namazı, Hz. İsmail’in teslimiyeti biz müminlerin şahsiyetini inşa etmede model olarak gösterilmiştir. Diğer taraftan İblis’ in kibri, Nemrut’ un inadı, Firavun’ un azgınlığı, Kabil’ in kıskançlığı kişilik ve karakter oluşmasında dikkat edilmesi gereken kötü hasletler olarak sunulmaktadır.
+***“İbrahim’de ve onunla birlikte bulunanlarda sizin için güzel bir örnek vardır.”*** (Mümtehine, 60/4). Ayetiyle bildirildiği üzere Hz. Âdem (a.s.)’den başlayarak Peygamberimize kadar bütün peygamberler insanlık için model alınması gereken en güzel örnektirler. Kur'an-ı Kerim, insanın şahsiyetini inşa ederken örnek almanın ve örnek olmanın önemini vurgular. Peygamberlerin ve kavimlerinin yaşadıklarından hareketle şahsiyetin nasıl inşa edilmesi gerektiğini uygulamalı olarak gösterir. ***“İbrahim’de ve onunla birlikte bulunanlarda sizin için güzel bir örnek vardır***.” (Mümtehine, 60/4) Kur’an-ı Kerim’de, Hz. Âdem’in tövbesi, Hz. Nuh’un azim ve kararlığı, Hz. Yusuf ’un iffeti, Hz. Eyüp’ün sabrı, Hz. Salih’in namazı, Hz. İsmail’in teslimiyeti biz müminlerin şahsiyetini inşa etmede model olarak gösterilmiştir. Diğer taraftan İblis’ in kibri, Nemrut’ un inadı, Firavun’ un azgınlığı, Kabil’ in kıskançlığı kişilik ve karakter oluşmasında dikkat edilmesi gereken kötü hasletler olarak sunulmaktadır.
 
 Bu noktada İslam’ın en son ve en mükemmel insan modeli Yüce Rabbimizin;
 
@@ -152,9 +152,9 @@ Bizlerin de diğer peygamberlerle birlikte son Peygamber Hz. Muhammed' i (s.a.s)
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اِنْ كُنْتُمْ تُحِبُّونَ اللّٰهَ فَاتَّبِعُونٖي يُحْبِبْكُمُ اللّٰهُ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْؕ وَاللّٰهُ غَفُورٌ رَحٖيمٌ قُلْ اَطٖيعُوا اللّٰهَ وَالرَّسُولَۚ فَاِنْ تَوَلَّوْا فَاِنَّ اللّٰهَ لَا يُحِبُّ الْكَافِرٖينَ</p>
 
-***De ki: "Allah'ı seviyorsanız bana uyun. Allah da sizi sevsin ve günahlarınızı bağışlasın. Allah affeder ve merhamet eder".
+De ki: "Allah'ı seviyorsanız bana uyun. Allah da sizi sevsin ve günahlarınızı bağışlasın. Allah affeder ve merhamet eder".
 
-De ki: "Allah'a ve Peygambere itaat edin". Yüz çevirirlerse bilsinler ki, Allah inkâr edenleri sevmez.*** (Ali İmran, 3/ 31-32)
+De ki: "Allah'a ve Peygambere itaat edin". Yüz çevirirlerse bilsinler ki, Allah inkâr edenleri sevmez. (Ali İmran, 3/ 31-32)
 
 Allah kendisine olan sevginin belirtisini Resulüne itaate bağlamış ve Peygamberimize itaati emretmiştir.
 
@@ -178,15 +178,15 @@ Yine Furkan suresinde şahsiyet sahibi müminlerin özellikleri ise şöyle sır
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ اِذَٓا اَنْفَقُوا لَمْ يُسْرِفُوا وَلَمْ يَقْتُرُوا وَكَانَ بَيْنَ ذٰلِكَ قَوَاماً ﴿٦٧﴾</p>
 
-***وَالَّذٖينَ لَا يَدْعُونَ مَعَ اللّٰهِ اِلٰهاً اٰخَرَ وَلَا يَقْتُلُونَ النَّفْسَ الَّتٖي حَرَّمَ اللّٰهُ اِلَّا بِالْحَقِّ وَلَا يَزْنُونَۚ وَمَنْ يَفْعَلْ ذٰلِكَ يَلْقَ اَثَاماًۙ ﴿٦٨﴾
+<p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ لَا يَدْعُونَ مَعَ اللّٰهِ اِلٰهاً اٰخَرَ وَلَا يَقْتُلُونَ النَّفْسَ الَّتٖي حَرَّمَ اللّٰهُ اِلَّا بِالْحَقِّ وَلَا يَزْنُونَۚ وَمَنْ يَفْعَلْ ذٰلِكَ يَلْقَ اَثَاماًۙ ﴿٦٨﴾</p>
 
-63*.” *Rahman’ın(has) kulları onlardır ki, yeryüzünde tevazu ile yürürler ve kendini bilmez kimseler onlara laf attığında (incitmeksizin) "Selam!" derler (geçerler)”
+63.” Rahman’ın(has) kulları onlardır ki, yeryüzünde tevazu ile yürürler ve kendini bilmez kimseler onlara laf attığında (incitmeksizin) "Selam!" derler (geçerler)”
 64. “Gecelerini Rablerine secde ederek ve kıyam durarak geçirirler”
 65. “Ve şöyle derler: Rabbimiz! Cehennem azabını üzerimizden sav. Doğrusu onun azabı gelip geçici değil, devamlıdır”
 
 66. “Orası cidden ne kötü bir yerleşme ve ikamet yeridir!”
 67. (“O kullar), harcadıklarında ne israf ne de cimrilik ederler; ikisi arasında orta bir yol tutarlar”
-68. “Yine onlar ki, Allah ile beraber (tuttukları) başka bir tanrıya yalvarmazlar, Allah'ın haram kıldığı cana haksız yere kıymazlar ve zina etmezler. Bunları yapan, günahı (nın cezasını) bulur “*** (Furkan , 25/63-68)
+68. “Yine onlar ki, Allah ile beraber (tuttukları) başka bir tanrıya yalvarmazlar, Allah'ın haram kıldığı cana haksız yere kıymazlar ve zina etmezler. Bunları yapan, günahı (nın cezasını) bulur “ (Furkan , 25/63-68)
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ لَا يَشْهَدُونَ الزُّورَۙ وَاِذَا مَرُّوا بِاللَّغْوِ مَرُّوا كِرَاماً ﴿٧٢﴾</p>
 
@@ -196,12 +196,12 @@ Yine Furkan suresinde şahsiyet sahibi müminlerin özellikleri ise şöyle sır
 
 <p lang="ar" dir="rtl" class="ayet">اُو۬لٰٓئِكَ يُجْزَوْنَ الْغُرْفَةَ بِمَا صَبَرُوا وَيُلَقَّوْنَ فٖيهَا تَحِيَّةً وَسَلَاماًۙ ﴿٧٥﴾</p>
 
-***72. “(O kullar), yalan yere şahitlik etmezler, boş sözlerle karşılaştıklarında vakar ile (oradan) geçip giderler “
+72. “(O kullar), yalan yere şahitlik etmezler, boş sözlerle karşılaştıklarında vakar ile (oradan) geçip giderler “
 
 73. “Kendilerine Rablerinin ayetleri hatırlatıldığında ise, onlara karşı sağır ve kör davranmazlar; 
 74. (Ve o kullar): Rabbimiz! Bize gözümüzü aydınlatacak eşler ve zürriyetler bağışla ve bizi takva sahiplerine önder kıl! derler.”
 
-75.” İşte onlara, sabretmelerine karşılık cennetin en yüksek makamı verilecek, orada hürmet ve selamla karşılanacaklardır”*** (Furkan, 25/72-75)
+75.” İşte onlara, sabretmelerine karşılık cennetin en yüksek makamı verilecek, orada hürmet ve selamla karşılanacaklardır” (Furkan, 25/72-75)
 
 Bu ve benzeri ayetleri yaşantımıza geçirdiğimizde üzerinde bütün bu özellikleri en mükemmel şekliyle taşıyan Peygamberimizi örnek almış olur ve diğer insanlara model olmuş oluruz.
 
@@ -209,7 +209,7 @@ Kur’an-ı Kerim şahsiyetimizi inşa ederken sadece kendimizi düşünenlerden
 
 <p lang="ar" dir="rtl" class="ayet">وَكَذٰلِكَ جَعَلْنَاكُمْ اُمَّةً وَسَطاً لِتَكُونُوا شُهَدَٓاءَ عَلَى النَّاسِ وَيَكُونَ الرَّسُولُ عَلَيْكُمْ شَهٖيداًؕ</p>
 
-***“Böylece sizi insanlara şahit ve örnek olmanız için tam ortada bulunan “vasat” bir ümmet kıldık. Peygamber de size şahit ve örnektir...”* (Bakara, 2/143; bk. Nisâ, 4/41).**
+*“Böylece sizi insanlara şahit ve örnek olmanız için tam ortada bulunan “vasat” bir ümmet kıldık. Peygamber de size şahit ve örnektir...”* (Bakara, 2/143; bk. Nisâ, 4/41).
 
 İşte bu ayet-i kerime bu ümmetin sorumluluğunun Peygamber’i (s.a.s) örnek alarak tüm insanlara model, örnek olmak olduğunu belirtmektedir. Öyleyse gelin bu sorumluluğumuzu yerine getirmek amacıyla yapmamız gerekenleri öğrenerek uygulamaya başlayalım.
 

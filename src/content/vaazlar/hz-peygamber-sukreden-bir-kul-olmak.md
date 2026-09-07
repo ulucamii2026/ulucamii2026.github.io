@@ -16,7 +16,7 @@ Maddi nimetlere güneş, ay, yağmur, su, nefes, mal, mülk, araba, ev, bedenimi
 
 <p lang="ar" dir="rtl" class="ayet">يَااَيُّهَا الَّذِينَ آمَنُوا كُلُوا مِنْ طَيِّبَاتِ مَارَزَقْنَاكُمْ وَاشْكُرُوا لِلَّهِ اِنْ كُنْتُمْ اِيَّاهُ تَعْبُدُونَ</p>
 
-“*Ey iman edenler! Size verdiğimiz rızıkların temiz olanlarından yiyin, eğer siz yalnız Allah'a kulluk ediyorsanız O'na şükredin*.*”*** (Bakara 2/ 172)
+“*Ey iman edenler! Size verdiğimiz rızıkların temiz olanlarından yiyin, eğer siz yalnız Allah'a kulluk ediyorsanız O'na şükredin.”* (Bakara 2/ 172)
 
 <p lang="ar" dir="rtl" class="ayet">فَاذْكُرُونِى اَذْكُرْكُمْ وَاشْكُرُوا لِى وَلَا تَكْفُرُونِ</p>
 
@@ -68,7 +68,7 @@ Malın şükrü helalinden kazanmaktır, faiz ve diğer haram kazanç türlerini
 
 <p lang="ar" dir="rtl" class="ayet">فَلَمَّا رَاٰهُ مُسْتَقِراًّ عِنْدَهُ قَالَ هٰذَا مِنْ فَضْلِ رَبّٖيࣞ لِيَبْلُوَنٖٓي ءَاَشْكُرُ اَمْ اَكْفُرُؕ وَمَنْ شَكَرَ فَاِنَّمَا يَشْكُرُ لِنَفْسِهٖۚ وَمَنْ كَفَرَ فَاِنَّ رَبّٖي غَنِيٌّ كَرٖيمٌ</p>
 
-*“Süleyman, tahtı yanı başına yerleşmiş olarak görünce şöyle dedi: “Bu, şükür mü yoksa nankörlük mü edeceğim diye beni sınayan rabbimin bir lütfudur. Şükreden ancak kendisi için şükretmiş olur, nankörlük edene gelince, o bilsin ki rabbimin hiçbir şeye ihtiyacı yoktur, kerem sahibidir.”*** (Neml, 27/40.)
+*“Süleyman, tahtı yanı başına yerleşmiş olarak görünce şöyle dedi: “Bu, şükür mü yoksa nankörlük mü edeceğim diye beni sınayan rabbimin bir lütfudur. Şükreden ancak kendisi için şükretmiş olur, nankörlük edene gelince, o bilsin ki rabbimin hiçbir şeye ihtiyacı yoktur, kerem sahibidir.”* (Neml, 27/40.)
 
 Sahip olduğumuz nimetlerin bizleri azdırmasına, dünyaya öncelik verip ahireti unutturmasına izin vermemeliyiz. Sahip olduğumuz her şeyin birer emanet olduğunu, emanet sahibinin razı olduğu şekilde korumamız gerektiğini, yarın bizden bu emanetlerin alınacağını, bunlardan sorguya çekileceğimiz unutmayalım. Rabbimizin bu hatırlatmasına hep birlikte kulak verelim:
 
@@ -86,7 +86,7 @@ Bilirsiniz ki şeytan bizim apaçık düşmanımızdır. Bizlerin her iki dünya
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ فَبِمَا أَغْوَيْتَنِي ﻷ َقْعُدَنَّ لَهُمْ صِرَاطَكَ الْمُسْتَقِيمَ ثُمَّ ﻵ تِيَنَّهُمْ مِنْ بَيْنِ أَيْدِيهِمْ وَمِنْ خَلْفِهِم وَعَنْ أَيْمَانِهِم وَعَنْ شَمَائِلِهِمْ وﻻ تَجِدُ أَكْثَرَهُمْ شَاكِرِينَ</p>
 
-*“* ***İblîs dedi ki; Bundan böyle benim sapmama izin vermene karşılık, ant içerim ki, ben de onları saptırmak için senin doğru yolunun üstüne oturacağım. Sonra elbette onlara önlerinden, arkalarından, sağlarından, sollarından sokulacağım ve sen onların çoklarını şükredenlerden bulmayacaksın.”* (A’râf, 7/16-17)
+“ *İblîs dedi ki; Bundan böyle benim sapmama izin vermene karşılık, ant içerim ki, ben de onları saptırmak için senin doğru yolunun üstüne oturacağım. Sonra elbette onlara önlerinden, arkalarından, sağlarından, sollarından sokulacağım ve sen onların çoklarını şükredenlerden bulmayacaksın.”* (A’râf, 7/16-17)
 
 ### Şükür Nimetin Artmasına Vesiledir
 
@@ -100,7 +100,7 @@ Maalesef ki insanların çoğu Allah’ın rahmetinden kovulmuş İblis ’in tu
 
 <p lang="ar" dir="rtl" class="ayet">اِعْمَلُٓوا اٰلَ دَاوُ۫دَ شُكْراًؕ وَقَلٖيلٌ مِنْ عِبَادِيَ الشَّكُورُ</p>
 
-*“Ey Dâvûd ailesi! Şükür için çaba gösterin. Kullarım arasında hakkıyla şükredenler pek azdır.”*** (Sebe', 34/13.)
+*“Ey Dâvûd ailesi! Şükür için çaba gösterin. Kullarım arasında hakkıyla şükredenler pek azdır.”* (Sebe', 34/13.)
 
 Allah-u Teâla kul kendisine şükrettiği zaman üzerindeki nimetini de artıracağını vadetmektedir ki Rabbimiz asla vadine aykırı iş yapmaz.
 
@@ -124,11 +124,11 @@ Allah-u Teâla kul kendisine şükrettiği zaman üzerindeki nimetini de artıra
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ لَمْ يَشْكُرِ الْقَلِيلَ لَمْ يَشْكُرِ اللَّهَ وَمَنْ لَمْ يَشْكُرِ النَّاسَ لَمْ يَشْكُرِ اللَّهَ وَالتَّحَدُّثُ بِنِعْمَةِ اللَّهِ شُكْرٌ وَتَرْكُهَا كُفْرٌ وَالْجَمَاعَةُ رَحْمَةٌ وَالْفُرْقَةُ عَذَابٌ</p>
 
-*“Aza şükretmeyen çoğa da şükretmez; insanlara teşekkür etmeyen Allah'a da şükretmez. Allah'ın nimetini her zaman anmak şükür, bunu terketmek ise nankörlüktür; toplulukta rahmet, tefrikada âfet vardır”*** (İbn Hanbel, IV, 278, 375)
+*“Aza şükretmeyen çoğa da şükretmez; insanlara teşekkür etmeyen Allah'a da şükretmez. Allah'ın nimetini her zaman anmak şükür, bunu terketmek ise nankörlüktür; toplulukta rahmet, tefrikada âfet vardır”* (İbn Hanbel, IV, 278, 375)
 
 <p lang="ar" dir="rtl" class="ayet">إِذَا نَظَرَ أَحَدُكُمْ إِلَى مَنْ فُضِّلَ عَلَيْهِ فِي الْمَالِ وَالْخَلْقِ، فَلْيَنْظُرْ إِلَى مَنْ هُوَ أَسْفَلَ مِنْهُ</p>
 
-“***Sizden biri mal ve yaratılış bakımından üstün olanlara bakmak isteyince, bakışını bir de kendinden aşağı olanlara çevirsin.”* (Müslim, Zühd 9)
+“*Sizden biri mal ve yaratılış bakımından üstün olanlara bakmak isteyince, bakışını bir de kendinden aşağı olanlara çevirsin.”* (Müslim, Zühd 9)
 
 Kişi her daim Allah’ın kendisine lütfettiği nimetleri hatırlamalıdır. Kanaat ve tevekkülün ne denli önemli olduğunu Allah Resulü (s.a.v) şöyle izah etmiştir:
 

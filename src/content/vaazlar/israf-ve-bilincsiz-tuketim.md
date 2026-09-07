@@ -270,7 +270,7 @@ Kaynakların israfında ülkemizde de her çeşidine rastlamak mümkündür. Oks
 
 Ülkemizde enerji israfı göz ardı edilemeyecek bir derecededir. Kamu kurum ve kuruluşlarımız da dahil olmak üzere evlerimizde, iş yerlerimizde, sokaklarımızda enerji israfı konusunda gerekli titizlik gösterilmemektedir. Halbuki israf edilen enerji, ülkenin kaynağının israfıdır.
 
-Allah Kur’an’ı Kerim’de: “Şüphesiz, Biz her şeyi bir ölçüye göre yaratmışızdır” (Kamer, 54\\49) buyuruyor. Toplamda 8 ana enerji çeşidi vardır. Bunlar potansiyel, kinetik, ısı, ışık, elektrik, kimyasal, nükleer ve ses enerjisidir. Fazla enerji fazla paradır, Fazla para israftır, çevreye ve kendimize zarardır. Enerjinin kontrolsüz kullanımı çevre kirliliğine hava kirliliğine su kirliliğine neden olur. Bunun sonucunda küresel ısınma ve sağlık problemleri meydana çıkar.
+Allah Kur’an’ı Kerim’de: “Şüphesiz, Biz her şeyi bir ölçüye göre yaratmışızdır” (Kamer, 54/49) buyuruyor. Toplamda 8 ana enerji çeşidi vardır. Bunlar potansiyel, kinetik, ısı, ışık, elektrik, kimyasal, nükleer ve ses enerjisidir. Fazla enerji fazla paradır, Fazla para israftır, çevreye ve kendimize zarardır. Enerjinin kontrolsüz kullanımı çevre kirliliğine hava kirliliğine su kirliliğine neden olur. Bunun sonucunda küresel ısınma ve sağlık problemleri meydana çıkar.
 
 Elektriği gereksiz yere kullanmamak, mümkün olduğunca geri dönüşümü olan ürünler kullanmak, suyu israf etmemek, ihtiyaçlarımızı isteklerden ön planda tutmakla başlayabiliriz ki Geç olmasın…
 

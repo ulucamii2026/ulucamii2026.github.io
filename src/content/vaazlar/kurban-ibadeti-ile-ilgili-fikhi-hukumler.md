@@ -12,7 +12,7 @@ Kurban, ibadet niyetiyle belirli vakitte, belirli nitelikleri taşıyan hayvanla
 
 <p lang="ar" dir="rtl" class="ayet">وَلِكُلِّ أُمَّةٍ جَعَلْنَا مَنسَكاً لِيَذْكُرُوا اسْمَ اللَّهِ عَلَى مَا رَزَقَهُم مِّن بَهِيمَةِ الْأَنْعَامِ فَإِلَهُكُمْ إِلَهٌ وَاحِدٌ فَلَهُ أَسْلِمُوا وَبَشِّرِ الْمُخْبِتِينَ</p>
 
-**“Her ümmet için, Allah’ın kendilerine rızk olarak verdiği hayvanlar üzerine ismini ansınlar diye kurban kesmeyi meşru kıldık. İşte sizin ilahınız bir tek ilahtır. Şu hâlde yalnız ona teslim olun. Alçak gönüllüleri müjdele!”** (Hac, 22/34)
+“Her ümmet için, Allah’ın kendilerine rızk olarak verdiği hayvanlar üzerine ismini ansınlar diye kurban kesmeyi meşru kıldık. İşte sizin ilahınız bir tek ilahtır. Şu hâlde yalnız ona teslim olun. Alçak gönüllüleri müjdele!” (Hac, 22/34)
 
 <p lang="ar" dir="rtl" class="ayet">لِيَشْهَدُوا مَنَافِـعَ لَهُمْ وَيَذْكُرُوا اسْمَ اللّٰهِ ف۪ٓي اَيَّامٍ مَعْلُومَاتٍ عَلٰى مَا رَزَقَهُمْ مِنْ بَه۪يمَةِ الْاَنْعَامِۚ فَكُلُوا مِنْهَا وَاَطْعِمُوا الْـبَٓائِسَ الْفَق۪يرَۘ</p>
 
@@ -28,7 +28,7 @@ Hükmün vacip veya sünnet-i müekkede olması, uygulamaya bir etki yapmamaktad
 
 Mihnef b. Süleym (ra) den: “Biz Arafat’ta Hz. Peygamber’in (sav) yanında vakfe yaparken şöyle buyurdu: “Ey insanlar, her sene, her ev halkına kurban kesmek vaciptir.” (İbn Mâce, Edahi, 2) bir başka hadisinde ise Kurban Bayramı günlerinde yapılacak en güzel ibadetin Allah için ihlaslı bir şekilde kurban kesmek olduğunu şöyle ifade etmiştir:
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ، اَنَّ رَسُولَ اللَّهِ ص قَالَ *‏"‏ مَا عَمِلَ ادَمِيٌّ مِنْ عَمَلٍ يَوْمَ النَّحْرِ اَحَبَّ اِلَى اللَّهِ مِنْ اِهْرَاقِ الدَّمِ اِنَّهَا لَتَاْتِي يَوْمَ الْقِيَامَةِ بِقُرُونِهَا وَاَشْعَارِهَا وَاَظْلاَفِهَا وَاِنَّ الدَّمَ لَيَقَعُ مِنَ اللَّهِ بِمَكَانٍ قَبْلَ اَنْ يَقَعَ مِنَ الاَرْضِ فَطِيبُوا بِهَا نَفْسًا ‏"‏*</p>
+<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ، اَنَّ رَسُولَ اللَّهِ ص قَالَ ‏"‏ مَا عَمِلَ ادَمِيٌّ مِنْ عَمَلٍ يَوْمَ النَّحْرِ اَحَبَّ اِلَى اللَّهِ مِنْ اِهْرَاقِ الدَّمِ اِنَّهَا لَتَاْتِي يَوْمَ الْقِيَامَةِ بِقُرُونِهَا وَاَشْعَارِهَا وَاَظْلاَفِهَا وَاِنَّ الدَّمَ لَيَقَعُ مِنَ اللَّهِ بِمَكَانٍ قَبْلَ اَنْ يَقَعَ مِنَ الاَرْضِ فَطِيبُوا بِهَا نَفْسًا ‏"‏</p>
 
 Hz. Aişe (ra) den. Peygamber (sav) şöyle buyurmuştur. “Âdemoğlu Kurban Bayramı günü, Allah katında kurban kesmekten daha sevimli bir iş yapmamıştır. Şüphesiz o kesilen kurban kıyamet günü boynuzları ve kılları ile gelir. Hiç şüphe yok ki, kurbanın kanı yere düşmeden önce Allah katında kabul görür. Öyle ise gönüllerinizi kurban ile hoş edin” (Tirmizî, Edâhî, 1; İbn Mâce, Edâhî, 3).
 
@@ -44,7 +44,7 @@ Kurban, zorunlu ihtiyaçları ve borçları dışında belirli (nisap) miktarda 
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ كَانَ لَهُ سَعَةٌ وَلَمْ يُضَحِّ فَلاَ يَقْرَبَنَّ مُصَلاَّنَا</p>
 
-**“İmkân bulduğu halde kurban kesmeyenler namazgâhımıza yaklaşmasın.”** (İbn Mâce, Edâhî, 2), Allah Resulü kurban ibadetinin imkân bulmaya, güç yetirmeye bağlı olduğunu ifade ederken, bir yandan da güç yetirenin kurban kesmesinin gerektiğine işaret etmektedir.
+“İmkân bulduğu halde kurban kesmeyenler namazgâhımıza yaklaşmasın.” (İbn Mâce, Edâhî, 2), Allah Resulü kurban ibadetinin imkân bulmaya, güç yetirmeye bağlı olduğunu ifade ederken, bir yandan da güç yetirenin kurban kesmesinin gerektiğine işaret etmektedir.
 
 Kişinin malı olmakla birlikte borcu da olsa ve borcu ile asli ihtiyaçları çıktıktan sonra nisap miktarı malı kalsa o kişi kurban keser. Fakat temel ihtiyaçları ve borçları için ayıracağı para haricinde bu kadar bir mala sahip olmayan kişinin kurban kesmesi gerekmez. Bu yüzden kendimizi sıkıntıya sokmamıza gerek yoktur.
 
@@ -70,7 +70,7 @@ Peygamberimiz bir hadiste şöyle buyurur:
 
 <p lang="ar" dir="rtl" class="ayet">وَمَنْ ذَبَحَ قَبْلُ فَإِنَّمَا هُوَ لَحْمٌ قَدَّمَهُ لأَهْلِهِ، لَيْسَ مِنَ النُّسُكِ فِي شَىْءٍ</p>
 
-**“Bu günümüzde yapacağımız ilk şey bayram namazını kılmak, sonra (evlerimize) dönüp kurban kesmek olacaktır. Her kim böyle yaparsa sünnetimize uygun iş yapmış olur. Kim (namazdan) önce kurban keserse, o ancak ailesine bir et sunmuş olur. Bu kestiği kurban olmaz”** (Buhari, “Edahî”,1) buyurmuşlardır.
+“Bu günümüzde yapacağımız ilk şey bayram namazını kılmak, sonra (evlerimize) dönüp kurban kesmek olacaktır. Her kim böyle yaparsa sünnetimize uygun iş yapmış olur. Kim (namazdan) önce kurban keserse, o ancak ailesine bir et sunmuş olur. Bu kestiği kurban olmaz” (Buhari, “Edahî”,1) buyurmuşlardır.
 
 ## Kurbanın Kesimi
 
@@ -78,31 +78,31 @@ Rahmet Elçisi, hayvanların kesimi esnasında onlara eziyet verilmemesi için, 
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللّٰهَ كَتَبَ الإِحْسَانَ عَلَى كُلِّ شَىْءٍ فَإِذَا قَتَلْتُمْ فَأَحْسِنُوا الْقِتْلَةَ وَإِذَا ذَبَحْتُمْ فَأَحْسِنُوا الذَّبْحَ وَلْيُحِدَّ أَحَدُكُمْ شَفْرَتَهُ فَلْيُرِحْ ذَبِيحَتَهُ</p>
 
-**“Allah her işi güzel yapmayı istemiştir. Şu hâlde siz (meşru bir sebeple) öldürürken de (işkence etmeden) güzelce öldürün. Bir hayvanı kestiğinizde de kesimini güzel yapın. (Biriniz hayvan keseceği zaman) bıçağını bilesin ve kestiği hayvanı rahatlatsın!”** (Müslim, “Sayd”, 57; Ebû Dâvûd, “Dahâyâ”, 10-11; İbn Mâce, “Zebaih” 3.)
+“Allah her işi güzel yapmayı istemiştir. Şu hâlde siz (meşru bir sebeple) öldürürken de (işkence etmeden) güzelce öldürün. Bir hayvanı kestiğinizde de kesimini güzel yapın. (Biriniz hayvan keseceği zaman) bıçağını bilesin ve kestiği hayvanı rahatlatsın!” (Müslim, “Sayd”, 57; Ebû Dâvûd, “Dahâyâ”, 10-11; İbn Mâce, “Zebaih” 3.)
 
 Bu nedenle Rahmet Elçisi, bıçağın iyice keskinleştirilmesi, hayvana gösterilmemesi, kesim işinin hızlı yapılması ve böylece hayvanın acı çekmeden can vermesinin sağlanması talimatını verdi. (İbn Mâce, Zebâih, 3) Bizzat kendisi de iyi kesmesi için bıçağını bilettirdi. (Müslim, Edâhî, 19) Sonra kurban olarak kesmesi için kendisine iki koç getirildi. Onları kıbleye doğru yatırdı. Keserken besmele çekti, tekbir getirdi ve Ve;
 
 <p lang="ar" dir="rtl" class="ayet">اِنّ۪ي وَجَّهْتُ وَجْهِيَ لِلَّذ۪ي فَطَرَ السَّمٰوَاتِ وَالْاَرْضَ حَن۪يفًا وَمَآ اَنَا۬ مِنَ الْمُشْرِك۪ينَ</p>
 
-**“Ben hakka yönelen birisi olarak yüzümü gökleri ve yeri yaratana çevirdim, ben Allah’a ortak koşanlardan (müşriklerden) değilim.”** (En’âm, 6/79)
+“Ben hakka yönelen birisi olarak yüzümü gökleri ve yeri yaratana çevirdim, ben Allah’a ortak koşanlardan (müşriklerden) değilim.” (En’âm, 6/79)
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اِنَّ صَلَات۪ي وَنُسُك۪ي وَمَحْيَايَ وَمَمَات۪ي لِلّٰهِ رَبِّ الْعَالَم۪ينَ</p>
 
-**“Şüphesiz benim namazım, ibadetim (Kurbanım) hayatım ve ölümüm hep âlemlerin Rabbi olan Allah içindir”** (En’âm, 6/162) ayetlerini okuyarak dua etti.
+“Şüphesiz benim namazım, ibadetim (Kurbanım) hayatım ve ölümüm hep âlemlerin Rabbi olan Allah içindir” (En’âm, 6/162) ayetlerini okuyarak dua etti.
 
 Bu âyetler, İslâm’daki kurbanlar ile Câhiliye dönemindeki kurbanlar arasındaki en önemli farkı göstermekteydi. Asırlardır kurbanlar putlara adanmış, şirk içerisinde kesilmişti. Şimdi ise, sadece yaratan Allah’ın adıyla, O’nun adına kurban ediliyorlardı. Ardından Peygamber Efendimiz,
 
-**“Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve senin içindir.”** dedi. (İbn Mâce, Edâhî, 1)
+“Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve senin içindir.” dedi. (İbn Mâce, Edâhî, 1)
 
 Nitekim kurban keserken –Hz. Peygamber’in bize öğrettiği gibi– bu samimi duygularımızı şöyle dile getiririz:
 
-**“Bismillahi Allahu ekber! = Allah’ın adıyla, Allah en büyüktür!”**
+“Bismillahi Allahu ekber! = Allah’ın adıyla, Allah en büyüktür!”
 
 Yani, bu kurbanımı, Yüce Allah’ın adı ile O’nun adına ve sadece O’nun rızası için kesiyorum. Çünkü en yüce olan, her şeyin yaratıcısı, yaşatıcısı ve koruyucusu olan sadece O’dur. Bundan sonra da şöyle deriz:
 
-**“Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve Senin içindir.”**
+“Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve Senin içindir.”
 
-Yani; **“Ey Rabb’imiz! Bu hayvanı sen yarattın, onu satın alma gücünü ve imkânını bana sen verdin. Çeşitli ihtiyaçlarımızı gidermek için bu hayvanları bize itaatkâr kılan da Sensin… O halde, senin bize olan sonsuz nimetlerine bir şükür ifadesi olarak bu kurbanımı sadece senin için, senin rızan için kesiyor ve onu sadece sana sunuyorum. Kabul buyur!”**
+Yani; “Ey Rabb’imiz! Bu hayvanı sen yarattın, onu satın alma gücünü ve imkânını bana sen verdin. Çeşitli ihtiyaçlarımızı gidermek için bu hayvanları bize itaatkâr kılan da Sensin… O halde, senin bize olan sonsuz nimetlerine bir şükür ifadesi olarak bu kurbanımı sadece senin için, senin rızan için kesiyor ve onu sadece sana sunuyorum. Kabul buyur!”
 
 ## Kurbanla İlgili Soru ve Cevaplar
 
@@ -132,7 +132,7 @@ Esas olarak kurban namazı diye bir namaz yoktur. Bu namazın dinî bir gereklil
 
 Vekâlet yoluyla kurban kesilebilir mi? Kişinin bulunduğu şehir veya ülke dışında vekâletle kurban kestirmesinin hükmü nedir?
 
-Kişi, kurbanını bizzat kesebileceği gibi vekâlet yoluyla başkasına da kestirebilir. Zira kurban, hac ve zekât gibi mal ile yapılan bir ibadettir; mal ile yapılan ibadetlerde ise vekâlet caizdir (Kâsânî, Bedâi‘, V, 67; Mevsılî, el-İhtiyâr, IV, 263-265; Remlî, Nihâyetü’l-muhtâc, VIII, 132). Nitekim Hz. Ali’nin (r.a.) şöyle dediği rivayet edilmiştir: **“Resûlullah (s.a.s.), develer kesilirken başında durmamı, derilerini ve sırtlarındaki çullarını paylaştırmamı emretti ve onlardan herhangi bir şeyi kasap ücreti olarak vermeyi bana yasakladı ve ‘kasap ücretini biz kendimiz veririz’** buyurdu.” (Buhârî, Hac, 120; Ebû Dâvûd, Menâsik, 19)
+Kişi, kurbanını bizzat kesebileceği gibi vekâlet yoluyla başkasına da kestirebilir. Zira kurban, hac ve zekât gibi mal ile yapılan bir ibadettir; mal ile yapılan ibadetlerde ise vekâlet caizdir (Kâsânî, Bedâi‘, V, 67; Mevsılî, el-İhtiyâr, IV, 263-265; Remlî, Nihâyetü’l-muhtâc, VIII, 132). Nitekim Hz. Ali’nin (r.a.) şöyle dediği rivayet edilmiştir: “Resûlullah (s.a.s.), develer kesilirken başında durmamı, derilerini ve sırtlarındaki çullarını paylaştırmamı emretti ve onlardan herhangi bir şeyi kasap ücreti olarak vermeyi bana yasakladı ve ‘kasap ücretini biz kendimiz veririz’ buyurdu.” (Buhârî, Hac, 120; Ebû Dâvûd, Menâsik, 19)
 
 Vekâlet, sözlü veya yazılı olarak ya da telefon, internet, faks ve benzeri iletişim araçları vasıtasıyla verilebilir. Vekil tayin edilen kişi veya kurum aldığı vekâleti gereği gibi yerine getirmelidir. Kurbanda önemli olan, kişinin niyetinin Allah için olması ve vekâleten kendisi adına kurbanın kesilmesidir.
 

@@ -74,7 +74,7 @@ Mekke Müşrikleri, Peygamberimize hakarette bulunmuş, alay etmiş hatta ölüm
 
 <p lang="ar" dir="rtl" class="ayet">مَا تَرَوْنَ أَنِّى صَانِعٌ بِكُمْ؟</p>
 
-“Ey Kureyşliler, şimdi benden size nasıl davranacağımı bekliyorsunuz?” Mekkeliler başlarını önlerine eğerek cevap verdiler: “Senden iyilik bekliyoruz. Çünkü sen asil bir kardeş ve asil bir kardeş oğlusun.” Resûl-i Ekrem (s.a.s.), **“O hâlde tıpkı Yusuf Peygamber gibi ben de,
+“Ey Kureyşliler, şimdi benden size nasıl davranacağımı bekliyorsunuz?” Mekkeliler başlarını önlerine eğerek cevap verdiler: “Senden iyilik bekliyoruz. Çünkü sen asil bir kardeş ve asil bir kardeş oğlusun.” Resûl-i Ekrem (s.a.s.), “O hâlde tıpkı Yusuf Peygamber gibi ben de,
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ لَا تَثْر۪يبَ عَلَيْكُمُ الْيَوْمَۜ يَغْفِرُ اللّٰهُ لَكُمْۘ وَهُوَ اَرْحَمُ الرَّاحِم۪ينَ</p>
 

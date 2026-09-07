@@ -8,7 +8,7 @@ pdf: "/vaazlar/sabir-aydinliktir.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">عَنْ أَنَسِ بْنِ مَالِكٍ - رضى الله عنه - قَالَ مَرَّ النَّبِىُّ صلى الله عليه وسلم بِامْرَأَةٍ تَبْكِى عِنْدَ قَبْرٍ فَقَالَ اتَّقِى اللَّهَ وَاصْبِرِى . قَالَتْ إِلَيْكَ عَنِّى ، فَإِنَّكَ لَمْ تُصَبْ بِمُصِيبَتِى ، وَلَمْ تَعْرِفْهُ . فَقِيلَ لَهَا إِنَّهُ النَّبِىُّ صلى الله عليه وسلم . فَأَتَتْ بَابَ النَّبِىِّ صلى الله عليه وسلم فَلَمْ تَجِدْ عِنْدَهُ بَوَّابِينَ فَقَالَتْ لَمْ أَعْرِفْكَ . فَقَالَ إِنَّمَا الصَّبْرُ عِنْدَ الصَّدْمَةِ الأُولَى</p>
 
-Enes b. Mâlik anlatıyor: “Hz. Peygamber bir kabrin başında ağlayan bir kadına rastladı ve ***‘Allah’tan kork ve sabret*.’ buyurdu. Kadın, “Git başımdan, başıma gelen musibeti sen yaşamadın!” diye cevap verdi. Hz. Peygamber’i tanımıyordu. Kendisine, onun Peygamber olduğu söylendi. Bunun üzerine kadın Hz. Peygamber’in kapısına gitti. Orada kapıcılarla da karşılaşmadı. “Seni tanımıyordum.” dedi. Bunun üzerine Peygamber Efendimiz, ***‘Sabır ancak (musibetin) ilk vurduğu андadır.’*** buyurdu. ( Buhârî, Cenâiz, 31)
+Enes b. Mâlik anlatıyor: “Hz. Peygamber bir kabrin başında ağlayan bir kadına rastladı ve *‘Allah’tan kork ve sabret*.’ buyurdu. Kadın, “Git başımdan, başıma gelen musibeti sen yaşamadın!” diye cevap verdi. Hz. Peygamber’i tanımıyordu. Kendisine, onun Peygamber olduğu söylendi. Bunun üzerine kadın Hz. Peygamber’in kapısına gitti. Orada kapıcılarla da karşılaşmadı. “Seni tanımıyordum.” dedi. Bunun üzerine Peygamber Efendimiz, ***‘Sabır ancak (musibetin) ilk vurduğu андadır.’*** buyurdu. ( Buhârî, Cenâiz, 31)
 
 Belâ ve musibetlere karşı direnç göstermek demek olan sabır, müminlerin hayatları boyunca en çok ihtiyaç duydukları erdemlerden biridir. Her şeyden önce sabır, tam anlamıyla iman edebilmenin, onu koruyabilmenin ilk şartıdır. Sabır, İslâm’ın on üç yıl süren Mekke döneminin en bariz vasfıydı. Sabır İslâm’ı seçen Habbâbların, Ammârların, Bilâllerin her türlü baskı ve işkencelere rağmen imanlarını koruma mücadelesiydi. Belki de bu yüzden Hz. Peygamber, “İman nedir?” sorusuna ***“Sabırlı ve hoşgörülü olmak”*** diyerek cevap vermişti. ( İbn Hanbel, IV, 386) Bu yüzden Abdullah b. Mes’ûd, sabrı “imanın yarısı” saymıştı. (Hâkim, Müstedrek, IV, 1374 (2/446) Hz. Ali ise sabrı, vücuttaki başa benzetmişti. Nasıl ki, başsız bir vücudun yaşaması mümkün değilse, sabır olmaksızın imanın kemale ermesi de imkânsızdı. (Abdurrezzâk, Musannef, XI, 469) (Hadislerle İslâm Cilt 3 Sayfa 207)
 
@@ -16,15 +16,15 @@ Sabrın Önemi: Sabır kelime olarak: “tutmak, tahammül etmek, beklemek, zorl
 
 <p lang="ar" dir="rtl" class="ayet">وَلَنَبْلُوَنَّكُمْ بِشَيْءٍ مِنَ الْخَوفْ وَالْجُوعِ وَنَقْصٍ مِنَ الْأَمْوَالِ وَالْأَنْفُسِ وَالثَّمَرَاتِ وَبَشِّرِ الصَّابِرِينَ</p>
 
-*“Sizi korku, açlık, mallardan, canlardan ve ürünlerden biraz eksiltmekle elbette deneriz. Sabredenleri müjdele!”*** ( Bakara, 2/155)
+*“Sizi korku, açlık, mallardan, canlardan ve ürünlerden biraz eksiltmekle elbette deneriz. Sabredenleri müjdele!”* ( Bakara, 2/155)
 
 <p lang="ar" dir="rtl" class="ayet">وَلَمَنْ صَبَرَ وَغَفَرَ إِنَّ ذَلِكَ لَمِنْ عَزْمِ الْأُمُورِ</p>
 
-*“Fakat sabredip (kendisine yapılan kötülüğü) bağışlayanın işi, işte bu, benimsenmeye değer işlerdendir.”*** (Şura, 42/43)
+*“Fakat sabredip (kendisine yapılan kötülüğü) bağışlayanın işi, işte bu, benimsenmeye değer işlerdendir.”* (Şura, 42/43)
 
 <p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلاَةِ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ</p>
 
-*“Ey iman edenler! Başınıza gelecek her şeye sabretmekle ve namaz kılmakla Allah’tan yardım isteyin. Allah sabredenlerle beraberdir***. ( Bakara, 2/153)
+*“Ey iman edenler! Başınıza gelecek her şeye sabretmekle ve namaz kılmakla Allah’tan yardım isteyin. Allah sabredenlerle beraberdir*. ( Bakara, 2/153)
 
 <p lang="ar" dir="rtl" class="ayet">اَمْ حَسِبْتُمْ اَنْ تَدْخُلُوا الْجَنَّةَ وَلَمَّا يَعْلَمِ اللَّهُ الَّذِينَ جَاهَدُوا مِنْكُمْ وَيَعْلَمَ الصَّابِرينَ</p>
 
@@ -38,7 +38,7 @@ Ensar’dan bazı kişiler Rasûlullah’tan bir şeyler istediler. O da verdi. 
 
 <p lang="ar" dir="rtl" class="ayet">مَا يَكُونُ عِنْدِي مِنْ خَيْرٍ فَلَنْ أَدَّخِرَهُ عَنْكُمْ، وَمَنْ يَسْتَعْفِفْ يُعِفَّهُ اللَّهُ، وَمَنْ يَسْتَغْنِ يُغْنِهِ اللَّهُ وَمَنْ يَتَصَبَّرْ يُصَبِّرْهُ اللَّهُ، وَمَا أُعْطِيَ أَحَدٌ عَطَاءً خَيْرًا وَأَوْسَعَ مِنَ الصَّبْرِ</p>
 
-*“Yanımda bir şeyler olsaydı, onları sizden esirgemezdim. Kim iffetli davranırsa, Allah onun iffetini arttırır. Kim tok gözlü olmak isterse, Allah onu muhtaç olmaktan kurtarır. Kim de sabretmeye gayret ederse, Allah ona sabır verir. Hiç bir kimseye, sabırdan daha hayırlı ve büyük bir lütufta bulunulmamıştır.”(*** Buhârî, Zekât, 50)
+*“Yanımda bir şeyler olsaydı, onları sizden esirgemezdim. Kim iffetli davranırsa, Allah onun iffetini arttırır. Kim tok gözlü olmak isterse, Allah onu muhtaç olmaktan kurtarır. Kim de sabretmeye gayret ederse, Allah ona sabır verir. Hiç bir kimseye, sabırdan daha hayırlı ve büyük bir lütufta bulunulmamıştır.”(* Buhârî, Zekât, 50)
 
 Peygamberimiz başka bir hadiste şöyle buyurdu:
 
@@ -52,7 +52,7 @@ Kızı (Zeynep), Hz. Peygamber’e :
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ لِلَّهِ مَا أَخَذَ، وَلَهُ مَا أَعْطَى، وَكُلٌّ عِنْدَهُ بِأَجَلٍ مُسَمًّى، فَلْتَصْبِرْ، وَلْتَحْتَسِبْ</p>
 
-*“Alan da veren de Allah’tır. O’nun katında her şeyin belli bir vakti vardır. Sabretsin ve ecrini Allah’tan beklesin”*** buyurarak kızına selâm gönderdi.
+*“Alan da veren de Allah’tır. O’nun katında her şeyin belli bir vakti vardır. Sabretsin ve ecrini Allah’tan beklesin”* buyurarak kızına selâm gönderdi.
 
 Bunun üzerine Kızı, Hz. Peygamber’e ;
 
@@ -66,17 +66,17 @@ Durumu gören Sa’d İbni Ubâde: «Ey Allah’ın Rasûlü, bu ne haldir?» de
 
 <p lang="ar" dir="rtl" class="ayet">هَذِهِ رَحْمَةٌ جَعَلَهَا اللَّهُ فِي قُلُوبِ عِبَادِهِ، وَإِنَّمَا يَرْحَمُ اللَّهُ مِنْ عِبَادِهِ الرُّحَمَاءَ</p>
 
-*-* ***“Bu, Allah’ın, dilediği kullarının kalbine koyduğu bir rahmettir. Zaten Allah ancak, merhametli kullarına rahmet eder”*** (Buhârî, Cenâiz, 33)
+- ***“Bu, Allah’ın, dilediği kullarının kalbine koyduğu bir rahmettir. Zaten Allah ancak, merhametli kullarına rahmet eder”*** (Buhârî, Cenâiz, 33)
 
 Rasûlullah, Allah Teâlâ şöyle buyurdu demiştir:
 
 <p lang="ar" dir="rtl" class="ayet">مَا لِعَبْدِي الْمُؤْمِنِ عِنْدِي جَزَاءٌ إِذَا قَبَضْتُ صَفِيَّهُ مِنْ أَهْلِ الدُّنْيَا ثُمَّ احْتَسَبَهُ إِلَّا الْجَنَّةُ</p>
 
-*“Dünyada sevdiği bir dostunu aldığım zaman, (sabredip) ecrini Allah’tan bekleyen mü’min kulumun katımdaki karşılığı cennettir.”*** (Buhârî, Rikak, 6)
+*“Dünyada sevdiği bir dostunu aldığım zaman, (sabredip) ecrini Allah’tan bekleyen mü’min kulumun katımdaki karşılığı cennettir.”* (Buhârî, Rikak, 6)
 
 Ebu Sinân anlatıyor: "Oğlum Sinan'ı defnettiğimde kabrin kenarında Ebu Talha el-Havlani oturuyordu. Defin işinden çıkınca bana: "Sana müjde vermeyeyim mi?'' dedi. Ben: "Tabii, söyle!'' dedim.
 
-Ebu Musa el-Eş'ari’den Rasulullah’ın (sav) şöyle dediği bildirilmiştir: ***"Bir kulun çocuğu ölürse, Allah meleklere şöyle söyler: Kulumun çocuğunu kabzettiniz mi?" "Evet" derler. "Yani kalbinin meyvesini elinden mi aldınız?'' Melekler yine: "Evet" derler. Allah tekrar sorar: "Kulum (bu esnâda) ne dedi?'' "Sana hamdetti ve istircâda bulundu'' derler. Bunun üzerine Allah Teâla hazretleri şöyle emreder: "Öyleyse, kulum için cennette bir köşk inşa edin ve bunu Beytu'l-hamd (hamd evi) diye isimlendirin.”* (Tirmizî, Cenâiz, 36)
+Ebu Musa el-Eş'ari’den Rasulullah’ın (sav) şöyle dediği bildirilmiştir: *"Bir kulun çocuğu ölürse, Allah meleklere şöyle söyler: Kulumun çocuğunu kabzettiniz mi?" "Evet" derler. "Yani kalbinin meyvesini elinden mi aldınız?'' Melekler yine: "Evet" derler. Allah tekrar sorar: "Kulum (bu esnâda) ne dedi?'' "Sana hamdetti ve istircâda bulundu'' derler. Bunun üzerine Allah Teâla hazretleri şöyle emreder: "Öyleyse, kulum için cennette bir köşk inşa edin ve bunu Beytu'l-hamd (hamd evi) diye isimlendirin.”* (Tirmizî, Cenâiz, 36)
 
 Hz.Âişe Rasûlullah’a tâun hastalığını sormuş, o da şöyle buyurmuştur:
 
@@ -96,13 +96,13 @@ Rasulullah buyurdu ki:
 
 <p lang="ar" dir="rtl" class="ayet">إِذَا أَرَادَ اللَّهُ بِعَبْدِهِ خَيْرًا عَجَّلَ لَهُ الْعُقُوبَةَ فِي الدُّنْيَا ، وإِذَا أَرَادَ اللَّهُ بِعَبْدِهِ الشَّرَّ أَمْسَكَ عَنْهُ بِذَنْبِهِ حَتَّى يُوَافِيَ بِهِ يَوْمَ الْقِيَامَةِ</p>
 
-*“Allah, iyiliğini dilediği kulunun cezasını dünyada verir. Fenalığını dilediği kulunun cezasını da, kıyamet günü günahını yüklenip gelsin diye, dünyada vermez.”*** (Tirmizî, Zühd, 57)
+*“Allah, iyiliğini dilediği kulunun cezasını dünyada verir. Fenalığını dilediği kulunun cezasını da, kıyamet günü günahını yüklenip gelsin diye, dünyada vermez.”* (Tirmizî, Zühd, 57)
 
 Rasulullah buyurdu ki;
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ عِظَمَ الْجَزَاءِ مَعَ عِظَمِ الْبَلَاءِ ، وَإِنَّ اللَّهَ تَعَالَى إِذَا أَحَبَّ قَوْمًا اِبْتَلَاهُمْ ، فَمَنْ رَضِيَ فَلَهُ الرِّضَا ، وَمَنْ سَخِطَ فَلَهُ السُّخْطُ</p>
 
-*“Mükâfâtın büyüklüğü, belânın şiddetine göredir. Allah, sevdiği topluluğu imtihana tabi tutar. Kim başına gelene rızâ gösterirse Allah ondan hoşnut olur. Kim de rızâ göstermezse, Allah' ın gazabına uğrar.”*** (Tirmizî, Zühd, 57)
+*“Mükâfâtın büyüklüğü, belânın şiddetine göredir. Allah, sevdiği topluluğu imtihana tabi tutar. Kim başına gelene rızâ gösterirse Allah ondan hoşnut olur. Kim de rızâ göstermezse, Allah' ın gazabına uğrar.”* (Tirmizî, Zühd, 57)
 
 Rasûlullah şöyle buyurdu;
 
@@ -114,7 +114,7 @@ Rasûlullah buyurdu ki;
 
 <p lang="ar" dir="rtl" class="ayet">مَا يَزَالُ الْبَلَاءُ بِالْمُؤْمِنِ وَالْمُؤْمِنَةِ فِي نَفْسِهِ وَوَلَدِهِ وَمَالِهِ حَتَّى يَلْقَى اللَّهُ تَعَالَى وَمَا عَلَيْهِ خَطِيئَةٌ</p>
 
-*“Erkek olsun, kadın olsun mü’min, Allah’a günahsız olarak kavuşuncaya kadar kendisinden, çoluk çocuğundan, malından belâ eksik olmaz.”*** (Tirmizi, Zühd, 57)
+*“Erkek olsun, kadın olsun mü’min, Allah’a günahsız olarak kavuşuncaya kadar kendisinden, çoluk çocuğundan, malından belâ eksik olmaz.”* (Tirmizi, Zühd, 57)
 
 İlk Anda Sabretmek:
 
@@ -122,7 +122,7 @@ Hz. Peygamber, (çocuğunun) mezarı başında (bağıra-çağıra) ağlayan bir
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّمَا الصَّبْرُ عِنْدَ الصَّدْمَةِ الْأُولَى</p>
 
-*‘Sabır dediğin, felâketle karşılaştığın ilk anda dayanmaktır.’*** (Buhârî, Cenâiz, 31)
+*‘Sabır dediğin, felâketle karşılaştığın ilk anda dayanmaktır.’* (Buhârî, Cenâiz, 31)
 
 İnsanların Ezalarına Sabretmek:
 
@@ -186,7 +186,7 @@ Rasulullah şöyle buyurdu:
 
 <p lang="ar" dir="rtl" class="ayet">مَا مِنْ مُسْلِمٍ يُصِيبُهُ أَذًى ، شَوْكَةٌ فَمَا فَوْقَهَا إلَّا كَفَّرَ اللَّهُ بِهَا سَيِّئَاتِهِ ، وَحَطَّتْ عنْهُ ذُنُوبُهُ كَمَا تَحُطُّ الشَّجَرَةُ وَرَقَهَا</p>
 
-*- “Evet, öyledir. Allah, ayağına batan bir diken veya başına gelen daha büyük bir sıkıntıdan dolayı müslümanın günahlarını bağışlar. O müslümanın günahları ağaç yaprakları gibi dökülür.”*** (Buhârî, Merdâ,3)
+*- “Evet, öyledir. Allah, ayağına batan bir diken veya başına gelen daha büyük bir sıkıntıdan dolayı müslümanın günahlarını bağışlar. O müslümanın günahları ağaç yaprakları gibi dökülür.”* (Buhârî, Merdâ,3)
 
 Musibet Anında Ölüm İstenmez
 
@@ -215,13 +215,13 @@ Gazalardan birinde Rasulullah güneş tepe noktasından batıya doğru meyledinc
 
 <p lang="ar" dir="rtl" class="ayet">أَيُّهَا النَّاسُ، لَا تَتَمَنَّوْا لِقَاءَ الْعَدُوِّ، وَسَلُوا اللَّهَ الْعَافِيَةَ، فَإِذَا لَقِيتُمُوهُمْ فَاصْبِرُوا، وَاعْلَمُوا أَنَّ الْجَنَّةَ تَحْتَ ظِلاَلِ السُّيُوفِ</p>
 
-*“Ey müslümanlar! Düşmanla karşılaşmayı arzu etmeyiniz; Allahtan âfiyet dileyiniz. Fakat düşmanla karşılaşınca da sabrediniz ve biliniz ki, cennet kılıçların gölgesi altındadır”***
+*“Ey müslümanlar! Düşmanla karşılaşmayı arzu etmeyiniz; Allahtan âfiyet dileyiniz. Fakat düşmanla karşılaşınca da sabrediniz ve biliniz ki, cennet kılıçların gölgesi altındadır”*
 
 Sonra şöyle dua etti:
 
 <p lang="ar" dir="rtl" class="ayet">اَللَّهُمَّ مُنْزِلَ الْكِتَابِ، وَمُجْرِيَ السَّحَابِ، وَهَازِمَ الْأَحْزَابِ، اِهْزِمْهُمْ وَانْصُرْنَا عَلَيْهِمْ</p>
 
-*“Ey kitab’ı (Kur’an’ı) indiren, bulutları gökyüzünde gezdiren ve düşman saflarını darmadağın eden Allah’ım, şu düşmanı perişan et ve bizi onlara karşı muzaffer kıl!”*** ( Buhârî,Cihâd, 112 )
+*“Ey kitab’ı (Kur’an’ı) indiren, bulutları gökyüzünde gezdiren ve düşman saflarını darmadağın eden Allah’ım, şu düşmanı perişan et ve bizi onlara karşı muzaffer kıl!”* ( Buhârî,Cihâd, 112 )
 
 Sonuç
 
@@ -231,6 +231,6 @@ Ne var ki, bolluklar içinde sebat edip yok olmamak, zorluklar karşısında dir
 
 “Resûlullah ile beraber zorluklarla imtihan edildik ve sabrettik. Hz. Peygamber zamanından sonra ise bollukla imtihan edildik, fakat sabredemedik.” ( Tirmizî, Sıfatü’l-kıyâme, 30)
 
-Sabır, haksızlığa boyun eğmek, tepkisiz kalmak değildir. Asıl sabır, dünyanın süsü, nefislerin ayartması ve batıl yolda olanların çokluğuna rağmen hayır yapmak, hakkı söylemek ve bu uğurda karşılaşılan zorluk ve sıkıntılara dayanmaktır. (Elmalılı, Hak Dini, IX, 6081) Başka bir deyişle sabır, zillete razı olup hiçbir şey yapmamak değil bu duruma düşmemek için baştan tedbir almaktır. Örneğin cehalet zilletine düşmemek için ilim yolundaki güçlükleri göğüslemek; düşman çizmesinin altında ezilmemek için savaşın sıkıntılarına katlanmak gerçek anlamda sabırdır. Öte yandan Hz. Peygamber, Müslümanlardan birinin bir kötülük gördüğünde eliyle düzeltmesini, yapamıyorsa diliyle düzeltmesini, bu da mümkün değilse en azından kalbiyle nefret beslemesini emretmiş, (Müslim, İmân, 78) yani kötülük karşısında tepkisiz bir Müslüman’ın olamayacağını belirtmiştir. Zira bir mümin iyiliği emredip kötülükten sakındırırken hoşa gitmeyen birçok olayla karşılaşacak, bunlara sabretmesi gerekecek ve Lokman’ın (a.s) oğluna verdiği şu öğüdünü aklından çıkarmayacaktır: ***“Yavrum! Namazı dosdoğru kıl. İyiliği emret. Kötülükten alıkoy. Başına gelen musibetlere karşı sabırlı ol. Çünkü bunlar kesin olarak emredilmiş işlerdendir.”* (Lokman, 31/17) (Hadislerle İslâm Cilt 3 Sayfa 213 )
+Sabır, haksızlığa boyun eğmek, tepkisiz kalmak değildir. Asıl sabır, dünyanın süsü, nefislerin ayartması ve batıl yolda olanların çokluğuna rağmen hayır yapmak, hakkı söylemek ve bu uğurda karşılaşılan zorluk ve sıkıntılara dayanmaktır. (Elmalılı, Hak Dini, IX, 6081) Başka bir deyişle sabır, zillete razı olup hiçbir şey yapmamak değil bu duruma düşmemek için baştan tedbir almaktır. Örneğin cehalet zilletine düşmemek için ilim yolundaki güçlükleri göğüslemek; düşman çizmesinin altında ezilmemek için savaşın sıkıntılarına katlanmak gerçek anlamda sabırdır. Öte yandan Hz. Peygamber, Müslümanlardan birinin bir kötülük gördüğünde eliyle düzeltmesini, yapamıyorsa diliyle düzeltmesini, bu da mümkün değilse en azından kalbiyle nefret beslemesini emretmiş, (Müslim, İmân, 78) yani kötülük karşısında tepkisiz bir Müslüman’ın olamayacağını belirtmiştir. Zira bir mümin iyiliği emredip kötülükten sakındırırken hoşa gitmeyen birçok olayla karşılaşacak, bunlara sabretmesi gerekecek ve Lokman’ın (a.s) oğluna verdiği şu öğüdünü aklından çıkarmayacaktır: *“Yavrum! Namazı dosdoğru kıl. İyiliği emret. Kötülükten alıkoy. Başına gelen musibetlere karşı sabırlı ol. Çünkü bunlar kesin olarak emredilmiş işlerdendir.”* (Lokman, 31/17) (Hadislerle İslâm Cilt 3 Sayfa 213 )
 
 Allah’ım, sabırla imtihan olunan bizlere, dayanma gücü ver. Zorluklar karşısında metin olmamızı sağla. Sabredenlere verdiğin mükâfatları, bizlere de nasip eyle. Bizi sabırla, anlayışla ve merhametle donat. Hayatın zorluklarında, senin rızanı kazanmayı nasip et. Amin.

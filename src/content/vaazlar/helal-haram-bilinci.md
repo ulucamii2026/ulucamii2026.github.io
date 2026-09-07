@@ -104,7 +104,7 @@ Son olarak Allah Rasülü (sav)’in bir uyarısıyla sohbetimize son vermek ist
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ عَنْ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ يَأْتِي عَلَى النَّاسِ زَمَانٌ لَا يُبَالِي الْمَرْءُ مَا أَخَذَ مِنْهُ أَمِنَ الْحَلَالِ أَمْ مِنْ الْحَرَامِ</p>
 
-Ebu Hureyre (r.a) den; Rasulullah (a.s) şöyle buyurmuştur: "Öyle bir zaman gelecek ki kişi aldığının helal mi haram mı olduğuna dikkat etmeyecektir. *(Buhârî, Büyû', 1918)***
+Ebu Hureyre (r.a) den; Rasulullah (a.s) şöyle buyurmuştur: "Öyle bir zaman gelecek ki kişi aldığının helal mi haram mı olduğuna dikkat etmeyecektir. *(Buhârî, Büyû', 1918)*
 
 Netice olarak, basit ve geçici dünya menfaatlerimiz için sonsuza dek sürecek olan ahiret hayatımızı mahvetmeyelim. Etrafımızdaki insanların hak ve hukuklarına riayet edelim. İnsanların gözünden kaçırabildiklerimizin yanımıza kâr kalacağını hiç zannetmeyelim.
 

@@ -46,7 +46,7 @@ Hükmün vacip veya sünnet-i müekkede olması, uygulamaya bir etki yapmamaktad
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ مِخْنَفِ بْنِ سُلَيْمٍ، قَالَ كُنَّا وُقُوفًا عِنْدَ النَّبِيِّ ـ ص ـ بِعَرَفَةَ فَقَالَ ‏"‏ يَا أَيُّهَا النَّاسُ إِنَّ عَلَى كُلِّ أَهْلِ بَيْتٍ فِي كُلِّ عَامٍ أُضْحِيَّةً ‏"‏‏‏</p>
 
-Mihnef b. Süleym (r,a.) den: “***Biz Arafat’ta Hz. Peygamber’in (sav) yanında vakfe yaparken şöyle buyurdu: “Ey insanlar, her sene, her ev halkına kurban kesmek vaciptir*.” (İbn Mâce, Edahi, 2)
+Mihnef b. Süleym (r,a.) den: “*Biz Arafat’ta Hz. Peygamber’in (sav) yanında vakfe yaparken şöyle buyurdu: “Ey insanlar, her sene, her ev halkına kurban kesmek vaciptir*.” (İbn Mâce, Edahi, 2)
 
 Bir başka hadisinde ise kurban bayramı günlerinde yapılacak en güzel ibadetin Allah için ihlaslı bir şekilde kurban kesmek olduğunu şöyle ifade etmiştir:
 
@@ -58,7 +58,7 @@ Ebu Hüreyre (ra) den rivayetle Hz. Peygamber (s.a.v) şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">‏ مَنْ كَانَ لَهُ سَعَةٌ وَلَمْ يُضَحِّ فَلاَ يَقْرَبَنَّ مُصَلاَّنَ‏‏</p>
 
-*“Kim imkânı olduğu halde kurban kesmezse bizim mescidimize yaklaşmasın.”*** (İbn Mâce, Edahi, 2)
+*“Kim imkânı olduğu halde kurban kesmezse bizim mescidimize yaklaşmasın.”* (İbn Mâce, Edahi, 2)
 
 ### Kurban Kesme Yükümlülüğü
 
@@ -94,7 +94,7 @@ Peygamberimiz (s.a.v) bir hadiste şöyle buyurur:
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ أَوَّلَ مَا نَبْدَأُ بِهِ فِي يَوْمِنَا هَذَا أَنْ نُصَلِّيَ ثُمَّ نَرْجِعَ فَنَنْحَرَ، مَنْ فَعَلَهُ فَقَدْ أَصَابَ سُنَّتَنَا، وَمَنْ ذَبَحَ قَبْلُ فَإِنَّمَا هُوَ لَحْمٌ قَدَّمَهُ لأَهْلِهِ، لَيْسَ مِنَ النُّسُكِ فِي شَىْءٍ</p>
 
-“*Bu günümüzde yapacağımız ilk şey bayram namazını kılmak, sonra (evlerimize) dönüp kurban kesmek olacaktır. Her kim böyle yaparsa sünnetimize uygun iş yapmış olur. Kim (namazdan) önce kurban keserse, o ancak ailesine bir et sunmuş olur. Bu kestiği kurban olmaz”*** (Buhari, “Edahî”,1) buyurmuşlardır.
+“*Bu günümüzde yapacağımız ilk şey bayram namazını kılmak, sonra (evlerimize) dönüp kurban kesmek olacaktır. Her kim böyle yaparsa sünnetimize uygun iş yapmış olur. Kim (namazdan) önce kurban keserse, o ancak ailesine bir et sunmuş olur. Bu kestiği kurban olmaz”* (Buhari, “Edahî”,1) buyurmuşlardır.
 
 ### Kurbanın Kesimi
 
@@ -116,7 +116,7 @@ Bu nedenle rahmet Peygamberi, bıçağın iyice keskinleştirilmesi, hayvana gö
 
 Bu ayetler, İslâm’daki kurbanlar ile Cahiliye dönemindeki kurbanlar arasındaki en önemli farkı göstermekteydi. Asırlardır kurbanlar putlara adanmış, şirk içerisinde kesilmişti. Şimdi ise, sadece yaratan Allah’ın adıyla, Allah’ ın adına kurban ediliyorlardı. Bunu Peygamber Efendimiz (s.a.v) şöyle ifade etmişti;
 
-***“***اللهم منك و لك ***Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve Senin içindir.”*** dedi. (İbn Mâce, Edâhî, 1).
+“اللهم منك و لك ***Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve Senin içindir.”*** dedi. (İbn Mâce, Edâhî, 1).
 
 Nitekim kurban keserken –Hz. Peygamber’in (s.a.v) bize öğrettiği gibi– bu samimi duygularımızı şöyle dile getiririz:
 
@@ -124,9 +124,9 @@ Nitekim kurban keserken –Hz. Peygamber’in (s.a.v) bize öğrettiği gibi– 
 
 Yani, bu kurbanımı, Yüce Allah’ın adı ile O’nun adına ve sadece O’nun rızası için kesiyorum. Çünkü en yüce olan, her şeyin yaratıcısı, yaşatıcısı ve koruyucusu olan sadece O’dur. Bundan sonra da şöyle deriz:
 
-***“*** اللهم منك و لك ***Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve Senin içindir.”***
+“ اللهم منك و لك ***Allahümme minke ve leke! = Ey Allah’ım! Bu Sendendir ve Senin içindir.”***
 
-Yani; *“*Ey Rabb’imiz! Bu hayvanı sen yarattın, onu satın alma gücünü ve imkânını bana sen verdin. Çeşitli ihtiyaçlarımızı gidermek için bu hayvanları bize itaatkâr kılan da sensin… O halde, senin bize olan sonsuz nimetlerine bir şükür ifadesi olarak bu kurbanımı sadece senin için, senin rızan için kesiyor ve onu sadece sana sunuyorum. Kabul buyur*!”***
+Yani; “Ey Rabb’imiz! Bu hayvanı sen yarattın, onu satın alma gücünü ve imkânını bana sen verdin. Çeşitli ihtiyaçlarımızı gidermek için bu hayvanları bize itaatkâr kılan da sensin… O halde, senin bize olan sonsuz nimetlerine bir şükür ifadesi olarak bu kurbanımı sadece senin için, senin rızan için kesiyor ve onu sadece sana sunuyorum. Kabul buyur!”
 
 ### Kurbanla İlgili Soru ve Cevaplar
 
@@ -234,4 +234,4 @@ Kurban etlerinin mutlaka yedi fakire dağıtılması gerektiği şeklindeki anla
 
 Kurbanlık hayvana ortak olanların bazılarının adak veya akika niyetiyle kurbana iştirak etmesinin kurbana engel olduğu şeklindeki anlayış hatalıdır. Ortakların her birinin niyetinin Allah rızası için kurban kesmek olması, kurbanın geçerli olması için yeterlidir.(https://kurul.diyanet.gov.tr/Duyuru-Detay/Duyurular/876/kurban-ibadetiyle-ilgili-aciklama)
 
-*Vaaz içeriğinde ki soru-cevaplar, D.İ.B. “Fetvalar”, Kurban Sıkça Sorulan Sorular kitapçığı ve sayfasından doğrudan alıntılanmıştır.
+Vaaz içeriğinde ki soru-cevaplar, D.İ.B. “Fetvalar”, Kurban Sıkça Sorulan Sorular kitapçığı ve sayfasından doğrudan alıntılanmıştır.

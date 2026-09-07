@@ -150,7 +150,7 @@ Bu durum, ibadetlerimizin kabulü, kul hakkının önemi, akraba ilişkilerimizi
 
 HADÎS-İ ŞERÎF
 
-Bir sahâbî Peygamber Efendimize (s.a.s.) gelerek şöyle sordu: *“Yâ Resûlallah! Beni cennete yaklaştıracak, cehennemden uzaklaştıracak bir ameli haber verir misiniz?”* Peygamberimiz (s.a.s.) adama şöyle buyurdu: *“Allah’a ibadet eder, ona hiçbir şeyi ortak koşmaz, namazı kılar, zekâtı verir, akrabanı gözetirsin.*” Adam *“tamam”* dedi ve gitti*.* Peygamberimiz (s.a.s.) adamın arkasından, *“Emrolunduğu şeyleri yaparsa cennete girer”* buyurdu. (Buhârî, Zekât, 1; Müslim, Îmân, 12)
+Bir sahâbî Peygamber Efendimize (s.a.s.) gelerek şöyle sordu: *“Yâ Resûlallah! Beni cennete yaklaştıracak, cehennemden uzaklaştıracak bir ameli haber verir misiniz?”* Peygamberimiz (s.a.s.) adama şöyle buyurdu: *“Allah’a ibadet eder, ona hiçbir şeyi ortak koşmaz, namazı kılar, zekâtı verir, akrabanı gözetirsin.*” Adam *“tamam”* dedi ve gitti. Peygamberimiz (s.a.s.) adamın arkasından, *“Emrolunduğu şeyleri yaparsa cennete girer”* buyurdu. (Buhârî, Zekât, 1; Müslim, Îmân, 12)
 
 Akrabalarımızı ziyaret ederek ve hediyeleşerek aramızdaki sıla-i rahim bağlarımızı daha da güçlendirmiş oluruz.
 

@@ -62,7 +62,7 @@ Ashâbıyla Hudeybiye'den Medine'ye döndüğü gece yağmur yağmış, bazı in
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ « أَصْبَحَ مِنْ عِبَادِى مُؤْمِنٌ بِى وَكَافِرٌ ، فَأَمَّا مَنْ قَالَ مُطِرْنَا بِفَضْلِ اللَّهِ وَرَحْمَتِهِ . فَذَلِكَ مُؤْمِنٌ بِى كَافِرٌ بِالْكَوْكَبِ ، وَأَمَّا مَنْ قَالَ بِنَوْءِ كَذَا وَكَذَا . فَذَلِكَ كَافِرٌ بِى مُؤْمِنٌ بِالْكَوْكَبِ</p>
 
-Allah Teâlâ, şöyle buyurdu: 'Kullarımdan bir kısmı mümin, bir kısmı da kâfir olarak sabahladı.' 'Allah'ın lütfu ve rahmetiyle yağmur yağdı.' diyen bana iman etmiş, yıldızı(n yağmur yağdırma gücünü) reddetmiştir. 'Yıldızın doğuşu veya batışı ile yağmur yağdı.' diyenler ise beni inkâr etmiş, yıldıza iman etmiştir*. Buhârî, İstiskâ, 28.
+Allah Teâlâ, şöyle buyurdu: 'Kullarımdan bir kısmı mümin, bir kısmı da kâfir olarak sabahladı.' 'Allah'ın lütfu ve rahmetiyle yağmur yağdı.' diyen bana iman etmiş, yıldızı(n yağmur yağdırma gücünü) reddetmiştir. 'Yıldızın doğuşu veya batışı ile yağmur yağdı.' diyenler ise beni inkâr etmiş, yıldıza iman etmiştir. Buhârî, İstiskâ, 28.
 
 O hâlde, Rabbimiz tarafından imana elverişli ve iyilik yapmaya hazır yaratılan tertemiz fıtratımızı batıl inanç ve hurafelerle bozmayalım. En kıymetli hazinemiz olan imanımızı, samimi duygu ve niyetlerimizi doğru dinî bilgilerle güçlendirelim. Huzurlu bir hayat için alın teriyle çalışmayı, helal yoldan kazanmayı, hastalanınca tedavi olmayı, sebeplere sarılmayı düstur edinelim.
 
@@ -95,8 +95,8 @@ Kur’an-ı Kerim’in emir ve yasakları Kıyamete kadar geçerlidir. Zaman aş
 <p lang="ar" dir="rtl" class="ayet">…الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ لَكُمُ الإِسْلاَمَ دِينًاٌ…</p>
 
 “Bu gün size dininizi ikmal ettim. Üzerinize nimetimi tamamladım ve sizin için din olarak da İslam’ı beğendim.” (Maide/3) buyururken İslam’ın ve Kur’an’ın mükemmelliğine işaret etmiştir.
-Peygamber efendimiz (s.a.v.) : **“Şüphesiz ki sözlerin en hayırlısı Allahın kitabı (Kur’an)dır. Yolun en hayırlısı Muhammed’in (s.a.v.) yoludur. İşlerin en şerlisi sonradan uydurulan (Bid’atlar) dır. Her bidat ise sapıklıktır.” buyurmaktadır**. (S.Müslim Cuma 42)
-**“Size iki şey bırakıyorum. Bunlara sımsıkı sarıldıkça katiyyen yolunuzu sapıtmazsınız. Bunlar; Allah’ın kitabı Kur’an-ı Kerim ve benim sünnetimdir.”** (Hakim-El Müstedrak,1/93) **“Benim sünnetimden yüz çeviren benden değildir.”** (Müslim-Nikah.1) buyurmaktadır. **“Bilerek bana yalan isnad eden cehennemdeki yerini hazırlasın.”** (Buhari, İlim, 38)
+Peygamber efendimiz (s.a.v.) : “Şüphesiz ki sözlerin en hayırlısı Allahın kitabı (Kur’an)dır. Yolun en hayırlısı Muhammed’in (s.a.v.) yoludur. İşlerin en şerlisi sonradan uydurulan (Bid’atlar) dır. Her bidat ise sapıklıktır.” buyurmaktadır. (S.Müslim Cuma 42)
+“Size iki şey bırakıyorum. Bunlara sımsıkı sarıldıkça katiyyen yolunuzu sapıtmazsınız. Bunlar; Allah’ın kitabı Kur’an-ı Kerim ve benim sünnetimdir.” (Hakim-El Müstedrak,1/93) “Benim sünnetimden yüz çeviren benden değildir.” (Müslim-Nikah.1) buyurmaktadır. “Bilerek bana yalan isnad eden cehennemdeki yerini hazırlasın.” (Buhari, İlim, 38)
 
 <p lang="ar" dir="rtl" class="ayet">قُل لَّا يَعْلَمُ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ الْغَيْبَ إِلَّا اللَّهُ وَمَا يَشْعُرُونَ أَيَّانَ يُبْعَثُونَ</p>
 

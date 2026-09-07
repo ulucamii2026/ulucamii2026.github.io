@@ -68,7 +68,7 @@ HADÎS-İ ŞERÎF
 
 <p lang="ar" dir="rtl" class="ayet">إِنْ كَانَ قَالَهُ فَقَدْ صَدَقَ، وَإِنَّا لَنُصَدِّقُهُ فِيمَا هُوَ أَبْعَدُ مِنْ هَذَا، نُصَدِّقُهُ عَلَى خَبَرِ السَّمَاءِ.</p>
 
-“*Eğer bunu O söylediyse şüphesiz doğrudur. Ben O’nu bundan daha uzağında da tasdik ediyorum. Semadan haber getirdiğini, tasdik ediyorum*” (Ahmed b. Hanbel, Müsned, I, 422; Müslim, Îmân, 279*) diyerek “Sıddık” unvanını almıştır.
+“*Eğer bunu O söylediyse şüphesiz doğrudur. Ben O’nu bundan daha uzağında da tasdik ediyorum. Semadan haber getirdiğini, tasdik ediyorum*” (Ahmed b. Hanbel, Müsned, I, 422; Müslim, Îmân, 279) diyerek “Sıddık” unvanını almıştır.
 
 ### Kudüs ve Mescid-i Aksa’nın Önemi
 

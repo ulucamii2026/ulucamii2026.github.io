@@ -28,7 +28,7 @@ Cibril hadisi diye meşhur olan hadis-i şerifte Cebrail (a.s.) gelir ve Peygamb
 
 <p lang="ar" dir="rtl" class="ayet">أَنْ تُؤْمِنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَبِالْقَدَرِ خَيْرِهِ وَشَرِّهِ فَقَالَ لَهُ جِبْرِيلُ عَلَيْهِ السَّلَام صَدَقْتَ</p>
 
-*“Allah’a, meleklerine, kitaplarına, peygamberlerine, âhiret gününe hayır ve şerriyle kadere inanmaktır.”*** (İbn Hanbel, I, 28) cevabını verir. Ahirete iman, iman esaslarından bir tanesidir.
+*“Allah’a, meleklerine, kitaplarına, peygamberlerine, âhiret gününe hayır ve şerriyle kadere inanmaktır.”* (İbn Hanbel, I, 28) cevabını verir. Ahirete iman, iman esaslarından bir tanesidir.
 
 Kur’ân-ı Kerîm’de ahiret kelimesi el-yevmü’l-âhir, ed-dârü’l-âhira, yevmü’d-dîn, yevmü’l-hisâb, yevmü’l-hulûd şeklinde kullanılmaktadır. Nisa suresinin 136. ayetinde iman esasları arasında ahirete iman da vardır:
 
@@ -62,7 +62,7 @@ Mekke fethedildiği gün Müslüman olan Hakîm b. Hizâm, Hz. Peygamber’in (s
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ هَذَا الْمَالَ خَضِرَةٌ حُلْوَةٌ فَمَنْ أَخَذَهُ بِسَخَاوَةِ نَفْسٍ بُورِكَ لَهُ فِيهِ وَمَنْ أَخَذَهُ بِإِشْرَافِ نَفْسٍ لَمْ يُبَارَكْ لَهُ فِيهِ</p>
 
-*“Bu dünya malı göz alıcı ve tatlıdır. Kim bu mala cömert bir gönülle sahip olursa, malı bereketlenir. Ama kim de hırs ve tamah dolu bir kalple bu malı isterse, malının bereketi kaçar.”*** (Buhârî, Zekât, 50)
+*“Bu dünya malı göz alıcı ve tatlıdır. Kim bu mala cömert bir gönülle sahip olursa, malı bereketlenir. Ama kim de hırs ve tamah dolu bir kalple bu malı isterse, malının bereketi kaçar.”* (Buhârî, Zekât, 50)
 
 Rabbimiz şöyle buyurmuştur:
 
@@ -108,7 +108,7 @@ b) Asıl Yurt Ahiret Yurdudur:
 
 <p lang="ar" dir="rtl" class="ayet">وَاللَّهِ! مَا الدُّنْيَا فِى الْآخِرَةِ إِلاَّ مِثْلُ مَا يَجْعَلُ أَحَدُكُمْ إِصْبَعَهُ هَذِهِ –وَأَشَارَ بِالسَّبَّابَةِ– فِى الْيَمِّ فَلْيَنْظُرْ ﴿أَحَدُكُمْ﴾ بِمَ يَرْجِعُ؟</p>
 
-*“Vallahi, âhiretin yanında dünya(nın konumu), ancak birinizin şu (işaret) parmağını denize daldırması gibidir; (parmağının) ne (kadar su) ile döneceğine bir baksın!”*** (Müslim, Cennet, 55)
+*“Vallahi, âhiretin yanında dünya(nın konumu), ancak birinizin şu (işaret) parmağını denize daldırması gibidir; (parmağının) ne (kadar su) ile döneceğine bir baksın!”* (Müslim, Cennet, 55)
 
 Allah Resulü (s.a.s.) bir duasında şöyle buyurmuştur:
 
@@ -120,7 +120,7 @@ Abdullah b. Ömer (r.a.) Resûlullah (s.a.s.) benim iki omuzumu tuttu ve:
 
 ### كُنْ في الدُّنْيَا كَأَنَّكَ غَرِيبٌ أو عَابِرُ سَبِيلٍ
 
-***“Dünyada sanki bir garip veya bir yolcu gibi ol” buyurdu.”* (Buhârî, Rikak 3;Tirmizî, Zühd 25) Garib, gurbette olan, memleketinden uzakta olan kimsedir. İnsan ahirete nispetle dünyada gurbette olan kimse gibidir. Asıl yurdu ahirettir.
+*“Dünyada sanki bir garip veya bir yolcu gibi ol” buyurdu.”* (Buhârî, Rikak 3;Tirmizî, Zühd 25) Garib, gurbette olan, memleketinden uzakta olan kimsedir. İnsan ahirete nispetle dünyada gurbette olan kimse gibidir. Asıl yurdu ahirettir.
 
 ***“Kimin kaygısı âhiret olursa Allah onun zenginliğini kalbine yerleştirir, iki yakasını bir araya getirir ve dünya zelil bir şekilde ona gelir. Kimin kaygısı da dünya olursa Allah onun fakirliğini iki gözü arasına koyar ve onun iki yakasını bir araya getirmez; kendisine ancak onun için takdir edilen dünyalık ne ise o gelir.”*** (Tirmizî, Sıfatü’l-kıyâme, 30)
 
@@ -176,7 +176,7 @@ Necip Fazıl Kısakürek
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ قَالَ: قَالَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) أَكْثِرُوا ذِكْرَ هَاذِمِ اللَّذَّاتِ</p>
 
-Ebû Hüreyre’nin (r.a.) naklettiğine göre, Resûlullah (s.a.s.) şöyle buyurmuştur: *“Lezzetleri yok edeni (yani ölümü) çok hatırlayın.”*** (Nesâî, Cenâiz, 3) Ağız tadını kaçıran ölümü, ölüm gerçeğini insan unutmamalı, ona göre yaşamalıdır. İnsan, tabiatı gereği dünyaya düşkünlük gösterme, ahireti ise hatırından uzaklaştırma eğilimindedir. (Hadislerle İslam, 7/551) Rabbimiz şöyle buyurmuştur:
+Ebû Hüreyre’nin (r.a.) naklettiğine göre, Resûlullah (s.a.s.) şöyle buyurmuştur: *“Lezzetleri yok edeni (yani ölümü) çok hatırlayın.”* (Nesâî, Cenâiz, 3) Ağız tadını kaçıran ölümü, ölüm gerçeğini insan unutmamalı, ona göre yaşamalıdır. İnsan, tabiatı gereği dünyaya düşkünlük gösterme, ahireti ise hatırından uzaklaştırma eğilimindedir. (Hadislerle İslam, 7/551) Rabbimiz şöyle buyurmuştur:
 
 ### كَلَّا بَلْ تُحِبُّونَ الْعَاجِلَةَۙ
 
@@ -230,7 +230,7 @@ Hesap görülüp herkesin yeri belli olduktan sonra insanlar cennete veya cehenn
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ مَاتَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ قِيلَ لَهُ ادْخُلْ الْجَنَّةَ مِنْ أَيِّ أَبْوَابِ الْجَنَّةِ الثَّمَانِيَةِ شِئْتَ</p>
 
-*“Allah’a ve âhiret gününe iman ederek ölen kimseye, "Cennetin sekiz kapısının hangisinden dilersen gir." denilir.”*** (İbn Hanbel, I, 17) müjdesini vermektedir.
+*“Allah’a ve âhiret gününe iman ederek ölen kimseye, "Cennetin sekiz kapısının hangisinden dilersen gir." denilir.”* (İbn Hanbel, I, 17) müjdesini vermektedir.
 
 ### SONUÇ
 

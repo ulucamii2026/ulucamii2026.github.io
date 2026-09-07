@@ -12,7 +12,7 @@ Fıtrat itibariyle, insanoğlunun nefsine düşkün olduğu göz önüne alınd�
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا أُبَرِّئُ نَفْسِي إِنَّ النَّفْسَ لأَمَّارَةٌ بِالسُّوءِ إِلاَّ مَا رَحِمَ رَبِّيَ إِنَّ رَبِّي غَفُورٌ رَّحِيمٌ</p>
 
-***“Ben nefsimi temize çıkarmıyorum. Çünkü nefis Rabbimin merhameti olmadıkça kötülüğü emreder şüphesiz Rabbim çok bağışlayan, çok esirgeyendir*.” (yusuf s.53)
+*“Ben nefsimi temize çıkarmıyorum. Çünkü nefis Rabbimin merhameti olmadıkça kötülüğü emreder şüphesiz Rabbim çok bağışlayan, çok esirgeyendir*.” (yusuf s.53)
 
 Âyet-i Kerîmenin ifade ettiği açıdan bakıldığında, nefisle muhasebenin zorluk derecesinin biraz daha arttığı görülür. Çünkü, nefsi kontrol etmek için insanın kendi iradesi ile Allah’ın merhameti bir arada olmalıdır. İlâhî rahmet olmadan nefsi hesaba çekmek ve onun zararlarından korunmak mümkün değildir. Dolayısıyla insan, kendisini dizginleme mücadelesinde muvaffak olmak için, ilahi rahmeti elde etmeyi sağlayacak olan ideal bir hayat yaşamaya mecburdur.
 
@@ -40,7 +40,7 @@ olarak belirtilir. En güzel davranışı sergilemek ise insanın sadece kendisi
 
 <p lang="ar" dir="rtl" class="ayet">"لا يؤمن أحدكم حتى يحب لأخيه (أو قال لجاره) ما يحب لنفسه".</p>
 
-*“Sizden biri kendi nefsi için istediği şeyi kardeşi için de istemedikçe(kâmil bir)* ***mü’min olamaz.”*
+*“Sizden biri kendi nefsi için istediği şeyi kardeşi için de istemedikçe(kâmil bir)* *mü’min olamaz.”*
 
 ## İTİKÂF
 

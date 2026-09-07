@@ -16,23 +16,23 @@ Yüce Allah kâinatta her şeyi erkekli ve dişili olarak çift yaratmıştır. 
 
 <p lang="ar" dir="rtl" class="ayet">وَمِنْ كُلِّ شَىْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ</p>
 
-*“Düşünüp ibret alasınız diye her şeyden (erkekli-dişili) iki eş yarattık.”*** (Zariyat, 51/49)
+*“Düşünüp ibret alasınız diye her şeyden (erkekli-dişili) iki eş yarattık.”* (Zariyat, 51/49)
 
 İnsan da aynı kanun gereği çift olarak erkekli ve dişili yaratılmıştır. İlk insan ve ilk peygamber Hz. Adem’i (a.s.) topraktan yaratan Cenab-ı Hak, ona eş olarak da Hz. Havva validemizi yaratmıştır. Bu konuda da Kur’an-ı Kerim’de:
 
 <p lang="ar" dir="rtl" class="ayet">…هُوَ الَّذى خَلَقَكُمْ مِنْ نَفْسٍ وَاحِدَةٍ وَجَعَلَ مِنْهَا زَوْجَهَا لِيَسْكُنَ اِلَيْهَا</p>
 
-*“Allah sizi bir tek nefisten yaratan ve kendisi ile huzur bulsun diye eşini de ondan var edendir***” (A’raf, 7/189)
+*“Allah sizi bir tek nefisten yaratan ve kendisi ile huzur bulsun diye eşini de ondan var edendir*” (A’raf, 7/189)
 
 İnsan neslinin devamını ve meşru bir şekilde çoğalmasını sağlamak için nikah yoluyla evlenme emredilmiş; fıtrata ve ahlaka aykırı; nesle, nefse ve sosyal hayata zararlı olan zina ve fuhuş haram kılınmıştır. Ana babaya, velilere evlenme çağına giren bekarların evlendirilmelerini emreden Yüce Allah Kur’an-ı Kerim’de şöyle buyurmaktadır:
 
 <p lang="ar" dir="rtl" class="ayet">وَاَنْكِحُوا الْاَيَامى مِنْكُمْ وَالصَّالِحينَ مِنْ عِبَادِكُمْ وَاِمَائِكُمْ اِنْ يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللّهُ مِنْ فَضْلِه وَاللّهُ وَاسِعٌ عَليمٌ</p>
 
-*“Sizden bekar olanları, kölelerinizden ve cariyelerinizden durumu uygun olanları evlendirin. Eğer bunlar yoksul iseler, Allah onları lütfuyla zenginleştirir. Allah lütfu geniş olandır her şeyi bilendir.”*** (Nur, 24/32) Konuyla ilgili bir başka ayette ise :
+*“Sizden bekar olanları, kölelerinizden ve cariyelerinizden durumu uygun olanları evlendirin. Eğer bunlar yoksul iseler, Allah onları lütfuyla zenginleştirir. Allah lütfu geniş olandır her şeyi bilendir.”* (Nur, 24/32) Konuyla ilgili bir başka ayette ise :
 
 <p lang="ar" dir="rtl" class="ayet">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِي ذَلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
 
-*“Kendileriyle huzur bulasınız diye size kendi (cinsi)nizden eşler yaratması ve aranıza bir sevgi ve merhamet vermesi de O’nun (varlığının ve kudretinin) delillerindendir***.” (Rum, 30/21) buyurarak evliliğin gerekliliğine ve toplumsal huzurun teminindeki rolüne dikkat çekmiştir.
+*“Kendileriyle huzur bulasınız diye size kendi (cinsi)nizden eşler yaratması ve aranıza bir sevgi ve merhamet vermesi de O’nun (varlığının ve kudretinin) delillerindendir*.” (Rum, 30/21) buyurarak evliliğin gerekliliğine ve toplumsal huzurun teminindeki rolüne dikkat çekmiştir.
 
 Aralarındaki sevgiyi hiçbir menfaat gözetmeden yaşatan insanların, Allah’ın lütfu ile birbirlerine bağlandıklarını görmekteyiz.
 
@@ -104,7 +104,7 @@ Aile, mahrem bir kurumdur. Eşlerden her birinin mahremiyetin korunmasına özen
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ مِنْ أَعْظَمِ الْأَمَانَةِ عِنْدَ اللَّهِ يَوْمَ الْقِيَامَةِ، الرَّجُلَ يُفْضِى إِلَى امْرَأَتِهِ وَتُفْضِى إِلَيْهِ، ثُمَّ يَنْشُرُ سِرَّهَا</p>
 
-*"Kişinin eşiyle birlikte olduktan sonra onun sırrını ifşa etmesi, kıyamet gününde Allah katında (sorumluluğu) en büyük olan emanetlerdendir."*** (Müslim, Nikâh, 124; Ebû Dâvûd, Edeb, 32) buyurur.
+*"Kişinin eşiyle birlikte olduktan sonra onun sırrını ifşa etmesi, kıyamet gününde Allah katında (sorumluluğu) en büyük olan emanetlerdendir."* (Müslim, Nikâh, 124; Ebû Dâvûd, Edeb, 32) buyurur.
 
 Yüce Rabbimiz Kur’an-ı Kerim’de:
 

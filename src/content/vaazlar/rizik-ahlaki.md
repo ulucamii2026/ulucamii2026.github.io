@@ -20,7 +20,7 @@ Sadece insanların değil, yeryüzündeki tüm canlıların rızkı Rezzak olan 
 
 <p lang="ar" dir="rtl" class="ayet">لاَ أَحَدَ أَصْبَرُ عَلَى أَذًى يَسْمَعُهُ مِنَ اللَّهِ عَزَّ وَجَلَّ إِنَّهُ يُشْرَكُ بِهِ وَيُجْعَلُ لَهُ الْوَلَدُ ثُمَّ هُوَ يُعَافِيهِمْ وَيَرْزُقُهُمْ</p>
 
-*“Duyduğu incitici sözlere karşı Allah'tan daha sabırlı davranabilen kimse yoktur. O'na ortak koşarlar, çocuğu olduğunu söylerler. Ama Allah onlara afiyet vermeye ve onları rızıklandırmaya devam eder.”*** (Müslim, Sıfatü’l-münafikîn, 49)
+*“Duyduğu incitici sözlere karşı Allah'tan daha sabırlı davranabilen kimse yoktur. O'na ortak koşarlar, çocuğu olduğunu söylerler. Ama Allah onlara afiyet vermeye ve onları rızıklandırmaya devam eder.”* (Müslim, Sıfatü’l-münafikîn, 49)
 
 Ve ne kadar harcasa da O'nun hazinesi asla tükenmez. Resulullah (s.a.v) bunu bir benzetmeyle insanlığa şöyle açıklamıştır:
 
@@ -32,7 +32,7 @@ Kur'an-ı Kerîm ise Rahman'ın nimetlerinin sonsuzluğuna şu ayetle işaret et
 
 <p lang="ar" dir="rtl" class="ayet">وَاٰتٰيكُمْ مِنْ كُلِّ مَا سَاَلْتُمُوهُؕ وَاِنْ تَعُدُّوا نِعْمَتَ اللّٰهِ لَا تُحْصُوهَاؕ اِنَّ الْاِنْسَانَ لَظَلُومٌ كَفَّارٌࣖ ﴿٣٤﴾</p>
 
-*“O size istediğiniz her şeyden verdi. Allah'ın nimetlerini saymaya kalkışsanız sayamazsınız.* (İbrahîm, 14/34*)*
+*“O size istediğiniz her şeyden verdi. Allah'ın nimetlerini saymaya kalkışsanız sayamazsınız.* (İbrahîm, 14/34)
 
 Ancak insan için en önemli nimet, doğruyu görmesi, Hakk'a yönelmesi, hidayete ermesi, Allah'a imanla tatmin olmasıdır. Allah'ın rızasını kazanarak cennetine girmesidir ki, orada tasavvurların çok ötesinde, eşsiz güzellikte nice nimetler kendisini beklemektedir.
 
@@ -46,13 +46,13 @@ Kur'an-ı Kerîm'in pek çok ayetinde rızkın sahibinin kendisi olduğunu vurgu
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَقْتُلُوا اَوْلَادَكُمْ خَشْيَةَ اِمْلَاقٍ نَحْنُ نَرْزُقُهُمْ وَاِيَّاكُمْ</p>
 
-*“Fakirlik korkusuyla çocuklarınızı öldürmeyin. Onları da sizi de biz rızıklandırıyoruz...*** (İsra, 17/31)
+*“Fakirlik korkusuyla çocuklarınızı öldürmeyin. Onları da sizi de biz rızıklandırıyoruz...* (İsra, 17/31)
 
 Resulullah (s.a.v) da rızkı verenin Allah olduğuna dikkatleri çekerek, inananlara bu konuda endişe etmemeleri gerektiğini bildirmiştir:
 
 <p lang="ar" dir="rtl" class="ayet">لاَ تَيْأَسَا مِنَ الرِّزْقِ مَا تَهَزَّزَتْ رُءُوسُكُمَا فَإِنَّ الإِنْسَانَ تَلِدُهُ أُمُّهُ أَحْمَرَ لَيْسَ عَلَيْهِ قِشْرٌ ثُمَّ يَرْزُقُهُ اللَّهُ عَزَّ وَجَلَّ</p>
 
-*“Başlarınız hareket ettiği (yaşadığınız) sürece rızık konusunda ümitsizliğe düşmeyin. Çünkü şüphesiz annesi insanı, kıpkırmızı ve çıplak olarak doğurur. Sonra Yüce Allah ona rızık verir. (*** İbn Mace, Zühd, 14.)
+*“Başlarınız hareket ettiği (yaşadığınız) sürece rızık konusunda ümitsizliğe düşmeyin. Çünkü şüphesiz annesi insanı, kıpkırmızı ve çıplak olarak doğurur. Sonra Yüce Allah ona rızık verir. (* İbn Mace, Zühd, 14.)
 
 Ayrıca Peygamber Efendimiz (s.a.v) adalet terazisinin Rahman'ın elinde olduğunu, böylece yarattığı nimetlerden herkesin alacağı payı da yine O'nun belirlediğini ifade etmiştir
 
@@ -60,17 +60,17 @@ Nitekim, Yüce Allah şöyle buyurmuştur:
 
 <p lang="ar" dir="rtl" class="ayet">اَللّٰهُ يَبْسُطُ الرِّزْقَ لِمَنْ يَشَاءُوَيَقْدِرُ…</p>
 
-*“Allah dilediğine rızkı bol verir; dilediğine de kısar”.*** (Ra’d, 13/26.)
+*“Allah dilediğine rızkı bol verir; dilediğine de kısar”.* (Ra’d, 13/26.)
 
 ## ŞİİR
 
-*Açılır bahtımız bir gün hemen battıkça batmaz ya
+Açılır bahtımız bir gün hemen battıkça batmaz ya
 
 Sebepler halk eder Halik, kerem babın kapatmaz ya.
 
 Benim Hakk'a münacatım değildir rızk için haşa
 
-Hüda Rezzak-ı alemdir rızıksız kul yaratmaz ya.***
+Hüda Rezzak-ı alemdir rızıksız kul yaratmaz ya.
 
 Erzurumlu İbrahim Hakkı
 
@@ -80,7 +80,7 @@ Resulullah (s.a.v), birtakım güzel davranışları yerine getiren müminin rı
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ لَزِمَ الاِسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا وَمِنْ كُلِّ هَمٍّ فَرَجًا وَرَزَقَهُ مِنْ حَيْثُ لاَ يَحْتَسِبُ</p>
 
-*“Allah, istiğfara devam eden kimsenin her sıkıntısı için bir çıkış yolu ve her kederi için bir ferahlık sağlar. Onu hiç beklemediği yerden rızıklandırır. (*Ebu Davud, Vitr, 26)
+“Allah, istiğfara devam eden kimsenin her sıkıntısı için bir çıkış yolu ve her kederi için bir ferahlık sağlar. Onu hiç beklemediği yerden rızıklandırır. (Ebu Davud, Vitr, 26)
 
 Nitekim alemlerin Rabbi kendi koyduğu sınırlara uygun şekilde elde edilen rızkın daha hayırlı olduğunu ifade etmiştir.
 
@@ -90,7 +90,7 @@ Allah'ın verdiği her şey, kuluna yaptığı bir iyiliktir. Dolayısıyla kulu
 
 <p lang="ar" dir="rtl" class="ayet">هَلْ جَزَاءُ الْاِحْسَانِ اِلَّا الْاِحْسَانُ</p>
 
-*“İyiliğin karşılığı iyilikten başka ne olabilir?”*** (Rahman, 55/60)
+*“İyiliğin karşılığı iyilikten başka ne olabilir?”* (Rahman, 55/60)
 
 Nimet gören kulun şükretmesi ve elindeki nimetin hakkını vermesi beklenir. Rahata erince kendisini rahata kavuşturanı unutup, gelişi güzel yaşamak veya yağan rahmetin sahibi olan Allah'a yönelmemek nimetin kadrini bilmemektir.
 
@@ -98,13 +98,13 @@ Halbuki,
 
 <p lang="ar" dir="rtl" class="ayet">اَلَمْ تَرَوْا اَنَّ اللّٰهَ سَخَّرَ لَكُمْ مَا فِي السَّمٰوَاتِ وَمَا فِي الْاَرْضِ وَاَسْبَغَ عَلَيْكُمْ نِعَمَهُ ظَاهِرَةً وَبَاطِنَةً…</p>
 
-*“Göklerde ve yerde ne varsa hepsini Allah'ın sizin hizmetinize verdiğini ve açıkça yahut gizlice üzerinizdeki nimetlerini tamamladığını görmediniz mi?”*** (Lokman, 31/20) buyuran Yüce Yaratan, müminler için bir hayat rehberi kıldığı kitabında kulları için bahşettiği sayısız nimetlerden örnekler vererek insanların bunlar üzerinde düşünmesini, bunlardan ibret alarak kendisine şükretmesini istemiştir.
+*“Göklerde ve yerde ne varsa hepsini Allah'ın sizin hizmetinize verdiğini ve açıkça yahut gizlice üzerinizdeki nimetlerini tamamladığını görmediniz mi?”* (Lokman, 31/20) buyuran Yüce Yaratan, müminler için bir hayat rehberi kıldığı kitabında kulları için bahşettiği sayısız nimetlerden örnekler vererek insanların bunlar üzerinde düşünmesini, bunlardan ibret alarak kendisine şükretmesini istemiştir.
 
 Rabbimiz şu ilahî kurala göre davranacağını kullarına müjdelemiştir:
 
 <p lang="ar" dir="rtl" class="ayet">…لَئِنْ شَكَرْتُمْ لَاَزيدَنَّكُمْ وَلَئِنْكَفَرْتُمْ اِنَّ عَذَابي لَشَديدٌ</p>
 
-*“Eğer şükrederseniz size verdiğim nimetleri mutlaka artırırım. Ama nankörlük ederseniz, bilin ki, azabım gerçekten çok çetindir.”*** (İbrahim, 14/7)
+*“Eğer şükrederseniz size verdiğim nimetleri mutlaka artırırım. Ama nankörlük ederseniz, bilin ki, azabım gerçekten çok çetindir.”* (İbrahim, 14/7)
 
 Dolayısıyla mümin, ilgisini her biri ayrı bir nimet olan Rabbinin ayetlerine, O'nun yarattığı canlı-cansız her tür varlığa yöneltmelidir.
 
@@ -114,7 +114,7 @@ Sevgili Peygamberimiz, nimeti anmanın gereğine şu sözüyle işaret etmiştir
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ أَبْلَى بَلاَءً فَذَكَرَهُ فَقَدْ شَكَرَهُ وَإِنْ كَتَمَهُ فَقَدْ كَفَرَهُ</p>
 
-*“Kime bir nimet verilir ve o da nimeti dile getirirse, şükrünü yerine getirmiş olur. Eğer onu gizlerse, nimete nankörlük etmiş olur.”*** (Ebu Davud, Edeb 11)
+*“Kime bir nimet verilir ve o da nimeti dile getirirse, şükrünü yerine getirmiş olur. Eğer onu gizlerse, nimete nankörlük etmiş olur.”* (Ebu Davud, Edeb 11)
 
 Resul-i Ekrem (s.a.v) eskimiş elbiselerle yanına gelen bir kişiye malı mülkü olup olmadığını sormuş, maddî durumu oldukça iyi olan Malik bin Nadle isimli bu zatın develeri, koyunları, atları ve köleleri olduğunu söylemesi üzerine ona şu tavsiyede bulunmuştur:
 
@@ -132,7 +132,7 @@ Kur'an-ı Kerîm, buna benzer pek çok duayla, Rabbinin nimetini anan ve bunlara
 
 Sevgili Peygamberimiz (s.a.v) de, bu emir doğrultusunda, hep o cömert Yaratıcı' yı ve ikramlarını anarak yaşamış, O'nun verdiği nimetlere duyduğu minnettarlıkla, gece gündüz Rabbine yönelmiştir. Geçmiş ve gelecek tüm günahlarının bağışlanmış olduğunu bilmesine rağmen niçin sabahlara kadar ibadetle meşgul olduğunu soran Hz. Aişe'ye de,
 
-(أَفَلاَ أَكُونُ عَبْدًا شَكُورًا) *“Şükreden bir kul olmayayım mı?”*** (Müslim, Sıfatü’l-Münafikîn, 81) cevabını vermiştir.
+(أَفَلاَ أَكُونُ عَبْدًا شَكُورًا) *“Şükreden bir kul olmayayım mı?”* (Müslim, Sıfatü’l-Münafikîn, 81) cevabını vermiştir.
 
 ## Rızık İçin Emek Vermeli
 
@@ -144,7 +144,7 @@ Nitekim Peygamberimiz Hz Muhammed (s.a.v)
 
 <p lang="ar" dir="rtl" class="ayet">مَا اَكَلَ اَحَدٌ طَعَاماً قَطٌّ خَيْراً مِنْ اَنْ يَأكُلَ منْ عَمَلِ يَدِهِ وَإنَّ نَبِىّ اللّهِ دَاودَ عَلَيْهِ السَّلا َمَ كَانَ يَأكلُ مِنْ عَمَلِ يَدِهِ</p>
 
-*"Hiçbir kimse kendi elinin emeğinden daha hayırlı bir lokma yememiştir. Allah'ın Peygamberi olan Davut Aleyhisselam da kendi elinin emeğini yerdi"*** buyurmuştur. (Buhari, Büyü, 15/2109) Hz. Davud demirci ustasıydı, Hz. Zekeriya marangozdu. Peygamberimiz (s.a.v) de önce çobanlık sonra ticaret yapmıştır.
+*"Hiçbir kimse kendi elinin emeğinden daha hayırlı bir lokma yememiştir. Allah'ın Peygamberi olan Davut Aleyhisselam da kendi elinin emeğini yerdi"* buyurmuştur. (Buhari, Büyü, 15/2109) Hz. Davud demirci ustasıydı, Hz. Zekeriya marangozdu. Peygamberimiz (s.a.v) de önce çobanlık sonra ticaret yapmıştır.
 
 ## KISSADAN HİSSE
 
@@ -164,7 +164,7 @@ Her nimetin verilecek bir hesabı vardır. Alemlerin Rabbi, ismini, insanın mal
 
 <p lang="ar" dir="rtl" class="ayet">ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ النَّعيمِ</p>
 
-*“Ardından da o gün nimetlerden mutlaka hesaba çekileceksiniz.”*** (Tekasür, 102/8.) buyurmuştur.
+*“Ardından da o gün nimetlerden mutlaka hesaba çekileceksiniz.”* (Tekasür, 102/8.) buyurmuştur.
 
 Peygamber Efendimiz (s.a.v) de, kıyamet gününde kullara nimetlerle ilgili sorulacak ilk sorunun, *“Senin vücudunu sağlıklı kılmadık mı? Sana soğuk sulardan içirmedik mi?”* şeklinde olacağını ifade ederek sahip olduğu nimetlerden dolayı insanın hesaba çekileceğini hatırlatmıştır.
 
@@ -172,7 +172,7 @@ Bu nedenle Allah Resulü (s.a.v),
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اغْفِرْ لِى ذَنْبِى وَوَسِّعْ لِى فِى رِزْقِى وَبَارِكْ لِى فِيمَا رَزَقْتَنِى</p>
 
-*“Allah'ım! Günahlarımı bağışla, rızkımı genişlet ve bana verdiğin rızıkları bereketli kıl!”*** (Tirmizi, Daavât, 78.) diye dua ederek inananlara Allah'tan rızık istemeyi öğretmiş, ancak dünyalık nimetlerin talebinde orta yolu izlemeyi tavsiye etmiştir. Kendi ev halkı için de daima kendilerine yetecek kadar rızık verilmesini arzu etmiş, bu şekilde dua etmiştir.
+*“Allah'ım! Günahlarımı bağışla, rızkımı genişlet ve bana verdiğin rızıkları bereketli kıl!”* (Tirmizi, Daavât, 78.) diye dua ederek inananlara Allah'tan rızık istemeyi öğretmiş, ancak dünyalık nimetlerin talebinde orta yolu izlemeyi tavsiye etmiştir. Kendi ev halkı için de daima kendilerine yetecek kadar rızık verilmesini arzu etmiş, bu şekilde dua etmiştir.
 
 ## Rızkımızı İsraf Etmemeli
 

@@ -3,7 +3,6 @@ baslik: "Mevlid-i Nebi: Alemlere Rahmet Olan Peygamberimiz"
 ozet: "“Şüphesiz Allah ve melekleri Peygamber’e salât ediyorlar. Ey iman edenler! Siz de ona salât edin, selam edin.” (Ahzâb, 33/56)"
 kategori: ahlak
 kelime: 1850
-docx: "/vaazlar/mevlid-i-nebi-alemlere-rahmet-olan-peygamberimiz.docx"
 pdf: "/vaazlar/mevlid-i-nebi-alemlere-rahmet-olan-peygamberimiz.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ يَا أَيُّهَا الَّذِينَ آمَنُوا صًَامي ِل ْسَت او ُم ِّل َس َو ِه ْي َلَع اوُّل</p>

@@ -20,10 +20,10 @@ Sözlükte bitirmek, tüketmek, yok etmek, yoksul düşmek, malı veya parayı e
 
 Kur’an-ı Kerim’de maddi ve manevi yardım konusu ihsan, birr, karz gibi birçok kelime ile ifade edilse de maddi olarak infak, sadaka ve zekât ana kavramlardır.
 
-**Zekât:** Malın arındırılması ve bereketlenmesi için, Allah’ın emridir.
+Zekât: Malın arındırılması ve bereketlenmesi için, Allah’ın emridir.
 
-**Sadaka:** İmanın güçlenmesi ve istikrarı için, mallardaki fakirlerin hakkıdır.
-**İnfak:** Allah’ın rızasını kazanmak ve sükûnete ermek için, verilen nimetlere şükür ifadesidir.
+Sadaka: İmanın güçlenmesi ve istikrarı için, mallardaki fakirlerin hakkıdır.
+İnfak: Allah’ın rızasını kazanmak ve sükûnete ermek için, verilen nimetlere şükür ifadesidir.
 
 Burada yardım ile ilgili en geniş kavram infak olarak görülebilir. İnfak; fakirin, muhtacın gönlüne ve dünyasına girebilmenin en önemli yolu, yakınlaşmanın en isabetli köprüsü ve yürekten yüreğe kurulan manevi bir tüneldir.
 
@@ -57,13 +57,13 @@ Nitekim Kur’an-ı Kerim’de şöyle buyrulmuştur:
 
 İnfakın, Allah’a, insanın kendi kalbine, ruhuna ve hayata bakan yönleri, yani faydaları vardır.
 
-**İnfakın Allah’a bakan yönü**, kulun şükrünü yerine getirmesidir.
+İnfakın Allah’a bakan yönü, kulun şükrünü yerine getirmesidir.
 
-**İnfakın kalbe bakan yönü**, kulun imanının kuvvetlenmesidir.
+İnfakın kalbe bakan yönü, kulun imanının kuvvetlenmesidir.
 
-**İnfakın ruha bakan yönü**, kulun takvayı tam anlamı ile kuşanmasıdır.
+İnfakın ruha bakan yönü, kulun takvayı tam anlamı ile kuşanmasıdır.
 
-**İnfakın hayata bakan yönü**, kulun diğer kullarla kardeşlik hukukunu tam anlamı ile tesis etmesidir.
+İnfakın hayata bakan yönü, kulun diğer kullarla kardeşlik hukukunu tam anlamı ile tesis etmesidir.
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُٓوا اَنْفِقُوا مِمَّا رَزَقْنَاكُمْ مِنْ قَبْلِ اَنْ يَأْتِيَ يَوْمٌ لَا بَيْعٌ فٖيهِ وَلَا خُلَّةٌ وَلَا شَفَاعَةٌؕ وَالْكَافِرُونَ هُمُ الظَّالِمُونَ</p>
 
@@ -85,7 +85,7 @@ Kur’an-ı Kerîm’de başta ibadetler olmak üzere Allah rızası için yapı
 
 “Ey iman edenler! Eğer siz ancak Allah’a kulluk ediyorsanız, size verdiğimiz rızıktan iyi ve temizlerinden yiyin ve Allah’a şükredin.” (Bakara, 2/172)
 
-Peygamberimiz (s.a.s.) helâl rızkın ibadetlerin kabul olmasında çok önemli bir faktör olduğuna şöyle dikkat çekmişlerdir: **_“Bir kimse Allah yolunda uzun seferler yapar. Saçı başı dağınık, toza toprağa bulanmış vaziyette ellerini gökyüzüne açarak: Yâ Rabbi! Yâ Rabbi! diye dua eder. Hâlbuki onun yediği haram, içtiği haram, giydiği haramdır. Haramla beslenmiştir. Böyle birinin duası nasıl kabul edilir!”_** (Müslim, Zekât, 65) Bu itibarla, Yüce Allah ancak helâl kazançtan verilen infak, zekât ve sadakaları kabul etmektedir. Peygamberimizin ifade ettiğine göre, kişinin helâl olarak verdiği infak, sadaka bir hurma tanesi kadar bile olsa, Allah katında o, bir dağ gibi veya ondan daha büyük oluncaya kadar artırılır ve ödüllendirilir. (Müslim, Zekât, 63-64) Yaptığı bu hayır da kıyamet gününde mizanda ağırlık bakımından dağ kadar mal tasaddukta bulunmuş gibi değerlendirilir. Nasıl ki, ekilen bir tohumdan bir başak ve ondan da yüz, hatta yedi yüz dane oluyorsa, verilen sadakaların sevabı da yedi yüz ve hatta daha fazlasıyla arttırılır. (Bakara, 2/261)
+Peygamberimiz (s.a.s.) helâl rızkın ibadetlerin kabul olmasında çok önemli bir faktör olduğuna şöyle dikkat çekmişlerdir: _“Bir kimse Allah yolunda uzun seferler yapar. Saçı başı dağınık, toza toprağa bulanmış vaziyette ellerini gökyüzüne açarak: Yâ Rabbi! Yâ Rabbi! diye dua eder. Hâlbuki onun yediği haram, içtiği haram, giydiği haramdır. Haramla beslenmiştir. Böyle birinin duası nasıl kabul edilir!”_ (Müslim, Zekât, 65) Bu itibarla, Yüce Allah ancak helâl kazançtan verilen infak, zekât ve sadakaları kabul etmektedir. Peygamberimizin ifade ettiğine göre, kişinin helâl olarak verdiği infak, sadaka bir hurma tanesi kadar bile olsa, Allah katında o, bir dağ gibi veya ondan daha büyük oluncaya kadar artırılır ve ödüllendirilir. (Müslim, Zekât, 63-64) Yaptığı bu hayır da kıyamet gününde mizanda ağırlık bakımından dağ kadar mal tasaddukta bulunmuş gibi değerlendirilir. Nasıl ki, ekilen bir tohumdan bir başak ve ondan da yüz, hatta yedi yüz dane oluyorsa, verilen sadakaların sevabı da yedi yüz ve hatta daha fazlasıyla arttırılır. (Bakara, 2/261)
 
 2. İnfak, sadece varlık zamanlarında değil, hem varlık hem darlık zamanlarında yapılmalıdır.
 
@@ -109,7 +109,7 @@ Seven, sevdiği uğruna sahip olduğu en güzel şeyleri vermek ister. Nimeti ve
 
 “Sevdiğiniz şeylerden Allah yolunda harcamadıkça iyiliğe asla erişemezsiniz. Her ne harcarsanız Allah onu bilir.” (Âl-i İmrân, 3/92)
 
-Bu ayet nazil olduktan sonra sahabe-i kiram ayeti yaşamışlardır. Unutulmamalıdır ki, sahabe-i kiramı yücelten en güzel davranışlarından biri de sevdikleri mallarını tereddüt etmeden Allah yolunda harcamalarıydı. Medineli Müslümanların en zenginlerinden Ebu Talha da bunlardan biri idi. Bu sahabinin Mescid-i Nebi’nin karşısında çok değer verdiği bir hurma bahçesi vardı. Sevgili Peygamberimiz (s.a.v) her zaman o bahçeye uğrar, bahçenin tatlı su kaynağından içerdi. Yukarıda metnini sunduğumuz “Sevdiğiniz şeylerden Allah yolunda harcamadıkça asla iyiliğe erişemezsiniz” (Âl-i İmrân, 3/92) ayeti inince, Ebû Talha, Peygamberimize (s.a.s) gelerek en sevgili malı olan bu bahçesini, Allah katında kendisine azık olmasını ümit ederek bağışlamak istediğini söyledi. Peygamberimiz (s.a.v) onu taltif ederek, **_“Evet, senin bu bahçenin çok güzel, kârlı ve verimli bir arazi olduğunu işittim. Ancak ben bunu akrabalarına dağıtmanı istiyorum”_** buyurdu. Ebû Talha da, bunun üzerine o bahçesini ihtiyaç sahibi akrabaları arasında paylaştırdı. (Buhârî, Zekat, 44; Müslim, Zekat, 14) Yine ashaptan Zeyd b. Hârise bu ayet nazil olunca, en değerli malı olan safkan atını sadaka olarak vermek istedi. Peygamberimiz (s.a.v) bu bağışı kabul etti ama başkalarına değil, Zeyd’in kendi oğlu Üsâme’ye verdi. (Hadislerle İslâm, C. 5, S. 64)
+Bu ayet nazil olduktan sonra sahabe-i kiram ayeti yaşamışlardır. Unutulmamalıdır ki, sahabe-i kiramı yücelten en güzel davranışlarından biri de sevdikleri mallarını tereddüt etmeden Allah yolunda harcamalarıydı. Medineli Müslümanların en zenginlerinden Ebu Talha da bunlardan biri idi. Bu sahabinin Mescid-i Nebi’nin karşısında çok değer verdiği bir hurma bahçesi vardı. Sevgili Peygamberimiz (s.a.v) her zaman o bahçeye uğrar, bahçenin tatlı su kaynağından içerdi. Yukarıda metnini sunduğumuz “Sevdiğiniz şeylerden Allah yolunda harcamadıkça asla iyiliğe erişemezsiniz” (Âl-i İmrân, 3/92) ayeti inince, Ebû Talha, Peygamberimize (s.a.s) gelerek en sevgili malı olan bu bahçesini, Allah katında kendisine azık olmasını ümit ederek bağışlamak istediğini söyledi. Peygamberimiz (s.a.v) onu taltif ederek, _“Evet, senin bu bahçenin çok güzel, kârlı ve verimli bir arazi olduğunu işittim. Ancak ben bunu akrabalarına dağıtmanı istiyorum”_ buyurdu. Ebû Talha da, bunun üzerine o bahçesini ihtiyaç sahibi akrabaları arasında paylaştırdı. (Buhârî, Zekat, 44; Müslim, Zekat, 14) Yine ashaptan Zeyd b. Hârise bu ayet nazil olunca, en değerli malı olan safkan atını sadaka olarak vermek istedi. Peygamberimiz (s.a.v) bu bağışı kabul etti ama başkalarına değil, Zeyd’in kendi oğlu Üsâme’ye verdi. (Hadislerle İslâm, C. 5, S. 64)
 
 4. İnfak gösterişten, reklamdan, beklentiden ve her türlü hesaptan uzak, yalnızca Allah rızası için yapılmalıdır.
 
@@ -187,7 +187,7 @@ Dünya hayatı gelip geçicidir. Oysa insanın bitmek tükenmek bilmeyen birtak�
 
 “Ey iman edenler, mallarınız ve çocuklarınız Allah’ı anmaktan sizi alıkoymasın. Böyle yapanlar, en büyük zarara uğrayanların tâ kendisidir. Herhangi birinize ölüm gelip de, ‘Ey Rabbim! Beni yakın bir zamana kadar geciktirsen de sadaka verip iyilerden olsam!’ demeden önce, size rızık olarak verdiğimiz şeylerden Allah yolunda harcayın. Allah, eceli geldiğinde hiçbir kimseyi asla ertelemez. Allah bütün yaptıklarınızdan haberdardır.” (Münâfikûn, 63/10-11)
 
-Sevgili Peygamberimiz her konuda olduğu gibi infak mevzuunda da ashabını en güzel şekilde yetiştirmiş ve onları dünyanın en cömert insanları hâline getirmişti. Gönüllerine bu sevda nakşolunan kerim insanlardan birisi, infakın en güzel ve kazançlı şeklini sormak için Peygamber Efendimize (s.a.s) gelmişti. “Ey Allah’ın Resûlü! Hangi sadakanın sevabı daha büyüktür?” diye sordu. Peygamber Efendimiz: **_“Sıhhatin yerindeyken, mala düşkünken, fakir düşmekten endişe etmekteyken ve zengin olmayı düşlerken verdiğin sadakanın sevabı daha büyüktür. Bu işi can boğaza gelip de; ‘Falana şu kadar, filana bu kadar.’ (diye miras dağıtma) zamanına bırakma! Zaten o mal, artık vârislerden şunun veya bunun olmuştur.”_** (Müslim, Zekât, 92) buyurarak sıkıntılı anlarda veya mala düşkün olunan zamanlarda verilen sadakanın, rahat ve bolluk zamanlarında, gelecek endişesi yokken verilenden daha kıymetli olduğunu ifade etmiştir.
+Sevgili Peygamberimiz her konuda olduğu gibi infak mevzuunda da ashabını en güzel şekilde yetiştirmiş ve onları dünyanın en cömert insanları hâline getirmişti. Gönüllerine bu sevda nakşolunan kerim insanlardan birisi, infakın en güzel ve kazançlı şeklini sormak için Peygamber Efendimize (s.a.s) gelmişti. “Ey Allah’ın Resûlü! Hangi sadakanın sevabı daha büyüktür?” diye sordu. Peygamber Efendimiz: _“Sıhhatin yerindeyken, mala düşkünken, fakir düşmekten endişe etmekteyken ve zengin olmayı düşlerken verdiğin sadakanın sevabı daha büyüktür. Bu işi can boğaza gelip de; ‘Falana şu kadar, filana bu kadar.’ (diye miras dağıtma) zamanına bırakma! Zaten o mal, artık vârislerden şunun veya bunun olmuştur.”_ (Müslim, Zekât, 92) buyurarak sıkıntılı anlarda veya mala düşkün olunan zamanlarda verilen sadakanın, rahat ve bolluk zamanlarında, gelecek endişesi yokken verilenden daha kıymetli olduğunu ifade etmiştir.
 
 <p lang="ar" dir="rtl" class="ayet">اَلشَّيْطَانُ يَعِدُكُمُ الْفَقْرَ وَيَأْمُرُكُمْ بِالْفَحْشَٓاءِۚ وَاللّٰهُ يَعِدُكُمْ مَغْفِرَةً مِنْهُ وَفَضْلًاۜ وَاللّٰهُ وَاسِعٌ عَلِيمٌۚ</p>
 
@@ -199,7 +199,7 @@ Sevgili Peygamberimiz her konuda olduğu gibi infak mevzuunda da ashabını en g
 
 <p lang="ar" dir="rtl" class="ayet">مَا نَحَلَ وَالِدٌ وَلَدًا مِنْ نَحْلٍ أَفْضَلَ مِنْ أدَبٍ حَسَنٍ</p>
 
-**_“Hiçbir baba, çocuğuna, güzel terbiyeden daha üstün bir hediye veremez.”_** (Tirmizî, Birr, 33)
+_“Hiçbir baba, çocuğuna, güzel terbiyeden daha üstün bir hediye veremez.”_ (Tirmizî, Birr, 33)
 
 İslam'da infak, sadece maddi yardımla sınırlı değildir. İnsanların bilgilerini paylaşmaları, başkalarına rehberlik etmeleri de bir çeşit infak olarak kabul edilir.
 
@@ -215,7 +215,7 @@ Sevgili Peygamberimiz her konuda olduğu gibi infak mevzuunda da ashabını en g
 
 <p lang="ar" dir="rtl" class="ayet">أَنْفِقْ يَا ابْنَ آدَمَ يُنْفَقْ عَلَيْكَ</p>
 
-**_“Ey Âdemoğlu, infak et ki, sana da infak edilsin.”_** (Buhârî, Nafakat, 2)
+_“Ey Âdemoğlu, infak et ki, sana da infak edilsin.”_ (Buhârî, Nafakat, 2)
 
 Toplumda infak kültürü yaygınlaştıkça, yoksulluk azalır, insanlar arasında sevgi ve dayanışma artar. Cimrilik ve bencillik yerine paylaşma ve yardımlaşma ön plana çıkar. Fakirlerin toplumda daha iyi bir yaşam standardına ulaşması için infak büyük bir köprü vazifesi görür. Bir toplumda zengin ile fakir arasındaki uçurum ne kadar büyükse, o toplumda huzursuzluk ve adaletsizlik de o kadar fazla olur. İslam, zekât ve infak yoluyla bu dengenin sağlanmasını istemiştir. Rabbim bizleri infak edenlerden eylesin. Âmin.
 

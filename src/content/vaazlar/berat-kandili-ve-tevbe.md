@@ -46,13 +46,13 @@ Kur’ân inmeden önce insanoğlunun efkârını dalâlet, kalbini küfür bulu
 
 Peygamberimizin (a.s.) hadislerinde bu gecenin önemine vurgu yapılmıştır. Bu gecede beş büyük haslet vardır:
 
-**BİRİNCİSİ:** Hikmetli her iş bu gece tefrik ve vazife sahiplerine tevzi olunur. Levh-i Mahfuz’daki İlâhî takdirler arasından o sene içinde cereyan edecek, hadise ve olayların icrasına bu geceden itibaren başlanır ve Kadir Gecesinde tamamlanır.
+BİRİNCİSİ: Hikmetli her iş bu gece tefrik ve vazife sahiplerine tevzi olunur. Levh-i Mahfuz’daki İlâhî takdirler arasından o sene içinde cereyan edecek, hadise ve olayların icrasına bu geceden itibaren başlanır ve Kadir Gecesinde tamamlanır.
 
 Erzakla ilgili nüsha, Mikâil aleyhisselâma, harb, zelzele ve diğer felâketlerle ilgili nüsha, Cebrail aleyhisselâma; kulların işleriyle ilgili nüsha, Hazret-i Azrail’e verilir.
 
-**İKİNCİSİ:** Bu gece yapılan ibadetin fazileti pek büyüktür. Hz. Âişe (r.a.) şöyle naklediyor: Bir gün Hz. Peygamber yanıma girdi, elbisesini çıkardı. Biraz durduktan sonra tekrar giyindi. Ortaklarımdan birinin yanına gidecek diye beni bir kıskançlık aldı. O, dışarı çıkınca ben de peşine takıldım. Bakiü’l-Garkad denilen kabristana vardı. Mü’minlere ve şehitlere duâlar etti. Kendi yaptığımdan kendim utandım ve “Anam babam sana feda olsun. Sen Rabbinin rızası peşinde, bense dünya peşindeyim”, diyerek geri döndüm. Biraz sonra Resûlullah da içeri girdi. Benim sık sık nefes alışımın sebebini sordu. Kendisine olup bitenleri anlattım. Buyurdular ki: “Allah’ın Resûlü sana haksızlık edecek diye mi korkuyorsun?”. Resûl-i Ekrem elbisesini çıkardıktan sonra “Bu gece ibadet yapmama müsaade eder misin?” dedi, ben de: “Anam babam sana feda olsun, evet, cevabını verdim.” Namaz kılmaya başladı. Bir ara secdede o kadar çok kaldı ki, endişelendim ve yoklarken elim ayağına dokunmuş olacak ki kımıldadı. Ben de hayatta olduğuna kanaat getirerek sevindim. Secdede şöyle dua ediyordu: “Ya Allah, azabından afvine sığınıyorum, gadabından rızana iltica ediyorum. Senden sana sığınıyorum. Hiçbir senayı, senin nefsine karşı olan senana denk saymıyorum”. Sabah olunca durumu kendisine haber verdim. “Bunları hem öğren hem de başkalarına öğret. Bunları bana Cebrail öğretti” buyurdu.
+İKİNCİSİ: Bu gece yapılan ibadetin fazileti pek büyüktür. Hz. Âişe (r.a.) şöyle naklediyor: Bir gün Hz. Peygamber yanıma girdi, elbisesini çıkardı. Biraz durduktan sonra tekrar giyindi. Ortaklarımdan birinin yanına gidecek diye beni bir kıskançlık aldı. O, dışarı çıkınca ben de peşine takıldım. Bakiü’l-Garkad denilen kabristana vardı. Mü’minlere ve şehitlere duâlar etti. Kendi yaptığımdan kendim utandım ve “Anam babam sana feda olsun. Sen Rabbinin rızası peşinde, bense dünya peşindeyim”, diyerek geri döndüm. Biraz sonra Resûlullah da içeri girdi. Benim sık sık nefes alışımın sebebini sordu. Kendisine olup bitenleri anlattım. Buyurdular ki: “Allah’ın Resûlü sana haksızlık edecek diye mi korkuyorsun?”. Resûl-i Ekrem elbisesini çıkardıktan sonra “Bu gece ibadet yapmama müsaade eder misin?” dedi, ben de: “Anam babam sana feda olsun, evet, cevabını verdim.” Namaz kılmaya başladı. Bir ara secdede o kadar çok kaldı ki, endişelendim ve yoklarken elim ayağına dokunmuş olacak ki kımıldadı. Ben de hayatta olduğuna kanaat getirerek sevindim. Secdede şöyle dua ediyordu: “Ya Allah, azabından afvine sığınıyorum, gadabından rızana iltica ediyorum. Senden sana sığınıyorum. Hiçbir senayı, senin nefsine karşı olan senana denk saymıyorum”. Sabah olunca durumu kendisine haber verdim. “Bunları hem öğren hem de başkalarına öğret. Bunları bana Cebrail öğretti” buyurdu.
 
-**ÜÇÜNCÜSÜ:** Cenâb-ı Hak bu gecede Benî Kelb kabilesinin koyunlarının tüyleri sayısınca ümmet-i Muhammed’e rahmet eder.
+ÜÇÜNCÜSÜ: Cenâb-ı Hak bu gecede Benî Kelb kabilesinin koyunlarının tüyleri sayısınca ümmet-i Muhammed’e rahmet eder.
 
 Hz. Âişe validemiz Peygamberimizi tanıtırken şöyle buyurmuştur:
 
@@ -62,7 +62,7 @@ HADÎS-İ ŞERÎF
 
 "Bu gece (Şaban’ın 15. gecesi) Peygamber (s.a.s.)’i dışarı çıkıp aramaya başlamıştım ki (O’nu) Baki’ Kabristanı’nda başını göğe kaldırmış hâlde buldum. Buyurdu ki: “Ey Aişe, Allah ve Resûlü’nün sana haksızlık etmesinden mi korktun? dedim. Hz. Aişe validemiz “Diğer hanımlarından birinin yanına gittiğini zannettim” dedi. *Peygamberimiz buyurdu ki Allah Teâlâ Şabanın 15. gecesinde (bu gecede) dünya semasına iner, Ben-i Kelb kabilesinin koyunlarının tüyleri sayısınca insanları bağışlar."* (İbn Mâce, İkâmetü’s-Salât, 191)
 
-**DÖRDÜNCÜSÜ:** Mağfiretin husulüdür. Peygamber Efendimiz buyuruyor ki:
+DÖRDÜNCÜSÜ: Mağfiretin husulüdür. Peygamber Efendimiz buyuruyor ki:
 
 HADÎS-İ KUDSÎ
 
@@ -70,11 +70,11 @@ HADÎS-İ KUDSÎ
 
 Enes b. Malik (r.a.) Resûlullah (s.a.s.) şöyle buyururken dinledim dedi: “Allah Teâlâ şöyle buyurdu:
 
-*Ey Âdemoğlu! Sen bana dua ettiğin ve benden affını umduğun sürece, işlediğin günahlar ne kadar çok olursa olsun, onların büyüklüğüne bakmadan seni bağışlarım.
+Ey Âdemoğlu! Sen bana dua ettiğin ve benden affını umduğun sürece, işlediğin günahlar ne kadar çok olursa olsun, onların büyüklüğüne bakmadan seni bağışlarım.
 
 Ey Âdemoğlu! Günahların gökyüzünü kaplayacak kadar çok olsa, sonra da benden affını dilesen, seni affederim.
 
-Ey Âdemoğlu! Sen yeryüzünü dolduracak kadar günahla karşıma gelsen; fakat bana hiçbir şeyi ortak koşmamış olsan, şüphesiz ben de seni yeryüzü dolusu bağışla karşılarım.”* (Tirmizî, Daavât, 98; Ahmed İbni Hanbel, Müsned, V/172)
+Ey Âdemoğlu! Sen yeryüzünü dolduracak kadar günahla karşıma gelsen; fakat bana hiçbir şeyi ortak koşmamış olsan, şüphesiz ben de seni yeryüzü dolusu bağışla karşılarım.” (Tirmizî, Daavât, 98; Ahmed İbni Hanbel, Müsned, V/172)
 
 Bu gecenin bereketinden istifade edemeyecek olanları da Peygamberimiz (a.s.) şöyle anlatıyor.
 
@@ -92,7 +92,7 @@ HADÎS-İ ŞERÎF
 
 Başka bir hadiste ise *"Beş gece vardır ki onlarda yapılan dualar geriye çevrilmez. Bunlar Recebin ilk (cuma) gecesi, Şabanın ortasında bulunan gece, Cuma gecesi, Ramazan Bayramı ve Kurban Bayramı geceleridir.”* (Suyûtî, el-Câmiu’s-Sağîr, No: 3952)
 
-**BEŞİNCİSİ:** Bu gece Peygamber Efendimiz’e şefaat selâhiyetinin tamamı verildi. Şöyle ki: Peygamber Efendimiz Şaban ayının on üçüncü gecesi, ümmetine şefaat edebilmek için Allah Teâlâ’ya niyazda bulundu. Kendisine, ümmetinin üçte birine şefaat etme selâhiyeti verildi. Ümmetine son derece düşkün bulunan Resûlullah, daha fazla kimseye şefaat edebilme arzusu ile yanıp tutuşmaktaydı. On dördüncü geceyi de ibadetle ihya ve Cenab-ı Hakk’a şefaat dileğini tekrar etti. Ümmetinin üçte ikisine şefaat selâhiyeti verildi. Âlemlere rahmet olarak gönderilen Efendimiz, on beşinci geceyi de ibadetle geçirdi ve Mevlâ’ya salahiyetinin genişletilmesi için duada bulundu. Bunun üzerine ümmetinin tamamına şefaat selâhiyeti verildi.
+BEŞİNCİSİ: Bu gece Peygamber Efendimiz’e şefaat selâhiyetinin tamamı verildi. Şöyle ki: Peygamber Efendimiz Şaban ayının on üçüncü gecesi, ümmetine şefaat edebilmek için Allah Teâlâ’ya niyazda bulundu. Kendisine, ümmetinin üçte birine şefaat etme selâhiyeti verildi. Ümmetine son derece düşkün bulunan Resûlullah, daha fazla kimseye şefaat edebilme arzusu ile yanıp tutuşmaktaydı. On dördüncü geceyi de ibadetle ihya ve Cenab-ı Hakk’a şefaat dileğini tekrar etti. Ümmetinin üçte ikisine şefaat selâhiyeti verildi. Âlemlere rahmet olarak gönderilen Efendimiz, on beşinci geceyi de ibadetle geçirdi ve Mevlâ’ya salahiyetinin genişletilmesi için duada bulundu. Bunun üzerine ümmetinin tamamına şefaat selâhiyeti verildi.
 
 ## KIBLENİN TAHVİLİ
 

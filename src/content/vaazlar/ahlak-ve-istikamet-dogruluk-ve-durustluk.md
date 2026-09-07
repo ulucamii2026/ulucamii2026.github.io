@@ -120,9 +120,9 @@ Bu âyetin iniş sebebi tefsirlerde şöyle nakledilmektedir: Velîd b. Ukbe, Be
 
 Âyetten çıkan genel hüküm, durumu bilinmeyen veya yalancı, günahtan çekinmez olarak tanınan kimselerin verdikleri haberlere ve bilgilere güvenilmemesi, bunlara göre hüküm verilmemesi, harekete geçilmemesidir. (Kur’an Yolu Tefsiri, 5/89-90)
 
-*İnsana sadakat yaraşır görse de ikrah
+İnsana sadakat yaraşır görse de ikrah
 
-Yardımcısıdır doğruların Hazret-i Allah!*
+Yardımcısıdır doğruların Hazret-i Allah!
 
 ZİYA PAŞA
 
@@ -234,13 +234,13 @@ Yalan kapısının açılmaması, yalanın alışkanlık haline gelmemesi gereki
 
 Diyarbekirli Said Paşa bir şiirinde:
 
-*Sen usandırma eli, el de usandırmaz seni,
+Sen usandırma eli, el de usandırmaz seni,
 
 Hilekarlık eyleme, kimse dolandırmaz seni.
 
 Korkma kafirden ateş olsa yandırmaz seni,
 
-Müstakim ol, Hazret-i Allah utandırmaz seni.*
+Müstakim ol, Hazret-i Allah utandırmaz seni.
 
 DİYARBEKİRLİ SAİD PAŞA
 
@@ -264,13 +264,13 @@ Allah Resûlü (s.a.s.), arkadaşın kişi üzerindeki etkisini, dolayısıyla i
 
 *“Müminler, müminleri bırakıp inkârcıları dost edinmesin.”* (Âl‑i İmrân, 3/28) emrini vermektedir. (Hadislerle İslâm, 4/350)
 
-*İnce sırat köprüsü sıfat imiş bu yolda,
+İnce sırat köprüsü sıfat imiş bu yolda,
 
 Dosta giden kişinin doğruluktur çâresi.
 
 Kimde kim doğruluk var, Hak Çalap onu sever,
 
-İki cihana yarar o erin sermayesi*
+İki cihana yarar o erin sermayesi
 
 YUNUS EMRE
 
@@ -298,13 +298,13 @@ Bir yolculuk esnasında Abdullah b. Ömer (r.a.) için bir sofra kurulmuştu. Bu
 
 Hz. Mevlânâ’ya atfedilen şu sözler ne kadar anlamlıdır:
 
-*Doğru olsam ok gibi yabana atarlar beni
+Doğru olsam ok gibi yabana atarlar beni
 
 Eğri olsam yay gibi elde tutarlar beni
 
 Ne doğruyu aç gördüm ne eğriyi tok
 
-Eğri yay elde kalır, menzil alır doğru ok*
+Eğri yay elde kalır, menzil alır doğru ok
 
 MEVLÂNÂ’YA ATFEDİLİR
 

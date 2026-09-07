@@ -30,7 +30,7 @@ Ramazan ayı, kötü alışkanlıklara son verme, iyiden, güzelden yana yeni sa
 
 <p lang="ar" dir="rtl" class="ayet">قَالَ عَبْدُ اللَّهِ: قَالَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) : “بُنِيَ الْإِسْلامُ على خَمْسٍ، شَهَادَةِ أَنْ لَا إِلَهَ إِلاَّ اللَّه، وأَنَّ مُحَمَّداً رَسُولُ اللَّهِ، وإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَحَجِّ البَيْتِ، وَصَوْمِ رَمضانَ.”</p>
 
-Abdullah'ın naklettiğine göre, Resûlullah (sav) şöyle buyurmuştur: **“İslâm beş esas üzerine kurulmuştur: Allah'tan başka ilâh olmadığına ve Muhammed'in Allah'ın Resûlü olduğuna şahitlik etmek, namazı dosdoğru kılmak, zekât vermek, Kâbe'yi haccetmek ve Ramazan orucunu tutmak.”** (Müslim, îmân, 21.)
+Abdullah'ın naklettiğine göre, Resûlullah (sav) şöyle buyurmuştur: “İslâm beş esas üzerine kurulmuştur: Allah'tan başka ilâh olmadığına ve Muhammed'in Allah'ın Resûlü olduğuna şahitlik etmek, namazı dosdoğru kılmak, zekât vermek, Kâbe'yi haccetmek ve Ramazan orucunu tutmak.” (Müslim, îmân, 21.)
 
 Saçı sakalı karışmış Necidli bir adam Resûlullah'a gelir. Sesinin uğultusu işitilir fakat ne söylediği anlaşılmaz. Nihayet Resûlullah'a yaklaşır. İslâm'ın ne olduğunu öğrenmek isteyince, Peygamber Efendimiz ile arasında şöyle bir konuşma geçer:
 
@@ -72,9 +72,9 @@ Benzer bir olay da Hz. Ömer'in başına gelmişti. Bunun üzerine Cenâb-ı Hak
 
 <p lang="ar" dir="rtl" class="ayet">فَلْيَقُلْ: إِنِّى صَائِمٌ مَرَّتَيْنِ…”</p>
 
-Ebû Hüreyre'den nakledildiğine göre, Resûlullah (sav) şöyle buyurmuştur:**“Oruç bir kalkandır. Oruçlu, saygısızlık yapmasın, kötü konuşmasın. Eğer biri kendisiyle dövüşmeye veya sövüşmeye kalkışırsa, iki defa, 'Ben oruçluyum.' desin…”** (Buhârî, Savm, 2.)
+Ebû Hüreyre'den nakledildiğine göre, Resûlullah (sav) şöyle buyurmuştur:“Oruç bir kalkandır. Oruçlu, saygısızlık yapmasın, kötü konuşmasın. Eğer biri kendisiyle dövüşmeye veya sövüşmeye kalkışırsa, iki defa, 'Ben oruçluyum.' desin…” (Buhârî, Savm, 2.)
 
-Hz. Peygamber, bütün ibadetler gibi orucun da insan davranışlarını etkileyen, düzenleyen yönlerine işaret eder: **“Oruç bir kalkandır. Oruçlu, saygısızlık yapmasın, ahlâksızca konuşmasın. Eğer biri kendisiyle dövüşmeye veya sövüşmeye kalkışırsa, iki defa, 'Ben oruçluyum.' desin. Bu canı bu tende tutan Allah'a yemin ederim ki oruçlunun (açlıktan dolayı değişen) ağız kokusu Allah nezdinde, misk kokusundan daha hoştur. (Allah, oruçlu için şöyle buyurur): 'O, yemesini, içmesini ve cinsel isteklerini benim için terk ediyor. Oruç benim içindir. Onun mükâfatını ben vereceğim. Bir iyiliğe ise on misli ecir vardır.'”** (Buhari, Savm, 2.)
+Hz. Peygamber, bütün ibadetler gibi orucun da insan davranışlarını etkileyen, düzenleyen yönlerine işaret eder: “Oruç bir kalkandır. Oruçlu, saygısızlık yapmasın, ahlâksızca konuşmasın. Eğer biri kendisiyle dövüşmeye veya sövüşmeye kalkışırsa, iki defa, 'Ben oruçluyum.' desin. Bu canı bu tende tutan Allah'a yemin ederim ki oruçlunun (açlıktan dolayı değişen) ağız kokusu Allah nezdinde, misk kokusundan daha hoştur. (Allah, oruçlu için şöyle buyurur): 'O, yemesini, içmesini ve cinsel isteklerini benim için terk ediyor. Oruç benim içindir. Onun mükâfatını ben vereceğim. Bir iyiliğe ise on misli ecir vardır.'” (Buhari, Savm, 2.)
 
 Hz. Peygamber bu hadisinde orucu kalkana benzetmektedir. Kalkan, nasıl ki savaşta askerleri düşmanın ok ve kılıç darbelerine karşı koruyorsa, oruç da sahibini öyle korur. Üstelik sadece dışarıdan gelecek saldırılara karşı değil kendi nefsinden, şehevî arzularından, şeytanın vesveselerinden de onu korur. Bu hassasiyetle oruç tutan kişi dünyada günah ve kötülüklere, âhirette ise cehennem azabına karşı korunmuş olacaktır.
 
@@ -92,25 +92,25 @@ Oruçludan yapması beklenen güzelliklerden biri de Kur'an'ın indirildiği bu 
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ عَمْرِو بْنِ الْعَاصِ أَنَّ رَسُولَ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) قَالَ: “فَصْلُ مَا بَيْنَ صِيَامِنَا وَصِيَامِ أَهْلِ الْكِتَابِ أَكْلَةُ السَّحَرِ.”</p>
 
-Amr b. Âs'tan rivayet edildiğine göre, Resûlullah (sav) şöyle buyurmuştur: **“Bizim orucumuzla Ehl-i kitabın orucunu ayıran (şey), sahur yemeğidir.”** (Müslim, Sıyâm, 46.)
+Amr b. Âs'tan rivayet edildiğine göre, Resûlullah (sav) şöyle buyurmuştur: “Bizim orucumuzla Ehl-i kitabın orucunu ayıran (şey), sahur yemeğidir.” (Müslim, Sıyâm, 46.)
 
 Orucun farz kılındığı bu dönemlerde sahâbîler, iftar ettikten sonra gece uyumadıkları müddetçe yiyebiliyor, içebiliyor, eşleriyle birlikte olabiliyorlardı. Fakat akşam olduğunda, iftar vakti dâhil, herhangi bir vakitte uyumaları hâlinde uyanınca bunların hiçbirini yapamıyorlar, ertesi gün güneş batıncaya kadar oruçlu sayılıyorlardı. Bir gün Kays b. Sırma (ra) adlı bir sahâbî yorgun argın evine gelerek hanımından iftar için yemek hazırlamasını istemişti. Fakat bütün gün çalışan Kays, hanımı gelene kadar yorgunluktan uyuyakaldı. Böylece hiç yemek yiyemeden ertesi günün orucuna başlamak zorunda kaldı ve yine tarlasında çalışmaya başladı. Ancak günün ortasında açlık ve yorgunluğa daha fazla dayanamayarak bayılıverdi. Kays'ın bu hâli Resûlullah'a haber verildi. Bunun üzerine Müslümanlara kolaylık sunan ve “sahur” uygulamasını başlatan şu âyet nâzil oldu:
 
-**“Oruç gecesinde kadınlarınıza yaklaşmak size helâl kılındı. Onlar sizin için birer elbise, siz de onlar için birer elbisesiniz. Allah sizin kendinize kötülük ettiğinizi bildi ve tövbenizi kabul edip sizi bağışladı. Artık (Ramazan gecelerinde) onlara yaklaşın ve Allah'ın sizin için takdir ettiklerini isteyin. Sabahın beyaz ipliği (aydınlığı) siyah ipliğinden (karanlığından) ayırt edilinceye kadar yiyin, için sonra akşama kadar orucu tamamlayın”**
+“Oruç gecesinde kadınlarınıza yaklaşmak size helâl kılındı. Onlar sizin için birer elbise, siz de onlar için birer elbisesiniz. Allah sizin kendinize kötülük ettiğinizi bildi ve tövbenizi kabul edip sizi bağışladı. Artık (Ramazan gecelerinde) onlara yaklaşın ve Allah'ın sizin için takdir ettiklerini isteyin. Sabahın beyaz ipliği (aydınlığı) siyah ipliğinden (karanlığından) ayırt edilinceye kadar yiyin, için sonra akşama kadar orucu tamamlayın”
 
 Peygamber Efendimiz, sahura kalkmayı son derece önemsediğinden, “Sahur yemeği yiyin. Çünkü sahur yemeğinde bereket vardır.” (Müslim, Sıyam, 45) buyurarak Müslümanlardan bir yudum su ile olsa da mutlaka sahur yapmalarını istemiştir.
 
-İftar vakti, müminler için sevinç ve huzur vaktidir. Bu vakit, Resûlullah'ın (sav), “Şüphesiz her iftar vaktinde Allah tarafından (cehennem ateşinden) azat edilenler vardır. Bu (azat etme işlemi Ramazan'da) her gece olur.” (İbn Mace, Sıyam, 2) sözleriyle ifade ettiği üzere, bağışlanma vaktidir. Yine Hz. Peygamber, **“...Müminin iki sevinci vardır: Birisi iftar vaktinde orucunu açtığı andaki sevinci, diğeri Rabbine kavuştuğu zaman orucunun (mükâfatından kaynaklanan) sevincidir.”** (Müslim, Sıyam, 164) buyurmuştur.
+İftar vakti, müminler için sevinç ve huzur vaktidir. Bu vakit, Resûlullah'ın (sav), “Şüphesiz her iftar vaktinde Allah tarafından (cehennem ateşinden) azat edilenler vardır. Bu (azat etme işlemi Ramazan'da) her gece olur.” (İbn Mace, Sıyam, 2) sözleriyle ifade ettiği üzere, bağışlanma vaktidir. Yine Hz. Peygamber, “...Müminin iki sevinci vardır: Birisi iftar vaktinde orucunu açtığı andaki sevinci, diğeri Rabbine kavuştuğu zaman orucunun (mükâfatından kaynaklanan) sevincidir.” (Müslim, Sıyam, 164) buyurmuştur.
 
-Peygamber Efendimiz, iftar edeceği zaman özel yiyecekler aramaz, yemek ayrımı yapmaz, sofrada ne bulursa onunla iftar ederdi. Onun iftar sofrası, lüks ve israftan uzak, son derece sade idi. Medine'de Efendimizin yanında büyüyen Enes b. Mâlik (ra), Resûlullah'ın iftarını şöyle anlatmıştır: **“Resûlullah (sav) akşam namazını kılmadan önce birkaç taze hurma ile eğer yoksa kuru hurma ile iftar ederdi, o da yoksa birkaç yudum suyla orucunu açardı.”** (Ebu Davud, Sıyam, 21.)
+Peygamber Efendimiz, iftar edeceği zaman özel yiyecekler aramaz, yemek ayrımı yapmaz, sofrada ne bulursa onunla iftar ederdi. Onun iftar sofrası, lüks ve israftan uzak, son derece sade idi. Medine'de Efendimizin yanında büyüyen Enes b. Mâlik (ra), Resûlullah'ın iftarını şöyle anlatmıştır: “Resûlullah (sav) akşam namazını kılmadan önce birkaç taze hurma ile eğer yoksa kuru hurma ile iftar ederdi, o da yoksa birkaç yudum suyla orucunu açardı.” (Ebu Davud, Sıyam, 21.)
 
-Allah Resûlü, “Her oruçlunun iftarını açtığında reddedilmeyen bir duası vardır.” diyerek müminlere bu sevinç ve bağışlanma vaktinde dua etmelerini öğütlemiştir. Sevgili Peygamberimiz, iftar sofralarını başkalarıyla paylaşmaya büyük önem vermiş ve şöyle buyurmuştur: “Her kim bir oruçluya iftar yemeği yedirirse, kendisine onun sevabı kadar sevap verilir; oruçlunun ecrinden de hiçbir şey **eksiltilmez.’’** (Tirmizi, Savm, 82.)
+Allah Resûlü, “Her oruçlunun iftarını açtığında reddedilmeyen bir duası vardır.” diyerek müminlere bu sevinç ve bağışlanma vaktinde dua etmelerini öğütlemiştir. Sevgili Peygamberimiz, iftar sofralarını başkalarıyla paylaşmaya büyük önem vermiş ve şöyle buyurmuştur: “Her kim bir oruçluya iftar yemeği yedirirse, kendisine onun sevabı kadar sevap verilir; oruçlunun ecrinden de hiçbir şey eksiltilmez.’’ (Tirmizi, Savm, 82.)
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ (رَضِيَ اللَّهُ عَنْهَا) زَوْجِ النَّبِيِّ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) : أَنَّ النَّبِيَّ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) كَانَ يَعْتَكِفُ الْعَشْرَ الْأَوَاخِرَ مِنْ رَمَضَانَ حَتَّى تَوَفَّاهُ اللَّهُ تَعَالَى…</p>
 
 Peygamberimizin eşi Hz. Âişe'nin (ra) naklettiğine göre, Hz. Peygamber (sav) vefat edinceye kadar Ramazan'ın son on gününde itikâfa girerdi…(Buhârî, İ'tikâf, 1.)
 
-Hz. Âişe şöyle demiştir: “Resûlullah (sav), Ramazan'ın son on gününde itikâfa girer ve **'Kadir gecesini Ramazan'ın son on gününde arayın.'** derdi.” (Buhârî, Fadlü leyleti'l-kadr, 3.)
+Hz. Âişe şöyle demiştir: “Resûlullah (sav), Ramazan'ın son on gününde itikâfa girer ve 'Kadir gecesini Ramazan'ın son on gününde arayın.' derdi.” (Buhârî, Fadlü leyleti'l-kadr, 3.)
 
 İtikâf, alıkoymak, hapsetmek, bir yerde kalmak anlamına gelir ve kişinin sıradan davranışlardan uzaklaşarak, ibadet amacıyla belli bir süre mescitte kalması demektir.
 
@@ -120,15 +120,15 @@ Bizi rahatlatacak, hayatımızı kolaylaştıracak, dünyamızı yaşanır kıla
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّا اَنْزَلْنَاهُ فى لَيْلَةِ الْقَدْرِ () وَمَا اَدْريكَ مَالَيْلَةُ الْقَدْرِ () لَيْلَةُ الْقَدْرِ خَيْرٌ مِنْ اَلْفِ شَهْرٍ () تَنَزَّلُ الْمَلئِكَةُ وَالرُّوحُ فيهَا بِاِذْنِ رَبِّهِمْ مِنْ كُلِّ اَمْرٍ () سَلَامٌ هِىَ حَتّى مَطْلَعِ الْفَجْرِ ()</p>
 
-**“Doğrusu biz Kur'an-ı Kadir gecesinde indirmişizdir. Kadir Gecesi'nin ne olduğunu bilir misin? Kadir Gecesi bin aydan daha hayırlıdır, melekler ve ruh (Cebrail) o gecede, Rablerinin izniyle her türlü iş için inerler. O gece tan yerinin ağarmasına kadar bir esenliktir.”** (Kadir, 1-5.)
+“Doğrusu biz Kur'an-ı Kadir gecesinde indirmişizdir. Kadir Gecesi'nin ne olduğunu bilir misin? Kadir Gecesi bin aydan daha hayırlıdır, melekler ve ruh (Cebrail) o gecede, Rablerinin izniyle her türlü iş için inerler. O gece tan yerinin ağarmasına kadar bir esenliktir.” (Kadir, 1-5.)
 
-Resûlullah efendimiz kadir gecesi ile ilgili olarak: **“Faziletine inanarak ve mükâfatını umarak Kadir gecesini ihya eden kimsenin geçmiş günahları bağışlanır.”** buyurmuşlardır.
+Resûlullah efendimiz kadir gecesi ile ilgili olarak: “Faziletine inanarak ve mükâfatını umarak Kadir gecesini ihya eden kimsenin geçmiş günahları bağışlanır.” buyurmuşlardır.
 
-Âişe **radıyallahu anhâ** şöyle dedi:
+Âişe radıyallahu anhâ şöyle dedi:
 
 - Ey Allah'ın Resulü! Kadir gecesinin hangi gece olduğunu bilecek olursam, o gece nasıl dua edeyim? diye sordum.
 
-- **"Allahım! Sen çok affedicisin, affetmeyi seversin. Beni bağışla! diye dua et"** buyurdu. (Tirmizî, Daavât 84.)
+- "Allahım! Sen çok affedicisin, affetmeyi seversin. Beni bağışla! diye dua et" buyurdu. (Tirmizî, Daavât 84.)
 
 ### SADAKA-İ FITIR; VAROLUŞ SADAKASI
 

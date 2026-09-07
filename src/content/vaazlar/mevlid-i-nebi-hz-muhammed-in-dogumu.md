@@ -3,7 +3,6 @@ baslik: "Mevlid-i Nebi: Hz. Muhammed'in Doğumu"
 ozet: "Dünyanın şahit olduğu en büyük hadiselerden biri, Resul-i Ekrem’in doğumuyla dünyayı şereflendirmesidir. Çünkü inkâr ve cehalet içinde boğulan insanlığa doğru yolu…"
 kategori: toplum
 kelime: 2377
-docx: "/vaazlar/mevlid-i-nebi-hz-muhammed-in-dogumu.docx"
 pdf: "/vaazlar/mevlid-i-nebi-hz-muhammed-in-dogumu.pdf"
 ---
 Dünyanın şahit olduğu en büyük hadiselerden biri, Resul-i Ekrem’in doğumuyla dünyayı şereflendirmesidir. Çünkü inkâr ve cehalet içinde boğulan insanlığa doğru yolu gösterecek, ahlâkın en güzelini beşeriyete öğretecek Allah’ın Elçisi dünyaya gelmiştir. Esasen her türlü değer ölçüsünü yitirmiş, inkâr ve ahlâksızlık bataklığına saplanmış olan insanlık o kurtarıcının gelmesini bekliyordu. İşte her Mevlid Kandilinde, o kutlu hadisenin, o kutlu doğumun yıldönümünü idrak ediyoruz.

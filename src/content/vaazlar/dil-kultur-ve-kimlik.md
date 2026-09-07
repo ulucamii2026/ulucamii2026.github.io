@@ -8,7 +8,7 @@ pdf: "/vaazlar/dil-kultur-ve-kimlik.pdf"
 ---
 Değerli cemaatim, bugün Ramazan ayının 8. gününde sizlerle bir araya gelmenin huzur ve mutluluğunu yaşıyorum. Ramazan, İslam alemi için bereket, rahmet ve mağfiret ayıdır. Bu mübarek ayda, oruç tutarak Allah'a yakınlaşır, nefsimizi terbiye eder, sabır ve şükran duygularımızı geliştiririz. Oruç tutmanın değeri, bizlere Rabbimize karşı olan bağlılığımızı ve imanımızı pekiştirirken, aynı zamanda ihtiyaç sahiplerine duyarlı olma ve paylaşma bilincini de kazandırır.
 
-**Ramazan ayının önemi ve oruç tutmanın değeri**
+Ramazan ayının önemi ve oruç tutmanın değeri
 
 Bu mübarek Ramazan ayında, oruç tutarak hem manevi hem de toplumsal sorumluluklarımıza özen göstermeliyiz. İbadetlerimizi yerine getirirken, aynı zamanda dil, kültür ve kimlik konularında farkındalığımızı artırmalıyız. Bugün sizlerle dilin önemine ve gençlerimizin dil konusundaki sorumluluklarına değinmek istiyorum.
 

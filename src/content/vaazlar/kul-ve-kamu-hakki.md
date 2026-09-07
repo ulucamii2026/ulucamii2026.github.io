@@ -22,7 +22,7 @@ Onlara mallarını haksız sebeplerle ve haram yollarla yememeleri uyarısı yap
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَأْكُلُٓوا اَمْوَالَكُمْ بَيْنَكُمْ بِالْبَاطِلِ وَتُدْلُوا بِهَٓا اِلَى الْحُكَّامِ لِتَأْكُلُوا فَرٖيقاً مِنْ اَمْوَالِ النَّاسِ بِالْاِثْمِ وَاَنْتُمْ تَعْلَمُونَࣖ</p>
 
-*“Mallarınızı aranızda haksızlıkla yemeyin. Bile bile, günaha saparak, insanların mallarından bir kısmını yemeniz için onun bir parçasını yetkililere aktarmayın.”*** (Bakara, 2/188)
+*“Mallarınızı aranızda haksızlıkla yemeyin. Bile bile, günaha saparak, insanların mallarından bir kısmını yemeniz için onun bir parçasını yetkililere aktarmayın.”* (Bakara, 2/188)
 
 Resûlullah (s.a.s) da ümmetine rızık konusunda mutedil olup yasak yollara başvurmamaları konusunda şöyle seslenmektedir:
 
@@ -72,11 +72,11 @@ Resûlullah (s.a.s), Kerkere’nin bütün mücahitlerin çabasını hiçe sayar
 
 <p lang="ar" dir="rtl" class="ayet">يَا رَسُولَ اللّهِ أَخَذْت شِرَاكَيْنِ يَوْمئِذٍ كَذَا وَكَذَا</p>
 
-“***Yâ Resûlallah! Bunu Hayber gününde almıştım*.” diyebildi. Allah Resûlü de (s.a.s),
+“*Yâ Resûlallah! Bunu Hayber gününde almıştım*.” diyebildi. Allah Resûlü de (s.a.s),
 
 <p lang="ar" dir="rtl" class="ayet">شِرَاكَانِ مِنْ نَارٍ</p>
 
-*“İşte ateşten iki ayakkabı bağı!”*** buyurarak bu davranışın vahim sonucunu dile getirdi ve ganimet gibi üzerinde kamu hakkı bulunan mallardaki haksız kazanç konusunda insanları uyarmış oldu. (Vâkıdî, Megâzî, II, 681; Buhârî, Cihâd, 190; Müslim, Îman, 183)
+*“İşte ateşten iki ayakkabı bağı!”* buyurarak bu davranışın vahim sonucunu dile getirdi ve ganimet gibi üzerinde kamu hakkı bulunan mallardaki haksız kazanç konusunda insanları uyarmış oldu. (Vâkıdî, Megâzî, II, 681; Buhârî, Cihâd, 190; Müslim, Îman, 183)
 
 Bir keresinde Peygamberimiz (s.a.s), ganimet develerinin birinden bir tüy koparıp,
 
@@ -88,9 +88,9 @@ Hz. Ebubekir’in Halife Olunca Maaş Almak İstememesi
 
 Hz. Ebu Bekir (r.a)¸ halife seçildikten sonra ailesinin geçimini ticaret yaparak karşılamaktaydı. Sahabiler buna razı olamadılar ve onu hazineden geçimi kadar maaş alması gerektiği noktasında zor da olsa ikna ettiler.
 
-Vefat edeceğini anlayınca Hz. Ebu Bekir (r.a) , yakınlarını yanına çağırdı ve zaruri ihtiyacından arta kalan bu paraların hazineye iadesini talep etti. Ölüm döşeğinde şunları vasiyet etti: “*Bunların hepsi falan yerdeki duvarda saklı. Onları alın ve Ömer'e iade edin.”***
+Vefat edeceğini anlayınca Hz. Ebu Bekir (r.a) , yakınlarını yanına çağırdı ve zaruri ihtiyacından arta kalan bu paraların hazineye iadesini talep etti. Ölüm döşeğinde şunları vasiyet etti: “*Bunların hepsi falan yerdeki duvarda saklı. Onları alın ve Ömer'e iade edin.”*
 
-Sonra kızı Hz. Ayşe’ye (r.a) şunları söyledi: “***Müslümanların işini üzerime aldığımdan bu yana onlara ait ne bir dirhem¸ ne de bir dinar yedim. Aksine¸ onların en fakiri gibi çoğu zaman aç kaldım ve en eski elbiseleri giyindim. Hazineye ait yanımda¸ şu köle ile şu kumaş parçasından başka bir şey yok. Onları da sen al ve Ömer'e götür*.”
+Sonra kızı Hz. Ayşe’ye (r.a) şunları söyledi: “*Müslümanların işini üzerime aldığımdan bu yana onlara ait ne bir dirhem¸ ne de bir dinar yedim. Aksine¸ onların en fakiri gibi çoğu zaman aç kaldım ve en eski elbiseleri giyindim. Hazineye ait yanımda¸ şu köle ile şu kumaş parçasından başka bir şey yok. Onları da sen al ve Ömer'e götür*.”
 
 Hz. Ebu Bekir (r.a) vefat ettikten sonra emanetler Hz. Ömer'e (r.a) verildiğinde o¸ şaşkınlığını şu cümlelerle ifade etti: “***Allah sana merhamet etsin Ey Ebu Bekir. Arkada kalanlara¸ yaşanması ne kadar güç bir hayat bırakıp gittin. Kendinden sonra kimseye söz söylemeye mecal bırakmadın. Ben ise ondan sonra bu görevi üstlenmiş bulunuyorum***.” (İbni Sa'd; Tabakat, 3/193-196. Taberi, Tarih, 2/354.)
 
@@ -100,7 +100,7 @@ Allah Resûlü (s.a.s) dönemin şartları sebebiyle kamu malı konusunda öneml
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ مَاتَ وَهُوَ بَرِىءٌ مِنْ ثَلاَثٍ الْكِبْرِ وَالْغُلُولِ وَالدَّيْنِ دَخَلَ الْجَنَّةَ</p>
 
-*“Her kim şu üç şeyden uzak olarak ölürse cennete girer: Kibir, ganimet malına hainlik ve borç.”*** buyurmuştur. (Tirmizî, Siyer, 21; İbn Mâce, Sadakât, 12)
+*“Her kim şu üç şeyden uzak olarak ölürse cennete girer: Kibir, ganimet malına hainlik ve borç.”* buyurmuştur. (Tirmizî, Siyer, 21; İbn Mâce, Sadakât, 12)
 
 ### Kamu Malına İhanet Etmek Ahirette Şiddetli Azaba Sebeptir
 

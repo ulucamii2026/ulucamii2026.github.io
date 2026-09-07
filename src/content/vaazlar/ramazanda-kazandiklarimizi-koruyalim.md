@@ -3,7 +3,6 @@ baslik: "Ramazanda Kazandıklarımızı Koruyalım"
 ozet: "Yaratılış gayemizi hatırladık. Kainatta hiçbir şey boş yere yaratılmamış, var olan her şey bir hikmet ve gayeye göre var edilmiştir. Denizde yüzen balıktan tutun da…"
 kategori: ramazan
 kelime: 2280
-docx: "/vaazlar/ramazanda-kazandiklarimizi-koruyalim.docx"
 pdf: "/vaazlar/ramazanda-kazandiklarimizi-koruyalim.pdf"
 ---
 ## Yaratılış Gayemizi Hatırladık

@@ -110,7 +110,7 @@ Peygamber Efendimiz (s.a.s.):
 
 “İstanbul mutlaka fethedilecektir. Onu fetheden komutan ne güzel komutan, fetheden ordu ne güzel ordudur.” (İbn Hanbel, IV, 335) Bu müjdeye nail olmak için Sevgili Peygamberimizi evinde altı ay misafir eden Ebû Eyyûb el-Ensârî İstanbul seferine katılmış, İstanbul surları önünde şehit olmuştu. Bu kutlu işaret tarih boyunca pek çok sefere vesile olmuş, zafer 21 yaşındaki genç padişah II. Mehmed’e nasip olmuştu. Büyük hazırlıklar yapılmış, gerekli bütün tedbirler alınmış, gemiler karadan yürütülmüştü. Sefer, Akşemseddin, Molla Gürânî, Molla Hüsrev gibi tanınmış âlimler tarafından mânevî bakımdan desteklenmişti. Uzun bir kuşatmadan sonra 29 Mayıs 1453 günü İstanbul fethedilmiş, Peygamber Efendimiz’in (s.a.s.) müjdesine nail olunmuştu. İstanbul’un fethi, Peygamber Efendimiz (s.a.s.)’in müjdesine nail olmak, Allah’ın ismini yüceltmek, İslam’ın önündeki engelleri kaldırmak gibi ulvi sevdalar için yapılmıştı. Fatih Sultan Mehmet İstanbul’u fethettiğinde 21 yaşında olması, gençlerimiz için özgüven ve ümit kaynağıdır. Zira yıkılmaz kabul edilen surlar yıkılmış, bir gecede karadan yürütülen gemilerle Halic’in zincirleri aşılmıştı. Rabbimiz ecdadımızın açtığı bu yolda olabilmeyi bizlere nasip eylesin.
 
-## Sonuç:
+## Sonuç
 
 Yüce Rabbimizden niyazımız odur ki; bizleri, asırlar önce çöle dönmüş kalpleri adaletiyle yeşerten o nebevi metottan ayırmasın. Evlatlarımızı Ashâb-ı Kehf gibi imanlı, Hz. Yusuf (a.s.) gibi iffetli, Hz. İbrahim (a.s.) gibi cesur eylesin.
 

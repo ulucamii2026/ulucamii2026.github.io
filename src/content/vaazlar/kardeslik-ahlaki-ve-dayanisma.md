@@ -3,7 +3,6 @@ baslik: "Kardeşlik Ahlakı ve Dayanışma"
 ozet: "Rabbimize sonsuz hamd-ü senalar olsun. Sevgili Peygamberimize salat ve selam olsun. Evveli rahmet, ortası mağfiret, sonu da günahlardan kurtuluş ayı Ramazan-ı…"
 kategori: toplum
 kelime: 2948
-docx: "/vaazlar/kardeslik-ahlaki-ve-dayanisma.docx"
 pdf: "/vaazlar/kardeslik-ahlaki-ve-dayanisma.pdf"
 ---
 ## Giriş
