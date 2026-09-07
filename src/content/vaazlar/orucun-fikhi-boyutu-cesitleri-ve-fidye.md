@@ -8,19 +8,19 @@ pdf: "/vaazlar/orucun-fikhi-boyutu-cesitleri-ve-fidye.pdf"
 ---
 Hanefîler'e göre diğer ibadetler gibi oruç da farz, vâcip ve nâfile çeşitlerine ayrılır. Bu üçlü ayırım Hanefîler'in, dinen yapılması gerekli olan şeyleri farz ve vâcip şeklinde iki kademeli bir ayırıma tâbi tutmuş olması sebebiyledir. Diğer mezheplerde "vâcib" terimi ise her iki kategoriyi de içine alır. Nâfile ise farz ve vâcip dışında kalan dinî ödevlerin genel adıdır.
 
-## FARZ ORUÇ
+## Farz Oruç
 
 Farz olan oruç denince, ramazan orucu kastedilir ve zaten tayin edilmiş, önceden belirlenmiş (muayyen) olan oruç da budur. Mazeretli veya mazeretsiz olarak tutulamadığı zaman, başka bir zaman kazâ edilmesi de aynı şekilde farzdır. Bunun dışında bir de kefâret olmak üzere tutulan oruç vardır. Ramazan orucunun bozulması sebebiyle tutulması gereken kefâret orucu yanında ayrıca, zıhâr, yanlışlıkla ve kaza ile adam öldürme, hacda ihramlı iken vaktinden önce tıraş olma (halk) ve yemin için tutulacak olan kefâret oruçları da farz oruç kapsamında değerlendirilmiştir.
 
 Ramazan orucu "muayyen farz", diğerleri ise "gayr-i muayyen farz" olarak nitelendirilir. Ramazan orucu sadece belirli bir vakitte, yani ramazan ayında tutulabilirken, diğerleri oruç tutmanın mubah olduğu her zaman tutulabilir. Ramazan orucunun kazası da istenilen mubah günlerde tutabilir. Fakat İmam Şâfiî'nin kazâya kalan orucun aynı yıl içerisinde kazâ edilmesi gerektiğine ilişkin görüşü de dikkate alınarak, herhangi bir sebeple kazâya kalan orucu mümkün olan en kısa zamanda tutmaya çalışmak uygun olur.
 
-## VÂCİP ORUÇ
+## Vâcip Oruç
 
 Nezir (adak), kişinin dinen yükümlü olmadığı bir ibadeti yapmayı kendisi için bir yükümlülük haline getirmesidir. Kişi, oruç tutmayı adamışsa, bu adak orucunu tutması vâciptir. Adak adanırken, orucun tutulacağı gün belirlenmişse, meselâ falan ayın falan günü gibi, bu muayyen bir vâcip olur ve orucun belirlenen günde tutulması gerekir. Nezredilen itikâf orucu da belirli günde tutulacağı için muayyen vâcip sayılır. Orucun tutulacağı gün belirlenmemişse gayr-i muayyen vâcip olur ve dilediği mubah bir günde tutabilir.
 
 Başlanmış nâfile bir orucun bozulması durumunda bunun kazâ edilmesi Hanefîler'e göre vâciptir. Mâlikîler ise kazânın farz olduğunu söylemişlerdir. Şâfiî'ye ve Mâlik'ten başka bir rivayete göre ise, nâfile orucun kazâsı gerekmez.
 
-## NÂFİLE ORUÇ
+## Nâfile Oruç
 
 Farz ve vâcip olan oruçların dışında tutulan oruçlar nâfile oruç olarak isimlendirilir. Nâfile, gereksiz anlamına değil, farz ve vâcip olanın dışında, kısaca gerekenin dışında yapılan anlamına gelir. Daha fazla sevap kazanmak maksadıyla yapıldığı için tabir câizse nâfile ibadet, bir bakıma fazla mesai yapmaktır.
 
@@ -66,7 +66,7 @@ Haram aylar olarak anılan zilkade, zilhicce, muharrem ve receb aylarında, per�
 
 Gün aşırı oruç tutmak yani bir gün oruç tutup ertesi gün tutmamak, Peygamberimiz tarafından "savm-ı Dâvûd" olarak nitelenmiş ve bu şekilde oruç tutmanın faziletli olduğu ifade edilmiştir. Peygamberimiz bu şekildeki oruç hakkında "En faziletli oruç Dâvûd'un tuttuğu oruçtur; o bir gün oruç tutar, bir gün tutmazdı" demiştir. Sahâbeden Abdullah b. Amr, "Ben daha fazlasını tutabilirim" deyince, Peygamberimiz bunun faziletli bir şekil olduğunu ve daha fazlasını tutmaya çalışmamayı tavsiye etmiştir (Müslim, “Sıyâm”, 187-192). Bu bakımdan gün aşırı oruç tutmak, en faziletli nâfile oruç olarak değerlendirilmiştir. Yukarıda belirtilen günlerde oruç tutmanın fazileti ve kişiye kazandıracağı sevaplar konusunda birçok hadis rivayet edilmiştir
 
-## ORUÇ TUTMANIN YASAK OLDUĞU GÜNLER
+## Oruç Tutmanın Yasak Olduğu Günler
 
 Dinimizde, oruç tutmanın emredildiği, tavsiye edildiği günler olduğu gibi, oruç tutmanın yasaklandığı veya hoş karşılanmadığı günler de vardır. Bazı belli günlerde oruç tutmanın hoş karşılanmayışının çeşitli sebepleri bulunmaktadır. Yasağın mahiyetine ve ağırlık derecesine göre, bugünlerin bir kısmında oruç tutmak haram veya tahrîmen mekruh sayılırken, diğer bir kısmında ise tenzîhen mekruh sayılmıştır.
 
@@ -88,7 +88,7 @@ Ancak ramazanın başlama ve bitiş günlerinde müslümanlar arasında fitne ve
 
 İki veya daha fazla günü, arada iftar etmeksizin birbirine ekleyerek oruç tutmak mekruhtur. Buna visâl orucu (savm-i visâl) denir. Âişe vâlidemizin belirttiğine göre Peygamberimiz müslümanlara acıdığı için visâl orucu tutmalarını yasaklamış; kendisinin bu şekilde oruç tuttuğu hatırlatılınca da "Siz benim gibi değilsiniz; beni Rabbim yedirir, içirir" (Müslim, “Sıyâm”, 55-58) diye cevap vermiştir.
 
-## FİDYE
+## Fidye
 
 <p lang="ar" dir="rtl" class="ayet">أَيَّامًا مَّعْدُودَاتٍ فَمَن كَانَ مِنكُم مَّرِيضًا أَوْ عَلَى سَفَرٍ فَعِدَّةٌ مِّنْ أَيَّامٍ أُخَرَ وَعَلَى الَّذِينَ يُطِيقُونَهُ فِدْيَةٌ طَعَامُ مِسْكِينٍ فَمَن تَطَوَّعَ خَيْرًا فَهُوَ خَيْرٌ لَّهُ وَأَن تَصُومُواْ خَيْرٌ لَّكُمْ إِن كُنتُمْ تَعْلَمُونَ</p>
 

@@ -192,7 +192,7 @@ Güven duygusu zail olduğu zaman insanların birbirlerine itimadı kalmaz ve ah
 
 Hz. Peygamber (s.a.s) yalan söylemeyi, verilen sözde durmamayı ve emanete hıyanet edip insanların güvenini boşa çıkarmayı münafıklığın göstergelerinden saymıştır. İdeal bir İslam toplumu özlemini dile getirirken kullandığı ölçüt “*bir kadının Allah’tan başka hiç kimseden korku duymadan (tek başına ve güven içinde) Hîre’den* (Irak'ta Kufe'de bulunan antik bir şehir) ***kalkıp gelerek Kâbe’yi tavaf edebilmesi***” dir. (Buhârî, *Menâkıb*, 25)
 
-SONUÇ:
+## Sonuç
 
 Kur’an ve sünnetin hedeflediği güven toplumunu oluşturmak için önce gönüllerimizi imanla inşa etmeliyiz. Aile karı-koca arasında güven ve adalet temeli üzerinde kurulmalı, eşler ve çocuklar sorunlarını rahatça paylaşabildikleri ve çözebildikleri sağlıklı bir iletişim süreci oluşturmalıdır. Toplumda bireyler arsında ki ilişkiler doğruluk ve güven üzerine kurmalı. Her mümin bir başkasının malını, canını, iffetini Mekke-Kabe gibi kutsal görebilmeli, bir vücut gibi birbirinin derdini ve sıkıntısını hissederek deva olmaya çalışmalıdır. Toplumsal güveni sarsacak yalan ve sözünde durmamak gibi kötü davranışlardan uzak durmalıdır.
 

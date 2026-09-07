@@ -1,5 +1,5 @@
 ---
-baslik: "Şükreden Bir Kul Olmak"
+baslik: "Şükreden Bir Kul Olmak (2)"
 ozet: "Hz. Ebû Hüreyre (ra) anlatıyor: \"Resûlullah (s.a.s.) buyurdular ki: \"Allah'ın, yollarda dolaşıp zikredenleri araştıran melekleri vardır. Allah-u Teâlâ'yı zikreden…"
 kategori: ahlak
 kelime: 3589
@@ -26,7 +26,7 @@ Kısacası nimet, Allah’ın kuluna maddî ve manevî her türlü yardımıdır
 
 *“Ey iman edenler! Size verdiğimiz rızıkların temiz olanlarından yiyin ve Allah’a şükredin; eğer O’na kulluk ediyorsanız.”* ***(Bakara, 2/172.)***
 
-### ALACA TENLİ, KÖR VE KEL HADİSİ
+### Alaca Tenli, Kör ve Kel Hadisi
 
 Ebû Hureyre’den (r.a) rivayet edildiğine göre kendisi, Nebî’nin (s.a.v) şöyle buyurduğunu işitmiştir: “İsrâil oğulları arasında biri ala tenli (abraş), biri kel, biri de kör üç kişi vardı. Allah Teâlâ onları sınamak istedi ve kendilerine bir melek gönderdi. Melek ala tenliye geldi: En çok istediğin şey nedir? dedi. Alaca tenli: Güzel (bir) renk, güzel (bir) ten ve insanların iğrendiği şu halin benden giderilmesi, dedi. Melek onu sıvazladı ve alaca tenlilik gitti, rengi güzelleşti. Melek bu defa: En çok sahip olmak istediğin mal nedir? dedi. Adam: Deve yahut da sığırdır -İshak şek etmiştir-, dedi. Ona genç ve gebe bir deve verildi. Melek: Allah sana bu deveyi bereketli kılsın! diye dua etti. Sonra kele gelerek: En çok istediğin şey nedir? dedi. Kel: Güzel (bir) saç ve insanları benden uzaklaştıran şu kelliğin giderilmesi dedi. Melek onu sıvazladı, kelliği kayboldu. Kendisine gür ve güzel (bir) saç verildi. Melek sordu: En çok sahip olmak istediğin mal nedir? Adam: Deve yahut da sığırdır dedi. Ona da gebe bir inek verildi. Melek: Allah sana bunu bereketli kılsın! diye dua ettikten sonra körün yanına geldi ve : En çok istediğin şey nedir? dedi. Kör: Allah’ın gözlerimi iade etmesini ve insanları görmeyi çok istiyorum, dedi. Melek (onun gözlerini) sıvazladı. Allah onun gözlerini iade etti. Bu defa Melek: En çok sahip olmak istediğin şey nedir? dedi. O da: Koyun dedi. Bunun üzerine ona gebe koyun verildi. Deve ve sığır yavruladı, koyun kuzuladı. Neticede birinin vadi dolusu develeri, diğerinin vadi dolusu sığırı, ötekinin de bir vadi dolusu koyun sürüsü oldu. Daha sonra melek ala tenliye, eski kılığında geldi ve: Fakirim, yoluma devam edecek imkânım yok. Gitmek istediğim yere önce Allah sonra senin yardımın sâyesinde ulaşabilirim. Rengini ve cildini güzelleştiren Allah aşkına senden yolculuğumu tamamlayabileceğim bir deve istiyorum, dedi. Adam: Mal verilecek yer çok, dedi. Melek: Ben seni tanıyor gibiyim. Sen insanların kendisinden iğrendikleri, fakirken Allah’ın zengin ettiği abraş değil misin? dedi. Adam: Bana bu mal atalarımdan miras kaldı, dedi. Melek: Eğer yalan söylüyorsan, Allah seni eski haline çevirsin, dedi. Sonra melek, eski kılığına girip kelin yanına geldi. Ona da abraşa söylediklerini söyledi. Kel de abraş gibi cevap verdi. Melek ona da: Yalan söylüyorsan, Allah seni eski haline çevirsin! dedi. Körün kılığına girip bu defa da onun yanına gitti ve: Fakir ve yolcuyum. Yoluma devam edecek imkânım kalmadı. Bugün önce Allah’ın sonra senin sâyende yoluma devam edebileceğim. Sana gözlerini geri veren Allah aşkına senden bir koyun istiyorum ki, onunla yoluma devam edebileyim, dedi. Bunun üzerine (eski) kör: Ben gerçekten kördüm. Allah gözlerimi iade etti. İstediğini al, istediğini bırak. Allah’a yemin ederim ki, bugün alacağın hiçbir şeyde sana zorluk çıkarmayacağım, dedi. Melek: Malın senin olsun. Bu sizin için bir imtihandı. Allah senden razı oldu, o iki arkadaşına gazap etti dedi. ***Buhârî (7/3274)***
 
@@ -80,7 +80,7 @@ Kulluk ile şükür arasında çok güçlü bir ilişki vardır. Şükürden uza
 
 *İblîs dedi ki: “Bundan böyle benim sapmama izin vermene karşılık, ant içerim ki, ben de onları saptırmak için senin doğru yolunun üstüne oturacağım. Sonra elbette onlara önlerinden, arkalarından, sağlarından, sollarından sokulacağım ve sen onların çoklarını şükredenlerden bulmayacaksın.”* ***(A’râf, 7/16-17).***
 
-### ŞÜKÜR NİMETİN ARTMASINA VESİLEDİR.
+### Şükür Nimetin Artmasına Vesiledir
 
 "eş-Şekûr" Allah'ın güzel isimlerinden birisidir. Anlamı, kendisinin rızası için amel edenlerin çabalarını zayi etmez, bilakis kat kat fazlasıyla karşılık verir demektir. Zira şüphesiz Allah güzel amelde bulunanların ecrini zayi etmez.
 
@@ -98,7 +98,7 @@ Harun Reşid, “Behlül daha az önce vazife verdik sana ne çabuk bıktın?”
 
 Behlül şöyle dedi: -Efendimiz, çarşı pazarın ağası varmış. Benden önce ekmekleri tartmış, vicdanları tartmış, buna göre herkes hesabını ödemiş, bana ihtiyaç kalmamış.
 
-### HER HALE ŞÜKRETMEK GEREKİR.
+### Her Hale Şükretmek Gerekir
 
 Bir hocamız anlatıyor; Bir öğrencim vardı. Göz kapaklarının kasları eridi ve göz kapakları düştü kalkmadı. Öğrencimi ziyaret ettim. Hocam halimi görmüyor musun? Kaldırımda yürüyorum insanlara çarpıyorum kör müsün diyorlar. Göz kapaklarımı elimle kaldırdığımda ise içine toz toprak doluyor. Göz kapağımı çalıştıracak bir ilaç olsa onu elde etmek için ömür boyu kul köle olmaya razıyım dedi.
 
@@ -153,7 +153,7 @@ Makbûl bir şükür, yalnızca sözle ifade edilen şükür değildir. Gerçek 
 
 –Amel ise; bu duyguların gerektirdiği minvâl üzere yaşayıp şükrü kavlen ve fiilen ifade etmek, nimetleri Hakk’ın rızasına uygun olarak kullanıp O’na isyandan sakınmaktır.
 
-### İNSANLARIN BİRBİRLERİNE KARŞI TEŞEKKÜRÜ:
+### İnsanların Birbirlerine Karşı Teşekkürü
 Şükrün işaret ettiği bütün görüntüler Allah’a ait olmasına rağmen Kur'ân, ana-babaya da şükredilmesini emreder:
 
 <p lang="ar" dir="rtl" class="ayet">وَوَصَّيْنَا اﻹ ِنسَانَ بِوَالِدَيْهِ حَمَلَتْهُ أُمُّهُ وَهْنًا عَلَى وَهْنٍ وَفِصَالُهُ فِي عَامَيْنِ أَنْ اشْكُرْ لِي وَلِوَالِدَيْكَ إِلَيَّ الْمَصِيرُ</p>
@@ -176,7 +176,7 @@ Yapılan hayırlar bir şükürdür. Namaz ve oruç gibi ibadetler bedenin; zek�
 
 KISSA: Bir adam İmam-ı Azam’ın (r.a) yanına gelip “senin ticaret mallarının getiren kervan soyuldu” diye haber verir. İmam-ı Azam’a (r.a), “elhamdülillah” der. Daha sonra başka bir haber gelir. “Soyulan kervan senin eşyalarının bulunduğu kervan değilmiş, eşyalarına bir şey olmamış.” denilir. İmam-ı Azam rh.a. yine “elhamdülillah” der. Bu iki hamdin sebebi sorulunca da şu cevabı verir: “Bana kervan soyuldu denince kalbimi kontrol ettim, dünya malını kaybetmekten dolayı üzüntü duymadı. Bu yüzden elhamdülillah dedim. Soyulan kervanın benim malımı taşıyan kervan olmadığını öğrenince yine kalbimi kontrol ettim. Mala kavuşma sevinci de yoktu. Bunun için de elhamdülillah dedim.”
 
-### HER DAİM ŞÜKRETMEK
+### Her Daim Şükretmek
 Fudayl b. Amr anlatıyor:
 
 <p lang="ar" dir="rtl" class="ayet">لَقِيَ رَسُولُ اللَّهِ رَجُلًا مِنْ أَصْحَابِهِ فَقَالَ: «كَيْفَ أَصْبَحْتَ؟» فَقَالَ: صَالِحًا، قَالَ: «كَيْفَ أَصْبَحْتَ؟» قَالَ: صَالِحًا، قَالَ: «كَيْفَ أَصْبَحْتَ؟» قَالَ: بِخَيْرٍ أَحْمَدُ اللَّهَ تَعَالَى، قَالَ: «هَذَا الَّذِي أَرَدْتُ مِنْكَ»</p>
@@ -191,7 +191,7 @@ Rasûlullah buyurdu ki:
 
 Hem dünyada hem cennette hamd edenlerden olmak, elhamdülillah diyerek bir hayat yaşayabilmek için gayret etmeliyiz. Doğumdan ölüme, saymakla bitiremeyeceğimiz nice dünya nimetlerine nail olduk, oluyoruz. Fark ettiğimiz, edemediğimiz bütün nimetler için Rabbimize sonsuz hamd ve senâlar etmeliyiz.
 
-### ŞÜKRÜN EN GÜZEL BELİRTİSİ: KANAAT
+### Şükrün En Güzel Belirtisi: Kanaat
 
 Şükreden insan, üzerindeki nimetleri fark eder; Bu da onu kanaatkâr olmaya sevk eder. Kanaat; kişinin elinde bulunanla yetinmesi ve dünya nimetlerinden nasibine düşene razı olması demektir.Az mala sahipken korkmamak ve çok mala sahipken şımarmamaktır.Şükredebilmek için kanaatkâr olmak gerekir. Kanaatin zıddı tamahkârlık ve doyumsuzluktur. Aslında doymayan mide değil nefstir.
 
@@ -217,7 +217,7 @@ Kanaatkarlık ise insanı önce rahatlatır. Malı Allah’ın bir emaneti olara
 
 “Gerçek zenginlik, mal çokluğu değil, gönül tokluğudur.” ***(Buhârî, Rikâk 15)***
 
-### SONUÇ
+### Sonuç
 
 Şükür, nimeti değil, nimeti vereni görmektir. Nimeti vereni bilip gereğiyle amel etmektir. Bu amel, kalp, dil ve diğer azâlarla olur. Kalp ile iyiliğe niyet eder. Dil ile hamd eder, şükrünü açıklar. Uzuvlarla şükür ise, Allah-u Teâlâ’nın verdiği nimetleri yerli yerinde kullanmaktır. Mesela gözün şükrü, müslümanların, arkadaşların kusurunu görmemektir. Kulağın şükrü, söylenilen ayıpları duymamış olmaktır. Şükür, Allah-u Teâlâ’nın verdiği nimetleri Onun sevdiği yerlerde kullanmaktır. Şükür, hem eldeki nimeti yok olmaktan kurtarır, hem de yeni nimetlere kavuşturur.
 

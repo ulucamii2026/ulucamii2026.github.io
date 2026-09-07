@@ -44,7 +44,7 @@ Ebû Hüreyre’den (r.a.) rivayet edildiğine göre, Rasûlullah (s.a.s): “*M
 
 Görüldüğü gibi Allah’ın huzuruna kul hakkı ile çıkmanın, çok ağır bir vebali vardır. Böyle bir günahın Allah tarafından bağışlanması, hak sahibinin affetmesi şartına bağlanmıştır. Hak sahibi, ondan hakkını almadıkça veya bu hakkından vazgeçmedikçe, Allah, kul hakkı yiyenin günahını affetmemektedir. İlâhî adalet bunu gerektirir.
 
-### KAMU MALI
+### Kamu Malı
 
 İslâm’da her türlü gasp, yolsuzluk ve hırsızlığın yasaklanmasının yanında kamu malından çalmak, savaş ganimetlerinden haksız yolla bir şey almak, devlet malına hıyanet etmek gibi haksız fiiller İslâm hukukunda “gulûl” kavramıyla ifade edilmiştir. Gulûl; taksim edilmeden ganimet malından çalmak anlamıyla birlikte, genel olarak yolsuzluk ve kamu malına ihanet etme mânasını da taşımaktadır.
 
@@ -154,7 +154,7 @@ Ashabından özellikle yöneticilik veya zekât memurluğu gibi devlet görevind
 
 “***Sana niçin haberci gönderdiğimi biliyor musun? Benim iznim olmadan bir şeyi alma! Zira bu ihanettir. Kim de (kamu malına) ihanet ederse kıyamet günü ihanet ettiği şey ile birlikte gelir. Seni işte bunun için geri çağırdım. Şimdi görevine gidebilirsin.***” (Tirmizî, Ahkâm, 8)
 
-### SONUÇ:
+### Sonuç
 
 İslâm’ın değerlerinin üzerine bina edildiği “hak” kavramı, “kul hakkı (hukûku’l-ibâd)” ve “Allah hakkı (hukûkullah)” olarak sınıflandırılmış ve kamu hakkı, hukûkullah kapsamında değerlendirilmiştir. Kamu yarar ve düzeninin gerçekleşmesi, toplumun huzurlu ve düzenli bir hayata sahip olması bu haklara riayeti gerektirir.
 

@@ -10,7 +10,7 @@ pdf: "/vaazlar/aileyi-ayakta-tutan-degerler.pdf"
 
 *Meveddet ve rahmet, adalet ve istişare — aileyi yaşatan değerler*
 
-### GİRİŞ
+### Giriş
 
 Aile; sadece iki insanın bir araya gelerek kurduğu dünyevi bir ortaklık değildir. Beşeriyetin ilk ve en mukaddes müessesesi, toplumun kalbi, neslin koruyucusu ve dünya cennetimizdir aile. Aile, temeli bizzat Yüce Allah tarafından atılan, sevgiyle harcanan, sadakatle korunan mukaddes bir kaledir. İlk insan ve ilk peygamber Hz. Âdem ile Hz. Havva validemizden beri devam eden bu köklü çatı, insanı dış dünyanın fırtınalarından koruyan en emniyetli sığınaktır.
 
@@ -20,7 +20,7 @@ A. Meveddet ve Rahmet (Karşılıksız Sevgi ve Şefkat)
 
 Aileyi ayakta tutan ilk ve en büyük değer, eşlerin birbirine duyduğu sevgi ve merhamettir. Rabbimiz, evliliğin gayesini ve ruhunu bizlere meveddet ve rahmet kelimeleriyle özetlemiştir:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمِنْ اٰيَاتِهٖٓ اَنْ خَلَقَ لَكُمْ مِنْ اَنْفُسِكُمْ اَزْوَاجاً لِتَسْكُـنُٓوا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةًؕ اِنَّ فٖي ذٰلِكَ لَاٰيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ</p>
 
@@ -34,7 +34,7 @@ Meveddet; ‘salt sevgi, katışıksız ve karşılıksız sevgi’ anlamına ge
 
 Peygamber Efendimiz (s.a.s.) bir defasında Hz. Ömer’e (r.a.), asıl hazinenin altın ve gümüşte aranmaması gerektiğini anlatan şu sözleri söylemiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَلاَ أُخْبِرُكَ بِخَيْرِ مَا يَكْنِزُ الْمَرْءُ الْمَرْأَةُ الصَّالِحَةُ إِذَا نَظَرَ إِلَيْهَا سَرَّتْهُ وَإِذَا أَمَرَهَا أَطَاعَتْهُ وَإِذَا غَابَ عَنْهَا حَفِظَتْهُ</p>
 
@@ -42,7 +42,7 @@ HADÎS-İ ŞERÎF
 
 Başka bir hadiste Peygamber Efendimiz (s.a.s.) eşler arasındaki sevginin önemine işaret ederek,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لَا يَفْرَكْ مُؤْمِنٌ مُؤْمِنَةً، إِنْ كَرِهَ مِنْهَا خُلُقًا رَضِيَ مِنْهَا آخَرَ</p>
 
@@ -58,7 +58,7 @@ Evlilikte yaşanabilecek krizleri aşmak için karşılıklı hoşgörü gerekir
 
 Kur’an’ı Kerim’de:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَعَاشِرُوهُنَّ بِالْمَعْرُوفِۚ فَاِنْ كَرِهْتُمُوهُنَّ فَعَسٰٓى اَنْ تَكْرَهُوا شَيْـٔاً وَيَجْعَلَ اللّٰهُ فٖيهِ خَيْراً كَثٖيراً</p>
 
@@ -70,7 +70,7 @@ Erkeklerin kadınlara karşı kötü davranışları (mâruf çerçevesini aşan
 
 Peygamber Efendimiz de (s.a.s.), aile fertlerine karşı sevgi, merhamet ve anlayışı imanın bir gereği olarak görür. Aile içi ilişkilerde en hayırlı ölçüyü:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">خَيْرُكُمْ خَيْرُكُمْ لِأَهْلِهِ، وَأَنَا خَيْرُكُمْ لِأَهْلِي</p>
 
@@ -80,7 +80,7 @@ C. Sadakat ve Güven (İffeti ve Sırrı Korumak)
 
 Güvenin olmadığı bir yerde ne sevgiden ne de saygıdan bahsedilebilir. Eşler birbirinin arkasındaki dağ, sırdaşı ve elbisesi olmalıdır. Ailenin mahremiyetini korumak ve bununla ilgili ortaya konmuş olan İslâmî prensiplere riayet etmek, başta eşler olmak üzere öncelikle bütün aile bireylerine düşen bir sorumluluktur. Allah Teâlâ eşlerin, birbirlerinin sırlarını ve kusurlarını örten ve koruyan birer elbise/örtü mesabesinde olduklarından bahisle,
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ هُنَّ لِبَاسٌ لَكُمْ وَاَنْتُمْ لِبَاسٌ لَهُنَّ ﴾</p>
 
@@ -92,7 +92,7 @@ Sevgili Peygamberimiz (s.a.s.) de eşler arasındaki özel konuların anlatılma
 
 Ayrıca O (s.a.s.),
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِيَّاكُمْ وَالظَّنَّ ، فَإِنَّ الظَّنَّ أَكْذَبُ الْحَدِيثِ ، وَلاَ تَحَسَّسُوا ، وَلاَ تَجَسَّسُوا ، وَلاَ تَحَاسَدُوا ، وَلاَ تَدَابَرُوا ، وَلاَ تَبَاغَضُوا ، وَكُونُوا عِبَادَ اللَّهِ إِخْوَانًا</p>
 
@@ -104,7 +104,7 @@ D. İstişare (Meşveret)
 
 Aile tek bir kişinin yönetimiyle değil, ortak aklın bereketiyle yürür. Evle ilgili alınacak kararlarda eşlerin ve çocukların fikrinin alınması, aile bağlarını kuvvetlendirir ve aidiyet duygusunu artırır. Yüce Rabbimiz müminlerin genel vasfını anlatırken şöyle buyurur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَاَمْرُهُمْ شُورٰى بَيْنَهُمْۖ ﴾</p>
 
@@ -112,7 +112,7 @@ Aile tek bir kişinin yönetimiyle değil, ortak aklın bereketiyle yürür. Evl
 
 Allah Resûlü (s.a.s.) istişarenin fert, aile ve toplum hayatına getireceği huzur, bereket ve güveni ifade etmek için de şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِذَا كَانَ أُمَرَاؤُكُمْ خِيَارَكُمْ، وَأَغْنِيَاؤُكُمْ سُمَحَاءَكُمْ، وَأُمُورُكُمْ شُورَى بَيْنَكُمْ، فَظَهْرُ الأَرْضِ خَيْرٌ لَكُمْ مِنْ بَطْنِهَا</p>
 
@@ -128,7 +128,7 @@ E. Sorumluluk Bilinci ve Neslin Muhafazası
 
 Aile reisleri olarak hepimizin en büyük görevlerinden biri de gözümüzün nuru olan evlatlarımızı ahiret ateşinden ve dünyanın kötülüklerinden korumaktır. Evlerimizi sadece maddi ihtiyaçların karşılandığı birer mekân değil, İslam ahlakının yaşandığı birer mektep haline getirmeliyiz. Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا قُٓوا اَنْفُسَكُمْ وَاَهْلٖيكُمْ نَاراً وَقُودُهَا النَّاسُ وَالْحِجَارَةُ</p>
 
@@ -138,24 +138,24 @@ Hz. Peygamber’in özel hayatından verilen örnek ışığında müminlerin ai
 
 Bu koruma görevi, her aile ferdinin kendi sorumluluk alanını iyi bilmesiyle mümkündür. Sevgili Peygamberimiz (s.a.s.) bu sorumluluk zincirini bizlere şu hadis-i şerifle açıklar:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">كُلُّكُمْ رَاعٍ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ، فَالْإِمَامُ رَاعٍ وَهْوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ، وَالرَّجُلُ فِى أَهْلِهِ رَاعٍ وَهْوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ، وَالْمَرْأَةُ فِى بَيْتِ زَوْجِهَا رَاعِيَةٌ وَهْيَ مَسْئُولَةٌ عَنْ رَعِيَّتِهَا، وَالْخَادِمُ فِى مَالِ سَيِّدِهِ رَاعٍ، وَهْوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ</p>
 
 *“Hepiniz birer sorumlusunuz ve hepiniz yönettiklerinizden mesulsünüz. Devlet başkanı sorumludur ve yönettiklerinden mesuldür. Evin beyi sorumludur ve yönettiklerinden mesuldür. Evin hanımı da eşinin evinde sorumludur ve yönettiklerinden mesuldür. Hizmetçi de efendisinin malı üzerinde sorumludur ve yönettiklerinden mesuldür.”* (Buhârî, İstikrâz, 20)
 
-### SONUÇ
+### Sonuç
 
 Aile, modern dünyanın bencil girdaplarına feda edilemeyecek kadar büyük bir nimettir. Evlerimizde televizyon, telefon ve bilgisayar ekranlarının bizi birbirimizden koparmasına müsaade etmeyelim. Akşamları ailece bir araya gelip sohbet edelim, dertleşelim. Yuvamızda tatlı dili, güler yüzü ve selamı hâkim kılalım.
 
 Yüce Rabbimiz bizlere şu ayet-i kerîmedeki dua ile yalvarmayı öğretiyor. Gelin vaazımızı bu güzel dua ile bitirelim:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ يَقُولُونَ رَبَّـنَا هَبْ لَنَا مِنْ اَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ اَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقٖينَ اِمَاماً</p>
 
 *“Onlar, “Ey rabbimiz!” derler, “Eşlerimizden ve çocuklarımızdan bize göz aydınlığı olacaklar bahşet; bizi günahtan sakınanlara öncü yap!”* (Furkân, 25/74)
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Allah Teâlâ yuvalarımıza huzur, bereket, sevgi ve sükûnet ihsan eylesin. Bizleri ve neslimizi İslam ahlakı üzere sabit kılsın.*

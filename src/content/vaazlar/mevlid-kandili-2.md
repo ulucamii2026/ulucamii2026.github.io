@@ -1,5 +1,5 @@
 ---
-baslik: "Mevlid Kandili"
+baslik: "Mevlid Kandili (2)"
 ozet: "Din, insanın sadece Allah ile ilişkilerini değil, aynı zamanda hem diğer insanlarla hem de âlem ile ilişkilerini düzenlemek üzere, Allah tarafından konulmuş olan…"
 kategori: ahlak
 kelime: 2846

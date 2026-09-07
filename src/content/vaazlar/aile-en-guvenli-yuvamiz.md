@@ -44,7 +44,7 @@ Evlilik birliğinin devamı için karı kocanın birbirine sevgi, saygı ve hoş
 
 Bunun dışında karı kocanın evlilik birliğinden doğan ve hukuki niteliği ön plana çıkan bazı hak ve sorumlulukları söz konusudur ve bir taraf için hak olan diğer taraf için sorumluluk niteliği taşımaktadır.
 
-### EŞLERİN BİRBİRLERİNE KARŞI OLAN HAK VE SORUMLULUKLARI
+### Eşlerin Birbirlerine Karşı Olan Hak ve Sorumlulukları
 
 Bir kısım hak ve sorumluluklar vardır ki hem kadın hem erkek için ortaktır. Bunları şu şekilde özetleyebiliriz:
 
@@ -136,7 +136,7 @@ Evlilik kurumunun devamında eşler arası güven ve sadakat önemlidir. İleti�
 
 Bilindiği gibi istişare, bütün kurumsal yapıların işleyişinin ana dinamiğidir. Hz. Peygamber (s.a.s.) şûra ilkesini hayatı boyunca birçok konuda hassasiyetle uygulamıştır. Ailesinde de aynı duyarlı tutumu göstermiştir. Peygamberler dünyanın en akıllı ve zeki insanları arasından seçilir ki peygamberlere ait sıfatlardan “fetânet” bunu ifade eder. Buna rağmen Hz. Peygamber (s.a.s.) yapılacak pek çok işte eşleriyle istişare ederdi.
 
-### KOCANIN KARISINA KARŞI GÖREVLERİ
+### Kocanın Karısına Karşı Görevleri
 
 Hadis-i şerifte Peygamberimiz (s.a.s.) şöyle buyurur;
 
@@ -158,7 +158,7 @@ Erkeğin tüm aile fertlerine karşı önemli görevi helalinden nafakalarını 
 
 Koca, karısının nafakasını temin etmek, giyecek, yiyecek ve barınma gibi temel ihtiyaçlarını karşılamak zorundadır. Kuşkusuz bunların tespitinde, adamın maddi durumu ve toplumun geleneği esas alınır.
 
-### KADININ KOCASINA KARŞI GÖREVLERİ
+### Kadının Kocasına Karşı Görevleri
 
 Kocasına saygılı olmak, onun meşru isteklerini yapmak, ailenin huzur ve düzenini bozacak davranışlardan sakınmak.
 

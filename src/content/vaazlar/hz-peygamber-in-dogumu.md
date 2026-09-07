@@ -6,7 +6,7 @@ kelime: 342
 docx: "/vaazlar/hz-peygamber-in-dogumu.docx"
 pdf: "/vaazlar/hz-peygamber-in-dogumu.pdf"
 ---
-### VİLADET BAHRİ
+### Viladet Bahri
 
 Âmine hâtun Muhammed ânesi
 Ol sadeften doğdu ol dür dânesi

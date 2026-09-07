@@ -28,7 +28,7 @@ Sad b. Ebî Vakkas (r.a.) anlatıyor: “Ey Allah’ın Resûlü! İnsanların e
 
 Şu uçsuz-bucaksız kâinattaki her şey, bir gaye için var edilmiştir. Canlı-cansız bütün varlıkların belli işlevleri, görevleri vardır. Bu gerçeği ifade eden âyetlerden biri şöyledir:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمَا خَلَقْنَا السَّمَاوَاتِ وَالْأَرْضَ وَمَا بَيْنَهُمَا لَاعِبِينَ مَا خَلَقْنَاهُمَا إِلاَّ بِالْحَقِّ وَلَكِنَّ أَكْثَرَهُمْ لَا يَعْلَمُونَ</p>
 
@@ -36,7 +36,7 @@ Sad b. Ebî Vakkas (r.a.) anlatıyor: “Ey Allah’ın Resûlü! İnsanların e
 
 Allah’ın yarattığı varlıkların en şereflisi ve kıymetlisi ise insandır. Yüce Allah, biz insanları en güzel şekilde yaratmış ve binlerce mahlûkatı istifademize sunmuştur. Emrimize amade kıldığı sayısız nimet vardır. Bu husus, Kur’an-ı Kerîm’de şöyle açıklanır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ هُوَ الَّذٖى خَلَقَ لَكُمْ مَا فِى الْاَرْضِ جَمٖيعًا ﴾</p>
 
@@ -44,7 +44,7 @@ Allah’ın yarattığı varlıkların en şereflisi ve kıymetlisi ise insandı
 
 Kendisine -bunca nimet verilen insan, boşuna mı yaratılmıştı? Tabii ki hayır! Onun da yaratılış gayesi vardır. İnsanın var edilip dünyaya gönderilişi, öylesine bir hâdise değildir. Bu duruma işaret eden ayet-i kerîme şudur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ</p>
 
@@ -54,7 +54,7 @@ Kendisine -bunca nimet verilen insan, boşuna mı yaratılmıştı? Tabii ki hay
 
 Genelde müminlerin imtihanı daha ağırdır. Allah’ın rızasını kazanmak, cenneti hak etmek için ciddi testlerden geçmek gerekir. Mümin, rüzgâra karşı yürüyen bir yolcu gibidir; rüzgâr (imtihan) ne kadar sert eserse, varacağı menzil o kadar kıymetlidir. Allah, rızasını zorlukların içine gizlemiştir ki; sadece ’diliyle inandım’ diyenle, ’kalbiyle bedel ödeyen’ birbirinden ayrılsın. Kur’an-ı Kerim’de bu hususa şöyle dikkat çekilir;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اَحَسِبَ النَّاسُ اَنْ يُتْرَكُٓوا اَنْ يَقُولُٓوا اٰمَنَّا وَهُمْ لَا يُفْتَنُونَ</p>
 
@@ -80,7 +80,7 @@ Ardından âmâ bir insan suretine girerek eskiden âmâ olan adamın yanına gi
 
 Sözlükte dayanma ve dayanıklılık anlamına gelen sabır; zor koşullar altında cesaret ve metanetini yitirmeden sıkıntı ve zorluklara katlanmak, doğru yolda yanlışlara karşı sebat etmektir. Dinî ve ahlaki bir kavram olarak sabır; inandığı hak yolda kararlılıkla yürüme azmi, sıkıntılara karşı dayanma gücüdür. Yüce Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَنَبْلُوَنَّكُمْ بِشَيْءٍ مِنَ الْخَوْفِ وَالْجُوعِ وَنَقْصٍ مِنَ الْاَمْوَالِ وَالْاَنْفُسِ وَالثَّمَرَاتِؕ وَبَشِّرِ الصَّابِرٖينَۙ</p>
 
@@ -90,7 +90,7 @@ Müslümanlar Mekke’den Medine’ye göç ederek müşriklerin saldırıların
 
 Ebû Saîd el-Hudrî’den (r.a.) nakledildiğine göre; Medineli Müslümanlardan bir kısmı Resûlullah’tan (s.a.s.) bir şeyler istediler. O da verdi. Sonra yine istediler. Resûlullah (s.a.s.), elindekiler bitinceye kadar verdi. Verebileceği şeyler tükenince onlara şöyle dedi:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا يَكُنْ مِنْ خَيْرٍ فَلَنْ أدَّخِرَهُ عَنْكُمْ ، وَمَنْ يسْتعْفِفْ يُعِفَّهُ الله وَمَنْ يَسْتَغْنِ يُغْنِهِ اللَّهُ ، وَمَنْ يَتَصَبَّرْ يُصَبِّرْهُ اللَّهُ . وَمَا أُعْطِىَ أَحَدٌ عَطَاءً خَيْراً وَأَوْسَعَ مِنَ الصَّبْرِ</p>
 
@@ -98,7 +98,7 @@ HADÎS-İ ŞERÎF
 
 Başka bir ayet-i kerimede Allah (c.c.):
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اسْتَعٖينُوا بِالصَّبْرِ وَالصَّلٰوةِؕ اِنَّ اللّٰهَ مَعَ الصَّابِرٖينَ</p>
 
@@ -114,7 +114,7 @@ Hırkasını başının altına yastık yapmış Kâbe’nin gölgesinde dinleni
 
 İmtihana tabi tutulan mümini tarif eden Peygamberimiz (s.a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">عَجَبًا لِأَمْرِ الْمُؤْمِنِ إِنَّ أَمْرَهُ كُلَّهُ لَهُ خَيْرٌ ، وَلَيْسَ ذَلِكَ لِأَحَدٍ إِلَّا لِلْمُؤْمِنِ : إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ ، وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خيْرًا لَهُ</p>
 
@@ -122,7 +122,7 @@ HADÎS-İ ŞERÎF
 
 Başka bir hadis-i şerifte:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِذَا أَرَادَ اللَّهُ بعبْدِهِ خَيْراً عجَّلَ لَهُ الْعُقُوبةَ في الدُّنْيَا ، وإِذَا أَرَادَ اللَّه بِعبدِهِ الشَّرَّ أمسَكَ عنْهُ بذَنْبِهِ حتَّى يُوافِيَ بهِ يَومَ الْقِيامةِ</p>
 
@@ -152,7 +152,7 @@ c) Musibetlere sabır: Bize düşen, aklın gösterdiği tedbirleri aldıktan so
 
 Resûlullah (s.a.s.) şöyle buyurdu:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لَا يَتَمَنَّيَنَّ أَحَدُكُمُ الْمَوْتَ لِضُرٍّ أَصَابَهُ ، فَإِنْ كَانَ لَا بُدَّ فَاعِلًا فَلْيَقُلْ : اَللَّهُمَّ أَحْيِنِي مَا كَانَتِ الْحَيَاةُ خَيْرًا لِي وَتَوَفَّنِي إِذَا كَانَتِ الْوَفاَةُ خَيْرًا لِي</p>
 

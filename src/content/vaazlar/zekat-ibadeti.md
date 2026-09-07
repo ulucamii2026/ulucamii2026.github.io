@@ -166,7 +166,7 @@ Peygamber Efendimiz (sas) de şöyle buyurmaktadır:
 
 “Yağmur ve nehir sularıyla sulanan toprak mahsullerinde onda bir; kova ile sulananlarda ise yirmide bir vardır”
 
-#### ZEKAT İLE İLGİLİ BAZI SORULAR VE CEVAPLARI:
+#### Zekat ile İlgili Bazı Sorular ve Cevapları
 
 Depremzedelere zekat verilebilir mi?
 
@@ -303,7 +303,7 @@ Kayınvalide ve kayınpeder, kişinin bakmakla yükümlü olduğu kimselerden ol
 
 Zekât mükellefi, kime zekât verdiğini araştırmalıdır. Araştırma sonucu zekât verilebilecek kişilerden olduğu kanaatine vardığı birisine zekât verir. Daha sonra bu kimsenin zekât verilecek kişilerden olmadığı ortaya çıkarsa, zekâtı geçerli olur. Araştırma yapmaksızın zekât verir ve daha sonra bu kimsenin zekât verilebilecek kişilerden olduğu ortaya çıkarsa, zekâtı geçerli olur; ancak böyle olmadığı anlaşılırsa, zekâtı geçerli olmaz, yeniden vermesi gerekir.
 
-#### ÖŞÜR İLE İLGİLİ BAZI SORULAR VE CEVAPLARI:
+#### Öşür ile İlgili Bazı Sorular ve Cevapları
 
 Ürün elde etmek için yapılan masraflar, öşür verilirken dikkate alınır mı?
 

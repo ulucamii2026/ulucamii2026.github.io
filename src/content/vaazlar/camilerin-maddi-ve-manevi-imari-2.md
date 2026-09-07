@@ -1,12 +1,12 @@
 ---
-baslik: "Camilerin Maddi ve Manevi İmarı"
+baslik: "Camilerin Maddi ve Manevi İmarı (2)"
 ozet: "İslam’ın sembolü ve mührü olan camilerimiz Kâbe’nin birer şubesidir. Cami, “toplayan, bir araya getiren” anlamında Arapça cem’ kökünden türemiştir. Mescid ise…"
 kategori: ibadet
 kelime: 2536
 docx: "/vaazlar/camilerin-maddi-ve-manevi-imari-2.docx"
 pdf: "/vaazlar/camilerin-maddi-ve-manevi-imari-2.pdf"
 ---
-GİRİŞ:
+## Giriş
 
 İslam’ın sembolü ve mührü olan camilerimiz Kâbe’nin birer şubesidir. Cami, *“toplayan, bir araya getiren”* anlamında Arapça cem’ kökünden türemiştir. Mescid ise Arapça’da “eğilmek, tevazu ile alnı yere koymak” manasına gelen sücûd kökünden “secde edilen yer” anlamındadır. Cami, Allah’a kulluk amacıyla insanların buluştuğu, amir-memur, yoksul-zengin, genç-yaşlı, toplumun her kesimini bünyesinde toplayan özel mekânlardır. Rabbimiz şöyle buyuruyor:
 
@@ -154,7 +154,7 @@ i) Kapı ağzı, merdiven önü, en arka kısım gibi insanların mecburen geçe
 
 j) Camiden çıkarken önce sol ayak dışarı atılmalıdır.
 
-SONUÇ
+## Sonuç
 
 Cennete giden yollar, mescitlerden geçiyor
 

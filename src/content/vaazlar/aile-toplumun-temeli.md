@@ -8,7 +8,7 @@ pdf: "/vaazlar/aile-toplumun-temeli.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">ِبِسْمِ الل ّٰهِ الر َّحْمّٰنِ الر َّحٖيم</p>
 
-GİRİŞ
+## Giriş
 
 İnsan, cana yakın, kendisiyle ünsiyet ve ülfet kurulan, uyumlu, sosyal bir varlıktır. İnsan, bir ailede dünyaya gözlerini açar. Küçücük bu bedenin dünya serüveni aile ile başlar. Onu sımsıcak saran, bağırlarına basan, geceleri uykularından vazgeçen anne ve babası onun hep yanı başındadır. Onun ilk öğretmeni bu iki değerli varlıktır. Onlardan aldığı terbiye ile hayata atılır ve topluma girer. Ve bir gün ayrılık vakti geldiğinde bu dünyadan yine en sevdiği ailesi tarafından uğurlanır.
 
@@ -158,6 +158,6 @@ Peygamber Efendimiz (s.a.s.), hicretten sonra muhacir ile ensarı kardeş ilan e
 
 Anne baba baskıcı değil; murakabe eden, yani gözetip yönlendiren bir tutum içinde olmalıdır. Çünkü çocuk yetiştirmek; uzun vadeli sabır, emek ve fedakârlık ister. Evlat, anne babanın malı değil; Allah’ın bir emanetidir. Bu sebeple değerler eğitimi küçük yaşta başlamalıdır. Çocuğa millî, manevî ve dinî değerler erken yaşlardan itibaren öğretilmelidir. Karakter eğitimi küçük yaşlarda daha kolay ve kalıcıdır. Özellikle namaz eğitimi, çocuğa kulluk ve disiplin bilinci kazandırır. Disiplin, şiddet değil; ölçülü sınır koyma ve ciddiyet kazandırmadır. Ödül ve yaptırım dengeli şekilde kullanılmalı; bağırmak ve öfkeyle yaklaşmak yerine merhamet ve sabır tercih edilmelidir. Mahremiyet eğitimi de çocuk terbiyesinin önemli bir parçasıdır. Çocuğun kendine ait özel bir alanı olmalı; ancak tamamen kontrolsüz de bırakılmamalıdır. (Ebu Davud, Salât 26; Tirmizî, Salât 299) Çocuk eğitiminde en etkili yöntem, örnek olmaktır. Anne baba, evdeki davranışlarının çocuk tarafından sürekli izlendiğini unutmamalıdır. Çocuklardan beklenen davranışlar önce ebeveyn tarafından uygulanmalıdır. Çünkü çocuk, söylenenden çok gördüğünü öğrenir. (Saff, 61/2-3) Çocukların duygu ve düşünceleri küçümsenmemelidir. Çocuğun küçük görülen problemleri, onun dünyasında büyük olabilir. Çocuk konuşmak istediğinde mutlaka dinlenmeli ve ciddiye alınmalıdır. Ayrıca çocuklara karşı yalan söylemek güven duygusunu zedeler. Verilen sözler mutlaka tutulmalıdır. Güzel davranışlar bazen sonradan ödüllendirilerek pekiştirilmelidir. Kardeşler arasında adaletin korunması da son derece önemlidir. Sevgi, hediye ve imkânlarda ayrımcılık yapılması; çocuklarda kin, kıskançlık ve kırgınlık doğurabilir. (Buhârî, Hibe 12; Müslim, Hibât 13) Ebeveyn, önce tedbir ve gayret göstermeli; ardından sonucu Allah’tan beklemelidir. Bu noktada dua, aile eğitiminin vazgeçilmez bir unsurudur. (Furkan, 25/74; İbrahim, 14/39-40) Çocuğun söz ve davranışları uygun bir üslupla takip edilmeli; çocuğa güzel ve anlamlı isim verilmelidir. (Ebû Dâvûd, Edeb, 171) Aynı zamanda çocuk helâl lokmayla yetiştirilmelidir. Eğitim konuşmayı; ahlak dinlemeyi, kibarlık söz kesmemeyi öğretir. Güzel ahlak, çocuğa bırakılabilecek en değerli mirastır. (Tirmizî, Birr 33) Rahman’ın has kullarının özelliklerinin anlatıldığı Furkan suresinde Rabbimiz şöyle buyurmuştur: “Onlar, “Ey Rabbimiz! Eşlerimizi ve çocuklarımızı bize göz aydınlığı kıl ve bizi Allah’a karşı gelmekten sakınanlara önder eyle!” diyenlerdir.” (Furkan, 25/74)
 
-D U Â
+<p class="vaaz-etiket">Duâ</p>
 
 Rabbimiz ailemizi hem dünyada hem de ahirette cennetimiz eylesin.

@@ -6,11 +6,11 @@ kelime: 3449
 docx: "/vaazlar/hicretin-onemi-ve-gunumuze-mesajlari.docx"
 pdf: "/vaazlar/hicretin-onemi-ve-gunumuze-mesajlari.pdf"
 ---
-### İSLAM TARİHİNDE HİCRETİN ÖNEMİ
+### İslam Tarihinde Hicretin Önemi
 
 *Hz. Peygamber’in (s.a.s.) Mekke’den Medine’ye Hicreti ve Günümüze Mesajları*
 
-### GİRİŞ
+### Giriş
 
 İnsanlık tarihinde dönüm noktası sayılan bazı olaylar vardır. Hz. Peygamber’in (s.a.s.) Mekke’den Medine’ye hicreti de bunlardan bir tanesidir. Tarih boyunca sayısız göç yaşanmıştır ancak hiçbiri Hz. Peygamber’in (s.a.s.) ve ashabının hicreti kadar etkili olmamıştır.
 
@@ -18,7 +18,7 @@ Hicret, sözlükte *“terk etmek, ayrılmak, ilgisini kesmek; kişinin başkas�
 
 Kur’an-ı Kerîm, Hz. Peygamber’den (s.a.s.) önceki dönemlerde de peygamberlerin ve onlara inananların hicret etmeye zorlandıklarından ve inançları uğrunda yurtlarını bırakıp başka yerlere gittiklerinden bahseder. İnsanlığın ilk hicreti, Hz. Âdem’in cennetten yeryüzüne indirilmesi ile başlamıştır. Hz. İbrahim (a.s.), kavminin kendisini ateşte yakma teşebbüsünün ardından;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴾ وَقَالَ اِنّٖي مُهَاجِرٌ اِلٰى رَبّٖي ﴿</p>
 
@@ -28,7 +28,7 @@ Hz. İbrahim’le (a.s.) beraber Filistin’e kadar bu hicrete katılan Hz. Lût
 
 Hicret, peygamberlerin ve onlara iman eden insanların ortak kaderidir. Peygamberler ve onlara iman eden Müminler, kâfirler tarafından hicret edilmeye zorlanmışlar, onlar da imanları uğruna vatanlarını, yurtlarını bırakıp hicret etmişlerdir. (Ahmet Önkal, Hicret, DİA, XVII, 458)
 
-A. HİCRET ÖNCESİ OLAYLAR
+## A. Hicret Öncesi Olaylar
 
 Mekke’de Hz. Peygamber (s.a.s.) ve O’na iman edenler, önceki peygamberlerin ve ümmetlerinin karşılaştığı sıkıntılara maruz kaldılar. Mekke müşrikleri Resûl-i Ekrem’e (s.a.s.) karşı İslâmiyet’i tebliğe başladığı andan itibaren olumsuz bir tavır takınmışlardı. Bu tavır sadece İslâm’ı reddetmekten ibaret kalmayarak; Hz. Peygamber (s.a.s.) alaya alındı, ona inananlara baskı uygulandı ve bu baskılar İslâmiyet’in Mekke’de yayılmaya başlaması üzerine eziyet ve işkenceye dönüştü. Hatta Ammâr b. Yâsir’in babası Yâsir ve annesi Sümeyye işkenceyle şehit edildi. (Önkal, 459)
 
@@ -38,7 +38,7 @@ Müslümanlara uygulanan üç yıl boykot sonrası, Resulüllah’ı (s.a.s.) ko
 
 Hz. Peygamber (s.a.s.), peygamberliğin on birinci yılında (M. 620), hac mevsiminde İslâm’a davet faaliyetini sürdürdüğü sıralarda Akabe mevkiinde Yesrib halkından Hazrec kabilesine mensup altı kişiyle karşılaştı. O esnada başlarını tıraş etmekte olan bu kişilerin yanına oturdu ve onlara İslam’ı anlattı. Bu altı kişi Müslüman oldu. Böylece yeni sığınılacak yerin ve hicretin kapısı aralanmış oldu. 621 yılında yapılan Birinci Akabe Bîatı ve 622 yılında gerçekleşen İkinci Akabe Bîatı sonrası Mekkeli Müslümanlar Medine’ye hicret etmeye başladı.
 
-B. MEDİNE’YE HİCRET
+## B. Medine’ye Hicret
 
 ✦
 
@@ -66,7 +66,7 @@ Bu çıplak yollarda ne in, ne de cin;
 
 Hz. Peygamber (s.a.s.), son Akabe Biatı’ndan sonra Müslümanlara Medine’ye hicret edebileceklerini söyledi ve şöyle buyurdu:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنِّى أُرِيتُ دَارَ هِجْرَتِكُمْ ذَاتَ نَخْلٍ بَيْنَ لاَبَتَيْنِ</p>
 
@@ -80,7 +80,7 @@ Müminler, Medine’ye akın akın hicret ediyorlardı. Mekke’de Hz. Peygamber
 
 3. Her kabileden bir genç seçilip, birlikte Hz. Peygamberi (s.a.s.) öldürmeleri. Böylece katiller bu kadar çok ve çeşitli kabilelere mensup olunca Peygamber Efendimizin (s.a.s.) kabilesi bunların hepsine karşı intikam savaşı açamayacak, diyete razı olacaktı. Bu sonuncu teklif Ebu Cehil’den gelmişti. Tarihçilerin kaydettiğine göre Necidli bir ihtiyar kılığına girerek müzakereye katılan Şeytan, birinci teklifi, “*Gelip kurtarırlar*”, ikinci teklifi “*Gittiği yerde insanları, çekici kişiliği ile etkiler, taraftarlarını çoğaltır, sonra gelip sizi mağlûp eder ve dilediğini yapar”* diyerek eleştirdi ve reddetti. Ebu Cehil’in teklifini ise beğendi ve kabul edilerek uygulanmasını telkin etti. Şeytanca olduğu için şeytana nisbet edildiği anlaşılan bu teklif oy birliği ile benimsendi. (Kur’an Yolu Tefsiri, 2/686) Müşriklerin bu hain planından Kur’an’da şöyle bahsedilmiştir:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذْ يَمْكُرُ بِكَ الَّذٖينَ كَفَرُوا لِيُثْبِتُوكَ اَوْ يَقْتُلُوكَ اَوْ يُخْرِجُوكَؕ وَيَمْكُرُونَ وَيَمْكُرُ اللّٰهُؕ وَاللّٰهُ خَيْرُ الْمَاكِرٖينَ</p>
 
@@ -88,7 +88,7 @@ Müminler, Medine’ye akın akın hicret ediyorlardı. Mekke’de Hz. Peygamber
 
 Allah Resûlü (s.a.s.) müşriklerin planından haberdar olduğunda öğle sıcağında Hz. Ebu Bekir’in (r.a.) evine gitti. Çünkü Allah Teâlâ’dan beklediği hicret izni;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَقُلْ رَبِّ اَدْخِلْنٖي مُدْخَلَ صِدْقٍ وَاَخْرِجْنٖي مُخْرَجَ صِدْقٍ وَاجْعَلْ لٖي مِنْ لَدُنْكَ سُلْطَاناً نَصٖيراً</p>
 
@@ -104,7 +104,7 @@ Allah Resûlü’nü (s.a.s.) öldürmek üzere evini basan fakat onu bulamayın
 
 Cenâb-ı Hak, işte böyle bir anda Elçisi’nden yardımını esirgememişti. Kur’ân-ı Kerîm’de bu sahne şöyle anlatılmıştır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِلَّا تَنْصُرُوهُ فَقَدْ نَصَرَهُ اللّٰهُ اِذْ اَخْرَجَهُ الَّذٖينَ كَفَرُوا ثَانِيَ اثْنَيْنِ اِذْ هُمَا فِي الْغَارِ اِذْ يَقُولُ لِصَاحِبِهٖ لَا تَحْزَنْ اِنَّ اللّٰهَ مَعَنَاۚ فَاَنْزَلَ اللّٰهُ سَكٖينَتَهُ عَلَيْهِ وَاَيَّدَهُ بِجُنُودٍ لَمْ تَرَوْهَا وَجَعَلَ كَلِمَةَ الَّذٖينَ كَفَرُوا السُّفْلٰىؕ وَكَلِمَةُ اللّٰهِ هِيَ الْعُلْيَاؕ وَاللّٰهُ عَزٖيزٌ حَكٖيمٌ</p>
 
@@ -112,7 +112,7 @@ Cenâb-ı Hak, işte böyle bir anda Elçisi’nden yardımını esirgememişti.
 
 Yüce Allah’ın, Hz. Peygamber’i (s.a.s.) ve Hz. Ebu Bekir’i (r.a.) koruduğu aşikârdır. Çünkü müşrikler, mağaranın ağzına kadar geldikleri hâlde içine bakmadan geri dönüp gittiler. Bir örümceğin mağaranın ağzına ağ örmesi (İbn Hanbel, I, 348.), iki güvercinin yuva kurup yumurtalarını bırakması, müşriklerin mağaraya bakmadan dönmelerine sebep oldu. (İbn Sa’d, et-Tabakât, I, 229;) Hz. Âişe’nin (r.a.) bize verdiği bilgiye göre Hz. Peygamber (s.a.s.) ve Hz. Ebu Bekir (r.a.), Sevr Mağarası’nda üç gece kaldılar. Hz. Peygamber (s.a.s.), Hz. Ebu Bekir (r.a.), Âmir b. Füheyre ve Abdullah b. Uraykıt’tan oluşan dört kişilik kafile, pazarı pazartesiye bağlayan gece Mekke’den ayrıldılar. (Mustafa Ağırman, Peygamber Efendimizin Hicret Yolculuğu, Diyanet Aylık Dergi, Eylül 2020, s. 28) Peygamberimiz (s.a.s.) Mekke’den ayrılırken şu duygu dolu sözleri söyledi:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاللَّهِ إِنَّكِ لَخَيْرُ أَرْضِ اللَّهِ وَأَحَبُّ أَرْضِ اللَّهِ إِلَيَّ وَاللَّهِ لَوْلَا أَنِّي أُخْرِجْتُ مِنْكِ مَا خَرَجْتُ</p>
 
@@ -126,7 +126,7 @@ Medine’ye yaklaştıkları zaman, Eslem kabilesi reisi Bureyde, Kureyş’in o
 
 Hicret yolculuğunda bazen de müşrikler tarafından onları bulana vaad edilen ödül nedeniyle kendilerini takip eden ve zor anlar yaşatan kimselerle de karşılaşıyorlardı. Bunlardan Peygamber Efendimiz’e (s.a.s.) ve Hz. Ebû Bekir’e (r.a.) en çok yaklaşma fırsatını elde eden ise Sürâka b. Mâlik idi. Fakat onları yakalamak üzere yaptığı her hamlede atı kuma saplanmış, kendisi de yere düşmüştü. Bu durum karşısında dehşete düşen Sürâka, sonunda Resûlullah’tan (s.a.s.) af diledi ve ne ihtiyaçları varsa gidereceğini söyledi. Peygamberimiz (s.a.s.) ise onun yardım teklifini kabul etmedi, ondan yalnızca yolculuklarını gizlemesini istedi. Bunun üzerine Sürâka, Allah Resûlü’nün (s.a.s.) affına karşılık, arkadan gelecek olanları bırakmayacağına dair söz verdi ve sözünden de dönmedi. (Hadislerle İslam, 7/30) Mekke’den Medîne’ye giderken yolda şu âyet-i kerîme nâzil oldu:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الَّذِي فَرَضَ عَلَيْكَ الْقُرْآنَ لَرَادُّكَ إِلَى مَعَادٍ قُل رَّبِّي أَعْلَمُ مَن جَاء بِالْهُدَى وَمَنْ هُوَ فِي ضَلَالٍ مُّبِينٍ</p>
 
@@ -148,29 +148,29 @@ Ay doğdu üzerimize / Veda tepesinden
 
 diye şiirler okurlarken kimileri de mızrakları ile sevinç gösterisinde bulunuyorlardı. (Önkal, 461; Ağırman, 29; Hadislerle İslam, 7/31)
 
-C. SAHABENİN HİCRETİNDEN ÖRNEKLER
+## C. Sahabenin Hicretinden Örnekler
 
 Hicretin gizli yapılmasına genelde uyulurken, Hz. Ömer (r.a.) açıktan ve alenen Mekke’den ayrılmıştı. Hz. Ömer (r.a.) Kabe’yi tavaf etmiş, ardından müşriklerin içine korku salan şu sözleri haykırmıştı: *"Kim anasını ağlatmak, çocuklarını yetim, karısını dul bırakmak istiyorsa şu vadinin arkasında gelip bana yetişsin."* Bu sözleri işitenlerden hiç kimse onun peşine düşme cesaretini kendinde göremedi.
 
 Mekke’de çileli bir hayat yaşamasına rağmen Suheyb-i Rumi (r.a.) en son hicret edenlerden biri oldu. Kaynaklarda, Resûl-i Ekrem’in (r.a.) hicret için yola çıkmadan önce Hz. Ebû Bekir’e (r.a.) yanlarına Suheyb’i de almasını söylediği, ancak yolculuk aceleye geldiği için bunun mümkün olmadığı, durumu sabahleyin öğrenen Suheyb’in yol hazırlığını tamamlayarak Hz. Ali (r.a.) ile birlikte yola çıktığı ve Resûlullah’la Kubâ’da buluştuğu belirtilmektedir. Mekke’den ayrılacağı sırada müşrikler yolunu keserek Mekke’ye gelirken hiçbir şeyi bulunmadığını, sahip olduğu serveti burada kazandığını söyleyerek Mekke’den bir şey çıkarmasına izin vermediler. O da bütün mal varlığını bırakarak hicret etti. Bunu duyan Hz. Peygamber (s.a.s.) üç defa, “Suheyb kârlı bir alışveriş yapmıştır” buyurdu.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمِنَ النَّاسِ مَنْ يَشْرِي نَفْسَهُ ابْتِغَاءَ مَرْضَاةِ اللَّهِ وَاللَّهُ رَءُوفٌ بِالْعِبَادِ</p>
 
 *“İnsanlardan öylesi de vardır ki, kendisini Allah’ın hoşnutluğunu kazanmaya adamıştır. Allah, kullarına çok şefkatlidir.”* (Bakara, 2/207) ayet-i kerimesi bu olay üzerine inmiştir. (Mehmet Efendioğlu, Suheyb b. Sinân, DİA, 37/476-477)
 
-D. HİCRET SONRASI
+## D. Hicret Sonrası
 
 Hicretle, 23 yıl süren peygamberlik devrinin 13 yıllık “Mekke Devri” sona ermiş, 10 yıllık “Medine Devri” başlamıştır. Hicret evvela Müslümanların rahat bir nefes almasını sağladı. Sonrasında Müslümanların güçlü bir toplumsal birliktelik oluşturması, devletleşmesi ve daha güçlü bir hâle dönüşmesi İslam davetinin halka halka yayılmasını sağladı. Medine’de devlet kurulduktan sonra sadece askerî cihatla değil, siyasi ilişkiler kurarak da İslam tebliğ ediliyordu. Hz. Peygamber (s.a.s), Medine’den komşu devletlere elçiler göndermiş ve bu elçiler aracılığıyla Yemen’e, İran’a, Bizans’a kadar İslam’a davet mektupları yollamıştır. Böylelikle hicret, İslam’ın yayılışı noktasında Müslümanlara çok önemli bir ivme kazandırmıştır.
 
 Hicret, aynı zamanda İslâmi takvimin başlangıcına da adını vermiştir. Her ne kadar Peygamber Efendimiz (s.a.s.) Medine’ye 12 Rabiulevvel günü varmışsa da, sahabesi, son Akabe Biatı’nın akdedilmesinden birkaç gün sonra, yine onun emir ve izni ile üç ay önce küçük kafileler halinde hicret etmeye başlamışlardı. Bu nedenle, 1 Muharrem, Hicrî takvimin başlangıcı olarak kabul edilmiştir. Bu yıl Miladî takvimde 622 yılına denk düşmektedir. (A. Önkal, A. Apak, B. Erul, Hz. Peygamberin İzinde, DİB, s. 105) Hz. Ömer’in (r.a.) halifeliği döneminde hicretin gerçekleştiği yıl, Hz. Ali’nin (r.a.) teklifiyle hicrî takvimin başlangıcı sayılmıştır.
 
-E. BUGÜN HİCRET
+## E. Bugün Hicret
 
 Peygamber Efendimiz (s.a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ وَالْمُهَاجِرُ مَنْ هَجَرَ مَا نَهَى اللَّهُ عَنْهُ</p>
 
@@ -180,7 +180,7 @@ O halde, bugün bizler de Allah’ın yasakladıklarından ve haramlardan uzak d
 
 Mucaşi’ b. Mesûd Sülemi (r.a.) şöyle rivayet etmiştir: "Ben, Peygamber’e (s.a.s.) geldim, hicret etmek üzere kendisine biat edecektim. Bunun üzerine Hz. Peygamber (s.a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الْهِجْرَةَ قَدْ مَضَتْ لِأَهْلِهَا وَلَكِنْ عَلَى الْإِسْلَامِ وَالْجِهَادِ وَالْخَيْرِ</p>
 
@@ -188,11 +188,11 @@ HADÎS-İ ŞERÎF
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
 Rabbimiz şöyle buyurmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذينَ امَنُوا وَهَاجَرُوا وَجَاهَدُوا فى سَبيلِ اللّهِ بِاَمْوَالِهِمْ وَاَنْفُسِهِمْ اَعْظَمُ دَرَجَةً عِنْدَ اللّهِ وَاُولئِكَ هُمُ الْفَائِزُونَ</p>
 
@@ -202,7 +202,7 @@ Mekke’den Medine’ye yapılan hicreti Müslümanlar için sadece bir kaçış
 
 Hicret, bir dava için yapılır. Özellikle peygamberler ve onların takipçisi olanlar, Allah’ın emrettiği yaşamı sürdürebilmenin imkânsız olduğu yerlerden bunun mümkün olduğu yerlere gitmişler ve inandıklarını yaşamak uğruna hicret etmişlerdir. (İhsan Süreyya Sırma, Diyanet Aylık Dergi, Eylül 2020, s. 22)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمَنْ يُهَاجِرْ فٖي سَبٖيلِ اللّٰهِ يَجِدْ فِي الْاَرْضِ مُرَاغَماً كَثٖيراً وَسَعَةًؕ وَمَنْ يَخْرُجْ مِنْ بَيْتِهٖ مُهَاجِراً اِلَى اللّٰهِ وَرَسُولِهٖ ثُمَّ يُدْرِكْهُ الْمَوْتُ فَقَدْ وَقَعَ اَجْرُهُ عَلَى اللّٰهِؕ وَكَانَ اللّٰهُ غَفُوراً رَحٖيماً</p>
 
@@ -214,6 +214,6 @@ Ashab-ı kiram Mekke’de canlarıyla, mallarıyla, aileleriyle pek çok şeyle 
 
 Allah Resulünün (s.a.s.) Mekke’den çıkarken yatağına Hz. Ali’yi (r.a.) yatırarak kendisinin evde olduğu izlenimini vermesi, Hz. Ebû Bekir’le (r.a.) Medine istikametine değil de güney yönüne gitmeleri ve üç gece Sevr mağarasında kalıp sonra yola devam etmelerinde biz müminler için önemli dersler vardır. Cenab-ı Hakk’ın korumasında olan Hz. Peygamber (s.a.s.), kul olarak alınması gereken tüm tedbirleri almış, sonrasında Rabbine tevekkül etmiştir.
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 Yeni bir hicrî yıla girerken mümine yaraşan, geçmişin muhasebesini yaparak geleceği planlamaktır. İsyandan itaate, günahtan tövbeye, gösterişten tevazua, ayrılıktan vahdete, düşmanlıktan kardeşliğe, cehaletten ilme, kötülükten iyiliğe hicret etmektir. Başta Gazze olmak üzere mazlum kardeşlerimizin kurtuluşuna, ülkemizin ve âlemi İslam’ın hayrına vesile olmasını; akan gözyaşların ve zulmün son bulmasını Rabbimden niyaz ediyorum

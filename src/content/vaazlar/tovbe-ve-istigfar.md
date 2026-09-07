@@ -8,17 +8,17 @@ pdf: "/vaazlar/tovbe-ve-istigfar.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 
-### MÜ’MİN GÜNAHTA ISRAR ETMEZ
+### Mü’min Günahta Israr Etmez
 
 *Tövbe kapısı ve kalbin muhafazası*
 
-### GİRİŞ
+### Giriş
 
 İnsan; yanlışa düşebilen, hata edebilen ve günah işleme potansiyeli taşıyan yükümlü/mükellef bir varlıktır. Bununla birlikte Allah Teâlâ insana yaşadığı müddetçe günahlarından tövbe edebilme hakkı bahşetmiştir.
 
 Yüce Rabbimizin Kur’ân-ı Kerîm’de buyurduğu üzere:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا تُوبُٓوا اِلَى اللّٰهِ تَوْبَةً نَصُوحاًؕ عَسٰى رَبُّكُمْ اَنْ يُكَفِّرَ عَنْكُمْ سَيِّـَٔاتِكُمْ وَيُدْخِلَكُمْ جَنّٰتٍ تَجْرٖي مِنْ تَحْتِهَا الْاَنْهَارُۙ…</p>
 
@@ -28,7 +28,7 @@ Yüce Rabbimizin Kur’ân-ı Kerîm’de buyurduğu üzere:
 
 Allah Resûlü de (s.a.s.) şöyle buyurmaktadır:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">كلُّ بني آدم خَطَّاءٌ، وخيرُ الخَطَّائِينَ التوابون</p>
 
@@ -38,11 +38,11 @@ Bu hadis-i şerif, bazı insanların günah işlemeyeceğini sanmanın veya buna
 
 Suyun kiri temizlediği gibi samimi tövbe de günahları temizler. Yeter ki insan işlediği günaha pişmanlık duyarak onu terk etmiş ve bir daha yapmamaya karar vermiş olsun. Allah Teâlâ’nın kullarına sonsuz merhamet ve şefkati vardır. Onların günahkâr olarak huzuruna gelmelerini istemez. Bunun için tövbe edip günahlardan arınmalarını ister.
 
-A. TÖVBE: RABBE YÖNELİŞ
+## A. Tövbe: Rabbe Yöneliş
 
 Yüce Rabbimiz Kur’an-ı Kerim’de şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">…وَتُوبُٓوا اِلَى اللّٰهِ جَمٖيعاً اَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ</p>
 
@@ -56,11 +56,11 @@ Tövbe, kulun Rabbine yönelişidir. Tövbe, müminin nefsini ve ruhunu tezkiye 
 
 Gerek inançsızlık gerekse işlenen günahlar insanı mânevî güzelliklerden feyz alamayacak şekilde nefsin ve şeytanın oyuncağı hâline getirebilmektedir. Bu durum kalbin akıl, basiret ve duygu yönlerini kaybederek mânâsızlaşmasına yol açmaktadır. Nihayet kalp işlenen günahların ağırlığı altında paslanma (*rayn*), sapma (*zeyğ*), hastalanma (*maraz*), katılık (*kasvet*), perdelenme (*gulf*), körleşme (*amâ*), mühürlenme (*hatm*), kilitlenme (*kufl*) gibi Kur’ân ve hadislerin haber verdiği bir dizi mânevî hastalığa maruz kalmaktadır. (Hadislerle İslam, 3/65)
 
-B. GÜNAH KALBİ KARARTIR
+## B. Günah Kalbi Karartır
 
 Allah Resûlü (s.a.s.) bir hadis-i şerîflerinde şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الْعَبْدَ إِذَا أَخْطَأَ خَطِيئَةً نُكِتَتْ فِى قَلْبِهِ نُكْتَةٌ سَوْدَاءُ فَإِذَا هُوَ نَزَعَ وَاسْتَغْفَرَ وَتَابَ سُقِلَ قَلْبُهُ وَإِنْ عَادَ زِيدَ فِيهَا حَتَّى تَعْلُوَ قَلْبَهُ وَهُوَ الرَّانُ الَّذِى ذَكَرَ اللَّهُ ( كَلاَّ بَلْ رَانَ عَلَى قُلُوبِهِمْ مَا كَانُوا يَكْسِبُونَ )</p>
 
@@ -72,7 +72,7 @@ Kur’ân-ı Kerîm’de İsrailoğulları’nın çölde geçirdikleri kırk y�
 
 Yüce Rabbimiz onların bu durumunu bizlere şöyle anlatmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">ثُمَّ قَسَتْ قُلُوبُكُمْ مِنْ بَعْدِ ذٰلِكَ فَهِيَ كَالْحِجَارَةِ اَوْ اَشَدُّ قَسْوَةًؕ وَاِنَّ مِنَ الْحِجَارَةِ لَمَا يَتَفَجَّرُ مِنْهُ الْاَنْهَارُؕ وَاِنَّ مِنْهَا لَمَا يَشَّقَّقُ فَيَخْرُجُ مِنْهُ الْمَٓاءُؕ وَاِنَّ مِنْهَا لَمَا يَهْبِطُ مِنْ خَشْيَةِ اللّٰهِؕ وَمَا اللّٰهُ بِغَافِلٍ عَمَّا تَعْمَلُونَ</p>
 
@@ -80,11 +80,11 @@ Yüce Rabbimiz onların bu durumunu bizlere şöyle anlatmaktadır:
 
 Âyet-i kerîmede İsrâiloğulları’nın nice ibretli olayların ardından ısrarla yine düşüncesiz, anlayışsız, bencil ve hoyrat kişiler haline geldikleri; taşlar bile genel planda Allah’ın kanunlarına uyup bereketli ve yararlı olabilirken, onların ilâhî buyruklar karşısında duyarsız kalıp isyan ettikleri, böylece hayırsız ve bereketsiz bir hayata saptıkları anlatılmaktadır. (Kur’ân Yolu, 1/143-144)
 
-C. KALBİ MUHAFAZA ETMEK
+## C. Kalbi Muhafaza Etmek
 
 Allah Resûlü (s.a.s.), kalbin hastalıklarına karşı dikkat etmeleri hususunda Ashab-ı Kirâm’ı birçok defa uyarmıştır:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَلاَ وَإِنَّ فِى الْجَسَدِ مُضْغَةً إِذَا صَلَحَتْ صَلَحَ الْجَسَدُ كُلُّهُ، وَإِذَا فَسَدَتْ فَسَدَ الْجَسَدُ كُلُّهُ، أَلاَ وَهِيَ الْقَلْبُ.</p>
 
@@ -94,7 +94,7 @@ Mümin bir kul kalbini muhafaza ederek esasen imanını muhafaza etmektedir. Kal
 
 Allâh Resûlü (s.a.s.) buyurmaktadır ki:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَثَلُ الْمُؤْمِنِينَ فِى تَوَادِّهِمْ وَتَرَاحُمِهِمْ وَتَعَاطُفِهِمْ، مَثَلُ الْجَسَدِ، إِذَا اشْتَكَى مِنْهُ عُضْوٌ، تَدَاعَى لَهُ سَائِرُ الْجَسَدِ بِالسَّهَرِ وَالْحُمَّى.</p>
 
@@ -102,23 +102,23 @@ HADÎS-İ ŞERÎF
 
 Mümin kalpler, zulüm gören kardeşlerinin dertleriyle dertlenmiyorsa bu durum vicdanların duyarsızlaştığını bizlere göstermektedir. Oysaki Allâh Resûlü (s.a.s.) İslâm kardeşliğini imân ile irtibatlandırarak kulun kendisi için istediği bir şeyi mümin kardeşi için de istemedikçe (kâmil) iman etmiş olamayacağını ifâde etmiş ve müminlerin birbirlerine karşı kayıtsız kalmaları gerektiğini bildirmiştir. (Tirmizî, Sıfatü’l-kıyâme, 59)
 
-D. TÖVBE KAPISI AÇIKTIR
+## D. Tövbe Kapısı Açıktır
 
 Günah bataklığına dalıp da vicdanını karartan kişi, kalbini ancak tövbe ve salih amel ile kurtarabilir. Günahlardan tövbe etme hususunda Peygamber Efendimiz (s.a.s.) nafile namazı tavsiye etmiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا مِنْ عَبْدٍ يُذْنِبُ ذَنْبًا فَيُحْسِنُ الطُّهُورَ ثُمَّ يَقُومُ فَيُصَلِّي رَكْعَتَيْنِ ثُمَّ يَسْتَغْفِرُ اللَّهَ إِلَّا غَفَرَ اللَّهُ لَهُ</p>
 
 *“Günah işleyen bir müslüman abdest alıp iki rekât namaz kılarak Allah’tan bağışlanma dilerse Allah onu mutlaka affeder.” buyurmuş ve arkasından şu âyetleri okumuştur:* (Ebû Dâvûd, Vitr, 26; İbn Hanbel, I/9)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمَنْ يَعْمَلْ سُٓوءًا اَوْ يَظْلِمْ نَفْسَهُ ثُمَّ يَسْتَغْفِرِ اللّٰهَ يَجِدِ اللّٰهَ غَفُورًا رَحٖيمًا</p>
 
 *“Kim bir kötülük yapar veya nefsine zulmeder de sonra Allah’tan mağfiret dilerse, Allah’ı çok bağışlayıcı ve esirgeyici bulacaktır.”* (Nisâ, 4/110)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ اِذَا فَعَلُوا فَاحِشَةً اَوْ ظَلَمُٓوا اَنْفُسَهُمْ ذَكَرُوا اللّٰهَ فَاسْتَغْفَرُوا لِذُنُوبِهِمْۖ وَمَنْ يَغْفِرُ الذُّنُوبَ اِلَّا اللّٰهُۖ وَلَمْ يُصِرُّوا عَلٰى مَا فَعَلُوا وَهُمْ يَعْلَمُونَ</p>
 
@@ -130,11 +130,11 @@ Buradan anlıyoruz ki Allah’a karşı gelmekten sakınırsak bağışlanacağ�
 
 Bizler Rabbimiz Allah’a kul olduğumuzu söylerken ve ayette ***“(müminlerin) yaptıkları (günahlarda) bile bile ısrar etmeyecekleri”*** beyan edilmişken mümin kul nasıl olur da bile isteye zulmer? Nasıl olur da kardeşinin sıkıntısına karşı duyarsız kalır? Nasıl olur da kardeşinin hakkını bile isteye tüketir? Nasıl olur da rüşvet, iltimas vb. yöntemlerle kardeşinin hakkını gasb edebilir?
 
-E. KULLUK HAYATIN TAMAMINDADIR
+## E. Kulluk Hayatın Tamamındadır
 
 Oysa Yüce Rabbimiz Kur’ân-ı Kerîm’de bile isteye insanların mallarını haksız yolla yemeyi haram kılmıştır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَاْكُلُٓوا اَمْوَالَكُمْ بَيْنَكُمْ بِالْبَاطِلِ وَتُدْلُوا بِهَٓا اِلَى الْحُكَّامِ لِتَاْكُلُوا فَرٖيقًا مِنْ اَمْوَالِ النَّاسِ بِالْاِثْمِ وَاَنْتُمْ تَعْلَمُونَ۟</p>
 
@@ -144,9 +144,9 @@ Oysa Yüce Rabbimiz Kur’ân-ı Kerîm’de bile isteye insanların mallarını
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ يَا عِبَادِيَ الَّذٖينَ اَسْرَفُوا عَلٰٓى اَنْفُسِهِمْ لَا تَقْنَطُوا مِنْ رَحْمَةِ اللّٰهِؕ اِنَّ اللّٰهَ يَغْفِرُ الذُّنُوبَ جَمٖيعاًؕ اِنَّهُ هُوَ الْغَفُورُ الرَّحٖيمُ</p>
 
@@ -154,7 +154,7 @@ Oysa Yüce Rabbimiz Kur’ân-ı Kerîm’de bile isteye insanların mallarını
 
 Ramazan ayının habercisi, Yüce Allah’ın sınırsız af, merhamet, yardım ve bereketine vesile olan mübarek Berat Kandiline kavuşuyoruz. 02 Şubat Pazartesi akşamı Berat Kandilini idrak edeceğiz. Berat; borçtan, suç ve cezadan kurtulmak demektir. İlahi rahmetin bütün âlemi kuşattığı mübarek bir gecedir. Berat gecesi, insanın kendisiyle yüzleşmesinin, tövbe ve istiğfarla günahlardan arınarak dua ve ibadetle Yüce Yaratıcı’ya yaklaşmasının imkânını sunmakta ve daha güzel bir geleceğin kapısını aralamaktadır. Bu duygu ve düşüncelerle tüm İslâm âleminin mübarek Berat Kandillerini tebrik ediyorum.
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Cenâb-ı Hakk bizleri yolundan ayırmasın, günahta ısrar etmeyen, tövbe ve istiğfar eden kullarından eylesin. Bizleri, ana-babamızı ve nesillerimizi razı olduğu salih kullarından eylesin. Ümmet olma şuuruyla kalplerimizi diriltsin.*
 

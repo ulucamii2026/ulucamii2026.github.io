@@ -19,17 +19,20 @@ const m = {
   tr: {
     etiket: 'Vaazlar', baslik: 'Vaazlar', alt: 'Camimizde okunan vaazlardan bir derleme',
     giris: 'Aşağıdaki vaazlar herkesin istifadesine açıktır; dilediğiniz gibi okuyabilir, indirebilir ve kullanabilirsiniz. Metinler tamamen anonimdir — hiçbir kişisel bilgi içermez.',
-    ara: 'Ara…', tumu: 'Tümü', bulunamadi: 'Bu kategoride vaaz yok.', okuma: 'dk', adet: 'vaaz',
+    ara: 'Vaazlarda ara…', tumu: 'Tümü', bulunamadi: 'Bu kategoride vaaz yok.', aramaBos: 'Aramanıza uyan vaaz bulunamadı.',
+    sonuc: '{n} vaaz listeleniyor', okuma: 'dk', adet: 'vaaz', temizle: 'Aramayı temizle',
   },
   fr: {
     etiket: 'Sermons', baslik: 'Sermons', alt: 'Une sélection de sermons prêchés dans notre mosquée',
     giris: 'Les sermons ci-dessous sont mis à la disposition de tous : vous pouvez les lire, les télécharger et les utiliser librement. Les textes sont entièrement anonymes et ne contiennent aucune donnée personnelle. (Contenu en turc.)',
-    ara: 'Rechercher…', tumu: 'Tous', bulunamadi: 'Aucun sermon dans cette catégorie.', okuma: 'min', adet: 'sermons',
+    ara: 'Rechercher un sermon…', tumu: 'Tous', bulunamadi: 'Aucun sermon dans cette catégorie.', aramaBos: 'Aucun sermon ne correspond à votre recherche.',
+    sonuc: '{n} sermons affichés', okuma: 'min', adet: 'sermons', temizle: 'Effacer la recherche',
   },
   en: {
     etiket: 'Sermons', baslik: 'Sermons', alt: 'A collection of sermons preached at our mosque',
     giris: 'The sermons below are freely available to everyone: you may read, download and use them as you wish. The texts are fully anonymous and contain no personal data. (Content in Turkish.)',
-    ara: 'Search…', tumu: 'All', bulunamadi: 'No sermons in this category.', okuma: 'min', adet: 'sermons',
+    ara: 'Search sermons…', tumu: 'All', bulunamadi: 'No sermons in this category.', aramaBos: 'No sermon matches your search.',
+    sonuc: '{n} sermons shown', okuma: 'min', adet: 'sermons', temizle: 'Clear search',
   },
 }[dil];
 
@@ -51,8 +54,13 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
       </div>
     </aside>
 
+    <div class="vz-ara">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="vz-ara-giris" placeholder={m.ara} aria-label={m.ara} autocomplete="off" spellcheck="false" enterkeyhint="search" />
+    </div>
+
     {kullanilan.length > 1 && (
-      <div class="vz-filtre" role="tablist" aria-label={m.etiket}>
+      <div class="vz-filtre" role="group" aria-label={m.etiket}>
         <button type="button" class="vz-cip etkin" data-kat="tumu" aria-pressed="true">{m.tumu} <span class="vz-say">{hepsi.length}</span></button>
         {kullanilan.map((k) => (
           <button type="button" class="vz-cip" data-kat={k} aria-pressed="false">{katAd[k][dil]} <span class="vz-say">{hepsi.filter((v) => v.data.kategori === k).length}</span></button>
@@ -72,7 +80,8 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
         </li>
       ))}
     </ul>
-    <p class="vz-bos" hidden>{m.bulunamadi}</p>
+    <p class="vz-bos" hidden data-kategori={m.bulunamadi} data-arama={m.aramaBos}>{m.bulunamadi}</p>
+    <p class="gorsel-gizli" role="status" aria-live="polite" data-sonuc={m.sonuc}></p>
   </div>
 </Base>
 
@@ -88,6 +97,12 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
     .vz-not-ikon { display: none; }
     .vz-not p { font-size: 0.95rem; }
   }
+  .vz-ara { display: flex; align-items: center; gap: 0.6rem; max-width: 26rem; margin: 0 0 1rem; padding: 0 0.9rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin-2); }
+  .vz-ara:focus-within { border-color: var(--vurgu); box-shadow: 0 0 0 3px color-mix(in oklab, var(--vurgu) 18%, transparent); }
+  .vz-ara input { flex: 1; min-width: 0; min-height: 2.75rem; border: 0; background: none; color: var(--metin); font: inherit; font-size: 0.95rem; }
+  .vz-ara input:focus { outline: none; }
+  .vz-ara input::-webkit-search-cancel-button { cursor: pointer; }
+  .gorsel-gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .vz-filtre { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
   .vz-cip { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.3rem; padding: 0 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin-2); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
   .vz-cip:hover { border-color: var(--vurgu); color: var(--vurgu); }
@@ -108,18 +123,50 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
   // Süzgece doğrudan bağlan: sayfada birden çok «.kapsayici» var (ilki üst menünün) — 7 Eyl 2026'da
   // querySelector('.kapsayici') menü kapsayıcısını seçince dinleyici hiç bağlanmıyordu.
   const filtre = document.querySelector<HTMLElement>('.vz-filtre');
-  if (filtre) {
-    const cipler = Array.from(filtre.querySelectorAll<HTMLButtonElement>('.vz-cip'));
-    const ogeler = Array.from(document.querySelectorAll<HTMLElement>('.vz-oge'));
-    const bos = document.querySelector<HTMLElement>('.vz-bos');
-    filtre.addEventListener('click', (e) => {
-      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.vz-cip');
-      if (!b) return;
-      const kat = b.dataset.kat;
-      cipler.forEach((c) => { const a = c === b; c.classList.toggle('etkin', a); c.setAttribute('aria-pressed', String(a)); });
+  const arama = document.querySelector<HTMLInputElement>('#vz-ara-giris');
+  const ogeler = Array.from(document.querySelectorAll<HTMLElement>('.vz-oge'));
+  const bos = document.querySelector<HTMLElement>('.vz-bos');
+  const bildirim = document.querySelector<HTMLElement>('[role="status"][data-sonuc]');
+
+  if (ogeler.length) {
+    // Arama anahtarı: Türkçe küçük harf + şapka/aksan ve kesme işareti sadeleştirmesi
+    // («Kur’ân» ↔ «kuran», «Îmân» ↔ «iman») — böylece klavye alışkanlığı sonucu değiştirmez.
+    const sade = (metin: string) =>
+      metin.replace(/İ/g, 'i').replace(/I/g, 'ı').toLowerCase()
+        .replace(/[’'`´]/g, '')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/ı/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u');
+
+    for (const o of ogeler) o.dataset.ara = sade(o.innerText + ' ' + (o.dataset.kat || ''));
+
+    let kategori = 'tumu';
+    const uygula = () => {
+      const sorgu = sade(arama?.value.trim() || '');
       let gorunur = 0;
-      ogeler.forEach((o) => { const g = kat === 'tumu' || o.dataset.kat === kat; o.hidden = !g; if (g) gorunur++; });
-      if (bos) bos.hidden = gorunur > 0;
+      for (const o of ogeler) {
+        const g = (kategori === 'tumu' || o.dataset.kat === kategori) && (!sorgu || (o.dataset.ara || '').includes(sorgu));
+        o.hidden = !g;
+        if (g) gorunur++;
+      }
+      if (bos) {
+        bos.textContent = (sorgu ? bos.dataset.arama : bos.dataset.kategori) || '';
+        bos.hidden = gorunur > 0;
+      }
+      if (bildirim) bildirim.textContent = (bildirim.dataset.sonuc || '').replace('{n}', String(gorunur));
+    };
+
+    filtre?.addEventListener('click', (e) => {
+      const d = (e.target as HTMLElement).closest<HTMLButtonElement>('.vz-cip');
+      if (!d) return;
+      kategori = d.dataset.kat || 'tumu';
+      for (const c of filtre.querySelectorAll<HTMLButtonElement>('.vz-cip')) {
+        const etkin = c === d;
+        c.classList.toggle('etkin', etkin);
+        c.setAttribute('aria-pressed', String(etkin));
+      }
+      uygula();
     });
+    arama?.addEventListener('input', uygula);
+    arama?.addEventListener('keydown', (e) => { if (e.key === 'Escape' && arama.value) { arama.value = ''; uygula(); } });
   }
 </script>

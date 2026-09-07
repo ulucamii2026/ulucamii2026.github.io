@@ -6,7 +6,7 @@ kelime: 2112
 docx: "/vaazlar/adab-ve-erkaniyla-cuma-namazi.docx"
 pdf: "/vaazlar/adab-ve-erkaniyla-cuma-namazi.pdf"
 ---
-GİRİŞ:
+## Giriş
 
 Sözlük Anlamı ve Tarihçesi
 
@@ -137,6 +137,6 @@ Cuma namazını kılmakla yükümlü olmayan yolcunun ve mazeret sahibi kimseler
 
 Cuma namazı kılmakla yükümlü olanların cuma saatinde alışverişi terk etmeleri ve camiye gitmeleri gerekir. Cuma namazı kılmakla yükümlü olanların cuma saatinde alışveriş ile meşgul olmaları tahrîmen mekruhtur. (İlmihal, 1, TDV, 357-358)
 
-SONUÇ:
+## Sonuç
 
 Cumanın bereketinden istifade etmeyi murad eden her mümin, Peygamberimizin sünnetine uyarak Cuma namazına hazırlanır. Güzelce abdestini alır, bedenini temizler. Kıyafetinin hem temiz hem de namazın şartlarından olan setr-i avrete uygun olmasına özen gösterir. Nahoş kokan yiyecekler yiyip camiye gelmenin sünnete aykırı olduğunu bilir. Güzel kokular sürünür. İbadetin ruhuna, cemaatin huşûuna uygun davranır. Safların sık ve düzgün olmasına riayet eder. Cuma namazına hürmet göstererek gürültü yapmaktan ve yanı başında huzura duranları rahatsız etmekten kaçınır.

@@ -8,11 +8,11 @@ pdf: "/vaazlar/ahlak-ve-istikamet-dogruluk-ve-durustluk.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 
-### DOĞRULUK VE DÜRÜSTLÜK
+### Doğruluk ve Dürüstlük
 
 *Özde, sözde ve işte doğruluk; sıdk ve istikamet üzere bir hayat*
 
-### GİRİŞ
+### Giriş
 
 İslâm dini kişinin dünya ve ahiret mutluluğunu sağlamayı amaçlamaktadır. Bu gayenin gerçekleşmesi için hayatın her alanını kapsayan birtakım ahlaki esaslar getirmiştir. İslâm’ın ortaya koyduğu ahlaki ilkelerin en önemlilerinden bir tanesi de dürüstlük ve doğruluktur.
 
@@ -20,7 +20,7 @@ Doğruluk, “hakikati konuşmak, gerçeğe uygun bilgi vermek, dürüst ve güv
 
 Tüm peygamberlerin ortak özelliklerinden biri de (sıdk) doğruluktur. Allah’ın elçileri, asla yalan söylemeyen, güvenilir, doğru ve dürüst insanlardır. Rabbimiz Hz. İbrahim için:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاذْكُرْ فِي الْكِتَابِ اِبْرٰهٖيمَؕ اِنَّهُ كَانَ صِدّٖيقاً نَبِيّاً</p>
 
@@ -34,7 +34,7 @@ Bizans Kralı Herakleios Hz. Peygamber’in (s.a.s.) kişiliği ve daveti hakkı
 
 Ebû Hüreyre (r.a.) Resûlullah’ın (s.a.s.) şöyle buyurduğunu nakletmiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لاَ يَجْتَمِعُ الْإِيمَانُ وَالْكُفْرُ فِي قَلْبِ امْرِئٍ وَلَا يَجْتَمِعُ الصِّدْقُ وَالْكَذِبُ جَمِيعًا وَلَا تَجْتَمِعُ الْخِيَانَةُ وَالْأَمَانَةُ جَمِيعًا</p>
 
@@ -42,7 +42,7 @@ HADÎS-İ ŞERÎF
 
 Sahâbeden Süfyân b. Abdullah (r.a.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا رَسُولَ اللَّهِ قُلْ لِي فِي الْإِسْلَامِ قَوْلًا لَا أَسْأَلُ عَنْهُ أَحَدًا غَيْرَكَ</p>
 
@@ -56,7 +56,7 @@ A. Özde ve Niyette Doğruluk
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى</p>
 
@@ -70,7 +70,7 @@ B. Sözde Doğruluk
 
 Doğruluk, söz ve beyanda gerçeği, hakikati söylemektir. Sözde doğruluk hem yazdıklarımızı hem de sözlerimizi içine alır. Dilin korunması ve doğru söz her hayrın başıdır. Rabbimiz şöyle buyurmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اتَّقُوا اللّٰهَ وَقُولُوا قَوْلاً سَدٖيداًۙ ﴿٧٠﴾ يُصْلِحْ لَكُمْ اَعْمَالَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْؕ وَمَنْ يُطِـعِ اللّٰهَ وَرَسُولَهُ فَقَدْ فَازَ فَوْزاً عَظٖيماً ﴿٧١﴾</p>
 
@@ -80,7 +80,7 @@ Bu âyette Rabbimiz doğru sözlü olmayı bize emrediyor. Doğru sözlü olanı
 
 Bir gün Peygamberimiz (s.a.s.)’e sahâbeden biri:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا رَسُولَ اللَّهِ مَا النَّجَاةُ؟</p>
 
@@ -92,7 +92,7 @@ HADÎS-İ ŞERÎF
 
 Yalan, doğruluğun zıddı, bir konuda gerçeğe aykırı haber veya bilgi vermek, sözün vakıaya uygun olmamasıdır. Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَاجْتَنِبُوا قَوْلَ الزُّورِۙ ﴾</p>
 
@@ -100,7 +100,7 @@ Yalan, doğruluğun zıddı, bir konuda gerçeğe aykırı haber veya bilgi verm
 
 Konuşurken dikkatli olunması, kelimelerin iyi seçilmesi gerekir. Ağızdan çıkan sözün bir sorumluluğu vardır. Bu hususta Resûlullah (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">كَفَى بِالْمَرْءِ إِثْمًا أَنْ يُحَدِّثَ بِكُلِّ مَا سَمِعَ</p>
 
@@ -108,7 +108,7 @@ HADÎS-İ ŞERÎF
 
 Doğruluğu teyit edilmeden söylenen sözler içerisinde yalan, iftira olabilir. Rabbimiz şöyle buyurmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُٓوا اِنْ جَٓاءَكُمْ فَاسِقٌ بِنَبَأٍ فَتَبَيَّنُٓوا اَنْ تُصٖيبُوا قَوْماً بِجَهَالَةٍ فَتُصْبِحُوا عَلٰى مَا فَعَلْتُمْ نَادِمٖينَ</p>
 
@@ -124,11 +124,11 @@ Bu âyetin iniş sebebi tefsirlerde şöyle nakledilmektedir: Velîd b. Ukbe, Be
 
 Yardımcısıdır doğruların Hazret-i Allah!
 
-ZİYA PAŞA
+<p class="vaaz-sair">— Ziya Paşa</p>
 
 Resûlullah (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لَا يَسْتَقِيمُ إِيمَانُ عَبْدٍ حَتَّى يَسْتَقِيمَ قَلْبُهُ وَلَا يَسْتَقِيمُ قَلْبُهُ حَتَّى يَسْتَقِيمَ لِسَانُهُ وَلَا يَدْخُلُ الْجَنَّةَ رَجُلٌ لَا يَأْمَنُ جَارُهُ بَوَائِقَهُ</p>
 
@@ -142,7 +142,7 @@ Hz. Peygamber’e (s.a.s.), *“İnsanların hangisi daha faziletlidir?*” diye
 
 C. Çalışma Hayatında Doğruluk ve Dürüstlük
 
-MENKÎBE
+<p class="vaaz-etiket">Menkîbe</p>
 
 Bir gece vakti, Hz. Ömer (r.a.), her zaman olduğu gibi, Medine sokaklarını dolaşmaktaydı. Birden önünden geçmekte olduğu evden dışarıya kadar taşan bir tartışma sesi dikkatini çekmişti. Bir ana, kızına:
 
@@ -160,7 +160,7 @@ Doğruluk sadece sözde değildir; kalp, niyet, ticaret, arkadaşlık ve evlilik
 
 Peygamberimiz (s.a.s.), bir gün bir buğday yığınının yanına gelmiş, elini buğdayın içine soktuğunda parmaklarına ıslaklık dokunmuştu. Bunun üzerine sahibine,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا هٰذَا يَا صَاحِبَ الطَّعَامِ</p>
 
@@ -176,7 +176,7 @@ HADÎS-İ ŞERÎF
 
 Allah Resûlü (s.a.s.) sözünde ve işinde doğru ve dürüst olan tüccar hakkında şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">التَّاجِرُ الصَّدُوقُ الأَمِينُ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ</p>
 
@@ -192,7 +192,7 @@ Dürüstlük sadece ticaret hayatında değil hayatımızın en önemli bölüm�
 
 Yalan konusunda çok hassas davranan Allah Resûlü (s.a.s.), insanları yalandan ve ona götürebilecek her türlü davranıştan sakındırmıştır. Hatta bunlara, birçok kimsenin önemsemediği, çocuklara yalan söylemeyi ve yalan söyleyerek şaka yapmayı da dâhil etmiştir. Nitekim bir defasında Resûlullah (s.a.s.) Abdullah b. Âmir’in ailesine misafir olmuştu.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ عَبْدِ اللَّهِ بْنِ عَامِرٍ أَنَّهُ قَالَ: دَعَتْنِي أُمِّي يَوْمًا وَرَسُولُ اللَّهِ صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ قَاعِدٌ فِي بَيْتِنَا فَقَالَتْ: هَا تَعَالَ أُعْطِيكَ. فَقَالَ لَهَا رَسُولُ اللَّهِ صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ: وَمَا أَرَدْتِ أَنْ تُعْطِيهِ؟ قَالَتْ: أُعْطِيهِ تَمْرًا. فَقَالَ لَهَا رَسُولُ اللَّهِ صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ: أَمَا إِنَّكِ لَوْ لَمْ تُعْطِيهِ شَيْئًا كُتِبَتْ عَلَيْكِ كِذْبَةٌ</p>
 
@@ -208,7 +208,7 @@ Sanal âlem insanın her istediğini yapabileceği ve bundan dolayı da sorumlu 
 
 Günlük hayatta yalan söylemek, insanları karalamak, iftira atmak nasıl günahsa, sanal âlemde ve sosyal medyada da aynı şekilde günahtır. Sanal âlemde bilgi, doğruluğu teyit edilmeden paylaşılabilmekte, farkında olunmadan yanlışın ve kötülüğün yaygınlaşması, kişilik haklarının ihlali gibi pek çok günaha sebep olunabilmektedir. Oysa Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِ عِلْمٌۜ اِنَّ السَّمْعَ وَالْبَصَرَ وَالْفُؤٰادَ كُلُّ اُو۬لٰٓئِكَ كَانَ عَنْهُ مَسْؤُ۫لاً</p>
 
@@ -220,7 +220,7 @@ F. Doğruluk, İyiliğe Ulaştıran Köprüdür
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">عَلَيْكُمْ بِالصِّدْقِ فَإِنَّ الصِّدْقَ يَهْدِى إِلَى الْبِرِّ وَإِنَّ الْبِرَّ يَهْدِى إِلَى الْجَنَّةِ وَمَا يَزَالُ الرَّجُلُ يَصْدُقُ وَيَتَحَرَّى الصِّدْقَ حَتَّى يُكْتَبَ عِنْدَ اللَّهِ صِدِّيقًا وَإِيَّاكُمْ وَالْكَذِبَ فَإِنَّ الْكَذِبَ يَهْدِى إِلَى الْفُجُورِ وَإِنَّ الْفُجُورَ يَهْدِى إِلَى النَّارِ وَمَا يَزَالُ الرَّجُلُ يَكْذِبُ وَيَتَحَرَّى الْكَذِبَ حَتَّى يُكْتَبَ عِنْدَ اللَّهِ كَذَّابًا</p>
 
@@ -242,13 +242,13 @@ Korkma kafirden ateş olsa yandırmaz seni,
 
 Müstakim ol, Hazret-i Allah utandırmaz seni.
 
-DİYARBEKİRLİ SAİD PAŞA
+<p class="vaaz-sair">— Diyarbekirli Said Paşa</p>
 
 G. Doğrularla Arkadaş Olmak
 
 Rabbimiz şöyle buyurmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اتَّقُوا اللّٰهَ وَكُونُوا مَعَ الصَّادِقٖينَ</p>
 
@@ -258,7 +258,7 @@ Allah Resûlü (s.a.s.), arkadaşın kişi üzerindeki etkisini, dolayısıyla i
 
 İnsanların hayat tarzını, hayata bakışını hatta dinini belirleyebilecek olan dostluklar, zarara sürüklenmeden güven verici bir alanda yeşersin diye Yüce Rabbimiz,
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">لَا يَتَّخِذِ الْمُؤْمِنُونَ الْكَافِرٖينَ اَوْلِيَٓاءَ مِنْ دُونِ الْمُؤْمِنٖينَۚ</p>
 
@@ -272,11 +272,11 @@ Kimde kim doğruluk var, Hak Çalap onu sever,
 
 İki cihana yarar o erin sermayesi
 
-YUNUS EMRE
+<p class="vaaz-sair">— Yûnus Emre</p>
 
 H. Doğruların Mükâfatı
 
-MENKÎBE
+<p class="vaaz-etiket">Menkîbe</p>
 
 Bir yolculuk esnasında Abdullah b. Ömer (r.a.) için bir sofra kurulmuştu. Bu sırada yanlarına bir koyun çobanı uğradı ve selâm verdi. Abdullah b. Ömer (r.a.):
 
@@ -306,11 +306,11 @@ Ne doğruyu aç gördüm ne eğriyi tok
 
 Eğri yay elde kalır, menzil alır doğru ok
 
-MEVLÂNÂ’YA ATFEDİLİR
+<p class="vaaz-etiket">Mevlânâ’ya Atfedilir</p>
 
 Rabbimiz şöyle buyurmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الَّذٖينَ قَالُوا رَبُّنَا اللّٰهُ ثُمَّ اسْتَقَامُوا تَـتَنَزَّلُ عَلَيْهِمُ الْمَلٰٓئِكَةُ اَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَاَبْشِرُوا بِالْجَنَّةِ الَّتٖي كُنْتُمْ تُوعَدُونَ</p>
 
@@ -322,17 +322,17 @@ Peygamber Efendimiz (s.a.s.): *“Ben, haklıyken bile çekişmeye girmekten ka�
 
 Hz. Peygamber (s.a.s.),
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">اضْمَنُوا لِي سِتًّا مِنْ أَنْفُسِكُمْ، أَضْمَنْ لَكُمْ الْجَنَّةَ، اصْدُقُوا إِذَا حَدَّثْتُمْ، وَأَوْفُوا إِذَا وَعَدْتُمْ، وَأَدُّوا إِذَا اؤْتُمِنْتُمْ، وَاحْفَظُوا فُرُوجَكُمْ، وَغُضُّوا أَبْصَارَكُمْ، وَكُفُّوا أَيْدِيَكُمْ</p>
 
 *“Bana kendi adınıza altı şeyin güvencesini verin, ben de size cennetin güvencesini vereyim: Konuştuğunuzda doğru söyleyin, söz verdiğinizde sözünüzü tutun, size (bir şey) emanet edildiğinde ona riayet edin, iffetinizi koruyun, gözlerinizi (bakılması yasak olandan) sakının ve ellerinizi (haramdan) çekin.”* (İbn Hanbel, V, 323) buyurmuştur.
 
-### SONUÇ
+### Sonuç
 
 Doğruluk ve dürüstlük, İslâm ahlakının en temel erdemlerinden biridir. Doğru yolu izledikten sonra yolunu şaşıran kimse görülmemiştir. İnsanın iç dünyasındaki huzuru, doğruluğu ve dürüstlüğü nispetindedir. Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">دَعْ مَا يَرِيبُكَ إِلَى مَا لَا يَرِيبُكَ فَإِنَّ الصِّدْقَ طُمَأْنِينَةٌ وَإِنَّ الْكَذِبَ رِيبَةٌ</p>
 
@@ -340,7 +340,7 @@ HADÎS-İ ŞERÎF
 
 Dürüst kişi menfaatine, çıkarına ters düşse de doğruluktan ayrılmayan kişidir. Doğru insan kısa vadede kaybetse de uzun vadede hep kazanır. Dürüst kimsenin başı hep diktir. Rabbimiz şöyle buyurmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ فَاسْتَقِمْ كَمَٓا اُمِرْتَ وَمَنْ تَابَ مَعَكَ ﴾</p>
 
@@ -350,6 +350,6 @@ Emrolunduğu gibi dosdoğru yaşamak, Allah’ın belirlediği sınırların dı
 
 İnsanın özü ile sözünün bir olması, söz ve davranışlarında doğruluğu esas alıp yalandan kaçınması hem dinî/ahlâkî hem de dünyevî açıdan gereklidir. Bireysel ve toplumsal açıdan huzurlu olmak için yalandan sakınmak gerekir. Müslüman; evinde, işinde, ticaretinde, eşiyle, komşularıyla, akrabalarıyla hayatının her alanında, sanal âlemde ve sosyal medyada dürüst, güvenilir ve doğru olmak zorundadır.
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Rabbim bizleri istikamet üzere olan doğruluk ve dürüstlükten ayrılmayan kullarından eylesin.*

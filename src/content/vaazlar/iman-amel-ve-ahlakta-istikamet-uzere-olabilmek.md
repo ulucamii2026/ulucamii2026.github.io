@@ -20,7 +20,7 @@ Nitekim Peygamber Efendimiz dualarında Yüce Mevla’dan şunu isterdi:
 
 Dini bir terim olarak "Amel" (yani ibadet) her şeyin yaratıcısı olan Allah'a gönüllü ve samimi bir şekilde yönelmek, boyun eğmek ve itaat etmektir. Dar ve özel anlamda ibadet ise Allah ve Resulü tarafından yapılması istenen, niyete bağlı olarak yaratana karşı saygıyı ve boyun eğmeyi ifade eden; yapana sevap kazandıran belirli sözlü ve fiili eylemlerdir. Başka bir ifadeyle dar anlamda ibadet, dini içerikli belli ve düzenli yapılan davranış biçimleridir. Dini literatürde ibadet denilince daha çok akla gelen, bu anlamdaki ibadettir. İslam'ın temel şartlarını oluşturan namaz, oruç, zekât ve haccın yanı sıra kurban kesme, itikâf, dua, Kur'an-ı Kerim okuma gibi davranışlar bu anlamıyla ibadetin belli başlı örnekleridir. Allah'ın emirlerine itaat edip yasaklarından kaçınmak da ibadettir. Bir davranışın ibadet olabilmesi için inanılarak, samimiyetle ve Allah'ın emrini yerine getirme bilinciyle yapılması gerekir. İslam ahlakı ise, İslam dininin tamamlayıcı bir parçası olup Allah tarafından Hz. Muhammed'e bildirilmiş ve onun hayatında şekillenerek görünür hale gelmiş olan hayat tarzı ile onun arkasındaki inanç ve düşünce dünyasıdır.
 
-## AHLAK
+## Ahlak
 
 Ahlak ise insanda davranışların kendiliğinden ortaya çıktığı yerleşik bir karakter yapısına verilen isimdir ve insanın iradi hareketleriyle ilgilenen bir alanı ifade eder. Terim olarak ise ahlak; genel bir hayat şekli, ahlaki kanun, düstur ve bir grup davranış kuralı; hayat tarzı ile ahlak kanunu hakkında yapılan fikri bir araştırma gibi temelde birbirleriyle ilişkili üç farklı anlamda kullanılmıştır.
 
@@ -28,7 +28,7 @@ Ahlak ise insanda davranışların kendiliğinden ortaya çıktığı yerleşik 
 
 Doğruluk demek olan istikâmet; ehl-i hakikatçe, itikatta, amelde, yemede, içmede, hâlde, sözde ve bütün davranışlarda ifrat ve tefritten sakınıp nebîler, sıddîkler, şehidler ve sâlihlerin yolunda yürümeye îtinâ gösterme şeklinde yorumlanmıştır.
 
-## İSTİKAMET
+## İstikamet
 
 İstikâmet; hakka tabi olmak, adâleti yerine getirmek, doğru yola girmek, itaat olan şeyleri yapıp isyân olan şeylerden sakınmak, verdiği sözü tutmak ve haktan meyletmemek demektir. Bu kimseye ve hiçbir yerinde meyil ve eğrilik bulunmayan, dümdüz ve dosdoğru şeye mustakîm denir. İstikamet tasavvuf yolunun ana unsurudur. Çünkü tasavvuf söz ile özü Allah’ın yoluna bağlama yolu yani istikamet yoludur.
 
@@ -52,7 +52,7 @@ Rabbimizin bizden istediği de budur. Yüce Kitabımızda bizlere şöyle buyrul
 
 Ashab-ı kiramdan birisi, Peygamber Efendimiz (s.a.s)’e gelerek *“Ya Resûlallah! Bana İslam hakkında öyle bir şey söyle ki bu konuda başka hiç kimseye soru sorma ihtiyacı hissetmeyeyim” dedi. Allah Resûlü (s.a.v) ona şöyle buyurdu: “Allah’a iman ettim de, sonra da istikamet üzere ol.” (Müslim, İman, 62)*
 
-## İMANIN İNSAN HAYATINDAKİ YERİ VE ÖNEMİ
+## İmanın İnsan Hayatındaki Yeri ve Önemi
 
 İman, insanın hayatına anlam katar. Ona dünyada yaratılış gayesine uygun bir yaşama bilinci aşılar. Davranışlarını şekillendirir, fikir ve kararlarına yön verir. Zorluklar karşısında insanı kuvvetli, dayanıklı ve sabırlı kılar. Yalnızlığı, güçsüzlüğü ve ümitsizliği ortadan kaldırır. Nimetin kıymetini bilmeye ve şükrünü eda etmeye vesile olur.
 

@@ -66,7 +66,7 @@ Peygamber Efendimiz (s.a.v) , I. Akabe Biati’nden sonra Medine’ye İslam’�
 
 Biz iş yerlerimizde, evlerimizde 20 yaşındaki üniversiteli gençlerimize 'Daha çocuktur, aklı ermez' gözüyle bakarken; Allah Rasûlü (s.a.v) o yaştaki gençlere ordular, şehirler, koca bir dinin ilmini emanet ediyordu.
 
-## KUR’AN-I KERİM’DE GENÇLER
+## Kur’an-ı Kerim’de Gençler
 
 ### Ashâb-ı Kehf
 
@@ -102,7 +102,7 @@ Hazreti İbrahim’in (a.s.) kıssası bize bugünün dünyasında çok büyük 
 
 Bizler evlatlarımızı Nemrutların ateşine karşı korumasız bırakamayız. Onlara öyle bir iman vermeliyiz ki, Hz. İbrahim (a.s.) gibi tek başlarına kalsalar bile hakikati haykıracak cesarete sahip olsunlar. Rabbim evlatlarımızı modern zamanın putlarına kul olmaktan muhafaza eylesin, her birini birer İbrahim eylesin.
 
-## İSTANBUL’UN FETHİ
+## İstanbul’un Fethi
 
 Peygamber Efendimiz (s.a.s.):
 

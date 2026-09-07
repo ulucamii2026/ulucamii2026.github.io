@@ -42,7 +42,7 @@ olarak belirtilir. En güzel davranışı sergilemek ise insanın sadece kendisi
 
 *“Sizden biri kendi nefsi için istediği şeyi kardeşi için de istemedikçe(kâmil bir)* *mü’min olamaz.”*
 
-## İTİKÂF
+## İtikâf
 
 Bir yerde bekleme, durma ve kendini orada hapsetme. Akıl bâliğ veya temyiz kudretine sahip bir müslümanın beş vakit namaz kılınan bir mescitte ibadet niyetiyle bir süre durması anlamında bir fıkıh terimi.
 

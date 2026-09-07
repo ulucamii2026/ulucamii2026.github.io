@@ -1,12 +1,12 @@
 ---
-baslik: "Affetmek ve Öfkeyi Yutmak"
+baslik: "Affetmek ve Öfkeyi Yutmak (2)"
 ozet: "Enes b. Malik anlatıyor: Allah Resûlü (s.a.s.) ile birlikte oturuyorduk. “Şimdi yanınıza cennetlik bir adam geliyor!” dedi. Sahâbîler, ensardan bir zâtın geldiğini…"
 kategori: ahlak
 kelime: 3223
 docx: "/vaazlar/affetmek-ve-ofkeyi-yutmak-2.docx"
 pdf: "/vaazlar/affetmek-ve-ofkeyi-yutmak-2.pdf"
 ---
-GİRİŞ
+## Giriş
 
 Enes b. Malik anlatıyor: Allah Resûlü (s.a.s.) ile birlikte oturuyorduk. “Şimdi yanınıza cennetlik bir adam geliyor!” dedi. Sahâbîler, ensardan bir zâtın geldiğini gördüler. Sakalından, aldığı abdestin suyu damlayan, terliklerini eline almış bir sahâbî idi bu. Başka bir gün, ashâbı ile otururken Hz. Peygamber (s.a.s.) yine aynı şeyi söyledi: “Şimdi yanınıza cennetlik bir adam geliyor!” Gelen, yine aynı şahıstı. Üçüncü gün de aynı olay tekrar etti. Hz. Peygamber (s.a.s.) o günkü sohbetini bitirip meclisten ayrılınca sahâbîler de dağılmaya başladı. Genç sahâbîlerden Abdullah b. Amr, Hz. Peygamber’in (s.a.s.) cennetlik olduğunu söylediği zâtın peşine düştü. Onu cennetlik yapan şeyi öğrenmek istiyordu. Fakat soruyu doğrudan, bu şekilde de soramazdı. Aklına bir çare geldi. Gidip o zâta, “Babamla tartıştık. Üç gün eve gitmeyeceğime yemin ettim. Eğer uygun görürsen bu süre geçene kadar seninle kalabilir miyim?” dedi. Cennetlik sahâbî, Abdullah b. Amr’ın bu teklifini kabul etti.
 
@@ -36,7 +36,7 @@ Resûlullah’ın nasıl bir ahlâka sahip olduğu sorulduğunda Hz. Âişe (r.a
 
 Hz. Peygamber’in ahlakının her yönü güzeldi elbette. Ancak Hz. Aişe annemiz bu hadiste Resul-i Ekrem’in (s.a.s.) güzel ahlakından bağışlayan, affeden ve hoşgören yönlerini öne çıkarmıştır. Bizler de ümmeti olarak onun ahlakını örnek almalıyız.
 
-## ALLAH’IN AFFETMESİ
+## Allah’ın Affetmesi
 
 Allah “Afüv” ismiyle kusurları siler, “Ğafûr” ismiyle günahları affeder, “Settâr” ismiyle hataları örter. İnsanoğlunun başına gelen bütün musibetler kendi yaptıkları yüzünden olsa da, Rabbimiz pek çoğunu affeder. Çünkü O’nun bağışlaması bol, mağfireti sonsuzdur. (Hadislerle İslam, 3/321)
 
@@ -48,7 +48,7 @@ Allah “Afüv” ismiyle kusurları siler, “Ğafûr” ismiyle günahları af
 
 “Rahmetim gazabımı geçmiştir.” buyurmuştur. (Buhârî, Tevhîd, 22)Allah-u Teala’nın ahlakı ile ahlaklanmalı, O’nun güzel sıfatları bizde tecelli etmelidir.
 
-## HZ. PEYPEYGAMBER’İN (S.A.S.) AFFEDİCİLİĞİ
+## Hz. Peypeygamber’in (s.a.s.) Affediciliği
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ قَالَت:ْ مَا انْتَقَمَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) لِنَفْسِهِ فِى شَيْءٍ يُؤْتَى إِلَيْهِ حَتَّى تُنْتَهَكَ مِنْ حُرُمَاتِ اللَّهِ فَيَنْتَقِمَ لِلَّهِ</p>
 
@@ -106,7 +106,7 @@ Gavres’in bu olay üzerine hemen orada veya bir daha Hz. Peygamber’in aleyhi
 
 Vahşi, Uhud savaşında Peygamber Efendimiz’in (s.a.s.) amcası Hz. Hamza’yı şehit etmiş, ciğerini söküp ve Hind’e götürmüştü. Vahşi, Mekke’nin fethinden sonra Tâif’e kaçtı. Zira kendisi, Hz. Peygamber’e ve Müslümanlara karşı düşmanlıklarıyla tanınan on kadar kişiyle birlikte umumi affın dışında bırakılmıştı. Vahşî, Tâifliler’in Medine’ye heyet göndermeye karar vermesinin ardından Dımaşk’a, Yemen’e veya başka bir yere gitmeyi düşündü. Bu arada kendisine Hz. Muhammed’in (s.a.s.) İslâm’a girenleri affettiği bildirilince Medine’ye gitmeye karar verdi. Sakif heyetiyle birlikte yahut yalnız olarak Medine’ye giden Vahşî, Mescid-i Nebevî’de Resûl-i Ekrem’in huzurunda müslüman oldu. Bu sırada Vahşî’den amcasını nasıl şehid ettiğini anlatmasını isteyen Resûlullah, onu dinlerken büyük bir teessüre kapıldı. Bununla birlikte Vahşî’yi cezalandırmadı. Sadece amcasının katledilişini hatırlamak istemediğinden gözüne görünmemesini istedi. (Mustafa Sabri Küçükaşçı, Vahşi b. Harb, DİA, 42/450-451)
 
-## SAHABENİN AFFEDİCİLİĞİ
+## Sahabenin Affediciliği
 
 ### Hz. Ebu Bekir’in Affediciliği
 
@@ -128,13 +128,13 @@ Müreysî’ Gazvesi’nden sonra meydana gelen İfk Hadisesi’nde Hz. Aişe’
 
 Taberî’nin kaydettiği bir rivayete göre bu âyet geldiğinde Resûlullah’ın bir sorusu üzerine Cebrâil, “Rabbin sana kötülük edene senin iyilik etmeni, sana vermeyene senin vermeni ve senden uzak kalıp ilgileri koparanlarla senin dostluk ve akrabalık ilişkini sürdürmeni emrediyor” diyerek âyete örnekleme yoluyla açıklama getirmiştir. Aynı müfessirin de belirttiği gibi her ne kadar yüce Allah bu âyette peygamberine hitap etmişse de esasında bütün kullarını eğitmeyi amaçlamıştır. (Kur’an Yolu Tefsiri, 2/648-650)
 
-## AFFETME İLE İNSAN PSİKOLOJİSİ ARASINDAKİ İLİŞKİ
+## Affetme ile İnsan Psikolojisi Arasındaki İlişki
 
 Yaşanan kırgınlıkları affedememe pek çok kişiyi rahatsız eden bir durumdur. Bağışlamak, haksızlığa uğrayan kişinin öfke ve kırgınlık gibi olumsuz duygu ve düşüncelerinden sıyrılmasıdır. Bu duygu ve düşüncelerden zihni uzaklaştırmak hem fiziksel hem de ruhsal sağlık açıdan gereklidir. Bağışlamak kişinin saygı ve değerinin artmasına, manevi olgunluk kazanmasına, kaygı ve depresyonun azalmasına yardımcı olmaktadır.
 
 Bir kişinin kendine suç işleyen kişiyi affetmemesi beden ve zihin sağlığı açısında zararlı görülmektedir. Bağışlamamanın oluşturduğu stres, vücutta zararlı maddeler salgılanmasına sebep olmaktadır. Bağışlamamanın bedene verdiği zararlar arasında tansiyon yükselmesi, kalp hastalıları, bağışıklık sisteminin zayıflaması, nörolojik bozukluklar sıralanabilir. Diğer taraftan affetmek üzüntünün ortadan kalkması, stresin azalması gibi olumlu ruhsal iyileşmelere neden olmaktadır. Bir diğer yönüyle kin güden, nefret besleyen insanlar yalnızlaşmakta, arkadaşlık ve dostluk ilişkileri zayıf olmaktadır. Bağışlayan kişiler hem sosyal hayatta hem de aile hayatlarında daha başarılı ilişkiler yürütmektedirler. (Hayati Hökelekli, Psikoloji, Din ve Eğitim Yönüyle İnsani Değerler, DEM Yay., s. 303-306)
 
-## ÖFKEYİ YUTMAK
+## Öfkeyi Yutmak
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ يُنْفِقُونَ فِي السَّرَّٓاءِ وَالضَّرَّٓاءِ وَالْكَاظِمٖينَ الْغَيْظَ وَالْعَافٖينَ عَنِ النَّاسِؕ وَاللّٰهُ يُحِبُّ الْمُحْسِنٖينَۚ</p>
 
@@ -186,7 +186,7 @@ Affedebilen kişi öfkesini kontrol edebilir. İnsan akıllı ve irade sahibidir
 
 “Eğer şeytandan sana bir fitleme gelirse hemen Allah’a sığın! Allah işitendir, bilendir.” (Fussilet, 41/36) İnsan öfkesine hâkim olduğu zaman, kendisini kızıp bağırmaya teşvik eden şeytanı yenmiş olur.
 
-## SONUÇ
+## Sonuç
 
 Haksızlık, kötülük, eziyet doğal olarak kine, nefrete, intikam duygularına sebep olur. Bu duyguların peşinden gidildiğinde toplumsal huzursuzluk ve çatışma kaçınılmazdır. Bu durumda yapılması gereken en uygun ve erdemli davranış öfkeyi kontrol edip affetmektir. Affetmek, öfkeyi kontrol etmek takva sahibi müminlerin özelliklerindendir.
 

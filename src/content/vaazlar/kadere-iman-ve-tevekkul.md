@@ -10,7 +10,7 @@ pdf: "/vaazlar/kadere-iman-ve-tevekkul.pdf"
 
 Tedbir kuldan, takdir Allah’tandır
 
-## KADER
+## Kader
 
 Sözlükte ölçü, miktar, bir şeyi belirli bir ölçüyle yapmak ve belirlemek anlamlarına gelen “kader” kelimesi dini bir kavram olarak; “Allah’ın, ezelden ebede olacak şeylerin zamanını, yerini, özelliklerini, niteliklerini ve nasıl olacaklarını ezeli ilmiyle önceden bilip takdir etmesi” demektir. Sözlükte hüküm, emir, işi bitirme ve yaratma gibi anlamlara gelen “kazâ”ise; “Cenab-ı Hakk’ın ezelî ilmiyle takdir buyurduğu şeylerin sırası geldiğinde, onları, o takdire uygun bir biçimde meydana getirmesini irade edip yaratması” demektir.
 
@@ -30,7 +30,7 @@ Resûlullah’ın (s.a.s.) halkın arasında bulunduğu bir gün, yanına gelen 
 
 “Allah’a, meleklerine, kitaplarına, peygamberlerine, âhiret gününe inanmandır. Yine kadere, hayrına ve şerrine iman etmendir.” (Müslim, Îmân 1, 5)
 
-### A. KADER VE İNSANIN SORUMLULUĞU
+### A. Kader ve İnsanın Sorumluluğu
 
 İnsanlardan birçoğu, kaza ve kaderin Allah’tan olmasının manasının; “Allah’ın takdir ettiğine kulu zorlaması” olduğunu zannetmektedir. Oysaki bunun manası; “Kulun yapacağı şeyleri Allah’ın önceden bildiğini, onların ilahi takdirle meydana geldiğini, hayır ve şer her şeyin O’nun yaratmasıyla olduğunu bildirmektir.” İnsan kâsib, yani bir işi yapmak isteyendir. Allah ise hâlıktır, yani, o şeyi yaratan var edendir. Buna göre insan hayır veya şer neyi isterse, Allah onu yaratır. İnsanın kendi iradesi ile seçtiği bu isteği, sorumluluğunun esasını oluşturur.
 
@@ -50,7 +50,7 @@ Kaderin anlaşılma sorunu, Allah’ın iradesinin her şeyi kuşatması yanınd
 
 Allah Teâlâ’nın meydana gelen her işte iradesi bulunmakla birlikte, rızası sadece iyi olan davranışlardadır. Bir hocanın gayesi, talebesinin başarılı olup sınıf geçmesidir. Talebe çalışmaz ise hocanın yapacağı bir şey yoktur. Yine bir doktorun vazifesi de, hastasını şifaya kavuşturmaktır. Hasta, verilen reçeteyi tatbîk etmez ise, gelişen menfî neticeden kendisi mesul olur. Doktora herhangi bir suç isnat edilemez. Bir kimsenin kötü bir yola düşüp de: “Ne yapayım, kaderim böyle imiş!” demesi, ancak gafleti sebebiyledir. Namaz kılmak isteyen bir kimseye Cenab-ı Hak, kılma sebeplerini ihsan eder; kılmak istemeyenlere de mâni sebepler vererek kıldırtmama tecellisinde bulunur. Dolayısıyla insanın kadere suç atarak kendisini mazur göstermek istemesi, hak ve hakikate karşı işlenen bir haksızlıktır.
 
-### C. KADERDE İRADENİN ROLÜ
+### C. Kaderde İradenin Rolü
 
 Kader konusunda iradeyi ikiye ayırabiliriz.
 
@@ -77,7 +77,7 @@ Allah’tan çocuk istemenin yolu evlenmek, meyve istemenin yolu ağaç dikmek o
 
 ✦ ✦ ✦
 
-## TEVEKKÜL
+## Tevekkül
 
 Tevekkül gerekli tedbirleri alıp sonucu Allah’a havale etmektir. Maddî ve manevî sebeplerin hepsine başvurduktan ve alınması gereken bütün tedbirleri alıp yapacak başka bir şey kalmadıktan sonra, Allah’a güvenip dayanmak ve gerisini O’na bırakmak demektir. Nitekim Enes b. Mâlik’in (r.a.) anlattığına göre bir adam, “Ey Allah’ın Resûlü! Devemi bağlayıp da mı Allah’a tevekkül edeyim, yoksa salıp da mı tevekkül edeyim?” diye sordu. Resûlullah (s.a.s.) da, “Önce onu bağla, sonra (Allah’a) tevekkül et!” buyurdu. (Tirmizî, Sıfatü’l- kıyâme, 60) Ayrıca şurası iyi bilinmelidir ki gerçek tevekkül, Allah Teâlâ’nın takdir ettiği sebepleri elde etmek için çalışmaya aykırı bir durum değildir. Bu Allah’ın kâinattaki koyduğu kanunun bir gereği ve dünyadaki hâdiselerin oluşumunun temel esasıdır. Zira Allah Teâlâ tevekkülü emir buyurduğu gibi sebepleri elde etmek için gayret göstermeyi de emir buyurmuştur. Bunun için sadece şu ayeti kerimeye bakmak bile yeterlidir:
 
@@ -119,7 +119,7 @@ Cenâb-ı Hak; Hz. İbrâhim (a.s.), Hz. İsmâil (a.s.) ve Hâcer vâlidemizi, 
 
 “Ey Rabbimiz! Namazı dosdoğru kılmaları için ben, neslimden bir kısmını Sen’in Beyt- i Harem’inin (Kâbe’nin) yanında, ziraat yapılmayan bir vâdiye yerleştirdim. Artık Sen de insanlardan bir kısmının gönüllerini onlara meyledici kıl ve meyvelerden bunlara rızık ver! Umulur ki bu nîmetlere şükrederler.” (İbrâhim, 14/37; Buhârî, Enbiyâ, 9)
 
-### F. TEVEKKÜL TEMBELLİK DEĞİLDİR
+### F. Tevekkül Tembellik Değildir
 
 Tevekkül, çalışma ve ilerlemeye de engel değildir. Maalesef tevekkül ile çalışma arasındaki bağı anlamamak, İslâm dünyasında zaman zaman problem hâline gelmiştir. Çalışmayı ve sebebe sarılmayı terk edip “Allah’ın dediği olur.” diyerek kenara çekilme, kendi yapması gereken şeyleri Allah’tan bekleme şeklindeki anlayış dinimizin tasvip etmediği yanlış bir tevekkül anlayışıdır. Akıllı, dikkatli ve tedbirli şekilde tevekkül etmeyi bir örnekle açıklayacak olursak; tarlasından iyi bir ürün almak isteyen bir kimse önce tarlayı güzelce sürmeli, tohumu ekmeli, gübresini atmalı, gerekirse sulamasını da yapmalıdır. Ürüne zarar verecek şeylere karşı her türlü tedbiri de aldıktan sonra gerisini Allah’a bırakmalı, O’na tevekkül edip güvenmelidir. Çünkü o kimse, tarlasından ürün elde etmek için elinden geleni yapmıştır. Artık tarlanın ürün vermesi için Allah’a tevekkül edip güvenecek, sonucu O’ndan bekleyecektir. Dinimizde gayret etmeden bir başarıya ulaşmak, yerinde oturarak Allah’tan bir şey beklemek, sonra da işlerini Allah’a havale etmek, böylelikle Allah’ı işlerine vekil tayin ettiğini düşünmek gibi bir tevekkül anlayışı yoktur. Böyle bir anlayışın ne Peygamberimiz (s.a.s.) ne de Rabbimiz tarafından kabul görmesi düşünülemez. Millî şairimiz Mehmet Âkif’in şu dizeleri, âdeta bu hususları özetler mahiyettedir:
 
@@ -174,6 +174,6 @@ Ayrıca bütün insanlar sana zarar vermek için toplansa Allah’ın takdiri d�
 
 Allah Resûlü’nün (s.a.s.) yatağa yatarken okunmasını tavsiye ettiği tevekkül ve teslimiyet dolu dua şu şekildedir:
 
-D U Â
+<p class="vaaz-etiket">Duâ</p>
 
 “Allah’ım! Kendimi sana teslim ettim. İşimi sana havale ettim. Azabından korkup, sevabını umup sırtımı sana dayadım. Senden (azabından) korunmanın ve güvende olmanın tek yolu, ancak sana (rahmetine) sığınmaktır. İndirdiğin kitabına ve gönderdiğin Nebî’ye inandım. Beni öldürürsen, (bozulmamış) fıtrat üzere öldür. Bu kelimeleri son sözlerim eyle.” (Buhârî, Deavât, 6)

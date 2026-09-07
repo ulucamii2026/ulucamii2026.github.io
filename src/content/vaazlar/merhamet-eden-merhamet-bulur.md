@@ -10,7 +10,7 @@ pdf: "/vaazlar/merhamet-eden-merhamet-bulur.pdf"
 
 İslam, “Allah’ın emrini tazim, yani O’na kul olmak; O’nun yaratıklarına şefkat ve merhamet” olarak tanımlanmıştır.
 
-## MERHAMETİN TANIMI
+## Merhametin Tanımı
 
 Merhamet, “acımak, şefkat göstermek” anlamlarına gelmektedir. Merhamet ve aynı mânadaki rahmet kelimeleri öncelikle Allah’ın bütün yaratılmışlara yönelik lütuf ve ihsanlarını ifade etmektedir. Bununla birlikte merhamet, insanlarda bulunan, onların kendi aralarında ve diğer canlıların sıkıntıları karşısında duyarlı olmaya ve yardım etmeye sevk eden acıma duygusudur. İslâmî kaynaklarda merhamet kavramı genellikle rahmet kelimesiyle ifade edilir. (Mustafa Çağrıcı, Merhamet, DİA, 29/ 184)
 
@@ -20,7 +20,7 @@ Cenab-ı Hak sonsuz rahmet ve merhamet sahibidir. Kur’an-ı Kerim’de şöyle
 
 “*…rahmetim ise her şeyi kuşatmıştır*…” (Araf, 7/156) O’nun rahmetinden inanan, inanmayan herkes payını alır.
 
-## ALLAH’IN RAHMETİ
+## Allah’ın Rahmeti
 
 Rabbimiz şöyle buyurmuştur:
 
@@ -62,7 +62,7 @@ Bir kutsî hadiste,
 
 “Rahmetim gazabımı geçti.” (Buhârî, Tevhîd, 22) buyrulmuştur.
 
-## HZ. PEYPEYGAMBER’İN (S.A.S.) MERHAMETİ
+## Hz. Peypeygamber’in (s.a.s.) Merhameti
 
 Hz. Peygamber (s.a.s.) Hz. Hatice (r.a.) ile evlenmiş ve bu evlilikten ilk kızı Zeyneb (r.a.) dünyaya gelmişti. Evlenme çağına gelince Hz. Peygamber (s.a.s.) onu, teyzesinin oğlu Ebu’l-Âs ile evlendirmişti. Hz. Peygamber’in (s.a.s.) Medine’ye hicretinden bir süre sonra kızı da hicret etmişti. Bir gün çocuklarından birisinin ağır bir şekilde hastalanması üzerine Hz. Zeyneb (r.a.), babasına, torununun çok hasta olduğunu, acilen gelmesini söyleyerek haber yollamıştı. Muhtemelen o sırada çok önemli bir işle meşgul olan Allah’ın Resûlü (s.a.s.) ona selâm gönderip, ***“Allah’ın aldığı ve verdiği her şey kendisine aittir. Her şey Allah katında takdir edilmiştir. Sen sabırlı ol ve mükâfatını Allah’tan bekle.”*** diye tavsiyede bulunmuştu. Fakat bebeğin durumu ağırlaşınca, babasını yanında görmek isteyen Hz. Zeyneb (r.a.) mutlaka gelmesini isteyerek bir daha haber göndermiş, Hz. Peygamber de (s.a.s.) kızını kırmayarak beraberindekilerle birlikte onun evine gitmişti. Can çekişmekte olan çocuğu şefkat ve merhametle kucağına almış Rahmet Peygamberi (s.a.s.), gözyaşı dökmeye başlamıştı. Yanındaki sahabesinden Sad b. Ubâde (r.a.), “Bu (gözyaşı) da nedir yâ Resûlallah?” diyerek hayretini gizleyememişti. Bunun üzerine şefkatli Nebî (s.a.s.),
 
@@ -90,7 +90,7 @@ Rabbimiz şöyle buyurmuştur:
 
 Şüphesiz bu âyet Hz. Peygamber’in (s.a.s.) büyüklüğünü, yüksek ahlâkını ve yüreğinin katı olmadığını, aksine şefkat ve merhametle dolu olduğunu gösterir. O, Allah’ın kendisine lütfettiği bu özellikleri sayesinde arkadaşlarına, özellikle Uhud Savaşı’nda emrine muhalefet ederek İslâm ordusunun galip iken mağlup olmasına sebep olanlara merhametle muamele etmiştir. Eğer onlara karşı katı davransaydı ve onları sert bir şekilde cezalandırsaydı, çevresindekiler dağılıp giderlerdi. (Kur'an Yolu Meali ve Tefsiri, 1/700-705)
 
-## AİLEDE MERHAMET
+## Ailede Merhamet
 
 En güzel biçimde ve yeryüzünde halife olarak yaratılan insan, kendisine şan, şeref ve nimetler verilen seçkin bir varlıktır. Doğup, büyüyen güç sahibi olan insan, bir zaman sonra yaşlanmakta, gücünü kaybetmektedir. Yaşlılık dönemi kişinin duygusallaştığı, ilgiye, merhamete en çok muhtaç olduğu zaman dilimidir. Rabbimiz kişinin yaşlandığında anne babasına nasıl davranılması gerektiği hususunda şöyle buyurmuştur:
 
@@ -140,7 +140,7 @@ Hz. Ömer’in (r.a.) hilafet günlerinde idi. İslam’ın adil halifesi vali t
 
 - “Öyleyse evladına şefkati olmayanın, Allah’ın kullarına da merhameti olmaz, bu sebeple sen oraya vali olmayacaksın.” der.
 
-## TOPLUMDA MERHAMET
+## Toplumda Merhamet
 
 Hz. Peygamber (s.a.s.), Allah’ın, ancak merhamete değer veren kullarının kalbine merhameti koyacağını hatırlatınca sahâbîler, “*Ey Allah’ın Elçisi, hepimiz birbirimize karşı merhametliyiz.”* demişlerdir. Hâlbuki Hz. Peygamber (s.a.s.), buradaki merhametten maksadın, sadece kişinin arkadaşlarına olan merhameti olmayıp bilakis bütün insanlara karşı gösterilmesi gereken merhamet olduğunu ifade etmiştir. (Heysemî, Mecmau’z-zevâid, VIII, 187; Hadislerle İslâm, 3/90)
 
@@ -164,7 +164,7 @@ Peygamber Efendimiz (s.a.s.) başka bir hadislerinde Allah’ın rahmetine mazha
 
 İnsanlar arasında merhametin timsali ise, annelerdir. Annelerdeki merhamet, Allah’ın rahmetinin en somut tezahürüdür. Şu hikâyede anlatılan olay, anne şefkatini ne güzel yansıtmaktadır. Rivayete göre iki kadın ve bebekleri bir aradayken bir kurt gelerek ikisinden birinin bebeğini kapıp götürür. Kadınlar birbirlerini işaret edip, “Kurt senin bebeğini götürdü.” diyerek tartışırlar. Olayı Hz. Dâvûd’a (a.s.) anlatırlar ve o, büyük kadının bebeğinin götürüldüğüne hükmeder. Onun yanından ayrıldıktan sonra Hz. Süleyman’a (a.s.) başvururlar. Onları dinleyen Hz. Süleyman (a.s.), “Bir bıçak getirin bebeği iki parçaya bölüp aranızda taksim edeceğim.” deyince, gerçek anne olan küçük kadın, “Yapma, Allah sana merhamet etsin, bebek onun olsun.” der. Kadının bu şekilde şefkat göstermesinden gerçek annenin küçük kadın olduğunu anlayan Hz. Süleyman (a.s.) bebeği ona verir. (Buhârî, Ferâiz, 30; Hadislerle İslâm, 3/91-92)
 
-## HAYVANLARA VE ÇEVREYE MERHAMET
+## Hayvanlara ve Çevreye Merhamet
 
 Peygamber Efendimiz (s.a.s.) on bin kişilik ordusu ile Mekke’nin fethine giderken, Arç vadisinde, yolları üzerinde yeni doğmuş yavrularını emziren bir köpek gördüler. Hz. Peygamber (s.a.s.) Cuayl b. Suraka adlı sahabiyi çağırdı ve süt emen yavruların önünde durarak onları atlardan, develerden korumasını ve ordu geçinceye kadar orada nöbet tutmasını istedi. (Vâkıdî, Megazi, II, 225)
 

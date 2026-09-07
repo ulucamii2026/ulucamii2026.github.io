@@ -8,7 +8,7 @@ pdf: "/vaazlar/kur-an-i-kerim-rehberliginde-sahsiyet-insasi.pdf"
 ---
 Kur'an-ı Kerim, insanın hem dünya hem de ahiret hayatını düzenleyen ilahi bir rehberdir. Bu rehberlik, insanın bedensel, zihinsel, sosyal, ruhsal ve ahlaki tüm yönlerini kapsar ve müslümanın şahsiyetini oluşturan temel yapı taşlarını şekillendirir.
 
-### İNSANIN FITRATI VE DEĞERİ
+### İnsanın Fıtratı ve Değeri
 
 İnsanın fiziksel, zihinsel, sosyal ve manevi özellikleri olup, bu özelliklerinin de bir takım ihtiyaçları vardır. Fiziksel ihtiyaçları, yeme, içme, uyuma gibi bedenin gereksinimleridir. İnsanın öğrenme, düşünme gibi zihinsel ihtiyaçları; sevgi, saygı, aidiyet gibi sosyal ihtiyaçları; inanma, anlam arayışı gibi manevi ihtiyaçları vardır. Bütün bu ihtiyaçların giderilmesinde kılavuz, insanı yaratan ve onu en iyi tanıyan Yüce Rabbimizin rehber olarak gönderdiği Kur'an-ı Kerim’dir.
 
@@ -70,7 +70,7 @@ Bütün bu ayetler göstermektedir ki Rabbimiz bizi tanımakta ve bize kendimizi
 
 “*Kim güzel ve makbul bir iş yaparsa, faydası kendinedir. Kim de kötülük yaparsa, zararı kendinedir. Sonunda hepiniz Rabbinizin huzuruna döndürüleceksiniz*.” (Câsiye, 45/15) ayetiyle de insana irade verdiğini seçimini doğru yapanların kazanacağını bildirmektedir.
 
-### İNSANIN AMACI
+### İnsanın Amacı
 
 Bizi bize tanıtan bu ayetlerden sonra şahsiyet inşasında insanın yaratılış amacını Kur’an-ı Kerim’de bildirildiği şeklinde anlamak gereklidir.
 
@@ -106,7 +106,7 @@ O halde, dünyadaki hiçbir şey boşuna değildir. Cinler ve insanların da All
 
 Kendini var edeni tanıyarak sağlam bir inanç ve düşünceyle tevhide tutunma, ahiret inancı ve hesaba çekilme duyarlılığını taşıyarak yeryüzünü tevhit akidesi doğrultusunda imar ve ihya etme, gerektiğinde ıslah edip değiştirme ve daima iyiliğin yanında yer alma insan olmanın sorumluluğudur.
 
-### KUR’AN’IN ŞAHSİYET İNŞA METODU
+### Kur’an’ın Şahsiyet İnşa Metodu
 
 Her ne kadar Kur’an-ı Kerim şahsiyet inşasında insanoğlunu kendisine tanıtıp sorumluluğunu hatırlatarak bunu duyurmak için peygamberlerin geldiğinden bahsetse de insanoğlunun yaratılış itibarıyla şahsiyeti, hem doğuştan gelen genetik faktörler hem de çevresel etkilerle şekillenir. Aile, eğitim, kültürel değerler, sosyal çevre ve kişisel deneyimler şahsiyetin gelişiminde büyük rol oynar.
 

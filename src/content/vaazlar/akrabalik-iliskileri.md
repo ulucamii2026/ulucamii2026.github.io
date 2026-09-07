@@ -8,11 +8,11 @@ pdf: "/vaazlar/akrabalik-iliskileri.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 
-### AKRABALIK İLİŞKİLERİ
+### Akrabalık İlişkileri
 
 *Sıla-i rahim: anne karnında başlayan bağı kıyamete kadar yaşatmak*
 
-### GİRİŞ
+### Giriş
 
 Müslümanlar arasında birbirinden farklı derecede soy, nesep, hısımlık ve akrabalık bağları vardır. Oluşan bu akrabalık ilişkilerinden dolayı aralarında birtakım görevler, haklar ve hükümler meydana gelir. Bunların yerine getirilmesi ve özenle gözetilmesi dinimizin bir emridir. Arapça’da “akrabalık” mânasına isim olarak kullanılan karâbe, kurbe veya kurbâ masdarlarıyla yapılan zü’l-karâbe, zü’l-kurbâ (çoğulu zevü’l-kurbâ) vb. terkipler de “akraba” mânasına gelmektedir. (Vecdi Akyüz, Akraba, DİA, 2/285-287).
 
@@ -34,7 +34,7 @@ A. Kur’ân-ı Kerîm’de Akrabalık (Sıla-i Rahim)
 
 Rabbimiz Kur’ân-ı Kerîm’inde şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذْ اَخَذْنَا مٖيثَاقَ بَنٖٓى اِسْرَٓاءٖيلَ لَا تَعْبُدُونَ اِلَّا اللّٰهَ وَبِالْوَالِدَيْنِ اِحْسَانًا وَذِى الْقُرْبٰى وَالْيَتَامٰى وَالْمَسَاكٖينِ وَقُولُوا لِلنَّاسِ حُسْنًا وَاَقٖيمُوا الصَّلٰوةَ وَاٰتُوا الزَّكٰوةَۜ ثُمَّ تَوَلَّيْتُمْ اِلَّا قَلٖيلًا مِنْكُمْ وَاَنْتُمْ مُعْرِضُونَ</p>
 
@@ -44,7 +44,7 @@ Bu âyet-i kerîmede, Allah’tan başka ilâh tanımamak, ana babaya, akrabaya,
 
 Başka bir âyetinde ise Rabbimiz,
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَسْـَٔلُونَكَ مَاذَا يُنْفِقُونَؕ قُلْ مَٓا اَنْفَقْتُمْ مِنْ خَيْرٍ فَلِلْوَالِدَيْنِ وَالْاَقْرَبٖينَ وَالْيَتَامٰى وَالْمَسَاكٖينَ وَابْنِ السَّبٖيلِؕ وَمَا تَفْعَلُوا مِنْ خَيْرٍ فَاِنَّ اللّٰهَ بِهٖ عَلٖيمٌ</p>
 
@@ -54,7 +54,7 @@ Bu âyet-i kerîmenin bizlere verdiği en önemli mesaj şudur: bizler sevap kaz
 
 Her cuma günü hatibin minberden inerken okuduğu Nahl sûresi 90. âyetinde Rabbimiz;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ يَأْمُرُ بِالْعَدْلِ وَالْاِحْسَانِ وَاٖيتَٓائِ۬ ذِي الْقُرْبٰى وَيَنْهٰى عَنِ الْفَحْشَٓاءِ وَالْمُنْكَرِ وَالْبَغْيِۚ يَعِظُكُمْ لَعَلَّكُمْ تَذَكَّرُونَ</p>
 
@@ -64,7 +64,7 @@ Bu âyetinde Yüce Allah, dört husus üzerinde durmaktadır. Adaletli olmayı, 
 
 Akrabaya hakkını vermek anlamında Yüce Rabbimiz şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاٰتِ ذَا الْقُرْبٰى حَقَّهُ وَالْمِسْكٖينَ وَابْنَ السَّبٖيلِ وَلَا تُبَذِّرْ تَبْذٖيراً</p>
 
@@ -72,7 +72,7 @@ Akrabaya hakkını vermek anlamında Yüce Rabbimiz şöyle buyurmaktadır:
 
 Akrabayı uyarma ve yol gösterme anlamında Yüce Allah Peygamberimize (s.a.s.) hitaben:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَاَنْذِرْ عَشٖيرَتَكَ الْاَقْرَبٖينَۙ ﴾</p>
 
@@ -86,7 +86,7 @@ B. Hadisler Bağlamında Akrabalık İlişkileri
 
 Bir hadis-i şerifte Peygamberimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ ارْحَمُوا مَنْ فِى الأَرْضِ يَرْحَمْكُمْ مَنْ فِى السَّمَاءِ الرَّحِمُ شُجْنَةٌ مِنَ الرَّحْمَنِ فَمَنْ وَصَلَهَا وَصَلَهُ اللَّهُ وَمَنْ قَطَعَهَا قَطَعَهُ اللَّهُ</p>
 
@@ -94,7 +94,7 @@ HADÎS-İ ŞERÎF
 
 Başka bir hadisinde ise Resûlullah (s.a.s.);
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لاَ يَدْخُلُ الْجَنَّةَ قَاطِعٌ</p>
 
@@ -102,7 +102,7 @@ HADÎS-İ ŞERÎF
 
 Akrabalık ilişkilerini (sıla-i rahimi) iman ile ilişkilendiren Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيُكْرِمْ ضَيْفَهُ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَصِلْ رَحِمَهُ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
 
@@ -110,7 +110,7 @@ HADÎS-İ ŞERÎF
 
 Resûlullah (s.a.s.);
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 *“Akrabadan gelen iyiliğe misliyle karşılık veren kimse, tam mânâsıyla akrabasına sıla etmiş değildir. Gerçek sıla, kendisiyle ilgiyi kesenleri görüp gözetmektir.”* (Buhârî, Edeb, 15) buyurmuştur.
 
@@ -122,7 +122,7 @@ C. Akrabalarımıza Karşı Yaklaşımımız Nasıl Olmalı?
 
 Huzeyfe (b. Yemân) tarafından nakledildiğine göre, Resûlullah (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لاَ تَكُونُوا إِمَّعَةً تَقُولُونَ: إِنْ أَحْسَنَ النَّاسُ أَحْسَنَّا، وَإِنْ ظَلَمُوا ظَلَمْنَا، وَلَكِنْ وَطِّنُوا أَنْفُسَكُمْ، إِنْ أَحْسَنَ النَّاسُ أَنْ تُحْسِنُوا، وَإِنْ أَسَاءُوا فَلاَ تَظْلِمُوا</p>
 
@@ -138,7 +138,7 @@ Müslüman, Allah’ın yarattığı her canlıyı sevmelidir. Sevmek insana do�
 
 Ebû Hureyre’nin (r.a.) naklettiği bir hadis-i şerifte akrabalarıyla ilişkisini kesenin durumu şöyle ifade edilmektedir. Resûlullah (s.a.s.) Efendimiz şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ أَعْمَالَ بَنِي آدَمَ تُعْرَضُ كُلَّ خَمِيسٍ لَيْلَةَ الْجُمُعَةِ، فَلَا يُقْبَلُ عَمَلُ قَاطِعِ رَحِمٍ</p>
 
@@ -148,7 +148,7 @@ Bu durum, ibadetlerimizin kabulü, kul hakkının önemi, akraba ilişkilerimizi
 
 4) Ziyaret Etmeli ve Hediyeleşmeliyiz
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 Bir sahâbî Peygamber Efendimize (s.a.s.) gelerek şöyle sordu: *“Yâ Resûlallah! Beni cennete yaklaştıracak, cehennemden uzaklaştıracak bir ameli haber verir misiniz?”* Peygamberimiz (s.a.s.) adama şöyle buyurdu: *“Allah’a ibadet eder, ona hiçbir şeyi ortak koşmaz, namazı kılar, zekâtı verir, akrabanı gözetirsin.*” Adam *“tamam”* dedi ve gitti. Peygamberimiz (s.a.s.) adamın arkasından, *“Emrolunduğu şeyleri yaparsa cennete girer”* buyurdu. (Buhârî, Zekât, 1; Müslim, Îmân, 12)
 
@@ -158,7 +158,7 @@ Akrabalarımızı ziyaret ederek ve hediyeleşerek aramızdaki sıla-i rahim ba�
 
 Akraba ilişkilerimizde en önemli husus af yolunu seçmektir. Rabbimiz de Peygamber Efendimize hitaben;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">خُذِ الْعَفْوَ وَاْمُرْ بِالْعُرْفِ وَاَعْرِضْ عَنِ الْجَاهِلٖينَ</p>
 
@@ -166,7 +166,7 @@ Akraba ilişkilerimizde en önemli husus af yolunu seçmektir. Rabbimiz de Peyga
 
 Sehl b. Muâz b. Enes’in (r.a.), babasından naklettiğine göre, Resûlullah (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَفْضَلُ الْفَضَائِلِ أَنْ تَصِلَ مَنْ قَطَعَكَ، وَتُعْطِيَ مَنْ مَنَعَكَ، وَتَصْفَحَ عَمَّنْ شَتَمَكَ</p>
 
@@ -174,7 +174,7 @@ HADÎS-İ ŞERÎF
 
 Rabbimiz diğer bir âyetinde ise:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا يَأْتَلِ اُو۬لُوا الْفَضْلِ مِنْكُمْ وَالسَّعَةِ اَنْ يُؤْتُٓوا اُو۬لِي الْقُرْبٰى وَالْمَسَاكٖينَ وَالْمُهَاجِرٖينَ فٖي سَبٖيلِ اللّٰهِۖ وَلْيَعْفُوا وَلْيَصْفَحُواؕ اَلَا تُحِبُّونَ اَنْ يَغْفِرَ اللّٰهُ لَكُمْؕ وَاللّٰهُ غَفُورٌ رَحٖيمٌ</p>
 
@@ -184,13 +184,13 @@ D. Akraba İlişkilerini (Sıla-i Rahim) Sürdürmenin Önemi
 
 1) Allah’ın Emri Olduğu ve Rahmet Kapısını Açtığı İçin
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاٰتِ ذَا الْقُرْبٰى حَقَّهُ وَالْمِسْكٖينَ وَابْنَ السَّبٖيلِ وَلَا تُبَذِّرْ تَبْذٖيراً</p>
 
 *“Akrabaya, yoksula ve yolda kalmış yolcuya hakkını ver, fakat malını israf ederek saçıp savurma.”* (İsrâ, 17/26)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ يَنْقُضُونَ عَهْدَ اللّٰهِ مِنْ بَعْدِ مٖيثَاقِهٖ وَيَقْطَعُونَ مَٓا اَمَرَ اللّٰهُ بِهٖٓ اَنْ يُوصَلَ وَيُفْسِدُونَ فِي الْاَرْضِۙ اُو۬لٰٓئِكَ لَهُمُ اللَّعْنَةُ وَلَهُمْ سُٓوءُ الدَّارِ</p>
 
@@ -198,7 +198,7 @@ D. Akraba İlişkilerini (Sıla-i Rahim) Sürdürmenin Önemi
 
 Peygamberimiz (s.a.s.) bir hadis-i şerifinde;
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 *“Akrabaya yapılan infak için hem sadaka hem de akrabayı koruyup gözetme sevabı vardır.”* (Tirmizî, Zekât, 26) buyurmuştur.
 
@@ -208,17 +208,17 @@ Diğer bazı hadislerde de Allah’ın Rahmân ismiyle sıla-i rahim arasında i
 
 Dua etmek, mümine yakışan en güzel davranışlardan biridir. Müslüman dua ile Allah katında değer kazanır. Onun için Rabbimiz âyetinde;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ قُلْ مَا يَعْبَؤُ۬ا بِكُمْ رَبّٖي لَوْلَا دُعَٓاؤُ۬كُمْۚ ﴾</p>
 
 *“Duanız olmasa Allah size ne diye kıymet versin.”* (Furkân, 25/77) buyurmuştur. Karşılıklı dua etmek sıla-i rahimin bir parçasıdır. Mümin mümine gıyabında dua eder ama akrabalarımıza iyilik ve hayır için dua etmek aynı zamanda sıla-i rahimin bir gereği ve önceliğidir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 *“Yeryüzünde bir Müslüman Allah’tan bir şey dilerse, günah bir şeyi istemedikçe veya akrabası ile ilgisini kesmeyi arzu etmediği sürece, Allah ya duasını hemen kabul eder, ya onu ahirete saklar, ya da ona vereceği şey kadar bir kötülüğü kendisinden giderir.”* (Tirmizî, Da’avât, 115) buyurulur.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 *“Her Cuma gecesi insanoğlunun amelleri Allah’a arz olunur. Ancak akrabasıyla alâkasını kesen kimsenin amelleri kabul edilmez.”* (Buhârî, el-Edebü’l-müfred, 61)
 
@@ -230,7 +230,7 @@ Unutmayalım ki; sıla-i rahim, kulun ibadetidir. Kulun Rabbiyle olan bağı kor
 
 Resûlullah (s.a.s.);
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا النَّاسُ، أَفْشُوا السَّلَامَ، وَأَطْعِمُوا الطَّعَامَ، وَصِلُوا الْأَرْحَامَ، وَصَلُّوا بِاللَّيْلِ وَالنَّاسُ نِيَامٌ، تَدْخُلُوا الْجَنَّةَ بِسَلَامٍ</p>
 
@@ -240,7 +240,7 @@ Yukarıda temas ettiğimiz hadiste de Peygamber Efendimiz (s.a.s.) akrabalık ba
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
 Gerek âyet-i kerîmelerde gerekse hadis-i şeriflerde akraba ilişkisinin (sıla-i rahim) namaz, oruç, zekât gibi farz ibadetlerden hemen sonra zikredilmesi, İslâm açısından büyük önemi olduğunu göstermektedir. Cumhur ulema sıla-i rahimde bulunmanın vâcip olduğunu, terk edilmesi halinde ise büyük günahlardan olduğunu söylemişlerdir.
 
@@ -256,11 +256,11 @@ Bilmeliyiz ki, Rahmân’ın rahmetine mazhar olmak, tehdidinden uzak kalmak, ce
 
 Vaazımızı bir hadis-i şerif ile tamamlayalım:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 Sahâbeden biri Peygamberimize (s.a.s.) gelerek, *“Ey Allah’ın Resûlü! Ben akrabalarımla ilişkilerimi sıcak tutmaya çalışıyorum, onlarsa beni arayıp sormuyorlar. Onlara iyilik ediyorum, onlar bana kötülük ediyorlar. Ben onlara yumuşak davranıyorum, onlar bana kaba davranıyorlar.”* der. Bunun üzerine Resûl-i Ekrem (s.a.s.), o sahâbîye, akrabalarının tutumunun yanlış olduğunu bildirir ve şöyle buyurur: *“Sen böyle davranmaya devam ettiğin sürece Allah’ın yardımı seninledir.”* (Müslim, Birr, 22)
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Rabbim akrabalık bağlarını gözeterek bir hayat yaşamayı bizlere nasip etsin.*
 

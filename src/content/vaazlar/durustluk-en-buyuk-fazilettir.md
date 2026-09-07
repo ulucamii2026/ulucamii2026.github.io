@@ -6,7 +6,7 @@ kelime: 1814
 docx: "/vaazlar/durustluk-en-buyuk-fazilettir.docx"
 pdf: "/vaazlar/durustluk-en-buyuk-fazilettir.pdf"
 ---
-FUSSİLET SURESİ - 30. AYET
+<p class="vaaz-etiket">Fussilet Suresi - 30. Ayet</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا تَتَنَزَّلُ عَلَيْهِمُ الْمَلَائِكَةُ أَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَأَبْشِرُوا بِالْجَنَّةِالَّتِي كُنتُمْ تُوعَدُونَ:</p>
 
@@ -34,7 +34,7 @@ Ayet-i kerimede, Allah’a imandan sonra -ki diğer iman esasları da buna dâhi
 
 İstikamet yani dürüstlük sözde, özde ve işte olmak üzere üç kısma ayrılır:
 
-## SÖZDE DOĞRULUK
+## Sözde Doğruluk
 
 Her konuda olduğu gibi bu konuda da örnek alınacak insan Peygamber (SAV) Efendimizdir. Peygamberimiz (SAV), doğru sözlülüğün en canlı örneğiydi. Çünkü Kur’an-ı Kerim kendisine indirilmişti. Kur’an ayetlerini önce O okuyor ve uyguluyordu. Sözleriyle işleri arasında tam anlamıyla bir uyum vardı. Nasıl olmasındı? Kur’an şöyle diyordu:
 
@@ -100,13 +100,13 @@ Kur’an-ı Kerim şöyle buyuruyor:
 
 Şahitliği gizlemek, bildiğini söylememek, öyle dış organların işlediği günah gibi değildir. Bizzat imanın karargâhı olan kalbin işlediği bir günahtır. Bundan dolayı en büyük günahlardandır.
 
-## ÖZDE DOĞRULUK
+## Özde Doğruluk
 
 Müslüman’ın sözü gibi öze de doğru olmalı, içi kötü duygu ve düşüncelerden arınmış bulunmalıdır. Daha açık bir ifade ile Müslüman, düşündüğü gibi konuşmalı, konuştuğu gibi olmalıdır. Sözü ile özü arasında ayrılık olmamalıdır. Böyle olduğu takdirde olgun mümin olur. Böyle olduğu takdirde çevresine güven vermiş olur. Peygamberimiz (SAV) şöyle buyuruyor: “Kişinin imanı doğru olmaz, kalbi doğru olmayınca; Kalbi doğru olmaz, dili doğruları söylemedikçe; kişi cennete giremez, komşusu şerrinden emin olmadıkça.”
 
 Peygamberimiz (SAV), dilin ve kalbin uyum içerisinde olmasını ve her ikisinin de istikamet üzere bulunmasını tavsiye etmektedir. Bazı kimseleri zaman zaman duyarız: “Sen benim söz ve davranışlarıma bakma, benim kalbim doğrudur. İçimde fenalık yoktur.” Bu sözleri yukarıda mealini arz ettiğimiz Hadis-i şerife göre bir anlam taşımazlar. Esasen bir kapta ne varsa o kabın ağzından o dökülür. Bir kapta bal şerbeti olduğu halde ondan sirke dökülmesi nasıl mümkün değilse, iyi duygu ve düşüncelere sahip olan kimsenin diline ve organlarına yansıyacak olan da iyi söz ve davranışlarıdır.
 
-## İŞTE DOĞRULUK
+## İşte Doğruluk
 
 Müslüman’ın sözü ve özü doğru olunca, işi de doğru olacaktır. Müslüman’ın işinde hile ve haksızlık olmaz. Kendi işini sağlam ve hilesiz yaptığı gibi başkasının işini de aynen kendi işini yaptığı yapacaktır. Nasıl yapmasın ki; Peygamberimiz (SAV), kendisine reva gördüğü bir muameleyi, din kardeşine reva görmedikçe, kişinin olgun imana sahip olamayacağını bildirmiştir. Esasen Hakka inanan ve bütün yaptıklarından bir gün hesaba çekileceği muhakkak olan insan, başkasına nasıl haksızlık yapar?
 

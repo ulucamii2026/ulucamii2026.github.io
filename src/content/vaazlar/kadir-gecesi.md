@@ -18,7 +18,7 @@ pdf: "/vaazlar/kadir-gecesi.pdf"
 
 “Şüphesiz Biz onu (Kur’an’ı) Kadir gecesinde indirdik.”
 
-### GİRİŞ
+### Giriş
 
 Değerli Müminler, Aziz Kardeşlerim!
 
@@ -28,7 +28,7 @@ Bu gece, içinde yaşadığımız Ramazan ayının son on günündedir. Bu müba
 
 Rabbimiz Kur’an-ı Kerim’de bu gece hakkında müstakil bir sure indirmiştir. Kadir Süresi, kısa ama son derece derin bir sure. Her kelimesi ayrı bir anlam taşıyan bu sure, bize gecenin mahiyetini, büyüklüğünü ve içinde barındırdığı nimetleri anlatmaktadır.
 
-A. KADİR GECESİ: ANLAM VE MAHİYET
+## A. Kadir Gecesi: Anlam ve Mahiyet
 
 *   ’Kadir’ Kelimesinin Anlamları
 
@@ -52,7 +52,7 @@ Rivayetlere göre Hz. Peygamber (s.a.s.), eski ümmetlerin uzun ömürlerini ve 
 
 Bu hadisin derinliğini düşünelim: 83 yılı aşan bir süre. Bir insan 83 yıl ibadet etse bile, Kadir Gecesi’nin ecrini tek bir gecede kazanabilir. Rabbimiz bizi bu büyük ihsanından nasipsiz bırakmasın.
 
-B. KADİR SÛRESİ TEFSİRİ
+## B. Kadir Sûresi Tefsiri
 
 Yüce Allah, Kadir Gecesi’ne o kadar büyük önem vermiştir ki, bu gece için özel olarak bir sure indirmiştir. ’el-Kadr’ suresi, Mekke’de nazil olmuş, 5 ayetten oluşmaktadır. Şimdi bu mübarek sureyi ayet ayet, anlam ve içerik bakımından ele alalım:
 
@@ -155,7 +155,7 @@ Peki bu gizlemenin hikmetleri nelerdir?
 *   Kulun samimiyetini ölçmek — sadece kesin bilinen geceye değil, belirsiz de olsa geceye talip olması
 *   Manevi arayış ve coşkuyu canlı tutmak
 
-D. KUR’AN VE KADİR GECESİ: İLAHÎ ARMAĞANIN HİKMETİ
+## D. Kur’an ve Kadir Gecesi: İlahî Armağanın Hikmeti
 
 Kadir Gecesi, aslında Kur’an-ı Kerim’in yeryüzüne indiği gecedir. Bu nedenle bu iki kavramı birbirinden ayrı düşünmek mümkün değildir. Kadir Gecesi’ni anlamak için Kur’an’ı anlamak, Kur’an’ı anlamak için de Kadir Gecesi’nin önemini kavramak gerekmektedir.
 
@@ -208,7 +208,7 @@ Bu, en önemli ve en zor olanıdır. Kur’an yalnızca okunmak için değil, ha
 
 Demek ki peygamberimizin ahlakı Kur’an ahlakıydı; O’nun yaşayışı, Kur’an’ın canlı bir tablo halinde sergilenmesiydi. Bu gece, Kur’an ahlakını hayatımıza taşımak için yeniden söz verme gecesidir.
 
-E. KUR’AN AHLAKI: KADİR GECESİ’NİN ARMAĞANI
+## E. Kur’an Ahlakı: Kadir Gecesi’nin Armağanı
 
 Kadir Gecesi’ni anlamlandırmanın en temel yolu, o gecede indirilen Kur’an’ın bizden istediği ahlakı yaşamaktır. Kur’an ahlakı; adalet, dürüstlük, merhamet, sabır, şükür, alçakgönüllülük, ihlas ve kardeşlik temelleri üzerine kurulmuştur.
 
@@ -304,7 +304,7 @@ Tevbenin üç şartını hatırlayalım:
 
 Hz. Aişe (r.a.) validemiz, Hz. Peygamber’e (s.a.s.) şöyle sormuştur: ’Ya Resûlallah! Kadir Gecesi’ne denk gelirsem ne dua edeyim?’ Bunun üzerine Peygamberimiz şu duayı öğretmiştir:
 
-KADİR GECESİ DUASI
+<p class="vaaz-etiket">Kadir Gecesi Duası</p>
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي</p>
 
@@ -347,7 +347,7 @@ Hz. Peygamber (s.a.s.) Ramazan’ın son on gününde itikaflara girerdi. İtika
 
 Bugün tam itikafa giremeseniz de bu geceyi mescidde ihya etmek, cemaate katılmak büyük bir erdemdir.
 
-G. KARDEŞLİK, DAYANIŞMA VE BARIŞ
+## G. Kardeşlik, Dayanışma ve Barış
 
 Kadir Gecesi bir barış gecesidir. Allah Teâlâ bu geceyi ’selam’ kelimesiyle tanımlamıştır. Selam; hem Allah’ın isimleri arasında hem de Müslümanların birbirini selamlama biçiminde yaşayan bir değerdir. Bu gecenin ruhu, kalplere barış, gönüllere huzur taşımaktır.
 
@@ -375,7 +375,7 @@ Hz. Peygamber (s.a.s.) bu mübarek gecelerde ailesini de uyandırır ve ibadete 
 
 “Allah’ın Resûlü Ramazan’ın son on günü girdiğinde geceleri ihya eder ve ailesini uyandırırdı.” (Buhârî, Leyletü’l-Kadr, 5)
 
-H. KADİR GECESİ VE MODERN HAYATTA ANLAMI
+## H. Kadir Gecesi ve Modern Hayatta Anlamı
 
 Günümüzde insanlar büyük bir koşuşturma içindedir. Teknoloji, sosyal medya, iş stresi ve dünyevi meşgaleler çoğu zaman insanı kendinden ve Allah’tan uzaklaştırmaktadır. Kadir Gecesi, tüm bu gürültünün ortasında bir ’dur’ demektir; bir nefes almaktır.
 
@@ -405,7 +405,7 @@ Kadir Gecesi aynı zamanda bir gelecek planlama gecesidir. Yeni bir yıl için, 
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
 Aziz müminler! Kadir Gecesi; hem bir bitiş hem de bir başlangıçtır. Ramazan’ın doruk noktasıdır ve aynı zamanda yeni bir yılın manevi çıkış noktasıdır.
 
@@ -425,7 +425,7 @@ Kadir Gecesi’nin mesajını şu şekilde özetleyebiliriz:
 
 *“Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.”* (Bakara, 2/201)
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اجْعَلْنَا مِمَّنْ أَدْرَكَ لَيْلَةَ الْقَدْرِ وَقَبِلْتَ تَوْبَتَهُمْ وَغَفَرْتَ لَهُمْ</p>
 

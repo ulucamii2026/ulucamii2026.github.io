@@ -14,7 +14,7 @@ Bütün üstün vasıflarla donatılan insanın; dünya hayatında yaratılış�
 
 İnsanı itibarından eden, olması gereken yerden aşağılara düşürecek olan davranışların başında kötü alışkanlıklar gelmektedir. Kötü alışkanlıkların başında da her türlü felaketin temel sebebi olan içki, kumar, uyuşturucu vb. maddeler gelir. İnsanı her türlü kötülüğün kıskacına sürükleyen felaketlere kısaca bir göz atalım:
 
-## İÇKİ
+## İçki
 
 İçki deyince, içilmesi dinen yasak olan sarhoş edici alkollü sıvı maddeler anlaşılır. İçki alışkanlığı ve bağımlılığı insanlık tarihi kadar uzun bir geçmişi bulunmakta ve bütün dönem ve toplumlarda görülmektedir.
 
@@ -60,7 +60,7 @@ Alkollü içkilerin az içilmesi de çok içilmesi de haramdır. Peygamberimiz (
 
 “Çoğu sarhoşluk veren şeyin azı da haramdır.”
 
-## KUMAR
+## Kumar
 
 İslam, birçok oyun ve eğlenceyi helal, kumar bulaşığı olan her türlü oyunu da haram kılmıştır. Maide Suresi’nin 90. âyetinde geçen “meysir” kelimesi kumar olarak açıklanmış, şarabın kardeşi, arkadaşı olarak isimlendirilmiştir. Kumar, Allah’ı anmaktan, namazdan alıkoyduğu, insanlar arasında düşmanlık doğurduğu için günah sayılmış ve yasaklanmıştır.
 
@@ -88,7 +88,7 @@ Vakit insan için çok önemli bir nimettir. Kumara bulaşan insanlar, Allah tar
 
 Kumar, fertler arasında ve toplumda kin, nefret ve düşmanlık tohumlarının yeşermesine sebep olur. Bu sebeple, Kur'ân’ın ve Hz. Peygamberin ikazlarına kulak veren Müslümanlar, fertleri, aileleri ve toplumları temelinden sarsan kumar illetine karşı hassas davranmalı ve bu hastalığın yayılmaması ve engellenmesi konusunda kendilerini görevli addetmelidirler.
 
-## SİGARA
+## Sigara
 
 Toplumumuzu ve gençliğimizi menfi yönden etkileyen bir başka kötü alışkanlık ta sigaradır. İnsan sağlığı ve hayatı ölçü alındığında sigara toplumsal bir sorun olarak karşımıza çıkmaktadır.
 
@@ -98,7 +98,7 @@ Sigara, sağlıklı nefesimizi dumanıyla alır gider, içimizde bizi adım adı
 
 Sigara insan sağlığını olumsuz yönde etkilediği gibi çevre kirliliğine de sebep olur.
 
-## UYUŞTURUCU MADDELER
+## Uyuşturucu Maddeler
 
 Uyuşturucu madde deyince ilk aklımıza gelen esrar, eroin, afyon, kokain gibi maddelerdir. Bu maddeler, insan vücudunda büyük tahriplere sebep olduğu gibi, toplumda da büyük ölçüde zararlar meydana getirmektedir.
 
@@ -134,6 +134,6 @@ Yönetici durumunda olanlar, okullarda öğretmenler, gençlere güzel örnek ol
 
 Sağlıklı bir gelecek ve sağlıklı bir nesil, fertlerin dayanışması, toplumda örnek olacak konumda olanların iyi hareketler sergilemesi ile gerçekleşeceği unutulmamalıdır.
 
-SONUÇ
+## Sonuç
 
 İslam, kişinin dinini, canını, malını, aklını ve neslini korumayı hedef aldığından, temiz ve faydalı olan şeyleri mubah kılmış, fert ve toplum için zararlı olan şeyleri de yasaklamış olduğu gözden kaçırılmamalıdır. Bize düşen, İslam’ın koyduğu dünya ve âhiret saadetine ulaşma hedefi doğrultusunda gayret sarf ederek, toplumda güzel örnek olacak davranışları sergileyecek fertleri yetiştirmektir. Şurası hatırdan çıkarılmamalıdır ki, kendilerine, ailelerine, topluma ve Yaratan’ına karşı sorumluluk ve saygı duymasını sağlayacak bir inanç ve ahlak bilincine sahip fertlerin yetiştirilmesi ile fertlerde, ailelerde ve toplumda büyük yıkımlara yol açan bu büyük felaketlerin önünü almak mümkün olacaktır.

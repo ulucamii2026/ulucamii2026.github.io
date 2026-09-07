@@ -18,7 +18,7 @@ Hayat, bir mücadele ve gayret sahasıdır. Bu mücadele karşısında sabreden 
 
 Yüce Rabbimiz şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاٰتٰىكُمْ مِنْ كُلِّ مَا سَاَلْتُمُوهُؕ وَاِنْ تَعُدُّوا نِعْمَتَ اللّٰهِ لَا تُحْصُوهَاؕ اِنَّ الْاِنْسَانَ لَظَلُومٌ كَفَّارٌࣖ</p>
 
@@ -28,7 +28,7 @@ Sayılamayacak kadar çok olan nimetler karşısında insan, Allâh’ın lütfu
 
 Nitekim Allâh Resûlü (s.a.s.) Efendimiz, kendisi gibi Hz. Musa (a.s.) ve Hz. Dâvûd’un (a.s.) da çobanlık yaptığını, geçimini kendi elleriyle kazandıklarını ifâde etmiştir. Dâvûd Peygamber’in (a.s.) hükümdar olmasına rağmen kendi geçimini temin etmesi, helâl rızık peşinde olanlar için ideal bir davranış olarak gösterilmiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا أَكَلَ أَحَدٌ طَعَامًا قَطُّ خَيْرًا مِنْ أَنْ يَأْكُلَ مِنْ عَمَلِ يَدِهِ، وَإِنَّ نَبِىَّ اللَّهِ دَاوُدَ كَانَ يَأْكُلُ مِنْ عَمَلِ يَدِهِ</p>
 
@@ -36,7 +36,7 @@ HADÎS-İ ŞERÎF
 
 Çalışmak ve sürekli bir hareket hâlinde olmak, Rabbimizin kâinata koymuş olduğu kanunların bir neticesidir. Cenâb-ı Hakk bizatihi her an yaratma hâlindeyken kâinatın değişmeden kalabilmesi mümkün değildir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَسْـَٔلُهُ مَنْ فِي السَّمٰوَاتِ وَالْاَرْضِؕ كُلَّ يَوْمٍ هُوَ فٖي شَأْنٍۚ</p>
 
@@ -44,7 +44,7 @@ HADÎS-İ ŞERÎF
 
 Buradan hareketle insanın rızkını aramak için çalışması, bu çabanın karşısında Rabbine tevekkül edip, yalnızca O’ndan istemesi kulluğun gereğidir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاَنْ لَيْسَ لِلْاِنْسَانِ اِلَّا مَا سَعٰىۙ﴿٣٩﴾ وَاَنَّ سَعْيَهُ سَوْفَ يُرٰىۖ﴿٤٠﴾ ثُمَّ يُجْزٰىهُ الْجَزَٓاءَ الْاَوْفٰىۙ</p>
 
@@ -60,7 +60,7 @@ Enes b. Mâlik’in (r.a.) anlattığına göre, Medineli bir sahâbî birkaç k
 
 Kur’ân-ı Kerîm’de anlatılan Karun kıssası bu hususta önemli bir örnektir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ قَارُونَ كَانَ مِنْ قَوْمِ مُوسٰى فَبَغٰى عَلَيْهِمْۖ وَاٰتَيْنَاهُ مِنَ الْكُنُوزِ مَٓا اِنَّ مَفَاتِحَهُ لَتَنُٓوأُ بِالْعُصْبَةِ اُو۬لِى الْقُوَّةِࣗ اِذْ قَالَ لَهُ قَوْمُهُ لَا تَفْرَحْ اِنَّ اللّٰهَ لَا يُحِبُّ الْفَرِحٖينَ</p>
 
@@ -70,7 +70,7 @@ Tefsirlerde Karun, Hz. Mûsâ’nın (a.s.) amcasının oğlu ve Firavunun yüks
 
 Ayet-i Kerîme’de Karun’un bu bedbahtlığı haber verildikten sonra şu nasihatte bulunulmuştur:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَابْتَغِ فٖيمَٓا اٰتٰكَ اللّٰهُ الدَّارَ الْاٰخِرَةَ وَلَا تَنْسَ نَصٖيبَكَ مِنَ الدُّنْيَا وَاَحْسِنْ كَمَٓا اَحْسَنَ اللّٰهُ اِلَيْكَ وَلَا تَبْغِ الْفَسَادَ فِي الْاَرْضِؕ اِنَّ اللّٰهَ لَا يُحِبُّ الْمُفْسِدٖينَ</p>
 
@@ -82,7 +82,7 @@ Ayet-i Kerîme’de ahiret yurdunun asıl olduğuna, dünyevi kazancın tek hede
 
 Bir Müslümanın hayatını helal sınırlar içerisinde sürdürmesi, haramdan uzak durması gerekir. Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الْحَلاَلُ بَيِّنٌ وَالْحَرَامُ بَيِّنٌ ، وَبَيْنَهُمَا مُشَبَّهَاتٌ لاَ يَعْلَمُهَا كَثِيرٌ مِنَ النَّاسِ، فَمَنِ اتَّقَى الْمُشَبَّهَاتِ اسْتَبْرَأَ لِدِيِنِهِ وَعِرْضِهِ، وَمَنْ وَقَعَ فِى الشُّبُهَاتِ كَرَاعٍ يَرْعَى حَوْلَ الْحِمَى ، يُوشِكُ أَنْ يُوَاقِعَهُ. أَلاَ وَإِنَّ لِكُلِّ مَلِكٍ حِمًى أَلاَ إِنَّ حِمَى اللَّهِ فِى أَرْضِهِ مَحَارِمُهُ، أَلاَ وَإِنَّ فِى الْجَسَدِ مُضْغَةً إِذَا صَلَحَتْ صَلَحَ الْجَسَدُ كُلُّهُ، وَإِذَا فَسَدَتْ فَسَدَ الْجَسَدُ كُلُّهُ. أَلاَ وَهِىَ الْقَلْبُ</p>
 
@@ -94,7 +94,7 @@ Bu sözleriyle Allah Resûlü (s.a.s.), insanın doğru yolu bulmasında temiz b
 
 İslam; zulüm, dolandırıcılık, hile, aldatma, hırsızlık, kumar, faiz gibi pek çok haksız ve batıl kazanç yollarını yasaklamıştır.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَاْكُلُٓوا اَمْوَالَكُمْ بَيْنَكُمْ بِالْبَاطِلِ وَتُدْلُوا بِهَٓا اِلَى الْحُكَّامِ لِتَاْكُلُوا فَرٖيقًا مِنْ اَمْوَالِ النَّاسِ بِالْاِثْمِ وَاَنْتُمْ تَعْلَمُونَ۟</p>
 
@@ -108,7 +108,7 @@ Ayet-i Kerime, başta faiz olmak üzere her türlü haksız kazancı nehyetmekte
 
 Allâh Resûlü (s.a.s.), bir gün bir buğday yığınının yanına gelmiş, elini buğdayın içine soktuğunda parmaklarına ıslaklık dokunmuştu.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا هَذَا يَا صَاحِبَ الطَّعَامِ</p>
 
@@ -126,7 +126,7 @@ Bu cevap üzerine Peygamber Efendimiz (s.a.s.); *“İnsanların görmesi için 
 
 Ticarette, en önemli ölçü dürüstlüktür. Satılan malın kalitesi, sınıfı, sağlamlığı, varsa kusuru karşı tarafa söylenmelidir. Allah Resûlü (s.a.s.) sözünde ve işinde doğru tüccar hakkında şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">التَّاجِرُ الصَّدُوقُ الْأَمِينُ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ</p>
 
@@ -136,7 +136,7 @@ HADÎS-İ ŞERÎF
 
 Cenab-ı Hakk ölçü ve tartıda âdil olmayı bizlere emretmiş ve Kur’ân-ı Kerîm’de ölçüde âdil olmayanlara veyl ile başlayan bir sure nâzil buyurmuştur.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَيْلٌ لِلْمُطَفِّفٖينَۙ﴿١﴾ اَلَّذٖينَ اِذَا اكْتَالُوا عَلَى النَّاسِ يَسْتَوْفُونَؗ﴿٢﴾ وَاِذَا كَالُوهُمْ اَوْ وَزَنُوهُمْ يُخْسِرُونَؕ﴿٣﴾ اَلَا يَظُنُّ اُو۬لٰٓئِكَ اَنَّهُمْ مَبْعُوثُونَۙ﴿٤﴾ لِيَوْمٍ عَظٖيمٍۙ﴿٥﴾ يَوْمَ يَقُومُ النَّاسُ لِرَبِّ الْعَالَمٖينَؕ﴿٦﴾</p>
 
@@ -146,7 +146,7 @@ Kur’ân’da Medyen halkına gönderilen Hz. Şuayb’ın (a.s.) kıssasından
 
 Hz. Şuayb (a.s.) Medyen ve Eyke halkına gönderilmiş bir peygamberdir. O da diğer peygamberler gibi inkârcı ve putperest halkına önce Allah’tan başka ilah olmadığını, her şeyi ve herkesi O’nun yarattığını anlattı, halkını yalnızca O’na kulluk etmeye çağırdı. Medyen halkı putperestliğinin yanında toplumsal ahlâk, özellikle ticaret ahlâkı bakımından çok bozulmuştu. Bolluk ve bereket içinde yaşamalarına rağmen ahlâk kurallarını çiğneyerek alışverişlerinde karşı tarafı zarara sokacak hileli işler yapıyorlardı. Hz. Şuayb (a.s.), ölçüyü tartıyı eksik tutmamaları, adaleti gözetmeleri ve düzgün ölçüp tartmaları, çıkarları uğruna insanların mallarının değerini düşürmemeleri ve yeryüzünde fesat çıkararak ülke düzenini bozmamaları hususunda onlara uyarılarda bulundu; böylece hak dinin tevhit ve adalet ilkelerini toplumda yerleştirmeye çalıştı. (Kur’an Yolu, IV/170)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَوْفُوا الْكَيْلَ وَلَا تَكُونُوا مِنَ الْمُخْسِرِينَ ﴿١٨١﴾ وَزِنُوا بِالْقِسْطَاسِ الْمُسْتَقِيمِ ﴿١٨٢﴾ وَلَا تَبْخَسُوا النَّاسَ أَشْيَاءَهُمْ وَلَا تَعْثَوْا فِي الْأَرْضِ مُفْسِدِينَ ﴿١٨٣﴾</p>
 
@@ -156,7 +156,7 @@ Hz. Şuayb (a.s.) Medyen ve Eyke halkına gönderilmiş bir peygamberdir. O da d
 
 Allâh Resûlü (s.a.s.) buyurmaktadır ki:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنّ اللَّهَ تَعَالى يُحِبّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلاً أَنْ يُتْقِنَهُ</p>
 
@@ -168,7 +168,7 @@ HADÎS-İ ŞERÎF
 
 İşveren ise çalışanın hakkını gözetmeli, mesaisinin ücretini zamanında ödemeli, maddi ve manevi olarak mağdur etmemelidir. Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَعْطُوا الْأَجِيرَ أَجْرَهُ قَبْلَ أَنْ يَجِفَّ عَرَقُهُ</p>
 
@@ -178,7 +178,7 @@ HADÎS-İ ŞERÎF
 
 Yüce Rabbimiz Bakara Suresi 275. Âyette şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ يَاْكُلُونَ الرِّبٰوا لَا يَقُومُونَ اِلَّا كَمَا يَقُومُ الَّذٖى يَتَخَبَّطُهُ الشَّيْطَانُ مِنَ الْمَسِّۜ ذٰلِكَ بِاَنَّهُمْ قَالُٓوا اِنَّمَا الْبَيْعُ مِثْلُ الرِّبٰواۘ وَاَحَلَّ اللّٰهُ الْبَيْعَ وَحَرَّمَ الرِّبٰواۜ فَمَنْ جَٓاءَهُ مَوْعِظَةٌ مِنْ رَبِّهٖ فَانْتَهٰى فَلَهُ مَا سَلَفَۜ وَاَمْرُهُٓ اِلَى اللّٰهِۜ وَمَنْ عَادَ فَاُو۬لٰٓئِكَ اَصْحَابُ النَّارِۚ هُمْ فٖيهَا خَالِدُونَ</p>
 
@@ -188,7 +188,7 @@ Faiz illetinin normalleştirilmeye çalışıldığı şu günlerde insanların 
 
 Câbir’den (r.a.) aktarılan bir rivayete göre:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لَعَنَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) آكِلَ الرِّبَا وَمُوكِلَهُ وَكَاتِبَهُ وَشَاهِدَيْه وَقَالَ: هُمْ سَوَاءٌ</p>
 
@@ -200,7 +200,7 @@ Bununla beraber Müslüman, sözüne sadık olmalıdır. Tutabileceği sözler v
 
 Yüce Rabbimiz şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ …وَاَوْفُوا بِالْعَهْدِۚ اِنَّ الْعَهْدَ كَانَ مَسْؤُ۫لاً ﴾</p>
 
@@ -208,7 +208,7 @@ Yüce Rabbimiz şöyle buyurmaktadır:
 
 Zamanında ödenmeyen borç, satıcıyı zor duruma düşürecektir. Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَطْلُ الْغَنِيِّ ظُلْمٌ</p>
 
@@ -216,7 +216,7 @@ HADÎS-İ ŞERÎF
 
 Ebû Hüreyre’den (r.a.) nakledildiğine göre, Hz. Peygamber (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ أَخَذَ أَمْوَالَ النَّاسِ يُرِيدُ أَدَاءَهَا أَدَّى اللَّهُ عَنْهُ، وَمَنْ أَخَذَ يُرِيدُ إِتْلاَفَهَا أَتْلَفَهُ اللَّهُ</p>
 
@@ -228,13 +228,13 @@ Peygamber Efendimiz (s.a.s.) pazardan haberi olmayan üreticinin şehir dışın
 
 Bir diğer hadiste de Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنِ احْتَكَرَ فَهُوَ خَاطِئٌ</p>
 
 *“Karaborsacılık yapan kimse günahkârdır.”* (Müslim, Müsâkât, 129)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الْجَالِبُ مَرْزُوقٌ وَالْمُحْتَكِرُ مَلْعُونٌ</p>
 
@@ -248,7 +248,7 @@ Ticaret erbabının kazanması, sermayesini çoğaltması pek tabii normaldir. A
 
 Müslüman, hayatının her alanında olduğu gibi, ticaretinde de İslam’ın ölçülerine bağlı kalmalı, temsil ettiği İslam ahlakını ticaretine yansıtmalıdır. Dürüst, hakkaniyetli, hoşgörülü ve müsamahakâr olmalı, sattığı ürünün kusurunu gizlememeli, aldatma ve hileden uzak durmalı, ticaretine konu ettiği malın İslam nazarında meşru olmasına dikkat etmelidir. Helal olmayan ve haksız her türlü kazançtan sakınıp Allah’ın kendisine helalinden lütfetmiş olduğu kazanca kanaat etmeli, daha fazla kazanabilme arzusuyla İslam’ın hoş görmeyeceği yollara başvurmamalıdır. Hesap düşüncesi ile hareket etmeli, şahsi menfaatlerini gözetirken içerisinde yaşadığı toplumun sosyal ve ekonomik refahına zarar verecek her türlü tutum ve davranıştan uzak kalmaya çalışmalıdır. (Mustafa Çakır, Ticarette Helal Haram Hassasiyeti, Diyanet Aile Dergisi, Aralık 2019, s. 14-15; Yazıcı, Çalışma ve Helâl Kazanç)
 
-### Duâ
+<p class="vaaz-etiket">Duâ</p>
 
 *Cenab-ı Hakk cümlemizi, kazancını helâl yolla arayan kullarından eylesin. Faizden, ranttan, rüşvetten, çıkar ilişkilerinden, helâle haram karıştırmaktan, ölçüde-tartıda hile yapmaktan ümmetimizi muhafaza eylesin. Rabbim bizleri, kazancını helal yoldan kazanan, işini iyi yapan, alışverişini meşru ölçüler doğrultusunda gerçekleştiren kullarından eylesin.*
 

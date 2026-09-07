@@ -6,7 +6,7 @@ kelime: 2898
 docx: "/vaazlar/cocuklarimizi-severek-ve-egiterek-buyutelim.docx"
 pdf: "/vaazlar/cocuklarimizi-severek-ve-egiterek-buyutelim.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 Çocuklarımız gözlerimizin nuru, gönüllerimizin sürurudur. Allah’ın emaneti ve O’nun en güzel lütuflarından biridir. Çocuk, dünya hayatının süsü ve zîneti, ailenin neşe ve sevinç kaynağıdır. Ölümden sonra anne babanın amel defterini kapattırmayacak önemli bir varlıktır. Rabbimiz şöyle buyurmuştur:
 
@@ -36,7 +36,7 @@ Peygamber Efendimiz (s.a.s.) şöyle buyurdu:
 
 Dünyanın süsü, zîneti olan mal ve çocuk nasıl baki âleme taşınır? Nasıl salih ameller arasına dâhil olur? Bugün sohbetimizde inşallah bu soruların cevabını bulmaya çalışacağız.
 
-## HADİSLERDE ÇOCUK EĞİTİMİNİN ÖNEMİ
+## Hadislerde Çocuk Eğitiminin Önemi
 
 Çocuk her türlü nakşa ve şekli almaya hazır olarak anne babaya verilen bir emanettir. Onları yetiştirmek, terbiye etmek anne babanın sorumluluğudur. Peygamber Efendimiz (s.a.s.):
 
@@ -68,7 +68,7 @@ Bu hadis-i şerif ırk, renk ve cinsiyet farkı olmaksızın her çocuğun iyiyi
 
 Hadiste, ailesinin çobanı olduğu bildirilen anne babanın, aile bireylerinin maddi-manevi ihtiyaçlarını karşılamak, onları her türlü tehlikeye karşı korumak, çocuklarının iyi yetişmesi için elinden gelen gayreti göstermekle sorumlu olduğu bildirilmektedir.
 
-## ÇOCUK EĞİTİMİNDE DİKKAT EDİLMESİ GEREKEN İLKELER
+## Çocuk Eğitiminde Dikkat Edilmesi Gereken İlkeler
 
 ### Anne Baba Örnek Olmalı
 
@@ -164,7 +164,7 @@ Haklı ve makul bir gerekçe olmadıkça çocukların bazısına farklı bağı�
 
 Anne ve babanın çocuklarına farklı davranması, bir kısmına bağış yaparken bir kısmına yapmaması, kardeşler arasında bulunması gereken sevgi ve bağlılığı da zedeler. Kardeşler arasında çekememezliğin ve düşmanlığın gelişmesine sebep olur. Böylece ailede huzursuzluk başlar. Bunun için anne ve baba bu hususu daima göz önünde bulundurmalı ve çocuklarına eşit davranmaya özen göstermelidir. (Lütfi Şentürk, Örnek Vaazlar II, DİB, s. 325-326)
 
-## ÇOCUKLARINI GÜZEL YETİŞTİREN ANNE BABANIN MÜKÂFATI
+## Çocuklarını Güzel Yetiştiren Anne Babanın Mükâfatı
 
 Peygamber Efendimiz (s.a.s.) *“Kişinin çocuğunun eğitimi ile uğraşması, bir sa’/ölçek sadaka vermesinden daha iyidir (sevaptır).”* (Tirmizi, Birr, 33) buyurmuştur.
 
@@ -180,7 +180,7 @@ Evlâdına yeterince emek vermeyen, onu ciddiye almayan ve Allah’ın rızasın
 
 *“Geçimini sağlaması gerekenleri ihmâl etmek, insana günah olarak yeter.”* (Ebû Dâvûd, Zekât, 45)
 
-## SONUÇ
+## Sonuç
 
 Çocuğun eğitim ve terbiyesi uzun süreli ve meşakkatli bir iştir. Bu hususta anne ve babanın sabırlı ve kararlı olması gerekir. Şiddet yerine sevgi ve şefkatle yaklaşılmalı, çocuklara bir yetişkin gibi değer verilmeli ama bir yetişkinin davranışları beklenmemelidir. Çocuklar arasında adaletli olunmalı, cinsiyet ayrımı yapılmamalıdır. Çocuklar helal ve sağlıklı gıdalarla beslenmelidir. Evde huzurlu bir ortam oluşturulmalıdır. Çocuklar için dua edilmeli ama beddua edilmemelidir. Rabbimiz bize nasıl dua edeceğimizi de şu şekilde öğretiyor:
 

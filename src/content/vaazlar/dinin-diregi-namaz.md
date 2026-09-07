@@ -30,7 +30,7 @@ Yüce Allah, insanı boş yere yaratmadığı gibi başıboş da bırakmamış, 
 
 *“Ben cinleri ve insanları ancak bana "ibadet" etsinler diye yarattım”* (ez-Zâriyât 51/56) anlamındaki ayet, bu durumu ifade etmektedir.
 
-NAMAZ HER HAL VE ŞARTTA KILINMALIDIR
+## Namaz Her Hal ve Şartta Kılınmalıdır
 
 Hiçbir şey; iş, ticaret, görev, meşgale ve mazeret mümini namazdan alıkoyamaz:
 

@@ -1,5 +1,5 @@
 ---
-baslik: "Üç Aylar ve Regaib Kandili"
+baslik: "Üç Aylar ve Regaib Kandili (2)"
 ozet: "Halk arasında “Üç Aylar” diye bilinen Receb, Şâban ve Ramazan ayları, Yüce Allah’ın müminlere ikram ettiği faziletli bir zaman dilimidir. Yapılan dua ve ibadetlerin…"
 kategori: ramazan
 kelime: 1939
@@ -10,13 +10,13 @@ pdf: "/vaazlar/uc-aylar-ve-regaib-kandili-2.pdf"
 
 *Rahmet mevsiminin ilk müjdesi*
 
-### GİRİŞ
+### Giriş
 
 Halk arasında “Üç Aylar” diye bilinen Receb, Şâban ve Ramazan ayları, Yüce Allah’ın müminlere ikram ettiği faziletli bir zaman dilimidir. Yapılan dua ve ibadetlerin büyük mükâfatla karşılık bulduğu, dökülen pişmanlık gözyaşlarının günahları silip yok ettiği kutlu bir mevsimdir. Kısaca üç aylar, günahlardan arınma, sevaplarla bezenme mevsimidir.
 
 Kur’an-ı Kerim’de Rabbimiz haram aylara şöyle işaret etmiştir:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ عِدَّةَ الشُّهُورِ عِنْدَ اللّٰهِ اثْنَا عَشَرَ شَهْرًا فِي كِتَابِ اللّٰهِ يَوْمَ خَلَقَ السَّمٰوَاتِ وَالْاَرْضَ مِنْهَٓا اَرْبَعَةٌ حُرُمٌۜ ذٰلِكَ الدِّينُ الْقَيِّمُ فَلَا تَظْلِمُوا فِيهِنَّ اَنْفُسَكُمْ</p>
 
@@ -24,7 +24,7 @@ Kur’an-ı Kerim’de Rabbimiz haram aylara şöyle işaret etmiştir:
 
 Hz. Peygamber (s.a.s.) de ayet-i kerimede işaret edilen haram ayların Zilkade, Zilhicce, Muharrem ve Receb ayları olduğunu şu hadisiyle açıklamıştır:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الزَّمَانُ قَدِ اسْتَدَارَ كَهَيْئَتِهِ يَوْمَ خَلَقَ اللّٰهُ السَّمَوَاتِ وَالأَرْضَ ، السَّنَةُ اثْنَا عَشَرَ شَهْرًا ، مِنْهَا أَرْبَعَةٌ حُرُمٌ ثَلاَثٌ مُتَوَالِيَاتٌ ذُو الْقَعْدَةِ وَذُو الْحَجَّةِ وَالْمُحَرَّمُ ، وَرَجَبُ مُضَرَ الَّذِى بَيْنَ جُمَادَى وَشَعْبَانَ</p>
 
@@ -32,7 +32,7 @@ HADÎS-İ ŞERÎF
 
 Amr b. Abese’nin yönelttiği “Ey Allah’ın Resûlü, (Allah’a) diğer vakitlerden daha yakın olunacak bir vakit var mıdır ya da özel olarak tercih edilecek bir zaman var mıdır?” sorusuna Peygamberimiz (s.a.s.) şöyle cevap vermişti:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">نَعَمْ إِنَّ أَقْرَبَ مَا يَكُونُ الرَّبُّ عَزَّ وَجَلَّ مِنَ الْعَبْدِ جَوْفُ اللَّيْلِ الآخِرِ فَإِنِ اسْتَطَعْتَ أَنْ تَكُونَ مِمَّنْ يَذْكُرُ اللَّهَ عَزَّ وَجَلَّ فِى تِلْكَ السَّاعَةِ فَكُنْ فَإِنَّ الصَّلاَةَ مَحْضُورَةٌ مَشْهُودَةٌ إِلَى طُلُوعِ الشَّمْسِ</p>
 
@@ -42,7 +42,7 @@ Peygamberimizin (s.a.s.) Amr’a verdiği cevapta, yirmi dört saatlik bir zaman
 
 Mübarek aylar arasında, kulları ruhen ve bedenen Ramazan’a hazırlayan Receb ve Şâban ayları ayrı bir önemi vardır. Resûlullah (s.a.s.), üç ayları sevinç içerisinde karşılamış ve Receb ayı girdiğinde şöyle dua etmiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">اَللّٰهُمَّ بَارِكْ لَنَا فِي رَجَبٍ وَشَعْبَانَ وَبَلِّغْنَا رَمَضَانَ</p>
 
@@ -62,7 +62,7 @@ Receb ve Şaban ayları, Peygamber Efendimizin (s.a.s.) oruç tutmaya büyük ö
 
 Hz. Peygamber (s.a.s.) Şaban ayı geldiğinde de oruç tutmaya özen gösterirdi. Çok sevdiği Üsâme b. Zeyd (r.a.) bunu fark etmiş, Şaban ayında tuttuğu kadar hiçbir ayda oruç tutmamasının sebebini sorduğunda Allah Resûlü’nden (s.a.s.) şu cevabı almıştı:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">ذَلِكَ شَهْرٌ يَغْفُلُ النَّاسُ عَنْهُ بَيْنَ رَجَبٍ وَرَمَضَانَ وَهُوَ شَهْرٌ تُرْفَعُ فِيهِ الأَعْمَالُ إِلَى رَبِّ الْعَالَمِينَ فَأُحِبُّ أَنْ يُرْفَعَ عَمَلِى وَأَنَا صَائِمٌ</p>
 
@@ -72,17 +72,17 @@ Kulun amellerinden Allah’ın haberdar olmaması düşünülemez. Fakat kullar�
 
 Şaban ayının on beşinci gecesi ise, kültürümüzde Berât gecesi olarak adlandırılır. Peygamber Efendimiz (s.a.s.), Şaban ayının yarısına denk gelen bu gecede Allah’a çok ibadet edilmesini, gündüzünde ise oruç tutulmasını tavsiye etmiş ve o gece güneş batınca Allah Teâlâ’nın dünyaya rahmetiyle tecellî ederek fecre kadar,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَلاَ مِنْ مُسْتَغْفِرٍ فَأَغْفِرَ لَهُ أَلاَ مُسْتَرْزِقٌ فَأَرْزُقَهُ أَلاَ مُبْتَلًى فَأُعَافِيَهُ أَلاَ كَذَا أَلاَ كَذَا حَتَّى يَطْلُعَ الْفَجْرُ</p>
 
 “*Bağışlanmak dileyen yok mu, onu bağışlayayım! Rızık isteyen yok mu, ona rızık vereyim! Belaya dûçar olan yok mu, ona afiyet vereyim!.*.” buyurduğunu bizlere müjdelemiştir. (İbn Mâce, İkâmetü’s-Salât, 191)
 
-### B. REGAİB GECESİ VE FAZİLETİ
+### B. Regaib Gecesi ve Fazileti
 
 Böyle değerli bir zaman dilimi olan üç ayları Regaib Gecesi ile karşılıyoruz. Sözlükte “Kendisine rağbet edilen şey, bol ve değerli bağış” anlamındaki “ragibe”nin çoğulu olan regaib kelimesi, hadis ve fıkıh literatüründe “bol sevap ve mükâfat, faziletli amel” demektir. Hicrî takvime göre yedinci ay olan Receb’in ilk perşembesini cumaya bağlayan geceye ad olmuştur. (Hamdi Tekeli, Regaib Gecesi, DİA, 34/535-536) Resûlullah (s.a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">خَمْسُ لَيالٍ لَا تُرَدُّ فِيهِنَّ اَلدَّعْوَةُ: أَوَّلُ لَيْلَةٍ مِنْ رَجَبٍ وَلَيْلَةُ النِّصْفِ مِنْ شَعْبَانَ وَلَيْلَةُ الْجُمُعَةِ وَلَيْلَةُ الْفِطْرِ وَلَيْلَةُ النَّحْرِ</p>
 
@@ -90,25 +90,25 @@ HADÎS-İ ŞERÎF
 
 Regaib gecesinde isteklerimizi, arzularımızı gözden geçirmeliyiz. İsteklerimiz, arzularımız neler? Yönelişimiz neye ve kime? Neyi istiyoruz?;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمَنْ يُرِدْ ثَوَابَ الدُّنْيَا نُؤْتِهِ مِنْهَاۚ وَمَنْ يُرِدْ ثَوَابَ الْاٰخِرَةِ نُؤْتِهِ مِنْهَاۜ</p>
 
 *“…Kim dünya nimetini isterse ondan kendisine veririz; kim âhiret nimetini isterse ona da ondan veririz…”* (Âl-i İmrân, 3/145) ayetinden ahiretin tercih edilmesi gerektiği anlaşılmaktadır. Yüce Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَاِلٰى رَبِّكَ فَارْغَبْ ﴾</p>
 
 *“Ve yalnız rabbine yönel.”* (İnşirah, 94/8) buyurmuş ve yönelişimizin yalnız kendisine olmasını emretmiştir. Her işte, çalışmada, gayrette, her mekânda ve zamanda Allah’ın rızasını istemek, O’na yönelmek…
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَهُوَ مَعَكُمْ أَيْنَ مَا كُنْتُمْ ﴾</p>
 
 *“Nerede olursanız olun, O (Allah) sizinle beraberdir.”* (Hadid, 57/4) Her nerede olursanız O sizinle beraberdir. O’nun ilmi ve kudreti yanınızdan ayrılmaz. Ve Allah her ne yaparsanız görendir. Görür ve ona göre karşılığını verir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَكُونُوا كَالَّذِينَ نَسُوا اللّٰهَ فَاَنْسٰيهُمْ اَنْفُسَهُمْۜ اُو۬لٰٓئِكَ هُمُ الْفَاسِقُونَ</p>
 
@@ -116,13 +116,13 @@ Regaib gecesinde isteklerimizi, arzularımızı gözden geçirmeliyiz. İstekler
 
 Bu güzel gecelerin bereketinden istifade etmek için Rabbimizin ayetine kulak verelim:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ يَا عِبَادِيَ الَّذِينَ اَسْرَفُوا عَلٰٓى اَنْفُسِهِمْ لَا تَقْنَطُوا مِنْ رَحْمَةِ اللّٰهِۜ اِنَّ اللّٰهَ يَغْفِرُ الذُّنُوبَ جَمِيعاًۜ اِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ</p>
 
 *“De ki (Allah şöyle buyuruyor): "Ey kendi aleyhlerine olarak günahta haddi aşan kullarım! Allah’ın rahmetinden ümit kesmeyin. Allah (dilerse) bütün günahları bağışlar; doğrusu O çok bağışlayıcı, çok merhametlidir.”* (Zümer, 39/53) Ve tövbe edip günahlarımızdan arınalım. Ümitsizliğe kapılmayalım çünkü:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَهُوَ الَّذِي يَقْبَلُ التَّوْبَةَ عَنْ عِبَادِهِ وَيَعْفُوا عَنِ السَّيِّـَٔاتِ وَيَعْلَمُ مَا تَفْعَلُونَ</p>
 
@@ -130,7 +130,7 @@ Bu güzel gecelerin bereketinden istifade etmek için Rabbimizin ayetine kulak v
 
 Gecenin ihyasına tövbe ile başlayalım ve dua ile devam edelim. Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذَا سَاَلَكَ عِبَادِي عَنِّي فَاِنِّي قَرِيبٌۜ اُجِيبُ دَعْوَةَ الدَّاعِ اِذَا دَعَانِۙ فَلْيَسْتَجِيبُوا لِي وَلْيُؤْمِنُوا بِي لَعَلَّهُمْ يَرْشُدُونَ</p>
 
@@ -138,7 +138,7 @@ Gecenin ihyasına tövbe ile başlayalım ve dua ile devam edelim. Rabbimiz:
 
 Dua; ihtiyacın anahtarı, ihtiyaç sahiplerinin dinleneceği, çaresiz kalanların sığınacağı ve ümit sahiplerinin nefes alacağı yerdir. Rabbimiz, kendisinden isteyeni asla kapısından kovmaz. Cenab-ı Hak, samimi bir şekilde ibadet eden kulunu sever, ne isterse ona ihsan eder. Allah Resûlü (s.a.s.) kudsi hadiste şöyle buyurur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ قَالَ مَنْ عَادَى لِى وَلِيًّا فَقَدْ آذَنْتُهُ بِالْحَرْبِ ، وَمَا تَقَرَّبَ إِلَىَّ عَبْدِى بِشَىْءٍ أَحَبَّ إِلَىَّ مِمَّا افْتَرَضْتُ عَلَيْهِ ، وَمَا يَزَالُ عَبْدِى يَتَقَرَّبُ إِلَىَّ بِالنَّوَافِلِ حَتَّى أُحِبَّهُ ، فَإِذَا أَحْبَبْتُهُ كُنْتُ سَمْعَهُ الَّذِى يَسْمَعُ بِهِ ، وَبَصَرَهُ الَّذِى يُبْصِرُ بِهِ ، وَيَدَهُ الَّتِى يَبْطُشُ بِهَا وَرِجْلَهُ الَّتِى يَمْشِى بِهَا ، وَإِنْ سَأَلَنِى لأُعْطِيَنَّهُ ، وَلَئِنِ اسْتَعَاذَنِى لأُعِيذَنَّهُ ، وَمَا تَرَدَّدْتُ عَنْ شَىْءٍ أَنَا فَاعِلُهُ تَرَدُّدِى عَنْ نَفْسِ الْمُؤْمِنِ ، يَكْرَهُ الْمَوْتَ وَأَنَا أَكْرَهُ مَسَاءَتَهُ</p>
 
@@ -146,7 +146,7 @@ HADÎS-İ ŞERÎF
 
 Hadis-i kutside (manası Cenab-ı Hakka, sözü Hz. Peygamber’e (s.a.s.) ait hadisler) Allah Teâlâ buyuruyor ki:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَنَا عِنْدَ ظَنِّ عَبْدِى بِى ، وَأَنَا مَعَهُ إِذَا ذَكَرَنِى ، فَإِنْ ذَكَرَنِى فِى نَفْسِهِ ذَكَرْتُهُ فِى نَفْسِى ، وَإِنْ ذَكَرَنِى فِى مَلأٍ ذَكَرْتُهُ فِى مَلأٍ خَيْرٍ مِنْهُمْ ، وَإِنْ تَقَرَّبَ إِلَىَّ بِشِبْرٍ تَقَرَّبْتُ إِلَيْهِ ذِرَاعًا ، وَإِنْ تَقَرَّبَ إِلَىَّ ذِرَاعًا تَقَرَّبْتُ إِلَيْهِ بَاعًا ، وَإِنْ أَتَانِى يَمْشِى أَتَيْتُهُ هَرْوَلَةً</p>
 
@@ -174,7 +174,7 @@ Bu mübarek geceyi fırsat bilerek, günahlarımız ne kadar çok olursa olsun R
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
 Regaib Kandili; istekleri, arzuları, yönelişleri gözden geçirme vaktidir. Regaib Gecesine has bir namaz olmamakla birlikte, gecenin ihya edilmesi esastır. Sünnet olan nafile ibadetlerle, kaza namazı kılarak, Kur’an-ı Kerim okuyarak gecemizi bereketlendirmeye çalışalım. Regaib Kandilinin gündüzünde bir gün öncesi veya sonrası ile nafile oruç tutulabilir. Receb ayı girdiğinde Peygamber Efendimiz (s.a.s.) şöyle dua ederdi:
 

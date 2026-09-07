@@ -164,7 +164,7 @@ Ayetler ve hadisler ışığında gerçekleştirmeye çalıştığımız vaazım
 
 Yüce Rabbim bizleri zekât verenlerden eylesin. Zekât veren kardeşlerimin ibadetlerini makbul eylesin. Bu ramazan hürmetine dünyadaki Müslüman kardeşlerimin sıkıntılarını dindirsin. Allah’a emanet olun.
 
-## ZEKÂTLA İLGİLİ FIKHI HÜKÜMLER
+## Zekâtla İlgili Fıkhı Hükümler
 
 Temizlik, artma, bereket. Bir malın belli bir miktarını, Allah'ın Kur’an-ı Kerim'de saydığı sekiz sınıftan birisine veya birkaçına Allah rızası için vermek. Terim olarak zekât; İslâm'ın beş şartından birisi olan malî ibadetin adıdır.
 
@@ -256,7 +256,7 @@ Mallar; açık (zahire) ve gizli (bâtıne) olmak üzere iki kısma ayrılır.
 
 Yılın altı ayından fazlası kırlarda otlayarak beslenen ve ticaret için değil de, eti, sütü, yünü vs. için tutulan (Sâime) hayvanlar, bazı toprak mahsulleri, madenleri, yer altından çıkartılan defineler ve gümrüklerden geçen ticaret malları açık (ZÂHİR) mallardır. Nakit paralar, altın, gümüş ve depolarda ya da mağazalarda bulunan ticaret malları da gizli (BÂTIN) mallardandırlar. Bu mallardan her biri belirli ölçülerde zekâta tabidirler.
 
-### HAYVANLARIN ZEKÂTI
+### Hayvanların Zekâtı
 
 Senenin yarıdan çoğunu kırlarda otlayarak geçiren sâime hayvanlar; eti, sütü ve yünü için beslendikleri takdirde özel nisaplarla zekâta tabi olurlar. Bu hayvanlar; koyun, keçi, sığır ve develerdir. Koyun ve keçiler aynı sınıf olarak mütalaa edilirler.
 
@@ -284,7 +284,7 @@ Develerin erkekleri ve dişileri zekâta konu olma yönünden aynıdırlar. Anca
 
 Yukarıya aldığımız nisaplar; sâime olan hayvanlara aittir. Senenin yarıdan çoğunu kırlarda otlamayıp, ahırlarda veya paralı otlaklarda beslenen hayvanlara; ALÛFE denilir. Alûfeler ticaret için tutulmadıkları takdirde kendilerine zekât gerekmez. Ticaret için beslenen besi hayvanları, ticaret malı olarak zekâta tabi olurlar.
 
-### ALTIN, GÜMÜŞ VE NAKİT PARANIN ZEKÂTI
+### Altın, Gümüş ve Nakit Paranın Zekâtı
 
 Altın ve gümüş ister külçe ister mamul olsun, nisâb miktarında olup da üzerinden bir sene geçince %2,5 oranında zekâtlarının verilmesi gerekir.
 
@@ -314,7 +314,7 @@ C- Zayıf alacaklar: Kadının kocasından alacağı, mehir, vârisin elinde kal
 
 Borçlu olan kişi önce borcunu inkâr eder, birkaç sene sonraki borcunu kabul edip alacaklıya öderse geçmiş senelere ait olan zekâtın ödenmesi gerekmez.
 
-### TİCARET MALLARININ ZEKÂTI
+### Ticaret Mallarının Zekâtı
 
 Cinsi ne olursa olsun, ticaret maksadı ile alınıp satılan tüm mallar nisâba ulaştıkları takdirde %2,5 oranında zekâta tabidirler. Bu malların nisâbı, kıymetlerinin altın ve gümüş nisâbına ulaşması ile sabit olur.
 
@@ -326,7 +326,7 @@ Bir malın, ticaret malı sayılması satın alınırken veya satması için bir
 
 Ticaret maksadıyla kırlarda veya ahırlarda beslenen hayvanların zekâtı, kıymetlerine göre %2. 5 nisbetinde verilir.
 
-### TOPRAK MAHSULLERİNİN ZEKÂTI
+### Toprak Mahsullerinin Zekâtı
 
 Öşüre tabi arazilerden elde edilen mahsul, İmam Ebû Hanîfe'ye göre; miktar ve cinsine bakılmaksızın belirli oranda zekâta tabidir. Bu oran, sulama masrafı gerektiren arazilerde %5, gerektirmeyenlerde %10'dur. Ebû Yûsuf ile Muhammed'e göre, toprak mahsûllerinde zekâtın gerekli olması için, mahsûlün en az 5 vesk (875 kg) olması ve ürünün müdahalesiz bir yıl kalabilecek cinsten bulunması gerekir.
 
@@ -334,7 +334,7 @@ Toprak mahsullerinden alınan bu zekâta; öşür denilir.
 
 Çocukların ve delilerin arazilerinden elde edilen mahsûle de zekât gerekir.
 
-### MADEN VE DEFİNELERİN ZEKATI
+### Maden ve Definelerin Zekatı
 
 Zekâta konu olmaları yönünden madenler üç çeşittir:
 
@@ -356,7 +356,7 @@ Asrımızda fıkıhla uğraşan tanınmış âlimlerinden Muhammed Ebû Zehra, A
 
 Otobüs, kamyon ve gemi gibi taşınır nakliye vasıtalarının zekâtları ise; kendi kıymetlerinin %2,5 dır. Ancak, Yusuf el-Kardavî, bu tür malların taşınır ve taşınmaz diye bir ayırma tabi tutulmadan birlikte mütalâa edilmesi gerektiğini söyler.
 
-### ZEKÂTIN ÖDENMESİ
+### Zekâtın Ödenmesi
 
 Bütün malların zekâtlarının sahipleri tarafından hak sahiplerine verilmesi gerekir. Zekât; malın üzerinden bir sene geçtikten sonra verilebileceği gibi, daha önce de verilebilir. Zekât malın aynından da kıymetinden de verilebilir. Kıymet takdir edilirken, zekâtın farz olduğu günkü değeri esas alınır.
 

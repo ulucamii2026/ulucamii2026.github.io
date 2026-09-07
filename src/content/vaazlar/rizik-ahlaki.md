@@ -62,7 +62,7 @@ Nitekim, Yüce Allah şöyle buyurmuştur:
 
 *“Allah dilediğine rızkı bol verir; dilediğine de kısar”.* (Ra’d, 13/26.)
 
-## ŞİİR
+## Şiir
 
 Açılır bahtımız bir gün hemen battıkça batmaz ya
 
@@ -146,7 +146,7 @@ Nitekim Peygamberimiz Hz Muhammed (s.a.v)
 
 *"Hiçbir kimse kendi elinin emeğinden daha hayırlı bir lokma yememiştir. Allah'ın Peygamberi olan Davut Aleyhisselam da kendi elinin emeğini yerdi"* buyurmuştur. (Buhari, Büyü, 15/2109) Hz. Davud demirci ustasıydı, Hz. Zekeriya marangozdu. Peygamberimiz (s.a.v) de önce çobanlık sonra ticaret yapmıştır.
 
-## KISSADAN HİSSE
+## Kıssadan Hisse
 
 Dervişin biri ormanda gezerken topal, hasta bir tilki gördü, hayrete düştü. “Nasıl yaşar bu hayvan ne yer ne içer?” diyerek, Allah'ın lütfuna hayran oldu.
 
@@ -180,7 +180,7 @@ Nimete şükreden, onun gerçek sahibinin Allah olduğunu bilen, nimetlerin geç
 
 Ayrıca mümin, Allah'ın hazineleri sonsuz olsa da O'nun verdiği her nimeti yeteri kadar kullanmalı ve aşırıya kaçmamalıdır. Akıp giden nehirden abdest alırken dahi israf edilmemesini emreden Allah Resulü, müminlere darlıkta da bollukta da nimetleri ihtiyaç kadar kullanmak gerektiği anlayışını kazandırmak istemiştir.
 
-## SONUÇ
+## Sonuç
 
 Hasılı, mümine düşen, öncelikle elindeki nimetin farkında olmak, aldığı nefesin bile bir nimet olduğunu idrak etmek, nimetleri kendisine bahşedene teşekkür etmek ve nimeti sahibinin razı olacağı şekilde kullanmaktır.
 

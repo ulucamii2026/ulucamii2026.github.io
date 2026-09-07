@@ -272,6 +272,6 @@ Müslümanın konuşurken dikkat etmesi gereken bir başka önemli nokta da söz
 
 Muhterem kardeşlerim! Söz, Rabbimizin bize verdiği bir emanettir; emanet ise sahibine sağlam teslim edilmek üzere verilir. Sözün gücünü ve etkisini doğru kullanmak, hem bireysel hem de toplumsal ilişkilerde huzurun anahtarıdır. İslam’ın öğrettiği gibi doğruyu ve güzeli söylemek, başkalarına saygı göstermek hepimizin üzerine düşen bir görevdir. Bu görev gurbette bir kat daha ağırdır; çünkü burada dilimiz yalnız bizi değil, çocuklarımızı, cemaatimizi ve temsil ettiğimiz dinimizi de anlatmaktadır. Bugün zikrettiğimiz sekiz ölçüyü — tatlı dil, tevazu, ölçülü ses, alaydan uzak durmak, gıybeti terk etmek, laf taşımamak, doğruluk ve sözünde durmak — evimizden başlayarak yaşayabilirsek, nezaketle söylenen her söz hem toplumumuzu daha huzurlu hâle getirecek hem de bu topraklarda bizden sonra gelecek nesle bırakacağımız en sağlam miras olacaktır.
 
-## Duâ
+<p class="vaaz-etiket">Duâ</p>
 
 Rabbimiz, dillerimize hakkı söyletsin; güzel olanı konuşmayı, güzel konuşmayı ve razı olacağı sözler söylemeyi nasip etsin. Gurbet ellerde sözümüzü de özümüzü de muhafaza eylesin; ağzımızdan çıkan sözü evlâtlarımıza ve komşularımıza güzel bir örnek kılsın. Dilimizden dolayı mahşer günü mahcup olmaktan bizleri muhafaza eylesin. Âmin!

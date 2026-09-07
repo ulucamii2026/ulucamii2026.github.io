@@ -1,5 +1,5 @@
 ---
-baslik: "Aile: En Güvenli Yuvamız"
+baslik: "Aile: En Güvenli Yuvamız (2)"
 ozet: "Bugün ki vaazımızda toplumun inşasında önemli bir fonksiyon icra eden, toplumun çekirdeğini oluşturan, bir milletin geleceğinin inşa edildiği, toplumlarda kültürel…"
 kategori: aile
 kelime: 3979
@@ -66,7 +66,7 @@ Evlilik birliğinin devamı için karı kocanın birbirine sevgi, saygı ve hoş
 
 Bunun dışında karı kocanın evlilik birliğinden doğan ve hukukî niteliği ön plana çıkan bazı hak ve sorumlulukları söz konusudur ve bir taraf için hak olan diğer taraf için sorumluluk niteliği taşımaktadır.
 
-## EŞLERİN BİRBİRLERİNE KARŞI OLAN HAK VE SORUMLULUKLARI
+## Eşlerin Birbirlerine Karşı Olan Hak ve Sorumlulukları
 
 Muhterem Mü’minler!
 
@@ -162,7 +162,7 @@ Bilindiği gibi istişare, bütün kurumsal yapıların işleyişinin ana dinami
 
 ## Evlilik birliğinden doğan ve hukukî niteliği ön plana çıkan bazı hak ve sorumluluklar
 
-### KOCANIN KARISINA KARŞI GÖREVLERİ
+### Kocanın Karısına Karşı Görevleri
 
 Hadisi şerifte peygamberimiz şöyle buyurur;
 
@@ -186,7 +186,7 @@ Evlenme sırasında erkeğin kadına ödediği veya ödeyeceğini taahhüt etti�
 
 Koca, karısının nafakasını temin etmek, giyecek, yiyecek ve barınma gibi temel ihtiyaçlarını karşılamak zorundadır. Kuşkusuz bunların tespitinde, adamın maddi durumu ve toplumun geleneği esas alınır.
 
-### KADININ KOCASINA KARŞI GÖREVLERİ
+### Kadının Kocasına Karşı Görevleri
 
 1- İtaat: İtaat, kadının kocasına karşı yerine getirmek zorunda olduğu ilk yükümlülüklerden birisidir.
 
@@ -202,7 +202,7 @@ Sabitelere sırt çevirerek yeni yeni roller ve modeller üretme çabası günü
 
 3- Kocasının kazancını, malını muhafaza etmek ve israftan sakınmak
 
-### ANNE BABANIN ÇOCUKLARA KARŞI SORUMLULUKLARI
+### Anne Babanın Çocuklara Karşı Sorumlulukları
 
 Anne ve babaya Allah’ın birer hediyesi olan çocuklar aile bahçesinin gülleridir. Onları sevgi ile yetiştirip topluma yararlı bir kimse olarak hazırlamak, anne-babanın başta gelen görevleri arasındadır. Bunun için dinimiz, geleceğin teminatı olan çocuklarla ilgili olarak aileye büyük sorumluluklar yüklemiştir. Kur'an-ı Kerim'de şöyle buyuruluyor:
 
@@ -246,7 +246,7 @@ Anne-babaya çocuklarını eğitmek, güzel terbiye etmek ve yetiştirmek için 
 
 Peygamberimiz şöyle buyuruyor: “Hiçbir baba çocuğuna güzel terbiyeden daha üstün bir bağışta bulunmuş olamaz.” (Tirmizi, Birr, 33/1874)
 
-### ÇOCUKLARIN ANNE BABALARINA KARŞI SORUMLULUKLARI
+### Çocukların Anne Babalarına Karşı Sorumlulukları
 
 Kıymetli Kardeşleri!
 

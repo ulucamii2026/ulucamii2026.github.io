@@ -82,7 +82,7 @@ Oruçlu kimse, kalkanı öncelikle kendi elinden ve dilinden sadır olabilecek y
 
 Oruç, kişiye ahlâkî güzellikleri kazandırması bakımından da çok önemlidir. Çünkü oruç insana sabır, takva ve şükretmeyi öğretir. Oruç, bir sabır sınavıdır. İnsan oruçlu iken önünde duran yemeğe elini uzatmaz, kötü söz söylemez, kem gözle bakmaz, başına gelen her türlü olumsuzluğu olgunlukla karşılar. Oruçlu olduğu sürece açlığa, susuzluğa ve her türlü günah ve kötülüğe karşı sabreder. Bundan dolayı da Allah Resûlü, “Oruç, sabrın yarısıdır.” (İbn Mace, Sıyam, 44.) buyurur.
 
-### NASIL ORUÇ TUTMALIYIZ
+### Nasıl Oruç Tutmalıyız
 
 Hz. Peygamber, “Yalanı ve yalana göre hareket etmeyi terk etmeyenin yemeyi içmeyi bırakmasına Allah'ın ihtiyacı yoktur!” (Buhari,Savm, 8.) buyurmaktadır. Oruçlunun yalandan, yalancı şahitlikten, iftiradan, dedikodudan, kötü söz ve davranışlardan uzak durması, orucun en önemli âdâbındandır. Dedikodu, gıybet gibi fiiller, aslında hiçbir zaman Müslüman'a yakışmaz. Müslüman, dürüsttür, dosdoğrudur. O, gönül kırmaz, küs durmaz. Yüce Allah, gıybet etmeyi, insanın ölü kardeşinin etini yemesine benzetir. Gıybet, genel olarak günah olsa da oruçluyken gıybet etmek daha kötüdür. Zira gıybet, orucun bereket ve sevabını siler.
 
@@ -134,7 +134,7 @@ Resûlullah efendimiz kadir gecesi ile ilgili olarak: “Faziletine inanarak ve 
 
 İbn Abbâs şöyle demiştir: “Resûlullah (sav) hem oruçluyu (işlediği) faydasız fiillerden ve (söylediği) kötü sözlerden temizlemek, hem de fakirlere gıda (temin etmek) üzere fıtır zekâtını farz kıldı. Artık kim bunu bayram namazından önce öderse, o makbul bir zekâttır. Kim de bunu bayram namazından sonra öderse, o sadakalardan bir sadakadır.”(Ebû Dâvûd, Zekât, 18.)
 
-### MEHMET AKİF ERSOY
+### Mehmet Akif Ersoy
 
 Yâ Rab, şu muazzam ramazan hürmetine,
 

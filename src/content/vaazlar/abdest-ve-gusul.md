@@ -204,7 +204,7 @@ Zorunlu bir durum olmadıkça cünüp kimse camiye giremez. Düşman, yırtıcı
 
 Cünüp olan kimse Kâbe’yi tavaf edemez. Tavaf edebilmek için gusül yapmış olması ve abdestli bulunması gerekir.
 
-SONUÇ:
+## Sonuç
 
 Temizlenenleri seven Cenâb-ı Hakk’ın (Bakara, 2/222) huzuruna çıkmadan önce kul, dıştan içe doğru bir temizlik yapar. Şartlara göre kimi zaman abdest kimi zaman gusül bazen de teyemmümle, yalnız bedenini değil, ruhunu, nefsini ve gönlünü arındırır, bu şekilde huzur-ı âlî’ye varmaya lâyık hâle gelir. Abdest suyunun paklığında veya temizleyici olan toprağın saflığında manevî bir iklime doğru ilk adımını atar. İçtenlikle arınmaya niyet eden insan, yıkadığı her bir uzuvla sadece görünen kirlerden değil, günahlarından da kurtulur. Yalnız ibadetlerin değil, hakkı verildiğinde cennetin de anahtarı olabilecek bu arınmayla (Tirmizî, Tahâret, 1; İbn Hanbel, III, 341) kişi, dış dünyanın stresinden kendisini soyutlayarak huzura kavuşur. Mümin, Resûl-i Ekrem’in (s.a.v) gösterdiği hassasiyetle ve hissettiği samimiyetle abdestini aldığında, şüphesiz temizliğin verdiği gönül rahatlığını tadacak ve ibadetin tadına varabilecektir. Abdesti Peygamber Efendimizin (s.a.v) ve ashâbının abdestine ne kadar benzerse, hayatının da onlarınki gibi berraklaşması mümkün olabilecektir. Her zaman abdestli bulunmaya özen gösteren mümin, abdestin serinliğini, safiyetini, şuurunu ve huzurunu iliklerinde hissederek her anlamda temizlenecektir. Zira “Abdeste ancak mümin kimse müdavim olur.” (Muvatta’, Tahâret, 6) buyuran Allah Resûlü (s.a.v), hayatın her anını abdest temizliğinde yaşama şuuruna ancak inananların sahip olabileceğini bildirmiştir.
 

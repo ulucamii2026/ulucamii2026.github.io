@@ -8,7 +8,7 @@ pdf: "/vaazlar/anne-baba-cennetin-iki-kapisi.pdf"
 ---
 Aile; sosyal, kültürel, dinî ve ahlâkî değerlerin yeni nesillere aktarılması ve toplumda yaşatılmasında en etkili olan kurumların ilkidir. Birey dayanışmayı, paylaşmayı, yardımlaşmayı ve karşılıksız hizmet vermeyi, hizmet etmeyi, hakkı gözetmeyi, sevgiyi, saygıyı ve merhamet etmeyi ailede öğrenir. Burada yaşananlar, toplumun geleceği açısından da önem arz eder. Sosyal dayanışma ve uzlaşmanın, birlik ve beraberliğin en güçlü dayanağı olan aile ocağının temel prensibi sevgi ve saygıdır.
 
-## ANNE BABAYA SAYGI VE İYİLİK ALLAHIN EMRİDİR
+## Anne Babaya Saygı ve İyilik Allahın Emridir
 
 Ailede çocukların anne ve babaları üzerinde hakları olduğu gibi anne babaların da çocukları üzerinde hakları vardır. Ancak anne ve babaların çocuklar üzerindeki hakları daha önemli ve önceliklidir. Anne ve baba haklarına riayet, İslâm dininde hem itikâdî hem de ahlâkî sorumluluklar arasında yer almaktadır. Kur’an-ı Kerim’de ve hadis-i şeriflerde Allah’a kulluk ve itaatten hemen sonra anne ve babaya iyi davranmanın gerekliliği vurgulanmıştır. Bir insanın Allah’a şirk koşması, anne ve babasına kötü davranması ve fakirlik endişesiyle çocuklarını öldürmesi, Allah’a karşı yapılabilecek en büyük itaatsizlik ve isyan sayılan fiillerdendir. Bu husus Kur’an-ı Kerim’de şöyle ifade edilmektedir:
 
@@ -38,7 +38,7 @@ Rabbin, sadece kendisine kulluk etmenizi ve anne babanıza iyi davranmanızı em
 
 Rızık veren, besleyen, büyüten ve terbiye eden anlamlarına gelen “Rabb” ve “mürebbi” aynı kökten gelen kelimeler olup, Rabb Allah için; mürebbi ise insanlar için kullanılır. İnsanî fiiller olarak, çocuğun ilk mürebbisi anne ve babasıdır. Bu ilahî görev ve sorumluluğu üzerine almış olması sebebiyle, insanın anne ve babasına iyi davranması, mutlak anlamda rızık veren ve insanı fıtrat üzere yaratan Rabbine kulluk ve ibadet etmesi kadar önemlidir.
 
-## ANNE-BABAYA HİZMET KİŞİNİN CENNETE GİRMESİNE VESİLE OLUR
+## Anne-Babaya Hizmet Kişinin Cennete Girmesine Vesile Olur
 
 Anne-babaya karşı içtenlikle yapılan her hizmet, gönüllerini alan her söz insana sadece sevap kazandırmakla kalmayıp, evladın günahlarının affedilmesine de vesile olmaktadır. Zira bir kişinin cennete girebilmesi için, iman ve hayırlı amelleri yanında, günahlarının da affedilmiş olması gerekir. İşte bu noktada Hz. Peygamber (s.a.s.), ihtiyarladıklarında anne ve babaya iyi davranmanın Allah katında ne derece önemli olduğunu şu sözleriyle dile getirmektedir:
 
@@ -56,7 +56,7 @@ Yukarıdaki ayetlerde ve hadislerde tarif edilen davranış biçimi ile ulaşıl
 
 Çocukların anne babaya karşı sorumlulukları şunlardır:
 
-### 1-ONLARA HİZMET EDEREK DUALARINI ALMAK:
+### 1-Onlara Hizmet Ederek Dualarını Almak
 
 <p lang="ar" dir="rtl" class="ayet">وَاعْبُدُوا اللّٰهَ وَلَا تُشْرِكُوا بِهٖ شَيْـٔاً وَبِالْوَالِدَيْنِ اِحْسَاناً وَبِذِي الْقُرْبٰى وَالْيَتَامٰى وَالْمَسَاكٖينِ وَالْجَارِ ذِي الْقُرْبٰى وَالْجَارِ الْجُنُبِ وَالصَّاحِبِ بِالْجَنْبِ وَابْنِ السَّبٖيلِۙ وَمَا مَلَكَتْ اَيْمَانُكُمْؕ اِنَّ اللّٰهَ لَا يُحِبُّ مَنْ كَانَ مُخْتَالاً فَخُوراًۙ ﴿٣٦﴾</p>
 
@@ -78,7 +78,7 @@ Anne babaların çocuklarına yapacakları duaların kabul olunacağına dair Pe
 
 3- Anne babanın çocuklarına olan duasıdır.” ( Tirmizi, Birr,7)
 
-### 2- ANA- BABAYA İYİLİK VE İHSAN ÇOCUKLAR ÜZERİNE FARZDIR:
+### 2- Ana- Babaya İyilik ve İhsan Çocuklar Üzerine Farzdır
 
 Yüce Allah (cc) Kur’an-ı Kerimde şöyle buyuruyor:
 
@@ -94,7 +94,7 @@ Abdullah b. Amr (ra) nın naklettiğine göre, Hz. Peygamber (s.a.s) Efendimiz �
 
 İbn Mes’ud’un (ra) anlattığına göre, bir adam Hz. Peygamber (s.a.s)’e, “Amellerin en üstünü hangisidir?” diye sorunca, Peygamber Efendimiz (s.a.s) şöyle cevap verdi: “Vaktinde kılınan namaz ve anne babaya iyilik etmektir. Sonra da Allah yolunda cihad etmek gelir.” (Buhari, Tevhid,48)
 
-### 3- ANNE BABAYA ASİ OLMAMAK:
+### 3- Anne Babaya Asi Olmamak
 
 Ana baba zalim dahi olsalar, onlara karşı gelmek, onlarla sert konuşmak, hakaret edip Kötü sözler söylemek asla caiz değildir.
 
@@ -124,7 +124,7 @@ Hz. Ebu Bekir (r.a.) nın kızı Esma (r.a) şöyle dedi: “Resulullah (s.a.v) 
 
 Resulullah (s.a.s) bana şöyle buyurdu: “Evet, annene iyilik et.” (Buhari, 5/2410)
 
-### 5- ONLARDAN İZİNSİZ SEFERE GİTMEMEK.
+### 5- Onlardan İzinsiz Sefere Gitmemek
 
 Bir adam Peygamber Efendimize (s.a.s) gelerek: “ Ben Allah’tan ecir isteyerek hicret ve cihat etmek üzere sana biat ediyorum” dedi. Peygamber Efendimiz (s.a.s) şöyle buyurdu:
 
@@ -140,7 +140,7 @@ Peygamber Efendimiz (s.a.s): “Öyle ise annen ve babanın yanına dön ve onla
 
 Biri de, hicret etmek için gelip, “Ya Resulallah! Ana-babamı ağlatarak geldim” dedi. Peygamber Efendimiz (s.a.s) bu duruma üzülerek buyurdu ki: “Hemen git, onları ağlattığın gibi güldür!” (Ebu Davud, Cihad,31)
 
-### 6- ONLARA SAYGI VE HÜRMETTE KUSUR ETMEMEK.
+### 6- Onlara Saygı ve Hürmette Kusur Etmemek
 
 “Bir adam Peygamber (s.a.s)’ e geldi ve : “ İnsanlar arasında kendisine en iyi davranmam gereken kimdir?” diye sordu.
 
@@ -180,7 +180,7 @@ Onlar için sütlerini sağdım. Hâla uyumakta idiler. Onları uyandırmak iste
 
 Taş bir miktar açıldı. Ama çıkacakları kadar değildi… Diğer iki kişi de Allah rızası için yaptıkları salih amellerini vesile kılarak Allah’a dua ettiler ve mağaranın kapısı açılmasıyla kurtuldular. (Buhârî, Edeb, 5)
 
-### 7- ANNE BABALARIMIZIN DOST VE ARKADAŞLARINA İYİLİK ETMEK:
+### 7- Anne Babalarımızın Dost ve Arkadaşlarına İyilik Etmek
 
 Sahabeden birisi Peygamber Efendimize (s.a.s) gelerek:
 

@@ -10,11 +10,11 @@ pdf: "/vaazlar/iman-ve-imani-hayat-kilmak.pdf"
 
 *Kalp ile tasdik, dil ile ikrar, uzuvlarla amel*
 
-### GİRİŞ
+### Giriş
 
 İnsan ruh ve bedenden oluşan bir varlıktır. İnsanın ruh yönü, yüce bir varlığa inanmak, ona sığınmak, ondan yardım istemek, ona dua etmek ister. İnsandaki inanma ihtiyacı fıtri, yaratılıştan var olan bir ihtiyaçtır. Allah’a iman, insanın ruhunun derinliklerine konulmuş bir cevherdir. İnsan, aklını, iradesini kullanarak o cevheri bulup, çıkarması, kalbiyle doğrulaması gerekir. Hadis-i şerifte Peygamber Efendimi:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا مِنْ مَوْلُودٍ إِلاَّ يُولَدُ عَلَى الْفِطْرَةِ، فَأَبَوَاهُ يُهَوِّدَانِهِ أَوْ يُنَصِّرَانِهِ أَوْ يُُمَجِّسَانِهِ</p>
 
@@ -22,25 +22,25 @@ HADÎS-İ ŞERÎF
 
 Bir gün Resûlullah’ın huzuruna elbisesi beyaz, saçları siyah, orada bulunanların hiçbirinin tanımadığı bir surette Cebrail (a.s.) gelir. Dizlerini Resûl-i Ekrem’in (s.a.s.) dizlerine yaslar ve ellerini de dizlerinin üzerine koyar. “İslam nedir?” diye sorar, cevabını aldıktan sonra Cebrail (a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">فَأَخْبِرْنِي عَنِ الْإِيمَانِ،</p>
 
 *“Bana imanı anlat”* der. Resûlullah şöyle buyurur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَنْ تُؤْمِنَ بِاللهِ، وَمَلَائِكَتِهِ، وَكُتُبِهِ، وَرُسُلِهِ، وَالْيَوْمِ الْآخِرِ، وَتُؤْمِنَ بِالْقَدَرِ خَيْرِهِ وَشَرِّهِ</p>
 
 *“Allah’a, meleklerine, kitaplarına, peygamberlerine, ahiret gününe inanmandır. Yine kadere, hayır ve şerrin Allah’tan olduğuna iman etmendir.”* Hadisi şerifin sonunda Peygamber Efendimiz: *“O (gelen), Cebrail idi, size dininizi öğretmek için geldi.”* buyurur. (Buhârî, Îmân, 37)
 
-A. İMANIN TANIMI
+## A. İmanın Tanımı
 
 Yüce Rabbimizin bizlere bahşettiği nimetlerin en başında iman gelmektedir. Sözlükte “güven içinde bulunmak, korkusuz olmak” anlamındaki emn (emân) kökünden türeyen iman, “Allah’tan alıp din adına tebliğ ettiği kesinlik kazanan hususlarda peygamberleri tasdik etmek ve onlara inanmak” diye tanımlanır. İman, Allah’ın varlığına ve birliğine, meleklerine, kitaplarına, peygamberlerine, ahiret gününe, kaza ve kaderin Allah’tan olduğuna gönülden inanmaktır.
 
 İman, bir bütündür, kişinin dünya ve ahiret hayatını, kişisel ve sosyal hayatını etkiler. İman sadece bilgi değil amel (yaşama) ve hal boyutunu da içine alır, kalitesi ve makbul olması samimiyetledir. İnsanın yaratılışının, varoluşunun gayesi yaratan, yaşatan Rabbini tanıması ve O’na iman etmesidir. Kişinin kurtuluşun mutlak şartı, iman esaslarını eksiksiz, şüpheye mahal bırakmaksızın kabul etmektir.
 
-B. SAHABENİN İMANI
+## B. Sahabenin İmanı
 
 Müslümanların ilk hicreti, Risaletin beşinci yılında Habeşistan’a olmuştur. Habeş kralı Necâşî, huzuruna aldığı muhacirlere, onları, kavimlerinin dininden ayrılmalarını sağlayacak kadar etkileyen bu dinin nasıl bir din olduğunu sorar. Hz. Cafer b. Ebû Tâlib hemen söz alır ve: “Ey Kral!” diyerek başlar sözlerine, “Biz cahil, putlara tapan, leş yiyen, çirkin işler yapan, akrabalarla bağları koparan, komşuya kötü davranan, kuvvetlinin zayıfı yiyip bitirdiği bir toplum idik. Sonra, Allah, bize soyunu, doğruluğunu ve iffetini bildiğimiz bir elçi gönderinceye kadar da bu hâl üzere devam ettik. O elçi bizi Allah’a, onu birlemeye ve ona kulluğa davet etti. Allah’tan başka taptığımız, taş ve putları terk etmeye çağırdı. Doğru sözlü olmayı, emaneti ehline vermeyi, akrabayla ilişkiyi sürdürmeyi, güzel komşuluk yapmayı, haramlardan ve kan davası gütmekten kaçınmayı emretti. Çirkin işleri, yalan konuşmayı, yetim malı yemeyi ve iffetli hanımlara iftira atmayı bize yasakladı. Sadece Allah’a kulluk etmemizi ve O’na hiçbir şeyi ortak koşmamamızı emretti.
 
@@ -50,7 +50,7 @@ Biz de Allah Resûlü’nü tasdik ettik, iman ettik, getirdiği şeylere tâbi 
 
 Hz. Cafer, putlara tapan, her türlü kötülüğü işleyebilen bir topluluğun iman ile nasıl değiştiğini ifade etmiştir.
 
-C. İMAN-AMEL İLİŞKİSİ
+## C. İman-Amel İlişkisi
 
 Hicretin dokuzuncu senesinde Arap Yarımadası’nın muhtelif bölgelerinden insanlar heyetler halinde Medine’ye geliyor, Sevgili Peygamberimizi (s.a.s.) ziyaret edip, ondan İslâm hakkında bilgi alıyorlardı. Çok sayıda heyetin Medine’yi ziyaret etmesinden dolayı İslâm tarihinde Hicret’in dokuzuncu senesi “Heyetler Yılı” olarak isimlendirilir.
 
@@ -58,19 +58,19 @@ Bu meyanda Bahreyn bölgesinde yaşayan Rabîa kabilesinin Abdülkays koluna men
 
 Hz. Peygamber’in (s.a.s.) karşılamasının ardından heyet adına Abdullah b. Avf söz alır ve: *“Ey Allah’ın Resûlü! Bizler sana uzak beldelerden, meşakkatli yolculuklar yaparak geliyoruz. Ayrıca bizim memleketimizle Medine arasında kâfir olan ve bize düşmanlık eden Mudar kabilesi meskûn olduğu için bizler sana ancak savaşmanın yasak olduğu haram aylarda gelebiliriz. Bize özlü bir şeyler tavsiye et de onları geride bıraktığımız kabilemizin insanlarına anlatalım, hem de cennete girmemize vesile olsun”* der. Bunun üzerine Allah Resûlü (s.a.s.) onlara yalnızca tek olan Allah’a iman etmelerini emreder. Peşinden de,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">هَلْ تَدْرُونَ مَا الإِيمَانُ بِاللَّهِ وَحْدَهُ</p>
 
 *“Yalnızca tek olan Allah’a iman etmek ne demektir bilir misiniz?”* diye sorar. Onların “Allah ve Resûlü daha iyi bilir.” diyerek cevap vermeleri üzerine Hz. Peygamber (s.a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">شَهَادَةُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ ، وَإِقَامُ الصَّلاَةِ ، وَإِيتَاءُ الزَّكَاةِ ، وَصَوْمُ رَمَضَانَ</p>
 
 *“Allah’tan başka ilâh olmadığına ve Muhammed’in Allah’ın elçisi olduğuna iman etmek, namazı dosdoğru kılmak, zekâtı vermek, Ramazan orucunu tutmaktır.”* buyurur. Daha sonra da onları
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">احْفَظُوهُ وَأَخْبِرُوهُ مَنْ وَرَاءَكُمْ</p>
 
@@ -82,7 +82,7 @@ D. İMANIMIZI NASIL HAYAT KILABİLİRİZ?
 
 Hadis kitapları incelenip Allah’a iman ile ilgili hadisler tahlil edilince, Peygamber Efendimizin (s.a.s.) sözlerinde Allah’a iman konusunun insanın bireysel, toplumsal ve evrensel boyutlarıyla ilişkisinin ne kadar güçlü olduğu da açık bir şekilde görülecektir. Şu hadisler hep bu olguyu destekler mahiyettedir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلاَ يُؤْذِ جَارَهُ وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيُكْرِمْ ضَيْفَهُ وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
 
@@ -90,31 +90,31 @@ HADÎS-İ ŞERÎF
 
 Muâz b. Cebel (r.a.), Resûlullah’ın (s.a.s.) yanından ayrılmamaya özen gösterir, yanı başında yürürken veya uzun yolculuklarda dahi ona merak ettiği hususlarda sorular yöneltmekten geri durmazdı. Tebük Seferi’nden dönerken Allah Resûlünün yalnız olduğunu görünce,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا رَسُولَ اللَّهِ! أَخْبِرْنِي بِعَمَلٍ يُدْخِلُنِي الْجَنَّةَ</p>
 
 *“Bana cennete girmemi sağlayacak bir davranış söyler misin?”* diye soru sorar. Allah Resûlü (s.a.s.) şöyle buyurdu:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">بَخٍ لَقَدْ سَأَلْتَ عَنْ عَظِيمٍ، وَهُوَ يَسِيرٌ عَلَى مَنْ يَسَّرَهُ اللَّهُ عَلَيْهِ، تُقِيمُ الصَّلَاةَ الْمَكْتُوبَةَ، وَتُؤَدِّي الزَّكَاةَ الْمَفْرُوضَةَ، وَتَلْقَى اللَّهَ عَزَّ وَجَلَّ لَا تُشْرِكُ بِهِ شَيْئًا...”</p>
 
 *“Aferin sana! Sen önemli bir konu hakkında soru sordun. Fakat bu, Allah’ın kendisi için kolaylaştırdığı kişiye kolay gelir. Farz namazı kılarsın, farz olan zekâtı verirsin ve O’na hiçbir şeyi ortak koşmayarak Allah’a kavuşursun…”* Daha sonra Rasûl-i Ekrem şöyle buyurdu:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَلاَ أُخْبِرُكَ بِرَأْسِ الأَمْرِ كُلِّهِ وَعَمُودِهِ وَذِرْوَةِ سَنَامِهِ</p>
 
 *- “Sana bütün işlerin başını, ana direğini ve doruk noktasını bildireyim mi?”* Muâz b. Cebel (r.a.),
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">بَلَى يَا رَسُولَ اللَّهِ</p>
 
 *- “Evet, bildiriniz Ya Resûlallah!”* der. Peygamber Efendimiz (s.a.s.) şöyle buyurur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">رَأْسُ الأَمْرِ الإِسْلاَمُ وَعَمُودُهُ الصَّلاَةُ وَذِرْوَةُ سَنَامِهِ الْجِهَادُ</p>
 
@@ -128,7 +128,7 @@ Peygamber Efendimiz’e (s.a.s.) bir gün, “İman nedir?” diye soruldu. Efen
 
 Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ لِلْمُؤْمِنٖينَ يَغُضُّوا مِنْ اَبْصَارِهِمْ وَيَحْفَظُوا فُرُوجَهُمْۚ</p>
 
@@ -136,7 +136,7 @@ Rabbimiz:
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">اَلْإِيمَانُ بِضْعٌ وَسَبْعُونَ أَوْ بِضْعٌ وَسِتُّونَ شُعْبَةً فَأَفْضَلُهَا قَوْلُ لاَ إِلٰهَ إِلاَّ اللّٰهُ وَأَدْنَاهَا إِمَاطَةُ الْأَذٰى عَنِ الطَّرِيقِ وَالْحَيَاءُ شُعْبَةٌ مِنَ الْإِيمَانِ</p>
 
@@ -144,13 +144,13 @@ HADÎS-İ ŞERÎF
 
 Rabbimiz:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الَّذٖينَ قَالُوا رَبُّنَا اللّٰهُ ثُمَّ اسْتَقَامُوا فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَۚ</p>
 
 *“Rabbimiz Allah’tır” diyen sonra da devamlı bu söze uygun yaşayanlara ne bir korku vardır ne de onlar üzüntü çekeceklerdir.”* (Ahkâf, 46/13) buyurmuştur. Diğer ayette de:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ فَاسْتَقِمْ كَمَٓا اُمِرْتَ ﴾</p>
 
@@ -160,7 +160,7 @@ Rabbimiz:
 
 Süfyân b. Abdullah (r.a.): “Yâ Resûlallah! Bana İslâm’ı öylesine tanıt ki, onu bir daha senden başkasına sormaya ihtiyaç hissetmeyeyim” der. Resûlullah şöyle buyurur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ : آمَنْتُ بِاللَّهِ: ثُمَّ اسْتَقِمْ</p>
 
@@ -168,7 +168,7 @@ HADÎS-İ ŞERÎF
 
 Peygamber Efendimiz bir hadislerinde:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَكْمَلُ الْمُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا</p>
 
@@ -176,7 +176,7 @@ HADÎS-İ ŞERÎF
 
 Peygamber Efendimiz şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لَا يَسْتَقِيمُ إِيمَانُ عَبْدٍ حَتَّى يَسْتَقِيمَ قَلْبُهُ وَلَا يَسْتَقِيمُ قَلْبُهُ حَتَّى يَسْتَقِيمَ لِسَانُهُ وَلَا يَدْخُلُ الْجَنَّةَ رَجُلٌ لَا يَأْمَنُ جَارُهُ بَوَائِقَهُ</p>
 
@@ -186,7 +186,7 @@ Maddî hayatımızın merkezî organı kalp, mânevî hayatımıza da yön veren
 
 *İmanımızı diri tutan salih amellerdir; imanı kemale erdiren ise güzel ahlaktır.*
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ عَمِلَ صَالِحاً مِنْ ذَكَرٍ اَوْ اُنْثٰى وَهُوَ مُؤْمِنٌ فَلَنُحْيِيَنَّهُ حَيٰوةً طَيِّبَةًۚ وَلَنَجْزِيَنَّهُمْ اَجْرَهُمْ بِاَحْسَنِ مَا كَانُوا يَعْمَلُونَ</p>
 
@@ -196,7 +196,7 @@ Dünya ve âhiret mutluluğunun birlikte vaad edildiği, böylece Allah’ın en
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
 İman, insanları dünyada istikamete erdiren, doğru yoldan ayırmayan, ömrün her safhasını aydınlatan bir hidayet kandili olduğu gibi, ahirette de sahil-i selâmete ulaştıran sağlam bir kılavuzdur. Bu bağlamda iman, kişinin yaratılış gayesine uygun bir yaşam sürmesinin gereği iken, ahirette de Rahman’ın rahmetini hak etmesinin gereğidir. Bundan dolayı Allah Resûlü (s.a.s.):
 
@@ -208,7 +208,7 @@ Katâde’den nakledildiğine göre, Enes b. Mâlik (r.a.) şöyle anlatmıştı
 
 Hz. Peygamber (s.a.s.) üç kez seslendi, Muâz da (r.a.) aynı şekilde cevap verdi. Daha sonra Allah Resûlü (s.a.s.) şöyle buyurdu:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَا مِنْ أَحَدٍ يَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ صِدْقًا مِنْ قَلْبِهِ إِلاَّ حَرَّمَهُ اللَّهُ عَلَى النَّارِ</p>
 
@@ -216,7 +216,7 @@ HADÎS-İ ŞERÎF
 
 Eskiden beri âlimler kâmil imanı, “Kalp ile tasdik, dil ikrar ve uzuvlarla amel etmektir” diye tarif etmişlerdir. Böylece imanın şartları ile İslam’ın şartları birleştirilmiştir. (B. Topaloğlu, Y. Ş. Yavuz, İ. Çelebi, İslam’da İnanç Esasları, Çamlıca Yay. İst. 2010, s. 35) Ancak amellerden bir veya bir kaçını terk eden günahkâr mümin sayılır. İmanı kemale, olgunluğa erdirmek, üst seviyeye çıkartmak için ibadet ve amel gereklidir. İmanı korumak ve güçlendirmek için iman sözleşmesinin gereklerini yapmak, hayatı İslam’a uydurmak gerekir.
 
-DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Rabbimiz bizleri iman üzere yaşayan ve imanının gereğini yapan salih kullarından eylesin.*
 

@@ -6,7 +6,7 @@ kelime: 2955
 docx: "/vaazlar/affetmek-ve-ofkeyi-yutmak.docx"
 pdf: "/vaazlar/affetmek-ve-ofkeyi-yutmak.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 İnsan irade sahibi, konuşan, düşünüp tedbir alan, hikmetle hareket eden, en güzel şekilde yaratılan, mükerrem bir varlıktır. Bununla birlikte insanın nefsi, arzuları, zaafları, kusurları da vardır. Allah Teâlâ insanın fıtratına doğru ve yanlışı, iyi ve kötüyü, sevap ve günahı bilme, ayırt etme, birini veya diğerini seçip yapma gücünü ve özgürlüğünü vermiştir. Mearic suresinde insanın olumsuz yönlerine şöyle değinilmiştir:
 
@@ -24,7 +24,7 @@ pdf: "/vaazlar/affetmek-ve-ofkeyi-yutmak.pdf"
 
 Tahammülsüzlük, acelecilik, sabırsızlık, sızlanma, bencillik gibi vasıflar insanın eksik yönleridir. İnsan hem kendisinde hem de başkalarında bu yönlerinin olduğunu unutmamalı; başına gelen sıkıntıları sabırla, kendisine yapılan kötü davranışları da af ile karşılayacak yüce bir ahlaka sahip olmalıdır.
 
-## AFFIN TANIMI
+## Affın Tanımı
 
 Sözlükte “*yok etmek, silip süpürmek; fazlalık, artık”* gibi manalara gelen afv, bir ahlâk ve hukuk terimi olarak genellikle, *“kötülük ve haksızlık edeni, suç veya günah işleyeni bağışlama, cezalandırmaktan vazgeçme”* anlamlarında kullanılmaktadır. İslâm ahlâkçıları affetmeyi Müslümanlar arasında riayet edilmesi gereken bir din kardeşliği görevi ve hakkı olarak düşünmüşlerdir.
 
@@ -42,7 +42,7 @@ Rabbimizin Kur’an-ı Kerim’de en çok zikredilen sıfatlarından birisi de a
 
 Taberî’nin kaydettiği bir rivayete göre bu ayet geldiğinde Resulullah’ın bir sorusu üzerine Cebrâil, *“Rabbin sana kötülük edene senin iyilik etmeni, sana vermeyene senin vermeni ve senden uzak kalıp ilgileri koparanlarla senin dostluk ve akrabalık ilişkini sürdürmeni emrediyor”* diyerek ayete örnekleme yoluyla açıklama getirmiştir. Yüce Allah bu ayette peygamberine hitap etmişse de esasında bütün kullarını eğitmeyi amaçlamıştır. (Kur’an Yolu Tefsiri, 2/648-650)
 
-## ALLAH’IN AFFETMESİ
+## Allah’ın Affetmesi
 
 Allah “Afüv” ismiyle kullarının kusurlarını siler, “Ğafûr” ismiyle günahlarını affeder, “Settâr” ismiyle hatalarını örter. İnsanoğlunun başına gelen musibetler kendi yaptıkları yüzünden olsa da, Rabbimiz pek çoğunu affeder. Çünkü O’nun bağışlaması bol, mağfireti sonsuzdur. (Hadislerle İslam, 3/321)
 
@@ -56,7 +56,7 @@ Hadis-i Kutsi’de Rabbimiz,
 
 ***“Rahmetim gazabımı geçmiştir.”*** buyurmuştur. (Buhârî, Tevhîd, 22)
 
-## HZ. PEYGAMBER’İN AFFEDİCİLİĞİ
+## Hz. Peygamber’in Affediciliği
 
 Resulullah’ın nasıl bir ahlâka sahip olduğu sorulduğunda Hz. Aişe şöyle demişti:
 
@@ -118,7 +118,7 @@ Hz. Peygamber Gatafân kabilesinin bazı kollarına karşı düzenlediği Zâtu�
 
 Gavres’in bu olay üzerine hemen orada Müslüman olduğu veya bir daha Hz. Peygamber’in aleyhinde bulunmayacağına dair söz verip kabilesine döndükten sonra Müslüman olduğu nakledilir. (Buhârî, Meğâzî, 32; Abdullah Aydınlı, Dü’sur b. Haris, DİA, 10/51; Hadislerle İslam, 3/322).
 
-## SAHABENİN AFFEDİCİLİĞİ
+## Sahabenin Affediciliği
 
 Sahabe de Peygamber Efendimiz gibi affedici idi.
 
@@ -130,13 +130,13 @@ Hz. Ebû Bekir, teyzesinin torunu olan Mistah’ı yetim bir çocuk olarak büy�
 
 Bu ayetin nazil olmasının akabinde Hz. Ebû Bekir, *“Vallahi Allah’ın beni bağışlamasını arzu ederim, bunu her şeye tercih ederim”* diyerek yeminini bozdu ve yardıma devam kararı aldı. (Kur'an Yolu Tefsiri, 4/63)
 
-## AFFETME İLE İNSAN PSİKOLOJİSİ ARASINDAKİ İLİŞKİ
+## Affetme ile İnsan Psikolojisi Arasındaki İlişki
 
 Yaşanan kırgınlıkları affedememe pek çok kişiyi rahatsız eden bir durumdur. Bağışlamak, haksızlığa uğrayan kişinin kibir, öfke ve kırgınlık gibi olumsuz duygu ve düşüncelerinden sıyrılmasıdır. Bu duygu ve düşüncelerden zihni uzaklaştırmak hem fiziksel hem de ruhsal sağlık açısından gereklidir. Bağışlamak kişinin saygı ve değerinin artmasına, manevi olgunluk kazanmasına, kaygı ve depresyonun azalmasına yardımcı olmaktadır.
 
 Bir kişinin, kendisine zarar veren birini affetmemesi beden ve zihin sağlığı açısından zararlı görülmektedir. Bağışlamamanın oluşturduğu stres, vücutta zararlı maddeler salgılanmasına yol açar. Bağışlamamanın bedene verdiği zararlar arasında tansiyon yükselmesi, kalp hastalıkları, bağışıklık sisteminin zayıflaması, nörolojik bozukluklar sıralanabilir. Öte yandan, affetmek üzüntünün azalması ve stresin ortadan kalkması gibi olumlu ruhsal iyileşmeler sağlar. Ayrıca, kin ve nefret duyguları besleyen insanlar genellikle yalnızlaşır ve arkadaşlık ile dostluk ilişkilerinde zayıflık yaşar. Bağışlayan kişiler hem sosyal hayatta hem de aile hayatlarında daha başarılı ilişkiler yürütmektedirler. (Hayati Hökelekli, Psikoloji, Din ve Eğitim Yönüyle İnsani Değerler, DEM Yay, s. 303-306)
 
-## ÖFKEYİ YUTMAK
+## Öfkeyi Yutmak
 
 İnsanın sahip olduğu duygulardan biri de öfkedir. Öfke yeri gelir kişinin nefsini, ailesini, vatanını müdafaada yardımcı olur. Ancak öfkenin esiri olmak ve bu duyguyu kontrol edememek telafisi güç sorunlara yol açabilir. Öfkeye mağlup olmak, toplumdaki huzursuzluğun sebeplerindendir. Rabbimiz takva sahibi cennetliklerin vasıflarını anlatırken şöyle buyuruyor:
 
@@ -162,7 +162,7 @@ Abdullah b. Mübârek’e, “*Güzel ahlâkı bir cümle ile anlat*” denildi�
 
 Ebû Hüreyre’den rivayet edildiğine göre bir adam Hz. Peygamber’e: Bana öğüt ver, dedi. O da: ***“Kızma!”*** buyurdu. O zât isteğini birkaç defa tekrarladı. Resul-i Ekrem de her defasında *“Kızma!*” buyurdu. (Buhârî, Edeb 76; Tirmizî, Birr, 73)
 
-## KISSA: İNSAN NEDEN BAĞIRIR
+## Kıssa: İnsan Neden Bağırır
 
 İslâm âlimlerinden biri talebeleriyle Basra kıyısında gezinirken deniz kenarında birbirlerine öfke içinde bağıran bir aile görür. Talebelerine dönüp:
 
@@ -186,7 +186,7 @@ Bütün güzelliklere ulaşabilmenin, bütün kötülüklerden uzak kalabilmenin
 
 *“Yiğit dediğin, güreşte rakibini yenen kimse değildir; asıl yiğit kızdığı zaman öfkesini yenendir.”* (Buhârî, Edeb 76; Müslim, Birr 107, 108) Resul-i Ekrem bu hadislerinde, öfke kontrolünün ne kadar da önemli olduğunu ifade etmişlerdir.
 
-## ÖFKENİN ÖNLENMESİNE DAİR BAZI TAVSİYELER
+## Öfkenin Önlenmesine Dair Bazı Tavsiyeler
 
 Öfke insanda var olan tabii duygulardandır. Öfke halinde insan kendini kaybeder, davranışlarını ve tepkilerini kontrol edemez. Tabiatı gereği öfkelenen insanın, öfkesine mağlup olmaması erdemdir. Öfkelenen kişiye sakinleşmesi için bazı tavsiyeler:
 
@@ -208,7 +208,7 @@ Affedebilen kişi öfkesini kontrol edebilir. İnsan akıllı ve irade sahibidir
 
 *“Eğer şeytandan sana bir fitleme gelirse hemen Allah’a sığın! Allah işitendir, bilendir.”* (Fussilet, 41/36) İnsan öfkesine hâkim olduğu zaman, kendisini kızıp bağırmaya teşvik eden şeytanı yenmiş olur.
 
-## SONUÇ
+## Sonuç
 
 Haksızlığa, kötülüğe, eziyete maruz kalmak doğal olarak insanda kine, nefrete, intikam duygularına sebep olur. Bu duyguların peşinden gidildiğinde toplumsal huzursuzluk ve çatışma kaçınılmazdır. Bu durumda yapılması gereken en uygun ve erdemli davranış öfkeyi kontrol edip affetmektir. Affetmek, öfkeyi kontrol etmek takva sahibi müminlerin özelliklerindendir.
 

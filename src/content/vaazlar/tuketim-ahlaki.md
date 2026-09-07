@@ -28,7 +28,7 @@ Rızkı Veren Allah’tır (c.c.)
 
 “Yeryüzünde kımıldayan hiçbir canlı yoktur ki rızkı Allah’ın üzerine olmasın! Allah onların halen bulunduğu yeri de emanet olarak konulacağı yeri de bilir; hepsi apaçık kitapta vardır.” (Hud, 11/ 6) Rabbimiz bu ayette, insanlar dâhil yeryüzündeki bütün canlıların rızıklarını yaratmanın kendine ait bir iş olduğunu vurguluyor. Rızık, Allah Teâlâ’nın canlılara yeme içme ve başka hususlarda yararlanmak üzere verdiği her türlü imkânı ifade eder. “Rızkı yaratan, veren ve ona sebep olan” anlamında Allah’a “Râzık” denilmiştir. Esmâ-i hüsnâdan “Rezzak” ise “bedenlerin ve ruhların gıdasını yaratıp veren” manasındadır.(Ş. Gölcük, Rızık, DİA, İstanbul 2008, 35/73-74)
 
-## İSLAM’IN TÜKETİM İLKELERİ:
+## İslam’ın Tüketim İlkeleri
 
 İslam, hayatın her alanına yön veren bir din olup camide nasıl ibadet edilmesi gerektiğini anlattığı gibi çarşı ve pazarda nasıl alış veriş yapılacağını, nasıl üretilip nasıl tüketileceğini de izah eder. Yani İslam sadece manevi hayatımız olarak gösterilmeye çalışılan iç âlemimizi değil, manevi hayatımızı etkileyen dış âlemimizi de düzene koyan üretip tükettiğimiz, alıp sattığımız, yiyip içtiğimiz, giyip konuştuğumuza kadar her şeyimizi tanzim eden bir dindir. Kur’an-ı Kerim’de saydığımız maddi konularla ilgili yüzlerce ayet-i kerime olduğu gibi Peygamberimizin sosyal hayattaki yaşantısı ile ilgili binlerce hadis-i şerifi bize örnek olmaktadır.
 

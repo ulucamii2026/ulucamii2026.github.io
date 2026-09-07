@@ -218,7 +218,7 @@ Hesap görülüp herkesin yeri belli olduktan sonra insanlar cennete veya cehenn
 
 “Allah’a ve âhiret gününe iman ederek ölen kimseye, "Cennetin sekiz kapısının hangisinden dilersen gir." denilir.” (İbn Hanbel, I, 17) müjdesini vermektedir.
 
-### SONUÇ:
+### Sonuç
 
 Yâdında mı doğduğun dem
 

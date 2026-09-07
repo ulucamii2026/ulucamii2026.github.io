@@ -76,7 +76,7 @@ Bilirsiniz ki şeytan bizim apaçık düşmanımızdır. Bizlerin her iki dünya
 
 *“İblis dedi ki; Bundan böyle benim sapmama izin vermene karşılık, ant içerim ki, ben de onları saptırmak için senin doğru yolunun üstüne oturacağım. Sonra elbette onlara önlerinden, arkalarından, sağlarından, sollarından sokulacağım ve sen onların çoklarını şükredenlerden bulmayacaksın.”* (A’râf, 7/16-17)
 
-ŞÜKÜR NİMETİN ARTMASINA VESİLEDİR.
+## Şükür Nimetin Artmasına Vesiledir
 
 "eş-Şekûr" Allah'ın güzel isimlerinden birisidir. Anlamı, kendisinin rızası için amel edenlerin çabalarını zayi etmez, bilakis kat kat fazlasıyla karşılık verir demektir. Zira şüphesiz Allah güzel amelde bulunanların ecrini zayi etmez.
 

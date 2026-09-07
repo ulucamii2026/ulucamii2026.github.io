@@ -68,7 +68,7 @@ Başkasının hakkını gasp etmeyeceksin,
 
 Çalıp çırpmadan kazanacaksın
 
-## İSRAFIN ANLAMI
+## İsrafın Anlamı
 
 Arapça bir kelime olan israf “sarefe” kökünden gelmektedir. Seref, yemek, içmek, giyip, gezmek gibi meşru ve mübah olan hususlarda ma’kul ve ma’ruf sınırı aşmak demektir. İnsan fiillerinde sınırı aşana, aşırılık yapana, dengesiz harcama yapan kimseye de müsrif denir.
 
@@ -124,7 +124,7 @@ Dinimiz ibadetlerde bile itidali emrediyor, aşırılığı yasaklıyor. Kazand�
 
 Toplumumuzda israf hemen her türüyle yer almaktadır. Ancak biz en çok karşılaştığımız israf alanlarına kısaca işaret ederek bazı değerlendirmelerde bulunacağız.
 
-## İNSANIN İSRAFI
+## İnsanın İsrafı
 
 Yaratılmışlar içinde en değerli yaratık insan olduğuna göre, yerde ve göktekilerin insan için yaratılıp, insana hizmet ettiğine göre, asıl israf edilmemesi gereken şey insandır. (Bakara 2/29; İbrahim 14/32)
 
@@ -140,7 +140,7 @@ Peygamberi inkâr edenlerin كَذٰلِكَ يُضِلُّ اللّٰهُ مَ�
 
 İki gözü de kör olan İbni Ümmü Mektum, İran’ın fethinde Kadisiye’de kör gözleriyle sancağı elinde tutarak İranlıların hakkı görmelerine sebep olmuştur.
 
-## YEME-İÇMEDE İSRAF
+## Yeme-İçmede İsraf
 
 İnsanoğlu hayatını sürdürebilmek için çok çeşitli ihtiyaç maddelerini temin etmek zorundadır. Yiyecekten giyeceğe, barınmaktan ısınmaya, taşıttan zorunlu kullanım eşyasına kadar nelere muhtaç değiliz ki...
 
@@ -166,7 +166,7 @@ Bir Hadis-i Şerif'te ise şöyle buyurulur; Canının çektiği ve arzu ettiği
 
 Sanki Yedim Camiinin hikayesi. Keçeci Hayreddin Efendi’nin İstanbul Fatih’teki 18 yy. da İstanbul’da Keçeci Hayreddin Efendi canının istediği aperatif türü yiyecekleri sanki yedim diyerek bir kumbaraya atıyor. Yıllarca böyle para biriktiriyor. Sonunda kumbarayı açtığında çok parasının olduğunu görüyor ve bununla bir cami yaptırmaya karar veriyor. Bu cami halen İstanbul Fatih’te Sanki Yedim Camii adıyla ibadete açık. Hayreddin Efendinin amel defteri de açık.
 
-## GİYİM-KUŞAMDA İSRAF (MODA)
+## Giyim-Kuşamda İsraf (moda)
 
 Insanlık alemine şöyle bir göz atıldığında kaynağı her ne olursa olsun bütün toplumlarda giyinmenin bir zorunluluk olduğu görülür. Bazen dinden bazen örften kaynaklanabilir. Öyle ki, giyim-kuşamın tarihsel kökeni, ilk insana kadar dayanmaktadır.
 
@@ -180,7 +180,7 @@ Varlığı yerinde olan kişinin temiz ve güzel giyinmesi, sahip olduğu nimeti
 
 Üzülerek ifade edelim ki, suni bir olgu olan moda anlayışı, günümüzde insanların israfa yönelmesinde baş etkenlerden birisini teşkil etmektedir. Henüz rengi dahi solmamış, bir iki defa giyilen elbiselerin düşüncesizce zayi edilmesi, israf dışında hangi kavram ile açıklanabilir? Bu tür davranışların İslam’da bir vebali olduğunu belirtmemizde fayda vardır. İslam’a göre, ثُمَّ لَتُسْپَلُنَّ يَوْمَئِذٍ عَنِ النَّعيمِ insan kendisine verilen her türlü nimetten sorguya çekilecektir. (Tekasür, 102/8)
 
-## TÖRENLERDE YAPILAN İSRAF
+## Törenlerde Yapılan İsraf
 
 Evlilik, sünnet ve cenaze törenleri gibi Her milletin kendine özgü belirli törenleri vardır. Bir milletin elbette eğlenebileceği, bazı dinî ve millî duygularını canlı tutacağı, toplumsal birlikteliği perçinleyici törenleri olacaktır. Ancak niteliği ve dayanağı ne olursa olsun, yapılan merasimlerde milli ve manevî değerlerin zedelenmemesi temel amaç olmalıdır. Nasıl olsa yılda veya ömürde bir gün veya bir gece anlayışı ile başta israf olmak üzere her şey mubah görülmemelidir.
 
@@ -188,7 +188,7 @@ Nitekim günümüzde servetlerin düğün törenleri ve benzeri törenlerde öl�
 
 Ülkemiz gibi dar gelirlilerin çoğunlukta olduğu bir ülkede harcanan bu paralarla kaç öğrenciye burs verilir, kaç fakirin karnı doyurulur...
 
-## ZAMANIN İSRAFI
+## Zamanın İsrafı
 
 Her şey zaman içinde var olmakta, gelişmekte ve yine zaman içinde yok olmaktadır. İnsan hayatında önemli bir yere sahip olan ilim, servet ve diğer birçok değer, zaman içinde elde edilebilmektedir. Zamanı, gerektiği şekilde değerlendirebilenler hem dünyada hem de ahirette huzuru yakalayacaklardır.
 
@@ -230,7 +230,7 @@ Dini öğrenmeye, yaşamaya sıra geldi mi “vakit bulamıyorum, vaktim yok” 
 
 Yüce Allah müminlerin özelliklerinden bahsederken, وَالَّذِينَ هُمْ عَنِ اللَّغْوِ مُعْرِضُونَ “Onlar ki, boş ve yararsız şeylerden yüz çevirirler” (Mü’minun, 23/3) ifadesini kullanmaktadır. Buna göre müminin huzuru yakalayabilmesi için, dünya ve ahiretine, kendisi ve topluma faydası olmayacak her şeyden uzak durması gerekli temel şarttır.
 
-## EMEK İSRAFI
+## Emek İsrafı
 
 İsrafın en kötüsü, insan ve emeğin zayi edilmesidir. İnsana, insanüstü bir değer verip onu yüceltmek israf olduğu gibi, onun kadrini ve kabiliyetini bilmemek de israftır.
 
@@ -244,7 +244,7 @@ Bir emanet olan devlet ve millet işlerini; ehline vermeyip, korkak aciz kimsele
 
 Bu dünyada iken Rabbimin insana vermiş olduğu nimetleri değerlendirmemek bir israftır. Bir insanda fevkalade cevval bir zekâ varsa, öbüründe fevkalede bedeni bir kabiliyet varsa. Öbüründe sanata, ticarete bir kabiliyet varsa, bunlar değerlendirilmeden gidiyorsa, keşfedilmemiş madenler gibi yok olup gidiyorlar. Cehennem çöplüğüne atılmış olduğundan dolayı israf edilmiş oluyor.
 
-## KAYNAKLARIN İSRAFI
+## Kaynakların İsrafı
 
 Kaynaklar bir ülkenin sahip olduğu yeraltı ve yerüstü zenginlikleri Denizler, akarsular, ormanlar, tarıma elverişli araziler, kara ve deniz hayvanları, madenler.
 
@@ -266,7 +266,7 @@ Allah’ın insanlar için verdiği nimetlerin, olumsuz kullanımı, israftır. 
 
 Kaynakların israfında ülkemizde de her çeşidine rastlamak mümkündür. Oksijen kaynağımız olan ormanlarımız yakılmakta veya bilinçsizce kesilmekte, tarıma elverişli arazilere fabrika ve yerleşim merkezleri yapılmakta, denizlerimiz, akarsularımız kirletilmektedir. Sonra kirlenen denizlerimizin ya da akarsularımızın temizlenmesi, yanan ormanların yerine ağaç dikilmesi için yüklü paralar harcanmaktadır. Bütün bunlar israfın bir başka boyutunu teşkil etmektedir.
 
-## ENERJİ İSRAFI
+## Enerji İsrafı
 
 Ülkemizde enerji israfı göz ardı edilemeyecek bir derecededir. Kamu kurum ve kuruluşlarımız da dahil olmak üzere evlerimizde, iş yerlerimizde, sokaklarımızda enerji israfı konusunda gerekli titizlik gösterilmemektedir. Halbuki israf edilen enerji, ülkenin kaynağının israfıdır.
 
@@ -278,7 +278,7 @@ Bütün bu israfların temelinde, iyi eğitilmemiş, ahlaki değerlerden habersi
 
 İslam, israfın her çeşidine karşıdır. Bu israfın kişisel boyutta olması ile kitlesel boyutta olması arasında fark yoktur. Her şeyde itidali (dengeli ve ölçülü olmayı) öneren dinimiz İslam, yemede, içmede, giyimde kuşamda, ibadette dengeli ve ölçülü davranmamızı emretmiştir. O, dayanağı her ne olursa olsun ifrat ve tefritin karşısındadır.
 
-## İLAÇ İSRAFI
+## İlaç İsrafı
 
 Yapılan araştırmalar, her 100 evden 80’inde bir ya da birden fazla türden ilaç bulunduğunu gösteriyor. Bu ilaçların da büyük bir bölümünü antibiyotikler, ağrı kesiciler, ateş düşürücüler ve romatizmal ilaçlar oluşturuyor. Evde bulunan bu ilaçların sadece beşte biri, gerçekten evde ilaç ihtiyacı olan bir hasta tarafından kullanılıyor. Geri kalan ilaçlar evde lüzumsuz olarak bulunuyor. Evde lüzumsuz olarak bulunan bu ilaçların ülke ekonomisine yıllık maliyetinin 8 milyon dolardan fazla olduğu tahmin ediliyor. Birçok hasta doktora gelince, “evde bulunsun, lazım olabilir” diye reçetede boş bir yer kalmışsa mutlaka oraya bir ağrı kesici, antibiyotik, vitamin, öksürük şurubu yada krem eklettirme eğilimindedir. Özellikle en ufak soğuk algınlığında bile antibiyotiklere sarılmak adet haline gelmiştir. Uygunsuz ilaç kullanmanın ülke ekonomisine verdiği zarar oldukça yüksektir. Toplumumuzda başkalarının tavsiyesi ile “ona iyi geldiyse bana da iyi gelir” düşüncesiyle ilaç alımları olmaktadır.
 
@@ -292,7 +292,7 @@ Gereksiz harcamalarımızdan birisi de sigaradır ve hem bedeni israf etmekte he
 
 Peygamberimiz buyuruyor: "İktisat eden fakir olmaz..." "Atalarımız der ki; bir mıh (çivi) bir nal, bir nal bir ayak, bir ayak bir at, bir at bir asker, bir asker bir ordu, bir ordu bir vatan kurtarır! “Ata sözlerimiz aslında israfı en veciz şekliyle ifade etmektedir. Ak akçe kara gün içindir. /Ayağını yorganına göre uzat. / İşten artmaz, dişten artar. / Bugünün işini yarına bırakma. / Güvenme varlığa, düşersin darlığa. /Tutumlu olan kimse fakir olmaz. / Ucuzdur vardır illeti, pahalıdır vardır hikmeti. / Ekmek olmayınca, yemek olmaz. / Gençlikte taş taşı, ihtiyarlıkta ye aşı. / Damlaya damlaya göl olur. /Har vurup, harman savurma. /Sakla samanı, gelir zamanı. /Cennetin kapısını cömert açar.
 
-## SONUÇ
+## Sonuç
 
 Yerini bulmayan bir tuğla parçası, yırtılıp atılan bir kâğıt, çöpe atılan bir ekmek (parçası), cam kırığı, hayvanın yemesi gerekirken çevreye atıp saçtığımız meyve kabuğu vs. bir israftır. Hayvana hayvan muamelesi yapılması gerekirken haddi aşarak, pek çok insana gösterilmeyen ilgiyi göstermek israftır.
 

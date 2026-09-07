@@ -8,7 +8,7 @@ pdf: "/vaazlar/berat-kandili-ve-tevbe.pdf"
 ---
 <p lang="ar" dir="rtl" class="ayet">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 
-### GİRİŞ
+### Giriş
 
 Cenâb-ı Allah, zamanlar içinde bazı mukaddes zamanlar yaratmıştır. İçinde bulunduğumuz Üç aylar olarak isimlendirilen kıymetli zaman diliminde de Rabbimizin rahmet ve mağfiretinin bol bol tecelli ettiği mübarek geceleri teker teker idrak ediyoruz.
 
@@ -28,11 +28,11 @@ Yollardaki işaretler gibi hayatımızda da önemli dönüm noktaları vardır. 
 
 Kandiller ve benzeri geceler; iman, ibadet ve düşünce hayatımız bakımından kendimizi yenilememiz, geçmişimizi muhasebe etmemiz, geleceğimizi planlama ve ümitlerimizi tazelememiz için büyük bir fırsattır. Böyle geceleri ve günleri ihya etmek müstehab ve güzel adetlerimizdendir. İmanımızın kemaline, dünya ve ahiret saadetine vesiledir. Bu gece münasebetiyle, içimizdeki manevi duyguların sesine kulak vererek günahlarımıza tövbe etmeli, tüm Müslümanlar ve insanlık için Allah (cc)’a dua ve niyazda bulunmalıyız. Yüce Mevla’mız, bu gecede ilahi rahmetini bol bol indirmekte, rızık ve şifa kapılarını sonuna kadar açarak, bizleri sonsuz ikramlarına davet etmektedir.
 
-## KUR’ÂN VE BERAT GECESİ
+## Kur’ân ve Berat Gecesi
 
 Kur’ân-ı Kerim, berat gecesinde Levh-i Mahfuz’dan alınmış ve bir bütün hâlinde dünya göğüne indirilmeye başlanmıştır. Bu gecenin mübarek oluşunun önemli sebeplerinden biri de budur. Allah (c.c.) Duhan Suresi 1-7. ayetlerde şöyle buyurmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">حٰمٓۜ ﴿1﴾ وَالْكِتَابِ الْمُب۪ينِۙ ﴿2﴾ اِنَّٓا اَنْزَلْنَاهُ ف۪ي لَيْلَةٍ مُبَارَكَةٍ اِنَّا كُنَّا مُنْذِر۪ينَ ﴿3﴾ ف۪يهَا يُفْرَقُ كُلُّ اَمْرٍ حَك۪يمٍۜ ﴿4﴾ اَمْرًا مِنْ عِنْدِنَاۜ اِنَّا كُنَّا مُرْسِل۪ينَۚ ﴿5﴾ رَحْمَةً مِنْ رَبِّكَۜ اِنَّهُ هُوَ السَّميعُ الْعَليمُۙ ﴿6﴾ رَبِّ السَّمٰوَاتِ وَالْاَرْضِ وَمَا بَيْنَهُمَاۢ اِنْ كُنْتُمْ مُوقِنِينَ ﴿7﴾</p>
 
@@ -42,7 +42,7 @@ Kur’ân inmeden önce insanoğlunun efkârını dalâlet, kalbini küfür bulu
 
 İşte bu durumda olan yeryüzüne, Kur’ân-ı Kerim’in inmesinin birinci kademesi, Şâbân-ı Şerifin 15. gecesine tesadüf ettiğinden bu gece müstesna bir değer taşımaktadır. Bu gece hürmetine, birçok günahlar bağışlandığı için, Berat Gecesi adını almıştır.
 
-## BU GECENİN BEŞ HUSUSİYETİ
+## Bu Gecenin Beş Hususiyeti
 
 Peygamberimizin (a.s.) hadislerinde bu gecenin önemine vurgu yapılmıştır. Bu gecede beş büyük haslet vardır:
 
@@ -56,7 +56,7 @@ Erzakla ilgili nüsha, Mikâil aleyhisselâma, harb, zelzele ve diğer felâketl
 
 Hz. Âişe validemiz Peygamberimizi tanıtırken şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ، قَالَتْ فَقَدْتُ النَّبِيَّ ـ صلى الله عليه وسلم ـ ذَاتَ لَيْلَةٍ فَخَرَجْتُ أَطْلُبُهُ فَإِذَا هُوَ بِالْبَقِيعِ رَافِعٌ رَأْسَهُ إِلَى السَّمَاءِ فَقَالَ ‏"‏ يَا عَائِشَةُ أَكُنْتِ تَخَافِينَ أَنْ يَحِيفَ اللَّهُ عَلَيْكِ وَرَسُولُهُ ‏"‏ ‏.‏ قَالَتْ قَدْ قُلْتُ وَمَا بِي ذَلِكَ وَلَكِنِّي ظَنَنْتُ أَنَّكَ أَتَيْتَ بَعْضَ نِسَائِكَ ‏.‏ فَقَالَ ‏"‏ إِنَّ اللَّهَ تَعَالَى يَنْزِلُ لَيْلَةَ النِّصْفِ مِنْ شَعْبَانَ إِلَى السَّمَاءِ الدُّنْيَا فَيَغْفِرُ لأَكْثَرَ مِنْ عَدَدِ شَعَرِ غَنَمِ كَلْبٍ ‏"</p>
 
@@ -64,7 +64,7 @@ HADÎS-İ ŞERÎF
 
 DÖRDÜNCÜSÜ: Mağfiretin husulüdür. Peygamber Efendimiz buyuruyor ki:
 
-HADÎS-İ KUDSÎ
+<p class="vaaz-etiket">Hadîs-i Kudsî</p>
 
 <p lang="ar" dir="rtl" class="ayet">يا ابنَ آدمَ إنَّكَ ما دعوتَني ورجوتَني غفرتُ لكَ عَلَى مَا كَانَ فيكَ ولا أُبالي. يا ابنَ آدمَ لوْ بَلَغَتْ ذُنُوبُكَ عَنَانَ السَّمَاءِ ثُمَّ استغفرتَني غفرتُ لكَ ولا أُبالي. يا ابنَ آدمَ إنَّكَ لوْ أتيتني بِقُرابِ الأَرْضِ خَطَايا ثُمَّ لَقِيتَني لا تُشرِكُ بي شيئاً لأتيتُكَ بِقُرابِهَا مَغفِرةً".</p>
 
@@ -78,7 +78,7 @@ Ey Âdemoğlu! Sen yeryüzünü dolduracak kadar günahla karşıma gelsen; faka
 
 Bu gecenin bereketinden istifade edemeyecek olanları da Peygamberimiz (a.s.) şöyle anlatıyor.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">عَنْ رَسُولِ اللَّهِ ـ صلى الله عليه وسلم ـ قَالَ ‏"‏ إِنَّ اللَّهَ لَيَطَّلِع فِي لَيْلَةِ النِّصْفِ مِنْ شَعْبَانَ فَيَغْفِرُ لِجَمِيعِ خَلْقِهِ إِلاَّ لِمُشْرِكٍ أَوْ مُشَاحِنٍ ‏"</p>
 
@@ -86,7 +86,7 @@ Peygamber’den (s.a.s.) gelen bir rivayette ise *“Allah Taala (c.c.), Şa’b
 
 Merhum Elmalılı Muhammed Hamdi Yazır’ın Hak Dini Kur’an Dili isimli tefsirinde belirtildiğine göre “anne ve babasını incitenler, büyücüler, başkalarına kin besleyenler ve içki düşkünleri bu gecenin faziletinden yararlanamazlar” (Elmalılı, Hak Dini Kur’an Dili, VI/4293).
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">خمس ليال لا ترد فيهن الدعوة: أول ليلة من رجب، وليلة النصف من شعبان، وليلة الجمعة، وليلة الفطر، وليلة النحر</p>
 
@@ -94,7 +94,7 @@ Başka bir hadiste ise *"Beş gece vardır ki onlarda yapılan dualar geriye çe
 
 BEŞİNCİSİ: Bu gece Peygamber Efendimiz’e şefaat selâhiyetinin tamamı verildi. Şöyle ki: Peygamber Efendimiz Şaban ayının on üçüncü gecesi, ümmetine şefaat edebilmek için Allah Teâlâ’ya niyazda bulundu. Kendisine, ümmetinin üçte birine şefaat etme selâhiyeti verildi. Ümmetine son derece düşkün bulunan Resûlullah, daha fazla kimseye şefaat edebilme arzusu ile yanıp tutuşmaktaydı. On dördüncü geceyi de ibadetle ihya ve Cenab-ı Hakk’a şefaat dileğini tekrar etti. Ümmetinin üçte ikisine şefaat selâhiyeti verildi. Âlemlere rahmet olarak gönderilen Efendimiz, on beşinci geceyi de ibadetle geçirdi ve Mevlâ’ya salahiyetinin genişletilmesi için duada bulundu. Bunun üzerine ümmetinin tamamına şefaat selâhiyeti verildi.
 
-## KIBLENİN TAHVİLİ
+## Kıblenin Tahvili
 
 Bu geceye değer kazandıran hususlardan biri de kıblenin Kudüs istikâmetinden, Mescid-i Haram tarafına çevrilmiş olmasıdır.
 
@@ -102,7 +102,7 @@ Bu geceye değer kazandıran hususlardan biri de kıblenin Kudüs istikâmetinde
 
 Hicretin ikinci senesi, Şaban ayının on beşinci günü Efendimiz, Benî Seleme yurduna varmıştı. Onların mescidinde öğle namazının farzını kıldırırken kıblenin değiştirilmesiyle ilgili şu âyet-i kerime geldi:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قَدْ نَرَى تَقَلُّبَ وَجْهِكَ فِى السَّمَآءِ فَلَنُوَلِّيَنَّكَ قِبْلَةً تَرْضَىٰهَا فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ وَحَيْثُ مَا كُنْتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ وَاِنَّ الَّذِينَ اُوتُوا الْكِتَابَ لَيَعْلَمُونَ اَنَّهُ الْحَقُّ مِنْ رَبِّهِمْ وَمَا اللهُ بِغَافِلٍ عَمَّا يَعْمَلُونَ</p>
 
@@ -110,13 +110,13 @@ Hicretin ikinci senesi, Şaban ayının on beşinci günü Efendimiz, Benî Sele
 
 Peygamber Efendimiz, namaz içinde yönünü kıbleye, Kâ’be-i Muazzama tarafına çevirdi ve namazın geri kalan iki rek’atini Mescid-i Haram’a doğru kıldı. Bu mescide Mescîdü’l-Kıbleteyn adı verildi.
 
-## RAMAZAN’IN MÜJDECİSİ
+## Ramazan’ın Müjdecisi
 
 *Ramazan’ın müjdecisi… Şaban ayının on beşinci gecesi… Berat… Berat… Borçtan, hastalıktan, suç ve cezadan beraat etme, kurtulma… günahlardan arınma, temize çıkma, ilâhî af ve rahmete nâil olma…*
 
 Hz. Peygamber şöyle buyurur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِذَا كَانَتْ لَيْلَةُ النِّصْفِ مِنْ شَعْبَانَ فَقُومُوا لَيْلَهَا وَصُومُوا يَوْمَهَا . فَإِنَّ اللَّهَ يَنْزِلُ فِيهَا لِغُرُوبِ الشَّمْسِ إِلَى سَمَاءِ الدُّنْيَا فَيَقُولُ أَلاَ مِنْ مُسْتَغْفِرٍ فَأَغْفِرَ لَهُ أَلاَ مُسْتَرْزِقٌ فَأَرْزُقَهُ أَلاَ مُبْتَلًى فَأُعَافِيَهُ أَلاَ كَذَا أَلاَ كَذَا حَتَّى يَطْلُعَ الْفَجْرُ</p>
 
@@ -132,7 +132,7 @@ Peygamber Efendimiz (a.s.), Allah (c.c.)’ın rahmetinin ne kadar geniş olduğ
 
 Dünyada beratımızı almadan ahiretteki beraatımıza ulaşamayacağız. Dünyada yaşarken beratımızı gerçekleştirecek amellerimizi hayatımıza aktarmadan ahirette beraatımızı alıp cennete ulaşamayacağız. İman etmeden cennete giremeyeceğiz. Birbirimizi sevmeden iman etmiş olamayacağız. Birbirimizi sevmek için ise birbirimize selam vermemiz gerekiyor. O zaman kim olduğuna bakmadan Müslüman kardeşimize sadece Müslüman olduğu için değer verelim. Ona selam verelim, ilişkimizi kesmeyelim. İlişkimizi kesmek isteyenlere fırsat vermeyelim. Beraatını elde etmek isteyen Müslümanlar Efendimizi dinleyelim. Alemlere rahmet olarak gönderilen Peygamberimiz şöyle buyuruyor.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لا تَدْخُلُوا الجَنَّةَ حَتَّى تُؤْمِنُوا وَلا تُؤمِنوا حَتى تحَابُّوا ، أَوَلا أدُلُّكُمْ عَلَى شَئٍ إذا فَعَلْتُمُوهُ تَحاَبَبْتُم ؟ أفْشُوا السَّلام بَيْنَكُم</p>
 
@@ -144,7 +144,7 @@ HADÎS-İ ŞERÎF
 
 Bu dünyadan ayrıldıktan sonra bir daha dönüş yok. Ne kadar ah etsek de ne kadar üzülsek de ve ne kadar pişman olsak da bu hayata veda ettikten sonra dönüşümüz yoktur. Bu sebeple Beraat gecesinde gerçek beraatımızı gerçekleştirmek için ahiret hayatını –hayatımızın hiçbir zamanında unutmayacağımız gibi- bu gecede unutmayalım. Küçük hesapların peşine, geçici dünyanın aldatıcı sevgilerine takılmayalım. Sevgili Peygamberimizin bir hadis-i şerifini sizlerle paylaşmak isterim.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الكَيِّس مَنْ دَانَ نَفْسَهُ ، وَعَمِلَ لِما بَعْدَ الْموْتِ ، وَالْعَاجِزُ مَنْ أَتْبَعَ نَفْسَه هَواهَا ، وتمَنَّى عَلَى اللَّهِ الأماني</p>
 
@@ -154,7 +154,7 @@ HADÎS-İ ŞERÎF
 
 Ömür çok kısa. Göz açıp kapanıncaya kadar geçmektedir. Hayat her an sona erebilmektedir. Geçen sene beraber olduğumuz, kendisiyle muhabbet edip gülüp eğlendiğimiz nice insanlar aramızdan ayrıldı. Bizlerde bir gün sevdiklerimizden, bu dünyadan ayrılıp gideceğiz. Hiçbir insan dünya hayatında baki değildir. Ölümle bitecek olan bu kısa dünya hayatında yapmış olduğumuz şeyler ahiret yaşantımızı belirleyecektir. İşte bu gecelerin önemi ölüm akla geldikçe bir kat daha artmaktadır. Çünkü bu geceler fırsat gecesidir. Günahlarımız için nasuh tövbesi edebilirsek ve bir daha yaptığımız hatalara dönmez isek, Rabbimizin rızası doğrultusunda yaşar isek Rabbimizin bizlere nice müjdeleri vardır. Allah-u Teala bir ayette şöyle buyurmaktadır.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَسَارِعُواْ إِلَى مَغْفِرَةٍ مِّن رَّبِّكُمْ وَجَنَّةٍ عَرْضُهَا السَّمَاوَاتُ وَالأَرْضُ أُعِدَّتْ لِلْمُتَّقِينَ الَّذِينَ يُنفِقُونَ فِي السَّرَّاء وَالضَّرَّاء وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ وَاللّهُ يُحِبُّ الْمُحْسِنِينَ وَالَّذِينَ إِذَا فَعَلُواْ فَاحِشَةً أَوْ ظَلَمُواْ أَنْفُسَهُمْ ذَكَرُواْ اللّهَ فَاسْتَغْفَرُواْ لِذُنُوبِهِمْ وَمَن يَغْفِرُ الذُّنُوبَ إِلاَّ اللّهُ وَلَمْ يُصِرُّواْ عَلَى مَا فَعَلُواْ وَهُمْ يَعْلَمُونَ</p>
 
@@ -166,7 +166,7 @@ Kandil geceleri İlahi ışığın hayatımızı aydınlattığı gecelerdir. Ka
 
 Bu gecelere has ibadetler ihdas etmek doğru değildir. Ancak bu gecelerin feyiz ve bereketinden istifade etme yolları da elbette gözetilmelidir. Öncelikle şu hususu vurgulamak isterim. Şaban ayı Peygamberimizin ayıdır. Bu ayda ve özellikle bu gecede Sevgililer Sevgilisine salat ve selam getirelim. Yüce Rabbimizi bir ayette şöyle buyurmaktadır.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا</p>
 
@@ -176,7 +176,7 @@ Bu gecelere has ibadetler ihdas etmek doğru değildir. Ancak bu gecelerin feyiz
 
 Bu gecede Tövbe ve istiğfarda bulunalım. Çünkü bu gecede Rabbimizin Efendimizin diliyle bizlere müjdesi var. Bu müjdeden yararlanmak için günahlarımıza, isyanlarımıza ve hatalarımıza tövbe edelim, bağışlanma dileyelim. Çünkü Yüce Allah tövbe edenin tövbesini kabul etmektedir. Hud sûresi 3. ayette şöyle buyruluyor.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَأَنِ اسْتَغْفِرُواْ رَبَّكُمْ ثُمَّ تُوبُواْ إِلَيْهِ يُمَتِّعْكُم مَّتَاعاً حَسَناً إِلَى أَجَلٍ مُّسَمًّى وَيُؤْتِ كُلَّ ذِي فَضْلٍ فَضْلَهُ وَإِن تَوَلَّوْاْ فَإِنِّيَ أَخَافُ عَلَيْكُمْ عَذَابَ يَوْمٍ كَبِيرٍ</p>
 
@@ -192,7 +192,7 @@ Eğer kendimiz gibi neslimizin de beraatını alıp cennet ehlinden olmasını a
 
 Duamız olmazsa değerimiz olmaz bizim. Furkan sûresi 77. ayette bu husus şöyle ifade edilmektedir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ مَا يَعْبَأُ بِكُمْ رَبِّي لَوْلَا دُعَاؤُكُمْ فَقَدْ كَذَّبْتُمْ فَسَوْفَ يَكُونُ لِزَاماً</p>
 
@@ -206,7 +206,7 @@ Zikir kışa dönmüş kalplerimizi bahara çevirir. Zikir ölmüş ruhlara haya
 
 Sevinç tek taraflı değildir. Mutluluk tek başına kişiye gerçek güzelliği getirmemektedir. Paylaşmak asıldır. Bir ekmek paylaşıldığı zaman tatlıdır. Bir sevgi paylaşıldığı zaman artar. Bu gece mutluluğumuzu paylaşalım. Bu gece maddiyatımızı paylaşalım. Bizde olanları olmayanla ulaştıralım. Huzur evlerinde bizleri bekleyenler var. Hastanelerde bizleri hasretle bekleyenler var. Çocuk esirgeme kurumlarında başının okşanmasını bekleyen yetimlerimiz, kimsesizlerimiz var. Yapmış olduğu bir hata yüzünden cezaevlerinde, ıslahhanelerde olanlarımız var. Onlara gidelim. Sevgimizi, muhabbetimizi uzatalım. Bu dünyada Sevgiden mahrum olan hiçbir kimse kalmasın bu gece. Onları Allah’ı hatırlatalım. Yardım edenlerin en hayırlısının ve en güzelinin Allah olduğunu unutmayalım unutturmayalım. Başımıza hiçbir şey gelmez demeyelim. Başına sıkıntı gelmişlere el uzatalım gönül açalım. Merhamet edelim ki merhamete nail olalım. Kimsesizlerin kimsesi olmanın gerekliliğini Efendimizden dinleyelim.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">اَلْمُسْلِمُ أَخُــو الْمُسْلِمِ لاَ يَظْلِمُهُ ولاَ يُسْلِمُهُ، ومَنْ كَانَ فِي حاَجَةِ أَخِيهِ كانَ اللَّهُ فِي حاَجَتِهِ، وَمَنْ فَرَّجَ عنْ مُسلمٍ كُرْبةً فَرَّجَ اللَّهُ عَنْهُ بِهاَ كُرْبةً مِنْ كُرَبِ يَوْمِ القِياَمَةِ، وَمَنْ سَتَرَ مُسْلِماً سَتَرَهُ اللَّهُ يَوْمَ الْقِياَمَةِ</p>
 
@@ -226,7 +226,7 @@ Allah (c.c.)’ın her gün ve gecesi, mukadder olduğu, bir gün ve gecenin di�
 
 Gecenin ihyasının nasıl olacağını soranlar, iç alemlerine dalmalı, tefekkür etmeli, geçmişini bir bir hayalinde canlandırıp, mukayeseler yapmalıdır. Ömür çok kısa… Göz açıp kapanıncaya kadar geçmektedir. Hayat her an sona erebilmektedir. Geçen sene beraber olduğumuz, kendisiyle muhabbet edip gülüp eğlendiğimiz nice insanlar aramızdan ayrıldı. Bizlerde bir gün sevdiklerimizden, bu dünyadan ayrılıp gideceğiz. Hiçbir insan dünya hayatında baki değildir. Ölümle bitecek olan bu kısa dünya hayatında yapmış olduğumuz şeyler ahiret yaşantımızı belirleyecektir. İşte bu gecelerin önemi ölüm akla geldikçe bir kat daha artmaktadır. Çünkü bu geceler fırsat gecesidir. Bu gecede tövbe ve istiğfarda bulunalım. Çünkü Rabbimizin bizlere müjdesi var. Bu müjdeden yararlanmak için günahlarımıza, isyanlarımıza ve hatalarımıza tövbe edelim, bağışlanma dileyelim. Çünkü Allah (c.c.) tövbe edenin tövbesini kabul etmektedir. Nitekim Cenab-ı Hak ayeti kerimede şöyle buyurmaktadır.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا عَسَى رَبُّكُمْ أَن يُكَفِّرَ عَنكُمْ سَيِّئَاتِكُمْ وَيُدْخِلْكُمْ جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ يَوْمَ لَا يُخْزِي اللَّهُ النَّبِيَّ وَالَّذِينَ آمَنُوا مَعَهُ نُورُهُمْ يَسْعَى بَيْنَ أَيْدِيهِمْ وَبِأَيْمَانِهِمْ يَقُولُونَ رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</p>
 
@@ -234,7 +234,7 @@ Gecenin ihyasının nasıl olacağını soranlar, iç alemlerine dalmalı, tefek
 
 ✦ ✦ ✦
 
-### SONUÇ
+### Sonuç
 
 Bu mübarek geceler bizlere bir şeyler kazandırmalı, yeni kararlar ve fikirlere sahip olmamıza vesile olmalı. Eğer geceye girişimizle çıkışımız bir olmuşsa, yani ondan evvelki halimizle, sonraki halimiz aynı ise geceyi hakkıyla ihya edememişizdir.
 
@@ -244,7 +244,7 @@ Her gün artan günah yükünden kurtulmak için Allah’ın bizlere bahşettiğ
 
 Uyanık bir kalple Allah’a dua ve niyazda bulunalım.
 
-## DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Yüce Rabbim ramazan ayının müjdecisi Beraat kandilimizi mübarek eylesin. Günahlarımızın affına vesile eylesin. Habibinin şefaatine bizi nail eylesin. Sevdiklerimizle beraber nice mübarek geceleri, manen en üst seviyede yaşamayı bizlere nasip eylesin.*
 

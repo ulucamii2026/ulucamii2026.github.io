@@ -123,7 +123,7 @@ Gördüğümüz üzere Peygamberimiz (s.a.v) Kur’an’ı tam anlamıyla yaşam
 
 Hazreti Peygamber (s.a.v.) hediyeyi büyük bir incelik ve tevazu ile kabul etmiş, onu giyip ashâbının yanına gitmişti. Bu sırada bir sahâbî, Peygamber Efendimizin (s.a.v) üzerindeki hırkayı görüp, “Ne kadar da güzelmiş! Bunu bana verseniz.” demişti. İnsanların en cömerdi olan Peygamber Efendimizin (s.a.v), hemen *“Peki”* demiş, biraz orada oturduktan sonra hırkayı nazikçe katlayıp isteyen sahâbîye göndermiştir. (İbn Mâce, Libâs, 1)
 
-### Menkıbe:
+<p class="vaaz-etiket">Menkîbe</p>
 
 ### Sâbit b. Kays ve Eşinin Emsalsiz Cömertliği - Hz. Peygamber’ in (s.a.v) İzinde
 

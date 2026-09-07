@@ -6,7 +6,7 @@ kelime: 3417
 docx: "/vaazlar/kurban-allah-a-yakinlastirir.docx"
 pdf: "/vaazlar/kurban-allah-a-yakinlastirir.pdf"
 ---
-### GİRİŞ
+### Giriş
 
 Kurban ibadeti, dinimiz İslam’ın (şi’ar/şe’âir) sembollerinden biridir. Hz. Âdem (a.s) ve oğulları Habil-Kabil, Hz. İbrahim ve oğlu Hz. İsmail örnekliğinde kurban, Rabbimiz karşısında, sorgusuz-sualsiz bir itaat ve teslimiyet; sahip olduklarımızın en iyisini hatta kendimizi Rabbe takdim, amel, takva ve samimiyetle O’na yönelme ibadetidir. Bir tür şükür nişanesidir. Toplumsal ve bireysel faydaları ağır basmakla beraber taabbudî bir ibadettir. Yani Allah nasıl emretmişse öncelikle sırf O’nun rızasını kazanmak için yapılması gereken bir kulluktur.
 
@@ -20,7 +20,7 @@ Kurban ibadeti, sadece bir hayvanın kesilmesi eylemi değil, müminin Allah'a o
 
 “Onların ne etleri ne kanları Allah’a ulaşacaktır. Fakat O’na sizin takvanız (Allah’a karşı gelmekten sakınmanız) ulaşacaktır…” (Hacc, 22/37) şeklinde beyan etmiştir. Allah'a ulaşan kurbanın eti ve kanı değil, müminin kalbindeki takvadır. Kurban kesmek, bu takva bilincini artırmaya, Allah'ın emirlerine itaat etmeye ve O'nun rızasını kazanmaya vesile olur. Hadis-i şerifler de bu ibadetin Allah katındaki büyük değerini ve sevabını müjdeleyerek, müminleri bu önemli ibadeti ihlasla yapmaya teşvik eder. Kurban, müminin Rabbi ile arasındaki bağı güçlendiren, O'na yakınlaşmasına imkân tanıyan müstesna bir ibadettir.
 
-### KURBAN İBADETİNİN TARİHÇESİ
+### Kurban İbadetinin Tarihçesi
 
 Kurban, insanlık tarihi kadar eskidir. İçerik ve şekil yönüyle tarih boyunca bütün dinlerde ya doğrudan ya da dolaylı olarak vardır. Bir ibadet olarak hemen hemen bütün ilahi dinlerde kurban kesmek, insanı Allah’a manen yaklaştıran bir ibadet sayılmıştır. Bizzat Kur’an-ı Kerim’de bu ibadetin bütün ümmetlere meşru kılındığı bildirilmiştir.
 
@@ -36,7 +36,7 @@ Bu ayet-i kerime, Kur'an-ı Kerim'de kıssaları anlatmanın hikmetlerinden biri
 
 إِنَّمَا يَتَقَبَّلُ اللّهُ مِنَ الْمُتَّقِينَ “Allah ancak takva sahiplerinden kabul eder.” (Maide, 5/27) buyurmuştu. Zaten içerisinde takva olmayan ibadetler adet olmaktan öteye geçemez.
 
-### HZ. İBRAHİM VE HZ. İSMAİL’İN TESLİMİYETİ
+### Hz. İbrahim ve Hz. İsmail’in Teslimiyeti
 
 Kurban ilk olarak Hz. Âdem’in (a.s.) oğullarında takdim etme şeklindeyken Hz. İbrâhim (a.s.) ile günümüzde uygulanan şekline dönüşmüştür. Günümüzdeki şekli ile bu ibadet, tarihî hatırasını Hz. İbrâhim (a.s.) ve oğlundan alır. Zira Hz. Peygamber (s.a.s.)’i kurban keserken gören ashabı:
 
@@ -112,7 +112,7 @@ Tüm emir ve ibadetlerin bir amacı vardır. Gaye, maksat, hedef, amaç bunlar h
 
 Kurban kesmek yerine parasını ihtiyaç sahiplerine sadaka olarak versek olur mu diye sorulduğunda, Kurban kesmek kan akıtma ile yapılan bir ibadettir deriz. Bu iki ibadetin birbirinin alternatifi olarak sunulması doğru değildir. Bu sebeple kesme olmadan hayvanı, sadaka olarak bir kişiye vermek kurban yerine geçmez (İbn Âbidîn, Reddü’l-muhtâr, 6/320). Aynı şekilde kurban bedelini de yoksullara ya da yardım kuruluşlarına vermek suretiyle, kurban ibadeti ifa edilmiş olmaz.
 
-### KURBAN İBADETİNİN UHREVİ/MANEVİ FAYDALARI VE KAZANIMLARI
+### Kurban İbadetinin Uhrevi/manevi Faydaları ve Kazanımları
 
 Allah'a Yakınlaşma (Takva): Kurban, Müslümanın Allah'a olan bağlılığını ve teslimiyetini en güzel şekilde ifade etme yoludur. Amaç, Allah'ın rızasını kazanmak ve O'na yakınlaşmaktır. "Onların ne etleri ne de kanları Allah'a ulaşır; O'na ulaşacak olan ancak sizin takvanızdır." (Hac, 22/37) Bu ayet, kurbanın asıl amacının Allah'a yakınlaşmak ve takva sahibi olmak olduğunu vurgular.
 
@@ -148,7 +148,7 @@ Hz. İbrahim'in Sünnetini İhya Etme: Kurban, Hz. İbrahim'in (a.s.) Allah'a ol
 
 Cenneti Kazanma Vesilesi: Allah'ın rızasını kazanarak yapılan her ibadet gibi kurban da, ahirette mükâfatı olan ve cennete ulaşmaya vesile olabilecek salih bir ameldir. Kur'an-ı Kerim'de salih amellerin cenneti kazanmaya vesile olduğu müjdelenmiştir. (Kehf, 18/31) Kurban ibadeti de salih bir amel olarak ahirette mükâfatı olan bir ibadettir. "Kim Allah'a ve ahiret gününe iman ederse, komşusuna iyilik etsin." (Buhari, Edeb, 12) Kurban etinin komşularla paylaşılması da bu iyilik kapsamında değerlendirilebilir ve cennete girmeye vesile olabilir.
 
-### KURBAN İBADETİNİN MADDİ FAYDALARI VE KAZANIMLARI
+### Kurban İbadetinin Maddi Faydaları ve Kazanımları
 
 İhtiyaç Sahiplerine Yardım: Kurban etinin bir kısmının fakirlere, yoksullara ve ihtiyaç sahiplerine dağıtılması, onların maddi sıkıntılarını gidermeye yardımcı olur. Bu, toplumda gelir dağılımının dengelenmesine ve sosyal adaletin tesisine katkı sağlar. "Onlardan (kurbanlık etlerinden) yiyin ve darda kalmış yoksulu doyurun." (Hac, 22/28) Bu ayet, kurban etinin hem kurban kesenler tarafından yenilmesi hem de ihtiyaç sahiplerine dağıtılması gerektiğini açıkça belirtir. Resulullah (s.a.s.) zamanında insanlar kurban kestiklerinde etin büyük bir kısmını sadaka olarak verirlerdi. Bir hadiste, Resulullah (s.a.s.)'in kurban etinin üçe bölünmesini tavsiye ettiği rivayet edilir: Bir bölümü kurban kesen ve ailesi için, bir bölümü akraba ve dostlar, bir bölümü ise fakirler için. (Ebu Davud, Edahi, 3)
 
@@ -164,7 +164,7 @@ Sofraların Bereketlenmesi: Kurban eti, evlerde bereket ve bolluğun simgesi hal
 
 Küresel Dayanışma Örnekleri Oluşturması: Kurban bağışları aracılığıyla dünyanın farklı bölgelerindeki ihtiyaç sahiplerine ulaşılması, küresel dayanışmanın önemli bir örneğini teşkil eder. Bunun içinde kurbanlarımızı dünyanın dört bir yanındaki Müslümanlarla paylaşmalı özellikle Gazze’deki kardeşlerimizi unutmamalıyız.
 
-### SONUÇ
+### Sonuç
 
 İslam dininde kurban ibadeti, derin manevi temellere dayanan çok yönlü bir ibadettir. Bireysel olarak Allah'a teslimiyeti, kulluk bilincini ve şükran duygusunu ifade ederken, toplumsal olarak da yardımlaşma, dayanışma ve merhamet gibi değerleri pekiştirir. Kurban, iman edenlerin inançlarını yaşamalarına, ahlaki erdemlerini geliştirmelerine ve toplumsal sorumluluklarını yerine getirmelerine önemli bir katkı sağlar.
 

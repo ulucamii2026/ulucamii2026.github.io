@@ -261,3 +261,23 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .logo-amblem { background: var(--color-krem); padding: 2px; box-shadow: 0 0 0 1px rgb(247 243 234 / 0.35); }
 }
+
+/* ── Yazdırma ─────────────────────────────────────────────────────────────────
+   Sayfalar sık sık basılıp cami panosuna asılıyor (namaz vakitleri, vaaz metni, duyuru).
+   Ekranda işe yarayan ne varsa (menü, düğme, bant, altbilgi) kâğıtta yer israfıdır. */
+@media print {
+  :root { --zemin: #fff; --zemin-2: #fff; --zemin-3: #fff; --metin: #000; --metin-2: #333;
+          --cizgi: #bbb; --cizgi-etkilesim: #999; }
+  html, body { background: #fff !important; color: #000 !important; font-size: 11.5pt; }
+  .vt-baslik, .vt-altbilgi, .vz-filtre, .vz-ara, .vaaz-yan, .vaaz-alt, .vaaz-ilgili,
+  .geri-bag, .baglanti-dugme, .hac-bandi,
+  [data-slayt], [role="status"], .yazdirma-gizle { display: none !important; }
+  main { padding: 0 !important; }
+  .kapsayici { width: 100% !important; max-width: none !important; padding: 0 !important; }
+  a { color: #000 !important; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid-page; page-break-after: avoid; }
+  p, li, blockquote, table, figure, img { break-inside: avoid-page; page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  table { width: 100% !important; border-collapse: collapse; }
+  th, td { border: 1px solid #bbb; padding: 4pt 6pt; }
+}

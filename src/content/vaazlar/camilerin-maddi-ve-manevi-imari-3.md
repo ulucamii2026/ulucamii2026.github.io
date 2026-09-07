@@ -1,5 +1,5 @@
 ---
-baslik: "Camilerin Maddi ve Manevi İmarı"
+baslik: "Camilerin Maddi ve Manevi İmarı (3)"
 ozet: "Bizleri yoktan var eden, varlığından haberdar eden, sevgisini gönlümüze nakşeden sayamayacağımız kadar nimetler ihsan eden yüce Rabbimize sonsuz hamd-ü senalar…"
 kategori: ibadet
 kelime: 3002

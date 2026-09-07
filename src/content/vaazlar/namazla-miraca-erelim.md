@@ -24,7 +24,7 @@ Sözlükte “yukarı çıkmak, yükselmek” anlamındaki urûc kökünden tür
 
 Literatürdeki bu ayırım her iki terimin naslarda zikredilmesinden ileri gelmektedir. Seyr (geceleyin yürüme, gece yolculuğu yapma) kökünden türeyen isra Kur’an’da mâzi sîgasıyla yer almış ve sûreye ad olmuştur.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">سُبْحَانَ الَّذِي أَسْرَى بِعَبْدِهِ لَيْلاً مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الأَقْصَى الَّذِي بَارَكْنَا حَوْلَهُ لِنُرِيَهُ مِنْ آيَاتِنَا إِنَّهُ هُوَ السَّمِيعُ البَصِيرُ</p>
 
@@ -42,7 +42,7 @@ Mirac, bir yönüyle Rabbe vuslat, bir yönüyle de Rabbin nehyettiklerini terk 
 
 Abdullah b. Mesud’dan rivayet edildiğine göre Mirac’da Peygamberimize (s.a.s.) üç ilâhî ihsanda bulunulmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">…فَأُعْطِيَ رَسُولُ اللَّهِ ثَلاَثًا: أُعْطِيَ الصَّلَوَاتِ الْخَمْسَ، وَأُعْطِيَ خَوَاتِيمَ سُورَةِ الْبَقَرَةِ، وَغُفِرَ –لِمَنْ لَمْ يُشْرِكْ بِاللَّهِ مِنْ أُمَّتِهِ شَيْئًا– الْمُقْحِمَاتُ.</p>
 
@@ -54,7 +54,7 @@ HADÎS-İ ŞERÎF
 
 Namaz günde beş vakit Yüce Rabbimizle buluşma randevumuzdur. Dertlerimizden ve günahlarımızdan arınma ve teselli vesilemizdir. Namazla mümin Rabbinin huzuruna manevi olarak yükselir. Namazlarımızda okuduğumuz Tahiyyat duası Peygamber Efendimiz’in (s.a.s.) Mirac anını hatırlama zamanımızdır.
 
-TAHİYYÂT DUASI
+<p class="vaaz-etiket">Tahiyyât Duası</p>
 
 <p lang="ar" dir="rtl" class="ayet">التحيات لله, والصلوات والطيبات, السلام عليك أيها النبي ورحمة الله وبركاته, السلام علينا وعلى عباد الله الصالحين أشهد أن لا إله إلا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ ‏</p>
 
@@ -64,7 +64,7 @@ TAHİYYÂT DUASI
 
 Mirac hadisesi gerçekleştiği zaman müşrikler bu hadise sebebiyle Peygamber Efendimiz (s.a.s.) için iftira kampanyası başlatmışlar ve böyle bir hadisenin gerçekleşmesinin mümkün olmadığı hususunda akıl yürütmüşler, Peygamber Efendimizi (s.a.s.) yalancılıkla ve sihirbazlıkla suçlamışlardır. Oysaki Hz. Ebubekir (r.a.) bu hadise kendisine aktarıldığı zaman;
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنْ كَانَ قَالَهُ فَقَدْ صَدَقَ، وَإِنَّا لَنُصَدِّقُهُ فِيمَا هُوَ أَبْعَدُ مِنْ هَذَا، نُصَدِّقُهُ عَلَى خَبَرِ السَّمَاءِ.</p>
 
@@ -72,7 +72,7 @@ HADÎS-İ ŞERÎF
 
 ### Kudüs ve Mescid-i Aksa’nın Önemi
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">سُبْحَانَ الَّذِي أَسْرَى بِعَبْدِهِ لَيْلاً مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الأَقْصَى الَّذِي بَارَكْنَا حَوْلَهُ لِنُرِيَهُ مِنْ آيَاتِنَا إِنَّهُ هُوَ السَّمِيعُ البَصِيرُ</p>
 
@@ -82,7 +82,7 @@ HADÎS-İ ŞERÎF
 
 Hz. Peygamber (s.a.s.) buyurdular ki:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لاَ تُشَدُّ الرِّحَالُ إِلَّا إِلَى ثَلاَثَةِ مَسَاجِدَ: الْمَسْجِدِ الْحَرَامِ، وَالْمَسْجِدِ الْأَقْصَى وَمَسْجِدِي</p>
 
@@ -94,13 +94,13 @@ Müminlerin ilk kıblesi, isra ve miracın hatırası Mescidi Aksa tevhid dinine
 
 İsra ve mirac olayı bize Allah’ın desteğinin her zaman inananların üzerinde olduğunun en önemli ispatıdır. İsra ve mirac hadisesiyle Allah Teâlâ kulunun destekçisi olduğunu ve kendisinin desteğinin en büyük destek olduğunu vurgulamıştır. İşte nasıl ki, Allah, kulu Muhammed’i (s.a.s.) yalnız ve desteksiz bırakmadıysa bizleri de öylece yalnız bırakmamıştır ve bırakmayacaktır. Müminler kendilerine düşeni yaptıkları sürece Allah’ın yardımı ve desteği inananlarla olacaktır. Nitekim Allah Teâlâ birçok ayette bu hususu vurgulamıştır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">فَاذْكُرُونٖٓي اَذْكُرْكُمْ وَاشْكُرُوا لٖي وَلَا تَكْفُرُونِࣖ</p>
 
 *“Artık siz beni anın ki ben de sizi anayım. Bana şükredin, bana nankörlük etmeyin!”* (Bakara, 2/152)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اسْتَعٖينُوا بِالصَّبْرِ وَالصَّلٰوةِؕ اِنَّ اللّٰهَ مَعَ الصَّابِرٖينَ</p>
 
@@ -110,7 +110,7 @@ Müminlerin ilk kıblesi, isra ve miracın hatırası Mescidi Aksa tevhid dinine
 
 Namaz, bütün peygamberlerin Allah’a yönelişinin en somut göstergesidir. Tıpkı Peygamber Efendimiz’e (s.a.s.),
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اِنَّ صَلَاتٖي وَنُسُكٖي وَمَحْيَايَ وَمَمَاتٖي لِلّٰهِ رَبِّ الْعَالَمٖينَۙ</p>
 
@@ -118,7 +118,7 @@ Namaz, bütün peygamberlerin Allah’a yönelişinin en somut göstergesidir. T
 
 Hz. İbrahim (a.s.),
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">رَبِّ اجْعَلْنٖي مُقٖيمَ الصَّلٰوةِ وَمِنْ ذُرِّيَّتٖيࣗ رَبَّـنَا وَتَقَبَّلْ دُعَٓاءِ</p>
 
@@ -126,7 +126,7 @@ Hz. İbrahim (a.s.),
 
 Hz. İsmail (a.s.),
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَكَانَ يَأْمُرُ اَهْلَهُ بِالصَّلٰوةِ وَالزَّكٰوةِۖ ﴾</p>
 
@@ -134,7 +134,7 @@ Hz. İsmail (a.s.),
 
 Hz. Lokman (a.s.),
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ يَا بُنَيَّ اَقِمِ الصَّلٰوةَ ﴾</p>
 
@@ -142,7 +142,7 @@ Hz. Lokman (a.s.),
 
 Allah, Hz. Musa’ya (a.s.),
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاَقِمِ الصَّلٰوةَ لِذِكْرِي ﴿14﴾</p>
 
@@ -152,7 +152,7 @@ Hz. Zekeriya (a.s.) mabette namaz kılmış, (Âl-i İmrân, 3/39) Hz. Meryem Ra
 
 Hz. İsa (a.s.) da,
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَجَعَلَنِي مُبَارَكًا اَيْنَ مَا كُنْتُۖ وَاَوْصَانِي بِالصَّلٰوةِ وَالزَّكٰوةِ مَا دُمْتُ حَيًّاۖ ﴿31﴾</p>
 
@@ -160,7 +160,7 @@ Hz. İsa (a.s.) da,
 
 Ancak zamanla Allah’ın emri ve peygamberlerin tavsiyesine rağmen insanı ruhen yücelterek Rabbi ile iletişimini sağlayan namaz ibadeti yerine getirilmemiş, terk edilmiştir. Nitekim Rabbimiz,
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">فَخَلَفَ مِنْ بَعْدِهِمْ خَلْفٌ اَضَاعُوا الصَّلٰوةَ وَاتَّبَعُوا الشَّهَوَاتِ فَسَوْفَ يَلْقَوْنَ غَيًّاۙ ﴿59﴾</p>
 
@@ -168,7 +168,7 @@ Ancak zamanla Allah’ın emri ve peygamberlerin tavsiyesine rağmen insanı ruh
 
 Kur’an-ı Kerim, namazın belirlenen âdâb içerisinde, huşû ve sorumluluk bilinciyle ve sürekli eda edilmesi gereken bir ibadet olduğunu birçok yerde vurgulamaktadır. Âyetlerde namaz anlamındaki ***“salât”*** ile eksiksiz ve devamlı olarak yerine getirme manasındaki *“ikâme”* kelimeleri yan yana kullanılarak namazın vaktinde, eksiksiz bir biçimde, şartlarına riayet edilerek, dosdoğru ve özenle kılınması gerektiğine dikkat çekilmektedir;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّمَا وَلِيُّكُمُ اللّٰهُ وَرَسُولُهُ وَالَّذٖينَ اٰمَنُوا الَّذٖينَ يُقٖيمُونَ الصَّلٰوةَ وَيُؤْتُونَ الزَّكٰوةَ وَهُمْ رَاكِعُونَ</p>
 
@@ -176,19 +176,19 @@ Kur’an-ı Kerim, namazın belirlenen âdâb içerisinde, huşû ve sorumluluk 
 
 Kur’an-ı Kerim’de kendilerinden övgüyle bahsedilen müminlerin özellikleri sıralanırken, onların şu özellikleri ısrarla vurgulanır;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ اَلَّذٖينَ هُمْ فٖي صَلَاتِهِمْ خَاشِعُونَۙ ﴾</p>
 
 *“Namazlarında huşû içindedirler”* (Müminûn, 23/2)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ وَالَّذٖينَ هُمْ عَلٰى صَلَوَاتِهِمْ يُحَافِظُونَۘ ﴾</p>
 
 *“Namazlarını muhafaza ederler”* (Müminûn, 23/9) ve
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">﴿ اَلَّذٖينَ هُمْ عَلٰى صَلَاتِهِمْ دَٓائِمُونَۖ ﴾</p>
 
@@ -196,7 +196,7 @@ Kur’an-ı Kerim’de kendilerinden övgüyle bahsedilen müminlerin özellikle
 
 Diğer taraftan namazı ciddiye almayıp özünden uzaklaşan, onu gösteriş için kılan kişiler eleştirilmiştir;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">فَوَيْلٌ لِلْمُصَلٖينَۙ﴿٤﴾ اَلَّذٖينَ هُمْ عَنْ صَلَاتِهِمْ سَاهُونَۙ﴿٥﴾</p>
 
@@ -204,7 +204,7 @@ Diğer taraftan namazı ciddiye almayıp özünden uzaklaşan, onu gösteriş i�
 
 Namaz; dua, yalvarma, sadece Rabbe yönelme, O’ndan yardım ve bağışlanma dileme, O’na iltica ve münâcât etmedir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاسْتَعٖينُوا بِالصَّبْرِ وَالصَّلٰوةِۜ وَاِنَّهَا لَكَبٖيرَةٌ اِلَّا عَلَى الْخَاشِعٖينَۙ</p>
 
@@ -212,7 +212,7 @@ Namaz; dua, yalvarma, sadece Rabbe yönelme, O’ndan yardım ve bağışlanma d
 
 Namaz, aynı zamanda müslümanların dünyevî meşguliyetlerine kısa bir mola vererek Allah’a yönelmelerini ve psikolojik olarak rahatlamalarını sağlar. Sahâbeden Ebû Huzeyfe’nin (r.a.) naklettiğine göre;
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">كَانَ النَّبِىُّ صلى الله عليه وسلم إِذَا حَزَبَهُ أَمْرٌ صَلَّى</p>
 
@@ -220,7 +220,7 @@ HADÎS-İ ŞERÎF
 
 Nitekim bir defasında Bilâl’e (r.a.),
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَقِمِ الصَّلاَةَ أَرِحْنَا بِهَا</p>
 
@@ -228,19 +228,19 @@ HADÎS-İ ŞERÎF
 
 Rükünlerinin hakkıyla yerine getirilmesi kadar, namazın belirlenen beş vakitte kılınması da çok önemlidir. Nitekim Abdullah b. Mesûd (r.a.), bir gün Peygamber Efendimize (s.a.s.),
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَىُّ الأَعْمَالِ أَفْضَلُ</p>
 
 *“Amellerin hangisi Allah’a daha sevimlidir?”* diye sorunca, Allah Resûlü (s.a.s.),
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الصَّلاَةُ عَلَى وَقْتِهَا</p>
 
 *“Vaktinde kılınan namazdır.” cevabını vermiştir.* (Buhârî, Edeb, 1; Müslim, Îmân, 139) Buna mukabil Peygamber Efendimiz (s.a.s.) ,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ فَاتَتْهُ الصَّلَاةُ فَكَأَنَّمَا وُتِرَ أَهْلَهُ وَمَالَهُ</p>
 
@@ -248,7 +248,7 @@ HADÎS-İ ŞERÎF
 
 Hz. Peygamber’in (s.a.s.), namazı, kul ile küfür ve şirk arasında bir engel/koruyucu olarak görmesi, bu önemli ibadetin müslümanı, Allah’ı inkâr etmekten koruduğuna işaret etmektedir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">بَيْنَ الْعَبْدِ وَبَيْنَ الشِّرْكِ وَالْكُفْرِ تَرْكُ الصَّلَاةِ</p>
 
@@ -258,7 +258,7 @@ HADÎS-İ ŞERÎF
 
 Hz. Ömer’in (r.a.) valilerine yazdığı tavsiyesinde,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ أَهَمَّ أَمْرِكُمْ عِنْدِى الصَّلاَةُ فَمَنْ حَفِظَهَا وَحَافَظَ عَلَيْهَا حَفِظَ دِينَهُ وَمَنْ ضَيَّعَهَا فَهُوَ لِمَا سِوَاهَا أَضْيَعُ</p>
 
@@ -266,25 +266,25 @@ HADÎS-İ ŞERÎF
 
 Namaz sadece insanın dünyasını değil aynı zamanda âhiretini de kurtarmasının en önemli vesilelerindendir. Bu durum Hz. Peygamber’in (s.a.s.) hadislerinde farklı lâfızlarla ifade edilmiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ حَافَظَ عَلَيْهَا كَانَتْ لَهُ نُورًا وَبُرْهَانًا وَنَجَاةً يَوْمَ الْقِيَامَةِ وَمَنْ لَمْ يُحَافِظْ عَلَيْهَا لَمْ يَكُنْ لَهُ نُورٌ وَلَا بُرْهَانٌ وَلَا نَجَاةٌ</p>
 
 *“(Namaz) devam eden kimse için kıyamet gününde nur, delil ve kurtuluş sebebi olur. Namaza devam etmeyenin ise kıyamet günü nuru, delili ve kurtuluşu olmayacaktır.”* (İbn Hanbel, II, 169)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَوَّلُ مَا يُحَاسَبُ بِهِ الْعَبْدُ الصَّلاَةُ</p>
 
 *“(Kıyamet gününde) kulun ilk önce hesaba çekileceği şey, namazdır.”* (Nesâî, Muhârebe, 2; İbn Mâce, İkâmetü’s-Salât, 202)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مِفْتَاحُ الْجَنَّةِ الصَّلاَةُ</p>
 
 *“Cennetin anahtarı namazdır.”* (Tirmizî, Tahâret, 1)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ حَافَظَ عَلَى الصَّلَوَاتِ الْخَمْسِ رُكُوعِهِنَّ وَسُجُودِهِنَّ وَوُضُوئِهِنَّ وَمَوَاقِيتِهِنَّ وَعَلِمَ أَنَّهُنَّ حَقٌّ مِنْ عِنْدِ اللَّهِ دَخَلَ الْجَنَّةَ</p>
 
@@ -292,7 +292,7 @@ HADÎS-İ ŞERÎF
 
 Rabbimiz, Kur’an-ı Kerim’de namazın insan ahlakı üzerindeki etkisini ayet-i kerimede şöyle beyan eder:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اتْلُ مَٓا اُو۫حِيَ اِلَيْكَ مِنَ الْكِتَابِ وَاَقِمِ الصَّلٰوةَۜ اِنَّ الصَّلٰوةَ تَنْهٰى عَنِ الْفَحْشَٓاءِ وَالْمُنْكَرِۜ وَلَذِكْرُ اللّٰهِ اَكْبَرُۜ وَاللّٰهُ يَعْلَمُ مَا تَصْنَعُون</p>
 
@@ -302,7 +302,7 @@ Bu ayet bizlere bir ölçü veriyor. Eğer namazımız bizi yalandan, gıybetten
 
 Peygamber Efendimiz (s.a.s.), namazın müminin ruhundaki temizleyici etkisini harika bir misalle şu hadis-i şerif’te ifade etmektedir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَرَأَيْتُمْ لَوْ أَنَّ نَهَرًا بِبَابِ أَحَدِكُمْ يَغْتَسِلُ فِيهِ كُلَّ يَوْمٍ خَمْسًا، مَا تَقُولُ ذَلِكَ يُبْقِي مِنْ دَرَنِهِ؟» قَالُوا: لَا يُبْقِي مِنْ دَرَنِهِ شَيْئًا، قَالَ: «فَذَلِكَ مِثْلُ الصَّلَوَاتِ الخَمْسِ، يَمْحُو اللَّهُ بِهِ الخَطَايَا</p>
 

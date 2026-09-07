@@ -6,7 +6,7 @@ kelime: 1902
 docx: "/vaazlar/uc-aylar-ve-regaib-kandili.docx"
 pdf: "/vaazlar/uc-aylar-ve-regaib-kandili.pdf"
 ---
-## ÜÇ AYLAR
+## Üç Aylar
 
 Halk arasında "Üç Aylar" diye bilinen Receb, Şâban ve Ramazan ayları, Yüce Allah'ın müminlere ikram ettiği faziletli bir zaman dilimidir. Yapılan dua ve ibadetlerin büyük mükâfatla karşılık bulduğu, dökülen pişmanlık gözyaşlarının günahları silip yok ettiği kutlu bir mevsimdir. Kısaca üç aylar, günahlardan arınma, sevaplarla bezenme mevsimidir.
 
@@ -62,7 +62,7 @@ Kulun amellerinden Allah’ın haberdar olmaması düşünülemez. Fakat kullar�
 
 “Bağışlanmak dileyen yok mu, onu bağışlayayım! Rızık isteyen yok mu, ona rızık vereyim! Belaya duçar olan yok mu, ona afiyet vereyim!..” buyurduğunu bizlere müjdelemiştir. (İbn Mâce, İkâmet, 191)
 
-## REGAİB GECESİ VE FAZİLETİ
+## Regaib Gecesi ve Fazileti
 
 Böyle değerli bir zaman dilimi olan üç ayları Regaib Gecesi ile karşılıyoruz. Sözlükte “Kendisine rağbet edilen şey, bol ve değerli bağış” anlamındaki ragibenin çoğulu olan regaib kelimesi, hadis ve fıkıh literatüründe “bol sevap ve mükâfat, faziletli amel” demektir. Hicrî takvime göre yedinci ay olan Receb’in ilk perşembesini cumaya bağlayan geceye ad olmuştur. (Hamdi Tekeli, Regaib Gecesi, DİA, 34/535-536) Rasulullah (s.a.s):
 

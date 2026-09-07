@@ -6,13 +6,13 @@ kelime: 2562
 docx: "/vaazlar/toplumsal-dayanisma-ulfet-ve-kardeslik.docx"
 pdf: "/vaazlar/toplumsal-dayanisma-ulfet-ve-kardeslik.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 Bizleri bir Kurban bayramına ulaştıran, birlik beraberlik içerisinde bayramı ihya etmeyi lütfeden Rabbimize sonsuz hamd olsun. Bizlere rehber, âlemlere rahmet olarak gönderilen, ruzi mahşerde şefaatçimiz, kurtarıcımız, Efendimiz, Hz. Muhammed Mustafa’ya (s.a.s.), Onun âl ve ashabına ve tabi’ olanlara salat ve selam olsun.
 
 İslam dini, toplumsal yönü olan bir dindir. İbadetlerden bazıları bireysel eda edilirken bazıları da cemaatle eda edilir. Bazı ibadetler cemaatle yapıldığında daha çok sevaptır. Namaz cemaatle eda edildiğinde 25 veya 27 derece daha faziletlidir. Haftalık Cuma namazının, yılda iki kez bayram namazlarının cemaatle eda edilme şartı vardır. Kişinin kazancından sadaka ve zekât vererek başkalarını gözetmesi; oruç tuttuğunda akşam iftarda dost, akrabalarla bir araya gelmesi; haccın dünyanın dört bir yanından gelen Müslümanlarla eda edilmesi bu manada anlamlıdır. Akraba ziyareti, hasta ziyareti, komşuluk ilişkileri, selamlaşma vb. ameller incelendiğinde İslam dininin toplumsal ve sosyal yönünün ne kadar kuvvetli olduğu görülecektir.
 
-## DAYANIŞMA
+## Dayanışma
 
 Topum içerisinde insanların birbirlerine yardım etmeleri ve dayanışma içerisinde olmaları kaçınılmazdır. İnsanlar bir birinin desteğine muhtaçtır. Şairin dediği gibi:
 
@@ -35,7 +35,7 @@ Yardımlaşma ve dayanışma da ölçü iyilik, hayır ve takvadadır. Günah, h
 
 Ashab-ı kiram kendi arasında yarışırlardı. Hz. Ömer (r.a.), Allah Resûlü (s.a.s.) bize sadaka vermemizi emretti. Bu durum bende mal bulunan bir zamana rastladı. Kendi kendime “Eğer geçeceksem bu gün Ebû Bekir’i geçerim.” dedim ve malımın yarısını getirdim. Resulüllah (s.a.s.) “Ailene geride ne bıraktın?” buyurdu. Bunun kadarını bıraktım, dedim. Hz. Ebû Bekir (r.a.) malının hepsiyle gelmişti. Allah Resulü (s.a.s.) ona da “Ailene geride ne bıraktın?” buyurdu. Hz. Ebu Bekir (r.a.), “Onlara Allah ve Resulünü bıraktım.” dedi. Bunun üzerine Hz. Ömer (r.a.), “Vallahi asla onu geçemem”, demiştir. (Ebû Dâvûd, Zekât, 40; Tirmizî, Menâkıb, 16)
 
-## DAYANIŞMA RUHU VE İNFAK
+## Dayanışma Ruhu ve İnfak
 
 Kur’an’ın en çok üzerinde durduğu ve Hz. Peygamber’in (s.a.s.) yaşantısıyla örnek olduğu meselelerden bir tanesi infaktır. “Allah için harcama” şeklinde çevrilen infak, Allah’ın hoşnutluğunu elde etme amacıyla kişinin kendi servetinden harcama yapması, muhtaçlara aynî ve nakdî yardımda bulunması demektir. Bu bakımdan infak, farz olan zekâtı ve gönüllü olarak yapılan her çeşit hayrı içermektedir. Zengin bir Müslüman malından verdiği zekâtla, yaptığı her türlü hayır ve hasenatla toplumdaki dayanışma ruhuna destek olacaktır.
 
@@ -67,7 +67,7 @@ Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
 Bayramlar, aynı zamanda dayanışma ve yardımlaşma içerisinde müminlerin birbirlerine kenetlendikleri günlerdir. Nitekim bir bayram namazından sonra Hz. Peygamber (s.a.s.), Hz. Bilâl (r.a.) ile birlikte hanımların yanına giderek onlara, “Ey hanımlar topluluğu! Sadaka verin, zira sadaka sizin için daha hayırlıdır!” buyurmuş, yoksullar için onlardan yardım talep etmişti. Resûlullah’ın (s.a.s.) bu çağrısına kadınlar yüzüklerini, küpelerini ve çeşitli ziynet eşyalarını bağışlamak suretiyle cevap vermişlerdi. (Müslim, Îdeyn, 2; Hadislerle İslâm, 7/ 510)
 
-## KARDEŞLİK
+## Kardeşlik
 
 Bayramlar, birlikte yeme içme, ikramda bulunma ve kardeşliğimizi pekiştirme günleridir. Kardeşlik duygusu insanlar arasında birlik, beraberlik ve kaynaşma sağlanmasının, toplumsal dirlik ve düzenliğin ana unsurudur. İnsanlar, kardeş hissettiklerine karşı sevgi ve saygı besler, onlarla paylaşma ve dayanışma içine girer, onlarla barış ve huzur içerisinde yaşarlar. (Cafer Sadık Yaran, Ahlaki Erdemler, 155).
 
@@ -181,7 +181,7 @@ Dost’un evi gönüllerdir,
 
 Gönüller yapmaya geldim.
 
-## SONUÇ
+## Sonuç
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ اِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلّٰهِ رَبِّ الْعَالَمِينَۙ</p>
 

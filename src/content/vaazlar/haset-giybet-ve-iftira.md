@@ -18,7 +18,7 @@ Başkasının sahip olduğu maddî veya manevi imkânların kendisine intikal et
 
 Yerlerde ve göklerde işlenen ilk günah, haset sebebiyle şeytan tarafından işlenmiştir. Şeytan, Allah Teâlâ’nın Hz. Âdem’e (a.s.) verdiği değeri kıskanmış; bu haset onu ilâhî emre karşı gelmeye sürüklemiş ve neticesinde Allah’ın huzurundan kovulmasına sebep olmuştur. İşte bu hadise, hasedin ne kadar büyük ve yıkıcı bir günah olduğunu açıkça göstermektedir. Yüce Rabbimiz bu olayı bize şöyle açıklamaktadır;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاِذْ قَالَ رَبُّكَ لِلْمَلٰٓئِكَةِ اِنّٖي خَالِقٌ بَشَراً مِنْ صَلْصَالٍ مِنْ حَمَأٍ۬ مَسْنُونٍ فَاِذَا سَوَّيْتُهُ وَنَفَخْتُ فٖيهِ مِنْ رُوحٖي فَقَعُوا لَهُ سَاجِدٖينَ فَسَجَدَ الْمَلٰٓئِكَةُ كُلُّهُمْ اَجْمَعُونَۙ اِلَّٓا اِبْلٖيسَؕ اَبٰٓى اَنْ يَكُونَ مَعَ السَّاجِدٖينَ قَالَ يَٓا اِبْلٖيسُ مَا لَكَ اَلَّا تَكُونَ مَعَ السَّاجِدٖينَ قَالَ لَمْ اَكُنْ لِاَسْجُدَ لِبَشَرٍ خَلَقْتَهُ مِنْ صَلْصَالٍ مِنْ حَمَأٍ۬ مَسْنُونٍ قَالَ فَاخْرُجْ مِنْهَا فَاِنَّكَ رَجٖيمٌ وَاِنَّ عَلَيْكَ اللَّعْنَةَ اِلٰى يَوْمِ الدّٖينِ</p>
 
@@ -28,7 +28,7 @@ Bu sözlere karşılık Rabbimiz şöyle buyurdu; “Öyle ise oradan (cennetten
 
 Haset, sadece şeytanı Allah’ın huzurundan kovdurmakla kalmamış; insanlık tarihindeki ilk kanın da akmasına sebep olmuştur. Çünkü şeytanın kalbinde başlayan bu isyan, daha sonra insanın kalbine de sirayet etmiş; Hâbil ile Kâbil kıssasında bu haset, bir kardeşi diğerine düşman hâline getirmiştir. Bu olay Kur’an’ı Kerim’de şöyle anlatılmaktadır;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَاتْلُ عَلَيْهِمْ نَبَاَ ابْنَىْ اٰدَمَ بِالْحَقِّۘ اِذْ قَرَّبَا قُرْبَانًا فَتُقُبِّلَ مِنْ اَحَدِهِمَا وَلَمْ يُتَقَبَّلْ مِنَ الْاٰخِرِۜ قَالَ لَاَقْتُلَنَّكَۜ قَالَ اِنَّمَا يَتَقَبَّلُ اللّٰهُ مِنَ الْمُتَّقٖينَ لَئِنْ بَسَطْتَ اِلَيَّ يَدَكَ لِتَقْتُلَنٖي مَٓا اَنَا۬ بِبَاسِطٍ يَدِيَ اِلَيْكَ لِاَقْتُلَكَۚ اِنّٖٓي اَخَافُ اللّٰهَ رَبَّ الْعَالَمٖينَ اِنّٖٓي اُرٖيدُ اَنْ تَبُٓوأَ بِاِثْمٖي وَاِثْمِكَ فَتَكُونَ مِنْ اَصْحَابِ النَّارِۚ وَذٰلِكَ جَزٰٓؤُا الظَّالِمٖينَۚ فَطَوَّعَتْ لَهُ نَفْسُهُ قَتْلَ اَخٖيهِ فَقَتَلَهُ فَاَصْبَحَ مِنَ الْخَاسِرٖينَ</p>
 
@@ -36,7 +36,7 @@ Haset, sadece şeytanı Allah’ın huzurundan kovdurmakla kalmamış; insanlık
 
 Haset; şeytanı Rabbine isyana sevk etmiş, Hâbil ile Kâbil kıssasında kardeşi kardeşe düşman etmiştir. Kur’an bize gösteriyor ki bu duygu, sadece ilk insanlarla sınırlı kalmamış; peygamber ailelerinde dahi büyük imtihanlara sebep olmuştur. Nitekim Hz. Yusuf’un (a.s.) kardeşleri de, Yakub’un (a.s.) Yusuf’a (a.s.) verdiği değeri kıskanmış ve bu haset onları kardeşlerini kuyuya atacak noktaya getirmiştir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اُقْتُلُوا يُوسُفَ اَوِ اطْرَحُوهُ اَرْضاً يَخْلُ لَكُمْ وَجْهُ اَبٖيكُمْ وَتَكُونُوا مِنْ بَعْدِهٖ قَوْماً صَالِحٖينَ قَالَ قَٓائِلٌ مِنْهُمْ لَا تَقْتُلُوا يُوسُفَ وَاَلْقُوهُ فٖي غَيَابَتِ الْجُبِّ يَلْتَقِطْهُ بَعْضُ السَّيَّارَةِ اِنْ كُنْتُمْ فَاعِلٖينَ</p>
 
@@ -44,19 +44,19 @@ Haset; şeytanı Rabbine isyana sevk etmiş, Hâbil ile Kâbil kıssasında kard
 
 Gördüğümüz gibi kalpte başlayan ve kontrol altına alınmayan haset; önce Allah’ın emrine karşı gelmeye, sonra kardeş kanı dökmeye, ardından da bir peygamber evladını kuyuya atacak kadar merhameti ve vicdanı susturmaya kadar varabilmektedir. Şeytanı Allah’ın huzurundan kovduran, Hâbil’i Kâbil’e öldürten ve Hz. Yusuf’u (a.s.) kardeşlerine kuyuya attıran bu duygu, insanı nerelere sürükleyebileceğini açıkça göstermektedir. Gelin şimdi, bu büyük hataya karşı Peygamber Efendimiz’in (s.a.s.) bizleri nasıl uyardığına, bu konuda hangi ölçüleri koyduğuna birlikte bakalım.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِيَّاكُمْ وَالْحَسَدَ فَإِنَّ الْحَسَدَ يَأْكُلُ الْحَسَنَاتِ كَمَا تَأْكُلُ النَّارُ الْحَطَبَ</p>
 
 Hz. Peygamber (s.a.s.) şöyle buyurmuştur: *“Hasetten sakının. Çünkü ateşin odunu yakıp tükettiği gibi haset de iyi amelleri yakar, bitirir.”* (Ebû Dâvûd, Edeb, 44)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">لاَيَجْتَمِعَانِ فِى قَلْبِ عَبْدٍ: الْإِيمَانُ وَالْحَسَدُ</p>
 
 *“Bir insanın kalbinde iman ile haset bir arada bulunmaz.”* (Nesâî, Cihâd, 8)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">قِيلَ لِرَسُولِ اللَّهِ صلى الله عليه وسلم أَىُّ النَّاسِ أَفْضَلُ قَالَ كُلُّ مَخْمُومِ الْقَلْبِ صَدُوقِ اللِّسَانِ قَالُوا صَدُوقُ اللِّسَانِ نَعْرِفُهُ فَمَا مَخْمُومُ الْقَلْبِ قَالَ هُوَ التَّقِىُّ النَّقِىُّ لاَ إِثْمَ فِيهِ وَلاَ بَغْىَ وَلاَ غِلَّ وَلاَ حَسَدَ</p>
 
@@ -68,7 +68,7 @@ Peygamber Efendimiz (s.a.s.) bu hadislerinde hasedin, müminin hem ameline hem d
 
 Çağımızın en büyük hastalıklarından biri olan gıybete dikkatlerinizi çekmek istiyorum. Öyle bir hastalık ki evimizde, iş yerimizde, bayramlarda, hatta cenaze merasimlerinde bile bazen bilmeyerek, bazen önemsemeden işlediğimiz bir günahtır bu. Maalesef gözümüzde küçük görünen, basit bir söz gibi algılanan bu fiil, Allah katında son derece büyük ve ağır bir günah olarak nitelendirilmiştir. Yüce Rabbimiz bu hususta şöyle buyurmaktadır;
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">يا اَيُّهَا الَّذٖينَ اٰمَنُوا اجْتَنِبُوا كَثٖيراً مِنَ الظَّنِّؗ اِنَّ بَعْضَ الظَّنِّ اِثْمٌ وَلَا تَجَسَّسُوا وَلَا يَغْتَبْ بَعْضُكُمْ بَعْضاًؕ اَيُحِبُّ اَحَدُكُمْ اَنْ يَأْكُلَ لَحْمَ اَخٖيهِ مَيْتاً فَكَرِهْتُمُوهُؕ وَاتَّقُوا اللّٰهَؕ اِنَّ اللّٰهَ تَـوَّابٌ رَحٖيمٌ</p>
 
@@ -78,19 +78,19 @@ Büyük Müfessir İbn Kesîr bu ayetin tefsirinde şuna dikkat çeker: İnsan f
 
 Resûlullah Efendimiz (s.a.s.), gıybetin ne kadar ağır bir günah olduğunu, bizzat sözleriyle ve ikazlarıyla ümmetine açıkça bildirmiştir. Şimdi bu hususta Peygamberimiz’in (s.a.s.) uyarı mahiyetindeki bazı hadislerini birlikte hatırlayalım:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا مَعْشَرَ مَنْ آمَنَ بِلِسَانِهِ وَلَمْ يَدْخُلِ الْإِيمَانُ قَلْبَهُ: لاَ تَغْتَابُوا الْمُسْلِمِينَ وَلاَ تَتَّبِعُوا عَوْرَاتِهِمْ فَإِنَّهُ مَنِ اتَّبَعَ عَوْرَاتِهِمْ يَتَّبِعِ اللَّهُ عَوْرَتَهُ، وَمَنْ يَتَّبِعِ اللَّهُ عَوْرَتَهُ يَفْضَحْهُ فِى بَيْتِهِ</p>
 
 *“Ey diliyle iman edip, kalbine iman girmemiş olan kimseler! Müslümanların gıybetini yapmayın ve onların gizli hâllerini araştırmayın. Çünkü her kim onların gizli hâllerini araştırırsa Allah da onun gizli hâlini araştırır. Allah kimin gizli hâlini araştırırsa onu evinde (gizlice yaptıklarını ortaya çıkararak) bile rezil eder.”* (Ebû Dâvûd, Edeb, 35)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">كَفَى بِالْمَرْءِ إِثْمًا أَنْ يُحَدِّثَ بِكُلِّ مَا سَمِعَ</p>
 
 *“Kişiye günah olarak her duyduğunu söylemesi yeter.”* (Ebû Dâvûd, Edeb, 80)
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ عَزَّ وَجَلَّ حَرَّمَ عَلَيْكُمْ عُقُوقَ الْأُمَّهَاتِ، وَوَأْدَ الْبَنَاتِ، وَمَنْعًا وَهَاتِ. وَكَرِهَ لَكُمْ ثَلاَثًا قِيلَ وَقَالَ، وَكَثْرَةَ السُّؤَالِ، وَإِضَاعَةَ الْمَالِ.</p>
 
@@ -98,7 +98,7 @@ HADÎS-İ ŞERÎF
 
 Resûlullah Efendimiz’in (s.a.s.) bu ikazları bize şunu öğretmektedir: Dil, imanın aynasıdır. Kalpte yer etmeyen bir iman, kendini en çok dilde ele verir. İnsan, farkına varmadan söylediği bir sözle kardeşinin onurunu zedeleyebilir; duyduğunu sorgulamadan aktardığında hem kendini hem başkasını günaha sürükleyebilir. Başkasının kusurunu konuşmayı alışkanlık hâline getiren kimse, zamanla kendi kusurlarını görmez olur; hâlbuki kul, başkalarının ayıplarıyla meşgul oldukça Allah Teâlâ onu kendi ayıplarıyla imtihan eder. Bu yüzden mümin, sözünü tartarak konuşur, zannını temiz tutar, susmayı emniyet bilir. Nitekim Müminlerin Emîri Hz. Ömer (r.a.), kalbi koruyan bu ahlakı bize şu ölçüyle öğretmiştir:
 
-HZ. ÖMER’İN (R.A.) SÖZÜ
+<p class="vaaz-etiket">Hz. Ömer’in (r.a.) Sözü</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَلَا تَظُنَنَّ بِكَلِمَةٍ خَرَجَتْ مِنْ أَخِيكَ الْمُسْلِمِ إِلَّا خَيْرًا، وَأَنْتَ تَجِدُ لَهَا فِي الْخَيْرِ مَحْمَلًا</p>
 
@@ -106,7 +106,7 @@ HZ. ÖMER’İN (R.A.) SÖZÜ
 
 Peygamberimiz (s.a.s.) de gıybeti şu şekilde tasvir etmiştir:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">أَتَدْرُونَ مَا الْغِيبَةُ؟ قَالُوا: اللَّهُ وَرَسُولُهُ أَعْلَمُ، قَالَ: “ذِكْرُكَ أَخَاكَ بِمَا يَكْرَهُ” قِيلَ: أَفَرَأَيْتَ إِنْ كَانَ فِى أَخِى مَا أَقُولُ؟ قَالَ: “إِنْ كَانَ فِيهِ مَا تَقُولُ، فَقَدِ اغْتَبْتَهُ، وَإِنْ لَمْ يَكُنْ فِيهِ، فَقَدْ بَهَتَّهُ.</p>
 
@@ -118,13 +118,13 @@ Aziz kardeşlerim, Resûlullah Efendimizin (s.a.s.) bu beyanı, gıybet konusund
 
 İftira; sadece bir söz, basit bir suçlama ya da dilden dökülen masum bir cümle değildir. İftira, bir insanın onurunu, haysiyetini ve güvenilirliğini hedef alan; bireyi olduğu kadar toplumu da içten içe çürüten büyük bir günahtır. Bir tek iftira, yılların emeğini yok edebilir, aileleri dağıtabilir, kardeşliği düşmanlığa çevirebilir. Bu sebeple iftira, ferdî bir günah olmanın ötesinde, toplumsal bir ifsat aracıdır. Güvenin sarsıldığı, insanların birbirinden şüphe eder hâle geldiği bir toplumda huzurdan söz edilemez. İşte Yüce Allah (c.c.), kullarını böyle bir yıkımdan korumak için Kur’ân-ı Kerîm’de iftirayı en ağır ifadelerle yasaklamış, onu büyük günahlar arasında zikretmiştir. Şimdi bu konuda Rabbimizin açık uyarılarına kulak verelim:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَمَنْ يَكْسِبْ خَطٖٓيـَٔةً اَوْ اِثْمًا ثُمَّ يَرْمِ بِهٖ بَرٖٓيـًٔا فَقَدِ احْتَمَلَ بُهْتَانًا وَاِثْمًا مُبٖينًا۟</p>
 
 *“Kim de bir hata veya günah işler, sonra onu bir suçsuzun üzerine atarsa şüphesiz ağır bir iftira suçunu ve apaçık bir günahı yüklenmiş olur.”* (Nisâ, 4/112)
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">اِنَّ الَّذِينَ يَرْمُونَ الْمُحْصَنَاتِ الْغَافِلَاتِ الْمُؤْمِنَاتِ لُعِنُوا فِي الدُّنْيَا وَالْاٰخِرَةِۖ وَلَهُمْ عَذَابٌ عَظِيمٌۙ</p>
 
@@ -136,7 +136,7 @@ Aziz kardeşlerim, Resûlullah Efendimizin (s.a.s.) bu beyanı, gıybet konusund
 
 Peygamberimiz’in (s.a.s.) bu konudaki tavırları oldukça net ve açıklayıcıdır; Hz. Peygamber (s.a.s.), *“Yedi helâk ediciden sakının!”* buyurdu. Sahâbîler, “Yâ Resûlallah! Bunlar nelerdir?” diye sordular. Resûlullah (s.a.s.) şöyle cevap verdi:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">الشِّرْكُ بِاللَّهِ، وَالسِّحْرُ، وَقَتْلُ النَّفْسِ الَّتِى حَرَّمَ اللَّهُ إِلاَّ بِالْحَقِّ، وَأَكْلُ الرِّبَا، وَأَكْلُ مَالِ الْيَتِيمِ، وَالتَّوَلِّى يَوْمَ الزَّحْفِ، وَقَذْفُ الْمُحْصَنَاتِ الْمُؤْمِنَاتِ الْغَافِلاَتِ</p>
 
@@ -144,7 +144,7 @@ HADÎS-İ ŞERÎF
 
 Bu rivayeti ve ayetleri sadece iffetli kadınlara atılan iftiraların ne kadar ağır bir günah olduğu şeklinde daraltarak anlamayalım. Elbette böyle bir iftira son derece büyük ve yıkıcıdır; ancak şunu bilmeliyiz ki iftiranın her türlüsü, kime karşı yapılırsa yapılsın, Allah katında çirkin, ağır ve mutlaka cezayı gerektiren bir günahtır. İftira, bu dünyada bir insanın hayatını karartır; onun itibarını, huzurunu ve geleceğini yok eder. Fakat aynı iftira, onu atan kimsenin de âhiretini karartır. Mümin, başkasının dünyasını yıkarak kendi âhiretini yakmaktan sakınmalıdır. Zira bir sözle yıkılan hayatlar, Allah katında cevapsız bırakılmaz.
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ مِنْ أَكْبَرِ الْكَبَائِرِ اسْتِطَالَةَ الْمَرْءِ فِى عِرْضِ رَجُلٍ مُسْلِمٍ بِغَيْرِ حَقٍّ</p>
 
@@ -154,7 +154,7 @@ Aslında bu hadis bize çok temel bir hakikati öğretmektedir: Kendi şerefimiz
 
 Ebu Hureyre’den (r.a.) rivayet edildiğine göre, Resûlullah (s.a.s.): “Müflis kimdir, biliyor musunuz?” diye sordu. Ashab: - Bizim aramızda müflis, parası ve malı olmayan kimsedir, dediler. Resûlullah (s.a.s.):
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الْمُفْلِسَ مِنْ أُمَّتِى يَأْتِى يَوْمَ الْقِيَامَةِ بِصَلاَةٍ وَصِيَامٍ وَزَكَاةٍ وَيَأْتِى قَدْ شَتَمَ هَذَا وَقَذَفَ هَذَا وَأَكَلَ مَالَ هَذَا وَسَفَكَ دَمَ هَذَا وَضَرَبَ هَذَا فَيُعْطَى هَذَا مِنْ حَسَنَاتِهِ وَهَذَا مِنْ حَسَنَاتِهِ فَإِنْ فَنِيَتْ حَسَنَاتُهُ قَبْلَ أَنْ يُقْضَى مَا عَلَيْهِ أُخِذَ مِنْ خَطَايَاهُمْ فَطُرِحَتْ عَلَيْهِ ثُمَّ طُرِحَ فِى النَّارِ</p>
 
@@ -164,11 +164,11 @@ Resûlullah Efendimizin (s.a.s.) bu hadisi, bizlere gerçek iflasın ne olduğun
 
 ✦ ✦ ✦
 
-## SONUÇ
+## Sonuç
 
 Haset kalpte başlar; insanın iç dünyasını kirletir. Kalpte büyüyen bu hastalık dile döküldüğünde gıybet olur; gıybet de bir adım ileri gittiğinde iftiraya dönüşür. Haset, kardeşliğin ruhunu zedeler; gıybet, onuru incitir; iftira ise hem fertleri hem de toplumu ifsada sürükler. Bu üç büyük günah, insanın ibadetini bereketsiz kılar, sevaplarını tüketir ve kul hakkı olarak karşısına çıkar. Müslüman, kalbini temiz tutmakla, dilini korumakla ve kardeşinin izzetini kendi nefsine tercih etmekle sorumludur. Unutmayalım ki iman, başkasının şerefini çiğnemekle değil; onu muhafaza etmekle kemale erer.
 
-## DUÂ
+<p class="vaaz-etiket">Duâ</p>
 
 *Allah’ım! Kalplerimizi hasetten, dillerimizi gıybet ve iftiradan muhafaza eyle. Bizleri kardeşlerimizin ayıplarıyla değil, kendi kusurlarımızla meşgul olan kullarından eyle. Sözümüzü hayırla, suskunluğumuzu hikmetle süsle. Bizleri kul hakkıyla huzuruna gelenlerden değil, affına mazhar olan kullarından eyle. Âmin…*
 

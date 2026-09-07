@@ -6,7 +6,7 @@ kelime: 2164
 docx: "/vaazlar/varolus-gayemiz-iman-ve-istikamet.docx"
 pdf: "/vaazlar/varolus-gayemiz-iman-ve-istikamet.pdf"
 ---
-## A. GİRİŞ
+## A. Giriş
 
 Bir gün Resulullah (s.a.s.)’in huzuruna elbisesi beyaz, saçları siyah, orada bulunan hiçbirinin tanımadığı bir surette Cebrail a.s. gelir:
 
@@ -30,7 +30,7 @@ Sözlükte “güven içinde bulunmak, korkusuz olmak” anlamındaki e-m-n (em�
 
 İstikamet, “doğruluk, dürüstlük, adalet, itidal, itaat, sadakat ve dürüstçe yaşama” manalarında kullanılmaktadır. İstikamet, dinî ve ahlâkî hükümlere uygun bir hayat sürme, her türlü aşırılıktan sakınma, Allah’a itaat edip Hz. Muhammed’in sünnetine uymaktır. (Mustafa Çağrıcı-Süleyman Uludağ, İstikamet, DİA, 23/348) İstikamet, her türlü aşırılıktan sakınarak, doğruluk üzere, tutarlı ve düzenli bir dini hayat yaşamaktır.
 
-## B. KUR’AN-I KERİM’DE İSTİKAMET
+## B. Kur’an-ı Kerim’de İstikamet
 
 İstikamet, Kur’an’ın temel ilkelerinden biridir. Rabbimiz buyuruyor ki:
 
@@ -62,7 +62,7 @@ Yüce Allah’ın Kur’an ile bize bildirdiği, Hz. Peygamber’in de bizzat ö
 
 Âyette İslâm’ın esasını teşkil eden iki ilke yer almaktadır: Emrolunduğu gibi dosdoğru yaşamak ve haddi aşmamak, yani Allah’ın belirlediği sınırların dışına çıkmamak. Rivayete göre Resûlullah kendisine uygulanması bundan daha zor gelen bir âyet inmediğine işaret etmek üzere, “Hûd sûresi ve kardeşleri beni ihtiyarlattı.” buyurmuştur. (Tirmizî, Tefsîr, 56) Sûrenin nesinin kendisini ihtiyarlattığı sorulduğunda, “Sana emredildiği gibi dosdoğru ol!” meâlindeki âyetin kendisini ihtiyarlattığını söylemiştir. (Kur’an Yolu Türkçe Meal ve Tefsiri, 3/204-205 )
 
-## C. HADİSİ ŞERİFLERDE İSTİKAMET
+## C. Hadisi Şeriflerde İstikamet
 
 Sevgili Peygamberimiz (s.a.s.), İslam’dan önce yaşadığı toplumda Muhammedü’l-Emin olarak bilinirdi. 610 yılında ilk vahyi aldığında korku ve heyecan içinde eve gelen Hz. Peygamber (s.a.s.)’i Hz. Hatice şöyle teselli etmişti: “Allah hiçbir zaman seni utandırıp üzmeyecektir. Çünkü sen akrabanı gözetir, doğruyu söyler, acizlerin elinden tutarsın; yoksullara yardım eder, misafirleri ağırlarsın; haksızlığa uğrayanların yanında yer alırsın.”(İbn Sa‘d, et-Tabakât, 1/195)
 
@@ -82,7 +82,7 @@ Süfyân b. Abdullah (r.a.): Yâ Resûlallah! Bana İslâmı öylesine tanıt ki
 
 Yardımcısıdır doğruların Hazret-i Allah! (Ziya Paşa)
 
-## D. İSTİKAMET VE AHLAK
+## D. İstikamet ve Ahlak
 
 Abdullah b. Mes’ud’un (r.a.) anlattığına göre Hz. Peygamber (s.a.s.) bir gün yere düz bir çizgi çizdi ve etrafında toplanan sahabeye şöyle dedi: “İşte bu Allah’ın (c.c.) dosdoğru yoludur.” Sonra da bu düz çizginin sağ ve sol taraflarına başka çizgiler çizerek, “Bunlar da diğer yollardır ki her birinin başında bir şeytan bulunmakta ve kendi yollarına çağırmaktadır.” dedi. Sonra:
 
@@ -165,7 +165,7 @@ Sanal âlem insanın her istediğini yapabileceği ve bundan dolayı da sorumlu 
 
 “Hakkında bilgin olmayan şeyin ardına düşme! Çünkü kulak, göz ve gönül, bunların hepsi ondan sorumludur.” (İsra, 17/36) buyurmuştur. Mümine yakışan sorumluluk bilinciyle hareket etmek, Cenabı Hakk’ın koyduğu sınırlara uymak suretiyle sanal âlemde de istikamet üzere dosdoğru olmaktır.
 
-## E. İSTİKAMETİN MÜKAFATI
+## E. İstikametin Mükafatı
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurmuştur:
 
@@ -179,7 +179,7 @@ Yalan kapısının açılmaması, yalanın alışkanlık haline gelmemesi gereki
 
 “Bana kendi adınıza altı şeyin güvencesini verin, ben de size cennetin güvencesini vereyim: Konuştuğunuzda doğru söyleyin, söz verdiğinizde sözünüzü tutun, size (bir şey) emanet edildiğinde ona riayet edin, iffetinizi koruyun, gözlerinizi (bakılması yasak olandan) sakının ve ellerinizi (haramdan) çekin. ” (İbn Hanbel, V, 323)
 
-## SONUÇ
+## Sonuç
 
 İstikamet üzere dosdoğru olmak, İslam ahlakının en temel erdemlerinden biridir. Doğru yolu izledikten sonra yolunu şaşıran görülmemiştir. İnsanın iç dünyasındaki huzuru, doğruluğu, dürüstlüğü nispetindedir.
 

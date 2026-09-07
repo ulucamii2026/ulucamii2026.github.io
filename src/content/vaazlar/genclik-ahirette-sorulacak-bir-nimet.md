@@ -6,7 +6,7 @@ kelime: 2908
 docx: "/vaazlar/genclik-ahirette-sorulacak-bir-nimet.docx"
 pdf: "/vaazlar/genclik-ahirette-sorulacak-bir-nimet.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 Doğumla başlayıp ölümle sonlanan insan hayatının en önemli dönemlerinden bir tanesi gençliktir. Gençlik, insan hayatının dönüm noktası olan, hayatî kararların alındığı, sorumlulukların yüklenildiği, bereketli, diğer taraftan farklı duyguların yaşandığı bir geçiş dönemidir. İnsana verilen en güzel nimetlerden bir tanesi olan gençliğin değeri, pek çok insan tarafından bilinmez. Allah Resulü (s.a.s.) şu hadis-i şerifte insanların ihmal ettiği, kıymet vermediği beş hususa dikkat çekmişti:
 
@@ -38,7 +38,7 @@ Gençlik, anlam arayışının yaşandığı bir dönemdir. Bu dönemde “Niçi
 
 Nebî (s.a.s.), iffetini koruyan, Allah karşısındaki sorumluluğunun bilincinde ve istikamet üzere olan gençleri, ilâhî azabın karşısındaki engellerden biri olarak tanıtmış ve “...Huşû duyan gençler, (namaz kılarak) rükû eden yaşlılar, emzikli bebekler ve otlayan hayvanlar olmasaydı mutlaka başınıza azap yağardı.” buyurmuştur. (Ebû Ya’lâ, Müsned, XI, 287; Hadislerle İslam, VI, 396)
 
-## KUR’AN-I KERİM’DE GENÇLER
+## Kur’an-ı Kerim’de Gençler
 
 Hz. İbrahim, Kur’ân-ı Kerîm’de en çok bahsedilen ve ülü’l-azm peygamberlerden biridir. Bulunduğu toplum ve babası, putlara tapmaktadır. Kralları Nemrud ise tevhid inancının karşısındaki otoriteyi simgeleyen kişidir. Kur’an-ı Kerim’de Hz. İbrahim gençlik döneminde çeşitli sorular sorarak ve temsiller getirerek putperestlerle yaptığı mücadele farklı surelerde anlatılmaktadır. (Enbiya, 21/51-70; Enam, 6/ 76-79) Hz. İbrahim, Hak yolunda mücadele ve çekilen sıkıntıları göğüsleme hususunda bütün gençlere örnektir.
 
@@ -60,7 +60,7 @@ Ashâb-ı Kehf kıssasının anlatıldığı Kehf suresinde zaman ve mekân beli
 
 “(Haksızların karşısında) ayağa kalkıp şöyle derken onların yüreklerini güçlendirdik: “Bizim Rabbimiz, göklerin ve yerin Rabbidir; O’ndan başkasına asla tanrı deyip yakarmayız. Yoksa kesinlikle yanlış bir şey dillendirmiş oluruz.” (Kehf, 18/14) Kur’an-ı Kerim’de bu gençler imanları, imanları üzerine sebatları, haksızlık karşısında mücadeleleri ile övülmektedir.
 
-## HZ. PEYPEYGAMBER VE GENÇLER
+## Hz. Peypeygamber ve Gençler
 
 Hz. Peygamber (s.a.s.)’in hayatının her alanı örnek olduğu gibi, gençlik dönemi de örnek ve modeldir. Peygamber Efendimiz yirmi yaşlarında iken Mekke’de haksızlığa uğrayan insanlara yardım etmek amacıyla Hilfü’l-Fudûl denilen antlaşmaya iştirak etmişti. Yine Peygamber Efendimiz (s.a.s.) gençlik yıllarında ticaretle meşgul olmuş, dürüstlüğü ve güvenilirliği sebebiyle Mekkeliler ona Muhammedü’l-Emin demişlerdi.
 
@@ -170,7 +170,7 @@ Kişi “mal, para benim, istediğim şekilde harcarım” diyemez. Harcamalar d
 
 Bu hadis bize, gençlik yıllarının iyi değerlendirilmesi, ömrün zayi edilmemesi, mal kazanma ve harcama yolunda yanlış yol ve üsluba girilmemesi, öğrenilen bilginin yaşanılması gerektiğini hatırlatıyor.
 
-## İSTANBUL’UN FETHİ
+## İstanbul’un Fethi
 
 Peygamber Efendimiz (s.a.s.) şöyle buyurmuştu:
 
@@ -187,7 +187,7 @@ Sana selam getirdim Ulubatlı Hasan'dan....
 Sen ki burçlara bayrak olacak kumaştasın;
  Fatih'in İstanbul'u fethettiği yaştasın!..
 
-## SONUÇ
+## Sonuç
 
 Gençlik, hayatın baharı, duyguların coştuğu bir dönemdir. Bu dönemde duygu ve davranışlar dini hassasiyetle, edep ve hayâ gibi ahlaki değerlerle kontrol edilmelidir.
 

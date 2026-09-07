@@ -33,7 +33,7 @@ const BAYRAK = 1;
 const SIRA = SLAYTLAR.flatMap((_n, i) => (i === BAYRAK ? [] : [i, BAYRAK]));
 const MOBIL = '(max-width: 720px) and (orientation: portrait)';
 ---
-<div class="absolute inset-0 overflow-hidden" id="hero-slayt" data-sure="8000" data-sira={SIRA.join(',')}>
+<div class="yazdirma-gizle absolute inset-0 overflow-hidden" id="hero-slayt" data-sure="8000" data-sira={SIRA.join(',')}>
   {SLAYTLAR.map((n, i) => (
     <picture>
       <source media={MOBIL} type="image/avif" srcset={`/media/hero/hero-${n}-m.avif`} />

@@ -27,7 +27,7 @@ Sadaka: İmanın güçlenmesi ve istikrarı için, mallardaki fakirlerin hakkıd
 
 Burada yardım ile ilgili en geniş kavram infak olarak görülebilir. İnfak; fakirin, muhtacın gönlüne ve dünyasına girebilmenin en önemli yolu, yakınlaşmanın en isabetli köprüsü ve yürekten yüreğe kurulan manevi bir tüneldir.
 
-## İNFAKIN ÖNEMİ
+## İnfakın Önemi
 
 Kur’an-ı Kerim’de infak, Allah’ın bizlere emrettiği en büyük ibadetlerden biri olarak geçmektedir. Rabbimiz şöyle buyuruyor:
 
@@ -209,7 +209,7 @@ _“Hiçbir baba, çocuğuna, güzel terbiyeden daha üstün bir hediye veremez.
 
 “Allah müminlerden, mallarını ve canlarını, kendilerine (verilecek) cennet karşılığında satın almıştır. Çünkü onlar Allah yolunda savaşırlar, öldürürler, ölürler. (Bu), Tevrat’ta, İncil’de ve Kur’an’da Allah üzerine hak bir vaaddir. Allah’tan daha çok sözünü yerine getiren kim vardır! O halde O’nunla yapmış olduğunuz bu alış verişinizden dolayı sevinin. İşte bu, (gerçekten) büyük kazançtır.” (Tevbe, 9/111)
 
-## SONUÇ
+## Sonuç
 
 İnfak, sadece bireysel bir ibadet değil, aynı zamanda toplumsal refahın sağlanmasında da önemli bir yere sahiptir. İslam, ekonomik dengenin sağlanması ve fakirlerin korunması için infakı teşvik etmiştir. Hz. Peygamber (s.a.s.), infakın birey üzerindeki olumlu etkilerini şu şekilde açıklamıştır:
 

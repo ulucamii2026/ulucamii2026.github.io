@@ -6,7 +6,7 @@ kelime: 3181
 docx: "/vaazlar/sunnet-i-nebevi-kilavuz.docx"
 pdf: "/vaazlar/sunnet-i-nebevi-kilavuz.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 Allah (c.c.), insanın dünya hayatındaki imtihanını kazanması, dosdoğru yolu bulması; rahmetinin eseri, hikmeti ve adaleti gereği peygamberler göndermiştir. Peygamberler, Allah Teâlâ’nın kullarının arasından seçtiği ve onları vahiyle şereflendirerek, emir ve yasaklarını insanlara ulaştırmak üzere görevlendirdiği, hakikat yollarını gösteren elçilerdir. Cenab-ı Hakkın, kulları arasından en hayırlı, en iyi olanlarını peygamber olarak seçip göndermesi, insanlara lütfetmiş olduğu en büyük nimetlerinden biridir. Peygamberlerin sonuncusu, bütün insanlık için bir müjdeci, bir uyarıcı ve âlemlere rahmet olarak gönderilmiş olan Hz. Muhammed’dir (s.a.v.). Rabbimiz şöyle buyurmaktadır:
 
@@ -22,7 +22,7 @@ Resûl-i Ekrem (s.a.v.) şöyle buyurmuştur:
 
 ***“Dikkat ediniz! Bana Kitap ve onunla birlikte bir benzeri verildi.”*** (Ebu Davud, Sünne, 6; İbn Hanbel, IV, 131)
 
-## SÜNNETİN TANIMI
+## Sünnetin Tanımı
 
 Sözlükte *“İzlenen yol, yöntem, örnek alınan uygulama, örf ve gelenek”* gibi manalara gelen (Murteza Bedir, Sünnet, DİA, 38/150) sünnet, “***Hz. Peygamber’den (s.a.v.) Kur’an dışında sadır olan söz, fiil ve onay (takrir)”*** şeklinde tanımlanır. (Sünnet Çağlar Aşan Örneklik, DİB, s. 11)
 
@@ -44,7 +44,7 @@ Daha sonra Hz. Peygamber (s.a.v.) kendilerini bu şekilde dünyadan soyutlamayı
 
 ***“Benim sünnetimden yüz çeviren, benden değildir.”*** buyurmuştu. (Buhârî, Nikâh, 1) Bu hadis-i şerif, Allah’ın rızasını kazanmanın yolunun dünyayı terk edip sadece ibadete yönelerek olamayacağını, ancak Hz. Peygamber’i (s.a.v.) rehber edinip onun sünnetine sıkı sıkıya bağlanmakla mümkün olabileceğini göstermektedir. (Hadislerle İslam, 1/415-416)
 
-## SÜNNET KUR’AN’DAN SONRA İKİNCİ KAYNAK
+## Sünnet Kur’an’dan Sonra İkinci Kaynak
 
 Sünnet, Kur’an-ı Kerim’den sonra dinî hükümlerin ikinci kaynağıdır. Peygamber Efendimiz (s.a.v.), kıyamet günü âlimlerin önünde yürüyeceğini söyleyerek ilmî kişiliğini övdüğü genç sahâbîsi Muâz b. Cebel’i (r.a.) Yemen’e vali olarak göndereceği zaman, onunla aralarında şöyle bir konuşma geçmişti. Allah Resulü (s.a.v.):
 
@@ -74,7 +74,7 @@ Allah Teâlâ, Kur’an’ı insanlığın hidayeti için gönderirken Hz. Muham
 
 ***“Sözün en güzeli Allah’ın (c.c.) Kitabı’dır. Rehberliğin en güzeli ise Muhammed’in rehberliğidir.”*** (İbn Hanbel, III, 320; Hadislerle İslam, 1/416)
 
-## SÜNNETİN YERİ VE ÖNEMİ
+## Sünnetin Yeri ve Önemi
 
 Peygamberlerin gönderilişinin başlıca amacı, Allah’ın (c.c.) iradesi doğrultusunda gönderildikleri toplumların veya bütün insanların değişimini sağlamaktır. Peygamberler vahiy yoluyla kendilerine bildirilen inanç, ibadet, ahlâk ilkelerini tebliğ etme yanında bunların anlaşılması ve uygulanması hususunda insanlara model olma sorumluluğu taşırlar. Kur’an-ı Kerîm’de bütün peygamberlerin kendilerine uyulmaları, dolayısıyla model alınmaları için gönderildiği belirtilir:
 
@@ -92,7 +92,7 @@ Hz. Muhammed’in (s.a.v.) peygamberlik vazifesi, sadece vahyi nakilden ibaret d
 
 Allah Teâlâ, insanlığa Kur’an’ı doğrudan göndermeyip, yirmi üç yılda Resûlü’nün örnek şahsiyeti ile uygulamalı bir şekilde ve peyderpey göndermişti. Bu zaman zarfında onun ahlâkı, temizliği, ibadet hayatı, ailesi ile olan münasebetleri… kısaca her hâli Müslümanlar için örneklik teşkil etmişti. (Hadislerle İslam, 1/416-417)
 
-## HZ. PEYGAMBER’E (S.A.V.) UYULMASI ALLAH’IN (C.C.) EMRİDİR
+## Hz. Peygamber’e (s.a.v.) Uyulması Allah’ın (c.c.) Emridir
 
 Hz. Peygamber’in (s.a.v.) sünnetine tâbi olmak, İslâm’ı doğru bir şekilde yaşayabilmek için gereklidir. Bundan dolayıdır ki Allah Teâlâ, Resûlü’ne (s.a.v.) uyulmasını emretmektedir.
 
@@ -118,7 +118,7 @@ Yüce Rabbimizin, Hz. Peygamber’e (s.a.v.) ve onun sünnetine teslimiyet göst
 
 ***“Kim Allah’a ve Resûlü’ne itaat ederse doğru yolu bulmuştur. Kim onlara isyan ederse ancak kendisine zarar verir. Allah’a hiçbir şekilde zarar veremez.”*** (Ebû Dâvûd, Salât, 221, 223; Hadislerle İslam, 1/417)
 
-## İSLAM’I YAŞAMAK İÇİN SADECE KUR’AN YETERLİ DEĞİLDİR
+## İslam’ı Yaşamak için Sadece Kur’an Yeterli Değildir
 
 Hz. Peygamber (s.a.v.) bir yandan,
 
@@ -166,7 +166,7 @@ Güneş doğduktan sonra kerahet vaktinde namaz kılmak üzere olan biri, etbaut
 
 Sünnetin kaynaklığı sahabeden bugüne hemen hemen herkes tarafından kabul edilirken çok az sayıda da olsa hadis ve sünnet karşıtı bazı söylemler ortaya çıkabilmiştir. Bu itirazların merkezinde “Kur’an’a dönüş”, “Kur’an ile yetinme”, “Kur’an İslam’ı” gibi düşünceler yer almaktadır. Fakat gerek Allah Teâlâ’nın Hz. Peygamber’e (s.a.v.) itaat ve ona tâbi olmak ile ilgili Kur’an’daki emirleri, gerekse sünnetin ideal ümmeti oluşturma yolundaki katkısı düşünüldüğünde, bu ve benzeri anlayışların realiteden çok uzak olduğu anlaşılacaktır. Hz. Peygamber’in (s.a.v.) şu hadisi de Kur’an’ı ön plana alıp sünneti öteleyen zihniyete karşı bize bir uyarı niteliğindedir: ***“Sizden birinizi, emrettiğim veya yasakladığım bir konu kendisine iletildiğinde, sakın köşesine yaslanmış olarak (cahilce), "Biz Allah’ın Kitabı’nda ne bulursak ona uyarız (hadis tanımayız!)" derken bulmayayım!”*** (Tirmizi, İlim, 10; Hadislerle İslam, 1/421-422)
 
-## HZ. PEYGAMBER’E (S.A.V.) TABİ OLANLARIN MÜKÂFATI
+## Hz. Peygamber’e (s.a.v.) Tabi Olanların Mükâfatı
 
 <p lang="ar" dir="rtl" class="ayet">تِلْكَ حُدُودُ اللّٰهِؕ وَمَنْ يُطِـعِ اللّٰهَ وَرَسُولَهُ يُدْخِلْهُ جَنَّاتٍ تَجْرٖي مِنْ تَحْتِهَا الْاَنْهَارُ خَالِدٖينَ فٖيهَاؕ وَذٰلِكَ الْفَوْزُ الْعَظٖيمُ</p>
 
@@ -192,7 +192,7 @@ Hz. Peygamber’e (s.a.v.) itaat eden cennetle mükâfatlandırılırken, O’na
 
 Dünyada iken akıl ve iz’anlarını kullanarak Peygamber’in davetine uyup onunla birlikte, onun gösterdiği yoldan gitmeleri gerekirken, zararlı duygularına ve hırslarına kapılarak yanlış kişileri dost edinip onların yolundan gidenler inkâr ve isyan yolunu seçmişlerdir. İşte bütün gerçeklerin apaçık ortaya çıkacağı hesap gününde onlar, kendi kendilerine duydukları öfke ve pişmanlık duygularıyla ellerini ısırarak haktan sapmış olmanın acısını ve elemini yaşayacaklardır. (Kur'an Yolu Tefsiri, 4 /119-120)
 
-## SONUÇ
+## Sonuç
 
 Kur’an-ı Kerim, bize Allah’a imanla birlikte Peygamberimize (s.a.v.) imanı da emreder, Allah Teâlâ’ya itaatin hemen ardından Hz. Peygamber’e (s.a.v.) itaati de ister. Zira Yüce Kitabımızı bize tebliğ edip öğreten Peygamberimizdir (s.a.v.). Kur’an, Onun örnekliğinde yaşanan bir hayat modeline dönüşmüştür.
 

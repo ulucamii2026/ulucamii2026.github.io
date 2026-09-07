@@ -16,7 +16,7 @@ Kâbe’nin birer şubesi olan camilerimiz İslam’ın sembolü ve mührüdür.
 
 *“Allah’a en sevimli yerler mescidlerdir/camilerdir.”* (Müslim, Mesâcid, 288) Camiler, ibadet, zikir, takva gibi kulluğun tam manada gerçekleştiği yerlerdir. Camide bulunan bir mümin pek çok kötülükten uzak dururken, Rabbine ise daha çok yaklaşmanın yollarını arar.
 
-## CAMİLERİN İNŞASI, BAKIMI, ONARIMI VE TEMİZLİĞİ
+## Camilerin İnşası, Bakımı, Onarımı ve Temizliği
 
 Rabbimiz:
 
@@ -74,7 +74,7 @@ Bu ezanlar ki şahadetleri dinin temeli,
 
 Ebedî yurdumun üstünde benim inlemeli
 
-## CAMİLERİN MANEVİ İMARI
+## Camilerin Manevi İmarı
 
 ### Cemaatle Namaz
 
@@ -151,7 +151,7 @@ Namazın manevi temeli olan huşûnun gerçekleşmesinde önemli rolü bulunan t
 *   Kapı ağzı, merdiven önü, en arka kısım gibi insanların mecburen geçeceği yerlerde namaza durmamak gerekir ki insanlar bilmeden namaz kılanın önünden geçmesinler.
 *   Camiden çıkarken önce sol ayak dışarı atılmalıdır.
 
-## SONUÇ
+## Sonuç
 
 Cennete giden yollar, mescitlerden geçiyor
 

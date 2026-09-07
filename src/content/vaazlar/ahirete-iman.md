@@ -6,7 +6,7 @@ kelime: 2861
 docx: "/vaazlar/ahirete-iman.docx"
 pdf: "/vaazlar/ahirete-iman.pdf"
 ---
-### GİRİŞ
+### Giriş
 
 Mazlumun zalimin zulmünden şikâyetçi olacağı; boynuzsuz koyunun boynuzlu koyundan hakkını alacağı; ağızların mühürlenip ellerin konuşacağı, ayakların şahitlik yapacağı; insanın amel defterinin önüne konulup “Oku kitabını! Bugün hesap sorucu olarak sana nefsin yeter” (İsra, 17/14) buyrulacağı günün, ahiret gününün varlığına iman ediyoruz.
 
@@ -36,7 +36,7 @@ Kur’ân-ı Kerîm’de ahiret kelimesi el-yevmü’l-âhir, ed-dârü’l-âhi
 
 “Allah’ı, meleklerini, kitaplarını, peygamberlerini ve âhiret gününü inkâr eden kimse iyice sapıtmıştır.” (Nisa, 4/136) Bunlardan birine inanmayan kimselerin imanı muteber değildir, bunlardan birini bile inkâr eden kimseler “doğru, hak, geçerli, kurtarıcı” imana kavuşamamış, hak dinden sapmış sayılırlar. (Kur'an Yolu Tefsiri, 2 /160-161)
 
-### AHİRETE İMANIN HİKMETLERİ
+### Ahirete İmanın Hikmetleri
 
 Ahiret hayatını gerekli kılan, bu dünya hayatının bir imtihan yeri olmasıdır. Herkes bu dünyada imtihan olmakta kimi zengin kimi fakir, kimi âmir kimi memur, kimi sağlam kimi hasta olarak denenmektedir ve sonuçta bütün insanlar itaatkâr veya âsi, âdil veya zalim, iyi veya kötü olarak Allah'ın huzuruna çıkacaklardır. Dünya hayatındaki haksızlıkların, haddi aşmaların cezasının verilmesi ve işlenen iyilik ve ibadetlerin ödüllendirilmesi için ilâhî divan kurulacak, herkes birbiri ile hesaplaşacak, haklı ile haksız ayırt edilecek ve kişiye ameline göre karşılık verilecektir. (İslam’da İnanç Esasları, B. Topaloğlu, Y. Ş. Yavuz, İ. Çelebi, s. 248)
 
@@ -232,7 +232,7 @@ Hesap görülüp herkesin yeri belli olduktan sonra insanlar cennete veya cehenn
 
 *“Allah’a ve âhiret gününe iman ederek ölen kimseye, "Cennetin sekiz kapısının hangisinden dilersen gir." denilir.”* (İbn Hanbel, I, 17) müjdesini vermektedir.
 
-### SONUÇ
+### Sonuç
 
 Yâdında mı doğduğun dem
 

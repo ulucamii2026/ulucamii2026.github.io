@@ -6,7 +6,7 @@ kelime: 2520
 docx: "/vaazlar/ramazan-ve-iyilik.docx"
 pdf: "/vaazlar/ramazan-ve-iyilik.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 Evveli rahmet, ortası mağfiret, sonu günahlardan kurtuluş ayı olan Ramazan-ı şerifin ilk cumasına ulaşmış bulunuyoruz. Gündüzlerinde oruç, mukabele, Kur’an tilaveti; gecelerinde iftar, sahur, teravih ve daha nice güzellikleriyle on bir ayın sultanına merhaba dedik. Rabbim ibadetlerimizi kabul eylesin, bizlere sağlık ve afiyet içerisinde Kadir Gecesi’ne ulaşabilmeyi ve Bayrama affolunmuş olarak kavuşabilmeyi nasip eylesin.
 
@@ -18,7 +18,7 @@ Evveli rahmet, ortası mağfiret, sonu günahlardan kurtuluş ayı olan Ramazan-
 
 Genel olarak tarihte olup bitenlere bakıldığında her zaman iyilerin (salih kulların) hâkim olduklarını söylemek mümkün değilse de, eninde sonunda onların kazandığı ve kötülerin hem servet hem de egemenliklerine vâris oldukları, dünyada hayatın bu sayede devam ettiği görülmektedir. Peygamberler tarihine baktığımızda Firavun, Nemrut, Calut gibi zalim hükümdarlara ve Haman, Karun gibi güç odaklarına karşı mücadele eden peygamberler ile onların salih ümmetleri kurtulmakta, düşmanları ise ya mağlûp veya helâk olarak tarih sahnesinden çekilmektedirler. İslâm tarihinde de Hz. Peygamber’e (s.a.s.) karşı çıkan ve ona her türlü zulmü ve baskıyı uygulayan inkârcılar sonunda mağlûp ve perişan olmuşlar, onların mülkü ve memleketi Müslümanların eline geçmiştir. (Kur'an Yolu Tefsiri, 3/703-705)
 
-## İYİLİK KAVRAMININ TANIMI
+## İyilik Kavramının Tanımı
 
 Ayet ve hadislerde iyilik, “hayır”, “birr”, “ihsan”, “hasenat”, “lütuf”, “fazl”, “kerem”, “marûf”, “mürüvvet”, “salih” vb. kavramlarla ifade edilmiştir.
 
@@ -56,7 +56,7 @@ Câbir b. Abdullah’ın (r.a.) naklettiğine göre, Hz. Peygamber (s.a.s.) şö
 
 ***“İnsanların her bir eklemi için her gün bir sadaka gerekir. İki kişi arasında adâletle hükmetmen sadakadır. Bineğine binmek isteyene yardım ederek bindirmen yahut yükünü bineğine yüklemen sadakadır. Güzel söz sadakadır. Namaz için mescide giderken attığın her adım bir sadakadır. Gelip geçenlere eziyet veren şeyleri yoldan kaldırman da sadakadır***.” (Müslim, Zekât, 56) Bu hadis-i şerifte dargın iki Müslüman’ın arasını bulmak, hayvanına veya arabasına binmeye çalışana yardımcı olmak, eşyasını yüklemekte, taşımakta güçlük çekenlere yardım etmek, camiye namaz için giderken yürümek gibi bazı hayır yolları ve imkânları sayılmaktadır. Bu ve benzeri hadis-i şerifler İslam’da hayır ve iyilik yollarının gerçekten pek çok olduğunu göstermektedir. (İyilik Ayı Ramazan, s. 86)
 
-## ALLAH’IN RIZÂSINA ULAŞMANIN YOLU: İYİLİK
+## Allah’ın Rızâsına Ulaşmanın Yolu: İyilik
 
 <p lang="ar" dir="rtl" class="ayet">لَنْ تَنَالُوا الْبِرَّ حَتّٰى تُنْفِقُوا مِمَّا تُحِبُّونَؕ وَمَا تُنْفِقُوا مِنْ شَيْءٍ فَاِنَّ اللّٰهَ بِهٖ عَلٖيمٌ</p>
 
@@ -66,7 +66,7 @@ Müfessirler kişinin sevdiği şeyleri “servet, mevki, ilim ve beden kuvveti 
 
 Bu âyet indiği zaman ensarın zenginlerinden olan Ebu Talha, Mescid-i Nebî’nin karşısında bulunan en çok sevdiği Beyruhâ adındaki bahçesini Allah yolunda infak etmek istemiş ve bu konuyu Allah Resulü’ne (s.a.s.) açmıştı. Hz. Peygamber (s.a.s.) bu davranışından dolayı onu överek “gerçekte kazandıran malın bu mal olduğunu” belirttikten sonra ona bahçesini akrabaları arasında taksim etmesi tavsiyesinde bulunmuş; o da bu tavsiyeyi yerine getirmiştir. (Buhârî, Zekât, 44) Hz. Ömer de (r.a.) en iyi malının Hayber’deki hissesi olduğunu söyleyerek onu Allah yolunda harcamak için ne yapması gerektiğini Hz. Peygamber’e (s.a.s.) sormuş, O da ***“Aslını tut, meyvesini sadaka ver”*** buyurmuştur. Bunun üzerine Hz. Ömer, geliri gereken yerlere harcanmak üzere o bağı vakfetmiştir. (Buhârî, Şürût, 19) Bu tür davranışlar sahâbe döneminde çokça yaşanmıştır. (Kur'an Yolu Tefsiri, I/629-631)
 
-## HERŞEYE RAĞMEN İYİLİK
+## Herşeye Rağmen İyilik
 
 “Bir adam Hz. Peygamber’e (s.a.s.) gelerek: “Ya Resulallah, benim yakınlarım var. Ben onlarla irtibatımı sürdürüyorum, onlar benimle alakayı kesiyorlar. Ben onlara iyilik ediyorum, onlar bana kötülük ediyorlar. Ben onlara yumuşak davranıyorum, onlar bana kaba davranıyorlar.” demişti. Bunun üzerine Resûlullah (s.a.s.) şöyle buyurdu:
 
@@ -114,7 +114,7 @@ Saadet asrının günlerinden bir günde, Allah Resûlü (s.a.s.) ashabına, buy
 
 Hz. Ebû Bekir (r.a.), infak konusunda kendisiyle yarışan Hz. Ömer’i (r.a.) hüsrana uğratacak kadar eli açık idi. Bir defasında, servetinin tamamını infak ederek, Resûlullah’ın (s.a.s.) ailene ne bıraktın sorusuna *“Allah’ı ve Resûlü’nü”* cevabını vermiş ve bu cevabıyla Hz. Ömer’i geride bırakmıştı. (Ebû Davud, Zekât, 4; İyilik, 69-72)
 
-## İYİLİKLER KÖTÜLÜKLERİ GİDERİR
+## İyilikler Kötülükleri Giderir
 
 İnsan beşer olması gereği hata edebilir, günah işleyebilir. Günahından tövbe eden bir mümin, pişman olup istiğfar ettiği gibi, tövbesinin kabul olması için iyilikler yapması da gerekir.
 
@@ -128,7 +128,7 @@ Ebu Zerr’in (r.a.) rivayet ettiğine göre, Resûlullah (s.a.s.) ona şöyle b
 
 *“Şüphesiz ki iyilikler kötülükleri yok eder.”* (Hud, 11/114)
 
-## HERKES EKTİĞİNİ BİÇER
+## Herkes Ektiğini Biçer
 
 Bir hastaya vardın ise,
 
@@ -190,7 +190,7 @@ Hz. Mevlana’ya göre iyilik yapmak ve malı dağıtmak, ekin eken çiftçinin 
 
 *“İyiliğin karşılığı da ancak işte böyle iyiliktir.”* (Rahman, 55/ 60)
 
-## SONUÇ
+## Sonuç
 
 İyi olabilmek, iyiliğe ulaşabilmek için herkesin üzerine düşen sorumluluğu yerine getirmesi gerekir. Zengin servetini, makam sahibi yetkisini iyi yönde kullanmalıdır. Âlim ilmiyle aydınlatmalı, güçlü hakkın yanında olmalıdır.
 

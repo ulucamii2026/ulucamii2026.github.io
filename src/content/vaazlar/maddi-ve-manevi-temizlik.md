@@ -22,7 +22,7 @@ Tövbe de manevî bir temizliktir. Günahlarla kirlenen tövbe ile arınmış ol
 
 Peygamberimiz (SAV) de temizliğin dindeki yerini belirterek şöyle buyurmuştur: “Temizlik imanın yarısıdır.” Bu ayet ve hadislerden İslâm’ın temizlik esasları üzerine kurulduğu anlaşılmaktadır. İmandan sonra en üstün ibadet olan namazın sahih ve makbul olması için beden, elbise ve namaz kılınacak yerin temiz olmasının namazın şartları arasında yer alması da bunu teyit etmektedir. Temizlik, biri manevî diğeri maddî olmak üzere iki kısımdır:
 
-### MANEVİ TEMİZLİK
+### Manevi Temizlik
 
 Manevî temizlik kişinin kalbini kötü duygu ve düşüncelerden, bedenindeki organlarını günahlardan arındırmasıdır. Kalp (gönül) temizliği diğer temizliklerden önce gelir. “Falanca temiz bir insandır.” dendiği zaman ilk akla gelen onun temiz ve nezih duygulara sahip olması, gönlünün herkese karşı sevgi ve iyilikle dolu bulunmasıdır. Peygamberimiz (SAV) amellerin, kişinin niyetine göre değer taşıdığını bildiriyor. Bir insanın bir işi yapmaktaki amacı ne ise o işten kazancı da o olacaktır. Niyetin merkezi kalptir. Allah Teâlâ da insanları kalplerindeki duygu ve düşüncelere göre değerlendirir.
 
@@ -47,7 +47,7 @@ Yevme lâ yenfau de senden kalbi selim isterler.”
 
 Sanma senden altın ve gümüş isteyecekler. Hiç bir şeyin fayda vermediği kıyamet gününde sadece senden kötülüklerden arınmış bir kalp isteyecekler.
 
-### MADDİ TEMİZLİK
+### Maddi Temizlik
 
 Maddî temizlik, kişinin üstünü, kılık ve kıyafetini, oturduğu-yattığı yeri ve çevresini her türlü kir ve pisliklerden temiz tutması, başkasını rahatsız edecek görüntülerden uzak durmasıdır.
 

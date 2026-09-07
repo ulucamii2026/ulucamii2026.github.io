@@ -150,7 +150,7 @@ Bizleri yetiştiren ve bizlerden önce ahiret yolculuğuna çıkmış olan başt
 
 “***Kabirleri ziyaret etmek isteyen ziyaret etsin. Çünkü kabir ziyareti bize âhireti hatırlatır***” Tirmizi, Cenaiz, 60
 
-## SONUÇ OLARAK:
+## Sonuç Olarak
 
 -Anne-babamız başta olmak yakın ve uzak akrabalarımızı, mahallede komşularımızı, apartman sakinlerini ziyaret etmeli birbirimizin hayır duasını almaya özen göstermeliyiz. Bayramlar birbirimizden ayrılıp, tatil yerlerine uzaklaşma zamanı değildir. Bayramlar mutluluğu paylaşma zamanıdır. Bayramlar hayatı paylaşabilme zamanıdır. Bu sebeple bayram için gidilebilecek en güzel yer ailemizin yanıdır. Eğer gitme imkânımız olmamış ise bir telefon açmalı, büyüklerimizin gönüllerini hoş etmeliyiz.
 
@@ -160,9 +160,9 @@ Bizleri yetiştiren ve bizlerden önce ahiret yolculuğuna çıkmış olan başt
 
 -Hastalarımızı ve ahirete göçenleri unutmamalı, ziyaretlerimizi eksik etmemeli ve onlara duada bulunmalıyız. Hastanede yatan kardeşlerimizi ziyaret etmekle onların sıkıntılarını bir nebze olsun unutturabiliriz. Yuvalarda kalan çocuklarımızı ziyaret etmekle onların yüzlerini güldürebiliriz.
 
-## DUA
+<p class="vaaz-etiket">Duâ</p>
 
-TEVBE DUASINDAN SONRA
+<p class="vaaz-etiket">Tevbe Duasından Sonra</p>
 
 · Allah’ım! Bize sonunda küfür bulunmayan bir iman ve kesin bilgi nasip et.
 

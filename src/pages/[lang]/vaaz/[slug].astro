@@ -15,21 +15,30 @@ import { katAd } from '../../../i18n/vaaz-kategori';
 
 export async function getStaticPaths() {
   const vaazlar = (await getCollection('vaazlar')).filter((v) => !v.data.taslak);
-  const out: { params: { lang: Dil; slug: string }; props: { entry: (typeof vaazlar)[number] } }[] = [];
-  for (const lang of ['tr', 'fr', 'en'] as Dil[]) for (const v of vaazlar) out.push({ params: { lang, slug: v.id }, props: { entry: v } });
+  vaazlar.sort((a, b) => (a.data.siraNo ?? 0) - (b.data.siraNo ?? 0) || a.data.baslik.localeCompare(b.data.baslik, 'tr'));
+  type Vaaz = (typeof vaazlar)[number];
+  /** Aynı kategoriden üç öneri: listede kendinden SONRAKİLER önce (her sayfada farklı üçlü), eksik kalırsa başa dönülür. */
+  const oneri = (v: Vaaz): Vaaz[] => {
+    const ayni = vaazlar.filter((k) => k.data.kategori === v.data.kategori && k.id !== v.id);
+    const i = ayni.findIndex((k) => (k.data.siraNo ?? 0) > (v.data.siraNo ?? 0));
+    const sirali = i < 0 ? ayni : [...ayni.slice(i), ...ayni.slice(0, i)];
+    return sirali.slice(0, 3);
+  };
+  const out: { params: { lang: Dil; slug: string }; props: { entry: Vaaz; ilgili: Vaaz[] } }[] = [];
+  for (const lang of ['tr', 'fr', 'en'] as Dil[]) for (const v of vaazlar) out.push({ params: { lang, slug: v.id }, props: { entry: v, ilgili: oneri(v) } });
   return out;
 }
 const dil = Astro.params.lang as Dil;
-const { entry } = Astro.props;
+const { entry, ilgili } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 
 const m = {
-  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null as string | null, paylas: "WhatsApp'ta paylaş",
+  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null as string | null, paylas: "WhatsApp'ta paylaş", ilgili: 'Bunları da okuyabilirsiniz',
         pdfNot: 'Orijinal belge', wordNot: 'Düzenlenebilir', serbest: 'Anonim metin — okuyabilir, indirebilir, serbestçe kullanabilirsiniz.' },
-  fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp',
+  fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp', ilgili: 'À lire également',
         pdfNot: 'Document original', wordNot: 'Modifiable', serbest: 'Texte anonyme — à lire, télécharger et utiliser librement.' },
-  en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp',
+  en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp', ilgili: 'You may also read',
         pdfNot: 'Original document', wordNot: 'Editable', serbest: 'Anonymous text — read, download and use freely.' },
 }[dil];
 
@@ -92,6 +101,23 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
         <Content />
       </div>
 
+      {ilgili.length > 0 && (
+        <nav class="vaaz-ilgili" aria-labelledby="ilgili-baslik">
+          <h2 id="ilgili-baslik" class="etiket">{m.ilgili}</h2>
+          <ul role="list">
+            {ilgili.map((v) => (
+              <li>
+                <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}`}>
+                  <span class="ilgili-kat">{katAd[v.data.kategori]?.[dil] ?? v.data.kategori}</span>
+                  <span class="ilgili-baslik">{v.data.baslik}</span>
+                  {v.data.kelime && <span class="ilgili-sure">{Math.max(1, Math.round(v.data.kelime / 180))} {m.okuma}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
       <footer class="vaaz-alt">
         <a href={wa} target="_blank" rel="noopener" class="baglanti-dugme">{m.paylas}</a>
         <a href={yol(dil, 'vaazlar')} class="baglanti-dugme">{m.geri} →</a>
@@ -101,11 +127,12 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 </Base>
 
 <style>
-  .geri-bag { display: inline-block; font-size: 0.85rem; color: var(--metin-2); text-decoration: none; margin-bottom: 1.5rem; }
+  /* min-height 2.75rem: mobil dokunma hedefi (44 px) — denetimde 97×22 px çıkmıştı */
+  .geri-bag { display: inline-flex; align-items: center; min-height: 2.75rem; padding-inline-end: 0.5rem; font-size: 0.85rem; color: var(--metin-2); text-decoration: none; margin-bottom: 0.75rem; }
   .geri-bag:hover { color: var(--vurgu); }
 
   /* Yerleşim: tek sütun; ≥1024 px'te okuma sütunu + sağda yapışkan panel (kapsayıcının iki kenarına yaslanır) */
-  .vaaz-yerlesim { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "bas" "yan" "govde" "alt"; }
+  .vaaz-yerlesim { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "bas" "yan" "govde" "ilgili" "alt"; }
   .vaaz-bas { grid-area: bas; } .vaaz-yan { grid-area: yan; } .vaaz-govde { grid-area: govde; } .vaaz-alt { grid-area: alt; }
   .vaaz-bas, .vaaz-govde, .vaaz-alt { max-width: 46rem; }   /* ≈80 karakterlik rahat satır ölçüsü */
 
@@ -118,6 +145,16 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
   .vaaz-meta > :global(span + span)::before { content: "·"; margin-inline-end: 0.5rem; color: var(--cizgi-etkilesim); }
   .vaaz-kat { color: var(--vurgu-2); font-weight: 700; }
   .vaaz-not { margin: 0.9rem 0 0; padding-inline-start: 0.75rem; border-inline-start: 3px solid var(--vurgu-2); font-size: 0.88rem; color: var(--metin-2); }
+
+  /* Aynı kategoriden öneriler */
+  .vaaz-ilgili { grid-area: ilgili; max-width: 46rem; margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
+  .vaaz-ilgili h2 { margin: 0 0 0.9rem; color: var(--metin-2); }
+  .vaaz-ilgili ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .vaaz-ilgili a { display: grid; gap: 0.15rem; padding: 0.8rem 0.95rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); text-decoration: none; color: var(--metin); transition: border-color 0.15s, transform 0.15s; }
+  .vaaz-ilgili a:hover { border-color: var(--vurgu); transform: translateY(-1px); }
+  .ilgili-kat { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--vurgu-2); }
+  .ilgili-baslik { font-family: var(--font-serif, Lora), serif; font-size: 1.02rem; line-height: 1.3; }
+  .ilgili-sure { font-size: 0.75rem; color: var(--metin-2); text-transform: uppercase; letter-spacing: 0.03em; }
 
   /* Panel */
   .vaaz-yan { margin: 0 0 2rem; }
@@ -133,7 +170,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
   .yan-paylas { display: none; }
 
   @media (min-width: 1024px) {
-    .vaaz-yerlesim { grid-template-columns: minmax(0, 46rem) 17rem; justify-content: space-between; column-gap: clamp(2.5rem, 5vw, 5rem); grid-template-areas: "bas yan" "govde yan" "alt yan"; }
+    .vaaz-yerlesim { grid-template-columns: minmax(0, 46rem) 17rem; justify-content: space-between; column-gap: clamp(2.5rem, 5vw, 5rem); grid-template-areas: "bas yan" "govde yan" "ilgili yan" "alt yan"; }
     .vaaz-yan { position: sticky; top: 6rem; align-self: start; margin: 0.35rem 0 0; }
     .vaaz-indir { grid-template-columns: 1fr; }
     .yan-paylas { display: inline-flex; width: 100%; justify-content: center; margin-top: 0.75rem; box-sizing: border-box; }
@@ -169,3 +206,17 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 
   .vaaz-alt { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
 </style>
+
+<script>
+  // İndirmeleri say: GoatCounter olayı (çerezsiz, kişisel veri yok) — hangi vaazın Word/PDF'i
+  // ne kadar indiriliyor, sayfa görüntülenmesinden ayrı bir «olay» olarak panelde görünür.
+  document.querySelectorAll<HTMLAnchorElement>('.vaaz-indir a[download]').forEach((a) => {
+    a.addEventListener('click', () => {
+      const sayac = (window as any).goatcounter;
+      const tur = a.querySelector('.indir-ad')?.textContent?.trim().toLowerCase() || 'dosya';
+      if (sayac && typeof sayac.count === 'function') {
+        sayac.count({ path: `indir-${tur}${location.pathname}`, title: document.title, event: true });
+      }
+    });
+  });
+</script>

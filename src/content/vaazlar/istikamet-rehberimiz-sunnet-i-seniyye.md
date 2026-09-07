@@ -64,9 +64,9 @@ Sahâbîler, Hz. Peygamberin vefatından sonra bir mesele ile karşılaştıklar
 
 Bunun üzerine Hz. Peygamber: "Resul’ünün elçisini (Resûlü'nün arzuladığı cevabı vermeye) muvaffak kılan Allah'a hamdolsun." buyurmuştu. (Tirmizi, Ahkâm, 3)
 
-### PEYGAMBERLERE KARŞI GÖREVLERİMİZ
+### Peygamberlere Karşı Görevlerimiz
 
-İMAN EDİP İTAAT ETMEK İLK VAZİFEMİZ
+## İman Edip İtaat Etmek İlk Vazifemiz
 
 <p lang="ar" dir="rtl" class="ayet">مَنْ يُطِـعِ الرَّسُولَ فَقَدْ اَطَاعَ اللّٰهَۚ وَمَنْ تَوَلّٰى فَمَٓا اَرْسَلْنَاكَ عَلَيْهِمْ حَفٖيظاًؕ</p>
 
@@ -82,7 +82,7 @@ De ki: “Eğer Allah’ı seviyorsanız bana uyun ki Allah da sizi sevsin ve g�
 
 Hz. Peygamber'in şu hadisi de Kur'an'ı ön plana alıp sünneti öteleyen zihniyete karşı bize bir uyarı niteliğindedir: "Sizden birinizi, emrettiğim veya yasakladığım bir konu kendisine iletildiğinde, sakın köşesine yaslanmış olarak (cahilce), 'Biz Allah'ın Kitabı'nda ne bulursak ona uyarız (hadis tanımayız!) derken bulmayayım!” (Tirmizi, İlim 10)
 
-HER ŞEYDEN VE HERKESTEN DAHA ÇOK SEVMEK
+## Her Şeyden ve Herkesten Daha Çok Sevmek
 
 <p lang="ar" dir="rtl" class="ayet">اَلنَّبِيُّ اَوْلٰى بِالْمُؤْمِنٖينَ مِنْ اَنْفُسِهِمْ</p>
 
@@ -98,13 +98,13 @@ Enes (r.a)’den şöyle dediği rivayet olunmuştur: Bir bedevi Resûlullah (s.
 
 De ki: Eğer babalarınız, oğullarınız, kardeşleriniz, eşleriniz, hısım-akrabanız, kazandığınız mallar, durgunluğa uğramasından endişe ettiğiniz ticaretiniz ve hoşlandığınız meskenler size Allah’tan, peygamberinden ve O’nun yolunda cihaddan daha sevimli ise, artık Allah buyruğunu (kıyameti) gerçekleştirinceye kadar bekleyin. Allah günaha saplanmış kimseleri hidayete erdirmez. (Tevbe 3/24)
 
-PEYGAMBER SEVGİLİSİ: HUBEYB B. ADİY
+## Peygamber Sevgilisi: Hubeyb b. Adiy
 
 Reci’ Gazvesinde Kur’an hafızlarından 70 sahabe hayatlarını kaybetmişlerdi. Hubeyb b. Adiy (ra) da gözü dönmüş kafirler tarafından esir alınıp idam sehpasına çıkarıldığında ona şu soruyu sormuşlardı: Şu anda senin yerine Hz. Muhammed’in idam edilmesini arzu eder miydin?
 Hubeyb: Hayır. Vallahi benim kurtuluşum pahasına dahi olsa ayaklarına bir dikenin batmasına razı olmam. Bu sözden sonra idam sehpasında ellerini açar ve:
 “Ya Rabbi! Buraya gelirken senin habibine veda edemeden geldim. Benim selamımı O’na ulaştır.” der. Tam o esnada Allah Resulü ashabıyla oturmuş sohbet ederlerken, birdenbire doğrulur ve “Selam sana Ey Hubeyb” der. Yanındakiler ne olduğunu sorunca da gözyaşları içinde: “Müşrikler Hubeyb’i şehit ettiler, son anında bana selam gönderdi, ben de selamını aldım.” buyurdu. (Taberani, el Mucem’ul Kebir, 5/260)
 
-O’NU TANIMAK, ANLAMAK VE ÖRNEK ALMAK
+## O’nu Tanımak, Anlamak ve Örnek Almak
 
 Her bir Müslüman Efendimizin hayatını iyi öğrenmeli ve doğru değerlendirmelidir. Çünkü örneği alınacak insanın doğru tanınması ve hakkında yeterli bilgi sahibi olunması zaruridir. Örnek alınacak model insan bilinmeli ve doğru tanınmalıdır. Hayatı, gönderiliş gayesi, insanları hidayete çağırışı, dostluk ve mücadeleleri, çektiği sıkıntılar, hayat şartları vb. durumlarını, hâsılı bütün yaşamını ilmek ilmek öğrenmeliyiz.
 

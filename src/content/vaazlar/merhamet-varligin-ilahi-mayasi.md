@@ -14,7 +14,7 @@ Her hayırlı işimize Besmele ile başlarız. Yemeğimize başlamadan, evimize 
 
 “Yüce Allah'ı anarak başlanmayan her anlamlı söz veya iş, bereketsizdir/sonuçsuzdur.” (İbn Hanbel, II, 360) Kur’an-ı Kerim’de 114 yerde tekrarlanır besmele. Besmelede Cenab-ı Hak, rahman ve rahim sıfatlarıyla zikredilir. Rabbimizin güzel isimlerinden olan Rahman, “merhamet etmek, severek ve acıyarak korumak” anlamındaki rahmet kökünden gelmekte olup “çokça şefkat ve merhamet eden, acıyan” demektir. Rahman, Allah-u Teala’nın sonsuz merhametiyle lutuf ve ihsanda bulunması, O’nun tüm varlığa olan merhameti; rahim ismi ise Cenab-ı Hakk’ın ahirette sadece müminlere olan merhameti anlamlarına gelmektedir.
 
-### MERHAMETİN TANIMI
+### Merhametin Tanımı
 
 Merhamet, “acımak, şefkat göstermek” anlamlarına gelmektedir. Merhamet ve aynı manadaki rahmet kelimeleri öncelikle Allah’ın bütün yaratılmışlara yönelik lütuf ve ihsanlarını ifade etmektedir. Bununla birlikte merhamet, insanlarda bulunan, onların kendi aralarında ve diğer canlıların sıkıntıları karşısında duyarlı olmaya ve yardım etmeye sevk eden acıma duygusudur. İslâmî kaynaklarda merhamet kavramı genellikle rahmet kelimesiyle ifade edilir.
 
@@ -24,7 +24,7 @@ Cenab-ı Hak sonsuz rahmet ve merhamet sahibidir. Kur’an-ı Kerim’de:
 
 “…rahmetim ise her şeyi kuşatmıştır…” (Araf, 7/156) O’nun rahmetinden inanan, inanmayan herkes payını alır. Allah, dünya hayatında dostlarının yanı sıra düşmanlarını da lutuf ve nimetlerine mazhar kılmaktadır.
 
-### ALLAH’IN RAHMETİ
+### Allah’ın Rahmeti
 
 Allah’ın rahmetinin ne kadar derin, şefkatinin ne denli nihayetsiz olduğuna dikkat çekmek isteyen Allah Resulü, bunu, annenin yavrusuna karşı merhameti ile örneklendirmiştir. Bir gazve sonrası, Resulullah’a bir grup esir getirildi. İçlerinden bir kadın telaş içinde esirler arasında yavrusunu arıyordu. Sonunda bir çocuk buldu ve onu kucaklayıp bağrına bastıktan sonra emzirmeye başladı. Durumu gören Hz. Peygamber Efendimiz yanındakilere,
 
@@ -58,7 +58,7 @@ Bir kutsî hadiste,
 
 “Rahmetim gazabımı geçti.” (Buhârî, Tevhîd, 22) buyrulmuştur.
 
-### HZ. PEYGAMBER’İN MERHAMETİ
+### Hz. Peygamber’in Merhameti
 
 Yüce Allah, son elçisi Hz. Muhammed’i insanlara sıkıntı, zorluk ve meşakkat vermek için değil, alemlere rahmet ve merhamet olarak göndermiştir. Ayet-i kerimede:
 
@@ -88,7 +88,7 @@ Peygamber Efendimiz kızı Hz. Zeyneb’in çocuğu rahatsızlandığında gelmi
 
 “Bu gözyaşı, Allah’ın, dilediği kullarının kalplerine yerleştirdiği bir rahmettir. Allah, kullarından sadece merhametli olanlara merhamet eder.” (Buhârî, Merdâ, 9; Hadislerle İslam, 3/89)
 
-### AİLEDE VE TOPLUMDA MERHAMET
+### Ailede ve Toplumda Merhamet
 
 İnsan en güzel biçimde, yeryüzünde halife olarak yaratılan, kendisine şan, şeref ve nimetler verilen seçkin bir varlıktır. İnsana verilen bu değerin sürdürülmesi şefkat, merhamet gibi değerlerin, ahlak ilkelerinin yaşanması ile mümkün olacaktır. Doğup, büyüyen güç sahibi olan insan, bir zaman sonra yaşlanmakta, gücünü kaybetmektedir. Rabbimiz kişinin yaşlandığında anne babasına nasıl davranılması gerektiği hususunda şöyle buyurmuştur:
 
@@ -158,7 +158,7 @@ Annesi tarafından, terbiyesinde yetişmesi ve kendine hizmet etmesi içine yan�
 
 İnsanlar arasında merhametin timsali ise, annelerdir. Annelerdeki merhamet, Allah'ın rahmetinin en somut tezahürüdür. Şu hikâyede anlatılan olay, anne şefkatini ne güzel yansıtmaktadır. Rivayete göre iki kadın ve oğulları bir aradayken bir kurt gelerek ikisinden birinin oğlunu kapıp götürür. Kadınlar birbirlerini işaret edip, “Kurt senin çocuğunu götürdü.” diyerek tartışırlar. Olayı Hz. Dâvûd'a anlatırlar ve o, büyük kadının çocuğunun götürüldüğüne hükmeder. Onun yanından ayrıldıktan sonra Hz. Süleyman'a başvururlar. Onları dinleyen Süleyman (as), “Bir bıçak getirin çocuğu iki parçaya bölüp aranızda taksim edeceğim.” deyince, gerçek anne olan küçük kadın, “Yapma, Allah sana merhamet etsin, çocuk onun olsun.” der. Kadının bu şekilde şefkat göstermesinden gerçek annenin küçük kadın olduğunu anlayan Süleyman (as) çocuğu ona verir. (Buhârî, Ferâiz, 30)
 
-### HAYVANLARA VE ÇEVREYE MERHAMET
+### Hayvanlara ve Çevreye Merhamet
 
 Peygamber Efendimiz on bin kişilik ordusu ile Mekke’nin fethine giderken, Arç vadisinde, yolları üzerinde yeni doğmuş yavrularını emziren bir köpek gördüler. Hz. Peygamber Cuayl b. Suraka adlı sahabiyi çağırdı ve süt emen yavruların önünde durarak onları atlardan, develerden korumasını ve ordu geçinceye kadar orada nöbet tutmasını istedi. (Vâkıdî, Megazi, II, 225)
 

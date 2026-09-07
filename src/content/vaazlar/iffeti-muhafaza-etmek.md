@@ -6,13 +6,13 @@ kelime: 2157
 docx: "/vaazlar/iffeti-muhafaza-etmek.docx"
 pdf: "/vaazlar/iffeti-muhafaza-etmek.pdf"
 ---
-## GİRİŞ
+## Giriş
 
 Hz. Peygamber (s.a.s.) ile uzun süre birlikte olup ona hizmette bulunma şerefine eren meşhur sahâbîlerden Ebû Zer (r.a.) yine bir gün onunla beraberdi. Allah Resûlü (s.a.s.) binitine binerek arkasına da Ebû Zerr’i (r.a.) oturtmuş ve sohbete başlamıştı. Ebû Zerr’e birtakım sorular soruyor, Ebû Zer de Allah Resulü'nün (s.a.s.) daha iyi bileceğini söyleyerek onun açıklamalarına kulak veriyordu. Resûlullah’ın (s.a.s.) sorularından biri şöyleydi: “Ebû Zer, yatağından kalkıp mescide gidemeyecek, mescide gidip de yatağına dönmeye takatin kalmayacak kadar aşırı bir açlığa maruz kalırsan ne yaparsın?” Bu soru üzerine Ebû Zer (r.a.) yine Hz. Peygamber’in (s.a.s.) kanaatini öğrenmek için, “Allah ve Resûlü daha iyi bilir.” diye cevap verince Resûlullah da (s.a.s.) ona, “Bu durumda dahi iffetli olman gerekir.” (İbn Mâce, Fiten, 10) buyurdu. Böylece müslümanın en sıkıntılı zamanlarda bile, iffetini koruyup başkalarına el açmaması veya haram kazançlara göz dikmemesi gerektiğini bildirdi. (Hadislerle İslam, 3/229)
 
 İslam dini, insanın fıtratında var olan duygu ve eğilimleri terbiye ederek onları Allah’ın rızasına uygun hale getirmeyi amaçlar. Bu doğrultuda, bireyin ve toplumun huzurunu sağlayacak değerler ve ilkeler belirlemiştir. Bu değerlerin başında iffet gelir.
 
-## İFFETİN TANIMI
+## İffetin Tanımı
 
 Sözlükte “haramdan uzak durmak, helâl ve güzel olmayan söz ve davranışlardan sakınmak” anlamında olan iffet kelimesi, insanın bedenî ve maddî hazlara aşırı düşkünlükten korunmasını sağlayan erdemdir. (Mustafa Çağrıcı, İffet, DİA, XXI, 506)
 
@@ -20,7 +20,7 @@ Sözlükte “haramdan uzak durmak, helâl ve güzel olmayan söz ve davranışl
 
 İffet, hikmet, cesaret ve adaletle birlikte İslâm ahlâk felsefesindeki dört temel fazileti oluşturur. İmamı Gazâlî, İhyâ’sında hayâ, sabır, arzuları dizginlemek, dürüstlük, kanaat, nezaket, Allah korkusu, cömertlik, bağışlama ve hoşgörü gibi erdemleri iffetin alt başlığı olduğunu ifade etmiştir. (Hadislerle İslam, 3/229)
 
-## KUR’AN-I KERİM’DE İFFET
+## Kur’an-ı Kerim’de İffet
 
 Kur’an-ı Kerîm’de iffet kelimesi geçmemekle birlikte dört ayette aynı kökten isim ve fiiller yer almıştır. Kur’an-ı Kerim’de, kendilerini Allah yoluna adamış muhtaç kimselere yardım yapılması istenirken bu kimseler şöyle tanıtılmıştır:
 
@@ -48,7 +48,7 @@ Hz. Ömer’den (r.a.) rivayet edilen bir hadise göre Resûlullâh (s.a..s.), b
 
 “Ve onlar ki (kurtuluşa eren müminler), iffetlerini korurlar” (Müminun, 23 /5) İffetin korunması, İslâm’ın temel ahlâk buyruklarından biri olup, bu ayetler grubunda sayılan diğer niteliklerde olduğu gibi hem erkekleri hem de kadınları kapsamaktadır. İslâm’da hayatın çeşitli alanlarına dair pek çok düzenleme, Kur’an ve Sünnet’te ortaya konan genel ilkeler, amaçlar ve örnekler çerçevesinde ihtiyaçlara, zaman ve şartlara göre İslâm toplumunun takdirine bırakılırken evlenme ve aile ile ilgili belli başlı hukukî düzenlemelerin doğrudan Kur’an tarafından belirlenmiş olması, İslâm dininin iffet konusundaki duyarlılığının bir ifadesidir. Bu duyarlılık zamanla İslâm toplumlarının genel ahlâk ve iffet telakkilerine de yansımış; bu toplumların karakterini belirleyen aile, namus ve iffet anlayışının oluşmasına zemin hazırlamıştır. (Kur'an Yolu Tefsiri, 4/11-12)
 
-## HADİSLERDE İFFET
+## Hadislerde İffet
 
 İmanla olan sıkı ilişkisi sebebiyle iffet, başlangıçtan itibaren, inanç esasları ve diğer bazı ibadetlerle birlikte İslâm’ın temel prensipleri arasında yer alan çok önemli ahlâkî bir meziyet olmuştur. Nitekim İslâmiyet’in ilk yıllarında Habeşistan’a göç eden müminlerden Cafer b. Ebû Tâlib, kral Necâşî’ye Allah Resulü'nü (s.a.s.) tanıtırken onun iffetli bir kişiliğe sahip olduğunu, haramlardan ve her türlü çirkinlikten kaçınmayı, iffetli kadınlara iftira etmeyi yasakladığını vurgulamıştır. (İbn Hanbel, I, 202) Allah Resûlü’nün (s.a.s.) İslâm’a davet mektubunu alan Bizans kralı Heraklius, ticaret yapmak üzere Şam’a gelen Ebû Süfyân’dan, Hz. Peygamber (s.a.s) ve getirdiği din hakkında bilgi istemiştir. Ebû Süfyân, Hz. Muhammed’in (s.a.s.) üstün ahlâkıyla bilinen biri olduğunu kaydettikten sonra, “O bize namaz kılmayı, zekât vermeyi, akraba ile ilgilenmeyi ve iffetli olmayı emrediyor.” demiştir. (Buhârî, Tefsîr, (Âl-i İmrân), 4)
 
@@ -70,7 +70,7 @@ Nefsine hâkim olmak iffetin bir diğer boyutudur. Bir gün Übey b. Kâ’b mes
 
 Allah Resûlü (s.a.s.), “Allah bir toplumun bekasını ve gelişmesini dilerse onları hoşgörü ve iffetle rızıklandırır.” (Taberânî, Müsnedü’ş-Şâmiyyîn, I, 34) buyurarak, toplumun bekası ve huzurunun iffetli, müsamahalı kişilerle olacağına dikkat çekmiştir.
 
-## İFFET VE HAYÂ
+## İffet ve Hayâ
 
 Peygamberlerin temel vasıflarından biri olan hayâ erdemi, onların gönderildikleri toplumlara ısrarla öğütledikleri bir sünnet olagelmiştir.
 
@@ -115,7 +115,7 @@ Ne çirkin yüzler örtermiş, meğer o incecik perde.
 
 Mümin için hayâ onu daima iyiyi ve güzeli yapmaya sevk eden ahlâkî bir erdemdir. Bu nedenle insanlık tarihi boyunca bütün ilâhî dinler söz, fiil ve davranışlarda hayâlı olmayı emretmiştir. Edep ve ahlâkın temel bir unsuru olarak hayâ, toplumumuzda da nesiller boyu üstün bir ahlâkî meziyet olarak görülmüştür. Günümüzde de edep, iffet, hayâ kadınıyla, erkeğiyle, genciyle yaşlısıyla her müminde olması geren ahlaki bir erdemdir.
 
-## SONUÇ:
+## Sonuç
 
 Ebû Süleyman ed-Dârânî’ye, “Muhabbet ehli Allah’ın sevgisini ne ile kazandı?” diye sorulduğunda gelen yanıt kısa ve net olmuştur: “İffetle ve kanaatkârlıkla.”
 

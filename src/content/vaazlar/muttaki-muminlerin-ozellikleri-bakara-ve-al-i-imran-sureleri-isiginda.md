@@ -209,7 +209,7 @@ Ebu Hureyre’den (ra.) merfû olarak rivayet edilen bir hadis-i şerife göre P
 Gelmiş ve geçmiş günahları bağışlanmış olduğu halde Nebi (s.a.v.) günde yetmiş defadan fazla tövbe ve istiğfar ettiğine dair yemin etmiştir. Bu hadis-i şerif, en mükemmel insan olan Resulullah'ın (s.a.v.) bile sürekli tövbe ettiğini gösterir. Müttaki, bu örneği kendine rehber edinir. Her gün muhasebe yapar. "Bugün ne yaptım? Neleri eksik bıraktım? Kimin hakkına girdim?" diye sorar. Bu dünyaya Rabbimiz bizi imtihan için gönderdi, imtihanda hata etmekte vardır ancak tövbe etmeyi unutmayalım ve geciktirmeyelim. Hatada ısrar etmeyelim. Müttaki mümin bilir ki, Allah tövbe edeni günahı silinen bir mümine dönüştürür. Tövbe kapısı açıktır, ama ömür kapısı kapanmadan o kapıdan girmek gerekir.
 
 ✦ ✦ ✦
-## SONUÇ
+## Sonuç
 
 Bugün sizlerle Bakara 2. ve 5. ayetleri ile Âl-i İmrân 133. ve 135. ayetleri arasında ifade edilen müttaki müminin temel özelliklerini inceledik. Gayba iman etmek, namazı hakkıyla kılmak, verdiği nimetlerden harcamak, kendine ve öncekilere indirilene iman etmek, ahirete kesin olarak inanmak, zorluklara rağmen hayırda yarışmak, öfkeyi yutmak ve affetmek, günah işlediğinde hemen tövbe etmek. İşte muttakinin şiarı budur.
 
@@ -223,6 +223,6 @@ Bakara Suresi'nde Rabbimiz, takva sahipleri için şöyle buyuruyor:
 
 “Çünkü Allah takvâ ile hareket edip iyiliği seçenlerin yanındadır.” (Nahl, 16/128)
 
-## D U Â
+<p class="vaaz-etiket">Duâ</p>
 
 Allah’ım! Bizleri sana karşı gelmekten sakınan, emirlerine gönülden teslim olan, haramlardan titizlikle kaçınan müttakî kullarından eyle. Kalplerimize takvâ, dilimize doğruluk, amellerimize ihlâs nasip et. Gizlide ve açıkta seni hatırlayan kullarından olmayı bizlere lütfeyle. Âmin yâ Rabbi’l-âlemîn.

@@ -10,17 +10,17 @@ pdf: "/vaazlar/iffet-ve-haya.pdf"
 
 *Nûr Sûresi 30 ve 31. Âyetleri Bağlamında*
 
-## İFFET VE HAYÂ KAVRAMLARI
+## İffet ve Hayâ Kavramları
 
 Sözlükte, “harama yaklaşmamak, helâl olmayan söz ve fiillerden kaçınmak” mânâsına gelen “iffet”; kişinin yeme, içme ve cinsellik konularında nefsin aşırı arzularını dizginleyerek dengeli ve ölçülü davranmasını, dinin belirlediği çerçevede hareket etmesini ifade eden ahlâkî bir terimdir. Nefsanî arzulara aşırı düşkünlüğü ifade eden “şereh” ile bu arzulardan tamamen uzaklaşma anlamındaki “humûd”un ortasında yer alan “iffet”; hikmet, şecaat (cesaret) ve adaletle birlikte İslâm ahlâk felsefesindeki “dört temel fazilet”i oluşturur.
 
 Sözlükte “utanmak, çekinmek” anlamlarına gelen ve Türkçede daha çok “ar” kelimesiyle ifade edilen hayâ duygusu ise, genellikle yüzün kızarması, kişinin başını öne eğmesi, gözlerini kaçırması, şaşkın davranışlar sergilemesi gibi şekillerde dışa yansır. İnsanı kötülükten alıkoyup iyiliğe yönelten fıtrî bir ahlâk özelliği olmakla birlikte hayâ, kişinin içinde yaşadığı toplumun dinine, örf ve âdetlerine, yaşam tarzına göre şekillenir. Dolayısıyla değer yargılarının değişmesiyle hayânın toplumdan topluma, hatta bireyden bireye farklılık göstermesi mümkün olduğu gibi, değerlerin hiçe sayıldığı bir ortamda tamamen yok olması da ihtimal dâhilindedir.
 
-## MÜMİN ERKEKLERE: NÛR SÛRESİ 30. ÂYET
+## Mümin Erkeklere: Nûr Sûresi 30. Âyet
 
 Anılan sûrenin 30. âyetinde hitap erkeklere müteveccih olup şöyle buyurulmaktadır:
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">قُلْ لِلْمُؤْمِنِينَ يَغُضُّوا مِنْ اَبْصَارِهِمْ وَيَحْفَظُوا فُرُوجَهُمْۜ ذٰلِكَ اَزْكٰى لَهُمْۜ اِنَّ اللّٰهَ خَب۪يرٌ بِمَا يَصْنَعُونَ</p>
 
@@ -30,7 +30,7 @@ Anılan sûrenin 30. âyetinde hitap erkeklere müteveccih olup şöyle buyurulm
 
 *“Gözlerini haramdan sakınsınlar*” şeklinde çevrilen kısmın tercümeye tam olarak yansıtılması mümkün bulunmayan, aslında “*mutlak veya genel olarak bakmayı değil, insanı harama götürebilecek bakışları”* meneden bir mâna, bir nüans vardır. Nitekim sevgili Peygamberimiz Hz. Ali’ye hitaben,
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">يَا عَلِىُّ لاَ تُتْبِعِ النَّظْرَةَ النَّظْرَةَ فَإِنَّ لَكَ الأُولَى وَلَيْسَتْ لَكَ الآخِرَةُ</p>
 
@@ -42,11 +42,11 @@ Uygulama ve yorumlara dayalı açıklamalara göre erkeklerin gözlerden korumal
 
 Zina fiili iki taraflı olduğundan, korunmak ve kaçınmak için gayret göstermek, tedbir almak da iki taraflı olmak durumundadır. Bu sebeple âyetlerde önce erkeklere, sonra da kadınlara ayrı ayrı hitap edilmiş, böylece her bir cinsin korunmak için üzerine düşeni yapması gerektiğine dikkat çekilmiştir. (Kur’an Yolu, 4/68-70)
 
-## MÜMİN KADINLARA: NÛR SÛRESİ 31. ÂYET
+## Mümin Kadınlara: Nûr Sûresi 31. Âyet
 
 31. âyette ise kadın açısından tesettür, bir yaşam tarzı haline getirilmek istenmiş, onun ilkeleri ve çerçevesi açık ve net bir biçimde çizilmiştir.
 
-ÂYET-İ KERÎME
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
 
 <p lang="ar" dir="rtl" class="ayet">وَقُلْ لِلْمُؤْمِنَاتِ يَغْضُضْنَ مِنْ اَبْصَارِهِنَّ وَيَحْفَظْنَ فُرُوجَهُنَّ وَلَا يُبْد۪ينَ ز۪ينَتَهُنَّ اِلَّا مَا ظَهَرَ مِنْهَا وَلْيَضْرِبْنَ بِخُمُرِهِنَّ عَلٰى جُيُوبِهِنَّۖ وَلَا يُبْد۪ينَ ز۪ينَتَهُنَّ اِلَّا لِبُعُولَتِهِنَّ اَوْ اٰبَٓائِهِنَّ اَوْ اٰبَٓاءِ بُعُولَتِهِنَّ اَوْ اَبْنَٓائِهِنَّ اَوْ اَبْنَٓاءِ بُعُولَتِهِنَّ اَوْ اِخْوَانِهِنَّ اَوْ بَن۪ٓي اِخْوَانِهِنَّ اَوْ بَن۪ٓي اَخَوَاتِهِنَّ اَوْ نِسَٓائِهِنَّ اَوْ مَا مَلَكَتْ اَيْمَانُهُنَّ اَوِ التَّابِع۪ينَ غَيْرِ اُو۬لِي الْاِرْبَةِ مِنَ الرِّجَالِ اَوِ الطِّفْلِ الَّذ۪ينَ لَمْ يَظْهَرُوا عَلٰى عَوْرَاتِ النِّسَٓاءِۖ وَلَا يَضْرِبْنَ بِاَرْجُلِهِنَّ لِيُعْلَمَ مَا يُخْف۪ينَ مِنْ ز۪ينَتِهِنَّۜ وَتُوبُٓوا اِلَى اللّٰهِ جَمِيعاً اَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ</p>
 
@@ -78,7 +78,7 @@ Câhiliye devrinde kadınlar ayak bileklerine halhal gibi ziynetler takarlar, so
 
 30 ve 31. âyetlerde geçen buyrukların bağlayıcı olup olmadığı, burada söylenenlerin bir tavsiye mi, yoksa emir mi, dolayısıyla ilâhî tâlimata göre kapanmanın farz mı, edep mi olduğu konusu son zamanlarda bazı çevrelerce tartışmaya açılmıştır. Yalnızca âyetlerde kullanılan emir kipi değil, açıklanan gerekçe, verilen detay ve 31. âyetin *“Ey müminler! Hepiniz Allah’a tövbe edin...”* uyarısıyla bitirilmesi, asırlar boyu ittifakla benimsenmiş bulunan yorumun; yani emrin bağlayıcı, örtünmenin farz olduğu anlayışının isabetli olduğunu açıkça göstermektedir. Dinî emirlerin uygulanması için yükümlülük şartlarının gerçekleşmesi ve engellerin bulunmaması gerekir. Bu sebeple zorunlu hallerde ruhsatlar devreye girebilir, ancak genel hüküm değişmez, engel ve zaruret ortadan kalkınca uygulama da normale döner.
 
-## İFFET ERDEMİ VE HAYÂ
+## İffet Erdemi ve Hayâ
 
 Asırlardır İslâm geleneğinde yüce bir ahlâkî değer olarak yerini koruyan iffet erdemi, diğer ahlâkî ilkeler gibi kaybolmaya yüz tutmuş gibidir. Kültürümüzde yaygın olarak kullanılan “Afife” ve “İffet” gibi manidar isimlere ise artık hiç rastlanmamaktadır. Zira bireysel özgürlük adına sınır tanımayan ve bütün değerleri hiçe sayan çağcıl zihniyet, kuralsız ve ölçüsüz yaşamaya müsaade etmeyen iffeti dışlamayı öngörmektedir. Halbuki bu şekilde yaşamak kişiyi özgürleştirmez, bilakis nefsinin kölesi olarak yaşamaya mahkûm eder. Nefsinin istekleri doğrultusunda yaşayan insanı durduracak hiçbir şey yoktur. Geçici hazlarla tatmin olamayacağı için mutluluğu bir orada bir burada arayarak geçer bütün hayatı. Ahlâkî ve ruhî bakımdan çöküntüye uğrayan, iç huzuru yakalayamayan bu kişi, toplumun bekasını da tehlikeye sokar. Bu tür kişilerden meydana gelen bir toplumun sağlıklı olamayacağı da açıktır. Zira herkesin sınırsızca kendi çıkarları peşinde koştuğu bir ortamda hak, adalet, hoşgörü, güven ve dayanışma gibi toplumu ayakta tutacak temel ilkelerden bahsedilemez. Allah Resûlü, “Allah bir toplumun bekasını ve gelişmesini dilerse onları hoşgörü ve iffetle rızıklandırır.” (Taberânî, Müsnedü’ş-Şâmiyyîn, I, 34) sözüyle bu gerçeği ortaya koymaktadır.
 
@@ -86,7 +86,7 @@ Asırlardır İslâm geleneğinde yüce bir ahlâkî değer olarak yerini koruya
 
 Çünkü iffet, nefsinin baskılarından kurtulan kişinin şahsiyetli bir kişilik kazanmasını ifade eder. Ona sağlıklı ve huzurlu, özgür ve saygın bir yaşantı sunar. Bu nedenle pek çok ahlâkî güzelliği içinde barındıran iffet erdemi, dinimizde imanın kemali için zorunlu görülmüş, Allah Resûlü’nün dualarında iman ve ihlâsla birlikte yer almıştır:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ إِنِّى أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى</p>
 
@@ -94,7 +94,7 @@ HADÎS-İ ŞERÎF
 
 Peygamberlerin temel vasıflarından biri olan hayâ erdemi, onların gönderildikleri toplumlara ısrarla öğütledikleri bir sünnet olagelmiştir.3 Nitekim Hz. Peygamber şöyle buyurmuştur:
 
-HADÎS-İ ŞERÎF
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
 <p lang="ar" dir="rtl" class="ayet">إِنَّ مِمَّا أَدْرَكَ النَّاسُ مِنْ كَلاَمِ النُّبُوَّةِ الأُولَى إِذَا لَمْ تَسْتَحِى فَاصْنَعْ مَا شِئْتَ » .</p>
 

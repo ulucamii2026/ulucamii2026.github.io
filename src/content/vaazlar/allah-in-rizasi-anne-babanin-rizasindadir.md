@@ -14,7 +14,7 @@ Hamd, bizleri yoktan var eden, sayısız nimetlerle donatan Yüce Allah’a mahs
 
 Bugün üzerinde duracağımız konu, hem bireysel hayatımızı hem de toplumsal yapımızı derinden etkileyen bir hakikattir: Allah’ın rızasının anne ve babanın rızasında aranması gerektiği gerçeğidir. Bu mesele sadece ahlaki bir tavsiye değil Kur’an ve sünnetle sabit, dinin temel esaslarından biridir.
 
-## ÂYETLER IŞIĞINDA ANNE VE BABANIN RIZASI
+## Âyetler Işığında Anne ve Babanın Rızası
 
 Yüce Allah (c.c.), insanın kulluk görevini belirlerken anne ve babaya karşı sorumluluğunu da aynı bağlam içinde zikretmiştir. Nitekim Kur’an-ı Kerim’de şöyle buyrulmaktadır:
 
@@ -34,7 +34,7 @@ Kur’an-ı Kerim’de anne babaya teşekkür meselesi de dikkat çekici bir şe
 
 Bu ayet, insanın varlık sürecindeki iki temel kaynağa işaret etmektedir. Birincisi, insanı yoktan var eden Allah’tır; ikincisi ise onun dünyaya gelmesine vesile olan anne ve babadır. Bu nedenle Allah’a şükür ile anne babaya şükrün birlikte zikredilmesi son derece anlamlıdır. Bu ayetin tefsirinde, insanın hem yaratıcısına hem de kendisinin yetişmesine vesile olan anne babasına karşı sorumluluğunu birlikte değerlendirmesi gerektiğini ifade edilir. (Kur’an Yolu Tefsiri, c. 4, s.337-338)
 
-## SÜNNETTE ANNE VE BABANIN RIZASI
+## Sünnette Anne ve Babanın Rızası
 
 Peygamber Efendimiz Hz. Muhammed (s.a.s.) de anne babanın rızasının Allah katındaki yerini açık bir şekilde ortaya koymuştur. Nitekim bir hadis-i şerifte şöyle buyrulmaktadır:
 
@@ -62,7 +62,7 @@ Bu hadiste annenin üç defa zikredilmesi, onun çocuğu üzerindeki emek ve fed
 
 Bu ayet ve hadis birlikte değerlendirildiğinde, annenin hem biyolojik hem de duygusal anlamda çocuğu için katlandığı zorlukların, ona karşı gösterilmesi gereken saygının temelini oluşturduğu anlaşılmaktadır. Bu yüzden de annenin hamilelik sürecinde çekmiş olduğu ıztırap, çocuğu dünyaya geldikten sonra emzirme ve onu büyütme: ebeveynler için fedakârlık gerektiren bir süreçtir. Hz. Peygamber de (s.a.s.) anneye saygının gerekliliğine vurgu için “cennet annelerin ayaklarının altındadır” (Nesâî, Cihad, 6) buyurmuştur.
 
-## HÜRMETİN ÖNEMİNİ YANSITAN TARİHÎ ÖRNEKLER
+## Hürmetin Önemini Yansıtan Tarihî Örnekler
 
 Yemen’de yaşayan Veysel Karanî, Peygamber Efendimiz’i (s.a.s.) görmek için Medine’ye kadar gelmiş; ancak annesinden aldığı izin gereği fazla kalamayacağı için Efendimizi evinde bulamayınca geri dönmüştür. Veysel Karanî, Peygamber (s.a.s.) sevgisine rağmen annesinin iznini aşmamış ve geri dönmeyi tercih etmiştir. Bu davranış üzerine Peygamber Efendimiz (s.a.s.) onun bu yüksek ahlakını takdir etmiş ve hırkasını ona göndererek değerini ümmetine göstermiştir. (DİA, Veysel Karanî, C. 43, s. 74-75) Bu örnek, anne rızasının, Peygamber (s.a.s.) sevgisinin önüne geçirilmesi değil; bilakis Peygamberin (s.a.s.) öğrettiği ahlakın en güzel şekilde yaşanmasıdır.
 
@@ -82,7 +82,7 @@ Bu hadise, anne babaya yapılan iyiliğin Allah katında kabul gören en değerl
 
 Bu ayet, İslam’ın denge dini olduğunu açıkça ortaya koymaktadır. İtaat, Allah’a bağlıdır; ancak güzel muamele her durumda devam eder. Bu ayetin yorumunda, inanç farklılığı veya yanlış yönlendirmelerin, anne babaya karşı iyi davranma sorumluluğunu ortadan kaldırmayacağını ifade edilmektedir. (Kur’an Yolu Tefsiri, c. 4, s. 338)
 
-## ANNE VE BABAYA KARŞI SORUMLULUK
+## Anne ve Babaya Karşı Sorumluluk
 
 Anne babaya karşı gelmenin İslam’daki yeri de son derece açıktır. Peygamber Efendimiz (s.a.s.) bu davranışı en büyük günahlar arasında saymıştır:
 
@@ -108,6 +108,6 @@ Anne babaya iyilik, onların vefatından sonra da devam eden bir sorumluluktur. 
 
 Bu hadis, anne babaya karşı sorumluluğun ölümle sona ermediğini, aksine dua ve hayırlarla devam ettiğini göstermektedir. Evladın ebeveynine vefa kabilinden onun hayrını devam ettirecek işlere imza atması, insanlığın faydasına olacak, amel defterine hayır olarak yazılmaya devam edecek güzel eserler bırakması anne ve babanın sevabının devam etmesi anlamına gelir. Buna göre ebeveynlere düşen görev çocuklarına güzel ahlakı miras bırakmak evladın da ebeveynine vazifesi onun ardından hayrının devam etmesini sağlamaktır. Rabbim şu geçici dünya hayatında cenneti kazanma vesilesi olan ebeveynlerimizi razı edebilmeyi cümlemize nasip eylesin.
 
-## SONUÇ
+## Sonuç
 
 Sonuç olarak, anne ve baba, insanın hayatındaki en büyük nimetlerden biridir. Onların rızasını kazanmak, Allah’ın rızasını kazanmanın yollarındandır. Onlara karşı gösterilecek saygı ve sevgi, hem dünya huzurunun hem de ahiret saadetinin anahtarlarındandır. Bu nedenle her birimiz, anne ve babamıza karşı görevlerimizi yeniden gözden geçirmeli ve bu konuda daha hassas davranmalıyız. Allah Teâlâ bizleri anne ve babasına karşı görevlerini hakkıyla yerine getiren kullarından eylesin. Hayatta olanlara sağlık ve afiyet, vefat edenlere rahmet ihsan eylesin. Unutulmamalıdır ki Peygamber Efendimiz, “Anne baba, kişinin cennete girmesine vesile olacak kapıların en hayırlısı, en değerlisidir. Bu kapıyı korumak ya da zayi etmek artık senin tercihine kalmış!” (Tirmizî, Birr, 3) buyurmuştur. Duamız her zaman, “Rabbimiz! Hesap görülecek günde, beni, ana babamı ve inananları bağışla.” (İbrâhîm, 14/41) olmalıdır.
