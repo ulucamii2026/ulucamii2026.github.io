@@ -7,6 +7,7 @@ import type { Dil } from './ui';
 export const VELI_METIN = {
   tr: {
     altBaslik: 'Kur’an kursuna kayıtlı öğrencilerin velileri için: devam durumu, ilerleme, haftalık ezber ve ödev, hoca notları ve duyurular.',
+    kisaAd: 'Veli Portalı',
     yukleniyor: 'Yükleniyor…',
     girisBaslik: 'Giriş', eposta: 'E-posta adresiniz', sifre: 'Şifre', girisYap: 'Giriş yap',
     bagBaslik: 'İlk giriş ya da şifremi unuttum', bagAciklama: 'Kayıt formunda verdiğiniz veli e-posta adresini yazın; size giriş bağlantısı gönderelim. Bağlantıya tıklayınca şifrenizi kendiniz belirlersiniz.',
@@ -50,6 +51,7 @@ export const VELI_METIN = {
   },
   fr: {
     altBaslik: 'Pour les parents des élèves inscrits à l’école coranique : présences, progression, mémorisation et devoirs de la semaine, remarques de l’enseignant et annonces.',
+    kisaAd: 'Portail parents',
     yukleniyor: 'Chargement…',
     girisBaslik: 'Connexion', eposta: 'Votre adresse e-mail', sifre: 'Mot de passe', girisYap: 'Se connecter',
     bagBaslik: 'Première connexion ou mot de passe oublié', bagAciklama: 'Indiquez l’adresse e-mail du parent donnée dans le formulaire d’inscription ; nous vous envoyons un lien de connexion. En cliquant sur le lien, vous choisissez vous-même votre mot de passe.',
@@ -93,6 +95,7 @@ export const VELI_METIN = {
   },
   en: {
     altBaslik: 'For parents of students enrolled in the Qur’an school: attendance, progress, weekly memorisation and homework, teacher’s notes and announcements.',
+    kisaAd: 'Parents’ Portal',
     yukleniyor: 'Loading…',
     girisBaslik: 'Sign in', eposta: 'Your e-mail address', sifre: 'Password', girisYap: 'Sign in',
     bagBaslik: 'First sign-in or forgotten password', bagAciklama: 'Enter the parent e-mail address given on the registration form; we will send you a sign-in link. After clicking the link you choose your own password.',

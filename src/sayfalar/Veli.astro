@@ -25,9 +25,19 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   dilYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli') } };
 ---
 <Base baslik={t('nav.veli')} dil={dil} aciklama={m.altBaslik} noindex>
+  {/* Portal telefona kurulabilir olsun: her dilin kendi manifesti (start_url + kapsam o dilin yolu). */}
+  <link slot="head" rel="manifest" href={`/portal/veli-${dil}.webmanifest`} />
+  <link slot="head" rel="apple-touch-icon" href="/portal/ikon-192.png" />
+  <meta slot="head" name="mobile-web-app-capable" content="yes" />
+  <meta slot="head" name="apple-mobile-web-app-capable" content="yes" />
+  <meta slot="head" name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta slot="head" name="apple-mobile-web-app-title" content={m.kisaAd} />
   <SayfaBasligi etiket={t('nav.kurankursu')} baslik={t('nav.veli')} altBaslik={m.altBaslik} />
   <div class="kapsayici py-10">
-    <div id="veli-portal" data-dil={dil} class="portal" aria-live="polite">
+    {/* Duyurular yalnız bu küçük bölgeden yapılır; panonun tamamı canlı bölge olursa
+        her yeniden çizimde tüm içerik baştan okunur (7 Eyl 2026 erişilebilirlik düzeltmesi). */}
+    <div id="veli-durum" role="status" aria-live="polite" class="ekran-okuyucu"></div>
+    <div id="veli-portal" data-dil={dil} class="portal">
       <p class="not">{m.yukleniyor}</p>
       <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript.</p></noscript>
     </div>
@@ -48,7 +58,19 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   /* ============================================================ Veli portalı — Kilim Kartografyası
      Tasarım: ailenin kişisel «kurs defteri». Sıcak kilim paleti, Lora başlıklar, keskin 2px köşe,
      çizili tek-çizgi ikonlar. Durum renkleri tema-uyumlu (color-mix ile açık/koyu ikisinde de okunur). */
-  .portal { --ay: 1.5rem; }
+  .portal { --ay: 1.5rem;
+    /* Bölüm renkleri: her kart kendi kilim rengini taşır (7 Eyl 2026 — «kutucuklar daha renkli olsun»).
+       Renk kimliği yalnız şerit/başlık/ikon üzerindedir; gövde nötr kalır ki metin okunaklılığı düşmesin. */
+    --r-kiremit: var(--vurgu); --r-iznik: var(--vurgu-2);
+    --r-ochre: var(--color-ochre); --r-adacayi: var(--color-adacayi-koyu); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .portal { --r-ochre: var(--color-ochre-acik); --r-adacayi: var(--color-adacayi-acik); }
+  }
+  :root[data-theme="dark"] .portal { --r-ochre: var(--color-ochre-acik); --r-adacayi: var(--color-adacayi-acik); }
+
+  /* yalnız ekran okuyucu için (canlı bölge) */
+  .ekran-okuyucu { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
   .portal .simge { width: 1.15em; height: 1.15em; flex: none; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vertical-align: -0.16em; }
 
   /* --- bildirim satırları --- */
@@ -108,14 +130,22 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
 
   /* --- bölümler --- */
   .portal .bolumler { display: grid; gap: var(--ay); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-  .portal .bolum { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); box-shadow: var(--shadow-kart); padding: 1.2rem 1.3rem; }
+  .portal .bolum { --br: var(--cizgi-etkilesim); position: relative; overflow: hidden; background: var(--zemin); border: 1px solid color-mix(in oklab, var(--br) 34%, var(--cizgi)); border-radius: var(--radius-kose); box-shadow: var(--shadow-kart); padding: 1.2rem 1.3rem; }
+  .portal .bolum.r-kiremit { --br: var(--r-kiremit); }
+  .portal .bolum.r-iznik { --br: var(--r-iznik); }
+  .portal .bolum.r-ochre { --br: var(--r-ochre); }
+  .portal .bolum.r-adacayi { --br: var(--r-adacayi); }
+  /* kilim şeridi: kartın üst kenarında, bölümün rengiyle */
+  .portal .bolum::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background-image: linear-gradient(45deg, var(--br) 25%, transparent 25%, transparent 50%, var(--br) 50%, var(--br) 75%, transparent 75%, transparent); background-size: 8px 8px; opacity: 0.9; }
   .portal .bolum.genis { grid-column: 1 / -1; }
-  .portal .bolum-bas { display: flex; align-items: center; gap: 0.55rem; margin: 0 0 0.9rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--cizgi); }
-  .portal .bolum-bas .simge { width: 1.2rem; height: 1.2rem; color: var(--vurgu); }
-  .portal .bolum-bas h2 { font-size: 1.08rem; margin: 0; line-height: 1.2; }
-  .portal .bolum-bas .sag { margin-left: auto; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--metin-2); }
-  .portal .bolum.oncelik { background: linear-gradient(180deg, color-mix(in oklab, var(--vurgu-2) 6%, var(--zemin)), var(--zemin) 4.5rem); border-color: color-mix(in oklab, var(--vurgu-2) 26%, var(--cizgi)); }
-  .portal .bolum.oncelik .bolum-bas .simge { color: var(--vurgu-2); }
+  .portal .bolum-bas { display: flex; align-items: center; gap: 0.55rem; margin: -1.2rem -1.3rem 0.95rem; padding: 0.95rem 1.3rem 0.7rem; background: color-mix(in oklab, var(--br) 15%, var(--zemin)); border-bottom: 1px solid color-mix(in oklab, var(--br) 34%, var(--cizgi)); }
+  .portal .bolum-bas .simge { width: 1.2rem; height: 1.2rem; color: var(--br); }
+  .portal .bolum-bas h2 { font-size: 1.08rem; margin: 0; line-height: 1.2; color: color-mix(in oklab, var(--br) 68%, var(--metin)); }
+  .portal .bolum-bas .sag { margin-left: auto; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in oklab, var(--br) 45%, var(--metin-2)); }
+  /* yanıt bekleyen / öncelikli kart: kendi renginin daha güçlü hâli */
+  .portal .bolum.oncelik { border-color: color-mix(in oklab, var(--br) 42%, var(--cizgi)); box-shadow: var(--shadow-kart), 0 0 0 1px color-mix(in oklab, var(--br) 18%, transparent); }
+  .portal .bolum.oncelik::before { height: 6px; opacity: 1; }
+  .portal .bolum.oncelik .bolum-bas { background: color-mix(in oklab, var(--br) 24%, var(--zemin)); }
   .portal .bolum h3 { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); margin: 1.15rem 0 0.45rem; }
   .portal .bolum h3:first-of-type { margin-top: 0.6rem; }
 
@@ -240,6 +270,37 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .katlanir[open] summary { border-color: var(--cizgi-etkilesim); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
   .portal .katlanir[open] summary::after { transform: rotate(0); }
   .portal .katlanir .govde { padding: 0.95rem 0.85rem 0.3rem; border: 1px solid var(--cizgi); border-top: 0; border-radius: 0 0 var(--radius-kose) var(--radius-kose); }
+
+  /* --- renk katmanı (7 Eyl 2026): kart içindeki küçük ögeler de bölüm rengini alır --- */
+  .portal .bolum .cubuk > span { background: linear-gradient(90deg, var(--br), color-mix(in oklab, var(--br) 55%, var(--color-ochre))); }
+  .portal .bolum .pip.dolu { background: var(--br); }
+  .portal .bolum .hafta-gun .g-no { color: var(--br); }
+  .portal .bolum .kitap-satir .ks-ad .simge, .portal .bolum h3 { color: color-mix(in oklab, var(--br) 45%, var(--metin-2)); }
+  .portal .bolum .derece { background: color-mix(in oklab, var(--br) 6%, var(--zemin-2)); border-color: color-mix(in oklab, var(--br) 18%, var(--cizgi)); }
+  .portal .bolum .dk-no { border-color: color-mix(in oklab, var(--br) 22%, var(--cizgi)); color: color-mix(in oklab, var(--br) 55%, var(--metin-2)); }
+  .portal .bolum a.ic-bag { color: color-mix(in oklab, var(--br) 62%, var(--metin)); }
+  /* yanıt bekleyen öğrenci satırı göze çarpsın */
+  .portal .kitap-satir.acik { background: color-mix(in oklab, var(--br) 7%, var(--zemin)); border-radius: var(--radius-kose); padding-inline: 0.6rem; margin-inline: -0.6rem; }
+  /* üç kitap seçeneği: her biri kendi rengiyle (var = adaçayı, satın al = İznik, fotokopi = ochre) */
+  .portal .ks-dugme[data-kitap] { --k: var(--cizgi-etkilesim); border-color: color-mix(in oklab, var(--k) 38%, var(--cizgi)); color: color-mix(in oklab, var(--k) 72%, var(--metin)); background: color-mix(in oklab, var(--k) 7%, var(--zemin)); }
+  .portal .ks-dugme[data-kitap=var] { --k: var(--r-adacayi); }
+  .portal .ks-dugme[data-kitap=satin] { --k: var(--r-iznik); }
+  .portal .ks-dugme[data-kitap=fotokopi] { --k: var(--r-ochre); }
+  .portal .ks-dugme[data-kitap]:hover { background: color-mix(in oklab, var(--k) 16%, var(--zemin)); border-color: color-mix(in oklab, var(--k) 62%, var(--cizgi)); color: color-mix(in oklab, var(--k) 82%, var(--metin)); }
+  /* künye şeridi: her künye kendi rengiyle */
+  .portal .kunye:nth-child(1) .simge { color: var(--r-kiremit); }
+  .portal .kunye:nth-child(2) .simge { color: var(--r-iznik); }
+  .portal .kunye:nth-child(3) .simge { color: var(--r-adacayi); }
+  .portal .kunye:nth-child(4) .simge { color: var(--r-ochre); }
+  /* seçili çocuk sekmesi renkli */
+  .portal .cocuk-dugme[aria-selected=true] { background: color-mix(in oklab, var(--vurgu) 12%, var(--zemin)); color: color-mix(in oklab, var(--vurgu) 78%, var(--metin)); box-shadow: inset 0 -2px 0 var(--vurgu), var(--shadow-kart); }
+  .portal .cocuk-dugme:focus-visible { outline: 2px solid var(--vurgu-2); outline-offset: 2px; }
+  /* kısa bildirim şeridi */
+  .portal .portal-toast { position: sticky; top: 0.5rem; z-index: 5; }
+  @media (prefers-reduced-motion: no-preference) {
+    .portal .portal-toast { animation: portal-toast-gir .35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @keyframes portal-toast-gir { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  }
 
   /* --- giriş sonrası hareket (bir kez) --- */
   @media (prefers-reduced-motion: no-preference) {

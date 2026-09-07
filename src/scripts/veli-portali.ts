@@ -96,6 +96,20 @@ export async function veliPortali(): Promise<void> {
   };
   const mesgul = (form: HTMLFormElement, durum: boolean) => form.querySelectorAll<HTMLButtonElement>('button').forEach((b) => { b.disabled = durum; });
 
+  /* Ekran okuyucu duyurusu: panonun tamamı canlı bölge DEĞİL (her çizimde her şeyi okurdu);
+     yalnız bu küçük bölge duyurur. Aynı metin art arda gelirse okunsun diye önce boşaltılır. */
+  const duyur = (metin: string) => {
+    const b = document.getElementById('veli-durum'); if (!b) return;
+    b.textContent = ''; setTimeout(() => { b.textContent = metin; }, 60);
+  };
+  /* Kısa bildirim şeridi: panonun başına konur, duyurulur ve kendiliğinden kalkar. */
+  const bildirimGoster = (metin: string, tur: 'basari' | 'hata' = 'basari') => {
+    kok.querySelectorAll('.portal-toast').forEach((x) => x.remove());
+    kok.insertAdjacentHTML('afterbegin', `<p class="not ${tur} portal-toast" role="presentation">${esc(metin)}</p>`);
+    duyur(metin);
+    window.setTimeout(() => kok.querySelector('.portal-toast')?.remove(), 6000);
+  };
+
   /* ---------------------------------------------------------------- giriş ekranı */
   const girisEkrani = (onMesaj = '') => {
     kok.innerHTML = `
@@ -250,7 +264,7 @@ export async function veliPortali(): Promise<void> {
                </span>`}
         </div>`;
       }).join('');
-      return `<section class="bolum genis kitap-kart${eksik ? ' oncelik' : ''}" id="kitap">
+      return `<section class="bolum genis r-ochre kitap-kart${eksik ? ' oncelik' : ''}" id="kitap">
         ${bas('kitap', m.kitapBaslik, eksik ? m.kitapBekliyor : '')}
         <p class="kucuk">${esc(m.kitapA)}</p>
         ${satirlar}
@@ -282,11 +296,11 @@ export async function veliPortali(): Promise<void> {
         ${kunyeler.length ? `<div class="kunye-serit">${kunyeler.map((k) => `<div class="kunye">${simge(k.ikon)}<div><span class="k-deger">${esc(k.deger)}</span><span class="k-etiket">${esc(k.etiket)}</span></div></div>`).join('')}</div>` : ''}
       </div>
       ${d.ogrenciler.length > 1 ? `<div class="cocuk-sec" role="tablist" aria-label="${esc(m.cocuklar)}">
-        ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" class="cocuk-dugme" aria-selected="${i === d.secili}" data-sec="${i}">${simge('ogrenci')}${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
+        ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}">${simge('ogrenci')}${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
-      <div class="bolumler">
+      <div class="bolumler"${d.ogrenciler.length > 1 ? ` role="tabpanel" id="cocuk-panel" aria-labelledby="cocuk-sekme-${d.secili}"` : ''}>
         ${kitapKarti()}
-        <section class="bolum oncelik genis">
+        <section class="bolum r-iznik oncelik genis">
           ${bas('kitap', m.buHafta, `${tarihYaz(pzt)} – ${tarihYaz(paz)}${haftaGunleri[0] ? ' · ' + yerlestir(m.hafta, { n: haftaGunleri[0].hafta }) : ''}`)}
           ${haftaGunleri.length ? `<div>${haftaGunleri.map((g) => `<div class="hafta-gun"><span class="g-tarih">${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'short' }))}</span>
               <span class="g-dersler">${g.dersler.map((x) => `<span class="g-ders"><span class="g-no">${x.no}.</span> ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span></span>`).join('')}
@@ -298,7 +312,7 @@ export async function veliPortali(): Promise<void> {
           ${siradaki ? `<p class="kucuk" style="margin-top:1rem;display:flex;align-items:center;gap:.45rem">${simge('takvim')}<span><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</span></p>` : ''}
         </section>
 
-        <section class="bolum">
+        <section class="bolum r-adacayi">
           ${bas('takvim', m.yoklama)}
           ${yk.length ? `<p class="kucuk">${esc(yerlestir(m.yoklamaBilgi, { n: toplamDers }))}</p>
             <div class="devam-ozet"><span><b>${say.var}</b> ${esc(durumAd('var'))}</span>${say.yok ? `<span><b>${say.yok}</b> ${esc(durumAd('yok'))}</span>` : ''}${say.mazeret ? `<span><b>${say.mazeret}</b> ${esc(durumAd('mazeret'))}</span>` : ''}${say.gec ? `<span><b>${say.gec}</b> ${esc(durumAd('gec'))}</span>` : ''}</div>
@@ -306,7 +320,7 @@ export async function veliPortali(): Promise<void> {
             : bosDurum('takvim', m.yoklamaYok)}
         </section>
 
-        <section class="bolum">
+        <section class="bolum r-kiremit">
           ${bas('grafik', m.ilerleme, ile && ile.guncelleme ? tarihYaz(ile.guncelleme, { day: 'numeric', month: 'short' }) : '')}
           ${ile ? `
             ${kuranKonu ? `<h3>${esc(m.kuranAdim)}</h3><div class="ilerleme-not"><b lang="tr">${esc(kuranKonu)}</b><span class="kucuk">${kuranNo + 1}/${kuranSirasi.length}</span></div><div class="cubuk"><span style="width:${yuzde}%"></span></div>` : ''}
@@ -316,22 +330,22 @@ export async function veliPortali(): Promise<void> {
             : bosDurum('grafik', m.ilerlemeYok)}
         </section>
 
-        <section class="bolum">
+        <section class="bolum r-ochre">
           ${bas('yildiz', m.degerlendirme)}
           ${c && c.degerlendirme.length ? `<ul class="liste">${c.degerlendirme.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><b>${esc(alanAdi(x.alan))}</b>${x.olcut ? `<span lang="tr">${esc(x.olcut)}</span>` : ''}${x.derece ? `<span class="rozet derece">${esc(dereceAdi(x.derece))}</span>` : ''}${x.not ? `<span class="kucuk" style="flex-basis:100%">${esc(x.not)}</span>` : ''}</li>`).join('')}</ul>` : bosDurum('yildiz', m.degerlendirmeYok)}
         </section>
 
-        <section class="bolum">
+        <section class="bolum r-iznik">
           ${bas('not', m.notlar)}
           ${c && c.notlar.length ? `<ul class="liste">${c.notlar.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><span style="white-space:pre-line;flex-basis:100%">${esc(x.metin)}</span></li>`).join('')}</ul>` : bosDurum('not', m.notYok)}
         </section>
 
-        <section class="bolum genis">
+        <section class="bolum r-ochre genis">
           ${bas('duyuru', m.duyurular)}
           ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => { const g = cok(x.metin); const uzun = duyuruDuz(g).length > 240; return `<article class="duyuru${uzun ? ' uzun' : ''}"><span class="d-tarih">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><h3>${esc(cok(x.baslik))}</h3><div class="d-govde">${duyuruHtml(g)}</div><button type="button" class="d-devam" data-devam>${esc(m.devaminiOku)}</button></article>`; }).join('') : bosDurum('duyuru', m.duyuruYok)}
         </section>
 
-        <section class="bolum">
+        <section class="bolum r-adacayi">
           ${bas('gonder', m.bildir)}
           <p class="kucuk">${esc(m.bildirA)}</p>
           <form data-form="bildir" novalidate class="${duzen ? 'duzenleme' : ''}">
@@ -346,7 +360,7 @@ export async function veliPortali(): Promise<void> {
           ${d.bildirimler.length ? `<h3>${esc(m.bildirimlerim)}</h3><ul class="liste mesajlar">${d.bildirimler.slice().sort((x, y) => zamanMs(y) - zamanMs(x)).slice(0, 8).map((x) => `<li><span class="kucuk">${esc(zamanYaz(x))}</span><b>${esc((m.bildirTur as Record<string, string>)[x.tur] || x.tur)}</b>${x.tarih ? `<span class="kucuk">${esc(tarihYaz(x.tarih))}</span>` : ''}<span class="rozet ${x.yanit ? 'ogrendi' : x.okundu ? 'gec' : 'mazeret'}">${esc(x.yanit ? m.yanitlandi : x.okundu ? m.okundu : m.okunmadi)}</span><span class="m-metin">${esc(x.metin)}</span>${x.yanit ? `<div class="hoca-yanit"><span class="hy-bas">${simge('gonder')}${esc(m.hocaYaniti)}${x.yanitZaman ? ` · ${esc(zamanZ(x.yanitZaman))}` : ''}</span><p>${esc(x.yanit)}</p></div>` : ''}${!x.okundu && x.id ? `<span class="msj-eylem"><button type="button" class="kucuk-dugme" data-bildir-duzelt="${esc(x.id)}">${simge('kalem')}${esc(m.duzelt)}</button><button type="button" class="kucuk-dugme sil" data-bildir-sil="${esc(x.id)}">${simge('geri')}${esc(m.geriAl)}</button></span>` : ''}</li>`).join('')}</ul>` : ''}
         </section>
 
-        <section class="bolum">
+        <section class="bolum r-kiremit">
           ${bas('ayar', m.hesap)}
           <label>${esc(m.dil)}<select name="dil" data-dil-sec>${(['tr', 'fr', 'en'] as Dil[]).map((x) => `<option value="${x}" ${x === dil ? 'selected' : ''}>${x === 'tr' ? 'Türkçe' : x === 'fr' ? 'Français' : 'English'}</option>`).join('')}</select></label>
           <p class="kucuk" style="margin:.9rem 0 .1rem">${esc(m.girisBilgisi)}</p>
@@ -388,7 +402,26 @@ export async function veliPortali(): Promise<void> {
     else fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { sonGiris: new Date().toISOString() }).catch(() => {});
   };
 
+  /* Çocuk sekmeleri — WAI-ARIA «tabs» deseni. Pano her seçimde yeniden çizildiği için düğme
+     düğümü değişir ve odak gövdeye düşerdi; seçili sekmeye geri veriyoruz. */
+  const sekmeSec = (i: number, odakla: boolean) => {
+    if (!durum) return;
+    durum.secili = i; panoCiz();
+    if (odakla) kok.querySelector<HTMLElement>(`#cocuk-sekme-${i}`)?.focus();
+  };
+
   /* ---------------------------------------------------------------- olaylar */
+  kok.addEventListener('keydown', (ev) => {
+    const sekme = (ev.target as HTMLElement).closest<HTMLElement>('[role=tab][data-sec]');
+    if (!sekme || !durum) return;
+    const n = durum.ogrenciler.length; const su = Number(sekme.dataset.sec);
+    const k = (ev as KeyboardEvent).key;
+    const hedef = k === 'ArrowRight' || k === 'ArrowDown' ? (su + 1) % n
+      : k === 'ArrowLeft' || k === 'ArrowUp' ? (su - 1 + n) % n
+      : k === 'Home' ? 0 : k === 'End' ? n - 1 : -1;
+    if (hedef < 0) return;
+    ev.preventDefault(); sekmeSec(hedef, true);
+  });
   kok.addEventListener('click', async (ev) => {
     const devamBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-devam]');
     if (devamBtn) { const art = devamBtn.closest('.duyuru'); if (art) { const acik = art.classList.toggle('acik'); devamBtn.textContent = acik ? m.dahaAz : m.devaminiOku; } return; }
@@ -426,7 +459,7 @@ export async function veliPortali(): Promise<void> {
         await fs.deleteDoc(fs.doc(db, 'bildirimler', id));
         durum.bildirimler = durum.bildirimler.filter((b) => b.id !== id);
         if (duzenlenenBildirim === id) duzenlenenBildirim = null;
-        panoCiz(); kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.geriAlindi)}</p>`);
+        panoCiz(); bildirimGoster(m.geriAlindi);
       } catch (e) { kok.insertAdjacentHTML('afterbegin', `<p class="not hata">${esc(hataMetni(e))}</p>`); }
       return;
     }
@@ -450,7 +483,7 @@ export async function veliPortali(): Promise<void> {
       catch (e) { mesaj(form, hataMetni(e), 'hata'); } finally { mesgul(form, false); }
       return;
     }
-    if (hedef.dataset.sec !== undefined && durum) { durum.secili = Number(hedef.dataset.sec); panoCiz(); }
+    if (hedef.dataset.sec !== undefined && durum) { sekmeSec(Number(hedef.dataset.sec), true); }
   });
   kok.addEventListener('change', async (ev) => {
     const sec = (ev.target as HTMLElement).closest<HTMLSelectElement>('[data-dil-sec]');
@@ -524,14 +557,14 @@ export async function veliPortali(): Promise<void> {
             const yer = durum.bildirimler.find((b) => b.id === dbid);
             if (yer) { yer.ref = ref; yer.tur = tur; yer.metin = metin; yer.tarih = tarih || undefined; }
             duzenlenenBildirim = null;
-            panoCiz(); kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.guncellendi)}</p>`); break;
+            panoCiz(); bildirimGoster(m.guncellendi); break;
           }
           const kayit: Record<string, unknown> = { ref, tur, metin: metin.slice(0, 1000), eposta: durum.eposta, okundu: false, zaman: fs.serverTimestamp(),
             ogrenciAd, dil };
           if (tur === 'mazeret') kayit.tarih = tarih;
           const yeni = await fs.addDoc(fs.collection(db, 'bildirimler'), kayit);
           durum.bildirimler.push({ id: yeni.id, ref, tur, metin, okundu: false, tarih: tarih || undefined, zaman: new Date().toISOString() });
-          panoCiz(); kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(m.gonderildi)}</p>`); break;
+          panoCiz(); bildirimGoster(m.gonderildi); break;
         }
       }
     } catch (e) {

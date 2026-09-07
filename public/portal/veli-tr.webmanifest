@@ -1,0 +1,19 @@
+{
+  "name": "Ulu Camii Veli Portalı",
+  "short_name": "Veli Portalı",
+  "description": "Marche-en-Famenne Ulu Camii Kur'an kursu veli portalı: yoklama, haftalık ezber ve ödev, ilerleme, hoca notları ve duyurular.",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": "/tr/veli-portali/",
+  "scope": "/tr/veli-portali/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f3ea",
+  "theme_color": "#b5452b",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/portal/ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/portal/ikon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/portal/ikon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
