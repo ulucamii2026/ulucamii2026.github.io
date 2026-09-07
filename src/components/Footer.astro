@@ -4,11 +4,14 @@ import { ceviri, yol } from '../i18n/utils';
 import WhatsappBaglanti from './WhatsappBaglanti.astro';
 import Goruntulenme from './Goruntulenme.astro';
 import type { Dil } from '../i18n/ui';
+import istatistik from '../data/istatistik.json';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
 const site = (await getEntry('ayarlar', 'site'))!.data;
 const yil = new Date().getFullYear();
+// Derleme anında GoatCounter'dan çekilen toplam; istemci daha yenisini bulursa üzerine yazar.
+const toplamTohum = (istatistik as { toplam?: number }).toplam ?? 0;
 const adresSatir = `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}`;
 const haritaUrl = `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
@@ -71,7 +74,7 @@ const siteLinkleri = [
     <p class="kapsayici py-3 etiket flex flex-wrap justify-between gap-2">
       <span>© {yil} {site.kisaltma} · {t('footer.hak')}</span>
       {/* Sitenin toplam sayfa görüntülenmesi (GoatCounter TOTAL); sayı gelmezse öge gizli kalır. */}
-      <Goruntulenme dil={dil} kapsam="site" />
+      <Goruntulenme dil={dil} kapsam="site" baslangic={toplamTohum} />
       <span>Marche-en-Famenne · Belgique</span>
     </p>
   </div>

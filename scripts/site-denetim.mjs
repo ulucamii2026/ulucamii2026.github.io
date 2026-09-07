@@ -13,6 +13,7 @@
  */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 const KOK = new URL('../dist/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const AYRINTI = process.argv.includes('--ayrinti');
@@ -315,11 +316,19 @@ for (const d of ['fr', 'en']) {
 
 /* ---------------------------------------------------------------- sayfa agirligi */
 {
+  // Olcut ham dosya boyutu degil, ziyaretcinin gercekten indirdigi GZIP boyutudur:
+  // GitHub Pages her HTML'i sikistirarak sunar, veri yogun tablolar ~%80 kuculur
+  // (yillik plan 495 KB ham → 95 KB gzip). Esik 120 KB gzip.
   const agir = sayfalar
-    .map((d) => ({ u: yol(d), kb: Math.round(statSync(d).size / 1024) }))
-    .filter((x) => x.kb > 250)
-    .sort((a, b) => b.kb - a.kb);
-  for (const x of agir.slice(0, 5)) ekle('dusuk', 'agir HTML sayfasi', `${x.u} → ${x.kb} KB`);
+    .map((d) => {
+      const ham = statSync(d).size;
+      const gz = gzipSync(readFileSync(d), { level: 6 }).length;
+      return { u: yol(d), kb: Math.round(ham / 1024), gz: Math.round(gz / 1024) };
+    })
+    .filter((x) => x.gz > 120)
+    .sort((a, b) => b.gz - a.gz);
+  for (const x of agir.slice(0, 5))
+    ekle('dusuk', 'agir HTML sayfasi', `${x.u} → ${x.gz} KB gzip (${x.kb} KB ham)`);
 }
 
 /* ---------------------------------------------------------------- rapor */

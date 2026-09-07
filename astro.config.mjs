@@ -14,13 +14,16 @@ export default defineConfig({
   integrations: [
     preact({ compat: false }),
     sitemap({
-      // noindex taşıyan 9 sayfa (portal/portail, gizlilik/confidentialite/privacy,
-      // ihtida-basvurusu/demande-de-conversion/conversion-application) sitemap'e girmemeli
-      filter: (page) =>
-        page !== 'https://ulucamii.be/' &&
-        !/\/(portal|portail|privacy|confidentialite|gizlilik|conversion-application|demande-de-conversion|ihtida-basvurusu)\/$/.test(
-          page,
-        ),
+      // Sitemap'e yalnız dizine girebilen sayfalar konur. Slug listesi tutmak yerine sayfanın
+      // KENDİ <meta name="robots"> etiketi okunur (tek doğruluk kaynağı) — slug değişince
+      // (portal → veli-portali, /hoca/) liste eskiyip noindex sayfalar sitemap'e sızıyordu.
+      // Sitemap derleme sonunda yazıldığı için dist/ hazırdır (serialize de aynı yolu kullanır).
+      filter: (page) => {
+        if (page === 'https://ulucamii.be/') return false; // dil seçmeyen kök yönlendirme
+        const dosya = fileURLToPath(new URL('./dist' + new URL(page).pathname + 'index.html', import.meta.url));
+        if (!existsSync(dosya)) return true;
+        return !/<meta name="robots" content="[^"]*noindex/.test(readFileSync(dosya, 'utf8').slice(0, 30000));
+      },
       // hreflang alternatifleri: eklentinin i18n eşleştirmesi yalnız aynı yolu paylaşan sayfaları
       // (/tr/afisler ↔ /fr/afisler) yakalar; bizim yollar yerelleştirilmiş olduğundan (/tr/duyurular ↔
       // /fr/annonces) 390 adresin 17'sinde kalıyordu. Kaynak olarak her sayfanın kendi <head>'indeki
