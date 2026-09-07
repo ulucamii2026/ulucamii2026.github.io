@@ -20,19 +20,19 @@ const m = {
     etiket: 'Vaazlar', baslik: 'Vaazlar', alt: 'Camimizde okunan vaazlardan bir derleme',
     giris: 'Aşağıdaki vaazlar herkesin istifadesine açıktır; dilediğiniz gibi okuyabilir, indirebilir ve kullanabilirsiniz. Metinler tamamen anonimdir — hiçbir kişisel bilgi içermez.',
     ara: 'Vaazlarda ara…', tumu: 'Tümü', bulunamadi: 'Bu kategoride vaaz yok.', aramaBos: 'Aramanıza uyan vaaz bulunamadı.',
-    sonuc: '{n} vaaz listeleniyor', okuma: 'dk', adet: 'vaaz', temizle: 'Aramayı temizle',
+    sonuc: '{n} vaaz listeleniyor', okuma: 'dk', temizle: 'Aramayı temizle',
   },
   fr: {
     etiket: 'Sermons', baslik: 'Sermons', alt: 'Une sélection de sermons prêchés dans notre mosquée',
     giris: 'Les sermons ci-dessous sont mis à la disposition de tous : vous pouvez les lire, les télécharger et les utiliser librement. Les textes sont entièrement anonymes et ne contiennent aucune donnée personnelle. (Contenu en turc.)',
     ara: 'Rechercher un sermon…', tumu: 'Tous', bulunamadi: 'Aucun sermon dans cette catégorie.', aramaBos: 'Aucun sermon ne correspond à votre recherche.',
-    sonuc: '{n} sermons affichés', okuma: 'min', adet: 'sermons', temizle: 'Effacer la recherche',
+    sonuc: '{n} sermons affichés', okuma: 'min', temizle: 'Effacer la recherche',
   },
   en: {
     etiket: 'Sermons', baslik: 'Sermons', alt: 'A collection of sermons preached at our mosque',
     giris: 'The sermons below are freely available to everyone: you may read, download and use them as you wish. The texts are fully anonymous and contain no personal data. (Content in Turkish.)',
     ara: 'Search sermons…', tumu: 'All', bulunamadi: 'No sermons in this category.', aramaBos: 'No sermon matches your search.',
-    sonuc: '{n} sermons shown', okuma: 'min', adet: 'sermons', temizle: 'Clear search',
+    sonuc: '{n} sermons shown', okuma: 'min', temizle: 'Clear search',
   },
 }[dil];
 
@@ -57,6 +57,9 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
     <div class="vz-ara">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input type="search" id="vz-ara-giris" placeholder={m.ara} aria-label={m.ara} autocomplete="off" spellcheck="false" enterkeyhint="search" />
+      <button type="button" class="vz-ara-sil" aria-label={m.temizle} hidden>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
 
     {kullanilan.length > 1 && (
@@ -101,7 +104,9 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
   .vz-ara:focus-within { border-color: var(--vurgu); box-shadow: 0 0 0 3px color-mix(in oklab, var(--vurgu) 18%, transparent); }
   .vz-ara input { flex: 1; min-width: 0; min-height: 2.75rem; border: 0; background: none; color: var(--metin); font: inherit; font-size: 0.95rem; }
   .vz-ara input:focus { outline: none; }
-  .vz-ara input::-webkit-search-cancel-button { cursor: pointer; }
+  .vz-ara input::-webkit-search-cancel-button { display: none; }   /* yerine her tarayıcıda çalışan kendi düğmemiz */
+  .vz-ara-sil { display: grid; place-items: center; width: 2rem; height: 2rem; margin-inline-start: -0.2rem; border: 0; border-radius: 50%; background: none; color: var(--metin-2); cursor: pointer; }
+  .vz-ara-sil:hover { background: var(--zemin-2); color: var(--vurgu); }
   .gorsel-gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .vz-filtre { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
   .vz-cip { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.3rem; padding: 0 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin-2); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
@@ -124,6 +129,7 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
   // querySelector('.kapsayici') menü kapsayıcısını seçince dinleyici hiç bağlanmıyordu.
   const filtre = document.querySelector<HTMLElement>('.vz-filtre');
   const arama = document.querySelector<HTMLInputElement>('#vz-ara-giris');
+  const aramaSil = document.querySelector<HTMLButtonElement>('.vz-ara-sil');
   const ogeler = Array.from(document.querySelectorAll<HTMLElement>('.vz-oge'));
   const bos = document.querySelector<HTMLElement>('.vz-bos');
   const bildirim = document.querySelector<HTMLElement>('[role="status"][data-sonuc]');
@@ -153,6 +159,7 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
         bos.hidden = gorunur > 0;
       }
       if (bildirim) bildirim.textContent = (bildirim.dataset.sonuc || '').replace('{n}', String(gorunur));
+      if (aramaSil) aramaSil.hidden = !sorgu;
     };
 
     filtre?.addEventListener('click', (e) => {
@@ -167,6 +174,7 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
       uygula();
     });
     arama?.addEventListener('input', uygula);
+    aramaSil?.addEventListener('click', () => { if (arama) { arama.value = ''; arama.focus(); } uygula(); });
     arama?.addEventListener('keydown', (e) => { if (e.key === 'Escape' && arama.value) { arama.value = ''; uygula(); } });
   }
 </script>
