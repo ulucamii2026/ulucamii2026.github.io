@@ -21,7 +21,7 @@ E-posta: info@ulucamii.be
 
 - Bu site **çerez kullanmaz**.
 - Ziyaret sayıları, gizlilik dostu **GoatCounter** sayacıyla yalnızca **toplu istatistik** olarak ölçülür: hangi sayfanın kaç kez görüntülendiği, hangi ülkeden ve hangi tarayıcı/cihaz türünden gelindiği. Bu ölçümde çerez kullanılmaz, **IP adresiniz saklanmaz** ve sizi kişi olarak tanımlayan hiçbir veri tutulmaz; veriler Avrupa Birliği içinde (Almanya/Finlandiya) barındırılır. Ayrıntı: [GoatCounter gizlilik politikası](https://www.goatcounter.com/help/privacy).
-- Vaaz sayfalarında gösterilen **görüntülenme sayısı** bu toplu ölçümden okunur; vaazların Word/PDF **indirmeleri** de aynı biçimde, hiçbir kişiye bağlanmadan sayılır.
+- Vaaz ve duyuru sayfalarında gösterilen **görüntülenme sayısı**, vaaz listesindeki **okunma** sayıları ve sayfa altındaki **toplam sayfa görüntülenmesi** bu toplu ölçümden okunur; vaazların Word/PDF **indirmeleri** de aynı biçimde, hiçbir kişiye bağlanmadan sayılır.
 - Barındırma sağlayıcımız (GitHub Pages) kendi hizmetinin işleyişi için standart teknik sunucu günlükleri (ör. istek zamanı, IP adresi) tutabilir; bu günlükler bizim kontrolümüz dışındadır ve tarafımızca işlenmez.
 - Açık/koyu tema tercihiniz yalnızca kendi tarayıcınızın hafızasında (localStorage) saklanır; bu bilgi bize hiçbir şekilde ulaşmaz.
 

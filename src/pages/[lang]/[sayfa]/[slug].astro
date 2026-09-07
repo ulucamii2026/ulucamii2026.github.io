@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import SayfaBasligi from '../../../components/SayfaBasligi.astro';
+import Goruntulenme from '../../../components/Goruntulenme.astro';
 import { yollar, type Dil } from '../../../i18n/ui';
 import { ceviri, yol, tarihBicimle, hreflangKodu } from '../../../i18n/utils';
 import { duyurular, etkinlikler, siteAyarlari } from '../../../lib/icerik';
@@ -126,6 +127,7 @@ const icsHref = tur === 'etkinlik'
       {tur === 'etkinlik' && d.bitis && d.bitis.getTime() !== d.baslangic.getTime() && <span> – {tarihBicimle(d.bitis, dil)}</span>}
       {tur === 'etkinlik' && d.saat && <span> · {d.saat}</span>}
       {tur === 'etkinlik' && d.yer && <span> · {t('etkinlik.yer')}: {d.yer}</span>}
+      <Goruntulenme dil={dil} onek=" · " />
     </p>
     <p class="mt-2 text-sm">
       <a href={`https://wa.me/?text=${encodeURIComponent(waMetin)}`} target="_blank" rel="noopener">{waEtiket}<span aria-hidden="true"> ↗</span></a>

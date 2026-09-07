@@ -21,6 +21,10 @@ const grupAdi: Record<Dil, [string, string, string, string]> = {
 };
 /** Menüde kısa biçim: ui.ts'teki karşılığı "Etkinlikler & Afişler" gibi uzun. */
 const etkinlikKisa: Record<Dil, string> = { tr: 'Etkinlikler', fr: 'Événements', en: 'Events' };
+/* Fransızca menü öbeği («Mosquée · Actualités · Enseignement · Services») Türkçesinden ~100 px
+   geniş; 1280 px ve üstünde «Horaires de prière» marka bloğunu 72 px sıkıştırıp üst şeridi
+   taşırıyordu (7 Eyl 2026 tasarım taraması). Menüde kısa biçim kullanılır; sayfa başlığı aynı kaldı. */
+const namazKisa: Record<Dil, string> = { tr: 'Namaz Vakitleri', fr: 'Horaires', en: 'Prayer Times' };
 const [gCami, gHaber, gEgitim, gHizmet] = grupAdi[dil];
 const gruplar: Grup[] = [
   { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
@@ -29,7 +33,7 @@ const gruplar: Grup[] = [
   { ad: gHizmet, maddeler: [L('bagis'), L('uyelik'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ];
 const temaEtiketi: Record<Dil, string> = { tr: 'Karanlık / aydınlık tema', fr: 'Thème sombre / clair', en: 'Dark / light theme' };
-const dogrudan: Madde[] = [L('namaz'), L('iletisim')];
+const dogrudan: Madde[] = [L('namaz', namazKisa[dil]), L('iletisim')];
 const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
 const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
 ---
@@ -46,7 +50,7 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
     <nav class="ml-auto hidden lg:flex items-center gap-0.5" aria-label={t('nav.menu')}>
       {gruplar.map((g, i) => (
         <div class="relative" data-grup>
-          <button type="button" class:list={['inline-flex items-center gap-1 px-2.5 py-1.5 text-[0.9rem] whitespace-nowrap rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', grupAktif(g) && 'bg-(--zemin-3) font-semibold']} aria-expanded="false" aria-controls={`grup-${i}`} aria-haspopup="true">
+          <button type="button" class:list={['inline-flex items-center gap-1 px-2 py-1.5 text-[0.9rem] whitespace-nowrap rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', grupAktif(g) && 'bg-(--zemin-3) font-semibold']} aria-expanded="false" aria-controls={`grup-${i}`} aria-haspopup="true">
             {g.ad}
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -58,7 +62,7 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
         </div>
       ))}
       {dogrudan.map((m) => (
-        <a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['hidden xl:inline-block px-2.5 py-1.5 text-[0.9rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
+        <a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['hidden xl:inline-block px-2 py-1.5 text-[0.9rem] whitespace-nowrap no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a>
       ))}
     </nav>
     <div class="ml-auto lg:ml-2 flex items-center gap-1.5 shrink-0">

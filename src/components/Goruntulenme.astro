@@ -1,33 +1,47 @@
 ---
 /**
- * Sayfa görüntülenme sayısı — GoatCounter'ın herkese açık sayaç ucundan okunur
- * (`/counter/<yol>.json`, CORS açık, çerezsiz; kişisel veri yok, ziyaretçi izlenmez).
+ * Ziyaret sayısı — GoatCounter'ın herkese açık sayaç ucundan okunur
+ * (`/counter/<yol>.json` ve `/counter/TOTAL.json`; CORS açık, çerezsiz, kişisel veri yok).
  * Sayı gelene kadar, sıfırken ve hata durumunda öge gizli kalır — sayfa yerleşimi kaymaz.
- * Kullanım: <Goruntulenme dil={dil} /> — bir satır içi <span> üretir.
+ *
+ * Kullanım:
+ *   <Goruntulenme dil={dil} />                  → bu sayfanın görüntülenme sayısı
+ *   <Goruntulenme dil={dil} kapsam="site" />    → sitenin toplam ziyaret sayısı
+ *   onek=" · " → sayı gerçekten geldiğinde ayraç da yazılır (boşta sarkan ayraç kalmaz)
  */
 import type { Dil } from '../i18n/ui';
 
-interface Props { dil: Dil; sinif?: string }
-const { dil, sinif } = Astro.props;
+interface Props { dil: Dil; sinif?: string; kapsam?: 'sayfa' | 'site'; onek?: string }
+const { dil, sinif, kapsam = 'sayfa', onek = '' } = Astro.props;
 
-const ad = { tr: ['görüntülenme', 'görüntülenme'], fr: ['vue', 'vues'], en: ['view', 'views'] }[dil];
+const adlar = {
+  sayfa: { tr: ['görüntülenme', 'görüntülenme'], fr: ['vue', 'vues'], en: ['view', 'views'] },
+  site: { tr: ['sayfa görüntülenmesi', 'sayfa görüntülenmesi'], fr: ['page vue', 'pages vues'], en: ['page view', 'page views'] },
+}[kapsam];
+const ad = adlar[dil];
 const yerel = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
 ---
-<span class={sinif} data-goruntulenme data-tekil={ad[0]} data-cogul={ad[1]} data-yerel={yerel} hidden></span>
+<span class={sinif} data-goruntulenme data-kapsam={kapsam} data-onek={onek} data-tekil={ad[0]} data-cogul={ad[1]} data-yerel={yerel} hidden></span>
 
 <script>
   // GoatCounter sayaç ucu: {"count":"1,234","count_unique":"…"} döner; bilinmeyen yolda 404 + 0.
   // Sayı binlik ayraçlı metin gelir → rakamlar süzülüp sayfanın diline göre yeniden biçimlenir.
+  // Aynı sayfada iki kapsam da bulunabilir (sayfa + site toplamı) → tek istek, çoklu yazım.
   const ogeler = Array.from(document.querySelectorAll<HTMLElement>('[data-goruntulenme]'));
-  if (ogeler.length) {
-    fetch(`https://ulucamii.goatcounter.com/counter/${encodeURIComponent(location.pathname)}.json`)
+  const kapsamlar = new Map<string, HTMLElement[]>();
+  for (const o of ogeler) {
+    const k = o.dataset.kapsam === 'site' ? 'TOTAL' : encodeURIComponent(location.pathname);
+    (kapsamlar.get(k) ?? kapsamlar.set(k, []).get(k)!).push(o);
+  }
+  for (const [anahtar, grup] of kapsamlar) {
+    fetch(`https://ulucamii.goatcounter.com/counter/${anahtar}.json`)
       .then((y) => (y.ok ? y.json() : null))
       .then((veri) => {
         const n = Number(String(veri?.count ?? '').replace(/[^0-9]/g, ''));
         if (!n) return;
-        for (const o of ogeler) {
+        for (const o of grup) {
           const sayi = new Intl.NumberFormat(o.dataset.yerel || 'tr-TR').format(n);
-          o.textContent = `${sayi} ${n === 1 ? o.dataset.tekil : o.dataset.cogul}`;
+          o.textContent = `${o.dataset.onek || ''}${sayi} ${n === 1 ? o.dataset.tekil : o.dataset.cogul}`;
           o.hidden = false;
         }
       })

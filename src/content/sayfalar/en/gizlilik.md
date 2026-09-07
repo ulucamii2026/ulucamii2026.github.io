@@ -21,7 +21,7 @@ E-mail: info@ulucamii.be
 
 - This site **does not use cookies**.
 - Visits are measured only as **aggregate statistics** by the privacy-friendly counter **GoatCounter**: page view counts, country and browser/device type. This measurement uses no cookies, **your IP address is not stored**, and no data that could identify you is kept; the data is hosted within the European Union (Germany/Finland). Details: [GoatCounter privacy policy](https://www.goatcounter.com/help/privacy).
-- The **view count** shown on sermon pages comes from this aggregated measurement; Word/PDF **downloads** of sermons are counted the same way, never linked to a person.
+- The **view count** shown on sermon and announcement pages, the **read counts** in the sermon list and the **total page views** in the footer all come from this aggregated measurement; Word/PDF **downloads** of sermons are counted the same way, never linked to a person.
 - Our hosting provider (GitHub Pages) may keep standard technical server logs (e.g. request time, IP address) for the operation of its own service; these logs are outside our control and are not processed by us.
 - Your light/dark theme preference is stored only in your own browser’s memory (localStorage); this information never reaches us in any way.
 

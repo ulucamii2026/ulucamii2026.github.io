@@ -2,6 +2,7 @@
 import { getEntry } from 'astro:content';
 import { ceviri, yol } from '../i18n/utils';
 import WhatsappBaglanti from './WhatsappBaglanti.astro';
+import Goruntulenme from './Goruntulenme.astro';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
@@ -69,6 +70,8 @@ const siteLinkleri = [
   <div class="cetvel">
     <p class="kapsayici py-3 etiket flex flex-wrap justify-between gap-2">
       <span>© {yil} {site.kisaltma} · {t('footer.hak')}</span>
+      {/* Sitenin toplam sayfa görüntülenmesi (GoatCounter TOTAL); sayı gelmezse öge gizli kalır. */}
+      <Goruntulenme dil={dil} kapsam="site" />
       <span>Marche-en-Famenne · Belgique</span>
     </p>
   </div>

@@ -9,6 +9,7 @@ import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { katAd, katSira } from '../i18n/vaaz-kategori';
+import istatistik from '../data/istatistik.json';
 
 const { dil } = Astro.props as { dil: Dil };
 
@@ -42,6 +43,22 @@ const notEtiket = { tr: 'Herkese açık · Anonim', fr: 'Libre d’accès · Ano
 // yalnız kullanılan kategoriler, sabit sırayla (sözlük: src/i18n/vaaz-kategori.ts — okuma sayfasıyla ortak)
 const kullanilan = katSira.filter((k) => hepsi.some((v) => v.data.kategori === k));
 const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 180)) : null);
+
+/* Okunma sayısı: derleme anında GoatCounter'dan alınır (scripts/istatistik-cek.mjs). Üç dilin
+   yolu toplanır — metin aynı vaazdır. GoatCounter yolları sondaki eğik çizgisiz tutar; iki
+   biçim de denenir. Üçün altındaki sayılar gösterilmez (gürültü) ve veri yoksa özellik kapanır. */
+const sayac = (istatistik as { yollar: Record<string, number> }).yollar ?? {};
+const okunma = (slug: string) => {
+  let t = 0;
+  for (const d of ['tr', 'fr', 'en']) {
+    const y = `/${d}/vaaz/${slug}`;
+    t += sayac[y] ?? sayac[`${y}/`] ?? 0;
+  }
+  return t >= 3 ? t : 0;
+};
+const okunmaAd = { tr: 'okunma', fr: 'lectures', en: 'reads' }[dil];
+const yerelAd = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
+const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
 ---
 <Base baslik={m.baslik} aciklama={m.alt} dil={dil}>
   <div class="kapsayici py-8 sm:py-12">
@@ -78,7 +95,10 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
             <span class="vz-kat">{katAd[v.data.kategori]?.[dil] ?? v.data.kategori}</span>
             <h2 class="vz-baslik">{v.data.baslik}</h2>
             {v.data.ozet && <p class="vz-ozet">{v.data.ozet}</p>}
-            <span class="vz-meta">{okumaDk(v.data.kelime) && `${okumaDk(v.data.kelime)} ${m.okuma}`}</span>
+            <span class="vz-meta">
+              {okumaDk(v.data.kelime) && `${okumaDk(v.data.kelime)} ${m.okuma}`}
+              {okunma(v.id) > 0 && <span class="vz-okunma">{sayiBicim(okunma(v.id))} {okunmaAd}</span>}
+            </span>
           </a>
         </li>
       ))}
@@ -93,7 +113,11 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
   .vz-not { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1rem; align-items: start; margin: 1.75rem 0 2rem; padding: 1.05rem 1.35rem 1.1rem 1.2rem; border: 1px solid color-mix(in oklab, var(--vurgu-2) 32%, transparent); border-inline-start: 4px solid var(--vurgu-2); border-radius: var(--radius-kose); background: color-mix(in oklab, var(--vurgu-2) 7%, var(--zemin)); }
   .vz-not-ikon { color: var(--vurgu-2); margin-top: 0.2rem; }
   .vz-not-etiket { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--vurgu-2); margin-bottom: 0.3rem; }
-  .vz-not p { margin: 0; font-size: 0.98rem; line-height: 1.6; color: var(--metin); text-wrap: pretty; max-width: 78ch; }
+  /* Kutu zaten kapsayıcı genişliğinde: paragrafa ayrıca 78ch sınırı koymak sağda büyük bir
+     boşluk bırakıyordu (7 Eyl 2026). Satır dengesini text-wrap: pretty kuruyor. */
+  .vz-not p { margin: 0; font-size: 0.98rem; line-height: 1.6; color: var(--metin); text-wrap: pretty; }
+  /* Okunma rozeti: kartın alt meta satırında, okuma süresinden nokta ile ayrılır. */
+  .vz-okunma::before { content: ' · '; }
   .vz-bos { padding: 2.5rem 0; text-align: center; color: var(--metin-2); }
   @media (max-width: 640px) {
     .vz-not { grid-template-columns: 1fr; margin: 1.25rem 0 1.5rem; padding: 0.9rem 1rem 0.95rem; }
@@ -149,7 +173,11 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
         .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         .replace(/ı/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u');
 
-    for (const o of ogeler) o.dataset.ara = sade(o.innerText + ' ' + (o.dataset.kat || ''));
+    /* Arama dizini yalnız başlık, özet ve kategoriden kurulur: kartın meta satırındaki
+       «16 dk · 5 okunma» gibi sayılar dizine girerse «okunma» araması her kartı getirirdi. */
+    const alan = (o: HTMLElement, k: string) => (o.querySelector(k) as HTMLElement | null)?.textContent || '';
+    for (const o of ogeler)
+      o.dataset.ara = sade([alan(o, '.vz-baslik'), alan(o, '.vz-ozet'), alan(o, '.vz-kat'), o.dataset.kat || ''].join(' '));
 
     let kategori = 'tumu';
     const uygula = () => {

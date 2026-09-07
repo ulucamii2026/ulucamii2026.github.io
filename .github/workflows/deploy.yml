@@ -23,6 +23,13 @@ jobs:
     steps:
       - name: Depoyu al
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Vaaz listesindeki «okunma» sayıları derleme anındaki veriden gelir; site her gün
+      # yeniden yayımlandığı için sayılar günlük tazelenir. Belirteç yoksa veya uç nokta
+      # erişilemezse betik dosyaya dokunmadan çıkar — yayın hiçbir durumda düşmez.
+      - name: Ziyaret istatistiklerini tazele (GoatCounter)
+        run: node scripts/istatistik-cek.mjs
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
       - name: Astro ile derle ve yükle
         uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
         with:
