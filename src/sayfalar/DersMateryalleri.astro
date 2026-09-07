@@ -35,7 +35,8 @@ const haftaBasi = pzt.toISOString().slice(0, 10);
 const pazar = new Date(pzt); pazar.setDate(pazar.getDate() + 6);
 const haftaSonu = pazar.toISOString().slice(0, 10);
 const guncel = gunler.filter((g) => g.tarih >= haftaBasi);
-const oneCikan = guncel.length ? guncel : gunler.slice(0, 1);
+/* «Bu hafta» kronolojik (Cumartesi → Pazar) okunur; arşiv yeniden eskiye kalır (8 Eyl 2026) */
+const oneCikan = (guncel.length ? guncel : gunler.slice(0, 1)).slice().sort((a, b) => a.tarih.localeCompare(b.tarih));
 const oneCikanTarih = new Set(oneCikan.map((g) => g.tarih));
 const buHafta = guncel.length > 0 && guncel.every((g) => g.tarih <= haftaSonu);
 const arsiv = gunler.filter((g) => !oneCikanTarih.has(g.tarih));

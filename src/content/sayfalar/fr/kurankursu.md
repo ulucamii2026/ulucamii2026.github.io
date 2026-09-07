@@ -82,8 +82,6 @@ Nos élèves viennent à chaque leçon **avec les manuels prévus au programme, 
 - Il est recommandé de venir en état d’ablution aux cours de Coran ; une tenue propre, confortable et conforme aux convenances de la mosquée.
 - Prévenir notre imam à l’avance si l’élève ne peut pas assister au cours.
 
-Nous étudions la possibilité d’une commande groupée ; les parents en seront informés le cas échéant.
-
 ## Inscription
 
 L’inscription se fait via le bouton **« Formulaire d’inscription en ligne »** situé à droite de cette page. Le formulaire prend environ 5 minutes et est disponible en turc et en français. Une fois l’envoi terminé, le document d’inscription vous est transmis en PDF par e-mail et un **numéro de référence** vous est attribué.

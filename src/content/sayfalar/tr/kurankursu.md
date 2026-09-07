@@ -82,8 +82,6 @@ Derslerde üç temel kitap okutulur; yıllık planda her dersin kaynağı ve say
 - Kur’an-ı Kerim derslerine abdestli gelmek tavsiye edilir; cami adabına uygun, temiz ve rahat giyim.
 - Öğrenci derse gelemeyecekse din görevlimize önceden haber verilmesi.
 
-Toplu temin imkânı araştırılmaktadır; gelişme olursa velilerimize duyurulacaktır.
-
 ## Kayıt
 
 Kayıt, bu sayfanın sağındaki **“Online kayıt formu”** düğmesinden yapılır. Form doldurmak ortalama 5 dakika sürer; Türkçe ve Fransızca seçenekleriyle sunulur. Gönderim tamamlandığında kayıt belgeniz PDF olarak e-postanıza gönderilir ve size bir **referans numarası** verilir.

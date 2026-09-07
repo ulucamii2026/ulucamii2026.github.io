@@ -82,8 +82,6 @@ Our students come to every lesson **with the textbooks set out in the curriculum
 - Coming to Qur’an lessons in a state of ablution is recommended; clean, comfortable clothing in keeping with mosque etiquette.
 - If a student cannot attend, please let our imam know in advance.
 
-We are looking into a group purchase; parents will be informed of any developments.
-
 ## Registration
 
 Registration is done through the **“Online registration form”** button on the right of this page. Filling in the form takes about 5 minutes; it is available in Turkish and French. Once submitted, your registration document is sent to your e-mail as a PDF, and you are given a **reference number**.
