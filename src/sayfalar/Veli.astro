@@ -177,7 +177,11 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .duyuru:first-of-type { border-top: 0; padding-top: 0.2rem; }
   .portal .duyuru .d-tarih { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--metin-2); }
   .portal .duyuru h3 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--metin); margin: 0.2rem 0 0.35rem; }
-  .portal .duyuru .d-govde { margin: 0; white-space: pre-line; line-height: 1.65; }
+  .portal .duyuru .d-govde { margin: 0; line-height: 1.65; }
+  .portal .duyuru .d-govde a { color: var(--vurgu-2); text-decoration: underline; overflow-wrap: anywhere; }
+  .portal .duyuru .d-govde p { margin: 0 0 0.5rem; }
+  .portal .duyuru .d-govde p:last-child, .portal .duyuru .d-govde div:last-child { margin-bottom: 0; }
+  .portal .duyuru .d-govde ul, .portal .duyuru .d-govde ol { margin: 0.3rem 0; padding-left: 1.3rem; }
   .portal .duyuru.uzun .d-govde { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
   .portal .duyuru.uzun.acik .d-govde { display: block; }
   .portal .duyuru .d-devam { margin-top: 0.5rem; font-weight: 600; font-size: 0.85rem; background: none; border: 0; color: var(--vurgu-2); cursor: pointer; padding: 0; font-family: var(--font-sans); }
