@@ -100,7 +100,7 @@ const m = dil === 'tr' ? {
                     <h3 class="leading-tight">{d.ad}</h3>
                     <p class="etiket mt-1">
                       {d.dogumYili && <span>{d.dogumYili} – </span>}<time datetime={d.vefat.toISOString()}>{tarihBicimle(d.vefat, dil)}</time>
-                      {yas !== null && <span> · {yas} {m.yas}</span>}
+                      {yas !== null && <span> · ~{yas} {m.yas}</span>}
                       {d.memleket && <span> · {m.memleket}: <span class="normal-case tracking-normal">{d.memleket}</span></span>}
                     </p>
                     {d.metin?.[icDil] && <p class="mt-3 text-(--metin-2)">{d.metin[icDil]}</p>}

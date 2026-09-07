@@ -29,7 +29,16 @@ const yakin = hepsi.filter((v) => {
   if (cenaze && cenaze + GUN > simdi) return true;
   return v.data.vefat.getTime() + 10 * GUN > simdi;
 });
-const kayit = yakin[0];
+// Bandın amacı bekleyen cenaze namazını duyurmak; bu yüzden en son vefat edeni değil, cenaze
+// namazı henüz gelmemiş (en yakın) kaydı öne al — böyle bir kayıt yoksa en son vefata düş.
+const kayit = [...yakin].sort((a, b) => {
+  const ac = a.data.cenazeNamazi?.tarih?.getTime();
+  const bc = b.data.cenazeNamazi?.tarih?.getTime();
+  const aBekleyen = ac && ac > simdi ? ac : Infinity;
+  const bBekleyen = bc && bc > simdi ? bc : Infinity;
+  if (aBekleyen !== bBekleyen) return aBekleyen - bBekleyen;
+  return b.data.vefat.getTime() - a.data.vefat.getTime();
+})[0];
 
 const m = {
   tr: { etiket: 'Vefat', tumu: 'Vefat edenlerimiz', namaz: 'Cenaze namazı', defin: 'Defin', bas: 'Ailesine ve cemaatimize baş sağlığı dileriz.' },
