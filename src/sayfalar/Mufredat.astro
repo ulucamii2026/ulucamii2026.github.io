@@ -334,7 +334,7 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
       </section>
     </article>
 
-    <aside class="yan" lang={dil}>
+    <div class="yan" lang={dil}>
       <nav class="kart-kagit toc hidden lg:block" aria-labelledby="toc-b" data-toc>
         <p id="toc-b" class="etiket">{m.icindekiler}</p>
         <ol class="toc-liste">
@@ -362,7 +362,7 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
       </div>
       <p class="kitap-not">{m.kitapNot} — <a href={yol(dil, 'kurankursu') + m.kitapCapa}>{m.kitapBag}</a></p>
       <a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil w-full justify-center">{m.kayit}</a>
-    </aside>
+    </div>
   </div>
 </Base>
 

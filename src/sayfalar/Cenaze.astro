@@ -78,7 +78,7 @@ const m = dil === 'tr' ? {
       <p class="mt-6"><a href={yol(dil, 'konsolosluk') + '#cenaze'}>{m.nakil}</a></p>
       <p class="mt-2"><a href={yol(dil, 'vefat')}>{m.vefatSayfa}</a></p>
     </section>
-    <aside class="grid gap-5 content-start lg:sticky lg:top-24">
+    <div class="grid gap-5 content-start lg:sticky lg:top-24">
       {c && (
         <div class="kart p-5 border-(--vurgu)">
           <p class="etiket etiket-vurgu">{m.acilBaslik}</p>
@@ -94,6 +94,6 @@ const m = dil === 'tr' ? {
           </dl>
         </div>
       )}
-    </aside>
+    </div>
   </div>
 </Base>

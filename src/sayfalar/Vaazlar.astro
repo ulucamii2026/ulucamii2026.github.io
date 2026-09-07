@@ -46,13 +46,13 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
 <Base baslik={m.baslik} aciklama={m.alt} dil={dil}>
   <div class="kapsayici py-8 sm:py-12">
     <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} />
-    <aside class="vz-not" aria-label={notEtiket}>
+    <div class="vz-not" role="note" aria-label={notEtiket}>
       <svg class="vz-not-ikon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.6C10.4 5.2 8.4 4.5 6 4.5c-1 0-2 .1-3 .4v13.7c1-.3 2-.4 3-.4 2.4 0 4.4.7 6 2.1 1.6-1.4 3.6-2.1 6-2.1 1 0 2 .1 3 .4V4.9c-1-.3-2-.4-3-.4-2.4 0-4.4.7-6 2.1Z"/><path d="M12 6.6v13.7"/></svg>
       <div class="vz-not-metin">
         <span class="vz-not-etiket">{notEtiket}</span>
         <p>{m.giris}</p>
       </div>
-    </aside>
+    </div>
 
     <div class="vz-ara">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -111,8 +111,14 @@ const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 1
   .vz-filtre { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
   .vz-cip { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.3rem; padding: 0 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin-2); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
   .vz-cip:hover { border-color: var(--vurgu); color: var(--vurgu); }
+  /* Etkin çip: açık temada beyaz metin (5,5:1), koyu temada zemin açıldığı için koyu mürekkep (6,6:1).
+     Sayı rozetinde opacity vardı → 4,07:1 ile eşiğin altında kalıyordu (axe, 7 Eyl 2026). */
   .vz-cip.etkin { background: var(--vurgu); border-color: var(--vurgu); color: #fff; }
-  .vz-cip.etkin .vz-say { color: #fff; opacity: 0.8; }
+  .vz-cip.etkin .vz-say { color: inherit; }
+  :root[data-theme="dark"] .vz-cip.etkin { color: var(--color-ceviz-koyu); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .vz-cip.etkin { color: var(--color-ceviz-koyu); }
+  }
   .vz-say { font-size: 0.75rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
 
   .vz-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }

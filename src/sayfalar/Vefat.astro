@@ -121,13 +121,13 @@ const m = dil === 'tr' ? {
       ))}
       <p class="text-sm text-(--metin-2) cetvel pt-4">{m.aileNot}</p>
     </section>
-    <aside class="grid gap-5 content-start lg:sticky lg:top-24">
+    <div class="grid gap-5 content-start lg:sticky lg:top-24">
       <div class="kart p-5 border-(--vurgu)">
         <p class="etiket etiket-vurgu">{dil === 'tr' ? 'Vefat hâlinde ne yapılır?' : dil === 'en' ? 'What to do in the event of a death?' : 'Que faire en cas de décès ?'}</p>
         <p class="mt-3 text-sm text-(--metin-2)">{dil === 'tr' ? 'BDV Cenaze Fonu, vefat anında aranacak numaralar ve adım adım süreç ayrı bir bilgilendirme sayfasında toplanmıştır.' : dil === 'en' ? 'The BDV Funeral Fund, the numbers to call and the step-by-step process are gathered on a separate information page.' : 'Le Fonds funéraire BDV, les numéros à appeler et les démarches étape par étape sont réunis sur une page d’information distincte.'}</p>
         <p class="mt-4"><a href={yol(dil, 'cenaze')} class="dugme dugme-birincil w-full justify-center">{dil === 'tr' ? 'Cenaze Hizmetleri' : dil === 'en' ? 'Funeral Services' : 'Services funéraires'}</a></p>
         {c && <p class="mt-3 text-center"><span class="etiket block">{dil === 'tr' ? 'BDV Cenaze Fonu — vefat hattı' : dil === 'en' ? 'BDV Funeral Fund — death line' : 'Fonds funéraire BDV — ligne décès'}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a></p>}
       </div>
-    </aside>
+    </div>
   </div>
 </Base>

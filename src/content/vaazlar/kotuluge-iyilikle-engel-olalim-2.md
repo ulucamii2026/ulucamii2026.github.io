@@ -1,5 +1,5 @@
 ---
-baslik: "Kötülüğe İyilikle Engel Olalım (2)"
+baslik: "Kötülüğe İyilikle Engel Olalım"
 ozet: "“Ben, güzel ahlâkı tamamlamak için gönderildim” (Muvatta, Hüsnü’l-Huluk, 8) buyurarak, insanlığın en yüce hedefinin ahlaki olgunluk olduğunu bildirmiştir. Güzel…"
 kategori: ahlak
 kelime: 2281

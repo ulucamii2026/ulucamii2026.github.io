@@ -1,5 +1,5 @@
 ---
-baslik: "Ramazan: Rahmet, Mağfiret ve Bereket Ayı (3)"
+baslik: "Ramazan: Rahmet, Mağfiret ve Bereket Ayı (2)"
 ozet: "Manevi güzelliklerle dolu Ramazan ayı müminler için rahmet ve bereket kaynağıdır. Bu zaman dilimini iyilik ve ibadetlerle geçiren mümin ebedi kurtuluşun kapısını…"
 kategori: ramazan
 kelime: 3458

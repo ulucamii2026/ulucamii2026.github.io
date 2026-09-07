@@ -138,14 +138,14 @@ const icsHref = tur === 'etkinlik'
         inmiyor. Dar ekranda üste alındı, geniş ekranda sağdaki sütunda kalıyor. */}
     <div class="duz-yazi order-2 lg:order-1 min-w-0"><Content /></div>
     {kapak && (
-      <aside class="order-1 lg:order-2">
+      <div class="order-1 lg:order-2">
         <a href={kapak} data-lightbox={grup} data-caption={d.kapakAlt ?? d.baslik} class="gorsel-cerceve block">
           <img src={tur === 'etkinlik' && d.afisKucuk ? d.afisKucuk : kapak} alt={d.kapakAlt ?? d.baslik} loading="lazy" decoding="async" />
         </a>
         {tur === 'etkinlik'
           ? <p class="mt-2 text-sm"><a href={kapak} target="_blank" rel="noopener">{t('etkinlik.afis')}<span aria-hidden="true"> ↗</span></a></p>
           : <p class="mt-2 text-sm text-(--metin-2)">{buyutNotu}</p>}
-      </aside>
+      </div>
     )}
   </article>
   {galeri.length > 0 && (

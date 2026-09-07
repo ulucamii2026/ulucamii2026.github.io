@@ -29,11 +29,11 @@ const m = dil === 'tr' ? {
 <IcerikSayfasi dil={dil} anahtar="bagis" etiket={t('nav.bagis')}>
   <div slot="yan" class="kart p-5">
     <p class="etiket etiket-vurgu">{m.kart}</p>
-    <dl class="mt-3 grid gap-2 text-sm">
-      <div><dt class="etiket">{m.iban}</dt><dd class="mono text-lg font-medium select-all" id="iban-deger">{site.banka.iban}</dd></div>
-      <div class="grid grid-cols-2 gap-2"><div><dt class="etiket">{m.bic}</dt><dd class="mono">{site.banka.bic}</dd></div><div><dt class="etiket">{m.banka}</dt><dd>{site.banka.banka}</dd></div></div>
-      <div><dt class="etiket">{m.hesap}</dt><dd>{site.banka.hesapAdi}</dd></div>
-      <div><dt class="etiket">{m.acik}</dt><dd class="mono">{aciklama}</dd></div>
+    <dl class="mt-3 grid grid-cols-2 gap-2 text-sm">
+      <div class="col-span-2"><dt class="etiket">{m.iban}</dt><dd class="mono text-lg font-medium select-all" id="iban-deger">{site.banka.iban}</dd></div>
+      <div><dt class="etiket">{m.bic}</dt><dd class="mono">{site.banka.bic}</dd></div><div><dt class="etiket">{m.banka}</dt><dd>{site.banka.banka}</dd></div>
+      <div class="col-span-2"><dt class="etiket">{m.hesap}</dt><dd>{site.banka.hesapAdi}</dd></div>
+      <div class="col-span-2"><dt class="etiket">{m.acik}</dt><dd class="mono">{aciklama}</dd></div>
     </dl>
     <button type="button" id="iban-kopyala" class="dugme dugme-iznik mt-4 w-full justify-center" data-iban={ibanDuz} data-kopyalandi={m.kopyalandi}>{m.kopyala}</button>
   </div>

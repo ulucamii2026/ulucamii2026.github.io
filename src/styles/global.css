@@ -75,6 +75,7 @@
   --cizgi-etkilesim: rgb(74 55 40 / 0.44);
   --vurgu: var(--color-kiremit);
   --vurgu-2: var(--color-iznik);
+  --vurgu-metin: var(--color-kiremit-koyu);   /* soluk kiremit zeminli küçük rozetlerde okunur ton */
   --shadow-kart-vurgu: 0 2px 0 rgb(74 55 40 / 0.08), 0 18px 36px -18px rgb(74 55 40 / 0.45);
 }
 
@@ -90,6 +91,7 @@
     --cizgi-etkilesim: rgb(245 239 227 / 0.5);
     --vurgu: #e37f5f;
     --vurgu-2: #6fa8d3;
+    --vurgu-metin: #e37f5f;
   /* Gölge koyu temada kahverengi tabanla kaybolur; siyah tabanlı, daha derin bir karşılığı gerekir. */
   --shadow-kart: 0 1px 0 rgb(0 0 0 / 0.32), 0 14px 34px -16px rgb(0 0 0 / 0.6);
   --shadow-kart-vurgu: 0 2px 0 rgb(0 0 0 / 0.4), 0 20px 40px -16px rgb(0 0 0 / 0.72);
@@ -106,6 +108,7 @@
   --cizgi-etkilesim: rgb(245 239 227 / 0.5);
   --vurgu: #e37f5f;
   --vurgu-2: #6fa8d3;
+  --vurgu-metin: #e37f5f;
   --shadow-kart: 0 1px 0 rgb(0 0 0 / 0.32), 0 14px 34px -16px rgb(0 0 0 / 0.6);
   --shadow-kart-vurgu: 0 2px 0 rgb(0 0 0 / 0.4), 0 20px 40px -16px rgb(0 0 0 / 0.72);
 }
