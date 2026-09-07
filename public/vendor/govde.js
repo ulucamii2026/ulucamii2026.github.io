@@ -48,12 +48,15 @@
   var cap = document.getElementById('lb-caption');
   var sayac = document.getElementById('lb-sayac');
   var baglar = Array.from(document.querySelectorAll('a[data-lightbox]'));
+  // Kapanışta src'yi silmek yerine saydam 1x1'e döndürürüz: src'siz <img> HTML'de geçersizdir
+  // ve tarayıcı onu «bozuk görsel» sayar (denetim betikleri de öyle raporluyordu).
+  var BOS = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
   if (dlg && img && cap && sayac && baglar.length && typeof dlg.showModal === 'function') {
     var grup = []; var i = 0; var tetik = null;
     var goster = function (k) {
       i = (k + grup.length) % grup.length; var a = grup[i];
       var metin = a.dataset.caption || (a.querySelector('img') && a.querySelector('img').alt) || '';
-      img.src = a.href; img.alt = metin; cap.textContent = metin;
+      img.src = a.href; img.alt = metin; img.removeAttribute('data-bos'); cap.textContent = metin;
       sayac.textContent = grup.length > 1 ? (i + 1) + ' / ' + grup.length : '';
       dlg.dataset.tek = grup.length > 1 ? '0' : '1';
       [grup[(i + 1) % grup.length], grup[(i - 1 + grup.length) % grup.length]].forEach(function (n) { if (n && n !== a) { var p = new Image(); p.src = n.href; } });
@@ -62,7 +65,7 @@
       var ad = a.dataset.lightbox || ''; grup = baglar.filter(function (b) { return (b.dataset.lightbox || '') === ad; });
       tetik = a; goster(grup.indexOf(a)); dlg.showModal(); document.documentElement.style.overflow = 'hidden';
     };
-    dlg.addEventListener('close', function () { document.documentElement.style.overflow = ''; img.removeAttribute('src'); tetik && tetik.focus(); });
+    dlg.addEventListener('close', function () { document.documentElement.style.overflow = ''; img.src = BOS; img.setAttribute('data-bos', ''); tetik && tetik.focus(); });
     baglar.forEach(function (a) { a.addEventListener('click', function (e) { if (e.metaKey || e.ctrlKey) return; e.preventDefault(); ac(a); }); });
     dlg.addEventListener('click', function (e) {
       var t = e.target; var b = t.closest('[data-lb]');

@@ -24,7 +24,9 @@ const m = dil === 'tr'
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
   </button>
   <figure class="lb-govde">
-    <img id="lb-img" alt="" decoding="async" />
+    <img id="lb-img" alt="" decoding="async"
+         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+         data-bos />
     <figcaption id="lb-caption"></figcaption>
   </figure>
   <button type="button" class="lb-ok lb-sonraki" data-lb="sonraki" aria-label={m.sonraki}>
@@ -43,7 +45,7 @@ const m = dil === 'tr'
   /* Kaynak atanmadan önce (lightbox hiç açılmamışken) img «bozuk görsel» gibi görünüyordu:
      complete=true, naturalWidth=0. Görünürlüğe etkisi yoktu ama denetimlerde kirli sinyal
      üretiyordu — src gelene kadar gizli tutulur (7 Eyl 2026). */
-  .lb-govde img:not([src]) { display: none; }
+  .lb-govde img[data-bos] { display: none; }  /* gerçek görsel yüklenene dek yer tutucu gizli */
   .lb-govde figcaption:empty { display: none; }
   .lb-kapat, .lb-ok { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; border: 1px solid rgba(245,239,227,.28); background: rgba(26,18,12,.55); color: #f5efe3; cursor: pointer; transition: background 160ms, border-color 160ms; }
   .lb-kapat:hover, .lb-ok:hover { background: rgba(181,69,43,.85); border-color: transparent; }

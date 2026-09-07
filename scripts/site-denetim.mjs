@@ -239,6 +239,9 @@ for (const d of ['fr', 'en']) {
   /* Dis kurumlarin sitede gosterilen kendi e-postalari (bizim adreslerimiz site.yaml'da). */
   const disKurumEposta = new Set([
     'info@diyanet.be',              // Belcika Diyanet Vakfi
+    'noreply@ulucamii.be',          // Veli portali e-postalarinin gonderen adresi (Firebase ozel SMTP,
+                                    // 7 Eyl 2026). Gelen kutusu yok; yanitlar info@'ya yonlendirilir.
+                                    // Gizlilik sayfasinda aciklanir; site.yaml'a yazilmaz (iletisim adresi degil).
   ]);
   const tanimliEposta = new Set((ayarMetni.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || []));
   // Altyapi hesabi: GitHub/Drive/Firebase sahipligi icin; sitede GOSTERILMEZ (22 Agu 2026 kurali).
