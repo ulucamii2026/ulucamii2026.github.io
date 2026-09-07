@@ -1,0 +1,115 @@
+---
+/**
+ * Vaazlar — liste sayfası (/tr/vaazlar, /fr/sermons, /en/sermons). İçerik anonim, açık kaynak,
+ * Türkçe. Her vaaz «/<dil>/vaaz/<slug>» detay sayfasına bağlanır; kategoriye göre istemci-tarafı süzme.
+ */
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import { yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+
+const { dil } = Astro.props as { dil: Dil };
+
+const hepsi = (await getCollection('vaazlar')).filter((v) => !v.data.taslak);
+hepsi.sort((a, b) => (a.data.siraNo ?? 0) - (b.data.siraNo ?? 0) || a.data.baslik.localeCompare(b.data.baslik, 'tr'));
+
+const m = {
+  tr: {
+    etiket: 'Vaazlar', baslik: 'Vaazlar', alt: 'Camimizde okunan vaazlardan bir derleme',
+    giris: 'Aşağıdaki vaazlar herkesin istifadesine açıktır; dilediğiniz gibi okuyabilir, indirebilir ve kullanabilirsiniz. Metinler tamamen anonimdir — hiçbir kişisel bilgi içermez.',
+    ara: 'Ara…', tumu: 'Tümü', bulunamadi: 'Bu kategoride vaaz yok.', okuma: 'dk', adet: 'vaaz',
+  },
+  fr: {
+    etiket: 'Sermons', baslik: 'Sermons', alt: 'Une sélection de sermons prêchés dans notre mosquée',
+    giris: 'Les sermons ci-dessous sont mis à la disposition de tous : vous pouvez les lire, les télécharger et les utiliser librement. Les textes sont entièrement anonymes et ne contiennent aucune donnée personnelle. (Contenu en turc.)',
+    ara: 'Rechercher…', tumu: 'Tous', bulunamadi: 'Aucun sermon dans cette catégorie.', okuma: 'min', adet: 'sermons',
+  },
+  en: {
+    etiket: 'Sermons', baslik: 'Sermons', alt: 'A collection of sermons preached at our mosque',
+    giris: 'The sermons below are freely available to everyone: you may read, download and use them as you wish. The texts are fully anonymous and contain no personal data. (Content in Turkish.)',
+    ara: 'Search…', tumu: 'All', bulunamadi: 'No sermons in this category.', okuma: 'min', adet: 'sermons',
+  },
+}[dil];
+
+const katAd: Record<string, Record<Dil, string>> = {
+  ibadet: { tr: 'İbadet', fr: 'Culte', en: 'Worship' },
+  ahlak: { tr: 'Ahlak', fr: 'Éthique', en: 'Ethics' },
+  iman: { tr: 'İman', fr: 'Foi', en: 'Faith' },
+  ramazan: { tr: 'Ramazan', fr: 'Ramadan', en: 'Ramadan' },
+  kandil: { tr: 'Kandiller', fr: 'Nuits saintes', en: 'Holy nights' },
+  aile: { tr: 'Aile', fr: 'Famille', en: 'Family' },
+  siyer: { tr: 'Siyer', fr: 'Vie du Prophète', en: "Prophet's life" },
+  toplum: { tr: 'Toplum', fr: 'Société', en: 'Society' },
+  genel: { tr: 'Genel', fr: 'Général', en: 'General' },
+};
+// yalnız kullanılan kategoriler, sabit sırayla
+const sira = ['iman', 'ibadet', 'ahlak', 'ramazan', 'kandil', 'siyer', 'aile', 'toplum', 'genel'];
+const kullanilan = sira.filter((k) => hepsi.some((v) => v.data.kategori === k));
+const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 180)) : null);
+---
+<Base baslik={m.baslik} aciklama={m.alt} dil={dil}>
+  <div class="kapsayici py-8 sm:py-12">
+    <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} />
+    <p class="vz-giris bilgi">{m.giris}</p>
+
+    {kullanilan.length > 1 && (
+      <div class="vz-filtre" role="tablist" aria-label={m.etiket}>
+        <button type="button" class="vz-cip etkin" data-kat="tumu" aria-pressed="true">{m.tumu} <span class="vz-say">{hepsi.length}</span></button>
+        {kullanilan.map((k) => (
+          <button type="button" class="vz-cip" data-kat={k} aria-pressed="false">{katAd[k][dil]} <span class="vz-say">{hepsi.filter((v) => v.data.kategori === k).length}</span></button>
+        ))}
+      </div>
+    )}
+
+    <ul class="vz-izgara" role="list">
+      {hepsi.map((v) => (
+        <li class="vz-oge" data-kat={v.data.kategori}>
+          <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}`} class="vz-kart">
+            <span class="vz-kat">{katAd[v.data.kategori]?.[dil] ?? v.data.kategori}</span>
+            <h2 class="vz-baslik">{v.data.baslik}</h2>
+            {v.data.ozet && <p class="vz-ozet">{v.data.ozet}</p>}
+            <span class="vz-meta">{okumaDk(v.data.kelime) && `${okumaDk(v.data.kelime)} ${m.okuma}`}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="vz-bos" hidden>{m.bulunamadi}</p>
+  </div>
+</Base>
+
+<style>
+  .vz-giris { max-width: 46rem; margin: 0 0 2rem; }
+  .vz-filtre { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
+  .vz-cip { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.3rem; padding: 0 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin-2); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .vz-cip:hover { border-color: var(--vurgu); color: var(--vurgu); }
+  .vz-cip.etkin { background: var(--vurgu); border-color: var(--vurgu); color: #fff; }
+  .vz-cip.etkin .vz-say { color: #fff; opacity: 0.8; }
+  .vz-say { font-size: 0.75rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
+
+  .vz-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+  .vz-kart { display: flex; flex-direction: column; height: 100%; padding: 1.2rem 1.25rem 1.1rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); text-decoration: none; color: var(--metin); transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+  .vz-kart:hover { border-color: var(--vurgu); box-shadow: 0 6px 22px -12px color-mix(in oklab, var(--vurgu) 45%, transparent); transform: translateY(-2px); }
+  .vz-kat { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--vurgu-2); }
+  .vz-baslik { font-family: var(--font-serif, Lora), serif; font-size: 1.18rem; line-height: 1.25; margin: 0.5rem 0 0; letter-spacing: -0.01em; }
+  .vz-ozet { font-size: 0.9rem; color: var(--metin-2); line-height: 1.5; margin: 0.6rem 0 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .vz-meta { margin-top: auto; padding-top: 0.9rem; font-size: 0.78rem; color: var(--metin-2); letter-spacing: 0.02em; text-transform: uppercase; }
+</style>
+
+<script>
+  const kap = document.querySelector('.kapsayici');
+  if (kap) {
+    const cipler = Array.from(kap.querySelectorAll<HTMLButtonElement>('.vz-cip'));
+    const ogeler = Array.from(kap.querySelectorAll<HTMLElement>('.vz-oge'));
+    const bos = kap.querySelector<HTMLElement>('.vz-bos');
+    kap.querySelector('.vz-filtre')?.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.vz-cip');
+      if (!b) return;
+      const kat = b.dataset.kat;
+      cipler.forEach((c) => { const a = c === b; c.classList.toggle('etkin', a); c.setAttribute('aria-pressed', String(a)); });
+      let gorunur = 0;
+      ogeler.forEach((o) => { const g = kat === 'tumu' || o.dataset.kat === kat; o.hidden = !g; if (g) gorunur++; });
+      if (bos) bos.hidden = gorunur > 0;
+    });
+  }
+</script>

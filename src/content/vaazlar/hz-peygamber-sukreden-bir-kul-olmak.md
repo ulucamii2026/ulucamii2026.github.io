@@ -1,0 +1,149 @@
+---
+baslik: "Hz. Peygamber: Şükreden Bir Kul Olmak"
+ozet: "Şükür terim olarak “Allah’tan veya insanlardan gelen nimet ve iyilikten dolayı minnettarlığını ifade etme, nimete söz ve fiille mukabelede bulunma, Allah’a itaat…"
+kategori: ahlak
+kelime: 2524
+docx: "/vaazlar/hz-peygamber-sukreden-bir-kul-olmak.docx"
+pdf: "/vaazlar/hz-peygamber-sukreden-bir-kul-olmak.pdf"
+---
+Şükür terim olarak “Allah’tan veya insanlardan gelen nimet ve iyilikten dolayı minnettarlığını ifade etme, nimete söz ve fiille mukabelede bulunma, Allah’a itaat edip günah işlemekten uzak durmak suretiyle nimetin gereğini yapma” şeklinde tanımlanmıştır. (Fîrûzâbâdî, el-Ḳāmûsü’l-muḥîṭ, “şkr” md.; Lisânü’l-ʿArab, “şkr” md.; Fahreddin er-Râzî, XIX, 86)
+
+<p lang="ar" dir="rtl" class="ayet">وَآتَاكُمْ مِنْ كُلِّ مَا سَأَلْتُمُوهُ ۚ وَإِنْ تَعُدُّوا نِعْمَتَ اللَّهِ لَا تُحْصُوهَا</p>
+
+*“O size istediğiniz her şeyi verdi. Allah’ın nimetlerini saymaya kalksanız başa çıkamazsınız.”* (İbrahim, 14/34) buyurduğu üzere bizlere bu dünyada maddi ve manevi nimetler bahşetmiştir.
+
+Maddi nimetlere güneş, ay, yağmur, su, nefes, mal, mülk, araba, ev, bedenimiz ve organları vs. örnek verebildiğimiz gibi manevi nimetlere de din, iman, kitap, peygamber, vatan, sağlık, zaman, hayat vs. örnek verebiliriz. Rabbimiz bu sayısız nimetleri herhangi bir maddi karşılık beklemeden biz kullarına ihsan etmiştir. Ancak bu nimetlerin manevi olarak karşılığı vardır. O (s.a.v) da Rabbimize kulluk, itaat, şükür ve bizlere vermiş olduğu tüm nimetleri kendisinden olduğunu bilmek ve O’nun yolunda razı olduğu şekilde değerlendirmektir. Konuyla ilgili diğer ayeti kerimelere baktığımızda şükretmenin kulluğun güzel bir göstergesi olduğunu görüyoruz;
+
+<p lang="ar" dir="rtl" class="ayet">يَااَيُّهَا الَّذِينَ آمَنُوا كُلُوا مِنْ طَيِّبَاتِ مَارَزَقْنَاكُمْ وَاشْكُرُوا لِلَّهِ اِنْ كُنْتُمْ اِيَّاهُ تَعْبُدُونَ</p>
+
+“*Ey iman edenler! Size verdiğimiz rızıkların temiz olanlarından yiyin, eğer siz yalnız Allah'a kulluk ediyorsanız O'na şükredin*.*”*** (Bakara 2/ 172)
+
+<p lang="ar" dir="rtl" class="ayet">فَاذْكُرُونِى اَذْكُرْكُمْ وَاشْكُرُوا لِى وَلَا تَكْفُرُونِ</p>
+
+“*Öyle ise siz beni (ibadetle) anın ki ben de sizi anayım. Bana şükredin; sakın bana nankörlük etmeyin*!” (Bakara 2/152)
+
+Şükür, Yüce Allah’ın sayısız nimetlerine karşı kalp, dil, amel ile övgü ve teşekkürde bulunma, nimetleri saygı ile itiraf etmedir. Kalbin şükrü, nimetleri verenin Allah olduğuna inanmak; dilin şükrü, Allah’ın verdiği nimetlere hamdetmek; bedenin şükrü, varlığını Allah’ın rızasına uygun bir şekilde sürdürmek, namaz, oruç gibi ibadetleri eda etmek ve O’nun yasaklarından uzak durup buyruklarını yerine getirmek; malın şükrü ise sadaka ve zekât vermektir.
+
+### Bir Kıssa:
+
+Peygamber Efendimiz (s.a.v) bir hadis-i şerifte, İsrailoğullarından 3 kişinin şükretme imtihanını şöyle anlatmıştır; “İsrâiloğulları içerisinde cildi alacalı, kel ve kör üç kişi vardı. Allah bunları imtihan etmek istedi ve onlara bir melek gönderdi. Melek, derisi alacalı olan adama geldi ve en çok istediği şeyin ne olduğunu sordu. Adam, güzel görünümlü bir cilt istediğini, çünkü insanların, mevcut görüntüsüyle kendisini çirkin bulup ondan iğrendiklerini söyledi. Bunun üzerine melek, adamın vücudunu sıvazladı ve şifa bulan adamın çirkinliği gitti. Ona çok güzel bir renk ve hoş bir görünüm verilmişti. Daha sonra melek ona en çok hangi malı sevdiğini sordu. Hastalıktan kurtulan adam, deveyi sevdiğini söyleyince, ona on aylık gebe bir deve verildi. Melek, devenin onun için hayırlı olmasını temenni ederek adamın yanından ayrıldı ve başı kel olan adamın yanına gitti. Ona da en çok istediği şeyin ne olduğunu sordu. O da kendisinden kelliği giderecek güzel bir saç istediğini söyledi. Melek onun başını sıvazlar sıvazlamaz kellikten eser kalmadığı gibi çok güzel saçları da oluverdi. Melek ona da en çok hangi malı sevdiğini sordu. O, ineği sevdiğini söyleyince, kendisine gebe bir inek verildi. Melek bu adama da bahşedilen ineğin hayırlı olmasını temenni ederek yanından ayrıldı. Melek son olarak âmâ olan adamın yanına geldi ve dünyada en çok istediği şeyin ne olduğunu ona da sordu. O, görmeyen gözlerinin açılmasını ve böylece insanları görmek istediğini söyledi. Melek adamın gözlerini sıvazladı ve adam görmeye başladı. Ardından daha öncekilere sorduğu gibi ona da hangi malı çok sevdiğini sordu. Adam koyunları sevdiğini söyleyince, kendisine kuzulu bir koyun verildi.
+
+Bir müddet sonra bu kişilere bahşedilen hayvanlar yavruladı ve çoğaldı. Bu suretle birinin bir vadi dolusu devesi, diğerinin bir vadi dolusu sığırı, ötekisinin de bir vadi dolusu koyunu oldu. Aradan yıllar geçti. Melek, bu üç kişinin karşısına bir kez daha çıktı. Ama bu sefer onların karşısına çıkma sebebi, nimeti veren Allah’a karşı onları şükür imtihanına tâbi tutmaktı. Bu amaçla önce cildi alacalı olup da Allah’ın sıhhat ve mal verdiği adamın yanına geldi. Tıpkı onun eski hâli gibi hastalıklı ve yoksul bir insan suretine girmişti. Ona dedi ki, “Ben fakir biriyim. Bütün çarelerim tükendi. Yolculuğu tamamlayabilmem önce Allah"ın inayeti sonra da senin yardımınla mümkündür. Şimdi ben, sana güzel bir renk, güzel bir görünüm ve mal veren Allah rızası için,senden bir deve istiyorum. Bu sayede yolculuğumu tamamlayayım ve memleketime ulaşayım.” İnsan suretindeki meleğin isteklerini dinleyen adam, “(İyi ama malımda) hak sahipleri çoktur.” diye cevap verince, melek ona, “Sanki seni tanır gibiyim. Sen insanların iğrendiği, cildi alacalı olan kişi değil miydin? Fakir olduğun hâlde Allah bu malı mülkü sana vermedi mi?” diye sordu. Meleğin sorularına karşılık adam, “(Hayır) yemin olsun ki bu mal mülk bana atalarımdan miras kaldı.” dedi. Melek de ona cevaben, “Eğer sen yalan söylüyorsan Allah seni eski hâline döndürsün!” dedi ve oradan ayrıldı.
+
+Sonra kel olan adamın yanına kel bir insan suretinde gitti ve aynı şeyleri söyledi. Bu adam da alacalı adamın yaptığı gibi meleğe yardım etmeyi reddetti. Melek de ona, “Eğer sen bu sözlerinde yalancı isen, Allah seni eski hâline döndürsün!” dedi.
+
+Ardından âmâ bir insan suretine girerek eskiden âmâ olan adamın yanına giden melek, ona dedi ki, “Ben garib bir yolcuyum. Yolda kaldım. Önce Allah’ın, sonra senin yardımınla ancak gideceğim yere ulaşabilirim. Şimdi ben, sana görme kabiliyetini bahşeden Yüce Allah"ın rızası için, senden bir koyun istiyorum ki ondan istifade ederek gideceğim yere ulaşabileyim.” Meleğin bu isteği üzerine âmâ olup da Allah"ın sıhhat verdiği adam dedi ki, “Evet ben gerçekten kördüm. Allah bana görme kabiliyetini bahşetti. Fakir idim, beni zenginleştirdi. (İşte koyunlarım!) Dilediğin kadar al. Allah’a yemin ederim ki, bugün Allah rızası için benden alacağın hiçbir şeyde sana sınır koymam.” Bunun üzerine melek ona, “Malın senin olsun. Siz imtihan edildiniz; neticede Allah senden razı oldu; diğer iki arkadaşın ise Allah"ın gazabına uğradılar.” dedi.” (Buhârî, Enbiyâ, 51)
+
+Her nimet bir imtihan vesilesidir. Nimeti vereni hatırlamak ve ona teşekkür etmek, hem nimeti artırır hem de bereketlendirir. Nimeti vereni tanımamak ve nimetin asıl sahibini unutmak ise küfrân-ı nimet yani nimete karşı nankörlüktür. Allah Resûlü, insanın acziyetini, varlıklı hâlini, şükür edip etmeme durumunu çarpıcı bir misalle arkadaşlarına anlatmıştır.
+
+Sahâbenin meşhur öğrencilerinden ve asrının ileri gelenlerinden Atâ b. Ebî Rebâh ile Ubeyd b. Umeyr, bir gün Resûl-i Ekrem’i (s.a.v) en yakından tanıyan sevgili eşi Hz. Âişe’ye (r.a.) gelirler. Ubeyd b. Umeyr: “Anneciğim! Resûl-i Ekrem’de (s.a.v) gördüğün hayret verici bir davranışını bize anlatır mısın?” der. Hz. Âişe (r.a.) bir müddet sustuktan sonra şöyle cevap verir: “Bir gece bana: ‘***Ey Âişe! İzin verirsen, kalkıp bu gece Rabbime ibadet edeyim.***’ dedi. Ben de: ‘Vallahi senin (Allah’a) yakın olmanı ve kendini hoşnut edecek şeyler yapmanı ben de isterim.’ dedim. Kalkıp abdest aldı. Sonra namaza başladı. Namazda o denli ağladı ki gözyaşları göğsünü, sakalını ve secde ettiği yeri ıslattı. Daha sonra Bilâl-i Habeşî (r.a.) sabah ezanını okumaya geldi. Allah Resûlü’nün (s.a.v) ağladığını görünce, ‘Yâ Resûlallah! Yüce Allah geçmiş ve gelecek bütün günahlarını affettiği hâlde niçin ağlıyorsun?’ dedi. Allah Resûlü (s.a.v) ona şu cevabı verdi:
+
+### أَفَلاَ أَكُونُ عَبْدًا شَكُورًا
+
+“***Allah’a çok şükreden bir kul olmayayım mı?***” (Buhârî, Tefsîr, Fetih, 2)
+
+Allah Resûlü’nü (s.a.v) mübarek ayakları şişinceye, (Buhârî, Teheccüd, 6) gözyaşları boşalıncaya kadar ibadete yönlendiren bilincin adıdır “şükür”. Hz. Bilâl’in (r.a.) sorusundan anlaşıldığı gibi, uzun gece namazının amacı, günahlarını affettirmeye çalışmak değildi. Onu en yakından tanıyan sevgili eşinin ifadesine yansıdığı gibi, amaç “Rabbine yakın olmak”, kendi ifadesinde olduğu üzere “şükreden bir kul olmak” idi.
+
+Yüce Rabbimiz şöyle buyurmaktadır:
+
+<p lang="ar" dir="rtl" class="ayet">يَااَيُّهَا الَّذِينَ آمَنُوا كُلُوا مِنْ طَيِّبَاتِ مَارَزَقْنَاكُمْ وَاشْكُرُوا لِلَّهِ اِنْ كُنْتُمْ اِيَّاهُ تَعْبُدُونَ</p>
+
+*“Ey iman edenler! Size verdiğimiz rızıkların temiz olanlarından yiyin ve Allah’a şükredin; eğer O’na kulluk ediyorsanız.”* (Bakara, 2/172.)
+
+Şükretmek kulluğun bir nişanesidir. Şükretmek kavlî olabileceği gibi fiilî de olabilir. Örneğin; Yemek nimetinden, içecek nimetinden faydalandığımız zaman Allah’ı hatırlamak ve yeme - içmeden önce onun adıyla başlamak “Bismillah” demek zikir, sonunda Allah’a hamd edip “Elhamdülillah” demek şükür, yeme içme esnasında bu leziz nimetlerin Allah’tan olduğunu bilmek ve bu minvalde tefekkür etmektir.
+
+Bişr-i Hâfî Hazretleri bu hususu şöyle izah buyurur:
+
+“Âzâları içinde yalnız dili ile şükreden kimsenin şükrü az olur. Çünkü gözün şükrü; bir hayır gördüğü zaman onu almak, şer görürse onu örtmektir. (Harama bakmamaktır.) Kulağın şükrü; bir hayır işittiği zaman onu ezberlemek, şer işitirse onu unutmaktır. (Kulağı haramlardan korumaktır. Kur’ân ve benzeri güzel seslere kulak vermektir.) Ellerin şükrü, onlarla hakkı olandan başkasını tutmamaktır. (Hayırlı hizmetler etmek ve infakta bulunmaktır.) Midenin şükrü; helâl ile gıdalanmak, (akıl ve kalbin şükrü) ilim ve hilm ile dolu olmaktır; Ayakların şükrü de, iyilikten başkasına gitmemektir. Kim böyle yaparsa hakikaten şükredenlerden olur.”
+
+Malın şükrü helalinden kazanmaktır, faiz ve diğer haram kazanç türlerini malına bulaştırmamaktır. Çocuk bir nimettir. Bu nimetin şükrü salih bir birey, Allah’ını, peygamberini, dinini bilen, helal-haram duyarlılığına sahip, milli ve manevi değerlerine sımsıkı sarılan hayırlı bir evlat yetiştirmektir. Ömür bir nimettir. Bu nimetin şükrü ise, bu ömrü verenin uğrunda bir hayat yaşamaktır. Canını malını cennet karşılığında Allah’a satarak hakiki, kârlı bir ticaret yapmaktır.
+
+<p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ اشْتَرٰى مِنَ الْمُؤْمِنٖينَ اَنْفُسَهُمْ وَاَمْوَالَهُمْ بِاَنَّ لَهُمُ الْجَنَّةَؕ يُقَاتِلُونَ فٖي سَبٖيلِ اللّٰهِ فَيَقْتُلُونَ وَيُقْتَلُونَ وَعْداً عَلَيْهِ حَقاًّ فِي التَّوْرٰيةِ وَالْاِنْجٖيلِ وَالْقُرْاٰنِؕ وَمَنْ اَوْفٰى بِعَهْدِهٖ مِنَ اللّٰهِ فَاسْتَبْشِرُوا بِبَيْعِكُمُ الَّذٖي بَايَعْتُمْ بِهٖؕ وَذٰلِكَ هُوَ الْفَوْزُ الْعَظٖيمُ</p>
+
+*“Allah, kendi yolunda çarpışırken öldüren ve öldürülen müminlerin canlarını ve mallarını, karşılığında cennet vermek üzere satın almıştır. Bu, Allah’ın Tevrat’ta, İncil’de ve Kur’an’da yer almış gerçek bir vaadidir. Kim Allah’tan daha fazla sözüne bağlı olabilir! O halde yaptığınız bu alışverişten ötürü sevinin. İşte büyük bahtiyarlık da budur.”* (Tevbe, 9/111)
+
+<p lang="ar" dir="rtl" class="ayet">اِنَّا هَدَيْنَاهُ السَّبيلَ اِمَّا شَاكِراً وَاِمَّا كَـفُوراً</p>
+
+*“Şüphesiz biz ona doğru yolu gösterdik; artık o isterse şükreden olur, isterse nankör”* (İnsan, 76/3) ayetinde de anlaşılacağı üzere Rabbimiz bu içinde yaşadığımız dünyayı bir imtihan meydanı olarak yaratmıştır. Bu dünyada Rabbimizin bir kulunun rızkını genişletmesi, ona bolluk ve geniş imkânlar sunması da bir imtihandır. Aynı şekilde bir kulunun rızkını daraltması, başına kötü olayların gelmesi bir ceza değil o da bir imtihandır. Rabbimiz biz kullarını denemektedir. Her iki tabloda da imtihanı geçebilmek için başa iyi hal geldiğinde şükretmek, kötü hal geldiğinde de sabretmek mümin olmanın ve bu imtihanı geçmenin gereğidir. Konuyla alakalı olarak Süleyman’ın (a.s.) Belkıs’ın tahtı kendine getirildiğinde sergilemiş olduğu tutum bizler için de bir ölçü olmalıdır.
+
+<p lang="ar" dir="rtl" class="ayet">فَلَمَّا رَاٰهُ مُسْتَقِراًّ عِنْدَهُ قَالَ هٰذَا مِنْ فَضْلِ رَبّٖيࣞ لِيَبْلُوَنٖٓي ءَاَشْكُرُ اَمْ اَكْفُرُؕ وَمَنْ شَكَرَ فَاِنَّمَا يَشْكُرُ لِنَفْسِهٖۚ وَمَنْ كَفَرَ فَاِنَّ رَبّٖي غَنِيٌّ كَرٖيمٌ</p>
+
+*“Süleyman, tahtı yanı başına yerleşmiş olarak görünce şöyle dedi: “Bu, şükür mü yoksa nankörlük mü edeceğim diye beni sınayan rabbimin bir lütfudur. Şükreden ancak kendisi için şükretmiş olur, nankörlük edene gelince, o bilsin ki rabbimin hiçbir şeye ihtiyacı yoktur, kerem sahibidir.”*** (Neml, 27/40.)
+
+Sahip olduğumuz nimetlerin bizleri azdırmasına, dünyaya öncelik verip ahireti unutturmasına izin vermemeliyiz. Sahip olduğumuz her şeyin birer emanet olduğunu, emanet sahibinin razı olduğu şekilde korumamız gerektiğini, yarın bizden bu emanetlerin alınacağını, bunlardan sorguya çekileceğimiz unutmayalım. Rabbimizin bu hatırlatmasına hep birlikte kulak verelim:
+
+### ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ النَّعٖيمِ
+
+“***Nihayet o gün nimetlerden elbette sorguya çekileceksiniz***.” (Tekâsür, 102/8.)
+
+Eğer böyle yaparsak Peygamber Efendimizin (s.a.v) şu hadis-i şerifindeki müjdeye mazhar oluruz.
+
+<p lang="ar" dir="rtl" class="ayet">عَجَبًا لِأَمْرِ الْمُؤْمِنِ إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ وَلَيْسَ ذَاكَ لِأَحَدٍ إِلَّا لِلْمُؤْمِنِ إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خَيْرًا لَهُ</p>
+
+*“Mü’ minin başka hiç kimsede bulunmayan ilginç bir hali vardır; O’nun her işi hayırdır. Eğer bir genişliğe (nimete) kavuşursa şükreder ve bu onun için bir hayır olur. Eğer bir darlığa (musibete) uğrarsa sabreder ve bu da onun için bir hayır olur.”* (Müslim, Zühd, 64.)
+
+Bilirsiniz ki şeytan bizim apaçık düşmanımızdır. Bizlerin her iki dünyada da hüsrana uğramamız, gaflette olmamız, şükürsüzlük gösterip nankörlerden olmamız için çok çaba sarf etmektedir. Yüce Rabbimiz bu konuda da bizleri şöyle uyarmaktadır:
+
+<p lang="ar" dir="rtl" class="ayet">قَالَ فَبِمَا أَغْوَيْتَنِي ﻷ َقْعُدَنَّ لَهُمْ صِرَاطَكَ الْمُسْتَقِيمَ ثُمَّ ﻵ تِيَنَّهُمْ مِنْ بَيْنِ أَيْدِيهِمْ وَمِنْ خَلْفِهِم وَعَنْ أَيْمَانِهِم وَعَنْ شَمَائِلِهِمْ وﻻ تَجِدُ أَكْثَرَهُمْ شَاكِرِينَ</p>
+
+*“* ***İblîs dedi ki; Bundan böyle benim sapmama izin vermene karşılık, ant içerim ki, ben de onları saptırmak için senin doğru yolunun üstüne oturacağım. Sonra elbette onlara önlerinden, arkalarından, sağlarından, sollarından sokulacağım ve sen onların çoklarını şükredenlerden bulmayacaksın.”* (A’râf, 7/16-17)
+
+### Şükür Nimetin Artmasına Vesiledir
+
+"eş-Şekûr" Allah'ın güzel isimlerinden birisidir. Anlamı, kendisinin rızası için amel edenlerin çabalarını zayi etmez, bilakis kat kat fazlasıyla karşılık verir demektir. Zira şüphesiz Allah güzel amelde bulunanların ecrini zayi etmez.
+
+<p lang="ar" dir="rtl" class="ayet">وَاِذْ تَاَذَّنَ رَبُّكُمْ لَئِنْ شَكَرْتُمْ لَاَزيدَنَّكُمْ وَلَئِنْ كَفَرْتُمْ اِنَّ عَذَابى لَشَديدٌ.</p>
+
+*“Hani rabbiniz, Eğer şükrederseniz size (nimetimi) daha çok vereceğim, nankörlük ederseniz hiç şüphesiz azabım pek şiddetlidir diye bildirmişti.”* ***(İbrahim-14/7)***
+
+Maalesef ki insanların çoğu Allah’ın rahmetinden kovulmuş İblis ’in tuzaklarına düşmüş vaziyette. Buradan da anlıyoruz ki şükredebilmek bile büyük bir nasip, büyük bir nimettir. İnsan Rabbine şükredebilme nimetine mazhar olduğu için de şükretmelidir. Çünkü Davut (as) kendisi ve ailesine verilen nimetlere şükretmekle emrolunduğunda, Rabbimiz insanlık ailesinin bu acı durumunu bizlere şöyle haber vermektedir:
+
+<p lang="ar" dir="rtl" class="ayet">اِعْمَلُٓوا اٰلَ دَاوُ۫دَ شُكْراًؕ وَقَلٖيلٌ مِنْ عِبَادِيَ الشَّكُورُ</p>
+
+*“Ey Dâvûd ailesi! Şükür için çaba gösterin. Kullarım arasında hakkıyla şükredenler pek azdır.”*** (Sebe', 34/13.)
+
+Allah-u Teâla kul kendisine şükrettiği zaman üzerindeki nimetini de artıracağını vadetmektedir ki Rabbimiz asla vadine aykırı iş yapmaz.
+
+<p lang="ar" dir="rtl" class="ayet">وَاِذْ تَاَذَّنَ رَبُّكُمْ لَئِنْ شَكَرْتُمْ لَاَزيدَنَّكُمْ وَلَئِنْ كَفَرْتُمْ اِنَّ عَذَابى لَشَديدٌ</p>
+
+*Hani rabbiniz, “Eğer şükrederseniz size (nimetimi) daha çok vereceğim, nankörlük ederseniz hiç şüphesiz azabım pek şiddetlidir!’ diye bildirmişti.”* (İbrahim, 14/7.)
+
+Şükretmek kadir kıymet bilmektir. Kendisine faydası dokunanı takdir etmektir. Emeğini hor görmemek, minnettarlık duymaktır. Bu cihetle de bir insanın Allah’a şükretme aşamasında yapması gereken şeylerden bir tanesi de insanlara teşekkür edebilmeyi kendine prensip haline getirmesidir. Peygamberimiz (s.a.v) de bir hadisinde aynı konuya işaret etmektedir;
+
+### مَنْ لاَ يَشْكُرِ النَّاسَ لاَ يَشْكُرِ اللَّهَ
+
+“***İnsanlara teşekkür etmeyen, Allah’a da şükretmez.***” (Tirmizî, Birr ve sıla, 35)
+
+İnsanlar nezdinde en çok teşekküre layık olanlar da anne ve babamızdır;
+
+<p lang="ar" dir="rtl" class="ayet">وَوَصَّيْنَا اﻹ ِنسَانَ بِوَالِدَيْهِ حَمَلَتْهُ أُمُّهُ وَهْنًا عَلَى وَهْنٍ وَفِصَالُهُ فِي عَامَيْنِ أَنْ اشْكُرْ لِي وَلِوَالِدَيْكَ إِلَيَّ الْمَصِيرُ</p>
+
+*“Biz insana anne babasıyla ilgili öğütler verdik. Annesi, güçten kuvvetten düşerek onu karnında taşımıştır; çocuğun sütten kesilmesi iki yıl içinde olur. Bunun için (ey insan), hem bana hem anne babana minnet duymalısın; sonunda dönüş yalnız banadır.”* (Lokman, 31/14)
+
+İnsanın şükredebilmesi için diğer bir prensip de aza kanaat edebilmesi, kendinden daha aşağıda olanlara bakıp kendine verilmiş olan nimetleri görebilmesidir. Asıl zenginliğin gönül zenginliği olduğunun farkına varabilmesidir. Peygamberimiz (s.a.v) bu gerçeği şöyle vurgulamıştır;
+
+<p lang="ar" dir="rtl" class="ayet">مَنْ لَمْ يَشْكُرِ الْقَلِيلَ لَمْ يَشْكُرِ اللَّهَ وَمَنْ لَمْ يَشْكُرِ النَّاسَ لَمْ يَشْكُرِ اللَّهَ وَالتَّحَدُّثُ بِنِعْمَةِ اللَّهِ شُكْرٌ وَتَرْكُهَا كُفْرٌ وَالْجَمَاعَةُ رَحْمَةٌ وَالْفُرْقَةُ عَذَابٌ</p>
+
+*“Aza şükretmeyen çoğa da şükretmez; insanlara teşekkür etmeyen Allah'a da şükretmez. Allah'ın nimetini her zaman anmak şükür, bunu terketmek ise nankörlüktür; toplulukta rahmet, tefrikada âfet vardır”*** (İbn Hanbel, IV, 278, 375)
+
+<p lang="ar" dir="rtl" class="ayet">إِذَا نَظَرَ أَحَدُكُمْ إِلَى مَنْ فُضِّلَ عَلَيْهِ فِي الْمَالِ وَالْخَلْقِ، فَلْيَنْظُرْ إِلَى مَنْ هُوَ أَسْفَلَ مِنْهُ</p>
+
+“***Sizden biri mal ve yaratılış bakımından üstün olanlara bakmak isteyince, bakışını bir de kendinden aşağı olanlara çevirsin.”* (Müslim, Zühd 9)
+
+Kişi her daim Allah’ın kendisine lütfettiği nimetleri hatırlamalıdır. Kanaat ve tevekkülün ne denli önemli olduğunu Allah Resulü (s.a.v) şöyle izah etmiştir:
+
+<p lang="ar" dir="rtl" class="ayet">لَوْ أَنَّكُمْ كُنْتُمْ تَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرُزِقْتُمْ كَمَا يُرْزَقُ الطَّيْرُ تَغْدُو خِمَاصًا وَتَرُوحُ بِطَانًا</p>
+
+*“Siz Allah'a hakkıyla tevekkül edebilseydiniz, sizleri de kuşları rızıklandırdığı gibi rızıklandırırdı: Sabahleyin aç çıkar, akşama tok dönerdiniz”* (Tirmizi, Zühd, 33)
+
+Bizler de Allah Resulü (s.a.v) gibi her fırsatta Rabbimize şükredenlerden olabilmek için çokça dua edelim. Bizler dünyanın geçici ve gölge misali nimetlerine değil, ahiretin kalıcı ve asıl nimetlerine talip olalım. Zira Allah şükredenlerin muhakkak karşılığını vereceğinin müjdesini veriyor. Bununla sevinip şükrümüzü ve hamdimizi artıralım.
+
+Sohbetimi Peygamberimizin (s.a.v) dualarıyla ile bitirmek istiyorum:
+
+<p lang="ar" dir="rtl" class="ayet">ألْلهُمَّ أعِنِّي عَلَى ذِكْرِكَ وَشُكْرُكَ وَحُسْنِ عِبَادَتِكَ</p>
+
+*“Allah’ım! Seni anmak, sana şükretmek ve sana güzelce kulluk etmekte bana yardım et!” duasını hiç bırakmamanı tavsiye ediyorum.”* (Ebû Dâvûd, Vitr 26; Nesâî, Sehv 60Tirmizî, Zühd 30.)
+
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اجعَلْني لك شاكِرًا، لك ذاكِرًا، لك راهِبًا، لك مِطواعًا إليك</p>
+
+*“Yâ Rabbî! Beni; sana çok şükreden, seni çok zikreden, senden çok korkan, Sana çok itaat eden bir kul eyle!”* (Tirmizî, De'avât 103.)

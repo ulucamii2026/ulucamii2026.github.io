@@ -17,6 +17,7 @@ export const ui = {
     'nav.mufredat': 'Müfredat ve Yıllık Plan',
     'nav.yillikplan': 'Yıllık Ders Planı (gün gün)',
     'nav.dersmateryalleri': 'Ders materyalleri',
+    'nav.vaazlar': 'Vaazlar',
     'nav.bagis': 'Bağış',
     'nav.uyelik': 'Dernek Üyeliği',
     'nav.konsolosluk': 'Konsolosluk',
@@ -120,6 +121,7 @@ export const ui = {
     'nav.mufredat': 'Programme et plan annuel',
     'nav.yillikplan': 'Plan annuel jour par jour',
     'nav.dersmateryalleri': 'Supports de cours',
+    'nav.vaazlar': 'Sermons',
     'nav.bagis': 'Faire un don',
     'nav.uyelik': 'Adhésion',
     'nav.konsolosluk': 'Consulat',
@@ -223,6 +225,7 @@ export const ui = {
     'nav.mufredat': 'Curriculum & Yearly Plan',
     'nav.yillikplan': 'Day-by-day lesson plan',
     'nav.dersmateryalleri': 'Lesson materials',
+    'nav.vaazlar': 'Sermons',
     'nav.bagis': 'Donate',
     'nav.uyelik': 'Membership',
     'nav.konsolosluk': 'Consulate',
@@ -346,5 +349,6 @@ export const yollar = {
   cenaze: { tr: 'cenaze-hizmetleri', fr: 'services-funeraires', en: 'funeral-services' },
   afisler: { tr: 'afisler', fr: 'affiches', en: 'posters' },
   diyanet: { tr: 'diyanet-hizmetleri', fr: 'services-diyanet', en: 'diyanet-services' },
+  vaazlar: { tr: 'vaazlar', fr: 'sermons', en: 'sermons' },
 } as const;
 export type SayfaAnahtari = keyof typeof yollar;

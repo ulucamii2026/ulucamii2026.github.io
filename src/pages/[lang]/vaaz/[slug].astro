@@ -1,0 +1,119 @@
+---
+/**
+ * Vaaz detay — uzun soluklu okuma sayfası (Read modu). İçerik anonim ve Türkçe; Word/PDF indirilebilir.
+ * Ayrı «/vaaz/<slug>» yolu bilinçli: statik segment dinamik [sayfa]'dan önceliklidir, [slug].astro'ya
+ * dokunmadan çakışmasız çalışır. Liste yolu ise yerelleştirilmiş (yollar.vaazlar → vaazlar/sermons).
+ */
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import SayfaBasligi from '../../../components/SayfaBasligi.astro';
+import { yol } from '../../../i18n/utils';
+import type { Dil } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const vaazlar = (await getCollection('vaazlar')).filter((v) => !v.data.taslak);
+  const out: { params: { lang: Dil; slug: string }; props: { entry: (typeof vaazlar)[number] } }[] = [];
+  for (const lang of ['tr', 'fr', 'en'] as Dil[]) for (const v of vaazlar) out.push({ params: { lang, slug: v.id }, props: { entry: v } });
+  return out;
+}
+const dil = Astro.params.lang as Dil;
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const m = {
+  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null as string | null, paylas: "WhatsApp'ta paylaş" },
+  fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp' },
+  en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp' },
+}[dil];
+
+const okumaDk = d.kelime ? Math.max(1, Math.round(d.kelime / 180)) : null;
+const kanonik = new URL(Astro.url.pathname, Astro.site).toString();
+const wa = `https://wa.me/?text=${encodeURIComponent(`${d.baslik} — ${kanonik}`)}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: d.baslik, inLanguage: 'tr',
+  ...(d.ozet ? { description: d.ozet } : {}), isAccessibleForFree: true,
+  publisher: { '@type': 'Organization', name: 'Ulu Camii Marche-en-Famenne' },
+};
+---
+<Base baslik={d.baslik} aciklama={d.ozet} dil={dil} noindex={false} ogTuru="article" ekJsonLd={[jsonLd]}>
+  <article class="kapsayici py-8 sm:py-12">
+    <div class="vaaz-en">
+      <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
+
+      <header class="vaaz-bas">
+        <p class="etiket etiket-vurgu">{m.etiket}</p>
+        <h1>{d.baslik}</h1>
+        {d.ozet && <p class="vaaz-ozet">{d.ozet}</p>}
+        <p class="vaaz-meta">
+          {okumaDk && <span>{okumaDk} {m.okuma}</span>}
+          {d.kelime && <span>· {d.kelime.toLocaleString('tr-TR')} {m.kelime}</span>}
+        </p>
+        {(d.docx || d.pdf) && (
+          <div class="vaaz-indir">
+            {d.pdf && (
+              <a href={d.pdf} class="indir-dugme" download>
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
+                PDF
+              </a>
+            )}
+            {d.docx && (
+              <a href={d.docx} class="indir-dugme" download>
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
+                Word
+              </a>
+            )}
+          </div>
+        )}
+        {m.trNot && <p class="bilgi text-sm mt-4">{m.trNot}</p>}
+      </header>
+
+      <div class="vaaz-govde">
+        <Content />
+      </div>
+
+      <footer class="vaaz-alt">
+        <a href={wa} target="_blank" rel="noopener" class="baglanti-dugme">{m.paylas}</a>
+        <a href={yol(dil, 'vaazlar')} class="baglanti-dugme">{m.geri} →</a>
+      </footer>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .vaaz-en { max-width: 44rem; margin-inline: auto; }
+  .geri-bag { display: inline-block; font-size: 0.85rem; color: var(--metin-2); text-decoration: none; margin-bottom: 1.5rem; }
+  .geri-bag:hover { color: var(--vurgu); }
+
+  .vaaz-bas { border-bottom: 1px solid var(--cizgi); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+  .vaaz-bas h1 { font-family: var(--font-serif, Lora), serif; font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.15; margin: 0.4rem 0 0; letter-spacing: -0.01em; }
+  .vaaz-ozet { font-family: var(--font-serif, Lora), serif; font-size: 1.1rem; color: var(--metin-2); font-style: italic; margin: 0.9rem 0 0; line-height: 1.5; }
+  .vaaz-meta { font-size: 0.82rem; color: var(--metin-2); letter-spacing: 0.02em; text-transform: uppercase; margin: 1rem 0 0; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+  .vaaz-indir { display: flex; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap; }
+  .indir-dugme { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.6rem; padding: 0 1rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); font-size: 0.9rem; font-weight: 600; color: var(--metin); text-decoration: none; background: var(--zemin); transition: border-color 0.15s, color 0.15s; }
+  .indir-dugme:hover { border-color: var(--vurgu); color: var(--vurgu); }
+  .indir-dugme svg { color: var(--vurgu); }
+
+  /* Okuma gövdesi — serif, rahat ölçü, İznik/kiremit vurgular; Arapça için Amiri font yığında */
+  .vaaz-govde { font-family: var(--font-serif, Lora), Amiri, serif; font-size: 1.08rem; line-height: 1.85; color: var(--metin); }
+  .vaaz-govde :global(p) { margin: 0 0 1.15rem; }
+  .vaaz-govde :global(h2) { font-family: var(--font-serif, Lora), serif; font-size: 1.4rem; line-height: 1.25; margin: 2.4rem 0 0.9rem; padding-top: 0.4rem; color: var(--vurgu); letter-spacing: -0.01em; }
+  .vaaz-govde :global(h3) { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--vurgu-2); margin: 2rem 0 0.7rem; font-family: var(--font-sans); }
+  .vaaz-govde :global(h3 + p),
+  .vaaz-govde :global(h2 + p) { margin-top: 0; }
+  .vaaz-govde :global(strong) { font-weight: 700; color: var(--metin); }
+  .vaaz-govde :global(em) { color: var(--metin-2); }
+  .vaaz-govde :global(blockquote) { border-inline-start: 3px solid var(--vurgu); background: var(--zemin-2); margin: 1.4rem 0; padding: 0.8rem 1.2rem; border-radius: 0 var(--radius-kose) var(--radius-kose) 0; color: var(--metin-2); }
+  .vaaz-govde :global(ul), .vaaz-govde :global(ol) { margin: 0 0 1.15rem; padding-inline-start: 1.4rem; }
+  .vaaz-govde :global(li) { margin: 0.3rem 0; }
+  .vaaz-govde :global(hr) { border: 0; border-top: 1px solid var(--cizgi); margin: 2rem 0; }
+  /* Arapça satırlar (âyet/besmele): daha büyük, Amiri, sağdan sola akış otomatik değil ama okunaklı */
+  .vaaz-govde :global(p:lang(ar)) { font-family: Amiri, serif; font-size: 1.5rem; line-height: 2; text-align: center; direction: rtl; }
+
+  @media (max-width: 640px) {
+    .vaaz-govde { font-size: 1.04rem; line-height: 1.8; }
+  }
+
+  .vaaz-alt { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
+</style>
