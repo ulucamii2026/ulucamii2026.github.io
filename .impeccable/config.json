@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-09-08T10:22:06.829Z",
         "reason": "Yanlış pozitif: kart kenarı değil, 9x9 px ::before sözde ögesi 45 derece döndürülüp katlanır ay başlığının açılır oku olarak kullanılıyor (DersGunuKarti icindeki .ok ile ayni teknik). Glif yerine çizilmiş kenar, yazı tipinden bağımsız olsun diye."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/components/DiyanetKitapligi.astro"
+        ],
+        "createdAt": "2026-09-08T15:11:11.114Z",
+        "reason": "Claude: L294-295 kart kenar seridi degil, <details> acilir basliginin ok isareti (9x9 px ::before, border-right+border-bottom, 45 derece dondurulmus, acilinca 45'e doner). Kaldirilan ::marker'in yerini tutuyor; ekran goruntulerinde ok olarak goruluyor."
       }
     ]
   }
