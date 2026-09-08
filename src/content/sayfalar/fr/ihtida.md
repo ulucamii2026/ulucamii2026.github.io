@@ -17,7 +17,7 @@ Devenir musulman consiste à croire de cœur en l’unicité de Dieu (Allah) et 
 
 <figure class="ayet">
 <p lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
-<p class="meal">Prononciation : « Ach-hadou an lâ ilâha illa-llâh, wa ach-hadou anna Muhammadan ‘abdouhou wa rasoûlouh. »</p>
+<p class="okunus">Ach-hadou an lâ ilâha illa-llâh, wa ach-hadou anna Muhammadan ‘abdouhou wa rasoûlouh.</p>
 <p class="meal">Traduction : « J’atteste qu’il n’y a de divinité qu’Allah, et j’atteste que Muhammad est Son serviteur et Son messager. »</p>
 <figcaption class="etiket">La profession de foi (chahada)</figcaption>
 </figure>
@@ -51,6 +51,10 @@ La cérémonie suit le texte officiel de la Présidence des Affaires religieuses
 7. **La clôture** — les versets 18-20 de la sourate Âl ‘Imrân, ou les sourates al-‘Asr et al-Fâtiha, sont récités et traduits ; la cérémonie se termine par une invocation.
 8. **Le présent** — dans la mesure du possible, un exemplaire du Coran traduit dans votre langue et un ouvrage d’introduction à l’islam vous sont offerts.
 
+La phrase que vous prononcerez est la **profession de foi** reproduite plus haut, au point [Comment devient-on musulman ?](#comment-devient-on-musulman-) ; vous n’avez rien à apprendre par cœur : l’imam dit l’arabe morceau par morceau et vous répétez après lui.
+
+Juste avant, l’imam vous pose cette question : **« En présence d’Allah et devant ces témoins : choisissez-vous l’islam de votre propre volonté, librement, sans aucune pression ni contrainte ? »** La réponse doit venir de vous.
+
 Pour les candidats francophones, la cérémonie peut se dérouler entièrement en français ; la profession de foi est enseignée dans son texte arabe original. La cérémonie peut aussi se tenir en petit comité, avec les seules personnes que vous souhaitez.
 
 ## Qu’est-ce que l’attestation de conversion (EK-9) ?
@@ -76,6 +80,7 @@ L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc
 
 - **Votre carte d’identité ou votre passeport** — vous présentez l’original à l’imam.
 - **2 témoins** — à défaut, la mosquée en fournit.
+- **Une requête écrite** — le dossier transmis au Conseiller comporte une demande signée d’attestation de conversion. Nous la préparons pour vous : elle est imprimée en deux langues à partir des informations du formulaire et de la signature que vous y avez tracée ; vous la lisez avant de la signer et vous pouvez aussi la rédiger de votre main.
 - **Le formulaire de consentement EK-10** — signé sur papier le jour même. Le texte intégral est disponible en turc, anglais, **français** et néerlandais via le lien ci-contre.
 
 **Au sujet de vos données personnelles :** la directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document. Nous réunissons ces pièces dès le formulaire, sans attendre le jour de la cérémonie, afin que votre attestation soit prête. **Toutes les informations et pièces relatives à votre demande sont conservées à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles** ; elles ne sont jamais publiées ni transmises à des tiers et ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu. Votre **numéro** de registre national ne vous est demandé à aucun moment. Le traitement de vos images et de votre signature fait l’objet d’un consentement explicite distinct dans le formulaire ; vous pouvez le retirer à tout moment.

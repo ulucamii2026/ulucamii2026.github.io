@@ -685,6 +685,8 @@ function basvuruCiz() {
       araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
       // v23: kimlik görüntüleri resmî dosya içindir; panelde ayrı bir pencerede açılıp basılır.
       araclar.push(`<button class="dugme" type="button" data-belgeler="${kacir(al(r, iRef))}">Kimlik ve vesikalık</button>`);
+      // Müşavirliğe gidecek C4 zarfın 1. belgesi: mühtedinin imzalı dilekçesi.
+      araclar.push(`<button class="dugme" type="button" data-dilekce="${kacir(al(r, iRef))}">Dilekçe</button>`);
     }
     const eskiSurumler = eskiler.length ? `<details class="eski-surum"><summary>Önceki sürümler (${eskiler.length})</summary><table>${
       eskiler.map((e) => {
@@ -716,6 +718,7 @@ function basvuruCiz() {
   $('basvuru-not').hidden = !duzeltilenVar;
   liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
   liste.querySelectorAll('[data-belgeler]').forEach((d) => d.addEventListener('click', () => ihtidaBelgeleriAc(d)));
+  liste.querySelectorAll('[data-dilekce]').forEach((d) => d.addEventListener('click', () => dilekceUretimi(d)));
   liste.querySelectorAll('[data-pdf]').forEach((d) => d.addEventListener('click', () => formPdfAc(d)));
   $('csv').disabled = false;
 }
@@ -1022,6 +1025,60 @@ async function ek9Uretimi(dugme) {
     console.error(hata);
     alert('EK-9 belgesi üretilemedi: ' + (hata && hata.message ? hata.message : hata));
     durumYaz(eskiMetin); dugme.disabled = false;
+  }
+}
+
+/* Müşavirliğe gidecek C4 zarfın 1. belgesi: mühtedinin imzalı dilekçesi ("Zarf İçeriği ve
+   Gönderi Talimatı"). Başvuran imzasını formda çizdiği için dilekçe burada imzalı üretilir;
+   iki dilli (Türkçe + başvuranın form dili). Bkz. public/admin/dilekce.js */
+let dilekceModul = null;
+async function dilekceUretimi(dugme) {
+  const ref = dugme.dataset.dilekce;
+  const eskiMetin = dugme.textContent;
+  dugme.disabled = true;
+  dugme.textContent = 'Hazırlanıyor…';
+  try {
+    await ek9Hazirla();                                   // pdf-lib + fontkit + Lora yazı tipleri
+    if (!dilekceModul) dilekceModul = await import('/admin/dilekce.js');
+    if (!SIRLAR || !SIRLAR.gas) throw new Error('Erişim paketi eksik — yeniden giriş yapın.');
+    const j = await gasIstek('belge', { ref });
+    if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
+    const k = j.kayit || {};
+    const imza = (j.gorseller && j.gorseller.imza) || j.basvuranImza || '';
+    if (!imza && !confirm('Bu başvuruda çizilmiş imza yok (başvuran «ekranda imza atamıyorum» demiş olabilir).\n\nDilekçe imza satırı boş üretilsin mi? Mühtedi kalemle imzalar.')) {
+      dugme.textContent = eskiMetin;
+      return;
+    }
+    const bytes = await dilekceModul.dilekceUret({
+      pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
+      fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
+      veri: {
+        ref,
+        adSoyad: k['Adı Soyadı'] || '',
+        dogumYeri: k['Doğum yeri'] || '',
+        dogumTarihi: ek9Tarih(k['Doğum tarihi']),
+        uyruk: k['Uyruk'] || '',
+        adres: k['Adres'] || '',
+        telefon: telefonBicim(k['Telefon']),
+        eposta: k['E-posta'] || '',
+        dil: (k['Form dili'] || 'fr').trim().toLowerCase(),
+      },
+      imza,
+      tarih: new Date(),
+    });
+    const bag = document.createElement('a');
+    bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+    bag.download = `Dilekce ${ref}.pdf`;
+    bag.click();
+    setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
+    dugme.textContent = '✓ İndirildi';
+    setTimeout(() => { dugme.textContent = eskiMetin; }, 4000);
+  } catch (hata) {
+    console.error(hata);
+    alert('Dilekçe üretilemedi: ' + (hata && hata.message ? hata.message : hata));
+    dugme.textContent = eskiMetin;
+  } finally {
+    dugme.disabled = false;
   }
 }
 

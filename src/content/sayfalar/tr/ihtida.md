@@ -17,7 +17,7 @@ Görüşme **Türkçe veya Fransızca** yapılabilir. Kadın adaylar dilerse, g�
 
 <figure class="ayet">
 <p lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
-<p class="meal">Okunuşu: “Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve resûlüh.”</p>
+<p class="okunus">Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve resûlüh.</p>
 <p class="meal">Anlamı: “Şahitlik ederim ki Allah’tan başka ilah yoktur; yine şahitlik ederim ki Muhammed O’nun kulu ve elçisidir.”</p>
 <figcaption class="etiket">Kelime-i Şehâdet</figcaption>
 </figure>
@@ -51,6 +51,10 @@ Tören, Diyanet İşleri Başkanlığı’nın **“İhtida Merasiminde Takip Ed
 7. **Kapanış** — Âl-i İmrân sûresinin 18-20. âyetleri ya da Asr ve Fâtiha sûreleri okunup meali verilir; tören dua ile biter.
 8. **Hediye** — imkânlar ölçüsünde, kendi dilinizde mealli bir Kur’an-ı Kerim ve İslam’ı tanıtan bir ilmihal/kitap takdim edilir.
 
+Söyleyeceğiniz cümle, yukarıda “İslam’a Nasıl Girilir?” başlığında yazdığımız **kelime-i şehadet**tir; ezberlemeniz gerekmez, görevlimiz Arapçasını bölüm bölüm söyler, siz tekrar edersiniz.
+
+Bundan hemen önce görevlimiz size şu soruyu sorar: **“Allah’ın huzurunda ve bu şahitlerin önünde, kendi hür iradenizle, hiçbir baskı ve zorlama olmadan İslam’ı seçiyor musunuz?”** Cevabınız kendi ağzınızdan alınır.
+
 Fransızca konuşan adaylar için tören Fransızca da yürütülebilir; kelime-i şehadet Arapça aslıyla öğretilir. Tören yalnızca sizin istediğiniz kişilerin katılımıyla, kalabalıksız da yapılabilir.
 
 ## İhtida Belgesi (EK-9) Nedir?
@@ -76,6 +80,7 @@ Tören günü yanınızda bulundurmanız gerekenler:
 
 - **Kimlik kartınız veya pasaportunuz** — aslını görevliye gösterirsiniz.
 - **2 şahit** — yoksa camimiz sağlar.
+- **Dilekçe** — Müşavirliğe gidecek dosyada, İhtida Belgesi’ni talep eden imzalı bir dilekçe bulunur. Bunu sizin için biz hazırlarız: formda verdiğiniz bilgiler ve çizdiğiniz imzayla, iki dilli olarak basılır; imzalamadan önce okur, dilerseniz kendi elinizle de yazabilirsiniz.
 - **EK-10 Açık Rıza Metni** — tören günü kâğıt üzerinde imzalanır. Metnin tamamı Türkçe, İngilizce, **Fransızca** ve Felemenkçe olarak yandaki bağlantıdan okunabilir.
 
 **Kişisel verileriniz hakkında:** Diyanet İşleri Başkanlığı’nın ihtida yönergesi (madde 44), resmî belgenin düzenlenebilmesi için bir vesikalık fotoğraf ile kimlik/pasaport örneğinin **resmî dosyaya** konulmasını öngörür. Bu belgeleri tören gününü beklemeden başvuru formunda topluyoruz; böylece İhtida Belgeniz tören günü hazır olur. Başvurunuza ilişkin **her türlü bilgi ve belge hem camimizde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde saklanır**; yayımlanmaz, üçüncü kişilerle paylaşılmaz, yalnızca hizmetin gerektirdiği ölçüde ve asgari sayıda yetkili kişi erişebilir. Kimlik **numaranız** hiçbir aşamada sorulmaz. Görsellerinizin ve imzanızın işlenmesi için formda ayrıca açık rızanız alınır; bu rızayı istediğiniz zaman geri alabilirsiniz.

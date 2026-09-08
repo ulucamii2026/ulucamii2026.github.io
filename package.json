@@ -21,7 +21,7 @@
     "olc": "py -3.14 scripts/web-vitals-olc.py",
     "hero:gorsel": "node scripts/hero-gorsel-uret.mjs",
     "arapca:altkume": "py -3.14 scripts/arapca-alt-kume.py",
-    "denetim:panel": "node --check public/admin/panel.js && node --check public/admin/kapi.js && node --check public/admin/ek9.js",
+    "denetim:panel": "node --check public/admin/panel.js && node --check public/admin/kapi.js && node --check public/admin/ek9.js && node --check public/admin/dilekce.js",
     "panel:fontlar": "py -3.14 scripts/panel-fontlar-uret.py",
     "denetim:cms": "node scripts/cms-config-denetim.mjs",
     "firebase:kurallar": "firebase deploy --only firestore:rules,firestore:indexes --project ulucamii-portal",

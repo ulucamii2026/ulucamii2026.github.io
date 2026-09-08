@@ -17,7 +17,7 @@ Becoming Muslim means believing in your heart that God is One and that Muhammad 
 
 <figure class="ayet">
 <p lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
-<p class="meal">Pronunciation: “Ash-hadu an lâ ilâha illa-llâh, wa ash-hadu anna Muhammadan ‘abduhu wa rasûluh.”</p>
+<p class="okunus">Ash-hadu an lâ ilâha illa-llâh, wa ash-hadu anna Muhammadan ‘abduhu wa rasûluh.</p>
 <p class="meal">Meaning: “I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and Messenger.”</p>
 <figcaption class="etiket">The declaration of faith (shahada)</figcaption>
 </figure>
@@ -51,6 +51,10 @@ The ceremony follows the Presidency of Religious Affairs’ official text, the *
 7. **Closing** — verses 18-20 of Sûrat Âl ‘Imrân, or Sûrat al-‘Asr and al-Fâtiha, are recited and translated; the ceremony ends with a supplication.
 8. **A gift** — where possible, a copy of the Qur’an translated into your language and an introductory book on Islam.
 
+The sentence you will say is the **declaration of faith** given above, under [How Does One Become Muslim?](#how-does-one-become-muslim); you do not have to learn it by heart: the imam says the Arabic phrase by phrase and you repeat after him.
+
+Immediately before this the imam asks you: **“In the presence of Allah and before these witnesses: do you choose Islam of your own free will, freely, without any pressure or compulsion?”** The answer must come from you.
+
 For French-speaking candidates the ceremony can be held entirely in French; the declaration of faith is taught in its original Arabic. The ceremony can also be held quietly, with only the people you choose.
 
 ## What Is the Conversion Certificate (EK-9)?
@@ -76,6 +80,7 @@ To bring on the day of the ceremony:
 
 - **Your identity card or passport** — you show the original to the officer.
 - **2 witnesses** — our mosque provides them if needed.
+- **A written request** — the file sent to the Counsellor includes a signed request for the conversion certificate. We prepare it for you: it is printed in two languages from the information in the form and the signature you drew there; you read it before signing, and you may also write it out by hand.
 - **The EK-10 explicit consent form** — signed on paper on the day. The full text is available in Turkish, English, **French** and Dutch through the link in the sidebar.
 
 **About your personal data:** Diyanet’s conversion directive (article 44) requires a passport photo and a copy of the identity document to be placed in the **official file** so that the certificate can be issued. We gather these documents in the form itself rather than waiting for the day of the ceremony, so that your certificate is ready. **All information and documents relating to your application are kept both by our mosque and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels**; they are never published or passed to third parties and are accessible only to the smallest possible number of authorised people, strictly as the service requires. Your national registry **number** is never asked for at any stage. The processing of your images and signature is covered by a separate explicit consent in the form, which you may withdraw at any time.

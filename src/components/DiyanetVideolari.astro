@@ -9,17 +9,23 @@
  * yalnız otomatik Türkçedir. Bu yüzden Fransızca/İngilizce sayfalarda bölüm dürüstçe
  * «bu seri Türkçedir» der ve okuru kendi dilindeki kütüphaneye yönlendirir.
  *
- * NEDEN GÖMÜLÜ OYNATICI YOK: sayfa din değiştirmeyle ilgilidir, yani GDPR md. 9 kapsamında
- * özel nitelikli bir konudur. Gömülü YouTube oynatıcı (ve hatta ytimg küçük resmi) ziyaretçinin
- * IP adresini Google'a taşır. Kütüphanedeki kararla aynı: içerik Diyanet'in/YouTube'un kendi
- * sunucusunda kalır, biz yalnız bağlantı veririz — sayfa hiçbir üçüncü taraf isteği yapmaz.
+ * GİZLİLİK: sayfa din değiştirmeyle ilgilidir, yani GDPR md. 9 kapsamında özel nitelikli bir
+ * konudur; sayfayı AÇMAK hiçbir üçüncü taraf isteği doğurmaz. Liste yalnız bağlantıdır (ytimg
+ * küçük resmi bile kullanılmaz). Öne çıkan tek bölüm VideoCephe ile verilir: kapak görseli KENDİ
+ * sunucumuzdadır, oynatıcı ancak ziyaretçi tıklayınca youtube-nocookie.com'dan yüklenir.
  *
  * Veri: src/data/diyanet-videolar.json (üretim: scripts/diyanet-hatti/videolar_uret.py,
  * canlılık denetimi oembed.py — yt-dlp bu makinede yanlış alarm veriyor).
  */
 import veri from '../data/diyanet-videolar.json';
+import VideoCephe from './VideoCephe.astro';
 import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
+
+/* Öne çıkan bölüm: 14. «Kelime-i Şehadet» — bu sayfaya gelen kişinin törende söyleyeceği
+   cümlenin ta kendisi. Kapak görseli KENDİ sunucumuzdadır (public/media/ihtida/), oynatıcı
+   ancak tıklanınca youtube-nocookie'den yüklenir → sayfa açılışında Google'a istek gitmez. */
+const ONE_CIKAN = { id: 'tX_NMZjTSc8', poster: '/media/ihtida/video-kelime-i-sehadet.webp', no: 14 };
 
 interface Props { dil: Dil }
 const { dil } = Astro.props;
@@ -40,10 +46,12 @@ const M = {
       baslarken: 'Başlarken', inanc: 'İnancın esasları', ibadet: 'İbadet',
       cagri: 'İslam neyi çağırır', musluman: 'Müslümanın hâli',
     },
+    oneCikanBaslik: 'Kelime-i Şehadet — 14. bölüm',
+    oneCikanAlt: 'Diyanet Dijital · Türkçe · birkaç dakika',
     ekBaslik: 'Serinin kısa videoları',
     dilNotu: null as string | null,
     kutuphane: 'Okumayı yeğlerseniz: Diyanet Kütüphanesi',
-    not: 'Videolar Diyanet’in kendi sayfasında ve YouTube’daki «Diyanet Dijital» kanalında durur; bağlantı yeni sekmede oraya götürür. Sayfamıza gömülü oynatıcı koymuyoruz — böylece bu sayfayı açmakla hiçbir bilginiz üçüncü bir şirkete gitmez.',
+    not: 'Videolar Diyanet’in kendi sayfasında ve YouTube’daki «Diyanet Dijital» kanalında durur; listedeki bağlantı yeni sekmede oraya götürür. Bu sayfayı açmakla hiçbir bilginiz üçüncü bir şirkete gitmez: yukarıdaki kapak görseli bizim sunucumuzdadır ve oynatıcı ancak siz tıklarsanız, YouTube’un gizlilik güçlendirilmiş alanından yüklenir.',
     dis: 'yeni sekmede açılır',
   },
   fr: {
@@ -55,11 +63,13 @@ const M = {
       baslarken: 'Pour commencer', inanc: 'Les articles de foi', ibadet: 'Le culte',
       cagri: 'Ce à quoi l’islam appelle', musluman: 'La conduite du musulman',
     },
+    oneCikanBaslik: 'La profession de foi — épisode 14 (en turc)',
+    oneCikanAlt: 'Diyanet Dijital · turc · quelques minutes',
     ekBaslik: 'Capsules de la série',
     dilNotu:
       'Cette série est en turc et n’existe pas encore en français : le catalogue vidéo du Diyanet (plus de trois mille vidéos) est entièrement turcophone. En français, le Diyanet publie des livres — vous les trouverez, gratuits, dans la bibliothèque ci-dessous.',
     kutuphane: 'En français : la bibliothèque du Diyanet',
-    not: 'Les vidéos restent sur le site du Diyanet et sur sa chaîne YouTube « Diyanet Dijital » ; le lien vous y emmène dans un nouvel onglet. Nous n’intégrons aucun lecteur sur cette page : la consulter n’envoie donc aucune information à une entreprise tierce.',
+    not: 'Les vidéos restent sur le site du Diyanet et sur sa chaîne YouTube « Diyanet Dijital » ; les liens de la liste vous y emmènent dans un nouvel onglet. Consulter cette page n’envoie aucune information à une entreprise tierce : l’image de couverture ci-dessus est hébergée chez nous et le lecteur ne se charge, depuis le domaine « confidentialité renforcée » de YouTube, que si vous cliquez.',
     dis: 'ouvre dans un nouvel onglet',
   },
   en: {
@@ -71,11 +81,13 @@ const M = {
       baslarken: 'Getting started', inanc: 'Articles of faith', ibadet: 'Worship',
       cagri: 'What Islam calls for', musluman: 'How a Muslim lives',
     },
+    oneCikanBaslik: 'The declaration of faith — episode 14 (in Turkish)',
+    oneCikanAlt: 'Diyanet Dijital · Turkish · a few minutes',
     ekBaslik: 'Short clips from the series',
     dilNotu:
       'This series is in Turkish and does not yet exist in English: the Diyanet video catalogue — over three thousand videos — is entirely Turkish. In English the Diyanet publishes books, and you will find them free of charge in the library below.',
     kutuphane: 'In English: the Diyanet library',
-    not: 'The videos stay on Diyanet’s own site and on its “Diyanet Dijital” YouTube channel; the link takes you there in a new tab. We embed no player on this page, so opening it sends nothing to any third-party company.',
+    not: 'The videos stay on Diyanet’s own site and on its “Diyanet Dijital” YouTube channel; the links in the list open there in a new tab. Opening this page sends nothing to any third-party company: the cover image above is hosted by us, and the player loads — from YouTube’s privacy-enhanced domain — only if you click it.',
     dis: 'opens in a new tab',
   },
 } as const;
@@ -88,6 +100,10 @@ const m = M[dil];
     <h2 class="bant-baslik">{m.baslik}</h2>
     <p class="bant-giris">{m.giris}</p>
     {m.dilNotu && <p class="dil-notu"><span aria-hidden="true">ⓘ</span> {m.dilNotu}</p>}
+
+    <div class="one-cikan">
+      <VideoCephe dil={dil} id={ONE_CIKAN.id} poster={ONE_CIKAN.poster} baslik={m.oneCikanBaslik} altyazi={m.oneCikanAlt} />
+    </div>
 
     {GRUP_SIRA.map((g) => {
       const liste = bolumler.filter((b) => b.grup === g);
@@ -135,9 +151,11 @@ const m = M[dil];
   .video-bant { border-top: 1px solid var(--cizgi); padding: 3.5rem 0 1rem; }
   .bant-baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
   .bant-giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
-  .dil-notu { max-width: 68ch; margin-top: 1rem; padding: 0.85rem 1rem; font-size: 0.9rem; line-height: 1.5;
-    border: 1px solid var(--cizgi); border-left: 3px solid var(--vurgu);
+  .dil-notu { max-width: 68ch; margin-top: 1rem; padding: 0.85rem 1rem 0.85rem 2.5rem; position: relative;
+    font-size: 0.9rem; line-height: 1.5; border: 1px solid var(--cizgi);
     border-radius: calc(var(--radius-kose) * 0.5); background: var(--zemin-2); color: var(--metin-2); }
+  .dil-notu > span:first-child { position: absolute; left: 0.95rem; top: 0.8rem; color: var(--vurgu); font-size: 1.05rem; }
+  .one-cikan { max-width: 46rem; margin-top: 1.6rem; }
   .bant-ara-baslik { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: var(--tracking-etiket);
     text-transform: uppercase; color: var(--vurgu); margin: 2rem 0 0.7rem; }
   .video-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
