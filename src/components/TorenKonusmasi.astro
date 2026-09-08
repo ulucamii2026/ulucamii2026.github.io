@@ -1,0 +1,173 @@
+---
+/**
+ * İhtida sayfasının «törende size ne söylenecek» bölümü — caminin kendi telkin konuşması.
+ *
+ * KAYNAK: `OneDrive\Marche-en-Famenne\mühtedi çalışmaları\ihtida töreni fr konşuma örneği -
+ * erkek.docx` / `- kadın.docx`. Bu metinler caminin kendi hazırladığı Fransızca telkin
+ * konuşmalarıdır; törenin akışı Diyanet genelgesinin EK-11'ine dayanır. Belgelerdeki görevliye
+ * yönelik sahne yönergeleri («sakin bir tempoyla okur», tarih/ad boşlukları) yayımlanmaz —
+ * okura yalnız törende DUYACAĞI metin gösterilir.
+ *
+ * DİL: Fransızca sayfada iki konuşmanın Fransızca aslı verilir (aday erkek / kadın). Türkçe ve
+ * İngilizce sayfalarda tek bir çeviri durur: Türkçede dil bilgisel cinsiyet yoktur, İngilizcede de
+ * metnin gövdesi cinsiyetten bağımsızdır; okur zaten törenin kendi dilinde yapılacağını bilir.
+ */
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+type Blok = { baslik: string; ozet?: string; paragraflar: string[] };
+
+const FR_ERKEK: string[] = [
+  'Monsieur,',
+  'Nous venons d’écouter des versets sublimes de la sourate Al-Baqarah : des paroles qui ferment une longue sourate comme on ferme une porte sur le doute, et comme on ouvre une fenêtre sur la certitude. Ces versets disent quelque chose de fondamental : la foi n’est pas une contrainte, c’est une réponse libre. Allah n’impose pas à l’être humain un fardeau qui dépasse ses forces ; Il connaît les limites de l’homme mieux que l’homme ne se connaît lui-même.',
+  'Aujourd’hui, vous êtes ici non par hasard, non par pression, non par faiblesse, mais par un cheminement intérieur. Un chemin parfois silencieux, parfois tourmenté, souvent solitaire. Chercher la vérité n’est jamais confortable. C’est une traversée. Et toute traversée digne de ce nom comporte des questions, des ruptures, des peurs, et aussi des éclaircies.',
+  'L’islam que vous vous apprêtez à embrasser n’est pas une culture étrangère, ni une appartenance ethnique, ni une tradition héritée. L’islam est avant tout une reconnaissance : reconnaître l’Unicité absolue d’Allah. Allah, l’Unique, sans associé, sans intermédiaire, sans incarnation. Allah, qui n’engendre pas et qui n’a pas été engendré. Allah, qui ne ressemble à rien de ce que l’esprit humain peut imaginer, mais qui est plus proche de vous que votre propre souffle.',
+  'Entrer en islam, ce n’est pas nier votre passé. Ce n’est pas renier votre histoire, votre identité, votre parcours. C’est lui donner un sens nouveau. L’islam n’efface pas ce que vous avez été ; il met en ordre ce que vous êtes en train de devenir. Il transforme la quête en direction, le doute en responsabilité, la liberté en engagement conscient.',
+  'Sachez une chose essentielle : en islam, Allah ne cherche pas des anges, Il accueille des êtres humains. Des êtres imparfaits, fragiles, capables de chuter comme de se relever. La porte du repentir n’est jamais fermée. La miséricorde divine ne se mérite pas par la perfection, elle se reçoit par la sincérité.',
+  'En devenant musulman aujourd’hui, vous affirmez que la vie n’est pas absurde. Qu’elle n’est pas livrée au hasard. Qu’elle a une origine, un sens et une finalité. Vous affirmez que chaque acte compte, que chaque parole a un poids, que chaque intention a une valeur. Vous acceptez d’être responsable devant Allah, non pour être écrasé par la peur, mais pour être élevé par la conscience.',
+  'L’islam ne vous promet pas une vie sans épreuves. Il vous promet une boussole. Il ne vous promet pas l’absence de douleur. Il vous promet une signification à la douleur. Il ne vous promet pas que tout sera facile. Il vous promet que rien ne sera vain.',
+  'Vous allez apprendre progressivement. La foi n’est pas un interrupteur ; c’est une lumière qui s’installe. Personne ne vous demandera d’être parfait dès aujourd’hui. Ce qu’Allah attend de vous, c’est l’honnêteté du cœur et la constance du pas, même lent.',
+  'À partir de cet instant, vous entrez dans une fraternité sans frontières, sans couleur unique, sans langue exclusive. Une fraternité fondée sur la foi en Allah, sur la dignité humaine, sur la justice et sur la miséricorde. Vous n’êtes pas seul. Vous ne l’êtes plus.',
+  'Dans un instant, vous allez prononcer la parole qui a traversé les siècles, les déserts, les empires et les consciences : l’attestation de foi. Une phrase courte, mais plus lourde que les montagnes. Une phrase qui ne fait pas de vous quelqu’un de nouveau aux yeux des hommes, mais qui vous fait renaître devant Allah.',
+  'Prononcez-la avec lucidité, avec calme, avec conviction. Non comme une formule magique, mais comme un engagement libre. Et sachez que, selon l’enseignement de l’islam, à l’instant même où vous l’attesterez sincèrement, votre passé sera lavé, non par oubli, mais par miséricorde.',
+  'Qu’Allah raffermisse votre cœur, éclaire votre chemin, apaise vos inquiétudes et fasse de vous un homme de droiture, de sagesse et de paix.',
+];
+
+const FR_KADIN: string[] = [
+  'Madame,',
+  'Nous venons d’entendre des versets puissants de la sourate Al-Baqarah, des paroles qui rappellent une vérité essentielle : Allah connaît l’être humain mieux qu’il ne se connaît lui-même. Il ne demande jamais l’impossible. Il n’écrase pas. Il élève. Il n’emprisonne pas. Il libère.',
+  'Si vous êtes ici aujourd’hui, ce n’est pas par imitation, ni par faiblesse, ni pour combler un vide affectif ou social. Vous êtes ici parce qu’une question vous a traversée, puis une autre, puis une certitude discrète mais tenace. La foi naît souvent ainsi : comme une lumière douce qui insiste, qui revient, qui refuse de s’éteindre.',
+  'L’islam que vous vous apprêtez à accueillir n’est pas une rupture avec votre féminité, votre sensibilité ou votre intelligence. Au contraire. L’islam s’adresse à la femme comme à un être pleinement responsable, digne, capable de choix, capable de lucidité. Allah, en islam, ne parle pas à un genre inférieur ou secondaire. Il parle à une âme.',
+  'Entrer en islam, ce n’est pas effacer votre passé, ni renier votre histoire personnelle, vos blessures, vos combats, vos joies. Rien de tout cela n’est méprisé. Tout cela est intégré. L’islam ne vous demande pas d’oublier qui vous êtes ; il vous propose de vous tenir debout devant Allah, telle que vous êtes, sans masque, sans intermédiaire, sans culpabilité héritée.',
+  'Sachez-le clairement : en islam, Allah n’est pas l’ennemi de la femme. Il est Celui qui la connaît, qui l’a créée, qui lui parle directement, qui lui confie une responsabilité spirituelle pleine et entière. Vous n’avez pas besoin d’un autre être humain pour accéder à Allah. Votre prière, votre foi, votre repentance et votre espérance montent vers Lui sans barrière.',
+  'Devenir musulmane aujourd’hui, c’est affirmer que votre vie a un sens, que votre dignité n’est pas négociable, que votre valeur ne dépend ni du regard des autres ni des normes changeantes de la société. C’est accepter que la liberté ne consiste pas à se perdre, mais à se choisir en conscience.',
+  'L’islam ne vous promet pas une existence sans difficultés. Il vous promet une présence intérieure dans les difficultés. Il ne vous promet pas l’absence de larmes. Il vous promet qu’aucune larme n’est ignorée. Allah voit ce que personne ne voit. Il entend ce que personne n’entend. Il connaît ce que vous n’avez jamais su formuler.',
+  'Vous allez apprendre progressivement. La foi n’est pas une pression, c’est une croissance. Personne ne vous demandera d’être parfaite dès aujourd’hui. Allah n’attend pas de vous une performance, mais une sincérité. Chaque pas compte, même hésitant. Chaque effort est vu.',
+  'À partir de cet instant, vous entrez dans une fraternité et une sororité spirituelles sans frontières, où la couleur, la langue, l’origine sociale ou culturelle n’ont aucune supériorité. Ce qui compte, c’est le cœur et l’intention. Vous n’êtes pas seule. Et vous n’aurez pas à marcher seule.',
+  'Dans un instant, vous allez prononcer une parole simple, mais décisive : l’attestation de foi. Elle ne vous enlève rien. Elle vous rend à l’essentiel. Elle ne vous enferme pas. Elle vous oriente. Selon l’enseignement de l’islam, au moment même où elle sera prononcée avec sincérité, Allah ouvre une page neuve, non par oubli du passé, mais par miséricorde.',
+  'Qu’Allah apaise votre cœur, vous enveloppe de Sa douceur, raffermisse votre pas et fasse de vous une femme de foi, de sagesse et de paix intérieure.',
+];
+
+const TR_METIN: string[] = [
+  'Az önce Bakara sûresinin yüce âyetlerini dinledik: uzun bir sûreyi, şüphenin üzerine bir kapı kapatır gibi kapatan ve kesinliğe bir pencere açar gibi açan sözler. Bu âyetler çok temel bir şey söyler: iman bir zorlama değil, hür bir cevaptır. Allah insana gücünün yetmeyeceği bir yük yüklemez; O, insanın sınırlarını insanın kendini bildiğinden daha iyi bilir.',
+  'Bugün burada tesadüfen, bir baskı yüzünden ya da bir zaaftan dolayı değil, içinizde yürüdüğünüz bir yolun sonunda bulunuyorsunuz. Kimi zaman sessiz, kimi zaman sancılı, çoğu zaman yalnız bir yol. Hakikati aramak hiçbir zaman konforlu değildir; bir geçiştir. Ve adına layık her geçişte sorular, kopuşlar, korkular ve açılan gökler vardır.',
+  'Girmek üzere olduğunuz İslam yabancı bir kültür, bir etnik aidiyet ya da miras alınmış bir gelenek değildir. İslam her şeyden önce bir tanımadır: Allah’ın mutlak birliğini tanımak. Allah tektir; ortağı yoktur, aracısı yoktur, bedenlenmesi yoktur. Doğurmamış ve doğmamıştır. İnsan zihninin tasavvur edebileceği hiçbir şeye benzemez; ama size kendi nefesinizden daha yakındır.',
+  'İslam’a girmek geçmişinizi inkâr etmek değildir. Tarihinizi, kimliğinizi, yürüdüğünüz yolu reddetmek değildir; ona yeni bir anlam vermektir. İslam ne olduğunuzu silmez, olmakta olduğunuz şeyi düzene koyar: arayışı yöne, şüpheyi sorumluluğa, özgürlüğü bilinçli bir bağlılığa çevirir.',
+  'Şunu iyi bilin: İslam’da Allah melek aramaz, insanı kabul eder. Kusurlu, kırılgan, düşebilen ve kalkabilen insanı. Tövbe kapısı hiçbir zaman kapanmaz. İlahî rahmet kusursuzlukla hak edilmez, samimiyetle alınır.',
+  'Bugün Müslüman olmakla hayatın saçma olmadığını söylüyorsunuz; tesadüfe bırakılmadığını, bir kaynağı, bir anlamı ve bir gayesi olduğunu. Her fiilin sayıldığını, her sözün bir ağırlığı, her niyetin bir değeri olduğunu söylüyorsunuz. Allah’ın huzurunda sorumlu olmayı kabul ediyorsunuz; korkuyla ezilmek için değil, bilinçle yükselmek için.',
+  'İslam size sınavsız bir hayat vaat etmez, bir pusula vaat eder. Acının yokluğunu vaat etmez, acıya bir anlam vaat eder. Her şeyin kolay olacağını vaat etmez, hiçbir şeyin boşa gitmeyeceğini vaat eder.',
+  'Yavaş yavaş öğreneceksiniz. İman bir düğme değil, yerleşen bir ışıktır. Kimse sizden bugünden kusursuz olmanızı istemeyecek. Allah’ın sizden beklediği, kalbin dürüstlüğü ve adımın —ağır da olsa— sürekliliğidir.',
+  'Bu andan itibaren sınırları, tek bir rengi, tek bir dili olmayan bir kardeşliğe giriyorsunuz: Allah’a imana, insan onuruna, adalete ve merhamete dayanan bir kardeşlik. Yalnız değilsiniz; artık değilsiniz.',
+  'Birazdan asırları, çölleri, imparatorlukları ve vicdanları aşmış olan sözü söyleyeceksiniz: kelime-i şehadet. Kısa, ama dağlardan ağır bir cümle. Sizi insanların gözünde yeni biri yapmayan, ama Allah’ın huzurunda yeniden doğuran bir cümle.',
+  'Onu açık bir zihinle, sakin ve inanarak söyleyin; sihirli bir formül gibi değil, hür bir bağlılık olarak. Ve bilin ki İslam’ın öğretisine göre, onu içtenlikle söylediğiniz anda geçmişiniz —unutulduğu için değil, rahmet edildiği için— yıkanır.',
+  'Allah kalbinizi sağlamlaştırsın, yolunuzu aydınlatsın, kaygılarınızı dindirsin ve sizi doğruluk, hikmet ve barış insanı kılsın.',
+];
+
+const EN_METIN: string[] = [
+  'We have just listened to the closing verses of Sūrat al-Baqara: words that close a long chapter the way one closes a door on doubt, and open a window onto certainty. They say something fundamental: faith is not a constraint, it is a free answer. God lays on no soul a burden greater than it can bear; He knows the limits of a human being better than that person knows them.',
+  'You are here today not by accident, not under pressure, not out of weakness, but at the end of an inward journey — sometimes silent, sometimes painful, often solitary. Seeking the truth is never comfortable. It is a crossing, and every crossing worthy of the name has its questions, its ruptures, its fears, and its clear skies too.',
+  'The Islam you are about to embrace is not a foreign culture, nor an ethnic belonging, nor an inherited tradition. Islam is first of all a recognition: recognising the absolute Oneness of God — the One, without partner, without intermediary, without incarnation; who does not beget and was not begotten; who resembles nothing the human mind can picture, yet is closer to you than your own breath.',
+  'Entering Islam is not denying your past. It is not disowning your history, your identity, the road you have walked. It is giving that road a new meaning. Islam does not erase what you have been; it puts in order what you are becoming. It turns the search into a direction, doubt into responsibility, freedom into a conscious commitment.',
+  'Know this above all: in Islam God does not look for angels, He welcomes human beings — imperfect, fragile, able to fall and able to rise. The door of repentance is never closed. Divine mercy is not earned by perfection; it is received through sincerity.',
+  'In becoming a Muslim today you affirm that life is not absurd, that it is not left to chance, that it has an origin, a meaning and an end. You affirm that every act counts, that every word carries weight, that every intention has a value. You accept being answerable before God — not to be crushed by fear, but to be raised by conscience.',
+  'Islam does not promise you a life without trials; it promises you a compass. It does not promise you the absence of pain; it promises pain a meaning. It does not promise that everything will be easy; it promises that nothing will be in vain.',
+  'You will learn step by step. Faith is not a switch; it is a light that settles in. No one will ask you to be perfect from today. What God asks of you is honesty of heart and steadiness of step, however slow.',
+  'From this moment you enter a brotherhood without borders, without a single colour, without an exclusive language — a fellowship founded on faith in God, on human dignity, on justice and on mercy. You are not alone. You are no longer alone.',
+  'In a moment you will pronounce the word that has crossed centuries, deserts, empires and consciences: the testimony of faith. A short sentence, yet heavier than the mountains. A sentence that does not make you someone new in the eyes of people, but gives you a new birth before God.',
+  'Say it with clarity, with calm, with conviction — not as a magic formula, but as a free commitment. And know that, according to the teaching of Islam, at the very moment you attest it sincerely your past is washed away: not by forgetting, but by mercy.',
+  'May God make your heart firm, light your path, calm your worries, and make of you a person of uprightness, wisdom and peace.',
+];
+
+const M = {
+  tr: {
+    etiket: 'Törende ne duyacaksınız',
+    baslik: 'Telkin Konuşması',
+    giris:
+      'Kelime-i şehadetten hemen önce görevlimiz size hitap eder. Bu konuşmayı önceden okuyabilmeniz için buraya koyduk: törene geldiğinizde hiçbir şey sizin için sürpriz olmasın, sözler yabancı gelmesin. Metin caminin kendi hazırladığı örnek konuşmadır; her adaya, o günün havasına ve sizin sorularınıza göre kısaltılır ya da genişletilir.',
+    ac: 'Konuşmanın tamamını okuyun',
+    bloklar: [{ baslik: 'Telkin konuşması — örnek metin', paragraflar: TR_METIN }] as Blok[],
+    not: 'Tören Türkçe yapılabileceği gibi tamamen Fransızca da yürütülebilir; bu durumda görevlimiz konuşmayı Fransızca okur. Konuşmanın hemen ardından, şahitlerin huzurunda hür irade sorusu sorulur ve kelime-i şehadet bölüm bölüm tekrar ettirilir — ezberlemeniz gerekmez.',
+  },
+  fr: {
+    etiket: 'Ce que vous entendrez',
+    baslik: 'Le discours de la cérémonie',
+    giris:
+      'Juste avant la profession de foi, l’imam s’adresse à vous. Nous publions ce discours pour que vous puissiez le lire à l’avance : le jour venu, rien ne devrait vous surprendre. C’est le texte préparé par notre mosquée ; il est adapté à chaque personne, à ses questions et à l’atmosphère du jour. Deux versions existent, l’une pour un candidat, l’autre pour une candidate.',
+    ac: 'Lire le discours en entier',
+    bloklar: [
+      { baslik: 'Discours — candidat', ozet: 'Version adressée à un homme', paragraflar: FR_ERKEK },
+      { baslik: 'Discours — candidate', ozet: 'Version adressée à une femme', paragraflar: FR_KADIN },
+    ] as Blok[],
+    not: 'Aussitôt après le discours vient, devant les témoins, la question du libre arbitre, puis la profession de foi, que l’imam dit en arabe morceau par morceau et que vous répétez — rien à apprendre par cœur.',
+  },
+  en: {
+    etiket: 'What you will hear',
+    baslik: 'The Address at the Ceremony',
+    giris:
+      'Just before the declaration of faith, our imam speaks to you. We publish that address here so you can read it beforehand: on the day itself, nothing should come as a surprise. It is the text our mosque has prepared; it is adapted to each person, to their questions and to the mood of the day.',
+    ac: 'Read the full address',
+    bloklar: [{ baslik: 'The address — sample text', paragraflar: EN_METIN }] as Blok[],
+    not: 'The ceremony can be held in French, Turkish or English. Immediately after the address comes the question of free will, asked before the witnesses, and then the declaration of faith, which the imam says in Arabic phrase by phrase for you to repeat — nothing needs to be memorised.',
+  },
+} as const;
+
+const m = M[dil];
+---
+
+<section id="toren-konusmasi" class="konusma-bant">
+  <div class="kapsayici">
+    <p class="etiket etiket-vurgu">{m.etiket}</p>
+    <h2 class="bant-baslik">{m.baslik}</h2>
+    <p class="bant-giris">{m.giris}</p>
+
+    <div class="konusmalar">
+      {m.bloklar.map((b) => (
+        <details class="konusma kart-kagit">
+          <summary>
+            <span class="ad">{b.baslik}</span>
+            {b.ozet && <span class="ozet">{b.ozet}</span>}
+            <span class="ac" aria-hidden="true">{m.ac}</span>
+          </summary>
+          <div class="govde" lang={dil === 'tr' ? 'tr' : dil === 'en' ? 'en' : 'fr'}>
+            {b.paragraflar.map((p) => <p>{p}</p>)}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <p class="bant-not">{m.not}</p>
+  </div>
+</section>
+
+<style>
+  .konusma-bant { border-top: 1px solid var(--cizgi); padding: 3.5rem 0 1rem; }
+  .bant-baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
+  .bant-giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
+  .konusmalar { margin-top: 1.8rem; display: grid; gap: 0.9rem; max-width: 72ch; }
+  .konusma { padding: 0; overflow: hidden; }
+  .konusma > summary { display: grid; grid-template-columns: 1fr auto; align-items: center;
+    gap: 0.3rem 1rem; padding: 1rem 1.1rem; cursor: pointer; list-style: none; min-height: 3rem; }
+  .konusma > summary::-webkit-details-marker { display: none; }
+  .konusma > summary:hover, .konusma > summary:focus-visible { background: var(--zemin-2); }
+  .konusma > summary .ad { grid-column: 1; grid-row: 1; font-family: var(--font-serif, Lora, serif);
+    font-size: 1.05rem; color: var(--metin); }
+  .konusma > summary .ozet { grid-column: 1; grid-row: 2; font-size: 0.85rem; color: var(--metin-2); }
+  .konusma > summary .ac { grid-column: 2; grid-row: 1 / span 2; align-self: center;
+    font-family: var(--font-mono); font-size: 0.72rem;
+    letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--vurgu); white-space: nowrap; }
+  @media (max-width: 520px) {
+    .konusma > summary { grid-template-columns: 1fr; }
+    .konusma > summary .ad { grid-row: 1; }
+    .konusma > summary .ozet { grid-row: 2; }
+    .konusma > summary .ac { grid-column: 1; grid-row: 3; }
+  }
+  .konusma[open] > summary .ac { opacity: 0.45; }
+  .konusma[open] > summary { border-bottom: 1px solid var(--cizgi); }
+  .govde { padding: 1.2rem 1.1rem 1.4rem; }
+  .govde p { margin: 0 0 0.9rem; line-height: 1.72; color: var(--metin); }
+  .govde p:first-child { font-family: var(--font-serif, Lora, serif); font-size: 1.05rem; }
+  .govde p:last-child { margin-bottom: 0; font-style: italic; color: var(--metin-2); }
+  .bant-not { margin-top: 1.4rem; font-size: 0.85rem; color: var(--metin-2); max-width: 68ch; }
+</style>
