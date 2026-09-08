@@ -1,0 +1,177 @@
+---
+/**
+ * Diyanet'in çevrimiçi hizmetleri — ihtida sayfasının altındaki bağlantı kartları.
+ *
+ * NEDEN AYRI BİR BÖLÜM: kütüphanedeki PDF'ler tek tek yayınlar; burada ise sürekli
+ * güncellenen portallar var (mushaf, elifbâ, radyo, fetva, ansiklopedi). Yeni Müslüman
+ * olan biri «namazı nasıl kılacağım / bu soruyu kime soracağım» diye baktığında bunlar
+ * kitaptan daha hızlı cevap verir.
+ *
+ * DİL ETİKETİ ZORUNLU: bu portalların neredeyse tamamı YALNIZ TÜRKÇE. Fransızca konuşan
+ * bir ziyaretçiyi etiketsiz Türkçe siteye göndermek kötü bir deneyim; her kartta hangi
+ * dilde olduğu yazıyor. Diyanet'in diyanet.gov.tr/fr-FR, /en-US, /nl-NL adresleri
+ * 8 Eyl 2026'da Türkçe ana sayfaya yönleniyordu — bu yüzden listede yoklar.
+ *
+ * Bağlantılar `npm run denetim:baglanti` kapsamındadır (dijital.diyanet.gov.tr hariç,
+ * o `npm run denetim:diyanet` ile denetlenir).
+ */
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+type Metin = { tr: string; fr: string; en: string };
+interface Hizmet { url: string; ad: Metin; aciklama: Metin; diller: string[] }
+
+/* Hepsi 8 Eyl 2026'da elle doğrulandı (HTTP 200). */
+const HIZMETLER: Hizmet[] = [
+  {
+    url: 'https://kuran.diyanet.gov.tr/mushaf',
+    ad: { tr: 'Kur’an-ı Kerim ve meâli', fr: 'Le Coran et sa traduction', en: 'The Qur’an and its translation' },
+    aciklama: {
+      tr: 'Arapça metin, Türkçe meâl ve sayfa sayfa sesli okunuş.',
+      fr: 'Le texte arabe, la traduction turque et la récitation page par page.',
+      en: 'The Arabic text, the Turkish translation and page-by-page recitation.',
+    },
+    diller: ['AR', 'TR'],
+  },
+  {
+    url: 'https://kuran.diyanet.gov.tr/elifba/',
+    ad: { tr: 'Elifbâ — Arap alfabesi', fr: 'Elifbâ — l’alphabet arabe', en: 'Elifbâ — the Arabic alphabet' },
+    aciklama: {
+      tr: 'Harfleri sıfırdan öğreten sesli ve etkileşimli ders; okumayı bilmeyen için ilk adım.',
+      fr: 'Un cours sonore et interactif qui enseigne les lettres depuis zéro : la première étape pour apprendre à lire.',
+      en: 'An interactive audio course teaching the letters from scratch — the first step to reading.',
+    },
+    diller: ['AR', 'TR'],
+  },
+  {
+    url: 'https://diyanetkuranradyo.com/',
+    ad: { tr: 'Diyanet Kur’an Radyo', fr: 'Radio coranique du Diyanet', en: 'Diyanet Qur’an Radio' },
+    aciklama: {
+      tr: 'Kesintisiz Kur’an tilaveti — dil bilmeye gerek yok, açıp dinlersiniz.',
+      fr: 'Récitation continue du Coran — aucune langue requise, il suffit d’écouter.',
+      en: 'Continuous Qur’an recitation — no language needed, just listen.',
+    },
+    diller: ['AR'],
+  },
+  {
+    url: 'https://hadislerleislam.diyanet.gov.tr/',
+    ad: { tr: 'Hadislerle İslam', fr: 'L’islam par les hadiths', en: 'Islam through the Hadith' },
+    aciklama: {
+      tr: 'Diyanet’in yedi ciltlik hadis külliyatı; çevrimiçi okunur, PDF olarak indirilir.',
+      fr: 'Le corpus de hadiths du Diyanet en sept volumes ; lecture en ligne et téléchargement PDF.',
+      en: 'Diyanet’s seven-volume hadith corpus; read online or download as PDF.',
+    },
+    diller: ['TR'],
+  },
+  {
+    url: 'https://kurul.diyanet.gov.tr/tr/fetvalar',
+    ad: { tr: 'Din İşleri Yüksek Kurulu — fetvalar', fr: 'Haut Conseil des Affaires religieuses — fatwas', en: 'High Board of Religious Affairs — fatwas' },
+    aciklama: {
+      tr: 'Konu konu resmî fetvalar. Fransızca derlemesi kütüphanemizde («Fatwas») bulunur.',
+      fr: 'Les fatwas officielles par thème. Le recueil français se trouve dans la bibliothèque ci-dessous (« Fatwas »).',
+      en: 'Official fatwas by topic. The French collection is in the library below (“Fatwas”).',
+    },
+    diller: ['TR'],
+  },
+  {
+    url: 'https://islamansiklopedisi.org.tr/',
+    ad: { tr: 'TDV İslâm Ansiklopedisi', fr: 'Encyclopédie de l’Islam (TDV)', en: 'TDV Encyclopaedia of Islam' },
+    aciklama: {
+      tr: 'Bir kavramın, kişinin veya kurumun ilmî karşılığını aramak için başvuru kaynağı.',
+      fr: 'L’ouvrage de référence pour chercher la définition savante d’un concept, d’une personne ou d’une institution.',
+      en: 'The reference work for the scholarly meaning of a concept, a person or an institution.',
+    },
+    diller: ['TR'],
+  },
+  {
+    url: 'https://diyanet.tv/',
+    ad: { tr: 'Diyanet TV', fr: 'Diyanet TV', en: 'Diyanet TV' },
+    aciklama: {
+      tr: 'Canlı yayın, program arşivi ve Kâbe yayını.',
+      fr: 'Diffusion en direct, archives des émissions et retransmission de la Kaaba.',
+      en: 'Live broadcast, programme archive and the Kaaba stream.',
+    },
+    diller: ['TR'],
+  },
+  {
+    url: 'https://dijital.diyanet.gov.tr/',
+    ad: { tr: 'Diyanet Dijital', fr: 'Diyanet Digital', en: 'Diyanet Digital' },
+    aciklama: {
+      tr: 'Aşağıdaki kütüphanenin kaynağı: e-kitap, e-dergi, sesli kitap ve video arşivi.',
+      fr: 'La source de la bibliothèque ci-dessous : livres, revues, livres audio et vidéos.',
+      en: 'The source of the library below: e-books, magazines, audiobooks and videos.',
+    },
+    diller: ['TR'],
+  },
+  {
+    url: 'https://www.diyanet.be/',
+    ad: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium' },
+    aciklama: {
+      tr: 'Camimizin bağlı olduğu üst kuruluş: duyurular, hac-umre ve cenaze fonu.',
+      fr: 'L’organisation faîtière dont dépend notre mosquée : annonces, hajj-omra et fonds funéraire.',
+      en: 'The umbrella body our mosque belongs to: announcements, hajj/umrah and the funeral fund.',
+    },
+    diller: ['TR'],
+  },
+];
+
+const M = {
+  tr: { etiket: 'Diyanet kaynakları', baslik: 'Diyanet’in Çevrimiçi Hizmetleri',
+        giris: 'Kur’an’dan fetvaya, elifbâdan ansiklopediye — Diyanet İşleri Başkanlığı’nın herkese açık ve ücretsiz portalları. Her kartta içeriğin dili yazılıdır.',
+        dilEtiketi: 'Dil', dis: 'yeni sekmede açılır' },
+  fr: { etiket: 'Ressources du Diyanet', baslik: 'Les services en ligne du Diyanet',
+        giris: 'Du Coran aux fatwas, de l’alphabet arabe à l’encyclopédie — les portails publics et gratuits de la Présidence des Affaires religieuses. La langue du contenu est indiquée sur chaque carte.',
+        dilEtiketi: 'Langue', dis: 'ouvre dans un nouvel onglet' },
+  en: { etiket: 'Diyanet resources', baslik: 'Diyanet’s Online Services',
+        giris: 'From the Qur’an to fatwas, from the Arabic alphabet to the encyclopaedia — the free public portals of the Presidency of Religious Affairs. Each card states the language of the content.',
+        dilEtiketi: 'Language', dis: 'opens in a new tab' },
+} as const;
+
+const m = M[dil];
+const alan = (u: string) => new URL(u).hostname.replace(/^www\./, '');
+---
+
+<section id="diyanet-hizmetleri" class="hizmetler">
+  <div class="kapsayici">
+    <p class="etiket etiket-vurgu">{m.etiket}</p>
+    <h2 class="baslik">{m.baslik}</h2>
+    <p class="giris">{m.giris}</p>
+
+    <ul class="izgara">
+      {HIZMETLER.map((h) => (
+        <li class="kart">
+          <a href={h.url} target="_blank" rel="noopener noreferrer">
+            <h3>{h.ad[dil]}<span aria-hidden="true"> ↗</span><span class="sr-only"> — {m.dis}</span></h3>
+            <p class="aciklama">{h.aciklama[dil]}</p>
+            <p class="etiket meta">
+              <span class="diller">{h.diller.join(' · ')}</span>
+              <span class="alan">{alan(h.url)}</span>
+            </p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hizmetler { border-top: 1px solid var(--cizgi); padding: 3.5rem 0 1rem; }
+  .hizmetler .baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
+  .hizmetler .giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
+
+  .izgara { list-style: none; margin: 1.8rem 0 0; padding: 0; display: grid; gap: 0.85rem; }
+  @media (min-width: 40rem) { .izgara { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .izgara { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  .kart { display: flex; }
+  .kart > a { display: flex; flex-direction: column; width: 100%; padding: 1.05rem 1.15rem 0.9rem; text-decoration: none; color: inherit; border-radius: inherit; }
+  .kart > a:hover h3 { color: var(--vurgu); }
+  .kart > a:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; }
+  .kart h3 { font-family: var(--font-serif, Lora, serif); font-size: 1.02rem; line-height: 1.35; margin: 0; }
+  .aciklama { margin: 0.5rem 0 0; font-size: 0.92rem; color: var(--metin-2); }
+  .meta { margin-top: auto; padding-top: 0.9rem; display: flex; gap: 0.75rem; align-items: baseline; }
+  .diller { color: var(--vurgu); }
+  .alan { margin-left: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+</style>

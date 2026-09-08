@@ -1,8 +1,8 @@
 /**
- * Diyanet Fransızca kütüphanesi bağlantı denetimi.
+ * Diyanet kütüphanesi bağlantı denetimi (dijital.diyanet.gov.tr).
  *
  * NE DENETLER
- *   src/data/diyanet-fr-yayinlar.json içindeki her kayıt için:
+ *   src/data/diyanet-yayinlar.json içindeki her kayıt için:
  *     1. Ürün sayfası (sayfaUrl) — 200 dönmeli VE "Sayfa Bulunamadı" içermemeli.
  *        (Diyanet olmayan kitap için de 200 döner, gövdeye bakmak şart.)
  *     2. PDF (pdf) — ilk 1 KB %PDF ile başlamalı, Content-Range toplam boyutu vermeli,
@@ -18,22 +18,25 @@
  *     bu yüzden listeye alınmadı. Aynı arıza başka bir kitapta çıkarsa `--tam` yakalar.
  *
  * KULLANIM
- *   node scripts/diyanet-fr-kontrol.mjs          hızlı (aralık istekleriyle, ~1 MB trafik)
- *   node scripts/diyanet-fr-kontrol.mjs --tam    her PDF'i baştan sona indirip bayt sayar
+ *   node scripts/diyanet-kontrol.mjs          bütün kayıtlar, aralık istekleriyle (~7 dk, ~1 MB)
+ *   node scripts/diyanet-kontrol.mjs --dil fr  yalnız bir dilin kayıtları (hızlı gözden geçirme)
+ *   node scripts/diyanet-kontrol.mjs --tam    her PDF'i baştan sona indirip bayt sayar
  *                                                (~450 MB — elle, ayda bir yeter)
- *   node scripts/diyanet-fr-kontrol.mjs --ayrinti  çalışanları da yazar
+ *   node scripts/diyanet-kontrol.mjs --ayrinti  çalışanları da yazar
  *
  * ÇIKIŞ KODU: sorunlu kayıt varsa 1.
  */
 import { readFileSync } from 'node:fs';
 
 const TAM = process.argv.includes('--tam');
+const DIL_SUZ = (process.argv.find((a) => a.startsWith('--dil=')) || '').slice(6)
+  || (process.argv.includes('--dil') ? process.argv[process.argv.indexOf('--dil') + 1] : '');
 const AYRINTI = process.argv.includes('--ayrinti');
 const ZAMAN_ASIMI = 60000;
 const ARA = 300;
 const BASLIK = { 'User-Agent': 'Mozilla/5.0 (compatible; UluCamiiLinkCheck/1.0; +https://ulucamii.be)' };
 
-const veri = JSON.parse(readFileSync(new URL('../src/data/diyanet-fr-yayinlar.json', import.meta.url), 'utf8'));
+const veri = JSON.parse(readFileSync(new URL('../src/data/diyanet-yayinlar.json', import.meta.url), 'utf8'));
 const bekle = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* Ağ hataları aralıklı olur: --tam koşusunda arka arkaya onlarca MB indirilince sunucu
@@ -66,9 +69,16 @@ async function baytSay(cevap) {
 const sorunlar = [];
 const not = (kayit, mesaj) => sorunlar.push(`${kayit.id} · ${kayit.baslik} — ${mesaj}`);
 
-console.log(`\nDiyanet Fransızca kütüphanesi — ${veri.yayinlar.length} kayıt${TAM ? ' (TAM indirme)' : ''}\n`);
+/* --dil verilmezse bütün diller denetlenir. */
+const kayitlar = DIL_SUZ ? veri.yayinlar.filter((k) => k.dilKodu === DIL_SUZ) : veri.yayinlar;
+if (DIL_SUZ && !kayitlar.length) {
+  console.error(`«${DIL_SUZ}» dilinde kayıt yok. Diller: ${veri.diller.map((d) => d.kod).join(', ')}`);
+  process.exit(2);
+}
 
-for (const k of veri.yayinlar) {
+console.log(`\nDiyanet kütüphanesi — ${kayitlar.length} kayıt${DIL_SUZ ? ` (dil: ${DIL_SUZ})` : ''}${TAM ? ' (TAM indirme)' : ''}\n`);
+
+for (const k of kayitlar) {
   const satir = [];
   try {
     /* 1 — ürün sayfası */
@@ -125,9 +135,9 @@ console.log('');
 if (sorunlar.length) {
   console.log(`SORUNLU KAYIT: ${sorunlar.length}`);
   for (const s of sorunlar) console.log('  ' + s);
-  console.log('\nDüzeltme: kaydı src/data/diyanet-fr-yayinlar.json içinden çıkarın ya da');
+  console.log('\nDüzeltme: kaydı src/data/diyanet-yayinlar.json içinden çıkarın ya da');
   console.log('dijital.diyanet.gov.tr üzerinde yeni adresini bulup güncelleyin.');
 } else {
-  console.log(`Bütün kayıtlar sağlam (${veri.yayinlar.length}/${veri.yayinlar.length}).`);
+  console.log(`Bütün kayıtlar sağlam (${kayitlar.length}/${kayitlar.length}).`);
 }
 process.exit(sorunlar.length ? 1 : 0);

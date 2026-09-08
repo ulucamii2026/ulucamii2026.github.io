@@ -16,7 +16,7 @@ permissions:
 jobs:
   denetim:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -50,3 +50,37 @@ jobs:
           curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd \
             --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be" \
             --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari.txt
+
+      # Diyanet kütüphanesi ayrı denetlenir: dijital.diyanet.gov.tr HEAD isteğine 405 döner,
+      # ölü ürün sayfası HTTP 200 + "Sayfa Bulunamadı" gövdesi verir ve GET her PDF'i baştan
+      # indirir. `continue-on-error`: bir kitabın kaybolması siteyi bozmaz, yalnız haber verilir.
+      - name: Diyanet kütüphanesini yokla
+        id: diyanet
+        # always(): dış bağlantı adımı kırıldıysa bile kütüphane yine denetlensin.
+        if: always()
+        continue-on-error: true
+        run: node scripts/diyanet-kontrol.mjs --ayrinti | tee /tmp/diyanet.log
+
+      - name: Diyanet kütüphanesinde sorun varsa uyarı e-postası (info@ulucamii.be)
+        if: always() && steps.diyanet.outcome == 'failure'
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] Diyanet kutuphanesinde kirik kayit var"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "Ihtida sayfasindaki Diyanet kutuphanesinde artik acilmayan yayin(lar) var."
+            echo "Diyanet kendi sunucusundan kaldirmis ya da adresi degistirmis olabilir."
+            echo
+            sed -n '/SORUNLU KAYIT/,$p' /tmp/diyanet.log | head -40
+            echo
+            echo "Yapilacak: src/data/diyanet-yayinlar.json icinden kaydi cikarin ya da"
+            echo "dijital.diyanet.gov.tr uzerinde yeni adresini bulup guncelleyin."
+            echo "Tam kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari2.txt
+          curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd \
+            --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be" \
+            --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari2.txt

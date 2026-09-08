@@ -2,7 +2,8 @@
 /** İhtida (İslam'a giriş) bilgi sayfası — gövde src/content/sayfalar/{dil}/ihtida.md,
     yan sütunda süreç zaman çizelgesi + gerekli belgeler + iletişim kartı + online başvuru düğmesi. */
 import IcerikSayfasi from '../components/IcerikSayfasi.astro';
-import DiyanetKitapligi from '../components/DiyanetKitapligi.astro';
+import DiyanetPortallari from '../components/DiyanetPortallari.astro';
+import KutuphaneBandi from '../components/KutuphaneBandi.astro';
 import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import Ikon from '../components/Ikon.astro';
 import { ceviri, yol } from '../i18n/utils';
@@ -41,8 +42,8 @@ const m = dil === 'tr'
       ek9: 'İhtida Belgesi (EK-9) — resmî örnek',
       ek10: 'KVKK Açık Rıza Metni (EK-10) — tam metin',
       ucretsiz: 'Süreç tamamen ücretsizdir.',
-      kaynakBaslik: 'Fransızca Kaynaklar',
-      kaynakAlt: 'Diyanet’in Fransızca yayınları — ibadet rehberi, tanıtım broşürleri, kırk hadis, fetvalar. Ücretsiz, sayfanın altında.',
+      kaynakBaslik: 'Diyanet Kütüphanesi',
+      kaynakAlt: 'Diyanet’in ücretsiz e-kitapları — tanıtım broşürleri, ibadet rehberi, kırk hadis, fetvalar, mealler. Kırktan fazla dilde, beş yüzün üzerinde kitap.',
       kaynakButon: 'Kütüphaneye git',
     }
   : dil === 'en'
@@ -73,8 +74,8 @@ const m = dil === 'tr'
       ek9: 'Conversion Certificate (EK-9) — official template',
       ek10: 'GDPR Explicit Consent Text (EK-10) — full text',
       ucretsiz: 'The process is entirely free of charge.',
-      kaynakBaslik: 'French Resources',
-      kaynakAlt: 'Diyanet’s French publications — worship guide, introductory booklets, forty hadiths, fatwas. Free, at the bottom of this page.',
+      kaynakBaslik: 'Diyanet Library',
+      kaynakAlt: 'Diyanet’s free e-books — introductory booklets, worship guide, forty hadiths, fatwas, Qur’an translations. Over five hundred books in more than forty languages.',
       kaynakButon: 'Go to the library',
     }
   : {
@@ -104,8 +105,8 @@ const m = dil === 'tr'
       ek9: 'Attestation de conversion (EK-9) — modèle officiel',
       ek10: 'Consentement RGPD (EK-10) — texte complet',
       ucretsiz: 'La démarche est entièrement gratuite.',
-      kaynakBaslik: 'Ressources en français',
-      kaynakAlt: 'Les publications francophones du Diyanet — guide du culte, brochures d’introduction, quarante hadiths, fatwas. Gratuit, en bas de cette page.',
+      kaynakBaslik: 'Bibliothèque Diyanet',
+      kaynakAlt: 'Les livres numériques gratuits du Diyanet — brochures d’introduction, guide du culte, quarante hadiths, fatwas, traductions du Coran. Plus de cinq cents ouvrages en plus de quarante langues.',
       kaynakButon: 'Aller à la bibliothèque',
     };
 ---
@@ -143,7 +144,7 @@ const m = dil === 'tr'
   <div slot="yan" class="kart p-5">
     <p class="etiket etiket-vurgu">{m.kaynakBaslik}</p>
     <p class="mt-2 text-sm text-(--metin-2)">{m.kaynakAlt}</p>
-    <a href="#fransizca-kaynaklar" class="dugme dugme-ikincil mt-4 w-full justify-center">{m.kaynakButon}</a>
+    <a href={yol(dil, 'kutuphane')} class="dugme dugme-ikincil mt-4 w-full justify-center">{m.kaynakButon}</a>
   </div>
 
   <div slot="yan" class="kart-kagit p-5">
@@ -154,5 +155,6 @@ const m = dil === 'tr'
     </ul>
   </div>
 
-  <DiyanetKitapligi slot="alt" dil={dil} />
+  <DiyanetPortallari slot="alt" dil={dil} />
+  <KutuphaneBandi slot="alt" dil={dil} />
 </IcerikSayfasi>

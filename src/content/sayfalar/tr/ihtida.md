@@ -1,7 +1,7 @@
 ---
 baslik: İhtida (İslam’a Giriş)
 altBaslik: İslam’a girmek isteyen herkes, hiçbir baskı ve ön şart olmaksızın camimize başvurabilir.
-aciklama: "İslam’a giriş (ihtida): kelime-i şehadet, tören, İhtida Belgesi (EK-9), gerekli belgeler, ihtida sonrası destek ve ücretsiz Fransızca Diyanet kaynakları."
+aciklama: "İslam’a giriş (ihtida): kelime-i şehadet, tören, İhtida Belgesi (EK-9), gerekli belgeler, ihtida sonrası destek ve kırktan fazla dilde ücretsiz Diyanet kütüphanesi."
 guncelleme: 2026-09-08
 ---
 
@@ -14,6 +14,14 @@ Görüşme **Türkçe veya Fransızca** yapılabilir. Kadın adaylar dilerse, g�
 ## İslam’a Nasıl Girilir?
 
 İslam’a giriş, Allah’ın birliğine ve Hz. Muhammed’in (s.a.v.) O’nun elçisi olduğuna kalpten inanıp bunu dille ikrar etmekle, yani **kelime-i şehadet** getirmekle gerçekleşir. Bunun dışında bir şart yoktur — özel bir eğitim, sınav veya bekleme süresi aranmaz.
+
+<figure class="ayet">
+<p lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
+<p class="meal">Okunuşu: “Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve resûlüh.”</p>
+<p class="meal">Anlamı: “Şahitlik ederim ki Allah’tan başka ilah yoktur; yine şahitlik ederim ki Muhammed O’nun kulu ve elçisidir.”</p>
+<figcaption class="etiket">Kelime-i Şehâdet</figcaption>
+</figure>
+
 
 - **Baskı var mı?** Hayır. Karar tamamen size aittir; görevlimiz törende bunu şahitler huzurunda size ayrıca sorar.
 - **Ailem/çevrem bilgilendirilir mi?** Hayır. Paylaştığınız bilgiler gizli tutulur ve yalnızca yetkili en az sayıda kişiyle (görevli, Müşavirlik) paylaşılır (bkz. [Gizlilik Politikamız](/tr/gizlilik/)).
@@ -82,7 +90,7 @@ Din değiştirmek, Avrupa hukukunda **özel nitelikli (hassas) kişisel veri** s
 
 - **Rehber kardeş.** Dilerseniz cemaatimizden, Fransızca konuşan bir kardeşimiz ilk dönemde size eşlik eder; namaz, cami âdâbı ve pratik sorularda yanınızda olur.
 - **Temel dersler.** Abdest ve namazın öğrenilmesi, Elifbâ ve Kur’an okuma, temel ilmihal konuları — bireysel ya da mevcut derslerimize katılarak.
-- **Kendi dilinizde kaynak.** Aşağıdaki **Fransızca Diyanet kütüphanesi** ile ibadet rehberinden fetvalara kadar geniş bir kaynağa ücretsiz erişebilirsiniz.
+- **Kendi dilinizde kaynak.** **Diyanet Kütüphanesi** ile ibadet rehberinden fetvalara kadar geniş bir kaynağa kırktan fazla dilde ücretsiz erişebilirsiniz.
 - **Cemaat hayatı.** Cuma namazı, sohbetler, iftar ve bayram programları; çarşamba günleri hanımlara yönelik irşat programı.
 - **İsim.** İsim değiştirmek **zorunlu değildir.** İstemeniz hâlinde uygun bir isim önerilir ve resmî isim değişikliği için hangi mercie başvurabileceğiniz hatırlatılır.
 
@@ -99,9 +107,11 @@ Avrupa’da yeni Müslüman olan kardeşlerimizin en çok konuştuğu başlıkla
 - **Cenaze ve vasiyet.** Vefat hâlinde İslamî usullere göre defnedilmek isteyen mühtediler için **yazılı vasiyet** büyük önem taşır; aksi hâlde aile farklı bir yol (örneğin kremasyon) tercih edebilir. Bu konuda bilgi vermek ve [Cenaze ve Nakil Fonu](/tr/cenaze-hizmetleri/) gibi imkânları anlatmak için görevlimize başvurabilirsiniz.
 - **Miras, evlilik, iş yerindeki sorunlar.** Fıkhî boyutta rehberlik eder, hukukî konularda ise sizi yetkili mercilere yönlendiririz; hukukî danışmanlık vermeyiz.
 
-## Fransızca Kaynaklar (Diyanet)
+## Okuyacak Kaynaklar (Diyanet Kütüphanesi)
 
-Sayfanın altında, Diyanet İşleri Başkanlığı’nın **Fransızca yayınlarından oluşan ücretsiz bir kütüphane** bulacaksınız: ibadet rehberi, İslam’ı tanıtan broşürler, kırk hadis kitapçıkları, aile kitapları, İmam-Hatip ders kitapları ve Fransızca fetvalar. Dosyalar **Diyanet’in kendi sunucusunda** durur; bağlantıya tıkladığınızda doğrudan oradan açılır veya indirilir.
+Diyanet İşleri Başkanlığı’nın bütün dijital yayınları ücretsizdir. Sizin için **kırktan fazla dilde beş yüzün üzerinde kitabı** tek bir sayfada topladık: İslam’ı tanıtan broşürler, resimli ibadet rehberi, kırk hadis kitapçıkları, Kur’an-ı Kerim mealleri, aile ve çocuk kitapları, İmam-Hatip ders kitapları ve fetvalar. Fransızca yayınlar konu konu (yeni başlayanlar, ibadet, hadis, aile, çocuk, derinleşme) ayrılmıştır; Felemenkçe, İngilizce, Almanca, Arapça, İspanyolca, İtalyanca ve Türkçe bölümler de vardır.
+
+Dosyalar **Diyanet’in kendi sunucusunda** durur; bağlantıya tıkladığınızda doğrudan oradan açılır veya indirilir. Sayfanın altında ilk okumalar için bir seçki, tamamı için **[Diyanet Kütüphanesi](/tr/diyanet-kutuphanesi/)** sayfası vardır.
 
 ## Sıkça Sorulan Sorular
 

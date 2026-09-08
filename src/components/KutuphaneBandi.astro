@@ -1,0 +1,101 @@
+---
+/**
+ * İhtida sayfasının altındaki kütüphane bandı.
+ *
+ * Tam katalog (500’den fazla kitap, 40’tan fazla dil) kendi sayfasındadır — burada yalnız «ilk okumalar»
+ * durur: İslam'ı yeni araştıran birinin sırayla okuyabileceği Diyanet broşürleri, sayfanın
+ * kendi dilinde. Katalogun tamamı ihtida sayfasına konduğunda sayfa 909 KB HTML üretiyor ve
+ * okunacak metni gömüyordu; bu yüzden bölündü.
+ *
+ * Başlangıç setleri ELLE seçilmiştir: Diyanet'in üç dilde de yayımladığı tanıtım broşürü
+ * serisi (İslam nedir / Müslüman kimdir / Kur'an / Hz. Muhammed / Hz. İsa / Veda Hutbesi)
+ * artı ibadeti öğreten bir rehber. Bir kimlik listede yoksa sessizce atlanır.
+ */
+import veri from '../data/diyanet-yayinlar.json';
+import KitapSatiri from './KitapSatiri.astro';
+import type { Kitap } from './KitapSatiri.astro';
+import { yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+/* Sıra bilinçlidir: önce «İslam nedir», en sonda ibadet rehberi. */
+const BASLANGIC: Record<Dil, string[]> = {
+  fr: ['3624', '4194', '3625', '3623', '3622', '4193', '513', '4950'],
+  tr: ['5266', '4206', '5267', '5265', '5264', '4205', '394'],
+  en: ['3628', '4201', '3629', '3627', '3626', '4199', '525', '5023'],
+};
+
+const M = {
+  tr: {
+    etiket: 'Ücretsiz kütüphane',
+    baslik: 'Okumak, öğrenmek için: Diyanet yayınları',
+    giris:
+      'Diyanet İşleri Başkanlığı’nın bütün dijital yayınları ücretsizdir. Aşağıda İslam’ı yeni araştıran biri için sırayla okunabilecek kitapçıklar var; tamamı — çocuk kitaplarından ilmihale, kırk hadis derlemelerinden meallere kadar — kütüphane sayfasındadır.',
+    ilk: 'İlk okumalar',
+    hepsi: (n: number, d: number) => `Bütün kütüphaneyi aç — ${n} kitap, ${d} dil`,
+    not: 'Dosyalar Diyanet’in kendi sunucusunda durur; bağlantıya tıklayınca oradan açılır veya indirilir.',
+    sayfaKisa: 'sayfa', pdfAc: 'PDF’i aç', epub: 'EPUB', kunye: 'Diyanet sayfası', dis: 'yeni sekmede açılır',
+  },
+  fr: {
+    etiket: 'Bibliothèque gratuite',
+    baslik: 'Pour lire et apprendre : les publications du Diyanet',
+    giris:
+      'Toutes les publications numériques de la Présidence des Affaires religieuses sont gratuites. Voici, dans l’ordre, les brochures que l’on peut lire quand on découvre l’islam ; l’ensemble du fonds — livres pour enfants, guide du culte, recueils de hadiths, traductions du Coran — se trouve sur la page de la bibliothèque.',
+    ilk: 'Premières lectures',
+    hepsi: (n: number, d: number) => `Ouvrir toute la bibliothèque — ${n} ouvrages, ${d} langues`,
+    not: 'Les fichiers restent sur le serveur du Diyanet ; le lien les y ouvre ou les télécharge directement.',
+    sayfaKisa: 'pages', pdfAc: 'Ouvrir le PDF', epub: 'EPUB', kunye: 'Fiche Diyanet', dis: 'ouvre dans un nouvel onglet',
+  },
+  en: {
+    etiket: 'Free library',
+    baslik: 'To read and learn: Diyanet publications',
+    giris:
+      'Every digital publication of the Presidency of Religious Affairs is free. Below are booklets that can be read in order by someone discovering Islam; the whole collection — children’s books, a worship guide, hadith collections, Qur’an translations — is on the library page.',
+    ilk: 'First readings',
+    hepsi: (n: number, d: number) => `Open the whole library — ${n} books, ${d} languages`,
+    not: 'The files stay on Diyanet’s own server; the link opens or downloads them from there.',
+    sayfaKisa: 'pages', pdfAc: 'Open the PDF', epub: 'EPUB', kunye: 'Diyanet page', dis: 'opens in a new tab',
+  },
+} as const;
+const m = M[dil];
+
+const yayinlar = veri.yayinlar as Kitap[];
+const sirali = BASLANGIC[dil]
+  .map((id) => yayinlar.find((y) => y.id === id))
+  .filter((k): k is Kitap => Boolean(k));
+const dilSayisi = new Set(yayinlar.map((y) => y.dilKodu)).size;
+const satirMetni = { sayfaKisa: m.sayfaKisa, pdfAc: m.pdfAc, epub: m.epub, kunye: m.kunye, dis: m.dis };
+---
+
+<section id="diyanet-kutuphanesi" class="kitaplik-bant">
+  <div class="kapsayici">
+    <p class="etiket etiket-vurgu">{m.etiket}</p>
+    <h2 class="bant-baslik">{m.baslik}</h2>
+    <p class="bant-giris">{m.giris}</p>
+
+    <h3 class="bant-ara-baslik">{m.ilk}</h3>
+    <ul class="bant-liste">
+      {sirali.map((k) => (
+        <KitapSatiri kitap={k} dil={dil} metin={satirMetni} />
+      ))}
+    </ul>
+
+    <p class="bant-eylem">
+      <a class="dugme dugme-birincil" href={yol(dil, 'kutuphane')}>{m.hepsi(yayinlar.length, dilSayisi)}</a>
+    </p>
+    <p class="bant-not">{m.not}</p>
+  </div>
+</section>
+
+<style>
+  .kitaplik-bant { background: var(--zemin-2); border-top: 1px solid var(--cizgi); padding: 3.5rem 0 4rem; }
+  .bant-baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
+  .bant-giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
+  .bant-ara-baslik { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: var(--tracking-etiket);
+    text-transform: uppercase; color: var(--vurgu); margin: 2rem 0 0.7rem; }
+  .bant-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.65rem; }
+  .bant-eylem { margin-top: 1.8rem; }
+  .bant-not { margin-top: 1.2rem; font-size: 0.85rem; color: var(--metin-2); max-width: 68ch; }
+</style>

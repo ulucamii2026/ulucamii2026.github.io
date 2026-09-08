@@ -1,0 +1,35 @@
+# Diyanet kütüphanesi üretim hattı
+
+`src/data/diyanet-yayinlar.json` bu dört betikle üretilir. **Günlük işlerde çalıştırmaya gerek
+yoktur**; yılda bir ya da Diyanet yeni yayın eklediğinde tazelenir. Bağlantıların hâlâ yaşadığı
+`npm run denetim:diyanet` ile denetlenir (ayrıca her ay GitHub Actions çalıştırır).
+
+Betikler ara dosyalarla çalışır ve bu ara dosyalar (yüzlerce MB PDF dâhil) **depoya girmez** —
+geçici bir klasörde koşturun:
+
+```bash
+cd <geçici klasör>
+py -3.14 harvest_all.py      # sitemap.xml -> tum-ekitaplar.json  (959 kayıt, ~532'si canlı)
+py -3.14 indir_paralel.py    # Türkçe olmayan PDF'ler -> pdfall/  (5 iş parçacığı, ~2,8 GB)
+py -3.14 basliklar_all.py    # boyut + sayfa sayısı + ilk sayfa metni -> ekitap-detay.json
+cp <depo>/scripts/diyanet-hatti/{uret_tum.py,baslik-duzeltme.json} .
+cp <depo>/src/data/diyanet-fr-yayinlar.json .   # (varsa; elle küratörlüğü yapılmış Fransızca künye)
+py -3.14 uret_tum.py         # -> diyanet-yayinlar.json  ->  src/data/ içine kopyalayın
+```
+
+## Bilinmesi gerekenler
+
+- **Dosyalar bizde durmaz.** PDF/EPUB Diyanet'in sunucusunda kalır; biz yalnız bağlantı veririz.
+  Telif Diyanet'te kalır, yayın güncellenince kopyamız eskimez, depoya gigabaytlarca PDF girmez.
+- **`pdfall/` yalnız başlık çıkarmak için indirilir.** Diyanet'in ürün sayfaları başlığı yalnız
+  Türkçe verir («İSLAM NEDİR (FRANSIZCA BROŞÜR)»); Fransızca okuyan biri için bu işe yaramaz.
+  Bu yüzden PDF'lerin ilk sayfasından kendi dillerindeki başlık çıkarılır.
+- **`baslik-duzeltme.json`** elle küratörlüktür: değer bir metinse başlığı o metin yapar, `null`
+  ise otomatik çıkarımı bastırıp Türkçe künyeye düşürür (kapağı yalnız kolofon olan mealler).
+  Her düzeltme kitabın KAPAĞINDAN okunmuştur; uydurma başlık yazılmaz.
+- **`baslikDili`** alanı başlığın gerçekte hangi dilde olduğunu söyler. Kapak metni çözülemeyince
+  Türkçe künyeye düşülür ve bu alan `tr` olur; `KitapSatiri.astro` `<h4 lang>`'i buna göre yazar.
+- **`kesik` kayıtlar listeye alınmaz.** Cami broşürü (id=510) 1,7 MB bildirip gövdeyi 21 KB'de
+  kesiyordu (üç bağımsız denemede aynı).
+- Bu sunucuda **HEAD 405 döner**; ölü ürün sayfası da HTTP 200 + «Sayfa Bulunamadı!» gövdesi
+  döndürür — bu yüzden denetim koda değil gövdeye bakar.

@@ -34,6 +34,7 @@ export const ui = {
     'nav.cenaze': 'Cenaze Hizmetleri',
     'nav.afisler': 'Afişler',
     'nav.diyanet': 'Diyanet Hizmetleri',
+    'nav.kutuphane': 'Diyanet Kütüphanesi',
     'vefat.baslik': 'Rahmetle Anıyoruz',
     'nav.menu': 'Menü',
     'nav.kapat': 'Kapat',
@@ -138,6 +139,7 @@ export const ui = {
     'nav.cenaze': 'Services funéraires',
     'nav.afisler': 'Affiches',
     'nav.diyanet': 'Services Diyanet',
+    'nav.kutuphane': 'Bibliothèque Diyanet',
     'vefat.baslik': 'In memoriam',
     'nav.menu': 'Menu',
     'nav.kapat': 'Fermer',
@@ -242,6 +244,7 @@ export const ui = {
     'nav.cenaze': 'Funeral Services',
     'nav.afisler': 'Posters',
     'nav.diyanet': 'Diyanet Services',
+    'nav.kutuphane': 'Diyanet Library',
     'vefat.baslik': 'In Loving Memory',
     'nav.menu': 'Menu',
     'nav.kapat': 'Close',
@@ -350,5 +353,6 @@ export const yollar = {
   afisler: { tr: 'afisler', fr: 'affiches', en: 'posters' },
   diyanet: { tr: 'diyanet-hizmetleri', fr: 'services-diyanet', en: 'diyanet-services' },
   vaazlar: { tr: 'vaazlar', fr: 'sermons', en: 'sermons' },
+  kutuphane: { tr: 'diyanet-kutuphanesi', fr: 'bibliotheque-diyanet', en: 'diyanet-library' },
 } as const;
 export type SayfaAnahtari = keyof typeof yollar;

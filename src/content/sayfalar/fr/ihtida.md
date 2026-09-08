@@ -1,7 +1,7 @@
 ---
 baslik: Devenir musulman (Conversion à l’islam)
 altBaslik: Toute personne souhaitant embrasser l’islam peut s’adresser à notre mosquée, sans aucune pression ni condition préalable.
-aciklama: "La conversion à l’islam : chahada, cérémonie, attestation officielle (EK-9), documents, accompagnement et bibliothèque francophone gratuite du Diyanet."
+aciklama: "La conversion à l’islam : chahada, cérémonie, attestation officielle (EK-9), documents, accompagnement et bibliothèque gratuite du Diyanet en plus de quarante langues."
 guncelleme: 2026-09-08
 ---
 
@@ -14,6 +14,14 @@ L’entretien peut se dérouler **en français ou en turc**. Les femmes qui le s
 ## Comment devient-on musulman ?
 
 Devenir musulman consiste à croire de cœur en l’unicité de Dieu (Allah) et au fait que le Prophète Muhammad (paix sur lui) est Son messager, puis à le déclarer verbalement : c’est la **profession de foi (chahada)**. Aucune autre condition n’est requise — ni formation particulière, ni examen, ni délai d’attente.
+
+<figure class="ayet">
+<p lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
+<p class="meal">Prononciation : « Ach-hadou an lâ ilâha illa-llâh, wa ach-hadou anna Muhammadan ‘abdouhou wa rasoûlouh. »</p>
+<p class="meal">Traduction : « J’atteste qu’il n’y a de divinité qu’Allah, et j’atteste que Muhammad est Son serviteur et Son messager. »</p>
+<figcaption class="etiket">La profession de foi (chahada)</figcaption>
+</figure>
+
 
 - **Y a-t-il une quelconque pression ?** Non. La décision vous appartient entièrement ; lors de la cérémonie, notre imam vous posera d’ailleurs expressément cette question devant témoins.
 - **Ma famille ou mon entourage sera-t-il informé ?** Non. Les informations que vous partagez restent confidentielles et ne sont communiquées qu’au nombre minimal de personnes habilitées (l’imam, le Conseiller des Affaires religieuses) — voir notre [Politique de confidentialité](/fr/confidentialite/).
@@ -82,7 +90,7 @@ La conversion est un commencement, pas une fin. Après la cérémonie :
 
 - **Un frère ou une sœur référent(e).** Si vous le souhaitez, un membre francophone de notre communauté vous accompagne les premiers mois : prière, usages de la mosquée, questions pratiques.
 - **Les bases.** Apprentissage des ablutions et de la prière, de l’alphabet arabe et de la lecture du Coran, notions essentielles — en individuel ou au sein de nos cours existants.
-- **Des ressources dans votre langue.** La **bibliothèque francophone du Diyanet** ci-dessous vous donne accès gratuitement à des dizaines d’ouvrages, du guide du culte aux recueils de fatwas.
+- **Des ressources dans votre langue.** La **bibliothèque du Diyanet** vous donne accès gratuitement à des centaines d’ouvrages en plus de quarante langues, du guide du culte aux recueils de fatwas.
 - **La vie communautaire.** Prière du vendredi, causeries, ruptures du jeûne et fêtes ; le mercredi, programme destiné aux femmes.
 - **Le prénom.** Changer de prénom **n’est pas obligatoire.** Si vous le souhaitez, un prénom peut vous être proposé et nous vous rappellerons auprès de quelle autorité effectuer une demande officielle.
 
@@ -99,9 +107,11 @@ Voici les sujets dont les nouveaux musulmans nous parlent le plus, et notre mani
 - **Décès et testament.** Pour un converti qui souhaite être inhumé selon les rites musulmans, un **testament écrit** est essentiel : à défaut, la famille peut choisir une autre voie (par exemple la crémation). Notre imam peut vous informer à ce sujet et vous présenter des solutions comme le [Fonds funéraire et de rapatriement](/fr/services-funeraires/).
 - **Succession, mariage, difficultés au travail.** Nous vous apportons une orientation religieuse et, pour les questions juridiques, nous vous orientons vers les services compétents ; nous ne donnons pas de conseil juridique.
 
-## Ressources en français (Diyanet)
+## Lectures et ressources (bibliothèque Diyanet)
 
-En bas de cette page se trouve une **bibliothèque gratuite composée des publications francophones de la Présidence des Affaires religieuses** : guide du culte, brochures d’introduction à l’islam, recueils de quarante hadiths, ouvrages sur la famille, manuels de lycée et fatwas en français. Les fichiers restent **sur le serveur du Diyanet** : en cliquant sur un lien, vous les ouvrez ou les téléchargez directement depuis là.
+Toutes les publications numériques de la Présidence des Affaires religieuses sont gratuites. Nous en avons rassemblé **plus de cinq cents, en plus de quarante langues**, sur une seule page : brochures d’introduction à l’islam, guide illustré du culte, recueils de quarante hadiths, traductions du Coran, ouvrages sur la famille, livres pour enfants, manuels de lycée et fatwas. Les ouvrages francophones sont classés par thème (pour commencer, apprendre à pratiquer, hadiths, famille, enfants, approfondir) ; il existe aussi des sections en néerlandais, anglais, allemand, arabe, espagnol, italien et turc.
+
+Les fichiers restent **sur le serveur du Diyanet** : en cliquant sur un lien, vous les ouvrez ou les téléchargez directement depuis là. Une sélection de premières lectures se trouve en bas de cette page ; l’ensemble est sur la page **[Bibliothèque Diyanet](/fr/bibliotheque-diyanet/)**.
 
 ## Questions fréquentes
 

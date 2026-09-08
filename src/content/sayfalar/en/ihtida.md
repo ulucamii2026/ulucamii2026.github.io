@@ -1,7 +1,7 @@
 ---
 baslik: Becoming Muslim (Conversion to Islam)
 altBaslik: Anyone who wishes to embrace Islam may come to our mosque, with no pressure and no preconditions.
-aciklama: "Becoming Muslim: the shahada, the ceremony, the official EK-9 certificate, documents, support afterwards and Diyanet’s free French-language library."
+aciklama: "Becoming Muslim: the shahada, the ceremony, the official EK-9 certificate, documents, support afterwards and Diyanet’s free library in more than forty languages."
 guncelleme: 2026-09-08
 ---
 
@@ -14,6 +14,14 @@ The conversation can be held **in French or in Turkish**. Women may ask to speak
 ## How Does One Become Muslim?
 
 Becoming Muslim means believing in your heart that God is One and that Muhammad (peace be upon him) is His Messenger, and then declaring it aloud — the **declaration of faith (shahada)**. There is no other condition: no special training, no examination and no waiting period.
+
+<figure class="ayet">
+<p lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</p>
+<p class="meal">Pronunciation: “Ash-hadu an lâ ilâha illa-llâh, wa ash-hadu anna Muhammadan ‘abduhu wa rasûluh.”</p>
+<p class="meal">Meaning: “I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and Messenger.”</p>
+<figcaption class="etiket">The declaration of faith (shahada)</figcaption>
+</figure>
+
 
 - **Is there any pressure?** No. The decision is entirely yours; at the ceremony the imam asks you this explicitly, in front of witnesses.
 - **Will my family or others be told?** No. What you share stays confidential and is passed only to the smallest possible number of authorised people (the imam, the Counsellor’s office) — see our [Privacy Policy](/en/privacy/).
@@ -82,7 +90,7 @@ Conversion is a beginning, not an end. After the ceremony:
 
 - **A companion.** If you wish, a French-speaking member of our congregation accompanies you through the first months: prayer, mosque etiquette, practical questions.
 - **The basics.** Learning ablution and prayer, the Arabic alphabet and Qur’an reading, and essential knowledge — one to one or within our existing classes.
-- **Resources in your own language.** The **French-language Diyanet library** below gives you free access to dozens of works, from a practical worship guide to collections of fatwas.
+- **Resources in your own language.** The **Diyanet library** gives you free access to hundreds of works in more than forty languages, from a practical worship guide to collections of fatwas.
 - **Community life.** Friday prayer, talks, iftars and festivals; on Wednesdays, the programme for women.
 - **Your name.** Changing your first name **is not required.** If you wish, a name can be suggested and we will tell you which authority handles an official change.
 
@@ -99,9 +107,11 @@ The subjects new Muslims raise with us most often, and how we respond:
 - **Death and wills.** For a convert who wishes to be buried according to Islamic rites, a **written will** matters greatly: without one, the family may choose otherwise (cremation, for example). Our imam can inform you and explain options such as the [Funeral and Repatriation Fund](/en/funeral-services/).
 - **Inheritance, marriage, difficulties at work.** We offer religious guidance and, for legal matters, refer you to the competent services; we do not give legal advice.
 
-## French-Language Resources (Diyanet)
+## Things to Read (the Diyanet Library)
 
-At the bottom of this page you will find a **free library of the French publications of the Presidency of Religious Affairs**: a practical worship guide, introductory booklets on Islam, forty-hadith collections, books on family life, high-school textbooks and fatwas in French. The files stay **on Diyanet’s own server**: clicking a link opens or downloads them directly from there.
+Every digital publication of the Presidency of Religious Affairs is free. We have gathered **more than five hundred books in over forty languages** on a single page: introductory booklets on Islam, an illustrated worship guide, forty-hadith collections, Qur’an translations, books on family life, children’s books, high-school textbooks and fatwas. The French publications are sorted by theme (getting started, learning to worship, hadith, family, children, going deeper); there are also Dutch, English, German, Arabic, Spanish, Italian and Turkish sections.
+
+The files stay **on Diyanet’s own server**: clicking a link opens or downloads them directly from there. A short starter selection sits at the bottom of this page; everything else is on the **[Diyanet Library](/en/diyanet-library/)** page.
 
 ## Frequently Asked Questions
 

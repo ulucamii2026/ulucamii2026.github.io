@@ -13,7 +13,7 @@
     "check": "astro check",
     "denetim": "node scripts/site-denetim.mjs",
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
-    "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9 && npm run denetim:diyanet",
+    "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9",
     "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs",
     "onizle": "astro preview --port 4399",
     "test:anasayfa": "py -3.14 scripts/anasayfa-testi.py",
@@ -24,7 +24,7 @@
     "panel:fontlar": "py -3.14 scripts/panel-fontlar-uret.py",
     "denetim:cms": "node scripts/cms-config-denetim.mjs",
     "firebase:kurallar": "firebase deploy --only firestore:rules,firestore:indexes --project ulucamii-portal",
-    "denetim:diyanet": "node scripts/diyanet-fr-kontrol.mjs"
+    "denetim:diyanet": "node scripts/diyanet-kontrol.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",

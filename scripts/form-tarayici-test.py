@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """Yeni kayıt + ihtida formlarının tarayıcı testi. Önce `npx astro build && npx astro preview --port 4321`; uç nokta taklit edilir (gerçek gönderim yok). Çıktılar D:/tmp/form-test/ (klasörü oluşturun)."""
-import sys, json, time, urllib.request
+import os, sys, json, time, urllib.request
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 from playwright.sync_api import sync_playwright
 
-KOK = "http://localhost:4321"
+# Sunucu adresi ONIZLEME ile değiştirilebilir: `astro preview` arka plan kipinde
+# 4399'a bağlanıyor, elle başlatınca 4321'e.
+KOK = os.environ.get("ONIZLEME", "http://localhost:4321").rstrip("/")
 OUT = r"D:/tmp/form-test"
 EXEC_PARCA = "script.google.com/macros"
 GONDERILEN = []
@@ -65,6 +67,7 @@ with sync_playwright() as p:
         kontrol(f"[{cihaz}] sağlık notu alanı açıldı", pg.locator("#k-saglik-not").is_visible())
         pg.fill("#k-saglik-not", "Fıstık alerjisi"); pg.check("#k-saglik-riza")
         pg.check("#k-goruntu-hayir")
+        pg.check("#k-goruntu-sosyal-hayir")   # ayrı sosyal medya izni (25 Ağu 2026'da eklendi)
         kontrol(f"[{cihaz}] kurallar kutusu kaydırılmadan onay kilitli", pg.locator("#k-onay-kurallar").is_disabled())
         pg.evaluate("document.getElementById('k-kurallar-kutu').scrollTop = 99999"); pg.wait_for_timeout(200)
         kontrol(f"[{cihaz}] kaydırınca onay açıldı", pg.locator("#k-onay-kurallar").is_enabled())

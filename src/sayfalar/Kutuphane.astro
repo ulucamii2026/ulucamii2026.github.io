@@ -1,0 +1,51 @@
+---
+/**
+ * Diyanet Kütüphanesi — Diyanet İşleri Başkanlığı'nın ücretsiz e-kitaplarının tam kataloğu.
+ *
+ * NEDEN AYRI SAYFA: katalog önce ihtida sayfasının altındaydı. 530 kayıt orada 909 KB HTML
+ * üretiyordu; ihtida sayfası okunacak bir metindir, altına 530 satırlık bir katalog konunca
+ * hem sayfa ağırlaşıyor hem de metin kayboluyordu. Katalog kendi sayfasına alındı; ihtida
+ * sayfası oraya bir kartla bağlanıyor.
+ *
+ * İçerik bileşende: components/DiyanetKitapligi.astro (veri src/data/diyanet-yayinlar.json).
+ */
+import Base from '../layouts/Base.astro';
+import SayfaBasligi from '../components/SayfaBasligi.astro';
+import DiyanetKitapligi from '../components/DiyanetKitapligi.astro';
+import DiyanetPortallari from '../components/DiyanetPortallari.astro';
+import veri from '../data/diyanet-yayinlar.json';
+import { ceviri, yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const t = ceviri(dil);
+
+const dilSayisi = new Set(veri.yayinlar.map((y) => y.dilKodu)).size;
+
+const M = {
+  tr: {
+    alt: `Diyanet İşleri Başkanlığı'nın ücretsiz dijital yayınları: ${veri.yayinlar.length} kitap, ${dilSayisi} dilde. Dosyalar Diyanet'in kendi sunucusunda durur; buradaki bağlantılar doğrudan oraya açılır.`,
+    geri: 'İhtida sayfasına dön',
+  },
+  fr: {
+    alt: `Les publications numériques gratuites de la Présidence des Affaires religieuses : ${veri.yayinlar.length} ouvrages en ${dilSayisi} langues. Les fichiers restent sur le serveur du Diyanet ; les liens de cette page y mènent directement.`,
+    geri: 'Retour à la page « Devenir musulman »',
+  },
+  en: {
+    alt: `Free digital publications of the Presidency of Religious Affairs: ${veri.yayinlar.length} books in ${dilSayisi} languages. The files stay on Diyanet's own server; the links here open them directly from there.`,
+    geri: 'Back to “Becoming Muslim”',
+  },
+} as const;
+const m = M[dil];
+---
+<Base baslik={t('nav.kutuphane')} dil={dil} aciklama={m.alt}>
+  <SayfaBasligi etiket={t('nav.diyanet')} baslik={t('nav.kutuphane')} altBaslik={m.alt}>
+    <p class="mt-5">
+      <a class="dugme dugme-ikincil" href={yol(dil, 'ihtida')}>← {m.geri}</a>
+    </p>
+  </SayfaBasligi>
+
+  <DiyanetKitapligi dil={dil} sayfaModu />
+  <DiyanetPortallari dil={dil} />
+</Base>

@@ -1,0 +1,78 @@
+---
+/** Kütüphane satırı — DiyanetKitapligi.astro içinde hem konu gruplarında hem düz listelerde kullanılır. */
+import type { Dil } from '../i18n/ui';
+
+export interface Kitap {
+  id: string;
+  dilKodu: string;
+  baslik: string;
+  /** Başlığın gerçekte hangi dilde olduğu: kapak metni çözülemeyen kayıtlarda Türkçe künyeye
+      düşülür, o zaman «tr» olur — h4'ün lang'i buna göre yazılır. */
+  baslikDili: string;
+  baslikTr: string;
+  aciklama?: { tr: string; fr: string; en: string } | null;
+  grup?: string | null;
+  sayfa?: number | null;
+  boyut?: number | null;
+  pdf: string;
+  epub?: string | null;
+  sayfaUrl: string;
+}
+
+interface Props {
+  kitap: Kitap;
+  dil: Dil;
+  metin: { sayfaKisa: string; pdfAc: string; epub: string; kunye: string; dis: string };
+}
+const { kitap: k, dil, metin: m } = Astro.props;
+
+/* Kendi dilindeki başlık ile Türkçe başlık farklıysa ikisi de gösterilir: otomatik çıkarılan
+   başlık kusurlu olsa bile okuyucu Türkçe künyeden hangi kitap olduğunu anlar. */
+const aciklama = k.aciklama?.[dil] || (k.baslikTr && k.baslikTr !== k.baslik ? k.baslikTr : '');
+/* Süzgeç anahtarı öznitelikle taşınmaz: 530 satırda ~50 KB HTML ederdi. Bunun yerine
+   DiyanetKitapligi.astro açılışta .kitap-metin'in metnini okur (dil adını da ekleyerek). */
+const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
+---
+<li class="kitap kart" data-kitap>
+  <div class="kitap-metin">
+    <h4 lang={k.baslikDili}>{k.baslik}</h4>
+    {aciklama && <p class="kitap-aciklama">{aciklama}</p>}
+    <p class="etiket kitap-meta">
+      {k.sayfa ? <span>{k.sayfa} {m.sayfaKisa}</span> : null}
+      {k.sayfa && k.boyut ? <span aria-hidden="true"> · </span> : null}
+      {k.boyut ? <span>PDF {mb(k.boyut)}</span> : null}
+    </p>
+  </div>
+  <div class="kitap-baglantilar">
+    <a class="dugme dugme-birincil" href={k.pdf} target="_blank" rel="noopener noreferrer">
+      {m.pdfAc}<span class="sr-only"> — {k.baslik}, {m.dis}</span><span aria-hidden="true"> ↗</span>
+    </a>
+    {k.epub && (
+      <a class="dugme dugme-ikincil" href={k.epub} target="_blank" rel="noopener noreferrer">
+        {m.epub}<span class="sr-only"> — {k.baslik}</span>
+      </a>
+    )}
+    <a class="kunye-link" href={k.sayfaUrl} target="_blank" rel="noopener noreferrer">
+      {m.kunye}<span class="sr-only"> — {k.baslik}</span><span aria-hidden="true"> ↗</span>
+    </a>
+  </div>
+</li>
+
+<style>
+  .kitap { padding: 0.95rem 1.1rem; display: grid; gap: 0.8rem; }
+  /* Tailwind preflight'ta [hidden] display:none'dur ama .kitap kendi display'ini veriyor:
+     süzgeç gizlemesi için açıkça bastırılmalı. */
+  .kitap[hidden] { display: none; }
+  .kitap h4 { font-family: var(--font-serif, Lora, serif); font-size: 1.02rem; line-height: 1.4; margin: 0; }
+  .kitap-aciklama { margin: 0.4rem 0 0; color: var(--metin-2); font-size: 0.94rem; }
+  .kitap-meta { margin-top: 0.55rem; }
+  .kitap-baglantilar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+  .kitap-baglantilar .dugme { padding: 0.55rem 1rem; font-size: 0.9rem; }
+  .kunye-link { font-size: 0.88rem; color: var(--metin-2); text-decoration: underline; text-underline-offset: 3px; padding-block: 0.4rem; }
+  .kunye-link:hover { color: var(--vurgu); }
+
+  @media (min-width: 46rem) {
+    .kitap { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.4rem; }
+    .kitap-baglantilar { justify-content: flex-end; }
+  }
+</style>
