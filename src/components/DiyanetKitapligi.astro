@@ -45,6 +45,9 @@ const M = {
     ara: 'Kütüphanede ara',
     dilSerit: 'Diller',
     tumu: 'Bütün yayınlar',
+    dahaFazla: (n: number) => `${n} yayın daha göster`,
+    bulunanTek: '{n} yayın bulundu', bulunanCok: '{n} yayın bulundu',
+    sizinDil: 'sayfanın dili',
     araYer: 'Başlık, konu veya dil — örnek: prière, Coran, namaz…',
     sonucYok: 'Aramanıza uyan yayın yok.',
     adet: (n: number) => `${n} yayın`,
@@ -66,6 +69,9 @@ const M = {
     ara: 'Rechercher dans la bibliothèque',
     dilSerit: 'Langues',
     tumu: 'Tous les ouvrages',
+    dahaFazla: (n: number) => `Afficher ${n} ouvrages de plus`,
+    bulunanTek: '{n} ouvrage trouvé', bulunanCok: '{n} ouvrages trouvés',
+    sizinDil: 'langue de la page',
     araYer: 'Titre, thème ou langue — ex. : prière, Coran, famille…',
     sonucYok: 'Aucune publication ne correspond à votre recherche.',
     adet: (n: number) => `${n} ouvrage${n > 1 ? 's' : ''}`,
@@ -87,6 +93,9 @@ const M = {
     ara: 'Search the library',
     dilSerit: 'Languages',
     tumu: 'All publications',
+    dahaFazla: (n: number) => `Show ${n} more books`,
+    bulunanTek: '{n} book found', bulunanCok: '{n} books found',
+    sizinDil: 'page language',
     araYer: 'Title, topic or language — e.g. prière, Coran, prayer…',
     sonucYok: 'No publication matches your search.',
     adet: (n: number) => `${n} book${n > 1 ? 's' : ''}`,
@@ -118,10 +127,11 @@ const dilKumeleri = veri.diller
   .filter((d) => d.kitaplar.length > 0)
   .sort((a, b) => dilSirasi(a.kod) - dilSirasi(b.kod) || a.ad.localeCompare(b.ad, 'fr'));
 
-/* Varsayılan açık: yalnız sayfanın kendi dili, o da 60 kitabı geçmiyorsa. Türkçe bölüm
-   162 kitapla açık gelince sayfa 24.500 px oluyordu; üstteki dil şeridi zaten her bölümü
-   tek dokunuşta açıyor. */
-const ACIK = (kod: string, adet: number) => kod === dil && adet <= 60;
+/* Varsayılan açık: sayfanın kendi dili (Rıdvan'ın isteği, 8 Eyl 2026). Türkçe bölüm 162
+   kitapla tümü açık gelince sayfa 24.500 px oluyordu; bu yüzden uzun listeler ilk KIRPMA
+   kadarını gösterir, kalanı iç içe bir <details> içinde durur — JS gerekmez. */
+const ACIK = (kod: string) => kod === dil;
+const KIRPMA = 40;
 
 const temaliKume = (kitaplar: Kitap[]) => {
   const gruplu = TEMA_SIRA.map((g) => ({ anahtar: g, kitaplar: kitaplar.filter((k) => k.grup === g) }))
@@ -153,14 +163,17 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
       <label class="etiket" for="kitap-ara">{m.ara}</label>
       <input id="kitap-ara" type="search" placeholder={m.araYer} autocomplete="off" spellcheck="false" />
     </div>
+    <p id="kitap-sonuc" class="sonuc-yok" role="status" aria-live="polite" hidden
+       data-tek={m.bulunanTek} data-cok={m.bulunanCok} data-dil={dil}></p>
     <p id="kitap-sonuc-yok" class="sonuc-yok" hidden>{m.sonucYok}</p>
 
     <nav class="dil-serit" aria-label={m.dilSerit}>
       <ul>
         {dilKumeleri.map((d) => (
           <li>
-            <a class="dil-cip" href={`#kitaplik-${d.kod}`} data-dil-cip>
+            <a class="dil-cip" href={`#kitaplik-${d.kod}`} data-dil-cip aria-current={d.kod === dil ? 'true' : undefined}>
               <span lang={d.kod}>{d.ad}</span> <span class="cip-adet">{d.kitaplar.length}</span>
+              {d.kod === dil && <span class="sr-only"> — {m.sizinDil}</span>}
             </a>
           </li>
         ))}
@@ -171,7 +184,7 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
       const tema = temaliKume(d.kitaplar);
       const satirMetni = { sayfaKisa: m.sayfaKisa, pdfAc: m.pdfAc, epub: m.epub, kunye: m.kunye, dis: m.dis };
       return (
-        <details class="grup" data-grup id={`kitaplik-${d.kod}`} open={ACIK(d.kod, d.kitaplar.length)}>
+        <details class="grup" data-grup data-dil-kodu={d.kod} id={`kitaplik-${d.kod}`} open={ACIK(d.kod)}>
           <summary>
             <span class="grup-ad" lang={d.kod}>{d.ad}</span>
             {d.adTr !== d.ad && <span class="etiket grup-alt">{d.adTr}</span>}
@@ -197,9 +210,19 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
               )}
             </div>
           ) : (
-            <ul class="liste">
-              {d.kitaplar.map((k) => <KitapSatiri kitap={k} dil={dil} metin={satirMetni} />)}
-            </ul>
+            <>
+              <ul class="liste">
+                {d.kitaplar.slice(0, KIRPMA).map((k) => <KitapSatiri kitap={k} dil={dil} metin={satirMetni} />)}
+              </ul>
+              {d.kitaplar.length > KIRPMA && (
+                <details class="kalan" data-grup>
+                  <summary><span class="kalan-ad">{m.dahaFazla(d.kitaplar.length - KIRPMA)}</span></summary>
+                  <ul class="liste">
+                    {d.kitaplar.slice(KIRPMA).map((k) => <KitapSatiri kitap={k} dil={dil} metin={satirMetni} />)}
+                  </ul>
+                </details>
+              )}
+            </>
           )}
         </details>
       );
@@ -215,51 +238,97 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
   if (kutu) {
     const sade = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const kitaplar = Array.from(document.querySelectorAll<HTMLElement>('[data-kitap]'));
-    /* Dil adı satırın kendi metninde yok: «français» aramasının çalışması için üst
-       kümenin başlığı anahtarın önüne eklenir. */
+    /* Dil adı satırın kendi metninde yok: «français» aramasının çalışması için üst kümenin
+       başlığı anahtarın önüne eklenir. Uzun listelerin taşan kısmı da bir <details> olduğu
+       için dil adı [data-dil-kodu] ile aranır — yoksa «40 yayın daha göster» yazısı geliyordu. */
     const dilAdi = (k: HTMLElement) =>
-      k.closest('details[data-grup]')?.querySelector('summary')?.textContent ?? '';
+      k.closest('details[data-dil-kodu]')?.querySelector('summary')?.textContent ?? '';
     const gruplar = Array.from(document.querySelectorAll<HTMLDetailsElement>('details[data-grup]'));
     const temalar = Array.from(document.querySelectorAll<HTMLElement>('.tema'));
     const acikBaslangic = gruplar.map((g) => g.open);
     const sonucYok = document.getElementById('kitap-sonuc-yok');
+    const sonuc = document.getElementById('kitap-sonuc');
     const anahtar = new Map(
       kitaplar.map((k) => [k, sade(`${dilAdi(k)} ${k.querySelector('.kitap-metin')?.textContent ?? ''}`)]),
     );
     const doluMu = (el: Element) =>
       Array.from(el.querySelectorAll<HTMLElement>('[data-kitap]')).some((k) => !k.hidden);
+    /* Yalnız değişeni yaz: 529 satırda her tuş vuruşunda hepsine yazmak yerleşimi tetikliyor. */
+    const gizle = (el: HTMLElement, deger: boolean) => { if (el.hidden !== deger) el.hidden = deger; };
+
+    const sonucYaz = (n: number | null) => {
+      if (!sonuc) return;
+      if (n === null) { sonuc.hidden = true; return; }
+      const kalip = (n === 1 ? sonuc.dataset.tek : sonuc.dataset.cok) || '{n}';
+      sonuc.textContent = kalip.replace('{n}', new Intl.NumberFormat(sonuc.dataset.dil || 'tr').format(n));
+      sonuc.hidden = false;
+    };
 
     const uygula = () => {
       const q = sade(kutu.value.trim());
       if (!q) {
-        kitaplar.forEach((k) => (k.hidden = false));
-        temalar.forEach((t) => (t.hidden = false));
-        gruplar.forEach((g, i) => { g.hidden = false; g.open = acikBaslangic[i]; });
-        if (sonucYok) sonucYok.hidden = true;
+        kitaplar.forEach((k) => gizle(k, false));
+        temalar.forEach((t) => gizle(t, false));
+        gruplar.forEach((g, i) => { gizle(g, false); g.open = acikBaslangic[i]; });
+        gizle(sonucYok as HTMLElement, true);
+        sonucYaz(null);
         return;
       }
       let toplam = 0;
       kitaplar.forEach((k) => {
         const uyar = (anahtar.get(k) ?? '').includes(q);
-        k.hidden = !uyar;
+        gizle(k, !uyar);
         if (uyar) toplam++;
       });
-      temalar.forEach((t) => (t.hidden = !doluMu(t)));
-      gruplar.forEach((g) => { const v = doluMu(g); g.hidden = !v; g.open = v; });
-      if (sonucYok) sonucYok.hidden = toplam > 0;
+      temalar.forEach((t) => gizle(t, !doluMu(t)));
+      gruplar.forEach((g) => { const v = doluMu(g); gizle(g, !v); g.open = v; });
+      if (sonucYok) gizle(sonucYok, toplam > 0);
+      sonucYaz(toplam || null);
     };
 
     kutu.addEventListener('input', uygula);
     uygula();
   }
 
-  /* Dil şeridi: bağlantı kapalı bir <details>'i açmaz, o yüzden elle açılır. JS yoksa
-     bağlantı yine doğru başlığa kaydırır, kullanıcı başlığa dokunup açar. */
+  /* Açık bölümler hatırlanır: okuyucu Felemenkçe bölümünü açıp gittiyse dönüşte açık bulur.
+     Kayıt yoksa sunucunun verdiği hâl geçerlidir (sayfanın kendi dili açık gelir). */
+  /* Anahtar sayfanın diline bağlıdır: Fransızca sayfada Fransızcayı açan biri, Türkçe
+     sayfaya geçtiğinde Türkçe bölümü kapalı bulmasın. */
+  const ANAHTAR = `ulucamii:kutuphane:acik:${document.documentElement.lang || 'tr'}`;
+  const dilGruplari = Array.from(document.querySelectorAll<HTMLDetailsElement>('details[data-dil-kodu]'));
+  try {
+    const kayit = localStorage.getItem(ANAHTAR);
+    if (kayit) {
+      const acik = new Set(JSON.parse(kayit) as string[]);
+      for (const g of dilGruplari) g.open = acik.has(g.dataset.dilKodu || '');
+    }
+  } catch { /* özel pencere ya da kapalı depolama: sunucunun verdiği hâl kalsın */ }
+  const hatirla = () => {
+    try {
+      localStorage.setItem(ANAHTAR, JSON.stringify(
+        dilGruplari.filter((g) => g.open).map((g) => g.dataset.dilKodu),
+      ));
+    } catch { /* yok say */ }
+  };
+  for (const g of dilGruplari) g.addEventListener('toggle', hatirla);
+
+  /* Dil şeridi ve dış bağlantılar: adres çubuğundaki #kitaplik-nl kapalı bir <details>'i
+     kendiliğinden AÇMAZ, o yüzden elle açılır. JS yoksa bağlantı yine doğru başlığa
+     kaydırır, kullanıcı başlığa dokunup açar. */
+  const hedefiAc = (secici: string) => {
+    if (!secici || !secici.startsWith('#kitaplik-')) return;
+    const hedef = document.querySelector<HTMLDetailsElement>(secici);
+    if (hedef) hedef.open = true;
+    return hedef;
+  };
   for (const cip of document.querySelectorAll<HTMLAnchorElement>('[data-dil-cip]')) {
-    cip.addEventListener('click', () => {
-      const hedef = document.querySelector<HTMLDetailsElement>(cip.getAttribute('href') || '');
-      if (hedef) hedef.open = true;
-    });
+    cip.addEventListener('click', () => hedefiAc(cip.getAttribute('href') || ''));
+  }
+  window.addEventListener('hashchange', () => hedefiAc(location.hash));
+  if (location.hash) {
+    const hedef = hedefiAc(location.hash);
+    /* Açılınca yükseklik değiştiği için tarayıcının ilk kaydırması yanlış yere düşüyor. */
+    if (hedef) requestAnimationFrame(() => hedef.scrollIntoView({ block: 'start' }));
   }
 </script>
 
@@ -281,6 +350,8 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
     border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin);
     color: var(--metin); text-decoration: none; font-size: 0.88rem; }
   .dil-cip:hover { border-color: var(--vurgu); color: var(--vurgu); }
+  /* Sayfanın kendi dili: bölümü zaten açık gelir, şeritte de belli olsun. */
+  .dil-cip[aria-current] { border-color: var(--vurgu); color: var(--vurgu); font-weight: 600; }
   .dil-cip:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; }
   .cip-adet { font-family: var(--font-mono); font-size: 0.74rem; color: var(--metin-2); }
   .dil-cip:hover .cip-adet { color: inherit; }
@@ -305,6 +376,17 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
     color: var(--vurgu); margin: 0.9rem 0 0.55rem; }
 
   .liste { list-style: none; padding: 0 0 1.2rem; margin: 0; display: grid; gap: 0.65rem; }
+
+  /* Uzun listelerin taşan kısmı: JS gerekmeden açılır (iç içe <details>). */
+  .kalan { padding-bottom: 1.2rem; }
+  .kalan[hidden] { display: none; }
+  .kalan > summary { display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; list-style: none;
+    min-height: 44px; padding: 0.3rem 0; color: var(--vurgu); font-size: 0.92rem; }
+  .kalan > summary::-webkit-details-marker { display: none; }
+  .kalan > summary::after { content: '+'; font-family: var(--font-mono); }
+  .kalan[open] > summary::after { content: '−'; }
+  .kalan > summary:hover .kalan-ad { text-decoration: underline; text-underline-offset: 3px; }
+  .kalan > summary:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
 
   .kaynak-not { margin-top: 2rem; font-size: 0.85rem; color: var(--metin-2); max-width: 68ch; }
 </style>

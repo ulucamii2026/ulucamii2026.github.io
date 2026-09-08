@@ -29,6 +29,9 @@ const { kitap: k, dil, metin: m } = Astro.props;
 /* Kendi dilindeki başlık ile Türkçe başlık farklıysa ikisi de gösterilir: otomatik çıkarılan
    başlık kusurlu olsa bile okuyucu Türkçe künyeden hangi kitap olduğunu anlar. */
 const aciklama = k.aciklama?.[dil] || (k.baslikTr && k.baslikTr !== k.baslik ? k.baslikTr : '');
+/* Küratörlü açıklama sayfanın dilindedir; onun yerine Türkçe künye düşüyorsa lang de Türkçe
+   olmalı — yoksa ekran okuyucu Türkçe künyeyi Fransızca diye seslendiriyor. */
+const aciklamaDili = k.aciklama?.[dil] ? dil : 'tr';
 /* Süzgeç anahtarı öznitelikle taşınmaz: 530 satırda ~50 KB HTML ederdi. Bunun yerine
    DiyanetKitapligi.astro açılışta .kitap-metin'in metnini okur (dil adını da ekleyerek). */
 const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
@@ -36,7 +39,7 @@ const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
 <li class="kitap kart" data-kitap>
   <div class="kitap-metin">
     <h4 lang={k.baslikDili}>{k.baslik}</h4>
-    {aciklama && <p class="kitap-aciklama">{aciklama}</p>}
+    {aciklama && <p class="kitap-aciklama" lang={aciklamaDili}>{aciklama}</p>}
     <p class="etiket kitap-meta">
       {k.sayfa ? <span>{k.sayfa} {m.sayfaKisa}</span> : null}
       {k.sayfa && k.boyut ? <span aria-hidden="true"> · </span> : null}
@@ -59,7 +62,8 @@ const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
 </li>
 
 <style>
-  .kitap { padding: 0.95rem 1.1rem; display: grid; gap: 0.8rem; }
+  /* 529 satır tek sayfada: görünmeyen satırların yerleşimi hesaplanmasın. */
+  .kitap { padding: 0.95rem 1.1rem; display: grid; gap: 0.8rem; content-visibility: auto; contain-intrinsic-size: auto 96px; }
   /* Tailwind preflight'ta [hidden] display:none'dur ama .kitap kendi display'ini veriyor:
      süzgeç gizlemesi için açıkça bastırılmalı. */
   .kitap[hidden] { display: none; }
