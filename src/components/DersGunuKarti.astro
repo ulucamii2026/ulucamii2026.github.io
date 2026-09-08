@@ -1,7 +1,16 @@
 ---
 /**
- * Ders günü kartı — DersMateryalleri.astro'nun «güncel» ve «arşiv» bölümlerinde aynı kart.
- * Satırlar: plan (PDF) · sunumlar (PowerPoint sesli + sessiz PDF) · ekler. Her satır data-kod taşır (alan filtresi).
+ * Bir ders günü — katlanır satır (8 Eyl 2026 yeniden düzeni).
+ *
+ * Kapalıyken iki satırlık bir özet: tarih (gün · ay · haftanın günü), o günün üç ders BAŞLIĞI ve
+ * «4. hafta · 7 dosya». Açılınca ders planı, üç sunumun PDF/PowerPoint düğmeleri ve varsa ek belgeler gelir.
+ *
+ * Neden: eski düzende her gün açık kart olarak basılıyordu; 8 günde mobil sayfa 9.900 px ve 56 indirme
+ * düğmesi ediyordu. Ders yılı 87 gün sürüyor. Kapalı satır ≈ 64 px, açık gün eski kartın tamamını verir.
+ *
+ * Özette `konu` değil `baslik` kullanılır: `konu` alanı betikten betiğe değişiyor (kimi gün «Ortada Yazılış»,
+ * kimi gün «Harf Tanıma Pekiştirmesi (28 harf) · Ezber köşesi: …» gibi bir paragraf), `baslik` ise her zaman
+ * dersin kısa adı. Uzun özet iki satıra kırpılır (-webkit-line-clamp).
  */
 import { tarihBicimle, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
@@ -14,78 +23,120 @@ export type Gun = { tarih: string; hafta: number; gun: string; etiket: string;
 export type Metin = {
   plan: string; sayfa: (n: number) => string; slayt: (n: number) => string; ders: (n: number) => string;
   indir: string; pptxSesli: string; pdfSessiz: string; hafta: (h: number) => string; planGun: string; ekler: string; bugun: string;
+  dosyaSay: (n: number) => string;
 };
-interface Props { g: Gun; dil: Dil; m: Metin; bugun: string; sira?: number }
-const { g, dil, m, bugun, sira = 0 } = Astro.props;
+interface Props { g: Gun; dil: Dil; m: Metin; bugun: string; acik?: boolean }
+const { g, dil, m, bugun, acik = false } = Astro.props;
 const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(g.tarih + 'T12:00:00'), dil, secenek);
 const konuMetni = (s: Sunum) => (dil === 'tr' ? s.konu : (s.konuFr || s.konu));
-const alanMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
+const baslikMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
 const ekBaslik = (e: Ek) => (dil === 'tr' ? e.baslik.tr : (e.baslik.fr || e.baslik.tr));
 const kodlar = [...new Set(g.sunumlar.map((s) => s.kod).filter(Boolean))].join(' ');
+const bugunMu = g.tarih === bugun;
+
+const ozet = g.sunumlar.map((s) => baslikMetni(s)).join(' · ');
+const dosyaSayisi = (g.plan ? 1 : 0) + g.sunumlar.reduce((n, s) => n + 1 + (s.pdf ? 1 : 0), 0) + (g.ekler?.length ?? 0);
+/* Arama kutusu bu dizeyi tarar: tarih, hafta, ders başlıkları, konular ve alan adları. */
+const aranabilir = [
+  tarih({ day: 'numeric', month: 'long', weekday: 'long', year: 'numeric' }),
+  m.hafta(g.hafta),
+  ...g.sunumlar.map((s) => `${baslikMetni(s)} ${konuMetni(s)} ${s.alan}`),
+].join(' ').toLocaleLowerCase(dil);
 ---
-<article class="gun kart-kagit p-5 reveal" id={`g-${g.tarih}`} data-gun={g.tarih} data-kodlar={kodlar} style={`--i:${sira}`}>
-  <header class="gun-bas">
-    <p class="gun-tarih">
+<details class="gun" id={`g-${g.tarih}`} data-gun={g.tarih} data-kodlar={kodlar} data-ara={aranabilir} open={acik}>
+  <summary>
+    <span class="tarih">
       <time datetime={g.tarih}><b>{tarih({ day: 'numeric' })}</b>
-        <span>{tarih({ month: 'short' })}<br />{tarih({ weekday: 'long' })}</span></time>
-      {g.tarih === bugun && <span class="etiket etiket-vurgu bugun">{m.bugun}</span>}
-    </p>
-    <p class="gun-bilgi"><span class="etiket">{m.hafta(g.hafta)}</span>
-      <a href={`${yol(dil, 'yillikplan')}#g-${g.tarih}`} class="plan-bag">{m.planGun} →</a></p>
-  </header>
+        <span class="tarih-ay">{tarih({ month: 'short' })}</span>
+        <span class="tarih-gun">{tarih({ weekday: 'long' })}</span></time>
+    </span>
+    <span class="orta">
+      <span class="ozet">{ozet}</span>
+      <span class="meta">{m.hafta(g.hafta)} · {m.dosyaSay(dosyaSayisi)}{bugunMu && <span class="bugun">{m.bugun}</span>}</span>
+    </span>
+    <span class="ok" aria-hidden="true"></span>
+  </summary>
 
-  {g.plan && (
-    <p class="satir plan-satir" data-satir="plan">
-      <span class="satir-ad"><b>{m.plan}</b> <span class="kucuk">PDF · {m.sayfa(g.plan.sayfa)} · {mb(g.plan.boyut)}</span></span>
-      <a href={g.plan.url} class="dugme dugme-birincil dugme-kucuk" download>{m.indir} (PDF)</a>
-    </p>
-  )}
+  <div class="govde">
+    {g.plan && (
+      <p class="satir plan-satir" data-satir="plan">
+        <span class="satir-ad"><b>{m.plan}</b> <span class="kucuk">PDF · {m.sayfa(g.plan.sayfa)} · {mb(g.plan.boyut)}</span></span>
+        <a href={g.plan.url} class="dugme dugme-birincil dugme-kucuk" download>{m.indir} (PDF)</a>
+      </p>
+    )}
 
-  <ul class="sunum-liste" role="list">
-    {g.sunumlar.map((s) => (
-      <li class="satir" data-satir="sunum" data-kod={s.kod}>
-        <span class="satir-ad">
-          <span class="etiket">{m.ders(s.no)} · {s.saat}</span>
-          <b class={'alan a-' + s.kod}>{alanMetni(s)}</b>
-          <span class="konu" lang={dil === 'tr' || !s.konuFr ? 'tr' : 'fr'}>{konuMetni(s)}</span>
-          <span class="kucuk">{m.slayt(s.slayt)}</span>
-        </span>
-        <span class="dugmeler">
-          {s.pdf && <a href={s.pdf.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.pdfSessiz} · {mb(s.pdf.boyut)}</a>}
-          <a href={s.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.pptxSesli} · {mb(s.boyut)}</a>
-        </span>
-      </li>
-    ))}
-  </ul>
+    <ul class="sunum-liste" role="list">
+      {g.sunumlar.map((s) => (
+        <li class="satir" data-satir="sunum" data-kod={s.kod}>
+          <span class="satir-ad">
+            <span class="etiket">{m.ders(s.no)} · {s.saat}</span>
+            <b class={'alan a-' + s.kod}>{baslikMetni(s)}</b>
+            <span class="konu" lang={dil === 'tr' || !s.konuFr ? 'tr' : 'fr'}>{konuMetni(s)}</span>
+            <span class="kucuk">{m.slayt(s.slayt)}</span>
+          </span>
+          <span class="dugmeler">
+            {s.pdf && <a href={s.pdf.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.pdfSessiz} · {mb(s.pdf.boyut)}</a>}
+            <a href={s.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.pptxSesli} · {mb(s.boyut)}</a>
+          </span>
+        </li>
+      ))}
+    </ul>
 
-  {(g.ekler?.length ?? 0) > 0 && (
-    <div class="ekler">
-      <p class="etiket ekler-bas">{m.ekler}</p>
-      <ul class="sunum-liste" role="list">
-        {g.ekler!.map((e) => (
-          <li class="satir" data-satir="ek">
-            <span class="satir-ad"><span class="tur">{e.tur}</span><b>{ekBaslik(e)}</b><span class="kucuk">{mb(e.boyut)}</span></span>
-            <a href={e.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.indir}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-</article>
+    {(g.ekler?.length ?? 0) > 0 && (
+      <div class="ekler">
+        <p class="etiket ekler-bas">{m.ekler}</p>
+        <ul class="sunum-liste" role="list">
+          {g.ekler!.map((e) => (
+            <li class="satir" data-satir="ek">
+              <span class="satir-ad"><span class="tur">{e.tur}</span><b>{ekBaslik(e)}</b><span class="kucuk">{mb(e.boyut)}</span></span>
+              <a href={e.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.indir}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <p class="plan-bag-satir"><a href={`${yol(dil, 'yillikplan')}#g-${g.tarih}`} class="plan-bag">{m.planGun} →</a></p>
+  </div>
+</details>
 
 <style>
-  .gun-bas { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 0.9rem; }
-  .gun-tarih { margin: 0; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
-  .gun-tarih time { display: inline-flex; align-items: center; gap: 0.6rem; }
-  .gun-tarih b { font-size: 2rem; line-height: 1; font-family: var(--font-serif); }
-  .gun-tarih span:not(.bugun) { font-size: 0.85rem; line-height: 1.2; color: var(--metin-2); text-transform: capitalize; }
-  .bugun { padding: 0.15rem 0.5rem; border: 1px solid var(--vurgu); border-radius: 999px; }
-  .gun-bilgi { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
-  .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
+  .gun { border-bottom: 1px solid var(--cizgi); scroll-margin-top: 5.5rem; }
+  .gun > summary { display: flex; align-items: flex-start; gap: 0.9rem; padding: 0.8rem 0.2rem; cursor: pointer; list-style: none; min-height: 56px; }
+  .gun > summary::-webkit-details-marker { display: none; }
+  .gun > summary:hover .ozet { color: var(--vurgu); }
+  .gun > summary:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
+
+  /* Tarih sütunu sabit genişlikte: satırlar alt alta hizalanır, gözün takip edeceği bir kolon oluşur. */
+  .tarih { flex: none; width: 5.4rem; }
+  .tarih time { display: block; }
+  .tarih b { display: block; font-family: var(--font-serif); font-size: 1.65rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+  /* Ay ve haftanın günü ayrı satırlarda: dar sütunda «Eyl ·» diye sarkan bir ayraç kalmaz. */
+  .tarih-ay, .tarih-gun { display: block; font-size: 0.76rem; line-height: 1.3; color: var(--metin-2); text-transform: capitalize; }
+  .tarih-ay { margin-top: 0.15rem; }
+
+  .orta { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; flex: 1 1 auto; padding-top: 0.05rem; }
+  /* Uzun başlık dizisi iki satıra kırpılır — açık günde de: tam metin zaten hemen altındaki ders
+     satırlarında duruyor, hem de açılıp kapanırken satır yüksekliği zıplamıyor. */
+  .ozet { font-size: 0.95rem; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; transition: color 0.15s ease-out;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
+  .bugun { padding: 0.05rem 0.45rem; border: 1px solid var(--vurgu); border-radius: 999px; color: var(--vurgu); font-weight: 600; }
+
+  /* Ok bir glif değil, çizilmiş kenar: yazı tipinden bağımsız, her yerde aynı görünür. */
+  .ok { flex: none; width: 10px; height: 10px; margin-top: 0.55rem;
+    border-right: 2px solid var(--metin-2); border-bottom: 2px solid var(--metin-2);
+    transform: rotate(-45deg); transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1); }
+  .gun[open] > summary .ok { transform: rotate(45deg); }
+
+  .govde { padding: 0.1rem 0 1.1rem; }
+  .gun[open] > .govde { animation: govde-ac 160ms ease-out; }
+  @keyframes govde-ac { from { opacity: 0; } }
+
   .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.7rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
   .satir-ad { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; min-width: 0; flex: 1 1 20rem; }
-  .satir .kucuk { font-size: 0.85rem; color: var(--metin-2); }
+  .kucuk { font-size: 0.85rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
   .sunum-liste { list-style: none; margin: 0; padding: 0; }
   .alan { font-weight: 700; }
   .konu { color: var(--metin-2); }
@@ -95,9 +146,24 @@ const kodlar = [...new Set(g.sunumlar.map((s) => s.kod).filter(Boolean))].join('
   .ekler { margin-top: 0.6rem; }
   .ekler-bas { margin: 0.2rem 0 0; }
   .tur { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.4rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 4px; color: var(--metin-2); }
+  .plan-bag-satir { margin: 0.9rem 0 0; }
+  .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
+
+  @media (max-width: 560px) {
+    .gun > summary { gap: 0.7rem; padding: 0.8rem 0.1rem; }
+    .tarih { width: 4.4rem; }
+    .tarih b { font-size: 1.45rem; }
+    .tarih-ay, .tarih-gun { font-size: 0.72rem; }
+    /* Dar ekranda orta sütun daralıyor; kırpma sınırı üç satıra çıkar ki başlıklar yarıda kesilmesin. */
+    .ozet { -webkit-line-clamp: 3; }
+  }
   @media (max-width: 480px) {
     .dugmeler, .satir > .dugme { width: 100%; }
     .dugmeler .dugme { flex: 1 1 auto; justify-content: center; }
     .satir > .dugme { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ok, .ozet { transition: none; }
+    .gun[open] > .govde { animation: none; }
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 /**
- * Ders materyalleri — Kur'an kursunun günlük ders belgeleri + kalıcı materyaller (6 Eyl 2026; yeni düzen 6 Eyl öğleden önce).
+ * Ders materyalleri — Kur'an kursunun günlük ders belgeleri + kalıcı materyaller.
+ * (6 Eyl 2026 ilk düzen; 8 Eyl 2026 yeniden düzenleme: tarih karmaşası + ölçeklenme.)
  *
  * Kaynaklar:
  *  - src/data/ders-materyalleri.json — ders günleri (plan PDF + sesli pptx + sessiz PDF + ekler). ELLE YAZILMAZ: kurs projesindeki
@@ -8,9 +9,19 @@
  *  - src/content/materyaller/*.md — güne bağlı olmayan kalıcı materyaller (ezber kartı, alıştırma, tablo, rehber…), Sveltia'dan girilir.
  *  - src/data/yillik-plan-2026-2027.json — «sıradaki ders günü» satırı.
  *
- * Düzen: «Bu hafta» (bu haftadan itibaren yayımlanmış günler; yoksa son ders günü) → alan filtresi → önceki günler ay ay katlanır
- *        (<details>; JS ile #g-<tarih> çapası kapalı ayı açar) → kalıcı materyaller. Site her gece yeniden yayımlandığı için
- *        «bugün» ve hafta hesapları derleme anında yapılır.
+ * ── Neden bu düzen (8 Eyl 2026) ──────────────────────────────────────────────
+ * Eski düzende her ders günü açık kart olarak basılıyordu: 8 günde mobil sayfa 9.900 px (≈12 ekran),
+ * 56 indirme düğmesi. Ders yılı sonunda 87 gün olacak → ≈118 ekran, 600+ düğme. Ayrıca «Güncel dersler»
+ * başlığı altında üst sınırsız süzgeç yüzünden altı gün birden duruyordu ve en yeni gün en alttaydı.
+ *
+ * Yeni düzen üç katmanlı:
+ *   1. ÖNE ÇIKAN HAFTA SONU — bugün veya sonrası ilk ders günü (hepsi geçmişse en son gün) ve onun
+ *      Pazartesi–Pazar haftasındaki diğer günü. İlk gün açık gelir: aranan şey sıfır tıkla ekranda.
+ *   2. DİĞER DERS GÜNLERİ — yeniden eskiye, ay ay katlanır (<details>). Ay kapalıyken tek satır, gün
+ *      kapalıyken ≈64 px: tarih + ders başlıkları + dosya sayısı. Dosyalar gün açılınca gelir.
+ *   3. KALICI MATERYALLER — güne bağlı olmayanlar.
+ * Arama kutusu ve alan çipleri iki katmanı birden süzer; eşleşen aylar kendiliğinden açılır.
+ * Site her gece yeniden yayımlandığı için «bugün» hesabı derleme anında yapılır.
  */
 import { statSync } from 'node:fs';
 import { getCollection } from 'astro:content';
@@ -25,30 +36,44 @@ import plan from '../data/yillik-plan-2026-2027.json';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 
+/* Yeniden eskiye: en güncel gün her zaman en üstte. */
 const gunler = ([...(veri.gunler as unknown as Gun[])]).sort((a, b) => b.tarih.localeCompare(a.tarih));
 
-/* «bugün» Brüksel saatiyle; hafta Pazartesi–Pazar */
+/* «bugün» Brüksel saatiyle. */
 const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date());
-const bugunD = new Date(bugun + 'T12:00:00');
-const pzt = new Date(bugunD); pzt.setDate(pzt.getDate() - ((pzt.getDay() + 6) % 7));
-const haftaBasi = pzt.toISOString().slice(0, 10);
-const pazar = new Date(pzt); pazar.setDate(pazar.getDate() + 6);
-const haftaSonu = pazar.toISOString().slice(0, 10);
-const guncel = gunler.filter((g) => g.tarih >= haftaBasi);
-/* «Bu hafta» kronolojik (Cumartesi → Pazar) okunur; arşiv yeniden eskiye kalır (8 Eyl 2026) */
-const oneCikan = (guncel.length ? guncel : gunler.slice(0, 1)).slice().sort((a, b) => a.tarih.localeCompare(b.tarih));
-const oneCikanTarih = new Set(oneCikan.map((g) => g.tarih));
-const buHafta = guncel.length > 0 && guncel.every((g) => g.tarih <= haftaSonu);
-const arsiv = gunler.filter((g) => !oneCikanTarih.has(g.tarih));
-const aylar = [...new Set(arsiv.map((g) => g.tarih.slice(0, 7)))];
-const enYeniAy = aylar[0];
+
+/* Öne çıkan gün: bugün veya sonrası ilk ders günü; yoksa en son yayımlanan gün.
+   Eski düzendeki «altı gün birden güncel» karmaşası, üst sınırı olmayan bir hafta süzgecinden çıkıyordu. */
+const yaklasan = [...gunler].reverse().find((g) => g.tarih >= bugun);
+const oneCikan = yaklasan ?? gunler[0] ?? null;
+const oneCikanBaslik = !oneCikan ? '' : oneCikan.tarih === bugun ? 'bugunDers' : oneCikan.tarih > bugun ? 'yaklasan' : 'sonDers';
+
+/* Dersler hafta sonu çifti hâlinde işleniyor (Cumartesi + Pazar). Öne çıkan günün Pazartesi–Pazar haftasındaki
+   bütün günler birlikte gösterilir; yoksa Cumartesi öne çıkarken Pazar listenin dibinde kalıyor. Kronolojik
+   sıra: hafta sonu okunduğu gibi Cumartesi → Pazar. Yalnız öne çıkan gün açık gelir. */
+const haftaAraligi = (iso: string) => {
+  const d = new Date(iso + 'T12:00:00');
+  const pzt = new Date(d); pzt.setDate(pzt.getDate() - ((pzt.getDay() + 6) % 7));
+  const paz = new Date(pzt); paz.setDate(paz.getDate() + 6);
+  return [pzt.toISOString().slice(0, 10), paz.toISOString().slice(0, 10)] as const;
+};
+const [haftaBasi, haftaSonu] = oneCikan ? haftaAraligi(oneCikan.tarih) : ['', ''];
+const oneCikanGrup = oneCikan
+  ? gunler.filter((g) => g.tarih >= haftaBasi && g.tarih <= haftaSonu).sort((a, b) => a.tarih.localeCompare(b.tarih))
+  : [];
+const grupTarihleri = new Set(oneCikanGrup.map((g) => g.tarih));
+
+/* Kalan günler ay ay: anahtar YYYY-MM, yeniden eskiye. */
+const kalanGunler = gunler.filter((g) => !grupTarihleri.has(g.tarih));
+const aylar = [...new Set(kalanGunler.map((g) => g.tarih.slice(0, 7)))];
 const buAy = bugun.slice(0, 7);
+const acikAy = new Set([aylar[0], buAy].filter(Boolean));
 
 /* sıradaki ders günü (yıllık plandan): bugünden sonraki ilk gün; materyali henüz yoksa not düşülür */
 type PlanGun = { tarih: string; gun: string; dersler: { no?: number; sira?: number; alan: string; kod: string; konu: string }[] };
 const planGunleri = (plan as { gunler: PlanGun[] }).gunler;
 const siradaki = planGunleri.find((g) => g.tarih > bugun);
-const siradakiHazir = siradaki ? oneCikanTarih.has(siradaki.tarih) : false;
+const siradakiHazir = siradaki ? gunler.some((g) => g.tarih === siradaki.tarih) : false;
 
 /* kalıcı materyaller (Sveltia) */
 const kalici = (await getCollection('materyaller', ({ data }) => !data.taslak)).sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
@@ -80,10 +105,11 @@ const m = dil === 'tr' ? {
     'Sunumlardaki videolar YouTube’dan oynar; internet bağlantısı gerekir.',
     'Materyaller Diyanet İşleri Başkanlığı kaynaklarına dayanır; Peygamberimiz, ailesi ve sahâbe tasvir edilmez.',
   ],
-  buHafta: 'Bu haftanın dersleri', guncel: 'Güncel dersler', sonDers: 'Son ders günü',
+  bugunDers: 'Bugünün dersleri', yaklasan: 'Yaklaşan dersler', sonDers: 'Son dersler',
   siradaki: 'Sıradaki ders günü', siradakiNot: 'Materyaller ders gününden önce bu sayfada yayımlanır.', planBag: 'Yıllık planda gör',
-  arsiv: 'Önceki ders günleri', gunSay: (n: number) => `${n} ders günü`,
-  filtre: 'Alana göre süz', tumu: 'Tümü', filtreBos: 'Bu alanda henüz materyal yok.',
+  digerGunler: 'Diğer ders günleri', gunSay: (n: number) => `${n} ders günü`, dosyaSay: (n: number) => `${n} dosya`,
+  filtre: 'Alana göre süz', tumu: 'Tümü', filtreBos: 'Aramanıza uyan ders günü yok.',
+  ara: 'Ara', araIpucu: 'Konu, tarih veya alan ara…', temizle: 'Temizle',
   kalici: 'Kalıcı materyaller', kaliciA: 'Güne bağlı olmayan yardımcı belgeler: ezber kartları, alıştırma sayfaları, tablolar, rehberler.',
   ac: 'Aç', indir: 'İndir',
   plan: 'Ders planı', sayfa: (n: number) => `${n} sayfa`, slayt: (n: number) => `${n} slayt`, ders: (n: number) => `${n}. ders`,
@@ -100,10 +126,11 @@ const m = dil === 'tr' ? {
     'Videos inside the decks play from YouTube and need an internet connection.',
     'The materials follow the sources of the Turkish Presidency of Religious Affairs (Diyanet); the Prophet, his family and the Companions are never depicted.',
   ],
-  buHafta: 'This week’s lessons', guncel: 'Current lessons', sonDers: 'Latest lesson day',
+  bugunDers: 'Today’s lessons', yaklasan: 'Upcoming lessons', sonDers: 'Latest lessons',
   siradaki: 'Next lesson day', siradakiNot: 'Materials are published on this page before the lesson day.', planBag: 'See in the yearly plan',
-  arsiv: 'Previous lesson days', gunSay: (n: number) => `${n} lesson day${n === 1 ? '' : 's'}`,
-  filtre: 'Filter by subject', tumu: 'All', filtreBos: 'No materials in this subject yet.',
+  digerGunler: 'Other lesson days', gunSay: (n: number) => `${n} lesson day${n === 1 ? '' : 's'}`, dosyaSay: (n: number) => `${n} file${n === 1 ? '' : 's'}`,
+  filtre: 'Filter by subject', tumu: 'All', filtreBos: 'No lesson day matches your search.',
+  ara: 'Search', araIpucu: 'Search a topic, date or subject…', temizle: 'Clear',
   kalici: 'Permanent materials', kaliciA: 'Supporting documents not tied to a lesson day: memorisation cards, exercise sheets, tables, guides.',
   ac: 'Open', indir: 'Download',
   plan: 'Lesson plan', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} slides`, ders: (n: number) => `Lesson ${n}`,
@@ -120,10 +147,11 @@ const m = dil === 'tr' ? {
     'Les vidéos des présentations sont lues depuis YouTube ; une connexion internet est nécessaire.',
     'Les supports suivent les sources de la Présidence des Affaires religieuses de Turquie (Diyanet) ; le Prophète, sa famille et les Compagnons ne sont jamais représentés.',
   ],
-  buHafta: 'Les cours de cette semaine', guncel: 'Cours en cours', sonDers: 'Dernier jour de cours',
+  bugunDers: 'Les cours d’aujourd’hui', yaklasan: 'Prochains cours', sonDers: 'Derniers cours',
   siradaki: 'Prochain jour de cours', siradakiNot: 'Les supports sont publiés sur cette page avant le jour du cours.', planBag: 'Voir dans le plan annuel',
-  arsiv: 'Jours de cours précédents', gunSay: (n: number) => `${n} jour${n === 1 ? '' : 's'} de cours`,
-  filtre: 'Filtrer par matière', tumu: 'Toutes', filtreBos: 'Pas encore de support dans cette matière.',
+  digerGunler: 'Autres jours de cours', gunSay: (n: number) => `${n} jour${n === 1 ? '' : 's'} de cours`, dosyaSay: (n: number) => `${n} fichier${n === 1 ? '' : 's'}`,
+  filtre: 'Filtrer par matière', tumu: 'Toutes', filtreBos: 'Aucun jour de cours ne correspond à votre recherche.',
+  ara: 'Rechercher', araIpucu: 'Rechercher un thème, une date, une matière…', temizle: 'Effacer',
   kalici: 'Supports permanents', kaliciA: 'Documents d’appui non liés à un jour de cours : cartes de mémorisation, fiches d’exercices, tableaux, guides.',
   ac: 'Ouvrir', indir: 'Télécharger',
   plan: 'Plan de cours', sayfa: (n: number) => `${n} pages`, slayt: (n: number) => `${n} diapositives`, ders: (n: number) => `Cours ${n}`,
@@ -136,35 +164,32 @@ const kartMetni: Metin = m;
 const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (iso: string, secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(iso + 'T12:00:00'), dil, secenek);
 const uclu = (o: { tr?: string; fr?: string; en?: string } | undefined) => (o ? (dil === 'tr' ? o.tr : dil === 'en' ? (o.en || o.fr || o.tr) : (o.fr || o.tr)) || '' : '');
-const oneCikanBaslik = guncel.length === 0 ? m.sonDers : buHafta ? m.buHafta : m.guncel;
+
+/* Öne çıkan grubun başlık tarihi: tek gün ise «12 Eylül Cumartesi», iki gün ise «12 – 13 Eylül».
+   Ay sınırını aşan hafta sonlarında (30 Eylül – 1 Ekim) iki ay adı da yazılır. */
+const grupTarihi = (() => {
+  if (oneCikanGrup.length === 0) return '';
+  const ilk = oneCikanGrup[0].tarih, son = oneCikanGrup[oneCikanGrup.length - 1].tarih;
+  if (ilk === son) return tarih(ilk, { weekday: 'long', day: 'numeric', month: 'long' });
+  const ayniAy = ilk.slice(0, 7) === son.slice(0, 7);
+  return `${tarih(ilk, ayniAy ? { day: 'numeric' } : { day: 'numeric', month: 'long' })} – ${tarih(son, { day: 'numeric', month: 'long' })}`;
+})();
 ---
 <Base baslik={t('nav.dersmateryalleri')} dil={dil} aciklama={m.altBaslik}>
   <SayfaBasligi etiket={t('nav.kurankursu')} baslik={t('nav.dersmateryalleri')} altBaslik={m.altBaslik} />
 
   <div class="kapsayici py-10" data-materyal>
-    <section class="kart-kagit p-5 mb-8">
-      <p class="etiket etiket-vurgu">{m.nasil}</p>
-      <ul class="mt-2 grid gap-1.5 text-sm text-(--metin-2) liste">
-        {m.nasilListe.map((s) => <li>{s}</li>)}
-      </ul>
-    </section>
-
     {gunler.length === 0 && <p class="not">{m.bos}</p>}
 
-    {filtreKodlari.length > 1 && (
-      <nav class="filtre" aria-label={m.filtre} data-filtre hidden>
-        <span class="etiket">{m.filtre}</span>
-        <button type="button" class="cip" data-alan="tumu" aria-pressed="true">{m.tumu}</button>
-        {filtreKodlari.map((k) => <button type="button" class={'cip cip-' + k} data-alan={k} aria-pressed="false">{alanAdi[dil][k]}</button>)}
-      </nav>
-    )}
-    <p class="not" data-filtre-bos hidden>{m.filtreBos}</p>
-
-    {oneCikan.length > 0 && (
-      <section class="bolum" data-bolum>
-        <h2 class="bolum-baslik">{oneCikanBaslik}</h2>
-        <div class="grid gap-5">
-          {oneCikan.map((g, i) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} sira={i} />)}
+    {/* ——— 1. Öne çıkan hafta sonu: ilk gün açık, çifti hemen altında ——— */}
+    {oneCikan && (
+      <section class="bolum one-cikan" data-bolum>
+        <h2 class="bolum-baslik">
+          {oneCikanBaslik === 'bugunDers' ? m.bugunDers : oneCikanBaslik === 'yaklasan' ? m.yaklasan : m.sonDers}
+          <span class="bolum-tarih">{grupTarihi}</span>
+        </h2>
+        <div class="one-cikan-liste">
+          {oneCikanGrup.map((g) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} acik={g.tarih === oneCikan.tarih} />)}
         </div>
       </section>
     )}
@@ -179,21 +204,51 @@ const oneCikanBaslik = guncel.length === 0 ? m.sonDers : buHafta ? m.buHafta : m
       </p>
     )}
 
-    {arsiv.length > 0 && (
-      <section class="bolum" data-bolum>
-        <h2 class="bolum-baslik">{m.arsiv} <span class="kucuk">· {m.gunSay(arsiv.length)}</span></h2>
-        {aylar.map((ay) => (
-          <details class="ay" id={`ay-${ay}`} data-ay open={ay === enYeniAy || ay === buAy}>
-            <summary><span>{tarih(ay + '-01', { month: 'long', year: 'numeric' })}</span>
-              <span class="kucuk">{m.gunSay(arsiv.filter((g) => g.tarih.startsWith(ay)).length)}</span></summary>
-            <div class="grid gap-5 ay-icerik">
-              {arsiv.filter((g) => g.tarih.startsWith(ay)).map((g, i) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} sira={i} />)}
+    {/* ——— 2. Tüm ders günleri: ay ay katlanır, yeniden eskiye ——— */}
+    {kalanGunler.length > 0 && (
+      <section class="bolum" id="gunler" data-bolum>
+        <h2 class="bolum-baslik">{m.digerGunler} <span class="kucuk">· {m.gunSay(kalanGunler.length)}</span></h2>
+
+        {/* Süzgeç kutusu: JS olmadan çalışmayacağı için JS ile açılır. */}
+        <div class="suzgec" hidden data-suzgec>
+          <div class="ara" role="search">
+            <label class="etiket" for="materyal-ara">{m.ara}</label>
+            <input type="search" id="materyal-ara" placeholder={m.araIpucu} autocomplete="off"
+                   enterkeyhint="search" data-ara-alan />
+            <button type="button" class="ara-sil" data-ara-sil hidden aria-label={m.temizle}>×</button>
+          </div>
+          {filtreKodlari.length > 1 && (
+            <div class="cipler" role="group" aria-label={m.filtre}>
+              <button type="button" class="cip" data-alan="tumu" aria-pressed="true">{m.tumu}</button>
+              {filtreKodlari.map((k) => (
+                <button type="button" class={'cip cip-' + k} data-alan={k} aria-pressed="false">
+                  <span class="cip-nokta" aria-hidden="true"></span>{alanAdi[dil][k]}
+                </button>
+              ))}
             </div>
-          </details>
-        ))}
+          )}
+        </div>
+
+        <p class="not" data-filtre-bos hidden>{m.filtreBos}</p>
+
+        {aylar.map((ay) => {
+          const ayGunleri = kalanGunler.filter((g) => g.tarih.startsWith(ay));
+          return (
+            <details class="ay" id={`ay-${ay}`} data-ay open={acikAy.has(ay)}>
+              <summary>
+                <span class="ay-ad">{tarih(ay + '-01', { month: 'long', year: 'numeric' })}</span>
+                <span class="kucuk" data-ay-say data-varsayilan={m.gunSay(ayGunleri.length)}>{m.gunSay(ayGunleri.length)}</span>
+              </summary>
+              <div class="ay-icerik">
+                {ayGunleri.map((g) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} />)}
+              </div>
+            </details>
+          );
+        })}
       </section>
     )}
 
+    {/* ——— 3. Kalıcı materyaller ——— */}
     {kalici.length > 0 && (
       <section class="bolum" id="kalici" data-bolum>
         <h2 class="bolum-baslik">{m.kalici}</h2>
@@ -220,6 +275,12 @@ const oneCikanBaslik = guncel.length === 0 ? m.sonDers : buHafta ? m.buHafta : m
       </section>
     )}
 
+    {/* ——— Nasıl kullanılır: ilk ekranı işgal etmesin diye kapalı ——— */}
+    <details class="nasil kart-kagit">
+      <summary><span class="etiket etiket-vurgu">{m.nasil}</span></summary>
+      <ul class="liste">{m.nasilListe.map((s) => <li>{s}</li>)}</ul>
+    </details>
+
     <p class="kaynak-not">{m.kaynak}</p>
     <p class="alt-baglantilar">
       <a href={yol(dil, 'mufredat')} class="dugme dugme-ikincil">{m.mufredat}</a>
@@ -229,74 +290,167 @@ const oneCikanBaslik = guncel.length === 0 ? m.sonDers : buHafta ? m.buHafta : m
 </Base>
 
 <script>
-  /* Alan filtresi (yalnız JS ile; JS yokken çipler gizli, her şey görünür) + kapalı ayı çapayla açma. */
+  /* Süzgeç (alan çipleri + serbest arama) ve çapa açma.
+     JS yoksa: süzgeç kutusu gizli kalır, bütün günler ve dosyalar erişilebilir durur. */
   const kok = document.querySelector('[data-materyal]');
   if (kok) {
-    const filtre = kok.querySelector<HTMLElement>('[data-filtre]');
+    const suzgec = kok.querySelector<HTMLElement>('[data-suzgec]');
+    const alanKutusu = kok.querySelector<HTMLInputElement>('[data-ara-alan]');
+    const silDugme = kok.querySelector<HTMLButtonElement>('[data-ara-sil]');
     const bosNot = kok.querySelector<HTMLElement>('[data-filtre-bos]');
-    const uygula = (alan: string) => {
+    const gunler = [...kok.querySelectorAll<HTMLElement>('[data-gun]')];
+    const aylar = [...kok.querySelectorAll<HTMLDetailsElement>('[data-ay]')];
+    /* Ay kendiliğinden açıldığında eski hâli hatırlanır; süzgeç boşalınca geri konur. */
+    const ilkAcik = new Map(aylar.map((a) => [a, a.open]));
+
+    let alan = 'tumu';
+    let sorgu = '';
+
+    const uygula = () => {
+      const suzuluyor = alan !== 'tumu' || sorgu !== '';
       let gorunen = 0;
-      kok.querySelectorAll<HTMLElement>('[data-satir][data-kod]').forEach((s) => {
-        const kod = s.dataset.kod;
-        const gizli = alan !== 'tumu' && kod !== alan && kod !== 'genel';
-        s.hidden = gizli; if (!gizli) gorunen++;
-      });
-      kok.querySelectorAll<HTMLElement>('[data-satir="plan"], [data-satir="ek"]').forEach((s) => { s.hidden = alan !== 'tumu'; });
-      kok.querySelectorAll<HTMLElement>('[data-gun]').forEach((g) => {
-        g.hidden = alan !== 'tumu' && !g.querySelector('[data-satir][data-kod]:not([hidden])');
-      });
-      kok.querySelectorAll<HTMLDetailsElement>('[data-ay]').forEach((ay) => {
+
+      for (const g of gunler) {
+        const kodUyar = alan === 'tumu' || (g.dataset.kodlar || '').split(' ').includes(alan);
+        const metinUyar = sorgu === '' || (g.dataset.ara || '').includes(sorgu);
+        const gorunur = kodUyar && metinUyar;
+        g.hidden = !gorunur;
+        if (gorunur) gorunen++;
+        /* Gün içinde: alan seçiliyken yalnız o alanın sunumu; plan ve ekler tüm alanlarla ilgili. */
+        for (const s of g.querySelectorAll<HTMLElement>('[data-satir][data-kod]')) {
+          s.hidden = alan !== 'tumu' && s.dataset.kod !== alan && s.dataset.kod !== 'genel';
+        }
+        for (const s of g.querySelectorAll<HTMLElement>('[data-satir="plan"], [data-satir="ek"]')) {
+          s.hidden = alan !== 'tumu';
+        }
+      }
+
+      /* Kalıcı materyaller de alana göre süzülür (arama onları kapsamaz). */
+      for (const s of kok.querySelectorAll<HTMLElement>('[data-satir="kalici"]')) {
+        s.hidden = alan !== 'tumu' && s.dataset.kod !== alan && s.dataset.kod !== 'genel';
+      }
+
+      for (const ay of aylar) {
         const dolu = !!ay.querySelector('[data-gun]:not([hidden])');
-        ay.hidden = !dolu; if (alan !== 'tumu' && dolu) ay.open = true;
-      });
-      kok.querySelectorAll<HTMLElement>('[data-bolum]').forEach((b) => {
-        b.hidden = alan !== 'tumu' && !b.querySelector('[data-gun]:not([hidden]), [data-satir][data-kod]:not([hidden])');
-      });
-      if (bosNot) bosNot.hidden = !(alan !== 'tumu' && gorunen === 0);
-      filtre?.querySelectorAll<HTMLButtonElement>('[data-alan]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.alan === alan)));
+        ay.hidden = !dolu;
+        if (suzuluyor) { if (dolu) ay.open = true; } else { ay.open = ilkAcik.get(ay) ?? false; }
+        const say = ay.querySelector<HTMLElement>('[data-ay-say]');
+        if (say) {
+          const n = ay.querySelectorAll('[data-gun]:not([hidden])').length;
+          say.textContent = suzuluyor ? say.dataset.varsayilan!.replace(/\d+/, String(n)) : say.dataset.varsayilan!;
+        }
+      }
+
+      for (const b of kok.querySelectorAll<HTMLElement>('[data-bolum]')) {
+        b.hidden = suzuluyor && !b.querySelector('[data-gun]:not([hidden]), [data-satir="kalici"]:not([hidden])');
+      }
+      /* Süzgeç kutusunun kendisi hiçbir zaman gizlenmesin: bölüm gizlenirse çıkış yolu kapanır. */
+      if (suzgec) { const bolum = suzgec.closest<HTMLElement>('[data-bolum]'); if (bolum) bolum.hidden = false; }
+
+      if (bosNot) bosNot.hidden = !(suzuluyor && gorunen === 0);
+      if (silDugme) silDugme.hidden = sorgu === '';
     };
-    if (filtre) {
-      filtre.hidden = false;
-      filtre.addEventListener('click', (e) => {
+
+    if (suzgec) {
+      suzgec.hidden = false;
+      suzgec.addEventListener('click', (e) => {
         const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-alan]');
-        if (b) uygula(b.dataset.alan || 'tumu');
+        if (!b) return;
+        alan = b.dataset.alan || 'tumu';
+        for (const d of suzgec.querySelectorAll<HTMLButtonElement>('[data-alan]')) {
+          d.setAttribute('aria-pressed', String(d === b));
+        }
+        uygula();
       });
     }
+    alanKutusu?.addEventListener('input', () => {
+      sorgu = alanKutusu.value.trim().toLocaleLowerCase(document.documentElement.lang || 'tr');
+      uygula();
+    });
+    silDugme?.addEventListener('click', () => {
+      if (!alanKutusu) return;
+      alanKutusu.value = ''; sorgu = ''; uygula(); alanKutusu.focus();
+    });
+
+    /* #g-<tarih> çapası: kapalı ayı ve kapalı günü açar, sonra kaydırır. */
     const capa = () => {
       const id = decodeURIComponent(location.hash.slice(1));
       const hedef = id && document.getElementById(id);
       if (!hedef) return;
       const ay = hedef.closest<HTMLDetailsElement>('details[data-ay]');
-      if (ay && !ay.open) { ay.open = true; requestAnimationFrame(() => hedef.scrollIntoView({ block: 'start' })); }
+      if (ay) ay.open = true;
+      if (hedef instanceof HTMLDetailsElement) hedef.open = true;
+      requestAnimationFrame(() => hedef.scrollIntoView({ block: 'start' }));
     };
     capa(); addEventListener('hashchange', capa);
   }
 </script>
 
 <style>
-  .liste { padding-left: 1.2rem; list-style: disc; }
-  .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
-  .bolum { margin-bottom: 2.4rem; }
-  .bolum-baslik { font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem); margin: 0 0 1rem; }
+  .bolum { margin-bottom: 2.6rem; }
+  .bolum-baslik { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.7rem; font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem); margin: 0 0 1rem; }
   .bolum-baslik .kucuk { font-size: 0.9rem; font-weight: 400; color: var(--metin-2); font-family: var(--font-sans); }
   .bolum-alt { margin: -0.5rem 0 1rem; color: var(--metin-2); font-size: 0.95rem; }
-  .filtre { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 1.4rem; }
-  .filtre .etiket { margin-right: 0.3rem; }
-  .cip { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.85rem; border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: transparent; color: var(--metin); cursor: pointer; min-height: 36px; }
-  .cip:hover { border-color: var(--metin); }
-  .cip[aria-pressed="true"] { background: var(--metin); color: var(--zemin); border-color: var(--metin); }
+  .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+
+  /* ——— Öne çıkan hafta sonu ——— */
+  .one-cikan .bolum-baslik { padding-top: 0.7rem; border-top: 2px solid var(--vurgu); color: var(--vurgu); }
+  /* Kâğıt zemin bu grubu listeden ayırır; ilk satırın üst çizgisi başlıkla çakışmasın diye kaldırılır. */
+  .one-cikan-liste { padding: 0 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+  .one-cikan-liste :global(.gun:last-child) { border-bottom: 0; }
+  /* Tarih başlığın parçası: ziyaretçi hangi güne baktığını okumak için karta bakmak zorunda kalmasın. */
+  .bolum-tarih { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 400; color: var(--metin-2); text-transform: capitalize; }
+
+  /* ——— Süzgeç ——— */
+  .suzgec { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin: 0 0 1.2rem; }
+  .ara { display: flex; align-items: center; gap: 0.5rem; flex: 1 1 15rem; min-width: 0; position: relative; }
+  .ara .etiket { flex: none; }
+  .ara input { flex: 1 1 auto; min-width: 0; min-height: 2.5rem; padding: 0.4rem 2rem 0.4rem 0.7rem; font: inherit; font-size: 0.95rem;
+    color: var(--metin); background: var(--zemin); border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); }
+  .ara input::-webkit-search-cancel-button { display: none; }
+  .ara input:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 1px; border-color: var(--vurgu); }
+  .ara-sil { position: absolute; right: 0.25rem; width: 1.75rem; height: 1.75rem; display: grid; place-items: center;
+    font: inherit; font-size: 1.2rem; line-height: 1; color: var(--metin-2); background: none; border: 0; border-radius: 999px; cursor: pointer; }
+  .ara-sil:hover { color: var(--metin); background: var(--zemin-2); }
+
+  .cipler { display: flex; gap: 0.35rem; min-width: 0; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; scroll-snap-type: x proximity; }
+  .cip { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; min-height: 2.125rem; gap: 0.4rem; padding: 0.34rem 0.7rem;
+    border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin);
+    font: inherit; font-size: 0.85rem; line-height: 1.3; white-space: nowrap; cursor: pointer;
+    transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out; }
+  .cip:hover { border-color: var(--cizgi-etkilesim); }
+  .cip[aria-pressed='true'] { background: var(--metin); border-color: var(--metin); color: var(--zemin); font-weight: 600; }
+  .cip-nokta { width: 9px; height: 9px; border: 1px solid var(--cizgi-etkilesim); border-radius: 1px; }
+  /* Alan renkleri yıllık plan ve müfredat sayfasıyla aynı; koyu temada karartılır. */
+  .cip-kuran .cip-nokta { background: color-mix(in oklab, #f6e9e0 var(--renk-oran, 100%), var(--zemin)); }
+  .cip-itikat .cip-nokta { background: color-mix(in oklab, #e6eef5 var(--renk-oran, 100%), var(--zemin)); }
+  .cip-ibadet .cip-nokta { background: color-mix(in oklab, #e9f0e3 var(--renk-oran, 100%), var(--zemin)); }
+  .cip-siyer .cip-nokta { background: color-mix(in oklab, #f8eed9 var(--renk-oran, 100%), var(--zemin)); }
+  .cip-ahlak .cip-nokta { background: color-mix(in oklab, #efe6ea var(--renk-oran, 100%), var(--zemin)); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .suzgec { --renk-oran: 22%; } }
+  :root[data-theme='dark'] .suzgec { --renk-oran: 22%; }
+
+  /* ——— Sıradaki ders günü bandı ——— */
   .siradaki { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; margin: -0.8rem 0 2.4rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px dashed var(--cizgi-etkilesim); border-radius: var(--radius-kose); }
   .siradaki b { font-size: 1.05rem; text-transform: capitalize; }
   .siradaki .kucuk, .siradaki-konu { font-size: 0.9rem; color: var(--metin-2); }
   .siradaki .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); margin-left: auto; }
+
+  /* ——— Ay grupları ——— */
   .ay { border-top: 1px solid var(--cizgi); }
   .ay:last-of-type { border-bottom: 1px solid var(--cizgi); }
-  .ay > summary { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.9rem 0.2rem; cursor: pointer; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; text-transform: capitalize; list-style: none; }
+  .ay > summary { display: flex; align-items: baseline; gap: 1rem; padding: 0.9rem 0.2rem; cursor: pointer; list-style: none;
+    font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; text-transform: capitalize; min-height: 48px; }
   .ay > summary::-webkit-details-marker { display: none; }
-  .ay > summary::before { content: '▸'; font-size: 0.9rem; color: var(--metin-2); margin-right: 0.5rem; transition: transform 0.15s; }
-  .ay[open] > summary::before { transform: rotate(90deg); }
-  .ay > summary .kucuk { margin-left: auto; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400; color: var(--metin-2); text-transform: none; }
-  .ay-icerik { padding: 0.2rem 0 1.4rem; }
+  .ay > summary::before { content: ''; flex: none; width: 9px; height: 9px; margin-right: 0.35rem; align-self: center;
+    border-right: 2px solid var(--metin-2); border-bottom: 2px solid var(--metin-2); transform: rotate(-45deg); transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1); }
+  .ay[open] > summary::before { transform: rotate(45deg); }
+  .ay > summary:hover .ay-ad { color: var(--vurgu); }
+  .ay > summary:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
+  .ay > summary .kucuk { margin-left: auto; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400; color: var(--metin-2); text-transform: none; white-space: nowrap; }
+  .ay-icerik { padding: 0 0 0.6rem; }
+
+  /* ——— Kalıcı materyaller ——— */
   .kalici-liste { list-style: none; margin: 0; padding: 0.2rem 1.1rem; }
   .kalici-liste .satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.75rem 0; border-top: 1px solid var(--cizgi); margin: 0; }
   .kalici-liste .satir:first-child { border-top: 0; }
@@ -306,7 +460,34 @@ const oneCikanBaslik = guncel.length === 0 ? m.sonDers : buHafta ? m.buHafta : m
   .konu, .kucuk { color: var(--metin-2); }
   .kucuk { font-size: 0.85rem; }
   .tur { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.4rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 4px; color: var(--metin-2); }
+
+  /* ——— Nasıl kullanılır (kapalı) ——— */
+  .nasil { padding: 0.2rem 1.1rem; margin-top: 2.4rem; }
+  .nasil > summary { display: flex; align-items: center; gap: 0.5rem; padding: 0.9rem 0; cursor: pointer; list-style: none; min-height: 48px; }
+  .nasil > summary::-webkit-details-marker { display: none; }
+  .nasil > summary::after { content: '+'; margin-left: auto; font-family: var(--font-mono, monospace); font-size: 1.1rem; color: var(--metin-2); }
+  .nasil[open] > summary::after { content: '−'; }
+  .nasil > summary:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
+  .liste { margin: 0 0 1.1rem; padding-left: 1.2rem; list-style: disc; display: grid; gap: 0.45rem; color: var(--metin-2); font-size: 0.925rem; max-width: 74ch; }
+
   .kaynak-not { margin-top: 1.5rem; font-size: 0.85rem; color: var(--metin-2); }
   .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
-  @media (max-width: 480px) { .satir > .dugme { width: 100%; justify-content: center; } .siradaki .plan-bag { margin-left: 0; } }
+
+  @media (max-width: 560px) {
+    .suzgec { gap: 0.55rem; }
+    .ara { flex: 1 1 100%; }
+    /* Dar ekranda çipler yatay kaymak yerine alt satıra geçer: sağdaki çip yarım kalmış gibi durmasın. */
+    .cipler { flex: 1 1 100%; flex-wrap: wrap; overflow-x: visible; }
+    .ay > summary { font-size: 1.05rem; }
+  }
+  @media (max-width: 480px) {
+    .satir > .dugme { width: 100%; justify-content: center; }
+    .siradaki .plan-bag { margin-left: 0; }
+  }
+  /* Çok dar ekranda «ARA / RECHERCHER» etiketi kutuyu sıkıştırıyor; yer tutucu aynı şeyi söylüyor.
+     Etiket ekran okuyucular için duruyor, yalnız görünmez oluyor. */
+  @media (max-width: 420px) {
+    .ara .etiket { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ay > summary::before, .cip { transition: none; } }
 </style>
