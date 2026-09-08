@@ -34,9 +34,10 @@ const M = {
     giris:
       'Diyanet İşleri Başkanlığı’nın bütün dijital yayınları ücretsizdir. Aşağıda İslam’ı yeni araştıran biri için sırayla okunabilecek kitapçıklar var; tamamı — çocuk kitaplarından ilmihale, kırk hadis derlemelerinden meallere kadar — kütüphane sayfasındadır.',
     ilk: 'İlk okumalar',
-    hepsi: (n: number, d: number) => `Bütün kütüphaneyi aç — ${n} kitap, ${d} dil`,
-    not: 'Dosyalar Diyanet’in kendi sunucusunda durur; bağlantıya tıklayınca oradan açılır veya indirilir.',
-    sayfaKisa: 'sayfa', pdfAc: 'PDF’i aç', epub: 'EPUB', kunye: 'Diyanet sayfası', dis: 'yeni sekmede açılır',
+    kendiDil: (n: number) => `Türkçe yayınların tamamı (${n})`,
+    hepsi: (n: number, d: number) => `Bütün kütüphane — ${n} kitap, ${d} dil`,
+    not: 'Dosyalar Diyanet’in kendi sunucusunda durur; hiçbir kopyasını biz tutmuyoruz. «Oku (PDF)» dosyayı tarayıcınızın okuyucusunda açar — oradaki indirme düğmesiyle (ya da Ctrl+S) cihazınıza kaydedebilirsiniz. «İndir (EPUB)» ise dosyayı doğrudan indirir; e-kitap okuyucularında ve telefonda daha rahat okunur.',
+    sayfaKisa: 'sayfa', pdfAc: 'Oku (PDF)', epub: 'İndir (EPUB)', kunye: 'Diyanet sayfası', dis: 'yeni sekmede açılır',
   },
   fr: {
     etiket: 'Bibliothèque gratuite',
@@ -44,9 +45,10 @@ const M = {
     giris:
       'Toutes les publications numériques de la Présidence des Affaires religieuses sont gratuites. Voici, dans l’ordre, les brochures que l’on peut lire quand on découvre l’islam ; l’ensemble du fonds — livres pour enfants, guide du culte, recueils de hadiths, traductions du Coran — se trouve sur la page de la bibliothèque.',
     ilk: 'Premières lectures',
-    hepsi: (n: number, d: number) => `Ouvrir toute la bibliothèque — ${n} ouvrages, ${d} langues`,
-    not: 'Les fichiers restent sur le serveur du Diyanet ; le lien les y ouvre ou les télécharge directement.',
-    sayfaKisa: 'pages', pdfAc: 'Ouvrir le PDF', epub: 'EPUB', kunye: 'Fiche Diyanet', dis: 'ouvre dans un nouvel onglet',
+    kendiDil: (n: number) => `Tous les ouvrages en français (${n})`,
+    hepsi: (n: number, d: number) => `Toute la bibliothèque — ${n} ouvrages, ${d} langues`,
+    not: 'Les fichiers restent sur le serveur du Diyanet ; nous n’en conservons aucune copie. « Lire (PDF) » ouvre le fichier dans la visionneuse de votre navigateur — son bouton de téléchargement (ou Ctrl+S) l’enregistre sur votre appareil. « Télécharger (EPUB) » le télécharge directement : ce format se lit plus confortablement sur liseuse et sur téléphone.',
+    sayfaKisa: 'pages', pdfAc: 'Lire (PDF)', epub: 'Télécharger (EPUB)', kunye: 'Fiche Diyanet', dis: 'ouvre dans un nouvel onglet',
   },
   en: {
     etiket: 'Free library',
@@ -54,9 +56,10 @@ const M = {
     giris:
       'Every digital publication of the Presidency of Religious Affairs is free. Below are booklets that can be read in order by someone discovering Islam; the whole collection — children’s books, a worship guide, hadith collections, Qur’an translations — is on the library page.',
     ilk: 'First readings',
-    hepsi: (n: number, d: number) => `Open the whole library — ${n} books, ${d} languages`,
-    not: 'The files stay on Diyanet’s own server; the link opens or downloads them from there.',
-    sayfaKisa: 'pages', pdfAc: 'Open the PDF', epub: 'EPUB', kunye: 'Diyanet page', dis: 'opens in a new tab',
+    kendiDil: (n: number) => `All publications in English (${n})`,
+    hepsi: (n: number, d: number) => `The whole library — ${n} books, ${d} languages`,
+    not: 'The files stay on Diyanet’s own server; we keep no copy of them. “Read (PDF)” opens the file in your browser’s viewer — its download button (or Ctrl+S) saves it to your device. “Download (EPUB)” downloads it directly; that format reads more comfortably on e-readers and phones.',
+    sayfaKisa: 'pages', pdfAc: 'Read (PDF)', epub: 'Download (EPUB)', kunye: 'Diyanet page', dis: 'opens in a new tab',
   },
 } as const;
 const m = M[dil];
@@ -66,6 +69,10 @@ const sirali = BASLANGIC[dil]
   .map((id) => yayinlar.find((y) => y.id === id))
   .filter((k): k is Kitap => Boolean(k));
 const dilSayisi = new Set(yayinlar.map((y) => y.dilKodu)).size;
+/* Sayfanın kendi dilindeki yayın sayısı ve o dile açılan derin bağlantı: kütüphane sayfası
+   #kitaplik-<kod> çapasını görünce o dil grubunu kendiliğinden açar (DiyanetKitapligi.astro). */
+const kendiDilSayisi = yayinlar.filter((y) => y.dilKodu === dil).length;
+const kendiDilYolu = `${yol(dil, 'kutuphane')}#kitaplik-${dil}`;
 const satirMetni = { sayfaKisa: m.sayfaKisa, pdfAc: m.pdfAc, epub: m.epub, kunye: m.kunye, dis: m.dis };
 ---
 
@@ -83,7 +90,8 @@ const satirMetni = { sayfaKisa: m.sayfaKisa, pdfAc: m.pdfAc, epub: m.epub, kunye
     </ul>
 
     <p class="bant-eylem">
-      <a class="dugme dugme-birincil" href={yol(dil, 'kutuphane')}>{m.hepsi(yayinlar.length, dilSayisi)}</a>
+      <a class="dugme dugme-birincil" href={kendiDilYolu}>{m.kendiDil(kendiDilSayisi)}</a>
+      <a class="dugme dugme-ikincil" href={yol(dil, 'kutuphane')}>{m.hepsi(yayinlar.length, dilSayisi)}</a>
     </p>
     <p class="bant-not">{m.not}</p>
   </div>
@@ -96,6 +104,6 @@ const satirMetni = { sayfaKisa: m.sayfaKisa, pdfAc: m.pdfAc, epub: m.epub, kunye
   .bant-ara-baslik { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: var(--tracking-etiket);
     text-transform: uppercase; color: var(--vurgu); margin: 2rem 0 0.7rem; }
   .bant-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.65rem; }
-  .bant-eylem { margin-top: 1.8rem; }
+  .bant-eylem { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 0.7rem; }
   .bant-not { margin-top: 1.2rem; font-size: 0.85rem; color: var(--metin-2); max-width: 68ch; }
 </style>

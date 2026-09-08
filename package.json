@@ -14,6 +14,7 @@
     "denetim": "node scripts/site-denetim.mjs",
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
     "test:imza": "node scripts/ek9-imza-zinciri.mjs",
+    "test:kutuphane": "py -3.14 scripts/kutuphane-erisim-testi.py",
     "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9",
     "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs",
     "onizle": "astro preview --port 4399",

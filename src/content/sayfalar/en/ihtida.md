@@ -121,7 +121,7 @@ The subjects new Muslims raise with us most often, and how we respond:
 
 Every digital publication of the Presidency of Religious Affairs is free. We have gathered **more than five hundred books in over forty languages** on a single page: introductory booklets on Islam, an illustrated worship guide, forty-hadith collections, Qur’an translations, books on family life, children’s books, high-school textbooks and fatwas. The French publications are sorted by theme (getting started, learning to worship, hadith, family, children, going deeper); there are also Dutch, English, German, Arabic, Spanish, Italian and Turkish sections.
 
-The files stay **on Diyanet’s own server**: clicking a link opens or downloads them directly from there. A short starter selection sits at the bottom of this page; everything else is on the **[Diyanet Library](/en/diyanet-library/)** page.
+The files stay **on Diyanet’s own server**; we keep no copy of them. Each publication carries two links: **Read (PDF)** opens it in your browser’s viewer — its download button, or Ctrl+S, saves it to your device; **Download (EPUB)**, where that format exists, downloads it directly and reads more comfortably on a phone or e-reader. At the bottom of this page you will find a starter selection, a button to **all the publications in English** and another to the full **[Diyanet Library](/en/diyanet-library/)**.
 
 ## Frequently Asked Questions
 

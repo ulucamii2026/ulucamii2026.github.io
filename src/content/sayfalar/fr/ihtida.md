@@ -121,7 +121,7 @@ Voici les sujets dont les nouveaux musulmans nous parlent le plus, et notre mani
 
 Toutes les publications numériques de la Présidence des Affaires religieuses sont gratuites. Nous en avons rassemblé **plus de cinq cents, en plus de quarante langues**, sur une seule page : brochures d’introduction à l’islam, guide illustré du culte, recueils de quarante hadiths, traductions du Coran, ouvrages sur la famille, livres pour enfants, manuels de lycée et fatwas. Les ouvrages francophones sont classés par thème (pour commencer, apprendre à pratiquer, hadiths, famille, enfants, approfondir) ; il existe aussi des sections en néerlandais, anglais, allemand, arabe, espagnol, italien et turc.
 
-Les fichiers restent **sur le serveur du Diyanet** : en cliquant sur un lien, vous les ouvrez ou les téléchargez directement depuis là. Une sélection de premières lectures se trouve en bas de cette page ; l’ensemble est sur la page **[Bibliothèque Diyanet](/fr/bibliotheque-diyanet/)**.
+Les fichiers restent **sur le serveur du Diyanet** ; nous n’en conservons aucune copie. Chaque ouvrage porte deux liens : **Lire (PDF)** l’ouvre dans la visionneuse de votre navigateur — son bouton de téléchargement, ou Ctrl+S, l’enregistre sur votre appareil ; **Télécharger (EPUB)**, quand ce format existe, le télécharge directement et se lit plus confortablement sur téléphone ou liseuse. En bas de cette page : une sélection de premières lectures, un bouton vers **tous les ouvrages en français** et un autre vers la **[Bibliothèque Diyanet](/fr/bibliotheque-diyanet/)** complète.
 
 ## Questions fréquentes
 

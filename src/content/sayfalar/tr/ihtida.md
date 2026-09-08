@@ -121,7 +121,7 @@ Avrupa’da yeni Müslüman olan kardeşlerimizin en çok konuştuğu başlıkla
 
 Diyanet İşleri Başkanlığı’nın bütün dijital yayınları ücretsizdir. Sizin için **kırktan fazla dilde beş yüzün üzerinde kitabı** tek bir sayfada topladık: İslam’ı tanıtan broşürler, resimli ibadet rehberi, kırk hadis kitapçıkları, Kur’an-ı Kerim mealleri, aile ve çocuk kitapları, İmam-Hatip ders kitapları ve fetvalar. Fransızca yayınlar konu konu (yeni başlayanlar, ibadet, hadis, aile, çocuk, derinleşme) ayrılmıştır; Felemenkçe, İngilizce, Almanca, Arapça, İspanyolca, İtalyanca ve Türkçe bölümler de vardır.
 
-Dosyalar **Diyanet’in kendi sunucusunda** durur; bağlantıya tıkladığınızda doğrudan oradan açılır veya indirilir. Sayfanın altında ilk okumalar için bir seçki, tamamı için **[Diyanet Kütüphanesi](/tr/diyanet-kutuphanesi/)** sayfası vardır.
+Dosyalar **Diyanet’in kendi sunucusunda** durur; biz hiçbir kopyasını tutmayız. Her yayının yanında iki bağlantı vardır: **Oku (PDF)** dosyayı tarayıcınızın okuyucusunda açar — oradaki indirme düğmesiyle (ya da Ctrl+S) cihazınıza kaydedebilirsiniz; **İndir (EPUB)** ise doğrudan indirir ve telefonda, e-kitap okuyucusunda daha rahat okunur. Sayfanın altında ilk okumalar için bir seçki, Türkçe yayınların tamamına ve **[Diyanet Kütüphanesi](/tr/diyanet-kutuphanesi/)** sayfasına giden düğmeler vardır.
 
 ## Sıkça Sorulan Sorular
 
