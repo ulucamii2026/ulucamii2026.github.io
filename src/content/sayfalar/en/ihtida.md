@@ -1,90 +1,140 @@
 ---
 baslik: Becoming Muslim (Conversion to Islam)
-altBaslik: Anyone wishing to enter Islam may approach our mosque, with no pressure and no precondition whatsoever.
-aciklama: The process of entering Islam (conversion) — the shahada, the conversion ceremony, the Conversion Certificate (EK-9), required documents and frequently asked questions.
-guncelleme: 2026-08-23
+altBaslik: Anyone who wishes to embrace Islam may come to our mosque, with no pressure and no preconditions.
+aciklama: "Becoming Muslim: the shahada, the ceremony, the official EK-9 certificate, documents, support afterwards and Diyanet’s free French-language library."
+guncelleme: 2026-09-08
 ---
 
 ## Welcome
 
-Anyone exploring Islam, feeling drawn to it in their heart, or who has decided to enter Islam, is welcome to approach our mosque. At no point in this process is anyone rushed or pressured; every step is taken entirely of your own free will. Our door is also always open if you would simply like to have a calm conversation with our imam first, ask your questions and learn about the process.
+Anyone who is exploring Islam, feels drawn to it, or has already decided to embrace it, may come to our mosque. Nobody is hurried and no pressure is applied: every step is taken by your own free will. If you would first like a calm conversation with our imam, to ask your questions and understand the process, our door is always open.
 
-## How Does One Enter Islam?
+The conversation can be held **in French or in Turkish**. Women may ask to speak with **our female religious officer**, who leads the Wednesday programme for women.
 
-Entering Islam takes place by sincerely believing in the oneness of Allah and that the Prophet Muhammad (peace be upon him) is His messenger, and declaring this with the tongue — that is, by pronouncing the **shahada** (declaration of faith). There is no other requirement beyond this — no special instruction, examination or waiting period is required.
+## How Does One Become Muslim?
 
-- **Is there any pressure?** No. The decision is entirely yours; our imam will also ask you this directly, before witnesses, during the ceremony.
-- **Will my family or community be informed?** No. The information you share is kept confidential and shared only with the minimum number of authorised people (our imam, the Counsellor’s office) — see our [Privacy Policy](/en/privacy/).
-- **Do I need to come alone?** **2 witnesses** must be present at the ceremony with you; if you do not know anyone, we will help you find witnesses from among our congregation.
+Becoming Muslim means believing in your heart that God is One and that Muhammad (peace be upon him) is His Messenger, and then declaring it aloud — the **declaration of faith (shahada)**. There is no other condition: no special training, no examination and no waiting period.
 
-## How Does the Conversion Ceremony Work?
+- **Is there any pressure?** No. The decision is entirely yours; at the ceremony the imam asks you this explicitly, in front of witnesses.
+- **Will my family or others be told?** No. What you share stays confidential and is passed only to the smallest possible number of authorised people (the imam, the Counsellor’s office) — see our [Privacy Policy](/en/privacy/).
+- **Do I have to come alone?** The ceremony requires **2 witnesses**; if you do not know anyone, we will help you find them within our congregation.
+- **Do I need to memorise anything?** No. The declaration of faith is taught to you at the ceremony, syllable by syllable.
 
-The ceremony takes place in a warm and simple atmosphere at our mosque, accompanied by our imam:
+## The Process, Step by Step
 
-1. A short recitation from the Qur’an and the reading of its meaning.
-2. A brief **address** from our imam (the belief in the oneness of God, the chain of prophets, and the meaning of the shahada).
-3. Before witnesses, you are asked the **question of free will** — this step is never skipped.
-4. The **shahada** is repeated together.
-5. **Takbir and congratulations.**
-6. **Registration in the Conversion Register** and presentation of the Conversion Certificate.
-7. Where possible, the gift of a Qur’an with a translation in your language and a book introducing Islam.
+1. **Application.** Fill in the online form below, or simply call our imam. It is free and commits you to nothing; you may withdraw at any time.
+2. **Meeting.** Our imam contacts you, listens to your questions and explains the process, calmly, at the mosque.
+3. **Setting the date.** The day and time of the ceremony are agreed together, around your availability.
+4. **The ceremony.** At the mosque, before two witnesses, you make the declaration of faith (details below).
+5. **Presentation of the certificate.** The colour copy printed on glossy paper is handed to you **the same day**.
+6. **Official record.** The official copies are registered through the Counsellor for Social Affairs at the Turkish Embassy in Brussels; this step can take a few weeks.
+7. **Afterwards.** Guidance, lessons and French-language resources continue — you are not left alone.
 
-For French-speaking candidates, the ceremony can also be conducted in French; the shahada is taught to you syllable by syllable in its original Arabic form.
+## How Does the Ceremony Work?
 
-## What Is the Conversion Certificate?
+The ceremony follows the Presidency of Religious Affairs’ official text, the **“Procedure to be Followed at the Conversion Ceremony” (annex EK-11)**, in a warm and simple atmosphere. The room is prepared, and our imam leads the ceremony in his robe and turban:
 
-The **Conversion Certificate (EK-9)** is a bilingual (Turkish/English) document issued by the Presidency of Religious Affairs of Turkey (Diyanet), officially recording your declaration of entering Islam and the details of the ceremony. It bears your signature, the signatures of the two witnesses, and the signature of the Diyanet official (the Counsellor for Social Affairs of the T.R. Embassy in Brussels).
+1. **Recitation of the Qur’an** — preferably verses 285-286 of Sûrat al-Baqara, followed by their translation and a brief explanation.
+2. **The address** — opening with verse 43 of Sûrat al-A‘râf: the oneness of God, the chain of prophets, the revealed books and the meaning of the declaration of faith.
+3. **The question of free will** — before God and before the witnesses, the imam asks you explicitly whether you are choosing Islam freely, under no compulsion. **This step is never skipped.**
+4. **The declaration of faith (shahada)** — repeated together, syllable by syllable.
+5. **Takbir, blessings upon the Prophet, and congratulations.**
+6. **Entry in the conversion register** and presentation of the certificate.
+7. **Closing** — verses 18-20 of Sûrat Âl ‘Imrân, or Sûrat al-‘Asr and al-Fâtiha, are recited and translated; the ceremony ends with a supplication.
+8. **A gift** — where possible, a copy of the Qur’an translated into your language and an introductory book on Islam.
 
-- **It is free of charge.** No fee whatsoever is requested from you for this process.
-- **Where is it used?** It is known that this certificate is used as the “Certificate of Conversion” requested by **Saudi Arabian authorities for Hajj/Umrah visa applications**. It may also be presented if requested for other official procedures; however, since acceptance criteria vary by institution, we recommend confirming with the relevant institution beforehand if you have a specific intended use.
-- **How is it issued?** A copy printed on glossy paper is presented to you the same day, following the ceremony; the official archival copy is sent to the Counsellor for Social Affairs of the T.R. Embassy in Brussels for registration.
+For French-speaking candidates the ceremony can be held entirely in French; the declaration of faith is taught in its original Arabic. The ceremony can also be held quietly, with only the people you choose.
 
-> The online form you complete on this site constitutes a **preliminary application/request** for the official EK-9; the official document is only issued following the ceremony at our mosque and approval by the Counsellor’s office.
+## What Is the Conversion Certificate (EK-9)?
+
+The **conversion certificate (EK-9)** is an official bilingual (Turkish/English) document issued by the Presidency of Religious Affairs of Türkiye (Diyanet İşleri Başkanlığı) that formally records your declaration and the details of the ceremony. It carries your signature, that of the **two witnesses**, and that of the representative of the Presidency (the Counsellor for Social Affairs at the Turkish Embassy in Brussels).
+
+- **It is free of charge.**
+- **How many copies?** Three. One, printed **in colour and gilt on glossy paper**, is handed to you at the end of the ceremony; of the other two, one is sent in a sealed confidential envelope to the Directorate General of Religious Services, and one is filed locally.
+- **What does it contain?** Name and surname, sex, date and place of birth, parents’ names, nationality, marital status, education, occupation, address and contact details, previous religion, reason for conversion, date of conversion, document number and date, passport photo, and the signatures of the two witnesses and the official.
+- **What is it used for?** Its confirmed, documented use is the **Hajj/Umrah visa application to the Saudi authorities**, which require a “Certificate of Conversion”. It may also be presented for other official purposes; since each institution sets its own criteria, we recommend checking in advance if you have a particular use in mind.
+
+> The online form on this site is a **preliminary application** for the official EK-9; the official document is issued only after the ceremony at our mosque and approval by the Counsellor’s office.
 
 ## Documents Required
 
-Please bring the following with you for your application and the ceremony:
+To bring on the day of the ceremony:
 
-- A copy of your identity card or passport (front and back for an identity card).
-- 1 passport-style photo.
-- The completed application form / letter of request (you may use the online form below).
-- Your explicit GDPR consent (signed within the form).
-- **2 witnesses** who will accompany you.
+- **Your identity card or passport** — you show the original to the officer.
+- **1 passport-style photo** — it is printed on the certificate and handed over in person.
+- **2 witnesses** — our mosque provides them if needed.
+- **The EK-10 explicit consent form** — signed on paper on the day. The full text is available in Turkish, English, **French** and Dutch through the link in the sidebar.
 
-## Process and Duration
+**About your personal data:** our online form asks for **no identity number, no copy of an identity document, and no file or photo upload**; our association neither takes nor keeps a copy of your identity document. Diyanet’s conversion directive (article 44) requires a passport photo and a copy of the identity document to be placed in the **official file** so that the certificate can be issued; this is done on the day of the ceremony by the authorised official, and the file is kept by the Counsellor’s office. Your data is accessible only to the smallest possible number of authorised people, strictly as the service requires.
 
-The process is free of charge and works as follows: first you submit your application (using the online form if you wish), and then a ceremony date is agreed with our mosque. On the day of the ceremony, the copy of the Conversion Certificate printed on glossy paper is presented to you **the same day**. For the certificate’s **official archival registration**, a copy is sent to the Counsellor for Social Affairs of the T.R. Embassy in Brussels; there is no fixed period set out in law for how long this official registration will take — in practice it may take **a few weeks**. We cannot commit to an exact number of days; our imam will keep you informed if needed.
+## Confidentiality and Discretion
 
-## After Conversion — Support
+Under European law, changing religion is **special category (sensitive) personal data**, and we treat it accordingly:
 
-You are not left alone after the ceremony:
+- We do not share **your application, the date or your details** with your family, your employer or your circle.
+- We never use **your story, your photograph or your name** on our website, on social media or in our announcements **without your explicit consent**. Nobody is put on display.
+- If you are worried about family pressure, say so at the meeting: the ceremony can be held discreetly, in a small circle, with our own witnesses.
+- For access, correction, deletion or withdrawal of consent, write to **info@ulucamii.be**. Details: [Privacy Policy](/en/privacy/).
 
-- A Qur’an with a translation in your language and a basic book of Islamic teachings is given as a gift (where possible).
-- You are welcome to take part in the talks, lessons and congregational programmes at our mosque.
-- If you wish to change your name, guidance can be offered to you — **this is not obligatory**, and is entirely a matter of personal choice.
+## After Conversion — You Are Not Left Alone
 
-Our mosque **aims** to develop, in the coming period, an orientation/mentorship programme and regular follow-up for our newly Muslim brothers and sisters; work on this is still at an early stage and does not currently represent a formal, guaranteed service.
+Conversion is a beginning, not an end. After the ceremony:
+
+- **A companion.** If you wish, a French-speaking member of our congregation accompanies you through the first months: prayer, mosque etiquette, practical questions.
+- **The basics.** Learning ablution and prayer, the Arabic alphabet and Qur’an reading, and essential knowledge — one to one or within our existing classes.
+- **Resources in your own language.** The **French-language Diyanet library** below gives you free access to dozens of works, from a practical worship guide to collections of fatwas.
+- **Community life.** Friday prayer, talks, iftars and festivals; on Wednesdays, the programme for women.
+- **Your name.** Changing your first name **is not required.** If you wish, a name can be suggested and we will tell you which authority handles an official change.
+
+Our aim is not to bring you into a culture but to accompany you in Islam: becoming Muslim does not mean giving up your language, your country or your culture.
+
+## Common Difficulties and the Support We Offer
+
+The subjects new Muslims raise with us most often, and how we respond:
+
+- **Family reactions.** The first period can be hard. Cutting ties with one’s family is not an Islamic teaching: kindness to parents is an explicit command of the Qur’an. We talk it through with you and, if you wish, answer your relatives’ questions too.
+- **The language barrier.** At the mosque, sermons and talks are mostly in Turkish. That is why we highlight French-language resources and can hold the meeting and the ceremony in French. Never hesitate to ask for an explanation.
+- **Not feeling “inside”.** We help you tell religion apart from cultural habit. Nobody can expect you to learn Turkish or adopt a culture.
+- **Dress and practice.** Practice is gradual; nobody forces you and nobody measures your progress.
+- **Death and wills.** For a convert who wishes to be buried according to Islamic rites, a **written will** matters greatly: without one, the family may choose otherwise (cremation, for example). Our imam can inform you and explain options such as the [Funeral and Repatriation Fund](/en/funeral-services/).
+- **Inheritance, marriage, difficulties at work.** We offer religious guidance and, for legal matters, refer you to the competent services; we do not give legal advice.
+
+## French-Language Resources (Diyanet)
+
+At the bottom of this page you will find a **free library of the French publications of the Presidency of Religious Affairs**: a practical worship guide, introductory booklets on Islam, forty-hadith collections, books on family life, high-school textbooks and fatwas in French. The files stay **on Diyanet’s own server**: clicking a link opens or downloads them directly from there.
 
 ## Frequently Asked Questions
 
 **Do I have to change my name?**
-No. A name change is entirely optional; a suggestion can be offered to you if you wish.
+No. Changing your first name is entirely optional; a suggestion can be offered, and we will point you to the official procedure if you want it.
 
-**Will my family or community find out about this process?**
-No. Your information is kept confidential and shared only with the minimum number of authorised people (our imam, the Counsellor’s office).
+**Will my family or my circle find out?**
+No. Your information stays confidential and is shared only with the smallest number of authorised people. Your story is never published without your consent.
 
-**Is there a fee for the certificate?**
-No, the process is entirely free of charge.
+**Is the certificate paid for?**
+No, the whole process is free of charge.
 
-**What exactly is the certificate used for?**
-Its known and confirmed use is for Hajj/Umrah visa applications. If it is needed for another official procedure, we recommend confirming beforehand whether that institution will accept it.
+**What exactly is the certificate for?**
+Its confirmed use is the Hajj/Umrah visa application. For any other official purpose, we recommend checking with the institution concerned beforehand.
 
-**Do I need to come alone?**
-2 witnesses must be present at the ceremony; if you do not know anyone, we will help you find witnesses from among our congregation.
+**Do I have to come alone?**
+The ceremony requires 2 witnesses; if you do not know anyone, we will help you find them within our congregation.
 
 **How long does it take?**
-The ceremony and the presentation of the local copy are usually completed the same day; the official archival registration may take a few weeks.
+The ceremony and the presentation of the certificate are usually completed the same day; the official record can take a few weeks.
 
-## Appointment / Contact
+**Can the ceremony be held in French?**
+Yes. Both the meeting and the ceremony can be held in French or Turkish.
 
-For your questions, you may contact our imam directly, or submit your request by filling in the online form below.
+**I am a woman; may I speak with a woman?**
+Yes. You may ask to meet our female religious officer, who leads the Wednesday programme for women.
+
+**What do I need to learn after converting?**
+Ablution and prayer first. The French **Guide pratique des adorations** below teaches both step by step with illustrations; we also help you one to one at the mosque.
+
+**What if I change my mind?**
+Filling in the form commits you to nothing. You may say “no” up to the day of the ceremony, and again when the question of free will is put to you: that is entirely normal and nobody will question you about it.
+
+## Appointments / Contact
+
+For any question, contact our imam directly, or send your application through the online form.

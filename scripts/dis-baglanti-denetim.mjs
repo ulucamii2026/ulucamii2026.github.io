@@ -24,7 +24,9 @@ const ZAMAN_ASIMI = 20000;
 const ARA = 250; // kamu sitelerini yormamak için istekler arası bekleme
 
 /** Site kendi adresleri ve şema/standart adresleri denetim dışıdır. */
-const ATLA = /ulucamii\.be|schema\.org|w3\.org|googleusercontent|gstatic|googleapis|^https?:\/\/localhost/;
+/* dijital.diyanet.gov.tr ayrı denetlenir (`npm run denetim:diyanet`): HEAD 405 döner, ölü sayfa
+   HTTP 200 + "Sayfa Bulunamadı" gövdesi verir ve GET her PDF'i baştan indirir (~450 MB). */
+const ATLA = /ulucamii\.be|schema\.org|w3\.org|googleusercontent|gstatic|googleapis|dijital\.diyanet\.gov\.tr|^https?:\/\/localhost/;
 
 if (!existsSync(KOK)) {
   console.error('dist/ yok — önce `npm run build`');

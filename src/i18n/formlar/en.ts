@@ -136,7 +136,7 @@ export const en: FormMetinleri = {
     sayfaAciklama: 'Marche-en-Famenne Ulu Camii conversion (becoming Muslim) application form: send your details and our imam will contact you to arrange a date for the shahada ceremony and the conversion certificate.',
     ustEtiket: 'Conversion · Becoming Muslim',
     giris: 'Anyone wishing to become Muslim can reach us through this form. Our imam will call you to listen to your questions and wishes; the shahada (declaration of faith) is then made at our mosque before two witnesses, and the official conversion certificate is issued by the Presidency of Religious Affairs (Diyanet). The application is free and carries no obligation.',
-    kimlikNotu: 'You do not need to provide a national registry number, a copy of your ID or a photo for the certificate. On the day of the ceremony, you simply show your ID to the imam; your passport photo and signature are also taken on that day.',
+    kimlikNotu: 'This form asks for no national registry number, no copy of your ID and no photo upload; our association keeps no copy. On the day of the ceremony you show your ID to the imam; your passport photo and signature are taken that day — the official file is kept by the Counsellor’s office.',
     bolum: { kisi: 'Personal information', durum: 'Status', iletisim: 'Contact', ihtida: 'Conversion and ceremony', riza: 'Consent and declaration', ozet: 'Summary and submission' },
     kisi: {
       adSoyad: 'Your full name', adSoyadYardim: 'As shown on your ID; this name will be printed on the certificate.',
@@ -158,6 +158,7 @@ export const en: FormMetinleri = {
       sahitler: 'Witnesses', sahitlerYardim: 'Two Muslim witnesses attend the ceremony. If you are bringing your own, give their names; otherwise the mosque will provide them.',
       sahit1: 'Full name of 1st witness', sahit2: 'Full name of 2nd witness',
       nasilHaberdar: 'How did you hear about us?', ekNot: 'Anything else you would like to add',
+      ekNotYardim: 'Tell us here how and when you would prefer to be contacted (phone, WhatsApp, e-mail). If you are worried about pressure from your family or others, say so as well: we will arrange the meeting and the ceremony accordingly, discreetly and in a small circle.'
     },
     riza: {
       acikRiza: 'I give my explicit consent (GDPR Art. 9(2)(a)) for this information about my religious belief and my wish to embrace Islam to be processed by the Marche-en-Famenne Ulu Camii association and the relevant department of the Presidency of Religious Affairs (Diyanet), for the purpose of issuing the conversion certificate and arranging the ceremony. I may withdraw this consent at any time.',

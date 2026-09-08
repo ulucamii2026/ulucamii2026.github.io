@@ -2,6 +2,7 @@
 /** İhtida (İslam'a giriş) bilgi sayfası — gövde src/content/sayfalar/{dil}/ihtida.md,
     yan sütunda süreç zaman çizelgesi + gerekli belgeler + iletişim kartı + online başvuru düğmesi. */
 import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import DiyanetKitapligi from '../components/DiyanetKitapligi.astro';
 import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import Ikon from '../components/Ikon.astro';
 import { ceviri, yol } from '../i18n/utils';
@@ -16,18 +17,19 @@ const m = dil === 'tr'
   ? {
       surecBaslik: 'Süreç Nasıl İşler?',
       surec: [
-        { b: 'Başvuru', a: 'Online formu doldurun veya doğrudan din görevlimizle görüşün.' },
-        { b: 'Görüşme ve tören günü', a: 'Camimizle birlikte uygun bir tören günü belirlenir.' },
+        { b: 'Başvuru', a: 'Online formu doldurun veya doğrudan din görevlimizi arayın. Ücretsiz, bağlayıcılığı yok.' },
+        { b: 'Tanışma görüşmesi', a: 'Sorularınızı dinleriz, süreci anlatırız. Türkçe veya Fransızca.' },
+        { b: 'Tören günü', a: 'Gün ve saat sizin uygunluğunuza göre birlikte belirlenir.' },
         { b: 'İhtida töreni', a: 'Tilavet, telkin, hür irade sorusu, kelime-i şehadet, tekbir ve tebrik.' },
         { b: 'Belge takdimi', a: 'Kuşe kâğıda basılan İhtida Belgesi nüshası aynı gün size verilir.' },
-        { b: 'Resmî arşiv kaydı', a: 'Resmî nüsha Müşavirliğe gönderilir; kayıt işlemi birkaç hafta sürebilir.' },
+        { b: 'Resmî kayıt ve sonrası', a: 'Resmî nüsha Müşavirlik kanalıyla kayda geçer (birkaç hafta); rehberlik ve dersler devam eder.' },
       ],
       belgelerBaslik: 'Gerekli Belgeler',
       belgeler: [
-        'Kimlik kartı veya pasaport — tören günü yalnız gösterilir, kopyası alınmaz',
-        '1 adet vesikalık fotoğraf (törende elden verilir)',
+        'Kimlik kartı veya pasaport — tören günü görevliye gösterilir; derneğimiz kopya almaz',
+        '1 adet vesikalık fotoğraf — belgenin üzerine basılır, törende elden alınır',
         'Online başvuru formu (kimlik numarası ve belge yüklemesi istenmez)',
-        'Açık rıza onayı (form içinde, elektronik beyanla)',
+        'EK-10 açık rıza metni — tören günü kâğıt üzerinde imzalanır',
         'Sizinle gelecek 2 şahit (yoksa camimiz sağlar)',
       ],
       iletisimBaslik: 'Randevu ve Sorularınız İçin',
@@ -39,23 +41,27 @@ const m = dil === 'tr'
       ek9: 'İhtida Belgesi (EK-9) — resmî örnek',
       ek10: 'KVKK Açık Rıza Metni (EK-10) — tam metin',
       ucretsiz: 'Süreç tamamen ücretsizdir.',
+      kaynakBaslik: 'Fransızca Kaynaklar',
+      kaynakAlt: 'Diyanet’in Fransızca yayınları — ibadet rehberi, tanıtım broşürleri, kırk hadis, fetvalar. Ücretsiz, sayfanın altında.',
+      kaynakButon: 'Kütüphaneye git',
     }
   : dil === 'en'
   ? {
       surecBaslik: 'How Does the Process Work?',
       surec: [
-        { b: 'Application', a: 'Fill in the online form or speak directly with our imam.' },
-        { b: 'Interview and ceremony date', a: 'A suitable ceremony date is set together with the mosque.' },
+        { b: 'Application', a: 'Fill in the online form or simply call our imam. Free, and it commits you to nothing.' },
+        { b: 'Meeting', a: 'We listen to your questions and explain the process — in French or Turkish.' },
+        { b: 'Setting the date', a: 'The day and time are agreed together, around your availability.' },
         { b: 'Conversion ceremony', a: 'Recitation, a short address, the question of free will, the shahada, takbir and congratulations.' },
         { b: 'Presentation of the certificate', a: 'A copy printed on glossy paper is handed to you the same day.' },
-        { b: 'Official archival record', a: 'The official copy is sent to the Counsellor’s office; registration can take a few weeks.' },
+        { b: 'Official record and after', a: 'The official copy is registered through the Counsellor’s office (a few weeks); guidance and lessons continue.' },
       ],
       belgelerBaslik: 'Documents Required',
       belgeler: [
-        'Identity card or passport — only shown on the day of the ceremony, no copy is taken',
-        '1 passport-style photo (handed over at the ceremony)',
+        'Identity card or passport — shown to the officer on the day of the ceremony; our association keeps no copy',
+        '1 passport-style photo — printed on the certificate, handed over at the ceremony',
         'Online application form (no ID number or document upload is requested)',
-        'Explicit consent (given within the form by electronic declaration)',
+        'EK-10 explicit consent form — signed on paper on the day of the ceremony',
         '2 witnesses to accompany you (our mosque provides them if needed)',
       ],
       iletisimBaslik: 'For Appointments and Questions',
@@ -67,22 +73,26 @@ const m = dil === 'tr'
       ek9: 'Conversion Certificate (EK-9) — official template',
       ek10: 'GDPR Explicit Consent Text (EK-10) — full text',
       ucretsiz: 'The process is entirely free of charge.',
+      kaynakBaslik: 'French Resources',
+      kaynakAlt: 'Diyanet’s French publications — worship guide, introductory booklets, forty hadiths, fatwas. Free, at the bottom of this page.',
+      kaynakButon: 'Go to the library',
     }
   : {
       surecBaslik: 'Comment se déroule la démarche ?',
       surec: [
-        { b: 'Demande', a: 'Remplissez le formulaire en ligne ou contactez directement notre imam.' },
-        { b: 'Entretien et date de cérémonie', a: 'Une date de cérémonie est fixée avec la mosquée.' },
+        { b: 'Demande', a: 'Formulaire en ligne ou appel direct à l’imam. Gratuit et sans engagement.' },
+        { b: 'Entretien', a: 'Nous écoutons vos questions et expliquons la démarche — en français ou en turc.' },
+        { b: 'Choix de la date', a: 'Le jour et l’heure sont fixés ensemble, selon vos disponibilités.' },
         { b: 'Cérémonie de conversion', a: 'Récitation, discours, question du libre arbitre, chahada, takbir et félicitations.' },
         { b: 'Remise de l’attestation', a: 'L’exemplaire imprimé sur papier glacé vous est remis le jour même.' },
-        { b: 'Enregistrement officiel', a: 'L’exemplaire officiel est envoyé au Conseiller ; l’enregistrement peut prendre plusieurs semaines.' },
+        { b: 'Enregistrement et suite', a: 'L’exemplaire officiel est enregistré via le Conseiller (plusieurs semaines) ; l’accompagnement continue.' },
       ],
       belgelerBaslik: 'Documents nécessaires',
       belgeler: [
-        'Carte d’identité ou passeport — présenté(e) uniquement le jour de la cérémonie, sans copie',
-        '1 photo d’identité (remise en main propre lors de la cérémonie)',
+        'Carte d’identité ou passeport — présenté(e) à l’imam le jour de la cérémonie ; notre association n’en garde aucune copie',
+        '1 photo d’identité — imprimée sur l’attestation, remise en main propre le jour même',
         'Formulaire de demande en ligne (aucun numéro d’identité ni document à téléverser)',
-        'Consentement explicite (donné dans le formulaire par déclaration électronique)',
+        'Formulaire de consentement EK-10 — signé sur papier le jour de la cérémonie',
         '2 témoins qui vous accompagnent (la mosquée en fournit si nécessaire)',
       ],
       iletisimBaslik: 'Rendez-vous et questions',
@@ -94,9 +104,12 @@ const m = dil === 'tr'
       ek9: 'Attestation de conversion (EK-9) — modèle officiel',
       ek10: 'Consentement RGPD (EK-10) — texte complet',
       ucretsiz: 'La démarche est entièrement gratuite.',
+      kaynakBaslik: 'Ressources en français',
+      kaynakAlt: 'Les publications francophones du Diyanet — guide du culte, brochures d’introduction, quarante hadiths, fatwas. Gratuit, en bas de cette page.',
+      kaynakButon: 'Aller à la bibliothèque',
     };
 ---
-<IcerikSayfasi dil={dil} anahtar="ihtida" etiket={t('nav.ihtida')}>
+<IcerikSayfasi dil={dil} anahtar="ihtida" etiket={t('nav.ihtida')} icindekiler>
   <div slot="yan" class="kart-kagit p-5 border-(--vurgu-2)">
     <p class="etiket etiket-vurgu">{m.basvuruBaslik}</p>
     <p class="mt-2 text-sm text-(--metin-2)">{m.basvuruAlt}</p>
@@ -127,6 +140,12 @@ const m = dil === 'tr'
     </dl>
   </div>
 
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.kaynakBaslik}</p>
+    <p class="mt-2 text-sm text-(--metin-2)">{m.kaynakAlt}</p>
+    <a href="#fransizca-kaynaklar" class="dugme dugme-ikincil mt-4 w-full justify-center">{m.kaynakButon}</a>
+  </div>
+
   <div slot="yan" class="kart-kagit p-5">
     <p class="etiket etiket-vurgu">{m.indirBaslik}</p>
     <ul class="mt-3 grid gap-2 text-sm">
@@ -134,4 +153,6 @@ const m = dil === 'tr'
       <li><a href="/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf" target="_blank" rel="noopener">{m.ek10}<span aria-hidden="true"> ↗</span></a></li>
     </ul>
   </div>
+
+  <DiyanetKitapligi slot="alt" dil={dil} />
 </IcerikSayfasi>

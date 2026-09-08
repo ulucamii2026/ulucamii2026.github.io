@@ -6,19 +6,32 @@ import SayfaBasligi from './SayfaBasligi.astro';
 import { ceviri, tarihBicimle } from '../i18n/utils';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 import { sayfa } from '../lib/icerik';
-interface Props { dil: Dil; anahtar: SayfaAnahtari; etiket?: string; noindex?: boolean }
-const { dil, anahtar, etiket, noindex = false } = Astro.props;
+interface Props { dil: Dil; anahtar: SayfaAnahtari; etiket?: string; noindex?: boolean; icindekiler?: boolean }
+const { dil, anahtar, etiket, noindex = false, icindekiler = false } = Astro.props;
 const t = ceviri(dil);
 const entry = await sayfa(dil, anahtar);
 if (!entry) throw new Error(`İçerik yok: src/content/sayfalar/${dil}/${anahtar}.md`);
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const yanVar = Astro.slots.has('yan');
+
+/* İçindekiler — uzun bilgi sayfalarında (ihtida gövdesi mobilde ~12.000 px) okuyucu aradığı
+   başlığa tek dokunuşta gitsin diye. Yalnız h2'ler; Astro markdown başlıklara kendi id'sini verir. */
+const TOC_BASLIK = { tr: 'İçindekiler', fr: 'Sommaire', en: 'Contents' } as const;
+const bolumler = icindekiler ? headings.filter((h) => h.depth === 2 && h.slug) : [];
 ---
 <Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama} kapak={entry.data.kapak} noindex={noindex}>
   <SayfaBasligi etiket={etiket ?? t('site.kisa')} baslik={entry.data.baslik} altBaslik={entry.data.altBaslik} kapak={entry.data.kapak} />
   <slot name="ust" />
   <div class:list={['kapsayici py-10 grid gap-10', yanVar && 'lg:grid-cols-[minmax(0,1fr)_360px]']}>
     <article class="duz-yazi">
+      {bolumler.length > 2 && (
+        <nav class="icindekiler kart-kagit" aria-label={TOC_BASLIK[dil]}>
+          <p class="etiket etiket-vurgu">{TOC_BASLIK[dil]}</p>
+          <ol>
+            {bolumler.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
+        </nav>
+      )}
       <Content />
       {entry.data.guncelleme && <p class="etiket mt-10">{t('genel.guncelleme')}: {tarihBicimle(entry.data.guncelleme, dil)}</p>}
     </article>
@@ -26,3 +39,18 @@ const yanVar = Astro.slots.has('yan');
   </div>
   <slot name="alt" />
 </Base>
+
+<style>
+  /* Yapışkan başlık (sticky) çapaya atlanan başlığı örtmesin. */
+  .duz-yazi :global(h2[id]), .duz-yazi :global(h3[id]) { scroll-margin-top: 6rem; }
+  .icindekiler { padding: 1.1rem 1.3rem 1.2rem; margin-bottom: 2.2rem; }
+  .icindekiler ol { list-style: none; padding: 0; margin: 0.7rem 0 0; display: grid; gap: 0.15rem; }
+  .icindekiler li { margin: 0; }
+  .icindekiler a { display: block; padding: 0.42rem 0; font-size: 0.95rem; text-decoration: none;
+    color: var(--metin-2); border-bottom: 1px solid transparent; }
+  .icindekiler a:hover { color: var(--vurgu); }
+  .icindekiler a:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
+  @media (min-width: 46rem) {
+    .icindekiler ol { grid-template-columns: 1fr 1fr; gap: 0.15rem 1.6rem; }
+  }
+</style>

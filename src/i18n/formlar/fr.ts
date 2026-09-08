@@ -137,7 +137,7 @@ export const fr: FormMetinleri = {
     sayfaAciklama: 'Formulaire de demande de conversion (devenir musulman) de la mosquée Marche-en-Famenne Ulu Camii : envoyez vos informations, notre imam vous contactera pour fixer une date pour la chahada et l’attestation de conversion.',
     ustEtiket: 'Conversion · Devenir musulman',
     giris: 'Toute personne souhaitant devenir musulmane peut nous contacter par ce formulaire. Notre imam vous appellera pour écouter vos questions et vos souhaits ; la chahada (profession de foi) sera ensuite prononcée à la mosquée, devant deux témoins, et l’attestation officielle de conversion de la Présidence des Affaires religieuses (Diyanet) sera établie. La demande est gratuite et sans engagement.',
-    kimlikNotu: 'Aucun numéro de registre national, copie de pièce d’identité ou photo à téléverser pour l’attestation. Le jour de la cérémonie, vous présentez simplement votre pièce d’identité à l’imam ; votre photo d’identité et votre signature seront également prises ce jour-là.',
+    kimlikNotu: 'Aucun numéro de registre national, copie de pièce d’identité ou photo à téléverser dans ce formulaire ; notre association ne conserve aucune copie. Le jour de la cérémonie, vous présentez votre pièce d’identité à l’imam ; votre photo d’identité et votre signature sont prises ce jour-là — le dossier officiel est conservé par le Conseiller des Affaires sociales.',
     bolum: { kisi: 'Informations personnelles', durum: 'Situation', iletisim: 'Contact', ihtida: 'Conversion et cérémonie', riza: 'Consentement et déclaration', ozet: 'Récapitulatif et envoi' },
     kisi: {
       adSoyad: 'Vos nom et prénom', adSoyadYardim: 'Comme indiqué sur votre pièce d’identité ; ce nom figurera sur l’attestation.',
@@ -159,6 +159,7 @@ export const fr: FormMetinleri = {
       sahitler: 'Témoins', sahitlerYardim: 'Deux témoins musulmans assistent à la cérémonie. Si vous en amenez, indiquez leurs noms ; sinon, la mosquée s’en charge.',
       sahit1: 'Nom et prénom du 1er témoin', sahit2: 'Nom et prénom du 2e témoin',
       nasilHaberdar: 'Comment nous avez-vous connus ?', ekNot: 'Remarques complémentaires',
+      ekNotYardim: 'Vous pouvez indiquer ici comment et à quels moments vous préférez être contacté(e) (téléphone, WhatsApp, e-mail). Si vous craignez des pressions familiales ou de votre entourage, dites-le également : nous organiserons l’entretien et la cérémonie en conséquence, discrètement et en cercle restreint.'
     },
     riza: {
       acikRiza: 'Je donne mon consentement explicite (art. 9.2.a RGPD) au traitement de ces informations relatives à ma conviction religieuse et à mon souhait d’embrasser l’islam, par l’association Marche-en-Famenne Ulu Camii et le service compétent de la Présidence des Affaires religieuses (Diyanet), aux fins d’établissement de l’attestation de conversion et d’organisation de la cérémonie. Je peux retirer ce consentement à tout moment.',

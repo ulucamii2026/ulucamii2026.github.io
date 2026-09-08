@@ -136,7 +136,7 @@ export const tr: FormMetinleri = {
     sayfaAciklama: 'Marche-en-Famenne Ulu Camii ihtida (Müslüman olma) başvuru formu: bilgilerinizi gönderin, din görevlimiz sizinle iletişime geçip kelime-i şehadet töreni ve ihtida belgesi için gün belirlesin.',
     ustEtiket: 'İhtida · Müslüman olmak',
     giris: 'Müslüman olmak isteyen herkes bu formla bize ulaşabilir. Din görevlimiz sizi arayıp soru ve isteklerinizi dinler; ardından camimizde, iki şahit huzurunda kelime-i şehadet getirilir ve Diyanet İşleri Başkanlığı’nın resmî ihtida belgesi düzenlenir. Başvuru ücretsizdir ve hiçbir bağlayıcılığı yoktur.',
-    kimlikNotu: 'Belge için kimlik numarası, kimlik kopyası veya fotoğraf yüklemeniz gerekmez. Tören günü kimlik belgenizi din görevlisine yalnız gösterirsiniz; vesikalık fotoğrafınızı ve imzanızı da o gün elden alırız.',
+    kimlikNotu: 'Bu formda kimlik numarası, kimlik kopyası veya fotoğraf yüklemeniz gerekmez; derneğimiz kimlik kopyası saklamaz. Tören günü kimlik belgenizi görevliye gösterirsiniz; vesikalık fotoğrafınızı ve imzanızı da o gün elden alırız — resmî belge dosyası Müşavirlikte tutulur.',
     bolum: { kisi: 'Kişisel bilgiler', durum: 'Durum', iletisim: 'İletişim', ihtida: 'İhtida ve tören', riza: 'Rıza ve beyan', ozet: 'Özet ve gönderim' },
     kisi: {
       adSoyad: 'Adınız ve soyadınız', adSoyadYardim: 'Kimlik belgenizde yazdığı gibi; belgeye bu ad basılır.',
@@ -158,6 +158,7 @@ export const tr: FormMetinleri = {
       sahitler: 'Şahitler', sahitlerYardim: 'Törende iki Müslüman şahit bulunur. Getireceğiniz şahit varsa adlarını yazın; yoksa camimiz sağlar.',
       sahit1: '1. şahit adı soyadı', sahit2: '2. şahit adı soyadı',
       nasilHaberdar: 'Bizi nasıl duydunuz?', ekNot: 'Eklemek istedikleriniz',
+      ekNotYardim: 'Size nasıl ve hangi saatlerde ulaşmamızı istediğinizi (telefon, WhatsApp, e-posta) buraya yazabilirsiniz. Ailevî ya da çevresel bir baskı endişeniz varsa bunu da yazın: görüşmeyi ve töreni ona göre, dar bir çevrede ve sessizce planlarız.'
     },
     riza: {
       acikRiza: 'Dinî inancıma ve İslam’a girme isteğime ilişkin bu bilgilerin, ihtida belgesinin düzenlenmesi ve törenin planlanması amacıyla Marche-en-Famenne Ulu Camii derneği ve Diyanet İşleri Başkanlığı’nın yetkili birimi tarafından işlenmesine açık rıza veriyorum (GDPR md. 9/2-a). Bu rızayı istediğim zaman geri alabilirim.',

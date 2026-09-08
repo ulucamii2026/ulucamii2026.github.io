@@ -108,7 +108,7 @@ export interface IhtidaMetinler {
     torenDili: string; dilTr: string; dilFr: string; dilEn: string; dilAr: string;
     torenTarihi: string; torenTarihiYardim: string;
     sahitler: string; sahitlerYardim: string; sahit1: string; sahit2: string;
-    nasilHaberdar: string; ekNot: string;
+    nasilHaberdar: string; ekNot: string; ekNotYardim: string;
   };
   riza: {
     acikRiza: string; ek10: string; ek10Baglanti: string; gizlilik: string; fotoIzni: string; fotoAciklama: string;

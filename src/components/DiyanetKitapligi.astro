@@ -1,0 +1,258 @@
+---
+/**
+ * Diyanet Fransızca kütüphanesi — ihtida sayfasının altındaki ücretsiz kaynak bölümü.
+ *
+ * Veri: src/data/diyanet-fr-yayinlar.json (ELLE düzenlenebilir ama bağlantılar
+ * `npm run denetim:diyanet` ile doğrulanır — `scripts/diyanet-fr-kontrol.mjs`).
+ *
+ * ── Neden dosyalar bizde durmuyor ────────────────────────────────────────────
+ * PDF'ler Diyanet İşleri Başkanlığı'nın kendi sunucusunda (dijital.diyanet.gov.tr)
+ * kalır; biz yalnız bağlantı veriyoruz. Böylece (1) telif/yayın hakkı Diyanet'te
+ * kalır, (2) yayın güncellenince bizim kopyamız eskimez, (3) depoya ~450 MB PDF
+ * girmez. Bunun bedeli: bağlantılar Diyanet tarafında ölebilir — 8 Eyl 2026'da
+ * site haritasındaki 49 Fransızca kaydın 11'i çoktan ölüydü, biri (cami broşürü,
+ * id=510) ise 1,7 MB bildirip 21 KB gövde döndürüyordu. Bu yüzden denetim betiği
+ * yalnız HTTP kodunu değil, gövdenin gerçekten tam bir PDF olduğunu da kontrol eder.
+ * HEAD isteği çalışmaz (405) — GET gerekir.
+ *
+ * Süzgeç ilerlemeli iyileştirmedir: JS yokken bütün başlıklar okunur durumda kalır.
+ */
+import veri from '../data/diyanet-fr-yayinlar.json';
+import type { Dil } from '../i18n/ui';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+
+type Yayin = (typeof veri.yayinlar)[number];
+
+const M = {
+  tr: {
+    etiket: 'Ücretsiz kaynaklar',
+    baslik: 'Fransızca Diyanet Kütüphanesi',
+    giris:
+      'Diyanet İşleri Başkanlığı’nın Fransızca yayınları — ibadet rehberinden fetvalara, kırk hadis kitapçıklarından lise ders kitaplarına kadar. Hepsi ücretsizdir; dosyalar Diyanet’in kendi sunucusunda durur, bağlantıya tıklayınca oradan açılır veya indirilir.',
+    ara: 'Kitaplarda ara',
+    araYer: 'Örnek: prière, Coran, famille…',
+    sonucYok: 'Aramanıza uyan kitap yok.',
+    adet: (n: number) => `${n} kitap`,
+    sayfaKisa: 'sayfa',
+    pdfAc: 'PDF’i aç',
+    epub: 'EPUB',
+    kunye: 'Diyanet sayfası',
+    dis: 'yeni sekmede açılır',
+    kaynakNot:
+      'Kaynak: dijital.diyanet.gov.tr — T.C. Diyanet İşleri Başkanlığı. Bağlantılar {tarih} tarihinde doğrulandı. Bir bağlantı çalışmıyorsa lütfen bize bildirin.',
+    gruplar: {
+      baslangic: 'Yeni başlayanlar için',
+      ibadet: 'İbadeti öğrenmek',
+      hadis: 'Kırk hadis kitapçıkları',
+      aile: 'Aile ve hayat',
+      derinlesme: 'Derinleşmek isteyenler için',
+      cocuk: 'Çocuklar için',
+      istismar: 'Din istismarı ve aşırılık',
+    },
+  },
+  fr: {
+    etiket: 'Ressources gratuites',
+    baslik: 'Bibliothèque francophone du Diyanet',
+    giris:
+      'Les publications en français de la Présidence des Affaires religieuses de Turquie (Diyanet) : du guide du culte aux fatwas, des recueils de quarante hadiths aux manuels de lycée. Tout est gratuit ; les fichiers restent sur le serveur du Diyanet et s’ouvrent directement depuis là.',
+    ara: 'Rechercher un ouvrage',
+    araYer: 'Ex. : prière, Coran, famille…',
+    sonucYok: 'Aucun ouvrage ne correspond à votre recherche.',
+    adet: (n: number) => `${n} ouvrage${n > 1 ? 's' : ''}`,
+    sayfaKisa: 'pages',
+    pdfAc: 'Ouvrir le PDF',
+    epub: 'EPUB',
+    kunye: 'Fiche Diyanet',
+    dis: 'ouvre dans un nouvel onglet',
+    kaynakNot:
+      'Source : dijital.diyanet.gov.tr — Présidence des Affaires religieuses (Diyanet). Liens vérifiés le {tarih}. Merci de nous signaler tout lien inactif.',
+    gruplar: {
+      baslangic: 'Pour commencer',
+      ibadet: 'Apprendre à pratiquer',
+      hadis: 'Recueils de quarante hadiths',
+      aile: 'Famille et vie quotidienne',
+      derinlesme: 'Pour approfondir',
+      cocuk: 'Pour les enfants',
+      istismar: 'Religion, extrémisme et terrorisme',
+    },
+  },
+  en: {
+    etiket: 'Free resources',
+    baslik: 'Diyanet’s French-Language Library',
+    giris:
+      'French publications of the Turkish Presidency of Religious Affairs (Diyanet) — from a practical worship guide to fatwas, forty-hadith booklets and high-school textbooks. All free of charge; the files stay on Diyanet’s own server and open directly from there.',
+    ara: 'Search the books',
+    araYer: 'e.g. prière, Coran, famille…',
+    sonucYok: 'No book matches your search.',
+    adet: (n: number) => `${n} book${n > 1 ? 's' : ''}`,
+    sayfaKisa: 'pages',
+    pdfAc: 'Open the PDF',
+    epub: 'EPUB',
+    kunye: 'Diyanet page',
+    dis: 'opens in a new tab',
+    kaynakNot:
+      'Source: dijital.diyanet.gov.tr — Presidency of Religious Affairs (Diyanet). Links verified on {tarih}. Please tell us if a link stops working.',
+    gruplar: {
+      baslangic: 'To begin with',
+      ibadet: 'Learning to worship',
+      hadis: 'Forty-hadith booklets',
+      aile: 'Family and daily life',
+      derinlesme: 'Going deeper',
+      cocuk: 'For children',
+      istismar: 'Religion, extremism and terrorism',
+    },
+  },
+} as const;
+
+const m = M[dil];
+
+/* Grup sırası bilinçlidir: yeni Müslüman olan biri en çok ilk iki grubu arar. */
+const SIRA = ['baslangic', 'ibadet', 'hadis', 'aile', 'cocuk', 'derinlesme', 'istismar'] as const;
+const ACIK = new Set(['baslangic', 'ibadet']);
+
+const gruplar = SIRA.map((g) => ({
+  anahtar: g,
+  ad: m.gruplar[g],
+  kitaplar: (veri.yayinlar as Yayin[]).filter((y) => y.grup === g),
+})).filter((g) => g.kitaplar.length > 0);
+
+const mb = (b: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
+const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr' ? 'fr-BE' : 'en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric',
+}).format(new Date(veri.guncelleme + 'T12:00:00Z'));
+---
+
+<section id="fransizca-kaynaklar" class="kitaplik">
+  <div class="kapsayici">
+    <p class="etiket etiket-vurgu">{m.etiket}</p>
+    <h2 class="baslik">{m.baslik}</h2>
+    <p class="giris">{m.giris}</p>
+
+    <div class="ara-kutu">
+      <label class="etiket" for="kitap-ara">{m.ara}</label>
+      <input id="kitap-ara" type="search" placeholder={m.araYer} autocomplete="off" spellcheck="false" />
+    </div>
+    <p id="kitap-sonuc-yok" class="sonuc-yok" hidden>{m.sonucYok}</p>
+
+    {gruplar.map((g) => (
+      <details class="grup" data-grup open={ACIK.has(g.anahtar)}>
+        <summary>
+          <span class="grup-ad">{g.ad}</span>
+          <span class="etiket grup-adet">{m.adet(g.kitaplar.length)}</span>
+        </summary>
+        <ul class="liste">
+          {g.kitaplar.map((k) => (
+            <li class="kitap kart" data-kitap data-ara={`${k.baslik} ${k.aciklama[dil]}`.toLocaleLowerCase('fr')}>
+              <div class="kitap-metin">
+                <h3 lang="fr">{k.baslik}</h3>
+                <p class="kitap-aciklama">{k.aciklama[dil]}</p>
+                <p class="etiket kitap-meta">
+                  {k.sayfa ? <span>{k.sayfa} {m.sayfaKisa}</span> : null}
+                  {k.sayfa && k.boyut ? <span aria-hidden="true"> · </span> : null}
+                  {k.boyut ? <span>PDF {mb(k.boyut)}</span> : null}
+                </p>
+              </div>
+              <div class="kitap-baglantilar">
+                <a class="dugme dugme-birincil" href={k.pdf} target="_blank" rel="noopener noreferrer">
+                  {m.pdfAc}<span class="sr-only"> — {k.baslik}, {m.dis}</span><span aria-hidden="true"> ↗</span>
+                </a>
+                {k.epub ? (
+                  <a class="dugme dugme-ikincil" href={k.epub} target="_blank" rel="noopener noreferrer">
+                    {m.epub}<span class="sr-only"> — {k.baslik}, {m.dis}</span>
+                  </a>
+                ) : null}
+                <a class="kunye-link" href={k.sayfaUrl} target="_blank" rel="noopener noreferrer">
+                  {m.kunye}<span class="sr-only"> — {k.baslik}, {m.dis}</span><span aria-hidden="true"> ↗</span>
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
+
+    <p class="kaynak-not">{m.kaynakNot.replace('{tarih}', tarihMetni)}</p>
+  </div>
+</section>
+
+<script>
+  /* Süzgeç: başlık + açıklama üzerinde, aksan duyarsız. JS yoksa her şey açık kalır. */
+  const kutu = document.getElementById('kitap-ara') as HTMLInputElement | null;
+  if (kutu) {
+    const sade = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const kitaplar = Array.from(document.querySelectorAll<HTMLElement>('[data-kitap]'));
+    const gruplar = Array.from(document.querySelectorAll<HTMLDetailsElement>('details[data-grup]'));
+    const acikBaslangic = gruplar.map((g) => g.open);
+    const sonucYok = document.getElementById('kitap-sonuc-yok');
+    const anahtar = new Map(kitaplar.map((k) => [k, sade(k.dataset.ara ?? '')]));
+
+    const uygula = () => {
+      const q = sade(kutu.value.trim());
+      if (!q) {
+        kitaplar.forEach((k) => (k.hidden = false));
+        gruplar.forEach((g, i) => { g.hidden = false; g.open = acikBaslangic[i]; });
+        if (sonucYok) sonucYok.hidden = true;
+        return;
+      }
+      let toplam = 0;
+      kitaplar.forEach((k) => {
+        const uyar = (anahtar.get(k) ?? '').includes(q);
+        k.hidden = !uyar;
+        if (uyar) toplam++;
+      });
+      gruplar.forEach((g) => {
+        const varMi = Array.from(g.querySelectorAll<HTMLElement>('[data-kitap]')).some((k) => !k.hidden);
+        g.hidden = !varMi;
+        g.open = varMi;
+      });
+      if (sonucYok) sonucYok.hidden = toplam > 0;
+    };
+
+    kutu.addEventListener('input', uygula);
+    uygula();
+  }
+</script>
+
+<style>
+  .kitaplik { background: var(--zemin-2); border-top: 1px solid var(--cizgi); padding: 3.5rem 0 4rem; }
+  .kitaplik .baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
+  .kitaplik .giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
+
+  .ara-kutu { margin-top: 1.8rem; display: grid; gap: 0.4rem; max-width: 26rem; }
+  .ara-kutu input { width: 100%; min-height: 48px; padding: 0.65rem 0.9rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); font: inherit; }
+  .ara-kutu input:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 1px; }
+  .sonuc-yok { margin-top: 1.2rem; color: var(--metin-2); }
+
+  .grup { border-top: 1px solid var(--cizgi); }
+  .grup:first-of-type { margin-top: 1.6rem; }
+  .grup > summary { display: flex; align-items: baseline; gap: 1rem; padding: 0.95rem 0.2rem; cursor: pointer; list-style: none; min-height: 48px; }
+  .grup > summary::-webkit-details-marker { display: none; }
+  .grup > summary::before { content: ''; flex: none; width: 9px; height: 9px; align-self: center; margin-right: 0.35rem;
+    border-right: 2px solid var(--vurgu); border-bottom: 2px solid var(--vurgu); transform: rotate(-45deg); transition: transform 0.15s; }
+  .grup[open] > summary::before { transform: rotate(45deg); }
+  .grup > summary:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
+  .grup-ad { font-family: var(--font-serif, Lora, serif); font-size: 1.12rem; font-weight: 600; }
+  .grup > summary:hover .grup-ad { color: var(--vurgu); }
+  .grup-adet { margin-left: auto; white-space: nowrap; }
+
+  .liste { list-style: none; padding: 0 0 1.4rem; margin: 0; display: grid; gap: 0.65rem; }
+  .kitap { padding: 0.95rem 1.1rem; display: grid; gap: 0.8rem; }
+  /* Tailwind preflight'ta [hidden] display:none'dur ama .kitap/.grup kendi display'ini veriyor: süzgeç için açıkça bastır. */
+  .kitap[hidden], .grup[hidden] { display: none; }
+  .kitap h3 { font-family: var(--font-serif, Lora, serif); font-size: 1.02rem; line-height: 1.4; margin: 0; }
+  .kitap-aciklama { margin: 0.4rem 0 0; color: var(--metin-2); font-size: 0.94rem; }
+  .kitap-meta { margin-top: 0.55rem; }
+  .kitap-baglantilar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+  .kitap-baglantilar .dugme { padding: 0.55rem 1rem; font-size: 0.9rem; }
+  .kunye-link { font-size: 0.88rem; color: var(--metin-2); text-decoration: underline; text-underline-offset: 3px; padding-block: 0.4rem; }
+  .kunye-link:hover { color: var(--vurgu); }
+
+  .kaynak-not { margin-top: 2rem; font-size: 0.85rem; color: var(--metin-2); max-width: 68ch; }
+
+  @media (min-width: 46rem) {
+    .kitap { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.4rem; }
+    .kitap-baglantilar { justify-content: flex-end; }
+  }
+</style>

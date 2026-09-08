@@ -200,7 +200,8 @@ const metinJson = JSON.stringify({
       </div>
       <div data-alan class="tam">
         <label for="i-not">{h.ihtida.ekNot} <span class="istege">({o.istegeBagli})</span></label>
-        <textarea id="i-not" name="basvuran.ekNot" maxlength="600" rows="3"></textarea>
+        <p class="yardim" id="i-not-yardim">{h.ihtida.ekNotYardim}</p>
+        <textarea id="i-not" name="basvuran.ekNot" maxlength="600" rows="3" aria-describedby="i-not-yardim"></textarea>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
     </div>
