@@ -94,7 +94,7 @@ export interface IhtidaMetinler {
   sayfaAciklama: string;
   ustEtiket: string;
   giris: string;
-  kimlikNotu: string;              // "kimlik belgesi törende yalnız gösterilir; kopyası alınmaz"
+  kimlikNotu: string;              // 8 Eyl 2026: formda hangi belgelerin istendiğini ve nerede saklanacağını anlatır
   bolum: { kisi: string; durum: string; iletisim: string; ihtida: string; belgeler: string; riza: string; ozet: string };
   kisi: {
     adSoyad: string; adSoyadYardim: string; cinsiyet: string; kadin: string; erkek: string;
