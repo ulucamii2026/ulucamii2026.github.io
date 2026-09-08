@@ -626,6 +626,162 @@
         }
       ],
       "ekler": []
+    },
+    {
+      "tarih": "2026-10-03",
+      "hafta": 5,
+      "gun": "Cumartesi",
+      "etiket": "ders-2026-10-03",
+      "plan": {
+        "dosya": "Ders-Plani-2026-10-03.pdf",
+        "boyut": 746730,
+        "sayfa": 22,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Ders-Plani-2026-10-03.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Sonda Yazılış",
+          "konuFr": "Forme finale",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 6424027,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 791147,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "İtikat",
+          "kod": "itikat",
+          "konu": "İtikat",
+          "konuFr": "Croyance",
+          "baslik": {
+            "tr": "Allah'a iman ediyorum",
+            "fr": "Je crois en Allah"
+          },
+          "dosya": "Sunum-2-Itikat-Allaha-Iman-Ediyorum.pptx",
+          "boyut": 5819814,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-2-Itikat-Allaha-Iman-Ediyorum.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Itikat-Allaha-Iman-Ediyorum.pdf",
+            "boyut": 828938,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-2-Itikat-Allaha-Iman-Ediyorum.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "İbadet",
+          "kod": "ibadet",
+          "konu": "İbadet",
+          "konuFr": "Adoration",
+          "baslik": {
+            "tr": "Namaz kılmayı öğreniyorum",
+            "fr": "J'apprends à faire la prière"
+          },
+          "dosya": "Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pptx",
+          "boyut": 5423179,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pdf",
+            "boyut": 863267,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pdf"
+          }
+        }
+      ],
+      "ekler": []
+    },
+    {
+      "tarih": "2026-10-04",
+      "hafta": 5,
+      "gun": "Pazar",
+      "etiket": "ders-2026-10-04",
+      "plan": {
+        "dosya": "Ders-Plani-2026-10-04.pdf",
+        "boyut": 695639,
+        "sayfa": 18,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Ders-Plani-2026-10-04.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Bitişen Harfler",
+          "konuFr": "Les lettres qui se lient",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 5819724,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 903420,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "Siyer",
+          "kod": "siyer",
+          "konu": "Siyer",
+          "konuFr": "Vie du Prophète",
+          "baslik": {
+            "tr": "Hz. Muhammed (s.a.s.) İslam'ı Anlatıyor",
+            "fr": "Notre Prophète annonce l'islam"
+          },
+          "dosya": "Sunum-2-Siyer-Islami-Anlatiyor.pptx",
+          "boyut": 5466023,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-2-Siyer-Islami-Anlatiyor.pptx",
+          "pdf": {
+            "dosya": "Sunum-2-Siyer-Islami-Anlatiyor.pdf",
+            "boyut": 876891,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-2-Siyer-Islami-Anlatiyor.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "Ahlak",
+          "kod": "ahlak",
+          "konu": "Ahlak",
+          "konuFr": "Morale",
+          "baslik": {
+            "tr": "Dinim, Hatamı Düzeltmemi İster",
+            "fr": "Ma religion veut que je corrige mon erreur"
+          },
+          "dosya": "Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pptx",
+          "boyut": 5169703,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pptx",
+          "pdf": {
+            "dosya": "Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pdf",
+            "boyut": 852119,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pdf"
+          }
+        }
+      ],
+      "ekler": []
     }
   ]
 }
