@@ -1,11 +1,20 @@
-/** İhtida başvuru formu — form davranışı. Kimlik numarası, görsel, imza yok; beyan yazılı ad soyadla. */
+/** İhtida başvuru formu — form davranışı. Kimlik NUMARASI sorulmaz; beyan yazılı ad soyadladır.
+ *  8 Eylül 2026'dan beri vesikalık, kimlik belgesinin ön/arka yüzü ve çizilen imza da toplanır
+ *  (bkz. ihtida-gorseller.ts) — bunlar taslağa yazılmaz, yalnız gönderim gövdesine eklenir. */
 import { formuBaslat, telefonNormalle, type Veriler } from './form-cekirdek';
+import { gorselleriBaslat, type BelgeMetinleri, type GorselYonetici } from './ihtida-gorseller';
 
 export function ihtidaFormuBaslat() {
   const form = document.querySelector<HTMLFormElement>('form[data-form="ihtida"]');
   if (!form) return;
 
+  const belgeMetin = JSON.parse(form.querySelector('script[data-metin-belge]')?.textContent || '{}') as BelgeMetinleri;
+  const gorseller: GorselYonetici | null = gorselleriBaslat(form, belgeMetin);
+  // Taslak silinince görseller de gitmeli; çekirdek reset'i dosya kutularını bilmiyor.
+  form.querySelector('[data-taslak-sil]')?.addEventListener('click', () => gorseller?.sifirla());
+
   formuBaslat(form, {
+    ekDogrula: () => gorseller?.dogrula() ?? [],
     govde(v) {
       const b = v.basvuran as Veriler, sahit = (v.sahit ?? {}) as Veriler, onay = v.onay as Veriler;
       return {
@@ -18,7 +27,13 @@ export function ihtidaFormuBaslat() {
         },
         sahitler: [{ ad: sahit['1'] ?? '' }, { ad: sahit['2'] ?? '' }],
         fotografIzni: v.fotografIzni === true,
-        onay: { acikRiza: onay.acikRiza === true, ek10: onay.ek10 === true, gizlilik: onay.gizlilik === true, beyan: onay.beyan },
+        belgeTuru: v.belgeTuru ?? 'kimlik',
+        imzaYok: v.imzaYok === true,
+        gorseller: gorseller?.paket() ?? { vesikalik: '', kimlikOn: '', kimlikArka: '', imza: '' },
+        onay: {
+          acikRiza: onay.acikRiza === true, ek10: onay.ek10 === true, gizlilik: onay.gizlilik === true,
+          gorselRiza: onay.gorselRiza === true, beyan: onay.beyan,
+        },
       };
     },
     ozet(v, f) {
@@ -39,6 +54,7 @@ export function ihtidaFormuBaslat() {
         din: String(b.oncekiDin ?? ''),
         toren: [secText('basvuran.torenDili'), b.torenTarihi].filter(Boolean).join(' · '),
         sahitler: [sahit['1'], sahit['2']].filter(Boolean).join(', '),
+        belgeler: gorseller?.ozet() ?? '',
       };
     },
   });

@@ -1,7 +1,10 @@
 ---
-/** İhtida başvuru formu (v2, 30 Ağustos 2026) — tek sayfa, altı bölüm, sunucu tarafı PDF.
-    EK-9 belgesinin gerektirdiği alanlar (Diyanet şablonu) toplanır; kimlik numarası, kimlik kopyası,
-    MRZ/OCR, vesikalık ve imza kanvası YOK — bunlar törende elden alınır. Davranış: src/scripts/ihtida-form.ts */
+/** İhtida başvuru formu (v3, 8 Eylül 2026) — tek sayfa, yedi bölüm, sunucu tarafı PDF.
+    EK-9 belgesinin gerektirdiği alanlar (Diyanet şablonu) toplanır. 30 Ağustos 2026'da kaldırılan
+    görsel/imza toplama 8 Eylül 2026'da Rıdvan'ın kararıyla YALNIZ BU FORMA geri kondu: vesikalık,
+    kimlik belgesinin ön/arka yüzü ve ekranda çizilen imza (5. bölüm). Kimlik NUMARASI hâlâ
+    sorulmaz; MRZ/OCR okuyucu geri gelmedi. Çocuk kayıt formu eski kuralda kalır.
+    Davranış: src/scripts/ihtida-form.ts + src/scripts/ihtida-gorseller.ts */
 import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
@@ -20,6 +23,21 @@ const metinJson = JSON.stringify({
   hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: o.basari.epostaGitti },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
 });
+
+const b = h.belgeler;
+// Görsel yükleyicinin ihtiyaç duyduğu metinler (ihtida-gorseller.ts → BelgeMetinleri).
+const belgeJson = JSON.stringify({
+  isleniyor: b.isleniyor, hazir: b.hazir,
+  hataTur: b.hataTur, hataBoyut: b.hataBoyut, hataOkunamadi: b.hataOkunamadi, hataImza: b.hataImza, hataEksik: b.hataEksik,
+  vesikalik: b.vesikalik, kimlikOn: b.kimlikOn, kimlikArka: b.kimlikArka, imza: b.imza, onizleme: b.onizleme,
+});
+
+/** Üç yükleme kutusu aynı iskeleti paylaşır; arka yüz yalnız kimlik kartı seçiliyken görünür. */
+const gorselKutulari = [
+  { anahtar: 'vesikalik', id: 'i-g-vesikalik', etiket: b.vesikalik, yardim: b.vesikalikYardim, kosul: undefined },
+  { anahtar: 'kimlikOn', id: 'i-g-kimlik-on', etiket: b.kimlikOn, yardim: b.kimlikOnYardim, kosul: undefined },
+  { anahtar: 'kimlikArka', id: 'i-g-kimlik-arka', etiket: b.kimlikArka, yardim: b.kimlikArkaYardim, kosul: 'belgeTuru=kimlik' },
+] as const;
 ---
 <div class="ucf-giris" data-form-ust>
   <p>{h.giris}</p>
@@ -30,6 +48,7 @@ const metinJson = JSON.stringify({
       data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script type="application/json" data-metin set:html={metinJson} />
+  <script type="application/json" data-metin-belge set:html={belgeJson} />
 
   <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
   <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
@@ -207,9 +226,60 @@ const metinJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- 5 · Rıza ve beyan -->
+  <!-- 5 · Belgeler ve imza (8 Eylül 2026) -->
+  <section class="ucf-bolum" id="b-belgeler" aria-labelledby="h-belgeler" data-belgeler>
+    <h2 id="h-belgeler"><span class="no">5</span>{h.bolum.belgeler}</h2>
+    <p class="bolum-not">{b.aciklama}</p>
+    <div class="ucf-izgara">
+      <fieldset data-alan class="tam">
+        <legend>{b.belgeTuru} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <div class="secenekler">
+          <span class="secenek"><input id="i-belge-kimlik" type="radio" name="belgeTuru" value="kimlik" required checked /><label for="i-belge-kimlik">{b.kimlikKarti}</label></span>
+          <span class="secenek"><input id="i-belge-pasaport" type="radio" name="belgeTuru" value="pasaport" /><label for="i-belge-pasaport">{b.pasaport}</label></span>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
+
+      {gorselKutulari.map((k) => (
+        <div data-alan class="ucf-gorsel" data-gorsel={k.anahtar} data-kosul={k.kosul}>
+          {/* Değeri hep boştur: yalnız çekirdeğin hata/kaydırma düzeneğine ad verir. */}
+          <input type="hidden" name={`gorsel.${k.anahtar}`} value="" />
+          <span class="alan-baslik" id={`${k.id}-et`}>{k.etiket} <span class="zorunlu" aria-hidden="true">*</span></span>
+          <p class="yardim" id={`${k.id}-yardim`}>{k.yardim}</p>
+          <div class="g-kutu">
+            <img data-onizleme alt="" hidden />
+            <span class="g-bos" data-bos aria-hidden="true">🖼</span>
+          </div>
+          <div class="g-eylem">
+            <label class="dugme dugme-ikincil g-sec" for={k.id} data-sec={b.sec} data-degistir={b.degistir}>{b.sec}</label>
+            <input class="sr-only" type="file" id={k.id} accept="image/*" aria-labelledby={`${k.id}-et`} aria-describedby={`${k.id}-yardim ${k.id}-hata`} />
+            <button type="button" class="dugme dugme-ikincil" data-kaldir hidden>{b.kaldir}</button>
+            <span class="g-durum" data-durum aria-live="polite"></span>
+          </div>
+          <p class="hata" id={`${k.id}-hata`} aria-live="polite" hidden></p>
+        </div>
+      ))}
+
+      <div data-alan class="tam ucf-imza" data-imza>
+        <span class="alan-baslik">{b.imza} <span class="zorunlu" aria-hidden="true">*</span></span>
+        <p class="yardim">{b.imzaYardim}</p>
+        <canvas class="imza-tuval" role="img" aria-label={b.imza}></canvas>
+        <div class="imza-eylem">
+          <button type="button" class="dugme dugme-ikincil" data-imza-temizle>{b.imzaTemizle}</button>
+        </div>
+        <div class="onay-kutu mt-3">
+          <input id="i-imza-yok" type="checkbox" name="imzaYok" />
+          <label for="i-imza-yok">{b.imzaYok}</label>
+        </div>
+        <p class="yardim">{b.imzaYokYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Rıza ve beyan -->
   <section class="ucf-bolum" id="b-riza" aria-labelledby="h-riza">
-    <h2 id="h-riza"><span class="no">5</span>{h.bolum.riza}</h2>
+    <h2 id="h-riza"><span class="no">6</span>{h.bolum.riza}</h2>
     <div class="ucf-izgara">
       <div data-alan class="tam">
         <div class="onay-kutu">
@@ -234,6 +304,14 @@ const metinJson = JSON.stringify({
       </div>
       <div data-alan class="tam">
         <div class="onay-kutu">
+          <input id="i-onay-gorsel" type="checkbox" name="onay.gorselRiza" required />
+          <label for="i-onay-gorsel">{h.riza.gorselRiza}</label>
+        </div>
+        <p class="yardim">{h.riza.gorselRizaYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
           <input id="i-foto-izni" type="checkbox" name="fotografIzni" />
           <label for="i-foto-izni">{h.riza.fotoIzni}</label>
         </div>
@@ -252,15 +330,16 @@ const metinJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- 6 · Özet ve gönderim -->
+  <!-- 7 · Özet ve gönderim -->
   <section class="ucf-bolum" id="b-ozet" aria-labelledby="h-ozet">
-    <h2 id="h-ozet"><span class="no">6</span>{h.bolum.ozet}</h2>
+    <h2 id="h-ozet"><span class="no">7</span>{h.bolum.ozet}</h2>
     <p class="bolum-not">{o.ozetAciklama}</p>
     <dl class="ozet-liste" data-ozet>
       {([
         ['kisi', h.ozet.kisi, '#b-kisi'], ['dogum', h.ozet.dogum, '#b-kisi'], ['uyruk', h.ozet.uyruk, '#b-kisi'], ['aile', h.ozet.aile, '#b-kisi'],
         ['durum', h.ozet.durum, '#b-durum'], ['iletisim', h.ozet.iletisim, '#b-iletisim'], ['din', h.ozet.din, '#b-ihtida'],
         ['toren', h.ozet.toren, '#b-ihtida'], ['sahitler', h.ozet.sahitler, '#b-ihtida'],
+        ['belgeler', h.ozet.belgeler, '#b-belgeler'],
       ] as const).map(([anahtar, etiket, hedef]) => (
         <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd><span data-ozet-deger>{o.bosDeger}</span> <a href={hedef}>{o.ozetDuzenle}</a></dd></div>
       ))}

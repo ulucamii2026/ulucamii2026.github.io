@@ -4,6 +4,7 @@
 import IcerikSayfasi from '../components/IcerikSayfasi.astro';
 import DiyanetPortallari from '../components/DiyanetPortallari.astro';
 import KutuphaneBandi from '../components/KutuphaneBandi.astro';
+import DiyanetVideolari from '../components/DiyanetVideolari.astro';
 import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import Ikon from '../components/Ikon.astro';
 import { ceviri, yol } from '../i18n/utils';
@@ -156,5 +157,6 @@ const m = dil === 'tr'
   </div>
 
   <DiyanetPortallari slot="alt" dil={dil} />
+  <DiyanetVideolari slot="alt" dil={dil} />
   <KutuphaneBandi slot="alt" dil={dil} />
 </IcerikSayfasi>

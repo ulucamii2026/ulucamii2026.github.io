@@ -66,14 +66,19 @@ L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc
 
 ## Documents nécessaires
 
+À téléverser en remplissant le formulaire (section 5) :
+
+- **1 photo d’identité** — elle est imprimée sur l’attestation de conversion.
+- **Le recto et le verso de votre carte d’identité** — pour un passeport, la page de données suffit. Vous pouvez les photographier avec votre téléphone ; les images sont réduites dans votre navigateur avant l’envoi.
+- **Votre signature** — vous la tracez à l’écran, au doigt ou à la souris ; c’est cette signature qui sera imprimée sur l’attestation transmise au Diyanet. Si vous ne pouvez pas signer à l’écran, cochez la case prévue : vous signerez au stylo le jour de la cérémonie.
+
 À apporter le jour de la cérémonie :
 
 - **Votre carte d’identité ou votre passeport** — vous présentez l’original à l’imam.
-- **1 photo d’identité** — elle est imprimée sur l’attestation et remise en main propre.
 - **2 témoins** — à défaut, la mosquée en fournit.
 - **Le formulaire de consentement EK-10** — signé sur papier le jour même. Le texte intégral est disponible en turc, anglais, **français** et néerlandais via le lien ci-contre.
 
-**Au sujet de vos données personnelles :** notre formulaire en ligne ne demande **ni numéro d’identité, ni copie de pièce d’identité, ni téléversement de document ou de photo** ; notre association ne prend ni ne conserve aucune copie de votre pièce d’identité. La directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document ; cette opération est effectuée le jour de la cérémonie par l’agent habilité, et le dossier est conservé par le Conseiller des Affaires sociales. Vos données ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu.
+**Au sujet de vos données personnelles :** la directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document. Nous réunissons ces pièces dès le formulaire, sans attendre le jour de la cérémonie, afin que votre attestation soit prête. **Toutes les informations et pièces relatives à votre demande sont conservées à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles** ; elles ne sont jamais publiées ni transmises à des tiers et ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu. Votre **numéro** de registre national ne vous est demandé à aucun moment. Le traitement de vos images et de votre signature fait l’objet d’un consentement explicite distinct dans le formulaire ; vous pouvez le retirer à tout moment.
 
 ## Confidentialité et discrétion
 

@@ -1,0 +1,304 @@
+{
+ "kaynak": "dijital.diyanet.gov.tr — «İslam Nedir?» serisi; videolar YouTube «Diyanet Dijital» kanalında",
+ "seriSayfasi": "https://dijital.diyanet.gov.tr/Kitaplik/video?seri=islam-nedir-",
+ "dil": "tr",
+ "denetim": "2026-09-08",
+ "bolumler": [
+  {
+   "id": "fSQHUgdE0to",
+   "baslik": "İnsan",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_1-insan/islam-nedir-/147/4298/fSQHUgdE0to",
+   "no": 1,
+   "grup": "baslarken"
+  },
+  {
+   "id": "Lvl_ekd6Asg",
+   "baslik": "Din",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_2-din/islam-nedir-/147/4299/Lvl_ekd6Asg",
+   "no": 2,
+   "grup": "baslarken"
+  },
+  {
+   "id": "xNtRAQyB_yo",
+   "baslik": "İslam",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_3-islam/islam-nedir-/147/4300/xNtRAQyB_yo",
+   "no": 3,
+   "grup": "baslarken"
+  },
+  {
+   "id": "R2DKaFxgDRA",
+   "baslik": "İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_4-iman/islam-nedir-/147/4301/R2DKaFxgDRA",
+   "no": 4,
+   "grup": "baslarken"
+  },
+  {
+   "id": "sST704CV290",
+   "baslik": "Allah'a İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_5-allaha-iman/islam-nedir-/147/4302/sST704CV290",
+   "no": 5,
+   "grup": "inanc"
+  },
+  {
+   "id": "lpzDMlHmCfw",
+   "baslik": "Meleklere İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_6-meleklere-iman/islam-nedir-/147/4303/lpzDMlHmCfw",
+   "no": 6,
+   "grup": "inanc"
+  },
+  {
+   "id": "n9XdFz1vguw",
+   "baslik": "Kitaplara İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_7-kitaplara-iman/islam-nedir-/147/4304/n9XdFz1vguw",
+   "no": 7,
+   "grup": "inanc"
+  },
+  {
+   "id": "ULCe_8Y-pQw",
+   "baslik": "Son Kitap",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_8-son-kitap/islam-nedir-/147/4305/ULCe_8Y-pQw",
+   "no": 8,
+   "grup": "inanc"
+  },
+  {
+   "id": "YU-ZluwwNrQ",
+   "baslik": "Peygamberlere İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_9-peygamberlere-iman/islam-nedir-/147/4306/YU-ZluwwNrQ",
+   "no": 9,
+   "grup": "inanc"
+  },
+  {
+   "id": "Xk68bTWN27A",
+   "baslik": "Son Peygamber",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_10-son-peygamber/islam-nedir-/147/4307/Xk68bTWN27A",
+   "no": 10,
+   "grup": "inanc"
+  },
+  {
+   "id": "2y-6RSyghAU",
+   "baslik": "Ahirete İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_11-ahirete-iman/islam-nedir-/147/4308/2y-6RSyghAU",
+   "no": 11,
+   "grup": "inanc"
+  },
+  {
+   "id": "w0lvzSaN73w",
+   "baslik": "Kadere İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_12-kadere-iman/islam-nedir-/147/4309/w0lvzSaN73w",
+   "no": 12,
+   "grup": "inanc"
+  },
+  {
+   "id": "3Krg27PuQYQ",
+   "baslik": "İbadet Bilinci",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_13-ibadet-bilinci/islam-nedir-/147/4310/3Krg27PuQYQ",
+   "no": 13,
+   "grup": "ibadet"
+  },
+  {
+   "id": "tX_NMZjTSc8",
+   "baslik": "Kelime-i Şehadet",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_14-kelime-i-sehadet/islam-nedir-/147/4311/tX_NMZjTSc8",
+   "no": 14,
+   "grup": "ibadet"
+  },
+  {
+   "id": "nnXakWTazFk",
+   "baslik": "Temizlik",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_15-temizlik/islam-nedir-/147/4312/nnXakWTazFk",
+   "no": 15,
+   "grup": "ibadet"
+  },
+  {
+   "id": "3AsoamSK-JM",
+   "baslik": "Abdest ve Gusül",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_16-abdest-ve-gusul/islam-nedir-/147/4313/3AsoamSK-JM",
+   "no": 16,
+   "grup": "ibadet"
+  },
+  {
+   "id": "EkKfKohLgu8",
+   "baslik": "Namaz",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_17-namaz/islam-nedir-/147/4314/EkKfKohLgu8",
+   "no": 17,
+   "grup": "ibadet"
+  },
+  {
+   "id": "cvQ2Tf5lsC4",
+   "baslik": "Oruç",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_18-oruc/islam-nedir-/147/4315/cvQ2Tf5lsC4",
+   "no": 18,
+   "grup": "ibadet"
+  },
+  {
+   "id": "ZSxR6FQm_U0",
+   "baslik": "Zekat ve Sadaka",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_19-zekat-ve-sadaka/islam-nedir-/147/4316/ZSxR6FQm_U0",
+   "no": 19,
+   "grup": "ibadet"
+  },
+  {
+   "id": "E6aR05Mit54",
+   "baslik": "Hac",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_20-hac/islam-nedir-/147/4317/E6aR05Mit54",
+   "no": 20,
+   "grup": "ibadet"
+  },
+  {
+   "id": "ukFWeUR7UIk",
+   "baslik": "Kurban",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_21-kurban/islam-nedir-/147/4318/ukFWeUR7UIk",
+   "no": 21,
+   "grup": "ibadet"
+  },
+  {
+   "id": "osXNfzXuva4",
+   "baslik": "Dua",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_22-dua/islam-nedir-/147/4319/osXNfzXuva4",
+   "no": 22,
+   "grup": "ibadet"
+  },
+  {
+   "id": "sXIIGVOA9Bg",
+   "baslik": "İslam Güzel Ahlak Dinidir",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_23-islam-guzel-ahlak-dinidir/islam-nedir-/147/4320/sXIIGVOA9Bg",
+   "no": 23,
+   "grup": "cagri"
+  },
+  {
+   "id": "oXpPWFT6rCg",
+   "baslik": "İslam Adalet Dinidir",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_24-islam-adalet-dinidir/islam-nedir-/147/4321/oXpPWFT6rCg",
+   "no": 24,
+   "grup": "cagri"
+  },
+  {
+   "id": "wgSzrmFxNaI",
+   "baslik": "İslam Barış ve Esenlik Dinidir",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_25-islam-baris-ve-esenlik-dinidir/islam-nedir-/147/4322/wgSzrmFxNaI",
+   "no": 25,
+   "grup": "cagri"
+  },
+  {
+   "id": "cqxobuvcNhA",
+   "baslik": "İslam İlim ve Hikmet Dinidir",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_26-islam-ilim-ve-hakikat-dinidir/islam-nedir-/147/4323/cqxobuvcNhA",
+   "no": 26,
+   "grup": "cagri"
+  },
+  {
+   "id": "BwJB-Td2J6A",
+   "baslik": "İslam Her İşte Nezaketi Emreder",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_27-islam-her-iste-nezaketi-emreder/islam-nedir-/147/4324/BwJB-Td2J6A",
+   "no": 27,
+   "grup": "cagri"
+  },
+  {
+   "id": "5-wM_0CDc0M",
+   "baslik": "İslam Merhamet Dinidir",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_28-islam-merhamet-dinidir/islam-nedir-/147/4325/5-wM_0CDc0M",
+   "no": 28,
+   "grup": "cagri"
+  },
+  {
+   "id": "mjHqbXLBzvI",
+   "baslik": "Müslüman Sorumluluk Bilinci Taşır",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_29-musluman-sorumluluk-bilinci-tasir/islam-nedir-/147/4326/mjHqbXLBzvI",
+   "no": 29,
+   "grup": "musluman"
+  },
+  {
+   "id": "USgJjlXPmMY",
+   "baslik": "Müslüman Ailesine İyi Davranır",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_30-musluman-ailesine-iyi-davranir/islam-nedir-/147/4327/USgJjlXPmMY",
+   "no": 30,
+   "grup": "musluman"
+  },
+  {
+   "id": "odzuZY5Awsg",
+   "baslik": "Müslüman Çevresiyle Dosttur",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_31-musluman-cevresiyle-dosttur/islam-nedir-/147/4328/odzuZY5Awsg",
+   "no": 31,
+   "grup": "musluman"
+  },
+  {
+   "id": "j9ZkrWYCwUM",
+   "baslik": "Müslüman Asla Zulmetmez",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_32-musluman-asla-zulmetmez/islam-nedir-/147/4329/j9ZkrWYCwUM",
+   "no": 32,
+   "grup": "musluman"
+  },
+  {
+   "id": "E-RM6AyWV84",
+   "baslik": "Müslüman Dürüst ve Doğru Sözlüdür",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_33-musluman-durust-ve-dogru-sozludur/islam-nedir-/147/4330/E-RM6AyWV84",
+   "no": 33,
+   "grup": "musluman"
+  },
+  {
+   "id": "hFkQnO1dMAQ",
+   "baslik": "Müslüman Şükreden Kuldur",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_34-musluman-sukreden-kuldur/islam-nedir-/147/4331/hFkQnO1dMAQ",
+   "no": 34,
+   "grup": "musluman"
+  },
+  {
+   "id": "X_nHi0kJ45I",
+   "baslik": "Müslüman Hata Yaptığında Af Diler",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_35-musluman-hata-yaptiginda-af-diler/islam-nedir-/147/4332/X_nHi0kJ45I",
+   "no": 35,
+   "grup": "musluman"
+  },
+  {
+   "id": "olJ-LyxFZU4",
+   "baslik": "Müslüman Cennete Götüren Yollar Arar",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_36-musluman-cennete-goturen-yollar-arar/islam-nedir-/147/4333/olJ-LyxFZU4",
+   "no": 36,
+   "grup": "musluman"
+  },
+  {
+   "id": "chRE5FRv6QA",
+   "baslik": "Müslüman Cehenneme Götüren Yollardan Uzak Durur",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_37-musluman-cehenneme-goturen-yollardan-uzak-durur/islam-nedir-/147/4334/chRE5FRv6QA",
+   "no": 37,
+   "grup": "musluman"
+  }
+ ],
+ "ekler": [
+  {
+   "id": "GvoPKTWw1IU",
+   "baslik": "Biz İnsanı En Güzel Biçimde Yarattık...",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/biz-insani-en-guzel-bicimde-yarattik/islam-nedir-/147/4297/GvoPKTWw1IU"
+  },
+  {
+   "id": "a58XA-Qm0yI",
+   "baslik": "Kur'an Bize Hayatımızın Gayesini Gösterir - Kitaplara İman",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/kuran-bize-hayatimizin-gayesini-gosterir-kitaplara-iman/islam-nedir-/147/4636/a58XA-Qm0yI"
+  },
+  {
+   "id": "_LSLySyEdDI",
+   "baslik": "Kuşkusuz Allah Katında Din İslam'dır.",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/kuskusuz-allah-katinda-din-islamdir/islam-nedir-/147/4296/_LSLySyEdDI"
+  },
+  {
+   "id": "Y7CCVAhDFdk",
+   "baslik": "Melekler İman Edenlerin Daima Yanındadır",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/melekler-iman-edenlerin-daima-yanindadir/islam-nedir-/147/4591/Y7CCVAhDFdk"
+  },
+  {
+   "id": "hHC26YKQQ6s",
+   "baslik": "O Bütün Alemi Yarattı ve Yönetiyor",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/o-butun-alemi-yaratti-ve-yonetiyor/islam-nedir-/147/4592/hHC26YKQQ6s"
+  },
+  {
+   "id": "VZtGB8kGuI4",
+   "baslik": "İman Güven İçinde Olmaktır",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/iman-guven-icinde-olmaktir/islam-nedir-/147/4593/VZtGB8kGuI4"
+  },
+  {
+   "id": "rtzu3OQUmGg",
+   "baslik": "İslam Teslimiyet Demektir",
+   "sayfa": "https://dijital.diyanet.gov.tr/video/islam-teslimiyet-demektir/islam-nedir-/147/4295/rtzu3OQUmGg"
+  }
+ ]
+}

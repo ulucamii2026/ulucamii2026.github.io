@@ -27,6 +27,29 @@ def taklit(route, request):
     else:
         route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True}))
 
+def testPng(yol, en, boy, renk):
+    """PIL olmadan geçerli bir RGB PNG üretir (görsel yükleme testleri için)."""
+    import zlib, struct
+    ham = b"".join(b"\x00" + bytes(renk) * en for _ in range(boy))
+    def bolum(tur, veri):
+        return struct.pack(">I", len(veri)) + tur + veri + struct.pack(">I", zlib.crc32(tur + veri) & 0xFFFFFFFF)
+    with open(yol, "wb") as f:
+        f.write(b"\x89PNG\r\n\x1a\n"
+                + bolum(b"IHDR", struct.pack(">IIBBBBB", en, boy, 8, 2, 0, 0, 0))
+                + bolum(b"IDAT", zlib.compress(ham, 6))
+                + bolum(b"IEND", b""))
+    return yol
+
+def imzaCiz(pg, secici):
+    """Kanvasa fareyle gerçek bir çizgi çizer (imzaYok için üç noktadan fazlası gerekir)."""
+    kutu = pg.locator(secici).bounding_box()
+    x0, y0 = kutu["x"] + 30, kutu["y"] + kutu["height"] * 0.6
+    pg.mouse.move(x0, y0)
+    pg.mouse.down()
+    for i in range(1, 14):
+        pg.mouse.move(x0 + i * 9, y0 - (18 if i % 2 else -12))
+    pg.mouse.up()
+
 sonuclar = []
 def kontrol(ad, kosul):
     sonuclar.append((ad, bool(kosul))); print(("OK   " if kosul else "HATA ") + ad)
@@ -114,14 +137,76 @@ with sync_playwright() as p:
     pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Marie"); pg.fill("#i-baba", "Pierre"); pg.select_option("#i-medeni", "bekar")
     pg.fill("#i-ogrenim", "Lisans"); pg.fill("#i-meslek", "Öğretmen"); pg.fill("#i-eposta", "jean@example.org"); pg.fill("#i-telefon", "+32 471 00 00 00")
     pg.fill("#i-adres", "Rue Haute 3, 6900 Marche-en-Famenne"); pg.fill("#i-onceki-din", "Katolik"); pg.select_option("#i-toren-dili", "fr")
-    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.fill("#i-beyan", "JEAN TESTOGLU")
+    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel")
+    pg.fill("#i-beyan", "JEAN TESTOGLU")
+
+    # --- 5. bölüm: belgeler ve imza (8 Eylül 2026) ---------------------------------
+    vesikalikYol = testPng(f"{OUT}/test-vesikalik.png", 300, 400, (200, 170, 140))
+    onYol = testPng(f"{OUT}/test-kimlik-on.png", 640, 400, (150, 180, 210))
+    arkaYol = testPng(f"{OUT}/test-kimlik-arka.png", 640, 400, (180, 200, 150))
+    kontrol("kimlik arka yüzü kimlik kartında görünür", pg.locator('[data-gorsel="kimlikArka"]').is_visible())
+    pg.check("#i-belge-pasaport"); pg.wait_for_timeout(200)
+    kontrol("pasaportta arka yüz gizlenir", not pg.locator('[data-gorsel="kimlikArka"]').is_visible())
+    pg.check("#i-belge-kimlik"); pg.wait_for_timeout(200)
+
+    pg.set_input_files("#i-g-vesikalik", vesikalikYol)
+    pg.wait_for_selector('[data-gorsel="vesikalik"][data-dolu="1"]', timeout=8000)
+    pg.set_input_files("#i-g-kimlik-on", onYol)
+    pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)
+    pg.set_input_files("#i-g-kimlik-arka", arkaYol)
+    pg.wait_for_selector('[data-gorsel="kimlikArka"][data-dolu="1"]', timeout=8000)
+    kontrol("önizleme görünür", pg.locator('[data-gorsel="vesikalik"] img[data-onizleme]').is_visible())
+
+    # İmzasız gönderim reddedilmeli
+    pg.click("button[type=submit]"); pg.wait_for_timeout(1200)
+    kontrol("imzasız gönderim engellendi", pg.locator("[data-basari]").get_attribute("hidden") is not None
+            and pg.locator('[data-imza] .hata:not([hidden])').count() == 1)
+    imzaCiz(pg, "[data-imza] canvas")
+    pg.wait_for_timeout(200)
+
+    taslakHam = pg.evaluate("() => localStorage.getItem('ulucamii:ihtida:v2') || ''")
+    kontrol("görseller taslağa yazılmaz", "data:image" not in taslakHam and len(taslakHam) < 4000)
+    ozetBelge = pg.locator('[data-ozet-alan="belgeler"] [data-ozet-deger]').inner_text()
+    kontrol("özette belgeler satırı dolu", "fotoğraf" in ozetBelge.lower() and "İmza" in ozetBelge)
+
     pg.click("button[type=submit]")
-    pg.wait_for_selector("[data-basari]:not([hidden])", timeout=8000)
+    pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)
     g = GONDERILEN[-1]
     kontrol("ihtida gövde", g.get("tur") == "ihtida" and g["basvuran"]["adSoyad"] == "Jean Testoglu" and g["sahitler"] == [{"ad": ""}, {"ad": ""}] and g["onay"]["acikRiza"] is True)
-    kontrol("ihtida gövdesinde kimlik/görsel yok", not any(k in json.dumps(g) for k in ("tcKimlik", "ulusalNo", "belgeNo", "vesikalik", "Base64", "imza")))
+    kontrol("ihtida gövdesinde kimlik NUMARASI yok", not any(k in json.dumps(g) for k in ("tcKimlik", "ulusalNo", "kimlikNo", "rijksregister")))
+    gors = g.get("gorseller") or {}
+    kontrol("vesikalık gönderildi", gors.get("vesikalik", "").startswith("data:image/jpeg;base64,") and len(gors["vesikalik"]) > 500)
+    kontrol("kimlik ön yüzü gönderildi", gors.get("kimlikOn", "").startswith("data:image/jpeg;base64,"))
+    kontrol("kimlik arka yüzü gönderildi", gors.get("kimlikArka", "").startswith("data:image/jpeg;base64,"))
+    kontrol("imza PNG olarak gönderildi", gors.get("imza", "").startswith("data:image/png;base64,") and len(gors["imza"]) > 500)
+    kontrol("belge türü ve imza bayrağı", g.get("belgeTuru") == "kimlik" and g.get("imzaYok") is False)
+    kontrol("görsel açık rızası", g["onay"].get("gorselRiza") is True)
     kontrol("ihtida konsol temiz", not konsol)
     pg.screenshot(path=f"{OUT}/ihtida-mobil-basari.png", full_page=True)
+    # EK-9 zincirinin sonraki halkası bu gövdeyi kullanır: scripts/ek9-imza-zinciri.mjs
+    with open(f"{OUT}/ihtida-govde.json", "w", encoding="utf-8") as f:
+        json.dump(g, f, ensure_ascii=False)
+
+    # --- İmza atamayanlar için kaçış kapısı + pasaport yolu ------------------------
+    pg.goto(KOK + "/tr/ihtida-basvurusu/", wait_until="networkidle")
+    pg.evaluate("() => localStorage.removeItem('ulucamii:ihtida:v2')")
+    pg.reload(wait_until="networkidle")
+    pg.fill("#i-ad", "Anna Testoglu"); pg.check("#i-cins-kadin"); pg.fill("#i-dogum", "1988-03-02"); pg.fill("#i-dogum-yeri", "Liège, Belçika")
+    pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Sofie"); pg.fill("#i-baba", "Luc"); pg.select_option("#i-medeni", "evli")
+    pg.fill("#i-ogrenim", "Lise"); pg.fill("#i-meslek", "Hemşire"); pg.fill("#i-eposta", "anna@example.org"); pg.fill("#i-telefon", "+32 471 00 00 01")
+    pg.fill("#i-adres", "Rue Basse 1, 6900 Marche-en-Famenne"); pg.fill("#i-onceki-din", "Protestan"); pg.select_option("#i-toren-dili", "fr")
+    pg.check("#i-belge-pasaport")
+    pg.set_input_files("#i-g-vesikalik", vesikalikYol); pg.wait_for_selector('[data-gorsel="vesikalik"][data-dolu="1"]', timeout=8000)
+    pg.set_input_files("#i-g-kimlik-on", onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)
+    pg.check("#i-imza-yok")
+    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel")
+    pg.fill("#i-beyan", "ANNA TESTOGLU")
+    pg.click("button[type=submit]")
+    pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)
+    g2 = GONDERILEN[-1]
+    kontrol("pasaportta arka yüz boş gider", (g2.get("gorseller") or {}).get("kimlikArka") == "")
+    kontrol("imzaYok işaretliyken imza boş", g2.get("imzaYok") is True and (g2.get("gorseller") or {}).get("imza") == "")
+    kontrol("imzaYok akışı konsol temiz", not konsol)
     ctx.close(); tarayici.close()
 
 basarisiz = [a for a, b in sonuclar if not b]

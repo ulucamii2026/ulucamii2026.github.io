@@ -33,3 +33,19 @@ py -3.14 uret_tum.py         # -> diyanet-yayinlar.json  ->  src/data/ içine ko
   kesiyordu (üç bağımsız denemede aynı).
 - Bu sunucuda **HEAD 405 döner**; ölü ürün sayfası da HTTP 200 + «Sayfa Bulunamadı!» gövdesi
   döndürür — bu yüzden denetim koda değil gövdeye bakar.
+
+## Videolar (8 Eylül 2026)
+
+`src/data/diyanet-videolar.json` ayrı bir hattır ve kitaplardan bağımsızdır:
+
+1. `harvest_all.py`'nin indirdiği `sitemap-urls.txt` içinden `/video/` adresleri süzülür. Adres
+   biçimi: `/video/<slug>/<seri-slug>/<seriId>/<videoId>/<YOUTUBE_ID>` — son parça YouTube kimliğidir.
+2. `oembed.py` her kimliği YouTube oEmbed ile sorar: canlı mı, gerçek başlığı ve kanalı ne?
+   (🛑 Bu makinede `yt-dlp` çalışan videoya da "not available" diyor — canlılık sorusu **oEmbed**
+   ile sorulur.) Çıktı `islam-nedir.json`.
+3. `videolar_uret.py` ikisini birleştirir, `- İslam Nedir?` son ekini başlıklardan atar, bölümleri
+   1-37 numarasına göre beş gruba ayırır ve ölü kayıtları listeye almaz.
+
+**Ölçülmüş gerçek (8 Eylül 2026):** katalogda 3.180 video, 48 seri var ve **hepsi Türkçedir**.
+Fransızca video yoktur; tek İngilizce kayıt (`7MrLI0avPFw`) YouTube'da 404 verir; videoların
+altyazısı yalnız otomatik üretilmiş Türkçedir. Fransızca/İngilizce sayfalar bunu dürüstçe söyler.

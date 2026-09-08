@@ -66,14 +66,19 @@ The **conversion certificate (EK-9)** is an official bilingual (Turkish/English)
 
 ## Documents Required
 
+To upload while filling in the form (section 5):
+
+- **1 passport-style photo** — it is printed on the conversion certificate.
+- **The front and back of your identity card** — for a passport, the data page is enough. You can photograph them with your phone; images are resized in your browser before they are sent.
+- **Your signature** — you draw it on screen with your finger or mouse; this is the signature printed on the certificate sent to the Diyanet. If you cannot sign on screen, tick the box provided and sign with a pen on the day of the ceremony.
+
 To bring on the day of the ceremony:
 
 - **Your identity card or passport** — you show the original to the officer.
-- **1 passport-style photo** — it is printed on the certificate and handed over in person.
 - **2 witnesses** — our mosque provides them if needed.
 - **The EK-10 explicit consent form** — signed on paper on the day. The full text is available in Turkish, English, **French** and Dutch through the link in the sidebar.
 
-**About your personal data:** our online form asks for **no identity number, no copy of an identity document, and no file or photo upload**; our association neither takes nor keeps a copy of your identity document. Diyanet’s conversion directive (article 44) requires a passport photo and a copy of the identity document to be placed in the **official file** so that the certificate can be issued; this is done on the day of the ceremony by the authorised official, and the file is kept by the Counsellor’s office. Your data is accessible only to the smallest possible number of authorised people, strictly as the service requires.
+**About your personal data:** Diyanet’s conversion directive (article 44) requires a passport photo and a copy of the identity document to be placed in the **official file** so that the certificate can be issued. We gather these documents in the form itself rather than waiting for the day of the ceremony, so that your certificate is ready. **All information and documents relating to your application are kept both by our mosque and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels**; they are never published or passed to third parties and are accessible only to the smallest possible number of authorised people, strictly as the service requires. Your national registry **number** is never asked for at any stage. The processing of your images and signature is covered by a separate explicit consent in the form, which you may withdraw at any time.
 
 ## Confidentiality and Discretion
 

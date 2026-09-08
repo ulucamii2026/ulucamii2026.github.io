@@ -140,4 +140,48 @@
 .ucf-basari:focus-visible { outline: 3px solid var(--vurgu-2); outline-offset: 3px; }
 .ucf-basari[hidden] { display: none; }
 
+/* ---------- Belgeler ve imza (yalnız ihtida formu, 8 Eylül 2026) ---------- */
+/* [data-alan] > label kuralı burada işlemez (etiket bir <label> değil, kanvası/dosyayı
+   adlandıran bir <span>); aynı görünümü elle veriyoruz. */
+.alan-baslik { font-weight: 600; font-size: 0.93rem; color: var(--metin); line-height: 1.35; }
+
+.ucf-gorsel .g-kutu {
+  display: grid; place-items: center; overflow: hidden;
+  aspect-ratio: 16 / 10; max-width: 22rem;
+  border: 1.5px dashed var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6);
+  background: var(--zemin-2);
+}
+.ucf-gorsel[data-gorsel="vesikalik"] .g-kutu { aspect-ratio: 3 / 4; max-width: 13rem; }
+.ucf-gorsel[data-dolu="1"] .g-kutu { border-style: solid; border-color: var(--color-adacayi); }
+.ucf-gorsel .g-kutu img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.ucf-gorsel .g-bos { font-size: 1.8rem; opacity: 0.35; }
+.ucf-gorsel .g-eylem { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.ucf-gorsel .g-eylem .dugme { min-height: 2.6rem; padding-inline: 1rem; font-size: 0.88rem; }
+/* <label for> gerçek bir düğme gibi davranmalı: klavyeyle dosya girdisine odaklanılır,
+   odak halkası buraya yansıtılır. */
+.ucf-gorsel .g-sec { cursor: pointer; }
+.ucf-gorsel input[type="file"]:focus-visible + .dugme,
+.ucf-gorsel .g-sec:has(+ input[type="file"]:focus-visible) { box-shadow: 0 0 0 3px rgb(31 81 128 / 0.25); }
+.ucf-gorsel .g-durum { font-size: 0.8rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
+.ucf-gorsel[data-dolu="1"] .g-durum { color: var(--color-adacayi-koyu, var(--metin-2)); font-weight: 600; }
+.ucf-gorsel[data-mesgul="1"] .g-kutu { opacity: 0.6; }
+.ucf-gorsel.alan-hatali .g-kutu { border-color: var(--form-hata-cizgi); background: var(--form-hata-zemin); }
+.ucf-gorsel[hidden] { display: none; }
+
+.ucf-imza .imza-tuval {
+  width: 100%; height: 11rem; touch-action: none; cursor: crosshair;
+  border: 1.5px solid var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6);
+  background: #fff;
+  /* İmza satırı: kâğıttaki çizgi gibi, çizim alanının alt üçte birinde.
+     Zemin her iki temada da beyaz kalır (imza mavi mürekkeple çizilir ve belgeye öyle basılır),
+     bu yüzden çizginin rengi de sabittir — koyu temada token kullanılırsa çizgi görünmez oluyordu. */
+  background-image: linear-gradient(to right, #cfc7ba 0 100%);
+  background-size: calc(100% - 3rem) 1px; background-position: 1.5rem 72%; background-repeat: no-repeat;
+}
+.ucf-imza .imza-eylem { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ucf-imza .imza-eylem .dugme { min-height: 2.6rem; padding-inline: 1rem; font-size: 0.88rem; }
+.ucf-imza.imza-kapali .imza-tuval { opacity: 0.4; cursor: not-allowed; }
+.ucf-imza.imza-kapali .imza-eylem { display: none; }
+.ucf-imza.alan-hatali .imza-tuval { border-color: var(--form-hata-cizgi); }
+
 @media (prefers-reduced-motion: reduce) { .kurallar-kutu { scroll-behavior: auto; } }

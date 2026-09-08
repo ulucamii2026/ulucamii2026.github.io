@@ -31,6 +31,8 @@ const S2_SAG = {
   oncekiDin: [552.7, 99], ihtidaSebebi: [511.3, 133], ihtidaTarihi: [507.7, 166],
   eposta: [485.4, 200], telefon: [513.1, 232], adres: [478.5, 265],
 };
+/* S2_ALT.isimTaban: EK-9 şablonunda imza satırının hemen altındaki ad satırının y değeri.
+   Şablon bu satırı zaten basılı taşıdığı için doldurulmuyor; ölçü, şablon değişirse elde olsun diye duruyor. */
 const S2_ALT = { tarihTaban: 440, x0: 700, x1: 800, isimTaban: 454 };
 const S2_SAG_SINIR = 795;   // sağ sütun metinlerinin taşamayacağı x
 

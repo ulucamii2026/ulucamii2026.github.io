@@ -1,6 +1,8 @@
 /** Kayıt ve ihtida formlarının metin şeması — üç dil aynı anahtarları taşır (tr.ts / fr.ts / en.ts).
-    30 Ağustos 2026 yeniden yazımı: formlar kimlik numarası, kimlik kopyası, görsel veya imza
-    toplamaz; metinler de bunu yansıtır. */
+    30 Ağustos 2026: formlar kimlik numarası, kimlik kopyası, görsel veya imza toplamıyordu.
+    8 EYLÜL 2026 — Rıdvan'ın kararıyla İHTİDA formu için bu geri alındı: vesikalık, kimlik belgesinin
+    ön/arka yüzü ve çizilen imza formda alınır (EK-9 ve Müşavirlik dosyası için). KAYIT formu (çocuk
+    kaydı) eski kuralda kalır: orada kimlik numarası, kimlik kopyası, görsel ve imza YOKTUR. */
 
 export interface OrtakMetinler {
   zorunluIsaret: string;           // "zorunlu alan" — yıldızın erişilebilir adı
@@ -93,7 +95,7 @@ export interface IhtidaMetinler {
   ustEtiket: string;
   giris: string;
   kimlikNotu: string;              // "kimlik belgesi törende yalnız gösterilir; kopyası alınmaz"
-  bolum: { kisi: string; durum: string; iletisim: string; ihtida: string; riza: string; ozet: string };
+  bolum: { kisi: string; durum: string; iletisim: string; ihtida: string; belgeler: string; riza: string; ozet: string };
   kisi: {
     adSoyad: string; adSoyadYardim: string; cinsiyet: string; kadin: string; erkek: string;
     dogumTarihi: string; dogumYeri: string; dogumYeriYardim: string; uyruk: string; anneAdi: string; babaAdi: string;
@@ -110,11 +112,25 @@ export interface IhtidaMetinler {
     sahitler: string; sahitlerYardim: string; sahit1: string; sahit2: string;
     nasilHaberdar: string; ekNot: string; ekNotYardim: string;
   };
+  /** 8 Eylül 2026'da eklendi: EK-9 ve resmî dosya için istenen görseller. */
+  belgeler: {
+    aciklama: string;
+    belgeTuru: string; kimlikKarti: string; pasaport: string;
+    vesikalik: string; vesikalikYardim: string;
+    kimlikOn: string; kimlikOnYardim: string;
+    kimlikArka: string; kimlikArkaYardim: string;
+    sec: string; degistir: string; kaldir: string; onizleme: string;
+    isleniyor: string; hazir: string;              // {boyut}
+    imza: string; imzaYardim: string; imzaTemizle: string;
+    imzaYok: string; imzaYokYardim: string;
+    hataTur: string; hataBoyut: string; hataOkunamadi: string; hataImza: string; hataEksik: string;
+  };
   riza: {
     acikRiza: string; ek10: string; ek10Baglanti: string; gizlilik: string; fotoIzni: string; fotoAciklama: string;
+    gorselRiza: string; gorselRizaYardim: string;
     beyanBaslik: string; beyanMetin: string; beyanEtiket: string; beyanYardim: string;
   };
-  ozet: { kisi: string; dogum: string; uyruk: string; aile: string; durum: string; iletisim: string; din: string; toren: string; sahitler: string };
+  ozet: { kisi: string; dogum: string; uyruk: string; aile: string; durum: string; iletisim: string; din: string; toren: string; sahitler: string; belgeler: string };
   basari: { sonrakiAdimlar: string };
 }
 

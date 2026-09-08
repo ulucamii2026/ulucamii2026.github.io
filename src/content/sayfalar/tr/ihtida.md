@@ -66,14 +66,19 @@ Fransızca konuşan adaylar için tören Fransızca da yürütülebilir; kelime-
 
 ## Gerekli Belgeler
 
+Başvuru formunu doldururken sisteme yükleyecekleriniz (formun 5. bölümü):
+
+- **1 adet vesikalık fotoğraf** — İhtida Belgesi’nin üzerine basılır.
+- **Kimlik kartınızın ön ve arka yüzü** — pasaport yüklüyorsanız yalnız bilgi sayfası yeter. Telefonunuzla çekip yükleyebilirsiniz; görüntüler gönderilmeden önce tarayıcınızda küçültülür.
+- **İmzanız** — ekrandaki alana parmağınızla ya da farenizle çizersiniz; Diyanet’e gidecek belgeye bu imza basılır. Ekranda imza atamıyorsanız alttaki kutuyu işaretleyin, belgeyi tören günü kalemle imzalarsınız.
+
 Tören günü yanınızda bulundurmanız gerekenler:
 
 - **Kimlik kartınız veya pasaportunuz** — aslını görevliye gösterirsiniz.
-- **1 adet vesikalık fotoğraf** — belgenin üzerine basılır, elden alınır.
 - **2 şahit** — yoksa camimiz sağlar.
 - **EK-10 Açık Rıza Metni** — tören günü kâğıt üzerinde imzalanır. Metnin tamamı Türkçe, İngilizce, **Fransızca** ve Felemenkçe olarak yandaki bağlantıdan okunabilir.
 
-**Kişisel verileriniz hakkında:** Online başvuru formumuz **kimlik numarası, kimlik kopyası veya belge/fotoğraf yüklemesi istemez**; derneğimiz kimlik belgenizin kopyasını almaz ve saklamaz. Diyanet İşleri Başkanlığı’nın ihtida yönergesi (madde 44), resmî belgenin düzenlenebilmesi için bir vesikalık fotoğraf ile kimlik/pasaport örneğinin **resmî dosyaya** konulmasını öngörür; bu işlem tören günü yetkili görevli tarafından yapılır ve dosya Müşavirlik tarafından muhafaza edilir. Kişisel verilerinize yalnızca hizmetin gerektirdiği ölçüde, asgari sayıda yetkili kişi erişebilir.
+**Kişisel verileriniz hakkında:** Diyanet İşleri Başkanlığı’nın ihtida yönergesi (madde 44), resmî belgenin düzenlenebilmesi için bir vesikalık fotoğraf ile kimlik/pasaport örneğinin **resmî dosyaya** konulmasını öngörür. Bu belgeleri tören gününü beklemeden başvuru formunda topluyoruz; böylece İhtida Belgeniz tören günü hazır olur. Başvurunuza ilişkin **her türlü bilgi ve belge hem camimizde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde saklanır**; yayımlanmaz, üçüncü kişilerle paylaşılmaz, yalnızca hizmetin gerektirdiği ölçüde ve asgari sayıda yetkili kişi erişebilir. Kimlik **numaranız** hiçbir aşamada sorulmaz. Görsellerinizin ve imzanızın işlenmesi için formda ayrıca açık rızanız alınır; bu rızayı istediğiniz zaman geri alabilirsiniz.
 
 ## Gizlilik ve Mahremiyet
 

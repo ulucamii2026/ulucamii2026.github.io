@@ -681,7 +681,11 @@ function basvuruCiz() {
     }
     if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
     if (pdf.startsWith('http')) araclar.push(pdfDugmesi(pdf, `${al(r, iRef) || 'form'} - ${ad}.pdf`, 'Form PDF', 'dugme'));
-    if (aktifTur === 'ihtida' && al(r, iRef)) araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
+    if (aktifTur === 'ihtida' && al(r, iRef)) {
+      araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
+      // v23: kimlik görüntüleri resmî dosya içindir; panelde ayrı bir pencerede açılıp basılır.
+      araclar.push(`<button class="dugme" type="button" data-belgeler="${kacir(al(r, iRef))}">Kimlik ve vesikalık</button>`);
+    }
     const eskiSurumler = eskiler.length ? `<details class="eski-surum"><summary>Önceki sürümler (${eskiler.length})</summary><table>${
       eskiler.map((e) => {
         const epdf = al(e, iPdf);
@@ -711,6 +715,7 @@ function basvuruCiz() {
     : '';
   $('basvuru-not').hidden = !duzeltilenVar;
   liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
+  liste.querySelectorAll('[data-belgeler]').forEach((d) => d.addEventListener('click', () => ihtidaBelgeleriAc(d)));
   liste.querySelectorAll('[data-pdf]').forEach((d) => d.addEventListener('click', () => formPdfAc(d)));
   $('csv').disabled = false;
 }
@@ -1017,6 +1022,70 @@ async function ek9Uretimi(dugme) {
     console.error(hata);
     alert('EK-9 belgesi üretilemedi: ' + (hata && hata.message ? hata.message : hata));
     durumYaz(eskiMetin); dugme.disabled = false;
+  }
+}
+
+/* v23 (8 Eylül 2026): başvuranın yüklediği vesikalık ile kimlik belgesinin ön/arka yüzü.
+   Bunlar Müşavirlikte tutulacak resmî dosya içindir; panelde ayrı bir sekmede açılıp basılır.
+   Görüntüler indirilmez, yalnız gösterilir — kopyaları yönetici cihazına dağılmasın. */
+async function ihtidaBelgeleriAc(dugme) {
+  const ref = dugme.dataset.belgeler;
+  const eskiMetin = dugme.textContent;
+  dugme.disabled = true;
+  dugme.textContent = 'Yükleniyor…';
+  try {
+    if (!SIRLAR || !SIRLAR.gas) throw new Error('Erişim paketi eksik — yeniden giriş yapın.');
+    const j = await gasIstek('belge', { ref });
+    if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
+    const g = j.gorseller || {};
+    const k = j.kayit || {};
+    const parcalar = [
+      ['Vesikalık fotoğraf', g.vesikalik],
+      ['Kimlik belgesi — ön yüz', g.kimlikOn],
+      ['Kimlik belgesi — arka yüz', g.kimlikArka],
+      ['Başvuranın imzası', g.imza],
+      // Veri URL'i birebir beklenen biçimde olmalı: aşağıda öznitelik içine gömülüyor.
+    ].filter(([, v]) => /^data:image\/[a-z0-9+.-]+;base64,[A-Za-z0-9+/=]+$/.test(String(v || '')));
+    if (!parcalar.length) {
+      alert('Bu başvuruda görsel yok.\n\nBaşvuru v23 öncesinde geldiyse görseller alınmamıştır; '
+        + 'silinmişse ?islem=ihtida-gorsel-sil ile kaldırılmış olabilir.');
+      return;
+    }
+    const uyari = (j.okunamayanGorseller || []).length
+      ? `<p class="uyari">⚠ Okunamayan dosya: ${(j.okunamayanGorseller || []).map((u) => kacir(u.dosya + ' (' + u.neden + ')')).join(', ')}</p>` : '';
+    const html = `<!doctype html><html lang="tr"><head><meta charset="utf-8" />
+<title>${kacir(ref)} — kimlik ve vesikalık</title>
+<style>
+ :root { color-scheme: light }
+ body { margin: 0; padding: 24px; font: 15px/1.5 system-ui, sans-serif; background: #f6f4ef; color: #24201c }
+ h1 { font-size: 1.25rem; margin: 0 0 0.25rem }
+ p.kim { margin: 0 0 1.25rem; color: #5b544c }
+ p.uyari { color: #a34a30; font-weight: 600 }
+ figure { margin: 0 0 1.5rem; break-inside: avoid }
+ figcaption { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem }
+ img { max-width: 100%; border: 1px solid #ccc4b8; background: #fff }
+ .not { margin-top: 2rem; padding: 0.9rem 1rem; border: 1px solid #ccc4b8; border-radius: 8px; background: #fff; font-size: 0.9rem }
+ @media print { body { background: #fff; padding: 0 } .not { display: none } }
+</style></head><body>
+<h1>${kacir(ref)} — kimlik ve vesikalık</h1>
+<p class="kim">${kacir(k['Adı Soyadı'] || '')}</p>
+${uyari}
+${parcalar.map(([baslik, veri]) => `<figure><figcaption>${kacir(baslik)}</figcaption><img src="${veri}" alt="${kacir(baslik)}" /></figure>`).join('\n')}
+<p class="not">Bu görüntüler İhtida Belgesi'nin (EK-9) düzenlenmesi ve T.C. Brüksel Büyükelçiliği
+Sosyal İşler Müşavirliği'nde tutulacak resmî dosya içindir. Dosya tamamlandıktan sonra
+görüntüler <code>?islem=ihtida-gorsel-sil&amp;ref=${kacir(ref)}</code> ucuyla silinebilir.</p>
+</body></html>`;
+    // 'noopener' pencere özelliği verilirse window.open null döner; sekmeyi doldurabilmek için verilmez.
+    const pencere = window.open('', '_blank');
+    if (!pencere) { alert('Tarayıcı yeni sekmeyi engelledi. Açılır pencerelere izin verin.'); return; }
+    pencere.document.write(html);
+    pencere.document.close();
+  } catch (hata) {
+    console.error(hata);
+    alert('Görseller açılamadı: ' + (hata && hata.message ? hata.message : hata));
+  } finally {
+    dugme.disabled = false;
+    dugme.textContent = eskiMetin;
   }
 }
 
