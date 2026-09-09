@@ -21,7 +21,7 @@ const kaynak = {
 
 // --- 1) sahitleriCoz mantığı (birim testi)
 const im = (x) => 'data:image/png;base64,' + x;
-const yedek = [{ ad: 'Rıdvan KAYAHAN', imza: im('R') }, { ad: 'Yeliz KAYAHAN', imza: im('Y') }];
+const yedek = [{ ad: 'Ercan MOLA', imza: im('E') }, { ad: 'Rıdvan KAYAHAN', imza: im('R') }];
 const senaryolar = [
   ['iki sahit de var', [{ ad: 'A', imza: im('a') }, { ad: 'B', imza: im('b') }]],
   ['yalniz 1. sahit', [{ ad: 'A', imza: im('a') }]],
@@ -58,8 +58,8 @@ const bytes = await ek9Uret({
   foto: testGorsel,
   sahitler: [],
   yedekImzalar: [
+    { ad: 'Ercan MOLA', imza: testGorsel },
     { ad: 'Rıdvan KAYAHAN', imza: testGorsel },
-    { ad: 'Yeliz KAYAHAN', imza: testGorsel },
   ],
   basvuranImza: testGorsel,
   tarih: new Date('2026-08-25T06:00:00Z'),

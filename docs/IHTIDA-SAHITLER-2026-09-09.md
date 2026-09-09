@@ -1,6 +1,6 @@
 # İhtida şahitleri — 9 Eylül 2026
 
-- Yeni Ulu Camii başvurularında boş şahit alanları Rıdvan KAYAHAN (Din Görevlisi) ve Ercan MOLA (Dernek Başkanı) ile tamamlanır.
+- Yeni Ulu Camii başvurularında boş şahit alanları Ercan MOLA (Dernek Başkanı) ve Rıdvan KAYAHAN (Din Görevlisi) sırasıyla tamamlanır.
 - Başvuruda açıkça belirtilmiş eski veya özel şahit isimleri korunur. Başka cami seçildiğinde yerel varsayılanlar ve unvanlar kullanılmaz; iki şahit elle girilir.
 - Üç dilde form açıklaması, yönetici hazırlık ekranı ve EK-9 PDF üretimi aynı kurala uyar.
 - İmza eşleştirmesinde Ercan için yalnız `ercan` anahtarı kullanılır. Yeliz imzası Ercan adına kullanılamaz. Kayıtlı uygun imza yoksa ıslak imza alanı boş bırakılır. Kayıtlı imza kullanımı belge bazında teyit gerektirir.

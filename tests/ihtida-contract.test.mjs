@@ -28,7 +28,7 @@ const govde = () => ({
 test('Şahit adı, imzası yokken de korunur; yalnız boş yer tamamlanır', () => {
   const sonuc = sahitleriCoz([{ ad: 'Birinci Örnek', imza: '' }], [{ ad: 'Yedek Örnek', imza: 'sahte' }]);
   assert.equal(sonuc[0].ad, 'Birinci Örnek'); assert.equal(sonuc[0].imza, ''); assert.equal(sonuc[1].ad, 'Yedek Örnek');
-  assert.deepEqual(sahitOnerileri({}), ['Rıdvan KAYAHAN', 'Ercan MOLA']);
+  assert.deepEqual(sahitOnerileri({}), ['Ercan MOLA', 'Rıdvan KAYAHAN']);
   assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Rıdvan KAYAHAN' }), ['Rıdvan KAYAHAN', 'Ercan MOLA']);
   assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Ercan MOLA' }), ['Ercan MOLA', 'Rıdvan KAYAHAN']);
   assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': 'Önceki Şahit' }), ['Yeliz KAYAHAN', 'Önceki Şahit']);

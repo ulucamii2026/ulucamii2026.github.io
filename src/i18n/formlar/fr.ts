@@ -160,7 +160,7 @@ export const fr: FormMetinleri = {
       torenDili: 'Langue de la cérémonie et de l’entretien', dilTr: 'Turc', dilFr: 'Français', dilEn: 'Anglais', dilAr: 'Arabe',
       torenTarihi: 'Date souhaitée', torenTarihiYardim: 'Facultatif ; exemple : « un week-end » ou « début octobre ».',
       sahitler: 'Témoins', sahitlerYardim: "Vous pouvez indiquer un ou deux témoins. Leur présence et leurs signatures seront confirmées lors de la cérémonie ; indiquer un nom ne vaut pas signature.",
-      sahitEkle: "Je souhaite indiquer mon ou mes témoins", sahitCami: "Témoins proposés : Rıdvan KAYAHAN (imam) et Ercan MOLA (président de l’association). Si vous indiquez un seul témoin, la mosquée se chargera du second.",
+      sahitEkle: "Je souhaite indiquer mon ou mes témoins", sahitCami: "Témoins proposés : Ercan MOLA (président de l’association) et Rıdvan KAYAHAN (imam). Si vous indiquez un seul témoin, la mosquée se chargera du second.",
       sahit1: 'Nom et prénom du 1er témoin', sahit2: 'Nom et prénom du 2e témoin',
       nasilHaberdar: 'Comment nous avez-vous connus ?', ekNot: 'Remarques complémentaires',
       ekNotYardim: 'Vous pouvez indiquer ici comment et à quels moments vous préférez être contacté(e) (téléphone, WhatsApp, e-mail). Si vous craignez des pressions familiales ou de votre entourage, dites-le également : nous organiserons l’entretien et la cérémonie en conséquence, discrètement et en cercle restreint.'

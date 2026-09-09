@@ -74,6 +74,7 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı 
   writeFileSync('.codex/cikti/ihtida/gas-otomatik-paket.pdf', bytes);
   const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', 'pdftotext -f 1 -l 1 .codex/cikti/ihtida/gas-otomatik-paket.pdf -'], { encoding: 'utf8' });
   for (const text of ['Rıdvan KAYAHAN', 'Din Görevlisi', 'Ercan MOLA', 'Dernek Başkanı']) assert.ok(metin.includes(text), text);
+  assert.ok(metin.indexOf('Ercan MOLA') < metin.indexOf('Rıdvan KAYAHAN'), 'Otomatik EK-9 paketinde Ercan birinci, Rıdvan ikinci şahit olmalı');
   assert.doesNotMatch(metin, /Yeliz/);
   await ctx.ihtidaPaketIsle(k.Referans);
   assert.equal(sent.length, 3, 'Kuyruk tekrar çalışsa da üç e-posta tekrarlanmaz');
@@ -100,7 +101,7 @@ test('Otomatik PDF boş ikinci şahidi tamamlarken ilk şahidi tekrarlamaz', asy
   writeFileSync(file, Buffer.from(bytes));
   const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext -f 1 -l 1 ${file} -`], { encoding: 'utf8' });
   assert.equal((metin.match(/Yeliz KAYAHAN/g) || []).length, 1);
-  assert.match(metin, /Rıdvan KAYAHAN/);
+  assert.match(metin, /Ercan MOLA/);
 });
 
 test('Eski kaydın EK-10 rızası yeni sürüme taşınmadan v1 şablonla korunur', async () => {

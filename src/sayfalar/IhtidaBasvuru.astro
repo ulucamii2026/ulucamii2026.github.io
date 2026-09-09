@@ -15,13 +15,13 @@ const m = formMetinleri(dil);
 const site = await siteAyarlari();
 ---
 <Base baslik={t('nav.ihtidaBasvuru')} dil={dil} aciklama={m.ihtida.sayfaAciklama} noindex>
-  <header class="border-b border-(--cizgi) bg-(--zemin-2)">
-    <div class="kapsayici py-6 sm:py-8" style="max-width: 52rem">
+  <header class="ihtida-basvuru-ust border-b border-(--cizgi) bg-(--zemin-2)">
+    <div class="kapsayici ihtida-basvuru-baslik py-7 sm:py-10" style="max-width: 52rem">
       <h1 class="text-3xl sm:text-4xl">{m.ihtida.sayfaBaslik}</h1>
     </div>
     <div class="kilim-serit" aria-hidden="true"></div>
   </header>
-  <section class="kapsayici py-6 sm:py-8" style="max-width: 52rem">
+  <section class="kapsayici ihtida-basvuru-govde py-7 sm:py-10" style="max-width: 52rem">
     <IhtidaFormu dil={dil} uc={site.servisler.basvuru} eposta={site.epostaDinGorevlisi ?? site.eposta ?? 'info@ulucamii.be'}
       telefon={site.telefon.dinGorevlisi} ek10Yolu="/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf" />
   </section>

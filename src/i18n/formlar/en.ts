@@ -159,7 +159,7 @@ export const en: FormMetinleri = {
       torenDili: 'Ceremony and interview language', dilTr: 'Turkish', dilFr: 'French', dilEn: 'English', dilAr: 'Arabic',
       torenTarihi: 'Preferred date', torenTarihiYardim: 'Optional; example: “a weekend” or “early October”.',
       sahitler: 'Witnesses', sahitlerYardim: "You may name one or two witnesses. Their attendance and signatures will be confirmed at the ceremony; entering a name does not count as a signature.",
-      sahitEkle: "I would like to name my own witness or witnesses", sahitCami: "Default witnesses: Rıdvan KAYAHAN (imam) and Ercan MOLA (association president). If you name only one witness, the mosque will arrange the second.",
+      sahitEkle: "I would like to name my own witness or witnesses", sahitCami: "Default witnesses: Ercan MOLA (association president) and Rıdvan KAYAHAN (imam). If you name only one witness, the mosque will arrange the second.",
       sahit1: 'Full name of 1st witness', sahit2: 'Full name of 2nd witness',
       nasilHaberdar: 'How did you hear about us?', ekNot: 'Anything else you would like to add',
       ekNotYardim: 'Tell us here how and when you would prefer to be contacted (phone, WhatsApp, e-mail). If you are worried about pressure from your family or others, say so as well: we will arrange the meeting and the ceremony accordingly, discreetly and in a small circle.'

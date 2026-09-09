@@ -1,7 +1,20 @@
 /* Kayıt ve ihtida formları — sitenin "Kilim Kartografyası" jetonları üzerine (30 Ağu 2026).
    Tek sayfa, numaralı bölümler, büyük dokunma hedefleri, belirgin hata/başarı durumları. */
 
-.ucf { display: grid; gap: 1.75rem; }
+.ihtida-basvuru-ust { position: relative; isolation: isolate; overflow: hidden; }
+.ihtida-basvuru-ust::before {
+  content: ''; position: absolute; z-index: -1; inset: 0 0 6px 48%; pointer-events: none;
+  background-image:
+    linear-gradient(45deg, transparent 46%, rgb(31 95 139 / 0.1) 47% 53%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, rgb(163 74 48 / 0.08) 47% 53%, transparent 54%);
+  background-size: 34px 34px; mask-image: linear-gradient(to right, transparent, #000 45%);
+}
+.ihtida-basvuru-baslik { position: relative; }
+.ihtida-basvuru-baslik h1 { max-width: 18ch; text-wrap: balance; letter-spacing: -0.025em; }
+.ihtida-basvuru-baslik h1::after { content: ''; display: block; width: 3.25rem; height: 3px; margin-top: 1rem; background: var(--vurgu); }
+.ihtida-basvuru-govde { min-width: 0; }
+
+.ucf { display: grid; gap: 1.5rem; min-width: 0; }
 /* Hata rengi form içi jeton: kiremit jetonları yalnız açık tema için tanımlı, karanlık zeminde kontrast
    WCAG 1.4.3/1.4.11 eşiğinin altına düşüyordu (3 Eyl 2026 incelemesi). */
 .ucf { --form-hata: var(--color-kiremit-koyu); --form-hata-cizgi: var(--color-kiremit); --form-hata-halka: rgb(163 74 48 / 0.14); --form-hata-zemin: rgb(163 74 48 / 0.1); }
@@ -9,7 +22,8 @@
   :root:not([data-theme="light"]) .ucf { --form-hata: #f2a58c; --form-hata-cizgi: #e8896c; --form-hata-halka: rgb(242 165 140 / 0.22); --form-hata-zemin: rgb(242 165 140 / 0.12); }
 }
 :root[data-theme="dark"] .ucf { --form-hata: #f2a58c; --form-hata-cizgi: #e8896c; --form-hata-halka: rgb(242 165 140 / 0.22); --form-hata-zemin: rgb(242 165 140 / 0.12); }
-.ucf-giris { max-width: 68ch; }
+.ucf-giris { display: grid; gap: 1rem; max-width: 68ch; }
+.ucf-giris > p { max-width: 62ch; margin: 0; font-size: clamp(1rem, .97rem + .18vw, 1.08rem); line-height: 1.7; color: var(--metin-2); }
 .ucf-giris p + p { margin-top: 0.6rem; }
 .ucf-cami { min-width: 0; }
 .ucf-cami-secili { margin-block: .7rem; overflow-wrap: anywhere; }
@@ -32,24 +46,32 @@
 .ucf-sure { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.9rem; font-size: 0.85rem; color: var(--metin-2); }
 
 .ucf-bolum {
-  background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose);
-  padding: 1.5rem 1.15rem 1.75rem; scroll-margin-top: 5.5rem;
+  position: relative; overflow: clip;
+  background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose);
+  padding: 1.55rem 1.15rem 1.8rem; scroll-margin-top: 5.5rem; box-shadow: var(--shadow-kart);
 }
-@media (min-width: 640px) { .ucf-bolum { padding: 2rem; } }
+.ucf-bolum::before {
+  content: ''; position: absolute; inset: 0 0 auto; height: 3px; background: var(--vurgu);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='3' viewBox='0 0 36 3'%3E%3Cpath d='M0 1.5h12l3-1 3 1 3-1 3 1h12' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E");
+  mask-size: 36px 3px; opacity: .78;
+}
+@media (min-width: 640px) { .ucf-bolum { padding: 2.1rem 2.15rem 2.25rem; } }
 .ucf-bolum > h2 {
   display: flex; align-items: baseline; gap: 0.7rem; margin: 0 0 0.35rem; font-family: var(--font-serif);
   font-size: 1.35rem; line-height: 1.25; color: var(--metin);
 }
 .ucf-bolum > h2 .no {
-  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: var(--tracking-etiket); color: var(--vurgu);
-  border: 1.5px solid currentColor; border-radius: 999px; padding: 0.15rem 0.55rem; align-self: center;
+  display: inline-grid; place-items: center; width: 2rem; height: 2rem; flex: none;
+  font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0; color: var(--vurgu-metin);
+  border: 1px solid rgb(163 74 48 / 0.34); border-radius: 50%; background: rgb(163 74 48 / 0.08); align-self: center;
 }
 .ucf-bolum > .bolum-not { margin: 0 0 1.1rem; color: var(--metin-2); font-size: 0.93rem; max-width: 66ch; }
 
 .ucf-izgara { display: grid; gap: 1.4rem 1.5rem; }
 @media (min-width: 640px) { .ucf-izgara { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ucf-izgara .tam { grid-column: 1 / -1; } }
 
-[data-alan] { display: grid; gap: 0.35rem; align-content: start; }
+[data-alan] { display: grid; gap: 0.4rem; align-content: start; min-width: 0; }
+[data-alan]:focus-within > :is(label, legend, .alan-baslik) { color: var(--vurgu-2); }
 /* Yapışkan başlık (sticky header) alanı örtmesin: odaklanma/kaydırma hedefleri başlığın altında kalmaz */
 .ucf [data-alan], .ucf input, .ucf select, .ucf textarea, .ucf .secenek, .ucf .onay-kutu, .ucf-mesaj { scroll-margin-top: 6.5rem; }
 [data-alan] > label, [data-alan] > legend {
@@ -69,16 +91,18 @@
 
 .ucf input[type="text"], .ucf input[type="email"], .ucf input[type="tel"], .ucf input[type="date"],
 .ucf select, .ucf textarea {
-  width: 100%; min-height: 3.1rem; padding: 0.7rem 0.85rem; font: inherit; font-size: 1rem; color: var(--metin);
-  background: var(--zemin); border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%; min-height: 3.2rem; padding: 0.72rem 0.9rem; font: inherit; font-size: 1rem; color: var(--metin);
+  background: var(--zemin-2); border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14);
+  transition: background-color 0.18s, border-color 0.18s, box-shadow 0.18s;
 }
 .ucf textarea { min-height: 6.5rem; resize: vertical; line-height: 1.45; }
 .ucf select { appearance: none; -webkit-appearance: none; padding-right: 2.4rem;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23635850' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 0.8rem center; }
 .ucf select:disabled { opacity: 0.6; cursor: not-allowed; }
-.ucf :is(input, select, textarea):focus-visible { outline: none; border-color: var(--color-iznik); box-shadow: 0 0 0 3px rgb(31 81 128 / 0.18); }
+.ucf :is(input, select, textarea):not(:disabled):hover { border-color: var(--metin-2); }
+.ucf :is(input, select, textarea):focus-visible { outline: none; background: var(--zemin); border-color: var(--color-iznik); box-shadow: 0 0 0 3px rgb(31 81 128 / 0.18), 0 8px 22px -18px rgb(31 81 128 / .75); }
 .ucf [aria-invalid="true"] { border-color: var(--form-hata-cizgi); box-shadow: 0 0 0 3px var(--form-hata-halka); }
 .ucf input[type="date"] { min-width: 0; }
 
@@ -88,14 +112,16 @@
 .secenek input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; z-index: 1; }
 .secenek label {
   display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.95rem; font-weight: 500; font-size: 0.95rem;
-  border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); cursor: pointer; transition: 0.15s;
+  border: 1.5px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin-2); cursor: pointer; transition: background-color .18s, border-color .18s, color .18s, transform .18s ease-out;
 }
+.secenek input:not(:checked) + label:hover { border-color: var(--metin-2); background: var(--zemin-3); }
 .secenek input:checked + label { border-color: var(--color-iznik); background: var(--color-iznik); color: #fff; }
 .secenek input:focus-visible + label { box-shadow: 0 0 0 3px rgb(31 81 128 / 0.25); }
 .secenek input[aria-invalid="true"] + label { border-color: var(--form-hata-cizgi); }
 
-.onay-kutu { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; padding: 0.85rem 0.95rem;
-  background: var(--zemin); border: 1.5px solid var(--cizgi); border-radius: calc(var(--radius-kose) * 0.6); }
+.onay-kutu { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; padding: 0.9rem 1rem;
+  background: var(--zemin-2); border: 1.5px solid var(--cizgi); border-radius: var(--radius-kose); transition: background-color .18s, border-color .18s; }
+.onay-kutu:hover { background: var(--zemin-3); }
 .onay-kutu input[type="checkbox"] { width: 2rem; height: 2rem; margin-top: 0.1rem; accent-color: var(--color-iznik); flex: none; cursor: pointer; }
 .onay-kutu input[type="checkbox"]:disabled { cursor: not-allowed; opacity: 0.45; }
 .onay-kutu label { font-weight: 500; font-size: 0.93rem; line-height: 1.45; cursor: pointer; }

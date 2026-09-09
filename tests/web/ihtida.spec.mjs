@@ -167,13 +167,13 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Şahit 1': 'Birinci Örnek Şahit', 'Belge teslim yeri': 'cami' }, { ridvan: 'SAHTE_TEST_IMZASI', yeliz: 'SAHTE_TEST_IMZASI' }).then(s => window.sonuc = s);
   });
   await expect(page.locator('#ek9-sahit-0')).toHaveValue('Birinci Örnek Şahit');
-  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Rıdvan KAYAHAN');
+  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Ercan MOLA');
   await expect(page.locator('dialog input[type=checkbox]').nth(0)).toBeDisabled();
   await expect(page.locator('dialog input[type=checkbox]').nth(1)).not.toBeChecked();
   await expect(page.locator('#ek9-gercek-tarih')).toHaveValue('');
   await page.getByRole('dialog', { name: 'EK-9 belgesini hazırlayın' }).screenshot({ path: info.outputPath('ek9-hazirlik.png') });
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Rıdvan KAYAHAN', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi' });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Ercan MOLA', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi' });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'TEST_R', ercan: 'TEST_E', yeliz: 'TEST_Y' }).then(s => window.sonuc = s);
@@ -186,22 +186,22 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
   await page.locator('#ek9-sahit-1').fill('Başka Örnek Şahit');
   await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(1)).not.toBeChecked();
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Rıdvan KAYAHAN', imza: 'TEST_R' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade' });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Ercan MOLA', imza: 'TEST_E' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade' });
 });
 
-test('Yeni yerel şahit Ercan Mola olur; unvanlar görünür ve Yeliz imzası ona aktarılmaz', async ({ page, context }) => {
+test('Yerel şahit sırası Ercan Mola ve Rıdvan Kayahan olur; Yeliz imzası aktarılmaz', async ({ page, context }) => {
   await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4401' ? r.continue() : r.abort());
   await page.goto('/tr/ihtida-basvuru/');
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan:'TEST_R', yeliz:'TEST_Y' });
   });
-  await expect(page.locator('#ek9-sahit-0')).toHaveValue('Rıdvan KAYAHAN');
-  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Ercan MOLA');
-  await expect(page.locator('[data-sahit-unvan]')).toHaveText(['Din Görevlisi', 'Dernek Başkanı']);
-  await expect(page.locator('.ek9-onay input').nth(1)).toBeDisabled();
-  await page.locator('#ek9-sahit-1').fill('Başka Örnek Şahit');
-  await expect(page.locator('[data-sahit-unvan]').nth(1)).toBeHidden();
+  await expect(page.locator('#ek9-sahit-0')).toHaveValue('Ercan MOLA');
+  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Rıdvan KAYAHAN');
+  await expect(page.locator('[data-sahit-unvan]')).toHaveText(['Dernek Başkanı', 'Din Görevlisi']);
+  await expect(page.locator('.ek9-onay input').nth(0)).toBeDisabled();
+  await page.locator('#ek9-sahit-0').fill('Başka Örnek Şahit');
+  await expect(page.locator('[data-sahit-unvan]').nth(0)).toBeHidden();
 });
 
 

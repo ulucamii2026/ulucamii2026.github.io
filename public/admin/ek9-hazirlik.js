@@ -2,7 +2,7 @@
 export function sahitOnerileri(kayit) {
   const adlar = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
   if ((kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche') return adlar;
-  const yedekler = ['Rıdvan KAYAHAN', 'Ercan MOLA'];
+  const yedekler = ['Ercan MOLA', 'Rıdvan KAYAHAN'];
   const normalle = ad => ad.trim().replace(/\s+/g, ' ').toLocaleLowerCase('tr');
   const kullanilan = new Set(adlar.filter(Boolean).map(normalle));
   return adlar.map(ad => {
