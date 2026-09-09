@@ -33,6 +33,8 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
     : ['', varsayilanDil];
   const dil = (mevcutDil === 'fr' || mevcutDil === 'tr' || mevcutDil === 'en') ? (mevcutDil as Dil) : varsayilanDil;
   if (!seg) return yol(hedef, 'anasayfa');
+  // Vaaz detaylarının sabit yolu, liste sayfasının çevrilmiş yolundan ayrıdır.
+  if (seg === 'vaaz' && kalan[0]) return `/${hedef}/vaaz/${kalan.filter(Boolean).join('/')}/`;
   for (const [anahtar, degerler] of Object.entries(yollar) as [SayfaAnahtari, Record<Dil, string>][]) {
     if (degerler[dil] === seg) {
       // koleksiyon alt sayfaları (duyuru/etkinlik slug'ı) dilden bağımsız aynı slug'ı kullanır

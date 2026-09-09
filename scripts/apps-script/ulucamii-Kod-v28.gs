@@ -67,6 +67,8 @@ var SURUM = 28;
 
 function doGet(e) {
   if (e && e.parameter) {
+    if (e.parameter.islem === "veli-cuma-durum" || e.parameter.islem === "veli-cuma-onizleme") return veliCumaPanelIsle(e);
+    if (e.parameter.islem === "veli-mail-listesi-durum") return veliMailListesiDurumIsle(e);
     if (e.parameter.islem === "ihtida-paket-durum") return ihtidaPaketDurumIsle(e);
     if (e.parameter.islem === "ihtida-defteri" || e.parameter.islem === "ihtida-defteri-dosya") return ihtidaDefteriGetIsle(e);
     if (e.parameter.islem === "liste") return panelListeIsle(e);
@@ -83,7 +85,8 @@ function doGet(e) {
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM,
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, veliEpostaDili: "kayit-tercihi-20260909",
+    veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
     ihtidaCamiSecimi: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.camiCoz === "function",
@@ -835,9 +838,10 @@ function ihtidaDogrulaV2(v) {
   for (var si = 0; si < sahitler.length; si++) {
     if (sahitler[si] && sahitler[si].ad && !uzunlukTamam(sahitler[si].ad, 120)) return h("sahit-adi-uzun");
   }
+  var sahitAdlari = sahitler.map(function(s) { return String(s && s.ad || "").trim().replace(/\s+/g, " ").toLocaleLowerCase("tr"); });
+  if (sahitAdlari[0] && sahitAdlari[0] === sahitAdlari[1]) return h(cami.id === "ulucamii-marche" ? "sahitler-farkli-olmali" : "diger-cami-sahitler-farkli-olmali");
   if (cami.id !== "ulucamii-marche") {
     if (sahitler.length !== 2 || !metinDolu(sahitler[0] && sahitler[0].ad) || !metinDolu(sahitler[1] && sahitler[1].ad)) return h("diger-cami-sahit-adi-eksik");
-    if (String(sahitler[0].ad).trim().toLocaleLowerCase("tr") === String(sahitler[1].ad).trim().toLocaleLowerCase("tr")) return h("diger-cami-sahitler-farkli-olmali");
   }
 
   if (typeof v.fotografIzni !== "boolean") return h("fotograf-izni-gecersiz");
@@ -1071,7 +1075,7 @@ function kayitPostIsleV2(v) {
       } catch (_) {}
     }
 
-    try { kopyaGonderV2(blob, ref, adSoyad, [veli.eposta]); }
+    try { kopyaGonderV2(blob, ref, adSoyad, [veli.eposta], veli.iletisimDili); }
     catch (kopyaHatasi) { console.error("kopya gonderilemedi: " + kopyaHatasi); }
 
     return json({ ok: true, ref: ref, tekrar: false });
@@ -1274,23 +1278,24 @@ function mufredatYukleIsle(govde) {
 }
 
 /* Düz metni "-----" ayıraç çizgilerinden bloklara böler: 1. blok TR, 2. blok FR, 3. blok (künye) TR. */
-function mailHtml(govde) {
+function mailHtml(govde, dil) {
   var bloklar = String(govde).split(/\n-{10,}\n/);
   var diller = ["tr", "fr", "tr"];
   var parcalar = bloklar.map(function (blok, i) {
     var paragraflar = blok.trim().split(/\n\s*\n/).map(function (p) {
       return "<p style=\"margin:0 0 12px\">" + kacis(p.trim()).replace(/\n/g, "<br>") + "</p>";
     }).join("");
-    return "<div lang=\"" + (diller[i] || "tr") + "\">" + paragraflar + "</div>";
+    return "<div lang=\"" + (dil || diller[i] || "tr") + "\">" + paragraflar + "</div>";
   });
-  return "<!DOCTYPE html><html lang=\"tr\"><body style=\"font-family:Arial,Helvetica,sans-serif;"
+  return "<!DOCTYPE html><html lang=\"" + (dil || "tr") + "\"><body style=\"font-family:Arial,Helvetica,sans-serif;"
     + "font-size:15px;line-height:1.5;color:#222\">"
     + parcalar.join("<hr style=\"border:0;border-top:1px solid #ccc;margin:18px 0\">")
     + "</body></html>";
 }
 
-/** Veliye imzalı formun bir kopyasını yollar (v2: güncelleme akışı yok, tek e-posta metni). */
-function kopyaGonderV2(blob, ref, adSoyad, adresler) {
+/** Veli e-postası yalnız kayıt formundaki iletişim dilinde hazırlanır (9 Eylül 2026). */
+function kopyaGonderV2(blob, ref, adSoyad, adresler, dil) {
+  if (["tr", "fr"].indexOf(dil) === -1) throw new Error("Veli iletişim dili doğrulanamadı");
   var gecerli = [];
   (adresler || []).forEach(function (a) {
     var adres = String(a || "").trim();
@@ -1300,12 +1305,11 @@ function kopyaGonderV2(blob, ref, adSoyad, adresler) {
   });
   if (!gecerli.length) return;
 
-  var konu = "Kur'an kursu kayıt onayı / Confirmation d'inscription — " + ref;
-  var govde = [
+  var konu = (dil === "fr" ? "Confirmation d’inscription au cours de Coran — " : "Kur’an kursu kayıt onayı — ") + ref;
+  var govde = (dil === "tr" ? [
     "Esselâmü aleyküm,", "",
     adSoyad + " adına yaptığınız kurs kaydı alınmıştır. Kayıt numaranız: " + ref,
     "Doldurduğunuz form bu e-postanın ekindedir; lütfen saklayınız.", "",
-    "Dersler 5 Eylül 2026 Cumartesi günü başlayacaktır.",
     "Kursumuz ücretsizdir; aidat alınmamaktadır.", ""
   ]
     .concat(kitapSatirlari("tr"))
@@ -1314,26 +1318,30 @@ function kopyaGonderV2(blob, ref, adSoyad, adresler) {
       "2026-2027 müfredatı ve yıllık ders planı bu e-postanın ekindedir; web sürümü: " + MUFREDAT.sayfa,
       "",
       "Bilgilerinizde bir düzeltme gerekirse info@ulucamii.be adresine yazınız; " + ref + " numarasını belirtiniz.",
-      "",
-      "----------------------------------------------------------", "",
+      ""
+    ]) : [
       "Bonjour,", "",
-      "L'inscription de " + adSoyad + " a bien été enregistrée. Numéro d'inscription : " + ref,
+      "L’inscription de " + adSoyad + " a bien été enregistrée. Numéro d’inscription : " + ref,
       "Le formulaire complété se trouve en pièce jointe ; conservez-le.", "",
-      "Les cours débutent le samedi 5 septembre 2026.",
       "Les cours sont gratuits ; aucune cotisation n'est demandée.", ""
-    ])
+    ]
     .concat(kitapSatirlari("fr"))
     .concat([
       "",
       "Le programme et le plan annuel des cours 2026-2027 sont joints à cet e-mail (document en turc) ; version web : " + MUFREDAT.sayfaFr,
       "",
       "Pour corriger une information, écrivez à info@ulucamii.be en indiquant le numéro " + ref + ".",
-      "",
-      "----------------------------------------------------------", "",
-      "Marche-en-Famenne Ulu Camii Kur'an Kursu",
+      ""
+    ])).concat(dil === "fr" ? [
+      "Merci de consulter régulièrement nos e-mails et les annonces du portail parents. La collaboration entre la famille et l’enseignant contribue au suivi de chaque enfant.", "",
+      "Cours de la mosquée Ulu Camii — Marche-en-Famenne",
       "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-      "Cami telefonu / Téléphone de la mosquée : +32 472 98 50 73",
-      "Din görevlisi / Imam : +32 471 79 46 82"
+      "Téléphone de la mosquée : +32 472 98 50 73", "Imam : +32 471 79 46 82"
+    ] : [
+      "Lütfen e-postalarımızı ve veli portalındaki duyuruları düzenli takip ediniz. Kurs–aile işbirliği, her çocuğumuzun eğitimini birlikte desteklememizi sağlar.", "",
+      "Marche-en-Famenne Ulu Camii Kur’an Kursu",
+      "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
+      "Cami telefonu: +32 472 98 50 73", "Din görevlisi: +32 471 79 46 82"
     ]).join("\n");
 
   var ekler = [blob];
@@ -1343,7 +1351,7 @@ function kopyaGonderV2(blob, ref, adSoyad, adresler) {
   gecerli.forEach(function (adres) {
     try {
       epostaGonder({
-        to: adres, subject: konu, body: govde, htmlBody: mailHtml(govde),
+        to: adres, subject: konu, body: govde, htmlBody: veliEpostaDuzMetin(govde, dil, konu),
         attachments: ekler, name: EPOSTA.ad, replyTo: EPOSTA.yanit
       });
     } catch (hata) {

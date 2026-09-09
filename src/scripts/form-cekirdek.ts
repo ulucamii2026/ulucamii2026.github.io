@@ -308,7 +308,9 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   const mesaj = form.querySelector<HTMLElement>('[data-mesaj]');
   const taslakNotu = form.querySelector<HTMLElement>('[data-taslak-not]');
   const gonderDugme = form.querySelector<HTMLButtonElement>('button[type=submit]');
+  const taslakSilDugme = form.querySelector<HTMLButtonElement>('[data-taslak-sil]');
   let gonderimAnahtari = uuid();
+  let gonderiliyor = false;
 
   const mesajGoster = (metin: string | null, tur: 'hata' | 'bilgi' = 'hata', kaydir = true) => {
     if (!mesaj) return;
@@ -325,6 +327,8 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   }
   sayaclariKur(form);
   form.querySelector<HTMLButtonElement>('[data-taslak-sil]')?.addEventListener('click', () => {
+    if (gonderiliyor) return;
+    window.clearTimeout(zamanlayici);
     try { localStorage.removeItem(taslakAnahtari); } catch { /* yok say */ }
     form.reset(); gonderimAnahtari = uuid();
     form.querySelectorAll<HTMLElement>('[data-kaydir]').forEach((k) => { k.dataset.okundu = ''; k.scrollTop = 0; });
@@ -352,7 +356,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   form.addEventListener('input', (e) => {
     odagiIptalEt();
     window.clearTimeout(zamanlayici);
-    zamanlayici = window.setTimeout(() => taslakYaz(taslakAnahtari, form, gonderimAnahtari), 400);
+    if (!form.hidden) zamanlayici = window.setTimeout(() => taslakYaz(taslakAnahtari, form, gonderimAnahtari), 400);
     // Hatalı işaretlenmiş alan düzelirken uyarı hemen kalkar; böylece bir sonraki dokunuşta
     // (odak değişince) sayfa düzeni kaymaz — kayan düzen dokunuşu boşa düşürüyordu.
     const hedef = e.target as Alan;
@@ -435,6 +439,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   form.addEventListener('submit', async (e) => {
     if (e.defaultPrevented) return;
     e.preventDefault();
+    if (gonderiliyor || form.hidden) return;
     odagiIptalEt();
     tumHatalariTemizle(form); mesajGoster(null);
     const veriler = verileriTopla(form);
@@ -450,6 +455,9 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     if (!navigator.onLine) { mesajGoster(m.hata.cevrimdisi); return; }
 
     const govde = { ...sec.govde(veriler), tur: form.dataset.form, sir: form.dataset.sir, formSurumu: 2, dil: form.dataset.dil, gonderimAnahtari };
+    gonderiliyor = true;
+    window.clearTimeout(zamanlayici);
+    if (taslakSilDugme) taslakSilDugme.disabled = true;
     taslakYaz(taslakAnahtari, form, gonderimAnahtari);
     const dugmeMetni = gonderDugme?.textContent ?? '';
     if (gonderDugme) { gonderDugme.disabled = true; gonderDugme.textContent = m.basari.gonderiliyor || '…'; }
@@ -479,12 +487,15 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
         mesajGoster(doldur(m.hata.sunucu, { kod: sonuc.hata || String(yanit.status) }));
         return;
       }
+      window.clearTimeout(zamanlayici);
       try { localStorage.removeItem(taslakAnahtari); } catch { /* yok say */ }
       sec.basarida?.(veriler, sonuc.ref);
       basariGoster(form, sonuc.ref, String(deger(veriler, form.dataset.epostaAlani || '') ?? ''), m);
     } catch (err) {
       mesajGoster((err as Error)?.name === 'AbortError' ? m.hata.zamanAsimi : m.hata.ag);
     } finally {
+      gonderiliyor = false;
+      if (taslakSilDugme) taslakSilDugme.disabled = false;
       window.clearTimeout(zamanAsimi);
       form.removeAttribute('aria-busy');
       if (gonderDugme) { gonderDugme.disabled = false; gonderDugme.textContent = dugmeMetni; }

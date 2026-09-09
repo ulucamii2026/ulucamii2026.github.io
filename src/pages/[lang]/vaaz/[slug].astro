@@ -9,6 +9,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
+import VaazDilUyarisi from '../../../components/VaazDilUyarisi.astro';
 import istatistik from '../../../data/istatistik.json';
 import { yol } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
@@ -62,10 +63,13 @@ const jsonLd = {
 };
 const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 ---
-<Base baslik={d.baslik} aciklama={d.ozet} dil={dil} noindex={false} ogTuru="article" ekJsonLd={[jsonLd]}>
+<Base baslik={dil === 'tr' ? d.baslik : m.etiket} aciklama={dil === 'tr' ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={dil !== 'tr'} ogTuru={dil === 'tr' ? 'article' : 'website'} ekJsonLd={dil === 'tr' ? [jsonLd] : []}>
   <article class="kapsayici py-8 sm:py-12">
     <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
-
+    {dil !== 'tr' ? <>
+      <h1>{m.etiket}</h1>
+      <VaazDilUyarisi dil={dil} slug={entry.id} />
+    </> : <>
     <div class="vaaz-yerlesim">
       <header class="vaaz-bas">
         <p class="etiket etiket-vurgu">{m.etiket}</p>
@@ -116,7 +120,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
           <ul role="list">
             {ilgili.map((v) => (
               <li>
-                <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}`}>
+                <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}/`}>
                   <span class="ilgili-kat">{katAd[v.data.kategori]?.[dil] ?? v.data.kategori}</span>
                   <span class="ilgili-baslik">{v.data.baslik}</span>
                   {v.data.kelime && <span class="ilgili-sure">{Math.max(1, Math.round(v.data.kelime / 180))} {m.okuma}</span>}
@@ -132,6 +136,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
         <a href={yol(dil, 'vaazlar')} class="baglanti-dugme">{m.geri} →</a>
       </footer>
     </div>
+    </>}
   </article>
 </Base>
 

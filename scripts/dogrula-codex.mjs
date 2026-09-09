@@ -21,6 +21,7 @@ if (build === 0) await run('test:web');
 else { results.push({ task: 'test:web (güncel build yok; atlandı)', code: 1 }); }
 // Web hatası, bağımsız güvenlik testlerinin çalışmasını engellemez.
 await run('test:kurallar');
+await run('test:veli-eposta');
 console.log('\nToplu sonuç:');
 for (const result of results) console.log(`${result.code === 0 ? 'GEÇTİ' : 'BAŞARISIZ'} — ${result.task}`);
 console.log('Bu komut yayın veya canlı veri değişikliği yapmaz.');

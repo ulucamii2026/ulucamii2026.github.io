@@ -10,7 +10,7 @@ type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
 type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string> };
 type Ogr = { ref: string; ad: string; soyad: string; veliler?: string[]; dil?: string; durum?: string; grup?: string; kayitRef?: string };
-type Aile = { eposta: string; ogrenciler: string[]; dil?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string;
+type Aile = { eposta: string; ogrenciler: string[]; dil?: string; iletisimDili?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string;
   /* Veli portalındaki «Ders kitabı ve materyal» kartının yanıtı: öğrenci ref'i → {secim, zaman} */
   kitapSecim?: Record<string, { secim: string; zaman: string }> };
 type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum?: string; not?: string };
@@ -346,7 +346,7 @@ export async function hocaEkrani(): Promise<void> {
         <ul class="liste">${S.aileler.map((f) => `<li><span class="buyu"><b>${esc(f.eposta)}</b><br><span class="kucuk">${esc(f.adSoyad || '')} · ${esc(DIL_ADI[f.dil || ''] || f.dil || '')} · ${esc((f.ogrenciler || []).map(ogrAdi).join(', '))}</span></span>
           <span class="rozet">${f.sifreVar ? 'şifre belirledi' : 'henüz girmedi'}</span>${f.sonGiris ? `<span class="kucuk">son giriş ${esc(tarihYaz(f.sonGiris))}</span>` : ''}
           <span class="kucuk">${(f.ogrenciler || []).map((r) => { const v = (f.kitapSecim || {})[r]; return `${esc(ogrAdi(r))}: <span class="rozet ${v ? (v.secim === 'var' ? 'ogrendi' : v.secim === 'fotokopi' ? 'gec' : 'mazeret') : ''}">${esc(v ? (KITAP_ADI[v.secim] || v.secim) : 'kitap yanıtı yok')}</span>`; }).join(' · ')}</span>
-          <button type="button" class="dugme dugme-ikincil" data-davet="${esc(f.eposta)}" data-dil="${esc(f.dil || 'tr')}">Davet gönder</button></li>`).join('') || '<li class="kucuk">Aile yok.</li>'}</ul>
+          <button type="button" class="dugme dugme-ikincil" data-davet="${esc(f.eposta)}" data-dil="${esc(f.iletisimDili || f.dil || '')}">Davet gönder</button></li>`).join('') || '<li class="kucuk">Aile yok.</li>'}</ul>
         <p data-ust-mesaj hidden class="not"></p>
         <h3>Kayıt defteri</h3>
         <p class="kucuk">Online kayıt defterindeki güncel öğrencileri (ad, soyad, veli e-postası, dil) portala aktarır; başka veri aktarılmaz. Var olan kayıtlar korunur.</p>
@@ -438,7 +438,9 @@ export async function hocaEkrani(): Promise<void> {
         if (ez.fr || od.fr) { const dd = kok.querySelector<HTMLDetailsElement>('form[data-form=odev] details'); if (dd) dd.open = true; }
         ustMesaj(`${onceki!.hafta}. haftanın ezber/ödevi forma kopyalandı; düzenleyip kaydedin.`, 'basari'); return; }
       if (el.dataset.davet) {
-        const ep = el.dataset.davet; const dil = el.dataset.dil || 'tr'; (el as HTMLButtonElement).disabled = true;
+        const ep = el.dataset.davet; const dil = el.dataset.dil || '';
+        if (!['tr', 'fr', 'en'].includes(dil)) { ustMesaj('Davet göndermeden önce velinin iletişim dilini doğrulayınız.', 'hata'); return; }
+        (el as HTMLButtonElement).disabled = true;
         a.languageCode = dil;
         try { await auth.sendSignInLinkToEmail(a, ep, { url: location.origin + (veri.veliYollari[dil] || veri.veliYollari.tr), handleCodeInApp: true }); }
         finally { a.languageCode = 'tr'; (el as HTMLButtonElement).disabled = false; }
@@ -546,7 +548,8 @@ export async function hocaEkrani(): Promise<void> {
       const mevcut = S.ogrenciler.find((o) => o.ref === k);
       const adAlanlari = mevcut && (mevcut as { adSabit?: boolean }).adSabit ? {} : { ad: trBaslik(al(s, 'Öğrenci adı')), soyad: trBuyuk(al(s, 'Öğrenci soyadı')) }; // adSabit: ad/soyad portalda düzeltildi, defterden ezilmez
       b.set(fs.doc(db, 'ogrenciler', k), { ...adAlanlari, veliler: fs.arrayUnion(ep), dil, kayitRef: al(s, 'Referans'), guncelleme: simdi, ...(mevcut ? {} : { durum: 'aktif', grup: '' }) }, { merge: true });
-      if (ep) b.set(fs.doc(db, 'aileler', ep), { ogrenciler: fs.arrayUnion(k), dil, adSoyad: trBaslik(al(s, 'Veli adı soyadı')), guncelleme: simdi }, { merge: true });
+      const iletisimDili = al(s, 'İletişim dili').toLowerCase();
+      if (ep) b.set(fs.doc(db, 'aileler', ep), { ogrenciler: fs.arrayUnion(k), dil, ...(['tr', 'fr'].includes(iletisimDili) ? { iletisimDili, iletisimDiliKaynagi: 'kayit-formu' } : {}), adSoyad: trBaslik(al(s, 'Veli adı soyadı')), guncelleme: simdi }, { merge: true });
     }
     await b.commit();
     const ogr = await kayitlar('ogrenciler');

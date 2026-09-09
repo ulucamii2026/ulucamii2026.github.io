@@ -267,7 +267,7 @@ export const tr: UipMetin = {
       { ad: 'Kılavuzun aslı (diyanet.be, 22 MB)', href: 'https://www.diyanet.be/Portals/0/xBlog/uploads/2026/2/13/2026UIPTanitimveBasvuruKilavuzu(1).pdf' },
       { ad: 'Belçika Diyanet Vakfı — eğitim bursu (Fitre-Zekât Fonu)', href: 'https://www.diyanet.be/Burs' },
       { ad: 'Diyanet İşleri Başkanlığı duyuruları', href: 'https://www.diyanet.gov.tr' },
-      { ad: 'Türkiye Diyanet Vakfı', href: 'https://www.diyanetvakfi.org.tr' },
+      { ad: 'Türkiye Diyanet Vakfı', href: 'https://tdv.org/tr-TR/' },
     ],
     ilgiliBaslik: 'İlgili burs: Diyanet Bursları (TDV)',
     ilgili: 'Türkiye Diyanet Vakfı’nın uluslararası öğrencilere yönelik “Diyanet Bursları” programı, imam hatip lisesi, ilahiyat lisans ve lisansüstü düzeylerinde ayrı bir başvuru takvimiyle yürütülür (2026 başvuruları 15 Ocak – 28 Şubat). Ayrıntı ve başvuru: diyanetburslari.tdv.org.',

@@ -16,11 +16,12 @@ const m = dil === 'tr'
 <IcerikSayfasi dil={dil} anahtar="uyelik" etiket={t('nav.uyelik')}>
   <div slot="yan" class="kart p-5">
     <p class="etiket etiket-vurgu">{m.hesap}</p>
-    <dl class="mt-3 grid gap-2 text-sm">
-      <div><dt class="etiket">{m.aidat}</dt><dd class="font-serif text-2xl font-bold leading-tight">{m.aidatTutar}</dd></div>
-      <div><dt class="etiket">{m.iban}</dt><dd class="mono text-lg font-medium select-all">{site.banka.iban}</dd></div>
-      <div class="grid grid-cols-2 gap-2"><div><dt class="etiket">{m.bic}</dt><dd class="mono">{site.banka.bic}</dd></div><div><dt class="etiket">{m.hesapAdi}</dt><dd>{site.banka.hesapAdi}</dd></div></div>
-      <div><dt class="etiket">{m.acik}</dt><dd class="mono">{m.acikOrnek}</dd></div>
+    <dl class="mt-3 grid grid-cols-2 gap-2 text-sm">
+      <div class="col-span-2"><dt class="etiket">{m.aidat}</dt><dd class="font-serif text-2xl font-bold leading-tight">{m.aidatTutar}</dd></div>
+      <div class="col-span-2"><dt class="etiket">{m.iban}</dt><dd class="mono text-lg font-medium select-all">{site.banka.iban}</dd></div>
+      <div><dt class="etiket">{m.bic}</dt><dd class="mono">{site.banka.bic}</dd></div>
+      <div><dt class="etiket">{m.hesapAdi}</dt><dd>{site.banka.hesapAdi}</dd></div>
+      <div class="col-span-2"><dt class="etiket">{m.acik}</dt><dd class="mono">{m.acikOrnek}</dd></div>
     </dl>
   </div>
   <div slot="yan" class="kart-kagit p-5">

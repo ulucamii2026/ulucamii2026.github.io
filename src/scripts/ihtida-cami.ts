@@ -91,8 +91,8 @@ export function camiSeciminiBaslat(form: HTMLFormElement) {
       if (kimlik.value === 'diger' && !/^[1-9]\d{3}$/.test(alan('postaKodu'))) hatalar.push(['camiDiger.postaKodu', m.postaHata]);
       if (farkli()) {
         sahitler.forEach(input => { if (!input.value.trim()) hatalar.push([input.name, m.sahitEksik]); });
-        if (sahitler[0].value.trim() && adNormalle(sahitler[0].value) === adNormalle(sahitler[1].value)) hatalar.push(['sahit.2', m.sahitAyni]);
       }
+      if (sahitSecim.checked && sahitler[0].value.trim() && adNormalle(sahitler[0].value) === adNormalle(sahitler[1].value)) hatalar.push(['sahit.2', m.sahitAyni]);
       return hatalar;
     },
     ozet: () => { const c = veri(); return [c.ad, c.adres, c.postaKodu, c.sehir].filter(Boolean).join(' · '); },

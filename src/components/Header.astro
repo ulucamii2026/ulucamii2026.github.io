@@ -37,9 +37,9 @@ const dogrudan: Madde[] = [L('namaz', namazKisa[dil]), L('iletisim')];
 const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
 const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
 ---
-<header class="vt-baslik sticky top-0 z-40 bg-(--zemin)/95 backdrop-blur border-b border-(--cizgi)">
+<header class:list={['vt-baslik sticky top-0 z-40 bg-(--zemin) border-b border-(--cizgi)', /^\/(tr|fr|en)\/$/.test(Astro.url.pathname) && 'ana-baslik']}>
   <div class="kilim-serit" aria-hidden="true"></div>
-  <div class="kapsayici flex items-center gap-3 py-2.5">
+  <div class="kapsayici flex items-center gap-3 py-3">
     <a href={yol(dil, 'anasayfa')} class="flex items-center gap-3 no-underline text-(--metin) hover:text-(--metin) min-w-0">
       <img src="/media/logo/ulu-camii-logo.svg" alt="" width="48" height="48" class="logo-amblem h-12 w-12 shrink-0" />
       <span class="leading-tight min-w-0">
@@ -114,4 +114,18 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
     </div>
   </nav>
 </header>
+
+<style>
+  header :global(button[aria-expanded]), header :global(#tema-dugme) { min-height: 44px; }
+  .ana-baslik > .kilim-serit { background: var(--vurgu-2); }
+  .ana-baslik nav > :global(a), .ana-baslik nav > div > button { color: var(--vurgu-2); }
+  @media (min-width: 1024px) {
+    .ana-baslik > .kapsayici { display: grid; grid-template-columns: minmax(0, 1fr) auto; row-gap: .75rem; padding-top: 1.1rem; padding-bottom: .65rem; }
+    .ana-baslik > .kapsayici > a { grid-column: 1; grid-row: 1; width: fit-content; }
+    .ana-baslik .logo-amblem { width: 56px; height: 56px; }
+    .ana-baslik > .kapsayici > div { grid-column: 2; grid-row: 1; }
+    .ana-baslik > .kapsayici > nav { grid-column: 1 / -1; grid-row: 2; margin: 0; padding-top: .5rem; border-top: 1px solid var(--cizgi); gap: 1rem; }
+    .ana-baslik > .kapsayici > nav > div > button { font-weight: 600; }
+  }
+</style>
 

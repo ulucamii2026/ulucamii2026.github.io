@@ -142,6 +142,7 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void): Kutu
   };
 
   const kutu: Kutu = { anahtar, veri: '', hataYaz, temizle: () => {} };
+  let islem = 0;
 
   const ciz = () => {
     const varMi = !!kutu.veri;
@@ -158,32 +159,42 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void): Kutu
   dosyaGirdi?.addEventListener('change', async () => {
     const dosya = dosyaGirdi.files?.[0];
     if (!dosya) return;
+    const sira = ++islem;
     hataYaz(null);
-    if (dosya.type && !/^image\//i.test(dosya.type)) { hataYaz(m.hataTur); dosyaGirdi.value = ''; return; }
+    if (dosya.type && !/^image\//i.test(dosya.type)) { kutu.temizle(); hataYaz(m.hataTur); degisti(); return; }
     if (dosya.size > AZAMI_GIRIS_MB * 1024 * 1024) {
+      kutu.temizle();
       hataYaz(doldur(m.hataBoyut, { mb: (dosya.size / 1024 / 1024).toFixed(1) }));
-      dosyaGirdi.value = '';
+      degisti();
       return;
     }
     if (durum) durum.textContent = m.isleniyor;
     kap.dataset.mesgul = '1';
     try {
-      kutu.veri = await gorseliKucult(dosya);
+      const veri = await gorseliKucult(dosya);
+      if (sira !== islem) return;
+      kutu.veri = veri;
       if (durum) durum.textContent = doldur(m.hazir, { boyut: baytBicim(veriBoyutu(kutu.veri)) });
     } catch {
+      if (sira !== islem) return;
       kutu.veri = '';
       if (durum) durum.textContent = '';
       hataYaz(m.hataOkunamadi);
     } finally {
-      kap.dataset.mesgul = '';
-      dosyaGirdi.value = '';                      // aynı dosya yeniden seçilebilsin
-      ciz();
-      degisti();
+      if (sira === islem) {
+        kap.dataset.mesgul = '';
+        dosyaGirdi.value = '';                    // aynı dosya yeniden seçilebilsin
+        ciz();
+        degisti();
+      }
     }
   });
 
   kutu.temizle = () => {
+    ++islem;                                     // bekleyen çözümleme eski görseli geri getiremez
     kutu.veri = '';
+    kap.dataset.mesgul = '';
+    if (dosyaGirdi) dosyaGirdi.value = '';
     if (durum) durum.textContent = '';
     hataYaz(null);
     ciz();
@@ -211,10 +222,15 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
   const cizgiler: Nokta[][] = [];
   let aktif: Nokta[] | null = null;
   let oran = 1;
+  let cizimEn = 0, cizimBoy = 0;
+  const cizimOlcegi = () => cizimEn && cizimBoy
+    ? Math.min(tuval.width / oran / cizimEn, tuval.height / oran / cizimBoy) : 1;
 
   const yenidenCiz = () => {
-    c.setTransform(oran, 0, 0, oran, 0, 0);
-    c.clearRect(0, 0, tuval.width / oran, tuval.height / oran);
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.clearRect(0, 0, tuval.width, tuval.height);
+    const olcek = oran * cizimOlcegi();
+    c.setTransform(olcek, 0, 0, olcek, 0, 0);
     c.lineWidth = 2.4; c.lineCap = 'round'; c.lineJoin = 'round';
     c.strokeStyle = IMZA_RENK; c.fillStyle = IMZA_RENK;
     cizgileriCiz(c);
@@ -249,11 +265,16 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
 
   const nokta = (e: PointerEvent): Nokta => {
     const k = tuval.getBoundingClientRect();
-    return { x: e.clientX - k.left, y: e.clientY - k.top };
+    const olcek = cizimOlcegi();
+    return {
+      x: Math.max(0, Math.min(cizimEn, (e.clientX - k.left) / olcek)),
+      y: Math.max(0, Math.min(cizimBoy, (e.clientY - k.top) / olcek)),
+    };
   };
 
   tuval.addEventListener('pointerdown', (e) => {
     if (tuval.hasAttribute('data-kapali')) return;
+    if (!cizgiler.length) { cizimEn = tuval.width / oran; cizimBoy = tuval.height / oran; }
     e.preventDefault();
     try { tuval.setPointerCapture(e.pointerId); } catch { /* yok say */ }
     aktif = [nokta(e)];
@@ -292,7 +313,7 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
     }
     const pay = 6;
     x0 = Math.max(0, x0 - pay); y0 = Math.max(0, y0 - pay);
-    x1 = Math.min(tuval.width / oran, x1 + pay); y1 = Math.min(tuval.height / oran, y1 + pay);
+    x1 = Math.min(cizimEn, x1 + pay); y1 = Math.min(cizimBoy, y1 + pay);
     const en = Math.max(8, x1 - x0), boy = Math.max(8, y1 - y0);
     const k = Math.min(2, IMZA_AZAMI_EN / en);
     const dis = document.createElement('canvas');
@@ -311,7 +332,7 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
   return {
     bosMu,
     png,
-    temizle: () => { cizgiler.length = 0; aktif = null; yenidenCiz(); cizildi(); },
+    temizle: () => { cizgiler.length = 0; aktif = null; cizimEn = 0; cizimBoy = 0; yenidenCiz(); cizildi(); },
     kilit: (kapali: boolean) => {
       if (kapali) tuval.setAttribute('data-kapali', '1'); else tuval.removeAttribute('data-kapali');
       tuval.setAttribute('aria-disabled', kapali ? 'true' : 'false');
@@ -372,7 +393,7 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
       k.hataYaz(eksik ? doldur(m.hataEksik, { ad: baslik }) : null);
       if (eksik) hatalar.push([ad, doldur(m.hataEksik, { ad: baslik })]);
     }
-    if (!imzaYok?.checked && imza?.bosMu()) {
+    if (!imzaYok?.checked && (!imza || imza.bosMu())) {
       if (imzaHata) { imzaHata.textContent = m.hataImza; imzaHata.hidden = false; }
       hatalar.push(['imzaYok', m.hataImza]);
     } else if (imzaHata) { imzaHata.textContent = ''; imzaHata.hidden = true; }

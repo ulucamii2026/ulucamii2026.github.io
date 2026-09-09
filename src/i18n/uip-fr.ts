@@ -240,7 +240,7 @@ export const fr: UipMetin = {
       { ad: 'Guide original (diyanet.be, 22 MB)', href: 'https://www.diyanet.be/Portals/0/xBlog/uploads/2026/2/13/2026UIPTanitimveBasvuruKilavuzu(1).pdf' },
       { ad: 'Fondation Diyanet de Belgique — bourse d’études (Fonds Fitre-Zekât)', href: 'https://www.diyanet.be/Burs' },
       { ad: 'Annonces de la Présidence des Affaires religieuses (Diyanet)', href: 'https://www.diyanet.gov.tr' },
-      { ad: 'Fondation Diyanet de Turquie (TDV)', href: 'https://www.diyanetvakfi.org.tr' },
+      { ad: 'Fondation Diyanet de Turquie (TDV)', href: 'https://tdv.org/tr-TR/' },
     ],
     ilgiliBaslik: 'Bourse connexe : Bourses Diyanet (TDV)',
     ilgili: 'Le programme « Bourses Diyanet » de la Fondation Diyanet de Turquie (TDV), destiné aux étudiants internationaux, se déroule selon un calendrier de candidature distinct, aux niveaux lycée imam-hatip, licence et études supérieures de théologie (candidatures 2026 : 15 janvier – 28 février). Détails et candidature : diyanetburslari.tdv.org.',

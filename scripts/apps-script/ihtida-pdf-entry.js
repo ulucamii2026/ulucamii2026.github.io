@@ -1,5 +1,6 @@
 import { ihtidaPaketiUret } from '../../public/admin/ihtida-paket.js';
 import { camiCoz } from '../../public/admin/cami-secimi.js';
+import { sahitOnerileri } from '../../public/admin/ek9-hazirlik.js';
 
 const ETIKET = {
   cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme' },
@@ -29,9 +30,7 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit) 
   });
   if (!cami) throw new Error('Başvuru camisi eksik veya geçersiz.');
   const teslimatYontemi = k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami'; // Eski satırlar cami teslimi varsayılır.
-  const sahitler = d.sahitler || (cami.id === 'ulucamii-marche'
-    ? [{ ad: k['Şahit 1'] || 'Rıdvan KAYAHAN' }, { ad: k['Şahit 2'] || 'Yeliz KAYAHAN' }]
-    : [{ ad: k['Şahit 1'] || '' }, { ad: k['Şahit 2'] || '' }]);
+  const sahitler = d.sahitler || sahitOnerileri({ ...k, 'Cami kimliği': cami.id }).map(ad => ({ ad }));
   const imza = gorseller.imza || '';
   const ek10Surumu = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
   const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';

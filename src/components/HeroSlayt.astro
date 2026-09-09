@@ -53,13 +53,8 @@ const MOBIL = '(max-width: 720px) and (orientation: portrait)';
       />
     </picture>
   ))}
-  <!-- Okunabilirlik katmanları: her karede sabit — açık görsellerde de beyaz metin okunur kalır.
-       4 Eylül 2026'da iki kez güçlendirildi. Ölçüm: altı karenin metin bölgesindeki EN AÇIK piksele
-       karşı ochre etiket rengi 3,46:1 kalıyordu — küçük metin için WCAG 1.4.3 AA sınırı 4,5:1'dir
-       (krem gövde metni zaten geçiyordu). Değerler ölçüle ölçüle seçildi; fotoğrafı gereğinden fazla
-       karartmamak için en düşük geçen ayar alındı. -->
-  <div class="absolute inset-0 bg-gradient-to-t from-(--color-ceviz-koyu) via-(--color-ceviz-koyu)/64 to-(--color-ceviz-koyu)/52" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-[linear-gradient(100deg,rgb(47_34_26/.8)_0%,rgb(47_34_26/.6)_52%,rgb(47_34_26/.2)_100%)]" aria-hidden="true"></div>
+  <!-- Metnin bulunduğu sol alan sabit koyulukta; fotoğraf sağ tarafta daha açık kalır. -->
+  <div class="hero-okunabilirlik absolute inset-0" aria-hidden="true"></div>
 </div>
 <div class="absolute z-10 bottom-5 right-3 sm:bottom-6 sm:right-4 flex items-center gap-1 rounded-full bg-(--color-ceviz-koyu)/45 backdrop-blur-[2px] px-1 py-0.5" id="hero-noktalar" role="group" aria-label={m.grup}>
   {SLAYTLAR.map((_n, i) => (
@@ -76,6 +71,8 @@ const MOBIL = '(max-width: 720px) and (orientation: portrait)';
 </div>
 
 <style is:global>
+  .hero-okunabilirlik { background: linear-gradient(90deg, rgb(20 28 28 / .88) 0%, rgb(20 28 28 / .82) 58%, rgb(20 28 28 / .22) 100%), linear-gradient(0deg, rgb(20 28 28 / .8), transparent 35%); }
+  @media (max-width: 767px) { .hero-okunabilirlik { background: rgb(20 28 28 / .8); } }
   .hero-kare { opacity: 0; transition: opacity 1.4s ease-in-out; }
   .hero-kare.aktif { opacity: 1; }
   @media (prefers-reduced-motion: no-preference) {

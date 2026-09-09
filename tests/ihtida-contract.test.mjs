@@ -84,6 +84,12 @@ test('Yeni EK-10 sürümü çizili imzanın aktarım iznini zorunlu kılar; sür
   assert.equal(c.ihtidaDogrulaV2(imzasiz).kod, 'onay-imza-aktarim-izni-gecersiz');
 });
 
+test('Ulu Camii başvurusunda aynı kişi iki şahit olarak kaydedilemez', () => {
+  const c = backend(), v = govde();
+  v.sahitler = [{ ad: 'Birinci Örnek' }, { ad: '  BİRİNCİ   ÖRNEK  ' }];
+  assert.equal(c.ihtidaDogrulaV2(v).tamam, false);
+});
+
 test('Başka cami kanonikleşir, iki farklı şahit ister ve yerel imzaları yedeklemez', async () => {
   const c = backend();
   const yabanci = govde();

@@ -13,8 +13,8 @@ export function ihtidaFormuBaslat() {
   const belgeMetin = JSON.parse(form.querySelector('script[data-metin-belge]')?.textContent || '{}') as BelgeMetinleri;
   const gorseller: GorselYonetici | null = gorselleriBaslat(form, belgeMetin);
   const cami = camiSeciminiBaslat(form);
-  // Taslak silinince görseller de gitmeli; çekirdek reset'i dosya kutularını bilmiyor.
-  form.querySelector('[data-taslak-sil]')?.addEventListener('click', () => gorseller?.sifirla());
+  // Yerel reset tamamlandıktan sonra imzasız tercihini ve görselleri birlikte sıfırla.
+  form.addEventListener('reset', () => queueMicrotask(() => gorseller?.sifirla()));
 
   const cekirdek = formuBaslat(form, {
     hazir: () => {
@@ -76,6 +76,8 @@ export function ihtidaFormuBaslat() {
         iletisim: [b.telefon, b.eposta, b.adres, b.postaKodu, b.sehir, b.ulke].filter(Boolean).join(' · '),
         teslimat: [etiket('teslimat.yontem', (v.teslimat as Veriler)?.yontem), ...((v.teslimat as Veriler)?.yontem === 'adres' ? [b.adSoyad, b.adres, b.postaKodu, b.sehir, b.ulke] : [])].filter(Boolean).join(' · '),
         din: String(b.oncekiDin ?? ''),
+        sebep: String(b.ihtidaSebebi ?? ''),
+        yeniIsim: String(b.yeniIsim ?? ''),
         toren: [secText('basvuran.torenDili'), b.torenTarihi].filter(Boolean).join(' · '),
         sahitler: v.sahitEkle === true ? [sahit['1'], sahit['2']].filter(Boolean).join(', ') : f.querySelector('[data-sahit-cami]')?.textContent?.trim() ?? '',
         belgeler: gorseller?.ozet() ?? '',

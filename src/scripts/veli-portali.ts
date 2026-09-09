@@ -398,8 +398,8 @@ export async function veliPortali(): Promise<void> {
     if (!durum) { kayitYokEkrani(); return; }
     panoCiz();
     if (onMesaj) kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(onMesaj)}</p>`);
-    if (durum.aile.dil !== dil) fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { dil, sonGiris: new Date().toISOString() }).catch(() => {});
-    else fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { sonGiris: new Date().toISOString() }).catch(() => {});
+    // Sayfayı başka dilde açmak kayıt formundaki iletişim tercihini değiştirmez.
+    fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { sonGiris: new Date().toISOString() }).catch(() => {});
   };
 
   /* Çocuk sekmeleri — WAI-ARIA «tabs» deseni. Pano her seçimde yeniden çizildiği için düğme

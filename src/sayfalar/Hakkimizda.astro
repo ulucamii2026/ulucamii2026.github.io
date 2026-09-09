@@ -20,13 +20,15 @@ const m = dil === 'tr'
   <div slot="yan" class="gorsel-cerceve">
     <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı' : dil === 'en' ? 'Interior of the mosque' : 'Intérieur de la mosquée'} widths={[360, 720]} sizes="360px" loading="lazy" />
   </div>
-  <dl slot="yan" class="kart p-5 grid gap-3 text-sm">
+  <div slot="yan" class="kart p-5 grid gap-3 text-sm">
     <p class="etiket etiket-vurgu">{m.kunye}</p>
+    <dl class="grid gap-3">
     <div><dt class="etiket">{m.kurulus}</dt><dd class="rakam text-2xl">1979</dd></div>
     <div><dt class="etiket">{m.bina}</dt><dd class="rakam text-2xl">1986</dd></div>
     <div><dt class="etiket">ASBL · KBO/BCE</dt><dd class="mono">{site.kbo}</dd></div>
-    <div><dd>✓ {m.taninma}</dd><dd>✓ {m.bagli}</dd></div>
-  </dl>
+    </dl>
+    <ul><li>✓ {m.taninma}</li><li>✓ {m.bagli}</li></ul>
+  </div>
   <section slot="alt" class="kapsayici pb-12">
     <div class="flex items-end justify-between gap-3 cetvel pt-4 mb-4"><p class="etiket etiket-vurgu">{m.foto}</p><a href={yol(dil, 'galeri')} class="text-sm font-semibold no-underline hover:underline">{m.galeri}<span aria-hidden="true"> →</span></a></div>
     <ul class="grid grid-cols-3 md:grid-cols-6 gap-2" role="list">

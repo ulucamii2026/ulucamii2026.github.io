@@ -90,6 +90,16 @@ test('53 sayfalık defter GAS ortamında timer veya Node olmadan PDF ve Word ür
   assert.ok(word.includes(Buffer.from('Sentetik Çağrı Örnek')));
 });
 
+test('Otomatik PDF boş ikinci şahidi tamamlarken ilk şahidi tekrarlamaz', async () => {
+  const { ctx } = ortam();
+  const bytes = await ctx.IhtidaPdf.uret({ ...k, 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': '' }, ctx.ihtidaGorselleriOku(), null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit);
+  const file = '.codex/cikti/ihtida/gas-sahit-tekrari.pdf';
+  writeFileSync(file, Buffer.from(bytes));
+  const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext -f 1 -l 1 ${file} -`], { encoding: 'utf8' });
+  assert.equal((metin.match(/Yeliz KAYAHAN/g) || []).length, 1);
+  assert.match(metin, /Rıdvan KAYAHAN/);
+});
+
 test('Eski kaydın EK-10 rızası yeni sürüme taşınmadan v1 şablonla korunur', async () => {
   const { ctx } = ortam();
   const eski = { ...k, 'EK-10 sürümü': '', 'İmza aktarım izni': '' };

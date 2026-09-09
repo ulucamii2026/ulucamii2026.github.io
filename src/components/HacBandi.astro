@@ -3,7 +3,7 @@
  *
  * Neden ayrı bir bant: hac ön kaydı bizim değil, Belçika Diyanet Vakfı'nın takvimine bağlı ve
  * kaçırılınca telafisi yok (kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre veriliyor).
- * Duyurular bölümüne kadar aşağı inmeyen ziyaretçi de son tarihi görsün diye hero'nun hemen altında.
+ * Ana sayfadaki hizmetlerin altında, başvuru bağlantısı ve son tarihle birlikte gösterilir.
  *
  * Son gün SABİT DEĞİL, tarihle karşılaştırılır: süre dolduğunda bant kendiliğinden basılmaz,
  * kimsenin elle kaldırması gerekmez. "Kalan gün" derleme anında hesaplanır; site her gün
@@ -73,14 +73,14 @@ const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(extern
   /* Kur'an kursu bandı kiremit; hac bandı İznik mavisi — iki süreli duyuru üst üste gelince
      ziyaretçi bunların ayrı işler olduğunu renkten anlasın. */
   .hac-bandi {
-    background: var(--color-iznik);
-    border-color: var(--color-iznik-koyu);
-    color: var(--color-krem);
+    background: color-mix(in srgb, var(--vurgu-2) 7%, var(--zemin));
+    border-color: var(--cizgi);
+    color: var(--metin);
   }
   .hac-rozet {
     display: inline-block;
-    background: var(--color-ochre);
-    color: var(--color-ceviz-koyu);
+    background: var(--zemin-3);
+    color: var(--metin);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -89,18 +89,18 @@ const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(extern
     border-radius: 999px;
   }
   .hac-dugme {
-    background: var(--color-krem);
-    color: var(--color-iznik-koyu);
+    background: var(--color-iznik);
+    color: #fff;
   }
   .hac-dugme:hover {
-    background: #fff;
-    color: var(--color-iznik-koyu);
+    background: var(--color-iznik-koyu);
+    color: #fff;
   }
   /* Koyu zemin üstünde bağlantı rengi (--vurgu-2) okunmuyor: krem + alt çizgi. */
   .hac-dis {
-    color: var(--color-krem);
+    color: var(--vurgu-2);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .hac-dis:hover { color: #fff; }
+  .hac-dis:hover { color: var(--metin); }
 </style>

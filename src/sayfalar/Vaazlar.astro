@@ -6,6 +6,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
+import VaazDilUyarisi from '../components/VaazDilUyarisi.astro';
 import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { katAd, katSira } from '../i18n/vaaz-kategori';
@@ -63,6 +64,7 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
 <Base baslik={m.baslik} aciklama={m.alt} dil={dil}>
   <div class="kapsayici py-8 sm:py-12">
     <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} />
+    {dil !== 'tr' ? <VaazDilUyarisi dil={dil} /> : <>
     <div class="vz-not" role="note" aria-label={notEtiket}>
       <svg class="vz-not-ikon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.6C10.4 5.2 8.4 4.5 6 4.5c-1 0-2 .1-3 .4v13.7c1-.3 2-.4 3-.4 2.4 0 4.4.7 6 2.1 1.6-1.4 3.6-2.1 6-2.1 1 0 2 .1 3 .4V4.9c-1-.3-2-.4-3-.4-2.4 0-4.4.7-6 2.1Z"/><path d="M12 6.6v13.7"/></svg>
       <div class="vz-not-metin">
@@ -91,7 +93,7 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
     <ul class="vz-izgara" role="list">
       {hepsi.map((v) => (
         <li class="vz-oge" data-kat={v.data.kategori}>
-          <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}`} class="vz-kart">
+          <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}/`} class="vz-kart">
             <span class="vz-kat">{katAd[v.data.kategori]?.[dil] ?? v.data.kategori}</span>
             <h2 class="vz-baslik">{v.data.baslik}</h2>
             {v.data.ozet && <p class="vz-ozet">{v.data.ozet}</p>}
@@ -105,6 +107,7 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
     </ul>
     <p class="vz-bos" hidden data-kategori={m.bulunamadi} data-arama={m.aramaBos}>{m.bulunamadi}</p>
     <p class="gorsel-gizli" role="status" aria-live="polite" data-sonuc={m.sonuc}></p>
+    </>}
   </div>
 </Base>
 
@@ -131,6 +134,7 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
   .vz-ara input::-webkit-search-cancel-button { display: none; }   /* yerine her tarayıcıda çalışan kendi düğmemiz */
   .vz-ara-sil { display: grid; place-items: center; width: 2rem; height: 2rem; margin-inline-start: -0.2rem; border: 0; border-radius: 50%; background: none; color: var(--metin-2); cursor: pointer; }
   .vz-ara-sil:hover { background: var(--zemin-2); color: var(--vurgu); }
+  .vz-ara-sil[hidden] { display: none; }
   .gorsel-gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .vz-filtre { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
   .vz-cip { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.3rem; padding: 0 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin-2); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
@@ -145,7 +149,7 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
   }
   .vz-say { font-size: 0.75rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
 
-  .vz-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+  .vz-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
   .vz-kart { display: flex; flex-direction: column; height: 100%; padding: 1.2rem 1.25rem 1.1rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); text-decoration: none; color: var(--metin); transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
   .vz-kart:hover { border-color: var(--vurgu); box-shadow: 0 6px 22px -12px color-mix(in oklab, var(--vurgu) 45%, transparent); transform: translateY(-2px); }
   .vz-kat { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--vurgu-2); }
@@ -210,5 +214,6 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
     arama?.addEventListener('input', uygula);
     aramaSil?.addEventListener('click', () => { if (arama) { arama.value = ''; arama.focus(); } uygula(); });
     arama?.addEventListener('keydown', (e) => { if (e.key === 'Escape' && arama.value) { arama.value = ''; uygula(); } });
+    uygula();
   }
 </script>

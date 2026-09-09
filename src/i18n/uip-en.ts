@@ -240,7 +240,7 @@ export const en: UipMetin = {
       { ad: 'Original guide (diyanet.be, 22 MB)', href: 'https://www.diyanet.be/Portals/0/xBlog/uploads/2026/2/13/2026UIPTanitimveBasvuruKilavuzu(1).pdf' },
       { ad: 'Diyanet Foundation of Belgium — education scholarship (Fitre-Zakat Fund)', href: 'https://www.diyanet.be/Burs' },
       { ad: 'Presidency of Religious Affairs (Diyanet) announcements', href: 'https://www.diyanet.gov.tr' },
-      { ad: 'Turkish Diyanet Foundation (TDV)', href: 'https://www.diyanetvakfi.org.tr' },
+      { ad: 'Turkish Diyanet Foundation (TDV)', href: 'https://tdv.org/tr-TR/' },
     ],
     ilgiliBaslik: 'Related scholarship: Diyanet Scholarships (TDV)',
     ilgili: 'The Turkish Diyanet Foundation’s (TDV) "Diyanet Scholarships" programme for international students runs on a separate application calendar, at imam-hatip high school, undergraduate and postgraduate theology levels (2026 applications: 15 January – 28 February). Details and application: diyanetburslari.tdv.org.',

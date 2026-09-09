@@ -1,0 +1,22 @@
+---
+import type { Dil } from '../i18n/ui';
+import { yol } from '../i18n/utils';
+interface Props { dil: Dil; slug?: string; }
+const { dil, slug } = Astro.props;
+const m = {
+  tr: { baslik: 'Vaazlar şu an yalnızca Türkçe', metin: 'Vaazları okumak ve indirmek için Türkçe bölümünü ziyaret edebilirsiniz.', dugme: 'Türkçe vaazları görüntüle', oku: 'Bu vaazı Türkçe oku' },
+  fr: { baslik: 'Les sermons sont actuellement disponibles uniquement en turc', metin: 'Pour les lire et les télécharger, passez à la version turque du site.', dugme: 'Voir les sermons en turc', oku: 'Lire ce sermon en turc' },
+  en: { baslik: 'Sermons are currently available only in Turkish', metin: 'To read and download them, switch to the Turkish version of the site.', dugme: 'View sermons in Turkish', oku: 'Read this sermon in Turkish' },
+}[dil];
+---
+<section class="vaaz-dil-uyarisi" aria-labelledby="vaaz-dil-baslik" data-vaaz-dil-uyarisi>
+  <h2 id="vaaz-dil-baslik">{m.baslik}</h2>
+  <p>{m.metin}</p>
+  <a class="dugme dugme-birincil" href={slug ? `/tr/vaaz/${slug}/` : yol('tr', 'vaazlar')} hreflang="tr">{slug ? m.oku : m.dugme}</a>
+</section>
+<style>
+  .vaaz-dil-uyarisi { margin-block: 2rem; padding-block: 1.5rem 2rem; border-block-end: 1px solid var(--cizgi); }
+  h2 { max-width: 34ch; font-family: var(--font-serif, Lora), serif; font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.3; text-wrap: balance; }
+  p { margin-block: 1rem 1.5rem; max-width: 65ch; color: var(--metin-2); font-size: 1rem; }
+  a { max-width: 100%; white-space: normal; text-align: center; }
+</style>

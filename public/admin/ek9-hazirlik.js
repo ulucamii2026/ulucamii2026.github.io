@@ -3,11 +3,12 @@ export function sahitOnerileri(kayit) {
   const adlar = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
   if ((kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche') return adlar;
   const yedekler = ['Rıdvan KAYAHAN', 'Yeliz KAYAHAN'];
-  const kullanilan = new Set(adlar.filter(Boolean).map(ad => ad.toLocaleLowerCase('tr')));
+  const normalle = ad => ad.trim().replace(/\s+/g, ' ').toLocaleLowerCase('tr');
+  const kullanilan = new Set(adlar.filter(Boolean).map(normalle));
   return adlar.map(ad => {
     if (ad) return ad;
-    const yedek = yedekler.find(isim => !kullanilan.has(isim.toLocaleLowerCase('tr'))) || '';
-    kullanilan.add(yedek.toLocaleLowerCase('tr'));
+    const yedek = yedekler.find(isim => !kullanilan.has(normalle(isim))) || '';
+    kullanilan.add(normalle(yedek));
     return yedek;
   });
 }

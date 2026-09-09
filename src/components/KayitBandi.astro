@@ -3,7 +3,7 @@
  *  Ders başlangıcından önce/sonra alt metin otomatik değişir; elle kaldırma gerekmez.
  *
  *  `ikincil`: aynı anda süreli ve acil BAŞKA bir bant (hac ön kaydı) yayındayken bu bant tam dolgu
- *  kiremit yerine nötr zemin + kiremit kenar biçimine geçer. İki tam dolgu bandın (İznik mavisi +
+ *  kiremit yerine nötr zemin + ince ayırıcı biçimine geçer. İki tam dolgu bandın (İznik mavisi +
  *  kiremit) hero'nun hemen altında üst üste çarpışması hem göze vuruyor hem aciliyet farkını
  *  siliyordu (4 Eylül 2026 tasarım denetimi). Kayıt yıl boyunca açık, hac ön kaydının son günü var:
  *  görsel ağırlık bu farkı yansıtır. */
@@ -64,7 +64,7 @@ const m = dil === 'tr' ? {
      duruyordu (VefatBandi ile aynı bant dili: üst çizgi + kâğıt zemin). */
   .kayit-ikincil {
     background: var(--zemin-2);
-    border-top: 2px solid var(--color-kiremit);
+    border-top: 1px solid var(--cizgi);
     border-bottom: 1px solid var(--cizgi);
   }
 </style>

@@ -33,9 +33,9 @@
 
 .ucf-bolum {
   background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose);
-  box-shadow: var(--shadow-kart); padding: 1.35rem 1.15rem 1.5rem; scroll-margin-top: 5.5rem;
+  padding: 1.5rem 1.15rem 1.75rem; scroll-margin-top: 5.5rem;
 }
-@media (min-width: 640px) { .ucf-bolum { padding: 1.75rem 1.75rem 1.9rem; } }
+@media (min-width: 640px) { .ucf-bolum { padding: 2rem; } }
 .ucf-bolum > h2 {
   display: flex; align-items: baseline; gap: 0.7rem; margin: 0 0 0.35rem; font-family: var(--font-serif);
   font-size: 1.35rem; line-height: 1.25; color: var(--metin);
@@ -46,7 +46,7 @@
 }
 .ucf-bolum > .bolum-not { margin: 0 0 1.1rem; color: var(--metin-2); font-size: 0.93rem; max-width: 66ch; }
 
-.ucf-izgara { display: grid; gap: 1.05rem 1.25rem; }
+.ucf-izgara { display: grid; gap: 1.4rem 1.5rem; }
 @media (min-width: 640px) { .ucf-izgara { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ucf-izgara .tam { grid-column: 1 / -1; } }
 
 [data-alan] { display: grid; gap: 0.35rem; align-content: start; }
@@ -57,7 +57,7 @@
 }
 [data-alan] .zorunlu { color: var(--vurgu); font-weight: 700; margin-left: 0.15rem; }
 [data-alan] .istege { font-weight: 400; color: var(--metin-2); font-size: 0.8rem; margin-left: 0.35rem; }
-.yardim { margin: 0; font-size: 0.82rem; color: var(--metin-2); line-height: 1.4; }
+.yardim { margin: 0; font-size: 0.875rem; color: var(--metin-2); line-height: 1.55; }
 .hata { margin: 0; font-size: 0.84rem; font-weight: 600; color: var(--form-hata); line-height: 1.35; }
 .hata::before { content: '⚠ '; }
 .sayac { margin: 0; font-size: 0.78rem; color: var(--metin-2); text-align: right; font-variant-numeric: tabular-nums; }
@@ -69,8 +69,8 @@
 
 .ucf input[type="text"], .ucf input[type="email"], .ucf input[type="tel"], .ucf input[type="date"],
 .ucf select, .ucf textarea {
-  width: 100%; min-height: 2.9rem; padding: 0.6rem 0.8rem; font: inherit; font-size: 1rem; color: var(--metin);
-  background: var(--zemin); border: 1.5px solid var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6);
+  width: 100%; min-height: 3.1rem; padding: 0.7rem 0.85rem; font: inherit; font-size: 1rem; color: var(--metin);
+  background: var(--zemin); border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .ucf textarea { min-height: 6.5rem; resize: vertical; line-height: 1.45; }
