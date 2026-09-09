@@ -159,7 +159,8 @@ export async function pdfUret(model, kaynaklar, pdfLib, fontkit) {
   });
   doc.setTitle('Ulu Camii - İhtida Defteri'); doc.setAuthor('Marche-en-Famenne Ulu Camii');
   doc.setSubject('Özel cami içi kayıt, belge ve teslim takibi');
-  return doc.save();
+  // Uzun defterlerde de GAS'ta bulunmayan setTimeout ile parçalara bölme.
+  return doc.save({ useObjectStreams: false, objectsPerTick: Infinity });
 }
 
 const xml = s => TEMIZ(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]);

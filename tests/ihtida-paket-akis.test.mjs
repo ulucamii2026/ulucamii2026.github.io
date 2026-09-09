@@ -76,6 +76,20 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı 
   assert.equal(sent.length, 3, 'Kuyruk tekrar çalışsa da üç e-posta tekrarlanmaz');
 });
 
+test('53 sayfalık defter GAS ortamında timer veya Node olmadan PDF ve Word üretir', async () => {
+  const { ctx } = ortam();
+  assert.equal(vm.runInContext('typeof setTimeout', ctx), 'undefined');
+  assert.equal(vm.runInContext('typeof Buffer', ctx), 'undefined');
+  const model = { surum: 1, guncelleme: '2026-09-09T10:00:00Z', kayitlar: [
+    { ref: 'IH-2099-0001', adSoyad: 'Sentetik Çağrı Örnek', durum: 'bekliyor' },
+  ] };
+  const bytes = await ctx.IhtidaDefteri.pdfUret(model, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit);
+  assert.equal((await PDFDocument.load(Buffer.from(bytes))).getPageCount(), 53);
+  const word = Buffer.from(ctx.IhtidaDefteri.docxUret(model));
+  assert.equal(word.readUInt32LE(0), 0x04034b50);
+  assert.ok(word.includes(Buffer.from('Sentetik Çağrı Örnek')));
+});
+
 test('Eski kaydın EK-10 rızası yeni sürüme taşınmadan v1 şablonla korunur', async () => {
   const { ctx } = ortam();
   const eski = { ...k, 'EK-10 sürümü': '', 'İmza aktarım izni': '' };
