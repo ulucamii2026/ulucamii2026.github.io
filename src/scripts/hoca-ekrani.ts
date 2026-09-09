@@ -5,6 +5,7 @@
  * Kişisel veri en azda tutulur (ad, soyad, veli e-postası, dil); kimlik numarası, adres, fotoğraf asla girilmez.
  */
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
+import { portalTercihleri } from '../lib/portal-tercihleri';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
@@ -110,7 +111,7 @@ export async function hocaEkrani(): Promise<void> {
           <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Bağlantı gönder</button></div>
         </form>
       </div>`;
-    const kayitli = localStorage.getItem('hocaEposta');
+    const kayitli = portalTercihleri.getItem('hocaEposta');
     if (kayitli) kok.querySelectorAll<HTMLInputElement>('input[name=eposta]').forEach((i) => { i.value = kayitli; });
   };
   const bagTamamlaEkrani = () => {
@@ -369,7 +370,7 @@ export async function hocaEkrani(): Promise<void> {
   /* ---------------------------------------------------------------- olaylar */
   const bagIleGir = async (eposta: string) => {
     const kb = await auth.signInWithEmailLink(a, eposta, location.href);
-    localStorage.setItem('hocaEposta', eposta); history.replaceState(null, '', sayfaAdresi);
+    portalTercihleri.setItem('hocaEposta', eposta); history.replaceState(null, '', sayfaAdresi);
     const h = await fs.getDoc(fs.doc(db, 'hocalar', kb.user.uid)).catch(() => null);
     if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(kb.user);
   };
@@ -385,7 +386,7 @@ export async function hocaEkrani(): Promise<void> {
       if (el.dataset.eylem === 'sifremiUnuttum') {
         const form = el.closest('form') as HTMLFormElement; const ep = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)) { mesaj(form, 'Geçerli bir e-posta yazın.', 'hata'); return; }
-        await auth.sendPasswordResetEmail(a, ep, { url: sayfaAdresi }); localStorage.setItem('hocaEposta', ep);
+        await auth.sendPasswordResetEmail(a, ep, { url: sayfaAdresi }); portalTercihleri.setItem('hocaEposta', ep);
         mesaj(form, `Şifre sıfırlama bağlantısı gönderildi: ${ep}. Bağlantıyı açıp yeni şifrenizi belirleyin, sonra giriş yapın.`, 'basari'); return;
       }
       if (el.dataset.sekme) { const ad = el.dataset.sekme; await sekmeyeGec(ad); kok.querySelector<HTMLElement>('#hoca-tab-' + ad)?.focus(); return; }
@@ -477,13 +478,18 @@ export async function hocaEkrani(): Promise<void> {
     const form = (ev.target as HTMLElement).closest<HTMLFormElement>('form[data-form]');
     if (!form) return;
     ev.preventDefault();
-    const fd = new FormData(form); const al = (k: string) => String(fd.get(k) || '').trim();
+    const fd = new FormData(form);
+    // Şifre aynen iletilir; boşluklar da şifrenin parçasıdır.
+    const al = (k: string) => {
+      const deger = String(fd.get(k) || '');
+      return k === 'sifre' || k === 'sifre2' ? deger : deger.trim();
+    };
     const dugmeler = form.querySelectorAll<HTMLButtonElement>('button'); dugmeler.forEach((b) => { b.disabled = true; });
     mesaj(form, '');
     try {
       switch (form.dataset.form) {
-        case 'giris': { const ep = al('eposta').toLowerCase(); localStorage.setItem('hocaEposta', ep); const kb = await auth.signInWithEmailAndPassword(a, ep, al('sifre')); await yukle(kb.user); break; }
-        case 'bag': { const ep = al('eposta').toLowerCase(); await auth.sendSignInLinkToEmail(a, ep, { url: sayfaAdresi, handleCodeInApp: true }); localStorage.setItem('hocaEposta', ep); mesaj(form, `Bağlantı gönderildi: ${ep}. E-postanızı (gereksiz klasörü dâhil) kontrol edin.`, 'basari'); break; }
+        case 'giris': { const ep = al('eposta').toLowerCase(); portalTercihleri.setItem('hocaEposta', ep); const kb = await auth.signInWithEmailAndPassword(a, ep, al('sifre')); await yukle(kb.user); break; }
+        case 'bag': { const ep = al('eposta').toLowerCase(); await auth.sendSignInLinkToEmail(a, ep, { url: sayfaAdresi, handleCodeInApp: true }); portalTercihleri.setItem('hocaEposta', ep); mesaj(form, `Bağlantı gönderildi: ${ep}. E-postanızı (gereksiz klasörü dâhil) kontrol edin.`, 'basari'); break; }
         case 'bagTamamla': await bagIleGir(al('eposta').toLowerCase()); break;
         case 'sifreBelirle': { const s1 = al('sifre'); if (s1.length < 8 || s1 !== al('sifre2')) { mesaj(form, 'Şifreler uyuşmuyor ya da 8 karakterden kısa.', 'hata'); break; }
           if (!a.currentUser) break; await auth.updatePassword(a.currentUser, s1); await fs.setDoc(fs.doc(db, 'hocalar', a.currentUser.uid), { sifreVar: true }, { merge: true }).catch(() => {}); await yukle(a.currentUser); break; }
@@ -559,7 +565,7 @@ export async function hocaEkrani(): Promise<void> {
 
   /* ---------------------------------------------------------------- başlangıç */
   if (auth.isSignInWithEmailLink(a, location.href)) {
-    const kayitli = (localStorage.getItem('hocaEposta') || '').toLowerCase();
+    const kayitli = (portalTercihleri.getItem('hocaEposta') || '').toLowerCase();
     if (kayitli) { try { await bagIleGir(kayitli); return; } catch (e) { girisEkrani(); mesaj(kok.querySelector('form[data-form=bag]'), hata(e), 'hata'); return; } }
     bagTamamlaEkrani(); return;
   }

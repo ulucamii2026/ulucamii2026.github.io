@@ -6,6 +6,7 @@
 import type { Dil } from '../i18n/ui';
 import { veliMetni, yerlestir, type VeliMetin } from '../i18n/veli';
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
+import { portalTercihleri } from '../lib/portal-tercihleri';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
@@ -138,7 +139,7 @@ export async function veliPortali(): Promise<void> {
           </div>
         </details>
       </div>`;
-    const kayitli = localStorage.getItem('veliEposta');
+    const kayitli = portalTercihleri.getItem('veliEposta');
     if (kayitli) kok.querySelectorAll<HTMLInputElement>('input[name=eposta]').forEach((i) => { i.value = kayitli; });
   };
 
@@ -472,14 +473,14 @@ export async function veliPortali(): Promise<void> {
     }
     const hedef = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem], [data-sec]');
     if (!hedef) return;
-    if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); localStorage.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
+    if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
     if (hedef.dataset.eylem === 'bildirVazgec') { duzenlenenBildirim = null; panoCiz(); return; }
     if (hedef.dataset.eylem === 'atla' && a.currentUser) { await panoyaGec(a.currentUser); return; }
     if (hedef.dataset.eylem === 'sifremiUnuttum') {
       const form = hedef.closest('form') as HTMLFormElement; const eposta = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();
       mesaj(form, '');
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(eposta)) { mesaj(form, m.hataEposta, 'hata'); return; }
-      try { mesgul(form, true); await auth.sendPasswordResetEmail(a, eposta, { url: sayfaAdresi }); localStorage.setItem('veliEposta', eposta); mesaj(form, yerlestir(m.sifreSifirlaGonderildi, { eposta }), 'basari'); }
+      try { mesgul(form, true); await auth.sendPasswordResetEmail(a, eposta, { url: sayfaAdresi }); portalTercihleri.setItem('veliEposta', eposta); mesaj(form, yerlestir(m.sifreSifirlaGonderildi, { eposta }), 'basari'); }
       catch (e) { mesaj(form, hataMetni(e), 'hata'); } finally { mesgul(form, false); }
       return;
     }
@@ -497,7 +498,12 @@ export async function veliPortali(): Promise<void> {
     const form = (ev.target as HTMLElement).closest<HTMLFormElement>('form[data-form]');
     if (!form) return;
     ev.preventDefault();
-    const fd = new FormData(form); const al = (k: string) => String(fd.get(k) || '').trim();
+    const fd = new FormData(form);
+    // Şifre aynen iletilir; boşluklar da şifrenin parçasıdır.
+    const al = (k: string) => {
+      const deger = String(fd.get(k) || '');
+      return k === 'sifre' || k === 'sifre2' ? deger : deger.trim();
+    };
     mesaj(form, '');
     try {
       mesgul(form, true);
@@ -505,7 +511,7 @@ export async function veliPortali(): Promise<void> {
         case 'giris': {
           const eposta = al('eposta').toLowerCase(); const sifre = al('sifre');
           if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(eposta)) throw { code: 'auth/invalid-email' };
-          localStorage.setItem('veliEposta', eposta);
+          portalTercihleri.setItem('veliEposta', eposta);
           const kb = await auth.signInWithEmailAndPassword(a, eposta, sifre);
           await panoyaGec(kb.user); break;
         }
@@ -513,7 +519,7 @@ export async function veliPortali(): Promise<void> {
           const eposta = al('eposta').toLowerCase();
           if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(eposta)) throw { code: 'auth/invalid-email' };
           await auth.sendSignInLinkToEmail(a, eposta, { url: sayfaAdresi, handleCodeInApp: true });
-          localStorage.setItem('veliEposta', eposta);
+          portalTercihleri.setItem('veliEposta', eposta);
           mesaj(form, yerlestir(m.bagGonderildi, { eposta }), 'basari'); break;
         }
         case 'bagTamamla': {
@@ -576,7 +582,7 @@ export async function veliPortali(): Promise<void> {
 
   const bagIleGir = async (eposta: string) => {
     const kb = await auth.signInWithEmailLink(a, eposta, location.href);
-    localStorage.setItem('veliEposta', eposta);
+    portalTercihleri.setItem('veliEposta', eposta);
     history.replaceState(null, '', sayfaAdresi);
     const aileSnap = await fs.getDoc(fs.doc(db, 'aileler', eposta)).catch(() => null);
     if (aileSnap && aileSnap.exists() && !(aileSnap.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(true);
@@ -585,7 +591,7 @@ export async function veliPortali(): Promise<void> {
 
   /* ---------------------------------------------------------------- başlangıç */
   if (auth.isSignInWithEmailLink(a, location.href)) {
-    const kayitli = (localStorage.getItem('veliEposta') || '').toLowerCase();
+    const kayitli = (portalTercihleri.getItem('veliEposta') || '').toLowerCase();
     if (kayitli) {
       try { await bagIleGir(kayitli); return; } catch (e) { girisEkrani(); mesaj(kok.querySelector('form[data-form=bag]') as HTMLElement, hataMetni(e), 'hata'); return; }
     }
