@@ -1,174 +1,109 @@
 ---
-/**
- * İhtida sayfasının «izleyerek öğrenme» bandı — Diyanet İşleri Başkanlığı'nın 37 bölümlük
- * «İslam Nedir?» serisi.
- *
- * ARAŞTIRMA SONUCU (8 Eylül 2026): Diyanet'in dijital video kataloğunda 3.180 video, 48 seri var
- * ve HEPSİ TÜRKÇEDİR. Fransızca video yoktur; tek İngilizce kayıt (what-is-islam-37_1-human,
- * 7MrLI0avPFw) YouTube'da 404 veriyor ve bu yüzden listeye alınmadı. Videoların altyazısı da
- * yalnız otomatik Türkçedir. Bu yüzden Fransızca/İngilizce sayfalarda bölüm dürüstçe
- * «bu seri Türkçedir» der ve okuru kendi dilindeki kütüphaneye yönlendirir.
- *
- * GİZLİLİK: sayfa din değiştirmeyle ilgilidir, yani GDPR md. 9 kapsamında özel nitelikli bir
- * konudur; sayfayı AÇMAK hiçbir üçüncü taraf isteği doğurmaz. Liste yalnız bağlantıdır (ytimg
- * küçük resmi bile kullanılmaz). Öne çıkan tek bölüm VideoCephe ile verilir: kapak görseli KENDİ
- * sunucumuzdadır, oynatıcı ancak ziyaretçi tıklayınca youtube-nocookie.com'dan yüklenir.
- *
- * Veri: src/data/diyanet-videolar.json (üretim: scripts/diyanet-hatti/videolar_uret.py,
- * canlılık denetimi oembed.py — yt-dlp bu makinede yanlış alarm veriyor).
+/** Dil bazında doğrulanmış Diyanet videoları. Kaynak denetimi: docs/IHTIDA-VIDEOLARI.md.
+ * Kapaklar yereldir; oynatıcı yalnız ziyaretçi istediğinde yüklenir.
  */
-import veri from '../data/diyanet-videolar.json';
-import VideoCephe from './VideoCephe.astro';
+import seri from '../data/diyanet-videolar.json';
+import enSeri from '../data/diyanet-videolar-en.json';
+import videolar from '../data/ihtida-videolari.json';
+import VideoDersi from './VideoDersi.astro';
 import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-
-/* Öne çıkan bölüm: 14. «Kelime-i Şehadet» — bu sayfaya gelen kişinin törende söyleyeceği
-   cümlenin ta kendisi. Kapak görseli KENDİ sunucumuzdadır (public/media/ihtida/), oynatıcı
-   ancak tıklanınca youtube-nocookie'den yüklenir → sayfa açılışında Google'a istek gitmez. */
-const ONE_CIKAN = { id: 'tX_NMZjTSc8', poster: '/media/ihtida/video-kelime-i-sehadet.webp', no: 14 };
-
 interface Props { dil: Dil }
 const { dil } = Astro.props;
-
-type Bolum = { id: string; baslik: string; sayfa: string; no: number; grup: string };
-const bolumler = veri.bolumler as Bolum[];
-const ekler = veri.ekler as Array<{ id: string; baslik: string; sayfa: string }>;
-
-const GRUP_SIRA = ['baslarken', 'inanc', 'ibadet', 'cagri', 'musluman'] as const;
-
+const liste = videolar[dil];
+const dersler = dil === 'en' ? enSeri.bolumler : seri.bolumler.map(b => ({ ...b, kaynak: b.sayfa, kanal: 'Diyanet Dijital', poster: `/media/ihtida/kapaklar/ders-${String(b.no).padStart(2, '0')}.webp` }));
+const ekDersler = seri.ekler.map((b, i) => ({ ...b, kaynak: b.sayfa, kanal: 'Diyanet Dijital', poster: `/media/ihtida/kapaklar/extra-${String(i + 1).padStart(2, '0')}.webp` }));
 const M = {
   tr: {
-    etiket: 'Ücretsiz video dersleri',
-    baslik: 'İzleyerek öğrenmek: «İslam Nedir?»',
-    giris:
-      'Diyanet İşleri Başkanlığı’nın hazırladığı otuz yedi bölümlük kısa video serisi, İslam’ı en baştan — insan ve din nedir sorusundan başlayıp iman esasları, ibadetler ve ahlak ilkeleriyle — anlatır. Bölümler birkaç dakikadır ve sırayla izlenmek üzere düzenlenmiştir.',
-    grup: {
-      baslarken: 'Başlarken', inanc: 'İnancın esasları', ibadet: 'İbadet',
-      cagri: 'İslam neyi çağırır', musluman: 'Müslümanın hâli',
-    },
-    oneCikanBaslik: 'Kelime-i Şehadet — 14. bölüm',
-    oneCikanAlt: 'Diyanet Dijital · Türkçe · birkaç dakika',
-    ekBaslik: 'Serinin kısa videoları',
-    dilNotu: null as string | null,
-    kutuphane: 'Okumayı yeğlerseniz: Diyanet Kütüphanesi',
-    not: 'Videolar Diyanet’in kendi sayfasında ve YouTube’daki «Diyanet Dijital» kanalında durur; listedeki bağlantı yeni sekmede oraya götürür. Bu sayfayı açmakla hiçbir bilginiz üçüncü bir şirkete gitmez: yukarıdaki kapak görseli bizim sunucumuzdadır ve oynatıcı ancak siz tıklarsanız, YouTube’un gizlilik güçlendirilmiş alanından yüklenir.',
+    baslik: 'İslam’ı videolarla tanıyın',
+    giris: 'Diyanet’in Türkçe videolarıyla şehadetin anlamını, İslam’ı ve iman esaslarını öğrenin. İzlemek için videonun üzerindeki oynat düğmesine dokunun.',
+    dil: 'Türkçe',
+    devam: 'Keşfetmeye devam edin',
+    seri: '“İslam Nedir?” serisinin 37 bölümünü göster',
+    grup: { baslarken: 'Başlarken', inanc: 'İnancın esasları', ibadet: 'İbadet', cagri: 'İslam neye çağırır?', musluman: 'Müslümanın hâli' },
+    ek: 'Serinin kısa videoları',
+    katalog: 'Diyanet’in video kataloğu',
+    kutuphane: 'Okumak isterseniz: Diyanet Kütüphanesi',
+    kaynakNotu: 'Videolar Diyanet yayınlarıdır. Kapaklar Ulu Camii için hazırlanmış temsili görsellerdir. Oynat düğmesine dokunana kadar video sağlayıcısına bağlantı kurulmaz.',
+    yardim: 'Video açılmıyor veya oturum açmanız isteniyorsa “YouTube’da aç” ya da “Kaynağında aç” bağlantısını deneyebilirsiniz. YouTube’un oturum kontrolü kaynak sayfasında da görünebilir.',
+    aciklama: '',
     dis: 'yeni sekmede açılır',
   },
   fr: {
-    etiket: 'Vidéos gratuites',
-    baslik: 'Apprendre en regardant : « Qu’est-ce que l’islam ? »',
-    giris:
-      'La Présidence des Affaires religieuses a produit une série de trente-sept courtes vidéos qui présentent l’islam depuis le début : l’être humain et la religion, puis les articles de foi, le culte et l’éthique. Chaque épisode dure quelques minutes et la série se regarde dans l’ordre.',
-    grup: {
-      baslarken: 'Pour commencer', inanc: 'Les articles de foi', ibadet: 'Le culte',
-      cagri: 'Ce à quoi l’islam appelle', musluman: 'La conduite du musulman',
-    },
-    oneCikanBaslik: 'La profession de foi — épisode 14 (en turc)',
-    oneCikanAlt: 'Diyanet Dijital · turc · quelques minutes',
-    ekBaslik: 'Capsules de la série',
-    dilNotu:
-      'Cette série est en turc et n’existe pas encore en français : le catalogue vidéo du Diyanet (plus de trois mille vidéos) est entièrement turcophone. En français, le Diyanet publie des livres — vous les trouverez, gratuits, dans la bibliothèque ci-dessous.',
-    kutuphane: 'En français : la bibliothèque du Diyanet',
-    not: 'Les vidéos restent sur le site du Diyanet et sur sa chaîne YouTube « Diyanet Dijital » ; les liens de la liste vous y emmènent dans un nouvel onglet. Consulter cette page n’envoie aucune information à une entreprise tierce : l’image de couverture ci-dessus est hébergée chez nous et le lecteur ne se charge, depuis le domaine « confidentialité renforcée » de YouTube, que si vous cliquez.',
+    baslik: 'Une parole à écouter en français',
+    giris: 'Découvrez un sermon prononcé en français par Ali Erbaş à la mosquée Yunus Emre de Strasbourg et publié par Diyanet Haber. Touchez le bouton de lecture pour regarder la vidéo ici.',
+    dil: 'Français',
+    devam: 'Pour aller plus loin',
+    seri: '', grup: {}, ek: '', katalog: '',
+    kutuphane: 'Découvrir l’islam : les livres du Diyanet en français',
+    kaynakNotu: 'Les vidéos sont publiées par le Diyanet. Les couvertures sont des illustrations créées pour Ulu Camii. Aucune connexion au fournisseur vidéo n’est établie avant votre clic sur Lecture.',
+    yardim: 'Si la vidéo ne démarre pas ou demande une connexion, essayez « Ouvrir sur YouTube » ou « Ouvrir à la source ». YouTube peut aussi demander une connexion sur le site source.',
+    aciklama: 'Il s’agit d’un sermon, et non d’un cours sur la conversion. Pour une introduction à l’islam en français, consultez aussi les livres gratuits du Diyanet ci-dessous.',
     dis: 'ouvre dans un nouvel onglet',
   },
   en: {
-    etiket: 'Free video lessons',
-    baslik: 'Learning by watching: “What is Islam?”',
-    giris:
-      'The Presidency of Religious Affairs produced a thirty-seven part series of short videos that introduces Islam from the beginning: the human being and religion, then the articles of faith, worship and ethics. Each episode runs a few minutes and the series is meant to be watched in order.',
-    grup: {
-      baslarken: 'Getting started', inanc: 'Articles of faith', ibadet: 'Worship',
-      cagri: 'What Islam calls for', musluman: 'How a Muslim lives',
-    },
-    oneCikanBaslik: 'The declaration of faith — episode 14 (in Turkish)',
-    oneCikanAlt: 'Diyanet Dijital · Turkish · a few minutes',
-    ekBaslik: 'Short clips from the series',
-    dilNotu:
-      'This series is in Turkish and does not yet exist in English: the Diyanet video catalogue — over three thousand videos — is entirely Turkish. In English the Diyanet publishes books, and you will find them free of charge in the library below.',
-    kutuphane: 'In English: the Diyanet library',
-    not: 'The videos stay on Diyanet’s own site and on its “Diyanet Dijital” YouTube channel; the links in the list open there in a new tab. Opening this page sends nothing to any third-party company: the cover image above is hosted by us, and the player loads — from YouTube’s privacy-enhanced domain — only if you click it.',
+    baslik: 'Discover Islam through video',
+    giris: 'Explore the declaration of faith, Islam and belief through Diyanet’s English-language videos. Press play on a video to watch it here.',
+    dil: 'English',
+    devam: 'Keep exploring',
+    seri: '',
+    grup: { baslarken: 'Getting started', inanc: 'The foundations of faith', ibadet: 'Worship', cagri: 'What Islam calls us to', musluman: 'Living as a Muslim' },
+    ek: '',
+    katalog: 'Explore all 37 English videos on What is Islam?',
+    kutuphane: 'Prefer reading? Diyanet books in English',
+    kaynakNotu: 'The videos are Diyanet publications. The covers are illustrations created for Ulu Camii. No connection to the video provider is made until you press play.',
+    yardim: 'If the video does not play or asks you to sign in, try “Open on YouTube” or “Open at source”. YouTube may also ask you to sign in on the source website.',
+    aciklama: '',
     dis: 'opens in a new tab',
   },
-} as const;
+};
 const m = M[dil];
+const grupBasliklari = dil === 'en' ? M.en.grup : M.tr.grup;
+const gruplar = ['baslarken', 'inanc', 'ibadet', 'cagri', 'musluman'] as const;
 ---
-
-<section id="diyanet-videolari" class="video-bant">
+<section id="diyanet-videolari" class="video-bant" data-video-dil={dil} data-video-grubu>
   <div class="kapsayici">
-    <p class="etiket etiket-vurgu">{m.etiket}</p>
-    <h2 class="bant-baslik">{m.baslik}</h2>
-    <p class="bant-giris">{m.giris}</p>
-    {m.dilNotu && <p class="dil-notu"><span aria-hidden="true">ⓘ</span> {m.dilNotu}</p>}
-
-    <div class="one-cikan">
-      <VideoCephe dil={dil} id={ONE_CIKAN.id} poster={ONE_CIKAN.poster} baslik={m.oneCikanBaslik} altyazi={m.oneCikanAlt} />
+    <div class="video-giris">
+      <h2 class="bant-baslik">{m.baslik}</h2>
+      <p class="bant-giris">{m.giris}</p>
     </div>
-
-    {GRUP_SIRA.map((g) => {
-      const liste = bolumler.filter((b) => b.grup === g);
-      if (!liste.length) return null;
-      return (
-        <>
-          <h3 class="bant-ara-baslik">{m.grup[g]}</h3>
-          <ol class="video-liste">
-            {liste.map((b) => (
-              <li>
-                <a href={b.sayfa} target="_blank" rel="noopener">
-                  <span class="no" aria-hidden="true">{b.no}</span>
-                  <span class="ad" lang="tr">{b.baslik}</span>
-                  <span class="sr-only"> ({m.dis})</span>
-                  <span class="ok" aria-hidden="true">↗</span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </>
-      );
-    })}
-
-    <h3 class="bant-ara-baslik">{m.ekBaslik}</h3>
-    <ul class="video-liste ek">
-      {ekler.map((b) => (
-        <li>
-          <a href={b.sayfa} target="_blank" rel="noopener">
-            <span class="ad" lang="tr">{b.baslik}</span>
-            <span class="sr-only"> ({m.dis})</span>
-            <span class="ok" aria-hidden="true">↗</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <p class="bant-eylem">
-      <a class="dugme dugme-ikincil" href={yol(dil, 'kutuphane')}>{m.kutuphane}</a>
-    </p>
-    <p class="bant-not">{m.not}</p>
+    <div class="one-cikan">
+      <VideoDersi {...liste[0]} dil={dil} dilAdi={m.dil} yardim={m.yardim} acik />
+    </div>
+    {m.aciklama && <p class="bant-giris">{m.aciklama}</p>}
+    {dil !== 'fr' && <div class="seri-dersleri" data-ders-serisi>
+      {gruplar.map(g => <section class="ders-grubu" aria-labelledby={`ders-grubu-${g}`}>
+        <h3 id={`ders-grubu-${g}`} class="bant-ara-baslik">{grupBasliklari[g]}</h3>
+        <div class="ders-listesi">
+          {dersler.filter(b => b.grup === g).map(b => <VideoDersi {...b} dil={dil} dilAdi={m.dil} yardim={m.yardim} />)}
+        </div>
+      </section>)}
+      {dil === 'tr' && <section class="ders-grubu" aria-labelledby="ek-dersler">
+        <h3 id="ek-dersler" class="bant-ara-baslik">{m.ek}</h3>
+        <div class="ders-listesi">
+          {ekDersler.map(b => <VideoDersi {...b} dil={dil} dilAdi={m.dil} yardim={m.yardim} />)}
+        </div>
+      </section>}
+    </div>}
+    <p class="bant-eylem"><a class="dugme dugme-ikincil" href={yol(dil, 'kutuphane')}>{m.kutuphane}</a></p>
+    <p class="bant-not">{m.kaynakNotu}</p>
   </div>
 </section>
 
 <style>
   .video-bant { border-top: 1px solid var(--cizgi); padding: 3.5rem 0 1rem; }
-  .bant-baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
-  .bant-giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
-  .dil-notu { max-width: 68ch; margin-top: 1rem; padding: 0.85rem 1rem 0.85rem 2.5rem; position: relative;
-    font-size: 0.9rem; line-height: 1.5; border: 1px solid var(--cizgi);
-    border-radius: calc(var(--radius-kose) * 0.5); background: var(--zemin-2); color: var(--metin-2); }
-  .dil-notu > span:first-child { position: absolute; left: 0.95rem; top: 0.8rem; color: var(--vurgu); font-size: 1.05rem; }
-  .one-cikan { max-width: 46rem; margin-top: 1.6rem; }
-  .bant-ara-baslik { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: var(--tracking-etiket);
-    text-transform: uppercase; color: var(--vurgu); margin: 2rem 0 0.7rem; }
-  .video-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
-  @media (min-width: 720px) { .video-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; } }
-  .video-liste a { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.7rem;
-    min-height: 2.9rem; padding: 0.5rem 0.85rem; text-decoration: none; color: var(--metin);
-    border: 1px solid var(--cizgi); border-radius: calc(var(--radius-kose) * 0.5); background: var(--zemin); }
-  .video-liste.ek a { grid-template-columns: 1fr auto; }
-  .video-liste a:hover, .video-liste a:focus-visible { border-color: var(--cizgi-etkilesim); background: var(--zemin-2); }
-  .video-liste .no { font-family: var(--font-mono); font-size: 0.78rem; color: var(--metin-2);
-    min-width: 1.6rem; text-align: right; font-variant-numeric: tabular-nums; }
-  .video-liste .ad { line-height: 1.35; }
-  .video-liste .ok { color: var(--metin-2); font-size: 0.85rem; }
+  .video-giris { display: grid; gap: 1rem 3rem; align-items: start; margin-bottom: 1.5rem; }
+  .bant-baslik { font-family: var(--font-serif); font-size: clamp(1.65rem, 1rem + 2vw, 2.6rem); line-height: 1.2; text-wrap: balance; margin: 0; }
+  .bant-giris { max-width: 70ch; color: var(--metin-2); margin: 0; line-height: 1.65; }
+  .one-cikan { width: 100%; }
+  .one-cikan + .bant-giris { margin-top: 1rem; }
+  .bant-ara-baslik { font-family: var(--font-serif); font-size: 1.5rem; color: var(--metin); margin: 2.5rem 0 .5rem; }
+  .ders-listesi { border-top: 1px solid var(--cizgi); }
   .bant-eylem { margin-top: 1.8rem; }
-  .bant-not { margin-top: 1.2rem; font-size: 0.85rem; color: var(--metin-2); max-width: 68ch; }
+  .bant-not { margin-top: 1.2rem; font-size: .875rem; color: var(--metin-2); max-width: 75ch; }
+  /* Kapak resmi tüm genişliği doldurur; başlık çizimin sakin sol alanında kalır. */
+  .video-bant :global(.video-golge) { background: linear-gradient(90deg, rgb(25 18 12 / .85), rgb(25 18 12 / .55) 57%, transparent 85%); }
+  .video-bant :global(.video-kapak-baslik) { left: 5%; right: auto; top: 50%; bottom: auto; transform: translateY(-50%); max-width: 57%; font-size: clamp(1rem, .7rem + 2.25vw, 2.7rem); line-height: 1.25; text-wrap: balance; }
+  .video-bant :global(.oynat-rozet) { left: 80%; width: clamp(3.25rem, 6vw, 5rem); height: clamp(3.25rem, 6vw, 5rem); }
+  @media (min-width: 900px) { .video-giris { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 </style>

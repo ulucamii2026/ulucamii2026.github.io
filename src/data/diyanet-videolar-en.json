@@ -1,0 +1,339 @@
+{
+  "denetim": "2026-09-09",
+  "kaynak": "https://whatis.islam.gov.tr/videos/en",
+  "bolumler": [
+    {
+      "id": "GwW8Oqo46VA",
+      "no": 1,
+      "kaynak": "https://whatis.islam.gov.tr/content/human-video",
+      "grup": "baslarken",
+      "poster": "/media/ihtida/kapaklar/ders-01.webp",
+      "baslik": "Human",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "hA9qsEs8BOg",
+      "no": 2,
+      "kaynak": "https://whatis.islam.gov.tr/content/religion-video",
+      "grup": "baslarken",
+      "poster": "/media/ihtida/kapaklar/ders-02.webp",
+      "baslik": "Religion",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "TbA0P4DwJDs",
+      "no": 3,
+      "kaynak": "https://whatis.islam.gov.tr/content/what-is-islam-video",
+      "grup": "baslarken",
+      "poster": "/media/ihtida/kapaklar/ders-03.webp",
+      "baslik": "Islam",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "J67bqFyTu0o",
+      "no": 4,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-what-is-islam",
+      "grup": "baslarken",
+      "poster": "/media/ihtida/kapaklar/ders-04.webp",
+      "baslik": "Faith",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "rHxw7Y8Fcuo",
+      "no": 5,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-in-allah-swt-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-05.webp",
+      "baslik": "Faith in Allah (swt)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "alz6cDM5u20",
+      "no": 6,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-in-angels-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-06.webp",
+      "baslik": "Faith in Angels",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "OXZd5nBp5Ww",
+      "no": 7,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-in-divine-books-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-07.webp",
+      "baslik": "Faith in Divine Books",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "lYqjhLNcMyg",
+      "no": 8,
+      "kaynak": "https://whatis.islam.gov.tr/content/final-divine-book-the-holy-qur-an-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-08.webp",
+      "baslik": "Final Divine Book: the Holy Qur’an",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "1uerouc6qKo",
+      "no": 9,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-in-prophets-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-09.webp",
+      "baslik": "Faith in Prophets",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "aZe9IlmC6eE",
+      "no": 10,
+      "kaynak": "https://whatis.islam.gov.tr/content/last-prophet-muhammad-mustafa-saw-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-10.webp",
+      "baslik": "Last Prophet: Muhammad Mustafa (saw)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "O_hddBwAcXY",
+      "no": 11,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-in-hereafter-akhirah-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-11.webp",
+      "baslik": "Faith in Hereafter(Akhirah)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "F4hWVN_Fz1Y",
+      "no": 12,
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-in-the-predestination-qadar-what-is-islam",
+      "grup": "inanc",
+      "poster": "/media/ihtida/kapaklar/ders-12.webp",
+      "baslik": "Faith in the Predestination (Qadar)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "8Dulgz_zWGo",
+      "no": 13,
+      "kaynak": "https://whatis.islam.gov.tr/content/awareness-of-worship-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-13.webp",
+      "baslik": "Awareness of Worship",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "RLKYz_hjZeA",
+      "no": 14,
+      "kaynak": "https://whatis.islam.gov.tr/content/kalimah-al-shahadah-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-14.webp",
+      "baslik": "Kalimah al-Shahadah",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "QkSqZJm9k0E",
+      "no": 15,
+      "kaynak": "https://whatis.islam.gov.tr/content/cleanliness-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-15.webp",
+      "baslik": "Cleanliness",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "WP5lXBa_zhE",
+      "no": 16,
+      "kaynak": "https://whatis.islam.gov.tr/content/wudu-ablution-and-ghusl-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-16.webp",
+      "baslik": "Wudu (Ablution) and Ghusl",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "bxCKUaYMD1I",
+      "no": 17,
+      "kaynak": "https://whatis.islam.gov.tr/content/prayer-salah-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-17.webp",
+      "baslik": "Prayer (Salah)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "plGnO6YVt-E",
+      "no": 18,
+      "kaynak": "https://whatis.islam.gov.tr/content/fasting-sawm-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-18.webp",
+      "baslik": "Fasting (Sawm)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "v6Fz7HPzB0M",
+      "no": 19,
+      "kaynak": "https://whatis.islam.gov.tr/content/almsgiving-zakat-and-charity-sadaqah-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-19.webp",
+      "baslik": "Almsgiving (Zakat) and Charity (Sadaqah)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "pbEoGxEL2ec",
+      "no": 20,
+      "kaynak": "https://whatis.islam.gov.tr/content/hajj-pilgrimage-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-20.webp",
+      "baslik": "Hajj (Pilgrimage)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "jTtEaQwBPjk",
+      "no": 21,
+      "kaynak": "https://whatis.islam.gov.tr/content/qurbani-sacrifice-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-21.webp",
+      "baslik": "Qurbani (Sacrifice)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "8OdkRvAiSm0",
+      "no": 22,
+      "kaynak": "https://whatis.islam.gov.tr/content/du-a-invocation-what-is-islam",
+      "grup": "ibadet",
+      "poster": "/media/ihtida/kapaklar/ders-22.webp",
+      "baslik": "Du’a (Invocation)",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "9L-4rOV5rls",
+      "no": 23,
+      "kaynak": "https://whatis.islam.gov.tr/content/islam-is-the-religion-of-good-morals-what-is-islam",
+      "grup": "cagri",
+      "poster": "/media/ihtida/kapaklar/ders-23.webp",
+      "baslik": "Islam is the Religion of Good Morals",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "QL0R3PZbxog",
+      "no": 24,
+      "kaynak": "https://whatis.islam.gov.tr/content/islam-is-the-religion-of-justice-what-is-islam",
+      "grup": "cagri",
+      "poster": "/media/ihtida/kapaklar/ders-24.webp",
+      "baslik": "Islam is the Religion of Justice",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "7VsK3r3e8i4",
+      "no": 25,
+      "kaynak": "https://whatis.islam.gov.tr/content/islam-is-the-religion-of-peace-and-serenity-what-is-islam",
+      "grup": "cagri",
+      "poster": "/media/ihtida/kapaklar/ders-25.webp",
+      "baslik": "Islam is the Religion of Peace and Serenity",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "AwrwD39BVwc",
+      "no": 26,
+      "kaynak": "https://whatis.islam.gov.tr/content/islam-is-the-religion-of-knowledge-and-wisdom-what-is-islam",
+      "grup": "cagri",
+      "poster": "/media/ihtida/kapaklar/ders-26.webp",
+      "baslik": "Islam is the Religion of Knowledge and Wisdom",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "pTJE8UClSx4",
+      "no": 27,
+      "kaynak": "https://whatis.islam.gov.tr/content/islam-commands-kindness-in-all-affairs-what-is-islam",
+      "grup": "cagri",
+      "poster": "/media/ihtida/kapaklar/ders-27.webp",
+      "baslik": "Islam Commands Kindness in All Affairs",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "PnCQnYPJPgU",
+      "no": 28,
+      "kaynak": "https://whatis.islam.gov.tr/content/islam-is-the-religion-of-mercy-what-is-islam",
+      "grup": "cagri",
+      "poster": "/media/ihtida/kapaklar/ders-28.webp",
+      "baslik": "Islam is the Religion of Mercy",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "Km32pslyqZs",
+      "no": 29,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-is-responsible-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-29.webp",
+      "baslik": "The Muslim is Responsible",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "xuzuPg5Yols",
+      "no": 30,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-is-kind-to-their-family-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-30.webp",
+      "baslik": "The Muslim is Kind to Their Family",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "bN8j1TNNGYg",
+      "no": 31,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-is-an-environmentalist-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-31.webp",
+      "baslik": "The Muslim is an Environmentalist",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "R-cycHE-Pyo",
+      "no": 32,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-never-oppresses-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-32.webp",
+      "baslik": "The Muslim never Oppresses",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "l2eHpXJTp7g",
+      "no": 33,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-is-honest-and-truthful-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-33.webp",
+      "baslik": "The Muslim is Honest and Truthful",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "5r5r4bUXI_Y",
+      "no": 34,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-is-grateful-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-34.webp",
+      "baslik": "The Muslim is Grateful",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "Ee0HExw6nm0",
+      "no": 35,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-asks-for-forgiveness-for-their-mistakes-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-35.webp",
+      "baslik": "The Muslim Asks for Forgiveness for Their Mistakes",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "h9B1ob807ck",
+      "no": 36,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-pursues-the-paths-to-heaven-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-36.webp",
+      "baslik": "The Muslim Pursues the Paths to Heaven",
+      "kanal": "Diyanet Publications"
+    },
+    {
+      "id": "Zi6UjRbfn9o",
+      "no": 37,
+      "kaynak": "https://whatis.islam.gov.tr/content/the-muslim-avoids-the-paths-to-hell-what-is-islam",
+      "grup": "musluman",
+      "poster": "/media/ihtida/kapaklar/ders-37.webp",
+      "baslik": "The Muslim Avoids the Paths to Hell",
+      "kanal": "Diyanet Publications"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "denetim": "2026-09-09",
+  "tr": [
+    {
+      "id": "tX_NMZjTSc8",
+      "baslik": "Kelime-i Şehadet",
+      "kaynak": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_14-kelime-i-sehadet/islam-nedir-/147/4311/tX_NMZjTSc8",
+      "kanal": "Diyanet Dijital",
+      "poster": "/media/ihtida/kapaklar/ders-14.webp"
+    },
+    {
+      "id": "xNtRAQyB_yo",
+      "baslik": "İslam",
+      "kaynak": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_3-islam/islam-nedir-/147/4300/xNtRAQyB_yo",
+      "kanal": "Diyanet Dijital",
+      "poster": "/media/ihtida/kapaklar/ders-03.webp"
+    },
+    {
+      "id": "R2DKaFxgDRA",
+      "baslik": "İman",
+      "kaynak": "https://dijital.diyanet.gov.tr/video/islam-nedir-37_4-iman/islam-nedir-/147/4301/R2DKaFxgDRA",
+      "kanal": "Diyanet Dijital",
+      "poster": "/media/ihtida/kapaklar/ders-04.webp"
+    }
+  ],
+  "en": [
+    {
+      "id": "RLKYz_hjZeA",
+      "baslik": "Kalimah al-Shahadah — the declaration of faith",
+      "kaynak": "https://whatis.islam.gov.tr/content/kalimah-al-shahadah-what-is-islam",
+      "kanal": "Diyanet Publications",
+      "poster": "/media/ihtida/kapaklar/ders-14.webp"
+    },
+    {
+      "id": "TbA0P4DwJDs",
+      "baslik": "Islam — What is Islam?",
+      "kaynak": "https://whatis.islam.gov.tr/content/what-is-islam-video",
+      "kanal": "Diyanet Publications",
+      "poster": "/media/ihtida/kapaklar/ders-03.webp"
+    },
+    {
+      "id": "J67bqFyTu0o",
+      "baslik": "Faith — What is Islam?",
+      "kaynak": "https://whatis.islam.gov.tr/content/faith-what-is-islam",
+      "kanal": "Diyanet Publications",
+      "poster": "/media/ihtida/kapaklar/ders-04.webp"
+    }
+  ],
+  "fr": [
+    {
+      "id": "4K-bpOKbYZw",
+      "baslik": "Un sermon en français — mosquée Yunus Emre de Strasbourg",
+      "kaynak": "https://www.diyanethaber.com.tr/video/prof-dr-ali-erbas-fransizca-hutbe-ditib-strazburg-merkez-yunus-emre-camii",
+      "kanal": "Diyanet Haber",
+      "poster": "/media/ihtida/kapaklar/fr-sermon.webp"
+    }
+  ],
+  "enKatalog": "https://whatis.islam.gov.tr/videos/en"
+}

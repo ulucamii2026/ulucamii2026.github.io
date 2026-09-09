@@ -1,0 +1,83 @@
+---
+import VideoCephe from './VideoCephe.astro';
+import type { Dil } from '../i18n/ui';
+interface Props {
+  id: string;
+  baslik: string;
+  poster: string;
+  kaynak: string;
+  kanal: string;
+  dil: Dil;
+  dilAdi: string;
+  yardim: string;
+  no?: number;
+  acik?: boolean;
+}
+const { id, baslik, poster, kaynak, kanal, dil, dilAdi, yardim, no, acik = false } = Astro.props;
+const metin = {
+  tr: { ac: 'Videoyu göster', kapat: 'Videoyu kapat' },
+  fr: { ac: 'Afficher la vidéo', kapat: 'Fermer la vidéo' },
+  en: { ac: 'Show video', kapat: 'Close video' },
+}[dil];
+---
+<details class="video-dersi" data-video-dersi data-ders-id={id} open={acik}>
+  <summary>
+    <img class="ders-kapak" src={poster} alt="" width="128" height="72" loading="lazy" decoding="async" />
+    <span class="ders-adi">{no && <span class="ders-no">{String(no).padStart(2, '0')}<span class="sr-only">.</span></span>}{baslik}</span>
+    <span class="ders-eylem"><span class="kapaliyken">{metin.ac}</span><span class="acikken">{metin.kapat}</span></span>
+    <svg class="ders-ok" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 9 6 6 6-6" /></svg>
+  </summary>
+  <div class="ders-icerik">
+    <VideoCephe id={id} baslik={baslik} poster={poster} kaynak={kaynak} dil={dil} altyazi={`${kanal} · ${dilAdi}`} yardim={yardim} />
+  </div>
+</details>
+
+<style>
+  .video-dersi { border-bottom: 1px solid var(--cizgi); }
+  summary { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 1rem; align-items: center; padding: 1rem 0; cursor: pointer; list-style: none; color: var(--metin); scroll-margin-top: 6rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: var(--vurgu); }
+  summary:focus-visible { outline: 3px solid var(--vurgu); outline-offset: 4px; }
+  .ders-kapak { width: 8rem; aspect-ratio: 16 / 9; height: auto; object-fit: cover; border-radius: var(--radius-kose); background: var(--color-ceviz-koyu); }
+  .ders-adi { font-family: var(--font-serif); font-size: clamp(1rem, .85rem + .45vw, 1.3rem); line-height: 1.45; }
+  .ders-no { display: inline-block; margin-right: .8rem; font-family: var(--font-mono); font-size: .78rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
+  .ders-eylem { font-size: .85rem; color: var(--metin-2); }
+  .acikken { display: none; }
+  details[open] .acikken { display: inline; }
+  details[open] .kapaliyken { display: none; }
+  details[open] .ders-ok { transform: rotate(180deg); }
+  .ders-icerik { padding-bottom: 1.5rem; }
+  @media (max-width: 639px) {
+    summary { grid-template-columns: auto minmax(0, 1fr) auto; gap: .75rem; }
+    .ders-kapak { width: 5rem; }
+    .ders-eylem { display: none; }
+    .ders-no { margin-right: .45rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('[data-video-dersi]').forEach(ders => {
+    ders.addEventListener('toggle', () => {
+      if (!ders.open) {
+        ders.querySelectorAll('[data-video-cephe]').forEach(v => v.dispatchEvent(new Event('video:sifirla')));
+        return;
+      }
+      // Aynı bölümde bir ders açık kalır; kapatılan iframe kaldırılarak ses de durur.
+      let oncekiKapandi = false;
+      ders.closest('[data-video-grubu]')?.querySelectorAll<HTMLDetailsElement>('[data-video-dersi][open]').forEach(diger => {
+        if (diger !== ders) {
+          oncekiKapandi = true;
+          diger.open = false;
+          diger.querySelectorAll('[data-video-cephe]').forEach(v => v.dispatchEvent(new Event('video:sifirla')));
+        }
+      });
+      // Büyük üst kapak kapanınca yeni seçilen ders sabit başlığın arkasında kalmasın.
+      if (oncekiKapandi) requestAnimationFrame(() => {
+        const baslik = ders.querySelector('summary');
+        if (ders.open && baslik && baslik.getBoundingClientRect().top < 90) {
+          baslik.scrollIntoView({ block: 'start', behavior: 'instant' });
+        }
+      });
+    });
+  });
+</script>

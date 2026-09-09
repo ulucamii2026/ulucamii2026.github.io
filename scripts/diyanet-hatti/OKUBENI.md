@@ -46,6 +46,9 @@ py -3.14 uret_tum.py         # -> diyanet-yayinlar.json  ->  src/data/ içine ko
 3. `videolar_uret.py` ikisini birleştirir, `- İslam Nedir?` son ekini başlıklardan atar, bölümleri
    1-37 numarasına göre beş gruba ayırır ve ölü kayıtları listeye almaz.
 
-**Ölçülmüş gerçek (8 Eylül 2026):** katalogda 3.180 video, 48 seri var ve **hepsi Türkçedir**.
-Fransızca video yoktur; tek İngilizce kayıt (`7MrLI0avPFw`) YouTube'da 404 verir; videoların
-altyazısı yalnız otomatik üretilmiş Türkçedir. Fransızca/İngilizce sayfalar bunu dürüstçe söyler.
+**9 Eylül 2026 düzeltmesi:** bu hat Türkçe dijital katalog içindir; buradan Diyanet’in
+tüm yayınlarının Türkçe olduğu sonucu çıkarılamaz. `whatis.islam.gov.tr/videos/en`
+adresinde 37 İngilizce video ve Diyanet Haber’de Fransızca hutbe doğrulandı.
+İhtida sayfasının dil bazlı seçkisi `src/data/ihtida-videolari.json` dosyasındadır;
+bu üretici seçkiyi değiştirmez. Kaynaklar ve oynatma sınırı: `docs/IHTIDA-VIDEOLARI.md`.
+oEmbed 200, başlık ve kanal bilgisini doğrular; oturumsuz oynatma garantisi değildir.
