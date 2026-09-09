@@ -60,7 +60,7 @@ function ihtidaPaketDurumIsle(e) {
 function ihtidaPaketKur() {
   var varMi = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === "ihtidaPaketKuyrukCalistir"; });
   if (!varMi) ScriptApp.newTrigger("ihtidaPaketKuyrukCalistir").timeBased().everyMinutes(1).create();
-  PropertiesService.getScriptProperties().setProperty("IHTIDA_PAKET_KURULU", "27");
+  PropertiesService.getScriptProperties().setProperty("IHTIDA_PAKET_KURULU", String(SURUM));
   console.log("İhtida PDF kuyruğu kuruldu.");
 }
 async function ihtidaPaketKuyrukCalistir() {
@@ -225,6 +225,7 @@ function ihtidaPaketOnayIsle(v) {
     ihtidaPaketHucre(v.ref, "Paket durumu", "Onaylanan son nüsha hazırlanıyor");
     ihtidaPaketHucre(v.ref, "Tam paket PDF", "");
     ihtidaPaketHucre(v.ref, "E-posta durumu", "Sırada");
+    if (typeof ihtidaDefteriKirlet === "function") ihtidaDefteriKirlet(v.ref);
   } catch (_) { return json({ ok: false, hata: "paket-onay-hatasi" }); }
   finally { lock.releaseLock(); }
   return json({ ok: true, paket: ihtidaPaketOzet(is) });

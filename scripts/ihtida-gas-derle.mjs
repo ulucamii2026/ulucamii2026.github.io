@@ -14,8 +14,9 @@ const assets = {
 const encoded = {};
 for (const [name, path] of Object.entries(assets)) encoded[name] = (await readFile(new URL(path, root))).toString('base64');
 const built = await build({ entryPoints: [fileURLToPath(new URL('scripts/apps-script/ihtida-pdf-entry.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaPdf', target: 'es2020', minify: true });
-const parts = await Promise.all(['scripts/apps-script/ulucamii-Kod-v27.gs', 'scripts/apps-script/ihtida-paket-isleri.gs', 'public/vendor/pdf-lib.min.js', 'public/vendor/fontkit.umd.min.js'].map(oku));
-const output = new URL('.codex/cikti/gas/ulucamii-v27.gs', root);
+const defter = await build({ entryPoints: [fileURLToPath(new URL('public/admin/ihtida-defteri.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaDefteri', target: 'es2020', minify: true });
+const parts = await Promise.all(['scripts/apps-script/ulucamii-Kod-v28.gs', 'scripts/apps-script/ihtida-paket-isleri.gs', 'scripts/apps-script/ihtida-defteri-isleri.gs', 'public/vendor/pdf-lib.min.js', 'public/vendor/fontkit.umd.min.js'].map(oku));
+const output = new URL('.codex/cikti/gas/ulucamii-v28.gs', root);
 await mkdir(new URL('.', output), { recursive: true });
-await writeFile(output, parts.join('\n;\n') + '\n;\n' + built.outputFiles[0].text + '\nvar IHTIDA_PDF_KAYNAKLARI = ' + JSON.stringify(encoded) + ';\n');
-console.log('GAS v27 derlendi; yalnız kod, açık şablonlar ve fontlar.');
+await writeFile(output, parts.join('\n;\n') + '\n;\n' + built.outputFiles[0].text + '\n;\n' + defter.outputFiles[0].text + '\nvar IHTIDA_PDF_KAYNAKLARI = ' + JSON.stringify(encoded) + ';\n');
+console.log('GAS v28 derlendi; yalnız kod, açık şablonlar ve fontlar.');

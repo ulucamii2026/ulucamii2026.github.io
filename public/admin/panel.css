@@ -156,6 +156,16 @@ details.katlanir[open] > summary::after { content: '▴'; }
 details.katlanir > summary:hover { color: var(--murekkep); }
 details.katlanir table { border: 0; border-top: 1px solid var(--cizgi); }
 details.katlanir .not { margin: 0; padding: .5rem .8rem .7rem; font-size: .82rem; color: var(--metin-2); border-top: 1px solid var(--cizgi); }
+#ihtida-defteri { margin-top: 1.5rem; }
+#ihtida-defteri > summary { min-height: 48px; font-size: .8rem; }
+#ihtida-defteri > .bilgi-kutu, #ihtida-defteri > .satir-arac, #ihtida-defteri > [data-defter-icerik] { margin: 1rem; }
+#ihtida-defteri [data-defter-icerik] section + section { margin-top: 1.75rem; }
+#ihtida-defteri h3 { overflow-wrap: anywhere; }
+#ihtida-defteri .kart { min-width: 0; }
+#ihtida-defteri .kart p { margin: .4rem 0; overflow-wrap: anywhere; }
+#ihtida-defteri .kart .dugme { margin-top: .6rem; }
+#ihtida-defteri .kartlar { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+#ihtida-defteri [data-defter-durum] { font-size: .85rem; color: var(--metin-2); overflow-wrap: anywhere; }
 .ikincil-izgara { display: grid; gap: .6rem; align-content: start; }
 
 /* ---------- Başvurular ---------- */

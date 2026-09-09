@@ -45,6 +45,7 @@ async function gasPost(veri) {
   if (!r.ok) throw new Error('Sunucuya ulaşılamadı.');
   return r.json();
 }
+import('/admin/ihtida-defteri-panel.js').then(({ ihtidaDefteriKur }) => ihtidaDefteriKur({ gasIstek, gasPost }));
 const paketOnaylari = new Map(); // Ağ cevabı kaybolunca aynı işlem ikinci kez gönderilmez.
 function paketOnayAnahtari(ref, veri) {
   const metin = JSON.stringify(veri), onceki = paketOnaylari.get(ref);

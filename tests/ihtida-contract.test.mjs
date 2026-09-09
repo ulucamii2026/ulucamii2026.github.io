@@ -14,7 +14,7 @@ import { ihtidaPaketiUret } from '../public/admin/ihtida-paket.js';
 import { dilekceUret } from '../public/admin/dilekce.js';
 import { camiCoz } from '../public/admin/cami-secimi.js';
 
-const source = readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v27.gs', import.meta.url), 'utf8');
+const source = readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v28.gs', import.meta.url), 'utf8');
 function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
