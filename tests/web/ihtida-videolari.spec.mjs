@@ -89,5 +89,8 @@ for (const dil of ['tr', 'fr', 'en']) {
     }
     expect(page.url()).toBe(`http://127.0.0.1:4401/${dil}/${yollar[dil]}/`);
     expect(context.pages()).toHaveLength(1);
+    // Sayfanın altındaki ertelenen kitap kartları önceki ekran genişliğini taşımamalı.
+    await page.setViewportSize({ width: 320, height: 900 });
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   });
 }

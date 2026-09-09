@@ -64,6 +64,8 @@ const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
 <style>
   /* 529 satır tek sayfada: görünmeyen satırların yerleşimi hesaplanmasın. */
   .kitap { padding: 0.95rem 1.1rem; display: grid; gap: 0.8rem; content-visibility: auto; contain-intrinsic-size: auto 96px; }
+  /* Ekran daralınca görünüm dışındaki kartların önceki genişliği korunmasın. */
+  .kitap { contain-intrinsic-width: none; min-width: 0; }
   /* Tailwind preflight'ta [hidden] display:none'dur ama .kitap kendi display'ini veriyor:
      süzgeç gizlemesi için açıkça bastırılmalı. */
   .kitap[hidden] { display: none; }
