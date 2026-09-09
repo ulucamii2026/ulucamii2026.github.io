@@ -1,6 +1,6 @@
 # İhtida tam PDF ve e-posta akışı — 9 Eylül 2026
 
-9 Eylül'de kullanıcı canlıya alma ve kontrollü gönderim doğrulamasına onay verdi. Yayın, mevcut Apps Script dağıtımı ve dernek GitHub hesabıyla yürütülür. Başlangıç canlı sürümü 23'tür; yeni kodun dosyada bulunması canlı sürüm kanıtı değildir. Sonuçlar aşağıdaki canlı doğrulama bölümüne kaydedilir.
+9 Eylül 2026'da kullanıcı onayıyla canlıya alındı ve gerçek gönderim zinciri doğrulandı. Apps Script sağlık cevabı `surum:25`, `ihtidaPaketHazir:true`; site ve admin aynı sürüme uygun olarak yayında. Sonuçlar aşağıdaki canlı doğrulama bölümündedir.
 
 ## Başvuru ve belge
 
@@ -56,3 +56,21 @@ Admin durum ekranı masaüstü ve mobil koyu temada sınandı; klavyeyle kapanma
 Son toplu `npm run dogrula:codex` çalışması başarılı: tip kontrolü 0 hata/0 uyarı; 867 sayfalık build; 16 ihtida/PDF, 48 tarayıcı ve 17 Firestore testi geçti. Aynı kontroller güncel `origin/main` tabanından hazırlanmış temiz yayın kopyasında da geçti. Kayıtlar: `.codex/cikti/dogrulama-ihtida-v25-son.log` ve `.codex/cikti/yayin-dogrulama.log`. Yerel testler gerçek alıcı kutusuna teslimi kanıtlamaz; canlı doğrulama ayrıca yapılır.
 
 Resmî teknik kaynaklar: [Apps Script V8 çalışma ortamı](https://developers.google.com/apps-script/guides/v8-runtime), [Brevo teslim olayları](https://developers.brevo.com/reference/get-email-event-report), [Brevo idempotency](https://developers.brevo.com/docs/heterogenous-versions-batch-emails).
+
+## Canlı doğrulama — 9 Eylül 2026
+
+- Dernek GitHub kimliği `ulucamii2026`, Google kimliği `ulucamii2026@gmail.com` doğrulandı. Güncel `origin/main` tabanında ayrı yayın kopyası kullanıldı; mevcut çalışma klasöründeki işler korundu.
+- Ana yayın commit'i `e2e9fc3`. [GitHub Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/34318323217) başarılı. Gerçek `ulucamii.be` sayfasında sürüm 25 form koruması ve ayrı posta adresi alanları görüldü.
+- Derlenmiş GAS dosyası editöre kaydedilip yeniden açılarak birebir karşılaştırıldı. `ihtidaPaketKur()` gerekli zamanlanmış çalışma izniyle başarıyla çalıştı. Mevcut `/exec` adresi korundu. Google'ın dağıtım sıra numarası 24, uygulamanın kendi sürümü 25'tir; bunlar farklı sayaçlardır.
+- Canlı form, açıkça **TEST OTOMASYON — gerçek başvuru değildir** adlı sentetik kişi, üzerinde TEST yazan görseller ve TEST çizimiyle gönderildi. Başvuran rolü yalnız derneğin kendi Gmail adresini kullandı; gerçek kişiye deneme gönderilmedi.
+- Arşiv PDF'si otomatik oluştu. Olağan altı sayfaya uzun ihtida sebebi için açıklama eki eklendi; deneme 7 sayfadır. İlk iki sayfa, imza aktarımı ve kurum düzeni görsel olarak incelendi. Asıl kullanıcı şablonuyla çerçeve eşleşmesi kontrol edildi.
+- `info@ulucamii.be` ve `imam@ulucamii.be` gelen kutuları salt okunur IMAP ile; `ulucamii2026@gmail.com` kutusu dernek Google oturumuyla kontrol edildi. Üç e-postadan PDF eki ayrı ayrı alındı.
+- Arşiv ve üç e-posta eki **4.749.019 bayt** ve aynı SHA-256 değerine sahip: `3fec0d124164b1b0895a48ce55c7465f7da60b5c44117c4d977494c2897c5407`.
+- Brevo, üç ileti için de `delivered` olayı verdi. Sağlayıcının olay raporuna yansıması gecikmeli oldu; bu sırada sistem doğru biçimde teslim teyidi bekledi. Dakikalık kuyruk sonraki kontrolde kaydı `tamam` yaptı; ek e-posta gönderilmedi.
+- Canlı admin panelindeki **Tam paket PDF** düğmesi aynı arşiv dosyasını gösterdi. **PDF ve e-posta durumu** penceresinde üç alıcı da **Alıcı sunucusuna teslim edildi** olarak doğrulandı.
+
+Özel yerel kanıtlar Git'e alınmaz: `.codex/cikti/ihtida-canli/` içinde arşiv ve üç gelen PDF, teslim olayları, form başarı ekranı ve yalnız sentetik başvuruyu gösteren admin ekranı vardır. Gerçek cihaz/Safari testleri bu yayına dahil değildir. Son nüsha onayı ve kesinti senaryoları yerel gerçek PDF/VM ve tarayıcı testlerinde sınandı; canlı deneme ön başvuru akışını kapsadı.
+
+## Bundan sonraki kullanım
+
+Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, admin panelinde açılır ve üç alıcıya gönderilir. Tören sonrasında **Başvurular → İhtida → Son nüshayı onayla ve gönder** ile gerçek tarih, adres ve şahitler kontrol edilir. Bu son onay yeni ortak PDF nüshasını üretip arşivler ve aynı üç adrese gönderir. Müşavirin ıslak imzası basılı belgede tamamlanır.

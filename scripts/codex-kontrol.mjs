@@ -85,7 +85,10 @@ try {
     const guardAt = source.indexOf('$camiScope =');
     assert(guardAt >= 0 && guardAt < source.indexOf('$ErrorActionPreference'), `${name} erken kapsam kontrolü eksik.`);
     assert(source.includes("$camiScope -ieq 'D:\\app\\ulucamii-site'"));
-    assert.match(source.slice(guardAt, source.indexOf('$ErrorActionPreference')), /\[ulucamii\][\s\S]*return/);
+    // SessionStart stdout'una düz bilgi metni yazılmaz; Codex bunu JSON sanıyordu.
+    const erkenDonus = source.slice(guardAt, source.indexOf('$ErrorActionPreference'));
+    assert.match(erkenDonus, /\{\s*return\s*\}/);
+    assert.doesNotMatch(erkenDonus, /Write-(?:Host|Output)/i);
   }
   console.log(`Codex proje ayarları, hesap ayrımı ve kancalar doğrulandı; ${entry.skills.length} beceri, 0 keşif hatası.`);
 } finally { await codex.close(); }

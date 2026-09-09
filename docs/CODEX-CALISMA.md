@@ -15,6 +15,16 @@ proje güveni tanımlandı. Mevcut sohbetin araç listesi kendiliğinden yenilen
 yerel Playwright MCP için bu klasörde yeni Codex oturumu açın.
 Genel `muhendislik` profilini seçmek gerekmez; burada daha dar bir araç seti vardır.
 
+9 Eylül güncellemesi: proje ayarlarında kullanılmayan Canva/Figma, sunum ve benzeri
+eklenti grupları bu klasör için kapatıldı; web/PDF araçları korundu. Katalog 115'ten
+68 etkin beceriye indi. 10.000 token bütçesiyle yeni gerçek Codex/Spark oturumunda
+beceri açıklamalarının kısaltılması uyarısı oluşmadı. Diğer projelerin eklenti
+ayarları değişmedi. Devam `.cmd` dosyasındaki artık mevcut olmayan profil seçimi
+kaldırıldı; komut bu klasörün ayarlarını doğrudan yükler. Eski açık oturuma yeni
+ayarları geçirmek için bir kez yeniden başlatmak gerekir.
+
+Kaynak: [Codex beceri kataloğu bütçesi](https://learn.chatgpt.com/docs/config-file/config-reference#skillsmax_context_tokens).
+
 Model, kullanıcıdaki mevcut seçimi devralır; bu projede muhakeme seviyesi `high`.
 Kişisel uygulama bağlayıcıları kapalıdır. Context7 güncel kütüphane belgeleri için
 korundu. Yeni bir tasarım aboneliği, ücretli servis veya yinelenen beceri kurulmadı.
