@@ -9,7 +9,7 @@ import fontkit from '@pdf-lib/fontkit';
 import sharp from 'sharp';
 import { ek10Uret } from '../public/admin/ek10.js';
 import { ek9Uret, sahitleriCoz } from '../public/admin/ek9.js';
-import { sahitOnerileri } from '../public/admin/ek9-hazirlik.js';
+import { sahitOnerileri, sahitUnvani } from '../public/admin/ek9-hazirlik.js';
 import { ihtidaPaketiUret } from '../public/admin/ihtida-paket.js';
 import { dilekceUret } from '../public/admin/dilekce.js';
 import { camiCoz } from '../public/admin/cami-secimi.js';
@@ -28,8 +28,15 @@ const govde = () => ({
 test('Şahit adı, imzası yokken de korunur; yalnız boş yer tamamlanır', () => {
   const sonuc = sahitleriCoz([{ ad: 'Birinci Örnek', imza: '' }], [{ ad: 'Yedek Örnek', imza: 'sahte' }]);
   assert.equal(sonuc[0].ad, 'Birinci Örnek'); assert.equal(sonuc[0].imza, ''); assert.equal(sonuc[1].ad, 'Yedek Örnek');
-  assert.deepEqual(sahitOnerileri({}), ['Rıdvan KAYAHAN', 'Yeliz KAYAHAN']);
-  assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Rıdvan KAYAHAN' }), ['Rıdvan KAYAHAN', 'Yeliz KAYAHAN']);
+  assert.deepEqual(sahitOnerileri({}), ['Rıdvan KAYAHAN', 'Ercan MOLA']);
+  assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Rıdvan KAYAHAN' }), ['Rıdvan KAYAHAN', 'Ercan MOLA']);
+  assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Ercan MOLA' }), ['Ercan MOLA', 'Rıdvan KAYAHAN']);
+  assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': 'Önceki Şahit' }), ['Yeliz KAYAHAN', 'Önceki Şahit']);
+  assert.deepEqual(sahitOnerileri({ 'Cami kimliği': 'namur-camii-namur' }), ['', '']);
+  assert.equal(sahitUnvani(' Rıdvan  KAYAHAN '), 'Din Görevlisi');
+  assert.equal(sahitUnvani('Ercan MOLA'), 'Dernek Başkanı');
+  assert.equal(sahitUnvani('Yeliz KAYAHAN'), '');
+  assert.equal(sahitUnvani('Ercan MOLA', 'namur-camii-namur'), '');
 });
 
 test('Teslim ve şahit seçimleri doğrulanır; önceki sürüm başvuruları korunur', () => {

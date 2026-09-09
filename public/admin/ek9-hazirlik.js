@@ -2,7 +2,7 @@
 export function sahitOnerileri(kayit) {
   const adlar = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
   if ((kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche') return adlar;
-  const yedekler = ['Rıdvan KAYAHAN', 'Yeliz KAYAHAN'];
+  const yedekler = ['Rıdvan KAYAHAN', 'Ercan MOLA'];
   const normalle = ad => ad.trim().replace(/\s+/g, ' ').toLocaleLowerCase('tr');
   const kullanilan = new Set(adlar.filter(Boolean).map(normalle));
   return adlar.map(ad => {
@@ -15,8 +15,14 @@ export function sahitOnerileri(kayit) {
 
 const imzaAnahtari = ad => {
   const isim = ad.trim().toLocaleLowerCase('tr').replace(/\s+/g, ' ');
-  return isim === 'rıdvan kayahan' ? 'ridvan' : isim === 'yeliz kayahan' ? 'yeliz' : '';
+  return isim === 'rıdvan kayahan' ? 'ridvan' : isim === 'ercan mola' ? 'ercan' : '';
 };
+
+export function sahitUnvani(ad, camiId = 'ulucamii-marche') {
+  if (camiId !== 'ulucamii-marche') return '';
+  const anahtar = imzaAnahtari(String(ad || ''));
+  return anahtar === 'ridvan' ? 'Din Görevlisi' : anahtar === 'ercan' ? 'Dernek Başkanı' : '';
+}
 
 export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
   return new Promise(coz => {
@@ -89,13 +95,16 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     const alanlar = sahitOnerileri(kayit).map((ad, i) => {
       const kap = document.createElement('fieldset');
       kap.innerHTML = `<legend>${i + 1}. şahit</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
-        <label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişinin şahitliğini ve kayıtlı imzasının bu belgeye eklenmesine onayını teyit ettim.</span></label><p class="not" data-imza-not></p>`;
+        <p class="not" data-sahit-unvan></p><label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişinin şahitliğini ve kayıtlı imzasının bu belgeye eklenmesine onayını teyit ettim.</span></label><p class="not" data-imza-not></p>`;
       const isim = kap.querySelector('input[type=text]');
       const onay = kap.querySelector('input[type=checkbox]');
       isim.value = ad;
       const yenile = () => {
         isim.setCustomValidity(isim.value.trim() ? '' : 'Şahidin adını soyadını yazın.');
         onay.checked = false;
+        const unvan = kap.querySelector('[data-sahit-unvan]');
+        unvan.textContent = sahitUnvani(isim.value, kayit['Cami kimliği']);
+        unvan.hidden = !unvan.textContent;
         onay.disabled = digerCami || !imzalar[imzaAnahtari(isim.value)];
         kap.querySelector('[data-imza-not]').textContent = onay.disabled
           ? (digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.' : 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.')

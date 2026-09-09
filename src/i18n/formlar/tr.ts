@@ -159,7 +159,7 @@ export const tr: FormMetinleri = {
       torenDili: 'Tören ve görüşme dili', dilTr: 'Türkçe', dilFr: 'Fransızca', dilEn: 'İngilizce', dilAr: 'Arapça',
       torenTarihi: 'Tarih tercihiniz', torenTarihiYardim: 'İsteğe bağlı; örnek: “hafta sonu” veya “Ekim başı”.',
       sahitler: 'Şahitler', sahitlerYardim: "İsterseniz bir veya iki şahit adı bildirebilirsiniz. Şahitlik ve imzalar tören sırasında teyit edilir; yalnızca ad yazılması imza yerine geçmez.",
-      sahitEkle: "Kendi şahidimi / şahitlerimi bildirmek istiyorum", sahitCami: "Şahitleri camimiz ayarlayacak. Yalnız bir şahit bildirirseniz ikinci şahidi camimiz tamamlayacak.",
+      sahitEkle: "Kendi şahidimi / şahitlerimi bildirmek istiyorum", sahitCami: "Varsayılan şahitler: Rıdvan KAYAHAN (Din Görevlisi) ve Ercan MOLA (Dernek Başkanı). Yalnız bir şahit bildirirseniz ikinci şahidi camimiz tamamlayacak.",
       sahit1: '1. şahit adı soyadı', sahit2: '2. şahit adı soyadı',
       nasilHaberdar: 'Bizi nasıl duydunuz?', ekNot: 'Eklemek istedikleriniz',
       ekNotYardim: 'Size nasıl ve hangi saatlerde ulaşmamızı istediğinizi (telefon, WhatsApp, e-posta) buraya yazabilirsiniz. Ailevî ya da çevresel bir baskı endişeniz varsa bunu da yazın: görüşmeyi ve töreni ona göre, dar bir çevrede ve sessizce planlarız.'

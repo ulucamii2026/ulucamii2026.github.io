@@ -72,6 +72,9 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı 
   assert.ok(cells.get('E-posta durumu').includes('Alıcı sunucusuna teslim edildi'));
   assert.equal((await PDFDocument.load(bytes)).getPageCount(), 6);
   writeFileSync('.codex/cikti/ihtida/gas-otomatik-paket.pdf', bytes);
+  const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', 'pdftotext -f 1 -l 1 .codex/cikti/ihtida/gas-otomatik-paket.pdf -'], { encoding: 'utf8' });
+  for (const text of ['Rıdvan KAYAHAN', 'Din Görevlisi', 'Ercan MOLA', 'Dernek Başkanı']) assert.ok(metin.includes(text), text);
+  assert.doesNotMatch(metin, /Yeliz/);
   await ctx.ihtidaPaketIsle(k.Referans);
   assert.equal(sent.length, 3, 'Kuyruk tekrar çalışsa da üç e-posta tekrarlanmaz');
 });

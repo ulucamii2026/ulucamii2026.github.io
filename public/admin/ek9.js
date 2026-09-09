@@ -12,6 +12,7 @@
  * ÜST kenardan). pdf-lib alt kenardan ölçtüğü için `ust()` ile çevrilir.
  */
 import { camiCoz } from './cami-secimi.js';
+import { sahitUnvani } from './ek9-hazirlik.js';
 
 // --- Şablon ölçüleri (pt, üstten) --------------------------------------------
 const S1 = {
@@ -200,6 +201,7 @@ export async function ek9Uret(girdi) {
   yazOrtali(s1, adSoyad, S1.isim.x0, S1.isim.x1, kaligrafik ? S1.isim.taban : 258, adBoyut, ust1, fontIsim, kaligrafik ? MAVI : SIYAH);
 
   const sahitler = sahitleriCoz(girdi.sahitler || [], girdi.yedekImzalar || []);
+  const resmi = await belge.embedFont(girdi.fontBytes, { subset: true });
   const alanlar = [S1.sahitSol, S1.sahitSag];
   for (let i = 0; i < 2; i++) {
     const s = sahitler[i];
@@ -216,14 +218,15 @@ export async function ek9Uret(girdi) {
       kutuyaCiz(s1, im, x, alan.etiketTaban + 8, kutuG, kutuH, ust1);
     }
     if (s.ad) {
+      const unvan = sahitUnvani(s.ad, seciliCami.id);
       const boyut = siganBoyut(s.ad, elYazisi ? 12 : 7, alan.x1 - alan.x0 + 40);
       if (boyut < 6) girdi.uyar?.('yazi-kucuk');
-      yazOrtali(s1, s.ad, alan.x0 - 20, alan.x1 + 20, alan.etiketTaban - 12, boyut, ust1);
+      yazOrtali(s1, s.ad, alan.x0 - 20, alan.x1 + 20, alan.etiketTaban - (unvan ? 25 : 12), boyut, ust1);
+      if (unvan) yazOrtali(s1, unvan, alan.x0 - 20, alan.x1 + 20, alan.etiketTaban - 11, 8, ust1, resmi, SIYAH);
     }
   }
 
   // Yetkili adı ve unvanı resmî siyah yazıyla hazırdır; ıslak imza alanı boş kalır.
-  const resmi = await belge.embedFont(girdi.fontBytes, { subset: true });
   const resmiKalin = await belge.embedFont(girdi.fontKalinBytes || girdi.fontBytes, { subset: true });
   const yetkiliAd = girdi.yetkiliAd ?? 'Salih GÖR';
   const yetkiliUnvan = girdi.yetkiliUnvan ?? 'T.C. Brüksel Büyükelçiliği Sosyal İşler Müşaviri';

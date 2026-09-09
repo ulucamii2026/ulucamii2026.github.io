@@ -176,7 +176,7 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
   await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Rıdvan KAYAHAN', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi' });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
-    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'TEST_R', yeliz: 'TEST_Y' }).then(s => window.sonuc = s);
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'TEST_R', ercan: 'TEST_E', yeliz: 'TEST_Y' }).then(s => window.sonuc = s);
   });
   await page.getByLabel('Belgeye yazılacak ad soyad (kimlikteki gibi)').fill('Deniz Élodie Örnek');
   await page.getByLabel('İlk sayfadaki isim').selectOption('sade');
@@ -187,6 +187,21 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
   await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(1)).not.toBeChecked();
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
   await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Rıdvan KAYAHAN', imza: 'TEST_R' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade' });
+});
+
+test('Yeni yerel şahit Ercan Mola olur; unvanlar görünür ve Yeliz imzası ona aktarılmaz', async ({ page, context }) => {
+  await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4401' ? r.continue() : r.abort());
+  await page.goto('/tr/ihtida-basvuru/');
+  await page.evaluate(async () => {
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan:'TEST_R', yeliz:'TEST_Y' });
+  });
+  await expect(page.locator('#ek9-sahit-0')).toHaveValue('Rıdvan KAYAHAN');
+  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Ercan MOLA');
+  await expect(page.locator('[data-sahit-unvan]')).toHaveText(['Din Görevlisi', 'Dernek Başkanı']);
+  await expect(page.locator('.ek9-onay input').nth(1)).toBeDisabled();
+  await page.locator('#ek9-sahit-1').fill('Başka Örnek Şahit');
+  await expect(page.locator('[data-sahit-unvan]').nth(1)).toBeHidden();
 });
 
 

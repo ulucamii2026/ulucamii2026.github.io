@@ -22,7 +22,8 @@ async function kurGeciciOturum(page) {
 function paketHazirlamaModulYaz(page, moduleBody) {
   return page.route('**/admin/ek9-hazirlik.js', (route) => route.fulfill({
     contentType: 'application/javascript',
-    body: `export async function ek9HazirlikAc() { return ${moduleBody}; }`
+    body: `export async function ek9HazirlikAc() { return ${moduleBody}; }
+      export function sahitUnvani() { return ''; }`
   }));
 }
 
