@@ -39,6 +39,51 @@ async function gasIstek(islem, parametreler) {
   throw sonHata || new Error('Arka uca ulaşılamadı');
 }
 
+async function gasPost(veri) {
+  if (!SIRLAR?.gas) throw new Error('Yönetici oturumu bulunamadı.');
+  const r = await fetch(GAS, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ ...veri, anahtar: SIRLAR.gas }) });
+  if (!r.ok) throw new Error('Sunucuya ulaşılamadı.');
+  return r.json();
+}
+const paketOnaylari = new Map(); // Ağ cevabı kaybolunca aynı işlem ikinci kez gönderilmez.
+function paketOnayAnahtari(ref, veri) {
+  const metin = JSON.stringify(veri), onceki = paketOnaylari.get(ref);
+  if (onceki?.metin === metin) return onceki.anahtar;
+  const anahtar = crypto.randomUUID(); paketOnaylari.set(ref, { metin, anahtar }); return anahtar;
+}
+async function paketDurumAc(ref) {
+  const pencere = document.createElement('dialog');
+  pencere.className = 'ek9-hazirlik'; pencere.setAttribute('aria-labelledby', 'paket-durum-baslik');
+  pencere.innerHTML = `<h2 id="paket-durum-baslik">PDF ve e-posta durumu</h2><p data-paket-ozet role="status">Kontrol ediliyor…</p><div data-paket-alicilar></div><div data-paket-pdf></div><p>“Teslim edildi”, alıcının e-posta sunucusunun kabulünü belirtir; kişinin okuduğu anlamına gelmez.</p><div class="ek9-eylemler"><button type="button" class="dugme" data-paket-yenile>Durumu yenile</button><button type="button" class="dugme" data-paket-tekrar>Başarısız işlemleri yeniden dene</button><button type="button" class="dugme" data-paket-kapat>Kapat</button></div>`;
+  const eskiOdak = document.activeElement;
+  document.body.append(pencere); pencere.showModal();
+  pencere.addEventListener('close', () => { pencere.remove(); eskiOdak?.focus(); }, { once: true });
+  pencere.querySelector('[data-paket-kapat]').onclick = () => pencere.close();
+  const yenile = async () => {
+    const ozet = pencere.querySelector('[data-paket-ozet]');
+    try {
+      const j = await gasIstek('ihtida-paket-durum', { ref });
+      if (!j.ok) throw new Error(j.hata || 'Durum alınamadı.');
+      const p = j.paket;
+      if (!p) { ozet.textContent = 'Bu eski başvuru için otomatik paket yok. Son nüshayı onaylayarak hazırlayabilirsiniz.'; return; }
+      const durumlar = { sirada: 'Hazırlanmayı bekliyor', hazirlaniyor: 'PDF hazırlanıyor', hazir: 'PDF hazır', 'teslim-takibi': 'PDF hazır · e-postalar izleniyor', tamam: 'PDF hazır · bütün alıcı sunucularına teslim edildi', hata: 'İşlem tamamlanamadı' };
+      const teslim = { sirada: 'Sırada', gonderiliyor: 'Gönderiliyor', 'saglayici-kabul': 'Gönderildi · teslim teyidi bekleniyor', 'teslim-edildi': 'Alıcı sunucusuna teslim edildi', 'teslim-edilemedi': 'Teslim edilemedi', 'gonderim-hatasi': 'Gönderim başarısız', belirsiz: 'Sonuç belirsiz · tekrar göndermeden önce kontrol gerekli' };
+      ozet.textContent = `${ref} · ${durumlar[p.durum] || p.durum}${p.sayfa ? ` · ${p.sayfa} sayfa` : ''}${p.hata ? ' · ' + p.hata : ''}`;
+      pencere.querySelector('[data-paket-alicilar]').innerHTML = (p.alicilar || []).map(a => `<p><strong>${kacir(a.eposta)}</strong><br>${kacir(teslim[a.durum] || a.durum)}</p>`).join('');
+      pencere.querySelector('[data-paket-pdf]').innerHTML = p.pdfId ? `<button type="button" class="dugme birincil" data-pdf="${kacir(p.pdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)}.pdf">Arşivdeki tam PDF’yi aç</button>` : '';
+      pencere.querySelector('[data-pdf]')?.addEventListener('click', e => formPdfAc(e.currentTarget));
+    } catch (h) { ozet.textContent = 'Kontrol edilemedi: ' + h.message; }
+  };
+  pencere.querySelector('[data-paket-yenile]').onclick = yenile;
+  pencere.querySelector('[data-paket-tekrar]').onclick = async e => {
+    const b = e.currentTarget; b.disabled = true;
+    try { const j = await gasPost({ tur: 'ihtida-paket-tekrar', ref }); if (!j.ok) throw new Error(j.hata); await yenile(); }
+    catch (h) { pencere.querySelector('[data-paket-ozet]').textContent = h.message; }
+    finally { b.disabled = false; }
+  };
+  await yenile();
+}
+
 /* ---- Defterdeki ham form kodları panelde Türkçe okunur ----
    Form, seçenekleri kod olarak gönderir (kiz/erkek, anne/baba/vasi, yeni/devam, tr/fr…); defterde de
    kod durur. Kart ve «Tüm bilgiler» tablosu bu kodları etikete çevirir; bilinmeyen değer olduğu gibi kalır. */
@@ -682,11 +727,16 @@ function basvuruCiz() {
     if (eposta && eposta.includes('@')) araclar.push(`<a class="dugme" href="mailto:${kacir(eposta)}">E-posta</a>`);
     if (pdf.startsWith('http')) araclar.push(pdfDugmesi(pdf, `${al(r, iRef) || 'form'} - ${ad}.pdf`, 'Form PDF', 'dugme'));
     if (aktifTur === 'ihtida' && al(r, iRef)) {
-      araclar.push(`<button class="dugme birincil" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
+      const paketUrl = al(r, sut(b, 'tam paket pdf'));
+      if (paketUrl.startsWith('http')) araclar.push(pdfDugmesi(paketUrl, `Ihtida Paketi ${al(r, iRef)}.pdf`, 'Tam paket PDF', 'dugme birincil'));
+      araclar.push(`<button class="dugme" type="button" data-paket-durum="${kacir(al(r, iRef))}">PDF ve e-posta durumu</button>`);
+      araclar.push(`<button class="dugme" type="button" data-ihtida-paket="${kacir(al(r, iRef))}">Son nüshayı onayla ve gönder</button>`);
+      araclar.push(`<button class="dugme" type="button" data-ek9="${kacir(al(r, iRef))}">EK-9 belgesi üret</button>`);
       // v23: kimlik görüntüleri resmî dosya içindir; panelde ayrı bir pencerede açılıp basılır.
       araclar.push(`<button class="dugme" type="button" data-belgeler="${kacir(al(r, iRef))}">Kimlik ve vesikalık</button>`);
       // Müşavirliğe gidecek C4 zarfın 1. belgesi: mühtedinin imzalı dilekçesi.
       araclar.push(`<button class="dugme" type="button" data-dilekce="${kacir(al(r, iRef))}">Dilekçe</button>`);
+      araclar.push(`<button class="dugme" type="button" data-ek10="${kacir(al(r, iRef))}">EK-10 Açık Rıza</button>`);
     }
     const eskiSurumler = eskiler.length ? `<details class="eski-surum"><summary>Önceki sürümler (${eskiler.length})</summary><table>${
       eskiler.map((e) => {
@@ -717,8 +767,11 @@ function basvuruCiz() {
     : '';
   $('basvuru-not').hidden = !duzeltilenVar;
   liste.querySelectorAll('[data-ek9]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
+  liste.querySelectorAll('[data-ihtida-paket]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
+  liste.querySelectorAll('[data-paket-durum]').forEach((d) => d.addEventListener('click', () => paketDurumAc(d.dataset.paketDurum)));
   liste.querySelectorAll('[data-belgeler]').forEach((d) => d.addEventListener('click', () => ihtidaBelgeleriAc(d)));
   liste.querySelectorAll('[data-dilekce]').forEach((d) => d.addEventListener('click', () => dilekceUretimi(d)));
+  liste.querySelectorAll('[data-ek10]').forEach((d) => d.addEventListener('click', () => ek10Uretimi(d)));
   liste.querySelectorAll('[data-pdf]').forEach((d) => d.addEventListener('click', () => formPdfAc(d)));
   $('csv').disabled = false;
 }
@@ -831,8 +884,8 @@ async function formPdfAc(dugme) {
 }
 
 /* ---------------- EK-9 İhtida Belgesi (resmî şablon üzerine) ----------------
-   Belgeyi düzenleyen makam camidir; şahit imzası verilmemişse din görevlisinin
-   (ve gerekiyorsa eşinin) imzasıyla tamamlanır. İmza görselleri yalnız şifreli
+   Belge Müşavirlik imzasına hazırlanır; şahit adı ve imza kullanımı her belge için
+   panelde teyit edilir. İmza görselleri yalnız şifreli
    sır paketinden gelir — hiçbir açık adreste durmaz. */
 const EK9_ETIKET = {
   cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme', kadın: 'Kadın / Femme' },
@@ -935,17 +988,20 @@ async function ek9Hazirla() {
   }
   if (!ek9Kaynak) {
     const getirBaytlari = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
-    const [sablon, font, fontKalin] = await Promise.all([
+    const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi] = await Promise.all([
       getirBaytlari('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
       getirBaytlari('/fonts/Lora-Regular.ttf'),
       getirBaytlari('/fonts/Lora-Bold.ttf'),
+      getirBaytlari('/fonts/GreatVibes-Regular.ttf'),
+      getirBaytlari('/fonts/Caveat-Medium.ttf'),
     ]);
-    ek9Kaynak = { sablon, font, fontKalin };
+    ek9Kaynak = { sablon, font, fontKalin, fontKaligrafi, fontElYazisi };
   }
 }
 
 async function ek9Uretimi(dugme) {
-  const ref = dugme.dataset.ek9;
+  const paketMi = Boolean(dugme.dataset.ihtidaPaket);
+  const ref = dugme.dataset.ihtidaPaket || dugme.dataset.ek9;
   const eskiMetin = dugme.textContent;
   const durumYaz = (metin) => { dugme.textContent = metin; };
   dugme.disabled = true;
@@ -958,6 +1014,26 @@ async function ek9Uretimi(dugme) {
     if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
     const k = j.kayit || {};
 
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    const basvuranImza = j.basvuranImza || j.gorseller?.imza || '';
+    const beyan = basvuranImza ? ek9Tarih(k['Zaman damgası']) : bugunTR();
+    const isoTarih = beyan.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    const hazirlik = await ek9HazirlikAc(k, (SIRLAR && SIRLAR.imzalar) || {}, paketMi ? {
+      paket: true, gonder: true, imzali: Boolean(basvuranImza), beyanTarihi: isoTarih ? `${isoTarih[3]}-${isoTarih[2]}-${isoTarih[1]}` : '',
+      belgeTuru: j.gorseller?.kimlikArka ? 'kimlik' : '',
+    } : {});
+    if (!hazirlik) { durumYaz(eskiMetin); dugme.disabled = false; return; }
+    if (paketMi) {
+      durumYaz('Paket arşive ve gönderim sırasına alınıyor…');
+      const anahtar = paketOnayAnahtari(ref, hazirlik);
+      const cevap = await gasPost({ tur: 'ihtida-paket-onay', ref, hazirlik, islemAnahtari: anahtar });
+      if (!cevap.ok) throw new Error(cevap.hata || 'Paket kaydedilemedi.');
+      await paketDurumAc(ref);
+      durumYaz(eskiMetin);
+      dugme.disabled = false;
+      return;
+    }
+
     let vesikalik = j.vesikalik || '';
     if (!vesikalik) {
       durumYaz('Fotoğraf seçin…');
@@ -966,23 +1042,28 @@ async function ek9Uretimi(dugme) {
     }
     durumYaz('Belge üretiliyor…');
 
-    const imzalar = (SIRLAR && SIRLAR.imzalar) || {};
-    const yedekler = [];
-    if (imzalar.ridvan) yedekler.push({ ad: 'Rıdvan KAYAHAN', imza: imzalar.ridvan });
-    if (imzalar.yeliz) yedekler.push({ ad: 'Yeliz KAYAHAN', imza: imzalar.yeliz });
-
     /* Vesikalik verildigi halde gomulemezse (WEBP/HEIC gibi bir bicim tarayicida da
        cozulemediyse) belge sessizce fotografsiz cikmasin. */
     const ek9Uyarilari = [];
-    const bytes = await ek9Modul.uret({
+    const uret = paketMi ? (await import('/admin/ihtida-paket.js')).ihtidaPaketiUret : ek9Modul.uret;
+    let ek10SablonBytes;
+    if (paketMi) {
+      const rizaSablonu = await fetch('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf');
+      if (!rizaSablonu.ok) throw new Error('EK-10 şablonu alınamadı.');
+      ek10SablonBytes = new Uint8Array(await rizaSablonu.arrayBuffer());
+    }
+    const bytes = await uret({
       uyar: (kod) => ek9Uyarilari.push(kod),
       pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
       sablonBytes: ek9Kaynak.sablon, fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
+      fontKaligrafiBytes: ek9Kaynak.fontKaligrafi, fontElYazisiBytes: ek9Kaynak.fontElYazisi,
+      isimYazisi: hazirlik.isimYazisi, alanYazisi: hazirlik.alanYazisi,
       veri: {
-        adSoyad: k['Adı Soyadı'] || '',
+        ref, dil: String(k['Form dili'] || 'fr').trim().toLowerCase(),
+        adSoyad: hazirlik.adSoyad,
         belgeNo: '',                                   // Müşavirlik/Müftülük doldurur
-        belgeTarihi: bugunTR(),
-        duzenleyen: 'Marche-en-Famenne Ulu Camii',
+        belgeTarihi: '',
+        duzenleyen: '',
         cinsiyet: ek9Etiket('cinsiyet', k['Cinsiyet']),
         ogrenim: ek9Etiket('ogrenim', k['Öğrenim durumu']),
         anneAdi: k['Anne adı'] || '',
@@ -992,27 +1073,33 @@ async function ek9Uretimi(dugme) {
         medeniHali: ek9Etiket('medeniHali', k['Medeni hali']),
         meslek: k['Mesleği'] || '',
         uyruk: k['Uyruk'] || '',
-        tcKimlik: k['T.C. Kimlik No'] || '',
+        tcKimlik: '',                                  // yalnız basılı belgede elle tamamlanır
         oncekiDin: ek9Etiket('oncekiDin', k['Önceki din/mezhep']),
-        ihtidaSebebi: k['İhtida sebebi'] || '',
-        ihtidaTarihi: ek9Tarih(k['Tören tarihi tercihi']) || bugunTR(),
+        ihtidaSebebi: hazirlik.ihtidaSebebi ?? k['İhtida sebebi'] ?? '',
+        ihtidaTarihi: ek9Tarih(hazirlik.ihtidaTarihi),
         eposta: k['E-posta'] || '',
         telefon: telefonBicim(k['Telefon']),
-        adres: k['Adres'] || '',
-        beyanTarihi: ek9Tarih(k['Zaman damgası']) || bugunTR(),
+        adres: hazirlik.adres ?? k['Adres'] ?? '',
+        beyanTarihi: ek9Tarih(hazirlik.beyanTarihi || beyan),
       },
       foto: vesikalik,
-      sahitler: j.sahitler || [],
-      yedekImzalar: yedekler,
-      basvuranImza: j.basvuranImza || '',
+      sahitler: hazirlik.sahitler,
+      yedekImzalar: [],
+      basvuranImza,
+      ek10SablonBytes, ek10Onayi: k['EK-10 rızası'] === 'Evet', imzasiz: !basvuranImza,
+      kimlikOn: j.gorseller?.kimlikOn || '', kimlikArka: j.gorseller?.kimlikArka || '',
+      belgeTuru: hazirlik.belgeTuru, okunamayanGorseller: j.okunamayanGorseller || [],
       tarih: new Date(),
     });
 
-    const ad = `EK-9 Ihtida Belgesi ${ref}.pdf`;
+    const ad = paketMi ? `Ihtida Belge Paketi ${ref}${basvuranImza ? '' : ' - imza icin'}.pdf` : `EK-9 Ihtida Belgesi ${ref}.pdf`;
     const bag = document.createElement('a');
     bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
     bag.download = ad; bag.click();
     setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
+    if (ek9Uyarilari.includes('alan-kisaltildi') || ek9Uyarilari.includes('yazi-kucuk')) {
+      alert('PDF hazırlandı. Bazı uzun bilgiler şablondaki alana sığmadı veya yazıları küçüldü. Göndermeden önce PDF’yi tam başvuru bilgileriyle karşılaştırın; kısalan alanları tamamlayın.');
+    }
     if (ek9Uyarilari.includes('vesikalik-gomulemedi')) {
       durumYaz('⚠ Fotoğrafsız');
       alert('Belge indirildi, ancak vesikalık fotoğraf okunamadığı için belgeye YERLEŞTİRİLEMEDİ.\n\n'
@@ -1023,7 +1110,7 @@ async function ek9Uretimi(dugme) {
     setTimeout(() => { durumYaz(eskiMetin); dugme.disabled = false; }, 4000);
   } catch (hata) {
     console.error(hata);
-    alert('EK-9 belgesi üretilemedi: ' + (hata && hata.message ? hata.message : hata));
+    alert((paketMi ? 'Belge paketi' : 'EK-9 belgesi') + ' üretilemedi: ' + (hata && hata.message ? hata.message : hata));
     durumYaz(eskiMetin); dugme.disabled = false;
   }
 }
@@ -1080,6 +1167,34 @@ async function dilekceUretimi(dugme) {
   } finally {
     dugme.disabled = false;
   }
+}
+
+async function ek10Uretimi(dugme) {
+  const ref = dugme.dataset.ek10, eskiMetin = dugme.textContent;
+  dugme.disabled = true; dugme.textContent = 'Hazırlanıyor…';
+  try {
+    await ek9Hazirla();
+    if (!SIRLAR || !SIRLAR.gas) throw new Error('Erişim paketi eksik — yeniden giriş yapın.');
+    const j = await gasIstek('belge', { ref });
+    if (!j.ok) throw new Error('Başvuru alınamadı.');
+    const k = j.kayit || {};
+    const onay = k['EK-10 rızası'] === 'Evet';
+    const imza = onay ? (j.basvuranImza || j.gorseller?.imza || '') : '';
+    if (!imza && !confirm('Bu kayıtta EK-10 onayı veya başvuranın imzası bulunmuyor. İmza alanı boş hazırlansın mı? Mühtedi metni okuyup kâğıt üzerinde imzalayabilir.')) return;
+    const kaynak = await fetch('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf');
+    if (!kaynak.ok) throw new Error('EK-10 şablonu alınamadı.');
+    const { ek10Uret } = await import('/admin/ek10.js');
+    const bytes = await ek10Uret({
+      pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit, fontBytes: ek9Kaynak.font,
+      sablonBytes: new Uint8Array(await kaynak.arrayBuffer()),
+      adSoyad: k['Adı Soyadı'] || '', tarih: imza ? ek9Tarih(k['Zaman damgası']) : '', imza, onay,
+    });
+    const bag = document.createElement('a');
+    bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+    bag.download = `EK-10 Acik Riza ${ref}${imza ? '' : ' - imzasiz'}.pdf`; bag.click();
+    setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
+  } catch (hata) { alert('EK-10 üretilemedi: ' + (hata?.message || hata)); }
+  finally { dugme.disabled = false; dugme.textContent = eskiMetin; }
 }
 
 /* v23 (8 Eylül 2026): başvuranın yüklediği vesikalık ile kimlik belgesinin ön/arka yüzü.

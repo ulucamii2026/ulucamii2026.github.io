@@ -1,13 +1,30 @@
 # -*- coding: utf-8 -*-
-"""Yeni kayıt + ihtida formlarının tarayıcı testi. Önce `npx astro build && npx astro preview --port 4321`; uç nokta taklit edilir (gerçek gönderim yok). Çıktılar D:/tmp/form-test/ (klasörü oluşturun)."""
+"""Yeni kayıt + ihtida formlarının tarayıcı testi. Önce `npx astro build && npx astro preview --port 4321`; uç nokta taklit edilir (gerçek gönderim yok). Çıktılar .codex/cikti/form-test/ altındadır. Dış ağ kapalıdır; tüm gönderimler taklittir."""
 import os, sys, json, time, urllib.request
+from urllib.parse import urlsplit
+from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 from playwright.sync_api import sync_playwright
 
 # Sunucu adresi ONIZLEME ile değiştirilebilir: `astro preview` arka plan kipinde
 # 4399'a bağlanıyor, elle başlatınca 4321'e.
-KOK = os.environ.get("ONIZLEME", "http://localhost:4321").rstrip("/")
-OUT = r"D:/tmp/form-test"
+KOK = os.environ.get("ONIZLEME", "http://localhost:4399").rstrip("/")
+if urlsplit(KOK).hostname not in ("localhost", "127.0.0.1", "::1"):
+    sys.exit("Test yalnız localhost üzerinde çalışır.")
+OUT = str(Path(__file__).resolve().parents[1] / ".codex" / "cikti" / "form-test")
+Path(OUT).mkdir(parents=True, exist_ok=True)
+
+def agi_yalit(ctx):
+    def yonlendir(route):
+        u = urlsplit(route.request.url)
+        if u.netloc == urlsplit(KOK).netloc:
+            route.continue_()
+        elif u.hostname == "ulucamii.goatcounter.com":
+            route.fulfill(status=200, content_type="application/json", body='{"count":"0"}')
+        else:
+            route.abort()
+    ctx.route("**/*", yonlendir)
+    ctx.route_web_socket("**/*", lambda ws: ws.close())
 EXEC_PARCA = "script.google.com/macros"
 GONDERILEN = []
 
@@ -25,7 +42,7 @@ def taklit(route, request):
         except Exception: GONDERILEN.append({"HAM": request.post_data})
         route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "ref": "UC-2026-9999", "tekrar": False}))
     else:
-        route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True}))
+        route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "surum": 24}))
 
 def testPng(yol, en, boy, renk):
     """PIL olmadan geçerli bir RGB PNG üretir (görsel yükleme testleri için)."""
@@ -57,7 +74,8 @@ def kontrol(ad, kosul):
 with sync_playwright() as p:
     tarayici = p.chromium.launch()
     for cihaz, vp in (("masaustu", {"width": 1280, "height": 900}), ("mobil", {"width": 390, "height": 844})):
-        ctx = tarayici.new_context(viewport=vp, device_scale_factor=1, locale="tr-BE")
+        ctx = tarayici.new_context(viewport=vp, device_scale_factor=1, locale="tr-BE", service_workers="block")
+        agi_yalit(ctx)
         pg = ctx.new_page()
         konsol = []
         pg.on("console", lambda m: konsol.append(f"{m.type}: {m.text}") if m.type in ("error", "warning") else None)
@@ -85,7 +103,7 @@ with sync_playwright() as p:
         kontrol(f"[{cihaz}] temel eğitim okulunda anaokulu/ilkokul sınıfları", any("Anaokulu" in s for s in secenekler))
         pg.select_option("#k-sinif", "P3"); pg.check("#k-kurs-yeni")
         pg.check("#k-yak-anne"); pg.fill("#k-veli-ad", "Fatma Testoğlu"); pg.fill("#k-veli-cep", "0470 12 34 56")
-        pg.fill("#k-veli-eposta", "veli@example.org"); pg.fill("#k-adres", "Rue de la Station 12"); pg.fill("#k-posta", "6900")
+        pg.fill("#k-veli-eposta", "veli@example.test"); pg.fill("#k-adres", "Rue de la Station 12"); pg.fill("#k-posta", "6900")
         pg.check("#k-saglik-evet")
         kontrol(f"[{cihaz}] sağlık notu alanı açıldı", pg.locator("#k-saglik-not").is_visible())
         pg.fill("#k-saglik-not", "Fıstık alerjisi"); pg.check("#k-saglik-riza")
@@ -121,7 +139,8 @@ with sync_playwright() as p:
         ctx.close()
 
     # Fransızca sayfa ve ihtida
-    ctx = tarayici.new_context(viewport={"width": 390, "height": 844}, locale="fr-BE")
+    ctx = tarayici.new_context(viewport={"width": 390, "height": 844}, locale="fr-BE", service_workers="block")
+    agi_yalit(ctx)
     pg = ctx.new_page(); konsol = []
     pg.on("pageerror", lambda e: konsol.append(str(e)))
     pg.route("**/macros/**", taklit)
@@ -135,8 +154,8 @@ with sync_playwright() as p:
     kontrol("ihtida boş gönderim hataları", pg.locator(".hata:not([hidden])").count() >= 10)
     pg.fill("#i-ad", "Jean Testoglu"); pg.check("#i-cins-erkek"); pg.fill("#i-dogum", "1990-05-20"); pg.fill("#i-dogum-yeri", "Namur, Belçika")
     pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Marie"); pg.fill("#i-baba", "Pierre"); pg.select_option("#i-medeni", "bekar")
-    pg.fill("#i-ogrenim", "Lisans"); pg.fill("#i-meslek", "Öğretmen"); pg.fill("#i-eposta", "jean@example.org"); pg.fill("#i-telefon", "+32 471 00 00 00")
-    pg.fill("#i-adres", "Rue Haute 3, 6900 Marche-en-Famenne"); pg.fill("#i-onceki-din", "Katolik"); pg.select_option("#i-toren-dili", "fr")
+    pg.fill("#i-ogrenim", "Lisans"); pg.fill("#i-meslek", "Öğretmen"); pg.fill("#i-eposta", "jean@example.test"); pg.fill("#i-telefon", "+32 471 00 00 00")
+    pg.fill("#i-adres", "Rue Haute 3"); pg.fill("#i-posta-kodu", "6900"); pg.fill("#i-sehir", "Marche-en-Famenne"); pg.fill("#i-ulke", "Belçika"); pg.fill("#i-onceki-din", "Katolik"); pg.select_option("#i-toren-dili", "fr")
     pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel")
     pg.fill("#i-beyan", "JEAN TESTOGLU")
 
@@ -172,7 +191,7 @@ with sync_playwright() as p:
     pg.click("button[type=submit]")
     pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)
     g = GONDERILEN[-1]
-    kontrol("ihtida gövde", g.get("tur") == "ihtida" and g["basvuran"]["adSoyad"] == "Jean Testoglu" and g["sahitler"] == [{"ad": ""}, {"ad": ""}] and g["onay"]["acikRiza"] is True)
+    kontrol("ihtida gövde", g.get("tur") == "ihtida" and g["basvuran"]["adSoyad"] == "Jean Testoglu" and g["sahitler"] == [] and g["sahitSecimi"] == "cami" and g["onay"]["acikRiza"] is True)
     kontrol("ihtida gövdesinde kimlik NUMARASI yok", not any(k in json.dumps(g) for k in ("tcKimlik", "ulusalNo", "kimlikNo", "rijksregister")))
     gors = g.get("gorseller") or {}
     kontrol("vesikalık gönderildi", gors.get("vesikalik", "").startswith("data:image/jpeg;base64,") and len(gors["vesikalik"]) > 500)
@@ -193,8 +212,8 @@ with sync_playwright() as p:
     pg.reload(wait_until="networkidle")
     pg.fill("#i-ad", "Anna Testoglu"); pg.check("#i-cins-kadin"); pg.fill("#i-dogum", "1988-03-02"); pg.fill("#i-dogum-yeri", "Liège, Belçika")
     pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Sofie"); pg.fill("#i-baba", "Luc"); pg.select_option("#i-medeni", "evli")
-    pg.fill("#i-ogrenim", "Lise"); pg.fill("#i-meslek", "Hemşire"); pg.fill("#i-eposta", "anna@example.org"); pg.fill("#i-telefon", "+32 471 00 00 01")
-    pg.fill("#i-adres", "Rue Basse 1, 6900 Marche-en-Famenne"); pg.fill("#i-onceki-din", "Protestan"); pg.select_option("#i-toren-dili", "fr")
+    pg.fill("#i-ogrenim", "Lise"); pg.fill("#i-meslek", "Hemşire"); pg.fill("#i-eposta", "anna@example.test"); pg.fill("#i-telefon", "+32 471 00 00 01")
+    pg.fill("#i-adres", "Rue Basse 1"); pg.fill("#i-posta-kodu", "6900"); pg.fill("#i-sehir", "Marche-en-Famenne"); pg.fill("#i-ulke", "Belçika"); pg.fill("#i-onceki-din", "Protestan"); pg.select_option("#i-toren-dili", "fr")
     pg.check("#i-belge-pasaport")
     pg.set_input_files("#i-g-vesikalik", vesikalikYol); pg.wait_for_selector('[data-gorsel="vesikalik"][data-dolu="1"]', timeout=8000)
     pg.set_input_files("#i-g-kimlik-on", onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)

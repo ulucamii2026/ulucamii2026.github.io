@@ -33,6 +33,18 @@
   --hata-cerceve: rgba(181,69,43,.5); --hata-zemin: rgba(181,69,43,.08);
 }
 * { box-sizing: border-box; }
+.ek9-hazirlik { width: min(42rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; padding: 1.5rem; border: 1px solid var(--cizgi); border-radius: .5rem; background: var(--kagit); color: var(--murekkep); }
+.ek9-hazirlik::backdrop { background: rgb(0 0 0 / .55); }
+.ek9-hazirlik h2 { margin-top: 0; font-family: var(--font-serif); }
+.ek9-hazirlik fieldset { margin: 1.25rem 0; padding: 1rem; border: 1px solid var(--cizgi); min-width: 0; }
+.ek9-hazirlik input[type="text"], .ek9-hazirlik input[type="date"], .ek9-hazirlik select, .ek9-hazirlik textarea { display: block; width: 100%; min-height: 2.75rem; padding: .5rem; margin: .35rem 0 .75rem; color: inherit; background: var(--zemin-kart); border: 1px solid var(--metin-2); border-radius: .25rem; font: inherit; }
+.ek9-hazirlik textarea { resize: vertical; }
+.ek9-hazirlik .ek9-eylemler { display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1rem; }
+.ek9-hazirlik p { overflow-wrap: anywhere; }
+.ek9-hazirlik .not { color: var(--metin-2); font-size: .875rem; }
+.ek9-hazirlik .ek9-onay { display: flex; align-items: flex-start; gap: .65rem; padding: .4rem 0; }
+.ek9-hazirlik input[type="checkbox"] { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; }
+.ek9-eylemler { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--ustlik-yukseklik, 7.5rem); }
 body { margin: 0; min-height: 100dvh; background: var(--kagit) radial-gradient(rgba(74,55,40,.03) .6px, transparent .6px) 0 0 / 5px 5px; color: var(--murekkep); font: 16px/1.55 var(--font-sans); }
 a { color: var(--iznik); }

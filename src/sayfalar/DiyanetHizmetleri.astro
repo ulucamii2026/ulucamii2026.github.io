@@ -240,7 +240,7 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
       <p class="text-(--metin-2) max-w-[62ch]">{hacAcik ? m.hac.ozetAcik : hacKesin ? m.hac.ozetKesin : m.hac.ozetKapali}</p>
 
       {hacAcik && (
-        <dl class="hac-kunye mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-[repeat(3,max-content)]">
+        <dl class="hac-kunye mt-5 flex flex-wrap gap-x-10 gap-y-3">
           <div>
             <dt class="etiket">{m.sonTarihEtiket}</dt>
             <dd class="font-semibold mt-0.5"><time datetime="2026-09-11">{hacSonTarih}</time></dd>
@@ -365,16 +365,9 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
     font-weight: 600;
   }
 
-  /* Künye rakamları tabular: son tarih ile ücret alt alta hizalı okunur.
-     Etiket ve değer sarmaz — sütunlar içeriğe göre genişlediği için sarmaya gerek
-     de yok; sardıklarında (uzun Fransızca etiketler) üç sütunun temel hizası
-     birbirini tutmuyordu. */
-  /* Dar ekranda (640 px altı) satır kırılmasına izin verilir: FR/EN «kesin kayıt» değeri 360-390 px
-     genişlikte nowrap yüzünden sayfayı yatay kaydırıyordu (6 Eyl 2026 mobil taraması). */
-  @media (min-width: 640px) {
-    .hac-kunye dt,
-    .hac-kunye dd { white-space: nowrap; }
-  }
+  /* Her bilgi çifti yer varsa yan yana, yoksa alt satırda kalır. Üç max-content
+     sütunu tabletlerde uzun FR/EN etiketleriyle kartı ve sayfayı taşıyordu. */
+  .hac-kunye > div { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
   .hac-kunye dd { font-variant-numeric: tabular-nums; }
 
   /* Umre, hac ile aynı bölümün alt şeridi; ayraç ikisini ayırır ama koparmaz. */

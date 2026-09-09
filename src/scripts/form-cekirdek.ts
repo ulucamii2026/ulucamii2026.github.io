@@ -335,7 +335,22 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     ozetGuncelle();
   });
   let zamanlayici: number | undefined;
+  let odakZamanlayici: number | undefined;
+  const odagiIptalEt = () => { window.clearTimeout(odakZamanlayici); odakZamanlayici = undefined; };
+  const odagiPlanla = (hedef: Alan | null | undefined) => {
+    odagiIptalEt();
+    if (!hedef) return;
+    if (AZALTILMIS_HAREKET) { hedef.focus({ preventScroll: true }); return; }
+    const oncekiOdak = document.activeElement;
+    odakZamanlayici = window.setTimeout(() => {
+      odakZamanlayici = undefined;
+      if (hedef.isConnected && !hedef.disabled && document.activeElement === oncekiOdak) hedef.focus({ preventScroll: true });
+    }, 350);
+  };
+  // Kullanıcı düzeltmeye veya başka alana yazmaya başladığında eski hata odağı çalınmaz.
+  for (const olay of ['pointerdown', 'keydown', 'focusin']) form.addEventListener(olay, odagiIptalEt);
   form.addEventListener('input', (e) => {
+    odagiIptalEt();
     window.clearTimeout(zamanlayici);
     zamanlayici = window.setTimeout(() => taslakYaz(taslakAnahtari, form, gonderimAnahtari), 400);
     // Hatalı işaretlenmiş alan düzelirken uyarı hemen kalkar; böylece bir sonraki dokunuşta
@@ -384,13 +399,14 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     if (!a) return;
     const bolum = document.getElementById(a.getAttribute('href')!.slice(1));
     const ilk = bolum?.querySelector<Alan>('input:not([type="hidden"]):not([tabindex="-1"]), select, textarea');
-    if (ilk) window.setTimeout(() => ilk.focus({ preventScroll: true }), 350);
+    odagiPlanla(ilk);
   });
   sec.hazir?.(form, verileriTopla(form));
 
   // Gönderim
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    odagiIptalEt();
     tumHatalariTemizle(form); mesajGoster(null);
     const veriler = verileriTopla(form);
     if ((form.querySelector<HTMLInputElement>('input[name="web"]')?.value ?? '').trim() !== '') {
@@ -410,7 +426,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       mesajGoster(m.hata.formHatali);
       const ilk = form.querySelector<Alan>(`[name="${CSS.escape(hatalar[0][0])}"]`);
       ilk?.closest('[data-alan]')?.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
-      window.setTimeout(() => ilk?.focus({ preventScroll: true }), 350);
+      odagiPlanla(ilk);
       return;
     }
     if (!navigator.onLine) { mesajGoster(m.hata.cevrimdisi); return; }
@@ -423,6 +439,16 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     const denetleyici = new AbortController();
     const zamanAsimi = window.setTimeout(() => denetleyici.abort(), ZAMAN_ASIMI_MS);
     try {
+      const asgariSurum = Number(form.dataset.asgariServisSurumu || 0);
+      if (asgariSurum) {
+        // Yeni alanları eski servis sessizce düşürmesin. Bu GET kişisel veri taşımaz.
+        const saglik = await fetch(form.dataset.uc || '', { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: denetleyici.signal });
+        const durum = await saglik.json();
+        if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true)) {
+          mesajGoster(m.hata.servisHazirDegil);
+          return;
+        }
+      }
       const yanit = await fetch(form.dataset.uc || '', {
         method: 'POST', mode: 'cors', redirect: 'follow', signal: denetleyici.signal,
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },

@@ -20,7 +20,7 @@ const dogumMin = tarihStr(new Date(bugun.getFullYear() - 110, 0, 1));
 const dogumMax = tarihStr(new Date(bugun.getFullYear() - 16, bugun.getMonth(), bugun.getDate()));
 
 const metinJson = JSON.stringify({
-  hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: o.basari.epostaGitti },
+  hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: h.paketBildirimi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
 });
 
@@ -45,6 +45,7 @@ const gorselKutulari = [
 </div>
 
 <form class="ucf mt-8" data-form="ihtida" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-IHTIDA-2026"
+      data-asgari-servis-surumu="25"
       data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script type="application/json" data-metin set:html={metinJson} />
@@ -156,6 +157,27 @@ const gorselKutulari = [
         <input id="i-adres" name="basvuran.adres" type="text" required maxlength="200" autocomplete="street-address" placeholder={h.iletisim.adresYardim} />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
+      {([
+        ['posta-kodu', 'postaKodu', h.iletisim.postaKodu, 'postal-code', 20],
+        ['sehir', 'sehir', h.iletisim.sehir, 'address-level2', 80],
+        ['ulke', 'ulke', h.iletisim.ulke, 'country-name', 60],
+      ] as const).map(([id, ad, etiket, otomatik, uzunluk]) => (
+        <div data-alan>
+          <label for={`i-${id}`}>{etiket} <span class="zorunlu" aria-hidden="true">*</span></label>
+          <input id={`i-${id}`} name={`basvuran.${ad}`} type="text" required maxlength={uzunluk} autocomplete={otomatik} />
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+      ))}
+      <fieldset data-alan class="tam">
+        <legend>{h.teslimat.baslik} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <p class="yardim">{h.teslimat.aciklama}</p>
+        <div class="secenekler">
+          <span class="secenek"><input id="i-teslim-cami" type="radio" name="teslimat.yontem" value="cami" required checked /><label for="i-teslim-cami">{h.teslimat.cami}</label></span>
+          <span class="secenek"><input id="i-teslim-adres" type="radio" name="teslimat.yontem" value="adres" /><label for="i-teslim-adres">{h.teslimat.adres}</label></span>
+        </div>
+        <p class="yardim" data-kosul="teslimat.yontem=adres" hidden>{h.teslimat.adresNotu}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
     </div>
   </section>
 
@@ -196,18 +218,23 @@ const gorselKutulari = [
         <input id="i-toren-tarihi" name="basvuran.torenTarihi" type="text" maxlength="80" placeholder={h.ihtida.torenTarihiYardim} />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
-      <fieldset data-alan class="tam">
+      <fieldset class="tam">
         <legend>{h.ihtida.sahitler} <span class="istege">({o.istegeBagli})</span></legend>
-        <p class="yardim">{h.ihtida.sahitlerYardim}</p>
-        <div class="ucf-izgara mt-1">
+        <div class="onay-kutu mt-1">
+          <input id="i-sahit-ekle" type="checkbox" name="sahitEkle" aria-controls="i-sahit-alanlari" aria-describedby="i-sahit-yardim" />
+          <label for="i-sahit-ekle">{h.ihtida.sahitEkle}</label>
+        </div>
+        <p class="yardim" id="i-sahit-yardim">{h.ihtida.sahitlerYardim}</p>
+        <p class="yardim" data-sahit-cami data-kosul="sahitEkle=false">{h.ihtida.sahitCami}</p>
+        <div id="i-sahit-alanlari" class="ucf-izgara mt-1" data-kosul="sahitEkle=true" hidden>
           <div data-alan>
-            <label for="i-sahit-1">{h.ihtida.sahit1}</label>
-            <input id="i-sahit-1" name="sahit.1" type="text" maxlength="80" autocomplete="off" autocapitalize="words" />
+            <label for="i-sahit-1">{h.ihtida.sahit1} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <input id="i-sahit-1" name="sahit.1" type="text" required disabled maxlength="80" autocomplete="off" autocapitalize="words" />
             <p class="hata" aria-live="polite" hidden></p>
           </div>
           <div data-alan>
-            <label for="i-sahit-2">{h.ihtida.sahit2}</label>
-            <input id="i-sahit-2" name="sahit.2" type="text" maxlength="80" autocomplete="off" autocapitalize="words" />
+            <label for="i-sahit-2">{h.ihtida.sahit2} <span class="istege">({o.istegeBagli})</span></label>
+            <input id="i-sahit-2" name="sahit.2" type="text" disabled maxlength="80" autocomplete="off" autocapitalize="words" />
             <p class="hata" aria-live="polite" hidden></p>
           </div>
         </div>
@@ -252,7 +279,7 @@ const gorselKutulari = [
           </div>
           <div class="g-eylem">
             <label class="dugme dugme-ikincil g-sec" for={k.id} data-sec={b.sec} data-degistir={b.degistir}>{b.sec}</label>
-            <input class="sr-only" type="file" id={k.id} accept="image/*" aria-labelledby={`${k.id}-et`} aria-describedby={`${k.id}-yardim ${k.id}-hata`} />
+            <input class="sr-only" type="file" id={k.id} accept="image/*" aria-required="true" aria-labelledby={`${k.id}-et`} aria-describedby={`${k.id}-yardim ${k.id}-hata`} />
             <button type="button" class="dugme dugme-ikincil" data-kaldir hidden>{b.kaldir}</button>
             <span class="g-durum" data-durum aria-live="polite"></span>
           </div>
@@ -338,6 +365,7 @@ const gorselKutulari = [
       {([
         ['kisi', h.ozet.kisi, '#b-kisi'], ['dogum', h.ozet.dogum, '#b-kisi'], ['uyruk', h.ozet.uyruk, '#b-kisi'], ['aile', h.ozet.aile, '#b-kisi'],
         ['durum', h.ozet.durum, '#b-durum'], ['iletisim', h.ozet.iletisim, '#b-iletisim'], ['din', h.ozet.din, '#b-ihtida'],
+        ['teslimat', h.teslimat.baslik, '#b-iletisim'],
         ['toren', h.ozet.toren, '#b-ihtida'], ['sahitler', h.ozet.sahitler, '#b-ihtida'],
         ['belgeler', h.ozet.belgeler, '#b-belgeler'],
       ] as const).map(([anahtar, etiket, hedef]) => (
@@ -346,7 +374,7 @@ const gorselKutulari = [
     </dl>
     <div class="ucf-not mt-5">
       <span class="simge" aria-hidden="true">🔒</span>
-      <div><strong>{o.gizlilikKutu.baslik}</strong>{o.gizlilikKutu.metin}</div>
+      <div><strong>{o.gizlilikKutu.baslik}</strong>{h.kimlikNotu}</div>
     </div>
     <div class="ucf-gonder mt-6">
       <button type="submit" class="dugme dugme-birincil">{o.gonder}</button>

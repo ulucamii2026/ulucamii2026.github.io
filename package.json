@@ -13,20 +13,27 @@
     "check": "astro check",
     "denetim": "node scripts/site-denetim.mjs",
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
+    "test:ihtida": "node --test tests/ihtida-contract.test.mjs tests/ihtida-paket-akis.test.mjs",
     "test:imza": "node scripts/ek9-imza-zinciri.mjs",
     "test:kutuphane": "py -3.14 scripts/kutuphane-erisim-testi.py",
-    "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9",
+    "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9 && npm run test:ihtida",
     "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs",
     "onizle": "astro preview --port 4399",
     "test:anasayfa": "py -3.14 scripts/anasayfa-testi.py",
     "olc": "py -3.14 scripts/web-vitals-olc.py",
     "hero:gorsel": "node scripts/hero-gorsel-uret.mjs",
     "arapca:altkume": "py -3.14 scripts/arapca-alt-kume.py",
-    "denetim:panel": "node --check public/admin/panel.js && node --check public/admin/kapi.js && node --check public/admin/ek9.js && node --check public/admin/dilekce.js",
+    "denetim:panel": "node --check public/admin/panel.js && node --check public/admin/kapi.js && node --check public/admin/ek9.js && node --check public/admin/dilekce.js && node --check public/admin/ek9-hazirlik.js && node --check public/admin/ek10.js",
     "panel:fontlar": "py -3.14 scripts/panel-fontlar-uret.py",
     "denetim:cms": "node scripts/cms-config-denetim.mjs",
-    "firebase:kurallar": "firebase deploy --only firestore:rules,firestore:indexes --project ulucamii-portal",
-    "denetim:diyanet": "node scripts/diyanet-kontrol.mjs"
+    "firebase:kurallar": "powershell -NoProfile -File scripts/firebase-cami.ps1 deploy --only firestore:rules,firestore:indexes",
+    "denetim:diyanet": "node scripts/diyanet-kontrol.mjs",
+    "test:web": "playwright test",
+    "test:web:rapor": "playwright show-report",
+    "test:kurallar": "node scripts/test-kurallar.mjs",
+    "codex:kontrol": "node scripts/codex-kontrol.mjs",
+    "dogrula:codex": "node scripts/dogrula-codex.mjs",
+    "ihtida:gas-derle": "node scripts/ihtida-gas-derle.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",
@@ -52,7 +59,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "4.13.0",
     "@cfworker/json-schema": "^4.1.1",
+    "@firebase/rules-unit-testing": "5.0.2",
+    "@playwright/mcp": "0.0.80",
+    "@playwright/test": "1.63.0",
     "typescript": "^6.0.3",
     "yaml": "^2.9.0"
   }

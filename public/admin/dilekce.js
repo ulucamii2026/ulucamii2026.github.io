@@ -76,8 +76,25 @@ export async function dilekceUret(g) {
 
   const v = g.veri || {};
   const dil = METIN[v.dil] ? v.dil : 'fr';
-  const t = METIN.tr;
-  const c = dil === 'tr' ? null : METIN[dil];        // çeviri bloğu (Türkçe başvuruda yok)
+  const t = { ...METIN.tr, govde: [...METIN.tr.govde], ekler: [...METIN.tr.ekler] };
+  const c = dil === 'tr' ? null : { ...METIN[dil], govde: [...METIN[dil].govde] };
+  if (g.onBasvuru) {
+    t.govde[0] = 'Kendi hür irademle, hiçbir baskı ve zorlama olmadan İslam dinini seçmek ve adıma İhtida Belgesi düzenlenmesi için başvurmak istiyorum. Tören tarihi ve şahitler cami görevlisiyle ayrıca teyit edilecektir.';
+    if (c) c.govde[0] = dil === 'fr'
+      ? 'De ma propre volonté, sans pression ni contrainte, je souhaite embrasser l’islam et demander une attestation de conversion. La date de la cérémonie et les témoins seront confirmés avec le responsable de la mosquée.'
+      : 'Of my own free will, without pressure or compulsion, I wish to embrace Islam and apply for a conversion certificate. The ceremony date and witnesses will be confirmed with the mosque official.';
+  }
+  if (!g.imza) {
+    t.govde[1] = t.govde[1].replace('EK-10 Açık Rıza Metni’ni ayrıca imzaladım.', 'EK-10 Açık Rıza Metni imzalanmak üzere eklenmiştir.');
+    t.ekler[2] = 'EK-10 Açık Rıza Metni (imza için)';
+    t.dipnot = 'Bu dilekçe, başvuru bilgileriyle hazırlanmıştır. Başvuranın imzası alınacaktır.';
+    if (c) c.govde[1] = c.govde[1].replace('j’ai par ailleurs signé le formulaire de consentement EK-10.', 'le formulaire de consentement EK-10 est joint pour signature.').replace('I have also signed the EK-10 consent form.', 'the EK-10 consent form is included for signature.');
+  }
+  if (g.belgeTuru === 'pasaport') {
+    t.govde[1] = t.govde[1].replace('kimlik belgemin ön ve arka yüzünün örneği', 'pasaportumun kimlik bilgileri sayfasının örneği');
+    t.ekler[1] = 'Pasaport kimlik bilgileri sayfası örneği';
+    if (c) c.govde[1] = c.govde[1].replace('la copie du recto et du verso de ma pièce d’identité', 'la copie de la page d’identité de mon passeport').replace('a copy of the front and back of my identity document', 'a copy of my passport identity page');
+  }
 
   const sar = (metin, boyut, en, f = font) => {
     const satirlar = [];
@@ -106,7 +123,7 @@ export async function dilekceUret(g) {
   // --- üst bilgi: yer ve tarih (sağa yaslı) ---
   const tarih = (g.tarih || new Date());
   const iki = (n) => String(n).padStart(2, '0');
-  const tarihStr = `${t.yer}, ${iki(tarih.getDate())}.${iki(tarih.getMonth() + 1)}.${tarih.getFullYear()}`;
+  const tarihStr = `${t.yer}, ${g.tarihiBosBirak ? '...... / ...... / ............' : `${iki(tarih.getDate())}.${iki(tarih.getMonth() + 1)}.${tarih.getFullYear()}`}`;
   const tarihEn = font.widthOfTextAtSize(tarihStr, 10);
   s.drawText(tarihStr, { x: KENAR + genislik - tarihEn, y, size: 10, font, color: SOLUK });
   y -= 34;
@@ -192,7 +209,7 @@ export async function dilekceUret(g) {
   s.drawText(ad, { x: imzaX + Math.max(0, (200 - kalin.widthOfTextAtSize(ad, 10)) / 2), y: imzaTaban - 14, size: 10, font: kalin, color: MUREKKEP });
 
   // --- dipnot ---
-  const dipnotSatirlari = sar(t.dipnot, 7.5, genislik);
+  const dipnotSatirlari = sar(gomulu ? t.dipnot : 'Bu dilekçe, başvuru bilgileriyle hazırlanmıştır; başvuranın kontrol edip imzalaması için imza alanı boş bırakılmıştır.', 7.5, genislik);
   let dy = 40;
   for (const satir of dipnotSatirlari) {
     s.drawText(satir, { x: KENAR, y: dy, size: 7.5, font, color: SOLUK });
@@ -203,5 +220,5 @@ export async function dilekceUret(g) {
   belge.setSubject('Mühtedi dilekçesi (Müşavirliğe gönderilecek zarf, 1. belge)');
   belge.setCreator('Marche-en-Famenne Ulu Camii — yönetim paneli');
   if (g.tarih) { belge.setCreationDate(g.tarih); belge.setModificationDate(g.tarih); }
-  return belge.save({ useObjectStreams: false });
+  return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
 }

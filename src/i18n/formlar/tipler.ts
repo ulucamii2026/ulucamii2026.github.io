@@ -34,6 +34,7 @@ export interface OrtakMetinler {
     ag: string;
     sunucu: string;                // {kod}
     zamanAsimi: string;
+    servisHazirDegil: string;
   };
   basari: {
     baslik: string;
@@ -94,6 +95,7 @@ export interface IhtidaMetinler {
   sayfaAciklama: string;
   ustEtiket: string;
   giris: string;
+  paketBildirimi: string;
   kimlikNotu: string;              // 8 Eyl 2026: formda hangi belgelerin istendiğini ve nerede saklanacağını anlatır
   bolum: { kisi: string; durum: string; iletisim: string; ihtida: string; belgeler: string; riza: string; ozet: string };
   kisi: {
@@ -104,12 +106,13 @@ export interface IhtidaMetinler {
     medeniHali: string; bekar: string; evli: string; dul: string; bosanmis: string;
     ogrenim: string; ogrenimYardim: string; meslek: string;
   };
-  iletisim: { eposta: string; telefon: string; adres: string; adresYardim: string };
+  iletisim: { eposta: string; telefon: string; adres: string; adresYardim: string; postaKodu: string; sehir: string; ulke: string };
+  teslimat: { baslik: string; aciklama: string; cami: string; adres: string; adresNotu: string };
   ihtida: {
     oncekiDin: string; oncekiDinYardim: string; sebep: string; sebepYardim: string; yeniIsim: string; yeniIsimYardim: string;
     torenDili: string; dilTr: string; dilFr: string; dilEn: string; dilAr: string;
     torenTarihi: string; torenTarihiYardim: string;
-    sahitler: string; sahitlerYardim: string; sahit1: string; sahit2: string;
+    sahitler: string; sahitlerYardim: string; sahitEkle: string; sahitCami: string; sahit1: string; sahit2: string;
     nasilHaberdar: string; ekNot: string; ekNotYardim: string;
   };
   /** 8 Eylül 2026'da eklendi: EK-9 ve resmî dosya için istenen görseller. */

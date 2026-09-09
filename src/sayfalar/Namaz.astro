@@ -73,7 +73,7 @@ const dg = dil === 'tr'
     <section id="dini-gunler" class="mt-14" aria-label={dg.baslik}>
       <h2 class="mb-1 cetvel pt-4">{dg.baslik}</h2>
       <p class="text-(--metin-2) mb-5 max-w-prose">{dg.alt}</p>
-      <ol class="grid gap-2 sm:grid-cols-2" role="list">
+      <ol class="grid grid-cols-1 gap-2 sm:grid-cols-2" role="list">
         {gunlerListe.map((g) => (
           <li class:list={['kart-kagit px-4 py-3 flex items-center gap-4', g.tarih === enYakinTarih && 'border-(--vurgu) bg-(--vurgu)/6']}>
             <div class="text-center shrink-0 w-16">

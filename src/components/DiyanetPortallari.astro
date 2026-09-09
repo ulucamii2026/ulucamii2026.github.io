@@ -161,12 +161,12 @@ const alan = (u: string) => new URL(u).hostname.replace(/^www\./, '');
   .hizmetler .baslik { font-family: var(--font-serif, Lora, serif); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); margin-top: 0.4rem; }
   .hizmetler .giris { max-width: 68ch; margin-top: 0.8rem; color: var(--metin-2); }
 
-  .izgara { list-style: none; margin: 1.8rem 0 0; padding: 0; display: grid; gap: 0.85rem; }
+  .izgara { list-style: none; margin: 1.8rem 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; }
   @media (min-width: 40rem) { .izgara { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 64rem) { .izgara { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
-  .kart { display: flex; }
-  .kart > a { display: flex; flex-direction: column; width: 100%; padding: 1.05rem 1.15rem 0.9rem; text-decoration: none; color: inherit; border-radius: inherit; }
+  .kart { display: flex; min-width: 0; }
+  .kart > a { display: flex; flex-direction: column; min-width: 0; width: 100%; padding: 1.05rem 1.15rem 0.9rem; text-decoration: none; color: inherit; border-radius: inherit; }
   .kart > a:hover h3 { color: var(--vurgu); }
   .kart > a:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; }
   .kart h3 { font-family: var(--font-serif, Lora, serif); font-size: 1.02rem; line-height: 1.35; margin: 0; }

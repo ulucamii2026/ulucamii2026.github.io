@@ -359,7 +359,7 @@ const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr'
   .grup { border-top: 1px solid var(--cizgi); scroll-margin-top: 5rem; }
   .grup:first-of-type { margin-top: 1.6rem; }
   .grup[hidden] { display: none; }
-  .grup > summary { display: flex; align-items: baseline; gap: 0.9rem; padding: 0.95rem 0.2rem; cursor: pointer; list-style: none; min-height: 48px; }
+  .grup > summary { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.9rem; row-gap: 0.35rem; padding: 0.95rem 0.2rem; cursor: pointer; list-style: none; min-height: 48px; }
   .grup > summary::-webkit-details-marker { display: none; }
   .grup > summary::before { content: ''; flex: none; width: 9px; height: 9px; align-self: center; margin-right: 0.35rem;
     border-right: 2px solid var(--vurgu); border-bottom: 2px solid var(--vurgu); transform: rotate(-45deg); transition: transform 0.15s; }

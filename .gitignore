@@ -11,6 +11,12 @@ Thumbs.db
 .playwright-mcp/
 .serena/
 
+# Yerel test çıktıları; oturum, ekran görüntüsü ve emülatör verisi yayımlanmaz.
+test-results/
+playwright-report/
+.firebase/
+.codex/cikti/
+
 # Hero görsellerinin sıkıştırma öncesi kopyaları (scripts/hero-gorsel-uret.mjs).
 # Depoya girmez: 2,4 MB'lık ikinci kopya hem Pages yayınını şişirir hem gereksizdir —
 # asılları git geçmişinde durur (bkz. betiğin başlığındaki geri getirme komutu).

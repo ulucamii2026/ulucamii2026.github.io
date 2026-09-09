@@ -14,18 +14,31 @@ export function ihtidaFormuBaslat() {
   form.querySelector('[data-taslak-sil]')?.addEventListener('click', () => gorseller?.sifirla());
 
   formuBaslat(form, {
+    hazir: () => {
+      // Önceki sürümdeki taslakta yazılmış şahit adlarını görünür tut.
+      const secim = form.querySelector<HTMLInputElement>('#i-sahit-ekle');
+      if (secim && !secim.checked && form.querySelector<HTMLInputElement>('#i-sahit-1')?.value.trim()) {
+        secim.checked = true;
+        secim.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    },
     ekDogrula: () => gorseller?.dogrula() ?? [],
     govde(v) {
       const b = v.basvuran as Veriler, sahit = (v.sahit ?? {}) as Veriler, onay = v.onay as Veriler;
+      const adres = [b.adres, b.postaKodu, b.sehir, b.ulke].map(x => String(x ?? '').trim()).filter(Boolean).join(', ');
       return {
         basvuran: {
           adSoyad: b.adSoyad, cinsiyet: b.cinsiyet, dogumTarihi: b.dogumTarihi, dogumYeri: b.dogumYeri, uyruk: b.uyruk,
           anneAdi: b.anneAdi, babaAdi: b.babaAdi, medeniHali: b.medeniHali, ogrenimDurumu: b.ogrenimDurumu, meslek: b.meslek,
           oncekiDin: b.oncekiDin, ihtidaSebebi: b.ihtidaSebebi ?? '', yeniIsim: b.yeniIsim ?? '',
-          eposta: b.eposta, telefon: telefonNormalle(String(b.telefon ?? '')) ?? b.telefon, adres: b.adres,
+          eposta: b.eposta, telefon: telefonNormalle(String(b.telefon ?? '')) ?? b.telefon, adres,
+          adresSokak: String(b.adres ?? '').trim(), postaKodu: String(b.postaKodu ?? '').trim(),
+          sehir: String(b.sehir ?? '').trim(), ulke: String(b.ulke ?? '').trim(),
           torenDili: b.torenDili, torenTarihi: b.torenTarihi ?? '', nasilHaberdar: b.nasilHaberdar ?? '', ekNot: b.ekNot ?? '',
         },
-        sahitler: [{ ad: sahit['1'] ?? '' }, { ad: sahit['2'] ?? '' }],
+        teslimat: { yontem: (v.teslimat as Veriler)?.yontem ?? 'cami' },
+        sahitSecimi: v.sahitEkle === true ? 'kendi' : 'cami',
+        sahitler: v.sahitEkle === true ? [{ ad: sahit['1'] ?? '' }, { ad: sahit['2'] ?? '' }] : [],
         fotografIzni: v.fotografIzni === true,
         belgeTuru: v.belgeTuru ?? 'kimlik',
         imzaYok: v.imzaYok === true,
@@ -50,10 +63,11 @@ export function ihtidaFormuBaslat() {
         uyruk: String(b.uyruk ?? ''),
         aile: [b.anneAdi, b.babaAdi].filter(Boolean).join(' / '),
         durum: [secText('basvuran.medeniHali'), b.ogrenimDurumu, b.meslek].filter(Boolean).join(' · '),
-        iletisim: [b.telefon, b.eposta, b.adres].filter(Boolean).join(' · '),
+        iletisim: [b.telefon, b.eposta, b.adres, b.postaKodu, b.sehir, b.ulke].filter(Boolean).join(' · '),
+        teslimat: [etiket('teslimat.yontem', (v.teslimat as Veriler)?.yontem), ...((v.teslimat as Veriler)?.yontem === 'adres' ? [b.adSoyad, b.adres, b.postaKodu, b.sehir, b.ulke] : [])].filter(Boolean).join(' · '),
         din: String(b.oncekiDin ?? ''),
         toren: [secText('basvuran.torenDili'), b.torenTarihi].filter(Boolean).join(' · '),
-        sahitler: [sahit['1'], sahit['2']].filter(Boolean).join(', '),
+        sahitler: v.sahitEkle === true ? [sahit['1'], sahit['2']].filter(Boolean).join(', ') : f.querySelector('[data-sahit-cami]')?.textContent?.trim() ?? '',
         belgeler: gorseller?.ozet() ?? '',
       };
     },
