@@ -1,0 +1,23 @@
+---
+import type { Dil } from '../../i18n/ui';
+import { ihtidaAdimMetinleri } from '../../i18n/ihtida-adimlari';
+interface Props { dil: Dil }
+const m = ihtidaAdimMetinleri[Astro.props.dil];
+---
+<div class="ucf-adimlar" data-ihtida-adimlar hidden>
+  <script type="application/json" data-metin-adim set:html={JSON.stringify(m)} />
+  <div class="ucf-adim-ust">
+    <strong>{m.baslik}</strong>
+    <span data-adim-durum aria-live="polite" aria-atomic="true"></span>
+  </div>
+  <progress data-adim-ilerleme max="7" value="1" aria-label={m.ilerleme}></progress>
+  <nav aria-label={m.ilerleme}>
+    <ol class="ucf-adim-listesi">
+      {m.adimlar.map((ad, i) => <li><button type="button" data-adim-sec={i} aria-current={i === 0 ? 'step' : undefined}><span aria-hidden="true">{i + 1}</span>{ad}</button></li>)}
+    </ol>
+  </nav>
+  <div class="ucf-adim-alt">
+    <p data-adim-ipucu>{m.ipuclari[0]}</p>
+    <button type="button" data-adim-tumu>{m.tumu}</button>
+  </div>
+</div>

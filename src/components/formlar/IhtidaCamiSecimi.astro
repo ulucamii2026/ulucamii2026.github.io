@@ -1,0 +1,49 @@
+---
+import type { Dil } from '../../i18n/ui';
+import { camiMetinleri } from '../../i18n/cami-secimi';
+import katalog from '../../../public/data/belcika-camileri.json';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = camiMetinleri[dil];
+const varsayilan = katalog.camiler.find(c => c.id === 'ulucamii-marche')!;
+const camiler = [...katalog.camiler].sort((a, b) => `${a.sehir} ${a.ad}`.localeCompare(`${b.sehir} ${b.ad}`, dil));
+const guvenliJson = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c');
+---
+<section class="ucf-bolum ucf-cami" id="b-cami" aria-labelledby="h-cami" data-alan>
+  <h2 id="h-cami">{m.baslik}</h2>
+  <input type="hidden" name="camiId" value={varsayilan.id} />
+  <p class="ucf-cami-secili" aria-live="polite"><strong data-cami-ad>{varsayilan.ad} · {varsayilan.sehir}</strong><br /><span class="yardim" data-cami-adres>{varsayilan.adres}, {varsayilan.postaKodu} {varsayilan.sehir}</span></p>
+  <p class="hata" aria-live="polite" hidden></p>
+  <details data-cami-degistir>
+    <summary>{m.degistir}</summary>
+    <div class="ucf-cami-arama">
+      <label for="i-cami-ara">{m.ara}</label>
+      <input id="i-cami-ara" type="search" placeholder={m.aramaOrnek} autocomplete="off" aria-controls="i-cami-liste" />
+      <label for="i-cami-liste">{m.liste}</label>
+      <select id="i-cami-liste" size="5" aria-describedby="i-cami-sonuc">
+        {camiler.map(c => <option value={c.id} selected={c.id === varsayilan.id}>{c.ad} — {c.postaKodu} {c.sehir}</option>)}
+      </select>
+      <p class="yardim" id="i-cami-sonuc" role="status">{m.sonuc.replace('{sayi}', String(camiler.length))}</p>
+      <div class="ucf-cami-eylemler">
+        <button type="button" class="dugme dugme-birincil" data-cami-sec>{m.sec}</button>
+        <button type="button" class="dugme dugme-ikincil" data-cami-elle>{m.diger}</button>
+      </div>
+      <p class="yardim">{m.kapsam}</p>
+    </div>
+  </details>
+  <div class="ucf-izgara mt-4" data-kosul="camiId=diger" hidden>
+    <h3 class="alt-baslik tam">{m.digerBaslik}</h3>
+    {([
+      ['ad', m.ad, 120], ['sehir', m.sehir, 80], ['postaKodu', m.posta, 4], ['adres', m.adres, 200],
+    ] as const).map(([ad, etiket, max]) => (
+      <div data-alan class={ad === 'ad' || ad === 'adres' ? 'tam' : ''}>
+        <label for={`i-cami-${ad}`}>{etiket} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id={`i-cami-${ad}`} name={`camiDiger.${ad}`} type="text" required disabled maxlength={max} inputmode={ad === 'postaKodu' ? 'numeric' : undefined} autocomplete="off" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    ))}
+  </div>
+  <p class="yardim mt-3">{m.isleyis}</p>
+  <script is:inline type="application/json" data-cami-katalog set:html={guvenliJson(camiler)} />
+  <script is:inline type="application/json" data-cami-metin set:html={guvenliJson(m)} />
+</section>

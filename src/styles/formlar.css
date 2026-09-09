@@ -11,6 +11,24 @@
 :root[data-theme="dark"] .ucf { --form-hata: #f2a58c; --form-hata-cizgi: #e8896c; --form-hata-halka: rgb(242 165 140 / 0.22); --form-hata-zemin: rgb(242 165 140 / 0.12); }
 .ucf-giris { max-width: 68ch; }
 .ucf-giris p + p { margin-top: 0.6rem; }
+.ucf-cami { min-width: 0; }
+.ucf-cami-secili { margin-block: .7rem; overflow-wrap: anywhere; }
+.ucf-cami summary { cursor: pointer; min-height: 2.75rem; padding-block: .65rem; color: var(--metin); font-weight: 600; }
+.ucf-cami summary:focus-visible { outline: 2px solid var(--color-iznik); outline-offset: 3px; }
+.ucf-cami-arama { display: grid; gap: .65rem; margin-top: .4rem; min-width: 0; }
+.ucf-cami-arama label { font-weight: 600; }
+/* Kapalı details içindeki geçişler Chromium'da ertelenir. Global azaltılmış hareket
+   kuralıyla aynı katmanda tut: katmanlı !important, katmansız kuraldan önceliklidir. */
+@layer components {
+  .ucf-cami details:not([open]) .ucf-cami-arama * { transition: none !important; }
+}
+.ucf-cami input[type="search"] { width: 100%; min-width: 0; min-height: 2.9rem; padding: .6rem .8rem; font: inherit; color: var(--metin); background: var(--zemin); border: 1.5px solid var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * .6); }
+.ucf-cami select[size] { height: 12rem; padding: .35rem; background-image: none; }
+.ucf-cami select[size] option { padding: .6rem .4rem; }
+.ucf-cami-eylemler { display: flex; flex-wrap: wrap; gap: .6rem; }
+.ucf-cami-eylemler button { white-space: normal; }
+.ucf-cami-eylemler button:disabled { opacity: .6; cursor: not-allowed; }
+.ucf [data-sahit-secim][hidden], .ucf [data-sahit-istege][hidden], .ucf [data-sahit-2-zorunlu][hidden] { display: none; }
 .ucf-sure { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.9rem; font-size: 0.85rem; color: var(--metin-2); }
 
 .ucf-bolum {
@@ -163,7 +181,7 @@
 .ucf-gorsel input[type="file"]:focus-visible + .dugme,
 .ucf-gorsel .g-sec:has(+ input[type="file"]:focus-visible) { box-shadow: 0 0 0 3px rgb(31 81 128 / 0.25); }
 .ucf-gorsel .g-durum { font-size: 0.8rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
-.ucf-gorsel[data-dolu="1"] .g-durum { color: var(--color-adacayi-koyu, var(--metin-2)); font-weight: 600; }
+.ucf-gorsel[data-dolu="1"] .g-durum { color: var(--metin); font-weight: 600; }
 .ucf-gorsel[data-mesgul="1"] .g-kutu { opacity: 0.6; }
 .ucf-gorsel.alan-hatali .g-kutu { border-color: var(--form-hata-cizgi); background: var(--form-hata-zemin); }
 .ucf-gorsel[hidden] { display: none; }

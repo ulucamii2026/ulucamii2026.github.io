@@ -2,7 +2,7 @@
 baslik: İhtida (İslam’a Giriş)
 altBaslik: İslam’a girmek isteyen herkes, hiçbir baskı ve ön şart olmaksızın camimize başvurabilir.
 aciklama: "İslam’a giriş (ihtida): kelime-i şehadet, tören, İhtida Belgesi (EK-9), gerekli belgeler, ihtida sonrası destek ve kırktan fazla dilde ücretsiz Diyanet kütüphanesi."
-guncelleme: 2026-09-08
+guncelleme: 2026-09-09
 ---
 
 ## Hoş Geldiniz
@@ -30,12 +30,12 @@ Görüşme **Türkçe veya Fransızca** yapılabilir. Kadın adaylar dilerse, g�
 
 ## Adım Adım Süreç
 
-1. **Başvuru.** Aşağıdaki online formu doldurun veya doğrudan din görevlimizi arayın. Form ücretsizdir ve hiçbir bağlayıcılığı yoktur; istediğiniz an vazgeçebilirsiniz.
+1. **Başvuru.** Aşağıdaki online formu doldurun veya doğrudan din görevlimizi arayın. Form ücretsizdir ve hiçbir bağlayıcılığı yoktur; istediğiniz an vazgeçebilirsiniz. Başvuruda başka bir Türk Müslüman camisi seçilirse tören ilgili camiyle görüşülerek planlanır; başvuru ve belge sürecinin koordinasyonunu Ulu Camii ekibi takip eder.
 2. **Tanışma görüşmesi.** Din görevlimiz sizi arar; sorularınızı dinler, süreci anlatır. Bu görüşme camide, sakin bir ortamda yapılır.
 3. **Tören gününün belirlenmesi.** Gün ve saat sizin uygunluğunuza göre birlikte kararlaştırılır.
-4. **İhtida töreni.** Camimizde, iki şahit huzurunda kelime-i şehadet getirilir (aşağıda ayrıntısı var).
-5. **Belge takdimi.** Kuşe kâğıda renkli basılan İhtida Belgesi nüshası **aynı gün** size verilir.
-6. **Resmî kayıt.** Belgenin resmî nüshaları T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği kanalıyla kayda geçirilir; bu adım birkaç hafta sürebilir.
+4. **İhtida töreni.** Seçtiğiniz camide, iki şahit huzurunda kelime-i şehadet getirilir (aşağıda ayrıntısı var).
+5. **Belge dosyası ve imzalar.** EK-9, EK-10, kimlik örneği ve dilekçe ile dosyanız hazırlanır; size ait imzalar tamamlanır.
+6. **Müşavirlik onayı ve teslim.** Dosya T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’ne gönderilir. Sosyal İşler Müşaviri Salih GÖR’ün ıslak imzasından sonra belge genellikle posta ile seçtiğiniz camiye gelir ve size elden teslim edilir; isterseniz adresinize doğrudan gönderilmesi de istenebilir. Bu adım birkaç hafta sürebilir.
 7. **Sonrası.** Rehberlik, dersler ve Fransızca kaynaklarla süreç devam eder — sizi yalnız bırakmayız.
 
 ## İhtida Töreni Nasıl İşler?
@@ -47,7 +47,7 @@ Tören, Diyanet İşleri Başkanlığı’nın **“İhtida Merasiminde Takip Ed
 3. **Hür irade sorusu** — görevlimiz, Allah’ın huzurunda ve şahitlerin yanında, hiçbir baskı altında kalmadan İslam’ı seçip seçmediğinizi size açıkça sorar. **Bu adım hiçbir zaman atlanmaz.**
 4. **Kelime-i şehadet** — birlikte, hece hece tekrar edilir.
 5. **Tekbir, salavat ve tebrik.**
-6. **İhtida Defteri’ne kayıt** ve İhtida Belgesi’nin takdimi.
+6. **İhtida Defteri’ne kayıt** ve belge dosyasının tamamlanması.
 7. **Kapanış** — Âl-i İmrân sûresinin 18-20. âyetleri ya da Asr ve Fâtiha sûreleri okunup meali verilir; tören dua ile biter.
 8. **Hediye** — imkânlar ölçüsünde, kendi dilinizde mealli bir Kur’an-ı Kerim ve İslam’ı tanıtan bir ilmihal/kitap takdim edilir.
 
@@ -62,11 +62,11 @@ Fransızca konuşan adaylar için tören Fransızca da yürütülebilir; kelime-
 **İhtida Belgesi (EK-9)**, T.C. Diyanet İşleri Başkanlığı tarafından düzenlenen, İslam’a giriş beyanınızı ve tören bilgilerinizi resmî olarak belgeleyen çift dilli (Türkçe/İngilizce) bir belgedir. Sizin, **iki şahidin** ve Diyanet İşleri Başkanlığı yetkilisinin (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği) imzasını taşır.
 
 - **Ücretsizdir.** Süreç için sizden herhangi bir ücret talep edilmez.
-- **Kaç nüsha düzenlenir?** Üç nüsha: biri **kuşe kâğıda renkli ve yaldızlı** basılıp törenin sonunda size teslim edilir; diğer iki nüshadan biri kapalı ve “GİZLİ” kayıtlı zarfla Diyanet İşleri Başkanlığı Din Hizmetleri Genel Müdürlüğü’ne gönderilir, biri de mahallinde dosyalanır.
+- **Nasıl teslim edilir?** İmzalar tamamlanan belge, Müşavirlik onayı için gönderilir. Sosyal İşler Müşaviri Salih GÖR’ün ıslak imzasından sonra belge genellikle seçtiğiniz camiye posta ile gelir ve size elden teslim edilir; dilerseniz doğrudan adresinize gönderilmesi de istenebilir.
 - **Belgede ne yazar?** Ad soyad, cinsiyet, doğum tarihi ve yeri, anne-baba adı, uyruk, medeni hâl, öğrenim durumu, meslek, adres ve iletişim bilgileri, önceki din, ihtida sebebi, ihtida tarihi, belge numarası ve tarihi, vesikalık fotoğraf, iki şahidin ve yetkilinin imzası.
 - **Nerede işe yarar?** Belgenin, **Suudi Arabistan makamlarının Hac/Umre vizesi başvurusunda** talep edilen “Certificate of Conversion” olarak kullanıldığı bilinmektedir. Diğer resmî işlemlerde de ibraz edilebilir; ancak her kurumun kendi kabul kriteri farklı olabileceğinden, özel bir kullanım amacınız varsa önceden ilgili kurumla teyit etmenizi öneririz.
 
-> Bu site üzerinden doldurduğunuz online form, resmî EK-9’un **ön başvurusu/dilekçesi** niteliğindedir; resmî belge yalnızca camimizdeki tören ve Müşavirlik onayı ile düzenlenir.
+> Bu site üzerinden doldurduğunuz online form, resmî EK-9’un **ön başvurusu/dilekçesi** niteliğindedir. Tören seçtiğiniz camide yapılabilir; belge, gerekli imzalar ile Müşavirlik onayı tamamlandıktan sonra düzenlenir.
 
 ## Gerekli Belgeler
 
@@ -83,7 +83,7 @@ Tören günü yanınızda bulundurmanız gerekenler:
 - **Dilekçe** — Müşavirliğe gidecek dosyada, İhtida Belgesi’ni talep eden imzalı bir dilekçe bulunur. Bunu sizin için biz hazırlarız: formda verdiğiniz bilgiler ve çizdiğiniz imzayla, iki dilli olarak basılır; imzalamadan önce okur, dilerseniz kendi elinizle de yazabilirsiniz.
 - **EK-10 Açık Rıza Metni** — tören günü kâğıt üzerinde imzalanır. Metnin tamamı Türkçe, İngilizce, **Fransızca** ve Felemenkçe olarak yandaki bağlantıdan okunabilir.
 
-**Kişisel verileriniz hakkında:** Diyanet İşleri Başkanlığı’nın ihtida yönergesi (madde 44), resmî belgenin düzenlenebilmesi için bir vesikalık fotoğraf ile kimlik/pasaport örneğinin **resmî dosyaya** konulmasını öngörür. Bu belgeleri tören gününü beklemeden başvuru formunda topluyoruz; böylece İhtida Belgeniz tören günü hazır olur. Başvurunuza ilişkin **her türlü bilgi ve belge hem camimizde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde saklanır**; yayımlanmaz, üçüncü kişilerle paylaşılmaz, yalnızca hizmetin gerektirdiği ölçüde ve asgari sayıda yetkili kişi erişebilir. Kimlik **numaranız** hiçbir aşamada sorulmaz. Görsellerinizin ve imzanızın işlenmesi için formda ayrıca açık rızanız alınır; bu rızayı istediğiniz zaman geri alabilirsiniz.
+**Kişisel verileriniz hakkında:** Diyanet İşleri Başkanlığı’nın ihtida yönergesi (madde 44), resmî belgenin düzenlenebilmesi için bir vesikalık fotoğraf ile kimlik/pasaport örneğinin **resmî dosyaya** konulmasını öngörür. Bu belgeleri tören gününü beklemeden başvuru formunda topluyoruz; böylece belge dosyanız zamanında hazırlanır. Başvurunuza ilişkin **her türlü bilgi ve belge hem camimizde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde saklanır**; yayımlanmaz, üçüncü kişilerle paylaşılmaz, yalnızca hizmetin gerektirdiği ölçüde ve asgari sayıda yetkili kişi erişebilir. Kimlik **numaranız** hiçbir aşamada sorulmaz. Görsellerinizin ve imzanızın işlenmesi için formda ayrıca açık rızanız alınır; bu rızayı istediğiniz zaman geri alabilirsiniz.
 
 ## Gizlilik ve Mahremiyet
 
@@ -111,7 +111,7 @@ Amacımız sizi bir kültüre değil, İslam’a kazandırmaktır: Müslüman ol
 Avrupa’da yeni Müslüman olan kardeşlerimizin en çok konuştuğu başlıklar ve camimizin yaklaşımı:
 
 - **Ailenin tepkisi.** İlk dönem zor olabilir. Aileyle ilişkiyi koparmak İslam’ın öğretisi değildir; ana-babaya iyilik Kur’an’ın açık emridir. Bu konuda sizinle konuşur, gerekirse aile üyelerinizin sorularını da cevaplarız.
-- **Dil engeli.** Camimizde hutbe ve sohbetlerin çoğu Türkçedir. Bu yüzden Fransızca kaynakları öne çıkarıyor, görüşmeleri ve töreni Fransızca yapabiliyoruz. Anlamadığınız bir şey olduğunda çekinmeden sorun.
+- **Fransızca ile iletişim.** Her cuma Türkçe hutbenin ardından Fransızca hutbe okunur. Din görevlimizle Fransızca doğrudan iletişim kurulabilir; hafta sonu Kur’an kurslarımız da Türkçe-Fransızca iki dilli verilir. Görüşme ve töreninizi Fransızca yapabilir, anlamadığınız her konuda rahatlıkla açıklama isteyebilirsiniz.
 - **“İçeriden” hissedememek.** Kültürel alışkanlıklarla dinin farkını ayırt etmenize yardımcı oluruz. Kimse sizden Türkçe öğrenmenizi veya bir kültürü benimsemenizi bekleyemez.
 - **Kıyafet ve ibadetler.** İbadetler kademelidir; kimse sizi zorlamaz ve ilerlemenizi ölçmez.
 - **Cenaze ve vasiyet.** Vefat hâlinde İslamî usullere göre defnedilmek isteyen mühtediler için **yazılı vasiyet** büyük önem taşır; aksi hâlde aile farklı bir yol (örneğin kremasyon) tercih edebilir. Bu konuda bilgi vermek ve [Cenaze ve Nakil Fonu](/tr/cenaze-hizmetleri/) gibi imkânları anlatmak için görevlimize başvurabilirsiniz.
@@ -141,7 +141,7 @@ Bilinen ve doğrulanmış kullanım alanı Hac/Umre vizesi başvurusudur. Başka
 Törende 2 şahidin bulunması gerekir; tanıdığınız yoksa cami cemaatinden şahit bulmanıza yardımcı oluruz.
 
 **Ne kadar sürer?**
-Tören ve belge takdimi genellikle aynı gün tamamlanır; resmî arşiv kaydı birkaç hafta sürebilir.
+Tören ve size ait imzalar tamamlandıktan sonra dosya Müşavirlik onayına gönderilir. Islak imzalı belgenin posta ile dönmesi birkaç hafta sürebilir.
 
 **Tören Fransızca yapılabilir mi?**
 Evet. Görüşme ve tören Türkçe veya Fransızca yapılabilir.

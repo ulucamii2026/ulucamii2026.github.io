@@ -2,7 +2,7 @@
 baslik: À propos
 altBaslik: L’histoire d’un service qui se poursuit à Marche-en-Famenne depuis plus de quarante ans.
 aciklama: Histoire de la Mosquée Ulu Camii de Marche-en-Famenne, son rattachement à la Fondation Diyanet de Belgique, son statut officiel, ses services et sa gouvernance.
-guncelleme: 2026-08-22
+guncelleme: 2026-09-09
 ---
 
 ## Notre histoire
@@ -13,7 +13,7 @@ Depuis le **25 décembre 2023**, la dénomination officielle française de notre
 
 ## Notre rattachement à la Fondation Diyanet de Belgique
 
-Notre mosquée exerce ses activités sous l’égide de la **Fondation Diyanet de Belgique (BDV)**, créée en 1982. Notre imam est désigné par la Présidence des Affaires religieuses de Turquie (Diyanet) et son activité est coordonnée par le Conseiller aux Affaires sociales rattaché à la BDV. Ce rattachement garantit que nos services cultuels s’inscrivent dans la tradition du Diyanet turc, avec régularité et continuité.
+Notre mosquée exerce ses activités sous l’égide de la **Fondation Diyanet de Belgique (BDV)**, créée en 1982. Notre imam est désigné par la Présidence des Affaires religieuses de Turquie (Diyanet) pour une mission de cinq ans et son activité est coordonnée par le Conseiller aux Affaires sociales rattaché à la BDV. Il est possible de communiquer directement avec notre imam en français comme en turc. Ce rattachement garantit que nos services cultuels s’inscrivent dans la tradition du Diyanet turc, avec régularité et continuité.
 
 ## Notre statut officiel
 
@@ -23,8 +23,8 @@ Notre mosquée est une communauté cultuelle **reconnue par la Région wallonne*
 
 Au-delà de la vie cultuelle, notre mosquée propose un large éventail de services répondant aux besoins religieux et sociaux de notre communauté :
 
-- Les cinq prières quotidiennes et le sermon (khutba) du vendredi
-- **L’école coranique Ulu Camii**
+- Les cinq prières quotidiennes ; chaque vendredi, un sermon en français suit le sermon en turc
+- **L’école coranique Ulu Camii** — un enseignement bilingue turc-français le week-end
 - Les programmes du ramadan et l’organisation des iftars
 - Les programmes des fêtes religieuses et des nuits saintes (kandil)
 - L’organisation du sacrifice par procuration (Qurban)

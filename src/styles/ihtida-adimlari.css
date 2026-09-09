@@ -1,0 +1,42 @@
+/* İhtida: mevcut Kilim Kartografyası renkleriyle sakin bir başvuru akışı. */
+.ucf-hazirlik { margin-top: 1rem; padding-block: .7rem; border-block: 1px solid var(--cizgi); }
+.ucf-hazirlik summary { cursor: pointer; font-weight: 600; padding-block: .35rem; }
+.ucf-hazirlik p { font-size: .94rem; color: var(--metin-2); margin-top: .75rem; }
+.ucf-adimlar { padding-block: .35rem 1rem; border-bottom: 1px solid var(--cizgi); scroll-margin-top: 6rem; min-width: 0; }
+.ucf-adim-ust { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; margin-bottom: .9rem; }
+.ucf-adim-ust strong { font: 600 1.5rem/1.3 var(--font-serif); }
+.ucf-adim-ust > span { color: var(--metin-2); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.ucf-adimlar progress { display: block; width: 100%; height: .4rem; margin-bottom: 1rem; border: 0; border-radius: 1rem; overflow: hidden; appearance: none; background: var(--cizgi); accent-color: var(--vurgu); }
+.ucf-adimlar progress::-webkit-progress-bar { background: var(--cizgi); }
+.ucf-adimlar progress::-webkit-progress-value { background: var(--vurgu); transition: width .25s ease-out; }
+.ucf-adimlar progress::-moz-progress-bar { background: var(--vurgu); }
+.ucf-adim-listesi { display: flex; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+.ucf-adim-listesi li { flex: 1; min-width: 0; }
+.ucf-adim-listesi button { display: flex; flex-direction: column; align-items: center; gap: .45rem; min-height: 4.8rem; width: 100%; padding: .5rem .25rem; border: 1px solid transparent; border-radius: .3rem; background: none; color: var(--metin-2); font: inherit; font-size: .78rem; line-height: 1.3; cursor: pointer; text-align: center; overflow-wrap: anywhere; }
+.ucf-adim-listesi button > span { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 50%; font-size: .9rem; }
+.ucf-adim-listesi button[aria-current="step"] { font-weight: 700; color: var(--metin); background: var(--zemin-2); border-color: var(--cizgi); }
+.ucf-adim-listesi button[aria-current="step"] > span { background: var(--metin); border-color: var(--metin); color: var(--zemin); }
+.ucf-adim-listesi button:hover { background: var(--zemin-2); color: var(--metin); }
+.ucf-adim-alt { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.25rem; margin-top: .8rem; }
+.ucf-adim-alt p { margin: 0; flex: 1 1 26rem; color: var(--metin-2); font-size: .92rem; }
+.ucf-adim-alt button { padding: .65rem 0; background: none; border: 0; color: var(--vurgu-2); font: inherit; font-size: .88rem; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.ucf-adim-eylemler { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; justify-content: space-between; padding-top: .25rem; }
+.ucf-adim-eylemler button { min-height: 3rem; }
+.ucf-adim-eylemler [data-adim-ileri] { margin-left: auto; }
+.ucf-adim-eylemler p { flex-basis: 100%; margin: .25rem 0 0; font-size: .82rem; color: var(--metin-2); }
+.ucf-adim-eylemler button:disabled { opacity: .55; cursor: not-allowed; }
+.ucf [data-ihtida-adimlar][hidden], .ucf [data-adim-eylemler][hidden], .ucf [data-adim-ileri][hidden], .ucf .ucf-bolum[hidden] { display: none; }
+.ucf-adimlar button:focus-visible, .ucf-hazirlik summary:focus-visible { outline: 2px solid var(--color-iznik); outline-offset: 3px; }
+@media (max-width: 639px) {
+  .ucf-adim-listesi button { min-height: 2.75rem; padding: .3rem .1rem; font-size: 0; gap: 0; }
+  .ucf-adim-listesi button > span { width: 1.75rem; height: 1.75rem; font-size: .85rem; }
+  .ucf-adim-ust strong { font-size: 1.3rem; }
+  .ucf-adim-alt { gap: .25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ucf-adimlar progress::-webkit-progress-value { transition: none; }
+}
+@media print {
+  .ucf .ucf-bolum[hidden] { display: block; }
+  .ucf-adimlar, .ucf-adim-eylemler { display: none; }
+}

@@ -2,7 +2,7 @@
 baslik: Becoming Muslim (Conversion to Islam)
 altBaslik: Anyone who wishes to embrace Islam may come to our mosque, with no pressure and no preconditions.
 aciklama: "Becoming Muslim: the shahada, the ceremony, the official EK-9 certificate, documents, support afterwards and Diyanet’s free library in more than forty languages."
-guncelleme: 2026-09-08
+guncelleme: 2026-09-09
 ---
 
 ## Welcome
@@ -30,12 +30,12 @@ Becoming Muslim means believing in your heart that God is One and that Muhammad 
 
 ## The Process, Step by Step
 
-1. **Application.** Fill in the online form below, or simply call our imam. It is free and commits you to nothing; you may withdraw at any time.
+1. **Application.** Fill in the online form below, or simply call our imam. It is free and commits you to nothing; you may withdraw at any time. If you select another Turkish Muslim mosque in the form, the ceremony is arranged in consultation with that mosque; the Ulu Mosque team follows the coordination of the application and the file.
 2. **Meeting.** Our imam contacts you, listens to your questions and explains the process, calmly, at the mosque.
 3. **Setting the date.** The day and time of the ceremony are agreed together, around your availability.
-4. **The ceremony.** At the mosque, before two witnesses, you make the declaration of faith (details below).
-5. **Presentation of the certificate.** The colour copy printed on glossy paper is handed to you **the same day**.
-6. **Official record.** The official copies are registered through the Counsellor for Social Affairs at the Turkish Embassy in Brussels; this step can take a few weeks.
+4. **The ceremony.** At the mosque you have chosen, before two witnesses, you make the declaration of faith (details below).
+5. **The file and signatures.** Your file is prepared with the EK-9, EK-10, a copy of your identity document and your written request; the signatures concerning you are completed.
+6. **Counsellor’s approval and delivery.** The file is sent to the Counsellor for Social Affairs at the Turkish Embassy in Brussels. After the handwritten signature of the Counsellor for Social Affairs, Salih GÖR, the certificate usually returns by post to the mosque you have chosen and is handed to you in person; if you wish, direct delivery to your address can also be requested. This stage can take several weeks.
 7. **Afterwards.** Guidance, lessons and French-language resources continue — you are not left alone.
 
 ## How Does the Ceremony Work?
@@ -47,7 +47,7 @@ The ceremony follows the Presidency of Religious Affairs’ official text, the *
 3. **The question of free will** — before God and before the witnesses, the imam asks you explicitly whether you are choosing Islam freely, under no compulsion. **This step is never skipped.**
 4. **The declaration of faith (shahada)** — repeated together, syllable by syllable.
 5. **Takbir, blessings upon the Prophet, and congratulations.**
-6. **Entry in the conversion register** and presentation of the certificate.
+6. **Entry in the conversion register** and completion of the file.
 7. **Closing** — verses 18-20 of Sûrat Âl ‘Imrân, or Sûrat al-‘Asr and al-Fâtiha, are recited and translated; the ceremony ends with a supplication.
 8. **A gift** — where possible, a copy of the Qur’an translated into your language and an introductory book on Islam.
 
@@ -62,11 +62,11 @@ For French-speaking candidates the ceremony can be held entirely in French; the 
 The **conversion certificate (EK-9)** is an official bilingual (Turkish/English) document issued by the Presidency of Religious Affairs of Türkiye (Diyanet İşleri Başkanlığı) that formally records your declaration and the details of the ceremony. It carries your signature, that of the **two witnesses**, and that of the representative of the Presidency (the Counsellor for Social Affairs at the Turkish Embassy in Brussels).
 
 - **It is free of charge.**
-- **How many copies?** Three. One, printed **in colour and gilt on glossy paper**, is handed to you at the end of the ceremony; of the other two, one is sent in a sealed confidential envelope to the Directorate General of Religious Services, and one is filed locally.
+- **How is it delivered?** Once the signatures are completed, the certificate is sent for the Counsellor’s approval. After the handwritten signature of the Counsellor for Social Affairs, Salih GÖR, it usually returns by post to the mosque you have chosen and is handed to you in person; you may also request direct delivery to your address.
 - **What does it contain?** Name and surname, sex, date and place of birth, parents’ names, nationality, marital status, education, occupation, address and contact details, previous religion, reason for conversion, date of conversion, document number and date, passport photo, and the signatures of the two witnesses and the official.
 - **What is it used for?** Its confirmed, documented use is the **Hajj/Umrah visa application to the Saudi authorities**, which require a “Certificate of Conversion”. It may also be presented for other official purposes; since each institution sets its own criteria, we recommend checking in advance if you have a particular use in mind.
 
-> The online form on this site is a **preliminary application** for the official EK-9; the official document is issued only after the ceremony at our mosque and approval by the Counsellor’s office.
+> The online form on this site is a **preliminary application** for the official EK-9. The ceremony may be held at the mosque you have chosen; the document is issued after the necessary signatures and the Counsellor’s approval are complete.
 
 ## Documents Required
 
@@ -83,7 +83,7 @@ To bring on the day of the ceremony:
 - **A written request** — the file sent to the Counsellor includes a signed request for the conversion certificate. We prepare it for you: it is printed in two languages from the information in the form and the signature you drew there; you read it before signing, and you may also write it out by hand.
 - **The EK-10 explicit consent form** — signed on paper on the day. The full text is available in Turkish, English, **French** and Dutch through the link in the sidebar.
 
-**About your personal data:** Diyanet’s conversion directive (article 44) requires a passport photo and a copy of the identity document to be placed in the **official file** so that the certificate can be issued. We gather these documents in the form itself rather than waiting for the day of the ceremony, so that your certificate is ready. **All information and documents relating to your application are kept both by our mosque and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels**; they are never published or passed to third parties and are accessible only to the smallest possible number of authorised people, strictly as the service requires. Your national registry **number** is never asked for at any stage. The processing of your images and signature is covered by a separate explicit consent in the form, which you may withdraw at any time.
+**About your personal data:** Diyanet’s conversion directive (article 44) requires a passport photo and a copy of the identity document to be placed in the **official file** so that the certificate can be issued. We gather these documents in the form itself rather than waiting for the day of the ceremony, so that your file can be prepared in good time. **All information and documents relating to your application are kept both by our mosque and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels**; they are never published or passed to third parties and are accessible only to the smallest possible number of authorised people, strictly as the service requires. Your national registry **number** is never asked for at any stage. The processing of your images and signature is covered by a separate explicit consent in the form, which you may withdraw at any time.
 
 ## Confidentiality and Discretion
 
@@ -111,7 +111,7 @@ Our aim is not to bring you into a culture but to accompany you in Islam: becomi
 The subjects new Muslims raise with us most often, and how we respond:
 
 - **Family reactions.** The first period can be hard. Cutting ties with one’s family is not an Islamic teaching: kindness to parents is an explicit command of the Qur’an. We talk it through with you and, if you wish, answer your relatives’ questions too.
-- **The language barrier.** At the mosque, sermons and talks are mostly in Turkish. That is why we highlight French-language resources and can hold the meeting and the ceremony in French. Never hesitate to ask for an explanation.
+- **Communicating in French.** Every Friday, a French sermon follows the Turkish sermon. You may speak directly with our imam in French; our weekend Qur’an school also provides bilingual Turkish-French teaching. The meeting and ceremony can be held in French, and you may always ask for an explanation.
 - **Not feeling “inside”.** We help you tell religion apart from cultural habit. Nobody can expect you to learn Turkish or adopt a culture.
 - **Dress and practice.** Practice is gradual; nobody forces you and nobody measures your progress.
 - **Death and wills.** For a convert who wishes to be buried according to Islamic rites, a **written will** matters greatly: without one, the family may choose otherwise (cremation, for example). Our imam can inform you and explain options such as the [Funeral and Repatriation Fund](/en/funeral-services/).
@@ -141,7 +141,7 @@ Its confirmed use is the Hajj/Umrah visa application. For any other official pur
 The ceremony requires 2 witnesses; if you do not know anyone, we will help you find them within our congregation.
 
 **How long does it take?**
-The ceremony and the presentation of the certificate are usually completed the same day; the official record can take a few weeks.
+After the ceremony and your signatures, the file is sent for the Counsellor’s approval. The return of the certificate carrying the handwritten signature may take several weeks.
 
 **Can the ceremony be held in French?**
 Yes. Both the meeting and the ceremony can be held in French or Turkish.

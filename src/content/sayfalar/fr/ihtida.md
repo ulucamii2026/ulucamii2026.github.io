@@ -2,7 +2,7 @@
 baslik: Devenir musulman (Conversion à l’islam)
 altBaslik: Toute personne souhaitant embrasser l’islam peut s’adresser à notre mosquée, sans aucune pression ni condition préalable.
 aciklama: "La conversion à l’islam : chahada, cérémonie, attestation officielle (EK-9), documents, accompagnement et bibliothèque gratuite du Diyanet en plus de quarante langues."
-guncelleme: 2026-09-08
+guncelleme: 2026-09-09
 ---
 
 ## Bienvenue
@@ -30,12 +30,12 @@ Devenir musulman consiste à croire de cœur en l’unicité de Dieu (Allah) et 
 
 ## La démarche, étape par étape
 
-1. **La demande.** Remplissez le formulaire en ligne ci-dessous ou appelez directement notre imam. La demande est gratuite et ne vous engage à rien ; vous pouvez y renoncer à tout moment.
+1. **La demande.** Remplissez le formulaire en ligne ci-dessous ou appelez directement notre imam. La demande est gratuite et ne vous engage à rien ; vous pouvez y renoncer à tout moment. Si vous choisissez une autre mosquée musulmane turque dans le formulaire, la cérémonie est organisée en concertation avec cette mosquée ; l’équipe de la Mosquée Ulu Camii suit la coordination de la demande et du dossier.
 2. **L’entretien.** Notre imam vous contacte, écoute vos questions et vous explique la démarche, dans un cadre calme à la mosquée.
 3. **Le choix de la date.** Le jour et l’heure de la cérémonie sont fixés ensemble, selon vos disponibilités.
-4. **La cérémonie.** À la mosquée, devant deux témoins, vous prononcez la profession de foi (le déroulé détaillé se trouve ci-dessous).
-5. **La remise de l’attestation.** L’exemplaire couleur imprimé sur papier glacé vous est remis **le jour même**.
-6. **L’enregistrement officiel.** Les exemplaires officiels sont enregistrés par l’intermédiaire du Conseiller des Affaires sociales de l’Ambassade de Turquie à Bruxelles ; cette étape peut prendre plusieurs semaines.
+4. **La cérémonie.** Dans la mosquée que vous avez choisie, devant deux témoins, vous prononcez la profession de foi (le déroulé détaillé se trouve ci-dessous).
+5. **Le dossier et les signatures.** Votre dossier est préparé avec l’EK-9, l’EK-10, la copie de votre pièce d’identité et votre requête ; les signatures qui vous concernent sont complétées.
+6. **Validation par le Conseiller et remise.** Le dossier est envoyé au Conseiller aux Affaires sociales de l’Ambassade de Turquie à Bruxelles. Après la signature manuscrite du Conseiller aux Affaires sociales Salih GÖR, l’attestation revient généralement par courrier à la mosquée que vous avez choisie et vous est remise en main propre ; si vous le souhaitez, un envoi direct à votre adresse peut aussi être demandé. Cette étape peut prendre plusieurs semaines.
 7. **Ensuite.** L’accompagnement continue : parrainage, cours et ressources en français — nous ne vous laissons pas seul(e).
 
 ## Comment se déroule la cérémonie de conversion ?
@@ -47,7 +47,7 @@ La cérémonie suit le texte officiel de la Présidence des Affaires religieuses
 3. **La question du libre arbitre** — devant Dieu et devant les témoins, l’imam vous demande explicitement si vous choisissez l’islam librement, sans aucune contrainte. **Cette étape n’est jamais omise.**
 4. **La profession de foi (chahada)** — récitée ensemble, syllabe par syllabe.
 5. **Le takbir, la prière sur le Prophète et les félicitations.**
-6. **L’inscription au registre de conversion** et la remise de l’attestation.
+6. **L’inscription au registre de conversion** et la finalisation du dossier.
 7. **La clôture** — les versets 18-20 de la sourate Âl ‘Imrân, ou les sourates al-‘Asr et al-Fâtiha, sont récités et traduits ; la cérémonie se termine par une invocation.
 8. **Le présent** — dans la mesure du possible, un exemplaire du Coran traduit dans votre langue et un ouvrage d’introduction à l’islam vous sont offerts.
 
@@ -62,11 +62,11 @@ Pour les candidats francophones, la cérémonie peut se dérouler entièrement e
 L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc/anglais), délivré par la Présidence des Affaires religieuses de Turquie (Diyanet İşleri Başkanlığı), qui atteste officiellement votre déclaration de conversion et les informations de la cérémonie. Elle porte votre signature, celle des **deux témoins** et celle du représentant de la Présidence des Affaires religieuses (Conseiller des Affaires sociales de l’Ambassade de Turquie à Bruxelles).
 
 - **Elle est gratuite.** Aucun frais ne vous est demandé.
-- **Combien d’exemplaires ?** Trois. L’un, imprimé **en couleur et doré sur papier glacé**, vous est remis à la fin de la cérémonie ; parmi les deux autres, l’un part sous pli fermé et confidentiel à la Direction générale des services religieux de la Présidence, l’autre est classé sur place.
+- **Comment l’attestation est-elle remise ?** Une fois les signatures complétées, l’attestation est envoyée pour validation par le Conseiller. Après la signature manuscrite du Conseiller aux Affaires sociales Salih GÖR, elle revient généralement par courrier à la mosquée que vous avez choisie et vous est remise en main propre ; vous pouvez aussi demander un envoi direct à votre adresse.
 - **Que contient-elle ?** Nom et prénom, sexe, date et lieu de naissance, noms des parents, nationalité, état civil, niveau d’études, profession, adresse et coordonnées, religion précédente, motif de la conversion, date de la conversion, numéro et date du document, photo d’identité, signatures des deux témoins et du responsable.
 - **À quoi sert-elle ?** Son usage confirmé et documenté est la demande de **visa pour le Hajj/Omra auprès des autorités saoudiennes**, qui exigent un « Certificate of Conversion ». Elle peut également être présentée pour d’autres démarches officielles ; chaque organisme ayant ses propres critères, nous vous recommandons de vérifier au préalable auprès de l’organisme concerné si vous avez un usage particulier en tête.
 
-> Le formulaire en ligne que vous remplissez sur ce site constitue une **pré-demande** de l’attestation officielle EK-9 ; le document officiel n’est délivré qu’après la cérémonie à notre mosquée et la validation du Conseiller des Affaires religieuses.
+> Le formulaire en ligne que vous remplissez sur ce site constitue une **pré-demande** de l’attestation officielle EK-9. La cérémonie peut se tenir dans la mosquée que vous avez choisie ; le document est établi après les signatures nécessaires et la validation du Conseiller.
 
 ## Documents nécessaires
 
@@ -83,7 +83,7 @@ L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc
 - **Une requête écrite** — le dossier transmis au Conseiller comporte une demande signée d’attestation de conversion. Nous la préparons pour vous : elle est imprimée en deux langues à partir des informations du formulaire et de la signature que vous y avez tracée ; vous la lisez avant de la signer et vous pouvez aussi la rédiger de votre main.
 - **Le formulaire de consentement EK-10** — signé sur papier le jour même. Le texte intégral est disponible en turc, anglais, **français** et néerlandais via le lien ci-contre.
 
-**Au sujet de vos données personnelles :** la directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document. Nous réunissons ces pièces dès le formulaire, sans attendre le jour de la cérémonie, afin que votre attestation soit prête. **Toutes les informations et pièces relatives à votre demande sont conservées à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles** ; elles ne sont jamais publiées ni transmises à des tiers et ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu. Votre **numéro** de registre national ne vous est demandé à aucun moment. Le traitement de vos images et de votre signature fait l’objet d’un consentement explicite distinct dans le formulaire ; vous pouvez le retirer à tout moment.
+**Au sujet de vos données personnelles :** la directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document. Nous réunissons ces pièces dès le formulaire, sans attendre le jour de la cérémonie, afin que votre dossier puisse être préparé à temps. **Toutes les informations et pièces relatives à votre demande sont conservées à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles** ; elles ne sont jamais publiées ni transmises à des tiers et ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu. Votre **numéro** de registre national ne vous est demandé à aucun moment. Le traitement de vos images et de votre signature fait l’objet d’un consentement explicite distinct dans le formulaire ; vous pouvez le retirer à tout moment.
 
 ## Confidentialité et discrétion
 
@@ -111,7 +111,7 @@ Notre objectif n’est pas de vous faire adopter une culture, mais de vous accom
 Voici les sujets dont les nouveaux musulmans nous parlent le plus, et notre manière d’y répondre :
 
 - **La réaction de la famille.** Les premiers temps peuvent être difficiles. Rompre avec sa famille n’est pas un enseignement de l’islam : la bonté envers les parents est un commandement explicite du Coran. Nous en parlons avec vous et, si vous le souhaitez, nous répondons aussi aux questions de vos proches.
-- **La barrière de la langue.** À la mosquée, le prêche et les causeries sont majoritairement en turc. C’est pourquoi nous mettons en avant les ressources francophones et pouvons mener l’entretien et la cérémonie en français. N’hésitez jamais à demander une explication.
+- **Échanger en français.** Chaque vendredi, un sermon en français est prononcé après le sermon en turc. Vous pouvez communiquer directement avec notre imam en français ; notre école coranique du week-end propose elle aussi un enseignement bilingue turc-français. L’entretien et la cérémonie peuvent se dérouler en français, et vous pouvez toujours demander une explication.
 - **Ne pas se sentir « à l’intérieur ».** Nous vous aidons à distinguer ce qui relève de la religion et ce qui relève d’habitudes culturelles. Personne ne peut attendre de vous que vous appreniez le turc ou adoptiez une culture.
 - **Vêtements et pratiques.** La pratique est progressive ; personne ne vous force et personne n’évalue vos progrès.
 - **Décès et testament.** Pour un converti qui souhaite être inhumé selon les rites musulmans, un **testament écrit** est essentiel : à défaut, la famille peut choisir une autre voie (par exemple la crémation). Notre imam peut vous informer à ce sujet et vous présenter des solutions comme le [Fonds funéraire et de rapatriement](/fr/services-funeraires/).
@@ -141,7 +141,7 @@ Son usage confirmé est la demande de visa Hajj/Omra. Pour toute autre démarche
 La cérémonie nécessite 2 témoins ; si vous n’en connaissez pas, nous pouvons vous aider à en trouver au sein de notre communauté.
 
 **Combien de temps cela prend-il ?**
-La cérémonie et la remise de l’attestation se font généralement le même jour ; l’enregistrement officiel peut prendre plusieurs semaines.
+Après la cérémonie et vos signatures, le dossier est envoyé pour validation par le Conseiller. Le retour de l’attestation portant la signature manuscrite peut prendre plusieurs semaines.
 
 **La cérémonie peut-elle se dérouler en français ?**
 Oui. L’entretien comme la cérémonie peuvent se tenir en français ou en turc.

@@ -2,7 +2,7 @@
 baslik: About Us
 altBaslik: The story of a service that has continued in Marche-en-Famenne for more than forty years.
 aciklama: The history of Marche-en-Famenne Ulu Mosque, its affiliation with the Diyanet Foundation of Belgium, its official status, its services and its governance.
-guncelleme: 2026-08-22
+guncelleme: 2026-09-09
 ---
 
 ## Our History
@@ -13,7 +13,7 @@ Since **25 December 2023**, our association’s official French name has been re
 
 ## Our Affiliation with the Diyanet Foundation of Belgium
 
-Our mosque operates under the **Diyanet Foundation of Belgium (BDV)**, founded in 1982. Our imam is appointed by the Presidency of Religious Affairs of Turkey and coordinated through the Counsellor for Social Affairs within the BDV. This affiliation ensures that our worship and religious services are carried out in keeping with the tradition of the Turkish Diyanet, in a regular and continuous manner.
+Our mosque operates under the **Diyanet Foundation of Belgium (BDV)**, founded in 1982. Our imam is appointed by the Presidency of Religious Affairs of Turkey for a five-year term and coordinated through the Counsellor for Social Affairs within the BDV. He can be contacted directly in French as well as Turkish. This affiliation ensures that our worship and religious services are carried out in keeping with the tradition of the Turkish Diyanet, in a regular and continuous manner.
 
 ## Our Official Status
 
@@ -23,8 +23,8 @@ Our mosque is a place of worship officially recognised (*communauté locale reco
 
 Alongside worship, our mosque offers a wide range of services for the religious and social needs of our community:
 
-- The five daily prayers and the Friday sermon
-- The **Ulu Camii Qur’an School**
+- The five daily prayers; every Friday, a French sermon follows the Turkish sermon
+- The **Ulu Camii Qur’an School** — bilingual Turkish-French teaching at weekends
 - Ramadan programmes and iftar organisation
 - Eid and holy-night (kandil) programmes
 - Sacrifice by proxy (Kurban) organisation

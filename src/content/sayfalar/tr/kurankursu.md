@@ -2,14 +2,14 @@
 baslik: Kur’an Kursu
 altBaslik: Çocuklarımıza ve gençlerimize Kur’an-ı Kerim, temel dinî bilgiler ve ahlak eğitimi — 7 yaş ve üzeri, her milletten öğrenciye açık, kayıt ve dersler ücretsiz.
 aciklama: Marche-en-Famenne Ulu Camii Kur’an Kursu — 2026-2027 kayıtları açık, ders programı, müfredat ve veli bilgileri.
-guncelleme: 2026-08-22
+guncelleme: 2026-09-09
 ---
 
 ## Kursumuz
 
 Kursumuzun resmî adı <strong>“Kur’an-ı Kerim ve Temel Dinî Bilgiler Kursu”</strong>dur. Kursumuz, T.C. Dışişleri Bakanlığı Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’ne (Belçika Din Hizmetleri Müşavirliği) bağlı olarak yürütülür.
 
-Amacımız, çocuklarımıza ve gençlerimize Kur’an-ı Kerim’i usulüne uygun okumayı, temel dinî bilgileri ve İslam ahlakını kazandırmaktır.
+Amacımız, çocuklarımıza ve gençlerimize Kur’an-ı Kerim’i usulüne uygun okumayı, temel dinî bilgileri ve İslam ahlakını kazandırmaktır. Hafta sonu derslerimiz Türkçe ve Fransızca iki dilli olarak verilir; böylece aileler ve öğrenciler ihtiyaç duyduklarında Fransızca da destek alabilir.
 
 Kursumuz **7 yaş ve üzerindeki**, her milletten öğrenciye açıktır. **Kayıt ve dersler tamamen ücretsizdir; herhangi bir aidat alınmaz.**
 

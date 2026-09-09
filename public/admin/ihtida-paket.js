@@ -5,16 +5,31 @@
 import { ek9Uret } from './ek9.js';
 import { ek10Uret } from './ek10.js';
 import { dilekceUret } from './dilekce.js';
+import { camiCoz } from './cami-secimi.js';
 
 export async function ihtidaPaketiUret(g) {
   const { PDFDocument, rgb } = g.pdfLib;
-  const v = g.veri || {};
+  const hamCami = g.cami || g.veri?.cami;
+  const cami = camiCoz(hamCami);
+  if (!cami) throw new Error('Başvuru camisi eksik veya geçersiz.');
+  const v = { ...(g.veri || {}), cami };
+  const digerCami = cami.id !== 'ulucamii-marche';
+  if (digerCami) {
+    const sahitler = Array.isArray(g.sahitler) ? g.sahitler : [];
+    const adlar = sahitler.slice(0, 2).map((s) => String(s?.ad || '').trim());
+    if (adlar.length !== 2 || !adlar[0] || !adlar[1]) throw new Error('Seçilen cami için iki şahidin adı zorunludur.');
+    if (adlar[0].localeCompare(adlar[1], 'tr', { sensitivity: 'accent' }) === 0) throw new Error('Seçilen cami için iki farklı şahit yazın.');
+  }
   for (const [ad, deger] of [['Ad soyad', v.adSoyad], ['Adres', v.adres], ['İhtida tarihi', g.onBasvuru ? 'teyit bekliyor' : v.ihtidaTarihi], ['Beyan tarihi', v.beyanTarihi]]) {
     if (!String(deger || '').trim()) throw new Error(ad + ' eksik; paketi hazırlamadan önce tamamlayın.');
   }
   if (!g.foto) throw new Error('Vesikalık fotoğraf eksik.');
   if (g.okunamayanGorseller?.length) throw new Error('Başvurunun bazı görselleri okunamadı; eksik eklerle paket hazırlanamaz.');
   if (g.basvuranImza && g.ek10Onayi !== true) throw new Error('EK-10 rızası doğrulanmadan imzalı paket hazırlanamaz.');
+  const yeniEk10 = g.ek10Surumu === '2026-09-09';
+  if (yeniEk10 && typeof g.imzaAktarimIzni !== 'boolean') throw new Error('EK-10 imza aktarımı izni eksik.');
+  if (yeniEk10 && g.basvuranImza && g.imzaAktarimIzni !== true) throw new Error('EK-10 imza aktarımı izni olmadan imzalı paket hazırlanamaz.');
+  if (yeniEk10 && !g.basvuranImza && g.imzasiz === true && g.imzaAktarimIzni !== false) throw new Error('İmzasız EK-10 için imza aktarımı izni hayır olmalıdır.');
   if (!g.basvuranImza && g.imzasiz !== true) throw new Error('Başvuranın imzası yok; imza için gönderilecek nüshayı seçin.');
   if (!g.kimlikPdfBytes) {
     if (!['kimlik', 'pasaport'].includes(g.belgeTuru)) throw new Error('Kimlik belgesi türünü seçin.');
@@ -27,12 +42,13 @@ export async function ihtidaPaketiUret(g) {
   if (tarih.getDate() !== Number(eslesme[1]) || tarih.getMonth() + 1 !== Number(eslesme[2])) throw new Error('Beyan tarihi geçersiz.');
 
   const uyarilar = [], uzunAlanlar = [];
-  const ek9 = await ek9Uret({ ...g, uzunAlan: (ad, deger) => uzunAlanlar.push([ad, deger]), uyar: kod => { uyarilar.push(kod); g.uyar?.(kod); } });
+  const ek9 = await ek9Uret({ ...g, cami: v.cami, uzunAlan: (ad, deger) => uzunAlanlar.push([ad, deger]), uyar: kod => { uyarilar.push(kod); g.uyar?.(kod); } });
   if (uyarilar.includes('vesikalik-gomulemedi')) throw new Error('Vesikalık fotoğraf okunamadı. JPEG veya PNG yükleyin.');
   if (uyarilar.includes('alan-kisaltildi') || uyarilar.includes('yazi-kucuk')) throw new Error('Bazı bilgiler EK-9 alanına okunur biçimde sığmıyor. Bilgileri kontrol ederek ayrı EK-9 oluşturun.');
   const ek10 = await ek10Uret({
-    pdfLib: g.pdfLib, fontkit: g.fontkit, fontBytes: g.fontBytes, sablonBytes: g.ek10SablonBytes,
+    pdfLib: g.pdfLib, fontkit: g.fontkit, fontBytes: g.fontBytes, fontKalinBytes: g.fontKalinBytes, sablonBytes: g.ek10SablonBytes,
     adSoyad: v.adSoyad, tarih: v.beyanTarihi, imza: g.basvuranImza || '', onay: g.ek10Onayi === true,
+    surum: yeniEk10 ? '2026-09-09' : 'v1', imzaAktarimIzni: yeniEk10 ? g.imzaAktarimIzni : undefined,
   });
   const dilekce = await dilekceUret({ ...g, veri: v, imza: g.basvuranImza || '', tarih });
   const paket = await PDFDocument.create();

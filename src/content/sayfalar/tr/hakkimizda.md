@@ -2,7 +2,7 @@
 baslik: Hakkımızda
 altBaslik: Marche-en-Famenne’de kırk yılı aşkın bir süredir süregelen bir hizmetin hikâyesi.
 aciklama: Marche-en-Famenne Ulu Camii’nin tarihçesi, Belçika Diyanet Vakfı’na bağlılığı, resmî statüsü, hizmetleri ve yönetim yapısı.
-guncelleme: 2026-08-22
+guncelleme: 2026-09-09
 ---
 
 ## Tarihçemiz
@@ -13,7 +13,7 @@ Derneğimizin resmî Fransızca adı **25 Aralık 2023**’ten bu yana *Associat
 
 ## Belçika Diyanet Vakfı’na Bağlılığımız
 
-Camimiz, 1982 yılında kurulan **Belçika Diyanet Vakfı (BDV)**’ye bağlı olarak hizmet vermektedir. Din görevlimiz Diyanet İşleri Başkanlığı tarafından görevlendirilir ve BDV bünyesindeki Sosyal İşler Müşavirliği aracılığıyla koordine edilir. Bu bağlılık, ibadet ve din hizmetlerimizin Türkiye Diyanet geleneğiyle uyumlu, düzenli ve sürekli bir şekilde yürütülmesini sağlar.
+Camimiz, 1982 yılında kurulan **Belçika Diyanet Vakfı (BDV)**’ye bağlı olarak hizmet vermektedir. Din görevlimiz Diyanet İşleri Başkanlığı tarafından beş yıllık görev dönemi için görevlendirilir ve BDV bünyesindeki Sosyal İşler Müşavirliği aracılığıyla koordine edilir. Din görevlimizle Türkçenin yanı sıra Fransızca da doğrudan iletişim kurulabilir. Bu bağlılık, ibadet ve din hizmetlerimizin Türkiye Diyanet geleneğiyle uyumlu, düzenli ve sürekli bir şekilde yürütülmesini sağlar.
 
 ## Resmî Statümüz
 
@@ -23,8 +23,8 @@ Camimiz, Valon Bölgesi tarafından resmî olarak tanınmış (*communauté loca
 
 Camimiz, ibadet hayatının yanı sıra cemaatimizin dinî ve sosyal ihtiyaçlarına yönelik geniş bir hizmet yelpazesi sunar:
 
-- Beş vakit namaz ve Cuma hutbesi
-- **Ulu Camii Kur’an Kursu**
+- Beş vakit namaz; her cuma Türkçe hutbenin ardından Fransızca hutbe
+- **Ulu Camii Kur’an Kursu** — hafta sonları Türkçe-Fransızca iki dilli eğitim
 - Ramazan programları ve iftar organizasyonları
 - Bayram ve kandil programları
 - Vekâletle kurban organizasyonu

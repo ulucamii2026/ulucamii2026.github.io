@@ -25,7 +25,7 @@ export interface FormSecenekleri {
   /** Özet listesini doldurur; anahtar → görüntülenecek metin. */
   ozet(veriler: Veriler, form: HTMLFormElement): Record<string, string>;
   /** Formun kendi ek doğrulaması: [alan adı, hata metni] listesi. */
-  ekDogrula?(veriler: Veriler, form: HTMLFormElement, metin: Metinler): Array<[string, string]>;
+  ekDogrula?(veriler: Veriler, form: HTMLFormElement, metin: Metinler, bolumler?: HTMLElement[]): Array<[string, string]>;
   /** Başarı sonrası ek iş (ör. kardeş kaydı için veli bilgisini saklamak). */
   basarida?(veriler: Veriler, ref: string): void;
   /** Sayfa yüklenince (taslak geri yüklendikten sonra) çağrılır. */
@@ -310,10 +310,10 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   const gonderDugme = form.querySelector<HTMLButtonElement>('button[type=submit]');
   let gonderimAnahtari = uuid();
 
-  const mesajGoster = (metin: string | null, tur: 'hata' | 'bilgi' = 'hata') => {
+  const mesajGoster = (metin: string | null, tur: 'hata' | 'bilgi' = 'hata', kaydir = true) => {
     if (!mesaj) return;
     mesaj.hidden = !metin; mesaj.textContent = metin ?? ''; mesaj.dataset.tur = tur;
-    if (metin) mesaj.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
+    if (metin && kaydir) mesaj.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
   };
 
   // Taslak
@@ -403,8 +403,37 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   });
   sec.hazir?.(form, verileriTopla(form));
 
+  // Adımlı form da gönderimle aynı doğrulamayı kullanır. Gizlenen adımlar devre dışı
+  // bırakılmaz; son gönderimde bütün alanlar yine denetlenir.
+  function dogrulaBolum(bolumler?: HTMLElement[]) {
+    const veriler = verileriTopla(form);
+    const kapsamda = (a: Element) => !bolumler || bolumler.some(b => b.contains(a));
+    const hatalar: Array<[string, string]> = [];
+    for (const a of alanlar(form)) {
+      if (!kapsamda(a)) continue;
+      if (a.type === 'radio' && hatalar.some(([ad]) => ad === a.name)) continue;
+      const h = alanDogrula(form, a, veriler, m);
+      hataYaz(form, a.name, h);
+      if (h && !hatalar.some(([ad]) => ad === a.name)) hatalar.push([a.name, h]);
+    }
+    for (const [ad, h] of sec.ekDogrula?.(veriler, form, m, bolumler) ?? []) {
+      const alan = form.querySelector(`[name="${CSS.escape(ad)}"]`);
+      if (alan && kapsamda(alan)) { hatalar.push([ad, h]); hataYaz(form, ad, h); }
+    }
+    if (hatalar.length) {
+      const alan = form.querySelector<Alan>(`[name="${CSS.escape(hatalar[0][0])}"]`);
+      form.dispatchEvent(new CustomEvent('form:hata', { detail: { alan } }));
+      const kap = alan?.closest<HTMLElement>('[data-alan]');
+      kap?.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
+      const odak = alan?.type === 'hidden' ? kap?.querySelector<Alan>('input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled)') : alan;
+      odagiPlanla(odak);
+    }
+    return hatalar.length === 0;
+  }
+
   // Gönderim
   form.addEventListener('submit', async (e) => {
+    if (e.defaultPrevented) return;
     e.preventDefault();
     odagiIptalEt();
     tumHatalariTemizle(form); mesajGoster(null);
@@ -414,19 +443,8 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       basariGoster(form, 'BOT-' + Date.now().toString(36), '', m);
       return;
     }
-    const hatalar: Array<[string, string]> = [];
-    for (const a of alanlar(form)) {
-      if (a instanceof HTMLInputElement && a.type === 'radio' && hatalar.some(([ad]) => ad === a.name)) continue;
-      const h = alanDogrula(form, a, veriler, m);
-      if (h) hatalar.push([a.name, h]);
-    }
-    hatalar.push(...(sec.ekDogrula?.(veriler, form, m) ?? []));
-    if (hatalar.length) {
-      for (const [ad, h] of hatalar) hataYaz(form, ad, h);
-      mesajGoster(m.hata.formHatali);
-      const ilk = form.querySelector<Alan>(`[name="${CSS.escape(hatalar[0][0])}"]`);
-      ilk?.closest('[data-alan]')?.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
-      odagiPlanla(ilk);
+    if (!dogrulaBolum()) {
+      mesajGoster(m.hata.formHatali, 'hata', false);
       return;
     }
     if (!navigator.onLine) { mesajGoster(m.hata.cevrimdisi); return; }
@@ -472,6 +490,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       if (gonderDugme) { gonderDugme.disabled = false; gonderDugme.textContent = dugmeMetni; }
     }
   });
+  return { dogrulaBolum };
 }
 
 function basariGoster(form: HTMLFormElement, ref: string, eposta: string, m: Metinler) {

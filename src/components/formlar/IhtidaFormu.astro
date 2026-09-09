@@ -8,11 +8,17 @@
 import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
+import IhtidaCamiSecimi from './IhtidaCamiSecimi.astro';
+import { camiMetinleri } from '../../i18n/cami-secimi';
+import IhtidaAdimlar from './IhtidaAdimlar.astro';
+import { ihtidaAdimMetinleri } from '../../i18n/ihtida-adimlari';
+import '../../styles/ihtida-adimlari.css';
 
 interface Props { dil: Dil; uc: string; eposta: string; telefon: string; ek10Yolu: string }
 const { dil, uc, eposta, telefon, ek10Yolu } = Astro.props;
 const m = formMetinleri(dil);
 const h = m.ihtida, o = m.ortak;
+const adimMetin = ihtidaAdimMetinleri[dil];
 
 const bugun = new Date();
 const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
@@ -40,12 +46,12 @@ const gorselKutulari = [
 ] as const;
 ---
 <div class="ucf-giris" data-form-ust>
-  <p>{h.giris}</p>
-  <div class="ucf-not mt-4"><span class="simge" aria-hidden="true">ℹ</span><div>{h.kimlikNotu}</div></div>
+  <p>{adimMetin.bilgi}</p>
+  <details class="ucf-hazirlik"><summary>{adimMetin.hazirlik}</summary><p>{adimMetin.hazirlikNotu}</p><p>{h.kimlikNotu}</p></details>
 </div>
 
 <form class="ucf mt-8" data-form="ihtida" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-IHTIDA-2026"
-      data-asgari-servis-surumu="25"
+      data-asgari-servis-surumu="27"
       data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script type="application/json" data-metin set:html={metinJson} />
@@ -62,6 +68,10 @@ const gorselKutulari = [
     <button type="button" data-taslak-sil>{o.taslakSil}</button>
   </div>
   <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
+
+  <IhtidaAdimlar dil={dil} />
+
+  <IhtidaCamiSecimi dil={dil} />
 
   <!-- 1 · Kişisel bilgiler -->
   <section class="ucf-bolum" id="b-kisi" aria-labelledby="h-kisi">
@@ -219,8 +229,8 @@ const gorselKutulari = [
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <fieldset class="tam">
-        <legend>{h.ihtida.sahitler} <span class="istege">({o.istegeBagli})</span></legend>
-        <div class="onay-kutu mt-1">
+        <legend>{h.ihtida.sahitler} <span class="istege" data-sahit-istege>({o.istegeBagli})</span></legend>
+        <div class="onay-kutu mt-1" data-sahit-secim>
           <input id="i-sahit-ekle" type="checkbox" name="sahitEkle" aria-controls="i-sahit-alanlari" aria-describedby="i-sahit-yardim" />
           <label for="i-sahit-ekle">{h.ihtida.sahitEkle}</label>
         </div>
@@ -233,7 +243,7 @@ const gorselKutulari = [
             <p class="hata" aria-live="polite" hidden></p>
           </div>
           <div data-alan>
-            <label for="i-sahit-2">{h.ihtida.sahit2} <span class="istege">({o.istegeBagli})</span></label>
+            <label for="i-sahit-2">{h.ihtida.sahit2} <span class="istege" data-sahit-istege>({o.istegeBagli})</span><span class="zorunlu" data-sahit-2-zorunlu aria-hidden="true" hidden>*</span></label>
             <input id="i-sahit-2" name="sahit.2" type="text" disabled maxlength="80" autocomplete="off" autocapitalize="words" />
             <p class="hata" aria-live="polite" hidden></p>
           </div>
@@ -301,6 +311,14 @@ const gorselKutulari = [
         <p class="yardim">{b.imzaYokYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
+      <div data-alan class="tam" data-kosul="imzaYok=false">
+        <div class="onay-kutu">
+          <input id="i-onay-imza" type="checkbox" name="onay.imzaAktarimIzni" required />
+          <label for="i-onay-imza">{adimMetin.imzaIzni}</label>
+        </div>
+        <p class="yardim">{adimMetin.imzaNotu}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
     </div>
   </section>
 
@@ -318,7 +336,7 @@ const gorselKutulari = [
       <div data-alan class="tam">
         <div class="onay-kutu">
           <input id="i-onay-ek10" type="checkbox" name="onay.ek10" required />
-          <label for="i-onay-ek10">{h.riza.ek10} <a href={ek10Yolu} target="_blank" rel="noopener">{h.riza.ek10Baglanti}</a></label>
+          <label for="i-onay-ek10">{adimMetin.ek10} <a href={ek10Yolu} target="_blank" rel="noopener">{h.riza.ek10Baglanti}</a></label>
         </div>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
@@ -363,6 +381,7 @@ const gorselKutulari = [
     <p class="bolum-not">{o.ozetAciklama}</p>
     <dl class="ozet-liste" data-ozet>
       {([
+        ['cami', camiMetinleri[dil].baslik, '#b-cami'],
         ['kisi', h.ozet.kisi, '#b-kisi'], ['dogum', h.ozet.dogum, '#b-kisi'], ['uyruk', h.ozet.uyruk, '#b-kisi'], ['aile', h.ozet.aile, '#b-kisi'],
         ['durum', h.ozet.durum, '#b-durum'], ['iletisim', h.ozet.iletisim, '#b-iletisim'], ['din', h.ozet.din, '#b-ihtida'],
         ['teslimat', h.teslimat.baslik, '#b-iletisim'],
@@ -381,6 +400,11 @@ const gorselKutulari = [
       <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
     </div>
   </section>
+  <div class="ucf-adim-eylemler" data-adim-eylemler hidden>
+    <button type="button" class="dugme dugme-ikincil" data-adim-geri>{adimMetin.geri}</button>
+    <button type="button" class="dugme dugme-birincil" data-adim-ileri>{adimMetin.ileri}<span aria-hidden="true"> →</span></button>
+    <p>{adimMetin.taslak}</p>
+  </div>
 </form>
 
 <section class="ucf-basari mt-8" data-basari hidden aria-live="polite">

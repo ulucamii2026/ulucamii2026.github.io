@@ -236,6 +236,8 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
   };
 
   const boyutla = () => {
+    // Adım gizlenince 0 px ölçüm tuvali küçültüp imzanın sağını kesmemeli.
+    if (!tuval.clientWidth || !tuval.clientHeight) return;
     const en = Math.max(240, Math.round(tuval.clientWidth));
     const boy = Math.max(120, Math.round(tuval.clientHeight));
     oran = Math.min(3, window.devicePixelRatio || 1);
@@ -362,6 +364,10 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
     for (const [anahtar, ad, baslik] of gerekli) {
       const k = bul(anahtar);
       if (!k) continue;
+      if (bolum.querySelector<HTMLElement>(`[data-gorsel="${anahtar}"]`)?.dataset.mesgul === '1') {
+        hatalar.push([ad, m.isleniyor]);
+        continue;
+      }
       const eksik = !k.veri;
       k.hataYaz(eksik ? doldur(m.hataEksik, { ad: baslik }) : null);
       if (eksik) hatalar.push([ad, doldur(m.hataEksik, { ad: baslik })]);

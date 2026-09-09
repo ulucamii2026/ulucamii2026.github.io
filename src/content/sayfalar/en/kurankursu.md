@@ -2,14 +2,14 @@
 baslik: Qur’an School
 altBaslik: Qur’an, basic religious knowledge and moral education for our children and young people — ages 7 and up, open to students of every nationality, registration and lessons free of charge.
 aciklama: Marche-en-Famenne Ulu Mosque Qur’an School — registration open for 2026-2027, lesson schedule, curriculum and information for parents.
-guncelleme: 2026-08-22
+guncelleme: 2026-09-09
 ---
 
 ## Our School
 
 The official name of our school is the <strong>“Qur’an and Basic Religious Knowledge Course”</strong>. Our school operates under the T.R. Ministry of Foreign Affairs, Brussels Embassy, Counsellor for Social Affairs (the Belgian Diyanet Counsellor’s Office).
 
-Our aim is to give our children and young people the ability to read the Qur’an correctly, along with basic religious knowledge and Islamic moral values.
+Our aim is to give our children and young people the ability to read the Qur’an correctly, along with basic religious knowledge and Islamic moral values. Weekend lessons are taught bilingually in Turkish and French, so that families and students can also receive support in French when needed.
 
 Our school is open to students of every nationality, **aged 7 and up**. **Registration and lessons are entirely free of charge; no dues whatsoever are collected.**
 

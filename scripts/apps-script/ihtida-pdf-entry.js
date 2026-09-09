@@ -1,4 +1,5 @@
 import { ihtidaPaketiUret } from '../../public/admin/ihtida-paket.js';
+import { camiCoz } from '../../public/admin/cami-secimi.js';
 
 const ETIKET = {
   cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme' },
@@ -22,7 +23,18 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit) 
     load: async (bytes, options) => hazirla(await pdfLib.PDFDocument.load(bytes, { ...options, parseSpeed: Infinity })),
   } };
   const d = duzenleme || {};
+  const cami = camiCoz({
+    id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'], sehir: k['Cami şehri'],
+    postaKodu: k['Cami posta kodu'], adres: k['Cami adresi'], kurum: k['Cami kurumu'],
+  });
+  if (!cami) throw new Error('Başvuru camisi eksik veya geçersiz.');
+  const teslimatYontemi = k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami'; // Eski satırlar cami teslimi varsayılır.
+  const sahitler = d.sahitler || (cami.id === 'ulucamii-marche'
+    ? [{ ad: k['Şahit 1'] || 'Rıdvan KAYAHAN' }, { ad: k['Şahit 2'] || 'Yeliz KAYAHAN' }]
+    : [{ ad: k['Şahit 1'] || '' }, { ad: k['Şahit 2'] || '' }]);
   const imza = gorseller.imza || '';
+  const ek10Surumu = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
+  const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';
   const beyan = imza ? tarih(k['Zaman damgası']) : tarih(d.beyanTarihi || k['Zaman damgası']);
   return ihtidaPaketiUret({
     ...kaynaklar, pdfLib: gasPdfLib, fontkit, onBasvuru: !duzenleme,
@@ -34,11 +46,16 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit) 
       anneAdi: k['Anne adı'], babaAdi: k['Baba adı'], dogumYeri: k['Doğum yeri'], dogumTarihi: tarih(k['Doğum tarihi']),
       medeniHali: etiket('medeniHali', k['Medeni hali']), meslek: k['Mesleği'], uyruk: k['Uyruk'],
       oncekiDin: etiket('oncekiDin', k['Önceki din/mezhep']), ihtidaSebebi: d.ihtidaSebebi ?? k['İhtida sebebi'],
-      eposta: k['E-posta'], telefon: k['Telefon'],
+      eposta: k['E-posta'], telefon: k['Telefon'], cami,
+      teslimat: { yontem: teslimatYontemi },
     },
+    ek10SablonBytes: ek10Surumu === '2026-09-09' ? kaynaklar.ek10SablonBytes : kaynaklar.ek10V1SablonBytes,
+    ek10Surumu, imzaAktarimIzni,
     foto: gorseller.vesikalik, basvuranImza: imza, imzasiz: !imza, ek10Onayi: k['EK-10 rızası'] === 'Evet',
     belgeTuru: d.belgeTuru || k['Kimlik belgesi türü'], kimlikOn: gorseller.kimlikOn, kimlikArka: gorseller.kimlikArka,
-    sahitler: d.sahitler || [{ ad: k['Şahit 1'] || 'Rıdvan KAYAHAN' }, { ad: k['Şahit 2'] || 'Yeliz KAYAHAN' }],
+    cami, sahitler,
     yedekImzalar: [],
   });
 }
+
+export { camiCoz };

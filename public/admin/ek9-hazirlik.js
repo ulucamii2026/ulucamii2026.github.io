@@ -1,6 +1,7 @@
 /** Belgeye imza basmadan önce her başvuru için yeniden alınan, yalnız bellekte kalan teyit. */
 export function sahitOnerileri(kayit) {
   const adlar = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
+  if ((kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche') return adlar;
   const yedekler = ['Rıdvan KAYAHAN', 'Yeliz KAYAHAN'];
   const kullanilan = new Set(adlar.filter(Boolean).map(ad => ad.toLocaleLowerCase('tr')));
   return adlar.map(ad => {
@@ -77,10 +78,13 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       }
     }
     const teslim = kayit['Belge teslim yeri'];
+    const camiAdres = [kayit['Cami adresi'], kayit['Cami posta kodu'], kayit['Cami şehri']].filter(Boolean).join(', ');
+    const camiAdi = kayit['Başvuru camisi'] || 'Ulu Camii';
     pencere.querySelector('[data-teslimat]').textContent = teslim === 'adres'
       ? `Posta alıcısı: ${kayit['Adı Soyadı'] || ''} — ${kayit['Adres'] || ''}`
-      : teslim === 'cami' ? 'Belge Müşavirlikten camiye postalanacak; başvuran camiden teslim alacak.'
+      : teslim === 'cami' ? `Belge Müşavirlikten ${camiAdi}${camiAdres ? ` — ${camiAdres}` : ''} adresine postalanacak; başvuran camiden teslim alacak. EK-9 arka sayfasındaki adres, başvuranın resmî ikamet adresidir.`
       : 'Bu eski başvuruda teslim tercihi yok; göndermeden önce başvuranla teyit edin.';
+    const digerCami = (kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche';
     const alanlar = sahitOnerileri(kayit).map((ad, i) => {
       const kap = document.createElement('fieldset');
       kap.innerHTML = `<legend>${i + 1}. şahit</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
@@ -91,9 +95,9 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       const yenile = () => {
         isim.setCustomValidity(isim.value.trim() ? '' : 'Şahidin adını soyadını yazın.');
         onay.checked = false;
-        onay.disabled = !imzalar[imzaAnahtari(isim.value)];
+        onay.disabled = digerCami || !imzalar[imzaAnahtari(isim.value)];
         kap.querySelector('[data-imza-not]').textContent = onay.disabled
-          ? 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.'
+          ? (digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.' : 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.')
           : 'Kayıtlı imza var; yalnız yukarıdaki teyitle eklenir.';
       };
       isim.addEventListener('input', yenile); yenile();
@@ -118,6 +122,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         ihtidaSebebi: form.elements.namedItem('sebep').value.trim(),
         beyanTarihi: form.elements.namedItem('beyanTarihi').value,
         belgeTuru: form.elements.namedItem('belgeTuru').value,
+        teslimatYontemi: kayit['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami',
       });
       pencere.close();
     });

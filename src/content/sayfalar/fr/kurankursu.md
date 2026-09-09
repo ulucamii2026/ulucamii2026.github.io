@@ -2,14 +2,14 @@
 baslik: École coranique
 altBaslik: Coran, connaissances religieuses fondamentales et morale pour nos enfants et nos jeunes — dès 7 ans, ouvert à toutes les origines, inscription et cours entièrement gratuits.
 aciklama: École coranique de la Grande Mosquée de Marche-en-Famenne — inscriptions 2026-2027 ouvertes, programme, cursus et infos parents.
-guncelleme: 2026-08-22
+guncelleme: 2026-09-09
 ---
 
 ## Notre école coranique
 
 Le nom officiel de notre cours est **« Kur’an-ı Kerim ve Temel Dinî Bilgiler Kursu »** (Cours de Coran et de Connaissances religieuses fondamentales). Il est rattaché au Conseiller aux Affaires sociales de l’Ambassade de la République de Turquie à Bruxelles (Diyanet — services religieux turcs pour la Belgique).
 
-Notre objectif est d’apprendre à nos enfants et à nos jeunes à lire le Coran selon les règles de récitation, de leur transmettre les connaissances religieuses fondamentales et de les accompagner dans leur éducation morale.
+Notre objectif est d’apprendre à nos enfants et à nos jeunes à lire le Coran selon les règles de récitation, de leur transmettre les connaissances religieuses fondamentales et de les accompagner dans leur éducation morale. Les cours du week-end sont donnés de manière bilingue, en turc et en français, afin que les familles et les élèves puissent aussi être accompagnés en français lorsque cela est nécessaire.
 
 Notre école coranique est ouverte aux enfants et aux jeunes **à partir de 7 ans, de toutes origines**. **L’inscription et les cours sont entièrement gratuits, sans aucune cotisation.**
 

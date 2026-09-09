@@ -60,7 +60,7 @@ function ihtidaPaketDurumIsle(e) {
 function ihtidaPaketKur() {
   var varMi = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === "ihtidaPaketKuyrukCalistir"; });
   if (!varMi) ScriptApp.newTrigger("ihtidaPaketKuyrukCalistir").timeBased().everyMinutes(1).create();
-  PropertiesService.getScriptProperties().setProperty("IHTIDA_PAKET_KURULU", "25");
+  PropertiesService.getScriptProperties().setProperty("IHTIDA_PAKET_KURULU", "27");
   console.log("İhtida PDF kuyruğu kuruldu.");
 }
 async function ihtidaPaketKuyrukCalistir() {
@@ -201,22 +201,25 @@ function ihtidaPaketTeslimYokla(a) {
     else if (events.some(function (e) { return e.event === "delivered"; })) a.durum = "teslim-edildi";
   } catch (_) { /* Gönderildi bilgisini teslim edildiye çevirmeyiz; sonra tekrar yoklanır. */ }
 }
-function ihtidaPaketOnayDogrula(d) {
+function ihtidaPaketOnayDogrula(d, camiId) {
   if (!d || !tarihGecerliMi(d.ihtidaTarihi) || !tarihGecerliMi(d.beyanTarihi)) return false;
   if (d.ihtidaTarihi > Utilities.formatDate(new Date(), "Europe/Brussels", "yyyy-MM-dd")) return false;
   if (!metinDolu(d.adSoyad) || !uzunlukTamam(d.adSoyad, 120) || !metinDolu(d.adres) || !uzunlukTamam(d.adres, 400) || !uzunlukTamam(d.ihtidaSebebi, 600)) return false;
   if (["kimlik", "pasaport"].indexOf(d.belgeTuru) < 0 || !Array.isArray(d.sahitler) || d.sahitler.length !== 2) return false;
-  return d.sahitler.every(function (s) { return metinDolu(s.ad) && uzunlukTamam(s.ad, 120) && (!s.imza || gorselGecerli(s.imza, 1)); });
+  if (!d.sahitler.every(function (s) { return metinDolu(s.ad) && uzunlukTamam(s.ad, 120) && (!s.imza || gorselGecerli(s.imza, 1)); })) return false;
+  return camiId === "ulucamii-marche" || String(d.sahitler[0].ad).trim().toLocaleLowerCase("tr") !== String(d.sahitler[1].ad).trim().toLocaleLowerCase("tr");
 }
 function ihtidaPaketOnayIsle(v) {
   if (!panelYetkiTamam({ parameter: { anahtar: v.anahtar } })) return json({ ok: false, hata: "yetki" });
-  if (!ihtidaPaketOnayDogrula(v.hazirlik) || !temizAnahtar(v.islemAnahtari)) return json({ ok: false, hata: "paket-onay-gecersiz" });
+  var kayit;
+  try { kayit = ihtidaPaketKayit(v.ref).kayit; } catch (_) { return json({ ok: false, hata: "paket-onay-hatasi" }); }
+  var camiId = kayit["Cami kimliği"] || "ulucamii-marche";
+  if (!ihtidaPaketOnayDogrula(v.hazirlik, camiId) || !temizAnahtar(v.islemAnahtari)) return json({ ok: false, hata: "paket-onay-gecersiz" });
   var lock = LockService.getScriptLock(); lock.waitLock(30000);
   try {
     var is = ihtidaPaketIsiOku(v.ref);
     if (is && is.islemAnahtari === v.islemAnahtari) return json({ ok: true, paket: ihtidaPaketOzet(is) });
     if (is && is.kilit > Date.now()) return json({ ok: false, hata: "paket-isleniyor" });
-    ihtidaPaketKayit(v.ref); // Başvuru mevcut olmalı.
     is = { ref: v.ref, revizyon: (is ? is.revizyon : 0) + 1, asama: "musavirlik", durum: "sirada", deneme: 0, duzenleme: v.hazirlik, islemAnahtari: v.islemAnahtari, alicilar: [] };
     ihtidaPaketIsiYaz(is);
     ihtidaPaketHucre(v.ref, "Paket durumu", "Onaylanan son nüsha hazırlanıyor");

@@ -716,6 +716,11 @@ function basvuruCiz() {
       const okul = [al(r, iOkul), al(r, iSinif)].filter(Boolean).join(' · ');
       if (okul) bilgiler.push(`<span>${kacir(okul)}</span>`);
     }
+    if (aktifTur === 'ihtida') {
+      const camiAd = al(r, sut(b, 'başvuru camisi')) || 'Ulu Camii';
+      const camiAdres = [al(r, sut(b, 'cami adresi')), al(r, sut(b, 'cami posta kodu')), al(r, sut(b, 'cami şehri'))].filter(Boolean).join(', ');
+      bilgiler.push(`<span>Başvuru / tören camisi: <b>${kacir(camiAd)}</b>${camiAdres ? ` · ${kacir(camiAdres)}` : ''}</span>`);
+    }
     if (tel) bilgiler.push(`<span>☎ <b>${kacir(telefonBicim(tel))}</b></span>`);
     if (iSaglik >= 0 && al(r, iSaglik)) bilgiler.push('<span class="saglik">Sağlık notu var</span>');
     const araclar = [];
@@ -1047,8 +1052,12 @@ async function ek9Uretimi(dugme) {
     const ek9Uyarilari = [];
     const uret = paketMi ? (await import('/admin/ihtida-paket.js')).ihtidaPaketiUret : ek9Modul.uret;
     let ek10SablonBytes;
+    const ek10Surumu = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
+    const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';
     if (paketMi) {
-      const rizaSablonu = await fetch('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf');
+      const rizaSablonu = await fetch(ek10Surumu === '2026-09-09'
+        ? '/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'
+        : '/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf');
       if (!rizaSablonu.ok) throw new Error('EK-10 şablonu alınamadı.');
       ek10SablonBytes = new Uint8Array(await rizaSablonu.arrayBuffer());
     }
@@ -1058,6 +1067,7 @@ async function ek9Uretimi(dugme) {
       sablonBytes: ek9Kaynak.sablon, fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
       fontKaligrafiBytes: ek9Kaynak.fontKaligrafi, fontElYazisiBytes: ek9Kaynak.fontElYazisi,
       isimYazisi: hazirlik.isimYazisi, alanYazisi: hazirlik.alanYazisi,
+      cami: { id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'] || 'Ulu Camii', sehir: k['Cami şehri'] || 'Marche-en-Famenne', postaKodu: k['Cami posta kodu'] || '6900', adres: k['Cami adresi'] || 'Thier des Corbeaux 14', kurum: k['Cami kurumu'] || 'BDV' },
       veri: {
         ref, dil: String(k['Form dili'] || 'fr').trim().toLowerCase(),
         adSoyad: hazirlik.adSoyad,
@@ -1081,12 +1091,15 @@ async function ek9Uretimi(dugme) {
         telefon: telefonBicim(k['Telefon']),
         adres: hazirlik.adres ?? k['Adres'] ?? '',
         beyanTarihi: ek9Tarih(hazirlik.beyanTarihi || beyan),
+        cami: { id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'] || 'Ulu Camii', sehir: k['Cami şehri'] || 'Marche-en-Famenne', postaKodu: k['Cami posta kodu'] || '6900', adres: k['Cami adresi'] || 'Thier des Corbeaux 14', kurum: k['Cami kurumu'] || 'BDV' },
+        teslimat: { yontem: k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami' },
       },
       foto: vesikalik,
       sahitler: hazirlik.sahitler,
       yedekImzalar: [],
       basvuranImza,
-      ek10SablonBytes, ek10Onayi: k['EK-10 rızası'] === 'Evet', imzasiz: !basvuranImza,
+      ek10SablonBytes, ek10Surumu, imzaAktarimIzni,
+      ek10Onayi: k['EK-10 rızası'] === 'Evet', imzasiz: !basvuranImza,
       kimlikOn: j.gorseller?.kimlikOn || '', kimlikArka: j.gorseller?.kimlikArka || '',
       belgeTuru: hazirlik.belgeTuru, okunamayanGorseller: j.okunamayanGorseller || [],
       tarih: new Date(),
@@ -1149,6 +1162,8 @@ async function dilekceUretimi(dugme) {
         telefon: telefonBicim(k['Telefon']),
         eposta: k['E-posta'] || '',
         dil: (k['Form dili'] || 'fr').trim().toLowerCase(),
+        cami: { id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'] || 'Ulu Camii', sehir: k['Cami şehri'] || 'Marche-en-Famenne', postaKodu: k['Cami posta kodu'] || '6900', adres: k['Cami adresi'] || 'Thier des Corbeaux 14', kurum: k['Cami kurumu'] || 'BDV' },
+        teslimat: { yontem: k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami' },
       },
       imza,
       tarih: new Date(),
@@ -1179,15 +1194,20 @@ async function ek10Uretimi(dugme) {
     if (!j.ok) throw new Error('Başvuru alınamadı.');
     const k = j.kayit || {};
     const onay = k['EK-10 rızası'] === 'Evet';
-    const imza = onay ? (j.basvuranImza || j.gorseller?.imza || '') : '';
+    const surum = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
+    const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';
+    const imza = onay && (surum !== '2026-09-09' || imzaAktarimIzni) ? (j.basvuranImza || j.gorseller?.imza || '') : '';
     if (!imza && !confirm('Bu kayıtta EK-10 onayı veya başvuranın imzası bulunmuyor. İmza alanı boş hazırlansın mı? Mühtedi metni okuyup kâğıt üzerinde imzalayabilir.')) return;
-    const kaynak = await fetch('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf');
+    const kaynak = await fetch(surum === '2026-09-09'
+      ? '/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'
+      : '/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf');
     if (!kaynak.ok) throw new Error('EK-10 şablonu alınamadı.');
     const { ek10Uret } = await import('/admin/ek10.js');
     const bytes = await ek10Uret({
       pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit, fontBytes: ek9Kaynak.font,
       sablonBytes: new Uint8Array(await kaynak.arrayBuffer()),
       adSoyad: k['Adı Soyadı'] || '', tarih: imza ? ek9Tarih(k['Zaman damgası']) : '', imza, onay,
+      surum, imzaAktarimIzni: surum === '2026-09-09' ? imzaAktarimIzni : undefined,
     });
     const bag = document.createElement('a');
     bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));

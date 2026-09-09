@@ -3,6 +3,8 @@
  *  (bkz. ihtida-gorseller.ts) — bunlar taslağa yazılmaz, yalnız gönderim gövdesine eklenir. */
 import { formuBaslat, telefonNormalle, type Veriler } from './form-cekirdek';
 import { gorselleriBaslat, type BelgeMetinleri, type GorselYonetici } from './ihtida-gorseller';
+import { camiSeciminiBaslat } from './ihtida-cami';
+import { ihtidaAdimlariniBaslat } from './ihtida-adimlari';
 
 export function ihtidaFormuBaslat() {
   const form = document.querySelector<HTMLFormElement>('form[data-form="ihtida"]');
@@ -10,11 +12,13 @@ export function ihtidaFormuBaslat() {
 
   const belgeMetin = JSON.parse(form.querySelector('script[data-metin-belge]')?.textContent || '{}') as BelgeMetinleri;
   const gorseller: GorselYonetici | null = gorselleriBaslat(form, belgeMetin);
+  const cami = camiSeciminiBaslat(form);
   // Taslak silinince görseller de gitmeli; çekirdek reset'i dosya kutularını bilmiyor.
   form.querySelector('[data-taslak-sil]')?.addEventListener('click', () => gorseller?.sifirla());
 
-  formuBaslat(form, {
+  const cekirdek = formuBaslat(form, {
     hazir: () => {
+      cami.hazir();
       // Önceki sürümdeki taslakta yazılmış şahit adlarını görünür tut.
       const secim = form.querySelector<HTMLInputElement>('#i-sahit-ekle');
       if (secim && !secim.checked && form.querySelector<HTMLInputElement>('#i-sahit-1')?.value.trim()) {
@@ -22,11 +26,15 @@ export function ihtidaFormuBaslat() {
         secim.dispatchEvent(new Event('change', { bubbles: true }));
       }
     },
-    ekDogrula: () => gorseller?.dogrula() ?? [],
+    ekDogrula: (_v, _f, _m, bolumler) => [
+      ...(!bolumler || bolumler.some(b => b.id === 'b-cami' || b.id === 'b-ihtida') ? cami.dogrula() : []),
+      ...(!bolumler || bolumler.some(b => b.id === 'b-belgeler') ? gorseller?.dogrula() ?? [] : []),
+    ],
     govde(v) {
       const b = v.basvuran as Veriler, sahit = (v.sahit ?? {}) as Veriler, onay = v.onay as Veriler;
       const adres = [b.adres, b.postaKodu, b.sehir, b.ulke].map(x => String(x ?? '').trim()).filter(Boolean).join(', ');
       return {
+        cami: cami.veri(),
         basvuran: {
           adSoyad: b.adSoyad, cinsiyet: b.cinsiyet, dogumTarihi: b.dogumTarihi, dogumYeri: b.dogumYeri, uyruk: b.uyruk,
           anneAdi: b.anneAdi, babaAdi: b.babaAdi, medeniHali: b.medeniHali, ogrenimDurumu: b.ogrenimDurumu, meslek: b.meslek,
@@ -37,14 +45,15 @@ export function ihtidaFormuBaslat() {
           torenDili: b.torenDili, torenTarihi: b.torenTarihi ?? '', nasilHaberdar: b.nasilHaberdar ?? '', ekNot: b.ekNot ?? '',
         },
         teslimat: { yontem: (v.teslimat as Veriler)?.yontem ?? 'cami' },
-        sahitSecimi: v.sahitEkle === true ? 'kendi' : 'cami',
-        sahitler: v.sahitEkle === true ? [{ ad: sahit['1'] ?? '' }, { ad: sahit['2'] ?? '' }] : [],
+        sahitSecimi: cami.farkli() || v.sahitEkle === true ? 'kendi' : 'cami',
+        sahitler: cami.farkli() || v.sahitEkle === true ? [{ ad: sahit['1'] ?? '' }, { ad: sahit['2'] ?? '' }] : [],
         fotografIzni: v.fotografIzni === true,
         belgeTuru: v.belgeTuru ?? 'kimlik',
         imzaYok: v.imzaYok === true,
         gorseller: gorseller?.paket() ?? { vesikalik: '', kimlikOn: '', kimlikArka: '', imza: '' },
         onay: {
           acikRiza: onay.acikRiza === true, ek10: onay.ek10 === true, gizlilik: onay.gizlilik === true,
+          ek10Surumu: '2026-09-09', imzaAktarimIzni: v.imzaYok !== true && onay.imzaAktarimIzni === true,
           gorselRiza: onay.gorselRiza === true, beyan: onay.beyan,
         },
       };
@@ -58,6 +67,7 @@ export function ihtidaFormuBaslat() {
       const secText = (ad: string) => { const s = f.querySelector<HTMLSelectElement>(`select[name="${ad}"]`); return s?.value ? s.selectedOptions[0]?.textContent?.trim() ?? '' : ''; };
       const dogum = b.dogumTarihi ? String(b.dogumTarihi).split('-').reverse().join('.') : '';
       return {
+        cami: cami.ozet(),
         kisi: [b.adSoyad, etiket('basvuran.cinsiyet', b.cinsiyet)].filter(Boolean).join(' · '),
         dogum: [dogum, b.dogumYeri].filter(Boolean).join(' · '),
         uyruk: String(b.uyruk ?? ''),
@@ -72,4 +82,8 @@ export function ihtidaFormuBaslat() {
       };
     },
   });
+  const imzaYok = form.querySelector<HTMLInputElement>('#i-imza-yok');
+  const imzaIzni = form.querySelector<HTMLInputElement>('#i-onay-imza');
+  imzaYok?.addEventListener('change', () => { if (imzaYok.checked && imzaIzni) imzaIzni.checked = false; });
+  ihtidaAdimlariniBaslat(form, cekirdek.dogrulaBolum);
 }

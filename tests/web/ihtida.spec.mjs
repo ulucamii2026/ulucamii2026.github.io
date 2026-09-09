@@ -15,7 +15,7 @@ test('Admin aynı arşiv PDF’sini ve her alıcının gerçek gönderim durumun
   let teslim = false;
   await page.route('https://script.google.com/**', route => {
     const islem = new URL(route.request().url()).searchParams.get('islem');
-    if (islem === 'liste') return route.fulfill({ json: { ok: true, surum: 25, kayitlar: { basliklar: [], satirlar: [] }, ihtidalar: {
+    if (islem === 'liste') return route.fulfill({ json: { ok: true, surum: 27, kayitlar: { basliklar: [], satirlar: [] }, ihtidalar: {
       basliklar: ['Zaman damgası', 'Referans', 'Adı Soyadı', 'E-posta', 'PDF bağlantısı', 'Durum', 'Tam paket PDF'],
       satirlar: [['09.09.2026 12:00', 'IH-2099-9999', 'Deniz Örnek', 'deniz@example.test', 'https://drive.google.com/file/d/test-summary-file-123/view', 'Yeni başvuru', 'https://drive.google.com/file/d/test-packet-file-12345/view']],
     } } });
@@ -23,9 +23,9 @@ test('Admin aynı arşiv PDF’sini ve her alıcının gerçek gönderim durumun
       ref: 'IH-2099-9999', revizyon: 1, sayfa: 6, pdfId: 'test-packet-file-12345', durum: teslim ? 'tamam' : 'teslim-takibi',
       alicilar: [{ eposta: 'info@ulucamii.be', durum: 'teslim-edildi' }, { eposta: 'imam@ulucamii.be', durum: teslim ? 'teslim-edildi' : 'saglayici-kabul' }, { eposta: 'deniz@example.test', durum: teslim ? 'teslim-edildi' : 'gonderim-hatasi' }],
     } } });
-    return route.fulfill({ json: { ok: true, surum: 25 } });
+    return route.fulfill({ json: { ok: true, surum: 27 } });
   });
-  await page.goto('/admin/#basvurular');
+  await formSayfasiniAc(page, '/admin/#basvurular');
   await page.locator('#sekme-ihtida').click();
   const arsiv = page.getByRole('button', { name: 'Tam paket PDF', exact: true });
   await expect(arsiv).toHaveAttribute('data-pdf', 'test-packet-file-12345');
@@ -52,6 +52,12 @@ test.beforeEach(async ({ context }) => {
   await context.routeWebSocket(/.*/, socket => socket.close());
 });
 
+async function formSayfasiniAc(page, url) {
+  await page.goto(url);
+  const secim = page.locator('[data-adim-tumu]');
+  if (await secim.count()) await secim.click();
+}
+
 async function doldur(page) {
   const alanlar = { ad: 'Deniz Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belçika', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32 470 00 00 00', adres: 'Rue du Test 12, boîte 3', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', 'onceki-din': 'Belirtilen inanç', beyan: 'Deniz Örnek' };
   for (const [id, value] of Object.entries(alanlar)) await page.locator(`#i-${id}`).fill(value);
@@ -71,9 +77,9 @@ for (const [dil, yol] of Object.entries(yollar)) {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-      return route.fulfill({ json: { ok: true, surum: 25, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+      return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
     });
-    await page.goto(`/${dil}/${yol}/`);
+    await formSayfasiniAc(page, `/${dil}/${yol}/`);
     await expect(page.locator('#i-sahit-ekle')).not.toBeChecked();
     await expect(page.locator('#i-sahit-alanlari')).toBeHidden();
     await expect(page.locator('#i-sahit-1')).toBeDisabled();
@@ -129,8 +135,8 @@ for (const [dil, yol] of Object.entries(yollar)) {
 
 test('Eski servis yeni ihtida bilgilerini eksik kaydedemez', async ({ page }) => {
   let post = 0;
-  await page.route('**/macros/**', route => { if (route.request().method() === 'POST') post++; return route.fulfill({ json: { ok: true, surum: 23 } }); });
-  await page.goto('/tr/ihtida-basvurusu/'); await doldur(page);
+  await page.route('**/macros/**', route => { if (route.request().method() === 'POST') post++; return route.fulfill({ json: { ok: true, surum: 25 } }); });
+  await formSayfasiniAc(page, '/tr/ihtida-basvurusu/'); await doldur(page);
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
   await expect(page.locator('[data-mesaj]')).toContainText('Bilgileriniz gönderilmedi');
   expect(post).toBe(0);
@@ -138,7 +144,7 @@ test('Eski servis yeni ihtida bilgilerini eksik kaydedemez', async ({ page }) =>
 
 test('Hata düzeltildikten sonra eski uyarı odağı yeni yazılan alandan çalamaz', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.goto('/fr/demande-de-conversion/');
+  await formSayfasiniAc(page, '/fr/demande-de-conversion/');
   await doldur(page);
   await page.locator('#i-ulke').fill('');
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
@@ -153,7 +159,7 @@ test('Hata düzeltildikten sonra eski uyarı odağı yeni yazılan alandan çala
 });
 
 test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async ({ page }, info) => {
-  await page.goto('/tr/');
+  await formSayfasiniAc(page, '/tr/');
   await page.addStyleTag({ url: '/admin/panel.css' });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
@@ -185,7 +191,7 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
 
 
 test('Tam paket ekranı adresi ve beyanı hazır getirir; tören tarihini kullanıcı doğrular', async ({ page }, info) => {
-  await page.goto('/tr/');
+  await formSayfasiniAc(page, '/tr/');
   await page.addStyleTag({ url: '/admin/panel.css' });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
@@ -211,8 +217,8 @@ test('Tam paket ekranı adresi ve beyanı hazır getirir; tören tarihini kullan
   expect(await page.evaluate(() => window.paketSonucu.beyanTarihi)).toBe('2026-09-09');
 });
 
-test('Tarayıcıdaki yerel fontlarla EK-9 ve altı sayfalık imzalı paket üretilir', async ({ page }, info) => {
-  await page.goto('/tr/');
+test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async ({ page }, info) => {
+  await formSayfasiniAc(page, '/tr/');
   await page.addScriptTag({ url: '/vendor/pdf-lib.min.js' });
   await page.addScriptTag({ url: '/vendor/fontkit.umd.min.js' });
   const sonuc = await page.evaluate(async () => {
@@ -230,7 +236,7 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve altı sayfalık imzalı paket üret
     ctx.beginPath(); ctx.moveTo(12, 55); ctx.quadraticCurveTo(100, 5, 224, 58); ctx.stroke();
     const resim = canvas.toDataURL('image/png');
     const paket = await ihtidaPaketiUret({ ...kaynak,
-      ek10SablonBytes: await getir('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'),
+      ek10SablonBytes: await getir('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'), ek10Surumu: '2026-09-09', imzaAktarimIzni: true,
       foto: resim, kimlikOn: resim, kimlikArka: resim, belgeTuru: 'kimlik', basvuranImza: resim, ek10Onayi: true });
     const doc = await window.PDFLib.PDFDocument.load(bytes);
     const paketDoc = await window.PDFLib.PDFDocument.load(paket);
@@ -241,4 +247,85 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve altı sayfalık imzalı paket üret
   expect(sonuc.paketSayfa).toBe(6);
   writeFileSync(info.outputPath('ek9-tarayici.pdf'), Buffer.from(sonuc.pdf, 'base64'));
   writeFileSync(info.outputPath('tam-paket-tarayici.pdf'), Buffer.from(sonuc.paket, 'base64'));
+});
+
+
+for (const [dil, yol] of Object.entries(yollar)) {
+  test(`${dil}: başka cami seçimi iki elle girilmiş şahit gerektirir`, async ({ page }, info) => {
+    const gonderilen = [];
+    await page.route('**/macros/**', route => {
+      if (route.request().method() === 'POST') gonderilen.push(JSON.parse(route.request().postData()));
+      return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ihtidaCamiSecimi: true, ref: 'IH-2099-9999' } });
+    });
+    await formSayfasiniAc(page, `/${dil}/${yol}/`); await doldur(page);
+    const kimlik = page.locator('input[name="camiId"]');
+    await expect(kimlik).toHaveValue('ulucamii-marche');
+    await page.locator('#i-sahit-ekle').check();
+    await page.locator('#i-sahit-1').fill('Önceki Cami Şahidi');
+    await page.locator('[data-cami-degistir] summary').click();
+    await page.locator('#i-cami-ara').fill('liege');
+    expect(await page.locator('#i-cami-liste option').count()).toBeGreaterThan(0);
+    // Aday listesinde aramak, seçme düğmesine basmadan asıl camiyi değiştirmez.
+    await expect(kimlik).toHaveValue('ulucamii-marche');
+    const hedef = await page.locator('#i-cami-liste').inputValue();
+    await page.locator('[data-cami-sec]').click();
+    await expect(kimlik).toHaveValue(hedef);
+    await expect(page.locator('#i-sahit-ekle')).toBeHidden();
+    await expect(page.locator('#i-sahit-1')).toHaveValue('');
+    await expect(page.locator('#i-sahit-2')).toHaveValue('');
+    await expect(page.locator('#i-sahit-2')).toHaveAttribute('required', '');
+    const gonder = page.locator('form[data-form="ihtida"] button[type="submit"]');
+    await gonder.click(); expect(gonderilen).toHaveLength(0);
+    await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
+    await gonder.click(); expect(gonderilen).toHaveLength(0);
+    await page.locator('#i-sahit-2').fill('Birinci Örnek Şahit');
+    await gonder.click(); expect(gonderilen).toHaveLength(0);
+    await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
+    await page.locator('[data-cami-degistir] summary').click();
+    await page.locator('#b-cami').screenshot({ path: info.outputPath('cami-secimi.png') });
+    for (const tema of ['light', 'dark']) {
+      if (tema === 'dark') await page.locator('#tema-dugme').click();
+      await page.locator('#b-cami').evaluate(async e => Promise.all(e.getAnimations({ subtree: true }).filter(a => a.playState === 'running' && a.timeline === document.timeline && Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a => a.finished.catch(() => {}))));
+      const axe = await new AxeBuilder({ page }).include('#b-cami').include('#i-sahit-alanlari').withTags(['wcag2a', 'wcag2aa']).analyze();
+      expect(axe.violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) }))).toEqual([]);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    }
+    await page.locator('[data-cami-degistir] summary').focus();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('#i-cami-ara')).toBeHidden();
+    await gonder.click();
+    await expect(page.locator('[data-basari]')).toBeVisible();
+    expect(gonderilen).toHaveLength(1);
+    expect(gonderilen[0].cami.id).toBe(hedef);
+    expect(gonderilen[0].cami.sehir.toLowerCase()).toContain('li');
+    expect(gonderilen[0].cami.adres).toBeTruthy();
+    expect(gonderilen[0].sahitSecimi).toBe('kendi');
+    expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+  });
+}
+
+test('Listede olmayan cami taslakta korunur; taslak silinince Ulu Camii geri gelir', async ({ page }) => {
+  await formSayfasiniAc(page, '/tr/ihtida-basvurusu/');
+  await page.locator('[data-cami-degistir] summary').click();
+  await page.locator('#i-cami-ara').fill('listede-olmayan-sentetik-cami');
+  await expect(page.locator('[data-cami-sec]')).toBeDisabled();
+  await expect(page.locator('input[name="camiId"]')).toHaveValue('ulucamii-marche');
+  await page.locator('[data-cami-elle]').click();
+  for (const [id, value] of Object.entries({ ad: 'Örnek Test Camisi', sehir: 'Namur', postaKodu: '5000', adres: 'Rue du Test 42' })) await page.locator(`#i-cami-${id}`).fill(value);
+  await page.locator('#i-sahit-1').fill('Birinci Örnek');
+  await page.locator('#i-sahit-2').fill('İkinci Örnek');
+  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('ulucamii:ihtida:v2') || '{}').alanlar?.camiId)).toBe('diger');
+  await page.reload();
+  await page.locator('[data-adim-tumu]').click();
+  await expect(page.locator('input[name="camiId"]')).toHaveValue('diger');
+  await expect(page.locator('#i-cami-ad')).toHaveValue('Örnek Test Camisi');
+  await expect(page.locator('#i-sahit-1')).toHaveValue('Birinci Örnek');
+  await expect(page.locator('#i-sahit-2')).toHaveAttribute('required', '');
+  await expect(page.locator('#i-sahit-ekle')).toBeHidden();
+  await page.locator('[data-taslak-sil]').click();
+  await expect(page.locator('input[name="camiId"]')).toHaveValue('ulucamii-marche');
+  await expect(page.locator('#i-sahit-ekle')).toBeVisible();
+  await expect(page.locator('#i-sahit-ekle')).not.toBeChecked();
+  await expect(page.locator('#i-sahit-2')).not.toHaveAttribute('required', '');
+  await expect(page.locator('#i-cami-ad')).toBeDisabled();
 });

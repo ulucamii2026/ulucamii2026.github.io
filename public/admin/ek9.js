@@ -11,6 +11,7 @@
  * Koordinatlar şablondan piksel ölçümüyle çıkarıldı (200 dpi tarama, PDF point cinsinden,
  * ÜST kenardan). pdf-lib alt kenardan ölçtüğü için `ust()` ile çevrilir.
  */
+import { camiCoz } from './cami-secimi.js';
 
 // --- Şablon ölçüleri (pt, üstten) --------------------------------------------
 const S1 = {
@@ -76,6 +77,15 @@ export async function ek9Uret(girdi) {
   const ust2 = (y) => Y2 - y;
 
   const v = girdi.veri;
+  const seciliCami = camiCoz(girdi.cami || v?.cami);
+  if (!seciliCami) throw new Error('Başvuru camisi eksik veya geçersiz.');
+  const digerCami = seciliCami.id !== 'ulucamii-marche';
+  if (digerCami) {
+    const sahitAdlari = (Array.isArray(girdi.sahitler) ? girdi.sahitler : []).slice(0, 2).map((s) => String(s?.ad || '').trim());
+    if (sahitAdlari.length !== 2 || !sahitAdlari[0] || !sahitAdlari[1]) throw new Error('Seçilen cami için iki şahidin adı zorunludur.');
+    if (sahitAdlari[0].localeCompare(sahitAdlari[1], 'tr', { sensitivity: 'accent' }) === 0) throw new Error('Seçilen cami için iki farklı şahit yazın.');
+    if ((girdi.yedekImzalar || []).some((s) => s && (String(s.ad || '').trim() || s.imza))) throw new Error('Başka cami seçildiğinde yerel yedek şahit veya imza kullanılamaz.');
+  }
 
   // ---- yardımcılar ----------------------------------------------------------
   const kisalt = (metin, boyut, enGenis, f = font) => {

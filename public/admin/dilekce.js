@@ -1,224 +1,116 @@
-/* Mühtedi dilekçesi (8 Eylül 2026).
- *
- * NEDEN: «Zarf İçeriği ve Gönderi Talimatı» (Müşavirliğe C4 zarf) beş belge ister ve ilki
- * «Dilekçe — mühtedinin el yazısı/imzalı ihtida belgesi talebi»dir. Diğer dördü sistemde vardı
- * (EK-10, kimlik ön/arka, vesikalık, EK-9 nüshası); dilekçe elle yazılıyordu. Başvuran artık
- * imzasını formda çizdiği için dilekçe panelde, imzalı olarak üretilebiliyor.
- *
- * İKİ DİLLİ: üst blok Türkçe (Müşavirlik okur), alt blok başvuranın kendi dili (ne imzaladığını
- * bilerek imzalar). A4 dikey, tek sayfa, pdf-lib ile — EK-9'daki Lora yazı tipleri kullanılır.
- *
- * Dayanak: Diyanet İhtida İşlemleri Uygulama Genelgesi md. 44.
- */
+/** Onaylı dilekçe: normalde tek A4; uzun alanlar kesilmeden devam sayfasına akar. */
+const A4 = { w: 595.28, h: 841.89 }, M = 43, CW = A4.w - 2 * M, ALT = 765;
 
-const A4 = { g: 595.28, y: 841.89 };
-const KENAR = 62;
-
-const METIN = {
-  tr: {
-    yer: 'Marche-en-Famenne',
-    makam: 'T.C. BRÜKSEL BÜYÜKELÇİLİĞİ\nSOSYAL İŞLER MÜŞAVİRLİĞİNE',
-    baslik: 'Konu: İhtida Belgesi (EK-9) talebi',
-    govde: [
-      'Kendi hür irademle, hiçbir baskı ve zorlama olmadan İslam dinini seçtim ve Marche-en-Famenne Ulu Camii’nde, iki şahit huzurunda kelime-i şehadet getirerek Müslüman oldum.',
-      'Adıma İhtida Belgesi (EK-9) düzenlenmesini talep ediyorum. Diyanet İşleri Başkanlığı İhtida İşlemleri Uygulama Genelgesi’nin 44. maddesi gereğince istenen bir adet vesikalık fotoğrafım ile kimlik belgemin ön ve arka yüzünün örneği bu dilekçenin ekindedir; EK-10 Açık Rıza Metni’ni ayrıca imzaladım.',
-      'Gereğini saygılarımla arz ederim.',
-    ],
-    ekBaslik: 'EKLER',
-    ekler: ['Vesikalık fotoğraf (1 adet)', 'Kimlik belgesi örneği (ön ve arka yüz)', 'EK-10 Açık Rıza Metni (imzalı)'],
-    bilgiBaslik: 'BAŞVURAN',
-    alan: { ad: 'Adı Soyadı', dogum: 'Doğum yeri ve tarihi', uyruk: 'Uyruğu', adres: 'Adresi', telefon: 'Telefon', eposta: 'E-posta', ref: 'Başvuru referansı' },
-    imzaEtiket: 'İmza',
-    imzaBos: '(İmza)',
-    dipnot: 'Bu dilekçe, başvuranın online ihtida başvurusunda verdiği bilgilerle Marche-en-Famenne Ulu Camii tarafından hazırlanmış ve başvuranın kendi imzasını taşımaktadır.',
-  },
-  fr: {
-    baslik: 'Objet : demande d’attestation de conversion (EK-9)',
-    govde: [
-      'De ma propre volonté, sans aucune pression ni contrainte, j’ai choisi la religion musulmane et je suis devenu(e) musulman(e) à la mosquée Ulu Camii de Marche-en-Famenne, en prononçant la profession de foi devant deux témoins.',
-      'Je demande l’établissement de l’attestation de conversion (EK-9) à mon nom. Conformément à l’article 44 de la directive du Diyanet relative aux conversions, une photo d’identité ainsi que la copie du recto et du verso de ma pièce d’identité sont jointes à la présente ; j’ai par ailleurs signé le formulaire de consentement EK-10.',
-    ],
-    dipnot: 'Traduction française du texte turc ci-dessus ; une seule signature vaut pour les deux.',
-  },
-  en: {
-    baslik: 'Subject: request for a conversion certificate (EK-9)',
-    govde: [
-      'Of my own free will, under no pressure or compulsion, I have chosen the religion of Islam and became a Muslim at the Ulu Camii mosque in Marche-en-Famenne, pronouncing the declaration of faith before two witnesses.',
-      'I request that the conversion certificate (EK-9) be issued in my name. In accordance with article 44 of the Diyanet conversion directive, one passport photo and a copy of the front and back of my identity document are attached; I have also signed the EK-10 consent form.',
-    ],
-    dipnot: 'English translation of the Turkish text above; one signature covers both.',
-  },
-};
-
-/**
- * @param {object} g
- * @param {object} g.pdfLib          window.PDFLib
- * @param {object} g.fontkit         window.fontkit
- * @param {Uint8Array} g.fontBytes   Lora-Regular
- * @param {Uint8Array} g.fontKalinBytes Lora-Bold
- * @param {object} g.veri            {ref, adSoyad, dogumYeri, dogumTarihi, uyruk, adres, telefon, eposta, dil}
- * @param {string}  [g.imza]         veri URL'i (form 5. bölümünde çizilen imza); yoksa boş satır bırakılır
- * @param {Date}    [g.tarih]
- * @returns {Promise<Uint8Array>}
- */
 export async function dilekceUret(g) {
   const { PDFDocument, rgb } = g.pdfLib;
-  const belge = await PDFDocument.create();
-  belge.registerFontkit(g.fontkit);
-  const font = await belge.embedFont(g.fontBytes, { subset: true });
-  const kalin = await belge.embedFont(g.fontKalinBytes, { subset: true });
-
-  const s = belge.addPage([A4.g, A4.y]);
-  const MUREKKEP = rgb(0.09, 0.09, 0.12);
-  const SOLUK = rgb(0.42, 0.4, 0.38);
-  const genislik = A4.g - KENAR * 2;
-  let y = A4.y - KENAR;
-
-  const v = g.veri || {};
-  const dil = METIN[v.dil] ? v.dil : 'fr';
-  const t = { ...METIN.tr, govde: [...METIN.tr.govde], ekler: [...METIN.tr.ekler] };
-  const c = dil === 'tr' ? null : { ...METIN[dil], govde: [...METIN[dil].govde] };
-  if (g.onBasvuru) {
-    t.govde[0] = 'Kendi hür irademle, hiçbir baskı ve zorlama olmadan İslam dinini seçmek ve adıma İhtida Belgesi düzenlenmesi için başvurmak istiyorum. Tören tarihi ve şahitler cami görevlisiyle ayrıca teyit edilecektir.';
-    if (c) c.govde[0] = dil === 'fr'
-      ? 'De ma propre volonté, sans pression ni contrainte, je souhaite embrasser l’islam et demander une attestation de conversion. La date de la cérémonie et les témoins seront confirmés avec le responsable de la mosquée.'
-      : 'Of my own free will, without pressure or compulsion, I wish to embrace Islam and apply for a conversion certificate. The ceremony date and witnesses will be confirmed with the mosque official.';
-  }
-  if (!g.imza) {
-    t.govde[1] = t.govde[1].replace('EK-10 Açık Rıza Metni’ni ayrıca imzaladım.', 'EK-10 Açık Rıza Metni imzalanmak üzere eklenmiştir.');
-    t.ekler[2] = 'EK-10 Açık Rıza Metni (imza için)';
-    t.dipnot = 'Bu dilekçe, başvuru bilgileriyle hazırlanmıştır. Başvuranın imzası alınacaktır.';
-    if (c) c.govde[1] = c.govde[1].replace('j’ai par ailleurs signé le formulaire de consentement EK-10.', 'le formulaire de consentement EK-10 est joint pour signature.').replace('I have also signed the EK-10 consent form.', 'the EK-10 consent form is included for signature.');
-  }
-  if (g.belgeTuru === 'pasaport') {
-    t.govde[1] = t.govde[1].replace('kimlik belgemin ön ve arka yüzünün örneği', 'pasaportumun kimlik bilgileri sayfasının örneği');
-    t.ekler[1] = 'Pasaport kimlik bilgileri sayfası örneği';
-    if (c) c.govde[1] = c.govde[1].replace('la copie du recto et du verso de ma pièce d’identité', 'la copie de la page d’identité de mon passeport').replace('a copy of the front and back of my identity document', 'a copy of my passport identity page');
-  }
-
-  const sar = (metin, boyut, en, f = font) => {
-    const satirlar = [];
-    let satir = '';
-    for (const k of String(metin).replace(/\s+/g, ' ').trim().split(' ')) {
-      const aday = satir ? `${satir} ${k}` : k;
-      if (f.widthOfTextAtSize(aday, boyut) <= en) satir = aday;
-      else { if (satir) satirlar.push(satir); satir = k; }
+  const d = g.veri || {}, en = d.dil === 'en';
+  const f = (tr, fr, eng) => `${tr} / ${en ? eng : fr}`;
+  const doc = await PDFDocument.create(); doc.registerFontkit(g.fontkit);
+  const body = await doc.embedFont(g.fontBytes, { subset: true });
+  const bold = await doc.embedFont(g.fontKalinBytes, { subset: true });
+  const C = { navy: rgb(.09,.235,.282), ink: rgb(.125,.184,.216), muted: rgb(.33,.4,.43), gold: rgb(.66,.53,.31), line: rgb(.8,.84,.84), wash: rgb(.949,.961,.957) };
+  const cami = d.cami || { ad: 'Ulu Camii', sehir: 'Marche-en-Famenne', postaKodu: '6900', adres: 'Thier des Corbeaux 14' };
+  const camiAdres = [cami.adres,cami.postaKodu,cami.sehir].filter(Boolean).join(', ');
+  const ev = d.teslimat?.yontem === 'adres', teslimAd = ev ? d.adSoyad : cami.ad, teslimAdres = ev ? d.adres : camiAdres;
+  let page, y = 26;
+  const text = (s,x,top,size=10,font=body,color=C.ink) => page.drawText(String(s || ''),{ x,y:A4.h-top-size,size,font,color });
+  const rule = (top,x=M,width=CW,color=C.line,thickness=.5) => page.drawLine({start:{x,y:A4.h-top},end:{x:x+width,y:A4.h-top},color,thickness});
+  const wrap = (value,size,width,font=body) => {
+    const result=[]; let line='';
+    for (const word of String(value || '').trim().split(/\s+/).filter(Boolean)) {
+      if (font.widthOfTextAtSize(line ? line+' '+word : word,size) <= width-1) {line=line?line+' '+word:word;continue;}
+      if (line) { result.push(line); line=''; }
+      for (const ch of word) {if (line && font.widthOfTextAtSize(line+ch,size)>width-1) {result.push(line);line='';} line+=ch;}
     }
-    if (satir) satirlar.push(satir);
-    return satirlar;
+    if(line) result.push(line); return result;
   };
-  const yaz = (metin, { boyut = 10.5, f = font, renk = MUREKKEP, x = KENAR, en = genislik, aralik = 1.5, altBosluk = 0 } = {}) => {
-    for (const satir of sar(metin, boyut, en, f)) {
-      s.drawText(satir, { x, y, size: boyut, font: f, color: renk });
-      y -= boyut * aralik;
+  const lines = (items,x,top,size=10,leading=12.5,font=body,color=C.ink) => { items.forEach((s,i)=>text(s,x,top+i*leading,size,font,color)); return items.length*leading; };
+  const newPage = (continued=false) => {
+    page=doc.addPage([A4.w,A4.h]);y=26;
+    if(continued) {text(f('İhtida Belgesi talebi — devam','suite','continuation'),M,y,9,bold,C.muted);rule(45);y=60;}
+  };
+  const room = height => {if(y+height>ALT)newPage(true);};
+  const para = (value,size=9.75,leading=12.2) => {
+    for(const line of wrap(value,size,CW)) {room(leading);text(line,M,y,size);y+=leading;}
+  };
+  const label = value => {room(28);text(value,M,y,8.1,bold,C.navy);y+=18;};
+  const fields = (specs, minHeight=37) => {
+    const prepared=specs.map(s=>({...s,labels:wrap(s.label,7.6,s.w,bold),values:wrap(s.value,10,s.w)}));
+    const height=Math.max(minHeight,...prepared.map(s=>s.labels.length*9.5+Math.max(1,s.values.length)*12.5+10));
+    room(height);
+    for(const s of prepared) {
+      const h=lines(s.labels,s.x,y,7.6,9.5,bold,C.muted);
+      lines(s.values,s.x,y+h+3,10,12.5);
+      rule(y+height-8,s.x,s.w);
     }
-    y -= altBosluk;
+    y+=height;
   };
-  const cizgi = (bosluk = 10) => {
-    y -= bosluk;
-    s.drawLine({ start: { x: KENAR, y }, end: { x: KENAR + genislik, y }, thickness: 0.6, color: rgb(0.8, 0.78, 0.74) });
-    y -= bosluk;
-  };
+  const align = top => {if(doc.getPageCount()===1)y=Math.max(y,top);};
+  const date = g.tarih || new Date();
+  const rawDate = String(d.beyanTarihi || '');
+  const iso=rawDate.match(/^(\d{4})-(\d{2})-(\d{2})/), local=rawDate.match(/^(\d{2})[/.](\d{2})[/.](\d{4})/);
+  const tarih=iso?`${iso[3]}.${iso[2]}.${iso[1]}`:local?`${local[1]}.${local[2]}.${local[3]}`:new Intl.DateTimeFormat('fr-BE',{timeZone:'Europe/Brussels',day:'2-digit',month:'2-digit',year:'numeric'}).format(date).replaceAll('/','.');
+  const tr=g.onBasvuru
+    ? 'Kendi hür irademle, hiçbir baskı ve zorlama olmaksızın İslam dinini seçmek ve adıma İhtida Belgesi (EK-9) düzenlenmesi için başvurmak istiyorum. Tören tarihi ve şahitler ilgili cami görevlisiyle ayrıca teyit edilecektir. Gerekli imzalar tamamlandıktan sonra belgemin aşağıdaki teslim adresine gönderilmesini arz ederim.'
+    : 'Kendi hür irademle, hiçbir baskı ve zorlama olmaksızın İslam dinini seçtiğimi; yukarıda belirtilen camide ve tarihte, iki şahit huzurunda kelime-i şehadet getirerek Müslüman olduğumu beyan ederim. Adıma İhtida Belgesi (EK-9) düzenlenmesini ve gerekli imzalar tamamlandıktan sonra belgemin aşağıdaki teslim adresine gönderilmesini arz ederim.';
+  const translated=en
+    ? g.onBasvuru
+      ? 'Of my own free will and without pressure or compulsion, I wish to embrace Islam and apply for a conversion certificate (EK-9) in my name. The ceremony date and witnesses will be confirmed with the mosque official. After the required signatures, I request delivery to the return address below.'
+      : 'I declare that I have freely chosen Islam, without pressure or compulsion, and become Muslim by pronouncing the declaration of faith before two witnesses at the mosque and on the date stated above. I request a conversion certificate (EK-9) in my name and its delivery to the return address below after the required signatures.'
+    : g.onBasvuru
+      ? 'De mon plein gré, sans pression ni contrainte, je souhaite embrasser l’islam et demande une attestation de conversion (EK-9) à mon nom. La date de la cérémonie et les témoins seront confirmés avec le responsable de la mosquée. Après les signatures nécessaires, je sollicite l’envoi à l’adresse de retour ci-dessous.'
+      : 'Je déclare avoir choisi l’islam de mon plein gré, sans pression ni contrainte, et être devenu(e) musulman(e) en prononçant la profession de foi devant deux témoins à la mosquée et à la date indiquées ci-dessus. Je sollicite une attestation de conversion (EK-9) à mon nom et son envoi à l’adresse de retour ci-dessous, après les signatures nécessaires.';
+  newPage();
+  text('ULU CAMİİ · MARCHE-EN-FAMENNE',M,26,8.3,bold,C.muted);text(en?'TR / EN':'TR / FR',A4.w-M-40,26,8.3,bold,C.muted);
+  text('İhtida Belgesi talebi',M,47,23,body,C.navy);
+  text(en?'Request for a conversion certificate (EK-9)':'Demande d’attestation de conversion à l’islam (EK-9)',M,80,10.1,body,C.muted);rule(102,M,CW,C.gold,1);
+  text('T.C. BRÜKSEL BÜYÜKELÇİLİĞİ',M,115,11.3,bold);text('SOSYAL İŞLER MÜŞAVİRLİĞİNE',M,129,11.3,bold);
+  text(en?'To the Office of the Counsellor for Social Affairs, Embassy of Türkiye in Brussels':'Au Service du conseiller des affaires sociales de l’Ambassade de Türkiye à Bruxelles',M,148,8.1,body,C.muted);
+  y=178;label(f('BAŞVURAN','DEMANDEUR','APPLICANT'));
+  fields([{label:f('Adı soyadı','Nom et prénom','Full name'),value:d.adSoyad,x:M,w:327},{label:f('Doğum tarihi','Date de naissance','Date of birth'),value:d.dogumTarihi,x:M+348,w:CW-348}]);
+  align(233);fields([{label:f('İkamet adresi','Adresse de résidence','Home address'),value:d.adres,x:M,w:CW}],46);
+  align(279);fields([{label:'E-posta / E-mail',value:d.eposta,x:M,w:303},{label:f('Telefon','Téléphone','Phone'),value:d.telefon,x:M+324,w:CW-324}]);
+  align(324);label(f('CAMİ VE İHTİDA TARİHİ','MOSQUÉE ET DATE DE CONVERSION','MOSQUE AND CONVERSION DATE'));
+  fields([{label:f('Başvuru / tören camisi','Mosquée','Mosque'),value:cami.ad,x:M,w:348},{label:f('İhtida tarihi','Date de conversion','Conversion date'),value:d.ihtidaTarihi,x:M+369,w:CW-369}],30);
+  fields([{label:f('Cami adresi','Adresse de la mosquée','Mosque address'),value:camiAdres,x:M,w:CW}],33);
+  align(407);label(f('BEYAN VE TALEP','DÉCLARATION ET DEMANDE','DECLARATION AND REQUEST'));para(tr);y+=8;room(24);rule(y);y+=12;para(translated,9.25,11.5);y+=12;
 
-  // --- üst bilgi: yer ve tarih (sağa yaslı) ---
-  const tarih = (g.tarih || new Date());
-  const iki = (n) => String(n).padStart(2, '0');
-  const tarihStr = `${t.yer}, ${g.tarihiBosBirak ? '...... / ...... / ............' : `${iki(tarih.getDate())}.${iki(tarih.getMonth() + 1)}.${tarih.getFullYear()}`}`;
-  const tarihEn = font.widthOfTextAtSize(tarihStr, 10);
-  s.drawText(tarihStr, { x: KENAR + genislik - tarihEn, y, size: 10, font, color: SOLUK });
-  y -= 34;
-
-  // --- muhatap makam ---
-  for (const satir of t.makam.split('\n')) {
-    s.drawText(satir, { x: KENAR, y, size: 12, font: kalin, color: MUREKKEP });
-    y -= 17;
+  // Kapanış kutusu ve imza bloğu önceden ölçülür. Hiçbir uzun ad/adres kırpılmaz.
+  const deliveryTitle=f(ev?'Posta dönüş adresi':'Posta dönüş camisi',ev?'Adresse de retour postal de l’attestation':'Mosquée de retour postal de l’attestation',ev?'Return postal address':'Return mosque');
+  const deliveryHead=wrap(deliveryTitle,7.7,CW-22,bold), deliveryName=wrap(teslimAd,10.1,CW-22,bold), deliveryAddress=wrap(teslimAdres,8.8,CW-22);
+  const deliveryH=9+deliveryHead.length*9.5+5+deliveryName.length*12.5+3+deliveryAddress.length*11+9;
+  const sx=M+322,sw=CW-322;
+  const dateLabel=wrap(f('Yer ve tarih','Lieu et date','Place and date'),7.7,sw,bold);
+  const dateLines=wrap(`${cami.sehir || 'Marche-en-Famenne'}, ${tarih}`,9.3,sw);
+  const sigLabel=wrap(f('Başvuranın imzası','Signature du demandeur','Applicant’s signature'),7.5,sw,bold);
+  const signer=wrap(d.adSoyad,8.8,sw,bold);
+  const signatureLine=dateLabel.length*9+5+dateLines.length*11.5+12+sigLabel.length*9+39;
+  const signH=signatureLine+5+signer.length*11;
+  const attachments=[
+    f('EK-9: imzaya sunulan nüsha','exemplaire à signer','copy for signature'),
+    f('EK-10: açık rıza metni','consentement explicite','explicit consent'),
+    f('Kimlik veya pasaport örneği','copie du document d’identité','copy of ID or passport'),
+    f('1 adet vesikalık fotoğraf','1 photo d’identité','1 portrait photo'),
+  ].map((s,i)=>wrap(`${i+1}. ${s}`,8,295));
+  const attachH=18+attachments.reduce((h,a)=>h+a.length*10.5+4,0);
+  const closingH=deliveryH+14+Math.max(signH,attachH);
+  align(576);room(closingH);
+  const by=y;page.drawRectangle({x:M,y:A4.h-by-deliveryH,width:CW,height:deliveryH,color:C.wash});rule(by,M,CW,C.gold,1);
+  let dy=by+9;dy+=lines(deliveryHead,M+11,dy,7.7,9.5,bold,C.muted)+5;dy+=lines(deliveryName,M+11,dy,10.1,12.5,bold)+3;lines(deliveryAddress,M+11,dy,8.8,11,body,C.muted);
+  y=by+deliveryH+14;const ey=y;
+  text(f('EKLER','PIÈCES JOINTES','ENCLOSURES'),M,ey,8.1,bold,C.navy);let ay=ey+18;
+  for(const a of attachments)ay+=lines(a,M,ay,8,10.5)+4;
+  let sy=ey;sy+=lines(dateLabel,sx,sy,7.7,9,bold,C.muted)+5;sy+=lines(dateLines,sx,sy,9.3,11.5)+12;sy+=lines(sigLabel,sx,sy,7.5,9,bold,C.muted);
+  const lineY=ey+signatureLine;rule(lineY,sx,sw);
+  if(g.imza){
+    let im;try{im=await doc.embedPng(g.imza);}catch{throw new Error('Başvuranın imzası okunamadı; dilekçe imzalı olarak üretilemedi.');}
+    const scale=Math.min((sw-12)/im.width,28/im.height),w=im.width*scale,h=im.height*scale;
+    page.drawImage(im,{x:sx+(sw-w)/2,y:A4.h-lineY+5,width:w,height:h});
   }
-  y -= 16;
-  yaz(t.baslik, { boyut: 10.5, f: kalin, altBosluk: 12 });
-
-  // --- Türkçe gövde ---
-  for (const p of t.govde) yaz(p, { altBosluk: 8 });
-
-  // --- başvuran bilgileri ---
-  y -= 6;
-  cizgi(8);
-  yaz(t.bilgiBaslik, { boyut: 8.5, f: kalin, renk: SOLUK, altBosluk: 6 });
-  const satirlar = [
-    [t.alan.ad, v.adSoyad],
-    [t.alan.dogum, [v.dogumYeri, v.dogumTarihi].filter(Boolean).join(' · ')],
-    [t.alan.uyruk, v.uyruk],
-    [t.alan.adres, v.adres],
-    [t.alan.telefon, v.telefon],
-    [t.alan.eposta, v.eposta],
-    [t.alan.ref, v.ref],
-  ].filter(([, d]) => String(d || '').trim());
-  for (const [etiket, deger] of satirlar) {
-    s.drawText(etiket, { x: KENAR, y, size: 9.5, font, color: SOLUK });
-    const degerX = KENAR + 132;
-    const parcalar = sar(deger, 9.5, genislik - 132);
-    for (let i = 0; i < parcalar.length; i++) {
-      s.drawText(parcalar[i], { x: degerX, y: y - i * 13, size: 9.5, font: kalin, color: MUREKKEP });
-    }
-    y -= 13 * parcalar.length + 3;
-  }
-  cizgi(8);
-
-  // --- ekler ---
-  yaz(t.ekBaslik, { boyut: 8.5, f: kalin, renk: SOLUK, altBosluk: 5 });
-  for (let i = 0; i < t.ekler.length; i++) {
-    s.drawText(`${i + 1}.  ${t.ekler[i]}`, { x: KENAR + 6, y, size: 9.5, font, color: MUREKKEP });
-    y -= 14;
-  }
-
-  // --- çeviri bloğu ---
-  if (c) {
-    y -= 14;
-    yaz(c.baslik, { boyut: 9.5, f: kalin, renk: SOLUK, altBosluk: 6 });
-    for (const p of c.govde) yaz(p, { boyut: 9.5, renk: SOLUK, altBosluk: 6 });
-    yaz(c.dipnot, { boyut: 8, renk: SOLUK, altBosluk: 0 });
-  }
-
-  // --- imza bloğu (sağ altta) ---
-  // Akışın altına iner: 62 pt boşluk, imza görseli çizginin 8-54 pt üstünde durur; böylece
-  // yukarıdaki son satırın (çeviri dipnotu) üzerine binmez.
-  y -= 62;
-  const imzaTaban = Math.max(70, y);
-  const imzaX = KENAR + genislik - 200;
-  let gomulu = null;
-  if (g.imza) {
-    try {
-      gomulu = String(g.imza).startsWith('data:image/png') || String(g.imza).startsWith('iVBOR')
-        ? await belge.embedPng(g.imza)
-        : await belge.embedJpg(g.imza);
-    } catch { gomulu = null; }
-  }
-  if (gomulu) {
-      const olcek = Math.min(160 / gomulu.width, 42 / gomulu.height);
-    s.drawImage(gomulu, {
-      x: imzaX + (200 - gomulu.width * olcek) / 2,
-      y: imzaTaban + 8,
-      width: gomulu.width * olcek,
-      height: gomulu.height * olcek,
-    });
-  } else {
-    const bos = t.imzaBos;
-    s.drawText(bos, { x: imzaX + (200 - font.widthOfTextAtSize(bos, 9)) / 2, y: imzaTaban + 22, size: 9, font, color: SOLUK });
-  }
-  s.drawLine({ start: { x: imzaX, y: imzaTaban }, end: { x: imzaX + 200, y: imzaTaban }, thickness: 0.8, color: rgb(0.55, 0.53, 0.5) });
-  const ad = String(v.adSoyad || '');
-  s.drawText(ad, { x: imzaX + Math.max(0, (200 - kalin.widthOfTextAtSize(ad, 10)) / 2), y: imzaTaban - 14, size: 10, font: kalin, color: MUREKKEP });
-
-  // --- dipnot ---
-  const dipnotSatirlari = sar(gomulu ? t.dipnot : 'Bu dilekçe, başvuru bilgileriyle hazırlanmıştır; başvuranın kontrol edip imzalaması için imza alanı boş bırakılmıştır.', 7.5, genislik);
-  let dy = 40;
-  for (const satir of dipnotSatirlari) {
-    s.drawText(satir, { x: KENAR, y: dy, size: 7.5, font, color: SOLUK });
-    dy -= 10;
-  }
-
-  belge.setTitle(`İhtida Belgesi talebi — ${ad}`.trim());
-  belge.setSubject('Mühtedi dilekçesi (Müşavirliğe gönderilecek zarf, 1. belge)');
-  belge.setCreator('Marche-en-Famenne Ulu Camii — yönetim paneli');
-  if (g.tarih) { belge.setCreationDate(g.tarih); belge.setModificationDate(g.tarih); }
-  return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
+  lines(signer,sx,lineY+5,8.8,11,bold);
+  const total=doc.getPageCount();
+  doc.getPages().forEach((p,i)=>{page=p;rule(781);text('Türkçe ve diğer dildeki metinler aynı beyanı içerir; tek imza her ikisini kapsar.',M,788,7.1,body,C.muted);text(`${i+1} / ${total}`,A4.w-M-25,806,7.1,body,C.muted);});
+  doc.setTitle(`İhtida Belgesi talebi — ${d.adSoyad || ''}`);doc.setSubject('EK-9 talep dilekçesi');doc.setCreator('Marche-en-Famenne Ulu Camii');
+  if(g.tarih){doc.setCreationDate(g.tarih);doc.setModificationDate(g.tarih);}
+  return doc.save({useObjectStreams:false,objectsPerTick:Infinity});
 }
