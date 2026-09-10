@@ -1,21 +1,21 @@
 ---
-baslik: "Hajj 2027 : préinscription jusqu'au 11 septembre, inscription définitive jusqu'au 30 octobre"
-tarih: 2026-09-04
-ozet: "Préinscription jusqu'au 11 septembre 2026 ; e-mail d'inscription définitive aux préinscrits dès le 7 septembre, date limite : 30 octobre 2026. Frais : 2 000 € par personne ; places limitées, selon l'ordre des paiements. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
-kapak: /media/duyurular/2027-hac-onkayit-afis.webp
-kapakAlt: "Affiche de la Fondation Diyanet de Belgique pour la préinscription au hajj 2027 — du 20 juin au 30 août 2026 (date limite actuelle : 11 septembre 2026), 2 000 € par personne"
+baslik: "Hajj 2027 : préinscription jusqu'au 11 septembre, inscription définitive jusqu'au 30 septembre"
+tarih: 2026-09-10
+ozet: "Préinscription jusqu'au 11 septembre 2026 ; e-mail d'inscription définitive aux préinscrits dès le 7 septembre, date limite : 30 septembre 2026. Frais : 2 000 € par personne ; places limitées, selon l'ordre des paiements. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
+kapak: /media/afisler/hac-2027-guncel-takvim.webp
+kapakAlt: "Calendrier du hajj 2027 : préinscription le 11 septembre, inscription définitive le 30 septembre 2026 — annonce de la mosquée Ulu Camii"
 etiketler:
   - hajj
   - diyanet
 oneCikan: true
-oneCikanSon: 2026-10-30
+oneCikanSon: 2026-09-30
 ---
 
-<div class="uyari"><p><strong>Préinscription : date limite le vendredi 11 septembre 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p><p><strong>Déjà préinscrit ?</strong> Les e-mails d'inscription définitive sont envoyés à partir du lundi 7 septembre ; consultez régulièrement votre messagerie. Date limite de l'inscription définitive : <strong>30 octobre 2026</strong>.</p></div>
+<div class="uyari"><p><strong>Préinscription : date limite le vendredi 11 septembre 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p><p><strong>Déjà préinscrit ?</strong> Les e-mails d'inscription définitive sont envoyés à partir du lundi 7 septembre ; consultez régulièrement votre messagerie. Date limite de l'inscription définitive : <strong>30 septembre 2026</strong>.</p></div>
 
-Selon la note du Conseiller du 4 septembre 2026, **les préinscriptions au hajj 2027 se poursuivent jusqu'au vendredi 11 septembre 2026.** Les personnes qui souhaitent profiter des places limitées doivent se préinscrire sans tarder et obtenir à temps leur passeport turc. Les autorités saoudiennes ayant avancé le traitement des visas, la préinscription comme l'inscription définitive se déroulent plus tôt que d'habitude cette année.
+Selon notre information actualisée du 10 septembre 2026, **les préinscriptions au hajj 2027 se poursuivent jusqu'au vendredi 11 septembre 2026.** Les personnes qui souhaitent profiter des places limitées doivent se préinscrire sans tarder et obtenir à temps leur passeport turc. Les autorités saoudiennes ayant avancé le traitement des visas, la préinscription comme l'inscription définitive se déroulent plus tôt que d'habitude cette année.
 
-**Les candidats qui ont payé les frais de préinscription et complété la démarche en ligne recevront, à partir du lundi 7 septembre 2026, un e-mail pour l'inscription définitive.** Consultez régulièrement votre messagerie (courriers indésirables compris) et complétez les démarches à temps. La date limite de l'inscription définitive a été reportée au **30 octobre 2026**.
+**Les candidats qui ont payé les frais de préinscription et complété la démarche en ligne recevront, à partir du lundi 7 septembre 2026, un e-mail pour l'inscription définitive.** Consultez régulièrement votre messagerie (courriers indésirables compris) et complétez les démarches à temps. L'inscription définitive se poursuit jusqu'au **30 septembre 2026**.
 
 Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les effectuer lui-même ou se faire aider par les responsables de notre mosquée.
 
@@ -24,7 +24,7 @@ Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les eff
 | Étape | Date |
 |---|---|
 | Préinscription | 20 juin – **11 septembre 2026** |
-| Inscription définitive | Invitation par e-mail à partir du 7 septembre — date limite **30 octobre 2026** (reportée) |
+| Inscription définitive | Invitation par e-mail à partir du 7 septembre — date limite **30 septembre 2026** |
 | Voyage du hajj | 1-3 mai **ou** 24-27 mai 2027 |
 
 Les dates du hajj peuvent varier de 1 à 3 jours selon les vols et les hôtels.
@@ -78,4 +78,4 @@ Si le formulaire vous pose difficulté, si vous avez un doute sur vos documents 
 
 Que Dieu facilite le chemin de ceux qui en font l'intention et leur accorde un pèlerinage agréé.
 
-<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Mise à jour (4 septembre 2026) : la note du Conseiller fixe la date limite de préinscription au 11 septembre 2026, l'envoi des e-mails d'inscription définitive à partir du 7 septembre et la date limite de l'inscription définitive au 30 octobre 2026 ; la page de préinscription de la Fondation indiquait encore 30.09.2026 le même jour, le calendrier du Conseiller a été retenu. Mise à jour précédente (30 août 2026) : la Fondation Diyanet de Belgique avait prolongé les préinscriptions jusqu'au 30 septembre 2026. Vérification (3 septembre 2026) : le délai a été reconfirmé sur la page de préinscription de la Fondation — « 2027 Hac Ön kayıtları 20.06.2026 – 30.09.2026 tarihleri arasında gerçekleşecektir. » Lors du même contrôle, la date de validité exigée pour la carte de séjour belge a été corrigée en 10.07.2027, conformément au texte de la Fondation (notre page indiquait par erreur 10.07.2028). Source : Fondation Diyanet de Belgique — <a style="padding-block:.55rem" href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. L'affiche appartient à la Fondation Diyanet de Belgique.</p>
+<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Mise à jour : 10 septembre 2026. Notre imam a confirmé la clôture des préinscriptions le 11 septembre et des inscriptions définitives le 30 septembre 2026. Il s’agit de deux étapes distinctes. Formulaire : <a href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. Visuel préparé par la mosquée Ulu Camii.</p>

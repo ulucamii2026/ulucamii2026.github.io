@@ -7,5 +7,6 @@ gorsel: /media/afisler/bdv-2027-hac-onkayit.webp
 kucuk: /media/afisler/bdv-2027-hac-onkayit-thumb.webp
 kaynak: bdv
 kategori: hac-umre
+taslak: true
 link: https://www.diyanet.be/onkayit
 ---

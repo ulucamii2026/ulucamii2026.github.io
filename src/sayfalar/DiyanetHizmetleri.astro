@@ -16,7 +16,7 @@
  * Hac ön kaydının son günü SABİT DEĞİL, tarihle karşılaştırılır: site her gün yeniden
  * yayımlandığı için (deploy.yml cron) süre dolduğunda kart kendiliğinden sakinleşir.
  * Kaynak: Müşavirliğin 4 Eylül 2026 yazısı — ön kayıt 11.09.2026'ya kadar; kesin kayıt e-postaları 07.09'dan
- * itibaren; kesin kayıt son günü 30.10.2026 (uzatıldı). Ön kayıt ücreti 2.000 €/kişi (diyanet.be/onkayit).
+ * itibaren; kesin kayıt son günü 30.09.2026 (uzatıldı). Ön kayıt ücreti 2.000 €/kişi (diyanet.be/onkayit).
  * Üç evre: ön kayıt açık → kesin kayıt dönemi (e-posta hatırlatması) → kapalı.
  */
 import Base from '../layouts/Base.astro';
@@ -37,7 +37,7 @@ interface Grup { baslik: string; kartlar: Kart[] }
 
 const umreAcik = Date.now() <= UMRE_SON_GUN.getTime();
 const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
-/* Ön kayıt kapandıktan sonra kesin kayıt dönemi: ön kayıt yapanlar e-postalarını takip etsin (30 Ekim'e kadar). */
+/* Ön kayıt kapandıktan sonra kesin kayıt dönemi: ön kayıt yapanlar e-postalarını takip etsin (30 Eylül'e kadar). */
 const hacKesin = !hacAcik && Date.now() <= HAC_KESIN_SON_GUN.getTime();
 const hacSonTarih = { tr: '11 Eylül 2026', fr: '11 septembre 2026', en: '11 September 2026' }[dil];
 
@@ -57,10 +57,10 @@ const m = dil === 'tr' ? {
   hac: {
     baslik: '2027 Hac Ön Kaydı',
     ozetAcik: 'Ön kayıt için son gün 11 Eylül 2026. Kayıt Belçika Diyanet Vakfı’nın hac organizasyonu üzerinden yapılır; kontenjan sınırlı olduğu için kesin kayıt hakkı ödeme sırasına göre verilir. Ön kayıt yapanlara kesin kayıt e-postası 7 Eylül’den itibaren gönderiliyor.',
-    ozetKesin: 'Ön kayıt dönemi 11 Eylül 2026’da sona erdi. Ön kayıt yapanlara kesin kayıt için e-posta gönderiliyor; kesin kayıt son günü 30 Ekim 2026. E-postanızı (istenmeyen klasörü dâhil) düzenli kontrol edin ve işlemlerinizi zamanında tamamlayın.',
+    ozetKesin: 'Ön kayıt dönemi 11 Eylül 2026’da sona erdi. Ön kayıt yapanlara kesin kayıt için e-posta gönderiliyor; kesin kayıt son günü 30 Eylül 2026. E-postanızı (istenmeyen klasörü dâhil) düzenli kontrol edin ve işlemlerinizi zamanında tamamlayın.',
     ozetKapali: '2027 hac ön kayıt dönemi sona erdi. Yeni dönem duyurulduğunda camimizden ve Belçika Diyanet Vakfı’ndan bilgi alabilirsiniz.',
     ucret: '2.000 € (kişi başı)',
-    kesinKayit: '7 Eylül – 30 Ekim 2026 (e-posta ile)',
+    kesinKayit: '7 Eylül – 30 Eylül 2026 (e-posta ile)',
     eylem: 'Ön kayıt formu',
     ayrinti: 'Koşullar ve gerekli belgeler',
   },
@@ -113,10 +113,10 @@ const m = dil === 'tr' ? {
   hac: {
     baslik: '2027 Hajj Pre-registration',
     ozetAcik: 'Pre-registration closes on 11 September 2026. Registration is handled through the hajj organisation of the Diyanet Foundation of Belgium; places are limited, so the right to final registration is granted in order of payment. Those already pre-registered receive the final-registration e-mail from 7 September.',
-    ozetKesin: 'Pre-registration ended on 11 September 2026. Pre-registered pilgrims are being invited by e-mail to complete their final registration; the deadline is 30 October 2026. Check your e-mail (including spam) regularly and complete the steps in time.',
+    ozetKesin: 'Pre-registration ended on 11 September 2026. Pre-registered pilgrims are being invited by e-mail to complete their final registration; the deadline is 30 September 2026. Check your e-mail (including spam) regularly and complete the steps in time.',
     ozetKapali: 'The 2027 hajj pre-registration period has ended. When the next period is announced, you can get information from our mosque and from the Diyanet Foundation of Belgium.',
     ucret: '€2,000 per person',
-    kesinKayit: '7 September – 30 October 2026 (by e-mail)',
+    kesinKayit: '7 September – 30 September 2026 (by e-mail)',
     eylem: 'Pre-registration form',
     ayrinti: 'Conditions and required documents',
   },
@@ -169,10 +169,10 @@ const m = dil === 'tr' ? {
   hac: {
     baslik: 'Préinscription au Hajj 2027',
     ozetAcik: 'Les préinscriptions se clôturent le 11 septembre 2026. L’inscription se fait via l’organisation du hajj de la Fondation Diyanet de Belgique ; les places étant limitées, le droit à l’inscription définitive est accordé selon l’ordre des paiements. Les préinscrits reçoivent l’e-mail d’inscription définitive à partir du 7 septembre.',
-    ozetKesin: 'La période de préinscription s’est terminée le 11 septembre 2026. Les préinscrits sont invités par e-mail à finaliser leur inscription définitive ; date limite : le 30 octobre 2026. Consultez régulièrement votre messagerie (courriers indésirables compris) et complétez les démarches à temps.',
+    ozetKesin: 'La période de préinscription s’est terminée le 11 septembre 2026. Les préinscrits sont invités par e-mail à finaliser leur inscription définitive ; date limite : le 30 septembre 2026. Consultez régulièrement votre messagerie (courriers indésirables compris) et complétez les démarches à temps.',
     ozetKapali: 'La période de préinscription au Hajj 2027 est terminée. Vous serez informé par notre mosquée et par la Fondation Diyanet de Belgique lors de la prochaine ouverture.',
     ucret: '2 000 € par personne',
-    kesinKayit: '7 septembre – 30 octobre 2026 (par e-mail)',
+    kesinKayit: '7 septembre – 30 septembre 2026 (par e-mail)',
     eylem: 'Formulaire de préinscription',
     ayrinti: 'Conditions et documents requis',
   },

@@ -7,5 +7,6 @@ gorsel: /media/afisler/hac-2027-son-gunler-tr.webp
 kucuk: /media/afisler/hac-2027-son-gunler-tr-thumb.webp
 kaynak: ulucamii
 kategori: hac-umre
+taslak: true
 link: https://www.diyanet.be/onkayit
 ---
