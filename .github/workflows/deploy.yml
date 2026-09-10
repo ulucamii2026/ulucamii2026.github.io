@@ -47,7 +47,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -55,6 +55,8 @@ jobs:
       - name: GitHub Pages'e yayınla
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        with:
+          timeout: 600000
 
   # Yayin zinciri sessizce kirilmasin: build ya da deploy dustugunde haber gelir
   # (namaz vakitleri isinde uyari vardi, burada yoktu — 25 Agustos 2026 denetimi).
