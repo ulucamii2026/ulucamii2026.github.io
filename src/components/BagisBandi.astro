@@ -4,71 +4,218 @@ import QRCode from 'qrcode';
 import Ikon from './Ikon.astro';
 import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-interface Props { dil: Dil; banka: { iban: string; bic: string; banka: string; hesapAdi: string } }
-const { dil, banka } = Astro.props;
+
+interface Props {
+  dil: Dil;
+  banka: { iban: string; bic: string; banka: string; hesapAdi: string };
+  kompakt?: boolean;
+}
+
+const { dil, banka, kompakt = false } = Astro.props;
 const ibanDuz = banka.iban.replace(/\s+/g, '');
 const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : dil === 'en' ? 'Donation Ulu Camii Marche' : 'Don Ulu Camii Marche';
 const epc = ['BCD', '002', '1', 'SCT', banka.bic, banka.hesapAdi.normalize('NFD').replace(/[̀-ͯ]/g, '').slice(0, 70), ibanDuz, '', '', '', aciklama].join('\n');
 const qr = await QRCode.toString(epc, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#2f221a', light: '#0000' } });
+
 const m = dil === 'tr' ? {
-  baslik: 'Camimiz cemaatin bağışlarıyla ayakta', alt: 'Elektrik, ısınma, bakım ve Kur’an kursu giderleri yalnızca sizin katkılarınızla karşılanıyor. Bankacılık uygulamanızla kodu okutun ya da IBAN’ı kopyalayın.',
-  kopyala: 'IBAN’ı kopyala', kopyalandi: 'Kopyalandı ✓', qr: 'Bankacılık uygulamasıyla okutun', acik: 'Açıklama',
-  yollar: [{ a: 'Genel bağış', s: 'Caminin aylık giderleri', h: yol(dil, 'bagis') }, { a: 'Vekâletle kurban', s: 'Her yıl Kurban Bayramı öncesi', h: yol(dil, 'bagis') + '#vekaletle-kurban' }, { a: 'Kütüphaneye kitap', s: 'TDV ve Diyanet yayınları', h: yol(dil, 'bagis') + '#kitap-bagisi' }, { a: 'Dernek üyeliği', s: 'Yıllık aidatla destek', h: yol(dil, 'uyelik') }],
+  baslik: 'Camimiz cemaatin bağışlarıyla ayakta',
+  alt: 'Elektrik, ısınma, bakım ve Kur’an kursu giderleri yalnızca sizin katkılarınızla karşılanıyor. Bankacılık uygulamanızla kodu okutun ya da IBAN’ı kopyalayın.',
+  kopyala: 'IBAN’ı kopyala',
+  kopyalandi: 'Kopyalandı ✓',
+  kopyalanamadi: 'Kopyalanamadı, seçip kopyalayın',
+  qr: 'Bankacılık uygulamasıyla okutun',
+  acik: 'Açıklama',
+  detaylar: 'Banka bilgileri ve QR kodu',
+  yollar: [
+    { a: 'Genel bağış', s: 'Caminin aylık giderleri', h: yol(dil, 'bagis') },
+    { a: 'Vekâletle kurban', s: 'Her yıl Kurban Bayramı öncesi', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+    { a: 'Kütüphaneye kitap', s: 'TDV ve Diyanet yayınları', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+    { a: 'Dernek üyeliği', s: 'Yıllık aidatla destek', h: yol(dil, 'uyelik') }
+  ],
   hepsi: 'Bağış sayfası',
 } : dil === 'en' ? {
-  baslik: 'Our mosque runs on the community’s donations', alt: 'Electricity, heating, maintenance and the Qur’an school are covered solely by your contributions. Scan the code with your banking app or copy the IBAN.',
-  kopyala: 'Copy IBAN', kopyalandi: 'Copied ✓', qr: 'Scan with your banking app', acik: 'Reference',
-  yollar: [{ a: 'General donation', s: 'Monthly running costs of the mosque', h: yol(dil, 'bagis') }, { a: 'Sacrifice by proxy', s: 'Every year before Eid al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' }, { a: 'Books for the library', s: 'TDV and Diyanet publications', h: yol(dil, 'bagis') + '#kitap-bagisi' }, { a: 'Association membership', s: 'Support through annual dues', h: yol(dil, 'uyelik') }],
+  baslik: 'Our mosque runs on the community’s donations',
+  alt: 'Electricity, heating, maintenance and the Qur’an school are covered solely by your contributions. Scan the code with your banking app or copy the IBAN.',
+  kopyala: 'Copy IBAN',
+  kopyalandi: 'Copied ✓',
+  kopyalanamadi: 'Failed to copy, select to copy',
+  qr: 'Scan with your banking app',
+  acik: 'Reference',
+  detaylar: 'Bank details and QR code',
+  yollar: [
+    { a: 'General donation', s: 'Monthly running costs of the mosque', h: yol(dil, 'bagis') },
+    { a: 'Sacrifice by proxy', s: 'Every year before Eid al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+    { a: 'Books for the library', s: 'TDV and Diyanet publications', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+    { a: 'Association membership', s: 'Support through annual dues', h: yol(dil, 'uyelik') }
+  ],
   hepsi: 'Donations page',
 } : {
-  baslik: 'Notre mosquée vit des dons de la communauté', alt: 'Électricité, chauffage, entretien et école coranique ne sont financés que par vos contributions. Scannez le code avec votre application bancaire ou copiez l’IBAN.',
-  kopyala: 'Copier l’IBAN', kopyalandi: 'Copié ✓', qr: 'Scannez avec votre application bancaire', acik: 'Communication',
-  yollar: [{ a: 'Don général', s: 'Frais mensuels de la mosquée', h: yol(dil, 'bagis') }, { a: 'Sacrifice par procuration', s: 'Chaque année avant l’Aïd al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' }, { a: 'Livres pour la bibliothèque', s: 'Éditions TDV et Diyanet', h: yol(dil, 'bagis') + '#kitap-bagisi' }, { a: 'Adhésion', s: 'Soutien par la cotisation annuelle', h: yol(dil, 'uyelik') }],
+  baslik: 'Notre mosquée vit des dons de la communauté',
+  alt: 'Électricité, chauffage, entretien et école coranique ne sont financés que par vos contributions. Scannez le code avec votre application bancaire ou copiez l’IBAN.',
+  kopyala: 'Copier l’IBAN',
+  kopyalandi: 'Copié ✓',
+  kopyalanamadi: 'Échec de la copie, sélectionnez pour copier',
+  qr: 'Scannez avec votre application bancaire',
+  acik: 'Communication',
+  detaylar: 'Coordonnées bancaires et code QR',
+  yollar: [
+    { a: 'Don général', s: 'Frais mensuels de la mosquée', h: yol(dil, 'bagis') },
+    { a: 'Sacrifice par procuration', s: 'Chaque année avant l’Aïd al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+    { a: 'Livres pour la bibliothèque', s: 'Éditions TDV et Diyanet', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+    { a: 'Adhésion', s: 'Soutien par la cotisation annuelle', h: yol(dil, 'uyelik') }
+  ],
   hepsi: 'Page des dons',
 };
 ---
-<section class="yazdirma-gizle relative overflow-hidden bg-(--color-ceviz-koyu) text-(--color-krem) reveal" aria-labelledby="bagis-baslik">
-  <div class="kilim-serit" aria-hidden="true"></div>
-  <div class="absolute inset-0 opacity-[0.07] pointer-events-none [background-image:radial-gradient(var(--color-ochre-acik)_1px,transparent_1px)] [background-size:14px_14px]" aria-hidden="true"></div>
-  <div class="kapsayici relative py-12 sm:py-16 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
-    <div>
-      <h2 id="bagis-baslik" class="text-(--color-krem) max-w-[22ch]">{m.baslik}</h2>
-      <span class="serit bg-(--color-ochre)" aria-hidden="true"></span>
-      <p class="mt-4 max-w-[58ch] text-(--color-krem)/80">{m.alt}</p>
-      <ul class="mt-8 grid sm:grid-cols-2 gap-3" role="list">
-        {m.yollar.map((y) => (
-          <li><a href={y.h} class="group flex items-center gap-3 border border-(--color-krem)/25 rounded-(--radius-kose) px-4 py-3 no-underline text-(--color-krem) hover:border-(--color-ochre-acik) hover:bg-(--color-krem)/5 transition-colors">
-            <Ikon ad="bagis" class="h-5 w-5 shrink-0 text-(--color-ochre-acik)" />
-            <span class="min-w-0"><span class="block font-semibold">{y.a}</span><span class="block text-sm text-(--color-krem)/70">{y.s}</span></span>
-            <Ikon ad="ok" class="ml-auto h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:translate-x-1" />
-          </a></li>
-        ))}
-      </ul>
-    </div>
-    <div class="grid sm:grid-cols-[auto_minmax(0,1fr)] gap-6 items-center bg-(--color-krem) text-(--color-murekkep) rounded-(--radius-kose) p-5 sm:p-6 shadow-[0_24px_48px_-24px_rgba(0,0,0,.6)]">
-      <figure class="mx-auto w-40 sm:w-44 [&_svg]:w-full [&_svg]:h-auto" role="img" aria-label={m.qr} set:html={qr} />
-      <div class="min-w-0">
-        <p class="etiket etiket-krem-sabit">IBAN</p>
-        <p class="mono text-lg sm:text-xl font-medium select-all break-words" id="bagis-iban">{banka.iban}</p>
-        <p class="mt-1 text-sm text-(--color-murekkep)/70">{banka.banka} · BIC <span class="mono">{banka.bic}</span></p>
-        <p class="mt-1 text-sm text-(--color-murekkep)/70">{m.acik}: <span class="mono">{aciklama}</span></p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <button type="button" class="dugme dugme-birincil iban-kopyala" data-iban={ibanDuz} data-kopyalandi={m.kopyalandi}>{m.kopyala}</button>
-          <a href={yol(dil, 'bagis')} class="dugme border-(--color-murekkep)/35 text-(--color-murekkep) hover:border-(--color-murekkep) hover:text-(--color-murekkep) hover:bg-(--color-murekkep)/5">{m.hepsi}</a>
+
+{kompakt ? (
+  <aside class="yazdirma-gizle bagis-kompakt" aria-labelledby="bagis-kompakt-baslik">
+    <div class="kapsayici py-6 sm:py-8">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
+        <div>
+          <h2 id="bagis-kompakt-baslik" class="text-xl sm:text-2xl font-serif font-bold text-(--color-krem)">{m.baslik}</h2>
+          <p class="mt-2 text-base text-(--color-krem)/85 leading-relaxed">{m.alt}</p>
         </div>
-        <p class="etiket etiket-krem-sabit mt-3">{m.qr}</p>
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href={yol(dil, 'bagis')}
+              class="dugme dugme-birincil min-h-[44px] inline-flex items-center gap-1.5"
+            >
+              {m.hepsi}
+              <Ikon ad="ok" class="h-4 w-4 shrink-0" />
+            </a>
+            <details class="group bagis-detay-kutu" data-bagis-detay>
+              <summary class="dugme cursor-pointer border border-(--color-krem)/40 text-(--color-krem) hover:bg-(--color-krem)/10 list-none min-h-[44px] inline-flex items-center gap-2 select-none focus-visible:outline-2 focus-visible:outline-(--color-krem)">
+                <span>{m.detaylar}</span>
+                <Ikon ad="ok" class="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-90 text-(--color-ochre-acik)" />
+              </summary>
+              <div class="mt-3 p-4 sm:p-5 bg-(--color-krem) text-(--color-murekkep) rounded-(--radius-kose) shadow-md border border-(--cizgi) grid sm:grid-cols-[auto_minmax(0,1fr)] gap-5 items-center">
+                <figure class="mx-auto w-32 sm:w-36 [&_svg]:w-full [&_svg]:h-auto shrink-0" role="img" aria-label={m.qr} set:html={qr} />
+                <div class="min-w-0">
+                  <p class="etiket etiket-krem-sabit">IBAN</p>
+                  <p class="mono text-base sm:text-lg font-medium select-all break-words text-(--color-murekkep)" id="bagis-iban-kompakt">{banka.iban}</p>
+                  <p class="mt-1 text-sm text-(--color-murekkep)/80">{banka.banka} · BIC <span class="mono font-medium">{banka.bic}</span></p>
+                  <p class="mt-1 text-sm text-(--color-murekkep)/80">{m.acik}: <span class="mono font-medium">{aciklama}</span></p>
+                  <div class="mt-3 flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      class="dugme dugme-birincil iban-kopyala min-h-[44px]"
+                      data-iban={ibanDuz}
+                      data-kopyalandi={m.kopyalandi}
+                      data-hata={m.kopyalanamadi}
+                    >
+                      {m.kopyala}
+                    </button>
+                    <span class="kopyala-durum sr-only" aria-live="polite"></span>
+                  </div>
+                  <p class="etiket etiket-krem-sabit mt-2 text-xs">{m.qr}</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </aside>
+) : (
+  <section class="yazdirma-gizle relative overflow-hidden bg-(--color-ceviz-koyu) text-(--color-krem) reveal" aria-labelledby="bagis-baslik">
+    <div class="kilim-serit" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none [background-image:radial-gradient(var(--color-ochre-acik)_1px,transparent_1px)] [background-size:14px_14px]" aria-hidden="true"></div>
+    <div class="kapsayici relative py-12 sm:py-16 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
+      <div>
+        <h2 id="bagis-baslik" class="text-(--color-krem) max-w-[22ch]">{m.baslik}</h2>
+        <span class="serit bg-(--color-ochre)" aria-hidden="true"></span>
+        <p class="mt-4 max-w-[58ch] text-(--color-krem)/80">{m.alt}</p>
+        <ul class="mt-8 grid sm:grid-cols-2 gap-3" role="list">
+          {m.yollar.map((y) => (
+            <li><a href={y.h} class="group flex items-center gap-3 border border-(--color-krem)/25 rounded-(--radius-kose) px-4 py-3 no-underline text-(--color-krem) hover:border-(--color-ochre-acik) hover:bg-(--color-krem)/5 transition-colors">
+              <Ikon ad="bagis" class="h-5 w-5 shrink-0 text-(--color-ochre-acik)" />
+              <span class="min-w-0"><span class="block font-semibold">{y.a}</span><span class="block text-sm text-(--color-krem)/70">{y.s}</span></span>
+              <Ikon ad="ok" class="ml-auto h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:translate-x-1" />
+            </a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="grid sm:grid-cols-[auto_minmax(0,1fr)] gap-6 items-center bg-(--color-krem) text-(--color-murekkep) rounded-(--radius-kose) p-5 sm:p-6 shadow-[0_24px_48px_-24px_rgba(0,0,0,.6)]">
+        <figure class="mx-auto w-40 sm:w-44 [&_svg]:w-full [&_svg]:h-auto" role="img" aria-label={m.qr} set:html={qr} />
+        <div class="min-w-0">
+          <p class="etiket etiket-krem-sabit">IBAN</p>
+          <p class="mono text-lg sm:text-xl font-medium select-all break-words" id="bagis-iban">{banka.iban}</p>
+          <p class="mt-1 text-sm text-(--color-murekkep)/70">{banka.banka} · BIC <span class="mono">{banka.bic}</span></p>
+          <p class="mt-1 text-sm text-(--color-murekkep)/70">{m.acik}: <span class="mono">{aciklama}</span></p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <button type="button" class="dugme dugme-birincil iban-kopyala" data-iban={ibanDuz} data-kopyalandi={m.kopyalandi} data-hata={m.kopyalanamadi}>{m.kopyala}</button>
+            <span class="kopyala-durum sr-only" aria-live="polite"></span>
+            <a href={yol(dil, 'bagis')} class="dugme border-(--color-murekkep)/35 text-(--color-murekkep) hover:border-(--color-murekkep) hover:text-(--color-murekkep) hover:bg-(--color-murekkep)/5">{m.hepsi}</a>
+          </div>
+          <p class="etiket etiket-krem-sabit mt-3">{m.qr}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
 <script>
-  document.querySelectorAll<HTMLButtonElement>('.iban-kopyala').forEach((b) => b.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(b.dataset.iban ?? ''); const eski = b.textContent; b.textContent = b.dataset.kopyalandi ?? 'OK'; setTimeout(() => (b.textContent = eski), 2000); } catch {}
-  }));
+  document.querySelectorAll<HTMLButtonElement>('.iban-kopyala').forEach((b) => {
+    const ilkMetin = b.textContent;
+    let zamanlayici: ReturnType<typeof setTimeout> | undefined;
+    b.addEventListener('click', async () => {
+    clearTimeout(zamanlayici);
+    const durum = b.parentElement?.querySelector<HTMLElement>('.kopyala-durum');
+    try {
+      await navigator.clipboard.writeText(b.dataset.iban ?? '');
+      const kopyalandi = b.dataset.kopyalandi ?? 'OK';
+      b.textContent = kopyalandi;
+      if (durum) durum.textContent = kopyalandi;
+      zamanlayici = setTimeout(() => {
+        b.textContent = ilkMetin;
+        if (durum) durum.textContent = '';
+      }, 2000);
+    } catch {
+      const hata = b.dataset.hata ?? 'Kopyalanamadı';
+      b.textContent = hata;
+      if (durum) durum.textContent = hata;
+      zamanlayici = setTimeout(() => {
+        b.textContent = ilkMetin;
+        if (durum) durum.textContent = '';
+      }, 3500);
+    }
+    });
+  });
 </script>
+
 <style>
   /* IBAN kartının zemini temadan bağımsız her zaman açık (--color-krem) kalıyor;
      bu yüzden .etiket sınıfının tema-bağımlı rengi (var(--metin-2)) yerine burada
      sabit koyu bir ton kullanılmalı, aksi halde koyu temada metin okunmaz kalır. */
   .etiket-krem-sabit { color: color-mix(in srgb, var(--color-murekkep) 70%, transparent); }
+
+  .bagis-kompakt {
+    background-color: #163e53;
+    color: var(--color-krem);
+    border-top: 1px solid rgb(247 243 234 / 0.15);
+    border-bottom: 1px solid rgb(247 243 234 / 0.15);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .bagis-kompakt {
+      background-color: #112836;
+      border-color: rgb(247 243 234 / 0.1);
+    }
+  }
+  :root[data-theme="dark"] .bagis-kompakt {
+    background-color: #112836;
+    border-color: rgb(247 243 234 / 0.1);
+  }
+
+  .bagis-detay-kutu > summary::-webkit-details-marker {
+    display: none;
+  }
+  .bagis-detay-kutu > summary {
+    list-style: none;
+  }
+  .bagis-detay-kutu[open] {
+    width: 100%;
+  }
 </style>

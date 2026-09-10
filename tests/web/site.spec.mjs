@@ -70,13 +70,14 @@ for (const lang of ['tr', 'fr', 'en']) {
     await page.evaluate(() => document.fonts.ready);
     for (const theme of ['light', 'dark']) {
       if (theme === 'dark') await page.locator('#tema-dugme').click();
-      // Tema geçişinin ara renklerini ölçme; biten geçişin gerçek kontrastını denetle.
-      // Sabit bekleme yerine sonlu animasyonları bekle; sürekli hero hareketini bekleme.
-      await page.evaluate(async () => {
-        const animations = document.getAnimations().filter(animation =>
-          animation.effect?.getComputedTiming().iterations !== Infinity);
-        await Promise.all(animations.map(animation => animation.finished.catch(() => {})));
-      });
+      // Tema değişimindeki görünür renk geçişlerinin bitmesini bekle. Kapalı
+      // details içindeki veya tarayıcının değiştirdiği Animation.finished
+      // nesnelerine bağlanmak, görünüm tamamlandığı hâlde testi kilitleyebilir.
+      await expect.poll(() => page.evaluate(() => document.getAnimations().filter(animation => {
+        const target = animation.effect?.target;
+        return animation instanceof CSSTransition && animation.playState === 'running'
+          && target instanceof Element && target.getClientRects().length > 0;
+      }).length)).toBe(0);
       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
       await info.attach(`axe-${theme}`, { body: JSON.stringify(result, null, 2), contentType: 'application/json' });
       const severe = result.violations.filter(v => ['serious', 'critical'].includes(v.impact));

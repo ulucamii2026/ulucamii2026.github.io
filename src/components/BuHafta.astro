@@ -1,38 +1,148 @@
 ---
-/** "Bu hafta camide" — 7 günlük dikey liste, bugün vurgulu (Brüksel saati, build anında) */
+/** "Bu hafta camide" — 7 günlük dikey liste veya kompakt haftalık program özeti */
 import Ikon from './Ikon.astro';
 import { yol } from '../i18n/utils';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 import { haftaGunu } from '../lib/namaz';
-interface Props { dil: Dil; program: { gun: number; baslik: { tr: string; fr: string }; saat: { tr: string; fr: string }; sayfa?: string }[]; bugunIdx?: number }
-const { dil, program } = Astro.props;
-const bugun = Astro.props.bugunIdx ?? haftaGunu(new Date());
-const gunler = dil === 'tr' ? ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'] : dil === 'en' ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] : ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-const kisa = dil === 'tr' ? ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'] : dil === 'en' ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] : ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+interface Props {
+  dil: Dil;
+  program: { gun: number; baslik: { tr: string; fr: string }; saat: { tr: string; fr: string }; sayfa?: string }[];
+  bugunIdx?: number;
+  kompakt?: boolean;
+}
+
+const { dil, program, bugunIdx, kompakt = false } = Astro.props;
+const bugun = bugunIdx ?? haftaGunu(new Date());
+const gunler = dil === 'tr'
+  ? ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar']
+  : dil === 'en'
+    ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    : ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+const kisa = dil === 'tr'
+  ? ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz']
+  : dil === 'en'
+    ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    : ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 const bosGun = dil === 'tr' ? 'Beş vakit namaz' : dil === 'en' ? 'Five daily prayers' : 'Cinq prières quotidiennes';
 const bugunEtiket = dil === 'tr' ? 'Bugün' : dil === 'en' ? 'Today' : 'Auj.';
 const ikonSec = (s?: string) => (s === 'kurankursu' || s === 'irsat' ? 'kurs' : s === 'namaz' ? 'cami' : 'takvim');
 // program içeriği (site verisi) yalnız tr/fr sağlıyor; İngilizcede Fransızcaya düşer (içerik src/content kapsam dışı)
 const icerikDil = dil === 'en' ? 'fr' : dil;
+
+// Kompakt mod için özel günlerin ve genel namaz bilgisinin hazırlanması
+const ozelGunler = [1, 2, 3, 4, 5, 6, 7]
+  .map((n) => ({ gun: n, maddeler: program.filter((p) => p.gun === n) }))
+  .filter((g) => g.maddeler.length > 0);
+
+// Bu görünüm haftalık programdır; statik derlemenin gününü "bugün" diye göstermez.
+const genelBilgiMetni = dil === 'tr'
+  ? 'Camimiz haftanın her günü beş vakit cemaatle namaza açıktır.'
+  : dil === 'en'
+    ? 'The mosque is open every day for the five daily prayers.'
+    : 'La mosquée est ouverte tous les jours pour les cinq prières quotidiennes.';
 ---
-<ol class="kart-kagit divide-y divide-(--cizgi)" role="list">
-  {gunler.map((g, i) => {
-    const n = i + 1; const maddeler = program.filter((p) => p.gun === n); const bugunMu = n === bugun;
-    return (
-      <li class:list={['grid grid-cols-[3.2rem_minmax(0,1fr)] gap-3 px-4 py-2.5 items-start', bugunMu && 'bg-(--vurgu-2)/8']} aria-current={bugunMu ? 'date' : undefined}>
-        <p class="pt-0.5">
-          <span class:list={['etiket block', bugunMu && 'text-(--vurgu-2) font-medium']} title={g}>{kisa[i]}</span>
-          {bugunMu && <span class="etiket block text-(--vurgu-2)">{bugunEtiket}</span>}
-        </p>
-        <div class="min-w-0">
-          {maddeler.length ? maddeler.map((m) => (
-            <a href={m.sayfa ? yol(dil, m.sayfa as SayfaAnahtari) : undefined} class="group flex items-start gap-2.5 no-underline text-(--metin) py-0.5">
-              <Ikon ad={ikonSec(m.sayfa)} class:list={['h-5 w-5 shrink-0 mt-0.5 transition-colors', bugunMu ? 'text-(--vurgu-2)' : 'text-(--vurgu)']} />
-              <span class="min-w-0"><span class="block font-semibold leading-snug group-hover:underline">{m.baslik[icerikDil]}</span><span class="block text-xs text-(--metin-2) mt-0.5">{m.saat[icerikDil]}</span></span>
-            </a>
-          )) : <p class="text-sm text-(--metin-2) py-0.5">{bosGun}</p>}
-        </div>
-      </li>
-    );
-  })}
-</ol>
+
+{kompakt ? (
+  <div class="hafta-kompakt space-y-4">
+    <p class="text-base text-(--metin) leading-relaxed">
+      {genelBilgiMetni}
+    </p>
+    <ol class="divide-y divide-(--cizgi) border-y border-(--cizgi)" role="list">
+      {ozelGunler.map(({ gun, maddeler }) => {
+        const gunAdi = gunler[gun - 1];
+        return (
+          <li
+            data-program-gun={gun}
+            class="py-3.5 grid grid-cols-1 sm:grid-cols-[7.5rem_minmax(0,1fr)] gap-2 sm:gap-4 items-start"
+          >
+            <div class="flex sm:flex-col items-baseline sm:items-start gap-2 pt-1">
+              <span class="text-base font-semibold text-(--metin)">
+                {gunAdi}
+              </span>
+            </div>
+            <div class="min-w-0 space-y-2">
+              {maddeler.map((m) => {
+                const href = m.sayfa ? yol(dil, m.sayfa as SayfaAnahtari) : undefined;
+                return href ? (
+                  <a
+                    href={href}
+                    class="group flex items-start gap-3 text-(--metin) py-1.5 min-h-[44px] no-underline hover:text-(--vurgu) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--vurgu-2)"
+                  >
+                    <Ikon
+                      ad={ikonSec(m.sayfa)}
+                      class:list={[
+                        'h-5 w-5 shrink-0 mt-0.5 transition-colors',
+                        'text-(--vurgu)'
+                      ]}
+                    />
+                    <span class="min-w-0">
+                      <strong
+                        class="block text-base font-semibold leading-snug group-hover:underline"
+                        lang={dil === 'en' ? 'fr' : undefined}
+                      >
+                        {m.baslik[icerikDil]}
+                      </strong>
+                      <span
+                        class="block text-sm text-(--metin-2) mt-0.5"
+                        lang={dil === 'en' ? 'fr' : undefined}
+                      >
+                        {m.saat[icerikDil]}
+                      </span>
+                    </span>
+                  </a>
+                ) : (
+                  <div class="flex items-start gap-3 text-(--metin) py-1.5 min-h-[44px]">
+                    <Ikon
+                      ad={ikonSec(m.sayfa)}
+                      class:list={[
+                        'h-5 w-5 shrink-0 mt-0.5',
+                        'text-(--vurgu)'
+                      ]}
+                    />
+                    <span class="min-w-0">
+                      <strong
+                        class="block text-base font-semibold leading-snug"
+                        lang={dil === 'en' ? 'fr' : undefined}
+                      >
+                        {m.baslik[icerikDil]}
+                      </strong>
+                      <span
+                        class="block text-sm text-(--metin-2) mt-0.5"
+                        lang={dil === 'en' ? 'fr' : undefined}
+                      >
+                        {m.saat[icerikDil]}
+                      </span>
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+) : (
+  <ol class="kart-kagit divide-y divide-(--cizgi)" role="list">
+    {gunler.map((g, i) => {
+      const n = i + 1; const maddeler = program.filter((p) => p.gun === n); const bugunMu = n === bugun;
+      return (
+        <li class:list={['grid grid-cols-[3.2rem_minmax(0,1fr)] gap-3 px-4 py-2.5 items-start', bugunMu && 'bg-(--vurgu-2)/8']} aria-current={bugunMu ? 'date' : undefined}>
+          <p class="pt-0.5">
+            <span class:list={['etiket block', bugunMu && 'text-(--vurgu-2) font-medium']} title={g}>{kisa[i]}</span>
+            {bugunMu && <span class="etiket block text-(--vurgu-2)">{bugunEtiket}</span>}
+          </p>
+          <div class="min-w-0">
+            {maddeler.length ? maddeler.map((m) => (
+              <a href={m.sayfa ? yol(dil, m.sayfa as SayfaAnahtari) : undefined} class="group flex items-start gap-2.5 no-underline text-(--metin) py-0.5">
+                <Ikon ad={ikonSec(m.sayfa)} class:list={['h-5 w-5 shrink-0 mt-0.5 transition-colors', bugunMu ? 'text-(--vurgu-2)' : 'text-(--vurgu)']} />
+                <span class="min-w-0"><span class="block font-semibold leading-snug group-hover:underline">{m.baslik[icerikDil]}</span><span class="block text-xs text-(--metin-2) mt-0.5">{m.saat[icerikDil]}</span></span>
+              </a>
+            )) : <p class="text-sm text-(--metin-2) py-0.5">{bosGun}</p>}
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+)}

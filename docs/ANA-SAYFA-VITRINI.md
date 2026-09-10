@@ -55,3 +55,7 @@ Bu belge, ana sayfa `GundemVitrini` bileşeninin mimarisini, Embla 8.6 entegrasy
 * **Kapsamlı Test Paketi (`npm run dogrula:codex`, 13:20):** Tamamı geçti: statik kontrol, derleme/iç bağlantı/CMS/PDF denetimleri, 200 tarayıcı testi, 17 yalıtılmış Firestore kural testi ve 32 veli e-postası testi.
 * **Ek dokunma doğrulaması:** Chromium mobil bağlamında CDP `touchStart/touchMove/touchEnd` ile ilk yayından ikinciye geçildi; sürükleme afiş penceresini yanlışlıkla açmadı.
 * **Test sınırı:** Görsel ve etkileşim kontrolleri Chromium üzerinde yapıldı; fiziksel iPhone/Safari testi yapılmadı. Canlı form veya e-posta gönderimi bu slider doğrulamasının parçası değildir.
+* **Yayın kopyası:** Bağımsız worktree'de temiz bağımlılık kurulumu, derleme, 875 sayfa / 1009 iç bağlantı ve CMS denetimi geçti; ayrıca 66 ana sayfa/slider testi geçti.
+* **Canlı doğrulama (13:34):** `cf6c105e7e6c5715a6a91838b26b0adbfe69050f` yayımlandı. TR/FR/EN ana sayfaları HTTP 200; altı yayın, ileri/geri, afiş penceresi, Escape ve odağın geri dönmesi doğrulandı. Yatay taşma ve yakalanan JavaScript çalışma zamanı hatası yok.
+* **Dağıtım gözlemi:** İlk Actions akışı `34471326278`, deploy işinin 5 dakikalık sınırında iptal göründü. Buna rağmen Pages dağıtım API'si `succeed` döndürdü ve yeni site canlıda doğrulandı. İş akışı rengi tek başına canlı sürümün kanıtı değildir.
+* **Yayın süresi düzeltmesi:** `ae3d1ca25763eb6060d226b1096937c56e789e59` ile deploy işi 15 dakika, Pages eylemi 600000 ms bekleyecek şekilde ayarlandı. `34472392787` numaralı iş akışı tamamen başarılı tamamlandı.

@@ -1,0 +1,237 @@
+---
+import { Image } from 'astro:assets';
+import icMekan from '../assets/foto/ic-mekan.jpg';
+import Ikon from './Ikon.astro';
+import BuHafta from './BuHafta.astro';
+import BagisBandi from './BagisBandi.astro';
+import { yol, tarihBicimle, kayitBaglantisi } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { duyurular, yaklasanEtkinlikler, siteAyarlari } from '../lib/icerik';
+import { kucukSurum } from '../lib/gorsel';
+import '../styles/ana-sayfa-akisi.css';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const site = await siteAyarlari();
+
+const tumDuyurular = await duyurular(dil);
+const sonDuyurular = tumDuyurular.slice(0, 3);
+const etkinlikler = await yaklasanEtkinlikler(dil, 2);
+
+const m = dil === 'tr' ? {
+  haftalikYasamUst: 'Birlikte öğreniyor, birlikte büyüyoruz',
+  haftalikYasamAlt: 'Hafta sonu Kur’an kurslarımız Türkçe ve Fransızca veriliyor. Cuma günleri Türkçe hutbenin ardından Fransızca hutbe okunuyor. Din görevlimizle Fransızca da iletişim kurabilirsiniz.',
+  veliPortali: 'Veli portalı',
+  kursBilgisi: 'Kur’an kursuna kayıt',
+  buHafta: 'Bu hafta camide',
+  duyurular: 'Duyurular', tumu: 'Tümü',
+  takvim: 'Takvim',
+  etkinlikBos: 'Yaklaşan etkinlik bulunmuyor.',
+  hizmetler: 'Size nasıl yardımcı olabiliriz?',
+  hizmetIhtida: 'İhtida (Kelime-i Şehadet)', ihtidaAlt: 'Müslüman olmak isteyenler için rehberlik ve belge işlemleri.',
+  hizmetCenaze: 'Cenaze', cenazeAlt: 'Belçika Diyanet Vakfı cenaze fonu ve defin işlemleri.',
+  hizmetKonsolosluk: 'Konsolosluk', konsoloslukAlt: 'Vatandaşlarımız için temel konsolosluk işlemleri rehberliği.',
+  hizmetUyelik: 'Dernek Üyeliği', uyelikAlt: 'Camimizi yaşatmak ve faaliyetlere destek olmak için.',
+  ziyaret: 'Kapımız herkese açık',
+  ziyaretGovde: 'Marche-en-Famenne Ulu Camii, 1979’da kurulan derneğimizin çatısı altında 1986’dan beri bölgemizdeki Müslümanlara ibadet, eğitim ve dayanışma hizmeti sunmaktadır. Valon Bölgesi tarafından tanınmış bir ibadet topluluğu olarak Belçika Diyanet Vakfı’na bağlıyız; kapımız her milletten komşumuza açıktır.',
+  hakkimizda: 'Hakkımızda', ilkZiyaret: 'İlk ziyaret rehberi', iletisim: 'İletişim', yolTarifi: 'Yol tarifi',
+  kadinGenclik: 'Kadın ve gençlik kolları programları için', irsat: 'İrşat Takvimi',
+  fotoAlt: 'Ulu Camii iç mekânı', egitimAlt: 'Çalışma masası, defter ve kitap'
+} : dil === 'en' ? {
+  haftalikYasamUst: 'Learning and growing together',
+  haftalikYasamAlt: 'Our weekend Qur’an classes are taught in Turkish and French. On Fridays, the Turkish sermon is followed by a French sermon. You can also speak with our imam in French.',
+  veliPortali: 'Education & Parent Portal',
+  kursBilgisi: 'Qur’an Course Registration',
+  buHafta: 'This week at the mosque',
+  duyurular: 'Announcements', tumu: 'All',
+  takvim: 'Calendar',
+  etkinlikBos: 'No upcoming events.',
+  hizmetler: 'How can we help you?',
+  hizmetIhtida: 'Conversion to Islam', ihtidaAlt: 'Guidance and certification for those wishing to become Muslim.',
+  hizmetCenaze: 'Funeral', cenazeAlt: 'Diyanet Foundation funeral fund and burial procedures.',
+  hizmetKonsolosluk: 'Consulate', konsoloslukAlt: 'Guidance for basic consular procedures for our citizens.',
+  hizmetUyelik: 'Membership', uyelikAlt: 'To support our mosque and its activities.',
+  ziyaret: 'Our door is open to everyone',
+  ziyaretGovde: 'Marche-en-Famenne Ulu Mosque, carried by our association founded in 1979, has served the Muslims of our region with worship, education and mutual support since 1986. Recognised by the Walloon Region as a place of worship and affiliated with the Diyanet Foundation of Belgium, our door is open to neighbours of every background.',
+  hakkimizda: 'About us', ilkZiyaret: 'Guide for your first visit', iletisim: 'Contact', yolTarifi: 'Directions',
+  kadinGenclik: 'For women and youth branch programs:', irsat: 'Guidance Calendar',
+  fotoAlt: 'Interior of the mosque', egitimAlt: 'Study desk, notebook and book',
+  fallbackNotu: 'Announcement and event titles below are published in Turkish and French; only the dates are shown in English. For a summary in English, write to info@ulucamii.be.'
+} : {
+  haftalikYasamUst: 'Apprendre et grandir ensemble',
+  haftalikYasamAlt: 'Nos cours de Coran du week-end sont proposés en turc et en français. Le vendredi, le sermon en turc est suivi d’un sermon en français. Vous pouvez également échanger en français avec notre imam.',
+  veliPortali: 'Portail Éducation & Parents',
+  kursBilgisi: 'Inscription Cours de Coran',
+  buHafta: 'Cette semaine à la mosquée',
+  duyurular: 'Annonces', tumu: 'Toutes',
+  takvim: 'Calendrier',
+  etkinlikBos: 'Aucun événement à venir.',
+  hizmetler: 'Comment pouvons-nous vous aider ?',
+  hizmetIhtida: 'Conversion à l’Islam', ihtidaAlt: 'Accompagnement et attestation pour ceux qui souhaitent devenir musulmans.',
+  hizmetCenaze: 'Funérailles', cenazeAlt: 'Fonds funéraire de la Fondation Diyanet et démarches.',
+  hizmetKonsolosluk: 'Consulat', konsoloslukAlt: 'Accompagnement pour les démarches consulaires de base pour nos concitoyens.',
+  hizmetUyelik: 'Adhésion', uyelikAlt: 'Pour soutenir notre mosquée et ses activités.',
+  ziyaret: 'Notre porte est ouverte à tous',
+  ziyaretGovde: 'La mosquée Ulu Camii de Marche-en-Famenne, portée par notre association fondée en 1979, accueille depuis 1986 les musulmans de la région pour le culte, l’enseignement et l’entraide. Communauté cultuelle reconnue par la Région wallonne et rattachée à la Fondation Diyanet de Belgique, notre porte est ouverte à tous nos voisins, de toutes origines.',
+  hakkimizda: 'À propos', ilkZiyaret: 'Guide pour la première visite', iletisim: 'Contact', yolTarifi: 'Itinéraire',
+  kadinGenclik: 'Pour les programmes des femmes et des jeunes :', irsat: 'Calendrier d’Orientation',
+  fotoAlt: 'Intérieur de la mosquée', egitimAlt: 'Bureau d’étude, cahier et livre'
+};
+
+const adresStr = `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}, ${site.adres.ulke}`;
+const kursKayit = kayitBaglantisi(site.kursKayitLinki || '/kayit/', dil);
+const haritaUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.gps.enlem},${site.gps.boylam}`;
+---
+<div class="ana-akis bg-(--zemin)">
+  <!-- 1. Haftalık Yaşam -->
+  <section id="haftalik-yasam" class="kapsayici">
+    <div class="ana-akis-2-sutun">
+      <div>
+        <h2>{m.haftalikYasamUst}</h2>
+        <p class="ana-akis-p">{m.haftalikYasamAlt}</p>
+        <div class="mt-6">
+          <img src="/media/vitrin/egitim-veli-portali.webp" alt={m.egitimAlt} class="ana-akis-egitim-gorsel" loading="lazy" decoding="async" width="1200" height="900" />
+        </div>
+        <div class="ana-akis-dugmeler">
+          <a href={kursKayit} class="ana-akis-dugme ana-akis-dugme-birincil">{m.kursBilgisi}</a>
+          <a href={yol(dil, 'veli')} class="ana-akis-dugme ana-akis-dugme-ikincil">{m.veliPortali}</a>
+        </div>
+      </div>
+      <div id="bu-hafta" class="scroll-mt-24">
+        <h2>{m.buHafta}</h2>
+        <BuHafta dil={dil} program={site.haftalikProgram} kompakt />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Güncel Bilgiler -->
+  <section id="guncel-bilgiler" class="kapsayici">
+    <div class="ana-akis-2-sutun">
+      <div>
+        <div class="ana-akis-baslik-satiri">
+          <h2>{m.duyurular}</h2>
+          <a href={yol(dil, 'duyurular')} class="ana-akis-tumu-link" aria-label={`${m.duyurular}: ${m.tumu}`}>{m.tumu} <Ikon ad="ok" class="h-4 w-4" /></a>
+        </div>
+        {dil === 'en' && <p class="ana-akis-p text-sm mb-6 bg-(--zemin-2) p-3 rounded border border-(--cizgi)">{m.fallbackNotu}</p>}
+        <ul class="ana-akis-liste">
+          {sonDuyurular.map((d) => {
+            const kapakYolu = d.data.kapakKucuk ?? kucukSurum(d.data.kapak) ?? d.data.kapak;
+            return (
+              <li>
+                <a href={yol(dil, 'duyurular', d.slug)} class="ana-akis-kart">
+                  {kapakYolu ? (
+                    <img src={kapakYolu} alt="" class="ana-akis-kart-gorsel" loading="lazy" decoding="async" />
+                  ) : (
+                    <div class="ana-akis-kart-gorsel flex items-center justify-center text-(--metin-2)">
+                      <Ikon ad="cami" class="h-8 w-8" />
+                    </div>
+                  )}
+                  <div>
+                    <span class="ana-akis-kart-tarih"><time datetime={d.data.tarih.toISOString()}>{tarihBicimle(d.data.tarih, dil)}</time></span>
+                    <h3 class="ana-akis-kart-baslik" lang={dil === 'en' ? 'fr' : undefined}>{d.data.baslik}</h3>
+                    {d.data.ozet && <p class="ana-akis-kart-ozet" lang={dil === 'en' ? 'fr' : undefined}>{d.data.ozet}</p>}
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div>
+        <div class="ana-akis-baslik-satiri">
+          <h2>{m.takvim}</h2>
+          <a href={yol(dil, 'etkinlikler')} class="ana-akis-tumu-link" aria-label={`${m.takvim}: ${m.tumu}`}>{m.tumu} <Ikon ad="ok" class="h-4 w-4" /></a>
+        </div>
+        {etkinlikler.length > 0 ? (
+          <ul class="ana-akis-liste">
+            {etkinlikler.map((e) => {
+              const kapakYolu = e.data.afisKucuk ?? kucukSurum(e.data.afis) ?? e.data.afis;
+              const tarihStr = e.data.bitis && e.data.bitis.getTime() !== e.data.baslangic.getTime()
+                ? `${tarihBicimle(e.data.baslangic, dil, { day: 'numeric', month: 'long' })} – ${tarihBicimle(e.data.bitis, dil)}`
+                : tarihBicimle(e.data.baslangic, dil);
+              return (
+                <li>
+                  <a href={yol(dil, 'etkinlikler', e.slug)} class="ana-akis-kart">
+                    {kapakYolu ? (
+                      <img src={kapakYolu} alt="" class="ana-akis-kart-gorsel" loading="lazy" decoding="async" />
+                    ) : (
+                      <div class="ana-akis-kart-gorsel flex items-center justify-center text-(--metin-2)">
+                        <Ikon ad="takvim" class="h-8 w-8" />
+                      </div>
+                    )}
+                    <div>
+                      <span class="ana-akis-kart-tarih"><time datetime={e.data.baslangic.toISOString()}>{tarihStr}</time>{e.data.saat && <span> · {e.data.saat}</span>}</span>
+                      <h3 class="ana-akis-kart-baslik" lang={dil === 'en' ? 'fr' : undefined}>{e.data.baslik}</h3>
+                      {e.data.ozet && <p class="ana-akis-kart-ozet" lang={dil === 'en' ? 'fr' : undefined}>{e.data.ozet}</p>}
+                    </div>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p class="ana-akis-p">{m.etkinlikBos}</p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Hizmetler -->
+  <section id="hizmetler" class="kapsayici">
+    <h2>{m.hizmetler}</h2>
+    <div class="ana-akis-hizmetler-liste">
+      <a href={yol(dil, 'ihtida')} class="ana-akis-hizmet group">
+        <Ikon ad="belge" class="ana-akis-hizmet-ikon" />
+        <div>
+          <h3 class="ana-akis-hizmet-baslik">{m.hizmetIhtida}</h3>
+          <p class="ana-akis-hizmet-aciklama">{m.ihtidaAlt}</p>
+        </div>
+      </a>
+      <a href={yol(dil, 'cenaze')} class="ana-akis-hizmet group">
+        <Ikon ad="cenaze" class="ana-akis-hizmet-ikon" />
+        <div>
+          <h3 class="ana-akis-hizmet-baslik">{m.hizmetCenaze}</h3>
+          <p class="ana-akis-hizmet-aciklama">{m.cenazeAlt}</p>
+        </div>
+      </a>
+      <a href={yol(dil, 'konsolosluk')} class="ana-akis-hizmet group">
+        <Ikon ad="konsolosluk" class="ana-akis-hizmet-ikon" />
+        <div>
+          <h3 class="ana-akis-hizmet-baslik">{m.hizmetKonsolosluk}</h3>
+          <p class="ana-akis-hizmet-aciklama">{m.konsoloslukAlt}</p>
+        </div>
+      </a>
+      <a href={yol(dil, 'uyelik')} class="ana-akis-hizmet group">
+        <Ikon ad="uyelik" class="ana-akis-hizmet-ikon" />
+        <div>
+          <h3 class="ana-akis-hizmet-baslik">{m.hizmetUyelik}</h3>
+          <p class="ana-akis-hizmet-aciklama">{m.uyelikAlt}</p>
+        </div>
+      </a>
+    </div>
+    <a href={yol(dil, 'irsat')} class="ana-akis-ek-link">{m.kadinGenclik} {m.irsat} <Ikon ad="ok" class="h-4 w-4" /></a>
+  </section>
+
+  <!-- 4. Ziyaret -->
+  <section id="ziyaret" class="kapsayici">
+    <div class="ana-akis-2-sutun items-center">
+      <div>
+        <Image src={icMekan} alt={m.fotoAlt} widths={[520, 1040]} sizes="(min-width: 1024px) 520px, 100vw" class="ana-akis-ziyaret-gorsel" loading="lazy" decoding="async" />
+      </div>
+      <div>
+        <h2>{m.ziyaret}</h2>
+        <p class="ana-akis-p">{m.ziyaretGovde}</p>
+        <p class="ana-akis-ziyaret-adres"><Ikon ad="harita" class="h-5 w-5 shrink-0 text-(--vurgu-2)" /> {adresStr}</p>
+        <div class="ana-akis-link-listesi">
+          <a href={yol(dil, 'hakkimizda')} class="ana-akis-dugme ana-akis-dugme-ikincil">{m.hakkimizda}</a>
+          <a href={yol(dil, 'adab')}><Ikon ad="cami" class="h-5 w-5 text-(--metin-2)" /> {m.ilkZiyaret}</a>
+          <a href={yol(dil, 'iletisim')}><Ikon ad="iletisim" class="h-5 w-5 text-(--metin-2)" /> {m.iletisim}</a>
+          <a href={haritaUrl} target="_blank" rel="noopener noreferrer"><Ikon ad="ok" class="h-5 w-5 text-(--metin-2)" /> {m.yolTarifi}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Bağış -->
+  <BagisBandi dil={dil} banka={site.banka} kompakt />
+</div>

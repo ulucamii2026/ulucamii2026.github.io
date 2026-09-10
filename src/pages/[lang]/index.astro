@@ -1,122 +1,52 @@
 ---
 import Base from '../../layouts/Base.astro';
-import EtkinlikKarti from '../../components/EtkinlikKarti.astro';
 import NamazVakitleri from '../../components/NamazVakitleri';
 import SiradakiVakit from '../../components/SiradakiVakit';
-import BuHafta from '../../components/BuHafta.astro';
 import GundemVitrini from '../../components/GundemVitrini.astro';
 import DuyuruSeridi from '../../components/DuyuruSeridi.astro';
-import BagisBandi from '../../components/BagisBandi.astro';
-import HacBandi from '../../components/HacBandi.astro';
-import KayitBandi from '../../components/KayitBandi.astro';
-import KurumsalSerit from '../../components/KurumsalSerit.astro';
 import VefatBandi from '../../components/VefatBandi.astro';
-import Tanitim from '../../components/Tanitim.astro';
-import IletisimMini from '../../components/IletisimMini.astro';
 import Ikon from '../../components/Ikon.astro';
-import { ceviri, yol, tarihBicimle } from '../../i18n/utils';
+import AnaSayfaAkisi from '../../components/AnaSayfaAkisi.astro';
+import { ceviri, yol } from '../../i18n/utils';
 import type { Dil } from '../../i18n/ui';
-import { dilYollari, duyurular, yaklasanEtkinlikler, namazVakitleri, siteAyarlari } from '../../lib/icerik';
-import { haftaGunu } from '../../lib/namaz';
-import { HAC_SON_GUN } from '../../lib/etkinlik-tarihleri';
-import { gorselOlcu, cerceve, oranCss, kucukSurum } from '../../lib/gorsel';
+import { dilYollari, namazVakitleri as namazVakitleriGet, siteAyarlari } from '../../lib/icerik';
 
 export const getStaticPaths = dilYollari;
 const dil = Astro.params.lang as Dil;
 const t = ceviri(dil);
 const site = await siteAyarlari();
-const tumDuyurular = await duyurular(dil);
-/* Editörün CMS'te işaretlediği duyuru önce gelir; yoksa kapak görseli olan, o da yoksa en yeni.
-   (Daha önce yalnız `kapak` bakılıyordu; `oneCikan` işareti okunmadığı için editörün seçimi
-   yok sayılıyordu — 25 Ağustos 2026 denetimi.) */
-/* oneCikanSon (dâhil) geçmişse işaret yok sayılır — site her gün yeniden derlendiği için kendiliğinden. */
-const oneCikanGecerli = (d: (typeof tumDuyurular)[number]) =>
-  d.data.oneCikan && (!d.data.oneCikanSon || d.data.oneCikanSon.getTime() + 86_400_000 > Date.now());
-const oneCikan = tumDuyurular.find(oneCikanGecerli)
-  ?? tumDuyurular.find((d) => d.data.kapak)
-  ?? tumDuyurular[0];
-const digerDuyurular = tumDuyurular.filter((d) => d !== oneCikan).slice(0, 4);
-/* Öne çıkan duyurunun kapağı çoğu kez DİKEY bir afiştir. Sabit 16:9 + object-cover afişin ortasından
-   yatay bir dilim kesiyordu ve hac afişinde bu dilim bomboş beyaz bir bant olduğu için ana sayfanın
-   en büyük görsel alanı BOŞ görünüyordu (4 Eylül 2026 ekran denetimi). Artık kapak, oranı ölçülüp
-   ona göre yerleştirilir: dikeyse yanda küçük afiş + metin, yataysa eskisi gibi üstte geniş görsel. */
-/* Kart kapağı en çok ~250 px genişliğinde görünür: içerikte küçük sürüm verilmemişse otomatik
-   bulunanı kullan (216 KB'lık afiş yerine 41 KB'lık küçüğü — 4 Eylül 2026 ağırlık ölçümü). */
-const kapakYolu = oneCikan?.data.kapakKucuk ?? kucukSurum(oneCikan?.data.kapak) ?? oneCikan?.data.kapak;
-const kapakOlcu = await gorselOlcu(kapakYolu);
-const kapakKutu = cerceve(kapakOlcu);
-const etkinlikler = await yaklasanEtkinlikler(dil, 3);
-const namaz = namazVakitleri();
-/* Ana sayfa adacıklarına 46 günün tamamı değil, kısa bir pencere gider: iki adacığın props'u
-   sayfanın dörtte birini (≈23 KB) kaplıyordu. Yedi gün, günlük yeniden yayın bir hafta üst üste
-   başarısız olsa bile vakitlerin doğru kalmasına yeter; tam tablo /namaz-vakitleri sayfasındadır. */
+
+const namaz = namazVakitleriGet();
 const namazPenceresi = namaz.gunler.slice(0, 7);
-const bugunGun = haftaGunu(new Date());
 const namazEtiket = { imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') };
-/* Hızlı erişim: yalnız "işlem" değil, "öğren/katıl" da olsun. Hanımlar & genç kızlar programı ve
-   ilk ziyaret rehberi ana sayfada hiç görünmüyordu; ikisi de menünün içine gömülüydü. */
-const hizmetler = [
-  { href: yol(dil, 'bagis'), ad: t('ana.hizli.bagis'), ikon: 'bagis' as const },
-  { href: yol(dil, 'kurankursu'), ad: t('ana.hizli.kurs'), ikon: 'kurs' as const },
-  { href: yol(dil, 'irsat'), ad: t('ana.hizli.irsat'), ikon: 'uyelik' as const },
-  { href: yol(dil, 'adab'), ad: t('ana.hizli.adab'), ikon: 'cami' as const },
-  { href: yol(dil, 'cenaze'), ad: t('ana.hizli.cenaze'), ikon: 'cenaze' as const },
-  { href: yol(dil, 'konsolosluk'), ad: t('ana.hizli.konsolosluk'), ikon: 'konsolosluk' as const },
-  { href: yol(dil, 'uyelik'), ad: t('ana.hizli.uyelik'), ikon: 'mezuniyet' as const },
-  { href: yol(dil, 'iletisim'), ad: t('ana.hizli.iletisim'), ikon: 'iletisim' as const },
-];
+
 const hizliIslemler = [
   { href: yol(dil, 'kurankursu'), ad: t('nav.kurankursu'), ikon: 'kurs' as const },
   { href: yol(dil, 'portal'), ad: t('nav.portal'), ikon: 'uyelik' as const },
   { href: yol(dil, 'ihtidaBasvuru'), ad: t('nav.ihtidaBasvuru'), ikon: 'belge' as const },
   { href: yol(dil, 'cenaze'), ad: t('ana.hizli.cenaze'), ikon: 'cenaze' as const },
 ];
+
 const m = dil === 'tr' ? {
   heroUst: 'Marche-en-Famenne · Belçika · 1986’dan beri',
   heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze namazları — Famenne’deki Müslümanların ocağı.',
-  buHafta: 'Bu hafta camide', buHaftaAlt: 'Haftalık programımız; bugün vurgulu.',
-  hizmet: 'Hizmetlerimiz',
-  sonDuyuru: 'Son duyurular', tumDuyuru: 'Tüm duyurular',
-  etkinlik: 'Yaklaşan etkinlikler', tumEtkinlik: 'Tüm etkinlikler ve afişler',
-  duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
+  hizmet: 'Hızlı Erişim',
 } : dil === 'en' ? {
   heroUst: 'Marche-en-Famenne · Belgium · since 1986',
   heroAlt: 'Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes, and funeral prayers — home to the Muslims of the Famenne.',
-  buHafta: 'This week at the mosque', buHaftaAlt: 'Our weekly programme; today is highlighted.',
-  hizmet: 'Our services',
-  sonDuyuru: 'Latest announcements', tumDuyuru: 'All announcements',
-  etkinlik: 'Upcoming events', tumEtkinlik: 'All events and posters',
-  duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
-  fallbackNotu: 'Announcement and event titles below are published in Turkish and French; only the dates are shown in English. For a summary in English, write to info@ulucamii.be.',
+  hizmet: 'Quick Access',
 } : {
   heroUst: 'Marche-en-Famenne · Belgique · depuis 1986',
   heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne.',
-  buHafta: 'Cette semaine à la mosquée', buHaftaAlt: 'Notre programme hebdomadaire ; le jour actuel est mis en évidence.',
-  hizmet: 'Nos services',
-  sonDuyuru: 'Dernières annonces', tumDuyuru: 'Toutes les annonces',
-  etkinlik: 'Événements à venir', tumEtkinlik: 'Tous les événements et affiches',
-  duyuruBos: t('duyuru.bos'), etkinlikBos: t('etkinlik.bos'),
+  hizmet: 'Accès Rapide',
 };
-const tekEtkinlik = etkinlikler.length === 1;
-const etkinlikGrid = etkinlikler.length >= 3 ? 'md:grid-cols-3' : etkinlikler.length === 2 ? 'sm:grid-cols-2 max-w-4xl' : '';
-/* Aynı anda iki tam dolgu bant (İznik mavisi hac + kiremit kayıt) hero'nun altında çarpışıyordu.
-   Hac ön kaydının son günü var, kurs kaydı yıl boyunca açık: süre baskısı olan bant tam dolgu
-   kalır, öbürü ikincil biçime geçer. Ön kayıt kapanınca kayıt bandı kendiliğinden tam dolguya döner. */
-const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
-/* Base.astro zaten her sayfada tek bir kurumsal kayıt (kurumJsonLd, @id: #kurum) yayınlıyor.
-   Burada ayrı bir Organization/Mosque bloğu AÇMIYORUZ — aynı @id ile ekJsonLd üzerinden
-   yalnız oradaki kaydın eksik alanlarını (geo, image, alternateName, contactPoint, hasMap)
-   tamamlıyoruz; foundingDate tekrarlanmıyor ki tek gerçek değer (1979-12-19) çelişkiye düşmesin
-   (3 Eylül 2026 denetimi: önceden bağımsız bir Mosque şeması '1979' yazıyordu).
-   Base.astro tüm kayıtları tek bir @graph içinde birleştirir. */
+
 const anaSayfaJsonLd = {
   '@type': 'Mosque', '@id': new URL('/#kurum', Astro.site).toString(),
   geo: { '@type': 'GeoCoordinates', latitude: site.gps.enlem, longitude: site.gps.boylam },
   image: new URL('/media/galeri/cami-24.webp', Astro.site).toString(),
   alternateName: site.dernekAdi,
-  // Harita.astro'daki "büyük harita" adresiyle birebir aynı formül.
   hasMap: `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`,
-  // İki temas noktası: din görevlisi (imam@) ve dernek (info@) — boş alanlar düşer.
   contactPoint: [
     { '@type': 'ContactPoint', contactType: 'imam', telephone: site.telefon.dinGorevlisi, email: site.epostaDinGorevlisi },
     { '@type': 'ContactPoint', contactType: 'association', telephone: site.telefon.cami, email: site.eposta },
@@ -152,104 +82,7 @@ const anaSayfaJsonLd = {
   <!-- ① c Vefat / cenaze namazı — yalnız yakın tarihli bir kayıt varsa basılır, sonra kendiliğinden kalkar -->
   <VefatBandi dil={dil} />
 
-  <!-- Güncel duyurular: afişin tamamı ve okunabilir haber listesi. -->
-  <section class="kapsayici py-12 sm:py-16 reveal" aria-labelledby="duyuru-baslik">
-    <div class="flex flex-wrap items-end justify-between gap-3 cetvel pt-4">
-      <h2 id="duyuru-baslik">{m.sonDuyuru}</h2>
-      <a href={yol(dil, 'duyurular')} class="min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumDuyuru} <Ikon ad="ok" class="h-4 w-4" /></a>
-    </div>
-    <span class="serit mb-6" aria-hidden="true"></span>
-    {dil === 'en' && <p class="bilgi text-sm mb-6">{m.fallbackNotu}</p>}
-    {oneCikan ? (
-      <div class="grid gap-6 items-start lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <article class:list={['kart overflow-hidden', kapakKutu.dikey ? 'grid grid-cols-[7rem_minmax(0,1fr)] sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] items-start' : 'flex flex-col']}>
-          {kapakYolu && (
-            <a
-              href={yol(dil, 'duyurular', oneCikan.slug)}
-              class:list={['block overflow-hidden bg-(--zemin-3) border-(--cizgi)', kapakKutu.dikey ? 'border-e' : 'border-b']}
-              style={`aspect-ratio:${oranCss(kapakKutu.oran)}`}
-            >
-              <img src={kapakYolu} alt={oneCikan.data.kapakAlt ?? ''} loading="lazy" decoding="async"
-                width={kapakOlcu?.genislik} height={kapakOlcu?.yukseklik}
-                class:list={['h-full w-full', kapakKutu.oturma === 'cover' ? 'object-cover' : 'object-contain']} />
-            </a>
-          )}
-          <div class="p-5 sm:p-7 flex flex-col gap-3">
-            <p class="etiket"><time datetime={oneCikan.data.tarih.toISOString()}>{tarihBicimle(oneCikan.data.tarih, dil)}</time></p>
-            <h3 class="text-[1.3rem] sm:text-[1.55rem] leading-tight"><a href={yol(dil, 'duyurular', oneCikan.slug)} class="no-underline text-(--metin) hover:text-(--vurgu)">{oneCikan.data.baslik}</a></h3>
-            {oneCikan.data.ozet && <p class="text-(--metin-2) text-[0.95rem]">{oneCikan.data.ozet}</p>}
-            <a href={yol(dil, 'duyurular', oneCikan.slug)} class="mt-auto min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{t('duyuru.devam')} <Ikon ad="ok" class="h-4 w-4" /></a>
-          </div>
-        </article>
-        <ul class="grid content-start divide-y divide-(--cizgi) border-y border-(--cizgi)" role="list">
-          {digerDuyurular.map((d) => (
-            <li><a href={yol(dil, 'duyurular', d.slug)} class="group grid grid-cols-[4.5rem_minmax(0,1fr)] gap-4 py-4 no-underline text-(--metin)">
-              <time datetime={d.data.tarih.toISOString()} class="rakam leading-none"><span class="block text-3xl">{tarihBicimle(d.data.tarih, dil, { day: 'numeric' })}</span><span class="etiket block mt-1">{tarihBicimle(d.data.tarih, dil, { month: 'short', year: 'numeric' })}</span></time>
-              <span class="min-w-0"><span class="block font-serif font-semibold text-lg leading-snug group-hover:text-(--vurgu) transition-colors">{d.data.baslik}</span>{d.data.ozet && <span class="block mt-1 text-sm text-(--metin-2) line-clamp-2">{d.data.ozet}</span>}</span>
-            </a></li>
-          ))}
-        </ul>
-      </div>
-    ) : <p class="text-(--metin-2)">{m.duyuruBos}</p>}
-  </section>
-
-  <!-- ② Hizmetler ve haftalık program; vakitler ilk ekranda ayrı paneldedir. -->
-  <section class="ana-gunluk border-b border-(--cizgi)" aria-labelledby="hizmet-baslik">
-    <!-- Masaüstünde hizmetler ve haftalık program yan yana; telefonda tek sütun. -->
-    <div class="kapsayici py-12 sm:py-16 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-x-14 lg:gap-y-9 items-start">
-      <nav class="lg:col-start-1" aria-label={m.hizmet}>
-        <h2 id="hizmet-baslik">{m.hizmet}</h2>
-        <span class="serit mb-6" aria-hidden="true"></span>
-        {/* Dar telefonlarda tek sütun; geniş alanlarda dengeli iki sütun. */}
-        <ul class="ana-hizmetler grid grid-cols-2" role="list">
-          {hizmetler.map((h) => (
-            <li class="bg-(--zemin)">
-              <a href={h.href} class="group flex items-center gap-3 px-3.5 py-3.5 no-underline text-(--metin) h-full min-h-[3.5rem]">
-                <Ikon ad={h.ikon} class="h-6 w-6 shrink-0 text-(--vurgu) transition-transform duration-300 ease-out group-hover:-translate-y-0.5" />
-                <span class="font-semibold text-[0.92rem] leading-snug">{h.ad}</span>
-                <Ikon ad="ok" class="hizmet-ok h-4 w-4 shrink-0 ml-auto text-(--vurgu-2)" />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div id="bu-hafta" class="scroll-mt-24 lg:col-start-2 lg:row-start-1">
-        <h2 class="text-[1.35rem] sm:text-2xl">{m.buHafta}</h2>
-        <span class="serit" aria-hidden="true"></span>
-        <p class="mt-3 mb-5 text-sm text-(--metin-2)">{m.buHaftaAlt}</p>
-        {dil === 'en' && <p class="bilgi text-sm mb-4">{m.fallbackNotu}</p>}
-        <BuHafta dil={dil} program={site.haftalikProgram} bugunIdx={bugunGun} />
-      </div>
-    </div>
-  </section>
-
-  <KurumsalSerit dil={dil} />
-  <HacBandi dil={dil} />
-  <KayitBandi dil={dil} link={site.kursKayitLinki} ikincil={hacAcik} />
-
-  <!-- ④ Yaklaşan etkinlikler — duyuruların ALT bölümü değil, eşi: kendi h2'si ve kendi bölümü
-       (kartlar h3; iç içe h3 hiyerarşiyi düzleştiriyordu — 4 Eylül 2026 erişilebilirlik denetimi) -->
-  <section class="kapsayici pb-12 sm:pb-16 reveal" aria-labelledby="etkinlik-baslik">
-    <div class="flex flex-wrap items-end justify-between gap-3 cetvel pt-5">
-      <h2 id="etkinlik-baslik" class="text-[1.35rem] sm:text-2xl">{m.etkinlik}</h2>
-      <a href={yol(dil, 'etkinlikler')} class="min-h-11 inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline">{m.tumEtkinlik} <Ikon ad="ok" class="h-4 w-4" /></a>
-    </div>
-    <span class="serit mb-5" aria-hidden="true"></span>
-    {etkinlikler.length ? (
-      <div class:list={['grid gap-5', etkinlikGrid]}>
-        {etkinlikler.map((e) => <EtkinlikKarti dil={dil} slug={e.slug} yatay={tekEtkinlik} {...e.data} />)}
-      </div>
-    ) : <p class="text-(--metin-2)">{m.etkinlikBos}</p>}
-  </section>
-
-  <!-- ⑤ Kim olduğumuz — camiyi hiç bilmeyen ziyaretçi için tek paragraf + ziyaret rehberi -->
-  <Tanitim dil={dil} />
-
-  <!-- ⑥ Bağış — çok kanallı koyu bant -->
-  <BagisBandi dil={dil} banka={site.banka} />
-
-  <!-- ⑦ Bize ulaşın -->
-  <IletisimMini dil={dil} site={site} />
+  <AnaSayfaAkisi dil={dil} />
   </div>
 </Base>
 
@@ -257,8 +90,8 @@ const anaSayfaJsonLd = {
   .ana-kurumsal { --vurgu: var(--vurgu-2); }
   .ana-hizli { padding-top: 1.5rem; padding-bottom: 1rem; }
   .ana-hizli ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
-  .ana-hizli a { display: flex; align-items: center; gap: .7rem; height: 100%; min-height: 3.65rem; padding: .85rem 1rem; background: #08688c; color: #fff; text-decoration: none; border-radius: var(--radius-kose); font-size: .9rem; font-weight: 600; line-height: 1.4; transition: background .2s, box-shadow .25s; }
-  .ana-hizli a:hover, .ana-hizli a:focus-visible { background: #07536f; box-shadow: 0 6px 16px -8px rgb(8 60 80 / .4); }
+  .ana-hizli a { display: flex; align-items: center; gap: .7rem; height: 100%; min-height: 44px; padding: .85rem 1rem; background: var(--zemin-2); color: var(--metin); border: 1px solid var(--cizgi); text-decoration: none; border-radius: var(--radius-kose); font-size: .9rem; font-weight: 600; line-height: 1.4; transition: background .2s, box-shadow .25s, border-color .2s; }
+  .ana-hizli a:hover, .ana-hizli a:focus-visible { background: var(--zemin-3); border-color: var(--vurgu-2); box-shadow: var(--shadow-kart); }
   .ana-hizli :global(.ana-hizli-ok) { margin-left: auto; transition: transform .2s; }
   
   .ana-vakit-yatay {
@@ -312,16 +145,8 @@ const anaSayfaJsonLd = {
   .ana-duyuru-seridi :global(#duyuru-seridi) { margin: 0; padding: 0; max-width: none; }
   .ana-duyuru-seridi :global(.serit-mesaj) { font-size: .95rem; filter: none; }
   .ana-duyuru-seridi:empty { display: none; }
-  .ana-gunluk { background: var(--zemin); }
-  .ana-hizmetler { gap: .5rem; }
-  .ana-hizmetler li { border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); }
-  .ana-hizmetler a { border-radius: inherit; transition: background .2s, transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s; }
-  .ana-hizmetler :global(.hizmet-ok) { transition: transform .25s cubic-bezier(.16,1,.3,1); }
-  .ana-hizmetler a:focus-visible { outline: 2px solid var(--vurgu-2); outline-offset: 3px; }
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .ana-hizli a:hover :global(.ana-hizli-ok) { transform: translateX(3px); }
-    .ana-hizmetler a:hover { background: var(--zemin-3); transform: translateY(-3px); box-shadow: var(--shadow-kart); }
-    .ana-hizmetler a:hover :global(.hizmet-ok) { transform: translateX(3px); }
   }
   @media (max-width: 1023px) {
     .ana-vakit-yatay {
@@ -381,8 +206,5 @@ const anaSayfaJsonLd = {
       max-width: none;
     }
   }
-  @media (max-width: 479px) {
-    .ana-hizmetler { grid-template-columns: 1fr; }
-    .ana-hizmetler a { padding-block: 1rem; }
-  }
+
 </style>

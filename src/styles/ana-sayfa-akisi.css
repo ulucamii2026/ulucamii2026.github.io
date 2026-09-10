@@ -1,0 +1,269 @@
+.ana-akis {
+  --akis-bosluk: 3rem;
+}
+@media (min-width: 1024px) {
+  .ana-akis {
+    --akis-bosluk: 4rem;
+  }
+}
+
+.ana-akis section {
+  padding-block: var(--akis-bosluk);
+  border-bottom: 1px solid var(--cizgi);
+}
+.ana-akis section:last-child {
+  border-bottom: none;
+}
+
+.ana-akis h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+@media (min-width: 1024px) {
+  .ana-akis h2 {
+    font-size: 2.125rem;
+  }
+}
+
+.ana-akis-p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 65ch;
+  color: var(--metin-2);
+}
+
+.ana-akis-2-sutun {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .ana-akis-2-sutun {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+  }
+}
+
+/* 1. Haftalik Yasam */
+.ana-akis-egitim-gorsel {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-kose);
+  margin-bottom: 1.5rem;
+}
+.ana-akis-dugmeler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.ana-akis-dugme {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-kose);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.ana-akis-dugme-birincil {
+  background: var(--color-iznik);
+  color: #fff;
+}
+.ana-akis-dugme-birincil:hover {
+  background: var(--color-iznik-koyu);
+  color: #fff;
+}
+.ana-akis-dugme-ikincil {
+  background: var(--zemin-2);
+  color: var(--metin);
+  border: 1px solid var(--cizgi);
+}
+.ana-akis-dugme-ikincil:hover {
+  background: var(--zemin-3);
+}
+
+/* 2. Guncel Bilgiler */
+@media (min-width: 1024px) {
+  #guncel-bilgiler .ana-akis-2-sutun {
+    grid-template-columns: 1.35fr 1fr;
+  }
+}
+
+.ana-akis-baslik-satiri {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.ana-akis-tumu-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--metin);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 44px;
+}
+.ana-akis-tumu-link:hover {
+  text-decoration: underline;
+  color: var(--vurgu-2);
+}
+
+.ana-akis-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+.ana-akis-kart {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 1.25rem;
+  text-decoration: none;
+  color: var(--metin);
+  background: var(--zemin);
+  padding: 0.75rem;
+  border-radius: var(--radius-kose);
+  transition: background 0.2s;
+}
+.ana-akis-kart:hover {
+  background: var(--zemin-2);
+}
+.ana-akis-kart-gorsel {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius-kose) - 2px);
+  background: var(--zemin-3);
+  border: 1px solid var(--cizgi);
+}
+.ana-akis-kart-tarih {
+  font-size: 0.85rem;
+  color: var(--vurgu-2);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.ana-akis-kart-baslik {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.ana-akis-kart-ozet {
+  font-size: 0.9rem;
+  color: var(--metin-2);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 3. Hizmetler */
+.ana-akis-hizmetler-liste {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--cizgi);
+}
+@media (min-width: 768px) {
+  .ana-akis-hizmetler-liste {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+  }
+}
+.ana-akis-hizmet {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--cizgi);
+  text-decoration: none;
+  color: var(--metin);
+}
+.ana-akis-hizmet:hover .ana-akis-hizmet-baslik {
+  color: var(--vurgu-2);
+}
+.ana-akis-hizmet-ikon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--vurgu-2);
+  background: var(--zemin-2);
+  padding: 0.5rem;
+  border-radius: var(--radius-kose);
+}
+.ana-akis-hizmet-baslik {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  transition: color 0.2s;
+}
+.ana-akis-hizmet-aciklama {
+  font-size: 0.95rem;
+  color: var(--metin-2);
+  line-height: 1.5;
+}
+.ana-akis-ek-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--vurgu-2);
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  min-height: 44px;
+}
+.ana-akis-ek-link:hover {
+  text-decoration: underline;
+}
+
+/* 4. Ziyaret */
+.ana-akis-ziyaret-gorsel {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-kose);
+  object-fit: cover;
+  aspect-ratio: 16/10;
+}
+.ana-akis-ziyaret-adres {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--metin);
+}
+.ana-akis-link-listesi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+.ana-akis-link-listesi a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--metin);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-height: 44px;
+}
+.ana-akis-link-listesi a:hover {
+  color: var(--vurgu-2);
+  text-decoration: underline;
+}
