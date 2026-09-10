@@ -82,6 +82,8 @@ collections:
       - { name: etiketler, label: Etiketler, widget: list, required: false, i18n: duplicate, default: [] }
       - { name: oneCikan, label: Öne çıkan, widget: boolean, default: false, i18n: duplicate }
       - { name: oneCikanSon, label: "Öne çıkarmanın son günü (isteğe bağlı)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu günden sonra duyuru ana sayfadaki öne çıkan yerini kendiliğinden bırakır." }
+      - { name: vitrin, label: "Ana sayfa vitrini", widget: select, options: [{ label: "Otomatik (son 90 gün)", value: otomatik }, { label: "Öncelikli göster", value: goster }, { label: "Vitrinde gösterme", value: gizle }], default: otomatik, i18n: duplicate }
+      - { name: vitrinSon, label: "Vitrinde son gösterim günü", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu gün dâhil gösterilir; sonra arşivde kalır. Süreli afişlerde doldurun." }
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
 
@@ -178,6 +180,8 @@ collections:
       - { name: kategori, label: Kategori, widget: select, options: [{ label: "Kampanya", value: kampanya }, { label: "Program", value: program }, { label: "Eğitim", value: egitim }, { label: "Hac / Umre", value: hac-umre }, { label: "Kurban", value: kurban }, { label: "Zekât / Fitre", value: zekat }, { label: "Cenaze", value: cenaze }, { label: "Ramazan", value: ramazan }, { label: "Diğer", value: diger }], default: diger }
       - { name: link, label: Bağlantı (isteğe bağlı), widget: string, required: false }
       - { name: sayfa, label: "Site içi sayfa anahtarı (isteğe bağlı: uip, kurankursu, irsat, ihtida, diyanet, bagis…)", widget: string, required: false }
+      - { name: vitrin, label: "Ana sayfa vitrini", widget: select, options: [{ label: "Otomatik (son 90 gün)", value: otomatik }, { label: "Öncelikli göster", value: goster }, { label: "Vitrinde gösterme", value: gizle }], default: otomatik }
+      - { name: vitrinSon, label: "Vitrinde son gösterim günü", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, hint: "Bu gün dâhil gösterilir; sonra arşivde kalır. Süreli afişlerde doldurun." }
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false }
       - { name: body, label: Açıklama (isteğe bağlı), widget: markdown, required: false }
 

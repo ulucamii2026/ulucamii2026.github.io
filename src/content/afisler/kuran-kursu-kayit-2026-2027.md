@@ -7,5 +7,7 @@ gorsel: /media/afisler/kuran-kursu-kayit-2026-2027.webp
 kucuk: /media/afisler/kuran-kursu-kayit-2026-2027-thumb.webp
 kaynak: ulucamii
 kategori: egitim
-link: https://www.ulucamii.be/kayit/
+sayfa: kurankursu
+vitrin: goster
+vitrinSon: 2027-06-30
 ---

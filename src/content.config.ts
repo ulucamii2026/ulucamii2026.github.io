@@ -16,6 +16,8 @@ const duyurular = defineCollection({
     kapakAlt: z.string().optional(),
     galeri: z.array(z.object({ dosya: z.string(), kucuk: z.string().optional(), alt: z.string().optional() })).default([]),
     etiketler: z.array(z.string()).default([]),
+    vitrin: z.enum(['otomatik', 'goster', 'gizle']).default('otomatik'),
+    vitrinSon: z.coerce.date().optional(),
     oneCikan: z.boolean().default(false),
     /* Öne çıkarmanın son günü (dâhil). Süreli kampanyalar (hac ön kaydı gibi) bu tarihten sonra
        ana sayfadaki öne çıkan yerini kendiliğinden bırakır; alan boşsa süresiz. */
@@ -136,6 +138,8 @@ const afisler = defineCollection({
     link: z.string().optional(),
     /** Site içi hedef: yollar anahtarı (ör. uip, kurankursu) — dil bağımsız, Afisler.astro yol(dil, sayfa) ile basar */
     sayfa: z.string().optional(),
+    vitrin: z.enum(['otomatik', 'goster', 'gizle']).default('otomatik'),
+    vitrinSon: z.coerce.date().optional(),
     taslak: z.boolean().default(false),
   }),
 });
