@@ -1,5 +1,8 @@
 # Ulu Camii — Codex geliştirme ortamı
 
+İşe göre kısa başlangıç: [Proje başvurusu](PROJE-HAFIZASI.md).
+Bu rehberdeki kurulum sonuçları tarihlidir; yeni işte ilgili konu notunu esas alın.
+
 Kurulum: 8 Eylül 2026. Amaç, mevcut siteyi Codex CLI ile yerelde geliştirmek ve
 yayından önce sınamak. Bu kurulumda tema/içerik, Firestore kuralları ve canlı servisler
 değiştirilmedi; commit, push ve dağıtım yapılmadı.
@@ -38,8 +41,9 @@ kuralları, hesap ayrımı ve tekrar çalıştırılabilir doğrulamadır.
 | `npm run dev` | Astro geliştirme ortamı |
 | `npm run onizle` | Derlenmiş siteyi 4399 portunda inceleme |
 | `npm run dogrula:codex` | Tip kontrolü, mevcut denetimler/build, tarayıcı ve kural testleri |
-| `npm run test:web` | Mevcut `dist` üzerinde 48 mobil/masaüstü senaryosu |
-| `npm run test:ihtida` | Yerel VM ve PDF üretiminde 16 ihtida sözleşme/akış senaryosu |
+| `npm run test:web` | Mevcut `dist` üzerinde mobil/masaüstü senaryoları |
+| `npm run test:ihtida` | Yerel VM ve PDF üretiminde ihtida sözleşme/akış senaryoları |
+| `npm run test:veli-eposta` | Dil tercihi, otomatik kayıt aktarımı ve cuma e-postası |
 | `npm run test:web:rapor` | Yerel HTML test raporunu açma |
 | `npm run test:kurallar` | Yalnız demo Firestore üzerinde 17 güvenlik senaryosu |
 | `npm run codex:kontrol` | Codex ayar/beceri keşfi ve gerçek yerel MCP bağlantı denemesi |
@@ -52,7 +56,7 @@ Toplu doğrulama web hatası olsa da bağımsız backend testlerini çalıştır
 Build/ön denetim başarısızsa eski çıktıyı geçerli sanmamak için web testi atlanır.
 Hiçbir doğrulama komutu `firebase:kurallar`, `git push` veya form gönderimi çağırmaz.
 
-## Mevcut kalite durumu
+## Kurulum sırasındaki kalite durumu (8–9 Eylül 2026)
 
 - Mevcut site build'i: 867 sayfa; panel, CMS, site ve EK-9 denetimleri çalıştırıldı.
 - Astro tip kontrolü: hata/uyarı yok; mevcut iyileştirme ipuçları ayrıca raporlanır.

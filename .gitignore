@@ -10,12 +10,20 @@ Thumbs.db
 # Playwright MCP ekran goruntuleri ve anlik ciktilar
 .playwright-mcp/
 .serena/
+.agents/
+.codex/
+
 
 # Yerel test çıktıları; oturum, ekran görüntüsü ve emülatör verisi yayımlanmaz.
 test-results/
 playwright-report/
 .firebase/
 .codex/cikti/
+__pycache__/
+*.pyc
+tmp/
+*.png.tmp
+
 
 # Hero görsellerinin sıkıştırma öncesi kopyaları (scripts/hero-gorsel-uret.mjs).
 # Depoya girmez: 2,4 MB'lık ikinci kopya hem Pages yayınını şişirir hem gereksizdir —

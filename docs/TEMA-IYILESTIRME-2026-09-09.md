@@ -42,8 +42,18 @@ Astro tip kontrolünde 0 hata ve 0 uyarı; mevcut geliştirme ipuçları devam e
 İlk çalıştırmada bulunan kontrast ve test koordinatı sorunları düzeltildikten
 sonra tam doğrulama yeniden çalıştırıldı. Değişikliklerde `git diff --check` temiz.
 
-Yayın yapılmadı; değişiklikler yerel çalışma alanındadır. Gerçek başvuru,
-e-posta gönderimi veya canlı Firebase yazması yapılmadı.
+Kullanıcının açık yayın talebi üzerine 9 Eylül 2026'da canlıya alındı.
+Yayın commit'i: `fa9e9f153b50daeb877187290e8718084b5e56dc`.
+[GitHub Pages yayın kaydı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/34369981184)
+başarıyla tamamlandı. Temiz yayın kopyasında da 216 test geçti
+(`.codex/cikti/canli-oncesi-dogrula.log`). Canlı TR/FR/EN ana sayfalarında
+HTTP 200 ve yeni vitrin yapısı doğrulandı; ihtida başvuru sayfası ile FR/EN
+vaaz sayfaları da HTTP 200 verdi. Canlı ana sayfa tarayıcıda incelendi,
+kaydedilen konsol hata listesi boştu.
+
+Gerçek başvuru, e-posta gönderimi veya canlı Firebase yazması yapılmadı.
+Apps Script kaynakları depoda güncellendi; bu yayın Google Apps Script
+dağıtımı veya zamanlanmış görev değişikliği yapmadı.
 
 ## Şahit imzası
 

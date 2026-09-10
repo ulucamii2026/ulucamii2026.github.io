@@ -15,7 +15,7 @@ type Aile = { eposta: string; ogrenciler: string[]; dil?: string; iletisimDili?:
   /* Veli portalındaki «Ders kitabı ve materyal» kartının yanıtı: öğrenci ref'i → {secim, zaman} */
   kitapSecim?: Record<string, { secim: string; zaman: string }> };
 type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum?: string; not?: string };
-type Ilerleme = { kuranAdim?: number; ezber?: Record<string, string>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string };
+type Ilerleme = { kuranAdim?: number; ezber?: Record<string, string>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string; rozet?: string };
 type Kayit = Record<string, unknown> & { id: string };
 
 const ALANLAR: Record<string, string> = { kuran: 'Kur’an-ı Kerim', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak', genel: 'Genel' };
@@ -239,7 +239,17 @@ export async function hocaEkrani(): Promise<void> {
             ${ezberSonra.length ? `<details class="katlanir mini"><summary>${simge('takvim')}<span>İleri haftaların ezberleri (${ezberSonra.length})</span></summary><div class="govde kaydirilir"><table class="tablo"><tbody>${ezberSonra.map(ezberSatir).join('')}</tbody></table></div></details>` : ''}
             <label style="margin-top:1rem">Alan değerlendirmesi <span class="kucuk">· 1 zayıf – 5 çok iyi</span></label>
             <div class="izgara-3">${['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].map((k) => `<label>${esc(ALANLAR[k])}<select name="alan:${k}">${secenekler(DERECE, String((ile.alanlar || {})[k] || 0))}</select></label>`).join('')}</div>
-            <label>Hoca notu (veliye görünür)<textarea name="hocaNotu" maxlength="1000">${esc(ile.hocaNotu || '')}</textarea></label>
+            <label style="margin-top:.8rem">Hocanın Tebrik / Takdir Rozeti <span class="kucuk">· Öğrenci odasında parlar</span>
+              <select name="rozet">
+                <option value="">— Rozet seçilmedi —</option>
+                <option value="yildiz" ${ile.rozet === 'yildiz' ? 'selected' : ''}>⭐ Haftanın Yıldız Talebesi</option>
+                <option value="ezber" ${ile.rozet === 'ezber' ? 'selected' : ''}>📖 Ezber &amp; Sûre Şampiyonu</option>
+                <option value="ahlak" ${ile.rozet === 'ahlak' ? 'selected' : ''}>🌸 Güzel Ahlâk ve Nezaket</option>
+                <option value="gayret" ${ile.rozet === 'gayret' ? 'selected' : ''}>🏆 Üstün Gayret ve Azim</option>
+                <option value="devam" ${ile.rozet === 'devam' ? 'selected' : ''}>🏅 Düzenli Devam ve Disiplin</option>
+              </select>
+            </label>
+            <label>Hoca notu (veliye ve öğrenci odasına görünür)<textarea name="hocaNotu" maxlength="1000">${esc(ile.hocaNotu || '')}</textarea></label>
             <p data-mesaj hidden class="not"></p>
             <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">İlerlemeyi kaydet</button>${ile.guncelleme ? `<span class="kucuk">Son güncelleme ${esc(tarihYaz(ile.guncelleme))}</span>` : ''}</div>
           </form>
@@ -505,7 +515,7 @@ export async function hocaEkrani(): Promise<void> {
           o.veliler = [...new Set([...(o.veliler || []), ep])]; ciz(); ustMesaj(`${ep} eklendi. «Aileler · Davet» sekmesinden davet gönderebilirsiniz.`, 'basari'); break; }
         case 'ilerleme': { if (!S) break; const ref = S.secili; const ezber: Record<string, string> = {}; const alanlar: Record<string, number> = {};
           for (const [k, v] of fd.entries()) { const val = String(v); if (k.startsWith('ezber:') && val) ezber[k.slice(6)] = val; if (k.startsWith('alan:') && Number(val) > 0) alanlar[k.slice(5)] = Number(val); }
-          const kayit: Ilerleme & { kaydeden: string } = { kuranAdim: Number(al('kuranAdim')), ezber, alanlar, hocaNotu: al('hocaNotu'), guncelleme: bugunISO(), kaydeden: S.uid };
+          const kayit: Ilerleme & { kaydeden: string } = { kuranAdim: Number(al('kuranAdim')), ezber, alanlar, hocaNotu: al('hocaNotu'), rozet: al('rozet'), guncelleme: bugunISO(), kaydeden: S.uid };
           await fs.setDoc(fs.doc(db, 'ilerleme', ref), kayit); S.ilerleme = kayit; mesaj(form, 'İlerleme kaydedildi.', 'basari'); break; }
         case 'degerlendirme': { if (!S) break;
           await fs.addDoc(col('degerlendirme'), { ref: S.secili, tarih: al('tarih'), alan: al('alan'), olcut: al('olcut'), derece: Number(al('derece')) || 0, not: al('not'), kaydeden: S.uid, zaman: fs.serverTimestamp() });

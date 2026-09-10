@@ -3,6 +3,9 @@
 Yalnız Türkçe yanıt ver; tam imlâyı koru. Bu proje Marche-en-Famenne Ulu Camii
 derneğinin sitesidir. Önce `git status --short` ile mevcut çalışmaları koru.
 Kurulum ve doğrulama rehberi: `docs/CODEX-CALISMA.md`.
+İşe göre kısa başvuru: `docs/PROJE-HAFIZASI.md`; yalnız ilgili bağlantıları izle.
+Yeni kalıcı karar veya tekrar kullanılacak doğrulanmış çözüm oluştuğunda ilgili
+konu notunu güncelle; buraya işlem günlüğü ekleme. Canlı durum/test kanıtını tarihli tut.
 
 ## Hesap ve yayın sınırı
 
@@ -36,7 +39,23 @@ Kurulum ve doğrulama rehberi: `docs/CODEX-CALISMA.md`.
 
 ## İçerik ve tasarım ilkeleri
 
+- **Veli e-postalarının dili (kalıcı karar, 9 Eylül 2026):** kayıt formundaki
+  **İletişim dili** esas alınır. Fransızca seçeneği → Fransızca, Türkçe seçeneği →
+  Türkçe e-posta. Konu, gövde, düğmeler, açıklamalar ve GIF üzerindeki metinler de
+  aynı dilde hazırlanır. Siteyi görüntüleme dili bu tercihi kendiliğinden değiştirmez.
+  Davet, kayıt onayı, kitap bilgilendirmesi ve hatırlatmalarda aynı kural uygulanır.
+  Tercih eksik/çelişkiliyse kayıt ve açıkça belirtilmiş veli tercihi kontrol edilir;
+  doğrulamadan Türkçe varsayılmaz. Toplu gönderimden önce güncel kayıt defteriyle
+  portal aile listesi karşılaştırılır; yeni kayıtlar gönderim dışında unutulmaz.
+  Telefon ekranında okunabilirlik esas alınır. Yazı ölçüleri ve kullanıcının
+  deneme alıcısı tercihi için `docs/VELI-CUMA-EPOSTASI.md` bölümünü izle.
+  Kurs duyuruları ve kayıt e-postalarında kurs logosu ile ortak
+  `scripts/apps-script/veli-eposta-sablon.gs` şablonunu kullan; yeni kampanyaya
+  bağımsız tasarım yazma. Ana yazı 20 px, kitap/sayfa alt satırı 16 px olur.
+
 - Namaz vakti yalnız Diyanet, ilçe 11890. Hesaplama servisi/farklı kaynakla doldurma.
+- İhtida videoları sayfanın dilinde ve yalnız doğrulanmış Diyanet kaynaklarından olur.
+  Kaynak denetimi ve YouTube oynatma sınırı: `docs/IHTIDA-VIDEOLARI.md`.
 - Dinî metin, saat, tarih ve kurum bilgisini güvenilir kaynaktan doğrula.
 - Mevcut Kilim Kartografyası dilini, renklerini ve yerel fontlarını başlangıç kabul et;
   köklü tasarım değişikliğinde kullanıcının isteğini esas al.

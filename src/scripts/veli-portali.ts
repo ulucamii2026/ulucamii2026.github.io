@@ -7,6 +7,9 @@ import type { Dil } from '../i18n/ui';
 import { veliMetni, yerlestir, type VeliMetin } from '../i18n/veli';
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
 import { portalTercihleri } from '../lib/portal-tercihleri';
+import { EZBER_LISTESI } from '../lib/ezber-verisi';
+import { ELIFBA_HARFLERI, HARF_GRUPLARI, HAREKELER, type HarfGrup } from '../lib/elifba-verisi';
+import { QUIZ_SORULARI } from '../lib/quiz-verisi';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
@@ -16,7 +19,7 @@ type DurumTip = 'var' | 'yok' | 'mazeret' | 'gec';
 // Yoklama artık gün başına DERS DERS tutulur: dersler = { "1": durum, "2": durum, "3": durum } (gün-içi sıra → durum).
 // Eski belgeler tek `durum` taşıyordu; okuyucular geriye-dönük uyumlu (o durumu üç derse de uygular).
 type Yoklama = { ref: string; tarih: string; dersler?: Record<string, DurumTip>; durum?: DurumTip; not?: string };
-type Ilerleme = { kuranAdim?: number; ezber?: Record<string, 'ogrendi' | 'tekrar' | 'baslamadi'>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string };
+type Ilerleme = { kuranAdim?: number; ezber?: Record<string, 'ogrendi' | 'tekrar' | 'baslamadi'>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string; rozet?: string };
 type Degerlendirme = { tarih: string; alan: string; olcut?: string; derece?: number; not?: string };
 type Not = { tarih: string; metin: string };
 type Odev = { tarih: string; hafta?: number; ezber?: Record<string, string>; odev?: Record<string, string>; materyal?: string; yayin: boolean };
@@ -52,6 +55,91 @@ export async function veliPortali(): Promise<void> {
     return Object.keys(h).filter((s) => h[s]).sort().map((s) => ({ sira: s, durum: h[s] }));
   };
 
+  const kutlamaSesiCal = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.1);
+      osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.2);
+      osc.frequency.exponentialRampToValueAtTime(1046.5, now + 0.3);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.55);
+    } catch {}
+  };
+
+  const HARF_SES_HARITASI: Record<string, string> = {
+    'elif': 'elif', 'be': 'be', 'te': 'te', 'se': 'se', 'cim': 'cim', 'ha': 'ha', 'hi': 'hi',
+    'dal': 'dal', 'zel': 'zel', 'ra': 'ra', 'ze': 'ze', 'sin': 'sin', 'sin2': 'sin2', 'sad': 'sad',
+    'dad': 'dad', 'ti': 'ti', 'zi': 'zi', 'ayn': 'ayn', 'gayn': 'gayn', 'fe': 'fe', 'kaf': 'kaf',
+    'kef': 'kef', 'lam': 'lam', 'mim': 'mim', 'nun': 'nun', 'vav': 'vav', 'he': 'he', 'ye': 'ye',
+    'ا': 'elif', 'ب': 'be', 'ت': 'te', 'ث': 'se', 'ج': 'cim', 'ح': 'ha', 'خ': 'hi',
+    'د': 'dal', 'ذ': 'zel', 'ر': 'ra', 'ز': 'ze', 'س': 'sin', 'ش': 'sin2', 'ص': 'sad',
+    'ض': 'dad', 'ط': 'ti', 'ظ': 'zi', 'ع': 'ayn', 'غ': 'gayn', 'ف': 'fe', 'ق': 'kaf',
+    'ك': 'kef', 'ل': 'lam', 'م': 'mim', 'ن': 'nun', 'و': 'vav', 'ه': 'he', 'ي': 'ye',
+  };
+
+  let aktifAudio: HTMLAudioElement | null = null;
+  const harfSeslendir = (harfMetni: string, harfId?: string) => {
+    const sesId = harfId || HARF_SES_HARITASI[harfMetni] || HARF_SES_HARITASI[harfMetni[0]];
+    if (sesId) {
+      try {
+        if (aktifAudio) {
+          aktifAudio.pause();
+          aktifAudio.currentTime = 0;
+        }
+        aktifAudio = new Audio(`/media/ses/elifba/${sesId}.mp3`);
+        aktifAudio.play().catch(() => {
+          sesliFallback(harfMetni);
+        });
+        return;
+      } catch {
+        sesliFallback(harfMetni);
+        return;
+      }
+    }
+    sesliFallback(harfMetni);
+  };
+
+  const sesliFallback = (metin: string) => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(metin);
+      u.lang = 'ar-SA';
+      u.rate = 0.8;
+      window.speechSynthesis.speak(u);
+    }
+  };
+
+  const harfTikSesiCal = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } catch {}
+  };
+
   /* çizili tek-çizgi ikonlar (currentColor; craft: emoji/glyph değil) */
   const SIMGELER: Record<string, string> = {
     takvim: '<rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>',
@@ -72,6 +160,17 @@ export async function veliPortali(): Promise<void> {
     geri: '<path d="M9 7L4 12l5 5"/><path d="M4 12h11a5 5 0 0 1 0 10h-1.5"/>',
   };
   const simge = (ad: string) => `<svg class="simge" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${SIMGELER[ad] || ''}</svg>`;
+  const monogramHarfleri = (ad: string, soyad: string) => {
+    const a = (ad || '').trim().charAt(0).toLocaleUpperCase('tr-TR');
+    const s = (soyad || '').trim().charAt(0).toLocaleUpperCase('tr-TR');
+    return (a + s) || 'Ö';
+  };
+  const monogramSinifi = (ref: string) => {
+    const renkler = ['r-iznik', 'r-kiremit', 'r-adacayi', 'r-ochre'];
+    let hash = 0;
+    for (let i = 0; i < (ref || '').length; i++) hash = (hash + ref.charCodeAt(i)) % renkler.length;
+    return renkler[hash];
+  };
   const bosDurum = (ikon: string, metin: string) => `<p class="bos">${simge(ikon)}<span>${esc(metin)}</span></p>`;
 
   const [{ firebaseUygulamasi }, auth, fs] = await Promise.all([import('../lib/firebase'), import('firebase/auth'), import('firebase/firestore/lite')]);
@@ -178,6 +277,9 @@ export async function veliPortali(): Promise<void> {
       /* kitapSecim: öğrenci ref'i → {secim: 'var'|'satin'|'fotokopi', zaman}. Veli kendi belgesine yazar
          (firestore.rules aileler update izin listesinde). Hoca ekranı bu haritayı okuyup hazırlık yapar. */
       kitapSecim?: Record<string, { secim: string; zaman: string }> }; ogrenciler: Ogrenci[]; secili: number;
+    mod?: 'veli' | 'ogrenci'; seciliEzberId?: string;
+    seciliHarfGrup?: HarfGrup; seciliHarfId?: string;
+    quizSoruNo?: number; quizCevaplandi?: boolean; quizSecilenIndex?: number | null; quizBitti?: boolean;
     odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[] }> };
   let durum: Durum | null = null;
   let duzenlenenBildirim: string | null = null; // veli bir gönderdiği mesajı düzenliyorsa id'si
@@ -245,6 +347,353 @@ export async function veliPortali(): Promise<void> {
     if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.reduce((s, g) => s + g.dersler.length, 0) }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
     const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
+
+    const ogrenciPanoCiz = () => {
+      const basamaklar = m.basamaklar as readonly string[];
+      const aktifBasamak = kuranNo >= 0
+        ? Math.max(0, Math.min(Math.floor(((kuranNo + 1) / Math.max(kuranSirasi.length, 1)) * basamaklar.length), basamaklar.length - 1))
+        : 0;
+
+      const seciliId = d.seciliEzberId || 'fatiha';
+      const seciliEzber = EZBER_LISTESI.find((e) => e.id === seciliId) || EZBER_LISTESI[0];
+
+      const seciliGrup: HarfGrup = d.seciliHarfGrup || 'hepsi';
+      const harfler = seciliGrup === 'hepsi' ? ELIFBA_HARFLERI : ELIFBA_HARFLERI.filter((h) => h.grup === seciliGrup);
+      const seciliHarf = ELIFBA_HARFLERI.find((h) => h.id === d.seciliHarfId) || harfler[0] || ELIFBA_HARFLERI[0];
+
+      const soruNo = d.quizSoruNo ?? 0;
+      const toplamSoru = QUIZ_SORULARI.length;
+      const aktifSoruIndex = soruNo % toplamSoru;
+      const aktifSoru = QUIZ_SORULARI[aktifSoruIndex];
+      const cevaplandi = Boolean(d.quizCevaplandi);
+      const secilenIndex = d.quizSecilenIndex ?? null;
+      const dogruMu = secilenIndex !== null && secilenIndex === aktifSoru.dogruCevapIndex;
+
+      const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
+      let yildizSayisi = 0;
+      try { yildizSayisi = Number(localStorage.getItem(yildizKey) || '0'); } catch {}
+
+      kok.innerHTML = `
+        <div class="ogrenci-pano">
+          <div class="ogrenci-hero">
+            <div class="hero-serit" aria-hidden="true"></div>
+            <div class="hero-gorsel-sar">
+              <img src="/media/mektep/mektep-oda.webp" alt="Mektep Odası" class="hero-afis-resim" loading="eager" width="1280" height="420" />
+              <div class="hero-golge-katman" aria-hidden="true"></div>
+            </div>
+            <div class="ogrenci-ust">
+              <div class="ogrenci-kimlik">
+                <span class="ogrenci-avatar dev ${monogramSinifi(o?.ref || '')}" aria-hidden="true">${esc(monogramHarfleri(o?.ad || '', o?.soyad || ''))}</span>
+                <div class="kimlik-yazi">
+                  <h2 class="ogrenci-baslik">${esc(yerlestir(m.ogrenciSelam, { ad: o ? o.ad : '' }))}</h2>
+                  <p class="ogrenci-motto">${esc(m.ogrenciMotto)}</p>
+                </div>
+              </div>
+              <div class="ogrenci-eylemler">
+                <div class="yildiz-sayac" title="${esc(m.tekrarSayisi)}">
+                  <span class="yildiz-ikon" aria-hidden="true">⭐</span>
+                  <span class="yildiz-sayi" data-yildiz-goster>${yildizSayisi}</span>
+                  <span class="yildiz-etiket">${esc(m.tekrarSayisi)}</span>
+                </div>
+                <button type="button" class="dugme dugme-ikincil veli-don-btn" data-eylem="veliModunaDon">
+                  ${simge('geri')}<span>${esc(m.veliModunaDon)}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          ${d.ogrenciler.length > 1 ? `<div class="cocuk-sec" role="tablist" aria-label="${esc(m.cocuklar)}">
+            ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}"><span class="sekme-avatar ${monogramSinifi(x.ref)}" aria-hidden="true">${esc(monogramHarfleri(x.ad, x.soyad))}</span>${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
+          </div>` : ''}
+
+          <div class="bolumler ogrenci-grid" id="cocuk-panel">
+            <!-- EZBER VE DİNLEME ODASI -->
+            <section class="bolum r-iznik oncelik genis ezber-odasi-kart">
+              ${bas('kitap', m.ezberOdasi, m.ezberAciklama)}
+              <div class="ezber-secici-sar">
+                <label for="ezber-secim-select" class="kucuk"><b>${esc(m.sureSec)}:</b></label>
+                <select id="ezber-secim-select" data-eylem="ezberDegistir" class="ezber-secim">
+                  ${EZBER_LISTESI.map((ez) => `<option value="${ez.id}" ${ez.id === seciliEzber.id ? 'selected' : ''}>${esc(ez.ad[dil] || ez.ad.tr)} (${ez.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : 'Kur’an Sûresi') : (dil === 'fr' ? 'Prière' : 'Dua')})</option>`).join('')}
+                </select>
+              </div>
+
+              <div class="ezber-vitrin">
+                <div class="ezber-kart-banner">
+                  <img src="/media/mektep/ezber-odasi.webp" alt="Ezber ve Dinleme Odası" class="ezber-resim-afis" loading="lazy" width="640" height="200" />
+                </div>
+                <div class="ezber-baslik-satir">
+                  <h3 class="ez-ad">${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}</h3>
+                  <span class="rozet ${seciliEzber.tur === 'sure' ? 'ogrendi' : 'gec'}">${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : 'Kur’an Sûresi') : (dil === 'fr' ? 'Invocation' : 'Namaz Duası')}</span>
+                </div>
+
+                <div class="ezber-arapca" dir="rtl" lang="ar">
+                  ${esc(seciliEzber.arapca)}
+                </div>
+
+                <div class="ezber-okunus">
+                  <span class="ezber-etiket">${dil === 'fr' ? 'Prononciation :' : dil === 'en' ? 'Transliteration:' : 'Okunuş:'}</span>
+                  <p class="okunus-metin">${esc(seciliEzber.okunus)}</p>
+                </div>
+
+                <div class="ezber-anlam">
+                  <span class="ezber-etiket">${dil === 'fr' ? 'Sens en français :' : dil === 'en' ? 'Meaning in English:' : 'Anlamı:'}</span>
+                  <p class="anlam-metin">${esc(seciliEzber.anlam[dil] || seciliEzber.anlam.tr)}</p>
+                </div>
+
+                <div class="ezber-ses-kutusu">
+                  <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}">
+                    Tarayıcınız ses oynatmayı desteklemiyor.
+                  </audio>
+                  <button type="button" class="dugme dugme-birincil tekrar-btn" data-eylem="tekrarEttim" data-ezber="${seciliEzber.id}">
+                    ✨ ${esc(m.tekrarEttim)}
+                  </button>
+                </div>
+                <p class="kutlama-mesaji" data-kutlama hidden></p>
+              </div>
+            </section>
+
+            <!-- İNTERAKTİF ELİF-BÂ TAHTASI -->
+            <section class="bolum r-ochre genis elifba-tahtasi-kart">
+              ${bas('kitap', m.elifbaTahtasi, m.elifbaAciklama)}
+              
+              <div class="elifba-grup-bar">
+                ${HARF_GRUPLARI.map((g) => `<button type="button" class="elifba-grup-btn ${g.id === seciliGrup ? 'aktif' : ''}" data-eylem="harfGrupSec" data-grup="${g.id}">${esc(g.ad[dil] || g.ad.tr)}</button>`).join('')}
+              </div>
+
+              <div class="elifba-izgara-sar">
+                <div class="elifba-harf-izgara" dir="rtl">
+                  ${harfler.map((h) => `
+                    <button type="button" class="elifba-harf-btn ${h.id === seciliHarf.id ? 'secili' : ''} ${h.kalinMi ? 'kalin' : ''} ${h.peltekMi ? 'peltek' : ''}" data-eylem="harfSec" data-harf="${h.id}" data-harf-karakter="${h.harf}" title="${esc(h.ad[dil] || h.ad.tr)}">
+                      <span class="harf-sekil" lang="ar">${h.harf}</span>
+                      <span class="harf-adi">${esc(h.ad[dil] || h.ad.tr)}</span>
+                      ${h.kalinMi ? '<span class="harf-rozet-minik kalin-roz" title="' + esc(m.kalinHarf) + '">K</span>' : ''}
+                      ${h.peltekMi ? '<span class="harf-rozet-minik peltek-roz" title="' + esc(m.peltekHarf) + '">P</span>' : ''}
+                    </button>
+                  `).join('')}
+                </div>
+
+                <!-- SEÇİLİ HARF DETAY VİTRİNİ -->
+                <div class="elifba-detay-panel">
+                  <div class="elifba-banner-kutu">
+                    <img src="/media/mektep/elifba-bahcesi.webp" alt="Elifba Bahçesi" class="elifba-banner-resim" loading="lazy" width="480" height="140" />
+                  </div>
+                  <div class="elifba-detay-ust">
+                    <button type="button" class="buyuk-harf-kutu" lang="ar" dir="rtl" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.harfiDinle)}">
+                      <span class="buyuk-harf-sekil">${seciliHarf.harf}</span>
+                    </button>
+                    <div class="elifba-detay-bilgi">
+                      <div class="harf-baslik-satir">
+                        <h4 class="harf-baslik">
+                          ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}
+                          ${seciliHarf.kalinMi ? `<span class="rozet derece">${esc(m.kalinHarf)}</span>` : ''}
+                          ${seciliHarf.peltekMi ? `<span class="rozet ogrendi">${esc(m.peltekHarf)}</span>` : ''}
+                        </h4>
+                        <button type="button" class="dugme dugme-ikincil elifba-ses-btn" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.harfiDinle)}">
+                          🔊 <span>${esc(m.harfiDinle)}</span>
+                        </button>
+                      </div>
+                      <div class="mahrec-kutu">
+                        <span class="mahrec-etiket">${esc(m.mahrecBilgisi)}:</span>
+                        <p class="mahrec-metin">${esc(seciliHarf.ipucu[dil] || seciliHarf.ipucu.tr)}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="elifba-konumlar">
+                    <div class="konum-kutu">
+                      <span class="konum-etiket">${esc(m.yalinHali)}</span>
+                      <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.harf}</span>
+                    </div>
+                    <div class="konum-kutu">
+                      <span class="konum-etiket">${esc(m.bastaHali)}</span>
+                      <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.basta}</span>
+                    </div>
+                    <div class="konum-kutu">
+                      <span class="konum-etiket">${esc(m.ortadaHali)}</span>
+                      <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.ortada}</span>
+                    </div>
+                    <div class="konum-kutu">
+                      <span class="konum-etiket">${esc(m.sondaHali)}</span>
+                      <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.sonda}</span>
+                    </div>
+                  </div>
+
+                  <div class="harekeler-alani">
+                    <span class="hareke-blok-baslik">${esc(m.harekeliOkunuslar)}</span>
+                    <div class="hareke-izgara">
+                      ${HAREKELER.map((hrk) => {
+                        const birlesik = seciliHarf.harf + hrk.isaret;
+                        return `
+                          <button type="button" class="hareke-kutu" data-eylem="harekeSesCal" data-harf="${birlesik}" title="${esc(hrk.ad[dil] || hrk.ad.tr)} — ${esc(hrk.aciklama[dil] || hrk.aciklama.tr)}">
+                            <span class="hareke-ad">${esc(hrk.ad[dil] || hrk.ad.tr)}</span>
+                            <span class="hareke-harf" lang="ar" dir="rtl">${birlesik}</span>
+                            <span class="hareke-ses-ipucu">${esc(hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr)}</span>
+                          </button>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- HAFTALIK MİNİ BİLGİ YARIŞMASI -->
+            <section class="bolum r-adacayi genis quiz-bolum-kart">
+              ${bas('yildiz', m.haftalikQuiz, m.haftalikQuizAciklama)}
+              
+              <div class="quiz-icerik-sar">
+                ${d.quizBitti ? `
+                  <div class="quiz-bitti-kart">
+                    <div class="quiz-kutlama-gorsel-sar">
+                      <img src="/media/mektep/tebrik-kutlama.gif" alt="Kutlama Animasyonu" class="quiz-kutlama-gif" width="160" height="160" />
+                      <img src="/media/mektep/quiz-basari.webp" alt="Başarı Kupası" class="quiz-basari-resim" width="340" height="230" />
+                    </div>
+                    <h3 class="quiz-bitti-baslik">${esc(m.haftaninTestiBitti)}</h3>
+                    <p class="quiz-bitti-metin">${esc(m.haftaninTestiNot)}</p>
+                    <div class="quiz-eylem-satir" style="justify-content:center;margin-top:1.2rem">
+                      <button type="button" class="dugme dugme-birincil" data-eylem="quizYeniden">
+                        ${esc(m.testiYenidenBaslat)}
+                      </button>
+                    </div>
+                  </div>
+                ` : `
+                  <div class="quiz-ust-bilgi">
+                    <span class="quiz-sayac-rozet">${esc(yerlestir(m.soruSayisi, { no: aktifSoruIndex + 1, toplam: toplamSoru }))}</span>
+                    <span class="rozet ogrendi">${esc(aktifSoru.kategori[dil] || aktifSoru.kategori.tr)}</span>
+                  </div>
+
+                  <h3 class="quiz-soru-metin">${esc(aktifSoru.soru[dil] || aktifSoru.soru.tr)}</h3>
+
+                  <div class="quiz-secenek-izgara">
+                    ${(aktifSoru.secenekler[dil] || aktifSoru.secenekler.tr).map((secenek, idx) => {
+                      let ekSinif = '';
+                      if (cevaplandi) {
+                        if (idx === aktifSoru.dogruCevapIndex) ekSinif = 'dogru';
+                        else if (idx === secilenIndex) ekSinif = 'yanlis';
+                        else ekSinif = 'pasif';
+                      }
+                      return `
+                        <button type="button" class="quiz-secenek-btn ${ekSinif}" data-eylem="quizSecim" data-secenek="${idx}" ${cevaplandi ? 'disabled' : ''}>
+                          <span class="secenek-harf">${['A', 'B', 'C'][idx]}</span>
+                          <span class="secenek-yazi">${esc(secenek)}</span>
+                          ${cevaplandi && idx === aktifSoru.dogruCevapIndex ? '<span class="secenek-ikon">✓</span>' : ''}
+                          ${cevaplandi && idx === secilenIndex && !dogruMu ? '<span class="secenek-ikon">✗</span>' : ''}
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
+
+                  ${cevaplandi ? `
+                    <div class="quiz-geribildirim ${dogruMu ? 'basarili' : 'bilgilendirici'}">
+                      <div class="geribildirim-baslik">
+                        <span>${dogruMu ? '🎉 ' + esc(m.dogruCevapTebrik) : '💡 ' + esc(m.yanlisCevapIpucu)}</span>
+                      </div>
+                      <p class="geribildirim-aciklama">${esc(aktifSoru.aciklama[dil] || aktifSoru.aciklama.tr)}</p>
+                      <div class="quiz-eylem-satir">
+                        <button type="button" class="dugme dugme-birincil quiz-sonraki-btn" data-eylem="quizSonraki">
+                          ${esc(m.sonrakiSoru)}
+                        </button>
+                      </div>
+                    </div>
+                  ` : ''}
+                `}
+              </div>
+            </section>
+
+            <!-- KUR'AN YOLCULUĞUM (BASAMAKLAR) -->
+            <section class="bolum r-kiremit genis kuran-yol-kart">
+              ${bas('grafik', m.kuranYolculugum, m.kuranYolculuguAciklama)}
+              <div class="kuran-yolu-sarici">
+                <div class="basamak-hatti">
+                  ${basamaklar.map((b, idx) => {
+                    const tamam = idx < aktifBasamak;
+                    const aktif = idx === aktifBasamak;
+                    return `<div class="basamak-oge ${tamam ? 'tamamlandi' : ''} ${aktif ? 'aktif-basamak' : ''}">
+                      <div class="basamak-rozet">
+                        ${tamam ? '✓' : aktif ? '⭐' : (idx + 1)}
+                      </div>
+                      <span class="basamak-ad">${esc(b)}</span>
+                    </div>`;
+                  }).join('')}
+                </div>
+                <div class="kuran-yolu-gorsel-kutu">
+                  <img src="/media/mektep/kuran-yolu.webp" alt="Kur'an Yolu İllüstrasyonu" class="kuran-yol-resim" loading="lazy" width="600" height="220" />
+                </div>
+              </div>
+              ${ile?.hocaNotu ? `<div class="ogrenci-hoca-notu"><p><b>Hocanın Notu:</b> ${esc(ile.hocaNotu)}</p></div>` : ''}
+            </section>
+
+            <!-- BAŞARI ROZETLERİM -->
+            <section class="bolum r-ochre rozetler-kart">
+              ${bas('yildiz', m.rozetlerim, m.rozetAciklama)}
+              <div class="rozet-izgara">
+                ${ile?.rozet ? `
+                  <div class="rozet-kart kazanildi hoca-ozel-rozet">
+                    <div class="rozet-simge rozet-gorselli">
+                      <img src="/media/mektep/rozet-yildiz.webp" alt="Hoca Takdiri Rozeti" class="rozet-resim-img" width="56" height="56" />
+                    </div>
+                    <h4>${esc(((m.hocaRozetleri as unknown as Record<string, string>) || {})[ile.rozet] || ile.rozet)}</h4>
+                    <p class="kucuk">${esc(m.hocaTakdiriNotu)}</p>
+                  </div>
+                ` : ''}
+                <div class="rozet-kart kazanildi">
+                  <div class="rozet-simge rozet-gorselli">
+                    <img src="/media/mektep/rozet-yildiz.webp" alt="İlk Adım Rozeti" class="rozet-resim-img" width="56" height="56" />
+                  </div>
+                  <h4>${esc(m.rozetListesi.baslangic.ad)}</h4>
+                  <p class="kucuk">${esc(m.rozetListesi.baslangic.aciklama)}</p>
+                </div>
+                <div class="rozet-kart ${aktifBasamak >= 1 ? 'kazanildi' : 'kilitli'}">
+                  <div class="rozet-simge rozet-gorselli">
+                    ${aktifBasamak >= 1 ? '<img src="/media/mektep/rozet-kuran.webp" alt="Elifba Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
+                  </div>
+                  <h4>${esc(m.rozetListesi.elifba.ad)}</h4>
+                  <p class="kucuk">${esc(m.rozetListesi.elifba.aciklama)}</p>
+                </div>
+                <div class="rozet-kart ${yildizSayisi >= 3 ? 'kazanildi' : 'kilitli'}">
+                  <div class="rozet-simge rozet-gorselli">
+                    ${yildizSayisi >= 3 ? '<img src="/media/mektep/rozet-ahlak.webp" alt="Namaz Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
+                  </div>
+                  <h4>${esc(m.rozetListesi.namaz.ad)}</h4>
+                  <p class="kucuk">${esc(m.rozetListesi.namaz.aciklama)}</p>
+                </div>
+                <div class="rozet-kart ${aktifBasamak >= 5 ? 'kazanildi' : 'kilitli'}">
+                  <div class="rozet-simge">${aktifBasamak >= 5 ? '🌙' : '🔒'}</div>
+                  <h4>${esc(m.rozetListesi.kuran.ad)}</h4>
+                  <p class="kucuk">${esc(m.rozetListesi.kuran.aciklama)}</p>
+                </div>
+                <div class="rozet-kart ${toplamDers >= 2 ? 'kazanildi' : 'kilitli'}">
+                  <div class="rozet-simge">${toplamDers >= 2 ? '🏅' : '🔒'}</div>
+                  <h4>${esc(m.rozetListesi.devam.ad)}</h4>
+                  <p class="kucuk">${esc(m.rozetListesi.devam.aciklama)}</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- HAFTANIN EĞİTİCİ KÖŞESİ -->
+            <section class="bolum r-adacayi video-kose-kart">
+              ${bas('duyuru', m.videoKosesi, m.videoAciklama)}
+              <div class="video-kose-govde">
+                <p class="kucuk">${haftaOdev && haftaOdev.odev ? esc(cok(haftaOdev.odev)) : 'Bu haftaki ders etkinliklerini ve ezberlerini tamamlayarak yeni rozetler kazanabilirsin.'}</p>
+                <div class="egitici-bag-kutu">
+                  <a class="ic-bag buyuk-bag" href="https://kuran.diyanet.gov.tr/elifba/" target="_blank" rel="noopener">
+                    ${simge('kitap')}<span>Diyanet İnteraktif Elifbâ Portalı</span>${simge('disari')}
+                  </a>
+                  <a class="ic-bag buyuk-bag" href="https://dijital.diyanet.gov.tr/" target="_blank" rel="noopener">
+                    ${simge('duyuru')}<span>Diyanet Çocuk Kütüphanesi</span>${simge('disari')}
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>`;
+    };
+
+    if (d.mod === 'ogrenci') {
+      ogrenciPanoCiz();
+      return;
+    }
+
     /* Ders kitabı / materyal kartı: her öğrenci için tek seferlik üç seçenek. Yanıtlanmamış öğrenci
        varsa kart vurgulu ve en üstte durur; hepsi yanıtlanınca özet satırlarına iner. */
     const kitapKarti = () => {
@@ -291,13 +740,21 @@ export async function veliPortali(): Promise<void> {
       <div class="pano-hero">
         <div class="hero-serit" aria-hidden="true"></div>
         <div class="hero-ust">
-          <p class="selam"><small>${esc(m.hosgeldin)}</small><span class="cocuk-adi">${o ? esc(o.ad) + ' ' + esc(o.soyad) : esc(d.eposta)}</span></p>
-          <button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}${esc(m.cikis)}</button>
+          <div class="selam-sar">
+            ${o ? `<span class="ogrenci-avatar ${monogramSinifi(o.ref)}" aria-hidden="true">${esc(monogramHarfleri(o.ad, o.soyad))}</span>` : ''}
+            <div class="selam-metin">
+              <p class="selam"><small>${esc(m.hosgeldin)}</small><span class="cocuk-adi">${o ? esc(o.ad) + ' ' + esc(o.soyad) : esc(d.eposta)}</span></p>
+            </div>
+          </div>
+          <div class="hero-eylemler">
+            ${o ? `<button type="button" class="dugme dugme-ogrenci" data-eylem="ogrenciModu">${simge('ogrenci')}<span>${esc(m.ogrenciModu)}</span></button>` : ''}
+            <button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}${esc(m.cikis)}</button>
+          </div>
         </div>
         ${kunyeler.length ? `<div class="kunye-serit">${kunyeler.map((k) => `<div class="kunye">${simge(k.ikon)}<div><span class="k-deger">${esc(k.deger)}</span><span class="k-etiket">${esc(k.etiket)}</span></div></div>`).join('')}</div>` : ''}
       </div>
       ${d.ogrenciler.length > 1 ? `<div class="cocuk-sec" role="tablist" aria-label="${esc(m.cocuklar)}">
-        ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}">${simge('ogrenci')}${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
+        ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}"><span class="sekme-avatar ${monogramSinifi(x.ref)}" aria-hidden="true">${esc(monogramHarfleri(x.ad, x.soyad))}</span>${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
       <div class="bolumler"${d.ogrenciler.length > 1 ? ` role="tabpanel" id="cocuk-panel" aria-labelledby="cocuk-sekme-${d.secili}"` : ''}>
         ${kitapKarti()}
@@ -473,6 +930,92 @@ export async function veliPortali(): Promise<void> {
     }
     const hedef = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem], [data-sec]');
     if (!hedef) return;
+    if (hedef.dataset.eylem === 'ogrenciModu' && durum) { durum.mod = 'ogrenci'; panoCiz(); return; }
+    if (hedef.dataset.eylem === 'veliModunaDon' && durum) { durum.mod = 'veli'; panoCiz(); return; }
+    if (hedef.dataset.eylem === 'harfGrupSec' && durum) {
+      durum.seciliHarfGrup = hedef.dataset.grup as HarfGrup;
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'harfSec' && durum) {
+      harfTikSesiCal();
+      durum.seciliHarfId = hedef.dataset.harf;
+      panoCiz();
+      const secilenHarfOgesi = ELIFBA_HARFLERI.find((h) => h.id === durum?.seciliHarfId);
+      if (secilenHarfOgesi) harfSeslendir(secilenHarfOgesi.harf, secilenHarfOgesi.id);
+      return;
+    }
+    if (hedef.dataset.eylem === 'harfSesCal') {
+      harfTikSesiCal();
+      const harf = hedef.dataset.harf || '';
+      const harfId = hedef.dataset.harfId;
+      if (harf) harfSeslendir(harf, harfId);
+      return;
+    }
+    if (hedef.dataset.eylem === 'harekeSesCal') {
+      harfTikSesiCal();
+      const harf = hedef.dataset.harf || '';
+      if (harf) harfSeslendir(harf);
+      return;
+    }
+    if (hedef.dataset.eylem === 'quizSecim' && durum && !durum.quizCevaplandi) {
+      const secilenIdx = Number(hedef.dataset.secenek);
+      durum.quizSecilenIndex = secilenIdx;
+      durum.quizCevaplandi = true;
+      const soruNo = durum.quizSoruNo ?? 0;
+      const aktifSoru = QUIZ_SORULARI[soruNo % QUIZ_SORULARI.length];
+      if (secilenIdx === aktifSoru.dogruCevapIndex) {
+        kutlamaSesiCal();
+        const o = durum.ogrenciler[durum.secili];
+        const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
+        try {
+          const yildiz = Number(localStorage.getItem(yildizKey) || '0') + 1;
+          localStorage.setItem(yildizKey, String(yildiz));
+        } catch {}
+      }
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'quizSonraki' && durum) {
+      const sonraki = (durum.quizSoruNo ?? 0) + 1;
+      if (sonraki >= QUIZ_SORULARI.length) {
+        durum.quizBitti = true;
+        kutlamaSesiCal();
+      } else {
+        durum.quizSoruNo = sonraki;
+        durum.quizCevaplandi = false;
+        durum.quizSecilenIndex = null;
+      }
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'quizYeniden' && durum) {
+      durum.quizSoruNo = 0;
+      durum.quizCevaplandi = false;
+      durum.quizSecilenIndex = null;
+      durum.quizBitti = false;
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'tekrarEttim' && durum) {
+      kutlamaSesiCal();
+      const o = durum.ogrenciler[durum.secili];
+      const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
+      let yildizSayisi = 0;
+      try {
+        yildizSayisi = Number(localStorage.getItem(yildizKey) || '0') + 1;
+        localStorage.setItem(yildizKey, String(yildizSayisi));
+      } catch {}
+      const sayacEl = kok.querySelector('[data-yildiz-goster]');
+      if (sayacEl) sayacEl.textContent = String(yildizSayisi);
+      const kutlamaEl = kok.querySelector<HTMLElement>('[data-kutlama]');
+      if (kutlamaEl) {
+        kutlamaEl.textContent = `🎉 ${m.harikaGidiyorsun} (+1 ⭐)`;
+        kutlamaEl.hidden = false;
+        setTimeout(() => { if (kutlamaEl) kutlamaEl.hidden = true; }, 3500);
+      }
+      return;
+    }
     if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
     if (hedef.dataset.eylem === 'bildirVazgec') { duzenlenenBildirim = null; panoCiz(); return; }
     if (hedef.dataset.eylem === 'atla' && a.currentUser) { await panoyaGec(a.currentUser); return; }
@@ -487,6 +1030,12 @@ export async function veliPortali(): Promise<void> {
     if (hedef.dataset.sec !== undefined && durum) { sekmeSec(Number(hedef.dataset.sec), true); }
   });
   kok.addEventListener('change', async (ev) => {
+    const ezberSec = (ev.target as HTMLElement).closest<HTMLSelectElement>('[data-eylem=ezberDegistir]');
+    if (ezberSec && durum) {
+      durum.seciliEzberId = ezberSec.value;
+      panoCiz();
+      return;
+    }
     const sec = (ev.target as HTMLElement).closest<HTMLSelectElement>('[data-dil-sec]');
     if (sec && durum) {
       const yeni = sec.value as Dil;

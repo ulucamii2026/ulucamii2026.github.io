@@ -45,3 +45,10 @@
   - `npx playwright test tests/web/ana-sayfa-akisi.spec.mjs tests/web/ana-sayfa-tasarim.spec.mjs tests/web/vitrin.spec.mjs tests/web/site.spec.mjs`: 84 passed (çıkış kodu 0).
   - Ana sayfa akışı, tasarım, vitrin ve site genel regresyon testlerinin tamamı yeşil.
 
+## Canlı yayın doğrulaması — 10 Eylül 2026, 14.15 (Brüksel)
+
+- Yayın commit'i: `481d3090ca8c10672c87b2e31d0674f5ab8e5281`. GitHub Actions `34475486695`: `completed / success`; build ve deploy başarılı.
+- Canlı TR 1440 px, FR 390 px, EN 768 px sayfaları HTTP 200 döndü. Dört yeni bölüm sırası, diline uygun kurs kaydı, doğru adres, yüklenmiş fotoğraflar, açılır banka/QR alanı ve slider geçişi doğrulandı.
+- Üç dilde yatay taşma, JavaScript çalışma hatası veya siteye ait başarısız kaynak isteği bulunmadı. Kanıt: `D:\tmp\ana-akis-canli.log`; ekran görüntüleri `D:\tmp\ana-akis-canli-{tr,fr,en}.png`.
+- Tarayıcı kontrolleri Chromium ile yapıldı; gerçek Safari/iPhone ve Firefox bu çalışmada sınanmadı. Canlı form, e-posta veya banka işlemi gönderilmedi.
+- Bu son yayın kanıtı yerel proje notuna eklendi; yayımlanan uygulama kodunda ek değişiklik yapılmadı.

@@ -28,6 +28,15 @@
           "src/styles/formlar.css"
         ],
         "createdAt": "2026-09-08T16:31:54.536Z"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/formlar/IhtidaFormu.astro"
+        ],
+        "createdAt": "2026-09-08T21:38:59.856Z",
+        "reason": "Agent verified: hidden data-onizleme image receives uploaded data URL before display in ihtida-gorseller.ts lines 149-150; no broken image is shown."
       }
     ]
   }
