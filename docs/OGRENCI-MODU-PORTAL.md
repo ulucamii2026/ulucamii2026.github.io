@@ -32,4 +32,16 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - **Resmî Diyanet Elifba Sesleri (`public/media/ses/elifba/`):** 28 harfin tamamı Diyanet İşleri Başkanlığı'nın resmi Kur'an portalından (`kuran.diyanet.gov.tr/elifba`) yerel olarak indirildi ve projeye dahil edildi. Harfe tıklandığında anında (0 gecikme ile) kristal netliğinde Diyanet tilaveti çalar; hareke kombinasyonlarında SpeechSynthesis fallback devreye girer.
 - **Özgün Mektep İllüstrasyonları (`public/media/mektep/`):** İznik çinileri, rahleler, fenerler ve basamaklı yollarla hazırlanan 1280px optimize WebP görselleri (mektep odası hero banner, Elifba bahçesi, ezber ve dua köşesi, Kur'an basamak yolu, başarı kupası).
 - **Hareketli Kutlama ve Parıltı GIF'i:** Yarışma bitişi ve tebrik anları için şeffaf arka planlı, akıcı döngülü `tebrik-kutlama.gif` konfeti ve altın yıldız ışıltısı.
-- **Üç Boyutlu Başarı Rozetleri:** Haftanın Yıldızı, Kur'an Rehberi ve Güzel Ahlak madalyaları için yüksek çözünürlüklü özel WebP rozet illüstrasyonları.
+- **Üç Boyutlu Başarı Rozetleri:** Haftanın Yıldızı, Kur'an Rehberi, Güzel Ahlak, Kur’an-ı Kerim / Hatim ve İstikrarlı Devam madalyaları için yüksek çözünürlüklü özel WebP rozet illüstrasyonları (`rozet-yildiz.webp`, `rozet-kuran.webp`, `rozet-ahlak.webp`, `rozet-hatim.webp`, `rozet-devam.webp`).
+
+## 7. Namaz Duaları ve Sûre Sesleri Altyapısı (Kalıcı Karar)
+- **4 Temel Namaz Duası (`public/media/ses/dualar/`):** Sübhâneke (`subhaneke.mp3`), Ettehiyyâtü (`tahiyyat.mp3`), Allâhümme Salli & Bârik (`sallibarik.mp3`) ve Rabbenâ Âtinâ & Rabbenâğfirlî (`rabbena.mp3`) duaları doğrulanmış kıraat ve talim arşivinden projeye yerel olarak dahil edildi.
+- **6 Kısa Kur'an Sûresi (`public/media/ses/sureler/`):** Fâtiha, İhlâs, Felak, Nâs, Kevser ve Âyetü'l-Kürsî sesleri dış CDN bağımlılığından kurtarılarak yerel dizine aktarıldı. Böylece öğrenci odası sıfır dış ağ gecikmesiyle, çevrimdışı ve CORS engellerinden muaf olarak çalışır.
+- **Dua Metni Doğruluğu:** Rabbenâ duası Arapça metnindeki yazım kontrol edildi ve tashih edildi.
+
+## 8. Ses Senkronizasyonu & Çakışma Önleme
+- Öğrenci bir sûre veya dua dinlerken aynı anda Elif-Bâ harfine basarsa, çalan ezber sesi anında durdurulur (`audio.ezber-audio.pause()`).
+- Tersi durumda, ezber oynatıcısında ses başladığında capture listener ile aktif harf sesi kesilir (`aktifAudio.pause()`). İki ses asla üst üste binmez.
+
+## 9. Elif-Bâ Klavye & WAI-ARIA Erişilebilirliği
+- 28 harflik Elif-Bâ tahtasında sağ ve sol ok tuşlarıyla (`ArrowLeft`, `ArrowRight`, `ArrowUp`, `ArrowDown`) akıcı gezinim sağlandı. Harf butonları arasında dolaşırken seçili harf anında güncellenir, detaylar açılır ve telaffuz sesi tetiklenir.

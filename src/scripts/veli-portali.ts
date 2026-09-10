@@ -90,6 +90,13 @@ export async function veliPortali(): Promise<void> {
 
   let aktifAudio: HTMLAudioElement | null = null;
   const harfSeslendir = (harfMetni: string, harfId?: string) => {
+    // Ezber odasındaki sûre/dua çalıyorsa durdur
+    try {
+      kok.querySelectorAll<HTMLAudioElement>('audio.ezber-audio').forEach((a) => {
+        if (!a.paused) a.pause();
+      });
+    } catch {}
+
     const sesId = harfId || HARF_SES_HARITASI[harfMetni] || HARF_SES_HARITASI[harfMetni[0]];
     if (sesId) {
       try {
@@ -658,12 +665,16 @@ export async function veliPortali(): Promise<void> {
                   <p class="kucuk">${esc(m.rozetListesi.namaz.aciklama)}</p>
                 </div>
                 <div class="rozet-kart ${aktifBasamak >= 5 ? 'kazanildi' : 'kilitli'}">
-                  <div class="rozet-simge">${aktifBasamak >= 5 ? '🌙' : '🔒'}</div>
+                  <div class="rozet-simge ${aktifBasamak >= 5 ? 'rozet-gorselli' : ''}">
+                    ${aktifBasamak >= 5 ? '<img src="/media/mektep/rozet-hatim.webp" alt="Kur’an Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
+                  </div>
                   <h4>${esc(m.rozetListesi.kuran.ad)}</h4>
                   <p class="kucuk">${esc(m.rozetListesi.kuran.aciklama)}</p>
                 </div>
                 <div class="rozet-kart ${toplamDers >= 2 ? 'kazanildi' : 'kilitli'}">
-                  <div class="rozet-simge">${toplamDers >= 2 ? '🏅' : '🔒'}</div>
+                  <div class="rozet-simge ${toplamDers >= 2 ? 'rozet-gorselli' : ''}">
+                    ${toplamDers >= 2 ? '<img src="/media/mektep/rozet-devam.webp" alt="Devam Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
+                  </div>
                   <h4>${esc(m.rozetListesi.devam.ad)}</h4>
                   <p class="kucuk">${esc(m.rozetListesi.devam.aciklama)}</p>
                 </div>
@@ -1041,6 +1052,44 @@ export async function veliPortali(): Promise<void> {
       const yeni = sec.value as Dil;
       await fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { dil: yeni }).catch(() => {});
       if (veri.dilYollari?.[yeni]) location.href = veri.dilYollari[yeni];
+    }
+  });
+  // Ezber odasındaki sûre/dua çalmaya başladığında aktif harf sesini durdur
+  kok.addEventListener(
+    'play',
+    (ev) => {
+      const hedefAudio = ev.target as HTMLAudioElement;
+      if (hedefAudio && hedefAudio.classList.contains('ezber-audio')) {
+        if (aktifAudio && !aktifAudio.paused) {
+          aktifAudio.pause();
+          aktifAudio.currentTime = 0;
+        }
+      }
+    },
+    true
+  );
+  // Elif-Bâ harf tahtası klavye gezinimi (ok tuşları ile harf seçimi)
+  kok.addEventListener('keydown', (ev) => {
+    const hedef = ev.target as HTMLElement;
+    if (!hedef || !hedef.classList.contains('elifba-harf-btn')) return;
+    const butonlar = Array.from(kok.querySelectorAll<HTMLButtonElement>('.elifba-harf-btn'));
+    const suankiIndex = butonlar.indexOf(hedef as HTMLButtonElement);
+    if (suankiIndex === -1) return;
+
+    let yeniIndex = suankiIndex;
+    if (ev.key === 'ArrowLeft' || ev.key === 'ArrowDown') {
+      ev.preventDefault();
+      yeniIndex = (suankiIndex + 1) % butonlar.length;
+    } else if (ev.key === 'ArrowRight' || ev.key === 'ArrowUp') {
+      ev.preventDefault();
+      yeniIndex = (suankiIndex - 1 + butonlar.length) % butonlar.length;
+    } else {
+      return;
+    }
+    const yeniButon = butonlar[yeniIndex];
+    if (yeniButon) {
+      yeniButon.focus();
+      yeniButon.click();
     }
   });
   kok.addEventListener('submit', async (ev) => {

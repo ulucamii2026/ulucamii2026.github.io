@@ -38,8 +38,8 @@ const metinJson = JSON.stringify({
 <form class="ucf mt-8" data-form="kayit" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-KAYIT-2026"
       data-taslak="ulucamii:kayit:v2" data-eposta-alani="veli.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="k-giris-not">
-  <script type="application/json" data-metin set:html={metinJson} />
-  <script type="application/json" data-siniflar set:html={sinifJson} />
+  <script is:inline type="application/json" data-metin set:html={metinJson} />
+  <script is:inline type="application/json" data-siniflar set:html={sinifJson} />
 
   <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
   <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">

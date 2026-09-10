@@ -41,7 +41,7 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
       <p class="not">{m.yukleniyor}</p>
       <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript.</p></noscript>
     </div>
-    <script type="application/json" id="veli-veri" set:html={JSON.stringify(veri)} />
+    <script is:inline type="application/json" id="veli-veri" set:html={JSON.stringify(veri)} />
     <p class="alt-baglantilar">
       <a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{m.kurs}</a>
       <a href={yol(dil, 'gizlilik')} class="dugme dugme-ikincil">{m.gizlilik}</a>

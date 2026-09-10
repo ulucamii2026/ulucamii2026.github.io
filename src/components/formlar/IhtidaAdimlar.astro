@@ -5,7 +5,7 @@ interface Props { dil: Dil }
 const m = ihtidaAdimMetinleri[Astro.props.dil];
 ---
 <div class="ucf-adimlar" data-ihtida-adimlar hidden>
-  <script type="application/json" data-metin-adim set:html={JSON.stringify(m)} />
+  <script is:inline type="application/json" data-metin-adim set:html={JSON.stringify(m)} />
   <div class="ucf-adim-ust">
     <strong>{m.baslik}</strong>
     <span data-adim-durum aria-live="polite" aria-atomic="true"></span>

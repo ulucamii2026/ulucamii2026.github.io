@@ -31,7 +31,7 @@ const veri = {
       <noscript><p class="not">Bu sayfa JavaScript gerektirir.</p></noscript>
     </div>
     <div id="hoca-durum" class="portal-durum" role="status" aria-live="polite" hidden></div>
-    <script type="application/json" id="hoca-veri" set:html={JSON.stringify(veri)} />
+    <script is:inline type="application/json" id="hoca-veri" set:html={JSON.stringify(veri)} />
   </div>
 </Base>
 

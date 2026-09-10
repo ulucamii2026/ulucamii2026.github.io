@@ -27,7 +27,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Au nom d’Allah, le Tout Miséricordieux, le Très Miséricordieux. Louange à Allah, Seigneur de l’univers. Le Tout Miséricordieux, le Très Miséricordieux, Maître du Jour de la rétribution. C’est Toi seul que nous adorons, et c’est Toi seul dont nous implorons le secours. Guide-nous dans le droit chemin, le chemin de ceux que Tu as comblés de bienfaits, non pas de ceux qui ont encouru Ta colère, ni des égarés.',
       en: 'In the name of Allah, the Entirely Merciful, the Especially Merciful. All praise is due to Allah, Lord of the worlds. The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense. It is You we worship and You we ask for help. Guide us to the straight path—the path of those upon whom You have bestowed favor, not of those who have evoked anger or of those who are astray.',
     },
-    sesUrl: 'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/1.mp3',
+    sesUrl: '/media/ses/sureler/fatiha.mp3',
   },
   {
     id: 'subhaneke',
@@ -40,7 +40,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Gloire et pureté à Toi, ô Allah, et à Toi la louange. Que Ton Nom soit béni, que Ta majesté soit exaltée, et il n’y a point d’autre divinité que Toi.',
       en: 'Glory be to You, O Allah, and with Your praise. Blessed is Your name, exalted is Your majesty, and there is no deity other than You.',
     },
-    sesUrl: 'https://everyayah.com/data/Alafasy_128kbps/001001.mp3',
+    sesUrl: '/media/ses/dualar/subhaneke.mp3',
   },
   {
     id: 'ihlas',
@@ -53,7 +53,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Dis : « Il est Allah, Unique. Allah, Le Seul à être imploré pour ce que nous désirons. Il n’a jamais engendré, n’a pas été engendré non plus. Et nul n’est égal à Lui. »',
       en: 'Say: He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, nor is there to Him any equivalent.',
     },
-    sesUrl: 'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/112.mp3',
+    sesUrl: '/media/ses/sureler/ihlas.mp3',
   },
   {
     id: 'felak',
@@ -66,7 +66,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Dis : « Je cherche protection auprès du Seigneur de l’aube naissante, contre le mal des êtres qu’Il a créés, contre le mal de l’obscurité quand elle s’approfondit, contre le mal de celles qui soufflent sur les nœuds, et contre le mal de l’envieux quand il envie. »',
       en: 'Say: I seek refuge in the Lord of daybreak, from the evil of that which He created, and from the evil of darkness when it settles, and from the evil of the blowers in knots, and from the evil of an envier when he envies.',
     },
-    sesUrl: 'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/113.mp3',
+    sesUrl: '/media/ses/sureler/felak.mp3',
   },
   {
     id: 'nas',
@@ -79,7 +79,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Dis : « Je cherche protection auprès du Seigneur des hommes, le Roi des hommes, Dieu des hommes, contre le mal du mauvais conseiller furtif, qui souffle le mal dans les poitrines des hommes, qu’il soit parmi les djinns ou les hommes. »',
       en: 'Say: I seek refuge in the Lord of mankind, the Sovereign of mankind, the God of mankind, from the evil of the retreating whisperer—who whispers into the breasts of mankind—from among the jinn and mankind.',
     },
-    sesUrl: 'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/114.mp3',
+    sesUrl: '/media/ses/sureler/nas.mp3',
   },
   {
     id: 'kevser',
@@ -92,7 +92,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Nous t’avons certes accordé l’Abondance (Al-Kawthar). Accomplis la prière pour ton Seigneur et sacrifie. Celui qui te hait sera certes sans postérité.',
       en: 'Indeed, We have granted you, [O Muhammad], al-Kawthar. So pray to your Lord and sacrifice [to Him alone]. Indeed, your enemy is the one cut off.',
     },
-    sesUrl: 'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/108.mp3',
+    sesUrl: '/media/ses/sureler/kevser.mp3',
   },
   {
     id: 'ayetel-kursi',
@@ -105,7 +105,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Allah ! Point de divinité à part Lui, le Vivant, Celui qui subsiste par Lui-même. Ni somnolence ni sommeil ne Le saisissent. À Lui appartient tout ce qui est dans les cieux et sur la terre. Qui peut intercéder auprès de Lui sans Sa permission ? Il sait leur passé et leur futur. Et, de Sa science, ils n’embrassent que ce qu’Il veut. Son Trône déborde les cieux et la terre, dont la garde ne Lui coûte aucune peine. Et Il est le Très Haut, le Très Grand.',
       en: 'Allah—there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.',
     },
-    sesUrl: 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3',
+    sesUrl: '/media/ses/sureler/ayetel-kursi.mp3',
   },
   {
     id: 'tahiyyat',
@@ -118,7 +118,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Toutes les salutations, les prières et les bonnes œuvres sont pour Allah. Que la paix soit sur toi, ô Prophète, ainsi que la miséricorde d’Allah et Ses bénédictions. Que la paix soit sur nous et sur les vertueux serviteurs d’Allah. J’atteste qu’il n’y a point de divinité digne d’adoration en dehors d’Allah, et j’atteste que Muhammad est Son serviteur et Son messager.',
       en: 'All compliments, prayers and pure words are due to Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no deity worthy of worship except Allah, and I bear witness that Muhammad is His servant and His messenger.',
     },
-    sesUrl: 'https://everyayah.com/data/Alafasy_128kbps/001001.mp3',
+    sesUrl: '/media/ses/dualar/tahiyyat.mp3',
   },
   {
     id: 'salli-barik',
@@ -131,7 +131,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Ô Allah ! Prie sur Muhammad et sur la famille de Muhammad comme Tu as prié sur Ibrahim et sur la famille d’Ibrahim. Tu es certes Digne de louanges et Glorieux. Ô Allah ! Bénis Muhammad et la famille de Muhammad comme Tu as béni Ibrahim et la famille d’Ibrahim. Tu es certes Digne de louanges et Glorieux.',
       en: 'O Allah, bestow Your favor upon Muhammad and upon the family of Muhammad as You bestowed favor upon Abraham and upon the family of Abraham. Indeed, You are Praiseworthy and Glorious. O Allah, bless Muhammad and the family of Muhammad as You blessed Abraham and the family of Abraham. Indeed, You are Praiseworthy and Glorious.',
     },
-    sesUrl: 'https://everyayah.com/data/Alafasy_128kbps/001001.mp3',
+    sesUrl: '/media/ses/dualar/sallibarik.mp3',
   },
   {
     id: 'rabbena',
@@ -144,6 +144,6 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       fr: 'Seigneur ! Accorde-nous belle part ici-bas, et belle part aussi dans l’au-delà ; et protège-nous du châtiment du Feu ! Ô notre Seigneur ! Pardonne-moi, ainsi qu’à mes père et mère et aux croyants, le jour où s’élèvera le compte.',
       en: 'Our Lord, give us in this world that which is good and in the Hereafter that which is good and protect us from the punishment of the Fire. Our Lord, forgive me and my parents and the believers the Day the account is established.',
     },
-    sesUrl: 'https://everyayah.com/data/Alafasy_128kbps/001001.mp3',
+    sesUrl: '/media/ses/dualar/rabbena.mp3',
   },
 ];

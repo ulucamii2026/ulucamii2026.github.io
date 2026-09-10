@@ -54,8 +54,8 @@ const gorselKutulari = [
       data-asgari-servis-surumu="27"
       data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="i-giris-not">
-  <script type="application/json" data-metin set:html={metinJson} />
-  <script type="application/json" data-metin-belge set:html={belgeJson} />
+  <script is:inline type="application/json" data-metin set:html={metinJson} />
+  <script is:inline type="application/json" data-metin-belge set:html={belgeJson} />
 
   <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
   <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
