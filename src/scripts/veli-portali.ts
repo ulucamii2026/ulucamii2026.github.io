@@ -56,11 +56,27 @@ export async function veliPortali(): Promise<void> {
     return Object.keys(h).filter((s) => h[s]).sort().map((s) => ({ sira: s, durum: h[s] }));
   };
 
-  const kutlamaSesiCal = () => {
+  let paylasimliAudioCtx: AudioContext | null = null;
+  const getSesBaglami = (): AudioContext | null => {
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      if (!AudioCtx) return null;
+      if (!paylasimliAudioCtx || paylasimliAudioCtx.state === 'closed') {
+        paylasimliAudioCtx = new AudioCtx();
+      }
+      if (paylasimliAudioCtx.state === 'suspended') {
+        paylasimliAudioCtx.resume().catch(() => {});
+      }
+      return paylasimliAudioCtx;
+    } catch {
+      return null;
+    }
+  };
+
+  const kutlamaSesiCal = () => {
+    try {
+      const ctx = getSesBaglami();
+      if (!ctx) return;
       const now = ctx.currentTime;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -80,9 +96,8 @@ export async function veliPortali(): Promise<void> {
 
   const hataSesiCal = () => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSesBaglami();
+      if (!ctx) return;
       const now = ctx.currentTime;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -100,9 +115,8 @@ export async function veliPortali(): Promise<void> {
 
   const pariltiSesiCal = () => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSesBaglami();
+      if (!ctx) return;
       const frekanslar = [523.25, 659.25, 783.99, 1046.5, 1318.51];
       frekanslar.forEach((f, i) => {
         const osc = ctx.createOscillator();
@@ -122,9 +136,8 @@ export async function veliPortali(): Promise<void> {
 
   const harekeTonuCal = (harfMetni: string) => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSesBaglami();
+      if (!ctx) return;
       const now = ctx.currentTime;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -192,13 +205,28 @@ export async function veliPortali(): Promise<void> {
   };
 
   let aktifAudio: HTMLAudioElement | null = null;
-  const harfSeslendir = (harfMetni: string, harfId?: string) => {
-    // Ezber odasındaki sûre/dua çalıyorsa durdur
+  const tumSesleriDurdur = () => {
     try {
-      kok.querySelectorAll<HTMLAudioElement>('audio.ezber-audio').forEach((a) => {
-        if (!a.paused) a.pause();
+      if (aktifAudio) {
+        aktifAudio.pause();
+        aktifAudio.currentTime = 0;
+      }
+    } catch {}
+    try {
+      kok.querySelectorAll<HTMLAudioElement>('audio').forEach((a) => {
+        if (!a.paused) {
+          a.pause();
+          a.currentTime = 0;
+        }
       });
     } catch {}
+    if ('speechSynthesis' in window) {
+      try { window.speechSynthesis.cancel(); } catch {}
+    }
+  };
+
+  const harfSeslendir = (harfMetni: string, harfId?: string) => {
+    tumSesleriDurdur();
 
     // Harekeli harf seslendiriliyorsa doğrudan fonetik okunuşa git (harf ismini çalma)
     const harekeliMi = /[\u064B-\u0652]/.test(harfMetni);
@@ -232,24 +260,27 @@ export async function veliPortali(): Promise<void> {
     sesliFallback(harfMetni);
   };
 
-  const sesliFallback = (metin: string) => {
+  const metinSeslendir = (metin: string, dilKodu = 'ar-SA') => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(metin);
-      u.lang = 'ar-SA';
-      u.rate = 0.75;
+      u.lang = dilKodu;
+      u.rate = dilKodu.startsWith('ar') ? 0.75 : 0.9;
       const sesler = window.speechSynthesis.getVoices();
-      const arapcaSes = sesler.find((v) => v.lang && v.lang.toLowerCase().startsWith('ar'));
-      if (arapcaSes) u.voice = arapcaSes;
+      const uygunSes = sesler.find((v) => v.lang && v.lang.toLowerCase().startsWith(dilKodu.slice(0, 2).toLowerCase()));
+      if (uygunSes) u.voice = uygunSes;
       window.speechSynthesis.speak(u);
     }
   };
 
+  const sesliFallback = (metin: string) => {
+    metinSeslendir(metin, 'ar-SA');
+  };
+
   const harfTikSesiCal = () => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSesBaglami();
+      if (!ctx) return;
       const now = ctx.currentTime;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -574,16 +605,21 @@ export async function veliPortali(): Promise<void> {
                 <div class="kesif-kutusu gunun-hadisi-kutu">
                   <div class="kesif-etiket-satir">
                     <span class="kesif-rozet hadis-rozet">${esc(m.gununHadisi)}</span>
-                    <span class="hadis-ikon" aria-hidden="true">${gununHadisi.ikon}</span>
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiDinle)}">
+                      🔊 <span>${esc(m.hadisiDinle)}</span>
+                    </button>
                   </div>
                   <div class="gunun-hadisi-govde">
-                    <div class="hadis-arapca" dir="rtl" lang="ar">
+                    <button type="button" class="hadis-arapca hadis-arapca-btn" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
                       ${esc(gununHadisi.arapca)}
-                    </div>
+                    </button>
                     <p class="hadis-meali">«${esc(gununHadisi.metin[dil] || gununHadisi.metin.tr)}»</p>
                     <div class="hadis-kaynak-satir">
                       <span class="hadis-kaynak">${esc(gununHadisi.kaynak)}</span>
                       <span class="hadis-konu-etiket">${esc(gununHadisi.konu[dil] || gununHadisi.konu.tr)}</span>
+                      <button type="button" class="hadis-meal-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="meal" title="${esc(m.hadisMealiDinle)}">
+                        🗣️ <span>${esc(m.hadisMealiDinle)}</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -654,7 +690,7 @@ export async function veliPortali(): Promise<void> {
               <div class="elifba-izgara-sar">
                 <div class="elifba-harf-izgara" dir="rtl">
                   ${harfler.map((h) => `
-                    <button type="button" class="elifba-harf-btn ${h.id === seciliHarf.id ? 'secili' : ''} ${h.kalinMi ? 'kalin' : ''} ${h.peltekMi ? 'peltek' : ''}" data-eylem="harfSec" data-harf="${h.id}" data-harf-karakter="${h.harf}" title="${esc(h.ad[dil] || h.ad.tr)}">
+                    <button type="button" class="elifba-harf-btn ${h.id === seciliHarf.id ? 'secili' : ''} ${h.kalinMi ? 'kalin' : ''} ${h.peltekMi ? 'peltek' : ''}" data-eylem="harfSec" data-harf="${h.id}" data-harf-karakter="${h.harf}" aria-label="${esc(h.ad[dil] || h.ad.tr)}${h.kalinMi ? ' (' + esc(m.kalinHarf) + ')' : ''}${h.peltekMi ? ' (' + esc(m.peltekHarf) + ')' : ''}" title="${esc(h.ad[dil] || h.ad.tr)}">
                       <span class="harf-sekil" lang="ar">${h.harf}</span>
                       <span class="harf-adi">${esc(h.ad[dil] || h.ad.tr)}</span>
                       ${h.kalinMi ? '<span class="harf-rozet-minik kalin-roz" title="' + esc(m.kalinHarf) + '">K</span>' : ''}
@@ -691,19 +727,19 @@ export async function veliPortali(): Promise<void> {
                   </div>
 
                   <div class="elifba-konumlar">
-                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.yalinHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" aria-label="${esc(m.yalinHali)}: ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}" title="${esc(m.yalinHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.yalinHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.harf}</span>
                     </button>
-                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.bastaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" aria-label="${esc(m.bastaHali)}: ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}" title="${esc(m.bastaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.bastaHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.basta}</span>
                     </button>
-                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.ortadaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" aria-label="${esc(m.ortadaHali)}: ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}" title="${esc(m.ortadaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.ortadaHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.ortada}</span>
                     </button>
-                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.sondaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" aria-label="${esc(m.sondaHali)}: ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}" title="${esc(m.sondaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.sondaHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.sonda}</span>
                     </button>
@@ -715,7 +751,7 @@ export async function veliPortali(): Promise<void> {
                       ${HAREKELER.map((hrk) => {
                         const birlesik = seciliHarf.harf + hrk.isaret;
                         return `
-                          <button type="button" class="hareke-kutu" data-eylem="harekeSesCal" data-harf="${birlesik}" title="${esc(hrk.ad[dil] || hrk.ad.tr)} — ${esc(hrk.aciklama[dil] || hrk.aciklama.tr)}">
+                          <button type="button" class="hareke-kutu" data-eylem="harekeSesCal" data-harf="${birlesik}" aria-label="${esc(hrk.ad[dil] || hrk.ad.tr)}: ${esc(birlesik)} (${esc(hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr)})" title="${esc(hrk.ad[dil] || hrk.ad.tr)} — ${esc(hrk.aciklama[dil] || hrk.aciklama.tr)}">
                             <span class="hareke-ad">${esc(hrk.ad[dil] || hrk.ad.tr)}</span>
                             <span class="hareke-harf" lang="ar" dir="rtl">${birlesik}</span>
                             <span class="hareke-ses-ipucu">${esc(hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr)}</span>
@@ -750,7 +786,7 @@ export async function veliPortali(): Promise<void> {
                       else sinif += ' pasif-harf';
                     }
                     return `
-                      <button type="button" class="${sinif}" data-eylem="kulakSecim" data-harf-id="${h.id}" ${d.kulakCevaplandi ? 'disabled' : ''} title="${d.kulakCevaplandi ? esc(h.ad[dil] || h.ad.tr) : ''}">
+                      <button type="button" class="${sinif}" data-eylem="kulakSecim" data-harf-id="${h.id}" ${d.kulakCevaplandi ? 'disabled' : ''} aria-label="${esc(h.ad[dil] || h.ad.tr)}" title="${d.kulakCevaplandi ? esc(h.ad[dil] || h.ad.tr) : ''}">
                         <span class="kulak-harf-sekil" lang="ar">${h.harf}</span>
                         ${d.kulakCevaplandi ? `<span class="kulak-harf-ad">${esc(h.ad[dil] || h.ad.tr)}</span>` : ''}
                       </button>
@@ -843,7 +879,7 @@ export async function veliPortali(): Promise<void> {
                   ${basamaklar.map((b, idx) => {
                     const tamam = idx < aktifBasamak;
                     const aktif = idx === aktifBasamak;
-                    return `<button type="button" class="basamak-oge ${tamam ? 'tamamlandi' : ''} ${aktif ? 'aktif-basamak' : ''}" data-eylem="basamakTik" data-tamam="${tamam ? '1' : '0'}" data-basamak-ad="${esc(b)}" title="${esc(b)}">
+                    return `<button type="button" class="basamak-oge ${tamam ? 'tamamlandi' : ''} ${aktif ? 'aktif-basamak' : ''}" data-eylem="basamakTik" data-tamam="${tamam ? '1' : '0'}" data-basamak-ad="${esc(b)}" aria-label="${esc(b)}${tamam ? ' (Tamamlandı)' : aktif ? ' (Mevcut Seviye)' : ' (Kilitli)'}" title="${esc(b)}">
                       <div class="basamak-rozet">
                         ${tamam ? '✓' : aktif ? '⭐' : (idx + 1)}
                       </div>
@@ -863,7 +899,7 @@ export async function veliPortali(): Promise<void> {
               ${bas('yildiz', m.rozetlerim, m.rozetAciklama)}
               <div class="rozet-izgara">
                 ${ile?.rozet ? `
-                  <button type="button" class="rozet-kart kazanildi hoca-ozel-rozet" data-eylem="rozetTik" data-kazanildi="1" data-rozet-ad="${esc(((m.hocaRozetleri as unknown as Record<string, string>) || {})[ile.rozet] || ile.rozet)}">
+                  <button type="button" class="rozet-kart kazanildi hoca-ozel-rozet" data-eylem="rozetTik" data-kazanildi="1" data-rozet-ad="${esc(((m.hocaRozetleri as unknown as Record<string, string>) || {})[ile.rozet] || ile.rozet)}" aria-label="${esc(((m.hocaRozetleri as unknown as Record<string, string>) || {})[ile.rozet] || ile.rozet)} (Kazanıldı)">
                     <div class="rozet-simge rozet-gorselli">
                       <img src="/media/mektep/rozet-yildiz.webp" alt="Hoca Takdiri Rozeti" class="rozet-resim-img" width="56" height="56" />
                     </div>
@@ -871,35 +907,35 @@ export async function veliPortali(): Promise<void> {
                     <p class="kucuk">${esc(m.hocaTakdiriNotu)}</p>
                   </button>
                 ` : ''}
-                <button type="button" class="rozet-kart kazanildi" data-eylem="rozetTik" data-kazanildi="1" data-rozet-ad="${esc(m.rozetListesi.baslangic.ad)}">
+                <button type="button" class="rozet-kart kazanildi" data-eylem="rozetTik" data-kazanildi="1" data-rozet-ad="${esc(m.rozetListesi.baslangic.ad)}" aria-label="${esc(m.rozetListesi.baslangic.ad)} (Kazanıldı)">
                   <div class="rozet-simge rozet-gorselli">
                     <img src="/media/mektep/rozet-yildiz.webp" alt="İlk Adım Rozeti" class="rozet-resim-img" width="56" height="56" />
                   </div>
                   <h4>${esc(m.rozetListesi.baslangic.ad)}</h4>
                   <p class="kucuk">${esc(m.rozetListesi.baslangic.aciklama)}</p>
                 </button>
-                <button type="button" class="rozet-kart ${aktifBasamak >= 1 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${aktifBasamak >= 1 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.elifba.ad)}">
+                <button type="button" class="rozet-kart ${aktifBasamak >= 1 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${aktifBasamak >= 1 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.elifba.ad)}" aria-label="${esc(m.rozetListesi.elifba.ad)} (${aktifBasamak >= 1 ? 'Kazanıldı' : 'Kilitli'})">
                   <div class="rozet-simge rozet-gorselli">
                     ${aktifBasamak >= 1 ? '<img src="/media/mektep/rozet-kuran.webp" alt="Elifba Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
                   </div>
                   <h4>${esc(m.rozetListesi.elifba.ad)}</h4>
                   <p class="kucuk">${esc(m.rozetListesi.elifba.aciklama)}</p>
                 </button>
-                <button type="button" class="rozet-kart ${yildizSayisi >= 3 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${yildizSayisi >= 3 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.namaz.ad)}">
+                <button type="button" class="rozet-kart ${yildizSayisi >= 3 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${yildizSayisi >= 3 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.namaz.ad)}" aria-label="${esc(m.rozetListesi.namaz.ad)} (${yildizSayisi >= 3 ? 'Kazanıldı' : 'Kilitli'})">
                   <div class="rozet-simge rozet-gorselli">
                     ${yildizSayisi >= 3 ? '<img src="/media/mektep/rozet-ahlak.webp" alt="Namaz Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
                   </div>
                   <h4>${esc(m.rozetListesi.namaz.ad)}</h4>
                   <p class="kucuk">${esc(m.rozetListesi.namaz.aciklama)}</p>
                 </button>
-                <button type="button" class="rozet-kart ${aktifBasamak >= 5 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${aktifBasamak >= 5 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.kuran.ad)}">
+                <button type="button" class="rozet-kart ${aktifBasamak >= 5 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${aktifBasamak >= 5 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.kuran.ad)}" aria-label="${esc(m.rozetListesi.kuran.ad)} (${aktifBasamak >= 5 ? 'Kazanıldı' : 'Kilitli'})">
                   <div class="rozet-simge ${aktifBasamak >= 5 ? 'rozet-gorselli' : ''}">
                     ${aktifBasamak >= 5 ? '<img src="/media/mektep/rozet-hatim.webp" alt="Kur’an Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
                   </div>
                   <h4>${esc(m.rozetListesi.kuran.ad)}</h4>
                   <p class="kucuk">${esc(m.rozetListesi.kuran.aciklama)}</p>
                 </button>
-                <button type="button" class="rozet-kart ${toplamDers >= 2 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${toplamDers >= 2 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.devam.ad)}">
+                <button type="button" class="rozet-kart ${toplamDers >= 2 ? 'kazanildi' : 'kilitli'}" data-eylem="rozetTik" data-kazanildi="${toplamDers >= 2 ? '1' : '0'}" data-rozet-ad="${esc(m.rozetListesi.devam.ad)}" aria-label="${esc(m.rozetListesi.devam.ad)} (${toplamDers >= 2 ? 'Kazanıldı' : 'Kilitli'})">
                   <div class="rozet-simge ${toplamDers >= 2 ? 'rozet-gorselli' : ''}">
                     ${toplamDers >= 2 ? '<img src="/media/mektep/rozet-devam.webp" alt="Devam Rozeti" class="rozet-resim-img" width="56" height="56" />' : '🔒'}
                   </div>
@@ -935,6 +971,10 @@ export async function veliPortali(): Promise<void> {
             </section>
           </div>
         </div>`;
+      if (d.ezberHizi) {
+        const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+        if (audioEl) audioEl.playbackRate = d.ezberHizi;
+      }
     };
 
     if (d.mod === 'ogrenci') {
@@ -1112,6 +1152,7 @@ export async function veliPortali(): Promise<void> {
      düğümü değişir ve odak gövdeye düşerdi; seçili sekmeye geri veriyoruz. */
   const sekmeSec = (i: number, odakla: boolean) => {
     if (!durum) return;
+    tumSesleriDurdur();
     durum.secili = i; panoCiz();
     if (odakla) kok.querySelector<HTMLElement>(`#cocuk-sekme-${i}`)?.focus();
   };
@@ -1178,8 +1219,22 @@ export async function veliPortali(): Promise<void> {
     }
     const hedef = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem], [data-sec]');
     if (!hedef) return;
-    if (hedef.dataset.eylem === 'ogrenciModu' && durum) { durum.mod = 'ogrenci'; panoCiz(); return; }
-    if (hedef.dataset.eylem === 'veliModunaDon' && durum) { durum.mod = 'veli'; panoCiz(); return; }
+    if (hedef.dataset.eylem === 'ogrenciModu' && durum) { pariltiSesiCal(); durum.mod = 'ogrenci'; panoCiz(); return; }
+    if (hedef.dataset.eylem === 'veliModunaDon' && durum) { harfTikSesiCal(); tumSesleriDurdur(); durum.mod = 'veli'; panoCiz(); return; }
+    if (hedef.dataset.eylem === 'hadisSesCal') {
+      harfTikSesiCal();
+      const gh = gununHadisiGetir(bugunISO());
+      const tur = hedef.dataset.hadisTur || 'arapca';
+      tumSesleriDurdur();
+      if (tur === 'arapca') {
+        metinSeslendir(gh.arapca, 'ar-SA');
+      } else {
+        const mealMetin = gh.metin[dil] || gh.metin.tr;
+        const dilKodu = dil === 'fr' ? 'fr-FR' : dil === 'en' ? 'en-US' : 'tr-TR';
+        metinSeslendir(mealMetin, dilKodu);
+      }
+      return;
+    }
     if (hedef.dataset.eylem === 'yildizTik') {
       pariltiSesiCal();
       konfetiPatlat();
@@ -1253,6 +1308,7 @@ export async function veliPortali(): Promise<void> {
       return;
     }
     if (hedef.dataset.eylem === 'kulakSonraki' && durum) {
+      harfTikSesiCal();
       const rastgele = ELIFBA_HARFLERI[Math.floor(Math.random() * ELIFBA_HARFLERI.length)];
       durum.kulakHedefHarfId = rastgele.id;
       const digerleri = ELIFBA_HARFLERI.filter((h) => h.id !== rastgele.id);
@@ -1272,6 +1328,7 @@ export async function veliPortali(): Promise<void> {
       return;
     }
     if (hedef.dataset.eylem === 'harfGrupSec' && durum) {
+      harfTikSesiCal();
       durum.seciliHarfGrup = hedef.dataset.grup as HarfGrup;
       panoCiz();
       return;
@@ -1298,6 +1355,7 @@ export async function veliPortali(): Promise<void> {
       return;
     }
     if (hedef.dataset.eylem === 'ezberHizAyarla' && durum) {
+      harfTikSesiCal();
       const hiz = parseFloat(hedef.dataset.hiz || '1');
       durum.ezberHizi = hiz;
       const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
@@ -1331,6 +1389,7 @@ export async function veliPortali(): Promise<void> {
       return;
     }
     if (hedef.dataset.eylem === 'quizSonraki' && durum) {
+      harfTikSesiCal();
       const sonraki = (durum.quizSoruNo ?? 0) + 1;
       if (sonraki >= QUIZ_SORULARI.length) {
         durum.quizBitti = true;
@@ -1345,6 +1404,7 @@ export async function veliPortali(): Promise<void> {
       return;
     }
     if (hedef.dataset.eylem === 'quizYeniden' && durum) {
+      harfTikSesiCal();
       durum.quizSoruNo = 0;
       durum.quizDogruSayisi = 0;
       durum.quizCevaplandi = false;
@@ -1373,7 +1433,7 @@ export async function veliPortali(): Promise<void> {
       }
       return;
     }
-    if (hedef.dataset.eylem === 'cikis') { await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
+    if (hedef.dataset.eylem === 'cikis') { tumSesleriDurdur(); await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
     if (hedef.dataset.eylem === 'bildirVazgec') { duzenlenenBildirim = null; panoCiz(); return; }
     if (hedef.dataset.eylem === 'atla' && a.currentUser) { await panoyaGec(a.currentUser); return; }
     if (hedef.dataset.eylem === 'sifremiUnuttum') {
@@ -1389,12 +1449,8 @@ export async function veliPortali(): Promise<void> {
   kok.addEventListener('change', async (ev) => {
     const ezberSec = (ev.target as HTMLElement).closest<HTMLSelectElement>('[data-eylem=ezberDegistir]');
     if (ezberSec && durum) {
-      try {
-        kok.querySelectorAll<HTMLAudioElement>('audio').forEach((a) => {
-          a.pause();
-          a.currentTime = 0;
-        });
-      } catch {}
+      harfTikSesiCal();
+      tumSesleriDurdur();
       durum.seciliEzberId = ezberSec.value;
       panoCiz();
       return;
@@ -1550,6 +1606,11 @@ export async function veliPortali(): Promise<void> {
     }
     bagTamamlaEkrani(); return;
   }
+  window.addEventListener('pagehide', tumSesleriDurdur);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) tumSesleriDurdur();
+  });
+
   auth.onAuthStateChanged(a, (user) => {
     if (user) { if (!durum) panoyaGec(user); }
     else { durum = null; girisEkrani(); }
