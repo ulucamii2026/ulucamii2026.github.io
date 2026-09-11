@@ -348,9 +348,17 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .ezber-vitrin { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem; }
   .portal .ezber-baslik-satir { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.8rem; }
   .portal .ezber-arapca { font-family: var(--font-arabic, Amiri, serif); font-size: 1.65rem; line-height: 2.3; text-align: right; direction: rtl; padding: 1.15rem 1.35rem; background: color-mix(in oklab, var(--r-iznik) 8%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--r-iznik) 25%, var(--cizgi)); border-radius: var(--radius-kose); margin: 0.9rem 0; color: var(--metin); word-spacing: 0.15em; }
+  .portal .ezber-arapca.oynuyor { border-color: var(--r-ochre); background: color-mix(in oklab, var(--r-ochre) 14%, var(--zemin)); box-shadow: 0 0 0 3px color-mix(in oklab, var(--r-ochre) 35%, transparent), 0 4px 16px color-mix(in oklab, var(--r-ochre) 20%, transparent); animation: ezber-isilti 2s ease-in-out infinite alternate; }
+  @keyframes ezber-isilti { 0% { box-shadow: 0 0 0 2px color-mix(in oklab, var(--r-ochre) 25%, transparent); } 100% { box-shadow: 0 0 0 4px color-mix(in oklab, var(--r-ochre) 45%, transparent), 0 6px 18px color-mix(in oklab, var(--r-ochre) 30%, transparent); } }
   .portal .ezber-metin-btn { width: 100%; cursor: pointer; transition: transform .15s, background .15s; font: inherit; }
   .portal .ezber-metin-btn:hover { transform: scale(1.005); background: color-mix(in oklab, var(--r-iznik) 14%, var(--zemin)); }
   .portal .ezber-okunus, .portal .ezber-anlam { margin-top: 0.85rem; padding: 0.75rem 0.9rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+  .portal .ezber-anlam-baslik-satir { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .portal .ezber-fr-anlam { border-color: color-mix(in oklab, var(--r-iznik) 30%, var(--cizgi)); background: color-mix(in oklab, var(--r-iznik) 6%, var(--zemin)); }
+  .portal .ezber-tr-anlam { border-color: color-mix(in oklab, var(--r-kiremit) 30%, var(--cizgi)); background: color-mix(in oklab, var(--r-kiremit) 6%, var(--zemin)); }
+  .portal .ezber-fr-ses-btn, .portal .ezber-tr-ses-btn { font-size: 0.74rem; font-weight: 700; padding: 0.22rem 0.6rem; border-radius: var(--radius-kose); cursor: pointer; transition: transform .12s, background .15s; }
+  .portal .ezber-fr-ses-btn:hover, .portal .ezber-tr-ses-btn:hover { transform: scale(1.03); }
+  .portal .ezber-fr-ses-btn.oynuyor, .portal .ezber-tr-ses-btn.oynuyor { background: var(--r-ochre); color: #fff; box-shadow: 0 0 0 2px color-mix(in oklab, var(--r-ochre) 40%, transparent); }
   .portal .ezber-etiket { display: block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); margin-bottom: 0.25rem; }
   .portal .okunus-metin { margin: 0; font-style: italic; font-size: 0.96rem; line-height: 1.6; color: var(--metin); }
   .portal .anlam-metin { margin: 0; font-size: 0.94rem; line-height: 1.6; color: var(--metin); }
@@ -430,9 +438,10 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .konum-harf { font-family: var(--font-arabic, Amiri, serif); font-size: 1.6rem; line-height: 1.2; color: var(--metin); }
   .portal .harekeler-alani { margin-top: 1.15rem; padding-top: 0.95rem; border-top: 1px dashed var(--cizgi); }
   .portal .hareke-blok-baslik { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-etiket); color: var(--metin-2); display: block; margin-bottom: 0.55rem; }
-  .portal .hareke-izgara { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
-  .portal .hareke-kutu { text-align: center; padding: 0.65rem 0.25rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); cursor: pointer; transition: transform .12s, border-color .15s, background .15s; }
+  .portal .hareke-izgara { display: grid; grid-template-columns: repeat(auto-fit, minmax(58px, 1fr)); gap: 0.5rem; }
+  .portal .hareke-kutu { text-align: center; padding: 0.65rem 0.25rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); cursor: pointer; transition: transform .12s, border-color .15s, background .15s, box-shadow .15s; }
   .portal .hareke-kutu:hover { transform: translateY(-2px); border-color: var(--vurgu); background: color-mix(in oklab, var(--vurgu) 10%, var(--zemin)); }
+  .portal .hareke-kutu.oynuyor { transform: scale(1.05); border-color: var(--r-ochre); background: color-mix(in oklab, var(--r-ochre) 18%, var(--zemin)); box-shadow: 0 0 0 3px color-mix(in oklab, var(--r-ochre) 40%, transparent), 0 4px 12px color-mix(in oklab, var(--r-ochre) 25%, transparent); }
   .portal .hareke-ad { display: block; font-size: 0.62rem; font-family: var(--font-mono); font-weight: 700; color: var(--metin-2); margin-bottom: 0.15rem; }
   .portal .hareke-harf { font-family: var(--font-arabic, Amiri, serif); font-size: 1.65rem; line-height: 1.2; color: var(--metin); display: block; }
   .portal .hareke-ses-ipucu { display: block; font-size: 0.65rem; font-weight: 600; color: var(--metin-2); margin-top: 0.15rem; }
@@ -544,6 +553,8 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .kulak-sonuc-kutusu.basarili { background: color-mix(in oklab, var(--r-adacayi) 14%, var(--zemin)); border-color: var(--r-adacayi); }
   .portal .kulak-sonuc-kutusu.tekrar { background: color-mix(in oklab, var(--r-ochre) 14%, var(--zemin)); border-color: var(--r-ochre); }
   .portal .kulak-sonuc-mesaj { margin: 0; font-weight: 700; font-size: 0.98rem; color: var(--metin); }
+  .portal .kulak-sonuc-butonlar { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .portal .kulak-tekrar-btn { padding: 0.55rem 1.1rem; font-weight: 700; cursor: pointer; border-radius: var(--radius-kose); }
   .portal .kulak-sonraki-btn { padding: 0.55rem 1.2rem; font-weight: 700; cursor: pointer; }
 
   /* Dalga animasyonu */
