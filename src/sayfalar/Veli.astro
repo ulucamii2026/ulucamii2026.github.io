@@ -347,14 +347,17 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .ezber-secim { max-width: 22rem; font-weight: 600; }
   .portal .ezber-vitrin { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem; }
   .portal .ezber-baslik-satir { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.8rem; }
-  .portal .ezber-baslik-satir .ez-ad { font-size: 1.2rem; margin: 0; font-family: var(--font-serif); color: var(--metin); }
   .portal .ezber-arapca { font-family: var(--font-arabic, Amiri, serif); font-size: 1.65rem; line-height: 2.3; text-align: right; direction: rtl; padding: 1.15rem 1.35rem; background: color-mix(in oklab, var(--r-iznik) 8%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--r-iznik) 25%, var(--cizgi)); border-radius: var(--radius-kose); margin: 0.9rem 0; color: var(--metin); word-spacing: 0.15em; }
+  .portal .ezber-metin-btn { width: 100%; cursor: pointer; transition: transform .15s, background .15s; font: inherit; }
+  .portal .ezber-metin-btn:hover { transform: scale(1.005); background: color-mix(in oklab, var(--r-iznik) 14%, var(--zemin)); }
   .portal .ezber-okunus, .portal .ezber-anlam { margin-top: 0.85rem; padding: 0.75rem 0.9rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
   .portal .ezber-etiket { display: block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); margin-bottom: 0.25rem; }
   .portal .okunus-metin { margin: 0; font-style: italic; font-size: 0.96rem; line-height: 1.6; color: var(--metin); }
   .portal .anlam-metin { margin: 0; font-size: 0.94rem; line-height: 1.6; color: var(--metin); }
   .portal .ezber-ses-kutusu { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.2rem; flex-wrap: wrap; }
   .portal .ezber-audio { flex: 1; min-width: 14rem; height: 2.6rem; }
+  .portal .ezber-hizli-kumanda { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+  .portal .ezber-kumanda-btn { font-size: 0.78rem; font-weight: 600; padding: 0.35rem 0.65rem; border-radius: var(--radius-kose); }
   .portal .ezber-hiz-secici { display: inline-flex; align-items: center; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: 9999px; padding: 0.2rem; gap: 0.25rem; }
   .portal .hiz-btn { background: transparent; border: none; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; padding: 0.35rem 0.65rem; color: var(--metin-2); cursor: pointer; transition: all .15s ease; }
   .portal .hiz-btn:hover { color: var(--metin); }
@@ -433,6 +436,9 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .hareke-ad { display: block; font-size: 0.62rem; font-family: var(--font-mono); font-weight: 700; color: var(--metin-2); margin-bottom: 0.15rem; }
   .portal .hareke-harf { font-family: var(--font-arabic, Amiri, serif); font-size: 1.65rem; line-height: 1.2; color: var(--metin); display: block; }
   .portal .hareke-ses-ipucu { display: block; font-size: 0.65rem; font-weight: 600; color: var(--metin-2); margin-top: 0.15rem; }
+  .portal .elifba-nav-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed var(--cizgi); }
+  .portal .elifba-nav-btn { font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: var(--radius-kose); cursor: pointer; }
+  .portal .elifba-nav-bilgi { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--metin-2); }
   .portal .rozet-kart.hoca-ozel-rozet { border-color: var(--vurgu-2); background: color-mix(in oklab, var(--vurgu-2) 12%, var(--zemin)); box-shadow: 0 0 0 2px color-mix(in oklab, var(--vurgu-2) 25%, transparent); }
 
   /* Haftalık Quiz */
@@ -506,6 +512,8 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .gunun-harfi-detay { flex: 1; }
   .portal .kesif-baslik { margin: 0 0 0.35rem; font-size: 1.15rem; color: var(--metin); font-weight: 700; }
   .portal .kesif-mahrec { margin: 0; font-size: 0.86rem; line-height: 1.5; color: var(--metin-2); }
+  .portal .kesif-alt-eylem { margin-top: 0.75rem; display: flex; justify-content: flex-end; }
+  .portal .kesif-calis-btn { font-size: 0.76rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-kose); }
   .portal .gunun-hadisi-govde { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.4rem; }
   .portal .hadis-arapca { font-family: var(--font-arabic, Amiri, serif); font-size: 1.22rem; line-height: 1.9; color: var(--metin); background: color-mix(in oklab, var(--r-ochre) 8%, var(--zemin)); padding: 0.65rem 0.9rem; border-radius: var(--radius-kose); border: 1px solid color-mix(in oklab, var(--r-ochre) 25%, var(--cizgi)); }
   .portal .hadis-arapca-btn { width: 100%; text-align: right; cursor: pointer; transition: transform .15s, background .15s, border-color .15s; }

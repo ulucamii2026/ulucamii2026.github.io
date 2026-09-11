@@ -117,6 +117,12 @@ export const VELI_METIN = {
     harikaBildin: 'Harika! Doğru harfi bildin! 🌟 (+1 ⭐)',
     tekrarDeneKulak: 'Tekrar dene! Sesi yeniden dinleyebilirsin.',
     siradakiSoru: 'Sıradaki Harf →',
+    bastanDinle: 'Baştan Dinle 🔄',
+    besSaniyeGeri: '5 sn Geri ⏪',
+    sonrakiHarf: 'Sonraki Harf →',
+    oncekiHarf: '← Önceki Harf',
+    buHarfiCalis: 'Bu Harfi Çalış 🔍',
+    metneDokunDinle: 'Dokunarak dinle veya duraklat',
   },
 
   fr: {
@@ -229,6 +235,12 @@ export const VELI_METIN = {
     harikaBildin: 'Bravo ! Tu as trouvé la bonne lettre ! 🌟 (+1 ⭐)',
     tekrarDeneKulak: 'Réessaie ! Tu peux réécouter le son.',
     siradakiSoru: 'Lettre suivante →',
+    bastanDinle: 'Recommencer 🔄',
+    besSaniyeGeri: '5s en arrière ⏪',
+    sonrakiHarf: 'Lettre suivante →',
+    oncekiHarf: '← Lettre précédente',
+    buHarfiCalis: 'Étudier cette lettre 🔍',
+    metneDokunDinle: 'Touchez pour écouter ou mettre en pause',
   },
 
   en: {
@@ -343,6 +355,12 @@ export const VELI_METIN = {
     harikaBildin: 'Awesome! You found the right letter! 🌟 (+1 ⭐)',
     tekrarDeneKulak: 'Try again! You can listen to the sound again.',
     siradakiSoru: 'Next Letter →',
+    bastanDinle: 'Restart 🔄',
+    besSaniyeGeri: '5s Back ⏪',
+    sonrakiHarf: 'Next Letter →',
+    oncekiHarf: '← Previous Letter',
+    buHarfiCalis: 'Practice this letter 🔍',
+    metneDokunDinle: 'Tap to listen or pause',
   },
 
 } as const;

@@ -517,6 +517,7 @@ export async function veliPortali(): Promise<void> {
       const seciliGrup: HarfGrup = d.seciliHarfGrup || 'hepsi';
       const harfler = seciliGrup === 'hepsi' ? ELIFBA_HARFLERI : ELIFBA_HARFLERI.filter((h) => h.grup === seciliGrup);
       const seciliHarf = ELIFBA_HARFLERI.find((h) => h.id === d.seciliHarfId) || harfler[0] || ELIFBA_HARFLERI[0];
+      const seciliHarfIndex = ELIFBA_HARFLERI.findIndex((h) => h.id === seciliHarf.id);
 
       const gununHarfi = gununHarfiGetir(bugun);
       const gununHadisi = gununHadisiGetir(bugun);
@@ -600,6 +601,11 @@ export async function veliPortali(): Promise<void> {
                       <p class="kesif-mahrec">${esc(gununHarfi.ipucu[dil] || gununHarfi.ipucu.tr)}</p>
                     </div>
                   </div>
+                  <div class="kesif-alt-eylem">
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-calis-btn" data-eylem="gununHarfiniCalis" data-harf-id="${gununHarfi.id}" title="${esc(m.buHarfiCalis)}">
+                      <span>${esc(m.buHarfiCalis)}</span>
+                    </button>
+                  </div>
                 </div>
 
                 <div class="kesif-kutusu gunun-hadisi-kutu">
@@ -645,9 +651,9 @@ export async function veliPortali(): Promise<void> {
                   <span class="rozet ${seciliEzber.tur === 'sure' ? 'ogrendi' : 'gec'}">${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : 'Kur’an Sûresi') : (dil === 'fr' ? 'Invocation' : 'Namaz Duası')}</span>
                 </div>
 
-                <div class="ezber-arapca" dir="rtl" lang="ar">
+                <button type="button" class="ezber-arapca ezber-metin-btn" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
                   ${esc(seciliEzber.arapca)}
-                </div>
+                </button>
 
                 <div class="ezber-okunus">
                   <span class="ezber-etiket">${dil === 'fr' ? 'Prononciation :' : dil === 'en' ? 'Transliteration:' : 'Okunuş:'}</span>
@@ -663,6 +669,14 @@ export async function veliPortali(): Promise<void> {
                   <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}">
                     Tarayıcınız ses oynatmayı desteklemiyor.
                   </audio>
+                  <div class="ezber-hizli-kumanda" role="group" aria-label="Ses Kumandası">
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-kumanda-btn" data-eylem="ezberBastan" title="${esc(m.bastanDinle)}">
+                      ${esc(m.bastanDinle)}
+                    </button>
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-kumanda-btn" data-eylem="ezberGeriSar" title="${esc(m.besSaniyeGeri)}">
+                      ${esc(m.besSaniyeGeri)}
+                    </button>
+                  </div>
                   <div class="ezber-hiz-secici" role="group" aria-label="Okuma Hızı">
                     <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 0.8 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="0.8" title="${esc(m.yavasDinle)}">
                       ${esc(m.yavasDinle)}
@@ -759,6 +773,16 @@ export async function veliPortali(): Promise<void> {
                         `;
                       }).join('')}
                     </div>
+                  </div>
+
+                  <div class="elifba-nav-bar">
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme elifba-nav-btn" data-eylem="harfOnceki" title="${esc(m.oncekiHarf)}">
+                      ${esc(m.oncekiHarf)}
+                    </button>
+                    <span class="elifba-nav-bilgi">${seciliHarfIndex + 1} / ${ELIFBA_HARFLERI.length}</span>
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme elifba-nav-btn" data-eylem="harfSonraki" title="${esc(m.sonrakiHarf)}">
+                      ${esc(m.sonrakiHarf)}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1270,6 +1294,46 @@ export async function veliPortali(): Promise<void> {
       harfSeslendir(gh.harf, gh.id);
       return;
     }
+    if (hedef.dataset.eylem === 'gununHarfiniCalis' && durum) {
+      harfTikSesiCal();
+      const hid = hedef.dataset.harfId;
+      if (hid) {
+        durum.seciliHarfId = hid;
+        durum.seciliHarfGrup = 'hepsi';
+        panoCiz();
+        const h = ELIFBA_HARFLERI.find((x) => x.id === hid);
+        if (h) harfSeslendir(h.harf, h.id);
+        kok.querySelector('.elifba-tahtasi-kart')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberSesOynatDur') {
+      harfTikSesiCal();
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) {
+        if (audioEl.paused) audioEl.play().catch(() => {});
+        else audioEl.pause();
+      }
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberBastan') {
+      harfTikSesiCal();
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) {
+        audioEl.currentTime = 0;
+        audioEl.play().catch(() => {});
+      }
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberGeriSar') {
+      harfTikSesiCal();
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) {
+        audioEl.currentTime = Math.max(0, audioEl.currentTime - 5);
+        if (audioEl.paused) audioEl.play().catch(() => {});
+      }
+      return;
+    }
     if (hedef.dataset.eylem === 'kulakSesiCal' && durum) {
       harfTikSesiCal();
       const hedefId = durum.kulakHedefHarfId;
@@ -1352,6 +1416,28 @@ export async function veliPortali(): Promise<void> {
       harfTikSesiCal();
       const harf = hedef.dataset.harf || '';
       if (harf) harfSeslendir(harf);
+      return;
+    }
+    if (hedef.dataset.eylem === 'harfOnceki' && durum) {
+      harfTikSesiCal();
+      const currId = durum.seciliHarfId || 'elif';
+      const currIdx = ELIFBA_HARFLERI.findIndex((h) => h.id === currId);
+      const prevIdx = (currIdx - 1 + ELIFBA_HARFLERI.length) % ELIFBA_HARFLERI.length;
+      const yeniHarf = ELIFBA_HARFLERI[prevIdx];
+      durum.seciliHarfId = yeniHarf.id;
+      panoCiz();
+      harfSeslendir(yeniHarf.harf, yeniHarf.id);
+      return;
+    }
+    if (hedef.dataset.eylem === 'harfSonraki' && durum) {
+      harfTikSesiCal();
+      const currId = durum.seciliHarfId || 'elif';
+      const currIdx = ELIFBA_HARFLERI.findIndex((h) => h.id === currId);
+      const nextIdx = (currIdx + 1) % ELIFBA_HARFLERI.length;
+      const yeniHarf = ELIFBA_HARFLERI[nextIdx];
+      durum.seciliHarfId = yeniHarf.id;
+      panoCiz();
+      harfSeslendir(yeniHarf.harf, yeniHarf.id);
       return;
     }
     if (hedef.dataset.eylem === 'ezberHizAyarla' && durum) {
