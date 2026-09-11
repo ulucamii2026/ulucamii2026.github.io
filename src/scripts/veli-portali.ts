@@ -400,6 +400,8 @@ export async function veliPortali(): Promise<void> {
     cikis: '<path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8"/><path d="M17 8l4 4-4 4M9.5 12H21"/>',
     kalem: '<path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.83-2.83L5 17.5z"/><path d="M14 7l3 3"/>',
     geri: '<path d="M9 7L4 12l5 5"/><path d="M4 12h11a5 5 0 0 1 0 10h-1.5"/>',
+    paylas: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>',
+    ates: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
   };
   const simge = (ad: string) => `<svg class="simge" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${SIMGELER[ad] || ''}</svg>`;
   const monogramHarfleri = (ad: string, soyad: string) => {
@@ -412,6 +414,51 @@ export async function veliPortali(): Promise<void> {
     let hash = 0;
     for (let i = 0; i < (ref || '').length; i++) hash = (hash + ref.charCodeAt(i)) % renkler.length;
     return renkler[hash];
+  };
+
+  const gunlukSeriGuncelle = (ref: string): number => {
+    try {
+      const anahtar = `mektep_seri_${ref}`;
+      const sonTarihAnahtar = `mektep_seri_tarih_${ref}`;
+      const bugun = bugunISO();
+      const sonGiris = localStorage.getItem(sonTarihAnahtar);
+      let seri = parseInt(localStorage.getItem(anahtar) || '0', 10);
+      if (sonGiris === bugun) {
+        return Math.max(1, seri);
+      }
+      if (sonGiris) {
+        const dun = gunEkle(bugun, -1);
+        if (sonGiris === dun) {
+          seri += 1;
+        } else {
+          seri = 1;
+        }
+      } else {
+        seri = 1;
+      }
+      localStorage.setItem(anahtar, String(seri));
+      localStorage.setItem(sonTarihAnahtar, bugun);
+      return seri;
+    } catch {
+      return 1;
+    }
+  };
+
+  const evOnayDurumuGetir = (ref: string, ezberId: string): boolean => {
+    try {
+      return localStorage.getItem(`ev_onay_${ref}_${ezberId}`) === '1';
+    } catch {
+      return false;
+    }
+  };
+
+  const evOnayiKaydet = (ref: string, ezberId: string): boolean => {
+    try {
+      localStorage.setItem(`ev_onay_${ref}_${ezberId}`, '1');
+      return true;
+    } catch {
+      return false;
+    }
   };
   const bosDurum = (ikon: string, metin: string) => `<p class="bos">${simge(ikon)}<span>${esc(metin)}</span></p>`;
 
@@ -632,6 +679,7 @@ export async function veliPortali(): Promise<void> {
       const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
       let yildizSayisi = 0;
       try { yildizSayisi = Number(localStorage.getItem(yildizKey) || '0'); } catch {}
+      const gunlukSeri = o ? gunlukSeriGuncelle(o.ref) : 1;
 
       kok.innerHTML = `
         <div class="ogrenci-pano">
@@ -650,6 +698,11 @@ export async function veliPortali(): Promise<void> {
                 </div>
               </div>
               <div class="ogrenci-eylemler">
+                <div class="seri-sayac-kutusu" title="${esc(m.gunlukSeriMotto)}">
+                  <span class="seri-ikon" aria-hidden="true">🔥</span>
+                  <span class="seri-sayi">${gunlukSeri}</span>
+                  <span class="seri-etiket">${esc(yerlestir(m.gunlukMektepSerisi, { gun: gunlukSeri }))}</span>
+                </div>
                 <button type="button" class="yildiz-sayac yildiz-sayac-btn" data-eylem="yildizTik" title="${esc(m.tekrarSayisi)}">
                   <span class="yildiz-ikon" aria-hidden="true">⭐</span>
                   <span class="yildiz-sayi" data-yildiz-goster>${yildizSayisi}</span>
@@ -807,6 +860,17 @@ export async function veliPortali(): Promise<void> {
                   <button type="button" class="dugme dugme-birincil tekrar-btn" data-eylem="tekrarEttim" data-ezber="${seciliEzber.id}">
                     ✨ ${esc(m.tekrarEttim)}
                   </button>
+                  <div class="veli-ev-onay-kutu">
+                    ${o && evOnayDurumuGetir(o.ref, seciliEzber.id)
+                      ? `<div class="veli-onaylandi-rozet" title="${esc(m.veliEvOnaylandi)}">
+                          <span class="onay-tik" aria-hidden="true">✔️</span>
+                          <span>${esc(m.veliEvOnaylandi)}</span>
+                        </div>`
+                      : `<button type="button" class="dugme dugme-ikincil veli-onay-btn" data-eylem="veliEvOnay" data-ezber="${seciliEzber.id}" title="${esc(m.veliEvOnayi)}">
+                          👨‍👩‍👧 <span>${esc(m.veliEvOnayi)}</span>
+                        </button>`
+                    }
+                  </div>
                 </div>
                 <p class="kutlama-mesaji" data-kutlama hidden></p>
               </div>
@@ -1167,6 +1231,73 @@ export async function veliPortali(): Promise<void> {
         </div>
       </section>`;
     };
+
+    /* Haftalık Mektep Karnesi (Snapshot Card) */
+    const haftalikKarneKarti = () => {
+      if (!o) return '';
+      const sonYoklama = yk.length ? yk[yk.length - 1] : null;
+      const sonYoklamaDersler = sonYoklama ? dersDurumlari(sonYoklama) : [];
+      const varSayisi = sonYoklamaDersler.filter((d) => d.durum === 'var').length;
+      const yoklamaMetni = sonYoklama
+        ? `${tarihYaz(sonYoklama.tarih)}: ${varSayisi}/${sonYoklamaDersler.length || 3} ${m.durum.var}`
+        : m.yoklamaYok;
+
+      const buHaftaKonu = haftaGunleri.length && haftaGunleri[0].dersler.length
+        ? haftaGunleri[0].dersler.map((d) => d.konu).join(', ')
+        : (haftaOdev?.odev ? cok(haftaOdev.odev) : 'Temel Dinî Bilgiler ve Kur’an-ı Kerim');
+
+      const ezberHedefi = haftaOdev?.ezber
+        ? cok(haftaOdev.ezber)
+        : (haftaGunleri.length && haftaGunleri[0].dersler.some((d) => d.ezber.length)
+          ? haftaGunleri[0].dersler.flatMap((d) => d.ezber).join(', ')
+          : 'Haftalık sûre tekrarı');
+
+      const hocaGorus = ile?.hocaNotu || (c && c.notlar.length ? c.notlar[c.notlar.length - 1].metin : '');
+
+      const paylasMesaji = encodeURIComponent(
+        `🌟 *${o.ad} ${o.soyad} — Haftalık Mektep Karnesi*\n` +
+        `📅 *Devam:* ${yoklamaMetni}\n` +
+        `📖 *Ders Konusu:* ${buHaftaKonu}\n` +
+        `🎯 *Ezber:* ${ezberHedefi}\n` +
+        (hocaGorus ? `💬 *Hocanın Notu:* ${hocaGorus}\n` : '') +
+        `\n🕌 Marche-en-Famenne Ulu Camii Mektebi`
+      );
+
+      return `<section class="bolum r-iznik oncelik genis haftalik-karne-kart">
+        <div class="karne-baslik-satir">
+          <div class="karne-baslik-sol">
+            <span class="karne-simge" aria-hidden="true">🌟</span>
+            <div>
+              <h3 style="margin:0;font-size:1.15rem">${esc(m.haftalikKarne)}</h3>
+              <p class="kucuk" style="margin:0">${esc(m.haftalikKarneAciklama)}</p>
+            </div>
+          </div>
+          <a href="https://api.whatsapp.com/send?text=${paylasMesaji}" target="_blank" rel="noopener" class="dugme dugme-ikincil kucuk-dugme whatsapp-paylas-btn" title="${esc(m.ailecePaylas)}">
+            ${simge('paylas')}<span>${esc(m.ailecePaylas)}</span>
+          </a>
+        </div>
+
+        <div class="karne-izgara">
+          <div class="karne-hucre">
+            <span class="karne-etiket">${simge('takvim')}<span>${esc(m.haftalikYoklamaDurumu)}</span></span>
+            <p class="karne-deger">${esc(yoklamaMetni)}</p>
+          </div>
+          <div class="karne-hucre">
+            <span class="karne-etiket">${simge('kitap')}<span>${esc(m.haftalikDersKonusu)}</span></span>
+            <p class="karne-deger" lang="tr">${esc(buHaftaKonu)}</p>
+          </div>
+          <div class="karne-hucre">
+            <span class="karne-etiket">${simge('yildiz')}<span>${esc(m.haftalikEzberHedefi)}</span></span>
+            <p class="karne-deger" lang="tr">${esc(ezberHedefi)}</p>
+          </div>
+          ${hocaGorus ? `<div class="karne-hucre genis-hucre">
+            <span class="karne-etiket">${simge('not')}<span>${esc(m.hocaNotu)}</span></span>
+            <p class="karne-deger hoca-not-deger">${esc(hocaGorus)}</p>
+          </div>` : ''}
+        </div>
+      </section>`;
+    };
+
     const duzen = duzenlenenBildirim ? d.bildirimler.find((b) => b.id === duzenlenenBildirim) || null : null;
     // Mazeret düzenlenirken orijinal tarih gelecek penceresinin dışına düşmüşse seçeneklerin başına
     // eklenir; yoksa hiçbir <option> selected olmaz, tarayıcı sessizce ilk günü gösterir ve kaydeder.
@@ -1195,6 +1326,7 @@ export async function veliPortali(): Promise<void> {
         ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}"><span class="sekme-avatar ${monogramSinifi(x.ref)}" aria-hidden="true">${esc(monogramHarfleri(x.ad, x.soyad))}</span>${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
       <div class="bolumler"${d.ogrenciler.length > 1 ? ` role="tabpanel" id="cocuk-panel" aria-labelledby="cocuk-sekme-${d.secili}"` : ''}>
+        ${haftalikKarneKarti()}
         ${kitapKarti()}
         <section class="bolum r-iznik oncelik genis">
           ${bas('kitap', m.buHafta, `${tarihYaz(pzt)} – ${tarihYaz(paz)}${haftaGunleri[0] ? ' · ' + yerlestir(m.hafta, { n: haftaGunleri[0].hafta }) : ''}`)}
@@ -1411,6 +1543,23 @@ export async function veliPortali(): Promise<void> {
         kutlamaEl.textContent = (kazandi ? '🏅 ' : '🔒 ') + rozetAd + (kazandi ? (dil === 'fr' ? ' — Félicitations !' : dil === 'en' ? ' — Well done!' : ' — Tebrikler!') : (dil === 'fr' ? ' — Continue tes efforts !' : dil === 'en' ? ' — Keep going!' : ' — Yakında kazanacaksın!'));
         kutlamaEl.hidden = false;
         setTimeout(() => { if (kutlamaEl) kutlamaEl.hidden = true; }, 3500);
+      }
+      return;
+    }
+    if (hedef.dataset.eylem === 'veliEvOnay' && durum) {
+      const ezberId = hedef.dataset.ezber;
+      const ogrenci = durum.ogrenciler[durum.secili];
+      if (ogrenci && ezberId) {
+        evOnayiKaydet(ogrenci.ref, ezberId);
+        pariltiSesiCal();
+        konfetiPatlat();
+        const kutlamaEl = kok.querySelector<HTMLElement>('[data-kutlama]');
+        if (kutlamaEl) {
+          kutlamaEl.textContent = `👨‍👩‍👧 ${m.veliEvOnayiTebrik}`;
+          kutlamaEl.hidden = false;
+          setTimeout(() => { if (kutlamaEl) kutlamaEl.hidden = true; }, 3500);
+        }
+        panoCiz();
       }
       return;
     }

@@ -23,7 +23,7 @@ export default defineConfig({
   webServer: {
     command: 'node scripts/test-onizle.mjs',
     url: 'http://127.0.0.1:4401/tr/',
-    reuseExistingServer: false,
+    reuseExistingServer: true,
     timeout: 30_000,
   },
 });

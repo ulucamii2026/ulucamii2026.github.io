@@ -217,7 +217,12 @@ export async function hocaEkrani(): Promise<void> {
         const ezberBu = ezberListesi.filter((e) => (ezberHaftasi[e] ?? 99) <= buHafta || Boolean((ile.ezber || {})[e]));
         const ezberSonra = ezberListesi.filter((e) => !ezberBu.includes(e));
         govde += `<section class="bolum" id="ogrenci-karti">
-          <h2>${simge('ogrenci')}${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
+            <h2 style="margin:0">${simge('ogrenci')}${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
+            <button type="button" class="dugme dugme-ikincil kucuk-dugme" data-eylem="whatsappKarneKopyala" data-ogr="${esc(o.ref)}">
+              📱 WhatsApp Karnesi Kopyala
+            </button>
+          </div>
           <form data-form="ogrenciAyar" class="izgara-3">
             <label>Durum<select name="durum">${secenekler({ aktif: 'Aktif', pasif: 'Pasif' }, o.durum === 'pasif' ? 'pasif' : 'aktif')}</select></label>
             <label>Grup / sınıf<input type="text" name="grup" value="${esc(o.grup || '')}" maxlength="40"></label>
@@ -427,6 +432,32 @@ export async function hocaEkrani(): Promise<void> {
         await b.commit(); ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
       }
       if (el.dataset.ogr) { kok.querySelector('#ogrenci-karti')?.remove(); await ogrenciYukle(el.dataset.ogr); ciz(); kok.querySelector('#ogrenci-karti')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+      if (el.dataset.eylem === 'whatsappKarneKopyala') {
+        const ref = el.dataset.ogr;
+        const ogr = S?.ogrenciler.find((x) => x.ref === ref);
+        if (!ogr) return;
+        const ile = S?.ilerleme || {};
+        const kuranKonu = ile.kuranAdim != null && kuranSirasi[ile.kuranAdim] ? kuranSirasi[ile.kuranAdim].konu : '—';
+        const ezberler = ile.ezber ? Object.entries(ile.ezber).filter(([_, v]) => v === 'ogrendi' || v === 'tekrar').map(([k, v]) => `${k} (${EZBER_DURUM[v] || v})`).join(', ') : '—';
+        const rozetAd = ile.rozet ? ({ yildiz: '⭐ Haftanın Yıldız Talebesi', ezber: '📖 Ezber & Sûre Şampiyonu', ahlak: '🌸 Güzel Ahlâk ve Nezaket', gayret: '🏆 Üstün Gayret ve Azim', devam: '🏅 Düzenli Devam ve Disiplin' } as Record<string, string>)[ile.rozet] || ile.rozet : '';
+        const hocaNot = ile.hocaNotu || '';
+
+        const karneMetni =
+          `🌟 *${ogr.ad} ${ogr.soyad} — Mektep Durum Özeti*\n` +
+          `📖 *Kur’an:* ${kuranKonu}\n` +
+          `🎯 *Ezber & Sûre:* ${ezberler}\n` +
+          (rozetAd ? `🏅 *Tebrik Rozeti:* ${rozetAd}\n` : '') +
+          (hocaNot ? `💬 *Hoca Notu:* ${hocaNot}\n` : '') +
+          `\n🕌 Marche-en-Famenne Ulu Camii Mektebi`;
+
+        try {
+          await navigator.clipboard.writeText(karneMetni);
+          ustMesaj(`${ogr.ad} ${ogr.soyad} için WhatsApp karnesi panoya kopyalandı!`, 'basari');
+        } catch {
+          window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(karneMetni)}`, '_blank');
+        }
+        return;
+      }
       if (el.dataset.sil) { if (!confirm('Silinsin mi?')) return; await fs.deleteDoc(fs.doc(db, el.dataset.sil, el.dataset.id!));
         if (S.sekme === 'ogrenci') await ogrenciYukle(S.secili); else await sekmeYukle(S.sekme); ciz(); ustMesaj('Silindi.', 'basari'); return; }
       if (el.dataset.yayin) { await fs.updateDoc(fs.doc(db, el.dataset.yayin, el.dataset.id!), { yayin: el.dataset.deger === '1' }); await sekmeYukle(S.sekme); ciz(); return; }

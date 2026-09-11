@@ -564,6 +564,34 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .dalga-animasyon span:nth-child(3) { animation-delay: 0.6s; }
   @keyframes sesDalga { 0% { height: 25%; } 100% { height: 100%; } }
 
+  /* Haftalık Mektep Karnesi (Snapshot Card) */
+  .portal .haftalik-karne-kart { border-left: 4px solid var(--r-iznik); }
+  .portal .karne-baslik-satir { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  .portal .karne-baslik-sol { display: flex; align-items: center; gap: 0.65rem; }
+  .portal .karne-simge { font-size: 1.5rem; }
+  .portal .whatsapp-paylas-btn { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 700; color: #15803d; border-color: rgba(22, 163, 74, 0.35); background: color-mix(in oklab, #16a34a 10%, var(--zemin)); }
+  .portal .whatsapp-paylas-btn:hover { background: color-mix(in oklab, #16a34a 18%, var(--zemin)); border-color: #16a34a; }
+  .portal .karne-izgara { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  @media (max-width: 768px) { .portal .karne-izgara { grid-template-columns: 1fr; } }
+  .portal .karne-hucre { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 0.85rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .portal .karne-hucre.genis-hucre { grid-column: 1 / -1; }
+  .portal .karne-etiket { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--metin-2); display: flex; align-items: center; gap: 0.35rem; }
+  .portal .karne-deger { margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--metin); }
+  .portal .hoca-not-deger { font-style: italic; color: var(--metin); }
+
+  /* Günlük Mektep Çalışma Serisi (Streak Counter) */
+  .portal .seri-sayac-kutusu { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; border-radius: 9999px; background: color-mix(in oklab, #ea580c 12%, var(--zemin)); border: 1px solid color-mix(in oklab, #ea580c 35%, var(--cizgi)); color: #c2410c; font-weight: 700; font-size: 0.88rem; }
+  [data-tema="koyu"] .portal .seri-sayac-kutusu,
+  :root[data-theme="dark"] .portal .seri-sayac-kutusu { background: color-mix(in oklab, #fb923c 20%, var(--zemin)); border-color: color-mix(in oklab, #fb923c 45%, var(--cizgi)); color: #fdba74; }
+  .portal .seri-ikon { font-size: 1.15rem; }
+  .portal .seri-sayi { font-weight: 800; font-size: 1rem; }
+  .portal .seri-etiket { font-size: 0.82rem; }
+
+  /* Veli Ev Onayı */
+  .portal .veli-ev-onay-kutu { display: inline-flex; align-items: center; margin-top: 0.5rem; }
+  .portal .veli-onay-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.84rem; font-weight: 700; border-radius: var(--radius-kose); }
+  .portal .veli-onaylandi-rozet { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.85rem; border-radius: var(--radius-kose); background: color-mix(in oklab, var(--r-adacayi) 16%, var(--zemin)); border: 1px solid var(--r-adacayi); color: var(--r-adacayi); font-weight: 700; font-size: 0.86rem; }
+
   /* Konfeti Yağmuru Efekti */
   .portal .konfeti-alani { position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden; }
   .portal .konfeti-parcacik { position: absolute; top: -14px; width: 11px; height: 16px; border-radius: 2px; opacity: 0.95; animation: konfetiDusus linear forwards; }

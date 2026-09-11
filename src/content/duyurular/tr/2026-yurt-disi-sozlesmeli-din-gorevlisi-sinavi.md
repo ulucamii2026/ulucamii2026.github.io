@@ -126,6 +126,6 @@ Sınav başvuru kılavuzunu ve istihdam edilecek ülkelerin resmî listesini do�
 * **Din Görevlisi:** [+32 471 79 46 82](tel:+32471794682) · [imam@ulucamii.be](mailto:imam@ulucamii.be)
 * **Cami Yönetimi:** [+32 472 98 50 73](tel:+32472985073) · [info@ulucamii.be](mailto:info@ulucamii.be)
 * **Brüksel Din Hizmetleri Müşavirliği:** Rue Montoyer 4, 1000 Bruxelles
-* **DİB Dış İlişkiler Genel Müdürlüğü:** [disiliskiler.diyanet.gov.tr](https://disiliskiler.diyanet.gov.tr) · Tel: +90 (312) 295 75 83 / 80 70
+* **DİB Dış İlişkiler Genel Müdürlüğü:** [disiliskiler.diyanet.gov.tr](https://disiliskiler.diyanet.gov.tr) · Tel: +90 (312) 295 75 82 / 295 75 83
 
 Niyeti ve gayreti olan tüm adaylarımıza muvaffakiyetler dileriz.
