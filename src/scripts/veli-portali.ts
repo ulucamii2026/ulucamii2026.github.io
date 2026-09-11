@@ -82,10 +82,11 @@ export async function veliPortali(): Promise<void> {
     'dal': 'dal', 'zel': 'zel', 'ra': 'ra', 'ze': 'ze', 'sin': 'sin', 'sin2': 'sin2', 'sad': 'sad',
     'dad': 'dad', 'ti': 'ti', 'zi': 'zi', 'ayn': 'ayn', 'gayn': 'gayn', 'fe': 'fe', 'kaf': 'kaf',
     'kef': 'kef', 'lam': 'lam', 'mim': 'mim', 'nun': 'nun', 'vav': 'vav', 'he': 'he', 'ye': 'ye',
+    'shin': 'sin2', 'şin': 'sin2',
     'ا': 'elif', 'ب': 'be', 'ت': 'te', 'ث': 'se', 'ج': 'cim', 'ح': 'ha', 'خ': 'hi',
     'د': 'dal', 'ذ': 'zel', 'ر': 'ra', 'ز': 'ze', 'س': 'sin', 'ش': 'sin2', 'ص': 'sad',
     'ض': 'dad', 'ط': 'ti', 'ظ': 'zi', 'ع': 'ayn', 'غ': 'gayn', 'ف': 'fe', 'ق': 'kaf',
-    'ك': 'kef', 'ل': 'lam', 'م': 'mim', 'ن': 'nun', 'و': 'vav', 'ه': 'he', 'ي': 'ye',
+    'ك': 'kef', 'ل': 'lam', 'م': 'mim', 'ن': 'nun', 'و': 'vav', 'ه': 'he', 'هـ': 'he', 'ي': 'ye', 'ى': 'ye',
   };
 
   let aktifAudio: HTMLAudioElement | null = null;
@@ -96,6 +97,17 @@ export async function veliPortali(): Promise<void> {
         if (!a.paused) a.pause();
       });
     } catch {}
+
+    // Harekeli harf seslendiriliyorsa doğrudan fonetik okunuşa git (harf ismini çalma)
+    const harekeliMi = /[\u064B-\u0652]/.test(harfMetni);
+    if (harekeliMi) {
+      if (aktifAudio) {
+        aktifAudio.pause();
+        aktifAudio.currentTime = 0;
+      }
+      sesliFallback(harfMetni);
+      return;
+    }
 
     const sesId = harfId || HARF_SES_HARITASI[harfMetni] || HARF_SES_HARITASI[harfMetni[0]];
     if (sesId) {
@@ -122,7 +134,10 @@ export async function veliPortali(): Promise<void> {
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(metin);
       u.lang = 'ar-SA';
-      u.rate = 0.8;
+      u.rate = 0.75;
+      const sesler = window.speechSynthesis.getVoices();
+      const arapcaSes = sesler.find((v) => v.lang && v.lang.toLowerCase().startsWith('ar'));
+      if (arapcaSes) u.voice = arapcaSes;
       window.speechSynthesis.speak(u);
     }
   };
@@ -286,7 +301,7 @@ export async function veliPortali(): Promise<void> {
       kitapSecim?: Record<string, { secim: string; zaman: string }> }; ogrenciler: Ogrenci[]; secili: number;
     mod?: 'veli' | 'ogrenci'; seciliEzberId?: string;
     seciliHarfGrup?: HarfGrup; seciliHarfId?: string;
-    quizSoruNo?: number; quizCevaplandi?: boolean; quizSecilenIndex?: number | null; quizBitti?: boolean;
+    quizSoruNo?: number; quizDogruSayisi?: number; quizCevaplandi?: boolean; quizSecilenIndex?: number | null; quizBitti?: boolean;
     odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[] }> };
   let durum: Durum | null = null;
   let duzenlenenBildirim: string | null = null; // veli bir gönderdiği mesajı düzenliyorsa id'si
@@ -556,6 +571,9 @@ export async function veliPortali(): Promise<void> {
                       <img src="/media/mektep/quiz-basari.webp" alt="Başarı Kupası" class="quiz-basari-resim" width="340" height="230" />
                     </div>
                     <h3 class="quiz-bitti-baslik">${esc(m.haftaninTestiBitti)}</h3>
+                    <div class="quiz-skor-serit">
+                      <span class="quiz-skor-rozeti">🎯 ${d.quizDogruSayisi ?? toplamSoru} / ${toplamSoru} ${dil === 'fr' ? 'Bonnes réponses' : dil === 'en' ? 'Correct answers' : 'Doğru Cevap'}</span>
+                    </div>
                     <p class="quiz-bitti-metin">${esc(m.haftaninTestiNot)}</p>
                     <div class="quiz-eylem-satir" style="justify-content:center;margin-top:1.2rem">
                       <button type="button" class="dugme dugme-birincil" data-eylem="quizYeniden">
@@ -977,6 +995,7 @@ export async function veliPortali(): Promise<void> {
       const aktifSoru = QUIZ_SORULARI[soruNo % QUIZ_SORULARI.length];
       if (secilenIdx === aktifSoru.dogruCevapIndex) {
         kutlamaSesiCal();
+        durum.quizDogruSayisi = (durum.quizDogruSayisi || 0) + 1;
         const o = durum.ogrenciler[durum.secili];
         const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
         try {
@@ -1002,6 +1021,7 @@ export async function veliPortali(): Promise<void> {
     }
     if (hedef.dataset.eylem === 'quizYeniden' && durum) {
       durum.quizSoruNo = 0;
+      durum.quizDogruSayisi = 0;
       durum.quizCevaplandi = false;
       durum.quizSecilenIndex = null;
       durum.quizBitti = false;
@@ -1043,6 +1063,12 @@ export async function veliPortali(): Promise<void> {
   kok.addEventListener('change', async (ev) => {
     const ezberSec = (ev.target as HTMLElement).closest<HTMLSelectElement>('[data-eylem=ezberDegistir]');
     if (ezberSec && durum) {
+      try {
+        kok.querySelectorAll<HTMLAudioElement>('audio').forEach((a) => {
+          a.pause();
+          a.currentTime = 0;
+        });
+      } catch {}
       durum.seciliEzberId = ezberSec.value;
       panoCiz();
       return;

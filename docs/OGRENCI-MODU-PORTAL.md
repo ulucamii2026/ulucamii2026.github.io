@@ -45,3 +45,10 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 
 ## 9. Elif-Bâ Klavye & WAI-ARIA Erişilebilirliği
 - 28 harflik Elif-Bâ tahtasında sağ ve sol ok tuşlarıyla (`ArrowLeft`, `ArrowRight`, `ArrowUp`, `ArrowDown`) akıcı gezinim sağlandı. Harf butonları arasında dolaşırken seçili harf anında güncellenir, detaylar açılır ve telaffuz sesi tetiklenir.
+
+## 10. Diyanet Elifba He/Vav Ses Eşleşmesi ve Harekeli Okunuş Ayrımı (Kalıcı Karar)
+- **He ve Vav Sıralaması:** Diyanet Elifba portalında (`kuran.diyanet.gov.tr/elifba`) 26. buton `btn_26.mp3` = **He (هـ)** (14.045 bayt), 27. buton `btn_27.mp3` = **Vav (و)** (18.852 bayt) olarak yer almaktadır. Sıralama farkından doğabilecek ses karmaşası Diyanet resmi kaynak kodundan incelenip `public/media/ses/elifba/he.mp3` ve `vav.mp3` dosyaları Diyanet ile birebir `%100 MATCH` olarak sabitlenmiştir.
+- **Harekeli Kart Fonetiği:** Harf butonuna basıldığında harfin talim ismi (Diyanet MP3) okunurken, altındaki harekeli (üstün, esre, ötre, cezm) kutucuklara tıklandığında harfin yalın ismi DEĞİL, doğrudan harekeli fonetik okunuşu (tarayıcının Arapça ses motoru ile tane tane 0.75x hızında) seslendirilir.
+- **Sûre Seçiminde Ses Temizliği:** Ezber odasında sûre/dua açılır menüsü değiştiğinde sayfadaki tüm aktif sesler anında durdurulur ve başa sarılır (`a.pause(); a.currentTime = 0;`).
+- **Quiz Dinamik Başarı Skoru:** Mini test tamamlandığında talebenin doğru sayısı hesaplanır ve başarı kupasının hemen altında üç dilli dinamik başarı rozeti (`🎯 X / 10 Doğru Cevap` / `Bonnes réponses` / `Correct answers`) sergilenir.
+
