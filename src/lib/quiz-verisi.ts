@@ -230,4 +230,28 @@ export const QUIZ_SORULARI: SoruOgesi[] = [
       en: 'The Holy Quran',
     },
   },
+  {
+    id: 'elifba-harf-sayisi',
+    soru: {
+      tr: 'Kur’ân-ı Kerîm’i okumayı öğrendiğimiz Elif-Bâ alfabesinde kaç temel harf vardır?',
+      fr: 'Combien de lettres fondamentales compte l’alphabet de l’Elif-Ba pour lire le Coran ?',
+      en: 'How many fundamental letters are in the Arabic alphabet (Elif-Ba) to read the Quran?',
+    },
+    secenekler: {
+      tr: ['26 Harf', '28 Harf', '32 Harf'],
+      fr: ['26 Lettres', '28 Lettres', '32 Lettres'],
+      en: ['26 Letters', '28 Letters', '32 Letters'],
+    },
+    dogruCevapIndex: 1,
+    aciklama: {
+      tr: 'Elif-Bâ tahtamızda Elif’ten Ye’ye kadar boğaz, dil ve dudak mahreçlerinden çıkarılan 28 temel harf bulunur.',
+      fr: 'L’alphabet arabe comprend 28 lettres fondamentales, d’Alif jusqu’à Ya, avec leurs règles de prononciation.',
+      en: 'The Arabic alphabet comprises 28 fundamental letters from Alif to Yaa, each with precise articulation points.',
+    },
+    kategori: {
+      tr: 'Elif-Bâ & Tecvîd',
+      fr: 'Elif-Ba & Tajwid',
+      en: 'Elif-Ba & Tajweed',
+    },
+  },
 ];

@@ -104,7 +104,18 @@ export const VELI_METIN = {
       gayret: 'Üstün Gayret ve Azim',
       devam: 'Düzenli Devam ve Disiplin',
     },
+    gununKesfi: 'Günün Keşfi & Nebevî İnciler',
+    gununHarfi: 'Günün Elif-Bâ Harfi',
+    gununHadisi: 'Günün Nebevî Ahlâk Hadisi',
+    kulakTalimi: 'Harf Kulak Talimi (Dinle ve Bul)',
+    kulakTalimiAciklama: 'Diyanet tilavetini dinle, doğru harfi bularak yıldız puanı kazan!',
+    sesiDinle: 'Sesi Dinle',
+    dogruHarfiSec: 'Duyduğun harfi seç:',
+    harikaBildin: 'Harika! Doğru harfi bildin! 🌟 (+1 ⭐)',
+    tekrarDeneKulak: 'Tekrar dene! Sesi yeniden dinleyebilirsin.',
+    siradakiSoru: 'Sıradaki Harf →',
   },
+
   fr: {
     altBaslik: 'Pour les parents des élèves inscrits à l’école coranique : présences, progression, mémorisation et devoirs de la semaine, remarques de l’enseignant et annonces.',
     kisaAd: 'Portail parents',
@@ -202,7 +213,18 @@ export const VELI_METIN = {
       gayret: 'Prix d’Excellence & Persévérance',
       devam: 'Assiduité & Ponctualité',
     },
+    gununKesfi: 'Découverte du jour & Perles Prophétiques',
+    gununHarfi: 'Lettre Elif-Ba du jour',
+    gununHadisi: 'Hadith de bonne moralité du jour',
+    kulakTalimi: 'Entraînement de l’oreille (Écoute et trouve)',
+    kulakTalimiAciklama: 'Écoute la récitation de la Diyanet, trouve la bonne lettre et gagne des étoiles !',
+    sesiDinle: 'Écouter le son',
+    dogruHarfiSec: 'Choisis la lettre entendue :',
+    harikaBildin: 'Bravo ! Tu as trouvé la bonne lettre ! 🌟 (+1 ⭐)',
+    tekrarDeneKulak: 'Réessaie ! Tu peux réécouter le son.',
+    siradakiSoru: 'Lettre suivante →',
   },
+
   en: {
     altBaslik: 'For parents of students enrolled in the Qur’an school: attendance, progress, weekly memorisation and homework, teacher’s notes and announcements.',
     kisaAd: 'Parents’ Portal',
@@ -302,7 +324,18 @@ export const VELI_METIN = {
       gayret: 'High Effort & Dedication',
       devam: 'Exemplary Attendance',
     },
+    gununKesfi: 'Discovery of the Day & Prophetic Pearls',
+    gununHarfi: 'Elif-Ba Letter of the Day',
+    gununHadisi: 'Moral Hadith of the Day',
+    kulakTalimi: 'Listening Ear Training (Listen & Find)',
+    kulakTalimiAciklama: 'Listen to the official Diyanet recitation, pick the right letter and earn bonus stars!',
+    sesiDinle: 'Listen to Sound',
+    dogruHarfiSec: 'Select the letter you heard:',
+    harikaBildin: 'Awesome! You found the right letter! 🌟 (+1 ⭐)',
+    tekrarDeneKulak: 'Try again! You can listen to the sound again.',
+    siradakiSoru: 'Next Letter →',
   },
+
 } as const;
 
 export type VeliMetin = (typeof VELI_METIN)['tr'];

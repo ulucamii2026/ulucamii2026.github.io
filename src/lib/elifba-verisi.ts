@@ -292,16 +292,6 @@ export const ELIFBA_HARFLERI: HarfOgesi[] = [
     ipucu: { tr: 'Dil ucunun üst ön diş etine değmesiyle ve genizden çıkarılan "N" sesidir.', fr: 'N sonore avec légère résonance nasale.', en: 'N sound with slight nasal resonance. Single dot in cup.' },
   },
   {
-    id: 'vav',
-    ad: { tr: 'Vâv', fr: 'Waw', en: 'Waaw' },
-    harf: 'و',
-    basta: 'و',
-    ortada: 'ـو',
-    sonda: 'ـو',
-    grup: 'lam',
-    ipucu: { tr: 'Dudakların ileriye doğru yuvarlanmasıyla çıkarılan "V/W" sesidir. Kendinden sonrakine bitişmez.', fr: 'Lèvres arrondies comme un W anglais. Ne se lie pas après.', en: 'Formed by rounding lips as in English "W". Does not connect left.' },
-  },
-  {
     id: 'he',
     ad: { tr: 'He (Göğüs)', fr: 'Ha (léger)', en: 'Haa (light)' },
     harf: 'ه',
@@ -310,6 +300,16 @@ export const ELIFBA_HARFLERI: HarfOgesi[] = [
     sonda: 'ـه',
     grup: 'lam',
     ipucu: { tr: 'Boğazın en derininden göğüsten gelen ince ve hafif "H" sesidir.', fr: 'H très léger venant du fond de la gorge.', en: 'Very light and airy H coming from the chest.' },
+  },
+  {
+    id: 'vav',
+    ad: { tr: 'Vâv', fr: 'Waw', en: 'Waaw' },
+    harf: 'و',
+    basta: 'و',
+    ortada: 'ـو',
+    sonda: 'ـو',
+    grup: 'lam',
+    ipucu: { tr: 'Dudakların ileriye doğru yuvarlanmasıyla çıkarılan "V/W" sesidir. Kendinden sonrakine bitişmez.', fr: 'Lèvres arrondies comme un W anglais. Ne se lie pas après.', en: 'Formed by rounding lips as in English "W". Does not connect left.' },
   },
   {
     id: 'ye',
@@ -323,7 +323,7 @@ export const ELIFBA_HARFLERI: HarfOgesi[] = [
   },
 ];
 
-export type HarekeTuru = 'ustun' | 'esre' | 'otre' | 'cezm';
+export type HarekeTuru = 'ustun' | 'esre' | 'otre' | 'cezm' | 'sedde';
 
 export type HarekeOgesi = {
   id: HarekeTuru;
@@ -378,5 +378,27 @@ export const HAREKELER: HarekeOgesi[] = [
     },
     sesEtiketi: { tr: 'Durgun', fr: 'Arrêt', en: 'Stop' },
   },
+  {
+    id: 'sedde',
+    ad: { tr: 'Şedde (Teşdîd)', fr: 'Chaddah (Doublement)', en: 'Shaddah (Doubling)' },
+    isaret: '\u0651',
+    aciklama: {
+      tr: 'Harfin üstüne konur. Harfi önce cezimli, sonra kendi harekesiyle iki kez okutur.',
+      fr: 'Placée au-dessus de la lettre. Indique le redoublement de la consonne (arrêt puis voyelle).',
+      en: 'Placed above the letter. Doubles the consonant (first with stop, then with vowel).',
+    },
+    sesEtiketi: { tr: 'Çift', fr: 'Double', en: 'Double' },
+  },
 ];
+
+/**
+ * Günün tarihine göre deterministik olarak günün Elif-Bâ harfini seçer.
+ */
+export function gununHarfiGetir(tarih: Date | string = new Date()): HarfOgesi {
+  const d = typeof tarih === 'string' ? new Date(tarih.slice(0, 10) + 'T12:00:00Z') : tarih;
+  const gunSayisi = Math.floor(d.getTime() / (1000 * 60 * 60 * 24));
+  const index = Math.abs(gunSayisi) % ELIFBA_HARFLERI.length;
+  return ELIFBA_HARFLERI[index];
+}
+
 
