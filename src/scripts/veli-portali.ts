@@ -77,6 +77,27 @@ export async function veliPortali(): Promise<void> {
     } catch {}
   };
 
+  const konfetiPatlat = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try {
+      const sar = document.createElement('div');
+      sar.className = 'konfeti-alani';
+      sar.setAttribute('aria-hidden', 'true');
+      const renkler = ['#d4af37', '#2e7d32', '#c62828', '#1565c0', '#f59e0b', '#8b5cf6'];
+      for (let i = 0; i < 32; i++) {
+        const p = document.createElement('span');
+        p.className = 'konfeti-parcacik';
+        p.style.backgroundColor = renkler[i % renkler.length];
+        p.style.left = `${Math.floor(Math.random() * 96) + 2}%`;
+        p.style.animationDelay = `${(Math.random() * 0.35).toFixed(2)}s`;
+        p.style.animationDuration = `${(1.2 + Math.random() * 0.7).toFixed(2)}s`;
+        sar.appendChild(p);
+      }
+      kok.appendChild(sar);
+      setTimeout(() => { sar.remove(); }, 2400);
+    } catch {}
+  };
+
   const HARF_SES_HARITASI: Record<string, string> = {
     'elif': 'elif', 'be': 'be', 'te': 'te', 'se': 'se', 'cim': 'cim', 'ha': 'ha', 'hi': 'hi',
     'dal': 'dal', 'zel': 'zel', 'ra': 'ra', 'ze': 'ze', 'sin': 'sin', 'sin2': 'sin2', 'sad': 'sad',
@@ -299,7 +320,7 @@ export async function veliPortali(): Promise<void> {
       /* kitapSecim: öğrenci ref'i → {secim: 'var'|'satin'|'fotokopi', zaman}. Veli kendi belgesine yazar
          (firestore.rules aileler update izin listesinde). Hoca ekranı bu haritayı okuyup hazırlık yapar. */
       kitapSecim?: Record<string, { secim: string; zaman: string }> }; ogrenciler: Ogrenci[]; secili: number;
-    mod?: 'veli' | 'ogrenci'; seciliEzberId?: string;
+    mod?: 'veli' | 'ogrenci'; seciliEzberId?: string; ezberHizi?: number;
     seciliHarfGrup?: HarfGrup; seciliHarfId?: string;
     quizSoruNo?: number; quizDogruSayisi?: number; quizCevaplandi?: boolean; quizSecilenIndex?: number | null; quizBitti?: boolean;
     odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[] }> };
@@ -466,6 +487,14 @@ export async function veliPortali(): Promise<void> {
                   <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}">
                     Tarayıcınız ses oynatmayı desteklemiyor.
                   </audio>
+                  <div class="ezber-hiz-secici" role="group" aria-label="Okuma Hızı">
+                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 0.8 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="0.8" title="${esc(m.yavasDinle)}">
+                      ${esc(m.yavasDinle)}
+                    </button>
+                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1" title="${esc(m.normalDinle)}">
+                      ${esc(m.normalDinle)}
+                    </button>
+                  </div>
                   <button type="button" class="dugme dugme-birincil tekrar-btn" data-eylem="tekrarEttim" data-ezber="${seciliEzber.id}">
                     ✨ ${esc(m.tekrarEttim)}
                   </button>
@@ -522,22 +551,22 @@ export async function veliPortali(): Promise<void> {
                   </div>
 
                   <div class="elifba-konumlar">
-                    <div class="konum-kutu">
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.yalinHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.yalinHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.harf}</span>
-                    </div>
-                    <div class="konum-kutu">
+                    </button>
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.bastaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.bastaHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.basta}</span>
-                    </div>
-                    <div class="konum-kutu">
+                    </button>
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.ortadaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.ortadaHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.ortada}</span>
-                    </div>
-                    <div class="konum-kutu">
+                    </button>
+                    <button type="button" class="konum-kutu" data-eylem="harfSesCal" data-harf="${seciliHarf.harf}" data-harf-id="${seciliHarf.id}" title="${esc(m.sondaHali)} — ${esc(seciliHarf.ad[dil] || seciliHarf.ad.tr)}">
                       <span class="konum-etiket">${esc(m.sondaHali)}</span>
                       <span class="konum-harf" lang="ar" dir="rtl">${seciliHarf.sonda}</span>
-                    </div>
+                    </button>
                   </div>
 
                   <div class="harekeler-alani">
@@ -987,6 +1016,17 @@ export async function veliPortali(): Promise<void> {
       if (harf) harfSeslendir(harf);
       return;
     }
+    if (hedef.dataset.eylem === 'ezberHizAyarla' && durum) {
+      const hiz = parseFloat(hedef.dataset.hiz || '1');
+      durum.ezberHizi = hiz;
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) audioEl.playbackRate = hiz;
+      kok.querySelectorAll<HTMLButtonElement>('.hiz-btn').forEach((b) => {
+        const aktif = b.dataset.hiz === String(hiz);
+        b.classList.toggle('aktif-hiz', aktif);
+      });
+      return;
+    }
     if (hedef.dataset.eylem === 'quizSecim' && durum && !durum.quizCevaplandi) {
       const secilenIdx = Number(hedef.dataset.secenek);
       durum.quizSecilenIndex = secilenIdx;
@@ -995,6 +1035,7 @@ export async function veliPortali(): Promise<void> {
       const aktifSoru = QUIZ_SORULARI[soruNo % QUIZ_SORULARI.length];
       if (secilenIdx === aktifSoru.dogruCevapIndex) {
         kutlamaSesiCal();
+        konfetiPatlat();
         durum.quizDogruSayisi = (durum.quizDogruSayisi || 0) + 1;
         const o = durum.ogrenciler[durum.secili];
         const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
@@ -1011,6 +1052,7 @@ export async function veliPortali(): Promise<void> {
       if (sonraki >= QUIZ_SORULARI.length) {
         durum.quizBitti = true;
         kutlamaSesiCal();
+        konfetiPatlat();
       } else {
         durum.quizSoruNo = sonraki;
         durum.quizCevaplandi = false;
@@ -1030,6 +1072,7 @@ export async function veliPortali(): Promise<void> {
     }
     if (hedef.dataset.eylem === 'tekrarEttim' && durum) {
       kutlamaSesiCal();
+      konfetiPatlat();
       const o = durum.ogrenciler[durum.secili];
       const yildizKey = `ulucamii_yildiz_${o?.ref || 'genel'}`;
       let yildizSayisi = 0;
@@ -1086,6 +1129,9 @@ export async function veliPortali(): Promise<void> {
     (ev) => {
       const hedefAudio = ev.target as HTMLAudioElement;
       if (hedefAudio && hedefAudio.classList.contains('ezber-audio')) {
+        if (durum?.ezberHizi) {
+          try { hedefAudio.playbackRate = durum.ezberHizi; } catch {}
+        }
         if (aktifAudio && !aktifAudio.paused) {
           aktifAudio.pause();
           aktifAudio.currentTime = 0;

@@ -52,3 +52,9 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - **Sûre Seçiminde Ses Temizliği:** Ezber odasında sûre/dua açılır menüsü değiştiğinde sayfadaki tüm aktif sesler anında durdurulur ve başa sarılır (`a.pause(); a.currentTime = 0;`).
 - **Quiz Dinamik Başarı Skoru:** Mini test tamamlandığında talebenin doğru sayısı hesaplanır ve başarı kupasının hemen altında üç dilli dinamik başarı rozeti (`🎯 X / 10 Doğru Cevap` / `Bonnes réponses` / `Correct answers`) sergilenir.
 
+## 11. Pedagojik Ses Hızı, Konum Butonları ve Konfeti Kutlaması (Kalıcı Karar)
+- **0.8x Yavaş Dinleme Desteği:** Ezber Odası'nda çocukların tecvid ve mahreçleri daha rahat takip edebilmesi için `0.8x Yavaş` ve `1.0x Normal` hız butonları eklenmiştir. Seçilen hız (`durum.ezberHizi`), hem buton tıklandığında hem de ses başladığında `playbackRate` üzerinden otomatik uygulanır.
+- **Harf Konumlarının Etkileşimi:** Elif-Bâ tahtasında başta, ortada ve sonda yazılış kutucukları tıklanabilir butonlara dönüştürülmüştür. Çocuk harfin hangi formuna dokunursa dokunsun ilgili harfin Diyanet talim sesi tetiklenir.
+- **Dinamik Konfeti Yağmuru:** Doğru quiz cevaplarında, mini yarışma bitişinde ve tekrar butonuna basıldığında ekranda 32 parçacıklı hafif CSS konfeti efekti tetiklenir; `prefers-reduced-motion` kullanıcılarında animasyon kapatılır.
+
+
