@@ -794,7 +794,7 @@ export async function veliPortali(): Promise<void> {
               <div class="ezber-secici-sar">
                 <label for="ezber-secim-select" class="kucuk"><b>${esc(m.sureSec)}:</b></label>
                 <select id="ezber-secim-select" data-eylem="ezberDegistir" class="ezber-secim">
-                  ${EZBER_LISTESI.map((ez) => `<option value="${ez.id}" ${ez.id === seciliEzber.id ? 'selected' : ''}>${esc(ez.ad[dil] || ez.ad.tr)} (${ez.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : 'Kur’an Sûresi') : (dil === 'fr' ? 'Prière' : 'Dua')})</option>`).join('')}
+                  ${filtreliEzberler.map((ez) => `<option value="${ez.id}" ${ez.id === seciliEzber.id ? 'selected' : ''}>${esc(ez.ad[dil] || ez.ad.tr)} (${ez.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : 'Kur’an Sûresi') : (dil === 'fr' ? 'Prière' : 'Dua')})</option>`).join('')}
                 </select>
               </div>
 
@@ -1831,7 +1831,18 @@ export async function veliPortali(): Promise<void> {
     }
     if (hedef.dataset.eylem === 'ezberFiltreTur' && durum) {
       harfTikSesiCal();
-      durum.ezberFiltreTur = (hedef.dataset.tur as 'hepsi' | 'sure' | 'dua') || 'hepsi';
+      const yeniTur = (hedef.dataset.tur as 'hepsi' | 'sure' | 'dua') || 'hepsi';
+      durum.ezberFiltreTur = yeniTur;
+      const yeniListe = EZBER_LISTESI.filter((ez) => {
+        if (yeniTur === 'sure') return ez.tur === 'sure';
+        if (yeniTur === 'dua') return ez.tur === 'dua';
+        return true;
+      });
+      const aktifEzberId = durum.seciliEzberId;
+      const suAnki = EZBER_LISTESI.find((x) => x.id === aktifEzberId);
+      if (suAnki && yeniTur !== 'hepsi' && suAnki.tur !== yeniTur && yeniListe.length > 0) {
+        durum.seciliEzberId = yeniListe[0].id;
+      }
       panoCiz();
       return;
     }
@@ -2000,6 +2011,9 @@ export async function veliPortali(): Promise<void> {
       if (hedefAudio && hedefAudio.classList.contains('ezber-audio')) {
         if (durum?.ezberHizi) {
           try { hedefAudio.playbackRate = durum.ezberHizi; } catch {}
+        }
+        if (durum?.ezberDongu) {
+          try { hedefAudio.loop = true; } catch {}
         }
         if (aktifAudio && !aktifAudio.paused) {
           aktifAudio.pause();
