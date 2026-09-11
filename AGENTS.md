@@ -54,6 +54,12 @@ konu notunu güncelle; buraya işlem günlüğü ekleme. Canlı durum/test kanı
   bağımsız tasarım yazma. Ana yazı 20 px, kitap/sayfa alt satırı 16 px olur.
 
 - Namaz vakti yalnız Diyanet, ilçe 11890. Hesaplama servisi/farklı kaynakla doldurma.
+- **Kur'an-ı Kerim sûre, âyet ve Elifba sesleri (kalıcı kural, 11 Eylül 2026):**
+  Tüm Kur'an tilaveti, sûre, âyet ve Elifba sesleri istisnasız ve her zaman resmî
+  Diyanet İşleri Başkanlığı kaynaklarından (`kuran.diyanet.gov.tr`,
+  `webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/` — Davut Kaya / Osman Şahin)
+  alınır. Üçüncü taraf, dış API veya teyit edilmemiş harici kıraat sesleri kesinlikle
+  kullanılmaz; yerel varlıklar daima bu resmî Diyanet kaynağından beslenir.
 - İhtida videoları sayfanın dilinde ve yalnız doğrulanmış Diyanet kaynaklarından olur.
   Kaynak denetimi ve YouTube oynatma sınırı: `docs/IHTIDA-VIDEOLARI.md`.
 - Dinî metin, saat, tarih ve kurum bilgisini güvenilir kaynaktan doğrula.

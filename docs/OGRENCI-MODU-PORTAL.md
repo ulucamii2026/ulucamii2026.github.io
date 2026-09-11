@@ -57,4 +57,17 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - **Harf Konumlarının Etkileşimi:** Elif-Bâ tahtasında başta, ortada ve sonda yazılış kutucukları tıklanabilir butonlara dönüştürülmüştür. Çocuk harfin hangi formuna dokunursa dokunsun ilgili harfin Diyanet talim sesi tetiklenir.
 - **Dinamik Konfeti Yağmuru:** Doğru quiz cevaplarında, mini yarışma bitişinde ve tekrar butonuna basıldığında ekranda 32 parçacıklı hafif CSS konfeti efekti tetiklenir; `prefers-reduced-motion` kullanıcılarında animasyon kapatılır.
 
+## 12. Kur'an-ı Kerim Sûre ve Âyet Seslerinde Resmî Diyanet Kaynağı İlkesi (Kalıcı Karar, 11 Eylül 2026)
+- **Zorunlu Kaynak:** Portal ve Mektep Odası'ndaki tüm Kur'an sûre ve âyet sesleri istisnasız ve her zaman Diyanet İşleri Başkanlığı'nın resmî Kur'an portalı sunucusundan (`https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/` — Davut Kaya / Osman Şahin) temin edilir.
+- **Doğrulanan Varlıklar:**
+  - `fatiha.mp3` (Besmele 1_0 + Ayetler 1_1–1_7, 266.552 bayt)
+  - `kevser.mp3` (Besmele 1_0 + Ayetler 108_1–108_3, 99.168 bayt)
+  - `ihlas.mp3` (Besmele 1_0 + Ayetler 112_1–112_4, 104.743 bayt)
+  - `felak.mp3` (Besmele 1_0 + Ayetler 113_1–113_5, 149.291 bayt)
+  - `nas.mp3` (Besmele 1_0 + Ayetler 114_1–114_6, 192.275 bayt)
+  - `ayetel-kursi.mp3` (Bakara 2_255, 308.491 bayt)
+  - `rabbena.mp3` (Bakara 2_201 + İbrahim 14_41, 136.956 bayt)
+- Üçüncü taraf veya teyit edilmemiş ses kaynakları projeye sokulamaz; yerel varlıklar her zaman bu Diyanet resmî kaynaklarıyla güncel tutulur.
+
+
 

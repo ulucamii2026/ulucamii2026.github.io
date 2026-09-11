@@ -26,6 +26,9 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
   Ayrıntı, istisnalar ve doğrulama yukarıdaki dil notundadır.
 - Öğrenci modunda çocuk fotoğrafı veya biyometrik veri asla istenmez ve saklanmaz;
   RGPD ve çocuk mahremiyeti gereğince deterministik renkli monogram avatarlar kullanılır.
+- Kur'an-ı Kerim sûre, âyet ve Elifba sesleri istisnasız resmî Diyanet Kur'an portalı
+  sunucularından (`kuran.diyanet.gov.tr`, `webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/` —
+  Davut Kaya / Osman Şahin) alınır. Dış servis veya onaylanmamış üçüncü taraf ses kullanılmaz.
 - Otomatik kayıt aktarımı mevcut şifreyi, kitap yanıtını, ikinci veliyi ve sabit
   öğrenci alanlarını ezmemelidir. Aynı kayıt yeniden işlendiğinde çoğalmamalıdır.
 - Cuma mesajı yayımlanmış plan ve ödevlerden hazırlanır. Eksik plan tatil demek
