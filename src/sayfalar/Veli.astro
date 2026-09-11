@@ -571,6 +571,14 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .karne-simge { font-size: 1.5rem; }
   .portal .whatsapp-paylas-btn { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 700; color: #15803d; border-color: rgba(22, 163, 74, 0.35); background: color-mix(in oklab, #16a34a 10%, var(--zemin)); }
   .portal .whatsapp-paylas-btn:hover { background: color-mix(in oklab, #16a34a 18%, var(--zemin)); border-color: #16a34a; }
+  [data-tema="koyu"] .portal .whatsapp-paylas-btn,
+  :root[data-theme="dark"] .portal .whatsapp-paylas-btn { color: #4ade80; border-color: rgba(74, 222, 128, 0.4); background: color-mix(in oklab, #22c55e 18%, var(--zemin)); }
+  [data-tema="koyu"] .portal .whatsapp-paylas-btn:hover,
+  :root[data-theme="dark"] .portal .whatsapp-paylas-btn:hover { background: color-mix(in oklab, #22c55e 28%, var(--zemin)); border-color: #4ade80; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .portal .whatsapp-paylas-btn { color: #4ade80; border-color: rgba(74, 222, 128, 0.4); background: color-mix(in oklab, #22c55e 18%, var(--zemin)); }
+    :root:not([data-theme="light"]) .portal .whatsapp-paylas-btn:hover { background: color-mix(in oklab, #22c55e 28%, var(--zemin)); border-color: #4ade80; }
+  }
   .portal .karne-izgara { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
   @media (max-width: 768px) { .portal .karne-izgara { grid-template-columns: 1fr; } }
   .portal .karne-hucre { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 0.85rem; display: flex; flex-direction: column; gap: 0.35rem; }
@@ -583,6 +591,9 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .seri-sayac-kutusu { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; border-radius: 9999px; background: color-mix(in oklab, #ea580c 12%, var(--zemin)); border: 1px solid color-mix(in oklab, #ea580c 35%, var(--cizgi)); color: #c2410c; font-weight: 700; font-size: 0.88rem; }
   [data-tema="koyu"] .portal .seri-sayac-kutusu,
   :root[data-theme="dark"] .portal .seri-sayac-kutusu { background: color-mix(in oklab, #fb923c 20%, var(--zemin)); border-color: color-mix(in oklab, #fb923c 45%, var(--cizgi)); color: #fdba74; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .portal .seri-sayac-kutusu { background: color-mix(in oklab, #fb923c 20%, var(--zemin)); border-color: color-mix(in oklab, #fb923c 45%, var(--cizgi)); color: #fdba74; }
+  }
   .portal .seri-ikon { font-size: 1.15rem; }
   .portal .seri-sayi { font-weight: 800; font-size: 1rem; }
   .portal .seri-etiket { font-size: 0.82rem; }

@@ -1244,23 +1244,23 @@ export async function veliPortali(): Promise<void> {
 
       const buHaftaKonu = haftaGunleri.length && haftaGunleri[0].dersler.length
         ? haftaGunleri[0].dersler.map((d) => d.konu).join(', ')
-        : (haftaOdev?.odev ? cok(haftaOdev.odev) : 'Temel Dinî Bilgiler ve Kur’an-ı Kerim');
+        : (haftaOdev?.odev ? cok(haftaOdev.odev) : m.varsayilanDersKonusu);
 
       const ezberHedefi = haftaOdev?.ezber
         ? cok(haftaOdev.ezber)
         : (haftaGunleri.length && haftaGunleri[0].dersler.some((d) => d.ezber.length)
           ? haftaGunleri[0].dersler.flatMap((d) => d.ezber).join(', ')
-          : 'Haftalık sûre tekrarı');
+          : m.varsayilanEzberHedefi);
 
       const hocaGorus = ile?.hocaNotu || (c && c.notlar.length ? c.notlar[c.notlar.length - 1].metin : '');
 
       const paylasMesaji = encodeURIComponent(
-        `🌟 *${o.ad} ${o.soyad} — Haftalık Mektep Karnesi*\n` +
-        `📅 *Devam:* ${yoklamaMetni}\n` +
-        `📖 *Ders Konusu:* ${buHaftaKonu}\n` +
-        `🎯 *Ezber:* ${ezberHedefi}\n` +
-        (hocaGorus ? `💬 *Hocanın Notu:* ${hocaGorus}\n` : '') +
-        `\n🕌 Marche-en-Famenne Ulu Camii Mektebi`
+        `🌟 *${o.ad} ${o.soyad} — ${m.haftalikKarne}*\n` +
+        `📅 *${m.haftalikYoklamaDurumu}:* ${yoklamaMetni}\n` +
+        `📖 *${m.haftalikDersKonusu}:* ${buHaftaKonu}\n` +
+        `🎯 *${m.haftalikEzberHedefi}:* ${ezberHedefi}\n` +
+        (hocaGorus ? `💬 *${m.hocaNotu}:* ${hocaGorus}\n` : '') +
+        `\n🕌 ${m.karneCamiImza}`
       );
 
       return `<section class="bolum r-iznik oncelik genis haftalik-karne-kart">

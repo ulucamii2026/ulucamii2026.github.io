@@ -442,13 +442,20 @@ export async function hocaEkrani(): Promise<void> {
         const rozetAd = ile.rozet ? ({ yildiz: '⭐ Haftanın Yıldız Talebesi', ezber: '📖 Ezber & Sûre Şampiyonu', ahlak: '🌸 Güzel Ahlâk ve Nezaket', gayret: '🏆 Üstün Gayret ve Azim', devam: '🏅 Düzenli Devam ve Disiplin' } as Record<string, string>)[ile.rozet] || ile.rozet : '';
         const hocaNot = ile.hocaNotu || '';
 
-        const karneMetni =
-          `🌟 *${ogr.ad} ${ogr.soyad} — Mektep Durum Özeti*\n` +
-          `📖 *Kur’an:* ${kuranKonu}\n` +
-          `🎯 *Ezber & Sûre:* ${ezberler}\n` +
-          (rozetAd ? `🏅 *Tebrik Rozeti:* ${rozetAd}\n` : '') +
-          (hocaNot ? `💬 *Hoca Notu:* ${hocaNot}\n` : '') +
-          `\n🕌 Marche-en-Famenne Ulu Camii Mektebi`;
+        const frMi = ogr.dil === 'fr';
+        const karneMetni = frMi
+          ? `🌟 *${ogr.ad} ${ogr.soyad} — Bilan hebdomadaire du Mektep*\n` +
+            `📖 *Coran:* ${kuranKonu}\n` +
+            `🎯 *Mémorisation:* ${ezberler}\n` +
+            (rozetAd ? `🏅 *Badge d’honneur:* ${rozetAd}\n` : '') +
+            (hocaNot ? `💬 *Remarque de l’enseignant:* ${hocaNot}\n` : '') +
+            `\n🕌 École Coranique de la Mosquée Ulu de Marche-en-Famenne`
+          : `🌟 *${ogr.ad} ${ogr.soyad} — Mektep Durum Özeti*\n` +
+            `📖 *Kur’an:* ${kuranKonu}\n` +
+            `🎯 *Ezber & Sûre:* ${ezberler}\n` +
+            (rozetAd ? `🏅 *Tebrik Rozeti:* ${rozetAd}\n` : '') +
+            (hocaNot ? `💬 *Hoca Notu:* ${hocaNot}\n` : '') +
+            `\n🕌 Marche-en-Famenne Ulu Camii Mektebi`;
 
         try {
           await navigator.clipboard.writeText(karneMetni);

@@ -141,6 +141,9 @@ export const VELI_METIN = {
     veliEvOnayi: '👨‍👩‍👧 Veli Onayı: Evde 3 Kez Dinledik',
     veliEvOnaylandi: '✔️ Ailece 3 Kez Tekrar Edildi — Tebrikler!',
     veliEvOnayiTebrik: 'Tebrikler! Evdeki gayretiniz için teşekkür ederiz.',
+    varsayilanDersKonusu: 'Temel Dinî Bilgiler ve Kur’an-ı Kerim',
+    varsayilanEzberHedefi: 'Haftalık sûre tekrarı',
+    karneCamiImza: 'Marche-en-Famenne Ulu Camii Mektebi',
   },
 
   fr: {
@@ -277,6 +280,9 @@ export const VELI_METIN = {
     veliEvOnayi: '👨‍👩‍👧 Validation parents : Répété 3 fois à la maison',
     veliEvOnaylandi: '✔️ Répété en famille 3 fois — Félicitations !',
     veliEvOnayiTebrik: 'Félicitations ! Merci pour votre accompagnement à la maison.',
+    varsayilanDersKonusu: 'Connaissances religieuses fondamentales et Saint Coran',
+    varsayilanEzberHedefi: 'Répétition hebdomadaire des sourates',
+    karneCamiImza: 'École Coranique de la Mosquée Ulu de Marche-en-Famenne',
   },
 
   en: {
@@ -415,6 +421,9 @@ export const VELI_METIN = {
     veliEvOnayi: '👨‍👩‍👧 Parent Verification: Practiced 3 Times at Home',
     veliEvOnaylandi: '✔️ Practiced 3 Times Together — Well Done!',
     veliEvOnayiTebrik: 'Congratulations! Thank you for supporting at home.',
+    varsayilanDersKonusu: 'Basic Islamic Knowledge & Holy Quran',
+    varsayilanEzberHedefi: 'Weekly surah revision',
+    karneCamiImza: 'Marche-en-Famenne Ulu Mosque Mektep',
   },
 
 } as const;
