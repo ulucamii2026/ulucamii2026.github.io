@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>CUMA GENÇ KIZLAR - hikaye</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: #FAFAF9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 230px 80px 230px 80px;
+  }
+
+  .bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 1920px;
+    background-image: url('file:///D:/app/ulucamii-site/docs/afisler/esma-avci-social-v2-2026-2027/kaynaklar/bg-04-cuma-genc-kizlar.jpg');
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+  }
+
+  /* Zemin hafif yumuşatıcı parlaklık */
+  .vignette-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 1920px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Ana Kart */
+  .card {
+    position: relative;
+    z-index: 3;
+    width: 920px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 44px;
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+      0 20px 40px -15px rgba(0, 0, 0, 0.12),
+      0 0 0 1px rgba(0, 0, 0, 0.03),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 56px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1440px;
+  }
+
+  .header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #0284C7;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #0284C7;
+  }
+
+  .main-title {
+    font-size: 94px;
+    font-weight: 900;
+    color: #0F172A;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+  }
+
+  /* Saat & Konum Rozetleri */
+  .pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 24px;
+    border-radius: 9999px;
+    font-size: 32px;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .pill-1 {
+    background-color: #0284C7;
+    color: #FFFFFF;
+  }
+
+  .pill-2 {
+    background-color: #CCFBF1;
+    color: #0F766E;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* Bilgi Blokları */
+  .blocks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .block {
+    background: #F8FAFC;
+    border-radius: 20px;
+    padding: 18px 22px;
+    border-left: 6px solid #0284C7;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+
+  .block-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1E293B;
+    line-height: 1.2;
+  }
+
+  .block-desc {
+    font-size: 28px;
+    font-weight: 500;
+    color: #475569;
+    line-height: 1.34;
+  }
+
+  /* Alt Kısım: CTA ve Footer */
+  .footer-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .cta-box {
+    background: #F0F9FF;
+    border-radius: 18px;
+    padding: 16px 20px;
+    text-align: center;
+    color: #0284C7;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    border: 1px dashed #0284C744;
+  }
+
+  .footer-text {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #94A3B8;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-layer"></div>
+  <div class="vignette-layer"></div>
+  <div class="card">
+    <div class="header-group">
+      <div class="eyebrow">NAMUR CAMİİ · GENÇLİK BULUŞMASI</div>
+      <h1 class="main-title">CUMA GENÇ KIZLAR</h1>
+      <div class="pills-container">
+        <div class="pill pill-1">🕒 Her Cuma Akşamı · 18.30 – 20.30</div>
+        <div class="pill pill-2">📍 Namur Camii</div>
+      </div>
+    </div>
+
+    <div class="blocks-container">
+      
+        <div class="block">
+          <div class="block-title">Kur’an-ı Kerim & Ezber</div>
+          <div class="block-desc">Tecvitli okuma, sûre ezberleri ve âyetlerin gençliğe mesajları</div>
+        </div>
+        
+        <div class="block">
+          <div class="block-title">Gençlik Sohbeti & Hasbihal</div>
+          <div class="block-desc">Gençlerin zihnini meşgul eden konular, dertleşme ve samimi ortam</div>
+        </div>
+        
+        <div class="block">
+          <div class="block-title">Dua & Manevi Güç</div>
+          <div class="block-desc">Haftanın yorgunluğunu unutturan Cuma akşamı maneviyat meclisi</div>
+        </div>
+        
+    </div>
+
+    <div class="footer-group">
+      <div class="cta-box">Haftanın yorgunluğunu geride bırakıp gençlik enerjimizle buluşalım.</div>
+      <div class="footer-text">ESMA AVCI · 2026–2027</div>
+    </div>
+  </div>
+</body>
+</html>
