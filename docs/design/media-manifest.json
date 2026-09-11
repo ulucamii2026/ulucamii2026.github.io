@@ -1,0 +1,4128 @@
+{
+  "schemaVersion": 1,
+  "root": "public/media",
+  "assets": [
+    {
+      "path": "public/media/afisler/bagis-afisi-2026-tr-fr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 47958,
+      "hash": "7df305457546f736356a172f4fff574d48621176f766e36090f3dd09571fa589",
+      "width": 520,
+      "height": 736,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bagis-afisi-2026-tr-fr.webp",
+      "extension": ".webp",
+      "bytes": 275058,
+      "hash": "4bf5b1739d365bc4386df3c301ebf4bb181fafcec4ca429464351e2a40d7a866",
+      "width": 1400,
+      "height": 1980,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bagis-afisi-2026-uc-dilli-thumb.webp",
+      "extension": ".webp",
+      "bytes": 37616,
+      "hash": "e2e6b7174b0fcaa80a1c489f17a2caede3b9a58e61b783ffd183ea650745cf25",
+      "width": 520,
+      "height": 735,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bagis-afisi-2026-uc-dilli.webp",
+      "extension": ".webp",
+      "bytes": 281756,
+      "hash": "23aaaea2eb56ce8e4306cc41c3f3991362e0517e2e55208d00a06346b5371a51",
+      "width": 1400,
+      "height": 1979,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bagis-afisi-2026-yedi-basak-thumb.webp",
+      "extension": ".webp",
+      "bytes": 40958,
+      "hash": "9039fc93a755502a24ad9e83f974942acfead459d4fc7d80b1c5c8f2e1735d98",
+      "width": 520,
+      "height": 736,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bagis-afisi-2026-yedi-basak.webp",
+      "extension": ".webp",
+      "bytes": 307762,
+      "hash": "bd517bdbb15e9b7b70967a01e9538f1dd938bacd8acececebaaa6213bd435146",
+      "width": 1400,
+      "height": 1980,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bayram-programi-2026-fr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 112016,
+      "hash": "4fab8f6b817b2edac82845c5fb035e4e097dab79a87678f1fae5124bb07bbdbe",
+      "width": 520,
+      "height": 696,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bayram-programi-2026-fr.webp",
+      "extension": ".webp",
+      "bytes": 525666,
+      "hash": "e745240d954610dd95406b20c0f4dabe6ff54d74f72889e4bbf0756e6f9c5fcd",
+      "width": 1400,
+      "height": 1875,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bayram-programi-2026-tr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 116606,
+      "hash": "fdb8c4e54b9f107a5521ba756a17b61c11d6c0e1984c84fed9825ae318b4c5f1",
+      "width": 520,
+      "height": 696,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bayram-programi-2026-tr.webp",
+      "extension": ".webp",
+      "bytes": 637106,
+      "hash": "a911bdbcbcb14506170018e369b5fb55948749433c7e531c0e7302929b0b5476",
+      "width": 1400,
+      "height": 1875,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2020-fitre-zekat-afisi-thumb.webp",
+      "extension": ".webp",
+      "bytes": 57546,
+      "hash": "4fa215ef8d69eb206b6cb362ad769df36bd9fd9f34260251afa8c68efa050391",
+      "width": 480,
+      "height": 675,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2020-fitre-zekat-afisi.webp",
+      "extension": ".webp",
+      "bytes": 161506,
+      "hash": "587f423840f8cc8f8cab8febcb527f69f212595d1c7dd0a2f2491bb5b64986c1",
+      "width": 907,
+      "height": 1276,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2025-fitre-zekat-afisi-thumb.webp",
+      "extension": ".webp",
+      "bytes": 39614,
+      "hash": "d5f80b74b256cc373cff7a7fe5a7896603508005d2d20e18993c9cd5bb64f078",
+      "width": 480,
+      "height": 854,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2025-fitre-zekat-afisi.webp",
+      "extension": ".webp",
+      "bytes": 203252,
+      "hash": "77130f9043c6d3bc6bc1537906d4c8a10e469cc992439fe691febb150866375b",
+      "width": 1600,
+      "height": 2844,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-2027-umre-turu-thumb.webp",
+      "extension": ".webp",
+      "bytes": 46106,
+      "hash": "b0fa00a044a4e230604081198a036f5af8d2f5e9b6dc87f0e7bd8d615dc3a99c",
+      "width": 480,
+      "height": 679,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-2027-umre-turu.webp",
+      "extension": ".webp",
+      "bytes": 178052,
+      "hash": "55b54886abd0db05d076a92431d4d15d5436d47af0c97d86c11fe4cd7b491da1",
+      "width": 1024,
+      "height": 1448,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-kurban-kampanyasi-thumb.webp",
+      "extension": ".webp",
+      "bytes": 28324,
+      "hash": "b66569f383e65175dee34e174a56c0ff6c2f041fb5c23ccbce5531a7567bb23f",
+      "width": 480,
+      "height": 672,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-kurban-kampanyasi.webp",
+      "extension": ".webp",
+      "bytes": 101062,
+      "hash": "6f801a4e58f01fac57be88f2efd5ee33d1a413c48d0b398fe989faac90a85d81",
+      "width": 1024,
+      "height": 1434,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-kurbanini-paylas-thumb.webp",
+      "extension": ".webp",
+      "bytes": 12564,
+      "hash": "5e812438d9697891f89a68f161d2241b9bdf4e3a90b74bb4a68877dd5a7cb16b",
+      "width": 480,
+      "height": 282,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-kurbanini-paylas.webp",
+      "extension": ".webp",
+      "bytes": 31568,
+      "hash": "8d5c9760e90456522e1d2c289be5bf30c4736da24470d12eac9987ddd2421bea",
+      "width": 785,
+      "height": 461,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-uip-basvurulari-thumb.webp",
+      "extension": ".webp",
+      "bytes": 17010,
+      "hash": "2ec04d0946e07b74fab55f00aebb248534d6e3582d69065ddf89e2f738be614a",
+      "width": 480,
+      "height": 256,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2026-uip-basvurulari.webp",
+      "extension": ".webp",
+      "bytes": 88990,
+      "hash": "fe7149cc6a637fab77663443b3a2189141c3fb94105b4fcf382332377725c04f",
+      "width": 1359,
+      "height": 725,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2027-hac-onkayit-thumb.webp",
+      "extension": ".webp",
+      "bytes": 25676,
+      "hash": "0aa99160a94f7b43eee0c0c3d93a51f0bafe5ae151caa2a6afe5a69a5821cf70",
+      "width": 480,
+      "height": 308,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-2027-hac-onkayit.webp",
+      "extension": ".webp",
+      "bytes": 141690,
+      "hash": "4e9fc5b4b8fc0bd9a12a0177b8085065c44b3fa2e00dfda2701a2ac875b5b955",
+      "width": 1280,
+      "height": 822,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-bruksel-musavirligi-thumb.webp",
+      "extension": ".webp",
+      "bytes": 81936,
+      "hash": "c68e4e588193c5c90e4e28c240e4d0af9a3dd8c6f411ca5c034f7c2bd55751e8",
+      "width": 480,
+      "height": 679,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-bruksel-musavirligi.webp",
+      "extension": ".webp",
+      "bytes": 293772,
+      "hash": "8d493db334c1844bdfd864440eb4989d30009e7db3caa40964e35a0b1ea402da",
+      "width": 1024,
+      "height": 1448,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-hosgeldin-ya-sehri-ramazan-2025-thumb.webp",
+      "extension": ".webp",
+      "bytes": 19054,
+      "hash": "56c6290c4df57efeca0e54724f847ee966d80d32e5454a0d7c8572bf3d8a7bdb",
+      "width": 480,
+      "height": 480,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/bdv-hosgeldin-ya-sehri-ramazan-2025.webp",
+      "extension": ".webp",
+      "bytes": 47088,
+      "hash": "b794039c9f967c1e268561f1280e21713975a6a7764c4868465bb354c760f746",
+      "width": 747,
+      "height": 747,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/hac-2027-guncel-takvim-thumb.webp",
+      "extension": ".webp",
+      "bytes": 81584,
+      "hash": "47f8dbeb4cff001b7fb956564e23c5df075b34395ebb2544d5a2b46704f4ca7f",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/hac-2027-guncel-takvim.webp",
+      "extension": ".webp",
+      "bytes": 249210,
+      "hash": "f8f0252c5d47e396070112053e912cc36beef9dc6e81ddcdf5c329abb5bc65b5",
+      "width": 1122,
+      "height": 1402,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/hac-2027-son-gunler-fr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 23752,
+      "hash": "ec4ae8834ce116d307f1fd1890981e52f6e42fd3f502b1d494f5701ea457a8be",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/hac-2027-son-gunler-fr.webp",
+      "extension": ".webp",
+      "bytes": 93822,
+      "hash": "8e7afc71b1ce972263d6580f9d04669ec8edb055f30b03384aae3b00715c3461",
+      "width": 1080,
+      "height": 1350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/hac-2027-son-gunler-tr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 21266,
+      "hash": "a338f722341d2c916dd887e90f5d686a84f41f71b2c25a6feff1c881fdf33695",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/hac-2027-son-gunler-tr.webp",
+      "extension": ".webp",
+      "bytes": 84464,
+      "hash": "4a66773ae4ca96bb72f9afaa85bd9d1f06d24c03fe8d642e38db4bd77a93bdcd",
+      "width": 1080,
+      "height": 1350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/kuran-kursu-kayit-2026-2027-thumb.webp",
+      "extension": ".webp",
+      "bytes": 27548,
+      "hash": "f2cb31b31723d7c4d1d2a9e8624f7c333a0c7cc189eeed7761c12e12e463e28f",
+      "width": 480,
+      "height": 678,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/kuran-kursu-kayit-2026-2027.webp",
+      "extension": ".webp",
+      "bytes": 103102,
+      "hash": "77fa31594aaa7499aeae200d39f0fa5d3b661222cc2fcd7e8bbd1a3d56740403",
+      "width": 1100,
+      "height": 1555,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/vekaletle-kurban-2026-thumb.webp",
+      "extension": ".webp",
+      "bytes": 34280,
+      "hash": "2971cf302c0bb585b012de1e53f8a388d4b64a3f39ee895b90862a5a35b8ed47",
+      "width": 520,
+      "height": 735,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/vekaletle-kurban-2026.webp",
+      "extension": ".webp",
+      "bytes": 135946,
+      "hash": "b4b6b0f5ad7c46871c11776e3634adb1fff2a593f0c9bcdcc866ef51977d69c6",
+      "width": 1400,
+      "height": 1980,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/web-sitemiz-yayinda-thumb.webp",
+      "extension": ".webp",
+      "bytes": 23766,
+      "hash": "0e0a2276992a88545287c1c95803d5e13da6c28a8dcb56fb979d066c0c4dc352",
+      "width": 480,
+      "height": 480,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/afisler/web-sitemiz-yayinda.webp",
+      "extension": ".webp",
+      "bytes": 73816,
+      "hash": "3a19338feedc1d2a3850b9f494385f93b1580a5ede5d7ede03ebb9a5deedb108",
+      "width": 1080,
+      "height": 1080,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2017-asure-ikrami-thumb.webp",
+      "extension": ".webp",
+      "bytes": 16264,
+      "hash": "68cf09846ca3f058cc2e0ff94f754153bcf845b05e38c5dd9377e371a74de97c",
+      "width": 520,
+      "height": 347,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2017-asure-ikrami.webp",
+      "extension": ".webp",
+      "bytes": 35118,
+      "hash": "44d39c314f2dbd9876de544c1093676d94cd3b7d0e7bb34fe4fb0ec8905f8afe",
+      "width": 810,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2018-uip-basvuru-paylasim-thumb.webp",
+      "extension": ".webp",
+      "bytes": 36362,
+      "hash": "537c4cf1ffa4a98fdc5e0d35381e872db900a48b900e8ea97392ace2244a50fe",
+      "width": 520,
+      "height": 762,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2018-uip-basvuru-paylasim.webp",
+      "extension": ".webp",
+      "bytes": 46888,
+      "hash": "a9120fc754b08ae52171b6590ad762e683a1a10c7a58e235b9c2687c5f75b716",
+      "width": 526,
+      "height": 771,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-2020-takvim-duyurusu-thumb.webp",
+      "extension": ".webp",
+      "bytes": 81962,
+      "hash": "fcc75116a54585b00d376add5a9ce4b18da799b28a1b126b8d1aae4fdfb32835",
+      "width": 520,
+      "height": 813,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-2020-takvim-duyurusu.webp",
+      "extension": ".webp",
+      "bytes": 105084,
+      "hash": "48a839b4fc931a4dcc13e8e511b9865596460f2e8d94ba0e72af28a780aa48c4",
+      "width": 526,
+      "height": 822,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-iftar-programi-mayis-thumb.webp",
+      "extension": ".webp",
+      "bytes": 21612,
+      "hash": "6ce92e87e2e33541b948fdd5adc26143f918c28dda9409a5993402f1384ef726",
+      "width": 520,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-iftar-programi-mayis.webp",
+      "extension": ".webp",
+      "bytes": 43842,
+      "hash": "967ab321d0cc32e85c31a51e23cfdbe5e55dbba0192751ba60f667f8a5b13a18",
+      "width": 780,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-kurban-vekaleti-thumb.webp",
+      "extension": ".webp",
+      "bytes": 49354,
+      "hash": "3b507ced7bb8a8e218c05e0dc5f8ecfce3116965ce614d10963a5767dcb41af7",
+      "width": 520,
+      "height": 783,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-kurban-vekaleti.webp",
+      "extension": ".webp",
+      "bytes": 64646,
+      "hash": "98c301bc5a4f0b737fe7d178893696da499b9222aea067031726a54b3ae42766",
+      "width": 526,
+      "height": 792,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-mevlid-programi-thumb.webp",
+      "extension": ".webp",
+      "bytes": 12008,
+      "hash": "bd413875d7e18763a100cb8af1e077ced87610d5c2af356eaac74ffd18477d55",
+      "width": 520,
+      "height": 350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2019-mevlid-programi.webp",
+      "extension": ".webp",
+      "bytes": 25928,
+      "hash": "6b9c4210543cea324eeb0fbeaa55fd8802bab1a4ade6347f9bf33b9920d4b597",
+      "width": 802,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2020-biz-bize-yeteriz-baslangic-thumb.webp",
+      "extension": ".webp",
+      "bytes": 53490,
+      "hash": "770283851dcefe382e87afbc3ad609844be8e0a7b536c93c4ebff8667f88cf21",
+      "width": 520,
+      "height": 862,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2020-biz-bize-yeteriz-baslangic.webp",
+      "extension": ".webp",
+      "bytes": 70620,
+      "hash": "61423db18b669bacce9021b9617f456d804d44ab994c6d6b9d60c57b9bdc2df2",
+      "width": 526,
+      "height": 872,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2020-fitre-zekat-toplama-thumb.webp",
+      "extension": ".webp",
+      "bytes": 12246,
+      "hash": "8386137dc880145d8126657dc8a7cd97d352b5298cf15dac58f782fcdbf4f6ee",
+      "width": 500,
+      "height": 261,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/2020-fitre-zekat-toplama.webp",
+      "extension": ".webp",
+      "bytes": 15218,
+      "hash": "737b766fa1a9b87f067699478b0be6ba49a9622583f53e6ddabddc1094bc2724",
+      "width": 500,
+      "height": 261,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/belediye-kurban-atik-2016-thumb.webp",
+      "extension": ".webp",
+      "bytes": 51378,
+      "hash": "3f1f06bce4de180d0342bce25d9c33e7187ee09f4b3a62f5ae136a23c9ce92b5",
+      "width": 520,
+      "height": 728,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/belediye-kurban-atik-2016.webp",
+      "extension": ".webp",
+      "bytes": 258590,
+      "hash": "a6731f831137cb512c4781a2217c9f0886e66c50abb36aaec9766159b3fc401f",
+      "width": 1400,
+      "height": 1961,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/kurs-kayit-2026-fr.webp",
+      "extension": ".webp",
+      "bytes": 53370,
+      "hash": "81a2e57fe99942e32c4134a7e91690089e92981b87957f250adb25287249c50c",
+      "width": 526,
+      "height": 935,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/kurs-kayit-2026-tr.webp",
+      "extension": ".webp",
+      "bytes": 49102,
+      "hash": "167691812b8db64954b70b93a88baff15208b45f5cf4fe8c37a61b46a925e6d3",
+      "width": 526,
+      "height": 935,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/ramazan-vaiz-programi-2016-thumb.webp",
+      "extension": ".webp",
+      "bytes": 49674,
+      "hash": "aff57d1716237c60d007194dd2c8ba64101af887219147908bd5226dad5e2bc6",
+      "width": 520,
+      "height": 735,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/arsiv/ramazan-vaiz-programi-2016.webp",
+      "extension": ".webp",
+      "bytes": 246576,
+      "hash": "211f10d2e09786f972f27e0bed7ac4157bb05bbb6c0b0405762c444a7e962267",
+      "width": 1400,
+      "height": 1980,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/dis-logolar/bdv-amblem.png",
+      "extension": ".png",
+      "bytes": 23458,
+      "hash": "0d8f28ac69288948cfe6e1b9e3ae617856f93ecfe305030f549d23d0069f3312",
+      "width": 120,
+      "height": 120,
+      "format": "png"
+    },
+    {
+      "path": "public/media/dis-logolar/bdv.png",
+      "extension": ".png",
+      "bytes": 46543,
+      "hash": "14e2ca0d61d47b7cfb2f6b9da077c128e0876eb137d1fa0cf4160c901b0c508a",
+      "width": 461,
+      "height": 120,
+      "format": "png"
+    },
+    {
+      "path": "public/media/dis-logolar/diyanet-tv.png",
+      "extension": ".png",
+      "bytes": 12166,
+      "hash": "4ebb50ed3788e25620a686b20ea5122525e64c871cbfc3ac3b6f3e8dbfecfffa",
+      "width": 384,
+      "height": 93,
+      "format": "png"
+    },
+    {
+      "path": "public/media/dis-logolar/diyanet.png",
+      "extension": ".png",
+      "bytes": 6045,
+      "hash": "24eb01b83c380b78bfb1540c035273ec0998a40d198925c06ded52ddfe448490",
+      "width": 100,
+      "height": 100,
+      "format": "png"
+    },
+    {
+      "path": "public/media/duyurular/2017-baskonsolos-ziyareti/01-k.webp",
+      "extension": ".webp",
+      "bytes": 18526,
+      "hash": "30beda36477ac6330276382019bb4c3cc6f79e8cf833bdbc15408f4baa6cf47b",
+      "width": 480,
+      "height": 320,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-baskonsolos-ziyareti/01.webp",
+      "extension": ".webp",
+      "bytes": 44536,
+      "hash": "84eda6c446619bbe4425d91a23d36d8548306521b57e99e13aabb60c076fd8e6",
+      "width": 600,
+      "height": 400,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-diyanet-dergi-2018/01-k.webp",
+      "extension": ".webp",
+      "bytes": 21386,
+      "hash": "99c1e9ff7dc41f8f078e414768153f6d2fc0982de76911c495ca1ac9df368e43",
+      "width": 480,
+      "height": 250,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-diyanet-dergi-2018/01.webp",
+      "extension": ".webp",
+      "bytes": 40380,
+      "hash": "1885352f8157e54591d53d5df03f7aa41c0345cbc5fc835a2a087d2440f8fdb4",
+      "width": 625,
+      "height": 325,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-hali-serme-raporu/01-k.webp",
+      "extension": ".webp",
+      "bytes": 73564,
+      "hash": "3de070b9186a4988ab4f55c985c0935fe79c79887c1f934611dfae159b40bb40",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-hali-serme-raporu/01.webp",
+      "extension": ".webp",
+      "bytes": 193510,
+      "hash": "ad4f2404c0a246c598423e618986b983596fc3ae057599d706d0f7df543eaca3",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-hali-serme-raporu/02-k.webp",
+      "extension": ".webp",
+      "bytes": 20972,
+      "hash": "9fef0794feed7e102f3d6cd651bf10bfcc0f8e3a939a1c0e136b06bd798403f9",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-hali-serme-raporu/02.webp",
+      "extension": ".webp",
+      "bytes": 55940,
+      "hash": "14e4be59b7d987825236ead98ca431f168e1624ca9fb1bb6d9f9eeb01fd15e76",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-hali-serme-raporu/03-k.webp",
+      "extension": ".webp",
+      "bytes": 26848,
+      "hash": "ec9a8b36267a645402a7fbb62bf00fd6f2a6ece97242cbf334a55025f882d973",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-hali-serme-raporu/03.webp",
+      "extension": ".webp",
+      "bytes": 133168,
+      "hash": "531ed0a3d2c6323a43a35f9271c9d0deee1c13320aa5d1705bc66b7d001f491f",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-kuran-okuma-dersleri/01-k.webp",
+      "extension": ".webp",
+      "bytes": 32540,
+      "hash": "8e098bcc23b19807fb4984c2b1108427244fad09283898cfc116aa8c881930a4",
+      "width": 440,
+      "height": 224,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-kuran-okuma-dersleri/01.webp",
+      "extension": ".webp",
+      "bytes": 40002,
+      "hash": "8f0b5f85d6225e2ebfd4ac8f8c550590dde54a45ce60eef281efcae7dd049241",
+      "width": 440,
+      "height": 224,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-mevlid-programi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 16762,
+      "hash": "eecaa61597b5d3808fd462c4119743c8fd1fc2a37308546df27a188194459de1",
+      "width": 480,
+      "height": 233,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-mevlid-programi/01.webp",
+      "extension": ".webp",
+      "bytes": 38802,
+      "hash": "a976c516fc55ad7f50da8f140ffe17d7f1216207115a583b51fe93b8d92ba2b2",
+      "width": 660,
+      "height": 320,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-takvim-2018-geldi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 21868,
+      "hash": "6b3b640bda1da7583403ad353996451505f61078a9a937fd8bcd5be1bf5de934",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-takvim-2018-geldi/01.webp",
+      "extension": ".webp",
+      "bytes": 236488,
+      "hash": "bceaf5f24ae5c9e15a60bfb0d51873efe621eca2ea213410e44b8e072392f2c7",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-umre-fiyatlari/01-k.webp",
+      "extension": ".webp",
+      "bytes": 36134,
+      "hash": "1be7e4ba9245653c76f89bbf0cc6afb61cc229832eb062d5b5bca37a7758f49c",
+      "width": 480,
+      "height": 345,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2017-umre-fiyatlari/01.webp",
+      "extension": ".webp",
+      "bytes": 140146,
+      "hash": "1c9050a30d198227a7f5ee10a9237b31feeaf4e7d74869d6daede2a890078996",
+      "width": 900,
+      "height": 646,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-23-nisan-kutlama/01-k.webp",
+      "extension": ".webp",
+      "bytes": 40602,
+      "hash": "5ebf69a265ac0b24ff12e7f2a6e1af67db2d976f046a09d94a86e6e2695aaa7b",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-23-nisan-kutlama/01.webp",
+      "extension": ".webp",
+      "bytes": 165272,
+      "hash": "df10b55df9e1020fcd047a4317e35ad8db8bd362b71ca10ed971c2defac6f4d6",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-23-nisan-kutlama/02-k.webp",
+      "extension": ".webp",
+      "bytes": 65090,
+      "hash": "2413e842e7e3488a211f0b21a55196ba941e5a38e980c85b01c8bce5433cc5bd",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-23-nisan-kutlama/02.webp",
+      "extension": ".webp",
+      "bytes": 144114,
+      "hash": "bba75db3071873378b7956fe4d0cac3ec7d2215fbf2ba33649e12040ca25f2eb",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-bayram-namazi-haziran/01-k.webp",
+      "extension": ".webp",
+      "bytes": 34154,
+      "hash": "d9966cabb08a9076958d2bb8b1fae5fb733d73b25738ad852ecef268d793e5bd",
+      "width": 480,
+      "height": 266,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-bayram-namazi-haziran/01.webp",
+      "extension": ".webp",
+      "bytes": 56558,
+      "hash": "b4987c230858b02198928adcd9cb1db43030ee9687546bd4c3220e13379ce3ac",
+      "width": 604,
+      "height": 335,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-diyanet-dergi-abonelik/01-k.webp",
+      "extension": ".webp",
+      "bytes": 20136,
+      "hash": "9d07e4285b2404ade2b124abfcecca371ef4b9d091ef059d5b8b67910b097645",
+      "width": 480,
+      "height": 218,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-diyanet-dergi-abonelik/01.webp",
+      "extension": ".webp",
+      "bytes": 37570,
+      "hash": "36f0bf327ddecc24defd51a780d221bf69fbb17cec1a152c8a066e961bab69e9",
+      "width": 705,
+      "height": 320,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-diyanet-takvim-geldi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 26394,
+      "hash": "a23cf2f23f98e42e00da630fe81d11e924d0ca8dbb70f9e1a5050873d2885515",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-diyanet-takvim-geldi/01.webp",
+      "extension": ".webp",
+      "bytes": 35512,
+      "hash": "f51d4000265d45087eabbd6b4f47189946a1e44c2339eee4fdffa7aba788de74",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-kurban-vekaleti-son-gun/01-k.webp",
+      "extension": ".webp",
+      "bytes": 48698,
+      "hash": "bca3119e73acaccb2f3dbcd2c5fb2f947e8e38d8ba513d4eda3a5968ed534e9f",
+      "width": 480,
+      "height": 672,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-kurban-vekaleti-son-gun/01.webp",
+      "extension": ".webp",
+      "bytes": 108140,
+      "hash": "72bc8c0d90a189bf4de91091e3227cc9d8b3a5209074a0c75379aa24441f41d1",
+      "width": 686,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-notre-dame-turkce-dersi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 5842,
+      "hash": "5adbf795eb20041bcdd2d15e62540611fee64c56c4c98895e244bca6165f3338",
+      "width": 480,
+      "height": 203,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2018-notre-dame-turkce-dersi/01.webp",
+      "extension": ".webp",
+      "bytes": 8914,
+      "hash": "124f8a5c646288ea661882d2f32f9fe67936313127c906d5a2251834a4ee2648",
+      "width": 600,
+      "height": 254,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2019-bayram-namazi-haziran/01-k.webp",
+      "extension": ".webp",
+      "bytes": 17722,
+      "hash": "36767107593e5a91740beefffc33a493b80978c1131fe2caef6e84ff5a8d9afe",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2019-bayram-namazi-haziran/01.webp",
+      "extension": ".webp",
+      "bytes": 21888,
+      "hash": "070adf5ff7921edb3cd0a27addff4994a78a9c30961e819825d000f307c9246b",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2019-fitre-zekat-sadaka/01-k.webp",
+      "extension": ".webp",
+      "bytes": 24672,
+      "hash": "1ff5e0651428515d6bccbb2fdfdb855956f6fc2a47046b35478df6fae9036b8f",
+      "width": 480,
+      "height": 306,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2019-fitre-zekat-sadaka/01.webp",
+      "extension": ".webp",
+      "bytes": 51128,
+      "hash": "646cbacd4c290ce45f03fcb0fb855a84775de743eebdfab2c336313e94c90f0f",
+      "width": 720,
+      "height": 459,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2019-umre-programi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 60760,
+      "hash": "adad4f4a21897df67815bd5fcfc0a9e4a3592b2de5112c2e5c26f30a21f5ef71",
+      "width": 480,
+      "height": 674,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2019-umre-programi/01.webp",
+      "extension": ".webp",
+      "bytes": 387038,
+      "hash": "58dffea31ae8bfec29e114814f6bc42746e21162a5a7d1bde0fdaf746a009bc3",
+      "width": 1367,
+      "height": 1920,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-asure-ikrami/01-k.webp",
+      "extension": ".webp",
+      "bytes": 27956,
+      "hash": "49bb065260463ffa8be08c002d30360d3a5fc709eb3cd1a09b97e4d928882dd1",
+      "width": 480,
+      "height": 480,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-asure-ikrami/01.webp",
+      "extension": ".webp",
+      "bytes": 39414,
+      "hash": "9b9794c0213570a216b9a4a4d4ef5398c5a761a754110a01b7335e543bab72de",
+      "width": 500,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-biz-bize-yeteriz-nisan/01-k.webp",
+      "extension": ".webp",
+      "bytes": 13112,
+      "hash": "45dd730170dbcf7b5d256a776f89b9e4d41dc0a3d0cf9adfc7baf279e045c5fd",
+      "width": 480,
+      "height": 273,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-biz-bize-yeteriz-nisan/01.webp",
+      "extension": ".webp",
+      "bytes": 20120,
+      "hash": "0b144d67455235c6de6e5cea0d384d1c3c7e79f689adf2b37c09fda884ac9c65",
+      "width": 588,
+      "height": 334,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-cami-kapanma-mart/01-k.webp",
+      "extension": ".webp",
+      "bytes": 5440,
+      "hash": "33b84169ac94d426772a04a7ebc14e58d3db270d2bd930109226192a18fe9ea6",
+      "width": 480,
+      "height": 270,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-cami-kapanma-mart/01.webp",
+      "extension": ".webp",
+      "bytes": 9770,
+      "hash": "b3fa8d1434b409c5c1b8baad1a9d5aae7873063bcfc53715fe71416c7dd7377f",
+      "width": 640,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-kurban-bayrami-namazi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 25354,
+      "hash": "4766e53e8183da920cdcf8eb760118d84fd0f40aa1f9d55c44e7e151580f14e5",
+      "width": 480,
+      "height": 270,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-kurban-bayrami-namazi/01.webp",
+      "extension": ".webp",
+      "bytes": 88938,
+      "hash": "c82ffe56bd56e91464ab77acdec58e6c431758b5f774519f0ec8191aba576f4e",
+      "width": 850,
+      "height": 478,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-online-mukabele/01-k.webp",
+      "extension": ".webp",
+      "bytes": 15568,
+      "hash": "a82595e4bdd7bdf629dbc8df71c7c11965e8d25c25f55c0b84503b86f25c9a3a",
+      "width": 480,
+      "height": 269,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2020-online-mukabele/01.webp",
+      "extension": ".webp",
+      "bytes": 42906,
+      "hash": "ca9793d194dc5cb8b5835e9e14957bd88ee37cf3c55cfd44fee6cafce420264f",
+      "width": 840,
+      "height": 471,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/01-k.webp",
+      "extension": ".webp",
+      "bytes": 24494,
+      "hash": "556b73b020076576a531f7762c748bcf2de0675e85dacf04e8597e0891c32a8e",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/01.webp",
+      "extension": ".webp",
+      "bytes": 31292,
+      "hash": "cda9e96e9a4ce21b1333a53216eb00edcf23b278c116b57e129629ee6f671654",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/02-k.webp",
+      "extension": ".webp",
+      "bytes": 31416,
+      "hash": "5f4503c8c96cec64a10d7130bc7b7ff0663fc46e8dd5e06d0c863e3d154611dc",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/02.webp",
+      "extension": ".webp",
+      "bytes": 40374,
+      "hash": "67984866b571bb034518f8120d07c8e265cfa3bb30816a88a427c22bb6957778",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/03-k.webp",
+      "extension": ".webp",
+      "bytes": 19358,
+      "hash": "078b636b17c33b6ca26639046e7cd412eaa61feeb4de96c2c311d17279a7d4b3",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/03.webp",
+      "extension": ".webp",
+      "bytes": 24822,
+      "hash": "d61da02d7318051df8cc86ba77c2154db200d836c40a4890344a333fd6e0b26f",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/04-k.webp",
+      "extension": ".webp",
+      "bytes": 17048,
+      "hash": "f7ccdd2a2c82f462d1561563640e7192d9af13a73d8b1b60ddd32edb17f73c2e",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/04.webp",
+      "extension": ".webp",
+      "bytes": 22476,
+      "hash": "52c5b58e7b4a5cd7d7829cdf83fc0cca0018716a50f553d665fd7c899480252d",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/05-k.webp",
+      "extension": ".webp",
+      "bytes": 28988,
+      "hash": "857525cc18e6067044f38cb8efc70599f91d046d9a8ae90cc4ae5f69a35b7836",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-dernek-gezisi/05.webp",
+      "extension": ".webp",
+      "bytes": 37348,
+      "hash": "99824cdf7939b14572306548a9800b498e65d54a06b1d436b9a0ac949054040e",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/01-k.webp",
+      "extension": ".webp",
+      "bytes": 16782,
+      "hash": "3d2a0042db05f1af1ce5f1c1db0ca35a0d13f9c4054c86ed073b650f4b1ad9f1",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/01.webp",
+      "extension": ".webp",
+      "bytes": 50476,
+      "hash": "b84877fe282510fe011d0c32bf82ec667cd251fe3bdb7d4849f053ffa16eb51c",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/02-k.webp",
+      "extension": ".webp",
+      "bytes": 20906,
+      "hash": "8b12e66462141c9e158048d81ec52324d94e223758be9bedf2724d750fa11570",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/02.webp",
+      "extension": ".webp",
+      "bytes": 64808,
+      "hash": "c6480455727afd63c88cf6782bea228c62be3954a11d4b9ef6d533783c6c7392",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/03-k.webp",
+      "extension": ".webp",
+      "bytes": 20838,
+      "hash": "2f264d19c51ba6942110bf84ff5d34bcdf173a670467558ba6e52d3de672df83",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/03.webp",
+      "extension": ".webp",
+      "bytes": 65004,
+      "hash": "b52654de70da633517b2058754a5f5c5edc1a5dd104e82e8e55a084e65f4ebb2",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/04-k.webp",
+      "extension": ".webp",
+      "bytes": 46546,
+      "hash": "2a51175000a921c75042d8126aef4bb05cf2374bf45898de7ea6a6e327fc40f0",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/04.webp",
+      "extension": ".webp",
+      "bytes": 183416,
+      "hash": "2d86b20efa447d7727d7e1d5374435a1b988c4f40bc7991197ef3b258e1c4278",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/05-k.webp",
+      "extension": ".webp",
+      "bytes": 46372,
+      "hash": "00ee92cbf36c7e41408310a4e01e846c3718a8cc004c5b1e4ab79044fc284284",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-din-musaviri-ziyareti/05.webp",
+      "extension": ".webp",
+      "bytes": 183828,
+      "hash": "a78a80872a10e623c54d446a312add9ea59fa3e601b9aa105b4220747142df87",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/01-k.webp",
+      "extension": ".webp",
+      "bytes": 45488,
+      "hash": "9d2f493900cb311fccfb7d770906d12d98b46ca8b8e8d7ff921244a3476e45db",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/01.webp",
+      "extension": ".webp",
+      "bytes": 163304,
+      "hash": "77c2d3d9c7016a6b5a3230509b87a3c37cb67cd05820766ec41648ec2944c75b",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/02-k.webp",
+      "extension": ".webp",
+      "bytes": 54258,
+      "hash": "cc6c1e04992e024f048062de856c7a049d4d4a7bf104d1d8843116bcbad0047a",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/02.webp",
+      "extension": ".webp",
+      "bytes": 189532,
+      "hash": "842921bdb203e73a0147c0896d299158f00835b30122419882f2bba7f905ca86",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/03-k.webp",
+      "extension": ".webp",
+      "bytes": 25060,
+      "hash": "08274498eb9724202d0759b49d99e8b57701789d1da93948445fa65409373fc4",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/03.webp",
+      "extension": ".webp",
+      "bytes": 55602,
+      "hash": "b9fbe331f032535a9a40ab0fc85b231b81de42c3e989974cace67ec1feecb1b6",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/04-k.webp",
+      "extension": ".webp",
+      "bytes": 30006,
+      "hash": "2bfa3b12300aac915aeca68c4291458af4a594371d26b994732ed4595ec3ca19",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2021-genclerle-mangal/04.webp",
+      "extension": ".webp",
+      "bytes": 83338,
+      "hash": "b07c03402c120531e6b5ed7ceb72ab512f9c9c3243a8c557c0dbb5257d587bdc",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/01-k.webp",
+      "extension": ".webp",
+      "bytes": 79426,
+      "hash": "c6200657d89cfc798cb8482304618688f132bf347dac57f951225a9c7e7fa9bb",
+      "width": 480,
+      "height": 1028,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/01.webp",
+      "extension": ".webp",
+      "bytes": 180040,
+      "hash": "a4ddfd0716918ae60461ab788acbdb49e5a94c93a4198b403cacbd0da02c21b7",
+      "width": 747,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/02-k.webp",
+      "extension": ".webp",
+      "bytes": 35734,
+      "hash": "bc3adc181e0d55f0309ae0eb4bc084d7bed30fa6a331c7bc489b0e04deebea6d",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/02.webp",
+      "extension": ".webp",
+      "bytes": 344826,
+      "hash": "8fe498de5b566089c9c108e8a285cf096bc42f0a8b3a2e23c67e5ffa0ad0197d",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/03-k.webp",
+      "extension": ".webp",
+      "bytes": 27354,
+      "hash": "639a1fd3426efbcbece0df1f2560974566832c00b607e90d51cf7af3219d6c2f",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/03.webp",
+      "extension": ".webp",
+      "bytes": 194956,
+      "hash": "8cdbe1ae5c1aa0dba1bc1fc2ed2cde2875f16e8df9565dcca5f62ed87cf41027",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/04-k.webp",
+      "extension": ".webp",
+      "bytes": 41962,
+      "hash": "4d6341384bfd7140d3c61c6a9f68dde68c2346904cd2615a05935a045b4a58d2",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/04.webp",
+      "extension": ".webp",
+      "bytes": 355072,
+      "hash": "7cf71fd10e7609b7bd67d4ba3bd37a47a6cde682b87dfa71c6d71bc3b4471ed1",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/05-k.webp",
+      "extension": ".webp",
+      "bytes": 38636,
+      "hash": "92ae50149c7f1f30d669bb45bd79ed32d6d07832ac0ae7eb31829562917e5d01",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2024-namur-bolgesi-bulusma/05.webp",
+      "extension": ".webp",
+      "bytes": 323444,
+      "hash": "6e36fa235072b79bc5be91a01acadb5cb2d1521c1d636fd8b002a91f0b7869c4",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2025-baskonsolos-ziyareti/01-k.webp",
+      "extension": ".webp",
+      "bytes": 38836,
+      "hash": "4793023750a80b2cd239b6fda5ddad1cb4ab16d3effb4fc11cc10ce912a4834e",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2025-baskonsolos-ziyareti/01.webp",
+      "extension": ".webp",
+      "bytes": 147858,
+      "hash": "0cc73d4c5525f85a1c8876f724604722299d2fa0d36478d5b33fd8e10d773ae9",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2025-belediye-baskani-iftar/01-k.webp",
+      "extension": ".webp",
+      "bytes": 37026,
+      "hash": "b35d6e9a139048faf124312eabbe6e818ce1cf7eb8864171019e5c7c5e26e297",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2025-belediye-baskani-iftar/01.webp",
+      "extension": ".webp",
+      "bytes": 203452,
+      "hash": "d5660ca37e3e2a83b71649ad8955782cad85bbea3fa6ab9a2f5150ce1a29a8d3",
+      "width": 1200,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2025-belediye-baskani-iftar/02-k.webp",
+      "extension": ".webp",
+      "bytes": 26148,
+      "hash": "59ca95103b244a6c8c9ffd2c945b3d84ed1a66a9d309082e809f6c9dc4944e50",
+      "width": 480,
+      "height": 221,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2025-belediye-baskani-iftar/02.webp",
+      "extension": ".webp",
+      "bytes": 315602,
+      "hash": "fa8c392422b494fbd888d467a54b0b9531717527e773179576c888b0b3a61c2e",
+      "width": 1600,
+      "height": 739,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 23542,
+      "hash": "581a8246ae5b5987a2522ce3933400ec6f0ca015bfa188e0f0c5e53eeb9b4259",
+      "width": 740,
+      "height": 416,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu.webp",
+      "extension": ".webp",
+      "bytes": 115134,
+      "hash": "7255ee83f409a1eade051be7b111b1271032545d04eda90025a1c14fcc9d0892",
+      "width": 1600,
+      "height": 2000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2026-kurban-vekaleti/01-k.webp",
+      "extension": ".webp",
+      "bytes": 27820,
+      "hash": "cd6e27ae3c3259fdfc89f0768aadeb54f6125ea1d7b7f396e969e454afb7c13c",
+      "width": 480,
+      "height": 672,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2026-kurban-vekaleti/01.webp",
+      "extension": ".webp",
+      "bytes": 97690,
+      "hash": "1b83cb55d3f20b80c748242f81c34d187ae9ab0cdcee953c10c39d1d9d0453f1",
+      "width": 1024,
+      "height": 1434,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2026-yonetim-devir-teslim/01-k.webp",
+      "extension": ".webp",
+      "bytes": 19386,
+      "hash": "2e5769d738cfbd2fba99f1d13d238d89e6a6e125857c81eb3cc15099a8ead550",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2026-yonetim-devir-teslim/01.webp",
+      "extension": ".webp",
+      "bytes": 131628,
+      "hash": "7f1e74c50df97528824ea00c7ef4349f961e547fcf605b6f9e90116061d94d2c",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2027-hac-onkayit-afis-thumb.webp",
+      "extension": ".webp",
+      "bytes": 41408,
+      "hash": "01ca40f873ff9c7fb7adbcd5f05e9a707dd11b504a94e5c9ada6d39599ff97e9",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/2027-hac-onkayit-afis.webp",
+      "extension": ".webp",
+      "bytes": 216742,
+      "hash": "520d344483d223bce5a27363eca00a63112a7426e54307dc8d78ff1b7f3eec5a",
+      "width": 1280,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/carsamba-programi-2026-thumb.webp",
+      "extension": ".webp",
+      "bytes": 38340,
+      "hash": "3bfa589632ae5ec888ff2b01d8cf0240b43460da378822bea6948830c9d902ce",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/carsamba-programi-2026.webp",
+      "extension": ".webp",
+      "bytes": 123984,
+      "hash": "f6a2cd3242adf6d5891e8f608375ab1f4434b0b9989e4b656080424ea1d12293",
+      "width": 1080,
+      "height": 1350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/hafta-sonu-dersleri-2026-thumb.webp",
+      "extension": ".webp",
+      "bytes": 24322,
+      "hash": "e7e5af61515142cfa3c6b01299396787d5c7ea3772682e64de6f4e0c9d580fd2",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/hafta-sonu-dersleri-2026.webp",
+      "extension": ".webp",
+      "bytes": 90536,
+      "hash": "a7bf39cf55d5894c4927f7c8d677a619aac6e3e3e7df1383df62576b4347d960",
+      "width": 1080,
+      "height": 1350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/kuran-kursu-basladi-2026-thumb.webp",
+      "extension": ".webp",
+      "bytes": 24780,
+      "hash": "c6c791b36fbe9fc4a035d3c3166c551bc3c6fac962bd2fee001f9a2699c12f3e",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/kuran-kursu-basladi-2026.webp",
+      "extension": ".webp",
+      "bytes": 127322,
+      "hash": "be29ef502492178f3dce22bacb1635ce0b3e0286f083a26c3d00207b9a44d242",
+      "width": 1600,
+      "height": 2000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/mevlid-i-nebi-haftasi-2026-thumb.webp",
+      "extension": ".webp",
+      "bytes": 16380,
+      "hash": "ea93717094f4f49f2c48ccfa7d3fe887cb96c74aa1537a373a5dd8cc1af73ca8",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/mevlid-i-nebi-haftasi-2026.webp",
+      "extension": ".webp",
+      "bytes": 101572,
+      "hash": "b1fb7a24380370b4d1831d1d9f5df3093c0bcb22231499e0d4c1e62c9110a4fd",
+      "width": 1280,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/taif-umresi-2026-afis-thumb.webp",
+      "extension": ".webp",
+      "bytes": 52918,
+      "hash": "97e147c37e231c64fb8a8d557d3e58bc9edf1cf7033b284674eca2ac20ed2ff9",
+      "width": 480,
+      "height": 678,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/taif-umresi-2026-afis.webp",
+      "extension": ".webp",
+      "bytes": 201352,
+      "hash": "7685d12d31bd9656911aadebc7a68cc73a21d6c80d19506bab959d7d36ae54d6",
+      "width": 1024,
+      "height": 1448,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/veli-portali-2026-afis-thumb.webp",
+      "extension": ".webp",
+      "bytes": 22776,
+      "hash": "afb68d2c1afe3f0f795c472360535ab829a44ff1b04d4e01f8618da1de513a84",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/veli-portali-2026-afis.webp",
+      "extension": ".webp",
+      "bytes": 93306,
+      "hash": "7f4b085d08faf5198c3f7654502d5061bd804ba2d2dffcedd2a65a664d1eedf7",
+      "width": 1080,
+      "height": 1350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/veli-portali-2026-ekran-thumb.webp",
+      "extension": ".webp",
+      "bytes": 8178,
+      "hash": "e0a11d1f1bb1ca5ed0f460338d82076bcedc149007d2b1e2f9dbbf34a5d83d8f",
+      "width": 480,
+      "height": 300,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/veli-portali-2026-ekran.webp",
+      "extension": ".webp",
+      "bytes": 62636,
+      "hash": "d32067e373faa19cbfd965babecc118afa3df4dfc5c3d731008d482ca0daffc7",
+      "width": 1600,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/yurtdisi-sozlesmeli-din-gorevlisi-2026-thumb.webp",
+      "extension": ".webp",
+      "bytes": 25056,
+      "hash": "5e7d6ec64e25116207e00993108b6db910c37c7f5350585ecb8ff92986108883",
+      "width": 480,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/duyurular/yurtdisi-sozlesmeli-din-gorevlisi-2026.webp",
+      "extension": ".webp",
+      "bytes": 89238,
+      "hash": "1bb0f3c2ad5904b9140943ea8f067951855c95634fe4a992a439b76f8891f4bc",
+      "width": 1080,
+      "height": 1350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/eposta/kurs-gpt-kaynak-v1.png",
+      "extension": ".png",
+      "bytes": 2398709,
+      "hash": "b76570f3c1f5d2122664c495dd49bd8d3742798b4bb8f9056da6830ca2997265",
+      "width": 2172,
+      "height": 724,
+      "format": "png"
+    },
+    {
+      "path": "public/media/eposta/kurs-kurumsal-v1.gif",
+      "extension": ".gif",
+      "bytes": 805557,
+      "hash": "dac2556cef1d543bd3ff398b85ccfca12209c933bab27c47135c11549a8372f1",
+      "width": 600,
+      "height": 8000,
+      "format": "gif"
+    },
+    {
+      "path": "public/media/eposta/kurs-kurumsal-v1.jpg",
+      "extension": ".jpg",
+      "bytes": 32082,
+      "hash": "6eb8b854f7da9c96c8cc5d143f16f9681f988a474a1193e11748ff1cd1dfed6b",
+      "width": 600,
+      "height": 200,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/etkinlikler/23-nisan-kutlamasi-2018/01-k.webp",
+      "extension": ".webp",
+      "bytes": 40602,
+      "hash": "5ebf69a265ac0b24ff12e7f2a6e1af67db2d976f046a09d94a86e6e2695aaa7b",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/23-nisan-kutlamasi-2018/01.webp",
+      "extension": ".webp",
+      "bytes": 165272,
+      "hash": "df10b55df9e1020fcd047a4317e35ad8db8bd362b71ca10ed971c2defac6f4d6",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/23-nisan-kutlamasi-2018/02-k.webp",
+      "extension": ".webp",
+      "bytes": 65090,
+      "hash": "2413e842e7e3488a211f0b21a55196ba941e5a38e980c85b01c8bce5433cc5bd",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/23-nisan-kutlamasi-2018/02.webp",
+      "extension": ".webp",
+      "bytes": 144114,
+      "hash": "bba75db3071873378b7956fe4d0cac3ec7d2215fbf2ba33649e12040ca25f2eb",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/asure-ikrami-2020/01-k.webp",
+      "extension": ".webp",
+      "bytes": 27956,
+      "hash": "49bb065260463ffa8be08c002d30360d3a5fc709eb3cd1a09b97e4d928882dd1",
+      "width": 480,
+      "height": 480,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/asure-ikrami-2020/01.webp",
+      "extension": ".webp",
+      "bytes": 39414,
+      "hash": "9b9794c0213570a216b9a4a4d4ef5398c5a761a754110a01b7335e543bab72de",
+      "width": 500,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/asure-ikrami-cuma-programi-2017/01-k.webp",
+      "extension": ".webp",
+      "bytes": 16264,
+      "hash": "68cf09846ca3f058cc2e0ff94f754153bcf845b05e38c5dd9377e371a74de97c",
+      "width": 520,
+      "height": 347,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/asure-ikrami-cuma-programi-2017/01.webp",
+      "extension": ".webp",
+      "bytes": 35118,
+      "hash": "44d39c314f2dbd9876de544c1093676d94cd3b7d0e7bb34fe4fb0ec8905f8afe",
+      "width": 810,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/baskonsolos-ziyareti-2025/01-k.webp",
+      "extension": ".webp",
+      "bytes": 38836,
+      "hash": "4793023750a80b2cd239b6fda5ddad1cb4ab16d3effb4fc11cc10ce912a4834e",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/baskonsolos-ziyareti-2025/01.webp",
+      "extension": ".webp",
+      "bytes": 147858,
+      "hash": "0cc73d4c5525f85a1c8876f724604722299d2fa0d36478d5b33fd8e10d773ae9",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/belediye-baskani-iftar-2025/01-k.webp",
+      "extension": ".webp",
+      "bytes": 37026,
+      "hash": "b35d6e9a139048faf124312eabbe6e818ce1cf7eb8864171019e5c7c5e26e297",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/belediye-baskani-iftar-2025/01.webp",
+      "extension": ".webp",
+      "bytes": 203452,
+      "hash": "d5660ca37e3e2a83b71649ad8955782cad85bbea3fa6ab9a2f5150ce1a29a8d3",
+      "width": 1200,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/belediye-baskani-iftar-2025/02-k.webp",
+      "extension": ".webp",
+      "bytes": 26148,
+      "hash": "59ca95103b244a6c8c9ffd2c945b3d84ed1a66a9d309082e809f6c9dc4944e50",
+      "width": 480,
+      "height": 221,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/belediye-baskani-iftar-2025/02.webp",
+      "extension": ".webp",
+      "bytes": 315602,
+      "hash": "fa8c392422b494fbd888d467a54b0b9531717527e773179576c888b0b3a61c2e",
+      "width": 1600,
+      "height": 739,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/biz-bize-yeteriz-2020/01-k.webp",
+      "extension": ".webp",
+      "bytes": 53490,
+      "hash": "770283851dcefe382e87afbc3ad609844be8e0a7b536c93c4ebff8667f88cf21",
+      "width": 520,
+      "height": 862,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/biz-bize-yeteriz-2020/01.webp",
+      "extension": ".webp",
+      "bytes": 70620,
+      "hash": "61423db18b669bacce9021b9617f456d804d44ab994c6d6b9d60c57b9bdc2df2",
+      "width": 526,
+      "height": 872,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/biz-bize-yeteriz-2020/02-k.webp",
+      "extension": ".webp",
+      "bytes": 13112,
+      "hash": "45dd730170dbcf7b5d256a776f89b9e4d41dc0a3d0cf9adfc7baf279e045c5fd",
+      "width": 480,
+      "height": 273,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/biz-bize-yeteriz-2020/02.webp",
+      "extension": ".webp",
+      "bytes": 20120,
+      "hash": "0b144d67455235c6de6e5cea0d384d1c3c7e79f689adf2b37c09fda884ac9c65",
+      "width": 588,
+      "height": 334,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/cami-halilarinin-yenilenmesi-2017/01-k.webp",
+      "extension": ".webp",
+      "bytes": 73564,
+      "hash": "3de070b9186a4988ab4f55c985c0935fe79c79887c1f934611dfae159b40bb40",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/cami-halilarinin-yenilenmesi-2017/01.webp",
+      "extension": ".webp",
+      "bytes": 193510,
+      "hash": "ad4f2404c0a246c598423e618986b983596fc3ae057599d706d0f7df543eaca3",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/cami-halilarinin-yenilenmesi-2017/02-k.webp",
+      "extension": ".webp",
+      "bytes": 20972,
+      "hash": "9fef0794feed7e102f3d6cd651bf10bfcc0f8e3a939a1c0e136b06bd798403f9",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/cami-halilarinin-yenilenmesi-2017/02.webp",
+      "extension": ".webp",
+      "bytes": 55940,
+      "hash": "14e4be59b7d987825236ead98ca431f168e1624ca9fb1bb6d9f9eeb01fd15e76",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/cami-halilarinin-yenilenmesi-2017/03-k.webp",
+      "extension": ".webp",
+      "bytes": 26848,
+      "hash": "ec9a8b36267a645402a7fbb62bf00fd6f2a6ece97242cbf334a55025f882d973",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/cami-halilarinin-yenilenmesi-2017/03.webp",
+      "extension": ".webp",
+      "bytes": 133168,
+      "hash": "531ed0a3d2c6323a43a35f9271c9d0deee1c13320aa5d1705bc66b7d001f491f",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/01-k.webp",
+      "extension": ".webp",
+      "bytes": 24494,
+      "hash": "556b73b020076576a531f7762c748bcf2de0675e85dacf04e8597e0891c32a8e",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/01.webp",
+      "extension": ".webp",
+      "bytes": 31292,
+      "hash": "cda9e96e9a4ce21b1333a53216eb00edcf23b278c116b57e129629ee6f671654",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/02-k.webp",
+      "extension": ".webp",
+      "bytes": 31416,
+      "hash": "5f4503c8c96cec64a10d7130bc7b7ff0663fc46e8dd5e06d0c863e3d154611dc",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/02.webp",
+      "extension": ".webp",
+      "bytes": 40374,
+      "hash": "67984866b571bb034518f8120d07c8e265cfa3bb30816a88a427c22bb6957778",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/03-k.webp",
+      "extension": ".webp",
+      "bytes": 19358,
+      "hash": "078b636b17c33b6ca26639046e7cd412eaa61feeb4de96c2c311d17279a7d4b3",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/03.webp",
+      "extension": ".webp",
+      "bytes": 24822,
+      "hash": "d61da02d7318051df8cc86ba77c2154db200d836c40a4890344a333fd6e0b26f",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/04-k.webp",
+      "extension": ".webp",
+      "bytes": 17048,
+      "hash": "f7ccdd2a2c82f462d1561563640e7192d9af13a73d8b1b60ddd32edb17f73c2e",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/04.webp",
+      "extension": ".webp",
+      "bytes": 22476,
+      "hash": "52c5b58e7b4a5cd7d7829cdf83fc0cca0018716a50f553d665fd7c899480252d",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/05-k.webp",
+      "extension": ".webp",
+      "bytes": 28988,
+      "hash": "857525cc18e6067044f38cb8efc70599f91d046d9a8ae90cc4ae5f69a35b7836",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/dernek-gezisi-2021/05.webp",
+      "extension": ".webp",
+      "bytes": 37348,
+      "hash": "99824cdf7939b14572306548a9800b498e65d54a06b1d436b9a0ac949054040e",
+      "width": 442,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/01-k.webp",
+      "extension": ".webp",
+      "bytes": 16782,
+      "hash": "3d2a0042db05f1af1ce5f1c1db0ca35a0d13f9c4054c86ed073b650f4b1ad9f1",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/01.webp",
+      "extension": ".webp",
+      "bytes": 50476,
+      "hash": "b84877fe282510fe011d0c32bf82ec667cd251fe3bdb7d4849f053ffa16eb51c",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/02-k.webp",
+      "extension": ".webp",
+      "bytes": 20906,
+      "hash": "8b12e66462141c9e158048d81ec52324d94e223758be9bedf2724d750fa11570",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/02.webp",
+      "extension": ".webp",
+      "bytes": 64808,
+      "hash": "c6480455727afd63c88cf6782bea228c62be3954a11d4b9ef6d533783c6c7392",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/03-k.webp",
+      "extension": ".webp",
+      "bytes": 20838,
+      "hash": "2f264d19c51ba6942110bf84ff5d34bcdf173a670467558ba6e52d3de672df83",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/03.webp",
+      "extension": ".webp",
+      "bytes": 65004,
+      "hash": "b52654de70da633517b2058754a5f5c5edc1a5dd104e82e8e55a084e65f4ebb2",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/04-k.webp",
+      "extension": ".webp",
+      "bytes": 46546,
+      "hash": "2a51175000a921c75042d8126aef4bb05cf2374bf45898de7ea6a6e327fc40f0",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/04.webp",
+      "extension": ".webp",
+      "bytes": 183416,
+      "hash": "2d86b20efa447d7727d7e1d5374435a1b988c4f40bc7991197ef3b258e1c4278",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/05-k.webp",
+      "extension": ".webp",
+      "bytes": 46372,
+      "hash": "00ee92cbf36c7e41408310a4e01e846c3718a8cc004c5b1e4ab79044fc284284",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/din-musaviri-mevlid-ziyareti-2021/05.webp",
+      "extension": ".webp",
+      "bytes": 183828,
+      "hash": "a78a80872a10e623c54d446a312add9ea59fa3e601b9aa105b4220747142df87",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/fitre-zekat-2020/01-k.webp",
+      "extension": ".webp",
+      "bytes": 12246,
+      "hash": "8386137dc880145d8126657dc8a7cd97d352b5298cf15dac58f782fcdbf4f6ee",
+      "width": 500,
+      "height": 261,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/fitre-zekat-2020/01.webp",
+      "extension": ".webp",
+      "bytes": 15218,
+      "hash": "737b766fa1a9b87f067699478b0be6ba49a9622583f53e6ddabddc1094bc2724",
+      "width": 500,
+      "height": 261,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/01-k.webp",
+      "extension": ".webp",
+      "bytes": 45488,
+      "hash": "9d2f493900cb311fccfb7d770906d12d98b46ca8b8e8d7ff921244a3476e45db",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/01.webp",
+      "extension": ".webp",
+      "bytes": 163304,
+      "hash": "77c2d3d9c7016a6b5a3230509b87a3c37cb67cd05820766ec41648ec2944c75b",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/02-k.webp",
+      "extension": ".webp",
+      "bytes": 54258,
+      "hash": "cc6c1e04992e024f048062de856c7a049d4d4a7bf104d1d8843116bcbad0047a",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/02.webp",
+      "extension": ".webp",
+      "bytes": 189532,
+      "hash": "842921bdb203e73a0147c0896d299158f00835b30122419882f2bba7f905ca86",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/03-k.webp",
+      "extension": ".webp",
+      "bytes": 25060,
+      "hash": "08274498eb9724202d0759b49d99e8b57701789d1da93948445fa65409373fc4",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/03.webp",
+      "extension": ".webp",
+      "bytes": 55602,
+      "hash": "b9fbe331f032535a9a40ab0fc85b231b81de42c3e989974cace67ec1feecb1b6",
+      "width": 720,
+      "height": 960,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/04-k.webp",
+      "extension": ".webp",
+      "bytes": 30006,
+      "hash": "2bfa3b12300aac915aeca68c4291458af4a594371d26b994732ed4595ec3ca19",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/genclerle-mangal-2021/04.webp",
+      "extension": ".webp",
+      "bytes": 83338,
+      "hash": "b07c03402c120531e6b5ed7ceb72ab512f9c9c3243a8c557c0dbb5257d587bdc",
+      "width": 960,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/iftar-programi-2019/01-k.webp",
+      "extension": ".webp",
+      "bytes": 21612,
+      "hash": "6ce92e87e2e33541b948fdd5adc26143f918c28dda9409a5993402f1384ef726",
+      "width": 520,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/iftar-programi-2019/01.webp",
+      "extension": ".webp",
+      "bytes": 43842,
+      "hash": "967ab321d0cc32e85c31a51e23cfdbe5e55dbba0192751ba60f667f8a5b13a18",
+      "width": 780,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/kurban-vekaleti-2019/01-k.webp",
+      "extension": ".webp",
+      "bytes": 49354,
+      "hash": "3b507ced7bb8a8e218c05e0dc5f8ecfce3116965ce614d10963a5767dcb41af7",
+      "width": 520,
+      "height": 783,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/kurban-vekaleti-2019/01.webp",
+      "extension": ".webp",
+      "bytes": 64646,
+      "hash": "98c301bc5a4f0b737fe7d178893696da499b9222aea067031726a54b3ae42766",
+      "width": 526,
+      "height": 792,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/mevlid-i-nebi-2019/01-k.webp",
+      "extension": ".webp",
+      "bytes": 12008,
+      "hash": "bd413875d7e18763a100cb8af1e077ced87610d5c2af356eaac74ffd18477d55",
+      "width": 520,
+      "height": 350,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/mevlid-i-nebi-2019/01.webp",
+      "extension": ".webp",
+      "bytes": 25928,
+      "hash": "6b9c4210543cea324eeb0fbeaa55fd8802bab1a4ade6347f9bf33b9920d4b597",
+      "width": 802,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/mevlid-kandili-2026/afis-thumb.webp",
+      "extension": ".webp",
+      "bytes": 38372,
+      "hash": "5e5c2638fbc5e3fbf2760e681c11a3e7c658cdfb37bbf852b635bffaa629178c",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/mevlid-kandili-2026/afis.webp",
+      "extension": ".webp",
+      "bytes": 143616,
+      "hash": "972ce9db83fc070a020663daa7d9435cf802cf0f8e566bbb18d0ea5367e7e401",
+      "width": 1600,
+      "height": 2000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/01-k.webp",
+      "extension": ".webp",
+      "bytes": 79426,
+      "hash": "c6200657d89cfc798cb8482304618688f132bf347dac57f951225a9c7e7fa9bb",
+      "width": 480,
+      "height": 1028,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/01.webp",
+      "extension": ".webp",
+      "bytes": 180040,
+      "hash": "a4ddfd0716918ae60461ab788acbdb49e5a94c93a4198b403cacbd0da02c21b7",
+      "width": 747,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/02-k.webp",
+      "extension": ".webp",
+      "bytes": 35734,
+      "hash": "bc3adc181e0d55f0309ae0eb4bc084d7bed30fa6a331c7bc489b0e04deebea6d",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/02.webp",
+      "extension": ".webp",
+      "bytes": 344826,
+      "hash": "8fe498de5b566089c9c108e8a285cf096bc42f0a8b3a2e23c67e5ffa0ad0197d",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/03-k.webp",
+      "extension": ".webp",
+      "bytes": 27354,
+      "hash": "639a1fd3426efbcbece0df1f2560974566832c00b607e90d51cf7af3219d6c2f",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/03.webp",
+      "extension": ".webp",
+      "bytes": 194956,
+      "hash": "8cdbe1ae5c1aa0dba1bc1fc2ed2cde2875f16e8df9565dcca5f62ed87cf41027",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/04-k.webp",
+      "extension": ".webp",
+      "bytes": 41962,
+      "hash": "4d6341384bfd7140d3c61c6a9f68dde68c2346904cd2615a05935a045b4a58d2",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/04.webp",
+      "extension": ".webp",
+      "bytes": 355072,
+      "hash": "7cf71fd10e7609b7bd67d4ba3bd37a47a6cde682b87dfa71c6d71bc3b4471ed1",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/05-k.webp",
+      "extension": ".webp",
+      "bytes": 38636,
+      "hash": "92ae50149c7f1f30d669bb45bd79ed32d6d07832ac0ae7eb31829562917e5d01",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/namur-bolgesi-bulusmasi-2024/05.webp",
+      "extension": ".webp",
+      "bytes": 323444,
+      "hash": "6e36fa235072b79bc5be91a01acadb5cb2d1521c1d636fd8b002a91f0b7869c4",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/tdv-vekaletle-kurban-2026/01-k.webp",
+      "extension": ".webp",
+      "bytes": 27820,
+      "hash": "cd6e27ae3c3259fdfc89f0768aadeb54f6125ea1d7b7f396e969e454afb7c13c",
+      "width": 480,
+      "height": 672,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/tdv-vekaletle-kurban-2026/01.webp",
+      "extension": ".webp",
+      "bytes": 97690,
+      "hash": "1b83cb55d3f20b80c748242f81c34d187ae9ab0cdcee953c10c39d1d9d0453f1",
+      "width": 1024,
+      "height": 1434,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/yonetim-kurulu-devir-teslim-2026/01-k.webp",
+      "extension": ".webp",
+      "bytes": 19386,
+      "hash": "2e5769d738cfbd2fba99f1d13d238d89e6a6e125857c81eb3cc15099a8ead550",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/etkinlikler/yonetim-kurulu-devir-teslim-2026/01.webp",
+      "extension": ".webp",
+      "bytes": 131628,
+      "hash": "7f1e74c50df97528824ea00c7ef4349f961e547fcf605b6f9e90116061d94d2c",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-01-thumb.webp",
+      "extension": ".webp",
+      "bytes": 49416,
+      "hash": "aef527346230ac67fd66c10af0b593db05d5a721231929339f8598b9e6de1579",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-01.webp",
+      "extension": ".webp",
+      "bytes": 657222,
+      "hash": "dc8eb2d3098105b16a2873c62583ae90fe6e468a8164edd51a0e7e0937acd46b",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-02-thumb.webp",
+      "extension": ".webp",
+      "bytes": 32860,
+      "hash": "f277f4b3841edc4dd2c763dfdc985b5203803fdf3b698e3422dd333acc314a92",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-02.webp",
+      "extension": ".webp",
+      "bytes": 441072,
+      "hash": "846e7d06498a2c32bc917926b9da6b18feb670f4212d0221c60983594c0ffc42",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-03-thumb.webp",
+      "extension": ".webp",
+      "bytes": 35472,
+      "hash": "9a2116992eee78bfce55ecb69b4bff411b0a85c9ff9d5c59a855aa0c018c1fbc",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-03.webp",
+      "extension": ".webp",
+      "bytes": 434508,
+      "hash": "13c18376b67dfe8b87efacb2c48411648e2b03b50fc1ea3d6b50bf7254ecfb00",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-04-thumb.webp",
+      "extension": ".webp",
+      "bytes": 50752,
+      "hash": "e6fa074e9eb30cf5915f37d2deb6b873a513b1dbeda2cfa326b4f441e13bc17f",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-04.webp",
+      "extension": ".webp",
+      "bytes": 631426,
+      "hash": "44dc6e058ef38b8eac9691b3bf1daf9af83a9549b9c7f11ea6f26eaed3dc439e",
+      "width": 1536,
+      "height": 2048,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-05-thumb.webp",
+      "extension": ".webp",
+      "bytes": 52506,
+      "hash": "6eb4ac005bd02ec14d64e8f010921ee11874f4f441bdad70c7e0bc6253cf5f8b",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-05.webp",
+      "extension": ".webp",
+      "bytes": 627016,
+      "hash": "13ebea69dfea740a4dcfa82d8160acc63c504798e810904a6e6d086d7eb766f3",
+      "width": 1536,
+      "height": 2048,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-06-thumb.webp",
+      "extension": ".webp",
+      "bytes": 35062,
+      "hash": "edfcfe134b68a6b51060ce3b1863aaf70f36a9f0b7a06a03b9b8ba069ad9e8b6",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-06.webp",
+      "extension": ".webp",
+      "bytes": 508080,
+      "hash": "06753f77c139c893983d41c32751306d3fde95f9d711f11ad834e2b48404cf42",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-07-thumb.webp",
+      "extension": ".webp",
+      "bytes": 31338,
+      "hash": "d66fc40e1dfc7a62ca825a683ea3d8c452a6bfe7947f046f77e3d413ded1acd6",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-07.webp",
+      "extension": ".webp",
+      "bytes": 401778,
+      "hash": "bda2b83b98ae241b39fa498ea0c35919110ef745b55ba11cea87a3b242b4db17",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-08-thumb.webp",
+      "extension": ".webp",
+      "bytes": 9318,
+      "hash": "9ae7290416b13d5b6b6f958721a8aee4c14406b7c34824404a0bb3c51d8b1d8d",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-08.webp",
+      "extension": ".webp",
+      "bytes": 95186,
+      "hash": "a13e8c31b6c4d6e9d718fc4cd0822765ff3fa6598f865f74f219dadd26ba81e0",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-09-thumb.webp",
+      "extension": ".webp",
+      "bytes": 15136,
+      "hash": "bb66474ed7a55e5165e0a645b9eab7e7a575437ab3ffa3c0e4e0040df3717aec",
+      "width": 480,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-09.webp",
+      "extension": ".webp",
+      "bytes": 205616,
+      "hash": "b36a11e971777b836c9322743cbdf99060f159a9edc829979631f58c3a6ada6f",
+      "width": 1536,
+      "height": 2048,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-10-thumb.webp",
+      "extension": ".webp",
+      "bytes": 10536,
+      "hash": "7d6f3f115460480bb6193fc94c90674d6d8a61a9fef8566b5c53360e934a3578",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-10.webp",
+      "extension": ".webp",
+      "bytes": 79752,
+      "hash": "2cb734539952672b197d646941a5bc2b35aaac0ebe247e2a7ce0818355c45c65",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-11-thumb.webp",
+      "extension": ".webp",
+      "bytes": 24938,
+      "hash": "22990a23f98e855addba0d3a3fb4d9a92d4e9f5546b987daa0eb547972cd37b7",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-11.webp",
+      "extension": ".webp",
+      "bytes": 408310,
+      "hash": "594eca12518bb129f751903bf2559ee1b000cbb4c470ed34b58479b5ce8f45d7",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-12-thumb.webp",
+      "extension": ".webp",
+      "bytes": 25758,
+      "hash": "75172fbd7fabb8f45ec1d89c2a9579752f8547cbec5ef3743645ef9bca0f0615",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-12.webp",
+      "extension": ".webp",
+      "bytes": 395592,
+      "hash": "547bdfbdebc0630c889a317fffa871f404ce4b9cc425faf18fab96d15fbb3635",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-13-thumb.webp",
+      "extension": ".webp",
+      "bytes": 26934,
+      "hash": "3e618f84691222a0a611c8365e2e3dce51f7e8687a6b3555081c22919f50c54b",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-13.webp",
+      "extension": ".webp",
+      "bytes": 320094,
+      "hash": "b4152007908553d0a1fa701fc2e67e096bf0816017bacf1f053dc133e0d3c3b8",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-14-thumb.webp",
+      "extension": ".webp",
+      "bytes": 26790,
+      "hash": "b08bdeb3a08edd0b46f25f972419cfc4796fece87eab3b6f2555ff32d509cfae",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-14.webp",
+      "extension": ".webp",
+      "bytes": 398478,
+      "hash": "3ec64cff52fe9d1fe8d3e36f33fdd42b2509f220527ade5ebb79a58b7162e5db",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-15-thumb.webp",
+      "extension": ".webp",
+      "bytes": 39760,
+      "hash": "ccf7acdebdb98eee3f2b2dbbdf45aad48112c5726828ed3753618683bbf75ee8",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-15.webp",
+      "extension": ".webp",
+      "bytes": 485918,
+      "hash": "dd29a9ca12600dd7b949fe64c3e60c811f0fb24a453b747ff3f9dc6c5042aa98",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-16-thumb.webp",
+      "extension": ".webp",
+      "bytes": 26620,
+      "hash": "bfe0c15f353e7f55e1a912ae414ec1c35954600bba4a0b7a9500a9f784911a83",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-16.webp",
+      "extension": ".webp",
+      "bytes": 315364,
+      "hash": "791114117847d8605734949367b86c526605d5f54f4f999a98751f34f1b2e4e9",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-17-thumb.webp",
+      "extension": ".webp",
+      "bytes": 33942,
+      "hash": "c27883d5186c7f688f8b78ee48639039e95a414034a1f9028455d29cffff9e99",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-17.webp",
+      "extension": ".webp",
+      "bytes": 382766,
+      "hash": "23f3b04f4d14b6fd7a44efd53c8789dda9f0b1faf4c13d028f7a7b2159cf986e",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-18-thumb.webp",
+      "extension": ".webp",
+      "bytes": 24610,
+      "hash": "590d267da1f5d158c50495571237098286c6785bf6e5bafb61e0a2d0d285583a",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-18.webp",
+      "extension": ".webp",
+      "bytes": 266350,
+      "hash": "1554369fb6214ea6e406a09dbb8ff76d0563ae77a7ef6994f955d009d3159981",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-19-thumb.webp",
+      "extension": ".webp",
+      "bytes": 23172,
+      "hash": "51d11345315e22728acbd623a5aa322ad196135ace140ed8c26c3878db3562a4",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-19.webp",
+      "extension": ".webp",
+      "bytes": 320556,
+      "hash": "48849d4969b913216c6dd5cbfcc8425036ea5504f60df724fc23b66da32e2483",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-20-thumb.webp",
+      "extension": ".webp",
+      "bytes": 18312,
+      "hash": "39ac244bb61d464d1a6319703a78297f19bc5c74643dd2addda5c32d582d646d",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-20.webp",
+      "extension": ".webp",
+      "bytes": 196386,
+      "hash": "0a9945bf8684b70c6c80610733a688cce24316fe8c61851cc48821d6da4bc7b7",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-21-thumb.webp",
+      "extension": ".webp",
+      "bytes": 16684,
+      "hash": "592384481130621022fa75761c8a4e6daef5caba724499cda6705a536d37366f",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-21.webp",
+      "extension": ".webp",
+      "bytes": 190134,
+      "hash": "0598215249681ca2bfcac49b92f4ccf4f5ec0bd63e5aa4611c5cf3862e804de2",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-22-thumb.webp",
+      "extension": ".webp",
+      "bytes": 16546,
+      "hash": "1f3339c9b8d2fad569c2a8015efb933f32743fb5f2b3e321011ef22e814e18c0",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-22.webp",
+      "extension": ".webp",
+      "bytes": 194952,
+      "hash": "e43a8bec86bf7f62d07dbf2d55508e64eeabff8909c0af810ba09e522bbfd2be",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-23-thumb.webp",
+      "extension": ".webp",
+      "bytes": 32416,
+      "hash": "5324b5fbe4c04326df4b75f9ac4a1257852c366803d97a4ed3475006b0c070b6",
+      "width": 480,
+      "height": 270,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-23.webp",
+      "extension": ".webp",
+      "bytes": 393422,
+      "hash": "20b611b8a9e2d0734f881cb021bc53522aab4339f65c9e228d4fe2bfde1e7af5",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-24-thumb.webp",
+      "extension": ".webp",
+      "bytes": 36400,
+      "hash": "a9626e9408624e96d6857976dd11dad20c523cc6f803550a560bcf80ad814669",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-24.webp",
+      "extension": ".webp",
+      "bytes": 440632,
+      "hash": "5454e2aea5cbce3ea0b27f671539883403b881fd431432819a633bdc4693131e",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-25-thumb.webp",
+      "extension": ".webp",
+      "bytes": 25644,
+      "hash": "7c23b5da5e15fd30595f3bd2ca8fdd3e8c3c767e9c4a4a2f433cb9615e3f845a",
+      "width": 480,
+      "height": 360,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/galeri/cami-25.webp",
+      "extension": ".webp",
+      "bytes": 367364,
+      "hash": "f503656fafc20d8e6eed2fc63be2a7e46a890e0e8e5ea031bb6c7f5bd71aace7",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-1-m.webp",
+      "extension": ".webp",
+      "bytes": 175654,
+      "hash": "3eafdb6b8c69fff8fb130374e4ccee39dbc2d390cc78ef2c5681ee6c4023c270",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-1.webp",
+      "extension": ".webp",
+      "bytes": 408298,
+      "hash": "78e2b1d6a4b61d862ed646d7112e42449d18e7074fd1b86e9d9a2270c4e25e05",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-3-m.webp",
+      "extension": ".webp",
+      "bytes": 155666,
+      "hash": "0ca2dc5633e2a254e29a874e2dc18d9d3e6084c61fd35f6a626398a9545c1588",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-3.webp",
+      "extension": ".webp",
+      "bytes": 329316,
+      "hash": "f4f40002bcca7dd1f58850dd4c5b715155bd4ccf26c0186e384b093ecb6fc852",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-4-m.webp",
+      "extension": ".webp",
+      "bytes": 151040,
+      "hash": "a6319bc7f84a7c06f7c5361106828b3112a3c9c8b316fa0f57e9740f81039b28",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-4.webp",
+      "extension": ".webp",
+      "bytes": 397664,
+      "hash": "a4952abcf1513d899a97b111ba898781804e1daa13a8bb65dad85a881480135d",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-5-m.webp",
+      "extension": ".webp",
+      "bytes": 147550,
+      "hash": "84f221a7efcd480ab2822ff0654c35cffd7e17ab1c123ce3997feb35a04e9c8b",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-5.webp",
+      "extension": ".webp",
+      "bytes": 323072,
+      "hash": "5ced26c7f31aad7958efed07eb18bce7ae46c90b5e2b4332f1890215a505450c",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-6-m.webp",
+      "extension": ".webp",
+      "bytes": 143446,
+      "hash": "57f5421be80e89907f428af18d460d6497ac3723daa5dba732e1e4a914a62804",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-6.webp",
+      "extension": ".webp",
+      "bytes": 334208,
+      "hash": "acae7d907bc3ef6cc599148402eb8c4f7d46b3cf3228f59a588b68fae3cfff99",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-7-m.webp",
+      "extension": ".webp",
+      "bytes": 14492,
+      "hash": "860737d86e4a414d4133de7561d4430b082c400415e58f2bf0f164ecbdfd294a",
+      "width": 900,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/_kaynak/hero-7.webp",
+      "extension": ".webp",
+      "bytes": 17128,
+      "hash": "52684db2e8c894957ff9a9ce7563f05717212ccfeb448baf655488284185a785",
+      "width": 1600,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-1-m.avif",
+      "extension": ".avif",
+      "bytes": 72857,
+      "hash": "5c73bd6c3f085261369e268c89143bf203b87a8a495d71a957ccc73c0e3dd796",
+      "width": 840,
+      "height": 1493,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-1-m.webp",
+      "extension": ".webp",
+      "bytes": 169330,
+      "hash": "148bf67f9424d326a7277c4c4a1a57f4e08f5cff2a0e48c0c2c6acf0ac3fd158",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-1.avif",
+      "extension": ".avif",
+      "bytes": 126675,
+      "hash": "f50f960325601200b6fb77c16f67b312484074b71f7ad95b6e19c71ecd8fea78",
+      "width": 1600,
+      "height": 1200,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-1.webp",
+      "extension": ".webp",
+      "bytes": 345288,
+      "hash": "64e621f30e68b977b4682872ae5bc94a07e05c63a36f631132cb7d7d90f0445f",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-3-m.avif",
+      "extension": ".avif",
+      "bytes": 66075,
+      "hash": "4d19ed4df56758b962ce1c19f5c98c3207d244a9d51a29c8f4c187e46fce22c8",
+      "width": 840,
+      "height": 1493,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-3-m.webp",
+      "extension": ".webp",
+      "bytes": 141538,
+      "hash": "615fe2bfe927109f55d282b08949b542af3fb8db7428bdc42c5954e04a58ee28",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-3.avif",
+      "extension": ".avif",
+      "bytes": 110656,
+      "hash": "55601f1904633a475307b1189053feacbebe8138cd30578e123ef76c8063a19c",
+      "width": 1600,
+      "height": 1200,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-3.webp",
+      "extension": ".webp",
+      "bytes": 298382,
+      "hash": "e9b6ff92c94c839ae3795e47fcd479562eb829c4162867effd6e768c0118e76f",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-4-m.avif",
+      "extension": ".avif",
+      "bytes": 66938,
+      "hash": "3a2ae2fa4b4fa034e9cd3787f24f9229750c33a4fcfbb880aed854b70e26eead",
+      "width": 840,
+      "height": 1493,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-4-m.webp",
+      "extension": ".webp",
+      "bytes": 144106,
+      "hash": "294ef794254d0f9ea1bb50b67eb92df1493f0aa01c859cce11bcdee7d215be99",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-4.avif",
+      "extension": ".avif",
+      "bytes": 132966,
+      "hash": "b52ffeee270c1b1c19674300acee92ccf8f37a489248e296c247164ac9db159e",
+      "width": 1600,
+      "height": 1200,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-4.webp",
+      "extension": ".webp",
+      "bytes": 377398,
+      "hash": "b5a6d25ba529c3444df6b85ade064aa048ee1be71a15db2475c711d32b209101",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-5-m.avif",
+      "extension": ".avif",
+      "bytes": 64030,
+      "hash": "bcc59d1b2c39b0be155781b007da0597a5f5bb84f14c9c2395fb02cb0ef37f75",
+      "width": 840,
+      "height": 1493,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-5-m.webp",
+      "extension": ".webp",
+      "bytes": 132828,
+      "hash": "c4e690b79f4f42c863b3f2722cc54b0d66b59ed15150b7491623b0d3259a9879",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-5.avif",
+      "extension": ".avif",
+      "bytes": 108586,
+      "hash": "248253c59cbb5cd9c506c082b4f41d3b609f771b17faaeac2bdc858cd7b6ab9c",
+      "width": 1600,
+      "height": 1200,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-5.webp",
+      "extension": ".webp",
+      "bytes": 297602,
+      "hash": "aff81ff0c06e74cca31ad14131213cfe03712cc37c7b55f4c640c7d21417d3a7",
+      "width": 1600,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-6-m.avif",
+      "extension": ".avif",
+      "bytes": 64347,
+      "hash": "013f382e0ca28e3fd942e536a9e2c92ce0eb2faf9b2c500a3d2471dbb95de988",
+      "width": 840,
+      "height": 1493,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-6-m.webp",
+      "extension": ".webp",
+      "bytes": 134734,
+      "hash": "d1206d8df5679f5131da972da123be4a3ccc8e06ba6235b8a8ac6681c7341003",
+      "width": 840,
+      "height": 1493,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-6.avif",
+      "extension": ".avif",
+      "bytes": 114643,
+      "hash": "5ed487cb0e44f66945d63e96ae514308f0f691dae1ea2024ef240951c2a413dd",
+      "width": 1600,
+      "height": 900,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-6.webp",
+      "extension": ".webp",
+      "bytes": 317002,
+      "hash": "66e2bdd9fe055192284540436c2b8ba02114d805cdfe14cd9564b0ae2da7a623",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-7-m.avif",
+      "extension": ".avif",
+      "bytes": 5818,
+      "hash": "5b150ddab9a30e445d358ce02b54ba9176fd4edc253b9857173cfb1b945b77fb",
+      "width": 900,
+      "height": 1600,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-7-m.webp",
+      "extension": ".webp",
+      "bytes": 11894,
+      "hash": "645ce1e995bd33b4493ba496cf53513f681bc969efd66f991dfdcc39e8c86d20",
+      "width": 900,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/hero/hero-7.avif",
+      "extension": ".avif",
+      "bytes": 6211,
+      "hash": "76336a22796ee8a02f3e6be0d88cf57774bb9f8d7b957910118729947f44787a",
+      "width": 1600,
+      "height": 1000,
+      "format": "heif"
+    },
+    {
+      "path": "public/media/hero/hero-7.webp",
+      "extension": ".webp",
+      "bytes": 13372,
+      "hash": "22c9766eeca67f075eabfe35a50340372fdef4758a731301f9b0d11bec93f298",
+      "width": 1600,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-01.webp",
+      "extension": ".webp",
+      "bytes": 140128,
+      "hash": "dfc13808a1b4b28df2e06e5c0979fd0c5a8f69faa8a5add0109e9d89385b7567",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-02.webp",
+      "extension": ".webp",
+      "bytes": 127308,
+      "hash": "9e82dcdbbb08db454fef77cfd76dd904196d1c0b4a5c9cbf393069e541365a98",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-03.webp",
+      "extension": ".webp",
+      "bytes": 143546,
+      "hash": "a6fb7b8d44f48a781d896af82f4c9a05ae8d80ffa96d011e8900558505c0f36b",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-04.webp",
+      "extension": ".webp",
+      "bytes": 133132,
+      "hash": "3a020a4d1fb10c1327a41694ab395215317d20df2d28cec8fca75fa8b96db67b",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-05.webp",
+      "extension": ".webp",
+      "bytes": 121200,
+      "hash": "8ed0034fc250bc3b8697ef624e8c2ca8355c8bb73cac90a1a187a35abec2bcc6",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-06.webp",
+      "extension": ".webp",
+      "bytes": 96318,
+      "hash": "79c796f382da0d756b55d66c86c6448072d842eeeed2e96ffec35bdaa6d95714",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-07.webp",
+      "extension": ".webp",
+      "bytes": 89656,
+      "hash": "ce7c7424538924e78f8a84683f0ab607d00eea33ddeb494ddbd2e021bd97ca49",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-08.webp",
+      "extension": ".webp",
+      "bytes": 92690,
+      "hash": "7b8b24d82afc3207fdec664240c70bbdd28b58e228bdc460af16ead7b1204fb4",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-09.webp",
+      "extension": ".webp",
+      "bytes": 125060,
+      "hash": "0b802972bef36802900e10d1e4baf6fd19c2bb7131982242b60f27134cf4e29f",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-10.webp",
+      "extension": ".webp",
+      "bytes": 139396,
+      "hash": "db50d7ce998556d5d7e547b5fbcca2cdf968811bb06bcbd1359edff8016ca62e",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-11.webp",
+      "extension": ".webp",
+      "bytes": 104920,
+      "hash": "f298cc8c043fb3987963243df7e04f9c23715d5bd10b06c10834449d307b8e97",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-12.webp",
+      "extension": ".webp",
+      "bytes": 122728,
+      "hash": "a557bc226b1fff883c4201383f26b37489136cb6ce153be5bfc709098817d8dc",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-13.webp",
+      "extension": ".webp",
+      "bytes": 97534,
+      "hash": "05712784919390efa9220c228878978e84d895d47ca3910adc5b139be3dd1039",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-14.webp",
+      "extension": ".webp",
+      "bytes": 118782,
+      "hash": "599c06a4cd51b867756f06470ff91fe7f6a920c249f4ee8ee1e36164e9364136",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-15.webp",
+      "extension": ".webp",
+      "bytes": 113718,
+      "hash": "3eb018d895357b209fd8e03e1b9f8ca4981b90d59a4c95e49c366634d0245c0f",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-16.webp",
+      "extension": ".webp",
+      "bytes": 88396,
+      "hash": "d35fbc76bd371958739cd3b1ce3fe805cb7822717595a4bbe7873663f1f89729",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-17.webp",
+      "extension": ".webp",
+      "bytes": 99186,
+      "hash": "fcdc1385aabe0140d9a3785ce58c8b76c6cf38a4b1bd55a5d71916e02923daff",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-18.webp",
+      "extension": ".webp",
+      "bytes": 75004,
+      "hash": "2617e6186b0ead1a2f336fb7a359ae7447aaad99bf71f0149d739eace58803e7",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-19.webp",
+      "extension": ".webp",
+      "bytes": 82864,
+      "hash": "acf4642ba35b77b37b9c90c1cae13bcb1f8f2970f1cf2b40a1a32b380c36928b",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-20.webp",
+      "extension": ".webp",
+      "bytes": 119364,
+      "hash": "c082f7ab3bef5a7486a6a89c260a1508e85ca6d80f1e2e168ac4fd6bdee6c805",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-21.webp",
+      "extension": ".webp",
+      "bytes": 162922,
+      "hash": "57e6b2cb28827c9c358ac06b9b12a1ef26bf2eed35e8a4820cc70515f4f48f4e",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-22.webp",
+      "extension": ".webp",
+      "bytes": 78026,
+      "hash": "a4106969cb39df3d13845dd68ab5c1192d9b007833d19a7c8ab91e6e4c50ac02",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-23.webp",
+      "extension": ".webp",
+      "bytes": 115194,
+      "hash": "bf7089e20e6a0c684da072bf88e0af0fcfaa74177370fcb914b898bf8a519f7f",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-24.webp",
+      "extension": ".webp",
+      "bytes": 67836,
+      "hash": "65aba8a88adb5b0d899fcd8ca8eb0c58e80b13c8fc195b822cc3d0e04f79e2fc",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-25.webp",
+      "extension": ".webp",
+      "bytes": 107018,
+      "hash": "11dd42c8b737fcbab353512664d862c89be5cff2a430a6b6c8628beb1a45b008",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-26.webp",
+      "extension": ".webp",
+      "bytes": 68658,
+      "hash": "b5b47e5ff2c54625fa934cb3c51c3d4d6d395069e6b95a202eb2c13b5df6de04",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-27.webp",
+      "extension": ".webp",
+      "bytes": 94994,
+      "hash": "1587624c0689754ebaa7e76fd982085589353dc355b6b47953fdd75edad13521",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-28.webp",
+      "extension": ".webp",
+      "bytes": 94348,
+      "hash": "0a55fa5882ded15d52ff59867b8de28504b79143b4de4e78c8416338740a66ce",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-29.webp",
+      "extension": ".webp",
+      "bytes": 97098,
+      "hash": "a6f35c42d8a2719a3423f58c8849e2f01441bb4a5e87f9100063582602c39fa9",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-30.webp",
+      "extension": ".webp",
+      "bytes": 129738,
+      "hash": "db4d6035a3a6c812bce98dd9f8b31dbb4173d25a6b265596f15ec5fbec3be4b0",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-31.webp",
+      "extension": ".webp",
+      "bytes": 130408,
+      "hash": "eb371014187ff7565ba33cc2cac04d41d74ad20d6831ce22808bb1a5186d970a",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-32.webp",
+      "extension": ".webp",
+      "bytes": 89170,
+      "hash": "742f856aad41d8e24b07fd372a36f08fe59f4de53e8f846833028334e6b55f3c",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-33.webp",
+      "extension": ".webp",
+      "bytes": 126390,
+      "hash": "0c50ed57d97d8a0b70e5f5462d26d830423919abfb76b930a856f0888c748add",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-34.webp",
+      "extension": ".webp",
+      "bytes": 91016,
+      "hash": "ed20b088e7645bb97c0261f01eb7b090511e17bc0f640b9703396002f121ec77",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-35.webp",
+      "extension": ".webp",
+      "bytes": 130168,
+      "hash": "15bdb84363320137d60c1a99b582e5ca00127f03727ab65beb1b0eb2ebe83a15",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-36.webp",
+      "extension": ".webp",
+      "bytes": 165644,
+      "hash": "981471d4a43e4e290a6a37727a19dfede3ea2988a6023e0f4ac8579657e84b91",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/ders-37.webp",
+      "extension": ".webp",
+      "bytes": 138656,
+      "hash": "57a5b23b678300f0b4b38d63b6a2c06d6a5ce18fb7d01fd08c21312f414d6ce1",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-01.webp",
+      "extension": ".webp",
+      "bytes": 139504,
+      "hash": "ea476e6feb0c8fc1dadc39c9b9a49cea605248f9ac612b52ea2d3a3ada49b658",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-02.webp",
+      "extension": ".webp",
+      "bytes": 98652,
+      "hash": "9799eabe00ee3c8e793888826a1faee88aa7ab0912bde95a6dfe3075aabde4d4",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-03.webp",
+      "extension": ".webp",
+      "bytes": 122648,
+      "hash": "ee67eddb0ffb456c5f5fe72bc480d26f767480a31d0b2a8a1d36ad76da9feba2",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-04.webp",
+      "extension": ".webp",
+      "bytes": 101296,
+      "hash": "9dbdee22b48013fc9950b38a95655425eb200476ae4fa9fc3e74f20e496b77c6",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-05.webp",
+      "extension": ".webp",
+      "bytes": 128964,
+      "hash": "0eb94e293e857f2e5ec8c12b20d2e735d89aac15b10a4f83ed7f132e20cf4200",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-06.webp",
+      "extension": ".webp",
+      "bytes": 105326,
+      "hash": "6524f27af4bcb43ff7601a5e2b0eb0015b3b5a1859af3eab31bf1a2cd4da74ce",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/extra-07.webp",
+      "extension": ".webp",
+      "bytes": 128786,
+      "hash": "da104c9771b3b97ed2743814e981932fa2c22b791fc2251a13258725bf394bc6",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/kapaklar/fr-sermon.webp",
+      "extension": ".webp",
+      "bytes": 113326,
+      "hash": "cdaff6b076287cb85e40a6afe02e10fe2d71962c7c30441f308372b721b17b99",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/video-4K-bpOKbYZw.jpg",
+      "extension": ".jpg",
+      "bytes": 119284,
+      "hash": "4038f5dc7236954b0d05961b6851aa4ed7c6b992932965d62a46b19c8ce5e2f0",
+      "width": 1280,
+      "height": 720,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/ihtida/video-insan.webp",
+      "extension": ".webp",
+      "bytes": 23998,
+      "hash": "d992f13c7f8fc1d19277271a5b934335764ce27854acf570e921538a614b03fc",
+      "width": 960,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/video-J67bqFyTu0o.jpg",
+      "extension": ".jpg",
+      "bytes": 9695,
+      "hash": "6f9787cbea5588b3a07ee4f84f93ee2c95fb855cf7410db819abfb7a33837a7a",
+      "width": 480,
+      "height": 360,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/ihtida/video-kelime-i-sehadet.webp",
+      "extension": ".webp",
+      "bytes": 49330,
+      "hash": "fecf07cb3199e64c19d53d4580f726234dc62c4a0373cfe1ccafb87566dfd58b",
+      "width": 960,
+      "height": 540,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/ihtida/video-R2DKaFxgDRA.jpg",
+      "extension": ".jpg",
+      "bytes": 136821,
+      "hash": "4de63fdf8313ddc47e557d2d731563e833ab7bc5ba56ff42ab0b32656ce180b7",
+      "width": 1280,
+      "height": 720,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/ihtida/video-RLKYz_hjZeA.jpg",
+      "extension": ".jpg",
+      "bytes": 74806,
+      "hash": "145b9cfb97e06c37d1060a2f463fca945f3c56b7904cb99f3124f236047fb1da",
+      "width": 1280,
+      "height": 720,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/ihtida/video-TbA0P4DwJDs.jpg",
+      "extension": ".jpg",
+      "bytes": 99118,
+      "hash": "083beefc7ce0a82db9d1f56b97007984eaa0c170764b471d4d57bac11935d55e",
+      "width": 1280,
+      "height": 720,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/ihtida/video-xNtRAQyB_yo.jpg",
+      "extension": ".jpg",
+      "bytes": 11795,
+      "hash": "55ae11100405b744635f374776592aa78a3e4316ee9ac749905db585056893b4",
+      "width": 480,
+      "height": 360,
+      "format": "jpeg"
+    },
+    {
+      "path": "public/media/kurul/ercan-mola-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 11884,
+      "hash": "c58a07791eea3825e8445d3287f51c18b96125eca3731345144c7bebb6a52885",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/ercan-mola.webp",
+      "extension": ".webp",
+      "bytes": 62844,
+      "hash": "90ef932322b0e7a2fb28616ffc2d3fbfaaae0ef6513dd82cbe245d448dea4b11",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/fehmi-karali-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 15512,
+      "hash": "15e42f1e9fddf13624c64504f9f5d28c739ab3c78f03d01b06f1df45100576ed",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/fehmi-karali.webp",
+      "extension": ".webp",
+      "bytes": 67278,
+      "hash": "97fdd03b066f2beb2e334a943740519a253d6859a4692ae5bd796fb84b5e1ee2",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/ismail-gun-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 21338,
+      "hash": "ec98c7644407e27629ab1cfb8f96cecc556d352e22389801a69254dfc29fff8e",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/ismail-gun.webp",
+      "extension": ".webp",
+      "bytes": 94454,
+      "hash": "9252840b8a487e1d23121a201aca4596510dee4a6b9908f30bd50f5db929bf7d",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/mehmet-kutlu-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 17698,
+      "hash": "01c4cb3d01f358adae59f517603bec04c1c66a65c63286f9900b3270a278c5f8",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/mehmet-kutlu.webp",
+      "extension": ".webp",
+      "bytes": 69594,
+      "hash": "103ed8fd3c757176f2719c55874b02f7c4d64ef229d6882623bf4f0446f31da1",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/mehmet-sadik-gulkilik-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 17048,
+      "hash": "9d3db74173284f8b349d270bee3175278f7df744355fa3f2fe5a6faefb228289",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/mehmet-sadik-gulkilik.webp",
+      "extension": ".webp",
+      "bytes": 73368,
+      "hash": "31ab9f6c14f2e3259141f29e8cfedab77afdb6eed6c697cd52fe044216f2664d",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/tekin-bicer-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 8990,
+      "hash": "b960b2419f4687d5cc23333aaab2ecd539e7fbac9119153b0ba5cc376a38b989",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/tekin-bicer.webp",
+      "extension": ".webp",
+      "bytes": 27538,
+      "hash": "aac9f0dd077dd8ab418d187a10fb74b3713096591dcbac9346c5d16a4e794d92",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/volkan-kutlu-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 10394,
+      "hash": "092e77d1958b3ad9932092b6cdec754c6a855627d9c269d9c5dc11093da75507",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/volkan-kutlu.webp",
+      "extension": ".webp",
+      "bytes": 37534,
+      "hash": "c036cb9b6bd4019bc5692e52e307518b5446889df34a3ab5aac93e7d4ae73260",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/yasin-agilonu-kucuk.webp",
+      "extension": ".webp",
+      "bytes": 23832,
+      "hash": "13cce4a6e28b023661dc3c6764f308badacaf4343a779f64fc8b046aa5b2954a",
+      "width": 400,
+      "height": 500,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/kurul/yasin-agilonu.webp",
+      "extension": ".webp",
+      "bytes": 105364,
+      "hash": "73c644c9758de5b1b988733428d963f07406bd3f33f5556c0994b47c2b54b5e6",
+      "width": 800,
+      "height": 1000,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/logo/kuran-kursu-logo-256.png",
+      "extension": ".png",
+      "bytes": 65173,
+      "hash": "e8388178726de9eaa6cbc40d77d7739565f956aada0581834ed9bc8d866e0eb6",
+      "width": 256,
+      "height": 258,
+      "format": "png"
+    },
+    {
+      "path": "public/media/logo/ulu-camii-logo-128.png",
+      "extension": ".png",
+      "bytes": 12454,
+      "hash": "26bea85da48e729456e9bd2a5a6de1d60d150cba056ded53c371d8d10849948f",
+      "width": 128,
+      "height": 129,
+      "format": "png"
+    },
+    {
+      "path": "public/media/logo/ulu-camii-logo-512.png",
+      "extension": ".png",
+      "bytes": 59186,
+      "hash": "6da2bf46af8ec9e577dab7ce2f4036a9ef45df7ef2adc6c54cbe66e2aaba073d",
+      "width": 512,
+      "height": 515,
+      "format": "png"
+    },
+    {
+      "path": "public/media/logo/ulu-camii-logo-madalyon.png",
+      "extension": ".png",
+      "bytes": 98756,
+      "hash": "1e5f367f3e6c045eb7e733f8d15879897dcd5f8bfde9796a2f0b85b9927c6c2b",
+      "width": 384,
+      "height": 384,
+      "format": "png"
+    },
+    {
+      "path": "public/media/mektep/elifba-bahcesi.webp",
+      "extension": ".webp",
+      "bytes": 236142,
+      "hash": "f7cad56c0b61e0704145ef882b2f129cf8c8053970e6902ae91026de95566cfa",
+      "width": 1280,
+      "height": 714,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/ezber-odasi.webp",
+      "extension": ".webp",
+      "bytes": 230916,
+      "hash": "e84613ce960d6188b53474c2995bb651b7554dd39def576fc79fd2b3ab24432e",
+      "width": 1280,
+      "height": 714,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/kuran-yolu.webp",
+      "extension": ".webp",
+      "bytes": 271842,
+      "hash": "f5c39f9874648b4b68a3c89b71e0cd476d69c2683e85720a511d3b57344377ea",
+      "width": 1280,
+      "height": 714,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/mektep-oda.webp",
+      "extension": ".webp",
+      "bytes": 255968,
+      "hash": "8b6dcb455eddf3a813fc5828f7af40a5cb0c2c9fab56c46c06f73712b6ca3b4a",
+      "width": 1280,
+      "height": 714,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/quiz-basari.webp",
+      "extension": ".webp",
+      "bytes": 130662,
+      "hash": "66361f1520d62f0223f9f21cf8bab2b46f055f7bf98548daa5752ce21fe404dd",
+      "width": 1280,
+      "height": 714,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/rozet-ahlak.webp",
+      "extension": ".webp",
+      "bytes": 73028,
+      "hash": "d239f4266d8b4a747d14b70538e3007c4c25166e313053242de5f02c03299add",
+      "width": 600,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/rozet-devam.webp",
+      "extension": ".webp",
+      "bytes": 24378,
+      "hash": "f4564242992e12c7aae668b6910228c911312b37b45d1d25954c54ef3768e06c",
+      "width": 256,
+      "height": 256,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/rozet-hatim.webp",
+      "extension": ".webp",
+      "bytes": 30130,
+      "hash": "29e33c099d2fe4c915d5495d12fa67a78eb85fe6a696dc32cc39e8cc167d1495",
+      "width": 256,
+      "height": 256,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/rozet-kuran.webp",
+      "extension": ".webp",
+      "bytes": 86414,
+      "hash": "db2d8ce37e6607e4b75fa1bb27c5c9abc44cd2cd78e631717ffb04c7e9dc6521",
+      "width": 600,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/rozet-yildiz.webp",
+      "extension": ".webp",
+      "bytes": 72886,
+      "hash": "0bdae29778621899e75b446c884a43bc5087abdc161026a98c0500d5f929e0bc",
+      "width": 600,
+      "height": 600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/mektep/tebrik-kutlama.gif",
+      "extension": ".gif",
+      "bytes": 70198,
+      "hash": "c5ec438a641f7624a7790e89e218b3d3ddd400e17a6cd73b511b47d697b21c8e",
+      "width": 400,
+      "height": 9600,
+      "format": "gif"
+    },
+    {
+      "path": "public/media/og/ulu-camii-en.png",
+      "extension": ".png",
+      "bytes": 137735,
+      "hash": "54d0fa80f8f752609afbc111e1bb763c095078c9e9b4469e17ffbeedfc93e7ba",
+      "width": 1200,
+      "height": 630,
+      "format": "png"
+    },
+    {
+      "path": "public/media/og/ulu-camii-fr.png",
+      "extension": ".png",
+      "bytes": 135968,
+      "hash": "7f9e37b3aaffdb2b9af08eff2e255e92585c5bd2e85b03386ee13e14de8f7e5d",
+      "width": 1200,
+      "height": 630,
+      "format": "png"
+    },
+    {
+      "path": "public/media/og/ulu-camii-tr.png",
+      "extension": ".png",
+      "bytes": 136321,
+      "hash": "dbdc47057bd1cb752f6157bd4a4cac33f2a428c3fc63222a10031c73b6db20f5",
+      "width": 1200,
+      "height": 630,
+      "format": "png"
+    },
+    {
+      "path": "public/media/uip/diyanet-burslari-2026-en-thumb.webp",
+      "extension": ".webp",
+      "bytes": 40432,
+      "hash": "b9d978070cb5f3f9a36c26d8140b3794cb839fee29363fdfadd123e6a60e3f52",
+      "width": 448,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/diyanet-burslari-2026-en.webp",
+      "extension": ".webp",
+      "bytes": 135978,
+      "hash": "272207d9f3c25561386c027afda97a956287d13e48316478638f6d59588de388",
+      "width": 1120,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/diyanet-burslari-2026-fr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 40226,
+      "hash": "19ba30b05098c8e4e30a5b89d021ce72115509b91d8ae759a8f476c289d9e308",
+      "width": 448,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/diyanet-burslari-2026-fr.webp",
+      "extension": ".webp",
+      "bytes": 135740,
+      "hash": "73307899b19a9268e9d2692b0b61f134979eefe91f962241f4b2b128edc9475a",
+      "width": 1120,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/diyanet-burslari-2026-tr-thumb.webp",
+      "extension": ".webp",
+      "bytes": 37364,
+      "hash": "aabd36e10294134918b4914db728f966d69807d208c2e51a2a3dff672a7498dc",
+      "width": 448,
+      "height": 640,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/diyanet-burslari-2026-tr.webp",
+      "extension": ".webp",
+      "bytes": 125530,
+      "hash": "016debe9631ea22ff28d27804c980b24908311bd484ff41d1cd8b600db27efc6",
+      "width": 1120,
+      "height": 1600,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/uip-kapak.webp",
+      "extension": ".webp",
+      "bytes": 56318,
+      "hash": "4d595db280fb0fc401c5dfe2b0191b6ca83b455bea5d811e2c4c291e6e0400c9",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/uip-og-en.webp",
+      "extension": ".webp",
+      "bytes": 57074,
+      "hash": "49b7bb01ccfdacd8f110764e1358be8c255def77f8619591264e44586979d36b",
+      "width": 1200,
+      "height": 630,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/uip-og-fr.webp",
+      "extension": ".webp",
+      "bytes": 57124,
+      "hash": "20ce0531ec47e25cecb3f486fb2c3e7fcc82e87ee6056d64ae85c76cede089b6",
+      "width": 1200,
+      "height": 630,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/uip-og-tr.webp",
+      "extension": ".webp",
+      "bytes": 56870,
+      "hash": "da2c80eabf2e48fd0496a1143a4f6df44a6e0b4f511ef7fec22e258d7068737f",
+      "width": 1200,
+      "height": 630,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/video-diyanettv-yeni-donem.webp",
+      "extension": ".webp",
+      "bytes": 79552,
+      "hash": "7bae6f9b5f7ede635a9c41c0fce5c1964695c098fd7921a18b6a9c9df431fb7b",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/video-kapak-en.webp",
+      "extension": ".webp",
+      "bytes": 78208,
+      "hash": "5d3005268ca32ba90198fe05888c1fd108f40f4e3c4ffb3b6e3a4f1bbdbb26e5",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/video-kapak-fr.webp",
+      "extension": ".webp",
+      "bytes": 79350,
+      "hash": "13c605c559c5184abd19b72cddcbad2994158e419aee6249c054af11a6ed1fb0",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/video-kapak-tr.webp",
+      "extension": ".webp",
+      "bytes": 74632,
+      "hash": "da801b2e21e97965b26f497d42311788686670b62161e155409d9a6b8b3f2a94",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/uip/video-tdv-uip.webp",
+      "extension": ".webp",
+      "bytes": 77364,
+      "hash": "af11480af5572724905354389a9745c2b1528d8d312ecbd73e7f8ea332b41fb4",
+      "width": 1280,
+      "height": 720,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2020-mustafa-karali-vefat.webp",
+      "extension": ".webp",
+      "bytes": 35274,
+      "hash": "37dbc8c5bec9ba259590388fe559920227339a6268e97d88dd31cf81e52f2713",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2021-mahmut-sahpaz-vefat.webp",
+      "extension": ".webp",
+      "bytes": 46118,
+      "hash": "a9286c1fb423b52466508afb7ed267f37309d1a8074760db17c44bf6b30b17f6",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2023-galip-mazibas-vefat.webp",
+      "extension": ".webp",
+      "bytes": 20482,
+      "hash": "83207a0e0f12cfeae4f760147188bccbf27bfe6b24891f7512ffcac2514a2cb3",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2024-aydin-mola-vefat.webp",
+      "extension": ".webp",
+      "bytes": 21102,
+      "hash": "5ca964e82e0efb9ae191475762fa821f927f8de85e0e9b614ffee174877c97a9",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2025-fevzi-karali-vefat.webp",
+      "extension": ".webp",
+      "bytes": 15710,
+      "hash": "09545e063cc96cdb6d8680402f801236cff52d05ce42770d335ea8784903d11a",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2025-mevlut-kara-vefat.webp",
+      "extension": ".webp",
+      "bytes": 22196,
+      "hash": "a72d35b4a25c5746ae3284add40e11854e80c6568293f6d5a16e1b9d3912c76c",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2025-sati-cirik-vefat.webp",
+      "extension": ".webp",
+      "bytes": 57646,
+      "hash": "0a26f38725ec54e0872109558c4d4b64e05df6489abd759db82c30e3460a3693",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2026-fatma-aktan-vefat.webp",
+      "extension": ".webp",
+      "bytes": 27866,
+      "hash": "6e38db1394dce1d9740fbec99b0f86420c1ca815f8c782340622896edc3565a0",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vitrin/egitim-veli-portali.webp",
+      "extension": ".webp",
+      "bytes": 72554,
+      "hash": "849edfd00fb211864c0ac8e10d3ae0416cc00c90bbb009501637114e4d2919b5",
+      "width": 1200,
+      "height": 896,
+      "format": "webp"
+    }
+  ]
+}

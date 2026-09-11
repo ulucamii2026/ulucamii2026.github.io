@@ -6,6 +6,7 @@
 /* Amiri yalnız 400: sitede kalın Arapça kullanılmıyor; 700 ağırlığı Arapça sayfalarda
    boşuna ~120 KB indiriyordu (4 Eylül 2026 ölçümü). Kalın gerekirse buraya geri eklenir. */
 @import "@fontsource/amiri/400.css";
+@import "./tokens.css";
 
 /* "Amiri Ana": ana sayfadaki SABİT Arapça satırlar (hero selamı, vefat bandı âyeti) için 27,6 KB'lık
    alt küme — tam Amiri Arapça alt kümesi 106 KB'dır ve ana sayfada tek satır için indiriliyordu.

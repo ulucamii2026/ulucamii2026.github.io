@@ -248,46 +248,32 @@ export async function veliPortali(): Promise<void> {
       }
     }
 
-    if (harekeId === 'sedde') {
+    // Cezm (Sükûn): Arapça fonetiğinde ve Diyanet Elifbâ meşki usulünde
+    // cezimli harf tek başına okunamaz, önüne elif/hemze konularak meşk edilir (Eb, Et, Es, Ec...)
+    if (harekeId === 'cezm') {
       try {
         harekeTonuCal(harfMetni);
-        const a1 = new Audio(`/media/ses/elifba/ustun/${harfId}.mp3`);
-        aktifAudio = a1;
-        a1.play().then(() => {
-          setTimeout(() => {
-            const a2 = new Audio(`/media/ses/elifba/ustun/${harfId}.mp3`);
-            aktifAudio = a2;
-            a2.play().catch(() => {});
-          }, 240);
-        }).catch(() => {
-          sesliFallback(harfMetni);
-        });
+        const yalinHarf = harfMetni.replace(/[\u064B-\u0652]/g, '') || 'ب';
+        const meskMetni = yalinHarf === 'ا' ? 'اَهْ' : `اَ${yalinHarf}\u0652`;
+        metinSeslendir(meskMetni, 'ar-SA');
         return;
       } catch {
         harekeTonuCal(harfMetni);
-        sesliFallback(harfMetni);
         return;
       }
     }
 
-    if (harekeId === 'cezm') {
+    // Şedde (Teşdid): Arapça fonetiğinde şeddeli harf tek başına okunamaz,
+    // bir önceki harfle çiftlenerek meşk edilir (Ebbe, Ette, Esse, Ecce...)
+    if (harekeId === 'sedde') {
       try {
         harekeTonuCal(harfMetni);
-        const a = new Audio(`/media/ses/elifba/ustun/${harfId}.mp3`);
-        aktifAudio = a;
-        a.play().catch(() => {
-          sesliFallback(harfMetni);
-        });
-        setTimeout(() => {
-          if (aktifAudio === a) {
-            a.pause();
-            a.currentTime = 0;
-          }
-        }, 280);
+        const yalinHarf = harfMetni.replace(/[\u064B-\u0652]/g, '') || 'ب';
+        const meskMetni = yalinHarf === 'ا' ? 'اَأَّ' : `اَ${yalinHarf}\u0651\u064E`;
+        metinSeslendir(meskMetni, 'ar-SA');
         return;
       } catch {
         harekeTonuCal(harfMetni);
-        sesliFallback(harfMetni);
         return;
       }
     }
@@ -567,6 +553,7 @@ export async function veliPortali(): Promise<void> {
          (firestore.rules aileler update izin listesinde). Hoca ekranı bu haritayı okuyup hazırlık yapar. */
       kitapSecim?: Record<string, { secim: string; zaman: string }> }; ogrenciler: Ogrenci[]; secili: number;
     mod?: 'veli' | 'ogrenci'; seciliEzberId?: string; ezberHizi?: number;
+    ezberFiltreTur?: 'hepsi' | 'sure' | 'dua'; ezberGizli?: boolean; ezberDongu?: boolean;
     seciliHarfGrup?: HarfGrup; seciliHarfId?: string;
     kulakHedefHarfId?: string; kulakSecenekler?: string[]; kulakCevaplandi?: boolean; kulakSecilenId?: string; kulakDogruMu?: boolean; kulakSkoru?: number;
     quizSoruNo?: number; quizDogruSayisi?: number; quizCevaplandi?: boolean; quizSecilenIndex?: number | null; quizBitti?: boolean;
@@ -644,6 +631,12 @@ export async function veliPortali(): Promise<void> {
         ? Math.max(0, Math.min(Math.floor(((kuranNo + 1) / Math.max(kuranSirasi.length, 1)) * basamaklar.length), basamaklar.length - 1))
         : 0;
 
+      const ezberFiltreTur = d.ezberFiltreTur || 'hepsi';
+      const filtreliEzberler = EZBER_LISTESI.filter((ez) => {
+        if (ezberFiltreTur === 'sure') return ez.tur === 'sure';
+        if (ezberFiltreTur === 'dua') return ez.tur === 'dua';
+        return true;
+      });
       const seciliId = d.seciliEzberId || 'fatiha';
       const seciliEzber = EZBER_LISTESI.find((e) => e.id === seciliId) || EZBER_LISTESI[0];
 
@@ -774,6 +767,30 @@ export async function veliPortali(): Promise<void> {
             <!-- EZBER VE DİNLEME ODASI -->
             <section class="bolum r-iznik oncelik genis ezber-odasi-kart">
               ${bas('kitap', m.ezberOdasi, m.ezberAciklama)}
+
+              <!-- SÛRE VE DUA KATEGORİ FİLTRESİ -->
+              <div class="sure-filtre-sekmeler" role="tablist" aria-label="${esc(m.sureSec)}">
+                <button type="button" class="sure-filtre-btn ${ezberFiltreTur === 'hepsi' ? 'aktif-filtre' : ''}" data-eylem="ezberFiltreTur" data-tur="hepsi">
+                  ✨ ${dil === 'fr' ? 'Tous' : dil === 'en' ? 'All' : 'Tümü'} <span class="filtre-sayac">(${EZBER_LISTESI.length})</span>
+                </button>
+                <button type="button" class="sure-filtre-btn ${ezberFiltreTur === 'sure' ? 'aktif-filtre' : ''}" data-eylem="ezberFiltreTur" data-tur="sure">
+                  📖 ${esc(m.sureler)} <span class="filtre-sayac">(${EZBER_LISTESI.filter((x) => x.tur === 'sure').length})</span>
+                </button>
+                <button type="button" class="sure-filtre-btn ${ezberFiltreTur === 'dua' ? 'aktif-filtre' : ''}" data-eylem="ezberFiltreTur" data-tur="dua">
+                  🤲 ${esc(m.dualar)} <span class="filtre-sayac">(${EZBER_LISTESI.filter((x) => x.tur === 'dua').length})</span>
+                </button>
+              </div>
+
+              <!-- HIZLI SÛRE/DUA ÇİPLERİ (YATAY KAYDIRILABİLİR) -->
+              <div class="sure-cipler-bar" role="toolbar" aria-label="${esc(m.sureSec)}">
+                ${filtreliEzberler.map((ez) => `
+                  <button type="button" class="sure-cip-btn ${ez.id === seciliEzber.id ? 'aktif-cip' : ''}" data-eylem="ezberHizliSec" data-ezber-id="${ez.id}" title="${esc(ez.ad[dil] || ez.ad.tr)}">
+                    <span class="cip-simge">${ez.tur === 'sure' ? '📖' : '🤲'}</span>
+                    <span class="cip-ad">${esc(ez.ad[dil] || ez.ad.tr)}</span>
+                  </button>
+                `).join('')}
+              </div>
+
               <div class="ezber-secici-sar">
                 <label for="ezber-secim-select" class="kucuk"><b>${esc(m.sureSec)}:</b></label>
                 <select id="ezber-secim-select" data-eylem="ezberDegistir" class="ezber-secim">
@@ -781,80 +798,118 @@ export async function veliPortali(): Promise<void> {
                 </select>
               </div>
 
-              <div class="ezber-vitrin">
-                <div class="ezber-kart-banner">
-                  <img src="/media/mektep/ezber-odasi.webp" alt="Ezber ve Dinleme Odası" class="ezber-resim-afis" loading="lazy" width="640" height="200" />
-                </div>
-                <div class="ezber-baslik-satir">
-                  <h3 class="ez-ad">${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}</h3>
-                  <span class="rozet ${seciliEzber.tur === 'sure' ? 'ogrendi' : 'gec'}">${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : 'Kur’an Sûresi') : (dil === 'fr' ? 'Invocation' : 'Namaz Duası')}</span>
-                </div>
-
-                <button type="button" class="ezber-arapca ezber-metin-btn" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
-                  ${esc(seciliEzber.arapca)}
-                </button>
-
-                <div class="ezber-okunus">
-                  <span class="ezber-etiket">${dil === 'fr' ? 'Prononciation :' : dil === 'en' ? 'Transliteration:' : 'Okunuş:'}</span>
-                  <p class="okunus-metin">${esc(seciliEzber.okunus)}</p>
+              <!-- LÜKS MUSHAF KARTI -->
+              <div class="ezber-vitrin mushaf-tezyinat-kart">
+                <!-- ÜST SERLEVHA BAŞLIK -->
+                <div class="mushaf-serlevha">
+                  <div class="serlevha-motif serlevha-sol" aria-hidden="true"></div>
+                  <div class="serlevha-icerik">
+                    <span class="serlevha-tur-rozet ${seciliEzber.tur === 'sure' ? 'rozet-sure' : 'rozet-dua'}">
+                      ${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'SOURATE DU SAINT CORAN' : "KUR'AN-I KERÎM SÛRESİ") : (dil === 'fr' ? 'PRIÈRE DE LA PRIÈRE' : 'NAMAZ DUASI • MEKTEP MÜFREDATI')}
+                    </span>
+                    <h3 class="mushaf-sure-baslik">${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}</h3>
+                  </div>
+                  <div class="serlevha-motif serlevha-sag" aria-hidden="true"></div>
                 </div>
 
-                <div class="ezber-anlam">
-                  <span class="ezber-etiket">${dil === 'fr' ? 'Traduction française :' : dil === 'en' ? 'Meaning in English:' : 'Türkçe Anlamı:'}</span>
-                  <p class="anlam-metin">${esc(seciliEzber.anlam[dil] || seciliEzber.anlam.tr)}</p>
+                ${seciliEzber.tur === 'sure' ? `
+                  <!-- ALTIN TEZYİNATLI BESMELE SERLEVHASI -->
+                  <div class="besmele-serlevha" aria-label="Bismillâhirrahmânirrahîm">
+                    <span class="besmele-hat-metin" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                  </div>
+                ` : ''}
+
+                <!-- EZBER VE MEŞK ARAÇLARI ÇUBUĞU -->
+                <div class="ezber-arac-bar">
+                  <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberGizli ? 'aktif-arac' : ''}" data-eylem="ezberGizleToggle" title="${esc(m.ezberTesti)}">
+                    ${d.ezberGizli ? '👁️ ' + (dil === 'fr' ? 'Afficher le texte' : 'Metni Göster') : '🙈 ' + esc(m.ezberTesti)}
+                  </button>
+                  <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberDongu ? 'aktif-arac' : ''}" data-eylem="ezberDonguToggle" title="${esc(m.meskDongusu)}">
+                    🔁 ${esc(m.meskDongusu)} ${d.ezberDongu ? '✓' : ''}
+                  </button>
+                  <span class="diyanet-kiraat-etiket" title="${esc(m.diyanetKiraati)}">
+                    🎧 <span>${esc(m.diyanetKiraati)}</span>
+                  </span>
+                </div>
+
+                <!-- ARAPÇA MUSHAF HATTINDA METİN -->
+                <div class="mushaf-metin-sarici ${d.ezberGizli ? 'ezber-metin-gizli' : ''}">
+                  <button type="button" class="ezber-arapca ezber-metin-btn mushaf-hat-metin" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
+                    ${esc(seciliEzber.arapca)}
+                  </button>
+                  ${d.ezberGizli ? `
+                    <div class="ezber-gizli-overlay" data-eylem="ezberGizleToggle">
+                      <span class="gizli-ipucu-simge">👁️</span>
+                      <span class="gizli-ipucu-metin">${dil === 'fr' ? 'Texte masqué pour le test. Touchez pour afficher !' : 'Metin ezber testi için gizlendi. Kontrol etmek için dokunun!'}</span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- TECVİDLİ OKUNUŞ VE MEÂL KARTLARI -->
+                <div class="mushaf-anlam-izgara">
+                  <div class="ezber-okunus mushaf-bilgi-kutu">
+                    <span class="ezber-etiket">📖 ${dil === 'fr' ? 'Prononciation :' : dil === 'en' ? 'Transliteration:' : 'Tecvidli Okunuş:'}</span>
+                    <p class="okunus-metin">${esc(seciliEzber.okunus)}</p>
+                  </div>
+
+                  <div class="ezber-anlam mushaf-bilgi-kutu">
+                    <span class="ezber-etiket">🌍 ${dil === 'fr' ? 'Traduction française :' : dil === 'en' ? 'Meaning in English:' : 'Türkçe Anlamı:'}</span>
+                    <p class="anlam-metin">${esc(seciliEzber.anlam[dil] || seciliEzber.anlam.tr)}</p>
+                  </div>
                 </div>
 
                 ${dil !== 'fr' ? `
-                  <div class="ezber-anlam ezber-fr-anlam">
+                  <div class="ezber-anlam ezber-fr-anlam mushaf-bilgi-kutu">
                     <div class="ezber-anlam-baslik-satir">
                       <span class="ezber-etiket">🇫🇷 ${esc(m.fransizcaTercume)}:</span>
                       <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-fr-ses-btn" data-eylem="ezberFransizcaDinle" data-ezber="${seciliEzber.id}" title="${esc(m.fransizcaSesliDinle)}">
-                        ${esc(m.fransizcaSesliDinle)}
+                        🔊 ${esc(m.fransizcaSesliDinle)}
                       </button>
                     </div>
                     <p class="anlam-metin fr-metin">${esc(seciliEzber.anlam.fr)}</p>
                   </div>
                 ` : `
-                  <div class="ezber-anlam ezber-tr-anlam">
+                  <div class="ezber-anlam ezber-tr-anlam mushaf-bilgi-kutu">
                     <div class="ezber-anlam-baslik-satir">
                       <span class="ezber-etiket">🇹🇷 ${esc(m.turkceAnlam)}:</span>
                       <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-tr-ses-btn" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" title="${esc(m.turkceSesliDinle)}">
-                        ${esc(m.turkceSesliDinle)}
+                        🔊 ${esc(m.turkceSesliDinle)}
                       </button>
                     </div>
                     <p class="anlam-metin tr-metin">${esc(seciliEzber.anlam.tr)}</p>
                   </div>
                 `}
 
+                <!-- SES OYNATICI VE KUMANDALAR -->
                 <div class="ezber-ses-kutusu">
-                  <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}">
+                  <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}" ${d.ezberDongu ? 'loop' : ''}>
                     Tarayıcınız ses oynatmayı desteklemiyor.
                   </audio>
                   <div class="ezber-hizli-kumanda" role="group" aria-label="Ses Kumandası">
                     <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-kumanda-btn" data-eylem="ezberBastan" title="${esc(m.bastanDinle)}">
-                      ${esc(m.bastanDinle)}
+                      ⏮️ ${esc(m.bastanDinle)}
                     </button>
                     <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-kumanda-btn" data-eylem="ezberGeriSar" title="${esc(m.besSaniyeGeri)}">
-                      ${esc(m.besSaniyeGeri)}
+                      ⏪ ${esc(m.besSaniyeGeri)}
                     </button>
                     ${dil === 'fr' ? `
                       <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-fr-ses-btn" data-eylem="ezberFransizcaDinle" data-ezber="${seciliEzber.id}" title="${esc(m.fransizcaSesliDinle)}">
-                        ${esc(m.fransizcaSesliDinle)}
+                        🔊 ${esc(m.fransizcaSesliDinle)}
                       </button>
                     ` : ''}
                   </div>
                   <div class="ezber-hiz-secici" role="group" aria-label="${esc(m.normalDinle)}">
                     <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 0.75 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="0.75" title="${esc(m.yavasDinle)}">
-                      ${esc(m.yavasDinle)}
+                      0.75x
                     </button>
                     <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1" title="${esc(m.normalDinle)}">
-                      ${esc(m.normalDinle)}
+                      1x
                     </button>
                     <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1.25 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1.25" title="${esc(m.hizliDinle)}">
-                      ${esc(m.hizliDinle)}
+                      1.25x
                     </button>
                     <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1.5 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1.5" title="${esc(m.cokHizliDinle)}">
-                      ${esc(m.cokHizliDinle)}
+                      1.5x
                     </button>
                   </div>
                   <button type="button" class="dugme dugme-birincil tekrar-btn" data-eylem="tekrarEttim" data-ezber="${seciliEzber.id}">
@@ -946,12 +1001,24 @@ export async function veliPortali(): Promise<void> {
                     <span class="hareke-blok-baslik">${esc(m.harekeliOkunuslar)}</span>
                     <div class="hareke-izgara">
                       ${HAREKELER.map((hrk) => {
-                        const birlesik = seciliHarf.harf + hrk.isaret;
+                        let gorunenHarf = seciliHarf.harf + hrk.isaret;
+                        let sesIpucu = hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr;
+
+                        if (hrk.id === 'cezm') {
+                          gorunenHarf = seciliHarf.harf === 'ا' ? 'اَهْ' : `اَ${seciliHarf.harf}\u0652`;
+                          const unlu = seciliHarf.kalinMi ? 'A' : 'E';
+                          sesIpucu = `${unlu}.. (${dil === 'fr' ? 'Arrêt' : dil === 'en' ? 'Stop' : 'Cezm'})`;
+                        } else if (hrk.id === 'sedde') {
+                          gorunenHarf = seciliHarf.harf === 'ا' ? 'اَأَّ' : `اَ${seciliHarf.harf}\u0651\u064E`;
+                          const unlu = seciliHarf.kalinMi ? 'A' : 'E';
+                          sesIpucu = `${unlu}..e (${dil === 'fr' ? 'Double' : dil === 'en' ? 'Double' : 'Şedde'})`;
+                        }
+
                         return `
-                          <button type="button" class="hareke-kutu" data-eylem="harekeSesCal" data-harf="${birlesik}" data-harf-id="${seciliHarf.id}" data-hareke-id="${hrk.id}" aria-label="${esc(hrk.ad[dil] || hrk.ad.tr)}: ${esc(birlesik)} (${esc(hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr)})" title="${esc(hrk.ad[dil] || hrk.ad.tr)} — ${esc(hrk.aciklama[dil] || hrk.aciklama.tr)}">
+                          <button type="button" class="hareke-kutu" data-eylem="harekeSesCal" data-harf="${gorunenHarf}" data-harf-id="${seciliHarf.id}" data-hareke-id="${hrk.id}" aria-label="${esc(hrk.ad[dil] || hrk.ad.tr)}: ${esc(gorunenHarf)} (${esc(sesIpucu)})" title="${esc(hrk.ad[dil] || hrk.ad.tr)} — ${esc(hrk.aciklama[dil] || hrk.aciklama.tr)}">
                             <span class="hareke-ad">${esc(hrk.ad[dil] || hrk.ad.tr)}</span>
-                            <span class="hareke-harf" lang="ar" dir="rtl">${birlesik}</span>
-                            <span class="hareke-ses-ipucu">${esc(hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr)}</span>
+                            <span class="hareke-harf" lang="ar" dir="rtl">${gorunenHarf}</span>
+                            <span class="hareke-ses-ipucu">${esc(sesIpucu)}</span>
                           </button>
                         `;
                       }).join('')}
@@ -1753,6 +1820,70 @@ export async function veliPortali(): Promise<void> {
       hedef.classList.add('oynuyor');
       setTimeout(() => { hedef.classList.remove('oynuyor'); }, 1200);
       fransizcaMealSeslendir(ezOgesi.id, ezOgesi.anlam.fr);
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberHizliSec' && durum) {
+      harfTikSesiCal();
+      tumSesleriDurdur();
+      durum.seciliEzberId = hedef.dataset.ezberId || 'fatiha';
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberFiltreTur' && durum) {
+      harfTikSesiCal();
+      durum.ezberFiltreTur = (hedef.dataset.tur as 'hepsi' | 'sure' | 'dua') || 'hepsi';
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberGizleToggle' && durum) {
+      harfTikSesiCal();
+      durum.ezberGizli = !durum.ezberGizli;
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberDonguToggle' && durum) {
+      harfTikSesiCal();
+      durum.ezberDongu = !durum.ezberDongu;
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) audioEl.loop = Boolean(durum.ezberDongu);
+      panoCiz();
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberBastan') {
+      harfTikSesiCal();
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) {
+        audioEl.currentTime = 0;
+        if (durum?.ezberHizi) audioEl.playbackRate = durum.ezberHizi;
+        if (durum?.ezberDongu) audioEl.loop = true;
+        audioEl.play().catch(() => {});
+      }
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberGeriSar') {
+      harfTikSesiCal();
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) {
+        audioEl.currentTime = Math.max(0, audioEl.currentTime - 5);
+      }
+      return;
+    }
+    if (hedef.dataset.eylem === 'ezberSesOynatDur') {
+      if (durum?.ezberGizli) {
+        durum.ezberGizli = false;
+        panoCiz();
+      }
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      if (audioEl) {
+        if (audioEl.paused) {
+          tumSesleriDurdur();
+          if (durum?.ezberHizi) audioEl.playbackRate = durum.ezberHizi;
+          if (durum?.ezberDongu) audioEl.loop = true;
+          audioEl.play().catch(() => {});
+        } else {
+          audioEl.pause();
+        }
+      }
       return;
     }
     if (hedef.dataset.eylem === 'ezberTurkceDinle') {

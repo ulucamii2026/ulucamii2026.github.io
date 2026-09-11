@@ -144,6 +144,11 @@ export const VELI_METIN = {
     varsayilanDersKonusu: 'Temel Dinî Bilgiler ve Kur’an-ı Kerim',
     varsayilanEzberHedefi: 'Haftalık sûre tekrarı',
     karneCamiImza: 'Marche-en-Famenne Ulu Camii Mektebi',
+    sureler: 'Kur’an Sûreleri',
+    dualar: 'Namaz Duaları',
+    ezberTesti: 'Ezberimi Sına 👁️',
+    meskDongusu: 'Sürekli Tekrar 🔁',
+    diyanetKiraati: 'Resmî Diyanet Tilaveti',
   },
 
   fr: {
@@ -283,6 +288,11 @@ export const VELI_METIN = {
     varsayilanDersKonusu: 'Connaissances religieuses fondamentales et Saint Coran',
     varsayilanEzberHedefi: 'Répétition hebdomadaire des sourates',
     karneCamiImza: 'École Coranique de la Mosquée Ulu de Marche-en-Famenne',
+    sureler: 'Sourates du Coran',
+    dualar: 'Prières de la salât',
+    ezberTesti: 'Tester la mémorisation 👁️',
+    meskDongusu: 'Répétition en boucle 🔁',
+    diyanetKiraati: 'Récitation officielle de Diyanet',
   },
 
   en: {
@@ -424,6 +434,11 @@ export const VELI_METIN = {
     varsayilanDersKonusu: 'Basic Islamic Knowledge & Holy Quran',
     varsayilanEzberHedefi: 'Weekly surah revision',
     karneCamiImza: 'Marche-en-Famenne Ulu Mosque Mektep',
+    sureler: 'Quranic Surahs',
+    dualar: 'Salah Invocations',
+    ezberTesti: 'Test Memorisation 👁️',
+    meskDongusu: 'Loop Playback 🔁',
+    diyanetKiraati: 'Official Diyanet Recitation',
   },
 
 } as const;

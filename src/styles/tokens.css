@@ -1,0 +1,29 @@
+/*
+ * Ulu Camii semantic token layer.
+ * Primitive colours, fonts and theme switching remain in global.css.
+ * Components should use these aliases so a future palette change has one seam.
+ */
+:root {
+  --surface-page: var(--zemin);
+  --surface-raised: var(--zemin-2);
+  --surface-muted: var(--zemin-3);
+  --text-primary: var(--metin);
+  --text-secondary: var(--metin-2);
+  --border-subtle: var(--cizgi);
+  --border-strong: var(--cizgi-etkilesim);
+  --accent-action: var(--vurgu);
+  --accent-link: var(--vurgu-2);
+  --accent-action-text: #fff;
+  --focus-ring: var(--vurgu-2);
+  --content-max: 78rem;
+  --space-unit: 0.25rem;
+  --motion-standard: 180ms cubic-bezier(.16, 1, .3, 1);
+  --motion-reveal: 450ms cubic-bezier(.16, 1, .3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-standard: 0ms linear;
+    --motion-reveal: 0ms linear;
+  }
+}

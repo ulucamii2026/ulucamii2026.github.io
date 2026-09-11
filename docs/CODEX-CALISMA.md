@@ -41,6 +41,7 @@ kuralları, hesap ayrımı ve tekrar çalıştırılabilir doğrulamadır.
 | `npm run dev` | Astro geliştirme ortamı |
 | `npm run onizle` | Derlenmiş siteyi 4399 portunda inceleme |
 | `npm run dogrula:codex` | Tip kontrolü, mevcut denetimler/build, tarayıcı ve kural testleri |
+| `npm run design:check` | Görsel token, yüzey belgesi ve yerel medya sözleşmesini hızlı denetleme |
 | `npm run test:web` | Mevcut `dist` üzerinde mobil/masaüstü senaryoları |
 | `npm run test:ihtida` | Yerel VM ve PDF üretiminde ihtida sözleşme/akış senaryoları |
 | `npm run test:veli-eposta` | Dil tercihi, otomatik kayıt aktarımı ve cuma e-postası |
@@ -48,9 +49,17 @@ kuralları, hesap ayrımı ve tekrar çalıştırılabilir doğrulamadır.
 | `npm run test:kurallar` | Yalnız demo Firestore üzerinde 17 güvenlik senaryosu |
 | `npm run codex:kontrol` | Codex ayar/beceri keşfi ve gerçek yerel MCP bağlantı denemesi |
 
+Görsel sistemin tek referansı [`docs/design/DESIGN.md`](design/DESIGN.md); ana sayfa,
+ihtida ve veli portalı yüzey notları aynı klasördedir. Yerel görsel envanterinin
+ölçü/hash manifesti `docs/design/media-manifest.json` dosyasına yazılır.
+
 `test:web` ve `codex:kontrol` aynı 4401 portunu kullanır: eşzamanlı çalıştırmayın.
 İkisi de önceden `npm run build` gerektirir. Test sunucusu, zaten açık olan 4399
 önizlemesini durdurmaz veya yeniden kullanmaz; Astro'nun programatik API'siyle açılır.
+`test:web`, `tests/web/design-visual.spec.mjs` ile ana sayfa ve ihtida yüzeylerinin
+TR/FR/EN ışık/koyu masaüstü ve mobil baseline’larını da kontrol eder. Baseline
+değişecekse `npx playwright test tests/web/design-visual.spec.mjs --update-snapshots`
+yalnız bilinçli görsel karar sonrasında çalıştırılır.
 
 Toplu doğrulama web hatası olsa da bağımsız backend testlerini çalıştırır.
 Build/ön denetim başarısızsa eski çıktıyı geçerli sanmamak için web testi atlanır.
@@ -185,10 +194,11 @@ beklenen sonucu vermedi; bu yüzden yukarıdaki açık klasör sınırı kullan�
 ## Sonraki geliştirmeler için sıra
 
 1. Yeni değişikliklerde tema geçişini bekleyen kontrast ve dar ekran testlerini korumak.
-2. İstenen içerik/tema değişikliğine göre ilgili sayfa testlerini genişletmek.
-3. Portal ekranları ve GAS formları için gerçek gönderim yapmayan uçtan uca senaryolar.
-4. İhtiyaç doğarsa Safari/Firefox, performans ve CI kontrollerini eklemek.
-5. Yayın istendiğinde dernek hesabı, diff ve test sonucunu yeniden doğrulamak.
+2. Her görsel değişiklikten sonra `npm run design:check` ve seçili baseline’ları gözden geçirmek.
+3. İstenen içerik/tema değişikliğine göre ilgili sayfa testlerini genişletmek.
+4. Portal ekranları ve GAS formları için gerçek gönderim yapmayan uçtan uca senaryolar.
+5. İhtiyaç doğarsa Safari/Firefox, performans ve CI kontrollerini eklemek.
+6. Yayın istendiğinde dernek hesabı, diff ve test sonucunu yeniden doğrulamak.
 
 ## Başvurulan belgeler
 

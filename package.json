@@ -34,6 +34,8 @@
     "test:kurallar": "node scripts/test-kurallar.mjs",
     "codex:kontrol": "node scripts/codex-kontrol.mjs",
     "agy:kontrol": "node scripts/agy-kontrol.mjs",
+    "design:check": "node scripts/design-check.mjs",
+    "design:media:manifest": "node scripts/design-media-manifest.mjs",
     "dogrula:codex": "node scripts/dogrula-codex.mjs",
     "oto-kaydet": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/oto-kaydet.ps1",
     "ihtida:gas-derle": "node scripts/ihtida-gas-derle.mjs"
