@@ -14,3 +14,8 @@ if (server.port !== 4401) {
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, async () => {
   await server.stop(); process.exit(0);
 });
+
+// Astro preview bazı Windows/Node sürümlerinde dinleme soketini event loop'tan
+// ayırabiliyor. Açık bir bekleme, Playwright testleri bitene kadar sunucunun
+// kendiliğinden kapanmasını ve ortadaki testlerde ECONNREFUSED oluşmasını önler.
+await new Promise(() => {});

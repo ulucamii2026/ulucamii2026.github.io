@@ -15,6 +15,7 @@ async function run(task) {
   results.push({ task, code });
   return code;
 }
+await run('design:check');
 await run('check');
 const build = await run('dogrula');
 if (build === 0) await run('test:web');
