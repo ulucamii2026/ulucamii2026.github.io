@@ -38,6 +38,12 @@ site:
   # üst üste görünüyordu. Şerit yalnız GÜNCEL haberleri taşır.
   heroMesajlar:
     - metin:
+        tr: "Diyanet yurt dışı sözleşmeli din görevlisi sınavı (100 kontenjan — Belçika dâhil) — son başvuru 25 Eylül 2026."
+        fr: "Concours Diyanet : 100 postes de ministres du culte contractuels (Belgique comprise) — date limite le 25 septembre 2026."
+        en: "Diyanet exam for contractual religious officials abroad (100 positions — including Belgium) — deadline 25 September 2026."
+      sayfa: duyurular
+      son: "2026-09-25"
+    - metin:
         tr: "Camimizin yeni web sitesi hayırlı olsun — vakitler, duyurular ve başvurular artık tek adreste."
         fr: "Bienvenue sur le nouveau site de notre mosquée — horaires, annonces et inscriptions à une seule adresse."
         en: "Welcome to our mosque’s new website — prayer times, announcements and applications in one place."
