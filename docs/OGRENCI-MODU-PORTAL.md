@@ -90,8 +90,14 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
   - `hataSesiCal()`: Yanlış seçimlerde çocuğu korkutmayan, eğitici yumuşak bas uyarı tonu (280Hz -> 180Hz).
   - `pariltiSesiCal()`: Yıldız sayacına, Kur'an basamaklarına veya başarı rozetlerine dokunulduğunda çalan 5 tonlu sihirli parıltı çanı (chimes).
   - `harekeTonuCal()`: Üstün (yükselen ferah ton), Esre (ince tiz ton), Ötre (tok bas tonu), Şedde (çift vurgulu vuruş) ve Cezim (staccato duraklama) için özel akustik tonlar.
-- **Diyanet Çocuk Multimedya Vitrini:** Haftanın Eğitici Köşesi'nde çocukların doğrudan tıklayıp Diyanet Çocuk Elifbâ animasyonlarını izleyebilecekleri şık video vitrini yer alır.
+## 15. Diyanet Resmî Harekeli Sesleri (Üstün, Esre, Ötre) & Pedagojik Ritim (Kalıcı Karar, 11 Eylül 2026)
+- **28 Harfin Üstün (Fetha) Sesleri (`public/media/ses/elifba/ustun/`):** Diyanet Elifba portalı `harfler/sesleri/btn_{1..28}.mp3` kaynağından 28 harfin tamamı yerel dizine indirildi.
+- **28 Harfin Esre (Kesra) Sesleri (`public/media/ses/elifba/esre/`):** Diyanet Elifba portalı `kesra/kesra/btn_{1..28}.mp3` kaynağından 28 harfin tamamı yerel dizine indirildi.
+- **28 Harfin Ötre (Damme) Sesleri (`public/media/ses/elifba/otre/`):** Diyanet Elifba portalı `damme/damme/btn_{1..28}.mp3` kaynağından 28 harfin tamamı yerel dizine indirildi.
+- **Şedde ve Cezm Pedagojisi:** Şedde (Teşdîd) tıklandığında Diyanet üstün sesi çift vuruşlu ritmik aralıkla (240ms) çalınır; Cezm (Sükûn) tıklandığında sükûn akustik tonu ile Diyanet sesi staccato olarak (280ms) duraklatılarak verilir.
+- Böylece hiçbir üçüncü taraf sese veya cihazda Arapça ses paketi olup olmamasına bağımlılık kalmamış, %100 resmî Diyanet ses mimarisine kavuşulmuştur.
 
-
-
-
+## 16. Çift Dilli Öğrenim, Fransızca Mealler ve Gemini 3.1 Flash TTS (Kalıcı Karar, 11 Eylül 2026)
+- **Çift Dilli Görünüm:** Belçika'da büyüyen talebelerin iki dilli öğrenim ihtiyacı gözetilerek, Türkçe arayüzde hem Türkçe Anlamı hem de altında Fransızca Tercümesi (`Traduction française`) bir arada sunulur.
+- **Gemini 3.1 Flash TTS (`gemini-3.1-flash-tts-preview`):** 19 sûre ve duanın (15 Kur'an sûresi + 4 namaz duası) Fransızca mealleri, stüdyo kalitesinde seslendirilerek `public/media/ses/mealler/fr/` altına yerel olarak kaydedilmiştir. "🗣️ Fransızca Dinle (Écouter en français)" düğmesi bu yerel dosyayı sıfır gecikmeyle çalar.
+- **4 Kademeli Hız Kumandası:** Ezber odasındaki oynatıcıya 0.75x (Lent/Yavaş), 1.0x (Normal), 1.25x (Rapide/Hızlı) ve 1.5x (Très rapide/Çok Hızlı) seçenekleri eklenmiş ve anlık `playbackRate` senkronizasyonu sağlanmıştır.
