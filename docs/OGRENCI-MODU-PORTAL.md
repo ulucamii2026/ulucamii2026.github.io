@@ -1,6 +1,6 @@
 # Mektep Çalışma Odası & Öğrenci Modu Kalıcı Kararları
 
-Güncelleme: 11 Eylül 2026.
+Güncelleme: 12 Eylül 2026.
 Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güvenli ve teşvik edici bir mektep odasına kavuşturulması.
 
 ## 1. Çocuk Mahremiyeti ve RGPD Kararı (Kalıcı)
@@ -16,7 +16,7 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - 28 Arapça harf, müfredatın 5 grubuna (Elif, Hı, Şîn, Ayn, Lâm) göre filtrelenebilir.
 - Harflerin yalın, başta, ortada ve sonda yazılışları gösterilir; kalın ve peltek harfler rozetlerle ayrılır.
 - Her harf için Üstün (َ), Esre (ِ), Ötre (ُ) ve Cezm (ْ) harekeli okunuş kartları bulunur.
-- Web Audio API ile sıfır gecikmeli mikro ton ve Web Speech API ile Arapça telaffuz desteği mevcuttur.
+- Mikro etkileşimlerde Web Audio API kullanılır. Elifba ve tilavet yalnız resmî Diyanet kayıtlarından çalınır; tarayıcı TTS yedeği kullanılmaz.
 
 ## 4. Çok Dilli Haftalık Mini Bilgi Yarışması (Quiz)
 - *Camiye Gidiyorum 1* ünite kazanımlarına ve Elif-Bâ bahçesine dayalı 10 soruluk tam soru havuzu (İslam'ın ve İmanın şartları, Abdest, Namaz, Peygamberimiz Hz. Muhammed s.a.v., Kur'an, Elif-Bâ harfleri ve Güzel Ahlak).
@@ -29,14 +29,14 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - Hoca ekranından (`src/scripts/hoca-ekrani.ts`) hocanın talebeye takdim ettiği özel başarı rozetleri (⭐ Haftanın Yıldızı, 📖 Ezber Şampiyonu, 🌸 Güzel Ahlak, 🏆 Üstün Gayret, 🏅 Düzenli Devam) öğrenci odasında parıldayarak gösterilir.
 
 ## 6. Diyanet Resmî Sesleri ve Görsel/Hareketli Mimari
-- **Resmî Diyanet Elifba Sesleri (`public/media/ses/elifba/`):** 28 harfin tamamı Diyanet İşleri Başkanlığı'nın resmi Kur'an portalından (`kuran.diyanet.gov.tr/elifba`) yerel olarak indirildi ve projeye dahil edildi. Harfe tıklandığında anında (0 gecikme ile) kristal netliğinde Diyanet tilaveti çalar; hareke kombinasyonlarında SpeechSynthesis fallback devreye girer.
+- **Resmî Diyanet Elifba Sesleri (`public/media/ses/elifba/`):** 28 harfin tamamı Diyanet İşleri Başkanlığı'nın resmi Kur'an portalından (`kuran.diyanet.gov.tr/elifba`) yerel olarak indirildi ve projeye dahil edildi. Harfe tıklandığında yerel Diyanet kaydı çalar. Ses yüklenemezse hata gösterilir; farklı kaynağa veya cihaz TTS sesine geçilmez.
 - **Özgün Mektep İllüstrasyonları (`public/media/mektep/`):** İznik çinileri, rahleler, fenerler ve basamaklı yollarla hazırlanan 1280px optimize WebP görselleri (mektep odası hero banner, Elifba bahçesi, ezber ve dua köşesi, Kur'an basamak yolu, başarı kupası).
 - **Hareketli Kutlama ve Parıltı GIF'i:** Yarışma bitişi ve tebrik anları için şeffaf arka planlı, akıcı döngülü `tebrik-kutlama.gif` konfeti ve altın yıldız ışıltısı.
 - **Üç Boyutlu Başarı Rozetleri:** Haftanın Yıldızı, Kur'an Rehberi, Güzel Ahlak, Kur’an-ı Kerim / Hatim ve İstikrarlı Devam madalyaları için yüksek çözünürlüklü özel WebP rozet illüstrasyonları (`rozet-yildiz.webp`, `rozet-kuran.webp`, `rozet-ahlak.webp`, `rozet-hatim.webp`, `rozet-devam.webp`).
 
 ## 7. Namaz Duaları ve Sûre Sesleri Altyapısı (Kalıcı Karar)
 - **4 Temel Namaz Duası (`public/media/ses/dualar/`):** Sübhâneke (`subhaneke.mp3`), Ettehiyyâtü (`tahiyyat.mp3`), Allâhümme Salli & Bârik (`sallibarik.mp3`) ve Rabbenâ Âtinâ & Rabbenâğfirlî (`rabbena.mp3` — Bakara 201 + İbrahim 41 Diyanet resmî tilaveti) duaları yerel dizine aktarıldı.
-- **15 Kur'an Sûresi (`public/media/ses/sureler/`):** Fâtiha, Âyetü’l-Kürsî, İnşirâh, Kadir, Asr, Fîl, Kureyş, Mâûn, Kevser, Kâfirûn, Nasr, Tebbet, İhlâs, Felak, Nâs sesleri dış CDN bağımlılığından kurtarılarak yerel dizine aktarıldı. Böylece öğrenci odası sıfır dış ağ gecikmesiyle, çevrimdışı ve CORS engellerinden muaf olarak çalışır.
+- **15 Kur'an Sûresi (`public/media/ses/sureler/`):** Fâtiha, Âyetü’l-Kürsî, İnşirâh, Kadir, Asr, Fîl, Kureyş, Mâûn, Kevser, Kâfirûn, Nasr, Tebbet, İhlâs, Felak, Nâs sesleri dış CDN bağımlılığından kurtarılarak yerel dizine aktarıldı. Sesler siteyle aynı kaynaktan sunulur. Bu, çevrimdışı çalışma garantisi değildir; sesleri çevrimdışı önbelleğe alan bir servis çalışanı bu kapsamda kurulmadı.
 - **Dua Metni Doğruluğu:** Rabbenâ duası Arapça metnindeki yazım kontrol edildi ve tashih edildi.
 
 ## 8. Ses Senkronizasyonu & Çakışma Önleme
@@ -48,7 +48,7 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 
 ## 10. Diyanet Elifba He/Vav Ses Eşleşmesi ve Harekeli Okunuş Ayrımı (Kalıcı Karar)
 - **He ve Vav Sıralaması:** Diyanet Elifba portalında (`kuran.diyanet.gov.tr/elifba`) 26. buton `btn_26.mp3` = **He (هـ)** (14.045 bayt), 27. buton `btn_27.mp3` = **Vav (و)** (18.852 bayt) olarak yer almaktadır. `src/lib/elifba-verisi.ts` içindeki `ELIFBA_HARFLERI` dizisi de Diyanet Elifba Cüzü sırasına (`nun -> he -> vav -> ye`) getirilerek hem görsel tahta sırası hem ses eşleşmesi `%100 MATCH` olarak tam hizalanmıştır.
-- **Harekeli Kart Fonetiği:** Harf butonuna basıldığında harfin talim ismi (Diyanet MP3) okunurken, altındaki harekeli (üstün, esre, ötre, cezm) kutucuklara tıklandığında harfin yalın ismi DEĞİL, doğrudan harekeli fonetik okunuşu (tarayıcının Arapça ses motoru ile tane tane 0.75x hızında) seslendirilir.
+- **Harekeli Kart Fonetiği:** Harf butonuna basıldığında harfin talim ismi (Diyanet MP3) okunurken, altındaki harekeli (üstün, esre, ötre, cezm) kutucuklara tıklandığında harfin yalın ismi DEĞİL, doğrudan ilgili Diyanet ses kaydı çalınır. Cezm kartı, resmî örnekteki tam metni gösterir; şedde alıştırmaları ayrı açılır bölümde sunulur.
 - **Sûre Seçiminde Ses Temizliği:** Ezber odasında sûre/dua açılır menüsü değiştiğinde sayfadaki tüm aktif sesler anında durdurulur ve başa sarılır (`a.pause(); a.currentTime = 0;`).
 - **Quiz Dinamik Başarı Skoru:** Mini test tamamlandığında talebenin doğru sayısı hesaplanır ve başarı kupasının hemen altında üç dilli dinamik başarı rozeti (`🎯 X / 10 Doğru Cevap` / `Bonnes réponses` / `Correct answers`) sergilenir.
 
@@ -89,15 +89,38 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
   - `kutlamaSesiCal()`: Doğru cevaplarda ve tekrar sayımlarında çalan 4 kademeli zafer melodisi.
   - `hataSesiCal()`: Yanlış seçimlerde çocuğu korkutmayan, eğitici yumuşak bas uyarı tonu (280Hz -> 180Hz).
   - `pariltiSesiCal()`: Yıldız sayacına, Kur'an basamaklarına veya başarı rozetlerine dokunulduğunda çalan 5 tonlu sihirli parıltı çanı (chimes).
-  - `harekeTonuCal()`: Üstün (yükselen ferah ton), Esre (ince tiz ton), Ötre (tok bas tonu), Şedde (çift vurgulu vuruş) ve Cezim (staccato duraklama) için özel akustik tonlar.
+  - Kullanılmayan `harekeTonuCal()` 12 Eylül incelemesinde kaldırıldı; telaffuz için resmî ses kayıtları kullanılır.
 ## 15. Diyanet Resmî Harekeli Sesleri (Üstün, Esre, Ötre) & Pedagojik Ritim (Kalıcı Karar, 11 Eylül 2026)
 - **28 Harfin Üstün (Fetha) Sesleri (`public/media/ses/elifba/ustun/`):** Diyanet Elifba portalı `harfler/sesleri/btn_{1..28}.mp3` kaynağından 28 harfin tamamı yerel dizine indirildi.
 - **28 Harfin Esre (Kesra) Sesleri (`public/media/ses/elifba/esre/`):** Diyanet Elifba portalı `kesra/kesra/btn_{1..28}.mp3` kaynağından 28 harfin tamamı yerel dizine indirildi.
 - **28 Harfin Ötre (Damme) Sesleri (`public/media/ses/elifba/otre/`):** Diyanet Elifba portalı `damme/damme/btn_{1..28}.mp3` kaynağından 28 harfin tamamı yerel dizine indirildi.
-- **Şedde ve Cezm Pedagojisi:** Şedde (Teşdîd) tıklandığında Diyanet üstün sesi çift vuruşlu ritmik aralıkla (240ms) çalınır; Cezm (Sükûn) tıklandığında sükûn akustik tonu ile Diyanet sesi staccato olarak (280ms) duraklatılarak verilir.
-- Böylece hiçbir üçüncü taraf sese veya cihazda Arapça ses paketi olup olmamasına bağımlılık kalmamış, %100 resmî Diyanet ses mimarisine kavuşulmuştur.
+- **Cezm ve Şedde (12 Eylül düzeltmesi):** Ses kesme/tekrarlama veya yapay telaffuz yerine resmî Diyanet cezm dersindeki 28 metin/ses çifti ve şedde dersindeki 18 kelime/ifade kullanılır. Şedde örnekleri harf başına uydurulmaz; ayrı açılır alanda Diyanet metniyle sunulur. Eşleşmeler: `src/data/elifba-alistirmalari.json`; aktarım: `scripts/elifba-alistirmalari-aktar.py`.
+- Elifba telaffuzları resmî Diyanet kayıtlarından gelir; cihazın Arapça ses paketine bağlı değildir. Çeviri sesleri ve arayüz efektleri tilavet kaydı değildir.
 
 ## 16. Çift Dilli Öğrenim, Fransızca Mealler ve Gemini 3.1 Flash TTS (Kalıcı Karar, 11 Eylül 2026)
 - **Çift Dilli Görünüm:** Belçika'da büyüyen talebelerin iki dilli öğrenim ihtiyacı gözetilerek, Türkçe arayüzde hem Türkçe Anlamı hem de altında Fransızca Tercümesi (`Traduction française`) bir arada sunulur.
-- **Gemini 3.1 Flash TTS (`gemini-3.1-flash-tts-preview`):** 19 sûre ve duanın (15 Kur'an sûresi + 4 namaz duası) Fransızca mealleri, stüdyo kalitesinde seslendirilerek `public/media/ses/mealler/fr/` altına yerel olarak kaydedilmiştir. "🗣️ Fransızca Dinle (Écouter en français)" düğmesi bu yerel dosyayı sıfır gecikmeyle çalar.
+- **Gemini 3.1 Flash TTS (`gemini-3.1-flash-tts-preview`):** 19 sûre ve duanın (15 Kur'an sûresi + 4 namaz duası) Fransızca anlam kayıtları `public/media/ses/mealler/fr/` altındadır. Fransızca dinleme düğmesi bu yerel dosyaları kullanır; gecikme bağlantı ve cihaza bağlıdır.
 - **4 Kademeli Hız Kumandası:** Ezber odasındaki oynatıcıya 0.75x (Lent/Yavaş), 1.0x (Normal), 1.25x (Rapide/Hızlı) ve 1.5x (Très rapide/Çok Hızlı) seçenekleri eklenmiş ve anlık `playbackRate` senkronizasyonu sağlanmıştır.
+
+
+## 17. Ses, Karne ve Erişilebilirlik Denetimi (12 Eylül 2026)
+
+- Ses geçişleri tek istek kimliğiyle yönetilir; iptal edilmiş kaydın gecikmiş hatası yeni sesi etkileyemez. Metni gizleme, döngü ve hız düğmeleri oynatıcıyı yeniden çizmez; konum ve klavye odağı korunur.
+- Hadis seslerinin varlığı derlemede gerçek dosyalardan belirlenir (`Veli.astro → hadisSesleri`). İlk incelemede eksik olan 10 İngilizce ve `kolaylastirin` hadisinin Fransızca kaydı, aynı gün Windows SAPI ile üretilip eklendi. Bunlar anlamın otomatik seslendirmesidir; tilavet değildir. Kaynak/motor/hash bilgileri `src/data/hadis-anlam-sesleri.json` içinde tutulur.
+- Panoya kopyalama gerçek sonuca göre başarı/hata bildirir; API reddinde yedek yol denenir, geçici alan ve odak temizlenir (`src/lib/pano.ts`).
+- Haftalık karne yalnız Brüksel takvimindeki bu haftanın girilmiş yoklamalarını toplar; cumartesi ve pazar ders/ezberlerini birlikte gösterir. Geçmiş hafta kaydı bu haftanın sonucu diye sunulmaz.
+- Açık/koyu tema kontrastı, klavye, gizli metnin ekran okuyucudan da gizlenmesi ve iç içe düğme kusurları düzeltildi.
+- Gerçek portal kodunu sentetik aileyle çalıştıran test: `tests/web/mektep-islev.spec.mjs`. Firebase ve dış ağ kapalıdır. Bu, gerçek veli hesabıyla giriş veya gerçek cihazda ses dinleme kanıtı değildir.
+
+Kaynaklar: [Diyanet Elifba](https://kuran.diyanet.gov.tr/elifba/),
+[cezm örnekleri](https://kuran.diyanet.gov.tr/elifba/templates/dersler/eb/cezm/kavrama.html),
+[şedde örnekleri](https://kuran.diyanet.gov.tr/elifba/templates/dersler/eb/sedde/uygulama.html).
+Ayrıntılı kapsam ve kontrol sonucu: [oturum incelemesi](AGY-OTURUM-INCELEMESI-2026-09-12.md).
+
+## 18. Birlikte Öğrenme Atölyesi (12 Eylül 2026)
+
+65 etkinlik, günlük üç adım, yerel aralıklı tekrar, sekiz aile rehberi, hazırlık
+kontrolü ve haftalık yazdırma eklendi. Yeni alan eski araçları korur; hocanın
+merkezî değerlendirmesine öz beyan yazmaz. Ayrıntı ve test kanıtları:
+[Atölye](VELI-OGRENCI-ATOLYESI.md). Araştırma ve öneriler:
+[Pedagojik rapor](VELI-OGRENCI-PEDAGOJIK-ARASTIRMA.md).

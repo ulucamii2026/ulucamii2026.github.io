@@ -1,3 +1,4 @@
+import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
 /**
  * Veli portalı tarayıcı uygulaması (6 Eyl 2026). Sunucu yok: Firebase Auth + Firestore (lite) doğrudan tarayıcıdan.
  * Akış: e-posta bağlantısı → (ilk kez) şifre belirleme → pano; sonraki girişler e-posta + şifre. Veri erişimi
@@ -11,10 +12,14 @@ import { EZBER_LISTESI } from '../lib/ezber-verisi';
 import { ELIFBA_HARFLERI, HARF_GRUPLARI, HAREKELER, gununHarfiGetir, type HarfGrup, type HarekeTuru } from '../lib/elifba-verisi';
 import { QUIZ_SORULARI } from '../lib/quiz-verisi';
 import { gununHadisiGetir } from '../lib/hadis-verisi';
+import { panoyaKopyala } from '../lib/pano';
+import elifbaAlistirmalari from '../data/elifba-alistirmalari.json';
+import { ogrenmeAtolyesi } from './ogrenme-atolyesi';
+import { ogrenmeMetni } from '../i18n/ogrenme';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
-type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; gizlilikYolu: string; kursYolu: string; dilYollari: Record<Dil, string> };
+type Veri = { hadisSesleri: Record<string, string[]>; donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; gizlilikYolu: string; kursYolu: string; dilYollari: Record<Dil, string> };
 type Ogrenci = { ref: string; ad: string; soyad: string; durum?: string };
 type DurumTip = 'var' | 'yok' | 'mazeret' | 'gec';
 // Yoklama artık gün başına DERS DERS tutulur: dersler = { "1": durum, "2": durum, "3": durum } (gün-içi sıra → durum).
@@ -23,7 +28,7 @@ type Yoklama = { ref: string; tarih: string; dersler?: Record<string, DurumTip>;
 type Ilerleme = { kuranAdim?: number; ezber?: Record<string, 'ogrendi' | 'tekrar' | 'baslamadi'>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string; rozet?: string };
 type Degerlendirme = { tarih: string; alan: string; olcut?: string; derece?: number; not?: string };
 type Not = { tarih: string; metin: string };
-type Odev = { tarih: string; hafta?: number; ezber?: Record<string, string>; odev?: Record<string, string>; materyal?: string; yayin: boolean };
+type Odev = { etkinlikler?:string[]; tarih: string; hafta?: number; ezber?: Record<string, string>; odev?: Record<string, string>; materyal?: string; yayin: boolean };
 type Duyuru = { tarih: string; baslik: Record<string, string>; metin: Record<string, string>; yayin: boolean };
 type Bildirim = { id?: string; ref: string; tur: string; tarih?: string; metin: string; okundu: boolean; zaman?: { toDate?: () => Date } | string; yanit?: string; yanitZaman?: { toDate?: () => Date } | string };
 
@@ -41,6 +46,7 @@ export async function veliPortali(): Promise<void> {
   const veri = JSON.parse(veriEl.textContent || '{}') as Veri;
   const tarihYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' }) =>
     iso ? new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00')) : '';
+  const hadisSesKaydiVar = (sesDili: string, id: string) => (veri.hadisSesleri?.[sesDili] || []).includes(id);
   const cok = (o: Record<string, string> | undefined) => (o ? (o[dil] || o.fr || o.tr || '') : '');
   // Duyuru/ödev metnindeki https bağlantılarını tıklanabilir yapar (önce kaçış, sonra bağlantı; sondaki noktalama bağlantıya girmez)
   const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
@@ -134,43 +140,6 @@ export async function veliPortali(): Promise<void> {
     } catch {}
   };
 
-  const harekeTonuCal = (harfMetni: string) => {
-    try {
-      const ctx = getSesBaglami();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      if (harfMetni.includes('\u064E')) {
-        // Üstün: Yükselen ferah ton (a/e)
-        osc.frequency.setValueAtTime(440, now);
-        osc.frequency.exponentialRampToValueAtTime(660, now + 0.15);
-      } else if (harfMetni.includes('\u0650')) {
-        // Esre: İnce tiz ton (i)
-        osc.frequency.setValueAtTime(587.33, now);
-        osc.frequency.exponentialRampToValueAtTime(523.25, now + 0.15);
-      } else if (harfMetni.includes('\u064F')) {
-        // Ötre: Tok derin ton (u/ü)
-        osc.frequency.setValueAtTime(349.23, now);
-        osc.frequency.exponentialRampToValueAtTime(293.66, now + 0.18);
-      } else if (harfMetni.includes('\u0651')) {
-        // Şedde: Çift vurgulu ton
-        osc.frequency.setValueAtTime(523.25, now);
-        osc.frequency.setValueAtTime(659.25, now + 0.1);
-      } else {
-        // Cezim: Kısa net duraklama vuruşu
-        osc.frequency.setValueAtTime(440, now);
-      }
-      gain.gain.setValueAtTime(0.09, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.22);
-    } catch {}
-  };
-
   const konfetiPatlat = () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     try {
@@ -205,138 +174,65 @@ export async function veliPortali(): Promise<void> {
   };
 
   let aktifAudio: HTMLAudioElement | null = null;
-  const tumSesleriDurdur = () => {
-    try {
-      if (aktifAudio) {
-        aktifAudio.pause();
-        aktifAudio.currentTime = 0;
-      }
-    } catch {}
-    try {
-      kok.querySelectorAll<HTMLAudioElement>('audio').forEach((a) => {
-        if (!a.paused) {
-          a.pause();
-          a.currentTime = 0;
-        }
-      });
-    } catch {}
-    if ('speechSynthesis' in window) {
-      try { window.speechSynthesis.cancel(); } catch {}
-    }
-    try {
-      kok.querySelectorAll('.oynuyor').forEach((el) => el.classList.remove('oynuyor'));
-    } catch {}
+  let sesIstegi = 0;
+  const tumSesleriDurdur = (korunanAudio?: HTMLAudioElement) => {
+    ++sesIstegi;
+    const onceki = aktifAudio;
+    aktifAudio = null;
+    if (onceki) { onceki.pause(); onceki.currentTime = 0; }
+    kok.querySelectorAll<HTMLAudioElement>('audio').forEach((a) => {
+      if (a !== korunanAudio) { a.pause(); a.currentTime = 0; }
+    });
+    kok.querySelectorAll<HTMLElement>('.oynuyor').forEach((el) => {
+      el.classList.remove('oynuyor');
+      if (el.matches('button, [role="button"]')) el.setAttribute('aria-pressed', 'false');
+    });
   };
 
-  const harekeliSeslendir = (harfId: string, harekeId: HarekeTuru, harfMetni: string) => {
+  // Bir önceki isteğin geç gelen hatası yeni kaydı veya ekranı etkileyemez.
+  // Elifba/tilavet hiçbir koşulda cihaz TTS sesiyle değiştirilmez.
+  const kayitSeslendir = (url: string, kutu?: HTMLElement) => {
+    if (aktifAudio?.getAttribute('src') === url) { tumSesleriDurdur(); return; }
     tumSesleriDurdur();
+    const istek = sesIstegi;
+    try {
+      const ses = new Audio(url);
+      aktifAudio = ses;
+      const guncel = () => istek === sesIstegi && aktifAudio === ses;
+      const temizle = () => {
+        kutu?.classList.remove('oynuyor');
+        if (kutu?.matches('button, [role="button"]')) kutu.setAttribute('aria-pressed', 'false');
+      };
+      const basarisiz = () => {
+        if (!guncel()) return;
+        aktifAudio = null;
+        temizle();
+        bildirimGoster(m.sesAcilamadi, 'hata');
+      };
+      ses.addEventListener('play', () => {
+        if (!guncel()) { ses.pause(); return; }
+        kutu?.classList.add('oynuyor');
+        if (kutu?.matches('button, [role="button"]')) kutu.setAttribute('aria-pressed', 'true');
+      });
+      ses.addEventListener('ended', () => { if (guncel()) { aktifAudio = null; temizle(); } });
+      ses.addEventListener('pause', () => { if (guncel()) temizle(); });
+      ses.addEventListener('error', basarisiz);
+      ses.play().catch(basarisiz);
+    } catch { if (istek === sesIstegi) bildirimGoster(m.sesAcilamadi, 'hata'); }
+  };
 
-    const sesKlasor = harekeId === 'ustun' ? 'ustun'
-      : harekeId === 'esre' ? 'esre'
-      : harekeId === 'otre' ? 'otre'
-      : null;
-
-    if (sesKlasor) {
-      try {
-        aktifAudio = new Audio(`/media/ses/elifba/${sesKlasor}/${harfId}.mp3`);
-        aktifAudio.play().catch(() => {
-          harekeTonuCal(harfMetni);
-          sesliFallback(harfMetni);
-        });
-        return;
-      } catch {
-        harekeTonuCal(harfMetni);
-        sesliFallback(harfMetni);
-        return;
-      }
-    }
-
-    // Cezm (Sükûn): Arapça fonetiğinde ve Diyanet Elifbâ meşki usulünde
-    // cezimli harf tek başına okunamaz, önüne elif/hemze konularak meşk edilir (Eb, Et, Es, Ec...)
+  const harekeliSeslendir = (harfId: string, harekeId: HarekeTuru) => {
     if (harekeId === 'cezm') {
-      try {
-        harekeTonuCal(harfMetni);
-        const yalinHarf = harfMetni.replace(/[\u064B-\u0652]/g, '') || 'ب';
-        const meskMetni = yalinHarf === 'ا' ? 'اَهْ' : `اَ${yalinHarf}\u0652`;
-        metinSeslendir(meskMetni, 'ar-SA');
-        return;
-      } catch {
-        harekeTonuCal(harfMetni);
-        return;
-      }
+      const ornek = elifbaAlistirmalari.cezm.ornekler.find((x) => x.id === harfId);
+      if (ornek) kayitSeslendir(ornek.sesUrl);
+    } else if (harekeId === 'ustun' || harekeId === 'esre' || harekeId === 'otre') {
+      kayitSeslendir(`/media/ses/elifba/${harekeId}/${harfId}.mp3`);
     }
-
-    // Şedde (Teşdid): Arapça fonetiğinde şeddeli harf tek başına okunamaz,
-    // bir önceki harfle çiftlenerek meşk edilir (Ebbe, Ette, Esse, Ecce...)
-    if (harekeId === 'sedde') {
-      try {
-        harekeTonuCal(harfMetni);
-        const yalinHarf = harfMetni.replace(/[\u064B-\u0652]/g, '') || 'ب';
-        const meskMetni = yalinHarf === 'ا' ? 'اَأَّ' : `اَ${yalinHarf}\u0651\u064E`;
-        metinSeslendir(meskMetni, 'ar-SA');
-        return;
-      } catch {
-        harekeTonuCal(harfMetni);
-        return;
-      }
-    }
-
-    harekeTonuCal(harfMetni);
-    sesliFallback(harfMetni);
   };
 
   const harfSeslendir = (harfMetni: string, harfId?: string) => {
-    tumSesleriDurdur();
-
-    // Harekeli harf seslendiriliyorsa doğrudan Diyanet resmi sesine git
-    const harekeliMi = /[\u064B-\u0652]/.test(harfMetni);
-    if (harekeliMi) {
-      const hId = harfId || HARF_SES_HARITASI[harfMetni[0]] || 'elif';
-      let hrk: HarekeTuru = 'ustun';
-      if (harfMetni.includes('\u0650')) hrk = 'esre';
-      else if (harfMetni.includes('\u064F')) hrk = 'otre';
-      else if (harfMetni.includes('\u0652')) hrk = 'cezm';
-      else if (harfMetni.includes('\u0651')) hrk = 'sedde';
-      harekeliSeslendir(hId, hrk, harfMetni);
-      return;
-    }
-
     const sesId = harfId || HARF_SES_HARITASI[harfMetni] || HARF_SES_HARITASI[harfMetni[0]];
-    if (sesId) {
-      try {
-        if (aktifAudio) {
-          aktifAudio.pause();
-          aktifAudio.currentTime = 0;
-        }
-        aktifAudio = new Audio(`/media/ses/elifba/${sesId}.mp3`);
-        aktifAudio.play().catch(() => {
-          sesliFallback(harfMetni);
-        });
-        return;
-      } catch {
-        sesliFallback(harfMetni);
-        return;
-      }
-    }
-    sesliFallback(harfMetni);
-  };
-
-  const metinSeslendir = (metin: string, dilKodu = 'ar-SA') => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(metin);
-      u.lang = dilKodu;
-      u.rate = dilKodu.startsWith('ar') ? 0.75 : 0.9;
-      const sesler = window.speechSynthesis.getVoices();
-      const uygunSes = sesler.find((v) => v.lang && v.lang.toLowerCase().startsWith(dilKodu.slice(0, 2).toLowerCase()));
-      if (uygunSes) u.voice = uygunSes;
-      window.speechSynthesis.speak(u);
-    }
-  };
-
-
-  const sesliFallback = (metin: string) => {
-    metinSeslendir(metin, 'ar-SA');
+    if (sesId) kayitSeslendir(`/media/ses/elifba/${sesId}.mp3`);
   };
 
   const harfTikSesiCal = () => {
@@ -592,12 +488,33 @@ export async function veliPortali(): Promise<void> {
 
   const kuranSirasi = veri.gunler.flatMap((g) => g.dersler.filter((x) => x.kod === 'kuran').map((x) => ({ tarih: g.tarih, konu: x.konu }))).filter((x, i, d) => d.findIndex((y) => y.konu === x.konu) === i); // her Kur'an konusu bir adım (ilk işlendiği gün)
 
+  let atolyeTemizle: (() => void) | undefined;
   const panoCiz = () => {
     if (!durum) return;
+    atolyeTemizle?.();
+    tumSesleriDurdur();
     const d = durum; const bugun = bugunISO();
     const pzt = gunEkle(bugun, -((new Date(bugun + 'T12:00:00Z').getUTCDay() + 6) % 7)); const paz = gunEkle(pzt, 6);
     const o = d.ogrenciler[d.secili]; const c = o ? d.cocuk[o.ref] : null;
     const haftaGunleri = veri.gunler.filter((g) => g.tarih >= pzt && g.tarih <= paz);
+    const atolyeBagla = () => {
+      const alan = kok.querySelector<HTMLElement>('[data-ogrenme]');
+      if (!alan || !o) return;
+      atolyeTemizle = ogrenmeAtolyesi(alan, {
+        bulut: ogrenmeDeposu(db,o.ref), atanan: haftaOdev?.etkinlikler,
+        dil, ogrenci: d.mod === 'ogrenci', hesap: d.eposta, ref: o.ref, ad: `${o.ad} ${o.soyad}`,
+        hafta: haftaGunleri.map(g => ({ tarih: g.tarih, konu: g.dersler.map(x => x.konu).join(' · ') })),
+        oynat: url => kayitSeslendir(url), durdur: () => tumSesleriDurdur(),
+        yardim: metin => {
+          if (d.mod === 'ogrenci') { d.mod = 'veli'; panoCiz(); }
+          const form = kok.querySelector<HTMLFormElement>('form[data-form="bildir"]');
+          const tur = form?.querySelector<HTMLSelectElement>('[name="tur"]');
+          const alan = form?.querySelector<HTMLTextAreaElement>('[name="metin"]');
+          if (tur) { tur.value = 'soru'; tur.dispatchEvent(new Event('change')); }
+          if (alan) { if (!alan.value.trim()) alan.value = metin; alan.focus(); alan.scrollIntoView({ block: 'center' }); }
+        },
+      });
+    };
     const siradaki = veri.gunler.find((g) => g.tarih > bugun);
     const haftaOdev = d.odevler.find((x) => x.tarih >= pzt && x.tarih <= paz);
     const yk = c ? c.yoklama : []; const say = { var: 0, yok: 0, mazeret: 0, gec: 0 } as Record<string, number>; let toplamDers = 0; yk.forEach((y) => dersDurumlari(y).forEach((p) => { say[p.durum] = (say[p.durum] || 0) + 1; toplamDers++; }));
@@ -709,6 +626,7 @@ export async function veliPortali(): Promise<void> {
             ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}"><span class="sekme-avatar ${monogramSinifi(x.ref)}" aria-hidden="true">${esc(monogramHarfleri(x.ad, x.soyad))}</span>${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
           </div>` : ''}
 
+          <section class="ogrenme-atolyesi" data-ogrenme></section>
           <div class="bolumler ogrenci-grid" id="cocuk-panel">
             <!-- GÜNÜN KEŞFİ: GÜNÜN HARFİ & NEBEVÎ HADİSİ -->
             <section class="bolum r-ochre oncelik genis gunun-kesfi-kart">
@@ -746,16 +664,17 @@ export async function veliPortali(): Promise<void> {
                   </div>
                   <div class="gunun-hadisi-govde">
                     <!-- ARAPÇA HADİS METNİ (ORTALI, İSLAMİ TEZYİNATLI & TIKLAYINCA PRO STÜDYO SESİ) -->
-                    <button type="button" class="hadis-arapca hadis-arapca-btn hadis-ortali" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)} (Stüdyo Seslendirmesi)">
+                    <button type="button" class="hadis-arapca hadis-arapca-btn hadis-ortali" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
                       <span class="hadis-tirnak-sol" aria-hidden="true">«</span>
                       <span class="hadis-ic-metin">${esc(gununHadisi.arapca)}</span>
                       <span class="hadis-tirnak-sag" aria-hidden="true">»</span>
                       <span class="hadis-ses-ipucu-cip">🔊 ${dil === 'fr' ? 'Arabe (Studio)' : (dil === 'en' ? 'Arabic Studio Audio' : 'Arapça Stüdyo Sesi (Dinle)')}</span>
                     </button>
                     <!-- HADİS MEALİ (ORTALI & TIKLAYINCA PRO STÜDYO TÜRKÇE SESİ) -->
-                    <div class="hadis-meal-kutu hadis-ortali" data-eylem="hadisSesCal" data-hadis-tur="meal" role="button" tabindex="0" title="${esc(m.hadisMealiDinle)} (Stüdyo Seslendirmesi)">
+                    <div class="hadis-meal-kutu hadis-ortali" data-eylem="hadisSesCal" data-hadis-tur="meal" aria-disabled="${!hadisSesKaydiVar(dil, gununHadisi.id)}" role="button" tabindex="0" title="${esc(m.hadisMealiDinle)}">
                       <p class="hadis-meali">«${esc(gununHadisi.metin[dil] || gununHadisi.metin.tr)}»</p>
-                      <span class="hadis-ses-ipucu-cip meal-cip">🗣️ ${dil === 'fr' ? 'Traduction audio (Studio)' : (dil === 'en' ? 'Studio Audio Translation' : 'Türkçe Stüdyo Meâli (Dinle)')}</span>
+                      <span class="hadis-ses-ipucu-cip meal-cip">${hadisSesKaydiVar(dil, gununHadisi.id) ? esc(m.hadisMealiDinle) : esc(m.sesDiliYok)}</span>
+                      <small>${esc(ogrenmeMetni(dil).sesEtiket)}</small>
                     </div>
                     <!-- KAYNAK VE KONU ROZETLERİ (ORTALI) -->
                     <div class="hadis-kaynak-satir hadis-ortali-satir">
@@ -808,7 +727,7 @@ export async function veliPortali(): Promise<void> {
                   <div class="serlevha-motif serlevha-sol" aria-hidden="true"></div>
                   <div class="serlevha-icerik">
                     <span class="serlevha-tur-rozet ${seciliEzber.tur === 'sure' ? 'rozet-sure' : 'rozet-dua'}">
-                      ${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'SOURATE DU SAINT CORAN' : (dil === 'en' ? 'SURAH OF THE HOLY QURAN' : "KUR'AN-I KERÎM SÛRESİ")) : (dil === 'fr' ? 'PRIÈRE DE LA PRIÈRE' : (dil === 'en' ? 'PRAYER SUPPLICATION • CURRICULUM' : 'NAMAZ DUASI • MEKTEP MÜFREDATI'))}
+                      ${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'SOURATE DU SAINT CORAN' : (dil === 'en' ? 'SURAH OF THE HOLY QURAN' : "KUR'AN-I KERÎM SÛRESİ")) : (dil === 'fr' ? 'INVOCATION DE LA PRIÈRE' : (dil === 'en' ? 'PRAYER SUPPLICATION • CURRICULUM' : 'NAMAZ DUASI • MEKTEP MÜFREDATI'))}
                     </span>
                     <h3 class="mushaf-sure-baslik">${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}</h3>
                   </div>
@@ -831,10 +750,10 @@ export async function veliPortali(): Promise<void> {
 
                 <!-- EZBER VE MEŞK ARAÇLARI ÇUBUĞU -->
                 <div class="ezber-arac-bar">
-                  <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberGizli ? 'aktif-arac' : ''}" data-eylem="ezberGizleToggle" title="${esc(m.ezberTesti)}">
+                  <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberGizli ? 'aktif-arac' : ''}" data-eylem="ezberGizleToggle" aria-pressed="${Boolean(d.ezberGizli)}" title="${esc(m.ezberTesti)}">
                     ${d.ezberGizli ? '👁️ ' + (dil === 'fr' ? 'Afficher le texte' : (dil === 'en' ? 'Show text' : 'Metni Göster')) : '🙈 ' + esc(m.ezberTesti)}
                   </button>
-                  <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberDongu ? 'aktif-arac' : ''}" data-eylem="ezberDonguToggle" title="${esc(m.meskDongusu)}">
+                  <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberDongu ? 'aktif-arac' : ''}" data-eylem="ezberDonguToggle" aria-pressed="${Boolean(d.ezberDongu)}" title="${esc(m.meskDongusu)}">
                     🔁 ${esc(m.meskDongusu)}: ${d.ezberDongu ? (dil === 'fr' ? 'Actif' : (dil === 'en' ? 'On' : 'Açık')) : (dil === 'fr' ? 'Inactif' : (dil === 'en' ? 'Off' : 'Kapalı'))}
                   </button>
                   <button type="button" class="dugme dugme-ikincil ezber-arac-btn" data-eylem="ezberMetinKopyala" title="${esc(m.metniKopyala)}">
@@ -844,15 +763,12 @@ export async function veliPortali(): Promise<void> {
 
                 <!-- ARAPÇA MUSHAF METNİ -->
                 <div class="mushaf-arapca-blok ${d.ezberGizli ? 'ezber-metin-gizli' : ''}">
-                  <button type="button" class="ezber-arapca ezber-metin-btn mushaf-hat-metin mushaf-ortali" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
+                  <button type="button" class="ezber-arapca ezber-metin-btn mushaf-hat-metin mushaf-ortali" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" aria-hidden="${Boolean(d.ezberGizli)}" tabindex="${d.ezberGizli ? -1 : 0}" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
                     ${esc(arapcaMetinGoster)}
                   </button>
-                  ${d.ezberGizli ? `
-                    <div class="ezber-gizli-overlay" data-eylem="ezberGizleToggle">
-                      <span class="gizli-ipucu-simge">👁️</span>
-                      <span class="gizli-ipucu-metin">${dil === 'fr' ? 'Texte masqué pour le test. Touchez pour afficher !' : 'Metin ezber testi için gizlendi. Kontrol etmek için dokunun!'}</span>
-                    </div>
-                  ` : ''}
+                  <button type="button" class="ezber-gizli-overlay" data-eylem="ezberGizleToggle" ${d.ezberGizli ? '' : 'hidden'}>
+                    <span class="gizli-ipucu-metin">${esc(m.metinGizli)}</span>
+                  </button>
                 </div>
 
                 <!-- TECVİDLİ OKUNUŞ VE MEÂL KARTLARI -->
@@ -867,13 +783,13 @@ export async function veliPortali(): Promise<void> {
                 <div class="ezber-anlam ezber-tr-anlam mushaf-bilgi-kutu ezber-tiklanabilir-kutu" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" role="button" tabindex="0" title="${esc(m.turkceSesliDinle)}">
                   <div class="ezber-anlam-baslik-satir">
                     <span class="ezber-etiket">🇹🇷 ${esc(m.turkceAnlam)}:</span>
-                    <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-tr-ses-btn" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" title="${esc(m.turkceSesliDinle)}">
+                    <span class="kucuk-dugme ezber-tr-ses-btn" aria-hidden="true">
                       🔊 <span>${esc(m.turkceSesliDinle)}</span>
-                    </button>
+                    </span>
                   </div>
                   <p class="anlam-metin tr-metin">${esc(seciliEzber.anlam.tr)}</p>
                   <div class="ezber-ses-durum-serit" aria-hidden="true">
-                    <span class="ezber-ses-durum-yazi">🎙️ ${dil === 'fr' ? 'Écouter la traduction turque' : 'Stüdyo Türkçe Meâli Dinlemek İçin Dokunun'}</span>
+                    <span class="ezber-ses-durum-yazi">🎙️ ${esc(m.turkceSesliDinle)}</span>
                     <span class="dalga-animasyon"><span></span><span></span><span></span></span>
                   </div>
                 </div>
@@ -883,24 +799,26 @@ export async function veliPortali(): Promise<void> {
                   <div class="ezber-anlam ezber-fr-anlam mushaf-bilgi-kutu ezber-tiklanabilir-kutu" data-eylem="ezberFransizcaDinle" data-ezber="${seciliEzber.id}" role="button" tabindex="0" title="${esc(m.fransizcaSesliDinle)}">
                     <div class="ezber-anlam-baslik-satir">
                       <span class="ezber-etiket">🇫🇷 ${esc(m.fransizcaTercume)}:</span>
-                      <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-fr-ses-btn" data-eylem="ezberFransizcaDinle" data-ezber="${seciliEzber.id}" title="${esc(m.fransizcaSesliDinle)}">
+                      <span class="kucuk-dugme ezber-fr-ses-btn" aria-hidden="true">
                         🔊 <span>${esc(m.fransizcaSesliDinle)}</span>
-                      </button>
+                      </span>
                     </div>
                     <p class="anlam-metin fr-metin">${esc(seciliEzber.anlam.fr)}</p>
                     <div class="ezber-ses-durum-serit" aria-hidden="true">
-                      <span class="ezber-ses-durum-yazi">🎙️ ${dil === 'fr' ? 'Écouter la traduction française en studio' : 'Stüdyo Fransızca Meâli Dinlemek İçin Dokunun'}</span>
+                      <span class="ezber-ses-durum-yazi">🎙️ ${esc(m.fransizcaSesliDinle)}</span>
                       <span class="dalga-animasyon"><span></span><span></span><span></span></span>
                     </div>
                   </div>
                 ` : ''}
+
+                ${dil === 'en' ? `<div class="ezber-anlam mushaf-bilgi-kutu"><h4>${esc(m.ingilizceAnlam)}</h4><p lang="en">${esc(seciliEzber.anlam.en)}</p></div>` : ''}
 
                 <!-- SES OYNATICI VE KUMANDALAR -->
                 <div class="ezber-ses-kutusu">
                   <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}" ${d.ezberDongu ? 'loop' : ''}>
                     Tarayıcınız ses oynatmayı desteklemiyor.
                   </audio>
-                  <div class="ezber-hizli-kumanda" role="group" aria-label="Ses Kumandası">
+                  <div class="ezber-hizli-kumanda" role="group" aria-label="${esc(m.sesKumandasi)}">
                     <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-kumanda-btn" data-eylem="ezberBastan" title="${esc(m.bastanDinle)}">
                       ⏮️ ${esc(m.bastanDinle)}
                     </button>
@@ -914,16 +832,16 @@ export async function veliPortali(): Promise<void> {
                     ` : ''}
                   </div>
                   <div class="ezber-hiz-secici" role="group" aria-label="${esc(m.normalDinle)}">
-                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 0.75 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="0.75" title="${esc(m.yavasDinle)}">
+                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 0.75 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="0.75" aria-pressed="${(d.ezberHizi ?? 1) === 0.75}" title="${esc(m.yavasDinle)}">
                       0.75x
                     </button>
-                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1" title="${esc(m.normalDinle)}">
+                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1" aria-pressed="${(d.ezberHizi ?? 1) === 1}" title="${esc(m.normalDinle)}">
                       1x
                     </button>
-                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1.25 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1.25" title="${esc(m.hizliDinle)}">
+                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1.25 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1.25" aria-pressed="${(d.ezberHizi ?? 1) === 1.25}" title="${esc(m.hizliDinle)}">
                       1.25x
                     </button>
-                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1.5 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1.5" title="${esc(m.cokHizliDinle)}">
+                    <button type="button" class="hiz-btn ${(d.ezberHizi ?? 1) === 1.5 ? 'aktif-hiz' : ''}" data-eylem="ezberHizAyarla" data-hiz="1.5" aria-pressed="${(d.ezberHizi ?? 1) === 1.5}" title="${esc(m.cokHizliDinle)}">
                       1.5x
                     </button>
                   </div>
@@ -1015,19 +933,11 @@ export async function veliPortali(): Promise<void> {
                   <div class="harekeler-alani">
                     <span class="hareke-blok-baslik">${esc(m.harekeliOkunuslar)}</span>
                     <div class="hareke-izgara">
-                      ${HAREKELER.map((hrk) => {
-                        let gorunenHarf = seciliHarf.harf + hrk.isaret;
-                        let sesIpucu = hrk.sesEtiketi[dil] || hrk.sesEtiketi.tr;
-
-                        if (hrk.id === 'cezm') {
-                          gorunenHarf = seciliHarf.harf === 'ا' ? 'اَهْ' : `اَ${seciliHarf.harf}\u0652`;
-                          const unlu = seciliHarf.kalinMi ? 'A' : 'E';
-                          sesIpucu = `${unlu}.. (${dil === 'fr' ? 'Arrêt' : dil === 'en' ? 'Stop' : 'Cezm'})`;
-                        } else if (hrk.id === 'sedde') {
-                          gorunenHarf = seciliHarf.harf === 'ا' ? 'اَأَّ' : `اَ${seciliHarf.harf}\u0651\u064E`;
-                          const unlu = seciliHarf.kalinMi ? 'A' : 'E';
-                          sesIpucu = `${unlu}..e (${dil === 'fr' ? 'Double' : dil === 'en' ? 'Double' : 'Şedde'})`;
-                        }
+                      ${HAREKELER.filter((hrk) => hrk.id !== 'sedde').map((hrk) => {
+                        const gorunenHarf = hrk.id === 'cezm'
+                          ? elifbaAlistirmalari.cezm.ornekler.find((x) => x.id === seciliHarf.id)!.metin
+                          : seciliHarf.harf + hrk.isaret;
+                        const sesIpucu = hrk.id === 'cezm' ? m.diyanetOrnegi : hrk.sesEtiketi[dil];
 
                         return `
                           <button type="button" class="hareke-kutu" data-eylem="harekeSesCal" data-harf="${gorunenHarf}" data-harf-id="${seciliHarf.id}" data-hareke-id="${hrk.id}" aria-label="${esc(hrk.ad[dil] || hrk.ad.tr)}: ${esc(gorunenHarf)} (${esc(sesIpucu)})" title="${esc(hrk.ad[dil] || hrk.ad.tr)} — ${esc(hrk.aciklama[dil] || hrk.aciklama.tr)}">
@@ -1039,6 +949,19 @@ export async function veliPortali(): Promise<void> {
                       }).join('')}
                     </div>
                   </div>
+
+                  <details class="katlanir sedde-alistirmalari">
+                    <summary>${esc(m.seddeAlistirmalari)} · Diyanet</summary>
+                    <div class="govde">
+                      <div class="hareke-izgara">
+                        ${elifbaAlistirmalari.sedde.ornekler.map((ornek) => `
+                          <button type="button" class="hareke-kutu" data-eylem="seddeSesCal" data-ornek="${ornek.id}" aria-pressed="false" aria-label="${esc(m.sesiDinle)}: ${esc(ornek.metin)}">
+                            <span class="hareke-harf" lang="ar" dir="rtl">${esc(ornek.metin)}</span>
+                          </button>`).join('')}
+                      </div>
+                      <a class="ic-bag" href="https://kuran.diyanet.gov.tr/elifba/#elifba/sedde/uygulama" target="_blank" rel="noopener">${esc(m.diyanetOrnegi)}</a>
+                    </div>
+                  </details>
 
                   <div class="elifba-nav-bar">
                     <button type="button" class="dugme dugme-ikincil kucuk-dugme elifba-nav-btn" data-eylem="harfOnceki" title="${esc(m.oncekiHarf)}">
@@ -1279,6 +1202,7 @@ export async function veliPortali(): Promise<void> {
 
     if (d.mod === 'ogrenci') {
       ogrenciPanoCiz();
+      atolyeBagla();
       return;
     }
 
@@ -1321,22 +1245,18 @@ export async function veliPortali(): Promise<void> {
     /* Haftalık Mektep Karnesi (Snapshot Card) */
     const haftalikKarneKarti = () => {
       if (!o) return '';
-      const sonYoklama = yk.length ? yk[yk.length - 1] : null;
-      const sonYoklamaDersler = sonYoklama ? dersDurumlari(sonYoklama) : [];
-      const varSayisi = sonYoklamaDersler.filter((d) => d.durum === 'var').length;
-      const yoklamaMetni = sonYoklama
-        ? `${tarihYaz(sonYoklama.tarih)}: ${varSayisi}/${sonYoklamaDersler.length || 3} ${m.durum.var}`
-        : m.yoklamaYok;
-
-      const buHaftaKonu = haftaGunleri.length && haftaGunleri[0].dersler.length
-        ? haftaGunleri[0].dersler.map((d) => d.konu).join(', ')
+      const buHaftaYoklama = yk.filter((y) => y.tarih >= pzt && y.tarih <= paz && y.tarih <= bugun);
+      const haftaDurumlari = buHaftaYoklama.flatMap(dersDurumlari);
+      const yoklamaMetni = haftaDurumlari.length
+        ? yerlestir(m.yoklamaOzet, Object.fromEntries(['var', 'yok', 'mazeret', 'gec'].map((k) => [k, haftaDurumlari.filter((x) => x.durum === k).length])))
+        : m.haftaYoklamaYok;
+      const haftaninDersleri = haftaGunleri.flatMap((g) => g.dersler);
+      const buHaftaKonu = haftaninDersleri.length
+        ? [...new Set(haftaninDersleri.map((x) => x.konu))].join(', ')
         : (haftaOdev?.odev ? cok(haftaOdev.odev) : m.varsayilanDersKonusu);
-
-      const ezberHedefi = haftaOdev?.ezber
-        ? cok(haftaOdev.ezber)
-        : (haftaGunleri.length && haftaGunleri[0].dersler.some((d) => d.ezber.length)
-          ? haftaGunleri[0].dersler.flatMap((d) => d.ezber).join(', ')
-          : m.varsayilanEzberHedefi);
+      const ezberHedefi = cok(haftaOdev?.ezber)
+        || [...new Set(haftaninDersleri.flatMap((x) => x.ezber))].join(', ')
+        || m.varsayilanEzberHedefi;
 
       const hocaGorus = ile?.hocaNotu || (c && c.notlar.length ? c.notlar[c.notlar.length - 1].metin : '');
 
@@ -1412,6 +1332,7 @@ export async function veliPortali(): Promise<void> {
         ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}"><span class="sekme-avatar ${monogramSinifi(x.ref)}" aria-hidden="true">${esc(monogramHarfleri(x.ad, x.soyad))}</span>${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
       <div class="bolumler"${d.ogrenciler.length > 1 ? ` role="tabpanel" id="cocuk-panel" aria-labelledby="cocuk-sekme-${d.secili}"` : ''}>
+        ${o ? '<section class="ogrenme-atolyesi genis" data-ogrenme></section>' : ''}
         ${haftalikKarneKarti()}
         ${kitapKarti()}
         <section class="bolum r-iznik oncelik genis">
@@ -1490,6 +1411,7 @@ export async function veliPortali(): Promise<void> {
           </details>
         </section>
       </div>`;
+    atolyeBagla();
     const turSec = kok.querySelector<HTMLSelectElement>('select[name=tur]'); const tarihAlani = kok.querySelector<HTMLElement>('[data-tarih-alani]');
     const tarihGoster = () => { if (tarihAlani && turSec) tarihAlani.hidden = turSec.value !== 'mazeret'; };
     turSec?.addEventListener('change', tarihGoster); tarihGoster();
@@ -1597,64 +1519,14 @@ export async function veliPortali(): Promise<void> {
     if (hedef.dataset.eylem === 'ogrenciModu' && durum) { pariltiSesiCal(); durum.mod = 'ogrenci'; panoCiz(); return; }
     if (hedef.dataset.eylem === 'veliModunaDon' && durum) { harfTikSesiCal(); tumSesleriDurdur(); durum.mod = 'veli'; panoCiz(); return; }
     if (hedef.dataset.eylem === 'hadisSesCal') {
-      harfTikSesiCal();
       const gh = gununHadisiGetir(bugunISO());
       const tur = hedef.dataset.hadisTur || 'arapca';
-
-      const kutu = hedef.classList.contains('hadis-arapca-btn') || hedef.classList.contains('hadis-meal-kutu')
-        ? hedef
-        : (tur === 'arapca' ? kok.querySelector<HTMLElement>('.hadis-arapca-btn') : kok.querySelector<HTMLElement>('.hadis-meal-kutu')) || hedef;
-
-      // Zaten çalıyorsa durdur (toggle)
-      if (kutu.classList.contains('oynuyor') && aktifAudio) {
+      const kutu = kok.querySelector<HTMLElement>(tur === 'arapca' ? '.hadis-arapca-btn' : '.hadis-meal-kutu') || hedef;
+      if (!hadisSesKaydiVar(tur === 'arapca' ? 'ar' : dil, gh.id)) {
         tumSesleriDurdur();
-        return;
-      }
-
-      tumSesleriDurdur();
-      kutu.classList.add('oynuyor');
-
-      if (tur === 'arapca') {
-        const sesUrl = `/media/ses/hadisler/ar/${gh.id}.mp3`;
-        try {
-          const a = new Audio(sesUrl);
-          aktifAudio = a;
-          a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
-          a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
-          a.addEventListener('error', () => {
-            kutu.classList.remove('oynuyor');
-            metinSeslendir(gh.arapca, 'ar-SA');
-          });
-          a.play().catch(() => {
-            kutu.classList.remove('oynuyor');
-            metinSeslendir(gh.arapca, 'ar-SA');
-          });
-        } catch {
-          kutu.classList.remove('oynuyor');
-          metinSeslendir(gh.arapca, 'ar-SA');
-        }
+        bildirimGoster(m.sesDiliYok, 'hata');
       } else {
-        const sesDili = dil === 'fr' ? 'fr' : 'tr';
-        const sesUrl = `/media/ses/hadisler/${sesDili}/${gh.id}.mp3`;
-        const mealMetin = gh.metin[dil] || gh.metin.tr;
-        const dilKodu = dil === 'fr' ? 'fr-FR' : dil === 'en' ? 'en-US' : 'tr-TR';
-        try {
-          const a = new Audio(sesUrl);
-          aktifAudio = a;
-          a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
-          a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
-          a.addEventListener('error', () => {
-            kutu.classList.remove('oynuyor');
-            metinSeslendir(mealMetin, dilKodu);
-          });
-          a.play().catch(() => {
-            kutu.classList.remove('oynuyor');
-            metinSeslendir(mealMetin, dilKodu);
-          });
-        } catch {
-          kutu.classList.remove('oynuyor');
-          metinSeslendir(mealMetin, dilKodu);
-        }
+        kayitSeslendir(`/media/ses/hadisler/${tur === 'arapca' ? 'ar' : dil}/${gh.id}.mp3`, kutu);
       }
       return;
     }
@@ -1736,11 +1608,6 @@ export async function veliPortali(): Promise<void> {
       durum.kulakSecilenId = secilenId;
       durum.kulakCevaplandi = true;
       durum.kulakDogruMu = (secilenId === durum.kulakHedefHarfId);
-      // Dokunulan harfin kendi tilavetini anında dinlet
-      if (secilenId) {
-        const secilenHarf = ELIFBA_HARFLERI.find((h) => h.id === secilenId);
-        if (secilenHarf) harfSeslendir(secilenHarf.harf, secilenHarf.id);
-      }
       if (durum.kulakDogruMu) {
         setTimeout(() => {
           kutlamaSesiCal();
@@ -1759,6 +1626,9 @@ export async function veliPortali(): Promise<void> {
         }, 350);
       }
       panoCiz();
+      // Yeni ekran kurulduktan sonra çal; eski ekranın ses temizliği bunu kesmesin.
+      const secilenHarf = ELIFBA_HARFLERI.find((h) => h.id === secilenId);
+      if (secilenHarf) harfSeslendir(secilenHarf.harf, secilenHarf.id);
       return;
     }
     if (hedef.dataset.eylem === 'kulakTekrarDene' && durum) {
@@ -1817,14 +1687,18 @@ export async function veliPortali(): Promise<void> {
       if (harf) harfSeslendir(harf, harfId);
       return;
     }
+    if (hedef.dataset.eylem === 'seddeSesCal') {
+      const ornek = elifbaAlistirmalari.sedde.ornekler.find((x) => x.id === hedef.dataset.ornek);
+      if (ornek) kayitSeslendir(ornek.sesUrl, hedef);
+      return;
+    }
     if (hedef.dataset.eylem === 'harekeSesCal') {
       harfTikSesiCal();
-      const harfMetni = hedef.dataset.harf || '';
       const harfId = hedef.dataset.harfId || durum?.seciliHarfId || 'elif';
       const harekeId = (hedef.dataset.harekeId as HarekeTuru) || 'ustun';
       hedef.classList.add('oynuyor');
       setTimeout(() => { hedef.classList.remove('oynuyor'); }, 700);
-      harekeliSeslendir(harfId, harekeId, harfMetni);
+      harekeliSeslendir(harfId, harekeId);
       return;
     }
     if (hedef.dataset.eylem === 'harfOnceki' && durum) {
@@ -1858,6 +1732,7 @@ export async function veliPortali(): Promise<void> {
       kok.querySelectorAll<HTMLButtonElement>('.hiz-btn').forEach((b) => {
         const aktif = b.dataset.hiz === String(hiz);
         b.classList.toggle('aktif-hiz', aktif);
+        b.setAttribute('aria-pressed', String(aktif));
       });
       return;
 
@@ -1887,17 +1762,27 @@ export async function veliPortali(): Promise<void> {
       return;
     }
     if (hedef.dataset.eylem === 'ezberGizleToggle' && durum) {
-      harfTikSesiCal();
       durum.ezberGizli = !durum.ezberGizli;
-      panoCiz();
+      const dugme = kok.querySelector<HTMLElement>('.ezber-arac-btn[data-eylem="ezberGizleToggle"]');
+      dugme?.classList.toggle('aktif-arac', durum.ezberGizli);
+      dugme?.setAttribute('aria-pressed', String(durum.ezberGizli));
+      if (dugme) dugme.textContent = durum.ezberGizli ? m.metniGoster : m.ezberTesti;
+      kok.querySelector('.mushaf-arapca-blok')?.classList.toggle('ezber-metin-gizli', durum.ezberGizli);
+      const metin = kok.querySelector<HTMLElement>('.ezber-arapca');
+      metin?.setAttribute('aria-hidden', String(durum.ezberGizli));
+      if (metin) metin.tabIndex = durum.ezberGizli ? -1 : 0;
+      const ortu = kok.querySelector<HTMLButtonElement>('.ezber-gizli-overlay');
+      if (ortu) ortu.hidden = !durum.ezberGizli;
+      if (hedef === ortu && ortu.hidden) dugme?.focus();
       return;
     }
     if (hedef.dataset.eylem === 'ezberDonguToggle' && durum) {
-      harfTikSesiCal();
       durum.ezberDongu = !durum.ezberDongu;
       const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
-      if (audioEl) audioEl.loop = Boolean(durum.ezberDongu);
-      panoCiz();
+      if (audioEl) audioEl.loop = durum.ezberDongu;
+      hedef.classList.toggle('aktif-arac', durum.ezberDongu);
+      hedef.setAttribute('aria-pressed', String(durum.ezberDongu));
+      hedef.textContent = `${m.meskDongusu}: ${durum.ezberDongu ? m.acik : m.kapali}`;
       return;
     }
     if (hedef.dataset.eylem === 'ezberMetinKopyala') {
@@ -1905,26 +1790,8 @@ export async function veliPortali(): Promise<void> {
       const ezId = durum?.seciliEzberId || 'fatiha';
       const ezOgesi = EZBER_LISTESI.find((x) => x.id === ezId) || EZBER_LISTESI[0];
       const kopyalanacak = `${ezOgesi.ad[dil] || ezOgesi.ad.tr}\n\n${ezOgesi.arapca}\n\n${ezOgesi.okunus}\n\n${ezOgesi.anlam[dil] || ezOgesi.anlam.tr}`;
-      const basariMesaji = dil === 'fr'
-        ? 'Texte copié dans le presse-papiers !'
-        : (dil === 'en' ? 'Text copied to clipboard!' : 'Metin panoya kopyalandı !');
-      if (typeof navigator !== 'undefined' && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-        navigator.clipboard.writeText(kopyalanacak)
-          .then(() => bildirimGoster(basariMesaji))
-          .catch(() => {});
-      } else {
-        try {
-          const t = document.createElement('textarea');
-          t.value = kopyalanacak;
-          t.style.position = 'fixed';
-          t.style.opacity = '0';
-          document.body.appendChild(t);
-          t.select();
-          document.execCommand('copy');
-          document.body.removeChild(t);
-          bildirimGoster(basariMesaji);
-        } catch {}
-      }
+      const kopyalandi = await panoyaKopyala(kopyalanacak);
+      bildirimGoster(kopyalandi ? m.metinKopyalandi : m.metinKopyalanamadi, kopyalandi ? 'basari' : 'hata');
       return;
     }
     if (hedef.dataset.eylem === 'ezberBastan') {
@@ -1934,7 +1801,7 @@ export async function veliPortali(): Promise<void> {
         audioEl.currentTime = 0;
         if (durum?.ezberHizi) audioEl.playbackRate = durum.ezberHizi;
         if (durum?.ezberDongu) audioEl.loop = true;
-        audioEl.play().catch(() => {});
+        audioEl.play().catch(() => { if (audioEl.isConnected && audioEl.error) bildirimGoster(m.sesAcilamadi, 'hata'); });
       }
       return;
     }
@@ -1954,84 +1821,22 @@ export async function veliPortali(): Promise<void> {
       const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
       if (audioEl) {
         if (audioEl.paused) {
-          tumSesleriDurdur();
+          tumSesleriDurdur(audioEl);
           if (durum?.ezberHizi) audioEl.playbackRate = durum.ezberHizi;
           if (durum?.ezberDongu) audioEl.loop = true;
-          audioEl.play().catch(() => {});
+          audioEl.play().catch(() => { if (audioEl.isConnected && audioEl.error) bildirimGoster(m.sesAcilamadi, 'hata'); });
         } else {
           audioEl.pause();
         }
       }
       return;
     }
-    if (hedef.dataset.eylem === 'ezberTurkceDinle') {
-      harfTikSesiCal();
+    if (hedef.dataset.eylem === 'ezberTurkceDinle' || hedef.dataset.eylem === 'ezberFransizcaDinle') {
+      const sesDili = hedef.dataset.eylem === 'ezberTurkceDinle' ? 'tr' : 'fr';
       const ezId = hedef.dataset.ezber || durum?.seciliEzberId || 'fatiha';
       const ezOgesi = EZBER_LISTESI.find((x) => x.id === ezId) || EZBER_LISTESI[0];
-      const kutu = hedef.closest<HTMLElement>('.ezber-tr-anlam') || hedef;
-
-      // Zaten çalıyorsa durdur (toggle)
-      if (kutu.classList.contains('oynuyor') && aktifAudio) {
-        tumSesleriDurdur();
-        return;
-      }
-
-      tumSesleriDurdur();
-      kutu.classList.add('oynuyor');
-
-      const sesUrl = `/media/ses/mealler/tr/${ezOgesi.id}.mp3`;
-      try {
-        const a = new Audio(sesUrl);
-        aktifAudio = a;
-        a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
-        a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
-        a.addEventListener('error', () => {
-          kutu.classList.remove('oynuyor');
-          metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
-        });
-        a.play().catch(() => {
-          kutu.classList.remove('oynuyor');
-          metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
-        });
-      } catch {
-        kutu.classList.remove('oynuyor');
-        metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
-      }
-      return;
-    }
-    if (hedef.dataset.eylem === 'ezberFransizcaDinle') {
-      harfTikSesiCal();
-      const ezId = hedef.dataset.ezber || durum?.seciliEzberId || 'fatiha';
-      const ezOgesi = EZBER_LISTESI.find((x) => x.id === ezId) || EZBER_LISTESI[0];
-      const kutu = hedef.closest<HTMLElement>('.ezber-fr-anlam') || hedef;
-
-      // Zaten çalıyorsa durdur (toggle)
-      if (kutu.classList.contains('oynuyor') && aktifAudio) {
-        tumSesleriDurdur();
-        return;
-      }
-
-      tumSesleriDurdur();
-      kutu.classList.add('oynuyor');
-
-      const sesUrl = `/media/ses/mealler/fr/${ezOgesi.id}.mp3`;
-      try {
-        const a = new Audio(sesUrl);
-        aktifAudio = a;
-        a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
-        a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
-        a.addEventListener('error', () => {
-          kutu.classList.remove('oynuyor');
-          if (ezOgesi.anlam.fr) metinSeslendir(ezOgesi.anlam.fr, 'fr-FR');
-        });
-        a.play().catch(() => {
-          kutu.classList.remove('oynuyor');
-          if (ezOgesi.anlam.fr) metinSeslendir(ezOgesi.anlam.fr, 'fr-FR');
-        });
-      } catch {
-        kutu.classList.remove('oynuyor');
-        if (ezOgesi.anlam.fr) metinSeslendir(ezOgesi.anlam.fr, 'fr-FR');
-      }
+      const kutu = kok.querySelector<HTMLElement>(`.ezber-${sesDili}-anlam`) || hedef;
+      kayitSeslendir(`/media/ses/mealler/${sesDili}/${ezOgesi.id}.mp3`, kutu);
       return;
     }
     if (hedef.dataset.eylem === 'quizSecim' && durum && !durum.quizCevaplandi) {
@@ -2101,7 +1906,7 @@ export async function veliPortali(): Promise<void> {
       }
       return;
     }
-    if (hedef.dataset.eylem === 'cikis') { tumSesleriDurdur(); await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
+    if (hedef.dataset.eylem === 'cikis') { atolyeTemizle?.(); tumSesleriDurdur(); await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
     if (hedef.dataset.eylem === 'bildirVazgec') { duzenlenenBildirim = null; panoCiz(); return; }
     if (hedef.dataset.eylem === 'atla' && a.currentUser) { await panoyaGec(a.currentUser); return; }
     if (hedef.dataset.eylem === 'sifremiUnuttum') {
@@ -2130,6 +1935,12 @@ export async function veliPortali(): Promise<void> {
       if (veri.dilYollari?.[yeni]) location.href = veri.dilYollari[yeni];
     }
   });
+  kok.addEventListener('error', (ev) => {
+    if (ev.target instanceof HTMLAudioElement && ev.target.classList.contains('ezber-audio')) {
+      kok.querySelector('.ezber-arapca')?.classList.remove('oynuyor');
+      bildirimGoster(m.sesAcilamadi, 'hata');
+    }
+  }, true);
   // Ezber odasındaki sûre/dua çalmaya başladığında aktif harf sesini durdur ve metni parlat
   kok.addEventListener(
     'play',
@@ -2142,10 +1953,7 @@ export async function veliPortali(): Promise<void> {
         if (durum?.ezberDongu) {
           try { hedefAudio.loop = true; } catch {}
         }
-        if (aktifAudio && !aktifAudio.paused) {
-          aktifAudio.pause();
-          aktifAudio.currentTime = 0;
-        }
+        tumSesleriDurdur(hedefAudio);
         kok.querySelector('.ezber-arapca')?.classList.add('oynuyor');
       }
     },
@@ -2317,13 +2125,13 @@ export async function veliPortali(): Promise<void> {
     }
     bagTamamlaEkrani(); return;
   }
-  window.addEventListener('pagehide', tumSesleriDurdur);
+  window.addEventListener('pagehide', () => tumSesleriDurdur());
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) tumSesleriDurdur();
   });
 
   auth.onAuthStateChanged(a, (user) => {
     if (user) { if (!durum) panoyaGec(user); }
-    else { durum = null; girisEkrani(); }
+    else { atolyeTemizle?.(); tumSesleriDurdur(); durum = null; girisEkrani(); }
   });
 }

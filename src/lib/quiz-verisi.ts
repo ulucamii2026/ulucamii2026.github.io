@@ -172,9 +172,9 @@ export const QUIZ_SORULARI: SoruOgesi[] = [
     },
     dogruCevapIndex: 0,
     aciklama: {
-      tr: 'Efendimiz Hz. Muhammed (s.a.s.) 571 yılında Mekke’de doğmuş, daha sonra Medine’ye hicret etmiştir.',
-      fr: 'Notre noble Prophète (s.a.s.) est né à La Mecque en 571, puis a émigré vers Médine.',
-      en: 'Prophet Muhammad (pbuh) was born in Mecca in 571 and later migrated to Medina.',
+      tr: 'Efendimiz Hz. Muhammed (s.a.s.) Mekke’de doğmuş, daha sonra Medine’ye hicret etmiştir.',
+      fr: 'Notre noble Prophète (s.a.s.) est né à La Mecque, puis a émigré vers Médine.',
+      en: 'Prophet Muhammad (pbuh) was born in Mecca and later migrated to Medina.',
     },
     kategori: {
       tr: 'Siyer-i Nebî',

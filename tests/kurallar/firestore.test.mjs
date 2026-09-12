@@ -2,7 +2,7 @@ import { before, after, beforeEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, setLogLevel } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, setLogLevel, Timestamp, serverTimestamp } from 'firebase/firestore';
 
 // Bu kontroller initializeTestEnvironment'dan ÖNCE: üretime sessiz geri dönüş yok.
 assert.equal(process.env.FIRESTORE_EMULATOR_HOST, '127.0.0.1:8185', 'Yalnız test emülatörü kullanılabilir.');
@@ -125,4 +125,40 @@ test('Hoca kendi giriş durumunu değiştirir; rol belgesini genişletemez', asy
 test('Tanımlanmamış koleksiyonlar hoca dahil herkese kapalıdır', async () => {
   await assertFails(read(teacher(), 'bilinmeyen/test'));
   await assertFails(setDoc(doc(teacher(), 'bilinmeyen/test'), { deger: 1 }));
+});
+
+const evKayit=(extra={})=>{const d=new Date();d.setUTCHours(12,0,0,0);return {son:Timestamp.fromDate(d),sonraki:Timestamp.fromMillis(d.getTime()+86400000),basamak:1,cevap:'rahat',guncelleme:serverTimestamp(),...extra};};
+const evYol='evCalismalari/ogrenci-a/etkinlikler/hayat-su';
+test('Ev çalışması yalnız bağlı aileye ve hocaya görünür; anonim, yabancı aile ve koleksiyon grubu kapalı',async()=>{
+ await assertSucceeds(setDoc(doc(parent(),evYol),evKayit()));
+ await assertSucceeds(read(teacher(),evYol));
+ await assertSucceeds(getDocs(collection(parent(),'evCalismalari/ogrenci-a/etkinlikler')));
+ await assertFails(read(env.unauthenticatedContext().firestore(),evYol));
+ await assertFails(read(env.authenticatedContext('veli-b',{email:'veli-b@example.test'}).firestore(),evYol));
+ await assertFails(getDocs(collection(parent(),'evCalismalari/ogrenci-b/etkinlikler')));
+});
+test('Ev çalışması başka öğrenci adına, katalog dışına veya öğretmen notuna yazılamaz',async()=>{
+ await assertFails(setDoc(doc(parent(),'evCalismalari/ogrenci-b/etkinlikler/hayat-su'),evKayit()));
+ await assertFails(setDoc(doc(parent(),'evCalismalari/ogrenci-a/etkinlikler/yabanci'),evKayit()));
+ await assertFails(setDoc(doc(parent(),evYol),evKayit({not:100})));
+ await assertFails(setDoc(doc(teacher(),evYol),evKayit()));
+});
+test('Ev çalışması tarih, sunucu saati ve tekrar aralığını doğrular',async()=>{
+ for(const extra of [{son:'2026-09-12'},{basamak:4},{cevap:'super'},{cevap:'destek',basamak:1},{guncelleme:Timestamp.fromMillis(0)},{son:Timestamp.fromMillis(Date.now()+10*86400000)},{sonraki:Timestamp.fromMillis(0)}])await assertFails(setDoc(doc(parent(),evYol),evKayit(extra)));
+ await assertSucceeds(setDoc(doc(parent(),evYol),evKayit()));
+ const old=Date.now()-10*86400000;
+ await assertFails(setDoc(doc(parent(),evYol),evKayit({son:Timestamp.fromMillis(old),sonraki:Timestamp.fromMillis(old+86400000)})));
+});
+test('Ev çalışmasını veli silemez; hoca silebilir; bağlı ikinci veli okuyabilir',async()=>{
+ await assertSucceeds(setDoc(doc(parent(),evYol),evKayit()));
+ await assertFails(deleteDoc(doc(parent(),evYol)));
+ await env.withSecurityRulesDisabled(async c=>setDoc(doc(c.firestore(),'aileler/ikinci@example.test'),{ogrenciler:['ogrenci-a']}));
+ await assertSucceeds(read(env.authenticatedContext('ikinci',{email:'ikinci@example.test'}).firestore(),evYol));
+ await assertSucceeds(deleteDoc(doc(teacher(),evYol)));
+});
+
+test('Aynı gün sunucu tarafında da tekrar basamağı yükseltilemez',async()=>{
+ const k=evKayit();await assertSucceeds(setDoc(doc(parent(),evYol),k));
+ await assertFails(setDoc(doc(parent(),evYol),{...k,basamak:3,sonraki:Timestamp.fromMillis(k.son.toMillis()+7*86400000)}));
+ await assertSucceeds(setDoc(doc(parent(),evYol),{...k,basamak:0,cevap:'destek'}));
 });

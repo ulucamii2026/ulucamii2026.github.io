@@ -1,0 +1,124 @@
+[
+  {
+    "id": "tebessum",
+    "dil": "en",
+    "metin": "Smiling at your brother is an act of charity for you.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 3.95375,
+    "sha256": "e3fcca114fe726c3be13dad4cc68ee76f1b3c973a71e226f178c96760e2b4242",
+    "sesUrl": "/media/ses/hadisler/en/tebessum.mp3"
+  },
+  {
+    "id": "kuran-ogrenen",
+    "dil": "en",
+    "metin": "The best among you are those who learn the Quran and teach it.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 4.103917,
+    "sha256": "3e8fe1b0900b623f8b58713e7119aa1bad7178375379cd159e8fbe52407109f0",
+    "sesUrl": "/media/ses/hadisler/en/kuran-ogrenen.mp3"
+  },
+  {
+    "id": "temizlik",
+    "dil": "en",
+    "metin": "Cleanliness is half of faith.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 2.619167,
+    "sha256": "ca78a6d4780c53e0998de530ab9d64d6dadd8b5568d2fa548b47b32871333b0a",
+    "sesUrl": "/media/ses/hadisler/en/temizlik.mp3"
+  },
+  {
+    "id": "sevgi-merhamet",
+    "dil": "en",
+    "metin": "He is not of us who is not merciful to our young and does not respect our elders.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 5.5735,
+    "sha256": "fd037ef56cf69ea634a5090bfef20b5d1f6377c3df0c3864ce4d7a6400e83bb8",
+    "sesUrl": "/media/ses/hadisler/en/sevgi-merhamet.mp3"
+  },
+  {
+    "id": "dogruluk",
+    "dil": "en",
+    "metin": "Truthfulness leads to righteousness, and righteousness leads to Paradise.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 5.593958,
+    "sha256": "784a919a2f988330c6ca2ef4907b966a9e929e0d0af9067fdc2621e7928ad9b2",
+    "sesUrl": "/media/ses/hadisler/en/dogruluk.mp3"
+  },
+  {
+    "id": "hediye",
+    "dil": "en",
+    "metin": "Exchange gifts, for you will increase your mutual love.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 4.633958,
+    "sha256": "7efe1b87c0d0444febad73d0ea62081c80b84bbd45e89ea4668539886c651401",
+    "sesUrl": "/media/ses/hadisler/en/hediye.mp3"
+  },
+  {
+    "id": "tesekkur",
+    "dil": "en",
+    "metin": "Whoever does not thank people does not thank Allah.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sha256": "b150ba5acc3a7c7f19b7d220737fdbbcdeba8fd99a78daea2d926c4430532e3d",
+    "sesUrl": "/media/ses/hadisler/en/tesekkur.mp3",
+    "telaffuzNotu": "Allah: IPA ɑˈlɑh",
+    "hiz": 0
+  },
+  {
+    "id": "guzel-soz",
+    "dil": "en",
+    "metin": "A good word is an act of charity.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 2.794,
+    "sha256": "ede1ccc29c81758e8d88986095d5bbb44ca18e37a09443e2a66a538f5b8940e8",
+    "sesUrl": "/media/ses/hadisler/en/guzel-soz.mp3"
+  },
+  {
+    "id": "komsu-hakki",
+    "dil": "en",
+    "metin": "He is not a true believer who sleeps full while his neighbor is hungry.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 4.863708,
+    "sha256": "b27958b4adfd167c2a6c67e0d8d55b9a5e63192b8153a27f6e33edfeebdd6640",
+    "sesUrl": "/media/ses/hadisler/en/komsu-hakki.mp3"
+  },
+  {
+    "id": "kolaylastirin",
+    "dil": "en",
+    "metin": "Facilitate things and do not make them difficult; give glad tidings and do not repel.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Zira Desktop",
+    "tarih": "2026-09-12",
+    "sure": 6.278375,
+    "sha256": "a665ffc9cdc17ac4590317113f31d3d701ba0bae70ff1f9727c8840a65acda14",
+    "sesUrl": "/media/ses/hadisler/en/kolaylastirin.mp3"
+  },
+  {
+    "id": "kolaylastirin",
+    "dil": "fr",
+    "metin": "Facilitez et ne rendez pas difficile ; annoncez de bonnes nouvelles et ne faites pas fuir.",
+    "motor": "Windows SAPI",
+    "ses": "Microsoft Hortense Desktop",
+    "tarih": "2026-09-12",
+    "sure": 6.546125,
+    "sha256": "281caa3706e8d6cec11cceb3e3362144164d616699342a0a5c5f286f71990bd3",
+    "sesUrl": "/media/ses/hadisler/fr/kolaylastirin.mp3"
+  }
+]

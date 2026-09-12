@@ -1,0 +1,334 @@
+{
+  "cezm": {
+    "kaynak": "https://kuran.diyanet.gov.tr/elifba/templates/dersler/eb/cezm/kavrama.html",
+    "ornekler": [
+      {
+        "id": "elif",
+        "metin": "بِئْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_1.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/1.mp3",
+        "sha256": "63bc8857b913e9fc0ba86c524a651c33658266e383060a4a740acfe03f022222"
+      },
+      {
+        "id": "be",
+        "metin": "تِبْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_2.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/2.mp3",
+        "sha256": "ed1b3ee36cc770acdd7e8ca35c5f02f569f6b58587f98d4c025c3b56484df443"
+      },
+      {
+        "id": "te",
+        "metin": "مُتْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_3.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/3.mp3",
+        "sha256": "a4aeea58f73533ae37a1b896ef49163c2c275ee4a7778152bf3ad7140407eeb5"
+      },
+      {
+        "id": "se",
+        "metin": "هَثْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_4.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/4.mp3",
+        "sha256": "acf886deec05bfe3e0d9625efde3135b0efca557d744c708b5dc1f52acf9642c"
+      },
+      {
+        "id": "cim",
+        "metin": "يَجْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_5.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/5.mp3",
+        "sha256": "d40c63e847690ce9dcba7b7895b3478cce8227b0ee5f8f79b0a4ae7d9e46adf4"
+      },
+      {
+        "id": "ha",
+        "metin": "يَحْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_6.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/6.mp3",
+        "sha256": "060287f878fcceb581a95f5265c48651a7408d623e01f7cf7eb8a8653e5359d8"
+      },
+      {
+        "id": "hi",
+        "metin": "سِخْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_7.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/7.mp3",
+        "sha256": "221912f2694e3fe0efc21d65a464f48f453350741230b4a71339bd1e8a8b418e"
+      },
+      {
+        "id": "dal",
+        "metin": "قَدْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_8.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/8.mp3",
+        "sha256": "8e2398deb376433ed50abf3651d99394a71d2424a487d2d61849ccba6b862a78"
+      },
+      {
+        "id": "zel",
+        "metin": "عُذْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_9.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/9.mp3",
+        "sha256": "6a73bffdbbaca9c4d8cf5ba367e1b14415062301670d80e807ce32c27c8379a9"
+      },
+      {
+        "id": "ra",
+        "metin": "صِرْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_10.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/10.mp3",
+        "sha256": "c88b23f19589dbb2f1a5821375d0fbe6ab5805fe0128d742e429c25b9b0d2bee"
+      },
+      {
+        "id": "ze",
+        "metin": "وَزْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_11.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/11.mp3",
+        "sha256": "9d43bbb89a0095d53c11236d8426c69e1ad3516f62cfa16160f58f8544471b98"
+      },
+      {
+        "id": "sin",
+        "metin": "بِسْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_12.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/12.mp3",
+        "sha256": "012c6bd9207b873590bee886ea2d746b4e9b856d1c1e6ca1e105578095e25a87"
+      },
+      {
+        "id": "sin2",
+        "metin": "خَشْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_13.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/13.mp3",
+        "sha256": "7247846a94044484e19dd273925c53b6f7f82ffd7991e06e88ee667968c3d707"
+      },
+      {
+        "id": "sad",
+        "metin": "فَصْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_14.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/14.mp3",
+        "sha256": "9924dde8f2d04f29acaefe2835f236e62bea2c6cec019815d3252484edcdb2d2"
+      },
+      {
+        "id": "dad",
+        "metin": "رِضْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_15.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/15.mp3",
+        "sha256": "db1bb358451b0e32de34d5927ccc8aa50666cc4f02df11e8d67d389b69737c7e"
+      },
+      {
+        "id": "ti",
+        "metin": "شَطْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_16.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/16.mp3",
+        "sha256": "a2a9e8c2d3dc106b0855850547dd79f718a4cd378e5eacae6c13824b4dbedf46"
+      },
+      {
+        "id": "zi",
+        "metin": "تُظْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_17.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/17.mp3",
+        "sha256": "873b43cf9c04e7d3c93c6ffb3052d776b60acd9bbf2058a2d10101633c4ce6df"
+      },
+      {
+        "id": "ayn",
+        "metin": "نَعْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_18.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/18.mp3",
+        "sha256": "841af6e4efc484e57fdef941e01202b69c2db471344385c479da615daf21d7f8"
+      },
+      {
+        "id": "gayn",
+        "metin": "مَغْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_19.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/19.mp3",
+        "sha256": "afd68559af112fd57368d40376f7471ea256a378f27b9049a197c9a96ceaa4ff"
+      },
+      {
+        "id": "fe",
+        "metin": "غُفْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_20.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/20.mp3",
+        "sha256": "d6019ecb219c6ac53c2c907650848b8cbb9fb55f08c2e524dea392a218bc3781"
+      },
+      {
+        "id": "kaf",
+        "metin": "فَقْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_21.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/21.mp3",
+        "sha256": "e68643f7981077c765bcb92be5f46deb9c5407b2664003dcec65feb9241d80e6"
+      },
+      {
+        "id": "kef",
+        "metin": "رَكْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_22.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/22.mp3",
+        "sha256": "fde2a86c15095e8f23e41965e9b3d25a3444b207c0f147e22be359eef56e69f4"
+      },
+      {
+        "id": "lam",
+        "metin": "زُلْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_23.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/23.mp3",
+        "sha256": "2b8b814d2c9de8f5d590f5a2e279db7e3c8ffefca04f797edb5fb6143bcafa76"
+      },
+      {
+        "id": "mim",
+        "metin": "هُمْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_24.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/24.mp3",
+        "sha256": "ca284736112e2185f45cf0deb53570a92f696fe746f8785d579b9829e7911150"
+      },
+      {
+        "id": "nun",
+        "metin": "مَنْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_25.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/25.mp3",
+        "sha256": "785b1863d046e95c2439fbcd70d7fb034e41d6056f35f718d4217c9cfd7ae29c"
+      },
+      {
+        "id": "he",
+        "metin": "صِهْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_26.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/26.mp3",
+        "sha256": "7de55930fbfc91c87aa99c5dd5c3a4d3f4f753803d1a037e1cbbf65c446eed1a"
+      },
+      {
+        "id": "vav",
+        "metin": "اَوْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_27.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/27.mp3",
+        "sha256": "3d5c4e3612299fc200517bf78abf91d4b9d6e12fe45e9d6ce22e9c2d0dbb7f85"
+      },
+      {
+        "id": "ye",
+        "metin": "وَىْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/cezm/kavrama/btn_28.mp3",
+        "sesUrl": "/media/ses/elifba/cezm/28.mp3",
+        "sha256": "753502ab74d1952c09c93e0ed7e490f25332bc4369383c9053abfbf26b276abc"
+      }
+    ]
+  },
+  "sedde": {
+    "kaynak": "https://kuran.diyanet.gov.tr/elifba/templates/dersler/eb/sedde/uygulama.html",
+    "ornekler": [
+      {
+        "id": "1",
+        "metin": "مِمَّا",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_1.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/1.mp3",
+        "sha256": "856204e362efe432b7a6adb1f8c750acdc5d0c70a08b6cf328713719cec5ce20"
+      },
+      {
+        "id": "2",
+        "metin": "عَدَّ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_2.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/2.mp3",
+        "sha256": "17ecc4956eb581e02af1d5fbc9f07c3610bacbb5990dd1f36ba3b20a9d97f2a7"
+      },
+      {
+        "id": "3",
+        "metin": "كُلٌّ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_3.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/3.mp3",
+        "sha256": "86c52908292005b233c9c834f569f5ceaea221a70815837b93d397389fbfdc18"
+      },
+      {
+        "id": "4",
+        "metin": "تَوَّابًا",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_4.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/4.mp3",
+        "sha256": "dc012b12762b455c4cb6f52392d7f7eaf4e54eb4ca8d739a0f678ef596221692"
+      },
+      {
+        "id": "5",
+        "metin": "تَبَّتْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_5.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/5.mp3",
+        "sha256": "320d0ae0d80ead952b23a701b43a4893d764a91e2beea56baf9a55e6203bf8f5"
+      },
+      {
+        "id": "6",
+        "metin": "تَطَّلِعُ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_6.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/6.mp3",
+        "sha256": "00a835737ce7f97410d10f4b978db4b3c4f0e496a13b663a8e2c02ff2bb40daa"
+      },
+      {
+        "id": "7",
+        "metin": "يَمُدُّهُمْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_7.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/7.mp3",
+        "sha256": "a0fda0133953776a6dd8d8616a67b334496cb4316b00051bd3fa77654b520628"
+      },
+      {
+        "id": "8",
+        "metin": "يُكَذِّبُ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_8.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/8.mp3",
+        "sha256": "28ab4c4bdb4dc8cd5ef71b1420728c48bb7b4ea1201b10854ce852f7b1c44f64"
+      },
+      {
+        "id": "9",
+        "metin": "مُسْتَقَرٌّ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_9.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/9.mp3",
+        "sha256": "c8b92118cc7af17866dd7e1d258fb951681fc7ba8bead19af905c7569594bbcc"
+      },
+      {
+        "id": "10",
+        "metin": "فَصَلِّ لِرَبِّكَ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_10.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/10.mp3",
+        "sha256": "436ebe17490e1c76da89f55453d5f0832d3e64e29aaa42acd522182bec83f945"
+      },
+      {
+        "id": "11",
+        "metin": "سَحَّارٍ عَل۪يمٍ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_11.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/11.mp3",
+        "sha256": "59691ed69c33e6ab9c22d0b45b63bb19ef97f73d8919d3cec01d376616fd7ab7"
+      },
+      {
+        "id": "12",
+        "metin": "وَلَا يَحُضُّ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_12.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/12.mp3",
+        "sha256": "b36769cd6303a99df21ec3bcf7404b5a2e8c2b29d3e91f88b48b8bd1a6c8e460"
+      },
+      {
+        "id": "13",
+        "metin": "وَيَحِقَّ الْقَوْلُ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_13.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/13.mp3",
+        "sha256": "8941eb25ae80c0a5272cb9a740db76b8cfee4d596c72223255f8e253299fd369"
+      },
+      {
+        "id": "14",
+        "metin": "اِمَّا يُعَذِّبُهُمْ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_14.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/14.mp3",
+        "sha256": "24e8a393f682cea2232b8612a5cc995b5d0758af37e35c7188b54a703dd36533"
+      },
+      {
+        "id": "15",
+        "metin": "بِاٰيٰتِ رَبِّنَا",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_15.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/15.mp3",
+        "sha256": "d12e75746c31e36f1968d09789ec7f4496c324231c21480c25cd5165bbb1ec2c"
+      },
+      {
+        "id": "16",
+        "metin": "فَسَوّٰيهُنَّ سَبْعَ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_16.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/16.mp3",
+        "sha256": "8734cf9954e98cb37c3cedeeb425c7ffdb8dc1d0f6731b568b113a00abe5569b"
+      },
+      {
+        "id": "17",
+        "metin": "نُسَبِّحُ بِحَمْدِكَ",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_17.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/17.mp3",
+        "sha256": "8ea596d25bc27df665f72bf19ef1d0c6c76bc9f4f0b29bc9745405f09b6c5356"
+      },
+      {
+        "id": "18",
+        "metin": "مِمَّا ذُكِّرُوا",
+        "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/sedde/uygulama/btn_18.mp3",
+        "sesUrl": "/media/ses/elifba/sedde/18.mp3",
+        "sha256": "29a03c9c3f69586694ea784c5a9a5c990617d0c2562d10fb671bdc75c5300f17"
+      }
+    ]
+  }
+}

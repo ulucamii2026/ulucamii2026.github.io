@@ -35,6 +35,32 @@ service cloud.firestore {
       allow read: if hoca() || veliOkur(ref);
       allow write: if hoca();
     }
+
+    // Son öz değerlendirme; katalog dışında belge üretilemez, veli başkasının kaydını göremez.
+    match /evCalismalari/{ref}/etkinlikler/{id} {
+      function kayitGecerli() {
+        let d=request.resource.data;
+        return id in ['harf-elif','harf-be','harf-te','harf-se','harf-cim','harf-ha','harf-hi','harf-dal','harf-zel','harf-ra','harf-ze','harf-sin','harf-sin2','harf-sad','harf-dad','harf-ti','harf-zi','harf-ayn','harf-gayn','harf-fe','harf-kaf','harf-kef','harf-lam','harf-mim','harf-nun','harf-he','harf-vav','harf-ye','ezber-fatiha','ezber-ayetel-kursi','ezber-insirah','ezber-kadir','ezber-asr','ezber-fil','ezber-kureys','ezber-maun','ezber-kevser','ezber-kafirun','ezber-nasr','ezber-tebbet','ezber-ihlas','ezber-felak','ezber-nas','ezber-subhaneke','ezber-tahiyyat','ezber-salli-barik','ezber-rabbena','bilgi-islam-sartlari','bilgi-kuran-ilk-ayet','bilgi-namaz-vakitleri','bilgi-besmele-anlami','bilgi-iman-sartlari','bilgi-abdest-temizlik','bilgi-peygamberimiz-dogum','bilgi-selamlasma-adabi','bilgi-fatiha-suresi','bilgi-elifba-harf-sayisi','hayat-davet','hayat-hata','hayat-emanet','hayat-su','hayat-dinle','hayat-tesekkur','hayat-guven','hayat-baris']
+          && d.keys().hasAll(['son','sonraki','basamak','cevap','guncelleme'])
+          && d.keys().hasOnly(['son','sonraki','basamak','cevap','guncelleme'])
+          && d.son is timestamp && d.sonraki is timestamp
+          && d.son <= request.time + duration.value(1,'d')
+          && d.son >= request.time - duration.value(370,'d')
+          && d.basamak is int && d.basamak >= 0 && d.basamak <= 3
+          && d.cevap in ['destek','tekrar','rahat']
+          && (d.cevap != 'destek' || d.basamak == 0)
+          && (d.cevap != 'tekrar' || d.basamak == 1)
+          && (d.cevap != 'rahat' || d.basamak >= 1)
+          && d.sonraki == d.son + duration.value([1,1,3,7][d.basamak],'d')
+          && d.guncelleme == request.time;
+      }
+      allow read: if hoca() || veliOkur(ref);
+      allow create: if veliOkur(ref) && kayitGecerli();
+      allow update: if veliOkur(ref) && kayitGecerli() && request.resource.data.son >= resource.data.son
+        && (request.resource.data.son > resource.data.son || request.resource.data.basamak <= resource.data.basamak);
+      allow delete: if hoca();
+    }
+
     match /yoklama/{id} {
       allow read: if hoca() || veliOkur(resource.data.ref);
       allow write: if hoca();

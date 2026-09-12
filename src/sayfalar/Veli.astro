@@ -10,6 +10,9 @@ import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { veliMetni } from '../i18n/veli';
+import { AHLAK_HADISLERI } from '../lib/hadis-verisi';
+import { existsSync } from 'node:fs';
+import '../styles/ogrenme-atolyesi.css';
 import plan from '../data/yillik-plan-2026-2027.json';
 import materyal from '../data/ders-materyalleri.json';
 interface Props { dil: Dil }
@@ -21,7 +24,8 @@ const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
   dersler: g.dersler.map((d) => ({ no: d.sira ?? d.no ?? 0, kod: d.kod, alan: d.alan, konu: d.konu, ezber: d.ezber || [] })),
 }));
 const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
-const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri, materyalYolu: yol(dil, 'dersmateryalleri'), gizlilikYolu: yol(dil, 'gizlilik'), kursYolu: yol(dil, 'kurankursu'),
+const hadisSesleri = Object.fromEntries(['ar', 'tr', 'fr', 'en'].map((d) => [d, AHLAK_HADISLERI.filter((h) => existsSync(`public/media/ses/hadisler/${d}/${h.id}.mp3`)).map((h) => h.id)]));
+const veri = { donem: (plan as { donem: string }).donem, gunler, hadisSesleri, materyalGunleri, materyalYolu: yol(dil, 'dersmateryalleri'), gizlilikYolu: yol(dil, 'gizlilik'), kursYolu: yol(dil, 'kurankursu'),
   dilYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli') } };
 ---
 <Base baslik={t('nav.veli')} dil={dil} aciklama={m.altBaslik} noindex>
@@ -329,8 +333,8 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .ogrenci-avatar.dev { width: 3.6rem; height: 3.6rem; font-size: 1.35rem; }
   .portal .ogrenci-avatar.r-iznik, .portal .sekme-avatar.r-iznik { background: var(--r-iznik); }
   .portal .ogrenci-avatar.r-kiremit, .portal .sekme-avatar.r-kiremit { background: var(--r-kiremit); }
-  .portal .ogrenci-avatar.r-adacayi, .portal .sekme-avatar.r-adacayi { background: var(--r-adacayi); }
-  .portal .ogrenci-avatar.r-ochre, .portal .sekme-avatar.r-ochre { background: var(--r-ochre); }
+  .portal .ogrenci-avatar.r-adacayi, .portal .sekme-avatar.r-adacayi { background: var(--color-adacayi-koyu); }
+  .portal .ogrenci-avatar.r-ochre, .portal .sekme-avatar.r-ochre { background: var(--r-ochre); color: var(--color-murekkep); }
   .portal .sekme-avatar { width: 1.35rem; height: 1.35rem; border-radius: 50%; font-family: var(--font-mono); font-weight: 700; font-size: 0.62rem; display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-right: 0.35rem; flex-shrink: 0; }
   .portal .dugme-ogrenci { background: color-mix(in oklab, var(--vurgu-2) 15%, var(--zemin)); border: 1px solid var(--vurgu-2); color: var(--vurgu-2); font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.95rem; border-radius: var(--radius-kose); display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; transition: background .15s, color .15s; }
   .portal .dugme-ogrenci:hover { background: var(--vurgu-2); color: #fff; }
@@ -397,7 +401,10 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .mushaf-hat-metin.oynuyor { border-color: var(--r-ochre); background: color-mix(in oklab, var(--r-ochre) 16%, var(--zemin)); box-shadow: 0 0 0 3px color-mix(in oklab, var(--r-ochre) 40%, transparent), 0 4px 18px color-mix(in oklab, var(--r-ochre) 25%, transparent); animation: ezber-isilti 2s ease-in-out infinite alternate; }
 
   .portal .ezber-metin-gizli .mushaf-hat-metin { filter: blur(10px); opacity: 0.35; user-select: none; }
-  .portal .ezber-gizli-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; background: color-mix(in oklab, var(--zemin) 75%, transparent); cursor: pointer; z-index: 2; padding: 1rem; text-align: center; border-radius: var(--radius-kose); }
+  .portal .ezber-gizli-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; background: color-mix(in oklab, var(--zemin) 75%, transparent); color: var(--metin); border: 0; width: 100%; cursor: pointer; z-index: 2; padding: 1rem; text-align: center; border-radius: var(--radius-kose); }
+  .portal .ezber-gizli-overlay[hidden] { display: none; }
+  .portal .sedde-alistirmalari .hareke-izgara { grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); margin-block: 1rem; }
+  .portal .sedde-alistirmalari .hareke-harf { font-size: 1.7rem; white-space: normal; overflow-wrap: anywhere; }
   .portal .gizli-ipucu-simge { font-size: 2rem; }
   .portal .gizli-ipucu-metin { font-weight: 700; font-size: 0.95rem; color: var(--metin); background: var(--zemin); border: 1px solid var(--r-ochre); padding: 0.4rem 0.9rem; border-radius: 9999px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 
@@ -450,7 +457,10 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   .portal .rozet-kart { text-align: center; padding: 0.85rem 0.5rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); font: inherit; cursor: pointer; transition: transform .15s, border-color .15s, box-shadow .15s; width: 100%; }
   .portal .rozet-kart:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-color: var(--vurgu); }
   .portal .rozet-kart.kazanildi { border-color: var(--r-ochre); background: color-mix(in oklab, var(--r-ochre) 10%, var(--zemin)); }
-  .portal .rozet-kart.kilitli { opacity: 0.55; cursor: default; }
+  .portal .rozet-kart.kilitli { border-style: dashed; cursor: default; }
+  .portal .rozet-kart.kilitli img { opacity: 0.55; }
+  .portal .ogrenci-pano .bolum-bas h2,
+  .portal .ogrenci-pano .bolum-bas .sag { color: var(--metin); }
   .portal .rozet-simge { font-size: 1.7rem; margin-bottom: 0.35rem; }
   .portal .mektep-video-vitrin { margin-top: 0.85rem; margin-bottom: 0.85rem; }
   .portal .mektep-video-afis-kutu { position: relative; border-radius: var(--radius-kose); overflow: hidden; border: 1px solid var(--cizgi); box-shadow: var(--shadow-kart); }
@@ -666,7 +676,7 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, materyalGunleri
   }
   .portal .seri-ikon { font-size: 1.15rem; }
   .portal .seri-sayi { font-weight: 800; font-size: 1rem; }
-  .portal .seri-etiket { font-size: 0.82rem; }
+  .portal .seri-etiket { font-size: 0.82rem; color: var(--metin); }
 
   /* Veli Ev Onayı */
   .portal .veli-ev-onay-kutu { display: inline-flex; align-items: center; margin-top: 0.5rem; }

@@ -1,0 +1,46 @@
+.portal .ogrenme-atolyesi{grid-column:1/-1;color:var(--metin);background:var(--zemin);border:1px solid var(--cizgi);border-radius:4px;margin:1.5rem 0;padding:1.5rem;min-width:0;font-size:1.125rem;line-height:1.65}
+.ogrenme-atolyesi .oa-bas h2{font-size:1.8rem;margin:0 0 .45rem;color:var(--metin)}
+.ogrenme-atolyesi p{max-width:70ch;margin:.65rem 0 1rem}
+.ogrenme-atolyesi h3{font-size:1.4rem;margin:1rem 0 .7rem;color:var(--metin)}
+.ogrenme-atolyesi h4{font-size:1.15rem;margin:1.3rem 0 .4rem;color:var(--metin)}
+.ogrenme-atolyesi .oa-nav{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;border-bottom:1px solid var(--cizgi);margin-bottom:1rem}
+.ogrenme-atolyesi button,.ogrenme-atolyesi input,.ogrenme-atolyesi select{font:inherit;color:var(--metin)}
+.ogrenme-atolyesi .oa-dugme{border:1px solid var(--cizgi);background:var(--zemin);min-height:48px;padding:.55rem .9rem;border-radius:4px;cursor:pointer;white-space:normal;text-align:start}
+.ogrenme-atolyesi .oa-dugme:hover{background:color-mix(in oklab,var(--metin) 7%,var(--zemin))}
+.ogrenme-atolyesi .oa-nav [aria-pressed=true],.ogrenme-atolyesi [data-oa=basla]{background:var(--color-kiremit);color:white;border-color:var(--color-kiremit)}
+.ogrenme-atolyesi :is(button,input,select,summary):focus-visible{outline:3px solid var(--color-iznik);outline-offset:3px}
+.ogrenme-atolyesi .oa-gunluk{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.ogrenme-atolyesi .oa-gunluk>*{min-width:0}
+.ogrenme-atolyesi .oa-liste{list-style:none;padding:0;margin:0}
+.ogrenme-atolyesi .oa-liste li{border-bottom:1px solid var(--cizgi);margin:0}
+.ogrenme-atolyesi .oa-liste button{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:transparent;border:0;width:100%;text-align:start;cursor:pointer;padding:1rem .4rem;min-height:64px}
+.ogrenme-atolyesi .oa-liste button:hover{background:color-mix(in oklab,var(--metin) 5%,var(--zemin))}
+.ogrenme-atolyesi .oa-liste small{display:block;font-size:.95rem;margin-top:.3rem}
+.ogrenme-atolyesi .oa-harf{font-family:var(--font-arabic);font-size:2.5rem}
+.ogrenme-atolyesi .oa-arapca{font-family:var(--font-arabic);font-size:2rem;line-height:2.2;max-width:100%;text-align:start}
+.ogrenme-atolyesi .oa-not{font-size:.95rem;margin-top:1rem}
+.ogrenme-atolyesi .oa-seviye,.ogrenme-atolyesi .oa-filtre label{display:flex;flex-direction:column;gap:.4rem;max-width:100%}
+.ogrenme-atolyesi select,.ogrenme-atolyesi input[type=search]{min-height:48px;border:1px solid var(--cizgi);background:var(--zemin);border-radius:4px;padding:.5rem;width:100%;min-width:0}
+.ogrenme-atolyesi .oa-filtre{display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1rem}
+.ogrenme-atolyesi .oa-cevaplar,.ogrenme-atolyesi .oa-degerlendirme{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0}
+.ogrenme-atolyesi .oa-cevaplar [lang=ar]{font-size:2rem;min-width:72px}
+.ogrenme-atolyesi button:disabled{cursor:default;opacity:1}
+.ogrenme-atolyesi button:disabled[aria-pressed=true]{border:2px solid var(--metin)}
+.ogrenme-atolyesi .oa-aciklama{padding:1rem 0;border-block:1px solid var(--cizgi);margin:1rem 0}
+.ogrenme-atolyesi .oa-canta,.ogrenme-atolyesi .oa-degerlendirme{border:1px solid var(--cizgi);padding:1rem;min-width:0}
+.ogrenme-atolyesi legend{font-weight:700;padding:0 .4rem}
+.ogrenme-atolyesi .oa-canta label{display:flex;gap:.75rem;align-items:center;min-height:48px;cursor:pointer}
+.portal .ogrenme-atolyesi :is(label,select,input){font-size:1.0625rem}
+.ogrenme-atolyesi input[type=checkbox]{width:24px;height:24px;accent-color:var(--color-kiremit);flex-shrink:0}
+.ogrenme-atolyesi details{border-bottom:1px solid var(--cizgi);padding:.5rem 0}
+.ogrenme-atolyesi summary{cursor:pointer;font-weight:600;padding:.65rem .2rem;min-height:48px}
+.ogrenme-atolyesi .oa-rehber{margin-bottom:1.25rem}
+.ogrenme-atolyesi .oa-calisma>.oa-dugme{margin:.4rem .4rem .4rem 0}
+.ogrenme-atolyesi a{color:var(--metin);text-decoration:underline;text-underline-offset:.2em}
+.ogrenme-atolyesi .oa-hafta{margin:1rem 0}
+.ogrenme-atolyesi [data-baslik]{scroll-margin-top:7rem}
+@media(max-width:700px){.portal .ogrenme-atolyesi{padding:1rem;font-size:1.0625rem}.ogrenme-atolyesi .oa-gunluk,.ogrenme-atolyesi .oa-filtre{grid-template-columns:1fr;gap:1rem}.ogrenme-atolyesi .oa-nav{display:grid;grid-template-columns:1fr 1fr}.ogrenme-atolyesi .oa-nav button{padding:.5rem}.ogrenme-atolyesi .oa-degerlendirme{flex-direction:column}.ogrenme-atolyesi .oa-arapca{font-size:1.7rem}}
+
+.ogrenme-atolyesi .oa-atama{border-block:2px solid var(--cizgi);margin:1.5rem 0;padding:1rem 0}
+.ogrenme-atolyesi .oa-esleme{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;border-top:1px solid var(--cizgi);margin-top:1rem;padding-top:1rem}
+.ogrenme-atolyesi .oa-esleme p{flex:1 1 16rem;font-size:1rem}

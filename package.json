@@ -15,6 +15,8 @@
     "test:ek9": "node scripts/ek9-kenar-test.mjs",
     "test:ihtida": "node --test tests/ihtida-contract.test.mjs tests/ihtida-paket-akis.test.mjs tests/ek10-yeni-tasarim.test.mjs tests/dilekce-yeni-tasarim.test.mjs tests/ihtida-defteri-akis.test.mjs tests/ihtida-defteri-belge.test.mjs",
     "test:veli-eposta": "node --test tests/veli-eposta-dili.test.mjs tests/veli-mail-listesi.test.mjs tests/veli-cuma.test.mjs",
+    "test:oto-kaydet": "node --test tests/oto-kaydet.test.mjs",
+    "test:ogrenme": "node --test tests/ogrenme-ilerleme.test.mjs",
     "test:imza": "node scripts/ek9-imza-zinciri.mjs",
     "test:kutuphane": "py -3.14 scripts/kutuphane-erisim-testi.py",
     "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9 && npm run test:ihtida",

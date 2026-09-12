@@ -1,3 +1,6 @@
+import { ETKINLIKLER } from '../lib/ogrenme-icerigi';
+import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
+import type { Tekrar } from '../lib/ogrenme-ilerleme';
 /**
  * Hoca ekranı tarayıcı uygulaması (6 Eyl 2026) — yalnız Türkçe. Firebase Auth + Firestore (lite), sunucu yok.
  * Yetki: hocalar/{uid} belgesi (firebase/firestore.rules → hoca()). Bu ekran veli portalının (veli-portali.ts) veri
@@ -133,7 +136,7 @@ export async function hocaEkrani(): Promise<void> {
   /* ---------------------------------------------------------------- durum */
   type Durum = {
     uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: Record<string, { dersler: Record<string, string>; not: string }>;
-    secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
+    evCalismasi?:Record<string,Tekrar>|null; secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
   };
   let S: Durum | null = null;
   let duzenlenenDuyuru: string | null = null; // hoca bir duyuruyu düzenliyorsa id'si (yeni duyuru formu düzenleme kipine geçer)
@@ -160,9 +163,12 @@ export async function hocaEkrani(): Promise<void> {
     if (!S) return; const k = await kayitlar('yoklama', fs.where('tarih', '==', S.tarih));
     S.yoklama = {}; (k as unknown as Yok[]).forEach((y) => { const ders = y.dersler && typeof y.dersler === 'object' ? { ...y.dersler } : (y.durum ? { '1': y.durum, '2': y.durum, '3': y.durum } : {}); S!.yoklama[y.ref] = { dersler: ders, not: y.not || '' }; });
   };
+  let ogrenciIstek=0;
   const ogrenciYukle = async (ref: string) => {
     if (!S) return;
-    const [ile, deg, not] = await Promise.all([fs.getDoc(fs.doc(db, 'ilerleme', ref)), kayitlar('degerlendirme', fs.where('ref', '==', ref)), kayitlar('notlar', fs.where('ref', '==', ref))]);
+    const istek=++ogrenciIstek;const sahibi=S;
+    const [ile, deg, not, ev] = await Promise.all([fs.getDoc(fs.doc(db, 'ilerleme', ref)), kayitlar('degerlendirme', fs.where('ref', '==', ref)), kayitlar('notlar', fs.where('ref', '==', ref)), ogrenmeDeposu(db,ref).oku().catch(()=>null)]);
+    if(S!==sahibi||istek!==ogrenciIstek)return;S.evCalismasi=ev;
     S.secili = ref; S.ilerleme = ile.exists() ? (ile.data() as Ilerleme) : null;
     S.degerlendirme = deg.sort((x, y) => String(y.tarih).localeCompare(String(x.tarih)));
     S.notlar = not.sort((x, y) => String(y.tarih).localeCompare(String(x.tarih)));
@@ -234,6 +240,8 @@ export async function hocaEkrani(): Promise<void> {
           <ul class="liste">${(o.veliler || []).map((e) => `<li><span class="buyu">${esc(e)}</span><button type="button" class="baglanti-dugme" data-veli-sil="${esc(e)}">kaldır</button></li>`).join('') || '<li class="kucuk">Veli e-postası yok.</li>'}</ul>
           <form data-form="veliEkle" class="satir-dugmeler"><input type="email" name="eposta" placeholder="veli@ornek.be" required style="flex:1 1 14rem"><button type="submit" class="dugme dugme-ikincil">Veli ekle</button><p data-mesaj hidden class="not" style="flex-basis:100%"></p></form>
 
+          <section class="bolum" data-ev-calismasi><h3>Evde çalışma · öz değerlendirme</h3><p class="kucuk">Öğrencinin veya ailesinin bildirimidir; öğretmen değerlendirmesi değildir. Her etkinliğin son çalışması gösterilir.</p>
+          ${S.evCalismasi===null?'<p class="not hata">Evde çalışma kayıtları alınamadı. Öğrenciyi yeniden seçerek deneyin.</p>':Object.keys(S.evCalismasi||{}).length?`<ul class="liste">${Object.entries(S.evCalismasi||{}).sort((a,b)=>b[1].son.localeCompare(a[1].son)).map(([id,r])=>`<li><span class="buyu"><b>${esc(ETKINLIKLER.find(e=>e.id===id)?.baslik.tr||id)}</b><br><span class="kucuk">${esc(tarihYaz(r.son))} · ${{destek:'Yardımla denedim',tekrar:'Biraz daha tekrar',rahat:'Rahatça hatırladım'}[r.cevap]}</span></span></li>`).join('')}</ul>`:'<p class="kucuk">Henüz hesapta çalışma kaydı yok. Bu durum öğrencinin evde çalışmadığı anlamına gelmez.</p>'}</section>
           <h3>${simge('grafik')}İlerleme</h3>
           <form data-form="ilerleme">
             <label>Kur’an’da gelinen adım<select name="kuranAdim"><option value="-1">—</option>${kuranSirasi.map((k, i) => `<option value="${i}" ${ile.kuranAdim === i ? 'selected' : ''}>${i + 1}. ${esc(k.konu)} (${esc(tarihYaz(k.tarih, { day: 'numeric', month: 'short' }))})</option>`).join('')}</select></label>
@@ -302,6 +310,8 @@ export async function hocaEkrani(): Promise<void> {
             <label>Ezber (FR)<textarea name="ezberFr" maxlength="1000">${esc(ez.fr || '')}</textarea></label>
             <label>Ödev (FR)<textarea name="odevFr" maxlength="1000">${esc(od.fr || '')}</textarea></label>
           </div></details>
+          <details class="katlanir mini"${ez.en||od.en?' open':''}><summary>İngilizce çeviri (isteğe bağlı)</summary><div class="govde"><label>Ezber (EN)<textarea name="ezberEn" maxlength="1000">${esc(ez.en||'')}</textarea></label><label>Ödev (EN)<textarea name="odevEn" maxlength="1000">${esc(od.en||'')}</textarea></label></div></details>
+          <fieldset><legend>Bu haftanın interaktif etkinlikleri</legend><p class="kucuk">En fazla üç kısa etkinlik seçin. Yayınlandığında ailelerin atölyesinde ayrıca görünür; boş bırakabilirsiniz.</p>${[0,1,2].map(i=>`<label>${i+1}. etkinlik<select name="etkinlik"><option value="">Etkinlik seçilmedi</option>${['harf','ezber','bilgi','hayat'].map(alan=>`<optgroup label="${({harf:'Harfler',ezber:'Ezber',bilgi:'Bilgi',hayat:'Günlük hayat'} as Record<string,string>)[alan]}">${ETKINLIKLER.filter(e=>e.alan===alan).map(e=>`<option value="${e.id}" ${(mevcut?.etkinlikler as string[]|undefined)?.[i]===e.id?'selected':''}>${esc(e.baslik.tr)}</option>`).join('')}</optgroup>`).join('')}</select></label>`).join('')}</fieldset>
           <label>Materyal bağlantısı<input type="url" name="materyal" value="${esc(mevcut?.materyal ?? (materyalVar ? location.origin + veri.materyalYolu + '#g-' + h.gunler.find((g) => veri.materyalGunleri.includes(g.tarih))!.tarih : ''))}"></label>
           <label class="satir"><input type="checkbox" name="yayin" ${mevcut ? (mevcut.yayin ? 'checked' : '') : 'checked'}> Velilere yayınla</label>
           <p data-mesaj hidden class="not"></p>
@@ -483,7 +493,9 @@ export async function hocaEkrani(): Promise<void> {
         if (!rec) { ustMesaj('Kopyalanacak önceki hafta kaydı yok.', 'hata'); return; }
         const ez = (rec.ezber as Record<string, string>) || {}; const od = (rec.odev as Record<string, string>) || {};
         const setV = (n: string, v: string) => { const t = kok.querySelector<HTMLTextAreaElement>(`form[data-form=odev] [name=${n}]`); if (t) t.value = v; };
-        setV('ezberTr', ez.tr || ''); setV('ezberFr', ez.fr || ''); setV('odevTr', od.tr || ''); setV('odevFr', od.fr || '');
+        setV('ezberTr', ez.tr || ''); setV('ezberFr', ez.fr || ''); setV('odevTr', od.tr || ''); setV('odevFr', od.fr || '');setV('ezberEn',ez.en||'');setV('odevEn',od.en||'');
+        kok.querySelectorAll<HTMLSelectElement>('form[data-form=odev] [name=etkinlik]').forEach((el,i)=>{el.value=(rec.etkinlikler as string[]|undefined)?.[i]||'';});
+        if(ez.en||od.en)kok.querySelector<HTMLTextAreaElement>('[name=ezberEn]')?.closest('details')?.setAttribute('open','');
         if (ez.fr || od.fr) { const dd = kok.querySelector<HTMLDetailsElement>('form[data-form=odev] details'); if (dd) dd.open = true; }
         ustMesaj(`${onceki!.hafta}. haftanın ezber/ödevi forma kopyalandı; düzenleyip kaydedin.`, 'basari'); return; }
       if (el.dataset.davet) {
@@ -562,7 +574,7 @@ export async function hocaEkrani(): Promise<void> {
           await fs.addDoc(col('notlar'), { ref: S.secili, tarih: al('tarih'), metin: al('metin'), veliyeGorunur: fd.get('veliyeGorunur') === 'on', kaydeden: S.uid, zaman: fs.serverTimestamp() });
           await ogrenciYukle(S.secili); ciz(); ustMesaj('Not eklendi.', 'basari'); break; }
         case 'odev': { if (!S) break; const h = haftalar.find((x) => x.hafta === S!.hafta) || haftalar[0];
-          await fs.setDoc(fs.doc(db, 'odevler', h.tarih), { tarih: h.tarih, hafta: h.hafta, ezber: { tr: al('ezberTr'), fr: al('ezberFr') }, odev: { tr: al('odevTr'), fr: al('odevFr') }, materyal: al('materyal'), yayin: fd.get('yayin') === 'on', kaydeden: S.uid, guncelleme: new Date().toISOString() });
+          await fs.setDoc(fs.doc(db, 'odevler', h.tarih), { tarih: h.tarih, hafta: h.hafta, etkinlikler: [...new Set(fd.getAll('etkinlik').map(String))].filter(id=>ETKINLIKLER.some(e=>e.id===id)).slice(0,3), ezber: { tr: al('ezberTr'), fr: al('ezberFr'), en: al('ezberEn') }, odev: { tr: al('odevTr'), fr: al('odevFr'), en: al('odevEn') }, materyal: al('materyal'), yayin: fd.get('yayin') === 'on', kaydeden: S.uid, guncelleme: new Date().toISOString() });
           await sekmeYukle('odev'); ciz(); ustMesaj(`${h.hafta}. hafta kaydedildi.`, 'basari'); break; }
         case 'duyuru': { if (!S) break;
           const zengin = (k: string) => { const el = form.querySelector<HTMLElement>(`[data-zengin="${k}"]`); return el ? temizleHtml(el.innerHTML) : ''; };

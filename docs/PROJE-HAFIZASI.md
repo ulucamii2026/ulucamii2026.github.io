@@ -18,7 +18,8 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | Ana sayfa vitrini | [Ana sayfa vitrini](ANA-SAYFA-VITRINI.md) | `src/lib/vitrin-secimi.ts`, `src/components/GundemVitrini.astro`; `tests/web/vitrin.spec.mjs` |
 | Ana sayfa akışı | [Ana sayfa akışı](ANA-SAYFA-AKISI.md) | `src/components/AnaSayfaAkisi.astro`, `src/styles/ana-sayfa-akisi.css`; `tests/web/ana-sayfa-akisi.spec.mjs` |
 | Mektep çalışma odası / öğrenci modu | [Öğrenci modu](OGRENCI-MODU-PORTAL.md) | `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts`, `src/lib/elifba-verisi.ts`, `src/lib/ezber-verisi.ts`, `src/lib/quiz-verisi.ts`; `npm run dogrula:codex` |
-| Anti-Gravity iş akışı | [Anti-Gravity iş akışı](ANTIGRAVITY-IS-AKISI.md) | `AGENTS.md` |
+| Birlikte öğrenme / aile rehberi / aralıklı tekrar | [Atölye](VELI-OGRENCI-ATOLYESI.md), [pedagojik araştırma](VELI-OGRENCI-PEDAGOJIK-ARASTIRMA.md) | `src/scripts/ogrenme-atolyesi.ts`, `src/lib/ogrenme-ilerleme.ts`; `npm run test:ogrenme` |
+| Anti-Gravity iş akışı | [İş akışı](ANTIGRAVITY-IS-AKISI.md), [12 Eylül oturum incelemesi](AGY-OTURUM-INCELEMESI-2026-09-12.md) | `scripts/oto-kaydet.ps1`; `npm run test:oto-kaydet` |
 | Web sitesi genel çalışma dökümü | [11 Eylül çalışma dökümü](WEB-SITESI-CALISMA-DOKUMANI-2026-09-11.md) | Konu notlarına yönlendiren genel özet |
 
 ## Tekrar keşfedilmemesi gereken kararlar

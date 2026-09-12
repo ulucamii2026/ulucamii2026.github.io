@@ -36,3 +36,21 @@
 - **Resmî Duyuru ve Görsel Tasarım Standardı:**
   - Diyanet idari/istihdam sınavı ve resmî duyurularda soyut AI görseli yerine `impeccable` ilkeleriyle hazırlanan kurumsal bilgi afişi, şartlar rozeti ve dokunsal SVG indirme kartları esastır.
   - Higgsfield üretimi sanatsal, atmosferik veya etkinlik odaklı afiş ihtiyaçlarında değerlendirilir.
+
+
+## Otomatik Yerel Kayıt Sınırı (12 Eylül 2026)
+
+`scripts/oto-kaydet.ps1` yalnız betiğin ait olduğu deponun kökünde, önceden
+sahnelenmiş değişiklik yokken çalışır. Hassas dosya adları yeni alt klasörler
+dâhil denetlenir; bulguda hiçbir dosya sahnelenmez veya kaydedilmez. Git hatası
+başarı diye gösterilmez. Yalnız belirlenmiş kaynak yollarını kaydeder; yayın yapmaz.
+Dosya adı kontrolü kapsamlı bir sır tarayıcısı değildir. Bu betik yeni bir çalışma
+sırasında kendiliğinden commit oluşturma izni vermez.
+
+`npm run test:oto-kaydet` gerçek depoyu değiştirmeyen 12 geçici depo senaryosunu
+çalıştırır; `dogrula:codex` zincirine dahildir. PowerShell testleri Windows dışındaki
+ortamda atlanır ve test raporu bu durumu açıkça belirtir.
+
+Temiz `git status`, yalnız bekleyen dosya değişikliği olmadığını gösterir; işlev,
+tasarım, canlı yayın veya teslimat kanıtı değildir. Sonuç raporunda kullanılan
+kontrol ve çalıştırıldığı tarih ayrıca belirtilir.
