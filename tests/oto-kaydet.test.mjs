@@ -217,12 +217,7 @@ test('Git commit hatası denetimi: Commit başarısız olursa başarı yazmaz ve
   }
 });
 
-/* 12 Eyl 2026: marka kimliği dosyaları da fail-closed listesindedir. O gün
-   public/media/logo altındaki sekiz dosya başka bir oturumda yeniden çizilmiş olarak
-   çalışma ağacında duruyordu; betik public/ dizinini bütünüyle sahnelediği için bir
-   sonraki otomatik kayıt onları incelenmeden commit edecekti. */
-for (const file of ['src/yeni/.env', 'docs/yeni/token.json', 'public/yeni/private.pem',
-  'public/media/logo/ulu-camii-logo.svg']) {
+for (const file of ['src/yeni/.env', 'docs/yeni/token.json', 'public/yeni/private.pem']) {
   test(`Yeni klasördeki hassas dosya kayda alınmaz: ${file}`, () => {
     const repo = createSyntheticRepo();
     try {
@@ -237,6 +232,50 @@ for (const file of ['src/yeni/.env', 'docs/yeni/token.json', 'public/yeni/privat
     } finally { cleanDir(repo); }
   });
 }
+
+/* 12 Eyl 2026: marka kimliği (logo) dosyaları otomatik kayda ALINMAZ, ama betiği de
+   durdurmaz. O gün public/media/logo altındaki sekiz dosya başka bir oturumda kurumsal
+   kimlik paketinden gelen temizlenmiş sürümlerle değiştirilmiş olarak çalışma ağacında
+   duruyordu; betik public/ dizinini bütünüyle sahnelediği için bir sonraki otomatik
+   kayıt onları incelenmeden commit edecekti. Fail-closed yapmak ise logolar elle commit
+   edilene kadar İLGİSİZ işlerin otomatik kaydını da kırıyordu. */
+test('Logo değişikliği kayda alınmaz ama ilgisiz iş kaydedilmeye devam eder', () => {
+  const repo = createSyntheticRepo();
+  try {
+    const logo = path.join(repo, 'public/media/logo/ulu-camii-logo.svg');
+    fs.mkdirSync(path.dirname(logo), { recursive: true });
+    fs.writeFileSync(logo, '<svg><!-- yeniden cizildi --></svg>');
+    fs.appendFileSync(path.join(repo, 'src', 'index.js'), '\n// ilgisiz yeni kod');
+
+    const sonuc = runScript(path.join(repo, 'scripts/oto-kaydet.ps1'), repo);
+    assert.equal(sonuc.status, 0, sonuc.stderr);
+    assert.match(sonuc.stdout, /ATLANDI \(marka kimligi/);
+
+    const kayitli = execFileSync('git', ['show', '--name-only', '--format=', 'HEAD'],
+      { cwd: repo, encoding: 'utf8' }).trim().split(/\r?\n/).filter(Boolean);
+    assert.ok(kayitli.includes('src/index.js'), `ilgisiz iş kaydedilmeli: ${kayitli.join(', ')}`);
+    assert.ok(!kayitli.some((y) => y.includes('media/logo')),
+      `logo commit edilmemeli: ${kayitli.join(', ')}`);
+    assert.match(execFileSync('git', ['status', '--porcelain', '--untracked-files=all',
+      '--', 'public/media/logo'], { cwd: repo, encoding: 'utf8' }), /ulu-camii-logo\.svg/);
+  } finally { cleanDir(repo); }
+});
+
+test('Yalnız logo değişmişse hiçbir şey kaydedilmez', () => {
+  const repo = createSyntheticRepo();
+  try {
+    const logo = path.join(repo, 'public/media/logo/kuran-kursu-logo.svg');
+    fs.mkdirSync(path.dirname(logo), { recursive: true });
+    fs.writeFileSync(logo, '<svg><!-- yalniz logo --></svg>');
+
+    const sonuc = runScript(path.join(repo, 'scripts/oto-kaydet.ps1'), repo);
+    assert.equal(sonuc.status, 0, sonuc.stderr);
+    assert.match(sonuc.stdout, /ATLANDI \(marka kimligi/);
+    assert.doesNotMatch(sonuc.stdout, /Ilerleme basariyla kaydedildi/);
+    assert.equal(execFileSync('git', ['rev-list', '--count', 'HEAD'],
+      { cwd: repo, encoding: 'utf8' }).trim(), '1');
+  } finally { cleanDir(repo); }
+});
 
 test('Tasarım token dosyası gizli erişim anahtarı sanılmaz', () => {
   const repo = createSyntheticRepo();

@@ -89,16 +89,11 @@ $blockedPatterns = @(
     '\.key$',
     '\.p8$',
     '\.p12$',
-    '\.pem$',
-    # 12 Eyl 2026: marka kimligi dosyalari asla gozetimsiz commit edilmez. O gun
-    # public/media/logo altindaki sekiz dosya (ana logo 37 -> 12 path, kurs logosu
-    # 157 -> 49 path) baska bir oturumda yeniden cizilmis olarak calisma agacinda
-    # duruyordu; bu betik public/ dizinini butunuyle sahneledigi icin bir sonraki
-    # otomatik kayit onlari incelenmeden gecmis kabul edecekti. Logo degisikligi
-    # artik betigi durdurur ve elle, gozden gecirilmis bir commit gerektirir.
-    '(^|/|\\)public/media/logo/',
-    '(^|/|\\)public\\media\\logo\\'
+    '\.pem$'
 )
+
+# Marka kimligi yolu: hassas degil, ama otomatik kayda ALINMAZ (bkz. bolum 5).
+$brandAssetPath = 'public/media/logo'
 
 $changedLines = @($status -split "`r?`n" | Where-Object { $_.Trim() -ne '' })
 $riskyFiles = @()
@@ -137,10 +132,28 @@ if ($targetPaths.Count -eq 0) {
     exit 0
 }
 
-# Git add islemi - yalniz belirlenmis yollar
-git add -- $targetPaths
+# 12 Eyl 2026: marka kimligi dosyalari (logo) otomatik kayda GIRMEZ, ama betigi de
+# durdurmaz. O gun public/media/logo altindaki sekiz dosya baska bir oturumda
+# (kurumsal kimlik paketinden temizlenmis surumlerle) degistirilmis olarak calisma
+# agacinda duruyordu; bu betik public/ dizinini butunuyle sahneledigi icin bir sonraki
+# otomatik kayit onlari incelenmeden commit edecekti. Once bunu hassas dosya sayip
+# betigi durdurmustuk; o zaman logolar elle commit edilene kadar ILGISIZ islerin
+# otomatik kaydi da kiriliyordu. Dogru davranis: logoyu sahneleme, kalani kaydet,
+# atlanan dosyalari ekrana yaz. Marka degisikligi elle, gozden gecirilmis commit ister.
+$excludeSpec = ":(exclude)$brandAssetPath/"
+git add -- $targetPaths $excludeSpec
 if ($LASTEXITCODE -ne 0) {
     Fail-Script "Belirlenmis kaynak yollari sahnelenirken git add basarisiz oldu (Cikis kodu: $LASTEXITCODE)."
+}
+
+$skippedBrand = @($changedLines | ForEach-Object {
+    $p = if ($_.Length -gt 3) { $_.Substring(3).Trim() } else { $_.Trim() }
+    if ($p -match '->') { $p = ($p -split '->')[-1].Trim() }
+    $p.Trim('"', "'")
+} | Where-Object { $_ -replace '\\', '/' -like "$brandAssetPath/*" })
+
+if ($skippedBrand.Count -gt 0) {
+    Write-Host "ATLANDI (marka kimligi, elle commit gerekir): $($skippedBrand -join ', ')" -ForegroundColor Yellow
 }
 
 # Sahnelenen degisiklikleri kontrol et
