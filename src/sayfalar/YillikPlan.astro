@@ -300,7 +300,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   .rozet { padding: 0.16rem 0.5rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); font-size: 0.74rem; line-height: 1.35; color: var(--metin-2); }
   .r-tatil { border-color: var(--color-adacayi); color: var(--color-adacayi-koyu); }
   .r-ramazan { border-color: var(--color-iznik); color: var(--color-iznik); }
-  .r-bayram, .r-pazartesi { border-color: var(--color-ochre); color: var(--color-ceviz); }
+  .r-bayram, .r-pazartesi, .r-kandil { border-color: var(--color-ochre); color: var(--color-ceviz); }
   .gun-tatil { background: var(--zemin-2); }
   .tatil-notu { margin: 0.7rem 0 0; color: var(--metin-2); font-size: 0.95rem; }
 
@@ -339,12 +339,12 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
     :root:not([data-theme='light']) .plan, :root:not([data-theme='light']) .simdi, :root:not([data-theme='light']) .cubuk { --renk-oran: 22%; }
     :root:not([data-theme='light']) .r-tatil { border-color: var(--color-adacayi-acik); color: var(--color-adacayi-acik); }
     :root:not([data-theme='light']) .r-ramazan { border-color: var(--color-iznik-acik); color: var(--color-iznik-acik); }
-    :root:not([data-theme='light']) .r-bayram, :root:not([data-theme='light']) .r-pazartesi { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
+    :root:not([data-theme='light']) .r-bayram, :root:not([data-theme='light']) .r-pazartesi, :root:not([data-theme='light']) .r-kandil { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
   }
   :root[data-theme='dark'] .plan, :root[data-theme='dark'] .simdi, :root[data-theme='dark'] .cubuk { --renk-oran: 22%; }
   :root[data-theme='dark'] .r-tatil { border-color: var(--color-adacayi-acik); color: var(--color-adacayi-acik); }
   :root[data-theme='dark'] .r-ramazan { border-color: var(--color-iznik-acik); color: var(--color-iznik-acik); }
-  :root[data-theme='dark'] .r-bayram, :root[data-theme='dark'] .r-pazartesi { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
+  :root[data-theme='dark'] .r-bayram, :root[data-theme='dark'] .r-pazartesi, :root[data-theme='dark'] .r-kandil { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
 
   /* ——— Filtre: JS yalnızca data-f'i değiştirir, gizlemeyi CSS yapar ——— */
   .plan[data-f='kuran'] .ders:not([data-k='kuran']), .plan[data-f='kuran'] .gun:not([data-kk~='kuran']), .plan[data-f='kuran'] .ay-bolum:not([data-kk~='kuran']) { display: none; }

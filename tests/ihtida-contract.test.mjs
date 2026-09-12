@@ -13,6 +13,7 @@ import { sahitOnerileri, sahitUnvani } from '../public/admin/ek9-hazirlik.js';
 import { ihtidaPaketiUret } from '../public/admin/ihtida-paket.js';
 import { dilekceUret } from '../public/admin/dilekce.js';
 import { camiCoz } from '../public/admin/cami-secimi.js';
+import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 const source = readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v28.gs', import.meta.url), 'utf8');
 function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz }; return ctx; }
@@ -252,7 +253,7 @@ test('Tam paket taşma yapmadan hazırlanır; başvuran imzası üç yere taşı
   const namurPdf = await ihtidaPaketiUret({ ...g, cami: namurCami, sahitler: [{ ad: 'Namur Birinci Şahit' }, { ad: 'Namur İkinci Şahit' }], yedekImzalar: [] });
   const namurOut = new URL('../.codex/cikti/ihtida/namur-paket.pdf', import.meta.url);
   writeFileSync(namurOut, namurPdf);
-  const namurMetni = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext ${fileURLToPath(namurOut)} -`], { encoding: 'utf8' });
+  const namurMetni = pdfMetni(namurOut);
   assert.match(namurMetni, /Namur Camii/);
   assert.match(namurMetni, /Rue Denis Georges Bayar 13, 5000, Namur/);
   assert.match(namurMetni, /Posta dönüş camisi/);
@@ -262,7 +263,7 @@ test('Tam paket taşma yapmadan hazırlanır; başvuran imzası üç yere taşı
   const evePdf = await ihtidaPaketiUret({ ...g, cami: namurCami, veri: { ...g.veri, teslimat: { yontem: 'adres' } }, sahitler: [{ ad: 'Namur Birinci Şahit' }, { ad: 'Namur İkinci Şahit' }], yedekImzalar: [] });
   const eveOut = new URL('../.codex/cikti/ihtida/namur-ev-teslim-paket.pdf', import.meta.url);
   writeFileSync(eveOut, evePdf);
-  const eveMetni = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext ${fileURLToPath(eveOut)} -`], { encoding: 'utf8' });
+  const eveMetni = pdfMetni(eveOut);
   assert.match(eveMetni, /Posta dönüş adresi/);
   assert.match(eveMetni, /Adresse de retour postal de l’attestation/);
   assert.match(eveMetni, /Deniz Élodie Örnek/);
@@ -277,7 +278,7 @@ test('Tam paket taşma yapmadan hazırlanır; başvuran imzası üç yere taşı
   assert.equal(uzunCamiDoc.getPageCount(), 6, 'Normal katalog sınırındaki cami bilgisi tek sayfalık dilekçeyi korumalı');
   const uzunCamiOut = new URL('../.codex/cikti/ihtida/uzun-manuel-cami-paket.pdf', import.meta.url);
   writeFileSync(uzunCamiOut, uzunCamiPdf);
-  const uzunCamiMetni = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext ${fileURLToPath(uzunCamiOut)} -`], { encoding: 'utf8' });
+  const uzunCamiMetni = pdfMetni(uzunCamiOut);
   assert.match(uzunCamiMetni, /Uzun Adlı Resmî Başvuru ve Tören Camii Derneği Merkezi/);
   assert.match(uzunCamiMetni, /Bâtiments Communautaires 123 B/);
   const uzunluk = (metin, adet) => metin.repeat(Math.ceil(adet / metin.length)).slice(0, adet);
@@ -299,11 +300,11 @@ test('Tam paket taşma yapmadan hazırlanır; başvuran imzası üç yere taşı
   writeFileSync(sinirOut, sinirPdf);
   const sinirBelge = await pdfLib.PDFDocument.load(sinirPdf);
   assert.ok(sinirBelge.getPageCount() >= 2, 'Sınır bilgileri dilekçe devam sayfasına akmalı');
-  const sinirMetni = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext ${fileURLToPath(sinirOut)} -`], { encoding: 'utf8' });
+  const sinirMetni = pdfMetni(sinirOut);
   assert.match(sinirMetni, /Belçika Türk Müslüman Toplumu Başvuru ve Tören Merkezi/);
   assert.match(sinirMetni, /Avenue de la\s+Très\s+Longue Adresse/);
   assert.match(sinirMetni, /Alexandra Marie Elisabeth de la Conversion Exemple/);
-  const sinirKutu = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext -bbox-layout ${fileURLToPath(sinirOut)} -`], { encoding: 'utf8' });
+  const sinirKutu = pdfMetni(sinirOut, ['-bbox-layout']);
   const koordinatlar = [...sinirKutu.matchAll(/<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)"/g)].map(([, sol, ust, sag, alt]) => [Number(sol), Number(ust), Number(sag), Number(alt)]);
   assert.ok(koordinatlar.length > 100, 'PDF metin koordinatları okunmalı');
   assert.ok(koordinatlar.every(([, ust,, alt]) => ust >= 20 && alt <= 822), 'Hiçbir metin alt veya üst sayfa sınırına taşmamalı');

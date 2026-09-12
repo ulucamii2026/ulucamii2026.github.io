@@ -217,7 +217,12 @@ test('Git commit hatası denetimi: Commit başarısız olursa başarı yazmaz ve
   }
 });
 
-for (const file of ['src/yeni/.env', 'docs/yeni/token.json', 'public/yeni/private.pem']) {
+/* 12 Eyl 2026: marka kimliği dosyaları da fail-closed listesindedir. O gün
+   public/media/logo altındaki sekiz dosya başka bir oturumda yeniden çizilmiş olarak
+   çalışma ağacında duruyordu; betik public/ dizinini bütünüyle sahnelediği için bir
+   sonraki otomatik kayıt onları incelenmeden commit edecekti. */
+for (const file of ['src/yeni/.env', 'docs/yeni/token.json', 'public/yeni/private.pem',
+  'public/media/logo/ulu-camii-logo.svg']) {
   test(`Yeni klasördeki hassas dosya kayda alınmaz: ${file}`, () => {
     const repo = createSyntheticRepo();
     try {

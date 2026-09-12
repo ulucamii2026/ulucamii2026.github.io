@@ -7,6 +7,7 @@ import * as pdfLib from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import sharp from 'sharp';
 import { ek10Uret } from '../public/admin/ek10.js';
+import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 const oku = ad => readFileSync(new URL('../public/' + ad, import.meta.url));
 const gorselSayisi = s => s.node.Resources().lookup(pdfLib.PDFName.of('XObject'))?.keys().length || 0;
@@ -23,7 +24,7 @@ test('EK-10 2026 sürümü tek imzayı yalnız ikinci sayfaya ve seçilen izne g
   assert.equal(gorselSayisi(evetBelge.getPage(1)), gorselSayisi(kaynak.getPage(1)) + 1, 'İmza yalnız ikinci sayfadadır');
   assert.equal(gorselSayisi(hayirBelge.getPage(1)), gorselSayisi(kaynak.getPage(1)), 'Hayır seçeneğinde imza görseli gömülmez');
   const cikti = new URL('../.codex/cikti/ihtida/ek10-2026-evet.pdf', import.meta.url); mkdirSync(new URL('../.codex/cikti/ihtida/', import.meta.url), { recursive: true }); writeFileSync(cikti, evet);
-  const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext ${fileURLToPath(cikti)} -`], { encoding: 'utf8' });
+  const metin = pdfMetni(cikti);
   assert.match(metin, /Deniz Élodie Örnek/); assert.match(metin, /09\/09\/2026/);
   await assert.rejects(() => ek10Uret({ ...ortak, imzaAktarimIzni: undefined }), /Evet veya Hayır/);
 });

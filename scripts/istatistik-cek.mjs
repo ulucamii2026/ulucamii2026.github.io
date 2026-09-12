@@ -35,6 +35,15 @@ const getir = async (yol) => {
   return y.json();
 };
 
+/* 🛑 GÜVENLİK (12 Eyl 2026): GoatCounter yolu SORGU DİZESİYLE birlikte veriyor ve bu dosya
+   herkese açık depoda duruyor. Veli portalı ile hoca ekranının Firebase e-posta giriş
+   bağlantıları (`/tr/veli-portali/?apiKey=…&oobCode=…`) böylece iki kez bu JSON'a düşmüştü:
+   `oobCode` tek kullanımlık OTURUM AÇMA anahtarıdır, yayımlanması hesap devralma riskidir.
+   Bu yüzden yol artık daima sorgu dizesinden ve çapadan arındırılır. Yan faydası: aynı
+   sayfanın farklı sorgularla bölünen sayımları birleşir. Olay adları (indir-pdf/… gibi)
+   yol değildir, dokunulmaz. */
+const yolNormalle = (yol) => String(yol ?? '').split('#')[0].split('?')[0] || '/';
+
 try {
   /* Uç nokta bir turda en çok 100 yol verir ve sayfalama «exclude_paths» ile yapılır:
      görülen path_id'ler dışlanınca bir sonraki 100 gelir. Olaylar (indir-pdf/… gibi) ayrı tutulur. */
@@ -47,7 +56,8 @@ try {
     const veri = await getir(`/stats/hits?${p}`);
     for (const h of veri.hits ?? []) {
       const hedef = h.event ? olaylar : yollar;
-      hedef[h.path] = (hedef[h.path] ?? 0) + h.count;
+      const anahtar = h.event ? h.path : yolNormalle(h.path);
+      hedef[anahtar] = (hedef[anahtar] ?? 0) + h.count;
       gorulen.push(String(h.path_id));
     }
     if (!veri.more || !(veri.hits ?? []).length) break;

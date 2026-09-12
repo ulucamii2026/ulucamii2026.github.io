@@ -89,7 +89,15 @@ $blockedPatterns = @(
     '\.key$',
     '\.p8$',
     '\.p12$',
-    '\.pem$'
+    '\.pem$',
+    # 12 Eyl 2026: marka kimligi dosyalari asla gozetimsiz commit edilmez. O gun
+    # public/media/logo altindaki sekiz dosya (ana logo 37 -> 12 path, kurs logosu
+    # 157 -> 49 path) baska bir oturumda yeniden cizilmis olarak calisma agacinda
+    # duruyordu; bu betik public/ dizinini butunuyle sahneledigi icin bir sonraki
+    # otomatik kayit onlari incelenmeden gecmis kabul edecekti. Logo degisikligi
+    # artik betigi durdurur ve elle, gozden gecirilmis bir commit gerektirir.
+    '(^|/|\\)public/media/logo/',
+    '(^|/|\\)public\\media\\logo\\'
 )
 
 $changedLines = @($status -split "`r?`n" | Where-Object { $_.Trim() -ne '' })

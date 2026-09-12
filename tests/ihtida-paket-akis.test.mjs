@@ -6,6 +6,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { PDFDocument } from 'pdf-lib';
 import sharp from 'sharp';
+import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 execFileSync(process.execPath, ['scripts/ihtida-gas-derle.mjs'], { stdio: 'pipe' });
 const source = readFileSync('.codex/cikti/gas/ulucamii-v28.gs', 'utf8');
@@ -72,7 +73,7 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı 
   assert.ok(cells.get('E-posta durumu').includes('Alıcı sunucusuna teslim edildi'));
   assert.equal((await PDFDocument.load(bytes)).getPageCount(), 6);
   writeFileSync('.codex/cikti/ihtida/gas-otomatik-paket.pdf', bytes);
-  const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', 'pdftotext -f 1 -l 1 .codex/cikti/ihtida/gas-otomatik-paket.pdf -'], { encoding: 'utf8' });
+  const metin = pdfMetni('.codex/cikti/ihtida/gas-otomatik-paket.pdf', ['-f', '1', '-l', '1']);
   for (const text of ['Rıdvan KAYAHAN', 'Din Görevlisi', 'Ercan MOLA', 'Dernek Başkanı']) assert.ok(metin.includes(text), text);
   assert.ok(metin.indexOf('Ercan MOLA') < metin.indexOf('Rıdvan KAYAHAN'), 'Otomatik EK-9 paketinde Ercan birinci, Rıdvan ikinci şahit olmalı');
   assert.doesNotMatch(metin, /Yeliz/);
@@ -99,7 +100,7 @@ test('Otomatik PDF boş ikinci şahidi tamamlarken ilk şahidi tekrarlamaz', asy
   const bytes = await ctx.IhtidaPdf.uret({ ...k, 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': '' }, ctx.ihtidaGorselleriOku(), null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit);
   const file = '.codex/cikti/ihtida/gas-sahit-tekrari.pdf';
   writeFileSync(file, Buffer.from(bytes));
-  const metin = execFileSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `pdftotext -f 1 -l 1 ${file} -`], { encoding: 'utf8' });
+  const metin = pdfMetni(file, ['-f', '1', '-l', '1']);
   assert.equal((metin.match(/Yeliz KAYAHAN/g) || []).length, 1);
   assert.match(metin, /Ercan MOLA/);
 });

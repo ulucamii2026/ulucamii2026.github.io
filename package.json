@@ -19,7 +19,7 @@
     "test:ogrenme": "node --test tests/ogrenme-ilerleme.test.mjs",
     "test:imza": "node scripts/ek9-imza-zinciri.mjs",
     "test:kutuphane": "py -3.14 scripts/kutuphane-erisim-testi.py",
-    "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run build && npm run denetim && npm run test:ek9 && npm run test:ihtida",
+    "dogrula": "npm run denetim:panel && npm run denetim:cms && npm run denetim:dinigun && npm run build && npm run denetim && npm run test:ek9 && npm run test:ihtida",
     "denetim:baglanti": "node scripts/dis-baglanti-denetim.mjs",
     "onizle": "astro preview --port 4399",
     "test:anasayfa": "py -3.14 scripts/anasayfa-testi.py",
@@ -40,7 +40,8 @@
     "design:media:manifest": "node scripts/design-media-manifest.mjs",
     "dogrula:codex": "node scripts/dogrula-codex.mjs",
     "oto-kaydet": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/oto-kaydet.ps1",
-    "ihtida:gas-derle": "node scripts/ihtida-gas-derle.mjs"
+    "ihtida:gas-derle": "node scripts/ihtida-gas-derle.mjs",
+    "denetim:dinigun": "node scripts/dini-gun-kapisi.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",

@@ -1,0 +1,28 @@
+{
+  "kaynak": "T.C. Diyanet İşleri Başkanlığı — Vakit Hesaplama, resmî «Dinî Günler Listesi»",
+  "kaynakAdresleri": {
+    "2026": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=153",
+    "2027": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=154"
+  },
+  "cekilme": "2026-09-12",
+  "not": "Tarihler Diyanet'in yayımladığı tablodan birebir alınmıştır; hesapla türetilmemiştir. Hicrî karşılıklar tablodaki değerlerdir. Bu dosya elle güncellenirken kaynak tablo yeniden açılır — takvim hesabı yapılmaz (bkz. CLAUDE.md: namaz vakitleri ve dinî günlerde yalnız Diyanet).",
+  "gunler": [
+    { "tarih": "2026-12-10", "gun": "Perşembe", "hicri": "1 Receb 1448", "ad": "Üç ayların başlangıcı" },
+    { "tarih": "2026-12-10", "gun": "Perşembe", "hicri": "1 Receb 1448", "ad": "Regaib Kandili" },
+    { "tarih": "2027-01-04", "gun": "Pazartesi", "hicri": "26 Receb 1448", "ad": "Mirac Kandili" },
+    { "tarih": "2027-01-22", "gun": "Cuma", "hicri": "14 Şaban 1448", "ad": "Berat Kandili" },
+    { "tarih": "2027-02-08", "gun": "Pazartesi", "hicri": "1 Ramazan 1448", "ad": "Ramazan başlangıcı" },
+    { "tarih": "2027-03-05", "gun": "Cuma", "hicri": "26 Ramazan 1448", "ad": "Kadir Gecesi" },
+    { "tarih": "2027-03-08", "gun": "Pazartesi", "hicri": "29 Ramazan 1448", "ad": "Arefe" },
+    { "tarih": "2027-03-09", "gun": "Salı", "hicri": "1 Şevval 1448", "ad": "Ramazan Bayramı (1. gün)" },
+    { "tarih": "2027-03-10", "gun": "Çarşamba", "hicri": "2 Şevval 1448", "ad": "Ramazan Bayramı (2. gün)" },
+    { "tarih": "2027-03-11", "gun": "Perşembe", "hicri": "3 Şevval 1448", "ad": "Ramazan Bayramı (3. gün)" },
+    { "tarih": "2027-05-15", "gun": "Cumartesi", "hicri": "9 Zilhicce 1448", "ad": "Arefe" },
+    { "tarih": "2027-05-16", "gun": "Pazar", "hicri": "10 Zilhicce 1448", "ad": "Kurban Bayramı (1. gün)" },
+    { "tarih": "2027-05-17", "gun": "Pazartesi", "hicri": "11 Zilhicce 1448", "ad": "Kurban Bayramı (2. gün)" },
+    { "tarih": "2027-05-18", "gun": "Salı", "hicri": "12 Zilhicce 1448", "ad": "Kurban Bayramı (3. gün)" },
+    { "tarih": "2027-05-19", "gun": "Çarşamba", "hicri": "13 Zilhicce 1448", "ad": "Kurban Bayramı (4. gün)" },
+    { "tarih": "2027-06-06", "gun": "Pazar", "hicri": "1 Muharrem 1449", "ad": "Hicrî yılbaşı" },
+    { "tarih": "2027-06-15", "gun": "Salı", "hicri": "10 Muharrem 1449", "ad": "Aşure günü" }
+  ]
+}
