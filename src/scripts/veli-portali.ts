@@ -639,6 +639,13 @@ export async function veliPortali(): Promise<void> {
       });
       const seciliId = d.seciliEzberId || 'fatiha';
       const seciliEzber = EZBER_LISTESI.find((e) => e.id === seciliId) || EZBER_LISTESI[0];
+      // Surelerin başındaki Besmele yukarıdaki Eûzü Besmele serlevhasında yer aldığı için
+      // aşağıdaki metin kutusunda mükerrer Besmele gösterilmez, doğrudan âyetle başlar
+      const arapcaMetinGoster = seciliEzber.tur === 'sure'
+        ? seciliEzber.arapca
+            .replace(/^بِسْمِ\s+اللَّهِ\s+الرَّحْمَٰنِ\s+الرَّحِيمِ(?:\s*﴿\s*١\s*﴾)?\s*/u, '')
+            .trim()
+        : seciliEzber.arapca;
 
       const seciliGrup: HarfGrup = d.seciliHarfGrup || 'hepsi';
       const harfler = seciliGrup === 'hepsi' ? ELIFBA_HARFLERI : ELIFBA_HARFLERI.filter((h) => h.grup === seciliGrup);
@@ -741,20 +748,25 @@ export async function veliPortali(): Promise<void> {
                 </div>
 
                 <div class="kesif-kutusu gunun-hadisi-kutu">
-                  <div class="kesif-etiket-satir">
-                    <span class="kesif-rozet hadis-rozet">${esc(m.gununHadisi)}</span>
-                    <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiDinle)}">
+                  <div class="kesif-etiket-satir hadis-baslik-satir">
+                    <span class="kesif-rozet hadis-rozet">✦ ${esc(m.gununHadisi)}</span>
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-ses-btn hadis-ana-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiDinle)}">
                       🔊 <span>${esc(m.hadisiDinle)}</span>
                     </button>
                   </div>
                   <div class="gunun-hadisi-govde">
-                    <button type="button" class="hadis-arapca hadis-arapca-btn" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
+                    <!-- ARAPÇA HADİS METNİ (ORTALI & PRO SES) -->
+                    <button type="button" class="hadis-arapca hadis-arapca-btn hadis-ortali" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
                       ${esc(gununHadisi.arapca)}
                     </button>
-                    <p class="hadis-meali">«${esc(gununHadisi.metin[dil] || gununHadisi.metin.tr)}»</p>
-                    <div class="hadis-kaynak-satir">
-                      <span class="hadis-kaynak">${esc(gununHadisi.kaynak)}</span>
-                      <span class="hadis-konu-etiket">${esc(gununHadisi.konu[dil] || gununHadisi.konu.tr)}</span>
+                    <!-- HADİS MEALİ (ORTALI & TIKLAYINCA PRO SES) -->
+                    <div class="hadis-meal-kutu hadis-ortali" data-eylem="hadisSesCal" data-hadis-tur="meal" role="button" tabindex="0" title="${esc(m.hadisMealiDinle)}">
+                      <p class="hadis-meali">«${esc(gununHadisi.metin[dil] || gununHadisi.metin.tr)}»</p>
+                    </div>
+                    <!-- KAYNAK VE KONU ROZETLERİ (ORTALI) -->
+                    <div class="hadis-kaynak-satir hadis-ortali-satir">
+                      <span class="hadis-kaynak">📚 ${esc(gununHadisi.kaynak)}</span>
+                      <span class="hadis-konu-etiket">🏷️ ${esc(gununHadisi.konu[dil] || gununHadisi.konu.tr)}</span>
                       <button type="button" class="hadis-meal-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="meal" title="${esc(m.hadisMealiDinle)}">
                         🗣️ <span>${esc(m.hadisMealiDinle)}</span>
                       </button>
@@ -813,9 +825,14 @@ export async function veliPortali(): Promise<void> {
                 </div>
 
                 ${seciliEzber.tur === 'sure' ? `
-                  <!-- ALTIN TEZYİNATLI BESMELE SERLEVHASI -->
-                  <div class="besmele-serlevha" aria-label="Bismillâhirrahmânirrahîm">
-                    <span class="besmele-hat-metin" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                  <!-- ALTIN TEZYİNATLI EÛZÜ BESMELE SERLEVHASI -->
+                  <div class="besmele-serlevha euzu-besmele-serlevha" aria-label="Eûzübillâhimineşşeytânirracîm Bismillâhirrahmânirrahîm">
+                    <div class="euzu-besmele-hat-kapsayici" dir="rtl" lang="ar">
+                      <span class="euzu-hat-metin">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</span>
+                      <span class="euzu-ayrac" aria-hidden="true">✦</span>
+                      <span class="besmele-hat-metin">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                    </div>
+                    <span class="euzu-besmele-latin">E’ûzü billâhi mineş-şeytânir-racîm • Bismillâhir-rahmânir-rahîm</span>
                   </div>
                 ` : ''}
 
@@ -832,10 +849,10 @@ export async function veliPortali(): Promise<void> {
                   </span>
                 </div>
 
-                <!-- ARAPÇA MUSHAF HATTINDA METİN -->
+                <!-- ARAPÇA MUSHAF HATTINDA METİN (HER ZAMAN ORTALI & BAŞTAKİ BESMELE AYIKLANMIŞ) -->
                 <div class="mushaf-metin-sarici ${d.ezberGizli ? 'ezber-metin-gizli' : ''}">
-                  <button type="button" class="ezber-arapca ezber-metin-btn mushaf-hat-metin" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
-                    ${esc(seciliEzber.arapca)}
+                  <button type="button" class="ezber-arapca ezber-metin-btn mushaf-hat-metin mushaf-ortali" dir="rtl" lang="ar" data-eylem="ezberSesOynatDur" title="${esc(m.metneDokunDinle)}" aria-label="${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}: ${esc(m.metneDokunDinle)}">
+                    ${esc(arapcaMetinGoster)}
                   </button>
                   ${d.ezberGizli ? `
                     <div class="ezber-gizli-overlay" data-eylem="ezberGizleToggle">
@@ -868,17 +885,18 @@ export async function veliPortali(): Promise<void> {
                     </div>
                     <p class="anlam-metin fr-metin">${esc(seciliEzber.anlam.fr)}</p>
                   </div>
-                ` : `
-                  <div class="ezber-anlam ezber-tr-anlam mushaf-bilgi-kutu">
-                    <div class="ezber-anlam-baslik-satir">
-                      <span class="ezber-etiket">🇹🇷 ${esc(m.turkceAnlam)}:</span>
-                      <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-tr-ses-btn" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" title="${esc(m.turkceSesliDinle)}">
-                        🔊 ${esc(m.turkceSesliDinle)}
-                      </button>
-                    </div>
-                    <p class="anlam-metin tr-metin">${esc(seciliEzber.anlam.tr)}</p>
+                ` : ''}
+
+                <!-- TÜRKÇE MEÂL (TIKLAYINCA PRO STÜDYO SESİ ÇALAR) -->
+                <div class="ezber-anlam ezber-tr-anlam mushaf-bilgi-kutu ezber-tiklanabilir-kutu" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" role="button" tabindex="0" title="${esc(m.turkceSesliDinle)}">
+                  <div class="ezber-anlam-baslik-satir">
+                    <span class="ezber-etiket">🇹🇷 ${esc(m.turkceAnlam)} <span class="dinle-ipucu">(🔊 ${esc(m.turkceSesliDinle)})</span>:</span>
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-tr-ses-btn" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" title="${esc(m.turkceSesliDinle)}">
+                      🔊 ${esc(m.turkceSesliDinle)}
+                    </button>
                   </div>
-                `}
+                  <p class="anlam-metin tr-metin">${esc(seciliEzber.anlam.tr)}</p>
+                </div>
 
                 <!-- SES OYNATICI VE KUMANDALAR -->
                 <div class="ezber-ses-kutusu">
@@ -1575,12 +1593,37 @@ export async function veliPortali(): Promise<void> {
       const gh = gununHadisiGetir(bugunISO());
       const tur = hedef.dataset.hadisTur || 'arapca';
       tumSesleriDurdur();
+      hedef.classList.add('oynuyor');
+      setTimeout(() => { hedef.classList.remove('oynuyor'); }, 1400);
+
       if (tur === 'arapca') {
-        metinSeslendir(gh.arapca, 'ar-SA');
+        const sesUrl = `/media/ses/hadisler/ar/${gh.id}.mp3`;
+        try {
+          const a = new Audio(sesUrl);
+          aktifAudio = a;
+          a.play().catch(() => {
+            metinSeslendir(gh.arapca, 'ar-SA');
+          });
+        } catch {
+          metinSeslendir(gh.arapca, 'ar-SA');
+        }
       } else {
+        const sesUrl = `/media/ses/hadisler/tr/${gh.id}.mp3`;
         const mealMetin = gh.metin[dil] || gh.metin.tr;
         const dilKodu = dil === 'fr' ? 'fr-FR' : dil === 'en' ? 'en-US' : 'tr-TR';
-        metinSeslendir(mealMetin, dilKodu);
+        if (dil === 'tr') {
+          try {
+            const a = new Audio(sesUrl);
+            aktifAudio = a;
+            a.play().catch(() => {
+              metinSeslendir(mealMetin, dilKodu);
+            });
+          } catch {
+            metinSeslendir(mealMetin, dilKodu);
+          }
+        } else {
+          metinSeslendir(mealMetin, dilKodu);
+        }
       }
       return;
     }
@@ -1902,9 +1945,18 @@ export async function veliPortali(): Promise<void> {
       const ezId = hedef.dataset.ezber || durum?.seciliEzberId || 'fatiha';
       const ezOgesi = EZBER_LISTESI.find((x) => x.id === ezId) || EZBER_LISTESI[0];
       hedef.classList.add('oynuyor');
-      setTimeout(() => { hedef.classList.remove('oynuyor'); }, 1200);
+      setTimeout(() => { hedef.classList.remove('oynuyor'); }, 1400);
       tumSesleriDurdur();
-      metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
+      const sesUrl = `/media/ses/mealler/tr/${ezOgesi.id}.mp3`;
+      try {
+        const a = new Audio(sesUrl);
+        aktifAudio = a;
+        a.play().catch(() => {
+          metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
+        });
+      } catch {
+        metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
+      }
       return;
     }
     if (hedef.dataset.eylem === 'quizSecim' && durum && !durum.quizCevaplandi) {
