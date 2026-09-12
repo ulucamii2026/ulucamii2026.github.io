@@ -164,6 +164,15 @@ function initGundemVitrini(kok: HTMLElement): void {
     syncThumbsScroll(index);
 
     const img = slides[index]?.querySelector<HTMLImageElement>('img');
+    // Fade slaytları aynı görüş alanındadır: loading=lazy tek başına indirmeyi ertelemez.
+    // Büyük afiş ve bulanık arka plan yalnız slayt seçilince etkinleşir.
+    if (img?.dataset.afisSrc) {
+      img.loading = 'eager';
+      img.fetchPriority = 'high';
+      img.src = img.dataset.afisSrc;
+      delete img.dataset.afisSrc;
+      img.closest<HTMLElement>('.gv-gorsel-kutu')?.style.setProperty('--gv-afis-bg', `url(${JSON.stringify(img.src)})`);
+    }
     if (img && img.loading !== 'eager') img.loading = 'eager';
   }
 

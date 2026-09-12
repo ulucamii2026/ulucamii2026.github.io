@@ -540,3 +540,15 @@ test('JavaScript devre dışıyken ilk slayt ve asıl href okunabilir kalır', a
 
   await context.close();
 });
+
+test('Görünmeyen büyük afiş indirilmez; seçildiğinde resim ve arka plan birlikte yüklenir',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ const requests=[];page.on('request',r=>requests.push(new URL(r.url()).pathname));
+ await page.goto('/tr/',{waitUntil:'networkidle'});
+ const slides=page.locator('.gv-sahne__slide');const last=slides.last();const img=last.locator('img.gv-afis');
+ const url=await img.getAttribute('data-afis-src');expect(url).toBeTruthy();expect(requests).not.toContain(new URL(url,'https://ulucamii.be').pathname);
+ await page.locator('.gv-thumb').last().click();await expect(img).not.toHaveAttribute('data-afis-src');
+ await expect(img).toHaveJSProperty('complete',true);expect(await img.evaluate(e=>e.naturalWidth)).toBeGreaterThan(1);
+ expect(requests).toContain(new URL(url,'https://ulucamii.be').pathname);
+ expect(await last.locator('.gv-gorsel-kutu').evaluate(e=>e.style.getPropertyValue('--gv-afis-bg'))).toContain(url);
+});

@@ -129,11 +129,12 @@ const kareler = await Promise.all(hamKareler.map(async (k) => {
                   <a href={k.href} class="gv-detay-btn">{k.tur === 'duyuru' ? m.detay : m.incele}</a>
                 </div>
               </div>
-              <div class="gv-gorsel-kutu" style={k.gorsel ? `--gv-afis-bg: url('${k.gorsel}')` : undefined}>
+              <div class="gv-gorsel-kutu" style={idx === 0 && k.gorsel ? `--gv-afis-bg: url('${k.gorsel}')` : undefined}>
                 {k.gorsel ? (
                   <div class="gv-gorsel-wrapper">
                     <img
-                      src={k.gorsel}
+                      src={idx === 0 ? k.gorsel : 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='}
+                      data-afis-src={idx === 0 ? undefined : k.gorsel}
                       alt={k.baslik}
                       class="gv-afis"
                       width={k.genislik}
