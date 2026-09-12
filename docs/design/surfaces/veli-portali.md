@@ -1,5 +1,11 @@
 # Veli portalı yüzey notu
 
+12 Eylül 2026 eklemesi: haftalık bülten veli modunda tek öğrencinin okunabilir
+belgesi olarak görünür. Hoca ekranında mevcut Operate düzenini sürdüren
+**Bülten · İdare** sekmesi; öğrenci/hafta, taslak, önizleme, yayın ve okuma takibi
+sırasını izler. İmza boşlukları yalnız çıktıda yer alır. Mobil alan etiketleri
+en az 17 px, düğmeler en az 48 px; tehlikeli işlem ayrı katlanır alandadır.
+
 **Mod:** Operate  
 **Hedef:** Veli telefonundan bu haftanın dersini, ödevini, duyurusunu ve gerekli
 malzemeyi birkaç saniyede bulsun; iletişim için portalı kullanmaya yönlensin.

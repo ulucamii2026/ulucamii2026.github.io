@@ -5,6 +5,7 @@ import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
  * firebase/firestore.rules ile sınırlı (veli yalnız aileler/{e-posta}.ogrenciler listesindeki öğrencileri okur).
  */
 import type { Dil } from '../i18n/ui';
+import { veliBulteni } from './bulten-gorunumu';
 import { veliMetni, yerlestir, type VeliMetin } from '../i18n/veli';
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
 import { portalTercihleri } from '../lib/portal-tercihleri';
@@ -489,15 +490,19 @@ export async function veliPortali(): Promise<void> {
   const kuranSirasi = veri.gunler.flatMap((g) => g.dersler.filter((x) => x.kod === 'kuran').map((x) => ({ tarih: g.tarih, konu: x.konu }))).filter((x, i, d) => d.findIndex((y) => y.konu === x.konu) === i); // her Kur'an konusu bir adım (ilk işlendiği gün)
 
   let atolyeTemizle: (() => void) | undefined;
+  let bultenTemizle: (() => void) | undefined;
   const panoCiz = () => {
     if (!durum) return;
     atolyeTemizle?.();
+    bultenTemizle?.();
     tumSesleriDurdur();
     const d = durum; const bugun = bugunISO();
     const pzt = gunEkle(bugun, -((new Date(bugun + 'T12:00:00Z').getUTCDay() + 6) % 7)); const paz = gunEkle(pzt, 6);
     const o = d.ogrenciler[d.secili]; const c = o ? d.cocuk[o.ref] : null;
     const haftaGunleri = veri.gunler.filter((g) => g.tarih >= pzt && g.tarih <= paz);
     const atolyeBagla = () => {
+      const bultenRoot=kok.querySelector<HTMLElement>('[data-veli-bulten]');
+      if(bultenRoot&&o)bultenTemizle=veliBulteni(bultenRoot,{db,ref:o.ref,eposta:d.eposta,ad:`${o.ad} ${o.soyad}`,dil});
       const alan = kok.querySelector<HTMLElement>('[data-ogrenme]');
       if (!alan || !o) return;
       atolyeTemizle = ogrenmeAtolyesi(alan, {
@@ -1332,7 +1337,7 @@ export async function veliPortali(): Promise<void> {
         ${d.ogrenciler.map((x, i) => `<button type="button" role="tab" id="cocuk-sekme-${i}" class="cocuk-dugme" aria-selected="${i === d.secili}" aria-controls="cocuk-panel" tabindex="${i === d.secili ? 0 : -1}" data-sec="${i}"><span class="sekme-avatar ${monogramSinifi(x.ref)}" aria-hidden="true">${esc(monogramHarfleri(x.ad, x.soyad))}</span>${esc(x.ad)} ${esc(x.soyad)}</button>`).join('')}
       </div>` : ''}
       <div class="bolumler"${d.ogrenciler.length > 1 ? ` role="tabpanel" id="cocuk-panel" aria-labelledby="cocuk-sekme-${d.secili}"` : ''}>
-        ${o ? '<section class="ogrenme-atolyesi genis" data-ogrenme></section>' : ''}
+        ${o ? '<section class="haftalik-bulten genis" data-veli-bulten></section><section class="ogrenme-atolyesi genis" data-ogrenme></section>' : ''}
         ${haftalikKarneKarti()}
         ${kitapKarti()}
         <section class="bolum r-iznik oncelik genis">
@@ -1906,7 +1911,7 @@ export async function veliPortali(): Promise<void> {
       }
       return;
     }
-    if (hedef.dataset.eylem === 'cikis') { atolyeTemizle?.(); tumSesleriDurdur(); await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
+    if (hedef.dataset.eylem === 'cikis') { atolyeTemizle?.(); bultenTemizle?.(); tumSesleriDurdur(); await auth.signOut(a); portalTercihleri.removeItem('veliEposta'); durum = null; duzenlenenBildirim = null; girisEkrani(); return; }
     if (hedef.dataset.eylem === 'bildirVazgec') { duzenlenenBildirim = null; panoCiz(); return; }
     if (hedef.dataset.eylem === 'atla' && a.currentUser) { await panoyaGec(a.currentUser); return; }
     if (hedef.dataset.eylem === 'sifremiUnuttum') {
@@ -2132,6 +2137,6 @@ export async function veliPortali(): Promise<void> {
 
   auth.onAuthStateChanged(a, (user) => {
     if (user) { if (!durum) panoyaGec(user); }
-    else { atolyeTemizle?.(); tumSesleriDurdur(); durum = null; girisEkrani(); }
+    else { atolyeTemizle?.(); bultenTemizle?.(); tumSesleriDurdur(); durum = null; girisEkrani(); }
   });
 }

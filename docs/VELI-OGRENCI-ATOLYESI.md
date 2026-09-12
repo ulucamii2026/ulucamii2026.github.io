@@ -115,8 +115,9 @@ kapsamında değildir. Hiçbir commit/push/yayın yapılmadı.
 - Eski yerel geçmiş otomatik yüklenmez. Çanta ve çalışma biçimi yereldir.
   Temizleme yerel sıra dahil bu cihazdaki kaydı siler; hesap verisi yeniden
   eşleştirmede gelir. Hesap kayıtlarının silme talepleri idareye iletilir.
-  Öğrenci/veli hesabı silinirken bu alt koleksiyon da idarenin veri silme
-  listesine dahil edilmelidir; üst belgeyi silmek alt koleksiyonu silmez.
+  Hoca ekranındaki **Bülten · İdare** bölümü bu alt koleksiyonu da öğrenci
+  dökümüne ve kontrollü silmeye dahil eder. Giriş hesabı ve asıl kayıt defteri
+  ayrı işlemdir. Ayrıntı: [Bülten ve idare](HAFTALIK-BULTEN-VE-IDARE.md).
 - Hoca öğrenci kartındaki evde çalışma bölümü son bildirimi gösterir.
   Boş kayıt, öğrencinin evde çalışmadığı anlamına gelmediği açıklaması taşır.
   Yanlış cevap açıklamadan sonra yeniden denenebilir; konu hazır yardım taslağı

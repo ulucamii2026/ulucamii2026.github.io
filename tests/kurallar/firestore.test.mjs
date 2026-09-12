@@ -1,6 +1,9 @@
 import { before, after, beforeEach, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdirSync } from 'node:fs';
+import { build } from 'esbuild';
+import { pathToFileURL } from 'node:url';
+import { resolve } from 'node:path';
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
 import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, setLogLevel, Timestamp, serverTimestamp } from 'firebase/firestore';
 
@@ -9,12 +12,17 @@ assert.equal(process.env.FIRESTORE_EMULATOR_HOST, '127.0.0.1:8185', 'Yalnız tes
 assert.equal(process.env.GCLOUD_PROJECT, 'demo-ulucamii', 'Yalnız demo projesi kullanılabilir.');
 setLogLevel('silent'); // Beklenen permission-denied denemeleri günlükleri şişirmesin.
 let env;
+let portal;
 const parent = () => env.authenticatedContext('veli-a', { email: 'veli-a@example.test' }).firestore();
 const teacher = () => env.authenticatedContext('hoca-a', { email: 'hoca@example.test' }).firestore();
 const read = (db, path) => getDoc(doc(db, path));
 const message = (extra = {}) => ({ eposta: 'veli-a@example.test', ref: 'ogrenci-a', tur: 'soru', metin: 'Deneme mesajı', okundu: false, ...extra });
 
 before(async () => {
+  mkdirSync('node_modules/.cache', {recursive:true});
+  const outfile=resolve('node_modules/.cache/portal-idare-test.mjs');
+  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
+  portal=await import(pathToFileURL(outfile).href);
   env = await initializeTestEnvironment({ projectId: 'demo-ulucamii', firestore: {
     host: '127.0.0.1', port: 8185,
     rules: readFileSync(new URL('../../firebase/firestore.rules', import.meta.url), 'utf8'),
@@ -129,6 +137,97 @@ test('Tanımlanmamış koleksiyonlar hoca dahil herkese kapalıdır', async () =
 
 const evKayit=(extra={})=>{const d=new Date();d.setUTCHours(12,0,0,0);return {son:Timestamp.fromDate(d),sonraki:Timestamp.fromMillis(d.getTime()+86400000),basamak:1,cevap:'rahat',guncelleme:serverTimestamp(),...extra};};
 const evYol='evCalismalari/ogrenci-a/etkinlikler/hayat-su';
+const bYol='bultenler/ogrenci-a/haftalar/2026-09-12';
+const bulten=(extra={})=>({tarih:'2026-09-12',hafta:2,dil:'tr',metin:{ders:'Örnek ders',odev:'Birlikte tekrar',getir:'Defter',not:''},yayin:true,surum:1,guncelleme:serverTimestamp(),...extra});
+
+test('Bülteni yalnız hoca yazar; veli yalnız kendi yayımlanmış bültenlerini sorgular',async()=>{
+ await assertSucceeds(setDoc(doc(teacher(),bYol),bulten()));
+ await assertFails(setDoc(doc(parent(),bYol),bulten()));
+ await assertSucceeds(read(parent(),bYol));
+ await assertFails(read(env.authenticatedContext('veli-b',{email:'veli-b@example.test'}).firestore(),bYol));
+ await assertSucceeds(getDocs(query(collection(parent(),'bultenler/ogrenci-a/haftalar'),where('yayin','==',true))));
+ await assertFails(getDocs(collection(parent(),'bultenler/ogrenci-a/haftalar')));
+ await assertSucceeds(setDoc(doc(teacher(),bYol),bulten({surum:2,yayin:false})));
+ await assertFails(read(parent(),bYol));
+});
+
+test('Okudum bildirimi veliye, yayımlanmış sürüme ve sunucu tarihine bağlıdır',async()=>{
+ await setDoc(doc(teacher(),bYol),bulten());
+ const r=doc(parent(),bYol+'/okumalar/veli-a@example.test');
+ await assertSucceeds(setDoc(r,{surum:1,zaman:serverTimestamp()}));
+ await assertFails(setDoc(r,{surum:2,zaman:serverTimestamp()}));
+ await assertFails(setDoc(r,{surum:1,zaman:Timestamp.fromMillis(0)}));
+ await assertFails(setDoc(r,{surum:1,zaman:serverTimestamp(),imza:'sahte'}));
+ await assertFails(setDoc(doc(parent(),bYol+'/okumalar/baska@example.test'),{surum:1,zaman:serverTimestamp()}));
+ await assertSucceeds(read(teacher(),bYol+'/okumalar/veli-a@example.test'));
+ await assertFails(getDocs(collection(parent(),bYol+'/okumalar')));
+ await setDoc(doc(teacher(),bYol),bulten({surum:2}));
+ await assertFails(setDoc(r,{surum:1,zaman:serverTimestamp()}));
+ await assertSucceeds(setDoc(r,{surum:2,zaman:serverTimestamp()}));
+ await setDoc(doc(teacher(),bYol),bulten({surum:3,yayin:false}));
+ await assertFails(setDoc(r,{surum:3,zaman:serverTimestamp()}));
+});
+
+test('Bülten yanlış sürüm, ek alan, uzun metin ve istemci saatiyle kaydedilemez',async()=>{
+ for(const extra of [{surum:5},{imza:'x'},{guncelleme:Timestamp.fromMillis(0)},{metin:{ders:'x'.repeat(2201),odev:'',getir:'',not:''}}])await assertFails(setDoc(doc(teacher(),bYol),bulten(extra)));
+ await setDoc(doc(teacher(),bYol),bulten());
+ await assertFails(setDoc(doc(teacher(),bYol),bulten()));
+});
+
+test('İdari kilit sırasında yeni öğrenci kayıtları yazılamaz; diğer öğrenci etkilenmez',async()=>{
+ await assertFails(setDoc(doc(parent(),'portalSilme/ogrenci-a'),{islem:'test',zaman:serverTimestamp()}));
+ await setDoc(doc(teacher(),'portalSilme/ogrenci-a'),{islem:'test',zaman:serverTimestamp()});
+ await assertFails(setDoc(doc(parent(),evYol),evKayit()));
+ await assertFails(setDoc(doc(parent(),'bildirimler/yeni'),message()));
+ await assertFails(setDoc(doc(teacher(),bYol),bulten()));
+ await assertFails(setDoc(doc(teacher(),'yoklama/yeni'),{ref:'ogrenci-a'}));
+ await assertSucceeds(setDoc(doc(teacher(),'yoklama/yeni-b'),{ref:'ogrenci-b'}));
+ await assertFails(deleteDoc(doc(parent(),'portalSilme/ogrenci-a')));
+});
+
+test('Gerçek işlem: bülten sürüm çakışması metni ezmez ve okuma eski sürüme kaydedilmez',async()=>{
+ const depo=portal.bultenDeposu(teacher(),'ogrenci-a');
+ const veri={id:'2026-09-12',...bulten()};delete veri.guncelleme;delete veri.surum;
+ const b=await depo.kaydet(veri,0);assert.equal(b.surum,1);
+ await assert.rejects(()=>depo.kaydet({...veri,metin:{...veri.metin,ders:'Eski ekran'}},0),/başka bir ekranda/);
+ const veli=portal.bultenDeposu(parent(),'ogrenci-a');await veli.okudum(b,'veli-a@example.test');
+ await depo.kaydet(veri,1);await assert.rejects(()=>veli.okudum(b,'veli-a@example.test'),/BULTEN_DEGISTI/);
+ assert.equal((await read(teacher(),bYol)).data().metin.ders,'Örnek ders');
+});
+
+test('Gerçek silme: bülten alt kayıtları dahil yalnız seçili öğrenci silinir; ortak veli ve kardeş korunur',async()=>{
+ await updateDoc(doc(teacher(),'aileler/veli-a@example.test'),{ogrenciler:['ogrenci-a','ogrenci-b'],kitapSecim:{'ogrenci-a':{secim:'var'},'ogrenci-b':{secim:'satin'}}});
+ await setDoc(doc(parent(),evYol),evKayit());await setDoc(doc(teacher(),bYol),bulten());
+ await setDoc(doc(parent(),bYol+'/okumalar/veli-a@example.test'),{surum:1,zaman:serverTimestamp()});
+ const once=await portal.portalEnvanteri(teacher(),'ogrenci-a');assert.equal(once.sayilar['Bülten okuma bildirimleri'],1);
+ assert.equal(await portal.portalKayitlariniSil(teacher(),once,'tum'),once.belgeler.length);
+ for(const p of [evYol,bYol,bYol+'/okumalar/veli-a@example.test','ogrenciler/ogrenci-a','ilerleme/ogrenci-a','yoklama/a','bildirimler/kendi'])assert.equal((await read(teacher(),p)).exists(),false,p);
+ assert.equal((await read(teacher(),'ogrenciler/ogrenci-b')).exists(),true);
+ const aile=(await read(teacher(),'aileler/veli-a@example.test')).data();assert.deepEqual(aile.ogrenciler,['ogrenci-b']);assert.deepEqual(aile.kitapSecim,{'ogrenci-b':{secim:'satin'}});
+ assert.equal((await read(teacher(),'aileler/veli-b@example.test')).exists(),true);
+ assert.equal((await read(teacher(),'portalSilme/ogrenci-a')).exists(),false);
+});
+
+test('Gerçek silme: değişmiş dökümde hiçbir kayıt silinmez; yalnız ev çalışması temizliği profili korur',async()=>{
+ await setDoc(doc(parent(),evYol),evKayit());const once=await portal.portalEnvanteri(teacher(),'ogrenci-a');
+ await setDoc(doc(teacher(),'notlar/sonradan'),{ref:'ogrenci-a',metin:'Yeni kayıt'});
+ await assert.rejects(()=>portal.portalKayitlariniSil(teacher(),once,'tum'),/incelemeden sonra değişti/);
+ assert.equal((await read(teacher(),'ogrenciler/ogrenci-a')).exists(),true);
+ assert.equal((await read(teacher(),'portalSilme/ogrenci-a')).exists(),false);
+ const yeni=await portal.portalEnvanteri(teacher(),'ogrenci-a');assert.equal(await portal.portalKayitlariniSil(teacher(),yeni,'ev'),1);
+ assert.equal((await read(teacher(),evYol)).exists(),false);assert.equal((await read(teacher(),'notlar/sonradan')).exists(),true);
+});
+
+test('Veli bağı tek işlemde eklenir/kalkar; mevcut aile dili, kardeş ve kitap tercihi korunur',async()=>{
+ await updateDoc(doc(teacher(),'aileler/veli-b@example.test'),{kitapSecim:{'ogrenci-b':{secim:'var'}}});
+ const veliler=await portal.portalVeliBagi(teacher(),'ogrenci-a','veli-b@example.test',true);assert.deepEqual(veliler,['veli-b@example.test']);
+ let a=(await read(teacher(),'aileler/veli-b@example.test')).data();assert.equal(a.dil,'fr');assert.deepEqual(a.ogrenciler,['ogrenci-b','ogrenci-a']);
+ await portal.portalVeliBagi(teacher(),'ogrenci-a','veli-b@example.test',false);
+ a=(await read(teacher(),'aileler/veli-b@example.test')).data();assert.deepEqual(a.ogrenciler,['ogrenci-b']);assert.deepEqual(a.kitapSecim,{'ogrenci-b':{secim:'var'}});
+ await setDoc(doc(teacher(),'portalSilme/ogrenci-a'),{islem:'kilit',zaman:serverTimestamp()});
+ await assert.rejects(()=>portal.portalVeliBagi(teacher(),'ogrenci-a','veli-b@example.test',true),/idari işlemi sürüyor/);
+ assert.deepEqual((await read(teacher(),'aileler/veli-b@example.test')).data().ogrenciler,['ogrenci-b']);
+});
 test('Ev çalışması yalnız bağlı aileye ve hocaya görünür; anonim, yabancı aile ve koleksiyon grubu kapalı',async()=>{
  await assertSucceeds(setDoc(doc(parent(),evYol),evKayit()));
  await assertSucceeds(read(teacher(),evYol));

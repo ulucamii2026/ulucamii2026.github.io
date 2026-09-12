@@ -1,6 +1,8 @@
 import { ETKINLIKLER } from '../lib/ogrenme-icerigi';
 import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
 import type { Tekrar } from '../lib/ogrenme-ilerleme';
+import { hocaBulteni } from './hoca-bulten';
+import { portalVeliBagi } from '../lib/portal-idare';
 /**
  * Hoca ekranı tarayıcı uygulaması (6 Eyl 2026) — yalnız Türkçe. Firebase Auth + Firestore (lite), sunucu yok.
  * Yetki: hocalar/{uid} belgesi (firebase/firestore.rules → hoca()). Bu ekran veli portalının (veli-portali.ts) veri
@@ -139,6 +141,7 @@ export async function hocaEkrani(): Promise<void> {
     evCalismasi?:Record<string,Tekrar>|null; secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
   };
   let S: Durum | null = null;
+  let bultenTemizle: (()=>void)|undefined;
   let duzenlenenDuyuru: string | null = null; // hoca bir duyuruyu düzenliyorsa id'si (yeni duyuru formu düzenleme kipine geçer)
   const col = (ad: string) => fs.collection(db, ad);
   const kayitlar = async (ad: string, ...kosullar: ReturnType<typeof fs.where>[]) => (await fs.getDocs(kosullar.length ? fs.query(col(ad), ...kosullar) : col(ad))).docs.map((x) => ({ id: x.id, ...x.data() } as Kayit));
@@ -183,9 +186,10 @@ export async function hocaEkrani(): Promise<void> {
   const ogrAdi = (ref: string) => { const o = S?.ogrenciler.find((x) => x.ref === ref); return o ? `${o.ad} ${o.soyad}` : ref; };
 
   /* ---------------------------------------------------------------- çizim */
-  const SEKMELER: Record<string, string> = { yoklama: 'Yoklama', ogrenci: 'Öğrenciler', odev: 'Ezber · Ödev', duyuru: 'Duyurular', bildirim: 'Veli bildirimleri', aile: 'Aileler · Davet', hesap: 'Hesap' };
+  const SEKMELER: Record<string, string> = { yoklama: 'Yoklama', ogrenci: 'Öğrenciler', odev: 'Ezber · Ödev', bulten: 'Bülten · İdare', duyuru: 'Duyurular', bildirim: 'Veli bildirimleri', aile: 'Aileler · Davet', hesap: 'Hesap' };
   const ciz = () => {
     if (!S) return;
+    bultenTemizle?.();
     const aktif = S.ogrenciler.filter((o) => o.durum !== 'pasif');
     let govde = '';
     if (S.sekme === 'yoklama') {
@@ -377,6 +381,8 @@ export async function hocaEkrani(): Promise<void> {
         <h3>Kayıt defteri</h3>
         <p class="kucuk">Online kayıt defterindeki güncel öğrencileri (ad, soyad, veli e-postası, dil) portala aktarır; başka veri aktarılmaz. Var olan kayıtlar korunur.</p>
         <div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="iceAktar">Kayıt defterinden yenile</button></div></section>`;
+    } else if (S.sekme === 'bulten') {
+      govde = '<section class="haftalik-bulten" data-hoca-bulten></section>';
     } else if (S.sekme === 'hesap') {
       govde = `<section class="bolum"><h2>${simge('ayar')}Hesap</h2><p>${esc(S.ad)} · <span class="kucuk">${esc(a.currentUser?.email || '')}</span></p>
         <form data-form="sifreDegistir" style="max-width:28rem"><label>Yeni şifre<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label><p data-mesaj hidden class="not"></p>
@@ -390,6 +396,8 @@ export async function hocaEkrani(): Promise<void> {
       </div>
       <div class="sekmeler" role="tablist" aria-label="Bölümler">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span></button>`).join('')}</div>
       <div id="hoca-panel" role="tabpanel" aria-labelledby="hoca-tab-${S.sekme}">${govde}</div>`;
+    const bultenRoot=kok.querySelector<HTMLElement>('[data-hoca-bulten]');
+    if(bultenRoot)bultenTemizle=hocaBulteni(bultenRoot,{db,ogrenciler:S.ogrenciler,gunler:veri.gunler,hafta:S.hafta,silindi:ref=>{if(S){S.ogrenciler=S.ogrenciler.filter(o=>o.ref!==ref);if(S.secili===ref)S.secili='';}}});
   };
 
   /* ---------------------------------------------------------------- olaylar */
@@ -399,14 +407,14 @@ export async function hocaEkrani(): Promise<void> {
     const h = await fs.getDoc(fs.doc(db, 'hocalar', kb.user.uid)).catch(() => null);
     if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(kb.user);
   };
-  const sekmeyeGec = async (ad: string) => { if (!S) return; S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); };
+  const sekmeyeGec = async (ad: string) => { if (!S) return; bultenTemizle?.(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); };
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
   kok.addEventListener('click', async (ev) => {
     const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk]');
     if (!el) return;
     try {
-      if (el.dataset.eylem === 'cikis') { await auth.signOut(a); S = null; girisEkrani(); return; }
+      if (el.dataset.eylem === 'cikis') { bultenTemizle?.(); await auth.signOut(a); S = null; girisEkrani(); return; }
       if (el.dataset.eylem === 'atla' && a.currentUser) { await yukle(a.currentUser); return; }
       if (el.dataset.eylem === 'sifremiUnuttum') {
         const form = el.closest('form') as HTMLFormElement; const ep = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();
@@ -509,9 +517,7 @@ export async function hocaEkrani(): Promise<void> {
         ustMesaj(`Davet gönderildi: ${ep} (${DIL_ADI[dil] || dil}).`, 'basari'); return;
       }
       if (el.dataset.veliSil) { const ep = el.dataset.veliSil; const o = S.ogrenciler.find((x) => x.ref === S!.secili); if (!o || !confirm(`${ep} bu öğrenciden kaldırılsın mı?`)) return;
-        await fs.updateDoc(fs.doc(db, 'ogrenciler', o.ref), { veliler: fs.arrayRemove(ep) });
-        await fs.setDoc(fs.doc(db, 'aileler', ep), { ogrenciler: fs.arrayRemove(o.ref) }, { merge: true });
-        o.veliler = (o.veliler || []).filter((x) => x !== ep); ciz(); return; }
+        o.veliler = await portalVeliBagi(db,o.ref,ep,false); ciz(); return; }
       if (el.dataset.eylem === 'iceAktar') { (el as HTMLButtonElement).disabled = true; ustMesaj('Kayıt defteri okunuyor…'); await iceAktar(); (el as HTMLButtonElement).disabled = false; return; }
     } catch (e) { ustMesaj(hata(e), 'hata'); }
   });
@@ -560,9 +566,7 @@ export async function hocaEkrani(): Promise<void> {
         case 'ogrenciAyar': { if (!S) break; const o = S.ogrenciler.find((x) => x.ref === S!.secili); if (!o) break;
           await fs.updateDoc(fs.doc(db, 'ogrenciler', o.ref), { durum: al('durum'), grup: al('grup') }); o.durum = al('durum'); o.grup = al('grup'); mesaj(form, 'Kaydedildi.', 'basari'); break; }
         case 'veliEkle': { if (!S) break; const o = S.ogrenciler.find((x) => x.ref === S!.secili); const ep = al('eposta').toLowerCase(); if (!o || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)) { mesaj(form, 'Geçerli bir e-posta yazın.', 'hata'); break; }
-          await fs.updateDoc(fs.doc(db, 'ogrenciler', o.ref), { veliler: fs.arrayUnion(ep) });
-          await fs.setDoc(fs.doc(db, 'aileler', ep), { ogrenciler: fs.arrayUnion(o.ref), dil: o.dil || 'tr', guncelleme: new Date().toISOString() }, { merge: true });
-          o.veliler = [...new Set([...(o.veliler || []), ep])]; ciz(); ustMesaj(`${ep} eklendi. «Aileler · Davet» sekmesinden davet gönderebilirsiniz.`, 'basari'); break; }
+          o.veliler = await portalVeliBagi(db,o.ref,ep,true); ciz(); ustMesaj(`${ep} eklendi. «Aileler · Davet» sekmesinden davet gönderebilirsiniz.`, 'basari'); break; }
         case 'ilerleme': { if (!S) break; const ref = S.secili; const ezber: Record<string, string> = {}; const alanlar: Record<string, number> = {};
           for (const [k, v] of fd.entries()) { const val = String(v); if (k.startsWith('ezber:') && val) ezber[k.slice(6)] = val; if (k.startsWith('alan:') && Number(val) > 0) alanlar[k.slice(5)] = Number(val); }
           const kayit: Ilerleme & { kaydeden: string } = { kuranAdim: Number(al('kuranAdim')), ezber, alanlar, hocaNotu: al('hocaNotu'), rozet: al('rozet'), guncelleme: bugunISO(), kaydeden: S.uid };
@@ -629,5 +633,5 @@ export async function hocaEkrani(): Promise<void> {
     if (kayitli) { try { await bagIleGir(kayitli); return; } catch (e) { girisEkrani(); mesaj(kok.querySelector('form[data-form=bag]'), hata(e), 'hata'); return; } }
     bagTamamlaEkrani(); return;
   }
-  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; }); } else { S = null; girisEkrani(); } });
+  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; }); } else { bultenTemizle?.(); S = null; girisEkrani(); } });
 }

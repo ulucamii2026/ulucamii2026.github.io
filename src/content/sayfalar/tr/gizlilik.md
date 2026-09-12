@@ -71,6 +71,8 @@ Derneğe üye olduğunuzda hakkınızda bir üye kaydı tutulur. Bu kayıt **der
 
 ## Veli Portalı (Kur’an Kursu) ve İleride Planlanan Üye Portalı
 
+**Haftalık bülten:** Hocanın hazırladığı haftalık ders, evde tekrar, malzeme ve aileye not bilgileri öğrencinin portal kaydında saklanır. Yayımlanan bülteni yalnız bağlı veliler ve hocalar görür. “Okudum” düğmesi, velinin hesabı altında bülten sürümünü ve sunucu zamanını kaydeder; ıslak imza görüntüsü alınmaz. Her veli kendi okuma kaydını, hoca ilgili velilerin bildirimlerini görür. Aşağıdaki portal saklama süreleri bu kayıtlara da uygulanır. İdare, talep üzerine öğrenciye ait bülten ve okuma kayıtlarını diğer portal kayıtlarıyla birlikte inceleyip silebilir.
+
 Kur’an kursu **veli portalı** 6 Eylül 2026’dan itibaren canlıdır: [/tr/veli-portali/](/tr/veli-portali/). Üye portalı henüz açılmamıştır; aşağıdaki esaslar her ikisi için geçerlidir.
 
 - **Öğrenme atölyesi (12 Eylül 2026):** Yeni ev çalışması öz değerlendirmeleri, etkinliğin kimliği, son çalışma tarihi, önerilen tekrar tarihi ve destek ihtiyacıyla hesabınızda saklanır. Her etkinlik için yalnız son kayıt tutulur (öğrenci başına en fazla 65 kayıt). Yalnız öğrencinin yetkili velileri ve hocası görebilir; bu kayıtlar öğretmen notu değildir. Çanta işaretleri ve çalışma biçimi cihazda kalır. Bağlantı kesilirse kaydedilebilen çalışmalar bu tarayıcıda bekler; yeniden bağlantıda veya eşleştirme düğmesiyle gönderilir. Önceden yalnız cihazda tutulan geçmiş kendiliğinden yüklenmez. Yerel defteri temizlemek hesaptaki kayıtları silmez; silme talebi için info@ulucamii.be adresine ulaşabilirsiniz. Bu kayıtlara da aşağıdaki portal saklama süreleri uygulanır.

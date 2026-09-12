@@ -13,35 +13,45 @@ export const signOut = async () => {callback?.(null);};
 `;
 const firestore = `
 export const getFirestore = () => ({});
-export const doc = (_db, ...p) => ({ col:p.slice(0,-1).join("/"), id:p.at(-1) });
+export const doc = (_db, ...p) => {const parts=p.flatMap(x=>x.split('/'));return {col:parts.slice(0,-1).join('/'),id:parts.at(-1)};};
 export const collection = (_db, ...p) => ({ col:p.join("/") });
-export const where = (field, op, value) => ({ field, value });
+export const where = (field, op, value) => ({ field, op, value });
 export const query = (ref, ...filters) => ({ ...ref, filters });
-export const updateDoc = async () => {};
 export const getDoc = async ref => {
- const data = ref.col === 'hocalar' ? {ad:'Örnek Hoca',sifreVar:true} : ref.col === 'aileler' ? { ogrenciler: window.__students.map(s=>s.ref), dil: window.__lang, sifreVar: true }
-   : ref.col === 'ogrenciler' ? window.__students.find(s=>s.ref===ref.id) : null;
- return { id: ref.id, exists: () => !!data, data: () => data };
+ if(window.__dataError && ref.col.startsWith('bultenler/'))throw Error('offline');
+ if(ref.col.startsWith('evCalismalari/')){const data=decode(window.__cloud[ref.col]?.[ref.id]);return{id:ref.id,exists:()=>!!data,data:()=>data};}
+ const stored=(window.__records[ref.col]||[]).find(d=>d.id===ref.id);
+ const data = stored || (ref.col === 'hocalar' ? {ad:'Örnek Hoca',sifreVar:true} : ref.col === 'aileler' && ref.id==='veli@example.test' ? { ogrenciler: window.__students.map(s=>s.ref), dil: window.__lang, sifreVar: true }
+   : ref.col === 'ogrenciler' ? window.__students.find(s=>s.ref===ref.id) : null);
+ const clean=data&&Object.fromEntries(Object.entries(data).filter(([k])=>k!=='id'));
+ return { id: ref.id, exists: () => !!data, data: () => clean };
 };
 
 export const Timestamp={fromDate:d=>({toDate:()=>d})};
 export const serverTimestamp=()=> 'server-time';
 const decode=d=>d&&({...d,son:d.son?Timestamp.fromDate(new Date(d.son+'T12:00:00Z')):undefined,sonraki:d.sonraki?Timestamp.fromDate(new Date(d.sonraki+'T12:00:00Z')):undefined});
 export const getDocs = async ref => {
+ if(window.__dataError && ref.col.startsWith('bultenler/'))throw Error('offline');
+ if(window.__bultenDelay && ref.col.startsWith('bultenler/'))await new Promise(r=>window.__releaseBulten=r);
  if(ref.col.startsWith('evCalismalari/')){
   if(window.__cloudError)throw Error('offline');
   if(window.__cloudDelay)await new Promise(r=>window.__releaseCloud=r);
   return {docs:Object.entries(window.__cloud[ref.col]||{}).map(([id,d])=>({id,data:()=>decode(d)}))};
  }
- return {docs:(ref.col==='ogrenciler'?window.__students:window.__records[ref.col]||[]).filter(d=>!ref.filters||ref.filters.every(f=>d[f.field]===f.value)).map((data,i)=>({id:data.ref||data.id||String(i),data:()=>data}))};
+ return {docs:(ref.col==='ogrenciler'?window.__students:window.__records[ref.col]||[]).filter(d=>!ref.filters||ref.filters.every(f=>f.op==='array-contains'?d[f.field]?.includes(f.value):d[f.field]===f.value)).map((data,i)=>({id:data.id||data.ref||String(i),data:()=>Object.fromEntries(Object.entries(data).filter(([k])=>k!=='id'))}))};
 };
-export const setDoc=async(ref,data)=>{window.__writes.push({ref,data});window.__records[ref.col]=[{id:ref.id,...data}];};
+const yaz=(ref,data)=>{
+ if(ref.col.startsWith('evCalismalari/')){(window.__cloud[ref.col]||={})[ref.id]={...data,son:data.son.toDate().toISOString().slice(0,10),sonraki:data.sonraki.toDate().toISOString().slice(0,10)};window.__writes.push({ref,data:window.__cloud[ref.col][ref.id]});return;}
+ window.__writes.push({ref,data});window.__records[ref.col]=[...(window.__records[ref.col]||[]).filter(d=>d.id!==ref.id),{id:ref.id,...data}];
+};
+export const setDoc=async(ref,data)=>yaz(ref,data);
+export const updateDoc=async(ref,data)=>{if(Object.keys(data).every(k=>k==='sonGiris'))return;return yaz(ref,{...(await getDoc(ref)).data(),...data});};
+export const deleteDoc=async ref=>{window.__writes.push({ref,delete:true});if(ref.col.startsWith('evCalismalari/'))delete (window.__cloud[ref.col]||{})[ref.id];else if(ref.col==='ogrenciler')window.__students=window.__students.filter(s=>s.ref!==ref.id);else window.__records[ref.col]=(window.__records[ref.col]||[]).filter(d=>d.id!==ref.id);};
 export const runTransaction=async(_db,cb)=>{
- if(window.__cloudError)throw Error('offline');
- return cb({get:async ref=>({exists:()=>!!window.__cloud[ref.col]?.[ref.id],data:()=>decode(window.__cloud[ref.col]?.[ref.id])}),set:(ref,d)=>{
-  (window.__cloud[ref.col]||={})[ref.id]={...d,son:d.son.toDate().toISOString().slice(0,10),sonraki:d.sonraki.toDate().toISOString().slice(0,10)};
-  window.__writes.push({ref,data:window.__cloud[ref.col][ref.id]});
- }});
+ const pending=[];
+ const result=await cb({get:async ref=>{if(window.__cloudError&&ref.col.startsWith('evCalismalari/'))throw Error('offline');return getDoc(ref);},set:(r,d)=>pending.push(()=>yaz(r,d)),update:(r,d)=>pending.push(()=>updateDoc(r,d)),delete:r=>pending.push(()=>deleteDoc(r))});
+ if(window.__commitError)throw Error('İşlem kaydedilemedi.');
+ for(const op of pending)await op();return result;
 };
 `;
 

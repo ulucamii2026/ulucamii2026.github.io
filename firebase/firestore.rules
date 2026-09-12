@@ -14,6 +14,41 @@ service cloud.firestore {
     function aile() { return girisli() && exists(/databases/$(db)/documents/aileler/$(eposta())); }
     function aileOgrencileri() { return get(/databases/$(db)/documents/aileler/$(eposta())).data.ogrenciler; }
     function veliOkur(ref) { return aile() && ref in aileOgrencileri(); }
+    function islemeAcik(ref) { return !exists(/databases/$(db)/documents/portalSilme/$(ref)); }
+
+    match /portalSilme/{ref} {
+      allow read, delete: if hoca();
+      allow create: if hoca() && request.resource.data.keys().hasOnly(['islem','zaman'])
+        && request.resource.data.islem is string && request.resource.data.zaman == request.time;
+    }
+    match /bultenler/{ref}/haftalar/{id} {
+      function gecerli() {
+        let d=request.resource.data;
+        return d.keys().hasOnly(['tarih','hafta','dil','metin','yayin','surum','guncelleme'])
+          && id.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$') && d.tarih == id
+          && d.hafta is int && d.hafta >= 1 && d.hafta <= 54
+          && d.dil in ['tr','fr','en'] && d.yayin is bool && d.surum is int
+          && d.guncelleme == request.time && d.metin is map
+          && d.metin.keys().hasOnly(['ders','odev','getir','not'])
+          && d.metin.ders is string && d.metin.ders.size() > 0 && d.metin.ders.size() <= 2200
+          && d.metin.odev is string && d.metin.odev.size() <= 1200
+          && d.metin.getir is string && d.metin.getir.size() <= 400
+          && d.metin.not is string && d.metin.not.size() <= 1000;
+      }
+      allow read: if hoca() || (veliOkur(ref) && resource.data.yayin == true);
+      allow create: if hoca() && islemeAcik(ref) && gecerli() && request.resource.data.surum == 1;
+      allow update: if hoca() && islemeAcik(ref) && gecerli() && request.resource.data.surum == resource.data.surum + 1;
+      allow delete: if hoca();
+      match /okumalar/{ep} {
+        function bulten() { return get(/databases/$(db)/documents/bultenler/$(ref)/haftalar/$(id)).data; }
+        allow read: if hoca() || (veliOkur(ref) && ep == eposta() && bulten().yayin == true);
+        allow create, update: if veliOkur(ref) && islemeAcik(ref) && ep == eposta() && bulten().yayin == true
+          && request.resource.data.keys().hasOnly(['surum','zaman'])
+          && request.resource.data.surum == bulten().surum
+          && request.resource.data.zaman == request.time;
+        allow delete: if hoca();
+      }
+    }
 
     match /hocalar/{uid} {
       allow read: if girisli() && request.auth.uid == uid;
@@ -55,27 +90,31 @@ service cloud.firestore {
           && d.guncelleme == request.time;
       }
       allow read: if hoca() || veliOkur(ref);
-      allow create: if veliOkur(ref) && kayitGecerli();
-      allow update: if veliOkur(ref) && kayitGecerli() && request.resource.data.son >= resource.data.son
+      allow create: if veliOkur(ref) && islemeAcik(ref) && kayitGecerli();
+      allow update: if veliOkur(ref) && islemeAcik(ref) && kayitGecerli() && request.resource.data.son >= resource.data.son
         && (request.resource.data.son > resource.data.son || request.resource.data.basamak <= resource.data.basamak);
       allow delete: if hoca();
     }
 
     match /yoklama/{id} {
       allow read: if hoca() || veliOkur(resource.data.ref);
-      allow write: if hoca();
+      allow create, update: if hoca() && islemeAcik(request.resource.data.ref);
+      allow delete: if hoca();
     }
     match /ilerleme/{ref} {
       allow read: if hoca() || veliOkur(ref);
-      allow write: if hoca();
+      allow create, update: if hoca() && islemeAcik(ref);
+      allow delete: if hoca();
     }
     match /degerlendirme/{id} {
       allow read: if hoca() || veliOkur(resource.data.ref);
-      allow write: if hoca();
+      allow create, update: if hoca() && islemeAcik(request.resource.data.ref);
+      allow delete: if hoca();
     }
     match /notlar/{id} {
       allow read: if hoca() || (veliOkur(resource.data.ref) && resource.data.veliyeGorunur == true);
-      allow write: if hoca();
+      allow create, update: if hoca() && islemeAcik(request.resource.data.ref);
+      allow delete: if hoca();
     }
     match /odevler/{id} {
       allow read: if hoca() || (aile() && resource.data.yayin == true);
@@ -88,20 +127,22 @@ service cloud.firestore {
     match /bildirimler/{id} {
       allow read: if hoca() || (girisli() && resource.data.eposta == eposta());
       allow create: if aile()
+        && islemeAcik(request.resource.data.ref)
         && request.resource.data.eposta == eposta()
         && request.resource.data.ref in aileOgrencileri()
         && request.resource.data.tur in ['mazeret', 'iletisim', 'soru']
         && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000
         && request.resource.data.okundu == false;
       // Veli, hoca HENÜZ OKUMADIYSA kendi mesajını düzeltebilir (geri alma = silme her zaman kendi mesajında serbest).
-      allow update: if hoca()
+      allow update: if islemeAcik(resource.data.ref) && (hoca()
         || (aile()
           && resource.data.eposta == eposta() && resource.data.okundu == false
           && request.resource.data.eposta == resource.data.eposta
           && request.resource.data.okundu == false
           && request.resource.data.ref in aileOgrencileri()
           && request.resource.data.tur in ['mazeret', 'iletisim', 'soru']
-          && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000);
+          && islemeAcik(request.resource.data.ref)
+          && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000));
       allow delete: if hoca() || (girisli() && resource.data.eposta == eposta());
     }
   }
