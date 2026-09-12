@@ -151,9 +151,22 @@ service cloud.firestore {
       allow write: if hoca();
     }
     match /bildirimler/{id} {
+      // 12 Eyl 2026: veli tarafına alan allowlist'i eklendi. Önce yoktu; veli kendi belgesine
+      // keyfi alan/boyut ekleyebiliyor ve `zaman`ı ileri tarihe atarak hoca ekranındaki
+      // sıralamada (zamanMs'e göre azalan) kendini en üste çıkarabiliyordu. Liste, veli
+      // portalinin gerçekten yazdığı alanlardır (src/scripts/veli-portali.ts, 'bildir' dalı).
+      function veliAlanlari() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['eposta', 'ref', 'tur', 'metin', 'okundu', 'zaman', 'ogrenciAd', 'dil', 'tarih'])
+          && (!('ogrenciAd' in d) || (d.ogrenciAd is string && d.ogrenciAd.size() <= 120))
+          && (!('dil' in d) || d.dil in ['tr', 'fr', 'en'])
+          && (!('tarih' in d) || d.tarih == null || (d.tarih is string && d.tarih.size() <= 10));
+      }
       allow read: if hoca() || (girisli() && resource.data.eposta == eposta());
       allow create: if aile()
         && islemeAcik(request.resource.data.ref)
+        && veliAlanlari()
+        && request.resource.data.zaman == request.time
         && request.resource.data.eposta == eposta()
         && request.resource.data.ref in aileOgrencileri()
         && request.resource.data.tur in ['mazeret', 'iletisim', 'soru']
@@ -163,6 +176,8 @@ service cloud.firestore {
       allow update: if islemeAcik(resource.data.ref) && (hoca()
         || (aile()
           && resource.data.eposta == eposta() && resource.data.okundu == false
+          && veliAlanlari()
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['eposta', 'okundu', 'zaman'])
           && request.resource.data.eposta == resource.data.eposta
           && request.resource.data.okundu == false
           && request.resource.data.ref in aileOgrencileri()

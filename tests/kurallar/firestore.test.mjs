@@ -18,7 +18,7 @@ const teacher = () => env.authenticatedContext('hoca-a', { email: 'hoca@example.
 const dYol='dersDefteri/ogrenci-a/kayitlar/2026-09-05_1';
 const dersKaydi=(extra={})=>({donem:'2026-2027',tarih:'2026-09-05',sira:1,no:1,sayfa:51,konu:'Örnek konu',kaynak:'Örnek kitap',grup:'',durum:'islendi',giris:'kagit',calisma:'Örnek çalışma',okunan:'',dikkat:'',oz:'',odev:'Tekrar',sonraki:'Birlikte okuyalım',surum:1,guncelleme:serverTimestamp(),...extra});
 const read = (db, path) => getDoc(doc(db, path));
-const message = (extra = {}) => ({ eposta: 'veli-a@example.test', ref: 'ogrenci-a', tur: 'soru', metin: 'Deneme mesajı', okundu: false, ...extra });
+const message = (extra = {}) => ({ eposta: 'veli-a@example.test', ref: 'ogrenci-a', tur: 'soru', metin: 'Deneme mesajı', okundu: false, zaman: serverTimestamp(), ...extra });
 
 before(async () => {
   mkdirSync('node_modules/.cache', {recursive:true});
@@ -144,6 +144,32 @@ test('Sahte gönderen, öğrenci, tür ve uzun mesaj reddedilir', async () => {
   for (const extra of [{ eposta: 'veli-b@example.test' }, { ref: 'ogrenci-b' }, { tur: 'admin' }, { metin: 'x'.repeat(1001) }, { okundu: true }]) {
     await assertFails(setDoc(doc(parent(), 'bildirimler/gecersiz'), message(extra)));
   }
+});
+/* 12 Eyl 2026: veli bildirimlerinde alan allowlist'i yoktu. Veli kendi belgesine keyfi
+   alan/boyut ekleyebiliyor, `zaman`ı ileri tarihe atarak hoca ekranındaki sıralamada
+   (azalan zaman) kendini en üste çıkarabiliyordu. */
+test('Veli bildirimine keyfi alan eklenemez', async () => {
+  for (const extra of [{ yanit: 'Hoca yanıtı gibi' }, { yonetici: true }, { dolgu: 'x'.repeat(900) },
+    { dil: 'de' }, { ogrenciAd: 'x'.repeat(121) }, { tarih: '2026-09-05T00:00:00Z' }]) {
+    await assertFails(setDoc(doc(parent(), 'bildirimler/gecersiz-alan'), message(extra)));
+  }
+  await assertSucceeds(setDoc(doc(parent(), 'bildirimler/gecerli-alan'),
+    message({ ogrenciAd: 'Deneme A', dil: 'tr', tur: 'mazeret', tarih: '2026-09-05' })));
+});
+test('Veli bildirim zamanını uyduramaz', async () => {
+  await assertFails(setDoc(doc(parent(), 'bildirimler/ileri-tarih'),
+    message({ zaman: Timestamp.fromMillis(Date.now() + 86400000) })));
+  await assertFails(updateDoc(doc(parent(), 'bildirimler/kendi'),
+    { zaman: Timestamp.fromMillis(Date.now() + 86400000) }));
+  await assertFails(updateDoc(doc(parent(), 'bildirimler/kendi'), { yonetici: true }));
+});
+/* Veli portalının 'bildir' dalının düzenlemede gönderdiği TAM alan kümesi (mazeret ve
+   mazeret olmayan iki hâl); kural allowlist'i istemciyi kilitlemesin. */
+test('Veli portalının gönderdiği düzenleme yükü aynen kabul edilir', async () => {
+  await assertSucceeds(updateDoc(doc(parent(), 'bildirimler/kendi'),
+    { ref: 'ogrenci-a', tur: 'soru', metin: 'Düzeltme', ogrenciAd: 'Deneme A', dil: 'tr', tarih: null }));
+  await assertSucceeds(updateDoc(doc(parent(), 'bildirimler/kendi'),
+    { ref: 'ogrenci-a', tur: 'mazeret', metin: 'Gelemeyecek', ogrenciAd: 'Deneme A', dil: 'fr', tarih: '2026-09-05' }));
 });
 test('Okunmamış mesaj düzeltilebilir; okunmuş mesaj değiştirilemez', async () => {
   await assertSucceeds(updateDoc(doc(parent(), 'bildirimler/kendi'), { metin: 'Düzeltilmiş deneme' }));
