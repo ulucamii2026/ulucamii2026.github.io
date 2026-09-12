@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-09-08",
+  "guncelleme": "2026-09-13",
   "depo": "ulucamii2026/ulucamii2026.github.io",
   "donem": "2026-2027",
   "gunler": [
@@ -322,8 +322,8 @@
       "etiket": "ders-2026-09-19",
       "plan": {
         "dosya": "Ders-Plani-2026-09-19.pdf",
-        "boyut": 713101,
-        "sayfa": 19,
+        "boyut": 569080,
+        "sayfa": 16,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ders-Plani-2026-09-19.pdf"
       },
       "sunumlar": [
@@ -332,19 +332,19 @@
           "saat": "11:00-11:40",
           "alan": "Kur'an-ı Kerim",
           "kod": "kuran",
-          "konu": "Lâm grubu harfleri — Lâm, Mîm, Nûn, Vâv, He, Ye · Ezber köşesi: Sübhâneke, İhlâs, med harfleri",
-          "konuFr": "Les lettres du groupe Lâm — Lâm, Mîm, Nûn, Vâv, He, Ye · coin mémorisation : Subhânaka, Al-Ikhlâs, lettres d'allongement",
+          "konu": "Lâm grubu harfleri — Lâm, Mîm, Nûn, Vâv, He, Ye",
+          "konuFr": "Les lettres du groupe Lâm — Lâm, Mîm, Nûn, Vâv, He, Ye",
           "baslik": {
             "tr": "Kur'an-ı Kerim",
             "fr": "Le Saint Coran"
           },
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 6030028,
-          "slayt": 25,
+          "boyut": 4562842,
+          "slayt": 20,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
             "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
-            "boyut": 821724,
+            "boyut": 735815,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-1-Kuran-i-Kerim.pdf"
           }
         },
@@ -360,12 +360,12 @@
             "fr": "Notre Créateur est Allah"
           },
           "dosya": "Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
-          "boyut": 8279427,
+          "boyut": 8190596,
           "slayt": 21,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
           "pdf": {
             "dosya": "Sunum-2-Itikat-Yaraticimiz-Allahtir.pdf",
-            "boyut": 1397041,
+            "boyut": 1375424,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-2-Itikat-Yaraticimiz-Allahtir.pdf"
           }
         },
@@ -381,12 +381,12 @@
             "fr": "Je fais mes ablutions, je me purifie (2/2)"
           },
           "dosya": "Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
-          "boyut": 8189434,
+          "boyut": 8100603,
           "slayt": 21,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
           "pdf": {
             "dosya": "Sunum-3-Ibadet-Abdest-Temizleniyorum.pdf",
-            "boyut": 1086397,
+            "boyut": 1064758,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-3-Ibadet-Abdest-Temizleniyorum.pdf"
           }
         }
@@ -400,8 +400,8 @@
       "etiket": "ders-2026-09-20",
       "plan": {
         "dosya": "Ders-Plani-2026-09-20.pdf",
-        "boyut": 705060,
-        "sayfa": 18,
+        "boyut": 549185,
+        "sayfa": 15,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ders-Plani-2026-09-20.pdf"
       },
       "sunumlar": [
@@ -410,19 +410,19 @@
           "saat": "11:00-11:40",
           "alan": "Kur'an-ı Kerim",
           "kod": "kuran",
-          "konu": "Harf Tanıma Pekiştirmesi (28 harf) · Ezber köşesi: Ettehiyyâtü, Sübhâneke, ezber sınavı",
-          "konuFr": "Consolidation des 28 lettres · coin mémorisation : At-Tahiyyât, Subhânaka, examen de mémorisation",
+          "konu": "Harf Tanıma Pekiştirmesi (28 harf)",
+          "konuFr": "Consolidation des 28 lettres",
           "baslik": {
             "tr": "Kur'an-ı Kerim",
             "fr": "Le Saint Coran"
           },
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 5234808,
-          "slayt": 22,
+          "boyut": 3045039,
+          "slayt": 14,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
             "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
-            "boyut": 1076768,
+            "boyut": 776527,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-1-Kuran-i-Kerim.pdf"
           }
         },
@@ -438,12 +438,12 @@
             "fr": "La jeunesse de notre Prophète"
           },
           "dosya": "Sunum-2-Siyer-Peygamberimizin-Gencligi.pptx",
-          "boyut": 7543878,
+          "boyut": 7455047,
           "slayt": 22,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-2-Siyer-Peygamberimizin-Gencligi.pptx",
           "pdf": {
             "dosya": "Sunum-2-Siyer-Peygamberimizin-Gencligi.pdf",
-            "boyut": 1271099,
+            "boyut": 1248193,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-2-Siyer-Peygamberimizin-Gencligi.pdf"
           }
         },
@@ -459,12 +459,12 @@
             "fr": "J'aime ma famille"
           },
           "dosya": "Sunum-3-Ahlak-Ailemi-Seviyorum.pptx",
-          "boyut": 8731458,
+          "boyut": 8642627,
           "slayt": 23,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-3-Ahlak-Ailemi-Seviyorum.pptx",
           "pdf": {
             "dosya": "Sunum-3-Ahlak-Ailemi-Seviyorum.pdf",
-            "boyut": 1568121,
+            "boyut": 1547862,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-3-Ahlak-Ailemi-Seviyorum.pdf"
           }
         }
