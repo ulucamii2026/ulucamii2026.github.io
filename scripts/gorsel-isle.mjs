@@ -35,8 +35,15 @@ for (const [src, dst] of afisler) {
   await toWebp(p, `public/media/afisler/${dst.replace('.webp', '-thumb.webp')}`, 520, 74);
   console.log('afiş', dst);
 }
-// 4) Logolar
+// 4) Logolar — 12 Eyl 2026: tek geçerli kaynak kurumsal kimlik paketidir
+// (D:\vektorel-calismalar\ulu-camii-kurumsal-kimlik; bkz. docs/LOGO-KIMLIGI.md).
+// Buradaki kopyalar o paketten türetilmiştir; ESKİ kusurlu logo kaynakları silinmiştir ve
+// geri getirilmez. `ulu-camii-logo-koyu.svg` (paketteki cami-koyu-zemin.svg) ile
+// `ulu-camii-logo-madalyon.png` bu listede yoktur, doğrudan paketten alınır.
 for (const f of ['marche-ulu-camii-logo.svg', 'marche-ulu-camii-logo-beyaz.svg', 'marche-ulu-camii-logo-512.png', 'marche-ulu-camii-logo-128.png', 'marche-kuran-kursu-logo.svg', 'marche-kuran-kursu-logo-256.png']) {
   copyFileSync(join(K, 'logolar', f), `public/media/logo/${f.replace('marche-', '')}`);
 }
+// Logo değişirse türevleri de yenilenmelidir, yoksa sitede eski amblem kalır:
+//   marche-cami-sitesi/simge/simge-uret.py   → favicon.svg/.ico, apple-touch-icon.png
+//   public/media/og/ulu-camii-{tr,fr,en}.png → paylaşım kartlarındaki amblem
 console.log('bitti');

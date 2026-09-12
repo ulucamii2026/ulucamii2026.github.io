@@ -3731,8 +3731,8 @@
     {
       "path": "public/media/logo/kuran-kursu-logo-256.png",
       "extension": ".png",
-      "bytes": 65173,
-      "hash": "e8388178726de9eaa6cbc40d77d7739565f956aada0581834ed9bc8d866e0eb6",
+      "bytes": 57060,
+      "hash": "f758c687fbedf87776637f895113469afb31443ed3372530788b6f410c4bcdfc",
       "width": 256,
       "height": 258,
       "format": "png"
@@ -3740,8 +3740,8 @@
     {
       "path": "public/media/logo/ulu-camii-logo-128.png",
       "extension": ".png",
-      "bytes": 12454,
-      "hash": "26bea85da48e729456e9bd2a5a6de1d60d150cba056ded53c371d8d10849948f",
+      "bytes": 16029,
+      "hash": "a41af2240f840e33e13e773a30a6c846825b5c5412345372481451fbbdef8667",
       "width": 128,
       "height": 129,
       "format": "png"
@@ -3749,8 +3749,8 @@
     {
       "path": "public/media/logo/ulu-camii-logo-512.png",
       "extension": ".png",
-      "bytes": 59186,
-      "hash": "6da2bf46af8ec9e577dab7ce2f4036a9ef45df7ef2adc6c54cbe66e2aaba073d",
+      "bytes": 73860,
+      "hash": "6fcebe55c3c75d95eaa5298357e6674b682644582fb90c2c827e6f9d05803f22",
       "width": 512,
       "height": 515,
       "format": "png"
@@ -3758,10 +3758,10 @@
     {
       "path": "public/media/logo/ulu-camii-logo-madalyon.png",
       "extension": ".png",
-      "bytes": 98756,
-      "hash": "1e5f367f3e6c045eb7e733f8d15879897dcd5f8bfde9796a2f0b85b9927c6c2b",
+      "bytes": 53406,
+      "hash": "dbeda914354733065d427a85faa18a7150cfcb659ae054e3db322c3c5131c944",
       "width": 384,
-      "height": 384,
+      "height": 386,
       "format": "png"
     },
     {
@@ -3866,8 +3866,8 @@
     {
       "path": "public/media/og/ulu-camii-en.png",
       "extension": ".png",
-      "bytes": 137735,
-      "hash": "54d0fa80f8f752609afbc111e1bb763c095078c9e9b4469e17ffbeedfc93e7ba",
+      "bytes": 127654,
+      "hash": "f9002839dbc688ccba8f04979dac83563e01136a741de48445c11dc7a1f38e56",
       "width": 1200,
       "height": 630,
       "format": "png"
@@ -3875,8 +3875,8 @@
     {
       "path": "public/media/og/ulu-camii-fr.png",
       "extension": ".png",
-      "bytes": 135968,
-      "hash": "7f9e37b3aaffdb2b9af08eff2e255e92585c5bd2e85b03386ee13e14de8f7e5d",
+      "bytes": 126471,
+      "hash": "997b7de67198666ec516e89c578b3a70c16b0586d2d0cb7a9b87ed64d167c46b",
       "width": 1200,
       "height": 630,
       "format": "png"
@@ -3884,8 +3884,8 @@
     {
       "path": "public/media/og/ulu-camii-tr.png",
       "extension": ".png",
-      "bytes": 136321,
-      "hash": "dbdc47057bd1cb752f6157bd4a4cac33f2a428c3fc63222a10031c73b6db20f5",
+      "bytes": 126011,
+      "hash": "e93a21609ece6bf39a7901a751daf4b138f42c02037fbac92e6ba8e0a3203a5f",
       "width": 1200,
       "height": 630,
       "format": "png"

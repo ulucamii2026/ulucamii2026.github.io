@@ -8,6 +8,7 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 
 | İş | Önce bakılacak kaynak | İlgili kod / doğrulama |
 |---|---|---|
+| Cami ve kurs logoları | [Geçerli temiz logolar](LOGO-KIMLIGI.md) | `public/media/logo`; kurumsal kimlik ana paketi |
 | Veli e-postasının dili | [Dil kararı](VELI-EPOSTA-DILI.md) | `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts`; `tests/veli-eposta-dili.test.mjs` |
 | Yeni kaydı e-posta listesine alma | [Otomatik aktarım](VELI-MAIL-LISTESI-OTOMASYONU.md) | `scripts/apps-script/veli-mail-listesi.gs`; `tests/veli-mail-listesi.test.mjs` |
 | Cuma e-postası / ödev / malzeme | [Haftalık otomasyon](VELI-CUMA-EPOSTASI.md) | `scripts/apps-script/veli-cuma.gs`; `tests/veli-cuma.test.mjs` |
