@@ -543,24 +543,6 @@
       "format": "webp"
     },
     {
-      "path": "public/media/arsiv/ramazan-vaiz-programi-2016-thumb.webp",
-      "extension": ".webp",
-      "bytes": 49674,
-      "hash": "aff57d1716237c60d007194dd2c8ba64101af887219147908bd5226dad5e2bc6",
-      "width": 520,
-      "height": 735,
-      "format": "webp"
-    },
-    {
-      "path": "public/media/arsiv/ramazan-vaiz-programi-2016.webp",
-      "extension": ".webp",
-      "bytes": 246576,
-      "hash": "211f10d2e09786f972f27e0bed7ac4157bb05bbb6c0b0405762c444a7e962267",
-      "width": 1400,
-      "height": 1980,
-      "format": "webp"
-    },
-    {
       "path": "public/media/dis-logolar/bdv-amblem.png",
       "extension": ".png",
       "bytes": 23458,

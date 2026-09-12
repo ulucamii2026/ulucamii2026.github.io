@@ -11,9 +11,10 @@ const KAYNAK_ESKI = 'D:/app/marche-cami-sitesi/kaynak/facebook/ulu-camii-5/gorse
 const KAYNAK_GUNCEL = 'D:/tmp/fb-oku/guncel/img';
 
 // 1) Eski sayfa arşivinden duyuru kapakları (≤1400 + thumb ≤520)
+// 12 Eyl 2026 kullanıcı kararı: 2016 Ramazan vaizi irşad programı duyurusu ve kapağı kalıcı
+// olarak kaldırıldı; bu betik yeniden çalıştırılsa bile geri getirmez.
 const arsiv = [
   [`${KAYNAK_ESKI}/029_db3415cff9.jpg`, 'belediye-kurban-atik-2016'],
-  [`${KAYNAK_ESKI}/040_d2aa23a862.jpg`, 'ramazan-vaiz-programi-2016'],
 ];
 for (const [src, slug] of arsiv) {
   if (!existsSync(src)) { console.log('YOK', src); continue; }
