@@ -74,7 +74,7 @@ const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');
   .kitap-meta { margin-top: 0.55rem; }
   .kitap-baglantilar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
   .kitap-baglantilar .dugme { padding: 0.55rem 1rem; font-size: 0.9rem; }
-  .kunye-link { font-size: 0.88rem; color: var(--metin-2); text-decoration: underline; text-underline-offset: 3px; padding-block: 0.4rem; }
+  .kunye-link { font-size: 0.88rem; color: var(--metin-2); text-decoration: underline; text-underline-offset: 3px; padding-block: 0.4rem; transition: text-underline-offset 0.15s ease-out; }
   .kunye-link:hover { color: var(--vurgu); }
 
   @media (min-width: 46rem) {

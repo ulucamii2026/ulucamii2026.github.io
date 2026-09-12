@@ -163,7 +163,7 @@
   .cetvel { border-top: 1px solid var(--cizgi); }
   .kart { background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); box-shadow: var(--shadow-kart); }
   .kart-kagit { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
-  .dugme { display: inline-flex; justify-content: center; align-items: center; gap: 0.55rem; min-height: 2.875rem; padding: 0.75rem 1.25rem; border-radius: var(--radius-kose); font-weight: 600; font-size: 0.95rem; line-height: 1.4; text-decoration: none; border: 1px solid transparent; transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s ease-out; }
+  .dugme { display: inline-flex; justify-content: center; align-items: center; gap: 0.55rem; min-height: 2.875rem; padding: 0.75rem 1.25rem; border-radius: var(--radius-kose); font-weight: 600; font-size: 0.95rem; line-height: 1.4; text-decoration: none; border: 1px solid transparent; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s ease-out; }
   .dugme-birincil { background: var(--color-kiremit); color: #fff; }
   .dugme-birincil:hover { background: var(--color-kiremit-koyu); color: #fff; }
   .dugme-ikincil { border-color: var(--cizgi-etkilesim); color: var(--metin); background: transparent; }
@@ -237,7 +237,7 @@
      tabi (HeroSlayt.astro) — burada ona dokunulmaz. */
   @media (prefers-reduced-motion: reduce) {
     .hero-giris > *, .hero-serit-cizgi, .reveal, .serit { animation: none !important; transition-property: opacity !important; transition-duration: 150ms !important; transition-delay: 0s !important; opacity: 1 !important; transform: none !important; }
-    .kart, .kart-kagit, .dugme, button, .cip, .acilir, #mobil-menu { transition-property: opacity, color, background-color, border-color, box-shadow !important; transition-duration: 150ms !important; transform: none !important; }
+    .kart, .kart-kagit, .dugme, button, .cip, .acilir, #mobil-menu { transition-property: opacity, background-color, border-color, box-shadow !important; transition-duration: 150ms !important; transform: none !important; }
     a.kart:hover, a.kart-kagit:hover, .kart:has(> a:hover), .dugme:active, button:active,
     .group:hover img, .group:hover svg, footer a:hover { transform: none !important; }
   }
