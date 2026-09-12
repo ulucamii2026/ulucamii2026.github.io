@@ -27,7 +27,7 @@ async function bundle(kind) {
         b.onResolve({ filter: /^(firebase\/|\.\.\/lib\/firebase$)/ }, args => ({ path:args.path, namespace:'test' }));
         b.onLoad({ filter: /.*/, namespace:'test' }, args => ({ contents:
           args.path === 'firebase/auth' ? authMock : args.path === 'firebase/firestore/lite'
-          ? 'export const getFirestore = () => ({}); export const collection=()=>{throw Error("Girişten önce veri okunamaz")}; export const doc=collection, getDoc=collection, getDocs=collection, query=collection, where=collection, runTransaction=collection, serverTimestamp=collection; export const Timestamp={};'
+          ? 'export const getFirestore = () => ({}); export const collection=()=>{throw Error("Girişten önce veri okunamaz")}; export const doc=collection, getDoc=collection, getDocs=collection, query=collection, where=collection, runTransaction=collection, serverTimestamp=collection, writeBatch=collection; export const Timestamp={};'
           : 'export const firebaseUygulamasi = () => ({});', loader:'js' }));
       } }],
     });

@@ -43,6 +43,12 @@ test('Ders defteri yalnız hocaya açık; veli kendi çocuğunun özel ders notu
 test('Ders defterinde alanlar, sayfa, sürüm, sunucu zamanı ve idari kilit doğrulanır',async()=>{
  for(const extra of [{surum:2},{calisma:''},{calisma:'x'.repeat(1801)},{odev:'x'.repeat(1001)},{sayfa:52},{sira:4},{durum:'geldi'},{grup:'C'},{oz:'basarili'},{imza:'x'},{guncelleme:Timestamp.fromMillis(0)}])await assertFails(setDoc(doc(teacher(),dYol),dersKaydi(extra)));
  await assertFails(setDoc(doc(teacher(),'dersDefteri/yok/kayitlar/2026-09-05_1'),dersKaydi()));
+ /* 12 Eyl 2026: gelmeyen öğrencinin dersi artık 'islendi' yazılmıyor. */
+ for(const durum of ['gelmedi','mazeretli']){
+  await assertSucceeds(setDoc(doc(teacher(),dYol),dersKaydi({durum})));
+  await deleteDoc(doc(teacher(),dYol));
+ }
+ await assertFails(setDoc(doc(teacher(),dYol),dersKaydi({durum:'mazeret'})));
  await setDoc(doc(teacher(),dYol),dersKaydi());
  await assertFails(setDoc(doc(teacher(),dYol),dersKaydi()));
  await assertFails(setDoc(doc(teacher(),dYol),dersKaydi({surum:2,konu:'Yanlış ders'})));
@@ -58,6 +64,33 @@ test('Ders defteri gerçek işlem çakışmasında eski metin ezmez; bülten akt
  assert.match(portal.defterdenBulten(liste).ders,/Örnek çalışma/);
  assert.throws(()=>portal.defterdenBulten([]),/kayıtlı ders/);
  assert.throws(()=>portal.defterdenBulten([k,{...k,id:'2026-09-05_2',calisma:'x'.repeat(2200)}]),/hiçbir metin kesilmedi/);
+});
+/* 12 Eyl 2026: gelmeyen öğrencide hoca her kayda ayrı bir «gelmedi» cümlesi yazmasın. */
+test('Gelmeyen öğrencide çalışma notu boş bırakılabilir; kanonik cümle depoda yazılır',async()=>{
+ const depo=portal.defterDeposu(teacher(),'ogrenci-a');
+ const k={id:'2026-09-05_1',...dersKaydi({durum:'gelmedi',calisma:'   '})};
+ const kayit=await depo.kaydet(k,0);
+ assert.equal(kayit.calisma,'Derse gelmedi.');
+ assert.equal((await depo.liste())[0].calisma,'Derse gelmedi.');
+ // Kanonik not bültende durumun tekrarı olarak iki kez yazılmaz.
+ const b=portal.defterdenBulten([kayit]);
+ assert.match(b.ders,/Öğrenci gelmedi$/m);
+ assert.doesNotMatch(b.ders,/Öğrenci gelmedi: Derse gelmedi\./);
+ // Hoca kendi cümlesini yazarsa ona dokunulmaz.
+ const kendi=await depo.kaydet({...k,calisma:'Ailesi haber verdi.'},kayit.surum);
+ assert.equal(kendi.calisma,'Ailesi haber verdi.');
+ // Durum 'islendi' iken boş not hâlâ reddedilir.
+ await assert.rejects(()=>depo.kaydet({...k,durum:'islendi',calisma:''},kendi.surum),/çalışma notunu doldurun/);
+});
+test('Yoklama ile ders defteri çelişkisi bildirilir',async()=>{
+ assert.match(portal.yoklamaCelismesi('islendi','yok'),/Yok.*işaretli/);
+ assert.match(portal.yoklamaCelismesi('gelmedi','var'),/Var.*işaretli/);
+ assert.match(portal.yoklamaCelismesi('mazeretli','gec'),/Geç.*işaretli/);
+ assert.equal(portal.yoklamaCelismesi('gelmedi','yok'),'');
+ assert.equal(portal.yoklamaCelismesi('islendi','var'),'');
+ assert.equal(portal.yoklamaCelismesi('islendi',undefined),'');
+ assert.equal(portal.YOKLAMA_DURUMU.yok,'gelmedi');
+ assert.equal(portal.YOKLAMA_DURUMU.mazeret,'mazeretli');
 });
 test('İdari temizlik ders defterini kapsar; ev kapsamı ve kardeşin defteri korunur',async()=>{
  await setDoc(doc(teacher(),dYol),dersKaydi());const kardes=dYol.replace('ogrenci-a','ogrenci-b');await setDoc(doc(teacher(),kardes),dersKaydi());

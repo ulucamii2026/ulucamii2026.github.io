@@ -139,6 +139,8 @@ export async function hocaEkrani(): Promise<void> {
   type Durum = {
     uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: Record<string, { dersler: Record<string, string>; not: string }>;
     evCalismasi?:Record<string,Tekrar>|null; secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
+    /** Seçili ders gününe ait veli mazeretleri (yoklama ekranındaki şerit). */
+    gunMazeretleri: Kayit[];
   };
   let S: Durum | null = null;
   let bultenTemizle: (()=>void)|undefined;
@@ -160,14 +162,24 @@ export async function hocaEkrani(): Promise<void> {
       uid: user.uid, ad: String((h.data() as { ad?: string }).ad || ''), sekme: 'yoklama',
       ogrenciler: ogr.map((o) => ({ ...(o as unknown as Ogr), ref: o.id })).sort((x, y) => (x.soyad + x.ad).localeCompare(y.soyad + y.ad, 'tr')),
       aileler: (aile as unknown as Aile[]).map((x) => ({ ...x, eposta: (x as unknown as Kayit).id as string })),
-      tarih: varsayilanTarih(), yoklama: {}, secili: '', ilerleme: null, degerlendirme: [], notlar: [], hafta: varsayilanHafta(), odevler: [], duyurular: [], bildirimler: [],
+      tarih: varsayilanTarih(), yoklama: {}, gunMazeretleri: [], secili: '', ilerleme: null, degerlendirme: [], notlar: [], hafta: varsayilanHafta(), odevler: [], duyurular: [], bildirimler: [],
     };
     await yoklamaYukle();
     ciz();
   };
   const yoklamaYukle = async () => {
-    if (!S) return; const k = await kayitlar('yoklama', fs.where('tarih', '==', S.tarih));
+    if (!S) return;
+    /* 12 Eyl 2026 — veli mazeretleri yoklama ekranına bağlandı. O güne kadar veli portaldan
+       mazeret bildiriyor, bildirim «Veli bildirimleri» sekmesinde okunmamış duruyor, hoca ise
+       yoklamada aynı öğrenciyi «Yok» (mazeretsiz) işaretliyordu: 12 Eylül'de üç öğrenci
+       (Tahir, Ramazan, Rana Betül) böyle işaretlendi ve defterlerine sitemli notlar düştü. */
+    const [k, m] = await Promise.all([
+      kayitlar('yoklama', fs.where('tarih', '==', S.tarih)),
+      kayitlar('bildirimler', fs.where('tarih', '==', S.tarih)).catch(() => [] as Kayit[]),
+    ]);
+    if (!S) return;
     S.yoklama = {}; (k as unknown as Yok[]).forEach((y) => { const ders = y.dersler && typeof y.dersler === 'object' ? { ...y.dersler } : (y.durum ? { '1': y.durum, '2': y.durum, '3': y.durum } : {}); S!.yoklama[y.ref] = { dersler: ders, not: y.not || '' }; });
+    S.gunMazeretleri = m.filter((x) => x.tur === 'mazeret').sort((x, y) => zamanMs(y.zaman) - zamanMs(x.zaman));
   };
   let ogrenciIstek=0;
   const ogrenciYukle = async (ref: string) => {
@@ -207,6 +219,15 @@ export async function hocaEkrani(): Promise<void> {
         </div>
         ${gunDersler.length ? `<p class="kucuk">${gunDersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p><p class="kucuk">Her öğrencinin üç dersi ayrı ayrı işaretlenir; yalnız işaretlenen dersler kaydedilir.</p>` : '<p class="kucuk">Bu gün ders yok (tatil).</p>'}
         ${S.yukleniyor ? '<p class="not">Yükleniyor…</p>' : ''}
+        ${!S.yukleniyor && S.gunMazeretleri.length ? `<div class="mazeret-serit" data-mazeret-serit>
+          <h3>${simge('zarf')}Bu ders günü için ${S.gunMazeretleri.length} veli mazereti</h3>
+          <p class="kucuk">Veliler portaldan bildirdi. İşaretlemeden önce okuyun; mazereti kabul etmek sizin kararınız. Yanıt yazmak için «Veli bildirimleri» sekmesini kullanın.</p>
+          <ul class="liste">${S.gunMazeretleri.map((m) => { const r = String(m.ref || ''); const hepsiMazeret = gunDersler.length > 0 && gunDersler.every((d) => (S!.yoklama[r]?.dersler || {})[String(d.no)] === 'mazeret'); return `<li>
+            <div><b>${esc(ogrAdi(r))}</b>${m.okundu ? '' : '<span class="rozet">okunmadı</span>'}<span class="kucuk"> · ${esc(zamanYaz(m.zaman))}</span></div>
+            <p class="mazeret-metin">${esc(String(m.metin || ''))}</p>
+            <button type="button" class="dugme dugme-ikincil" data-mazeret-uygula="${esc(r)}" ${hepsiMazeret ? 'disabled' : ''}>${hepsiMazeret ? 'Mazeretli işaretlendi' : 'Günün derslerini mazeretli işaretle'}</button>
+          </li>`; }).join('')}</ul>
+        </div>` : ''}
         <div ${S.yukleniyor ? 'hidden' : ''}>${aktif.map((o) => { const y = S!.yoklama[o.ref] || { dersler: {}, not: '' }; return `<div class="yk-satir">
             <div class="yk-ogr"><b>${esc(o.ad)} ${esc(o.soyad)}</b> ${o.grup ? `<span class="kucuk">${esc(o.grup)}</span>` : ''}</div>
             ${gunDersler.map((d) => { const sr = String(d.no); return `<div class="yk-ders">
@@ -432,7 +453,7 @@ export async function hocaEkrani(): Promise<void> {
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
   kok.addEventListener('click', async (ev) => {
-    const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk]');
+    const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk],[data-mazeret-uygula]');
     if (!el) return;
     try {
       if (el.dataset.eylem === 'cikis') { if(defterPanel&&!defterPanel.ayrilabilir())return; bultenTemizle?.(); defterKapat(); await auth.signOut(a); S = null; girisEkrani(); return; }
@@ -459,6 +480,16 @@ export async function hocaEkrani(): Promise<void> {
       }
       if (el.dataset.yok) { const ref = el.dataset.yok; const sr = el.dataset.ders || '1'; const d = el.dataset.durum || ''; const y = S.yoklama[ref] || { dersler: {}, not: '' }; y.dersler[sr] = y.dersler[sr] === d ? '' : d; S.yoklama[ref] = y;
         el.parentElement!.querySelectorAll<HTMLElement>('.yk-dugme').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.durum === y.dersler[sr]))); return; }
+      if (el.dataset.mazeretUygula) {
+        // Yalnız ekranda işaretler; kayıt yine «Yoklamayı kaydet» ile yazılır (hoca son sözü söyler).
+        const ref = el.dataset.mazeretUygula;
+        const gun = veri.gunler.find((x) => x.tarih === S!.tarih);
+        const y = S.yoklama[ref] || { dersler: {}, not: '' };
+        (gun ? gun.dersler : []).forEach((d) => { y.dersler[String(d.no)] = 'mazeret'; });
+        S.yoklama[ref] = y; ciz();
+        ustMesaj(`${ogrAdi(ref)} günün derslerinde mazeretli işaretlendi. Kaydetmeyi unutmayın.`);
+        return;
+      }
       if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '' }; }); ciz(); return; }
       if (el.dataset.eylem === 'yoklamaKaydet') {
         kok.querySelectorAll<HTMLInputElement>('[data-yok-not]').forEach((i) => { const ref = i.dataset.yokNot!; const not = i.value.trim(); const y = S!.yoklama[ref]; if (y) y.not = not; else if (not) S!.yoklama[ref] = { dersler: {}, not }; });
@@ -557,7 +588,7 @@ export async function hocaEkrani(): Promise<void> {
   kok.addEventListener('change', async (ev) => {
     const t = ev.target as HTMLSelectElement;
     if (!S) return;
-    if (t.matches('[data-yoklama-tarih]')) { S.tarih = t.value; S.yoklama = {}; S.yukleniyor = true; ciz(); await yoklamaYukle(); S.yukleniyor = false; ciz(); } // yükleme bitmeden tıklanan işaretler kaybolmasın diye liste önce kapatılır
+    if (t.matches('[data-yoklama-tarih]')) { S.tarih = t.value; S.yoklama = {}; S.gunMazeretleri = []; S.yukleniyor = true; ciz(); await yoklamaYukle(); S.yukleniyor = false; ciz(); } // yükleme bitmeden tıklanan işaretler kaybolmasın diye liste önce kapatılır
     if (t.matches('[data-hafta]')) { S.hafta = Number(t.value); ciz(); }
   });
 

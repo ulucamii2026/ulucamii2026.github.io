@@ -47,6 +47,15 @@ const yaz=(ref,data)=>{
 export const setDoc=async(ref,data)=>yaz(ref,data);
 export const updateDoc=async(ref,data)=>{if(Object.keys(data).every(k=>k==='sonGiris'))return;return yaz(ref,{...(await getDoc(ref)).data(),...data});};
 export const deleteDoc=async ref=>{window.__writes.push({ref,delete:true});if(ref.col.startsWith('evCalismalari/'))delete (window.__cloud[ref.col]||{})[ref.id];else if(ref.col==='ogrenciler')window.__students=window.__students.filter(s=>s.ref!==ref.id);else window.__records[ref.col]=(window.__records[ref.col]||[]).filter(d=>d.id!==ref.id);};
+/* writeBatch sahtesi (12 Eyl 2026): hoca ekranı yoklamayı ve toplu defter doldurmayı yığınla
+   yazıyor; sahte istemcide yoktu, bu yüzden o yollar hiç sınanmamıştı. Gerçeğinde olduğu gibi
+   ya hepsi yazılır ya hiçbiri. */
+export const writeBatch=_db=>{
+ const ops=[];
+ const b={set:(r,d)=>{ops.push(()=>yaz(r,d));return b;},update:(r,d)=>{ops.push(()=>updateDoc(r,d));return b;},delete:r=>{ops.push(()=>deleteDoc(r));return b;},
+  commit:async()=>{if(window.__commitError)throw Error('Toplu işlem kaydedilemedi.');for(const op of ops)await op();}};
+ return b;
+};
 export const runTransaction=async(_db,cb)=>{
  const pending=[];
  const result=await cb({get:async ref=>{if(window.__cloudError&&ref.col.startsWith('evCalismalari/'))throw Error('offline');return getDoc(ref);},set:(r,d)=>pending.push(()=>yaz(r,d)),update:(r,d)=>pending.push(()=>updateDoc(r,d)),delete:r=>pending.push(()=>deleteDoc(r))});
@@ -117,6 +126,13 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
     data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', dilYollari: {}, materyalGunleri: [], gunler: [
       { tarih: '2026-09-12', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Cumartesi konusu', ezber: ['Cumartesi tekrarı'] }] },
       { tarih: '2026-09-13', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Pazar konusu', ezber: ['Pazar tekrarı'] }] },
+      /* Gerçek ders günü üç derstir; tek dersli günler yukarıdaki eski sınamaları bozmasın diye
+         üç dersli bir gün ayrıca eklendi (12 Eyl 2026, yoklama-mazeret şeridi sınaması). */
+      { tarih: '2026-09-19', hafta: 3, dersler: [
+        { no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Üç dersli gün 1', ezber: [] },
+        { no: 2, kod: 'itikat', alan: 'İtikat', konu: 'Üç dersli gün 2', ezber: [] },
+        { no: 3, kod: 'ibadet', alan: 'İbadet', konu: 'Üç dersli gün 3', ezber: [] },
+      ] },
     ] });
     document.body.appendChild(data);
   }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca });

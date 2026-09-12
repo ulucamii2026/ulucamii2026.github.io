@@ -119,3 +119,54 @@
 .ders-defteri :is(input, select, textarea, button) {
   scroll-margin-block: 7rem 2rem;
 }
+
+/* 12 Eyl 2026 — yoklama bağlantısı. Renkler yalnız işaret; anlam her zaman metinle de yazılır
+   (renk körlüğü ve yüksek kontrast kipi için). Tokenler tema değişimini kendiliğinden izler. */
+.ders-defteri .dd-yok {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.ders-defteri .dd-yoklama {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+.ders-defteri .dd-yok-var {
+  color: color-mix(in oklab, var(--color-adacayi) 78%, var(--metin));
+}
+.ders-defteri .dd-yok-gec {
+  color: color-mix(in oklab, var(--color-ochre) 72%, var(--metin));
+}
+.ders-defteri .dd-yok-mazeret {
+  color: color-mix(in oklab, var(--color-iznik) 74%, var(--metin));
+}
+.ders-defteri .dd-yok-yok {
+  color: color-mix(in oklab, var(--color-kiremit) 76%, var(--metin));
+}
+.ders-defteri .dd-uyari {
+  margin: 0.6rem 0 0;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid color-mix(in oklab, var(--color-ochre) 45%, var(--cizgi));
+  border-radius: var(--radius-kose);
+  background: color-mix(in oklab, var(--color-ochre) 10%, var(--zemin));
+  font-size: 0.95rem;
+}
+.ders-defteri .dd-toplu {
+  margin: 1rem 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--cizgi);
+  border-radius: var(--radius-kose);
+  background: var(--zemin-2);
+}
+.ders-defteri .dd-toplu small {
+  display: block;
+  font-weight: 400;
+}
+.ders-defteri .dd-toplu p {
+  margin: 0.5rem 0 0;
+}

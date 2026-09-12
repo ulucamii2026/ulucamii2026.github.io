@@ -33,7 +33,9 @@ service cloud.firestore {
           && d.sayfa is int && d.sayfa == d.no + 50
           && d.konu is string && d.konu.size() > 0 && d.konu.size() <= 200
           && d.kaynak is string && d.kaynak.size() <= 300
-          && d.grup in ['', 'A', 'B'] && d.durum in ['islendi','kismen','ertelendi']
+          // 12 Eyl 2026: 'gelmedi' ve 'mazeretli' eklendi. Öncesinde gelmeyen öğrencinin kaydı
+          // da 'islendi' oluyordu; ders o öğrenciye işlenmiş görünüyordu (bkz. src/lib/ders-defteri.ts).
+          && d.grup in ['', 'A', 'B'] && d.durum in ['islendi','kismen','ertelendi','gelmedi','mazeretli']
           && d.giris in ['kagit','dijital'] && d.oz in ['','tekrar','destek','kendim']
           && d.calisma is string && d.calisma.size() > 0 && d.calisma.size() <= 1800
           && d.okunan is string && d.okunan.size() <= 400

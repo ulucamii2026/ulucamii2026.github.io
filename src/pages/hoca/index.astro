@@ -87,6 +87,16 @@ const veri = {
   .portal .yk-ders-et { flex: 1 1 11rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--metin); }
   .portal .yk-ders-no { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; flex: none; border-radius: var(--radius-kose); background: var(--zemin-3); border: 1px solid var(--cizgi); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--metin-2); }
   .portal .yk-dugmeler { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  /* 12 Eyl 2026 — yoklama ekranındaki veli mazereti şeridi (bkz. hoca-ekrani.ts yoklamaYukle). */
+  .portal .mazeret-serit { margin: 0.9rem 0 1.2rem; padding: 0.9rem 1.1rem; border: 1px solid color-mix(in oklab, var(--color-iznik) 40%, var(--cizgi)); border-radius: var(--radius-kose); background: color-mix(in oklab, var(--color-iznik) 8%, var(--zemin)); }
+  .portal .mazeret-serit h3 { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.3rem; font-size: 1rem; }
+  .portal .mazeret-serit > ul { margin: 0.7rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.7rem; }
+  .portal .mazeret-serit li { padding-top: 0.7rem; border-top: 1px solid color-mix(in oklab, var(--color-iznik) 22%, var(--cizgi)); }
+  .portal .mazeret-serit li:first-child { padding-top: 0; border-top: 0; }
+  .portal .mazeret-metin { margin: 0.3rem 0 0.55rem; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.95rem; }
+  /* Varsayılan .rozet grisi bu şeridin renkli zemininde 3.78:1 kalıyordu (axe, 12 Eyl 2026);
+     rozet kendi düz zeminine ve güçlü renge alındı. */
+  .portal .mazeret-serit .rozet { --dr: var(--color-kiremit); background: var(--zemin); margin-left: 0.4rem; }
   .portal .izgara-2 { display: grid; gap: 0.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
   .portal .izgara-3 { display: grid; gap: 0.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
   /* Zengin metin (duyuru) editörü — araç çubuğu + contenteditable */
