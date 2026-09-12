@@ -15,13 +15,15 @@ let env;
 let portal;
 const parent = () => env.authenticatedContext('veli-a', { email: 'veli-a@example.test' }).firestore();
 const teacher = () => env.authenticatedContext('hoca-a', { email: 'hoca@example.test' }).firestore();
+const dYol='dersDefteri/ogrenci-a/kayitlar/2026-09-05_1';
+const dersKaydi=(extra={})=>({donem:'2026-2027',tarih:'2026-09-05',sira:1,no:1,sayfa:51,konu:'Örnek konu',kaynak:'Örnek kitap',grup:'',durum:'islendi',giris:'kagit',calisma:'Örnek çalışma',okunan:'',dikkat:'',oz:'',odev:'Tekrar',sonraki:'Birlikte okuyalım',surum:1,guncelleme:serverTimestamp(),...extra});
 const read = (db, path) => getDoc(doc(db, path));
 const message = (extra = {}) => ({ eposta: 'veli-a@example.test', ref: 'ogrenci-a', tur: 'soru', metin: 'Deneme mesajı', okundu: false, ...extra });
 
 before(async () => {
   mkdirSync('node_modules/.cache', {recursive:true});
   const outfile=resolve('node_modules/.cache/portal-idare-test.mjs');
-  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
+  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts"; export * from "./src/lib/ders-defteri.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
   portal=await import(pathToFileURL(outfile).href);
   env = await initializeTestEnvironment({ projectId: 'demo-ulucamii', firestore: {
     host: '127.0.0.1', port: 8185,
@@ -29,6 +31,41 @@ before(async () => {
   } });
 });
 after(async () => { await env?.cleanup(); });
+
+test('Ders defteri yalnız hocaya açık; veli kendi çocuğunun özel ders notunu da okuyamaz',async()=>{
+ await assertSucceeds(setDoc(doc(teacher(),dYol),dersKaydi()));
+ await assertSucceeds(read(teacher(),dYol));
+ for(const db of [parent(),env.unauthenticatedContext().firestore(),env.authenticatedContext('veli-b',{email:'veli-b@example.test'}).firestore()]){
+  await assertFails(read(db,dYol));await assertFails(getDocs(collection(db,'dersDefteri/ogrenci-a/kayitlar')));
+  await assertFails(setDoc(doc(db,dYol),dersKaydi({surum:2})));await assertFails(deleteDoc(doc(db,dYol)));
+ }
+});
+test('Ders defterinde alanlar, sayfa, sürüm, sunucu zamanı ve idari kilit doğrulanır',async()=>{
+ for(const extra of [{surum:2},{calisma:''},{calisma:'x'.repeat(1801)},{odev:'x'.repeat(1001)},{sayfa:52},{sira:4},{durum:'geldi'},{grup:'C'},{oz:'basarili'},{imza:'x'},{guncelleme:Timestamp.fromMillis(0)}])await assertFails(setDoc(doc(teacher(),dYol),dersKaydi(extra)));
+ await assertFails(setDoc(doc(teacher(),'dersDefteri/yok/kayitlar/2026-09-05_1'),dersKaydi()));
+ await setDoc(doc(teacher(),dYol),dersKaydi());
+ await assertFails(setDoc(doc(teacher(),dYol),dersKaydi()));
+ await assertFails(setDoc(doc(teacher(),dYol),dersKaydi({surum:2,konu:'Yanlış ders'})));
+ await assertSucceeds(setDoc(doc(teacher(),dYol),dersKaydi({surum:2,calisma:'Güncellendi'})));
+ await setDoc(doc(teacher(),'portalSilme/ogrenci-a'),{islem:'test',zaman:serverTimestamp()});
+ await assertFails(setDoc(doc(teacher(),dYol),dersKaydi({surum:3})));
+});
+test('Ders defteri gerçek işlem çakışmasında eski metin ezmez; bülten aktarımı kısaltma yapmaz',async()=>{
+ const depo=portal.defterDeposu(teacher(),'ogrenci-a');const k={id:'2026-09-05_1',...dersKaydi()};
+ const ilk=await depo.kaydet(k,0);assert.equal(ilk.surum,1);
+ await assert.rejects(()=>depo.kaydet({...k,calisma:'Eski ekran'},0),/başka bir ekranda/);
+ const liste=await depo.liste();assert.equal(liste[0].calisma,'Örnek çalışma');
+ assert.match(portal.defterdenBulten(liste).ders,/Örnek çalışma/);
+ assert.throws(()=>portal.defterdenBulten([]),/kayıtlı ders/);
+ assert.throws(()=>portal.defterdenBulten([k,{...k,id:'2026-09-05_2',calisma:'x'.repeat(2200)}]),/hiçbir metin kesilmedi/);
+});
+test('İdari temizlik ders defterini kapsar; ev kapsamı ve kardeşin defteri korunur',async()=>{
+ await setDoc(doc(teacher(),dYol),dersKaydi());const kardes=dYol.replace('ogrenci-a','ogrenci-b');await setDoc(doc(teacher(),kardes),dersKaydi());
+ let envt=await portal.portalEnvanteri(teacher(),'ogrenci-a');assert.equal(envt.sayilar['Ders defteri'],1);
+ await portal.portalKayitlariniSil(teacher(),envt,'ev');assert.equal((await read(teacher(),dYol)).exists(),true);
+ envt=await portal.portalEnvanteri(teacher(),'ogrenci-a');await portal.portalKayitlariniSil(teacher(),envt,'tum');
+ assert.equal((await read(teacher(),dYol)).exists(),false);assert.equal((await read(teacher(),kardes)).exists(),true);
+});
 beforeEach(async () => {
   await env.clearFirestore();
   await env.withSecurityRulesDisabled(async context => {

@@ -14,6 +14,7 @@ import {
 } from "../lib/portal-idare";
 import { bultenIcerik, bultenYazdir, bultenEsc as e } from "./bulten-gorunumu";
 import type { Dil } from "../i18n/ui";
+import { defterDeposu, defterdenBulten } from "../lib/ders-defteri";
 
 type Ogr = { ref: string; ad: string; soyad: string; durum?: string };
 type Gun = {
@@ -68,7 +69,7 @@ export function hocaBulteni(
             )
             .join(
               "",
-            )}<div class="bulten-eylemler"><button type="button" data-hb-onizle>Önizle</button><button type="submit" name="islem" value="taslak">Taslak kaydet</button><button type="submit" name="islem" value="yayin">Kaydet ve veliye göster</button></div><p class="bulten-aciklama">Yayımlama yalnız portalda görünürlük sağlar; e-posta göndermez. Değişiklik yeni sürüm oluşturur ve yeniden okunması gerekir.</p></fieldset></form><details class="bulten-onizleme"><summary>Bülten önizlemesi ve çıktı</summary><div data-hb-onizleme>${bultenIcerik(b, ad(), b.dil)}</div><button type="button" data-hb-yazdir ${mesgul ? "disabled" : ""}>Yazdır / PDF kaydet</button></details><h3>Velilerin okuma durumu</h3>${
+            )}<div class="bulten-eylemler"><button type="button" data-hb-defter>Ders defterinden doldur</button><button type="button" data-hb-onizle>Önizle</button><button type="submit" name="islem" value="taslak">Taslak kaydet</button><button type="submit" name="islem" value="yayin">Kaydet ve veliye göster</button></div><p class="bulten-aciklama">Yayımlama yalnız portalda görünürlük sağlar; e-posta göndermez. Değişiklik yeni sürüm oluşturur ve yeniden okunması gerekir.</p></fieldset></form><details class="bulten-onizleme"><summary>Bülten önizlemesi ve çıktı</summary><div data-hb-onizleme>${bultenIcerik(b, ad(), b.dil)}</div><button type="button" data-hb-yazdir ${mesgul ? "disabled" : ""}>Yazdır / PDF kaydet</button></details><h3>Velilerin okuma durumu</h3>${
             Object.keys(okumalar).length
               ? `<ul class="bulten-envanter">${Object.entries(okumalar)
                   .map(
@@ -92,7 +93,7 @@ export function hocaBulteni(
                   )
                   .join(
                     "",
-                  )}</ul><p>${env.aileler.length} veli bağlantısı. Diğer öğrenciler ve ortak veli hesapları korunur.</p><button type="button" data-hb-indir>Seçili öğrencinin dökümünü indir</button><form data-hb-sil><fieldset ${mesgul ? "disabled" : ""}><legend>Kontrollü silme</legend><label>İşlem kapsamı<select name="kapsam"><option value="ev">Yalnız evde çalışma kayıtları</option><option value="tum">Öğrencinin tüm portal kayıtları ve veli bağlantıları</option></select></label><p>“Tüm portal kayıtları” öğrenci profilini, yoklama, ilerleme, değerlendirme, not, bildirim, ev çalışması ve bültenleri siler. Geri alma düğmesi yoktur. Google giriş hesabı, asıl kayıt defteri, gönderilmiş e-postalar ve cihazlardaki dosyalar bu işlemin kapsamı dışındadır. Asıl kayıt defteri değişmezse sonraki aktarım öğrenciyi yeniden oluşturabilir.</p><label>Onay için öğrenci kodunu yazın: ${e(ref)}<input name="onay" autocomplete="off" required></label><button type="submit" class="bulten-tehlike">İncelenen kayıtları sil</button></fieldset></form>`
+                  )}</ul><p>${env.aileler.length} veli bağlantısı. Diğer öğrenciler ve ortak veli hesapları korunur.</p><button type="button" data-hb-indir>Seçili öğrencinin dökümünü indir</button><form data-hb-sil><fieldset ${mesgul ? "disabled" : ""}><legend>Kontrollü silme</legend><label>İşlem kapsamı<select name="kapsam"><option value="ev">Yalnız evde çalışma kayıtları</option><option value="tum">Öğrencinin tüm portal kayıtları ve veli bağlantıları</option></select></label><p>“Tüm portal kayıtları” öğrenci profilini, yoklama, ilerleme, değerlendirme, not, bildirim, ev çalışması, ders defteri ve bültenleri siler. Geri alma düğmesi yoktur. Google giriş hesabı, asıl kayıt defteri, gönderilmiş e-postalar ve cihazlardaki dosyalar bu işlemin kapsamı dışındadır. Asıl kayıt defteri değişmezse sonraki aktarım öğrenciyi yeniden oluşturabilir.</p><label>Onay için öğrenci kodunu yazın: ${e(ref)}<input name="onay" autocomplete="off" required></label><button type="submit" class="bulten-tehlike">İncelenen kayıtları sil</button></fieldset></form>`
               : ""
           }<p class="bulten-aciklama">Kesilen bir işlem nedeniyle kayıtlar kilitli kaldıysa en az 15 dakika sonra kilidi kaldırıp dökümü yeniden inceleyin.</p><button type="button" data-hb-kilit ${mesgul ? "disabled" : ""}>Yarım kalan işlem kilidini kaldır</button></details>`
         : ""
@@ -198,6 +199,49 @@ export function hocaBulteni(
     async (ev) => {
       const t = (ev.target as HTMLElement).closest("button");
       if (!t || mesgul) return;
+      if (t.hasAttribute("data-hb-defter")) {
+        const taslak = formOku();
+        if (!taslak) return;
+        if (
+          !confirm(
+            "Ders, ödev ve aile notu alanlarını bu haftanın ders defteri kayıtlarıyla doldurmak istiyor musunuz? Mevcut metinler değişir; getirilecekler alanı korunur.",
+          )
+        )
+          return;
+        b = taslak;
+        mesgul = true;
+        mesaj = "Ders defteri notları alınıyor…";
+        const token = istek;
+        ciz();
+        try {
+          const gunler = new Set(
+            opt.gunler.filter((g) => g.hafta === hafta).map((g) => g.tarih),
+          );
+          const kayitlar = await defterDeposu(opt.db, ref).liste();
+          if (kapali || token !== istek) return;
+          b = {
+            ...taslak,
+            metin: {
+              ...taslak.metin,
+              ...defterdenBulten(kayitlar.filter((k) => gunler.has(k.tarih))),
+            },
+          };
+          mesaj =
+            "Ders notları taslağa aktarıldı. İçerik dilini ve metinleri kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+        } catch (err) {
+          if (!kapali && token === istek)
+            mesaj =
+              err instanceof Error
+                ? err.message
+                : "Ders defteri alınamadı; mevcut metinler korundu.";
+        } finally {
+          if (!kapali && token === istek) {
+            mesgul = false;
+            ciz();
+          }
+        }
+        return;
+      }
       if (t.hasAttribute("data-hb-yenile")) {
         void yukle();
         return;

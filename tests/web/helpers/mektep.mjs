@@ -18,7 +18,7 @@ export const collection = (_db, ...p) => ({ col:p.join("/") });
 export const where = (field, op, value) => ({ field, op, value });
 export const query = (ref, ...filters) => ({ ...ref, filters });
 export const getDoc = async ref => {
- if(window.__dataError && ref.col.startsWith('bultenler/'))throw Error('offline');
+ if(window.__dataError && (ref.col.startsWith('bultenler/')||ref.col.startsWith('dersDefteri/')))throw Error('offline');
  if(ref.col.startsWith('evCalismalari/')){const data=decode(window.__cloud[ref.col]?.[ref.id]);return{id:ref.id,exists:()=>!!data,data:()=>data};}
  const stored=(window.__records[ref.col]||[]).find(d=>d.id===ref.id);
  const data = stored || (ref.col === 'hocalar' ? {ad:'Örnek Hoca',sifreVar:true} : ref.col === 'aileler' && ref.id==='veli@example.test' ? { ogrenciler: window.__students.map(s=>s.ref), dil: window.__lang, sifreVar: true }
@@ -31,7 +31,7 @@ export const Timestamp={fromDate:d=>({toDate:()=>d})};
 export const serverTimestamp=()=> 'server-time';
 const decode=d=>d&&({...d,son:d.son?Timestamp.fromDate(new Date(d.son+'T12:00:00Z')):undefined,sonraki:d.sonraki?Timestamp.fromDate(new Date(d.sonraki+'T12:00:00Z')):undefined});
 export const getDocs = async ref => {
- if(window.__dataError && ref.col.startsWith('bultenler/'))throw Error('offline');
+ if(window.__dataError && (ref.col.startsWith('bultenler/')||ref.col.startsWith('dersDefteri/')))throw Error('offline');
  if(window.__bultenDelay && ref.col.startsWith('bultenler/'))await new Promise(r=>window.__releaseBulten=r);
  if(ref.col.startsWith('evCalismalari/')){
   if(window.__cloudError)throw Error('offline');

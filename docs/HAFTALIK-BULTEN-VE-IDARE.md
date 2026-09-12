@@ -1,7 +1,7 @@
 # Haftalık bülten ve idari kayıt araçları
 
-12 Eylül 2026. Yazılı **bulletin de classe** defterinin ayrıntılı içeriği daha sonra
-kararlaştırılacak; bu sürüm portal, çıktı ve okuma takibi altyapısını hazırlar.
+12 Eylül 2026. Haftalık bülten, çıktı ve okuma takibi. Basılı **Bulletin d’école**
+günlük ders sayfalarının ayrı dijital karşılığı için [Ders Defteri](DERS-DEFTERI-ENTEGRASYONU.md).
 
 ## Hoca için kullanım
 
@@ -14,6 +14,9 @@ kararlaştırılacak; bu sürüm portal, çıktı ve okuma takibi altyapısını
 4. **Yazdır / PDF kaydet** tarayıcının A4 çıktısını açar. Aile notu ve ıslak imza
    alanları boş bırakılır. Örnek: `output/pdf/Haftalik-Bulten-Ornegi.pdf`.
 5. Bülten yeniden yüklenerek hangi velinin hangi sürümü okuduğu görülür.
+6. **Ders defterinden doldur**, seçili haftanın kaydedilmiş çalışma, ödev ve sonraki
+   adım notlarını onayla taslağa aktarır. Getirilecekler korunur; kendiliğinden
+   yayın veya e-posta gönderimi yapılmaz. Uzun metinler kesilmeden hata verilir.
 
 Arayüz TR/FR/EN dilindedir. Bülten metninin dili hocanın seçimi ve yazdığı içeriktir;
 Türkçe planı Fransızcaya çevirmiş gibi göstermez. İçerik dili sayfanın dilinden
@@ -35,7 +38,7 @@ dili, diğer çocukları ve kitap tercihleri ekleme sırasında değiştirilmez.
 İdari silme kilidi varken aynı öğrenciye veli bağlantısı eklenemez/kaldırılamaz.
 
 Aynı hoca bölümündeki **İdari kayıt dökümü ve temizlik**, seçili öğrencinin
-yoklama, ilerleme, değerlendirme, not, mesaj, ev çalışması, bülten ve bülten okuma
+yoklama, ilerleme, değerlendirme, not, mesaj, ev çalışması, ders defteri, bülten ve bülten okuma
 kayıtlarını sayar. Dökümü açmak salt okunurdur. JSON indirme yalnız seçili öğrenci
 verilerini içerir; aile bölümünde kardeşlerin verisi dışarı aktarılmaz.
 

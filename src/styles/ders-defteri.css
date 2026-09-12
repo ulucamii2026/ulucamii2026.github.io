@@ -1,0 +1,121 @@
+.ders-defteri {
+  max-width: 58rem;
+  margin-inline: auto;
+}
+.ders-defteri .dd-secim {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.ders-defteri .dd-dersler {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+}
+.dd-dersler button span,
+.dd-dersler button small,
+.dd-arsiv small {
+  display: block;
+}
+.dd-dersler button[aria-pressed="true"] {
+  border: 2px solid var(--color-kiremit);
+  font-weight: 700;
+}
+.dd-dersler button small {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.ders-defteri .dd-baslik {
+  border-block: 1px solid var(--cizgi);
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+.ders-defteri summary {
+  cursor: pointer;
+  padding: 0.7rem 0;
+}
+.ders-defteri details p {
+  font-size: 1rem;
+}
+.ders-defteri fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.ders-defteri .dd-kaydet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: var(--zemin);
+  padding: 1rem 0;
+  border-top: 1px solid var(--cizgi);
+}
+.ders-defteri .dd-kaydet button:first-child {
+  background: var(--color-kiremit);
+  color: #fff;
+  border-color: var(--color-kiremit);
+}
+.ders-defteri .dd-aciklama {
+  font-size: 0.95rem;
+}
+.dd-arsiv {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--cizgi);
+}
+.dd-arsiv ul {
+  list-style: none;
+  padding: 0;
+  max-height: 28rem;
+  overflow: auto;
+}
+.dd-arsiv li {
+  border-bottom: 1px solid var(--cizgi);
+  padding: 0.4rem 0;
+}
+.dd-arsiv li button {
+  width: 100%;
+  text-align: start;
+  border: 0;
+}
+.portal .ders-defteri textarea {
+  min-height: 6rem;
+}
+.portal .ders-defteri textarea[name="calisma"] {
+  min-height: 8rem;
+}
+.ders-defteri [data-dd-durum] {
+  min-height: 1.7em;
+  scroll-margin-top: 7rem;
+}
+@media (max-width: 600px) {
+  .ders-defteri .dd-secim {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .ders-defteri .dd-dersler {
+    grid-template-columns: 1fr;
+  }
+  .dd-dersler button span {
+    display: inline;
+    margin-left: 0.5rem;
+  }
+  .dd-dersler button small {
+    margin-top: 0.25rem;
+  }
+  .ders-defteri .dd-kaydet {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .ders-defteri .dd-kaydet button {
+    width: 100%;
+  }
+}
+
+.ders-defteri .dd-ayrinti {
+  margin-block: 1rem;
+  border-block: 1px solid var(--cizgi);
+}
+.ders-defteri :is(input, select, textarea, button) {
+  scroll-margin-block: 7rem 2rem;
+}

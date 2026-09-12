@@ -7,6 +7,20 @@ import {createHash} from 'node:crypto';
 const sandbox={module:{exports:{}}};
 runInNewContext(buildSync({entryPoints:['src/lib/ogrenme-ilerleme.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,sandbox);
 const {bosKayit,kaydiOku,tekrarKaydet,gunlukSec,tarihEkle}=sandbox.module.exports;
+
+test('Basılı ve dijital defter 87 günde 261 dersi ve 51–311. sayfaları aynı sırada eşler',()=>{
+ const plan=JSON.parse(readFileSync('src/data/yillik-plan-2026-2027.json','utf8'));
+ const katalog=JSON.parse(readFileSync('src/data/ders-defteri-2026-2027.json','utf8'));
+ const dersler=plan.gunler.flatMap(g=>g.dersler.map(d=>({tarih:g.tarih,...d})));
+ assert.equal(katalog.length,261);assert.equal(new Set(katalog.map(d=>d.tarih)).size,87);
+ assert.equal(new Set(katalog.map(d=>d.id)).size,261);
+ for(const [i,d]of katalog.entries()){
+  const k=dersler[i];assert.equal(d.id,k.tarih+'_'+k.sira);assert.equal(d.no,k.no);assert.equal(d.sayfa,i+51);
+  assert.equal(d.konu,k.konu);assert.equal(d.kaynak,k.kaynak);
+  for(const alan of ['goal_tr','goal_fr','prompt_tr','prompt_fr'])assert.ok(d[alan],d.id+':'+alan);
+  assert.ok(Object.keys(d).every(k=>['id','tarih','sira','no','hafta','sayfa','konu','kaynak','kod','goal_tr','goal_fr','prompt_tr','prompt_fr','mode','hedef_a_tr','hedef_a_fr'].includes(k)));
+ }
+});
 test('Aralıklı tekrar farklı günlerde 1, 3 ve 7 güne ilerler; aynı gün tıklama şişirmez',()=>{
  const k=bosKayit();assert.equal(tekrarKaydet(k,'a','rahat','2026-09-12'),true);assert.equal(k.tekrar.a.sonraki,'2026-09-13');
  assert.equal(tekrarKaydet(k,'a','rahat','2026-09-12'),false);assert.equal(k.tekrar.a.basamak,1);

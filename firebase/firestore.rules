@@ -21,6 +21,32 @@ service cloud.firestore {
       allow create: if hoca() && request.resource.data.keys().hasOnly(['islem','zaman'])
         && request.resource.data.islem is string && request.resource.data.zaman == request.time;
     }
+    match /dersDefteri/{ref}/kayitlar/{id} {
+      function gecerli() {
+        let d=request.resource.data;
+        return d.keys().hasOnly(['donem','tarih','sira','no','sayfa','konu','kaynak','grup','durum','giris','calisma','okunan','dikkat','oz','odev','sonraki','surum','guncelleme'])
+          && d.donem == '2026-2027' && d.tarih is string
+          && d.tarih.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+          && d.tarih >= '2026-09-01' && d.tarih <= '2027-07-31'
+          && ((d.sira == 1 && id == d.tarih + '_1') || (d.sira == 2 && id == d.tarih + '_2') || (d.sira == 3 && id == d.tarih + '_3'))
+          && d.sira is int && d.no is int && d.no >= 1 && d.no <= 261
+          && d.sayfa is int && d.sayfa == d.no + 50
+          && d.konu is string && d.konu.size() > 0 && d.konu.size() <= 200
+          && d.kaynak is string && d.kaynak.size() <= 300
+          && d.grup in ['', 'A', 'B'] && d.durum in ['islendi','kismen','ertelendi']
+          && d.giris in ['kagit','dijital'] && d.oz in ['','tekrar','destek','kendim']
+          && d.calisma is string && d.calisma.size() > 0 && d.calisma.size() <= 1800
+          && d.okunan is string && d.okunan.size() <= 400
+          && d.dikkat is string && d.dikkat.size() <= 400
+          && d.odev is string && d.odev.size() <= 1000
+          && d.sonraki is string && d.sonraki.size() <= 600
+          && d.surum is int && d.guncelleme == request.time;
+      }
+      allow read, delete: if hoca();
+      allow create: if hoca() && islemeAcik(ref) && exists(/databases/$(db)/documents/ogrenciler/$(ref)) && gecerli() && request.resource.data.surum == 1;
+      allow update: if hoca() && islemeAcik(ref) && gecerli() && request.resource.data.surum == resource.data.surum + 1
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['donem','tarih','sira','no','sayfa','konu','kaynak']);
+    }
     match /bultenler/{ref}/haftalar/{id} {
       function gecerli() {
         let d=request.resource.data;

@@ -2,7 +2,7 @@
 baslik: Politique de confidentialité
 altBaslik: Comment vos données personnelles sont traitées sur ce site.
 aciklama: Comment les données personnelles sont traitées sur le site d’Ulu Camii Marche-en-Famenne et dans le portail des parents de l’école coranique, conformément au RGPD.
-guncelleme: 2026-09-06
+guncelleme: 2026-09-12
 ---
 
 <p class="bilgi"><strong>En bref :</strong> ce site n’utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n’est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l’initiative (p. ex. inscription au cours de Coran, envoi d’un e-mail).</p>
@@ -70,6 +70,8 @@ Lorsque vous devenez membre, une fiche vous concernant est tenue. Ce registre es
 - **Registre des activités de traitement :** l’association tient un registre écrit de ses activités de traitement conformément à l’article 30 du RGPD.
 
 ## Portail des parents (école coranique) et futur espace membres
+
+**Journal de cours numérique :** Les notes saisies par l’enseignant pour chaque élève et chaque cours (travail, devoirs, lecture, autoévaluation et prochaine étape) sont réservées aux enseignants. Les textes recopiés du cahier papier sont identifiés comme tels ; aucune image de dessin ou de signature manuscrite n’est recueillie. L’enseignant peut vérifier puis publier un résumé de la semaine dans le bulletin destiné aux responsables. Les durées de conservation et les procédures administratives de consultation et de suppression du portail ci-dessous s’appliquent aussi à ces notes.
 
 **Bulletin de classe :** Les cours, les révisions, le matériel et le mot à la famille préparés par l’enseignant sont conservés dans le dossier de l’élève. Seuls ses responsables autorisés et les enseignants voient le bulletin publié. Le bouton « J’ai lu le bulletin » enregistre sa version et l’heure du serveur sous le compte du parent ; aucune image de signature manuscrite n’est recueillie. Chaque parent voit sa propre confirmation, et l’enseignant celles des responsables concernés. Les durées de conservation du portail ci-dessous s’appliquent aussi à ces données. Sur demande, l’administration peut examiner et supprimer les bulletins et confirmations avec les autres données de l’élève dans le portail.
 

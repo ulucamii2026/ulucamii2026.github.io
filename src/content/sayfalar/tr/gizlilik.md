@@ -2,7 +2,7 @@
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
 aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve Kur’an kursu veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-09-06
+guncelleme: 2026-09-12
 ---
 
 <p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
@@ -70,6 +70,8 @@ Derneğe üye olduğunuzda hakkınızda bir üye kaydı tutulur. Bu kayıt **der
 - **İşleme kaydı:** Derneğimiz, GDPR md. 30 uyarınca veri işleme faaliyetlerinin yazılı kaydını tutar.
 
 ## Veli Portalı (Kur’an Kursu) ve İleride Planlanan Üye Portalı
+
+**Dijital ders defteri:** Hocanın öğrenci ve ders bazında girdiği çalışma, ödev, okuma, öz değerlendirme ve sonraki adım notları yalnız hocalara açık saklanır. Kâğıt defterden aktarılan metinler ayrıca işaretlenir; çizim veya ıslak imza görüntüsü alınmaz. Hoca seçtiği haftanın özetini kontrol ederek haftalık bültende velilere yayımlayabilir. Bu kayıtlar da aşağıdaki portal saklama sürelerine ve idari inceleme/silme kapsamına dahildir.
 
 **Haftalık bülten:** Hocanın hazırladığı haftalık ders, evde tekrar, malzeme ve aileye not bilgileri öğrencinin portal kaydında saklanır. Yayımlanan bülteni yalnız bağlı veliler ve hocalar görür. “Okudum” düğmesi, velinin hesabı altında bülten sürümünü ve sunucu zamanını kaydeder; ıslak imza görüntüsü alınmaz. Her veli kendi okuma kaydını, hoca ilgili velilerin bildirimlerini görür. Aşağıdaki portal saklama süreleri bu kayıtlara da uygulanır. İdare, talep üzerine öğrenciye ait bülten ve okuma kayıtlarını diğer portal kayıtlarıyla birlikte inceleyip silebilir.
 

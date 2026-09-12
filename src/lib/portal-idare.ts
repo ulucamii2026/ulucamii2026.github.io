@@ -57,6 +57,7 @@ export async function portalEnvanteri(
   await Promise.all(Object.entries(kokler).map(([y, ad]) => al(y, ad, true)));
   await al(`evCalismalari/${ref}/etkinlikler`, "Evde çalışma");
   const bultenler = await al(`bultenler/${ref}/haftalar`, "Haftalık bülten");
+  await al(`dersDefteri/${ref}/kayitlar`, "Ders defteri");
   let okumalar = 0;
   await Promise.all(
     bultenler.map(async (b) => {
