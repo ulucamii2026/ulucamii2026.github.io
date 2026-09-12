@@ -301,7 +301,7 @@ for (const d of ['fr', 'en']) {
     const html = readFileSync(dosya, 'utf8');
     const govde = html.replace(/<script[\s\S]*?<\/script>/g, ' ');
     // Baslik sirasi atlanmamali (h1 -> h3 gibi)
-    const basliklar = [...govde.matchAll(/<h([1-6])/g)].map((m) => Number(m[1]));
+    const basliklar = [...govde.matchAll(/<h([1-6])\b/g)].map((m) => Number(m[1]));
     for (let i = 1; i < basliklar.length; i++) {
       if (basliklar[i] - basliklar[i - 1] > 1) {
         ekle('dusuk', 'baslik seviyesi atlaniyor', `${u} → h${basliklar[i - 1]} sonrasi h${basliklar[i]}`);
@@ -309,7 +309,7 @@ for (const d of ['fr', 'en']) {
       }
     }
     // Erisilebilir adi olmayan dugme
-    for (const m of govde.matchAll(/<button([^>]*)>([\s\S]*?)<\/button>/g)) {
+    for (const m of govde.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)) {
       const oz = m[1], ic = m[2].replace(/<[^>]+>/g, '').trim();
       if (!ic && !/aria-label=/.test(oz) && !/aria-labelledby=/.test(oz)) {
         ekle('orta', 'erisilebilir adi olmayan dugme', `${u} → ${m[0].slice(0, 60)}`);
