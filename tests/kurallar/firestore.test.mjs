@@ -82,6 +82,34 @@ test('Gelmeyen öğrencide çalışma notu boş bırakılabilir; kanonik cümle 
  // Durum 'islendi' iken boş not hâlâ reddedilir.
  await assert.rejects(()=>depo.kaydet({...k,durum:'islendi',calisma:''},kendi.surum),/çalışma notunu doldurun/);
 });
+/* KALICI KURAL (Rıdvan, 12 Eyl 2026): veliden gelen mazeret HER ZAMAN kabul edilir. */
+test('Veli mazereti kuralı: işaretsiz ve geç fark edilen «Yok» dersler mazeretli olur',async()=>{
+ const siralar=['1','2','3'];
+ // 1) Hiç işaretlenmemiş öğrenci → üç ders de mazeretli
+ let s=portal.mazeretKuraliniUygula({},['a'],siralar);
+ assert.deepEqual(s.yoklama.a.dersler,{1:'mazeret',2:'mazeret',3:'mazeret'});
+ assert.deepEqual(s.yoklama.a.veliMazereti,['1','2','3']);
+ assert.deepEqual(s.degisen,['a']);
+ // 2) Mazeret geç geldi: kaydedilmiş «yok» bir kez mazerete çevrilir
+ s=portal.mazeretKuraliniUygula({a:{dersler:{1:'yok',2:'yok',3:'yok'},not:''}},['a'],siralar);
+ assert.deepEqual(s.yoklama.a.dersler,{1:'mazeret',2:'mazeret',3:'mazeret'});
+ // 3) Gerçek katılım kuralı ezer: «var» ve «gec» korunur
+ s=portal.mazeretKuraliniUygula({a:{dersler:{1:'var',2:'gec',3:''},not:''}},['a'],siralar);
+ assert.deepEqual(s.yoklama.a.dersler,{1:'var',2:'gec',3:'mazeret'});
+ assert.deepEqual(s.yoklama.a.veliMazereti,['3']);
+ // 4) Hoca kural sonrası bilerek «yok» yaptıysa geri alınmaz (sonsuz döngü olmaz)
+ s=portal.mazeretKuraliniUygula({a:{dersler:{1:'yok',2:'mazeret',3:'mazeret'},not:'',veliMazereti:['1','2','3']}},['a'],siralar);
+ assert.deepEqual(s.yoklama.a.dersler,{1:'yok',2:'mazeret',3:'mazeret'});
+ assert.deepEqual(s.degisen,[]);
+ // 5) Mazereti olmayan öğrenciye dokunulmaz; not ve diğer alanlar korunur
+ s=portal.mazeretKuraliniUygula({a:{dersler:{1:'yok'},not:'Kendi notum'},b:{dersler:{1:'yok'},not:''}},['a'],siralar);
+ assert.equal(s.yoklama.a.not,'Kendi notum');
+ assert.deepEqual(s.yoklama.b.dersler,{1:'yok'});
+ assert.deepEqual(s.degisen,['a']);
+ // 6) Ders günü değilse (sıra yok) hiçbir şey yazılmaz
+ assert.deepEqual(portal.mazeretKuraliniUygula({},['a'],[]).degisen,[]);
+ assert.match(portal.MAZERET_KURALI,/her zaman kabul edilir/);
+});
 test('Yoklama ile ders defteri çelişkisi bildirilir',async()=>{
  assert.match(portal.yoklamaCelismesi('islendi','yok'),/Yok.*işaretli/);
  assert.match(portal.yoklamaCelismesi('gelmedi','var'),/Var.*işaretli/);

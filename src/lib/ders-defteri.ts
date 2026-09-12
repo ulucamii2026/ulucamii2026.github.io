@@ -163,6 +163,50 @@ export async function gunYoklamasi(db: Firestore, tarih: string) {
   return out;
 }
 
+/* ─────────────────────── KALICI KURAL: veli mazereti her zaman kabul edilir ───────────────────────
+   Rıdvan'ın 12 Eylül 2026 kararı: «Veliden gelen mazereti her zaman kabul ediyorum.»
+   Bu yüzden mazeret bir TIKLAMA değil, bir KURALDIR: veli o ders günü için portaldan mazeret
+   bildirdiyse öğrencinin o günkü dersleri kendiliğinden «Mazeretli» işaretlenir.
+
+   Neye dokunulmaz:
+   · «Var» veya «Geç» — çocuk mazerete rağmen gelmiş olabilir; gerçek katılım kuralı ezer.
+   · Hocanın kural uygulandıktan SONRA bilerek «Yok»a çevirdiği ders (`veliMazereti` listesinde
+     olup artık 'mazeret' olmayan sıra) — yoksa her açılışta geri dönerdi.
+   Neye dokunulur: işaretsiz ders ve mazeret geç geldiği için «Yok» kalmış ders (bir kez).
+   Yazma yine hocanın «Yoklamayı kaydet» eylemiyle olur; ekran kendiliğinden veri yazmaz. */
+export const MAZERET_KURALI =
+  "Veliden gelen mazeret her zaman kabul edilir; dersler kendiliğinden «Mazeretli» işaretlendi.";
+export type YoklamaGunu = Record<
+  string,
+  { dersler: Record<string, string>; not: string; veliMazereti?: string[] }
+>;
+export function mazeretKuraliniUygula(
+  yoklama: YoklamaGunu,
+  mazeretliRefler: string[],
+  siralar: string[],
+): { yoklama: YoklamaGunu; degisen: string[] } {
+  const sonuc: YoklamaGunu = { ...yoklama };
+  const degisen: string[] = [];
+  for (const ref of new Set(mazeretliRefler)) {
+    const eski = sonuc[ref] || { dersler: {}, not: "" };
+    const dersler = { ...eski.dersler };
+    const oto = new Set(eski.veliMazereti || []);
+    let dokundu = false;
+    for (const s of siralar) {
+      const simdi = dersler[s] || "";
+      if (simdi === "" || (simdi === "yok" && !oto.has(s))) {
+        dersler[s] = "mazeret";
+        oto.add(s);
+        dokundu = true;
+      }
+    }
+    if (!dokundu) continue;
+    sonuc[ref] = { ...eski, dersler, veliMazereti: [...oto].sort() };
+    degisen.push(ref);
+  }
+  return { yoklama: sonuc, degisen };
+}
+
 export type TopluGirdi = { ref: string; ders: DefterDersi; durum: DersKaydi["durum"] };
 /**
  * Gelmeyen öğrencilerin o günkü defter kayıtlarını tek işlemde açar. VAR OLAN KAYDA DOKUNMAZ

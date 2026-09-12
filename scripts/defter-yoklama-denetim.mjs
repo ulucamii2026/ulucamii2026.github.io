@@ -1,7 +1,16 @@
 /**
- * Ders defteri ↔ yoklama tutarlılık denetimi (hoca hesabıyla, salt okuma; `--duzelt` ile onarır).
+ * Veli mazereti → yoklama → ders defteri tutarlılık denetimi
+ * (hoca hesabıyla, salt okuma; `--duzelt` ile onarır).
  *
- * NE DENETLER
+ * 1. KALICI KURAL — veli mazereti her zaman kabul edilir
+ *   `bildirimler` içinde `tur: 'mazeret'` ve `tarih: <ders günü>` olan bir veli mesajı varsa,
+ *   o öğrencinin o günkü dersleri `mazeret` sayılır. Betik yoklamada «yok» kalmış dersleri
+ *   bulur; `--duzelt` bunları `mazeret` yapar ve `veliMazereti` izini yazar.
+ *   Dokunulmayanlar: «var»/«gec» (çocuk mazerete rağmen gelmiş) ve hocanın kural uygulandıktan
+ *   SONRA bilerek «yok»a çevirdiği ders (`veliMazereti` listesinde olanlar). Aynı kural hoca
+ *   ekranında da işler (src/lib/ders-defteri.ts → mazeretKuraliniUygula).
+ *
+ * 2. YOKLAMA → DERS DEFTERİ
  *   Her `dersDefteri/{ref}/kayitlar/{tarih}_{sıra}` kaydı için o günün `yoklama/{ref}_{tarih}`
  *   belgesindeki aynı sıranın durumuna bakar:
  *     yoklama «yok»     → defter durumu `gelmedi`     olmalı
@@ -18,9 +27,10 @@
  *   HOCA_EPOSTA=… HOCA_SIFRE=… node scripts/defter-yoklama-denetim.mjs            # rapor
  *   HOCA_EPOSTA=… HOCA_SIFRE=… node scripts/defter-yoklama-denetim.mjs --duzelt   # durumu düzeltir
  *
- *   `--duzelt` YALNIZ `durum` alanını değiştirir; hocanın yazdığı metinlere (calisma, odev,
- *   okunan, dikkat, sonraki) dokunmaz ve eksik kayıt AÇMAZ — onu hoca ekranındaki
- *   «Gelmeyenlerin defterini doldur» düğmesi yapar.
+ *   `--duzelt` yalnız yoklamanın `dersler`/`veliMazereti` alanlarını ve defterin `durum` alanını
+ *   değiştirir; hocanın yazdığı metinlere (calisma, odev, okunan, dikkat, sonraki, yoklama notu)
+ *   dokunmaz, eksik defter kaydı AÇMAZ (onu hoca ekranındaki «Gelmeyenlerin defterini doldur»
+ *   düğmesi yapar) ve hiç alınmamış yoklamayı oluşturmaz.
  *
  * ÇIKIŞ KODU: tutarsızlık kaldıysa 1.
  */
@@ -51,17 +61,55 @@ await signInWithEmailAndPassword(getAuth(app), HOCA_EPOSTA, HOCA_SIFRE);
 const db = getFirestore(app);
 
 const ogrenciler = (await getDocs(collection(db, 'ogrenciler'))).docs.map((d) => ({ ref: d.id, ...d.data() }));
-const yoklama = {};
-for (const d of (await getDocs(collection(db, 'yoklama'))).docs) {
+const adi = (r) => { const o = ogrenciler.find((x) => x.ref === r); return o ? `${o.ad} ${o.soyad}` : r; };
+
+const yoklamaBelgeleri = (await getDocs(collection(db, 'yoklama'))).docs.map((d) => {
   const v = d.data();
-  const ref = v.ref || d.id.split('_')[0];
-  const ders = v.dersler && typeof v.dersler === 'object'
-    ? v.dersler
-    : v.durum ? { 1: v.durum, 2: v.durum, 3: v.durum } : {};
-  (yoklama[ref] ??= {})[v.tarih] = ders;
+  return {
+    id: d.id,
+    ref: v.ref || d.id.split('_')[0],
+    tarih: v.tarih,
+    dersler: v.dersler && typeof v.dersler === 'object'
+      ? { ...v.dersler }
+      : v.durum ? { 1: v.durum, 2: v.durum, 3: v.durum } : {},
+    veliMazereti: Array.isArray(v.veliMazereti) ? v.veliMazereti : [],
+  };
+});
+
+/* ── 1. KALICI KURAL: veliden gelen mazeret her zaman kabul edilir ───────────────────────────── */
+const mazeretGunleri = new Set(
+  (await getDocs(collection(db, 'bildirimler'))).docs
+    .map((d) => d.data())
+    .filter((b) => b.tur === 'mazeret' && b.tarih && b.ref)
+    .map((b) => `${b.ref}|${b.tarih}`),
+);
+const mazeretBulgulari = [];
+for (const y of yoklamaBelgeleri) {
+  if (!mazeretGunleri.has(`${y.ref}|${y.tarih}`)) continue;
+  const oto = new Set(y.veliMazereti);
+  const siralar = Object.keys(y.dersler).filter((s) => y.dersler[s] === 'yok' && !oto.has(s));
+  // `y` referansı korunur: düzeltme sonrası aşağıdaki defter denetimi güncel hâli görsün.
+  if (siralar.length) mazeretBulgulari.push({ y, siralar, oto });
+}
+if (!mazeretBulgulari.length) console.log('TEMİZ: veli mazereti olan hiçbir ders «Yok» kalmamış.');
+else {
+  console.log(`\nVELİ MAZERETİ VARKEN «YOK» İŞARETLİ — ${mazeretBulgulari.length} gün:`);
+  for (const b of mazeretBulgulari)
+    console.log(`  ${b.y.tarih}  ${adi(b.y.ref).padEnd(22)} ders ${b.siralar.join(', ')} → mazeret`);
+}
+if (DUZELT && mazeretBulgulari.length) {
+  for (const b of mazeretBulgulari) {
+    for (const s of b.siralar) { b.y.dersler[s] = 'mazeret'; b.oto.add(s); }
+    b.y.veliMazereti = [...b.oto].sort();
+    await updateDoc(doc(db, 'yoklama', b.y.id), {
+      dersler: b.y.dersler, veliMazereti: b.y.veliMazereti, zaman: serverTimestamp(),
+    });
+  }
+  console.log(`${mazeretBulgulari.length} günün yoklaması mazeretli olarak düzeltildi.`);
 }
 
-const adi = (r) => { const o = ogrenciler.find((x) => x.ref === r); return o ? `${o.ad} ${o.soyad}` : r; };
+const yoklama = {};
+for (const y of yoklamaBelgeleri) (yoklama[y.ref] ??= {})[y.tarih] = y.dersler;
 const bulgular = [];
 const eksikler = [];
 let kayitSayisi = 0;
@@ -100,4 +148,4 @@ if (DUZELT && bulgular.length) {
   console.log(`\n${bulgular.length} kaydın durumu düzeltildi. Hocanın yazdığı metinlere dokunulmadı.`);
   process.exit(0);
 }
-process.exit(bulgular.length ? 1 : 0);
+process.exit(bulgular.length || mazeretBulgulari.length ? 1 : 0);

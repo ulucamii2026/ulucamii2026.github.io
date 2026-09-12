@@ -3,6 +3,7 @@ import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
 import type { Tekrar } from '../lib/ogrenme-ilerleme';
 import { hocaBulteni } from './hoca-bulten';
 import { portalVeliBagi } from '../lib/portal-idare';
+import { mazeretKuraliniUygula, MAZERET_KURALI, type YoklamaGunu } from '../lib/ders-defteri';
 /**
  * Hoca ekranı tarayıcı uygulaması (6 Eyl 2026) — yalnız Türkçe. Firebase Auth + Firestore (lite), sunucu yok.
  * Yetki: hocalar/{uid} belgesi (firebase/firestore.rules → hoca()). Bu ekran veli portalının (veli-portali.ts) veri
@@ -19,7 +20,7 @@ type Ogr = { ref: string; ad: string; soyad: string; veliler?: string[]; dil?: s
 type Aile = { eposta: string; ogrenciler: string[]; dil?: string; iletisimDili?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string;
   /* Veli portalındaki «Ders kitabı ve materyal» kartının yanıtı: öğrenci ref'i → {secim, zaman} */
   kitapSecim?: Record<string, { secim: string; zaman: string }> };
-type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum?: string; not?: string };
+type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum?: string; not?: string; veliMazereti?: string[] };
 type Ilerleme = { kuranAdim?: number; ezber?: Record<string, string>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string; rozet?: string };
 type Kayit = Record<string, unknown> & { id: string };
 
@@ -137,10 +138,14 @@ export async function hocaEkrani(): Promise<void> {
 
   /* ---------------------------------------------------------------- durum */
   type Durum = {
-    uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: Record<string, { dersler: Record<string, string>; not: string }>;
+    uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: YoklamaGunu;
     evCalismasi?:Record<string,Tekrar>|null; secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
     /** Seçili ders gününe ait veli mazeretleri (yoklama ekranındaki şerit). */
     gunMazeretleri: Kayit[];
+    /** Mazeret kuralının bu açılışta kendiliğinden işaretlediği öğrenciler (kaydedilmeyi bekler). */
+    mazeretKuraliDegisen: string[];
+    /** Veli mazereti bildirilmiş bütün ders günleri — gün listesinde işaretlenir. */
+    mazeretGunleri: string[];
   };
   let S: Durum | null = null;
   let bultenTemizle: (()=>void)|undefined;
@@ -162,8 +167,15 @@ export async function hocaEkrani(): Promise<void> {
       uid: user.uid, ad: String((h.data() as { ad?: string }).ad || ''), sekme: 'yoklama',
       ogrenciler: ogr.map((o) => ({ ...(o as unknown as Ogr), ref: o.id })).sort((x, y) => (x.soyad + x.ad).localeCompare(y.soyad + y.ad, 'tr')),
       aileler: (aile as unknown as Aile[]).map((x) => ({ ...x, eposta: (x as unknown as Kayit).id as string })),
-      tarih: varsayilanTarih(), yoklama: {}, gunMazeretleri: [], secili: '', ilerleme: null, degerlendirme: [], notlar: [], hafta: varsayilanHafta(), odevler: [], duyurular: [], bildirimler: [],
+      tarih: varsayilanTarih(), yoklama: {}, gunMazeretleri: [], mazeretKuraliDegisen: [], mazeretGunleri: [], secili: '', ilerleme: null, degerlendirme: [], notlar: [], hafta: varsayilanHafta(), odevler: [], duyurular: [], bildirimler: [],
     };
+    /* Kural geçmiş günleri de kapsar: hoca yoklamayı kaydettikten SONRA gelen bir mazeret ancak
+       o gün yeniden açılınca işlenir. Bu yüzden mazeret bildirilmiş bütün günler gün listesinde
+       işaretlenir — hoca hangi güne dönmesi gerektiğini görür. */
+    S!.mazeretGunleri = [...new Set(
+      (await kayitlar('bildirimler', fs.where('tur', '==', 'mazeret')).catch(() => [] as Kayit[]))
+        .map((b) => String(b.tarih || '')).filter(Boolean),
+    )];
     await yoklamaYukle();
     ciz();
   };
@@ -178,8 +190,19 @@ export async function hocaEkrani(): Promise<void> {
       kayitlar('bildirimler', fs.where('tarih', '==', S.tarih)).catch(() => [] as Kayit[]),
     ]);
     if (!S) return;
-    S.yoklama = {}; (k as unknown as Yok[]).forEach((y) => { const ders = y.dersler && typeof y.dersler === 'object' ? { ...y.dersler } : (y.durum ? { '1': y.durum, '2': y.durum, '3': y.durum } : {}); S!.yoklama[y.ref] = { dersler: ders, not: y.not || '' }; });
+    S.yoklama = {}; (k as unknown as Yok[]).forEach((y) => { const ders = y.dersler && typeof y.dersler === 'object' ? { ...y.dersler } : (y.durum ? { '1': y.durum, '2': y.durum, '3': y.durum } : {}); S!.yoklama[y.ref] = { dersler: ders, not: y.not || '', veliMazereti: Array.isArray(y.veliMazereti) ? y.veliMazereti : undefined }; });
     S.gunMazeretleri = m.filter((x) => x.tur === 'mazeret').sort((x, y) => zamanMs(y.zaman) - zamanMs(x.zaman));
+    /* KALICI KURAL: veli mazereti her zaman kabul edilir (src/lib/ders-defteri.ts). Kural burada,
+       gün her açıldığında uygulanır; hoca tıklamak zorunda değil. Yazma yine «Yoklamayı kaydet»le. */
+    const gun = veri.gunler.find((x) => x.tarih === S!.tarih);
+    const aktifRef = new Set(S.ogrenciler.filter((o) => o.durum !== 'pasif').map((o) => o.ref));
+    const sonuc = mazeretKuraliniUygula(
+      S.yoklama,
+      S.gunMazeretleri.map((x) => String(x.ref || '')).filter((r) => aktifRef.has(r)),
+      (gun ? gun.dersler : []).map((d) => String(d.no)),
+    );
+    S.yoklama = sonuc.yoklama;
+    S.mazeretKuraliDegisen = sonuc.degisen;
   };
   let ogrenciIstek=0;
   const ogrenciYukle = async (ref: string) => {
@@ -214,14 +237,15 @@ export async function hocaEkrani(): Promise<void> {
       govde = `<section class="bolum">
         <h2>${simge('takvim')}Yoklama</h2>
         <div class="izgara-2">
-          <label>Ders günü<select data-yoklama-tarih>${veri.gunler.map((x) => `<option value="${x.tarih}" ${x.tarih === S!.tarih ? 'selected' : ''}>${esc(tarihYaz(x.tarih, { weekday: 'short', day: 'numeric', month: 'short' }))} · ${x.hafta}. hafta</option>`).join('')}</select></label>
+          <label>Ders günü<select data-yoklama-tarih>${veri.gunler.map((x) => `<option value="${x.tarih}" ${x.tarih === S!.tarih ? 'selected' : ''}>${esc(tarihYaz(x.tarih, { weekday: 'short', day: 'numeric', month: 'short' }))} · ${x.hafta}. hafta${S!.mazeretGunleri.includes(x.tarih) ? ' · veli mazereti' : ''}</option>`).join('')}</select></label>
           <div><label>&nbsp;</label><button type="button" class="dugme dugme-ikincil" data-eylem="hepsiVar">Tümünü «geldi» işaretle</button></div>
         </div>
         ${gunDersler.length ? `<p class="kucuk">${gunDersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p><p class="kucuk">Her öğrencinin üç dersi ayrı ayrı işaretlenir; yalnız işaretlenen dersler kaydedilir.</p>` : '<p class="kucuk">Bu gün ders yok (tatil).</p>'}
         ${S.yukleniyor ? '<p class="not">Yükleniyor…</p>' : ''}
         ${!S.yukleniyor && S.gunMazeretleri.length ? `<div class="mazeret-serit" data-mazeret-serit>
           <h3>${simge('zarf')}Bu ders günü için ${S.gunMazeretleri.length} veli mazereti</h3>
-          <p class="kucuk">Veliler portaldan bildirdi. İşaretlemeden önce okuyun; mazereti kabul etmek sizin kararınız. Yanıt yazmak için «Veli bildirimleri» sekmesini kullanın.</p>
+          <p class="kucuk"><b>Kalıcı kural:</b> veliden gelen mazeret her zaman kabul edilir. Bu öğrencilerin günün dersleri kendiliğinden «Mazeretli» işaretlenir; gerekirse aşağıdan tek tek değiştirebilirsiniz. Yanıt yazmak için «Veli bildirimleri» sekmesini kullanın.</p>
+          ${S.mazeretKuraliDegisen.length ? `<p class="mazeret-oto" data-mazeret-oto>${esc(MAZERET_KURALI)} <b>${S.mazeretKuraliDegisen.length} öğrenci</b> — henüz kaydedilmedi, «Yoklamayı kaydet» deyin.</p>` : ''}
           <ul class="liste">${S.gunMazeretleri.map((m) => { const r = String(m.ref || ''); const hepsiMazeret = gunDersler.length > 0 && gunDersler.every((d) => (S!.yoklama[r]?.dersler || {})[String(d.no)] === 'mazeret'); return `<li>
             <div><b>${esc(ogrAdi(r))}</b>${m.okundu ? '' : '<span class="rozet">okunmadı</span>'}<span class="kucuk"> · ${esc(zamanYaz(m.zaman))}</span></div>
             <p class="mazeret-metin">${esc(String(m.metin || ''))}</p>
@@ -485,21 +509,26 @@ export async function hocaEkrani(): Promise<void> {
         const ref = el.dataset.mazeretUygula;
         const gun = veri.gunler.find((x) => x.tarih === S!.tarih);
         const y = S.yoklama[ref] || { dersler: {}, not: '' };
-        (gun ? gun.dersler : []).forEach((d) => { y.dersler[String(d.no)] = 'mazeret'; });
-        S.yoklama[ref] = y; ciz();
+        const oto = new Set(y.veliMazereti || []);
+        (gun ? gun.dersler : []).forEach((d) => { y.dersler[String(d.no)] = 'mazeret'; oto.add(String(d.no)); });
+        S.yoklama[ref] = { ...y, veliMazereti: [...oto].sort() }; ciz();
         ustMesaj(`${ogrAdi(ref)} günün derslerinde mazeretli işaretlendi. Kaydetmeyi unutmayın.`);
         return;
       }
-      if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '' }; }); ciz(); return; }
+      if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '', veliMazereti: S!.yoklama[o.ref]?.veliMazereti }; }); S.mazeretKuraliDegisen = []; ciz(); return; }
       if (el.dataset.eylem === 'yoklamaKaydet') {
         kok.querySelectorAll<HTMLInputElement>('[data-yok-not]').forEach((i) => { const ref = i.dataset.yokNot!; const not = i.value.trim(); const y = S!.yoklama[ref]; if (y) y.not = not; else if (not) S!.yoklama[ref] = { dersler: {}, not }; });
         const b = fs.writeBatch(db); let n = 0;
         for (const [ref, y] of Object.entries(S.yoklama)) {
           const id = fs.doc(db, 'yoklama', `${ref}_${S.tarih}`);
           const dersler: Record<string, string> = {}; for (const s of Object.keys(y.dersler)) if (y.dersler[s]) dersler[s] = y.dersler[s];
-          if (Object.keys(dersler).length || y.not) { b.set(id, { ref, tarih: S.tarih, dersler, not: y.not || '', kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
+          // veliMazereti: kuralın hangi dersleri kendiliğinden işaretlediği. Hoca sonradan «Yok»a
+          // çevirirse kural o dersi bir daha geri almasın diye kaydedilir (bkz. mazeretKuraliniUygula).
+          const oto = (y.veliMazereti || []).filter((s) => dersler[s]);
+          if (Object.keys(dersler).length || y.not) { b.set(id, { ref, tarih: S.tarih, dersler, not: y.not || '', ...(oto.length ? { veliMazereti: oto } : {}), kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
         }
-        await b.commit(); ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
+        await b.commit(); S.mazeretKuraliDegisen = []; ciz();
+        ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
       }
       if (el.dataset.ogr) { kok.querySelector('#ogrenci-karti')?.remove(); await ogrenciYukle(el.dataset.ogr); ciz(); kok.querySelector('#ogrenci-karti')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
       if (el.dataset.eylem === 'whatsappKarneKopyala') {
@@ -588,7 +617,7 @@ export async function hocaEkrani(): Promise<void> {
   kok.addEventListener('change', async (ev) => {
     const t = ev.target as HTMLSelectElement;
     if (!S) return;
-    if (t.matches('[data-yoklama-tarih]')) { S.tarih = t.value; S.yoklama = {}; S.gunMazeretleri = []; S.yukleniyor = true; ciz(); await yoklamaYukle(); S.yukleniyor = false; ciz(); } // yükleme bitmeden tıklanan işaretler kaybolmasın diye liste önce kapatılır
+    if (t.matches('[data-yoklama-tarih]')) { S.tarih = t.value; S.yoklama = {}; S.gunMazeretleri = []; S.mazeretKuraliDegisen = []; S.yukleniyor = true; ciz(); await yoklamaYukle(); S.yukleniyor = false; ciz(); } // yükleme bitmeden tıklanan işaretler kaybolmasın diye liste önce kapatılır
     if (t.matches('[data-hafta]')) { S.hafta = Number(t.value); ciz(); }
   });
 

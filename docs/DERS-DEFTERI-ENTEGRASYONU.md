@@ -8,8 +8,8 @@ telefonundan aynı öğrenci, gün ve ders altında girer.
 
 1. `/hoca/` → **Ders Defteri** → öğrenci → ders günü → 1., 2. veya 3. ders.
 2. Ekrandaki basılı sayfa numarasıyla kâğıt defterdeki sayfayı karşılaştırın.
-3. Dersin durumunu seçin, çalışma notunu ve varsa ödevi yazın. Kaynak varsayılanı
-   **Kâğıt defterden aktarıyorum**; doğrudan dijital giriş de seçilebilir.
+3. Dersin durumunu seçin, çalışma notunu ve varsa ödevi yazın. Kaynak menüsü son
+   seçiminizi hatırlar; varsayılan **Doğrudan dijitale yazıyorum**.
 4. **Diğer defter alanları** gerektiğinde açılır: Kur’an dersinde grup, okunan
    bölüm ve dikkat noktası; sonraki adım ve öğrencinin öz değerlendirmesi.
    Grup ve öz değerlendirme boş başlar; öğrencinin beyanı başarı notu sayılmaz.
@@ -24,6 +24,58 @@ girilen metinlerin dökümüdür; çizimleri veya ıslak imzaları taramaz. Otom
 çocuk fotoğrafı, imza görüntüsü ve ek kişisel dosya yükleme bu kapsamda yoktur.
 Sunucuya kaydedilmemiş taslak tarayıcı kapatıldığında kurtarılamaz. Arşiv her
 dersin son kaydını ve sürümünü saklar; eski sürümlerin ayrı geçmişi tutulmaz.
+
+## KALICI KURAL — veliden gelen mazeret her zaman kabul edilir
+
+Rıdvan'ın 12 Eylül 2026 kararı: **veli portaldan bir ders günü için mazeret
+bildirdiyse o mazeret her zaman kabul edilir.** Bu yüzden mazeret bir tıklama
+değil, bir kuraldır; ekran onu kendiliğinden uygular.
+
+- **Yoklama** sekmesinde gün açılırken o güne ait veli mazeretleri okunur ve ilgili
+  öğrencinin günün dersleri **Mazeretli** işaretlenir. Şerit hem mazeret metnini hem
+  de kuralı yazar. Yazma yine **Yoklamayı kaydet** ile olur; ekran kendiliğinden
+  sunucuya veri yazmaz.
+- **Dokunulmayanlar:** «Var» ve «Geç» — çocuk mazerete rağmen gelmiş olabilir, gerçek
+  katılım kuralı ezer. Ayrıca hocanın kural uygulandıktan *sonra* bilerek «Yok»a
+  çevirdiği ders geri alınmaz; bunun izi yoklama belgesindeki `veliMazereti`
+  alanında (kuralın işaretlediği sıralar) tutulur, yoksa her açılışta geri dönerdi.
+- **Geç gelen mazeret:** yoklama alınıp «Yok» yazıldıktan sonra veli mazeret
+  bildirirse, gün bir sonraki açılışta **bir kez** düzeltilir. Hoca o güne hiç
+  dönmeyebileceği için **ders günü listesinde** mazeret bildirilen günler
+  «· veli mazereti» diye işaretlenir.
+- **Ders defteri** yoklamayı izlediği için kayıt kendiliğinden `mazeretli` olur ve
+  kanonik not «Mazereti bildirildi; derse gelmedi.» yazılır.
+- Kuralın tek kaynağı `mazeretKuraliniUygula` (`src/lib/ders-defteri.ts`); aynı
+  işlev hem hoca ekranında hem `npm run denetim:defter` betiğinde kullanılır.
+- Bu kural **veliye duyurulmaz**; portal metinlerinde «mazeretiniz her zaman kabul
+  edilir» yazmaz. Kural hocanın iç işleyişidir.
+- Veri ayrımı korunur: `mazeret` (veli bildirdi) ile `yok` (bildirim yok) ayrı
+  kalır, dolayısıyla devam istatistiği anlamını yitirmez.
+
+## Gelmeyen öğrencinin kaydı
+
+`gelmedi` ve `mazeretli` ders durumları 12 Eylül 2026'da eklendi. Öncesinde yalnız
+üç durum vardı (`islendi`, `kismen`, `ertelendi`) ve gelmeyen öğrencinin kaydı da
+`islendi` yazılıyordu; ders o öğrenciye **işlenmiş** görünüyordu. O günün 45
+kaydının 30'u böyleydi ve hoca «gelmedi.», «Derse katılmadı.», «Ya, işte yoktu.»
+gibi on beşten fazla farklı cümleyi elle yazmıştı.
+
+- Defter paneli günün yoklamasını okur; durum oradan gelir, ders düğmelerinde ve
+  form başlığında yoklama rozeti görünür.
+- Gelmeyen derste çalışma notu **zorunlu değildir**; boş bırakılırsa kanonik cümleyi
+  depo yazar (`GELMEDI_NOTU`). Hoca kendi cümlesini yazarsa ona dokunulmaz.
+- Yoklamayla çelişen bir durum seçilirse uyarı çıkar, **kayıt engellenmez**.
+- **Gelmeyenlerin defterini doldur** düğmesi, yoklamada gelmemiş sayılan ve henüz
+  kaydı olmayan dersler için kayıt açar. Var olan kayda asla dokunmaz (yalnız
+  `create`; Firestore kuralı da mevcut belgeye `surum: 1` yazılmasını reddeder).
+- **Kaydet ve sonraki derse geç** günün son dersinden sonra ertesi güne değil, aynı
+  günün ilk dersinde **sıradaki öğrenciye** geçer.
+
+`npm run denetim:defter` (`scripts/defter-yoklama-denetim.mjs`, hoca hesabıyla salt
+okuma) iki zinciri birden denetler: veli mazereti → yoklama, yoklama → defter
+durumu. `--duzelt` yalnız yoklamanın `dersler`/`veliMazereti` alanlarını ve defterin
+`durum` alanını değiştirir; hocanın yazdığı metinlere dokunmaz, eksik defter kaydı
+açmaz, alınmamış yoklamayı oluşturmaz.
 
 ## Haftalık bülten bağlantısı
 
