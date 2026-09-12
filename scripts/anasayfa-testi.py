@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Ana sayfa etkileşim ve erişilebilirlik denetimi — 4 Eylül 2026'da eklenen davranışların
-gerilemesini yakalamak için. Otomatik testtir, çıkış kodu 0 = hepsi geçti.
+Ana sayfa etkileşim ve erişilebilirlik denetimi. Güncel GundemVitrini bileşeninin
+gerilemesini yakalamak için çalışır; çıkış kodu 0 = hepsi geçti.
 
 Denetlenenler:
-  · WCAG 2.2.2 (Pause, Stop, Hide) — duraklat düğmesi hem hero slaydını hem duyuru şeridini
+  · WCAG 2.2.2 (Pause, Stop, Hide) — duraklat düğmesi hem gündem vitrini hem duyuru şeridini
     gerçekten durduruyor mu, tercih yeniden yüklemede korunuyor mu
   · prefers-reduced-motion: reduce diyen ziyaretçide otomatik hareketin VARSAYILAN olarak durması
   · WCAG 2.5.8 — 24x24 px altında dokunma hedefi kalmaması (sr-only atlama bağlantısı muaf)
@@ -29,31 +29,36 @@ with sync_playwright() as p:
     ctx = b.new_context(viewport={"width": 1280, "height": 900}, locale="tr-TR")
     pg = ctx.new_page(); pg.goto(URL, wait_until="load"); pg.wait_for_timeout(1200)
     kontrol("varsayılan hareket açık", pg.evaluate("document.documentElement.dataset.hareket") == "acik")
-    d = pg.locator("#hero-duraklat")
-    kontrol("duraklat düğmesi var", d.count() == 1)
-    kontrol("aria-pressed=false", d.get_attribute("aria-pressed") == "false")
+    d = pg.locator("#gv-play-pause")
+    duraklat_var = d.count() == 1
+    kontrol("gündem vitrin duraklat düğmesi var", duraklat_var)
+    if duraklat_var:
+        kontrol("başlangıçta durdur etiketi", d.get_attribute("aria-label") == d.get_attribute("data-durdur"))
+        kontrol("aria-pressed kullanılmıyor", d.get_attribute("aria-pressed") is None)
 
-    # 2) Slayt kendiliğinden ilerliyor mu (8 sn tempo)
-    ilk = pg.evaluate("document.querySelector('#hero-slayt .hero-kare.aktif')?.dataset.slayt")
-    pg.wait_for_timeout(9500)
-    ikinci = pg.evaluate("document.querySelector('#hero-slayt .hero-kare.aktif')?.dataset.slayt")
+    # 2) Slayt kendiliğinden ilerliyor mu (10 sn tempo)
+    ilk = pg.evaluate("document.querySelector('.gv-sahne__slide[aria-hidden=\"false\"]')?.dataset.index")
+    pg.wait_for_timeout(10500)
+    ikinci = pg.evaluate("document.querySelector('.gv-sahne__slide[aria-hidden=\"false\"]')?.dataset.index")
     kontrol("slayt otomatik ilerliyor", ilk != ikinci, f"{ilk} → {ikinci}")
 
-    # 3) Duraklat → hem slayt hem şerit durmalı
-    d.click(); pg.wait_for_timeout(400)
-    kontrol("duraklat sonrası aria-pressed=true", d.get_attribute("aria-pressed") == "true")
-    kontrol("kök öğe durdu", pg.evaluate("document.documentElement.dataset.hareket") == "durdu")
-    kare0 = pg.evaluate("document.querySelector('#hero-slayt .hero-kare.aktif')?.dataset.slayt")
-    mesaj0 = pg.evaluate("document.querySelector('#duyuru-seridi .serit-mesaj.aktif')?.dataset.mesaj")
-    pg.wait_for_timeout(11000)
-    kare1 = pg.evaluate("document.querySelector('#hero-slayt .hero-kare.aktif')?.dataset.slayt")
-    mesaj1 = pg.evaluate("document.querySelector('#duyuru-seridi .serit-mesaj.aktif')?.dataset.mesaj")
-    kontrol("duraklatınca slayt durdu", kare0 == kare1, f"{kare0} = {kare1}")
-    kontrol("duraklatınca şerit durdu", mesaj0 == mesaj1, f"{mesaj0} = {mesaj1}")
+    # 3) Duraklat → hem gündem vitrini hem duyuru şeridi durmalı
+    if duraklat_var:
+        d.click(); pg.wait_for_timeout(400)
+        kontrol("duraklat sonrası oynat etiketi", d.get_attribute("aria-label") == d.get_attribute("data-oynat"))
+        kontrol("kök öğe durdu", pg.evaluate("document.documentElement.dataset.hareket") == "durdu")
+        kare0 = pg.evaluate("document.querySelector('.gv-sahne__slide[aria-hidden=\"false\"]')?.dataset.index")
+        mesaj0 = pg.evaluate("document.querySelector('#duyuru-seridi .serit-mesaj.aktif')?.dataset.mesaj")
+        pg.wait_for_timeout(11000)
+        kare1 = pg.evaluate("document.querySelector('.gv-sahne__slide[aria-hidden=\"false\"]')?.dataset.index")
+        mesaj1 = pg.evaluate("document.querySelector('#duyuru-seridi .serit-mesaj.aktif')?.dataset.mesaj")
+        kontrol("duraklatınca vitrin durdu", kare0 == kare1, f"{kare0} = {kare1}")
+        kontrol("duraklatınca şerit durdu", mesaj0 == mesaj1, f"{mesaj0} = {mesaj1}")
 
     # 4) Tercih kalıcı mı
-    pg.reload(wait_until="load"); pg.wait_for_timeout(900)
-    kontrol("tercih yeniden yüklemede korunuyor", pg.evaluate("document.documentElement.dataset.hareket") == "durdu")
+    if duraklat_var:
+        pg.reload(wait_until="load"); pg.wait_for_timeout(900)
+        kontrol("tercih yeniden yüklemede korunuyor", pg.evaluate("document.documentElement.dataset.hareket") == "durdu")
     ctx.close()
 
     # 5) prefers-reduced-motion: varsayılan DURMUŞ olmalı

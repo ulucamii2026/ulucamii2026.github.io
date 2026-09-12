@@ -12,7 +12,8 @@ yerleşimde kalır; metin dili `Dil` seçimine göre çevrilir.
 
 ## Kompozisyon
 
-`HeroSlayt.astro` ve `GundemVitrini.astro` güncel yayınları üstte toplar.
+`GundemVitrini.astro` güncel yayınları üstte toplar; ana sayfa çalışma zamanı
+vitrini bu bileşendir.
 `AnaSayfaAkisi.astro` haftalık yaşam, duyurular/takvim, hizmetler, ziyaret ve
 bağış bantlarını ritimlendirir. Masaüstünde iki kolon bilgi karşılaştırmasını
 kolaylaştırır; telefonda her bölüm tek kolona iner.
@@ -20,10 +21,12 @@ kolaylaştırır; telefonda her bölüm tek kolona iner.
 ## Görsel ve hareket
 
 İlk vitrin görseli eager, devamı lazy yüklenir; posterler yerel medya yolundan
-gelir. Otomatik geçişin yanında önce/sonra, duraklat ve seçim bağlantıları
-vardır. Kullanıcı azaltılmış hareket seçtiğinde geçişler görünür durumları
-bozmadan kapanır. Üçüncü taraf video veya küçük resim isteği ilk yüklemede
-başlatılmaz.
+gelir ve doğal oranı korunur. Poster çevresindeki boşluklar aynı görselden
+türetilen yumuşak bir arka planla dengelenir; görsel kırpılmaz. Otomatik geçişin
+yanında önce/sonra, duraklat ve seçim bağlantıları vardır. Duraklatma tercihi
+vitrinle duyuru şeridini birlikte kontrol eder ve yeniden yüklemede korunur.
+Kullanıcı azaltılmış hareket seçtiğinde otomatik geçiş varsayılan olarak kapalıdır.
+Üçüncü taraf video veya küçük resim isteği ilk yüklemede başlatılmaz.
 
 ## İçerik sınırları
 

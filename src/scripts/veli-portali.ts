@@ -223,6 +223,9 @@ export async function veliPortali(): Promise<void> {
     if ('speechSynthesis' in window) {
       try { window.speechSynthesis.cancel(); } catch {}
     }
+    try {
+      kok.querySelectorAll('.oynuyor').forEach((el) => el.classList.remove('oynuyor'));
+    } catch {}
   };
 
   const harekeliSeslendir = (harfId: string, harekeId: HarekeTuru, harfMetni: string) => {
@@ -747,29 +750,30 @@ export async function veliPortali(): Promise<void> {
                   </div>
                 </div>
 
-                <div class="kesif-kutusu gunun-hadisi-kutu">
+                <div class="kesif-kutusu gunun-hadisi-kutu hadis-tezyinat-kart">
                   <div class="kesif-etiket-satir hadis-baslik-satir">
-                    <span class="kesif-rozet hadis-rozet">✦ ${esc(m.gununHadisi)}</span>
-                    <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-ses-btn hadis-ana-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiDinle)}">
-                      🔊 <span>${esc(m.hadisiDinle)}</span>
+                    <span class="kesif-rozet hadis-rozet">✦ ${dil === 'fr' ? 'HADITH DU JOUR • ÉTHIQUE PROPHÉTIQUE' : dil === 'en' ? 'HADITH OF THE DAY • PROPHETIC ETHICS' : 'GÜNÜN NEBEVÎ AHLÂK HADİSİ'}</span>
+                    <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-ses-btn hadis-ana-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
+                      🔊 <span>${dil === 'fr' ? 'Écouter en arabe' : dil === 'en' ? 'Listen Arabic' : 'Arapça Dinle'}</span>
                     </button>
                   </div>
                   <div class="gunun-hadisi-govde">
-                    <!-- ARAPÇA HADİS METNİ (ORTALI & PRO SES) -->
-                    <button type="button" class="hadis-arapca hadis-arapca-btn hadis-ortali" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
-                      ${esc(gununHadisi.arapca)}
+                    <!-- ARAPÇA HADİS METNİ (ORTALI, İSLAMİ TEZYİNATLI & TIKLAYINCA PRO STÜDYO SESİ) -->
+                    <button type="button" class="hadis-arapca hadis-arapca-btn hadis-ortali" dir="rtl" lang="ar" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)} (Stüdyo Seslendirmesi)">
+                      <span class="hadis-tirnak-sol" aria-hidden="true">«</span>
+                      <span class="hadis-ic-metin">${esc(gununHadisi.arapca)}</span>
+                      <span class="hadis-tirnak-sag" aria-hidden="true">»</span>
+                      <span class="hadis-ses-ipucu-cip">🔊 ${dil === 'fr' ? 'Arabe (Studio)' : 'Arapça Stüdyo Sesi (Dinle)'}</span>
                     </button>
-                    <!-- HADİS MEALİ (ORTALI & TIKLAYINCA PRO SES) -->
-                    <div class="hadis-meal-kutu hadis-ortali" data-eylem="hadisSesCal" data-hadis-tur="meal" role="button" tabindex="0" title="${esc(m.hadisMealiDinle)}">
+                    <!-- HADİS MEALİ (ORTALI & TIKLAYINCA PRO STÜDYO TÜRKÇE SESİ) -->
+                    <div class="hadis-meal-kutu hadis-ortali" data-eylem="hadisSesCal" data-hadis-tur="meal" role="button" tabindex="0" title="${esc(m.hadisMealiDinle)} (Stüdyo Seslendirmesi)">
                       <p class="hadis-meali">«${esc(gununHadisi.metin[dil] || gununHadisi.metin.tr)}»</p>
+                      <span class="hadis-ses-ipucu-cip meal-cip">🗣️ ${dil === 'fr' ? 'Traduction audio (Studio)' : 'Türkçe Stüdyo Meâli (Dinle)'}</span>
                     </div>
                     <!-- KAYNAK VE KONU ROZETLERİ (ORTALI) -->
                     <div class="hadis-kaynak-satir hadis-ortali-satir">
                       <span class="hadis-kaynak">📚 ${esc(gununHadisi.kaynak)}</span>
                       <span class="hadis-konu-etiket">🏷️ ${esc(gununHadisi.konu[dil] || gununHadisi.konu.tr)}</span>
-                      <button type="button" class="hadis-meal-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="meal" title="${esc(m.hadisMealiDinle)}">
-                        🗣️ <span>${esc(m.hadisMealiDinle)}</span>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -827,12 +831,14 @@ export async function veliPortali(): Promise<void> {
                 ${seciliEzber.tur === 'sure' ? `
                   <!-- ALTIN TEZYİNATLI EÛZÜ BESMELE SERLEVHASI -->
                   <div class="besmele-serlevha euzu-besmele-serlevha" aria-label="Eûzübillâhimineşşeytânirracîm Bismillâhirrahmânirrahîm">
+                    <div class="euzu-besmele-tac-motif" aria-hidden="true">❖ ✦ ❖</div>
                     <div class="euzu-besmele-hat-kapsayici" dir="rtl" lang="ar">
                       <span class="euzu-hat-metin">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</span>
                       <span class="euzu-ayrac" aria-hidden="true">✦</span>
                       <span class="besmele-hat-metin">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
                     </div>
                     <span class="euzu-besmele-latin">E’ûzü billâhi mineş-şeytânir-racîm • Bismillâhir-rahmânir-rahîm</span>
+                    <span class="euzu-besmele-anlam">${dil === 'fr' ? 'Je cherche refuge auprès d’Allah contre Satan le maudit • Au nom d’Allah, le Tout Miséricordieux, le Très Miséricordieux' : 'Kovulmuş şeytandan Allah’a sığınırım • Rahmân ve Rahîm olan Allah’ın adıyla'}</span>
                   </div>
                 ` : ''}
 
@@ -890,12 +896,16 @@ export async function veliPortali(): Promise<void> {
                 <!-- TÜRKÇE MEÂL (TIKLAYINCA PRO STÜDYO SESİ ÇALAR) -->
                 <div class="ezber-anlam ezber-tr-anlam mushaf-bilgi-kutu ezber-tiklanabilir-kutu" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" role="button" tabindex="0" title="${esc(m.turkceSesliDinle)}">
                   <div class="ezber-anlam-baslik-satir">
-                    <span class="ezber-etiket">🇹🇷 ${esc(m.turkceAnlam)} <span class="dinle-ipucu">(🔊 ${esc(m.turkceSesliDinle)})</span>:</span>
+                    <span class="ezber-etiket">🇹🇷 ${esc(m.turkceAnlam)}:</span>
                     <button type="button" class="dugme dugme-ikincil kucuk-dugme ezber-tr-ses-btn" data-eylem="ezberTurkceDinle" data-ezber="${seciliEzber.id}" title="${esc(m.turkceSesliDinle)}">
-                      🔊 ${esc(m.turkceSesliDinle)}
+                      🔊 <span>${esc(m.turkceSesliDinle)}</span>
                     </button>
                   </div>
                   <p class="anlam-metin tr-metin">${esc(seciliEzber.anlam.tr)}</p>
+                  <div class="ezber-ses-durum-serit" aria-hidden="true">
+                    <span class="ezber-ses-durum-yazi">🎙️ ${dil === 'fr' ? 'Studio Traduction audio' : 'Stüdyo Türkçe Meâli Dinlemek İçin Dokunun'}</span>
+                    <span class="dalga-animasyon"><span></span><span></span><span></span></span>
+                  </div>
                 </div>
 
                 <!-- SES OYNATICI VE KUMANDALAR -->
@@ -1270,9 +1280,13 @@ export async function veliPortali(): Promise<void> {
             </section>
           </div>
         </div>`;
-      if (d.ezberHizi) {
-        const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
-        if (audioEl) audioEl.playbackRate = d.ezberHizi;
+      const audioEl = kok.querySelector<HTMLAudioElement>('audio.ezber-audio');
+      const metinEl = kok.querySelector<HTMLElement>('.mushaf-hat-metin');
+      if (audioEl) {
+        if (d.ezberHizi) audioEl.playbackRate = d.ezberHizi;
+        audioEl.addEventListener('play', () => { metinEl?.classList.add('oynuyor'); });
+        audioEl.addEventListener('pause', () => { metinEl?.classList.remove('oynuyor'); });
+        audioEl.addEventListener('ended', () => { metinEl?.classList.remove('oynuyor'); });
       }
     };
 
@@ -1593,18 +1607,29 @@ export async function veliPortali(): Promise<void> {
       const gh = gununHadisiGetir(bugunISO());
       const tur = hedef.dataset.hadisTur || 'arapca';
       tumSesleriDurdur();
-      hedef.classList.add('oynuyor');
-      setTimeout(() => { hedef.classList.remove('oynuyor'); }, 1400);
+
+      const kutu = hedef.classList.contains('hadis-arapca-btn') || hedef.classList.contains('hadis-meal-kutu')
+        ? hedef
+        : (tur === 'arapca' ? kok.querySelector<HTMLElement>('.hadis-arapca-btn') : kok.querySelector<HTMLElement>('.hadis-meal-kutu')) || hedef;
+      kutu.classList.add('oynuyor');
 
       if (tur === 'arapca') {
         const sesUrl = `/media/ses/hadisler/ar/${gh.id}.mp3`;
         try {
           const a = new Audio(sesUrl);
           aktifAudio = a;
+          a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
+          a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
+          a.addEventListener('error', () => {
+            kutu.classList.remove('oynuyor');
+            metinSeslendir(gh.arapca, 'ar-SA');
+          });
           a.play().catch(() => {
+            kutu.classList.remove('oynuyor');
             metinSeslendir(gh.arapca, 'ar-SA');
           });
         } catch {
+          kutu.classList.remove('oynuyor');
           metinSeslendir(gh.arapca, 'ar-SA');
         }
       } else {
@@ -1615,14 +1640,23 @@ export async function veliPortali(): Promise<void> {
           try {
             const a = new Audio(sesUrl);
             aktifAudio = a;
+            a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
+            a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
+            a.addEventListener('error', () => {
+              kutu.classList.remove('oynuyor');
+              metinSeslendir(mealMetin, dilKodu);
+            });
             a.play().catch(() => {
+              kutu.classList.remove('oynuyor');
               metinSeslendir(mealMetin, dilKodu);
             });
           } catch {
+            kutu.classList.remove('oynuyor');
             metinSeslendir(mealMetin, dilKodu);
           }
         } else {
           metinSeslendir(mealMetin, dilKodu);
+          setTimeout(() => { kutu.classList.remove('oynuyor'); }, 2500);
         }
       }
       return;
@@ -1944,17 +1978,27 @@ export async function veliPortali(): Promise<void> {
       harfTikSesiCal();
       const ezId = hedef.dataset.ezber || durum?.seciliEzberId || 'fatiha';
       const ezOgesi = EZBER_LISTESI.find((x) => x.id === ezId) || EZBER_LISTESI[0];
-      hedef.classList.add('oynuyor');
-      setTimeout(() => { hedef.classList.remove('oynuyor'); }, 1400);
       tumSesleriDurdur();
+
+      const kutu = hedef.closest<HTMLElement>('.ezber-tr-anlam') || hedef;
+      kutu.classList.add('oynuyor');
+
       const sesUrl = `/media/ses/mealler/tr/${ezOgesi.id}.mp3`;
       try {
         const a = new Audio(sesUrl);
         aktifAudio = a;
+        a.addEventListener('ended', () => { kutu.classList.remove('oynuyor'); });
+        a.addEventListener('pause', () => { kutu.classList.remove('oynuyor'); });
+        a.addEventListener('error', () => {
+          kutu.classList.remove('oynuyor');
+          metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
+        });
         a.play().catch(() => {
+          kutu.classList.remove('oynuyor');
           metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
         });
       } catch {
+        kutu.classList.remove('oynuyor');
         metinSeslendir(ezOgesi.anlam.tr, 'tr-TR');
       }
       return;

@@ -38,6 +38,7 @@ function initGundemVitrini(kok: HTMLElement): void {
   let isIntersecting = true;
   let isManualSelect = false;
   let isPointerActive = false;
+  let focusPauseRaf: number | null = null;
   let lastDialogTrigger: HTMLElement | null = null;
   let rafId: number | null = null;
   let isDispatchingHareket = false;
@@ -187,6 +188,27 @@ function initGundemVitrini(kok: HTMLElement): void {
     }
   }
 
+  function cancelPendingFocusPause() {
+    if (focusPauseRaf !== null) {
+      cancelAnimationFrame(focusPauseRaf);
+      focusPauseRaf = null;
+    }
+  }
+
+  function scheduleKeyboardFocusPause() {
+    cancelPendingFocusPause();
+    focusPauseRaf = requestAnimationFrame(() => {
+      focusPauseRaf = null;
+      // Fare/touch aktivasyonu odağı tıklamadan önce taşıyabilir. Bu durumda
+      // kontrolü odaklanır odaklanmaz durdurmak, tıklamanın tersine çevrilmesine
+      // yol açar; gerçek klavye odağında ise hareketi güvenle durdururuz.
+      if (!isPointerActive) {
+        isKeyboardPaused = true;
+        evaluateAutoplay();
+      }
+    });
+  }
+
   const onManualNav = (navigate: () => void) => {
     isManualSelect = true;
     navigate();
@@ -201,6 +223,7 @@ function initGundemVitrini(kok: HTMLElement): void {
     }
 
     thumb.addEventListener('click', (e) => {
+      cancelPendingFocusPause();
       e.preventDefault();
       onManualNav(() => mainApi.scrollTo(index, shouldJump()));
     });
@@ -225,8 +248,18 @@ function initGundemVitrini(kok: HTMLElement): void {
     });
   });
 
-  if (prevBtn) prevBtn.addEventListener('click', () => onManualNav(() => mainApi.scrollPrev(shouldJump())));
-  if (nextBtn) nextBtn.addEventListener('click', () => onManualNav(() => mainApi.scrollNext(shouldJump())));
+  if (prevBtn) prevBtn.addEventListener('pointerdown', cancelPendingFocusPause, { capture: true });
+  if (nextBtn) {
+    nextBtn.addEventListener('pointerdown', cancelPendingFocusPause, { capture: true });
+    nextBtn.addEventListener('click', () => {
+      cancelPendingFocusPause();
+      onManualNav(() => mainApi.scrollNext(shouldJump()));
+    });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    cancelPendingFocusPause();
+    onManualNav(() => mainApi.scrollPrev(shouldJump()));
+  });
 
   mainApi.on('select', () => {
     const index = mainApi.selectedScrollSnap();
@@ -263,13 +296,18 @@ function initGundemVitrini(kok: HTMLElement): void {
   mainApi.on('autoplay:timerstopped', () => stopProgressLoop(true));
   mainApi.on('autoplay:play', () => updatePlayPauseUI(true));
   mainApi.on('autoplay:stop', () => {
-    updatePlayPauseUI(false);
+    // Hover, görünürlük veya klavye odağı oynatıcıyı geçici olarak durdurabilir.
+    // Düğme etiketi bu anlık durumu değil, ziyaretçinin seçtiği tercihi göstermeli;
+    // aksi hâlde fareyle düğmeye tıklamak “oynat” komutuna dönüşür.
+    updatePlayPauseUI(userWantsPlay && !isKeyboardPaused);
     stopProgressLoop(true);
   });
 
   if (playPauseBtn) {
+    playPauseBtn.addEventListener('pointerdown', cancelPendingFocusPause, { capture: true });
     playPauseBtn.addEventListener('click', () => {
-      const isCurrentlyPlaying = autoplayPlugin.isPlaying();
+      cancelPendingFocusPause();
+      const isCurrentlyPlaying = userWantsPlay && !isKeyboardPaused;
       if (isCurrentlyPlaying) {
         userWantsPlay = false;
         hoverOverridden = false;
@@ -278,6 +316,7 @@ function initGundemVitrini(kok: HTMLElement): void {
           localStorage.setItem('uluCamiiHareket', 'durdu');
         } catch {}
         broadcastHareket(true);
+        updatePlayPauseUI(false);
       } else {
         userWantsPlay = true;
         isKeyboardPaused = false;
@@ -288,6 +327,7 @@ function initGundemVitrini(kok: HTMLElement): void {
           localStorage.setItem('uluCamiiHareket', 'acik');
         } catch {}
         broadcastHareket(false);
+        updatePlayPauseUI(true);
       }
       evaluateAutoplay();
     });
@@ -378,8 +418,7 @@ function initGundemVitrini(kok: HTMLElement): void {
 
   kok.addEventListener('focusin', () => {
     if (isPointerActive) return;
-    isKeyboardPaused = true;
-    evaluateAutoplay();
+    scheduleKeyboardFocusPause();
   });
 
   document.addEventListener('visibilitychange', () => {
