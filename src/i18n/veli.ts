@@ -149,6 +149,7 @@ export const VELI_METIN = {
     ezberTesti: 'Ezberimi Sına 👁️',
     meskDongusu: 'Sürekli Tekrar 🔁',
     diyanetKiraati: 'Resmî Diyanet Tilaveti',
+    metniKopyala: 'Metni Kopyala',
   },
 
   fr: {
@@ -293,6 +294,7 @@ export const VELI_METIN = {
     ezberTesti: 'Tester la mémorisation 👁️',
     meskDongusu: 'Répétition en boucle 🔁',
     diyanetKiraati: 'Récitation officielle de Diyanet',
+    metniKopyala: 'Copier le texte',
   },
 
   en: {
@@ -439,6 +441,7 @@ export const VELI_METIN = {
     ezberTesti: 'Test Memorisation 👁️',
     meskDongusu: 'Loop Playback 🔁',
     diyanetKiraati: 'Official Diyanet Recitation',
+    metniKopyala: 'Copy text',
   },
 
 } as const;
