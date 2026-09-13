@@ -1,3 +1,7 @@
+/* v33 — 13 Eyl 2026 gecesi (2): soyadBuyuk() yerel-duyarlı büyük harf (form/iletişim dili tr ya da Türkçe harf → "tr", aksi "en";
+   Bosnalı «Husic» artık «HUSİC» olmaz); kayitDosyaAdi() tek kaynak (arşiv yenilemedeki «SOYAD Ad» sırası düzeldi);
+   ?islem=kayit-duzelt: ad/soyad/dogum/sinif/okul/veliAdSoyad düzeltme + PDF yenileme (eski PDF çöpe, Durum " | duzeltildi-v33 [..]");
+   sağlık ucu kayitDuzelt:true. İlk kullanım UC-2026-0019 (ad/soyad ters girilmişti). */
 /* v32 — 13 Eyl 2026 akşamı (Rıdvan: «kayıt formunun imza kısmı ihtidadaki gibi olsun, imza formda da görünsün»):
    kayıt gövdesi `imza` (PNG veri URL'i, ≤ 1 MB) + `imzaYok` (boolean) taşır; kayitDogrulaV2 alanlar hiç
    gelmemişse eski istemciyi imzasız kabul eder. PDF'in 2. sayfasındaki imza alanına çizilen imza AYNEN
@@ -9,7 +13,7 @@
    v28 ihtida defteri korunur. Aşağıdaki eski sürüm notlarının kayıt/görsel sınırları
    v29 için geçerli değildir: kayıt 4 MiB, kimlik yalnız ayrı Drive dosyasıdır. */
 /**
- * Marche-en-Famenne Ulu Camii — Ortak Apps Script Alıcı (SÜRÜM 32)
+ * Marche-en-Famenne Ulu Camii — Ortak Apps Script Alıcı (SÜRÜM 33)
  * (Kur'an Kursu Kayıt Alıcı + İhtida Başvuru Alıcı — TEK Web App)
  *
  * 8 EYLÜL 2026 — v23: İHTİDA formu artık görsel ve imza da topluyor (Rıdvan'ın kararı).
@@ -68,7 +72,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 32;
+var SURUM = 33;
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -95,10 +99,11 @@ function doGet(e) {
     if (e.parameter.islem === "saglik-temizle") return saglikTemizleIsle(e);
     if (e.parameter.islem === "pdf-ornek") return pdfOrnekIsle(e);
     if (e.parameter.islem === "arsiv-saglik-gizle") return arsivSaglikGizleIsle(e);
+    if (e.parameter.islem === "kayit-duzelt") return kayitDuzeltIsle(e);
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, veliEpostaDili: "kayit-tercihi-20260909",
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitDuzelt: true, veliEpostaDili: "kayit-tercihi-20260909",
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -1095,6 +1100,21 @@ function kayitDurumNotuEkle(sayfa, ref, not) {
   } finally { kilit.releaseLock(); }
 }
 
+/** v33 (13 Eyl 2026 gecesi): soyadı büyük harfe çevirirken yerel seçimi. Türkçe kural (i→İ, ı→I) yalnız form dili ya da iletişim
+    dili «tr» ise ya da adda Türkçeye özgü harf (ç ğ ı ö ş ü) varsa; aksi hâlde «en» (i→I). Bosnalı bir ailenin «Husic» soyadı
+    «HUSİC», «Halilovic» «HALİLOVİC» olmuştu — PDF adı, e-posta konusu ve veli portalı bu adı taşıyordu. */
+function soyadBuyuk(soyad, dil, iletisimDili) {
+  var s = String(soyad == null ? "" : soyad).trim();
+  var turkce = dil === "tr" || iletisimDili === "tr" || /[\u00e7\u011f\u0131\u00f6\u015f\u00fc\u00c7\u011e\u0130\u00d6\u015e\u00dc]/.test(s);
+  return s.toLocaleUpperCase(turkce ? "tr" : "en");
+}
+
+/** v33: kayıt PDF dosya adı tek yerden — "<ref> - <Ad> <SOYAD>.pdf". Kayıt, arşiv yenileme, düzeltme ve test temizliği aynı adı üretir
+    (v19–v32'de arşiv yenilemesi «SOYAD Ad» sırasıyla ve büyük harfsiz ad üretiyordu). */
+function kayitDosyaAdi(ref, ad, soyad, dil, iletisimDili) {
+  return ref + " - " + (String(ad == null ? "" : ad).trim() + " " + soyadBuyuk(soyad, dil, iletisimDili)).trim() + ".pdf";
+}
+
 function kayitPostIsleV2(v) {
   // 13 Eyl 2026: Kimlik ayrı Drive dosyasıdır; belge hatası kaydı durdurmaz, kopya sonucu dürüst döner.
   try {
@@ -1109,7 +1129,7 @@ function kayitPostIsleV2(v) {
     if (onceki) return kayitTekrarYaniti(onceki);
 
     var o = v.ogrenci, veli = v.veli, acil = v.acil || {}, saglik = v.saglik || {}, onay = v.onay;
-    var adSoyad = (o.ad + " " + o.soyad.toLocaleUpperCase("tr")).trim();
+    var adSoyad = (o.ad + " " + soyadBuyuk(o.soyad, v.dil, veli.iletisimDili)).trim();   // v33: yerel-duyarlı
 
     var kilit = LockService.getScriptLock();
     kilit.waitLock(30000);
@@ -2506,10 +2526,10 @@ function testTemizleSayfa(sayfa, klasor, adAlanlari) {
       var id = driveIdCikar(String(satir[iPdf] || ""));
       if (id) {
         // Bozuk PDF hücresi başka bir belgeyi/defteri sildiremez; ad da birebir eşleşir.
-        var adSoyad = kayitRef.indexOf("UC-") === 0
-          ? String(satir[basliklar.indexOf("Öğrenci adı")] || "") + " " + String(satir[basliklar.indexOf("Öğrenci soyadı")] || "").toLocaleUpperCase("tr")
-          : String(satir[basliklar.indexOf("Adı Soyadı")] || "");
-        var pdfAd = kayitRef + " - " + adSoyad.trim() + ".pdf";
+        var pdfAd = kayitRef.indexOf("UC-") === 0
+          ? kayitDosyaAdi(kayitRef, satir[basliklar.indexOf("Öğrenci adı")], satir[basliklar.indexOf("Öğrenci soyadı")],
+                          String(satir[basliklar.indexOf("Form dili")] || ""), String(satir[basliklar.indexOf("İletişim dili")] || ""))
+          : kayitRef + " - " + String(satir[basliklar.indexOf("Adı Soyadı")] || "").trim() + ".pdf";
         var pdf = DriveApp.getFileById(id);
         if (pdf.getName() === pdfAd) pdf.setTrashed(true);
       }
@@ -2576,6 +2596,80 @@ function pdfOrnekIsle(e) {
   return json({ ok: true, surum: SURUM, ad: blob.getName(), boyut: bayt.length, pdfB64: Utilities.base64Encode(bayt) });
 }
 
+/** v33 (13 Eyl 2026 gecesi): tek bir kaydın sınırlı alanlarını düzeltir ve arşiv PDF'ini yeniden üretir. Panel anahtarı ister.
+    ?islem=kayit-duzelt&ref=UC-YYYY-NNNN[&ad=…][&soyad=…][&dogum=YYYY-MM-DD][&sinif=…][&okul=…][&veliAdSoyad=…][&pdf=1]
+    Değişen alan yoksa ve pdf=1 verilmişse yalnız PDF yenilenir (ör. dosya adındaki büyük harf düzeltmesi). Eski PDF kimliğiyle
+    çöpe gider, «PDF bağlantısı» yenilenir, «Durum» hücresine " | duzeltildi-v33 [alanlar]" eklenir; kimlik/imza dosyalarına dokunulmaz,
+    veliye e-posta gitmez. İlk kullanım: UC-2026-0019 (ad/soyad ters girilmişti). */
+var KAYIT_DUZELT_ALANLAR = { ad: "Öğrenci adı", soyad: "Öğrenci soyadı", dogum: "Doğum tarihi", sinif: "Sınıf", okul: "Okul", veliAdSoyad: "Veli adı soyadı" };
+function kayitDuzeltDogrula(anahtar, deger) {
+  var d = String(deger == null ? "" : deger).trim();
+  if (!d || d.length > 80) return null;
+  if (anahtar === "dogum") return /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : null;
+  if (anahtar === "ad" || anahtar === "soyad" || anahtar === "veliAdSoyad") return /^[\p{L}\p{M}][\p{L}\p{M} '\-.]{0,79}$/u.test(d) ? d : null;
+  return /^[\p{L}\p{M}\p{N} '\-.,():/]{1,80}$/u.test(d) ? d : null;
+}
+function kayitDuzeltIsle(e) {
+  if (!panelYetkiTamam(e)) return json({ ok: false, hata: "yetki" });
+  var ref = String(e.parameter.ref || "").trim();
+  if (!/^UC-\d{4}-\d{4}$/.test(ref)) return json({ ok: false, hata: "ref-gecersiz" });
+  var degisiklik = {}, hatali = [];
+  Object.keys(KAYIT_DUZELT_ALANLAR).forEach(function (k) {
+    if (e.parameter[k] === undefined) return;
+    var d = kayitDuzeltDogrula(k, e.parameter[k]);
+    if (d === null) hatali.push(k); else degisiklik[k] = d;
+  });
+  if (hatali.length) return json({ ok: false, hata: "alan-gecersiz", alanlar: hatali });
+  var pdfIste = e.parameter.pdf === "1";
+  if (!Object.keys(degisiklik).length && !pdfIste) return json({ ok: false, hata: "degisiklik-yok" });
+  try {
+    var sh = kayitV2SayfaGetir();
+    var son = sh.getLastRow(), sonSutun = sh.getLastColumn();
+    if (son < 2) return json({ ok: false, hata: "bulunamadi" });
+    var basliklar = sh.getRange(1, 1, 1, sonSutun).getValues()[0].map(String);
+    var iRef = basliklar.indexOf("Referans"), iPdf = basliklar.indexOf("PDF bağlantısı"), iDurum = basliklar.indexOf("Durum"),
+        iZaman = basliklar.indexOf("Zaman damgası"), iAd = basliklar.indexOf("Öğrenci adı"), iSoyad = basliklar.indexOf("Öğrenci soyadı");
+    if (iRef < 0 || iPdf < 0 || iDurum < 0 || iAd < 0 || iSoyad < 0) return json({ ok: false, hata: "sutun-yok" });
+    var veriler = sh.getRange(2, 1, son - 1, sonSutun).getValues(), satirNo = -1;
+    for (var i = 0; i < veriler.length; i++) if (String(veriler[i][iRef] || "").trim() === ref) { satirNo = i; break; }
+    if (satirNo < 0) return json({ ok: false, hata: "bulunamadi" });
+    var satir = veriler[satirNo], eski = {}, degisen = [];
+    Object.keys(degisiklik).forEach(function (k) {
+      var iSut = basliklar.indexOf(KAYIT_DUZELT_ALANLAR[k]);
+      if (iSut < 0) return;
+      var mevcut = satir[iSut] instanceof Date ? Utilities.formatDate(satir[iSut], "Europe/Brussels", "yyyy-MM-dd") : String(satir[iSut] == null ? "" : satir[iSut]);
+      if (mevcut === degisiklik[k]) return;
+      eski[k] = mevcut;
+      sh.getRange(satirNo + 2, iSut + 1).setValue(degisiklik[k]);
+      satir[iSut] = degisiklik[k];
+      degisen.push(k);
+    });
+    var pdf = null;
+    if (degisen.length || pdfIste) {
+      var klasor = klasorGetir();
+      var veri = v2SatirdanVeri(basliklar, satir);
+      var imzaPng = kayitImzaOku(klasor, ref);
+      if (imzaPng) veri.imza = imzaPng;
+      var z = iZaman >= 0 ? satir[iZaman] : "";
+      var zamanStr = z instanceof Date ? Utilities.formatDate(z, "Europe/Brussels", "dd.MM.yyyy HH:mm") : String(z || "");
+      var meta = { ref: ref, zaman: zamanStr, dil: veri.dil, saglikGizle: !!veri.saglik["var"] };   // Drive kopyası sağlık notsuz (v18 kuralı)
+      var dosyaAdi = kayitDosyaAdi(ref, satir[iAd], satir[iSoyad], veri.dil, veri.veli.iletisimDili);
+      var yeni = klasor.createFile(kayitPdfUret(veri, meta, dosyaAdi));
+      var eskiId = driveIdCikar(String(satir[iPdf] || ""));
+      var cop = !!(eskiId && eskiId !== yeni.getId() && dosyayiIdIleCopeAt(eskiId));
+      sh.getRange(satirNo + 2, iPdf + 1).setValue(yeni.getUrl());
+      pdf = { ad: dosyaAdi, id: yeni.getId(), url: yeni.getUrl(), eskiCopte: cop };
+    }
+    var damga = Utilities.formatDate(new Date(), "Europe/Brussels", "dd.MM.yyyy HH:mm");
+    sh.getRange(satirNo + 2, iDurum + 1).setValue(String(satir[iDurum] || "") + " | duzeltildi-v33 [" + (degisen.length ? degisen.join(",") : "pdf") + "] " + damga);
+    SpreadsheetApp.flush();
+    return json({ ok: true, surum: SURUM, ref: ref, degisen: degisen, eski: eski, pdf: pdf });
+  } catch (hata) {
+    console.error(hata);
+    return json({ ok: false, hata: "duzeltme-hatasi", ayrinti: String(hata).slice(0, 160) });
+  }
+}
+
 /** v2 defter satırını doPost gövdesiyle aynı şekle geri çevirir (PDF'i yeniden üretmek için). */
 function v2SatirdanVeri(basliklar, satir) {
   var s = function (ad) {
@@ -2630,7 +2724,7 @@ function arsivSaglikGizleIsle(e) {
       var z = iZaman >= 0 ? satir[iZaman] : "";
       var zamanStr = z instanceof Date ? Utilities.formatDate(z, "Europe/Brussels", "dd.MM.yyyy HH:mm") : String(z || "");
       var meta = { ref: ref, zaman: zamanStr, dil: veri.dil, saglikGizle: true };
-      var dosyaAdi = ref + " - " + (String(satir[iSoyad] || "") + " " + String(satir[iAd] || "")).trim() + ".pdf";
+      var dosyaAdi = kayitDosyaAdi(ref, satir[iAd], satir[iSoyad], veri.dil, veri.veli.iletisimDili);   // v33: tek kaynak
       var yeni = klasor.createFile(kayitPdfUret(veri, meta, dosyaAdi));
       var eskiId = driveIdCikar(String(satir[iPdf] || ""));
       if (eskiId && dosyayiIdIleCopeAt(eskiId)) cop++;

@@ -36,6 +36,8 @@ jobs:
         run: |
           {
             echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "Date: $(date -R)"
+            echo "Message-ID: <$(uuidgen)@ulucamii.be>"
             echo "To: info@ulucamii.be"
             echo "Subject: [UYARI] Sitede kirik dis baglanti var"
             echo "Content-Type: text/plain; charset=utf-8"
@@ -68,6 +70,8 @@ jobs:
         run: |
           {
             echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "Date: $(date -R)"
+            echo "Message-ID: <$(uuidgen)@ulucamii.be>"
             echo "To: info@ulucamii.be"
             echo "Subject: [UYARI] Diyanet kutuphanesinde kirik kayit var"
             echo "Content-Type: text/plain; charset=utf-8"

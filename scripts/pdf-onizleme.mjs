@@ -1,4 +1,4 @@
-// pdf-onizleme.mjs — Node'da ulucamii-Kod-v32.gs içindeki SAF PDF şablon
+// pdf-onizleme.mjs — Node'da ulucamii-Kod-v33.gs içindeki SAF PDF şablon
 // fonksiyonlarını (pdfHtmlKayit, pdfHtmlIhtida) çalıştırıp örnek HTML çıktısı üretir.
 //
 // Yöntem: .gs dosyasının TAMAMI `new Function(...)` ile bir fonksiyon gövdesi olarak
@@ -17,12 +17,12 @@ import path from "node:path";
 import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v32.gs");
+const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v33.gs");
 // Çıktı klasörü: CIKTI ortam değişkeni ya da D:\tmp\pdf-onizleme (13 Eyl 2026'ya kadar eski bir scratchpad yoluydu).
 const CIKTI_KLASORU = process.env.CIKTI || "D:\\tmp\\pdf-onizleme";
 mkdirSync(CIKTI_KLASORU, { recursive: true });
 
-/** v32: örnek «ekranda çizilmiş imza» — saydam PNG, mavi mürekkep (formdaki tuvalin ürettiği biçim). */
+/** v33: örnek «ekranda çizilmiş imza» — saydam PNG, mavi mürekkep (formdaki tuvalin ürettiği biçim). */
 async function ornekImzaPng() {
   const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="420" height="120" viewBox="0 0 420 120">'
     + '<path d="M14 88 C 40 20, 70 20, 90 70 S 130 110, 150 60 S 190 10, 210 62 S 250 108, 280 58 S 330 20, 350 70 S 390 96, 408 40" '
@@ -87,7 +87,7 @@ const ornekKayit = {
   sir: "ULUCAMII-KAYIT-2026",
   formSurumu: 3,
   dil: "fr",
-  imza: await ornekImzaPng(),          // v32: çizilen imza PDF'in 2. sayfasındaki imza alanına basılır
+  imza: await ornekImzaPng(),          // v33: çizilen imza PDF'in 2. sayfasındaki imza alanına basılır
   imzaYok: false,
   gonderimAnahtari: "onizleme-kayit-0000000000000001",
   ogrenci: {
@@ -163,7 +163,7 @@ const metaIhtida = { ref: "IH-2026-0007", zaman: "30.08.2026 19:05", dil: "fr" }
 
 const htmlKayit = modul.pdfHtmlKayit(ornekKayit, metaKayit);
 const htmlIhtida = modul.pdfHtmlIhtida(ornekIhtida, metaIhtida);
-// v32: aynı kaydın «ekranda imza atamıyorum» hâli — imza alanında el yazısı ad + kursta kalemle imzalar notu.
+// v33: aynı kaydın «ekranda imza atamıyorum» hâli — imza alanında el yazısı ad + kursta kalemle imzalar notu.
 const htmlKayitImzasiz = modul.pdfHtmlKayit({ ...ornekKayit, imza: "", imzaYok: true }, metaKayit);
 
 for (const [ad, html] of [["kayıt", htmlKayit], ["kayıt-imzasız", htmlKayitImzasiz], ["ihtida", htmlIhtida]]) {

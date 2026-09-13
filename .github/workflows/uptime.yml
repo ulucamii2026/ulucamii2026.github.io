@@ -17,22 +17,26 @@ jobs:
         id: yokla
         run: |
           hatalar=""
+          # 13 Eyl 2026: Apps Script /exec her zaman 302 → googleusercontent zinciriyle döner ve soğuk başlangıçta
+          # 25 sn'yi aşabiliyordu; "302000" (302 + curl'ün 000'ı) ile 11–12 Eyl'de üç sahte uyarı gitti.
+          # Çözüm: uç başına deneme sayısı + azami süre parametresi; kod yakalama birleşmez (|| kod=000).
           yokla() {
-            local ad="$1" url="$2" bekle="$3"
-            for i in 1 2 3; do
-              kod=$(curl -s -o /tmp/govde -w '%{http_code}' -L --max-time 25 -A "UluCamii-UptimeBot/1.0" "$url" || echo 000)
+            local ad="$1" url="$2" bekle="$3" deneme="${4:-3}" sure="${5:-25}" kod
+            for i in $(seq 1 "$deneme"); do
+              kod=$(curl -s -o /tmp/govde -w '%{http_code}' -L --max-time "$sure" -A "UluCamii-UptimeBot/1.0" "$url") || kod=000
               if [ "$kod" = "200" ] && grep -q "$bekle" /tmp/govde; then
-                echo "OK  $ad ($kod)"; return 0
+                echo "OK  $ad ($kod, $i. deneme)"; return 0
               fi
-              sleep 15
+              echo "  … $ad: $i. deneme kod=$kod"
+              [ "$i" -lt "$deneme" ] && sleep 20
             done
             echo "HATA $ad (son kod: $kod)"
-            hatalar="${hatalar}\n- ${ad}: ${url} (HTTP ${kod})"
+            hatalar="${hatalar}\n- ${ad}: ${url} (HTTP ${kod}, ${deneme} deneme)"
             return 0
           }
           yokla "Web sitesi"     "https://ulucamii.be/tr/"   "Ulu Camii"
           yokla "Kayıt formu"    "https://ulucamii.be/kayit/" "ulucamii"
-          yokla "Kayıt arka ucu" "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec" "ulucamii-alici"
+          yokla "Kayıt arka ucu" "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec?islem=saglik" '"ok":true' 5 60
           if [ -n "$hatalar" ]; then
             printf 'hatalar<<SON\n%b\nSON\n' "$hatalar" >> "$GITHUB_OUTPUT"
             echo "durum=hata" >> "$GITHUB_OUTPUT"
@@ -57,6 +61,8 @@ jobs:
         run: |
           {
             echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "Date: $(date -R)"
+            echo "Message-ID: <$(uuidgen)@ulucamii.be>"
             echo "To: info@ulucamii.be"
             echo "Subject: [UYARI] ulucamii.be erisim sorunu"
             echo "Content-Type: text/plain; charset=utf-8"
@@ -76,6 +82,8 @@ jobs:
         run: |
           {
             echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "Date: $(date -R)"
+            echo "Message-ID: <$(uuidgen)@ulucamii.be>"
             echo "To: info@ulucamii.be"
             echo "Subject: [BILGI] ulucamii.be erisim sorunu duzeldi"
             echo "Content-Type: text/plain; charset=utf-8"
