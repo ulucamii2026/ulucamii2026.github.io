@@ -76,6 +76,6 @@ Les candidats invités doivent préparer et fournir les pièces suivantes :
 
 Pour toute question relative à votre confirmation ou pour toute aide aux démarches administratives, vous pouvez contacter notre équipe :
 
-- **Ministre du culte :** [+32 471 79 46 82](tel:+32471794682)
+- **Ministre du culte :** [WhatsApp](https://wa.me/32471794682)
 - **Grande Mosquée Ulu Camii :** [+32 472 98 50 73](tel:+32472985073)
 - **Bureau du Hajj (Fondation Diyanet) :** [+32 2 218 57 55](tel:+3222185755) · [info@diyanet.be](mailto:info@diyanet.be)

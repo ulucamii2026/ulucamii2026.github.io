@@ -105,7 +105,7 @@ Téléchargez ci-dessous l'avis de concours officiel et la liste des pays d'affe
 
 <div class="bilgi"><p>Pour toute vérification de documents, traductions certifiées ou validation par la Conseillerie des Services religieux de Bruxelles, notre mosquée et notre imam se tiennent à votre disposition.</p></div>
 
-* **Imam :** [+32 471 79 46 82](tel:+32471794682) · [imam@ulucamii.be](mailto:imam@ulucamii.be)
+* **Imam :** [WhatsApp](https://wa.me/32471794682) · [imam@ulucamii.be](mailto:imam@ulucamii.be)
 * **Administration de la Mosquée :** [+32 472 98 50 73](tel:+32472985073) · [info@ulucamii.be](mailto:info@ulucamii.be)
 * **Conseillerie des Services religieux :** Rue Montoyer 4, 1000 Bruxelles
 * **Direction des Relations extérieures (DİB) :** [disiliskiler.diyanet.gov.tr](https://disiliskiler.diyanet.gov.tr)

@@ -123,7 +123,7 @@ Sınav başvuru kılavuzunu ve istihdam edilecek ülkelerin resmî listesini do�
 
 <div class="bilgi"><p>Belgelerin tercümesi, Müşavirlik/Ataşelik onay süreçleri veya Aday Bilgi Formu doldurma aşamasında rehberlik almak isteyen adaylar camimize uğrayabilir veya din görevlimizle irtibata geçebilir.</p></div>
 
-* **Din Görevlisi:** [+32 471 79 46 82](tel:+32471794682) · [imam@ulucamii.be](mailto:imam@ulucamii.be)
+* **Din Görevlisi:** [WhatsApp](https://wa.me/32471794682) · [imam@ulucamii.be](mailto:imam@ulucamii.be)
 * **Cami Yönetimi:** [+32 472 98 50 73](tel:+32472985073) · [info@ulucamii.be](mailto:info@ulucamii.be)
 * **Brüksel Din Hizmetleri Müşavirliği:** Rue Montoyer 4, 1000 Bruxelles
 * **DİB Dış İlişkiler Genel Müdürlüğü:** [disiliskiler.diyanet.gov.tr](https://disiliskiler.diyanet.gov.tr) · Tel: +90 (312) 295 75 82 / 295 75 83

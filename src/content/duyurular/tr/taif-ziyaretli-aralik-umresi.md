@@ -58,7 +58,7 @@ Kayıtlar **yalnızca çevrimiçi** olarak <a href="https://www.diyanet.be/umre"
 
 Kayıt işlemini kendiniz yapabileceğiniz gibi camimizdeki görevliden yardım da alabilirsiniz.
 
-- **Din Görevlisi:** <a href="tel:+32471794682">+32 471 79 46 82</a>
+- **Din Görevlisi:** <a href="https://wa.me/32471794682" target="_blank" rel="noopener">WhatsApp</a>
 - **Cami (dernek başkanı):** <a href="tel:+32472985073">+32 472 98 50 73</a>
 - **Belçika Diyanet Vakfı:** <a href="tel:+3222185755">02 218 57 55</a> · <a href="mailto:info@diyanet.be">info@diyanet.be</a>
 

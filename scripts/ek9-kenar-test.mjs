@@ -49,7 +49,7 @@ const uzun = {
   oncekiDin: 'Hristiyanlık / Protestan (Evanjelik)',
   ihtidaSebebi: 'Uzun yıllar süren okuma, araştırma ve cami cemaatiyle kurduğum dostluk sonucunda İslâm’ın tevhid inancına kalben ikna oldum; ailemin ve eşimin desteğiyle bu kararı verdim ve resmî olarak kaydedilmesini istiyorum.',
   ihtidaTarihi: '05/09/2026', eposta: 'abdurrahman.elhuseyin.vanderberghe@example.test',
-  telefon: '+32 471 79 46 82',
+  telefon: '+32 470 12 34 56',
   adres: 'Chaussée de Marche 1247, Boîte 12, 5100 Jambes (Namur), Belçika — geçici ikamet: Thier des Corbeaux 14, 6900 Marche-en-Famenne',
   beyanTarihi: '25/08/2026',
 };

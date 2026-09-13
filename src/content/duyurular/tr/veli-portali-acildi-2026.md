@@ -47,4 +47,4 @@ Bağlantı gelmezse istenmeyen (spam) klasörünü kontrol edin. E-posta adresin
 
 Portalı beraber geliştirmeye devam ediyoruz. Eksik ya da yanlış gördüğünüz bir şey olursa lütfen bize bildirin.
 
-📞 Din görevlisi: +32 471 79 46 82 · Cami: +32 472 98 50 73
+📞 Din görevlisi: [WhatsApp](https://wa.me/32471794682) · Cami: +32 472 98 50 73

@@ -28,4 +28,4 @@ Les écoles étant fermées le mercredi après-midi, nos jeunes filles sont part
 Le détail des thèmes semaine par semaine, le déroulement type et les principes du programme se trouvent sur la page [Programme pour les femmes et les jeunes filles](/fr/programme-femmes-et-jeunes-filles/).
 
 📍 Thier des Corbeaux 14, 6900 Marche-en-Famenne
-📞 Imam : +32 471 79 46 82 · Mosquée : +32 472 98 50 73
+📞 Imam : [WhatsApp](https://wa.me/32471794682) · Mosquée : +32 472 98 50 73

@@ -28,4 +28,4 @@ Les cours de Coran pour enfants ont repris **le samedi 5 septembre 2026 à 11h00
 Le contenu de l'année figure sur la page [programme de l'école coranique](/fr/programme-ecole-coranique/) ; les plans de cours et les présentations sont publiés sur la page [supports de cours](/fr/supports-de-cours/).
 
 📍 Thier des Corbeaux 14, 6900 Marche-en-Famenne
-📞 Imam : +32 471 79 46 82 · Mosquée : +32 472 98 50 73
+📞 Imam : [WhatsApp](https://wa.me/32471794682) · Mosquée : +32 472 98 50 73

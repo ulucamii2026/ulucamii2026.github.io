@@ -58,7 +58,7 @@ Les inscriptions se font **uniquement en ligne**, sur <a href="https://www.diyan
 
 Vous pouvez vous inscrire vous-même ou demander l'aide de l'imam de notre mosquée.
 
-- **Imam :** <a href="tel:+32471794682">+32 471 79 46 82</a>
+- **Imam :** <a href="https://wa.me/32471794682" target="_blank" rel="noopener">WhatsApp</a>
 - **Mosquée (président de l'association) :** <a href="tel:+32472985073">+32 472 98 50 73</a>
 - **Fondation Diyanet de Belgique :** <a href="tel:+3222185755">02 218 57 55</a> · <a href="mailto:info@diyanet.be">info@diyanet.be</a>
 

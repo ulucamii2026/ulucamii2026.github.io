@@ -28,4 +28,4 @@ Les **plans de cours et les présentations** de chaque journée sont désormais 
 Les cours sont gratuits et ouverts à tous les enfants à partir de 7 ans. L'inscription en ligne prend cinq minutes : [www.ulucamii.be/kayit](https://www.ulucamii.be/kayit/).
 
 📍 Thier des Corbeaux 14, 6900 Marche-en-Famenne
-📞 Imam : +32 471 79 46 82 · Mosquée : +32 472 98 50 73
+📞 Imam : [WhatsApp](https://wa.me/32471794682) · Mosquée : +32 472 98 50 73

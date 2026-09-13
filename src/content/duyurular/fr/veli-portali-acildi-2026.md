@@ -47,4 +47,4 @@ Si le message n'arrive pas, vérifiez le dossier des courriers indésirables. Si
 
 Nous continuons à améliorer le portail. Si quelque chose vous semble manquant ou inexact, faites-le nous savoir.
 
-📞 Imam : +32 471 79 46 82 · Mosquée : +32 472 98 50 73
+📞 Imam : [WhatsApp](https://wa.me/32471794682) · Mosquée : +32 472 98 50 73

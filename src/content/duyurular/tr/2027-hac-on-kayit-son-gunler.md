@@ -72,7 +72,7 @@ Aşağıdaki belgeler **ön kayıtta değil**, kesin kayıt döneminde ve hac e�
 
 Formu doldurmakta zorlanırsanız, belgeleriniz konusunda emin değilseniz ya da pasaport süreniz kısaysa camimize uğrayın — birlikte bakalım, gerekirse başvuruyu birlikte tamamlayalım.
 
-- **Din Görevlisi:** [+32 471 79 46 82](tel:+32471794682)
+- **Din Görevlisi:** [WhatsApp](https://wa.me/32471794682)
 - **Cami:** [+32 472 98 50 73](tel:+32472985073)
 - **Belçika Diyanet Vakfı:** [+32 2 218 57 55](tel:+3222185755) — hafta içi 09:00-12:30 / 14:00-17:00 · [info@diyanet.be](mailto:info@diyanet.be)
 

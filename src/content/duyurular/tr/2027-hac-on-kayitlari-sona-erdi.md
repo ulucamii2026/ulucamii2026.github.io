@@ -76,7 +76,7 @@ Kesin kayıt daveti alan adayların aşağıdaki belgeleri eksiksiz hazırlayara
 
 Kesin kayıt e-postanızı alamadıysanız, form doldurma konusunda desteğe ihtiyaç duyuyorsanız veya pasaport işlemlerinizle ilgili sorularınız varsa camimiz din görevlileriyle irtibata geçebilirsiniz:
 
-- **Din Görevlisi:** [+32 471 79 46 82](tel:+32471794682)
+- **Din Görevlisi:** [WhatsApp](https://wa.me/32471794682)
 - **Marche Ulu Camii:** [+32 472 98 50 73](tel:+32472985073)
 - **Belçika Diyanet Vakfı Hac Bürosu:** [+32 2 218 57 55](tel:+3222185755) · [info@diyanet.be](mailto:info@diyanet.be)
 

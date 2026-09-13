@@ -28,4 +28,4 @@ oneCikanSon: 2026-10-15
 Yıl boyunca işlenecek konular ve ders dağılımı için [Kur'an kursu müfredatı](/tr/kuran-kursu-mufredati/) sayfasına, haftalık ders planları ve sunumlar için [ders materyalleri](/tr/ders-materyalleri/) sayfasına bakabilirsiniz.
 
 📍 Thier des Corbeaux 14, 6900 Marche-en-Famenne
-📞 Din görevlisi: +32 471 79 46 82 · Cami: +32 472 98 50 73
+📞 Din görevlisi: [WhatsApp](https://wa.me/32471794682) · Cami: +32 472 98 50 73

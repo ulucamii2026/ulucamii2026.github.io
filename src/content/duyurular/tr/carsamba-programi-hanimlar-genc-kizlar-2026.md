@@ -29,4 +29,4 @@ Camimizde hanımlar ve genç kızlarımız için yeni bir dönem başlıyor. **E
 Yıl boyunca işlenecek konuların haftalık dökümü, gün akışı ve programın dayandığı ilkeler için: [Hanımlar ve Genç Kızlar İrşat Programı sayfası](/tr/irsat-programi/).
 
 📍 Thier des Corbeaux 14, 6900 Marche-en-Famenne
-📞 Din görevlisi: +32 471 79 46 82 · Cami: +32 472 98 50 73
+📞 Din görevlisi: [WhatsApp](https://wa.me/32471794682) · Cami: +32 472 98 50 73

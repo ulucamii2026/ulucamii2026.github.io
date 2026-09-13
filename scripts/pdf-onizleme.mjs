@@ -85,7 +85,7 @@ const ornekKayit = {
   veli: {
     yakinlik: "baba",
     adSoyad: "İbrahim Şahin-Öztürk",
-    cep: "+32471794682",
+    cep: "+32470123456",
     eposta: "ibrahim.ornek@example.com",
     adres: "Rue de la Gare 5",
     postaKodu: "6900",

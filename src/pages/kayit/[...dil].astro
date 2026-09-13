@@ -33,6 +33,6 @@ const site = await siteAyarlari();
   </Fragment>
   <SayfaBasligi etiket={m.kayit.ustEtiket} baslik={m.kayit.sayfaBaslik} />
   <section class="kapsayici k-sayfa py-10 sm:py-14">
-    <KayitFormu dil={dil} uc={site.servisler.basvuru} eposta={site.eposta ?? 'info@ulucamii.be'} telefon={site.telefon.dinGorevlisi} whatsapp={site.whatsapp!.numara} />
+    <KayitFormu dil={dil} uc={site.servisler.basvuru} eposta={site.eposta ?? 'info@ulucamii.be'} telefon={site.telefon.cami} whatsapp={site.whatsapp!.numara.replace(/\D/g, '')} />
   </section>
 </Base>

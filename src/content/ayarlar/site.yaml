@@ -11,6 +11,8 @@ site:
   gps:
     enlem: 50.231495
     boylam: 5.339165
+  # 13 Eyl 2026 (Rıdvan): dinGorevlisi numarası sitede METİN olarak hiçbir yerde gösterilmez; yalnız wa.me
+  # bağlantısının hedefi (WhatsappBaglanti) ve kayıt formunun WhatsApp yoludur. Afiş/duyuru/PDF: yalnız cami hattı.
   telefon:
     dinGorevlisi: "+32 471 79 46 82"
     cami: "+32 472 98 50 73"

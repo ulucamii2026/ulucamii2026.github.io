@@ -48,7 +48,7 @@ const anaSayfaJsonLd = {
   alternateName: site.dernekAdi,
   hasMap: `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`,
   contactPoint: [
-    { '@type': 'ContactPoint', contactType: 'imam', telephone: site.telefon.dinGorevlisi, email: site.epostaDinGorevlisi },
+    { '@type': 'ContactPoint', contactType: 'imam', /* 13 Eyl 2026 (Rıdvan): din görevlisi telefonu paylaşılmaz */ email: site.epostaDinGorevlisi },
     { '@type': 'ContactPoint', contactType: 'association', telephone: site.telefon.cami, email: site.eposta },
   ].map((c) => Object.fromEntries(Object.entries(c).filter(([, v]) => v))),
 };

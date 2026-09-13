@@ -72,7 +72,7 @@ La préinscription se fait uniquement ici : **[www.diyanet.be/onkayit](https://w
 
 Si le formulaire vous pose difficulté, si vous avez un doute sur vos documents ou si votre passeport arrive à échéance, passez à la mosquée : nous regarderons ensemble et, si besoin, nous compléterons l'inscription avec vous.
 
-- **Imam :** [+32 471 79 46 82](tel:+32471794682)
+- **Imam :** [WhatsApp](https://wa.me/32471794682)
 - **Mosquée :** [+32 472 98 50 73](tel:+32472985073)
 - **Fondation Diyanet de Belgique :** [+32 2 218 57 55](tel:+3222185755) — en semaine 09h00-12h30 / 14h00-17h00 · [info@diyanet.be](mailto:info@diyanet.be)
 

@@ -60,7 +60,7 @@ Bu kurs, Uluslararası İlahiyat Programı’na (UİP) hazırlıktır. UİP hakk
 
 Kayıt formunu doldurmakta yardım isteyenler ya da kurs hakkında soru sormak isteyenler camimize başvurabilir:
 
-- **Din Görevlisi:** +32 471 79 46 82
+- **Din Görevlisi:** [WhatsApp](https://wa.me/32471794682)
 - **Cami (dernek başkanı):** +32 472 98 50 73
 - **Adres:** Thier des Corbeaux 14, 6900 Marche-en-Famenne
 

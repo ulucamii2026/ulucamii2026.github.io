@@ -25,7 +25,7 @@ const veri = {
   ihtidaSebebi: 'Uzun süredir İslâm üzerine okumalar yaptım ve kalben tatmin oldum; ailemin desteğiyle karar verdim.',
   ihtidaTarihi: '24/08/2026',
   eposta: 'frederic.pouillon@example.be',
-  telefon: '+32 471 79 46 82',
+  telefon: '+32 470 12 34 56',
   adres: 'Thier des Corbeaux 14, 6900 Marche-en-Famenne, Belçika',
   beyanTarihi: '24/08/2026',
 };

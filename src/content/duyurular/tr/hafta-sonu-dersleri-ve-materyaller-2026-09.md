@@ -28,4 +28,4 @@ Her ders günü işlenen konuların **günlük ders planları ve sunumları** si
 Kursumuz ücretsizdir ve 7 yaş üzeri bütün çocuklarımıza açıktır. Henüz kaydolmadıysanız çevrimiçi kayıt beş dakika sürüyor: [www.ulucamii.be/kayit](https://www.ulucamii.be/kayit/).
 
 📍 Thier des Corbeaux 14, 6900 Marche-en-Famenne
-📞 Din görevlisi: +32 471 79 46 82 · Cami: +32 472 98 50 73
+📞 Din görevlisi: [WhatsApp](https://wa.me/32471794682) · Cami: +32 472 98 50 73

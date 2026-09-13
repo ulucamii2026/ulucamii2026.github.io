@@ -60,7 +60,7 @@ Ce cours prépare au Programme international de théologie (UİP). Pour plus d'i
 
 Pour de l'aide avec le formulaire ou des questions sur le cours, vous pouvez vous adresser à notre mosquée :
 
-- **Imam :** +32 471 79 46 82
+- **Imam :** [WhatsApp](https://wa.me/32471794682)
 - **Mosquée (président de l'association) :** +32 472 98 50 73
 - **Adresse :** Thier des Corbeaux 14, 6900 Marche-en-Famenne
 

@@ -32,7 +32,7 @@ const bytes = await dilekceUret({
     dogumTarihi: '24/04/1979',
     uyruk: 'Belçika',
     adres: 'Thier des Corbeaux 14, 6900 Marche-en-Famenne',
-    telefon: '+32 471 79 46 82',
+    telefon: '+32 470 12 34 56',
     eposta: 'frederic.pouillon@example.be',
     dil,
   },
