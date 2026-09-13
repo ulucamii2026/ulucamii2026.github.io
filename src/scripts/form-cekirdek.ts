@@ -510,29 +510,56 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     const dugmeMetni = gonderDugme?.textContent ?? '';
     if (gonderDugme) { gonderDugme.disabled = true; gonderDugme.textContent = m.basari.gonderiliyor || '…'; }
     form.setAttribute('aria-busy', 'true');
-    const denetleyici = new AbortController();
-    const zamanAsimi = window.setTimeout(() => denetleyici.abort(), ZAMAN_ASIMI_MS);
+    type Sonuc = { ok?: boolean; ref?: string; hata?: string; tekrar?: boolean; kopyaGitti?: boolean; durum?: number };
+    // Her deneme kendi zaman aşımını taşır; aynı gonderimAnahtari ile yinelenen istek sunucuda
+    // ikinci kayıt açmaz (tekrar:true ya da işlem sürüyorsa kayit-isleniyor döner).
+    const gonder = async (sureMs: number): Promise<Sonuc> => {
+      const denetleyici = new AbortController();
+      const zamanAsimi = window.setTimeout(() => denetleyici.abort(), sureMs);
+      try {
+        const yanit = await fetch(form.dataset.uc || '', {
+          method: 'POST', mode: 'cors', redirect: 'follow', signal: denetleyici.signal,
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(govde),
+        });
+        const metin = await yanit.text();
+        let sonuc: Sonuc = {};
+        try { sonuc = JSON.parse(metin); } catch { sonuc = { ok: false, hata: 'yanit-json-degil' }; }
+        return { ...sonuc, durum: yanit.status, ok: yanit.ok && sonuc.ok === true };
+      } finally { window.clearTimeout(zamanAsimi); }
+    };
+    const bekle = (ms: number) => new Promise<void>((coz) => window.setTimeout(coz, ms));
     try {
       const asgariSurum = Number(form.dataset.asgariServisSurumu || 0);
       if (asgariSurum) {
         // Yeni alanları eski servis sessizce düşürmesin. Bu GET kişisel veri taşımaz.
-        const saglik = await fetch(form.dataset.uc || '', { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: denetleyici.signal });
-        const durum = await saglik.json();
-        if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true)) {
-          mesajGoster(m.hata.servisHazirDegil);
-          return;
-        }
+        const saglikDenetleyici = new AbortController();
+        const saglikZamani = window.setTimeout(() => saglikDenetleyici.abort(), ZAMAN_ASIMI_MS);
+        try {
+          const saglik = await fetch(form.dataset.uc || '', { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: saglikDenetleyici.signal });
+          const durum = await saglik.json();
+          if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true)) {
+            mesajGoster(m.hata.servisHazirDegil);
+            return;
+          }
+        } finally { window.clearTimeout(saglikZamani); }
       }
-      const yanit = await fetch(form.dataset.uc || '', {
-        method: 'POST', mode: 'cors', redirect: 'follow', signal: denetleyici.signal,
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(govde),
-      });
-      const metin = await yanit.text();
-      let sonuc: { ok?: boolean; ref?: string; hata?: string; tekrar?: boolean; kopyaGitti?: boolean } = {};
-      try { sonuc = JSON.parse(metin); } catch { sonuc = { ok: false, hata: 'yanit-json-degil' }; }
-      if (!yanit.ok || !sonuc.ok || !sonuc.ref) {
-        gonderimHatasi(sonuc.hata === 'kayit-isleniyor' ? m.hata.isleniyor : doldur(m.hata.sunucu, { kod: sonuc.hata || String(yanit.status) }));
+      // 13 Eyl 2026 (canlı ölçüm): PDF + Drive + e-posta bazen 60 sn'yi aşıyor. İlk deneme
+      // zaman aşımına düşer ya da sunucu «kayit-isleniyor» derse veliye «tekrar deneyin»
+      // demek yerine aynı anahtarla en çok 8 kez, 8 sn arayla yoklanır; sonuç gelince
+      // başarı ekranı açılır. Yoklamalar tükenirse mesaj kalır, düğme yeniden açılır.
+      let sonuc: Sonuc;
+      let bekliyor = false;
+      try { sonuc = await gonder(ZAMAN_ASIMI_MS); }
+      catch (err) { if ((err as Error)?.name !== 'AbortError') throw err; sonuc = { ok: false, hata: 'kayit-isleniyor' }; bekliyor = true; }
+      for (let deneme = 0; !sonuc.ok && (sonuc.hata === 'kayit-isleniyor' || bekliyor) && deneme < 8; deneme++) {
+        mesajGoster(m.hata.isleniyor, 'bilgi', deneme === 0);
+        await bekle(8_000);
+        try { sonuc = await gonder(30_000); bekliyor = false; }
+        catch (err) { if ((err as Error)?.name !== 'AbortError') throw err; sonuc = { ok: false, hata: 'kayit-isleniyor' }; bekliyor = true; }
+      }
+      if (!sonuc.ok || !sonuc.ref) {
+        gonderimHatasi(sonuc.hata === 'kayit-isleniyor' ? (bekliyor ? m.hata.zamanAsimi : m.hata.isleniyor) : doldur(m.hata.sunucu, { kod: sonuc.hata || String(sonuc.durum ?? '') }));
         return;
       }
       window.clearTimeout(zamanlayici);
@@ -544,7 +571,6 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     } finally {
       gonderiliyor = false;
       if (taslakSilDugme) taslakSilDugme.disabled = false;
-      window.clearTimeout(zamanAsimi);
       form.removeAttribute('aria-busy');
       if (gonderDugme) { gonderDugme.disabled = false; gonderDugme.textContent = dugmeMetni; }
     }

@@ -151,12 +151,15 @@ test('60 saniye zaman aşımı, çift gönderim kilidi ve tekrarın kopya sonucu
   await ac(page); await doldur(page); await yol(page, 'elden');
   await form(page).evaluate(f => { f.requestSubmit(); f.requestSubmit(); });
   await expect.poll(() => gelen.length).toBe(1);
+  // 13 Eyl 2026: zaman aşımı ya da «kayit-isleniyor» sonrası istemci aynı anahtarla kendiliğinden
+  // yoklar (8 sn ara); veli düğmeye basmaz, düğme yoklama boyunca kilitli kalır.
   await page.clock.fastForward(60_100);
-  await expect(page.locator('[data-mesaj]')).toContainText('Taslağınız kayıtlı');
-  await expect(form(page).locator('[type=submit]')).toBeEnabled();
-  await form(page).locator('[type=submit]').click();
   await expect(page.locator('[data-mesaj]')).toContainText('Kaydınız işleniyor');
-  await form(page).locator('[type=submit]').click();
+  await expect(form(page).locator('[type=submit]')).toBeDisabled();
+  await page.clock.fastForward(8_100);
+  await expect.poll(() => gelen.length).toBe(2);
+  await expect(page.locator('[data-mesaj]')).toContainText('Kaydınız işleniyor');
+  await page.clock.fastForward(8_100);
   await expect(page.locator('[data-basari]')).toBeVisible();
   expect(gelen).toHaveLength(3);
   expect(new Set(gelen.map(g => g.gonderimAnahtari)).size).toBe(1);
