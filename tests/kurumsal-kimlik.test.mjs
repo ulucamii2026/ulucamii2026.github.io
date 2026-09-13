@@ -222,18 +222,4 @@ test('PDF üst künyesi görünümünü korur ve kaynak alanları değişince ye
   const html = x.pdfUst('Başlık', '', 'tr', 'UC-2099-0001', '2099-01-01', '');
   assert.match(html, /TEST-KBO/); assert.match(html, /Test sokak/); assert.ok(html.includes(kimlik.hukuki.resmiAd));
 });
-test('v29 kayıt/ihtida doğrulama, panel, saklama, kuyruk ve tekrar işlevleri birebir korunur', () => {
-  const eski = vm.createContext({console, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});
-  vm.runInContext(oku('ulucamii-Kod-v29.gs'), eski);
-  const yeni = vm.createContext({console, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});
-  vm.runInContext(oku('kimlik-sabitler.gs') + '\n' + oku('ulucamii-Kod-v31.gs'), yeni);
-  const izinli = new Set(['pdfUst', 'kayitPostIsleV2', 'brevoGonder', 'epostaGonder', 'brevoSina', 'mailHtml', 'kopyaGonderV2', 'ihtidaKopyaGonderV2']);
-  let sayi = 0;
-  for (const [ad, fn] of Object.entries(eski)) {
-    if (typeof fn !== 'function' || izinli.has(ad)) continue;
-    assert.equal(typeof yeni[ad], 'function', 'Korunmayan işlev: ' + ad);
-    assert.equal(yeni[ad].toString().replace(/\r\n/g, '\n'), fn.toString().replace(/\r\n/g, '\n'), 'Kapsam dışı değişiklik: ' + ad);
-    sayi++;
-  }
-  assert.ok(sayi > 0, 'Korunan işlevler gerçekten karşılaştırılmış olmalı');
-});
+// 13 Eyl 2026 temizliği: v29↔v31 birebir koruma testi kaldırıldı — v9–v30 kaynakları depodan çıktı (git geçmişinde), v31 canlıda doğrulandı.

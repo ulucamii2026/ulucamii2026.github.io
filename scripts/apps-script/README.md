@@ -13,11 +13,13 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v21.gs` | **Canlıda** — 4 Eylül 2026 akşamı dağıtıldı (panel «Form PDF» ucu) |
-| `ulucamii-Kod-v20.gs` | Önceki sürüm (kayıt PDF'i iki sayfa) |
-| `ulucamii-Kod-v11.gs` | 26 Ağustos 2026 (Sheets formül koruması) |
-| `ulucamii-Kod-v10.gs` | Önceki sürüm |
-| `ulucamii-Kod-v9.gs` | Karşılaştırma için duruyor |
+| `ulucamii-Kod-v31.gs` | **Canlıda** — 13 Eylül 2026 akşamı (`D:/tmp/gas/dagit_v31.py`); kurumsal e-posta v2 + iletişim bloğu düzeltmesi |
+| `kimlik-sabitler.gs` | `npm run kimlik:uret` üretir (kimlik.json kopyası) — elle düzenlenmez |
+| `veli-eposta-sablon.gs`, `veli-cuma.gs`, `veli-mail-listesi.gs`, `ihtida-*.gs` | Ortak modüller; `npm run ihtida:gas-derle` hepsini `.codex/cikti/gas/ulucamii-v31.gs` paketine birleştirir |
+
+> **13 Eylül 2026 temizliği (Rıdvan):** v9–v30 kaynak dosyaları depodan kaldırıldı — hepsi git geçmişinde
+> (`git log --all -- scripts/apps-script/ulucamii-Kod-v20.gs` gibi). Eski sürümler din görevlisinin telefonunu metin olarak
+> taşıyordu; kalıcı kural: din görevlisi telefonu hiçbir yerde paylaşılmaz. Aşağıdaki sürüm notları tarihçe olarak durur.
 
 ### v11 — defter hücreleri formüle dönüşemez (26 Ağustos 2026)
 

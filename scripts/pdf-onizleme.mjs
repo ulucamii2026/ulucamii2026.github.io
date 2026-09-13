@@ -1,4 +1,4 @@
-// pdf-onizleme.mjs — Node'da ulucamii-Kod-v20.gs içindeki SAF PDF şablon
+// pdf-onizleme.mjs — Node'da ulucamii-Kod-v31.gs içindeki SAF PDF şablon
 // fonksiyonlarını (pdfHtmlKayit, pdfHtmlIhtida) çalıştırıp örnek HTML çıktısı üretir.
 //
 // Yöntem: .gs dosyasının TAMAMI `new Function(...)` ile bir fonksiyon gövdesi olarak
@@ -16,7 +16,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v20.gs");
+const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v31.gs");
 const CIKTI_KLASORU = "C:\\Users\\ridva\\AppData\\Local\\Temp\\claude\\D--app-ulucamii-site\\dbce5ab8-af6e-46a6-8c9a-489016d552e9\\scratchpad";
 
 /** Ne şekilde erişilirse erişilsin çökmeyen, kendini yansıtan bir "güdük" (stub) üretir. */
@@ -49,7 +49,8 @@ for (const ad of GUDUK_ADLARI) {
   globalThis[ad] = magicStub(ad);
 }
 
-const kaynak = readFileSync(GS_YOLU, "utf8");
+// 13 Eyl 2026: v30+ kimlik sabitlerini (KIMLIK) ayrı dosyadan alır; önce o yüklenir.
+const kaynak = readFileSync(path.join(__dirname, "apps-script", "kimlik-sabitler.gs"), "utf8") + "\n" + readFileSync(GS_YOLU, "utf8");
 const donduren = kaynak + "\nreturn { pdfHtmlKayit: pdfHtmlKayit, pdfHtmlIhtida: pdfHtmlIhtida, SURUM: SURUM };";
 
 let modul;
