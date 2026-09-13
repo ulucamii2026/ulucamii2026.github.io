@@ -1012,16 +1012,21 @@ function kayitV2SayfaGetir() {
 }
 
 function kayitV2AnahtarBul(sayfa, anahtar) {
-  // 13 Eyl 2026: Tekrarda kopya sonucunu önbellekten veya kalıcı Durum işaretinden okur.
-  var onbellek = CacheService.getScriptCache();
-  var ham = onbellek.get("kayit2:" + anahtar);
-  if (ham) { try { var kayitli = JSON.parse(ham); if (typeof kayitli.kopyaGitti === "boolean") return kayitli; } catch (_) {} }
+  // 13 Eyl 2026: Önbellek kesintisi kaydı durdurmaz; eski false sonucu defterden doğrulanır.
+  var onbellek = null, ham = null;
+  try { onbellek = CacheService.getScriptCache(); ham = onbellek.get("kayit2:" + anahtar); } catch (_) {}
+  if (ham) { try { var kayitli = JSON.parse(ham); if (kayitli.kopyaGitti === true && /^UC-\d{4}-\d{4}$/.test(kayitli.ref)) return kayitli; } catch (_) {} }
   if (sayfa.getLastRow() < 2 || sayfa.getLastColumn() < SUTUN2.anahtar) return null;
   var veri = sayfa.getRange(2, 1, sayfa.getLastRow() - 1, SUTUN2.anahtar).getValues();
   for (var i = veri.length - 1; i >= 0; i--) {
     if (String(veri[i][SUTUN2.anahtar - 1]).trim() === anahtar) {
-      var sonuc = { ref: String(veri[i][SUTUN2.referans - 1]), kopyaGitti: String(veri[i][SUTUN2.durum - 1]).split(" | ").indexOf("veli-kopyasi-gonderildi") !== -1 };
-      onbellek.put("kayit2:" + anahtar, JSON.stringify(sonuc), 21600);
+      var durumlar = String(veri[i][SUTUN2.durum - 1]).split(" | ");
+      var gitti = durumlar.indexOf("veli-kopyasi-gonderildi") !== -1;
+      var bekliyor = !gitti && durumlar.indexOf("veli-kopyasi-gonderilemedi") === -1
+        && durumlar.indexOf("veli-kopyasi-bekleniyor") !== -1
+        && Date.now() - new Date(veri[i][0]).getTime() < 10 * 60 * 1000;
+      var sonuc = { ref: String(veri[i][SUTUN2.referans - 1]), kopyaGitti: bekliyor ? null : gitti };
+      try { if (onbellek) onbellek.put("kayit2:" + anahtar, JSON.stringify(sonuc), 21600); } catch (_) {}
       return sonuc;
     }
   }
@@ -1030,6 +1035,13 @@ function kayitV2AnahtarBul(sayfa, anahtar) {
 function kayitV2AnahtarKaydet(anahtar, ref, kopyaGitti) {
   // 13 Eyl 2026: Tekrarlanan istek e-postayı yeniden göndermez; doğrulanan sonucu saklar.
   try { CacheService.getScriptCache().put("kayit2:" + anahtar, JSON.stringify({ ref: ref, kopyaGitti: kopyaGitti === true }), 21600); } catch (_) {}
+}
+
+function kayitTekrarYaniti(onceki) {
+  // 13 Eyl 2026: İlk çağrı e-posta gönderirken ikinci çağrı yanlış başarı bildirmez.
+  // Yarım kalan çağrı en çok 10 dakika bekler; sonra doğrulanamayan kopya false olur.
+  return onceki.kopyaGitti === null ? json({ ok: false, hata: "kayit-isleniyor" })
+    : json({ ok: true, ref: onceki.ref, tekrar: true, kopyaGitti: onceki.kopyaGitti === true });
 }
 
 function kayitDurumNotuEkle(sayfa, ref, not) {
@@ -1041,6 +1053,8 @@ function kayitDurumNotuEkle(sayfa, ref, not) {
     if (satir < 2) return;
     var hucre = sayfa.getRange(satir, SUTUN2.durum);
     var durum = String(hucre.getValue() || "Yeni kayıt");
+    if (not === "veli-kopyasi-gonderildi" || not === "veli-kopyasi-gonderilemedi")
+      durum = durum.split(" | ").filter(function (p) { return p !== "veli-kopyasi-bekleniyor"; }).join(" | ");
     if (durum.split(" | ").indexOf(not) === -1) hucre.setValue(durum + " | " + not);
   } finally { kilit.releaseLock(); }
 }
@@ -1056,7 +1070,7 @@ function kayitPostIsleV2(v) {
     var anahtar = temizAnahtar(v.gonderimAnahtari);
 
     var onceki = anahtar ? kayitV2AnahtarBul(sayfaV2, anahtar) : null;
-    if (onceki) return json({ ok: true, ref: onceki.ref, tekrar: true, kopyaGitti: onceki.kopyaGitti === true });
+    if (onceki) return kayitTekrarYaniti(onceki);
 
     var o = v.ogrenci, veli = v.veli, acil = v.acil || {}, saglik = v.saglik || {}, onay = v.onay;
     var adSoyad = (o.ad + " " + o.soyad.toLocaleUpperCase("tr")).trim();
@@ -1067,7 +1081,7 @@ function kayitPostIsleV2(v) {
     var kimlik = v.kimlik || { yol: "belirsiz" };
     try {
       onceki = anahtar ? kayitV2AnahtarBul(sayfaV2, anahtar) : null;
-      if (onceki) return json({ ok: true, ref: onceki.ref, tekrar: true, kopyaGitti: onceki.kopyaGitti === true });
+      if (onceki) return kayitTekrarYaniti(onceki);
 
       var sayfaV1 = v1SayfaBulTablo("TABLO_ID", AYAR.tabloAdi);
       ref = "UC-" + AYAR2.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "UC")).slice(-4);
@@ -1092,7 +1106,7 @@ function kayitPostIsleV2(v) {
         acil.adSoyad || "", acil.cep || "",
         saglik.var ? (saglik.not || "") : "", saglik.var ? (onay.saglikRiza ? "Evet" : "Hayır") : "",
         v.goruntuIzni ? "Evet" : "Hayır", onay.elektronikImza || "", v.dil || "",
-        dosya.getUrl(), "Yeni kayıt" + (kimlikHatalari.length ? " | kimlik-kayit-hatasi" : ""), anahtar,
+        dosya.getUrl(), "Yeni kayıt | veli-kopyasi-bekleniyor" + (kimlikHatalari.length ? " | kimlik-kayit-hatasi" : ""), anahtar,
         v.goruntuSosyalIzni === true ? "Evet" : "Hayır", kimlikOzeti
       ]);
       SpreadsheetApp.flush();
@@ -1357,7 +1371,7 @@ function mailHtml(govde, dil) {
 
 /** Veli e-postası yalnız kayıt formundaki iletişim dilinde hazırlanır (9 Eylül 2026). */
 function kopyaGonderV2(blob, ref, adSoyad, adresler, dil, kimlik, formDili, kimlikHatalari) {
-  // 13 Eyl 2026: Ortak şablona iki dilli kimlik talimatı ekler; tüm alıcıların gönderim sonucunu döner.
+  // 13 Eyl 2026: Kimlik talimatı da kalıcı veli iletişim diline uyar; formDili uyumluluk için kalır.
   if (["tr", "fr"].indexOf(dil) === -1) throw new Error("Veli iletişim dili doğrulanamadı");
   var gecerli = [];
   (adresler || []).forEach(function (a) {
@@ -1407,7 +1421,7 @@ function kopyaGonderV2(blob, ref, adSoyad, adresler, dil, kimlik, formDili, kiml
       "Cami telefonu: +32 472 98 50 73", "Din görevlisi: +32 471 79 46 82"
     ]).join("\n");
 
-  var kimlikMetni = kayitKimlikEpostaMetni(kimlik, formDili || dil, ref, adSoyad, kimlikHatalari);
+  var kimlikMetni = kayitKimlikEpostaMetni(kimlik, dil, ref, adSoyad, kimlikHatalari);
   if (kimlikMetni) govde += "\n\n" + kimlikMetni;
   var ekler = [blob];
   var mufredat = mufredatEki();
@@ -1429,7 +1443,7 @@ function kopyaGonderV2(blob, ref, adSoyad, adresler, dil, kimlik, formDili, kiml
 }
 
 function kayitKimlikEpostaMetni(kimlik, dil, ref, adSoyad, hatalar) {
-  // 13 Eyl 2026: Talimat B uyarınca yalnız kimlik paragrafı form dili + Türkçe; URL ayrı satırdır.
+  // 13 Eyl 2026: Kimlik paragrafı ve bağlantı mesajı seçilen dilde, URL ayrı satırdadır.
   var k = kimlik || {}, yol = k.yol;
   if (["yukle", "eposta", "whatsapp", "elden"].indexOf(yol) === -1) return "";
   var metinler = {
@@ -1438,9 +1452,12 @@ function kayitKimlikEpostaMetni(kimlik, dil, ref, adSoyad, hatalar) {
     en: { yukle: "The copy of the identity document has been received.", eposta: "Please reply to this email with a photo of the identity document attached.", whatsapp: "Please send the photo of the identity document to the imam via WhatsApp.", elden: "Please show the identity document to the teacher at the first lesson.", hata: "Your registration has been received, but one or more sides of the identity document could not be saved. Please reply to this email with a photo of the document attached." }
   };
   var secim = yol === "yukle" && hatalar && hatalar.length ? "hata" : yol;
-  var parcalar = dil !== "tr" && metinler[dil] ? [metinler[dil][secim], metinler.tr[secim]] : [metinler.tr[secim]];
+  if (!metinler[dil]) throw new Error("Veli iletişim dili doğrulanamadı");
+  var parcalar = [metinler[dil][secim]];
   if (yol === "whatsapp") {
-    var ileti = "Merhaba, kayıt " + ref + " (" + adSoyad + ") için kimlik belgesinin fotoğrafını gönderiyorum";
+    var ileti = dil === "fr" ? "Bonjour, j’envoie la photo du document d’identité pour l’inscription " + ref + " (" + adSoyad + ")"
+      : dil === "en" ? "Hello, I am sending the identity document photo for registration " + ref + " (" + adSoyad + ")"
+      : "Merhaba, kayıt " + ref + " (" + adSoyad + ") için kimlik belgesinin fotoğrafını gönderiyorum";
     // encodeURIComponent parantez/apostrofu bırakır; bağlantı şablonu kesmesin diye onlar da kodlanır.
     var kodlu = encodeURIComponent(ileti).replace(/[!'()*]/g, function (c) { return "%" + c.charCodeAt(0).toString(16).toUpperCase(); });
     parcalar.push("https://wa.me/" + DIN_GOREVLISI_WHATSAPP + "?text=" + kodlu);
@@ -1554,14 +1571,16 @@ var IHTIDA_GORSEL_ADLARI = [
 
 /** Veri URL'i beklenen biçimde ve azami boyutta mı? Boş dize "yok" demektir (geçersiz sayılır). */
 function gorselGecerli(veri, azamiMb) {
+  // 13 Eyl 2026: MIME yanında Base64 uzunluğu/dolgusu ve çözülmüş bayt sınırı da doğrulanır.
   var metin = String(veri || "");
   if (!metin) return false;
   var esles = metin.match(/^data:image\/(jpeg|png|webp);base64,/);
   if (!esles) return false;
-  var govde = metin.slice(esles[0].length);
+  var govde = metin.slice(esles[0].length).replace(/[\r\n]/g, "");
   if (govde.length < 400) return false;                        // birkaç piksellik boş kare
-  if (govde.length * 0.75 > azamiMb * 1024 * 1024) return false;
-  return /^[A-Za-z0-9+/=\r\n]+$/.test(govde);
+  if (govde.length % 4 !== 0 || !/^[A-Za-z0-9+/]+={0,2}$/.test(govde)) return false;
+  var dolgu = govde.endsWith("==") ? 2 : govde.endsWith("=") ? 1 : 0;
+  return govde.length * 0.75 - dolgu <= azamiMb * 1024 * 1024;
 }
 
 /** "data:image/png;base64,…" metnini Drive blob'una çevirir (v11'den geri alındı). */
@@ -2388,7 +2407,7 @@ function eskiTasiIhtida(sonuc) {
    =================================================================== */
 
 function testTemizleSayfa(sayfa, klasor, adAlanlari) {
-  // 13 Eyl 2026: Test satırının UC referansına ait kimlikleri, satır silinmeden tam adla temizler.
+  // 13 Eyl 2026: TESTOGLU tam sözcüğü ve geçerli referans gerekir; benzer gerçek adlar korunur.
   var silinen = 0;
   if (sayfa.getLastRow() < 2) return 0;
   var sonSutun = sayfa.getLastColumn();
@@ -2401,14 +2420,23 @@ function testTemizleSayfa(sayfa, klasor, adAlanlari) {
     var satir = veri[i];
     var hedefBuldu = idxler.some(function (idx) {
       var d = String(satir[idx] || "").toUpperCase().trim();
-      return d.indexOf("TESTOGLU") !== -1 || d === "TEST";
+      return d.split(/\s+/).indexOf("TESTOGLU") !== -1;
     });
     if (!hedefBuldu) continue;
     var kayitRef = iRef >= 0 ? String(satir[iRef] || "") : "";
+    if (!/^(UC|IH)-\d{4}-\d{4}$/.test(kayitRef)) continue;
     if (/^UC-\d{4}-\d{4}$/.test(kayitRef)) kayitGorselleriniCopeAt(klasor, kayitRef);
     if (iPdf >= 0) {
       var id = driveIdCikar(String(satir[iPdf] || ""));
-      if (id) dosyayiIdIleCopeAt(id);
+      if (id) {
+        // Bozuk PDF hücresi başka bir belgeyi/defteri sildiremez; ad da birebir eşleşir.
+        var adSoyad = kayitRef.indexOf("UC-") === 0
+          ? String(satir[basliklar.indexOf("Öğrenci adı")] || "") + " " + String(satir[basliklar.indexOf("Öğrenci soyadı")] || "").toLocaleUpperCase("tr")
+          : String(satir[basliklar.indexOf("Adı Soyadı")] || "");
+        var pdfAd = kayitRef + " - " + adSoyad.trim() + ".pdf";
+        var pdf = DriveApp.getFileById(id);
+        if (pdf.getName() === pdfAd) pdf.setTrashed(true);
+      }
     }
     sayfa.deleteRow(i + 2);
     silinen++;

@@ -53,7 +53,9 @@ export function kayitFormuBaslat() {
     }
     return hatalar;
   };
-  form.addEventListener('change', kimlikDurumu);
+  form.addEventListener('change', e => {
+    if ((e.target as HTMLInputElement)?.name?.startsWith('kimlik.')) kimlikDurumu();
+  });
   form.addEventListener('reset', () => {
     gorseller.sifirla();
     setTimeout(() => { sinifListesiKur(false); kimlikDurumu(); }, 0);
@@ -154,7 +156,10 @@ export function kayitFormuBaslat() {
       for (const [k, val] of Object.entries(acil)) saklanacak[`acil.${k}`] = String(val ?? '');
       try { sessionStorage.setItem(KARDES_ANAHTARI, JSON.stringify(saklanacak)); } catch { /* yok say */ }
       const ogrenci = (v.ogrenci ?? {}) as Veriler;
-      kayitBasarisiniHazirla(form, metin, kimlikYolu(), ref, [ogrenci.ad, ogrenci.soyad].filter(Boolean).join(' '));
+      // 13 Eyl 2026: Beklerken değiştirilen seçim başarıya taşınmaz; gönderim anı esas.
+      const kimlik = (v.kimlik ?? {}) as Veriler;
+      const gonderilenYol = kimlik.zaman === 'simdi' ? 'yukle' : String(kimlik.sonra || '');
+      kayitBasarisiniHazirla(form, metin, gonderilenYol, ref, [ogrenci.ad, ogrenci.soyad].filter(Boolean).join(' '));
       gorseller.sifirla();
     },
   });

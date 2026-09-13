@@ -365,6 +365,7 @@ with sync_playwright() as p:
     pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)
     g = GONDERILEN[-1]
     kontrol("ihtida gövde", g.get("tur") == "ihtida" and g["basvuran"]["adSoyad"] == "Jean Testoglu" and g["sahitler"] == [] and g["sahitSecimi"] == "cami" and g["onay"]["acikRiza"] is True)
+    kontrol("ihtida formSurumu 2 olarak korunur", g.get("formSurumu") == 2)
     kontrol("ihtida gövdesinde kimlik NUMARASI yok", not any(k in json.dumps(g) for k in ("tcKimlik", "ulusalNo", "kimlikNo", "rijksregister")))
     gors = g.get("gorseller") or {}
     kontrol("vesikalık gönderildi", gors.get("vesikalik", "").startswith("data:image/jpeg;base64,") and len(gors["vesikalik"]) > 500)

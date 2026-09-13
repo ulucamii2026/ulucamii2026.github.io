@@ -134,19 +134,19 @@ test('v29: gerçek veli gönderim hatası false döner; başarı, boş alıcı v
  assert.equal(c.kopyaGonderV2({}, 'UC-2099-0001', 'Örnek', ['veli@example.test', 'hata@example.test'], 'tr'), false);
 });
 
-test('v29: kimlik paragrafı form dili + Türkçe, WhatsApp URL’si tam tıklanabilir', () => {
- for (const dil of ['tr', 'fr', 'en']) for (const yol of ['yukle', 'eposta', 'whatsapp', 'elden']) {
+test('v29: kimlik paragrafı veli dilinde, WhatsApp URL’si tam tıklanabilir', () => {
+ for (const dil of ['tr', 'fr']) for (const yol of ['yukle', 'eposta', 'whatsapp', 'elden']) {
   const { c, sent } = backend(), ad = "Deniz O'NEIL (TEST)";
-  assert.equal(c.kopyaGonderV2({}, 'UC-2099-0001', ad, ['veli@example.test'], 'fr', { yol }, dil, []), true);
+  assert.equal(c.kopyaGonderV2({}, 'UC-2099-0001', ad, ['veli@example.test'], dil, { yol }, 'en', []), true);
   const metin = c.kayitKimlikEpostaMetni({ yol }, dil, 'UC-2099-0001', ad, []);
-  assert.ok(sent[0].body.includes(metin)); assert.match(metin, /Kimlik|Lütfen/);
+  assert.ok(sent[0].body.includes(metin)); assert.match(metin, dil === 'tr' ? /Kimlik|Lütfen/ : /La copie|Veuillez/);
   if (yol === 'whatsapp') {
    const url = metin.split('\n').at(-1); const htmlUrl = url.replace(/&/g, '&amp;');
    assert.ok(sent[0].htmlBody.includes('href="' + htmlUrl + '"')); assert.equal(new URL(url).hostname, 'wa.me');
-   assert.equal(new URL(url).searchParams.get('text'), "Merhaba, kayıt UC-2099-0001 (" + ad + ") için kimlik belgesinin fotoğrafını gönderiyorum");
+   assert.ok(new URL(url).searchParams.get('text').includes('UC-2099-0001 (' + ad + ')'));
   }
  }
- const { c } = backend(); assert.match(c.kayitKimlikEpostaMetni({ yol: 'yukle' }, 'fr', '', '', ['on']), /kaydedilemedi/);
+ const { c } = backend(); assert.match(c.kayitKimlikEpostaMetni({ yol: 'yukle' }, 'fr', '', '', ['on']), /n’ont pas pu être enregistrées/);
 });
 
 test('v29: yetkisiz/bozuk referanslı yeni uçlar Drive’a erişemez', () => {
@@ -183,4 +183,95 @@ test('v29: test temizliği yalnız eşleşen test satırının iki kimliğini ç
  c.kayitPostIsleV2(v); const normal = [...rows[0]]; normal[1] = 'UC-2026-0002'; normal[2] = 'ÖRNEK'; rows.push(normal);
  c.driveIdCikar = () => ''; assert.equal(c.testTemizleSayfa(sheet, folder, ['Öğrenci soyadı', 'Öğrenci adı']), 1);
  assert.equal(rows.length, 1); assert.equal(rows[0][2], 'ÖRNEK'); assert.equal(files.filter(f => f.trashed).length, 2);
+});
+
+test('v29 C: kimlik paragrafı ve WhatsApp mesajı da veli iletişim dilinde kalır', () => {
+ for (const iletisim of ['tr', 'fr']) for (const formDili of ['tr', 'fr', 'en']) {
+  const { c, sent } = backend();
+  c.kopyaGonderV2({}, 'UC-2099-0001', "Deniz O'NEIL (TEST)", ['veli@example.test'], iletisim, { yol: 'whatsapp' }, formDili, []);
+  const body = sent[0].body;
+  if (iletisim === 'fr') { assert.match(body, /Veuillez envoyer/); assert.doesNotMatch(body, /Lütfen|Please send/); }
+  else { assert.match(body, /Lütfen/); assert.doesNotMatch(body, /Veuillez|Please send/); }
+  const url = body.split('\n').at(-1);
+  assert.match(new URL(url).searchParams.get('text'), iletisim === 'fr' ? /^Bonjour/ : /^Merhaba/);
+ }
+});
+
+test('v29 C: bozuk Base64 dolgu ve uzunluğu reddedilir; satır sonları boyuta eklenmez', () => {
+ const { c } = backend(), prefix = 'data:image/jpeg;base64,';
+ for (const b64 of ['A'.repeat(400) + '=A==', '='.repeat(400), 'A'.repeat(401), 'A'.repeat(400) + '====']) {
+  assert.equal(c.gorselGecerli(prefix + b64, 1.5), false, b64.slice(-8));
+ }
+ const sinir = Buffer.alloc(1.5 * 1024 * 1024).toString('base64');
+ assert.equal(c.gorselGecerli(prefix + sinir.replace(/(.{76})/g, '$1\r\n'), 1.5), true);
+});
+
+test('v29 C: yalnız TESTOGLU sözcüğü ve geçerli referans test temizliğine girer', () => {
+ const { c, rows, sheet, folder } = kayitOrtami();
+ c.kayitPostIsleV2(kayitVerisi(c)); const ilk = [...rows[0]]; rows.length = 0;
+ for (const [soyad, ad, ref] of [['TESTOGLUOĞLU', 'Deniz', 'UC-2099-0002'], ['ÖRNEK', 'TEST', 'UC-2099-0003'], ['TESTOGLU', 'Deniz', 'bozuk-ref']]) {
+  const r = [...ilk]; r[2] = soyad; r[3] = ad; r[1] = ref; rows.push(r);
+ }
+ c.driveIdCikar = () => '';
+ assert.equal(c.testTemizleSayfa(sheet, folder, ['Öğrenci soyadı', 'Öğrenci adı']), 0);
+ assert.equal(rows.length, 3);
+});
+
+test('v29 C: Sheets formül önekleri ve HTML metni çalıştırılmadan saklanır/gösterilir', () => {
+ const { c, rows, sent } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+ v.ogrenci.ad = '<img src=x onerror=alert(1)>';
+ v.veli.adres = '=HYPERLINK("https://example.test")'; v.veli.sehir = '@SUM(1)';
+ v.acil = { adSoyad: '-2+3', cep: '+32470000001' };
+ assert.equal(c.kayitPostIsleV2(v).ok, true);
+ assert.match(rows[0][13], /^'=/); assert.match(rows[0][15], /^'@/); assert.match(rows[0][17], /^'-/); assert.match(rows[0][18], /^'\+/);
+ const html = sent.find(m => m.to === 'veli@example.test').htmlBody;
+ assert.ok(html.includes('&lt;img')); assert.doesNotMatch(html, /<img src=x/);
+});
+
+test('v29 C: önbellek kesintisi mevcut kaydı çoğaltmaz ve gönderilmiş kopyayı yanlış bildirmez', () => {
+ const { c, rows, cache } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+ const ilk = c.kayitPostIsleV2(v); assert.equal(ilk.kopyaGitti, true);
+ cache.set('kayit2:' + v.gonderimAnahtari, JSON.stringify({ ref: ilk.ref, kopyaGitti: false }));
+ assert.equal(c.kayitPostIsleV2(v).kopyaGitti, true);
+ c.CacheService = { getScriptCache: () => ({ get() { throw new Error('Sahte önbellek kesintisi'); }, put() { throw new Error('Sahte önbellek kesintisi'); } }) };
+ const tekrar = c.kayitPostIsleV2(v); assert.equal(tekrar.ok, true); assert.equal(tekrar.tekrar, true); assert.equal(rows.length, 1);
+});
+
+test('v29 C: ilk isteğin e-postası sürerken tekrar yanlış başarı/kopya sonucu vermez', () => {
+ const { c, rows, sent } = kayitOrtami(), v = kayitVerisi(c, 'elden'); let bekleyen;
+ c.epostaGonder = m => { sent.push(m); if (!bekleyen) bekleyen = c.kayitPostIsleV2(v); };
+ const ilk = c.kayitPostIsleV2(v);
+ assert.equal(bekleyen.ok, false); assert.equal(bekleyen.hata, 'kayit-isleniyor');
+ assert.equal(ilk.kopyaGitti, true);
+ const tekrar = c.kayitPostIsleV2(v);
+ assert.equal(tekrar.tekrar, true); assert.equal(tekrar.kopyaGitti, true); assert.equal(tekrar.ref, ilk.ref);
+ assert.equal(rows.length, 1); assert.equal(sent.length, 2);
+});
+
+test('v29 C: yarım kalan eski kopya işlemi tekrar kaydı kilitlemez veya çoğaltmaz', () => {
+ const { c, rows, cache, sent } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+ c.kayitPostIsleV2(v); rows[0][0] = new Date(Date.now() - 11 * 60 * 1000);
+ rows[0][25] = 'Yeni kayıt | veli-kopyasi-bekleniyor'; cache.clear();
+ const tekrar = c.kayitPostIsleV2(v);
+ assert.equal(tekrar.ok, true); assert.equal(tekrar.tekrar, true); assert.equal(tekrar.kopyaGitti, false);
+ assert.equal(rows.length, 1); assert.equal(sent.length, 2);
+});
+
+test('v29 C: test satırının PDF hücresi deftere yönelse de yalnız tam adlı PDF silinir', () => {
+ for (const dogruAd of [false, true]) {
+  const { c, sheet, folder } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+  const sonuc = c.kayitPostIsleV2(v); let silindi = false;
+  c.driveIdCikar = () => 'sentetik-dosya-id';
+  c.DriveApp = { getFileById: () => ({ getName: () => dogruAd ? sonuc.ref + ' - Deniz TESTOGLU.pdf' : 'Kayıt defteri', setTrashed: () => { silindi = true; } }) };
+  assert.equal(c.testTemizleSayfa(sheet, folder, ['Öğrenci soyadı', 'Öğrenci adı']), 1);
+  assert.equal(silindi, dogruAd);
+ }
+});
+
+test('v29 C: hatalı yol ve arka yüz tek başına kayıt oluşturamaz', () => {
+ const { c, rows, files } = kayitOrtami(), v = kayitVerisi(c);
+ for (const kimlik of [null, [], {}, 'yukle', { yol: 'posta' }, { yol: 'yukle', on: '', arka: resim }]) {
+  assert.equal(c.kayitPostIsleV2({ ...v, kimlik }).ok, false);
+ }
+ assert.equal(rows.length, 0); assert.equal(files.length, 0);
 });

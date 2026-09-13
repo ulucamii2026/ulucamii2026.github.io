@@ -146,7 +146,7 @@ function hataYaz(form: HTMLFormElement, ad: string, metin: string | null) {
   for (const h of hedefler) {
     if (metin) h.setAttribute('aria-invalid', 'true'); else h.removeAttribute('aria-invalid');
   }
-  if (hata) { hata.textContent = metin ?? ''; hata.hidden = !metin; }
+  if (hata) { if (hata.textContent !== (metin ?? '')) hata.textContent = metin ?? ''; hata.hidden = !metin; }
   kap?.classList.toggle('alan-hatali', !!metin);
 }
 
@@ -213,11 +213,12 @@ function kaydirmaKilidiKur(form: HTMLFormElement) {
     const kilit = form.querySelector<HTMLInputElement>(`[data-kaydir-kilit="${kutu.id}"]`);
     if (!kilit) return;
     const not = form.querySelector<HTMLElement>(`[data-kaydir-not="${kutu.id}"]`);
-    const kontrol = () => {
+    const kontrol = (yenidenOlc = false) => {
       if (!kutu.clientHeight) return;
       const sonda = kutu.scrollHeight - kutu.scrollTop - kutu.clientHeight < 24 || kutu.scrollHeight <= kutu.clientHeight + 4;
-      // Kayıtta yeniden taşan kutu kilitlenir; ihtidada okuma kararı korunur.
-      const okundu = sonda || (form.dataset.form !== 'kayit' && kutu.dataset.okundu === '1');
+      // 13 Eyl 2026: Tekrar okumak onayı silmez. Kayıtta yalnız boyut değişimi
+      // yeniden değerlendirilir; ihtidanın kalıcı okuma kararı korunur.
+      const okundu = sonda || (kutu.dataset.okundu === '1' && (form.dataset.form !== 'kayit' || !yenidenOlc));
       const degisti = kilit.disabled === okundu;
       kilit.disabled = !okundu; kutu.dataset.okundu = okundu ? '1' : '';
       if (!okundu) kilit.checked = false;
@@ -228,9 +229,9 @@ function kaydirmaKilidiKur(form: HTMLFormElement) {
       }
     };
     kilit.disabled = kutu.dataset.okundu !== '1';
-    kutu.addEventListener('scroll', kontrol, { passive: true });
+    kutu.addEventListener('scroll', () => kontrol(), { passive: true });
     // Kutu görünür olunca (ör. sekme dönüşü) ölç; görünmezken clientHeight 0 → yanlış açılmasın.
-    const ilk = () => { if (kutu.clientHeight > 0) kontrol(); };
+    const ilk = () => { if (kutu.clientHeight > 0) kontrol(true); };
     requestAnimationFrame(ilk);
     if (typeof ResizeObserver === 'function') {
       const gozlemci = new ResizeObserver(ilk);
@@ -253,7 +254,10 @@ function taslakOku(anahtar: string): Taslak | null {
     const ham = localStorage.getItem(anahtar);
     if (!ham) return null;
     const t = JSON.parse(ham) as Taslak;
-    if (t.surum !== 2 || typeof t.alanlar !== 'object') return null;
+    // Bozuk/yarım kalmış depolama formun açılışını ve gönderimini durdurmasın.
+    if (!t || t.surum !== 2 || !t.alanlar || typeof t.alanlar !== 'object' || Array.isArray(t.alanlar)) return null;
+    if (!Number.isFinite(t.zaman) || t.zaman <= 0 || !Object.values(t.alanlar).every(v => typeof v === 'string')) return null;
+    if (t.anahtar !== undefined && typeof t.anahtar !== 'string') return null;
     if (Date.now() - t.zaman > 30 * 86400000) return null;          // 30 günden eski taslak atılır
     return t;
   } catch { return null; }
@@ -333,6 +337,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   const taslakSilDugme = form.querySelector<HTMLButtonElement>('[data-taslak-sil]');
   let gonderimAnahtari = uuid();
   let gonderiliyor = false;
+  let taslakDegisti = false;
 
   const mesajGoster = (metin: string | null, tur: 'hata' | 'bilgi' = 'hata', kaydir = true) => {
     if (!mesaj) return;
@@ -356,7 +361,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     if (gonderiliyor) return;
     window.clearTimeout(zamanlayici);
     try { localStorage.removeItem(taslakAnahtari); } catch { /* yok say */ }
-    form.reset(); gonderimAnahtari = uuid();
+    form.reset(); gonderimAnahtari = uuid(); taslakDegisti = false;
     form.querySelectorAll<HTMLElement>('[data-kaydir]').forEach((k) => { k.dataset.okundu = ''; k.scrollTop = 0; });
     kosullariUygula(form); kaydirmaKilidiKur(form); tumHatalariTemizle(form);
     if (taslakNotu) taslakNotu.hidden = true;
@@ -367,19 +372,20 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   let zamanlayici: number | undefined;
   let odakZamanlayici: number | undefined;
   const odagiIptalEt = () => { window.clearTimeout(odakZamanlayici); odakZamanlayici = undefined; };
-  const odagiPlanla = (hedef: Alan | null | undefined) => {
+  const odagiPlanla = (hedef: HTMLElement | null | undefined) => {
     odagiIptalEt();
     if (!hedef) return;
     if (AZALTILMIS_HAREKET) { hedef.focus({ preventScroll: true }); return; }
     const oncekiOdak = document.activeElement;
     odakZamanlayici = window.setTimeout(() => {
       odakZamanlayici = undefined;
-      if (hedef.isConnected && !hedef.disabled && document.activeElement === oncekiOdak) hedef.focus({ preventScroll: true });
+      if (hedef.isConnected && !hedef.matches(':disabled') && document.activeElement === oncekiOdak) hedef.focus({ preventScroll: true });
     }, 350);
   };
   // Kullanıcı düzeltmeye veya başka alana yazmaya başladığında eski hata odağı çalınmaz.
   for (const olay of ['pointerdown', 'keydown', 'focusin']) form.addEventListener(olay, odagiIptalEt);
   form.addEventListener('input', (e) => {
+    taslakDegisti = true;
     odagiIptalEt();
     window.clearTimeout(zamanlayici);
     if (!form.hidden) zamanlayici = window.setTimeout(() => taslakYaz(taslakAnahtari, form, gonderimAnahtari), 400);
@@ -390,10 +396,16 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       hataYaz(form, hedef.name, alanDogrula(form, hedef, verileriTopla(form), m));
     }
   });
+  // Son tuş ile sayfadan ayrılma arasındaki 400 ms'de taslak kaybolmasın.
+  window.addEventListener('pagehide', () => {
+    window.clearTimeout(zamanlayici);
+    if (!form.hidden && taslakDegisti) taslakYaz(taslakAnahtari, form, gonderimAnahtari);
+  });
 
   // Koşullar + kilit + canlı doğrulama
   kosullariUygula(form);
   form.addEventListener('change', (e) => {
+    taslakDegisti = true;
     kosullariUygula(form);
     const hedef = e.target as Alan;
     if (hedef?.name) {
@@ -457,7 +469,8 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       form.dispatchEvent(new CustomEvent('form:hata', { detail: { alan } }));
       const kap = alan?.closest<HTMLElement>('[data-alan]');
       kap?.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' });
-      const odak = alan?.type === 'hidden' ? kap?.querySelector<Alan>('input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled)') : alan;
+      const odak = alan?.disabled && alan.dataset.kaydirKilit ? document.getElementById(alan.dataset.kaydirKilit)
+        : alan?.type === 'hidden' ? kap?.querySelector<Alan>('input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled)') : alan;
       odagiPlanla(odak);
     }
     return hatalar.length === 0;
@@ -515,7 +528,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       let sonuc: { ok?: boolean; ref?: string; hata?: string; tekrar?: boolean; kopyaGitti?: boolean } = {};
       try { sonuc = JSON.parse(metin); } catch { sonuc = { ok: false, hata: 'yanit-json-degil' }; }
       if (!yanit.ok || !sonuc.ok || !sonuc.ref) {
-        gonderimHatasi(doldur(m.hata.sunucu, { kod: sonuc.hata || String(yanit.status) }));
+        gonderimHatasi(sonuc.hata === 'kayit-isleniyor' ? m.hata.isleniyor : doldur(m.hata.sunucu, { kod: sonuc.hata || String(yanit.status) }));
         return;
       }
       window.clearTimeout(zamanlayici);

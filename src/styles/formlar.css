@@ -233,7 +233,11 @@
 @media (prefers-reduced-motion: reduce) { .kurallar-kutu { scroll-behavior: auto; } }
 
 /* Kayıt v3 — mevcut Kilim Kartografyası renkleri ve tipografisi. */
+.k-giris { gap: .65rem; }
+.k-giris p + p { margin-top: 0; }
+.k-giris > .ucf-sure { font-size: .95rem; line-height: 1.5; }
 .ucf[data-form="kayit"] { --kayit-odak-payi: 14rem; --kayit-onay: var(--color-adacayi-koyu); }
+.ucf[data-form="kayit"] .secenek input:focus-visible + label { outline: 2px solid var(--vurgu-2); outline-offset: 2px; }
 :root[data-theme="dark"] .ucf[data-form="kayit"] { --kayit-onay: var(--color-adacayi-acik); }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .ucf[data-form="kayit"] { --kayit-onay: var(--color-adacayi-acik); }

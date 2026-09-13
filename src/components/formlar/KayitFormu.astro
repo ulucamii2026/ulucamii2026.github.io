@@ -1,6 +1,6 @@
 ---
-/** Kayıt v3 — tek sayfa, sekiz bölüm; açık rızayla kimlik ön/arka görseli.
-    Kimlik numarası, OCR, vesikalık ve imza kanvası yok. */
+/** 13 Eylül 2026, kayıt v3 — tek sayfa, sekiz bölüm; yol seçmeli açık rızayla
+    kimlik ön yüzü, isteğe bağlı arka yüz. Numara, MRZ/OCR, vesikalık ve imza kanvası yok. */
 import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
@@ -27,7 +27,7 @@ const metinJson = JSON.stringify({
   taslakHassasNot: v3.taslakNot, taslakGuvence: v3.guvence, taslakKaydedilemedi: v3.kaydedilemedi,
 });
 ---
-<div class="ucf-giris" data-form-ust>
+<div class="ucf-giris k-giris" data-form-ust>
   <p>{k.giris}</p>
   <p class="ucf-sure"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 6v6l4 2" /></svg> {k.sureNotu}</p>
   <p class="ucf-sure">{v3.giris}</p>
@@ -277,7 +277,7 @@ const metinJson = JSON.stringify({
           <ol>{k.kurallar.veli.map((s) => <li>{s}</li>)}</ol>
           <p class="son">{k.kurallar.kitapNotu}</p>
         </div>
-        <div class="k-okuma-durum"><span data-okuma-yuzde aria-live="polite">{doldur(v3.okuma, { yuzde: 0 })}</span><p class="kaydir-not" data-kaydir-not="k-kurallar-kutu">{k.kurallar.kaydirNotu}</p></div>
+        <div class="k-okuma-durum"><span data-okuma-yuzde>{doldur(v3.okuma, { yuzde: 0 })}</span><span class="sr-only" data-okuma-duyuru aria-live="polite"></span><p class="kaydir-not" data-kaydir-not="k-kurallar-kutu">{k.kurallar.kaydirNotu}</p></div>
       </div>
       <div data-alan class="tam">
         <div class="onay-kutu">
@@ -308,7 +308,7 @@ const metinJson = JSON.stringify({
     <p class="bolum-not">{v3.amac}</p>
     <p class="bolum-not">{v3.kabul}</p>
     <fieldset data-alan>
-      <legend>{v3.yanimda}</legend>
+      <legend>{v3.zamanSec}</legend>
       <div class="secenekler k-kimlik-secim">
         <span class="secenek"><input id="k-kimlik-simdi" type="radio" name="kimlik.zaman" value="simdi" checked /><label for="k-kimlik-simdi">{v3.simdi}</label></span>
         <span class="secenek"><input id="k-kimlik-sonra" type="radio" name="kimlik.zaman" value="sonra" /><label for="k-kimlik-sonra">{v3.sonra}</label></span>
