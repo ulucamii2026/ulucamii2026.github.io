@@ -37,6 +37,15 @@
         ],
         "createdAt": "2026-09-08T21:38:59.856Z",
         "reason": "Agent verified: hidden data-onizleme image receives uploaded data URL before display in ihtida-gorseller.ts lines 149-150; no broken image is shown."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/sayfalar/KursGunlugu.astro"
+        ],
+        "createdAt": "2026-09-13T22:01:34.007Z",
+        "reason": "Claude triage: L538 is a details/summary chevron drawn with border-right+border-bottom rotated 45deg, not a card accent; the real side-tab at .hafta-not was removed"
       }
     ]
   }
