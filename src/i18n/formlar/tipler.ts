@@ -55,6 +55,14 @@ export interface OrtakMetinler {
 }
 
 export interface KayitV3Metinler {
+  tasarim: {
+    nasil: string; doldur: string; gonder: string; pdf: string;
+    guvence: string; ucretsiz: string; sure: string; veri: string; iletisim: string;
+    ogrenci: string; okul: string; veli: string;
+    fotoNot: string; bicim: string; surukle: string; gorselHazir: string;
+    arka: string; eposta: string; whatsapp: string; elden: string;
+    epostaNot: string; whatsappNot: string; eldenNot: string; epostaKontrol: string;
+  };
   ray: string;
   bolum: string;
   yari: string;

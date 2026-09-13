@@ -54,6 +54,14 @@ export const fr: FormMetinleri = {
 
   kayit: {
     v3: {
+      tasarim: {
+        nasil: 'Comment ça marche ?', doldur: 'Remplissez les informations', gonder: 'Vérifiez et envoyez', pdf: 'Recevez votre document PDF par e-mail',
+        guvence: 'En toute confiance', ucretsiz: 'Cours gratuit', sure: 'Environ 5 minutes', veri: 'Données réservées à l’inscription', iletisim: 'Besoin d’aide ?',
+        ogrenci: 'Faisons connaissance avec votre enfant.', okul: 'Choisissez son école et sa classe actuelle.', veli: 'Indiquez comment vous joindre.',
+        fotoNot: 'Prenez ou choisissez une photo', bicim: 'JPG/PNG · 1,5 Mo maximum', surukle: 'Vous pouvez aussi déposer la photo ici.', gorselHazir: 'Reçu · {boyut}',
+        arka: 'Verso', eposta: 'E-mail', whatsapp: 'WhatsApp', elden: 'Au premier cours',
+        epostaNot: 'Répondez à l’e-mail avec la photo.', whatsappNot: 'Envoyez la photo à l’imam.', eldenNot: 'Présentez le document à l’enseignant.', epostaKontrol: 'Consultez votre boîte e-mail',
+      },
       "ray": "Progression de l’inscription",
       "bolum": "Section {n}/8 · {ad} · {yuzde} %",
       "yari": "Très bien, la moitié est faite !",
@@ -84,8 +92,8 @@ export const fr: FormMetinleri = {
       "degistir": "Changer la photo",
       "kaldir": "Retirer",
       "yanimda": "Je n’ai pas le document d’identité avec moi",
-      "simdi": "Joindre maintenant (recommandé)",
-      "sonra": "Je le transmettrai plus tard",
+      "simdi": "Maintenant",
+      "sonra": "Plus tard",
       "sonraSec": "Comment transmettrez-vous le document ?",
       "zamanSec": "Quand transmettrez-vous le document ?",
       "eposta": "Je répondrai à l’e-mail de confirmation avec la photo",

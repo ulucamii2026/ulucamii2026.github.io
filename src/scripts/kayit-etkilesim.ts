@@ -13,6 +13,10 @@ const sehirler: Record<string, string> = {
 export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinler, kimlikHatalari: () => Array<[string, string]>) {
   const ortak = JSON.parse(form.querySelector('script[data-metin]')?.textContent || '{}') as Metinler;
   const ray = form.querySelector<HTMLElement>('#k-ilerleme')!;
+  const yanray = form.querySelector<HTMLElement>('.k-yanray')!;
+  const govde = form.querySelector<HTMLElement>('.k-form-govde')!;
+  const masaustu = matchMedia('(min-width: 1024px)');
+  const ziyaret = new Set<number>();
   const cubuk = ray.querySelector<HTMLElement>('[role="progressbar"]')!;
   const bolumler = Array.from(form.querySelectorAll<HTMLElement>('.ucf-bolum'));
   const cipler = Array.from(ray.querySelectorAll<HTMLAnchorElement>('a'));
@@ -40,9 +44,12 @@ export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinle
   };
   const rayYaz = () => {
     yaz(ray.querySelector('[data-ilerleme-metin]')!, doldur(m.bolum, { n: aktif + 1, ad: kisaAdlar[aktif], yuzde }));
-    cipler.forEach((a, i) => { if (i === aktif) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current'); });
+    cipler.forEach((a, i) => {
+      if (i === aktif) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
+      bolumler[i].classList.toggle('k-aktif', i === aktif);
+    });
     const liste = ray.querySelector('ol')!, cip = cipler[aktif];
-    if (cip.offsetLeft < liste.scrollLeft || cip.offsetLeft + cip.offsetWidth > liste.scrollLeft + liste.clientWidth)
+    if (!masaustu.matches && (cip.offsetLeft < liste.scrollLeft || cip.offsetLeft + cip.offsetWidth > liste.scrollLeft + liste.clientWidth))
       liste.scrollLeft = Math.max(0, cip.offsetLeft - liste.clientWidth / 2 + cip.offsetWidth / 2);
     const ileti = yuzde === 100 ? m.tamam : aktif === 7 ? m.son : yuzde >= 50 ? m.yari : '';
     if (tesvik.textContent !== ileti) tesvik.textContent = ileti;
@@ -63,6 +70,7 @@ export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinle
       okumaMetin.dataset.yuzde = String(okuma);
       okumaMetin.textContent = okuma === 100 ? m.okundu : doldur(m.okuma, { yuzde: okuma });
       if (okuma === 100) okumaMetin.insertAdjacentHTML('beforeend', ONAY);
+      form.querySelector<HTMLElement>('.k-okuma-cubuk > span')!.style.transform = `scaleX(${okuma / 100})`;
     }
     yaz(okumaDuyuru, okuma === 100 ? m.okundu : '');
   };
@@ -98,7 +106,8 @@ export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinle
       const sorun = kapsamdaki.some(a => hatalar.has(a.name));
       const dokunuldu = kapsamdaki.some(a => a instanceof HTMLInputElement && ['checkbox', 'radio'].includes(a.type) ? a.checked : !!a.value);
       const gorunurHata = !!bolum.querySelector('[aria-invalid="true"]:not(:disabled)');
-      const durum = i === 7 ? (hatalar.size ? 'devam' : 'tamam') : gorunurHata ? 'hata' : !sorun ? 'tamam' : dokunuldu ? 'devam' : 'bos';
+      const durum = i === 7 ? (hatalar.size ? 'devam' : 'tamam') : gorunurHata ? 'hata'
+        : i === 3 && !ziyaret.has(i) && !dokunuldu ? 'bos' : !sorun ? 'tamam' : dokunuldu ? 'devam' : 'bos';
       if (bolum.dataset.durum !== durum) {
         bolum.dataset.durum = durum;
         const no = bolum.querySelector<HTMLElement>('h2 .no')!;
@@ -131,28 +140,38 @@ export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinle
   form.addEventListener('input', () => { window.clearTimeout(girisBekle); girisBekle = window.setTimeout(planla, 120); });
   for (const olay of ['change', 'focusout', 'form:hata', 'form:okuma']) form.addEventListener(olay, planla);
   kurallar.addEventListener('scroll', okumaYaz, { passive: true });
-  form.addEventListener('reset', () => { tesvik.textContent = ''; aktif = 0; planla(); });
+  form.addEventListener('reset', () => { tesvik.textContent = ''; aktif = 0; ziyaret.clear(); planla(); });
   form.addEventListener('focusin', e => {
     const hedef = e.target as HTMLElement, i = bolumler.findIndex(b => b.contains(hedef));
     if (i < 0) return;
-    aktif = i; rayYaz();
+    aktif = i; ziyaret.add(i); rayYaz(); planla();
     requestAnimationFrame(() => {
       if (document.activeElement !== hedef) return;
-      const kap = hedef.closest<HTMLElement>('[data-alan]') || hedef;
-      if (kap.getBoundingClientRect().top < ray.getBoundingClientRect().bottom + 8)
-        kap.scrollIntoView({ behavior: 'instant', block: 'start' });
+      const gorunen = hedef.matches('input[type="file"]') ? hedef.closest('[data-alan]')?.querySelector<HTMLElement>('.g-sec') || hedef : hedef;
+      const ust = masaustu.matches ? (document.querySelector('header')?.getBoundingClientRect().bottom || 0) : ray.getBoundingClientRect().bottom;
+      if (gorunen.getBoundingClientRect().top < ust + 8 || gorunen.getBoundingClientRect().bottom > innerHeight)
+        gorunen.scrollIntoView({ behavior: 'instant', block: 'start' });
     });
   });
   cipler.forEach((a, i) => a.addEventListener('click', e => {
-    e.preventDefault(); aktif = i; rayYaz();
+    e.preventDefault(); aktif = i; ziyaret.add(i); rayYaz(); planla();
     const hedef = bolumler[i].querySelector<HTMLElement>('input:not([type="hidden"]):not(:disabled), select:not(:disabled), textarea:not(:disabled), button') || bolumler[i];
     kaydir(hedef);
   }));
   let gozlemci: IntersectionObserver | undefined;
   const boyutla = () => {
     const ust = document.querySelector('header')?.getBoundingClientRect().height || 0;
-    ray.style.top = `${ust}px`;
-    const pay = ust + ray.getBoundingClientRect().height + 20;
+    // Aynı nav taşınır: masaüstünde form önce, mobilde üst ray önce okunur.
+    const hedef = masaustu.matches ? yanray : form;
+    if (ray.parentElement !== hedef) {
+      const odak = ray.contains(document.activeElement) ? document.activeElement as HTMLElement : null;
+      hedef.insertBefore(ray, masaustu.matches ? yanray.firstChild : govde);
+      odak?.focus({ preventScroll: true });
+    }
+    ray.style.top = masaustu.matches ? '0px' : `${ust}px`;
+    yanray.style.top = `${ust + 16}px`;
+    yanray.style.maxHeight = masaustu.matches ? `calc(100dvh - ${ust + 32}px)` : '';
+    const pay = ust + (masaustu.matches ? 0 : ray.getBoundingClientRect().height) + 20;
     form.style.setProperty('--kayit-odak-payi', `${pay}px`);
     gozlemci?.disconnect();
     const gorunenler = new Set<HTMLElement>();
@@ -169,8 +188,27 @@ export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinle
   const baslik = document.querySelector('header'); if (baslik) boyutGozlemci.observe(baslik);
   window.addEventListener('resize', boyutla);
   window.addEventListener('scroll', () => {
-    if (aktif && bolumler[0].getBoundingClientRect().top > ray.getBoundingClientRect().bottom + 20) { aktif = 0; rayYaz(); }
+    const ust = masaustu.matches ? (document.querySelector('header')?.getBoundingClientRect().bottom || 0) : ray.getBoundingClientRect().bottom;
+    if (aktif && bolumler[0].getBoundingClientRect().top > ust + 20) { aktif = 0; rayYaz(); }
   }, { passive: true });
+  // Bırakılan dosya mevcut görsel yöneticisinin aynı yarış/sıfırlama korumasından geçer.
+  form.querySelectorAll<HTMLElement>('[data-gorsel]').forEach(kap => {
+    const kutu = kap.querySelector<HTMLElement>('.g-kutu')!;
+    const girdi = kap.querySelector<HTMLInputElement>('input[type="file"]')!;
+    kutu.addEventListener('dragover', e => {
+      if (girdi.disabled) return;
+      e.preventDefault(); kutu.classList.add('dragover');
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    });
+    kutu.addEventListener('dragleave', e => { if (!kutu.contains(e.relatedTarget as Node | null)) kutu.classList.remove('dragover'); });
+    kutu.addEventListener('drop', e => {
+      e.preventDefault(); kutu.classList.remove('dragover');
+      if (girdi.disabled || !e.dataTransfer?.files.length) return;
+      girdi.files = e.dataTransfer.files;
+      girdi.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    form.addEventListener('reset', () => kutu.classList.remove('dragover'));
+  });
   form.addEventListener('focusout', e => {
     const a = e.target as Alan;
     if (!a?.name) return;
@@ -203,8 +241,9 @@ export function kayitBasarisiniHazirla(form: HTMLFormElement, m: KayitV3Metinler
   panel.style.scrollMarginTop = `${(document.querySelector('header')?.getBoundingClientRect().height || 0) + 20}px`;
   const baglanti = panel.querySelector<HTMLAnchorElement>('[data-kimlik-baglanti]')!;
   const aciklama = panel.querySelector<HTMLElement>('[data-kimlik-adim]')!;
+  aciklama.classList.toggle('k-belge-alindi', yol === 'yukle');
   aciklama.textContent = yol === 'yukle' ? m.alindi : yol === 'elden' ? m.eldenAdim : yol === 'eposta' ? m.epostaAdim : m.whatsapp;
-  if (yol === 'yukle') aciklama.insertAdjacentHTML('beforeend', ONAY);
+  if (yol === 'yukle') aciklama.insertAdjacentHTML('beforeend', ` ${ONAY}`);
   // Yükleme yolunda «sonradan yüklenmez» notu anlamsız; yalnız e-posta/WhatsApp/elden yollarında gösterilir.
   panel.querySelector<HTMLElement>('[data-kimlik-sonradan]')!.hidden = yol === 'yukle';
   baglanti.hidden = !['eposta', 'whatsapp'].includes(yol);
@@ -214,9 +253,12 @@ export function kayitBasarisiniHazirla(form: HTMLFormElement, m: KayitV3Metinler
     baglanti.href = `https://wa.me/${(form.dataset.whatsapp || '').replace(/\D/g, '')}?text=${encodeURIComponent(doldur(m.whatsappMetin, { ref, ad }))}`;
     baglanti.textContent = m.whatsappDugme; baglanti.target = '_blank'; baglanti.rel = 'noopener';
   }
-  panel.querySelector<HTMLButtonElement>('[data-ref-kopyala]')!.onclick = async () => {
+  const kopyala = panel.querySelector<HTMLButtonElement>('[data-ref-kopyala]')!;
+  panel.querySelector<HTMLElement>('[data-kopya-durum]')!.textContent = '';
+  kopyala.classList.remove('k-kopyalandi');
+  kopyala.onclick = async () => {
     const durum = panel.querySelector<HTMLElement>('[data-kopya-durum]')!;
-    try { await navigator.clipboard.writeText(ref); durum.textContent = m.kopyalandi; }
+    try { await navigator.clipboard.writeText(ref); durum.textContent = m.kopyalandi; kopyala.classList.add('k-kopyalandi'); }
     catch {
       const aralik = document.createRange(); aralik.selectNodeContents(panel.querySelector('[data-ref]')!);
       window.getSelection()?.removeAllRanges(); window.getSelection()?.addRange(aralik); durum.textContent = m.kopyaHata;

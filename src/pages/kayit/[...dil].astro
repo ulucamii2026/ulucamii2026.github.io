@@ -9,6 +9,10 @@ import type { Dil } from '../../i18n/ui';
 import { formMetinleri } from '../../i18n/formlar';
 import { siteAyarlari } from '../../lib/icerik';
 import '../../styles/formlar.css';
+import loraLatin from '@fontsource-variable/lora/files/lora-latin-wght-normal.woff2?url';
+import loraGenis from '@fontsource-variable/lora/files/lora-latin-ext-wght-normal.woff2?url';
+import workLatin from '@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2?url';
+import workGenis from '@fontsource-variable/work-sans/files/work-sans-latin-ext-wght-normal.woff2?url';
 
 export function getStaticPaths() {
   return [
@@ -23,8 +27,12 @@ const m = formMetinleri(dil);
 const site = await siteAyarlari();
 ---
 <Base baslik={m.kayit.sayfaBaslik} dil={dil} aciklama={m.kayit.sayfaAciklama} dilHatirla={false}>
+  <Fragment slot="head">
+    {/* Aynı yerel fontları erken getir: başlık satırları ilk boyamadan sonra kaymasın. */}
+    {[loraLatin, workLatin, ...(dil === 'tr' ? [loraGenis, workGenis] : [])].map(href => <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href={href} />)}
+  </Fragment>
   <SayfaBasligi etiket={m.kayit.ustEtiket} baslik={m.kayit.sayfaBaslik} />
-  <section class="kapsayici py-10 sm:py-14" style="max-width: 52rem">
+  <section class="kapsayici k-sayfa py-10 sm:py-14">
     <KayitFormu dil={dil} uc={site.servisler.basvuru} eposta={site.eposta ?? 'info@ulucamii.be'} telefon={site.telefon.dinGorevlisi} whatsapp={site.whatsapp!.numara} />
   </section>
 </Base>

@@ -53,6 +53,14 @@ export const tr: FormMetinleri = {
 
   kayit: {
     v3: {
+      tasarim: {
+        nasil: 'Nasıl işler?', doldur: 'Bilgileri doldurun', gonder: 'Kontrol edip gönderin', pdf: 'PDF belgeniz e-postanıza gelsin',
+        guvence: 'İçiniz rahat olsun', ucretsiz: 'Kurs ücretsiz', sure: 'Yaklaşık 5 dakika', veri: 'Veriler yalnız kayıt için', iletisim: 'Yardıma ihtiyacınız olursa',
+        ogrenci: 'Çocuğunuzu tanıyalım.', okul: 'Okulunu ve bu yılki sınıfını seçin.', veli: 'Size ulaşabileceğimiz bilgileri yazın.',
+        fotoNot: 'Fotoğraf çekin ya da seçin', bicim: 'JPG/PNG · en çok 1,5 MB', surukle: 'Fotoğrafı buraya da bırakabilirsiniz.', gorselHazir: 'Alındı · {boyut}',
+        arka: 'Arka yüz', eposta: 'E-posta', whatsapp: 'WhatsApp', elden: 'İlk derste',
+        epostaNot: 'Onay e-postasını fotoğrafla yanıtlayın.', whatsappNot: 'Fotoğrafı din görevlisine gönderin.', eldenNot: 'Belgeyi hocaya elden gösterin.', epostaKontrol: 'E-postanızı kontrol edin',
+      },
       "ray": "Kayıt ilerlemesi",
       "bolum": "Bölüm {n}/8 · {ad} · %{yuzde}",
       "yari": "Harika, yarısı bitti!",
@@ -83,8 +91,8 @@ export const tr: FormMetinleri = {
       "degistir": "Fotoğrafı değiştir",
       "kaldir": "Kaldır",
       "yanimda": "Kimlik belgesi şu an yanımda değil",
-      "simdi": "Şimdi yükle (önerilen)",
-      "sonra": "Sonra ileteceğim",
+      "simdi": "Şimdi",
+      "sonra": "Sonra",
       "sonraSec": "Belgeyi nasıl ileteceksiniz?",
       "zamanSec": "Belgeyi ne zaman ileteceksiniz?",
       "eposta": "Onay e-postasını fotoğrafla yanıtlayacağım",

@@ -53,6 +53,14 @@ export const en: FormMetinleri = {
 
   kayit: {
     v3: {
+      tasarim: {
+        nasil: 'How it works', doldur: 'Fill in your details', gonder: 'Review and submit', pdf: 'Receive your PDF by e-mail',
+        guvence: 'Good to know', ucretsiz: 'Free course', sure: 'About 5 minutes', veri: 'Details used only for registration', iletisim: 'Need a hand?',
+        ogrenci: 'Let’s get to know your child.', okul: 'Choose their school and current year.', veli: 'Tell us how to reach you.',
+        fotoNot: 'Take or choose a photo', bicim: 'JPG/PNG · up to 1.5 MB', surukle: 'You can also drop the photo here.', gorselHazir: 'Received · {boyut}',
+        arka: 'Back', eposta: 'E-mail', whatsapp: 'WhatsApp', elden: 'At the first lesson',
+        epostaNot: 'Reply to the confirmation with the photo.', whatsappNot: 'Send the photo to the imam.', eldenNot: 'Show the document to the teacher.', epostaKontrol: 'Check your e-mail',
+      },
       "ray": "Registration progress",
       "bolum": "Section {n}/8 · {ad} · {yuzde}%",
       "yari": "Great, you are halfway there!",
@@ -83,8 +91,8 @@ export const en: FormMetinleri = {
       "degistir": "Change photo",
       "kaldir": "Remove",
       "yanimda": "I do not have the identity document with me",
-      "simdi": "Upload now (recommended)",
-      "sonra": "I will send it later",
+      "simdi": "Upload now",
+      "sonra": "Later",
       "sonraSec": "How will you provide the document?",
       "zamanSec": "When will you provide the document?",
       "eposta": "I will reply to the confirmation e-mail with the photo",

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import sharp from 'sharp';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 
 // Talimat C: bütün ağ çıkışları kapalı; derlenmiş site (playwright.config webServer'ı 4401 —
 // `ONIZLEME` ile 4399'daki elle açılmış önizlemeye yönlendirilebilir) ve sahte GAS.
@@ -25,7 +25,7 @@ const form = p => p.locator('form[data-form="kayit"]');
 const cubuk = p => p.locator('#k-ilerleme [role="progressbar"]');
 const dosya = name => ({ name, mimeType: 'image/png', buffer: png });
 const ac = (p, dil = '') => p.goto(`${kok}/kayit/${dil ? dil + '/' : ''}`);
-const ekran = (p, ad) => p.screenshot({ path: `${cikti}/kayit-v3c-${ad}.png`, animations: 'disabled' });
+const ekran = (p, ad) => p.screenshot({ path: `${cikti}/kayit-v3d-akis-${ad}-${test.info().project.name}.png`, animations: 'disabled' });
 async function doldur(p) {
   for (const [id, deger] of Object.entries({ ad: 'Deniz', soyad: 'TESTOGLU', dogum: '2017-03-15', 'veli-ad': 'Anne-Marie Işık', 'veli-cep': '0470000000', 'veli-eposta': 'veli@example.test', adres: 'Rue Exemple 12', posta: '6900', imza: 'annemarieisik' })) await p.locator(`#k-${id}`).fill(deger);
   await p.locator('#k-okul').selectOption({ label: "École communale d'Aye" });
@@ -64,7 +64,9 @@ test('Bozuk taslak tarihi veya alan şeması formun açılışını durdurmaz', 
 });
 
 test('Koşullu okul/sağlık/kimlik eksikleri ve kaydırma kilidi yüzdeyle tutarlıdır', async ({ page }) => {
-  await ac(page); await doldur(page); await yol(page, 'elden');
+  await ac(page);
+  await expect(page.locator('#k-onay-kurallar')).toBeDisabled();
+  await doldur(page); await yol(page, 'elden');
   await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
   for (const [secim, alan, bolum, deger] of [
     ['okul', 'okul-diger', 'okul', 'École Exemple'],
@@ -87,8 +89,10 @@ test('Koşullu okul/sağlık/kimlik eksikleri ve kaydırma kilidi yüzdeyle tuta
   await page.locator('#k-kurallar-kutu').evaluate(e => { e.scrollTop = 0; e.dispatchEvent(new Event('scroll')); });
   await expect(page.locator('#k-onay-kurallar')).toBeChecked();
   await page.setViewportSize({ width: 360, height: 780 });
-  await expect(page.locator('#k-onay-kurallar')).toBeDisabled();
-  await expect(cubuk(page)).not.toHaveAttribute('aria-valuenow', '100');
+  // Eşzamanlı 13 Eylül çekirdek düzeltmesi: okunmuş onay, yeniden akışta korunur.
+  await expect(page.locator('#k-onay-kurallar')).toBeEnabled();
+  await expect(page.locator('#k-onay-kurallar')).toBeChecked();
+  await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
 });
 
 test('Görsel işlemi geç bitse bile Sonra geçişinden sonra geri gelmez; rıza ve taslak sıfırlanır', async ({ page }) => {
@@ -312,4 +316,106 @@ test('Hızlı yazı sırasında ilerleme hesapları birleştirilir; canlı yaş 
   });
   expect(sonuc.hesap).toBeLessThanOrEqual(3); expect(sonuc.ses).toBe(0);
   console.log('25 hızlı input olayı:', JSON.stringify(sonuc));
+});
+
+// Talimat D · 13 Eylül 2026: gerçek ilk yükleme CLS'si, 18 tam sayfa ve odak sırası.
+// LayoutShift: https://developer.mozilla.org/en-US/docs/Web/API/LayoutShift
+for (const dil of ['tr', 'fr', 'en']) for (const tema of ['light', 'dark']) {
+  test(`Tasarım D: ${dil}/${tema}, üç genişlik, CLS ve tek ilerleme kaynağı`, async ({ page }) => {
+    test.setTimeout(90_000);
+    await page.addInitScript(t => {
+      localStorage.setItem('tema', t);
+      window.kayitCLS = 0;
+      new PerformanceObserver(liste => {
+        for (const kayit of liste.getEntries()) if (!kayit.hadRecentInput) window.kayitCLS += kayit.value;
+      }).observe({ type: 'layout-shift', buffered: true });
+    }, tema);
+    const olcumler = [];
+    for (const genislik of [360, 768, 1280]) {
+      await page.setViewportSize({ width: genislik, height: 900 });
+      await ac(page, dil === 'tr' ? '' : dil);
+      await page.evaluate(() => document.fonts.ready);
+      await expect(page.locator('#k-sehir')).toHaveAttribute('data-gecerli', '1');
+      await page.waitForTimeout(600);
+      const cls = await page.evaluate(() => window.kayitCLS);
+      expect(cls, `${dil}/${tema}/${genislik} ilk yükleme CLS`).toBeLessThan(.05);
+      await expect(page.locator('#k-ilerleme')).toHaveCount(1);
+      await expect(page.locator('#k-ilerleme [aria-current]')).toHaveCount(1);
+      await expect(page.locator('#k-ilerleme a[href="#b-acil"]')).not.toHaveAttribute('data-tamam', '1');
+      await expect(page.locator('#b-acil')).toHaveAttribute('data-durum', 'bos');
+      const yerlesim = await form(page).evaluate(f => {
+        const ray = f.querySelector('#k-ilerleme'), govde = f.querySelector('.k-form-govde');
+        const r = ray.getBoundingClientRect(), g = govde.getBoundingClientRect();
+        return { tasma: document.documentElement.scrollWidth > innerWidth, masaustu: r.left >= g.right, once: !!(govde.compareDocumentPosition(ray) & Node.DOCUMENT_POSITION_FOLLOWING) };
+      });
+      expect(yerlesim.tasma).toBe(false);
+      expect(yerlesim.masaustu).toBe(genislik >= 1024);
+      expect(yerlesim.once).toBe(genislik >= 1024);
+      const axe = await new AxeBuilder({ page }).include('main').analyze();
+      const ciddi = axe.violations.filter(v => ['critical', 'serious'].includes(v.impact));
+      expect(ciddi.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
+      olcumler.push({ dil, tema, genislik, cls, ciddi: ciddi.length });
+      if (test.info().project.name === 'masaustu-chromium') await page.screenshot({ path: `${cikti}/kayit-v3d-${dil}-${tema}-${genislik}.png`, fullPage: true, animations: 'disabled' });
+    }
+    await writeFile(`${cikti}/kayit-v3d-olcum-${dil}-${tema}-${test.info().project.name}.json`, JSON.stringify(olcumler, null, 2));
+    console.log('Tasarım D ölçümleri:', JSON.stringify(olcumler));
+  });
+}
+
+test('Tasarım D: sürükle-bırak, kart önizlemesi, alternatifler, bilet ve boyut geçişinde odak', async ({ page, context }) => {
+  test.setTimeout(90_000);
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: kok });
+  const gelen = []; await sahte(page, gelen); await ac(page);
+  const kaydet = async (secici, ad) => {
+    if (test.info().project.name === 'masaustu-chromium') await page.locator(secici).screenshot({ path: `${cikti}/kayit-v3d-${ad}.png`, animations: 'disabled' });
+  };
+  for (const genislik of [390, 1280]) {
+    await page.setViewportSize({ width: genislik, height: 900 });
+    await page.locator('#k-kimlik-simdi').focus();
+    await kaydet('#b-kimlik', `kimlik-yakin-${genislik}`);
+  }
+  const kutu = page.locator('[data-gorsel="kimlikOn"] .g-kutu');
+  const tasima = await page.evaluateHandle(baytlar => {
+    const veri = new DataTransfer(); veri.items.add(new File([new Uint8Array(baytlar)], 'surukle.png', { type: 'image/png' })); return veri;
+  }, [...png]);
+  await kutu.dispatchEvent('dragover', { dataTransfer: tasima });
+  await expect(kutu).toHaveClass(/dragover/);
+  await kutu.dispatchEvent('drop', { dataTransfer: tasima });
+  await expect(kutu).not.toHaveClass(/dragover/);
+  await expect(page.locator('[data-gorsel="kimlikOn"]')).toHaveAttribute('data-dolu', '1');
+  expect(await form(page).evaluate(f => f.outerHTML.includes('data:image'))).toBe(false);
+  await expect(page.locator('#k-kimlik-on-durum')).toContainText('Alındı');
+  await kaydet('#b-kimlik', 'kimlik-yuklendi-1280');
+  await page.locator('#k-kimlik-sonra').check();
+  await page.locator('#k-kimlik-whatsapp').check();
+  await kaydet('#b-kimlik', 'kimlik-sonra-1280');
+  await expect(page.locator('[data-gorsel="kimlikOn"]')).not.toHaveAttribute('data-dolu', '1');
+  await page.locator('#k-kimlik-simdi').check();
+  await doldur(page); await resim(page); await page.locator('#k-kimlik-riza').check();
+  await form(page).locator('[type=submit]').focus();
+  await page.keyboard.press('Tab');
+  await expect(page.locator('#k-ilerleme a').first()).toBeFocused();
+  await page.setViewportSize({ width: 768, height: 900 });
+  await expect(page.locator('#k-ilerleme a').first()).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#k-ad')).toBeFocused();
+  await form(page).locator('[type=submit]').click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  await page.locator('[data-ref-kopyala]').click();
+  await expect(page.locator('[data-ref-kopyala]')).toHaveClass(/k-kopyalandi/);
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('UC-2099-0001');
+  for (const genislik of [390, 1280]) {
+    await page.setViewportSize({ width: genislik, height: 1200 });
+    await page.locator('.k-basari').evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    await kaydet('.k-basari', `basari-${genislik}`);
+  }
+  await page.evaluate(() => { document.documentElement.dataset.theme = 'dark'; });
+  for (const genislik of [390, 1280]) {
+    await page.setViewportSize({ width: genislik, height: 1200 });
+    await page.locator('.k-basari').evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    await kaydet('.k-basari', `basari-dark-${genislik}`);
+    const axe = await new AxeBuilder({ page }).include('main').analyze();
+    expect(axe.violations.filter(v => ['critical', 'serious'].includes(v.impact)).map(v => v.id)).toEqual([]);
+  }
+  expect(gelen).toHaveLength(1);
 });
