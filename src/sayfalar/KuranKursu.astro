@@ -40,6 +40,8 @@ const m = dil === 'tr'
     <p class="etiket etiket-vurgu">{m.materyal}</p>
     <p class="mt-1 text-sm text-(--metin-2)">{m.materyalA}</p>
     <a href={yol(dil, 'dersmateryalleri')} class="dugme dugme-ikincil mt-3 w-full justify-center">{t('nav.dersmateryalleri')}</a>
+    {/* Ders günlüğü: hafta hafta işlenen konular ve sınıfın geldiği nokta (kişisel veri yok). */}
+    <a href={yol(dil, 'kursgunlugu')} class="dugme dugme-ikincil mt-2 w-full justify-center">{t('nav.kursgunlugu')}</a>
   </div>
   <div slot="yan" class="kart-kagit p-5">
     <p class="etiket etiket-vurgu">{m.kitap}</p>

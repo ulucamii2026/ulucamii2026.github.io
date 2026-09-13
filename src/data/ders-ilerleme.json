@@ -1,0 +1,78 @@
+{
+ "uretim": "2026-09-13T23:28:49+02:00",
+ "kaynak": "Hoca portalı ders defteri + haftalık sınıf notları (sınıf düzeyi özet; kişisel veri yok)",
+ "dersler": {
+  "2026-09-05_1": {
+   "durum": "islendi",
+   "kaynak": "hafta-notu"
+  },
+  "2026-09-05_2": {
+   "durum": "islendi",
+   "kaynak": "hafta-notu"
+  },
+  "2026-09-05_3": {
+   "durum": "islendi",
+   "kaynak": "hafta-notu"
+  },
+  "2026-09-06_1": {
+   "durum": "islendi",
+   "kaynak": "hafta-notu"
+  },
+  "2026-09-06_2": {
+   "durum": "islendi",
+   "kaynak": "hafta-notu"
+  },
+  "2026-09-06_3": {
+   "durum": "islendi",
+   "kaynak": "hafta-notu"
+  },
+  "2026-09-12_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-12_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-12_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-13_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-13_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-13_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  }
+ },
+ "haftalar": {
+  "2026-09-05": {
+   "hafta": 1,
+   "ezber": {
+    "tr": "Elifbâ harfleri (adı ve şekli):\n• Elif grubu: Elif, Be, Te, Se, Cim, Ha\n• Hı grubu: Hı, Dal, Zel, Ra, Ze, Sin\nÇocuğunuz harfi görünce adını söyleyebilmeli; her gün 5–10 dakika kartla ya da defterden tekrar yeterlidir.",
+    "fr": "Lettres de l’Elifbâ (nom et forme) :\n• Groupe Elif : Elif, Be, Te, Se, Cim, Ha\n• Groupe Khâ : Khâ, Dâl, Dhâl, Râ, Zây, Sîn\nVotre enfant doit pouvoir nommer chaque lettre en la voyant ; 5 à 10 minutes de révision par jour, avec des cartes ou le cahier, suffisent."
+   },
+   "odev": {
+    "tr": "İlk hafta işlenenler: Elif ve Hı grubu harfleri; «Benim dinim İslam’dır» (Camiye Gidiyorum 1, s. 11–16); «İslam’ın şartları» (s. 17–24); «Peygamberimizi tanıyorum» (s. 37–42); «Dinim güzel söz ve davranışı öğütler» (s. 25–30).\nEvde:\n• Kitaptan bu sayfaları birlikte okuyun; çocuğunuz İslam’ın beş şartını sırayla sayabilmeli (kelime-i şehadet, namaz, oruç, zekât, hac).\n• Evde ve dışarıda selam vermeyi alışkanlık hâline getirin.\n• Sonraki ders 12 Eylül Cumartesi 11:00. Kitap, defter ve kalemi hatırlatın.",
+    "fr": "Vu en classe la première semaine : les lettres des groupes Elif et Khâ ; « Ma religion est l’islam » (Camiye Gidiyorum 1, p. 11–16) ; « Les piliers de l’islam » (p. 17–24) ; « Je fais connaissance avec notre Prophète » (p. 37–42) ; « Ma religion recommande la belle parole et la bonne conduite » (p. 25–30).\nÀ la maison :\n• Relisez ces pages ensemble ; votre enfant doit pouvoir citer dans l’ordre les cinq piliers de l’islam (attestation de foi, prière, jeûne, zakât, pèlerinage).\n• Prenez l’habitude de saluer (selam) à la maison et à l’extérieur.\n• Prochain cours : samedi 12 septembre à 11h00. Pensez au manuel, au cahier et au crayon."
+   }
+  },
+  "2026-09-12": {
+   "hafta": 2,
+   "ezber": {
+    "tr": "Elifbâ harfleri (adı ve şekli):\n• Elif grubu: Elif, Be, Te, Se, Cim, Ha\n• Hı grubu: Hı, Dal, Zel, Ra, Ze, Sin\nÇocuğunuz harfi görünce adını söyleyebilmeli; her gün 5–10 dakika kartla ya da defterden tekrar yeterlidir.",
+    "fr": "Lettres de l’Elifbâ (nom et forme) :\n• Groupe Elif : Elif, Be, Te, Se, Cim, Ha\n• Groupe Khâ : Khâ, Dâl, Dhâl, Râ, Zây, Sîn\nVotre enfant doit pouvoir nommer chaque lettre en la voyant ; 5 à 10 minutes de révision par jour, avec des cartes ou le cahier, suffisent."
+   },
+   "odev": {
+    "tr": "Evde tekrar (7–11 Eylül):\n• Elifbâ: Elif ve Hı grubu harflerini her gün kısa kısa tekrar edin; harfleri deftere yazdırıp adını söyletin.\n• Camiye Gidiyorum 1: «Benim dinim İslam’dır» (s. 11–16) ve «İslam’ın şartları» (s. 17–24) sayfalarını birlikte okuyun; çocuğunuz İslam’ın beş şartını sırayla sayabilmeli (kelime-i şehadet, namaz, oruç, zekât, hac).\n• «Peygamberimizi tanıyorum» (s. 37–42) ve selamlaşma bölümünü (s. 25–30) okuyun; evde selam vermeyi alışkanlık hâline getirin.\nHafta sonu derslerine hazırlık (12–13 Eylül): Şîn ve Ayn grubu harfleri; «Kutsal kitabımız Kur’an’dır» (s. 31–36), «Abdest alıyorum, temizleniyorum» (s. 55–58), «Hz. Muhammed (s.a.s.) büyüyor» (s. 71–76), «Sevincimi paylaşıyorum» (s. 43–47). Kitap, defter ve kalemi unutmayın; ders 11:00’de başlar.",
+    "fr": "Révision à la maison (7–11 septembre) :\n• Elifbâ : revoyez chaque jour brièvement les lettres des groupes Elif et Khâ ; faites-les écrire dans le cahier et nommer.\n• Camiye Gidiyorum 1 : relisez ensemble « Ma religion est l’islam » (p. 11–16) et « Les piliers de l’islam » (p. 17–24) ; votre enfant doit pouvoir citer dans l’ordre les cinq piliers (attestation de foi, prière, jeûne, zakât, pèlerinage).\n• Relisez « Je fais connaissance avec notre Prophète » (p. 37–42) et le chapitre sur la salutation (p. 25–30) ; prenez l’habitude de saluer à la maison.\nPréparation des cours du week-end (12–13 septembre) : les lettres des groupes Şîn et Ayn ; « Notre livre sacré est le Coran » (p. 31–36), « Je fais mes ablutions, je me purifie » (p. 55–58), « Le Prophète Muhammad (s.a.s.) grandit » (p. 71–76), « Je partage ma joie » (p. 43–47). N’oubliez pas le manuel, le cahier et le crayon ; le cours commence à 11h00."
+   }
+  }
+ }
+}
