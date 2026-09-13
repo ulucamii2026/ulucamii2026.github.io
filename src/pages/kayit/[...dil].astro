@@ -1,7 +1,9 @@
 ---
 /** Kur'an kursu kayıt formu — /kayit/ (TR, sabit: afiş QR'ları buna bağlı), /kayit/fr/, /kayit/en/.
     30 Ağustos 2026 v2: form bileşeni src/components/formlar/KayitFormu.astro; istemci tarafı PDF, OCR,
-    kimlik/görsel yükleme ve imza kanvası kaldırıldı (hukuki gerekçe bileşen başlığında). */
+    kimlik/görsel yükleme ve imza kanvası kaldırıldı (hukuki gerekçe bileşen başlığında).
+    13 Eylül 2026: v3 kimlik görseli (açık rıza) ve akşamı çizilen imza + WhatsApp bağlantısı geri geldi
+    (Rıdvan'ın kararı; bileşen başlığı ve rapor 40/42). */
 import Base from '../../layouts/Base.astro';
 import SayfaBasligi from '../../components/SayfaBasligi.astro';
 import KayitFormu from '../../components/formlar/KayitFormu.astro';
@@ -33,6 +35,7 @@ const site = await siteAyarlari();
   </Fragment>
   <SayfaBasligi etiket={m.kayit.ustEtiket} baslik={m.kayit.sayfaBaslik} />
   <section class="kapsayici k-sayfa py-10 sm:py-14">
-    <KayitFormu dil={dil} uc={site.servisler.basvuru} eposta={site.eposta ?? 'info@ulucamii.be'} telefon={site.telefon.cami} whatsapp={site.whatsapp!.numara.replace(/\D/g, '')} />
+    <KayitFormu dil={dil} uc={site.servisler.basvuru} eposta={site.eposta ?? 'info@ulucamii.be'} telefon={site.telefon.cami}
+      whatsapp={site.whatsapp!.numara.replace(/\D/g, '')} waKullanici={site.whatsapp!.kullanici} />
   </section>
 </Base>

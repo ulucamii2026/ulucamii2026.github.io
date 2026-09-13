@@ -23,7 +23,7 @@ GIF/otomatik tanıtım görseli yoktur; yalnız açıkça verilen içerik görse
 `npm run eposta:onizle` → `D:/tmp/eposta-onizleme/` içinde 12 HTML.
 `node tests/kurumsal-kimlik-gorsel.mjs` → aynı yerde 84 ölçüm ve 24 ekran görüntüsü; dış istekler kesilir, logolar yerel dosyalardan karşılanır.
 `npm run test:kimlik`, `npm run test:veli-eposta`, `npm run test:ihtida` yerel sözleşme testleridir.
-`npm run ihtida:gas-derle` → `.codex/cikti/gas/ulucamii-v31.gs`; sıralama kimlik sabitleri → v31 → ortak şablon/içerik modülleridir.
+`npm run ihtida:gas-derle` → `.codex/cikti/gas/ulucamii-v32.gs`; sıralama kimlik sabitleri → v32 → ortak şablon/içerik modülleridir.
 Kayıt ve cuma göndereni kurs, ihtida ve genel yazışma göndereni cami kimliğidir. Gönderim sarmalayıcısı `kurum` seçeneğini kabul eder.
 Eski `ihtidaKopyaGonderV2` yardımcı çağrısı artık beşinci argümanda dili ister; mevcut ihtida kuyruk/teslim akışı değiştirilmemiştir.
 

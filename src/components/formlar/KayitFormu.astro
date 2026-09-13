@@ -1,16 +1,22 @@
 ---
 /** 13 Eylül 2026, kayıt v3 — tek sayfa, sekiz bölüm; yol seçmeli açık rızayla
-    kimlik ön yüzü, isteğe bağlı arka yüz. Numara, MRZ/OCR, vesikalık ve imza kanvası yok. */
+    kimlik ön yüzü, isteğe bağlı arka yüz. Aynı gün akşamı (Rıdvan): 6. bölümde ihtida formuyla
+    aynı ÇİZİLEN İMZA bloğu (tuval + temizle + «atamıyorum» kaçış kutusu; PNG kayıt PDF'ine aynen
+    basılır, Apps Script v32) ve iletişim kutularında din görevlisine WhatsApp bağlantısı (numara
+    yazılmaz, yalnız wa.me hedefi). Numara, MRZ/OCR ve vesikalık hâlâ yok. */
 import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
+import WhatsappBaglanti from '../WhatsappBaglanti.astro';
 import okulVerisi from '../../data/okullar.json';
 
-interface Props { dil: Dil; uc: string; eposta: string; telefon: string; whatsapp: string }
-const { dil, uc, eposta, telefon, whatsapp } = Astro.props;
+interface Props { dil: Dil; uc: string; eposta: string; telefon: string; whatsapp: string; waKullanici: string }
+const { dil, uc, eposta, telefon, whatsapp, waKullanici } = Astro.props;
 const m = formMetinleri(dil);
-const k = m.kayit, o = m.ortak;
+const k = m.kayit, o = m.ortak, b = m.ihtida.belgeler;
 const v3 = k.v3;
+// WhatsappBaglanti site.yaml'daki {kullanici, numara} çiftini bekler; numara yalnız href'te (wa.me) kalır.
+const waSite = { whatsapp: { kullanici: waKullanici, numara: whatsapp } };
 const bolumler = Object.entries(v3.cipler);
 // Lucide çizgi dili; yalnız sunucuda oluşturulan satır içi SVG, haricî varlık yok.
 const ikonlar = {
@@ -307,6 +313,22 @@ const metinJson = JSON.stringify({
         <p class="yardim">{k.kurallar.imzaYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
+      {/* 13 Eyl 2026 akşamı: ihtida formuyla aynı imza bloğu (ihtida-gorseller.ts → imzaBlokuKur).
+          Çizim taslağa ve DOM'a yazılmaz; gönderimde PNG olarak gider, PDF'in imza alanına basılır. */}
+      <fieldset data-alan class="tam ucf-imza" data-imza id="k-imza-alani">
+        <legend>{k.kurallar.imzaCiz} <span class="zorunlu" aria-hidden="true">*</span></legend>
+        <p class="yardim">{k.kurallar.imzaCizYardim}</p>
+        <canvas class="imza-tuval" role="img" aria-label={k.kurallar.imzaCiz}></canvas>
+        <div class="imza-eylem">
+          <button type="button" class="dugme dugme-ikincil" data-imza-temizle>{b.imzaTemizle}</button>
+        </div>
+        <div class="onay-kutu mt-3">
+          <input id="k-imza-yok" type="checkbox" name="imzaYok" />
+          <label for="k-imza-yok">{k.kurallar.imzaYok}</label>
+        </div>
+        <p class="yardim">{k.kurallar.imzaYokYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </fieldset>
     </div>
   </section>
 
@@ -363,7 +385,7 @@ const metinJson = JSON.stringify({
         ['ogrenci', k.ozet.ogrenci, '#b-ogrenci'], ['okul', k.ozet.okul, '#b-okul'], ['sinif', k.ozet.sinif, '#b-okul'],
         ['veli', k.ozet.veli, '#b-veli'], ['iletisim', k.ozet.iletisim, '#b-veli'], ['acil', k.ozet.acil, '#b-acil'],
         ['saglik', k.ozet.saglik, '#b-saglik'], ['goruntu', k.ozet.goruntu, '#b-saglik'], ['goruntuSosyal', k.ozet.goruntuSosyal, '#b-saglik'],
-        ['kimlik', v3.kimlik, '#b-kimlik'],
+        ['imza', k.ozet.imza, '#b-kurallar'], ['kimlik', v3.kimlik, '#b-kimlik'],
       ] as const).map(([anahtar, etiket, hedef]) => (
         <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd><span data-ozet-deger>{o.bosDeger}</span> <a href={hedef} aria-label={`${etiket} · ${o.ozetDuzenle}`}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" set:html={ikonlar.kalem} />{o.ozetDuzenle}</a></dd></div>
       ))}
@@ -374,7 +396,7 @@ const metinJson = JSON.stringify({
     </div>
     <div class="ucf-gonder mt-6">
       <button type="submit" class="dugme dugme-birincil">{o.gonder}</button>
-      <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+      <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })} · {o.basari.whatsappImam}: <WhatsappBaglanti site={waSite} /></p>
     </div>
   </section>
   </div>
@@ -390,7 +412,7 @@ const metinJson = JSON.stringify({
       <h3>{v3.tasarim.nasil}</h3>
       <ol class="k-nasil">{(['doldur', 'gonder', 'pdf'] as const).map((ad, i) => <li><span aria-hidden="true">{i + 1}</span>{v3.tasarim[ad]}</li>)}</ol>
       <div class="k-guvence"><h3>{v3.tasarim.guvence}</h3><ul>{[v3.tasarim.ucretsiz, v3.tasarim.sure, v3.tasarim.veri].map(ad => <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>{ad}</li>)}</ul><a href={yol(dil, 'gizlilik')} target="_blank" rel="noopener">{o.gizlilikKutu.gizlilikSayfa}</a></div>
-      <div class="k-ray-iletisim"><h3>{v3.tasarim.iletisim}</h3><a href={`mailto:${eposta}`}>{eposta}</a><a href={`tel:${telefon.replace(/[^+\d]/g, '')}`}>{telefon}</a></div>
+      <div class="k-ray-iletisim"><h3>{v3.tasarim.iletisim}</h3><a href={`mailto:${eposta}`}>{eposta}</a><a href={`tel:${telefon.replace(/[^+\d]/g, '')}`}>{telefon}</a><span class="k-ray-wa"><span>{o.basari.whatsappImam}</span><WhatsappBaglanti site={waSite} /></span></div>
     </div>
   </aside>
 </form>
@@ -404,7 +426,7 @@ const metinJson = JSON.stringify({
     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><circle cx="8" cy="10" r="2" /><path d="M4 17c0-6 8-6 8 0m3-7h4m-4 5h4" /></svg><div><p data-kimlik-adim></p><a class="dugme dugme-ikincil" data-kimlik-baglanti hidden></a><p class="yardim" data-kimlik-sonradan>{v3.sonradan}</p></div></li>
     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" set:html={ikonlar.kitap} /><p>{k.basari.sonrakiAdimlar}</p></li>
   </ol></div>
-  <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+  <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })} · {o.basari.whatsappImam}: <WhatsappBaglanti site={waSite} /></p>
   <div class="eylemler">
     <a class="dugme dugme-birincil" href="?kardes=1" title={k.basari.kardesAciklama}>{k.basari.kardes}</a>
     <a class="dugme dugme-ikincil" href={`/${dil}/`}>{o.anasayfa}</a>

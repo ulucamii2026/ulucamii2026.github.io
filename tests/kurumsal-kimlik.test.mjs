@@ -11,7 +11,7 @@ import { kimlikKaynakOku, kimlikDosyalari, kimlikDenetle, kopyaYolu, sabitYolu, 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const oku = ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8');
 const kaynak = await kimlikKaynakOku(), kimlik = kaynak.kimlik;
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v31.gs', 'veli-cuma.gs'].map(oku).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v32.gs', 'veli-cuma.gs'].map(oku).join('\n');
 function ortam() {
   const sent = [];
   const c = vm.createContext({ console: {error() {}, log() {}}, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})},

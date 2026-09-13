@@ -3,7 +3,8 @@
  *
  *  Neden burada: EK-9 İhtida Belgesi bir vesikalık fotoğraf ile başvuranın imzasını taşır; belge ve
  *  ekleri hem camimizde hem T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği'nde saklanır.
- *  Kayıt v3 yalnız ön/arka yükleme kutularını kullanır; ihtidanın imza akışı değişmez.
+ *  Kayıt v3 ön/arka yükleme kutularını, 13 Eyl 2026 akşamından beri de aynı imza bloğunu
+ *  (imzaBlokuKur) kullanır; ihtidanın imza akışı değişmez.
  *
  *  Tasarım kararları:
  *   - Görseller tarayıcıda küçültülür (en uzun kenar 1600 px, JPEG); ağa ham fotoğraf gitmez.
@@ -362,6 +363,50 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
   };
 }
 
+/* ------------------------------------------------------------------ imza bloğu (ihtida + kayıt) */
+
+export interface ImzaBloku {
+  /** Gönderim gövdesine konacak PNG veri URL'i; «imza atamıyorum» işaretliyse boş dize. */
+  veri(): string;
+  /** Hata koşulu: kaçış kutusu işaretli değilken tuval boş (ya da tuval kurulamadı). */
+  eksikMi(): boolean;
+  /** «Ekranda imza atamıyorum» işaretli mi? */
+  kapaliMi(): boolean;
+  hataYaz(metin: string | null): void;
+  /** Taslak silinince/gönderim sonrası: çizimi ve kilidi sıfırlar. */
+  sifirla(): void;
+}
+
+/** Tuval + «İmzayı temizle» + isteğe bağlı «imza atamıyorum» kaçış kutusu — tek blok.
+ *  13 Eyl 2026 akşamı: Rıdvan «kayıt formunun imza kısmı ihtidadaki gibi olsun» dedi; iki form da
+ *  bu bloğu kullanır (kayıt: `[data-imza]` 6. bölümde, kutu `#k-imza-yok`). Çizim taslağa yazılmaz. */
+export function imzaBlokuKur(kap: HTMLElement | null, imzaYok: HTMLInputElement | null, degisti: () => void): ImzaBloku | null {
+  if (!kap) return null;
+  const imza = imzaKur(kap, degisti);
+  const hata = kap.querySelector<HTMLElement>('.hata');
+  const hataYaz = (metin: string | null) => {
+    if (hata) { hata.textContent = metin ?? ''; hata.hidden = !metin; }
+    kap.classList.toggle('alan-hatali', !!metin);
+    if (metin) imzaYok?.setAttribute('aria-invalid', 'true'); else imzaYok?.removeAttribute('aria-invalid');
+  };
+  const durum = () => {
+    const kapali = !!imzaYok?.checked;
+    imza?.kilit(kapali);
+    kap.classList.toggle('imza-kapali', kapali);
+    if (kapali) hataYaz(null);
+  };
+  kap.querySelector<HTMLButtonElement>('[data-imza-temizle]')?.addEventListener('click', () => imza?.temizle());
+  imzaYok?.addEventListener('change', durum);
+  durum();
+  return {
+    veri: () => (imzaYok?.checked ? '' : (imza?.png() || '')),
+    eksikMi: () => !imzaYok?.checked && (!imza || imza.bosMu()),
+    kapaliMi: () => !!imzaYok?.checked,
+    hataYaz,
+    sifirla: () => { imza?.temizle(); durum(); },
+  };
+}
+
 /* ------------------------------------------------------------------ ana giriş */
 
 export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): GorselYonetici | null {
@@ -372,21 +417,7 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
   const kutular = Array.from(bolum.querySelectorAll<HTMLElement>('[data-gorsel]')).map((k) => kutuKur(k, m, degisti));
   const bul = (a: keyof GorselPaketi) => kutular.find((k) => k.anahtar === a);
 
-  const imzaKap = bolum.querySelector<HTMLElement>('[data-imza]');
-  const imza = imzaKap ? imzaKur(imzaKap, degisti) : null;
-  const imzaHata = imzaKap?.querySelector<HTMLElement>('.hata') ?? null;
-  const imzaYok = form.querySelector<HTMLInputElement>('input[name="imzaYok"]');
-
-  imzaKap?.querySelector<HTMLButtonElement>('[data-imza-temizle]')?.addEventListener('click', () => imza?.temizle());
-
-  const imzaDurumu = () => {
-    const kapali = !!imzaYok?.checked;
-    imza?.kilit(kapali);
-    imzaKap?.classList.toggle('imza-kapali', kapali);
-    if (kapali && imzaHata) { imzaHata.textContent = ''; imzaHata.hidden = true; }
-  };
-  imzaYok?.addEventListener('change', imzaDurumu);
-  imzaDurumu();
+  const imzaBlok = imzaBlokuKur(bolum.querySelector<HTMLElement>('[data-imza]'), form.querySelector<HTMLInputElement>('input[name="imzaYok"]'), degisti);
 
   const belgeTuru = () => form.querySelector<HTMLInputElement>('input[name="belgeTuru"]:checked')?.value || 'kimlik';
 
@@ -394,7 +425,7 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
     vesikalik: bul('vesikalik')?.veri || '',
     kimlikOn: bul('kimlikOn')?.veri || '',
     kimlikArka: belgeTuru() === 'kimlik' ? (bul('kimlikArka')?.veri || '') : '',
-    imza: imzaYok?.checked ? '' : (imza?.png() || ''),
+    imza: imzaBlok?.veri() || '',
   });
 
   const dogrula = (): Array<[string, string]> => {
@@ -415,10 +446,10 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
       k.hataYaz(eksik ? doldur(m.hataEksik, { ad: baslik }) : null);
       if (eksik) hatalar.push([ad, doldur(m.hataEksik, { ad: baslik })]);
     }
-    if (!imzaYok?.checked && (!imza || imza.bosMu())) {
-      if (imzaHata) { imzaHata.textContent = m.hataImza; imzaHata.hidden = false; }
+    if (imzaBlok?.eksikMi()) {
+      imzaBlok.hataYaz(m.hataImza);
       hatalar.push(['imzaYok', m.hataImza]);
-    } else if (imzaHata) { imzaHata.textContent = ''; imzaHata.hidden = true; }
+    } else imzaBlok?.hataYaz(null);
     return hatalar;
   };
 
@@ -434,8 +465,7 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
 
   const sifirla = () => {
     for (const k of kutular) k.temizle();
-    imza?.temizle();
-    imzaDurumu();
+    imzaBlok?.sifirla();
   };
 
   return { paket, dogrula, ozet, sifirla };

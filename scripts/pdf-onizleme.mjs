@@ -1,4 +1,4 @@
-// pdf-onizleme.mjs — Node'da ulucamii-Kod-v31.gs içindeki SAF PDF şablon
+// pdf-onizleme.mjs — Node'da ulucamii-Kod-v32.gs içindeki SAF PDF şablon
 // fonksiyonlarını (pdfHtmlKayit, pdfHtmlIhtida) çalıştırıp örnek HTML çıktısı üretir.
 //
 // Yöntem: .gs dosyasının TAMAMI `new Function(...)` ile bir fonksiyon gövdesi olarak
@@ -11,13 +11,26 @@
 // dosyanın yüklenmesi (üst seviye kod) güvenle tamamlanır ve pdfHtmlKayit/pdfHtmlIhtida
 // (ki bunlar SAF'tır — hiç GAS API'si çağırmaz) gerçek girdilerle çalıştırılabilir.
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v31.gs");
-const CIKTI_KLASORU = "C:\\Users\\ridva\\AppData\\Local\\Temp\\claude\\D--app-ulucamii-site\\dbce5ab8-af6e-46a6-8c9a-489016d552e9\\scratchpad";
+const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v32.gs");
+// Çıktı klasörü: CIKTI ortam değişkeni ya da D:\tmp\pdf-onizleme (13 Eyl 2026'ya kadar eski bir scratchpad yoluydu).
+const CIKTI_KLASORU = process.env.CIKTI || "D:\\tmp\\pdf-onizleme";
+mkdirSync(CIKTI_KLASORU, { recursive: true });
+
+/** v32: örnek «ekranda çizilmiş imza» — saydam PNG, mavi mürekkep (formdaki tuvalin ürettiği biçim). */
+async function ornekImzaPng() {
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="420" height="120" viewBox="0 0 420 120">'
+    + '<path d="M14 88 C 40 20, 70 20, 90 70 S 130 110, 150 60 S 190 10, 210 62 S 250 108, 280 58 S 330 20, 350 70 S 390 96, 408 40" '
+    + 'fill="none" stroke="#1d3f6e" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>'
+    + '<path d="M60 96 L 380 92" fill="none" stroke="#1d3f6e" stroke-width="3" stroke-linecap="round"/></svg>';
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+  return "data:image/png;base64," + png.toString("base64");
+}
 
 /** Ne şekilde erişilirse erişilsin çökmeyen, kendini yansıtan bir "güdük" (stub) üretir. */
 function magicStub(ad) {
@@ -72,8 +85,10 @@ console.log("Yüklendi — SURUM:", modul.SURUM);
 const ornekKayit = {
   tur: "kayit",
   sir: "ULUCAMII-KAYIT-2026",
-  formSurumu: 2,
+  formSurumu: 3,
   dil: "fr",
+  imza: await ornekImzaPng(),          // v32: çizilen imza PDF'in 2. sayfasındaki imza alanına basılır
+  imzaYok: false,
   gonderimAnahtari: "onizleme-kayit-0000000000000001",
   ogrenci: {
     ad: "Yusuf Ömer", soyad: "Şahin-Öztürk",
@@ -148,8 +163,10 @@ const metaIhtida = { ref: "IH-2026-0007", zaman: "30.08.2026 19:05", dil: "fr" }
 
 const htmlKayit = modul.pdfHtmlKayit(ornekKayit, metaKayit);
 const htmlIhtida = modul.pdfHtmlIhtida(ornekIhtida, metaIhtida);
+// v32: aynı kaydın «ekranda imza atamıyorum» hâli — imza alanında el yazısı ad + kursta kalemle imzalar notu.
+const htmlKayitImzasiz = modul.pdfHtmlKayit({ ...ornekKayit, imza: "", imzaYok: true }, metaKayit);
 
-for (const [ad, html] of [["kayıt", htmlKayit], ["ihtida", htmlIhtida]]) {
+for (const [ad, html] of [["kayıt", htmlKayit], ["kayıt-imzasız", htmlKayitImzasiz], ["ihtida", htmlIhtida]]) {
   if (typeof html !== "string" || html.length < 500) {
     console.error(`${ad} şablonu boş/çok kısa döndü (${typeof html}, ${html && html.length})`);
     process.exit(1);
@@ -161,11 +178,15 @@ for (const [ad, html] of [["kayıt", htmlKayit], ["ihtida", htmlIhtida]]) {
 }
 
 const kayitYolu = path.join(CIKTI_KLASORU, "pdf-onizleme-kayit.html");
+const kayitImzasizYolu = path.join(CIKTI_KLASORU, "pdf-onizleme-kayit-imzasiz.html");
 const ihtidaYolu = path.join(CIKTI_KLASORU, "pdf-onizleme-ihtida.html");
 writeFileSync(kayitYolu, htmlKayit, "utf8");
+writeFileSync(kayitImzasizYolu, htmlKayitImzasiz, "utf8");
 writeFileSync(ihtidaYolu, htmlIhtida, "utf8");
 
-console.log("kayıt HTML uzunluğu :", htmlKayit.length, "→", kayitYolu);
+console.log("kayıt imza görseli var mı   :", htmlKayit.includes('class="imza-gorsel" src="data:image/png;base64,'));
+console.log("imzasız hâlde el yazısı ad  :", !htmlKayitImzasiz.includes('class="imza-gorsel"') && htmlKayitImzasiz.includes("kalemle imzalayaca"));
+console.log("kayıt HTML uzunluğu :", htmlKayit.length, "→", kayitYolu, "|", kayitImzasizYolu);
 console.log("ihtida HTML uzunluğu:", htmlIhtida.length, "→", ihtidaYolu);
 console.log("Türkçe karakter sınaması (kayıt) :", htmlKayit.includes("Şahin-Öztürk") && htmlKayit.includes("İbrahim"));
 console.log("Türkçe karakter sınaması (ihtida):", htmlIhtida.includes("İslam") || htmlIhtida.includes("beyan"));

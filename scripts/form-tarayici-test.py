@@ -82,6 +82,7 @@ def kayitDoldur(pg):
     pg.check('#k-saglik-hayir'); pg.check('#k-goruntu-hayir'); pg.check('#k-goruntu-sosyal-hayir')
     pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.scrollTop = e.scrollHeight; e.dispatchEvent(new Event("scroll")); }')
     pg.check('#k-onay-kurallar'); pg.check('#k-onay-gizlilik'); pg.fill('#k-imza', 'annemarieisik')
+    imzaCiz(pg, '[data-form="kayit"] [data-imza] canvas')   # 13 Eyl 2026 akşamı: çizilen imza (ihtidayla aynı blok)
 
 def ekran(pg, dosya):
     pg.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
@@ -135,6 +136,13 @@ with sync_playwright() as p:
         pg.set_input_files("#k-g-kimlik-on", onYol)
         pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]')
         pg.check('#k-kimlik-riza')
+        # 13 Eyl 2026 akşamı: çizilen imza — imzasız gönderim engellenir; çizince hata kendiliğinden silinir.
+        once = len(GONDERILEN); pg.click("button[type=submit]"); pg.wait_for_timeout(900)
+        kontrol(f"[{cihaz}] imzasız gönderim engellenir (imza hatası görünür)", len(GONDERILEN) == once and pg.locator('#k-imza-yok').get_attribute('aria-invalid') == 'true' and pg.locator('[data-imza] .hata').is_visible())
+        kontrol(f"[{cihaz}] eksikler listesinde «İmzanız»", 'İmzanız' in pg.locator('[data-eksikler]').inner_text())
+        imzaCiz(pg, '[data-form="kayit"] [data-imza] canvas'); pg.wait_for_timeout(300)
+        kontrol(f"[{cihaz}] çizince imza hatası silinir", not pg.locator('[data-imza] .hata').is_visible() and pg.locator('#k-imza-yok').get_attribute('aria-invalid') is None)
+        kontrol(f"[{cihaz}] özet: ekranda imzalandı", 'imzalandı' in pg.locator('[data-ozet-alan=imza] [data-ozet-deger]').text_content())
         pg.wait_for_timeout(500)
         taslak = pg.evaluate("localStorage.getItem('ulucamii:kayit:v2') || ''")
         kontrol(f"[{cihaz}] taslakta sağlık notu ve görsel yok", 'saglik.not' not in taslak and 'data:image' not in taslak and 'Fıstık' not in taslak)
@@ -156,8 +164,9 @@ with sync_playwright() as p:
         kontrol(f"[{cihaz}] gövde: sağlık ve rıza", g["saglik"] == {"var": True, "not": "Fıstık alerjisi"} and g["onay"]["saglikRiza"] is True and g["goruntuIzni"] is False)
         kontrol(f"[{cihaz}] gövde: kimlik numarası ve eski PDF alanları YOK", "kimlikNo" not in json.dumps(g) and "pdfBase64" not in g and "images" not in g)
         kontrol(f"[{cihaz}] gövde: v3, ön yüz JPEG, arka boş ve rıza", g['formSurumu'] == 3 and g['kimlik']['yol'] == 'yukle' and g['kimlik']['on'].startswith('data:image/jpeg;base64,') and len(g['kimlik']['on']) >= 2048 and g['kimlik']['arka'] == '' and g['onay']['kimlikRiza'] is True)
-        # v3'te yalnız görsel dışındaki mevcut sözleşmenin küçük kalması beklenir.
-        hafif = {**g, 'kimlik': {**g['kimlik'], 'on': '', 'arka': ''}}
+        kontrol(f"[{cihaz}] gövde: çizilen imza PNG, imzaYok False", str(g.get('imza', '')).startswith('data:image/png;base64,') and len(g['imza']) > 600 and g.get('imzaYok') is False)
+        # v3'te yalnız görsel/imza dışındaki mevcut sözleşmenin küçük kalması beklenir.
+        hafif = {**g, 'imza': '', 'kimlik': {**g['kimlik'], 'on': '', 'arka': ''}}
         kontrol(f"[{cihaz}] görsel dışı gövde küçük ({len(json.dumps(hafif))} B)", len(json.dumps(hafif)) < 3000)
         kontrol(f"[{cihaz}] başarıda kimlik alındı ve kopyalama düğmesi", 'alındı' in pg.locator('[data-kimlik-adim]').inner_text() and pg.locator('[data-ref-kopyala]').is_visible())
         pg.screenshot(path=f"{OUT}/kayit-v3-basari-{vp['width']}.png", full_page=True)
@@ -196,6 +205,10 @@ with sync_playwright() as p:
             kontrol('yenilemede fotoğraf tekrar seçilmeli', pg.locator('[data-gorsel="kimlikOn"]').get_attribute('data-dolu') != '1')
             kayitDoldur(pg)
         pg.check('#k-kimlik-sonra'); pg.check('#k-kimlik-' + yol)
+        if yol == 'whatsapp':
+            # «Ekranda imza atamıyorum» kaçış kutusu: çizim gövdeye girmez, özet «kalemle» der.
+            pg.check('#k-imza-yok'); pg.wait_for_timeout(300)
+            kontrol('imza atamıyorum: tuval kilitli, özet kursta kalemle', pg.locator('[data-imza]').evaluate('e => e.classList.contains("imza-kapali")') and 'kalemle' in pg.locator('[data-ozet-alan=imza] [data-ozet-deger]').text_content())
         kontrol(f'[{yol}] yükleme kutuları gizli', not pg.locator('[data-kimlik-yukleme]').is_visible())
         if yol == 'elden':
             kontrol('elden yolunda rıza gizli ve devre dışı', pg.locator('#k-kimlik-riza').is_disabled() and not pg.locator('[data-kimlik-riza]').is_visible())
@@ -231,7 +244,10 @@ with sync_playwright() as p:
         pg.click('button[type=submit]'); pg.wait_for_selector('[data-basari]:not([hidden])')
         g = GONDERILEN[-1]
         kontrol(f'[{yol}] v3 gövdesinde yol doğru, görseller boş', g['formSurumu'] == 3 and g['kimlik'] == {'yol': yol, 'on': '', 'arka': ''} and g['onay']['kimlikRiza'] == (yol != 'elden'))
+        if yol != 'whatsapp':
+            kontrol(f'[{yol}] gövdede çizilen imza PNG', str(g.get('imza', '')).startswith('data:image/png;base64,') and g.get('imzaYok') is False)
         if yol == 'whatsapp':
+            kontrol('imza atamıyorum: gövdede imza boş, imzaYok True', g.get('imza') == '' and g.get('imzaYok') is True)
             link = pg.locator('[data-kimlik-baglanti]')
             kontrol('WhatsApp başarı bağlantısı referansı taşır, numara metinde yok', link.get_attribute('href').startswith('https://wa.me/') and 'UC-2026-9999' in link.get_attribute('href') and '471' not in link.inner_text())
         if yol == 'eposta':

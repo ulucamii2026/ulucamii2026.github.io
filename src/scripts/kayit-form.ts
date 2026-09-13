@@ -1,6 +1,7 @@
-/** Kur'an kursu kayıt formu — form davranışı (okul→sınıf bağı, sağlık rızası, kardeş kaydı). */
+/** Kur'an kursu kayıt formu — form davranışı (okul→sınıf bağı, sağlık rızası, kardeş kaydı,
+ *  13 Eyl 2026 akşamı: ihtida formuyla aynı çizilen imza bloğu — PNG gönderim gövdesine gider, taslağa yazılmaz). */
 import { formuBaslat, telefonNormalle, deger, alanlariDoldur, type Veriler } from './form-cekirdek';
-import { gorselKutulariniBaslat, type BelgeMetinleri } from './ihtida-gorseller';
+import { gorselKutulariniBaslat, imzaBlokuKur, type BelgeMetinleri, type ImzaBloku } from './ihtida-gorseller';
 import { kayitEtkilesiminiBaslat, kayitBasarisiniHazirla } from './kayit-etkilesim';
 import type { KayitV3Metinler } from '../i18n/formlar/tipler';
 
@@ -22,6 +23,13 @@ export function kayitFormuBaslat() {
       form.querySelectorAll('[data-gorsel][data-dolu="1"] input[type="hidden"]').forEach(a => a.removeAttribute('aria-invalid'));
       form.dispatchEvent(new Event('change', { bubbles: true }));
     });
+  // Çizilen imza: hata yalnız gönderimde (çekirdek ekDogrula) yazılır; çizim gelince kendiliğinden silinir.
+  let imza: ImzaBloku | null = null;
+  imza = imzaBlokuKur(form.querySelector<HTMLElement>('[data-imza]'), form.querySelector<HTMLInputElement>('#k-imza-yok'), () => {
+    if (imza && !imza.eksikMi()) imza.hataYaz(null);
+    form.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  const imzaHatalari = (): Array<[string, string]> => (imza?.eksikMi() ? [['imzaYok', belgeMetni.hataImza]] : []);
   const kimlikYolu = () => form.querySelector<HTMLInputElement>('#k-kimlik-simdi')?.checked ? 'yukle'
     : form.querySelector<HTMLInputElement>('input[name="kimlik.sonra"]:checked')?.value || '';
   const kimlikDurumu = () => {
@@ -58,7 +66,7 @@ export function kayitFormuBaslat() {
   });
   form.addEventListener('reset', () => {
     gorseller.sifirla();
-    setTimeout(() => { sinifListesiKur(false); kimlikDurumu(); }, 0);
+    setTimeout(() => { sinifListesiKur(false); kimlikDurumu(); imza?.sifirla(); }, 0);
   });
   kimlikDurumu();
 
@@ -102,7 +110,7 @@ export function kayitFormuBaslat() {
       const kurallar = f.querySelector<HTMLInputElement>('input[name="onay.kurallar"]');
       if (kurallar?.disabled) hatalar.push(['onay.kurallar', m.hata.kurallarKaydir]);
       if (deger(v, 'saglik.var') === 'evet' && deger(v, 'onay.saglikRiza') !== true) hatalar.push(['onay.saglikRiza', m.hata.zorunlu]);
-      return [...hatalar, ...kimlikHatalari()];
+      return [...hatalar, ...kimlikHatalari(), ...imzaHatalari()];
     },
     govde(v) {
       const o = v.ogrenci as Veriler, veli = v.veli as Veriler, acil = (v.acil ?? {}) as Veriler;
@@ -122,6 +130,8 @@ export function kayitFormuBaslat() {
         goruntuIzni: v.goruntuIzni === 'evet',
         goruntuSosyalIzni: v.goruntuSosyalIzni === 'evet',
         kimlik: { yol: kimlikYolu(), on: kimlikYolu() === 'yukle' ? gorseller.paket().kimlikOn || '' : '', arka: kimlikYolu() === 'yukle' ? gorseller.paket().kimlikArka || '' : '' },
+        // 13 Eyl 2026 akşamı (v32): çizilen imza PNG; kaçış kutusu işaretliyse boş + imzaYok.
+        ...(imza ? { imza: imza.veri(), imzaYok: imza.kapaliMi() } : {}),
         onay: { kurallar: onay.kurallar === true, gizlilik: onay.gizlilik === true, saglikRiza: saglikVar ? onay.saglikRiza === true : false, elektronikImza: onay.elektronikImza, kimlikRiza: kimlikYolu() !== 'elden' && onay.kimlikRiza === true },
       };
     },
@@ -147,6 +157,7 @@ export function kayitFormuBaslat() {
         goruntuSosyal: evetHayir(v.goruntuSosyalIzni),
         kimlik: kimlikYolu() === 'yukle' ? (gorseller.paket().kimlikOn ? (gorseller.paket().kimlikArka ? metin.ozetIki : metin.ozetOn) : '')
           : ({ eposta: metin.ozetEposta, whatsapp: metin.ozetWhatsapp, elden: metin.ozetElden }[kimlikYolu()] || ''),
+        imza: !imza ? '' : imza.kapaliMi() ? metin.ozetImzaElden : imza.eksikMi() ? '' : metin.ozetImzaCizildi,
       };
     },
     basarida(v, ref) {
@@ -161,8 +172,9 @@ export function kayitFormuBaslat() {
       const gonderilenYol = kimlik.zaman === 'simdi' ? 'yukle' : String(kimlik.sonra || '');
       kayitBasarisiniHazirla(form, metin, gonderilenYol, ref, [ogrenci.ad, ogrenci.soyad].filter(Boolean).join(' '));
       gorseller.sifirla();
+      imza?.sifirla();                            // kardeş kaydında veli yeniden imzalar (ayrı sözleşme)
     },
   });
   kimlikDurumu();
-  kayitEtkilesiminiBaslat(form, metin, kimlikHatalari);
+  kayitEtkilesiminiBaslat(form, metin, () => [...kimlikHatalari(), ...imzaHatalari()]);
 }

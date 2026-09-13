@@ -13,9 +13,9 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v31.gs` | **Canlıda** — 13 Eylül 2026 akşamı (`D:/tmp/gas/dagit_v31.py`); kurumsal e-posta v2 + iletişim bloğu düzeltmesi |
+| `ulucamii-Kod-v32.gs` | **Canlıda** — 13 Eylül 2026 gecesi (`D:/tmp/gas/dagit_v32.py`); kayıt formunda ekranda çizilen imza (`imza`/`imzaYok`, PDF imza alanına basılır, Drive `<ref> - imza.png`, `kayit-belge` ucu `imza` döndürür, sağlık ucu `kayitImza:true`); v31 kurumsal e-posta v2 + iletişim bloğu düzeltmesi korunur |
 | `kimlik-sabitler.gs` | `npm run kimlik:uret` üretir (kimlik.json kopyası) — elle düzenlenmez |
-| `veli-eposta-sablon.gs`, `veli-cuma.gs`, `veli-mail-listesi.gs`, `ihtida-*.gs` | Ortak modüller; `npm run ihtida:gas-derle` hepsini `.codex/cikti/gas/ulucamii-v31.gs` paketine birleştirir |
+| `veli-eposta-sablon.gs`, `veli-cuma.gs`, `veli-mail-listesi.gs`, `ihtida-*.gs` | Ortak modüller; `npm run ihtida:gas-derle` hepsini `.codex/cikti/gas/ulucamii-v32.gs` paketine birleştirir |
 
 > **13 Eylül 2026 temizliği (Rıdvan):** v9–v30 kaynak dosyaları depodan kaldırıldı — hepsi git geçmişinde
 > (`git log --all -- scripts/apps-script/ulucamii-Kod-v20.gs` gibi). Eski sürümler din görevlisinin telefonunu metin olarak

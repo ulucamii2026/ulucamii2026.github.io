@@ -9,13 +9,16 @@ import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
 import IhtidaCamiSecimi from './IhtidaCamiSecimi.astro';
+import WhatsappBaglanti from '../WhatsappBaglanti.astro';
 import { camiMetinleri } from '../../i18n/cami-secimi';
 import IhtidaAdimlar from './IhtidaAdimlar.astro';
 import { ihtidaAdimMetinleri } from '../../i18n/ihtida-adimlari';
 import '../../styles/ihtida-adimlari.css';
 
-interface Props { dil: Dil; uc: string; eposta: string; telefon: string; ek10Yolu: string }
-const { dil, uc, eposta, telefon, ek10Yolu } = Astro.props;
+interface Props { dil: Dil; uc: string; eposta: string; telefon: string; ek10Yolu: string; whatsapp?: { kullanici: string; numara: string } }
+const { dil, uc, eposta, telefon, ek10Yolu, whatsapp } = Astro.props;
+// 13 Eyl 2026 akşamı (Rıdvan): iletişim satırında din görevlisine WhatsApp bağlantısı; numara yalnız wa.me hedefinde.
+const waSite = whatsapp ? { whatsapp } : null;
 const m = formMetinleri(dil);
 const h = m.ihtida, o = m.ortak;
 const adimMetin = ihtidaAdimMetinleri[dil];
@@ -398,7 +401,7 @@ const gorselKutulari = [
     </div>
     <div class="ucf-gonder mt-6">
       <button type="submit" class="dugme dugme-birincil">{o.gonder}</button>
-      <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+      <p class="son-not">{doldur(o.basari.iletisim, { eposta, telefon })}{waSite && <> · {o.basari.whatsappImam}: <WhatsappBaglanti site={waSite} /></>}</p>
     </div>
   </section>
   <div class="ucf-adim-eylemler" data-adim-eylemler hidden>
@@ -414,7 +417,7 @@ const gorselKutulari = [
   <p data-eposta-metin></p>
   <p class="text-sm" style="color: var(--metin-2)">{o.basari.spamNotu}</p>
   <p>{h.basari.sonrakiAdimlar}</p>
-  <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
+  <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })}{waSite && <> · {o.basari.whatsappImam}: <WhatsappBaglanti site={waSite} /></>}</p>
   <div class="eylemler">
     <a class="dugme dugme-ikincil" href={yol(dil, 'ihtida')}>{h.ustEtiket}</a>
     <a class="dugme dugme-ikincil" href={`/${dil}/`}>{o.anasayfa}</a>

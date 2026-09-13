@@ -1259,12 +1259,13 @@ async function kayitKimlikAc(dugme) {
     const j = await gasIstek('kayit-belge', { ref });
     if (pencere.closed) return;
     if (!j.ok) throw new Error(j.hata === 'yetki' ? 'Oturum yetkisi doğrulanamadı. Yeniden giriş yapın.' : 'Kimlik belgesi alınamadı. Panelden tekrar deneyin.');
-    const parcalar = [['Ön yüz', j.on], ['Arka yüz', j.arka]];
+    // v32 (13 Eyl 2026 akşamı): velinin ekranda çizdiği imza da aynı sekmede (PDF'e zaten basılı; burada yalnız görüntüleme).
+    const parcalar = [['Ön yüz', j.on], ['Arka yüz', j.arka], ['Velinin imzası', j.imza]];
     let adet = 0;
     for (const [ad, veri] of parcalar) {
       if (!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(String(veri || ''))) continue;
       const figure = doc.createElement('figure'), caption = doc.createElement('figcaption'), img = doc.createElement('img');
-      caption.textContent = ad; img.alt = 'Kimlik belgesi — ' + ad.toLocaleLowerCase('tr'); img.src = veri; img.draggable = false;
+      caption.textContent = ad; img.alt = (ad === 'Velinin imzası' ? 'Velinin imzası' : 'Kimlik belgesi — ' + ad.toLocaleLowerCase('tr')); img.src = veri; img.draggable = false;
       figure.append(caption, img); doc.querySelector('.kimlik-gorseller').append(figure); adet++;
     }
     const okunamayan = Array.isArray(j.okunamayan) ? j.okunamayan : [];

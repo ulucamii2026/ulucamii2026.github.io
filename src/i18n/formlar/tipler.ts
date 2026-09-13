@@ -3,7 +3,8 @@
     8 EYLÜL 2026 — Rıdvan'ın kararıyla İHTİDA formu için bu geri alındı: vesikalık, kimlik belgesinin
     ön/arka yüzü ve çizilen imza formda alınır (EK-9 ve Müşavirlik dosyası için). KAYIT formu (çocuk
     kaydı) 13 Eylül 2026 v3'te yol seçmeli açık rızayla ön yüz ve isteğe bağlı arka yüz alır;
-    kimlik numarası, MRZ/OCR, vesikalık ve imza kanvası yoktur. */
+    aynı gün akşamı Rıdvan'ın kararıyla ihtidadaki gibi ekranda ÇİZİLEN İMZA da alınır (kayıt
+    PDF'ine aynen basılır). Kimlik numarası, MRZ/OCR ve vesikalık hâlâ yoktur. */
 
 export interface OrtakMetinler {
   zorunluIsaret: string;           // "zorunlu alan" — yıldızın erişilebilir adı
@@ -44,6 +45,7 @@ export interface OrtakMetinler {
     epostaGitti: string;           // {eposta}
     spamNotu: string;
     iletisim: string;              // {eposta} {telefon}
+    whatsappImam: string;          // 13 Eyl 2026 akşamı: iki formda din görevlisine WhatsApp bağlantısının etiketi (numara yazılmaz)
   };
   gizlilikKutu: {
     baslik: string;
@@ -107,6 +109,8 @@ export interface KayitV3Metinler {
   ozetEposta: string;
   ozetWhatsapp: string;
   ozetElden: string;
+  ozetImzaCizildi: string;         // 13 Eyl 2026 akşamı: özet satırı — imza ekranda çizildi
+  ozetImzaElden: string;           // kaçış kutusu: kursta kalemle imzalanacak
   alindi: string;
   epostaAdim: string;
   epostaDugme: string;
@@ -150,10 +154,12 @@ export interface KayitMetinler {
   kurallar: {
     baslik: string; aciklama: string; kaydirNotu: string; kutu: string;
     imzaEtiket: string; imzaYardim: string;
+    // 13 Eyl 2026 akşamı: ihtida formuyla aynı çizilen imza bloğu (tuval + temizle + «atamıyorum» kaçış kutusu)
+    imzaCiz: string; imzaCizYardim: string; imzaYok: string; imzaYokYardim: string;
     ogrenciBaslik: string; ogrenci: string[]; veliBaslik: string; veli: string[]; kitapNotu: string;
   };
   ozet: {
-    ogrenci: string; okul: string; sinif: string; veli: string; iletisim: string; acil: string; saglik: string; goruntu: string; goruntuSosyal: string;
+    ogrenci: string; okul: string; sinif: string; veli: string; iletisim: string; acil: string; saglik: string; goruntu: string; goruntuSosyal: string; imza: string;
   };
   basari: { kardes: string; kardesAciklama: string; sonrakiAdimlar: string };
 }

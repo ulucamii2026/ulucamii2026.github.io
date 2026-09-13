@@ -9,7 +9,7 @@ import sharp from 'sharp';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 execFileSync(process.execPath, ['scripts/ihtida-gas-derle.mjs'], { stdio: 'pipe' });
-const source = readFileSync('.codex/cikti/gas/ulucamii-v31.gs', 'utf8');
+const source = readFileSync('.codex/cikti/gas/ulucamii-v32.gs', 'utf8');
 const png = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="220"><rect width="180" height="220" fill="#e0e6ee"/><circle cx="90" cy="72" r="35" fill="#596478"/><text x="35" y="170" font-size="30">TEST</text></svg>')).png().toBuffer();
 const image = 'data:image/png;base64,' + png.toString('base64');
 const k = { 'Referans': 'IH-2099-9999', 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belgique', 'E-posta': 'deniz@example.test', 'Zaman damgası': '09.09.2026', 'Form dili': 'fr', 'Kimlik belgesi türü': 'kimlik', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-09-09', 'İmza aktarım izni': 'Evet', 'Cinsiyet': 'kadin', 'Doğum tarihi': '1990-05-20', 'Doğum yeri': 'Namur', 'Uyruk': 'Belçika', 'Anne adı': 'Anne', 'Baba adı': 'Baba', 'Medeni hali': 'bekar', 'Öğrenim durumu': 'lisans', 'Mesleği': 'Öğretmen', 'Önceki din/mezhep': 'hristiyan-katolik', 'Telefon': '+32470000000', 'İhtida sebebi': 'Kendi araştırmam sonucunda.' };

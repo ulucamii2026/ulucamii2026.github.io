@@ -186,7 +186,7 @@
 .ucf-basari:focus-visible { outline: 3px solid var(--vurgu-2); outline-offset: 3px; }
 .ucf-basari[hidden] { display: none; }
 
-/* ---------- Belgeler ve imza (yalnız ihtida formu, 8 Eylül 2026) ---------- */
+/* ---------- Belgeler ve imza (ihtida formu 8 Eylül 2026; imza bloğu 13 Eylül akşamından beri kayıt formunda da) ---------- */
 /* [data-alan] > label kuralı burada işlemez (etiket bir <label> değil, kanvası/dosyayı
    adlandıran bir <span>); aynı görünümü elle veriyoruz. */
 .alan-baslik { font-weight: 600; font-size: 0.93rem; color: var(--metin); line-height: 1.35; }
@@ -229,6 +229,15 @@
 .ucf-imza.imza-kapali .imza-tuval { opacity: 0.4; cursor: not-allowed; }
 .ucf-imza.imza-kapali .imza-eylem { display: none; }
 .ucf-imza.alan-hatali .imza-tuval { border-color: var(--form-hata-cizgi); }
+/* Kayıt formunda blok bir <fieldset>: legend etiketi gibi durur, tuval 44 px'lik düğmelerle aynı ritimde. */
+.ucf[data-form="kayit"] fieldset.ucf-imza { display: block; }
+.ucf[data-form="kayit"] fieldset.ucf-imza > legend { float: left; width: 100%; margin-bottom: .35rem; }
+.ucf[data-form="kayit"] .ucf-imza .imza-tuval { margin-block: .5rem; scroll-margin-top: var(--kayit-odak-payi); }
+.ucf[data-form="kayit"] .ucf-imza .imza-eylem .dugme { min-height: 44px; }
+/* Din görevlisine WhatsApp: yan rayda etiket + bağlantı alt alta; gönder/başarı satırlarında satır içi. */
+.k-ray-wa { display: flex; flex-direction: column; gap: .15rem; margin-top: .4rem; }
+.k-ray-wa > span { font-size: .8rem; color: var(--metin-2); }
+.ucf-gonder .son-not .wa-bag, .ucf-basari .wa-bag { margin-block: 0; padding-block: 0; min-height: 0; vertical-align: middle; }
 
 @media (prefers-reduced-motion: reduce) { .kurallar-kutu { scroll-behavior: auto; } }
 
