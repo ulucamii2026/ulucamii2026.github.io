@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
-const source=readFileSync(new URL('../scripts/apps-script/veli-eposta-sablon.gs',import.meta.url),'utf8')+'\n'+readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v29.gs',import.meta.url),'utf8');
+const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v30.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
 function backend(){const sent=[];const c=vm.createContext({console,PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});vm.runInContext(source,c);c.epostaGonder=m=>sent.push(m);c.mufredatEki=()=>null;return {c,sent};}
 for(const dil of ['tr','fr'])test(`Kayıt onayı yalnız seçilen iletişim dilinde: ${dil}`,()=>{
  const {c,sent}=backend();const blob={name:'test.pdf'};
@@ -155,7 +155,7 @@ test('v29: yetkisiz/bozuk referanslı yeni uçlar Drive’a erişemez', () => {
   assert.equal(c.doGet({ parameter: { islem, ref: 'UC-2099-0001' } }).hata, 'yetki');
   for (const ref of ['IH-2099-0001', 'UC-2099-0001x', ' UC-2099-0001', 'UC-2099-0001\n', '../UC-2099-0001']) assert.equal(c.doGet({ parameter: { islem, ref, anahtar: c.PANEL.anahtar } }).hata, 'ref-gecersiz');
  }
- c.VELI_PORTAL_SURUM = 'test'; assert.equal(c.doGet({}).kayitKimlik, true); assert.equal(c.doGet({}).surum, 29);
+ c.VELI_PORTAL_SURUM = 'test'; assert.equal(c.doGet({}).kayitKimlik, true); assert.equal(c.doGet({}).surum, 30);
 });
 
 test('v29: belge okuma MIME ve toplam yanıt sınırı uygular, okunamayanları açık döner', () => {
@@ -192,7 +192,7 @@ test('v29 C: kimlik paragrafı ve WhatsApp mesajı da veli iletişim dilinde kal
   const body = sent[0].body;
   if (iletisim === 'fr') { assert.match(body, /Veuillez envoyer/); assert.doesNotMatch(body, /Lütfen|Please send/); }
   else { assert.match(body, /Lütfen/); assert.doesNotMatch(body, /Veuillez|Please send/); }
-  const url = body.split('\n').at(-1);
+  const url = body.split('\n').find(satir => satir.startsWith('https://wa.me/'));
   assert.match(new URL(url).searchParams.get('text'), iletisim === 'fr' ? /^Bonjour/ : /^Merhaba/);
  }
 });

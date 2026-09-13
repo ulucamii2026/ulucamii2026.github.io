@@ -3,10 +3,10 @@
  * Liste aktarımının mevcut beş dakikalık zamanlayıcısı kullanılır.
  */
 var VELI_CUMA_SURUM = "20260909-1";
-var VELI_CUMA_SITE = "https://www.ulucamii.be";
+/* Site ve kapanış metinleri içerik hazırlanırken doğrudan KIMLIK üzerinden okunur. */
 var VELI_CUMA_DILLER = {
-  tr: { konu: "Hayırlı cumalar | Hafta sonu derslerimiz", baslik: "Hayırlı cumalar", hitap: "Değerli velimiz,", selam: "Cumanız mübarek olsun. Ailenize huzurlu, sağlıklı ve bereketli günler diliyoruz.", giris: "Hafta sonuna birlikte hazırlanalım. Çocuğunuzla aşağıdaki kısa hatırlatmaları gözden geçirmeniz bize büyük destek olacaktır.", hafta: "Bu hafta sonu", gunler: ["Cumartesi", "Pazar"], alanlar: { kuran: "Kur'an-ı Kerim", itikat: "İtikat", ibadet: "İbadet", siyer: "Siyer", ahlak: "Ahlak", genel: "Genel" }, odev: "Ödev ve tekrar", odevYok: "Yeni bir ödev ayrıntısı yayımlanmadı. Son derste verilen çalışmaları ve öğrenilen dua/sureleri çocuğunuzla kısaca tekrar edebilirsiniz.", odevEksik: "Ödevin ayrıntısını veli portalından kontrol edebilirsiniz.", ezber: "Ezber", canta: "Çantamız hazır mı?", malzeme: ["Çocuğunuzun kullandığı Elifbâ veya Kur'an-ı Kerim", "Ders kitabı ve dağıtılan çalışma kâğıtları", "Defter, kurşun kalem ve silgi"], malzemeNot: "Eksik malzeme varsa önceden bize haber vermeniz yeterli.", isbirligi: "Kurs ve aile olarak birlikte hareket ettiğimizde çocuklarımız daha düzenli ilerliyor. Lütfen e-postalarımızı ve veli portalını takip ediniz. Desteğiniz için teşekkür ederiz.", portal: "Veli portalını aç", materyal: "Ders materyallerini incele", dersYok: "Yayımlanmış planda bu gün ders yok.", planYok: "Bu gün için yayımlanmış ders planı bulunmuyor. Güncel duyuruları veli portalından kontrol ediniz.", iptal: "Bu gün ders yapılmayacaktır.", tatil: "Bu hafta sonu için ders hazırlığı gerekmiyor. Ailece huzurlu bir hafta sonu dileriz.", odevTarihi: "Yayımlanmış çalışma", imza: "Rıdvan KAYAHAN\nDin Görevlisi · Marche-en-Famenne Ulu Camii", dip: "Bu bilgilendirme, çocuğunuzun kurs kaydı kapsamında gönderilmiştir. İletişim tercihinizi değiştirmek için bu e-postayı yanıtlayabilirsiniz.", portalYol: "/tr/veli-portali/", materyalYol: "/tr/ders-materyalleri/" },
-  fr: { konu: "Bon vendredi | Les cours de ce week-end", baslik: "Un vendredi béni à votre famille", hitap: "Chers parents,", selam: "Nous vous souhaitons un vendredi béni, ainsi que des journées paisibles et sereines en famille.", giris: "Préparons ensemble le week-end. Merci de prendre quelques instants avec votre enfant pour parcourir ces rappels.", hafta: "Ce week-end", gunler: ["Samedi", "Dimanche"], alanlar: { kuran: "Coran", itikat: "Foi", ibadet: "Pratique religieuse", siyer: "Vie du Prophète", ahlak: "Éthique", genel: "Activités générales" }, odev: "Devoirs et révisions", odevYok: "Aucun nouveau devoir détaillé n'a été publié. Vous pouvez revoir brièvement avec votre enfant le travail donné au dernier cours ainsi que les invocations et sourates déjà apprises.", odevEksik: "Consultez le portail des parents pour les détails du travail à revoir.", ezber: "Mémorisation", canta: "Le cartable est-il prêt ?", malzeme: ["Le livret Elifbâ ou le Coran utilisé par votre enfant", "Le manuel du cours et les feuilles d'exercices distribuées", "Un cahier, un crayon et une gomme"], malzemeNot: "S'il manque du matériel, il vous suffit de nous prévenir à l'avance.", isbirligi: "La coopération entre l'école et les familles aide nos enfants à progresser régulièrement. Merci de consulter nos e-mails et le portail des parents. Nous vous remercions pour votre soutien.", portal: "Ouvrir le portail des parents", materyal: "Consulter les supports de cours", dersYok: "Aucun cours n'est prévu ce jour dans le programme publié.", planYok: "Le programme de cette journée n'a pas encore été publié. Consultez les annonces du portail des parents.", iptal: "Il n'y aura pas de cours ce jour.", tatil: "Aucune préparation de cours n'est nécessaire pour ce week-end. Nous vous souhaitons un agréable week-end en famille.", odevTarihi: "Travail publié", imza: "Rıdvan KAYAHAN\nImam · Mosquée Ulu Camii de Marche-en-Famenne", dip: "Cette information vous est adressée dans le cadre de l'inscription de votre enfant. Pour modifier votre préférence de communication, vous pouvez répondre à cet e-mail.", portalYol: "/fr/portail-parents/", materyalYol: "/fr/supports-de-cours/" }
+  tr: { konu: "Hayırlı cumalar | Hafta sonu derslerimiz", baslik: "Hayırlı cumalar", hitap: "Değerli velimiz,", selam: "Cumanız mübarek olsun. Ailenize huzurlu, sağlıklı ve bereketli günler diliyoruz.", giris: "Hafta sonuna birlikte hazırlanalım. Çocuğunuzla aşağıdaki kısa hatırlatmaları gözden geçirmeniz bize büyük destek olacaktır.", hafta: "Bu hafta sonu", gunler: ["Cumartesi", "Pazar"], alanlar: { kuran: "Kur'an-ı Kerim", itikat: "İtikat", ibadet: "İbadet", siyer: "Siyer", ahlak: "Ahlak", genel: "Genel" }, odev: "Ödev ve tekrar", odevYok: "Yeni bir ödev ayrıntısı yayımlanmadı. Son derste verilen çalışmaları ve öğrenilen dua/sureleri çocuğunuzla kısaca tekrar edebilirsiniz.", odevEksik: "Ödevin ayrıntısını veli portalından kontrol edebilirsiniz.", ezber: "Ezber", canta: "Çantamız hazır mı?", malzeme: ["Çocuğunuzun kullandığı Elifbâ veya Kur'an-ı Kerim", "Ders kitabı ve dağıtılan çalışma kâğıtları", "Defter, kurşun kalem ve silgi"], malzemeNot: "Eksik malzeme varsa önceden bize haber vermeniz yeterli.", isbirligi: "Kurs ve aile olarak birlikte hareket ettiğimizde çocuklarımız daha düzenli ilerliyor. Lütfen e-postalarımızı ve veli portalını takip ediniz. Desteğiniz için teşekkür ederiz.", portal: "Veli portalını aç", materyal: "Ders materyallerini incele", dersYok: "Yayımlanmış planda bu gün ders yok.", planYok: "Bu gün için yayımlanmış ders planı bulunmuyor. Güncel duyuruları veli portalından kontrol ediniz.", iptal: "Bu gün ders yapılmayacaktır.", tatil: "Bu hafta sonu için ders hazırlığı gerekmiyor. Ailece huzurlu bir hafta sonu dileriz.", odevTarihi: "Yayımlanmış çalışma", dip: "Bu bilgilendirme, çocuğunuzun kurs kaydı kapsamında gönderilmiştir. İletişim tercihinizi değiştirmek için bu e-postayı yanıtlayabilirsiniz.", portalYol: "/tr/veli-portali/", materyalYol: "/tr/ders-materyalleri/" },
+  fr: { konu: "Bon vendredi | Les cours de ce week-end", baslik: "Un vendredi béni à votre famille", hitap: "Chers parents,", selam: "Nous vous souhaitons un vendredi béni, ainsi que des journées paisibles et sereines en famille.", giris: "Préparons ensemble le week-end. Merci de prendre quelques instants avec votre enfant pour parcourir ces rappels.", hafta: "Ce week-end", gunler: ["Samedi", "Dimanche"], alanlar: { kuran: "Coran", itikat: "Foi", ibadet: "Pratique religieuse", siyer: "Vie du Prophète", ahlak: "Éthique", genel: "Activités générales" }, odev: "Devoirs et révisions", odevYok: "Aucun nouveau devoir détaillé n'a été publié. Vous pouvez revoir brièvement avec votre enfant le travail donné au dernier cours ainsi que les invocations et sourates déjà apprises.", odevEksik: "Consultez le portail des parents pour les détails du travail à revoir.", ezber: "Mémorisation", canta: "Le cartable est-il prêt ?", malzeme: ["Le livret Elifbâ ou le Coran utilisé par votre enfant", "Le manuel du cours et les feuilles d'exercices distribuées", "Un cahier, un crayon et une gomme"], malzemeNot: "S'il manque du matériel, il vous suffit de nous prévenir à l'avance.", isbirligi: "La coopération entre l'école et les familles aide nos enfants à progresser régulièrement. Merci de consulter nos e-mails et le portail des parents. Nous vous remercions pour votre soutien.", portal: "Ouvrir le portail des parents", materyal: "Consulter les supports de cours", dersYok: "Aucun cours n'est prévu ce jour dans le programme publié.", planYok: "Le programme de cette journée n'a pas encore été publié. Consultez les annonces du portail des parents.", iptal: "Il n'y aura pas de cours ce jour.", tatil: "Aucune préparation de cours n'est nécessaire pour ce week-end. Nous vous souhaitons un agréable week-end en famille.", odevTarihi: "Travail publié", dip: "Cette information vous est adressée dans le cadre de l'inscription de votre enfant. Pour modifier votre préférence de communication, vous pouvez répondre à cet e-mail.", portalYol: "/fr/portail-parents/", materyalYol: "/fr/supports-de-cours/" }
 };
 function veliCumaGunEkle(iso, n) { var d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
 function veliCumaZamanUygun(iso, saat, ayar) { return new Date(iso + "T12:00:00Z").getUTCDay() === 5 && saat >= (ayar.saat == null ? 10 : ayar.saat) && saat < 21; }
@@ -29,37 +29,44 @@ function veliCumaModel(cuma, plan, odevler, ayar) {
 }
 function veliCumaIcerik(model, dil, cevir) {
   var m = VELI_CUMA_DILLER[dil]; if (!m) throw new Error("cuma-dil-eksik");
-  // Posta uygulamasında body/head stilleri korunmasa da metin okunaklı kalır.
-  var blocks=[],plain=[], esc=veliCumaKacis,yazi='font-family:Arial,sans-serif;font-size:20px;line-height:1.5;color:#293f42;word-wrap:break-word;';
-  function p(t){blocks.push('<p style="'+yazi+'margin:0 0 20px">'+esc(t).replace(/\n/g,'<br>')+'</p>');plain.push(t);}
-  function h(t){blocks.push('<h2 style="font-family:Arial,sans-serif;margin:30px 0 14px;font-size:24px;line-height:1.3;color:#163f43">'+esc(t)+'</h2>');plain.push('\n'+t);}
-  function list(items){blocks.push('<ul style="'+yazi+'padding-left:23px;margin:8px 0 22px">'+items.map(function(t){plain.push('- '+t);return '<li style="'+yazi+'margin:0 0 8px">'+esc(t)+'</li>';}).join('')+'</ul>');}
-  function yerel(obj){return veliCumaMetin((obj || {})[dil]);}
-  function tarih(t){return t.slice(8,10)+'.'+t.slice(5,7)+'.'+t.slice(0,4);}
-  p(m.hitap);p(m.selam);p(m.giris);h(m.hafta);
-  model.gunler.forEach(function(g,i){
-    blocks.push('<h3 style="font-family:Arial,sans-serif;margin:22px 0 12px;font-size:21px;line-height:1.4;color:#24676b">'+esc(m.gunler[i]+' '+tarih(g.tarih))+'</h3>');plain.push(m.gunler[i]+' '+tarih(g.tarih));
-    if(g.durum==='ders'){
-      blocks.push('<ul style="'+yazi+'padding-left:23px;margin:8px 0 22px">'+g.dersler.map(function(d){
-        var konu=(m.alanlar[d.kod]||m.alanlar.genel)+': '+(dil==='tr'?d.konu:cevir(d.konu));
-        var kaynak=veliCumaKaynakMetni(d.kaynak,dil);plain.push('- '+konu+(kaynak?'\n  '+kaynak:''));
-        return '<li style="'+yazi+'margin:0 0 16px">'+esc(konu)+(kaynak?'<br><span style="font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#536763">'+esc(kaynak)+'</span>':'')+'</li>';
-      }).join('')+'</ul>');
-    }
-    else p(yerel(g.aciklama) || m[g.durum]);
+  var blocks = [], plain = [];
+  function p(t) { blocks.push({tur:'paragraf', metin:t}); plain.push(t); }
+  function h(t) { blocks.push({tur:'baslik', metin:t}); plain.push('\n' + t); }
+  function list(items) { blocks.push({tur:'madde', ogeler:items}); items.forEach(function(t) { plain.push('- ' + t); }); }
+  function yerel(obj) { return veliCumaMetin((obj || {})[dil]); }
+  function tarih(t) { return t.slice(8,10) + '.' + t.slice(5,7) + '.' + t.slice(0,4); }
+  p(m.hitap); p(m.selam); p(m.giris); h(m.hafta);
+  model.gunler.forEach(function(g, i) {
+    h(m.gunler[i] + ' ' + tarih(g.tarih));
+    if (g.durum === 'ders') {
+      blocks.push({tur:'liste', ogeler:g.dersler.map(function(d) {
+        var konu = (m.alanlar[d.kod] || m.alanlar.genel) + ': ' + (dil === 'tr' ? d.konu : cevir(d.konu));
+        var kaynak = veliCumaKaynakMetni(d.kaynak, dil);
+        plain.push('- ' + konu + (kaynak ? '\n  ' + kaynak : ''));
+        return {baslik:konu, not:kaynak};
+      })});
+    } else p(yerel(g.aciklama) || m[g.durum]);
   });
-  if(model.dersVar){
-    h(m.odev);var od=model.odev,detay=od&&yerel(od.odev),ezber=od&&yerel(od.ezber);
-    if(detay || ezber){p(m.odevTarihi+' · '+tarih(od.tarih));if(detay)p(veliCumaKisalt(detay,320));if(ezber)p(m.ezber+': '+veliCumaKisalt(ezber,180));if(detay.length>320||ezber.length>180)p(m.odevEksik);}
-    else p(od?m.odevEksik:m.odevYok);
-    h(m.canta);list(m.malzeme);if(od&&yerel(od.getirilecekler))p(yerel(od.getirilecekler));p(m.malzemeNot);
-  }else if(model.dersYok)p(m.tatil);
+  if (model.dersVar) {
+    h(m.odev); var od = model.odev, detay = od && yerel(od.odev), ezber = od && yerel(od.ezber);
+    if (detay || ezber) {
+      p(m.odevTarihi + ' · ' + tarih(od.tarih));
+      if (detay) p(veliCumaKisalt(detay, 320));
+      if (ezber) p(m.ezber + ': ' + veliCumaKisalt(ezber, 180));
+      if (detay.length > 320 || ezber.length > 180) p(m.odevEksik);
+    } else p(od ? m.odevEksik : m.odevYok);
+    h(m.canta); list(m.malzeme);
+    if (od && yerel(od.getirilecekler)) p(yerel(od.getirilecekler));
+    p(m.malzemeNot);
+  } else if (model.dersYok) p(m.tatil);
   p(m.isbirligi);
-  var portal=VELI_CUMA_SITE+m.portalYol,materyal=VELI_CUMA_SITE+m.materyalYol;
-  blocks.push('<p style="'+yazi+'margin:28px 0 12px"><a href="'+portal+'" style="font-family:Arial,sans-serif;font-size:20px;line-height:1.4;background:#163f43;color:#fff;padding:17px 14px;display:block;text-align:center;border-radius:6px;text-decoration:none;font-weight:bold;word-wrap:break-word">'+esc(m.portal)+'</a></p><p style="'+yazi+'margin:0 0 24px"><a href="'+materyal+'" style="font-family:Arial,sans-serif;font-size:18px;line-height:1.5;display:block;padding:12px 0;color:#23666b;word-wrap:break-word">'+esc(m.materyal)+'</a></p>');
-  plain.push(m.portal+': '+portal,m.materyal+': '+materyal);p(m.imza);
-  var html=veliEpostaBelge(dil,m.baslik,blocks.join(''),m.dip);
-  return {subject:m.konu+' · '+tarih(model.gunler[0].tarih)+' - '+tarih(model.gunler[1].tarih),htmlBody:html,body:plain.concat(m.dip).join('\n\n')};
+  var portal = KIMLIK.iletisim.veliPortali[dil], materyal = KIMLIK.iletisim.web.adres + m.materyalYol;
+  blocks.push({tur:'dugme', metin:m.portal, url:portal});
+  blocks.push({tur:'paragraf', metin:m.materyal + '\n' + materyal});
+  plain.push(m.portal + ': ' + portal, m.materyal + ': ' + materyal); p(KIMLIK.yazisma.kapanis[dil].genel);
+  var html = veliEpostaZengin(blocks, dil, m.baslik, {kurum:'kurs', altNot:m.dip});
+  return {subject:m.konu + ' · ' + tarih(model.gunler[0].tarih) + ' - ' + tarih(model.gunler[1].tarih),
+    htmlBody:html, body:plain.concat(m.dip, KIMLIK.yazisma.imza.kurs[dil].join('\n')).join('\n\n')};
 }
 function veliCumaKoleksiyon(ad,alanlar){
   var list=[],token='';
@@ -72,7 +79,7 @@ function veliCumaAyar(){
   if(r)Object.keys(r.fields||{}).forEach(function(k){o[k]=veliPortalDegerCoz(r.fields[k]);});return o;
 }
 function veliCumaPlanOku(){
-  var r=UrlFetchApp.fetch(VELI_CUMA_SITE+'/tr/veli-portali/',{muteHttpExceptions:true});if(r.getResponseCode()!==200)throw new Error('cuma-plan-http');
+  var r=UrlFetchApp.fetch(KIMLIK.iletisim.web.adres+'/tr/veli-portali/',{muteHttpExceptions:true});if(r.getResponseCode()!==200)throw new Error('cuma-plan-http');
   var m=r.getContentText().match(/<script[^>]*id="veli-veri"[^>]*>([\s\S]*?)<\/script>/);if(!m)throw new Error('cuma-plan-yok');var plan=JSON.parse(m[1]);
   if(!/^\d{4}-\d{4}$/.test(plan.donem))throw new Error('cuma-donem-gecersiz');
   var k=UrlFetchApp.fetch('https://raw.githubusercontent.com/ulucamii2026/ulucamii2026.github.io/main/src/data/yillik-plan-'+plan.donem+'.json',{muteHttpExceptions:true});
@@ -103,7 +110,7 @@ function veliCumaHazirla(cuma,ayar){
 }
 function veliCumaGonder(alici,icerik,anahtar,tag){
   var key=brevoAnahtari();if(!key)throw new Error('cuma-eposta-yetkisi-yok');
-  var payload={sender:BREVO_GONDEREN,to:[{email:alici.eposta}],replyTo:{email:'imam@ulucamii.be'},subject:icerik.subject,htmlContent:icerik.htmlBody,textContent:icerik.body,headers:{idempotencyKey:anahtar},tags:[tag]};
+  var payload={sender:epostaKimligi('kurs'),to:[{email:alici.eposta}],replyTo:{email:KIMLIK.iletisim.eposta.dinGorevlisi},subject:icerik.subject,htmlContent:icerik.htmlBody,textContent:icerik.body,headers:{idempotencyKey:anahtar},tags:[tag]};
   try{var r=UrlFetchApp.fetch(BREVO_UC,{method:'post',contentType:'application/json',headers:{'api-key':key,accept:'application/json'},payload:JSON.stringify(payload),muteHttpExceptions:true});var kod=r.getResponseCode();
     if(kod>=200&&kod<300){var j=JSON.parse(r.getContentText());return {durum:j.messageId?'saglayici-kabul':'belirsiz',messageId:j.messageId||''};}
     return {durum:kod===429?'yeniden-denenecek':kod>=500||r.getContentText().indexOf('duplicate_parameter')>=0?'belirsiz':'gonderim-hatasi',kod:kod};

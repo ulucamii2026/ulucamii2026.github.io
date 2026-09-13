@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
-const source=readFileSync(new URL('../scripts/apps-script/veli-eposta-sablon.gs',import.meta.url),'utf8')+'\n'+readFileSync(new URL('../scripts/apps-script/veli-cuma.gs',import.meta.url),'utf8');
+const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','veli-cuma.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
 const c=vm.createContext({console});vm.runInContext(source,c);
 const plan={donem:'2026-2027',gunler:[{tarih:'2026-09-12',dersler:[{kod:'kuran',konu:'Harfler'}]},{tarih:'2026-09-13',dersler:[{kod:'ahlak',konu:'Yardımlaşma'}]}]};
 const model=()=>c.veliCumaModel('2026-09-11',plan,[],{});
@@ -13,8 +13,8 @@ test('Kitap kaynağı yalnız aynı dönem, tarih ve ders eşleşmesinde aktarı
  const m=c.veliCumaModel('2026-09-11',p,[],{});const tr=c.veliCumaIcerik(m,'tr',translate),fr=c.veliCumaIcerik(m,'fr',translate);
  assert.match(tr.htmlBody,/font-size:16px[^>]+>Kitap s\. 31–36/);assert.match(fr.body,/Kitap p\. 31–36/);assert.doesNotMatch(tr.body,/Yanlış sayfa/);assert.throws(()=>c.veliCumaKaynakEkle(p,{donem:'2025-2026',gunler:[]}),/donem/);
 });
-test('Cuma ve düz metin duyurusu aynı kurs logosunu ve hareketli görseli kullanır',()=>{
- for(const html of [c.veliCumaIcerik(model(),'tr',translate).htmlBody,c.veliEpostaDuzMetin('<özel>','fr','Duyuru')]){assert.match(html,/kuran-kursu-logo-256\.png/);assert.match(html,/kurs-kurumsal-v1\.gif/);assert.match(html,/font-size:20px/);}
+test('Cuma ve düz metin duyurusu ortak kurumsal kimliği kullanır; GIF içermez',()=>{
+ for(const html of [c.veliCumaIcerik(model(),'tr',translate).htmlBody,c.veliEpostaDuzMetin('<özel>','fr','Duyuru')]){assert.ok(html.includes(c.KIMLIK.kurumlar.kurs.logo.web));assert.doesNotMatch(html,/\.gif|media\/eposta\//i);assert.ok(html.includes('font-size:'+c.KIMLIK.gorunum.eposta.govdePuntoPx+'px'));assert.match(html,/data-eposta-sablon="v2"/);}
  assert.match(c.veliEpostaDuzMetin('<özel>','tr','Başlık'),/&lt;özel&gt;/);
 });
 test('Cuma saati, yaz/kış saati dönemleri ve hafta günleri doğru sınırlandırılır',()=>{

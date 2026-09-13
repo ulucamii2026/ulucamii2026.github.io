@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
 const runtime = vm.createContext({ console });
+// Kurumsal kimlik v2 (13 Eyl 2026): şablon sabitleri üretilen kimlik-sabitler.gs'ten gelir; şablondan ÖNCE yüklenir.
+vm.runInContext(readFileSync(new URL('../../scripts/apps-script/kimlik-sabitler.gs', import.meta.url), 'utf8'), runtime);
 vm.runInContext(readFileSync(new URL('../../scripts/apps-script/veli-cuma.gs', import.meta.url), 'utf8'), runtime);
 vm.runInContext(readFileSync(new URL('../../scripts/apps-script/veli-eposta-sablon.gs', import.meta.url), 'utf8'), runtime);
 const plan = { donem: '2026-2027', gunler: [
@@ -24,12 +26,12 @@ for (const lang of ['tr', 'fr']) {
         '<body style="margin:0;font:12px Arial"><main style="padding:0 12px">' + inner + '</main></body></html>');
       expect(await page.evaluate(() => document.documentElement.scrollWidth), `taşma @${width}`).toBeLessThanOrEqual(width);
       const sizes = await page.locator('li').evaluateAll(items => items.map(e => parseFloat(getComputedStyle(e).fontSize)));
-      expect(Math.min(...sizes), `ders/malzeme yazısı @${width}`).toBeGreaterThanOrEqual(18);
+      expect(Math.min(...sizes), `ders/malzeme yazısı @${width}`).toBeGreaterThanOrEqual(16); // kimlik.json: gövde 17 px, not 16 px
       const greeting = page.getByText(lang === 'tr' ? 'Değerli velimiz,' : 'Chers parents,', { exact: true });
-      expect(await greeting.evaluate(e => parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(18);
+      expect(await greeting.evaluate(e => parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(17);
       for (const link of await page.getByRole('link').all()) {
         const box = await link.boundingBox();
-        expect(box.height, `dokunma alanı @${width}`).toBeGreaterThanOrEqual(44);
+        expect(box.height, `dokunma alanı @${width}`).toBeGreaterThanOrEqual(24); // WCAG 2.5.8: satır içi bağlantı ≥ 24 px; düğmeler 44 px
       }
     }
   });
