@@ -1,6 +1,6 @@
 /** Kayıt ve ihtida formlarının ortak çekirdeği (30 Ağustos 2026 yeniden yazımı).
  *
- *  İlkeler: hiçbir dosya/görsel yüklenmez, kimlik numarası sorulmaz, gövde küçük düz JSON'dur.
+ *  İlkeler: kimlik numarası sorulmaz; görsel verisi yalnız form yöneticisinin belleğinde tutulur.
  *  Doğrulama tarayıcıda (hızlı geri bildirim) + sunucuda (bağlayıcı). Taslak bu cihazda
  *  localStorage'da tutulur; onay kutuları taslaktan geri yüklenmez (her seferinde bilinçli
  *  işaretlenir). Aynı gönderim iki kez kaydedilmez: taslakla birlikte bir gönderim anahtarı
@@ -40,6 +40,9 @@ export interface Metinler {
   evet: string;
   hayir: string;
   bosDeger: string;
+  taslakHassasNot?: string;
+  taslakGuvence?: string;
+  taslakKaydedilemedi?: string;
 }
 
 const ZAMAN_ASIMI_MS = 60_000;
@@ -66,11 +69,11 @@ export function epostaGecerli(s: string): boolean {
 }
 
 export function adNormalle(s: string): string {
-  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
-    .replace(/ı/g, 'i');
+  return s.toLocaleLowerCase('tr').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/ı/g, 'i').replace(/[^a-z0-9]/g, '');
 }
 
-function yasHesapla(tarih: string, bugun = new Date()): number | null {
+export function yasHesapla(tarih: string, bugun = new Date()): number | null {
   const d = new Date(tarih + 'T12:00:00');
   if (Number.isNaN(d.getTime())) return null;
   let yas = bugun.getFullYear() - d.getFullYear();
@@ -86,7 +89,7 @@ function uuid(): string {
   });
 }
 
-type Alan = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+export type Alan = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
 function alanlar(form: HTMLFormElement): Alan[] {
   return Array.from(form.querySelectorAll<Alan>('input[name], select[name], textarea[name]'))
@@ -154,7 +157,7 @@ function tumHatalariTemizle(form: HTMLFormElement) {
 }
 
 /** Tek alanı doğrular; hata metni döner (yoksa null). */
-function alanDogrula(form: HTMLFormElement, alan: Alan, veriler: Veriler, m: Metinler): string | null {
+export function alanDogrula(form: HTMLFormElement, alan: Alan, veriler: Veriler, m: Metinler): string | null {
   if (alan.disabled) return null;
   const ad = alan.name;
   const tur = alan.dataset.tur;
@@ -205,14 +208,23 @@ function kosullariUygula(form: HTMLFormElement) {
 
 function kaydirmaKilidiKur(form: HTMLFormElement) {
   form.querySelectorAll<HTMLElement>('[data-kaydir]').forEach((kutu) => {
+    if (kutu.dataset.kilitKurulu) { kutu.dispatchEvent(new Event('scroll')); return; }
+    kutu.dataset.kilitKurulu = '1';
     const kilit = form.querySelector<HTMLInputElement>(`[data-kaydir-kilit="${kutu.id}"]`);
     if (!kilit) return;
     const not = form.querySelector<HTMLElement>(`[data-kaydir-not="${kutu.id}"]`);
     const kontrol = () => {
+      if (!kutu.clientHeight) return;
       const sonda = kutu.scrollHeight - kutu.scrollTop - kutu.clientHeight < 24 || kutu.scrollHeight <= kutu.clientHeight + 4;
-      if (sonda) {
-        kilit.disabled = false; kutu.dataset.okundu = '1';
-        if (not) not.hidden = true;
+      // Kayıtta yeniden taşan kutu kilitlenir; ihtidada okuma kararı korunur.
+      const okundu = sonda || (form.dataset.form !== 'kayit' && kutu.dataset.okundu === '1');
+      const degisti = kilit.disabled === okundu;
+      kilit.disabled = !okundu; kutu.dataset.okundu = okundu ? '1' : '';
+      if (!okundu) kilit.checked = false;
+      if (not) not.hidden = okundu;
+      if (degisti) {
+        if (okundu) { kilit.removeAttribute('aria-invalid'); kilit.closest('[data-alan]')?.classList.add('okuma-tamam'); }
+        form.dispatchEvent(new CustomEvent('form:okuma'));
       }
     };
     kilit.disabled = kutu.dataset.okundu !== '1';
@@ -220,6 +232,12 @@ function kaydirmaKilidiKur(form: HTMLFormElement) {
     // Kutu görünür olunca (ör. sekme dönüşü) ölç; görünmezken clientHeight 0 → yanlış açılmasın.
     const ilk = () => { if (kutu.clientHeight > 0) kontrol(); };
     requestAnimationFrame(ilk);
+    if (typeof ResizeObserver === 'function') {
+      const gozlemci = new ResizeObserver(ilk);
+      gozlemci.observe(kutu);
+      Array.from(kutu.children).forEach((el) => gozlemci.observe(el));
+    }
+    window.addEventListener('resize', ilk);
     kilit.closest('[data-alan]')?.addEventListener('click', () => {
       if (kilit.disabled) { kutu.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'center' }); not?.classList.add('dikkat'); }
     });
@@ -241,16 +259,20 @@ function taslakOku(anahtar: string): Taslak | null {
   } catch { return null; }
 }
 
-function taslakYaz(anahtar: string, form: HTMLFormElement, gonderimAnahtari: string) {
+function hassasAlan(ad: string): boolean {
+  return ad.startsWith('onay.') || ad === 'saglik.not' || ad.startsWith('gorsel.') || ad === 'kimlik.on' || ad === 'kimlik.arka';
+}
+
+function taslakYaz(anahtar: string, form: HTMLFormElement, gonderimAnahtari: string): boolean {
   const alanlarKayit: Record<string, string> = {};
   for (const a of alanlar(form)) {
-    if (a.name.startsWith('onay.')) continue;                         // onaylar saklanmaz
+    if (hassasAlan(a.name) || a.type === 'file') continue;
     if (a.disabled) continue;                                          // gizli koşullu blok (ör. sağlık notu) taslağa yazılmaz
     if (a instanceof HTMLInputElement && a.type === 'radio') { if (a.checked) alanlarKayit[a.name] = a.value; continue; }
     if (a instanceof HTMLInputElement && a.type === 'checkbox') { alanlarKayit[a.name] = a.checked ? '1' : ''; continue; }
     alanlarKayit[a.name] = a.value;
   }
-  try { localStorage.setItem(anahtar, JSON.stringify({ surum: 2, zaman: Date.now(), anahtar: gonderimAnahtari, alanlar: alanlarKayit } satisfies Taslak)); } catch { /* özel mod vb. */ }
+  try { localStorage.setItem(anahtar, JSON.stringify({ surum: 2, zaman: Date.now(), anahtar: gonderimAnahtari, alanlar: alanlarKayit } satisfies Taslak)); return true; } catch { return false; }
 }
 
 export function alanlariDoldur(form: HTMLFormElement, degerler: Record<string, string>) {
@@ -321,9 +343,13 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   // Taslak
   const taslak = taslakOku(taslakAnahtari);
   if (taslak) {
-    alanlariDoldur(form, taslak.alanlar);
+    alanlariDoldur(form, Object.fromEntries(Object.entries(taslak.alanlar).filter(([ad]) => !hassasAlan(ad))));
     gonderimAnahtari = taslak.anahtar || gonderimAnahtari;
     if (taslakNotu) taslakNotu.hidden = false;
+    const bilgi = taslakNotu?.querySelector<HTMLElement>('[data-taslak-metin]');
+    if (bilgi) bilgi.textContent = `${m.taslakGeriYuklendi} ${new Intl.DateTimeFormat(form.dataset.dil, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).format(taslak.zaman)}. ${m.taslakHassasNot ?? ''}`;
+    // Eski taslakta kalmış hassas alanları da cihazdan kaldır.
+    taslakYaz(taslakAnahtari, form, gonderimAnahtari);
   }
   sayaclariKur(form);
   form.querySelector<HTMLButtonElement>('[data-taslak-sil]')?.addEventListener('click', () => {
@@ -375,6 +401,8 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       hataYaz(form, hedef.name, h);
     }
     ozetGuncelle();
+    window.clearTimeout(zamanlayici);
+    if (!form.hidden) zamanlayici = window.setTimeout(() => taslakYaz(taslakAnahtari, form, gonderimAnahtari), 400);
   });
   form.addEventListener('focusout', (e) => {
     const hedef = e.target as Alan;
@@ -452,9 +480,12 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
       mesajGoster(m.hata.formHatali, 'hata', false);
       return;
     }
-    if (!navigator.onLine) { mesajGoster(m.hata.cevrimdisi); return; }
+    const kaydedildi = taslakYaz(taslakAnahtari, form, gonderimAnahtari);
+    const guvence = kaydedildi ? m.taslakGuvence : m.taslakKaydedilemedi;
+    const gonderimHatasi = (metin: string) => mesajGoster([metin, guvence].filter(Boolean).join(' '));
+    if (!navigator.onLine) { gonderimHatasi(m.hata.cevrimdisi); return; }
 
-    const govde = { ...sec.govde(veriler), tur: form.dataset.form, sir: form.dataset.sir, formSurumu: 2, dil: form.dataset.dil, gonderimAnahtari };
+    const govde = { ...sec.govde(veriler), tur: form.dataset.form, sir: form.dataset.sir, formSurumu: form.dataset.form === 'kayit' ? 3 : 2, dil: form.dataset.dil, gonderimAnahtari };
     gonderiliyor = true;
     window.clearTimeout(zamanlayici);
     if (taslakSilDugme) taslakSilDugme.disabled = true;
@@ -481,18 +512,18 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
         body: JSON.stringify(govde),
       });
       const metin = await yanit.text();
-      let sonuc: { ok?: boolean; ref?: string; hata?: string; tekrar?: boolean } = {};
+      let sonuc: { ok?: boolean; ref?: string; hata?: string; tekrar?: boolean; kopyaGitti?: boolean } = {};
       try { sonuc = JSON.parse(metin); } catch { sonuc = { ok: false, hata: 'yanit-json-degil' }; }
       if (!yanit.ok || !sonuc.ok || !sonuc.ref) {
-        mesajGoster(doldur(m.hata.sunucu, { kod: sonuc.hata || String(yanit.status) }));
+        gonderimHatasi(doldur(m.hata.sunucu, { kod: sonuc.hata || String(yanit.status) }));
         return;
       }
       window.clearTimeout(zamanlayici);
       try { localStorage.removeItem(taslakAnahtari); } catch { /* yok say */ }
       sec.basarida?.(veriler, sonuc.ref);
-      basariGoster(form, sonuc.ref, String(deger(veriler, form.dataset.epostaAlani || '') ?? ''), m);
+      basariGoster(form, sonuc.ref, String(deger(veriler, form.dataset.epostaAlani || '') ?? ''), m, sonuc.kopyaGitti);
     } catch (err) {
-      mesajGoster((err as Error)?.name === 'AbortError' ? m.hata.zamanAsimi : m.hata.ag);
+      gonderimHatasi((err as Error)?.name === 'AbortError' ? m.hata.zamanAsimi : m.hata.ag);
     } finally {
       gonderiliyor = false;
       if (taslakSilDugme) taslakSilDugme.disabled = false;
@@ -504,16 +535,17 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   return { dogrulaBolum };
 }
 
-function basariGoster(form: HTMLFormElement, ref: string, eposta: string, m: Metinler) {
+function basariGoster(form: HTMLFormElement, ref: string, eposta: string, m: Metinler, kopyaGitti?: boolean) {
   const panel = document.querySelector<HTMLElement>('[data-basari]');
   if (!panel) return;
   panel.querySelectorAll<HTMLElement>('[data-ref]').forEach((el) => { el.textContent = ref; });
   const ep = panel.querySelector<HTMLElement>('[data-eposta-metin]');
-  if (ep) ep.textContent = doldur(m.basari.epostaGitti, { eposta });
+  if (ep) ep.textContent = kopyaGitti === false && m.basari.epostaGitmedi ? m.basari.epostaGitmedi : doldur(m.basari.epostaGitti, { eposta });
   form.hidden = true;
   document.querySelectorAll<HTMLElement>('[data-form-ust]').forEach((el) => { el.hidden = true; });
   panel.hidden = false;
   panel.setAttribute('tabindex', '-1');
   panel.scrollIntoView({ behavior: AZALTILMIS_HAREKET ? 'auto' : 'smooth', block: 'start' });
   panel.focus({ preventScroll: true });
+  form.dispatchEvent(new CustomEvent('form:basari'));
 }

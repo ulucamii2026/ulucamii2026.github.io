@@ -96,11 +96,14 @@ const ETIKET = {
   dil: { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce', ar: 'Arapça' },
   medeni: { bekar: 'Bekâr', evli: 'Evli', dul: 'Dul', bosanmis: 'Boşanmış' },
   kurs: { yeni: 'Yeni kayıt', devam: 'Devam eden öğrenci' },
+  // 13 Eyl 2026: Defterdeki sabit kimlik durumları açık etiketle gösterilir.
+  kimlik: { 'yüklendi (ön)': 'Yüklendi (ön)', 'yüklendi (ön+arka)': 'Yüklendi (ön+arka)', 'e-posta ile gelecek': 'Bekleniyor: e-posta', 'whatsapp ile gelecek': 'Bekleniyor: WhatsApp', 'elden gösterilecek': 'Bekleniyor: elden' },
 };
 const SUTUN_ETIKETI = [
   [/^cinsiyet$/i, 'cinsiyet'], [/yakınlığı/i, 'yakinlik'], [/dili$/i, 'dil'], [/medeni/i, 'medeni'],
   [/^kurs durumu$/i, 'kurs'], [/öğrenim/i, 'ogrenim'], [/önceki din/i, 'oncekiDin'],
   [/rızası$|izni$|^açık rıza$/i, 'evet'],
+  [/^kimlik belgesi$/i, 'kimlik'],
 ];
 const etiketle = (baslik, ham) => {
   const e = SUTUN_ETIKETI.find(([re]) => re.test(String(baslik).trim()));
@@ -672,6 +675,7 @@ function gruplaSurumler(v) {
 const grupSayisi = (v) => gruplaSurumler(v).length;
 
 function basvuruCiz() {
+  // 13 Eyl 2026: Kayıtta teslim rozeti ve yalnız yüklenmiş kimliğe etkin görüntüleme düğmesi ekler.
   rozetleriYaz();
   const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
   const liste = $('basvuru-liste');
@@ -687,6 +691,7 @@ function basvuruCiz() {
   const b = v.basliklar;
   const iZaman = sut(b, 'zaman damgası', 'zaman'), iRef = sut(b, 'referans'), iDurum = sut(b, 'durum'), iPdf = sut(b, 'pdf bağlantısı', 'pdf');
   const iSaglik = aktifTur === 'kayit' ? sut(b, 'sağlık notu') : -1;
+  const iKimlik = aktifTur === 'kayit' ? sut(b, 'kimlik belgesi') : -1;
   const iAd = aktifTur === 'kayit' ? sut(b, 'öğrenci adı', 'adı') : sut(b, 'adı soyadı', 'adı');
   const iSoyad = aktifTur === 'kayit' ? sut(b, 'öğrenci soyadı', 'soyadı') : -1;
   const iTel = aktifTur === 'kayit' ? sut(b, 'veli cep', 'cep', 'telefon') : sut(b, 'telefon', 'cep');
@@ -710,9 +715,12 @@ function basvuruCiz() {
        vermiyordu; kaçıncı sürüm olduğunu söylemek daha faydalı. */
     const rozetMetni = duzeltildi ? (refSurum(al(r, iRef)) + '. sürüm · düzeltildi') : sorun ? durumOzet(durum) : yeni ? 'Yeni' : '';
     const tel = al(r, iTel), pdf = al(r, iPdf), eposta = al(r, iEposta);
+    const kimlikDurumu = al(r, iKimlik);
+    const kimlikYuklendi = kimlikDurumu.startsWith('yüklendi');
     const bilgiler = [];
     if (al(r, iZaman)) bilgiler.push(`<span>${kacir(tarihSadelestir(al(r, iZaman)))}</span>`);
     if (aktifTur === 'kayit') {
+      if (kimlikDurumu) bilgiler.push(`<span class="rozet-durum kimlik-rozet" title="${kacir(etiketle('Kimlik belgesi', kimlikDurumu))}">Kimlik: ${kacir(kimlikYuklendi ? 'yüklendi' : etiketle('Kimlik belgesi', kimlikDurumu))}</span>`);
       if (al(r, iVeli)) bilgiler.push(`<span>Veli: <b>${kacir(al(r, iVeli))}</b></span>`);
       const okul = [al(r, iOkul), al(r, iSinif)].filter(Boolean).join(' · ');
       if (okul) bilgiler.push(`<span>${kacir(okul)}</span>`);
@@ -725,6 +733,7 @@ function basvuruCiz() {
     if (tel) bilgiler.push(`<span>☎ <b>${kacir(telefonBicim(tel))}</b></span>`);
     if (iSaglik >= 0 && al(r, iSaglik)) bilgiler.push('<span class="saglik">Sağlık notu var</span>');
     const araclar = [];
+    if (aktifTur === 'kayit') araclar.push(`<button class="dugme" type="button" data-kayit-kimlik="${kacir(al(r, iRef))}" aria-label="${kacir(ad)} — kimlik belgesini görüntüle" title="${kimlikYuklendi ? 'Kimlik belgesini yeni sekmede görüntüle' : 'Görüntülenecek kimlik belgesi yüklenmedi'}"${kimlikYuklendi && /^UC-\d{4}-\d{4}$/.test(al(r, iRef)) ? '' : ' disabled'}>Kimlik</button>`);
     if (tel) {
       const e164 = telefonE164(tel);
       araclar.push(`<a class="dugme" href="tel:${kacir(e164)}">Ara</a>`);
@@ -776,6 +785,7 @@ function basvuruCiz() {
   liste.querySelectorAll('[data-ihtida-paket]').forEach((d) => d.addEventListener('click', () => ek9Uretimi(d)));
   liste.querySelectorAll('[data-paket-durum]').forEach((d) => d.addEventListener('click', () => paketDurumAc(d.dataset.paketDurum)));
   liste.querySelectorAll('[data-belgeler]').forEach((d) => d.addEventListener('click', () => ihtidaBelgeleriAc(d)));
+  liste.querySelectorAll('[data-kayit-kimlik]').forEach((d) => d.addEventListener('click', () => kayitKimlikAc(d)));
   liste.querySelectorAll('[data-dilekce]').forEach((d) => d.addEventListener('click', () => dilekceUretimi(d)));
   liste.querySelectorAll('[data-ek10]').forEach((d) => d.addEventListener('click', () => ek10Uretimi(d)));
   liste.querySelectorAll('[data-pdf]').forEach((d) => d.addEventListener('click', () => formPdfAc(d)));
@@ -1221,6 +1231,52 @@ async function ek10Uretimi(dugme) {
 /* v23 (8 Eylül 2026): başvuranın yüklediği vesikalık ile kimlik belgesinin ön/arka yüzü.
    Bunlar Müşavirlikte tutulacak resmî dosya içindir; panelde ayrı bir sekmede açılıp basılır.
    Görüntüler indirilmez, yalnız gösterilir — kopyaları yönetici cihazına dağılmasın. */
+async function kayitKimlikAc(dugme) {
+  // 13 Eyl 2026: Sekme tıklama anında açılır; kimlik yalnız görüntülenir, önbelleğe/cihaza indirilmez.
+  const ref = dugme.dataset.kayitKimlik;
+  if (!/^UC-\d{4}-\d{4}$/.test(ref)) return;
+  const pencere = window.open('', '_blank');
+  if (!pencere) { alert('Tarayıcı yeni sekmeyi engelledi. Açılır pencerelere izin verip tekrar deneyin.'); return; }
+  pencere.opener = null;
+  const doc = pencere.document;
+  doc.write('<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kimlik belgesi</title></head><body class="kayit-kimlik-gorunum"><main><h1></h1><p role="status" aria-live="polite">Kimlik belgesi yükleniyor…</p><div class="kimlik-gorseller"></div><p class="kimlik-aciklama">Yalnız görüntüleme içindir. Kopyaların cihazlara dağılmaması için belgeyi indirmeyin. İşiniz bitince bu sekmeyi kapatın.</p></main></body></html>');
+  doc.close();
+  // 13 Eyl 2026: Boş sekmede ek ağ isteğine bağlı kalmadan panelin yüklenmiş aynı kökenli stilini paylaşır.
+  const panelStili = Array.from(document.styleSheets).find(s => s.href === new URL('/admin/panel.css', location.href).href);
+  if (panelStili) {
+    const stil = doc.createElement('style');
+    stil.textContent = Array.from(panelStili.cssRules).filter(kural => kural.type !== CSSRule.FONT_FACE_RULE).map(kural => kural.cssText).join('\n');
+    doc.head.append(stil);
+    for (const font of document.fonts) if (font.status === 'loaded') doc.fonts.add(font);
+  }
+  doc.querySelector('h1').textContent = ref + ' — kimlik belgesi';
+  doc.title = ref + ' — kimlik belgesi';
+  const eskiMetin = dugme.textContent;
+  dugme.disabled = true;
+  dugme.textContent = 'Yükleniyor…';
+  try {
+    if (!SIRLAR || !SIRLAR.gas) throw new Error('Erişim paketi eksik. Yeniden giriş yapın.');
+    const j = await gasIstek('kayit-belge', { ref });
+    if (pencere.closed) return;
+    if (!j.ok) throw new Error(j.hata === 'yetki' ? 'Oturum yetkisi doğrulanamadı. Yeniden giriş yapın.' : 'Kimlik belgesi alınamadı. Panelden tekrar deneyin.');
+    const parcalar = [['Ön yüz', j.on], ['Arka yüz', j.arka]];
+    let adet = 0;
+    for (const [ad, veri] of parcalar) {
+      if (!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(String(veri || ''))) continue;
+      const figure = doc.createElement('figure'), caption = doc.createElement('figcaption'), img = doc.createElement('img');
+      caption.textContent = ad; img.alt = 'Kimlik belgesi — ' + ad.toLocaleLowerCase('tr'); img.src = veri; img.draggable = false;
+      figure.append(caption, img); doc.querySelector('.kimlik-gorseller').append(figure); adet++;
+    }
+    const okunamayan = Array.isArray(j.okunamayan) ? j.okunamayan : [];
+    doc.querySelector('[role="status"]').textContent = (adet ? 'Kimlik belgesi görüntüleniyor.' : 'Görüntülenecek belge bulunamadı; kaldırılmış olabilir.') + (okunamayan.length ? ' Bazı dosyalar okunamadı: ' + okunamayan.map(u => String(u.dosya) + ' (' + String(u.neden) + ')').join(', ') : '');
+  } catch (hata) {
+    if (!pencere.closed) { doc.querySelector('[role="status"]').textContent = hata.message || 'Belge yüklenemedi. Panelden tekrar deneyin.'; doc.querySelector('[role="status"]').setAttribute('role', 'alert'); }
+  } finally {
+    dugme.disabled = false;
+    dugme.textContent = eskiMetin;
+  }
+}
+
 async function ihtidaBelgeleriAc(dugme) {
   const ref = dugme.dataset.belgeler;
   const eskiMetin = dugme.textContent;

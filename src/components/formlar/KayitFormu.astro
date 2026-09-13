@@ -1,21 +1,17 @@
 ---
-/** Kur'an kursu kayıt formu (v2, 30 Ağustos 2026) — tek sayfa, yedi bölüm, sunucu tarafı PDF.
-    Kimlik numarası, kimlik kopyası, fotoğraf ve imza kanvası YOK (Belçika: 8 Ağu 1983 Kanunu md. 8;
-    APD eID rehberi). Metinler src/i18n/formlar, davranış src/scripts/kayit-form.ts. */
+/** Kayıt v3 — tek sayfa, sekiz bölüm; açık rızayla kimlik ön/arka görseli.
+    Kimlik numarası, OCR, vesikalık ve imza kanvası yok. */
 import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
 import okulVerisi from '../../data/okullar.json';
 
-interface Props { dil: Dil; uc: string; eposta: string; telefon: string }
-const { dil, uc, eposta, telefon } = Astro.props;
+interface Props { dil: Dil; uc: string; eposta: string; telefon: string; whatsapp: string }
+const { dil, uc, eposta, telefon, whatsapp } = Astro.props;
 const m = formMetinleri(dil);
 const k = m.kayit, o = m.ortak;
-
-const bugun = new Date();
-const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
-const dogumMin = tarihStr(new Date(bugun.getFullYear() - 18, bugun.getMonth(), bugun.getDate()));
-const dogumMax = tarihStr(new Date(bugun.getFullYear() - 4, bugun.getMonth(), bugun.getDate()));
+const v3 = k.v3;
+const bolumler = Object.entries(v3.cipler);
 
 const okullar = okulVerisi.okullar as Array<{ ad: string; grup: 'marche' | 'cevre'; tur: 'fondamental' | 'secondaire' }>;
 type Sinif = { v: string; tr: string; fr: string; en: string };
@@ -26,20 +22,31 @@ const sinifJson = JSON.stringify({
   diger: k.okul.diger, onceOkul: k.okul.onceOkul,
 });
 const metinJson = JSON.stringify({
-  hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: o.basari.epostaGitti },
+  hata: o.hata, basari: { gonderiliyor: v3.gonderiliyor, epostaGitti: o.basari.epostaGitti, epostaGitmedi: v3.epostaGitmedi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
+  taslakHassasNot: v3.taslakNot, taslakGuvence: v3.guvence, taslakKaydedilemedi: v3.kaydedilemedi,
 });
 ---
 <div class="ucf-giris" data-form-ust>
   <p>{k.giris}</p>
-  <p class="ucf-sure"><span aria-hidden="true">⏱</span> {k.sureNotu}</p>
+  <p class="ucf-sure"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 6v6l4 2" /></svg> {k.sureNotu}</p>
+  <p class="ucf-sure">{v3.giris}</p>
 </div>
 
 <form class="ucf mt-8" data-form="kayit" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-KAYIT-2026"
       data-taslak="ulucamii:kayit:v2" data-eposta-alani="veli.eposta" data-evet={o.evet} data-hayir={o.hayir}
+      data-whatsapp={whatsapp}
       novalidate autocomplete="on" aria-describedby="k-giris-not">
   <script is:inline type="application/json" data-metin set:html={metinJson} />
   <script is:inline type="application/json" data-siniflar set:html={sinifJson} />
+  <script is:inline type="application/json" data-kayit-metin set:html={JSON.stringify(v3)} />
+  <script is:inline type="application/json" data-belge-metin set:html={JSON.stringify(m.ihtida.belgeler)} />
+  <nav id="k-ilerleme" aria-label={v3.ray}>
+    <p data-ilerleme-metin>{doldur(v3.bolum, { n: 1, ad: v3.cipler.ogrenci, yuzde: 0 })}</p>
+    <ol>{bolumler.map(([id, ad], i) => <li><a href={`#b-${id}`}><span data-cip-no aria-hidden="true">{i + 1}</span>{ad}</a></li>)}</ol>
+    <div class="k-ilerleme-cubuk" role="progressbar" aria-label={v3.ray} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+    <p class="k-tesvik" data-tesvik aria-live="polite"></p>
+  </nav>
 
   <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
   <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
@@ -48,8 +55,8 @@ const metinJson = JSON.stringify({
   </div>
 
   <div class="ucf-taslak" data-taslak-not hidden>
-    <span>{o.taslakGeriYuklendi}</span>
-    <button type="button" data-taslak-sil>{o.taslakSil}</button>
+    <span data-taslak-metin>{o.taslakGeriYuklendi}</span>
+    <button type="button" data-taslak-sil>{v3.temizle}</button>
   </div>
   <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
 
@@ -60,12 +67,12 @@ const metinJson = JSON.stringify({
     <div class="ucf-izgara">
       <div data-alan>
         <label for="k-ad">{k.ogrenci.ad} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="k-ad" name="ogrenci.ad" type="text" required maxlength="60" autocomplete="off" autocapitalize="words" />
+        <input id="k-ad" name="ogrenci.ad" type="text" required maxlength="60" autocomplete="section-ogrenci given-name" autocapitalize="words" />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>
         <label for="k-soyad">{k.ogrenci.soyad} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="k-soyad" name="ogrenci.soyad" type="text" required maxlength="60" autocomplete="off" autocapitalize="words" />
+        <input id="k-soyad" name="ogrenci.soyad" type="text" required maxlength="60" autocomplete="section-ogrenci family-name" autocapitalize="words" />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <fieldset data-alan>
@@ -78,8 +85,8 @@ const metinJson = JSON.stringify({
       </fieldset>
       <div data-alan>
         <label for="k-dogum">{k.ogrenci.dogumTarihi} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="k-dogum" name="ogrenci.dogumTarihi" type="date" required data-tur="tarih" data-yas-min="4" data-yas-max="18" min={dogumMin} max={dogumMax} />
-        <p class="yardim">{k.ogrenci.dogumTarihiYardim}</p>
+        <input id="k-dogum" name="ogrenci.dogumTarihi" type="date" required data-tur="tarih" data-yas-min="4" data-yas-max="18" autocomplete="section-ogrenci bday" />
+        <p class="yardim k-yas" data-yas-cip aria-live="polite"></p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
     </div>
@@ -177,6 +184,7 @@ const metinJson = JSON.stringify({
           <span class="secenek"><input id="k-dil-tr" type="radio" name="veli.iletisimDili" value="tr" required checked={dil === 'tr'} /><label for="k-dil-tr">{k.veli.dilTr}</label></span>
           <span class="secenek"><input id="k-dil-fr" type="radio" name="veli.iletisimDili" value="fr" checked={dil !== 'tr'} /><label for="k-dil-fr">{k.veli.dilFr}</label></span>
         </div>
+        {dil === 'en' && <p class="yardim">{v3.dilNot}</p>}
         <p class="hata" aria-live="polite" hidden></p>
       </fieldset>
     </div>
@@ -269,7 +277,7 @@ const metinJson = JSON.stringify({
           <ol>{k.kurallar.veli.map((s) => <li>{s}</li>)}</ol>
           <p class="son">{k.kurallar.kitapNotu}</p>
         </div>
-        <p class="kaydir-not" data-kaydir-not="k-kurallar-kutu"><span aria-hidden="true">↓</span> {k.kurallar.kaydirNotu}</p>
+        <div class="k-okuma-durum"><span data-okuma-yuzde aria-live="polite">{doldur(v3.okuma, { yuzde: 0 })}</span><p class="kaydir-not" data-kaydir-not="k-kurallar-kutu">{k.kurallar.kaydirNotu}</p></div>
       </div>
       <div data-alan class="tam">
         <div class="onay-kutu">
@@ -294,22 +302,58 @@ const metinJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- 7 · Özet ve gönderim -->
+  <!-- 7 · Kimlik belgesi -->
+  <section class="ucf-bolum" id="b-kimlik" aria-labelledby="h-kimlik">
+    <h2 id="h-kimlik"><span class="no">7</span>{v3.kimlik}</h2>
+    <p class="bolum-not">{v3.amac}</p>
+    <p class="bolum-not">{v3.kabul}</p>
+    <fieldset data-alan>
+      <legend>{v3.yanimda}</legend>
+      <div class="secenekler k-kimlik-secim">
+        <span class="secenek"><input id="k-kimlik-simdi" type="radio" name="kimlik.zaman" value="simdi" checked /><label for="k-kimlik-simdi">{v3.simdi}</label></span>
+        <span class="secenek"><input id="k-kimlik-sonra" type="radio" name="kimlik.zaman" value="sonra" /><label for="k-kimlik-sonra">{v3.sonra}</label></span>
+      </div>
+    </fieldset>
+    <div data-kimlik-yukleme class="ucf-izgara">
+      {([['on', 'kimlikOn', v3.on], ['arka', 'kimlikArka', v3.arka]] as const).map(([id, anahtar, ad]) => <div data-alan data-gorsel={anahtar} class="ucf-gorsel">
+        <label for={`k-g-kimlik-${id}`}>{ad}{id === 'on' && <span class="zorunlu" aria-hidden="true"> *</span>}</label>
+        <input id={`k-kimlik-${id}`} type="hidden" name={`kimlik.${id}`} value="" />
+        <div class="g-kutu"><svg data-bos width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3" /><circle cx="17" cy="21" r="4" /><path d="M10 32c1-8 13-8 14 0m5-12h8m-8 6h8m-8 6h6" /></svg></div>
+        <div class="g-eylem"><input id={`k-g-kimlik-${id}`} type="file" accept="image/*" class="sr-only" aria-describedby={`k-kimlik-${id}-durum k-kimlik-${id}-hata`} /><label class="dugme dugme-ikincil g-sec" for={`k-g-kimlik-${id}`}><span data-sec={v3.sec} data-degistir={v3.degistir}>{v3.sec}</span></label><button type="button" class="dugme dugme-ikincil" data-kaldir hidden>{v3.kaldir}</button></div>
+        <p id={`k-kimlik-${id}-durum`} class="g-durum" data-durum aria-live="polite"></p>
+        <p id={`k-kimlik-${id}-hata`} class="hata" aria-live="polite" hidden></p>
+      </div>)}
+      <p class="yardim tam">{v3.yenile}</p>
+    </div>
+    <fieldset data-alan data-kimlik-sonra hidden>
+      <legend>{v3.sonraSec} <span class="zorunlu" aria-hidden="true">*</span></legend>
+      <div class="k-kimlik-yollar">{(['eposta', 'whatsapp', 'elden'] as const).map(yol => <span class="secenek"><input id={`k-kimlik-${yol}`} type="radio" name="kimlik.sonra" value={yol} required disabled /><label for={`k-kimlik-${yol}`}>{v3[yol]}</label></span>)}</div>
+      <p class="hata" aria-live="polite" hidden></p>
+    </fieldset>
+    <div data-alan data-kimlik-riza>
+      <div class="onay-kutu"><input id="k-kimlik-riza" type="checkbox" name="onay.kimlikRiza" required /><label for="k-kimlik-riza">{v3.riza}</label></div>
+      <p class="hata" aria-live="polite" hidden></p>
+    </div>
+  </section>
+
+  <!-- 8 · Özet ve gönderim -->
   <section class="ucf-bolum" id="b-ozet" aria-labelledby="h-ozet">
-    <h2 id="h-ozet"><span class="no">7</span>{k.bolum.ozet}</h2>
+    <h2 id="h-ozet"><span class="no">8</span>{k.bolum.ozet}</h2>
     <p class="bolum-not">{o.ozetAciklama}</p>
+    <div class="k-eksikler"><p data-eksik-baslik aria-live="polite">{v3.eksikler}</p><ul data-eksikler></ul></div>
     <dl class="ozet-liste" data-ozet>
       {([
         ['ogrenci', k.ozet.ogrenci, '#b-ogrenci'], ['okul', k.ozet.okul, '#b-okul'], ['sinif', k.ozet.sinif, '#b-okul'],
         ['veli', k.ozet.veli, '#b-veli'], ['iletisim', k.ozet.iletisim, '#b-veli'], ['acil', k.ozet.acil, '#b-acil'],
         ['saglik', k.ozet.saglik, '#b-saglik'], ['goruntu', k.ozet.goruntu, '#b-saglik'], ['goruntuSosyal', k.ozet.goruntuSosyal, '#b-saglik'],
+        ['kimlik', v3.kimlik, '#b-kimlik'],
       ] as const).map(([anahtar, etiket, hedef]) => (
         <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd><span data-ozet-deger>{o.bosDeger}</span> <a href={hedef}>{o.ozetDuzenle}</a></dd></div>
       ))}
     </dl>
     <div class="ucf-not mt-5">
-      <span class="simge" aria-hidden="true">🔒</span>
-      <div><strong>{o.gizlilikKutu.baslik}</strong>{o.gizlilikKutu.metin}</div>
+      <svg class="simge" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M8 10V6a4 4 0 0 1 8 0v4" /></svg>
+      <div><strong>{o.gizlilikKutu.baslik}</strong>{v3.gizlilik}</div>
     </div>
     <div class="ucf-gonder mt-6">
       <button type="submit" class="dugme dugme-birincil">{o.gonder}</button>
@@ -318,12 +362,16 @@ const metinJson = JSON.stringify({
   </section>
 </form>
 
-<section class="ucf-basari mt-8" data-basari hidden aria-live="polite">
+<section class="ucf-basari k-basari mt-8" data-basari hidden aria-live="polite">
+  <svg class="k-buyuk-onay" width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="36" cy="36" r="32" /><path d="m21 36 10 10 21-23" /></svg>
   <h2>{o.basari.baslik}</h2>
   <div><div class="ref-etiket">{o.basari.referans}</div><div class="ref" data-ref>—</div></div>
+  <button type="button" class="dugme dugme-ikincil k-kopyala" data-ref-kopyala>{v3.kopyala}</button>
+  <p data-kopya-durum aria-live="polite"></p>
   <p data-eposta-metin></p>
   <p class="text-sm" style="color: var(--metin-2)">{o.basari.spamNotu}</p>
   <p>{k.basari.sonrakiAdimlar}</p>
+  <div class="k-sonraki"><h3>{v3.adimlar}</h3><p data-kimlik-adim></p><a class="dugme dugme-ikincil" data-kimlik-baglanti hidden></a><p class="yardim">{v3.sonradan}</p></div>
   <p class="text-sm" style="color: var(--metin-2)">{doldur(o.basari.iletisim, { eposta, telefon })}</p>
   <div class="eylemler">
     <a class="dugme dugme-birincil" href="?kardes=1" title={k.basari.kardesAciklama}>{k.basari.kardes}</a>

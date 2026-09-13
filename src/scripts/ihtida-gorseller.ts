@@ -3,7 +3,7 @@
  *
  *  Neden burada: EK-9 İhtida Belgesi bir vesikalık fotoğraf ile başvuranın imzasını taşır; belge ve
  *  ekleri hem camimizde hem T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği'nde saklanır.
- *  Bu bölüm YALNIZ ihtida formundadır — çocuk kayıt formu kimlik/görsel/imza toplamaz.
+ *  Kayıt v3 yalnız ön/arka yükleme kutularını kullanır; ihtidanın imza akışı değişmez.
  *
  *  Tasarım kararları:
  *   - Görseller tarayıcıda küçültülür (en uzun kenar 1600 px, JPEG); ağa ham fotoğraf gitmez.
@@ -124,10 +124,10 @@ interface Kutu {
   temizle(): void;
 }
 
-function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void): Kutu {
+function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelOnizleme = false): Kutu {
   const anahtar = (kap.dataset.gorsel || '') as keyof GorselPaketi;
   const dosyaGirdi = kap.querySelector<HTMLInputElement>('input[type=file]');
-  const onizleme = kap.querySelector<HTMLImageElement>('[data-onizleme]');
+  let onizleme = kap.querySelector<HTMLImageElement>('[data-onizleme]');
   const bos = kap.querySelector<HTMLElement>('[data-bos]');
   const durum = kap.querySelector<HTMLElement>('[data-durum]');
   const kaldir = kap.querySelector<HTMLButtonElement>('[data-kaldir]');
@@ -143,12 +143,24 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void): Kutu
 
   const kutu: Kutu = { anahtar, veri: '', hataYaz, temizle: () => {} };
   let islem = 0;
+  let onizlemeUrl = '';
 
   const ciz = () => {
     const varMi = !!kutu.veri;
+    if (!onizleme && varMi && ozelOnizleme) {
+      onizleme = new Image(); onizleme.dataset.onizleme = '';
+      kap.querySelector('.g-kutu')?.append(onizleme);
+    }
     if (onizleme) {
+      if (onizlemeUrl) { URL.revokeObjectURL(onizlemeUrl); onizlemeUrl = ''; }
       onizleme.hidden = !varMi;
-      if (varMi) { onizleme.src = kutu.veri; onizleme.alt = m.onizleme; } else onizleme.removeAttribute('src');
+      if (varMi) {
+        if (ozelOnizleme) {
+          const baytlar = Uint8Array.from(atob(kutu.veri.split(',')[1]), c => c.charCodeAt(0));
+          onizlemeUrl = URL.createObjectURL(new Blob([baytlar], { type: 'image/jpeg' }));
+        }
+        onizleme.src = onizlemeUrl || kutu.veri; onizleme.alt = m.onizleme;
+      } else onizleme.removeAttribute('src');
     }
     if (bos) bos.hidden = varMi;
     if (kaldir) kaldir.hidden = !varMi;
@@ -208,6 +220,16 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void): Kutu
 
   ciz();
   return kutu;
+}
+
+/** Parametreli yükleme kutuları: kayıt formunda data URL hiçbir DOM özniteliğine yazılmaz.
+ *  Küçültme, hata, kaldırma ve yarış koruması ihtidayla aynı kutuKur uygulamasıdır. */
+export function gorselKutulariniBaslat(kaplar: HTMLElement[], m: BelgeMetinleri, degisti: () => void) {
+  const kutular = kaplar.map(kap => kutuKur(kap, m, degisti, true));
+  return {
+    paket: () => Object.fromEntries(kutular.map(k => [k.anahtar, k.veri])),
+    sifirla: () => { kutular.forEach(k => k.temizle()); },
+  };
 }
 
 /* ------------------------------------------------------------------ imza kanvası */

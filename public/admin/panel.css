@@ -185,6 +185,17 @@ details.katlanir .not { margin: 0; padding: .5rem .8rem .7rem; font-size: .82rem
 .rozet-durum.sorun { background: var(--rozet-sorun-zemin); color: var(--rozet-sorun-metin); font-weight: 600; }
 .rozet-durum.duzeltme { background: var(--rozet-duzeltme-zemin); color: var(--rozet-duzeltme-metin); font-weight: 600; }
 .bkart-satir { display: flex; flex-wrap: wrap; gap: .2rem 1.1rem; margin-top: .4rem; font-size: .92rem; color: var(--metin-2); }
+/* 13 Eyl 2026: Kimlik rozeti mevcut renklerle akar; ayrı sekme yalnız okunur görsel sunar. */
+.bkart-satir .kimlik-rozet { margin-left: 0; white-space: normal; }
+.kayit-kimlik-gorunum { padding: clamp(16px, 4vw, 32px); }
+.kayit-kimlik-gorunum main { max-width: 900px; margin-inline: auto; }
+.kayit-kimlik-gorunum h1 { font-size: 1.5rem; overflow-wrap: anywhere; }
+.kayit-kimlik-gorunum [role="status"], .kayit-kimlik-gorunum [role="alert"] { overflow-wrap: anywhere; }
+.kimlik-gorseller figure { margin: 24px 0; }
+.kimlik-gorseller figcaption { font-weight: 600; margin-bottom: 8px; }
+.kimlik-gorseller img { display: block; max-width: 100%; height: auto; border: 1px solid var(--cizgi); }
+.kimlik-aciklama { margin-top: 24px; color: var(--metin-2); }
+@media print { .kayit-kimlik-gorunum .kimlik-gorseller { display: none; } }
 .bkart-satir span b { color: var(--murekkep); font-weight: 600; font-family: inherit; }
 /* Sağlık notu: öğretmenin görmesi gereken tek satır — kapalı tablonun içinde kaybolmasın */
 .bkart-satir .saglik { color: var(--rozet-yeni-metin); background: var(--rozet-yeni-zemin); padding: 0 .5rem; border-radius: 999px; font-weight: 600; font-size: .82rem; }

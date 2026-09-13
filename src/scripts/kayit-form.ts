@@ -1,5 +1,8 @@
 /** Kur'an kursu kayıt formu — form davranışı (okul→sınıf bağı, sağlık rızası, kardeş kaydı). */
 import { formuBaslat, telefonNormalle, deger, alanlariDoldur, type Veriler } from './form-cekirdek';
+import { gorselKutulariniBaslat, type BelgeMetinleri } from './ihtida-gorseller';
+import { kayitEtkilesiminiBaslat, kayitBasarisiniHazirla } from './kayit-etkilesim';
+import type { KayitV3Metinler } from '../i18n/formlar/tipler';
 
 interface SinifSecenek { v: string; ad: string }
 interface SinifVerisi { fondamental: SinifSecenek[]; secondaire: SinifSecenek[]; diger: string; onceOkul: string }
@@ -12,6 +15,50 @@ export function kayitFormuBaslat() {
   const okulSec = form.querySelector<HTMLSelectElement>('select[name="ogrenci.okul"]');
   const sinifSec = form.querySelector<HTMLSelectElement>('select[name="ogrenci.sinif"]');
   const siniflar = JSON.parse(form.querySelector('script[data-siniflar]')?.textContent || '{}') as SinifVerisi;
+  const metin = JSON.parse(form.querySelector('script[data-kayit-metin]')?.textContent || '{}') as KayitV3Metinler;
+  const belgeMetni = JSON.parse(form.querySelector('script[data-belge-metin]')?.textContent || '{}') as BelgeMetinleri;
+  const gorseller = gorselKutulariniBaslat(Array.from(form.querySelectorAll<HTMLElement>('[data-gorsel]')), belgeMetni,
+    () => {
+      form.querySelectorAll('[data-gorsel][data-dolu="1"] input[type="hidden"]').forEach(a => a.removeAttribute('aria-invalid'));
+      form.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  const kimlikYolu = () => form.querySelector<HTMLInputElement>('#k-kimlik-simdi')?.checked ? 'yukle'
+    : form.querySelector<HTMLInputElement>('input[name="kimlik.sonra"]:checked')?.value || '';
+  const kimlikDurumu = () => {
+    const yol = kimlikYolu(), simdi = yol === 'yukle';
+    for (const [secici, acik] of [['[data-kimlik-yukleme]', simdi], ['[data-kimlik-sonra]', !simdi], ['[data-kimlik-riza]', yol !== 'elden']] as const) {
+      const blok = form.querySelector<HTMLElement>(secici);
+      if (!blok) continue;
+      blok.hidden = !acik;
+      blok.querySelectorAll<HTMLInputElement>('input').forEach(a => {
+        a.disabled = !acik;
+        if (!acik) { a.removeAttribute('aria-invalid'); if (a.type === 'checkbox') a.checked = false; }
+      });
+      if (!acik) {
+        blok.querySelectorAll<HTMLElement>('.hata').forEach(h => { h.hidden = true; h.textContent = ''; });
+        blok.querySelectorAll('.alan-hatali').forEach(k => k.classList.remove('alan-hatali'));
+        blok.classList.remove('alan-hatali');
+      }
+    }
+    if (!simdi) gorseller.sifirla();
+  };
+  const kimlikHatalari = (): Array<[string, string]> => {
+    if (kimlikYolu() !== 'yukle') return [];
+    const hatalar: Array<[string, string]> = [];
+    for (const [anahtar, ad] of [['kimlikOn', 'kimlik.on'], ['kimlikArka', 'kimlik.arka']]) {
+      const kap = form.querySelector<HTMLElement>(`[data-gorsel="${anahtar}"]`);
+      if (kap?.dataset.mesgul === '1') hatalar.push([ad, belgeMetni.isleniyor]);
+      else if (anahtar === 'kimlikOn' && !gorseller.paket().kimlikOn) hatalar.push([ad, belgeMetni.hataEksik.replace('{ad}', metin.on)]);
+      else if (kap?.classList.contains('alan-hatali')) hatalar.push([ad, kap.querySelector('.hata')?.textContent || belgeMetni.hataOkunamadi]);
+    }
+    return hatalar;
+  };
+  form.addEventListener('change', kimlikDurumu);
+  form.addEventListener('reset', () => {
+    gorseller.sifirla();
+    setTimeout(() => { sinifListesiKur(false); kimlikDurumu(); }, 0);
+  });
+  kimlikDurumu();
 
   function sinifListesiKur(koru = true) {
     if (!okulSec || !sinifSec) return;
@@ -53,7 +100,7 @@ export function kayitFormuBaslat() {
       const kurallar = f.querySelector<HTMLInputElement>('input[name="onay.kurallar"]');
       if (kurallar?.disabled) hatalar.push(['onay.kurallar', m.hata.kurallarKaydir]);
       if (deger(v, 'saglik.var') === 'evet' && deger(v, 'onay.saglikRiza') !== true) hatalar.push(['onay.saglikRiza', m.hata.zorunlu]);
-      return hatalar;
+      return [...hatalar, ...kimlikHatalari()];
     },
     govde(v) {
       const o = v.ogrenci as Veriler, veli = v.veli as Veriler, acil = (v.acil ?? {}) as Veriler;
@@ -72,7 +119,8 @@ export function kayitFormuBaslat() {
         saglik: { var: saglikVar, not: saglikVar ? String(saglik.not ?? '') : '' },
         goruntuIzni: v.goruntuIzni === 'evet',
         goruntuSosyalIzni: v.goruntuSosyalIzni === 'evet',
-        onay: { kurallar: onay.kurallar === true, gizlilik: onay.gizlilik === true, saglikRiza: saglikVar ? onay.saglikRiza === true : false, elektronikImza: onay.elektronikImza },
+        kimlik: { yol: kimlikYolu(), on: kimlikYolu() === 'yukle' ? gorseller.paket().kimlikOn || '' : '', arka: kimlikYolu() === 'yukle' ? gorseller.paket().kimlikArka || '' : '' },
+        onay: { kurallar: onay.kurallar === true, gizlilik: onay.gizlilik === true, saglikRiza: saglikVar ? onay.saglikRiza === true : false, elektronikImza: onay.elektronikImza, kimlikRiza: kimlikYolu() !== 'elden' && onay.kimlikRiza === true },
       };
     },
     ozet(v, f) {
@@ -95,14 +143,21 @@ export function kayitFormuBaslat() {
         saglik: saglik.var === 'evet' ? String(saglik.not ?? '') : saglik.var === 'hayir' ? evetHayir('hayir') : '',
         goruntu: evetHayir(v.goruntuIzni),
         goruntuSosyal: evetHayir(v.goruntuSosyalIzni),
+        kimlik: kimlikYolu() === 'yukle' ? (gorseller.paket().kimlikOn ? (gorseller.paket().kimlikArka ? metin.ozetIki : metin.ozetOn) : '')
+          : ({ eposta: metin.ozetEposta, whatsapp: metin.ozetWhatsapp, elden: metin.ozetElden }[kimlikYolu()] || ''),
       };
     },
-    basarida(v) {
+    basarida(v, ref) {
       const veli = (v.veli ?? {}) as Veriler, acil = (v.acil ?? {}) as Veriler;
       const saklanacak: Record<string, string> = {};
       for (const [k, val] of Object.entries(veli)) saklanacak[`veli.${k}`] = String(val ?? '');
       for (const [k, val] of Object.entries(acil)) saklanacak[`acil.${k}`] = String(val ?? '');
       try { sessionStorage.setItem(KARDES_ANAHTARI, JSON.stringify(saklanacak)); } catch { /* yok say */ }
+      const ogrenci = (v.ogrenci ?? {}) as Veriler;
+      kayitBasarisiniHazirla(form, metin, kimlikYolu(), ref, [ogrenci.ad, ogrenci.soyad].filter(Boolean).join(' '));
+      gorseller.sifirla();
     },
   });
+  kimlikDurumu();
+  kayitEtkilesiminiBaslat(form, metin, kimlikHatalari);
 }
