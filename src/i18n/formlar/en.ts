@@ -192,7 +192,7 @@ export const en: FormMetinleri = {
     basari: {
       kardes: 'Register a sibling',
       kardesAciklama: 'Form for another child of the same parent; the parent’s details are pre-filled.',
-      sonrakiAdimlar: 'Our course team will inform you once the lesson days and groups have been finalised. Please remember to obtain the textbooks.',
+      sonrakiAdimlar: 'Our course team will contact you as soon as possible. Please remember to obtain the textbooks.',
     },
   },
 

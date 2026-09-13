@@ -192,7 +192,7 @@ export const tr: FormMetinleri = {
     basari: {
       kardes: 'Kardeş kaydı yap',
       kardesAciklama: 'Aynı velinin başka bir çocuğu için form; veli bilgileri hazır gelir.',
-      sonrakiAdimlar: 'Kurs ekibimiz ders günleri ve gruplar netleşince sizi bilgilendirecek. Ders kitaplarını temin etmeyi unutmayın.',
+      sonrakiAdimlar: 'Kurs ekibimiz en kısa sürede sizinle iletişime geçecek. Ders kitaplarını temin etmeyi unutmayın.',
     },
   },
 

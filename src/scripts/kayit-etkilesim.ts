@@ -177,6 +177,8 @@ export function kayitBasarisiniHazirla(form: HTMLFormElement, m: KayitV3Metinler
   const aciklama = panel.querySelector<HTMLElement>('[data-kimlik-adim]')!;
   aciklama.textContent = yol === 'yukle' ? m.alindi : yol === 'elden' ? m.eldenAdim : yol === 'eposta' ? m.epostaAdim : m.whatsapp;
   if (yol === 'yukle') aciklama.insertAdjacentHTML('beforeend', ONAY);
+  // Yükleme yolunda «sonradan yüklenmez» notu anlamsız; yalnız e-posta/WhatsApp/elden yollarında gösterilir.
+  panel.querySelector<HTMLElement>('[data-kimlik-sonradan]')!.hidden = yol === 'yukle';
   baglanti.hidden = !['eposta', 'whatsapp'].includes(yol);
   if (yol === 'eposta') {
     baglanti.href = `mailto:info@ulucamii.be?subject=${encodeURIComponent(doldur(m.konu, { ref }))}`; baglanti.textContent = m.epostaDugme;

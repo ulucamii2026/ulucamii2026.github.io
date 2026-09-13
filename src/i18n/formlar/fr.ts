@@ -193,7 +193,7 @@ export const fr: FormMetinleri = {
     basari: {
       kardes: 'Inscrire un frère ou une sœur',
       kardesAciklama: 'Formulaire pour un autre enfant du même parent ; les informations du parent sont préremplies.',
-      sonrakiAdimlar: 'Notre équipe pédagogique vous informera dès que les jours de cours et les groupes seront fixés. N’oubliez pas de vous procurer les manuels.',
+      sonrakiAdimlar: 'Notre équipe pédagogique vous contactera dans les plus brefs délais. N’oubliez pas de vous procurer les manuels.',
     },
   },
 
