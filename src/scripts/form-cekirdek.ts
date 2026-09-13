@@ -216,9 +216,13 @@ function kaydirmaKilidiKur(form: HTMLFormElement) {
     const kontrol = (yenidenOlc = false) => {
       if (!kutu.clientHeight) return;
       const sonda = kutu.scrollHeight - kutu.scrollTop - kutu.clientHeight < 24 || kutu.scrollHeight <= kutu.clientHeight + 4;
-      // 13 Eyl 2026: Tekrar okumak onayı silmez. Kayıtta yalnız boyut değişimi
-      // yeniden değerlendirilir; ihtidanın kalıcı okuma kararı korunur.
-      const okundu = sonda || (kutu.dataset.okundu === '1' && (form.dataset.form !== 'kayit' || !yenidenOlc));
+      // 13 Eyl 2026: Okuma kararı iki formda da KALICI. Kayıtta boyut değişiminde yeniden
+      // ölçmek (yenidenOlc) canlıda onayı siliyordu: telefon döndürme, klavye, geç yüklenen
+      // yazı tipi ya da tam sayfa ekran görüntüsü kutuyu yeniden akıtınca scrollTop sondan
+      // ayrılıyor, kutu kilitlenip işaretli onay boşalıyordu (13 Eyl canlı sınama, UC-2026-0018
+      // öncesi iki zaman aşımı). Kutu görünmezken (clientHeight 0) zaten karar verilmez.
+      void yenidenOlc;
+      const okundu = sonda || kutu.dataset.okundu === '1';
       const degisti = kilit.disabled === okundu;
       kilit.disabled = !okundu; kutu.dataset.okundu = okundu ? '1' : '';
       if (!okundu) kilit.checked = false;

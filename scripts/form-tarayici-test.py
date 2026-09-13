@@ -221,7 +221,8 @@ with sync_playwright() as p:
             pg.wait_for_timeout(150)
             pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.style.height="120px"; }')
             pg.wait_for_timeout(150)
-            kontrol('boyut değişiminde yeniden taşan kurallar onayı kilitlenir', pg.locator('#k-onay-kurallar').is_disabled() and not pg.is_checked('#k-onay-kurallar'))
+            # 13 Eylül çekirdek düzeltmesi: ekran/klavye yeniden akışı okunmuş onayı silmez.
+            kontrol('boyut değişiminde okunmuş kurallar onayı korunur', not pg.locator('#k-onay-kurallar').is_disabled() and pg.is_checked('#k-onay-kurallar'))
             pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.style.height=""; e.style.maxHeight=""; }')
             pg.wait_for_timeout(150)
             pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.scrollTop = e.scrollHeight; e.dispatchEvent(new Event("scroll")); }')
