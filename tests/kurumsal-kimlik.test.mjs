@@ -11,7 +11,7 @@ import { kimlikKaynakOku, kimlikDosyalari, kimlikDenetle, kopyaYolu, sabitYolu, 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const oku = ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8');
 const kaynak = await kimlikKaynakOku(), kimlik = kaynak.kimlik;
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v30.gs', 'veli-cuma.gs'].map(oku).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v31.gs', 'veli-cuma.gs'].map(oku).join('\n');
 function ortam() {
   const sent = [];
   const c = vm.createContext({ console: {error() {}, log() {}}, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})},
@@ -226,7 +226,7 @@ test('v29 kayıt/ihtida doğrulama, panel, saklama, kuyruk ve tekrar işlevleri 
   const eski = vm.createContext({console, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});
   vm.runInContext(oku('ulucamii-Kod-v29.gs'), eski);
   const yeni = vm.createContext({console, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});
-  vm.runInContext(oku('kimlik-sabitler.gs') + '\n' + oku('ulucamii-Kod-v30.gs'), yeni);
+  vm.runInContext(oku('kimlik-sabitler.gs') + '\n' + oku('ulucamii-Kod-v31.gs'), yeni);
   const izinli = new Set(['pdfUst', 'kayitPostIsleV2', 'brevoGonder', 'epostaGonder', 'brevoSina', 'mailHtml', 'kopyaGonderV2', 'ihtidaKopyaGonderV2']);
   let sayi = 0;
   for (const [ad, fn] of Object.entries(eski)) {

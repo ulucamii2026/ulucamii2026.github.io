@@ -1,7 +1,7 @@
-/* ÜRETİLDİ — elle düzenleme; kaynak: D:/vektorel-calismalar/ulu-camii-kurumsal-kimlik/05-yazisma/kimlik.json; sürüm: 2026-09-13; sha256: 7c509621253747074de0bd990e8505779d77e94b0569fc88d72e902ba048b6ca */
+/* ÜRETİLDİ — elle düzenleme; kaynak: D:/vektorel-calismalar/ulu-camii-kurumsal-kimlik/05-yazisma/kimlik.json; sürüm: 2026-09-13b; sha256: 1e9faaaa9c4f0fa2b3303072fc48b4f735d80c564b08298202ea9e5a5875f024 */
 var KIMLIK = {
   "aciklama": "Ulu Camii Marche-en-Famenne — kurumsal kimliğin MAKİNE OKUNUR TEK KAYNAĞI (13 Eylül 2026). E-posta şablonu, Word antet üreticisi, imzalar ve betikler bu dosyadan okur. Değişiklik yalnız burada yapılır; kopyalar üretilir.",
-  "surum": "2026-09-13",
+  "surum": "2026-09-13b",
   "anaKaynak": "D:/vektorel-calismalar/ulu-camii-kurumsal-kimlik/05-yazisma/kimlik.json",
   "kopyalar": [
     "D:/app/ulucamii-site/src/data/kurumsal-kimlik.json"
@@ -103,17 +103,6 @@ var KIMLIK = {
     },
     "telefonlar": [
       {
-        "kimlik": "dinGorevlisi",
-        "etiket": {
-          "tr": "Din görevlisi",
-          "fr": "Imam",
-          "en": "Imam"
-        },
-        "goster": "+32 471 79 46 82",
-        "e164": "+32471794682",
-        "whatsapp": true
-      },
-      {
         "kimlik": "cami",
         "etiket": {
           "tr": "Cami",
@@ -127,7 +116,6 @@ var KIMLIK = {
     ],
     "eposta": {
       "genel": "info@ulucamii.be",
-      "dinGorevlisi": "imam@ulucamii.be",
       "yanit": "info@ulucamii.be",
       "kayitKopyasi": "info@ulucamii.be"
     },
@@ -149,7 +137,13 @@ var KIMLIK = {
       "iban": "BE02 7320 0173 5240",
       "bic": "CREGBEBB",
       "hesapAdi": "Communauté Turque de la Mosquée"
-    }
+    },
+    "not": "Rıdvan'ın 13 Eyl 2026 kararı: kurumsal iletişim bloğunda din görevlisi adı/etiketi ve telefonu YER ALMAZ; yalnız adres, info@, cami telefonu, web."
+  },
+  "dahili": {
+    "aciklama": "Gösterilmeyen işletim alanları: iletişim bloğuna, imzaya, antete girmez.",
+    "kayitWhatsappE164": "+32471794682",
+    "kayitWhatsappNot": "Kayıt formunun «kimlik kopyasını WhatsApp ile gönder» yolu (Apps Script DIN_GOREVLISI_WHATSAPP). Yalnız o akışta kullanılır."
   },
   "gorunum": {
     "ortakRenk": {
@@ -233,19 +227,19 @@ var KIMLIK = {
         "tr": [
           "Ulu Camii Kur’an Kursu · Marche-en-Famenne",
           "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-          "info@ulucamii.be · Din görevlisi: +32 471 79 46 82 · Cami: +32 472 98 50 73",
+          "info@ulucamii.be · Tel.: +32 472 98 50 73",
           "www.ulucamii.be"
         ],
         "fr": [
           "École coranique Ulu Camii · Marche-en-Famenne",
           "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-          "info@ulucamii.be · Imam : +32 471 79 46 82 · Mosquée : +32 472 98 50 73",
+          "info@ulucamii.be · Tél. : +32 472 98 50 73",
           "www.ulucamii.be"
         ],
         "en": [
           "Ulu Camii Qur’an School · Marche-en-Famenne",
           "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-          "info@ulucamii.be · Imam: +32 471 79 46 82 · Mosque: +32 472 98 50 73",
+          "info@ulucamii.be · Tel.: +32 472 98 50 73",
           "www.ulucamii.be"
         ]
       },
@@ -253,19 +247,19 @@ var KIMLIK = {
         "tr": [
           "Marche-en-Famenne Ulu Camii",
           "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-          "info@ulucamii.be · Din görevlisi: +32 471 79 46 82 · Cami: +32 472 98 50 73",
+          "info@ulucamii.be · Tel.: +32 472 98 50 73",
           "www.ulucamii.be"
         ],
         "fr": [
           "Mosquée Ulu Camii de Marche-en-Famenne",
           "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-          "info@ulucamii.be · Imam : +32 471 79 46 82 · Mosquée : +32 472 98 50 73",
+          "info@ulucamii.be · Tél. : +32 472 98 50 73",
           "www.ulucamii.be"
         ],
         "en": [
           "Marche-en-Famenne Ulu Mosque",
           "Thier des Corbeaux 14, 6900 Marche-en-Famenne",
-          "info@ulucamii.be · Imam: +32 471 79 46 82 · Mosque: +32 472 98 50 73",
+          "info@ulucamii.be · Tel.: +32 472 98 50 73",
           "www.ulucamii.be"
         ]
       }

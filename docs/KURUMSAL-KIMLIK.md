@@ -23,9 +23,9 @@ GIF/otomatik tanıtım görseli yoktur; yalnız açıkça verilen içerik görse
 `npm run eposta:onizle` → `D:/tmp/eposta-onizleme/` içinde 12 HTML.
 `node tests/kurumsal-kimlik-gorsel.mjs` → aynı yerde 84 ölçüm ve 24 ekran görüntüsü; dış istekler kesilir, logolar yerel dosyalardan karşılanır.
 `npm run test:kimlik`, `npm run test:veli-eposta`, `npm run test:ihtida` yerel sözleşme testleridir.
-`npm run ihtida:gas-derle` → `.codex/cikti/gas/ulucamii-v30.gs`; sıralama kimlik sabitleri → v30 → ortak şablon/içerik modülleridir.
+`npm run ihtida:gas-derle` → `.codex/cikti/gas/ulucamii-v31.gs`; sıralama kimlik sabitleri → v31 → ortak şablon/içerik modülleridir.
 Kayıt ve cuma göndereni kurs, ihtida ve genel yazışma göndereni cami kimliğidir. Gönderim sarmalayıcısı `kurum` seçeneğini kabul eder.
 Eski `ihtidaKopyaGonderV2` yardımcı çağrısı artık beşinci argümanda dili ister; mevcut ihtida kuyruk/teslim akışı değiştirilmemiştir.
 
-13 Eylül 2026: v29 kaynağı korunmuştur (`ulucamii-Kod-v29.gs`); v30 aynı gün `D:/tmp/gas/dagit_v30.py` ile dağıtıldı. Karar ve kurallar: hafıza `kurumsal-kimlik`, skill `ulucamii-site` «CORPORATE IDENTITY», paket `05-yazisma/YAZISMA-KILAVUZU.md`.
+13 Eylül 2026: v29 kaynağı korunmuştur (`ulucamii-Kod-v29.gs`); v30 aynı gün `D:/tmp/gas/dagit_v30.py` ile, v31 (iletişim bloğu: din görevlisi telefonu `KIMLIK.dahili`ye taşındı, imza/antetten çıktı) aynı akşam `dagit_v31.py` ile dağıtıldı. Karar ve kurallar: hafıza `kurumsal-kimlik`, skill `ulucamii-site` «CORPORATE IDENTITY», paket `05-yazisma/YAZISMA-KILAVUZU.md`.
 Test sonuçları ve kapsam dışı kalan doğrulamalar: `.codex/kimlik/codex-A.out`. Tarayıcı kontrolü gerçek Gmail/Outlook/Purelymail istemci testi değildir.
