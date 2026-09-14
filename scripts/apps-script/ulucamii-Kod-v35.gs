@@ -72,7 +72,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 34;
+var SURUM = 35;
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -103,7 +103,7 @@ function doGet(e) {
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitDuzelt: true, defterCeviri: true, veliEpostaDili: "kayit-tercihi-20260909",
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitDuzelt: true, defterCeviri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -134,6 +134,7 @@ function doPost(e) {
       return json({ ok: false, hata: "cok-buyuk" });
     }
     if (v.tur === "cevir") return cevirIsle(v);
+    if (v.tur === "ceviri-ayar") return ceviriAyarIsle(v); // v35: panel anahtarıyla çeviri ayarları
     if (v.tur === "ihtida-paket-onay") return ihtidaPaketOnayIsle(v);
     if (v.tur === "ihtida-paket-tekrar") return ihtidaPaketTekrarIsle(v);
     if (v.tur === "ihtida-defteri-guncelle") return ihtidaDefteriGuncelle(v);
@@ -2763,7 +2764,10 @@ function brevoIzin() {
    Yetki: gövdedeki Firebase kimlik belirteci Identity Toolkit'te doğrulanır, uid'nin hocalar/{uid} belgesi
    aranır (veli-mail-listesi.gs → veliPortalHttp). Çeviri LanguageApp (tr → fr). Öğrenci/veli adı istemciden
    gönderilmez. Script Properties CEVIRI_KAPALI=1 → uç kapalı (istemci yalnız kalıp cümleleri çevirir). */
-var FIREBASE_WEB_ANAHTARI = "AIzaSyDQUXxjs_SovTuAx1hyfW9nhd7bDUdcXfk"; // herkese açık web anahtarı; src/lib/firebase.ts ile aynı
+/* Firebase web anahtarı (herkese açık istemci anahtarı, src/lib/firebase.ts ile aynı) 14 Eyl 2026 (2)'den beri kodda
+   değil Script Property FIREBASE_WEB_API_KEY'de (depo gizli-anahtar kapısı «AIza…» desenini engelliyor; ceviri-ayar ucuyla
+   yazılır). Tanımsızsa hoca doğrulaması KAPALI (yetkisiz) — sessizce açık kalmaz. */
+function firebaseWebAnahtari() { return String(PropertiesService.getScriptProperties().getProperty("FIREBASE_WEB_API_KEY") || "").trim(); }
 var CEVIRI_METIN_AZAMI = 20;
 var CEVIRI_KARAKTER_AZAMI = 1800;
 function cevirIsle(v) {
@@ -2774,18 +2778,108 @@ function cevirIsle(v) {
   for (var i = 0; i < metinler.length; i++) {
     if (typeof metinler[i] !== "string" || metinler[i].length > CEVIRI_KARAKTER_AZAMI) return json({ ok: false, hata: "metin-uzunlugu" });
   }
-  if (PropertiesService.getScriptProperties().getProperty("CEVIRI_KAPALI") === "1") return json({ ok: false, hata: "ceviri-kapali" });
+  var motor = ceviriMotoru();
+  if (motor === "kapali") return json({ ok: false, hata: "ceviri-kapali" });
   if (!hocaKimligiDogrula(v.idToken)) return json({ ok: false, hata: "yetkisiz" });
+  var sonuc = motor === "gemini" ? geminiCevir(metinler, hedef) : null; // v35: önce Gemini, düşerse Google Translate
   var ceviriler = [];
+  if (sonuc) {
+    for (var g = 0; g < sonuc.ceviriler.length; g++) ceviriler.push(ceviriDuzelt(sonuc.ceviriler[g]));
+    return json({ ok: true, hedef: hedef, ceviriler: ceviriler, motor: sonuc.motor });
+  }
   for (var j = 0; j < metinler.length; j++) {
     var m = String(metinler[j]).trim();
     ceviriler.push(m ? ceviriDuzelt(LanguageApp.translate(m, "tr", hedef)) : "");
   }
-  return json({ ok: true, hedef: hedef, ceviriler: ceviriler });
+  return json({ ok: true, hedef: hedef, ceviriler: ceviriler, motor: "translate" });
 }
+/* v35 (14 Eyl 2026, 2): çeviri motoru. Birincil Gemini (dernek projesi ulucamii-portal'ın Generative Language anahtarı,
+   Script Property GEMINI_API_KEY; model listesi CEVIRI_MODEL, virgülle), her model sırayla denenir; hepsi düşerse
+   Google Translate (LanguageApp). CEVIRI_MOTOR=translate yalnız Google Translate; CEVIRI_KAPALI=1 tümü kapalı.
+   Öğrenci/veli adları istemcide [[n]] yer tutucusuna çevrilmiş gelir; motor bunları korur. */
+var CEVIRI_MODELLER_VARSAYILAN = "gemini-3.5-flash-lite,gemini-3.6-flash"; // 14 Eyl 2026 canlı ölçüm: lite 1 s, temiz tipografi, kotası geniş; 3.6-flash virgül/nokta önüne boşluk + yazım hatası + 429
+var CEVIRI_ISTEM = "You translate short notes written in Turkish by a Qur'an course teacher, addressed to the child's parents. Output: French as used in Belgium — warm, simple, natural sentences. Address the parents with « vous ». The child's gender is unknown: whenever the Turkish subject is the child, write « votre enfant » as the subject (repeating it is fine) with the ordinary grammatical agreement of the noun « enfant » (e.g. « votre enfant est arrivé », « votre enfant était absent »); never use « il », « elle », « lui » for the child; never use inclusive forms such as « arrivé·e », « venu(e) » or « joyeux ou joyeuse ». When natural, prefer constructions that avoid agreement (« a fait preuve de », « a bien travaillé », nouns). Requests to the parents become « Merci de … » or « Veuillez … ». Placeholders of the form [[1]], [[2]] stand for names: copy them exactly as written, without adding spaces. Any person name written in the text is copied unchanged; never replace a name with a placeholder and never invent placeholders. Islamic terms follow Diyanet French usage: le Coran, la sourate, le prophète Muhammad (never Mahomet or Muhammed), les ablutions (abdest), les obligations (farz), la prière (namaz, salât), al-hamdulillah, l'Elifbâ. Do not add, omit or soften information; keep the number of sentences per item. Typography: a space before ; : ! ? but never before , or . Return ONLY a JSON array of strings, same length and order as the input array.";
+/* v35 (14 Eyl 2026, 2): çeviri ayarları ucu — POST { tur: "ceviri-ayar", anahtar: PANEL_ANAHTARI, ayarlar: {...} }.
+   Neden: Apps Script ayar ekranı 50'den fazla Script Property olunca «düzenle» düğmesini kaldırıyor (veli-cuma'nın
+   çeviri önbelleği VELI_CUMA_FR_* ve gönderim durumları VELI_CUMA_GONDERIM_* sayıyı aştı). Yalnız dört çeviri ayarı
+   yazılır/silinir (boş dize = sil); GEMINI_API_KEY geri okunmaz, yalnız «var/yok» döner. Panel anahtarı Script
+   Properties'te tanımlı değilse uç kapalıdır. FIREBASE_WEB_API_KEY (herkese açık web anahtarı) de buradan yazılır. */
+var CEVIRI_AYARLARI = { GEMINI_API_KEY: "gizli", CEVIRI_MOTOR: "acik", CEVIRI_MODEL: "acik", CEVIRI_KAPALI: "acik", FIREBASE_WEB_API_KEY: "acik" };
+function ceviriAyarIsle(v) {
+  if (PANEL.anahtar === "SCRIPT-PROPERTIES-ICINDE" || !v.anahtar || String(v.anahtar) !== PANEL.anahtar) return json({ ok: false, hata: "yetkisiz" });
+  var p = PropertiesService.getScriptProperties();
+  var istenen = v.ayarlar && typeof v.ayarlar === "object" ? v.ayarlar : {};
+  var adlar = Object.keys(istenen);
+  for (var i = 0; i < adlar.length; i++) {
+    if (!Object.prototype.hasOwnProperty.call(CEVIRI_AYARLARI, adlar[i])) return json({ ok: false, hata: "ayar-gecersiz", ad: adlar[i] });
+    var d = istenen[adlar[i]];
+    if (d !== null && d !== "" && (typeof d !== "string" || d.length > 512)) return json({ ok: false, hata: "deger-gecersiz", ad: adlar[i] });
+  }
+  var yazilan = [];
+  for (var j = 0; j < adlar.length; j++) {
+    var deger = istenen[adlar[j]];
+    if (deger === null || deger === "") p.deleteProperty(adlar[j]); else p.setProperty(adlar[j], deger);
+    yazilan.push(adlar[j]);
+  }
+  var durum = {};
+  for (var ad in CEVIRI_AYARLARI) { var mevcut = p.getProperty(ad); durum[ad] = CEVIRI_AYARLARI[ad] === "gizli" ? (mevcut ? "var" : "yok") : (mevcut || ""); }
+  return json({ ok: true, yazilan: yazilan, ayarlar: durum, motor: ceviriMotoru() });
+}
+function ceviriMotoru() {
+  var p = PropertiesService.getScriptProperties();
+  if (p.getProperty("CEVIRI_KAPALI") === "1") return "kapali";
+  var m = p.getProperty("CEVIRI_MOTOR") || "";
+  if (m === "translate") return "translate";
+  return p.getProperty("GEMINI_API_KEY") ? "gemini" : "translate";
+}
+function geminiCevir(metinler, hedef) {
+  var p = PropertiesService.getScriptProperties();
+  var anahtar = p.getProperty("GEMINI_API_KEY");
+  if (!anahtar) return null;
+  var modeller = String(p.getProperty("CEVIRI_MODEL") || CEVIRI_MODELLER_VARSAYILAN).split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+  var govde = {
+    systemInstruction: { parts: [{ text: CEVIRI_ISTEM }] }, // hedef yalnız 'fr' (cevirIsle denetler)
+    contents: [{ role: "user", parts: [{ text: JSON.stringify(metinler) }] }],
+    generationConfig: { temperature: 0, responseMimeType: "application/json", responseSchema: { type: "ARRAY", items: { type: "STRING" } } }
+  };
+  for (var i = 0; i < modeller.length; i++) {
+    var model = modeller[i];
+    var istek = JSON.parse(JSON.stringify(govde));
+    if (/^gemini-3\./.test(model) && !/lite/.test(model)) istek.generationConfig.thinkingConfig = { thinkingLevel: "low" }; // hızlı; lite düşünmez
+    try {
+      var r = null;
+      for (var deneme = 0; deneme < 2; deneme++) { // 429 (dakika kotası) / 503 (yoğunluk): aynı modeli 1,5 s sonra bir kez daha dene
+        r = UrlFetchApp.fetch("https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(model) + ":generateContent?key=" + encodeURIComponent(anahtar),
+          { method: "post", contentType: "application/json", payload: JSON.stringify(istek), muteHttpExceptions: true });
+        if (r.getResponseCode() !== 429 && r.getResponseCode() !== 503) break;
+        if (deneme === 0) Utilities.sleep(1500);
+      }
+      if (r.getResponseCode() !== 200) { console.warn("gemini " + model + " → " + r.getResponseCode()); continue; }
+      var j = JSON.parse(r.getContentText());
+      var aday = j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts;
+      var metin = aday && aday.map(function (x) { return x.text || ""; }).join("");
+      var dizi = JSON.parse(metin);
+      if (!Array.isArray(dizi) || dizi.length !== metinler.length) { console.warn("gemini " + model + " → sayı tutmadı"); continue; }
+      var temiz = [];
+      for (var k = 0; k < dizi.length; k++) {
+        var s = String(dizi[k] == null ? "" : dizi[k]).trim();
+        if (String(metinler[k]).trim() && !s) { temiz = null; break; } // boş çeviri kabul edilmez
+        temiz.push(s);
+      }
+      if (!temiz) { console.warn("gemini " + model + " → boş öğe"); continue; }
+      return { ceviriler: temiz, motor: model };
+    } catch (e) {
+      console.warn("gemini " + model + " → " + String(e).slice(0, 120));
+    }
+  }
+  return null;
+}
+
 function hocaKimligiDogrula(idToken) {
   if (typeof idToken !== "string" || idToken.length < 100 || idToken.length > 4096) return false;
-  var r = UrlFetchApp.fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=" + FIREBASE_WEB_ANAHTARI,
+  var webAnahtar = firebaseWebAnahtari();
+  if (!webAnahtar) { console.warn("FIREBASE_WEB_API_KEY tanımsız; hoca doğrulaması kapalı"); return false; }
+  var r = UrlFetchApp.fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=" + encodeURIComponent(webAnahtar),
     { method: "post", contentType: "application/json", payload: JSON.stringify({ idToken: idToken }), muteHttpExceptions: true });
   if (r.getResponseCode() !== 200) return false;
   var u = (JSON.parse(r.getContentText()).users || [])[0];
@@ -2794,6 +2888,7 @@ function hocaKimligiDogrula(idToken) {
   return !!belge;
 }
 function ceviriDuzelt(s) {
-  // Google Translate'in bilinen sapmaları: «Mahomet» → Muhammad; Fransız tipografisi (harften sonra ; : ! ? önünde boşluk).
-  return String(s || "").replace(/\bMahomet\b/g, "Muhammad").replace(/([^\s\d])\s*([;:!?])/g, "$1 $2").replace(/\s+/g, " ").trim();
+  // Motorların bilinen sapmaları: «Mahomet» → Muhammad; Fransız tipografisi (harften sonra ; : ! ? önünde boşluk;
+  // virgül ve nokta önünde ASLA boşluk — gemini-3.6-flash «cours , mais .» yazıyor). Bir öğrencinin adı değiştirilmez.
+  return String(s || "").replace(/\bMahomet\b/g, "Muhammad").replace(/([^\s\d])\s*([;:!?])/g, "$1 $2").replace(/\s+([,.])(?!\.)/g, "$1").replace(/\s+/g, " ").trim();
 }

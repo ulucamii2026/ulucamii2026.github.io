@@ -158,12 +158,50 @@ giden her metin Fransızca üretilir ve **ayrı belgede** saklanır.
   kaydın, kanonik notun («Derse gelmedi.» → «Absence au cours.»), durum etiketinin ve
   249 ders başlığının (`src/data/ders-konu-fr.ts`) elle yazılmış, **cinsiyetsiz**
   Fransızcası («Votre enfant a…», «Sa participation…»); (2) kalan serbest cümleler
-  derneğin Apps Script'ine (`tur: 'cevir'`, v34; `LanguageApp` tr → fr; Firebase kimlik
-  belirteci Identity Toolkit'te doğrulanır + `hocalar/{uid}` şartı; kapatma anahtarı Script
-  Property `CEVIRI_KAPALI=1`). Metin cümlelere bölünür (`bolumle`), kalıp olanlar sözlükten,
+  derneğin Apps Script'ine (`tur: 'cevir'`, **v35**; Firebase kimlik belirteci Identity
+  Toolkit'te doğrulanır + `hocalar/{uid}` şartı). Metin cümlelere bölünür (`bolumle`), kalıp olanlar sözlükten,
   yalnız serbest olanlar makineye gider; makine yanıtı eksikse **hiçbir şey yazılmaz** (yarım
-  çeviri yok). Öğrenci/veli adı istemci tarafından eklenmez; hocanın serbest metnine yazdığı
-  ad olduğu gibi gider.
+  çeviri yok).
+- **Motor zinciri (v35, 14 Eyl 2026 öğleden sonra; Rıdvan «inisiyatif al, ai ile çeviri
+  daha iyiyse onu yap»):** birincil **Gemini** — derneğin GCP projesi `ulucamii-portal`'ın
+  Generative Language anahtarı (Script Property `GEMINI_API_KEY`; anahtar yalnız
+  `D:/tmp/gas/gemini-anahtar.json` ve Script Properties'te, hiçbir yere basılmaz), modeller
+  `CEVIRI_MODEL` (virgülle; varsayılan `gemini-3.5-flash-lite,gemini-3.6-flash`) sırayla
+  denenir; sistem istemi (`CEVIRI_ISTEM`): Belçika Fransızcası, veliye «vous», çocuk için
+  «votre enfant» + sıradan uyum (kapsayıcı «arrivé·e» biçimi yasak), Diyanet terimleri
+  (Muhammad, sourate, ablutions, obligations…), `[[n]]` yer tutucuları korunur ve metindeki
+  ad asla yer tutucuya çevrilmez (istem v5 — v4'te model «Tayyip»i kendiliğinden «[ [1] ]»
+  yapmıştı), virgül/nokta önünde boşluk yok, JSON dizi şeması,
+  sıcaklık 0, `thinkingLevel: low`. Model düşerse (HTTP ≠ 200, sayı tutmaz, boş öğe)
+  sıradaki model, hepsi düşerse **Google Translate** (`LanguageApp`); her yanıt
+  `ceviriDuzelt`'ten geçer ve `motor` alanıyla döner. Anahtarlar: `CEVIRI_MOTOR=translate`
+  yalnız Google Translate, `CEVIRI_KAPALI=1` tümü kapalı; sağlık ucu `ceviriMotoru`
+  (`gemini` / `translate` / `kapali`). DeepL seçilmedi (kart/kayıt ister, dernek hesabında
+  yok); Vertex AI seçilmedi (kişisel proje). Ücretsiz katman Belçika'dan çalışıyor; ölçülen
+  kota: `gemini-3.6-flash` günde **20 istek/proje** (429 `GenerateRequestsPerDayPerProjectPerModel-FreeTier`),
+  `gemini-3.5-flash-lite` daha geniş — bu yüzden lite birincil, 3.6 ikinci, kota bitince Google
+  Translate. Canlı ölçüm (14 Eyl 2026): lite ~1 s doğrudan, uç üzerinden 8–20 s (belirteç
+  doğrulama + Apps Script); 3.6-flash düşük düşünmede virgül/nokta önüne boşluk ve yazım hatası
+  («meustrise», «ritueles») üretti, `ceviriDuzelt` boşlukları temizler.
+- **Ad gizleme (`adGizleyici`, `src/lib/ceviri-servisi.ts`):** makineye gitmeden önce
+  öğrenci ad/soyadları ve veli adları (2 harften uzun her sözcük, Türkçe büyük/küçük harf
+  duyarsız, sözcük sınırında) `[[n]]` yer tutucusuna çevrilir, çeviri dönünce yazıldığı
+  biçimiyle geri konur («Tayyip'in» → «[[1]]'in» → «Tayyip'in»). Kurallar (canlı ön izleme
+  dersleri): yalnız **büyük harfle başlayan** geçiş ad sayılır; `AD_DEGIL` listesindeki
+  sıradan sözcükler («temel», «melek», «Ramazan», «Muhammed»…) hiç maskelenmez — ilk turda
+  bir velinin adı olan «temel» maskelenince Gemini «les temel informations» üretmişti; motor
+  tanınmayan bir yer tutucu döndürürse çeviri hata sayılır (yarım çeviri yazılmaz). Hocanın
+  kayıtlı addan farklı yazdığı ad («Tayyip» ↔ kayıtta «Tayip») maskelenmez, olduğu gibi gider.
+  Hoca ekranı (`S.ogrenciler`/`S.aileler`) ve CLI aynı sarmalayıcıyı kullanır.
+- **Çeviri ayarları ucu (v35):** `POST { tur: 'ceviri-ayar', anahtar: <PANEL_ANAHTARI>,
+  ayarlar: { GEMINI_API_KEY | CEVIRI_MOTOR | CEVIRI_MODEL | CEVIRI_KAPALI } }` — boş dize
+  siler, yanıt gizli anahtarı geri vermez (`var`/`yok`), panel anahtarı tanımsızsa uç
+  kapalıdır. Neden gerekli: Apps Script ayar sayfası 50'den fazla Script Property olunca
+  «düzenle» düğmesini kaldırıyor (veli-cuma'nın `VELI_CUMA_FR_*` çeviri önbelleği ve
+  `VELI_CUMA_GONDERIM_*` gönderim durumları sayıyı aştı; `gas-ozellik.py` bu yüzden
+  «düzenle düğmesi yok» der). Anahtar bu uçla yazıldı: `py -3.14 D:/tmp/gas/ceviri-ayar.py
+  GEMINI_API_KEY=@` (değer dosyadan, basılmaz; argümansız çağrı ayarları gösterir). Açık konu:
+  veli-cuma özelliklerinin tek JSON'a ya da Firestore'a taşınması.
 - **Makine ucu istemcisi** (`src/lib/ceviri-servisi.ts`): 20 metin / 1.800 karakterlik
   partiler; geçici sunucu sapmaları (Apps Script echo 404'ü, doGet'e düşen yönlendirmenin
   sağlık JSON'u, ağ hatası) üç kez denenir; ucun bilinçli hata kodları (`ceviri-kapali`,
@@ -183,16 +221,21 @@ giden her metin Fransızca üretilir ve **ayrı belgede** saklanır.
   elle yazdığı bülten metnini paragraf paragraf makineye gönderir; dil `fr`, yayın kapalı
   kalır, hoca kontrol edip kaydeder.
 - **Komut satırı:** `HOCA_EPOSTA=… HOCA_SIFRE=… npm run defter:cevir` (kuru liste),
-  `-- --yaz` (yazar), `-- --ref UC-2026-0016`, `-- --kalip` (makinesiz). Ekran açılmadan
+  `-- --yaz` (yazar), `-- --ref UC-2026-0016`, `-- --kalip` (makinesiz), `-- --yeniden`
+  (güncel olsa da makine/karma çevirileri yeni motorla yeniler; kalıp çevirilere dokunmaz;
+  14 Eyl 2026 öğleden sonra 9 makine/karma çeviri Gemini ile yenilendi). Ekran açılmadan
   önce yazılmış kayıtlar, başarısız çeviriler ve eskiyen çeviriler bununla kapatılır;
   14 Eyl 2026'da 6 Fransızca öğrencinin 21 kaydı çevrildi (12 kalıp, 8 makine, 1 karma).
 - **Bilinçli sınırlar:** veli defter içeriğini yalnız haftalık bültenden görür (çeviri
-  belgesi veliye doğrudan açılmadı); makine katmanı serbest cümlede cinsiyet tahmin
-  edebilir («Il n'était pas en classe») — kalıp cümleler tahmin etmez; paragraf boşlukları
-  çeviride tek boşluğa iner; makine çevirisi Google'a (derneğin Apps Script'i üzerinden)
-  gider, kapatınca yalnız kalıp cümleler çevrilir.
-- Testler: `tests/defter-ceviri.test.mjs` (6: başlık sözlüğü, kalıp eksiksizliği,
-  bölümleme, yöntemler, güncellik + Fransızca bülten, uç istemcisi yeniden deneme),
+  belgesi veliye doğrudan açılmadı); Google Translate serbest cümlede cinsiyet tahmin
+  edebilir («Il n'était pas en classe») — Gemini istemi «votre enfant» der, yedek motora
+  düşünce bu güvence yoktur, kalıp cümleler hiç tahmin etmez; paragraf boşlukları çeviride
+  tek boşluğa iner; makine çevirisi derneğin Apps Script'i üzerinden Gemini'ye (yedekte
+  Google Translate'e) adlar gizlenmiş hâlde gider, kapatınca yalnız kalıp cümleler çevrilir.
+- Testler: `tests/defter-ceviri.test.mjs` (7: başlık sözlüğü, kalıp eksiksizliği,
+  bölümleme, yöntemler, güncellik + Fransızca bülten, uç istemcisi yeniden deneme, ad
+  gizleme), `tests/gas-ceviri.test.mjs` (5, `npm run test:gas-ceviri`, dogrula zincirinde:
+  motor seçimi, Gemini istek gövdesi, düşüş zinciri, sınırlar/yetki, `ceviri-ayar` ucu),
   `tests/web/ders-defteri.spec.mjs` («Veli dili Fransızca…», «Fransızca aile: yeni
   bülten…»), kural testi «ceviriler alt koleksiyonu».
 

@@ -15,7 +15,7 @@ import { portalTercihleri } from '../lib/portal-tercihleri';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
-import { makineCevirici } from '../lib/ceviri-servisi';
+import { makineCevirici, adGizleyici } from '../lib/ceviri-servisi';
 /** Çalışan düğme: devre dışı + data-mesgul (bekleme imleci yalnız burada; bitmiş durum düğmeleri yalnız disabled). */
 const mesgulYap = (b: HTMLButtonElement, d: boolean) => { b.disabled = d; if (d) b.dataset.mesgul = '1'; else delete b.dataset.mesgul; };
 type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string>; ceviriUcu?: string };
@@ -91,7 +91,7 @@ export async function hocaEkrani(): Promise<void> {
     const aile = S.aileler.some((f) => (f.ogrenciler || []).includes(ref) && (f.iletisimDili === 'fr' || f.dil === 'fr'));
     return o?.dil === 'fr' || aile ? 'fr' : null;
   };
-  const ceviri = { hedefDil, makine: makineCevirici(veri.ceviriUcu, async () => { const u = a.currentUser; if (!u) throw Error('oturum-yok'); return u.getIdToken(); }) };
+  const ceviri = { hedefDil, makine: adGizleyici(() => S ? [...S.ogrenciler.flatMap((o) => [o.ad, o.soyad]), ...S.aileler.map((x) => x.adSoyad || '')] : [])(makineCevirici(veri.ceviriUcu, async () => { const u = a.currentUser; if (!u) throw Error('oturum-yok'); return u.getIdToken(); })) };
   a.languageCode = 'tr';
   const db = fs.getFirestore(app);
   const sayfaAdresi = location.origin + location.pathname;

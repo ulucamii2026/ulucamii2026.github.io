@@ -140,3 +140,30 @@ test('makine ucu: geçici sapma (sağlık JSON’u, 404, ağ hatası) yeniden de
   await assert.rejects(() => m.makineCevirici(undefined, async () => 'jeton', k.fetchFn)(['a'], 'fr'), /ceviri-ucu-yok/);
   assert.deepEqual(await m.makineCevirici(undefined, async () => 'jeton', k.fetchFn)([], 'fr'), []);
 });
+
+test('adGizleyici v2: büyük harfli ad [[n]] olur (Türkçe İ, ek korunur), küçük harfli/yaygın sözcük dokunulmaz, bozuk yer tutucu tolerans, yabancı yer tutucu hata', async () => {
+  const cagrilar = [];
+  const makine = async (m) => { cagrilar.push(m); return m.map((x) => `FR(${x})`); };
+  const g = m.adGizleyici(() => ['Tayyip Emre', 'Berber', 'Ayşe', 'Temel', 'Melek', 'Al'])(makine);
+  const out = await g(['Derse ilk katılan Tayyip oldu. TAYYİP\'in kardeşi Ayşe Berber de geldi.', 'Emre çok çalıştı; berberde değil, ayşe ile değil.', 'Temel bilgileri evde tekrar etsin; temel konular. Melek gibi çocuk.'], 'fr');
+  assert.deepEqual(cagrilar, [[
+    'Derse ilk katılan [[1]] oldu. [[1]]\'in kardeşi [[2]] [[3]] de geldi.',
+    '[[4]] çok çalıştı; berberde değil, ayşe ile değil.',
+    'Temel bilgileri evde tekrar etsin; temel konular. Melek gibi çocuk.',
+  ]]);
+  assert.deepEqual(out, [
+    'FR(Derse ilk katılan Tayyip oldu. Tayyip\'in kardeşi Ayşe Berber de geldi.)',
+    'FR(Emre çok çalıştı; berberde değil, ayşe ile değil.)',
+    'FR(Temel bilgileri evde tekrar etsin; temel konular. Melek gibi çocuk.)',
+  ]);
+  assert.ok(m.AD_DEGIL.has('temel') && m.AD_DEGIL.has('muhammed'), 'yaygın sözcük listesi');
+  // Bozuk yer tutucu toleransı ([[ 1 ]], [ [1] ]); motorun uydurduğu yer tutucu → hata (yarım çeviri yazılmaz)
+  const g2 = m.adGizleyici(() => ['Tayyip'])(async () => ['Bonjour [[ 1 ]] et [ [1] ].']);
+  assert.deepEqual(await g2(['Tayyip geldi.'], 'fr'), ['Bonjour Tayyip et Tayyip.']);
+  await assert.rejects(m.adGizleyici(() => ['Tayyip'])(async () => ['Bonjour [[9]].'])(['Tayyip geldi.'], 'fr'), /yer-tutucu-bilinmiyor/);
+  await assert.rejects(m.adGizleyici(() => ['Tayyip'])(async () => ['[ [1] ] est venu.'])(['Tayyib geldi.'], 'fr'), /yer-tutucu-bilinmiyor/);
+  // Ad geçmeyen metinde makineye özgün metin gider.
+  const g3 = m.adGizleyici(() => ['Tayyip'])(makine);
+  await g3(['Kimse yok.'], 'fr');
+  assert.deepEqual(cagrilar.at(-1), ['Kimse yok.']);
+});

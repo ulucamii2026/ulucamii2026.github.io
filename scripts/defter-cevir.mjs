@@ -12,6 +12,9 @@
  *   HOCA_EPOSTA=… HOCA_SIFRE=… node scripts/defter-cevir.mjs --yaz           # çevirir ve yazar
  *   … --ref UC-2026-0016 [--ref …]                                            # yalnız bu öğrenciler
  *   … --kalip                                                                 # makine yok: yalnız kalıp cümlelerden oluşan kayıtlar
+ *   … --yeniden                                                               # güncel olsa da makine/karma çevirileri yeniden yapar (motor değişince)
+ *
+ * Adlar: öğrenci ad/soyad ve veli adları makineye [[n]] yer tutucusuyla gider (adGizleyici).
  *
  * ÇIKIŞ KODU: 0 (tamam ya da eksik yok), 1 (çevrilemeyen kaldı), 2 (yapılandırma).
  */
@@ -25,6 +28,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 const YAZ = process.argv.includes('--yaz');
 const KALIP = process.argv.includes('--kalip');
+const YENIDEN = process.argv.includes('--yeniden');
 const REFLER = process.argv.flatMap((a, i, arr) => (a === '--ref' && arr[i + 1] ? [arr[i + 1]] : []));
 const { HOCA_EPOSTA, HOCA_SIFRE } = process.env;
 if (!HOCA_EPOSTA || !HOCA_SIFRE) {
@@ -54,17 +58,19 @@ const db = getFirestore(app);
 const katalog = JSON.parse(readFileSync(new URL('../src/data/ders-defteri-2026-2027.json', import.meta.url), 'utf8'));
 const dersById = new Map(katalog.map((d) => [d.id, d]));
 const sonrakiDers = (d) => katalog[katalog.findIndex((x) => x.id === d.id) + 1] || null;
+let adlar = [];
 const makine = KALIP
   ? async () => { throw Error('kalip-modu'); }
-  : lib.makineCevirici(uc, () => auth.currentUser.getIdToken());
+  : lib.adGizleyici(() => adlar)(lib.makineCevirici(uc, () => auth.currentUser.getIdToken()));
 
 const oku = async (kol) => (await getDocs(collection(db, kol))).docs.map((d) => ({ id: d.id, ...d.data() }));
 const [ogrenciler, aileler] = await Promise.all([oku('ogrenciler'), oku('aileler')]);
+adlar = [...ogrenciler.flatMap((o) => [o.ad || '', o.soyad || '']), ...aileler.map((a) => a.adSoyad || '')];
 const frAile = new Set(aileler.filter((a) => a.iletisimDili === 'fr' || a.dil === 'fr').flatMap((a) => a.ogrenciler || []));
 const hedef = ogrenciler
   .filter((o) => (o.dil === 'fr' || frAile.has(o.id)) && (!REFLER.length || REFLER.includes(o.id)))
   .sort((a, b) => a.id.localeCompare(b.id));
-console.log(`Fransızca aile: ${hedef.length} öğrenci${REFLER.length ? ` (süzgeç: ${REFLER.join(', ')})` : ''}. Kip: ${YAZ ? 'YAZ' : 'kuru'}${KALIP ? ' · yalnız kalıp' : ''}.`);
+console.log(`Fransızca aile: ${hedef.length} öğrenci${REFLER.length ? ` (süzgeç: ${REFLER.join(', ')})` : ''}. Kip: ${YAZ ? 'YAZ' : 'kuru'}${KALIP ? ' · yalnız kalıp' : ''}${YENIDEN ? ' · makine çevirileri yeniden' : ''}.`);
 
 let toplam = 0, guncel = 0, yazilan = 0;
 const kalan = [];
@@ -74,12 +80,12 @@ for (const o of hedef) {
   for (const k of kayitlar.sort((a, b) => a.id.localeCompare(b.id))) {
     toplam++;
     const mevcut = c.get(lib.ceviriKimligi(k.id, 'fr'));
-    if (lib.ceviriGuncel(k, mevcut)) { guncel++; continue; }
+    if (lib.ceviriGuncel(k, mevcut) && !(YENIDEN && mevcut && mevcut.yontem !== 'kalip')) { guncel++; continue; }
     const d = dersById.get(k.id);
     if (!d) { kalan.push(`${o.id} ${k.id} (katalogda yok)`); continue; }
     const parcalar = lib.kaydinParcalari(k, d, sonrakiDers(d));
     const serbest = Object.values(parcalar).flat().filter((p) => !p.fr).map((p) => p.tr);
-    const etiket = `${o.id} ${k.id} · ${k.durum} · ${serbest.length ? `${serbest.length} serbest cümle` : 'yalnız kalıp'}${mevcut ? ` · eski çeviri (sürüm ${mevcut.kaynakSurum} → ${k.surum})` : ''}`;
+    const etiket = `${o.id} ${k.id} · ${k.durum} · ${serbest.length ? `${serbest.length} serbest cümle` : 'yalnız kalıp'}${mevcut ? (lib.ceviriGuncel(k, mevcut) ? ` · yeniden (${mevcut.yontem})` : ` · eski çeviri (sürüm ${mevcut.kaynakSurum} → ${k.surum})`) : ''}`;
     if (!YAZ) { console.log('  çevrilecek:', etiket); continue; }
     try {
       const ceviri = await lib.defterKaydiniCevir(k, d, sonrakiDers(d), 'fr', makine);

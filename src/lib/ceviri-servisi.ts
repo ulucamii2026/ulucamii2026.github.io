@@ -19,6 +19,56 @@ import type { CeviriDili, MakineCevirici } from "./defter-ceviri";
 export const CEVIRI_METIN_AZAMI = 20;
 export const CEVIRI_KARAKTER_AZAMI = 1800;
 export const CEVIRI_DENEME = 3;
+
+/**
+ * Ad gizleme (14 Eyl 2026, 2): makineye giden metinde öğrenci/veli adı bulunmaz. Verilen adların her sözcüğü
+ * (2 harften uzun) sözcük sınırında aranır ve [[n]] yer tutucusuna çevrilir; çeviri döndükten sonra yer tutucular
+ * yazıldığı biçimiyle geri konur. Türkçe ek («Tayyip'in» → «[[1]]'in») korunur.
+ * Kurallar (canlı ön izlemeden çıkan dersler):
+ *  - Yalnız BÜYÜK harfle başlayan geçişler ad sayılır («Tayyip», «TAYYİP»; «temel bilgiler» değil) — Türkçe İ/ı eşlemesi
+ *    harf sınıfıyla kurulur (/i bayrağı İ↔i, I↔ı bilmez).
+ *  - AD_DEGIL listesindeki sözcükler (ad da olsa cümlede sıradan anlam taşıyan «temel», «melek», «Ramazan»; Diyanet
+ *    çevirisinin «le prophète Muhammad» diyebilmesi için «Muhammed») hiç maskelenmez — «les temel informations» olmasın.
+ *  - Geri koyma toleranslıdır ([[ 1 ]], [ [1] ]); motor tanımadığımız bir yer tutucu üretirse (adı kendisi
+ *    anonimleştirdiyse) çeviri HATA sayılır — yer tutucu veliye gitmez, kayıt «çevrilemedi» kalır.
+ */
+export const AD_DEGIL = new Set([
+  "temel", "ramazan", "muhammed", "muhammet", "melek", "emir", "kerem", "sevgi", "nur", "can", "umut", "barış", "deniz",
+  "güneş", "yıldız", "gül", "ışık", "kaya", "demir", "kurt", "aslan", "doğan", "şahin", "çelik", "yaşar", "yağmur",
+  "bulut", "toprak", "çiçek", "bal", "ege", "ata", "akın", "petek", "şehri", "sehri", "mert", "eren", "berat", "kadir",
+  "bayram", "cuma", "sabah", "aydın", "evren", "cihan", "dünya", "hayat", "zafer", "murat", "tan", "yavuz", "onur",
+]);
+const YER_TUTUCU = /\[\s*\[\s*(\d+)\s*\]\s*\]/g;
+export function adGizleyici(adlar: () => string[], secenek: { yaygin?: Set<string> } = {}): (makine: MakineCevirici) => MakineCevirici {
+  const yaygin = secenek.yaygin ?? AD_DEGIL;
+  return (makine) => async (metinler, dil) => {
+    const kucuk = (s: string) => s.toLocaleLowerCase("tr");
+    const sozcukler = [...new Set(adlar().flatMap((a) => a.split(/\s+/)).map((s) => s.trim()).filter((s) => s.length > 2 && !yaygin.has(kucuk(s))))]
+      .sort((a, b) => b.length - a.length);
+    const kacis = (c: string) => c.replace(/[.*+?^${}()|[\]\\-]/g, "\\$&");
+    const harf = (c: string) => { const k = [...new Set([c, c.toLocaleLowerCase("tr"), c.toLocaleUpperCase("tr")])]; return k.length === 1 ? kacis(c) : `[${k.map(kacis).join("")}]`; };
+    const ilkHarf = (c: string) => { const k = [...new Set([c.toLocaleUpperCase("tr")])]; return k.length === 1 ? kacis(k[0]) : `[${k.map(kacis).join("")}]`; };
+    const sozcukDeseni = (w: string) => [...w].map((c, i) => (i === 0 ? ilkHarf(c) : harf(c))).join("");
+    const bulunan: string[] = []; // yer tutucu numarası → yazıldığı biçim (ilk görülen)
+    let gizli = metinler;
+    if (sozcukler.length) {
+      const desen = new RegExp(`(^|[^\\p{L}\\p{N}])(${sozcukler.map(sozcukDeseni).join("|")})(?![\\p{L}\\p{N}])`, "gu");
+      gizli = metinler.map((m) =>
+        m.replace(desen, (_, on: string, ad: string) => {
+          let i = bulunan.findIndex((b) => kucuk(b) === kucuk(ad));
+          if (i < 0) { bulunan.push(ad); i = bulunan.length - 1; }
+          return `${on}[[${i + 1}]]`;
+        }),
+      );
+    }
+    const cevrilen = await makine(gizli, dil);
+    return cevrilen.map((c) => {
+      const geri = c.replace(YER_TUTUCU, (_t, n: string) => bulunan[Number(n) - 1] ?? "\u0000");
+      if (geri.includes("\u0000")) throw new Error("yer-tutucu-bilinmiyor"); // motor ad uydurdu/anonimleştirdi → yarım çeviri yazılmaz
+      return geri;
+    });
+  };
+}
 const BEKLE_MS = 400;
 
 class KaliciHata extends Error {}

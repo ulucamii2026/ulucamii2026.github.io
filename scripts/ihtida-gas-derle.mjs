@@ -1,4 +1,4 @@
-/** 14 Eyl 2026: v34 (ders defteri çevirisi ucu `tur: 'cevir'`) — 13 Eyl 2026: v31 (v30 kurumsal e-posta kimliği + iletişim bloğu düzeltmesi) tam PDF paketiyle derler. Ağsız, tekrarlanabilir GAS dağıtım dosyası. Hiçbir özel belge/anahtar içermez. */
+/** 14 Eyl 2026 (2): v35 (çeviri motoru Gemini + Google Translate yedeği) — 14 Eyl 2026: v34 (ders defteri çevirisi ucu `tur: 'cevir'`) — 13 Eyl 2026: v31 (v30 kurumsal e-posta kimliği + iletişim bloğu düzeltmesi) tam PDF paketiyle derler. Ağsız, tekrarlanabilir GAS dağıtım dosyası. Hiçbir özel belge/anahtar içermez. */
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
@@ -18,8 +18,8 @@ const encoded = {};
 for (const [name, path] of Object.entries(assets)) encoded[name] = (await readFile(new URL(path, root))).toString('base64');
 const built = await build({ entryPoints: [fileURLToPath(new URL('scripts/apps-script/ihtida-pdf-entry.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaPdf', target: 'es2020', minify: true });
 const defter = await build({ entryPoints: [fileURLToPath(new URL('public/admin/ihtida-defteri.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaDefteri', target: 'es2020', minify: true });
-const parts = await Promise.all(['scripts/apps-script/kimlik-sabitler.gs', 'scripts/apps-script/ulucamii-Kod-v34.gs', 'scripts/apps-script/ihtida-paket-isleri.gs', 'scripts/apps-script/ihtida-defteri-isleri.gs', 'scripts/apps-script/veli-mail-listesi.gs', 'scripts/apps-script/veli-eposta-sablon.gs', 'scripts/apps-script/veli-cuma.gs', 'public/vendor/pdf-lib.min.js', 'public/vendor/fontkit.umd.min.js'].map(oku));
-const output = new URL('.codex/cikti/gas/ulucamii-v34.gs', root);
+const parts = await Promise.all(['scripts/apps-script/kimlik-sabitler.gs', 'scripts/apps-script/ulucamii-Kod-v35.gs', 'scripts/apps-script/ihtida-paket-isleri.gs', 'scripts/apps-script/ihtida-defteri-isleri.gs', 'scripts/apps-script/veli-mail-listesi.gs', 'scripts/apps-script/veli-eposta-sablon.gs', 'scripts/apps-script/veli-cuma.gs', 'public/vendor/pdf-lib.min.js', 'public/vendor/fontkit.umd.min.js'].map(oku));
+const output = new URL('.codex/cikti/gas/ulucamii-v35.gs', root);
 await mkdir(new URL('.', output), { recursive: true });
 await writeFile(output, parts.join('\n;\n') + '\n;\n' + built.outputFiles[0].text + '\n;\n' + defter.outputFiles[0].text + '\nvar IHTIDA_PDF_KAYNAKLARI = ' + JSON.stringify(encoded) + ';\n');
-console.log('GAS v34 derlendi; kimlik sabitleri, kod, açık şablonlar ve fontlar.');
+console.log('GAS v35 derlendi; kimlik sabitleri, kod, açık şablonlar ve fontlar.');
