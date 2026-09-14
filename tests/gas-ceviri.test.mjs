@@ -1,11 +1,11 @@
-/** Apps Script v35 — çeviri ucu sözleşmesi (14 Eyl 2026, 2): motor seçimi, Gemini → Google Translate yedeği,
+/** Apps Script v36 — çeviri ucu + özellik bakımı sözleşmesi (14 Eyl 2026, 2–3): motor seçimi, Gemini → Google Translate yedeği,
  *  yetki, sınırlar. Arka ucun SAF bölümü Node'da çalıştırılır; UrlFetchApp / LanguageApp / Properties sahtedir. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v35.gs', 'veli-mail-listesi.gs']
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v36.gs', 'veli-mail-listesi.gs', 'veli-cuma.gs']
   .map((ad) => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 
 const ContentService = { createTextOutput: (t) => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } };
@@ -36,8 +36,8 @@ function backend({ ozellikler = {}, gemini = [], translate = (m) => `GT(${m})`, 
     UrlFetchApp,
     LanguageApp: { translate: (m) => translate(m) },
     ScriptApp: { getOAuthToken: () => 'oauth' },
-    PropertiesService: { getScriptProperties: () => ({ getProperty: (k) => ozellikler[k] ?? null, setProperty: (k, d) => { ozellikler[k] = d; }, deleteProperty: (k) => { delete ozellikler[k]; } }) },
-    Utilities: { newBlob: (s) => ({ getBytes: () => Buffer.from(s) }), sleep: (ms) => { uykular.push(ms); } },
+    PropertiesService: { getScriptProperties: () => ({ getProperty: (k) => ozellikler[k] ?? null, setProperty: (k, d) => { ozellikler[k] = d; }, deleteProperty: (k) => { delete ozellikler[k]; }, getProperties: () => ({ ...ozellikler }) }) },
+    Utilities: { newBlob: (s) => ({ getBytes: () => Buffer.from(s) }), sleep: (ms) => { uykular.push(ms); }, formatDate: () => '2026-09-14' },
   });
   vm.runInContext(source, ctx);
   const ayar = (govde) => JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ tur: 'ceviri-ayar', ...govde }) } }).getContent());
@@ -45,8 +45,8 @@ function backend({ ozellikler = {}, gemini = [], translate = (m) => `GT(${m})`, 
   return { ctx, istekler, cevir, ayar, ozellikler, uykular };
 }
 
-test('sağlık ucu v35: ceviriMotoru anahtara göre gemini / translate / kapali', () => {
-  assert.equal(JSON.parse(backend().ctx.doGet({}).getContent()).surum, 35);
+test('sağlık ucu v36: ceviriMotoru anahtara göre gemini / translate / kapali', () => {
+  assert.equal(JSON.parse(backend().ctx.doGet({}).getContent()).surum, 36);
   assert.equal(JSON.parse(backend().ctx.doGet({}).getContent()).ceviriMotoru, 'translate');
   assert.equal(JSON.parse(backend({ ozellikler: { GEMINI_API_KEY: 'k' } }).ctx.doGet({}).getContent()).ceviriMotoru, 'gemini');
   assert.equal(JSON.parse(backend({ ozellikler: { GEMINI_API_KEY: 'k', CEVIRI_MOTOR: 'translate' } }).ctx.doGet({}).getContent()).ceviriMotoru, 'translate');
@@ -134,4 +134,19 @@ test('ceviri-ayar ucu: panel anahtarıyla dört çeviri ayarı yazılır/silinir
   assert.equal(r.motor, 'translate');
   // Panel anahtarı tanımlı değilse uç kapalı (gömülü yedek değer geçmez)
   assert.equal(backend().ayar({ anahtar: 'SCRIPT-PROPERTIES-ICINDE', ayarlar: {} }).hata, 'yetkisiz');
+});
+
+test('ozellik-bakim ucu (v36): panel anahtarıyla veli-cuma özellikleri cuma başına tek kayda katlanır; yanıt yalnız adlar ve sayılar', () => {
+  const b = backend({ ozellikler: { PANEL_ANAHTARI: 'panel-gizli', 'VELI_CUMA_GONDERIM_2026-09-11_h1': JSON.stringify({ durum: 'saglayici-kabul', messageId: 'm1' }), 'VELI_CUMA_GONDERIM_2026-09-11_h2': JSON.stringify({ durum: 'belirsiz' }), VELI_CUMA_FR_x: 'Les lettres', BREVO_API_KEY: 'gizli-brevo' } });
+  const bakim = (ctx, govde) => JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ tur: 'ozellik-bakim', ...govde }) } }).getContent());
+  assert.equal(bakim(b.ctx, { anahtar: 'yanlis' }).hata, 'yetkisiz');
+  assert.equal(bakim(b.ctx, {}).hata, 'yetkisiz');
+  assert.equal(b.ozellikler.VELI_CUMA_FR_x, 'Les lettres', 'yetkisiz çağrı hiçbir şeyi silmedi');
+  const r = bakim(b.ctx, { anahtar: 'panel-gizli' });
+  assert.deepEqual(r, { ok: true, katlanan: 2, silinen: 1, toplam: 4, adlar: ['BREVO_API_KEY', 'FIREBASE_WEB_API_KEY', 'PANEL_ANAHTARI', 'VELI_CUMA_GONDERIM_2026-09-11'] });
+  assert.ok(!JSON.stringify(r).includes('gizli-brevo') && !JSON.stringify(r).includes('panel-gizli'), 'değerler yanıtta yok');
+  assert.deepEqual(JSON.parse(b.ozellikler['VELI_CUMA_GONDERIM_2026-09-11']), { h1: { durum: 'saglayici-kabul', messageId: 'm1' }, h2: { durum: 'belirsiz' } });
+  assert.deepEqual(bakim(b.ctx, { anahtar: 'panel-gizli' }), { ok: true, katlanan: 0, silinen: 0, toplam: 4, adlar: r.adlar }, 'ikinci çağrı değişiklik yapmaz');
+  // Panel anahtarı tanımlı değilse uç kapalı
+  assert.equal(bakim(backend().ctx, { anahtar: 'SCRIPT-PROPERTIES-ICINDE' }).hata, 'yetkisiz');
 });

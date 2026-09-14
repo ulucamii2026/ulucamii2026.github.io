@@ -5,7 +5,14 @@
 var VELI_PORTAL_PROJE = "ulucamii-portal";
 var VELI_PORTAL_DOKUMAN = "projects/" + VELI_PORTAL_PROJE + "/databases/(default)/documents";
 var VELI_PORTAL_API = "https://firestore.googleapis.com/v1/" + VELI_PORTAL_DOKUMAN;
-var VELI_PORTAL_ISLENEN = "VELI_PORTAL_AKTARILAN_";
+var VELI_PORTAL_ISLENEN = "VELI_PORTAL_AKTARILAN_"; // v36 öncesi tekil biçim (öğrenci başına özellik); okunur, ilk gerçek koşuda tek kayda katlanır
+var VELI_PORTAL_DAMGA = "VELI_PORTAL_AKTARILAN"; // v36 (14 Eyl 2026): tek özellik → { ref: hash } — Script Properties 50'nin altında kalsın
+function veliPortalDamgalar(tumu) {
+  var m = {}; try { m = JSON.parse(tumu[VELI_PORTAL_DAMGA] || "{}") || {}; } catch (e) { m = {}; }
+  if (typeof m !== "object" || Array.isArray(m)) m = {};
+  Object.keys(tumu).forEach(function (ad) { if (ad.indexOf(VELI_PORTAL_ISLENEN) === 0) { var ref = ad.slice(VELI_PORTAL_ISLENEN.length); if (ref && !(ref in m)) m[ref] = tumu[ad]; } });
+  return m;
+}
 var VELI_PORTAL_SURUM = "20260909-1";
 
 function veliPortalMetin(v) { return String(v == null ? "" : v).trim(); }
@@ -127,8 +134,8 @@ function veliMailListesiIsle(kuru) {
   var p = PropertiesService.getScriptProperties();
   try {
     var ayar = veliPortalBelgeOku("ayarlar/portal").data;
-    var model = veliPortalKayitlari(veliPortalDefterOku(), ayar), hashler = {}, tumu = p.getProperties();
-    var adaylar = model.kayitlar.filter(function (k) { hashler[k.ref] = veliPortalHash(k); return tumu[VELI_PORTAL_ISLENEN + k.ref] !== hashler[k.ref]; }).slice(0, 50);
+    var model = veliPortalKayitlari(veliPortalDefterOku(), ayar), hashler = {}, tumu = p.getProperties(), damgalar = veliPortalDamgalar(tumu);
+    var adaylar = model.kayitlar.filter(function (k) { hashler[k.ref] = veliPortalHash(k); return damgalar[k.ref] !== hashler[k.ref]; }).slice(0, 50);
     // Aynı ailenin diğer kayıtları da dil çatışmasını yakalamak için değerlendirilir.
     var epostalar = new Set(adaylar.map(function (k) { return k.eposta; }));
     var kayitlar = model.kayitlar.filter(function (k) { return epostalar.has(k.eposta); }), belgeler = {};
@@ -137,7 +144,13 @@ function veliMailListesiIsle(kuru) {
     var plan = veliPortalYazilari(kayitlar, belgeler);
     if (!kuru) {
       if (plan.writes.length) { var cevap = veliPortalHttp(":commit", { writes: plan.writes }); if (!cevap.writeResults || cevap.writeResults.length !== plan.writes.length) throw new Error("portal-yazma-cevabi"); }
-      var damgalar = {}; plan.islenen.forEach(function (ref) { damgalar[VELI_PORTAL_ISLENEN + ref] = hashler[ref]; }); if (Object.keys(damgalar).length) p.setProperties(damgalar, false);
+      // v36: damgalar tek özellikte; eski tekil kayıtlar aynı koşuda katlanır ve silinir.
+      plan.islenen.forEach(function (ref) { damgalar[ref] = hashler[ref]; });
+      var eskiler = Object.keys(tumu).filter(function (ad) { return ad.indexOf(VELI_PORTAL_ISLENEN) === 0; });
+      if (plan.islenen.length || eskiler.length) {
+        var metin = JSON.stringify(damgalar); if (metin.length > 7000) console.warn("VELI_PORTAL_AKTARILAN " + metin.length + " karakter; özellik sınırı 9 KB");
+        p.setProperty(VELI_PORTAL_DAMGA, metin); eskiler.forEach(function (ad) { p.deleteProperty(ad); });
+      }
     }
     var sonuc = { ok: true, zaman: new Date().toISOString(), kuru: !!kuru, kayitSayisi: model.kayitlar.length, aday: adaylar.length, islenen: plan.islenen.length, yazma: plan.writes.length, bekleyen: plan.bekleyen, atlanan: model.atlanan };
     if (!kuru) p.setProperty("VELI_PORTAL_SONUC", JSON.stringify(sonuc));

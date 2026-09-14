@@ -9,7 +9,7 @@ const current=data=>({data,updateTime:'2099-01-01T00:00:00.000000Z'});
 const plain=x=>JSON.parse(JSON.stringify(x));
 function runtime(){
  const props={},docs={},events=[];
- const x=vm.createContext({console:{log(){},error(){}},Session:{getEffectiveUser:()=>({getEmail:()=> 'ulucamii2026@gmail.com'})},LockService:{getScriptLock:()=>({tryLock:()=>true,releaseLock:()=>events.push('unlock')})},PropertiesService:{getScriptProperties:()=>({getProperties:()=>({...props}),setProperties:p=>Object.assign(props,p),setProperty:(k,v)=>props[k]=v,getProperty:k=>props[k]})}});
+ const x=vm.createContext({console:{log(){},error(){}},Session:{getEffectiveUser:()=>({getEmail:()=> 'ulucamii2026@gmail.com'})},LockService:{getScriptLock:()=>({tryLock:()=>true,releaseLock:()=>events.push('unlock')})},PropertiesService:{getScriptProperties:()=>({getProperties:()=>({...props}),setProperties:p=>Object.assign(props,p),setProperty:(k,v)=>props[k]=v,getProperty:k=>props[k],deleteProperty:k=>{delete props[k];}})}});
  vm.runInContext(source,x);x.veliPortalHash=k=>JSON.stringify(k);x.veliPortalDefterOku=()=>[row(1)];x.veliPortalBelgeOku=k=>k==='ayarlar/portal'?{data:{}}:docs[k]||null;
  x.veliPortalHttp=(path,body)=>{assert.equal(path,':commit');events.push('commit');apply(body,docs);return {writeResults:body.writes.map(()=>({}))};};
  return {x,props,docs,events};
@@ -63,4 +63,13 @@ test('Yeni belge ve eşzamanlı düzenleme için yazma önkoşulları zorunludur
 });
 test('Bu otomasyon e-posta göndermez ve başka kurum projesine yönlenmez',()=>{
  assert.doesNotMatch(source,/MailApp|GmailApp|epostaGonder\(|sendOobCode/);assert.equal(c.VELI_PORTAL_PROJE,'ulucamii-portal');
+});
+test('v36: başarı damgaları tek özellikte (VELI_PORTAL_AKTARILAN → {ref: hash}); eski tekil kayıtlar ilk koşuda katlanır ve silinir',()=>{
+ const {x,props}=runtime();props['VELI_PORTAL_AKTARILAN_UC-2026-9999']='eski-hash';
+ assert.equal(x.veliMailListesiIsle(false).islenen,1);
+ const m=JSON.parse(props.VELI_PORTAL_AKTARILAN);assert.equal(m['UC-2026-9999'],'eski-hash');assert.equal(Object.keys(m).length,2);
+ assert.deepEqual(Object.keys(props).filter(k=>k.startsWith('VELI_PORTAL_AKTARILAN_')),[]);
+ assert.equal(x.veliMailListesiIsle(false).aday,0);assert.equal(Object.keys(m).length,2);
+ // kuru koşu eski kayıtlara dokunmaz
+ const r=runtime();r.props['VELI_PORTAL_AKTARILAN_UC-2026-9999']='eski-hash';r.x.veliMailListesiIsle(true);assert.equal(r.props['VELI_PORTAL_AKTARILAN_UC-2026-9999'],'eski-hash');assert.equal(r.props.VELI_PORTAL_AKTARILAN,undefined);
 });

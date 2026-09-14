@@ -1,3 +1,8 @@
+/* v36 — 14 Eyl 2026 (3): veli-cuma gönderim durumları cuma başına TEK Script Property (veliCumaDurumlar/veliCumaDurumYaz),
+   çeviri önbelleği CacheService, veliCumaOzellikBakim (eski tekil kayıtları katlar, 12 haftadan eskileri siler; her cuma
+   gönderiminin sonunda kendiliğinden); panel anahtarlı POST { tur: "ozellik-bakim" } ucu; veli-mail-listesi'nin öğrenci
+   başına VELI_PORTAL_AKTARILAN_<ref> damgaları tek özelliğe (VELI_PORTAL_AKTARILAN → { ref: hash }, ilk gerçek koşuda
+   katlanır). Amaç: Script Properties 50'nin altında kalsın, Apps Script ayar ekranı yeniden düzenlenebilsin (v35'te kilitliydi). */
 /* v33 — 13 Eyl 2026 gecesi (2): soyadBuyuk() yerel-duyarlı büyük harf (form/iletişim dili tr ya da Türkçe harf → "tr", aksi "en";
    Bosnalı «Husic» artık «HUSİC» olmaz); kayitDosyaAdi() tek kaynak (arşiv yenilemedeki «SOYAD Ad» sırası düzeldi);
    ?islem=kayit-duzelt: ad/soyad/dogum/sinif/okul/veliAdSoyad düzeltme + PDF yenileme (eski PDF çöpe, Durum " | duzeltildi-v33 [..]");
@@ -72,7 +77,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 35;
+var SURUM = 36;
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -135,6 +140,7 @@ function doPost(e) {
     }
     if (v.tur === "cevir") return cevirIsle(v);
     if (v.tur === "ceviri-ayar") return ceviriAyarIsle(v); // v35: panel anahtarıyla çeviri ayarları
+    if (v.tur === "ozellik-bakim") return ozellikBakimIsle(v); // v36: veli-cuma özelliklerini katla, sayıyı 50'nin altında tut
     if (v.tur === "ihtida-paket-onay") return ihtidaPaketOnayIsle(v);
     if (v.tur === "ihtida-paket-tekrar") return ihtidaPaketTekrarIsle(v);
     if (v.tur === "ihtida-defteri-guncelle") return ihtidaDefteriGuncelle(v);
@@ -2824,6 +2830,17 @@ function ceviriAyarIsle(v) {
   var durum = {};
   for (var ad in CEVIRI_AYARLARI) { var mevcut = p.getProperty(ad); durum[ad] = CEVIRI_AYARLARI[ad] === "gizli" ? (mevcut ? "var" : "yok") : (mevcut || ""); }
   return json({ ok: true, yazilan: yazilan, ayarlar: durum, motor: ceviriMotoru() });
+}
+/* v36 (14 Eyl 2026, 3 — Rıdvan: «yetki ve kararı sana devrediyorum, ne gerekiyorsa yap»): özellik bakımı ucu —
+   POST { tur: "ozellik-bakim", anahtar: PANEL_ANAHTARI }. veli-cuma'nın alıcı başına tekil gönderim kayıtları cuma başına
+   tek özelliğe katlanır, VELI_CUMA_FR_* çeviri önbelleği silinir (artık CacheService), 12 haftadan eski cumalar silinir.
+   Yanıt: sayılar + toplam + özellik ADLARI (değer asla). Amaç: Script Properties 50'nin altında kalsın, ayar ekranı
+   yeniden düzenlenebilsin. Aynı bakım her cuma gönderiminin sonunda kendiliğinden de çalışır. */
+function ozellikBakimIsle(v) {
+  if (PANEL.anahtar === "SCRIPT-PROPERTIES-ICINDE" || !v.anahtar || String(v.anahtar) !== PANEL.anahtar) return json({ ok: false, hata: "yetkisiz" });
+  var p = PropertiesService.getScriptProperties();
+  var bakim = veliCumaOzellikBakim(p);
+  return json({ ok: true, katlanan: bakim.katlanan, silinen: bakim.silinen, toplam: bakim.toplam, adlar: Object.keys(p.getProperties()).sort() });
 }
 function ceviriMotoru() {
   var p = PropertiesService.getScriptProperties();

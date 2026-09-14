@@ -200,8 +200,13 @@ giden her metin Fransızca üretilir ve **ayrı belgede** saklanır.
   «düzenle» düğmesini kaldırıyor (veli-cuma'nın `VELI_CUMA_FR_*` çeviri önbelleği ve
   `VELI_CUMA_GONDERIM_*` gönderim durumları sayıyı aştı; `gas-ozellik.py` bu yüzden
   «düzenle düğmesi yok» der). Anahtar bu uçla yazıldı: `py -3.14 D:/tmp/gas/ceviri-ayar.py
-  GEMINI_API_KEY=@` (değer dosyadan, basılmaz; argümansız çağrı ayarları gösterir). Açık konu:
-  veli-cuma özelliklerinin tek JSON'a ya da Firestore'a taşınması.
+  GEMINI_API_KEY=@` (değer dosyadan, basılmaz; argümansız çağrı ayarları gösterir).
+  **v36 (14 Eyl 2026, 3) kilidi kaldırdı:** veli-cuma gönderim durumları cuma başına tek özellik
+  (`VELI_CUMA_GONDERIM_<cuma>` → `{hash: durum}`), çeviri önbelleği `CacheService`; `veliCumaOzellikBakim`
+  eski tekil kayıtları katlar, `VELI_CUMA_FR_*` siler, 12 haftadan eski cumaları siler (her cuma gönderiminin
+  sonunda kendiliğinden; elle `POST { tur: 'ozellik-bakim', anahtar }` → `py -3.14 D:/tmp/gas/ozellik-bakim.py`,
+  yanıt yalnız özellik adları + sayılar). Sözleşme testleri: `tests/gas-ceviri.test.mjs` (6) ve
+  `tests/veli-cuma.test.mjs` (v36 iki test). Böylece «tek JSON'a taşıma» açık konusu kapandı.
 - **Makine ucu istemcisi** (`src/lib/ceviri-servisi.ts`): 20 metin / 1.800 karakterlik
   partiler; geçici sunucu sapmaları (Apps Script echo 404'ü, doGet'e düşen yönlendirmenin
   sağlık JSON'u, ağ hatası) üç kez denenir; ucun bilinçli hata kodları (`ceviri-kapali`,

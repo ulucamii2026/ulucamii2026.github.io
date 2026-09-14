@@ -1,6 +1,9 @@
 /* Cuma günü veli bilgilendirmesi. Kullanıcı talebi: 9 Eylül 2026.
  * Aynı veliye aynı cuma bir ileti. Yalnız yayımlanmış plan/ödev; kişisel gelişim notu yok.
  * Liste aktarımının mevcut beş dakikalık zamanlayıcısı kullanılır.
+ * v36 (14 Eyl 2026): gönderim durumları cuma başına TEK Script Property (veliCumaDurumlar/veliCumaDurumYaz), çeviri
+ * önbelleği CacheService; veliCumaOzellikBakim eski tekil kayıtları katlar ve 12 haftadan eskileri siler — Script
+ * Properties 50'nin altında kalır, Apps Script ayar ekranı yeniden düzenlenebilir.
  */
 var VELI_CUMA_SURUM = "20260909-1";
 /* Site ve kapanış metinleri içerik hazırlanırken doğrudan KIMLIK üzerinden okunur. */
@@ -93,8 +96,10 @@ function veliCumaCevir(metin){
   var bolum=String(metin).match(/\s+(\(\d+\/\d+\))$/),temel=bolum?String(metin).slice(0,bolum.index):String(metin);
   if(onayli[temel])return onayli[temel]+(bolum?' '+bolum[1]:'');
   var harf=String(metin).match(/^(.+) Grubu Harfleri$/);if(harf){var adlar={'Elif':'Elif','Hı':'Khâ','Şîn':'Shîn','Ayn':'Ayn'};return 'Lettres du groupe '+(adlar[harf[1]]||harf[1]);}
-  var key='VELI_CUMA_FR_'+veliPortalHash(metin),p=PropertiesService.getScriptProperties(),onceki=p.getProperty(key);if(onceki)return onceki;
-  var sonuc=LanguageApp.translate(String(metin),'tr','fr');if(!sonuc||sonuc===metin)throw new Error('cuma-ceviri-eksik');sonuc=sonuc.replace(/\bMahomet\b/g,'Muhammad');p.setProperty(key,sonuc);return sonuc;
+  // v36 (14 Eyl 2026): önbellek Script Property değil CacheService (6 saat). Her başlık ayrı özellik olunca sayı 50'yi aştı ve
+  // Apps Script ayar ekranı düzenlemeyi kapattı; eski VELI_CUMA_FR_* kayıtlarını veliCumaOzellikBakim siler.
+  var key='VELI_CUMA_FR_'+veliPortalHash(metin),onbellek=typeof CacheService!=='undefined'?CacheService.getScriptCache():null,onceki=onbellek&&onbellek.get(key);if(onceki)return onceki;
+  var sonuc=LanguageApp.translate(String(metin),'tr','fr');if(!sonuc||sonuc===metin)throw new Error('cuma-ceviri-eksik');sonuc=sonuc.replace(/\bMahomet\b/g,'Muhammad');if(onbellek)onbellek.put(key,sonuc,21600);return sonuc;
 }
 function veliCumaAlicilar(aileler,ogrenciler){
   var aktif=new Set(ogrenciler.filter(function(o){return !o.durum||o.durum==='aktif';}).map(function(o){return o.id;}));
@@ -121,20 +126,48 @@ function veliCumaIsle(cuma,ayar){
   var p=PropertiesService.getScriptProperties();
   try{
     var paket=veliCumaHazirla(cuma,ayar),tag='veli-cuma-'+cuma,sayim={ok:true,cuma:cuma,zaman:new Date().toISOString(),alicilar:paket.alicilar.length,gonderildi:0,onceki:0,bekleyen:0,hata:0};
+    var durumlar=veliCumaDurumlar(p,cuma); // v36: cumanın tüm gönderim durumları tek özellikte
     paket.alicilar.forEach(function(a){
       if(!VELI_CUMA_DILLER[a.dil]){sayim.bekleyen++;return;}
-      var pk='VELI_CUMA_GONDERIM_'+cuma+'_'+veliPortalHash(a.eposta),durum=JSON.parse(p.getProperty(pk)||'null');
+      var h=veliPortalHash(a.eposta),durum=durumlar[h]||JSON.parse(p.getProperty('VELI_CUMA_GONDERIM_'+cuma+'_'+h)||'null'); // eski tekil kayıt da okunur
       if(durum && ['saglayici-kabul','teslim-edildi','teslim-edilemedi','gonderim-hatasi'].indexOf(durum.durum)>=0){sayim.onceki++;return;}
       if(durum&&['gonderiliyor','belirsiz'].indexOf(durum.durum)>=0){
-        var found=veliCumaBelirsizYokla(a.eposta,tag);if(found){durum.durum='saglayici-kabul';durum.messageId=found;p.setProperty(pk,JSON.stringify(durum));sayim.onceki++;}else sayim.bekleyen++;return;
+        var found=veliCumaBelirsizYokla(a.eposta,tag);if(found){durum.durum='saglayici-kabul';durum.messageId=found;durumlar[h]=durum;veliCumaDurumYaz(p,cuma,durumlar);sayim.onceki++;}else sayim.bekleyen++;return;
       }
       if(!brevoAnahtari()){sayim.hata++;return;}
-      var uuid=durum&&durum.anahtar||Utilities.getUuid();p.setProperty(pk,JSON.stringify({durum:'gonderiliyor',anahtar:uuid,zaman:new Date().toISOString(),dil:a.dil}));
-      var sonuc=veliCumaGonder(a,paket.icerik[a.dil],uuid,tag);sonuc.anahtar=uuid;sonuc.zaman=new Date().toISOString();sonuc.dil=a.dil;p.setProperty(pk,JSON.stringify(sonuc));
+      var uuid=durum&&durum.anahtar||Utilities.getUuid();durumlar[h]={durum:'gonderiliyor',anahtar:uuid,zaman:new Date().toISOString(),dil:a.dil};veliCumaDurumYaz(p,cuma,durumlar);
+      var sonuc=veliCumaGonder(a,paket.icerik[a.dil],uuid,tag);sonuc.anahtar=uuid;sonuc.zaman=new Date().toISOString();sonuc.dil=a.dil;durumlar[h]=sonuc;veliCumaDurumYaz(p,cuma,durumlar);
       if(sonuc.durum==='saglayici-kabul')sayim.gonderildi++;else if(sonuc.durum==='gonderim-hatasi')sayim.hata++;else sayim.bekleyen++;
     });
-    p.setProperty('VELI_CUMA_SONUC',JSON.stringify(sayim));return sayim;
+    p.setProperty('VELI_CUMA_SONUC',JSON.stringify(sayim));
+    try{sayim.bakim=veliCumaOzellikBakim(p);}catch(e){console.warn('veli-cuma özellik bakımı: '+e);} // bakım gönderimi asla düşürmez
+    return sayim;
   }finally{lock.releaseLock();}
+}
+function veliCumaDurumlar(p,cuma){
+  // v36 (14 Eyl 2026): VELI_CUMA_GONDERIM_<cuma> → { <e-posta hash>: durum }. Önceden alıcı başına ayrı özellik vardı
+  // (VELI_CUMA_GONDERIM_<cuma>_<hash>); birkaç cumada sayı 50'yi aşınca Apps Script ayar ekranı düzenlemeyi kapattı.
+  var m=null;try{m=JSON.parse(p.getProperty('VELI_CUMA_GONDERIM_'+cuma)||'{}');}catch(e){m=null;}return m&&typeof m==='object'&&!Array.isArray(m)?m:{};
+}
+function veliCumaDurumYaz(p,cuma,durumlar){
+  var metin=JSON.stringify(durumlar);if(metin.length>7000)console.warn('veli-cuma '+cuma+' durum kaydı '+metin.length+' karakter; özellik sınırı 9 KB');p.setProperty('VELI_CUMA_GONDERIM_'+cuma,metin);
+}
+function veliCumaOzellikBakim(p){
+  // Eski tekil gönderim kayıtları cumanın tek kaydına katlanır, VELI_CUMA_FR_* önbelleği silinir (artık CacheService),
+  // 12 haftadan eski cumaların kaydı silinir. Dönüş: sayılar + toplam özellik sayısı (değer yok, ad yok).
+  var hepsi=p.getProperties(),katlanan=0,silinen=0,haritalar={},esik=veliCumaGunEkle(Utilities.formatDate(new Date(),'Europe/Brussels','yyyy-MM-dd'),-84);
+  Object.keys(hepsi).forEach(function(ad){
+    var eski=ad.match(/^VELI_CUMA_GONDERIM_(\d{4}-\d{2}-\d{2})_(.+)$/);
+    if(eski){if(eski[1]<esik){p.deleteProperty(ad);silinen++;return;}
+      if(!haritalar[eski[1]])haritalar[eski[1]]=veliCumaDurumlar(p,eski[1]);
+      if(!haritalar[eski[1]][eski[2]]){try{haritalar[eski[1]][eski[2]]=JSON.parse(hepsi[ad]);}catch(e){}}
+      p.deleteProperty(ad);katlanan++;return;}
+    if(/^VELI_CUMA_FR_/.test(ad)){p.deleteProperty(ad);silinen++;return;}
+    var tek=ad.match(/^VELI_CUMA_GONDERIM_(\d{4}-\d{2}-\d{2})$/);
+    if(tek&&tek[1]<esik){p.deleteProperty(ad);silinen++;}
+  });
+  Object.keys(haritalar).forEach(function(cuma){veliCumaDurumYaz(p,cuma,haritalar[cuma]);});
+  return {katlanan:katlanan,silinen:silinen,toplam:Object.keys(p.getProperties()).length};
 }
 function veliCumaBelirsizYokla(eposta,tag){
   try{var r=UrlFetchApp.fetch('https://api.brevo.com/v3/smtp/statistics/events?limit=100&tags='+encodeURIComponent(JSON.stringify([tag]))+'&email='+encodeURIComponent(eposta),{headers:{'api-key':brevoAnahtari(),accept:'application/json'},muteHttpExceptions:true});if(r.getResponseCode()!==200)return '';
