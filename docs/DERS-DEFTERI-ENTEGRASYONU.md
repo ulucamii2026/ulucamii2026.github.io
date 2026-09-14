@@ -77,6 +77,12 @@ durumu. `--duzelt` yalnız yoklamanın `dersler`/`veliMazereti` alanlarını ve 
 `durum` alanını değiştirir; hocanın yazdığı metinlere dokunmaz, eksik defter kaydı
 açmaz, alınmamış yoklamayı oluşturmaz.
 
+`npm run defter:ac` (`scripts/defter-gelmedi-ac.mjs`, hoca hesabıyla) düğmenin komut
+satırı eşidir: yoklamada gelmemiş sayılan ve kaydı olmayan dersleri listeler, `--yaz`
+ile kütüphanedeki `topluGelmediYaz` üzerinden açar (ekranla birebir aynı belge), `--tarih`
+ile güne daraltılır. Var olan kayda dokunmaz. Denetim «DEFTERİ AÇILMAMIŞ n ders» diyorsa
+eksikleri bu kapatır (14 Eyl 2026: hoca ekranından önceki 1. haftanın 16 kaydı böyle açıldı).
+
 ## Haftalık bülten bağlantısı
 
 **Bülten · İdare** içinde aynı öğrenci/hafta seçilip **Ders defterinden doldur**

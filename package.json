@@ -49,7 +49,8 @@
     "oto-kaydet": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/oto-kaydet.ps1",
     "ihtida:gas-derle": "node scripts/ihtida-gas-derle.mjs",
     "denetim:dinigun": "node scripts/dini-gun-kapisi.mjs",
-    "denetim:defter": "node scripts/defter-yoklama-denetim.mjs"
+    "denetim:defter": "node scripts/defter-yoklama-denetim.mjs",
+    "defter:ac": "node scripts/defter-gelmedi-ac.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",
