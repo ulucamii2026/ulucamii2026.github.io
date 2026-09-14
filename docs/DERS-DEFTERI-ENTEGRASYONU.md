@@ -196,6 +196,32 @@ giden her metin Fransızca üretilir ve **ayrı belgede** saklanır.
   `tests/web/ders-defteri.spec.mjs` («Veli dili Fransızca…», «Fransızca aile: yeni
   bülten…»), kural testi «ceviriler alt koleksiyonu».
 
+## Doldurulmamış defterler — tek ekran ve kuyruk (14 Eyl 2026)
+
+Rıdvan: «Hangi gün hangi öğrencinin hangi dersi doldurulmamış, tek ekranda göreyim;
+ekran beni yönlendirsin, gidip kolayca doldurayım.»
+
+- **Nerede:** başlıktaki günün özetinde «N doldurulmamış defter kaydı (g gün · ö öğrenci)»
+  düğmesi (`data-hero-eksik`, girişten sonra arka planda hesaplanır) ve defter sekmesinin
+  üstünde «Doldurulmamış defterler N» (`data-dd-eksikler-ac`). Liste görünümü defter
+  panelinin içindedir (`gorunum = "eksikler"`), yeni sekme yok.
+- **Hesap** (`src/lib/ders-defteri.ts`): `katalogGunleri` → `defterEksikleri(db, refler,
+  gunler, bugun)` → saf `eksikleriHesapla`. Bugün dâhil geçmiş ders günleri × aktif öğrenci
+  × ders; kaydı olmayanlar gün → öğrenci → ders sırasıyla, her biri yoklama ipucuyla
+  (`yoklama`: var/yok/mazeret/gec/''). Kimsenin kaydı ve yoklaması olmayan gün «ders
+  yapılmamış» sayılır (`bosGunler`; plandaki 5–6 Eylül böyle), toplama girmez, listenin
+  altında notla gösterilir. Öğrenci başına tek okuma (kayıt kimlikleri), gün başına bir
+  yoklama.
+- **Yönlendirme:** ders düğmesi (`data-dd-eksik="ref" data-dd-eksik-ders="id"`) defteri o
+  öğrenci/gün/dersle açar ve listedeki kalan eksikler kuyruk olur: «Kaydet ve sonraki»
+  sıradaki eksiğe gider (gün ve öğrenci değişebilir); formun üstünde «Sıradaki eksik: …» +
+  «Sıradakine geç» (`data-dd-kuyruk-sonraki`). «Sırayla doldur» (`data-dd-eksik-basla`)
+  ilk eksikten başlar. Gün başlığındaki «Gelmeyenlerin n kaydını aç» (`data-dd-eksik-toplu`)
+  yoklamada Yok/Mazeretli olanları `topluGelmediYaz` ile açar (+ Fransızca çeviri belgesi).
+- Kaydedilen / açılan ders listeden yerelde düşer (`eksikDus`), başlık sayısı `eksikDegisti`
+  ile güncellenir; «Yenile» yeniden okur. Testler: `tests/defter-eksik.test.mjs`,
+  `tests/web/ders-defteri.spec.mjs` («Doldurulmamış defterler…»).
+
 ## Haftalık bülten bağlantısı
 
 **Bülten · İdare** içinde aynı öğrenci/hafta seçilip **Ders defterinden doldur**

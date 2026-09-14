@@ -3,7 +3,7 @@ import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
 import type { Tekrar } from '../lib/ogrenme-ilerleme';
 import { hocaBulteni } from './hoca-bulten';
 import { portalVeliBagi } from '../lib/portal-idare';
-import { mazeretKuraliniUygula, MAZERET_KURALI, type YoklamaGunu } from '../lib/ders-defteri';
+import { mazeretKuraliniUygula, MAZERET_KURALI, defterEksikleri, katalogGunleri, type YoklamaGunu, type DefterEksikleri } from '../lib/ders-defteri';
 /**
  * Hoca ekranı tarayıcı uygulaması (6 Eyl 2026) — yalnız Türkçe. Firebase Auth + Firestore (lite), sunucu yok.
  * Yetki: hocalar/{uid} belgesi (firebase/firestore.rules → hoca()). Bu ekran veli portalının (veli-portali.ts) veri
@@ -150,7 +150,7 @@ export async function hocaEkrani(): Promise<void> {
 
   /* ---------------------------------------------------------------- durum */
   type Durum = {
-    uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: YoklamaGunu;
+    uid: string; ad: string; sekme: string; ogrenciler: Ogr[]; aileler: Aile[]; tarih: string; yoklama: YoklamaGunu; eksikler: DefterEksikleri | null;
     evCalismasi?:Record<string,Tekrar>|null; secili: string; ilerleme: Ilerleme | null; degerlendirme: Kayit[]; notlar: Kayit[]; hafta: number; odevler: Kayit[]; duyurular: Kayit[]; bildirimler: Kayit[]; yukleniyor?: boolean;
     /** Seçili ders gününe ait veli mazeretleri (yoklama ekranındaki şerit). */
     gunMazeretleri: Kayit[];
@@ -168,6 +168,7 @@ export async function hocaEkrani(): Promise<void> {
   let defterPanel: {ayrilabilir:()=>boolean;temizle:()=>void}|undefined;
   let defterYukleme=0;
   let defterOnSecim=''; // öğrenci kartındaki «Ders defterini aç» ile gelen öğrenci (defter paneli açılınca seçili gelir)
+  let defterOnEksik=false; // başlıktaki «doldurulmamış defter kaydı» ile gelindi: panel liste görünümüyle açılır
   const defterKapat=()=>{defterYukleme++;defterPanel?.temizle();defterPanel=undefined;};
   let duzenlenenDuyuru: string | null = null; // hoca bir duyuruyu düzenliyorsa id'si (yeni duyuru formu düzenleme kipine geçer)
   const col = (ad: string) => fs.collection(db, ad);
@@ -176,6 +177,24 @@ export async function hocaEkrani(): Promise<void> {
   const varsayilanTarih = () => { const b = bugunISO(); return veri.gunler.find((g) => g.tarih === b)?.tarih || [...veri.gunler].reverse().find((g) => g.tarih <= b)?.tarih || veri.gunler[0].tarih; };
   const varsayilanHafta = () => { const b = bugunISO(); const bu = veri.gunler.find((g) => g.tarih >= b); return bu ? bu.hafta : haftalar[haftalar.length - 1].hafta; };
 
+  /* Doldurulmamış defterler (14 Eyl 2026): giriş sonrası arka planda hesaplanır, başlıkta sayı + bağlantı olur;
+     defter paneli aynı veriyi alır ve her kayıtta geri bildirir. Katalog tembel yüklenir (defter sekmesiyle aynı parça). */
+  const heroEksikHtml = () => {
+    const e = S?.eksikler;
+    if (!e) return '<span data-hero-eksik>Defter eksikleri hesaplanıyor…</span>';
+    if (!e.toplam) return '<span data-hero-eksik>Ders defteri eksiksiz ✓</span>';
+    return `<button type="button" class="baglanti-dugme" data-defter-eksik data-hero-eksik>${e.toplam} doldurulmamış defter kaydı (${e.gunler.filter((g) => g.eksikler.length).length} gün · ${e.ogrenciler.length} öğrenci)</button>`;
+  };
+  const heroEksikCiz = () => { const el = kok.querySelector<HTMLElement>('[data-hero-eksik]'); if (el) el.outerHTML = heroEksikHtml(); };
+  const eksikleriHesapla = async () => {
+    const durum = S; if (!durum) return;
+    try {
+      const katalog = (await import('../data/ders-defteri-2026-2027.json')).default;
+      const e = await defterEksikleri(db, durum.ogrenciler.filter((o) => o.durum !== 'pasif').map((o) => o.ref), katalogGunleri(katalog), bugunISO());
+      if (S !== durum) return;
+      durum.eksikler = e; heroEksikCiz();
+    } catch { const el = kok.querySelector<HTMLElement>('[data-hero-eksik]'); if (el && S === durum) el.textContent = 'Defter eksikleri hesaplanamadı; defter sekmesinde «Yenile» deyin.'; }
+  };
   const yukle = async (user: { uid: string }) => {
     const h = await fs.getDoc(fs.doc(db, 'hocalar', user.uid));
     if (!h.exists()) { kok.innerHTML = `<p class="not hata">Bu hesap hoca olarak tanımlı değil. Yönetici (info@ulucamii.be) hesabınızı tanımladıktan sonra tekrar girin.</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; return; }
@@ -184,7 +203,7 @@ export async function hocaEkrani(): Promise<void> {
       uid: user.uid, ad: String((h.data() as { ad?: string }).ad || ''), sekme: 'yoklama',
       ogrenciler: ogr.map((o) => ({ ...(o as unknown as Ogr), ref: o.id })).sort((x, y) => (x.soyad + x.ad).localeCompare(y.soyad + y.ad, 'tr')),
       aileler: (aile as unknown as Aile[]).map((x) => ({ ...x, eposta: (x as unknown as Kayit).id as string })),
-      tarih: varsayilanTarih(), yoklama: {}, gunMazeretleri: [], mazeretKuraliDegisen: [], mazeretGunleri: [], secili: '', ilerleme: null, degerlendirme: [], notlar: [], hafta: varsayilanHafta(), odevler: [], duyurular: [], bildirimler: [], okunmamis: 0, devam: null,
+      tarih: varsayilanTarih(), yoklama: {}, eksikler: null, gunMazeretleri: [], mazeretKuraliDegisen: [], mazeretGunleri: [], secili: '', ilerleme: null, degerlendirme: [], notlar: [], hafta: varsayilanHafta(), odevler: [], duyurular: [], bildirimler: [], okunmamis: 0, devam: null,
     };
     /* Kural geçmiş günleri de kapsar: hoca yoklamayı kaydettikten SONRA gelen bir mazeret ancak
        o gün yeniden açılınca işlenir. Bu yüzden mazeret bildirilmiş bütün günler gün listesinde
@@ -196,6 +215,7 @@ export async function hocaEkrani(): Promise<void> {
     S!.okunmamis = (await kayitlar('bildirimler', fs.where('okundu', '==', false)).catch(() => [] as Kayit[])).length;
     await yoklamaYukle();
     ciz();
+    void eksikleriHesapla();
   };
   const yoklamaYukle = async () => {
     if (!S) return;
@@ -486,7 +506,7 @@ export async function hocaEkrani(): Promise<void> {
       const bugunMu = g.tarih === b;
       return `<div class="hero-gun" data-hero-gun><p class="hg-tarih"><b>${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</b> · ${g.hafta}. hafta<span class="rozet ${bugunMu ? 'var' : ''}">${bugunMu ? 'bugün ders var' : 'sıradaki ders günü'}</span></p>
         <p class="hg-dersler">${g.dersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p>
-        <p class="hg-sayilar"><span>${aktif.length} aktif öğrenci</span>${S!.okunmamis ? `<button type="button" class="baglanti-dugme" data-sekme="bildirim">${S!.okunmamis} okunmamış veli bildirimi</button>` : '<span>Okunmamış veli bildirimi yok</span>'}</p></div>`;
+        <p class="hg-sayilar"><span>${aktif.length} aktif öğrenci</span>${S!.okunmamis ? `<button type="button" class="baglanti-dugme" data-sekme="bildirim">${S!.okunmamis} okunmamış veli bildirimi</button>` : '<span>Okunmamış veli bildirimi yok</span>'}${heroEksikHtml()}</p></div>`;
     })();
     kok.innerHTML = `<div class="hoca-hero"><div class="hero-serit" aria-hidden="true"></div>
         <div class="hero-ust"><div><p class="etiket etiket-vurgu">Kur’an kursu · ${esc(veri.donem)} dönemi</p><h1 class="hero-baslik">Hoca ekranı <span class="kucuk">· ${esc(S.ad)}</span></h1></div><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}Çıkış</button></div>
@@ -503,8 +523,8 @@ export async function hocaEkrani(): Promise<void> {
         try{
           const [mod,katalog]=await Promise.all([import('./ders-defteri'),import('../data/ders-defteri-2026-2027.json')]);
           if(yukleme!==defterYukleme||S!==durum||!defterRoot.isConnected)return;
-          defterPanel=mod.dersDefteri(defterRoot,{db,ogrenciler:durum.ogrenciler,katalog:katalog.default,bugun:new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Brussels'}).format(new Date()),baslangicRef:defterOnSecim,ceviri});
-          defterOnSecim='';
+          defterPanel=mod.dersDefteri(defterRoot,{db,ogrenciler:durum.ogrenciler,katalog:katalog.default,bugun:new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Brussels'}).format(new Date()),baslangicRef:defterOnSecim,baslangicEksik:defterOnEksik,eksikler:durum.eksikler,eksikDegisti:(e)=>{durum.eksikler=e;heroEksikCiz();},ceviri});
+          defterOnSecim='';defterOnEksik=false;
         }catch{
           if(yukleme!==defterYukleme||!defterRoot.isConnected)return;
           defterRoot.innerHTML='<p role="status">Ders defteri yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" data-defter-tekrar>Yeniden dene</button>';
@@ -525,7 +545,7 @@ export async function hocaEkrani(): Promise<void> {
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
   kok.addEventListener('click', async (ev) => {
-    const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk],[data-mazeret-uygula],[data-defter-ac]');
+    const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk],[data-mazeret-uygula],[data-defter-ac],[data-defter-eksik]');
     if (!el) return;
     try {
       if (el.dataset.eylem === 'cikis') { if(defterPanel&&!defterPanel.ayrilabilir())return; bultenTemizle?.(); defterKapat(); await auth.signOut(a); S = null; girisEkrani(); return; }
@@ -538,6 +558,7 @@ export async function hocaEkrani(): Promise<void> {
       }
       if (el.dataset.sekme) { const ad = el.dataset.sekme; if(await sekmeyeGec(ad))kok.querySelector<HTMLElement>('#hoca-tab-' + ad)?.focus(); return; }
       if (el.dataset.defterAc) { defterOnSecim = el.dataset.defterAc; if (await sekmeyeGec('defter')) kok.querySelector<HTMLElement>('#hoca-tab-defter')?.focus(); return; }
+      if (el.hasAttribute('data-defter-eksik')) { defterOnEksik = true; if (await sekmeyeGec('defter')) kok.querySelector<HTMLElement>('#hoca-tab-defter')?.focus(); return; }
       if (!S) return;
       if (el.dataset.zk) {
         const yaz = el.closest('.zengin-alan')?.querySelector<HTMLElement>('.za-yaz'); if (!yaz) return;

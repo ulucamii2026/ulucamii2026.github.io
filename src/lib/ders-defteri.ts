@@ -185,6 +185,119 @@ export async function gunDefterOzeti(
   return out;
 }
 
+/* ─────────────── Doldurulmamış defterler (14 Eyl 2026, Rıdvan) ───────────────
+   «Hangi gün hangi öğrencinin hangi dersi doldurulmamış — tek ekranda göreyim, ekran beni yönlendirsin.»
+   Geçmiş (bugün dâhil) ders günleri × aktif öğrenci × ders; kaydı olmayanlar gün → öğrenci → ders sırasıyla.
+   Yoklama ipucu (Var/Yok/Mazeretli/Geç) her eksiğin yanına konur: gelmeyenlerin kaydı toplu açılabilir,
+   gelenlerinki hocanın yazmasını bekler. Öğrenci başına tek okuma (kayıt kimlikleri), gün başına bir yoklama. */
+export type EksikDersTanimi = { id: string; sira: number; kod: string; konu: string };
+export type EksikGunTanimi = { tarih: string; hafta: number; dersler: EksikDersTanimi[] };
+export type EksikKayit = EksikDersTanimi & { ref: string; tarih: string; yoklama: string };
+export type EksikGun = {
+  tarih: string;
+  hafta: number;
+  beklenen: number;
+  dolu: number;
+  yoklamaVar: boolean;
+  eksikler: EksikKayit[];
+};
+export type DefterEksikleri = {
+  gunler: EksikGun[];
+  toplam: number;
+  ogrenciler: string[];
+  gelmeyen: number;
+  /** Hiç kaydı ve yoklaması olmayan geçmiş günler: ders yapılmamış (tatil, dönem başlamamış) sayılır, toplama girmez. */
+  bosGunler: string[];
+  hesaplandi: string;
+};
+
+/** Katalogdan gün tanımları (tarih → dersler). Hoca ekranı ve defter paneli aynı kaynağı kullanır. */
+export function katalogGunleri(katalog: DefterDersi[]): EksikGunTanimi[] {
+  const m = new Map<string, EksikGunTanimi>();
+  for (const d of katalog) {
+    const g = m.get(d.tarih) || { tarih: d.tarih, hafta: d.hafta, dersler: [] };
+    g.dersler.push({ id: d.id, sira: d.sira, kod: d.kod, konu: d.konu });
+    m.set(d.tarih, g);
+  }
+  return [...m.values()].sort((a, b) => a.tarih.localeCompare(b.tarih));
+}
+
+/** Saf hesap: test edilebilir; ağ yok. `refler` sırası öğrenci sırasıdır (soyada göre gelir). */
+export function eksikleriHesapla(
+  refler: string[],
+  gunler: EksikGunTanimi[],
+  bugun: string,
+  kayitIdleri: Record<string, Iterable<string>>,
+  yoklamalar: Record<string, Record<string, Record<string, string>> | null | undefined>,
+): DefterEksikleri {
+  const sonuc: EksikGun[] = [];
+  const bosGunler: string[] = [];
+  const kisiler = new Set<string>();
+  let gelmeyen = 0;
+  const varOlan = new Map(refler.map((r) => [r, new Set(kayitIdleri[r] || [])]));
+  for (const g of [...gunler].filter((x) => x.tarih <= bugun).sort((a, b) => a.tarih.localeCompare(b.tarih))) {
+    const y = yoklamalar[g.tarih] || null;
+    const yoklamaVar = !!y && Object.keys(y).length > 0;
+    const dersler = [...g.dersler].sort((a, b) => a.sira - b.sira);
+    // Kimsenin kaydı ve yoklaması yoksa o gün ders yapılmamış görünür (tatil / dönem başlamamış): sayılmaz, ayrıca listelenir.
+    if (!yoklamaVar && !refler.some((r) => dersler.some((d) => varOlan.get(r)!.has(d.id)))) {
+      bosGunler.push(g.tarih);
+      continue;
+    }
+    const eksikler: EksikKayit[] = [];
+    let dolu = 0;
+    for (const ref of refler) {
+      const var_ = varOlan.get(ref)!;
+      for (const d of dersler) {
+        if (var_.has(d.id)) {
+          dolu++;
+          continue;
+        }
+        const yk = y?.[ref]?.[String(d.sira)] || "";
+        if (yk === "yok" || yk === "mazeret") gelmeyen++;
+        eksikler.push({ ...d, ref, tarih: g.tarih, yoklama: yk });
+        kisiler.add(ref);
+      }
+    }
+    sonuc.push({
+      tarih: g.tarih,
+      hafta: g.hafta,
+      beklenen: refler.length * dersler.length,
+      dolu,
+      yoklamaVar,
+      eksikler,
+    });
+  }
+  return {
+    gunler: sonuc,
+    toplam: sonuc.reduce((n, g) => n + g.eksikler.length, 0),
+    ogrenciler: [...kisiler],
+    gelmeyen,
+    bosGunler,
+    hesaplandi: new Date().toISOString(),
+  };
+}
+
+/** Okuma + hesap. Öğrenci başına kayıt alt koleksiyonu (kimlikler), geçmiş gün başına yoklama. */
+export async function defterEksikleri(
+  db: Firestore,
+  refler: string[],
+  gunler: EksikGunTanimi[],
+  bugun: string,
+): Promise<DefterEksikleri> {
+  const gecmis = gunler.filter((g) => g.tarih <= bugun);
+  const [kayitlar, yoklamalar] = await Promise.all([
+    Promise.all(
+      refler.map(
+        async (ref) =>
+          [ref, (await getDocs(collection(db, "dersDefteri", ref, "kayitlar"))).docs.map((d) => d.id)] as const,
+      ),
+    ),
+    Promise.all(gecmis.map(async (g) => [g.tarih, await gunYoklamasi(db, g.tarih).catch(() => null)] as const)),
+  ]);
+  return eksikleriHesapla(refler, gecmis, bugun, Object.fromEntries(kayitlar), Object.fromEntries(yoklamalar));
+}
+
 /* ─────────────────────── KALICI KURAL: veli mazereti her zaman kabul edilir ───────────────────────
    Rıdvan'ın 12 Eylül 2026 kararı: «Veliden gelen mazereti her zaman kabul ediyorum.»
    Bu yüzden mazeret bir TIKLAMA değil, bir KURALDIR: veli o ders günü için portaldan mazeret

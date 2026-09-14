@@ -335,3 +335,76 @@ test('Fransızca aile: yeni bülten Fransızca başlar; «Ders defterinden doldu
  await expect(page.locator('[name=dil]')).toHaveValue('tr');
  await expect(page.locator('[data-hb-cevir]')).toHaveCount(0);
 });
+
+/* 14 Eyl 2026 — Rıdvan: «hangi gün hangi öğrencinin hangi dersi doldurulmamış, tek ekranda göreyim; ekran beni
+   yönlendirsin, gidip kolayca doldurayım.» Harness saati 13 Eyl 2026 → geçmiş günler 12 ve 13 Eyl (3'er ders). */
+test('Doldurulmamış defterler: başlıkta sayı; tek ekran listesi; dokununca defter o kayıtla açılır; «Kaydet ve sonraki» sıradaki eksiğe geçer; gelmeyenlerin kaydı toplu açılır',async({page,context})=>{
+ const g12=katalog.filter(x=>x.tarih==='2026-09-12'), g13=katalog.filter(x=>x.tarih==='2026-09-13');
+ const k=(x)=>({...kayit,id:x.id,tarih:x.tarih,sira:x.sira,no:x.no,sayfa:x.sayfa,konu:x.konu,kaynak:x.kaynak,calisma:'Dolu'});
+ const ucOgr=[...students,{ref:'TEST-3',ad:'Üçüncü',soyad:'Talebe'}];
+ await mektepAc(page,context,{hoca:true,students:ucOgr,records:{
+  'dersDefteri/TEST-1/kayitlar':[...g12,...g13].map(k),
+  'dersDefteri/TEST-2/kayitlar':[k(g12[0])],
+  yoklama:[{id:'TEST-2_2026-09-13',ref:'TEST-2',tarih:'2026-09-13',dersler:{1:'var',2:'var',3:'var'},not:''},{id:'TEST-3_2026-09-13',ref:'TEST-3',tarih:'2026-09-13',dersler:{1:'yok',2:'mazeret',3:'yok'},not:''}],
+ }});
+ // Başlık: arka planda hesaplanan sayı bir düğmedir; defteri liste görünümüyle açar.
+ const hero=page.locator('[data-hero-eksik]');
+ await expect(hero).toContainText('11 doldurulmamış defter kaydı');
+ await expect(hero).toContainText('2 gün · 2 öğrenci');
+ await hero.click();
+ const p=page.locator('[data-ders-defteri]');
+ await expect(p.locator('[data-dd-eksik-ozet]')).toContainText('11 eksik kayıt');
+ await expect(p.locator('[data-dd-eksik-ozet]')).toContainText('2 öğrenci');
+ await expect(p.locator('[data-dd-eksik-ozet]')).toContainText('3 yoklamada gelmedi');
+ await expect(p.locator('[data-dd-eksik-gun]')).toHaveCount(2);
+ await expect(p.locator('[data-dd-eksik-bos]')).toContainText('5 Eylül'); // plandaki ilk hafta sonu: kayıt/yoklama yok → sayılmaz, not düşülür
+ const gun12=p.locator('[data-dd-eksik-gun="2026-09-12"]'), gun13=p.locator('[data-dd-eksik-gun="2026-09-13"]');
+ await expect(gun12.locator('[data-dd-eksik]')).toHaveCount(5);
+ await expect(gun12).toContainText('4/9 dolu · 5 eksik');
+ await expect(gun12).toContainText('yoklaması girilmemiş');
+ await expect(gun12.locator('[data-dd-eksik-toplu]')).toHaveCount(0);
+ await expect(gun13.locator('[data-dd-eksik-toplu]')).toContainText('Gelmeyenlerin 3 kaydını aç');
+ await expect(gun13.locator('[data-dd-eksik="TEST-3"][data-dd-eksik-ders="2026-09-13_2"]')).toContainText('Yoklama: Mazeretli');
+ // Dokunuş: defter o öğrenci / gün / dersle açılır; kalan eksikler kuyruk olur.
+ await gun12.locator('[data-dd-eksik="TEST-2"][data-dd-eksik-ders="2026-09-12_2"]').click();
+ await expect(p.locator('[data-dd-form]')).toBeVisible();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-2');
+ await expect(p.locator('[data-dd-gun]')).toHaveValue('2026-09-12');
+ await expect(p.locator('[data-dd-ders="2026-09-12_2"]')).toHaveAttribute('aria-pressed','true');
+ await expect(p.locator('[data-dd-eksik-satir]')).toContainText('Sıradaki eksik: İkinci Örnek');
+ await expect(p.locator('[data-dd-eksik-satir]')).toContainText('3. ders');
+ await p.locator('[name=durum]').selectOption('islendi');await p.locator('[name=calisma]').fill('Eksik tamamlandı.');
+ await p.locator('[value=sonraki]').click();
+ await expect(p.locator('[data-dd-durum]')).toContainText('Sıradaki eksik: İkinci Örnek');
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-2');
+ await expect(p.locator('[data-dd-ders="2026-09-12_3"]')).toHaveAttribute('aria-pressed','true');
+ await expect(hero).toContainText('10 doldurulmamış');
+ // «Sıradakine geç» kuyruğu kayıt yazmadan ilerletir; sonra listeye dönüş: sayı düştü.
+ await p.locator('[data-dd-kuyruk-sonraki]').click();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-3');
+ await expect(p.locator('[data-dd-ders="2026-09-12_1"]')).toHaveAttribute('aria-pressed','true');
+ await p.locator('[data-dd-eksikler-ac]').click();
+ await expect(p.locator('[data-dd-eksik-ozet]')).toContainText('10 eksik kayıt');
+ // Gelmeyenlerin kaydı toplu açılır: yoklama Yok → «gelmedi», Mazeretli → «mazeretli»; liste ve başlık düşer.
+ page.once('dialog',x=>x.accept());
+ await gun13.locator('[data-dd-eksik-toplu]').click();
+ await expect(p.locator('[data-dd-eksik-durum]')).toContainText('3 ders kaydı açıldı (1 öğrenci)');
+ await expect(p.locator('[data-dd-eksik-ozet]')).toContainText('7 eksik kayıt');
+ await expect(gun13.locator('[data-dd-eksik-toplu]')).toHaveCount(0);
+ const r3=await page.evaluate(()=>window.__records['dersDefteri/TEST-3/kayitlar']);
+ expect(r3.map(x=>`${x.id}:${x.durum}`).sort()).toEqual(['2026-09-13_1:gelmedi','2026-09-13_2:mazeretli','2026-09-13_3:gelmedi']);
+ await expect(hero).toContainText('7 doldurulmamış');
+ // «Sırayla doldur» listenin ilk eksiğiyle başlar: soyad sırasında İkinci Örnek önce gelir; 12_3 kaydedilmeden atlanmıştı.
+ await p.locator('[data-dd-eksik-basla]').click();
+ await expect(p.locator('[data-dd-form]')).toBeVisible();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-2');
+ await expect(p.locator('[data-dd-ders="2026-09-12_3"]')).toHaveAttribute('aria-pressed','true');
+ await expect(p.locator('[data-dd-eksik-satir]')).toContainText('Sıradaki eksik: Üçüncü Talebe');
+ // Eksik yoksa: liste «eksiksiz» der, başlık ✓.
+ await p.locator('[data-dd-eksikler-ac]').click();
+ await page.evaluate(()=>{for(const r of ['TEST-2','TEST-3'])window.__records[`dersDefteri/${r}/kayitlar`]=window.__records['dersDefteri/TEST-1/kayitlar'].map(x=>({...x}));});
+ await p.locator('[data-dd-eksik-yenile]').click();
+ await expect(p.locator('[data-dd-eksik-ozet]')).toContainText('0 eksik kayıt');
+ await expect(p).toContainText('defteri tam ✓');
+ await expect(hero).toContainText('eksiksiz ✓');
+});
