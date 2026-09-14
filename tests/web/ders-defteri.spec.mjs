@@ -121,6 +121,76 @@ test('Gelmeyenlerin defteri toplu doldurulur; var olan kayda dokunulmaz',async({
  await p.locator('[data-dd-toplu]').click();
  await expect(p.locator('[data-dd-durum]')).toContainText('kaydı zaten var');
 });
+/* 14 Eyl 2026 — «dokuna dokuna» doldurma: kalıp çipleri, hazır kayıt, son kayıtla aynı, yapışkan kaydet.
+   Rıdvan: «hazır butonlara basınca o metin ile defter kolay doldurulabilsin; özel bir durum varsa hoca yine yazar.» */
+test('Kalıp çipi cümleyi ekler, ikinci dokunuş geri alır; hocanın kendi metni korunur ve kaydedilir',async({page,context})=>{
+ const p=await ac(page,context,{yoklama:[yoklamaKaydi('TEST-1',{1:'var',2:'var',3:'var'})]});
+ const cip=p.locator('[data-dd-kalip="calisma"][data-metin="Derse katılımı güzeldi."]');
+ await expect(cip).toHaveAttribute('aria-pressed','false');
+ await p.locator('[name=calisma]').fill('Hocanın özel notu');
+ await cip.click();
+ await expect(p.locator('[name=calisma]')).toHaveValue('Hocanın özel notu. Derse katılımı güzeldi.');
+ await expect(cip).toHaveAttribute('aria-pressed','true');
+ await expect(p.locator('[data-dd-durum]')).toContainText('Kaydedilmemiş');
+ await p.locator('[data-dd-kalip="calisma"][data-metin="Memnunum, elhamdülillah."]').click();
+ await expect(p.locator('[name=calisma]')).toHaveValue('Hocanın özel notu. Derse katılımı güzeldi. Memnunum, elhamdülillah.');
+ await cip.click(); // geri al
+ await expect(p.locator('[name=calisma]')).toHaveValue('Hocanın özel notu. Memnunum, elhamdülillah.');
+ await expect(cip).toHaveAttribute('aria-pressed','false');
+ // Elle silince çipin basılı görünümü de düşer.
+ await p.locator('[name=calisma]').fill('Sadece hoca');
+ await expect(p.locator('[data-dd-kalip="calisma"][data-metin="Memnunum, elhamdülillah."]')).toHaveAttribute('aria-pressed','false');
+ // Kur’an dersinde okuma/dikkat kalıpları var; madde alanı virgülle birleşir.
+ await p.locator('[data-dd-kalip="odev"][data-metin="Öğrendiği harfleri evde her gün tekrar etsin."]').click();
+ await p.locator('.dd-ayrinti summary').click();
+ await p.locator('[data-dd-kalip="dikkat"][data-metin="Mahreç"]').click();await p.locator('[data-dd-kalip="dikkat"][data-metin="Peltek harfler"]').click();
+ await expect(p.locator('[name=dikkat]')).toHaveValue('Mahreç, Peltek harfler');
+ await p.locator('[name=durum]').selectOption('islendi');await p.locator('[value=kaydet]').click();
+ await expect(p.locator('[data-dd-durum]')).toContainText('kaydedildi');
+ const r=await page.evaluate(y=>window.__records[y][0],yol);
+ expect(r.calisma).toBe('Sadece hoca');expect(r.odev).toBe('Öğrendiği harfleri evde her gün tekrar etsin.');expect(r.dikkat).toBe('Mahreç, Peltek harfler');
+});
+test('Hazır kayıt tek dokunuşla durum ve notları doldurur; dolu alan ezilmez; «Son kayıtla aynı» sıradaki öğrenciye taşır',async({page,context})=>{
+ const p=await ac(page,context,{yoklama:[yoklamaKaydi('TEST-1',{1:'var',2:'var',3:'var'}),yoklamaKaydi('TEST-2',{1:'var',2:'var',3:'var'})]});
+ await expect(p.locator('[data-dd-oncekinden]')).toHaveCount(0); // henüz bu ders için kayıt yok
+ await p.locator('[name=odev]').fill('Kendi ödevim');
+ await p.locator('[data-dd-hazir="islendi-iyi"]').click();
+ await expect(p.locator('[name=durum]')).toHaveValue('islendi');
+ await expect(p.locator('[name=calisma]')).toHaveValue(new RegExp(`«${d.konu}» konusunu birlikte işledik\\. Derse katılımı güzeldi\\.`));
+ await expect(p.locator('[name=odev]')).toHaveValue('Kendi ödevim'); // dolu alan korundu
+ await expect(p.locator('[data-dd-durum]')).toContainText('dolu alanlara dokunulmadı');
+ await expect(p.locator('[data-dd-kalip="calisma"][data-metin="Derse katılımı güzeldi."]')).toHaveAttribute('aria-pressed','true');
+ await p.locator('[value=kaydet]').click();await expect(p.locator('[data-dd-durum]')).toContainText('kaydedildi');
+ // Sıradaki öğrencide aynı ders: «Son kayıtla aynı» boş alanları kopyalar, durum da gelir.
+ await p.locator('[data-dd-ogr]').selectOption('TEST-2');await expect(p.locator('[data-dd-form]')).toBeVisible();
+ await expect(p.locator('[name=calisma]')).toHaveValue('');
+ await p.locator('[data-dd-oncekinden]').click();
+ await expect(p.locator('[name=durum]')).toHaveValue('islendi');
+ await expect(p.locator('[name=odev]')).toHaveValue('Kendi ödevim');
+ await expect(p.locator('[name=calisma]')).toHaveValue(/Derse katılımı güzeldi\./);
+ await p.locator('[value=kaydet]').click();await expect(p.locator('[data-dd-durum]')).toContainText('kaydedildi');
+ expect((await page.evaluate(()=>window.__records['dersDefteri/TEST-2/kayitlar']))[0].odev).toBe('Kendi ödevim');
+ // Ertelendi hazır kaydı durumu değiştirir; dolu çalışma notuna dokunmaz.
+ await p.locator('[data-dd-hazir="ertelendi"]').click();
+ await expect(p.locator('[name=durum]')).toHaveValue('ertelendi');
+ await expect(p.locator('[name=calisma]')).toHaveValue(/Derse katılımı güzeldi\./);
+});
+test('Gelmeyen öğrencide çip ve hazır kayıt görünmez; kaydet çubuğu yapışkan; dokunma hedefleri yeterli',async({page,context},testInfo)=>{
+ const p=await ac(page,context,{yoklama:[yoklamaKaydi('TEST-1',{1:'yok',2:'var',3:'var'})]});
+ await expect(p.locator('[data-dd-kalip]')).toHaveCount(0);await expect(p.locator('[data-dd-hazir]')).toHaveCount(0);
+ await p.locator('[data-dd-ders="2026-09-12_2"]').click();
+ await expect(p.locator('[data-dd-hazir]').first()).toBeVisible();
+ expect(await p.locator('.dd-kaydet').evaluate(el=>getComputedStyle(el).position)).toBe('sticky');
+ const kucuk=await p.locator('[data-dd-kalip]').evaluateAll(els=>els.filter(el=>el.getBoundingClientRect().height<36).length);
+ expect(kucuk).toBe(0);
+ if(testInfo.project.name.startsWith('mobil')){
+  // Telefonda kaydet düğmesi, çiplerin altına kaydırmadan görünür (sayfanın altına yapışır).
+  await p.locator('[name=calisma]').scrollIntoViewIfNeeded();
+  const kutu=await p.locator('[value=kaydet]').boundingBox();const vh=page.viewportSize().height;
+  expect(kutu.y+kutu.height).toBeLessThanOrEqual(vh+1);
+ }
+ await p.screenshot({path:testInfo.outputPath('ders-defteri-kaliplar.png')});
+});
 test('«Kaydet ve sonraki» gün bitince ertesi güne değil sıradaki öğrenciye geçer',async({page,context})=>{
  const p=await ac(page,context,{yoklama:[yoklamaKaydi('TEST-1',{1:'var',2:'var',3:'var'})]});
  // Listedeki ilk öğrenciden başla (sıra ada göre; sabit ref varsaymayalım).

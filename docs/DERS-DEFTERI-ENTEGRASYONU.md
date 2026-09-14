@@ -83,6 +83,35 @@ ile kütüphanedeki `topluGelmediYaz` üzerinden açar (ekranla birebir aynı be
 ile güne daraltılır. Var olan kayda dokunmaz. Denetim «DEFTERİ AÇILMAMIŞ n ders» diyorsa
 eksikleri bu kapatır (14 Eyl 2026: hoca ekranından önceki 1. haftanın 16 kaydı böyle açıldı).
 
+## «Dokuna dokuna» doldurma — kalıp çipleri ve hazır kayıt (14 Eyl 2026)
+
+Rıdvan: «hazır kalıplar olsun, hazır butonlara basınca o metin ile defter kolay
+doldurulabilsin; özel bir durum varsa hoca yine özel durumu yazar.» 12–13 Eylül'ün 23
+işlenmiş kaydı incelendi: hoca üç tür cümle yazıyor — katılım/tutum, konuya bağlı
+«…öğrendik», ve çoğu öğrenciye birebir aynı ödev cümlesi (5 kez aynı ödev). «Sonraki
+adım», «okunan», «dikkat» alanları hiç kullanılmamıştı.
+
+- Kalıp metinleri **`src/lib/defter-kaliplari.ts`** içindedir (saf modül; DOM ve
+  Firestore bilmez). `defterKaliplari(ders, sonrakiDers)` alanlara göre grup döndürür;
+  Kur'an dersinde «Okuma», «Okuma · ezber», «Okunan», «Dikkat» grupları eklenir.
+  Konu, kaynak ve sıradaki ders plandan gelir; **öğrenci adı hiçbir kalıba girmez**.
+- **Çip** bir cümle ekler, ikinci dokunuş geri alır (`aria-pressed`); hocanın serbest
+  metnine cümle sınırında eklenir (`kalipEkle`/`kalipCikar`). Kısa etiket alanları
+  (`okunan`, `dikkat`) virgülle birleşir (`ALAN_BICIMI`). Elle silince çipin basılı
+  görünümü de düşer.
+- **Hazır kayıt** (`hazirKayitlar`): «İşlendi · katılım iyi», «İşlendi · tekrar gerek»,
+  «Kısmen işlendi», «Ertelendi». Durumu daima yazar; metin alanlarını **yalnız boşsa**
+  doldurur, dolu alan raporlanır (`hazirKaydiUygula`).
+- **«Son kayıtla aynı»**: aynı dersin en son KAYDEDİLEN notları cihazda tutulur
+  (`localStorage: ulucamii-defter-son-kayit`, 40 ders); sıradaki öğrencide boş alanlara
+  kopyalar. Gelmeyen öğrencinin kaydı önbelleğe alınmaz.
+- **Kullanım sayacı** cihazda kalır (`ulucamii-defter-kalip-sayac`); çok kullanılan çip
+  grubun başına gelir — yalnız yeniden çizimde, dokunurken çipler yer değiştirmez.
+- Gelmeyen (`gelmedi`/`mazeretli`) derste çip ve hazır kayıt gösterilmez; kanonik not yeter.
+- Kaydet çubuğu ekranın altına yapışır; metin alanları içeriğe göre uzar.
+- Testler: `npm run test:kaliplar` (saf işlevler) ve `tests/web/ders-defteri.spec.mjs`
+  (çip, hazır kayıt, son kayıtla aynı, gelmeyen öğrenci, yapışkan çubuk, dokunma hedefi).
+
 ## Haftalık bülten bağlantısı
 
 **Bülten · İdare** içinde aynı öğrenci/hafta seçilip **Ders defterinden doldur**

@@ -103,12 +103,22 @@
   .dd-dersler button small {
     margin-top: 0.25rem;
   }
+  /* Telefonda yapışkan çubuk tek satır: iki düğme yan yana (alt alta iki düğme ekranın
+     beşte birini kaplıyordu, 14 Eyl 2026). */
   .ders-defteri .dd-kaydet {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(6.5rem, 2fr) 3fr;
+    gap: 0.5rem;
+    padding: 0.6rem 0;
   }
   .ders-defteri .dd-kaydet button {
     width: 100%;
+    padding-inline: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+  .ders-defteri .dd-uzun {
+    display: none; /* «Kaydet ve sonraki» — dar ekranda kısa etiket */
   }
 }
 
@@ -169,4 +179,136 @@
 }
 .ders-defteri .dd-toplu p {
   margin: 0.5rem 0 0;
+}
+
+/* 14 Eyl 2026 — «dokuna dokuna» doldurma: hazır kayıt çubuğu, kalıp çipleri, yapışkan kaydet.
+   Renkler tokenlerden (açık/koyu tema kendiliğinden); dokunma hedefi kaba işaretçide ≥ 44 px.
+   Basılı çip metinle de ayırt edilir (onay imi), yalnız renge güvenilmez. */
+.ders-defteri .dd-kalip-ad {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--metin-2);
+  margin: 0 0 0.35rem;
+}
+.ders-defteri .dd-hazir {
+  margin: 0 0 1.1rem;
+  padding: 0.9rem 1rem 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--vurgu) 28%, var(--cizgi));
+  border-radius: var(--radius-kose);
+  background: color-mix(in oklab, var(--vurgu) 6%, var(--zemin));
+}
+.ders-defteri .dd-hazir-dugmeler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.ders-defteri .dd-hazir .kucuk {
+  margin: 0.6rem 0 0;
+}
+.ders-defteri .dd-hazir-dugme {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  min-height: 2.6rem;
+  padding: 0.45rem 0.95rem;
+  border: 1.5px solid color-mix(in oklab, var(--vurgu) 55%, var(--cizgi));
+  border-radius: var(--radius-kose);
+  background: var(--zemin);
+  color: color-mix(in oklab, var(--vurgu) 85%, var(--metin));
+  cursor: pointer;
+}
+.ders-defteri .dd-hazir-dugme:hover {
+  background: color-mix(in oklab, var(--vurgu) 12%, var(--zemin));
+}
+/* Birincil hazır kayıt: sekme seçili kalıbıyla aynı tonlu zemin (koyu temada --vurgu açık
+   somon → beyaz yazı 2,81:1 kalıyordu; axe, 14 Eyl 2026). Yazı rengi her temada 4,5:1 üstü. */
+.ders-defteri .dd-hazir-dugme:first-child {
+  background: color-mix(in oklab, var(--vurgu) 18%, var(--zemin));
+  border-color: var(--vurgu);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--vurgu) 40%, transparent);
+}
+.ders-defteri .dd-hazir-dugme:first-child:hover {
+  background: color-mix(in oklab, var(--vurgu) 28%, var(--zemin));
+}
+.ders-defteri .dd-hazir-onceki {
+  border-style: dashed;
+}
+.ders-defteri .dd-kaliplar {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.4rem 0 1.1rem;
+}
+.ders-defteri .dd-kalip-grup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+.ders-defteri .dd-kalip-grup .dd-kalip-ad {
+  flex: 0 0 100%;
+  margin: 0;
+}
+.ders-defteri .dd-kalip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.25;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--cizgi-etkilesim);
+  border-radius: 999px;
+  background: var(--zemin);
+  color: var(--metin);
+  cursor: pointer;
+  text-align: start;
+}
+.ders-defteri .dd-kalip:hover {
+  border-color: var(--metin-2);
+  background: var(--zemin-2);
+}
+.ders-defteri .dd-kalip[aria-pressed="true"] {
+  background: color-mix(in oklab, var(--vurgu) 14%, var(--zemin));
+  border-color: color-mix(in oklab, var(--vurgu) 55%, var(--cizgi));
+  color: color-mix(in oklab, var(--vurgu) 80%, var(--metin));
+  font-weight: 600;
+}
+.ders-defteri .dd-kalip[aria-pressed="true"]::before {
+  content: "✓";
+  font-weight: 700;
+}
+.ders-defteri .dd-kalip:focus-visible,
+.ders-defteri .dd-hazir-dugme:focus-visible {
+  outline: 2px solid var(--vurgu);
+  outline-offset: 2px;
+}
+@media (pointer: coarse) {
+  .ders-defteri .dd-kalip {
+    min-height: 2.75rem;
+    padding-inline: 0.95rem;
+  }
+  .ders-defteri .dd-hazir-dugme {
+    min-height: 2.9rem;
+  }
+}
+/* Kaydet çubuğu ekranın altına yapışır: çiplere dokunduktan sonra kaydetmek için kaydırma gerekmez. */
+.ders-defteri .dd-kaydet {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  margin-top: 0.5rem;
+  box-shadow: 0 -10px 18px -14px rgb(0 0 0 / 0.35);
+}
+.ders-defteri .dd-kaydet button {
+  min-height: 2.75rem;
+}
+.portal .ders-defteri textarea {
+  overflow: hidden;
+  resize: vertical;
 }

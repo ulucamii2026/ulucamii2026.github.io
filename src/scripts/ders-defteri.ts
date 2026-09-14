@@ -14,6 +14,16 @@ import {
   type DersKaydi,
 } from "../lib/ders-defteri";
 import { bultenEsc as e } from "./bulten-gorunumu";
+import {
+  ALAN_BICIMI,
+  defterKaliplari,
+  hazirKayitlar,
+  hazirKaydiUygula,
+  kalipDegistir,
+  kalipVar,
+  sayacaGoreSirala,
+  type KalipAlani,
+} from "../lib/defter-kaliplari";
 
 type Ogr = { ref: string; ad: string; soyad: string };
 export function dersDefteri(
@@ -59,6 +69,56 @@ export function dersDefteri(
     } catch {
       /* gizli pencerede yazılamaz; varsayılan kullanılır */
     }
+  };
+  /* 14 Eyl 2026 — «dokuna dokuna» doldurma (Rıdvan: «hazır kalıplar olsun … tek tek el ile yazmak
+     yerine»). Kalıp metinleri src/lib/defter-kaliplari.ts'te; burada yalnız ekrana bağlanır.
+     · Kullanım sayacı cihazda kalır: çok kullanılan kalıp grubun başına gelir (yeniden çizimde;
+       dokunurken çipler yer değiştirmez).
+     · Son kayıt önbelleği: aynı dersin en son KAYDEDİLEN notları (ders kimliğiyle) cihazda tutulur;
+       «Son kayıtla aynı» düğmesi sıradaki öğrencide boş alanlara kopyalar — 13 Eylül'de aynı ödev
+       cümlesi 5 öğrenciye tek tek yazılmıştı. Gelmeyen öğrencinin kaydı önbelleğe alınmaz. */
+  const sayacAnahtar = "ulucamii-defter-kalip-sayac";
+  const sonAnahtar = "ulucamii-defter-son-kayit";
+  const depoOku = <T,>(anahtar: string, varsayilan: T): T => {
+    try {
+      return { ...varsayilan, ...JSON.parse(localStorage.getItem(anahtar) || "{}") } as T;
+    } catch {
+      return varsayilan;
+    }
+  };
+  const depoYaz = (anahtar: string, deger: unknown) => {
+    try {
+      localStorage.setItem(anahtar, JSON.stringify(deger));
+    } catch {
+      /* gizli pencere: kalıplar yine çalışır, yalnız hatırlanmaz */
+    }
+  };
+  let sayac = depoOku<Record<string, number>>(sayacAnahtar, {});
+  const sayacArtir = (metin: string) => {
+    sayac = { ...sayac, [metin]: (sayac[metin] || 0) + 1 };
+    depoYaz(sayacAnahtar, sayac);
+  };
+  type SonKayit = Partial<Pick<DersKaydi, "durum" | "calisma" | "odev" | "sonraki" | "okunan" | "dikkat" | "grup">> & { zaman?: number };
+  const sonKayitOku = (dersId: string): SonKayit | null =>
+    depoOku<Record<string, SonKayit>>(sonAnahtar, {})[dersId] || null;
+  const sonKayitYaz = (k: DersKaydi) => {
+    if (gelmediMi(k.durum)) return;
+    const hepsi = depoOku<Record<string, SonKayit>>(sonAnahtar, {});
+    hepsi[k.id] = { durum: k.durum, calisma: k.calisma, odev: k.odev, sonraki: k.sonraki, okunan: k.okunan, dikkat: k.dikkat, grup: k.grup, zaman: Date.now() };
+    const kalanlar = Object.keys(hepsi)
+      .sort((a, b) => (hepsi[b].zaman || 0) - (hepsi[a].zaman || 0))
+      .slice(0, 40);
+    depoYaz(sonAnahtar, Object.fromEntries(kalanlar.map((i) => [i, hepsi[i]])));
+  };
+  /** Metin alanı içeriğe göre uzar; çipler eklerken kaydırma çubuğu çıkmaz. */
+  const buyut = (ta: HTMLTextAreaElement) => {
+    ta.style.height = "auto";
+    ta.style.height = `${ta.scrollHeight + 2}px`;
+  };
+  const hepsiniBuyut = () => root.querySelectorAll<HTMLTextAreaElement>("[data-dd-form] textarea").forEach(buyut);
+  const sonrakiDers = (d: DefterDersi) => {
+    const i = opt.katalog.findIndex((x) => x.id === d.id);
+    return i >= 0 ? opt.katalog[i + 1] || null : null;
   };
   const gunler = [...new Set(opt.katalog.map((d) => d.tarih))];
   let tarih = gunler.find((t) => t >= opt.bugun) || gunler.at(-1) || "";
@@ -134,6 +194,26 @@ export function dersDefteri(
         (d ? varsayilan(d) : null);
     const gun = opt.katalog.filter((x) => x.tarih === tarih);
     const gelmedi = gelmediMi(k?.durum || "");
+    const kaliplar = d ? defterKaliplari(d, sonrakiDers(d)) : null;
+    const hazirlar = d ? hazirKayitlar(d, sonrakiDers(d)) : [];
+    const sonKayit = d ? sonKayitOku(d.id) : null;
+    /* Kalıp çipleri: metin alanının hemen altında, grup başlıklarıyla. Dokunuş cümleyi ekler,
+       ikinci dokunuş geri alır (aria-pressed). Gelmeyen öğrencide çip yok — kanonik not yeter. */
+    const kalipSatiri = (key: KalipAlani, deger: string) => {
+      const gruplar = kaliplar?.[key] || [];
+      if (!gruplar.length || gelmedi) return "";
+      return `<div class="dd-kaliplar" role="group" aria-label="${e(defterAlanlari[key].ad)} için hazır kalıplar">${gruplar
+        .map(
+          (g) =>
+            `<div class="dd-kalip-grup"><span class="dd-kalip-ad">${e(g.ad)}</span>${sayacaGoreSirala(g.kaliplar, sayac)
+              .map(
+                (x) =>
+                  `<button type="button" class="dd-kalip" data-dd-kalip="${key}" data-metin="${e(x.metin)}" aria-pressed="${kalipVar(deger, x.metin)}" title="${e(x.metin)}">${e(x.etiket)}</button>`,
+              )
+              .join("")}</div>`,
+        )
+        .join("")}</div>`;
+    };
     const alan = (key: keyof typeof defterAlanlari) => {
       const f = defterAlanlari[key];
       // Gelmeyen derste çalışma notu zorunlu değil; boş bırakılırsa kanonik cümle yazılır.
@@ -141,9 +221,27 @@ export function dersDefteri(
       const ipucu =
         key === "calisma" && gelmedi
           ? `Boş bırakabilirsiniz: «${GELMEDI_NOTU[k!.durum]}» yazılır.`
-          : "Kısa notunuzu yazın…";
-      return `<label>${f.ad}<textarea name="${key}" maxlength="${f.max}" ${zorunlu ? "required" : ""} rows="${key === "calisma" ? 4 : 2}" placeholder="${e(ipucu)}">${e(k?.[key])}</textarea></label>`;
+          : gelmedi
+            ? "Kısa notunuzu yazın…"
+            : "Aşağıdaki kalıplara dokunun ya da kendi notunuzu yazın…";
+      const deger = String(k?.[key] || "");
+      return `<label>${f.ad}<textarea name="${key}" maxlength="${f.max}" ${zorunlu ? "required" : ""} rows="${key === "calisma" ? 4 : 2}" placeholder="${e(ipucu)}">${e(deger)}</textarea></label>${kalipSatiri(key, deger)}`;
     };
+    /* Hazır kayıt: tek dokunuşla durum + standart notlar (yalnız boş alanlar). «Son kayıtla aynı»
+       bu ders için en son kaydedilen notları kopyalar — sınıfın ortak ödevi bir kez yazılır. */
+    const hazirBar = () =>
+      gelmedi || !hazirlar.length
+        ? ""
+        : `<div class="dd-hazir" role="group" aria-label="Hazır kayıt"><span class="dd-kalip-ad">Hazır kayıt</span><div class="dd-hazir-dugmeler">${hazirlar
+            .map(
+              (h) =>
+                `<button type="button" class="dd-hazir-dugme" data-dd-hazir="${e(h.id)}" title="${e(h.aciklama)}">${e(h.etiket)}</button>`,
+            )
+            .join("")}${
+            sonKayit && !gelmediMi(sonKayit.durum || "")
+              ? `<button type="button" class="dd-hazir-dugme dd-hazir-onceki" data-dd-oncekinden title="Bu ders için en son kaydedilen notları (durum, çalışma, ödev, sonraki adım) boş alanlara kopyalar.">Son kayıtla aynı</button>`
+              : ""
+          }</div><p class="kucuk">Tek dokunuşla durum ve standart notlar gelir; dolu alanlara dokunulmaz. Sonra istediğinizi düzenleyin.</p></div>`;
     const YOK_ADI: Record<string, string> = { var: "Var", yok: "Yok", mazeret: "Mazeretli", gec: "Geç" };
     const yokRozet = (sira: number) => {
       const y = yoklamaDurumu(ref, sira);
@@ -157,7 +255,7 @@ export function dersDefteri(
 
     root.innerHTML = `<h2>Ders Defteri</h2><p>Kâğıttaki notlarınız, aynı dersin dijital kaydında.</p><div class="dd-secim"><label>Öğrenci<select data-dd-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => { const y = [1, 2, 3].map((s) => yoklama[o.ref]?.[String(s)] || "").filter(Boolean); const hepsi = y.length === 3 && y.every((x) => x === y[0]) ? y[0] : ""; return `<option value="${e(o.ref)}" ${ref === o.ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${hepsi && hepsi !== "var" ? ` — ${e(YOK_ADI[hepsi] || hepsi)}` : ""}</option>`; }).join("")}</select></label><label>Ders günü<select data-dd-gun ${mesgul ? "disabled" : ""}>${gunler.map((t) => `<option value="${t}" ${t === tarih ? "selected" : ""}>${new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", weekday: "short" }).format(new Date(t + "T12:00:00Z"))}</option>`).join("")}</select></label></div><p data-dd-durum role="status" tabindex="-1">${e(mesaj)}</p>${yoklamaHatasi ? '<p class="dd-uyari" data-dd-yoklama-hata>Bu günün yoklaması okunamadı; durum kendiliğinden doldurulmadı.</p>' : ""}${topluDugme()}${ref && !yuklendi && !mesgul ? '<button type="button" data-dd-yenile>Yeniden dene</button>' : ""}${ref && yuklendi ? `<nav class="dd-dersler" aria-label="Günün dersleri">${gun.map((x) => `<button type="button" data-dd-ders="${x.id}" aria-pressed="${x.id === id}" ${mesgul ? "disabled" : ""}>${x.sira}. ders <span>${e(x.konu)}</span><small>${kayitlar.some((k) => k.id === x.id) ? "Kayıtlı" : "Henüz kayıt yok"}</small>${yokRozet(x.sira)}</button>`).join("")}</nav>` : ""}${
       ref && yuklendi && d && k
-        ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>Yoklama: <strong>${e(YOK_ADI[y] || y)}</strong>${gelmedi ? " · dersin durumu buna göre seçildi" : ""}</p>` : ""; })()}<p>Basılı defter: <strong>${d.sayfa}. sayfa</strong> · ${d.hafta}. hafta · Ders no: ${d.no}</p><details><summary>Basılı plandaki hedef ve etkinlik</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>A grubu · ${e(d.hedef_a_tr)}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>Kaynak: ${e(d.kaynak)}</p><p>Basılı plan dersin işlendiği veya öğrencinin başardığı anlamına gelmez.</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${e(adi())} ders kaydı</legend><div class="dd-secim"><label>Dersin durumu<select name="durum" required>${secenek({ "": "Seçin…", ...dersDurumlari }, k.durum)}</select></label><label>Notun kaynağı<select name="giris">${secenek({ dijital: "Doğrudan dijitale yazıyorum", kagit: "Kâğıt defterden aktarıyorum" }, k.giris)}</select></label></div>${(() => { const c = yoklamaCelismesi(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} Kaydetmenizi engellemez; hangisi doğruysa onu düzeltin.</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>Diğer defter alanları · isteğe bağlı</summary>${d.kod === "kuran" ? `<label>Bugünkü grubu<select name="grup">${secenek({ "": "İşaretlenmedi", A: "A grubu", B: "B grubu" }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>Öğrencinin “Bugün nasıl ilerledim?” işareti<select name="oz">${secenek(ozDurumlari, k.oz)}</select></label><p class="dd-aciklama">Öğrencinin kâğıttaki beyanını aktarın. Bu alan öğretmen başarı notu veya yoklama değildir. Yoklama ve ilerleme kendi menülerinde tutulur.</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">Kaydet</button><button type="submit" value="sonraki">Kaydet ve sonraki derse geç</button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>Sunucudaki kaydı yeniden yükle</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>Notları kopyala</button></div><details class="dd-arsiv"><summary>Dijital arşiv · ${kayitlar.length} kayıt</summary><p>Yalnız ${e(adi())} için kaydedilmiş dersler. Kayıtlar hoca ekranına özeldir; veliye paylaşmak için Bülten · İdare bölümünde haftanın notlarını aktarın.</p><div class="bulten-eylemler"><button type="button" data-dd-indir>Arşivi indir (JSON)</button><button type="button" data-dd-yazdir>Kaydedilmiş dersleri yazdır / PDF</button></div><ul>${
+        ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>Yoklama: <strong>${e(YOK_ADI[y] || y)}</strong>${gelmedi ? " · dersin durumu buna göre seçildi" : ""}</p>` : ""; })()}<p>Basılı defter: <strong>${d.sayfa}. sayfa</strong> · ${d.hafta}. hafta · Ders no: ${d.no}</p><details><summary>Basılı plandaki hedef ve etkinlik</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>A grubu · ${e(d.hedef_a_tr)}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>Kaynak: ${e(d.kaynak)}</p><p>Basılı plan dersin işlendiği veya öğrencinin başardığı anlamına gelmez.</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${e(adi())} ders kaydı</legend>${hazirBar()}<label class="dd-durum-secim">Dersin durumu<select name="durum" required>${secenek({ "": "Seçin…", ...dersDurumlari }, k.durum)}</select></label>${(() => { const c = yoklamaCelismesi(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} Kaydetmenizi engellemez; hangisi doğruysa onu düzeltin.</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>Diğer defter alanları · isteğe bağlı</summary><label>Notun kaynağı<select name="giris">${secenek({ dijital: "Doğrudan dijitale yazıyorum", kagit: "Kâğıt defterden aktarıyorum" }, k.giris)}</select></label>${d.kod === "kuran" ? `<label>Bugünkü grubu<select name="grup">${secenek({ "": "İşaretlenmedi", A: "A grubu", B: "B grubu" }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>Öğrencinin “Bugün nasıl ilerledim?” işareti<select name="oz">${secenek(ozDurumlari, k.oz)}</select></label><p class="dd-aciklama">Öğrencinin kâğıttaki beyanını aktarın. Bu alan öğretmen başarı notu veya yoklama değildir. Yoklama ve ilerleme kendi menülerinde tutulur.</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">Kaydet</button><button type="submit" value="sonraki">Kaydet ve sonraki<span class="dd-uzun"> derse geç</span></button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>Sunucudaki kaydı yeniden yükle</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>Notları kopyala</button></div><details class="dd-arsiv"><summary>Dijital arşiv · ${kayitlar.length} kayıt</summary><p>Yalnız ${e(adi())} için kaydedilmiş dersler. Kayıtlar hoca ekranına özeldir; veliye paylaşmak için Bülten · İdare bölümünde haftanın notlarını aktarın.</p><div class="bulten-eylemler"><button type="button" data-dd-indir>Arşivi indir (JSON)</button><button type="button" data-dd-yazdir>Kaydedilmiş dersleri yazdır / PDF</button></div><ul>${
             [...kayitlar]
               .reverse()
               .map(
@@ -168,6 +266,7 @@ export function dersDefteri(
           }</ul></details>`
         : ""
     }`;
+    hepsiniBuyut();
   };
   const yukle = async () => {
     const t = ++token;
@@ -230,6 +329,14 @@ export function dersDefteri(
         kirli = true;
         const p = root.querySelector("[data-dd-durum]");
         if (p) p.textContent = "Kaydedilmemiş değişiklik var.";
+        const ta = ev.target as HTMLTextAreaElement;
+        if (ta.tagName === "TEXTAREA") {
+          buyut(ta);
+          // Hoca elle silerse çipin basılı görünümü de düşer (ve tersi).
+          root
+            .querySelectorAll<HTMLButtonElement>(`[data-dd-kalip="${ta.name}"]`)
+            .forEach((c) => c.setAttribute("aria-pressed", String(kalipVar(ta.value, c.dataset.metin || ""))));
+        }
       }
     },
     { signal: ac.signal },
@@ -281,6 +388,45 @@ export function dersDefteri(
     async (ev) => {
       const b = (ev.target as HTMLElement).closest<HTMLButtonElement>("button");
       if (!b || mesgul) return;
+      /* Kalıp çipi: metin alanında yerinde ekle/çıkar; sayfa yeniden çizilmez (imleç ve kaydırma
+         durur, çipler yer değiştirmez). Sayaç yalnız eklemede artar. */
+      if (b.dataset.ddKalip) {
+        const key = b.dataset.ddKalip as KalipAlani;
+        const metin = b.dataset.metin || "";
+        const ta = root.querySelector<HTMLTextAreaElement>(`[data-dd-form] textarea[name="${key}"]`);
+        if (!ta || !metin) return;
+        const vardi = kalipVar(ta.value, metin);
+        ta.value = kalipDegistir(ta.value, metin, ALAN_BICIMI[key]);
+        b.setAttribute("aria-pressed", String(!vardi));
+        if (!vardi) sayacArtir(metin);
+        kirli = true;
+        buyut(ta);
+        const p = root.querySelector("[data-dd-durum]");
+        if (p) p.textContent = "Kaydedilmemiş değişiklik var.";
+        return;
+      }
+      if (b.dataset.ddHazir || b.hasAttribute("data-dd-oncekinden")) {
+        const d = ders();
+        const k = al();
+        if (!d || !k) return;
+        const hazir = b.dataset.ddHazir
+          ? hazirKayitlar(d, sonrakiDers(d)).find((x) => x.id === b.dataset.ddHazir)
+          : (() => {
+              const s = sonKayitOku(d.id);
+              return s && s.durum && !gelmediMi(s.durum)
+                ? { id: "onceki", etiket: "Son kayıtla aynı", aciklama: "", durum: s.durum, alanlar: { calisma: s.calisma || "", odev: s.odev || "", sonraki: s.sonraki || "", okunan: s.okunan || "", dikkat: s.dikkat || "" } }
+                : undefined;
+            })();
+        if (!hazir) return;
+        const { taslak, atlanan } = hazirKaydiUygula(k, hazir);
+        kirli = true;
+        mesaj = atlanan.length
+          ? `${hazir.etiket}: uygulandı; dolu alanlara dokunulmadı (${atlanan.map((a) => defterAlanlari[a].ad.split(" ·")[0]).join(", ")}). Kaydetmeyi unutmayın.`
+          : `${hazir.etiket}: uygulandı. Gerekirse düzenleyip kaydedin.`;
+        ciz(taslak);
+        root.querySelector<HTMLElement>("[name=calisma]")?.focus();
+        return;
+      }
       if (b.dataset.ddDers || b.dataset.ddArsiv) {
         if (!ayrilabilir()) return;
         const yeni = opt.katalog.find(
@@ -427,6 +573,7 @@ export function dersDefteri(
         kayitlar = [...kayitlar.filter((x) => x.id !== saved.id), saved].sort(
           (a, b) => a.id.localeCompare(b.id),
         );
+        sonKayitYaz(saved); // «Son kayıtla aynı» için: aynı dersin en son notları cihazda kalır
         kirli = false;
         mesaj = "Dijital ders defterine kaydedildi.";
         if (sonraki) {
