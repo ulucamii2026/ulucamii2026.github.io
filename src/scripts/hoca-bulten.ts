@@ -15,6 +15,13 @@ import {
 import { bultenIcerik, bultenYazdir, bultenEsc as e } from "./bulten-gorunumu";
 import type { Dil } from "../i18n/ui";
 import { defterDeposu, defterdenBulten } from "../lib/ders-defteri";
+import {
+  ceviriDeposu,
+  defterdenBultenFr,
+  konuFr,
+  type CeviriDili,
+  type MakineCevirici,
+} from "../lib/defter-ceviri";
 
 type Ogr = { ref: string; ad: string; soyad: string; durum?: string };
 type Gun = {
@@ -30,6 +37,8 @@ export function hocaBulteni(
     gunler: Gun[];
     hafta: number;
     silindi?: (ref: string) => void;
+    /** 14 Eyl 2026: velinin iletişim dili Fransızca ise bülten Fransızca kurulur (defter çevirileri + elle çeviri düğmesi). */
+    ceviri?: { hedefDil: (ref: string) => CeviriDili | null; makine: MakineCevirici };
   },
 ): () => void {
   const ac = new AbortController();
@@ -49,6 +58,7 @@ export function hocaBulteni(
     const o = opt.ogrenciler.find((x) => x.ref === ref);
     return o ? `${o.ad} ${o.soyad}` : ref;
   };
+  const hedefDil = () => (ref && opt.ceviri ? opt.ceviri.hedefDil(ref) : null);
   const secici = () =>
     `<div class="izgara-2"><label>Öğrenci<select data-hb-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => `<option value="${e(o.ref)}" ${o.ref === ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${o.durum === "pasif" ? " · pasif" : ""}</option>`).join("")}</select></label><label>Ders haftası<select data-hb-hafta ${mesgul ? "disabled" : ""}>${haftalar.map((h) => `<option value="${h.hafta}" ${h.hafta === hafta ? "selected" : ""}>${h.hafta}. hafta · ${h.tarih}</option>`).join("")}</select></label></div>`;
   const ciz = () => {
@@ -69,7 +79,7 @@ export function hocaBulteni(
             )
             .join(
               "",
-            )}<div class="bulten-eylemler"><button type="button" data-hb-defter>Ders defterinden doldur</button><button type="button" data-hb-onizle>Önizle</button><button type="submit" name="islem" value="taslak">Taslak kaydet</button><button type="submit" name="islem" value="yayin">Kaydet ve veliye göster</button></div><p class="bulten-aciklama">Yayımlama yalnız portalda görünürlük sağlar; e-posta göndermez. Değişiklik yeni sürüm oluşturur ve yeniden okunması gerekir.</p></fieldset></form><details class="bulten-onizleme"><summary>Bülten önizlemesi ve çıktı</summary><div data-hb-onizleme>${bultenIcerik(b, ad(), b.dil)}</div><button type="button" data-hb-yazdir ${mesgul ? "disabled" : ""}>Yazdır / PDF kaydet</button></details><h3>Velilerin okuma durumu</h3>${
+            )}<div class="bulten-eylemler"><button type="button" data-hb-defter>Ders defterinden doldur</button>${hedefDil() === "fr" ? `<button type="button" data-hb-cevir>Metinleri Fransızcaya çevir</button>` : ""}<button type="button" data-hb-onizle>Önizle</button><button type="submit" name="islem" value="taslak">Taslak kaydet</button><button type="submit" name="islem" value="yayin">Kaydet ve veliye göster</button></div><p class="bulten-aciklama">Yayımlama yalnız portalda görünürlük sağlar; e-posta göndermez. Değişiklik yeni sürüm oluşturur ve yeniden okunması gerekir.</p></fieldset></form><details class="bulten-onizleme"><summary>Bülten önizlemesi ve çıktı</summary><div data-hb-onizleme>${bultenIcerik(b, ad(), b.dil)}</div><button type="button" data-hb-yazdir ${mesgul ? "disabled" : ""}>Yazdır / PDF kaydet</button></details><h3>Velilerin okuma durumu</h3>${
             Object.keys(okumalar).length
               ? `<ul class="bulten-envanter">${Object.entries(okumalar)
                   .map(
@@ -140,21 +150,22 @@ export function hocaBulteni(
         );
         const o = s.docs[0]?.data();
         const gunler = opt.gunler.filter((g) => g.hafta === h.hafta);
+        const fr = hedefDil() === "fr"; // 14 Eyl 2026: Fransızca aile → yeni bülten Fransızca başlar
         yeni = {
           id: h.tarih,
           tarih: h.tarih,
           hafta: h.hafta,
-          dil: "tr",
+          dil: fr ? "fr" : "tr",
           surum: 0,
           yayin: false,
           metin: {
             ders: gunler
               .map(
-                (g) => g.tarih + "\n" + g.dersler.map((d) => d.konu).join("\n"),
+                (g) => g.tarih + "\n" + g.dersler.map((d) => (fr ? konuFr(d.konu) : d.konu)).join("\n"),
               )
               .join("\n\n"),
             odev:
-              [o?.odev?.tr, o?.ezber?.tr].filter(Boolean).join("\n") ||
+              [fr ? o?.odev?.fr || o?.odev?.tr : o?.odev?.tr, fr ? o?.ezber?.fr || o?.ezber?.tr : o?.ezber?.tr].filter(Boolean).join("\n") ||
               [
                 ...new Set(
                   gunler.flatMap((g) => g.dersler.flatMap((d) => d.ezber)),
@@ -217,17 +228,32 @@ export function hocaBulteni(
           const gunler = new Set(
             opt.gunler.filter((g) => g.hafta === hafta).map((g) => g.tarih),
           );
-          const kayitlar = await defterDeposu(opt.db, ref).liste();
+          const dil = hedefDil();
+          const [kayitlar, ceviriler] = await Promise.all([
+            defterDeposu(opt.db, ref).liste(),
+            dil ? ceviriDeposu(opt.db, ref).liste().catch(() => []) : Promise.resolve([]),
+          ]);
           if (kapali || token !== istek) return;
-          b = {
-            ...taslak,
-            metin: {
-              ...taslak.metin,
-              ...defterdenBulten(kayitlar.filter((k) => gunler.has(k.tarih))),
-            },
-          };
-          mesaj =
-            "Ders notları taslağa aktarıldı. İçerik dilini ve metinleri kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+          const haftaKayitlari = kayitlar.filter((k) => gunler.has(k.tarih));
+          if (dil === "fr") {
+            /* 14 Eyl 2026: velinin iletişim dili Fransızca → bülten Fransızca kurulur (etiketler, başlıklar, kayıt
+               çevirileri). Çevirisi olmayan/eski kayıt Türkçe aktarılır ve sayısı bildirilir. */
+            const fr = defterdenBultenFr(haftaKayitlari, ceviriler);
+            b = { ...taslak, dil: "fr", metin: { ...taslak.metin, ders: fr.ders, odev: fr.odev, not: fr.not } };
+            mesaj = fr.eksik.length
+              ? `Ders notları Fransızca aktarıldı; ${fr.eksik.length} dersin çevirisi yok ya da eski, o dersler Türkçe kaldı. Ders defterinde «Şimdi çevir» ile tamamlayıp yeniden aktarın.`
+              : "Ders notları Fransızca aktarıldı (velinin iletişim dili). Metinleri kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+          } else {
+            b = {
+              ...taslak,
+              metin: {
+                ...taslak.metin,
+                ...defterdenBulten(haftaKayitlari),
+              },
+            };
+            mesaj =
+              "Ders notları taslağa aktarıldı. İçerik dilini ve metinleri kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+          }
         } catch (err) {
           if (!kapali && token === istek)
             mesaj =
@@ -244,6 +270,39 @@ export function hocaBulteni(
       }
       if (t.hasAttribute("data-hb-yenile")) {
         void yukle();
+        return;
+      }
+      if (t.hasAttribute("data-hb-cevir")) {
+        /* Elle yazılmış Türkçe bülten metni → Fransızca (paragraf paragraf makine çevirisi); içerik dili 'fr' olur. */
+        const taslak = formOku();
+        if (!taslak || !opt.ceviri) return;
+        const alanlar = (Object.keys(bultenSinirlari) as (keyof BultenMetni)[]).filter((k) => taslak.metin[k].trim());
+        const paragraflar = alanlar.map((k) => taslak.metin[k].split(/\n{2,}/));
+        const duz = paragraflar.flat();
+        if (!duz.length) return;
+        b = taslak;
+        mesgul = true;
+        mesaj = "Metinler Fransızcaya çevriliyor…";
+        const token = istek;
+        ciz();
+        try {
+          const cevrilen = await opt.ceviri.makine(duz, "fr");
+          if (kapali || token !== istek) return;
+          let i = 0;
+          const metin = { ...taslak.metin };
+          alanlar.forEach((k, j) => {
+            metin[k] = paragraflar[j].map(() => cevrilen[i++]).join("\n\n");
+          });
+          b = { ...taslak, dil: "fr", metin, yayin: false };
+          mesaj = "Metinler Fransızcaya çevrildi; kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+        } catch {
+          if (!kapali && token === istek) mesaj = "Çeviri yapılamadı; metinler değişmedi.";
+        } finally {
+          if (!kapali && token === istek) {
+            mesgul = false;
+            ciz();
+          }
+        }
         return;
       }
       if (t.hasAttribute("data-hb-onizle")) {

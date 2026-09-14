@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 
 const kod={};
 const auth = `
-const user = { uid:'TEST-HOCA', email: 'veli@example.test' };
+const user = { uid:'TEST-HOCA', email: 'veli@example.test', getIdToken: async () => 'test-id-token' }; // getIdToken: çeviri ucu (14 Eyl 2026)
 let callback;
 export const getAuth = () => ({ currentUser: user });
 export const isSignInWithEmailLink = () => false;
@@ -123,7 +123,7 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
     if (window.speechSynthesis) window.speechSynthesis.speak = u => window.__tts.push(u.text);
     const data = document.createElement('script');
     data.id = hoca?'hoca-veri':'veli-veri'; data.type = 'application/json';
-    data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', dilYollari: {}, materyalGunleri: [], gunler: [
+    data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', ceviriUcu: 'http://127.0.0.1:4401/ceviri-test', dilYollari: {}, materyalGunleri: [], gunler: [
       { tarih: '2026-09-12', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Cumartesi konusu', ezber: ['Cumartesi tekrarı'] }] },
       { tarih: '2026-09-13', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Pazar konusu', ezber: ['Pazar tekrarı'] }] },
       /* Gerçek ders günü üç derstir; tek dersli günler yukarıdaki eski sınamaları bozmasın diye

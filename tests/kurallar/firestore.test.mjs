@@ -385,3 +385,21 @@ test('Aynı gün sunucu tarafında da tekrar basamağı yükseltilemez',async()=
  await assertFails(setDoc(doc(parent(),evYol),{...k,basamak:3,sonraki:Timestamp.fromMillis(k.son.toMillis()+7*86400000)}));
  await assertSucceeds(setDoc(doc(parent(),evYol),{...k,basamak:0,cevap:'destek'}));
 });
+/* 14 Eyl 2026: defter kaydının Fransızca çevirisi — hocaya açık, veliye kapalı, alanlar/kimlik/sürüm doğrulanır. */
+test('Ders defteri çevirisi yalnız hocaya açık; kimlik = kayıt_dil; alanlar ve sunucu zamanı doğrulanır',async()=>{
+ const cYol='dersDefteri/ogrenci-a/ceviriler/2026-09-05_1_fr';
+ const ceviri=(extra={})=>({kayitId:'2026-09-05_1',dil:'fr',kaynakSurum:1,yontem:'kalip',calisma:'Sa participation au cours était bonne.',odev:'',sonraki:'',okunan:'',dikkat:'',guncelleme:serverTimestamp(),...extra});
+ await assertSucceeds(setDoc(doc(teacher(),cYol),ceviri()));
+ await assertSucceeds(setDoc(doc(teacher(),cYol),ceviri({kaynakSurum:2,yontem:'karma'}))); // güncelleme: sürüm kilidi yok, kaynakSurum izler
+ await assertSucceeds(read(teacher(),cYol));
+ for(const db of [parent(),env.unauthenticatedContext().firestore()]){
+  await assertFails(read(db,cYol));await assertFails(getDocs(collection(db,'dersDefteri/ogrenci-a/ceviriler')));
+  await assertFails(setDoc(doc(db,cYol),ceviri()));await assertFails(deleteDoc(doc(db,cYol)));
+ }
+ for(const extra of [{dil:'en'},{yontem:'elle'},{kaynakSurum:0},{calisma:''},{calisma:'x'.repeat(2401)},{odev:'x'.repeat(1401)},{kayitId:'2026-09-05_4'},{ek:'x'},{guncelleme:Timestamp.fromMillis(0)}])
+  await assertFails(setDoc(doc(teacher(),cYol),ceviri(extra)));
+ await assertFails(setDoc(doc(teacher(),'dersDefteri/ogrenci-a/ceviriler/2026-09-05_2_fr'),ceviri())); // kimlik kayıtla eşleşmeli
+ await setDoc(doc(teacher(),'portalSilme/ogrenci-a'),{islem:'test',zaman:serverTimestamp()});
+ await assertFails(setDoc(doc(teacher(),cYol),ceviri({kaynakSurum:3})));
+ await deleteDoc(doc(teacher(),'portalSilme/ogrenci-a'));
+});

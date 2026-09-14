@@ -245,3 +245,93 @@ test('Günün ilerlemesi: kaç öğrencinin defteri tamam, seçenekte ◐/✓ i�
  await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-1');
  await expect(p.locator('[data-dd-ders="2026-09-12_2"]')).toHaveAttribute('aria-pressed','true');
 });
+/* 14 Eyl 2026 — Rıdvan: «iletişim tercihi Fransızca olan velilere Türkçe doldurduğum ekranlar Fransızca kaydedilsin.»
+   Kayıt kaydedilince çeviri belgesi (dersDefteri/{ref}/ceviriler/{id}_fr) yazılır: kalıp cümleler yerel Fransızca,
+   serbest cümle çeviri ucuna gider; yarım çeviri yazılmaz. Bülten Fransızca aileye Fransızca kurulur. */
+const frStudents=[{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'},{ref:'TEST-2',ad:'İkinci',soyad:'Örnek',dil:'fr'}];
+async function ceviriUcuKur(context){
+ const durum={istekler:[],bozuk:false};
+ await context.route('http://127.0.0.1:4401/ceviri-test',async r=>{const g=JSON.parse(r.request().postData()||'{}');durum.istekler.push(g);
+  if(durum.bozuk)return r.fulfill({contentType:'application/json',body:JSON.stringify({ok:false,hata:'ceviri-kapali'})});
+  await r.fulfill({contentType:'application/json',body:JSON.stringify({ok:true,hedef:g.hedef,ceviriler:(g.metinler||[]).map(m=>`[FR] ${m}`)})});});
+ return durum;
+}
+test('Veli dili Fransızca: kaydedilince çeviri belgesi yazılır (kalıp yerel, serbest cümle makineye); Türkçe ailede yazılmaz; hata → «Şimdi çevir»',async({page,context})=>{
+ await mektepAc(page,context,{hoca:true,students:frStudents,records:{}});
+ const uc=await ceviriUcuKur(context); // mektepAc'ın genel yolundan SONRA: sonra kaydedilen yol önce bakılır
+ await page.locator('[data-sekme=defter]').click();await page.locator('[data-dd-gun]').selectOption(d.tarih);
+ const p=page.locator('[data-ders-defteri]');
+ await p.locator('[data-dd-ogr]').selectOption('TEST-2');await expect(p.locator('[data-dd-form]')).toBeVisible();
+ await expect(p.locator('[data-dd-ceviri]')).toContainText('kaydedince yapılır');
+ await p.locator('[name=durum]').selectOption('islendi');
+ await p.locator('[name=calisma]').fill('Derse katılımı güzeldi. Bugün çok neşeliydi.');
+ await p.locator('[name=odev]').fill('Bu ders için ödev yok.');
+ await p.locator('[value=kaydet]').click();
+ await expect(p.locator('[data-dd-durum]')).toContainText('Fransızca çevirisi kaydedildi (kalıp + makine)');
+ expect(uc.istekler).toHaveLength(1);
+ expect(uc.istekler[0].metinler).toEqual(['Bugün çok neşeliydi.']);
+ expect(uc.istekler[0].hedef).toBe('fr');
+ expect(typeof uc.istekler[0].idToken).toBe('string');
+ const c=await page.evaluate(()=>window.__records['dersDefteri/TEST-2/ceviriler']);
+ expect(c).toHaveLength(1);
+ expect(c[0]).toMatchObject({id:`${d.id}_fr`,kayitId:d.id,dil:'fr',kaynakSurum:1,yontem:'karma',calisma:'Sa participation au cours était bonne. [FR] Bugün çok neşeliydi.',odev:'Pas de devoir pour ce cours.'});
+ await expect(p.locator('[data-dd-ceviri]')).toContainText('kayıtlı ✓');
+ // Yalnız kalıp: ikinci sürüm makineye gitmez, çeviri kaynak sürümü izler.
+ await p.locator('[name=calisma]').fill('Derse katılımı güzeldi. Dersi dikkatle dinledi.');
+ await p.locator('[value=kaydet]').click();
+ await expect(p.locator('[data-dd-durum]')).toContainText('Fransızca çevirisi kaydedildi (kalıp cümleler)');
+ expect(uc.istekler).toHaveLength(1);
+ expect((await page.evaluate(()=>window.__records['dersDefteri/TEST-2/ceviriler']))[0]).toMatchObject({kaynakSurum:2,yontem:'kalip',calisma:'Sa participation au cours était bonne. Votre enfant a écouté le cours avec attention.'});
+ // Uç bozuksa yarım çeviri YAZILMAZ; satır «eski» der ve «Şimdi çevir» sunar; uç düzelince tamamlanır.
+ uc.bozuk=true;
+ await p.locator('[name=calisma]').fill('Serbest cümle.');
+ await p.locator('[value=kaydet]').click();
+ await expect(p.locator('[data-dd-durum]')).toContainText('Fransızca çevirisi yapılamadı');
+ expect((await page.evaluate(()=>window.__records['dersDefteri/TEST-2/ceviriler']))[0].kaynakSurum).toBe(2);
+ await expect(p.locator('[data-dd-ceviri]')).toContainText('eski');
+ uc.bozuk=false;
+ await p.locator('[data-dd-cevir]').click();
+ await expect(p.locator('[data-dd-durum]')).toHaveText('Fransızca çevirisi kaydedildi (kalıp + makine).'); // «Çevriliyor…» yerini alır; ödev kalıp kaldı
+ expect((await page.evaluate(()=>window.__records['dersDefteri/TEST-2/ceviriler']))[0]).toMatchObject({kaynakSurum:3,calisma:'[FR] Serbest cümle.'});
+ // Türkçe aile: çeviri satırı yok, belge yazılmaz, uca istek gitmez.
+ const n=uc.istekler.length;
+ await p.locator('[data-dd-ogr]').selectOption('TEST-1');await expect(p.locator('[data-dd-form]')).toBeVisible();
+ await expect(p.locator('[data-dd-ceviri]')).toHaveCount(0);
+ await p.locator('[name=durum]').selectOption('islendi');await p.locator('[name=calisma]').fill('Türkçe aile notu.');
+ await p.locator('[value=kaydet]').click();await expect(p.locator('[data-dd-durum]')).toContainText('kaydedildi');
+ await expect(p.locator('[data-dd-durum]')).not.toContainText('Fransızca');
+ expect(uc.istekler).toHaveLength(n);
+ expect(await page.evaluate(()=>window.__records['dersDefteri/TEST-1/ceviriler'])).toBeUndefined();
+});
+test('Fransızca aile: yeni bülten Fransızca başlar; «Ders defterinden doldur» çevirileri kullanır, eksik kaydı Türkçe bırakıp uyarır; «Fransızcaya çevir» elle metni çevirir',async({page,context})=>{
+ const d2=katalog.find(x=>x.id==='2026-09-12_2');
+ await mektepAc(page,context,{hoca:true,students:frStudents,records:{
+  'dersDefteri/TEST-2/kayitlar':[{...kayit,calisma:'Derse katılımı güzeldi.',odev:'Bu ders için ödev yok.',sonraki:''},{...kayit,id:d2.id,sira:d2.sira,no:d2.no,sayfa:d2.sayfa,konu:d2.konu,kaynak:d2.kaynak,calisma:'Serbest not.',odev:'',sonraki:''}],
+  'dersDefteri/TEST-2/ceviriler':[{id:`${d.id}_fr`,kayitId:d.id,dil:'fr',kaynakSurum:1,yontem:'kalip',calisma:'Sa participation au cours était bonne.',odev:'Pas de devoir pour ce cours.',sonraki:'',okunan:'',dikkat:''}],
+ }});
+ const uc=await ceviriUcuKur(context);
+ await page.locator('[data-sekme=bulten]').click();
+ await page.locator('[data-hb-ogr]').selectOption('TEST-2');await expect(page.locator('[data-hb-form]')).toBeVisible();
+ await expect(page.locator('[name=dil]')).toHaveValue('fr');
+ page.once('dialog',x=>x.accept());await page.locator('[data-hb-defter]').click();
+ await expect(page.locator('[data-hb-durum]')).toContainText('1 dersin çevirisi yok');
+ const ders=await page.locator('[name=ders]').inputValue();
+ expect(ders).toContain(`${d.tarih} · cours 1 · `);
+ expect(ders).toContain('Cours fait : Sa participation au cours était bonne.');
+ expect(ders).toContain('Cours fait : Serbest not.'); // çevirisi olmayan kayıt Türkçe kalır
+ expect(ders).not.toContain('İşlendi');
+ await expect(page.locator('[name=odev]')).toHaveValue(/Pas de devoir pour ce cours\.$/);
+ // Elle çeviri: paragraflar tek istekte uca gider, dil 'fr' kalır, henüz kaydedilmez.
+ await page.locator('[name=not]').fill('Aileye kısa not.');
+ await page.locator('[data-hb-cevir]').click();
+ await expect(page.locator('[data-hb-durum]')).toContainText('Fransızcaya çevrildi');
+ expect(uc.istekler).toHaveLength(1);
+ expect(uc.istekler[0].metinler).toContain('Aileye kısa not.');
+ await expect(page.locator('[name=not]')).toHaveValue('[FR] Aileye kısa not.');
+ await expect(page.locator('[name=dil]')).toHaveValue('fr');
+ expect(await page.evaluate(()=>window.__writes.length)).toBe(0);
+ // Türkçe aile: düğme yok, bülten Türkçe başlar.
+ await page.locator('[data-hb-ogr]').selectOption('TEST-1');await expect(page.locator('[data-hb-form]')).toBeVisible();
+ await expect(page.locator('[name=dil]')).toHaveValue('tr');
+ await expect(page.locator('[data-hb-cevir]')).toHaveCount(0);
+});

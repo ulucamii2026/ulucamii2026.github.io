@@ -11,6 +11,7 @@ import Base from '../../layouts/Base.astro';
 import { yol } from '../../i18n/utils';
 import plan from '../../data/yillik-plan-2026-2027.json';
 import materyal from '../../data/ders-materyalleri.json';
+import { siteAyarlari } from '../../lib/icerik';
 
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: { no?: number; sira?: number; alan: string; kod: string; konu: string; ezber?: string[] }[] };
 const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
@@ -18,10 +19,13 @@ const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
   dersler: g.dersler.map((d) => ({ no: d.sira ?? d.no ?? 0, kod: d.kod, alan: d.alan, konu: d.konu, ezber: d.ezber || [] })),
 }));
 const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
+const site = await siteAyarlari();
 const veri = {
   donem: (plan as { donem: string }).donem, gunler, materyalGunleri,
   materyalYolu: yol('tr', 'dersmateryalleri'),
   veliYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli') },
+  /* 14 Eyl 2026: defter çevirisi ucu (Apps Script v34, tur: 'cevir') — kayıt formuyla aynı /exec adresi. */
+  ceviriUcu: site.servisler.basvuru,
 };
 ---
 <Base baslik="Hoca ekranı" dil="tr" aciklama="Kur’an kursu hoca ekranı: yoklama, ilerleme, ezber-ödev, duyuru." noindex dilHatirla={false}>

@@ -15,7 +15,8 @@ import { portalTercihleri } from '../lib/portal-tercihleri';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
-type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string> };
+import { makineCevirici } from '../lib/ceviri-servisi';
+type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string>; ceviriUcu?: string };
 type Ogr = { ref: string; ad: string; soyad: string; veliler?: string[]; dil?: string; durum?: string; grup?: string; kayitRef?: string };
 type Aile = { eposta: string; ogrenciler: string[]; dil?: string; iletisimDili?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string;
   /* Veli portalındaki «Ders kitabı ve materyal» kartının yanıtı: öğrenci ref'i → {secim, zaman} */
@@ -80,6 +81,15 @@ export async function hocaEkrani(): Promise<void> {
   const [{ firebaseUygulamasi }, auth, fs] = await Promise.all([import('../lib/firebase'), import('firebase/auth'), import('firebase/firestore/lite')]);
   const app = firebaseUygulamasi();
   const a = auth.getAuth(app);
+  /* 14 Eyl 2026 (Rıdvan): veli dili Fransızca olan öğrencinin defter kaydı Fransızca da saklanır ve bülteni Fransızca
+     kurulur (ders-defteri.ts, hoca-bulten.ts). Dil: öğrenci belgesi ya da ailelerinden birinin iletişim dili. */
+  const hedefDil = (ref: string): 'fr' | null => {
+    if (!S) return null;
+    const o = S.ogrenciler.find((x) => x.ref === ref);
+    const aile = S.aileler.some((f) => (f.ogrenciler || []).includes(ref) && (f.iletisimDili === 'fr' || f.dil === 'fr'));
+    return o?.dil === 'fr' || aile ? 'fr' : null;
+  };
+  const ceviri = { hedefDil, makine: makineCevirici(veri.ceviriUcu, async () => { const u = a.currentUser; if (!u) throw Error('oturum-yok'); return u.getIdToken(); }) };
   a.languageCode = 'tr';
   const db = fs.getFirestore(app);
   const sayfaAdresi = location.origin + location.pathname;
@@ -483,7 +493,7 @@ export async function hocaEkrani(): Promise<void> {
       <div class="sekmeler" role="tablist" aria-label="Bölümler">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span>${k === 'bildirim' && S!.okunmamis ? `<span class="sekme-sayi"><span class="sr-only">okunmamış: </span>${S!.okunmamis}</span>` : ''}</button>`).join('')}</div>
       <div id="hoca-panel" role="tabpanel" aria-labelledby="hoca-tab-${S.sekme}">${govde}</div>`;
     const bultenRoot=kok.querySelector<HTMLElement>('[data-hoca-bulten]');
-    if(bultenRoot)bultenTemizle=hocaBulteni(bultenRoot,{db,ogrenciler:S.ogrenciler,gunler:veri.gunler,hafta:S.hafta,silindi:ref=>{if(S){S.ogrenciler=S.ogrenciler.filter(o=>o.ref!==ref);if(S.secili===ref)S.secili='';}}});
+    if(bultenRoot)bultenTemizle=hocaBulteni(bultenRoot,{db,ogrenciler:S.ogrenciler,gunler:veri.gunler,hafta:S.hafta,ceviri,silindi:ref=>{if(S){S.ogrenciler=S.ogrenciler.filter(o=>o.ref!==ref);if(S.secili===ref)S.secili='';}}});
     const defterRoot=kok.querySelector<HTMLElement>('[data-ders-defteri]');
     if(defterRoot){
       const durum=S, yukleme=defterYukleme;
@@ -491,7 +501,7 @@ export async function hocaEkrani(): Promise<void> {
         try{
           const [mod,katalog]=await Promise.all([import('./ders-defteri'),import('../data/ders-defteri-2026-2027.json')]);
           if(yukleme!==defterYukleme||S!==durum||!defterRoot.isConnected)return;
-          defterPanel=mod.dersDefteri(defterRoot,{db,ogrenciler:durum.ogrenciler,katalog:katalog.default,bugun:new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Brussels'}).format(new Date()),baslangicRef:defterOnSecim});
+          defterPanel=mod.dersDefteri(defterRoot,{db,ogrenciler:durum.ogrenciler,katalog:katalog.default,bugun:new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Brussels'}).format(new Date()),baslangicRef:defterOnSecim,ceviri});
           defterOnSecim='';
         }catch{
           if(yukleme!==defterYukleme||!defterRoot.isConnected)return;

@@ -16,6 +16,15 @@ import {
 } from "../lib/ders-defteri";
 import { bultenEsc as e } from "./bulten-gorunumu";
 import {
+  ceviriDeposu,
+  ceviriGuncel,
+  defterKaydiniCevir,
+  topluGelmediCevirisiYaz,
+  type CeviriDili,
+  type DefterCevirisi,
+  type MakineCevirici,
+} from "../lib/defter-ceviri";
+import {
   ALAN_BICIMI,
   defterKaliplari,
   hazirKayitlar,
@@ -36,6 +45,9 @@ export function dersDefteri(
     bugun: string;
     /** Öğrenci kartındaki «Ders defterini aç» ile gelen öğrenci: panel bu öğrenci seçili açılır. */
     baslangicRef?: string;
+    /** 14 Eyl 2026 (Rıdvan): velinin iletişim dili Türkçe değilse kayıt kaydedilince çevirisi de yazılır
+     *  (dersDefteri/{ref}/ceviriler). hedefDil(ref) → 'fr' | null; makine = serbest cümleler için çeviri ucu. */
+    ceviri?: { hedefDil: (ref: string) => CeviriDili | null; makine: MakineCevirici };
   },
 ) {
   const ac = new AbortController();
@@ -145,6 +157,43 @@ export function dersDefteri(
     return o ? `${o.ad} ${o.soyad}` : ref;
   };
   const ders = () => opt.katalog.find((x) => x.id === id);
+  /* ── Çeviri (14 Eyl 2026): kalıp cümleler yerel Fransızca, serbest cümleler makine; yarım çeviri yazılmaz. ── */
+  let ceviriler: DefterCevirisi[] = [];
+  const YONTEM_ADI = { kalip: "kalıp cümleler", makine: "makine çevirisi", karma: "kalıp + makine" } as const;
+  const hedefDil = () => (ref && opt.ceviri ? opt.ceviri.hedefDil(ref) : null);
+  const ceviriSatiri = () => {
+    const dil = hedefDil();
+    if (!dil || !id) return "";
+    const k = kayitlar.find((x) => x.id === id);
+    const c = ceviriler.find((x) => x.id === `${id}_${dil}`);
+    const guncel = !!k && !!c && ceviriGuncel(k, c);
+    const durum = !k ? "kaydedince yapılır" : guncel ? `kayıtlı ✓ (${YONTEM_ADI[c!.yontem]})` : c ? "eski — kayıt değişti" : "yok";
+    return `<span>Veli dili <b>Fransızca</b> · çeviri: ${e(durum)}</span>${k && !guncel ? `<button type="button" class="kucuk-dugme" data-dd-cevir ${mesgul ? "disabled" : ""}>Şimdi çevir</button>` : ""}`;
+  };
+  const CEVRILIYOR = "Çevriliyor…";
+  const ceviriNotu = (m: string) => {
+    mesaj = mesaj && mesaj !== CEVRILIYOR ? `${mesaj} ${m}` : m;
+    const p = root.querySelector("[data-dd-durum]");
+    if (p) p.textContent = mesaj;
+    const c = root.querySelector("[data-dd-ceviri]");
+    if (c) c.innerHTML = ceviriSatiri();
+  };
+  /** Kaydedilen kaydın çevirisi (kaydetmeyi bekletmez). Başarısızsa kayıt Türkçe kalır; «Şimdi çevir» ve bülten aktarımı uyarır. */
+  const ceviriYaz = async (k: DersKaydi, r: string) => {
+    const dil = opt.ceviri?.hedefDil(r);
+    const d = opt.katalog.find((x) => x.id === k.id);
+    if (!dil || !d || !opt.ceviri) return;
+    try {
+      const c = await defterKaydiniCevir(k, d, sonrakiDers(d), dil, opt.ceviri.makine);
+      await ceviriDeposu(opt.db, r).kaydet(c);
+      if (kapali) return;
+      if (r === ref) ceviriler = [...ceviriler.filter((x) => x.id !== c.id), c];
+      ceviriNotu(`Fransızca çevirisi kaydedildi (${YONTEM_ADI[c.yontem]}).`);
+    } catch {
+      if (kapali) return;
+      ceviriNotu("Fransızca çevirisi yapılamadı; «Şimdi çevir» ile ya da bülten aktarımında yeniden denenir.");
+    }
+  };
   const ayrilabilir = () =>
     !mesgul &&
     (!kirli ||
@@ -273,7 +322,7 @@ export function dersDefteri(
 
     root.innerHTML = `<h2>Ders Defteri</h2><p>Kâğıttaki notlarınız, aynı dersin dijital kaydında.</p><div class="dd-secim"><label>Öğrenci<select data-dd-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => { const y = [1, 2, 3].map((s) => yoklama[o.ref]?.[String(s)] || "").filter(Boolean); const hepsi = y.length === 3 && y.every((x) => x === y[0]) ? y[0] : ""; const dz = ogrDurumu(o.ref); const isaret = dz === "tamam" ? " ✓" : dz === "kismen" ? ` ◐ ${(gunDefter[o.ref] || []).length}/${gunDersSayisi()}` : ""; return `<option value="${e(o.ref)}" ${ref === o.ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${isaret}${hepsi && hepsi !== "var" ? ` — ${e(YOK_ADI[hepsi] || hepsi)}` : ""}</option>`; }).join("")}</select></label><label>Ders günü<select data-dd-gun ${mesgul ? "disabled" : ""}>${gunler.map((t) => `<option value="${t}" ${t === tarih ? "selected" : ""}>${new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", weekday: "short" }).format(new Date(t + "T12:00:00Z"))}</option>`).join("")}</select></label></div>${(() => { if (!gunDefterTarihi || !gunDersSayisi()) return ""; const say = { tamam: 0, kismen: 0, bos: 0 }; opt.ogrenciler.forEach((o) => { say[ogrDurumu(o.ref)]++; }); const eksik = siradakiEksik(); return `<p class="dd-gun-ozet" data-dd-gun-ozet><span><b>${say.tamam}/${opt.ogrenciler.length}</b> öğrencinin günlük defteri tamam</span>${say.kismen ? `<span>${say.kismen} kısmen</span>` : ""}${say.bos ? `<span>${say.bos} başlanmadı</span>` : ""}${eksik ? `<button type="button" class="kucuk-dugme" data-dd-siradaki ${mesgul ? "disabled" : ""}>Sıradaki eksik: ${e(eksik.ad)}</button>` : '<span class="rozet var">Günün defteri tamam</span>'}</p>`; })()}<p data-dd-durum role="status" tabindex="-1">${e(mesaj)}</p>${yoklamaHatasi ? '<p class="dd-uyari" data-dd-yoklama-hata>Bu günün yoklaması okunamadı; durum kendiliğinden doldurulmadı.</p>' : ""}${topluDugme()}${ref && !yuklendi && !mesgul ? '<button type="button" data-dd-yenile>Yeniden dene</button>' : ""}${ref && yuklendi ? `<nav class="dd-dersler" aria-label="Günün dersleri">${gun.map((x) => `<button type="button" data-dd-ders="${x.id}" aria-pressed="${x.id === id}" ${mesgul ? "disabled" : ""}>${x.sira}. ders <span>${e(x.konu)}</span><small>${kayitlar.some((k) => k.id === x.id) ? "Kayıtlı" : "Henüz kayıt yok"}</small>${yokRozet(x.sira)}</button>`).join("")}</nav>` : ""}${
       ref && yuklendi && d && k
-        ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>Yoklama: <strong>${e(YOK_ADI[y] || y)}</strong>${gelmedi ? " · dersin durumu buna göre seçildi" : ""}</p>` : ""; })()}<p>Basılı defter: <strong>${d.sayfa}. sayfa</strong> · ${d.hafta}. hafta · Ders no: ${d.no}</p><details><summary>Basılı plandaki hedef ve etkinlik</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>A grubu · ${e(d.hedef_a_tr)}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>Kaynak: ${e(d.kaynak)}</p><p>Basılı plan dersin işlendiği veya öğrencinin başardığı anlamına gelmez.</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${e(adi())} ders kaydı</legend>${hazirBar()}<label class="dd-durum-secim">Dersin durumu<select name="durum" required>${secenek({ "": "Seçin…", ...dersDurumlari }, k.durum)}</select></label>${(() => { const c = yoklamaCelismesi(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} Kaydetmenizi engellemez; hangisi doğruysa onu düzeltin.</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>Diğer defter alanları · isteğe bağlı</summary><label>Notun kaynağı<select name="giris">${secenek({ dijital: "Doğrudan dijitale yazıyorum", kagit: "Kâğıt defterden aktarıyorum" }, k.giris)}</select></label>${d.kod === "kuran" ? `<label>Bugünkü grubu<select name="grup">${secenek({ "": "İşaretlenmedi", A: "A grubu", B: "B grubu" }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>Öğrencinin “Bugün nasıl ilerledim?” işareti<select name="oz">${secenek(ozDurumlari, k.oz)}</select></label><p class="dd-aciklama">Öğrencinin kâğıttaki beyanını aktarın. Bu alan öğretmen başarı notu veya yoklama değildir. Yoklama ve ilerleme kendi menülerinde tutulur.</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">Kaydet</button><button type="submit" value="sonraki">Kaydet ve sonraki<span class="dd-uzun"> derse geç</span></button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>Sunucudaki kaydı yeniden yükle</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>Notları kopyala</button></div><details class="dd-arsiv"><summary>Dijital arşiv · ${kayitlar.length} kayıt</summary><p>Yalnız ${e(adi())} için kaydedilmiş dersler. Kayıtlar hoca ekranına özeldir; veliye paylaşmak için Bülten · İdare bölümünde haftanın notlarını aktarın.</p><div class="bulten-eylemler"><button type="button" data-dd-indir>Arşivi indir (JSON)</button><button type="button" data-dd-yazdir>Kaydedilmiş dersleri yazdır / PDF</button></div><ul>${
+        ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>Yoklama: <strong>${e(YOK_ADI[y] || y)}</strong>${gelmedi ? " · dersin durumu buna göre seçildi" : ""}</p>` : ""; })()}${hedefDil() ? `<p class="dd-ceviri" data-dd-ceviri>${ceviriSatiri()}</p>` : ""}<p>Basılı defter: <strong>${d.sayfa}. sayfa</strong> · ${d.hafta}. hafta · Ders no: ${d.no}</p><details><summary>Basılı plandaki hedef ve etkinlik</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>A grubu · ${e(d.hedef_a_tr)}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>Kaynak: ${e(d.kaynak)}</p><p>Basılı plan dersin işlendiği veya öğrencinin başardığı anlamına gelmez.</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${e(adi())} ders kaydı</legend>${hazirBar()}<label class="dd-durum-secim">Dersin durumu<select name="durum" required>${secenek({ "": "Seçin…", ...dersDurumlari }, k.durum)}</select></label>${(() => { const c = yoklamaCelismesi(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} Kaydetmenizi engellemez; hangisi doğruysa onu düzeltin.</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>Diğer defter alanları · isteğe bağlı</summary><label>Notun kaynağı<select name="giris">${secenek({ dijital: "Doğrudan dijitale yazıyorum", kagit: "Kâğıt defterden aktarıyorum" }, k.giris)}</select></label>${d.kod === "kuran" ? `<label>Bugünkü grubu<select name="grup">${secenek({ "": "İşaretlenmedi", A: "A grubu", B: "B grubu" }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>Öğrencinin “Bugün nasıl ilerledim?” işareti<select name="oz">${secenek(ozDurumlari, k.oz)}</select></label><p class="dd-aciklama">Öğrencinin kâğıttaki beyanını aktarın. Bu alan öğretmen başarı notu veya yoklama değildir. Yoklama ve ilerleme kendi menülerinde tutulur.</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">Kaydet</button><button type="submit" value="sonraki">Kaydet ve sonraki<span class="dd-uzun"> derse geç</span></button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>Sunucudaki kaydı yeniden yükle</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>Notları kopyala</button></div><details class="dd-arsiv"><summary>Dijital arşiv · ${kayitlar.length} kayıt</summary><p>Yalnız ${e(adi())} için kaydedilmiş dersler. Kayıtlar hoca ekranına özeldir; veliye paylaşmak için Bülten · İdare bölümünde haftanın notlarını aktarın.</p><div class="bulten-eylemler"><button type="button" data-dd-indir>Arşivi indir (JSON)</button><button type="button" data-dd-yazdir>Kaydedilmiş dersleri yazdır / PDF</button></div><ul>${
             [...kayitlar]
               .reverse()
               .map(
@@ -295,7 +344,7 @@ export function dersDefteri(
     ciz();
     try {
       // Yoklama okunamazsa defter yine açılır; yalnız otomatik doldurma devre dışı kalır.
-      const [r, y, gd] = await Promise.all([
+      const [r, y, gd, cv] = await Promise.all([
         ref ? defterDeposu(opt.db, ref).liste() : Promise.resolve([] as DersKaydi[]),
         yoklamaTarihi === gun
           ? Promise.resolve(yoklama)
@@ -303,6 +352,9 @@ export function dersDefteri(
         gunDefterTarihi === gun
           ? Promise.resolve(gunDefter)
           : gunDefterOzeti(opt.db, opt.ogrenciler.map((o) => o.ref), gun).catch(() => null),
+        ref && opt.ceviri?.hedefDil(ref)
+          ? ceviriDeposu(opt.db, ref).liste().catch(() => [] as DefterCevirisi[])
+          : Promise.resolve([] as DefterCevirisi[]),
       ]);
       if (t !== token || kapali) return;
       if (y) {
@@ -315,6 +367,7 @@ export function dersDefteri(
         gunDefterTarihi = gun;
       }
       kayitlar = r;
+      ceviriler = cv;
       kirli = false;
       yuklendi = Boolean(ref);
       mesaj = !ref
@@ -472,6 +525,14 @@ export function dersDefteri(
           void yukle();
         }
       }
+      if (b.hasAttribute("data-dd-cevir")) {
+        const k = kayitlar.find((x) => x.id === id);
+        if (!k || !ref) return;
+        mesaj = CEVRILIYOR;
+        ciz();
+        await ceviriYaz(k, ref);
+        return;
+      }
       if (b.hasAttribute("data-dd-siradaki")) {
         /* Sıradaki eksik öğrenci: listede defteri tamamlanmamış ilk öğrenci, ilk EKSİK dersiyle açılır. */
         const o = siradakiEksik();
@@ -537,6 +598,19 @@ export function dersDefteri(
             opt.db,
             yazilacak.map((x) => ({ ref: x.ref, ders: x.ders, durum: x.durum! })),
           );
+          if (opt.ceviri) {
+            // Kanonik not kalıptır: Fransızca aileler için çeviri belgesi de açılır (makine yok).
+            const cv = opt.ceviri;
+            await topluGelmediCevirisiYaz(
+              opt.db,
+              yazilacak.flatMap((x) => {
+                const dil = cv.hedefDil(x.ref);
+                return dil ? [{ ref: x.ref, kayitId: x.ders.id, durum: x.durum!, dil }] : [];
+              }),
+            ).catch(() => {
+              /* çeviri yazılamazsa kayıtlar yine açıldı; «Şimdi çevir» tamamlar */
+            });
+          }
           if (t !== token || kapali) return;
           mesgul = false;
           const ozet = `${yazilacak.length} ders kaydı açıldı (${kisi} öğrenci). Var olan kayıtlara dokunulmadı.`;
@@ -617,6 +691,7 @@ export function dersDefteri(
         if (gunDefterTarihi === saved.tarih && !(gunDefter[ref] || []).includes(saved.id)) gunDefter[ref] = [...(gunDefter[ref] || []), saved.id].sort();
         kirli = false;
         mesaj = "Dijital ders defterine kaydedildi.";
+        void ceviriYaz(saved, ref); // veli dili Fransızca ise; kaydetmeyi ve «sonraki»ye geçişi bekletmez
         if (sonraki) {
           /* 12 Eyl 2026: gün bitince ertesi güne değil, AYNI günün ilk dersinde SONRAKİ
              ÖĞRENCİye geçilir. Hocanın gerçek iş birimi «bir ders günü, on beş öğrenci»;

@@ -13,7 +13,8 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v33.gs` | **Canlıda** — 13 Eyl 2026 gecesi (2) (`D:/tmp/gas/dagit_v33.py`); soyad büyük harfi yerel-duyarlı (`soyadBuyuk`), PDF dosya adı tek kaynak (`kayitDosyaAdi`), `?islem=kayit-duzelt` (sınırlı alan düzeltme + PDF yenileme), sağlık `kayitDuzelt:true` |
+| `ulucamii-Kod-v34.gs` | **Canlıda** — 14 Eyl 2026 (`D:/tmp/gas/dagit_v34.py`); ders defteri çevirisi ucu `tur: 'cevir'` (Firebase kimliği Identity Toolkit'te doğrulanır + `hocalar/{uid}`, LanguageApp tr→fr, `CEVIRI_KAPALI=1` ile kapatılır), sağlıkta `defterCeviri: true` |
+| *(v33)* | Arşiv (git geçmişi; dosya `git mv` ile v34 oldu) — 13 Eyl 2026 gecesi (2) (`D:/tmp/gas/dagit_v33.py`); soyad büyük harfi yerel-duyarlı (`soyadBuyuk`), PDF dosya adı tek kaynak (`kayitDosyaAdi`), `?islem=kayit-duzelt` (sınırlı alan düzeltme + PDF yenileme), sağlık `kayitDuzelt:true` |
 | *(v32)* | Arşiv (git geçmişi; dosya `git mv` ile v33 oldu) — 13 Eylül 2026 gecesi (`D:/tmp/gas/dagit_v32.py`); kayıt formunda ekranda çizilen imza (`imza`/`imzaYok`, PDF imza alanına basılır, Drive `<ref> - imza.png`, `kayit-belge` ucu `imza` döndürür, sağlık ucu `kayitImza:true`); v31 kurumsal e-posta v2 + iletişim bloğu düzeltmesi korunur |
 | `kimlik-sabitler.gs` | `npm run kimlik:uret` üretir (kimlik.json kopyası) — elle düzenlenmez |
 | `veli-eposta-sablon.gs`, `veli-cuma.gs`, `veli-mail-listesi.gs`, `ihtida-*.gs` | Ortak modüller; `npm run ihtida:gas-derle` hepsini `.codex/cikti/gas/ulucamii-v32.gs` paketine birleştirir |

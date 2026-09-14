@@ -139,6 +139,63 @@ veli bildirimleri) ekranın düzenine işlendi; sayımlar tek tek sayılmak yeri
   `tests/web/hoca-yoklama.spec.mjs` (akıllı varsayılan + canlı özet + gün notu; günün
   özeti + rozet + sekme sırası; öğrenci kartı devam özeti + «Ders defterini aç»).
 
+## Fransızca aileye Fransızca kayıt — defter çevirisi (14 Eyl 2026)
+
+Rıdvan: «İletişim tercihi Fransızca olan velilere benim Türkçe olarak doldurduğum ekranlar
+Fransızca olarak kaydedilsin.» Hoca defteri Türkçe yazmaya devam eder; Fransızca aileye
+giden her metin Fransızca üretilir ve **ayrı belgede** saklanır.
+
+- **Hedef aile:** öğrenci `ogrenciler.dil == 'fr'` ya da ailelerinden birinin
+  `aileler.iletisimDili` / `aileler.dil` değeri `fr` (`hedefDil(ref)`,
+  `src/scripts/hoca-ekrani.ts`). Türkçe ailede hiçbir şey değişmez.
+- **Belge:** `dersDefteri/{ref}/ceviriler/{kayitId}_fr` — `kayitId`, `dil`, `kaynakSurum`
+  (kaydın `surum`u; kayıt değişince çeviri «eski» sayılır), `yontem` (`kalip` / `makine` /
+  `karma`), `calisma`, `odev`, `sonraki`, `okunan`, `dikkat`, `guncelleme`. Kayıt belgesine
+  dokunulmaz; kilitli anahtar kuralı ve sürüm sayacı aynen kalır. Kurallar: yalnız hoca
+  okur/yazar, kimlik `kayitId + '_' + dil`, uzunluk sınırları
+  (`firebase/firestore.rules`, test `tests/kurallar/firestore.test.mjs`).
+- **İki katman** (`src/lib/defter-ceviri.ts`): (1) ekrandaki her kalıp cümlenin, hazır
+  kaydın, kanonik notun («Derse gelmedi.» → «Absence au cours.»), durum etiketinin ve
+  249 ders başlığının (`src/data/ders-konu-fr.ts`) elle yazılmış, **cinsiyetsiz**
+  Fransızcası («Votre enfant a…», «Sa participation…»); (2) kalan serbest cümleler
+  derneğin Apps Script'ine (`tur: 'cevir'`, v34; `LanguageApp` tr → fr; Firebase kimlik
+  belirteci Identity Toolkit'te doğrulanır + `hocalar/{uid}` şartı; kapatma anahtarı Script
+  Property `CEVIRI_KAPALI=1`). Metin cümlelere bölünür (`bolumle`), kalıp olanlar sözlükten,
+  yalnız serbest olanlar makineye gider; makine yanıtı eksikse **hiçbir şey yazılmaz** (yarım
+  çeviri yok). Öğrenci/veli adı istemci tarafından eklenmez; hocanın serbest metnine yazdığı
+  ad olduğu gibi gider.
+- **Makine ucu istemcisi** (`src/lib/ceviri-servisi.ts`): 20 metin / 1.800 karakterlik
+  partiler; geçici sunucu sapmaları (Apps Script echo 404'ü, doGet'e düşen yönlendirmenin
+  sağlık JSON'u, ağ hatası) üç kez denenir; ucun bilinçli hata kodları (`ceviri-kapali`,
+  `yetkisiz`, `metin-uzunlugu`) yeniden denenmez.
+- **Ekran:** Fransızca ailede defter başlığında `data-dd-ceviri` satırı («Veli dili Fransızca ·
+  çeviri: kaydedince yapılır / kayıtlı ✓ (yöntem) / eski — kayıt değişti») ve gerekirse
+  «Şimdi çevir» (`data-dd-cevir`). Kaydet, çeviriyi beklemez: kayıt yazılır, çeviri arkadan
+  gelir ve durum satırına «Fransızca çevirisi kaydedildi (…)» ya da «yapılamadı; «Şimdi
+  çevir» ile ya da bülten aktarımında yeniden denenir» eklenir. Gelmeyenler için toplu
+  kayıt (`topluGelmediYaz`) Fransızca öğrencilere aynı anda `topluGelmediCevirisiYaz` ile
+  kalıp çevirisini yazar.
+- **Bülten (`src/scripts/hoca-bulten.ts`):** Fransızca aileye yeni bülten `dil: 'fr'` ve
+  Fransızca ders başlıklarıyla başlar; ödev/ezber `odevler.*.fr` alanından gelir. «Ders
+  defterinden doldur» çevirileri kullanır (`defterdenBultenFr`: «tarih · cours n · konu»,
+  «Cours fait : …»); çevirisi olmayan/eski kayıt Türkçe kalır ve durum satırı «N dersin
+  çevirisi yok ya da eski» der. «Metinleri Fransızcaya çevir» (`data-hb-cevir`) hocanın
+  elle yazdığı bülten metnini paragraf paragraf makineye gönderir; dil `fr`, yayın kapalı
+  kalır, hoca kontrol edip kaydeder.
+- **Komut satırı:** `HOCA_EPOSTA=… HOCA_SIFRE=… npm run defter:cevir` (kuru liste),
+  `-- --yaz` (yazar), `-- --ref UC-2026-0016`, `-- --kalip` (makinesiz). Ekran açılmadan
+  önce yazılmış kayıtlar, başarısız çeviriler ve eskiyen çeviriler bununla kapatılır;
+  14 Eyl 2026'da 6 Fransızca öğrencinin 21 kaydı çevrildi (12 kalıp, 8 makine, 1 karma).
+- **Bilinçli sınırlar:** veli defter içeriğini yalnız haftalık bültenden görür (çeviri
+  belgesi veliye doğrudan açılmadı); makine katmanı serbest cümlede cinsiyet tahmin
+  edebilir («Il n'était pas en classe») — kalıp cümleler tahmin etmez; paragraf boşlukları
+  çeviride tek boşluğa iner; makine çevirisi Google'a (derneğin Apps Script'i üzerinden)
+  gider, kapatınca yalnız kalıp cümleler çevrilir.
+- Testler: `tests/defter-ceviri.test.mjs` (6: başlık sözlüğü, kalıp eksiksizliği,
+  bölümleme, yöntemler, güncellik + Fransızca bülten, uç istemcisi yeniden deneme),
+  `tests/web/ders-defteri.spec.mjs` («Veli dili Fransızca…», «Fransızca aile: yeni
+  bülten…»), kural testi «ceviriler alt koleksiyonu».
+
 ## Haftalık bülten bağlantısı
 
 **Bülten · İdare** içinde aynı öğrenci/hafta seçilip **Ders defterinden doldur**
@@ -187,6 +244,11 @@ yükleme, kesinti, çakışma, vazgeçme, seçili öğrenci çıktısı, JSON, b
 açık/koyu tema ve axe. `tests/kurallar/firestore.test.mjs`: yalnız demo emülatöründe
 yetki, sürüm, gerçek transaction ve seçili öğrenci temizliği. `test:ogrenme`:
 261 ders/sayfa eşleştirmesi. Gerçek öğrenci hesabına test kaydı yazılmaz.
+
+14 Eylül 2026 (defter çevirisi): `npm run test:ceviri` 6/6, `npm run test:kurallar`
+41/41, `astro check` 0 hata, üç hoca ekranı Playwright dosyası 60/60; kurallar
+`npm run firebase:kurallar` ile yayımlandı; Apps Script v34 canlı
+(`defterCeviri: true`); canlı uçta gerçek hoca belirteciyle çeviri sınandı.
 
 12 Eylül 2026 doğrulaması:
 

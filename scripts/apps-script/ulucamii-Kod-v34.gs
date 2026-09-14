@@ -72,7 +72,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 33;
+var SURUM = 34;
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -103,7 +103,7 @@ function doGet(e) {
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitDuzelt: true, veliEpostaDili: "kayit-tercihi-20260909",
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitDuzelt: true, defterCeviri: true, veliEpostaDili: "kayit-tercihi-20260909",
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -130,8 +130,10 @@ function doPost(e) {
     if (v.tur === "kayit" && (govde.length > AZAMI_KAYIT_GOVDE_BAYT || Utilities.newBlob(govde).getBytes().length > AZAMI_KAYIT_GOVDE_BAYT)) return json({ ok: false, hata: "cok-buyuk" });
     if (govde.length > AZAMI_GOVDE_BAYT && ["kayit", "ihtida", "ihtida-paket-onay"].indexOf(v.tur) === -1) {
       if (v.tur === "mufredat-yukle" && govde.length < 2 * 1024 * 1024) return mufredatYukleIsle(govde);
+      if (v.tur === "cevir" && govde.length < 96 * 1024) return cevirIsle(v); // v34: 20 metin × 1800 karakter
       return json({ ok: false, hata: "cok-buyuk" });
     }
+    if (v.tur === "cevir") return cevirIsle(v);
     if (v.tur === "ihtida-paket-onay") return ihtidaPaketOnayIsle(v);
     if (v.tur === "ihtida-paket-tekrar") return ihtidaPaketTekrarIsle(v);
     if (v.tur === "ihtida-defteri-guncelle") return ihtidaDefteriGuncelle(v);
@@ -2752,4 +2754,46 @@ function brevoIzin() {
   var y = UrlFetchApp.fetch('https://api.brevo.com/v3/account', { method: 'get', headers: { 'api-key': brevoAnahtari(), accept: 'application/json' }, muteHttpExceptions: true });
   console.log('Brevo hesap HTTP ' + y.getResponseCode() + ' ' + String(y.getContentText()).slice(0, 120));
   return y.getResponseCode();
+}
+
+/* ── v34 (14 Eyl 2026) — ders defteri çevirisi ─────────────────────────────────────────────────────────
+   Rıdvan: «iletişim tercihi fransızca olan velilere benim türkçe olarak doldurduğum ekranlar fransızca
+   olarak kaydedilsin.» Hoca ekranı (src/lib/ceviri-servisi.ts) Türkçe defter notlarının KALIBA UYMAYAN
+   cümlelerini buraya gönderir; kalıp cümleler istemcide elle yazılmış Fransızcayla karşılanır ve hiç gelmez.
+   Yetki: gövdedeki Firebase kimlik belirteci Identity Toolkit'te doğrulanır, uid'nin hocalar/{uid} belgesi
+   aranır (veli-mail-listesi.gs → veliPortalHttp). Çeviri LanguageApp (tr → fr). Öğrenci/veli adı istemciden
+   gönderilmez. Script Properties CEVIRI_KAPALI=1 → uç kapalı (istemci yalnız kalıp cümleleri çevirir). */
+var FIREBASE_WEB_ANAHTARI = "AIzaSyDQUXxjs_SovTuAx1hyfW9nhd7bDUdcXfk"; // herkese açık web anahtarı; src/lib/firebase.ts ile aynı
+var CEVIRI_METIN_AZAMI = 20;
+var CEVIRI_KARAKTER_AZAMI = 1800;
+function cevirIsle(v) {
+  var hedef = v.hedef === "fr" ? "fr" : "";
+  if (!hedef) return json({ ok: false, hata: "hedef-gecersiz" });
+  var metinler = Array.isArray(v.metinler) ? v.metinler : [];
+  if (!metinler.length || metinler.length > CEVIRI_METIN_AZAMI) return json({ ok: false, hata: "metin-sayisi" });
+  for (var i = 0; i < metinler.length; i++) {
+    if (typeof metinler[i] !== "string" || metinler[i].length > CEVIRI_KARAKTER_AZAMI) return json({ ok: false, hata: "metin-uzunlugu" });
+  }
+  if (PropertiesService.getScriptProperties().getProperty("CEVIRI_KAPALI") === "1") return json({ ok: false, hata: "ceviri-kapali" });
+  if (!hocaKimligiDogrula(v.idToken)) return json({ ok: false, hata: "yetkisiz" });
+  var ceviriler = [];
+  for (var j = 0; j < metinler.length; j++) {
+    var m = String(metinler[j]).trim();
+    ceviriler.push(m ? ceviriDuzelt(LanguageApp.translate(m, "tr", hedef)) : "");
+  }
+  return json({ ok: true, hedef: hedef, ceviriler: ceviriler });
+}
+function hocaKimligiDogrula(idToken) {
+  if (typeof idToken !== "string" || idToken.length < 100 || idToken.length > 4096) return false;
+  var r = UrlFetchApp.fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=" + FIREBASE_WEB_ANAHTARI,
+    { method: "post", contentType: "application/json", payload: JSON.stringify({ idToken: idToken }), muteHttpExceptions: true });
+  if (r.getResponseCode() !== 200) return false;
+  var u = (JSON.parse(r.getContentText()).users || [])[0];
+  if (!u || !u.localId) return false;
+  var belge = veliPortalHttp("/hocalar/" + encodeURIComponent(u.localId) + "?mask.fieldPaths=eposta", null, true);
+  return !!belge;
+}
+function ceviriDuzelt(s) {
+  // Google Translate'in bilinen sapmaları: «Mahomet» → Muhammad; Fransız tipografisi (harften sonra ; : ! ? önünde boşluk).
+  return String(s || "").replace(/\bMahomet\b/g, "Muhammad").replace(/([^\s\d])\s*([;:!?])/g, "$1 $2").replace(/\s+/g, " ").trim();
 }

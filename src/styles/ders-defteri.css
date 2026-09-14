@@ -328,3 +328,16 @@
   overflow: hidden;
   resize: vertical;
 }
+/* 14 Eyl 2026 — veli dili Fransızca: kaydın çeviri durumu (kayıtlı ✓ / yok / eski) ve «Şimdi çevir». */
+.ders-defteri .dd-ceviri {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.8rem;
+  margin: 0.4rem 0 0.6rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px dashed color-mix(in oklab, var(--color-iznik) 55%, var(--cizgi));
+  border-radius: var(--radius-kose);
+  background: color-mix(in oklab, var(--color-iznik) 7%, var(--zemin));
+  font-size: 0.9rem;
+}
