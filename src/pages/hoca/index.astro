@@ -58,7 +58,9 @@ const veri = {
     width: 100%; padding: 0.55rem 0.7rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); font: inherit; }
   .portal textarea { min-height: 4.5rem; }
   .portal .dugme { cursor: pointer; }
-  .portal .dugme[disabled] { opacity: 0.6; cursor: wait; }
+  /* 14 Eyl 2026: «Mazeretli işaretlendi» gibi BİTMİŞ durum düğmeleri de devre dışıdır; bekleme imleci yalnız çalışan düğmede (data-mesgul). */
+  .portal .dugme[disabled] { opacity: 0.6; cursor: not-allowed; }
+  .portal .dugme[disabled][data-mesgul] { cursor: progress; }
   .portal .satir-dugmeler { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; align-items: center; }
   .portal .ust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem; margin-bottom: 1rem; }
   .portal .sekmeler { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.2rem; }

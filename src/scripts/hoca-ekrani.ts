@@ -16,6 +16,8 @@ import { portalTercihleri } from '../lib/portal-tercihleri';
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
 import { makineCevirici } from '../lib/ceviri-servisi';
+/** Çalışan düğme: devre dışı + data-mesgul (bekleme imleci yalnız burada; bitmiş durum düğmeleri yalnız disabled). */
+const mesgulYap = (b: HTMLButtonElement, d: boolean) => { b.disabled = d; if (d) b.dataset.mesgul = '1'; else delete b.dataset.mesgul; };
 type Veri = { donem: string; gunler: PlanGun[]; materyalGunleri: string[]; materyalYolu: string; veliYollari: Record<string, string>; ceviriUcu?: string };
 type Ogr = { ref: string; ad: string; soyad: string; veliler?: string[]; dil?: string; durum?: string; grup?: string; kayitRef?: string };
 type Aile = { eposta: string; ogrenciler: string[]; dil?: string; iletisimDili?: string; adSoyad?: string; sifreVar?: boolean; sonGiris?: string;
@@ -625,7 +627,7 @@ export async function hocaEkrani(): Promise<void> {
       if (el.dataset.okundu) { await fs.updateDoc(fs.doc(db, 'bildirimler', el.dataset.okundu), { okundu: el.dataset.deger === '1' }); await sekmeYukle('bildirim'); ciz(); return; }
       if (el.dataset.yanitla) { const kart = el.closest('.bildirim-kart'); const ta = kart?.querySelector<HTMLTextAreaElement>('[data-yanit-metin]'); const metin = (ta?.value || '').trim();
         if (!metin) { ustMesaj('Önce yanıt metnini yazın.', 'hata'); ta?.focus(); return; }
-        (el as HTMLButtonElement).disabled = true;
+        mesgulYap(el as HTMLButtonElement, true);
         await fs.updateDoc(fs.doc(db, 'bildirimler', el.dataset.yanitla), { yanit: metin.slice(0, 1000), yanitZaman: fs.serverTimestamp(), okundu: true });
         await sekmeYukle('bildirim'); ciz(); ustMesaj('Yanıt gönderildi; veli portalında görünecek.', 'basari'); return; }
       if (el.dataset.duyuruDuzelt) { duzenlenenDuyuru = el.dataset.duyuruDuzelt; ciz(); kok.querySelector('form[data-form=duyuru]')?.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
@@ -645,16 +647,16 @@ export async function hocaEkrani(): Promise<void> {
       if (el.dataset.davet) {
         const ep = el.dataset.davet; const dil = el.dataset.dil || '';
         if (!['tr', 'fr', 'en'].includes(dil)) { ustMesaj('Davet göndermeden önce velinin iletişim dilini doğrulayınız.', 'hata'); return; }
-        (el as HTMLButtonElement).disabled = true;
+        mesgulYap(el as HTMLButtonElement, true);
         a.languageCode = dil;
         try { await auth.sendSignInLinkToEmail(a, ep, { url: location.origin + (veri.veliYollari[dil] || veri.veliYollari.tr), handleCodeInApp: true }); }
-        finally { a.languageCode = 'tr'; (el as HTMLButtonElement).disabled = false; }
+        finally { a.languageCode = 'tr'; mesgulYap(el as HTMLButtonElement, false); }
         await fs.setDoc(fs.doc(db, 'aileler', ep), { davet: new Date().toISOString() }, { merge: true }).catch(() => {});
         ustMesaj(`Davet gönderildi: ${ep} (${DIL_ADI[dil] || dil}).`, 'basari'); return;
       }
       if (el.dataset.veliSil) { const ep = el.dataset.veliSil; const o = S.ogrenciler.find((x) => x.ref === S!.secili); if (!o || !confirm(`${ep} bu öğrenciden kaldırılsın mı?`)) return;
         o.veliler = await portalVeliBagi(db,o.ref,ep,false); ciz(); return; }
-      if (el.dataset.eylem === 'iceAktar') { (el as HTMLButtonElement).disabled = true; ustMesaj('Kayıt defteri okunuyor…'); await iceAktar(); (el as HTMLButtonElement).disabled = false; return; }
+      if (el.dataset.eylem === 'iceAktar') { mesgulYap(el as HTMLButtonElement, true); ustMesaj('Kayıt defteri okunuyor…'); await iceAktar(); mesgulYap(el as HTMLButtonElement, false); return; }
     } catch (e) { ustMesaj(hata(e), 'hata'); }
   });
 
@@ -686,7 +688,7 @@ export async function hocaEkrani(): Promise<void> {
       const deger = String(fd.get(k) || '');
       return k === 'sifre' || k === 'sifre2' ? deger : deger.trim();
     };
-    const dugmeler = form.querySelectorAll<HTMLButtonElement>('button'); dugmeler.forEach((b) => { b.disabled = true; });
+    const dugmeler = form.querySelectorAll<HTMLButtonElement>('button'); dugmeler.forEach((b) => mesgulYap(b, true));
     mesaj(form, '');
     try {
       switch (form.dataset.form) {
@@ -725,7 +727,7 @@ export async function hocaEkrani(): Promise<void> {
           break; }
       }
     } catch (e) { mesaj(form, hata(e), 'hata'); }
-    finally { if (form.isConnected) dugmeler.forEach((b) => { b.disabled = false; }); }
+    finally { if (form.isConnected) dugmeler.forEach((b) => mesgulYap(b, false)); }
   });
 
   /* ---------------------------------------------------------------- kayıt defterinden içe aktarma (portal-yonetim.py ice-aktar ile aynı kurallar) */

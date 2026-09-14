@@ -53,6 +53,8 @@ test('Veli mazereti kendiliğinden işaretlenir; yazma yalnız kaydetmeyle olur'
     for (const sira of ['1', '2', '3'])
       await expect(dugme(kok, ref, sira, 'mazeret')).toHaveAttribute('aria-pressed', 'true');
   await expect(serit.locator('[data-mazeret-uygula="TEST-1"]')).toBeDisabled();
+  // 14 Eyl 2026 (Rıdvan): bitmiş durum düğmesinin üstünde imleç «bekle» diye dönmez; bekleme imleci yalnız çalışan (data-mesgul) düğmede.
+  expect(await serit.locator('[data-mazeret-uygula="TEST-1"]').evaluate((e) => getComputedStyle(e).cursor)).toBe('not-allowed');
 
   /* Kaydedilmiş bir günü hoca bir daha hiç açmayabilir; mazeret bildirilen günler gün
      listesinde işaretlenir ki hangi güne dönmesi gerektiği görünsün. */

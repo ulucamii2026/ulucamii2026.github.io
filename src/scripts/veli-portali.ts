@@ -356,7 +356,7 @@ export async function veliPortali(): Promise<void> {
     const p = form.querySelector<HTMLElement>('[data-mesaj]'); if (!p) return;
     p.textContent = metin; p.className = 'not ' + tur; p.hidden = !metin;
   };
-  const mesgul = (form: HTMLFormElement, durum: boolean) => form.querySelectorAll<HTMLButtonElement>('button').forEach((b) => { b.disabled = durum; });
+  const mesgul = (form: HTMLFormElement, durum: boolean) => form.querySelectorAll<HTMLButtonElement>('button').forEach((b) => { b.disabled = durum; if (durum) b.dataset.mesgul = '1'; else delete b.dataset.mesgul; });
 
   /* Ekran okuyucu duyurusu: panonun tamamı canlı bölge DEĞİL (her çizimde her şeyi okurdu);
      yalnız bu küçük bölge duyurur. Aynı metin art arda gelirse okunsun diye önce boşaltılır. */
