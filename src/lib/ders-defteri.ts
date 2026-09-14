@@ -163,6 +163,28 @@ export async function gunYoklamasi(db: Firestore, tarih: string) {
   return out;
 }
 
+/**
+ * Günün defter ilerlemesi (14 Eyl 2026): her öğrenci için o gün yazılmış defter kayıtlarının
+ * kimlikleri. Hoca ekranı «7/15 öğrenci tamam» der ve sıradaki eksik öğrenciye atlar.
+ * Öğrenci başına tek küçük sorgu (`tarih ==`); bütün alt koleksiyon okunmaz.
+ */
+export async function gunDefterOzeti(
+  db: Firestore,
+  refler: string[],
+  tarih: string,
+): Promise<Record<string, string[]>> {
+  const out: Record<string, string[]> = {};
+  await Promise.all(
+    refler.map(async (ref) => {
+      const s = await getDocs(
+        query(collection(db, "dersDefteri", ref, "kayitlar"), where("tarih", "==", tarih)),
+      );
+      out[ref] = s.docs.map((d) => d.id).sort();
+    }),
+  );
+  return out;
+}
+
 /* ─────────────────────── KALICI KURAL: veli mazereti her zaman kabul edilir ───────────────────────
    Rıdvan'ın 12 Eylül 2026 kararı: «Veliden gelen mazereti her zaman kabul ediyorum.»
    Bu yüzden mazeret bir TIKLAMA değil, bir KURALDIR: veli o ders günü için portaldan mazeret

@@ -215,3 +215,33 @@ test('«Kaydet ve sonraki» gün bitince ertesi güne değil sıradaki öğrenci
  expect(ilk.map(k=>k.id).sort()).toEqual(['2026-09-12_1','2026-09-12_2','2026-09-12_3']);
  expect(await page.evaluate(r=>window.__records[`dersDefteri/${r}/kayitlar`],refler[1])).toBeUndefined();
 });
+test('Günün ilerlemesi: kaç öğrencinin defteri tamam, seçenekte ◐/✓ işareti, «Sıradaki eksik» ilk eksik dersi açar',async({page,context})=>{
+ // TEST-1'in 1. dersi kayıtlı (1/3 → kısmen), TEST-2'de kayıt yok (başlanmadı).
+ const p=await ac(page,context,{[yol]:[kayit]});
+ const ozet=p.locator('[data-dd-gun-ozet]');
+ await expect(ozet).toContainText('0/2 öğrencinin günlük defteri tamam');
+ await expect(ozet).toContainText('1 kısmen');
+ await expect(ozet).toContainText('1 başlanmadı');
+ await expect(p.locator('[data-dd-ogr] option[value="TEST-1"]')).toContainText('◐ 1/3');
+ // Sıradaki eksik: listede ilk tamamlanmamış öğrenci (sıra soyada göre → «İkinci Örnek»), ilk eksik dersiyle.
+ const siradaki=p.locator('[data-dd-siradaki]');
+ await expect(siradaki).toContainText('Sıradaki eksik: İkinci');
+ await siradaki.click();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-2');
+ await expect(p.locator('[data-dd-ders="2026-09-12_1"]')).toHaveAttribute('aria-pressed','true');
+ for(const sira of [1,2,3]){
+  await p.locator('[name=durum]').selectOption('islendi');
+  await p.locator('[name=calisma]').fill(`${sira}. ders notu`);
+  await p.locator('[value=sonraki]').click();
+  await expect(p.locator('[data-dd-durum]')).toContainText(sira<3?'kaydedildi':'Sıradaki öğrenci');
+ }
+ // TEST-2 tamam → 1/2; seçenekte ✓; sıradaki eksik artık TEST-1 («Örnek»), eksik dersi 2.
+ await expect(ozet).toContainText('1/2 öğrencinin günlük defteri tamam');
+ await expect(ozet).toContainText('1 kısmen');
+ await expect(ozet).not.toContainText('başlanmadı');
+ await expect(p.locator('[data-dd-ogr] option[value="TEST-2"]')).toContainText('✓');
+ await expect(siradaki).toContainText('Sıradaki eksik: Örnek');
+ await siradaki.click();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-1');
+ await expect(p.locator('[data-dd-ders="2026-09-12_2"]')).toHaveAttribute('aria-pressed','true');
+});

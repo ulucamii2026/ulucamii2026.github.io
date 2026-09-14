@@ -112,6 +112,33 @@ adım», «okunan», «dikkat» alanları hiç kullanılmamıştı.
 - Testler: `npm run test:kaliplar` (saf işlevler) ve `tests/web/ders-defteri.spec.mjs`
   (çip, hazır kayıt, son kayıtla aynı, gelmeyen öğrenci, yapışkan çubuk, dokunma hedefi).
 
+## Günün ilerlemesi ve hoca ekranı ikinci tur (14 Eyl 2026)
+
+İkinci tasarım/içerik turu: ders gününün iş akışı (yoklama → defter → haftalık ödev →
+veli bildirimleri) ekranın düzenine işlendi; sayımlar tek tek sayılmak yerine gösterilir.
+
+- **Günün ilerlemesi** (defter panelinin üstü, `data-dd-gun-ozet`): «n/N öğrencinin
+  günlük defteri tamam · k kısmen · m başlanmadı» ve **«Sıradaki eksik: <ad>»**
+  düğmesi (`data-dd-siradaki`) — listede defteri tamamlanmamış ilk öğrenciyi ilk EKSİK
+  dersiyle açar. Öğrenci seçeneklerinde ✓ (tamam) / ◐ 1/3 (kısmen) işareti.
+  Veri `gunDefterOzeti(db, refler, tarih)` (`src/lib/ders-defteri.ts`): öğrenci başına
+  `kayitlar` alt koleksiyonunda `tarih ==` sorgusu; koleksiyon grubu sorgusu ve kural
+  değişikliği gerekmedi (N küçük sorgu, gün değişince bir kez okunur; kaydetmeden sonra
+  yerelde güncellenir; «Yeniden dene» ve toplu doldurma yeniden okur).
+- **Öğrenci kartı → defter:** «Ders defterini aç» (`data-defter-ac`) defteri o öğrenciyle
+  açar (`dersDefteri(..., { baslangicRef })`). Kartta devam özeti (`data-devam`: ders günü
+  sayısı, Var/Yok/Mazeretli/Geç sayıları — `yoklama` koleksiyonundan `ref ==` sorgusu).
+- **Yoklama:** akıllı varsayılan — günün İLK dersi işaretlenince öğrencinin BOŞ kalan
+  dersleri aynı işaretlenir («Geç» → sonrakiler «Var»); dolu ders asla ezilmez. Canlı özet
+  `data-yk-ozet` («k/n ders işaretli · Var/Yok/Mazeretli/Geç · İşaretsiz m»). Gün notu
+  katlı (`<details class="yk-not">`, dolu ise açık). Telefonda kaydet çubuğu yapışkan.
+- **Başlık ve sekmeler:** günün özeti `data-hero-gun` (bugün / sıradaki ders günü, hafta,
+  günün dersleri, aktif öğrenci sayısı, okunmamış veli bildirimi bağlantısı); sekme sırası
+  iş akışına göre, «Veli bildirimleri» sekmesinde okunmamış rozeti (`.sekme-sayi`).
+- Testler: `tests/web/ders-defteri.spec.mjs` («Günün ilerlemesi…») ve
+  `tests/web/hoca-yoklama.spec.mjs` (akıllı varsayılan + canlı özet + gün notu; günün
+  özeti + rozet + sekme sırası; öğrenci kartı devam özeti + «Ders defterini aç»).
+
 ## Haftalık bülten bağlantısı
 
 **Bülten · İdare** içinde aynı öğrenci/hafta seçilip **Ders defterinden doldur**

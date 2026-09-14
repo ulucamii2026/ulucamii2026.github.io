@@ -5,6 +5,7 @@ import {
   dersDurumlari,
   ozDurumlari,
   gunYoklamasi,
+  gunDefterOzeti,
   topluGelmediYaz,
   yoklamaCelismesi,
   gelmediMi,
@@ -33,6 +34,8 @@ export function dersDefteri(
     ogrenciler: Ogr[];
     katalog: DefterDersi[];
     bugun: string;
+    /** Öğrenci kartındaki «Ders defterini aç» ile gelen öğrenci: panel bu öğrenci seçili açılır. */
+    baslangicRef?: string;
   },
 ) {
   const ac = new AbortController();
@@ -122,6 +125,21 @@ export function dersDefteri(
   };
   const gunler = [...new Set(opt.katalog.map((d) => d.tarih))];
   let tarih = gunler.find((t) => t >= opt.bugun) || gunler.at(-1) || "";
+  if (opt.baslangicRef && opt.ogrenciler.some((o) => o.ref === opt.baslangicRef)) {
+    ref = opt.baslangicRef;
+    id = opt.katalog.find((x) => x.tarih === tarih)?.id || "";
+  }
+  /* Günün defter ilerlemesi (14 Eyl 2026): öğrenci → o gün yazılmış ders kimlikleri. Gün açılınca
+     bir kez okunur (öğrenci başına küçük sorgu); kayıt sonrası yerinde güncellenir. Seçim listesinde
+     ✓ / ◐ işareti ve «7/15 öğrenci tamam» satırı buradan gelir; sıradaki eksik öğrenciye tek dokunuş. */
+  let gunDefter: Record<string, string[]> = {};
+  let gunDefterTarihi = "";
+  const gunDersSayisi = () => opt.katalog.filter((x) => x.tarih === tarih).length;
+  const ogrDurumu = (r: string): "tamam" | "kismen" | "bos" => {
+    const n = (gunDefter[r] || []).length;
+    return n === 0 ? "bos" : n >= gunDersSayisi() ? "tamam" : "kismen";
+  };
+  const siradakiEksik = () => opt.ogrenciler.find((o) => ogrDurumu(o.ref) !== "tamam") || null;
   const adi = () => {
     const o = opt.ogrenciler.find((x) => x.ref === ref);
     return o ? `${o.ad} ${o.soyad}` : ref;
@@ -253,7 +271,7 @@ export function dersDefteri(
       return `<div class="dd-toplu"><button type="button" data-dd-toplu ${mesgul ? "disabled" : ""}>Gelmeyenlerin defterini doldur <small>${n} ders</small></button><p class="kucuk">Yoklamada «Yok» veya «Mazeretli» işaretli dersler için kayıt açar. Zaten kaydı olan derse dokunmaz.</p></div>`;
     };
 
-    root.innerHTML = `<h2>Ders Defteri</h2><p>Kâğıttaki notlarınız, aynı dersin dijital kaydında.</p><div class="dd-secim"><label>Öğrenci<select data-dd-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => { const y = [1, 2, 3].map((s) => yoklama[o.ref]?.[String(s)] || "").filter(Boolean); const hepsi = y.length === 3 && y.every((x) => x === y[0]) ? y[0] : ""; return `<option value="${e(o.ref)}" ${ref === o.ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${hepsi && hepsi !== "var" ? ` — ${e(YOK_ADI[hepsi] || hepsi)}` : ""}</option>`; }).join("")}</select></label><label>Ders günü<select data-dd-gun ${mesgul ? "disabled" : ""}>${gunler.map((t) => `<option value="${t}" ${t === tarih ? "selected" : ""}>${new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", weekday: "short" }).format(new Date(t + "T12:00:00Z"))}</option>`).join("")}</select></label></div><p data-dd-durum role="status" tabindex="-1">${e(mesaj)}</p>${yoklamaHatasi ? '<p class="dd-uyari" data-dd-yoklama-hata>Bu günün yoklaması okunamadı; durum kendiliğinden doldurulmadı.</p>' : ""}${topluDugme()}${ref && !yuklendi && !mesgul ? '<button type="button" data-dd-yenile>Yeniden dene</button>' : ""}${ref && yuklendi ? `<nav class="dd-dersler" aria-label="Günün dersleri">${gun.map((x) => `<button type="button" data-dd-ders="${x.id}" aria-pressed="${x.id === id}" ${mesgul ? "disabled" : ""}>${x.sira}. ders <span>${e(x.konu)}</span><small>${kayitlar.some((k) => k.id === x.id) ? "Kayıtlı" : "Henüz kayıt yok"}</small>${yokRozet(x.sira)}</button>`).join("")}</nav>` : ""}${
+    root.innerHTML = `<h2>Ders Defteri</h2><p>Kâğıttaki notlarınız, aynı dersin dijital kaydında.</p><div class="dd-secim"><label>Öğrenci<select data-dd-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => { const y = [1, 2, 3].map((s) => yoklama[o.ref]?.[String(s)] || "").filter(Boolean); const hepsi = y.length === 3 && y.every((x) => x === y[0]) ? y[0] : ""; const dz = ogrDurumu(o.ref); const isaret = dz === "tamam" ? " ✓" : dz === "kismen" ? ` ◐ ${(gunDefter[o.ref] || []).length}/${gunDersSayisi()}` : ""; return `<option value="${e(o.ref)}" ${ref === o.ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${isaret}${hepsi && hepsi !== "var" ? ` — ${e(YOK_ADI[hepsi] || hepsi)}` : ""}</option>`; }).join("")}</select></label><label>Ders günü<select data-dd-gun ${mesgul ? "disabled" : ""}>${gunler.map((t) => `<option value="${t}" ${t === tarih ? "selected" : ""}>${new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", weekday: "short" }).format(new Date(t + "T12:00:00Z"))}</option>`).join("")}</select></label></div>${(() => { if (!gunDefterTarihi || !gunDersSayisi()) return ""; const say = { tamam: 0, kismen: 0, bos: 0 }; opt.ogrenciler.forEach((o) => { say[ogrDurumu(o.ref)]++; }); const eksik = siradakiEksik(); return `<p class="dd-gun-ozet" data-dd-gun-ozet><span><b>${say.tamam}/${opt.ogrenciler.length}</b> öğrencinin günlük defteri tamam</span>${say.kismen ? `<span>${say.kismen} kısmen</span>` : ""}${say.bos ? `<span>${say.bos} başlanmadı</span>` : ""}${eksik ? `<button type="button" class="kucuk-dugme" data-dd-siradaki ${mesgul ? "disabled" : ""}>Sıradaki eksik: ${e(eksik.ad)}</button>` : '<span class="rozet var">Günün defteri tamam</span>'}</p>`; })()}<p data-dd-durum role="status" tabindex="-1">${e(mesaj)}</p>${yoklamaHatasi ? '<p class="dd-uyari" data-dd-yoklama-hata>Bu günün yoklaması okunamadı; durum kendiliğinden doldurulmadı.</p>' : ""}${topluDugme()}${ref && !yuklendi && !mesgul ? '<button type="button" data-dd-yenile>Yeniden dene</button>' : ""}${ref && yuklendi ? `<nav class="dd-dersler" aria-label="Günün dersleri">${gun.map((x) => `<button type="button" data-dd-ders="${x.id}" aria-pressed="${x.id === id}" ${mesgul ? "disabled" : ""}>${x.sira}. ders <span>${e(x.konu)}</span><small>${kayitlar.some((k) => k.id === x.id) ? "Kayıtlı" : "Henüz kayıt yok"}</small>${yokRozet(x.sira)}</button>`).join("")}</nav>` : ""}${
       ref && yuklendi && d && k
         ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>Yoklama: <strong>${e(YOK_ADI[y] || y)}</strong>${gelmedi ? " · dersin durumu buna göre seçildi" : ""}</p>` : ""; })()}<p>Basılı defter: <strong>${d.sayfa}. sayfa</strong> · ${d.hafta}. hafta · Ders no: ${d.no}</p><details><summary>Basılı plandaki hedef ve etkinlik</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>A grubu · ${e(d.hedef_a_tr)}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>Kaynak: ${e(d.kaynak)}</p><p>Basılı plan dersin işlendiği veya öğrencinin başardığı anlamına gelmez.</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${e(adi())} ders kaydı</legend>${hazirBar()}<label class="dd-durum-secim">Dersin durumu<select name="durum" required>${secenek({ "": "Seçin…", ...dersDurumlari }, k.durum)}</select></label>${(() => { const c = yoklamaCelismesi(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} Kaydetmenizi engellemez; hangisi doğruysa onu düzeltin.</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>Diğer defter alanları · isteğe bağlı</summary><label>Notun kaynağı<select name="giris">${secenek({ dijital: "Doğrudan dijitale yazıyorum", kagit: "Kâğıt defterden aktarıyorum" }, k.giris)}</select></label>${d.kod === "kuran" ? `<label>Bugünkü grubu<select name="grup">${secenek({ "": "İşaretlenmedi", A: "A grubu", B: "B grubu" }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>Öğrencinin “Bugün nasıl ilerledim?” işareti<select name="oz">${secenek(ozDurumlari, k.oz)}</select></label><p class="dd-aciklama">Öğrencinin kâğıttaki beyanını aktarın. Bu alan öğretmen başarı notu veya yoklama değildir. Yoklama ve ilerleme kendi menülerinde tutulur.</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">Kaydet</button><button type="submit" value="sonraki">Kaydet ve sonraki<span class="dd-uzun"> derse geç</span></button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>Sunucudaki kaydı yeniden yükle</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>Notları kopyala</button></div><details class="dd-arsiv"><summary>Dijital arşiv · ${kayitlar.length} kayıt</summary><p>Yalnız ${e(adi())} için kaydedilmiş dersler. Kayıtlar hoca ekranına özeldir; veliye paylaşmak için Bülten · İdare bölümünde haftanın notlarını aktarın.</p><div class="bulten-eylemler"><button type="button" data-dd-indir>Arşivi indir (JSON)</button><button type="button" data-dd-yazdir>Kaydedilmiş dersleri yazdır / PDF</button></div><ul>${
             [...kayitlar]
@@ -277,11 +295,14 @@ export function dersDefteri(
     ciz();
     try {
       // Yoklama okunamazsa defter yine açılır; yalnız otomatik doldurma devre dışı kalır.
-      const [r, y] = await Promise.all([
+      const [r, y, gd] = await Promise.all([
         ref ? defterDeposu(opt.db, ref).liste() : Promise.resolve([] as DersKaydi[]),
         yoklamaTarihi === gun
           ? Promise.resolve(yoklama)
           : gunYoklamasi(opt.db, gun).catch(() => null),
+        gunDefterTarihi === gun
+          ? Promise.resolve(gunDefter)
+          : gunDefterOzeti(opt.db, opt.ogrenciler.map((o) => o.ref), gun).catch(() => null),
       ]);
       if (t !== token || kapali) return;
       if (y) {
@@ -289,6 +310,10 @@ export function dersDefteri(
         yoklamaTarihi = gun;
         yoklamaHatasi = false;
       } else yoklamaHatasi = true;
+      if (gd) {
+        gunDefter = gd;
+        gunDefterTarihi = gun;
+      }
       kayitlar = r;
       kirli = false;
       yuklendi = Boolean(ref);
@@ -443,8 +468,22 @@ export function dersDefteri(
       if (b.hasAttribute("data-dd-yenile")) {
         if (ayrilabilir()) {
           yoklamaTarihi = "";
+          gunDefterTarihi = "";
           void yukle();
         }
+      }
+      if (b.hasAttribute("data-dd-siradaki")) {
+        /* Sıradaki eksik öğrenci: listede defteri tamamlanmamış ilk öğrenci, ilk EKSİK dersiyle açılır. */
+        const o = siradakiEksik();
+        if (!o || !ayrilabilir()) return;
+        const eksikDers = opt.katalog.find((x) => x.tarih === tarih && !(gunDefter[o.ref] || []).includes(x.id));
+        ref = o.ref;
+        id = eksikDers?.id || opt.katalog.find((x) => x.tarih === tarih)?.id || "";
+        kayitlar = [];
+        kirli = false;
+        mesaj = "";
+        void yukle();
+        return;
       }
       if (b.hasAttribute("data-dd-toplu")) {
         if (!ayrilabilir()) return;
@@ -501,7 +540,8 @@ export function dersDefteri(
           if (t !== token || kapali) return;
           mesgul = false;
           const ozet = `${yazilacak.length} ders kaydı açıldı (${kisi} öğrenci). Var olan kayıtlara dokunulmadı.`;
-          if (ref) await yukle(); // açılan kayıtlar seçili öğrencide de görünsün
+          gunDefterTarihi = ""; // günün ilerlemesi yeniden okunur (açılan kayıtlar sayıma girsin)
+          await yukle(); // açılan kayıtlar seçili öğrencide ve günün özetinde görünsün
           if (kapali) return;
           mesaj = ozet; // yukle() kendi mesajını yazar; özet onun üstüne konur
           ciz();
@@ -574,6 +614,7 @@ export function dersDefteri(
           (a, b) => a.id.localeCompare(b.id),
         );
         sonKayitYaz(saved); // «Son kayıtla aynı» için: aynı dersin en son notları cihazda kalır
+        if (gunDefterTarihi === saved.tarih && !(gunDefter[ref] || []).includes(saved.id)) gunDefter[ref] = [...(gunDefter[ref] || []), saved.id].sort();
         kirli = false;
         mesaj = "Dijital ders defterine kaydedildi.";
         if (sonraki) {

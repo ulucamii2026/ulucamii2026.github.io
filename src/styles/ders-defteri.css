@@ -297,6 +297,22 @@
     min-height: 2.9rem;
   }
 }
+/* Günün ilerlemesi (14 Eyl 2026): kaç öğrencinin defteri tamam, sıradaki eksik öğrenciye tek dokunuş. */
+.ders-defteri .dd-gun-ozet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  margin: 0.6rem 0 0.2rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--cizgi);
+  border-radius: var(--radius-kose);
+  background: var(--zemin-2);
+  font-size: 0.92rem;
+}
+.ders-defteri .dd-gun-ozet .kucuk-dugme {
+  margin-left: auto;
+}
 /* Kaydet çubuğu ekranın altına yapışır: çiplere dokunduktan sonra kaydetmek için kaydırma gerekmez. */
 .ders-defteri .dd-kaydet {
   position: sticky;

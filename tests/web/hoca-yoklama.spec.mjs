@@ -105,6 +105,80 @@ test('Mazeret yoksa şerit hiç çıkmaz ve yoklamaya dokunulmaz', async ({ page
   await expect(dugme(kok, 'TEST-1', '1', 'yok')).toHaveAttribute('aria-pressed', 'true');
 });
 
+/* 14 Eyl 2026 — ikinci tasarım turu: akıllı varsayılan, canlı özet, katlı gün notu, günün özeti,
+   okunmamış bildirim rozeti, iş akışı sırasında sekmeler, öğrenci kartında devam özeti. */
+test('Akıllı varsayılan: ilk ders işaretlenince boş dersler de aynı işaretlenir, dolu ders ezilmez; özet canlı; gün notu katlı', async ({ page, context }) => {
+  const kok = await yoklamaAc(page, context, { yoklama: [yok('TEST-2', { 1: '', 2: 'yok', 3: '' })] });
+  await dugme(kok, 'TEST-1', '1', 'var').click();
+  for (const s of ['2', '3']) await expect(dugme(kok, 'TEST-1', s, 'var')).toHaveAttribute('aria-pressed', 'true');
+  // «Geç» → sonrakiler «Var»; dolu 2. ders («yok») ezilmez.
+  await dugme(kok, 'TEST-2', '1', 'gec').click();
+  await expect(dugme(kok, 'TEST-2', '2', 'yok')).toHaveAttribute('aria-pressed', 'true');
+  await expect(dugme(kok, 'TEST-2', '3', 'var')).toHaveAttribute('aria-pressed', 'true');
+  const ozet = kok.locator('[data-yk-ozet]');
+  await expect(ozet).toContainText('6/6 ders işaretli');
+  await expect(ozet).toContainText('Hepsi işaretli');
+  // Aynı düğmeye ikinci dokunuş yalnız o dersi boşaltır; özet düşer.
+  await dugme(kok, 'TEST-1', '1', 'var').click();
+  await expect(dugme(kok, 'TEST-1', '1', 'var')).toHaveAttribute('aria-pressed', 'false');
+  await expect(dugme(kok, 'TEST-1', '2', 'var')).toHaveAttribute('aria-pressed', 'true');
+  await expect(ozet).toContainText('5/6 ders işaretli');
+  await expect(ozet).toContainText('İşaretsiz 1');
+  // Gün notu katlı durur; açılınca yazılır ve kaydedilir.
+  const notAlani = kok.locator('[data-yok-not="TEST-1"]');
+  await expect(notAlani).toBeHidden();
+  await kok.locator('.yk-satir', { has: page.locator('[data-yok-not="TEST-1"]') }).locator('.yk-not summary').click();
+  await notAlani.fill('Erken ayrıldı');
+  await kok.locator('[data-eylem=yoklamaKaydet]').click();
+  await expect(page.locator('#hoca-durum')).toContainText('yoklaması kaydedildi');
+  const yazilan = await page.evaluate(() => window.__records.yoklama);
+  expect(yazilan.find((y) => y.id === `TEST-1_${gun}`).not).toBe('Erken ayrıldı');
+  expect(yazilan.find((y) => y.id === `TEST-1_${gun}`).dersler).toEqual({ 2: 'var', 3: 'var' });
+  expect(yazilan.find((y) => y.id === `TEST-2_${gun}`).dersler).toEqual({ 1: 'gec', 2: 'yok', 3: 'var' });
+});
+
+test('Günün özeti, okunmamış bildirim rozeti ve iş akışı sırasında sekmeler', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, students, records: { bildirimler: [
+    { id: 'b1', ref: 'TEST-1', tur: 'soru', metin: 'Kitap nereden alınır?', okundu: false, eposta: 'veli@example.test', zaman: '2026-09-12T10:00:00Z' },
+    { id: 'b2', ref: 'TEST-2', tur: 'iletisim', metin: 'Telefon değişti', okundu: true, eposta: 'veli@example.test', zaman: '2026-09-12T10:00:00Z' },
+  ] } });
+  const kok = page.locator('#hoca-ekrani');
+  await expect(kok.locator('h1.hero-baslik')).toContainText('Hoca ekranı');
+  const gunOzeti = kok.locator('[data-hero-gun]');
+  await expect(gunOzeti).toContainText('bugün ders var'); // sahte saat 13 Eyl, planda ders günü
+  await expect(gunOzeti).toContainText('2 aktif öğrenci');
+  await expect(gunOzeti).toContainText('1 okunmamış veli bildirimi');
+  const sekme = kok.locator('[role=tab][data-sekme=bildirim]');
+  await expect(sekme.locator('.sekme-sayi')).toContainText('1');
+  const sira = await kok.locator('[role=tab]').evaluateAll((els) => els.map((e) => e.dataset.sekme));
+  expect(sira.slice(0, 4)).toEqual(['yoklama', 'defter', 'odev', 'bildirim']);
+  // Özetteki bağlantı sekmeye götürür; okundu işaretlenince rozet düşer ve özet güncellenir.
+  await gunOzeti.locator('[data-sekme=bildirim]').click();
+  await expect(sekme).toHaveAttribute('aria-selected', 'true');
+  await kok.locator('[data-okundu="b1"]').click();
+  await expect(sekme.locator('.sekme-sayi')).toHaveCount(0);
+  await expect(kok.locator('[data-hero-gun]')).toContainText('Okunmamış veli bildirimi yok');
+});
+
+test('Öğrenci kartında devam özeti; «Ders defterini aç» defteri o öğrenciyle açar', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, students, records: { yoklama: [
+    yok('TEST-1', { 1: 'var', 2: 'var', 3: 'gec' }),
+    { id: `TEST-1_${baskaGun}`, ref: 'TEST-1', tarih: baskaGun, dersler: { 1: 'mazeret' }, not: '' },
+  ] } });
+  const kok = page.locator('#hoca-ekrani');
+  await kok.locator('[role=tab][data-sekme=ogrenci]').click();
+  await kok.locator('.ogr-ad[data-ogr="TEST-1"]').click();
+  const devam = kok.locator('[data-devam]');
+  await expect(devam).toContainText('2 ders günü');
+  await expect(devam).toContainText('Var 2');
+  await expect(devam).toContainText('Geç 1');
+  await expect(devam).toContainText('Mazeretli 1');
+  await kok.locator('[data-defter-ac="TEST-1"]').click();
+  await expect(kok.locator('[role=tab][data-sekme=defter]')).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('[data-dd-form]')).toBeVisible();
+  await expect(page.locator('[data-dd-ogr]')).toHaveValue('TEST-1');
+});
+
 test('Mazeret şeridi erişilebilir ve taşmasız', async ({ page, context }) => {
   const kok = await yoklamaAc(page, context, {
     bildirimler: [mazeret('m1', 'TEST-1', 'Hasta olduğu için gelemeyecek, kusura bakmayın.')],
