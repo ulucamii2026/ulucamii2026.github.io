@@ -1,4 +1,5 @@
 import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
+import { odevMetni } from '../lib/haftalik-odev';
 /**
  * Veli portalı tarayıcı uygulaması (6 Eyl 2026). Sunucu yok: Firebase Auth + Firestore (lite) doğrudan tarayıcıdan.
  * Akış: e-posta bağlantısı → (ilk kez) şifre belirleme → pano; sonraki girişler e-posta + şifre. Veri erişimi
@@ -1173,7 +1174,7 @@ export async function veliPortali(): Promise<void> {
             <section class="bolum r-adacayi video-kose-kart">
               ${bas('duyuru', m.videoKosesi, m.videoAciklama)}
               <div class="video-kose-govde">
-                <p class="kucuk">${haftaOdev && haftaOdev.odev ? esc(cok(haftaOdev.odev)) : 'Bu haftaki ders etkinliklerini ve ezberlerini tamamlayarak yeni rozetler kazanabilirsin.'}</p>
+                <p class="kucuk">${haftaOdev && haftaOdev.odev ? esc(odevMetni(haftaOdev.odev, dil)) : 'Bu haftaki ders etkinliklerini ve ezberlerini tamamlayarak yeni rozetler kazanabilirsin.'}</p>
                 <div class="mektep-video-vitrin">
                   <div class="mektep-video-afis-kutu">
                     <img src="/media/mektep/elifba-bahcesi.webp" alt="Diyanet Çocuk Eğitici Medya" class="mektep-video-afis-resim" loading="lazy" width="600" height="200" />
@@ -1258,7 +1259,7 @@ export async function veliPortali(): Promise<void> {
       const haftaninDersleri = haftaGunleri.flatMap((g) => g.dersler);
       const buHaftaKonu = haftaninDersleri.length
         ? [...new Set(haftaninDersleri.map((x) => x.konu))].join(', ')
-        : (haftaOdev?.odev ? cok(haftaOdev.odev) : m.varsayilanDersKonusu);
+        : (haftaOdev?.odev ? odevMetni(haftaOdev.odev, dil) : m.varsayilanDersKonusu);
       const ezberHedefi = cok(haftaOdev?.ezber)
         || [...new Set(haftaninDersleri.flatMap((x) => x.ezber))].join(', ')
         || m.varsayilanEzberHedefi;
@@ -1346,8 +1347,8 @@ export async function veliPortali(): Promise<void> {
               <span class="g-dersler">${g.dersler.map((x) => `<span class="g-ders"><span class="g-no">${x.no}.</span> ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span></span>`).join('')}
               ${g.dersler.some((x) => x.ezber.length) ? `<span class="rozet ogrendi">${esc(m.ezber)}: <span lang="tr">${esc(g.dersler.flatMap((x) => x.ezber).join(', '))}</span></span>` : ''}
               ${veri.materyalGunleri.includes(g.tarih) ? `<a class="ic-bag" href="${esc(veri.materyalYolu)}#g-${g.tarih}">${esc(m.materyal)}${simge('disari')}</a>` : ''}</span></div>`).join('')}</div>` : ''}
-          ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p style="white-space:pre-line">${bagla(cok(haftaOdev.ezber) || '—')}</p>
-            <h3>${esc(m.odev)}</h3><p style="white-space:pre-line">${bagla(cok(haftaOdev.odev) || '—')}</p>
+          ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p style="white-space:pre-line">${bagla(odevMetni(haftaOdev.ezber, dil) || '—')}</p>
+            <h3>${esc(m.odev)}</h3><p style="white-space:pre-line">${bagla(odevMetni(haftaOdev.odev, dil) || '—')}</p>
             ${haftaOdev.materyal ? `<p style="margin-top:.7rem"><a class="ic-bag" href="${esc(haftaOdev.materyal)}">${esc(m.materyal)}${simge('disari')}</a></p>` : ''}` : bosDurum('kitap', m.odevYok)}
           ${siradaki ? `<p class="kucuk" style="margin-top:1rem;display:flex;align-items:center;gap:.45rem">${simge('takvim')}<span><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</span></p>` : ''}
         </section>

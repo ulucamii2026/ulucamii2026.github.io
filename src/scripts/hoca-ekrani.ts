@@ -1,4 +1,6 @@
+import { hocaOdevi } from './hoca-odev';
 import { ETKINLIKLER } from '../lib/ogrenme-icerigi';
+import { odevHaftalari, type HaftalikOdev } from '../lib/haftalik-odev';
 import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
 import type { Tekrar } from '../lib/ogrenme-ilerleme';
 import { hocaBulteni } from './hoca-bulten';
@@ -78,7 +80,7 @@ export async function hocaEkrani(): Promise<void> {
   const kuranSirasi = veri.gunler.flatMap((g) => g.dersler.filter((x) => x.kod === 'kuran').map((x) => ({ tarih: g.tarih, konu: x.konu }))).filter((x, i, d) => d.findIndex((y) => y.konu === x.konu) === i); // her Kur'an konusu bir adım (ilk işlendiği gün)
   const ezberListesi = [...new Set(veri.gunler.flatMap((g) => g.dersler.flatMap((x) => x.ezber)))];
   const ezberHaftasi: Record<string, number> = {}; veri.gunler.forEach((g) => g.dersler.forEach((d) => d.ezber.forEach((e) => { if (ezberHaftasi[e] == null || g.hafta < ezberHaftasi[e]) ezberHaftasi[e] = g.hafta; }))); // her ezber maddesinin ilk işlendiği hafta (öğrenci kartında ileri haftalar katlanır)
-  const haftalar = veri.gunler.filter((g, i, d) => d.findIndex((y) => y.hafta === g.hafta) === i).map((g) => ({ hafta: g.hafta, tarih: g.tarih, gunler: veri.gunler.filter((x) => x.hafta === g.hafta) })); // tarih = haftanın İLK ders günü (odevler/{tarih} belge kimliği)
+  const haftalar = odevHaftalari(veri.gunler); // Tek kayıt anahtarı: haftanın ilk gerçek ders günü.
 
   const [{ firebaseUygulamasi }, auth, fs] = await Promise.all([import('../lib/firebase'), import('firebase/auth'), import('firebase/firestore/lite')]);
   const app = firebaseUygulamasi();
@@ -166,6 +168,9 @@ export async function hocaEkrani(): Promise<void> {
   let S: Durum | null = null;
   let bultenTemizle: (()=>void)|undefined;
   let defterPanel: {ayrilabilir:()=>boolean;temizle:()=>void}|undefined;
+  let odevPanel: ReturnType<typeof hocaOdevi> | undefined;
+  const odevKapat=()=>{odevPanel?.temizle();odevPanel=undefined;};
+  let defterOnTarih='';
   let defterYukleme=0;
   let defterOnSecim=''; // öğrenci kartındaki «Ders defterini aç» ile gelen öğrenci (defter paneli açılınca seçili gelir)
   let defterOnEksik=false; // başlıktaki «doldurulmamış defter kaydı» ile gelindi: panel liste görünümüyle açılır
@@ -283,6 +288,7 @@ export async function hocaEkrani(): Promise<void> {
   const ciz = () => {
     if (!S) return;
     bultenTemizle?.();
+    odevKapat();
     defterKapat();
     const aktif = S.ogrenciler.filter((o) => o.durum !== 'pasif');
     let govde = '';
@@ -399,33 +405,7 @@ export async function hocaEkrani(): Promise<void> {
         </section>`;
       }
     } else if (S.sekme === 'odev') {
-      const h = haftalar.find((x) => x.hafta === S!.hafta) || haftalar[0];
-      const mevcut = S.odevler.find((x) => x.tarih === h.tarih);
-      const planEzber = [...new Set(h.gunler.flatMap((g) => g.dersler.flatMap((d) => d.ezber)))];
-      const ez = (mevcut?.ezber as Record<string, string> | undefined) || {}; const od = (mevcut?.odev as Record<string, string> | undefined) || {};
-      const materyalVar = h.gunler.some((g) => veri.materyalGunleri.includes(g.tarih));
-      const idx = haftalar.findIndex((x) => x.hafta === h.hafta);
-      const gecenVar = haftalar.slice(0, idx).some((x) => S!.odevler.some((o) => o.tarih === x.tarih));
-      const frVar = Boolean(ez.fr || od.fr);
-      govde = `<section class="bolum"><h2>${simge('kitap')}Haftalık ezber ve ödev</h2>
-        <label>Hafta<select data-hafta>${haftalar.map((x) => `<option value="${x.hafta}" ${x.hafta === h.hafta ? 'selected' : ''}>${x.hafta}. hafta · ${esc(x.gunler.map((g) => tarihYaz(g.tarih, { day: 'numeric', month: 'short' })).join(' – '))}${S!.odevler.some((o) => o.tarih === x.tarih) ? ' ✓' : ''}</option>`).join('')}</select></label>
-        <p class="kucuk plan-ozet">${h.gunler.map((g) => `<b>${esc(tarihYaz(g.tarih, { weekday: 'long' }))}:</b> ${g.dersler.map((d) => esc(d.konu)).join(' · ')}`).join('<br>')}</p>
-        <form data-form="odev">
-          <p class="kucuk">${mevcut ? 'Bu hafta için kayıt var; düzenleyip yeniden kaydedin.' : 'Ezber, yıllık planınızdan otomatik dolduruldu; gerekirse değiştirin. Fransızca boşsa velilere Türkçe metin gösterilir.'}</p>
-          ${gecenVar ? `<div class="satir-dugmeler" style="margin:0 0 .3rem"><button type="button" class="kucuk-dugme" data-eylem="odevKopyala">${simge('kopyala')}Geçen haftadan kopyala</button></div>` : ''}
-          <label>Ezber (TR)<textarea name="ezberTr" maxlength="1000">${esc(ez.tr ?? planEzber.join('\n'))}</textarea></label>
-          <label>Ödev (TR)<textarea name="odevTr" maxlength="1000" placeholder="Örn. sunumları tekrar edin; sayfa … çalışın">${esc(od.tr || '')}</textarea></label>
-          <details class="katlanir mini"${frVar ? ' open' : ''}><summary>${simge('cevir')}<span>Fransızca çeviri (isteğe bağlı)</span></summary><div class="govde">
-            <label>Ezber (FR)<textarea name="ezberFr" maxlength="1000">${esc(ez.fr || '')}</textarea></label>
-            <label>Ödev (FR)<textarea name="odevFr" maxlength="1000">${esc(od.fr || '')}</textarea></label>
-          </div></details>
-          <details class="katlanir mini"${ez.en||od.en?' open':''}><summary>İngilizce çeviri (isteğe bağlı)</summary><div class="govde"><label>Ezber (EN)<textarea name="ezberEn" maxlength="1000">${esc(ez.en||'')}</textarea></label><label>Ödev (EN)<textarea name="odevEn" maxlength="1000">${esc(od.en||'')}</textarea></label></div></details>
-          <fieldset><legend>Bu haftanın interaktif etkinlikleri</legend><p class="kucuk">En fazla üç kısa etkinlik seçin. Yayınlandığında ailelerin atölyesinde ayrıca görünür; boş bırakabilirsiniz.</p>${[0,1,2].map(i=>`<label>${i+1}. etkinlik<select name="etkinlik"><option value="">Etkinlik seçilmedi</option>${['harf','ezber','bilgi','hayat'].map(alan=>`<optgroup label="${({harf:'Harfler',ezber:'Ezber',bilgi:'Bilgi',hayat:'Günlük hayat'} as Record<string,string>)[alan]}">${ETKINLIKLER.filter(e=>e.alan===alan).map(e=>`<option value="${e.id}" ${(mevcut?.etkinlikler as string[]|undefined)?.[i]===e.id?'selected':''}>${esc(e.baslik.tr)}</option>`).join('')}</optgroup>`).join('')}</select></label>`).join('')}</fieldset>
-          <label>Materyal bağlantısı<input type="url" name="materyal" value="${esc(mevcut?.materyal ?? (materyalVar ? location.origin + veri.materyalYolu + '#g-' + h.gunler.find((g) => veri.materyalGunleri.includes(g.tarih))!.tarih : ''))}"></label>
-          <label class="satir"><input type="checkbox" name="yayin" ${mevcut ? (mevcut.yayin ? 'checked' : '') : 'checked'}> Velilere yayınla</label>
-          <p data-mesaj hidden class="not"></p>
-          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Kaydet</button>${mevcut ? `<button type="button" class="baglanti-dugme" data-sil="odevler" data-id="${esc(mevcut.id)}">bu haftanın kaydını sil</button>` : ''}</div>
-        </form></section>`;
+      govde = '<section class="bolum hoca-odev" data-hoca-odev></section>';
     } else if (S.sekme === 'duyuru') {
       const duz = duzenlenenDuyuru ? S.duyurular.find((d) => d.id === duzenlenenDuyuru) : null;
       const dBas = (duz?.baslik as Record<string, string>) || {}; const dMet = (duz?.metin as Record<string, string>) || {};
@@ -514,6 +494,23 @@ export async function hocaEkrani(): Promise<void> {
       </div>
       <div class="sekmeler" role="tablist" aria-label="Bölümler">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span>${k === 'bildirim' && S!.okunmamis ? `<span class="sekme-sayi"><span class="sr-only">okunmamış: </span>${S!.okunmamis}</span>` : ''}</button>`).join('')}</div>
       <div id="hoca-panel" role="tabpanel" aria-labelledby="hoca-tab-${S.sekme}">${govde}</div>`;
+    const odevRoot=kok.querySelector<HTMLElement>('[data-hoca-odev]');
+    if(odevRoot){
+      const durum=S;
+      odevPanel=hocaOdevi(odevRoot,{
+        gunler:veri.gunler,hafta:S.hafta,bugun:bugunISO(),kayitlar:S.odevler as Partial<HaftalikOdev>[],
+        materyalGunleri:veri.materyalGunleri,materyalYolu:veri.materyalYolu,ogrenciler:S.ogrenciler,cevir:ceviri.makine,
+        haftaDegisti:h=>{if(S===durum)S.hafta=h;},
+        kaydet:async k=>{await fs.setDoc(fs.doc(db,'odevler',k.tarih),{...k,kaydeden:durum.uid});if(S===durum)S.odevler=[...S.odevler.filter(x=>x.tarih!==k.tarih),{id:k.tarih,...k}];},
+        sil:async tarih=>{await fs.deleteDoc(fs.doc(db,'odevler',tarih));if(S===durum)S.odevler=S.odevler.filter(x=>x.tarih!==tarih);},
+        git:async(ad,deger)=>{
+          if(ad==='defter')defterOnTarih=deger||'';
+          if(ad==='ogrenci'&&deger)await ogrenciYukle(deger);
+          await sekmeyeGec(ad,true);
+          kok.querySelector<HTMLElement>('#hoca-tab-'+ad)?.focus();
+        },
+      });
+    }
     const bultenRoot=kok.querySelector<HTMLElement>('[data-hoca-bulten]');
     if(bultenRoot)bultenTemizle=hocaBulteni(bultenRoot,{db,ogrenciler:S.ogrenciler,gunler:veri.gunler,hafta:S.hafta,ceviri,silindi:ref=>{if(S){S.ogrenciler=S.ogrenciler.filter(o=>o.ref!==ref);if(S.secili===ref)S.secili='';}}});
     const defterRoot=kok.querySelector<HTMLElement>('[data-ders-defteri]');
@@ -523,8 +520,8 @@ export async function hocaEkrani(): Promise<void> {
         try{
           const [mod,katalog]=await Promise.all([import('./ders-defteri'),import('../data/ders-defteri-2026-2027.json')]);
           if(yukleme!==defterYukleme||S!==durum||!defterRoot.isConnected)return;
-          defterPanel=mod.dersDefteri(defterRoot,{db,ogrenciler:durum.ogrenciler,katalog:katalog.default,bugun:new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Brussels'}).format(new Date()),baslangicRef:defterOnSecim,baslangicEksik:defterOnEksik,eksikler:durum.eksikler,eksikDegisti:(e)=>{durum.eksikler=e;heroEksikCiz();},ceviri});
-          defterOnSecim='';defterOnEksik=false;
+          defterPanel=mod.dersDefteri(defterRoot,{db,ogrenciler:durum.ogrenciler,katalog:katalog.default,bugun:new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Brussels'}).format(new Date()),baslangicRef:defterOnSecim,baslangicTarih:defterOnTarih,baslangicEksik:defterOnEksik,eksikler:durum.eksikler,eksikDegisti:(e)=>{durum.eksikler=e;heroEksikCiz();},ceviri});
+          defterOnSecim='';defterOnTarih='';defterOnEksik=false;
         }catch{
           if(yukleme!==defterYukleme||!defterRoot.isConnected)return;
           defterRoot.innerHTML='<p role="status">Ders defteri yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" data-defter-tekrar>Yeniden dene</button>';
@@ -541,14 +538,14 @@ export async function hocaEkrani(): Promise<void> {
     const h = await fs.getDoc(fs.doc(db, 'hocalar', kb.user.uid)).catch(() => null);
     if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(kb.user);
   };
-  const sekmeyeGec = async (ad: string) => { if (!S || (defterPanel&&!defterPanel.ayrilabilir())) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); defterKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); return true; };
+  const sekmeyeGec = async (ad: string, odevOnayli=false) => { if (!S || (!odevOnayli&&odevPanel&&!odevPanel.ayrilabilir()) || (defterPanel&&!defterPanel.ayrilabilir())) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); odevKapat(); defterKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); return true; };
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
   kok.addEventListener('click', async (ev) => {
     const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk],[data-mazeret-uygula],[data-defter-ac],[data-defter-eksik]');
     if (!el) return;
     try {
-      if (el.dataset.eylem === 'cikis') { if(defterPanel&&!defterPanel.ayrilabilir())return; bultenTemizle?.(); defterKapat(); await auth.signOut(a); S = null; girisEkrani(); return; }
+      if (el.dataset.eylem === 'cikis') { if((odevPanel&&!odevPanel.ayrilabilir())||(defterPanel&&!defterPanel.ayrilabilir()))return; bultenTemizle?.(); odevKapat(); defterKapat(); await auth.signOut(a); S = null; girisEkrani(); return; }
       if (el.dataset.eylem === 'atla' && a.currentUser) { await yukle(a.currentUser); return; }
       if (el.dataset.eylem === 'sifremiUnuttum') {
         const form = el.closest('form') as HTMLFormElement; const ep = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();
@@ -653,18 +650,6 @@ export async function hocaEkrani(): Promise<void> {
         await sekmeYukle('bildirim'); ciz(); ustMesaj('Yanıt gönderildi; veli portalında görünecek.', 'basari'); return; }
       if (el.dataset.duyuruDuzelt) { duzenlenenDuyuru = el.dataset.duyuruDuzelt; ciz(); kok.querySelector('form[data-form=duyuru]')?.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
       if (el.dataset.eylem === 'duyuruVazgec') { duzenlenenDuyuru = null; ciz(); return; }
-      if (el.dataset.eylem === 'odevKopyala') {
-        const i = haftalar.findIndex((x) => x.hafta === S!.hafta);
-        const onceki = haftalar.slice(0, i).reverse().find((x) => S!.odevler.some((o) => o.tarih === x.tarih));
-        const rec = onceki ? S.odevler.find((o) => o.tarih === onceki.tarih) : undefined;
-        if (!rec) { ustMesaj('Kopyalanacak önceki hafta kaydı yok.', 'hata'); return; }
-        const ez = (rec.ezber as Record<string, string>) || {}; const od = (rec.odev as Record<string, string>) || {};
-        const setV = (n: string, v: string) => { const t = kok.querySelector<HTMLTextAreaElement>(`form[data-form=odev] [name=${n}]`); if (t) t.value = v; };
-        setV('ezberTr', ez.tr || ''); setV('ezberFr', ez.fr || ''); setV('odevTr', od.tr || ''); setV('odevFr', od.fr || '');setV('ezberEn',ez.en||'');setV('odevEn',od.en||'');
-        kok.querySelectorAll<HTMLSelectElement>('form[data-form=odev] [name=etkinlik]').forEach((el,i)=>{el.value=(rec.etkinlikler as string[]|undefined)?.[i]||'';});
-        if(ez.en||od.en)kok.querySelector<HTMLTextAreaElement>('[name=ezberEn]')?.closest('details')?.setAttribute('open','');
-        if (ez.fr || od.fr) { const dd = kok.querySelector<HTMLDetailsElement>('form[data-form=odev] details'); if (dd) dd.open = true; }
-        ustMesaj(`${onceki!.hafta}. haftanın ezber/ödevi forma kopyalandı; düzenleyip kaydedin.`, 'basari'); return; }
       if (el.dataset.davet) {
         const ep = el.dataset.davet; const dil = el.dataset.dil || '';
         if (!['tr', 'fr', 'en'].includes(dil)) { ustMesaj('Davet göndermeden önce velinin iletişim dilini doğrulayınız.', 'hata'); return; }
@@ -696,7 +681,7 @@ export async function hocaEkrani(): Promise<void> {
     const t = ev.target as HTMLSelectElement;
     if (!S) return;
     if (t.matches('[data-yoklama-tarih]')) { S.tarih = t.value; S.yoklama = {}; S.gunMazeretleri = []; S.mazeretKuraliDegisen = []; S.yukleniyor = true; ciz(); await yoklamaYukle(); S.yukleniyor = false; ciz(); } // yükleme bitmeden tıklanan işaretler kaybolmasın diye liste önce kapatılır
-    if (t.matches('[data-hafta]')) { S.hafta = Number(t.value); ciz(); }
+
   });
 
   kok.addEventListener('submit', async (ev) => {
@@ -736,9 +721,6 @@ export async function hocaEkrani(): Promise<void> {
         case 'not': { if (!S) break;
           await fs.addDoc(col('notlar'), { ref: S.secili, tarih: al('tarih'), metin: al('metin'), veliyeGorunur: fd.get('veliyeGorunur') === 'on', kaydeden: S.uid, zaman: fs.serverTimestamp() });
           await ogrenciYukle(S.secili); ciz(); ustMesaj('Not eklendi.', 'basari'); break; }
-        case 'odev': { if (!S) break; const h = haftalar.find((x) => x.hafta === S!.hafta) || haftalar[0];
-          await fs.setDoc(fs.doc(db, 'odevler', h.tarih), { tarih: h.tarih, hafta: h.hafta, etkinlikler: [...new Set(fd.getAll('etkinlik').map(String))].filter(id=>ETKINLIKLER.some(e=>e.id===id)).slice(0,3), ezber: { tr: al('ezberTr'), fr: al('ezberFr'), en: al('ezberEn') }, odev: { tr: al('odevTr'), fr: al('odevFr'), en: al('odevEn') }, materyal: al('materyal'), yayin: fd.get('yayin') === 'on', kaydeden: S.uid, guncelleme: new Date().toISOString() });
-          await sekmeYukle('odev'); ciz(); ustMesaj(`${h.hafta}. hafta kaydedildi.`, 'basari'); break; }
         case 'duyuru': { if (!S) break;
           const zengin = (k: string) => { const el = form.querySelector<HTMLElement>(`[data-zengin="${k}"]`); return el ? temizleHtml(el.innerHTML) : ''; };
           if (!metniSadelestir(zengin('metinTr'))) { mesaj(form, 'Türkçe metin gerekli.', 'hata'); break; }
@@ -792,5 +774,5 @@ export async function hocaEkrani(): Promise<void> {
     if (kayitli) { try { await bagIleGir(kayitli); return; } catch (e) { girisEkrani(); mesaj(kok.querySelector('form[data-form=bag]'), hata(e), 'hata'); return; } }
     bagTamamlaEkrani(); return;
   }
-  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; }); } else { bultenTemizle?.(); defterKapat(); S = null; girisEkrani(); } });
+  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; }); } else { bultenTemizle?.(); odevKapat(); defterKapat(); S = null; girisEkrani(); } });
 }

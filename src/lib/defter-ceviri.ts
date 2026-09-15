@@ -95,6 +95,27 @@ export const GELMEDI_NOTU_FR: Partial<Record<DersKaydi["durum"], string>> = {
 };
 /** Sabit kalıp cümleleri (defter-kaliplari.ts ile birebir; birim testi eşleşmeyi denetler). */
 const SABIT_FR: Record<string, string> = {
+  "Konuyu kendi örnekleriyle açıkladı.": "Votre enfant a expliqué le sujet avec ses propres exemples.",
+  "Hatırlatma yardımıyla sorulara cevap verdi.": "Votre enfant a répondu aux questions avec quelques rappels.",
+  "Konuyu uygularken bireysel desteğe ihtiyaç duydu.": "Votre enfant a eu besoin d’un accompagnement individuel pour mettre le sujet en pratique.",
+  "Yönlendirme ve teşvikle derse katıldı.": "Votre enfant a participé au cours avec des conseils et des encouragements.",
+  "Etkinliklere istekle katıldı.": "Votre enfant a participé aux activités avec enthousiasme.",
+  "Arkadaşlarıyla uyum içinde çalıştı.": "Votre enfant a travaillé en harmonie avec les autres.",
+  "Söz sırasını bekledi ve arkadaşlarını dinledi.": "Votre enfant a attendu son tour de parole et écouté les autres.",
+  "Söz sırasını beklemesi için hatırlatma yapıldı.": "Un rappel a été nécessaire pour attendre son tour de parole.",
+  "Sureyi yavaş fakat doğru okudu.": "Votre enfant a lu la sourate lentement mais correctement.",
+  "Sureyi öğretmen desteğiyle okudu.": "Votre enfant a lu la sourate avec l’aide de l’enseignant.",
+  "Sureyi duraksayarak okudu; akıcılık için tekrar gerekiyor.": "Votre enfant a lu la sourate avec des hésitations ; une révision est nécessaire pour gagner en fluidité.",
+  "Hatırlatma sonrası okuma hatasını düzeltti.": "Votre enfant a corrigé son erreur de lecture après un rappel.",
+  "Verilen ezberi tamamladı.": "Votre enfant a terminé la mémorisation demandée.",
+  "Verilen ezberin bir kısmını hazırladı; devamı çalışılacak.": "Votre enfant a préparé une partie de la mémorisation demandée ; la suite reste à travailler.",
+  "Verilen ezber henüz hazır değildi; birlikte tekrar ettik.": "La mémorisation demandée n’était pas encore prête ; nous avons révisé ensemble.",
+  "Derse zamanında geldi.": "Arrivée à l’heure au cours.",
+  "Ders malzemelerini eksiksiz getirdi.": "Tout le matériel nécessaire au cours a été apporté.",
+  "Ders malzemeleri eksikti; tamamlaması hatırlatıldı.": "Une partie du matériel manquait ; un rappel a été fait pour le compléter.",
+  "Kısa bir moladan sonra çalışmaya devam etti.": "Votre enfant a repris le travail après une courte pause.",
+  "Bugün ilk kez katıldı; uyum sağlaması için destek verildi.": "Première participation aujourd’hui ; un accompagnement a été proposé pour faciliter l’adaptation.",
+
   // Konu
   "Konuyu iyi kavradı.": "Votre enfant a bien compris le sujet.",
   "Konuyu kısmen kavradı; tekrar gerekiyor.": "Votre enfant a compris le sujet en partie ; une révision est nécessaire.",

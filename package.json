@@ -21,7 +21,7 @@
     "test:kayit": "node --test tests/kayit-imza.test.mjs",
     "test:duzelt": "node --test tests/kayit-duzelt.test.mjs",
     "test:gunluk": "node --test tests/kurs-gunlugu.test.mjs",
-    "test:kaliplar": "node --test tests/defter-kaliplari.test.mjs",
+    "test:kaliplar": "node --test tests/defter-kaliplari.test.mjs tests/haftalik-odev.test.mjs",
     "test:ceviri": "node --test tests/defter-ceviri.test.mjs",
     "test:eksik": "node --test tests/defter-eksik.test.mjs",
     "test:gas-ceviri": "node --test tests/gas-ceviri.test.mjs",

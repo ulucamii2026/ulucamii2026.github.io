@@ -20,7 +20,7 @@ import type { DefterDersi, DersKaydi } from "./ders-defteri";
 export type KalipAlani = "calisma" | "odev" | "sonraki" | "okunan" | "dikkat";
 /** cumle: boşlukla birleşir, nokta ile biter · madde: virgülle birleşir (kısa etiket alanları) */
 export type KalipBicimi = "cumle" | "madde";
-export type Kalip = { etiket: string; metin: string };
+export type Kalip = { etiket: string; metin: string; secim?: string; dislar?: string[] };
 export type KalipGrubu = { ad: string; kaliplar: Kalip[] };
 export type HazirKayit = {
   id: string;
@@ -53,23 +53,31 @@ export function defterKaliplari(
       ad: "Konu",
       kaliplar: [
         { etiket: "Konuyu işledik", metin: konuCumlesi(d) },
-        { etiket: "İyi kavradı", metin: "Konuyu iyi kavradı." },
-        { etiket: "Kısmen kavradı", metin: "Konuyu kısmen kavradı; tekrar gerekiyor." },
-        { etiket: "Zorlandı", metin: "Zorlandı; birlikte tekrar ettik." },
-        { etiket: "Sorulara doğru cevap", metin: "Sorulan sorulara doğru cevap verdi." },
+        { secim: "kavrama", etiket: "İyi kavradı", metin: "Konuyu iyi kavradı." },
+        { secim: "kavrama", etiket: "Kısmen kavradı", metin: "Konuyu kısmen kavradı; tekrar gerekiyor." },
+        { secim: "kavrama", etiket: "Zorlandı", metin: "Zorlandı; birlikte tekrar ettik." },
+        { secim: "cevap", etiket: "Sorulara doğru cevap", metin: "Sorulan sorulara doğru cevap verdi." },
+        { etiket: "Örnekle açıkladı", metin: "Konuyu kendi örnekleriyle açıkladı." },
+        { etiket: "Hatırlatma ile cevap", metin: "Hatırlatma yardımıyla sorulara cevap verdi.", secim: "cevap" },
+        { etiket: "Uygulamada destek", metin: "Konuyu uygularken bireysel desteğe ihtiyaç duydu." },
       ],
     },
     {
       ad: "Katılım",
       kaliplar: [
-        { etiket: "Katılımı güzel", metin: "Derse katılımı güzeldi." },
-        { etiket: "Dikkatle dinledi", metin: "Dersi dikkatle dinledi." },
-        { etiket: "Söz aldı", metin: "Söz alarak derse katıldı." },
-        { etiket: "Çekingen", metin: "Çekingendi; cesaretlendirince katıldı." },
-        { etiket: "Katılımı düşük", metin: "Katılımı düşüktü; derse daha çok ilgilenmesi gerekiyor." },
-        { etiket: "Dikkati dağınık", metin: "Dikkati dağınıktı; toparlanınca iyi çalıştı." },
+        { secim: "katilim", etiket: "Katılımı güzel", metin: "Derse katılımı güzeldi." },
+        { secim: "odak", etiket: "Dikkatle dinledi", metin: "Dersi dikkatle dinledi." },
+        { secim: "katilim", etiket: "Söz aldı", metin: "Söz alarak derse katıldı." },
+        { secim: "katilim", etiket: "Çekingen", metin: "Çekingendi; cesaretlendirince katıldı." },
+        { secim: "katilim", etiket: "Katılımı düşük", metin: "Katılımı düşüktü; derse daha çok ilgilenmesi gerekiyor." },
+        { secim: "odak", etiket: "Dikkati dağınık", metin: "Dikkati dağınıktı; toparlanınca iyi çalıştı." },
         { etiket: "Özgüveni yerinde", metin: "Özgüveni yerinde, elhamdülillah." },
         { etiket: "Memnunum", metin: "Memnunum, elhamdülillah." },
+        { etiket: "Yönlendirmeyle katıldı", metin: "Yönlendirme ve teşvikle derse katıldı.", secim: "katilim" },
+        { etiket: "İstekle katıldı", metin: "Etkinliklere istekle katıldı.", secim: "katilim" },
+        { etiket: "Arkadaşlarıyla uyumlu", metin: "Arkadaşlarıyla uyum içinde çalıştı." },
+        { etiket: "Sırasını bekledi", metin: "Söz sırasını bekledi ve arkadaşlarını dinledi.", secim: "sira" },
+        { etiket: "Sıra hatırlatması", metin: "Söz sırasını beklemesi için hatırlatma yapıldı.", secim: "sira" },
       ],
     },
   ];
@@ -77,21 +85,33 @@ export function defterKaliplari(
     calisma.push({
       ad: "Okuma",
       kaliplar: [
-        { etiket: "Harfleri tanıdı", metin: "Harfleri tanıdı, seslerini doğru çıkardı." },
-        { etiket: "Sesleri karıştırıyor", metin: "Harflerin seslerini karıştırıyor; evde pratik gerekiyor." },
+        { secim: "harf", etiket: "Harfleri tanıdı", metin: "Harfleri tanıdı, seslerini doğru çıkardı." },
+        { secim: "harf", etiket: "Sesleri karıştırıyor", metin: "Harflerin seslerini karıştırıyor; evde pratik gerekiyor." },
         { etiket: "Benimle tekrar etti", metin: "Okuduğum âyetleri benimle birlikte tekrar etti." },
         { etiket: "Mahreç", metin: "Mahreçlere dikkat etmesi gerekiyor." },
-        { etiket: "Akıcı okudu", metin: "Sureyi akıcı okudu." },
-        { etiket: "Okuyamadı", metin: "Sureyi okuyamadı; tekrar gerekiyor." },
+        { secim: "akicilik", etiket: "Akıcı okudu", metin: "Sureyi akıcı okudu." },
+        { secim: "akicilik", etiket: "Okuyamadı", metin: "Sureyi okuyamadı; tekrar gerekiyor." },
+        { etiket: "Yavaş ve doğru", metin: "Sureyi yavaş fakat doğru okudu.", secim: "akicilik" },
+        { etiket: "Yardımla okudu", metin: "Sureyi öğretmen desteğiyle okudu.", secim: "akicilik" },
+        { etiket: "Duraksayarak okudu", metin: "Sureyi duraksayarak okudu; akıcılık için tekrar gerekiyor.", secim: "akicilik" },
+        { etiket: "Hatasını düzeltti", metin: "Hatırlatma sonrası okuma hatasını düzeltti." },
+        { etiket: "Ezberini tamamladı", metin: "Verilen ezberi tamamladı.", secim: "ezber" },
+        { etiket: "Ezber kısmen hazır", metin: "Verilen ezberin bir kısmını hazırladı; devamı çalışılacak.", secim: "ezber" },
+        { etiket: "Ezber hazır değil", metin: "Verilen ezber henüz hazır değildi; birlikte tekrar ettik.", secim: "ezber" },
       ],
     });
   calisma.push({
     ad: "Gün notu",
     kaliplar: [
-      { etiket: "Geç geldi", metin: "Geç geldi; dersin başını kaçırdı." },
+      { secim: "gelis", etiket: "Geç geldi", metin: "Geç geldi; dersin başını kaçırdı." },
       { etiket: "Sona doğru yoruldu", metin: "Ders sonuna doğru yoruldu." },
-      { etiket: "İlk kez katıldı", metin: "Bugün ilk kez katıldı; uyumu iyi." },
+      { secim: "uyum", etiket: "İlk kez katıldı", metin: "Bugün ilk kez katıldı; uyumu iyi." },
       { etiket: "Rahatsızlandı", metin: "Biraz rahatsızlandı ama ilgisini yitirmedi." },
+      { etiket: "Zamanında geldi", metin: "Derse zamanında geldi.", secim: "gelis" },
+      { etiket: "Malzemeleri hazır", metin: "Ders malzemelerini eksiksiz getirdi.", secim: "malzeme" },
+      { etiket: "Malzeme eksik", metin: "Ders malzemeleri eksikti; tamamlaması hatırlatıldı.", secim: "malzeme" },
+      { etiket: "Molayla toparlandı", metin: "Kısa bir moladan sonra çalışmaya devam etti." },
+      { etiket: "Uyum için destek", metin: "Bugün ilk kez katıldı; uyum sağlaması için destek verildi.", secim: "uyum" },
     ],
   });
 
@@ -99,11 +119,11 @@ export function defterKaliplari(
     {
       ad: "Tekrar",
       kaliplar: [
-        { etiket: "Konuyu evde tekrar", metin: "Bugün işlediğimiz konuyu evde birlikte tekrar edin lütfen." },
-        { etiket: "Sorun, hatırlasın", metin: konuTekrar(d) },
-        { etiket: "Pratik yapın", metin: "Evde birlikte uygulamalı pratik yapın lütfen." },
-        { etiket: "Aile yardımı", metin: "Anne-baba olarak yardım edin lütfen." },
-        { etiket: "Ödev yok", metin: "Bu ders için ödev yok." },
+        { secim: "odev-var", etiket: "Konuyu evde tekrar", metin: "Bugün işlediğimiz konuyu evde birlikte tekrar edin lütfen." },
+        { secim: "odev-var", etiket: "Sorun, hatırlasın", metin: konuTekrar(d) },
+        { secim: "odev-var", etiket: "Pratik yapın", metin: "Evde birlikte uygulamalı pratik yapın lütfen." },
+        { secim: "odev-var", etiket: "Aile yardımı", metin: "Anne-baba olarak yardım edin lütfen." },
+        { secim: "odev-yok", dislar: ["odev-var"], etiket: "Ödev yok", metin: "Bu ders için ödev yok." },
       ],
     },
   ];
@@ -111,11 +131,11 @@ export function defterKaliplari(
     odev.push({
       ad: "Okuma · ezber",
       kaliplar: [
-        { etiket: "Harfleri her gün", metin: "Öğrendiği harfleri evde her gün tekrar etsin." },
-        { etiket: "Elifbâ baştan sona", metin: "Elifbâ'yı baştan sona tekrar etsin." },
-        { etiket: "Mahreçlere dikkat", metin: "Harflerin mahreçlerine (kalın–ince, peltek) dikkat ederek çalışsın." },
-        { etiket: "Sureyi ezberlesin", metin: "Bugün öğrendiği sureyi/duayı evde ezberlesin." },
-        { etiket: "Ezberi pekiştirsin", metin: "Ezberini bir sonraki derse kadar pekiştirsin." },
+        { secim: "odev-var", etiket: "Harfleri her gün", metin: "Öğrendiği harfleri evde her gün tekrar etsin." },
+        { secim: "odev-var", etiket: "Elifbâ baştan sona", metin: "Elifbâ'yı baştan sona tekrar etsin." },
+        { secim: "odev-var", etiket: "Mahreçlere dikkat", metin: "Harflerin mahreçlerine (kalın–ince, peltek) dikkat ederek çalışsın." },
+        { secim: "odev-var", etiket: "Sureyi ezberlesin", metin: "Bugün öğrendiği sureyi/duayı evde ezberlesin." },
+        { secim: "odev-var", etiket: "Ezberi pekiştirsin", metin: "Ezberini bir sonraki derse kadar pekiştirsin." },
       ],
     });
   odev.push({
@@ -236,6 +256,21 @@ export function kalipCikar(metin: string, kalip: string, bicim: KalipBicimi = "c
 /** Dokunuş: varsa çıkarır, yoksa ekler. */
 export function kalipDegistir(metin: string, kalip: string, bicim: KalipBicimi = "cumle"): string {
   return kalipVar(metin, kalip) ? kalipCikar(metin, kalip, bicim) : kalipEkle(metin, kalip, bicim);
+}
+
+/** Aynı değerlendirmede son seçim geçerlidir; bağımsız gözlemler birlikte kalır. */
+export function mantikliKalipSec(metin: string, secilen: Kalip, kaliplar: Kalip[], bicim: KalipBicimi = "cumle") {
+  if (kalipVar(metin, secilen.metin)) return { metin: kalipCikar(metin, secilen.metin, bicim), kaldirilan: [] as string[] };
+  const kaldirilan: string[] = [];
+  for (const k of kaliplar) {
+    const celisir = k.secim && ((k.secim === secilen.secim && k.secim !== "odev-var") || secilen.dislar?.includes(k.secim))
+      || secilen.secim && k.dislar?.includes(secilen.secim);
+    if (celisir && kalipVar(metin, k.metin)) {
+      metin = kalipCikar(metin, k.metin, bicim);
+      kaldirilan.push(k.etiket);
+    }
+  }
+  return { metin: kalipEkle(metin, secilen.metin, bicim), kaldirilan };
 }
 
 /**

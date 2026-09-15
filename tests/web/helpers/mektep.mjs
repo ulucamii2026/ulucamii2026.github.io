@@ -44,7 +44,7 @@ const yaz=(ref,data)=>{
  if(ref.col.startsWith('evCalismalari/')){(window.__cloud[ref.col]||={})[ref.id]={...data,son:data.son.toDate().toISOString().slice(0,10),sonraki:data.sonraki.toDate().toISOString().slice(0,10)};window.__writes.push({ref,data:window.__cloud[ref.col][ref.id]});return;}
  window.__writes.push({ref,data});window.__records[ref.col]=[...(window.__records[ref.col]||[]).filter(d=>d.id!==ref.id),{id:ref.id,...data}];
 };
-export const setDoc=async(ref,data)=>yaz(ref,data);
+export const setDoc=async(ref,data)=>{if(ref.col==='odevler'){if(window.__odevWriteError)throw Error('offline');if(window.__odevWriteDelay)await new Promise(r=>window.__releaseOdev=r);}return yaz(ref,data);};
 export const updateDoc=async(ref,data)=>{if(Object.keys(data).every(k=>k==='sonGiris'))return;return yaz(ref,{...(await getDoc(ref)).data(),...data});};
 export const deleteDoc=async ref=>{window.__writes.push({ref,delete:true});if(ref.col.startsWith('evCalismalari/'))delete (window.__cloud[ref.col]||{})[ref.id];else if(ref.col==='ogrenciler')window.__students=window.__students.filter(s=>s.ref!==ref.id);else window.__records[ref.col]=(window.__records[ref.col]||[]).filter(d=>d.id!==ref.id);};
 /* writeBatch sahtesi (12 Eyl 2026): hoca ekranı yoklamayı ve toplu defter doldurmayı yığınla

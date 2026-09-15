@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   ALAN_BICIMI, defterKaliplari, hazirKayitlar, hazirKaydiUygula,
-  kalipEkle, kalipCikar, kalipDegistir, kalipVar, sayacaGoreSirala,
+  kalipEkle, kalipCikar, kalipDegistir, kalipVar, sayacaGoreSirala, mantikliKalipSec,
 } from '../src/lib/defter-kaliplari.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../src/data/ders-defteri-2026-2027.json', import.meta.url), 'utf8'));
@@ -27,6 +27,34 @@ test('cümle kalıbı: boş alana aynen, dolu alana cümle sınırında eklenir;
   assert.equal(kalipDegistir(kalipDegistir('', 'A.'), 'A.'), '', 'ekle + çıkar = boş');
   assert.equal(kalipCikar('Serbest metin', 'Yok böyle bir cümle.'), 'Serbest metin');
   assert.equal(kalipVar('Derse katılımı güzeldi. Ek.', 'Derse katılımı güzeldi.'), true);
+});
+
+test('karşıt değerlendirmelerde iki yönde son seçim geçer; bağımsız not ve elle yazılan cümle korunur', () => {
+  const kaliplar = defterKaliplari(kuran).calisma.flatMap(g => g.kaliplar);
+  const sec = (metin, etiket) => mantikliKalipSec(metin, kaliplar.find(k => k.etiket === etiket), kaliplar).metin;
+  for (const [a,b] of [['Katılımı güzel','Katılımı düşük'],['İyi kavradı','Kısmen kavradı'],['Akıcı okudu','Okuyamadı'],['Ezberini tamamladı','Ezber hazır değil'],['Zamanında geldi','Geç geldi'],['Malzemeleri hazır','Malzeme eksik'],['Dikkatle dinledi','Dikkati dağınık']]) {
+    for (const [ilk,son] of [[a,b],[b,a]]) {
+      const sonuc = sec(sec('Özel gözlemim.', ilk),son);
+      assert.ok(sonuc.startsWith('Özel gözlemim.'));
+      assert.ok(!kalipVar(sonuc, kaliplar.find(k=>k.etiket===ilk).metin));
+      assert.ok(kalipVar(sonuc, kaliplar.find(k=>k.etiket===son).metin));
+      assert.equal(sec(sonuc,son),'Özel gözlemim.');
+    }
+  }
+  const birlikte = sec(sec('', 'Katılımı düşük'), 'Dikkatle dinledi');
+  assert.ok(birlikte.includes('Katılımı düşüktü') && birlikte.includes('Dersi dikkatle dinledi'));
+});
+
+test('ödev yok bütün ödev önerilerini kaldırır; bir öneri seçilince ödev yok kalkar; kaynak ve özel not kalır', () => {
+  const kaliplar = defterKaliplari(kuran).odev.flatMap(g=>g.kaliplar);
+  const sec = (metin, etiket) => mantikliKalipSec(metin, kaliplar.find(k=>k.etiket===etiket),kaliplar).metin;
+  const bas = 'Özel açıklama. '+kaliplar.at(-1).metin;
+  let not = sec(sec(bas,'Pratik yapın'),'Sureyi ezberlesin');
+  assert.ok(not.includes('pratik') && not.includes('ezberlesin'));
+  not = sec(not,'Ödev yok');
+  assert.equal(not, bas+' Bu ders için ödev yok.');
+  not = sec(not,'Aile yardımı');
+  assert.ok(!not.includes('ödev yok') && not.includes('yardım edin'));
 });
 
 test('madde kalıbı (okunan/dikkat): virgülle birleşir, çıkarınca virgül artığı kalmaz', () => {

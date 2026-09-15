@@ -85,6 +85,33 @@ eksikleri bu kapatır (14 Eyl 2026: hoca ekranından önceki 1. haftanın 16 kay
 
 ## «Dokuna dokuna» doldurma — kalıp çipleri ve hazır kayıt (14 Eyl 2026)
 
+### Öğrenci/gün seçimi ve tutarlı kalıplar — 15 Eylül 2026
+
+- Öğrenci adını veya soyadını arayıp sonuca dokunarak defter açılır. Türkçe
+  harflerin sade yazımı da bulunur. Mevcut öğrenci listesi ve günlük doluluk
+  işaretleri korunur; önceki/sonraki öğrenci düğmeleri listedeki sırayı izler.
+- Ders günleri tarih sırasındadır. Önceki/sonraki ders günü ile bugün ders varsa
+  bugüne, yoksa son ders gününe tek dokunuşla geçilir. Kaydedilmemiş not uyarısı
+  arama sonuçları ve hızlı geçiş düğmelerinde de geçerlidir.
+- Konu, katılım, okuma/ezber ve gün notuna 20 seçenek eklendi. Fransızca karşılıkları
+  `src/lib/defter-ceviri.ts` sözlüğünde bulunur; hazır cümleler makine çevirisi istemez.
+- `mantikliKalipSec` aynı değerlendirme grubundaki önceki kalıbı kaldırır:
+  katılım düzeyi, kavrama, soruya cevap, dikkat, harf tanıma, akıcılık, ezber,
+  zamanında/geç gelme, malzeme, ilk gün uyumu ve söz sırası. Son seçim geçerlidir;
+  aynı seçime yeniden dokunmak kaldırır. Bağımsız gözlemler birlikte kalabilir.
+- «Ödev yok» kaynak dışındaki hazır ödev önerilerini kaldırır; herhangi bir ödev
+  önerisi seçilince «Ödev yok» kaldırılır. Birden fazla ödev önerisi birlikte kalır.
+- Mantık yalnız tanımlı hazır kalıpları karşılaştırır; serbest cümlelerin anlamını
+  yorumlamaz. Kullanıcının diğer notları korunur, eski kayıtlar kendiliğinden
+  yeniden yazılmaz. Kaydetme ve veliye paylaşma adımları değişmez.
+- Doğrulama: `tests/defter-kaliplari.test.mjs`, `tests/defter-ceviri.test.mjs` ve
+  `tests/web/ders-defteri.spec.mjs`; tüm kalite kapısı `npm run dogrula:codex`.
+- 15 Eylül 2026 yerel sonuç: kalite kapısının sekiz aşaması geçti; 414/414
+  tarayıcı, 41/41 emülatör güvenlik testi ve 14/14 kalıp/çeviri testi başarılı.
+  `npm run onizle -- --host 127.0.0.1` üzerinde sentetik öğrencilerle 1440 ve
+  390 px ekran görüntüleri açık/koyu temada incelendi. Gerçek cihaz ve canlı
+  hesap akışı sınanmadı; commit, push veya yayın yapılmadı.
+
 Rıdvan: «hazır kalıplar olsun, hazır butonlara basınca o metin ile defter kolay
 doldurulabilsin; özel bir durum varsa hoca yine özel durumu yazar.» 12–13 Eylül'ün 23
 işlenmiş kaydı incelendi: hoca üç tür cümle yazıyor — katılım/tutum, konuya bağlı

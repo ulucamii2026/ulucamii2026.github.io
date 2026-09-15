@@ -13,6 +13,40 @@ async function ac(page,context,records={}){
  await expect(page.locator('[data-dd-form]')).toBeVisible();
  return page.locator('[data-ders-defteri]');
 }
+test('Öğrenci araması ve hızlı gün geçişleri taslağı korur; karşıt kalıplarda son seçim kaydedilir',async({page,context})=>{
+ const p=await ac(page,context);
+ const calisma=p.locator('[name=calisma]');
+ await calisma.fill('Özel gözlemim.');
+ const chip=(ad)=>p.locator('[data-dd-kalip]').filter({hasText:new RegExp('^'+ad+'$')});
+ await chip('Katılımı güzel').click();await chip('Katılımı düşük').click();
+ await expect(chip('Katılımı güzel')).toHaveAttribute('aria-pressed','false');
+ await expect(chip('Katılımı düşük')).toHaveAttribute('aria-pressed','true');
+ await expect(calisma).not.toHaveValue(/Derse katılımı güzeldi/);
+ await expect(calisma).toHaveValue(/Özel gözlemim/);
+ await chip('Akıcı okudu').click();await chip('Yardımla okudu').click();
+ await expect(chip('Akıcı okudu')).toHaveAttribute('aria-pressed','false');
+ await chip('Pratik yapın').click();await chip('Ödev yok').click();
+ await expect(p.locator('[name=odev]')).toHaveValue('Bu ders için ödev yok.');
+ page.once('dialog',x=>x.dismiss());await p.getByRole('button',{name:'Sonraki ders günü',exact:true}).click();
+ await expect(p.locator('[data-dd-gun]')).toHaveValue(d.tarih);
+ await expect(calisma).toHaveValue(/Özel gözlemim/);
+ await p.locator('[data-dd-ara]').fill('bulunmayan');await expect(p.locator('[data-dd-arama-sonuc]')).toContainText('Öğrenci bulunamadı');
+ const ad=await p.locator('[data-dd-ogr] option[value="TEST-2"]').textContent();
+ await p.locator('[data-dd-ara]').fill(ad.trim().split(' ')[0]);
+ page.once('dialog',x=>x.dismiss());await p.locator('[data-dd-arama-sonuc] [data-dd-ogr-git="TEST-2"]').click();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-1');
+ await p.locator('[data-dd-ara]').fill('');await p.locator('[name=durum]').selectOption('islendi');
+ await p.locator('[value=kaydet]').click();await expect(p.locator('[data-dd-durum]')).toContainText('kaydedildi');
+ await p.locator('[data-dd-yenile]').click();await expect(chip('Katılımı düşük')).toHaveAttribute('aria-pressed','true');
+ await expect(chip('Katılımı güzel')).toHaveAttribute('aria-pressed','false');
+ await p.getByRole('button',{name:'Sonraki ders günü',exact:true}).click();
+ await expect(p.locator('[data-dd-gun]')).toHaveValue('2026-09-13');
+ await p.getByRole('button',{name:'Önceki ders günü',exact:true}).click();
+ await expect(p.locator('[data-dd-gun]')).toHaveValue(d.tarih);
+ await p.locator('[data-dd-ara]').fill(ad.trim().split(' ')[0]);await p.locator('[data-dd-arama-sonuc] [data-dd-ogr-git="TEST-2"]').click();
+ await expect(p.locator('[data-dd-ogr]')).toHaveValue('TEST-2');await expect(p.locator('[data-dd-ara]')).toHaveValue('');
+});
+
 test('Ders defteri basılı sayfayı eşler; boş varsayılan kayıt yazmaz, kaydeder ve sonraki derse geçer',async({page,context})=>{
  const p=await ac(page,context);await expect(p).toContainText(`${d.no + 54}. sayfa`);await expect(p.locator('[name=durum]')).toHaveValue('');await expect(p.locator('[name=grup]')).toHaveValue('');
  expect(await page.evaluate(()=>window.__writes.length)).toBe(0);

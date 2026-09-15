@@ -1,0 +1,27 @@
+.hoca-odev { max-width: 64rem; margin-inline: auto; }
+.hoca-odev .ho-baslik p, .hoca-odev .ho-takip p { max-width: 68ch; }
+.hoca-odev .ho-hafta, .hoca-odev .ho-metinler { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.hoca-odev .ho-hafta { align-items: end; margin-block: 1.4rem 0.8rem; }
+.hoca-odev .ho-dugmeler { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block: 0.5rem 1rem; }
+.hoca-odev button { min-height: 44px; white-space: normal; }
+.hoca-odev .ho-kayit-durumu { padding-block: 0.7rem; border-block: 1px solid var(--cizgi); color: var(--metin-2); }
+.hoca-odev .ho-plan, .hoca-odev .ho-ceviriler, .hoca-odev .ho-onizleme { border-bottom: 1px solid var(--cizgi); margin-bottom: 1.2rem; padding-bottom: 0.5rem; }
+.hoca-odev summary { cursor: pointer; padding-block: 0.8rem; font-weight: 600; }
+.hoca-odev .ho-plan-gun { padding-block: 0.75rem; }
+.hoca-odev fieldset { min-width: 0; border: 0; padding: 0; margin-block: 1.5rem; }
+.hoca-odev legend { font-weight: 650; }
+.hoca-odev .ho-etkinlik-secim { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+.hoca-odev .ho-kaliplar [aria-pressed=true] { background: var(--zemin-2); color: var(--metin); border: 2px solid var(--vurgu); font-weight: 650; }
+.hoca-odev .ho-veli-metin { padding: 1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); }
+.hoca-odev .ho-veli-metin p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.hoca-odev .ho-yayin { margin-top: 1.5rem; }
+.hoca-odev [data-ho-durum] { min-height: 1.6em; scroll-margin-top: 7rem; }
+.hoca-odev .ho-kaydet { display: flex; flex-wrap: wrap; gap: 0.7rem; position: sticky; bottom: 0; z-index: 2; padding-block: 0.9rem; background: var(--zemin); border-top: 1px solid var(--cizgi); }
+.hoca-odev .ho-takip { border-top: 1px solid var(--cizgi); margin-top: 2rem; padding-top: 1rem; }
+.hoca-odev .ho-sil { margin-top: 0.8rem; }
+.hoca-odev input[type=url], .hoca-odev select, .hoca-odev textarea { width: 100%; min-width: 0; }
+.hoca-odev button:focus-visible, .hoca-odev summary:focus-visible { outline: 3px solid var(--vurgu-2); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .hoca-odev .ho-hafta, .hoca-odev .ho-metinler, .hoca-odev .ho-etkinlik-secim { grid-template-columns: minmax(0, 1fr); }
+  .hoca-odev .ho-hafta { gap: 0; }
+}
