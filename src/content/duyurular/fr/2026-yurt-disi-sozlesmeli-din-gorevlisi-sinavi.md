@@ -2,8 +2,8 @@
 baslik: "Concours Diyanet : 100 postes de ministres du culte contractuels à l’étranger (Belgique comprise)"
 tarih: 2026-09-11
 ozet: "La Présidence des Affaires Religieuses (Diyanet) recrute 100 ministres du culte contractuels (hommes et femmes) dans 19 pays dont la Belgique. Inscriptions du 14 au 25 septembre 2026. Conditions, dispense de langue locale et guide de candidature."
-kapak: /media/duyurular/yurtdisi-sozlesmeli-din-gorevlisi-2026.webp
-kapakKucuk: /media/duyurular/yurtdisi-sozlesmeli-din-gorevlisi-2026-thumb.webp
+kapak: /media/duyurular/sozlesmeli-basvurular-acik-2026.webp
+kapakKucuk: /media/duyurular/sozlesmeli-basvurular-acik-2026-thumb.webp
 kapakAlt: "Avis de concours ministres du culte contractuels à l'étranger Diyanet 2026"
 etiketler:
   - diyanet
@@ -17,7 +17,9 @@ oneCikanSon: 2026-09-25
 taslak: false
 ---
 
-<div class="uyari"><p><strong>Délai d'inscription très court :</strong> Les candidatures débutent le <strong>lundi 14 septembre 2026</strong> et se clôturent le <strong>vendredi 25 septembre 2026 à 17h00 (heure de Turquie)</strong>. Il est vivement conseillé de préparer vos justificatifs sans attendre.</p></div>
+<div class="uyari"><p><strong>Candidatures ouvertes :</strong> Ouvertes depuis le <strong>lundi 14 septembre 2026</strong>, les candidatures se clôturent le <strong>vendredi 25 septembre 2026 à 17h00 (heure de Turquie)</strong>. Il est vivement conseillé de préparer vos justificatifs sans attendre.</p></div>
+
+**[Consulter l’avis officiel et accéder à la candidature en ligne](https://disiliskiler.diyanet.gov.tr/Detay/646/yurt-dışı-sözleşmeli-din-görevlisi-sınav-duyurusu).**
 
 La Direction générale des Relations extérieures de la Présidence des Affaires Religieuses (Diyanet) organise un concours en vue de recruter **100 ministres du culte contractuels (femmes et hommes)** pour ses représentations à l’étranger.
 

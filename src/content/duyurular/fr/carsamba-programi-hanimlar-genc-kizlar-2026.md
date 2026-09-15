@@ -1,18 +1,20 @@
 ---
-baslik: "Le programme du mercredi pour les femmes et les jeunes filles commence"
+baslik: "Chaque mercredi, retrouvons Mme Esma AVCI à la mosquée"
 tarih: 2026-08-29
-ozet: "Dès septembre 2026, Mme Esma AVCI est à la mosquée chaque mercredi : Coran, cours et échanges le matin pour les femmes, l'après-midi pour les jeunes filles. Gratuit et sans inscription."
-kapak: /media/duyurular/carsamba-programi-2026.webp
-kapakKucuk: /media/duyurular/carsamba-programi-2026-thumb.webp
+ozet: "Chaque mercredi avec Mme Esma AVCI : femmes de 10h30 à 12h30, jeunes filles de 14h00 à 16h00. Coran, enseignement religieux et échanges. Gratuit et sans inscription."
+kapak: /media/duyurular/carsamba-bulusmalari-2026.webp
+kapakKucuk: /media/duyurular/carsamba-bulusmalari-2026-thumb.webp
 kapakAlt: "Affiche du programme du mercredi — femmes de 10h30 à 12h30, jeunes filles de 14h00 à 16h00, avec Mme Esma AVCI"
 etiketler:
   - femmes
   - education
 oneCikan: true
-oneCikanSon: 2026-09-30
+oneCikanSon: 2027-06-30
+vitrin: goster
+vitrinSon: 2027-06-30
 ---
 
-Une nouvelle saison commence à la mosquée pour les femmes et les jeunes filles. **Dès septembre 2026, Mme Esma AVCI sera parmi nous chaque mercredi.** Elle a été affectée à notre région par notre Conseillère aux services religieux.
+**Mme Esma AVCI accueille les femmes et les jeunes filles à la mosquée chaque mercredi.** Rejoignez-nous pour le Coran, l’enseignement religieux et les échanges. Elle a été affectée à notre région par notre Conseillère aux services religieux.
 
 ## Déroulement de la journée
 

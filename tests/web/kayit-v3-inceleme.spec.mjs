@@ -34,6 +34,8 @@ async function doldur(p) {
   await p.locator('#k-kurallar-kutu').evaluate(e => { e.scrollTop = e.scrollHeight; e.dispatchEvent(new Event('scroll')); });
   await p.locator('#k-onay-kurallar').check();
   await p.locator('#k-onay-gizlilik').check();
+  // 13 Eylül imza akışı: metin imzasına ek olarak çizim veya elden imza tercihi gerekir.
+  await p.locator('#k-imza-yok').check();
 }
 async function yol(p, deger) {
   await p.locator('#k-kimlik-sonra').check();
@@ -275,6 +277,7 @@ test('Klavye ile tüm kayıt: Tab, radyolar, dosya seçici, kurallar, kopya ve k
   await tab('#k-onay-kurallar'); await page.keyboard.press('Space');
   await tab('#k-onay-gizlilik'); await page.keyboard.press('Space');
   await yaz('imza', 'Deniz Test');
+  await tab('#k-imza-yok'); await page.keyboard.press('Space');
   await tab('#k-kimlik-simdi');
   await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowLeft');
   await tab('#k-g-kimlik-on');
@@ -288,7 +291,8 @@ test('Klavye ile tüm kayıt: Tab, radyolar, dosya seçici, kurallar, kopya ve k
   await page.keyboard.press('Tab'); await expect(page.locator('[data-ref-kopyala]')).toBeFocused();
   await page.keyboard.press('Enter');
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('UC-2099-0001');
-  await page.keyboard.press('Tab'); await expect(page.locator('a[href="?kardes=1"]')).toBeFocused();
+  // Başarı alanındaki iletişim bağlantılarını da Tab ile geçerek kardeş kaydına ulaş.
+  await tab('a[href="?kardes=1"]');
   await page.keyboard.press('Enter'); await expect(page.locator('#k-ad')).toBeFocused();
   expect(gelen).toHaveLength(1);
 });

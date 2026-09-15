@@ -1,19 +1,21 @@
 ---
-baslik: "Hanımlar ve Genç Kızlar Çarşamba Programı Başlıyor"
+baslik: "Her Çarşamba Esma AVCI Hoca Hanım ile Camimizde Buluşuyoruz"
 tarih: 2026-08-29
-ozet: "Eylül 2026'dan itibaren her Çarşamba Esma AVCI Hoca Hanım camimizde: sabah hanımlar, öğleden sonra genç kızlar için Kur'an, ders ve sohbet. Katılım ücretsiz, kayıt gerekmiyor."
-kapak: /media/duyurular/carsamba-programi-2026.webp
-kapakKucuk: /media/duyurular/carsamba-programi-2026-thumb.webp
+ozet: "Her çarşamba Esma AVCI Hoca Hanım ile hanımlar 10.30–12.30, genç kızlar 14.00–16.00 saatlerinde camimizde buluşuyor. Kur’an, dinî bilgiler ve sohbet; katılım ücretsiz, kayıt gerekmiyor."
+kapak: /media/duyurular/carsamba-bulusmalari-2026.webp
+kapakKucuk: /media/duyurular/carsamba-bulusmalari-2026-thumb.webp
 kapakAlt: "Çarşamba Programı afişi — hanımlar 10:30-12:30, genç kızlar 14:00-16:00, Esma AVCI Hoca Hanım ile"
 etiketler:
   - irşat
   - hanımlar
   - eğitim
 oneCikan: true
-oneCikanSon: 2026-09-30
+oneCikanSon: 2027-06-30
+vitrin: goster
+vitrinSon: 2027-06-30
 ---
 
-Camimizde hanımlar ve genç kızlarımız için yeni bir dönem başlıyor. **Eylül 2026'dan itibaren her Çarşamba Esma AVCI Hoca Hanım aramızda olacak.** Kendisi Müşavirliğimizce bölgemize görevlendirildi.
+**Esma AVCI Hoca Hanım her çarşamba camimizde hanımlar ve genç kızlarımızla buluşuyor.** Kur’an-ı Kerim, dinî bilgiler ve sohbet programımıza katılabilirsiniz. Kendisi Müşavirliğimizce bölgemize görevlendirildi.
 
 ## Gün akışı
 

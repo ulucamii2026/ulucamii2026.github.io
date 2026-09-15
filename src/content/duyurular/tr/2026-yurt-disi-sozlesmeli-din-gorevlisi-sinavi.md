@@ -2,8 +2,8 @@
 baslik: "Diyanet Yurt Dışı Sözleşmeli Din Görevlisi Sınavı: 100 Kontenjan (Belçika Dâhil)"
 tarih: 2026-09-11
 ozet: "Diyanet İşleri Başkanlığı, Belçika dâhil 19 ülkede istihdam edilmek üzere kadın ve erkek 100 sözleşmeli din görevlisi alımı yapıyor. Başvurular 14–25 Eylül 2026 tarihleri arasında. İlahiyat mezunu ve süresiz oturumu olan adaylar için şartlar, sınav konuları ve başvuru kılavuzu."
-kapak: /media/duyurular/yurtdisi-sozlesmeli-din-gorevlisi-2026.webp
-kapakKucuk: /media/duyurular/yurtdisi-sozlesmeli-din-gorevlisi-2026-thumb.webp
+kapak: /media/duyurular/sozlesmeli-basvurular-acik-2026.webp
+kapakKucuk: /media/duyurular/sozlesmeli-basvurular-acik-2026-thumb.webp
 kapakAlt: "Diyanet İşleri Başkanlığı Yurt Dışı Sözleşmeli Din Görevlisi Sınavı 2026 Duyurusu"
 etiketler:
   - diyanet
@@ -18,7 +18,9 @@ oneCikanSon: 2026-09-25
 taslak: false
 ---
 
-<div class="uyari"><p><strong>Başvuru süresi sınırlıdır:</strong> Başvurular <strong>14 Eylül 2026 Pazartesi</strong> günü başlayacak ve <strong>25 Eylül 2026 Cuma günü saat 17.00’de (TSİ)</strong> sona erecektir. Şartları taşıyan adayların evrak hazırlıklarını ivedilikle tamamlamaları tavsiye olunur.</p></div>
+<div class="uyari"><p><strong>Başvurular açık:</strong> <strong>14 Eylül 2026 Pazartesi</strong> günü başlayan başvurular <strong>25 Eylül 2026 Cuma günü saat 17.00’de (TSİ)</strong> sona erecektir. Şartları taşıyan adayların evrak hazırlıklarını ivedilikle tamamlamaları tavsiye olunur.</p></div>
+
+**[Resmî ilanı ve çevrim içi başvuru bağlantısını açın](https://disiliskiler.diyanet.gov.tr/Detay/646/yurt-dışı-sözleşmeli-din-görevlisi-sınav-duyurusu).**
 
 Diyanet İşleri Başkanlığı Dış İlişkiler Genel Müdürlüğü, yurt dışında mukim vatandaş, soydaş ve dindaşlarımızın kültürel bağlarının korunup güçlendirilmesi, dinî konularda sahih bilgiyle aydınlatılması amacıyla **kadın ve erkek 100 sözleşmeli din görevlisi** istihdam etmek üzere sınav ilanına çıkmıştır.
 

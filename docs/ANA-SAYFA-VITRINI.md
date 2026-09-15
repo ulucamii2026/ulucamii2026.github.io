@@ -38,6 +38,7 @@ Bu belge, ana sayfa `GundemVitrini` bileşeninin mimarisini, Embla 8.6 entegrasy
 * **Kapasite ve Dağılım:** Vitrinde en fazla **6 yayın** yer alır. Hedef min 1, maks 2 afiş; yeterli duyuru yoksa afişlerle 6'ya tamamlanır.
 * **Zaman ve Yaş Sınırı:** Brüksel takvim gününe göre son 90 gün içindeki içerikler listelenir. `oneCikan` veya `vitrin: goster` 90 gün sınırını aşabilir; son gösterim (`vitrinSon` veya `oneCikanSon`) geçmişse elenir.
 * **Durum Yönetimi:** `otomatik`, `goster`, `gizle`. `taslak`, `gelecek` veya `gizli` içerikler hariç tutulur.
+* **Editör önceliği (15 Eylül 2026):** `vitrin: goster`, yalnız `oneCikan: true` olan yayınlardan önce sıralanır. Aynı öncelikte duyurular afişlerden önce, kendi türü içinde yeniden eskiye gelir. Altı yayın sınırı, afiş kotası, görsel tekilleştirme ve bitiş tarihi filtresi korunur.
 * **Görsel Tekilleştirme:** Aynı görsel birden fazla kayıtta varsa duyuru nitelikli içerik tercih edilir.
 * **Dil ve Çok Dillilik:** EN vitrininde içerik kaynağı Fransızcadır (FR); ortak afişlerde Türkçe başlık kullanılabilir ve arayüzde kaynak notu (`enKaynakMetni`) gösterilir.
 * **Kurumsal Sınırlar:** Dernek resmî banka bilgileri, iletişim kanalları ve bağış/hesap sınırları değiştirilemez.
@@ -59,3 +60,13 @@ Bu belge, ana sayfa `GundemVitrini` bileşeninin mimarisini, Embla 8.6 entegrasy
 * **Canlı doğrulama (13:34):** `cf6c105e7e6c5715a6a91838b26b0adbfe69050f` yayımlandı. TR/FR/EN ana sayfaları HTTP 200; altı yayın, ileri/geri, afiş penceresi, Escape ve odağın geri dönmesi doğrulandı. Yatay taşma ve yakalanan JavaScript çalışma zamanı hatası yok.
 * **Dağıtım gözlemi:** İlk Actions akışı `34471326278`, deploy işinin 5 dakikalık sınırında iptal göründü. Buna rağmen Pages dağıtım API'si `succeed` döndürdü ve yeni site canlıda doğrulandı. İş akışı rengi tek başına canlı sürümün kanıtı değildir.
 * **Yayın süresi düzeltmesi:** `ae3d1ca25763eb6060d226b1096937c56e789e59` ile deploy işi 15 dakika, Pages eylemi 600000 ms bekleyecek şekilde ayarlandı. `34472392787` numaralı iş akışı tamamen başarılı tamamlandı.
+
+## 6. Başvuru ve kurs gündemi (15 Eylül 2026)
+
+* Kullanıcının Facebook ve site yayın talebiyle başvuru, devam eden kurs/kayıt ve çarşamba programı ilk üç vitrin sırasına alındı. TR/FR içerikleri ve TR/FR/EN üst duyuru şeridi güncellendi; EN vitrini mevcut FR kaynağını kullanır.
+* Başvuru son gösterim günü 25 Eylül 2026; kurs 6 Haziran 2027, çarşamba programı 30 Haziran 2027. Tarih filtresi günlük derlemede uygulanır. Süresi biten başvurunun elenmesi ve yeni haberlerin sabit gündemi geriye itmemesi masaüstü/mobil testinde doğrulandı.
+* Üç yeni WEBP ve küçük önizlemeleri eklendi. Kurs afişindeki mevsimsel saat yerine güncel ders takvimine yönlendirme kullanıldı; aynı kurs görselinin iki kez çıkması mevcut tekilleştirmeyle önlenir.
+* `npm run dogrula:codex`: tasarım, tip kontrolü, derleme/denetimler, yalıtılmış Firestore, veli e-postası, otomatik kayıt ve öğrenme testleri geçti. İlk web taramasında 376/412 geçti; 12 bilinçli ana sayfa görsel değişikliği ve kayıt/giriş test hazırlığı eksikleri saptandı.
+* İncelenen 12 ana sayfa görsel referansı güncellendi. Kayıt testine mevcut elden imza tercihi, klavye akışına aradaki iletişim bağlantıları; hoca giriş taklidine eksik `setDoc` dışa aktarımı eklendi. Yeniden çalıştırmada 24 görsel ve 24 portal giriş testi geçti. Son bağımsız derleme/denetim geçti; son dar tekrarda klavye kaydı, üç genişlik ve sabit gündem testleri iki cihaz boyutunda geçti.
+* **Açık takip:** Kayıt formunun “Temizle boş taslak üretmez” ve ekran boyutu değişiminde ilerleme bağlantısına odak senaryoları iki boyutta da başarısız (4 test). İlgili uygulama kodu bu duyuru çalışmasında değiştirilmedi; bu yüzden tam kalite kapısı yeşil olarak raporlanmaz. Ara tekrardaki geçici 404, test sürerken yeniden derlemeden kaynaklandı; bağımsız tekrarda aynı senaryo geçti.
+* `npm run onizle` üzerinde TR 1440 px, FR 390 px koyu, EN 768 px görsel inceleme: ilk üç afiş, klavye, büyütme/Escape, tam görsel oranı doğrulandı; yatay taşma ve JavaScript hatası yok. Fiziksel iPhone/Safari veya gerçek form gönderimi yapılmadı.

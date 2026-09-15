@@ -23,13 +23,16 @@ const takvimGunuFarki = (bugunStr: string, hedefStr: string) => {
 
 const isFallbackGorsel = (g?: string) => !g || g === '/media/vitrin/egitim-veli-portali.webp';
 
+// Editörün açık vitrin seçimi, genel öne çıkan içeriklerden önce gelir.
+const oncelik = (a: VitrinAdayi) => a.vitrin === 'goster' ? 2 : Number(Boolean(a.oneCikan));
+
 function adayiSec(mevcut: VitrinAdayi, yeni: VitrinAdayi): VitrinAdayi {
   // Ortak görsel paylaşımında detaylı duyuru korunmalı (afiş daha yeni tarihli olsa bile)
   if (mevcut.tur !== yeni.tur) {
     return mevcut.tur === 'duyuru' ? mevcut : yeni;
   }
-  const pA = Number(Boolean(mevcut.oneCikan || mevcut.vitrin === 'goster'));
-  const pB = Number(Boolean(yeni.oneCikan || yeni.vitrin === 'goster'));
+  const pA = oncelik(mevcut);
+  const pB = oncelik(yeni);
   if (pA !== pB) return pA > pB ? mevcut : yeni;
   const tA = mevcut.tarih.getTime();
   const tB = yeni.tarih.getTime();
@@ -66,8 +69,8 @@ export function vitrinSec(adaylar: VitrinAdayi[], simdi = new Date(), adet = 6) 
   }
 
   const pool = Array.from(tekilHarita.values()).sort((a, b) => {
-    const pA = Number(Boolean(a.oneCikan || a.vitrin === 'goster'));
-    const pB = Number(Boolean(b.oneCikan || b.vitrin === 'goster'));
+    const pA = oncelik(a);
+    const pB = oncelik(b);
     if (pA !== pB) return pB - pA;
     // Havuzda herhangi öncelikli duyuru varsa ilk sırada öncelikli duyuru yer almalı:
     // Öncelikliler arasında duyurular afişlerin önünde yer alır.

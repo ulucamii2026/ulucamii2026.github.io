@@ -94,8 +94,29 @@ test('Vitrin tarihi, gizleme, öncelik ve aynı afişin tekrarını süzer', () 
     make('tekrar', { gorsel: '/oncelik.webp' }),
     make('sabit', { tarih: new Date('2025-01-01'), vitrin: 'goster' }),
   ], now);
-  expect(result.map(x => x.id)).toEqual(['oncelik', 'sabit', 'bugun']);
+  expect(result.map(x => x.id)).toEqual(['sabit', 'oncelik', 'bugun']);
   expect(vitrinSec([make('son', { vitrinSon: new Date('2026-09-10') })], new Date('2026-09-10T22:00:00Z'))).toHaveLength(0);
+});
+
+test('Sabit gündem yeni öne çıkanlarla kaybolmaz; süresi biten başvuru elenir', () => {
+  const make = (id, extra = {}) => ({
+    id, baslik: id, ozet: '', gorsel: `/${id}.webp`, href: `/${id}`,
+    tarih: new Date('2026-08-01'), tur: 'duyuru', dil: 'tr', ...extra,
+  });
+  const adaylar = [
+    ...Array.from({ length: 8 }, (_, i) => make(`yeni${i}`, { oneCikan: true, tarih: new Date('2026-09-15'), oneCikanSon: new Date('2026-10-01') })),
+    make('basvuru', { vitrin: 'goster', tarih: new Date('2026-09-11'), vitrinSon: new Date('2026-09-25') }),
+    make('kurs', { vitrin: 'goster', tarih: new Date('2026-09-05'), vitrinSon: new Date('2027-06-06') }),
+    make('carsamba', { vitrin: 'goster', vitrinSon: new Date('2027-06-30') }),
+    make('afis', { tur: 'afis' }),
+  ];
+  const secim = vitrinSec(adaylar, new Date('2026-09-15T12:00:00+02:00'));
+  expect(secim.slice(0, 3).map(x => x.id)).toEqual(['basvuru', 'kurs', 'carsamba']);
+  expect(secim).toHaveLength(6);
+  expect(secim.some(x => x.tur === 'afis')).toBe(true);
+  expect(vitrinSec(adaylar, new Date('2026-09-26T12:00:00+02:00')).some(x => x.id === 'basvuru')).toBe(false);
+  expect(vitrinSec(adaylar, new Date('2027-01-10T12:00:00+01:00')).map(x => x.id)).toEqual(['kurs', 'carsamba']);
+  expect(vitrinSec(adaylar, new Date('2027-07-01T12:00:00+02:00'))).toHaveLength(0);
 });
 
 test('Vitrin afiş ve duyuru kotaları, adet sınırları ve ortak kapak mantığı', () => {

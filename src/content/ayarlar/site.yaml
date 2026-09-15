@@ -40,9 +40,9 @@ site:
   # üst üste görünüyordu. Şerit yalnız GÜNCEL haberleri taşır.
   heroMesajlar:
     - metin:
-        tr: "Diyanet yurt dışı sözleşmeli din görevlisi sınavı (100 kontenjan — Belçika dâhil) — son başvuru 25 Eylül 2026."
-        fr: "Concours Diyanet : 100 postes de ministres du culte contractuels (Belgique comprise) — date limite le 25 septembre 2026."
-        en: "Diyanet exam for contractual religious officials abroad (100 positions — including Belgium) — deadline 25 September 2026."
+        tr: "Diyanet yurt dışı sözleşmeli din görevlisi sınavına başvurular açık — son gün 25 Eylül 2026, 17.00 (TSİ)."
+        fr: "Concours Diyanet : candidatures ouvertes — clôture le 25 septembre 2026 à 17h00 (heure de Turquie)."
+        en: "Diyanet exam for religious officials abroad: applications open until 25 September 2026, 17:00 (Türkiye time)."
       sayfa: duyurular
       son: "2026-09-25"
     - metin:
@@ -52,15 +52,17 @@ site:
       sayfa: duyurular
       son: "2026-10-31"
     - metin:
-        tr: "2026–2027 Kur’an kursu kayıtları başladı — online kayıt yalnızca birkaç dakika sürer."
-        fr: "Les inscriptions 2026–2027 à l’école coranique sont ouvertes — l’inscription en ligne ne prend que quelques minutes."
-        en: "Enrolment for the 2026–2027 Qur’an school is open — signing up online takes only a few minutes."
+        tr: "Kur’an kursumuz devam ediyor, kayıtlarımız açık — 7 yaş ve üzeri, kayıt ve dersler ücretsiz."
+        fr: "Les cours de Coran continuent et les inscriptions restent ouvertes — dès 7 ans, inscription et cours gratuits."
+        en: "Qur’an classes continue and enrolment remains open — ages 7 and up, free enrolment and classes."
       sayfa: kurankursu
+      son: "2027-06-06"
     - metin:
         tr: "Hanımlar ve genç kızlar irşat programı — her çarşamba camimizde, Esma AVCI Hoca Hanım ile."
         fr: "Programme pour femmes et jeunes filles — chaque mercredi à la mosquée, avec Mme Esma AVCI."
         en: "Women’s and girls’ programme — every Wednesday at the mosque, with Mrs Esma AVCI."
       sayfa: irsat
+      son: "2027-06-30"
     - metin:
         tr: "Liseyi bitiren gençlere Türkiye’de Diyanet burslu ilahiyat lisansı — Uluslararası İlahiyat Programı’nı (UİP) tanıyın, başvuruda yanınızdayız."
         fr: "Une licence de théologie en Turquie avec bourse Diyanet pour les jeunes diplômés du secondaire — découvrez le Programme international de théologie (UİP), nous vous accompagnons."
