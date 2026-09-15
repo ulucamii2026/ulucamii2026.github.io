@@ -305,6 +305,11 @@ test('Sayfadan hemen ayrılınca son harf kaybolmaz; Temizle boş taslak üretme
   await page.locator('[data-taslak-sil]').click();
   await page.goto(kok + '/tr/'); await ac(page);
   await expect(page.locator('[data-taslak-not]')).toBeHidden();
+  await page.waitForTimeout(500);
+  expect(await page.evaluate(k => localStorage.getItem(k), taslakAnahtari)).toBeNull();
+  await page.locator('#k-ad').fill('Yeni taslak');
+  await page.goto(kok + '/tr/'); await ac(page);
+  await expect(page.locator('#k-ad')).toHaveValue('Yeni taslak');
 });
 
 test('Hızlı yazı sırasında ilerleme hesapları birleştirilir; canlı yaş metni tekrarlanmaz', async ({ page }) => {
@@ -400,6 +405,8 @@ test('Tasarım D: sürükle-bırak, kart önizlemesi, alternatifler, bilet ve bo
   await page.locator('#k-kimlik-simdi').check();
   await doldur(page); await resim(page); await page.locator('#k-kimlik-riza').check();
   await form(page).locator('[type=submit]').focus();
+  await page.keyboard.press('Tab');
+  await expect(form(page).locator('.ucf-gonder .wa-bag')).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.locator('#k-ilerleme a').first()).toBeFocused();
   await page.setViewportSize({ width: 768, height: 900 });

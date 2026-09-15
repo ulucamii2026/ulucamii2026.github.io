@@ -8,7 +8,10 @@ const sandbox={module:{exports:{}}};
 runInNewContext(buildSync({entryPoints:['src/lib/ogrenme-ilerleme.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,sandbox);
 const {bosKayit,kaydiOku,tekrarKaydet,gunlukSec,tarihEkle}=sandbox.module.exports;
 
-test('Basılı ve dijital defter 87 günde 261 dersi ve 51–311. sayfaları aynı sırada eşler',()=>{
+test('Dijital kayıt kimlikleri korunur; 261 ders basılı Sürüm 3 sayfaları 55–315 ile eşleşir',()=>{
+ const basili={module:{exports:{}}};
+ runInNewContext(buildSync({entryPoints:['src/lib/basili-defter.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,basili);
+ const {basiliDefterSayfasi}=basili.module.exports;
  const plan=JSON.parse(readFileSync('src/data/yillik-plan-2026-2027.json','utf8'));
  const katalog=JSON.parse(readFileSync('src/data/ders-defteri-2026-2027.json','utf8'));
  const dersler=plan.gunler.flatMap(g=>g.dersler.map(d=>({tarih:g.tarih,...d})));
@@ -16,6 +19,7 @@ test('Basılı ve dijital defter 87 günde 261 dersi ve 51–311. sayfaları ayn
  assert.equal(new Set(katalog.map(d=>d.id)).size,261);
  for(const [i,d]of katalog.entries()){
   const k=dersler[i];assert.equal(d.id,k.tarih+'_'+k.sira);assert.equal(d.no,k.no);assert.equal(d.sayfa,i+51);
+  assert.equal(basiliDefterSayfasi(d),i+55);
   assert.equal(d.konu,k.konu);assert.equal(d.kaynak,k.kaynak);
   for(const alan of ['goal_tr','goal_fr','prompt_tr','prompt_fr'])assert.ok(d[alan],d.id+':'+alan);
   assert.ok(Object.keys(d).every(k=>['id','tarih','sira','no','hafta','sayfa','konu','kaynak','kod','goal_tr','goal_fr','prompt_tr','prompt_fr','mode','hedef_a_tr','hedef_a_fr'].includes(k)));

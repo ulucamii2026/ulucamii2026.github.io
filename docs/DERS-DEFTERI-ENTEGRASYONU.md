@@ -19,7 +19,7 @@ telefonundan aynı öğrenci, gün ve ders altında girer.
 6. **Dijital arşiv** kaydedilmiş dersleri açar; seçili öğrenci için JSON indirir
    veya yazdırılabilir, PDF olarak kaydedilebilir ayrı bir döküm üretir.
 
-Orijinal 320 sayfalık kişisel PDF ve kâğıttaki notlar değiştirilmez. Dijital çıktı
+Orijinal kişisel PDF ve kâğıttaki notlar değiştirilmez. Dijital çıktı
 girilen metinlerin dökümüdür; çizimleri veya ıslak imzaları taramaz. Otomatik OCR,
 çocuk fotoğrafı, imza görüntüsü ve ek kişisel dosya yükleme bu kapsamda yoktur.
 Sunucuya kaydedilmemiş taslak tarayıcı kapatıldığında kurtarılamaz. Arşiv her
@@ -294,9 +294,14 @@ Etkinlik kaynağı SHA-256:
 
 `src/data/ders-defteri-2026-2027.json` yalnız 87 gün / 261 derslik kişisel olmayan
 müfredatı içerir. TR/FR hedef ve etkinlik metinleri basılı kaynaktan alınmıştır.
-Basılı sayfalar 51–311; site planıyla tarih, sıra, ders numarası, konu ve kaynak
-eşleşmesi test edilir. Kaynak kitap yeniden üretilip sayfaları değişirse bu
-eşleştirme de gözden geçirilmelidir. Katalog hoca sekmesi açılınca yüklenir.
+İlk entegrasyonun katalog/depo `sayfa` alanı 51–311 aralığını taşır ve kayıt
+kimliğinin parçasıdır. Güncel **324 sayfalık Sürüm 3'te dersler 55–315** arasındadır.
+15 Eylül 2026'da `Surum-3/sayfa-haritasi.json` ve PDF'lerle doğrulanıp ekran ile
+yazdırma yönlendirmesi `src/lib/basili-defter.ts` üzerinden ders numarasına bağlandı.
+Firestore'daki eski alan, kayıt sürümleri ve çeviriler korunur; veri göçü gerekmez.
+`test:ogrenme` eski kimlik sözleşmesini ve yeni fiziksel sayfayı ayrı ayrı sınar.
+Kitap yeniden üretilip sayfaları değişirse bu eşleştirme gözden geçirilmelidir.
+Katalog hoca sekmesi açılınca yüklenir.
 
 Kayıt yolu `dersDefteri/{ogrenciRef}/kayitlar/{YYYY-MM-DD_sira}`. Notlar yalnız
 hocalara açıktır. Veli kendi çocuğunun bu özel koleksiyonunu da okuyamaz/yazamaz.
@@ -312,6 +317,15 @@ saklama süreleri geçerlidir; sınırsız saklama veya ayrıca otomatik yedek g
 verilmez.
 
 ## Doğrulama
+
+### 15 Eylül 2026 — doldurulmuş defter ve baskı kontrolü
+
+- Dernek hesabıyla salt okunur canlı denetim: 18 aktif öğrenci, 12 aile; güncel kayıt defteri ile portal eşleşti. Dört ders gününde 216/216 kayıt tamam, yoklama çelişkisi yok; 72/72 Fransızca çeviri güncel.
+- Bültenler ana koleksiyon sayısıyla ölçülmez: `bultenler/{ref}/haftalar` alt koleksiyonları tarandı. Üç öğrenciye ait beş yayımlanmış bülten var; hepsinin dili aile tercihine uygun. Diğer 15 öğrenci için henüz yayımlanmış bülten yok. Bu denetim yeni bülten veya e-posta göndermedi.
+- Sürüm 3: 18 kişisel defter + boş şablon = 19 PDF / 6.156 sayfa. Üretim verisindeki 216 kayıt ve çeviriler canlı metinlerle eşleşti. Yeniden üretim gerekmiyor. A4, qpdf, bağımsız plan denetimi, yazdırma ön ayarları ve OneDrive SHA-256 eşleşmeleri 19/19 geçti.
+- Hoca ekranı ve yazdırılabilir arşiv, fiziksel ders sayfalarını artık 55–315 gösterir; dijital kayıtların eski kimliği ve sürümü korunur. Boş örnek verilerle 390 px koyu ve 1440 px açık görünüm incelendi; taşma yok.
+- `npm run dogrula:codex` çalıştırıldı: tasarım, tip/derleme/denetimler ve bağımsız güvenlik/e-posta/otomatik kayıt/öğrenme paketleri geçti. 412 web testinden 411'i ilk taramada geçti; tarama sırasında güncellenen basılı sayfa beklentisi bir işçide eski yüklenmişti. Son kaynakla yeniden `npm run check` (0 hata/uyarı), `npm run build` (873 sayfa) ve ders-defteri/kayıt/bülten testleri **88/88** geçti. Son derlenmiş önizlemede taslak silme ve kurs günlüğü ayrıca sınandı; gerçek form gönderilmedi.
+- Fiziksel baskı/spiral cilt yapılmadı; gerçek iPhone/Safari testi yok. Baskı kontrol notu yalnız kurs arşivindeki `Surum-3/BASKI-KONTROL-2026-09-15.md` içindedir; kişisel PDF'ler siteye alınmadı.
 
 `tests/web/ders-defteri.spec.mjs`: telefon/masaüstü kayıt, sonraki ders, yeniden
 yükleme, kesinti, çakışma, vazgeçme, seçili öğrenci çıktısı, JSON, bültene aktarım,

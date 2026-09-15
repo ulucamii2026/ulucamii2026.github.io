@@ -355,7 +355,7 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
   return {
     bosMu,
     png,
-    temizle: () => { cizgiler.length = 0; aktif = null; cizimEn = 0; cizimBoy = 0; yenidenCiz(); cizildi(); },
+    temizle: (bildir = true) => { cizgiler.length = 0; aktif = null; cizimEn = 0; cizimBoy = 0; yenidenCiz(); if (bildir) cizildi(); },
     kilit: (kapali: boolean) => {
       if (kapali) tuval.setAttribute('data-kapali', '1'); else tuval.removeAttribute('data-kapali');
       tuval.setAttribute('aria-disabled', kapali ? 'true' : 'false');
@@ -403,7 +403,8 @@ export function imzaBlokuKur(kap: HTMLElement | null, imzaYok: HTMLInputElement 
     eksikMi: () => !imzaYok?.checked && (!imza || imza.bosMu()),
     kapaliMi: () => !!imzaYok?.checked,
     hataYaz,
-    sifirla: () => { imza?.temizle(); durum(); },
+    // Form sıfırlaması kullanıcı girdisi değildir; silinen taslağı yeniden oluşturmasın.
+    sifirla: () => { imza?.temizle(false); durum(); },
   };
 }
 

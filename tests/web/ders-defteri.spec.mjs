@@ -14,7 +14,7 @@ async function ac(page,context,records={}){
  return page.locator('[data-ders-defteri]');
 }
 test('Ders defteri basılı sayfayı eşler; boş varsayılan kayıt yazmaz, kaydeder ve sonraki derse geçer',async({page,context})=>{
- const p=await ac(page,context);await expect(p).toContainText(`${d.sayfa}. sayfa`);await expect(p.locator('[name=durum]')).toHaveValue('');await expect(p.locator('[name=grup]')).toHaveValue('');
+ const p=await ac(page,context);await expect(p).toContainText(`${d.no + 54}. sayfa`);await expect(p.locator('[name=durum]')).toHaveValue('');await expect(p.locator('[name=grup]')).toHaveValue('');
  expect(await page.evaluate(()=>window.__writes.length)).toBe(0);
  await p.locator('[name=durum]').selectOption('islendi');await p.locator('[name=calisma]').fill('Kâğıttan aktarılan örnek not');await p.locator('[name=odev]').fill('Sayfa 12–13');
  await p.locator('[value=kaydet]').click();await expect(p.locator('[data-dd-durum]')).toContainText('kaydedildi');
@@ -41,7 +41,7 @@ test('Arşiv çıktısı seçili öğrenciyle sınırlı; bültene aktarım kend
  await p.locator('.dd-arsiv summary').click();
  await page.evaluate(()=>{const append=document.body.appendChild.bind(document.body);document.body.appendChild=function(n){if(n.tagName==='IFRAME'){const load=n.onload;n.onload=()=>{n.contentWindow.print=()=>{window.__defterPrint=n.contentDocument.body.textContent;};load?.();};}return append(n);};});
  await p.locator('[data-dd-yazdir]').click();await expect.poll(()=>page.evaluate(()=>window.__defterPrint)).toContain('Örnek Talebe');
- const metin=await page.evaluate(()=>window.__defterPrint);expect(metin).toContain('<b>örnek</b>');expect(metin).not.toContain('Kardeşin özel notu');
+ const metin=await page.evaluate(()=>window.__defterPrint);expect(metin).toContain('<b>örnek</b>');expect(metin).not.toContain('Kardeşin özel notu');expect(metin).toContain(`Basılı sayfa ${d.no + 54}`);
  const indirme=page.waitForEvent('download');await p.locator('[data-dd-indir]').click();const dosya=await indirme;expect(dosya.suggestedFilename()).toBe('Ders-Defteri-TEST-1.json');
  const data=JSON.parse(readFileSync(await dosya.path(),'utf8'));expect(data.kayitlar).toHaveLength(1);expect(data.ogrenci.ref).toBe('TEST-1');
  await page.locator('[data-sekme=bulten]').click();await page.locator('[data-hb-ogr]').selectOption('TEST-1');await expect(page.locator('[data-hb-form]')).toBeVisible();
