@@ -25,33 +25,15 @@ export function kayitFormuBaslat() {
     });
   // Çizilen imza: hata yalnız gönderimde (çekirdek ekDogrula) yazılır; çizim gelince kendiliğinden silinir.
   let imza: ImzaBloku | null = null;
-  imza = imzaBlokuKur(form.querySelector<HTMLElement>('[data-imza]'), form.querySelector<HTMLInputElement>('#k-imza-yok'), () => {
-    if (imza && !imza.eksikMi()) imza.hataYaz(null);
+  imza = imzaBlokuKur(form.querySelector<HTMLElement>('[data-imza]'), null, () => {
+    if (imza && !imza.eksikMi()) {
+      imza.hataYaz(null);
+      form.querySelector('#k-imza-kontrol')?.removeAttribute('aria-invalid');
+    }
     form.dispatchEvent(new Event('change', { bubbles: true }));
   });
-  const imzaHatalari = (): Array<[string, string]> => (imza?.eksikMi() ? [['imzaYok', belgeMetni.hataImza]] : []);
-  const kimlikYolu = () => form.querySelector<HTMLInputElement>('#k-kimlik-simdi')?.checked ? 'yukle'
-    : form.querySelector<HTMLInputElement>('input[name="kimlik.sonra"]:checked')?.value || '';
-  const kimlikDurumu = () => {
-    const yol = kimlikYolu(), simdi = yol === 'yukle';
-    for (const [secici, acik] of [['[data-kimlik-yukleme]', simdi], ['[data-kimlik-sonra]', !simdi], ['[data-kimlik-riza]', yol !== 'elden']] as const) {
-      const blok = form.querySelector<HTMLElement>(secici);
-      if (!blok) continue;
-      blok.hidden = !acik;
-      blok.querySelectorAll<HTMLInputElement>('input').forEach(a => {
-        a.disabled = !acik;
-        if (!acik) { a.removeAttribute('aria-invalid'); if (a.type === 'checkbox') a.checked = false; }
-      });
-      if (!acik) {
-        blok.querySelectorAll<HTMLElement>('.hata').forEach(h => { h.hidden = true; h.textContent = ''; });
-        blok.querySelectorAll('.alan-hatali').forEach(k => k.classList.remove('alan-hatali'));
-        blok.classList.remove('alan-hatali');
-      }
-    }
-    if (!simdi) gorseller.sifirla();
-  };
+  const imzaHatalari = (): Array<[string, string]> => (!imza || imza.eksikMi() ? [['imzaCizim', metin.imzaZorunlu]] : []);
   const kimlikHatalari = (): Array<[string, string]> => {
-    if (kimlikYolu() !== 'yukle') return [];
     const hatalar: Array<[string, string]> = [];
     for (const [anahtar, ad] of [['kimlikOn', 'kimlik.on'], ['kimlikArka', 'kimlik.arka']]) {
       const kap = form.querySelector<HTMLElement>(`[data-gorsel="${anahtar}"]`);
@@ -61,14 +43,10 @@ export function kayitFormuBaslat() {
     }
     return hatalar;
   };
-  form.addEventListener('change', e => {
-    if ((e.target as HTMLInputElement)?.name?.startsWith('kimlik.')) kimlikDurumu();
-  });
   form.addEventListener('reset', () => {
     gorseller.sifirla();
-    setTimeout(() => { sinifListesiKur(false); kimlikDurumu(); imza?.sifirla(); }, 0);
+    setTimeout(() => { sinifListesiKur(false); imza?.sifirla(); }, 0);
   });
-  kimlikDurumu();
 
   function sinifListesiKur(koru = true) {
     if (!okulSec || !sinifSec) return;
@@ -129,10 +107,10 @@ export function kayitFormuBaslat() {
         saglik: { var: saglikVar, not: saglikVar ? String(saglik.not ?? '') : '' },
         goruntuIzni: v.goruntuIzni === 'evet',
         goruntuSosyalIzni: v.goruntuSosyalIzni === 'evet',
-        kimlik: { yol: kimlikYolu(), on: kimlikYolu() === 'yukle' ? gorseller.paket().kimlikOn || '' : '', arka: kimlikYolu() === 'yukle' ? gorseller.paket().kimlikArka || '' : '' },
-        // 13 Eyl 2026 akşamı (v32): çizilen imza PNG; kaçış kutusu işaretliyse boş + imzaYok.
-        ...(imza ? { imza: imza.veri(), imzaYok: imza.kapaliMi() } : {}),
-        onay: { kurallar: onay.kurallar === true, gizlilik: onay.gizlilik === true, saglikRiza: saglikVar ? onay.saglikRiza === true : false, elektronikImza: onay.elektronikImza, kimlikRiza: kimlikYolu() !== 'elden' && onay.kimlikRiza === true },
+        kimlik: { yol: 'yukle', on: gorseller.paket().kimlikOn || '', arka: gorseller.paket().kimlikArka || '' },
+        // İmza zorunludur; istemci ve sunucu aynı koşulu doğrular.
+        imza: imza?.veri() || '', imzaYok: false,
+        onay: { kurallar: onay.kurallar === true, gizlilik: onay.gizlilik === true, saglikRiza: saglikVar ? onay.saglikRiza === true : false, elektronikImza: onay.elektronikImza, kimlikRiza: onay.kimlikRiza === true },
       };
     },
     ozet(v, f) {
@@ -155,9 +133,8 @@ export function kayitFormuBaslat() {
         saglik: saglik.var === 'evet' ? String(saglik.not ?? '') : saglik.var === 'hayir' ? evetHayir('hayir') : '',
         goruntu: evetHayir(v.goruntuIzni),
         goruntuSosyal: evetHayir(v.goruntuSosyalIzni),
-        kimlik: kimlikYolu() === 'yukle' ? (gorseller.paket().kimlikOn ? (gorseller.paket().kimlikArka ? metin.ozetIki : metin.ozetOn) : '')
-          : ({ eposta: metin.ozetEposta, whatsapp: metin.ozetWhatsapp, elden: metin.ozetElden }[kimlikYolu()] || ''),
-        imza: !imza ? '' : imza.kapaliMi() ? metin.ozetImzaElden : imza.eksikMi() ? '' : metin.ozetImzaCizildi,
+        kimlik: gorseller.paket().kimlikOn ? (gorseller.paket().kimlikArka ? metin.ozetIki : metin.ozetOn) : '',
+        imza: !imza || imza.eksikMi() ? '' : metin.ozetImzaCizildi,
       };
     },
     basarida(v, ref) {
@@ -167,14 +144,11 @@ export function kayitFormuBaslat() {
       for (const [k, val] of Object.entries(acil)) saklanacak[`acil.${k}`] = String(val ?? '');
       try { sessionStorage.setItem(KARDES_ANAHTARI, JSON.stringify(saklanacak)); } catch { /* yok say */ }
       const ogrenci = (v.ogrenci ?? {}) as Veriler;
-      // 13 Eyl 2026: Beklerken değiştirilen seçim başarıya taşınmaz; gönderim anı esas.
-      const kimlik = (v.kimlik ?? {}) as Veriler;
-      const gonderilenYol = kimlik.zaman === 'simdi' ? 'yukle' : String(kimlik.sonra || '');
-      kayitBasarisiniHazirla(form, metin, gonderilenYol, ref, [ogrenci.ad, ogrenci.soyad].filter(Boolean).join(' '));
+      kayitBasarisiniHazirla(form, metin, 'yukle', ref, [ogrenci.ad, ogrenci.soyad].filter(Boolean).join(' '));
       gorseller.sifirla();
       imza?.sifirla();                            // kardeş kaydında veli yeniden imzalar (ayrı sözleşme)
     },
   });
-  kimlikDurumu();
+
   kayitEtkilesiminiBaslat(form, metin, () => [...kimlikHatalari(), ...imzaHatalari()]);
 }

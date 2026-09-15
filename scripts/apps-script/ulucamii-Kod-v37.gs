@@ -77,7 +77,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 36;
+var SURUM = 37;
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -108,7 +108,7 @@ function doGet(e) {
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitDuzelt: true, defterCeviri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -631,21 +631,17 @@ function pdfHtmlKayit(veri, meta) {
   var imzaHucre = imzaGorsel
     ? '<div class="imza-cizgi imza-resim"><img class="imza-gorsel" src="' + imzaGorsel + '" alt=""></div>'
       + '<div class="imza-etiket">' + E("imza") + " — " + kacis(onay.elektronikImza) + "</div>"
-    : '<div class="imza-cizgi">' + elYazisi(onay.elektronikImza) + '</div><div class="imza-etiket">' + E("elektronikImza") + "</div>";
+    : '<div class="imza-cizgi"></div><div class="imza-etiket">' + E("imza") + " — " + kacis(onay.elektronikImza) + "</div>";
   var imzaBlok = '<table class="imza"><tr>'
     + '<td class="dar"><div class="imza-cizgi">' + elYazisi(tarihKisa) + '</div><div class="imza-etiket">' + E("tarih") + "</div></td>"
     + "<td>" + imzaHucre + "</td>"
     + "</tr></table>";
   var imzaNotuTr = imzaGorsel
     ? "; imza alanındaki imza, velinin formda ekranda çizdiği imzadır; altındaki ad velinin forma yazdığı addır."
-    : veri.imzaYok === true
-      ? "; imza alanındaki ad, velinin forma yazdığı addır; veli belgeyi kursta kalemle imzalayacağını bildirmiştir."
-      : "; imza alanındaki ad, velinin forma yazdığı addır.";
+    : "; çizilmiş veli imzası kayıtlı değildir; boş imza alanı veli tarafından kalemle imzalanmalıdır.";
   var imzaNotuFr = imzaGorsel
     ? " ; la signature dans la case est celle tracée à l’écran par le parent dans le formulaire ; le nom en dessous est celui saisi par le parent."
-    : veri.imzaYok === true
-      ? " ; le nom dans la case signature est celui saisi par le parent ; le parent a indiqué qu’il signera le document au stylo au cours."
-      : " ; le nom dans la case signature est celui saisi par le parent dans le formulaire.";
+    : " ; aucune signature tracée du parent n’est enregistrée ; la case vide doit être signée au stylo par le parent.";
   var sayfa2 = '<section class="sozlesme">'
     + "<h1>" + sozlesmeBaslik + "</h1>"
     + '<div class="s-kimlik"><span>' + E("ogrenciAdSoyad") + ": " + elYazisi(ogrenciAd) + '</span><span class="ref">Ref ' + kacis(ref) + (dersYili ? " \u00b7 " + D(DERS_YILI_ETIKET) + " " + kacis(dersYili) : "") + "</span></div>"
@@ -669,8 +665,21 @@ function pdfHtmlKayit(veri, meta) {
     + "</title><style>" + PDF_CSS + "\n" + kayitCss(!!meta.sade, ref, D(DEVAM_METIN)) + "</style></head><body>"
     + sayfa1
     + sayfa2
+    + kayitPdfKimlikEki(veri, ref)
     + altBilgi
     + "</body></html>";
+}
+
+/** Kayıt dosyasının özel kimlik eki; yalnız yüklenen görseller, haricî URL yok. */
+function kayitPdfKimlikEki(veri, ref) {
+  var kimlik = veri.kimlik || {};
+  var gecerli = function (v) { return typeof v === "string" && /^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+\/=]+$/.test(v); };
+  if (!gecerli(kimlik.on) && !gecerli(kimlik.arka)) return "";
+  var html = '<section class="kimlik-ek" style="page-break-before:always"><h1>Öğrencinin kimlik belgesi / Pièce d’identité de l’élève</h1><p>Ref ' + kacis(ref) + '</p>';
+  [["on", "Ön yüz / Recto"], ["arka", "Arka yüz / Verso"]].forEach(function (alan) {
+    if (gecerli(kimlik[alan[0]])) html += '<div style="page-break-inside:avoid;margin:16px 0"><h2>' + alan[1] + '</h2><img class="kimlik-gorsel" style="display:block;max-width:100%;max-height:310px;margin:8px auto" src="' + kimlik[alan[0]] + '" alt=""></div>';
+  });
+  return html + '<p>Yalnız kurs kayıt dosyası içindir. / Réservé au dossier d’inscription au cours.</p></section>';
 }
 
 /**
@@ -841,27 +850,21 @@ function kayitDogrulaV2(v) {
   if (!metinDolu(onay.elektronikImza)) return h("onay-imza-eksik");
   if (!adSadelestirEsit(onay.elektronikImza, veli.adSoyad)) return h("onay-imza-eslesmiyor");
 
-  // v32 (13 Eyl 2026 akşamı): ekranda çizilen imza. İki alan da yoksa eski istemcidir (imzasız kabul, PDF el yazısı).
-  if (v.imza !== undefined || v.imzaYok !== undefined) {
-    if (typeof v.imzaYok !== "boolean") return h("imza-yok-gecersiz");
-    if (v.imzaYok) { if (v.imza) return h("imza-fazla"); }
-    else if (typeof v.imza !== "string" || !/^data:image\/png;base64,/.test(v.imza) || !gorselGecerli(v.imza, 1)) return h("imza-gecersiz");
-  }
+  // 15 Eyl 2026: yeni kayıtlar çizilen veli imzası olmadan kabul edilmez; eski istemciler de geçemez.
+  if (v.imzaYok !== false) return h("imza-gecersiz");
+  if (typeof v.imza !== "string" || !/^data:image\/png;base64,[A-Za-z0-9+\/=]+$/.test(v.imza) || !gorselGecerli(v.imza, 1)) return h("imza-gecersiz");
 
   if (["tr", "fr", "en"].indexOf(v.dil) === -1) return h("dil-gecersiz");
   return kayitKimlikDogrula(v);
 }
 
 function kayitKimlikDogrula(v) {
-  // 13 Eyl 2026: Eski v2'yi korur; dijital teslimde rıza ve yüklemede boyut aranır.
-  if (v.kimlik === undefined && v.formSurumu === 2) return { tamam: true };
+  // 15 Eyl 2026: kimlik ön yüzü (pasaportta kimlik sayfası) ve rıza zorunlu.
   var k = v.kimlik;
-  if (!k || typeof k !== "object" || Array.isArray(k) || ["yukle", "eposta", "whatsapp", "elden"].indexOf(k.yol) === -1) return h("kimlik-yol-gecersiz");
-  if (["yukle", "eposta", "whatsapp"].indexOf(k.yol) !== -1 && (!v.onay || v.onay.kimlikRiza !== true)) return h("kimlikRiza");
-  if (k.yol === "yukle") {
-    if (typeof k.on !== "string" || !gorselGecerli(k.on, 1.5)) return h("kimlik-on-gecersiz");
-    if (k.arka !== undefined && k.arka !== "" && (typeof k.arka !== "string" || !gorselGecerli(k.arka, 1.5))) return h("kimlik-arka-gecersiz");
-  }
+  if (!k || typeof k !== "object" || Array.isArray(k) || k.yol !== "yukle") return h("kimlik-yol-gecersiz");
+  if (!v.onay || v.onay.kimlikRiza !== true) return h("kimlikRiza");
+  if (typeof k.on !== "string" || !/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+\/=]+$/.test(k.on) || !gorselGecerli(k.on, 1.5)) return h("kimlik-on-gecersiz");
+  if (k.arka !== undefined && k.arka !== "" && (typeof k.arka !== "string" || !/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+\/=]+$/.test(k.arka) || !gorselGecerli(k.arka, 1.5))) return h("kimlik-arka-gecersiz");
   return { tamam: true };
 }
 
@@ -1698,19 +1701,22 @@ function kayitImzaKaydet(klasor, ref, imza) {
 }
 
 /** "<ref> - imza.png" dosyasını PNG veri URL'i olarak döndürür; yoksa/çöpteyse/PNG değilse "". */
-function kayitImzaOku(klasor, ref) {
+function kayitImzaOku(klasor, ref, okunamayanlar) {
   var ad = ref + KAYIT_IMZA_SONEK;
   try {
     var it = klasor.getFilesByName(ad);
     while (it.hasNext()) {
       var dosya = it.next();
       if (dosya.getName() !== ad || dosya.isTrashed()) continue;
-      if (dosya.getSize() > 1024 * 1024) return "";
+      if (dosya.getSize() > 1024 * 1024) throw new Error("imza-cok-buyuk");
       var blob = dosya.getBlob();
-      if (blob.getContentType() !== "image/png") return "";
+      if (blob.getContentType() !== "image/png") throw new Error("imza-tur-gecersiz");
       return "data:image/png;base64," + Utilities.base64Encode(blob.getBytes());
     }
-  } catch (hata) { console.error("Kayıt imzası okunamadı: " + ref); }
+  } catch (hata) {
+    if (okunamayanlar) okunamayanlar.push({ dosya: ad, neden: "imza-okunamadi" });
+    console.error("Kayıt imzası okunamadı: " + ref);
+  }
   return "";
 }
 
@@ -1754,7 +1760,7 @@ function kayitGorselleriOku(klasor, ref, okunamayanlar) {
       var it = klasor.getFilesByName(ad), dosya = null;
       while (it.hasNext()) {
         var aday = it.next();
-        if (aday.getName() === ad) { dosya = aday; break; }
+        if (aday.getName() === ad && !aday.isTrashed()) { dosya = aday; break; }
       }
       if (!dosya) return;
       if (dosya.getSize() > 4 * 1024 * 1024) { okunamayanlar.push({ dosya: ad, neden: "cok-buyuk" }); return; }
@@ -1767,8 +1773,15 @@ function kayitGorselleriOku(klasor, ref, okunamayanlar) {
       toplam += boyut;
     } catch (hata) { okunamayanlar.push({ dosya: ad, neden: "hata" }); }
   });
-  sonuc.imza = kayitImzaOku(klasor, ref);                       // v32: panel «Kimlik» sekmesi imzayı da gösterir
+  sonuc.imza = kayitImzaOku(klasor, ref, okunamayanlar);
   return sonuc;
+}
+
+function kayitPdfGorselleriniEkle(veri, klasor, ref) {
+  var okunamayan = [], g = kayitGorselleriOku(klasor, ref, okunamayan);
+  if (okunamayan.length) throw new Error("kayit-gorseli-okunamadi");
+  if (g.imza) veri.imza = g.imza;
+  veri.kimlik = { yol: "yukle", on: g.on || "", arka: g.arka || "" };
 }
 
 function kayitBelgeIsle(e) {
@@ -1807,6 +1820,10 @@ function kayitGorselSilIsle(e) {
     var ref = String(e.parameter.ref || "");
     if (!/^UC-\d{4}-\d{4}$/.test(ref)) return json({ ok: false, hata: "ref-gecersiz" });
     var sonuc = kayitGorselleriniCopeAt(klasorGetir(), ref);
+    // Kimlik PDF'ye de eklendiğinden rıza geri alındığında güncel arşiv PDF'i yenilenir.
+    var yenile = kayitDuzeltIsle({ parameter: { anahtar: e.parameter.anahtar, ref: ref, pdf: "1" } });
+    var yenileSonuc = JSON.parse(yenile.getContent());
+    if (!yenileSonuc.ok) return json({ ok: false, hata: "kimlik-pdf-temizlenemedi", silinen: sonuc.silinen });
     return json({ ok: true, ref: ref, silinen: sonuc.silinen, bulunamayan: sonuc.bulunamayan });
   } catch (hata) { return json({ ok: false, hata: "gorsel-sil-hatasi" }); }
 }
@@ -2657,6 +2674,7 @@ function kayitDuzeltIsle(e) {
     if (degisen.length || pdfIste) {
       var klasor = klasorGetir();
       var veri = v2SatirdanVeri(basliklar, satir);
+      kayitPdfGorselleriniEkle(veri, klasor, ref);
       var imzaPng = kayitImzaOku(klasor, ref);
       if (imzaPng) veri.imza = imzaPng;
       var z = iZaman >= 0 ? satir[iZaman] : "";
@@ -2728,6 +2746,7 @@ function arsivSaglikGizleIsle(e) {
     var ref = String(satir[iRef] || "").trim();
     try {
       var veri = v2SatirdanVeri(basliklar, satir);
+      kayitPdfGorselleriniEkle(veri, klasor, ref);
       var imzaPng = kayitImzaOku(klasor, ref);                    // v32: yeniden üretilen arşiv PDF'i çizilen imzayı kaybetmez
       if (imzaPng) veri.imza = imzaPng;
       var z = iZaman >= 0 ? satir[iZaman] : "";

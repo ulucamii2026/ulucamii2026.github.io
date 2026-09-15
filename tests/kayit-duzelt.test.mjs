@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v36.gs']
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v37.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 
 const ContentService = { createTextOutput: t => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } };
@@ -64,7 +64,7 @@ function sahteOrtam() {
     getLastRow: () => 2, getLastColumn: () => basliklar.length,
     getRange: (r, c, nr, nc) => (nr === undefined ? hucre(r, c) : { getValues: () => (r === 1 ? [basliklar] : [satir]) }),
   };
-  const klasor = { createFile: blob => { olusan.push(blob.getName()); return { getId: () => 'YENI_PDF_ID', getUrl: () => 'https://drive.google.com/file/d/YENI_PDF_ID/view' }; } };
+  const klasor = { getFilesByName: () => ({ hasNext: () => false }), createFile: blob => { olusan.push(blob.getName()); return { getId: () => 'YENI_PDF_ID', getUrl: () => 'https://drive.google.com/file/d/YENI_PDF_ID/view' }; } };
   const ctx = backend({
     SpreadsheetApp: { flush: () => {} },
     Utilities: { formatDate: (d, tz, bicim) => (bicim === 'yyyy-MM-dd' ? d.toISOString().slice(0, 10) : '13.09.2026 16:39'), newBlob: () => ({}) },
@@ -111,5 +111,5 @@ test('Sağlık ucu v33 ve kayitDuzelt bayrağını bildirir', () => {
   const c = backend();
   c.VELI_PORTAL_SURUM = 'test';
   const h = JSON.parse(c.doGet({ parameter: {} }).getContent());
-  assert.equal(h.surum, 36); assert.equal(h.kayitDuzelt, true); assert.equal(h.kayitImza, true);
+  assert.equal(h.surum, 37); assert.equal(h.kayitDuzelt, true); assert.equal(h.kayitImza, true);
 });

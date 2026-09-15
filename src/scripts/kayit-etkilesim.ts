@@ -92,9 +92,9 @@ export function kayitEtkilesiminiBaslat(form: HTMLFormElement, m: KayitV3Metinle
     for (const [ad, hata] of kimlikHatalari()) hatalar.set(ad, hata);
     const kimlikOn = form.querySelector<HTMLInputElement>('#k-kimlik-on')!;
     if (!kimlikOn.disabled) benzersiz.push(kimlikOn);
-    // 13 Eyl 2026 akşamı: çizilen imza (ya da «atamıyorum» kutusu) ilerlemede tek kalemdir; eksikse hatalar'da `imzaYok` vardır.
-    const imzaYok = form.querySelector<HTMLInputElement>('#k-imza-yok');
-    if (imzaYok) benzersiz.push(imzaYok);
+    // Çizilen imza ilerlemede zorunlu tek kalemdir; çizim verisi DOM'a yazılmaz.
+    const imzaKontrol = form.querySelector<HTMLInputElement>('#k-imza-kontrol');
+    if (imzaKontrol && !benzersiz.includes(imzaKontrol)) benzersiz.push(imzaKontrol);
     const gecerli = benzersiz.filter(a => !hatalar.has(a.name)).length;
     yuzde = benzersiz.length ? Math.round(gecerli / benzersiz.length * 100) : 0;
     if (hatalar.size && yuzde === 100) yuzde = 99;

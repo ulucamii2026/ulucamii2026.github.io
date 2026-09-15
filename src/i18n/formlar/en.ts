@@ -54,6 +54,7 @@ export const en: FormMetinleri = {
 
   kayit: {
     v3: {
+      imzaZorunlu: "To register, you must draw your signature in the area below.",
       tasarim: {
         nasil: 'How it works', doldur: 'Fill in your details', gonder: 'Review and submit', pdf: 'Receive your PDF by e-mail',
         guvence: 'Good to know', ucretsiz: 'Free course', sure: 'About 5 minutes', veri: 'Details used only for registration', iletisim: 'Need a hand?',
@@ -84,7 +85,7 @@ export const en: FormMetinleri = {
       "epostaGitmedi": "Registration received, but the PDF copy could not be sent. Please write to info@ulucamii.be.",
       "dilNot": "E-mails are sent in Turkish or French; choose the one you read best.",
       "kimlik": "Student’s identity document",
-      "amac": "The copy is kept only in the association’s Quran course registration file to verify the student’s name and date of birth. It is not shared with third parties.",
+      "amac": "To register, upload the front of the student’s identity document or the identity page of their passport. It is included in the registration PDF and used only for course registration.",
       "kabul": "Kids-ID, Belgian or Turkish identity card, passport or residence card.",
       "on": "Front",
       "arka": "Back (optional)",
@@ -116,7 +117,7 @@ export const en: FormMetinleri = {
       "sonradan": "Photos cannot be added through this form after submission; e-mail or WhatsApp is sufficient.",
       "konu": "{ref} identity document",
       "whatsappMetin": "Hello, I am sending the identity document photo for Quran course registration {ref} ({ad}).",
-      "gizlilik": "These details are used only for registration. No identity number is requested. An identity copy is collected according to your chosen method and explicit consent; the signature you draw is reproduced only on your enrolment certificate. To access, correct or delete your data, or withdraw consent, write to info@ulucamii.be.",
+      "gizlilik": "These details are used only for registration. The identity document and your drawn signature are required and included in your registration PDF. The identity copy is stored with your explicit consent. For access, correction, deletion or withdrawal of consent, contact info@ulucamii.be.",
       "cipler": {
         "ogrenci": "Student",
         "okul": "School",

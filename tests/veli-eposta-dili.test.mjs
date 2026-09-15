@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
-const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v36.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
+const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v37.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
 function backend(){const sent=[];const c=vm.createContext({console,PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});vm.runInContext(source,c);c.epostaGonder=m=>sent.push(m);c.mufredatEki=()=>null;return {c,sent};}
 for(const dil of ['tr','fr'])test(`Kayıt onayı yalnız seçilen iletişim dilinde: ${dil}`,()=>{
  const {c,sent}=backend();const blob={name:'test.pdf'};
@@ -27,6 +27,7 @@ test('Formun görüntüleme dili farklı olsa da veli iletişim dili kayıt onay
 const resim = 'data:image/jpeg;base64,' + Buffer.alloc(420, 7).toString('base64');
 function kayitVerisi(c, yol = 'yukle') {
  const v = c.ornekKayitVerisi('fr', false);
+ v.imza = resim.replace('jpeg', 'png'); v.imzaYok = false;
  v.formSurumu = 3; v.sir = c.AYAR2.ortakSir; v.gonderimAnahtari = 'test-kayit-anahtari-0001';
  v.ogrenci.ad = 'Deniz'; v.ogrenci.soyad = 'TESTOGLU';
  v.veli.cep = '+32470000000'; v.veli.eposta = 'veli@example.test'; v.acil = {};
@@ -39,7 +40,7 @@ function kayitOrtami() {
  const blob = (bytes, type = 'text/plain', name = 'test') => ({ getBytes: () => [...Buffer.from(bytes)], getContentType: () => type, getName: () => name });
  c.Utilities = { newBlob: blob, base64Decode: s => [...Buffer.from(s, 'base64')], base64Encode: b => Buffer.from(b).toString('base64'), formatDate: () => '13.09.2026 12:00' };
  const folder = {
-  createFile(b) { const f = { getName: () => b.getName(), getBlob: () => b, getSize: () => b.getBytes().length, getUrl: () => 'https://example.test/form.pdf', setTrashed: t => { f.trashed = t; } }; files.push(f); return f; },
+  createFile(b) { const f = { getName: () => b.getName(), getBlob: () => b, getSize: () => b.getBytes().length, isTrashed: () => !!f.trashed, getUrl: () => 'https://example.test/form.pdf', setTrashed: t => { f.trashed = t; } }; files.push(f); return f; },
   getFilesByName: name => iterator(files.filter(f => !f.trashed && f.getName() === name))
  };
  const sheet = { getLastRow: () => rows.length + 1, getLastColumn: () => c.BASLIKLAR2.length, getParent: () => ({ getUrl: () => 'https://example.test/defter' }),
@@ -56,17 +57,17 @@ function kayitOrtami() {
  return { c, sent, rows, files, folder, sheet, cache, blob };
 }
 
-test('v29: v2 kimliksiz kabul edilir, v3 yol ister; yalnız 2 ve 3 geçerlidir', () => {
+test('v37: v2 ve v3 istemcileri kimliksiz kayıt olamaz', () => {
  const { c } = backend(), v = kayitVerisi(c);
  assert.equal(c.kayitDogrulaV2(v).tamam, true);
  for (const formSurumu of [undefined, 1, 4, '3']) assert.equal(c.kayitDogrulaV2({ ...v, formSurumu }).kod, 'form-surumu-gecersiz');
  delete v.kimlik; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlik-yol-gecersiz');
- v.formSurumu = 2; assert.equal(c.kayitDogrulaV2(v).tamam, true); assert.equal(c.kayitKimlikOzeti(v.kimlik), '');
+ v.formSurumu = 2; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlik-yol-gecersiz'); assert.equal(c.kayitKimlikOzeti(v.kimlik), '');
 });
 
 test('v29: dijital yollarda gerçek boolean rıza, yüklemede ön yüz ve 1,5 MiB sınırı', () => {
  const { c } = backend();
- for (const yol of ['yukle', 'eposta', 'whatsapp']) for (const riza of [false, undefined, 'true']) {
+ for (const yol of ['yukle']) for (const riza of [false, undefined, 'true']) {
   const v = kayitVerisi(c, yol); v.onay.kimlikRiza = riza; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlikRiza');
  }
  const v = kayitVerisi(c); v.kimlik.on = ''; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlik-on-gecersiz');
@@ -75,7 +76,7 @@ test('v29: dijital yollarda gerçek boolean rıza, yüklemede ön yüz ve 1,5 Mi
  v.kimlik.on = 'data:image/jpeg;base64,' + Buffer.alloc(1.5 * 1024 * 1024).toString('base64');
  assert.equal(c.kayitDogrulaV2(v).tamam, true); v.kimlik.on += 'AAAA'; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlik-on-gecersiz');
  v.kimlik.on = resim; v.kimlik.arka = 'bozuk'; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlik-arka-gecersiz');
- v.kimlik.yol = 'elden'; v.onay.kimlikRiza = false; assert.equal(c.kayitDogrulaV2(v).tamam, true);
+ v.kimlik.yol = 'elden'; v.onay.kimlikRiza = false; assert.equal(c.kayitDogrulaV2(v).kod, 'kimlik-yol-gecersiz');
 });
 
 test('v29: yaş 4–18, posta kodu, şehir ve e-posta son eki doğrulanır', () => {
@@ -95,7 +96,7 @@ test('v29: kayıt JSON sınırı UTF-8 baytlarıyla 4 MiB; görselsiz diğer uç
  assert.equal(post({ tur: 'bilinmeyen', dolgu: 'A'.repeat(30000) }).hata, 'cok-buyuk');
 });
 
-test('v29: görsel yalnız Drive’da; PDF ve posta eklerinde ham resim yok; tekrar kopya sonucunu korur', () => {
+test('v37: kimlik PDF içinde, posta yalnız PDF eki taşır; tekrar kopya sonucunu korur', () => {
  const { c, rows, files, sent, cache } = kayitOrtami(), v = kayitVerisi(c); v.kimlik.arka = resim;
  const ilk = c.kayitPostIsleV2(v); assert.equal(ilk.ok, true); assert.equal(ilk.kopyaGitti, true);
  assert.equal(rows.length, 1); assert.equal(rows[0].at(-1), 'yüklendi (ön+arka)');
@@ -104,14 +105,14 @@ test('v29: görsel yalnız Drive’da; PDF ve posta eklerinde ham resim yok; tek
  for (const mail of sent) { assert.doesNotMatch(mail.body, /data:image/); assert.equal(mail.attachments.length, 1); assert.equal(mail.attachments[0].getContentType(), 'application/pdf'); }
  assert.match(sent[0].body, /Kimlik belgesi: yüklendi \(ön\+arka\)/);
  assert.equal(c.kayitPostIsleV2(v).tekrar, true); assert.equal(sent.length, 2);
- cache.clear(); const tekrar = c.kayitPostIsleV2(v); assert.equal(tekrar.kopyaGitti, true); assert.equal(rows.length, 1); assert.equal(files.length, 3); assert.equal(sent.length, 2);
- const html = c.pdfHtmlKayit(v, { ref: ilk.ref, zaman: '', dil: 'fr' }); assert.ok(!html.includes(resim)); assert.doesNotMatch(html, /kimlik-on\.jpg|kimlik-arka\.jpg/);
+ cache.clear(); const tekrar = c.kayitPostIsleV2(v); assert.equal(tekrar.kopyaGitti, true); assert.equal(rows.length, 1); assert.equal(files.length, 4); assert.equal(sent.length, 2);
+ const html = c.pdfHtmlKayit(v, { ref: ilk.ref, zaman: '', dil: 'fr' }); assert.ok(html.includes(resim)); assert.doesNotMatch(html, /kimlik-on\.jpg|kimlik-arka\.jpg/);
 });
 
-test('v29: elden/e-posta/WhatsApp görselleri yok sayılır, sabit durumlar yazılır', () => {
+test('v37: elden/e-posta/WhatsApp yeni kayıt yolu olamaz', () => {
  for (const [yol, durum] of [['elden', 'elden gösterilecek'], ['eposta', 'e-posta ile gelecek'], ['whatsapp', 'WhatsApp ile gelecek']]) {
   const { c, rows, files } = kayitOrtami(), v = kayitVerisi(c, yol); v.kimlik.arka = resim;
-  assert.equal(c.kayitPostIsleV2(v).ok, true); assert.equal(rows[0].at(-1), durum); assert.equal(files.length, 1);
+  assert.equal(c.kayitPostIsleV2(v).ok, false); assert.equal(rows.length, 0); assert.equal(files.length, 0);
  }
 });
 
@@ -155,7 +156,7 @@ test('v29: yetkisiz/bozuk referanslı yeni uçlar Drive’a erişemez', () => {
   assert.equal(c.doGet({ parameter: { islem, ref: 'UC-2099-0001' } }).hata, 'yetki');
   for (const ref of ['IH-2099-0001', 'UC-2099-0001x', ' UC-2099-0001', 'UC-2099-0001\n', '../UC-2099-0001']) assert.equal(c.doGet({ parameter: { islem, ref, anahtar: c.PANEL.anahtar } }).hata, 'ref-gecersiz');
  }
- c.VELI_PORTAL_SURUM = 'test'; assert.equal(c.doGet({}).kayitKimlik, true); assert.equal(c.doGet({}).surum, 36);
+ c.VELI_PORTAL_SURUM = 'test'; assert.equal(c.doGet({}).kayitKimlik, true); assert.equal(c.doGet({}).surum, 37);
 });
 
 test('v29: belge okuma MIME ve toplam yanıt sınırı uygular, okunamayanları açık döner', () => {
@@ -174,7 +175,9 @@ test('v29: silme tam adla sınırlıdır, farklı referans/defter/PDF ve benzer 
  const { c, folder, files, blob } = kayitOrtami();
  for (const ad of ['UC-2099-0001 - kimlik-on.jpg', 'UC-2099-0001 - kimlik-arka.jpg', 'UC-2099-0002 - kimlik-on.jpg', 'UC-2099-0001 - kimlik-on.jpg.yedek', 'Kayıt defteri', 'UC-2099-0001.pdf']) folder.createFile(blob('TEST', 'image/jpeg', ad));
  folder.getFilesByName = () => { let i = 0; return { hasNext: () => i < files.length, next: () => files[i++] }; };
+ let yenilendi = false; c.kayitDuzeltIsle = e => { yenilendi = e.parameter.pdf === '1' && e.parameter.ref === 'UC-2099-0001'; return { getContent: () => JSON.stringify({ ok: true }) }; };
  const sonuc = c.kayitGorselSilIsle({ parameter: { anahtar: c.PANEL.anahtar, ref: 'UC-2099-0001' } });
+ assert.equal(yenilendi, true);
  assert.equal(sonuc.ok, true); assert.equal(sonuc.silinen.length, 2); assert.deepEqual(files.map(f => !!f.trashed), [true, true, false, false, false, false]);
 });
 
@@ -182,7 +185,7 @@ test('v29: test temizliği yalnız eşleşen test satırının iki kimliğini ç
  const { c, rows, files, sheet, folder } = kayitOrtami(), v = kayitVerisi(c); v.kimlik.arka = resim;
  c.kayitPostIsleV2(v); const normal = [...rows[0]]; normal[1] = 'UC-2026-0002'; normal[2] = 'ÖRNEK'; rows.push(normal);
  c.driveIdCikar = () => ''; assert.equal(c.testTemizleSayfa(sheet, folder, ['Öğrenci soyadı', 'Öğrenci adı']), 1);
- assert.equal(rows.length, 1); assert.equal(rows[0][2], 'ÖRNEK'); assert.equal(files.filter(f => f.trashed).length, 2);
+ assert.equal(rows.length, 1); assert.equal(rows[0][2], 'ÖRNEK'); assert.equal(files.filter(f => f.trashed).length, 3);
 });
 
 test('v29 C: kimlik paragrafı ve WhatsApp mesajı da veli iletişim dilinde kalır', () => {
@@ -218,7 +221,7 @@ test('v29 C: yalnız TESTOGLU sözcüğü ve geçerli referans test temizliğine
 });
 
 test('v29 C: Sheets formül önekleri ve HTML metni çalıştırılmadan saklanır/gösterilir', () => {
- const { c, rows, sent } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+ const { c, rows, sent } = kayitOrtami(), v = kayitVerisi(c);
  v.ogrenci.ad = '<img src=x onerror=alert(1)>';
  v.veli.adres = '=HYPERLINK("https://example.test")'; v.veli.sehir = '@SUM(1)';
  v.acil = { adSoyad: '-2+3', cep: '+32470000001' };
@@ -229,7 +232,7 @@ test('v29 C: Sheets formül önekleri ve HTML metni çalıştırılmadan saklan�
 });
 
 test('v29 C: önbellek kesintisi mevcut kaydı çoğaltmaz ve gönderilmiş kopyayı yanlış bildirmez', () => {
- const { c, rows, cache } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+ const { c, rows, cache } = kayitOrtami(), v = kayitVerisi(c);
  const ilk = c.kayitPostIsleV2(v); assert.equal(ilk.kopyaGitti, true);
  cache.set('kayit2:' + v.gonderimAnahtari, JSON.stringify({ ref: ilk.ref, kopyaGitti: false }));
  assert.equal(c.kayitPostIsleV2(v).kopyaGitti, true);
@@ -238,7 +241,7 @@ test('v29 C: önbellek kesintisi mevcut kaydı çoğaltmaz ve gönderilmiş kopy
 });
 
 test('v29 C: ilk isteğin e-postası sürerken tekrar yanlış başarı/kopya sonucu vermez', () => {
- const { c, rows, sent } = kayitOrtami(), v = kayitVerisi(c, 'elden'); let bekleyen;
+ const { c, rows, sent } = kayitOrtami(), v = kayitVerisi(c); let bekleyen;
  c.epostaGonder = m => { sent.push(m); if (!bekleyen) bekleyen = c.kayitPostIsleV2(v); };
  const ilk = c.kayitPostIsleV2(v);
  assert.equal(bekleyen.ok, false); assert.equal(bekleyen.hata, 'kayit-isleniyor');
@@ -249,7 +252,7 @@ test('v29 C: ilk isteğin e-postası sürerken tekrar yanlış başarı/kopya so
 });
 
 test('v29 C: yarım kalan eski kopya işlemi tekrar kaydı kilitlemez veya çoğaltmaz', () => {
- const { c, rows, cache, sent } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+ const { c, rows, cache, sent } = kayitOrtami(), v = kayitVerisi(c);
  c.kayitPostIsleV2(v); rows[0][0] = new Date(Date.now() - 11 * 60 * 1000);
  rows[0][25] = 'Yeni kayıt | veli-kopyasi-bekleniyor'; cache.clear();
  const tekrar = c.kayitPostIsleV2(v);
@@ -259,7 +262,7 @@ test('v29 C: yarım kalan eski kopya işlemi tekrar kaydı kilitlemez veya çoğ
 
 test('v29 C: test satırının PDF hücresi deftere yönelse de yalnız tam adlı PDF silinir', () => {
  for (const dogruAd of [false, true]) {
-  const { c, sheet, folder } = kayitOrtami(), v = kayitVerisi(c, 'elden');
+  const { c, sheet, folder } = kayitOrtami(), v = kayitVerisi(c);
   const sonuc = c.kayitPostIsleV2(v); let silindi = false;
   c.driveIdCikar = () => 'sentetik-dosya-id';
   c.DriveApp = { getFileById: () => ({ getName: () => dogruAd ? sonuc.ref + ' - Deniz TESTOGLU.pdf' : 'Kayıt defteri', setTrashed: () => { silindi = true; } }) };

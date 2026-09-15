@@ -55,6 +55,7 @@ export const fr: FormMetinleri = {
 
   kayit: {
     v3: {
+      imzaZorunlu: "Pour vous inscrire, vous devez tracer votre signature dans la zone ci-dessous.",
       tasarim: {
         nasil: 'Comment ça marche ?', doldur: 'Remplissez les informations', gonder: 'Vérifiez et envoyez', pdf: 'Recevez votre document PDF par e-mail',
         guvence: 'En toute confiance', ucretsiz: 'Cours gratuit', sure: 'Environ 5 minutes', veri: 'Données réservées à l’inscription', iletisim: 'Besoin d’aide ?',
@@ -85,7 +86,7 @@ export const fr: FormMetinleri = {
       "epostaGitmedi": "L’inscription est reçue, mais la copie PDF n’a pas pu être envoyée. Écrivez à info@ulucamii.be.",
       "dilNot": "Les e-mails sont envoyés en turc ou en français ; choisissez la langue que vous lisez le mieux.",
       "kimlik": "Document d’identité de l’élève",
-      "amac": "La copie est conservée uniquement dans le dossier d’inscription au cours de Coran de l’association, pour vérifier le nom et la date de naissance de l’élève. Elle n’est pas transmise à des tiers.",
+      "amac": "Pour vous inscrire, téléversez le recto de la pièce d’identité de l’élève ou la page d’identité de son passeport. Le document est joint au PDF d’inscription et utilisé uniquement pour le cours.",
       "kabul": "Kids-ID, carte d’identité belge ou turque, passeport ou titre de séjour.",
       "on": "Recto",
       "arka": "Verso (facultatif)",
@@ -117,7 +118,7 @@ export const fr: FormMetinleri = {
       "sonradan": "Ce formulaire ne permet pas d’ajouter une photo après l’envoi ; un e-mail ou WhatsApp suffit.",
       "konu": "{ref} document d’identité",
       "whatsappMetin": "Bonjour, j’envoie la photo du document d’identité pour l’inscription au cours de Coran {ref} ({ad}).",
-      "gizlilik": "Ces informations sont utilisées uniquement pour l’inscription. Aucun numéro d’identité n’est demandé. La copie du document dépend du mode choisi et de votre consentement explicite ; la signature tracée n’est reproduite que sur votre attestation d’inscription. Pour accéder aux données, les corriger, les supprimer ou retirer votre consentement : info@ulucamii.be.",
+      "gizlilik": "Ces informations servent uniquement à l’inscription. La pièce d’identité et votre signature tracée sont obligatoires et jointes à votre PDF d’inscription. La copie d’identité est conservée avec votre consentement explicite. Pour accéder aux données, les corriger, les supprimer ou retirer votre consentement : info@ulucamii.be.",
       "cipler": {
         "ogrenci": "Élève",
         "okul": "École",

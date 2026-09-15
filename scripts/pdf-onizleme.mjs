@@ -1,4 +1,4 @@
-// pdf-onizleme.mjs — Node'da ulucamii-Kod-v36.gs içindeki SAF PDF şablon
+// pdf-onizleme.mjs — Node'da ulucamii-Kod-v37.gs içindeki SAF PDF şablon
 // fonksiyonlarını (pdfHtmlKayit, pdfHtmlIhtida) çalıştırıp örnek HTML çıktısı üretir.
 //
 // Yöntem: .gs dosyasının TAMAMI `new Function(...)` ile bir fonksiyon gövdesi olarak
@@ -17,7 +17,7 @@ import path from "node:path";
 import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v36.gs");
+const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v37.gs");
 // Çıktı klasörü: CIKTI ortam değişkeni ya da D:\tmp\pdf-onizleme (13 Eyl 2026'ya kadar eski bir scratchpad yoluydu).
 const CIKTI_KLASORU = process.env.CIKTI || "D:\\tmp\\pdf-onizleme";
 mkdirSync(CIKTI_KLASORU, { recursive: true });
@@ -102,7 +102,7 @@ const ornekKayit = {
     yakinlik: "baba",
     adSoyad: "İbrahim Şahin-Öztürk",
     cep: "+32470123456",
-    eposta: "ibrahim.ornek@example.com",
+    eposta: "ibrahim.ornek@example.test",
     adres: "Rue de la Gare 5",
     postaKodu: "6900",
     sehir: "Marche-en-Famenne",
@@ -142,7 +142,7 @@ const ornekIhtida = {
     oncekiDin: "Katolik",
     ihtidaSebebi: "Uzun süredir İslam'ı araştırıyorum; Kur'an okumaya başladıktan sonra kalben karar verdim.",
     yeniIsim: "Meryem",
-    eposta: "camille.ornek@example.com",
+    eposta: "camille.ornek@example.test",
     telefon: "+32498112233",
     adres: "Avenue Reine Astrid 21, 6900 Marche-en-Famenne",
     torenDili: "fr",
@@ -163,7 +163,7 @@ const metaIhtida = { ref: "IH-2026-0007", zaman: "30.08.2026 19:05", dil: "fr" }
 
 const htmlKayit = modul.pdfHtmlKayit(ornekKayit, metaKayit);
 const htmlIhtida = modul.pdfHtmlIhtida(ornekIhtida, metaIhtida);
-// v33: aynı kaydın «ekranda imza atamıyorum» hâli — imza alanında el yazısı ad + kursta kalemle imzalar notu.
+// Eski imzasız kaydın yeniden üretimi: ad imza yerine yazılmaz, alan boş bırakılır.
 const htmlKayitImzasiz = modul.pdfHtmlKayit({ ...ornekKayit, imza: "", imzaYok: true }, metaKayit);
 
 for (const [ad, html] of [["kayıt", htmlKayit], ["kayıt-imzasız", htmlKayitImzasiz], ["ihtida", htmlIhtida]]) {
@@ -185,7 +185,7 @@ writeFileSync(kayitImzasizYolu, htmlKayitImzasiz, "utf8");
 writeFileSync(ihtidaYolu, htmlIhtida, "utf8");
 
 console.log("kayıt imza görseli var mı   :", htmlKayit.includes('class="imza-gorsel" src="data:image/png;base64,'));
-console.log("imzasız hâlde el yazısı ad  :", !htmlKayitImzasiz.includes('class="imza-gorsel"') && htmlKayitImzasiz.includes("kalemle imzalayaca"));
+console.log("eski kayıtta boş imza alanı:", !htmlKayitImzasiz.includes('class="imza-gorsel"') && htmlKayitImzasiz.includes("çizilmiş veli imzası kayıtlı değildir"));
 console.log("kayıt HTML uzunluğu :", htmlKayit.length, "→", kayitYolu, "|", kayitImzasizYolu);
 console.log("ihtida HTML uzunluğu:", htmlIhtida.length, "→", ihtidaYolu);
 console.log("Türkçe karakter sınaması (kayıt) :", htmlKayit.includes("Şahin-Öztürk") && htmlKayit.includes("İbrahim"));

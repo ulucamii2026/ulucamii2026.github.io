@@ -72,3 +72,7 @@ arşivinde tutulur. Bu dosyaya kişi bilgisi, anahtar veya özel belge içeriği
 
 Dayanak: [OpenAI çalışma önerileri](https://learn.chatgpt.com/guides/best-practices),
 [AGENTS.md yönergeleri](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
+
+## Kayıt belgeleri
+
+15 Eylül 2026: [Zorunlu veli imzası ve öğrenci kimliği](KAYIT-ZORUNLU-BELGELER.md). Çevrim içi kayıt bu iki belge olmadan tamamlanmaz; kimlik kayıt PDF’sine eklenir. Eski eksik kayıtlara imza üretilmez.

@@ -57,6 +57,7 @@ export interface OrtakMetinler {
 }
 
 export interface KayitV3Metinler {
+  imzaZorunlu: string;
   tasarim: {
     nasil: string; doldur: string; gonder: string; pdf: string;
     guvence: string; ucretsiz: string; sure: string; veri: string; iletisim: string;

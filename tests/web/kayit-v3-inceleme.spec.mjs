@@ -34,13 +34,19 @@ async function doldur(p) {
   await p.locator('#k-kurallar-kutu').evaluate(e => { e.scrollTop = e.scrollHeight; e.dispatchEvent(new Event('scroll')); });
   await p.locator('#k-onay-kurallar').check();
   await p.locator('#k-onay-gizlilik').check();
-  // 13 Eylül imza akışı: metin imzasına ek olarak çizim veya elden imza tercihi gerekir.
-  await p.locator('#k-imza-yok').check();
+  await imzala(p);
 }
-async function yol(p, deger) {
-  await p.locator('#k-kimlik-sonra').check();
-  await p.locator(`#k-kimlik-${deger}`).check();
-  if (deger !== 'elden') await p.locator('#k-kimlik-riza').check();
+async function imzala(p) {
+  const canvas = p.locator('[data-imza] canvas');
+  await canvas.scrollIntoViewIfNeeded();
+  const r = await canvas.boundingBox();
+  await p.mouse.move(r.x + 20, r.y + 45); await p.mouse.down();
+  for (let i = 1; i <= 24; i++) await p.mouse.move(r.x + 20 + i * 6, r.y + 45 + Math.sin(i / 2) * 18);
+  await p.mouse.up();
+}
+async function belgeleriTamamla(p) {
+  await resim(p);
+  await p.locator('#k-kimlik-riza').check();
 }
 async function resim(p, yan = 'on', name = 'sentetik.png') {
   await p.locator(`#k-g-kimlik-${yan}`).setInputFiles(dosya(name));
@@ -58,8 +64,8 @@ test('Bozuk taslak tarihi veya alan şeması formun açılışını durdurmaz', 
     await ac(page);
     await page.evaluate(([key, value]) => localStorage.setItem(key, JSON.stringify(value)), [taslakAnahtari, taslak]);
     await page.reload();
-    await page.locator('#k-kimlik-sonra').check();
-    await expect(page.locator('#k-kimlik-elden')).toBeVisible();
+    await expect(page.locator('[data-kimlik-yukleme]')).toBeVisible();
+    await expect(page.locator('#k-kimlik-sonra')).toHaveCount(0);
     await form(page).locator('[type=submit]').click();
     await expect(page.locator('#k-ad')).toHaveAttribute('aria-invalid', 'true');
   }
@@ -68,7 +74,7 @@ test('Bozuk taslak tarihi veya alan şeması formun açılışını durdurmaz', 
 test('Koşullu okul/sağlık/kimlik eksikleri ve kaydırma kilidi yüzdeyle tutarlıdır', async ({ page }) => {
   await ac(page);
   await expect(page.locator('#k-onay-kurallar')).toBeDisabled();
-  await doldur(page); await yol(page, 'elden');
+  await doldur(page); await belgeleriTamamla(page);
   await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
   for (const [secim, alan, bolum, deger] of [
     ['okul', 'okul-diger', 'okul', 'École Exemple'],
@@ -83,7 +89,7 @@ test('Koşullu okul/sağlık/kimlik eksikleri ve kaydırma kilidi yüzdeyle tuta
     await expect(page.locator(`#b-${bolum}`)).toHaveAttribute('data-durum', 'tamam');
     await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
   }
-  await page.locator('#k-kimlik-whatsapp').check();
+  await page.locator('#k-kimlik-riza').uncheck();
   await expect(cubuk(page)).not.toHaveAttribute('aria-valuenow', '100');
   await page.locator('#k-kimlik-riza').check();
   await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
@@ -97,48 +103,38 @@ test('Koşullu okul/sağlık/kimlik eksikleri ve kaydırma kilidi yüzdeyle tuta
   await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
 });
 
-test('Görsel işlemi geç bitse bile Sonra geçişinden sonra geri gelmez; rıza ve taslak sıfırlanır', async ({ page }) => {
-  await page.addInitScript(() => {
-    const ac = window.createImageBitmap.bind(window);
-    window.createImageBitmap = async (...args) => {
-      const bitmap = await ac(...args);
-      if (args[0].name === 'bekle.png') await new Promise(r => { window.gorseliBirak = r; });
-      return bitmap;
-    };
-  });
-  await ac(page); await resim(page); await resim(page, 'arka');
-  await page.locator('#k-kimlik-riza').check();
-  await page.locator('#k-g-kimlik-on').setInputFiles(dosya('bekle.png'));
-  await expect.poll(() => page.evaluate(() => !!window.gorseliBirak)).toBe(true);
-  await yol(page, 'elden');
-  await page.evaluate(() => window.gorseliBirak());
-  await page.locator('#k-kimlik-simdi').check();
-  await expect(page.locator('[data-gorsel="kimlikOn"]')).toHaveAttribute('data-dolu', '');
-  await expect(page.locator('[data-gorsel="kimlikArka"]')).toHaveAttribute('data-dolu', '');
-  await expect(page.locator('#k-kimlik-riza')).not.toBeChecked();
-  await yol(page, 'whatsapp');
-  await page.waitForTimeout(450); await page.reload();
-  await expect(page.locator('#k-kimlik-whatsapp')).toBeChecked();
-  await expect(page.locator('#k-kimlik-riza')).not.toBeChecked();
-  const ham = await page.evaluate(k => localStorage.getItem(k), taslakAnahtari);
-  expect(ham).not.toMatch(/data:image|blob:|onay\.|saglik\.not/);
+test('İmza ve kimlik olmadan gönderim engellenir; çizim, belge ve rıza tamamlanınca kabul edilir', async ({ page }) => {
+  const gelen = []; await sahte(page, gelen); await ac(page); await doldur(page);
+  await page.locator('[data-imza-temizle]').click();
+  await form(page).locator('[type=submit]').click();
+  expect(gelen).toHaveLength(0);
+  await expect(page.locator('[data-imza] .hata')).toBeVisible();
+  await expect(page.locator('#k-kimlik-on')).toHaveAttribute('aria-invalid', 'true');
+  await imzala(page);
+  await form(page).locator('[type=submit]').click();
+  expect(gelen).toHaveLength(0);
+  await belgeleriTamamla(page);
+  await form(page).locator('[type=submit]').click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  expect(gelen).toHaveLength(1);
+  expect(gelen[0].imza).toMatch(/^data:image\/png;base64,/);
+  expect(gelen[0].imzaYok).toBe(false);
+  expect(gelen[0].kimlik.yol).toBe('yukle');
+  expect(gelen[0].kimlik.on).toMatch(/^data:image\//);
+  expect(gelen[0].onay.kimlikRiza).toBe(true);
+  await expect(page.locator('[data-kimlik-sonradan]')).toBeHidden();
 });
 
-test('Gönderim sırasında yol değişse bile başarı gönderilen yolu anlatır', async ({ page }) => {
-  let bitir, govde;
-  const bekle = new Promise(r => { bitir = r; });
-  await page.route('**/macros/**', async r => {
-    govde = r.request().postDataJSON(); await bekle;
-    await r.fulfill({ json: { ok: true, ref: 'UC-2099-0001', kopyaGitti: true } });
-  });
-  await ac(page); await doldur(page); await yol(page, 'whatsapp');
-  await form(page).evaluate(f => { f.requestSubmit(); f.requestSubmit(); });
-  await expect.poll(() => govde?.kimlik.yol).toBe('whatsapp');
-  await page.locator('#k-kimlik-simdi').check();
-  bitir();
-  await expect(page.locator('[data-basari]')).toBeVisible();
-  await expect(page.locator('[data-kimlik-baglanti]')).toHaveAttribute('href', /^https:\/\/wa\.me\//);
-  await expect(page.locator('[data-kimlik-sonradan]')).toBeVisible();
+test('Yeni forma eski sonra/elden ve imzasız taslağı taşınsa da zorunluluk kalkmaz', async ({ page }) => {
+  await ac(page); await doldur(page); await belgeleriTamamla(page);
+  await page.waitForTimeout(450); await page.reload();
+  await expect(page.locator('#k-imza-yok')).toHaveCount(0);
+  await expect(page.locator('#k-kimlik-sonra')).toHaveCount(0);
+  await expect(page.locator('#k-kimlik-riza')).not.toBeChecked();
+  await expect(page.locator('[data-gorsel="kimlikOn"]')).not.toHaveAttribute('data-dolu', '1');
+  await form(page).locator('[type=submit]').click();
+  await expect(page.locator('[data-imza] .hata')).toBeVisible();
+  expect(await page.evaluate(k => localStorage.getItem(k), taslakAnahtari)).not.toMatch(/data:image|blob:/);
 });
 
 test('60 saniye zaman aşımı, çift gönderim kilidi ve tekrarın kopya sonucu', async ({ page }) => {
@@ -150,7 +146,7 @@ test('60 saniye zaman aşımı, çift gönderim kilidi ve tekrarın kopya sonucu
     if (gelen.length === 2) return r.fulfill({ json: { ok: false, hata: 'kayit-isleniyor' } });
     return r.fulfill({ json: { ok: true, ref: 'UC-2099-0001', tekrar: true, kopyaGitti: false } });
   });
-  await ac(page); await doldur(page); await yol(page, 'elden');
+  await ac(page); await doldur(page); await belgeleriTamamla(page);
   await form(page).evaluate(f => { f.requestSubmit(); f.requestSubmit(); });
   await expect.poll(() => gelen.length).toBe(1);
   // 13 Eyl 2026: zaman aşımı ya da «kayit-isleniyor» sonrası istemci aynı anahtarla kendiliğinden
@@ -172,7 +168,7 @@ test('60 saniye zaman aşımı, çift gönderim kilidi ve tekrarın kopya sonucu
 test('Depolama engelliyken ağ hatası kayıtlı taslak vaadinde bulunmaz', async ({ page }) => {
   await page.addInitScript(() => { Storage.prototype.setItem = () => { throw new DOMException('Engelli', 'QuotaExceededError'); }; });
   await page.route('**/macros/**', r => r.abort());
-  await ac(page); await doldur(page); await yol(page, 'elden');
+  await ac(page); await doldur(page); await belgeleriTamamla(page);
   await form(page).locator('[type=submit]').click();
   await expect(page.locator('[data-mesaj]')).toContainText('taslağı kaydedemedi');
   await expect(page.locator('[data-mesaj]')).not.toContainText('Taslağınız kayıtlı');
@@ -201,17 +197,17 @@ test('Veli provası: mobil taslak, hata, fotoğraf, başarı, kardeş ve ikinci 
   await expect(page.locator('#k-ad')).toBeFocused();
   for (const id of ['ad', 'soyad', 'dogum', 'saglik-not', 'imza']) await expect(page.locator(`#k-${id}`)).toHaveValue('');
   await expect(page.locator('#k-veli-eposta')).toHaveValue('veli@example.test');
-  await expect(page.locator('#k-kimlik-simdi')).toBeChecked();
+  await expect(page.locator('[data-kimlik-yukleme]')).toBeVisible();
   await expect(page.locator('#k-kimlik-riza')).not.toBeChecked();
   await expect(page.locator('[data-gorsel="kimlikOn"]')).toHaveAttribute('data-dolu', '');
   await ekran(page, '06-kardes');
-  await doldur(page); await page.locator('#k-ad').fill('Ekin'); await yol(page, 'elden');
+  await doldur(page); await page.locator('#k-ad').fill('Ekin'); await belgeleriTamamla(page);
   await form(page).locator('[type=submit]').click(); await expect(page.locator('[data-basari]')).toBeVisible();
   await ekran(page, '07-ikinci-basari');
   expect(gelen).toHaveLength(2); expect(gelen[0].gonderimAnahtari).not.toBe(gelen[1].gonderimAnahtari);
   expect(gelen[0].kimlik.on).toMatch(/^data:image\/jpeg;base64,/);
-  expect(gelen[1].kimlik).toEqual({ yol: 'elden', on: '', arka: '' });
-  expect(gelen[1].onay.kimlikRiza).toBe(false);
+  expect(gelen[1].kimlik.yol).toBe('yukle'); expect(gelen[1].kimlik.on).toMatch(/^data:image\//);
+  expect(gelen[1].onay.kimlikRiza).toBe(true);
 });
 
 for (const dil of ['tr', 'fr', 'en']) test(`${dil}: main axe, iki tema, 360 px ve 200 yüzde yeniden akış`, async ({ page }) => {
@@ -229,17 +225,17 @@ for (const dil of ['tr', 'fr', 'en']) test(`${dil}: main axe, iki tema, 360 px v
   // 1280 fiziksel piksel / 200% yakınlaştırma = 640 CSS piksel yeniden akış.
   await page.setViewportSize({ width: 640, height: 450 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator('#k-kimlik-simdi').focus();
-  await page.keyboard.press('ArrowRight');
-  await expect(page.locator('#k-kimlik-sonra')).toBeChecked();
-  await page.keyboard.press('Tab'); await page.keyboard.press('ArrowDown');
-  await expect(page.locator('#k-kimlik-whatsapp')).toBeChecked();
+  await page.locator('#k-g-kimlik-on').focus();
+  await expect(page.locator('#k-g-kimlik-on')).toBeFocused();
+  await expect(page.locator('#k-kimlik-sonra')).toHaveCount(0);
+  await page.keyboard.press('Tab');
+  await expect(page.locator('#k-kimlik-whatsapp')).toHaveCount(0);
   await ekran(page, `${dil}-200-yuzde`);
   expect(await form(page).evaluate(f => f.getAnimations({ subtree: true }).length)).toBe(0);
   await expect(page.locator('#k-ilerleme [aria-current]')).toHaveCount(1);
 });
 
-test('Klavye ile tüm kayıt: Tab, radyolar, dosya seçici, kurallar, kopya ve kardeş', async ({ page, context }) => {
+test('İmza çizimi ve diğer alanlarda klavye ile kayıt: Tab, radyolar, dosya seçici, kurallar, kopya ve kardeş', async ({ page, context }) => {
   test.setTimeout(90_000);
   await page.setViewportSize({ width: 390, height: 844 });
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: kok });
@@ -277,9 +273,8 @@ test('Klavye ile tüm kayıt: Tab, radyolar, dosya seçici, kurallar, kopya ve k
   await tab('#k-onay-kurallar'); await page.keyboard.press('Space');
   await tab('#k-onay-gizlilik'); await page.keyboard.press('Space');
   await yaz('imza', 'Deniz Test');
-  await tab('#k-imza-yok'); await page.keyboard.press('Space');
-  await tab('#k-kimlik-simdi');
-  await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowLeft');
+  await imzala(page);
+  await page.locator('[data-imza-temizle]').focus();
   await tab('#k-g-kimlik-on');
   const secici = page.waitForEvent('filechooser'); await page.keyboard.press('Enter');
   await (await secici).setFiles(dosya('klavye.png'));
@@ -313,7 +308,7 @@ test('Sayfadan hemen ayrılınca son harf kaybolmaz; Temizle boş taslak üretme
 });
 
 test('Hızlı yazı sırasında ilerleme hesapları birleştirilir; canlı yaş metni tekrarlanmaz', async ({ page }) => {
-  await ac(page); await doldur(page); await yol(page, 'elden');
+  await ac(page); await doldur(page); await belgeleriTamamla(page);
   await expect(cubuk(page)).toHaveAttribute('aria-valuenow', '100');
   const sonuc = await page.evaluate(async () => {
     const alan = document.querySelector('#k-ad'), cubuk = document.querySelector('[role=progressbar]');
@@ -383,7 +378,7 @@ test('Tasarım D: sürükle-bırak, kart önizlemesi, alternatifler, bilet ve bo
   };
   for (const genislik of [390, 1280]) {
     await page.setViewportSize({ width: genislik, height: 900 });
-    await page.locator('#k-kimlik-simdi').focus();
+    await page.locator('#k-g-kimlik-on').focus();
     await kaydet('#b-kimlik', `kimlik-yakin-${genislik}`);
   }
   const kutu = page.locator('[data-gorsel="kimlikOn"] .g-kutu');
@@ -398,11 +393,9 @@ test('Tasarım D: sürükle-bırak, kart önizlemesi, alternatifler, bilet ve bo
   expect(await form(page).evaluate(f => f.outerHTML.includes('data:image'))).toBe(false);
   await expect(page.locator('#k-kimlik-on-durum')).toContainText('Alındı');
   await kaydet('#b-kimlik', 'kimlik-yuklendi-1280');
-  await page.locator('#k-kimlik-sonra').check();
-  await page.locator('#k-kimlik-whatsapp').check();
-  await kaydet('#b-kimlik', 'kimlik-sonra-1280');
+  await page.locator('[data-gorsel="kimlikOn"] [data-kaldir]').click();
+  await kaydet('#b-kimlik', 'kimlik-kaldirildi-1280');
   await expect(page.locator('[data-gorsel="kimlikOn"]')).not.toHaveAttribute('data-dolu', '1');
-  await page.locator('#k-kimlik-simdi').check();
   await doldur(page); await resim(page); await page.locator('#k-kimlik-riza').check();
   await form(page).locator('[type=submit]').focus();
   await page.keyboard.press('Tab');

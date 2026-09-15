@@ -1,9 +1,6 @@
 ---
-/** 13 Eylül 2026, kayıt v3 — tek sayfa, sekiz bölüm; yol seçmeli açık rızayla
-    kimlik ön yüzü, isteğe bağlı arka yüz. Aynı gün akşamı (Rıdvan): 6. bölümde ihtida formuyla
-    aynı ÇİZİLEN İMZA bloğu (tuval + temizle + «atamıyorum» kaçış kutusu; PNG kayıt PDF'ine aynen
-    basılır, Apps Script v32) ve iletişim kutularında din görevlisine WhatsApp bağlantısı (numara
-    yazılmaz, yalnız wa.me hedefi). Numara, MRZ/OCR ve vesikalık hâlâ yok. */
+/** Kurs kaydı: zorunlu çizilen veli imzası ve kimlik ön yüzü; arka yüz isteğe bağlı.
+    Görseller kayıt PDF’sinde yer alır. Kimlik numarası alanı veya MRZ/OCR yoktur. */
 import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri, doldur } from '../../i18n/formlar';
@@ -317,16 +314,12 @@ const metinJson = JSON.stringify({
           Çizim taslağa ve DOM'a yazılmaz; gönderimde PNG olarak gider, PDF'in imza alanına basılır. */}
       <fieldset data-alan class="tam ucf-imza" data-imza id="k-imza-alani">
         <legend>{k.kurallar.imzaCiz} <span class="zorunlu" aria-hidden="true">*</span></legend>
-        <p class="yardim">{k.kurallar.imzaCizYardim}</p>
+        <p class="yardim">{k.kurallar.imzaCizYardim} {v3.imzaZorunlu}</p>
         <canvas class="imza-tuval" role="img" aria-label={k.kurallar.imzaCiz}></canvas>
         <div class="imza-eylem">
           <button type="button" class="dugme dugme-ikincil" data-imza-temizle>{b.imzaTemizle}</button>
         </div>
-        <div class="onay-kutu mt-3">
-          <input id="k-imza-yok" type="checkbox" name="imzaYok" />
-          <label for="k-imza-yok">{k.kurallar.imzaYok}</label>
-        </div>
-        <p class="yardim">{k.kurallar.imzaYokYardim}</p>
+        <input id="k-imza-kontrol" type="hidden" name="imzaCizim" value="" />
         <p class="hata" aria-live="polite" hidden></p>
       </fieldset>
     </div>
@@ -337,13 +330,6 @@ const metinJson = JSON.stringify({
     <h2 id="h-kimlik"><span class="no">7</span>{v3.kimlik}</h2>
     <p class="bolum-not">{v3.amac}</p>
     <p class="bolum-not">{v3.kabul}</p>
-    <fieldset data-alan>
-      <legend>{v3.zamanSec}</legend>
-      <div class="secenekler k-kimlik-secim">
-        <span class="secenek"><input id="k-kimlik-simdi" type="radio" name="kimlik.zaman" value="simdi" checked /><label for="k-kimlik-simdi">{v3.simdi}</label></span>
-        <span class="secenek"><input id="k-kimlik-sonra" type="radio" name="kimlik.zaman" value="sonra" /><label for="k-kimlik-sonra">{v3.sonra}</label></span>
-      </div>
-    </fieldset>
     <div data-kimlik-yukleme class="ucf-izgara">
       {([['on', 'kimlikOn', v3.on], ['arka', 'kimlikArka', v3.tasarim.arka]] as const).map(([id, anahtar, ad]) => <div data-alan data-gorsel={anahtar} class="ucf-gorsel">
         <label for={`k-g-kimlik-${id}`}>{ad}{id === 'on' ? <span class="zorunlu" aria-hidden="true"> *</span> : <span class="k-istege">{o.istegeBagli}</span>}</label>
@@ -364,11 +350,6 @@ const metinJson = JSON.stringify({
       </div>)}
       <p class="yardim tam">{v3.yenile}</p>
     </div>
-    <fieldset data-alan data-kimlik-sonra hidden>
-      <legend>{v3.sonraSec} <span class="zorunlu" aria-hidden="true">*</span></legend>
-      <div class="k-kimlik-yollar">{(['eposta', 'whatsapp', 'elden'] as const).map(yol => <span class="secenek"><input id={`k-kimlik-${yol}`} type="radio" name="kimlik.sonra" value={yol} required disabled /><label for={`k-kimlik-${yol}`}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={ikonlar[yol]} /><span><strong>{v3.tasarim[yol]}</strong><span>{v3.tasarim[`${yol}Not`]}</span></span></label></span>)}</div>
-      <p class="hata" aria-live="polite" hidden></p>
-    </fieldset>
     <div data-alan data-kimlik-riza>
       <div class="onay-kutu"><input id="k-kimlik-riza" type="checkbox" name="onay.kimlikRiza" required /><label for="k-kimlik-riza">{v3.riza}</label></div>
       <p class="hata" aria-live="polite" hidden></p>

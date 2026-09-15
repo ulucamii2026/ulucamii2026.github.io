@@ -54,6 +54,7 @@ export const tr: FormMetinleri = {
 
   kayit: {
     v3: {
+      imzaZorunlu: "Kayıt için aşağıdaki alana imzanızı çizmeniz zorunludur.",
       tasarim: {
         nasil: 'Nasıl işler?', doldur: 'Bilgileri doldurun', gonder: 'Kontrol edip gönderin', pdf: 'PDF belgeniz e-postanıza gelsin',
         guvence: 'İçiniz rahat olsun', ucretsiz: 'Kurs ücretsiz', sure: 'Yaklaşık 5 dakika', veri: 'Veriler yalnız kayıt için', iletisim: 'Yardıma ihtiyacınız olursa',
@@ -84,7 +85,7 @@ export const tr: FormMetinleri = {
       "epostaGitmedi": "Kayıt alındı; PDF kopyası gönderilemedi. info@ulucamii.be adresine yazın.",
       "dilNot": "E-postalar Türkçe veya Fransızca gönderilir; en rahat okuduğunuz dili seçin.",
       "kimlik": "Öğrencinin kimlik belgesi",
-      "amac": "Kopya yalnız derneğin Kur’an kursu kayıt dosyasında, öğrencinin adı ve doğum tarihini belgeyle doğrulamak için saklanır; üçüncü kişilere verilmez.",
+      "amac": "Kayıt için öğrencinin kimlik belgesinin ön yüzünü veya pasaportun kimlik sayfasını yükleyin. Belge kayıt PDF’sine eklenir; yalnız kurs kaydı için kullanılır.",
       "kabul": "Kids-ID, Belçika veya T.C. kimlik kartı, pasaport ya da oturma kartı.",
       "on": "Ön yüz",
       "arka": "Arka yüz (isteğe bağlı)",
@@ -116,7 +117,7 @@ export const tr: FormMetinleri = {
       "sonradan": "Bu formdan sonradan fotoğraf yüklenmez; e-posta ya da WhatsApp yeterlidir.",
       "konu": "{ref} kimlik belgesi",
       "whatsappMetin": "Selamün aleyküm, Kur'an kursu kaydı {ref} ({ad}) için kimlik belgesinin fotoğrafını gönderiyorum.",
-      "gizlilik": "Bu formdaki bilgiler yalnız kayıt için kullanılır. Kimlik numarası sorulmaz. Kimlik kopyası seçtiğiniz yola ve açık rızanıza göre alınır; çizdiğiniz imza yalnız kayıt belgenize basılır. Erişme, düzeltme, silme veya rızayı geri alma için info@ulucamii.be adresine yazabilirsiniz.",
+      "gizlilik": "Bu formdaki bilgiler yalnız kayıt için kullanılır. Kimlik belgesi ve çizdiğiniz imza zorunludur; kayıt PDF’nize eklenir. Kimlik kopyası açık rızanızla saklanır. Erişme, düzeltme, silme veya rızayı geri alma için info@ulucamii.be adresine yazabilirsiniz.",
       "cipler": {
         "ogrenci": "Öğrenci",
         "okul": "Okul",

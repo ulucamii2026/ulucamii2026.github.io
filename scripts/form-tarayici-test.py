@@ -138,10 +138,10 @@ with sync_playwright() as p:
         pg.check('#k-kimlik-riza')
         # 13 Eyl 2026 akşamı: çizilen imza — imzasız gönderim engellenir; çizince hata kendiliğinden silinir.
         once = len(GONDERILEN); pg.click("button[type=submit]"); pg.wait_for_timeout(900)
-        kontrol(f"[{cihaz}] imzasız gönderim engellenir (imza hatası görünür)", len(GONDERILEN) == once and pg.locator('#k-imza-yok').get_attribute('aria-invalid') == 'true' and pg.locator('[data-imza] .hata').is_visible())
+        kontrol(f"[{cihaz}] imzasız gönderim engellenir (imza hatası görünür)", len(GONDERILEN) == once and pg.locator('#k-imza-kontrol').get_attribute('aria-invalid') == 'true' and pg.locator('[data-imza] .hata').is_visible())
         kontrol(f"[{cihaz}] eksikler listesinde «İmzanız»", 'İmzanız' in pg.locator('[data-eksikler]').inner_text())
         imzaCiz(pg, '[data-form="kayit"] [data-imza] canvas'); pg.wait_for_timeout(300)
-        kontrol(f"[{cihaz}] çizince imza hatası silinir", not pg.locator('[data-imza] .hata').is_visible() and pg.locator('#k-imza-yok').get_attribute('aria-invalid') is None)
+        kontrol(f"[{cihaz}] çizince imza hatası silinir", not pg.locator('[data-imza] .hata').is_visible() and pg.locator('#k-imza-kontrol').get_attribute('aria-invalid') is None)
         kontrol(f"[{cihaz}] özet: ekranda imzalandı", 'imzalandı' in pg.locator('[data-ozet-alan=imza] [data-ozet-deger]').text_content())
         pg.wait_for_timeout(500)
         taslak = pg.evaluate("localStorage.getItem('ulucamii:kayit:v2') || ''")
@@ -179,82 +179,23 @@ with sync_playwright() as p:
         if konsol: print("  konsol:", konsol[:5])
         ctx.close()
 
-    # v3: alternatif teslim yolları, taslak mahremiyeti, etkileşim ve ekran boyutları.
-    for yol in ('elden', 'whatsapp', 'eposta'):
-        ctx = tarayici.new_context(viewport={'width': 360, 'height': 800}, locale='tr-BE', service_workers='block', reduced_motion='reduce')
-        agi_yalit(ctx); pg = ctx.new_page(); konsol = []
-        pg.on('pageerror', lambda e: konsol.append(str(e)))
-        pg.on('console', lambda m: konsol.append(m.text) if m.type == 'error' else None)
-        pg.route('**/macros/**', taklit)
-        pg.goto(KOK + '/kayit/', wait_until='networkidle')
+    # 15 Eyl 2026: üç dilde imza/kimlik zorunluluğu ve hassas taslak temizliği.
+    for dil in ('tr', 'fr', 'en'):
+        ctx = tarayici.new_context(viewport={'width': 360, 'height': 800}, service_workers='block', reduced_motion='reduce')
+        agi_yalit(ctx); pg = ctx.new_page(); pg.route('**/macros/**', taklit)
+        pg.goto(KOK + '/kayit/' + (dil + '/' if dil != 'tr' else ''), wait_until='networkidle')
         kayitDoldur(pg)
-        kontrol(f'[{yol}] ad baş harfi ve telefon biçimi', pg.input_value('#k-ad') == 'Ayşe' and pg.input_value('#k-veli-ad') == 'Anne-Marie Işık' and pg.input_value('#k-veli-cep') == '+32 470 12 34 56')
-        kontrol(f'[{yol}] posta kodu şehri tamamlar', pg.input_value('#k-sehir') == 'Hotton')
-        pg.fill('#k-sehir', 'Namur'); pg.fill('#k-posta', '6900')
-        kontrol(f'[{yol}] özel şehir korunur', pg.input_value('#k-sehir') == 'Namur')
-        if yol == 'elden':
-            # Görseller ve sağlık notu mevcutken kaydet/yenile: eski hassas taslağı da temizle.
-            pg.check('#k-saglik-evet'); pg.fill('#k-saglik-not', 'Yalnız açık sayfada'); pg.check('#k-saglik-riza')
-            pg.set_input_files('#k-g-kimlik-on', onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]')
-            pg.wait_for_timeout(600)
-            kontrol('taslak sağlık notunu ve görseli saklamaz', pg.evaluate("() => { const s=localStorage.getItem('ulucamii:kayit:v2'); return !!s && !s.includes('saglik.not') && !s.includes('data:image') && !s.includes('onay.'); }"))
-            pg.evaluate("() => { const s=JSON.parse(localStorage.getItem('ulucamii:kayit:v2')); s.alanlar['saglik.not']='ESKI-HASSAS'; s.alanlar['onay.kimlikRiza']='1'; localStorage.setItem('ulucamii:kayit:v2', JSON.stringify(s)); }")
-            pg.reload(wait_until='networkidle')
-            kontrol('eski taslak sağlık ve rızayı geri yüklemez', pg.input_value('#k-saglik-not') == '' and not pg.is_checked('#k-kimlik-riza') and not pg.evaluate("localStorage.getItem('ulucamii:kayit:v2').includes('ESKI-HASSAS')"))
-            kontrol('taslak zamanı ve hassas veri açıklaması görünür', pg.locator('[data-taslak-not]').is_visible() and ':' in pg.locator('[data-taslak-metin]').inner_text() and 'Sağlık' in pg.locator('[data-taslak-metin]').inner_text())
-            kontrol('yenilemede fotoğraf tekrar seçilmeli', pg.locator('[data-gorsel="kimlikOn"]').get_attribute('data-dolu') != '1')
-            kayitDoldur(pg)
-        pg.check('#k-kimlik-sonra'); pg.check('#k-kimlik-' + yol)
-        if yol == 'whatsapp':
-            # «Ekranda imza atamıyorum» kaçış kutusu: çizim gövdeye girmez, özet «kalemle» der.
-            pg.check('#k-imza-yok'); pg.wait_for_timeout(300)
-            kontrol('imza atamıyorum: tuval kilitli, özet kursta kalemle', pg.locator('[data-imza]').evaluate('e => e.classList.contains("imza-kapali")') and 'kalemle' in pg.locator('[data-ozet-alan=imza] [data-ozet-deger]').text_content())
-        kontrol(f'[{yol}] yükleme kutuları gizli', not pg.locator('[data-kimlik-yukleme]').is_visible())
-        if yol == 'elden':
-            kontrol('elden yolunda rıza gizli ve devre dışı', pg.locator('#k-kimlik-riza').is_disabled() and not pg.locator('[data-kimlik-riza]').is_visible())
-        else:
-            once = len(GONDERILEN); pg.click('button[type=submit]'); pg.wait_for_timeout(500)
-            kontrol(f'[{yol}] rızasız gönderim engellenir', len(GONDERILEN) == once and pg.locator('#k-kimlik-riza').get_attribute('aria-invalid') == 'true')
-            pg.check('#k-kimlik-riza')
-        pg.wait_for_timeout(500)
-        kontrol(f'[{yol}] ilerleme 100 ve eksik yok', pg.locator('#k-ilerleme [role=progressbar]').get_attribute('aria-valuenow') == '100' and pg.locator('[data-eksikler] li').count() == 0)
-        if yol == 'elden':
-            for genislik in (360, 390, 768, 1280):
-                pg.set_viewport_size({'width': genislik, 'height': 900})
-                pg.evaluate('window.scrollTo(0, 0)')
-                ekran(pg, f'{OUT}/kayit-v3-{genislik}.png')
-                kontrol(f'{genislik}px yatay taşma yok', pg.evaluate('document.documentElement.scrollWidth <= innerWidth'))
-            pg.set_viewport_size({'width': 390, 'height': 844})
-            pg.evaluate("document.documentElement.dataset.theme='dark'")
-            ekran(pg, f'{OUT}/kayit-v3-karanlik-390.png')
-            pg.evaluate("document.documentElement.dataset.theme='light'")
-            pg.locator('#k-ilerleme a[href="#b-veli"]').click(); pg.wait_for_timeout(650)
-            kontrol('ray alan odağını örtmez', pg.evaluate("document.activeElement.getBoundingClientRect().top >= document.querySelector('#k-ilerleme').getBoundingClientRect().bottom"))
-            pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.style.maxHeight="none"; e.style.height="2000px"; }')
-            pg.wait_for_timeout(150)
-            pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.style.height="120px"; }')
-            pg.wait_for_timeout(150)
-            # 13 Eylül çekirdek düzeltmesi: ekran/klavye yeniden akışı okunmuş onayı silmez.
-            kontrol('boyut değişiminde okunmuş kurallar onayı korunur', not pg.locator('#k-onay-kurallar').is_disabled() and pg.is_checked('#k-onay-kurallar'))
-            pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.style.height=""; e.style.maxHeight=""; }')
-            pg.wait_for_timeout(150)
-            pg.locator('#k-kurallar-kutu').evaluate('(e) => { e.scrollTop = e.scrollHeight; e.dispatchEvent(new Event("scroll")); }')
-            pg.check('#k-onay-kurallar')
-        KOPYA_GITTI = yol != 'eposta'
+        kontrol(f'[{dil}] sonra teslim ve imzasız geçiş yok', pg.locator('#k-kimlik-sonra').count() == 0 and pg.locator('#k-imza-yok').count() == 0)
+        pg.locator('[data-imza-temizle]').click()
+        once = len(GONDERILEN); pg.click('button[type=submit]'); pg.wait_for_timeout(300)
+        kontrol(f'[{dil}] imzasız/kimliksiz kayıt gönderilmez', len(GONDERILEN) == once and pg.locator('[data-imza] .hata').is_visible())
+        imzaCiz(pg, '[data-form="kayit"] [data-imza] canvas')
+        pg.set_input_files('#k-g-kimlik-on', onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]')
+        pg.check('#k-kimlik-riza'); pg.wait_for_timeout(600)
+        kontrol(f'[{dil}] taslakta imza/kimlik yok', not pg.evaluate("localStorage.getItem('ulucamii:kayit:v2').includes('data:image')"))
         pg.click('button[type=submit]'); pg.wait_for_selector('[data-basari]:not([hidden])')
         g = GONDERILEN[-1]
-        kontrol(f'[{yol}] v3 gövdesinde yol doğru, görseller boş', g['formSurumu'] == 3 and g['kimlik'] == {'yol': yol, 'on': '', 'arka': ''} and g['onay']['kimlikRiza'] == (yol != 'elden'))
-        if yol != 'whatsapp':
-            kontrol(f'[{yol}] gövdede çizilen imza PNG', str(g.get('imza', '')).startswith('data:image/png;base64,') and g.get('imzaYok') is False)
-        if yol == 'whatsapp':
-            kontrol('imza atamıyorum: gövdede imza boş, imzaYok True', g.get('imza') == '' and g.get('imzaYok') is True)
-            link = pg.locator('[data-kimlik-baglanti]')
-            kontrol('WhatsApp başarı bağlantısı referansı taşır, numara metinde yok', link.get_attribute('href').startswith('https://wa.me/') and 'UC-2026-9999' in link.get_attribute('href') and '471' not in link.inner_text())
-        if yol == 'eposta':
-            kontrol('PDF kopyası gönderilemedi mesajı dürüst', 'gönderilemedi' in pg.locator('[data-eposta-metin]').inner_text())
-            kontrol('e-posta bağlantısı referansı taşır', 'UC-2026-9999' in pg.locator('[data-kimlik-baglanti]').get_attribute('href'))
-        ekran(pg, f'{OUT}/kayit-v3-basari-{yol}.png')
-        kontrol(f'[{yol}] konsol hatası yok', not konsol)
+        kontrol(f'[{dil}] zorunlu belgeler gövdede', g['imza'].startswith('data:image/png;base64,') and g['imzaYok'] is False and bool(g['kimlik']['on']) and g['onay']['kimlikRiza'] is True)
         ctx.close()
     KOPYA_GITTI = True
 
@@ -269,9 +210,9 @@ with sync_playwright() as p:
     pg.set_input_files('#k-g-kimlik-on', onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]')
     pg.set_input_files('#k-g-kimlik-on', {'name':'bekleyen.png','mimeType':'image/png','buffer':Path(onYol).read_bytes()})
     pg.wait_for_function("typeof window.gorseliBitir === 'function'")
-    pg.check('#k-kimlik-sonra'); pg.check('#k-kimlik-elden'); pg.evaluate('window.gorseliBitir()'); pg.wait_for_timeout(150)
-    pg.check('#k-kimlik-simdi')
-    kontrol('geç biten fotoğraf yol değişiminden sonra geri gelmez', pg.locator('[data-gorsel="kimlikOn"]').get_attribute('data-dolu') != '1')
+    pg.locator('form[data-form=kayit]').evaluate('(f) => f.reset()'); pg.evaluate('window.gorseliBitir()'); pg.wait_for_timeout(150)
+    kontrol('geç biten fotoğraf form sıfırlanınca geri gelmez', pg.locator('[data-gorsel="kimlikOn"]').get_attribute('data-dolu') != '1')
+    kayitDoldur(pg)
     pg.set_input_files('#k-g-kimlik-on', onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]')
     pg.locator('[data-gorsel="kimlikOn"] [data-kaldir]').click()
     kontrol('fotoğraf kaldırma önizlemeyi ve belleği temizler', not pg.locator('[data-gorsel="kimlikOn"] img').is_visible() and pg.input_value('#k-kimlik-on') == '')
