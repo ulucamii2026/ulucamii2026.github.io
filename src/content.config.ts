@@ -147,6 +147,17 @@ const afisler = defineCollection({
 /** Yönetim kurulu (tek dosya) — src/content/ayarlar/kurul.yaml */
 const uc = z.object({ tr: z.string(), fr: z.string(), en: z.string() });
 const kisi = z.object({ ad: z.string(), foto: z.string().optional(), eposta: z.string().optional(), gorev: uc });
+const personelKisi = z.object({
+  ad: z.string(),
+  foto: z.string().optional(),
+  eposta: z.string().optional(),
+  gorev: uc,
+  dogumYili: z.number().int().optional(),
+  memleket: uc.optional(),
+  meslek: uc.optional(),
+  ikamet: z.string().optional(),
+  mesaj: uc.optional(),
+});
 const kurul = defineCollection({
   loader: file('./src/content/ayarlar/kurul.yaml', { parser: (text) => [{ id: 'kurul', ...yamlParse(text).kurul }] }),
   schema: z.object({
@@ -155,6 +166,7 @@ const kurul = defineCollection({
     uyeler: z.array(kisi),
     denetim: z.array(kisi),
     dinGorevlisi: kisi,
+    personel: z.array(personelKisi).optional().default([]),
     not: uc,
   }),
 });

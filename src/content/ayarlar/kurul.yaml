@@ -60,7 +60,28 @@ kurul:
       tr: Din Görevlisi (Diyanet İşleri Başkanlığı görevlendirmesi)
       fr: Imam (détaché par la Présidence des Affaires religieuses de Türkiye)
       en: Imam (appointed by the Turkish Presidency of Religious Affairs)
+  personel:
+    - ad: Abdulrahman Hallak
+      foto: /media/kurul/abdulrahman-hallak.webp
+      dogumYili: 1994
+      memleket:
+        tr: Halep (Suriye)
+        fr: Alep (Syrie)
+        en: Aleppo (Syria)
+      meslek:
+        tr: Öğretmen
+        fr: Enseignant
+        en: Teacher
+      ikamet: Saint-Hubert
+      gorev:
+        tr: Cami Personeli (Kafeterya ve İkram Hizmetleri)
+        fr: Personnel de la mosquée (Responsable de la cafétéria)
+        en: Mosque Staff (Cafeteria & Hospitality Services)
+      mesaj:
+        tr: "Suriye'den kardeşiniz Abdulrahman, öğretmenim, Saint-Hubert'te ikamet ediyorum. Camimize hizmet etmekten onur duyuyorum. Allah bizleri iyilik ve takva üzere yardımlaşanlardan eylesin."
+        fr: "Votre frère Abdulrahman, originaire de Syrie, enseignant, résidant à Saint-Hubert. C'est un honneur pour moi de servir notre mosquée. Qu'Allah fasse de nous des personnes qui s'entraident dans la bonté et la piété."
+        en: "Your brother Abdulrahman, originally from Syria, teacher, residing in Saint-Hubert. It is an honor for me to serve our mosque. May Allah make us among those who cooperate in goodness and piety."
   not:
-    tr: "9 Ocak 2026 Genel Kurulu'nda seçilen ve 2026 yılı içinde güncellenen yönetim kuruludur. (Son güncelleme: 24 Ağustos 2026)"
-    fr: "Conseil d'administration élu lors de l'Assemblée générale du 9 janvier 2026 et actualisé en 2026. (Dernière mise à jour : 24 août 2026)"
-    en: "Board elected at the General Assembly of 9 January 2026 and updated during 2026. (Last updated: 24 August 2026)"
+    tr: "9 Ocak 2026 Genel Kurulu'nda seçilen ve 2026 yılı içinde güncellenen yönetim kuruludur. (Son güncelleme: 17 Eylül 2026)"
+    fr: "Conseil d'administration élu lors de l'Assemblée générale du 9 janvier 2026 et actualisé en 2026. (Dernière mise à jour : 17 septembre 2026)"
+    en: "Board elected at the General Assembly of 9 January 2026 and updated during 2026. (Last updated: 17 September 2026)"

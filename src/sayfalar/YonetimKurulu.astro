@@ -64,6 +64,12 @@ const m = dil === 'tr' ? {
   hadisNot: 'Hz. Peygamber bunu söylerken iki elinin parmaklarını birbirine geçirdi.',
   hadisKaynak: 'Buhârî, Salât 88 · Müslim, Birr 65',
   gorevNot: k.not.tr,
+  personelBaslik: 'Cami Personeli ve Hizmet',
+  personelAlt: 'Camimizin günlük işleyişinde, cemaatimize ikram ve kafeterya hizmetlerinde görev yapan emektar personelimiz.',
+  dogum: 'Doğum',
+  memleketEtiket: 'Memleket',
+  meslekEtiket: 'Meslek',
+  ikametEtiket: 'İkamet',
 } : dil === 'en' ? {
   alt: 'The governing and audit bodies of the association that runs our mosque. The association is governed by a board elected by the members at the general assembly.',
   etiket: 'Association',
@@ -85,6 +91,12 @@ const m = dil === 'tr' ? {
   hadisNot: 'As he said this, the Prophet interlaced the fingers of his two hands.',
   hadisKaynak: 'Bukhari, Salat 88 · Muslim, Birr 65',
   gorevNot: k.not.en,
+  personelBaslik: 'Mosque Staff & Services',
+  personelAlt: 'Our dedicated staff ensuring daily hospitality, cafeteria, and community services at the mosque.',
+  dogum: 'Birth',
+  memleketEtiket: 'Origin',
+  meslekEtiket: 'Profession',
+  ikametEtiket: 'Residence',
 } : {
   alt: "Les organes de gestion et de contrôle de l'association qui fait vivre notre mosquée. L'association est dirigée par un conseil élu par les membres lors de l'assemblée générale.",
   etiket: 'Association',
@@ -106,6 +118,12 @@ const m = dil === 'tr' ? {
   hadisNot: "En prononçant ces mots, le Prophète entrelaça les doigts de ses deux mains.",
   hadisKaynak: 'Bukhârî, Salât 88 · Muslim, Birr 65',
   gorevNot: k.not.fr,
+  personelBaslik: 'Personnel et services de la mosquée',
+  personelAlt: 'Notre personnel dévoué qui assure l’accueil, la cafétéria et les services conviviaux au quotidien.',
+  dogum: 'Naissance',
+  memleketEtiket: 'Origine',
+  meslekEtiket: 'Profession',
+  ikametEtiket: 'Résidence',
 };
 
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
@@ -158,6 +176,41 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
         ))}
       </ol>
     </section>
+
+    {k.personel && k.personel.length > 0 && (
+      <section aria-labelledby="personel-baslik">
+        <h2 id="personel-baslik" class="etiket etiket-vurgu text-base cetvel pt-4 mb-2">{m.personelBaslik}</h2>
+        <p class="text-sm text-(--metin-2) mb-6 max-w-[65ch]">{m.personelAlt}</p>
+        <div class="grid gap-6">
+          {k.personel.map((p) => (
+            <article class="kart p-5 sm:p-6 flex flex-col sm:flex-row gap-5 sm:gap-6 items-start">
+              <div class="portre shrink-0 w-32 sm:w-40 aspect-square rounded-(--radius-kose) overflow-hidden border border-(--cizgi)">
+                {p.foto
+                  ? <img src={p.foto} srcset={srcSet(p.foto)} sizes="160px" alt={p.ad} width="800" height="800" loading="lazy" decoding="async" />
+                  : <span class="monogram" aria-hidden="true">{basHarf(p.ad)}</span>}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 class="font-serif text-xl sm:text-2xl font-semibold text-(--metin)">{p.ad}</h3>
+                  <span class="etiket text-xs text-(--vurgu)">{p.gorev[dil]}</span>
+                </div>
+                <ul class="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-(--metin-2)" role="list">
+                  {p.memleket && <li><span class="font-mono opacity-80">{m.memleketEtiket}:</span> <strong class="font-medium text-(--metin)">{p.memleket[dil]}</strong></li>}
+                  {p.dogumYili && <li><span class="font-mono opacity-80">{m.dogum}:</span> <strong class="font-medium text-(--metin)">{p.dogumYili}</strong></li>}
+                  {p.meslek && <li><span class="font-mono opacity-80">{m.meslekEtiket}:</span> <strong class="font-medium text-(--metin)">{p.meslek[dil]}</strong></li>}
+                  {p.ikamet && <li><span class="font-mono opacity-80">{m.ikametEtiket}:</span> <strong class="font-medium text-(--metin)">{p.ikamet}</strong></li>}
+                </ul>
+                {p.mesaj && (
+                  <blockquote class="mt-4 p-3.5 bg-(--zemin-3) border-l-2 border-(--vurgu) text-sm leading-relaxed text-(--metin) italic rounded-r-(--radius-kose)">
+                    “{p.mesaj[dil]}”
+                  </blockquote>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
 
     {/* Şükran ve tebrik (27 Ağustos 2026, Rıdvan'ın isteği). Sayfa buraya kadar
         "kim bu insanlar" sorusuna cevap veriyordu; bu bölüm "bu iş nasıl yürüyor"
