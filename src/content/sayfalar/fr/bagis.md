@@ -57,6 +57,12 @@ Vous pouvez remettre votre zakât et votre fitre au tronc de la mosquée, ou par
 
 Le Fonds Zakât-Fitre est répertorié, avec les autres services de la BDV (hajj/omra, fonds funéraire, bourse d’études, conseil juridique), sur notre page [Services Diyanet](/fr/services-diyanet/).
 
+### Don en ligne (Fondation Diyanet de Belgique)
+
+Vous pouvez également effectuer vos dons de zakât, fitre, sacrifice par procuration et dons généraux directement par Bancontact ou carte bancaire via le **Portail officiel de dons en ligne** de la Fondation Diyanet de Belgique :
+
+<p class="my-4"><a href="https://bagis.diyanet.be" target="_blank" rel="noopener" class="dugme dugme-iznik inline-flex items-center gap-1.5">Faire un don en ligne sur bagis.diyanet.be ↗</a></p>
+
 ## Transparence
 
 Nos dons sont rapportés à nos membres lors de l’assemblée générale de l’association.

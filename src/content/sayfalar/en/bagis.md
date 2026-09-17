@@ -57,6 +57,12 @@ You can bring your zakat and fitr to our mosque’s donation box, or send them t
 
 The Zakat-Fitr Fund, along with other BDV services such as hajj/omra, the funeral fund, education scholarships and legal counselling, is listed together on our [Diyanet Services](/en/diyanet-services/) page.
 
+### Online donations (Diyanet Foundation of Belgium)
+
+You can also make your zakat, fitr, sacrifice by proxy and general donations directly via Bancontact or credit card through the **Official Online Donation Portal** of the Diyanet Foundation of Belgium:
+
+<p class="my-4"><a href="https://bagis.diyanet.be" target="_blank" rel="noopener" class="dugme dugme-iznik inline-flex items-center gap-1.5">Donate online on bagis.diyanet.be ↗</a></p>
+
 ## Transparency
 
 Our donations are reported to our members at our association’s general assembly.

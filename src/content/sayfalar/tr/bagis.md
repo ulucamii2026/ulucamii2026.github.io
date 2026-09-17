@@ -57,6 +57,12 @@ Zekât ve fitrenizi cami bağış kutumuza veya yukarıdaki IBAN’a açıklama 
 
 Zekât-Fitre Fonu; hac/umre, cenaze fonu, eğitim bursu ve hukuk danışmanlığı gibi diğer BDV hizmetleriyle birlikte [Diyanet Hizmetleri](/tr/diyanet-hizmetleri/) sayfamızda topluca listeleniyor.
 
+### Çevrim içi bağış (Belçika Diyanet Vakfı)
+
+Belçika Diyanet Vakfı’nın resmî **Çevrim İçi Bağış Portalı** üzerinden Bancontact veya kredi kartıyla fitre, zekât, vekâletle kurban ve genel bağışlarınızı doğrudan vakfa ulaştırabilirsiniz:
+
+<p class="my-4"><a href="https://bagis.diyanet.be" target="_blank" rel="noopener" class="dugme dugme-iznik inline-flex items-center gap-1.5">bagis.diyanet.be üzerinden çevrim içi bağış yap ↗</a></p>
+
 ## Şeffaflık
 
 Bağışlarımız, derneğimizin genel kurulunda üyelerimize raporlanır.

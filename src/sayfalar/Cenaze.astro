@@ -25,6 +25,7 @@ const m = dil === 'tr' ? {
   fonBaslik: 'Fon üyeliği hakkında',
   fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Her yıl Ocak ayının ilk haftası aidat mektubu gönderilir; 25 Ocak’a kadar mektup gelmezse fona bilgi verilmelidir. Aidat, mektup ulaştıktan sonra en geç 10 gün içinde ödenir; doğum, evlenme, boşanma ve adres değişiklikleri fona bildirilir.',
   belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
+  fonKayitButon: 'Cenaze Fonu Çevrim İçi Kayıt Formu ↗',
   vefatSayfa: 'Vefat duyuruları ve Rahmetle Anıyoruz sayfası →',
 } : dil === 'en' ? {
   baslik: 'Funeral Services',
@@ -40,6 +41,7 @@ const m = dil === 'tr' ? {
   fonBaslik: 'About fund membership',
   fonNot: 'Fund membership: Turkish citizens with at least 1 year of permanent residence in Belgium; spouses and children under 18 are covered; membership takes effect 60 days after payment (except in case of accident). An annual dues letter is sent in the first week of January each year; if it has not arrived by 25 January, the fund should be informed. Dues must be paid within 10 days of receiving the letter; births, marriages, divorces and address changes must be reported to the fund.',
   belediye: 'Municipal population department', mezarlik: 'Cemetery', fonSayfa: 'Fund information page ↗',
+  fonKayitButon: 'Funeral Fund Online Registration Form ↗',
   vefatSayfa: 'Obituaries — In Memoriam page →',
 } : {
   baslik: 'Services funéraires',
@@ -55,6 +57,7 @@ const m = dil === 'tr' ? {
   fonBaslik: 'À propos de l’affiliation au fonds',
   fonNot: 'Affiliation au fonds : citoyens turcs résidant en Belgique depuis au moins 1 an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Chaque année, la lettre de cotisation est envoyée la première semaine de janvier ; si elle n’est pas reçue avant le 25 janvier, prévenir le fonds. La cotisation se paie dans les 10 jours suivant la réception ; naissances, mariages, divorces et changements d’adresse doivent être signalés au fonds.',
   belediye: 'Service population de la commune', mezarlik: 'Cimetière', fonSayfa: 'Page d’information du fonds ↗',
+  fonKayitButon: 'Formulaire d’adhésion en ligne au Fonds funéraire ↗',
   vefatSayfa: 'Avis de décès — page In memoriam →',
 };
 ---
@@ -74,6 +77,11 @@ const m = dil === 'tr' ? {
       <div class="mt-8 cetvel pt-4">
         <h2 class="etiket etiket-vurgu text-base">{m.fonBaslik}</h2>
         <p class="mt-2 text-sm text-(--metin-2) max-w-[70ch]">{m.fonNot}</p>
+        <div class="mt-4">
+          <a href={c?.fonKayitWeb ?? 'https://diyanet.be/cenaze'} target="_blank" rel="noopener" class="dugme dugme-iznik inline-flex items-center gap-1.5">
+            {m.fonKayitButon}
+          </a>
+        </div>
       </div>
       <p class="mt-6"><a href={yol(dil, 'konsolosluk') + '#cenaze'}>{m.nakil}</a></p>
       <p class="mt-2"><a href={yol(dil, 'vefat')}>{m.vefatSayfa}</a></p>
@@ -90,7 +98,7 @@ const m = dil === 'tr' ? {
           <dl class="mt-4 grid gap-2 text-sm cetvel pt-3">
             <div><dt class="etiket">{m.belediye}</dt><dd><a href={tel(c.belediyeNufus)} class="mono">{c.belediyeNufus}</a> · <a href={`mailto:${c.belediyeEposta}`}>{c.belediyeEposta}</a></dd></div>
             <div><dt class="etiket">{m.mezarlik}</dt><dd>{c.mezarlikAd}<br /><span class="text-(--metin-2)">{c.mezarlikAdres}</span></dd></div>
-            <div><dt class="etiket">{c.fonAd}</dt><dd><span class="text-(--metin-2)">{c.fonAdres}</span> · <a href={`mailto:${c.fonEposta}`}>{c.fonEposta}</a><br /><a href={c.fonWeb} target="_blank" rel="noopener">{m.fonSayfa}</a></dd></div>
+            <div><dt class="etiket">{c.fonAd}</dt><dd><span class="text-(--metin-2)">{c.fonAdres}</span> · <a href={`mailto:${c.fonEposta}`}>{c.fonEposta}</a><br /><a href={c.fonWeb} target="_blank" rel="noopener">{m.fonSayfa}</a> · <a href={c.fonKayitWeb ?? 'https://diyanet.be/cenaze'} target="_blank" rel="noopener" class="font-medium text-(--vurgu)">{m.fonKayitButon}</a></dd></div>
           </dl>
         </div>
       )}
