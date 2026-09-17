@@ -25,6 +25,7 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | Basılı Bulletin d’école / dijital ders defteri | [Ders defteri](DERS-DEFTERI-ENTEGRASYONU.md) | `src/scripts/ders-defteri.ts`, `src/lib/ders-defteri.ts`, `src/data/ders-defteri-2026-2027.json`; `tests/web/ders-defteri.spec.mjs` |
 | Anti-Gravity iş akışı | [İş akışı](ANTIGRAVITY-IS-AKISI.md), [12 Eylül oturum incelemesi](AGY-OTURUM-INCELEMESI-2026-09-12.md) | `scripts/oto-kaydet.ps1`; `npm run test:oto-kaydet` |
 | Web sitesi genel çalışma dökümü | [11 Eylül çalışma dökümü](WEB-SITESI-CALISMA-DOKUMANI-2026-09-11.md) | Konu notlarına yönlendiren genel özet |
+| 18 Eylül devir notu ve hata avı | [18 Eylül devir notu](DEVIR-NOTU-2026-09-18.md) | Personel, favicon, WCAG A11y, materyal koleksiyonu ve tam denetim |
 
 ## Tekrar keşfedilmemesi gereken kararlar
 
