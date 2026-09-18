@@ -80,11 +80,11 @@ site:
       sayfa: diyanet
       son: "2026-09-11"
     - metin:
-        tr: "Hac ön kaydı yapanlar: kesin kayıt e-postanızı takip edin — son gün 30 Ekim."
-        fr: "Préinscrits au Hajj : surveillez l’e-mail d’inscription définitive — date limite le 30 octobre."
-        en: "Pre-registered for Hajj? Watch for the final-registration e-mail — deadline 30 October."
-      sayfa: diyanet
-      baslangic: "2026-09-12"
+        tr: "2027 Hac kayıtları devam ediyor — son başvuru 30 Ekim 2026, sınırlı kontenjan, T.C. pasaportu şart."
+        fr: "Inscriptions au Hajj 2027 en cours — date limite le 30 octobre 2026, places limitées, passeport turc requis."
+        en: "Hajj 2027 registration is open — deadline 30 October 2026, limited places, Turkish passport required."
+      sayfa: duyurular
+      baslangic: "2026-09-18"
       son: "2026-10-30"
     - metin:
         tr: "İmam-ı Azam Eğitim Merkezi’nde 12–17 yaş hafta sonu yatılı Kur’an kursu kayıtları başladı — ayrıntılar duyurularda."

@@ -1,4 +1,4 @@
-﻿---
+---
 baslik: "2027 Hac Ön Kayıtları Sona Erdi: Kesin Kayıt Süreci Devam Ediyor"
 tarih: 2026-09-11
 ozet: "2027 yılı Hac ön kayıt başvuruları 11 Eylül 2026 itibarıyla tamamlandı. Ön kayıt yaptıran hacı adaylarımız için kesin kayıt süreci 30 Eylül 2026'ya kadar devam ediyor. E-postalarınızı düzenli kontrol ediniz."
@@ -7,8 +7,7 @@ kapakAlt: "2027 Hac ön kayıtları sona erdi, kesin kayıt 30 Eylül'e kadar de
 etiketler:
   - hac
   - diyanet
-oneCikan: true
-oneCikanSon: 2026-09-30
+oneCikan: false
 ---
 
 <div class="rounded-2xl border border-emerald-500/25 bg-emerald-50/60 dark:bg-emerald-950/20 p-5 shadow-sm">

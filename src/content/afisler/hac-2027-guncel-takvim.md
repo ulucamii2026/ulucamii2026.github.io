@@ -5,7 +5,7 @@ baslik:
 tarih: '2026-09-10'
 gorsel: /media/afisler/hac-2027-guncel-takvim.webp
 kucuk: /media/afisler/hac-2027-guncel-takvim-thumb.webp
-vitrinSon: 2026-09-30
+vitrin: gizle
 kaynak: ulucamii
 kategori: hac-umre
 link: https://www.diyanet.be/onkayit

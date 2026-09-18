@@ -22,6 +22,7 @@ playwright-report/
 __pycache__/
 *.pyc
 tmp/
+cikti/
 *.png.tmp
 
 

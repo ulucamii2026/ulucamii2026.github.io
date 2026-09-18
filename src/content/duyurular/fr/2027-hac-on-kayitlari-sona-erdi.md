@@ -1,4 +1,4 @@
-﻿---
+---
 baslik: "Hajj 2027 : Fin des pré-inscriptions, inscriptions définitives en cours"
 tarih: 2026-09-11
 ozet: "Les pré-inscriptions pour le Hajj 2027 sont clôturées depuis le 11 septembre 2026. Pour les candidats préinscrits, la procédure d'inscription définitive se poursuit jusqu'au 30 septembre 2026. Veuillez vérifier régulièrement vos courriels."
@@ -7,8 +7,7 @@ kapakAlt: "Fin des pré-inscriptions au Hajj 2027, inscription définitive jusqu
 etiketler:
   - hac
   - diyanet
-oneCikan: true
-oneCikanSon: 2026-09-30
+oneCikan: false
 ---
 
 <div class="rounded-2xl border border-emerald-500/25 bg-emerald-50/60 dark:bg-emerald-950/20 p-5 shadow-sm">
