@@ -54,6 +54,13 @@ konu notunu güncelle; buraya işlem günlüğü ekleme. Canlı durum/test kanı
   bağımsız tasarım yazma. Ana yazı 20 px, kitap/sayfa alt satırı 16 px olur.
 
 - Namaz vakti yalnız Diyanet, ilçe 11890. Hesaplama servisi/farklı kaynakla doldurma.
+- **Din görevlisi iletişim bilgisi ve cep telefonu mahremiyeti (kalıcı kural, 18 Eylül 2026):**
+  Din görevlisinin şahsi/cep telefonu numarası sitede, duyurularda, afişlerde, iletişim
+  bloklarında, üst/alt bilgi alanlarında veya herhangi bir içerikte **kesinlikle açık metin
+  olarak yayımlanmaz/yazılmaz**. İletişim için WhatsApp logosu/butonu yer alabilir; tıklandığında
+  doğrudan WhatsApp sohbetine (`https://wa.me/...`) yönlendirebilir ancak telefon numarasının
+  kendisi ekranda veya metinde görünmez. Sitede metin olarak yayımlanan yegâne kurumsal telefon
+  numarası cami dernek hattıdır (`+32 472 98 50 73`).
 - **Kur'an-ı Kerim sûre, âyet ve Elifba sesleri (kalıcı kural, 11 Eylül 2026):**
   Tüm Kur'an tilaveti, sûre, âyet ve Elifba sesleri istisnasız ve her zaman resmî
   Diyanet İşleri Başkanlığı kaynaklarından (`kuran.diyanet.gov.tr`,

@@ -29,6 +29,10 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 
 ## Tekrar keşfedilmemesi gereken kararlar
 
+- Din görevlisinin şahsi/cep telefonu numarası hiçbir mecrada (web sitesi, duyurular, afişler,
+  iletişim alanları) açık metin olarak yayımlanmaz. WhatsApp logosu/butonuyla doğrudan
+  sohbete (`wa.me`) yönlendirme yapılabilir ancak numara ekranda veya metinde gösterilmez. Yayımlanan
+  yegâne telefon numarası cami dernek hattıdır (+32 472 98 50 73).
 - Veli iletişim dili, kayıt tercihidir; siteyi görüntüleme diliyle değiştirilmez.
   Ayrıntı, istisnalar ve doğrulama yukarıdaki dil notundadır.
 - Öğrenci modunda çocuk fotoğrafı veya biyometrik veri asla istenmez ve saklanmaz;

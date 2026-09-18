@@ -40,6 +40,6 @@ Kursumuz 7 yaş ve üzeri bütün çocuklarımıza açık ve tamamen ücretsizdi
 Yavrularımızın Kur'an ve güzel ahlak yolundaki adımlarını hayırla ve muvaffakiyetle bereketlendirmesini Cenâb-ı Hak'tan niyaz eder, tüm cemaatimize ve velilerimize hayırlı Cumalar dileriz. İlgililere saygıyla duyurulur.
 
 📍 **Adres:** Thier des Corbeaux 14, 6900 Marche-en-Famenne  
-📞 **Din Görevlisi (WhatsApp):** [+32 471 79 46 82](https://wa.me/32471794682)  
+💬 **Din Görevlisi (WhatsApp):** [WhatsApp ile İletişime Geçin](https://wa.me/32471794682)  
 📞 **Cami Hattı:** +32 472 98 50 73  
 ✉️ **E-posta:** [info@ulucamii.be](mailto:info@ulucamii.be)

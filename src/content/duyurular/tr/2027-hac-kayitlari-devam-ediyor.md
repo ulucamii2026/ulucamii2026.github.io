@@ -15,14 +15,8 @@ oneCikanSon: 2026-10-30
 taslak: false
 ---
 
-<div class="rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/30 p-5 shadow-sm">
-  <div class="flex items-center gap-2.5 font-bold text-amber-900 dark:text-amber-200 text-base">
-    <svg class="size-5 shrink-0 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span>Önemli Hatırlatma — 2027 Hac Kayıtları Devam Ediyor</span>
-  </div>
-  <p class="mt-2 text-sm leading-relaxed text-amber-950/90 dark:text-amber-200/90">
-    Belçika Diyanet Vakfı koordinesinde yürütülen <strong>2027 Yılı Hac Kayıtları devam etmektedir</strong>. Son başvuru tarihi <strong>30 Ekim 2026</strong> olarak belirlenmiş olup, kontenjanlar sınırlıdır. Kontenjanın dolması halinde 30.10.2026 tarihi beklenmeksizin sistem kapatılacaktır.
-  </p>
+<div class="uyari">
+  <p><strong>Önemli Hatırlatma — 2027 Hac Kayıtları Devam Ediyor:</strong> Belçika Diyanet Vakfı koordinesinde yürütülen <strong>2027 Yılı Hac Kayıtları devam etmektedir</strong>. Son başvuru tarihi <strong>30 Ekim 2026</strong> olarak belirlenmiş olup, kontenjanlar sınırlıdır. Kontenjanın dolması halinde 30.10.2026 tarihi beklenmeksizin sistem kapatılacaktır.</p>
 </div>
 
 Kutsal topraklara hac ibadeti için gitmek isteyen değerli cemaatimiz ve vatandaşlarımızın dikkatine önemle sunulur.

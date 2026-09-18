@@ -40,6 +40,6 @@ Nos cours sont entièrement gratuits et ouverts à tous les enfants à partir de
 Nous implorons Allah d’accorder Sa bénédiction et la réussite à nos enfants dans leur apprentissage du Coran et des nobles valeurs de l'islam. Bon et saint vendredi à toutes et à tous. Avis à toutes les personnes intéressées.
 
 📍 **Adresse :** Thier des Corbeaux 14, 6900 Marche-en-Famenne  
-📞 **Ministre du culte (WhatsApp) :** [+32 471 79 46 82](https://wa.me/32471794682)  
+💬 **Ministre du culte (WhatsApp) :** [Contacter sur WhatsApp](https://wa.me/32471794682)  
 📞 **Ligne de la mosquée :** +32 472 98 50 73  
 ✉️ **E-mail :** [info@ulucamii.be](mailto:info@ulucamii.be)

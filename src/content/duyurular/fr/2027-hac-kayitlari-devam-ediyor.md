@@ -15,14 +15,8 @@ oneCikanSon: 2026-10-30
 taslak: false
 ---
 
-<div class="rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/30 p-5 shadow-sm">
-  <div class="flex items-center gap-2.5 font-bold text-amber-900 dark:text-amber-200 text-base">
-    <svg class="size-5 shrink-0 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span>Rappel important — Les inscriptions pour le Hajj 2027 se poursuivent</span>
-  </div>
-  <p class="mt-2 text-sm leading-relaxed text-amber-950/90 dark:text-amber-200/90">
-    Les inscriptions pour le <strong>Hajj 2027</strong>, coordonnées par la <strong>Fondation Diyanet de Belgique</strong>, se poursuivent activement. La date limite de candidature est fixée au <strong>30 octobre 2026</strong>. Les quotas étant strictement limités, le système d’inscription sera automatiquement clôturé dès que les places disponibles seront atteintes, sans attendre l’échéance du 30.10.2026.
-  </p>
+<div class="uyari">
+  <p><strong>Rappel important — Les inscriptions pour le Hajj 2027 se poursuivent :</strong> Les inscriptions pour le <strong>Hajj 2027</strong>, coordonnées par la <strong>Fondation Diyanet de Belgique</strong>, se poursuivent activement. La date limite de candidature est fixée au <strong>30 octobre 2026</strong>. Les quotas étant strictement limités, le système d’inscription sera automatiquement clôturé dès que les places disponibles seront atteintes, sans attendre l’échéance du 30.10.2026.</p>
 </div>
 
 Avis aux fidèles et candidats au pèlerinage souhaitant se rendre aux Lieux Saints.
