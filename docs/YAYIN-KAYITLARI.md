@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 19 Eylül 2026 — Belçika’dan dergi aboneliği araştırması
+
+- Kullanıcı talebiyle TR/FR/EN yayın rehberi güncellendi; içerik commit'i `2b54e7c`.
+- [Pages 35459124981](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35459124981): build ve deploy başarılı; üç canlı rehber HTTP 200, yeni resmî birim/teslimat şartları/e-posta bağlantıları doğrulandı.
+- Yurt dışı birimi, üç adımlı başvuru ve örnek bilgi talebi eklendi. Portal üyeliğinin Belçika teslimat onayı olmadığı açıklandı. Güncel avro bedeli/posta ücreti teyit edilemedi; eski tarifeler kullanılmadı.
+- `npm run dogrula:codex`: sekiz kapı geçti; 448 tarayıcı testi başarılı. Ek 12 rehber kontrolü (üç dil, iki genişlik, iki tema): taşma ve axe ihlali yok; masaüstü TR ve mobil FR ekran görüntüleri incelendi.
+- Kanıtlar: `D:/tmp/ulucamii-belcika-abonelik-dogrulama-20260919.log`, `D:/tmp/abone-gorsel-20260919.json`, `D:/tmp/abone-canli-20260919.json`.
+- Kaynaklar ve doğrulama sınırı: [Belçika araştırması](BELCIKA-DERGI-ABONELIGI.md). Abonelik açılmadı, ödeme yapılmadı, e-posta gönderilmedi.
+
 ## 19 Eylül 2026 — Diyanet içerikleri ve site hata düzeltmeleri
 
 - Durum: yayımlandı ve canlı doğrulandı. Kullanıcının açık içerik/yayın talimatı.
