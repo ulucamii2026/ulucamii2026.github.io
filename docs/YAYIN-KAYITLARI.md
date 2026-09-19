@@ -94,5 +94,6 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - Kaynak proje: `D:/ulu-camii-kuran-kursu`; rapor `belgeler/KALITE-DENETIMI-GOMULU-OYUN-2026-09-19.md`; kanıt `scratchpad/oyun-2026-09-20/`.
 - Site değişikliği: `src/data/ders-materyalleri.json`; adlar sabit, sürüm çoğaltılmadı.
 - Portalın 19 Eylül haftalık tekrar notunda yalnız `odevler/2026-09-19.ezber.tr` alanındaki kart seçeneği kitap/defterle değiştirildi; eşzamanlı değişiklik önkoşulu ve canlı geri okuma doğrulandı. Diğer kayıtlar değiştirilmedi.
-- Durum: son kalite kapıları sürüyor; commit/deploy/canlı hash sonuçları henüz tamamlanmadı. Bu kayıt sonuçlarla güncellenecek.
+- İçerik commit'i `61bde97dcf563b04c3968c43f9eb6aceff147ae0`; Pages [35455560570](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35455560570) başarılı.
+- Yayın sonrası kanıt: 65/65 canlı Release indirmesi HTTP 200 ve SHA-256 eşleşmesi; OneDrive yerel 55/55 SHA-256 eşleşmesi. TR/FR/EN canlı ve yerel kontrollerde her gün 13 bağlantı, altısı öğretici; 320/390/1440 px taşma 0, açık/koyu temada ciddi/kritik ihlal 0 ve klavye odağı geçer.
 - Özel veli iletileri ve öğrenciye özel meşk defterleri kamuya açık yayına dahil edilmedi; kişisel bilgiler bu depoya alınmadı.
