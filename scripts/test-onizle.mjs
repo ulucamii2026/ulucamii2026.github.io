@@ -11,7 +11,11 @@ if (server.port !== 4401) {
   await server.stop();
   throw new Error('4401 portu kullanımda; başka porta veya sunucuya geçilmedi.');
 }
+// Çözülmeyen Promise tek başına Node olay döngüsünü açık tutmaz.
+// Referanslı zamanlayıcı, önizleme soketi unref edilse de süreci korur.
+const keepAlive = setInterval(() => {}, 60_000);
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, async () => {
+  clearInterval(keepAlive);
   await server.stop(); process.exit(0);
 });
 
