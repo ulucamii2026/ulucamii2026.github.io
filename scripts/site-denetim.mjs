@@ -240,6 +240,9 @@ for (const d of ['fr', 'en']) {
   /* Dis kurumlarin sitede gosterilen kendi e-postalari (bizim adreslerimiz site.yaml'da). */
   const disKurumEposta = new Set([
     'info@diyanet.be',              // Belcika Diyanet Vakfi
+    // Diyanet Aylık Temmuz 2026 künyesi, abone işlemleri; 19 Eylül 2026 doğrulaması:
+    // https://dijital.diyanet.gov.tr/File/Download?path=8334_1.pdf&id=8334
+    'dosim@diyanet.gov.tr', 'dosabone@diyanet.gov.tr',
     'noreply@ulucamii.be',          // Veli portali e-postalarinin gonderen adresi (Firebase ozel SMTP,
                                     // 7 Eyl 2026). Gelen kutusu yok; yanitlar info@'ya yonlendirilir.
                                     // Gizlilik sayfasinda aciklanir; site.yaml'a yazilmaz (iletisim adresi degil).
