@@ -29,27 +29,37 @@ Kitaplar için [camimizin Diyanet Kütüphanesi’ni ziyaret edin](/tr/diyanet-k
 
 Dergilerin içerik dili Türkçedir. Fransızca ve diğer dillerde kitap arayanlar, kütüphanemizin dil filtresini kullanabilir.
 
-## Belçika ve Avrupa’dan basılı abonelik
+## Belçika’dan basılı abonelik: önce yurt dışı birimine başvurun
 
-Diyanet Aylık Dergi’nin 2026 künyesi, **yurt dışı temsilcilikleri olarak Din Hizmetleri Müşavirlikleri ve Ataşeliklerini** gösteriyor. Belçika’daki okuyucular, yerel yönlendirme için camimize veya [Belçika Diyanet Vakfı’na](https://www.diyanet.be) başvurabilir.
+Diyanet’in resmî iletişim sayfasında ayrı bir **Yurt Dışı Abonelik İşlemleri** birimi bulunuyor. [Birimin güncel iletişim bilgilerini açın](https://diniyayinlar.diyanet.gov.tr/sayfa/44). Yazılı bilgi için [dosabone@diyanet.gov.tr](mailto:dosabone@diyanet.gov.tr) adresine başvurabilir; alternatif olarak [dosim@diyanet.gov.tr](mailto:dosim@diyanet.gov.tr) adresini kullanabilirsiniz.
 
-Abonelik işlemleri için resmî merkez: [dosim@diyanet.gov.tr](mailto:dosim@diyanet.gov.tr) veya [dosabone@diyanet.gov.tr](mailto:dosabone@diyanet.gov.tr).
+Belçika’dan başvuru için önerdiğimiz yol:
 
-Başvurunuzda dergi adını, kaç adet istediğinizi, teslimat ülkesini **Belçika** olarak ve posta kodunuzu belirtin. Şu bilgileri isteyin:
+1. **Derginizi ve teslimat yerini belirtin.** Dergi adı, adet, istediğiniz abonelik süresi, ülke olarak Belçika ve posta kodunuzu yazın.
+2. **Ülkenize özel yazılı bilgi alın.** Belçika’ya gönderim imkânını, bireysel veya temsilcilik üzerinden başvuru yolunu, posta dâhil toplam ücreti, para birimini ve ödeme yöntemini sorun.
+3. **Teyit edilen şartlarla işlemi tamamlayın.** İlk sayıyı, gönderim sıklığını ve tahmini teslim süresini öğrenin; başvuru ve ödeme onayını saklayın.
 
-- Belçika’ya teslimat yapılıp yapılmadığı ve bireysel/temsilcilik üzerinden başvuru yolu.
-- Abonelik süresi, başlayacağı sayı ve gönderim sıklığı.
-- Güncel yurt dışı ücret, para birimi, posta dâhil toplam tutar ve ödeme yöntemi.
+2026 dergi künyesi, yurt dışı temsilcilikleri olarak Din Hizmetleri Müşavirlikleri ve Ataşeliklerini gösteriyor. Yerel yönlendirme için camimize veya [Belçika Diyanet Vakfı’na](https://www.diyanet.be) da başvurabilirsiniz. Bu bilgi, Vakfın dergi aboneliği için çevrim içi ödeme veya dağıtım hizmeti verdiğini tek başına doğrulamaz.
 
-**19 Eylül 2026 kontrolünde Belçika için güncel avro tarifesi ve gönderim bedeli açıkça doğrulanamadı.** Abonelik sitesindeki TL fiyatını veya “kargo ücretsiz” ifadesini Belçika teslimatına kendiliğinden uygulamayın. Ödeme öncesinde resmî merkezden ülkenize ait toplam tutarı teyit edin.
+## Belçika için ücret ve kargo durumu
 
-E-postanız için örnek: “Belçika’da ikamet ediyorum. Diyanet Aylık Dergi’ye bir adet yıllık basılı abonelik yaptırmak istiyorum. Posta kodum … . Belçika’ya gönderim, posta dâhil güncel ücret, başlangıç sayısı ve ödeme yöntemi hakkında bilgi rica ederim.”
+**19 Eylül 2026 araştırmasında Belçika için güncel avro tarifesi, posta bedeli ve kesin teslimat süresi açıkça doğrulanamadı.** Eski yıllara ait Avrupa fiyatlarını güncel abonelik bedeli olarak yayımlamıyoruz.
 
-## İnternet üzerinden nasıl başvurulur?
+Abonelik portalının [Sipariş Teslimat ve İade Şartları](https://dergiabone.diyanet.gov.tr/pages/page-content/10/Sipari%C5%9F%20Teslimat%20ve%20%C4%B0ade%20%C5%9Eartlar%C4%B1) sayfası gönderimi il ve ilçe merkezleriyle sınırlı anlatıyor; Belçika’ya teslimatı açıkça belirtmiyor. Bu nedenle sitedeki TL fiyatlarını ve ücretsiz kargo ifadesini Belçika için geçerli bir teklif olarak kabul etmeyin. Bu belirsizlik, Belçika’ya abonelik yapılamadığı anlamına da gelmez; ülkeye özel şartları yurt dışı birimi teyit etmelidir.
 
-[Resmî dergi abonelik sitesinde](https://dergiabone.diyanet.gov.tr) **Giriş Yap → Bireysel Giriş → Üyelik Oluştur** yolunu kullanabilirsiniz. Hesabınız varsa giriş yapın. **Abone Ol** bölümünde dergiyi seçin.
+## Gönderebileceğiniz bilgi talebi
 
-Belçika adresinin kabul edildiğini ve yurt dışı toplam tutarının açık olduğunu kontrol ederek ilerleyin. Ülke veya adres alanı uygun değilse yanlış bir Türkiye adresiyle işlem yapmayın; abonelik merkezine başvurun. Camimiz bu rehber üzerinden ödeme ya da abonelik bilgisi toplamaz.
+**Konu: Belçika’dan Diyanet dergisi aboneliği hakkında**
+
+> Merhaba, Belçika’da ikamet ediyorum. [Dergi adı] için [adet] adet, bir yıllık basılı abonelik yaptırmak istiyorum. Posta kodum [posta kodu]. Belçika’ya gönderim yapılıyor mu? Başvuru bireysel olarak mı, temsilcilik üzerinden mi tamamlanıyor? Posta dâhil toplam tutarı, para birimini, ödeme yöntemini, başlangıç sayısını ve gönderim sıklığını bildirmenizi rica ederim. Teşekkür ederim.
+
+Köşeli parantez içindeki alanları kendinize göre değiştirerek abonelik birimine gönderebilirsiniz.
+
+## İnternet üzerinden üyelik yeterli mi?
+
+[Resmî abonelik sitesinde](https://dergiabone.diyanet.gov.tr) **Giriş Yap → Bireysel Giriş → Üyelik Oluştur** yolu bulunuyor. Ancak incelediğimiz hesap açma ekranında ülke ve teslimat adresi seçimi yok; **hesap açılması Belçika’ya teslimat onayı anlamına gelmiyor.**
+
+Yurt dışı birimi sizi bu portala yönlendirirse, derginizi **Abone Ol** bölümünden seçin. Ödeme öncesinde Belçika adresinizin kabul edildiğini ve ülkenize ait toplam tutarı kontrol edin. Adres alanları uygun değilse birimden yardım alın. Camimiz bu rehber üzerinden ödeme veya abonelik bilgisi toplamaz.
 
 ## İslam İlmihali ile temel bilgilerinizi güçlendirin
 

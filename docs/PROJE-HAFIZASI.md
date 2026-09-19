@@ -29,6 +29,7 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | 18 Eylül devir notu ve hata avı | [18 Eylül devir notu](DEVIR-NOTU-2026-09-18.md) | Personel, favicon, WCAG A11y, materyal koleksiyonu ve tam denetim |
 | 19 Eylül hata avı / son değişiklikler | [19 Eylül denetimi](HATA-AVI-2026-09-19.md) | CMS iç içe alan denetimi, çeviri yanıtı/ad bütünlüğü, personel kontrastı ve tabloda klavye erişimi |
 | BDV hac/umre takvimi, müşavirlik ve Diyanet yayın rehberi | [19 Eylül içerik yayını](HATA-AVI-2026-09-19.md#yayın-hazırlığı--19-eylül-2026) | `etkinlik-tarihleri.ts`, `sayfalar/*/musavirlik.md`, `sayfalar/*/yayinrehberi.md`; resmî kaynak ve yurt dışı abonelik sınırı |
+| Belçika’dan dergi aboneliği | [Belçika araştırması](BELCIKA-DERGI-ABONELIGI.md) | Yurt dışı birimi, portal teslimat sınırı, ülkeye özel ücret teyidi; eski avro tarifelerini kullanma |
 
 ## Tekrar keşfedilmemesi gereken kararlar
 

@@ -29,21 +29,35 @@ Our [Diyanet Library](/en/diyanet-library/) also offers free books with language
 
 These magazines are in Turkish. For books in other languages, use the library’s language filter.
 
-## Printed subscriptions in Belgium and Europe
+## From Belgium: contact the overseas subscription office first
 
-Diyanet Aylık’s 2026 publication details identify religious services counsellors and attachés as overseas representatives. Our mosque or the [Diyanet Foundation of Belgium](https://www.diyanet.be) can help you find the appropriate contact.
+Diyanet’s official contact page lists a dedicated **Yurt Dışı Abonelik İşlemleri** office for overseas subscriptions. See its [official contact details](https://diniyayinlar.diyanet.gov.tr/sayfa/44). For written information, email [dosabone@diyanet.gov.tr](mailto:dosabone@diyanet.gov.tr), or [dosim@diyanet.gov.tr](mailto:dosim@diyanet.gov.tr).
 
-Contact the official subscription office at [dosim@diyanet.gov.tr](mailto:dosim@diyanet.gov.tr) or [dosabone@diyanet.gov.tr](mailto:dosabone@diyanet.gov.tr).
+1. **Describe your request:** magazine, number of copies, preferred subscription length, delivery country Belgium and postcode.
+2. **Get written confirmation:** delivery availability, individual application or representative route, total including postage, currency and payment method.
+3. **Complete the confirmed process:** establish the first issue, dispatch frequency and estimated delivery time. Keep your application and payment confirmations.
 
-Specify the magazine, number of copies, delivery country **Belgium** and postcode. Ask about delivery availability, the application process, subscription length, first issue, dispatch frequency, total including postage, currency and payment method.
+The 2026 publication details identify religious services counsellors and attachés as overseas representatives. Our mosque or the [Diyanet Foundation of Belgium](https://www.diyanet.be) can help you find the right contact. This does not itself confirm that the Foundation provides online subscription payments or magazine distribution.
 
-**At our check on 19 September 2026, a current euro price and delivery charge for Belgium could not be clearly confirmed.** Do not automatically apply the website’s Turkish-lira prices or “free delivery” notice to Belgium. Confirm your country’s total before paying.
+## Prices and delivery to Belgium
 
-## Using the subscription website
+**As of 19 September 2026, a current euro price, postage charge and firm delivery time for Belgium could not be clearly confirmed.** We do not present old European rates as current prices.
 
-On the [official subscription website](https://dergiabone.diyanet.gov.tr), select **Giriş Yap → Bireysel Giriş → Üyelik Oluştur** to create an account, or sign in. Choose a magazine under **Abone Ol**.
+The portal’s [delivery terms](https://dergiabone.diyanet.gov.tr/pages/page-content/10/Sipari%C5%9F%20Teslimat%20ve%20%C4%B0ade%20%C5%9Eartlar%C4%B1) describe delivery limited to provincial and district centres, without explicitly confirming Belgium. Its Turkish-lira prices and free-delivery wording are therefore not a confirmed offer for Belgium. This does not establish that subscribing from Belgium is impossible either: the overseas office must clarify the applicable terms.
 
-Check that your Belgian address is accepted and the overseas total is clear. If not, contact the subscription office instead of entering an inaccurate Turkish address. Our mosque does not collect payments or subscription details through this guide.
+## A sample enquiry
+
+**Subject: Diyanet magazine subscription from Belgium**
+
+> Hello, I live in Belgium and would like an annual printed subscription to [magazine], for [number] copy/copies. My postcode is [postcode]. Do you deliver to Belgium? Should I apply individually or through a representative? Please confirm the total including postage, currency, payment method, first issue and dispatch frequency. Thank you.
+
+Replace the bracketed details before sending your enquiry to the subscription office.
+
+## Is an online account enough?
+
+The [official website](https://dergiabone.diyanet.gov.tr) offers **Giriş Yap → Bireysel Giriş → Üyelik Oluştur**. The account creation form we checked has no country or delivery-address selection: **creating an account does not confirm delivery to Belgium.**
+
+If the overseas office directs you to this portal, select the magazine under **Abone Ol**. Check that your Belgian address is accepted and the applicable total is clear before paying. Ask the office for help if the address fields are unsuitable. Our mosque does not collect payments or subscription details through this guide.
 
 ## Discover İslam İlmihali
 

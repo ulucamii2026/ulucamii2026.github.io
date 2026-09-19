@@ -29,21 +29,35 @@ Notre [bibliothèque Diyanet](/fr/bibliotheque-diyanet/) propose aussi des livre
 
 Ces revues sont en turc. Pour des livres en français, utilisez le filtre de langue de notre bibliothèque.
 
-## Abonnement imprimé en Belgique et en Europe
+## Depuis la Belgique : contacter le service des abonnements à l’étranger
 
-Les mentions éditoriales de Diyanet Aylık en 2026 désignent les conseillers et attachés des services religieux comme représentants à l’étranger. Notre mosquée ou la [Fondation Diyanet de Belgique](https://www.diyanet.be) peuvent vous orienter.
+La page officielle mentionne un service **Yurt Dışı Abonelik İşlemleri**, chargé des abonnements à l’étranger. Consultez ses [coordonnées officielles](https://diniyayinlar.diyanet.gov.tr/sayfa/44). Pour une réponse écrite, contactez [dosabone@diyanet.gov.tr](mailto:dosabone@diyanet.gov.tr), ou [dosim@diyanet.gov.tr](mailto:dosim@diyanet.gov.tr).
 
-Le service officiel des abonnements est joignable à [dosim@diyanet.gov.tr](mailto:dosim@diyanet.gov.tr) ou [dosabone@diyanet.gov.tr](mailto:dosabone@diyanet.gov.tr).
+1. **Précisez votre demande :** revue, nombre d’exemplaires, durée souhaitée, pays Belgique et code postal.
+2. **Demandez une confirmation écrite :** possibilité de livraison en Belgique, démarche individuelle ou par un représentant, total avec port, devise et moyen de paiement.
+3. **Finalisez selon les conditions confirmées :** premier numéro, fréquence d’envoi et délai estimé. Conservez les confirmations de demande et de paiement.
 
-Indiquez la revue, le nombre d’exemplaires, le pays **Belgique** et votre code postal. Demandez confirmation de la livraison, de la procédure, de la durée, du premier numéro, de la fréquence d’envoi, du montant total avec port, de la devise et du mode de paiement.
+Les mentions éditoriales de 2026 désignent les conseillers et attachés des services religieux comme représentants à l’étranger. Notre mosquée ou la [Fondation Diyanet de Belgique](https://www.diyanet.be) peuvent vous orienter. Cela ne confirme pas que la Fondation propose elle-même un paiement en ligne ou une distribution des revues.
 
-**Lors du contrôle du 19 septembre 2026, aucun tarif actuel en euros ni coût d’envoi pour la Belgique n’a pu être confirmé clairement.** Les prix en livres turques et la mention « livraison gratuite » du site ne doivent pas être considérés automatiquement comme valables pour la Belgique. Faites confirmer le total avant tout paiement.
+## Prix et livraison en Belgique
 
-## Démarche sur le site officiel
+**Au 19 septembre 2026, aucun tarif actuel en euros, frais de port ou délai ferme pour la Belgique n’a pu être confirmé clairement.** Les anciens tarifs européens ne sont pas repris comme prix actuels.
 
-Sur le [site d’abonnement](https://dergiabone.diyanet.gov.tr), suivez **Giriş Yap → Bireysel Giriş → Üyelik Oluştur** pour créer un compte, ou connectez-vous. Choisissez la revue dans **Abone Ol**.
+Les [conditions de livraison du portail](https://dergiabone.diyanet.gov.tr/pages/page-content/10/Sipari%C5%9F%20Teslimat%20ve%20%C4%B0ade%20%C5%9Eartlar%C4%B1) décrivent des envois limités aux centres des provinces et districts, sans confirmer expressément la Belgique. Les prix en livres turques et la livraison gratuite ne constituent donc pas une offre confirmée pour la Belgique. Cela ne signifie pas non plus que l’abonnement depuis la Belgique est impossible : le service compétent doit préciser les conditions.
 
-Vérifiez que votre adresse belge est acceptée et que le total pour l’étranger est indiqué. Si ce n’est pas le cas, contactez le service des abonnements ; ne renseignez pas une adresse turque inexacte. Notre mosquée ne collecte ni paiement ni données d’abonnement au moyen de ce guide.
+## Exemple de demande à envoyer
+
+**Objet : Abonnement Diyanet depuis la Belgique**
+
+> Bonjour, je réside en Belgique et souhaite un abonnement imprimé annuel à [revue], pour [nombre] exemplaire(s). Mon code postal est [code postal]. Livrez-vous en Belgique ? La démarche est-elle individuelle ou passe-t-elle par un représentant ? Merci de préciser le total avec port, la devise, le mode de paiement, le premier numéro et la fréquence d’envoi.
+
+Remplacez les éléments entre crochets avant d’envoyer votre demande au service des abonnements.
+
+## Un compte en ligne suffit-il ?
+
+Sur le [site officiel](https://dergiabone.diyanet.gov.tr), le chemin est **Giriş Yap → Bireysel Giriş → Üyelik Oluştur**. Le formulaire de création de compte vérifié ne demande ni pays ni adresse de livraison : **ouvrir un compte ne confirme pas la livraison en Belgique.**
+
+Si le service vous oriente vers ce portail, choisissez la revue dans **Abone Ol**. Vérifiez l’acceptation de votre adresse belge et le total applicable avant de payer. Si les champs ne conviennent pas, demandez de l’aide au service. Notre mosquée ne collecte ni paiement ni données d’abonnement au moyen de ce guide.
 
 ## Découvrir İslam İlmihali
 
