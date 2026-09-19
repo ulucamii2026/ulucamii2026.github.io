@@ -7,6 +7,19 @@ Kurulum ve doğrulama rehberi: `docs/CODEX-CALISMA.md`.
 Yeni kalıcı karar veya tekrar kullanılacak doğrulanmış çözüm oluştuğunda ilgili
 konu notunu güncelle; buraya işlem günlüğü ekleme. Canlı durum/test kanıtını tarihli tut.
 
+## Kalıcı kural — Yayın sonrası proje kayıtları (19 Eylül 2026)
+
+Kullanıcının isteğiyle her web yayını aynı oturumda `docs/YAYIN-KAYITLARI.md` içinde
+tarihli olarak belgelenir. Başka kaynak proje varsa oradaki yayın/kalite raporu ve
+`DEVAM.md` de güncellenir; kurs için `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-KAYITLARI.md`.
+Kayda tarih/saat dilimi, kapsam, değişen yollar, içerik commit'i, Release/dosya sayıları,
+deploy run URL'si ve sonucu, canlı URL'ler, dosya/hash ve ilgili test sonuçları, açık sınırlar
+yazılır. Yükleme/push/deploy/canlı kontrol ayrı aşamalardır; son ikisi doğrulanmadan “yayında”
+denmez. Kesintide son tamamlanan aşama ve sonraki kesin adım yazılır. Geçici bekleyen
+satırlar sonuçla güncellenir; sır ve kişisel veri eklenmez. Salt kayıt commit'i yeni
+içerik yayını sayılmaz; kayıt asıl içerik commit'ine/deploy'una bağlanır. Bu başlık
+kalıcı kuraldır; işlem günlüğü ayrı dosyada tutulur.
+
 ## Hesap ve yayın sınırı
 
 - GitHub: **ulucamii2026**, depo `ulucamii2026/ulucamii2026.github.io`.

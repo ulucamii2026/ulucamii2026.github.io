@@ -236,6 +236,9 @@
      opaklık/renk geçişleri ve en çok 150 ms kalır. Hero çapraz geçişi kendi kuralına
      tabi (HeroSlayt.astro) — burada ona dokunulmaz. */
   @media (prefers-reduced-motion: reduce) {
+    /* Kök kaydırıcı da hareket tercihini izlemeli; aksi halde Tab odağı
+       başarı panelinin aşağısına geçerken ekran geride kalır. */
+    html { scroll-behavior: auto; }
     .hero-giris > *, .hero-serit-cizgi, .reveal, .serit { animation: none !important; transition-property: opacity !important; transition-duration: 150ms !important; transition-delay: 0s !important; opacity: 1 !important; transform: none !important; }
     .kart, .kart-kagit, .dugme, button, .cip, .acilir, #mobil-menu { transition-property: opacity, background-color, border-color, box-shadow !important; transition-duration: 150ms !important; transform: none !important; }
     a.kart:hover, a.kart-kagit:hover, .kart:has(> a:hover), .dugme:active, button:active,
