@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-09-13",
+  "guncelleme": "2026-09-19",
   "depo": "ulucamii2026/ulucamii2026.github.io",
   "donem": "2026-2027",
   "gunler": [
@@ -339,7 +339,7 @@
             "fr": "Le Saint Coran"
           },
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 4562842,
+          "boyut": 4578794,
           "slayt": 20,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
@@ -360,7 +360,7 @@
             "fr": "Notre Créateur est Allah"
           },
           "dosya": "Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
-          "boyut": 8190596,
+          "boyut": 8207054,
           "slayt": 21,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
           "pdf": {
@@ -381,7 +381,7 @@
             "fr": "Je fais mes ablutions, je me purifie (2/2)"
           },
           "dosya": "Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
-          "boyut": 8100603,
+          "boyut": 8115683,
           "slayt": 21,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
           "pdf": {
@@ -391,7 +391,68 @@
           }
         }
       ],
-      "ekler": []
+      "ekler": [
+        {
+          "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 144021,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 1 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ogretici-Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
+          "boyut": 2821995,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PDF)",
+            "fr": "Guide enseignant · cours 1 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ogretici-Sunum-1-Kuran-i-Kerim.pdf"
+        },
+        {
+          "dosya": "Ogretici-Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx",
+          "boyut": 148160,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 2 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ogretici-Sunum-2-Itikat-Yaraticimiz-Allahtir.pptx"
+        },
+        {
+          "dosya": "Ogretici-Sunum-2-Itikat-Yaraticimiz-Allahtir.pdf",
+          "boyut": 2890421,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PDF)",
+            "fr": "Guide enseignant · cours 2 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ogretici-Sunum-2-Itikat-Yaraticimiz-Allahtir.pdf"
+        },
+        {
+          "dosya": "Ogretici-Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx",
+          "boyut": 147884,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 3 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ogretici-Sunum-3-Ibadet-Abdest-Temizleniyorum.pptx"
+        },
+        {
+          "dosya": "Ogretici-Sunum-3-Ibadet-Abdest-Temizleniyorum.pdf",
+          "boyut": 2896057,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PDF)",
+            "fr": "Guide enseignant · cours 3 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-19/Ogretici-Sunum-3-Ibadet-Abdest-Temizleniyorum.pdf"
+        }
+      ]
     },
     {
       "tarih": "2026-09-20",
@@ -417,7 +478,7 @@
             "fr": "Le Saint Coran"
           },
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 3045039,
+          "boyut": 3057318,
           "slayt": 14,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
@@ -438,7 +499,7 @@
             "fr": "La jeunesse de notre Prophète"
           },
           "dosya": "Sunum-2-Siyer-Peygamberimizin-Gencligi.pptx",
-          "boyut": 7455047,
+          "boyut": 7474801,
           "slayt": 22,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-2-Siyer-Peygamberimizin-Gencligi.pptx",
           "pdf": {
@@ -459,7 +520,7 @@
             "fr": "J'aime ma famille"
           },
           "dosya": "Sunum-3-Ahlak-Ailemi-Seviyorum.pptx",
-          "boyut": 8642627,
+          "boyut": 8661282,
           "slayt": 23,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Sunum-3-Ahlak-Ailemi-Seviyorum.pptx",
           "pdf": {
@@ -469,7 +530,68 @@
           }
         }
       ],
-      "ekler": []
+      "ekler": [
+        {
+          "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 117299,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 1 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ogretici-Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
+          "boyut": 1988484,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PDF)",
+            "fr": "Guide enseignant · cours 1 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ogretici-Sunum-1-Kuran-i-Kerim.pdf"
+        },
+        {
+          "dosya": "Ogretici-Sunum-2-Siyer-Peygamberimizin-Gencligi.pptx",
+          "boyut": 154588,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 2 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ogretici-Sunum-2-Siyer-Peygamberimizin-Gencligi.pptx"
+        },
+        {
+          "dosya": "Ogretici-Sunum-2-Siyer-Peygamberimizin-Gencligi.pdf",
+          "boyut": 3196579,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PDF)",
+            "fr": "Guide enseignant · cours 2 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ogretici-Sunum-2-Siyer-Peygamberimizin-Gencligi.pdf"
+        },
+        {
+          "dosya": "Ogretici-Sunum-3-Ahlak-Ailemi-Seviyorum.pptx",
+          "boyut": 158064,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 3 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ogretici-Sunum-3-Ahlak-Ailemi-Seviyorum.pptx"
+        },
+        {
+          "dosya": "Ogretici-Sunum-3-Ahlak-Ailemi-Seviyorum.pdf",
+          "boyut": 3301758,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PDF)",
+            "fr": "Guide enseignant · cours 3 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-20/Ogretici-Sunum-3-Ahlak-Ailemi-Seviyorum.pdf"
+        }
+      ]
     },
     {
       "tarih": "2026-09-26",
