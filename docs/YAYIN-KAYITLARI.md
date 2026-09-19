@@ -4,6 +4,22 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 19 Eylül 2026 — Diyanet içerikleri ve site hata düzeltmeleri
+
+- Durum: yayımlandı ve canlı doğrulandı. Kullanıcının açık içerik/yayın talimatı.
+- İçerik/teknik commit: `82871f2`; görsel referans ve son denetim: `d0c0d8f`.
+- [Pages 35456237657](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35456237657): build ve deploy başarılı.
+- [Hac kayıtları](https://ulucamii.be/tr/duyurular/2027-hac-kayitlari-devam-ediyor/): ön kayıt ve kesin kayıt son günü 30 Ekim. Ortak tarih kaynağı ve hizmet sayfaları düzeltildi; eski duyurular güncel takvime yönlendiriyor.
+- [Taif ziyaretli Aralık umresi](https://ulucamii.be/tr/duyurular/taif-ziyaretli-aralik-umresi/): 20 Aralık–1 Ocak, son başvuru 20 Kasım; mevcut duyuru yenilendi.
+- [Salih GÖR / Müşavirlik](https://ulucamii.be/tr/musavirlik-salih-gor/): TR/FR/EN kalıcı tanıtım; göreve başlama 20 Nisan 2026.
+- [Yeni eğitim yılı mesajı](https://ulucamii.be/tr/duyurular/yeni-egitim-yili-birlikte-ogreniyoruz/): Diyanet'in 14 Eylül mesajından hareketle yerel kursa uyarlama.
+- [Dergi aboneliği ve ücretsiz erişim](https://ulucamii.be/tr/diyanet-yayinlari-rehberi/): TR/FR/EN rehber, resmî dış abonelik temsilcilikleri/e-postaları ve anonim PDF erişimi. Belçika güncel ücret/posta bedeli açıkça doğrulanamadığından fiyat vaadi yok.
+- [İslam İlmihali tanıtımı](https://ulucamii.be/tr/duyurular/diyanet-islam-ilmihali-tanitimi/): resmî tanıtım ve ürün künyesi; ücretsiz PDF iddiası yok.
+- Teknik düzeltmeler: CMS alan eşleştirmesi, çeviride ad bütünlüğü/yanıt kontrolü, personel kartı kontrastı ve kenarlığı, geniş tabloda klavye erişimi.
+- Doğrulama: toplu kapının web dışındaki adımları geçti; 442 web testi ve içerik nedeniyle yenilenen 6 görsel referans. Son rebase/build ardından normal modda 110/110 web testi; ek 54 içerik/görünüm kontrolü. Build: 900 sayfa.
+- Canlı: 25/25 sayfa/dosya kontrolü; `govde.js` ve CMS yapılandırması SHA-256 eşit, çeviri paketindeki yeni kontrol mevcut. Kanıt: `D:/tmp/site-yayin-dogrulama-20260919.json`.
+- Ayrıntılar ve sınırlar: [19 Eylül denetimi](HATA-AVI-2026-09-19.md). Öğrenci dosyaları ve özel işlem betikleri bu yayına alınmadı.
+
 ## 19 Eylül 2026 — 19–20 Eylül öğretici materyalleri
 
 - Durum: tamamlandı. Önceki oturumun doğrulanmış sonucu bu kalıcı indekse aktarıldı.
