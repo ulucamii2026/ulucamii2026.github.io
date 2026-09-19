@@ -21,3 +21,6 @@ Diplômé en 2014 du centre de hautes études religieuses Haseki d'Istanbul (25e
 Au nom du comité de gestion, de l’imam et des fidèles de la Mosquée Ulu Camii de Marche-en-Famenne, nous souhaitons la bienvenue et plein succès à M. le Conseiller Salih GÖR dans ses nouvelles responsabilités au service de la communauté musulmane en Belgique.
 
 — Le Conseil d’administration de la Mosquée Ulu Camii
+
+
+[Sa fonction et son parcours : notre page de présentation](/fr/conseiller-salih-gor/).

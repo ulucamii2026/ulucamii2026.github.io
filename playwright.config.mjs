@@ -23,7 +23,9 @@ export default defineConfig({
   webServer: {
     command: 'node scripts/test-onizle.mjs',
     url: 'http://127.0.0.1:4401/tr/',
-    reuseExistingServer: true,
+    // Başka test koşusunun sunucusu o koşu bitince kapanabilir; bu koşu kendi
+    // sunucusuna sahip olmalı. Dolu portta mevcut sürece dokunmadan hata verir.
+    reuseExistingServer: false,
     timeout: 30_000,
   },
 });

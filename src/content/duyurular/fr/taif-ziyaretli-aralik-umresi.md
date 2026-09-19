@@ -1,6 +1,6 @@
 ---
 baslik: "Omra de décembre avec visite de Taïf : inscriptions ouvertes"
-tarih: 2026-08-27
+tarih: 2026-09-19
 ozet: "La Fondation Diyanet de Belgique organise une omra de 13 jours et 12 nuits : départ le 20 décembre 2026 vers Médine, retour le 1er janvier 2027 depuis Djeddah. Hôtels à distance de marche ; à partir de 2 290 € par personne en chambre de 4. Clôture des inscriptions le 20 novembre 2026."
 kapak: /media/duyurular/taif-umresi-2026-afis.webp
 kapakAlt: "Affiche de la Fondation Diyanet de Belgique pour l'omra de décembre avec visite de Taïf — départ 20.12.2026 Médine, retour 01.01.2027 Djeddah, clôture le 20 novembre 2026"
@@ -8,6 +8,8 @@ etiketler:
   - umre
   - diyanet
 oneCikan: true
+oneCikanSon: 2026-11-20
+vitrinSon: 2026-11-20
 ---
 
 <div class="uyari"><p><strong>Clôture des inscriptions : 20 novembre 2026.</strong> Le nombre de places est limité et les inscriptions se font uniquement en ligne.</p></div>
@@ -15,6 +17,13 @@ oneCikan: true
 La Fondation Diyanet de Belgique a ouvert les inscriptions pour l'**omra de décembre avec visite de Taïf**, dans le cadre de la saison 2026-2027. Le programme dure **13 jours et 12 nuits**, et l'hébergement se fait dans des hôtels situés **à distance de marche** du Haram.
 
 Le voyage comprend également une visite de **Taïf**, la ville où le Prophète s'était rendu pour transmettre son message et où il subit de dures épreuves.
+
+## La visite de Taif fait partie du programme
+
+La visite de Taif est incluse dans l’omra de décembre annoncée par la Fondation. Demandez le programme définitif et les horaires au moment de votre inscription. Il ne s’agit pas d’une inscription à un voyage séparé.
+
+**Rappel du 19 septembre 2026 :** L’affiche officielle fixe la date limite au 20 novembre 2026. Confirmez les places disponibles et le programme auprès de la Fondation avant de vous engager.
+
 
 ## En bref
 

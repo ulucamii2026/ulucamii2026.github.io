@@ -1,10 +1,10 @@
 /** Süreli duyuru tarihleri — tek kaynak. HacBandi.astro ve DiyanetHizmetleri.astro buradan
  * import eder; iki dosyada ayrı ayrı kopyalanmaz, senkron kaybı riski ortadan kalkar. */
-/** Ön kayıt son günü — cami din görevlisinin 10 Eylül 2026 teyidi. */
-export const HAC_SON_GUN = new Date('2026-09-11T23:59:59+02:00');
-/** Kesin kayıt son günü — 10 Eylül 2026 teyidindeki ay sonu; Brüksel yaz saati. */
-export const HAC_KESIN_SON_GUN = new Date('2026-09-30T23:59:59+02:00');
-export const HAC_DUYURU_SLUG = '2027-hac-on-kayit-son-gunler';
+/** Ön kayıt son günü — BDV resmî ön kayıt sayfası, 19 Eylül 2026 kontrolü. */
+export const HAC_SON_GUN = new Date('2026-10-30T23:59:59+01:00');
+/** Kesin kayıt son günü — BDV ArticleID/3340; Brüksel kış saati. */
+export const HAC_KESIN_SON_GUN = new Date('2026-10-30T23:59:59+01:00');
+export const HAC_DUYURU_SLUG = '2027-hac-kayitlari-devam-ediyor';
 
 export const UMRE_SON_GUN = new Date('2026-11-20T23:59:59+01:00');
 export const UMRE_DUYURU_SLUG = 'taif-ziyaretli-aralik-umresi';

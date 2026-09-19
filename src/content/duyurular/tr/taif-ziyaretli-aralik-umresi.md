@@ -1,6 +1,6 @@
 ---
 baslik: "Taif Ziyaretli Aralık Umresi: Kayıtlar Açık"
-tarih: 2026-08-27
+tarih: 2026-09-19
 ozet: "Belçika Diyanet Vakfı’nın 13 gün 12 gecelik umre programı 20 Aralık 2026’da Medine’ye gidiş, 1 Ocak 2027’de Cidde’den dönüşle düzenleniyor. Oteller yürüme mesafesinde; ücret 4 kişilik odada kişi başı 2.290 €’dan başlıyor. Son başvuru 20 Kasım 2026."
 kapak: /media/duyurular/taif-umresi-2026-afis.webp
 kapakAlt: "Belçika Diyanet Vakfı Taif ziyaretli Aralık umresi afişi — gidiş 20.12.2026 Medine, dönüş 01.01.2027 Cidde, son başvuru 20 Kasım 2026"
@@ -8,6 +8,8 @@ etiketler:
   - umre
   - diyanet
 oneCikan: true
+oneCikanSon: 2026-11-20
+vitrinSon: 2026-11-20
 ---
 
 <div class="uyari"><p><strong>Son başvuru: 20 Kasım 2026.</strong> Kontenjan sınırlıdır; kayıtlar yalnızca çevrimiçi alınır.</p></div>
@@ -15,6 +17,13 @@ oneCikan: true
 Belçika Diyanet Vakfı, 2026-2027 sezonunun **Taif ziyaretli Aralık umresi** için kayıtları açtı. Program **13 gün 12 gece** sürüyor ve konaklama Harem’e **yürüme mesafesindeki** otellerde yapılıyor.
 
 Yolculuk, Hz. Peygamber’in tebliğ için gittiği ve orada büyük eziyet gördüğü **Tâif**’e bir ziyareti de kapsıyor.
+
+## Taif ziyareti programın içinde
+
+Taif ziyareti, Vakfın duyurduğu Aralık umresi paketine dâhildir. Ziyaretin gün ve saat ayrıntıları için kayıt sırasında Vakfın kesin programını isteyin. Bu duyuru ayrıca bir Taif turu kaydı açmaz.
+
+**19 Eylül 2026 hatırlatması:** Resmî afişteki son başvuru 20 Kasım 2026’dır. Yolculuk ve ödeme kararından önce güncel kontenjanı ve programı Vakıftan teyit edin.
+
 
 ## Künye
 

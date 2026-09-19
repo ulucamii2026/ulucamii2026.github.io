@@ -53,6 +53,22 @@ const onMaddeAnahtarlari = (metin) => {
   return m[1].split(/\r?\n/).filter((s) => /^[A-Za-z_][\w-]*\s*:/.test(s)).map((s) => s.split(':')[0].trim());
 };
 const alanAdlari = (fields) => (fields || []).map((f) => f.name);
+// İç içe ayarları da denetle: yalnız köke bakmak personel ve fon kayıt bağlantısı gibi
+// yeni alanların CMS'de düzenlenemediğini gizliyordu. Değerleri/kişisel veriyi raporlama.
+const veriAlanlariniKontrolEt = (veri, fields, etiket) => {
+  if (Array.isArray(veri)) {
+    for (const kayit of veri) veriAlanlariniKontrolEt(kayit, fields, `${etiket}[]`);
+    return;
+  }
+  if (!veri || typeof veri !== 'object') return;
+  for (const [ad, deger] of Object.entries(veri)) {
+    const alan = (fields || []).find(f => f.name === ad);
+    if (!alan) {
+      const mesaj = `${etiket}.${ad}: dosyada var ama CMS alanı yok`;
+      if (!kritik.includes(mesaj)) kritik.push(mesaj);
+    } else if (alan.fields) veriAlanlariniKontrolEt(deger, alan.fields, `${etiket}.${ad}`);
+  }
+};
 const dosyalar = (dizin) => readdirSync(dizin).flatMap((ad) => {
   const tam = join(dizin, ad);
   return statSync(tam).isDirectory() ? dosyalar(tam) : (/\.(md|mdx|yaml|yml|json)$/.test(ad) ? [tam] : []);
@@ -92,8 +108,7 @@ for (const k of cfg.collections || []) {
       alanKontrol(f.fields, `${k.name}/${f.name}`);
       if (/\.ya?ml$/.test(f.file)) {
         const veri = parse(readFileSync(join(KOK, f.file), 'utf8')) || {};
-        const tanimli = new Set(alanAdlari(f.fields));
-        for (const a of Object.keys(veri)) if (!tanimli.has(a)) uyari.push(`${k.name}/${f.name}: dosyada «${a}» anahtarı var ama CMS alanı yok`);
+        veriAlanlariniKontrolEt(veri, f.fields, `${k.name}/${f.name}`);
       }
     }
   } else kritik.push(`${k.name}: ne folder ne files`);

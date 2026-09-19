@@ -327,6 +327,8 @@ export type Anahtar = keyof (typeof ui)['tr'];
 
 /** Sayfa yolları: her dil için URL segmenti (SEO için yerelleştirilmiş) */
 export const yollar = {
+  musavirlik: { tr: 'musavirlik-salih-gor', fr: 'conseiller-salih-gor', en: 'counsellor-salih-gor' },
+  yayinrehberi: { tr: 'diyanet-yayinlari-rehberi', fr: 'guide-publications-diyanet', en: 'diyanet-publications-guide' },
   anasayfa: { tr: '', fr: '', en: '' },
   hakkimizda: { tr: 'hakkimizda', fr: 'a-propos', en: 'about' },
   yonetim: { tr: 'yonetim-kurulu', fr: 'conseil-administration', en: 'board' },

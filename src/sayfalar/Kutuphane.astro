@@ -41,8 +41,9 @@ const m = M[dil];
 ---
 <Base baslik={t('nav.kutuphane')} dil={dil} aciklama={m.alt}>
   <SayfaBasligi etiket={t('nav.diyanet')} baslik={t('nav.kutuphane')} altBaslik={m.alt}>
-    <p class="mt-5">
+    <p class="mt-5 flex flex-wrap gap-3">
       <a class="dugme dugme-ikincil" href={yol(dil, 'ihtida')}>← {m.geri}</a>
+      <a class="dugme dugme-ikincil" href={yol(dil, 'yayinrehberi')}>{dil === 'tr' ? 'Dergi aboneliği ve ücretsiz okuma' : dil === 'fr' ? 'Abonnement et lecture gratuite' : 'Subscriptions and free reading'}</a>
     </p>
   </SayfaBasligi>
 

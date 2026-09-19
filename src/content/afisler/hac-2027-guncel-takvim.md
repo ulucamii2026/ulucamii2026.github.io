@@ -1,11 +1,12 @@
 ---
 baslik:
-  tr: "2027 Hac — Ön Başvuru 11 Eylül, Kesin Kayıt 30 Eylül"
-  fr: "Hajj 2027 — Préinscription le 11 septembre, inscription définitive le 30 septembre"
-tarih: '2026-09-10'
-gorsel: /media/afisler/hac-2027-guncel-takvim.webp
-kucuk: /media/afisler/hac-2027-guncel-takvim-thumb.webp
+  tr: "2027 Hac — Ön Başvuru 30 Ekim, Kesin Kayıt 30 Ekim"
+  fr: "Hajj 2027 — Préinscription le 30 octobre, inscription définitive le 30 octobre"
+tarih: '2026-09-19'
+gorsel: /media/afisler/bdv-2027-hac-kayitlari-devam-ediyor.webp
+kucuk: /media/afisler/bdv-2027-hac-kayitlari-devam-ediyor-thumb.webp
 vitrin: gizle
+taslak: true
 kaynak: ulucamii
 kategori: hac-umre
 link: https://www.diyanet.be/onkayit

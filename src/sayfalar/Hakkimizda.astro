@@ -27,7 +27,7 @@ const m = dil === 'tr'
     <div><dt class="etiket">{m.bina}</dt><dd class="rakam text-2xl">1986</dd></div>
     <div><dt class="etiket">ASBL · KBO/BCE</dt><dd class="mono">{site.kbo}</dd></div>
     </dl>
-    <ul><li>✓ {m.taninma}</li><li>✓ {m.bagli}</li></ul>
+    <ul><li>✓ {m.taninma}</li><li>✓ <a class="metin-baglanti" href={yol(dil, 'musavirlik')}>{m.bagli}</a></li></ul>
   </div>
   <section slot="alt" class="kapsayici pb-12">
     <div class="flex items-end justify-between gap-3 cetvel pt-4 mb-4"><p class="etiket etiket-vurgu">{m.foto}</p><a href={yol(dil, 'galeri')} class="text-sm font-semibold no-underline hover:underline">{m.galeri}<span aria-hidden="true"> →</span></a></div>

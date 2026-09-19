@@ -27,6 +27,8 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | Anti-Gravity iş akışı | [İş akışı](ANTIGRAVITY-IS-AKISI.md), [12 Eylül oturum incelemesi](AGY-OTURUM-INCELEMESI-2026-09-12.md) | `scripts/oto-kaydet.ps1`; `npm run test:oto-kaydet` |
 | Web sitesi genel çalışma dökümü | [11 Eylül çalışma dökümü](WEB-SITESI-CALISMA-DOKUMANI-2026-09-11.md) | Konu notlarına yönlendiren genel özet |
 | 18 Eylül devir notu ve hata avı | [18 Eylül devir notu](DEVIR-NOTU-2026-09-18.md) | Personel, favicon, WCAG A11y, materyal koleksiyonu ve tam denetim |
+| 19 Eylül hata avı / son değişiklikler | [19 Eylül denetimi](HATA-AVI-2026-09-19.md) | CMS iç içe alan denetimi, çeviri yanıtı/ad bütünlüğü, personel kontrastı ve tabloda klavye erişimi |
+| BDV hac/umre takvimi, müşavirlik ve Diyanet yayın rehberi | [19 Eylül içerik yayını](HATA-AVI-2026-09-19.md#yayın-hazırlığı--19-eylül-2026) | `etkinlik-tarihleri.ts`, `sayfalar/*/musavirlik.md`, `sayfalar/*/yayinrehberi.md`; resmî kaynak ve yurt dışı abonelik sınırı |
 
 ## Tekrar keşfedilmemesi gereken kararlar
 

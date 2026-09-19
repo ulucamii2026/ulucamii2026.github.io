@@ -62,9 +62,19 @@ export function adGizleyici(adlar: () => string[], secenek: { yaygin?: Set<strin
       );
     }
     const cevrilen = await makine(gizli, dil);
-    return cevrilen.map((c) => {
-      const geri = c.replace(YER_TUTUCU, (_t, n: string) => bulunan[Number(n) - 1] ?? "\u0000");
+    if (!Array.isArray(cevrilen) || cevrilen.length !== gizli.length || cevrilen.some(c => typeof c !== "string" || !c.trim()))
+      throw new Error("ceviri-yanit");
+    return cevrilen.map((c, i) => {
+      // Her ad kendi kaynak satırında kalmalı; başka öğrencinin adı taşınamaz veya sessizce silinemez.
+      const beklenen = new Set([...gizli[i].matchAll(YER_TUTUCU)].map(m => Number(m[1])));
+      const gorulen = new Set<number>();
+      const geri = c.replace(YER_TUTUCU, (_t, n: string) => {
+        const no = Number(n);
+        gorulen.add(no);
+        return beklenen.has(no) ? (bulunan[no - 1] ?? "\u0000") : "\u0000";
+      });
       if (geri.includes("\u0000")) throw new Error("yer-tutucu-bilinmiyor"); // motor ad uydurdu/anonimleştirdi → yarım çeviri yazılmaz
+      if ([...beklenen].some(no => !gorulen.has(no))) throw new Error("yer-tutucu-eksik");
       return geri;
     });
   };
@@ -86,8 +96,9 @@ async function partiCevir(uc: string, kimlik: () => Promise<string>, fetchFn: ty
   if (!r.ok) throw Error(`ceviri-http-${r.status}`);
   const j = (await r.json()) as { ok?: boolean; hata?: string; ceviriler?: unknown };
   if (j.ok === false && typeof j.hata === "string" && j.hata) throw new KaliciHata(`ceviri-${j.hata}`);
-  if (!j.ok || !Array.isArray(j.ceviriler) || j.ceviriler.length !== parti.length) throw Error("ceviri-yanit");
-  return j.ceviriler.map((x) => String(x ?? ""));
+  if (j.ok !== true || !Array.isArray(j.ceviriler) || j.ceviriler.length !== parti.length ||
+    j.ceviriler.some(x => typeof x !== "string" || !x.trim())) throw Error("ceviri-yanit");
+  return j.ceviriler;
 }
 
 export function makineCevirici(

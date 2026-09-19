@@ -1,6 +1,6 @@
 ---
 baslik: "Inscriptions pour le Hajj 2027 en cours : Date limite le 30 octobre 2026"
-tarih: 2026-09-18
+tarih: 2026-09-19
 ozet: "Les inscriptions pour le Hajj 2027 sous l’égide de la Fondation Diyanet de Belgique se poursuivent. Date limite : 30 octobre 2026 (places limitées). Si les quotas sont atteints, le système fermera sans attendre cette date. Passeport turc obligatoire."
 kapak: /media/afisler/bdv-2027-hac-kayitlari-devam-ediyor.webp
 kapakKucuk: /media/afisler/bdv-2027-hac-kayitlari-devam-ediyor-thumb.webp
@@ -12,6 +12,7 @@ etiketler:
   - annonce
 oneCikan: true
 oneCikanSon: 2026-10-30
+vitrinSon: 2026-10-30
 taslak: false
 ---
 
@@ -20,6 +21,13 @@ taslak: false
 </div>
 
 Avis aux fidèles et candidats au pèlerinage souhaitant se rendre aux Lieux Saints.
+
+## Calendrier actualisé — 19 septembre 2026
+
+Préinscription : **20 juin–30 octobre 2026**. Inscription définitive : **7 septembre–30 octobre 2026**. Il s’agit de deux étapes distinctes ; les frais de préinscription annoncés sont de **2 000 € par personne**. Suivez les instructions de la Fondation, les places étant limitées.
+
+Calendrier vérifié dans [l’annonce officielle de la Fondation](https://www.diyanet.be/Anasayfa/xBlog/ArticleID/3340/2027-Hac-Oen-Kaytlar-Balad) et sur [le formulaire de préinscription](https://www.diyanet.be/onkayit). Ce calendrier remplace les anciennes échéances de septembre.
+
 
 ## Tarifs et options d’hébergement (Hajj 2027)
 

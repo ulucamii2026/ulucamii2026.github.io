@@ -195,13 +195,13 @@ const basHarf = (ad: string) => ad.split(/\s+/).map((p) => p[0]).slice(0, 2).joi
                   <span class="etiket text-xs text-(--vurgu)">{p.gorev[dil]}</span>
                 </div>
                 <ul class="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-(--metin-2)" role="list">
-                  {p.memleket && <li><span class="font-mono opacity-80">{m.memleketEtiket}:</span> <strong class="font-medium text-(--metin)">{p.memleket[dil]}</strong></li>}
-                  {p.dogumYili && <li><span class="font-mono opacity-80">{m.dogum}:</span> <strong class="font-medium text-(--metin)">{p.dogumYili}</strong></li>}
-                  {p.meslek && <li><span class="font-mono opacity-80">{m.meslekEtiket}:</span> <strong class="font-medium text-(--metin)">{p.meslek[dil]}</strong></li>}
-                  {p.ikamet && <li><span class="font-mono opacity-80">{m.ikametEtiket}:</span> <strong class="font-medium text-(--metin)">{p.ikamet}</strong></li>}
+                  {p.memleket && <li><span>{m.memleketEtiket}:</span> <strong class="font-medium text-(--metin)">{p.memleket[dil]}</strong></li>}
+                  {p.dogumYili && <li><span>{m.dogum}:</span> <strong class="font-medium text-(--metin)">{p.dogumYili}</strong></li>}
+                  {p.meslek && <li><span>{m.meslekEtiket}:</span> <strong class="font-medium text-(--metin)">{p.meslek[dil]}</strong></li>}
+                  {p.ikamet && <li><span>{m.ikametEtiket}:</span> <strong class="font-medium text-(--metin)">{p.ikamet}</strong></li>}
                 </ul>
                 {p.mesaj && (
-                  <blockquote class="mt-4 p-3.5 bg-(--zemin-3) border-l-2 border-(--vurgu) text-sm leading-relaxed text-(--metin) italic rounded-r-(--radius-kose)">
+                  <blockquote class="mt-4 p-3.5 bg-(--zemin-3) border-l border-(--cizgi) text-sm leading-relaxed text-(--metin) italic rounded-r-(--radius-kose)">
                     “{p.mesaj[dil]}”
                   </blockquote>
                 )}

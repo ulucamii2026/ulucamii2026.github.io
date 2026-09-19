@@ -1,6 +1,6 @@
 ---
 baslik: "2027 Yılı Hac Kayıtları Devam Ediyor: Son Başvuru 30 Ekim 2026"
-tarih: 2026-09-18
+tarih: 2026-09-19
 ozet: "Belçika Diyanet Vakfı koordinesinde 2027 Yılı Hac kayıtları devam ediyor. Son başvuru tarihi 30 Ekim 2026 olup kontenjanlar sınırlıdır. Kontenjan dolduğu takdirde tarih beklenmeden kayıt sistemi kapatılacaktır. Kayıt için T.C. pasaportu şarttır."
 kapak: /media/afisler/bdv-2027-hac-kayitlari-devam-ediyor.webp
 kapakKucuk: /media/afisler/bdv-2027-hac-kayitlari-devam-ediyor-thumb.webp
@@ -12,6 +12,7 @@ etiketler:
   - duyuru
 oneCikan: true
 oneCikanSon: 2026-10-30
+vitrinSon: 2026-10-30
 taslak: false
 ---
 
@@ -20,6 +21,13 @@ taslak: false
 </div>
 
 Kutsal topraklara hac ibadeti için gitmek isteyen değerli cemaatimiz ve vatandaşlarımızın dikkatine önemle sunulur.
+
+## Güncel kayıt takvimi — 19 Eylül 2026
+
+Ön kayıt **20 Haziran–30 Ekim 2026**, kesin kayıt **7 Eylül–30 Ekim 2026** tarihleri arasındadır. Ön kayıt ve kesin kayıt ayrı aşamalardır; ön kayıt bedeli **kişi başı 2.000 €** olarak açıklanmıştır. Kontenjan ve kesin kayıt için Vakfın bildirimlerini takip edin.
+
+Takvim, [Belçika Diyanet Vakfı’nın resmî hac duyurusundan](https://www.diyanet.be/Anasayfa/xBlog/ArticleID/3340/2027-Hac-Oen-Kaytlar-Balad) ve [ön kayıt formundan](https://www.diyanet.be/onkayit) kontrol edilmiştir. Önceki eylül tarihli bilgilendirmelerin yerine bu güncel takvim geçerlidir.
+
 
 ## 2027 Hac Ücretleri ve Oda Tercihleri
 

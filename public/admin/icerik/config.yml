@@ -389,6 +389,7 @@ collections:
                   - { name: fonMesai, label: Fon — mesai saatinde, widget: string }
                   - { name: fonEposta, label: Fon e-posta, widget: string }
                   - { name: fonWeb, label: Fon web sayfası, widget: string }
+                  - { name: fonKayitWeb, label: Fon çevrim içi kayıt bağlantısı, widget: string, required: false }
                   - { name: fonAdres, label: Fon adresi, widget: string }
                   - { name: belediyeNufus, label: Belediye nüfus servisi, widget: string }
                   - { name: belediyeGenel, label: Belediye santral, widget: string }
@@ -477,6 +478,49 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+              - name: personel
+                label: Cami personeli
+                label_singular: Personel
+                widget: list
+                required: false
+                summary: "{{fields.ad}}"
+                fields:
+                  - { name: ad, label: Ad Soyad, widget: string }
+                  - { name: eposta, label: E-posta, widget: string, required: false }
+                  - { name: foto, label: Fotoğraf, widget: image, required: false, media_folder: public/media/kurul, public_folder: /media/kurul }
+                  - name: gorev
+                    label: Görev
+                    widget: object
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string }
+                  - { name: dogumYili, label: Doğum yılı, widget: number, value_type: int, required: false }
+                  - name: memleket
+                    label: Memleket
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string }
+                  - name: meslek
+                    label: Meslek
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: tr, label: Türkçe, widget: string }
+                      - { name: fr, label: Fransızca, widget: string }
+                      - { name: en, label: İngilizce, widget: string }
+                  - { name: ikamet, label: İkamet, widget: string, required: false }
+                  - name: mesaj
+                    label: Mesaj
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: tr, label: Türkçe, widget: text }
+                      - { name: fr, label: Fransızca, widget: text }
+                      - { name: en, label: İngilizce, widget: text }
               - name: not
                 label: Alt not (dönem/değişiklik açıklaması)
                 widget: object

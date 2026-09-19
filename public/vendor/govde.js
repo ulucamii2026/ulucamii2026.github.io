@@ -78,6 +78,24 @@
   }
 })();
 
+/* ---------- Dar ekranda taşan içerik tabloları: klavyeyle kaydırma ---------- */
+(function () {
+  var tablolar = Array.from(document.querySelectorAll('.duz-yazi table:not([tabindex])'));
+  if (!tablolar.length) return;
+  function guncelle() {
+    tablolar.forEach(function (tablo) {
+      if (tablo.scrollWidth > tablo.clientWidth + 1) tablo.setAttribute('tabindex', '0');
+      else tablo.removeAttribute('tabindex');
+    });
+  }
+  guncelle();
+  if ('ResizeObserver' in window) {
+    var gozlemci = new ResizeObserver(guncelle);
+    tablolar.forEach(function (tablo) { gozlemci.observe(tablo); });
+  } else window.addEventListener('resize', guncelle);
+  if (document.fonts) document.fonts.ready.then(guncelle);
+})();
+
 /* ---------- Bölüm reveal + başlık şeridi: görünür olunca .gorunur ---------- */
 (function () {
   // reduced-motion'da CSS zaten devre dışı, JS yalnız sınıfı ekler

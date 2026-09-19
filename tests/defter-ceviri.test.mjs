@@ -167,3 +167,23 @@ test('adGizleyici v2: büyük harfli ad [[n]] olur (Türkçe İ, ek korunur), k�
   await g3(['Kimse yok.'], 'fr');
   assert.deepEqual(cagrilar.at(-1), ['Kimse yok.']);
 });
+
+test('çeviri yanıtı boş metin, sayı veya nesneyi başarılı çeviri saymaz', async () => {
+  for (const deger of [42, {}, null, '  ']) {
+    let deneme = 0;
+    const cevir = m.makineCevirici('https://uc.test/exec', async () => 'test-jeton', async () => {
+      deneme++;
+      return { ok: true, json: async () => ({ ok: true, ceviriler: [deger] }) };
+    });
+    await assert.rejects(cevir(['Derse katıldı.'], 'fr'), /ceviri-yanit/);
+    assert.equal(deneme, 3);
+  }
+});
+
+test('ad gizleme: silinen veya başka satırdan taşınan adla çeviri kaydedilmez', async () => {
+  const gizle = m.adGizleyici(() => ['Ayşe', 'Emre']);
+  await assert.rejects(gizle(async () => ['Est venue.'])(['Ayşe geldi.'], 'fr'), /yer-tutucu-eksik/);
+  await assert.rejects(gizle(async () => ['[[2]] est venue.', '[[1]] est venu.'])(['Ayşe geldi.', 'Emre geldi.'], 'fr'), /yer-tutucu-bilinmiyor/);
+  await assert.rejects(gizle(async () => [])(['Ayşe geldi.'], 'fr'), /ceviri-yanit/);
+  assert.deepEqual(await gizle(async () => ['[[ 1 ]] est venue.', '[[2]] est venu.'])(['Ayşe geldi.', 'Emre geldi.'], 'fr'), ['Ayşe est venue.', 'Emre est venu.']);
+});

@@ -30,6 +30,7 @@ import DiyanetHizmetleri from '../../../sayfalar/DiyanetHizmetleri.astro';
 import Uip from '../../../sayfalar/Uip.astro';
 import Vaazlar from '../../../sayfalar/Vaazlar.astro';
 import Kutuphane from '../../../sayfalar/Kutuphane.astro';
+import KurumsalRehber from '../../../sayfalar/KurumsalRehber.astro';
 
 export function getStaticPaths() {
   const yol: { params: { lang: Dil; sayfa: string }; props: { anahtar: SayfaAnahtari } }[] = [];
@@ -44,6 +45,7 @@ export function getStaticPaths() {
 const dil = Astro.params.lang as Dil;
 const { anahtar } = Astro.props;
 const bilesenler: Record<Exclude<SayfaAnahtari, 'anasayfa'>, any> = {
+  musavirlik: KurumsalRehber, yayinrehberi: KurumsalRehber,
   hakkimizda: Hakkimizda, duyurular: Duyurular, etkinlikler: Etkinlikler, namaz: Namaz, kurankursu: KuranKursu, mufredat: Mufredat, yillikplan: YillikPlan, dersmateryalleri: DersMateryalleri, kursgunlugu: KursGunlugu,
   bagis: Bagis, uyelik: Uyelik, konsolosluk: Konsolosluk, galeri: Galeri, iletisim: Iletisim,
   kunye: MetinSayfasi, gizlilik: MetinSayfasi, portal: Portal, veli: Veli, vefat: Vefat, cenaze: Cenaze,

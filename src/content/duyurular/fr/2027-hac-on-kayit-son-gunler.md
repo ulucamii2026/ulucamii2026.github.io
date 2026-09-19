@@ -1,81 +1,12 @@
 ---
-baslik: "Hajj 2027 : préinscription jusqu'au 11 septembre, inscription définitive jusqu'au 30 septembre"
+baslik: "Hajj 2027 : consulter le calendrier actualisé"
 tarih: 2026-09-10
-ozet: "Préinscription jusqu'au 11 septembre 2026 ; e-mail d'inscription définitive aux préinscrits dès le 7 septembre, date limite : 30 septembre 2026. Frais : 2 000 € par personne ; places limitées, selon l'ordre des paiements. Inscription sur diyanet.be/onkayit ; notre mosquée peut vous aider."
-kapak: /media/afisler/hac-2027-guncel-takvim.webp
-kapakAlt: "Calendrier du hajj 2027 : préinscription le 11 septembre, inscription définitive le 30 septembre 2026 — annonce de la mosquée Ulu Camii"
-etiketler:
-  - hajj
-  - diyanet
-oneCikan: true
-oneCikanSon: 2026-09-30
+ozet: "Calendrier actualisé : préinscription et inscription définitive jusqu’au 30 octobre 2026. Consultez la nouvelle information."
+etiketler: [hac, diyanet]
+oneCikan: false
+vitrin: gizle
 ---
 
-<div class="uyari"><p><strong>Préinscription : date limite le vendredi 11 septembre 2026.</strong> Les places sont limitées et le droit à l'inscription définitive est accordé selon l'ordre des paiements de préinscription — les premiers inscrits passent devant.</p><p><strong>Déjà préinscrit ?</strong> Les e-mails d'inscription définitive sont envoyés à partir du lundi 7 septembre ; consultez régulièrement votre messagerie. Date limite de l'inscription définitive : <strong>30 septembre 2026</strong>.</p></div>
+**Mise à jour du 19 septembre 2026 :** Le calendrier de cette ancienne annonce a changé. La préinscription et l’inscription définitive se poursuivent jusqu’au **30 octobre 2026**.
 
-Selon notre information actualisée du 10 septembre 2026, **les préinscriptions au hajj 2027 se poursuivent jusqu'au vendredi 11 septembre 2026.** Les personnes qui souhaitent profiter des places limitées doivent se préinscrire sans tarder et obtenir à temps leur passeport turc. Les autorités saoudiennes ayant avancé le traitement des visas, la préinscription comme l'inscription définitive se déroulent plus tôt que d'habitude cette année.
-
-**Les candidats qui ont payé les frais de préinscription et complété la démarche en ligne recevront, à partir du lundi 7 septembre 2026, un e-mail pour l'inscription définitive.** Consultez régulièrement votre messagerie (courriers indésirables compris) et complétez les démarches à temps. L'inscription définitive se poursuit jusqu'au **30 septembre 2026**.
-
-Les inscriptions se font **uniquement en ligne**. Le futur pèlerin peut les effectuer lui-même ou se faire aider par les responsables de notre mosquée.
-
-## Calendrier
-
-| Étape | Date |
-|---|---|
-| Préinscription | 20 juin – **11 septembre 2026** |
-| Inscription définitive | Invitation par e-mail à partir du 7 septembre — date limite **30 septembre 2026** |
-| Voyage du hajj | 1-3 mai **ou** 24-27 mai 2027 |
-
-Les dates du hajj peuvent varier de 1 à 3 jours selon les vols et les hôtels.
-
-## Frais de préinscription et paiement
-
-**2 000 € par personne.** Les dossiers sans paiement ne sont pas traités.
-
-<div class="kart" style="padding:1rem 1.15rem"><p class="etiket">Compte de la Fondation Diyanet de Belgique</p><p style="font-weight:600;font-size:1.05rem;margin-top:.25rem">IBAN : BE40 3630 8397 5263</p><p style="margin-top:.35rem">Bureau des Affaires Sociales<br>Rue Montoyer 4, 1000 Bruxelles</p></div>
-
-Indiquez en communication les **nom, prénom, adresse et numéro de portable** du futur pèlerin. Sans ces informations, le paiement ne peut pas être rattaché au dossier et l'organisation décline toute responsabilité pour les problèmes qui en découleraient.
-
-En cas de désistement pour un motif sérieux avant l'inscription définitive, le montant est remboursé au cours du mois de juillet, déduction faite d'un minimum de 250 € de frais de dossier et des arrhes du billet d'avion.
-
-## Conditions
-
-- Être titulaire d'un **passeport turc**
-- **Ne pas avoir déjà accompli le hajj.** Une personne l'ayant déjà accompli peut partir **par procuration** au nom d'un proche qui, pour raison de santé ou d'âge, ne pourra jamais s'y rendre.
-- Un **parent au premier degré** résidant en Turquie (mère, père, conjoint, frère ou sœur, enfant, grand-parent, petit-enfant) peut être emmené dans la limite des places disponibles, à condition d'avoir participé au tirage au sort du hajj 2027.
-
-## Vérifiez votre passeport dès aujourd'hui
-
-Votre passeport doit être valable **au moins jusqu'au 10 mai 2028**. S'il expire avant cette date, introduisez **immédiatement** une demande de nouveau passeport :
-
-- Depuis la Belgique, la procédure prend en moyenne **3 à 4 semaines**.
-- En vacances en Turquie, une demande sur place est délivrée en **7 à 10 jours**.
-
-Pour les femmes non belges, une **différence de nom de famille entre le passeport et la carte de séjour** peut aller jusqu'au refus d'embarquement ; si vous êtes dans ce cas, entamez la régularisation dès maintenant.
-
-## Documents demandés lors de l'inscription définitive
-
-Les documents suivants ne sont **pas demandés à la préinscription** : ils sont remis à votre responsable de groupe pendant la période d'inscription définitive et lors du séminaire de formation au hajj.
-
-1. Passeport de la République de Turquie valable au moins jusqu'au **10.05.2028**
-2. Copie **recto verso** de la carte de séjour belge valable au moins jusqu'au **10.07.2027**
-3. Carte de vaccination contre la méningite — il doit s'agir de la **carte jaune internationale** ; une carte délivrée par le médecin traitant n'est pas valable. Les cartes déjà obtenues sont valables 3 ans.
-4. Copie **recto verso** de la carte d'identité de la République de Turquie
-5. Certificat médical attestant l'aptitude au voyage — le modèle se télécharge depuis l'écran de préinscription, s'imprime et se fait signer par le médecin traitant
-
-## Inscription et aide
-
-La préinscription se fait uniquement ici : **[www.diyanet.be/onkayit](https://www.diyanet.be/onkayit)**
-
-<div class="bilgi"><p><strong>Toutes les communications</strong> relatives au hajj se font <strong>par e-mail</strong>. Consultez régulièrement l'adresse indiquée lors de l'inscription et vérifiez vos courriers indésirables.</p></div>
-
-Si le formulaire vous pose difficulté, si vous avez un doute sur vos documents ou si votre passeport arrive à échéance, passez à la mosquée : nous regarderons ensemble et, si besoin, nous compléterons l'inscription avec vous.
-
-- **Imam :** [WhatsApp](https://wa.me/32471794682)
-- **Mosquée :** [+32 472 98 50 73](tel:+32472985073)
-- **Fondation Diyanet de Belgique :** [+32 2 218 57 55](tel:+3222185755) — en semaine 09h00-12h30 / 14h00-17h00 · [info@diyanet.be](mailto:info@diyanet.be)
-
-Que Dieu facilite le chemin de ceux qui en font l'intention et leur accorde un pèlerinage agréé.
-
-<p class="cetvel" style="margin-top:2.5rem;padding-top:1rem;font-size:0.85rem;line-height:1.8;color:var(--metin-2)">Mise à jour : 10 septembre 2026. Notre imam a confirmé la clôture des préinscriptions le 11 septembre et des inscriptions définitives le 30 septembre 2026. Il s’agit de deux étapes distinctes. Formulaire : <a href="https://www.diyanet.be/onkayit" target="_blank" rel="noopener">diyanet.be/onkayit</a>. Visuel préparé par la mosquée Ulu Camii.</p>
+Pour les conditions et les sources officielles, [consultez l’annonce actualisée](/fr/annonces/2027-hac-kayitlari-devam-ediyor/).

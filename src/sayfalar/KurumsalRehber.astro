@@ -1,0 +1,7 @@
+---
+import IcerikSayfasi from '../components/IcerikSayfasi.astro';
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil; anahtar: 'musavirlik' | 'yayinrehberi' }
+const { dil, anahtar } = Astro.props;
+---
+<IcerikSayfasi dil={dil} anahtar={anahtar} icindekiler />

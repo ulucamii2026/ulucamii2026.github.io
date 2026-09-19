@@ -54,6 +54,9 @@ ihtida ve veli portalı yüzey notları aynı klasördedir. Yerel görsel envant
 ölçü/hash manifesti `docs/design/media-manifest.json` dosyasına yazılır.
 
 `test:web` ve `codex:kontrol` aynı 4401 portunu kullanır: eşzamanlı çalıştırmayın.
+19 Eylül 2026: `reuseExistingServer: false`; ayrı iki `test:web` koşusu da aynı
+anda çalıştırılmaz. Dolu portta mevcut sunucuya katılmak yerine hata verir;
+böylece başka koşu bittiğinde onun sunucusuyla birlikte test bağlantısı kaybolmaz.
 İkisi de önceden `npm run build` gerektirir. Test sunucusu, zaten açık olan 4399
 önizlemesini durdurmaz veya yeniden kullanmaz; Astro'nun programatik API'siyle açılır.
 `test:web`, `tests/web/design-visual.spec.mjs` ile ana sayfa ve ihtida yüzeylerinin

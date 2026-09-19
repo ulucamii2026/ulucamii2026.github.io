@@ -21,3 +21,6 @@ taslak: false
 Marche-en-Famenne Ulu Camii Yönetim Kurulu, din görevlimiz ve cemaatimiz adına, Belçika’daki Müslüman Türk toplumuna ve camilerimize rehberlik edecek olan Sayın Müşavirimize yeni vazifesinde muvaffakiyetler ve hayırlı hizmetler dileriz.
 
 — Ulu Camii Yönetim Kurulu
+
+
+[Görevi ve özgeçmişi: kalıcı tanıtım sayfamız](/tr/musavirlik-salih-gor/).
