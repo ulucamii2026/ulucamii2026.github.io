@@ -41,7 +41,23 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 
 ## 19 Eylül 2026 — 3–4 Ekim öğretici materyalleri ve yayın kayıt düzeni
 
-Durum: Release yüklemesi tamamlandı; yeni site dağıtımı bekleniyor.
+Durum: tamamlandı. Son kayıt: 2026-09-19T17:01:40+02:00 (Europe/Brussels).
+
+- İçerik commit'i: `8edf0232e6f3659fb61fbabea6702662249c9b57`.
+- [Pages 35450386608](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35450386608): başarılı; canlı yayın ayrıca doğrulandı.
+- Kalite kapılarının tümü geçti: ilk `dogrula:codex` koşusunda yedi kapı başarılı;
+  iki klavye hatası `src/styles/global.css` içinde azaltılmış hareket kaydırmasıyla
+  düzeltildi. Yeniden derleme, iki hedef test ve tam `test:web` tekrarı başarılı: 424/424.
+  İlk başarısız koşu `site-kalite.log`, son başarılı koşu `site-web-final.log` içinde korunur.
+- Dört Release'te 13'er benzersiz dosya; 52/52 indirme HTTP 200 ve SHA-256 eşleşmesi.
+- Canlı TR/FR/EN: gün başına 13 bağlantı, altısı öğretici; 320/390/1440 px taşma yok.
+  Açık/koyu tema ciddi/kritik erişilebilirlik ihlali 0; klavye erişimi başarılı.
+- OneDrive yerel 44/44 dosya eşleşmesi; üretim/yerleşim/kaynak kontrolleri temiz.
+- Canlı: [26 Eylül](https://ulucamii.be/tr/ders-materyalleri/#g-2026-09-26),
+  [27 Eylül](https://ulucamii.be/tr/ders-materyalleri/#g-2026-09-27),
+  [3 Ekim](https://ulucamii.be/tr/ders-materyalleri/#g-2026-10-03),
+  [4 Ekim](https://ulucamii.be/tr/ders-materyalleri/#g-2026-10-04).
+
 İşlem günü/saat dilimi: 19 Eylül 2026, Europe/Brussels.
 
 - 3–4 Ekim: altı öğretici PPTX/PDF, toplam 138 slayt ve öğrenci sunucu notları tamamlandı.
@@ -64,7 +80,7 @@ Durum: Release yüklemesi tamamlandı; yeni site dağıtımı bekleniyor.
 - Sınırlar: fiziksel sınıf provası, bütün seslerin yeniden dinlenmesi ve videoların
   baştan sona tekrar izlenmesi yapılmadı; OneDrive kanıtı yerel kopyadır.
 
-İçerik commit'i, Pages sonucu ve canlı doğrulama dağıtım sonrasında bu kayda işlenecektir.
+Kayıt tamamlandı; salt devir belgesi commit’i bu içerik yayınına referans verir.
 
 Kalıcı kural `AGENTS.md`, başvuru `docs/PROJE-HAFIZASI.md` ve bu dosyadır.
 Kurs tarafında `AGENTS.md`, `CLAUDE.md`, `DEVAM.md`, `belgeler/YAYIN-KAYITLARI.md`
