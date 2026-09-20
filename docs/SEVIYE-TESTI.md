@@ -106,6 +106,7 @@ içindeki resmî Diyanet metin–ses çiftleri (örnek uydurulmaz); şıklar `{ 
 
 ## 6. Kaynak dosyalar
 `src/lib/seviye-testi/` (banka + puanlama) · `src/components/formlar/SeviyeTesti*.astro` · `src/scripts/seviye-form.ts` ·
+`src/scripts/seviye-etkilesim.ts` (hareket/etkileşim katmanı, 21 Eyl 2026 — aşamalı geliştirme: hata verse de form çalışır; doğruluk ima eden hareket YASAK) ·
 `src/i18n/seviye-testi.ts` · `scripts/apps-script/seviye-testi-isleri.gs` · `public/admin/seviye-panel.js` ·
 testler `tests/seviye-*.test.mjs`, `tests/web/seviye-*.spec.mjs`.
 

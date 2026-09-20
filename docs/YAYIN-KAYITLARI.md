@@ -4,6 +4,16 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 — seviye testi: etkileşim ve hareket katmanı
+
+- Zaman: 20 Eylül 23:50 – 21 Eylül 2026 00:20 (Europe/Brussels, CEST). Durum: **yayımlandı ve canlı doğrulandı.** Kullanıcının açık talimatı («ön izleme göstermene gerek yok… ne gerekiyorsa yap, yayınla»).
+- Kapsam (yalnız ön yüz; Apps Script v38 değişmedi, veri sözleşmesi aynı): seçim anı (mürekkep dolumu, çizilen onay işareti, «cevaplandı» rozeti; «Bilmiyorum» aynı onayı alır ve artık soluk gösterilmez), otomatik ilerleme + `role="switch"` anahtarı (odak taşımaz, klavye seçiminde devreye girmez), masaüstünde 1–4 / 0 kısayolları, yapışkan alt şerit (adım sayacı, ilerleme çubuğu, kalan süre, tek `aria-live` bölgesinde eşik cümleleri), Kur'an merdiveni (kilim baklavası düğümleri, basamak tamamlanınca kıvılcım, atlanan basamak kesik çizgili), Arapça ibarelerde mürekkep belirişi, ses çalarken ekolayzır, adım geçiş hareketi, «Teste başla» / «Kaldığım yerden devam et», sonuç ekranında sırayla dolan çubuklar + 1,8 sn'lik kilim konfetisi. İstemcide doğruluk bilgisi yoktur; hiçbir hareket doğru/yanlış ima etmez. `prefers-reduced-motion` altında tümü kapalı; betik hata verse de form aynen çalışır.
+- Değişen dosyalar: `src/scripts/seviye-etkilesim.ts` (yeni), `src/scripts/seviye-form.ts`, `src/scripts/form-adimlari.ts` (geriye uyumlu tek ek: `form:adim` olayı), `src/styles/seviye-testi.css`, `src/i18n/seviye-testi.ts` (TR/FR/EN 14 metin), `src/components/formlar/SeviyeTestiFormu.astro`, `tests/web/seviye-testi.spec.mjs` (+9 senaryo).
+- İçerik commit'i `cf34fd0`; Release kullanılmadı. [Pages 35540452564](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35540452564) başarılı.
+- Testler (yayın öncesi, yerel): `npm run dogrula:codex` çıkış 0 — design:check, check (0 hata / 0 uyarı), dogrula, **test:web 500/500**, test:kurallar, test:veli-eposta, test:oto-kaydet, test:ogrenme GEÇTİ; `npm run test:seviye` 44/44 + döküm güncel; `npm run denetim` yüksek/orta bulgu yok.
+- Canlı doğrulama (gerçek tarayıcı, 390 px dokunmatik bağlam, **gönderimsiz — POST kesildi**): üç dilde «Teste başla» düğmesi, merdiven, anahtar ve alt şerit yerinde; şık seçilince `data-cevaplandi` işaretlendi; şerit metinleri yerelleşmiş («Bu adım: 1 / 33 · yaklaşık 28 dk kaldı» / «Cette étape : 1 / 33 · environ 28 min restantes» / «This step: 1 / 33 · about 28 min left»); sayfa hatası yok; sayfa kaynağında `"dogru"` izi 0.
+- Açık sınırlar: kaydırırken görünür kalan küçük merdiven sürümü yapılmadı (isteğe bağlıydı); 49 düşük «başlık seviyesi atlanıyor» bulgusu eski sayfalarda duruyor (bu yayının kapsamı dışında).
+
 ## 20 Eylül 2026 — yetişkinler için Kur'an ve dinî bilgi seviye tespit testi (Apps Script v38)
 
 - Zaman: 20 Eylül 2026, 21:55–22:10 (Europe/Brussels, CEST). Durum: **yayımlandı ve canlı doğrulandı.** Kullanıcının açık yayın onayı (aynı oturumda, soru-yanıtla teyit edildi).
