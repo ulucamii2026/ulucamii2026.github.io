@@ -3,14 +3,18 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
 const source=readFileSync(new URL('../scripts/apps-script/veli-mail-listesi.gs',import.meta.url),'utf8');
-const c=vm.createContext({console});vm.runInContext(source,c);
+// Portal aktarımı Apps Script'te tek küresel kapsamı paylaşır: soyadBuyuk gibi ortak yardımcılar başka dosyalardadır.
+// Sınama da aynı dosyaları birleştirip yükler (gas-ceviri.test.mjs ile aynı sıra); `source` yalnız bu dosyanın metnidir.
+const butunKaynak=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v37.gs','veli-mail-listesi.gs']
+ .map((ad)=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
+const c=vm.createContext({console:{log(){},error(){}}});vm.runInContext(butunKaynak,c);
 const row=(n,extra={})=>({'Referans':`UC-2099-000${n}`,'Öğrenci adı':'Deniz','Öğrenci soyadı':'Örnek','Veli adı soyadı':'Veli Örnek','Veli e-posta':'veli@example.test','İletişim dili':'fr',...extra});
 const current=data=>({data,updateTime:'2099-01-01T00:00:00.000000Z'});
 const plain=x=>JSON.parse(JSON.stringify(x));
 function runtime(){
  const props={},docs={},events=[];
  const x=vm.createContext({console:{log(){},error(){}},Session:{getEffectiveUser:()=>({getEmail:()=> 'ulucamii2026@gmail.com'})},LockService:{getScriptLock:()=>({tryLock:()=>true,releaseLock:()=>events.push('unlock')})},PropertiesService:{getScriptProperties:()=>({getProperties:()=>({...props}),setProperties:p=>Object.assign(props,p),setProperty:(k,v)=>props[k]=v,getProperty:k=>props[k],deleteProperty:k=>{delete props[k];}})}});
- vm.runInContext(source,x);x.veliPortalHash=k=>JSON.stringify(k);x.veliPortalDefterOku=()=>[row(1)];x.veliPortalBelgeOku=k=>k==='ayarlar/portal'?{data:{}}:docs[k]||null;
+ vm.runInContext(butunKaynak,x);x.veliPortalHash=k=>JSON.stringify(k);x.veliPortalDefterOku=()=>[row(1)];x.veliPortalBelgeOku=k=>k==='ayarlar/portal'?{data:{}}:docs[k]||null;
  x.veliPortalHttp=(path,body)=>{assert.equal(path,':commit');events.push('commit');apply(body,docs);return {writeResults:body.writes.map(()=>({}))};};
  return {x,props,docs,events};
 }
@@ -49,6 +53,14 @@ test('Aynı kayıt tekrar işlendiğinde yeni yazma veya mükerrer üyelik oluş
 test('Son revizyon, atlanan denemeler ve düzeltilmiş e-posta dikkate alınır',()=>{
  const regs=c.veliPortalKayitlari([row(1),row(1,{'Referans':'UC-2099-0001-R2','Veli e-posta':'eski@example.test'}),row(2),row(3,{'Öğrenci soyadı':'TESTOGLU'}),row(3,{'Referans':'UC-2026-0003'})],{atlanan:['UC-2099-0002'],epostaDuzelt:{'eski@example.test':'dogru@example.test'}}).kayitlar;
  assert.equal(regs.length,1);assert.equal(regs[0].ref,'UC-2099-0001');assert.equal(regs[0].eposta,'dogru@example.test');
+});
+test('Soyad büyük harfi yerele göre (v33 soyadBuyuk): Bosnalı ve Fransız soyadları Türkçe kuralına uğramaz',()=>{
+ // Array.from: vm bağlamından gelen dizi başka realm'e ait, deepEqual prototip eşitliği de arar
+ const soyadlar=satirlar=>Array.from(c.veliPortalKayitlari(satirlar,{}).kayitlar,k=>k.soyad);
+ // İletişim dili «fr»: i→İ yapılmaz — HUSİC / HALİLOVİC / GUÉNİER hatası (13 Eyl 2026) portal aktarımında da tekrarlanmamalı
+ assert.deepEqual(soyadlar([row(1,{'Öğrenci soyadı':'Husic'}),row(2,{'Öğrenci soyadı':'Halilovic'}),row(3,{'Öğrenci soyadı':'Guénier'})]),['HUSIC','HALILOVIC','GUÉNIER']);
+ // İletişim dili «tr»: Türkçe kural sürer
+ assert.deepEqual(soyadlar([row(4,{'Öğrenci soyadı':'Çınar','İletişim dili':'tr'}),row(5,{'Öğrenci soyadı':'Demir','İletişim dili':'tr'})]),['ÇINAR','DEMİR']);
 });
 test('Dili eksik veya çelişkili yeni aileye Türkçe varsayılarak kayıt açılmaz',()=>{
  for(const rows of [[row(1,{'İletişim dili':''})],[row(1),row(2,{'İletişim dili':'tr'})]]){const p=c.veliPortalYazilari(c.veliPortalKayitlari(rows,{}).kayitlar,{});assert.equal(p.writes.length,0);assert.ok(p.bekleyen>0);assert.equal(p.islenen.length,0);}
