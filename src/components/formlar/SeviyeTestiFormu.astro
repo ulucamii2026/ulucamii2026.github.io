@@ -58,6 +58,7 @@ const seviyeJson = JSON.stringify({
     okuma: m.okuma.baslik,
     ...Object.fromEntries(Object.entries(m.bolumler).map(([anahtar, deger]) => [anahtar, deger.baslik])),
   },
+  etkilesim: m.etkilesim,
 });
 
 /** Değerler '60+' ya da 'ogleden-sonra' olabiliyor; id'de yalnız harf, rakam ve tire kalır. */
@@ -340,10 +341,16 @@ const ozetSatirlari = [
     </div>
   </section>
 
-  <div class="ucf-adim-eylemler" data-adim-eylemler hidden>
+  {/* Alt şerit: mevcut Geri/Devam kabı ekranın altına yapışır. Sayaç, ince ilerleme çubuğu,
+      kalan süre ve tek `aria-live` bölgesi betik (seviye-etkilesim.ts) açtığında görünür;
+      betik yoksa kap bugünkü gibi yalnız iki düğmeden ibaret kalır. */}
+  <div class="ucf-adim-eylemler st-serit" data-adim-eylemler hidden>
+    <span class="st-serit-cubuk" data-serit-cubuk aria-hidden="true" hidden><span data-serit-dolgu></span></span>
+    <p class="st-serit-olcum" data-serit-olcum hidden><span data-serit-sayac></span><span class="st-serit-sure" data-serit-sure></span></p>
     <button type="button" class="dugme dugme-ikincil" data-adim-geri>{m.adimlar.geri}</button>
     <button type="button" class="dugme dugme-birincil" data-adim-ileri>{m.adimlar.ileri}</button>
-    <p>{m.taslak.not}</p>
+    <p class="st-serit-not">{m.taslak.not}</p>
+    <span class="sr-only" data-serit-duyuru aria-live="polite"></span>
   </div>
 </form>
 

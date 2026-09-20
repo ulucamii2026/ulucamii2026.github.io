@@ -20,6 +20,13 @@ const M = seviyeMetinleri.tr;
 const S = SONUC_METINLERI.tr;
 
 const SAGLIK = { ok: true, servis: 'ulucamii-alici', surum: 38, seviyeTesti: true, seviyeBankaSurumu: SORU_BANKASI_SURUMU };
+const E = M.etkilesim;
+/** Okuma adımındaki açık soru sayısı (30 madde + 3 öz beyan) — alt şerit sayacının paydası. */
+const OKUMA_SORU = maddeler.filter((m) => m.alan === 'okuma').length + BEYAN.filter((b) => b.kume === 'okuma').length;
+const doldurMetin = (kalip, degerler) => kalip.replace(/\{(\w+)\}/g, (_, k) => String(degerler[k]));
+/** Belirtilen basamağın maddelerini ilk şıkla işaretleyen seçim haritası (doğruluk aranmaz). */
+const basamakSecimi = (no) => Object.fromEntries(
+  maddeler.filter((m) => m.alan === 'okuma' && m.basamak === no).map((m) => [`cevaplar.${m.id}`, '0']));
 
 /* ---------- fikstürler (yalnız .test adresi, soyad TESTOGLU) ---------- */
 
@@ -508,4 +515,228 @@ test('Açılış, okuma, özet ve sonuç ekranı erişilebilir; dar ekranda taş
     expect(await ciddiAxe(page, ['[data-basari]']), 'sonuç paneli — koyu tema').toEqual([]);
     await page.locator('[data-basari]').screenshot({ path: info.outputPath('seviye-sonuc-koyu.png') });
   }
+});
+
+/* ════════════════════════════════════════════════════════════════════════════
+   8–13. Etkileşim ve hareket katmanı (src/scripts/seviye-etkilesim.ts)
+
+   Playwright'ın genel ayarı `reducedMotion: 'reduce'`tir: aşağıdaki senaryoların
+   çoğu bu bağlamda koşar ve durum değişiminin hareketsiz de görünür olduğunu
+   doğrular. Hareket gerektirenler kendi `test.use` bloğundadır.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+test('Seçim işareti: «Bilmiyorum» aynı onayı alır, taslaktan dönen sorular işaretli gelir', async ({ page }) => {
+  await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+  await tumunuGoster(page);
+
+  const soru = page.locator('fieldset[data-soru="ok01"]');
+  await expect(soru).not.toHaveAttribute('data-cevaplandi');
+  await page.locator('#st-ok01-1').check();
+  await expect(soru).toHaveAttribute('data-cevaplandi', '1');
+  // Başlıktaki ✓ rozetinin yeri baştan ayrılmıştır; yalnız görünürlüğü değişir (düzen kaymaz).
+  expect(await soru.locator('legend').evaluate((el) => getComputedStyle(el, '::after').opacity)).toBe('1');
+
+  // «Bilmiyorum» tam değerinde bir cevaptır: aynı durumu ve aynı rozeti alır, soluk kalmaz.
+  const ikinci = page.locator('fieldset[data-soru="ok02"]');
+  await page.locator('#st-ok02-yok').check();
+  await expect(ikinci).toHaveAttribute('data-cevaplandi', '1');
+  expect(await ikinci.locator('legend').evaluate((el) => getComputedStyle(el, '::after').opacity)).toBe('1');
+
+  await expect.poll(() => page.evaluate((a) => !!localStorage.getItem(a), TASLAK_ANAHTARI)).toBe(true);
+  await page.reload();
+  await tumunuGoster(page);
+  await expect(page.locator('fieldset[data-soru="ok01"]')).toHaveAttribute('data-cevaplandi', '1');
+  await expect(page.locator('fieldset[data-soru="ok02"]')).toHaveAttribute('data-cevaplandi', '1');
+});
+
+test('Kısayol: 2 tuşu etkin sorunun 2. şıkkını seçer; e-posta alanına yazılan 2 metin olarak kalır', async ({ page }) => {
+  await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+  await tumunuGoster(page);
+
+  await page.locator('#st-ok01-0').focus();
+  await page.keyboard.press('2');
+  await expect(page.locator('#st-ok01-1')).toBeChecked();
+  await page.keyboard.press('0');
+  await expect(page.locator('#st-ok01-yok')).toBeChecked();
+  // Değiştirici tuşla basıldığında kısayol karışmaz.
+  await page.keyboard.press('Control+3');
+  await expect(page.locator('#st-ok01-yok')).toBeChecked();
+
+  const eposta = page.locator('[name="profil.eposta"]');
+  await eposta.fill('');
+  await eposta.pressSequentially('2');
+  await expect(eposta).toHaveValue('2');
+});
+
+test('Merdiven: dolan basamak tamam, atlanan basamak «atlandı» olur ve erişilebilir ad doğrudur', async ({ page }) => {
+  await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+  await tumunuGoster(page);
+
+  const dugum = (no) => page.locator(`[data-merdiven] [data-basamak="${no}"]`);
+  await expect(page.locator('[data-merdiven] [data-basamak]')).toHaveCount(5);
+  await expect(dugum(1)).toHaveAttribute('aria-label', doldurMetin(E.basamakDurum, { no: 1, n: 0, toplam: 6 }));
+
+  expect(await hepsiniCevapla(page, basamakSecimi(1))).toBe(6);
+  await expect(dugum(1)).toHaveAttribute('data-tamam', '');
+  await expect(dugum(1)).toHaveAttribute('aria-label', doldurMetin(E.basamakDurum, { no: 1, n: 6, toplam: 6 }));
+  await expect(dugum(2)).not.toHaveAttribute('data-tamam');
+
+  await page.locator('input[name="okumaAtla.b2"]').check();
+  await expect(dugum(2)).toHaveAttribute('data-atlandi', '');
+  await expect(dugum(2)).toHaveAttribute('aria-label',
+    `${doldurMetin(E.basamakDurum, { no: 2, n: 0, toplam: 6 })} — ${E.basamakAtlandi}`);
+
+  // «Arap harflerini hiç bilmiyorum»: bütün yol soluklaşır ve açıklama görünür.
+  await page.locator('input[name="atla.okuma"]').check();
+  await expect(page.locator('[data-merdiven]')).toHaveAttribute('data-kapali', '');
+  await expect(page.locator('.st-merdiven-not')).toHaveText(E.merdivenKapali);
+  await expect(dugum(1)).toBeDisabled();
+});
+
+test('Alt şerit: sayaç, kalan süre ve eşik cümleleri güncellenir; tek sayfada gizlenir', async ({ page }) => {
+  test.setTimeout(60_000);
+  await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+
+  await page.locator('[data-adim-sec="1"]').click();
+  const olcum = page.locator('[data-serit-olcum]');
+  await expect(olcum).toBeVisible();
+  await expect(page.locator('[data-serit-sayac]')).toHaveText(doldurMetin(E.adimSayaci, { n: 0, toplam: OKUMA_SORU }));
+  await expect(page.locator('[data-serit-sure]')).toHaveText(/\d+/);
+
+  // Yarısını geçince tek `aria-live` bölgesi eşik cümlesini söyler.
+  await hepsiniCevapla(page, { ...basamakSecimi(1), ...basamakSecimi(2), ...basamakSecimi(3) });
+  await expect(page.locator('[data-serit-sayac]')).toHaveText(doldurMetin(E.adimSayaci, { n: 18, toplam: OKUMA_SORU }));
+  await expect(page.locator('[data-serit-duyuru]')).toHaveText(E.yarisiTamam);
+
+  await hepsiniCevapla(page, {
+    ...basamakSecimi(4), ...basamakSecimi(5),
+    ...Object.fromEntries(BEYAN.filter((b) => b.kume === 'okuma').map((b) => [`beyan.${b.id}`, '0'])),
+  });
+  await expect(page.locator('[data-serit-sayac]')).toHaveText(doldurMetin(E.adimSayaci, { n: OKUMA_SORU, toplam: OKUMA_SORU }));
+  await expect(page.locator('[data-serit-duyuru]')).toHaveText(E.adimTamam);
+  // Tamamlanan adım şeritte ✓ rozeti alır.
+  await expect(page.locator('[data-adim-sec="1"]')).toHaveAttribute('data-tamam', '1');
+
+  await tumunuGoster(page);
+  await expect(page.locator('[data-adim-eylemler]')).toBeHidden();
+});
+
+test('Azaltılmış harekette konfeti ve kıvılcım HİÇ oluşturulmaz; akış aynen çalışır', async ({ page }) => {
+  test.setTimeout(90_000);
+  const gas = await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+  await testiDoldur(page);
+  await gonder(page);
+
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  await expect(page.locator('[data-sonuc]')).toBeVisible();
+  expect(gas.gonderilen).toHaveLength(1);
+  expect(await page.locator('.st-konfeti').count()).toBe(0);
+  expect(await page.locator('.st-kivilcim').count()).toBe(0);
+  // Durum yine görünür: çubuklar dolu, başlıktaki onay çizilmiş hâlde durur.
+  await expect(page.locator('[data-okuma-cubuk] span[data-dolu]').first()).toBeVisible();
+});
+
+test.describe('Hareket açıkken', () => {
+  test.use({ reducedMotion: 'no-preference' });
+
+  test('Otomatik ilerleme: fare seçimi sıradaki cevapsız soruyu getirir, odak taşınmaz', async ({ page }) => {
+    test.setTimeout(60_000);
+    await gasTaklidi(page);
+    await sayfayiAc(page, 'tr');
+    await page.locator('[data-adim-sec="1"]').click();
+
+    await page.locator('#st-ok01-0').scrollIntoViewIfNeeded();
+    const once = await page.evaluate(() => window.scrollY);
+    await page.locator('#st-ok01-0').click();
+    await expect(page.locator('fieldset[data-soru="ok02"]')).toBeInViewport({ timeout: 4000 });
+    await expect.poll(() => page.evaluate(() => window.scrollY)).not.toBe(once);
+    // Odak kullanıcıdan habersiz taşınmaz: hâlâ tıklanan şıktadır.
+    await expect(page.locator('#st-ok01-0')).toBeFocused();
+
+    // Anahtar kapatılınca kaydırma olmaz.
+    await page.locator('[data-oto-ilerle]').click();
+    await expect(page.locator('[data-oto-ilerle]')).toHaveAttribute('aria-checked', 'false');
+    await page.locator('#st-ok02-0').scrollIntoViewIfNeeded();
+    const kapali = await page.evaluate(() => window.scrollY);
+    await page.locator('#st-ok02-0').click();
+    await page.waitForTimeout(900);
+    expect(await page.evaluate(() => window.scrollY)).toBe(kapali);
+
+    // Klavye seçimi de kaydırmaz (anahtar yeniden açık olsa bile).
+    await page.locator('[data-oto-ilerle]').click();
+    await expect(page.locator('[data-oto-ilerle]')).toHaveAttribute('aria-checked', 'true');
+    await page.locator('#st-ok03-0').focus();
+    await page.waitForTimeout(900);                 // odaklanma kaydırması (smooth) otursun
+    const klavye = await page.evaluate(() => window.scrollY);
+    await page.keyboard.press('2');
+    await expect(page.locator('#st-ok03-1')).toBeChecked();
+    await page.waitForTimeout(900);
+    expect(await page.evaluate(() => window.scrollY)).toBe(klavye);
+  });
+
+  test('Sonuç ekranı: çubuklar dolu duruma ulaşır, konfeti kendini DOM’dan kaldırır', async ({ page }) => {
+    test.setTimeout(90_000);
+    await gasTaklidi(page);
+    await sayfayiAc(page, 'tr');
+    await testiDoldur(page);
+    await gonder(page);
+
+    await expect(page.locator('[data-basari]')).toBeVisible();
+    await expect(page.locator('.st-konfeti i')).toHaveCount(24);
+    await expect(page.locator('.st-konfeti')).toHaveCount(0, { timeout: 6000 });
+
+    await sonluAnimasyonlariBekle(page);
+    const dolular = await page.locator('[data-okuma-cubuk] span[data-dolu]').evaluateAll(
+      (liste) => liste.map((el) => getComputedStyle(el).transform));
+    expect(dolular.length).toBeGreaterThan(0);
+    expect(dolular.every((t) => t === 'none' || t === 'matrix(1, 0, 0, 1, 0, 0)')).toBe(true);
+    // Başlıktaki onay çizilen SVG'ye döner (metin simgesi kapanır).
+    await expect(page.locator('[data-basari] h2 .st-onay-ciz')).toHaveCount(1);
+  });
+
+  test('Etkileşim katmanı başlatmada hata verse de doğrulama ve gönderim çalışır', async ({ page }) => {
+    test.setTimeout(90_000);
+    const gas = await gasTaklidi(page);
+    // Katman kurulurken atılan bir hata (burada Web Animations yok) çekirdeği DURDURMAZ.
+    await page.addInitScript(() => {
+      Element.prototype.animate = function () { throw new Error('sınama: animate yok'); };
+    });
+    await sayfayiAc(page, 'tr');
+    expect(await page.locator('form[data-form="seviye"]').getAttribute('data-etkilesim')).toBeNull();
+
+    await testiDoldur(page);
+    await gonder(page);
+    await expect(page.locator('[data-basari]')).toBeVisible();
+    expect(gas.gonderilen).toHaveLength(1);
+    expect(gas.gonderilen[0].cevaplar).toEqual(cevaplarNesnesi());
+  });
+});
+
+test('Merdiven, alt şerit ve anahtar görünürken erişilebilir; 360 pikselde taşma yok', async ({ page }) => {
+  test.setTimeout(60_000);
+  await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+  await page.locator('[data-adim-sec="1"]').click();
+  await hepsiniCevapla(page, basamakSecimi(1));
+  await page.locator('input[name="okumaAtla.b2"]').check();
+  await expect(page.locator('[data-merdiven]')).toBeVisible();
+  await expect(page.locator('[data-oto-ilerle]')).toBeVisible();
+  await expect(page.locator('[data-serit-olcum]')).toBeVisible();
+  await sonluAnimasyonlariBekle(page);
+
+  expect(await ciddiAxe(page, ['main']), 'okuma adımı — açık tema').toEqual([]);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  expect(await ciddiAxe(page, ['main']), 'okuma adımı — işletim sistemi koyu teması').toEqual([]);
+  await page.evaluate(() => { document.documentElement.dataset.theme = 'dark'; });
+  await page.emulateMedia({ colorScheme: 'light' });
+  expect(await ciddiAxe(page, ['main']), 'okuma adımı — elle seçilen koyu tema').toEqual([]);
+
+  await page.setViewportSize({ width: 360, height: 780 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), '360 px').toBe(true);
+  expect(await page.locator('[data-merdiven]').evaluate((el) => el.scrollWidth <= el.clientWidth + 1), 'merdiven 360 px').toBe(true);
 });

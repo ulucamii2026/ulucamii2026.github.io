@@ -46,6 +46,19 @@ export interface SeviyeMetinleri {
   taslak: { not: string };
   sonuc: { baslik: string; referans: string; epostaNotu: string; kuranBaslik: string; alanBaslik: string; anasayfa: string };
   hata: { gunlukSinir: string; epostaGunlukSinir: string; hazirDegil: string };
+  /** Etkileşim katmanının (src/scripts/seviye-etkilesim.ts) görünür metinleri.
+   *  Betik olmadan hiçbiri basılmaz; bu yüzden hepsi tek JSON bloğuyla taşınır. */
+  etkilesim: {
+    basla: string; devam: string;
+    otoIlerle: string; otoIlerleYardim: string; klavyeIpucu: string;
+    adimSayaci: string;        // {n} {toplam}
+    adimIlerlemesi: string;
+    kalanSure: string;         // {dk}
+    yarisiTamam: string; adimTamam: string;
+    merdivenBaslik: string;
+    basamakDurum: string;      // {no} {n} {toplam}
+    basamakAtlandi: string; merdivenKapali: string;
+  };
 }
 
 export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
@@ -209,6 +222,21 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       epostaGunlukSinir: 'Bu e-posta adresiyle bugün en fazla sayıda gönderim yapıldı. Lütfen yarın yeniden deneyin ya da imam@ulucamii.be adresine yazın.',
       hazirDegil: 'Test hizmeti şu an güncelleniyor. Yanıtlarınız bu cihazda saklı; lütfen biraz sonra yeniden deneyin.',
     },
+    etkilesim: {
+      basla: 'Teste başla', devam: 'Kaldığım yerden devam et',
+      otoIlerle: 'Otomatik ilerle',
+      otoIlerleYardim: 'Şıkkı seçtiğinizde sıradaki soru kendiliğinden görünür olur.',
+      klavyeIpucu: 'Klavye: 1–4 şık · 0 Bilmiyorum',
+      adimSayaci: 'Bu adım: {n} / {toplam}',
+      adimIlerlemesi: 'Bu adımdaki ilerleme',
+      kalanSure: 'yaklaşık {dk} dk kaldı',
+      yarisiTamam: 'Yarısı tamam',
+      adimTamam: 'Bu adım tamam — devam edebilirsiniz',
+      merdivenBaslik: 'Okuma basamakları',
+      basamakDurum: '{no}. basamak — {n} / {toplam} soru cevaplandı',
+      basamakAtlandi: 'atlandı',
+      merdivenKapali: 'Basamaklar kapalı: eğitime harflerden başlayacağız.',
+    },
   },
 
   fr: {
@@ -369,6 +397,21 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       epostaGunlukSinir: 'Le nombre maximal d’envois pour cette adresse e-mail est atteint aujourd’hui. Veuillez réessayer demain ou écrire à imam@ulucamii.be.',
       hazirDegil: 'Le service du test est en cours de mise à jour. Vos réponses restent enregistrées sur cet appareil ; veuillez réessayer dans un moment.',
     },
+    etkilesim: {
+      basla: 'Commencer le test', devam: 'Reprendre où je m’étais arrêté(e)',
+      otoIlerle: 'Avance automatique',
+      otoIlerleYardim: 'Dès que vous choisissez une réponse, la question suivante apparaît à l’écran.',
+      klavyeIpucu: 'Clavier : 1–4 réponses · 0 Je ne sais pas',
+      adimSayaci: 'Cette étape : {n} / {toplam}',
+      adimIlerlemesi: 'Progression de cette étape',
+      kalanSure: 'environ {dk} min restantes',
+      yarisiTamam: 'La moitié est faite',
+      adimTamam: 'Cette étape est terminée — vous pouvez continuer',
+      merdivenBaslik: 'Paliers de lecture',
+      basamakDurum: 'Palier {no} — {n} / {toplam} questions répondues',
+      basamakAtlandi: 'passé',
+      merdivenKapali: 'Les paliers sont fermés : nous commencerons par les lettres.',
+    },
   },
 
   en: {
@@ -528,6 +571,21 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       gunlukSinir: 'A very large number of tests were sent today. Your answers are saved on this device; please send the test again tomorrow.',
       epostaGunlukSinir: 'The maximum number of submissions for this e-mail address has been reached today. Please try again tomorrow or write to imam@ulucamii.be.',
       hazirDegil: 'The test service is being updated. Your answers are saved on this device; please try again in a moment.',
+    },
+    etkilesim: {
+      basla: 'Start the test', devam: 'Continue where I left off',
+      otoIlerle: 'Auto-advance',
+      otoIlerleYardim: 'When you choose an answer, the next question comes into view.',
+      klavyeIpucu: 'Keyboard: 1–4 answers · 0 I don’t know',
+      adimSayaci: 'This step: {n} / {toplam}',
+      adimIlerlemesi: 'Progress in this step',
+      kalanSure: 'about {dk} min left',
+      yarisiTamam: 'Halfway there',
+      adimTamam: 'This step is complete — you can continue',
+      merdivenBaslik: 'Reading rungs',
+      basamakDurum: 'Rung {no} — {n} / {toplam} questions answered',
+      basamakAtlandi: 'skipped',
+      merdivenKapali: 'The rungs are closed: we will begin with the letters.',
     },
   },
 };

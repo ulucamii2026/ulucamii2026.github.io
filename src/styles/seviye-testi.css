@@ -67,8 +67,8 @@
    tek harf/kelime ortada durur ki noktalar (ب ت ث) telefonda da seçilsin. */
 .st-form .st-sik > label.st-sik-arapca { font-family: var(--font-arabic); font-size: 2.1rem; line-height: 2.2; justify-content: center; text-align: center; padding-block: .2rem; }
 .st-form .secenek input:focus-visible + label { outline: 3px solid var(--vurgu-2); outline-offset: 2px; }
-/* «Bilmiyorum» seçilene kadar kesik çizgili ve soluk durur; işaretlenince diğer şıklarla aynı olur. */
-.st-form .st-bilmiyorum > label { border-style: dashed; color: var(--metin-2); }
+/* «Bilmiyorum» tam değerinde bir cevaptır: yalnız kesik çizgiyle ayırt edilir, soluk gösterilmez. */
+.st-form .st-bilmiyorum > label { border-style: dashed; }
 .st-form .st-bilmiyorum input:checked + label { border-style: solid; color: #fff; }
 
 /* Kısa seçenekler (ezber, hedefler, günler) satır satır dizilir */
@@ -110,10 +110,6 @@
 
 /* ——— Koyu tema: iki kanal (elle seçilen tema + işletim sistemi tercihi) ——— */
 /* Adaçayı koyu tonu karanlık zeminde boş bölmeden ayırt edilemiyor (WCAG 1.4.11, 3:1). */
-/* Başvuru numarası: ortak `.ucf-basari .ref` kuralı (formlar.css) koyu temada da İznik mavisini
-   (#1f5f8b) kullanıyor ve --zemin-2 üzerinde 2,03:1'de kalıyor (WCAG 1.4.3, büyük metin 3:1 —
-   20 Eyl 2026 axe ölçümü). Burada yalnız bu sayfa için açık İznik tonuna çevriliyor; ortak
-   kuralın kendisi ihtida başarı panelinde de aynı kusuru taşıyor (paket dışı, raporlandı). */
 :root[data-theme="dark"] .st-cubuk > span[data-dolu] { background: var(--color-adacayi-acik); }
 :root[data-theme="dark"] .st-giris .st-cocuk { border-left-color: var(--color-ochre-acik); }
 :root[data-theme="dark"] .st-form .st-atla-basamak .onay-kutu { background: var(--zemin-3); }
@@ -135,6 +131,280 @@
   .st-form .st-dinle { width: 100%; }
 }
 
+/* ════════════════════════════════════════════════════════════════════════════
+   ETKİLEŞİM VE HAREKET KATMANI (20 Eylül 2026)
+   Davranış: src/scripts/seviye-etkilesim.ts · karar: .codex/seviye-testi/08-TALIMAT.md
+
+   İlkeler: hareket anlam taşır (ilerleme, onay, yön) ve hiçbir yerde «doğru/yanlış»
+   ima etmez — «Bilmiyorum» da aynı onay hareketini alır. Yalnız `transform`/`opacity`
+   (çizilen çizgide `stroke-dashoffset`) canlandırılır; hiçbir kural düzeni kaydırmaz.
+   Süsler `aria-hidden` + `pointer-events: none`. Motifler kilim baklavası (eşkenar
+   dörtgen) ve mevcut palet; yeni renk, yazı tipi ya da görsel dosyası yoktur.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Bu yaprak yalnız seviye testi sayfasında yüklenir; iki eğri sayfanın tamamına konur. */
+:root {
+  --st-sakin: cubic-bezier(.16, 1, .3, 1);      /* sitenin mevcut yumuşak çıkışı */
+  --st-yay: cubic-bezier(.34, 1.12, .64, 1);    /* çok hafif yaylanma; zıplama değil */
+  --st-onay-maske: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='m5 12 4.5 4.5L19 7'/%3E%3C/svg%3E");
+}
+
+/* Alt şeridin yapışabilmesi için form ızgara değil sütun: ızgara ögesinin kapsayıcı
+   bloğu kendi ızgara alanıdır ve `sticky` için hiç pay bırakmaz. Esnek sütunda kapsayıcı
+   blok formun kendisidir; `gap` aynı 1,5 rem'dir, görünüm değişmez. */
+.st-form:not([hidden]) { display: flex; flex-direction: column; }
+
+/* ——— 1. Seçim anı ——— */
+/* Mürekkep: şıkka basınca koyu İznik dalgası soldan sağa yayılır ve emilir. Kartın
+   kendi zemini anında döndüğü için kontrast hiçbir anda düşmez. */
+.st-form .st-sik > label { position: relative; overflow: hidden; isolation: isolate; }
+.st-form .st-sik:not(.st-kutucuk) > label { padding-right: 2.2rem; }
+.st-form .st-sik:not(.st-kutucuk) > label.st-sik-arapca { padding-inline: 2.2rem; }
+.st-form .st-sik:not(.st-kutucuk) > label::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; background: var(--color-iznik-koyu);
+  transform: scaleX(0); transform-origin: left; opacity: 0;
+}
+.st-form .st-sik:not(.st-kutucuk) input:checked + label::before { animation: st-murekkep-yay 320ms var(--st-sakin); }
+@keyframes st-murekkep-yay {
+  0% { transform: scaleX(0); opacity: .85; }
+  55% { transform: scaleX(1); opacity: .8; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+.st-form .st-sik input:checked + label { animation: st-sik-esne 260ms var(--st-yay); }
+@keyframes st-sik-esne { from { transform: scale(.985); } to { transform: none; } }
+
+/* Sağdaki onay işareti yer kaplar ama görünmez durur: işaretlenince düzen KAYMAZ. */
+.st-form .st-sik:not(.st-kutucuk) > label::after {
+  content: ''; position: absolute; right: .7rem; top: 50%; width: 1.05rem; height: 1.05rem; margin-top: -.525rem;
+  background: currentColor; mask: var(--st-onay-maske) center / contain no-repeat;
+  transform: scale(.5); opacity: 0; pointer-events: none;
+}
+.st-form .st-sik:not(.st-kutucuk) input:checked + label::after {
+  transform: none; opacity: 1;
+  transition: transform 170ms var(--st-yay) 140ms, opacity 150ms ease-out 140ms;
+}
+
+/* Cevaplanan sorunun sol kenarı adaçayına döner; başlığa küçük ✓ rozeti gelir.
+   İkisi de baştan yer kaplar (scaleY / scale ile büyür), düzen kaymaz. */
+.st-form .st-soru { position: relative; scroll-margin: 6.5rem 0 8rem; }
+.st-form .st-soru::before {
+  content: ''; position: absolute; left: -.5rem; top: 1.1rem; bottom: 1.1rem; width: 3px; border-radius: 2px;
+  background: var(--color-adacayi-koyu); transform: scaleY(0); transform-origin: top;
+  transition: transform 280ms var(--st-sakin); pointer-events: none;
+}
+.st-form .st-soru[data-cevaplandi]::before { transform: scaleY(1); }
+.st-form .st-soru > legend::after {
+  content: ''; display: inline-block; width: .95rem; height: .95rem; margin-left: .4rem; vertical-align: -.12rem;
+  background: var(--color-adacayi-koyu); mask: var(--st-onay-maske) center / contain no-repeat;
+  transform: scale(.4); opacity: 0; transition: transform 200ms var(--st-yay), opacity 160ms ease-out;
+}
+.st-form .st-soru[data-cevaplandi] > legend::after { transform: none; opacity: 1; }
+
+/* Otomatik ilerlemenin tek seferlik vurgusu (600 ms) — yalnız opaklık oynar. */
+.st-form .st-soru[data-vurgu]::after {
+  content: ''; position: absolute; inset: .3rem -.45rem; border-radius: var(--radius-kose);
+  box-shadow: 0 0 0 2px var(--vurgu-2); opacity: 0; pointer-events: none; animation: st-vurgu 600ms var(--st-sakin);
+}
+@keyframes st-vurgu { 0%, 100% { opacity: 0; } 25%, 62% { opacity: .8; } }
+
+/* ——— 2. Yapışkan alt şerit ——— */
+.st-form .st-serit {
+  position: sticky; bottom: 0; z-index: 12;
+  padding: .7rem 0 calc(.7rem + env(safe-area-inset-bottom, 0px));
+  /* Mat zemin: altından kayan soru metni sayaçla ve düğmelerle çakışmamalı (390 px'te
+     %3'lük saydamlık bile hayalet metin bırakıyordu — 20 Eyl 2026 ekran denetimi).
+     Şerit sayfa zemininin aynısıdır; ayrımı üstteki saç teli çizgi ve gölge kurar. */
+  background: var(--zemin);
+  transition: box-shadow 200ms ease-out;
+}
+.st-form .st-serit[data-yapisik] { box-shadow: 0 -14px 26px -20px rgb(36 32 28 / .5); }
+/* Şerit ekranın altına yaslanmışken taslak notu susar; doğal yerine oturunca geri gelir.
+   Betik yoksa öznitelik hiç konmaz ve not bugünkü gibi her zaman görünür. */
+.st-form .st-serit[data-yapisik] .st-serit-not { display: none; }
+/* Yapışkanlık nöbetçisi: şeridin hemen ardında 1 px. Sütun boşluğunu (gap) eksi payla
+   siler ki formun sonunda boşluk büyümesin. */
+.st-form .st-serit-nobetci { height: 1px; margin-top: -1.5rem; }
+.st-serit-cubuk { position: absolute; inset: 0 0 auto; height: 3px; background: var(--cizgi); overflow: hidden; }
+.st-serit-cubuk > span { display: block; height: 100%; background: var(--color-adacayi-koyu);
+  transform: scaleX(var(--oran, 0)); transform-origin: left; transition: transform 320ms var(--st-sakin); }
+.st-form .st-serit-olcum {
+  order: -1; flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .8rem;
+  margin: 0 0 .15rem; font-size: .82rem; line-height: 1.45; color: var(--metin-2); font-variant-numeric: tabular-nums;
+}
+.st-form .st-serit-olcum [data-serit-sayac] { font-weight: 600; color: var(--metin); }
+.st-form .st-serit-not { margin: .3rem 0 0; }
+
+/* ——— 3. Adım şeridi altındaki ayarlar ——— */
+.st-ayar { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .2rem .9rem; margin-top: .4rem; }
+.st-ayar .st-anahtar {
+  display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; padding: .3rem 0;
+  background: none; border: 0; color: var(--metin); font: inherit; font-size: .88rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+}
+.st-anahtar-yuva { position: relative; display: block; width: 2.4rem; height: 1.35rem; flex: none;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin-3);
+  transition: background-color 180ms ease-out, border-color 180ms ease-out; }
+.st-anahtar-yuva > span { position: absolute; top: .125rem; left: .175rem; width: .95rem; height: .95rem;
+  border-radius: 50%; background: var(--metin-2); transition: transform 200ms var(--st-yay), background-color 180ms ease-out; }
+.st-ayar .st-anahtar[aria-checked="true"] .st-anahtar-yuva { background: var(--color-adacayi-koyu); border-color: var(--color-adacayi-koyu); }
+.st-ayar .st-anahtar[aria-checked="true"] .st-anahtar-yuva > span { transform: translateX(1.02rem); background: #fff; }
+.st-ayar .st-klavye { flex: 0 1 auto; display: none; margin: 0; font-size: .8rem; color: var(--metin-2); }
+/* İpucu yalnız gerçek imleç ve klavye varken anlamlıdır. */
+@media (hover: hover) and (pointer: fine) { .st-ayar .st-klavye { display: block; } }
+.st-ayar .st-ayar-yardim { flex-basis: 100%; margin: 0 0 .2rem; font-size: .8rem; line-height: 1.5; color: var(--metin-2); }
+@media (max-width: 39.99rem) {
+  /* Dar ekranda yer yok ama bilgi kaybolmasın: görsel olarak gizlenir, ekran okuyucuda kalır. */
+  .st-ayar .st-ayar-yardim { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* ——— 4. Kur'an merdiveni ——— */
+.st-merdiven { width: 100%; max-width: 46rem; margin: 0 auto 1.4rem; }
+.st-merdiven-yol { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .1rem; margin: 0; padding: 0; list-style: none; }
+.st-merdiven-yol::before { content: ''; position: absolute; top: 1.35rem; left: 10%; right: 10%; height: 1px; background: var(--cizgi-etkilesim); opacity: .5; }
+.st-merdiven-yol > li { position: relative; z-index: 1; min-width: 0; }
+/* Düğme hücrenin tamamını kaplar (≥44 px); sayı ve oran süs katmanındadır. */
+.st-dugum { position: absolute; inset: 0; z-index: 2; width: 100%; min-height: 44px; margin: 0; padding: 0; background: transparent; border: 0; border-radius: var(--radius-kose); cursor: pointer; }
+.st-dugum:disabled { cursor: default; }
+.st-dugum:focus-visible { outline: 2px solid var(--vurgu-2); outline-offset: 2px; }
+.st-dugum-gorsel { display: grid; justify-items: center; gap: .18rem; padding: .2rem 0 .3rem; pointer-events: none; }
+.st-dugum-bakla { position: relative; display: block; width: 2.3rem; height: 2.3rem; transition: transform 180ms var(--st-sakin); }
+.st-dugum:hover:not(:disabled) + .st-dugum-gorsel .st-dugum-bakla { transform: translateY(-2px); }
+/* Baklava: 45° döndürülmüş kare. Dolgu merkezden büyür — basamak doldukça motif genişler. */
+.st-dugum-kap { position: absolute; inset: .22rem; overflow: hidden; transform: rotate(45deg);
+  border: 1.5px solid var(--cizgi-etkilesim); border-radius: 3px; background: var(--zemin);
+  transition: border-color 200ms ease-out; }
+.st-dugum-dolgu { position: absolute; inset: 0; background: var(--color-adacayi);
+  transform: scale(var(--oran, 0)); transition: transform 340ms var(--st-sakin); }
+.st-dugum-onay { position: absolute; inset: .55rem; opacity: 0; transition: opacity 220ms ease-out; }
+.st-dugum-onay path { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 22; }
+.st-dugum-no { font: 600 .82rem/1 var(--font-mono); color: var(--metin); }
+.st-dugum-sayi { font-size: .68rem; line-height: 1.25; color: var(--metin-2); font-variant-numeric: tabular-nums; text-align: center; }
+.st-dugum[data-tamam] + .st-dugum-gorsel .st-dugum-kap { border-color: var(--color-adacayi); }
+.st-dugum[data-tamam] + .st-dugum-gorsel .st-dugum-onay { opacity: 1; }
+.st-dugum[data-atlandi] + .st-dugum-gorsel .st-dugum-kap { border-style: dashed; background: var(--zemin-2); }
+.st-dugum[data-atlandi] + .st-dugum-gorsel .st-dugum-sayi { font-style: italic; }
+.st-merdiven[data-kapali] .st-merdiven-yol { opacity: .45; }
+.st-merdiven-not { margin: .55rem 0 0; font-size: .85rem; line-height: 1.5; color: var(--metin-2); }
+.st-merdiven-not[hidden] { display: none; }
+/* Geniş ekranda yol bütün bölümü kaplamasın: baklavalar birbirinden kopmadan bir yol okunur. */
+@media (min-width: 40rem) { .st-merdiven-yol { max-width: 32rem; } }
+
+/* ——— 5. Arapça mürekkep belirişi ve ses ——— */
+.st-form .st-goster.st-murekkep { animation: st-murekkep-gir 420ms var(--st-sakin); }
+@keyframes st-murekkep-gir {
+  from { opacity: 0; filter: blur(6px); transform: scale(.92); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+/* Ekolayzır düğmenin İÇİNE konmaz: etiket «Tekrar dinle» olurken textContent siliniyor. */
+.st-ekolayzir { display: inline-flex; align-items: flex-end; gap: 2px; height: 1rem; opacity: 0; transition: opacity 180ms ease-out; }
+.st-ekolayzir i { display: block; width: 3px; height: 100%; border-radius: 1px; background: var(--vurgu-2);
+  transform: scaleY(.3); transform-origin: bottom; animation: st-eko 900ms ease-in-out infinite; animation-play-state: paused; }
+.st-ekolayzir i:nth-child(2) { animation-delay: -.68s; }
+.st-ekolayzir i:nth-child(3) { animation-delay: -.34s; }
+.st-ekolayzir i:nth-child(4) { animation-delay: -.5s; }
+/* Sonsuz döngü YALNIZ ses çalarken döner. */
+.st-ses:has(> [data-caliyor]) .st-ekolayzir { opacity: 1; }
+.st-ses:has(> [data-caliyor]) .st-ekolayzir i { animation-play-state: running; }
+@keyframes st-eko { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+/* Hiç dinlenmemiş düğme görünür alana ilk girdiğinde tek seferlik davet halkası. */
+.st-form .st-dinle[data-davet]::after {
+  content: ''; position: absolute; inset: -3px; border: 2px solid var(--vurgu-2); border-radius: inherit;
+  opacity: 0; pointer-events: none; animation: st-davet 750ms ease-out 2;
+}
+@keyframes st-davet { from { transform: scale(.97); opacity: .65; } to { transform: scale(1.07); opacity: 0; } }
+
+/* ——— 6. Adım şeridi: tamamlanan adım ——— */
+.st-form [data-adim-sec] > span { position: relative; }
+.st-form [data-adim-sec][data-tamam] > span::after {
+  content: ''; position: absolute; right: -3px; bottom: -2px; width: .82rem; height: .82rem; border-radius: 50%;
+  background: var(--color-adacayi-koyu) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' d='m5 12 4.5 4.5L19 7'/%3E%3C/svg%3E") center / .52rem no-repeat;
+  box-shadow: 0 0 0 2px var(--zemin-2);
+}
+/* «Devam» düğmesinin tek seferlik nabzı (adımın son sorusu cevaplanınca). */
+.st-form [data-adim-ileri][data-nabiz] { animation: st-nabiz 520ms var(--st-yay); }
+@keyframes st-nabiz { 0%, 100% { transform: none; } 45% { transform: scale(1.045); } }
+
+/* ——— 7. Giriş ——— */
+.st-giris .st-giris-eylem { margin: .2rem 0 0; }
+.st-giris .st-basla { min-height: 3.1rem; padding-inline: 1.7rem; font-size: 1rem; }
+
+/* ——— 8. Sonuç ekranı ——— */
+.st-basari { position: relative; overflow: hidden; }
+.st-basari[data-onay] h2::before { content: none; }
+.st-onay-ciz { width: 2rem; height: 2rem; flex: none; }
+.st-onay-ciz circle { fill: var(--color-adacayi); }
+.st-onay-ciz path { fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; }
+.st-cubuk > span { transform-origin: left; }
+/* Konfeti: 24 kilim baklavası, 1,8 sn, kendini DOM'dan kaldırır (seviye-etkilesim.ts). */
+.st-konfeti { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.st-konfeti i { position: absolute; top: -14px; width: 10px; height: 10px; opacity: 0;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  animation: st-konfeti 1800ms cubic-bezier(.22, .62, .38, 1) forwards; }
+@keyframes st-konfeti {
+  0% { transform: translate3d(0, 0, 0) rotate(0) scale(.7); opacity: 0; }
+  10% { opacity: 1; }
+  82% { opacity: 1; }
+  100% { transform: translate3d(var(--kay, 0), var(--dus, 60vh), 0) rotate(var(--don, 180deg)) scale(1); opacity: 0; }
+}
+
+/* ——— 9. Kilim kıvılcımı (basamak ve adım tamamlanınca, tek sefer) ——— */
+.st-kivilcim { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 3; pointer-events: none; }
+.st-kivilcim i { position: absolute; left: -3.5px; top: -3.5px; width: 7px; height: 7px; opacity: 0;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  animation: st-kivilcim 700ms var(--st-sakin) forwards; }
+@keyframes st-kivilcim {
+  0% { transform: rotate(var(--aci, 0deg)) translateY(0) scale(.3); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: rotate(var(--aci, 0deg)) translateY(-1.3rem) scale(.9); opacity: 0; }
+}
+
+/* ——— Koyu tema: etkileşim katmanı (iki kanal) ——— */
+/* Adaçayı koyu tonu karanlık zeminde 3:1'in altına düşüyor; dolgular açık tona,
+   dolgu üstündeki ✓ ise ceviz koyuya çevrilir (WCAG 1.4.11). */
+:root[data-theme="dark"] .st-dugum-dolgu,
+:root[data-theme="dark"] .st-serit-cubuk > span,
+:root[data-theme="dark"] .st-form .st-soru::before { background: var(--color-adacayi-acik); }
+:root[data-theme="dark"] .st-dugum-onay path { stroke: var(--color-ceviz-koyu); }
+:root[data-theme="dark"] .st-form .st-soru > legend::after { background: var(--color-adacayi-acik); }
+:root[data-theme="dark"] .st-ayar .st-anahtar[aria-checked="true"] .st-anahtar-yuva { background: var(--color-adacayi); border-color: var(--color-adacayi); }
+:root[data-theme="dark"] .st-form [data-adim-sec][data-tamam] > span::after { background-color: var(--color-adacayi); }
+:root[data-theme="dark"] .st-form .st-serit[data-yapisik] { box-shadow: 0 -12px 26px -18px rgb(0 0 0 / .8); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .st-dugum-dolgu,
+  :root:not([data-theme="light"]) .st-serit-cubuk > span,
+  :root:not([data-theme="light"]) .st-form .st-soru::before { background: var(--color-adacayi-acik); }
+  :root:not([data-theme="light"]) .st-dugum-onay path { stroke: var(--color-ceviz-koyu); }
+  :root:not([data-theme="light"]) .st-form .st-soru > legend::after { background: var(--color-adacayi-acik); }
+  :root:not([data-theme="light"]) .st-ayar .st-anahtar[aria-checked="true"] .st-anahtar-yuva { background: var(--color-adacayi); border-color: var(--color-adacayi); }
+  :root:not([data-theme="light"]) .st-form [data-adim-sec][data-tamam] > span::after { background-color: var(--color-adacayi); }
+  :root:not([data-theme="light"]) .st-form .st-serit[data-yapisik] { box-shadow: 0 -12px 26px -18px rgb(0 0 0 / .8); }
+}
+
+/* ——— Dar ekran: etkileşim katmanı ——— */
+@media (max-width: 639px) {
+  .st-form .st-sik:not(.st-kutucuk) > label { padding-right: 2.1rem; }
+  .st-form .st-sik:not(.st-kutucuk) > label.st-sik-arapca { padding-inline: 2.1rem; }
+  .st-dugum-bakla { width: 2.1rem; height: 2.1rem; }
+  .st-merdiven-yol::before { top: 1.25rem; }
+  .st-dugum-sayi { font-size: .64rem; }
+  .st-form .st-serit { padding-top: .6rem; }
+  .st-ses:has(> [data-caliyor]) .st-ekolayzir { margin-top: -.2rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .st-form .st-sik > label, .st-form .st-dinle, .st-cubuk > span { transition: none; }
+  /* Hareket kapalı: durum değişimi yine görünür, yalnız anında olur. */
+  .st-form .st-sik > label, .st-form .st-sik > label::before, .st-form .st-sik > label::after,
+  .st-form .st-soru::before, .st-form .st-soru::after, .st-form .st-soru > legend::after,
+  .st-form .st-dinle::after, .st-form .st-goster, .st-form [data-adim-ileri],
+  .st-serit-cubuk > span, .st-dugum-bakla, .st-dugum-kap, .st-dugum-dolgu, .st-dugum-onay,
+  .st-anahtar-yuva, .st-anahtar-yuva > span, .st-ekolayzir, .st-ekolayzir i, .st-form .st-serit {
+    animation: none !important; transition: none !important;
+  }
+  .st-form .st-sik:not(.st-kutucuk) input:checked + label::before { opacity: 0; }
+  /* Duran ekolayzır yine «çalıyor» der: çubuklar farklı yükseklikte sabit kalır. */
+  .st-ekolayzir i { transform: scaleY(.5); }
+  .st-ekolayzir i:nth-child(2) { transform: scaleY(.95); }
+  .st-ekolayzir i:nth-child(3) { transform: scaleY(.65); }
+  .st-ekolayzir i:nth-child(4) { transform: scaleY(.85); }
 }

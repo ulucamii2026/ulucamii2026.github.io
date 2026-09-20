@@ -44,6 +44,7 @@ export function formAdimlariniBaslat(
       baslik?.focus({ preventScroll: true });
       ust.scrollIntoView({ behavior: hareket(), block: 'start' });
     }
+    form.dispatchEvent(new CustomEvent('form:adim', { detail: { adim, toplam: gruplar.length, hepsi, bolumler: gruplar[adim] } }));
   };
   function devam() { if (dogrula(gruplar[adim])) goster(adim + 1); }
   geri.addEventListener('click', () => goster(adim - 1));

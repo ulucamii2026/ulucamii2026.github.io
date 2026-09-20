@@ -7,6 +7,7 @@
  */
 import { doldur, formuBaslat, telefonNormalle, type Alan, type Veriler } from './form-cekirdek';
 import { formAdimlariniBaslat } from './form-adimlari';
+import { etkilesimiBaslat, type EtkilesimMetni } from './seviye-etkilesim';
 import type { Sonuc } from '../lib/seviye-testi/tipler.ts';
 import type { SonucMetinleri } from '../lib/seviye-testi/metinler.ts';
 
@@ -20,6 +21,8 @@ interface BetikMetni {
   atlanan: string;      // {liste}
   toplamSoru: number;
   bolumAdlari: Record<string, string>;
+  /** Etkileşim katmanının metinleri; katman yüklenmezse hiç kullanılmaz. */
+  etkilesim: EtkilesimMetni;
 }
 
 /* ---------- yardımcılar ---------- */
@@ -270,6 +273,11 @@ export function seviyeFormuBaslat() {
       kutu.hidden = false;
     },
   });
+
+  // Etkileşim katmanı ayrı bir modüldür ve çekirdek akışı ASLA engellemez: burada hata
+  // fırlatsa bile doğrulama, taslak ve gönderim bugünkü gibi çalışmayı sürdürür.
+  // Adım motorundan ÖNCE kurulur ki ilk `form:adim` olayını da duysun.
+  try { etkilesimiBaslat(form, metin.etkilesim); } catch { /* deneyim katmanı: yok sayılır */ }
 
   formAdimlariniBaslat(form, cekirdek.dogrulaBolum, { baslangic });
 }
