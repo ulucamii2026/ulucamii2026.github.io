@@ -19,7 +19,7 @@ export interface SeviyeMetinleri {
   };
   profil: {
     baslik: string; not: string;
-    adSoyad: string; eposta: string; epostaYardim: string; epostaTekrar: string; epostaEslesmiyor: string;
+    adSoyad: string; eposta: string; epostaYardim: string; epostaOneri: string; epostaOneriUygula: string;
     telefon: string; telefonYardim: string;
     yasAraligi: string; yasSecenekleri: Secenek[];
     cinsiyet: string; cinsiyetSecenekleri: Secenek[];
@@ -108,7 +108,7 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       not: 'Yıldızlı alanlar zorunludur. Kimlik numarası, adres ya da doğum tarihi istemiyoruz.',
       adSoyad: 'Adınız ve soyadınız',
       eposta: 'E-posta adresiniz', epostaYardim: 'Sonucunuzun özeti bu adrese gönderilir.',
-      epostaTekrar: 'E-posta adresiniz (tekrar)', epostaEslesmiyor: 'İki e-posta adresi aynı olmalı.',
+      epostaOneri: 'Şunu mu demek istediniz: {adres}?', epostaOneriUygula: 'Evet, düzelt',
       // Örnek numara yalnız alanın placeholder'ındadır: gövde metnindeki her numara, ayarlarda
       // tanımlı olmayan telefon olarak site denetimine takılıyor (scripts/site-denetim.mjs).
       telefon: 'Telefon ya da WhatsApp numaranız', telefonYardim: 'İsteğe bağlı. Yazarsanız size daha kolay ulaşırız.',
@@ -285,7 +285,7 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       not: 'Les champs marqués d’un astérisque sont obligatoires. Nous ne demandons ni numéro d’identité, ni adresse, ni date de naissance.',
       adSoyad: 'Vos prénom et nom',
       eposta: 'Votre adresse e-mail', epostaYardim: 'Le résumé de votre résultat sera envoyé à cette adresse.',
-      epostaTekrar: 'Votre adresse e-mail (à nouveau)', epostaEslesmiyor: 'Les deux adresses e-mail doivent être identiques.',
+      epostaOneri: 'Vouliez-vous dire {adres} ?', epostaOneriUygula: 'Oui, corriger',
       telefon: 'Votre numéro de téléphone ou WhatsApp', telefonYardim: 'Facultatif. Il nous permet de vous joindre plus facilement.',
       yasAraligi: 'Votre tranche d’âge',
       yasSecenekleri: [
@@ -460,7 +460,7 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       not: 'Fields marked with an asterisk are required. We do not ask for an ID number, an address or a date of birth.',
       adSoyad: 'Your first and last name',
       eposta: 'Your e-mail address', epostaYardim: 'The summary of your result will be sent to this address.',
-      epostaTekrar: 'Your e-mail address (again)', epostaEslesmiyor: 'The two e-mail addresses must be identical.',
+      epostaOneri: 'Did you mean {adres}?', epostaOneriUygula: 'Yes, correct it',
       telefon: 'Your phone or WhatsApp number', telefonYardim: 'Optional. It makes it easier for us to reach you.',
       yasAraligi: 'Your age range',
       yasSecenekleri: [

@@ -42,7 +42,13 @@ export function formAdimlariniBaslat(
       const baslik = gruplar[adim][0]?.querySelector<HTMLElement>('h2');
       baslik?.setAttribute('tabindex', '-1');
       baslik?.focus({ preventScroll: true });
-      ust.scrollIntoView({ behavior: hareket(), block: 'start' });
+      // Kısa ekranda adım paneli (+ yapışkan eylem şeridi) içeriğe yer bırakmıyorsa doğrudan bölüme inilir;
+      // panel bir kaydırma yukarıda kalır. Yer varsa eskisi gibi panele inilir.
+      const bolum = gruplar[adim][0];
+      const ustPay = parseFloat(getComputedStyle(ust).scrollMarginTop) || 0;
+      const altPay = getComputedStyle(alt).position === 'sticky' ? alt.offsetHeight : 0;
+      const yer = innerHeight - ustPay - ust.offsetHeight - altPay;
+      (bolum && yer < 240 ? bolum : ust).scrollIntoView({ behavior: hareket(), block: 'start' });
     }
     form.dispatchEvent(new CustomEvent('form:adim', { detail: { adim, toplam: gruplar.length, hepsi, bolumler: gruplar[adim] } }));
   };

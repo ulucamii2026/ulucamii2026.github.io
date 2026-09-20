@@ -17,6 +17,8 @@
  *     script[type=application/json][data-metin] → hata/ileti sözlüğü
  */
 
+import { telefonAlaniniBagla } from './telefon-bicim';
+
 export type Veriler = Record<string, unknown>;
 
 export interface FormSecenekleri {
@@ -373,6 +375,9 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     taslakYaz(taslakAnahtari, form, gonderimAnahtari);
   }
   sayaclariKur(form);
+  // Telefon alanları: yalnız rakam, yazarken «+32 470 12 34 56» biçimi (taslak geri yüklendikten sonra bağlanır).
+  form.querySelectorAll<HTMLInputElement>('input[data-tur="telefon"]').forEach(a => telefonAlaniniBagla(a));
+
   form.querySelector<HTMLButtonElement>('[data-taslak-sil]')?.addEventListener('click', () => {
     if (gonderiliyor) return;
     window.clearTimeout(zamanlayici);

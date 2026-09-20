@@ -14,7 +14,7 @@ hazırbulunuşluk düzeyinin tespiti»); TDV İslâm Ansiklopedisi «İlmihal» 
 3. Katılımcıdan ses kaydı alınmaz; okuma ölçümü tanıma testi + öz beyan; akıcılık/mahreç yüz yüze teyit edilir.
 4. Saklama: e-posta + dernek defteri (özel Google Sheets) + panel listesi; 24 ay, otomatik silme.
 5. Katılımcı yalnız alan alan düzey + teşvik görür; yanlış cevap listesi ve not yok. Söz: «en geç bir hafta içinde» dönüş.
-6. Profil: ad soyad, e-posta (iki kez), isteğe bağlı telefon, yaş aralığı, cinsiyet, İslâm'la geçmişi, önceki eğitim,
+6. Profil: ad soyad, e-posta (21 Eyl 2026'dan beri TEK kez — Rıdvan: «iki kere doldurmaya gerek yok»; yaygın alan adı hatasında öneri çıkar), isteğe bağlı telefon (yalnız rakam, yazarken «+32 470 12 34 56»), yaş aralığı, cinsiyet, İslâm'la geçmişi, önceki eğitim,
    hedefler, ders dili, müsaitlik, yüz yüze/çevrim içi. Kimlik numarası, adres, doğum tarihi, fotoğraf **istenmez**.
 7. Yalnız 18+. Dayanak açık rıza (GDPR md. 9/2-a), sürüm damgalı.
 8. Fıkıh: ortak zemin; mezhebe bağlı az sayıda madde «Hanefî mezhebine göre» etiketli, puana girmez.

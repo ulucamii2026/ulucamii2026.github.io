@@ -14,7 +14,7 @@ import type { SonucMetinleri } from '../lib/seviye-testi/metinler.ts';
 /** Sayfaya gömülü `script[data-metin-seviye]` (SeviyeTestiFormu.astro). */
 interface BetikMetni {
   soruZorunlu: string;
-  epostaEslesmiyor: string;
+  epostaOneri: string;      // {adres}
   tekrarDinle: string;
   sesHatasi: string;
   cevaplanan: string;   // {n} {toplam}
@@ -74,6 +74,55 @@ function taslaktanAdim(form: HTMLFormElement): number {
     });
   const sira = gruplar.findIndex((grup) => grup.some(eksik));
   return sira < 0 ? 0 : sira;
+}
+
+/* ---------- e-posta: tek alan + yaygın yazım hatası önerisi ---------- */
+
+/** Adres bir kez yazılır; sonuç yalnız bu adrese gittiği için bilinen alan adı hataları yakalanır. */
+const ALAN_ADI_DUZELTME: Record<string, string> = {
+  'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gamil.com': 'gmail.com',
+  'gnail.com': 'gmail.com', 'gmaill.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmail.cm': 'gmail.com',
+  'gmail.be': 'gmail.com', 'gmail.fr': 'gmail.com', 'googlemail.co': 'googlemail.com',
+  'hotmial.com': 'hotmail.com', 'hotmal.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmil.com': 'hotmail.com',
+  'hotmail.co': 'hotmail.com', 'hotmial.be': 'hotmail.be', 'hotmal.be': 'hotmail.be', 'hotmial.fr': 'hotmail.fr',
+  'outlok.com': 'outlook.com', 'outloo.com': 'outlook.com', 'outlook.co': 'outlook.com', 'outlok.be': 'outlook.be',
+  'yaho.com': 'yahoo.com', 'yahooo.com': 'yahoo.com', 'yahoo.co': 'yahoo.com', 'yaho.fr': 'yahoo.fr',
+  'iclod.com': 'icloud.com', 'icloud.co': 'icloud.com', 'icoud.com': 'icloud.com',
+  'skynet.bee': 'skynet.be', 'skynte.be': 'skynet.be', 'skyent.be': 'skynet.be', 'telenet.bee': 'telenet.be',
+  'proximus.bee': 'proximus.be', 'live.bee': 'live.be',
+};
+
+export function epostaOnerisi(adres: string): string | null {
+  const a = adres.trim();
+  const at = a.lastIndexOf('@');
+  if (at < 1 || at === a.length - 1) return null;
+  const alan = a.slice(at + 1).toLowerCase();
+  const duzgun = ALAN_ADI_DUZELTME[alan] ?? (/\.(con|cmo|vom|coml|comm)$/.test(alan) ? alan.replace(/\.[a-z]+$/, '.com') : null);
+  return duzgun && duzgun !== alan ? a.slice(0, at + 1) + duzgun : null;
+}
+
+function epostaOnerisiniKur(form: HTMLFormElement, metin: BetikMetni) {
+  const alan = form.querySelector<HTMLInputElement>('[name="profil.eposta"]');
+  const kutu = form.querySelector<HTMLElement>('[data-eposta-oneri]');
+  const yazi = kutu?.querySelector<HTMLElement>('[data-eposta-oneri-metin]');
+  const dugme = kutu?.querySelector<HTMLButtonElement>('[data-eposta-oneri-uygula]');
+  if (!alan || !kutu || !yazi || !dugme || !metin.epostaOneri) return;
+  let oneri: string | null = null;
+  const tazele = () => {
+    oneri = epostaOnerisi(alan.value);
+    kutu.hidden = !oneri;
+    if (oneri) yazi.textContent = doldur(metin.epostaOneri, { adres: oneri });
+  };
+  alan.addEventListener('blur', tazele);
+  alan.addEventListener('input', () => { if (!kutu.hidden) tazele(); });
+  dugme.addEventListener('click', () => {
+    if (!oneri) return;
+    alan.value = oneri;
+    alan.dispatchEvent(new Event('input', { bubbles: true }));
+    kutu.hidden = true;
+    alan.focus();
+  });
+  if (alan.value) tazele();
 }
 
 /* ---------- dinleme ---------- */
@@ -196,17 +245,14 @@ export function seviyeFormuBaslat() {
   const metin = JSON.parse(form.querySelector('script[data-metin-seviye]')?.textContent || '{}') as BetikMetni;
 
   dinlemeyiKur(form, metin);
+  epostaOnerisiniKur(form, metin);
   sureyiSay(form);
 
   let baslangic = 0;
   const cekirdek = formuBaslat(form, {
     hazir: (f) => { baslangic = taslaktanAdim(f); },
-    ekDogrula(veriler) {
+    ekDogrula() {
       const hatalar: Array<[string, string]> = [];
-      const profil = (veriler.profil ?? {}) as Veriler;
-      const bir = String(profil.eposta ?? '').trim().toLowerCase();
-      const iki = String(profil.epostaTekrar ?? '').trim().toLowerCase();
-      if (bir && iki && bir !== iki) hatalar.push(['profil.epostaTekrar', metin.epostaEslesmiyor]);
       // Banka sorularında genel «zorunlu» yerine «Bilmiyorum»u hatırlatan metin gösterilir.
       for (const soru of acikSorular(form)) {
         if (soru.banka && !soru.yanitli) hatalar.push([soru.ad, metin.soruZorunlu]);
@@ -217,7 +263,7 @@ export function seviyeFormuBaslat() {
       const profil = (v.profil ?? {}) as Veriler;
       const onay = (v.onay ?? {}) as Veriler;
       const telefon = String(profil.telefon ?? '').trim();
-      // `profil.epostaTekrar` ve `okumaAtla.*` yalnız arayüz içindir, gövdeye girmez.
+      // `okumaAtla.*` yalnız arayüz içindir, gövdeye girmez.
       // E-posta küçük harfe çevrilmez: normalleştirmeyi sunucu yapar.
       return {
         bankaSurumu: Number(form.dataset.bankaSurumu) || 0,

@@ -218,9 +218,9 @@
   transition: box-shadow 200ms ease-out;
 }
 .st-form .st-serit[data-yapisik] { box-shadow: 0 -14px 26px -20px rgb(36 32 28 / .5); }
-/* Şerit ekranın altına yaslanmışken taslak notu susar; doğal yerine oturunca geri gelir.
-   Betik yoksa öznitelik hiç konmaz ve not bugünkü gibi her zaman görünür. */
-.st-form .st-serit[data-yapisik] .st-serit-not { display: none; }
+/* `data-yapisik` YALNIZ gölgeyi değiştirir; yerleşime dokunan hiçbir kural ona bağlanmaz.
+   (21 Eyl 2026: nota bağlı `display:none` şeridin boyunu 110↔71 px oynatıp formun sonunda
+   saniyede onlarca yapış/çöz döngüsü kuruyordu — tekerlekle inerken görülen titreme.) */
 /* Yapışkanlık nöbetçisi: şeridin hemen ardında 1 px. Sütun boşluğunu (gap) eksi payla
    siler ki formun sonunda boşluk büyümesin. */
 .st-form .st-serit-nobetci { height: 1px; margin-top: -1.5rem; }
@@ -232,7 +232,16 @@
   margin: 0 0 .15rem; font-size: .82rem; line-height: 1.45; color: var(--metin-2); font-variant-numeric: tabular-nums;
 }
 .st-form .st-serit-olcum [data-serit-sayac] { font-weight: 600; color: var(--metin); }
-.st-form .st-serit-not { margin: .3rem 0 0; }
+/* Not şeridin ardında, akışta durur; ızgara boşluğunu (1.5rem) kısmen geri alır. Şerit gizliyken
+   (betik yok ya da tek sayfa görünümü) not da görünmez — taslak yalnız betikle çalışır. */
+.st-form .st-serit-not { margin: -1.1rem 0 0; font-size: .82rem; line-height: 1.5; color: var(--metin-2); }
+.st-form .st-serit[hidden] ~ .st-serit-not { display: none; }
+
+/* ——— E-posta yazım önerisi ——— */
+.st-form .st-oneri { display: flex; flex-wrap: wrap; align-items: center; gap: 0 .45rem; margin: .35rem 0 0; font-size: .88rem; line-height: 1.5; color: var(--metin); animation: st-murekkep-gir 320ms var(--st-sakin); }
+.st-form .st-oneri[hidden] { display: none; }
+.st-form .st-oneri-dugme { min-height: 44px; padding: 0 .1rem; background: none; border: 0; color: var(--vurgu-2); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: .18em; cursor: pointer; }
+.st-form .st-oneri-dugme:focus-visible { outline: 2px solid var(--vurgu-2); outline-offset: 2px; border-radius: 4px; }
 
 /* ——— 3. Adım şeridi altındaki ayarlar ——— */
 .st-ayar { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .2rem .9rem; margin-top: .4rem; }
@@ -281,7 +290,8 @@
 .st-dugum-sayi { font-size: .68rem; line-height: 1.25; color: var(--metin-2); font-variant-numeric: tabular-nums; text-align: center; }
 .st-dugum[data-tamam] + .st-dugum-gorsel .st-dugum-kap { border-color: var(--color-adacayi); }
 .st-dugum[data-tamam] + .st-dugum-gorsel .st-dugum-onay { opacity: 1; }
-.st-dugum[data-atlandi] + .st-dugum-gorsel .st-dugum-kap { border-style: dashed; background: var(--zemin-2); }
+/* Atlanan basamak: kesik çizgi iki temada da okunmalı (koyu zeminde --cizgi-etkilesim kayboluyordu). */
+.st-dugum[data-atlandi] + .st-dugum-gorsel .st-dugum-kap { border-style: dashed; border-color: var(--metin-2); background: var(--zemin-2); }
 .st-dugum[data-atlandi] + .st-dugum-gorsel .st-dugum-sayi { font-style: italic; }
 .st-merdiven[data-kapali] .st-merdiven-yol { opacity: .45; }
 .st-merdiven-not { margin: .55rem 0 0; font-size: .85rem; line-height: 1.5; color: var(--metin-2); }
@@ -396,7 +406,7 @@
   /* Hareket kapalı: durum değişimi yine görünür, yalnız anında olur. */
   .st-form .st-sik > label, .st-form .st-sik > label::before, .st-form .st-sik > label::after,
   .st-form .st-soru::before, .st-form .st-soru::after, .st-form .st-soru > legend::after,
-  .st-form .st-dinle::after, .st-form .st-goster, .st-form [data-adim-ileri],
+  .st-form .st-dinle::after, .st-form .st-goster, .st-form .st-oneri, .st-form [data-adim-ileri],
   .st-serit-cubuk > span, .st-dugum-bakla, .st-dugum-kap, .st-dugum-dolgu, .st-dugum-onay,
   .st-anahtar-yuva, .st-anahtar-yuva > span, .st-ekolayzir, .st-ekolayzir i, .st-form .st-serit {
     animation: none !important; transition: none !important;

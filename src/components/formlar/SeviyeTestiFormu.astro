@@ -51,7 +51,7 @@ const metinJson = JSON.stringify({
 
 // Betiğin ihtiyaç duyduğu seviye testine özgü metinler (seviye-form.ts → SeviyeBetikMetni).
 const seviyeJson = JSON.stringify({
-  soruZorunlu: m.soru.zorunlu, epostaEslesmiyor: m.profil.epostaEslesmiyor,
+  soruZorunlu: m.soru.zorunlu, epostaOneri: m.profil.epostaOneri,
   tekrarDinle: m.okuma.tekrarDinle, sesHatasi: m.okuma.sesHatasi,
   cevaplanan: m.ozet.cevaplanan, atlanan: m.ozet.atlanan, toplamSoru,
   bolumAdlari: {
@@ -120,14 +120,11 @@ const ozetSatirlari = [
         <label for="st-eposta">{m.profil.eposta} <span class="zorunlu" aria-hidden="true">*</span></label>
         <input id="st-eposta" name="profil.eposta" type="email" required data-tur="eposta" maxlength="160" autocomplete="email" inputmode="email" />
         <p class="yardim">{m.profil.epostaYardim}</p>
+        {/* Adres tek kez yazılır (21 Eyl 2026); yaygın alan adı yazım hatasında betik öneri gösterir. */}
+        <p class="st-oneri" data-eposta-oneri aria-live="polite" hidden><span data-eposta-oneri-metin></span> <button type="button" class="st-oneri-dugme" data-eposta-oneri-uygula>{m.profil.epostaOneriUygula}</button></p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>
-        <label for="st-eposta-2">{m.profil.epostaTekrar} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="st-eposta-2" name="profil.epostaTekrar" type="email" required data-tur="eposta" maxlength="160" autocomplete="off" inputmode="email" />
-        <p class="hata" aria-live="polite" hidden></p>
-      </div>
-      <div data-alan class="tam">
         <label for="st-telefon">{m.profil.telefon} <span class="istege">({o.istegeBagli})</span></label>
         <input id="st-telefon" name="profil.telefon" type="tel" data-tur="telefon" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+32 470 12 34 56" />
         <p class="yardim">{m.profil.telefonYardim}</p>
@@ -349,9 +346,11 @@ const ozetSatirlari = [
     <p class="st-serit-olcum" data-serit-olcum hidden><span data-serit-sayac></span><span class="st-serit-sure" data-serit-sure></span></p>
     <button type="button" class="dugme dugme-ikincil" data-adim-geri>{m.adimlar.geri}</button>
     <button type="button" class="dugme dugme-birincil" data-adim-ileri>{m.adimlar.ileri}</button>
-    <p class="st-serit-not">{m.taslak.not}</p>
     <span class="sr-only" data-serit-duyuru aria-live="polite"></span>
   </div>
+  {/* Taslak notu şeridin DIŞINDA durur: şeridin yüksekliği yapışıkken de aynı kalmalı. İçindeyken
+      gizlenip açılması sayfa boyunu oynatıyor, formun sonunda yapış/çöz döngüsü (titreme) kuruyordu. */}
+  <p class="st-serit-not">{m.taslak.not}</p>
 </form>
 
 <script>

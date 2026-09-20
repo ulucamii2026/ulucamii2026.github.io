@@ -33,8 +33,7 @@ const basamakSecimi = (no) => Object.fromEntries(
 const PROFIL_METIN = {
   'profil.adSoyad': 'Deniz TESTOGLU',
   'profil.eposta': 'deniz@example.test',
-  'profil.epostaTekrar': 'deniz@example.test',
-  'profil.telefon': '+32 470 00 00 00',
+  'profil.telefon': '0470000000',   // yerel yazım: alan kendisi «+32 470 00 00 00» yapar
 };
 const PROFIL_SECIM = {
   'profil.yasAraligi': '26-40', 'profil.cinsiyet': 'kadin', 'profil.muslumanlik': '0-1',
@@ -102,8 +101,8 @@ async function sayfayiAc(page, dil = 'tr') {
 
 const tumunuGoster = (page) => page.locator('[data-adim-tumu]').click();
 
-async function profilDoldur(page, { epostaTekrar } = {}) {
-  for (const [ad, deger] of Object.entries({ ...PROFIL_METIN, ...(epostaTekrar ? { 'profil.epostaTekrar': epostaTekrar } : {}) })) {
+async function profilDoldur(page) {
+  for (const [ad, deger] of Object.entries(PROFIL_METIN)) {
     await page.locator(`[name="${ad}"]`).fill(deger);
   }
   for (const [ad, deger] of Object.entries(PROFIL_SECIM)) {
@@ -202,13 +201,31 @@ test('Adım adım tam akış: doğrulama, özet, gönderim sözleşmesi ve sonu�
   const secim = secimKur();
   const adimlar = adimSecimleri(secim);
 
-  // Adım 0 — e-posta tekrarı tutmuyor: ileri gitmez, hata alanın altında görünür.
-  await profilDoldur(page, { epostaTekrar: 'baska@example.test' });
-  await page.locator('[data-adim-ileri]').click();
-  await adimDogrula(page, 0);
-  await expect(page.locator('[name="profil.epostaTekrar"]').locator('xpath=ancestor::*[@data-alan][1]').locator('.hata'))
-    .toHaveText(M.profil.epostaEslesmiyor);
-  await page.locator('[name="profil.epostaTekrar"]').fill(PROFIL_METIN['profil.epostaTekrar']);
+  // Adım 0 — e-posta TEK kez yazılır; yaygın alan adı hatasında öneri çıkar ve tek dokunuşla düzelir.
+  await expect(page.locator('[name="profil.epostaTekrar"]')).toHaveCount(0);
+  const eposta = page.locator('[name="profil.eposta"]');
+  await eposta.fill('deniz@gmial.com');
+  await eposta.blur();
+  const oneri = page.locator('[data-eposta-oneri]');
+  await expect(oneri).toBeVisible();
+  await expect(oneri).toContainText('deniz@gmail.com');
+  await oneri.locator('[data-eposta-oneri-uygula]').click();
+  await expect(eposta).toHaveValue('deniz@gmail.com');
+  await expect(oneri).toBeHidden();
+
+  // Telefon: yalnız rakam kabul eder, yazarken «+32 4xx xx xx xx» biçimine girer.
+  const telefon = page.locator('[name="profil.telefon"]');
+  await telefon.click();
+  await expect(telefon).toHaveValue('+32 ');
+  await telefon.pressSequentially('04a70-12b34 56xyz');
+  await expect(telefon).toHaveValue('+32 470 12 34 56');
+  await telefon.fill('');
+  await telefon.blur();
+  await expect(telefon).toHaveValue('');
+
+  await profilDoldur(page);
+  await expect(telefon).toHaveValue('+32 470 00 00 00');
+  await expect(oneri).toBeHidden();
   await page.locator('[data-adim-ileri]').click();
   await adimDogrula(page, 1);
 
@@ -739,4 +756,53 @@ test('Merdiven, alt şerit ve anahtar görünürken erişilebilir; 360 pikselde 
   await page.setViewportSize({ width: 360, height: 780 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), '360 px').toBe(true);
   expect(await page.locator('[data-merdiven]').evaluate((el) => el.scrollWidth <= el.clientWidth + 1), 'merdiven 360 px').toBe(true);
+});
+
+test('Kısa ekranda adıma iniş bölümü gösterir; uzun ekranda adım paneline inilir', async ({ page }) => {
+  test.setTimeout(60_000);
+  await gasTaklidi(page);
+  await page.setViewportSize({ width: 1366, height: 640 });
+  await sayfayiAc(page, 'tr');
+  await page.locator('[data-adim-sec="1"]').click();
+  // Adım paneli + yapışkan şerit 640 pikselde içeriğe yer bırakmaz: bölüm başlığı görünür olmalı.
+  await expect(page.locator('#b-okuma h2').first()).toBeInViewport({ ratio: 1, timeout: 4000 });
+
+  await page.setViewportSize({ width: 768, height: 1024 });
+  await page.locator('[data-adim-sec="2"]').click();
+  await expect(page.locator('[data-adim-durum]')).toBeInViewport({ ratio: 1, timeout: 4000 });
+});
+
+test('Formun sonunda alt şerit titremez: yapışıklık yerleşimi değiştirmez', async ({ page }) => {
+  test.setTimeout(90_000);
+  await gasTaklidi(page);
+  await page.setViewportSize({ width: 1366, height: 640 });
+  await sayfayiAc(page, 'tr');
+  await page.locator('[data-adim-sec="9"]').click();
+  await page.locator('.st-serit-nobetci').waitFor({ state: 'attached' });
+
+  // Şerit doğal yerindeyken nöbetçinin belgedeki yeri; sonra kaydırma tam o eşiğin çevresinde BIRAKILIR.
+  await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight));
+  await page.waitForTimeout(400);
+  const dogalY = await page.evaluate(() => document.querySelector('.st-serit-nobetci').getBoundingClientRect().bottom + scrollY);
+  let enCok = 0;
+  const boylar = new Set();
+  for (const kayma of [-40, -28, -16, -8, -2, 4]) {
+    await page.evaluate(() => scrollTo(0, 0));
+    await page.waitForTimeout(150);
+    const [degisim, boy] = await page.evaluate(async ([y, k]) => {
+      const s = document.querySelector('.st-serit');
+      let say = 0;
+      const g = new MutationObserver((m) => { say += m.length; });
+      g.observe(s, { attributes: true, attributeFilter: ['data-yapisik'] });
+      scrollTo(0, y - innerHeight + k);
+      await new Promise((c) => setTimeout(c, 700));
+      g.disconnect();
+      return [say, Math.round(s.getBoundingClientRect().height)];
+    }, [dogalY, kayma]);
+    enCok = Math.max(enCok, degisim);
+    boylar.add(boy);
+  }
+  // Tek geçişte en çok bir yapış + bir çöz olur; 21 Eyl 2026 öncesinde bu sayı 30'u aşıyordu.
+  expect(enCok).toBeLessThanOrEqual(2);
+  expect(boylar.size, 'şerit yüksekliği yapışıkken de aynı kalır').toBe(1);
 });
