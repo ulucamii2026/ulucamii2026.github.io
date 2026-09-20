@@ -83,6 +83,28 @@ function veliEpostaBlokHtml(blok, b) {
       return '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;margin:24px 0"><tr><td height="1" bgcolor="' + b.renk.cizgi + '" style="height:1px;font-size:0;line-height:0;background:' + b.renk.cizgi + '"></td></tr></table>';
     case 'not':
       return '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;table-layout:fixed;margin:0 0 24px"><tr><td bgcolor="' + b.renk.acikYuzey + '" style="' + veliEpostaYazi(b, 14, 1.6) + 'padding:16px;border-radius:6px;background:' + b.renk.acikYuzey + '">' + metin(blok.metin) + '</td></tr></table>';
+    case 'olcek':
+      // Seviye tespit testinin alan düzeyleri. Görselsiz: çubuk boyalı hücrelerden kurulur, renk tek başına bilgi taşımaz —
+      // düzey metni her zaman yazıyla da görünür (renk körlüğü + görsel engelleyen istemciler); `sayi:true` ise «deger/azami» de eklenir
+      // (hoca raporu). Katılımcı e-postasında sayı yazılmaz: sonuç bir not değildir.
+      if (!Array.isArray(blok.ogeler) || !blok.ogeler.length) throw new Error('veli-eposta-olcek');
+      var olcekTam = function(v, enAz, enCok) { return typeof v === 'number' && isFinite(v) && Math.floor(v) === v && v >= enAz && v <= enCok; };
+      var olcekMetin = function(v) { return typeof v === 'string' && v.trim() !== ''; };
+      return blok.ogeler.map(function(o, i) {
+        if (!o || typeof o !== 'object' || !olcekMetin(o.etiket) || !olcekMetin(o.metin) ||
+          !olcekTam(o.azami, 1, 6) || !olcekTam(o.deger, 0, o.azami)) throw new Error('veli-eposta-olcek');
+        var hucreler = '';
+        for (var h = 0; h < o.azami; h++) {
+          // Renk sabiti şablona gömülmez (kimlik tek kaynak): dolu hücre kurum rengi, boş hücre açık çizgi rengi.
+          var dolgu = h < o.deger ? b.k.renk.ana : b.renk.cizgi;
+          hucreler += (h ? '<td width="3" style="width:3px;font-size:0;line-height:0"></td>' : '') +
+            '<td height="10" bgcolor="' + dolgu + '" style="height:10px;font-size:0;line-height:0;background:' + dolgu + ';border-radius:2px"></td>';
+        }
+        return '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;table-layout:fixed;margin:0 0 ' + (i === blok.ogeler.length - 1 ? 24 : 16) + 'px">' +
+          '<tr><td style="' + yazi + 'padding:0 0 6px"><b>' + e(o.etiket) + '</b></td></tr>' +
+          '<tr><td style="padding:0 0 6px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;table-layout:fixed"><tr>' + hucreler + '</tr></table></td></tr>' +
+          '<tr><td style="' + veliEpostaYazi(b, 14, 1.6, b.renk.ikincil) + 'padding:0">' + e(o.metin) + (o.sayi === true ? ' (' + o.deger + '/' + o.azami + ')' : '') + '</td></tr></table>';
+      }).join('');
     default: throw new Error('veli-eposta-blok');
   }
 }

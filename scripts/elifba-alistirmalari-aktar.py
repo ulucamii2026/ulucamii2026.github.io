@@ -3,6 +3,7 @@ import concurrent.futures
 import hashlib
 import json
 import sys
+import unicodedata
 from pathlib import Path
 from urllib.request import urlopen
 
@@ -28,7 +29,8 @@ def ders(tur, bolum, sayi):
             raise ValueError(f'Eksik resmî örnek: {tur}/{n}')
         ornekler.append({
             'id': HARFLER[n - 1] if tur == 'cezm' else str(n),
-            'metin': ' '.join(el.get_text(' ', strip=True).split()),
+            # Diyanet sayfası şedde + harekeyi karışık sırada kodluyor; NFC tek biçime indirir (arama, eşitlik, test).
+            'metin': unicodedata.normalize('NFC', ' '.join(el.get_text(' ', strip=True).split())),
             'kaynak': BASE + f'data/sound/elifba/{tur}/{bolum}/btn_{n}.mp3',
             'sesUrl': f'/media/ses/elifba/{tur}/{n}.mp3',
         })

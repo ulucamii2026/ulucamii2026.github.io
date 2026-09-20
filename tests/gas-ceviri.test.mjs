@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v37.gs', 'veli-mail-listesi.gs', 'veli-cuma.gs']
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v38.gs', 'veli-mail-listesi.gs', 'veli-cuma.gs']
   .map((ad) => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 
 const ContentService = { createTextOutput: (t) => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } };
@@ -46,7 +46,7 @@ function backend({ ozellikler = {}, gemini = [], translate = (m) => `GT(${m})`, 
 }
 
 test('sağlık ucu v36: ceviriMotoru anahtara göre gemini / translate / kapali', () => {
-  assert.equal(JSON.parse(backend().ctx.doGet({}).getContent()).surum, 37);
+  assert.equal(JSON.parse(backend().ctx.doGet({}).getContent()).surum, 38);
   assert.equal(JSON.parse(backend().ctx.doGet({}).getContent()).ceviriMotoru, 'translate');
   assert.equal(JSON.parse(backend({ ozellikler: { GEMINI_API_KEY: 'k' } }).ctx.doGet({}).getContent()).ceviriMotoru, 'gemini');
   assert.equal(JSON.parse(backend({ ozellikler: { GEMINI_API_KEY: 'k', CEVIRI_MOTOR: 'translate' } }).ctx.doGet({}).getContent()).ceviriMotoru, 'translate');

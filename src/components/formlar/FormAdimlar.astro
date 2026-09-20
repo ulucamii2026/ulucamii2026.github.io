@@ -1,0 +1,25 @@
+---
+interface Props {
+  metin: { baslik: string; ilerleme: string; adimlar: readonly string[]; ipuclari: readonly string[]; tumu: string } & Record<string, unknown>;
+  gruplar: readonly (readonly string[])[];
+  ek?: Record<string, string>;
+}
+const { metin: m, gruplar, ek } = Astro.props;
+---
+<div class="ucf-adimlar" data-adimlar {...ek} hidden>
+  <script is:inline type="application/json" data-metin-adim set:html={JSON.stringify(m)} />
+  <div class="ucf-adim-ust">
+    <strong>{m.baslik}</strong>
+    <span data-adim-durum aria-live="polite" aria-atomic="true"></span>
+  </div>
+  <progress data-adim-ilerleme max={gruplar.length} value="1" aria-label={m.ilerleme}></progress>
+  <nav aria-label={m.ilerleme}>
+    <ol class="ucf-adim-listesi">
+      {m.adimlar.map((ad, i) => <li><button type="button" data-adim-sec={i} data-adim-bolumler={gruplar[i].join(' ')} aria-current={i === 0 ? 'step' : undefined}><span aria-hidden="true">{i + 1}</span>{ad}</button></li>)}
+    </ol>
+  </nav>
+  <div class="ucf-adim-alt">
+    <p data-adim-ipucu>{m.ipuclari[0]}</p>
+    <button type="button" data-adim-tumu>{m.tumu}</button>
+  </div>
+</div>

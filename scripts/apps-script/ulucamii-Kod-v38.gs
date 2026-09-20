@@ -77,7 +77,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 37;
+var SURUM = 38;
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -106,6 +106,7 @@ function doGet(e) {
     if (e.parameter.islem === "arsiv-saglik-gizle") return arsivSaglikGizleIsle(e);
     if (e.parameter.islem === "kayit-duzelt") return kayitDuzeltIsle(e);
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
+    if (e.parameter.islem === "seviye-detay") return seviyeDetayIsle(e); // v38: yan etkisiz, defter yaratmaz
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
   return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
@@ -113,6 +114,8 @@ function doGet(e) {
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
     ihtidaCamiSecimi: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.camiCoz === "function",
+    seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
+    seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
     zaman: new Date().toISOString() });
 }
 
@@ -133,7 +136,10 @@ function doPost(e) {
     if (!v || typeof v !== "object") return json({ ok: false, hata: "bos-istek" });
 
     if (v.tur === "kayit" && (govde.length > AZAMI_KAYIT_GOVDE_BAYT || Utilities.newBlob(govde).getBytes().length > AZAMI_KAYIT_GOVDE_BAYT)) return json({ ok: false, hata: "cok-buyuk" });
-    if (govde.length > AZAMI_GOVDE_BAYT && ["kayit", "ihtida", "ihtida-paket-onay"].indexOf(v.tur) === -1) {
+    // 20 Eyl 2026: sınır gerçekten BAYT sayar (UTF-8); eskiden UTF-16 birimi sayıyordu, Türkçe gövdede ~35 KB geçiyordu.
+    // Bir UTF-16 birimi en çok 3 bayt tuttuğu için küçük gövdede Blob hiç kurulmaz.
+    var govdeBuyuk = govde.length > AZAMI_GOVDE_BAYT || (govde.length * 3 > AZAMI_GOVDE_BAYT && Utilities.newBlob(govde).getBytes().length > AZAMI_GOVDE_BAYT);
+    if (govdeBuyuk && ["kayit", "ihtida", "ihtida-paket-onay"].indexOf(v.tur) === -1) {
       if (v.tur === "mufredat-yukle" && govde.length < 2 * 1024 * 1024) return mufredatYukleIsle(govde);
       if (v.tur === "cevir" && govde.length < 96 * 1024) return cevirIsle(v); // v34: 20 metin × 1800 karakter
       return json({ ok: false, hata: "cok-buyuk" });
@@ -148,6 +154,11 @@ function doPost(e) {
       if (typeof IhtidaPdf === "undefined" || PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU") !== "28") return json({ ok: false, hata: "ihtida-paket-hazir-degil" });
       return ihtidaPostIsleV2(v);
     }
+    if (v.tur === "seviye") { // v38: seviye tespit testi — paket yoksa kayıt açılmaz
+      if (typeof SeviyeTesti === "undefined" || typeof seviyePostIsle !== "function") return json({ ok: false, hata: "seviye-hazir-degil" });
+      return seviyePostIsle(v);
+    }
+    if (v.tur === "seviye-sil") return seviyeSilIsle(v);
     if (v.tur === "kayit") return kayitPostIsleV2(v);
     return json({ ok: false, hata: "tur-gecersiz" });
   } catch (hata) {
@@ -1294,12 +1305,19 @@ function epostaGonder(a, konu, govde, kurum) {
   var kimlik = epostaKimligi(kurum);
   s.name = kimlik.name;
   if (!s.replyTo) s.replyTo = EPOSTA.yanit;
-  delete s.kurum; // MailApp yalnız kendi seçeneklerini alır; çağıranın nesnesi değişmez.
+  /* v38 (20 Eyl 2026): `yedeksiz:true` MailApp yedeğini KAPATIR. Seviye testinin hoca raporu gibi
+     GDPR md. 9 verisi taşıyan iletiler, Brevo düşerse dernek Gmail'inin «Gönderilenler» klasörüne
+     düşmemelidir; gönderim sessizce yol değiştirmez, hata çağırana fırlatılır. Varsayılan davranış aynı. */
+  var yedeksiz = s.yedeksiz === true;
+  delete s.kurum; delete s.yedeksiz; // MailApp yalnız kendi seçeneklerini alır; çağıranın nesnesi değişmez.
   var anahtar = brevoAnahtari();
   if (anahtar) {
     try { return brevoGonder(s, anahtar, kurum); }
-    catch (hata) { console.error("Brevo gonderimi basarisiz, MailApp'e dusuluyor: " + hata); }
-  }
+    catch (hata) {
+      if (yedeksiz) throw hata;
+      console.error("Brevo gonderimi basarisiz, MailApp'e dusuluyor: " + hata);
+    }
+  } else if (yedeksiz) throw new Error("brevo-anahtari-yok");
   MailApp.sendEmail(s);
   return { yol: "mailapp" };
 }
@@ -1577,15 +1595,16 @@ function ihtidaV2SayfaGetir() {
 }
 
 function ihtidaV2AnahtarBul(sayfa, anahtar) {
-  var onbellek = CacheService.getScriptCache();
-  var ham = onbellek.get("ihtida2:" + anahtar);
+  // 20 Eyl 2026: Önbellek kesintisi başvuruyu durdurmaz (kayitV2AnahtarBul ile aynı kalıp); defterden doğrulanır.
+  var onbellek = null, ham = null;
+  try { onbellek = CacheService.getScriptCache(); ham = onbellek.get("ihtida2:" + anahtar); } catch (_) {}
   if (ham) { try { return JSON.parse(ham); } catch (_) {} }
   if (sayfa.getLastRow() < 2 || sayfa.getLastColumn() < SUTUN2_IHTIDA.anahtar) return null;
   var veri = sayfa.getRange(2, 1, sayfa.getLastRow() - 1, SUTUN2_IHTIDA.anahtar).getValues();
   for (var i = veri.length - 1; i >= 0; i--) {
     if (String(veri[i][SUTUN2_IHTIDA.anahtar - 1]).trim() === anahtar) {
       var sonuc = { ref: String(veri[i][SUTUN2_IHTIDA.referans - 1]) };
-      onbellek.put("ihtida2:" + anahtar, JSON.stringify(sonuc), 21600);
+      try { if (onbellek) onbellek.put("ihtida2:" + anahtar, JSON.stringify(sonuc), 21600); } catch (_) {}
       return sonuc;
     }
   }
@@ -2017,6 +2036,8 @@ function panelAnahtariniOku() {
 var PANEL = { anahtar: panelAnahtariniOku() };
 
 function panelYetkiTamam(e) {
+  // 20 Eyl 2026: PANEL_ANAHTARI tanımlı değilken kalan yer tutucu, herkese açık depoda yazılıdır; anahtar sayılmaz.
+  if (PANEL.anahtar === "SCRIPT-PROPERTIES-ICINDE") return false;
   return !!(e && e.parameter && e.parameter.anahtar && e.parameter.anahtar === PANEL.anahtar);
 }
 
@@ -2044,7 +2065,12 @@ function panelListeIsle(e) {
     return json({
       ok: true, surum: SURUM, zaman: new Date().toISOString(),
       kayitlar: sayfayiOku(kayitV2SayfaGetir(), ["Gönderim anahtarı"]),
-      ihtidalar: sayfayiOku(ihtidaV2SayfaGetir(), ["Gönderim anahtarı"])
+      ihtidalar: sayfayiOku(ihtidaV2SayfaGetir(), ["Gönderim anahtarı"]),
+      // v38: seviye defteri yalnız VARSA okunur (liste ucu defter yaratmaz); cevaplar ve serbest metin listeye girmez.
+      seviyeler: (function () {
+        var sh = typeof seviyeSayfaBul === "function" ? seviyeSayfaBul() : null;
+        return sh ? sayfayiOku(sh, ["Gönderim anahtarı", "Cevaplar", "Beyanlar", "Ezberler", "Not"]) : { basliklar: [], satirlar: [] };
+      })()
     });
   } catch (hata) {
     console.error(hata);
@@ -2546,9 +2572,10 @@ function testTemizleSayfa(sayfa, klasor, adAlanlari) {
     });
     if (!hedefBuldu) continue;
     var kayitRef = iRef >= 0 ? String(satir[iRef] || "") : "";
-    if (!/^(UC|IH)-\d{4}-\d{4}$/.test(kayitRef)) continue;
-    if (/^UC-\d{4}-\d{4}$/.test(kayitRef)) { kayitGorselleriniCopeAt(klasor, kayitRef); kayitImzaCopeAt(klasor, kayitRef); }
-    if (iPdf >= 0) {
+    if (!/^(UC|IH|ST)-\d{4}-\d{4}$/.test(kayitRef)) continue; // v38: seviye defteri de temizlenir
+    // Klasör verilmediyse (seviye defteri) hiçbir Drive işlemi yapılmaz: yalnız satır silinir.
+    if (klasor && /^UC-\d{4}-\d{4}$/.test(kayitRef)) { kayitGorselleriniCopeAt(klasor, kayitRef); kayitImzaCopeAt(klasor, kayitRef); }
+    if (klasor && iPdf >= 0) {
       var id = driveIdCikar(String(satir[iPdf] || ""));
       if (id) {
         // Bozuk PDF hücresi başka bir belgeyi/defteri sildiremez; ad da birebir eşleşir.
@@ -2572,6 +2599,9 @@ function testTemizleIsle(e) {
     var silinen = 0;
     silinen += testTemizleSayfa(kayitV2SayfaGetir(), klasorGetir(), ["Öğrenci soyadı", "Öğrenci adı"]);
     silinen += testTemizleSayfa(ihtidaV2SayfaGetir(), ihtidaKlasorGetir(), ["Adı Soyadı"]);
+    // v38: seviye defteri VARSA temizlenir; Drive'da dosyası olmadığı için klasör verilmez.
+    var seviyeSayfa = typeof seviyeSayfaBul === "function" ? seviyeSayfaBul() : null;
+    if (seviyeSayfa) silinen += testTemizleSayfa(seviyeSayfa, null, ["Ad Soyad"]);
     return json({ ok: true, silinen: silinen });
   } catch (hata) {
     console.error(hata);

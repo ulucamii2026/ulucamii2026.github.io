@@ -13,7 +13,8 @@ const metinler = {
     giris: 'Deniz TESTOGLU için hazırlanan örnek portal daveti aşağıdadır. Ders bilgilerini ve duyuruları portalda bulabilirsiniz.',
     adimlar: 'İlk girişte', dugme: 'Veli portalını aç', gorsel: 'Kurum amblemi — önizleme yer tutucusu',
     liste: [{baslik:'Giriş bağlantısını açın', not:'Kayıt e-postanızı kullanın: veli@example.test.'}, {baslik:'Bilgilerinizi kontrol edin', not:'Ders ve kitap bilgilerini birlikte gözden geçirin.'}],
-    maddeler: ['Duyuruları okuyun.', 'İletişim dilinizi kontrol edin.'], not: 'Bu belge yalnız yerel önizlemedir. E-posta gönderilmemiştir.'
+    maddeler: ['Duyuruları okuyun.', 'İletişim dilinizi kontrol edin.'], not: 'Bu belge yalnız yerel önizlemedir. E-posta gönderilmemiştir.',
+    olcekBaslik: 'Örnek düzey özeti', olcek: [{etiket:'Kur\'an okuma', deger:2, azami:5, metin:'K2 — Harflerin başta, ortada, sonda yazılışı'}, {etiket:'Temizlik ve namaz', deger:1, azami:3, metin:'Temel'}]
   },
   fr: {
     onay: 'Confirmation d’inscription — UC-2099-0001', davet: 'Portail des parents : votre lien de connexion',
@@ -21,7 +22,8 @@ const metinler = {
     giris: 'Voici l’invitation d’exemple au portail pour Deniz TESTOGLU. Vous y trouverez les informations sur les cours et les annonces.',
     adimlar: 'Lors de votre première connexion', dugme: 'Ouvrir le portail des parents', gorsel: 'Emblème de l’institution — illustration d’aperçu',
     liste: [{baslik:'Ouvrez le lien de connexion', not:'Utilisez votre adresse d’inscription : veli@example.test.'}, {baslik:'Vérifiez vos informations', not:'Consultez ensemble les informations sur les cours et les livres.'}],
-    maddeler: ['Lisez les annonces.', 'Vérifiez votre langue de communication.'], not: 'Ce document est un aperçu local. Aucun e-mail n’a été envoyé.'
+    maddeler: ['Lisez les annonces.', 'Vérifiez votre langue de communication.'], not: 'Ce document est un aperçu local. Aucun e-mail n’a été envoyé.',
+    olcekBaslik: 'Exemple de résumé des niveaux', olcek: [{etiket:'Lecture du Coran', deger:2, azami:5, metin:'K2 — Les lettres au début, au milieu et à la fin'}, {etiket:'Propreté et prière', deger:1, azami:3, metin:'Niveau de base'}]
   },
   en: {
     onay: 'Registration confirmation — UC-2099-0001', davet: 'Parents’ portal: your sign-in link',
@@ -29,7 +31,8 @@ const metinler = {
     giris: 'Here is the sample portal invitation for Deniz TESTOGLU. The portal contains course information and announcements.',
     adimlar: 'When you first sign in', dugme: 'Open the parents’ portal', gorsel: 'Institution emblem — preview placeholder',
     liste: [{baslik:'Open the sign-in link', not:'Use your registration address: veli@example.test.'}, {baslik:'Check your details', not:'Review the course and book information together.'}],
-    maddeler: ['Read the announcements.', 'Check your communication language.'], not: 'This document is a local preview. No e-mail has been sent.'
+    maddeler: ['Read the announcements.', 'Check your communication language.'], not: 'This document is a local preview. No e-mail has been sent.',
+    olcekBaslik: 'Sample level summary', olcek: [{etiket:'Qur\'an reading', deger:2, azami:5, metin:'K2 — Letters at the beginning, middle and end'}, {etiket:'Cleanliness and prayer', deger:1, azami:3, metin:'Basic'}]
   }
 };
 await mkdir(klasor, { recursive: true });
@@ -44,6 +47,7 @@ for (const kurum of ['kurs', 'cami']) for (const dil of kimlik.diller) {
       {tur:'dugme', metin:m.dugme, url},
       {tur:'gorsel', src:k.logo.web, alt:m.gorsel + ' 1'}, {tur:'gorsel', src:k.logo.web, alt:m.gorsel + ' 2'},
       {tur:'baslik', metin:m.adimlar}, {tur:'liste', ogeler:m.liste}, {tur:'madde', ogeler:m.maddeler},
+      {tur:'baslik', metin:m.olcekBaslik}, {tur:'olcek', ogeler:m.olcek},
       {tur:'cizgi'}, {tur:'not', metin:m.not}, {tur:'paragraf', metin:kapanis}
     ]}
   };

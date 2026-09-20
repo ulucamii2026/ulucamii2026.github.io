@@ -27,7 +27,7 @@ export interface FormSecenekleri {
   /** Formun kendi ek doğrulaması: [alan adı, hata metni] listesi. */
   ekDogrula?(veriler: Veriler, form: HTMLFormElement, metin: Metinler, bolumler?: HTMLElement[]): Array<[string, string]>;
   /** Başarı sonrası ek iş (ör. kardeş kaydı için veli bilgisini saklamak). */
-  basarida?(veriler: Veriler, ref: string): void;
+  basarida?(veriler: Veriler, ref: string, yanit?: Record<string, unknown>): void;
   /** Sayfa yüklenince (taslak geri yüklendikten sonra) çağrılır. */
   hazir?(form: HTMLFormElement, veriler: Veriler): void;
 }
@@ -194,14 +194,26 @@ export function alanDogrula(form: HTMLFormElement, alan: Alan, veriler: Veriler,
 /* ---------- koşullu bloklar ---------- */
 
 function kosullariUygula(form: HTMLFormElement) {
-  const veriler = verileriTopla(form);
-  form.querySelectorAll<HTMLElement>('[data-kosul]').forEach((blok) => {
-    const [ad, beklenen] = (blok.dataset.kosul || '').split('=');
-    const mevcut = deger(veriler, ad);
-    const acik = typeof mevcut === 'boolean' ? String(mevcut) === beklenen : String(mevcut ?? '') === beklenen;
-    blok.hidden = !acik;
-    blok.querySelectorAll<Alan>('input, select, textarea').forEach((a) => { a.disabled = !acik; });
-  });
+  // İç içe koşullu bloklarda (seviye testi: bölüm atlama → basamak atlama) dış blok açılırken iç
+  // bloğun kutusu hâlâ devre dışı olduğu için tek turda görünür olamıyordu: devre dışı alan
+  // verileriTopla'ya girmez, iç koşul de "boş" okurdu. Durum değiştiği sürece veriler yeniden
+  // toplanıp uygulanır; tek katmanlı formlarda ikinci tur hiçbir şeyi değiştirmez.
+  for (let tur = 0; tur < 3; tur++) {
+    const veriler = verileriTopla(form);
+    let degisti = false;
+    form.querySelectorAll<HTMLElement>('[data-kosul]').forEach((blok) => {
+      const [ad, beklenen] = (blok.dataset.kosul || '').split('=');
+      const mevcut = deger(veriler, ad);
+      const acik = typeof mevcut === 'boolean' ? String(mevcut) === beklenen : String(mevcut ?? '') === beklenen;
+      if (blok.hidden === acik) degisti = true;
+      blok.hidden = !acik;
+      blok.querySelectorAll<Alan>('input, select, textarea').forEach((a) => {
+        if (a.disabled === acik) degisti = true;
+        a.disabled = !acik;
+      });
+    });
+    if (!degisti) return;
+  }
 }
 
 /* ---------- kaydırma kilidi ---------- */
@@ -253,7 +265,7 @@ function kaydirmaKilidiKur(form: HTMLFormElement) {
 
 interface Taslak { surum: 2; zaman: number; anahtar: string; alanlar: Record<string, string> }
 
-function taslakOku(anahtar: string): Taslak | null {
+function taslakOku(anahtar: string, gun = 30): Taslak | null {
   try {
     const ham = localStorage.getItem(anahtar);
     if (!ham) return null;
@@ -262,7 +274,7 @@ function taslakOku(anahtar: string): Taslak | null {
     if (!t || t.surum !== 2 || !t.alanlar || typeof t.alanlar !== 'object' || Array.isArray(t.alanlar)) return null;
     if (!Number.isFinite(t.zaman) || t.zaman <= 0 || !Object.values(t.alanlar).every(v => typeof v === 'string')) return null;
     if (t.anahtar !== undefined && typeof t.anahtar !== 'string') return null;
-    if (Date.now() - t.zaman > 30 * 86400000) return null;          // 30 günden eski taslak atılır
+    if (Date.now() - t.zaman > gun * 86400000) return null;          // Belirlenen ömrü aşan taslak atılır
     return t;
   } catch { return null; }
 }
@@ -350,7 +362,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
   };
 
   // Taslak
-  const taslak = taslakOku(taslakAnahtari);
+  const taslak = taslakOku(taslakAnahtari, Number(form.dataset.taslakGun) || 30);
   if (taslak) {
     alanlariDoldur(form, Object.fromEntries(Object.entries(taslak.alanlar).filter(([ad]) => !hassasAlan(ad))));
     gonderimAnahtari = taslak.anahtar || gonderimAnahtari;
@@ -502,7 +514,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     const gonderimHatasi = (metin: string) => mesajGoster([metin, guvence].filter(Boolean).join(' '));
     if (!navigator.onLine) { gonderimHatasi(m.hata.cevrimdisi); return; }
 
-    const govde = { ...sec.govde(veriler), tur: form.dataset.form, sir: form.dataset.sir, formSurumu: form.dataset.form === 'kayit' ? 3 : 2, dil: form.dataset.dil, gonderimAnahtari };
+    const govde = { ...sec.govde(veriler), tur: form.dataset.form, sir: form.dataset.sir, formSurumu: Number(form.dataset.formSurumu) || (form.dataset.form === 'kayit' ? 3 : 2), dil: form.dataset.dil, gonderimAnahtari };
     gonderiliyor = true;
     window.clearTimeout(zamanlayici);
     if (taslakSilDugme) taslakSilDugme.disabled = true;
@@ -510,7 +522,7 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
     const dugmeMetni = gonderDugme?.textContent ?? '';
     if (gonderDugme) { gonderDugme.disabled = true; gonderDugme.textContent = m.basari.gonderiliyor || '…'; }
     form.setAttribute('aria-busy', 'true');
-    type Sonuc = { ok?: boolean; ref?: string; hata?: string; tekrar?: boolean; kopyaGitti?: boolean; durum?: number };
+    type Sonuc = { [anahtar: string]: unknown; ok?: boolean; ref?: string; hata?: string; tekrar?: boolean; kopyaGitti?: boolean; durum?: number };
     // Her deneme kendi zaman aşımını taşır; aynı gonderimAnahtari ile yinelenen istek sunucuda
     // ikinci kayıt açmaz (tekrar:true ya da işlem sürüyorsa kayit-isleniyor döner).
     const gonder = async (sureMs: number): Promise<Sonuc> => {
@@ -538,7 +550,8 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
         try {
           const saglik = await fetch(form.dataset.uc || '', { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: saglikDenetleyici.signal });
           const durum = await saglik.json();
-          if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true)) {
+          const bayrak = form.dataset.asgariServisBayrak;
+          if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true) || (!!bayrak && durum[bayrak] !== true)) {
             mesajGoster(m.hata.servisHazirDegil);
             return;
           }
@@ -559,12 +572,12 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
         catch (err) { if ((err as Error)?.name !== 'AbortError') throw err; sonuc = { ok: false, hata: 'kayit-isleniyor' }; bekliyor = true; }
       }
       if (!sonuc.ok || !sonuc.ref) {
-        gonderimHatasi(sonuc.hata === 'kayit-isleniyor' ? (bekliyor ? m.hata.zamanAsimi : m.hata.isleniyor) : doldur(m.hata.sunucu, { kod: sonuc.hata || String(sonuc.durum ?? '') }));
+        gonderimHatasi(sonuc.hata === 'kayit-isleniyor' ? (bekliyor ? m.hata.zamanAsimi : m.hata.isleniyor) : (m.hata['sunucu:' + sonuc.hata] || doldur(m.hata.sunucu, { kod: sonuc.hata || String(sonuc.durum ?? '') })));
         return;
       }
       window.clearTimeout(zamanlayici);
       try { localStorage.removeItem(taslakAnahtari); } catch { /* yok say */ }
-      sec.basarida?.(veriler, sonuc.ref);
+      sec.basarida?.(veriler, sonuc.ref, sonuc);
       basariGoster(form, sonuc.ref, String(deger(veriler, form.dataset.epostaAlani || '') ?? ''), m, sonuc.kopyaGitti);
     } catch (err) {
       gonderimHatasi((err as Error)?.name === 'AbortError' ? m.hata.zamanAsimi : m.hata.ag);

@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const yollar={
- tr:['hakkimizda','uyelik','ihtida','diyanet-hizmetleri','kuran-kursu-mufredati'],
- fr:['a-propos','adhesion','conversion-a-l-islam','services-diyanet','programme-ecole-coranique'],
- en:['about','membership','becoming-muslim','diyanet-services','quran-school-curriculum'],
+ tr:['hakkimizda','uyelik','ihtida','diyanet-hizmetleri','kuran-kursu-mufredati','seviye-tespit-testi'],
+ fr:['a-propos','adhesion','conversion-a-l-islam','services-diyanet','programme-ecole-coranique','test-de-niveau'],
+ en:['about','membership','becoming-muslim','diyanet-services','quran-school-curriculum','level-assessment'],
 };
 for(const [lang,paths] of Object.entries(yollar))test(`${lang}: bilgi listeleri ve küçük metin kontrastı`,async({page,context})=>{
  test.setTimeout(90000);

@@ -2,7 +2,7 @@
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
 aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve Kur’an kursu veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-09-13
+guncelleme: 2026-09-20
 ---
 
 <p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
@@ -57,6 +57,21 @@ Müslüman olmak isteyenler, ihtida belgesi hazırlığı için sitemizdeki onli
 - **Toplanmayan veriler:** kimlik veya pasaport **numarası**, millî sicil numarası, MRZ (makine okunabilir bölge) taraması. Kimlik belgesinin aslı ayrıca tören günü din görevlisine gösterilir.
 - **Hukuki dayanak:** dinî inanca ilişkin veri ile kimlik görselleri ve imza için açık rızanız (GDPR md. 9/2-a) ve Diyanet’in EK-10 açık rıza metni. Belge, Diyanet İşleri Başkanlığı’nın yetkili birimine (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği) iletilir.
 - **Saklama:** başvurunuza ilişkin her türlü bilgi ve belge **hem camimizde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde** saklanır. Camideki kopya, Google altyapısında din görevlisinin dernek hesabında, herkese kapalı bir klasörde tutulur; başvuru sonuçlandıktan sonra en fazla 2 yıl. Müşavirlikteki resmî dosyanın saklama süresi Diyanet İşleri Başkanlığı’nın mevzuatına tabidir. Talepleriniz için imam@ulucamii.be.
+
+<span id="seviye-testi"></span>
+
+## Kur’an ve Dinî Bilgi Seviye Tespit Testi
+
+Yetişkinler (18 yaş ve üzeri), kendilerine özel eğitim planlanabilmesi için sitemizdeki seviye tespit testini doldurabilir:
+
+- **Toplanan veriler:** ad soyad, e-posta adresi, isteğe bağlı telefon; yaş **aralığı** ve cinsiyet (ikisinde de «belirtmek istemiyorum» seçeneği vardır); İslâm’la geçmişiniz, daha önce aldığınız dinî eğitim, eğitimden beklentileriniz; ders dili, uygun gün ve saatler, ders biçimi tercihi; isteğe bağlı kısa not; test sorularına verdiğiniz yanıtlar, ezber listesi ve ibadet uygulamasına ilişkin kendi beyanınız; testi doldurma süresi; rıza metninin sürümü.
+- **Toplanmayan veriler:** kimlik numarası, doğum tarihi, adres, fotoğraf, ses kaydı. Kur’an okuma bölümünde dinlediğiniz sesler sitemizden size sunulur; sizden ses **alınmaz**.
+- **Amaç ve hukuki dayanak:** Kur’an okuma ve dinî bilgi düzeyinizi belirleyerek size özel eğitim planlamak. Yanıtlarınız dinî inanca ilişkin özel nitelikli veridir ve yalnız **açık rızanızla** işlenir (GDPR md. 9/2-a). Rıza kutusunu işaretlemeden test gönderilemez.
+- **Kim görür:** ayrıntılı sonucu (soru soru yanıtlarınızı) yalnız **din görevlimiz** görür; rapor yalnız onun kurumsal e-posta kutusuna gider. Size gönderilen e-postada yalnız alan alan düzey özeti bulunur. Veriler üçüncü kişilerle paylaşılmaz, yayımlanmaz.
+- **Saklama yeri ve işleyenler:** kayıt, Google (Google Ireland Ltd.) altyapısında derneğin hesabındaki herkese kapalı bir defterde tutulur; e-postalar **Brevo (Sendinblue SAS, Fransa; veriler Avrupa Birliği içinde işlenir)** üzerinden gönderilir.
+- **Tarayıcınızdaki taslak:** testi göndermeden önce yanıtlarınız yalnız kendi cihazınızın tarayıcısında taslak olarak saklanır (en fazla 14 gün) ve bize ulaşmaz. «Taslağı sil» düğmesiyle dilediğiniz an silebilirsiniz; test gönderilince taslak kendiliğinden silinir. Onay kutuları taslağa yazılmaz.
+- **Saklama süresi:** en fazla **24 ay**; süre dolunca kayıt defterden kendiliğinden silinir. Din görevlisinin e-posta kutusundaki rapor aynı süre sonunda elle silinir.
+- **Rızayı geri alma ve silme:** rızanızı dilediğiniz an geri alabilirsiniz. imam@ulucamii.be adresine yazmanız yeterlidir; kaydınız defterden ve din görevlisinin e-posta kutusundan silinir. Daha önce size gönderilmiş özet e-postası sizin kutunuzda kalır.
 
 ## Dernek Üye Defteri
 

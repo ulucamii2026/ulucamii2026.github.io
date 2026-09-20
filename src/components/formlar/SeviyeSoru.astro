@@ -1,0 +1,40 @@
+---
+/** Seviye testi — tek soru bloğu (bilgi ya da okuma maddesi).
+    Derlenmiş HTML'e yalnız soru kökü, varsa gösterilen Arapça ibare/ses yolu ve şıklar basılır;
+    `dogru` ve `kaynak` alanları ASLA sayfaya çıkmaz (docs/SEVIYE-TESTI.md §4). */
+import type { Dil } from '../../i18n/ui';
+import type { Madde } from '../../lib/seviye-testi/tipler.ts';
+
+interface Props { madde: Madde; dil: Dil; bilmiyorum: string; mezhepNotu: string; dinle: string }
+const { madde, dil, bilmiyorum, mezhepNotu, dinle } = Astro.props;
+const ad = `cevaplar.${madde.id}`;
+const ses = 'ses' in madde ? madde.ses : undefined;
+const mezhep = 'mezhepBagli' in madde && madde.mezhepBagli === true;
+---
+<fieldset class="st-soru" data-alan data-soru={madde.id}>
+  <legend>{madde.soru[dil]}</legend>
+  {madde.goster && <p class="arabic st-arapca st-goster" lang="ar" dir="rtl">{madde.goster}</p>}
+  {ses && (
+    <p class="st-ses">
+      {/* Etiket çalma bitince «Tekrar dinle» olur (seviye-form.ts); simge CSS'ten gelir ki metin değişimi silmesin. */}
+      <button type="button" class="dugme dugme-ikincil st-dinle" data-ses={ses}>{dinle}</button>
+      <span class="st-ses-durum" data-ses-durum aria-live="polite"></span>
+    </p>
+  )}
+  {mezhep && <p class="yardim st-mezhep">{mezhepNotu}</p>}
+  <div class="st-secenekler">
+    {madde.siklar.map((sik, i) => (
+      <span class="secenek st-sik">
+        <input type="radio" id={`st-${madde.id}-${i}`} name={ad} value={String(i)} required={i === 0} />
+        {'ar' in sik
+          ? <label for={`st-${madde.id}-${i}`} class="arabic st-arapca st-sik-arapca" lang="ar" dir="rtl">{sik.ar}</label>
+          : <label for={`st-${madde.id}-${i}`}>{sik[dil]}</label>}
+      </span>
+    ))}
+    <span class="secenek st-sik st-bilmiyorum">
+      <input type="radio" id={`st-${madde.id}-yok`} name={ad} value="-1" />
+      <label for={`st-${madde.id}-yok`}>{bilmiyorum}</label>
+    </span>
+  </div>
+  <p class="hata" aria-live="polite" hidden></p>
+</fieldset>

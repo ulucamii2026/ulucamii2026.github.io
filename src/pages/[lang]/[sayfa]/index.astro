@@ -22,6 +22,7 @@ import Vefat from '../../../sayfalar/Vefat.astro';
 import Irsat from '../../../sayfalar/Irsat.astro';
 import Ihtida from '../../../sayfalar/Ihtida.astro';
 import IhtidaBasvuru from '../../../sayfalar/IhtidaBasvuru.astro';
+import SeviyeTesti from '../../../sayfalar/SeviyeTesti.astro';
 import CamiAdabi from '../../../sayfalar/CamiAdabi.astro';
 import YonetimKurulu from '../../../sayfalar/YonetimKurulu.astro';
 import Cenaze from '../../../sayfalar/Cenaze.astro';
@@ -49,7 +50,7 @@ const bilesenler: Record<Exclude<SayfaAnahtari, 'anasayfa'>, any> = {
   hakkimizda: Hakkimizda, duyurular: Duyurular, etkinlikler: Etkinlikler, namaz: Namaz, kurankursu: KuranKursu, mufredat: Mufredat, yillikplan: YillikPlan, dersmateryalleri: DersMateryalleri, kursgunlugu: KursGunlugu,
   bagis: Bagis, uyelik: Uyelik, konsolosluk: Konsolosluk, galeri: Galeri, iletisim: Iletisim,
   kunye: MetinSayfasi, gizlilik: MetinSayfasi, portal: Portal, veli: Veli, vefat: Vefat, cenaze: Cenaze,
-  irsat: Irsat, ihtida: Ihtida, ihtidaBasvuru: IhtidaBasvuru, adab: CamiAdabi, yonetim: YonetimKurulu, afisler: Afisler, diyanet: DiyanetHizmetleri, uip: Uip, vaazlar: Vaazlar, kutuphane: Kutuphane,
+  irsat: Irsat, ihtida: Ihtida, ihtidaBasvuru: IhtidaBasvuru, seviyeTesti: SeviyeTesti, adab: CamiAdabi, yonetim: YonetimKurulu, afisler: Afisler, diyanet: DiyanetHizmetleri, uip: Uip, vaazlar: Vaazlar, kutuphane: Kutuphane,
 };
 const Bilesen = bilesenler[anahtar as Exclude<SayfaAnahtari, 'anasayfa'>];
 ---

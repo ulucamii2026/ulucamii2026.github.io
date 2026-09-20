@@ -46,6 +46,13 @@ async function gasPost(veri) {
   return r.json();
 }
 import('/admin/ihtida-defteri-panel.js').then(({ ihtidaDefteriKur }) => ihtidaDefteriKur({ gasIstek, gasPost }));
+/* «Seviye testleri» sekmesi ayrı modüldedir: md. 9 verisi tek bir dosyada toplansın ve panel.js şişmesin.
+   Modül gelene kadar sekme «yükleniyor» der; geldiğinde o sekmedeysek liste hemen çizilir. */
+let seviyePanel = null;
+import('/admin/seviye-panel.js').then((m) => {
+  seviyePanel = m.seviyePanelKur({ gasIstek, gasPost, kacir, tarihBicim: tarihSadelestir, telefonE164, yenile: () => basvuruYukle(true) });
+  if (aktifTur === 'seviye' && sonVeri) basvuruCiz();
+}).catch((e) => console.error('Seviye testleri bölümü yüklenemedi:', e));
 const paketOnaylari = new Map(); // Ağ cevabı kaybolunca aynı işlem ikinci kez gönderilmez.
 function paketOnayAnahtari(ref, veri) {
   const metin = JSON.stringify(veri), onceki = paketOnaylari.get(ref);
@@ -589,13 +596,15 @@ async function basvuruYukle(sessiz) {
     if (sira !== basvuruSira) return;   // daha yeni bir istek yolda; eski cevap ekranı ezmesin
     if (j && j.hata === 'yetki') {
       durum.textContent = '';
-      bilgi.hidden = false; bilgi.className = 'bilgi-kutu hata'; $('basvuru-liste').innerHTML = '';
+      /* Liste ile birlikte altındaki not da silinir: boş listenin altında «Düzeltilen kayıtların eski
+         sürümleri kartın içindedir» notu asılı kalıyordu (paket 06 incelemesi, 20 Eyl 2026). */
+      bilgi.hidden = false; bilgi.className = 'bilgi-kutu hata'; $('basvuru-liste').innerHTML = ''; $('basvuru-not').hidden = true;
       bilgi.innerHTML = 'Panel anahtarı kabul edilmedi — bir kez <a href="/admin/giris.html">yeniden giriş</a> yapın. Sorun sürerse arka uçtaki anahtar yenilenmiş olabilir; info@ulucamii.be adresine yazın.';
       return;
     }
     if (!j.kayitlar && !j.ihtidalar) {
       durum.textContent = '';
-      bilgi.hidden = false; bilgi.className = 'bilgi-kutu uyari'; $('basvuru-liste').innerHTML = '';
+      bilgi.hidden = false; bilgi.className = 'bilgi-kutu uyari'; $('basvuru-liste').innerHTML = ''; $('basvuru-not').hidden = true;
       bilgi.innerHTML = '<b>Arka uç güncellemesi bekleniyor.</b> Başvuru listeleme henüz dağıtılmadı; başvurular yine de kayıt defterine düşüyor, veri kaybı yok.';
       return;
     }
@@ -629,10 +638,25 @@ function rozetleriYaz() {
   /* Toplam yazmak yanıltıyordu: tek bir "(1)" öğrenci kaydı sanılabiliyordu.
      İki defter ayrı ayrı okunur — kurs · ihtida. */
   const yeniSay = (v) => { if (!v || !v.basliklar) return 0; const iZ = sut(v.basliklar, 'zaman damgası', 'zaman'); return iZ < 0 ? 0 : gruplaSurumler(v).filter((g) => yeniMi(g.guncel[iZ])).length; };
-  const yeni = yeniSay(sonVeri && sonVeri.kayitlar) + yeniSay(sonVeri && sonVeri.ihtidalar);
+  /* Seviye defteri sürüm gruplaması kullanmaz (düzeltme satırı yoktur): satır = kayıt.
+     Rozette «son ziyaretten sonra gelen» sayısı öne çıkar; yeni yoksa toplam yazılır. */
+  const sv = sonVeri && sonVeri.seviyeler;
+  const svSay = sv && Array.isArray(sv.satirlar) ? sv.satirlar.length : 0;
+  const svYeni = (() => {
+    if (!sv || !sv.basliklar || !sv.satirlar) return 0;
+    const iZ = sut(sv.basliklar, 'zaman damgası', 'zaman');
+    return iZ < 0 ? 0 : sv.satirlar.filter((r) => yeniMi(r[iZ])).length;
+  })();
+  const rs = $('rozet-seviye');
+  if (rs) {
+    rs.textContent = svYeni ? svYeni + ' yeni' : (svSay ? '(' + svSay + ')' : '');
+    rs.className = 'say' + (svYeni ? ' yeni' : '');
+  }
+  /* Yeni seviye testi de üst gezinti rozetinde görünür: hoca paneli açtığında bir haftalık dönüş sözü olan kaydı kaçırmasın. */
+  const yeni = yeniSay(sonVeri && sonVeri.kayitlar) + yeniSay(sonVeri && sonVeri.ihtidalar) + svYeni;
   $('gez-rozet').className = 'rozet' + (yeni ? ' yeni' : '');
   $('gez-rozet').textContent = yeni ? yeni + ' yeni' : ((k + i) ? '(' + k + '·' + i + ')' : '');
-  $('gez-rozet').title = 'Kur’an kursu kayıtları: ' + k + ' · İhtida başvuruları: ' + i;
+  $('gez-rozet').title = 'Kur’an kursu kayıtları: ' + k + ' · İhtida başvuruları: ' + i + (sv ? ' · Seviye testleri: ' + svSay : '');
 }
 
 /** Sütun başlığından alan sırası bulur — arka uç şeması değişse de kart doğru kurulur. */
@@ -677,6 +701,19 @@ const grupSayisi = (v) => gruplaSurumler(v).length;
 function basvuruCiz() {
   // 13 Eyl 2026: Kayıtta teslim rozeti ve yalnız yüklenmiş kimliğe etkin görüntüleme düğmesi ekler.
   rozetleriYaz();
+  /* Seviye testleri kendi modülünde çizilir; kayıt/ihtida kartlarının hiçbir adımına girmez.
+     CSV bu sekmede KAPALIDIR: md. 9 verisi dışa aktarılmaz (docs/SEVIYE-TESTI.md §7).
+     Sekme kayıt/ihtidaya dönünce aşağıdaki akış düğmeyi eski hâline getirir. */
+  if (aktifTur === 'seviye') {
+    $('basvuru-bilgi').hidden = true;
+    $('basvuru-not').hidden = true; $('basvuru-not').innerHTML = '';
+    $('csv').disabled = true;
+    const kap = $('basvuru-liste');
+    /* Eski arka uçta `j.seviyeler` hiç gelmez; modül bunu «Arka uç güncellemesi bekleniyor» kutusuyla karşılar. */
+    if (seviyePanel) seviyePanel.ciz(kap, sonVeri && sonVeri.seviyeler, suzgec);
+    else kap.innerHTML = '<div class="bilgi-kutu">Seviye testleri bölümü yükleniyor…</div>';
+    return;
+  }
   const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
   const liste = $('basvuru-liste');
   $('basvuru-bilgi').hidden = true;
@@ -1341,6 +1378,9 @@ görüntüler <code>?islem=ihtida-gorsel-sil&amp;ref=${kacir(ref)}</code> ucuyla
 
 $('basvuru-yenile').addEventListener('click', () => basvuruYukle());
 $('csv').addEventListener('click', () => {
+  /* Seviye tespit kayıtları özel nitelikli kişisel veridir (GDPR md. 9) ve CSV'ye AKTARILMAZ
+     (docs/SEVIYE-TESTI.md §7). Düğme o sekmede zaten kapalıdır; bu ikinci kapı klavye/otomasyon içindir. */
+  if (aktifTur === 'seviye') return;
   const v = aktifTur === 'kayit' ? sonVeri.kayitlar : sonVeri.ihtidalar;
   /* Excel/LibreOffice, hücre "=", "+", "-" veya "@" ile başlıyorsa onu FORMÜL sayar.
      Başvurandan gelen bir metin (ör. adres alanına yazılmış "=cmd|...") böylece

@@ -2,7 +2,7 @@
 baslik: Politique de confidentialité
 altBaslik: Comment vos données personnelles sont traitées sur ce site.
 aciklama: Comment les données personnelles sont traitées sur le site d’Ulu Camii Marche-en-Famenne et dans le portail des parents de l’école coranique, conformément au RGPD.
-guncelleme: 2026-09-13
+guncelleme: 2026-09-20
 ---
 
 <p class="bilgi"><strong>En bref :</strong> ce site n’utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n’est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l’initiative (p. ex. inscription au cours de Coran, envoi d’un e-mail).</p>
@@ -57,6 +57,21 @@ Les personnes souhaitant embrasser l’islam peuvent utiliser le formulaire en l
 - **Données NON collectées :** **numéro** de carte d’identité ou de passeport, numéro de Registre national, lecture MRZ (zone de lecture optique). L’original de la pièce d’identité est en outre présenté à l’imam le jour de la cérémonie.
 - **Base juridique :** votre consentement explicite pour les données relatives aux convictions religieuses ainsi que pour les images de la pièce d’identité et la signature (art. 9.2.a RGPD), et le texte de consentement EK-10 de la Diyanet. L’attestation est transmise au service compétent de la Diyanet (Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles).
 - **Conservation :** toutes les informations et pièces relatives à votre demande sont conservées **à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles**. La copie détenue par la mosquée se trouve sur l’infrastructure Google, dans un dossier fermé du compte de l’association utilisé par l’imam ; au maximum 2 ans après la clôture de la demande. La durée de conservation du dossier officiel auprès du Conseiller relève de la réglementation de la Diyanet. Vos demandes : imam@ulucamii.be.
+
+<span id="seviye-testi"></span>
+
+## Test de niveau : Coran et connaissances religieuses
+
+Les adultes (18 ans et plus) peuvent remplir le test de niveau de notre site afin qu’une formation personnalisée puisse leur être proposée :
+
+- **Données collectées :** prénom et nom, adresse e-mail, téléphone (facultatif) ; **tranche** d’âge et genre (avec, pour chacun, l’option « je préfère ne pas le préciser ») ; votre parcours avec l’islam, l’enseignement religieux déjà suivi, vos attentes ; langue des cours, jours et moments qui vous conviennent, forme des cours souhaitée ; une courte remarque facultative ; vos réponses aux questions du test, la liste de ce que vous connaissez par cœur et votre propre déclaration sur votre pratique ; la durée de remplissage ; la version du texte de consentement.
+- **Données non collectées :** numéro d’identité, date de naissance, adresse, photo, enregistrement vocal. Dans la partie « lecture du Coran », les sons que vous écoutez vous sont servis par notre site ; **aucun son n’est enregistré** de votre côté.
+- **Finalité et base juridique :** déterminer votre niveau en lecture du Coran et en connaissances religieuses afin de préparer une formation qui vous soit adaptée. Vos réponses sont des données sensibles relatives aux convictions religieuses ; elles ne sont traitées qu’avec votre **consentement explicite** (art. 9.2.a RGPD). Le test ne peut pas être envoyé sans cocher la case de consentement.
+- **Qui y a accès :** seul **notre imam** voit le résultat détaillé (vos réponses, question par question) ; le rapport n’est envoyé qu’à sa boîte e-mail institutionnelle. L’e-mail que vous recevez ne contient qu’un résumé de votre niveau par domaine. Les données ne sont ni communiquées à des tiers ni publiées.
+- **Lieu de conservation et sous-traitants :** l’enregistrement est tenu dans un registre non public du compte de l’association sur l’infrastructure de Google (Google Ireland Ltd.) ; les e-mails sont envoyés via **Brevo (Sendinblue SAS, France ; données traitées au sein de l’Union européenne)**.
+- **Brouillon dans votre navigateur :** avant l’envoi, vos réponses sont gardées comme brouillon uniquement dans le navigateur de votre appareil (14 jours au maximum) et ne nous parviennent pas. Vous pouvez le supprimer à tout moment avec le bouton « Supprimer le brouillon » ; il est effacé automatiquement à l’envoi du test. Les cases de consentement ne sont jamais enregistrées dans le brouillon.
+- **Durée de conservation :** **24 mois** au maximum ; à l’échéance, l’enregistrement est supprimé automatiquement du registre. Le rapport présent dans la boîte e-mail de l’imam est supprimé manuellement à la même échéance.
+- **Retrait du consentement et suppression :** vous pouvez retirer votre consentement à tout moment. Il suffit d’écrire à imam@ulucamii.be ; votre enregistrement est supprimé du registre et de la boîte e-mail de l’imam. Le résumé qui vous a déjà été envoyé reste dans votre propre boîte.
 
 ## Le registre des membres de l’association
 

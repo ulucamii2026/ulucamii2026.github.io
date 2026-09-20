@@ -1,0 +1,20 @@
+import type { Madde } from './tipler.ts';
+import type { PuanGirdisi } from './puanlama.ts';
+import { puanla } from './puanlama.ts';
+import { OKUMA } from './sorular/okuma.ts';
+import { KURAN_BILGI } from './sorular/kuran-bilgi.ts';
+import { ITIKAT } from './sorular/itikat.ts';
+import { NAMAZ } from './sorular/namaz.ts';
+import { IBADET } from './sorular/ibadet.ts';
+import { SIYER } from './sorular/siyer.ts';
+import { AHLAK } from './sorular/ahlak.ts';
+
+export const SORU_BANKASI_SURUMU = 1;
+export const BANKA_DURUMU: 'taslak' | 'onayli' = 'onayli';
+export const MADDELER: Madde[] = [...OKUMA, ...KURAN_BILGI, ...ITIKAT, ...NAMAZ, ...IBADET, ...SIYER, ...AHLAK];
+export { EZBER } from './sorular/ezber.ts';
+export { BEYAN } from './sorular/beyan.ts';
+export const maddeBul = (id: string) => MADDELER.find(m => m.id === id);
+export const bankaPuanla = (girdi: PuanGirdisi) => puanla(MADDELER, girdi);
+export * from './puanlama.ts';
+export type * from './tipler.ts';

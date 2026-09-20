@@ -1,0 +1,353 @@
+---
+/** Kur'an ve dinî bilgi seviye tespit testi — form gövdesi (20 Eylül 2026).
+    Soru bankası (src/lib/seviye-testi) yalnız derleme anında okunur: doğru şık ve kaynak künyesi
+    istemciye gitmez. Bölümler ortak adım motoruyla (FormAdimlar + form-adimlari.ts) gösterilir,
+    veri ve gönderim ortak çekirdektedir (form-cekirdek.ts).
+    Davranış: src/scripts/seviye-form.ts · karar ve sözleşme: docs/SEVIYE-TESTI.md */
+import type { Dil } from '../../i18n/ui';
+import { yol } from '../../i18n/utils';
+import { formMetinleri } from '../../i18n/formlar';
+import { seviyeMetinleri, RIZA_SURUMU } from '../../i18n/seviye-testi';
+import { MADDELER, EZBER, BEYAN, SORU_BANKASI_SURUMU } from '../../lib/seviye-testi/index.ts';
+import type { BilgiAlani } from '../../lib/seviye-testi/tipler.ts';
+import FormAdimlar from './FormAdimlar.astro';
+import SeviyeSoru from './SeviyeSoru.astro';
+import '../../styles/ihtida-adimlari.css';
+
+interface Props { dil: Dil; uc: string }
+const { dil, uc } = Astro.props;
+const m = seviyeMetinleri[dil];
+const o = formMetinleri(dil).ortak;
+
+// Emekli maddeler basılmaz; puanlama da onları saymaz (puanlama.ts).
+const maddeler = MADDELER.filter((s) => !s.emekli);
+const okumaBasamaklari = ([1, 2, 3, 4, 5] as const).map((n) => ({ no: n, sorular: maddeler.filter((s) => s.alan === 'okuma' && s.basamak === n) }));
+const okumaBeyanlari = BEYAN.filter((b) => b.kume === 'okuma');
+const uygulamaBeyanlari = BEYAN.filter((b) => b.kume === 'uygulama');
+const toplamSoru = maddeler.length + EZBER.length + BEYAN.length;
+
+const bolumler: { alan: BilgiAlani; id: string }[] = [
+  { alan: 'kuranBilgi', id: 'b-kuran-bilgi' }, { alan: 'itikat', id: 'b-itikat' }, { alan: 'namaz', id: 'b-namaz' },
+  { alan: 'ibadet', id: 'b-ibadet' }, { alan: 'siyer', id: 'b-siyer' }, { alan: 'ahlak', id: 'b-ahlak' },
+];
+
+/** Adım motoru için bölüm kümeleri; sıra `m.adimlar.adimlar` ile birebir aynıdır. */
+const adimGruplari = [
+  ['b-profil'], ['b-okuma'], ['b-kuran-bilgi', 'b-ezber'], ['b-itikat'], ['b-namaz'],
+  ['b-ibadet'], ['b-siyer'], ['b-ahlak'], ['b-uygulama'], ['b-ozet', 'b-onay'],
+];
+
+const metinJson = JSON.stringify({
+  hata: {
+    ...o.hata,
+    'sunucu:gunluk-sinir': m.hata.gunlukSinir,
+    'sunucu:eposta-gunluk-sinir': m.hata.epostaGunlukSinir,
+    'sunucu:seviye-hazir-degil': m.hata.hazirDegil,
+  },
+  basari: { gonderiliyor: o.gonderiliyor, epostaGitti: m.sonuc.epostaNotu },
+  taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi,
+  evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
+});
+
+// Betiğin ihtiyaç duyduğu seviye testine özgü metinler (seviye-form.ts → SeviyeBetikMetni).
+const seviyeJson = JSON.stringify({
+  soruZorunlu: m.soru.zorunlu, epostaEslesmiyor: m.profil.epostaEslesmiyor,
+  tekrarDinle: m.okuma.tekrarDinle, sesHatasi: m.okuma.sesHatasi,
+  cevaplanan: m.ozet.cevaplanan, atlanan: m.ozet.atlanan, toplamSoru,
+  bolumAdlari: {
+    okuma: m.okuma.baslik,
+    ...Object.fromEntries(Object.entries(m.bolumler).map(([anahtar, deger]) => [anahtar, deger.baslik])),
+  },
+});
+
+/** Değerler '60+' ya da 'ogleden-sonra' olabiliyor; id'de yalnız harf, rakam ve tire kalır. */
+const secenekId = (ad: string, deger: string) => `st-p-${ad}-${deger.replace(/[^a-z0-9]/gi, '-')}`;
+
+const profilTekli = [
+  { ad: 'yasAraligi', etiket: m.profil.yasAraligi, secenekler: m.profil.yasSecenekleri },
+  { ad: 'cinsiyet', etiket: m.profil.cinsiyet, secenekler: m.profil.cinsiyetSecenekleri },
+  { ad: 'muslumanlik', etiket: m.profil.muslumanlik, secenekler: m.profil.muslumanlikSecenekleri },
+  { ad: 'oncekiEgitim', etiket: m.profil.oncekiEgitim, secenekler: m.profil.oncekiEgitimSecenekleri },
+  { ad: 'dersDili', etiket: m.profil.dersDili, secenekler: m.profil.dersDiliSecenekleri },
+  { ad: 'bicim', etiket: m.profil.bicim, secenekler: m.profil.bicimSecenekleri },
+];
+const profilCoklu = [
+  { ad: 'hedefler', etiket: m.profil.hedefler, yardim: m.profil.hedeflerYardim, secenekler: m.profil.hedefSecenekleri },
+  { ad: 'gunler', etiket: m.profil.gunler, yardim: '', secenekler: m.profil.gunSecenekleri },
+  { ad: 'dilim', etiket: m.profil.dilim, yardim: '', secenekler: m.profil.dilimSecenekleri },
+];
+
+const ozetSatirlari = [
+  { anahtar: 'adSoyad', etiket: m.profil.adSoyad },
+  { anahtar: 'eposta', etiket: m.profil.eposta },
+  { anahtar: 'telefon', etiket: m.profil.telefon },
+  { anahtar: 'dersDili', etiket: m.profil.dersDili },
+];
+---
+<form class="ucf st-form mt-8" data-form="seviye" data-form-surumu="1" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-SEVIYE-2026"
+      data-asgari-servis-surumu="38" data-asgari-servis-bayrak="seviyeTesti" data-taslak="ulucamii:seviye:v1" data-taslak-gun="14"
+      data-eposta-alani="profil.eposta" data-banka-surumu={SORU_BANKASI_SURUMU} data-riza-surumu={RIZA_SURUMU} novalidate>
+  <script is:inline type="application/json" data-metin set:html={metinJson} />
+  <script is:inline type="application/json" data-metin-seviye set:html={seviyeJson} />
+
+  <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
+  <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+    <label for="st-web">Web sitenizi bırakmayın</label>
+    <input type="text" id="st-web" name="web" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="ucf-taslak st-taslak" data-taslak-not hidden>
+    <span data-taslak-metin>{o.taslakGeriYuklendi}</span>
+    <button type="button" data-taslak-sil>{o.taslakSil}</button>
+    <p class="st-ortak-cihaz">{m.onay.ortakCihaz}</p>
+  </div>
+  <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
+
+  <FormAdimlar metin={m.adimlar} gruplar={adimGruplari} />
+
+  <!-- Tanışma -->
+  <section class="ucf-bolum" id="b-profil" aria-labelledby="h-profil">
+    <h2 id="h-profil">{m.profil.baslik}</h2>
+    <p class="bolum-not"><span class="zorunlu">*</span> {o.zorunluIsaret} — {m.profil.not}</p>
+    <div class="ucf-izgara">
+      <div data-alan class="tam">
+        <label for="st-ad">{m.profil.adSoyad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="st-ad" name="profil.adSoyad" type="text" required maxlength="120" autocomplete="name" autocapitalize="words" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="st-eposta">{m.profil.eposta} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="st-eposta" name="profil.eposta" type="email" required data-tur="eposta" maxlength="160" autocomplete="email" inputmode="email" />
+        <p class="yardim">{m.profil.epostaYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="st-eposta-2">{m.profil.epostaTekrar} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="st-eposta-2" name="profil.epostaTekrar" type="email" required data-tur="eposta" maxlength="160" autocomplete="off" inputmode="email" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <label for="st-telefon">{m.profil.telefon} <span class="istege">({o.istegeBagli})</span></label>
+        <input id="st-telefon" name="profil.telefon" type="tel" data-tur="telefon" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+32 470 12 34 56" />
+        <p class="yardim">{m.profil.telefonYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      {profilTekli.map((grup) => (
+        <fieldset data-alan class:list={['tam', grup.secenekler.length > 3 && 'st-genis']}>
+          <legend>{grup.etiket} <span class="zorunlu" aria-hidden="true">*</span></legend>
+          <div class="st-secenekler">
+            {grup.secenekler.map((s, i) => (
+              <span class="secenek st-sik">
+                <input type="radio" id={secenekId(grup.ad, s.deger)} name={`profil.${grup.ad}`} value={s.deger} required={i === 0} />
+                <label for={secenekId(grup.ad, s.deger)}>{s.ad}</label>
+              </span>
+            ))}
+          </div>
+          <p class="hata" aria-live="polite" hidden></p>
+        </fieldset>
+      ))}
+      {profilCoklu.map((grup) => (
+        <fieldset data-alan class="tam">
+          <legend>{grup.etiket} <span class="istege">({o.istegeBagli})</span></legend>
+          {grup.yardim && <p class="yardim">{grup.yardim}</p>}
+          <div class="st-secenekler st-secenekler-serbest">
+            {grup.secenekler.map((s) => (
+              <span class="secenek st-sik st-kutucuk">
+                <input type="checkbox" id={secenekId(grup.ad, s.deger)} name={`profil.${grup.ad}.${s.deger}`} />
+                <label for={secenekId(grup.ad, s.deger)}>{s.ad}</label>
+              </span>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+      <div data-alan class="tam">
+        <label for="st-not">{m.profil.ekNot} <span class="istege">({o.istegeBagli})</span></label>
+        <p class="yardim">{m.profil.ekNotYardim}</p>
+        <textarea id="st-not" name="profil.not" maxlength="500" rows="3" data-sayac></textarea>
+        <p class="sayac" data-sayac-metin aria-hidden="true"></p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kur'an okuma merdiveni -->
+  <section class="ucf-bolum" id="b-okuma" aria-labelledby="h-okuma">
+    <h2 id="h-okuma">{m.okuma.baslik}</h2>
+    <p class="bolum-not">{m.okuma.giris}</p>
+    <p class="bolum-not">{m.okuma.yazimNotu}</p>
+    <div data-alan class="st-atla">
+      <div class="onay-kutu">
+        <input id="st-atla-okuma" type="checkbox" name="atla.okuma" />
+        <label for="st-atla-okuma">{m.okuma.harfBilmiyorum}</label>
+      </div>
+      <p class="yardim">{m.okuma.harfBilmiyorumYardim}</p>
+    </div>
+    <div class="st-sorular" data-kosul="atla.okuma=false">
+      {okumaBasamaklari.map(({ no, sorular }) => (
+        <fieldset class="st-basamak">
+          <legend>{m.okuma.basamaklar[no - 1]}</legend>
+          <div data-alan class="st-atla st-atla-basamak">
+            <div class="onay-kutu">
+              <input id={`st-atla-b${no}`} type="checkbox" name={`okumaAtla.b${no}`} />
+              <label for={`st-atla-b${no}`}>{m.okuma.basamakAtla}</label>
+            </div>
+          </div>
+          <div class="st-sorular" data-kosul={`okumaAtla.b${no}=false`}>
+            {sorular.map((madde) => (
+              <SeviyeSoru madde={madde} dil={dil} bilmiyorum={m.soru.bilmiyorum} mezhepNotu={m.soru.mezhepNotu} dinle={m.okuma.dinle} />
+            ))}
+          </div>
+        </fieldset>
+      ))}
+    </div>
+    {/* Okuma öz beyanı her zaman açıktır: bölüm atlansa da katılımcının kendi anlatımı alınır. */}
+    <div class="st-beyanlar">
+      <h3 class="st-alt-baslik">{m.okuma.beyanBaslik}</h3>
+      {okumaBeyanlari.map((b) => (
+        <fieldset class="st-soru st-beyan" data-alan data-soru={b.id} data-beyan>
+          <legend>{b.soru[dil]}</legend>
+          <div class="st-secenekler">
+            {b.secenekler.map((s, i) => (
+              <span class="secenek st-sik">
+                <input type="radio" id={`st-${b.id}-${i}`} name={`beyan.${b.id}`} value={String(i)} required={i === 0} />
+                <label for={`st-${b.id}-${i}`}>{s[dil]}</label>
+              </span>
+            ))}
+          </div>
+          <p class="hata" aria-live="polite" hidden></p>
+        </fieldset>
+      ))}
+    </div>
+  </section>
+
+  {bolumler.map(({ alan, id }) => (
+    <Fragment>
+      <section class="ucf-bolum" id={id} aria-labelledby={`h-${alan}`}>
+        <h2 id={`h-${alan}`}>{m.bolumler[alan].baslik}</h2>
+        <p class="bolum-not">{m.bolumler[alan].giris}</p>
+        <div data-alan class="st-atla">
+          <div class="onay-kutu">
+            <input id={`st-atla-${alan}`} type="checkbox" name={`atla.${alan}`} />
+            <label for={`st-atla-${alan}`}>{m.soru.atla}</label>
+          </div>
+          <p class="yardim">{m.soru.atlaYardim}</p>
+        </div>
+        <div class="st-sorular" data-kosul={`atla.${alan}=false`}>
+          {maddeler.filter((s) => s.alan === alan).map((madde) => (
+            <SeviyeSoru madde={madde} dil={dil} bilmiyorum={m.soru.bilmiyorum} mezhepNotu={m.soru.mezhepNotu} dinle={m.okuma.dinle} />
+          ))}
+        </div>
+      </section>
+
+      {/* Ezber listesi Kur'an bilgisiyle aynı adımdadır; atlama kutusu yoktur. */}
+      {alan === 'kuranBilgi' && (
+        <section class="ucf-bolum" id="b-ezber" aria-labelledby="h-ezber">
+          <h2 id="h-ezber">{m.ezber.baslik}</h2>
+          <p class="bolum-not">{m.ezber.giris}</p>
+          <div class="st-sorular">
+            {EZBER.map((e) => (
+              <fieldset class="st-soru st-ezber" data-alan data-soru={e.id} data-beyan>
+                <legend>{e.ad[dil]}</legend>
+                {e.aciklama && <p class="yardim">{e.aciklama[dil]}</p>}
+                <div class="st-secenekler st-secenekler-serbest">
+                  {m.ezber.durumlar.map((durum, i) => (
+                    <span class="secenek st-sik">
+                      <input type="radio" id={`st-${e.id}-${i}`} name={`ezber.${e.id}`} value={String(i)} required={i === 0} />
+                      <label for={`st-${e.id}-${i}`}>{durum}</label>
+                    </span>
+                  ))}
+                </div>
+                <p class="hata" aria-live="polite" hidden></p>
+              </fieldset>
+            ))}
+          </div>
+        </section>
+      )}
+    </Fragment>
+  ))}
+
+  <!-- Günlük uygulama öz beyanı -->
+  <section class="ucf-bolum" id="b-uygulama" aria-labelledby="h-uygulama">
+    <h2 id="h-uygulama">{m.uygulama.baslik}</h2>
+    <p class="bolum-not">{m.uygulama.giris}</p>
+    <div class="st-sorular">
+      {uygulamaBeyanlari.map((b) => (
+        <fieldset class="st-soru st-beyan" data-alan data-soru={b.id} data-beyan>
+          <legend>{b.soru[dil]}</legend>
+          <div class="st-secenekler">
+            {b.secenekler.map((s, i) => (
+              <span class="secenek st-sik">
+                <input type="radio" id={`st-${b.id}-${i}`} name={`beyan.${b.id}`} value={String(i)} required={i === 0} />
+                <label for={`st-${b.id}-${i}`}>{s[dil]}</label>
+              </span>
+            ))}
+          </div>
+          <p class="hata" aria-live="polite" hidden></p>
+        </fieldset>
+      ))}
+    </div>
+  </section>
+
+  <!-- Özet -->
+  <section class="ucf-bolum" id="b-ozet" aria-labelledby="h-ozet">
+    <h2 id="h-ozet">{m.ozet.baslik}</h2>
+    <p class="bolum-not">{m.ozet.giris}</p>
+    <div class="st-ozet" data-ozet>
+      <dl class="ozet-liste">
+        {ozetSatirlari.map((satir) => (
+          <div data-ozet-alan={satir.anahtar}>
+            <dt>{satir.etiket}</dt>
+            <dd><span data-ozet-deger>{o.bosDeger}</span> <a href="#b-profil">{m.ozet.duzenle}</a></dd>
+          </div>
+        ))}
+      </dl>
+      <p class="st-ozet-sayi" data-ozet-alan="cevaplanan"><span data-ozet-deger>{o.bosDeger}</span></p>
+      <p class="st-ozet-sayi" data-ozet-alan="atlanan"><span data-ozet-deger>{o.bosDeger}</span></p>
+    </div>
+    <input type="hidden" name="meta.sureSn" value="0" />
+  </section>
+
+  <!-- Onaylar (son adım: taslağa yazılmadıkları için devam eden katılımcı ilk adıma düşmesin) -->
+  <section class="ucf-bolum" id="b-onay" aria-labelledby="h-onay">
+    <h2 id="h-onay">{m.onay.baslik}</h2>
+    <div class="ucf-izgara">
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="st-onay-yas" type="checkbox" name="onay.yas18" required />
+          <label for="st-onay-yas">{m.onay.yas18}</label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="st-onay-riza" type="checkbox" name="onay.riza" required />
+          <label for="st-onay-riza">{m.onay.riza}</label>
+        </div>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div class="tam ucf-not st-bilgilendirme">
+        <span class="simge" aria-hidden="true">🔒</span>
+        <div>
+          <strong>{o.gizlilikKutu.baslik}</strong>
+          <ul>{m.onay.bilgilendirme.map((satir) => <li>{satir}</li>)}</ul>
+          <p><a href={`${yol(dil, 'gizlilik')}#seviye-testi`} target="_blank" rel="noopener">{m.onay.gizlilikBaglanti}<span aria-hidden="true"> ↗</span></a></p>
+        </div>
+      </div>
+      <div class="tam ucf-gonder">
+        <button type="submit" class="dugme dugme-birincil">{m.ozet.gonder}</button>
+        <p class="son-not">{m.ozet.sonNot}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ucf-adim-eylemler" data-adim-eylemler hidden>
+    <button type="button" class="dugme dugme-ikincil" data-adim-geri>{m.adimlar.geri}</button>
+    <button type="button" class="dugme dugme-birincil" data-adim-ileri>{m.adimlar.ileri}</button>
+    <p>{m.taslak.not}</p>
+  </div>
+</form>
+
+<script>
+  import { seviyeFormuBaslat } from '../../scripts/seviye-form';
+  seviyeFormuBaslat();
+</script>

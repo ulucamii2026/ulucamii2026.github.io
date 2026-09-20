@@ -2,7 +2,7 @@
 baslik: Privacy Policy
 altBaslik: Information on how personal data is handled on this website.
 aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the Qur’an school parents’ portal.
-guncelleme: 2026-09-13
+guncelleme: 2026-09-20
 ---
 
 <p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur’an course registration, sending an e-mail).</p>
@@ -57,6 +57,21 @@ People wishing to embrace Islam may use the online application form to prepare t
 - **Data NOT collected:** identity card or passport **number**, national registry number, MRZ (machine-readable zone) scan. The original identity document is also shown to the imam on the day of the ceremony.
 - **Legal basis:** your explicit consent for data concerning religious beliefs and for the identity images and signature (GDPR art. 9(2)(a)), and the Diyanet EK-10 consent text. The certificate is forwarded to the competent Diyanet office (Social Affairs Counsellor of the Embassy of Türkiye in Brussels).
 - **Retention:** all information and documents relating to your application are kept **both by our mosque and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels**. The mosque's copy sits on Google infrastructure, in a closed folder of the association account used by the imam; at most 2 years after the application is closed. The retention period of the official file at the Counsellor's office follows Diyanet regulations. Requests: imam@ulucamii.be.
+
+<span id="seviye-testi"></span>
+
+## Level Assessment: Qur’an and Religious Knowledge
+
+Adults (aged 18 and over) can fill in the level assessment on our website so that personal teaching can be planned for them:
+
+- **Data collected:** first and last name, e-mail address, optional phone number; age **range** and gender (each with an “I prefer not to say” option); your journey with Islam, any religious education you have had, what you expect from the teaching; lesson language, suitable days and times, preferred lesson format; an optional short note; your answers to the test questions, the list of what you know by heart and your own statement about your practice; the time taken to complete the test; the version of the consent text.
+- **Data not collected:** ID number, date of birth, address, photo, voice recording. In the “reading the Qur’an” part, the sounds you listen to are served to you by our website; **no sound is recorded** from you.
+- **Purpose and legal basis:** to determine your level in Qur’an reading and religious knowledge in order to plan teaching suited to you. Your answers are special-category data concerning religious beliefs and are processed only with your **explicit consent** (GDPR art. 9(2)(a)). The test cannot be sent without ticking the consent box.
+- **Who sees it:** only **our imam** sees the detailed result (your answers, question by question); the report is sent only to his institutional mailbox. The e-mail you receive contains only a summary of your level per area. The data are neither shared with third parties nor published.
+- **Where it is kept and processors:** the record is held in a non-public ledger in the association’s account on Google’s infrastructure (Google Ireland Ltd.); e-mails are sent through **Brevo (Sendinblue SAS, France; data processed within the European Union)**.
+- **Draft in your browser:** before sending, your answers are kept as a draft only in your own device’s browser (14 days at most) and do not reach us. You can delete it at any time with the “Delete draft” button; it is removed automatically when the test is sent. Consent boxes are never written to the draft.
+- **Retention:** **24 months** at most; when the period ends, the record is deleted from the ledger automatically. The report in the imam’s mailbox is deleted manually at the same point.
+- **Withdrawing consent and deletion:** you can withdraw your consent at any time. Simply write to imam@ulucamii.be; your record is deleted from the ledger and from the imam’s mailbox. The summary already sent to you remains in your own inbox.
 
 ## The Association’s Member Register
 

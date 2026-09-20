@@ -1,0 +1,73 @@
+---
+/** Kur'an ve dinî bilgi seviye tespit testi — yetişkinler için yerleştirme sayfası (20 Eylül 2026).
+    İhtida başvurusunun kalıbını izler, ama bu sayfa dizine açıktır (noindex yok): testi arayan
+    kişinin bulması gerekir. Sonuç paneli sunucudan dönen `sonuc` ile doldurulur; puan tarayıcıda
+    hesaplanmaz. Karar ve sözleşme: docs/SEVIYE-TESTI.md */
+import Base from '../layouts/Base.astro';
+import SeviyeTestiFormu from '../components/formlar/SeviyeTestiFormu.astro';
+import { yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import { seviyeMetinleri } from '../i18n/seviye-testi';
+import { SONUC_METINLERI } from '../lib/seviye-testi/metinler.ts';
+import { siteAyarlari } from '../lib/icerik';
+import '../styles/formlar.css';
+import '../styles/ihtida-adimlari.css';
+import '../styles/seviye-testi.css';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = seviyeMetinleri[dil];
+const s = SONUC_METINLERI[dil];
+const site = await siteAyarlari();
+const sonucJson = JSON.stringify(s);
+---
+<Base baslik={m.sayfa.baslik} dil={dil} aciklama={m.sayfa.aciklama}>
+  <header class="ihtida-basvuru-ust border-b border-(--cizgi) bg-(--zemin-2)">
+    <div class="kapsayici ihtida-basvuru-baslik py-7 sm:py-10" style="max-width: 52rem">
+      <p class="etiket etiket-vurgu">{m.sayfa.etiket}</p>
+      <h1 class="text-3xl sm:text-4xl">{m.sayfa.baslik}</h1>
+      <p class="st-ust-alt">{m.sayfa.altBaslik}</p>
+    </div>
+    <div class="kilim-serit" aria-hidden="true"></div>
+  </header>
+
+  <section class="kapsayici ihtida-basvuru-govde py-7 sm:py-10" style="max-width: 52rem">
+    <div class="ucf-giris st-giris" data-form-ust>
+      {m.giris.paragraflar.map((p) => <p>{p}</p>)}
+      <ul class="st-noktalar">{m.giris.noktalar.map((n) => <li>{n}</li>)}</ul>
+      <p class="st-cocuk">{m.giris.cocukNotu} <a href={yol(dil, 'kurankursu')}>{m.giris.cocukBaglanti}</a></p>
+      <noscript><p class="ucf-mesaj" data-tur="hata">{m.giris.noscript}</p></noscript>
+    </div>
+
+    <SeviyeTestiFormu dil={dil} uc={site.servisler.basvuru} />
+
+    <section class="ucf-basari st-basari mt-8" data-basari hidden aria-live="polite">
+      <h2>{m.sonuc.baslik}</h2>
+      <div><div class="ref-etiket">{m.sonuc.referans}</div><div class="ref" data-ref>—</div></div>
+      <p data-eposta-metin></p>
+      <div class="st-sonuc" data-sonuc hidden>
+        <div class="st-sonuc-bolum">
+          <h3>{m.sonuc.kuranBaslik}</h3>
+          <div class="st-cubuk" data-okuma-cubuk role="img" aria-label="">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <p class="st-duzey" data-okuma-metin></p>
+          <p class="st-tecvid" data-tecvid hidden></p>
+        </div>
+        <div class="st-sonuc-bolum">
+          <h3>{m.sonuc.alanBaslik}</h3>
+          <ul class="st-alanlar" data-alan-liste></ul>
+        </div>
+        <div class="st-sonuc-bolum">
+          <h3>{s.programGiris}</h3>
+          <p class="st-program-ad" data-program-ad></p>
+          <p data-program-aciklama></p>
+          <p class="yardim">{s.programNot}</p>
+        </div>
+        <p class="st-sonraki">{s.sonraki}</p>
+        <div class="eylemler"><a class="dugme dugme-ikincil" href={`/${dil}/`}>{m.sonuc.anasayfa}</a></div>
+      </div>
+      <script is:inline type="application/json" data-metin-sonuc set:html={sonucJson} />
+    </section>
+  </section>
+</Base>

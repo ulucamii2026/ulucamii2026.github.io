@@ -179,6 +179,9 @@
 .ucf-basari h2 { font-family: var(--font-serif); font-size: 1.7rem; margin: 0; display: flex; align-items: center; gap: 0.6rem; }
 .ucf-basari h2::before { content: '✓'; display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; background: var(--color-adacayi); color: #fff; font-size: 1.1rem; }
 .ucf-basari .ref { font-family: var(--font-mono); font-size: 1.55rem; letter-spacing: 0.04em; color: var(--color-iznik); }
+/* Koyu temada İznik mavisi zemin üzerinde 2:1'de kalıyordu (ihtida başarı paneli dâhil); açık tonla 6,4:1. */
+:root[data-theme="dark"] .ucf-basari:not(.k-basari) .ref { color: var(--color-iznik-acik); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ucf-basari:not(.k-basari) .ref { color: var(--color-iznik-acik); } }
 .ucf-basari .ref-etiket { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
 .ucf-basari p { margin: 0; line-height: 1.55; }
 .ucf-basari .eylemler { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }

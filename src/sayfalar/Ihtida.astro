@@ -40,6 +40,9 @@ const m = dil === 'tr'
       basvuruBaslik: 'Online Başvuru',
       basvuruAlt: 'Formu birkaç adımda doldurun; başvurunuz camimize ve size PDF olarak iletilsin.',
       basvuruButon: 'Online başvuru yapın',
+      seviyeBaslik: 'Nereden başlamalıyım?',
+      seviyeAlt: 'Kur’an okuma ve dinî bilgi düzeyinizi belirleyin; size özel eğitim planlayalım.',
+      seviyeButon: 'Seviye tespit testine git',
       indirBaslik: 'Belgeler',
       ek9: 'İhtida Belgesi (EK-9) — resmî örnek',
       ek10: 'KVKK Açık Rıza Metni (EK-10) — tam metin',
@@ -72,6 +75,9 @@ const m = dil === 'tr'
       basvuruBaslik: 'Online Application',
       basvuruAlt: 'Fill in the form in a few steps; your application is sent to our mosque and to you as a PDF.',
       basvuruButon: 'Apply online',
+      seviyeBaslik: 'Where should I start?',
+      seviyeAlt: 'Find out your level in Qur’an reading and religious knowledge; we will plan teaching made for you.',
+      seviyeButon: 'Take the level assessment',
       indirBaslik: 'Documents',
       ek9: 'Conversion Certificate (EK-9) — official template',
       ek10: 'GDPR Explicit Consent Text (EK-10) — full text',
@@ -103,6 +109,9 @@ const m = dil === 'tr'
       basvuruBaslik: 'Demande en ligne',
       basvuruAlt: 'Complétez le formulaire en quelques étapes ; votre demande est transmise à la mosquée et vous parvient en PDF.',
       basvuruButon: 'Faire une demande en ligne',
+      seviyeBaslik: 'Par où commencer ?',
+      seviyeAlt: 'Évaluez votre niveau en lecture du Coran et en connaissances religieuses ; nous préparerons une formation faite pour vous.',
+      seviyeButon: 'Passer le test de niveau',
       indirBaslik: 'Documents',
       ek9: 'Attestation de conversion (EK-9) — modèle officiel',
       ek10: 'Consentement RGPD (EK-10) — texte complet',
@@ -118,6 +127,13 @@ const m = dil === 'tr'
     <p class="mt-2 text-sm text-(--metin-2)">{m.basvuruAlt}</p>
     <a href={yol(dil, 'ihtidaBasvuru')} class="dugme dugme-birincil mt-4 w-full justify-center">{m.basvuruButon}</a>
     <p class="mt-3 text-sm etiket-vurgu">{m.ucretsiz}</p>
+  </div>
+
+  {/* Yetişkin yerleştirme testi: İslâm'ı yeni seçen ya da baştan öğrenmek isteyen için ilk adım. */}
+  <div slot="yan" class="kart p-5">
+    <p class="etiket etiket-vurgu">{m.seviyeBaslik}</p>
+    <p class="mt-2 text-sm text-(--metin-2)">{m.seviyeAlt}</p>
+    <a href={yol(dil, 'seviyeTesti')} class="dugme dugme-ikincil mt-4 w-full justify-center">{m.seviyeButon}</a>
   </div>
 
   <div slot="yan" class="kart p-5">

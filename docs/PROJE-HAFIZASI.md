@@ -16,6 +16,7 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | İhtida formunda adımlar / cami / şahit | [Adımlar](IHTIDA-ADIMLI-FORM-v27.md), [cami seçimi](IHTIDA-CAMI-SECIMI-v26.md) | `src/components/formlar/IhtidaFormu.astro`, `src/scripts/ihtida-adimlari.ts`, `src/scripts/ihtida-cami.ts`; `tests/web/ihtida*.spec.mjs` |
 | EK-9, EK-10, dilekçe ve e-posta paketi | [Paket akışı](IHTIDA-OTOMASYON-v25.md) | `public/admin/ihtida-paket.js`, `ek9.js`, `ek10.js`, `dilekce.js`; `scripts/apps-script/ihtida-paket-isleri.gs`; `npm run test:ihtida` |
 | İhtida defteri | [Defter](IHTIDA-DEFTERI-v28.md) | `public/admin/ihtida-defteri.js`, `scripts/apps-script/ihtida-defteri-isleri.gs`; `tests/ihtida-defteri-*.test.mjs` |
+| Yetişkin seviye tespit testi (Kur'an + dinî bilgi) | [Seviye testi](SEVIYE-TESTI.md) | `src/lib/seviye-testi/` (banka + puanlama, tek kaynak), `src/components/formlar/SeviyeTesti*.astro`, `src/scripts/seviye-form.ts`, `scripts/apps-script/seviye-testi-isleri.gs`, `public/admin/seviye-panel.js`; `npm run test:seviye`, `tests/web/seviye-*.spec.mjs` |
 | Ortam, hesap sarmalayıcıları, genel testler | [Çalışma rehberi](CODEX-CALISMA.md) | `package.json`, `scripts/dogrula-codex.mjs`; `npm run dogrula:codex` |
 | Ana sayfa vitrini | [Ana sayfa vitrini](ANA-SAYFA-VITRINI.md) | `src/lib/vitrin-secimi.ts`, `src/components/GundemVitrini.astro`; `tests/web/vitrin.spec.mjs` |
 | Ana sayfa akışı | [Ana sayfa akışı](ANA-SAYFA-AKISI.md) | `src/components/AnaSayfaAkisi.astro`, `src/styles/ana-sayfa-akisi.css`; `tests/web/ana-sayfa-akisi.spec.mjs` |

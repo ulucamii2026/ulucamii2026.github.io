@@ -11,6 +11,7 @@ test('Diyanet alıştırmalarının kaynak, metin ve dosya bütünlüğü', () =
   for (const ders of Object.values(veri)) for (const ornek of ders.ornekler) {
     expect(new URL(ornek.kaynak).hostname).toBe('kuran.diyanet.gov.tr');
     expect(ornek.metin).toMatch(/[\u0600-\u06ff]/);
+    expect(ornek.metin).toBe(ornek.metin.normalize('NFC'));
     expect(createHash('sha256').update(readFileSync(`public${ornek.sesUrl}`)).digest('hex')).toBe(ornek.sha256);
   }
 });

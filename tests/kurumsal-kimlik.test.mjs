@@ -11,7 +11,7 @@ import { kimlikKaynakOku, kimlikDosyalari, kimlikDenetle, kopyaYolu, sabitYolu, 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const oku = ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8');
 const kaynak = await kimlikKaynakOku(), kimlik = kaynak.kimlik;
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v37.gs', 'veli-cuma.gs'].map(oku).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v38.gs', 'veli-cuma.gs'].map(oku).join('\n');
 function ortam() {
   const sent = [];
   const c = vm.createContext({ console: {error() {}, log() {}}, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})},
@@ -95,13 +95,14 @@ test('URL sonundaki noktalama dışarıda; sorgu parametreleri bir kez kaçışl
   assert.match(html, /b=2<\/a>\)\./); assert.match(html, /<b><a [^>]+>https:\/\/example\.test\/kalin<\/a><\/b>/);
   assert.match(html, /\/x<\/a>!/); assert.match(html, /\/y<\/a>;/); assert.doesNotMatch(html, /&amp;amp;/);
 });
-test('Zengin içerikte sekiz blok türü, sırası ve liste notunun 16 px ölçüsü korunur', () => {
+test('Zengin içerikte dokuz blok türü, sırası ve liste notunun 16 px ölçüsü korunur', () => {
   const html = c.veliEpostaZengin([
     {tur:'paragraf', metin:'BLOK-1'}, {tur:'baslik', metin:'BLOK-2'}, {tur:'dugme', metin:'BLOK-3', url:'https://example.test/portal'},
     {tur:'gorsel', src:'cid:ornek', alt:'BLOK-4'}, {tur:'liste', ogeler:[{baslik:'BLOK-5', not:'Kitap s. 16'}]},
-    {tur:'madde', ogeler:['BLOK-6']}, {tur:'cizgi'}, {tur:'not', metin:'BLOK-7'}
+    {tur:'madde', ogeler:['BLOK-6']}, {tur:'cizgi'}, {tur:'not', metin:'BLOK-7'},
+    {tur:'olcek', ogeler:[{etiket:'BLOK-8', deger:1, azami:3, metin:'BLOK-9'}]}
   ], 'fr', 'Zengin', {kurum:'cami'});
-  const pos = Array.from({length:7}, (_,i) => html.indexOf('BLOK-' + (i+1)));
+  const pos = Array.from({length:9}, (_,i) => html.indexOf('BLOK-' + (i+1)));
   assert.ok(pos.every((p,i) => p >= 0 && (!i || p > pos[i-1])));
   assert.match(html, /<h2\b/); assert.match(html, /<ol\b/); assert.match(html, /<ul\b/);
   assert.match(html, /font-size:16px[^>]+>Kitap s\. 16/); assert.match(html, /border-radius:50%/); assert.match(html, /src="cid:ornek"/);
@@ -111,6 +112,25 @@ test('Bilinmeyen blok ve bozuk liste/görseller açık hatadır', () => {
   for (const blok of [null, {tur:'video'}, {tur:'liste'}, {tur:'madde', ogeler:'yanlis'}, {tur:'liste', ogeler:[null]}]) assert.throws(() => c.veliEpostaZengin([blok], 'tr', ''), /veli-eposta-/);
   assert.throws(() => c.veliEpostaZengin(null, 'tr', ''), /veli-eposta-bloklar/);
   assert.throws(() => c.veliEpostaDuzMetin('', 'tr', '', {gorseller:'yanlis'}), /veli-eposta-gorseller/);
+});
+test('Ölçek bloğu görselsiz tablodur, düzeyi yazıyla da verir; bozuk ölçek veli-eposta-olcek fırlatır', () => {
+  const b = c.veliEpostaBaglami('tr', {kurum:'kurs'});
+  const blok = c.veliEpostaBlokHtml({tur:'olcek', ogeler:[
+    {etiket:'Temizlik ve namaz', deger:1, azami:3, metin:'Temel'},
+    {etiket:'<script>alert(1)</script>', deger:3, azami:3, metin:'İleri & "ince"', sayi:true}
+  ]}, b);
+  for (const parca of ['Temizlik ve namaz', 'Temel</td>', 'İleri &amp; &quot;ince&quot; (3/3)']) assert.ok(blok.includes(parca));
+  assert.ok(!blok.includes('(1/3)'), 'sayı yalnız sayi:true ile yazılır');
+  assert.match(blok, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
+  assert.doesNotMatch(blok, /<img|<script/);
+  assert.ok(blok.includes('bgcolor="' + kimlik.kurumlar.kurs.renk.ana + '"') && blok.includes('bgcolor="' + kimlik.gorunum.ortakRenk.cizgi + '"'));
+  assert.equal((blok.match(/<table\b/g) || []).length, (blok.match(/<table role="presentation"/g) || []).length);
+  assert.ok(c.veliEpostaZengin([{tur:'olcek', ogeler:[{etiket:'Kur\'an okuma', deger:0, azami:5, metin:'Başlangıç', sayi:true}]}], 'fr', 'Ölçek').includes('Başlangıç (0/5)'));
+  for (const ogeler of [[], 'yanlis', [null], [{etiket:'', deger:1, azami:3, metin:'Temel'}], [{etiket:'A', deger:1, azami:3, metin:'  '}],
+    [{etiket:'A', deger:4, azami:3, metin:'Temel'}], [{etiket:'A', deger:-1, azami:3, metin:'Temel'}], [{etiket:'A', deger:1, azami:7, metin:'Temel'}],
+    [{etiket:'A', deger:1, azami:0, metin:'Temel'}], [{etiket:'A', deger:1.5, azami:3, metin:'Temel'}], [{etiket:'A', deger:'1', azami:3, metin:'Temel'}]]) {
+    assert.throws(() => c.veliEpostaZengin([{tur:'olcek', ogeler}], 'tr', ''), /veli-eposta-olcek/);
+  }
 });
 test('Düğmenin URL, metin ve görsel alt alanları kaçışlanır; etkin URL şemaları reddedilir', () => {
   const html = c.veliEpostaZengin([{tur:'dugme', metin:'<Aç>', url:'https://example.test/?q="özel"&b=2'}, {tur:'gorsel', src:'https://example.test/logo.png?q="x"&b=2', alt:'" onerror="x'}], 'tr', '');
