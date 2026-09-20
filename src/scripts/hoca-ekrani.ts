@@ -593,16 +593,32 @@ export async function hocaEkrani(): Promise<void> {
       if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '', veliMazereti: S!.yoklama[o.ref]?.veliMazereti }; }); S.mazeretKuraliDegisen = []; ciz(); return; }
       if (el.dataset.eylem === 'yoklamaKaydet') {
         kok.querySelectorAll<HTMLInputElement>('[data-yok-not]').forEach((i) => { const ref = i.dataset.yokNot!; const not = i.value.trim(); const y = S!.yoklama[ref]; if (y) y.not = not; else if (not) S!.yoklama[ref] = { dersler: {}, not }; });
-        const b = fs.writeBatch(db); let n = 0;
+        // 🛑 20 Eyl 2026: Firestore GÜVENLİK KURALLARI bir batch'te en çok 20 BELGE ERİŞİMİ
+        // değerlendirir. yoklama/{id} kuralı her belge için islemeAcik(ref) → portalSilme/{ref}
+        // bakar (her öğrenci ayrı belge = N erişim) + hoca() → hocalar/{uid} (hepsinde aynı, 1 kez
+        // sayılır). Sınıf 20 öğrenciye çıkınca 21 > 20 oldu ve BÜTÜN batch «Missing or insufficient
+        // permissions» ile reddedildi — hoca hiçbir yoklamayı kaydedemedi. Ölçüm (gerçek hoca
+        // kimliğiyle): 19 belge → HTTP 200, 20 belge → HTTP 403. Bu yüzden yazımlar paketlenir.
+        // Paket boyutu 15: erişim tavanına 4 belgelik pay bırakır, sınıf büyüse de çalışır.
+        const YOKLAMA_PAKET = 15;
+        type YokIslem = { id: ReturnType<typeof fs.doc>; veri?: Record<string, unknown> };
+        const islemler: YokIslem[] = [];
         for (const [ref, y] of Object.entries(S.yoklama)) {
           const id = fs.doc(db, 'yoklama', `${ref}_${S.tarih}`);
           const dersler: Record<string, string> = {}; for (const s of Object.keys(y.dersler)) if (y.dersler[s]) dersler[s] = y.dersler[s];
           // veliMazereti: kuralın hangi dersleri kendiliğinden işaretlediği. Hoca sonradan «Yok»a
           // çevirirse kural o dersi bir daha geri almasın diye kaydedilir (bkz. mazeretKuraliniUygula).
           const oto = (y.veliMazereti || []).filter((s) => dersler[s]);
-          if (Object.keys(dersler).length || y.not) { b.set(id, { ref, tarih: S.tarih, dersler, not: y.not || '', ...(oto.length ? { veliMazereti: oto } : {}), kaydeden: S.uid, zaman: fs.serverTimestamp() }); n++; } else b.delete(id);
+          if (Object.keys(dersler).length || y.not) islemler.push({ id, veri: { ref, tarih: S.tarih, dersler, not: y.not || '', ...(oto.length ? { veliMazereti: oto } : {}), kaydeden: S.uid, zaman: fs.serverTimestamp() } });
+          else islemler.push({ id });
         }
-        await b.commit(); S.mazeretKuraliDegisen = []; ciz();
+        let n = 0;
+        for (let i = 0; i < islemler.length; i += YOKLAMA_PAKET) {
+          const b = fs.writeBatch(db);
+          for (const is of islemler.slice(i, i + YOKLAMA_PAKET)) { if (is.veri) { b.set(is.id, is.veri); n++; } else b.delete(is.id); }
+          await b.commit();
+        }
+        S.mazeretKuraliDegisen = []; ciz();
         ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
       }
       if (el.dataset.ogr) { kok.querySelector('#ogrenci-karti')?.remove(); await ogrenciYukle(el.dataset.ogr); ciz(); kok.querySelector('#ogrenci-karti')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }

@@ -30,7 +30,7 @@ import {
   type Firestore,
 } from "firebase/firestore/lite";
 import type { DefterDersi, DersKaydi } from "./ders-defteri";
-import { GELMEDI_NOTU, dersDurumlari } from "./ders-defteri";
+import { GELMEDI_NOTU, dersDurumlari, refPaketleri } from "./ders-defteri";
 import { defterKaliplari, hazirKayitlar } from "./defter-kaliplari";
 import konuFrVeri from "../data/ders-konu-fr";
 
@@ -354,8 +354,18 @@ export async function topluGelmediCevirisiYaz(
 ): Promise<number> {
   const uygun = girdiler.filter((g) => GELMEDI_NOTU_FR[g.durum]);
   if (!uygun.length) return 0;
+  // Kural erişim tavanı (20 belge/batch) için ref bazlı paketleme — ceviriler kuralı ref başına
+  // bir belge okur (portalSilme/{ref}); bkz. ders-defteri.ts refPaketleri açıklaması.
+  for (const paket of refPaketleri(uygun, 1)) await ceviriPaketiYaz(db, paket);
+  return uygun.length;
+}
+
+async function ceviriPaketiYaz(
+  db: Firestore,
+  girdiler: { ref: string; kayitId: string; durum: DersKaydi["durum"]; dil: CeviriDili }[],
+): Promise<void> {
   const yigin = writeBatch(db);
-  for (const g of uygun)
+  for (const g of girdiler)
     yigin.set(doc(db, "dersDefteri", g.ref, "ceviriler", ceviriKimligi(g.kayitId, g.dil)), {
       kayitId: g.kayitId,
       dil: g.dil,
@@ -369,7 +379,6 @@ export async function topluGelmediCevirisiYaz(
       guncelleme: serverTimestamp(),
     });
   await yigin.commit();
-  return uygun.length;
 }
 
 /* ───────────────────────────── bülten ───────────────────────────── */

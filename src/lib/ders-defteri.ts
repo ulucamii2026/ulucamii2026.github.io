@@ -343,16 +343,51 @@ export function mazeretKuraliniUygula(
 }
 
 export type TopluGirdi = { ref: string; ders: DefterDersi; durum: DersKaydi["durum"] };
+
 /**
- * Gelmeyen öğrencilerin o günkü defter kayıtlarını tek işlemde açar. VAR OLAN KAYDA DOKUNMAZ
+ * Kural erişim tavanı için öğrenciye (ref) göre paketler.
+ *
+ * 🛑 20 Eyl 2026: Firestore güvenlik kuralları bir batch'te en çok **20 belge erişimi**
+ * değerlendirir; aşılırsa batch'in tamamı «Missing or insufficient permissions» ile reddedilir.
+ * Ölçüldü (gerçek hoca kimliğiyle, ref başına 1 erişimli yoklama kuralı): 19 belge → HTTP 200,
+ * 20 belge → HTTP 403. Aynı belgeye yapılan erişimler önbelleğe alınıp bir kez sayıldığı için
+ * belirleyici olan FARKLI REF sayısıdır; bu yüzden paketleme ref bazlıdır ve bir ref'in bütün
+ * kayıtları aynı pakette kalır.
+ */
+export function refPaketleri<T extends { ref: string }>(girdiler: T[], refBasinaErisim: number): T[][] {
+  const TAVAN = 18; // 20 − hocalar/{uid} (1) − güvenlik payı (1)
+  const refSiniri = Math.max(1, Math.floor(TAVAN / Math.max(1, refBasinaErisim)));
+  const grup = new Map<string, T[]>();
+  for (const g of girdiler) (grup.get(g.ref) ?? grup.set(g.ref, []).get(g.ref)!).push(g);
+  const paketler: T[][] = [];
+  let simdiki: T[] = [];
+  let refSayisi = 0;
+  for (const kayitlar of grup.values()) {
+    if (refSayisi >= refSiniri) { paketler.push(simdiki); simdiki = []; refSayisi = 0; }
+    simdiki.push(...kayitlar); refSayisi++;
+  }
+  if (simdiki.length) paketler.push(simdiki);
+  return paketler;
+}
+
+/**
+ * Gelmeyen öğrencilerin o günkü defter kayıtlarını açar. VAR OLAN KAYDA DOKUNMAZ
  * (yalnız `create`; hocanın yazdığı bir not asla ezilmez) ve yoklamada gelmemiş sayılmayan
  * öğrenciyi hiç yazmaz. 12 Eylül'de bu 30 kaydın elle yazılması demekti.
+ *
+ * Kayıtlar paketler hâlinde yazılır: bu kuralın create şartı ref başına İKİ belge okur
+ * (`portalSilme/{ref}` + `ogrenciler/{ref}`), yani tek batch'te 10 öğrenci bile tavanı aşardı.
  */
 export async function topluGelmediYaz(
   db: Firestore,
   girdiler: TopluGirdi[],
 ): Promise<number> {
   if (!girdiler.length) return 0;
+  for (const paket of refPaketleri(girdiler, 2)) await paketYaz(db, paket);
+  return girdiler.length;
+}
+
+async function paketYaz(db: Firestore, girdiler: TopluGirdi[]): Promise<void> {
   const yigin = writeBatch(db);
   for (const { ref, ders: d, durum } of girdiler) {
     if (!gelmediMi(durum)) throw Error("Toplu doldurma yalnız gelmeyen dersler içindir.");
@@ -378,7 +413,6 @@ export async function topluGelmediYaz(
     });
   }
   await yigin.commit();
-  return girdiler.length;
 }
 
 /** Bilinçli hoca eylemiyle bülten taslağına aktarılır; yoklama veya başarı notu üretmez. */
