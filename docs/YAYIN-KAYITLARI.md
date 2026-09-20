@@ -4,6 +4,17 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (2) — seviye testi: tek e-posta, telefon biçimi, titreme ve iniş düzeltmeleri
+
+- Zaman: 21 Eylül 2026 00:25 – 01:10 (Europe/Brussels, CEST). Durum: **yayımlandı ve canlı doğrulandı.** Kullanıcının açık talimatı («Bunları düzelt, yayınla»).
+- İlk gerçek başvuru aynı gece geldi (`ST-2026-0001`, 00:02; iki e-posta da gönderildi) — kullanıcı geri bildirimi bu başvurunun ardından verildi. Kayıtta kişisel veri tutulmaz.
+- Kapsam (yalnız ön yüz; Apps Script v38 değişmedi): (1) e-posta TEK kez yazılır, yaygın alan adı yazım hatasında «Şunu mu demek istediniz…?» önerisi (TR/FR/EN); (2) telefon alanları yalnız rakam kabul eder ve yazarken «+32 470 12 34 56» biçimine girer — ortak çekirdekte, seviye + kayıt + ihtida formlarında; gövdeye giden değer yine boşluksuz E.164; (3) **titreme**: alt şerit yapışınca içindeki taslak notu gizleniyor, şeridin boyu 110↔71 px oynuyor ve formun sonundaki ~40 px'lik bantta 1,2 sn'de 34 yapış/çöz döngüsü kuruluyordu → not şeridin dışına alındı, aynı ölçüm 1; (4) kısa ekranda (ör. 1366×640) adıma inişte adım paneli + alt şerit içeriğe 70 px bırakıyordu → yer < 240 px ise doğrudan bölüme inilir (ortak adım motoru; ihtida formu da yararlanır); (5) koyu temada atlanan basamağın kesik çizgisi okunur oldu.
+- Değişen dosyalar: `src/scripts/telefon-bicim.ts` (yeni), `src/scripts/form-cekirdek.ts`, `src/scripts/form-adimlari.ts`, `src/scripts/seviye-form.ts`, `src/components/formlar/SeviyeTestiFormu.astro`, `src/i18n/seviye-testi.ts`, `src/styles/seviye-testi.css`, `tests/telefon-bicim.test.mjs` (yeni, 6 test), `tests/web/seviye-testi.spec.mjs` (+3 senaryo: iniş, titreme, e-posta/telefon), `package.json`, `docs/SEVIYE-TESTI.md`.
+- İçerik commit'i `3f5ed97`; Release kullanılmadı. [Pages 35543472762](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35543472762) başarılı.
+- Testler (yayın öncesi, yerel): `npm run dogrula:codex` çıkış 0 — **test:web 504/504**, öteki bütün kapılar GEÇTİ; `npm run test:seviye` 50/50 + döküm güncel; kayıt ve ihtida form testleri 116/116 (telefon biçimlendirici bağlıyken).
+- Canlı doğrulama (gerçek tarayıcı, 1366×640, **gönderimsiz — POST kesildi**), üç dilde: tekrar alanı yok (0), öneri görünür ve `ornek@gmial.com` → `ornek@gmail.com` düzeliyor, `04x70-12 34ab56` → `+32 470 12 34 56`, kararsız bantta `data-yapisik` değişimi **0**, sayfa hatası yok.
+- Açık sınırlar: ek animasyon eklenmedi (öncelik hatalardaydı); soruyu sesli dinleme ayrı yayın olarak hazırlanıyor (bkz. sonraki kayıt).
+
 ## 21 Eylül 2026 — seviye testi: etkileşim ve hareket katmanı
 
 - Zaman: 20 Eylül 23:50 – 21 Eylül 2026 00:20 (Europe/Brussels, CEST). Durum: **yayımlandı ve canlı doğrulandı.** Kullanıcının açık talimatı («ön izleme göstermene gerek yok… ne gerekiyorsa yap, yayınla»).
