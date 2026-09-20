@@ -13,8 +13,8 @@ Drive'a koyar, bildirim e-postası gönderir ve yönetim paneline liste/belge u�
 
 | Dosya | Durum |
 |---|---|
-| `ulucamii-Kod-v38.gs` | **Depoda — canlıya dağıtılmadı (20 Eylül 2026).** Seviye tespit testi (`tur:"seviye"`), `olcek` e-posta bloğu. |
-| *(v37; Git geçmişinde)* | **Canlıdaki sürüm — 15 Eylül 2026** (dosya `git mv` ile v38 oldu); zorunlu çizilen veli imzası ve kimlik yükleme; kimlik PDF eki; arşiv yenilemede görseller korunur. Ayrıntı: [Kayıt belgeleri](../../docs/KAYIT-ZORUNLU-BELGELER.md). |
+| `ulucamii-Kod-v38.gs` | **Canlıdaki sürüm — 20 Eylül 2026, 21:59.** Seviye tespit testi (`tur:"seviye"`, `seviye-detay`, `seviye-sil`), `olcek` e-posta bloğu, panel yer tutucu koruması, ihtida önbellek koruması, bayt sayan 20 KiB sınırı. Ayrıntı: [Seviye testi](../../docs/SEVIYE-TESTI.md). |
+| *(v37; Git geçmişinde)* | 15–20 Eylül 2026 arası canlıydı (dosya `git mv` ile v38 oldu); zorunlu çizilen veli imzası ve kimlik yükleme; kimlik PDF eki; arşiv yenilemede görseller korunur. Ayrıntı: [Kayıt belgeleri](../../docs/KAYIT-ZORUNLU-BELGELER.md). |
 | *(v36; Git geçmişinde)* | Önceki canlı sürüm — 14 Eyl 2026 (3) (`D:/tmp/gas/dagit_v36.py`); veli-cuma gönderim durumları cuma başına **tek** Script Property (`veliCumaDurumlar`/`veliCumaDurumYaz`, eski tekil kayıtlar okunur), çeviri önbelleği `CacheService` (6 saat); `veliCumaOzellikBakim` eski tekil kayıtları katlar, `VELI_CUMA_FR_*` siler, 12 haftadan eski cumaları siler (her cuma gönderiminin sonunda kendiliğinden) ; veli-mail-listesi'nin öğrenci başına `VELI_PORTAL_AKTARILAN_<ref>` damgaları tek özellikte (`VELI_PORTAL_AKTARILAN` → `{ref: hash}`, `veliPortalDamgalar`, ilk gerçek koşuda katlanır) — Script Properties 50'nin altında kalır (bakım + ilk zamanlayıcı koşusu sonrası 21), ayar ekranı yeniden düzenlenebilir (düğme geri geldi); panel anahtarlı `POST tur:'ozellik-bakim'` ucu yanıtta yalnız özellik adları + sayılar (`D:/tmp/gas/ozellik-bakim.py`) |
 | *(v35)* | Arşiv (git geçmişi; dosya `git mv` ile v36 oldu) — 14 Eyl 2026 (2) (`D:/tmp/gas/dagit_v35.py`); çeviri motoru **Gemini** (dernek projesi `ulucamii-portal` anahtarı, Script Property `GEMINI_API_KEY`; modeller `CEVIRI_MODEL`, varsayılan `gemini-3.5-flash-lite,gemini-3.6-flash`; `CEVIRI_MOTOR=translate` yalnız Google Translate; `CEVIRI_KAPALI=1` kapalı), her model düşerse Google Translate; sağlık `ceviriMotoru`; `tur:'ceviri-ayar'` (panel anahtarı, POST) dört çeviri ayarını yazar/siler — ayar sayfası 50+ özellikte düzenlemeyi kapattığı için (`D:/tmp/gas/ceviri-ayar.py`); istemci adları `[[n]]` ile gizler |
 | *(v34)* | Arşiv (git geçmişi; dosya `git mv` ile v35 oldu) — 14 Eyl 2026 (`D:/tmp/gas/dagit_v34.py`); ders defteri çevirisi ucu `tur: 'cevir'` (Firebase kimliği Identity Toolkit'te doğrulanır + `hocalar/{uid}`, LanguageApp tr→fr, `CEVIRI_KAPALI=1` ile kapatılır), sağlıkta `defterCeviri: true` |
@@ -91,7 +91,7 @@ silin — Drive'da toplu silme yasaktır (24 Ağustos'ta başvuru defteri bu yü
 
 | | |
 |---|---|
-| `ulucamii-Kod-v38.gs` | Depodaki ana kaynak (v38; dağıtılmadı). Canlıdaki sürüm v37 — 15 Eylül 2026: zorunlu çizilen veli imzası ve kimlik yükleme; kimlik PDF eki. Ayrıntı: [Kayıt belgeleri](../../docs/KAYIT-ZORUNLU-BELGELER.md). |
+| `ulucamii-Kod-v38.gs` | Depodaki ana kaynak ve canlıdaki sürüm (v38 — 20 Eylül 2026: seviye tespit testi). v37 — 15 Eylül 2026: zorunlu çizilen veli imzası ve kimlik yükleme; kimlik PDF eki. Ayrıntı: [Kayıt belgeleri](../../docs/KAYIT-ZORUNLU-BELGELER.md). |
 | `/exec` | `https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec` |
 | Başvuru defteri | Sheets `1hYAhwkiKxDCbc-aFDrCP95PMNMSs2DLwM8TniKGptp0` |
 | Siteden bağlantı | `src/content/ayarlar/site.yaml → servisler.basvuru` |

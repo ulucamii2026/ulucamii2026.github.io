@@ -1,6 +1,6 @@
 # Kur'an ve dinî bilgi seviye tespit testi
 
-Karar tarihi: 20 Eylül 2026 · Durum: **geliştirme (dal `seviye-testi`), yayında değil.**
+Karar tarihi: 20 Eylül 2026 · Durum: **yayında — 20 Eylül 2026** (Apps Script v38 + site `b414091`; duyuru `a6e6f1c`). Kanıt: [Yayın kayıtları](YAYIN-KAYITLARI.md).
 Amaç: yetişkin (18+) yeni Müslümanların ve temel dinî eğitim almak isteyenlerin Kur'an okuma ve dinî bilgi düzeyini
 ölçüp din görevlisinin kişiye özel eğitim planlamasını sağlamak. Test bir sınav değil, **yerleştirme** aracıdır.
 
