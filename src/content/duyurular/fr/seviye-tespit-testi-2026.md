@@ -8,7 +8,6 @@ etiketler:
   - conversion
 oneCikan: true
 oneCikanSon: 2026-10-25
-taslak: true
 ---
 
 Vous venez d’embrasser l’islam et vous ne savez pas par où commencer ? Ou vous êtes musulman(e) et vous souhaitez apprendre — depuis le début et de façon structurée — à lire le Coran, à accomplir la prière et les bases de la religion ? Notre mosquée lance une **formation individuelle** pour les adultes.

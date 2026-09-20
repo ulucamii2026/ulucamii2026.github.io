@@ -8,7 +8,6 @@ etiketler:
   - ihtida
 oneCikan: true
 oneCikanSon: 2026-10-25
-taslak: true
 ---
 
 İslâm’ı yeni seçtiniz ve nereden başlayacağınızı bilmiyor musunuz? Ya da Müslümansınız ama Kur’an-ı Kerim okumayı, namazı ve temel dinî bilgileri baştan, düzenli biçimde öğrenmek mi istiyorsunuz? Camimizde yetişkinler için **kişiye özel eğitim** başlatıyoruz.
