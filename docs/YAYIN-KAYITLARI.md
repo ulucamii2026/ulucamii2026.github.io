@@ -4,6 +4,18 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 20 Eylül 2026 — örnek defterler ve ders kitapları (kalıcı materyaller)
+
+- Zaman: 20 Eylül 2026, 11:18–11:25 (Europe/Brussels, CEST). Durum: yayımlandı ve canlı doğrulandı. Kullanıcının açık yayın talimatı.
+- Kapsam: «Ders Materyalleri → Kalıcı materyaller» bölümüne beş kayıt. İki PDF depoda (`public/media/materyaller/`): `Ornek-Mesk-Defteri-2026-2027.pdf` (64 s., 180 768 bayt) ve `Ornek-Ders-ve-Iletisim-Defteri-2026-2027.pdf` (324 s., boş şablon, 1 476 520 bayt). Üç ders kitabı **yalnız resmî ücretsiz kaynağa bağlantıyla**: Camiye Gidiyorum 1 ve 2 → DİTİB Akademi (`/cg1/`, `/cg2/`), Temel Dinî Bilgiler → `dijital.diyanet.gov.tr` e-kitap 4218 (bağlantılar yayından önce HTTP 200).
+- Değişen dosyalar: `src/content/materyaller/{ornek-mesk-defteri-2026-2027,ornek-ders-ve-iletisim-defteri-2026-2027,camiye-gidiyorum-1,camiye-gidiyorum-2,temel-dini-bilgiler}.md`; yeni materyal türleri `kitap` ve `defter` — `src/content.config.ts`, `src/sayfalar/DersMateryalleri.astro` (TR/FR/EN etiket), `public/admin/icerik/config.yml` birlikte.
+- İçerik commit'i `e822d0110c3cc9b2d1e286e92c1ee7cd2bce4871`; Release kullanılmadı (dosyalar ≤ 15 MB). [Pages 35501947723](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35501947723): build ve deploy başarılı.
+- Testler: `npm run check` 0 hata / 0 uyarı (259 dosya); `npm run dogrula` çıkış 0, başarısız test yok; `npm run denetim:cms` çıkış 0. Günlükler: `D:/tmp/materyal-{check,dogrula,cms}.log`.
+- Canlı doğrulama: `/tr/ders-materyalleri/`, `/fr/supports-de-cours/`, `/en/lesson-materials/` HTTP 200, beş kayıt üç dilde görünüyor; iki PDF HTTP 200 `application/pdf`, indirilen dosyaların SHA-256'sı kaynakla eşleşti (`69588ecd99b7e98e…`, `b754fad8dac498b1…`). Sayfada din görevlisi hattı: 0.
+- Kişisel veri taraması (yayından önce): iki PDF'te 98 öğrenci/veli/hoca ad sözcüğü, `UC-…` kayıt numarası, e-posta ve telefon arandı — yalnız cami hattı, `info@` ve `imam@ulucamii.be` var; ad ve kayıt numarası yok.
+- Açık sınır — **kitap PDF'leri yüklenmedi**: kullanıcı Camiye Gidiyorum 1-2 PDF'lerinin de yayımlanmasını istedi. Yerel dosyalar incelendi: Türkçe kaynaklar DİTİB Akademi çevrim içi okuyucusundan alınmış sayfa görüntüleri (jsPDF, metin katmanı yok); kitaplar ISBN'li ve satışta, içlerinde DİTİB'e lisanslı Shutterstock fotoğrafları var; Fransızca sürümler kursun kendi çevirisi olduğu hâlde kapakta «DITIB | DITIB Verlag — VERSION FRANÇAISE», 2. kitabın künyesinde «Fondation Diyanet de Belgique» ibaresi taşıyor. Bu depo herkese açık ve sitenin kendisi olduğundan yükleme kullanıcının teyidine bırakıldı; 29 Ağustos 2026 kararı («kitap PDF'i dağıtılmaz — telif») yürürlükte kaldı. Kaynak proje kaydı: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-09-20-ORNEK-DEFTERLER-VE-KITAPLAR.md`.
+- OneDrive: kapsam dışı (örnek defterlerin tek kopyası D sürücüsündedir; 19 Eylül kararı).
+
 ## 19 Eylül 2026 — Belçika’dan dergi aboneliği araştırması
 
 - Kullanıcı talebiyle TR/FR/EN yayın rehberi güncellendi; içerik commit'i `2b54e7c`.
