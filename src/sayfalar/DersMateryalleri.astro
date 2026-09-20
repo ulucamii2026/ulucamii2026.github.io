@@ -89,9 +89,9 @@ const alanAdi: Record<Dil, Record<string, string>> = {
   en: { kuran: 'The Qur’an', itikat: 'Creed', ibadet: 'Worship', siyer: 'Life of the Prophet', ahlak: 'Ethics', genel: 'General' },
 };
 const kategoriAdi: Record<Dil, Record<string, string>> = {
-  tr: { ezber: 'Ezber kartı', alistirma: 'Alıştırma', tablo: 'Tablo', rehber: 'Rehber', sinav: 'Sınav', ses: 'Ses', video: 'Video', diger: 'Diğer' },
-  fr: { ezber: 'Carte de mémorisation', alistirma: 'Exercice', tablo: 'Tableau', rehber: 'Guide', sinav: 'Évaluation', ses: 'Audio', video: 'Vidéo', diger: 'Autre' },
-  en: { ezber: 'Memorisation card', alistirma: 'Exercise', tablo: 'Table', rehber: 'Guide', sinav: 'Test', ses: 'Audio', video: 'Video', diger: 'Other' },
+  tr: { ezber: 'Ezber kartı', alistirma: 'Alıştırma', tablo: 'Tablo', rehber: 'Rehber', sinav: 'Sınav', ses: 'Ses', video: 'Video', kitap: 'Ders kitabı', defter: 'Defter', diger: 'Diğer' },
+  fr: { ezber: 'Carte de mémorisation', alistirma: 'Exercice', tablo: 'Tableau', rehber: 'Guide', sinav: 'Évaluation', ses: 'Audio', video: 'Vidéo', kitap: 'Manuel', defter: 'Cahier', diger: 'Autre' },
+  en: { ezber: 'Memorisation card', alistirma: 'Exercise', tablo: 'Table', rehber: 'Guide', sinav: 'Test', ses: 'Audio', video: 'Video', kitap: 'Textbook', defter: 'Notebook', diger: 'Other' },
 };
 const filtreKodlari = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].filter((k) =>
   gunler.some((g) => g.sunumlar.some((s) => s.kod === k)) || kalici.some((e) => e.data.alan === k));

@@ -181,7 +181,7 @@ const materyaller = defineCollection({
     aciklama: z.object({ tr: z.string().optional(), fr: z.string().optional(), en: z.string().optional() }).optional(),
     tarih: z.coerce.date(),
     donem: z.string().optional(),
-    kategori: z.enum(['ezber', 'alistirma', 'tablo', 'rehber', 'sinav', 'ses', 'video', 'diger']).default('diger'),
+    kategori: z.enum(['ezber', 'alistirma', 'tablo', 'rehber', 'sinav', 'ses', 'video', 'kitap', 'defter', 'diger']).default('diger'),
     alan: z.enum(['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak', 'genel']).default('genel'),
     dosya: z.string().optional(),
     link: z.string().optional(),
