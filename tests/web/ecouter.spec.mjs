@@ -370,6 +370,20 @@ test('Besmele JavaScript kapalıyken de görünür ve ses bağlantısı açılı
   await context.close();
 });
 
+test('Uzun âyet hücresi çalarken ilk satır sabit başlığın arkasında kalmaz', async ({page}) => {
+  await calarTaklidi(page);
+  await page.setViewportSize({width:390,height:844});
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await sayfayiAc(page,'ayetel-kursi');
+  await page.locator('.ec-satir .ec-ar').click({position:{x:100,y:35}});
+  const konum=await page.evaluate(()=>({
+    arapca:document.querySelector('.ec-ar').getBoundingClientRect().top,
+    baslik:document.querySelector('.vt-baslik').getBoundingClientRect().bottom,
+  }));
+  expect(konum.arapca).toBeGreaterThanOrEqual(konum.baslik);
+  expect(await calinanlar(page)).toEqual(['/media/ses/ayet/2-255.mp3']);
+});
+
 for (const zincir of [false,true]) {
   test(`Tekrar beklerken kapatılırsa bekleyen ses iptal edilir (zincir=${zincir})`,async({page})=>{
     await calarTaklidi(page,{bitir:true,sure:1});

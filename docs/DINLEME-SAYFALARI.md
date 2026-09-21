@@ -36,6 +36,8 @@ açılır. Bu kalıcı karekod sayfası Fransızcadır; aynı ders Türkçe, İn
 - Âyetü’l-Kürsî'nin metin hücresi yalnız `2-255.mp3` çalar; tam kayıt düğmesindeki
   eûzü–besmele–âyet dizisi korunur. Tekrar arasındayken tekrar kapatılırsa bekleyen
   zamanlayıcı iptal edilir; sıralı dinleme açıksa sıradaki parçaya geçilir.
+- Sesli hücrelerde kaydırma payı sabit üst başlığı hesaba katar; uzun bir âyet
+  hücresi çalınırken ilk Arapça satır menünün arkasında kalmaz.
 - Sitenin olağan başlığı, alt bilgisi ve Kilim Kartografyası jetonları kullanılır; içerik sütunu
   dardır (en çok 40 rem).
 
