@@ -12,12 +12,18 @@ import { MADDELER, EZBER, BEYAN, SORU_BANKASI_SURUMU } from '../../lib/seviye-te
 import type { BilgiAlani } from '../../lib/seviye-testi/tipler.ts';
 import FormAdimlar from './FormAdimlar.astro';
 import SeviyeSoru from './SeviyeSoru.astro';
+import sesler from '../../data/seviye-sesler.json';
 import '../../styles/ihtida-adimlari.css';
 
 interface Props { dil: Dil; uc: string }
 const { dil, uc } = Astro.props;
 const m = seviyeMetinleri[dil];
 const o = formMetinleri(dil).ortak;
+/** Sesli okuma klibi (varsa): kimlik metnin özetidir, manifest yalnız diskteki klipleri listeler. */
+const okuYolu = (id: string): string | undefined => {
+  const kimlik = (sesler.diller as Record<string, Record<string, string>>)[dil]?.[id];
+  return kimlik ? `/media/ses/seviye/${dil}/${kimlik}.mp3` : undefined;
+};
 
 // Emekli maddeler basılmaz; puanlama da onları saymaz (puanlama.ts).
 const maddeler = MADDELER.filter((s) => !s.emekli);
@@ -192,7 +198,7 @@ const ozetSatirlari = [
           </div>
           <div class="st-sorular" data-kosul={`okumaAtla.b${no}=false`}>
             {sorular.map((madde) => (
-              <SeviyeSoru madde={madde} dil={dil} bilmiyorum={m.soru.bilmiyorum} mezhepNotu={m.soru.mezhepNotu} dinle={m.okuma.dinle} />
+              <SeviyeSoru madde={madde} dil={dil} bilmiyorum={m.soru.bilmiyorum} mezhepNotu={m.soru.mezhepNotu} dinle={m.okuma.dinle} okuSes={okuYolu(madde.id)} okuEtiket={m.soru.sesliDinle} />
             ))}
           </div>
         </fieldset>
@@ -203,7 +209,7 @@ const ozetSatirlari = [
       <h3 class="st-alt-baslik">{m.okuma.beyanBaslik}</h3>
       {okumaBeyanlari.map((b) => (
         <fieldset class="st-soru st-beyan" data-alan data-soru={b.id} data-beyan>
-          <legend>{b.soru[dil]}</legend>
+          <legend><span class="st-soru-metin">{b.soru[dil]}</span>{okuYolu(b.id) && <button type="button" class="st-oku" data-oku={okuYolu(b.id)} aria-label={m.soru.sesliDinle} aria-pressed="false"></button>}</legend>
           <div class="st-secenekler">
             {b.secenekler.map((s, i) => (
               <span class="secenek st-sik">
@@ -232,7 +238,7 @@ const ozetSatirlari = [
         </div>
         <div class="st-sorular" data-kosul={`atla.${alan}=false`}>
           {maddeler.filter((s) => s.alan === alan).map((madde) => (
-            <SeviyeSoru madde={madde} dil={dil} bilmiyorum={m.soru.bilmiyorum} mezhepNotu={m.soru.mezhepNotu} dinle={m.okuma.dinle} />
+            <SeviyeSoru madde={madde} dil={dil} bilmiyorum={m.soru.bilmiyorum} mezhepNotu={m.soru.mezhepNotu} dinle={m.okuma.dinle} okuSes={okuYolu(madde.id)} okuEtiket={m.soru.sesliDinle} />
           ))}
         </div>
       </section>
@@ -245,7 +251,7 @@ const ozetSatirlari = [
           <div class="st-sorular">
             {EZBER.map((e) => (
               <fieldset class="st-soru st-ezber" data-alan data-soru={e.id} data-beyan>
-                <legend>{e.ad[dil]}</legend>
+                <legend><span class="st-soru-metin">{e.ad[dil]}</span>{okuYolu(e.id) && <button type="button" class="st-oku" data-oku={okuYolu(e.id)} aria-label={m.soru.sesliDinle} aria-pressed="false"></button>}</legend>
                 {e.aciklama && <p class="yardim">{e.aciklama[dil]}</p>}
                 <div class="st-secenekler st-secenekler-serbest">
                   {m.ezber.durumlar.map((durum, i) => (
@@ -271,7 +277,7 @@ const ozetSatirlari = [
     <div class="st-sorular">
       {uygulamaBeyanlari.map((b) => (
         <fieldset class="st-soru st-beyan" data-alan data-soru={b.id} data-beyan>
-          <legend>{b.soru[dil]}</legend>
+          <legend><span class="st-soru-metin">{b.soru[dil]}</span>{okuYolu(b.id) && <button type="button" class="st-oku" data-oku={okuYolu(b.id)} aria-label={m.soru.sesliDinle} aria-pressed="false"></button>}</legend>
           <div class="st-secenekler">
             {b.secenekler.map((s, i) => (
               <span class="secenek st-sik">

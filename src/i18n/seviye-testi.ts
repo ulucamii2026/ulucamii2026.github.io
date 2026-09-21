@@ -33,7 +33,7 @@ export interface SeviyeMetinleri {
     ekNot: string; ekNotYardim: string;
   };
   onay: { baslik: string; yas18: string; riza: string; bilgilendirme: string[]; gizlilikBaglanti: string; ortakCihaz: string };
-  soru: { bilmiyorum: string; zorunlu: string; atla: string; atlaYardim: string; mezhepNotu: string };
+  soru: { bilmiyorum: string; sesliDinle: string; zorunlu: string; atla: string; atlaYardim: string; mezhepNotu: string };
   okuma: {
     baslik: string; giris: string; harfBilmiyorum: string; harfBilmiyorumYardim: string;
     basamaklar: [string, string, string, string, string]; basamakAtla: string;
@@ -172,7 +172,7 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       ortakCihaz: 'Yanıtlarınız, testi tamamlayana kadar yalnız bu cihazın tarayıcısında taslak olarak tutulur (en fazla 14 gün). Ortak bir bilgisayar kullanıyorsanız işiniz bitince «Taslağı sil» düğmesine basın.',
     },
     soru: {
-      bilmiyorum: 'Bilmiyorum',
+      bilmiyorum: 'Bilmiyorum', sesliDinle: 'Soruyu sesli dinle',
       zorunlu: 'Lütfen bir şık seçin; emin değilseniz «Bilmiyorum»u işaretleyin.',
       atla: 'Bu bölümü atla — bu konuda henüz bilgim yok',
       atlaYardim: 'İşaretlerseniz bu bölümün soruları kapanır; eğitime bu konunun en başından başlarız.',
@@ -347,7 +347,7 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       ortakCihaz: 'Tant que le test n’est pas envoyé, vos réponses sont gardées comme brouillon uniquement dans le navigateur de cet appareil (14 jours au maximum). Sur un ordinateur partagé, appuyez sur « Supprimer le brouillon » quand vous avez terminé.',
     },
     soru: {
-      bilmiyorum: 'Je ne sais pas',
+      bilmiyorum: 'Je ne sais pas', sesliDinle: 'Écouter la question',
       zorunlu: 'Veuillez choisir une réponse ; en cas de doute, cochez « Je ne sais pas ».',
       atla: 'Passer cette partie — je n’ai pas encore de connaissances sur ce sujet',
       atlaYardim: 'Si vous cochez cette case, les questions de cette partie se ferment ; nous commencerons ce sujet depuis le début.',
@@ -522,7 +522,7 @@ export const seviyeMetinleri: Record<Dil, SeviyeMetinleri> = {
       ortakCihaz: 'Until the test is sent, your answers are kept as a draft only in this device’s browser (14 days at most). On a shared computer, press “Delete draft” when you have finished.',
     },
     soru: {
-      bilmiyorum: 'I don’t know',
+      bilmiyorum: 'I don’t know', sesliDinle: 'Listen to the question',
       zorunlu: 'Please choose an answer; if in doubt, tick “I don’t know”.',
       atla: 'Skip this part — I do not know this subject yet',
       atlaYardim: 'If you tick this box, the questions of this part close; we will start this subject from the beginning.',

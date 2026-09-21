@@ -498,6 +498,12 @@ test('Açılış, okuma, özet ve sonuç ekranı erişilebilir; dar ekranda taş
   // Klavye: radyo grubuna Tab ile girilir, ok tuşu seçer, «Devam» Enter ile çalışır.
   await page.locator('#st-atla-b1').focus();
   await page.keyboard.press('Tab');
+  // Klibi olan soruda «sesli oku» düğmesi klavye sırasında radyo grubundan ÖNCE gelir (başlığın içinde durur).
+  const okuDugmesi = page.locator('fieldset[data-soru="ok01"] .st-oku');
+  if (await okuDugmesi.count()) {
+    await expect(okuDugmesi).toBeFocused();
+    await page.keyboard.press('Tab');
+  }
   await expect(page.locator('#st-ok01-0')).toBeFocused();
   await page.keyboard.press('ArrowDown');
   await expect(page.locator('#st-ok01-1')).toBeChecked();
@@ -805,4 +811,56 @@ test('Formun sonunda alt şerit titremez: yapışıklık yerleşimi değiştirme
   // Tek geçişte en çok bir yapış + bir çöz olur; 21 Eyl 2026 öncesinde bu sayı 30'u aşıyordu.
   expect(enCok).toBeLessThanOrEqual(2);
   expect(boylar.size, 'şerit yüksekliği yapışıkken de aynı kalır').toBe(1);
+});
+
+/* ---------- Sesli okuma (okumakta zorlananlar için) ---------- */
+
+test('Soru metnine ya da hoparlöre dokununca sorunun yerel klibi çalar; cevap verince ve öteki ses başlayınca susar', async ({ page }) => {
+  test.setTimeout(60_000);
+  // Çalma kararlı olsun: gerçek ses çözücüye bağlı kalmadan hangi dosyanın istendiğini kaydet.
+  await page.addInitScript(() => {
+    window.__calinan = [];
+    HTMLMediaElement.prototype.play = function play() { window.__calinan.push(this.src); return Promise.resolve(); };
+    HTMLMediaElement.prototype.pause = function pause() {};
+  });
+  await gasTaklidi(page);
+  await sayfayiAc(page, 'tr');
+  await tumunuGoster(page);
+
+  // Okuma bölümü dışından bir soru: klibi soru kökü + şıkları taşır.
+  const soru = page.locator('section.ucf-bolum:not(#b-okuma) fieldset[data-soru]:has(button[data-oku])').first();
+  const dugme = soru.locator('button[data-oku]');
+  await expect(dugme).toHaveAttribute('aria-label', M.soru.sesliDinle);
+  const yol = await dugme.getAttribute('data-oku');
+  expect(yol).toMatch(/^\/media\/ses\/seviye\/tr\/[0-9a-f]{16}\.mp3$/);
+  const dosya = await page.evaluate(async (y) => { const r = await fetch(y); return { durum: r.status, boy: (await r.arrayBuffer()).byteLength }; }, yol);
+  expect(dosya.durum).toBe(200);
+  expect(dosya.boy).toBeGreaterThan(5000);
+
+  // 1) Soru METNİNE dokunmak okutur.
+  await soru.locator('.st-soru-metin').click();
+  await expect(dugme).toHaveAttribute('aria-pressed', 'true');
+  await expect(soru).toHaveAttribute('data-okunuyor', '1');
+  expect(await page.evaluate(() => window.__calinan.at(-1))).toContain(yol);
+  // 2) Aynı düğmeye ikinci dokunuş durdurur.
+  await dugme.click();
+  await expect(dugme).toHaveAttribute('aria-pressed', 'false');
+  await expect(soru).not.toHaveAttribute('data-okunuyor', '1');
+  // 3) Cevap verilince okuma susar.
+  await dugme.click();
+  await expect(dugme).toHaveAttribute('aria-pressed', 'true');
+  await soru.locator('input[type="radio"]').first().check({ force: true });
+  await expect(dugme).toHaveAttribute('aria-pressed', 'false');
+  // 4) Diyanet «Dinle» düğmesi başlayınca sesli okuma susar (iki ses üst üste binmez).
+  await dugme.click();
+  await expect(dugme).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('button[data-ses]').first().click();
+  await expect(dugme).toHaveAttribute('aria-pressed', 'false');
+
+  // Üretilmiş ses Arapça OKUMAZ: okuma bölümündeki klipler yalnız soru kökünü taşır (kısa dosya).
+  const okumaYolu = await page.locator('#b-okuma fieldset[data-soru] button[data-oku]').first().getAttribute('data-oku');
+  if (okumaYolu) {
+    const boy = await page.evaluate(async (y) => (await (await fetch(y)).arrayBuffer()).byteLength, okumaYolu);
+    expect(boy).toBeLessThan(60_000);
+  }
 });

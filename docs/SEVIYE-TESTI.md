@@ -106,6 +106,7 @@ içindeki resmî Diyanet metin–ses çiftleri (örnek uydurulmaz); şıklar `{ 
 
 ## 6. Kaynak dosyalar
 `src/lib/seviye-testi/` (banka + puanlama) · `src/components/formlar/SeviyeTesti*.astro` · `src/scripts/seviye-form.ts` ·
+`src/scripts/seviye-sesli-okuma.ts` + `src/lib/seviye-testi/sesli-okuma.ts` (soruyu sesli dinleme, §8) · `src/scripts/telefon-bicim.ts` (telefon alanı biçimi; üç formda ortak) ·
 `src/scripts/seviye-etkilesim.ts` (hareket/etkileşim katmanı, 21 Eyl 2026 — aşamalı geliştirme: hata verse de form çalışır; doğruluk ima eden hareket YASAK) ·
 `src/i18n/seviye-testi.ts` · `scripts/apps-script/seviye-testi-isleri.gs` · `public/admin/seviye-panel.js` ·
 testler `tests/seviye-*.test.mjs`, `tests/web/seviye-*.spec.mjs`.
@@ -146,3 +147,42 @@ değişirse `RIZA_SURUMU` yeni tarihle damgalanır ve eski metin `docs/seviye-te
 
 **Deneme kaydı.** Soyad `TESTOGLU` ile yapılır; `?islem=test-temizle` üç defteri birlikte temizler (`ST-` dâhil).
 Yerel önizlemede formun ucu CANLI Apps Script'tir — «Gönder» yalnız Playwright rota taklidiyle denenir.
+
+## 8. Soruyu sesli dinleme (21 Eyl 2026 — Rıdvan: «soruların üzerine tıklayınca sesli okusun»)
+
+Okumakta zorlanan katılımcı için her sorunun **önceden üretilmiş** sesli okuması vardır. Soru metnine ya da
+yanındaki hoparlör düğmesine dokununca klip çalar; ikinci dokunuş durdurur; şık seçilince, adım değişince ya
+da Diyanet «Dinle» düğmesi başlayınca susar. Dış sunucuya istek gitmez (`public/media/ses/seviye/<dil>/<kimlik>.mp3`).
+
+- **Ne okunur:** bilgi sorularında soru kökü + şıklar + «Bilmiyorum»; öz beyan ve ezber maddelerinde soru +
+  seçenekler. **Okuma bölümünde yalnız soru kökü** okunur. Üretilmiş ses Arapça harf, hece, kelime ya da âyet
+  OKUMAZ — Kur'an ve Elifbâ sesleri yalnız resmî Diyanet kaynağındandır (`[data-ses]` düğmeleri). Arap harfli
+  metin klibe hiç girmez (`src/lib/seviye-testi/sesli-okuma.ts` eler). Klip bütün şıkları aynı tonda okur;
+  doğru cevabı ima eden hiçbir şey yoktur.
+- **Kimlik = metnin özeti** (dil + ses sürümü + seslendirilen metin). Soru metni değişirse eski klip kendiliğinden
+  devre dışı kalır; yanlış metin okunmaz. Manifest `src/data/seviye-sesler.json` yalnız diskteki klipleri listeler —
+  klibi olmayan soruda düğme hiç basılmaz (kota yüzünden yarım kalan üretim siteyi bozmaz).
+- **Yazı → konuşma:** «Hz.» → «Hazreti», «(s.a.s.)» → «sallallâhu aleyhi ve sellem», «(a.s.)» → «aleyhisselâm»;
+  Fransızcada «(e)» eki okunmaz. Ekrandaki metin değişmez.
+- **Üretim hattı** (ses Gemini TTS, ses adı `Iapetus`; anahtarlar yalnız ortak havuzdan, depoya yazılmaz; metin ve ses
+  arşivi `D:/sesli-anlatim/seviye-testi`):
+  1. `node scripts/seviye-ses-metin.mjs --is-listesi D:/sesli-anlatim/seviye-testi/is-listesi.json` (eksik klipler)
+  2. `py -3.14 scripts/seviye-ses-uret.py D:/sesli-anlatim/seviye-testi/is-listesi.json --is 4` (arka planda; yarıda
+     kesilirse aynı komut kaldığı yerden sürer)
+  3. `py -3.14 scripts/seviye-ses-denetle.py --sil` — her klibi yazıya döküp metinle karşılaştırır; talimatı da okuyan,
+     yarıda kesilen klibi siler → 1. adıma dön
+  4. `npm run seviye:ses -- --manifest` → derle → yayımla. `npm run test:seviye` manifestin güncelliğini ve yetim
+     klip olmadığını denetler.
+- **Dersler:** düz «…oku: <metin>» isteminde model kısa metinlerde talimatı da seslendiriyordu → istem başlıklı
+  (`DIRECTOR'S NOTES` / `TRANSCRIPT`), 90 karakterden kısa metin notsuz gönderilir; süre denetimi yetmez, içerik
+  denetimi (yazıya döküm) şarttır. Her 429'u «anahtar bitti» saymak havuzu dakikalar içinde kilitliyordu → dakikalık
+  sınırda anahtar 65 sn dinlenir, günlük sınırda elenir.
+- **Havuzun günlük kotası dolarsa — Vertex AI yolu (21 Eyl 2026):** iki betik de `--vertex` bayrağını alır; istek GCP
+  `tedris-pro` projesine gcloud ADC belirteciyle gider (`gcloud auth application-default login` bir kez yapılmış olmalı;
+  belirteç yalnız bellekte tutulur, 30 dakikada bir tazelenir; bölgeler `global` ↔ `us-central1` dönüşümlü). Aynı model
+  ve aynı ses kullanılır; klip kimliği değişmez. İlk üretimin (3 dil × 126 = 378 klip) son bölümü bu yolla
+  tamamlandı.
+  `py -3.14 scripts/seviye-ses-uret.py <is-listesi> --vertex --is 4` · `py -3.14 scripts/seviye-ses-denetle.py --vertex --sil`
+- **Denetçi dersi:** sayılar İKİ tarafta da rakama indirilir (döküm «1, 2» yazar, metin «bir, iki» der); yalnız dökümü
+  çevirmek rekât sorularında doğru klibi «bozuk» gösteriyordu.
+- **Klavye sırası:** hoparlör düğmesi soru kökünün yanında, ilk şıktan ÖNCE odaklanır (Tab: düğme → şıklar).

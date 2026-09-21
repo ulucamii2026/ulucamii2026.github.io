@@ -200,6 +200,27 @@
 }
 .st-form .st-soru[data-cevaplandi] > legend::after { transform: none; opacity: 1; }
 
+/* ——— Soruyu sesli dinleme ———
+   Klibi olan soruda başlığın sonunda hoparlör düğmesi durur; metnin kendisi de dokunulabilir.
+   Çalarken simge «durdur»a döner ve başlığın altı ince bir çizgiyle işaretlenir (renk tek başına değil). */
+.st-form .st-soru > legend:has(.st-oku) .st-soru-metin { cursor: pointer; }
+.st-form .st-soru[data-okunuyor] .st-soru-metin { text-decoration: underline; text-decoration-color: var(--vurgu-2); text-decoration-thickness: 2px; text-underline-offset: .25em; }
+.st-form .st-oku {
+  position: relative; display: inline-grid; place-items: center; width: 2.1rem; height: 2.1rem; margin: -.4rem 0 -.4rem .45rem;
+  vertical-align: middle; padding: 0; background: var(--zemin-2); border: 1px solid var(--cizgi-etkilesim); border-radius: 50%;
+  color: var(--vurgu-2); cursor: pointer; transition: background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms var(--st-yay);
+}
+/* Dokunma hedefi 44 px: görünen daire küçük kalır, görünmez pay çevresini büyütür. */
+.st-form .st-oku::after { content: ''; position: absolute; inset: -.35rem; }
+.st-form .st-oku::before { content: ''; width: 1.05rem; height: 1.05rem; background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 9.5h3.2L12 5.6v12.8l-4.8-3.9H4z'/%3E%3Cpath fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' d='M15.2 9.2a4 4 0 0 1 0 5.6M17.9 6.6a7.6 7.6 0 0 1 0 10.8'/%3E%3C/svg%3E") center / contain no-repeat; }
+.st-form .st-oku:hover { border-color: var(--vurgu-2); transform: scale(1.06); }
+.st-form .st-oku:focus-visible { outline: 3px solid var(--vurgu-2); outline-offset: 2px; }
+.st-form .st-oku[data-caliyor] { background: var(--vurgu-2); border-color: var(--vurgu-2); color: var(--zemin); animation: st-oku-nabiz 1.6s ease-in-out infinite; }
+.st-form .st-oku[data-caliyor]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6.5' y='6.5' width='11' height='11' rx='1.6'/%3E%3C/svg%3E"); }
+@keyframes st-oku-nabiz { 0%, 100% { box-shadow: 0 0 0 0 rgb(31 95 139 / .35); } 50% { box-shadow: 0 0 0 .45rem rgb(31 95 139 / 0); } }
+
 /* Otomatik ilerlemenin tek seferlik vurgusu (600 ms) — yalnız opaklık oynar. */
 .st-form .st-soru[data-vurgu]::after {
   content: ''; position: absolute; inset: .3rem -.45rem; border-radius: var(--radius-kose);
@@ -406,7 +427,7 @@
   /* Hareket kapalı: durum değişimi yine görünür, yalnız anında olur. */
   .st-form .st-sik > label, .st-form .st-sik > label::before, .st-form .st-sik > label::after,
   .st-form .st-soru::before, .st-form .st-soru::after, .st-form .st-soru > legend::after,
-  .st-form .st-dinle::after, .st-form .st-goster, .st-form .st-oneri, .st-form [data-adim-ileri],
+  .st-form .st-dinle::after, .st-form .st-goster, .st-form .st-oneri, .st-form .st-oku, .st-form [data-adim-ileri],
   .st-serit-cubuk > span, .st-dugum-bakla, .st-dugum-kap, .st-dugum-dolgu, .st-dugum-onay,
   .st-anahtar-yuva, .st-anahtar-yuva > span, .st-ekolayzir, .st-ekolayzir i, .st-form .st-serit {
     animation: none !important; transition: none !important;

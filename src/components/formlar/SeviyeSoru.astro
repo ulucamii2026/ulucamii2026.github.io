@@ -5,14 +5,15 @@
 import type { Dil } from '../../i18n/ui';
 import type { Madde } from '../../lib/seviye-testi/tipler.ts';
 
-interface Props { madde: Madde; dil: Dil; bilmiyorum: string; mezhepNotu: string; dinle: string }
-const { madde, dil, bilmiyorum, mezhepNotu, dinle } = Astro.props;
+interface Props { madde: Madde; dil: Dil; bilmiyorum: string; mezhepNotu: string; dinle: string; okuSes?: string; okuEtiket: string }
+const { madde, dil, bilmiyorum, mezhepNotu, dinle, okuSes, okuEtiket } = Astro.props;
 const ad = `cevaplar.${madde.id}`;
 const ses = 'ses' in madde ? madde.ses : undefined;
 const mezhep = 'mezhepBagli' in madde && madde.mezhepBagli === true;
 ---
 <fieldset class="st-soru" data-alan data-soru={madde.id}>
-  <legend>{madde.soru[dil]}</legend>
+  {/* Sesli okuma: klibi olan soruda metne ya da hoparlöre dokununca soru okunur (seviye-sesli-okuma.ts). */}
+  <legend><span class="st-soru-metin">{madde.soru[dil]}</span>{okuSes && <button type="button" class="st-oku" data-oku={okuSes} aria-label={okuEtiket} aria-pressed="false"></button>}</legend>
   {madde.goster && <p class="arabic st-arapca st-goster" lang="ar" dir="rtl">{madde.goster}</p>}
   {ses && (
     <p class="st-ses">

@@ -8,6 +8,7 @@
 import { doldur, formuBaslat, telefonNormalle, type Alan, type Veriler } from './form-cekirdek';
 import { formAdimlariniBaslat } from './form-adimlari';
 import { etkilesimiBaslat, type EtkilesimMetni } from './seviye-etkilesim';
+import { sesliOkumayiBaslat } from './seviye-sesli-okuma';
 import type { Sonuc } from '../lib/seviye-testi/tipler.ts';
 import type { SonucMetinleri } from '../lib/seviye-testi/metinler.ts';
 
@@ -162,7 +163,13 @@ function dinlemeyiKur(form: HTMLFormElement, metin: BetikMetni) {
     acik = dugme;
     dugme.setAttribute('data-caliyor', '1');
     calar.src = dugme.dataset.ses ?? '';
+    form.dispatchEvent(new CustomEvent('st:ses', { detail: 'dinle' }));   // sesli okuma çalıyorsa sussun
     void calar.play().catch(hataGoster);
+  });
+  form.addEventListener('st:ses', (olay) => {
+    if ((olay as CustomEvent<string>).detail === 'dinle') return;
+    calar?.pause();
+    bitir();
   });
 }
 
@@ -246,6 +253,8 @@ export function seviyeFormuBaslat() {
 
   dinlemeyiKur(form, metin);
   epostaOnerisiniKur(form, metin);
+  // Aşamalı geliştirme: sesli okuma kurulamasa da form çalışır.
+  try { sesliOkumayiBaslat(form); } catch { /* yoksay */ }
   sureyiSay(form);
 
   let baslangic = 0;
