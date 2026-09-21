@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (8) — son tasarım uyarısı kapatıldı; proje devri tamamlandı
+
+- Zaman `2026-09-21T16:53:13+02:00` (Europe/Brussels); durum **yayımlandı ve canlı doğrulandı**.
+  Kullanıcının “her şeyi bitir” kapanışı ve tekrarlanan denetim bulgusu üzerine,
+  önceki yayında açık bırakılan ilerleme çubuğu animasyonu da giderildi.
+- Tek değişiklik `src/styles/ecouter.css`: `.ec-cubuk > span` üzerindeki
+  `transition: width .2s linear` kaldırıldı. Dolgu ses süresine göre güncellenir;
+  hareket azaltma tercihi dışında da genişlik animasyonu yoktur. Uyarı bastırılmadı.
+- İçerik commit'i `01ae56b02f69bc888b3adc7aaac9bbf445ea21ca`; push tamamlandı. Deploy <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35614930192> **success**.
+  Release 0; değişen içerik dosyası 1 CSS. SHA-256 `76b6b6387c34f947395d717110701d0ae93808c2d095c2928927994ccabf5f02`.
+- `npm run dogrula:codex` 8/8; Playwright 564/564. Ek yerel/canlı gerçek ses kontrolünde
+  Fâtiha kaydının yarısında dolgu %50, computed transition süresi `0s`; görünüm incelendi.
+  Canlı adres <https://ulucamii.be/e/fatiha/>; eğitim <https://ulucamii.be/tr/muhtedi-egitimi/>.
+- Kanıtlar: `.codex/dinleme-animasyon-kalite.log`, `dinleme-animasyon-yerel.json`,
+  `dinleme-animasyon-canli.json` ve aynı adlı PNG'ler.
+- (7) numaralı kayıttaki açık animasyon uyarısı bu yayınla kapandı. Bildirilen üç
+  benzersiz tasarım bulgusu da giderildi; ignore eklenmedi. İçerik, ses/QR adresleri
+  ve özel PDF değişmedi. İki `DEVAM.md` ve kaynak kitap kalite raporu güncellendi.
+- Sınır: fiziksel telefon/Safari ve bütün seslerin insan tarafından dinlenmesi yapılmadı.
+  Bu görevde bekleyen uygulama veya yayın yoktur.
+
 ## 21 Eylül 2026 (7) — eğitim kutularında dar kapsamlı tasarım düzeltmesi
 
 - Zaman: `2026-09-21T16:24:59.633033+02:00` (Europe/Brussels). Kullanıcının tasarım denetimi geri bildirimi
