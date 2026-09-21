@@ -1,0 +1,5010 @@
+{
+ "surum": 1,
+ "kodlar": {
+  "fatiha": {
+   "baslik": "Sourate al-Fâtiḥa — L’Ouverture",
+   "altbaslik": "سورة الْفَاتِحَةِ · 7 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/fatiha.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ",
+     "okunus": "Bismi-llâhi-r-Raḥmâni-r-Raḥîm",
+     "fr": "Au nom d’Allah, le Tout Miséricordieux, le Très Miséricordieux.",
+     "ses": "/media/ses/ayet/1-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمٖينَۙ",
+     "okunus": "Al-ḥamdou li-llâhi rabbi-l-ʿâlamîn",
+     "fr": "Louange à Allah, Seigneur de l’Univers.",
+     "ses": "/media/ses/ayet/1-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "اَلرَّحْمٰنِ الرَّحٖيمِۙ",
+     "okunus": "Ar-Raḥmâni-r-Raḥîm",
+     "fr": "Le Tout Miséricordieux, le Très Miséricordieux,",
+     "ses": "/media/ses/ayet/1-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "مَالِكِ يَوْمِ الدّٖينِۜ",
+     "okunus": "Mâliki yawmi-d-dîn",
+     "fr": "Maître du Jour de la Rétribution.",
+     "ses": "/media/ses/ayet/1-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعٖينُۜ",
+     "okunus": "Iyyâka naʿboudou wa iyyâka nastaʿîn",
+     "fr": "C’est Toi [Seul] que nous adorons, et c’est Toi [Seul] dont nous implorons secours.",
+     "ses": "/media/ses/ayet/1-5.mp3"
+    },
+    {
+     "no": 6,
+     "ar": "اِهْدِنَا الصِّرَاطَ الْمُسْتَقٖيمَۙ",
+     "okunus": "Ihdina-ṣ-ṣirâṭa-l-moustaqîm",
+     "fr": "Guide-nous dans le droit chemin,",
+     "ses": "/media/ses/ayet/1-6.mp3"
+    },
+    {
+     "no": 7,
+     "ar": "صِرَاطَ الَّذٖينَ اَنْعَمْتَ عَلَيْهِمْۙ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّٓالّٖينَ",
+     "okunus": "Ṣirâṭa-lladhîna anʿamta ʿalayhim, ghayri-l-maghḍoûbi ʿalayhim wa la-ḍ-ḍâllîn",
+     "fr": "Le chemin de ceux que Tu as comblés de faveurs, non pas de ceux qui ont encouru Ta colère, ni des égarés.",
+     "ses": "/media/ses/ayet/1-7.mp3"
+    }
+   ]
+  },
+  "ayetel-kursi": {
+   "baslik": "Âyat al-Koursî — Le Verset du Trône",
+   "altbaslik": "آية الكرسي · 9 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/ayetel-kursi.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah (verset découpé ligne par ligne aux signes de pause)",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَللّٰهُ لَٓا اِلٰهَ اِلَّا هُوَۚ اَلْحَيُّ الْقَيُّومُۚ",
+     "okunus": "Allâhou lâ ilâha illâ houwa-l-ḥayyou-l-qayyoûm",
+     "fr": "Allah ! Point de divinité à part Lui, le Vivant, Celui qui subsiste par Lui-même (al-Qayyoûm)."
+    },
+    {
+     "no": 2,
+     "ar": "لَا تَاْخُذُهُ سِنَةٌ وَلَا نَوْمٌۜ",
+     "okunus": "Lâ ta’khoudhouhou sinatoun wa lâ nawm",
+     "fr": "Ni somnolence ni sommeil ne Le saisissent."
+    },
+    {
+     "no": 3,
+     "ar": "لَهُ مَا فِى السَّمٰوَاتِ وَمَا فِى الْاَرْضِۜ",
+     "okunus": "Lahou mâ fi-s-samâwâti wa mâ fi-l-arḍ",
+     "fr": "À Lui appartient tout ce qui est dans les cieux et sur la terre."
+    },
+    {
+     "no": 4,
+     "ar": "مَنْ ذَا الَّذٖى يَشْفَعُ عِنْدَهُٓ اِلَّا بِاِذْنِهٖۜ",
+     "okunus": "Man dha-lladhî yachfaʿou ʿindahou illâ bi-idhnih",
+     "fr": "Qui peut intercéder auprès de Lui sans Sa permission ?"
+    },
+    {
+     "no": 5,
+     "ar": "يَعْلَمُ مَا بَيْنَ اَيْدٖيهِمْ وَمَا خَلْفَهُمْۚ",
+     "okunus": "Yaʿlamou mâ bayna aydîhim wa mâ khalfahoum",
+     "fr": "Il connaît leur passé et leur futur."
+    },
+    {
+     "no": 6,
+     "ar": "وَلَا يُحٖيطُونَ بِشَىْءٍ مِنْ عِلْمِهٖٓ اِلَّا بِمَا شَٓاءَۚ",
+     "okunus": "Wa lâ youḥîṭoûna bi-chay’in min ʿilmihî illâ bimâ châ’",
+     "fr": "Et, de Sa science, ils n’embrassent que ce qu’Il veut."
+    },
+    {
+     "no": 7,
+     "ar": "وَسِعَ كُرْسِيُّهُ السَّمٰوَاتِ وَالْاَرْضَۚ",
+     "okunus": "Wasiʿa koursiyyouhou-s-samâwâti wa-l-arḍ",
+     "fr": "Son Trône (koursî) déborde les cieux et la terre,"
+    },
+    {
+     "no": 8,
+     "ar": "وَلَا يَؤُ۫دُهُ حِفْظُهُمَاۚ",
+     "okunus": "Wa lâ ya’oûdouhou ḥifẓouhoumâ",
+     "fr": "dont la garde ne Lui coûte aucune peine."
+    },
+    {
+     "no": 9,
+     "ar": "وَهُوَ الْعَلِيُّ الْعَظٖيمُ",
+     "okunus": "Wa houwa-l-ʿaliyyou-l-ʿaẓîm",
+     "fr": "Et Il est le Très-Haut, le Très-Grand."
+    }
+   ]
+  },
+  "insirah": {
+   "baslik": "Sourate ach-Charḥ — L’Ouverture de la poitrine",
+   "altbaslik": "سورة الْاِنْشِرَاحِ · 8 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/insirah.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَلَمْ نَشْرَحْ لَكَ صَدْرَكَۙ",
+     "okunus": "Alam nachraḥ laka ṣadrak",
+     "fr": "N’avons-Nous pas ouvert pour toi ta poitrine ?",
+     "ses": "/media/ses/ayet/94-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "وَوَضَعْنَا عَنْكَ وِزْرَكَۙ",
+     "okunus": "Wa waḍaʿnâ ʿanka wizrak",
+     "fr": "Et ne t’avons-Nous pas déchargé du fardeau.",
+     "ses": "/media/ses/ayet/94-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "اَلَّـذٖٓي اَنْقَضَ ظَهْرَكَۙ",
+     "okunus": "Alladhî anqaḍa ẓahrak",
+     "fr": "qui accablait ton dos ?",
+     "ses": "/media/ses/ayet/94-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "وَرَفَعْنَا لَكَ ذِكْرَكَؕ",
+     "okunus": "Wa rafaʿnâ laka dhikrak",
+     "fr": "Et exalté pour toi ta renommée ?",
+     "ses": "/media/ses/ayet/94-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "فَاِنَّ مَعَ الْعُسْرِ يُسْرًاۙ",
+     "okunus": "Fa-inna maʿa-l-ʿousri yousrâ",
+     "fr": "À côté de la difficulté est, certes, une facilité !",
+     "ses": "/media/ses/ayet/94-5.mp3"
+    },
+    {
+     "no": 6,
+     "ar": "اِنَّ مَعَ الْعُسْرِ يُسْرًاۜ",
+     "okunus": "Inna maʿa-l-ʿousri yousrâ",
+     "fr": "À côté de la difficulté est, certes, une facilité !",
+     "ses": "/media/ses/ayet/94-6.mp3"
+    },
+    {
+     "no": 7,
+     "ar": "فَاِذَا فَرَغْتَ فَانْصَبْۙ",
+     "okunus": "Fa-idhâ faraghta fa-nṣab",
+     "fr": "Quand tu te libères, donc, lève-toi,",
+     "ses": "/media/ses/ayet/94-7.mp3"
+    },
+    {
+     "no": 8,
+     "ar": "وَاِلٰى رَبِّكَ فَارْغَبْ",
+     "okunus": "Wa ilâ rabbika fa-rghab",
+     "fr": "et à ton Seigneur aspire.",
+     "ses": "/media/ses/ayet/94-8.mp3"
+    }
+   ]
+  },
+  "kadir": {
+   "baslik": "Sourate al-Qadr — La Destinée",
+   "altbaslik": "سورة الْقَدْرِ · 5 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/kadir.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اِنَّٓا اَنْزَلْنَاهُ فٖي لَيْلَةِ الْقَدْرِۚ",
+     "okunus": "Innâ anzalnâhou fî laylati-l-qadr",
+     "fr": "Nous l’avons certes, fait descendre (le Coran) pendant la nuit d’Al-Qadr (du Destin).",
+     "ses": "/media/ses/ayet/97-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "وَمَٓا اَدْرٰيكَ مَا لَيْلَةُ الْقَدْرِؕ",
+     "okunus": "Wa mâ adrâka mâ laylatou-l-qadr",
+     "fr": "Et qui te dira ce qu’est la nuit d’Al-Qadr ?",
+     "ses": "/media/ses/ayet/97-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "لَيْلَةُ الْقَدْرِ خَيْرٌ مِنْ اَلْفِ شَهْرٍؕ",
+     "okunus": "Laylatou-l-qadri khayroun min alfi chahr",
+     "fr": "La nuit d’Al-Qadr est meilleure que mille mois.",
+     "ses": "/media/ses/ayet/97-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "تَنَزَّلُ الْمَلٰٓئِكَةُ وَالرُّوحُ فٖيهَا بِاِذْنِ رَبِّهِمْۚ مِنْ كُلِّ اَمْرٍۙۛ",
+     "okunus": "Tanazzalou-l-malâ’ikatou wa-r-roûḥou fîhâ bi-idhni rabbihim min koulli amr",
+     "fr": "Durant celle-ci descendent les Anges ainsi que l’Esprit, par permission de leur Seigneur pour tout ordre.",
+     "ses": "/media/ses/ayet/97-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "سَلَامٌࣞۛ هِيَ حَتّٰى مَطْلَعِ الْفَجْرِ",
+     "okunus": "Salâmoun hiya ḥattâ maṭlaʿi-l-fadjr",
+     "fr": "Elle est paix et salut jusqu’à l’apparition de l’aube.",
+     "ses": "/media/ses/ayet/97-5.mp3"
+    }
+   ]
+  },
+  "asr": {
+   "baslik": "Sourate al-ʿAṣr — Le Temps",
+   "altbaslik": "سورة الْعَصْرِ · 3 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/asr.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "وَالْعَصْرِۙ",
+     "okunus": "Wa-l-ʿaṣr",
+     "fr": "Par le Temps !",
+     "ses": "/media/ses/ayet/103-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "اِنَّ الْاِنْسَانَ لَفٖي خُسْرٍۙ",
+     "okunus": "Inna-l-insâna lafî khousr",
+     "fr": "L’homme est certes, en perdition,",
+     "ses": "/media/ses/ayet/103-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "اِلَّا الَّذٖينَ اٰمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ",
+     "okunus": "Illa-lladhîna âmanoû wa ʿamilou-ṣ-ṣâliḥâti wa tawâṣaw bi-l-ḥaqqi wa tawâṣaw bi-ṣ-ṣabr",
+     "fr": "sauf ceux qui croient et accomplissent les bonnes œuvres, s’enjoignent mutuellement la vérité et s’enjoignent mutuellement l’endurance.",
+     "ses": "/media/ses/ayet/103-3.mp3"
+    }
+   ]
+  },
+  "fil": {
+   "baslik": "Sourate al-Fîl — L’Éléphant",
+   "altbaslik": "سورة الْف۪يلِ · 5 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/fil.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِاَصْحَابِ الْفٖيلِؕ",
+     "okunus": "Alam tara kayfa faʿala rabbouka bi-aṣḥâbi-l-fîl",
+     "fr": "N’as-tu pas vu comment ton Seigneur a agi envers les gens de l’Éléphant.",
+     "ses": "/media/ses/ayet/105-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "اَلَمْ يَجْعَلْ كَيْدَهُمْ فٖي تَضْلٖيلٍۙ",
+     "okunus": "Alam yadjʿal kaydahoum fî taḍlîl",
+     "fr": "N’a-t-Il pas rendu leur ruse complètement vaine ?",
+     "ses": "/media/ses/ayet/105-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "وَاَرْسَلَ عَلَيْهِمْ طَيْرًا اَبَابٖيلَۙ",
+     "okunus": "Wa arsala ʿalayhim ṭayran abâbîl",
+     "fr": "et envoyé sur eux des oiseaux par volées.",
+     "ses": "/media/ses/ayet/105-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "تَرْمٖيهِمْ بِحِجَارَةٍ مِنْ سِجّٖيلٍۙۖ",
+     "okunus": "Tarmîhim bi-ḥidjâratin min siddjîl",
+     "fr": "qui leur lançaient des pierres d’argile ?",
+     "ses": "/media/ses/ayet/105-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "فَجَعَلَهُمْ كَعَصْفٍ مَاْكُولٍ",
+     "okunus": "Fa-djaʿalahoum ka-ʿaṣfin ma’koûl",
+     "fr": "Et Il les a rendus semblables à une paille mâchée.",
+     "ses": "/media/ses/ayet/105-5.mp3"
+    }
+   ]
+  },
+  "kureys": {
+   "baslik": "Sourate Qouraych — Les Qouraych",
+   "altbaslik": "سورة قُرَيْشٍ · 4 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/kureys.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "لِاٖيلَافِ قُرَيْشٍۙ",
+     "okunus": "Li-îlâfi Qouraych",
+     "fr": "À cause de l’habitude des Quraysh,",
+     "ses": "/media/ses/ayet/106-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "اٖيلَافِهِمْ رِحْلَةَ الشِّتَٓاءِ وَالصَّيْفِۚ",
+     "okunus": "Îlâfihim riḥlata-ch-chitâ’i wa-ṣ-ṣayf",
+     "fr": "De leur habitude [concernant] les voyages d’hiver et d’été.",
+     "ses": "/media/ses/ayet/106-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "فَلْيَعْبُدُوا رَبَّ هٰذَا الْبَيْتِۙ",
+     "okunus": "Fa-l-yaʿboudoû rabba hâdha-l-bayt",
+     "fr": "Qu’ils adorent donc le Seigneur de cette Maison (la Kaaba).",
+     "ses": "/media/ses/ayet/106-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "اَلَّذٖٓى اَطْعَمَهُمْ مِنْ جُوعٍ وَاٰمَنَهُمْ مِنْ خَوْفٍ",
+     "okunus": "Alladhî aṭʿamahoum min djoûʿin wa âmanahoum min khawf",
+     "fr": "qui les a nourris contre la faim et rassurés de la crainte !",
+     "ses": "/media/ses/ayet/106-4.mp3"
+    }
+   ]
+  },
+  "maun": {
+   "baslik": "Sourate al-Mâʿoûn — L’Ustensile",
+   "altbaslik": "سورة الْمَاعُونِ · 7 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/maun.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَرَاَيْتَ الَّذٖى يُكَذِّبُ بِالدّٖينِۜ",
+     "okunus": "A-ra’ayta-lladhî youkadhdhibou bi-d-dîn",
+     "fr": "Vois-tu celui qui traite de mensonge la Rétribution ?",
+     "ses": "/media/ses/ayet/107-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "فَذٰلِكَ الَّذٖى يَدُعُّ الْيَتٖيمَۙ",
+     "okunus": "Fa-dhâlika-lladhî yadouʿʿou-l-yatîm",
+     "fr": "C’est bien lui qui repousse l’orphelin,",
+     "ses": "/media/ses/ayet/107-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "وَلَا يَحُضُّ عَلٰى طَعَامِ الْمِسْكٖينِۜ",
+     "okunus": "Wa lâ yaḥouḍḍou ʿalâ ṭaʿâmi-l-miskîn",
+     "fr": "et qui n’encourage point à nourrir le pauvre.",
+     "ses": "/media/ses/ayet/107-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "فَوَيْلٌ لِلْمُصَلّٖينَۙ",
+     "okunus": "Fa-wayloun li-l-mouṣallîn",
+     "fr": "Malheur donc, à ceux qui prient.",
+     "ses": "/media/ses/ayet/107-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "اَلَّذٖينَ هُمْ عَنْ صَلَاتِهِمْ سَاهُونَۙ",
+     "okunus": "Alladhîna houm ʿan ṣalâtihim sâhoûn",
+     "fr": "tout en négligeant (et retardant) leur prière (As-Salât),",
+     "ses": "/media/ses/ayet/107-5.mp3"
+    },
+    {
+     "no": 6,
+     "ar": "اَلَّذٖينَ هُمْ يُرَٓاؤُ۫نَۙ",
+     "okunus": "Alladhîna houm yourâ’oûn",
+     "fr": "qui sont pleins d’ostentation,",
+     "ses": "/media/ses/ayet/107-6.mp3"
+    },
+    {
+     "no": 7,
+     "ar": "وَيَمْنَعُونَ الْمَاعُونَ",
+     "okunus": "Wa yamnaʿoûna-l-mâʿoûn",
+     "fr": "et refusent l’ustensile (à celui qui en a besoin).",
+     "ses": "/media/ses/ayet/107-7.mp3"
+    }
+   ]
+  },
+  "kevser": {
+   "baslik": "Sourate al-Kawthar — L’Abondance",
+   "altbaslik": "سورة الْكَوْثَرِ · 3 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/kevser.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اِنَّٓا اَعْطَيْنَاكَ الْكَوْثَرَۜ",
+     "okunus": "Innâ aʿṭaynâka-l-kawthar",
+     "fr": "Nous t’avons certes, accordé l’Abondance.",
+     "ses": "/media/ses/ayet/108-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "فَصَلِّ لِرَبِّكَ وَانْحَرْۜ",
+     "okunus": "Fa-ṣalli li-rabbika wa-nḥar",
+     "fr": "Accomplis la Ṣalât pour ton Seigneur et sacrifie.",
+     "ses": "/media/ses/ayet/108-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "اِنَّ شَانِئَكَ هُوَ الْاَبْتَرُ",
+     "okunus": "Inna châni’aka houwa-l-abtar",
+     "fr": "Celui qui te hait sera certes, sans postérité.",
+     "ses": "/media/ses/ayet/108-3.mp3"
+    }
+   ]
+  },
+  "kafirun": {
+   "baslik": "Sourate al-Kâfiroûn — Les Infidèles",
+   "altbaslik": "سورة الْكَافِرُونَ · 6 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/kafirun.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "قُلْ يَٓا اَيُّهَا الْكَافِرُونَۙ",
+     "okunus": "Qoul yâ ayyouha-l-kâfiroûn",
+     "fr": "Dis : « Ô vous les infidèles !",
+     "ses": "/media/ses/ayet/109-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "لَٓا اَعْبُدُ مَا تَعْبُدُونَۙ",
+     "okunus": "Lâ aʿboudou mâ taʿboudoûn",
+     "fr": "Je n’adore pas ce que vous adorez.",
+     "ses": "/media/ses/ayet/109-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "وَلَٓا اَنْتُمْ عَابِدُونَ مَٓا اَعْبُدُۚ",
+     "okunus": "Wa lâ antoum ʿâbidoûna mâ aʿboud",
+     "fr": "Et vous n’êtes pas adorateurs de ce que j’adore.",
+     "ses": "/media/ses/ayet/109-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "وَلَٓا اَنَا۬ عَابِدٌ مَا عَبَدْتُمْۙ",
+     "okunus": "Wa lâ anâ ʿâbidoun mâ ʿabadtoum",
+     "fr": "Je ne suis pas adorateur de ce que vous adorez.",
+     "ses": "/media/ses/ayet/109-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "وَلَٓا اَنْتُمْ عَابِدُونَ مَٓا اَعْبُدُۜ",
+     "okunus": "Wa lâ antoum ʿâbidoûna mâ aʿboud",
+     "fr": "Et vous n’êtes pas adorateurs de ce que j’adore.",
+     "ses": "/media/ses/ayet/109-5.mp3"
+    },
+    {
+     "no": 6,
+     "ar": "لَكُمْ دٖينُكُمْ وَلِىَ دٖينِ",
+     "okunus": "Lakoum dînoukoum wa liya dîn",
+     "fr": "À vous votre religion, et à moi ma religion. »",
+     "ses": "/media/ses/ayet/109-6.mp3"
+    }
+   ]
+  },
+  "nasr": {
+   "baslik": "Sourate an-Naṣr — Le Secours",
+   "altbaslik": "سورة النَّصْرِ · 3 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/nasr.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اِذَا جَٓاءَ نَصْرُ اللّٰهِ وَالْفَتْحُۙ",
+     "okunus": "Idhâ djâ’a naṣrou-llâhi wa-l-fatḥ",
+     "fr": "Lorsque vient le secours d’Allah ainsi que la victoire,",
+     "ses": "/media/ses/ayet/110-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "وَرَاَيْتَ النَّاسَ يَدْخُلُونَ فٖى دٖينِ اللّٰهِ اَفْوَاجًاۙ",
+     "okunus": "Wa ra’ayta-n-nâsa yadkhouloûna fî dîni-llâhi afwâdjâ",
+     "fr": "et que tu vois les gens entrer en foule dans la religion d’Allah,",
+     "ses": "/media/ses/ayet/110-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُۜ اِنَّهُ كَانَ تَوَّابًا",
+     "okunus": "Fa-sabbiḥ bi-ḥamdi rabbika wa-staghfirh. Innahou kâna tawwâbâ",
+     "fr": "alors, par la louange, célèbre la gloire de ton Seigneur et implore Son pardon. Car c’est Lui le grand Accueillant au repentir.",
+     "ses": "/media/ses/ayet/110-3.mp3"
+    }
+   ]
+  },
+  "tebbet": {
+   "baslik": "Sourate al-Masad — Les Fibres",
+   "altbaslik": "سورة الْمَسَدِ · 5 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/tebbet.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "تَبَّتْ يَدَٓا اَبٖى لَهَبٍ وَتَبَّۜ",
+     "okunus": "Tabbat yadâ abî lahabin wa tabb",
+     "fr": "Que périssent les deux mains d’Abû-Lahab et que lui-même périsse.",
+     "ses": "/media/ses/ayet/111-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "مَٓا اَغْنٰى عَنْهُ مَالُهُ وَمَا كَسَبَۜ",
+     "okunus": "Mâ aghnâ ʿanhou mâlouhou wa mâ kasab",
+     "fr": "Sa fortune ne lui sert à rien, ni ce qu’il a acquis.",
+     "ses": "/media/ses/ayet/111-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "سَيَصْلٰى نَارًا ذَاتَ لَهَبٍۚ",
+     "okunus": "Sa-yaṣlâ nâran dhâta lahab",
+     "fr": "Il sera brûlé dans un Feu plein de flammes.",
+     "ses": "/media/ses/ayet/111-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "وَامْرَاَتُهُۜ حَمَّالَةَ الْحَطَبِۚ",
+     "okunus": "Wa-mra’atouhou ḥammâlata-l-ḥaṭab",
+     "fr": "de même sa femme, la porteuse de bois,",
+     "ses": "/media/ses/ayet/111-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "فٖى جٖيدِهَا حَبْلٌ مِنْ مَسَدٍ",
+     "okunus": "Fî djîdihâ ḥabloun min masad",
+     "fr": "à son cou, une corde de fibres.",
+     "ses": "/media/ses/ayet/111-5.mp3"
+    }
+   ]
+  },
+  "ihlas": {
+   "baslik": "Sourate al-Ikhlâṣ — Le Monothéisme pur",
+   "altbaslik": "سورة الْاِخْلَاصِ · 4 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/ihlas.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "قُلْ هُوَ اللّٰهُ اَحَدٌۚ",
+     "okunus": "Qoul houwa-llâhou aḥad",
+     "fr": "Dis : « Il est Allah, Unique.",
+     "ses": "/media/ses/ayet/112-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "اَللّٰهُ الصَّمَدُۚ",
+     "okunus": "Allâhou-ṣ-ṣamad",
+     "fr": "Allah, Le Seul à être imploré pour ce que nous désirons.",
+     "ses": "/media/ses/ayet/112-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "لَمْ يَلِدْ وَلَمْ يُولَدْۙ",
+     "okunus": "Lam yalid wa lam yoûlad",
+     "fr": "Il n’a jamais engendré, n’a pas été engendré non plus.",
+     "ses": "/media/ses/ayet/112-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "وَلَمْ يَكُنْ لَهُ كُفُوًا اَحَدٌ",
+     "okunus": "Wa lam yakoun lahou koufouwan aḥad",
+     "fr": "Et nul n’est égal à Lui. »",
+     "ses": "/media/ses/ayet/112-4.mp3"
+    }
+   ]
+  },
+  "felak": {
+   "baslik": "Sourate al-Falaq — L’Aube naissante",
+   "altbaslik": "سورة الْفَلَقِ · 5 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/felak.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "قُلْ اَعُوذُ بِرَبِّ الْفَلَقِۙ",
+     "okunus": "Qoul aʿoûdhou bi-rabbi-l-falaq",
+     "fr": "Dis : « Je cherche protection auprès du Seigneur de l’aube naissante,",
+     "ses": "/media/ses/ayet/113-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "مِنْ شَرِّ مَا خَلَقَۙ",
+     "okunus": "Min charri mâ khalaq",
+     "fr": "contre le mal des êtres qu’Il a créés,",
+     "ses": "/media/ses/ayet/113-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ",
+     "okunus": "Wa min charri ghâsiqin idhâ waqab",
+     "fr": "contre le mal de l’obscurité quand elle s’approfondit,",
+     "ses": "/media/ses/ayet/113-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "وَمِنْ شَرِّ النَّفَّاثَاتِ فِى الْعُقَدِۙ",
+     "okunus": "Wa min charri-n-naffâthâti fi-l-ʿouqad",
+     "fr": "contre le mal de celles qui soufflent (les sorcières) sur les nœuds,",
+     "ses": "/media/ses/ayet/113-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَ",
+     "okunus": "Wa min charri ḥâsidin idhâ ḥasad",
+     "fr": "et contre le mal de l’envieux quand il envie. »",
+     "ses": "/media/ses/ayet/113-5.mp3"
+    }
+   ]
+  },
+  "nas": {
+   "baslik": "Sourate an-Nâs — Les Hommes",
+   "altbaslik": "سورة النَّاسِ · 6 lignes",
+   "tam": {
+    "ses": "/media/ses/sureler/nas.mp3",
+    "etiket": "Écouter la sourate en entier"
+   },
+   "kaynak": "Récitation officielle de la Diyanet (kuran.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "قُلْ اَعُوذُ بِرَبِّ النَّاسِۙ",
+     "okunus": "Qoul aʿoûdhou bi-rabbi-n-nâs",
+     "fr": "Dis : « Je cherche protection auprès du Seigneur des hommes,",
+     "ses": "/media/ses/ayet/114-1.mp3"
+    },
+    {
+     "no": 2,
+     "ar": "مَلِكِ النَّاسِۙ",
+     "okunus": "Maliki-n-nâs",
+     "fr": "Le Souverain des hommes,",
+     "ses": "/media/ses/ayet/114-2.mp3"
+    },
+    {
+     "no": 3,
+     "ar": "اِلٰهِ النَّاسِۙ",
+     "okunus": "Ilâhi-n-nâs",
+     "fr": "Dieu des hommes,",
+     "ses": "/media/ses/ayet/114-3.mp3"
+    },
+    {
+     "no": 4,
+     "ar": "مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِۙ",
+     "okunus": "Min charri-l-waswâsi-l-khannâs",
+     "fr": "contre le mal du mauvais conseiller, furtif,",
+     "ses": "/media/ses/ayet/114-4.mp3"
+    },
+    {
+     "no": 5,
+     "ar": "اَلَّذٖى يُوَسْوِسُ فٖى صُدُورِ النَّاسِۙ",
+     "okunus": "Alladhî youwaswisou fî ṣoudoûri-n-nâs",
+     "fr": "qui insuffle des mauvaises pensées dans les poitrines des hommes,",
+     "ses": "/media/ses/ayet/114-5.mp3"
+    },
+    {
+     "no": 6,
+     "ar": "مِنَ الْجِنَّةِ وَالنَّاسِ",
+     "okunus": "Mina-l-djinnati wa-n-nâs",
+     "fr": "qu’il (le conseiller) soit un djinn, ou un être humain. »",
+     "ses": "/media/ses/ayet/114-6.mp3"
+    }
+   ]
+  },
+  "rabbena-atina": {
+   "baslik": "Rabbanâ âtinâ — « Seigneur, accorde-nous »",
+   "altbaslik": "دعاء ربنا آتنا · 1 ligne",
+   "tam": {
+    "ses": "/media/ses/dualar/rabbena-atina.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Traduction : Muhammad Hamidullah (partie invocatoire du verset)",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "رَبَّنَٓا اٰتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْاٰخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+     "okunus": "Rabbanâ âtinâ fi-d-dounyâ ḥasanatan wa fi-l-âkhirati ḥasanatan wa qinâ ʿadhâba-n-nâr",
+     "fr": "Seigneur ! Accorde-nous belle part ici-bas, et belle part aussi dans l’au-delà ; et protège-nous du châtiment du Feu !"
+    }
+   ]
+  },
+  "rabbenagfirli": {
+   "baslik": "Rabbana-ghfir lî — « Seigneur, pardonne-moi »",
+   "altbaslik": "دعاء ربنا اغفر لي · 1 ligne",
+   "tam": {
+    "ses": "/media/ses/dualar/rabbenagfirli.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Traduction : Muhammad Hamidullah",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "رَبَّـنَا اغْفِرْ لٖي وَلِوَالِدَيَّ وَلِلْمُؤْمِنٖينَ يَوْمَ يَقُومُ الْحِسَابُࣖ",
+     "okunus": "Rabbana-ghfir lî wa li-wâlidayya wa li-l-mou’minîna yawma yaqoûmou-l-ḥisâb",
+     "fr": "Notre Seigneur ! Pardonne-moi, ainsi qu’à mes père et mère et aux croyants, le Jour de la Reddition des Comptes !"
+    }
+   ]
+  },
+  "subhaneke": {
+   "baslik": "Soubḥânaka — l’invocation d’ouverture",
+   "altbaslik": "سبحانك · 2 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/subhaneke.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالٰى جَدُّكَ",
+     "okunus": "Soubḥânaka-llâhoumma wa bi-ḥamdika wa tabâraka-smouka wa taʿâlâ djaddouk",
+     "fr": "Gloire et pureté à Toi, ô Allah, et à Toi la louange ; béni soit Ton nom, exaltée soit Ta majesté."
+    },
+    {
+     "no": 2,
+     "ar": "وَلَا اِلٰهَ غَيْرُكَ",
+     "okunus": "Wa lâ ilâha ghayrouk",
+     "fr": "Et il n’y a pas d’autre divinité que Toi."
+    }
+   ]
+  },
+  "tahiyyat": {
+   "baslik": "At-taḥiyyât — l’invocation de la position assise",
+   "altbaslik": "التحيات · 4 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/tahiyyat.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَلتَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ،",
+     "okunus": "At-taḥiyyâtou li-llâhi wa-ṣ-ṣalawâtou wa-ṭ-ṭayyibât",
+     "fr": "Les salutations, les prières et les bonnes œuvres appartiennent à Allah."
+    },
+    {
+     "no": 2,
+     "ar": "اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ،",
+     "okunus": "As-salâmou ʿalayka ayyouha-n-nabiyyou wa raḥmatou-llâhi wa barakâtouh",
+     "fr": "Que la paix soit sur toi, ô Prophète, ainsi que la miséricorde d’Allah et Ses bénédictions."
+    },
+    {
+     "no": 3,
+     "ar": "اَلسَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللّٰهِ الصَّالِحِينَ،",
+     "okunus": "As-salâmou ʿalaynâ wa ʿalâ ʿibâdi-llâhi-ṣ-ṣâliḥîn",
+     "fr": "Que la paix soit sur nous et sur les serviteurs vertueux d’Allah."
+    },
+    {
+     "no": 4,
+     "ar": "أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+     "okunus": "Achhadou an lâ ilâha illa-llâh, wa achhadou anna Mouḥammadan ʿabdouhou wa rasoûlouh",
+     "fr": "J’atteste qu’il n’y a de divinité qu’Allah, et j’atteste que Muhammad est Son serviteur et Son messager."
+    }
+   ]
+  },
+  "salli": {
+   "baslik": "Allâhoumma ṣalli — la prière sur le Prophète",
+   "altbaslik": "اللهم صل · 3 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/salli.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ",
+     "okunus": "Allâhoumma ṣalli ʿalâ Mouḥammadin wa ʿalâ âli Mouḥammad",
+     "fr": "Ô Allah, prie sur Muhammad et sur la famille de Muhammad,"
+    },
+    {
+     "no": 2,
+     "ar": "كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ",
+     "okunus": "Kamâ ṣallayta ʿalâ Ibrâhîma wa ʿalâ âli Ibrâhîm",
+     "fr": "comme Tu as prié sur Ibrâhîm et sur la famille d’Ibrâhîm."
+    },
+    {
+     "no": 3,
+     "ar": "إِنَّكَ حَمِيدٌ مَجِيدٌ",
+     "okunus": "Innaka ḥamîdoun madjîd",
+     "fr": "Tu es certes Digne de louange et Glorieux."
+    }
+   ]
+  },
+  "barik": {
+   "baslik": "Allâhoumma bârik — la bénédiction sur le Prophète",
+   "altbaslik": "اللهم بارك · 3 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/barik.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ",
+     "okunus": "Allâhoumma bârik ʿalâ Mouḥammadin wa ʿalâ âli Mouḥammad",
+     "fr": "Ô Allah, bénis Muhammad et la famille de Muhammad,"
+    },
+    {
+     "no": 2,
+     "ar": "كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ",
+     "okunus": "Kamâ bârakta ʿalâ Ibrâhîma wa ʿalâ âli Ibrâhîm",
+     "fr": "comme Tu as béni Ibrâhîm et la famille d’Ibrâhîm."
+    },
+    {
+     "no": 3,
+     "ar": "إِنَّكَ حَمِيدٌ مَجِيدٌ",
+     "okunus": "Innaka ḥamîdoun madjîd",
+     "fr": "Tu es certes Digne de louange et Glorieux."
+    }
+   ]
+  },
+  "kunut-1": {
+   "baslik": "Le premier qounoût — prière du witr",
+   "altbaslik": "دعاء القنوت الأول · 4 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/kunut-1.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَللّٰهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ",
+     "okunus": "Allâhoumma innâ nastaʿînouka wa nastaghfirouka wa nastahdîk",
+     "fr": "Ô Allah, c’est Toi que nous appelons au secours, Toi dont nous implorons le pardon et la guidance."
+    },
+    {
+     "no": 2,
+     "ar": "وَنُؤْمِنُ بِكَ وَنَتُوبُ إِلَيْكَ وَنَتَوَكَّلُ عَلَيْكَ",
+     "okunus": "Wa nou’minou bika wa natoûbou ilayka wa natawakkalou ʿalayk",
+     "fr": "Nous croyons en Toi, nous revenons repentants vers Toi et nous nous en remettons à Toi."
+    },
+    {
+     "no": 3,
+     "ar": "وَنُثْنِي عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلَا نَكْفُرُكَ",
+     "okunus": "Wa nouthnî ʿalayka-l-khayra koullahou nachkourouka wa lâ nakfourouk",
+     "fr": "Nous Te louons pour tout le bien que Tu donnes ; nous Te remercions et ne renions jamais Tes bienfaits."
+    },
+    {
+     "no": 4,
+     "ar": "وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ",
+     "okunus": "Wa nakhlaʿou wa natroukou man yafdjourouk",
+     "fr": "Nous nous détachons et nous délaissons celui qui Te désobéit."
+    }
+   ]
+  },
+  "kunut-2": {
+   "baslik": "Le second qounoût — prière du witr",
+   "altbaslik": "دعاء القنوت الثاني · 4 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/kunut-2.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اَللّٰهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ",
+     "okunus": "Allâhoumma iyyâka naʿboudou wa laka nouṣallî wa nasdjoud",
+     "fr": "Ô Allah, c’est Toi seul que nous adorons ; pour Toi seul nous prions et nous nous prosternons."
+    },
+    {
+     "no": 2,
+     "ar": "وَإِلَيْكَ نَسْعٰى وَنَحْفِدُ",
+     "okunus": "Wa ilayka nasʿâ wa naḥfid",
+     "fr": "Vers Toi nous nous hâtons et pour Toi nous œuvrons."
+    },
+    {
+     "no": 3,
+     "ar": "نَرْجُو رَحْمَتَكَ وَنَخْشٰى عَذَابَكَ",
+     "okunus": "Nardjoû raḥmataka wa nakhchâ ʿadhâbak",
+     "fr": "Nous espérons Ta miséricorde et nous redoutons Ton châtiment."
+    },
+    {
+     "no": 4,
+     "ar": "إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ",
+     "okunus": "Inna ʿadhâbaka bi-l-kouffâri moulḥiq",
+     "fr": "Ton châtiment atteint certes ceux qui refusent la foi."
+    }
+   ]
+  },
+  "ezan": {
+   "baslik": "L’adhân — l’appel à la prière",
+   "altbaslik": "الأذان · 8 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/ezan.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Guide pratique des adorations (Diyanet, éd. française)",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ",
+     "okunus": "Allâhou akbar, Allâhou akbar, Allâhou akbar, Allâhou akbar",
+     "fr": "Allah est le plus grand. (quatre fois)"
+    },
+    {
+     "no": 2,
+     "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ",
+     "okunus": "Achhadou an lâ ilâha illa-llâh, achhadou an lâ ilâha illa-llâh",
+     "fr": "J’atteste qu’il n’y a nulle divinité digne d’être adorée sauf Allah. (deux fois)"
+    },
+    {
+     "no": 3,
+     "ar": "أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+     "okunus": "Achhadou anna Mouḥammadan rasoûlou-llâh, achhadou anna Mouḥammadan rasoûlou-llâh",
+     "fr": "J’atteste que Muhammad est le messager d’Allah. (deux fois)"
+    },
+    {
+     "no": 4,
+     "ar": "حَيَّ عَلَى الصَّلَاةِ حَيَّ عَلَى الصَّلَاةِ",
+     "okunus": "Ḥayya ʿala-ṣ-ṣalâh, ḥayya ʿala-ṣ-ṣalâh",
+     "fr": "Venez à la prière ! (deux fois)"
+    },
+    {
+     "no": 5,
+     "ar": "حَيَّ عَلَى الْفَلَاحِ حَيَّ عَلَى الْفَلَاحِ",
+     "okunus": "Ḥayya ʿala-l-falâḥ, ḥayya ʿala-l-falâḥ",
+     "fr": "Venez à la félicité ! (deux fois)"
+    },
+    {
+     "no": 6,
+     "ar": "الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ",
+     "okunus": "Aṣ-ṣalâtou khayroun mina-n-nawm, aṣ-ṣalâtou khayroun mina-n-nawm",
+     "fr": "La prière vaut mieux que le sommeil. (deux fois, à l’aube seulement)"
+    },
+    {
+     "no": 7,
+     "ar": "اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ",
+     "okunus": "Allâhou akbar, Allâhou akbar",
+     "fr": "Allah est le plus grand. (deux fois)"
+    },
+    {
+     "no": 8,
+     "ar": "لَا إِلَهَ إِلَّا اللَّهُ",
+     "okunus": "Lâ ilâha illa-llâh",
+     "fr": "Il n’y a nulle divinité digne d’être adorée sauf Allah."
+    }
+   ]
+  },
+  "kamet": {
+   "baslik": "L’iqâma — l’appel juste avant la prière",
+   "altbaslik": "الإقامة · 8 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/kamet.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Guide pratique des adorations (Diyanet, éd. française)",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ",
+     "okunus": "Allâhou akbar, Allâhou akbar, Allâhou akbar, Allâhou akbar",
+     "fr": "Allah est le plus grand. (quatre fois)"
+    },
+    {
+     "no": 2,
+     "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ",
+     "okunus": "Achhadou an lâ ilâha illa-llâh, achhadou an lâ ilâha illa-llâh",
+     "fr": "J’atteste qu’il n’y a nulle divinité digne d’être adorée sauf Allah. (deux fois)"
+    },
+    {
+     "no": 3,
+     "ar": "أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+     "okunus": "Achhadou anna Mouḥammadan rasoûlou-llâh, achhadou anna Mouḥammadan rasoûlou-llâh",
+     "fr": "J’atteste que Muhammad est le messager d’Allah. (deux fois)"
+    },
+    {
+     "no": 4,
+     "ar": "حَيَّ عَلَى الصَّلَاةِ حَيَّ عَلَى الصَّلَاةِ",
+     "okunus": "Ḥayya ʿala-ṣ-ṣalâh, ḥayya ʿala-ṣ-ṣalâh",
+     "fr": "Venez à la prière ! (deux fois)"
+    },
+    {
+     "no": 5,
+     "ar": "حَيَّ عَلَى الْفَلَاحِ حَيَّ عَلَى الْفَلَاحِ",
+     "okunus": "Ḥayya ʿala-l-falâḥ, ḥayya ʿala-l-falâḥ",
+     "fr": "Venez à la félicité ! (deux fois)"
+    },
+    {
+     "no": 6,
+     "ar": "قَدْ قَامَتِ الصَّلَاةُ قَدْ قَامَتِ الصَّلَاةُ",
+     "okunus": "Qad qâmati-ṣ-ṣalâh, qad qâmati-ṣ-ṣalâh",
+     "fr": "La prière va commencer. (deux fois)"
+    },
+    {
+     "no": 7,
+     "ar": "اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ",
+     "okunus": "Allâhou akbar, Allâhou akbar",
+     "fr": "Allah est le plus grand. (deux fois)"
+    },
+    {
+     "no": 8,
+     "ar": "لَا إِلَهَ إِلَّا اللَّهُ",
+     "okunus": "Lâ ilâha illa-llâh",
+     "fr": "Il n’y a nulle divinité digne d’être adorée sauf Allah."
+    }
+   ]
+  },
+  "ezan-duasi": {
+   "baslik": "L’invocation après l’adhân",
+   "altbaslik": "دعاء الأذان · 3 lignes",
+   "tam": {
+    "ses": "/media/ses/dualar/ezan-duasi.mp3",
+    "etiket": "Écouter en entier"
+   },
+   "kaynak": "Enregistrement officiel de la Diyanet (namaz.diyanet.gov.tr) · Sens en français : traduction du manuel",
+   "satirlar": [
+    {
+     "no": 1,
+     "ar": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ الْقَائِمَةِ",
+     "okunus": "Allâhoumma rabba hâdhihi-d-daʿwati-t-tâmmati wa-ṣ-ṣalâti-l-qâ’imah",
+     "fr": "Ô Allah, Seigneur de cet appel parfait et de la prière qui va être accomplie,"
+    },
+    {
+     "no": 2,
+     "ar": "آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ",
+     "okunus": "Âti Mouḥammadani-l-wasîlata wa-l-faḍîlah",
+     "fr": "accorde à Muhammad le rang élevé (al-wasîla) et la faveur,"
+    },
+    {
+     "no": 3,
+     "ar": "وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
+     "okunus": "Wa-bʿathhou maqâman maḥmoûdani-lladhî waʿadtah",
+     "fr": "et ressuscite-le à la station louée que Tu lui as promise."
+    }
+   ]
+  },
+  "alphabet": {
+   "baslik": "Les 28 lettres de l’alphabet",
+   "ogeler": [
+    {
+     "ar": "ا",
+     "okunus": "alif",
+     "ses": "/media/ses/elifba/elif.mp3"
+    },
+    {
+     "ar": "ب",
+     "okunus": "bâ’",
+     "ses": "/media/ses/elifba/be.mp3"
+    },
+    {
+     "ar": "ت",
+     "okunus": "tâ’",
+     "ses": "/media/ses/elifba/te.mp3"
+    },
+    {
+     "ar": "ث",
+     "okunus": "thâ’",
+     "ses": "/media/ses/elifba/se.mp3"
+    },
+    {
+     "ar": "ج",
+     "okunus": "djîm",
+     "ses": "/media/ses/elifba/cim.mp3"
+    },
+    {
+     "ar": "ح",
+     "okunus": "ḥâ’",
+     "ses": "/media/ses/elifba/ha.mp3"
+    },
+    {
+     "ar": "د",
+     "okunus": "dâl",
+     "ses": "/media/ses/elifba/dal.mp3"
+    },
+    {
+     "ar": "ذ",
+     "okunus": "dhâl",
+     "ses": "/media/ses/elifba/zel.mp3"
+    },
+    {
+     "ar": "ر",
+     "okunus": "râ’",
+     "ses": "/media/ses/elifba/ra.mp3"
+    },
+    {
+     "ar": "ز",
+     "okunus": "zây",
+     "ses": "/media/ses/elifba/ze.mp3"
+    },
+    {
+     "ar": "س",
+     "okunus": "sîn",
+     "ses": "/media/ses/elifba/sin.mp3"
+    },
+    {
+     "ar": "ش",
+     "okunus": "chîn",
+     "ses": "/media/ses/elifba/sin2.mp3"
+    },
+    {
+     "ar": "ع",
+     "okunus": "ʿayn",
+     "ses": "/media/ses/elifba/ayn.mp3"
+    },
+    {
+     "ar": "ف",
+     "okunus": "fâ’",
+     "ses": "/media/ses/elifba/fe.mp3"
+    },
+    {
+     "ar": "ك",
+     "okunus": "kâf",
+     "ses": "/media/ses/elifba/kef.mp3"
+    },
+    {
+     "ar": "ل",
+     "okunus": "lâm",
+     "ses": "/media/ses/elifba/lam.mp3"
+    },
+    {
+     "ar": "م",
+     "okunus": "mîm",
+     "ses": "/media/ses/elifba/mim.mp3"
+    },
+    {
+     "ar": "ن",
+     "okunus": "noûn",
+     "ses": "/media/ses/elifba/nun.mp3"
+    },
+    {
+     "ar": "هـ",
+     "okunus": "hâ’",
+     "ses": "/media/ses/elifba/he.mp3"
+    },
+    {
+     "ar": "و",
+     "okunus": "wâw",
+     "ses": "/media/ses/elifba/vav.mp3"
+    },
+    {
+     "ar": "ى",
+     "okunus": "yâ’",
+     "ses": "/media/ses/elifba/ye.mp3"
+    },
+    {
+     "ar": "خ",
+     "okunus": "khâ’",
+     "ses": "/media/ses/elifba/hi.mp3"
+    },
+    {
+     "ar": "ص",
+     "okunus": "ṣâd",
+     "ses": "/media/ses/elifba/sad.mp3"
+    },
+    {
+     "ar": "ض",
+     "okunus": "ḍâd",
+     "ses": "/media/ses/elifba/dad.mp3"
+    },
+    {
+     "ar": "ط",
+     "okunus": "ṭâ’",
+     "ses": "/media/ses/elifba/ti.mp3"
+    },
+    {
+     "ar": "ظ",
+     "okunus": "ẓâ’",
+     "ses": "/media/ses/elifba/zi.mp3"
+    },
+    {
+     "ar": "غ",
+     "okunus": "ghayn",
+     "ses": "/media/ses/elifba/gayn.mp3"
+    },
+    {
+     "ar": "ق",
+     "okunus": "qâf",
+     "ses": "/media/ses/elifba/kaf.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-1": {
+   "baslik": "Lettres : alif, bâ’, tâ’, thâ’",
+   "ogeler": [
+    {
+     "ar": "ا",
+     "okunus": "alif",
+     "ses": "/media/ses/elifba/elif.mp3"
+    },
+    {
+     "ar": "ب",
+     "okunus": "bâ’",
+     "ses": "/media/ses/elifba/be.mp3"
+    },
+    {
+     "ar": "ت",
+     "okunus": "tâ’",
+     "ses": "/media/ses/elifba/te.mp3"
+    },
+    {
+     "ar": "ث",
+     "okunus": "thâ’",
+     "ses": "/media/ses/elifba/se.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-2": {
+   "baslik": "Lettres : djîm, ḥâ’, khâ’",
+   "ogeler": [
+    {
+     "ar": "ج",
+     "okunus": "djîm",
+     "ses": "/media/ses/elifba/cim.mp3"
+    },
+    {
+     "ar": "ح",
+     "okunus": "ḥâ’",
+     "ses": "/media/ses/elifba/ha.mp3"
+    },
+    {
+     "ar": "خ",
+     "okunus": "khâ’",
+     "ses": "/media/ses/elifba/hi.mp3"
+    }
+   ],
+   "altbaslik": "3 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-3": {
+   "baslik": "Lettres : dâl, dhâl, râ’, zây",
+   "ogeler": [
+    {
+     "ar": "د",
+     "okunus": "dâl",
+     "ses": "/media/ses/elifba/dal.mp3"
+    },
+    {
+     "ar": "ذ",
+     "okunus": "dhâl",
+     "ses": "/media/ses/elifba/zel.mp3"
+    },
+    {
+     "ar": "ر",
+     "okunus": "râ’",
+     "ses": "/media/ses/elifba/ra.mp3"
+    },
+    {
+     "ar": "ز",
+     "okunus": "zây",
+     "ses": "/media/ses/elifba/ze.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-4": {
+   "baslik": "Lettres : sîn, chîn, ṣâd, ḍâd",
+   "ogeler": [
+    {
+     "ar": "س",
+     "okunus": "sîn",
+     "ses": "/media/ses/elifba/sin.mp3"
+    },
+    {
+     "ar": "ش",
+     "okunus": "chîn",
+     "ses": "/media/ses/elifba/sin2.mp3"
+    },
+    {
+     "ar": "ص",
+     "okunus": "ṣâd",
+     "ses": "/media/ses/elifba/sad.mp3"
+    },
+    {
+     "ar": "ض",
+     "okunus": "ḍâd",
+     "ses": "/media/ses/elifba/dad.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-5": {
+   "baslik": "Lettres : ṭâ’, ẓâ’, ʿayn, ghayn",
+   "ogeler": [
+    {
+     "ar": "ط",
+     "okunus": "ṭâ’",
+     "ses": "/media/ses/elifba/ti.mp3"
+    },
+    {
+     "ar": "ظ",
+     "okunus": "ẓâ’",
+     "ses": "/media/ses/elifba/zi.mp3"
+    },
+    {
+     "ar": "ع",
+     "okunus": "ʿayn",
+     "ses": "/media/ses/elifba/ayn.mp3"
+    },
+    {
+     "ar": "غ",
+     "okunus": "ghayn",
+     "ses": "/media/ses/elifba/gayn.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-6": {
+   "baslik": "Lettres : fâ’, qâf, kâf, lâm",
+   "ogeler": [
+    {
+     "ar": "ف",
+     "okunus": "fâ’",
+     "ses": "/media/ses/elifba/fe.mp3"
+    },
+    {
+     "ar": "ق",
+     "okunus": "qâf",
+     "ses": "/media/ses/elifba/kaf.mp3"
+    },
+    {
+     "ar": "ك",
+     "okunus": "kâf",
+     "ses": "/media/ses/elifba/kef.mp3"
+    },
+    {
+     "ar": "ل",
+     "okunus": "lâm",
+     "ses": "/media/ses/elifba/lam.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "lettres-7": {
+   "baslik": "Lettres : mîm, noûn, wâw, hâ’, yâ’",
+   "ogeler": [
+    {
+     "ar": "م",
+     "okunus": "mîm",
+     "ses": "/media/ses/elifba/mim.mp3"
+    },
+    {
+     "ar": "ن",
+     "okunus": "noûn",
+     "ses": "/media/ses/elifba/nun.mp3"
+    },
+    {
+     "ar": "و",
+     "okunus": "wâw",
+     "ses": "/media/ses/elifba/vav.mp3"
+    },
+    {
+     "ar": "هـ",
+     "okunus": "hâ’",
+     "ses": "/media/ses/elifba/he.mp3"
+    },
+    {
+     "ar": "ى",
+     "okunus": "yâ’",
+     "ses": "/media/ses/elifba/ye.mp3"
+    }
+   ],
+   "altbaslik": "5 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "fatha": {
+   "baslik": "Les 28 syllabes avec la voyelle « a » (fatḥa)",
+   "ogeler": [
+    {
+     "ar": "اَ",
+     "okunus": "a",
+     "ses": "/media/ses/elifba/ustun/elif.mp3"
+    },
+    {
+     "ar": "بَ",
+     "okunus": "ba",
+     "ses": "/media/ses/elifba/ustun/be.mp3"
+    },
+    {
+     "ar": "تَ",
+     "okunus": "ta",
+     "ses": "/media/ses/elifba/ustun/te.mp3"
+    },
+    {
+     "ar": "ثَ",
+     "okunus": "tha",
+     "ses": "/media/ses/elifba/ustun/se.mp3"
+    },
+    {
+     "ar": "جَ",
+     "okunus": "dja",
+     "ses": "/media/ses/elifba/ustun/cim.mp3"
+    },
+    {
+     "ar": "حَ",
+     "okunus": "ḥa",
+     "ses": "/media/ses/elifba/ustun/ha.mp3"
+    },
+    {
+     "ar": "دَ",
+     "okunus": "da",
+     "ses": "/media/ses/elifba/ustun/dal.mp3"
+    },
+    {
+     "ar": "ذَ",
+     "okunus": "dha",
+     "ses": "/media/ses/elifba/ustun/zel.mp3"
+    },
+    {
+     "ar": "زَ",
+     "okunus": "za",
+     "ses": "/media/ses/elifba/ustun/ze.mp3"
+    },
+    {
+     "ar": "سَ",
+     "okunus": "sa",
+     "ses": "/media/ses/elifba/ustun/sin.mp3"
+    },
+    {
+     "ar": "شَ",
+     "okunus": "cha",
+     "ses": "/media/ses/elifba/ustun/sin2.mp3"
+    },
+    {
+     "ar": "عَ",
+     "okunus": "ʿa",
+     "ses": "/media/ses/elifba/ustun/ayn.mp3"
+    },
+    {
+     "ar": "فَ",
+     "okunus": "fa",
+     "ses": "/media/ses/elifba/ustun/fe.mp3"
+    },
+    {
+     "ar": "كَ",
+     "okunus": "ka",
+     "ses": "/media/ses/elifba/ustun/kef.mp3"
+    },
+    {
+     "ar": "لَ",
+     "okunus": "la",
+     "ses": "/media/ses/elifba/ustun/lam.mp3"
+    },
+    {
+     "ar": "مَ",
+     "okunus": "ma",
+     "ses": "/media/ses/elifba/ustun/mim.mp3"
+    },
+    {
+     "ar": "نَ",
+     "okunus": "na",
+     "ses": "/media/ses/elifba/ustun/nun.mp3"
+    },
+    {
+     "ar": "هَـ",
+     "okunus": "ha",
+     "ses": "/media/ses/elifba/ustun/he.mp3"
+    },
+    {
+     "ar": "وَ",
+     "okunus": "wa",
+     "ses": "/media/ses/elifba/ustun/vav.mp3"
+    },
+    {
+     "ar": "ىَ",
+     "okunus": "ya",
+     "ses": "/media/ses/elifba/ustun/ye.mp3"
+    },
+    {
+     "ar": "خَ",
+     "okunus": "kha",
+     "ses": "/media/ses/elifba/ustun/hi.mp3"
+    },
+    {
+     "ar": "رَ",
+     "okunus": "ra",
+     "ses": "/media/ses/elifba/ustun/ra.mp3"
+    },
+    {
+     "ar": "غَ",
+     "okunus": "gha",
+     "ses": "/media/ses/elifba/ustun/gayn.mp3"
+    },
+    {
+     "ar": "قَ",
+     "okunus": "qa",
+     "ses": "/media/ses/elifba/ustun/kaf.mp3"
+    },
+    {
+     "ar": "صَ",
+     "okunus": "ṣa",
+     "ses": "/media/ses/elifba/ustun/sad.mp3"
+    },
+    {
+     "ar": "ضَ",
+     "okunus": "ḍa",
+     "ses": "/media/ses/elifba/ustun/dad.mp3"
+    },
+    {
+     "ar": "طَ",
+     "okunus": "ṭa",
+     "ses": "/media/ses/elifba/ustun/ti.mp3"
+    },
+    {
+     "ar": "ظَ",
+     "okunus": "ẓa",
+     "ses": "/media/ses/elifba/ustun/zi.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "kasra": {
+   "baslik": "Les 28 syllabes avec la voyelle « i » (kasra)",
+   "ogeler": [
+    {
+     "ar": "اِ",
+     "okunus": "i",
+     "ses": "/media/ses/elifba/esre/elif.mp3"
+    },
+    {
+     "ar": "بِ",
+     "okunus": "bi",
+     "ses": "/media/ses/elifba/esre/be.mp3"
+    },
+    {
+     "ar": "تِ",
+     "okunus": "ti",
+     "ses": "/media/ses/elifba/esre/te.mp3"
+    },
+    {
+     "ar": "ثِ",
+     "okunus": "thi",
+     "ses": "/media/ses/elifba/esre/se.mp3"
+    },
+    {
+     "ar": "جِ",
+     "okunus": "dji",
+     "ses": "/media/ses/elifba/esre/cim.mp3"
+    },
+    {
+     "ar": "حِ",
+     "okunus": "ḥi",
+     "ses": "/media/ses/elifba/esre/ha.mp3"
+    },
+    {
+     "ar": "دِ",
+     "okunus": "di",
+     "ses": "/media/ses/elifba/esre/dal.mp3"
+    },
+    {
+     "ar": "ذِ",
+     "okunus": "dhi",
+     "ses": "/media/ses/elifba/esre/zel.mp3"
+    },
+    {
+     "ar": "رِ",
+     "okunus": "ri",
+     "ses": "/media/ses/elifba/esre/ra.mp3"
+    },
+    {
+     "ar": "زِ",
+     "okunus": "zi",
+     "ses": "/media/ses/elifba/esre/ze.mp3"
+    },
+    {
+     "ar": "سِ",
+     "okunus": "si",
+     "ses": "/media/ses/elifba/esre/sin.mp3"
+    },
+    {
+     "ar": "شِ",
+     "okunus": "chi",
+     "ses": "/media/ses/elifba/esre/sin2.mp3"
+    },
+    {
+     "ar": "عِ",
+     "okunus": "ʿi",
+     "ses": "/media/ses/elifba/esre/ayn.mp3"
+    },
+    {
+     "ar": "فِ",
+     "okunus": "fi",
+     "ses": "/media/ses/elifba/esre/fe.mp3"
+    },
+    {
+     "ar": "كِ",
+     "okunus": "ki",
+     "ses": "/media/ses/elifba/esre/kef.mp3"
+    },
+    {
+     "ar": "لِ",
+     "okunus": "li",
+     "ses": "/media/ses/elifba/esre/lam.mp3"
+    },
+    {
+     "ar": "مِ",
+     "okunus": "mi",
+     "ses": "/media/ses/elifba/esre/mim.mp3"
+    },
+    {
+     "ar": "نِ",
+     "okunus": "ni",
+     "ses": "/media/ses/elifba/esre/nun.mp3"
+    },
+    {
+     "ar": "هِـ",
+     "okunus": "hi",
+     "ses": "/media/ses/elifba/esre/he.mp3"
+    },
+    {
+     "ar": "وِ",
+     "okunus": "wi",
+     "ses": "/media/ses/elifba/esre/vav.mp3"
+    },
+    {
+     "ar": "ىِ",
+     "okunus": "yi",
+     "ses": "/media/ses/elifba/esre/ye.mp3"
+    },
+    {
+     "ar": "خِ",
+     "okunus": "khi",
+     "ses": "/media/ses/elifba/esre/hi.mp3"
+    },
+    {
+     "ar": "غِ",
+     "okunus": "ghi",
+     "ses": "/media/ses/elifba/esre/gayn.mp3"
+    },
+    {
+     "ar": "قِ",
+     "okunus": "qi",
+     "ses": "/media/ses/elifba/esre/kaf.mp3"
+    },
+    {
+     "ar": "صِ",
+     "okunus": "ṣi",
+     "ses": "/media/ses/elifba/esre/sad.mp3"
+    },
+    {
+     "ar": "ضِ",
+     "okunus": "ḍi",
+     "ses": "/media/ses/elifba/esre/dad.mp3"
+    },
+    {
+     "ar": "طِ",
+     "okunus": "ṭi",
+     "ses": "/media/ses/elifba/esre/ti.mp3"
+    },
+    {
+     "ar": "ظِ",
+     "okunus": "ẓi",
+     "ses": "/media/ses/elifba/esre/zi.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "damma": {
+   "baslik": "Les 28 syllabes avec la voyelle « ou » (ḍamma)",
+   "ogeler": [
+    {
+     "ar": "اُ",
+     "okunus": "ou",
+     "ses": "/media/ses/elifba/otre/elif.mp3"
+    },
+    {
+     "ar": "بُ",
+     "okunus": "bou",
+     "ses": "/media/ses/elifba/otre/be.mp3"
+    },
+    {
+     "ar": "تُ",
+     "okunus": "tou",
+     "ses": "/media/ses/elifba/otre/te.mp3"
+    },
+    {
+     "ar": "ثُ",
+     "okunus": "thou",
+     "ses": "/media/ses/elifba/otre/se.mp3"
+    },
+    {
+     "ar": "جُ",
+     "okunus": "djou",
+     "ses": "/media/ses/elifba/otre/cim.mp3"
+    },
+    {
+     "ar": "حُ",
+     "okunus": "ḥou",
+     "ses": "/media/ses/elifba/otre/ha.mp3"
+    },
+    {
+     "ar": "دُ",
+     "okunus": "dou",
+     "ses": "/media/ses/elifba/otre/dal.mp3"
+    },
+    {
+     "ar": "ذُ",
+     "okunus": "dhou",
+     "ses": "/media/ses/elifba/otre/zel.mp3"
+    },
+    {
+     "ar": "زُ",
+     "okunus": "zou",
+     "ses": "/media/ses/elifba/otre/ze.mp3"
+    },
+    {
+     "ar": "سُ",
+     "okunus": "sou",
+     "ses": "/media/ses/elifba/otre/sin.mp3"
+    },
+    {
+     "ar": "شُ",
+     "okunus": "chou",
+     "ses": "/media/ses/elifba/otre/sin2.mp3"
+    },
+    {
+     "ar": "عُ",
+     "okunus": "ʿou",
+     "ses": "/media/ses/elifba/otre/ayn.mp3"
+    },
+    {
+     "ar": "فُ",
+     "okunus": "fou",
+     "ses": "/media/ses/elifba/otre/fe.mp3"
+    },
+    {
+     "ar": "كُ",
+     "okunus": "kou",
+     "ses": "/media/ses/elifba/otre/kef.mp3"
+    },
+    {
+     "ar": "لُ",
+     "okunus": "lou",
+     "ses": "/media/ses/elifba/otre/lam.mp3"
+    },
+    {
+     "ar": "مُ",
+     "okunus": "mou",
+     "ses": "/media/ses/elifba/otre/mim.mp3"
+    },
+    {
+     "ar": "نُ",
+     "okunus": "nou",
+     "ses": "/media/ses/elifba/otre/nun.mp3"
+    },
+    {
+     "ar": "هُـ",
+     "okunus": "hou",
+     "ses": "/media/ses/elifba/otre/he.mp3"
+    },
+    {
+     "ar": "وُ",
+     "okunus": "wou",
+     "ses": "/media/ses/elifba/otre/vav.mp3"
+    },
+    {
+     "ar": "ىُ",
+     "okunus": "you",
+     "ses": "/media/ses/elifba/otre/ye.mp3"
+    },
+    {
+     "ar": "خُ",
+     "okunus": "khou",
+     "ses": "/media/ses/elifba/otre/hi.mp3"
+    },
+    {
+     "ar": "رُ",
+     "okunus": "rou",
+     "ses": "/media/ses/elifba/otre/ra.mp3"
+    },
+    {
+     "ar": "غُ",
+     "okunus": "ghou",
+     "ses": "/media/ses/elifba/otre/gayn.mp3"
+    },
+    {
+     "ar": "قُ",
+     "okunus": "qou",
+     "ses": "/media/ses/elifba/otre/kaf.mp3"
+    },
+    {
+     "ar": "صُ",
+     "okunus": "ṣou",
+     "ses": "/media/ses/elifba/otre/sad.mp3"
+    },
+    {
+     "ar": "ضُ",
+     "okunus": "ḍou",
+     "ses": "/media/ses/elifba/otre/dad.mp3"
+    },
+    {
+     "ar": "طُ",
+     "okunus": "ṭou",
+     "ses": "/media/ses/elifba/otre/ti.mp3"
+    },
+    {
+     "ar": "ظُ",
+     "okunus": "ẓou",
+     "ses": "/media/ses/elifba/otre/zi.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "test": {
+   "baslik": "Refaire le test de lecture",
+   "yonlendir": "/fr/test-de-niveau/"
+  },
+  "e03": {
+   "baslik": "Les lettres — les sons",
+   "ogeler": [
+    {
+     "ar": "ا",
+     "okunus": "alif",
+     "ses": "/media/ses/elifba/elif.mp3"
+    },
+    {
+     "ar": "ب",
+     "okunus": "bâ’",
+     "ses": "/media/ses/elifba/be.mp3"
+    },
+    {
+     "ar": "ت",
+     "okunus": "tâ’",
+     "ses": "/media/ses/elifba/te.mp3"
+    },
+    {
+     "ar": "ث",
+     "okunus": "thâ’",
+     "ses": "/media/ses/elifba/se.mp3"
+    },
+    {
+     "ar": "ج",
+     "okunus": "djîm",
+     "ses": "/media/ses/elifba/cim.mp3"
+    },
+    {
+     "ar": "ح",
+     "okunus": "ḥâ’",
+     "ses": "/media/ses/elifba/ha.mp3"
+    },
+    {
+     "ar": "د",
+     "okunus": "dâl",
+     "ses": "/media/ses/elifba/dal.mp3"
+    },
+    {
+     "ar": "ذ",
+     "okunus": "dhâl",
+     "ses": "/media/ses/elifba/zel.mp3"
+    },
+    {
+     "ar": "ر",
+     "okunus": "râ’",
+     "ses": "/media/ses/elifba/ra.mp3"
+    },
+    {
+     "ar": "ز",
+     "okunus": "zây",
+     "ses": "/media/ses/elifba/ze.mp3"
+    },
+    {
+     "ar": "س",
+     "okunus": "sîn",
+     "ses": "/media/ses/elifba/sin.mp3"
+    },
+    {
+     "ar": "ش",
+     "okunus": "chîn",
+     "ses": "/media/ses/elifba/sin2.mp3"
+    },
+    {
+     "ar": "ع",
+     "okunus": "ʿayn",
+     "ses": "/media/ses/elifba/ayn.mp3"
+    },
+    {
+     "ar": "ف",
+     "okunus": "fâ’",
+     "ses": "/media/ses/elifba/fe.mp3"
+    },
+    {
+     "ar": "ك",
+     "okunus": "kâf",
+     "ses": "/media/ses/elifba/kef.mp3"
+    },
+    {
+     "ar": "ل",
+     "okunus": "lâm",
+     "ses": "/media/ses/elifba/lam.mp3"
+    },
+    {
+     "ar": "م",
+     "okunus": "mîm",
+     "ses": "/media/ses/elifba/mim.mp3"
+    },
+    {
+     "ar": "ن",
+     "okunus": "noûn",
+     "ses": "/media/ses/elifba/nun.mp3"
+    },
+    {
+     "ar": "هـ",
+     "okunus": "hâ’",
+     "ses": "/media/ses/elifba/he.mp3"
+    },
+    {
+     "ar": "و",
+     "okunus": "wâw",
+     "ses": "/media/ses/elifba/vav.mp3"
+    },
+    {
+     "ar": "ى",
+     "okunus": "yâ’",
+     "ses": "/media/ses/elifba/ye.mp3"
+    },
+    {
+     "ar": "خ",
+     "okunus": "khâ’",
+     "ses": "/media/ses/elifba/hi.mp3"
+    },
+    {
+     "ar": "ص",
+     "okunus": "ṣâd",
+     "ses": "/media/ses/elifba/sad.mp3"
+    },
+    {
+     "ar": "ض",
+     "okunus": "ḍâd",
+     "ses": "/media/ses/elifba/dad.mp3"
+    },
+    {
+     "ar": "ط",
+     "okunus": "ṭâ’",
+     "ses": "/media/ses/elifba/ti.mp3"
+    },
+    {
+     "ar": "ظ",
+     "okunus": "ẓâ’",
+     "ses": "/media/ses/elifba/zi.mp3"
+    },
+    {
+     "ar": "غ",
+     "okunus": "ghayn",
+     "ses": "/media/ses/elifba/gayn.mp3"
+    },
+    {
+     "ar": "ق",
+     "okunus": "qâf",
+     "ses": "/media/ses/elifba/kaf.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e08": {
+   "baslik": "Le « â » long (fatḥa + alif)",
+   "ogeler": [
+    {
+     "ar": "ءَا-اٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/1.mp3"
+    },
+    {
+     "ar": "بَا-بٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/2.mp3"
+    },
+    {
+     "ar": "تَا-تٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/3.mp3"
+    },
+    {
+     "ar": "ثَا-ثٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/4.mp3"
+    },
+    {
+     "ar": "جَا-جٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/5.mp3"
+    },
+    {
+     "ar": "حَا-حٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/6.mp3"
+    },
+    {
+     "ar": "دَا-دٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/7.mp3"
+    },
+    {
+     "ar": "ذَا-ذٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/8.mp3"
+    },
+    {
+     "ar": "زَا-زٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/9.mp3"
+    },
+    {
+     "ar": "سَا-سٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/10.mp3"
+    },
+    {
+     "ar": "شَا-شٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/11.mp3"
+    },
+    {
+     "ar": "عَا-عٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/12.mp3"
+    },
+    {
+     "ar": "فَا-فٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/13.mp3"
+    },
+    {
+     "ar": "كَا-كٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/14.mp3"
+    },
+    {
+     "ar": "لَا-لٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/15.mp3"
+    },
+    {
+     "ar": "مَا-مٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/16.mp3"
+    },
+    {
+     "ar": "نَا-نٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/17.mp3"
+    },
+    {
+     "ar": "هَا-هٰـ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/18.mp3"
+    },
+    {
+     "ar": "وَا-وٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/19.mp3"
+    },
+    {
+     "ar": "يَا-يٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/20.mp3"
+    },
+    {
+     "ar": "خَا-خٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/21.mp3"
+    },
+    {
+     "ar": "رَا-رٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/22.mp3"
+    },
+    {
+     "ar": "غَا-غٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/23.mp3"
+    },
+    {
+     "ar": "قَا-قٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/24.mp3"
+    },
+    {
+     "ar": "صَا-صٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/25.mp3"
+    },
+    {
+     "ar": "ضَا-ضٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/26.mp3"
+    },
+    {
+     "ar": "طَا-طٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/27.mp3"
+    },
+    {
+     "ar": "ظَا-ظٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/fethanin-uzatilmasi/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e09": {
+   "baslik": "Le « â » long (fatḥa + alif) — comparaison",
+   "ogeler": [
+    {
+     "ar": "اَ",
+     "okunus": "a",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/1.mp3"
+    },
+    {
+     "ar": "بَ",
+     "okunus": "ba",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/2.mp3"
+    },
+    {
+     "ar": "تَ",
+     "okunus": "ta",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/3.mp3"
+    },
+    {
+     "ar": "ثَ",
+     "okunus": "tha",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/4.mp3"
+    },
+    {
+     "ar": "جَ",
+     "okunus": "dja",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/5.mp3"
+    },
+    {
+     "ar": "اٰ",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/6.mp3"
+    },
+    {
+     "ar": "بَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/7.mp3"
+    },
+    {
+     "ar": "تَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/8.mp3"
+    },
+    {
+     "ar": "ثَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/9.mp3"
+    },
+    {
+     "ar": "جَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/10.mp3"
+    },
+    {
+     "ar": "حَ",
+     "okunus": "ḥa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/11.mp3"
+    },
+    {
+     "ar": "دَ",
+     "okunus": "da",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/12.mp3"
+    },
+    {
+     "ar": "ذَ",
+     "okunus": "dha",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/13.mp3"
+    },
+    {
+     "ar": "زَ",
+     "okunus": "za",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/14.mp3"
+    },
+    {
+     "ar": "سَ",
+     "okunus": "sa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/15.mp3"
+    },
+    {
+     "ar": "حَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/16.mp3"
+    },
+    {
+     "ar": "دَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/17.mp3"
+    },
+    {
+     "ar": "ذَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/18.mp3"
+    },
+    {
+     "ar": "زَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/19.mp3"
+    },
+    {
+     "ar": "سَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/20.mp3"
+    },
+    {
+     "ar": "شَ",
+     "okunus": "cha",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/21.mp3"
+    },
+    {
+     "ar": "عَ",
+     "okunus": "ʿa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/22.mp3"
+    },
+    {
+     "ar": "فَ",
+     "okunus": "fa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/23.mp3"
+    },
+    {
+     "ar": "كَ",
+     "okunus": "ka",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/24.mp3"
+    },
+    {
+     "ar": "لَ",
+     "okunus": "la",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/25.mp3"
+    },
+    {
+     "ar": "شَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/26.mp3"
+    },
+    {
+     "ar": "عَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/27.mp3"
+    },
+    {
+     "ar": "فَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/28.mp3"
+    },
+    {
+     "ar": "كَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/29.mp3"
+    },
+    {
+     "ar": "لَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/30.mp3"
+    },
+    {
+     "ar": "مَ",
+     "okunus": "ma",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/31.mp3"
+    },
+    {
+     "ar": "نَ",
+     "okunus": "na",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/32.mp3"
+    },
+    {
+     "ar": "هَـ",
+     "okunus": "ha",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/33.mp3"
+    },
+    {
+     "ar": "وَ",
+     "okunus": "wa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/34.mp3"
+    },
+    {
+     "ar": "ىَ",
+     "okunus": "ya",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/35.mp3"
+    },
+    {
+     "ar": "مَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/36.mp3"
+    },
+    {
+     "ar": "نَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/37.mp3"
+    },
+    {
+     "ar": "هَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/38.mp3"
+    },
+    {
+     "ar": "وَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/39.mp3"
+    },
+    {
+     "ar": "يَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/40.mp3"
+    },
+    {
+     "ar": "خَ",
+     "okunus": "kha",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/41.mp3"
+    },
+    {
+     "ar": "رَ",
+     "okunus": "ra",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/42.mp3"
+    },
+    {
+     "ar": "غَ",
+     "okunus": "gha",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/43.mp3"
+    },
+    {
+     "ar": "قَ",
+     "okunus": "qa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/44.mp3"
+    },
+    {
+     "ar": "خَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/45.mp3"
+    },
+    {
+     "ar": "رَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/46.mp3"
+    },
+    {
+     "ar": "غَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/47.mp3"
+    },
+    {
+     "ar": "قَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/48.mp3"
+    },
+    {
+     "ar": "صَ",
+     "okunus": "ṣa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/49.mp3"
+    },
+    {
+     "ar": "ضَ",
+     "okunus": "ḍa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/50.mp3"
+    },
+    {
+     "ar": "طَ",
+     "okunus": "ṭa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/51.mp3"
+    },
+    {
+     "ar": "ظَ",
+     "okunus": "ẓa",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/52.mp3"
+    },
+    {
+     "ar": "صَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/53.mp3"
+    },
+    {
+     "ar": "ضَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/54.mp3"
+    },
+    {
+     "ar": "طَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/55.mp3"
+    },
+    {
+     "ar": "ظَا",
+     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/56.mp3"
+    }
+   ],
+   "altbaslik": "56 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e11": {
+   "baslik": "Le tanwîn « an »",
+   "ogeler": [
+    {
+     "ar": "اً",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/1.mp3"
+    },
+    {
+     "ar": "بًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/2.mp3"
+    },
+    {
+     "ar": "تًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/3.mp3"
+    },
+    {
+     "ar": "ثًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/4.mp3"
+    },
+    {
+     "ar": "جًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/5.mp3"
+    },
+    {
+     "ar": "حًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/6.mp3"
+    },
+    {
+     "ar": "دًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/7.mp3"
+    },
+    {
+     "ar": "ذًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/8.mp3"
+    },
+    {
+     "ar": "زًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/9.mp3"
+    },
+    {
+     "ar": "سًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/10.mp3"
+    },
+    {
+     "ar": "شًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/11.mp3"
+    },
+    {
+     "ar": "عًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/12.mp3"
+    },
+    {
+     "ar": "فًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/13.mp3"
+    },
+    {
+     "ar": "كًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/14.mp3"
+    },
+    {
+     "ar": "لاً",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/15.mp3"
+    },
+    {
+     "ar": "مًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/16.mp3"
+    },
+    {
+     "ar": "نًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/17.mp3"
+    },
+    {
+     "ar": "هًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/18.mp3"
+    },
+    {
+     "ar": "وًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/19.mp3"
+    },
+    {
+     "ar": "يًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/20.mp3"
+    },
+    {
+     "ar": "خًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/21.mp3"
+    },
+    {
+     "ar": "رًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/22.mp3"
+    },
+    {
+     "ar": "غًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/23.mp3"
+    },
+    {
+     "ar": "قًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/24.mp3"
+    },
+    {
+     "ar": "صًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/25.mp3"
+    },
+    {
+     "ar": "ضًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/26.mp3"
+    },
+    {
+     "ar": "طًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/27.mp3"
+    },
+    {
+     "ar": "ظًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/fetha-tenvin/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e13": {
+   "baslik": "Le tanwîn « an » — exercices",
+   "ogeler": [
+    {
+     "ar": "مَرَحًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/1.mp3"
+    },
+    {
+     "ar": "سَوَاءً",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/2.mp3"
+    },
+    {
+     "ar": "خَطَاً",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/3.mp3"
+    },
+    {
+     "ar": "مَطَرًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/4.mp3"
+    },
+    {
+     "ar": "زَ بَدًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/5.mp3"
+    },
+    {
+     "ar": "حَرَسًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/6.mp3"
+    },
+    {
+     "ar": "قَصَصًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/7.mp3"
+    },
+    {
+     "ar": "مَالًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/8.mp3"
+    },
+    {
+     "ar": "حَرَجًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/9.mp3"
+    },
+    {
+     "ar": "مَفَازًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/10.mp3"
+    },
+    {
+     "ar": "جَنَفًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/11.mp3"
+    },
+    {
+     "ar": "غَدَقًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/12.mp3"
+    },
+    {
+     "ar": "دَرَكًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/13.mp3"
+    },
+    {
+     "ar": "سَكَنًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/14.mp3"
+    },
+    {
+     "ar": "سَفَهًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/15.mp3"
+    },
+    {
+     "ar": "زَكٰوةً",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/16.mp3"
+    },
+    {
+     "ar": "وَقَارًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/17.mp3"
+    },
+    {
+     "ar": "ضَلٰلًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/18.mp3"
+    },
+    {
+     "ar": "مَعَاشًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/19.mp3"
+    },
+    {
+     "ar": "شَطَطًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/20.mp3"
+    },
+    {
+     "ar": "طَبَقًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/21.mp3"
+    },
+    {
+     "ar": "وَحَنَانًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/22.mp3"
+    },
+    {
+     "ar": "كَانَ عَرَضًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/23.mp3"
+    },
+    {
+     "ar": "هٰذَا لَبَلَاغًا",
+     "ses": "/media/ses/elifba/k/fetha-tenvin/uygulama/24.mp3"
+    }
+   ],
+   "altbaslik": "24 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e16": {
+   "baslik": "Le « î » long (kasra + yâ’)",
+   "ogeler": [
+    {
+     "ar": "ا۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/1.mp3"
+    },
+    {
+     "ar": "ب۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/2.mp3"
+    },
+    {
+     "ar": "ت۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/3.mp3"
+    },
+    {
+     "ar": "ث۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/4.mp3"
+    },
+    {
+     "ar": "ج۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/5.mp3"
+    },
+    {
+     "ar": "ح۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/6.mp3"
+    },
+    {
+     "ar": "د۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/7.mp3"
+    },
+    {
+     "ar": "ذ۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/8.mp3"
+    },
+    {
+     "ar": "ر۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/9.mp3"
+    },
+    {
+     "ar": "ز۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/10.mp3"
+    },
+    {
+     "ar": "س۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/11.mp3"
+    },
+    {
+     "ar": "ش۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/12.mp3"
+    },
+    {
+     "ar": "ع۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/13.mp3"
+    },
+    {
+     "ar": "ف۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/14.mp3"
+    },
+    {
+     "ar": "ك۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/15.mp3"
+    },
+    {
+     "ar": "ل۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/16.mp3"
+    },
+    {
+     "ar": "م۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/17.mp3"
+    },
+    {
+     "ar": "ن۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/18.mp3"
+    },
+    {
+     "ar": "ه۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/19.mp3"
+    },
+    {
+     "ar": "و۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/20.mp3"
+    },
+    {
+     "ar": "ي۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/21.mp3"
+    },
+    {
+     "ar": "خ۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/22.mp3"
+    },
+    {
+     "ar": "غ۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/23.mp3"
+    },
+    {
+     "ar": "ق۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/24.mp3"
+    },
+    {
+     "ar": "ص۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/25.mp3"
+    },
+    {
+     "ar": "ض۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/26.mp3"
+    },
+    {
+     "ar": "ط۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/27.mp3"
+    },
+    {
+     "ar": "ظ۪ى",
+     "ses": "/media/ses/elifba/k/kesranin-uzatilmasi/kesranin-uzatilmasi/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e19": {
+   "baslik": "Le tanwîn « in »",
+   "ogeler": [
+    {
+     "ar": "اٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/1.mp3"
+    },
+    {
+     "ar": "بٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/2.mp3"
+    },
+    {
+     "ar": "تٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/3.mp3"
+    },
+    {
+     "ar": "ثٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/4.mp3"
+    },
+    {
+     "ar": "جٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/5.mp3"
+    },
+    {
+     "ar": "حٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/6.mp3"
+    },
+    {
+     "ar": "دٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/7.mp3"
+    },
+    {
+     "ar": "ذٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/8.mp3"
+    },
+    {
+     "ar": "رٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/9.mp3"
+    },
+    {
+     "ar": "زٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/10.mp3"
+    },
+    {
+     "ar": "سٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/11.mp3"
+    },
+    {
+     "ar": "شٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/12.mp3"
+    },
+    {
+     "ar": "عٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/13.mp3"
+    },
+    {
+     "ar": "فٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/14.mp3"
+    },
+    {
+     "ar": "كٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/15.mp3"
+    },
+    {
+     "ar": "لٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/16.mp3"
+    },
+    {
+     "ar": "مٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/17.mp3"
+    },
+    {
+     "ar": "نٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/18.mp3"
+    },
+    {
+     "ar": "هٍـ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/19.mp3"
+    },
+    {
+     "ar": "وٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/20.mp3"
+    },
+    {
+     "ar": "ىٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/21.mp3"
+    },
+    {
+     "ar": "خٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/22.mp3"
+    },
+    {
+     "ar": "غٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/23.mp3"
+    },
+    {
+     "ar": "قٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/24.mp3"
+    },
+    {
+     "ar": "صٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/25.mp3"
+    },
+    {
+     "ar": "ضٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/26.mp3"
+    },
+    {
+     "ar": "طٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/27.mp3"
+    },
+    {
+     "ar": "ظٍ",
+     "ses": "/media/ses/elifba/k/kesranin-tenvini/kesranin-tenvini/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e24": {
+   "baslik": "Le « oû » long (ḍamma + wâw)",
+   "ogeler": [
+    {
+     "ar": "اُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/1.mp3"
+    },
+    {
+     "ar": "بُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/2.mp3"
+    },
+    {
+     "ar": "تُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/3.mp3"
+    },
+    {
+     "ar": "ثُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/4.mp3"
+    },
+    {
+     "ar": "جُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/5.mp3"
+    },
+    {
+     "ar": "حُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/6.mp3"
+    },
+    {
+     "ar": "دُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/7.mp3"
+    },
+    {
+     "ar": "ذُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/8.mp3"
+    },
+    {
+     "ar": "زُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/9.mp3"
+    },
+    {
+     "ar": "سُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/10.mp3"
+    },
+    {
+     "ar": "شُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/11.mp3"
+    },
+    {
+     "ar": "عُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/12.mp3"
+    },
+    {
+     "ar": "فُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/13.mp3"
+    },
+    {
+     "ar": "كُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/14.mp3"
+    },
+    {
+     "ar": "لُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/15.mp3"
+    },
+    {
+     "ar": "مُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/16.mp3"
+    },
+    {
+     "ar": "نُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/17.mp3"
+    },
+    {
+     "ar": "هُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/18.mp3"
+    },
+    {
+     "ar": "وُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/19.mp3"
+    },
+    {
+     "ar": "يُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/20.mp3"
+    },
+    {
+     "ar": "خُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/21.mp3"
+    },
+    {
+     "ar": "رُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/22.mp3"
+    },
+    {
+     "ar": "غُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/23.mp3"
+    },
+    {
+     "ar": "قُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/24.mp3"
+    },
+    {
+     "ar": "صُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/25.mp3"
+    },
+    {
+     "ar": "ضُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/26.mp3"
+    },
+    {
+     "ar": "طُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/27.mp3"
+    },
+    {
+     "ar": "ظُو",
+     "ses": "/media/ses/elifba/k/dammenin-uzatilmasi/dammenin-uzatilmasi/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e27": {
+   "baslik": "Le tanwîn « oun »",
+   "ogeler": [
+    {
+     "ar": "اٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/1.mp3"
+    },
+    {
+     "ar": "بٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/2.mp3"
+    },
+    {
+     "ar": "تٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/3.mp3"
+    },
+    {
+     "ar": "ثٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/4.mp3"
+    },
+    {
+     "ar": "جٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/5.mp3"
+    },
+    {
+     "ar": "حٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/6.mp3"
+    },
+    {
+     "ar": "دٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/7.mp3"
+    },
+    {
+     "ar": "ذٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/8.mp3"
+    },
+    {
+     "ar": "زٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/9.mp3"
+    },
+    {
+     "ar": "سٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/10.mp3"
+    },
+    {
+     "ar": "شٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/11.mp3"
+    },
+    {
+     "ar": "عٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/12.mp3"
+    },
+    {
+     "ar": "فٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/13.mp3"
+    },
+    {
+     "ar": "كٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/14.mp3"
+    },
+    {
+     "ar": "لٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/15.mp3"
+    },
+    {
+     "ar": "مٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/16.mp3"
+    },
+    {
+     "ar": "نٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/17.mp3"
+    },
+    {
+     "ar": "هٌـ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/18.mp3"
+    },
+    {
+     "ar": "وٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/19.mp3"
+    },
+    {
+     "ar": "ىٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/20.mp3"
+    },
+    {
+     "ar": "خٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/21.mp3"
+    },
+    {
+     "ar": "رٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/22.mp3"
+    },
+    {
+     "ar": "غٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/23.mp3"
+    },
+    {
+     "ar": "قٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/24.mp3"
+    },
+    {
+     "ar": "صٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/25.mp3"
+    },
+    {
+     "ar": "ضٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/26.mp3"
+    },
+    {
+     "ar": "طٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/27.mp3"
+    },
+    {
+     "ar": "ظٌ",
+     "ses": "/media/ses/elifba/k/dammenin-tenvini/dammenin-tenvini/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e30": {
+   "baslik": "Le soukoûn",
+   "ogeler": [
+    {
+     "ar": "اَصَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/1.mp3"
+    },
+    {
+     "ar": "اَصْ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/2.mp3"
+    },
+    {
+     "ar": "اَصْلَحَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/3.mp3"
+    },
+    {
+     "ar": "وِرَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/4.mp3"
+    },
+    {
+     "ar": "وِرْ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/5.mp3"
+    },
+    {
+     "ar": "وِرْدًا",
+     "ses": "/media/ses/elifba/k/cezm/cezm/6.mp3"
+    },
+    {
+     "ar": "يَئِسَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/7.mp3"
+    },
+    {
+     "ar": "يَئِسْ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/8.mp3"
+    },
+    {
+     "ar": "يَئِسْنَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/9.mp3"
+    },
+    {
+     "ar": "فَحُكَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/10.mp3"
+    },
+    {
+     "ar": "فَحُكْ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/11.mp3"
+    },
+    {
+     "ar": "فَحُكْمُ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/12.mp3"
+    },
+    {
+     "ar": "اِذَ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/13.mp3"
+    },
+    {
+     "ar": "اِذْ",
+     "ses": "/media/ses/elifba/k/cezm/cezm/14.mp3"
+    },
+    {
+     "ar": "اِذْ قَامُوا",
+     "ses": "/media/ses/elifba/k/cezm/cezm/15.mp3"
+    }
+   ],
+   "altbaslik": "15 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e31": {
+   "baslik": "Le soukoûn — comprendre",
+   "ogeler": [
+    {
+     "ar": "بِئْ",
+     "ses": "/media/ses/elifba/cezm/1.mp3"
+    },
+    {
+     "ar": "تِبْ",
+     "ses": "/media/ses/elifba/cezm/2.mp3"
+    },
+    {
+     "ar": "مُتْ",
+     "ses": "/media/ses/elifba/cezm/3.mp3"
+    },
+    {
+     "ar": "هَثْ",
+     "ses": "/media/ses/elifba/cezm/4.mp3"
+    },
+    {
+     "ar": "يَجْ",
+     "ses": "/media/ses/elifba/cezm/5.mp3"
+    },
+    {
+     "ar": "يَحْ",
+     "ses": "/media/ses/elifba/cezm/6.mp3"
+    },
+    {
+     "ar": "سِخْ",
+     "ses": "/media/ses/elifba/cezm/7.mp3"
+    },
+    {
+     "ar": "قَدْ",
+     "ses": "/media/ses/elifba/cezm/8.mp3"
+    },
+    {
+     "ar": "عُذْ",
+     "ses": "/media/ses/elifba/cezm/9.mp3"
+    },
+    {
+     "ar": "صِرْ",
+     "ses": "/media/ses/elifba/cezm/10.mp3"
+    },
+    {
+     "ar": "وَزْ",
+     "ses": "/media/ses/elifba/cezm/11.mp3"
+    },
+    {
+     "ar": "بِسْ",
+     "ses": "/media/ses/elifba/cezm/12.mp3"
+    },
+    {
+     "ar": "خَشْ",
+     "ses": "/media/ses/elifba/cezm/13.mp3"
+    },
+    {
+     "ar": "فَصْ",
+     "ses": "/media/ses/elifba/cezm/14.mp3"
+    },
+    {
+     "ar": "رِضْ",
+     "ses": "/media/ses/elifba/cezm/15.mp3"
+    },
+    {
+     "ar": "شَطْ",
+     "ses": "/media/ses/elifba/cezm/16.mp3"
+    },
+    {
+     "ar": "تُظْ",
+     "ses": "/media/ses/elifba/cezm/17.mp3"
+    },
+    {
+     "ar": "نَعْ",
+     "ses": "/media/ses/elifba/cezm/18.mp3"
+    },
+    {
+     "ar": "مَغْ",
+     "ses": "/media/ses/elifba/cezm/19.mp3"
+    },
+    {
+     "ar": "غُفْ",
+     "ses": "/media/ses/elifba/cezm/20.mp3"
+    },
+    {
+     "ar": "فَقْ",
+     "ses": "/media/ses/elifba/cezm/21.mp3"
+    },
+    {
+     "ar": "رَكْ",
+     "ses": "/media/ses/elifba/cezm/22.mp3"
+    },
+    {
+     "ar": "زُلْ",
+     "ses": "/media/ses/elifba/cezm/23.mp3"
+    },
+    {
+     "ar": "هُمْ",
+     "ses": "/media/ses/elifba/cezm/24.mp3"
+    },
+    {
+     "ar": "مَنْ",
+     "ses": "/media/ses/elifba/cezm/25.mp3"
+    },
+    {
+     "ar": "صِهْ",
+     "ses": "/media/ses/elifba/cezm/26.mp3"
+    },
+    {
+     "ar": "اَوْ",
+     "ses": "/media/ses/elifba/cezm/27.mp3"
+    },
+    {
+     "ar": "وَىْ",
+     "ses": "/media/ses/elifba/cezm/28.mp3"
+    }
+   ],
+   "altbaslik": "28 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e32": {
+   "baslik": "Le soukoûn — exercices",
+   "ogeler": [
+    {
+     "ar": "لَمْ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/1.mp3"
+    },
+    {
+     "ar": "وِزْرٌ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/2.mp3"
+    },
+    {
+     "ar": "اِفْكٌ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/3.mp3"
+    },
+    {
+     "ar": "فَاَوْفِ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/4.mp3"
+    },
+    {
+     "ar": "اَثْقَالَهَا",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/5.mp3"
+    },
+    {
+     "ar": "مَخْذُولاً",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/6.mp3"
+    },
+    {
+     "ar": "غَضْبٰنَ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/7.mp3"
+    },
+    {
+     "ar": "اُخْرِجَتْ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/8.mp3"
+    },
+    {
+     "ar": "فَلَا تُشْمِتْ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/9.mp3"
+    },
+    {
+     "ar": "قُلْ اَرَاَيْتُمْ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/10.mp3"
+    },
+    {
+     "ar": "مُسْلِمُونَ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/11.mp3"
+    },
+    {
+     "ar": "قُلْ ف۪يهِمَا",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/12.mp3"
+    },
+    {
+     "ar": "تَسْتَعْجِلُونَ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/13.mp3"
+    },
+    {
+     "ar": "ذٰلِكُمْ اِصْر۪ى",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/14.mp3"
+    },
+    {
+     "ar": "تُغْنِىَ عَنْهُمْ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/15.mp3"
+    },
+    {
+     "ar": "وَاِلٰهُكُمْ وَاحِدٌ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/16.mp3"
+    },
+    {
+     "ar": "مِنَ الْوِلْدَانِ",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/17.mp3"
+    },
+    {
+     "ar": "سَاُر۪يكُمْ اٰيٰ۪تى",
+     "ses": "/media/ses/elifba/k/cezm/uygulama/18.mp3"
+    }
+   ],
+   "altbaslik": "18 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e34": {
+   "baslik": "La chadda — exercices",
+   "ogeler": [
+    {
+     "ar": "مِمَّا",
+     "ses": "/media/ses/elifba/sedde/1.mp3"
+    },
+    {
+     "ar": "عَدَّ",
+     "ses": "/media/ses/elifba/sedde/2.mp3"
+    },
+    {
+     "ar": "كُلٌّ",
+     "ses": "/media/ses/elifba/sedde/3.mp3"
+    },
+    {
+     "ar": "تَوَّابًا",
+     "ses": "/media/ses/elifba/sedde/4.mp3"
+    },
+    {
+     "ar": "تَبَّتْ",
+     "ses": "/media/ses/elifba/sedde/5.mp3"
+    },
+    {
+     "ar": "تَطَّلِعُ",
+     "ses": "/media/ses/elifba/sedde/6.mp3"
+    },
+    {
+     "ar": "يَمُدُّهُمْ",
+     "ses": "/media/ses/elifba/sedde/7.mp3"
+    },
+    {
+     "ar": "يُكَذِّبُ",
+     "ses": "/media/ses/elifba/sedde/8.mp3"
+    },
+    {
+     "ar": "مُسْتَقَرٌّ",
+     "ses": "/media/ses/elifba/sedde/9.mp3"
+    },
+    {
+     "ar": "فَصَلِّ لِرَبِّكَ",
+     "ses": "/media/ses/elifba/sedde/10.mp3"
+    },
+    {
+     "ar": "سَحَّارٍ عَل۪يمٍ",
+     "ses": "/media/ses/elifba/sedde/11.mp3"
+    },
+    {
+     "ar": "وَلَا يَحُضُّ",
+     "ses": "/media/ses/elifba/sedde/12.mp3"
+    },
+    {
+     "ar": "وَيَحِقَّ الْقَوْلُ",
+     "ses": "/media/ses/elifba/sedde/13.mp3"
+    },
+    {
+     "ar": "اِمَّا يُعَذِّبُهُمْ",
+     "ses": "/media/ses/elifba/sedde/14.mp3"
+    },
+    {
+     "ar": "بِاٰيٰتِ رَبِّنَا",
+     "ses": "/media/ses/elifba/sedde/15.mp3"
+    },
+    {
+     "ar": "فَسَوّٰيهُنَّ سَبْعَ",
+     "ses": "/media/ses/elifba/sedde/16.mp3"
+    },
+    {
+     "ar": "نُسَبِّحُ بِحَمْدِكَ",
+     "ses": "/media/ses/elifba/sedde/17.mp3"
+    },
+    {
+     "ar": "مِمَّا ذُكِّرُوا",
+     "ses": "/media/ses/elifba/sedde/18.mp3"
+    }
+   ],
+   "altbaslik": "18 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e37": {
+   "baslik": "Le pronom « hou / hi » — quand on allonge",
+   "ogeler": [
+    {
+     "ar": "مَاحَوْلَهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/1.mp3"
+    },
+    {
+     "ar": "نَبَذَهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/2.mp3"
+    },
+    {
+     "ar": "رَبَّهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/3.mp3"
+    },
+    {
+     "ar": "لَعَلَّهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/4.mp3"
+    },
+    {
+     "ar": "وَاُمَّهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/5.mp3"
+    },
+    {
+     "ar": "اِنَّهُ بِهِمْ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/6.mp3"
+    },
+    {
+     "ar": "اَيُمْسِكُهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/7.mp3"
+    },
+    {
+     "ar": "وَحَمْلُهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/8.mp3"
+    },
+    {
+     "ar": "وَفِصَالُهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/9.mp3"
+    },
+    {
+     "ar": "وَجُنُودُهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/10.mp3"
+    },
+    {
+     "ar": "وَمَانُنَزِّلُهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/11.mp3"
+    },
+    {
+     "ar": "يُحَاوِرُهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/12.mp3"
+    },
+    {
+     "ar": "بَعْدِه۪",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/13.mp3"
+    },
+    {
+     "ar": "يَهْد۪ ى بِه۪",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/14.mp3"
+    },
+    {
+     "ar": "وَكُتُبِه۪",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/15.mp3"
+    },
+    {
+     "ar": "وَرُسُلِه۪",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/16.mp3"
+    },
+    {
+     "ar": "وَاِخْوَتِه۪",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/17.mp3"
+    },
+    {
+     "ar": "ف۪ىهٰذِه۪",
+     "ses": "/media/ses/elifba/k/zamir/uzatildigi-konumlar/18.mp3"
+    }
+   ],
+   "altbaslik": "18 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e38": {
+   "baslik": "Le pronom « hou / hi » — quand on n’allonge pas",
+   "ogeler": [
+    {
+     "ar": "اَبَاهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/1.mp3"
+    },
+    {
+     "ar": "اَخَاهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/2.mp3"
+    },
+    {
+     "ar": "وَمَاْوٰيهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/3.mp3"
+    },
+    {
+     "ar": "جَعَلْنَاهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/4.mp3"
+    },
+    {
+     "ar": "وَرَفَعْنَاهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/5.mp3"
+    },
+    {
+     "ar": "وَنٰدَيْنٰهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/6.mp3"
+    },
+    {
+     "ar": "وَجَاعِلُوهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/7.mp3"
+    },
+    {
+     "ar": "وَعَزَّرُوهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/8.mp3"
+    },
+    {
+     "ar": "فَكَذَّبُوهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/9.mp3"
+    },
+    {
+     "ar": "وَتُوَقِّرُوهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/10.mp3"
+    },
+    {
+     "ar": "وَنَصَرُوهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/11.mp3"
+    },
+    {
+     "ar": "وَتُسَبِّحُوهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/12.mp3"
+    },
+    {
+     "ar": "ف۪يهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/13.mp3"
+    },
+    {
+     "ar": "لِاَ ب۪يهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/14.mp3"
+    },
+    {
+     "ar": "يَاْت۪يهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/15.mp3"
+    },
+    {
+     "ar": "يُخْز۪يهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/16.mp3"
+    },
+    {
+     "ar": "اَخ۪يهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/17.mp3"
+    },
+    {
+     "ar": "نُوح۪يهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/18.mp3"
+    },
+    {
+     "ar": "اِلَيْهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/19.mp3"
+    },
+    {
+     "ar": "عَنْهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/20.mp3"
+    },
+    {
+     "ar": "مِنْهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/21.mp3"
+    },
+    {
+     "ar": "عَلَيْهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/22.mp3"
+    },
+    {
+     "ar": "لَدُنْهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/23.mp3"
+    },
+    {
+     "ar": "وَاَشْرِكْهُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/24.mp3"
+    },
+    {
+     "ar": "لَهُ الْهُدٰى",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/25.mp3"
+    },
+    {
+     "ar": "لَهُ الدّ۪ىينَ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/26.mp3"
+    },
+    {
+     "ar": "فَاَحْيَابِهِ الْاَرْضَ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/27.mp3"
+    },
+    {
+     "ar": "بِهِ الرَّحْمَةُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/28.mp3"
+    },
+    {
+     "ar": "بِيَدِهِ الْمُلْكُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/29.mp3"
+    },
+    {
+     "ar": "لَهُ اتَّقِ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/30.mp3"
+    },
+    {
+     "ar": "لَهُ الْمُلْكُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/31.mp3"
+    },
+    {
+     "ar": "بِهِ الزَّرْعَ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/32.mp3"
+    },
+    {
+     "ar": "لَاتُدْرِكُهُ الْاَبْصَارُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/33.mp3"
+    },
+    {
+     "ar": "تَحْمِلُهُ الْمَلٰۤئِكَةُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/34.mp3"
+    },
+    {
+     "ar": "يَتَخَبَّطُهُ الشَّيْطَانُ",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/35.mp3"
+    },
+    {
+     "ar": "اَخْرَجَهُ الَّذ۪ينَكَفَرُوا",
+     "ses": "/media/ses/elifba/k/zamir/uzatilmadigi-konumlar/36.mp3"
+    }
+   ],
+   "altbaslik": "36 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e41": {
+   "baslik": "S’arrêter (waqf) — les règles",
+   "ogeler": [
+    {
+     "ar": "رَبِّ الْعٰلَم۪ينَ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/1.mp3"
+    },
+    {
+     "ar": "رَبِّ الْعٰلَم۪ينْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/2.mp3"
+    },
+    {
+     "ar": "يُكَذِّبُ بِالدّ۪ينِ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/3.mp3"
+    },
+    {
+     "ar": "يُكَذِّبُ بِالدّ۪ينْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/4.mp3"
+    },
+    {
+     "ar": "بِكُلِّ شَئٍْ عَل۪يمٌ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/5.mp3"
+    },
+    {
+     "ar": "بِكُلِّ شَئٍْ عَل۪يمْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/6.mp3"
+    },
+    {
+     "ar": "وَالصُّبْحِ اِذَا تَنَفَسَ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/7.mp3"
+    },
+    {
+     "ar": "وَالصُّبْحِ اِذَا تَنَفَّسْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/8.mp3"
+    },
+    {
+     "ar": "وَالسَّمَۤاءِ ذَاتِ الْحُبُكِ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/9.mp3"
+    },
+    {
+     "ar": "وَالسَّمَۤاءِ ذَاتِ الْحُبُكْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/10.mp3"
+    },
+    {
+     "ar": "بِهِ الرُّوحُ الْاَم۪ينُ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/11.mp3"
+    },
+    {
+     "ar": "بِهِ الرُّوحُ الْاَم۪ينْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/12.mp3"
+    },
+    {
+     "ar": "بَعْضُكُمْ لِبَعْضٍ عَدُوٌّ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/13.mp3"
+    },
+    {
+     "ar": "بَعْضُكُمْ لِبَعْضٍ عَدُوْوْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/14.mp3"
+    },
+    {
+     "ar": "وَنَجَّيْنٰهُ مِنَ الْغَمِّ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/15.mp3"
+    },
+    {
+     "ar": "وَنَجَّيْنٰهُ مِنَ الْغَمْمْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/16.mp3"
+    },
+    {
+     "ar": "لِقُلُوبِكُمْ وَقُلُوبِهِنَّ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/17.mp3"
+    },
+    {
+     "ar": "لِقُلُوبِكُمْ وَقُلُوبِهِنْنْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/18.mp3"
+    },
+    {
+     "ar": "مِنْ عَيْنٍ اٰنِيَةٍ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/19.mp3"
+    },
+    {
+     "ar": "مِنْ عَيْنٍ اٰنِيَهْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/20.mp3"
+    },
+    {
+     "ar": "تَتْبَعُهَا الرَّادِفَةُ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/21.mp3"
+    },
+    {
+     "ar": "تَتْبَعُهَا الرَّادِفَهْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/22.mp3"
+    },
+    {
+     "ar": "تَصْلٰى نَارًا حَامِيَةً",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/23.mp3"
+    },
+    {
+     "ar": "تَصْلٰى نَارًا حَامِيَهْ",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/24.mp3"
+    },
+    {
+     "ar": "عِبَادِه۪ جُزْءًا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/25.mp3"
+    },
+    {
+     "ar": "عِبَادِه۪ جُزْءَا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/26.mp3"
+    },
+    {
+     "ar": "مِنَ السَّمَۤاءِ مَۤاءً",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/27.mp3"
+    },
+    {
+     "ar": "مِنَ السَّمَۤا ءِمَۤاءَا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/28.mp3"
+    },
+    {
+     "ar": "وَالنّٰشِطٰتِ نَشْطًا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/29.mp3"
+    },
+    {
+     "ar": "وَالنّٰشِطٰتِ نَشْطَا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/30.mp3"
+    },
+    {
+     "ar": "فَالْمُدَبِّرٰتِ اَمْرًا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/31.mp3"
+    },
+    {
+     "ar": "فَالْمُدَبِّرٰتِ اَمْرَا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/32.mp3"
+    },
+    {
+     "ar": "بَعْدَ ذٰلِكَ دَحٰيهَا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/33.mp3"
+    },
+    {
+     "ar": "لَا تَخَافُوا وَلَا تَحْزَنُوا",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/34.mp3"
+    },
+    {
+     "ar": "وَيَسِّرْ ل۪ى اَمْر۪ى",
+     "ses": "/media/ses/elifba/k/vakf/kurallari/35.mp3"
+    }
+   ],
+   "altbaslik": "35 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e42": {
+   "baslik": "La lettre râ’ : épaisse ou fine",
+   "ogeler": [
+    {
+     "ar": "وَتَرَكْنَا عَلَيْهِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/2.mp3"
+    },
+    {
+     "ar": "وَسَخَّرَ لَكُمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/3.mp3"
+    },
+    {
+     "ar": "كَشَجَرَةٍ خَب۪يثَةٍ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/4.mp3"
+    },
+    {
+     "ar": "رُحَمَاءُ بَيْنَهُمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/5.mp3"
+    },
+    {
+     "ar": "مَا يُؤْمَرُونَ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/6.mp3"
+    },
+    {
+     "ar": "يَكْفُرُونَ بِالرَّحْمٰنِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/7.mp3"
+    },
+    {
+     "ar": "وَا لْاَرْضِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/8.mp3"
+    },
+    {
+     "ar": "ف۪ى قَرْيَةٍ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/9.mp3"
+    },
+    {
+     "ar": "قَالُٓوا اَرْجِهْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/10.mp3"
+    },
+    {
+     "ar": "وَمَانُرْسِلُ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/11.mp3"
+    },
+    {
+     "ar": "اِلَيْهِ تُرْجَعُونَ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/12.mp3"
+    },
+    {
+     "ar": "وَاْمُرْ بِالْعُرْفِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/13.mp3"
+    },
+    {
+     "ar": "وَالْعَصْرِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/14.mp3"
+    },
+    {
+     "ar": "اِلَى النُّورِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/15.mp3"
+    },
+    {
+     "ar": "فِى الْكُفْرِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/16.mp3"
+    },
+    {
+     "ar": "عَذَابَ النَّارِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/17.mp3"
+    },
+    {
+     "ar": "كَالْفَخَّارِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/18.mp3"
+    },
+    {
+     "ar": "عَاقِبَةُ الدَّارِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/19.mp3"
+    },
+    {
+     "ar": "لَف۪ى خُسْرٍ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/20.mp3"
+    },
+    {
+     "ar": "بِكُمُ الْعُسْرَ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/21.mp3"
+    },
+    {
+     "ar": "مِنْ اَلْفِ شَهْرٍ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/22.mp3"
+    },
+    {
+     "ar": "اَلْوَاحِدُ الْقَهَّارُ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/23.mp3"
+    },
+    {
+     "ar": "وَتُخْرِجُونَ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/25.mp3"
+    },
+    {
+     "ar": "فَر۪يقًامِنْكُمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/26.mp3"
+    },
+    {
+     "ar": "ف۪ى دِيٰرِهِمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/27.mp3"
+    },
+    {
+     "ar": "عَلٰىءَاثٰرِهِمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/28.mp3"
+    },
+    {
+     "ar": "مِنْ اَمْرِنَا",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/29.mp3"
+    },
+    {
+     "ar": "بِوَرِقِكُمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/30.mp3"
+    },
+    {
+     "ar": "وَاغْفِرْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/31.mp3"
+    },
+    {
+     "ar": "فَكَبِّرْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/32.mp3"
+    },
+    {
+     "ar": "فَطَهِّرْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/33.mp3"
+    },
+    {
+     "ar": "فَبَشِّرْهُمْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/34.mp3"
+    },
+    {
+     "ar": "وَيَسِّرْ ل۪ى",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/35.mp3"
+    },
+    {
+     "ar": "وَاصْطَبِرْ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/36.mp3"
+    },
+    {
+     "ar": "اَلنَّاسَ السِّحْرَ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/37.mp3"
+    },
+    {
+     "ar": "نَسُواالذِّكْرَ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/38.mp3"
+    },
+    {
+     "ar": "وَحَرْثٌ حِجْرٌ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/39.mp3"
+    },
+    {
+     "ar": "وَلَا نَص۪يرٌ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/40.mp3"
+    },
+    {
+     "ar": "كَيْفَ نَذ۪يرِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/41.mp3"
+    },
+    {
+     "ar": "كَيْفَ نَك۪يرِ",
+     "ses": "/media/ses/elifba/k/ra-harfi/ra-harfi/42.mp3"
+    }
+   ],
+   "altbaslik": "40 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e44": {
+   "baslik": "Le lâm du nom Allah",
+   "ogeler": [
+    {
+     "ar": "مِنَ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/2.mp3"
+    },
+    {
+     "ar": "مَعَ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/3.mp3"
+    },
+    {
+     "ar": "اِلَى اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/4.mp3"
+    },
+    {
+     "ar": "خَتَمَ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/5.mp3"
+    },
+    {
+     "ar": "ذَهَبَ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/6.mp3"
+    },
+    {
+     "ar": "رَضِىَ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/7.mp3"
+    },
+    {
+     "ar": "دَفْعُ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/8.mp3"
+    },
+    {
+     "ar": "اَمْرُ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/9.mp3"
+    },
+    {
+     "ar": "رَسُولُ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/10.mp3"
+    },
+    {
+     "ar": "نَسُوااللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/11.mp3"
+    },
+    {
+     "ar": "فَوَقٰيهُمُ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/12.mp3"
+    },
+    {
+     "ar": "يُؤْتِكُمُ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/13.mp3"
+    },
+    {
+     "ar": "فِى اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/15.mp3"
+    },
+    {
+     "ar": "بِاِذْنِ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/16.mp3"
+    },
+    {
+     "ar": "دُونِ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/17.mp3"
+    },
+    {
+     "ar": "رِزْقِ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/18.mp3"
+    },
+    {
+     "ar": "سَب۪يلِ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/19.mp3"
+    },
+    {
+     "ar": "يَفْسَحِ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/lafzatullahin-lami/20.mp3"
+    }
+   ],
+   "altbaslik": "18 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e45": {
+   "baslik": "Le lâm du nom Allah — exercices",
+   "ogeler": [
+    {
+     "ar": "يَشَاِاللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/1.mp3"
+    },
+    {
+     "ar": "اَمْرُاللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/2.mp3"
+    },
+    {
+     "ar": "يُخْلِفَ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/3.mp3"
+    },
+    {
+     "ar": "بِيَدِاللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/4.mp3"
+    },
+    {
+     "ar": "لِسُنَّةِاللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/5.mp3"
+    },
+    {
+     "ar": "اٰمِنُوا بِاللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/6.mp3"
+    },
+    {
+     "ar": "وَاسْتَغْفِرِاللّٰهَ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/7.mp3"
+    },
+    {
+     "ar": "سَمِعَ اللّٰهُ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/8.mp3"
+    },
+    {
+     "ar": "فَضْلِ اللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/9.mp3"
+    },
+    {
+     "ar": "مِنْ خَشْيَةِاللّٰهِ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/10.mp3"
+    },
+    {
+     "ar": "وَعَدَاللّٰهُالْحُسْنٰى",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/11.mp3"
+    },
+    {
+     "ar": "وَيَمْحُاللّٰهُالْبٰطِلَ",
+     "ses": "/media/ses/elifba/k/lafzatullahin-lami/uygulama/12.mp3"
+    }
+   ],
+   "altbaslik": "12 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e46": {
+   "baslik": "Ikhfâ’ et iẓhâr — ikhfâ’",
+   "ogeler": [
+    {
+     "ar": "ت",
+     "okunus": "tâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/2.mp3"
+    },
+    {
+     "ar": "ث",
+     "okunus": "thâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/3.mp3"
+    },
+    {
+     "ar": "ج",
+     "okunus": "djîm",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/4.mp3"
+    },
+    {
+     "ar": "د",
+     "okunus": "dâl",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/5.mp3"
+    },
+    {
+     "ar": "ذ",
+     "okunus": "dhâl",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/6.mp3"
+    },
+    {
+     "ar": "ز",
+     "okunus": "zây",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/7.mp3"
+    },
+    {
+     "ar": "س",
+     "okunus": "sîn",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/8.mp3"
+    },
+    {
+     "ar": "ش",
+     "okunus": "chîn",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/9.mp3"
+    },
+    {
+     "ar": "ص",
+     "okunus": "ṣâd",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/10.mp3"
+    },
+    {
+     "ar": "ض",
+     "okunus": "ḍâd",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/11.mp3"
+    },
+    {
+     "ar": "ط",
+     "okunus": "ṭâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/12.mp3"
+    },
+    {
+     "ar": "ظ",
+     "okunus": "ẓâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/13.mp3"
+    },
+    {
+     "ar": "ف",
+     "okunus": "fâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/14.mp3"
+    },
+    {
+     "ar": "ق",
+     "okunus": "qâf",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/15.mp3"
+    },
+    {
+     "ar": "ك",
+     "okunus": "kâf",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/16.mp3"
+    },
+    {
+     "ar": "اَنْ تَذْبَحُوا",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/17.mp3"
+    },
+    {
+     "ar": "رَحْمَةً ثُمَّ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/18.mp3"
+    },
+    {
+     "ar": "مِنْ جُوعٍ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/19.mp3"
+    },
+    {
+     "ar": "مِنْ دُونِه۪",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/20.mp3"
+    },
+    {
+     "ar": "بٰسِطٌ ذِرَاعَيْهِ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/21.mp3"
+    },
+    {
+     "ar": "اُنْزِلَ عَلَيْهِ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/22.mp3"
+    },
+    {
+     "ar": "مِنْ سُلَيْمٰنَ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/23.mp3"
+    },
+    {
+     "ar": "اِذًاشَطَطًا",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/24.mp3"
+    },
+    {
+     "ar": "جِمٰلَةٌ صُفْرٌ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/25.mp3"
+    },
+    {
+     "ar": "مِنْ ضُرٍّ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/26.mp3"
+    },
+    {
+     "ar": "قَوْمٌ طَاغُونَ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/27.mp3"
+    },
+    {
+     "ar": "مَثَلًا ظَلَّ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/28.mp3"
+    },
+    {
+     "ar": "كُنْ فَيَكُونُ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/29.mp3"
+    },
+    {
+     "ar": "مِنْ قَرْنٍ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/30.mp3"
+    },
+    {
+     "ar": "زَوْجٍ كَر۪يمٍ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/ihfa/31.mp3"
+    }
+   ],
+   "altbaslik": "30 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e47": {
+   "baslik": "Ikhfâ’ et iẓhâr — iẓhâr",
+   "ogeler": [
+    {
+     "ar": "ا",
+     "okunus": "alif",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/2.mp3"
+    },
+    {
+     "ar": "ح",
+     "okunus": "ḥâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/3.mp3"
+    },
+    {
+     "ar": "خ",
+     "okunus": "khâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/4.mp3"
+    },
+    {
+     "ar": "ع",
+     "okunus": "ʿayn",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/5.mp3"
+    },
+    {
+     "ar": "غ",
+     "okunus": "ghayn",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/6.mp3"
+    },
+    {
+     "ar": "هـ",
+     "okunus": "hâ’",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/7.mp3"
+    },
+    {
+     "ar": "فَاِنْ اَمِنَ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/8.mp3"
+    },
+    {
+     "ar": "عَل۪يمٌ حَك۪يمٌ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/9.mp3"
+    },
+    {
+     "ar": "وَلَامِنْ خَلْفِه۪",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/10.mp3"
+    },
+    {
+     "ar": "خُلُقٍ عَظ۪يمٍ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/11.mp3"
+    },
+    {
+     "ar": "م۪يثٰقًاغَل۪يظًا",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/12.mp3"
+    },
+    {
+     "ar": "وَهُمْ يَنْهَوْنَ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/izhar/13.mp3"
+    }
+   ],
+   "altbaslik": "12 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e48": {
+   "baslik": "Ikhfâ’ et iẓhâr — exercices",
+   "ogeler": [
+    {
+     "ar": "كَمَنْ هُوَ خٰلِدٌ فِى النَّارِ وَسُقُوا مَۤاءً حَم۪يمًا فَقَطَّعَ اَمْعَۤاءَهُمْ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/uygulama/1.mp3"
+    },
+    {
+     "ar": "كَمَثَلِ ر۪يحٍ ف۪يهَا صِرٌّ اَصَابَتْ حَرْثَ قَوْمٍ ظَلَمُۤوا اَنْفُسَهُمْ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/uygulama/2.mp3"
+    },
+    {
+     "ar": "اَوْ تُخْفُوهُ اَوْ تَعْفُوا عَنْ سُۤوءٍ فَاِنَّ اللّٰهَ كَانَ عَفُوًّا قَد۪يرًا",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/uygulama/3.mp3"
+    },
+    {
+     "ar": "فَمَنْ اٰمَنَ وَاَصْلَحَ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+     "ses": "/media/ses/elifba/k/ihfa-izhar/uygulama/4.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e51": {
+   "baslik": "Idghâm avec ghounna",
+   "ogeler": [
+    {
+     "ar": "خَيْرٌ نُزُلًا",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/1.mp3"
+    },
+    {
+     "ar": "خَيْرُ نُّزُلًا",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/2.mp3"
+    },
+    {
+     "ar": "كُلًّا نُمِدُّ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/3.mp3"
+    },
+    {
+     "ar": "كُلَّ نُّمِدُّ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/4.mp3"
+    },
+    {
+     "ar": "مُغَيِّرًا نِعْمَةً",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/5.mp3"
+    },
+    {
+     "ar": "مُغَيِّرَا نِّعْمَةً",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/6.mp3"
+    },
+    {
+     "ar": "اِلَّابَشَرٌ مِثْلُنَا",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/7.mp3"
+    },
+    {
+     "ar": "اِلَّابَشَرُ مِّثْلُنَا",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/8.mp3"
+    },
+    {
+     "ar": "وَكُنْ مِنَ الشّٰكِر۪ينَ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/9.mp3"
+    },
+    {
+     "ar": "وَكُمِّنَ الشّٰكِر۪ينَ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/10.mp3"
+    },
+    {
+     "ar": "عِفْر۪يتٌ مِنَ الْجِنِّ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/11.mp3"
+    },
+    {
+     "ar": "عِفْر۪يتُ مِّنَ الْجِنِّ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/12.mp3"
+    },
+    {
+     "ar": "مِنْ وَرَقَةٍ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/13.mp3"
+    },
+    {
+     "ar": "اَنْ يُؤْمِنُوا لَكُمْ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/14.mp3"
+    },
+    {
+     "ar": "لِقَوْمٍ يُوقِنُونَ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/15.mp3"
+    },
+    {
+     "ar": "كٰفِرَةٌ يَرَنَهُمْ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/16.mp3"
+    },
+    {
+     "ar": "وَ لِىَنَعْجَةٌ وٰحِدَةٌ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/17.mp3"
+    },
+    {
+     "ar": "ذٰلِكَكَيْلٌ يَس۪يرٌ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/18.mp3"
+    },
+    {
+     "ar": "مِنَاللّٰهِمِنْ وَاقٍ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/19.mp3"
+    },
+    {
+     "ar": "عَلٰى وَهْنٍ وَفِصَالُهُ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/20.mp3"
+    },
+    {
+     "ar": "اَنْ يُوصَلَ وَيُفْسِدُونَ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/21.mp3"
+    },
+    {
+     "ar": "مَغْفِرَةٌوَرِزْقٌ كَر۪يمٌ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/22.mp3"
+    },
+    {
+     "ar": "وَرَيْحَانٌوَجَنَّتُ نَع۪يمٍ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/23.mp3"
+    },
+    {
+     "ar": "وَهُوَ عَلٰى كُلِّشَئٍْوَك۪يلٌ",
+     "ses": "/media/ses/elifba/k/idgami-meal-gunne/idgami-meal-gunne/24.mp3"
+    }
+   ],
+   "altbaslik": "24 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e53": {
+   "baslik": "Idghâm de deux lettres identiques, avec ghounna",
+   "ogeler": [
+    {
+     "ar": "اَنْ نُهْلِكَ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/1.mp3"
+    },
+    {
+     "ar": "اَنُّهْلِكَ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/2.mp3"
+    },
+    {
+     "ar": "لَنْ نُؤْمِنَ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/3.mp3"
+    },
+    {
+     "ar": "لَنُّؤْمِنَ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/4.mp3"
+    },
+    {
+     "ar": "اِنْ نَس۪ينَا",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/5.mp3"
+    },
+    {
+     "ar": "اِنَّس۪ينَا",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/6.mp3"
+    },
+    {
+     "ar": "وَهُمْ مِنْ فَزَعٍ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/7.mp3"
+    },
+    {
+     "ar": "وَهُ مِّنْ فَزَعٍ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/8.mp3"
+    },
+    {
+     "ar": "بِهِمْ مِنْ خَلْفِهِمْ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/9.mp3"
+    },
+    {
+     "ar": "بِهِ مِّنْ خَلْفِهِمْ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/10.mp3"
+    },
+    {
+     "ar": "وَاَنْتُمْ مُعْرِضُونَ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/11.mp3"
+    },
+    {
+     "ar": "وَاَنْتُ مُّعْرِضُونَ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/12.mp3"
+    },
+    {
+     "ar": "شُهَدَۤاءَكُمْ مِنْ دُونِ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/13.mp3"
+    },
+    {
+     "ar": "شُهَدَۤاءَكُ مِّنْ دُونِ",
+     "ses": "/media/ses/elifba/k/idgami-misleyn-meal-gunne/idgami-misleyn-meal-gunne/14.mp3"
+    }
+   ],
+   "altbaslik": "14 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e55": {
+   "baslik": "Iqlâb et ikhfâ’ labial — iqlâb",
+   "ogeler": [
+    {
+     "ar": "يَنْبُوعًا",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/1.mp3"
+    },
+    {
+     "ar": "يَمْبُوعًا",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/2.mp3"
+    },
+    {
+     "ar": "وَمَا يَنْبَغ۪ى",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/3.mp3"
+    },
+    {
+     "ar": "وَمَا يَمْبَغ۪ى",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/4.mp3"
+    },
+    {
+     "ar": "يُؤْ مِنْ بِاللّٰهِ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/5.mp3"
+    },
+    {
+     "ar": "يُؤْ مِمْ بِاللّٰهِ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/6.mp3"
+    },
+    {
+     "ar": "شَد۪يدٌ بِمَا",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/7.mp3"
+    },
+    {
+     "ar": "شَد۪يدُمْ بِمَا",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/8.mp3"
+    },
+    {
+     "ar": "جَم۪يعًا بَعْضُكُمْ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/9.mp3"
+    },
+    {
+     "ar": "جَم۪يعَمْ بَعْضُكُمْ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/iklab/10.mp3"
+    }
+   ],
+   "altbaslik": "10 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e56": {
+   "baslik": "Iqlâb et ikhfâ’ labial — ikhfâ’ labial",
+   "ogeler": [
+    {
+     "ar": "رَبُّهُمْ بِذَنْبِهِمْ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/1.mp3"
+    },
+    {
+     "ar": "اَمْ بِه۪ جِنَّةٌ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/2.mp3"
+    },
+    {
+     "ar": "اٰتَيْنٰكُمْ بِقُوَّةٍ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/3.mp3"
+    },
+    {
+     "ar": "وَلَسْتُمْ بِاٰخِذ۪يهِ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/4.mp3"
+    },
+    {
+     "ar": "وَبَدَّلْنٰهُمْ بِجَنَّتَيْهِمْ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/5.mp3"
+    },
+    {
+     "ar": "تَرْم۪يهِمْ بِحِجَارَةٍ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/6.mp3"
+    },
+    {
+     "ar": "وَيُطَافُ عَلَيْهِمْبِاٰنِيَةٍ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/7.mp3"
+    },
+    {
+     "ar": "وَيَاْمُرُكُمْ بِالْفَحْشَۤاءِ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/8.mp3"
+    },
+    {
+     "ar": "فَيُسْحِتَكُمْ بِعَذَابٍ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/9.mp3"
+    },
+    {
+     "ar": "مِنْ دِيَارِهِمْ بِغَيْرِحَقٍّ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/10.mp3"
+    },
+    {
+     "ar": "اَمْ بِظَاهِرٍ مِنَ الْقَوْلِ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/11.mp3"
+    },
+    {
+     "ar": "خُذُوا مَۤا اٰتَيْنَاكُمْ بِقُوَّةٍ",
+     "ses": "/media/ses/elifba/k/iklab-ihfai-sefevviyye/ihfai-sefevviyye/12.mp3"
+    }
+   ],
+   "altbaslik": "12 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e63": {
+   "baslik": "La qalqala",
+   "ogeler": [
+    {
+     "ar": "لَايُبْصِرُونَ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/1.mp3"
+    },
+    {
+     "ar": "بِالصَّبْرِوَالصَّلٰوةِ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/2.mp3"
+    },
+    {
+     "ar": "نَجْزِى الْمُجْرِم۪ينَ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/3.mp3"
+    },
+    {
+     "ar": "اَفَنَجْعَلُ الْمُسْلِم۪ينَ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/4.mp3"
+    },
+    {
+     "ar": "كَذٰلِكَ كِدْنَالِيُوسُفَ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/5.mp3"
+    },
+    {
+     "ar": "لَمْ يَلِدْوَلَمْ يُولَدْ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/6.mp3"
+    },
+    {
+     "ar": "شَطْرَالْمَسْجِدِالْحَرَامِ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/7.mp3"
+    },
+    {
+     "ar": "اَزْكٰى لَكُمْ وَاَ طْهَرُ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/8.mp3"
+    },
+    {
+     "ar": "يُحِبُّ الْمُقْسِط۪ينَ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/9.mp3"
+    },
+    {
+     "ar": "مَاهُمْ مُقْتَرِ فُونَ",
+     "ses": "/media/ses/elifba/k/kalkale/kalkale/10.mp3"
+    }
+   ],
+   "altbaslik": "10 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e66": {
+   "baslik": "Madd naturel, attaché, détaché — madd naturel",
+   "ogeler": [
+    {
+     "ar": "عَذَابًا",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/1.mp3"
+    },
+    {
+     "ar": "وَمِمَّارَزَقْنٰهُمْ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/2.mp3"
+    },
+    {
+     "ar": "اَرْسَلْنَاكَ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/3.mp3"
+    },
+    {
+     "ar": "يُؤْمِنُونَ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/4.mp3"
+    },
+    {
+     "ar": "يُرْضُونَكُمْ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/5.mp3"
+    },
+    {
+     "ar": "يَدْعُونَ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/6.mp3"
+    },
+    {
+     "ar": "قَل۪يلًا",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/7.mp3"
+    },
+    {
+     "ar": "جَد۪يدًا",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/8.mp3"
+    },
+    {
+     "ar": "تَسْب۪يحَهُمْ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-tabii/9.mp3"
+    }
+   ],
+   "altbaslik": "9 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e68": {
+   "baslik": "Madd naturel, attaché, détaché — madd détaché",
+   "ogeler": [
+    {
+     "ar": "وَوَمَۤا اَسْاَلُكُمْ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/1.mp3"
+    },
+    {
+     "ar": "مَٓا اَمَرَاللّٰهُ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/2.mp3"
+    },
+    {
+     "ar": "اِذَٓا اَتَيَٓا اَهْلَ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/3.mp3"
+    },
+    {
+     "ar": "ف۪ٓى اَيْد۪يكُمْ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/4.mp3"
+    },
+    {
+     "ar": "اِنّ۪ٓى اَرَان۪ى",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/5.mp3"
+    },
+    {
+     "ar": "وَيَسِّرْل۪ٓى اَمْر۪ى",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/6.mp3"
+    },
+    {
+     "ar": "لِمَا لَبِثُٓوا اَمَدًا",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/7.mp3"
+    },
+    {
+     "ar": "فَظَنُّٓوا اَنَّهُمْ",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/8.mp3"
+    },
+    {
+     "ar": "قَالُۤوا اَتَتَّخِذُنَا",
+     "ses": "/media/ses/elifba/k/meddi-tabii-muttasil-munfasil/meddi-munfasil/9.mp3"
+    }
+   ],
+   "altbaslik": "9 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e70": {
+   "baslik": "Madd obligatoire, accidentel, lîn — madd accidentel",
+   "ogeler": [
+    {
+     "ar": "عَلَّمَالْقُرْءَانَ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/1.mp3"
+    },
+    {
+     "ar": "وَالشَّجَرُ يَسْجُدَانِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/2.mp3"
+    },
+    {
+     "ar": "اَلْوَاحِدُ الْقَهَّارُ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/3.mp3"
+    },
+    {
+     "ar": "ح۪ينَ تَقُومُ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/4.mp3"
+    },
+    {
+     "ar": "مَقَامٌ مَعْلُومٌ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/5.mp3"
+    },
+    {
+     "ar": "بِذَاتِ الصُّدُورِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/6.mp3"
+    },
+    {
+     "ar": "بِقَلْبٍ سَل۪يمٍ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/7.mp3"
+    },
+    {
+     "ar": "بِرَبِّ الْعٰلَم۪ينَ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/8.mp3"
+    },
+    {
+     "ar": "مَعَهُۤ اِلَّا قَل۪يلٌ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-ariz/9.mp3"
+    }
+   ],
+   "altbaslik": "9 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e71": {
+   "baslik": "Madd obligatoire, accidentel, lîn — madd lîn",
+   "ogeler": [
+    {
+     "ar": "هٰذَا الْبَيْتِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/1.mp3"
+    },
+    {
+     "ar": "مِنَ الْغَيْظِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/2.mp3"
+    },
+    {
+     "ar": "لَهُ عَيْنَيْنِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/3.mp3"
+    },
+    {
+     "ar": "بَعْضَ يَوْمٍ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/4.mp3"
+    },
+    {
+     "ar": "ذَۤائِقَةُ الْمَوْتِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/5.mp3"
+    },
+    {
+     "ar": "ذِى الطَّوْلِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/6.mp3"
+    },
+    {
+     "ar": "فِى ابْتِغَۤاءِ الْقَوْمِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/7.mp3"
+    },
+    {
+     "ar": "وَاَنْتُمُ الْاَعْلَوْنَ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/8.mp3"
+    },
+    {
+     "ar": "وَلِسَانًا وَشَفَتَيْنِ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/9.mp3"
+    },
+    {
+     "ar": "مِنْ خَوْفٍ",
+     "ses": "/media/ses/elifba/k/meddi-lazim-ariz-lin/meddi-lin/10.mp3"
+    }
+   ],
+   "altbaslik": "10 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e76": {
+   "baslik": "Lecture guidée — al-Fâtiḥa",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/1.mp3"
+    },
+    {
+     "ar": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَم۪ينَۙ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/2.mp3"
+    },
+    {
+     "ar": "اَلرَّحْمٰنِ الرَّح۪يمِۙ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/3.mp3"
+    },
+    {
+     "ar": "مَالِكِ يَوْمِ الدّ۪ينِۜ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/4.mp3"
+    },
+    {
+     "ar": "اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَع۪ينُۜ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/5.mp3"
+    },
+    {
+     "ar": "اِهْدِنَا الصِّرَاطَ الْمُسْتَق۪يمَ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/6.mp3"
+    },
+    {
+     "ar": "صِرَاطَ الَّذ۪ينَ اَنْعَمْتَ عَلَيْهِمْۙ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّٓالّ۪ينَ",
+     "ses": "/media/ses/elifba/k/uygulama/fatiha-suresi/7.mp3"
+    }
+   ],
+   "altbaslik": "7 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e81": {
+   "baslik": "Lecture guidée — al-Kawthar",
+   "ogeler": [
+    {
+     "ar": "اِنَّٓا اَعْطَيْنَاكَ الْـكَوْثَرَۜ",
+     "ses": "/media/ses/elifba/k/uygulama/kevser-suresi/1.mp3"
+    },
+    {
+     "ar": "فَصَلِّ لِرَبِّكَ وَانْحَرْۜ",
+     "ses": "/media/ses/elifba/k/uygulama/kevser-suresi/2.mp3"
+    },
+    {
+     "ar": "اِنَّ شَانِئَكَ هُوَ الْاَبْتَرُ",
+     "ses": "/media/ses/elifba/k/uygulama/kevser-suresi/3.mp3"
+    }
+   ],
+   "altbaslik": "3 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e85": {
+   "baslik": "Lecture guidée — al-Ikhlâṣ",
+   "ogeler": [
+    {
+     "ar": "قُلْ هُوَ اللّٰهُ اَحَدٌۚ",
+     "ses": "/media/ses/elifba/k/uygulama/ihlas-suresi/1.mp3"
+    },
+    {
+     "ar": "اَللّٰهُ الصَّمَدُۚ",
+     "ses": "/media/ses/elifba/k/uygulama/ihlas-suresi/2.mp3"
+    },
+    {
+     "ar": "لَمْ يَلِدْ وَلَمْ يُولَدْۙ",
+     "ses": "/media/ses/elifba/k/uygulama/ihlas-suresi/3.mp3"
+    },
+    {
+     "ar": "وَلَمْ يَكُنْ لَهُ كُفُواً اَحَدٌ",
+     "ses": "/media/ses/elifba/k/uygulama/ihlas-suresi/4.mp3"
+    }
+   ],
+   "altbaslik": "4 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "e86": {
+   "baslik": "Lecture guidée — al-Falaq",
+   "ogeler": [
+    {
+     "ar": "قُلْ اَعُوذُ بِرَبِّ الْفَلَقِۙ",
+     "ses": "/media/ses/elifba/k/uygulama/felak-suresi/1.mp3"
+    },
+    {
+     "ar": "مِنْ شَرِّ مَا خَلَقَۙ",
+     "ses": "/media/ses/elifba/k/uygulama/felak-suresi/2.mp3"
+    },
+    {
+     "ar": "وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ",
+     "ses": "/media/ses/elifba/k/uygulama/felak-suresi/3.mp3"
+    },
+    {
+     "ar": "وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِۙ",
+     "ses": "/media/ses/elifba/k/uygulama/felak-suresi/4.mp3"
+    },
+    {
+     "ar": "وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَ",
+     "ses": "/media/ses/elifba/k/uygulama/felak-suresi/5.mp3"
+    }
+   ],
+   "altbaslik": "5 éléments — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  },
+  "mots-simples": {
+   "baslik": "Premiers mots : trois voyelles courtes",
+   "ogeler": [
+    {
+     "ar": "فَتَحَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/9.mp3"
+    },
+    {
+     "ar": "كَسَبَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/24.mp3"
+    },
+    {
+     "ar": "جَعَلَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/13.mp3"
+    },
+    {
+     "ar": "نَزَلَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/23.mp3"
+    },
+    {
+     "ar": "وَهَبَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/6.mp3"
+    },
+    {
+     "ar": "سَكَتَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/7.mp3"
+    },
+    {
+     "ar": "دَخَلَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/25.mp3"
+    },
+    {
+     "ar": "عَبَدَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/18.mp3"
+    },
+    {
+     "ar": "ضَرَبَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/38.mp3"
+    },
+    {
+     "ar": "شَرَحَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/27.mp3"
+    },
+    {
+     "ar": "نَظَرَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/56.mp3"
+    },
+    {
+     "ar": "صَدَقَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/33.mp3"
+    },
+    {
+     "ar": "خَلَقَ",
+     "ses": "/media/ses/elifba/k/fetha/uygulama/19.mp3"
+    },
+    {
+     "ar": "اَمِنَ",
+     "ses": "/media/ses/elifba/k/kesra/uygulama/3.mp3"
+    },
+    {
+     "ar": "سُبُلَ",
+     "ses": "/media/ses/elifba/k/damme/uygulama/5.mp3"
+    },
+    {
+     "ar": "وَطُبِعَ",
+     "ses": "/media/ses/elifba/k/damme/uygulama/6.mp3"
+    },
+    {
+     "ar": "وَوُضِعَ",
+     "ses": "/media/ses/elifba/k/damme/uygulama/10.mp3"
+    }
+   ],
+   "altbaslik": "17 mots — touchez pour écouter",
+   "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
+  }
+ }
+}

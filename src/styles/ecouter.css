@@ -1,0 +1,104 @@
+/* Dinleme sayfaları (/e/<kod>/) — kare kodu okutup dinlemeye gelen yetişkin için.
+   Ad alanı .ec- · iskelet: src/pages/e/[kod].astro · davranış: src/scripts/ecouter.ts
+   Kural: telefon önce (dar sütun, 44 px dokunma hedefi), renk tek başına bilgi taşımaz,
+   durum değişimi düzeni kaydırmaz, bütün renkler mevcut jetonlardan gelir — böylece
+   iki koyu tema kanalı (işletim sistemi tercihi ve elle seçim) ek kural istemez. */
+
+.ec-sayfa { width: min(100% - 2rem, 40rem); margin-inline: auto; padding-block: 1.5rem 2.5rem; }
+
+/* ——— Üst blok ——— */
+.ec-ust { margin-bottom: 1.4rem; }
+.ec-ust h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.3rem); }
+.ec-altbaslik { margin-top: .45rem; color: var(--metin-2); font-size: 1rem; line-height: 1.55; }
+.ec-ust .serit { margin-top: .8rem; }
+
+/* ——— Büyük «tamamını dinle» düğmesi ——— */
+.ec-tam { margin-bottom: 1.25rem; }
+.ec-tam-dugme { width: 100%; min-height: 3.5rem; font-size: 1.02rem; }
+/* Etiket durum değişince DEĞİŞMEZ: yalnız simge ve aria-pressed döner (düzen kaymaz). */
+.ec-simge { width: 1.15rem; height: 1.15rem; flex: none; background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.5v15l13-7.5z'/%3E%3C/svg%3E") center / contain no-repeat; }
+[aria-pressed="true"] > .ec-simge {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4h4v16H7zm6 0h4v16h-4z'/%3E%3C/svg%3E"); }
+
+/* İlerleme: yeri baştan ayrılmıştır, çalmaya başlayınca hiçbir şey yer değiştirmez. */
+.ec-ilerleme { margin-top: .6rem; }
+.ec-cubuk { height: 6px; border-radius: 999px; background: var(--zemin-3); overflow: hidden; }
+.ec-cubuk > span { display: block; width: 0; height: 100%; background: var(--vurgu); transition: width .2s linear; }
+.ec-sure { display: flex; justify-content: space-between; gap: .5rem; margin-top: .35rem; font-size: .82rem; color: var(--metin-2); }
+.ec-sure > span:nth-child(2) { opacity: .6; }
+
+/* ——— Kipler: hız, tekrar, kesintisiz ——— */
+.ec-kontroller { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+.ec-hiz { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.ec-hiz-etiket { margin-right: .15rem; }
+.ec-cip { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .5rem .9rem;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin);
+  font-size: .9rem; font-weight: 600; line-height: 1.3; cursor: pointer; }
+.ec-cip:hover { border-color: var(--metin); }
+/* Seçili kip yalnız renkle değil, onay imiyle de belli olur (WCAG 1.4.1). İmin yeri baştan
+   ayrılmıştır; yalnız görünürlüğü değişir, böylece düğme açılıp kapanırken düzen kaymaz. */
+.ec-cip[aria-pressed="true"] { background: var(--color-kiremit); border-color: var(--color-kiremit); color: #fff; }
+.ec-cip-genis::before { content: '✓'; margin-right: .4rem; font-size: .95em; opacity: 0; }
+.ec-cip-genis[aria-pressed="true"]::before { opacity: 1; }
+.ec-ipucu { margin: 0 0 1.1rem; color: var(--metin-2); font-size: .85rem; line-height: 1.55; }
+
+/* ——— Satır satır (sûre, dua) ——— */
+.ec-satirlar { display: grid; gap: .55rem; margin: 0 0 1.2rem; padding: 0; list-style: none; }
+.ec-satir { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .75rem;
+  padding: .85rem .9rem; background: var(--zemin-2); border: 1px solid var(--cizgi);
+  border-left: 3px solid transparent; border-radius: var(--radius-kose); transition: background .18s ease-out, border-color .18s ease-out; }
+.ec-satir[data-caliyor] { background: color-mix(in srgb, var(--vurgu) 12%, var(--zemin-2)); border-left-color: var(--vurgu); }
+.ec-satir-metin { min-width: 0; }
+.ec-no { display: inline-block; margin-bottom: .2rem; padding: .05rem .45rem; border: 1px solid var(--cizgi-etkilesim);
+  border-radius: 999px; font-size: .72rem; color: var(--metin-2); }
+/* Arapça: tam Amiri (`.arabic`) — Kur'an işaretlerini taşımayan alt küme (.arabic-ana) BURADA KULLANILMAZ. */
+.ec-ar { margin: .1rem 0 .35rem; font-size: clamp(1.55rem, 1.1rem + 2.4vw, 2.1rem); line-height: 2.1; color: var(--metin); }
+.ec-okunus { margin: 0; font-family: var(--font-mono); font-size: .88rem; line-height: 1.6; color: var(--metin); }
+.ec-fr { margin: .3rem 0 0; font-size: .95rem; line-height: 1.55; color: var(--metin-2); }
+
+/* Satırın çal düğmesi — kare, 48 px, etiketi gizli (adı sr-only metindedir) */
+.ec-cal { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; flex: none;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin); cursor: pointer; }
+.ec-cal:hover { border-color: var(--metin); }
+.ec-cal[aria-pressed="true"] { background: var(--color-kiremit); border-color: var(--color-kiremit); color: #fff; }
+/* Sesi olmayan satırda düğme yerine boşluk: liste hizası bozulmaz, ses gelince düzen aynı kalır. */
+.ec-sessiz { display: block; width: 3rem; height: 3rem; flex: none; border: 1px dashed var(--cizgi); border-radius: 999px; }
+
+/* ——— Kare ızgara (Elifbâ heceleri) — sağdan sola ——— */
+.ec-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.75rem, 1fr)); gap: .5rem;
+  margin: 0 0 1.2rem; padding: 0; list-style: none; }
+.ec-kare { min-width: 0; }
+.ec-kare-dugme { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem;
+  width: 100%; min-height: 5.25rem; padding: .5rem .25rem; border: 1px solid var(--cizgi-etkilesim);
+  border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); cursor: pointer; }
+.ec-kare-dugme:hover { border-color: var(--metin); }
+.ec-kare[data-caliyor] .ec-kare-dugme { background: var(--color-kiremit); border-color: var(--color-kiremit); color: #fff; }
+.ec-kare-sessiz { cursor: default; border-style: dashed; color: var(--metin-2); }
+.ec-ar-kare { font-size: 2rem; line-height: 1.6; }
+.ec-kare-okunus { font-size: .8rem; color: inherit; }
+
+/* ——— Durum, yönlendirme, betiksiz yedek, künye ——— */
+.ec-durum { min-height: 1.5rem; margin: 0 0 .5rem; color: var(--vurgu-metin); font-size: .9rem; font-weight: 600; line-height: 1.5; }
+.ec-yonlendir { padding: 1.25rem 1.1rem; }
+.ec-yonlendir p { margin: 0; color: var(--metin-2); }
+.ec-yonlendir-eylem { margin-top: .9rem !important; }
+.ec-noscript { padding: 1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+.ec-noscript audio { width: 100%; margin: .8rem 0; }
+.ec-noscript-liste { margin: .4rem 0 0; padding-left: 1.1rem; list-style: square; }
+.ec-kaynak { display: flex; flex-direction: column; gap: .15rem; margin-top: 1.6rem; padding-top: .9rem;
+  border-top: 1px solid var(--cizgi); color: var(--metin-2); font-size: .8rem; line-height: 1.5; }
+
+/* Betik yoksa etkisiz düğme gösterilmez; <noscript> bloğu sesleri düz bağlantı olarak verir.
+   `.js` sınıfı Base.astro'da boyamadan önce eklenir — bu yüzden geçiş düzen kaydırmaz. */
+html:not(.js) .ec-tam, html:not(.js) .ec-kontroller, html:not(.js) .ec-ipucu,
+html:not(.js) .ec-cal, html:not(.js) .ec-sessiz, html:not(.js) .ec-durum { display: none; }
+html:not(.js) .ec-kare-dugme { cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ec-satir, .ec-cubuk > span { transition-duration: 0ms; }
+}
+
+@media (min-width: 30rem) {
+  .ec-izgara { grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); }
+}
