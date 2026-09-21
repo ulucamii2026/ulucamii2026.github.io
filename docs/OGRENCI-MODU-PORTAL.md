@@ -59,23 +59,9 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 
 ## 12. Kur'an-ı Kerim Sûre ve Âyet Seslerinde Resmî Diyanet Kaynağı İlkesi (Kalıcı Karar, 11 Eylül 2026)
 - **Zorunlu Kaynak:** Portal ve Mektep Odası'ndaki tüm Kur'an sûre ve âyet sesleri istisnasız ve her zaman Diyanet İşleri Başkanlığı'nın resmî Kur'an portalı sunucusundan (`https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/` — Davut Kaya / Osman Şahin) temin edilir.
-- **Doğrulanan Varlıklar (15 Sûre + Rabbenâ Duası, Tamamı Besmele + Âyet Birleşimli):**
-  - `fatiha.mp3` (Besmele 1_0 + Ayetler 1_1–1_7, 266.552 bayt)
-  - `ayetel-kursi.mp3` (Bakara 2_255, 308.491 bayt)
-  - `insirah.mp3` (Besmele 1_0 + Ayetler 94_1–94_8, 192.349 bayt)
-  - `kadir.mp3` (Besmele 1_0 + Ayetler 97_1–97_5, 209.375 bayt)
-  - `asr.mp3` (Besmele 1_0 + Ayetler 103_1–103_3, 121.529 bayt)
-  - `fil.mp3` (Besmele 1_0 + Ayetler 105_1–105_5, 183.252 bayt)
-  - `kureys.mp3` (Besmele 1_0 + Ayetler 106_1–106_4, 152.390 bayt)
-  - `maun.mp3` (Besmele 1_0 + Ayetler 107_1–107_7, 219.690 bayt)
-  - `kevser.mp3` (Besmele 1_0 + Ayetler 108_1–108_3, 99.168 bayt)
-  - `kafirun.mp3` (Besmele 1_0 + Ayetler 109_1–109_6, 223.622 bayt)
-  - `nasr.mp3` (Besmele 1_0 + Ayetler 110_1–110_3, 152.771 bayt)
-  - `tebbet.mp3` (Besmele 1_0 + Ayetler 111_1–111_5, 177.401 bayt)
-  - `ihlas.mp3` (Besmele 1_0 + Ayetler 112_1–112_4, 104.743 bayt)
-  - `felak.mp3` (Besmele 1_0 + Ayetler 113_1–113_5, 149.291 bayt)
-  - `nas.mp3` (Besmele 1_0 + Ayetler 114_1–114_6, 192.275 bayt)
-  - `rabbena.mp3` (Bakara 2_201 + İbrahim 14_41, 136.956 bayt)
+- **21 Eylül 2026 düzeltmesi:** 11 Eylül notundaki “Besmele 1_0” tanımı yanlıştı; bu dosyada yalnız eûzü bulunur. Fâtiha dışındaki 13 sûrede besmele eksikti. Fâtiha ve Âyetü'l-Kürsî dâhil 15 tam kayıt `scripts/sure-ses-uret.py` ile resmî Osman Şahin âyetlerinden yeniden üretildi: eûzü 1_0 → besmele 1_1 → sıralı âyetler. Fâtiha'da 1_1 tekrar eklenmez. Âyetü'l-Kürsî 2_255 önüne de eûzü ve besmele gelir.
+- MP3 dosyalarının ham baytlarını birleştiren eski işlem, âyet aralarında geçersiz başlıklar oluşturuyordu. Yeni üretim her parçayı önce PCM'e çözer, sonra tek geçerli MP3 kodlar; 15/15 dosya ffmpeg hata kapısından geçer.
+- Güncel kaynak/sıra/SHA-256: `docs/dinleme-ses-kaynaklari.json`. Ezber odası ve dinleme sayfaları `v=3` ile eski önbelleği yeniler. Rabbenâ ve diğer dua kayıtları kendi resmî kaynaklarıyla korunur.
 - Üçüncü taraf veya teyit edilmemiş ses kaynakları projeye sokulamaz; yerel varlıklar her zaman bu Diyanet resmî kaynaklarıyla güncel tutulur.
 
 ## 13. Günün Keşfi: Günün Harfi & Nebevî Ahlâk Hadisleri (Kalıcı Karar, 11 Eylül 2026)

@@ -1,5 +1,5 @@
 {
- "surum": 2,
+ "surum": 3,
  "kodlar": {
   "fatiha": {
    "baslik": "Sourate al-Fâtiḥa — L’Ouverture",
@@ -938,7 +938,7 @@
    ]
   },
   "ezan": {
-   "baslik": "L’adhân — l’appel à la prière",
+   "baslik": "L’appel à la prière à l’aube (adhân)",
    "altbaslik": "الأذان · 8 lignes",
    "tam": {
     "ses": "/media/ses/dualar/ezan.mp3",
@@ -1072,15 +1072,15 @@
     },
     {
      "no": 2,
-     "ar": "آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ",
-     "okunus": "Âti Mouḥammadani-l-wasîlata wa-l-faḍîlah",
-     "fr": "accorde à Muhammad le rang élevé (al-wasîla) et la faveur,"
+     "ar": "آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ وَالدَّرَجَةَ الرَّفِيعَةَ",
+     "okunus": "Âti Mouḥammadani-l-wasîlata wa-l-faḍîlah wa-d-daradjata-r-rafîʿa",
+     "fr": "accorde à Muhammad le rang élevé (al-wasîla) et la faveur,, ainsi que le rang élevé."
     },
     {
      "no": 3,
-     "ar": "وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
-     "okunus": "Wa-bʿathhou maqâman maḥmoûdani-lladhî waʿadtah",
-     "fr": "et ressuscite-le à la station louée que Tu lui as promise."
+     "ar": "وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ إِنَّكَ لَا تُخْلِفُ الْمِيعَادَ",
+     "okunus": "Wa-bʿathhou maqâman maḥmoûdani-lladhî waʿadtah innaka lâ toukhlifou-l-mîʿâd",
+     "fr": "et ressuscite-le à la station louée que Tu lui as promise. Tu ne manques certes pas à Ta promesse."
     }
    ]
   },

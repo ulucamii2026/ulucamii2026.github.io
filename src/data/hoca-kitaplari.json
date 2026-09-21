@@ -1,0 +1,130 @@
+[
+  {
+    "id": "cg1-fr-20260921",
+    "ad": "Camiye Gidiyorum 1",
+    "surum": "Fransızca · Belçika",
+    "dosyaAdi": "Camiye Gidiyorum 1 - Fransızca Belçika - Tam Kitap.pdf",
+    "bayt": 119508776,
+    "sayfa": 228,
+    "sha256": "750d7a0759637e6d3dd32095d132d1f137babdc0e4ade9a95ef7f36436b5559a",
+    "parcalar": [
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-00.bin",
+        "sha256": "499c550113b6f91b6a61e6da059df812858486b0e98175049d43f5044b6fd272"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-01.bin",
+        "sha256": "e96b54460c3cf01e76189c57e076de073559b7d8e5470314b1ee98a99df41c07"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-02.bin",
+        "sha256": "98fefd8a2286f72bc7606314a0c38a8cf031c1ce7067d2b60a37c5c919d5aab4"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-03.bin",
+        "sha256": "589fd04649885a6df3183245be1833a88add7fecd01d115f51df512c6f3ff46c"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-04.bin",
+        "sha256": "d47e3f7dd54d2babe1f6f67f99af32388d9fcdb235e4178bb4811662b5203f7b"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-05.bin",
+        "sha256": "2b080366144642f7dc7a394e61c67a37a939e5237f7d7891d2a2b0622e028ecb"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-06.bin",
+        "sha256": "46dd1a2612c34c196a26fc8b58dc0257da8e15e193a5f566d41e796e6caefc32"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-fr-20260921-07.bin",
+        "sha256": "b24cdfcdce0422238263ba206ccb80f5c4c4cba24b644d5db2603f0d29c3020c"
+      }
+    ]
+  },
+  {
+    "id": "cg1-tr-20260921",
+    "ad": "Camiye Gidiyorum 1",
+    "surum": "Türkçe · Vektörel",
+    "dosyaAdi": "Camiye Gidiyorum 1 (vektorel).pdf",
+    "bayt": 47574147,
+    "sayfa": 227,
+    "sha256": "4814a8f6f3d9cd40fb121ab9df1b3d5c8772a9d1a31252507951c13a80c5a160",
+    "parcalar": [
+      {
+        "yol": "/media/hoca-kitaplari/cg1-tr-20260921-00.bin",
+        "sha256": "0a6b00c494547158456ec4d6c54ffc5891b8ba8ac1fc70e41eefec114eb2c1c7"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-tr-20260921-01.bin",
+        "sha256": "b64fd1ddb01ad59b9c529d5316bb41af21bc7224b9243dab8a1be1696cd46ea1"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg1-tr-20260921-02.bin",
+        "sha256": "b498865b84c0d5cfa7468309ab6b8a4d0b76c5407bfc2791bb7f7d15b406f5a2"
+      }
+    ]
+  },
+  {
+    "id": "cg2-fr-20260921",
+    "ad": "Camiye Gidiyorum 2",
+    "surum": "Fransızca · Belçika",
+    "dosyaAdi": "Camiye Gidiyorum 2 - Fransızca Belçika - Tam Kitap.pdf",
+    "bayt": 94836992,
+    "sayfa": 270,
+    "sha256": "d1e56722873195763d208194d0940df7208b9f883b6b2fdffc9ce77af083a969",
+    "parcalar": [
+      {
+        "yol": "/media/hoca-kitaplari/cg2-fr-20260921-00.bin",
+        "sha256": "32a993bf602e301cef2d720ce39f6980b5b8c80f691269f96cc4bff3c068220d"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-fr-20260921-01.bin",
+        "sha256": "eb86d7551ce917a710cf094936bf9d218ec063fe4b0fa75fa14b5c3b2a486b92"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-fr-20260921-02.bin",
+        "sha256": "6a030de57cc84ec41756911e318bb75564d78a1c54e0604f97f92e362f06d6b2"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-fr-20260921-03.bin",
+        "sha256": "e3830c8db69ef87e7ba845e506719493f55cce249870b87ca5123966cde73690"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-fr-20260921-04.bin",
+        "sha256": "07785d9f12e20da378d99e18a29e49e237e20e4973819c17b449cdfaa1d6eaa1"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-fr-20260921-05.bin",
+        "sha256": "334325146a45b1f9234999f6b141124cf614eeaaa55fa19fc6f33847f827dbb6"
+      }
+    ]
+  },
+  {
+    "id": "cg2-tr-20260921",
+    "ad": "Camiye Gidiyorum 2",
+    "surum": "Türkçe · Vektörel",
+    "dosyaAdi": "Camiye Gidiyorum 2 (vektorel).pdf",
+    "bayt": 63422630,
+    "sayfa": 270,
+    "sha256": "1f734c4dc409df102db2d0892a1d0c53a7780fea8b53876398b10d99772eff91",
+    "parcalar": [
+      {
+        "yol": "/media/hoca-kitaplari/cg2-tr-20260921-00.bin",
+        "sha256": "d96127e1556e6c587e2d01f4cc13f036368566acc56d82749d4b0faca2c285fa"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-tr-20260921-01.bin",
+        "sha256": "bfd5e224963034d53bc9142182feb366a9b81d259bf7ddb808a715eb6e9e5229"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-tr-20260921-02.bin",
+        "sha256": "0182b07a11a88d1540eabf8777cbc474e6d3b019a36834cd0a91e3bc8b7c46dc"
+      },
+      {
+        "yol": "/media/hoca-kitaplari/cg2-tr-20260921-03.bin",
+        "sha256": "82b08d3e557ac20fd12c183a27445d6f90c02e26a667c8ec871c7fd497271bb5"
+      }
+    ]
+  }
+]

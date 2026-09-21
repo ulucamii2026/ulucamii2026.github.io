@@ -32,6 +32,17 @@ before(async () => {
 });
 after(async () => { await env?.cleanup(); });
 
+test('Kitap çözme anahtarı yalnız hocaya açık; veli ve ziyaretçi okuyamaz',async()=>{
+ await env.withSecurityRulesDisabled(async context=>{
+   await setDoc(doc(context.firestore(),'ayarlar','hocaKitaplari'),{anahtarlar:{ornek:'yalniz-test-anahtari'}});
+ });
+ await assertSucceeds(read(teacher(),'ayarlar/hocaKitaplari'));
+ for(const db of [parent(),env.unauthenticatedContext().firestore(),env.authenticatedContext('yetkisiz',{email:'yetkisiz@example.test'}).firestore()]){
+  await assertFails(read(db,'ayarlar/hocaKitaplari'));
+  await assertFails(setDoc(doc(db,'ayarlar/hocaKitaplari'),{anahtarlar:{}}));
+ }
+});
+
 test('Ders defteri yalnız hocaya açık; veli kendi çocuğunun özel ders notunu da okuyamaz',async()=>{
  await assertSucceeds(setDoc(doc(teacher(),dYol),dersKaydi()));
  await assertSucceeds(read(teacher(),dYol));

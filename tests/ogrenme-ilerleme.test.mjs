@@ -49,7 +49,7 @@ test('Takvim ay sonu ve yaz saati sınırında bir günlük artışı korur',()=
 test('Etkinlik sesleri mevcut; bütün hadislerin Türkçe, Fransızca ve İngilizce anlam kayıtları hazır',()=>{
  const mod={module:{exports:{}}};runInNewContext(buildSync({entryPoints:['src/lib/ogrenme-icerigi.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,mod);
  const etkinlikler=mod.module.exports.ETKINLIKLER;assert.equal(etkinlikler.length,65);assert.equal(new Set(etkinlikler.map(a=>a.id)).size,65);
- for(const e of etkinlikler){if(e.ses)assert.ok(existsSync('public'+e.ses),e.ses);for(const d of ['tr','fr','en'])assert.ok(e.baslik[d]&&e.soru[d]&&e.aciklama[d]);}
+ for(const e of etkinlikler){if(e.ses)assert.ok(existsSync('public'+new URL(e.ses,'https://ulucamii.be').pathname),e.ses);for(const d of ['tr','fr','en'])assert.ok(e.baslik[d]&&e.soru[d]&&e.aciklama[d]);}
  const ids=[...readFileSync('src/lib/hadis-verisi.ts','utf8').matchAll(/id: '([^']+)'/g)].map(m=>m[1]);
  for(const id of ids)for(const dil of ['tr','fr','en'])assert.ok(existsSync(`public/media/ses/hadisler/${dil}/${id}.mp3`),`${dil}/${id}`);
  const sesler=JSON.parse(readFileSync('src/data/hadis-anlam-sesleri.json','utf8'));

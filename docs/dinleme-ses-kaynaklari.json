@@ -309,15 +309,25 @@
  },
  "/media/ses/dualar/kunut-1.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/6_KUNUT_DUALARI.mp3",
-  "sha256": "6df7dd4949a90e0b28d735606e94ddb7db922dfac6565a5c4783275791ecb8d0"
+  "sha256": "99a3a2188ecef2eaba9a8fd6c2351445c125b61c42432fd4fe2f7be8c8b7b23a",
+  "kesim": [
+   0,
+   29.4
+  ],
+  "ozgunSha256": "e46311b60ae8f42c62366a95c9c44c0cd95c2cbc513892070054286e418a73b1"
  },
  "/media/ses/dualar/kunut-2.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/6_KUNUT_DUALARI.mp3",
-  "sha256": "9226ddfcb21d2ffbde3448e091ab1dfb5e11e921c3b8e7f04106c080b85e6148"
+  "sha256": "79526108dae2a64c2b4080aac23a6cc225233eaba78a07bbfbb1d255ce4d419f",
+  "kesim": [
+   29.4,
+   50.3208
+  ],
+  "ozgunSha256": "e46311b60ae8f42c62366a95c9c44c0cd95c2cbc513892070054286e418a73b1"
  },
  "/media/ses/dualar/ezan.mp3": {
-  "kaynak": "namaz.diyanet.gov.tr",
-  "sha256": "40614f34912fdd3139981e897c291c3deaf3beb6baa02d4ded522072f9eb1ac0"
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Sabah_Ezani_Saba.mp3",
+  "sha256": "72949aba919cf774db89f71212ee772c074dd806cc2c393e933e1b8813e9c155"
  },
  "/media/ses/dualar/kamet.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/1_HANEFI_KAMET.mp3",
@@ -3478,5 +3488,264 @@
  "/media/ses/dualar/sallibarik.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/8_ALLAHUMMESALLI.mp3 + https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/9_ALLAHUMMEBARIK.mp3",
   "sha256": "0d7bc085aae951533da3626b075eed6dafb31296a7f7e4a79697213d217e6834"
+ },
+ "/media/ses/ayet/1-0.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/1_0.mp3",
+  "sha256": "76af24a0cc01fd6df45beaca05843f121e6d4487d09f77e3a293ff7b75c49b1b"
+ },
+ "/media/ses/ayet/2-255.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/2_255.mp3",
+  "sha256": "1d62b8de5e45bfd13f88319f26c665144eb2913d58fde75c1222b7d5e6d330d8"
+ },
+ "/media/ses/sureler/fatiha.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "f220f53e4e0d688acb9d3a8c28e3e19d2d14001945de8444f92579c80b6f1fc7",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/1-2.mp3",
+   "/media/ses/ayet/1-3.mp3",
+   "/media/ses/ayet/1-4.mp3",
+   "/media/ses/ayet/1-5.mp3",
+   "/media/ses/ayet/1-6.mp3",
+   "/media/ses/ayet/1-7.mp3"
+  ],
+  "pcmSha256": "d96c2bafcee5e1b9868e62ad1a8c129d5169b20b4f1567b5e8f5c31babfc103b",
+  "pcmOrnek": 2801850,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/insirah.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "07ef77868e096daa481c855e72a6f1fc37c47c247bf68d24d7e78972dca5ed4f",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/94-1.mp3",
+   "/media/ses/ayet/94-2.mp3",
+   "/media/ses/ayet/94-3.mp3",
+   "/media/ses/ayet/94-4.mp3",
+   "/media/ses/ayet/94-5.mp3",
+   "/media/ses/ayet/94-6.mp3",
+   "/media/ses/ayet/94-7.mp3",
+   "/media/ses/ayet/94-8.mp3"
+  ],
+  "pcmSha256": "16e3a175f31ee26a5e5809ad526256862873829ae186729c330ae875a4440295",
+  "pcmOrnek": 2280378,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/kadir.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "c7ee245c4d536457f118b32d53210e2a20f9e9455f59aff8f2aa9b2c0340eccb",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/97-1.mp3",
+   "/media/ses/ayet/97-2.mp3",
+   "/media/ses/ayet/97-3.mp3",
+   "/media/ses/ayet/97-4.mp3",
+   "/media/ses/ayet/97-5.mp3"
+  ],
+  "pcmSha256": "756ae23f315ce3e7347a859a380c2276c54cf66b4350e885e73df6be51e10ddb",
+  "pcmOrnek": 2540819,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/asr.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "aed19073d8f5e9988b5699335a3162d83e2ce5123a60057d7787d3f5aae7dffb",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/103-1.mp3",
+   "/media/ses/ayet/103-2.mp3",
+   "/media/ses/ayet/103-3.mp3"
+  ],
+  "pcmSha256": "ff0a2b288bfa2a7b25e486a574064295d63a25126f0ccc52a405451950719f89",
+  "pcmOrnek": 1731707,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/fil.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "7335e7877172ba390f4ed5df9b342bed0e0f3cb2665e251fe54a4da87c8a6f66",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/105-1.mp3",
+   "/media/ses/ayet/105-2.mp3",
+   "/media/ses/ayet/105-3.mp3",
+   "/media/ses/ayet/105-4.mp3",
+   "/media/ses/ayet/105-5.mp3"
+  ],
+  "pcmSha256": "76b804126006a1b68623ec5b270002519f17bd6ce9b122997f15a2c77649523e",
+  "pcmOrnek": 2295676,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/kureys.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "c7acf2517902da01e07ffec0709624719ebb2a2d798c95b880553a21feea2cae",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/106-1.mp3",
+   "/media/ses/ayet/106-2.mp3",
+   "/media/ses/ayet/106-3.mp3",
+   "/media/ses/ayet/106-4.mp3"
+  ],
+  "pcmSha256": "d7977078d2204a2d95d5d1e4be2fe6b83e7978142d703b49b985c334317a2099",
+  "pcmOrnek": 2054520,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/maun.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "c381f5b829922ab204a9a5e588d62123caaa913013400be84a387e76d1a7ced1",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/107-1.mp3",
+   "/media/ses/ayet/107-2.mp3",
+   "/media/ses/ayet/107-3.mp3",
+   "/media/ses/ayet/107-4.mp3",
+   "/media/ses/ayet/107-5.mp3",
+   "/media/ses/ayet/107-6.mp3",
+   "/media/ses/ayet/107-7.mp3"
+  ],
+  "pcmSha256": "556b6d531f91e0a043ff986a5f4d608e3092d248964a5e053832b285a7d8b59f",
+  "pcmOrnek": 2463706,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/kevser.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "11547ee2c43cb1127df229fe2c910e0f2d24fbd361171626eef1cac7191869f2",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/108-1.mp3",
+   "/media/ses/ayet/108-2.mp3",
+   "/media/ses/ayet/108-3.mp3"
+  ],
+  "pcmSha256": "f60b1bb0ea030c4cb2d900f7cbf307f7114f20bdf83e539fadef48620ad36012",
+  "pcmOrnek": 1441204,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/kafirun.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "1b6e845783d289656c82fd6f361209015507bb1660689579d69f77b0a3a2f6de",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/109-1.mp3",
+   "/media/ses/ayet/109-2.mp3",
+   "/media/ses/ayet/109-3.mp3",
+   "/media/ses/ayet/109-4.mp3",
+   "/media/ses/ayet/109-5.mp3",
+   "/media/ses/ayet/109-6.mp3"
+  ],
+  "pcmSha256": "c66f50342f9b9365a8d15e4a9e1edda2199dcdd6241f188f8cee3d3647bb6134",
+  "pcmOrnek": 2132652,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/nasr.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "c80d52445486c8e62267b0217386ec5186f8527acea7a637a40fb1e2a0c06084",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/110-1.mp3",
+   "/media/ses/ayet/110-2.mp3",
+   "/media/ses/ayet/110-3.mp3"
+  ],
+  "pcmSha256": "b5e94c26504b8fd375da69145495f11beb5ea7a3f2d4a99004d73db72303e2bc",
+  "pcmOrnek": 2048427,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/tebbet.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "e2133dc874b67b5b931cd224b3b9bcaf23dd4cd160b192cb0ad23c0e50161046",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/111-1.mp3",
+   "/media/ses/ayet/111-2.mp3",
+   "/media/ses/ayet/111-3.mp3",
+   "/media/ses/ayet/111-4.mp3",
+   "/media/ses/ayet/111-5.mp3"
+  ],
+  "pcmSha256": "9974c124a2d0034c4637273f057a71a1338b8e39e7da7d1e9870b3255bb35cb5",
+  "pcmOrnek": 2167321,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/ihlas.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "c3a1ff1d281e03fcf765164030c8d30c80fba2b2db365c92a9ce7a06ee94f4df",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/112-1.mp3",
+   "/media/ses/ayet/112-2.mp3",
+   "/media/ses/ayet/112-3.mp3",
+   "/media/ses/ayet/112-4.mp3"
+  ],
+  "pcmSha256": "b85a0a82cb4eee251e2f048d0600ebfd99a1df47fa82e3173980972ca6e8e057",
+  "pcmOrnek": 1473252,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/felak.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "e2e57add6d4d7f898a098d71b32d6ce29ce326ddd5ba5b0f7e99b8be0a9b07f6",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/113-1.mp3",
+   "/media/ses/ayet/113-2.mp3",
+   "/media/ses/ayet/113-3.mp3",
+   "/media/ses/ayet/113-4.mp3",
+   "/media/ses/ayet/113-5.mp3"
+  ],
+  "pcmSha256": "32b50a2b34381a66e16a09378b69cb92f7f2e713a4e857f67e85ed183f887256",
+  "pcmOrnek": 1984446,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/nas.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "bbb15991468409b9b6a41f34cdd53289b28e905290e5825b73897b079ff4b1c4",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/114-1.mp3",
+   "/media/ses/ayet/114-2.mp3",
+   "/media/ses/ayet/114-3.mp3",
+   "/media/ses/ayet/114-4.mp3",
+   "/media/ses/ayet/114-5.mp3",
+   "/media/ses/ayet/114-6.mp3"
+  ],
+  "pcmSha256": "82929e041f36346741f98c79bdb233f3b160c1b918787ba751fa3ace8d1f3a9b",
+  "pcmOrnek": 2208022,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/sureler/ayetel-kursi.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/",
+  "sha256": "4595a2231d5749aa60f67b3311983d2beb76033ab917072c0cd4545af406877d",
+  "parcalar": [
+   "/media/ses/ayet/1-0.mp3",
+   "/media/ses/ayet/1-1.mp3",
+   "/media/ses/ayet/2-255.mp3"
+  ],
+  "pcmSha256": "8a91809f5eb28f1b6c504282e2b4251c650ff2598e7f56ea31728f7e2d92135c",
+  "pcmOrnek": 3424137,
+  "baslangic": "euzu-besmele",
+  "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
  }
 }

@@ -29,7 +29,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Alle lof komt Allah toe, de Heer van de werelden. Hij is de Barmhartige, de Genadevolle. Hij is de Heerser over de Dag van het oordeel. U alleen aanbidden wij en U alleen vragen wij om hulp. Leid ons op het rechte pad, het pad van hen die U begunstigd hebt, niet van hen die Uw toorn hebben opgewekt, en niet van hen die dwalen.',
       de: 'Alles Lob gebührt Allah, dem Herrn der Welten. Er ist der Allerbarmer, der Barmherzige, der Herrscher am Tag des Gerichts. Dir allein dienen wir und Dich allein bitten wir um Hilfe. Führe uns den geraden Weg, den Weg derer, denen Du Gutes erwiesen hast, nicht den Weg derer, die Deinen Zorn erregt haben, und nicht den der Irrenden.',
     },
-    sesUrl: '/media/ses/sureler/fatiha.mp3',
+    sesUrl: '/media/ses/sureler/fatiha.mp3?v=3',
   },
   {
     id: 'ayetel-kursi',
@@ -44,7 +44,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Allah, er is geen god dan Hij, de Levende, die alles in stand houdt. Sluimer noch slaap overvalt Hem. Van Hem is alles wat in de hemelen en op de aarde is. Wie kan er bij Hem bemiddelen zonder Zijn toestemming? Hij weet wat Zijn dienaren gedaan hebben en wat zij zullen doen. Van Zijn kennis omvatten zij niets, behalve wat Hij wil. Zijn troon omvat de hemelen en de aarde, en het kost Hem geen moeite ze te behoeden. Hij is de Verhevene, de Geweldige.',
       de: 'Allah – es gibt keinen Gott außer Ihm, dem Lebendigen, der alles erhält. Weder Schlummer noch Schlaf überkommt Ihn. Ihm gehört, was in den Himmeln und was auf der Erde ist. Wer kann bei Ihm Fürsprache einlegen ohne Seine Erlaubnis? Er weiß, was Seine Diener getan haben und was sie tun werden. Von Seinem Wissen erfassen sie nichts außer dem, was Er will. Sein Kursi umfasst die Himmel und die Erde, und ihre Bewahrung fällt Ihm nicht schwer. Er ist der Erhabene, der Gewaltige.',
     },
-    sesUrl: '/media/ses/sureler/ayetel-kursi.mp3',
+    sesUrl: '/media/ses/sureler/ayetel-kursi.mp3?v=3',
   },
   {
     id: 'insirah',
@@ -59,7 +59,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Hebben Wij uw borst niet voor u geopend? En hebben Wij de last die uw rug deed buigen niet van u weggenomen? En hebben Wij uw naam en aanzien niet verheven? Voorwaar, met de moeilijkheid komt de verlichting. Waarlijk, met de moeilijkheid komt de verlichting. Wanneer u dus met het ene klaar bent, begin dan aan het volgende, en richt u alleen tot uw Heer.',
       de: 'Haben Wir dir nicht deine Brust geweitet? Und haben Wir dir nicht die Last abgenommen, die deinen Rücken beugte? Und haben Wir deinen Namen und dein Ansehen nicht erhöht? Gewiss, mit der Schwierigkeit kommt die Erleichterung. Wahrlich, mit der Schwierigkeit kommt die Erleichterung. Wenn du also mit einer Sache fertig bist, dann mühe dich um die nächste und wende dich allein deinem Herrn zu.',
     },
-    sesUrl: '/media/ses/sureler/insirah.mp3',
+    sesUrl: '/media/ses/sureler/insirah.mp3?v=3',
   },
   {
     id: 'kadir',
@@ -74,7 +74,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Voorwaar, Wij hebben hem (de Koran) neergezonden in de Nacht van de Beschikking. En hoe kunt u weten wat de Nacht van de Beschikking is? De Nacht van de Beschikking is beter dan duizend maanden. Daarin dalen de engelen en de Geest (Gabriël) neer met verlof van hun Heer, voor elke beschikking. Zij is louter vrede, tot het aanbreken van de dageraad.',
       de: 'Wahrlich, Wir haben ihn (den Koran) in der Nacht der Bestimmung herabgesandt. Und woher sollst du wissen, was die Nacht der Bestimmung ist? Die Nacht der Bestimmung ist besser als tausend Monate. In ihr kommen die Engel und der Geist (Gabriel) mit der Erlaubnis ihres Herrn herab, für jede Angelegenheit. Sie ist lauter Friede, bis der Morgen graut.',
     },
-    sesUrl: '/media/ses/sureler/kadir.mp3',
+    sesUrl: '/media/ses/sureler/kadir.mp3?v=3',
   },
   {
     id: 'asr',
@@ -89,7 +89,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Bij de tijd! Voorwaar, de mens lijdt werkelijk verlies, behalve zij die geloven en goede daden verrichten, en elkaar de waarheid aanbevelen en elkaar geduld aanbevelen.',
       de: 'Bei der Zeit! Wahrlich, der Mensch ist im Verlust, außer denen, die glauben und gute Werke tun und einander zur Wahrheit und einander zur Geduld anhalten.',
     },
-    sesUrl: '/media/ses/sureler/asr.mp3',
+    sesUrl: '/media/ses/sureler/asr.mp3?v=3',
   },
   {
     id: 'fil',
@@ -104,7 +104,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Hebt u niet gezien hoe uw Heer met de mannen van de olifant is omgegaan? Heeft Hij hun boze plan niet laten mislukken? Hij zond zwermen vogels over hen, die stenen van gebakken klei op hen wierpen. Zo maakte Hij hen als afgevreten kaf.',
       de: 'Hast du nicht gesehen, wie dein Herr mit den Leuten des Elefanten verfahren ist? Hat Er ihren bösen Plan nicht scheitern lassen? Er sandte Schwärme von Vögeln über sie, die Steine aus gebranntem Lehm auf sie warfen. So machte Er sie wie abgefressene Halme.',
     },
-    sesUrl: '/media/ses/sureler/fil.mp3',
+    sesUrl: '/media/ses/sureler/fil.mp3?v=3',
   },
   {
     id: 'kureys',
@@ -119,7 +119,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Omdat Hij de Qoeraisj veiligheid en eendracht heeft geschonken, eendracht op hun reis in de winter en in de zomer: laten zij dan de Heer van dit Huis (de Kaaba) dienen, die hun voedsel gaf tegen de honger en hun veiligheid gaf tegen de vrees.',
       de: 'Weil Er den Quraisch Sicherheit und Eintracht gewährt hat, Eintracht auf ihrer Reise im Winter und im Sommer: so sollen sie dem Herrn dieses Hauses (der Kaaba) dienen, der sie vor dem Hunger gespeist und ihnen vor der Furcht Sicherheit gegeben hat.',
     },
-    sesUrl: '/media/ses/sureler/kureys.mp3',
+    sesUrl: '/media/ses/sureler/kureys.mp3?v=3',
   },
   {
     id: 'maun',
@@ -134,7 +134,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Hebt u hem gezien die de godsdienst (de Dag van de afrekening) loochent? Dat is degene die de wees wegduwt en niet aanspoort om de arme te voeden. Wee dus hen die bidden maar hun gebed niet ernstig nemen, die er een vertoning van maken en zelfs de kleinste hulp weigeren.',
       de: 'Hast du den gesehen, der den Glauben (den Tag der Abrechnung) für Lüge erklärt? Das ist der, der die Waise wegstößt und nicht dazu anhält, den Armen zu speisen. Wehe also denen, die beten, ihr Gebet aber nicht ernst nehmen, die damit prunken und selbst die kleinste Hilfe verweigern.',
     },
-    sesUrl: '/media/ses/sureler/maun.mp3',
+    sesUrl: '/media/ses/sureler/maun.mp3?v=3',
   },
   {
     id: 'kevser',
@@ -149,7 +149,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Voorwaar, Wij hebben u de Kawthar (de overvloed) gegeven. Verricht daarom het gebed voor uw Heer en slacht het offer. Wie u haat, die is het die zonder nageslacht blijft.',
       de: 'Wahrlich, Wir haben dir al-Kauthar (die Fülle) gegeben. So verrichte das Gebet für deinen Herrn und schlachte das Opfer. Wer dich hasst, der ist es, der ohne Nachkommen bleibt.',
     },
-    sesUrl: '/media/ses/sureler/kevser.mp3',
+    sesUrl: '/media/ses/sureler/kevser.mp3?v=3',
   },
   {
     id: 'kafirun',
@@ -164,7 +164,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Zeg: “O ongelovigen! Ik aanbid niet wat u aanbidt. En u aanbidt niet wat ik aanbid. En ik zal nooit aanbidden wat u aanbidt. En u zult nooit aanbidden wat ik aanbid. U hebt uw godsdienst en ik heb mijn godsdienst.”',
       de: 'Sag: „O ihr Ungläubigen! Ich diene nicht dem, dem ihr dient. Und ihr dient nicht dem, dem ich diene. Und ich werde nicht dem dienen, dem ihr gedient habt. Und ihr werdet nicht dem dienen, dem ich diene. Euch euer Glaube und mir mein Glaube.“',
     },
-    sesUrl: '/media/ses/sureler/kafirun.mp3',
+    sesUrl: '/media/ses/sureler/kafirun.mp3?v=3',
   },
   {
     id: 'nasr',
@@ -179,7 +179,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Wanneer de hulp van Allah komt en de overwinning, en u de mensen in drommen de godsdienst van Allah ziet binnentreden, prijs dan de lof van uw Heer en vraag Hem om vergeving. Voorwaar, Hij aanvaardt het berouw altijd.',
       de: 'Wenn die Hilfe Allahs kommt und der Sieg, und du die Menschen in Scharen in die Religion Allahs eintreten siehst, dann lobpreise deinen Herrn und bitte Ihn um Vergebung. Wahrlich, Er nimmt die Reue stets an.',
     },
-    sesUrl: '/media/ses/sureler/nasr.mp3',
+    sesUrl: '/media/ses/sureler/nasr.mp3?v=3',
   },
   {
     id: 'tebbet',
@@ -194,7 +194,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Verdord zijn de beide handen van Aboe Lahab, en verdord is hij zelf. Zijn bezit en wat hij verworven heeft, baten hem niet. Hij zal een laaiend vuur binnengaan, en ook zijn vrouw, de draagster van het brandhout, met om haar hals een gedraaid touw.',
       de: 'Verdorrt seien die beiden Hände Abu Lahabs, und verdorrt ist er selbst. Weder sein Besitz noch das, was er erworben hat, nützt ihm. Er wird in ein loderndes Feuer eingehen, und auch seine Frau, die Holzträgerin, mit einem gedrehten Strick um ihren Hals.',
     },
-    sesUrl: '/media/ses/sureler/tebbet.mp3',
+    sesUrl: '/media/ses/sureler/tebbet.mp3?v=3',
   },
   {
     id: 'ihlas',
@@ -209,7 +209,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Zeg: “Hij is Allah, de Enige. Allah is de Onafhankelijke: alles heeft Hem nodig, terwijl Hij niets nodig heeft. Hij heeft niet verwekt en is niet verwekt. En niemand is aan Hem gelijk.”',
       de: 'Sag: „Er ist Allah, der Eine. Allah ist der Absolute: alles ist auf Ihn angewiesen, während Er auf nichts angewiesen ist. Er hat nicht gezeugt und ist nicht gezeugt worden. Und niemand ist Ihm gleich.“',
     },
-    sesUrl: '/media/ses/sureler/ihlas.mp3',
+    sesUrl: '/media/ses/sureler/ihlas.mp3?v=3',
   },
   {
     id: 'felak',
@@ -224,7 +224,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Zeg: “Ik zoek bescherming bij de Heer van de dageraad, tegen het kwaad van wat Hij geschapen heeft, tegen het kwaad van de nacht wanneer de duisternis invalt, tegen het kwaad van hen die op knopen blazen, en tegen het kwaad van de afgunstige wanneer hij afgunstig is.”',
       de: 'Sag: „Ich suche Zuflucht beim Herrn des Tagesanbruchs, vor dem Übel dessen, was Er erschaffen hat, vor dem Übel der Nacht, wenn die Dunkelheit hereinbricht, vor dem Übel derer, die auf Knoten blasen, und vor dem Übel des Neiders, wenn er neidet.“',
     },
-    sesUrl: '/media/ses/sureler/felak.mp3',
+    sesUrl: '/media/ses/sureler/felak.mp3?v=3',
   },
   {
     id: 'nas',
@@ -239,7 +239,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
       nl: 'Zeg: “Ik zoek bescherming bij de Heer van de mensen, de Koning van de mensen, de God van de mensen, tegen het kwaad van de sluipende influisteraar, die in de harten van de mensen influistert, of hij nu tot de djinn of tot de mensen behoort.”',
       de: 'Sag: „Ich suche Zuflucht beim Herrn der Menschen, dem König der Menschen, dem Gott der Menschen, vor dem Übel des schleichenden Einflüsterers, der in die Herzen der Menschen einflüstert, sei er von den Dschinn oder von den Menschen.“',
     },
-    sesUrl: '/media/ses/sureler/nas.mp3',
+    sesUrl: '/media/ses/sureler/nas.mp3?v=3',
   },
   {
     id: 'subhaneke',

@@ -153,7 +153,7 @@ test('Günün özeti, okunmamış bildirim rozeti ve iş akışı sırasında se
   const sekme = kok.locator('[role=tab][data-sekme=bildirim]');
   await expect(sekme.locator('.sekme-sayi')).toContainText('1');
   const sira = await kok.locator('[role=tab]').evaluateAll((els) => els.map((e) => e.dataset.sekme));
-  expect(sira.slice(0, 4)).toEqual(['yoklama', 'defter', 'odev', 'bildirim']);
+  expect(sira.slice(0, 5)).toEqual(['yoklama', 'defter', 'odev', 'kitaplar', 'bildirim']);
   // Özetteki bağlantı sekmeye götürür; okundu işaretlenince rozet düşer ve özet güncellenir.
   await gunOzeti.locator('[data-sekme=bildirim]').click();
   await expect(sekme).toHaveAttribute('aria-selected', 'true');

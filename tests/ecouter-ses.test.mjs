@@ -43,3 +43,26 @@ test('Kısa–uzun karşılaştırmasında tek kayıt tek düğmede iki heceyi g
   for (const o of ogeler) assert.match(o.ar, / — /);
   assert.equal(new Set(ogeler.map((o) => kaynaklar[o.ses].kaynak)).size, 28);
 });
+
+test('Tam sûreler eûzü, tek besmele ve eksiksiz âyet sırasıyla üretilir', () => {
+  const sureler = {fatiha:[1,7],insirah:[94,8],kadir:[97,5],asr:[103,3],fil:[105,5],kureys:[106,4],maun:[107,7],kevser:[108,3],kafirun:[109,6],nasr:[110,3],tebbet:[111,5],ihlas:[112,4],felak:[113,5],nas:[114,6]};
+  for (const [kod,[s,n]] of Object.entries(sureler)) {
+    const r=kaynaklar[veri.kodlar[kod].tam.ses];
+    const expected=['/media/ses/ayet/1-0.mp3',...(s===1?[]:['/media/ses/ayet/1-1.mp3']),...Array.from({length:n},(_,i)=>`/media/ses/ayet/${s}-${i+1}.mp3`)];
+    assert.deepEqual(r.parcalar,expected,kod);
+    assert.equal(r.parcalar.filter(p=>p==='/media/ses/ayet/1-1.mp3').length,1,kod);
+    for(const p of r.parcalar) assert.match(kaynaklar[p].kaynak,/^https:\/\/webdosya\.diyanet\.gov\.tr\/kuran\/kuranikerim\/Sound\/ar_OsmanSahin\//);
+    assert.ok(r.pcmOrnek>0);assert.match(r.pcmSha256,/^[a-f0-9]{64}$/);
+  }
+  assert.deepEqual(kaynaklar[veri.kodlar['ayetel-kursi'].tam.ses].parcalar,['/media/ses/ayet/1-0.mp3','/media/ses/ayet/1-1.mp3','/media/ses/ayet/2-255.mp3']);
+  assert.ok(veri.surum>=3,'Eski sesler tarayıcı önbelleğinden ayrılmalı');
+});
+
+test('Kunut sınırı son cümleyi korur; sabah ezanı ve uzun ezan duası metinle eşleşir',()=>{
+  assert.deepEqual(kaynaklar['/media/ses/dualar/kunut-1.mp3'].kesim,[0,29.4]);
+  assert.deepEqual(kaynaklar['/media/ses/dualar/kunut-2.mp3'].kesim,[29.4,50.3208]);
+  assert.equal(kaynaklar['/media/ses/dualar/kunut-1.mp3'].ozgunSha256,kaynaklar['/media/ses/dualar/kunut-2.mp3'].ozgunSha256);
+  assert.match(kaynaklar[veri.kodlar.ezan.tam.ses].kaynak,/\/Sabah_Ezani_Saba\.mp3$/);
+  const ar=veri.kodlar['ezan-duasi'].satirlar.map(s=>s.ar).join(' ').normalize('NFD').replace(/[\u064B-\u065F\u0670]/g,'');
+  assert.match(ar,/والدرجة الرفيعة/);assert.match(ar,/لا تخلف الميعاد/);
+});

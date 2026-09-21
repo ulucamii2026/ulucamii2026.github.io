@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { ecParcaAdi, type EcouterKod, type EcouterVeri } from '../lib/ecouter';
+import { ecParcaAdi, type EcouterKod, type EcouterVeri, type EcouterParca } from '../lib/ecouter';
 import ham from '../data/ecouter.json';
 import '../styles/ecouter.css';
 
@@ -14,13 +14,20 @@ const { kod, dil, icerik: asil } = Astro.props;
 const icerik = dersIcerigi(dil, kod, asil);
 const m = DINLEME[dil];
 const parcaAdi = (p: Parameters<typeof ecParcaAdi>[0], i: number, kare: boolean) => ecParcaAdi(p, i, kare, m);
-const satirlar = icerik.satirlar ?? [];
+const asilSatirlar = icerik.satirlar ?? [];
+// Bölüm kaydı yoksa bütün duayı/âyeti tek hücre yap: hücrede yazan ile duyulan aynı olsun.
+const butunMetin = asilSatirlar.length > 0 && !asilSatirlar.some(s => s.ses) && icerik.tam;
+const satirlar: EcouterParca[] = butunMetin ? [{
+  ar: asilSatirlar.map(s => s.ar).filter(Boolean).join('\n'),
+  okunus: asilSatirlar.map(s => s.okunus).filter(Boolean).join(' '),
+  fr: asilSatirlar.map(s => s.fr).filter(Boolean).join(' '),
+  ses: icerik.tam!.ses,
+}] : asilSatirlar;
 const ogeler = icerik.ogeler ?? [];
 /** Gerçekten çalınabilen parça sayısı: «Lecture continue» ancak ikisi varsa anlamlıdır. */
 const calinabilir = [...satirlar, ...ogeler].filter((p) => p.ses).length;
 /** Satırların bir kısmı sesliyse sessiz satıra boş yer bırakılır (hiza bozulmasın);
     hiçbirinde ses yoksa sütun tamamen kalkar — boş halka gösterilmez. */
-const satirSesiVar = satirlar.some((s) => s.ses);
 const calarVar = calinabilir > 0 || Boolean(icerik.tam);
 const aciklama = [icerik.baslik, icerik.altbaslik].filter(Boolean).join(' — ');
 /** Betiksiz erişim listesi: her ses en azından düz bağlantı olarak açılabilir. */
@@ -88,23 +95,25 @@ const surumVar = veri.surum;
         {dil !== 'fr' && <p class="ec-altbaslik">{m.frNotu}</p>}
 
         {satirlar.length > 0 && (
+          <p class="ec-ipucu">{m.dokun}</p>
           <ul class="ec-satirlar" role="list">
             {satirlar.map((s, i) => (
               <li class="ec-satir" data-ec-parca>
-                <div class="ec-satir-metin">
-                  {s.no != null && <span class="ec-no mono">{s.no}</span>}
-                  {s.ar && <p class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</p>}
-                  {s.okunus && <p class="ec-okunus" lang="fr">{s.okunus}</p>}
-                  {s.fr && <p class="ec-fr" lang="fr">{s.fr}</p>}
-                </div>
                 {s.ses ? (
-                  <button type="button" class="ec-cal" data-ec-cal data-ses={s.ses} aria-pressed="false">
-                    <span class="ec-simge" aria-hidden="true"></span>
-                    <span class="sr-only">{parcaAdi(s, i + 1, false)}</span>
+                  <button type="button" class="ec-satir-dugme" data-ec-cal data-ses={s.ses} aria-pressed="false" aria-label={butunMetin ? (icerik.tam?.etiket ?? m.tamEtiket) : parcaAdi(s, i + 1, false)}>
+                    <span class="ec-satir-ust" aria-hidden="true"><span class="ec-no mono">{'no' in s ? s.no : null}</span><span class="ec-simge"></span></span>
+                    {s.ar && <span class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</span>}
+                    {s.okunus && <span class="ec-okunus" lang="fr">{s.okunus}</span>}
+                    {s.fr && <span class="ec-fr" lang="fr">{s.fr}</span>}
                   </button>
-                ) : satirSesiVar ? (
-                  <span class="ec-sessiz" aria-hidden="true"></span>
-                ) : null}
+                ) : (
+                  <div class="ec-satir-metin">
+                    {'no' in s && s.no != null && <span class="ec-no mono">{s.no}</span>}
+                    {s.ar && <p class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</p>}
+                    {s.okunus && <p class="ec-okunus" lang="fr">{s.okunus}</p>}
+                    {s.fr && <p class="ec-fr" lang="fr">{s.fr}</p>}
+                  </div>
+                )}
               </li>
             ))}
           </ul>

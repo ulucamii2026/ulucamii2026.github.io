@@ -16,7 +16,7 @@
     "test:ihtida": "node --test tests/ihtida-contract.test.mjs tests/ihtida-paket-akis.test.mjs tests/ek10-yeni-tasarim.test.mjs tests/dilekce-yeni-tasarim.test.mjs tests/ihtida-defteri-akis.test.mjs tests/ihtida-defteri-belge.test.mjs",
     "test:veli-eposta": "node --test tests/veli-eposta-dili.test.mjs tests/veli-mail-listesi.test.mjs tests/veli-cuma.test.mjs",
     "test:oto-kaydet": "node --test tests/oto-kaydet.test.mjs",
-    "test:ogrenme": "node --test tests/ogrenme-ilerleme.test.mjs",
+    "test:ogrenme": "node --test tests/ogrenme-ilerleme.test.mjs tests/hoca-kitaplari.test.mjs",
     "test:imza": "node scripts/ek9-imza-zinciri.mjs",
     "test:kayit": "node --test tests/kayit-imza.test.mjs",
     "test:duzelt": "node --test tests/kayit-duzelt.test.mjs",

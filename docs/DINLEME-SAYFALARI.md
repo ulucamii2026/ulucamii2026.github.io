@@ -79,6 +79,34 @@ içermeyen kopyasından bir betikle üretilir (`D:\ulu-camii-yetiskin-egitimi`).
 
 ## 3. Sayfanın davranışı
 
+### 21 Eylül 2026 akşam — eûzü/besmele ve dokunarak dinleme
+
+- Eski tam sûre kayıtlarında `ar_DavutKaya/1_0.mp3` eûzü olduğu hâlde besmele sanılmıştı.
+  Fâtiha dışında 13 sûrede besmele eksikti; Âyetü'l-Kürsî doğrudan âyetle başlıyordu.
+- `scripts/sure-ses-uret.py --uret`, resmî Osman Şahin kayıtlarını **eûzü (`1_0`), besmele
+  (`1_1`), sıralı âyetler** olarak birleştirir. Fâtiha'nın ilk âyeti zaten besmele olduğundan
+  ikinci bir besmele eklemez. Her MP3 önce ayrı PCM'e çözülür; dosya başlıklarıyla birlikte
+  ham bayt ekleme yapılmaz. 15 tam kayıt hatasız çözümleme kontrolünden geçer.
+- Kaynaklar, sıra, SHA-256 ve birleştirilmiş PCM özeti `dinleme-ses-kaynaklari.json` içindedir.
+  Üretim sürümü 3; dinleme ve ezber odası eski önbellekten ayrılır. Kaynak kitap üreteci
+  doğrulanmış sûre manifestini ve sürümü korur; eski yanlış birleşimi tekrar üretmez.
+- Arapça metin ortalanır; sesli âyet hücresinin tamamı gerçek bir düğmedir. Enter/Boşluk
+  ve dokunma aynı sesi çalar; etkin hücre renk, duraklat simgesi ve `aria-pressed` ile belirtilir.
+  Kalın tek taraflı vurgu kaldırıldı, hücrenin tamamında ince sınır kullanıldı.
+- Bölüm kaydı bulunmayan dua/tek âyet, bütün Arapça metniyle tek hücreye alınır; hücrenin
+  tamamı kendi tam kaydını çalar. Tek parçaya bütün duanın yanlış bağlanması önlenir.
+  Âyet metni ve Arapça telaffuz üretilmez; yalnız mevcut resmî sesler kullanılır.
+- Ek içerik denetimi: Kunut 1/2'nin eski 23,76 sn sınırı birinci duanın son cümlesini ikinci
+  kayda taşıyordu. Resmî birleşik kayıtta son cümle 25–28,5 sn, ikinci duanın başlangıcı
+  30,3 sn; aradaki sessizlikte **29,4 sn** kesimi doğrulandı. Kaynak kitap MP3'leri de düzeltildi.
+- Ezan metninde sabaha özgü ibare olduğu için akşam kaydı yerine Diyanet'in **Sabah Ezanı
+  (Saba)** kaydı kullanıldı; başlık beş dilde sabah olarak açıklandı.
+- Ezan duasının sesinde bulunan iki ibare, webdeki metin/çeviri yazı/anlama eklendi:
+  `وَالدَّرَجَةَ الرَّفِيعَةَ` ve `إِنَّكَ لَا تُخْلِفُ الْمِيعَادَ`. Kaynak:
+  [Diyanet 2022 Öğretici Kitabı](https://egitimhizmetleri.diyanet.gov.tr/Documents/Yaz%20Kur%27an%20Kursu%20%C3%96%C4%9Fretici%20Kitab%C4%B1-2022%202.pdf), Ezan Duası;
+  resmî `namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Ezan_Duasi.mp3` kaydı.
+  Basılı kitaptaki kısa rivayet ve PDF değiştirilmedi; web üreteci sesle eşleşen uzun biçimi uygular.
+
 Betik: `src/scripts/ecouter.ts` · biçem: `src/styles/ecouter.css` (ad alanı `.ec-`).
 
 - Tek paylaşılan `Audio` (`preload="none"`, DOM'a eklenmez): iki ses asla üst üste binmez.

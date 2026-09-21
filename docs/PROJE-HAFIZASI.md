@@ -9,6 +9,7 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | İş | Önce bakılacak kaynak | İlgili kod / doğrulama |
 |---|---|---|
 | Web yayını / ders materyalleri / öğretici sunumları | [Yayın kayıtları](YAYIN-KAYITLARI.md) | İçerik commit, Release, deploy, canlı dosya kontrolü; kaynak proje kalite raporları |
+| Hoca portalından Camiye Gidiyorum PDF indirme | [Hoca kitapları](HOCA-KITAPLARI.md) | Dört kitap, şifreli parçalar, yalnız hoca erişimi, kaynak PDF SHA-256 eşitliği |
 | Dinimi Öğreniyorum eğitim merkezi / sesli dersler / kitap karekodları / Elifbâ sesleri | [Dinleme sayfaları ve eğitim merkezi](DINLEME-SAYFALARI.md) | `/tr/muhtedi-egitimi/`, `/e/`, `src/i18n/egitim-rehberi.ts`, `scripts/elifba-ses-denetle.py`; `npm run test:dinleme`, `tests/web/ecouter.spec.mjs` |
 | Cami ve kurs logoları | [Geçerli temiz logolar](LOGO-KIMLIGI.md) | `public/media/logo`; kurumsal kimlik ana paketi |
 | Veli e-postasının dili | [Dil kararı](VELI-EPOSTA-DILI.md) | `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts`; `tests/veli-eposta-dili.test.mjs` |

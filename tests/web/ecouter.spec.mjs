@@ -138,7 +138,7 @@ test('Ders dizini JavaScript olmadan da bütün derslere bağlantı verir', asyn
   await expect(page.locator('[data-ec-cours] a')).toHaveCount(73);
   await page.locator('[data-ec-cours] a[href="/e/fatha/"]').click();
   await expect(page.locator('.ec-noscript a')).toHaveCount(28);
-  await expect(page.locator('.ec-noscript a').first()).toHaveAttribute('href', /\?v=2$/);
+  await expect(page.locator('.ec-noscript a').first()).toHaveAttribute('href', new RegExp(`\\?v=${VERI.surum}$`));
   await context.close();
 });
 
@@ -275,13 +275,16 @@ test('Fâtiha: büyük çal düğmesi durur/başlar, satırlar Arapça–okunuş
   await expect(page.locator('[data-ec-gecen]')).toHaveText(EC_METIN.sureSifir);
 });
 
-test('Satır sesi olmayan metin (Sübhâneke) yalnız büyük düğmeyle çalışır; âyet bölümlerine âyet sesi bağlanmaz', async ({ page }) => {
+test('Bölüm kaydı olmayan dua tek tam metin hücresinden dinlenir; âyet bölümlerine yanlış ses bağlanmaz', async ({ page }) => {
   await calarTaklidi(page);
   const SUBHANEKE = KODLAR.subhaneke;
   expect(SUBHANEKE.satirlar.every((s) => !s.ses)).toBe(true);
   await sayfayiAc(page, 'subhaneke');
-  await expect(page.locator('.ec-satir')).toHaveCount(SUBHANEKE.satirlar.length);
-  await expect(page.locator('.ec-satir button[data-ec-cal]')).toHaveCount(0);
+  await expect(page.locator('.ec-satir')).toHaveCount(1);
+  await expect(page.locator('.ec-satir button[data-ec-cal]')).toHaveCount(1);
+  await page.locator('.ec-satir .ec-ar').click();
+  expect((await calinanlar(page)).at(-1)).toBe(SUBHANEKE.tam.ses);
+  await expect(page.locator('.ec-satir .ec-ar')).toHaveCSS('text-align','center');
   await expect(page.locator('button[data-ec-zincir]')).toHaveCount(0);
   const tam = page.locator('button[data-ec-tam]');
   await expect(tam).toHaveAttribute('data-ses', SUBHANEKE.tam.ses);

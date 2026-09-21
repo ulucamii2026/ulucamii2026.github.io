@@ -60,7 +60,7 @@ const basliklar: Record<string, [string, string, string, string]> = {
   barik: ['Allahümme Bârik', 'Allāhumma bārik', 'Allāhumma bārik', 'Allāhumma bārik'],
   'kunut-1': ['Kunut duası 1', 'Qunūt supplication 1', 'Qunūt-smeekbede 1', 'Qunūt-Bittgebet 1'],
   'kunut-2': ['Kunut duası 2', 'Qunūt supplication 2', 'Qunūt-smeekbede 2', 'Qunūt-Bittgebet 2'],
-  ezan: ['Ezan', 'Adhān: call to prayer', 'Adhān: oproep tot het gebed', 'Adhān: Gebetsruf'],
+  ezan: ['Sabah ezanı', 'Adhān: dawn call to prayer', 'Adhān: oproep tot het ochtendgebed', 'Adhān: Gebetsruf zum Morgengebet'],
   kamet: ['Kamet', 'Iqāma: call before prayer', 'Iqāma: oproep vlak voor het gebed', 'Iqāma: Ruf vor dem Gebet'],
   'ezan-duasi': ['Ezan duası', 'Supplication after the adhān', 'Smeekbede na de adhān', 'Bittgebet nach dem Adhān'],
   'rabbena-atina': ['Rabbenâ Âtinâ duası', 'Rabbanā ātinā', 'Rabbanā ātinā', 'Rabbanā ātinā'],
