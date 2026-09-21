@@ -3,6 +3,7 @@ import ham from '../data/ecouter.json';
 import type { EcouterVeri } from '../lib/ecouter';
 import type { Dil } from '../i18n/ui';
 import { EGITIM } from '../i18n/egitim';
+import { dersBasligi, dersYolu } from '../i18n/dinleme';
 import { yol } from '../i18n/utils';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
@@ -26,7 +27,7 @@ const groupes = [
       <h2 id={`titre-${g.id}`}>{g.titre}</h2>
       <p class="ec-altbaslik">{g.description}</p>
       <ul class="ec-cours" role="list">
-        {g.cours.map(([code, c]) => <li data-ec-cours><a href={`/e/${code}/`} lang="fr">{c.baslik}</a></li>)}
+        {g.cours.map(([code, c]) => <li data-ec-cours data-arama={`${code} ${c.baslik} ${dersBasligi(dil, code, c.baslik)}`}><a href={dersYolu(dil, code)} lang={dil}>{dersBasligi(dil, code, c.baslik)}</a></li>)}
       </ul>
     </section>)}
     <p data-ec-vide hidden>{m.bos}</p>
@@ -41,12 +42,12 @@ const groupes = [
   const count = document.querySelector<HTMLElement>('[data-ec-compte]');
   const empty = document.querySelector<HTMLElement>('[data-ec-vide]');
   const rows = [...document.querySelectorAll<HTMLElement>('[data-ec-cours]')];
-  const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('fr');
+  const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ı/g, 'i');
   if (zone && input && count && empty) {
     zone.hidden = false;
     input.addEventListener('input', () => {
       const query = normalize(input.value.trim());
-      for (const row of rows) row.hidden = !normalize(row.textContent ?? '').includes(query);
+      for (const row of rows) row.hidden = !normalize(row.dataset.arama ?? row.textContent ?? '').includes(query);
       for (const group of document.querySelectorAll<HTMLElement>('[data-ec-groupe]')) {
         group.hidden = !group.querySelector('[data-ec-cours]:not([hidden])');
       }

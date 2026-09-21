@@ -56,6 +56,7 @@ export function dinlemeyiBaslat(): void {
   let kalanTekrar = 0;
   let bekleme = 0;
   let zincir = false;
+  let oynatmaSurumu = 0;
 
   const tercihYaz = () => {
     try { localStorage.setItem(EC_ANAHTAR, JSON.stringify(tercih)); } catch { /* depolama kapalı */ }
@@ -93,6 +94,7 @@ export function dinlemeyiBaslat(): void {
   }
 
   function durdur(): void {
+    oynatmaSurumu += 1;
     if (bekleme) { clearTimeout(bekleme); bekleme = 0; }
     kalanTekrar = 0;
     calar?.pause();
@@ -104,7 +106,7 @@ export function dinlemeyiBaslat(): void {
 
   function hata(): void {
     durdur();
-    durum(EC_METIN.hata);
+    durum(kok?.dataset.hata ?? EC_METIN.hata);
   }
 
   function gorunure(dugme: HTMLButtonElement): void {
@@ -122,7 +124,8 @@ export function dinlemeyiBaslat(): void {
         bekleme = 0;
         if (!calar || !acik) return;
         calar.currentTime = 0;
-        void calar.play().catch(hata);
+        const surum = oynatmaSurumu;
+        void calar.play().catch(() => { if (surum === oynatmaSurumu) hata(); });
       }, Math.max(300, uzunluk));
       return;
     }
@@ -152,7 +155,9 @@ export function dinlemeyiBaslat(): void {
     ses.src = sesUrl.href;
     ses.playbackRate = tercih.hiz;
     gorunure(dugme);
-    void ses.play().then(() => { ses.playbackRate = tercih.hiz; }).catch(hata);
+    const surum = oynatmaSurumu;
+    void ses.play().then(() => { if (surum === oynatmaSurumu) ses.playbackRate = tercih.hiz; })
+      .catch(() => { if (surum === oynatmaSurumu) hata(); });
   }
 
   /* Ok işlevi: `kok` daraltması (null değil) kapanışa böyle taşınır. */

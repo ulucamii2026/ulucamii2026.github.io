@@ -7,16 +7,23 @@ depoya girmez). Burada yalnız herkese açık dinleme yüzeyi ve verisi durur.
 ## 1. Amaç
 
 Kitabı okuyan yetişkin, sayfadaki kare kodu telefonuyla okutur ve `https://ulucamii.be/e/<kod>/`
-açılır. Ziyaretçinin tek isteği **dinlemektir**: sayfa dar, telefon öncelikli ve yalnız Fransızcadır.
+açılır. Bu kalıcı karekod sayfası Fransızcadır; aynı ders Türkçe, İngilizce, Felemenkçe ve Almanca arayüzle de açılır.
 
-- Rota: `src/pages/e/[kod].astro` — `getStaticPaths` ile her kod için bir statik sayfa.
+- Rotalar: `src/pages/e/[kod].astro` (kalıcı Fransızca QR) ve `src/pages/[lang]/audio/[kod].astro` (TR/EN/NL/DE); ortak görünüm `src/components/SesliDers.astro`.
 - 21 Eylül 2026 düzeltmesi: `/e/` herkese açık, aramalı ders dizinidir. Beş dildeki eğitim
-  menüsü yeni Müslümanlar eğitim merkezine gider; oradan bütün derslere erişilir.
-  Ders açıklamalarının Fransızca olduğu açıkça belirtilir.
+  menüsü **Dinimi Öğreniyorum** eğitim merkezine gider; oradan bütün derslere seçilen dilde erişilir.
+  Başlık, oynatıcı, hata mesajı ve ses bağlantıları beş dilde yerelleştirilir (`src/i18n/dinleme.ts`).
+  Kitaptan gelen Fransızca çeviri yazı ve anlamlar `lang="fr"` ile ve görünür açıklamayla korunur;
+  yeni Kur’an meali üretilmez. Seçilen dilde Diyanet kitapları ayrıca sunulur (`src/i18n/egitim-kitaplari.ts`).
   Kitap, karekod veya üyelik gerekmez. 73 ders indekslenebilir ve site haritasındadır;
   yalnız seviye testine yönlendiren `/e/test/` noindex kalır. Kalıcı 74 QR adresi korunur.
-- Derslerin üstündeki “Tous les cours audio” bağlantısı dizine döner. Tek dildeki bu
-  sayfalarda diğer dillerin ana sayfalarına yanlış hreflang bağı kurulmaz.
+- 73 ders × 5 dil = 365 ders sayfası. Dil menüsü ve hreflang aynı dersin karşılığına gider;
+  Fransızca karşılık daima `/e/<kod>/` kalır. Diğer dillerde geri bağlantısı eğitim merkezinin
+  sesli ders bölümüne, Fransızcada `/e/` dizinine döner. Eski eğitim merkezi adresleri değişmez.
+- Hızlı ses geçişinde eski `play()` isteğinin gecikmiş reddi yeni sesi durduramaz;
+  oynatma sürümü kontrol edilir. Arama yerelleştirilmiş başlık, eski başlık ve kodu birlikte tarar.
+- Ek regresyonlar: `tests/web/egitim-diller.spec.mjs`; 365 ders adresi/ses eşliği, beş dilde
+  yerel hata mesajı, tema/erişilebilirlik, JavaScript kapalıyken sesler ve gecikmiş oynatma hatası.
 - Bilinmeyen kod → normal 404 (yalnız statik yollar üretilir).
 - Sitenin olağan başlığı, alt bilgisi ve Kilim Kartografyası jetonları kullanılır; içerik sütunu
   dardır (en çok 40 rem).

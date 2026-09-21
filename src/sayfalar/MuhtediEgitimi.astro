@@ -3,6 +3,9 @@ import Base from '../layouts/Base.astro';
 import SesliDersDizini from '../components/SesliDersDizini.astro';
 import { EGITIM } from '../i18n/egitim';
 import { EGITIM_REHBERI } from '../i18n/egitim-rehberi';
+import { dersBasligi, dersYolu } from '../i18n/dinleme';
+import ham from '../data/ecouter.json';
+import { egitimKitaplari, KITAP_NOTU } from '../i18n/egitim-kitaplari';
 import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import '../styles/ecouter.css';
@@ -33,6 +36,11 @@ const baglar = [
   [kitaplar[2]],
   [kitaplar[3], kitaplar[1]],
 ];
+const dersler = ham.kodlar as Record<string, {baslik: string}>;
+const dersBaglantisi = (b: {href:string;ad:string}) => {
+  const kod = b.href.match(/^\/e\/([^/]+)\/$/)?.[1];
+  return kod ? {href:dersYolu(dil,kod),ad:dersBasligi(dil,kod,dersler[kod].baslik)} : b;
+};
 const ids = ['islam', 'iman', 'temizlik', 'namaz', 'elifba', 'dua', 'ibadet', 'ahlak'];
 ---
 <Base baslik={m.baslik} aciklama={m.giris} dil={dil}>
@@ -64,7 +72,7 @@ const ids = ['islam', 'iman', 'temizlik', 'namaz', 'elifba', 'dua', 'ibadet', 'a
           <ul>{ders.konular.map((konu) => <li>{konu}</li>)}</ul>
           <div class="eg-uygulama"><h4>{r.uygulama}</h4><p>{ders.uygulama}</p></div>
           <h4>{r.kaynak}</h4>
-          <ul class="eg-baglar">{baglar[i].map((b) => <li><a href={b.href} lang={b.href.startsWith('/e/') || b.href.startsWith('https:') ? 'fr' : dil}>{b.ad}</a></li>)}</ul>
+          <ul class="eg-baglar">{baglar[i].map(dersBaglantisi).map((b) => <li><a href={b.href} lang={b.href.startsWith('https:') ? 'fr' : dil}>{b.ad}</a></li>)}</ul>
           <label class="eg-isaret" data-eg-isaret hidden><input type="checkbox" value={ids[i]} data-eg-tamam />{p[1]}</label>
         </div>
       </details>)}
@@ -77,7 +85,7 @@ const ids = ['islam', 'iman', 'temizlik', 'namaz', 'elifba', 'dua', 'ibadet', 'a
     <section class="ec-baslangic" aria-labelledby="egitime-basla">
       <h2 id="egitime-basla">{m.baslangic}</h2>
       <ul class="ec-cours" role="list">
-        <li><a href="/e/alphabet/">{m.ilkDers}</a></li>
+        <li><a href={dersYolu(dil, 'alphabet')}>{m.ilkDers}</a></li>
         <li><a href={yol(dil, 'seviyeTesti')}>{m.test}</a></li>
         <li><a href={yol(dil, 'ihtida')}>{m.rehber}</a></li>
       </ul>
@@ -89,7 +97,8 @@ const ids = ['islam', 'iman', 'temizlik', 'namaz', 'elifba', 'dua', 'ibadet', 'a
     </div>
     <section class="ec-section" id="kaynak-kitaplar" aria-labelledby="kitap-baslik">
       <h2 id="kitap-baslik">{r.kitaplar}</h2>
-      <p>{r.kitapNotu}</p>
+      <p>{KITAP_NOTU[dil]}</p>
+      {dil !== 'fr' && <ul class="ec-cours" role="list" data-yerel-kitaplar>{egitimKitaplari(dil).map((kitap) => <li><a href={kitap.href} lang={dil}>{kitap.ad} <span class="eg-format">PDF · {dil.toUpperCase()}</span></a></li>)}</ul>}
       <ul class="ec-cours" role="list">{kitaplar.map((kitap) => <li><a href={kitap.href} lang="fr">{kitap.ad} <span class="eg-format">PDF · FR</span></a></li>)}</ul>
       <p><a href={yol(dil, 'kutuphane')}>{r.kutuphane}</a></p>
       <p class="ec-altbaslik"><a href="https://egitimhizmetleri.diyanet.gov.tr/sayfa/489" lang="tr">Diyanet · Kur’an kursları öğretim programları (TR)</a></p>

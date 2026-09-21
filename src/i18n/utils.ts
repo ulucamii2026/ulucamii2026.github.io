@@ -35,6 +35,9 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
   if (url.pathname === '/kayit' || url.pathname.startsWith('/kayit/')) {
     return hedef === 'tr' ? '/kayit/' : `/kayit/${hedef}/`;
   }
+  const sesliDers = url.pathname.match(/^\/e\/([^/]+)\/?$/) ?? url.pathname.match(/^\/(?:tr|en|nl|de)\/audio\/([^/]+)\/?$/);
+  if (sesliDers && sesliDers[1] !== 'test') return hedef === 'fr' ? `/e/${sesliDers[1]}/` : `/${hedef}/audio/${sesliDers[1]}/`;
+  if (/^\/e\/?$/.test(url.pathname)) return yol(hedef, 'muhtediEgitimi');
   const [, mevcutDil, seg, ...kalan] = url.pathname.split('/').filter(Boolean).length
     ? ['', ...url.pathname.split('/').filter(Boolean)]
     : ['', varsayilanDil];

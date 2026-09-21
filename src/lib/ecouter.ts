@@ -88,7 +88,7 @@ export const ecMetinDoldur = (kalip: string, degerler: Record<string, string | n
   kalip.replace(/\{(\w+)\}/g, (_, anahtar: string) => String(degerler[anahtar] ?? ''));
 
 /** Bir parçanın çal düğmesine yazılacak gizli ad. `sira` 1'den başlar. */
-export function ecParcaAdi(parca: EcouterParca, sira: number, kare: boolean): string {
-  if (kare && parca.okunus) return ecMetinDoldur(EC_METIN.ogeCal, { ad: parca.okunus });
-  return ecMetinDoldur(EC_METIN.satirCal, { no: parca.no ?? sira });
+export function ecParcaAdi(parca: EcouterParca, sira: number, kare: boolean, m: { ogeCal: string; satirCal: string } = EC_METIN): string {
+  if (kare && parca.okunus) return ecMetinDoldur(m.ogeCal, { ad: parca.okunus });
+  return ecMetinDoldur(m.satirCal, { no: parca.no ?? sira });
 }

@@ -1,0 +1,12 @@
+---
+import SesliDers from '../../../components/SesliDers.astro';
+import ham from '../../../data/ecouter.json';
+import type { EcouterVeri, EcouterKod } from '../../../lib/ecouter';
+import type { Dil } from '../../../i18n/ui';
+export function getStaticPaths() {
+  return (['tr','en','nl','de'] as const).flatMap(dil => Object.entries((ham as unknown as EcouterVeri).kodlar)
+    .filter(([,c]) => !c.yonlendir).map(([kod,icerik]) => ({params:{lang:dil,kod},props:{dil,kod,icerik}})));
+}
+const {dil,kod,icerik} = Astro.props as {dil:Dil;kod:string;icerik:EcouterKod};
+---
+<SesliDers kod={kod} dil={dil} icerik={icerik} />

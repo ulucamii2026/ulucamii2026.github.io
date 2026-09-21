@@ -12,6 +12,7 @@ import { readFileSync } from 'node:fs';
 import { EC_METIN, EC_TEKRAR_SAYISI, ecParcaAdi } from '../../src/lib/ecouter.ts';
 import { yollar } from '../../src/i18n/ui.ts';
 import { EGITIM } from '../../src/i18n/egitim.ts';
+import { dersYolu } from '../../src/i18n/dinleme.ts';
 
 const VERI = JSON.parse(readFileSync(new URL('../../src/data/ecouter.json', import.meta.url), 'utf8'));
 const KODLAR = VERI.kodlar;
@@ -79,7 +80,7 @@ for (const kod of ['fatiha', 'fatha']) {
     await expect(page.locator('html')).toHaveAttribute('lang', /^fr/);
     expect(await page.evaluate(() => document.querySelector('meta[name="robots"]')?.content ?? '')).not.toContain('noindex');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://ulucamii.be/e/${kod}/`);
-    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(0);
+    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(6);
     await expect(page.locator('.ec-geri a')).toHaveAttribute('href', '/e/');
     // Künye: ses kaynağı + cami adı.
     await expect(page.locator('.ec-kaynak')).toContainText(icerik.kaynak);
@@ -151,13 +152,13 @@ test('Beş dilin eğitim menüsü herkese açık ders dizinine bağlanır', asyn
     await expect(page.locator('[data-ec-cours] a')).toHaveCount(73);
     await expect(page.locator('.eg-ders')).toHaveCount(8);
     await expect(page.locator('.eg-ders-icerik .eg-uygulama')).toHaveCount(8);
-    await expect(page.locator('#kaynak-kitaplar .ec-cours a')).toHaveCount(4);
+    expect(await page.locator('#kaynak-kitaplar .ec-cours a').count()).toBeGreaterThanOrEqual(4);
     await expect(page.locator('.eg-soru')).toHaveCount(4);
-    await expect(page.locator('[data-ec-cours] a').first()).toHaveAttribute('lang', 'fr');
+    await expect(page.locator('[data-ec-cours] a').first()).toHaveAttribute('lang', dil);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://ulucamii.be${href}`);
     await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(6);
     await page.getByLabel(EGITIM[dil].ara).fill('fatha');
-    await expect(page.locator('[data-ec-cours] a[href="/e/fatha/"]')).toBeVisible();
+    await expect(page.locator(`[data-ec-cours] a[href="${dersYolu(dil, 'fatha')}"]`)).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
@@ -201,7 +202,7 @@ test('Eğitim kaydı engellendiğinde dersler ve geçici takip çalışır', asy
   await page.locator('[data-eg-sifirla]').click();
   await expect(page.locator('[data-eg-sayac]')).toContainText('0 / 8');
   await page.getByLabel('Ders ara').fill('fatha');
-  await expect(page.locator('[data-ec-cours] a[href="/e/fatha/"]')).toBeVisible();
+  await expect(page.locator('[data-ec-cours] a[href="/tr/audio/fatha/"]')).toBeVisible();
 });
 
 test('Eğitim rehberi JavaScript olmadan açılır ve bütün içerik erişilebilir kalır', async ({ browser }) => {
