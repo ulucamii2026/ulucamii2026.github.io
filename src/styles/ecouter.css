@@ -19,7 +19,7 @@
 .ec-cours a { display: block; padding-block: .85rem; line-height: 1.5; text-underline-offset: .2em; }
 .ec-catalogue [hidden] { display: none; }
 .eg-yol > p, .eg-rutin p, .eg-ders-icerik, .eg-soru p { line-height: 1.75; }
-.eg-takip { margin-block: 1.5rem; padding: 1rem; border-inline-start: 3px solid var(--vurgu); background: var(--zemin-2); }
+.eg-takip { margin-block: 1.5rem; padding: 1rem; background: var(--zemin-2); }
 .eg-takip progress { display: block; width: 100%; height: .65rem; margin-block: .6rem; accent-color: var(--vurgu); }
 .eg-takip button { margin-top: .75rem; }
 .eg-ders { border-top: 1px solid var(--cizgi); scroll-margin-top: 7rem; }
@@ -30,7 +30,7 @@
 .eg-ders-icerik { padding: 0 .25rem 1.5rem; }
 .eg-ders-icerik ul, .eg-rutin ol { list-style: revert; padding-inline-start: 1.35rem; margin-block: 1rem; }
 .eg-ders-icerik li, .eg-rutin li { margin-block: .6rem; }
-.eg-uygulama { padding: 1rem; margin-block: 1.25rem; background: var(--zemin-2); border-inline-start: 3px solid var(--vurgu); }
+.eg-uygulama { padding: 1rem; margin-block: 1.25rem; background: var(--zemin-2); }
 .eg-uygulama h4, .eg-ders-icerik > h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; }
 .eg-baglar a { display: inline-block; padding-block: .5rem; text-underline-offset: .2em; }
 .eg-isaret { display: flex; align-items: center; gap: .8rem; min-height: 2.75rem; cursor: pointer; }
