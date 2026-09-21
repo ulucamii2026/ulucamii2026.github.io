@@ -4,6 +4,58 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (10) — sûre/dua ses düzeltmeleri ve hocaya özel kitap indirme
+
+- Zaman: `2026-09-21T20:02:52+02:00` (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.**
+- Kullanıcı: Asr'da besmele eksikliğinin ve benzer kusurların giderilmesi; Arapça metnin
+  ortalanıp hücreye dokunarak dinlenmesi; dört güncel kitabın hoca portalından indirilmesi.
+- İçerik commit'i `e2e14d0ceee038b55366939b0fb748af71c2d965`; 63 dosya. Dernek kimliği `ulucamii2026` doğrulandı;
+  pull --rebase, push ve [Pages yayını](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35635411859) başarılı. Release: 0.
+- Asr dâhil 13 sûrede besmele eksikti. Fâtiha ve Âyetü'l-Kürsî dâhil 15 tam kayıt resmî
+  Osman Şahin âyetlerinden yeniden üretildi: eûzü → tek besmele → âyetler. Eski ham MP3
+  birleştirmesinin başlık hataları PCM çözümleme/birleştirme/kodlamayla giderildi.
+- Kunut 1'in son cümlesi eski 23,76 sn kesiminde Kunut 2'ye geçmişti; içerik ve sessizlik
+  doğrulanarak sınır 29,4 sn yapıldı. Sabah ibaresi bulunan ezan metni resmî sabah ezanıyla
+  eşleştirildi. Uzun ezan duasındaki iki ibare web metnine/okunuşuna/anlamına eklendi.
+  Kamet için otomatik analizdeki 6 başlangıç tekbiri iddiası bağımsız dökümde doğrulanmadı
+  (başta 4, sonda 2); resmî kayıt korunmuştur. Arapça TTS/üçüncü taraf ses kullanılmadı.
+- Arapça hücre ortalı ve tamamı düğme; dokunma/Enter/Boşluk, etkin simge ve aria-pressed.
+  Bölüm kaydı olmayan duanın bütün metni tek hücrede kendi tam sesine bağlanır. 74 basılı
+  QR adresi ve 365 dil/ders yolu değişmedi. Önbellek sürümü 3, ezber odası da güncellendi.
+- `/hoca/ → Ders kitapları`: dört PDF, 21 AES-256-GCM parçası; açık PDF veya anahtar Git'e
+  girmedi. Yalnız `ayarlar/hocaKitaplari` özel belgesi yazıldı ve geri okunarak doğrulandı.
+  Mevcut canlı Firestore kuralları yerelde sınananla birebir aynı; kural/rol değişikliği yok.
+  Ziyaretçi, veli ve hoca rolü olmayan hesap erişimi reddedildi (emülatör); canlı oturumsuz
+  anahtar okuma reddedildi. Tarayıcıda dört gerçek PDF indirilip kaynak özetiyle eşleştirildi.
+  - `cg1-fr-20260921`: 228 sayfa, 119508776 bayt, SHA-256 `750d7a0759637e6d3dd32095d132d1f137babdc0e4ade9a95ef7f36436b5559a`.
+  - `cg1-tr-20260921`: 227 sayfa, 47574147 bayt, SHA-256 `4814a8f6f3d9cd40fb121ab9df1b3d5c8772a9d1a31252507951c13a80c5a160`.
+  - `cg2-fr-20260921`: 270 sayfa, 94836992 bayt, SHA-256 `d1e56722873195763d208194d0940df7208b9f883b6b2fdffc9ce77af083a969`.
+  - `cg2-tr-20260921`: 270 sayfa, 63422630 bayt, SHA-256 `1f734c4dc409df102db2d0892a1d0c53a7780fea8b53876398b10d99772eff91`.
+- Doğrulama: `npm run dogrula:codex` çalıştırıldı. İlk tam tarayıcı turu 588/592 geçti;
+  dört başarısız beklenti eski ses sürümü ve eski sekme sırasıydı. Bunlar düzeltildi;
+  ilgili dört dosyanın **80/80** testi yeniden geçti. Öğrenme testi dosya yolundaki sürüm
+  parametresini ayıracak şekilde düzeltildi; **10/10** geçti. Kural **42/42**, veli e-postası
+  **58/58**, otomatik kayıt **14/14**, son ses regresyonu **5/5**. Son tip kontrolü 0 hata/
+  0 uyarı; son derleme 1.885 sayfa; site denetiminde yeni kritik hata yok. Önceden var olan
+  2 orta/58 düşük bilgi kaydı bu işte genişletilmedi. Değişen arayüzde Impeccable 0 bulgu;
+  bastırma eklenmedi. 485 eğitim iç bağlantısı ve 18 dış Diyanet PDF bağlantısı sağlam.
+- Ses kanıtı: 26/26 tam kayıt ffmpeg `-xerror` kontrolünden geçti; 26/26 canlı MP3 yerel
+  SHA-256 ile eşleşti. Asr, Fâtiha, İhlâs ve düzeltilen dualar için ayrı ses dökümleri
+  incelendi; kaynak, sıra, PCM ve MP3 özetleri `docs/dinleme-ses-kaynaklari.json` içindedir.
+- Canlı: 374 HTML + 3 önceki varlık kontrolü; beş dilde gerçek tarayıcı Asr tam ses/âyet
+  hücresi oynadı, hizalama doğru ve yatay taşma yok. Dört kitabın 21 canlı parçası indirilip
+  çözülünce kaynak PDF'lerin tüm SHA-256 değerleri eşleşti. Kampanya PDF'si ve özel imzalı
+  tutanak önceki özetleriyle aynı; yeni kişisel belge yayımlanmadı.
+- Değişen yollar: `src/components/SesliDers.astro`, `src/styles/ecouter.css`,
+  `src/data/{ecouter,hoca-kitaplari}.json`, `src/i18n/dinleme.ts`, `src/lib/ezber-verisi.ts`,
+  `src/scripts/{hoca-ekrani,hoca-kitaplari}.ts`, `scripts/sure-ses-uret.py`,
+  `public/media/ses/{sureler,ayet,dualar}`, `public/media/hoca-kitaplari`, `package.json`,
+  ilgili 7 test dosyası ve `docs/{DINLEME-SAYFALARI,OGRENCI-MODU-PORTAL,HOCA-KITAPLARI,PROJE-HAFIZASI}.md`.
+- Açık sınırlar: fiziksel iPhone/Safari denenmedi. Her sesin her kelimesi bağımsız insan
+  uzman tarafından dinlenmedi; otomatik döküm tek başına kesin kaynak sayılmadı.
+  Kitaplar cihazda açılabilen kaynak PDF'lerle aynıdır; baskı/akademik redaksiyon yapılmadı.
+  İndirme yetkisi olan hocanın kaydettiği kopyayı geri çekme iddiası yoktur.
+
 ## 21 Eylül 2026 (9) — Dinimi Öğreniyorum ve eğitim yardımı kampanyası
 
 - Zaman: `2026-09-21T18:55:05+02:00` (Europe/Brussels). Durum: **yayımlandı ve canlı doğrulandı**.
