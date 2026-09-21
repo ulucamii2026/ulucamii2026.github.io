@@ -31,7 +31,7 @@ const [gCami, gHaber, gEgitim, gHizmet] = grupAdi[dil];
 const gruplar: Grup[] = [
   { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
   { ad: gHaber, maddeler: [L('duyurular'), L('etkinlikler', etkinlikKisa[dil]), L('afisler')] },
-  { ad: gEgitim, maddeler: [L('kurankursu'), L('dersmateryalleri'), L('kursgunlugu'), L('vaazlar'), L('irsat'), L('uip'), L('ihtida'), L('seviyeTesti')] },
+  { ad: gEgitim, maddeler: [L('kurankursu'), L('muhtediEgitimi'), L('dersmateryalleri'), L('kursgunlugu'), L('vaazlar'), L('irsat'), L('uip'), L('ihtida'), L('seviyeTesti')] },
   { ad: gHizmet, maddeler: [L('bagis'), L('uyelik'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ];
 const temaEtiketi: Record<Dil, string> = { tr: 'Karanlık / aydınlık tema', fr: 'Thème sombre / clair', en: 'Dark / light theme', nl: 'Donker / licht thema', de: 'Dunkles / helles Design' };
@@ -135,4 +135,3 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
     .ana-baslik > .kapsayici > nav > div > button { font-weight: 600; }
   }
 </style>
-

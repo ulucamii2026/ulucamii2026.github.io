@@ -4,7 +4,7 @@
  *
  * Basılı Fransızca ders kitabının kare kodları buraya gelir: ziyaretçi kitabın üstüne telefonunu
  * tutmuş, tek isteği DİNLEMEK. Bu yüzden sayfa dar, telefon önceliklidir ve yalnız Fransızcadır.
- * Arama motoruna kapalıdır (noindex → site haritası dışı, menüde yok); bilinmeyen kod normal 404 verir.
+ * Herkese açık /e/ dizininden de erişilir; basılı karekod adresleri kalıcıdır.
  *
  * Sözleşme, üretim ve sınama: docs/DINLEME-SAYFALARI.md · türler: src/lib/ecouter.ts
  * Ses kuralı: bütün tilâvet/Elifbâ sesleri yalnız resmî Diyanet kayıtlarıdır (AGENTS.md).
@@ -40,7 +40,7 @@ const yedekler = [
 ].filter((y): y is { ad: string; ses: string } => Boolean(y.ses));
 const surumVar = veri.surum;
 ---
-<Base baslik={icerik.baslik} dil="fr" aciklama={aciklama} noindex dilHatirla={false}>
+<Base baslik={icerik.baslik} dil="fr" aciklama={aciklama} noindex={Boolean(icerik.yonlendir)} dilHatirla={false} tekDil>
   <Fragment slot="head">
     {/* Yönlendirme kodu: betiksiz tarayıcıda da çalışsın diye meta ile. Gecikme 0 —
         gecikmeli yenileme WCAG 2.2.1'e takılır; düğme yenileme çalışmazsa yedektir. */}
@@ -48,6 +48,7 @@ const surumVar = veri.surum;
   </Fragment>
 
   <div class="ec-sayfa">
+    <nav class="ec-geri" aria-label="Parcours des cours"><a href="/e/">Tous les cours audio</a></nav>
     <header class="ec-ust">
       <p class="etiket etiket-vurgu">{m.etiket}</p>
       <h1>{icerik.baslik}</h1>
@@ -117,7 +118,7 @@ const surumVar = veri.surum;
         )}
 
         {ogeler.length > 0 && (
-          <ul class="ec-izgara" role="list" dir="rtl">
+          <ul class:list={['ec-izgara', ogeler.some((o) => o.ar?.includes(' — ')) && 'ec-izgara-cift']} role="list" dir="rtl">
             {ogeler.map((o, i) => (
               <li class="ec-kare" data-ec-parca>
                 {o.ses ? (
@@ -143,12 +144,12 @@ const surumVar = veri.surum;
         <noscript>
           <div class="ec-noscript">
             <p>{m.noscript}</p>
-            {icerik.tam && <audio controls preload="none" src={icerik.tam.ses}></audio>}
+            {icerik.tam && <audio controls preload="none" src={`${icerik.tam.ses}?v=${surumVar}`}></audio>}
             {yedekler.length > 0 && (
               <>
                 <p class="etiket">{m.noscriptListe}</p>
                 <ul class="ec-noscript-liste" role="list">
-                  {yedekler.map((y) => <li><a href={y.ses}>{y.ad}</a></li>)}
+                  {yedekler.map((y) => <li><a href={`${y.ses}?v=${surumVar}`}>{y.ad}</a></li>)}
                 </ul>
               </>
             )}

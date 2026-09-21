@@ -29,7 +29,7 @@
     "test:eksik": "node --test tests/defter-eksik.test.mjs",
     "test:gas-ceviri": "node --test tests/gas-ceviri.test.mjs",
     "test:kutuphane": "py -3.14 scripts/kutuphane-erisim-testi.py",
-    "dogrula": "npm run kimlik:denetle && npm run test:kimlik && npm run denetim:panel && npm run denetim:cms && npm run denetim:dinigun && npm run build && npm run denetim && npm run test:ek9 && npm run test:ihtida && npm run test:kayit && npm run test:duzelt && npm run test:gunluk && npm run test:kaliplar && npm run test:ceviri && npm run test:eksik && npm run test:gas-ceviri && npm run test:seviye",
+    "dogrula": "npm run kimlik:denetle && npm run test:kimlik && npm run denetim:panel && npm run denetim:cms && npm run denetim:dinigun && npm run build && npm run denetim && npm run test:ek9 && npm run test:ihtida && npm run test:kayit && npm run test:duzelt && npm run test:gunluk && npm run test:kaliplar && npm run test:ceviri && npm run test:eksik && npm run test:gas-ceviri && npm run test:seviye && npm run test:dinleme",
     "kimlik:uret": "node scripts/kimlik-uret.mjs",
     "kimlik:denetle": "node scripts/kimlik-uret.mjs --denetle",
     "test:kimlik": "node --test tests/kurumsal-kimlik.test.mjs",
@@ -58,7 +58,8 @@
     "denetim:dinigun": "node scripts/dini-gun-kapisi.mjs",
     "denetim:defter": "node scripts/defter-yoklama-denetim.mjs",
     "defter:ac": "node scripts/defter-gelmedi-ac.mjs",
-    "defter:cevir": "node scripts/defter-cevir.mjs"
+    "defter:cevir": "node scripts/defter-cevir.mjs",
+    "test:dinleme": "node --test tests/ecouter-ses.test.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",

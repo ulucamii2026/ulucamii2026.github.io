@@ -329,227 +329,227 @@
  },
  "/media/ses/elifba/elif.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_1.mp3",
-  "sha256": "75c46b287a7c89cd72d691c221bd0778ef92c727955e329dc172834ea8863b94"
+  "sha256": "a99471aabf1c78da491b65566dd501cc5760d8f57d1b496d257e3391934b0db8"
  },
  "/media/ses/elifba/be.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_2.mp3",
-  "sha256": "c3ece06f970b5b940f30c4ca3c72340d7aab1bfc42bc00f8819e9c1839ee8518"
+  "sha256": "48e20ad51c5d29b29c75e7c6c50766f916e363e1478ac1a4629f32ab81e2e5be"
  },
  "/media/ses/elifba/te.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_3.mp3",
-  "sha256": "34ef3741f116febd82c06b938dfe2342ae5ae88e0a97611e41538c7bffe1620a"
+  "sha256": "125ac4d074e6eb8ed893a2ed7f25228980e0c4e12c3f5a0466e8dc17587b90f3"
  },
  "/media/ses/elifba/se.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_4.mp3",
-  "sha256": "6234bdb4345e51616d14cba18ce0ce31ee457088023276a9e48258c3e028254e"
+  "sha256": "189ce2e668c5fd2a3adc4679fd39a9eea5e8bb7a43823ff25fdf508b979823f6"
  },
  "/media/ses/elifba/cim.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_5.mp3",
-  "sha256": "43812d542d5491e6829bcc7141ebcffc2c88bd95aa8a7b1440b195732b817924"
+  "sha256": "79ab296b25774eb744a42860f838c383f7ec734ea0fed2adb83a48c1aff2b349"
  },
  "/media/ses/elifba/ha.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_6.mp3",
-  "sha256": "663882f126ec296f27a322fbdb3bd21ca5b84db1ab5e27892ccbc2085297fc97"
+  "sha256": "fece58f2d7092ee4ab08c96a067c76900f7c3d06008f1c4cb8196c7e4a6666be"
  },
  "/media/ses/elifba/dal.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_7.mp3",
-  "sha256": "f7c1889baa28673899ba459084f9533b2790f1a82b130d19d17386ae4d5aaaf1"
+  "sha256": "73b232d058db3b8919bc6a3a81b61e4bbac58646930232567a1b40490f074b48"
  },
  "/media/ses/elifba/zel.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_8.mp3",
-  "sha256": "b6c00999998be51a4fa1072f7acb40ac5a0ff0678b6255fefe60c74e99e97386"
+  "sha256": "1d86877ff8ca0a1368824af2ac622761f9f6b69fb28726d25af6f77b34b2df70"
  },
  "/media/ses/elifba/ra.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_9.mp3",
-  "sha256": "17fc38fac6d09b64058b5127345baebf5652c94e2b007585d22d86f06644c830"
+  "sha256": "67b8ee552631da5c6daa6cd87b54477aaed60c0f8c288ce686e7eb57889a7565"
  },
  "/media/ses/elifba/ze.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_10.mp3",
-  "sha256": "a23f6cda4e8a0b5cd040718e916ec16a17089cacb09a10b3a8b78f3b6a181355"
+  "sha256": "cc51384327e57a1ecf8c9ccd1b1b8629e57212442a0e9be2d31cc5a070e5a828"
  },
  "/media/ses/elifba/sin.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_11.mp3",
-  "sha256": "47f27ad339a6703195fc152c018652fe0b3d7cfee6da143593a55315ca3691b4"
+  "sha256": "bd1eef24fdd6301d97272a05f5d2321285dfda2b656e068c422fad050dd6ef79"
  },
  "/media/ses/elifba/sin2.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_12.mp3",
-  "sha256": "1e15c8f9309280c93e384adf0fbc3f3f0f5ae8a691b1d60c2f67380fc9ea6d35"
+  "sha256": "5a66d62bef1d1ad274d9729674d003068379a11ddf97b709d6eff3479b2b8ffd"
  },
  "/media/ses/elifba/ayn.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_13.mp3",
-  "sha256": "840d152489e10fe7ef7b9b01e6ffe3e4132749f4a44268a4f736608a8142d377"
+  "sha256": "f2d0a4078e8616dd8a563353bef92c8e93384f8abf929d708059a547b887040c"
  },
  "/media/ses/elifba/fe.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_14.mp3",
-  "sha256": "704960358a9921890f7024cf844c9590f5902c356701a1f94d6ac6fdfc5ddc9f"
+  "sha256": "085d172e381273b63ffb9c78eefb2bf31bf465ecca120b2ddfd0b656acd64c51"
  },
  "/media/ses/elifba/kef.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_15.mp3",
-  "sha256": "42cb78453aa6e4cc4d2a68b643c6c52632be4dc55c2207b713f4d19de29e5051"
+  "sha256": "868d768fa264efa3e521a9283a0d7da0e2d4e2743f0b78ca1221f3a9b1fb73af"
  },
  "/media/ses/elifba/lam.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_16.mp3",
-  "sha256": "6091bdfcd77d801284d71321e0969a4022f81aaf4fe230c9167d4bbcb14b9148"
+  "sha256": "6309d1274057829f9e632612504f79fcb1ba65615f11baf447bd5005e9e9cab9"
  },
  "/media/ses/elifba/mim.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_17.mp3",
-  "sha256": "bd8ecddbe0b05b4b8dc55bf0c978ea00b3f2a9c23ef022227b36d9876073e583"
+  "sha256": "02c6030c9121ac6f0691e4c3693ceab74e02eea2d9eb3fe9ffd55752ebf76b6e"
  },
  "/media/ses/elifba/nun.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_18.mp3",
-  "sha256": "b613e3cf364f72d9c4d7356fc973867eb3f6312244f313a957bc365cb8b1e083"
+  "sha256": "16be208f0b105ec71966e34efd9cbb6bdfb59326b2c24cd836139b499f1d6b30"
  },
  "/media/ses/elifba/he.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_19.mp3",
-  "sha256": "cfed2c31e6f845f2eaa2bc51d1df31916eb2cd92f7067e250cdd653f0e6dd9c5"
+  "sha256": "6afd6045d364654016ee2714a08898a3c22d2686465321ebf5f97763e9c7cbb9"
  },
  "/media/ses/elifba/vav.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_20.mp3",
-  "sha256": "0aca5390d8f84309287caea240b7223690f1f39536ef42555e11a4061af95029"
+  "sha256": "7946a4fcf9c11dbba4360251d519cc80cb529e1312a4492efd68cc01c0cf4d03"
  },
  "/media/ses/elifba/ye.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_21.mp3",
-  "sha256": "113ed9e41692f3cace01e9a443f398d602c56e0356885db99782f3c00bd80bd5"
+  "sha256": "0f24674fbeb135ec8d6c985023fea200ce041e9d8890a03badd8c141e920003f"
  },
  "/media/ses/elifba/hi.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_22.mp3",
-  "sha256": "4eaee0317bd4d89185b514029e543dd83e0da1dd0ed8b77a12bc294462e947ce"
+  "sha256": "263c5947de89841c5d38547bf23be34dff34743980071dcd31583c3f4c19db71"
  },
  "/media/ses/elifba/sad.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_23.mp3",
-  "sha256": "3d905b661b03aadc51866e868d5535f90f2e5b99a6fb03e34a64f010253d2424"
+  "sha256": "c47f5f4198b716d1eda0a33f28d325766dedb7133259f7561fc079c075e6679d"
  },
  "/media/ses/elifba/dad.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_24.mp3",
-  "sha256": "ce4f949afba6817ba6c203e1ca206a44fc554f343e109bbabc139e976b1940e2"
+  "sha256": "b82dc37db7eb1c11d78d557ec307a1161feb5eefee26ec9df3fa4941eff790dc"
  },
  "/media/ses/elifba/ti.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_25.mp3",
-  "sha256": "5e2b736c163f877987f4c13d9f31e8c43efd9285f43c34afc5436057f3915a6d"
+  "sha256": "d561c3aa27b0fecea79d5ca5d3bda737a55b4007c2c8a33b3d968449417df0cf"
  },
  "/media/ses/elifba/zi.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_26.mp3",
-  "sha256": "b37034956866f807cd8c2a2c1493bcaa4da75616c9b5ad90d16b8f143f77e235"
+  "sha256": "a9394898b268610723833fc65ddda367bed0214ff1f82fed2927416df01ff29f"
  },
  "/media/ses/elifba/gayn.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_27.mp3",
-  "sha256": "31fa84e1409cf5a8596c488ccfe99379c6a7f1e2fcdaab3d86ffc0a64aa1c810"
+  "sha256": "61c5757616648b4d6329ac3a187fdddf663b062a492c33f6726c7f66279a15c6"
  },
  "/media/ses/elifba/kaf.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_28.mp3",
-  "sha256": "483cc8e7de33b03a811125dfc6aa18ad245c79e964681a806b53f26018faa887"
+  "sha256": "57bfff6e029cf3e31c1dd1b69cd8562922dcdee46186a26345f1822a36898514"
  },
  "/media/ses/elifba/ustun/elif.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_1.mp3",
-  "sha256": "a99471aabf1c78da491b65566dd501cc5760d8f57d1b496d257e3391934b0db8"
+  "sha256": "5ae65348999714824e40b8e3d33b0b4e73a5e538ce074175cc8f839450862e64"
  },
  "/media/ses/elifba/ustun/be.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_2.mp3",
-  "sha256": "48e20ad51c5d29b29c75e7c6c50766f916e363e1478ac1a4629f32ab81e2e5be"
+  "sha256": "25ff821c853ad58281f669020f412462da278a384e917700b5dfdd3b93b85147"
  },
  "/media/ses/elifba/ustun/te.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_3.mp3",
-  "sha256": "125ac4d074e6eb8ed893a2ed7f25228980e0c4e12c3f5a0466e8dc17587b90f3"
+  "sha256": "9587f989e374ed9ef471d78b69136b78fbb522cf7fd928774fda3d3870daa227"
  },
  "/media/ses/elifba/ustun/se.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_4.mp3",
-  "sha256": "189ce2e668c5fd2a3adc4679fd39a9eea5e8bb7a43823ff25fdf508b979823f6"
+  "sha256": "f9280694500b860e9c71b8fa1eb83e2f1a16f5a412b3556eec6de52f23f5023d"
  },
  "/media/ses/elifba/ustun/cim.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_5.mp3",
-  "sha256": "79ab296b25774eb744a42860f838c383f7ec734ea0fed2adb83a48c1aff2b349"
+  "sha256": "86bf2c8879583970bab47b4de2663168c3347b18cc44ab8460317698d22b38f8"
  },
  "/media/ses/elifba/ustun/ha.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_6.mp3",
-  "sha256": "fece58f2d7092ee4ab08c96a067c76900f7c3d06008f1c4cb8196c7e4a6666be"
+  "sha256": "3fead1870bb0c183a2166d15f0c18be933603ac65d968b2ba2c4d1d06884bc9d"
  },
  "/media/ses/elifba/ustun/dal.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_7.mp3",
-  "sha256": "73b232d058db3b8919bc6a3a81b61e4bbac58646930232567a1b40490f074b48"
+  "sha256": "67090e64f6d461da3ed97604ed3074295b54606c0f302ba5513d11dc7c3662fd"
  },
  "/media/ses/elifba/ustun/zel.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_8.mp3",
-  "sha256": "1d86877ff8ca0a1368824af2ac622761f9f6b69fb28726d25af6f77b34b2df70"
+  "sha256": "60af7e054f3cb59714e2ac9abaa0ea8698efc34e1710f9f0894546081c0c9f2d"
  },
  "/media/ses/elifba/ustun/ze.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_9.mp3",
-  "sha256": "cc51384327e57a1ecf8c9ccd1b1b8629e57212442a0e9be2d31cc5a070e5a828"
+  "sha256": "45b3e5c806497d74df7b2f0aeb0ce883862899809811780fbbd36ac9ff0a1233"
  },
  "/media/ses/elifba/ustun/sin.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_10.mp3",
-  "sha256": "bd1eef24fdd6301d97272a05f5d2321285dfda2b656e068c422fad050dd6ef79"
+  "sha256": "28114c1f0e23c9140c43ae00e03aaf981d64e9a6d95974a2f978431c8999e5fc"
  },
  "/media/ses/elifba/ustun/sin2.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_11.mp3",
-  "sha256": "5a66d62bef1d1ad274d9729674d003068379a11ddf97b709d6eff3479b2b8ffd"
+  "sha256": "6d86a61e960a6c5f1ee5b879d98e06aa17cb04a9eebf793cd5534b3ecdb29675"
  },
  "/media/ses/elifba/ustun/ayn.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_12.mp3",
-  "sha256": "f2d0a4078e8616dd8a563353bef92c8e93384f8abf929d708059a547b887040c"
+  "sha256": "25432f768bea9a50783c61f1317403f962cb66e9035b3264c31f11f33e72bcfa"
  },
  "/media/ses/elifba/ustun/fe.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_13.mp3",
-  "sha256": "085d172e381273b63ffb9c78eefb2bf31bf465ecca120b2ddfd0b656acd64c51"
+  "sha256": "3ce4425d6c1d95df9c8a99d5e867833a431c9f5540ca5010164b43632b78d878"
  },
  "/media/ses/elifba/ustun/kef.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_14.mp3",
-  "sha256": "868d768fa264efa3e521a9283a0d7da0e2d4e2743f0b78ca1221f3a9b1fb73af"
+  "sha256": "459fd4b7c45918e77f1b4d00f416efb40b778a8de2273c5fef2f78ba8beca757"
  },
  "/media/ses/elifba/ustun/lam.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_15.mp3",
-  "sha256": "6309d1274057829f9e632612504f79fcb1ba65615f11baf447bd5005e9e9cab9"
+  "sha256": "4d0efd81b3461cb26ca372b62f4c1b7d74ee45df40f18326c6a1eb596b5f2cf3"
  },
  "/media/ses/elifba/ustun/mim.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_16.mp3",
-  "sha256": "02c6030c9121ac6f0691e4c3693ceab74e02eea2d9eb3fe9ffd55752ebf76b6e"
+  "sha256": "91ac94612e13d6f03af02d11fb95e5bd01e415ae3e1d602c58c407e2cf817e1d"
  },
  "/media/ses/elifba/ustun/nun.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_17.mp3",
-  "sha256": "16be208f0b105ec71966e34efd9cbb6bdfb59326b2c24cd836139b499f1d6b30"
+  "sha256": "b2320a5de5dfd64f58eb61a0b12c859bc67dd9d56817da4cf14129d8530cad49"
  },
  "/media/ses/elifba/ustun/he.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_18.mp3",
-  "sha256": "6afd6045d364654016ee2714a08898a3c22d2686465321ebf5f97763e9c7cbb9"
+  "sha256": "c0bbd71a968dbc93cc244dd460e02f1b75c831e1a1ea6c68f99097b9ed104773"
  },
  "/media/ses/elifba/ustun/vav.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_19.mp3",
-  "sha256": "7946a4fcf9c11dbba4360251d519cc80cb529e1312a4492efd68cc01c0cf4d03"
+  "sha256": "c76a63dfa3f6403602b5e1459ab2b7b4d0de65c7e92c1461bc39506c91307bcc"
  },
  "/media/ses/elifba/ustun/ye.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_20.mp3",
-  "sha256": "0f24674fbeb135ec8d6c985023fea200ce041e9d8890a03badd8c141e920003f"
+  "sha256": "6f81f7a19e3be09a13954b6dd2a8c8a2826393471b42a21eaaa47e0df3e7b7a9"
  },
  "/media/ses/elifba/ustun/hi.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_25.mp3",
-  "sha256": "263c5947de89841c5d38547bf23be34dff34743980071dcd31583c3f4c19db71"
+  "sha256": "57df59c2a3653978b781e8fd732bbe13f2ff2b85a4c5002be87d69a96a768736"
  },
  "/media/ses/elifba/ustun/ra.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_26.mp3",
-  "sha256": "67b8ee552631da5c6daa6cd87b54477aaed60c0f8c288ce686e7eb57889a7565"
+  "sha256": "8a150fb8f55b338272f177a2d639c959c2382b7b65767c1ac825cdd26dd569a9"
  },
  "/media/ses/elifba/ustun/gayn.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_27.mp3",
-  "sha256": "61c5757616648b4d6329ac3a187fdddf663b062a492c33f6726c7f66279a15c6"
+  "sha256": "8aa3d4af4b8b828ca6e0f52577a39824e02b9148fb8614c6e6e6673c36df86d5"
  },
  "/media/ses/elifba/ustun/kaf.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_28.mp3",
-  "sha256": "57bfff6e029cf3e31c1dd1b69cd8562922dcdee46186a26345f1822a36898514"
+  "sha256": "0352e5b9d0a72a6f0912fbc783facae5fe173437bd608937a6023a07eedac346"
  },
  "/media/ses/elifba/ustun/sad.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_30.mp3",
-  "sha256": "c47f5f4198b716d1eda0a33f28d325766dedb7133259f7561fc079c075e6679d"
+  "sha256": "1eec077e66196200c7856814c42952d8fa4367d969cbc9cd39b9b854b6170146"
  },
  "/media/ses/elifba/ustun/dad.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_31.mp3",
-  "sha256": "b82dc37db7eb1c11d78d557ec307a1161feb5eefee26ec9df3fa4941eff790dc"
+  "sha256": "9ceb5d7dfa6147fe9940aaf60471eda86ef3766616f24b40ecf56537e77f1596"
  },
  "/media/ses/elifba/ustun/ti.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_32.mp3",
-  "sha256": "d561c3aa27b0fecea79d5ca5d3bda737a55b4007c2c8a33b3d968449417df0cf"
+  "sha256": "7cc735dcad28f009b6095db0ebc3d86ee3eebbe5853aaec041ef5f375dadecb1"
  },
  "/media/ses/elifba/ustun/zi.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_33.mp3",
-  "sha256": "a9394898b268610723833fc65ddda367bed0214ff1f82fed2927416df01ff29f"
+  "sha256": "7c0833209eb4f693e80848f77a0b8f9d810db69e90e9181ee718c98928d8e5fd"
  },
  "/media/ses/elifba/esre/elif.mp3": {
   "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/kesra/kesra/btn_1.mp3",

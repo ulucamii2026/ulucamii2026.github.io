@@ -32,6 +32,7 @@ export const ui = {
     'nav.uip': 'Uluslararası İlahiyat Programı (UİP)',
     'nav.ihtidaBasvuru': 'İhtida Başvurusu',
     'nav.seviyeTesti': 'Seviye Tespit Testi',
+    'nav.muhtediEgitimi': 'Yeni Müslümanlar için eğitim',
     'nav.adab': 'Cami Adabı',
     'nav.cenaze': 'Cenaze Hizmetleri',
     'nav.afisler': 'Afişler',
@@ -139,6 +140,7 @@ export const ui = {
     'nav.uip': 'Programme international de théologie (UİP)',
     'nav.ihtidaBasvuru': 'Demande de conversion',
     'nav.seviyeTesti': 'Test de niveau',
+    'nav.muhtediEgitimi': 'Formation des nouveaux musulmans',
     'nav.adab': 'Adab de la mosquée',
     'nav.cenaze': 'Services funéraires',
     'nav.afisler': 'Affiches',
@@ -246,6 +248,7 @@ export const ui = {
     'nav.uip': 'International Theology Programme (UİP)',
     'nav.ihtidaBasvuru': 'Conversion Application',
     'nav.seviyeTesti': 'Level Assessment',
+    'nav.muhtediEgitimi': 'Learning for new Muslims',
     'nav.adab': 'Mosque Etiquette',
     'nav.cenaze': 'Funeral Services',
     'nav.afisler': 'Posters',
@@ -353,6 +356,7 @@ export const ui = {
     'nav.uip': 'Internationaal theologieprogramma (UİP)',
     'nav.ihtidaBasvuru': 'Aanvraag bekering',
     'nav.seviyeTesti': 'Niveautest',
+    'nav.muhtediEgitimi': 'Onderwijs voor nieuwe moslims',
     'nav.adab': 'Moskee-etiquette',
     'nav.cenaze': 'Uitvaartdiensten',
     'nav.afisler': 'Affiches',
@@ -460,6 +464,7 @@ export const ui = {
     'nav.uip': 'Internationales Theologieprogramm (UİP)',
     'nav.ihtidaBasvuru': 'Antrag auf Konversion',
     'nav.seviyeTesti': 'Einstufungstest',
+    'nav.muhtediEgitimi': 'Unterricht für neue Muslime',
     'nav.adab': 'Moschee-Etikette',
     'nav.cenaze': 'Bestattungsdienste',
     'nav.afisler': 'Plakate',
@@ -544,6 +549,7 @@ export type Anahtar = keyof (typeof ui)['tr'];
 
 /** Sayfa yolları: her dil için URL segmenti (SEO için yerelleştirilmiş) */
 export const yollar = {
+  muhtediEgitimi: { tr: 'muhtedi-egitimi', fr: 'formation-nouveaux-musulmans', en: 'learning-new-muslims', nl: 'onderwijs-nieuwe-moslims', de: 'unterricht-neue-muslime' },
   musavirlik: { tr: 'musavirlik-salih-gor', fr: 'conseiller-salih-gor', en: 'counsellor-salih-gor', nl: 'raadgever-salih-gor', de: 'botschaftsrat-salih-gor' },
   yayinrehberi: { tr: 'diyanet-yayinlari-rehberi', fr: 'guide-publications-diyanet', en: 'diyanet-publications-guide', nl: 'gids-diyanet-publicaties', de: 'leitfaden-diyanet-publikationen' },
   anasayfa: { tr: '', fr: '', en: '', nl: '', de: '' },

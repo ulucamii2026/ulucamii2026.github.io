@@ -4,8 +4,8 @@
  * Basılı Fransızca ders kitabındaki (D:\ulu-camii-yetiskin-egitimi) kare kodlar
  * `https://ulucamii.be/e/<kod>/` adresine gider. Kitabı okuyan yetişkin telefonunu
  * kitabın üstüne tutar, açılan sayfa YALNIZ dinlemeye yarar: büyük çal düğmesi,
- * satır satır ses, hız, tekrar. Sayfa Fransızcadır, arama motoruna kapalıdır
- * (noindex + site haritası dışı) ve menüde yer almaz.
+ * satır satır ses, hız, tekrar. Sayfa Fransızcadır; /e/ ders dizininden ve
+ * eğitim menüsünden herkes erişebilir. Basılı karekod adresleri değişmez.
  *
  * Veri `src/data/ecouter.json` dosyasından gelir; kişisel veri İÇERMEZ.
  * Sözleşme ve üretim: docs/DINLEME-SAYFALARI.md.

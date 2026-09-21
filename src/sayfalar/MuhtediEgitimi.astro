@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import SesliDersDizini from '../components/SesliDersDizini.astro';
+import { EGITIM } from '../i18n/egitim';
+import { EGITIM_REHBERI } from '../i18n/egitim-rehberi';
+import { yol } from '../i18n/utils';
+import type { Dil } from '../i18n/ui';
+import '../styles/ecouter.css';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = EGITIM[dil];
+const r = EGITIM_REHBERI[dil];
+const p = {
+  tr: ['Çalışma takibim', 'Bu bölümü çalıştım', 'bölüm çalışıldı', 'İşaretler yalnız bu tarayıcıda saklanır; hesap açılmaz ve sunucuya gönderilmez. Bu liste bir sınav sonucu değildir.', 'İşaretleri temizle', 'Tarayıcı kayda izin vermiyor. İşaretler yalnız bu sayfa açıkken korunur.'],
+  fr: ['Mon suivi', 'J’ai étudié cette étape', 'étapes étudiées', 'Les coches restent dans ce navigateur, sans compte ni envoi au serveur. Cette liste n’est pas un résultat d’examen.', 'Effacer les coches', 'Le navigateur ne permet pas la sauvegarde. Les coches restent seulement pendant cette visite.'],
+  en: ['My study progress', 'I have studied this step', 'steps studied', 'Ticks stay in this browser, with no account or data sent to a server. This list is not an assessment result.', 'Clear ticks', 'This browser does not allow saving. Ticks last only while this page is open.'],
+  nl: ['Mijn studievoortgang', 'Ik heb deze stap bestudeerd', 'stappen bestudeerd', 'Vinkjes blijven in deze browser, zonder account of verzending naar een server. Deze lijst is geen toetsresultaat.', 'Vinkjes wissen', 'De browser staat opslaan niet toe. Vinkjes blijven alleen tijdens dit bezoek bewaard.'],
+  de: ['Mein Lernfortschritt', 'Ich habe diesen Schritt bearbeitet', 'Schritte bearbeitet', 'Häkchen bleiben in diesem Browser, ohne Konto oder Übertragung an einen Server. Diese Liste ist kein Prüfungsergebnis.', 'Häkchen löschen', 'Der Browser erlaubt kein Speichern. Die Häkchen bleiben nur während dieses Besuchs erhalten.'],
+}[dil];
+const kitaplar = [
+  { ad: 'Qu’est-ce que l’Islam ?', href: 'https://dijital.diyanet.gov.tr/File/Download?path=3624_1.pdf&id=3624' },
+  { ad: 'Qu’est-ce qu’un Musulman ?', href: 'https://dijital.diyanet.gov.tr/File/Download?path=4194_1.pdf&id=4194' },
+  { ad: 'Guide pratique des adorations — La prière et les ablutions illustrées', href: 'https://dijital.diyanet.gov.tr/File/Download?path=ibadet_rehberi_fransizca.pdf&id=513' },
+  { ad: 'Le Prophète Muhammad (paix sur lui)', href: 'https://dijital.diyanet.gov.tr/File/Download?path=3623_1.pdf&id=3623' },
+];
+const baglar = [
+  [{ href: yol(dil, 'ihtida'), ad: m.rehber }, kitaplar[1]],
+  [kitaplar[0]],
+  [kitaplar[2]],
+  [kitaplar[2], { href: '/e/fatiha/', ad: 'Al-Fâtiḥa · audio' }],
+  [{ href: '/e/alphabet/', ad: 'Alphabet · audio' }, { href: '/e/fatha/', ad: 'Fatḥa · audio' }, { href: '/e/kasra/', ad: 'Kasra · audio' }, { href: '/e/damma/', ad: 'Ḍamma · audio' }, { href: '/e/e09/', ad: 'Sons courts / longs · audio' }],
+  [{ href: '/e/fatiha/', ad: 'Al-Fâtiḥa · audio' }, { href: '/e/ihlas/', ad: 'Al-Ikhlâṣ · audio' }, { href: '/e/felak/', ad: 'Al-Falaq · audio' }, { href: '/e/nas/', ad: 'An-Nâs · audio' }, { href: '/e/tahiyyat/', ad: 'At-taḥiyyât · audio' }],
+  [kitaplar[2]],
+  [kitaplar[3], kitaplar[1]],
+];
+const ids = ['islam', 'iman', 'temizlik', 'namaz', 'elifba', 'dua', 'ibadet', 'ahlak'];
+---
+<Base baslik={m.baslik} aciklama={m.giris} dil={dil}>
+  <div class="ec-sayfa ec-catalogue">
+    <header class="ec-ust">
+      <h1>{m.baslik}</h1>
+      <p class="ec-altbaslik">{m.giris}</p>
+      <span class="serit" aria-hidden="true"></span>
+    </header>
+    <nav class="ec-rubriques" aria-label={m.baslangic}>
+      <a class="ec-cip" href="#ogrenme-yolu">{r.yol}</a>
+      <a class="ec-cip" href="#sesli-dersler">{r.sesler}</a>
+      <a class="ec-cip" href="#kaynak-kitaplar">{r.kitaplar}</a>
+    </nav>
+    <section class="eg-yol ec-section" id="ogrenme-yolu" aria-labelledby="yol-baslik" data-egitim>
+      <h2 id="yol-baslik">{r.yol}</h2>
+      <p>{r.aciklama}</p>
+      <div class="eg-takip" data-eg-takip hidden>
+        <h3>{p[0]}</h3>
+        <p data-eg-sayac data-birim={p[2]} role="status" aria-live="polite">0 / 8 {p[2]}</p>
+        <progress data-eg-ilerleme value="0" max="8" aria-label={p[0]}></progress>
+        <p class="ec-altbaslik" data-eg-kayit data-hata={p[5]}>{p[3]}</p>
+        <button class="ec-cip" type="button" data-eg-sifirla>{p[4]}</button>
+      </div>
+      {r.dersler.map((ders, i) => <details class="eg-ders" open={i === 0} id={`ders-${ids[i]}`}>
+        <summary><span class="eg-sira" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><h3>{ders.baslik}</h3></summary>
+        <div class="eg-ders-icerik">
+          <p>{ders.giris}</p>
+          <ul>{ders.konular.map((konu) => <li>{konu}</li>)}</ul>
+          <div class="eg-uygulama"><h4>{r.uygulama}</h4><p>{ders.uygulama}</p></div>
+          <h4>{r.kaynak}</h4>
+          <ul class="eg-baglar">{baglar[i].map((b) => <li><a href={b.href} lang={b.href.startsWith('/e/') || b.href.startsWith('https:') ? 'fr' : dil}>{b.ad}</a></li>)}</ul>
+          <label class="eg-isaret" data-eg-isaret hidden><input type="checkbox" value={ids[i]} data-eg-tamam />{p[1]}</label>
+        </div>
+      </details>)}
+    </section>
+    <section class="ec-section eg-rutin" aria-labelledby="rutin-baslik">
+      <h2 id="rutin-baslik">{r.rutin}</h2>
+      <p>{r.rutinMetni}</p>
+      <ol>{r.adimlar.map((adim) => <li>{adim}</li>)}</ol>
+    </section>
+    <section class="ec-baslangic" aria-labelledby="egitime-basla">
+      <h2 id="egitime-basla">{m.baslangic}</h2>
+      <ul class="ec-cours" role="list">
+        <li><a href="/e/alphabet/">{m.ilkDers}</a></li>
+        <li><a href={yol(dil, 'seviyeTesti')}>{m.test}</a></li>
+        <li><a href={yol(dil, 'ihtida')}>{m.rehber}</a></li>
+      </ul>
+      <p class="ec-altbaslik">{m.dilNotu}</p>
+    </section>
+    <div id="sesli-dersler" class="ec-section">
+      <h2>{r.sesler}</h2>
+      <SesliDersDizini dil={dil} />
+    </div>
+    <section class="ec-section" id="kaynak-kitaplar" aria-labelledby="kitap-baslik">
+      <h2 id="kitap-baslik">{r.kitaplar}</h2>
+      <p>{r.kitapNotu}</p>
+      <ul class="ec-cours" role="list">{kitaplar.map((kitap) => <li><a href={kitap.href} lang="fr">{kitap.ad} <span class="eg-format">PDF · FR</span></a></li>)}</ul>
+      <p><a href={yol(dil, 'kutuphane')}>{r.kutuphane}</a></p>
+      <p class="ec-altbaslik"><a href="https://egitimhizmetleri.diyanet.gov.tr/sayfa/489" lang="tr">Diyanet · Kur’an kursları öğretim programları (TR)</a></p>
+    </section>
+    <section class="ec-section" aria-labelledby="soru-baslik">
+      <h2 id="soru-baslik">{r.sorular}</h2>
+      {r.sss.map(([soru, cevap]) => <details class="eg-soru"><summary>{soru}</summary><p>{cevap}</p></details>)}
+    </section>
+    <p><a href={yol(dil, 'iletisim')}>{m.destek}</a></p>
+  </div>
+</Base>
+<script>
+  import '../scripts/muhtedi-egitimi';
+</script>

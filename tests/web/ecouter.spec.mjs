@@ -10,6 +10,8 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
 import { EC_METIN, EC_TEKRAR_SAYISI, ecParcaAdi } from '../../src/lib/ecouter.ts';
+import { yollar } from '../../src/i18n/ui.ts';
+import { EGITIM } from '../../src/i18n/egitim.ts';
 
 const VERI = JSON.parse(readFileSync(new URL('../../src/data/ecouter.json', import.meta.url), 'utf8'));
 const KODLAR = VERI.kodlar;
@@ -67,7 +69,7 @@ test.beforeEach(async ({ context }) => {
 /* ---------- 1. Üç örnek kod ---------- */
 
 for (const kod of ['fatiha', 'fatha']) {
-  test(`${kod}: sayfa Fransızca, arama motoruna kapalı ve künyeli açılır`, async ({ page }) => {
+  test(`${kod}: sayfa Fransızca, herkese açık ve künyeli açılır`, async ({ page }) => {
     const icerik = KODLAR[kod];
     await calarTaklidi(page);
     await sayfayiAc(page, kod);
@@ -75,9 +77,10 @@ for (const kod of ['fatiha', 'fatha']) {
     await expect(page.locator('main h1')).toHaveCount(1);
     await expect(page.locator('main h1')).toHaveText(icerik.baslik);
     await expect(page.locator('html')).toHaveAttribute('lang', /^fr/);
-    // Kitaptan gelen sayfa dizine girmez ve kanonik adres bildirmez.
-    expect(await page.evaluate(() => document.querySelector('meta[name="robots"]')?.content ?? '')).toContain('noindex');
-    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    expect(await page.evaluate(() => document.querySelector('meta[name="robots"]')?.content ?? '')).not.toContain('noindex');
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://ulucamii.be/e/${kod}/`);
+    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(0);
+    await expect(page.locator('.ec-geri a')).toHaveAttribute('href', '/e/');
     // Künye: ses kaynağı + cami adı.
     await expect(page.locator('.ec-kaynak')).toContainText(icerik.kaynak);
     await expect(page.locator('.ec-kaynak')).toContainText(EC_METIN.kurum);
@@ -91,14 +94,128 @@ for (const kod of ['fatiha', 'fatha']) {
   });
 }
 
-test('Dinleme sayfaları site haritasına girmez', async ({ page }) => {
+test('Bütün dersler site haritasındadır; yönlendirme kodu dizine girmez', async ({ page }) => {
   const indeks = await (await page.request.get('/sitemap-index.xml')).text();
   const dosyalar = [...indeks.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
   expect(dosyalar.length).toBeGreaterThan(0);
-  for (const dosya of dosyalar) {
-    const govde = await (await page.request.get(dosya)).text();
-    expect(govde, `${dosya} içinde /e/ yok`).not.toContain('ulucamii.be/e/');
+  const govde = (await Promise.all(dosyalar.map(async (dosya) => (await page.request.get(dosya)).text()))).join('');
+  expect(govde).toContain('<loc>https://ulucamii.be/e/</loc>');
+  for (const [kod, ders] of Object.entries(KODLAR)) {
+    if (ders.yonlendir) expect(govde).not.toContain(`<loc>https://ulucamii.be/e/${kod}/</loc>`);
+    else expect(govde).toContain(`<loc>https://ulucamii.be/e/${kod}/</loc>`);
   }
+});
+
+test('Ders dizini: bütün dersler, aksansız arama, boş sonuç ve geri dönüş', async ({ page }) => {
+  await page.goto('/e/');
+  const dersler = Object.entries(KODLAR).filter(([, c]) => !c.yonlendir);
+  await expect(page.locator('[data-ec-cours]')).toHaveCount(dersler.length);
+  const hrefs = await page.locator('[data-ec-cours] a').evaluateAll((a) => a.map((e) => e.getAttribute('href')));
+  expect(new Set(hrefs).size).toBe(dersler.length);
+  for (const [kod] of dersler) expect(hrefs).toContain(`/e/${kod}/`);
+  await page.getByLabel('Rechercher un cours').fill('fatha');
+  // Fatḥa hem temel derste hem uzatma başlıklarında geçer; tüm eşleşmeler kalır.
+  await expect(page.locator('[data-ec-cours] a[href="/e/fatha/"]')).toBeVisible();
+  await expect(page.locator('[data-ec-cours] a[href="/e/kasra/"]')).not.toBeVisible();
+  await page.locator('[data-ec-cours] a[href="/e/fatha/"]').click();
+  await expect(page).toHaveURL(/\/e\/fatha\/$/);
+  await page.locator('.ec-geri a').click();
+  await page.getByLabel('Rechercher un cours').fill('zzzzzz');
+  await expect(page.locator('[data-ec-vide]')).toBeVisible();
+  await page.getByLabel('Rechercher un cours').fill('');
+  await expect(page.locator('[data-ec-cours]:visible')).toHaveCount(dersler.length);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(await ciddiAxe(page, ['.ec-catalogue'])).toEqual([]);
+});
+
+test('Ders dizini JavaScript olmadan da bütün derslere bağlantı verir', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  await context.route('**/*', (r) => r.request().url().startsWith('http://127.0.0.1:4401/') ? r.continue() : r.abort());
+  const page = await context.newPage();
+  await page.goto('http://127.0.0.1:4401/e/');
+  await expect(page.locator('[data-ec-recherche]')).not.toBeVisible();
+  await expect(page.locator('[data-ec-cours] a')).toHaveCount(73);
+  await page.locator('[data-ec-cours] a[href="/e/fatha/"]').click();
+  await expect(page.locator('.ec-noscript a')).toHaveCount(28);
+  await expect(page.locator('.ec-noscript a').first()).toHaveAttribute('href', /\?v=2$/);
+  await context.close();
+});
+
+test('Beş dilin eğitim menüsü herkese açık ders dizinine bağlanır', async ({ page }) => {
+  for (const dil of ['tr', 'fr', 'en', 'nl', 'de']) {
+    await page.goto(`/${dil}/`);
+    const href = `/${dil}/${yollar.muhtediEgitimi[dil]}/`;
+    await expect(page.locator(`header a[href="${href}"]`).first()).toHaveAttribute('href', href);
+    await page.goto(href);
+    await expect(page.locator('main h1')).toHaveText(EGITIM[dil].baslik);
+    await expect(page.locator('[data-ec-cours] a')).toHaveCount(73);
+    await expect(page.locator('.eg-ders')).toHaveCount(8);
+    await expect(page.locator('.eg-ders-icerik .eg-uygulama')).toHaveCount(8);
+    await expect(page.locator('#kaynak-kitaplar .ec-cours a')).toHaveCount(4);
+    await expect(page.locator('.eg-soru')).toHaveCount(4);
+    await expect(page.locator('[data-ec-cours] a').first()).toHaveAttribute('lang', 'fr');
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://ulucamii.be${href}`);
+    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(6);
+    await page.getByLabel(EGITIM[dil].ara).fill('fatha');
+    await expect(page.locator('[data-ec-cours] a[href="/e/fatha/"]')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
+
+test('Eğitim çalışma işaretleri cihazda saklanır, diller arasında korunur ve yalnız kendi kaydı silinir', async ({ page }) => {
+  await page.goto('/tr/muhtedi-egitimi/');
+  const first = page.locator('[data-eg-tamam]').first();
+  await first.focus();
+  await page.keyboard.press('Space');
+  await expect(first).toBeChecked();
+  await expect(page.locator('[data-eg-sayac]')).toContainText('1 / 8');
+  await page.reload();
+  await expect(first).toBeChecked();
+  await page.goto('/fr/formation-nouveaux-musulmans/');
+  await expect(first).toBeChecked();
+  await page.evaluate(() => localStorage.setItem('unrelated-test', 'keep'));
+  await page.locator('[data-eg-sifirla]').click();
+  await expect(first).not.toBeChecked();
+  expect(await page.evaluate(() => localStorage.getItem('unrelated-test'))).toBe('keep');
+  await page.reload();
+  await expect(page.locator('[data-eg-sayac]')).toContainText('0 / 8');
+  const second = page.locator('.eg-ders summary').nth(1);
+  await second.focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.eg-ders').nth(1)).toHaveAttribute('open', '');
+  expect(await ciddiAxe(page, ['.ec-catalogue'])).toEqual([]);
+  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
+  expect(await ciddiAxe(page, ['.ec-catalogue'])).toEqual([]);
+});
+
+test('Eğitim kaydı engellendiğinde dersler ve geçici takip çalışır', async ({ page }) => {
+  await page.addInitScript(() => {
+    Storage.prototype.getItem = () => { throw new Error('blocked'); };
+    Storage.prototype.setItem = () => { throw new Error('blocked'); };
+    Storage.prototype.removeItem = () => { throw new Error('blocked'); };
+  });
+  await page.goto('/tr/muhtedi-egitimi/');
+  await page.locator('[data-eg-tamam]').first().check();
+  await expect(page.locator('[data-eg-sayac]')).toContainText('1 / 8');
+  await expect(page.locator('[data-eg-kayit]')).toContainText('kayda izin vermiyor');
+  await page.locator('[data-eg-sifirla]').click();
+  await expect(page.locator('[data-eg-sayac]')).toContainText('0 / 8');
+  await page.getByLabel('Ders ara').fill('fatha');
+  await expect(page.locator('[data-ec-cours] a[href="/e/fatha/"]')).toBeVisible();
+});
+
+test('Eğitim rehberi JavaScript olmadan açılır ve bütün içerik erişilebilir kalır', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  await context.route('**/*', (r) => r.request().url().startsWith('http://127.0.0.1:4401/') ? r.continue() : r.abort());
+  const page = await context.newPage();
+  await page.goto('http://127.0.0.1:4401/tr/muhtedi-egitimi/');
+  await expect(page.locator('[data-eg-takip]')).not.toBeVisible();
+  await expect(page.locator('[data-ec-cours] a')).toHaveCount(73);
+  await page.locator('.eg-ders summary').nth(2).click();
+  await expect(page.locator('.eg-ders').nth(2).locator('.eg-uygulama')).toBeVisible();
+  await page.locator('.eg-soru summary').first().click();
+  await expect(page.locator('.eg-soru p').first()).toBeVisible();
+  await context.close();
 });
 
 /* ---------- 2. Sûre sayfası: büyük düğme ve satırlar ---------- */

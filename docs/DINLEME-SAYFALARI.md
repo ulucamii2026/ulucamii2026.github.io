@@ -10,8 +10,13 @@ Kitabı okuyan yetişkin, sayfadaki kare kodu telefonuyla okutur ve `https://ulu
 açılır. Ziyaretçinin tek isteği **dinlemektir**: sayfa dar, telefon öncelikli ve yalnız Fransızcadır.
 
 - Rota: `src/pages/e/[kod].astro` — `getStaticPaths` ile her kod için bir statik sayfa.
-- Arama motoruna kapalı: `noindex, nofollow` → site haritasına da girmez (`astro.config.mjs`
-  süzgeci sayfanın kendi `robots` etiketini okur). Menüde ve gezinmede yer almaz.
+- 21 Eylül 2026 düzeltmesi: `/e/` herkese açık, aramalı ders dizinidir. Beş dildeki eğitim
+  menüsü yeni Müslümanlar eğitim merkezine gider; oradan bütün derslere erişilir.
+  Ders açıklamalarının Fransızca olduğu açıkça belirtilir.
+  Kitap, karekod veya üyelik gerekmez. 73 ders indekslenebilir ve site haritasındadır;
+  yalnız seviye testine yönlendiren `/e/test/` noindex kalır. Kalıcı 74 QR adresi korunur.
+- Derslerin üstündeki “Tous les cours audio” bağlantısı dizine döner. Tek dildeki bu
+  sayfalarda diğer dillerin ana sayfalarına yanlış hreflang bağı kurulmaz.
 - Bilinmeyen kod → normal 404 (yalnız statik yollar üretilir).
 - Sitenin olağan başlığı, alt bilgisi ve Kilim Kartografyası jetonları kullanılır; içerik sütunu
   dardır (en çok 40 rem).
@@ -92,8 +97,8 @@ npm run build                 # statik çıktı (dist/)
 npm run test:web -- tests/web/ecouter.spec.mjs
 ```
 
-`tests/web/ecouter.spec.mjs` Playwright ile: örnek kodların açılışı, satır seslerinin yerelde durduğu, satır sesi olmayan metnin yalnız büyük düğmeyle çalıştığı, `noindex` + site haritası dışı
-kalma, büyük düğmenin çal/duraklat durumu, karelerin çalması ve devri, hız/tekrar tercihlerinin
+`tests/web/ecouter.spec.mjs` Playwright ile: örnek kodların açılışı, satır seslerinin yerelde durduğu, satır sesi olmayan metnin yalnız büyük düğmeyle çalıştığı, herkese açık ders dizini, arama, canonical ve site haritası,
+büyük düğmenin çal/duraklat durumu, karelerin çalması ve devri, hız/tekrar tercihlerinin
 kalıcılığı, üç kez tekrar, kesintisiz oynatma, ses hatası iletisi, yönlendirme kodu, bilinmeyen kodda
 404, axe (açık + iki koyu tema kanalı) ve 360 piksel taşma denetimi. Dış ağ kesilir; gerçek ses
 çözücüsüne bağlı kalmamak için `HTMLMediaElement.prototype.play` taklit edilir.
@@ -108,3 +113,56 @@ Görsel değişiklikte ayrıca `npm run onizle` ile `/e/fatiha/` ve `/e/fatha/` 
 yayımlanır. Kod kümesi değiştiğinde: üret → `npm run check` → `npm run build` → `ecouter.spec.mjs` → yayın kaydı
 (`docs/YAYIN-KAYITLARI.md`). Basılmış bir kitaptaki kare kod **kalıcı adrestir**: yayımlanmış bir kod silinmez ve
 başka içeriğe bağlanmaz.
+
+## 6. Ses eşleştirme düzeltmesi ve tekrarını önleme — 21 Eylül 2026
+
+- Kök hata: `scripts/indir-elifba-ustun.ps1`, üstün klasörüne `harfler/sesleri`
+  kayıtlarını indiriyordu. Kaynak `fetha/fetha` olarak düzeltildi; gerçek HTML
+  `data-sound` kimlikleri kullanıldı (kalın harflerde 25–28 ve 30–33).
+- 787 Elifbâ ses yolu (759 benzersiz resmî URL) Diyanet'ten alınarak karşılaştırıldı.
+  28 fetha ve 28 yalın harf dosyası resmî asıllarıyla yenilendi. Esre ve ötre
+  dahil 41 bölümün 787 metin–ses bağı resmî HTML ile doğrulandı.
+- `e09` kısa–uzun karşılaştırmasında aynı resmî ses iki heceyi birlikte okur.
+  Artık iki hece tek düğmede görünür (56 ayrı kutu yerine 28 hece çifti).
+- `scripts/elifba-ses-denetle.py` resmî kaydın baytlarıyla yereli karşılaştırır;
+  varsayılan salt okunur, `--onar` önce yedekleyerek düzeltir. Denetimin indirme
+  önbelleği `.codex/elifba-ses-denetimi/resmi/` altındadır; yeni tarihli canlı kaynak
+  kontrolü için `--tazele` kullanılır. Raporlar depoya girmez.
+- `tests/fixtures/elifba-resmi-eslesmeler.json`: 21 Eylül'de resmî HTML ve MP3'lerden
+  doğrulanmış 112 harf/hareke eşleştirmesi. `npm run test:dinleme`, bunları,
+  tüm ses dosyalarının varlığını ve manifest özetlerini sınar; ana kalite kapısına dahildir.
+- Kaynak kitap projesinde `04_map_existing_local.py` artık resmî MP3 ile eşitlik
+  arar; `05_build_catalog.py` doğrulanmamış yerel eşleştirmeyi reddeder.
+  `motor/site-veri-uret.mjs` mevcut ses özetlerini doğrular, birlikte okunan
+  heceleri birleştirir ve yayımlanmış QR kodunun silinmesini engeller.
+- Veri sürümü 2: çalar `?v=2` kullanarak önceki yanlış kaydın tarayıcı önbelleğine
+  takılmasını önler. PDF değiştirilmez; eski karekodlar yeni sesleri açar.
+- Dijital doğrulama, bütün kayıtların bir kıraat hocası tarafından tek tek dinlenmiş
+  olduğu anlamına gelmez. Bu çalışmada kaynak/metin/bayt ve tarayıcı oynatma doğrulandı.
+
+## 7. Yeni Müslümanlar için eğitim merkezi
+
+- Ana yüzey `src/sayfalar/MuhtediEgitimi.astro`; yollar `src/i18n/ui.ts` içinde
+  `muhtediEgitimi`. TR `/tr/muhtedi-egitimi/`, FR `/fr/formation-nouveaux-musulmans/`,
+  EN `/en/learning-new-muslims/`, NL `/nl/onderwijs-nieuwe-moslims/`, DE `/de/unterricht-neue-muslime/`.
+- Beş dilde sekiz öğrenme bölümü: İslâm/şehâdet, iman, temizlik, namaz, Elifbâ,
+  sûre/dua, diğer ibadetler, siyer/ahlâk. Her bölümde açıklama, üç çalışma konusu,
+  uygulama ve kaynak/ders bağlantısı bulunur. Çalışma rutini, dört SSS ve dört resmî
+  Fransızca kaynak kitap tamamlar. Bu, Ulu Camii'nin çalışma önerisidir; resmî
+  sertifikalı müfredat ya da bireysel fetva hizmeti olarak sunulmaz.
+- Çeviriler `src/i18n/egitim.ts`, `src/i18n/egitim-rehberi.ts`; ortak 73 derslik
+  dizin `src/components/SesliDersDizini.astro`. Sesli ders başlıkları FR, tilavetler AR;
+  bütün derslerin beş dile çevrildiği izlenimi verilmez.
+- `src/scripts/muhtedi-egitimi.ts`: sekiz isteğe bağlı çalışma işareti yalnız
+  `localStorage['ulucamii.egitim.v1']` altında sabit bölüm kimlikleriyle tutulur.
+  Diller arasında aynıdır. Hesap, kişisel bilgi, yeni ağ isteği veya sunucu kaydı yoktur.
+  Silme yalnız bu anahtarı temizler. Depolama engelliyse geçici çalışır ve bunu bildirir.
+  JavaScript kapalıyken takip gizlenir; yerel `<details>` ve bütün dersler çalışır.
+- Kaynak kontrolü 21 Eylül 2026: Diyanet yetişkin temel öğretim programı 2026
+  (`egitimhizmetleri.diyanet.gov.tr/sayfa/489`), resmî Fransızca PDF'ler 3624
+  (İslâm nedir), 4194 (Müslüman kimdir), 513 (resimli ibadet rehberi), 3623
+  (Hz. Muhammed). Dört PDF indirilip içerikleri kontrol edildi; kitaplar yeniden
+  barındırılmaz, resmî indirme adreslerine bağlanır. Bu kaynaklar sayfada görünürdür.
+- Platform testleri: beş dil ve menü, 8 bölüm/4 kaynak/73 ders, arama, cihazda kalıcılık,
+  dil geçişi, seçici sıfırlama, engelli depolama, JavaScript olmadan erişim,
+  klavye, açık/koyu axe ve mobil taşma. Gerçek telefon veya Safari sınaması ayrıdır.

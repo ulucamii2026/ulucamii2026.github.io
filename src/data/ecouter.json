@@ -1,5 +1,5 @@
 {
- "surum": 1,
+ "surum": 2,
  "kodlar": {
   "fatiha": {
    "baslik": "Sourate al-Fâtiḥa — L’Ouverture",
@@ -2135,259 +2135,119 @@
    "baslik": "Le « â » long (fatḥa + alif) — comparaison",
    "ogeler": [
     {
-     "ar": "اَ",
-     "okunus": "a",
+     "ar": "اَ — اٰ",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/1.mp3"
     },
     {
-     "ar": "بَ",
-     "okunus": "ba",
+     "ar": "بَ — بَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/2.mp3"
     },
     {
-     "ar": "تَ",
-     "okunus": "ta",
+     "ar": "تَ — تَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/3.mp3"
     },
     {
-     "ar": "ثَ",
-     "okunus": "tha",
+     "ar": "ثَ — ثَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/4.mp3"
     },
     {
-     "ar": "جَ",
-     "okunus": "dja",
+     "ar": "جَ — جَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/5.mp3"
     },
     {
-     "ar": "اٰ",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/6.mp3"
-    },
-    {
-     "ar": "بَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/7.mp3"
-    },
-    {
-     "ar": "تَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/8.mp3"
-    },
-    {
-     "ar": "ثَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/9.mp3"
-    },
-    {
-     "ar": "جَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/10.mp3"
-    },
-    {
-     "ar": "حَ",
-     "okunus": "ḥa",
+     "ar": "حَ — حَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/11.mp3"
     },
     {
-     "ar": "دَ",
-     "okunus": "da",
+     "ar": "دَ — دَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/12.mp3"
     },
     {
-     "ar": "ذَ",
-     "okunus": "dha",
+     "ar": "ذَ — ذَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/13.mp3"
     },
     {
-     "ar": "زَ",
-     "okunus": "za",
+     "ar": "زَ — زَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/14.mp3"
     },
     {
-     "ar": "سَ",
-     "okunus": "sa",
+     "ar": "سَ — سَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/15.mp3"
     },
     {
-     "ar": "حَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/16.mp3"
-    },
-    {
-     "ar": "دَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/17.mp3"
-    },
-    {
-     "ar": "ذَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/18.mp3"
-    },
-    {
-     "ar": "زَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/19.mp3"
-    },
-    {
-     "ar": "سَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/20.mp3"
-    },
-    {
-     "ar": "شَ",
-     "okunus": "cha",
+     "ar": "شَ — شَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/21.mp3"
     },
     {
-     "ar": "عَ",
-     "okunus": "ʿa",
+     "ar": "عَ — عَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/22.mp3"
     },
     {
-     "ar": "فَ",
-     "okunus": "fa",
+     "ar": "فَ — فَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/23.mp3"
     },
     {
-     "ar": "كَ",
-     "okunus": "ka",
+     "ar": "كَ — كَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/24.mp3"
     },
     {
-     "ar": "لَ",
-     "okunus": "la",
+     "ar": "لَ — لَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/25.mp3"
     },
     {
-     "ar": "شَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/26.mp3"
-    },
-    {
-     "ar": "عَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/27.mp3"
-    },
-    {
-     "ar": "فَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/28.mp3"
-    },
-    {
-     "ar": "كَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/29.mp3"
-    },
-    {
-     "ar": "لَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/30.mp3"
-    },
-    {
-     "ar": "مَ",
-     "okunus": "ma",
+     "ar": "مَ — مَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/31.mp3"
     },
     {
-     "ar": "نَ",
-     "okunus": "na",
+     "ar": "نَ — نَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/32.mp3"
     },
     {
-     "ar": "هَـ",
-     "okunus": "ha",
+     "ar": "هَـ — هَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/33.mp3"
     },
     {
-     "ar": "وَ",
-     "okunus": "wa",
+     "ar": "وَ — وَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/34.mp3"
     },
     {
-     "ar": "ىَ",
-     "okunus": "ya",
+     "ar": "ىَ — يَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/35.mp3"
     },
     {
-     "ar": "مَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/36.mp3"
-    },
-    {
-     "ar": "نَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/37.mp3"
-    },
-    {
-     "ar": "هَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/38.mp3"
-    },
-    {
-     "ar": "وَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/39.mp3"
-    },
-    {
-     "ar": "يَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/40.mp3"
-    },
-    {
-     "ar": "خَ",
-     "okunus": "kha",
+     "ar": "خَ — خَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/41.mp3"
     },
     {
-     "ar": "رَ",
-     "okunus": "ra",
+     "ar": "رَ — رَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/42.mp3"
     },
     {
-     "ar": "غَ",
-     "okunus": "gha",
+     "ar": "غَ — غَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/43.mp3"
     },
     {
-     "ar": "قَ",
-     "okunus": "qa",
+     "ar": "قَ — قَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/44.mp3"
     },
     {
-     "ar": "خَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/45.mp3"
-    },
-    {
-     "ar": "رَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/46.mp3"
-    },
-    {
-     "ar": "غَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/47.mp3"
-    },
-    {
-     "ar": "قَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/48.mp3"
-    },
-    {
-     "ar": "صَ",
-     "okunus": "ṣa",
+     "ar": "صَ — صَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/49.mp3"
     },
     {
-     "ar": "ضَ",
-     "okunus": "ḍa",
+     "ar": "ضَ — ضَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/50.mp3"
     },
     {
-     "ar": "طَ",
-     "okunus": "ṭa",
+     "ar": "طَ — طَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/51.mp3"
     },
     {
-     "ar": "ظَ",
-     "okunus": "ẓa",
+     "ar": "ظَ — ظَا",
      "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/52.mp3"
-    },
-    {
-     "ar": "صَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/53.mp3"
-    },
-    {
-     "ar": "ضَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/54.mp3"
-    },
-    {
-     "ar": "طَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/55.mp3"
-    },
-    {
-     "ar": "ظَا",
-     "ses": "/media/ses/elifba/k/fethanin-uzatilmasi/karsilastirma/56.mp3"
     }
    ],
-   "altbaslik": "56 éléments — touchez pour écouter",
+   "altbaslik": "28 éléments — touchez pour écouter",
    "kaynak": "Portail Elifbâ de la Diyanet (kuran.diyanet.gov.tr/elifba)"
   },
   "e11": {

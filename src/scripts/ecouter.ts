@@ -146,7 +146,10 @@ export function dinlemeyiBaslat(): void {
     kalanTekrar = tercih.tekrar ? EC_TEKRAR_SAYISI - 1 : 0;
     const ses = calarAl();
     if (toplamKutu && dugme === tamDugme) toplamKutu.textContent = EC_METIN.sureBos;
-    ses.src = kaynak;
+    // Düzeltilmiş kaydı daha önceki yanlış sesin tarayıcı önbelleğinden ayır.
+    const sesUrl = new URL(kaynak, window.location.origin);
+    sesUrl.searchParams.set('v', kok?.dataset.surum ?? '1');
+    ses.src = sesUrl.href;
     ses.playbackRate = tercih.hiz;
     gorunure(dugme);
     void ses.play().then(() => { ses.playbackRate = tercih.hiz; }).catch(hata);

@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import SesliDersDizini from '../../components/SesliDersDizini.astro';
+import '../../styles/ecouter.css';
+---
+<Base baslik="Cours audio — apprendre et réciter" aciklama="Alphabet arabe, voyelles, sourates et invocations : des cours audio gratuits, accessibles à tous, avec les enregistrements officiels de la Diyanet." dil="fr" dilHatirla={false} tekDil>
+  <div class="ec-sayfa ec-catalogue">
+    <nav class="ec-geri" aria-label="Parcours de formation"><a href="/fr/formation-nouveaux-musulmans/">Formation pour les nouveaux musulmans</a></nav>
+    <header class="ec-ust">
+      <h1>Apprendre, écouter, répéter</h1>
+      <p class="ec-altbaslik">Des cours audio pour tous, gratuitement et sans inscription. Vous n’avez besoin ni d’un livre ni d’un code QR.</p>
+      <p class="ec-altbaslik">Choisissez un cours, touchez une lettre ou lancez un enregistrement. Les explications sont en français, les récitations en arabe.</p>
+      <span class="serit" aria-hidden="true"></span>
+    </header>
+    <SesliDersDizini dil="fr" />
+
+  </div>
+</Base>

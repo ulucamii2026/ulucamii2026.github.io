@@ -6,15 +6,16 @@ if (-not (Test-Path $targetDir)) {
 }
 $map = [ordered]@{
     'elif' = 1; 'be' = 2; 'te' = 3; 'se' = 4; 'cim' = 5; 'ha' = 6; 'dal' = 7; 'zel' = 8;
-    'ra' = 9; 'ze' = 10; 'sin' = 11; 'sin2' = 12; 'ayn' = 13; 'fe' = 14; 'kef' = 15;
-    'lam' = 16; 'mim' = 17; 'nun' = 18; 'he' = 19; 'vav' = 20; 'ye' = 21; 'hi' = 22;
-    'sad' = 23; 'dad' = 24; 'ti' = 25; 'zi' = 26; 'gayn' = 27; 'kaf' = 28
+    'ze' = 9; 'sin' = 10; 'sin2' = 11; 'ayn' = 12; 'fe' = 13; 'kef' = 14;
+    'lam' = 15; 'mim' = 16; 'nun' = 17; 'he' = 18; 'vav' = 19; 'ye' = 20; 'hi' = 25;
+    'ra' = 26; 'gayn' = 27; 'kaf' = 28; 'sad' = 30; 'dad' = 31; 'ti' = 32; 'zi' = 33
 }
 
 foreach ($entry in $map.GetEnumerator()) {
     $name = $entry.Key
     $idx = $entry.Value
-    $url = "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/harfler/sesleri/btn_${idx}.mp3"
+    # Harf ADLARI değil, resmî fetha sayfasının data-sound kimlikleri (21 Eylül 2026).
+    $url = "https://kuran.diyanet.gov.tr/elifba/data/sound/elifba/fetha/fetha/btn_${idx}.mp3"
     $outFile = Join-Path $targetDir "${name}.mp3"
     Invoke-WebRequest -Uri $url -OutFile $outFile -UseBasicParsing
     $len = (Get-Item $outFile).Length

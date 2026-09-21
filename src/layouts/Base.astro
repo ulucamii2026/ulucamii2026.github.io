@@ -23,6 +23,8 @@ interface Props {
   /** Sayfanın dilini ziyaretçinin tercihi olarak kaydet. /kayit/ hariç her sayfada açık:
       orada iskelet her zaman Türkçe derlenir, dil formun kendi anahtarıyla yönetilir. */
   dilHatirla?: boolean;
+  /** Tek dildeki ortak ders adreslerini başka dillerin ana sayfalarıyla eşleştirme. */
+  tekDil?: boolean;
   /** og:type — duyuru/etkinlik detay sayfaları "article" ister, geri kalan "website". */
   ogTuru?: 'website' | 'article';
   /** Sayfaya özel yapısal veri (Event/NewsArticle/BreadcrumbList…) — kurumJsonLd'nin yanına eklenir. */
@@ -101,8 +103,10 @@ const yapisalVeri = {
     {!noindex && <link rel="canonical" href={kanonik} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
-    <link rel="alternate" hreflang="x-default" href={new URL(digerDilYolu(Astro.url, 'tr'), Astro.site)} />
+    {!Astro.props.tekDil && <>
+      {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={new URL(digerDilYolu(Astro.url, d), Astro.site)} />)}
+      <link rel="alternate" hreflang="x-default" href={new URL(digerDilYolu(Astro.url, 'tr'), Astro.site)} />
+    </>}
     {/* Simge zinciri. SVG simgeyi desteklemeyen istemciler (WhatsApp, eski tarayıcılar,
         besleme okuyucuları, yer imi araçları) doğrudan /favicon.ico ister; 27 Ağustos
         2026'ya kadar orada Astro şablonunun kendi simgesi duruyordu ve paylaşım

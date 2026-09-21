@@ -1,0 +1,58 @@
+---
+import ham from '../data/ecouter.json';
+import type { EcouterVeri } from '../lib/ecouter';
+import type { Dil } from '../i18n/ui';
+import { EGITIM } from '../i18n/egitim';
+import { yol } from '../i18n/utils';
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = EGITIM[dil];
+const cours = Object.entries((ham as unknown as EcouterVeri).kodlar).filter(([, c]) => !c.yonlendir);
+const groupes = [
+  { id: 'lecture', titre: m.bolumler[0], description: m.aciklamalar[0], cours: cours.filter(([, c]) => c.ogeler?.length) },
+  { id: 'sourates', titre: m.bolumler[1], description: m.aciklamalar[1], cours: cours.filter(([, c]) => c.tam?.ses.startsWith('/media/ses/sureler/')) },
+  { id: 'invocations', titre: m.bolumler[2], description: m.aciklamalar[2], cours: cours.filter(([, c]) => !c.ogeler?.length && !c.tam?.ses.startsWith('/media/ses/sureler/')) },
+];
+---
+    <nav class="ec-rubriques" aria-label={m.baslangic}>
+      {groupes.map((g) => <a class="ec-cip" href={`#${g.id}`}>{g.titre}</a>)}
+    </nav>
+    <div class="ec-recherche" hidden data-ec-recherche>
+      <label for="cours-recherche">{m.ara}</label>
+      <input id="cours-recherche" type="search" placeholder={m.ornek} autocomplete="off" />
+      <p role="status" aria-live="polite" data-ec-compte data-unite={m.sayac}>{cours.length} {m.sayac}</p>
+    </div>
+    {groupes.map((g) => <section class="ec-section" id={g.id} data-ec-groupe aria-labelledby={`titre-${g.id}`}>
+      <h2 id={`titre-${g.id}`}>{g.titre}</h2>
+      <p class="ec-altbaslik">{g.description}</p>
+      <ul class="ec-cours" role="list">
+        {g.cours.map(([code, c]) => <li data-ec-cours><a href={`/e/${code}/`} lang="fr">{c.baslik}</a></li>)}
+      </ul>
+    </section>)}
+    <p data-ec-vide hidden>{m.bos}</p>
+    <footer class="ec-kaynak">
+      <a href="https://kuran.diyanet.gov.tr/elifba/">{m.kaynak}</a>
+      <span>{m.qr}</span>
+      <a href={yol(dil, 'seviyeTesti')}>{m.test}</a>
+    </footer>
+<script>
+  const zone = document.querySelector<HTMLElement>('[data-ec-recherche]');
+  const input = document.querySelector<HTMLInputElement>('#cours-recherche');
+  const count = document.querySelector<HTMLElement>('[data-ec-compte]');
+  const empty = document.querySelector<HTMLElement>('[data-ec-vide]');
+  const rows = [...document.querySelectorAll<HTMLElement>('[data-ec-cours]')];
+  const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('fr');
+  if (zone && input && count && empty) {
+    zone.hidden = false;
+    input.addEventListener('input', () => {
+      const query = normalize(input.value.trim());
+      for (const row of rows) row.hidden = !normalize(row.textContent ?? '').includes(query);
+      for (const group of document.querySelectorAll<HTMLElement>('[data-ec-groupe]')) {
+        group.hidden = !group.querySelector('[data-ec-cours]:not([hidden])');
+      }
+      const total = rows.filter((r) => !r.hidden).length;
+      count.textContent = `${total} ${count.dataset.unite}`;
+      empty.hidden = total > 0;
+    });
+  }
+</script>
