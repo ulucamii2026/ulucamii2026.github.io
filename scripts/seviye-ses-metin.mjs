@@ -19,7 +19,7 @@ import { seviyeMetinleri } from '../src/i18n/seviye-testi.ts';
 const KOK = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SES_KLASORU = join(KOK, 'public', 'media', 'ses', 'seviye');
 const MANIFEST = join(KOK, 'src', 'data', 'seviye-sesler.json');
-const DILLER = ['tr', 'fr', 'en'];
+const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 /** Ses, üslup ya da metin kalıbı değişirse artırılır: bütün klipler yeniden üretilir. */
 export const SES_SURUMU = 1;
 export const SES_ADI = 'Iapetus';

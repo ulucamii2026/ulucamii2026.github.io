@@ -16,7 +16,7 @@ const yanVar = Astro.slots.has('yan');
 
 /* İçindekiler — uzun bilgi sayfalarında (ihtida gövdesi mobilde ~12.000 px) okuyucu aradığı
    başlığa tek dokunuşta gitsin diye. Yalnız h2'ler; Astro markdown başlıklara kendi id'sini verir. */
-const TOC_BASLIK = { tr: 'İçindekiler', fr: 'Sommaire', en: 'Contents' } as const;
+const TOC_BASLIK = { tr: 'İçindekiler', fr: 'Sommaire', en: 'Contents', nl: 'Inhoud', de: 'Inhalt' } as const;
 const bolumler = icindekiler ? headings.filter((h) => h.depth === 2 && h.slug) : [];
 ---
 <Base baslik={entry.data.baslik} dil={dil} aciklama={entry.data.aciklama} kapak={entry.data.kapak} noindex={noindex}>

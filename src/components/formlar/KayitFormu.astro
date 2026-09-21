@@ -27,13 +27,23 @@ const ikonlar = {
 };
 
 const okullar = okulVerisi.okullar as Array<{ ad: string; grup: 'marche' | 'cevre'; tur: 'fondamental' | 'secondaire' }>;
-type Sinif = { v: string; tr: string; fr: string; en: string };
+type SinifDili = 'tr' | 'fr' | 'en';
+type Sinif = { v: string } & Record<SinifDili, string>;
 const siniflar = okulVerisi.siniflar as { fondamental: Sinif[]; secondaire: Sinif[] };
+/** Sınıf adları okullar.json'da yalnız tr/fr/en var. Okullar Valonya'da olduğu için nl/de ziyaretçiye
+    sınıfın RESMÎ FRANSIZCA adı gösterilir («1re primaire»); okullar.json'a nl/de eklenirse burası güncellenir. */
+const sinifDili: Record<Dil, SinifDili> = { tr: 'tr', fr: 'fr', en: 'en', nl: 'fr', de: 'fr' };
+const sd = sinifDili[dil];
 const sinifJson = JSON.stringify({
-  fondamental: siniflar.fondamental.map((s) => ({ v: s.v, ad: s[dil] })),
-  secondaire: siniflar.secondaire.map((s) => ({ v: s.v, ad: s[dil] })),
+  fondamental: siniflar.fondamental.map((s) => ({ v: s.v, ad: s[sd] })),
+  secondaire: siniflar.secondaire.map((s) => ({ v: s.v, ad: s[sd] })),
   diger: k.okul.diger, onceOkul: k.okul.onceOkul,
 });
+/** Bilgilendirme dili yalnız tr/fr olabilir (Apps Script beyaz listesi). Sayfa dili başka ise
+    varsayılan Fransızca seçilir ve nl/de/en ziyaretçiye açıklama notu gösterilir. */
+const iletisimDiliVarsayilan: Record<Dil, 'tr' | 'fr'> = { tr: 'tr', fr: 'fr', en: 'fr', nl: 'fr', de: 'fr' };
+const varsayilanIletisimDili = iletisimDiliVarsayilan[dil];
+const dilNotuGoster: Record<Dil, boolean> = { tr: false, fr: false, en: true, nl: true, de: true };
 const metinJson = JSON.stringify({
   hata: o.hata, basari: { gonderiliyor: v3.gonderiliyor, epostaGitti: o.basari.epostaGitti, epostaGitmedi: v3.epostaGitmedi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
@@ -192,10 +202,10 @@ const metinJson = JSON.stringify({
       <fieldset data-alan class="tam">
         <legend>{k.veli.iletisimDili} <span class="zorunlu" aria-hidden="true">*</span></legend>
         <div class="secenekler">
-          <span class="secenek"><input id="k-dil-tr" type="radio" name="veli.iletisimDili" value="tr" required checked={dil === 'tr'} /><label for="k-dil-tr">{k.veli.dilTr}</label></span>
-          <span class="secenek"><input id="k-dil-fr" type="radio" name="veli.iletisimDili" value="fr" checked={dil !== 'tr'} /><label for="k-dil-fr">{k.veli.dilFr}</label></span>
+          <span class="secenek"><input id="k-dil-tr" type="radio" name="veli.iletisimDili" value="tr" required checked={varsayilanIletisimDili === 'tr'} /><label for="k-dil-tr">{k.veli.dilTr}</label></span>
+          <span class="secenek"><input id="k-dil-fr" type="radio" name="veli.iletisimDili" value="fr" checked={varsayilanIletisimDili === 'fr'} /><label for="k-dil-fr">{k.veli.dilFr}</label></span>
         </div>
-        {dil === 'en' && <p class="yardim">{v3.dilNot}</p>}
+        {dilNotuGoster[dil] && <p class="yardim">{v3.dilNot}</p>}
         <p class="hata" aria-live="polite" hidden></p>
       </fieldset>
     </div>

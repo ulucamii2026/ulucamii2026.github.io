@@ -27,19 +27,33 @@ const hizliIslemler = [
   { href: yol(dil, 'cenaze'), ad: t('ana.hizli.cenaze'), ikon: 'cenaze' as const },
 ];
 
-const m = dil === 'tr' ? {
-  heroUst: 'Marche-en-Famenne · Belçika · 1986’dan beri',
-  heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze namazları — Famenne’deki Müslümanların ocağı.',
-  hizmet: 'Hızlı Erişim',
-} : dil === 'en' ? {
-  heroUst: 'Marche-en-Famenne · Belgium · since 1986',
-  heroAlt: 'Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes, and funeral prayers — home to the Muslims of the Famenne.',
-  hizmet: 'Quick Access',
-} : {
-  heroUst: 'Marche-en-Famenne · Belgique · depuis 1986',
-  heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne.',
-  hizmet: 'Accès Rapide',
-};
+const m = {
+  tr: {
+    heroUst: 'Marche-en-Famenne · Belçika · 1986’dan beri',
+    heroAlt: 'Beş vakit namaz, Cuma hutbesi, Kur’an kursu, Ramazan ve bayram programları, cenaze namazları — Famenne’deki Müslümanların ocağı.',
+    hizmet: 'Hızlı Erişim',
+  },
+  fr: {
+    heroUst: 'Marche-en-Famenne · Belgique · depuis 1986',
+    heroAlt: 'Cinq prières quotidiennes, prêche du vendredi, école coranique, programmes du Ramadan et des fêtes, prières funéraires — le foyer des musulmans de la Famenne.',
+    hizmet: 'Accès Rapide',
+  },
+  en: {
+    heroUst: 'Marche-en-Famenne · Belgium · since 1986',
+    heroAlt: 'Five daily prayers, the Friday sermon, Qur’an school, Ramadan and Eid programmes, and funeral prayers — home to the Muslims of the Famenne.',
+    hizmet: 'Quick Access',
+  },
+  nl: {
+    heroUst: 'Marche-en-Famenne · België · sinds 1986',
+    heroAlt: 'Vijf dagelijkse gebeden, de vrijdagpreek, Koranschool, programma’s voor ramadan en de feestdagen, uitvaartgebeden — het thuis van de moslims in de Famenne.',
+    hizmet: 'Snel naar',
+  },
+  de: {
+    heroUst: 'Marche-en-Famenne · Belgien · seit 1986',
+    heroAlt: 'Fünf tägliche Gebete, die Freitagspredigt, Koranschule, Programme zu Ramadan und den Festtagen, Totengebete — das Zuhause der Muslime in der Famenne.',
+    hizmet: 'Schnellzugriff',
+  },
+}[dil];
 
 const anaSayfaJsonLd = {
   '@type': 'Mosque', '@id': new URL('/#kurum', Astro.site).toString(),

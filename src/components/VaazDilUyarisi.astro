@@ -3,11 +3,14 @@ import type { Dil } from '../i18n/ui';
 import { yol } from '../i18n/utils';
 interface Props { dil: Dil; slug?: string; }
 const { dil, slug } = Astro.props;
-const m = {
+const METIN: Record<Dil, { baslik: string; metin: string; dugme: string; oku: string }> = {
   tr: { baslik: 'Vaazlar şu an yalnızca Türkçe', metin: 'Vaazları okumak ve indirmek için Türkçe bölümünü ziyaret edebilirsiniz.', dugme: 'Türkçe vaazları görüntüle', oku: 'Bu vaazı Türkçe oku' },
   fr: { baslik: 'Les sermons sont actuellement disponibles uniquement en turc', metin: 'Pour les lire et les télécharger, passez à la version turque du site.', dugme: 'Voir les sermons en turc', oku: 'Lire ce sermon en turc' },
   en: { baslik: 'Sermons are currently available only in Turkish', metin: 'To read and download them, switch to the Turkish version of the site.', dugme: 'View sermons in Turkish', oku: 'Read this sermon in Turkish' },
-}[dil];
+  nl: { baslik: 'De preken zijn momenteel alleen in het Turks beschikbaar', metin: 'Om ze te lezen en te downloaden, gaat u naar de Turkse versie van de website.', dugme: 'Preken in het Turks bekijken', oku: 'Deze preek in het Turks lezen' },
+  de: { baslik: 'Die Predigten sind derzeit nur auf Türkisch verfügbar', metin: 'Um sie zu lesen und herunterzuladen, wechseln Sie bitte zur türkischen Fassung der Website.', dugme: 'Predigten auf Türkisch ansehen', oku: 'Diese Predigt auf Türkisch lesen' },
+};
+const m = METIN[dil];
 ---
 <section class="vaaz-dil-uyarisi" aria-labelledby="vaaz-dil-baslik" data-vaaz-dil-uyarisi>
   <h2 id="vaaz-dil-baslik">{m.baslik}</h2>

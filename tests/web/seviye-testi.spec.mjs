@@ -12,14 +12,14 @@ import { MADDELER, EZBER, BEYAN, SORU_BANKASI_SURUMU, bankaPuanla } from '../../
 import { SONUC_METINLERI } from '../../src/lib/seviye-testi/metinler.ts';
 import { seviyeMetinleri, RIZA_SURUMU } from '../../src/i18n/seviye-testi.ts';
 
-const yollar = { tr: 'seviye-tespit-testi', fr: 'test-de-niveau', en: 'level-assessment' };
+const yollar = { tr: 'seviye-tespit-testi', fr: 'test-de-niveau', en: 'level-assessment', nl: 'niveautest', de: 'einstufungstest' };
 const maddeler = MADDELER.filter((m) => !m.emekli);
 const TOPLAM_SORU = maddeler.length + EZBER.length + BEYAN.length;
 const TASLAK_ANAHTARI = 'ulucamii:seviye:v1';
 const M = seviyeMetinleri.tr;
 const S = SONUC_METINLERI.tr;
 
-const SAGLIK = { ok: true, servis: 'ulucamii-alici', surum: 38, seviyeTesti: true, seviyeBankaSurumu: SORU_BANKASI_SURUMU };
+const SAGLIK = { ok: true, servis: 'ulucamii-alici', surum: 39, seviyeTesti: true, seviyeBankaSurumu: SORU_BANKASI_SURUMU };
 const E = M.etkilesim;
 /** Okuma adımındaki açık soru sayısı (30 madde + 3 öz beyan) — alt şerit sayacının paydası. */
 const OKUMA_SORU = maddeler.filter((m) => m.alan === 'okuma').length + BEYAN.filter((b) => b.kume === 'okuma').length;
@@ -34,10 +34,13 @@ const PROFIL_METIN = {
   'profil.adSoyad': 'Deniz TESTOGLU',
   'profil.eposta': 'deniz@example.test',
   'profil.telefon': '0470000000',   // yerel yazım: alan kendisi «+32 470 00 00 00» yapar
+  'yerel.sehir': '6900 Marche-en-Famenne',
 };
 const PROFIL_SECIM = {
   'profil.yasAraligi': '26-40', 'profil.cinsiyet': 'kadin', 'profil.muslumanlik': '0-1',
   'profil.oncekiEgitim': 'hic', 'profil.dersDili': 'fr', 'profil.bicim': 'yuzyuze',
+  // Form sürümü 2 — «Nereden başvuruyorsunuz?» (ilk adımın ikinci bölümü)
+  'yerel.camiBiliyor': 'evet', 'yerel.gorevliTaniyor': 'hayir', 'yerel.ateselikBilgisi': 'hayir',
 };
 
 /** Varsayılan cevap kuralı: okumada ilk üç basamak doğru, bilgi alanlarında yalnız B1 doğru.
@@ -108,6 +111,7 @@ async function profilDoldur(page) {
   for (const [ad, deger] of Object.entries(PROFIL_SECIM)) {
     await page.locator(`input[name="${ad}"][value="${deger}"]`).check();
   }
+  await page.locator('select[name="yerel.ulke"]').selectOption('BE');
 }
 
 /** Yüzlerce tıklama yerine tek turda işaretler; kapalı (disabled) sorulara dokunmaz.
@@ -166,7 +170,7 @@ test.beforeEach(async ({ context }) => {
   await context.routeWebSocket(/.*/, (socket) => socket.close());
 });
 
-/* ---------- 1. Üç dil duman testi ---------- */
+/* ---------- 1. Beş dil duman testi ---------- */
 
 for (const [dil, yolu] of Object.entries(yollar)) {
   test(`${dil}: seviye testi sayfası dizine açık açılır ve bankanın tamamını basar`, async ({ page }) => {
@@ -178,6 +182,14 @@ for (const [dil, yolu] of Object.entries(yollar)) {
     // Dizine açık sayfa: robots meta ya yok ya da noindex taşımaz.
     expect(await page.evaluate(() => document.querySelector('meta[name="robots"]')?.content ?? '')).not.toContain('noindex');
     await expect(page.locator('[data-form-ust] .st-noktalar li')).toHaveCount(seviyeMetinleri[dil].giris.noktalar.length);
+    // Form v2: yer bilgisi ve beş ders dili; paylaşım varsayılan olarak kapalıdır.
+    await expect(page.locator('#b-yerel')).toBeVisible();
+    expect(await page.locator('input[name="profil.dersDili"]').evaluateAll(inputs => inputs.map(input => input.value))).toEqual(Object.keys(yollar));
+    for (const name of ['onay.yerelGorevli', 'onay.ateselik']) {
+      const consent = page.locator(`input[name="${name}"]`);
+      await expect(consent).not.toBeChecked();
+      await expect(consent).not.toHaveAttribute('required');
+    }
     await expect(page.locator('[data-adim-sec]')).toHaveCount(10);
     await expect(page.locator('progress[data-adim-ilerleme]')).toHaveAttribute('max', '10');
 
@@ -261,7 +273,11 @@ test('Adım adım tam akış: doğrulama, özet, gönderim sözleşmesi ve sonu�
 
   const v = gas.gonderilen[0];
   expect(v.tur).toBe('seviye');
-  expect(v.formSurumu).toBe(1);
+  expect(v.formSurumu).toBe(2);
+  expect(v.yerel).toEqual({ ulke: 'BE', sehir: '6900 Marche-en-Famenne', camiBiliyor: 'evet', yakinCami: '', gorevliTaniyor: 'hayir', ateselikBilgisi: 'hayir' });
+  // Paylaşım onayları isteğe bağlıdır: işaretlenmediyse açıkça false gider.
+  expect(v.onay.yerelGorevli).toBe(false);
+  expect(v.onay.ateselik).toBe(false);
   expect(v.sir).toBe('ULUCAMII-SEVIYE-2026');
   expect(v.dil).toBe('tr');
   expect(typeof v.gonderimAnahtari).toBe('string');
@@ -276,7 +292,7 @@ test('Adım adım tam akış: doğrulama, özet, gönderim sözleşmesi ve sonu�
   expect(v.profil.gunler).toEqual([]);
   expect(v.profil.dilim).toEqual([]);
   expect(v.profil.dersDili).toBe('fr');
-  expect(v.onay).toEqual({ yas18: true, riza: true });
+  expect(v.onay).toEqual({ yas18: true, riza: true, yerelGorevli: false, ateselik: false });
   expect(v.atla).toEqual({});
   expect(v.okumaAtla).toBeUndefined();
   expect(v.cevaplar).toEqual(cevaplarNesnesi());

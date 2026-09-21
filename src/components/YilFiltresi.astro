@@ -10,7 +10,13 @@ import type { Dil } from '../i18n/ui';
 interface Props { yillar: number[]; dil: Dil }
 const { yillar, dil } = Astro.props;
 const t = ceviri(dil);
-const m = dil === 'tr' ? { etiket: 'Yıla göre', tumu: 'Tümü' } : dil === 'en' ? { etiket: 'By year', tumu: 'All' } : { etiket: 'Par année', tumu: 'Toutes' };
+const m = {
+  tr: { etiket: 'Yıla göre', tumu: 'Tümü' },
+  fr: { etiket: 'Par année', tumu: 'Toutes' },
+  en: { etiket: 'By year', tumu: 'All' },
+  nl: { etiket: 'Per jaar', tumu: 'Alle' },
+  de: { etiket: 'Nach Jahr', tumu: 'Alle' },
+}[dil];
 ---
 {yillar.length > 0 && (
   <div class="mb-6 max-w-sm">

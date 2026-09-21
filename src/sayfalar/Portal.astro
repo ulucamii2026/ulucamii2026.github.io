@@ -6,22 +6,39 @@ import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
-const m = dil === 'tr' ? {
-  alt: 'Dernek üyeleri ve Kur’an kursu velileri için özel alan.',
-  uye: 'Üye portalı', uyeA: 'Üyelik bilgileriniz, aidat geçmişiniz ve ödeme talimatları.',
-  veli: 'Veli portalı', veliA: 'Öğrencinizin yoklama kayıtları, ilerlemesi, haftalık ezber-ödevi, hoca notları ve kurs duyuruları. Giriş: kayıt formundaki veli e-postası.',
-  yakinda: 'Üye portalı yakında açılıyor; hesap oluşturma daveti üyelere e-posta ile gönderilecektir. Veli portalı açıktır.',
-} : dil === 'en' ? {
-  alt: 'A private area for association members and Qur’an school parents.',
-  uye: 'Members’ portal', uyeA: 'Your membership information, dues history and payment instructions.',
-  veli: 'Parents’ portal', veliA: 'Your child’s attendance, progress, weekly memorisation and homework, teacher’s notes and school announcements. Sign in with the parent e-mail from the registration form.',
-  yakinda: 'The members’ portal is opening soon; an invitation to create an account will be sent to members by e-mail. The parents’ portal is open.',
-} : {
-  alt: 'Espace réservé aux membres de l’association et aux parents d’élèves de l’école coranique.',
-  uye: 'Portail des membres', uyeA: 'Vos informations d’adhésion, l’historique de vos cotisations et les instructions de paiement.',
-  veli: 'Portail des parents', veliA: 'Présences, progression, mémorisation et devoirs de la semaine, remarques de l’enseignant et annonces de l’école pour votre enfant. Connexion avec l’e-mail du parent indiqué à l’inscription.',
-  yakinda: 'L’espace membres ouvrira prochainement ; une invitation à créer un compte sera envoyée par e-mail aux membres. Le portail des parents est ouvert.',
+const M: Record<Dil, { alt: string; uye: string; uyeA: string; veli: string; veliA: string; yakinda: string }> = {
+  tr: {
+    alt: 'Dernek üyeleri ve Kur’an kursu velileri için özel alan.',
+    uye: 'Üye portalı', uyeA: 'Üyelik bilgileriniz, aidat geçmişiniz ve ödeme talimatları.',
+    veli: 'Veli portalı', veliA: 'Öğrencinizin yoklama kayıtları, ilerlemesi, haftalık ezber-ödevi, hoca notları ve kurs duyuruları. Giriş: kayıt formundaki veli e-postası.',
+    yakinda: 'Üye portalı yakında açılıyor; hesap oluşturma daveti üyelere e-posta ile gönderilecektir. Veli portalı açıktır.',
+  },
+  fr: {
+    alt: 'Espace réservé aux membres de l’association et aux parents d’élèves de l’école coranique.',
+    uye: 'Portail des membres', uyeA: 'Vos informations d’adhésion, l’historique de vos cotisations et les instructions de paiement.',
+    veli: 'Portail des parents', veliA: 'Présences, progression, mémorisation et devoirs de la semaine, remarques de l’enseignant et annonces de l’école pour votre enfant. Connexion avec l’e-mail du parent indiqué à l’inscription.',
+    yakinda: 'L’espace membres ouvrira prochainement ; une invitation à créer un compte sera envoyée par e-mail aux membres. Le portail des parents est ouvert.',
+  },
+  en: {
+    alt: 'A private area for association members and Qur’an school parents.',
+    uye: 'Members’ portal', uyeA: 'Your membership information, dues history and payment instructions.',
+    veli: 'Parents’ portal', veliA: 'Your child’s attendance, progress, weekly memorisation and homework, teacher’s notes and school announcements. Sign in with the parent e-mail from the registration form.',
+    yakinda: 'The members’ portal is opening soon; an invitation to create an account will be sent to members by e-mail. The parents’ portal is open.',
+  },
+  nl: {
+    alt: 'Besloten omgeving voor leden van de vereniging en ouders van leerlingen van de koranschool.',
+    uye: 'Ledenportaal', uyeA: 'Uw lidmaatschapsgegevens, uw bijdragehistoriek en betalingsinstructies.',
+    veli: 'Ouderportaal', veliA: 'Aanwezigheid, vooruitgang, wekelijkse memorisatie en huiswerk, opmerkingen van de leerkracht en mededelingen van de school voor uw kind. Aanmelden met het e-mailadres van de ouder dat bij de inschrijving is opgegeven.',
+    yakinda: 'Het ledenportaal opent binnenkort; leden ontvangen per e-mail een uitnodiging om een account aan te maken. Het ouderportaal is open.',
+  },
+  de: {
+    alt: 'Geschützter Bereich für Vereinsmitglieder und Eltern der Koranschule.',
+    uye: 'Mitgliederportal', uyeA: 'Ihre Mitgliedschaftsdaten, Ihre Beitragshistorie und Zahlungsanweisungen.',
+    veli: 'Elternportal', veliA: 'Anwesenheit, Fortschritt, wöchentliches Auswendiglernen und Hausaufgaben, Anmerkungen der Lehrkraft und Mitteilungen der Schule für Ihr Kind. Anmeldung mit der bei der Anmeldung angegebenen E-Mail-Adresse des Elternteils.',
+    yakinda: 'Das Mitgliederportal wird in Kürze eröffnet; Mitglieder erhalten eine Einladung zur Kontoerstellung per E-Mail. Das Elternportal ist geöffnet.',
+  },
 };
+const m = M[dil];
 ---
 <Base baslik={t('nav.portal')} dil={dil} noindex>
   <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.portal')} altBaslik={m.alt} />

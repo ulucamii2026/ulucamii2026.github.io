@@ -1,11 +1,11 @@
 import { getCollection, getEntry } from 'astro:content';
-import type { Dil } from '../i18n/ui';
+import { diller, type Dil } from '../i18n/ui';
 import namazJson from '../data/namaz-vakitleri.json';
 
-export const dilYollari = () => [{ params: { lang: 'tr' } }, { params: { lang: 'fr' } }, { params: { lang: 'en' } }];
+export const dilYollari = () => (Object.keys(diller) as Dil[]).map((lang) => ({ params: { lang } }));
 
 /** Markdown içerik dili: İngilizce sürümü olmayan koleksiyonlar Fransızcaya düşer (duyuru/etkinlik arşivi TR+FR yayımlanır) */
-export const icerikDili = (dil: Dil): 'tr' | 'fr' => (dil === 'en' ? 'fr' : dil);
+export const icerikDili = (dil: Dil): 'tr' | 'fr' => (dil === 'tr' ? 'tr' : 'fr');
 
 /** Koleksiyon id'si "tr/slug" biçiminde; dile göre süz ve slug'ı ayıkla */
 function dilSuz<T extends { id: string }>(liste: T[], dil: Dil) {
@@ -101,3 +101,14 @@ export function namazVakitleri() {
 export function bugunBrussels(): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 }
+
+/** Çok dilli kısa metin alanı (kurul.yaml → gorev/memleket/meslek/mesaj/not gibi).
+ *  Şemada (src/content.config.ts → `uc`) tr/fr/en zorunlu, nl/de isteğe bağlıdır:
+ *  veriyi Sveltia CMS'ten teknik olmayan kişiler giriyor ve yeni bir kayıtta iki
+ *  yeni dilin boş kalması derlemeyi kırmamalı. */
+export type UcMetin = { tr: string; fr: string; en: string; nl?: string; de?: string };
+
+/** Çok dilli alanı dile göre okur; eksik dil sessizce İngilizceye, o da yoksa
+ *  Fransızcaya düşer. `deger[dil]` yerine HER ZAMAN bunu kullanın: doğrudan
+ *  indeksleme nl/de'de TypeScript hatası verir ve okuyucuya boş dize gösterir. */
+export const ucMetin = (deger: UcMetin, dil: Dil): string => deger[dil] ?? deger.en ?? deger.fr;

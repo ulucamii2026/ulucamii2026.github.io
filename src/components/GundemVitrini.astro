@@ -51,9 +51,44 @@ const m = {
     tur: { duyuru: 'Announcement', afis: 'Poster' },
     fallbackOzet: 'Worship, education, and community gatherings at our mosque.',
   },
+  nl: {
+    baslik: 'Actueel',
+    afis: 'Affiche vergroten',
+    kapat: 'Sluiten',
+    detay: 'Details',
+    incele: 'Meer lezen',
+    once: 'Vorige',
+    sonra: 'Volgende',
+    durdur: 'Doorbladeren stoppen',
+    oynat: 'Doorbladeren starten',
+    tur: { duyuru: 'Bericht', afis: 'Affiche' },
+    fallbackOzet: 'Gebed, onderwijs en ontmoeting in onze moskee.',
+  },
+  de: {
+    baslik: 'Aktuelles',
+    afis: 'Plakat vergrößern',
+    kapat: 'Schließen',
+    detay: 'Details',
+    incele: 'Mehr lesen',
+    once: 'Zurück',
+    sonra: 'Weiter',
+    durdur: 'Bildwechsel anhalten',
+    oynat: 'Bildwechsel starten',
+    tur: { duyuru: 'Mitteilung', afis: 'Plakat' },
+    fallbackOzet: 'Gebet, Unterricht und Begegnung in unserer Moschee.',
+  },
 }[dil];
 
-const enKaynakMetni = dil === 'en' ? 'These publications are available in French; posters may also contain Turkish.' : '';
+/* Duyuru ve afiş içerikleri yalnız TR+FR yayımlanır; en/nl/de ziyaretçisi Fransızcayı görür
+   (lib/icerik.ts → icerikDili) ve bunu kendi dilinde okur. TR ve FR'de not yoktur. */
+const DIL_NOTU: Record<Dil, string> = {
+  tr: '',
+  fr: '',
+  en: 'These publications are available in French; posters may also contain Turkish.',
+  nl: 'Deze publicaties zijn beschikbaar in het Frans; affiches kunnen ook Turkse tekst bevatten.',
+  de: 'Diese Veröffentlichungen liegen auf Französisch vor; Plakate können auch türkischen Text enthalten.',
+};
+const dilNotu = DIL_NOTU[dil];
 
 const haberler = await duyurular(dil);
 const afisler = await getCollection('afisler', ({ data }) => !data.taslak);
@@ -92,7 +127,7 @@ const kareler = await Promise.all(hamKareler.map(async (k) => {
   <div class="gv-ust sr-only">
     <h1>{siteAdi}</h1>
   </div>
-  {enKaynakMetni && <p class="gv-dil-notu">{enKaynakMetni}</p>}
+  {dilNotu && <p class="gv-dil-notu">{dilNotu}</p>}
 
   <div class="gv-kontrol-satiri">
     <div class="gv-kontrol-baslik">

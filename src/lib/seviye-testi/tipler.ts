@@ -5,7 +5,8 @@
  *  değer importları açık `.ts` uzantılıdır, enum/namespace yoktur, `Dil` yerelde tanımlıdır.
  *  Ayrıntı ve soru yazım kılavuzu: docs/SEVIYE-TESTI.md
  */
-export type Dil = 'tr' | 'fr' | 'en';
+/** Site dilleriyle aynı beşli (src/i18n/ui.ts → diller); bu klasör Apps Script paketine de girdiği için içe aktarılmaz, elle eş tutulur. */
+export type Dil = 'tr' | 'fr' | 'en' | 'nl' | 'de';
 export type Metin = Record<Dil, string>;
 
 /** Puanlanan alanlar. `okuma` beş basamaklı merdivendir (K1–K5), diğerleri üç basamaklıdır (B1–B3). */

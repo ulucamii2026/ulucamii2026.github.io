@@ -29,7 +29,7 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import DersGunuKarti from '../components/DersGunuKarti.astro';
 import type { Gun, Metin } from '../components/DersGunuKarti.astro';
-import { ceviri, tarihBicimle, yol } from '../i18n/utils';
+import { ceviri, tarihBicimle, yerelKodu, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import veri from '../data/ders-materyalleri.json';
 import plan from '../data/yillik-plan-2026-2027.json';
@@ -87,16 +87,21 @@ const alanAdi: Record<Dil, Record<string, string>> = {
   tr: { kuran: 'Kur’an-ı Kerim', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak', genel: 'Genel' },
   fr: { kuran: 'Le Saint Coran', itikat: 'Croyance', ibadet: 'Adoration', siyer: 'Vie du Prophète', ahlak: 'Morale', genel: 'Général' },
   en: { kuran: 'The Qur’an', itikat: 'Creed', ibadet: 'Worship', siyer: 'Life of the Prophet', ahlak: 'Ethics', genel: 'General' },
+  nl: { kuran: 'de Koran', itikat: 'Geloofsleer', ibadet: 'Eredienst', siyer: 'Leven van de Profeet', ahlak: 'Moraal', genel: 'Algemeen' },
+  de: { kuran: 'der Koran', itikat: 'Glaubenslehre', ibadet: 'Gottesdienst', siyer: 'Leben des Propheten', ahlak: 'Moral', genel: 'Allgemein' },
 };
 const kategoriAdi: Record<Dil, Record<string, string>> = {
   tr: { ezber: 'Ezber kartı', alistirma: 'Alıştırma', tablo: 'Tablo', rehber: 'Rehber', sinav: 'Sınav', ses: 'Ses', video: 'Video', kitap: 'Ders kitabı', defter: 'Defter', diger: 'Diğer' },
   fr: { ezber: 'Carte de mémorisation', alistirma: 'Exercice', tablo: 'Tableau', rehber: 'Guide', sinav: 'Évaluation', ses: 'Audio', video: 'Vidéo', kitap: 'Manuel', defter: 'Cahier', diger: 'Autre' },
   en: { ezber: 'Memorisation card', alistirma: 'Exercise', tablo: 'Table', rehber: 'Guide', sinav: 'Test', ses: 'Audio', video: 'Video', kitap: 'Textbook', defter: 'Notebook', diger: 'Other' },
+  nl: { ezber: 'Memorisatiekaart', alistirma: 'Oefening', tablo: 'Tabel', rehber: 'Gids', sinav: 'Toets', ses: 'Audio', video: 'Video', kitap: 'Handboek', defter: 'Schrift', diger: 'Andere' },
+  de: { ezber: 'Lernkarte', alistirma: 'Übung', tablo: 'Tabelle', rehber: 'Leitfaden', sinav: 'Test', ses: 'Audio', video: 'Video', kitap: 'Lehrbuch', defter: 'Heft', diger: 'Sonstiges' },
 };
 const filtreKodlari = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].filter((k) =>
   gunler.some((g) => g.sunumlar.some((s) => s.kod === k)) || kalici.some((e) => e.data.alan === k));
 
-const m = dil === 'tr' ? {
+const METIN = {
+  tr: {
   altBaslik: 'Kur’an kursumuzda her ders günü için hazırlanan belgeler: hocaların ders planı (PDF) ve sınıfta kullanılan sesli, iki dilli PowerPoint sunumları. Veliler evde tekrar için, öğrenciler ders öncesi hazırlık için indirebilir.',
   nasil: 'Nasıl kullanılır?',
   nasilListe: [
@@ -117,7 +122,8 @@ const m = dil === 'tr' ? {
   bos: 'Henüz yayımlanmış materyal yok; ilk ders gününden sonra burada görünecek.',
   kaynak: 'Dosyalar caminin GitHub deposunun sürüm eklerinde barındırılır; boyutlar yaklaşık değerlerdir. Kısa adres: ulucamii.be/materyal',
   mufredat: 'Müfredat ve yıllık plan', kurs: 'Kur’an kursu sayfası',
-} : dil === 'en' ? {
+  },
+  en: {
   altBaslik: 'Documents prepared for every lesson day of our Qur’an school: the teachers’ lesson plan (PDF) and the bilingual PowerPoint decks with audio used in class. Parents can download them for revision at home, students to prepare before the lesson.',
   nasil: 'How to use',
   nasilListe: [
@@ -138,7 +144,8 @@ const m = dil === 'tr' ? {
   bos: 'No materials published yet; they will appear here after the first lesson day.',
   kaynak: 'Files are hosted as release assets of the mosque’s GitHub repository; sizes are approximate. Short address: ulucamii.be/materyal',
   mufredat: 'Curriculum and yearly plan', kurs: 'Qur’an school page',
-} : {
+  },
+  fr: {
   altBaslik: 'Les documents préparés pour chaque jour de cours de notre école coranique : le plan de cours des enseignants (PDF) et les présentations PowerPoint bilingues et sonores utilisées en classe. Les parents peuvent les télécharger pour réviser à la maison, les élèves pour se préparer avant le cours.',
   nasil: 'Comment les utiliser ?',
   nasilListe: [
@@ -159,11 +166,65 @@ const m = dil === 'tr' ? {
   bos: 'Aucun support publié pour l’instant ; ils apparaîtront ici après le premier jour de cours.',
   kaynak: 'Les fichiers sont hébergés dans les publications (releases) du dépôt GitHub de la mosquée ; les tailles sont approximatives. Adresse courte : ulucamii.be/materyal',
   mufredat: 'Programme et plan annuel', kurs: 'Page de l’école coranique',
-};
+  },
+  nl: {
+  altBaslik: 'De documenten die voor elke lesdag van onze koranschool worden voorbereid: het lesplan van de leerkrachten (PDF) en de tweetalige PowerPointpresentaties met geluid die in de klas worden gebruikt. Ouders kunnen ze downloaden om thuis te herhalen, leerlingen om zich voor te bereiden op de les.',
+  nasil: 'Hoe worden ze gebruikt?',
+  nasilListe: [
+    'Het lesplan is een PDF; het opent rechtstreeks op telefoon en computer.',
+    'Elke presentatie bestaat in twee vormen: “PDF” is stil, klein en opent op elk toestel; “PowerPoint (met geluid)” is het .pptx-bestand — op elke dia speelt automatisch een korte uitleg af, eerst in het Turks, dan in het Frans, en op de Arabische kaarten hoort u bij het aantikken van de luidsprekerknop een Turkse voordrager of een smeekbede. Open het met de gratis Microsoft PowerPoint-app op de telefoon, of in de diavoorstelling (F5) op de computer.',
+    'De video’s in de presentaties spelen af via YouTube; hiervoor is een internetverbinding nodig.',
+    'De materialen volgen de bronnen van het Turkse Presidium voor Godsdienstzaken (Diyanet); de Profeet, zijn familie en de metgezellen worden nooit afgebeeld.',
+  ],
+  bugunDers: 'De lessen van vandaag', yaklasan: 'Komende lessen', sonDers: 'Laatste lessen',
+  siradaki: 'Eerstvolgende lesdag', siradakiNot: 'De materialen worden vóór de lesdag op deze pagina gepubliceerd.', planBag: 'Bekijk in de jaarplanning',
+  digerGunler: 'Andere lesdagen', gunSay: (n: number) => `${n} lesdag${n === 1 ? '' : 'en'}`, dosyaSay: (n: number) => `${n} bestand${n === 1 ? '' : 'en'}`,
+  filtre: 'Filteren op vak', tumu: 'Alle', filtreBos: 'Geen enkele lesdag komt overeen met uw zoekopdracht.',
+  ara: 'Zoeken', araIpucu: 'Zoek op onderwerp, datum of vak…', temizle: 'Wissen',
+  kalici: 'Permanente materialen', kaliciA: 'Ondersteunende documenten die niet aan een lesdag gebonden zijn: memorisatiekaarten, oefenbladen, tabellen, gidsen.',
+  ac: 'Openen', indir: 'Downloaden',
+  plan: 'Lesplan', sayfa: (n: number) => `${n} pagina’s`, slayt: (n: number) => `${n} dia’s`, ders: (n: number) => `Les ${n}`,
+  pptxSesli: 'PowerPoint (met geluid)', pdfSessiz: 'PDF', hafta: (h: number) => `Week ${h}`, planGun: 'Deze dag in de jaarplanning', ekler: 'Extra documenten', bugun: 'vandaag',
+  bos: 'Er zijn nog geen materialen gepubliceerd; ze verschijnen hier na de eerste lesdag.',
+  kaynak: 'De bestanden worden gehost als release-bijlagen van de GitHub-repository van de moskee; de bestandsgroottes zijn bij benadering. Kort adres: ulucamii.be/materyal',
+  mufredat: 'Leerplan en jaarplanning', kurs: 'Pagina van de koranschool',
+  },
+  de: {
+  altBaslik: 'Die Dokumente, die für jeden Unterrichtstag unserer Koranschule vorbereitet werden: der Unterrichtsplan der Lehrkräfte (PDF) und die zweisprachigen PowerPoint-Präsentationen mit Ton, die im Unterricht verwendet werden. Eltern können sie zur Wiederholung zu Hause herunterladen, Lernende zur Vorbereitung vor der Stunde.',
+  nasil: 'Wie werden sie verwendet?',
+  nasilListe: [
+    'Der Unterrichtsplan ist eine PDF-Datei; sie öffnet sich direkt auf Smartphone und Computer.',
+    'Jede Präsentation gibt es in zwei Formen: „PDF“ ist stumm, klein und lässt sich auf jedem Gerät öffnen; „PowerPoint (mit Ton)“ ist die .pptx-Datei — auf jeder Folie läuft automatisch eine kurze Erzählung, zuerst auf Türkisch, dann auf Französisch, und bei den arabischen Karten hört man beim Antippen der Lautsprechertaste einen türkischen Rezitator oder ein Bittgebet. Öffnen Sie sie mit der kostenlosen Microsoft-PowerPoint-App auf dem Smartphone oder im Bildschirmpräsentationsmodus (F5) am Computer.',
+    'Die Videos in den Präsentationen werden über YouTube abgespielt; dafür ist eine Internetverbindung nötig.',
+    'Die Materialien folgen den Quellen des türkischen Präsidiums für Religionsangelegenheiten (Diyanet); der Prophet, seine Familie und die Gefährten werden niemals bildlich dargestellt.',
+  ],
+  bugunDers: 'Die heutigen Lektionen', yaklasan: 'Kommende Lektionen', sonDers: 'Letzte Lektionen',
+  siradaki: 'Nächster Unterrichtstag', siradakiNot: 'Die Materialien werden vor dem Unterrichtstag auf dieser Seite veröffentlicht.', planBag: 'Im Jahresplan ansehen',
+  digerGunler: 'Weitere Unterrichtstage', gunSay: (n: number) => `${n} Unterrichtstag${n === 1 ? '' : 'e'}`, dosyaSay: (n: number) => `${n} Datei${n === 1 ? '' : 'en'}`,
+  filtre: 'Nach Fach filtern', tumu: 'Alle', filtreBos: 'Kein Unterrichtstag entspricht Ihrer Suche.',
+  ara: 'Suchen', araIpucu: 'Nach Thema, Datum oder Fach suchen…', temizle: 'Löschen',
+  kalici: 'Dauerhafte Materialien', kaliciA: 'Unterstützende Unterlagen, die keinem bestimmten Unterrichtstag zugeordnet sind: Lernkarten, Übungsblätter, Tabellen, Leitfäden.',
+  ac: 'Öffnen', indir: 'Herunterladen',
+  plan: 'Unterrichtsplan', sayfa: (n: number) => `${n} Seiten`, slayt: (n: number) => `${n} Folien`, ders: (n: number) => `Lektion ${n}`,
+  pptxSesli: 'PowerPoint (mit Ton)', pdfSessiz: 'PDF', hafta: (h: number) => `Woche ${h}`, planGun: 'Dieser Tag im Jahresplan', ekler: 'Zusätzliche Dokumente', bugun: 'heute',
+  bos: 'Es sind noch keine Materialien veröffentlicht; sie erscheinen hier nach dem ersten Unterrichtstag.',
+  kaynak: 'Die Dateien werden als Release-Anhänge im GitHub-Repository der Moschee gehostet; die Dateigrößen sind ungefähre Angaben. Kurzadresse: ulucamii.be/materyal',
+  mufredat: 'Lehrplan und Jahresplan', kurs: 'Seite der Koranschule',
+  },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
 const kartMetni: Metin = m;
-const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
+const mb = (b: number) => new Intl.NumberFormat(yerelKodu[dil], { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (iso: string, secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(iso + 'T12:00:00'), dil, secenek);
-const uclu = (o: { tr?: string; fr?: string; en?: string } | undefined) => (o ? (dil === 'tr' ? o.tr : dil === 'en' ? (o.en || o.fr || o.tr) : (o.fr || o.tr)) || '' : '');
+/* İçerik (kalıcı materyal başlığı/açıklaması) yalnız TR+FR (nadiren EN) girilir (bkz. content.config.ts →
+   materyaller şeması); nl/de bugün EN'in de düştüğü Fransızcaya düşer (docs/DIL-NL-DE.md içerik geriye düşüş kuralı). */
+const uclu = (o: { tr?: string; fr?: string; en?: string } | undefined) => {
+  if (!o) return '';
+  const zincir: Record<Dil, (string | undefined)[]> = {
+    tr: [o.tr], fr: [o.fr, o.tr], en: [o.en, o.fr, o.tr], nl: [o.fr, o.tr], de: [o.fr, o.tr],
+  };
+  return zincir[dil].find(Boolean) ?? '';
+};
 
 /* Öne çıkan grubun başlık tarihi: tek gün ise «12 Eylül Cumartesi», iki gün ise «12 – 13 Eylül».
    Ay sınırını aşan hafta sonlarında (30 Eylül – 1 Ekim) iki ay adı da yazılır. */

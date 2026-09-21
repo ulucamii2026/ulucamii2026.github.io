@@ -1,5 +1,6 @@
 import type { OgrenmeDeposu } from '../lib/ogrenme-bulut';
 import type { Dil } from '../i18n/ui';
+import { yerelKodu } from '../i18n/utils';
 import { ETKINLIKLER, VELI_REHBERLERI, type Etkinlik } from '../lib/ogrenme-icerigi';
 import { ogrenmeMetni } from '../i18n/ogrenme';
 import { kaydiOku, gunlukSec, tekrarKaydet, bosKayit, type Tekrar, tekrarBirlestir } from '../lib/ogrenme-ilerleme';
@@ -16,7 +17,7 @@ export function ogrenmeAtolyesi(kok:HTMLElement,o:Secenek):()=>void {
  try{bekleyen=kaydiOku(JSON.stringify({v:1,tekrar:JSON.parse(localStorage.getItem(key+':bekleyen')||'{}')}),ids,bugun()).tekrar;}catch{}
  try{k=kaydiOku(localStorage.getItem(key),ids,bugun()); const probe=key+':probe';localStorage.setItem(probe,'1');localStorage.removeItem(probe);}catch{kalici=false;}
  let sekme='bugun', aktif:Etkinlik|undefined, acik=false, cevap:number|undefined, degerlendi=false, seans:string[]=[], sira=0, bitti=false, arama='',alan='hepsi',not='';
- const tarih=(v:string)=>new Intl.DateTimeFormat(o.dil==='tr'?'tr-TR':o.dil==='fr'?'fr-BE':'en-GB',{dateStyle:'medium',timeZone:'Europe/Brussels'}).format(new Date(v+'T12:00:00Z'));
+ const tarih=(v:string)=>new Intl.DateTimeFormat(yerelKodu[o.dil],{dateStyle:'medium',timeZone:'Europe/Brussels'}).format(new Date(v+'T12:00:00Z'));
  const kaydet=()=>{try{localStorage.setItem(key,JSON.stringify(k));localStorage.setItem(key+':bekleyen',JSON.stringify(bekleyen));}catch{kalici=false;}};
  const durumYaz=()=>{const el=kok.querySelector('[data-bulut-durum]');if(el)el.textContent=m[bulutDurum as keyof typeof m];const btn=kok.querySelector<HTMLButtonElement>('[data-oa=esle]');if(btn)btn.disabled=eslesiyor;const sil=kok.querySelector<HTMLButtonElement>('[data-oa=sil]');if(sil)sil.disabled=eslesiyor;};
  async function esle(oku=true){

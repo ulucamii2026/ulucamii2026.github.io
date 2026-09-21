@@ -1,4 +1,7 @@
 /** Ortak haftalık çalışma: hoca formu ve veli önizlemesi aynı kayıt sözleşmesini kullanır. */
+import type { Dil } from '../i18n/ui';
+/** Hocanın ezber/ödev metnini yazdığı diller. Site nl ve de kazandı ama bu liste DEĞİŞMEZ:
+ *  kayıtlı içerik üç dilde tutulur (bkz. odevDili). */
 export type OdevDil = 'tr' | 'fr' | 'en';
 export type OdevMetin = Record<OdevDil, string>;
 export type OdevPlanGunu = { tarih: string; hafta: number; dersler: { konu: string; kod: string; ezber: string[] }[] };
@@ -6,8 +9,11 @@ export type OdevHaftasi = { hafta: number; tarih: string; gunler: OdevPlanGunu[]
 export type HaftalikOdev = { tarih: string; hafta: number; ezber: OdevMetin; odev: OdevMetin; etkinlikler: string[]; materyal: string; yayin: boolean; guncelleme?: string };
 export const ODEV_DILLERI: OdevDil[] = ['tr', 'fr', 'en'];
 export const bosOdevMetni = (): OdevMetin => ({ tr: '', fr: '', en: '' });
-/** Veli portalındaki mevcut dil yedeği: istenen dil → Fransızca → Türkçe. */
-export const odevMetni = (metin: Partial<OdevMetin> | undefined, dil: OdevDil) => metin?.[dil] || metin?.fr || metin?.tr || '';
+/** Portal dilinden kayıt diline tek eşlem: nl ve de, bugün İngilizcenin düştüğü gibi Fransızcaya düşer
+ *  (kayıtta nl/de metni yoktur ve olmayacaktır). tr/fr/en kendi metnini alır — davranış değişmez. */
+export const odevDili = (dil: Dil): OdevDil => (({ tr: 'tr', fr: 'fr', en: 'en', nl: 'fr', de: 'fr' }) as Record<Dil, OdevDil>)[dil];
+/** Veli portalındaki mevcut dil yedeği: istenen dil (nl/de → fr) → Fransızca → Türkçe. */
+export const odevMetni = (metin: Partial<OdevMetin> | undefined, dil: Dil) => metin?.[odevDili(dil)] || metin?.fr || metin?.tr || '';
 export function odevHaftalari(gunler: OdevPlanGunu[]): OdevHaftasi[] {
   const sirali = [...gunler].filter(g => g.dersler.length).sort((a, b) => a.tarih.localeCompare(b.tarih));
   return [...new Set(sirali.map(g => g.hafta))].map(hafta => {

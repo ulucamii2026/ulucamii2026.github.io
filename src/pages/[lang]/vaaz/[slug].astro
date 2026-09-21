@@ -11,7 +11,7 @@ import Base from '../../../layouts/Base.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
 import VaazDilUyarisi from '../../../components/VaazDilUyarisi.astro';
 import istatistik from '../../../data/istatistik.json';
-import { yol } from '../../../i18n/utils';
+import { yol, dilListesi } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
 import { katAd } from '../../../i18n/vaaz-kategori';
 
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
     return sirali.slice(0, 3);
   };
   const out: { params: { lang: Dil; slug: string }; props: { entry: Vaaz; ilgili: Vaaz[] } }[] = [];
-  for (const lang of ['tr', 'fr', 'en'] as Dil[]) for (const v of vaazlar) out.push({ params: { lang, slug: v.id }, props: { entry: v, ilgili: oneri(v) } });
+  for (const lang of dilListesi) for (const v of vaazlar) out.push({ params: { lang, slug: v.id }, props: { entry: v, ilgili: oneri(v) } });
   return out;
 }
 const dil = Astro.params.lang as Dil;
@@ -35,14 +35,24 @@ const { entry, ilgili } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 
-const m = {
-  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null as string | null, paylas: "WhatsApp'ta paylaş", ilgili: 'Bunları da okuyabilirsiniz',
+type VaazMetni = {
+  etiket: string; geri: string; indir: string; kelime: string; okuma: string;
+  trNot: string | null; paylas: string; ilgili: string;
+  pdfNot: string; wordNot: string; serbest: string;
+};
+const METIN: Record<Dil, VaazMetni> = {
+  tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null, paylas: "WhatsApp'ta paylaş", ilgili: 'Bunları da okuyabilirsiniz',
         pdfNot: 'Orijinal belge', wordNot: 'Düzenlenebilir', serbest: 'Anonim metin — okuyabilir, indirebilir, serbestçe kullanabilirsiniz.' },
   fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp', ilgili: 'À lire également',
         pdfNot: 'Document original', wordNot: 'Modifiable', serbest: 'Texte anonyme — à lire, télécharger et utiliser librement.' },
   en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp', ilgili: 'You may also read',
         pdfNot: 'Original document', wordNot: 'Editable', serbest: 'Anonymous text — read, download and use freely.' },
-}[dil];
+  nl: { etiket: 'Preek', geri: 'Alle preken', indir: 'Downloaden', kelime: 'woorden', okuma: 'min. leestijd', trNot: 'Deze preek wordt in het Turks gepubliceerd.', paylas: 'Delen via WhatsApp', ilgili: 'Ook interessant om te lezen',
+        pdfNot: 'Origineel document', wordNot: 'Bewerkbaar', serbest: 'Anonieme tekst — vrij te lezen, te downloaden en te gebruiken.' },
+  de: { etiket: 'Predigt', geri: 'Alle Predigten', indir: 'Herunterladen', kelime: 'Wörter', okuma: 'Min. Lesezeit', trNot: 'Diese Predigt wird auf Türkisch veröffentlicht.', paylas: 'Über WhatsApp teilen', ilgili: 'Das können Sie auch lesen',
+        pdfNot: 'Originaldokument', wordNot: 'Bearbeitbar', serbest: 'Anonymer Text — frei zu lesen, herunterzuladen und zu verwenden.' },
+};
+const m = METIN[dil];
 
 const okumaDk = d.kelime ? Math.max(1, Math.round(d.kelime / 180)) : null;
 

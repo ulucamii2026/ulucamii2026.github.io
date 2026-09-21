@@ -1,6 +1,7 @@
 ---
 /**
- * Dil bayrağı — küçük inline SVG: tr → Türkiye, fr → Belçika, en → Birleşik Krallık.
+ * Dil bayrağı — küçük inline SVG: tr → Türkiye, fr → Belçika, en → Birleşik Krallık, nl → Hollanda, de → Almanya
+ * (Flemenkçe için Belçika bayrağı Fransızcayla karışırdı; dilin kendi bayrağı seçildi).
  * Dekoratif kullanım (aria-hidden); erişilebilir ad her zaman metinle birlikte verilir.
  */
 import type { Dil } from '../i18n/ui';
@@ -29,5 +30,19 @@ const { dil, class: sinif = 'h-3.5 w-5' } = Astro.props;
     <path d="M0,0 30,20 M30,0 0,20" stroke="#C8102E" stroke-width="1.6" />
     <path d="M15,0 V20 M0,10 H30" stroke="#fff" stroke-width="6.6" />
     <path d="M15,0 V20 M0,10 H30" stroke="#C8102E" stroke-width="4" />
+  </svg>
+)}
+{dil === 'nl' && (
+  <svg class={sinif} viewBox="0 0 30 20" aria-hidden="true" focusable="false">
+    <rect width="30" height="20" fill="#fff" />
+    <rect width="30" height="6.667" fill="#AE1C28" />
+    <rect y="13.333" width="30" height="6.667" fill="#21468B" />
+  </svg>
+)}
+{dil === 'de' && (
+  <svg class={sinif} viewBox="0 0 30 20" aria-hidden="true" focusable="false">
+    <rect width="30" height="20" fill="#FFCE00" />
+    <rect width="30" height="13.333" fill="#DD0000" />
+    <rect width="30" height="6.667" fill="#000" />
   </svg>
 )}

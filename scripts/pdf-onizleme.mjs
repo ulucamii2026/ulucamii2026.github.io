@@ -1,4 +1,4 @@
-// pdf-onizleme.mjs — Node'da ulucamii-Kod-v38.gs içindeki SAF PDF şablon
+// pdf-onizleme.mjs — Node'da ulucamii-Kod-v39.gs içindeki SAF PDF şablon
 // fonksiyonlarını (pdfHtmlKayit, pdfHtmlIhtida) çalıştırıp örnek HTML çıktısı üretir.
 //
 // Yöntem: .gs dosyasının TAMAMI `new Function(...)` ile bir fonksiyon gövdesi olarak
@@ -17,7 +17,7 @@ import path from "node:path";
 import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v38.gs");
+const GS_YOLU = path.join(__dirname, "apps-script", "ulucamii-Kod-v39.gs");
 // Çıktı klasörü: CIKTI ortam değişkeni ya da D:\tmp\pdf-onizleme (13 Eyl 2026'ya kadar eski bir scratchpad yoluydu).
 const CIKTI_KLASORU = process.env.CIKTI || "D:\\tmp\\pdf-onizleme";
 mkdirSync(CIKTI_KLASORU, { recursive: true });

@@ -20,14 +20,24 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 
-/* Sıra bilinçlidir: önce «İslam nedir», en sonda ibadet rehberi. */
+/* Sıra bilinçlidir: önce «İslam nedir», en sonda ibadet rehberi.
+   nl/de listeleri 21 Eylül 2026'da aynı ölçütle seçildi: Diyanet'in Felemenkçe ve Almanca
+   yayımladığı ALTI tanıtım broşürü (İslam nedir / Müslüman kimdir / Kur'an / Hz. Muhammed /
+   Hz. İsa / Veda Hutbesi) artı öğreten bir rehber. Kitaplar mevcut, uydurma yok. */
 const BASLANGIC: Record<Dil, string[]> = {
   fr: ['3624', '4194', '3625', '3623', '3622', '4193', '513', '4950'],
   tr: ['5266', '4206', '5267', '5265', '5264', '4205', '394'],
   en: ['3628', '4201', '3629', '3627', '3626', '4199', '525', '5023'],
+  nl: ['3620', '4559', '3621', '3619', '3618', '4546', '4718'],
+  de: ['3611', '4191', '3612', '3613', '3614', '4190', '486'],
 };
 
-const M = {
+type BantMetni = {
+  etiket: string; baslik: string; giris: string; ilk: string;
+  kendiDil: (n: number) => string; hepsi: (n: number, d: number) => string; not: string;
+  sayfaKisa: string; pdfAc: string; epub: string; kunye: string; dis: string;
+};
+const M: Record<Dil, BantMetni> = {
   tr: {
     etiket: 'Ücretsiz kütüphane',
     baslik: 'Okumak, öğrenmek için: Diyanet yayınları',
@@ -61,7 +71,29 @@ const M = {
     not: 'The files stay on Diyanet’s own server; we keep no copy of them. “Read (PDF)” opens the file in your browser’s viewer — its download button (or Ctrl+S) saves it to your device. “Download (EPUB)” downloads it directly; that format reads more comfortably on e-readers and phones.',
     sayfaKisa: 'pages', pdfAc: 'Read (PDF)', epub: 'Download (EPUB)', kunye: 'Diyanet page', dis: 'opens in a new tab',
   },
-} as const;
+  nl: {
+    etiket: 'Gratis bibliotheek',
+    baslik: 'Om te lezen en te leren: de uitgaven van het Diyanet',
+    giris:
+      'Alle digitale uitgaven van het Presidium voor Religieuze Zaken zijn gratis. Hieronder staan, op volgorde, de brochures die u kunt lezen wanneer u de islam ontdekt; de volledige collectie — van kinderboeken tot een gids voor de eredienst, van hadithbundels tot Koranvertalingen — vindt u op de pagina van de bibliotheek.',
+    ilk: 'Eerste lectuur',
+    kendiDil: (n: number) => `Alle Nederlandstalige uitgaven (${n})`,
+    hepsi: (n: number, d: number) => `De hele bibliotheek — ${n} boeken, ${d} talen`,
+    not: 'De bestanden blijven op de server van het Diyanet staan; wij bewaren er geen kopie van. “Lezen (pdf)” opent het bestand in de lezer van uw browser — met de downloadknop daar (of Ctrl+S) bewaart u het op uw toestel. “Downloaden (EPUB)” downloadt het bestand rechtstreeks; dat formaat leest comfortabeler op een e-reader en op de gsm.',
+    sayfaKisa: 'pagina’s', pdfAc: 'Lezen (pdf)', epub: 'Downloaden (EPUB)', kunye: 'Diyanet-fiche', dis: 'opent in een nieuw tabblad',
+  },
+  de: {
+    etiket: 'Kostenlose Bibliothek',
+    baslik: 'Zum Lesen und Lernen: die Veröffentlichungen des Diyanet',
+    giris:
+      'Alle digitalen Veröffentlichungen des Präsidiums für Religiöse Angelegenheiten sind kostenlos. Unten stehen der Reihe nach die Broschüren, die man lesen kann, wenn man den Islam entdeckt; die gesamte Sammlung — von Kinderbüchern über einen Leitfaden zum Gottesdienst und Hadithsammlungen bis zu Koranübersetzungen — finden Sie auf der Seite der Bibliothek.',
+    ilk: 'Erste Lektüre',
+    kendiDil: (n: number) => `Alle deutschsprachigen Veröffentlichungen (${n})`,
+    hepsi: (n: number, d: number) => `Die ganze Bibliothek — ${n} Bücher, ${d} Sprachen`,
+    not: 'Die Dateien bleiben auf dem Server des Diyanet; wir bewahren keine Kopie davon auf. „Lesen (PDF)“ öffnet die Datei im Betrachter Ihres Browsers — mit dessen Download-Schaltfläche (oder Strg+S) speichern Sie sie auf Ihrem Gerät. „Herunterladen (EPUB)“ lädt die Datei direkt herunter; dieses Format liest sich auf E-Readern und auf dem Handy bequemer.',
+    sayfaKisa: 'Seiten', pdfAc: 'Lesen (PDF)', epub: 'Herunterladen (EPUB)', kunye: 'Diyanet-Seite', dis: 'öffnet in einem neuen Tab',
+  },
+};
 const m = M[dil];
 
 const yayinlar = veri.yayinlar as Kitap[];

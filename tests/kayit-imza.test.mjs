@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v38.gs']
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v39.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 function backend() {
   const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } });
@@ -32,7 +32,7 @@ const govde = (ek = {}) => ({
 
 test('Sağlık ucu v32 ve kayitImza bayrağını bildirir', () => {
   const c = backend();
-  assert.equal(c.SURUM, 38);
+  assert.equal(c.SURUM, 39);
   assert.match(source, /kayitImza: true/);
 });
 

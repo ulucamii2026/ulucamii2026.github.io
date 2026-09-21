@@ -1,10 +1,17 @@
-import { ui, varsayilanDil, yollar, type Dil, type Anahtar, type SayfaAnahtari } from './ui';
+import { ui, diller, varsayilanDil, yollar, type Dil, type Anahtar, type SayfaAnahtari } from './ui';
 
-export const dilListesi: Dil[] = ['tr', 'fr', 'en'];
+/** Sitenin dilleri — tek kaynak `diller` (ui.ts). Sıra, dil değiştiricide ve hreflang listesinde görünen sıradır. */
+export const dilListesi = Object.keys(diller) as Dil[];
+
+/** Verilen parça sitenin dillerinden biri mi? (URL'nin ilk parçası, form alanı, depolanmış tercih…) */
+export const dilMi = (deger: unknown): deger is Dil => typeof deger === 'string' && deger in diller;
+
+/** Tarih/sayı biçimlendirme yereli ve hreflang değeri. Belçika'nın üç resmî dili (fr, nl, de) ülke koduyla verilir. */
+export const yerelKodu: Record<Dil, string> = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB', nl: 'nl-BE', de: 'de-BE' };
 
 export function dilBul(url: URL): Dil {
   const [, seg] = url.pathname.split('/');
-  return (seg === 'fr' || seg === 'tr' || seg === 'en') ? seg : varsayilanDil;
+  return dilMi(seg) ? seg : varsayilanDil;
 }
 
 export function ceviri(dil: Dil) {
@@ -31,7 +38,7 @@ export function digerDilYolu(url: URL, hedef: Dil): string {
   const [, mevcutDil, seg, ...kalan] = url.pathname.split('/').filter(Boolean).length
     ? ['', ...url.pathname.split('/').filter(Boolean)]
     : ['', varsayilanDil];
-  const dil = (mevcutDil === 'fr' || mevcutDil === 'tr' || mevcutDil === 'en') ? (mevcutDil as Dil) : varsayilanDil;
+  const dil = dilMi(mevcutDil) ? mevcutDil : varsayilanDil;
   if (!seg) return yol(hedef, 'anasayfa');
   // Vaaz detaylarının sabit yolu, liste sayfasının çevrilmiş yolundan ayrıdır.
   if (seg === 'vaaz' && kalan[0]) return `/${hedef}/vaaz/${kalan.filter(Boolean).join('/')}/`;
@@ -64,11 +71,11 @@ export function kayitBaglantisi(link: string, dil: Dil): string {
 
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
   const d = typeof tarih === 'string' ? new Date(tarih) : tarih;
-  return new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { timeZone: 'Europe/Brussels', ...secenek }).format(d);
+  return new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'Europe/Brussels', ...secenek }).format(d);
 }
 
 /** hreflang öznitelik değeri */
-export const hreflangKodu = (d: Dil): string => (d === 'tr' ? 'tr' : d === 'en' ? 'en' : 'fr-BE');
+export const hreflangKodu = (d: Dil): string => (d === 'tr' || d === 'en' ? d : yerelKodu[d]);
 
 /** Arama karşılaştırması için normalizasyon: 'tr' locale ile küçültür, kesme işaretlerini ve
     aksan/diyakritikleri temizler — böylece "İftar" veya "Kur'an" gibi kelimeler ASCII/aksansız

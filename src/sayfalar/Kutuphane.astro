@@ -23,27 +23,40 @@ const t = ceviri(dil);
 
 const dilSayisi = new Set(veri.yayinlar.map((y) => y.dilKodu)).size;
 
-const M = {
+const M: Record<Dil, { alt: string; geri: string; yayinRehberi: string }> = {
   tr: {
     alt: `Diyanet İşleri Başkanlığı'nın ücretsiz dijital yayınları: ${veri.yayinlar.length} kitap, ${dilSayisi} dilde. Dosyalar Diyanet'in kendi sunucusunda durur; buradaki bağlantılar doğrudan oraya açılır.`,
     geri: 'İhtida sayfasına dön',
+    yayinRehberi: 'Dergi aboneliği ve ücretsiz okuma',
   },
   fr: {
     alt: `Les publications numériques gratuites de la Présidence des Affaires religieuses : ${veri.yayinlar.length} ouvrages en ${dilSayisi} langues. Les fichiers restent sur le serveur du Diyanet ; les liens de cette page y mènent directement.`,
     geri: 'Retour à la page « Devenir musulman »',
+    yayinRehberi: 'Abonnement et lecture gratuite',
   },
   en: {
     alt: `Free digital publications of the Presidency of Religious Affairs: ${veri.yayinlar.length} books in ${dilSayisi} languages. The files stay on Diyanet's own server; the links here open them directly from there.`,
     geri: 'Back to “Becoming Muslim”',
+    yayinRehberi: 'Subscriptions and free reading',
   },
-} as const;
+  nl: {
+    alt: `De gratis digitale uitgaven van het Presidium voor Religieuze Zaken: ${veri.yayinlar.length} boeken in ${dilSayisi} talen. De bestanden blijven op de server van het Diyanet staan; de links op deze pagina leiden er rechtstreeks naartoe.`,
+    geri: 'Terug naar “Moslim worden”',
+    yayinRehberi: 'Abonnement en gratis lezen',
+  },
+  de: {
+    alt: `Die kostenlosen digitalen Veröffentlichungen des Präsidiums für Religiöse Angelegenheiten: ${veri.yayinlar.length} Bücher in ${dilSayisi} Sprachen. Die Dateien bleiben auf dem Server des Diyanet; die Links auf dieser Seite führen direkt dorthin.`,
+    geri: 'Zurück zu „Muslim werden“',
+    yayinRehberi: 'Abonnement und kostenloses Lesen',
+  },
+};
 const m = M[dil];
 ---
 <Base baslik={t('nav.kutuphane')} dil={dil} aciklama={m.alt}>
   <SayfaBasligi etiket={t('nav.diyanet')} baslik={t('nav.kutuphane')} altBaslik={m.alt}>
     <p class="mt-5 flex flex-wrap gap-3">
       <a class="dugme dugme-ikincil" href={yol(dil, 'ihtida')}>← {m.geri}</a>
-      <a class="dugme dugme-ikincil" href={yol(dil, 'yayinrehberi')}>{dil === 'tr' ? 'Dergi aboneliği ve ücretsiz okuma' : dil === 'fr' ? 'Abonnement et lecture gratuite' : 'Subscriptions and free reading'}</a>
+      <a class="dugme dugme-ikincil" href={yol(dil, 'yayinrehberi')}>{m.yayinRehberi}</a>
     </p>
   </SayfaBasligi>
 

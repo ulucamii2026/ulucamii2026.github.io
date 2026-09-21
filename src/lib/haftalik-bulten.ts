@@ -9,7 +9,11 @@ import {
   serverTimestamp,
   type Firestore,
 } from "firebase/firestore/lite";
-import type { Dil } from "../i18n/ui";
+/** Bültenin YAZILDIĞI dil. Site 21 Eylül 2026'da nl ve de kazandı; bülten içeriği hocanın elinden
+ *  çıktığı için üç dilde kalır (velinin iletişim dili tr/fr iş kuralıdır, bkz. hoca-ekrani.ts).
+ *  Portal nl/de görüntülense de bülten metni değişmez; `Dil` yerine bu daraltılmış tür kullanılır. */
+export type BultenDil = "tr" | "fr" | "en";
+export const BULTEN_DILLERI: BultenDil[] = ["tr", "fr", "en"];
 
 export type BultenMetni = {
   ders: string;
@@ -21,7 +25,7 @@ export type Bulten = {
   id: string;
   tarih: string;
   hafta: number;
-  dil: Dil;
+  dil: BultenDil;
   metin: BultenMetni;
   yayin: boolean;
   surum: number;
@@ -68,7 +72,7 @@ export function bultenDeposu(db: Firestore, ref: string) {
       if (
         !bultenIdGecerli(b.id) ||
         b.id !== b.tarih ||
-        !["tr", "fr", "en"].includes(b.dil) ||
+        !BULTEN_DILLERI.includes(b.dil) ||
         !Number.isInteger(b.hafta) ||
         b.hafta < 1 ||
         b.hafta > 54

@@ -37,7 +37,10 @@ const yol = (dosya) => '/' + relative(KOK, dosya).split(sep).join('/').replace(/
 /** Site sayfasi olmayanlar: panel (noindex, kendi iskeleti), gomulu kayit uygulamasi ve
     arama motoru dogrulama dosyasi. Bunlarda canonical/h1/hreflang beklenmez. */
 const uygulamaSayfasi = (u) => u.startsWith('/admin') || u.startsWith('/kayit') || /^\/google[0-9a-f]+\.html$/.test(u);
-const dilBul = (u) => (['tr', 'fr', 'en'].includes(u.split('/')[1]) ? u.split('/')[1] : null);
+/* Site dilleri ve hreflang kodları — src/i18n/ui.ts → diller ve utils.ts → hreflangKodu ile eş tutulur. */
+const SITE_DILLERI = ['tr', 'fr', 'en', 'nl', 'de'];
+const HREFLANG_KODLARI = ['tr', 'fr-BE', 'en', 'nl-BE', 'de-BE'];
+const dilBul = (u) => (SITE_DILLERI.includes(u.split('/')[1]) ? u.split('/')[1] : null);
 
 const bulgular = [];
 const ekle = (onem, konu, ayrinti) => bulgular.push({ onem, konu, ayrinti });
@@ -57,6 +60,8 @@ const SIZINTI_ARAYUZ = {
   en: [/\bAller au contenu\b/, /\bAccueil\b/, /\bNos services\b/, /\bFaire un don\b/, /İçeriğe atla/],
   fr: [/Skip to content/, /İçeriğe atla/, /\bOur services\b/, /\bDonate\b/],
   tr: [/Skip to content/, /Aller au contenu/],
+  nl: [/\bAller au contenu\b/, /Skip to content/, /İçeriğe atla/, /Zum Inhalt springen/, /\bAccueil\b/, /\bNos services\b/, /\bFaire un don\b/, /\bOur services\b/],
+  de: [/\bAller au contenu\b/, /Skip to content/, /İçeriğe atla/, /Naar de inhoud/, /\bAccueil\b/, /\bNos services\b/, /\bFaire un don\b/, /\bOur services\b/],
 };
 /* Not: "Mosquée" tek başına ölçüt olamaz — derneğin yasal adı ("Association Diyanet
    Mosquée Ulu Camii de Marche en Famenne ASBL") ve banka hesap adı ("Communauté Turque
@@ -66,7 +71,10 @@ const SIZINTI_ICERIK = {
   en: [/\bl’occasion\b/, /\bnotre page Facebook\b/, /\bnous remercions\b/i, /\ba rendu visite\b/, /\bs’est déroulé/],
   fr: [], tr: [],
 };
-const CEVIRI_NOTU = /An English version is not available/;
+// nl ve de, İngilizce gibi Fransızca arşive düşer: aynı kalıplar, not ziyaretçinin kendi dilinde.
+SIZINTI_ICERIK.nl = SIZINTI_ICERIK.en;
+SIZINTI_ICERIK.de = SIZINTI_ICERIK.en;
+const CEVIRI_NOTU = /An English version is not available|Een Nederlandse versie is niet beschikbaar|Er is geen Nederlandse versie beschikbaar|Eine deutsche Fassung ist nicht verfügbar/;
 
 for (const dosya of sayfalar) {
   const u = yol(dosya);
@@ -91,10 +99,10 @@ for (const dosya of sayfalar) {
     if (h1 > 1) ekle('dusuk', `${h1} adet h1`, u);
   }
 
-  // hreflang üçlüsü
+  // hreflang takımı (beş dil)
   const hreflangs = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => m[1]);
-  if (siteSayfasi && dil && !['tr', 'fr-BE', 'en'].every((k) => hreflangs.includes(k))) {
-    ekle('orta', 'hreflang üçlüsü eksik', `${u} → ${hreflangs.join(', ') || 'yok'}`);
+  if (siteSayfasi && dil && !HREFLANG_KODLARI.every((k) => hreflangs.includes(k))) {
+    ekle('orta', 'hreflang takımı eksik', `${u} → ${hreflangs.join(', ') || 'yok'}`);
   }
 
   // gövdeden metin çıkar (script/style hariç) ve dil sızıntısı ara
@@ -149,14 +157,14 @@ for (const [hedef, kaynaklar] of icBaglantilar) {
 }
 
 /* ---------------------------------------------------------------- dil paritesi */
-const dilSayfalari = { tr: new Set(), fr: new Set(), en: new Set() };
+const dilSayfalari = Object.fromEntries(SITE_DILLERI.map((d) => [d, new Set()]));
 for (const u of mevcutYollar) {
   const d = dilBul(u);
   if (d) dilSayfalari[d].add(u.split('/').slice(2).join('/'));
 }
 // Yollar dile gore cevrildigi icin (duyurular/ -> annonces/ -> announcements/) slug
 // karsilastirilamaz; sayfa SAYISI karsilastirilir.
-for (const d of ['fr', 'en']) {
+for (const d of SITE_DILLERI.filter((x) => x !== 'tr')) {
   const fark = dilSayfalari.tr.size - dilSayfalari[d].size;
   if (fark > 0) ekle('orta', `${d} dilinde ${fark} sayfa eksik`, `tr=${dilSayfalari.tr.size} ${d}=${dilSayfalari[d].size}`);
   else if (fark < 0) ekle('dusuk', `${d} dilinde ${-fark} fazla sayfa`, `tr=${dilSayfalari.tr.size} ${d}=${dilSayfalari[d].size}`);

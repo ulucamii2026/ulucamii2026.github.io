@@ -10,7 +10,10 @@ export const PROFIL_DEGERLERI = {
   muslumanlik: ['henuz', '0-1', '1-5', '5+', 'dogustan'],
   oncekiEgitim: ['hic', 'kendi', 'aile', 'kurs', 'okul'],
   hedefler: ['namaz', 'kuranOkuma', 'tecvid', 'inanc', 'gunluk', 'ezber', 'cocuk'],
-  dersDili: ['tr', 'fr', 'en'],
+  /** DERS dili: katılımcının dersi almak istediği dil. 21 Eyl 2026 (form sürümü 2): teste Avrupa'nın her yerinden katılınıyor ve
+   *  eğitim katılımcıya en yakın yerde planlanabiliyor → Flemenkçe ve Almanca da seçilebilir (din görevlimiz bu dillerde ders vermez;
+   *  seçim, yerel görevliye yönlendirme için bilgidir). Etiketler { is a shell keyword. */
+  dersDili: ['tr', 'fr', 'en', 'nl', 'de'],
   gunler: ['pzt', 'sal', 'car', 'per', 'cum', 'cmt', 'paz'],
   dilim: ['sabah', 'ogleden-sonra', 'aksam'],
   bicim: ['yuzyuze', 'cevrimici', 'farketmez'],
@@ -38,7 +41,7 @@ export const PROFIL_ETIKETLERI_TR: Record<ProfilAlani, { ad: string; degerler: R
     ad: 'Beklentileri',
     degerler: { namaz: 'Namaz kılmayı öğrenmek', kuranOkuma: 'Kur’an okumayı öğrenmek', tecvid: 'Kur’an’ı daha güzel okumak (tecvid)', inanc: 'İnancını anlamak ve derinleştirmek', gunluk: 'Günlük hayatta helal–haram', ezber: 'Sûre ve dua ezberlemek', cocuk: 'Çocuklarına öğretebilmek' },
   },
-  dersDili: { ad: 'Ders dili tercihi', degerler: { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce' } },
+  dersDili: { ad: 'Ders dili tercihi', degerler: { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce', nl: 'Flemenkçe', de: 'Almanca' } },
   gunler: { ad: 'Uygun günler', degerler: { pzt: 'Pazartesi', sal: 'Salı', car: 'Çarşamba', per: 'Perşembe', cum: 'Cuma', cmt: 'Cumartesi', paz: 'Pazar' } },
   dilim: { ad: 'Uygun saatler', degerler: { sabah: 'Sabah', 'ogleden-sonra': 'Öğleden sonra', aksam: 'Akşam' } },
   bicim: { ad: 'Ders biçimi', degerler: { yuzyuze: 'Camide yüz yüze', cevrimici: 'Çevrim içi', farketmez: 'Fark etmez' } },

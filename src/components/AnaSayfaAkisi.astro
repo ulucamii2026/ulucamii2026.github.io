@@ -6,7 +6,7 @@ import BuHafta from './BuHafta.astro';
 import BagisBandi from './BagisBandi.astro';
 import { yol, tarihBicimle, kayitBaglantisi } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { duyurular, yaklasanEtkinlikler, siteAyarlari } from '../lib/icerik';
+import { duyurular, icerikDili, yaklasanEtkinlikler, siteAyarlari } from '../lib/icerik';
 import { kucukSurum } from '../lib/gorsel';
 import '../styles/ana-sayfa-akisi.css';
 
@@ -17,66 +17,116 @@ const site = await siteAyarlari();
 const tumDuyurular = await duyurular(dil);
 const sonDuyurular = tumDuyurular.slice(0, 3);
 const etkinlikler = await yaklasanEtkinlikler(dil, 2);
+/* Duyuru ve etkinlik arşivi yalnız TR+FR yayımlanır; en/nl/de ziyaretçisi Fransızcasını görür. */
+const icDil = icerikDili(dil);
 
-const m = dil === 'tr' ? {
-  haftalikYasamUst: 'Birlikte öğreniyor, birlikte büyüyoruz',
-  haftalikYasamAlt: 'Hafta sonu Kur’an kurslarımız Türkçe ve Fransızca veriliyor. Cuma günleri Türkçe hutbenin ardından Fransızca hutbe okunuyor. Din görevlimizle Fransızca da iletişim kurabilirsiniz.',
-  veliPortali: 'Veli portalı',
-  kursBilgisi: 'Kur’an kursuna kayıt',
-  buHafta: 'Bu hafta camide',
-  duyurular: 'Duyurular', tumu: 'Tümü',
-  takvim: 'Takvim',
-  etkinlikBos: 'Yaklaşan etkinlik bulunmuyor.',
-  hizmetler: 'Size nasıl yardımcı olabiliriz?',
-  hizmetIhtida: 'İhtida (Kelime-i Şehadet)', ihtidaAlt: 'Müslüman olmak isteyenler için rehberlik ve belge işlemleri.',
-  hizmetCenaze: 'Cenaze', cenazeAlt: 'Belçika Diyanet Vakfı cenaze fonu ve defin işlemleri.',
-  hizmetKonsolosluk: 'Konsolosluk', konsoloslukAlt: 'Vatandaşlarımız için temel konsolosluk işlemleri rehberliği.',
-  hizmetUyelik: 'Dernek Üyeliği', uyelikAlt: 'Camimizi yaşatmak ve faaliyetlere destek olmak için.',
-  ziyaret: 'Kapımız herkese açık',
-  ziyaretGovde: 'Marche-en-Famenne Ulu Camii, 1979’da kurulan derneğimizin çatısı altında 1986’dan beri bölgemizdeki Müslümanlara ibadet, eğitim ve dayanışma hizmeti sunmaktadır. Valon Bölgesi tarafından tanınmış bir ibadet topluluğu olarak Belçika Diyanet Vakfı’na bağlıyız; kapımız her milletten komşumuza açıktır.',
-  hakkimizda: 'Hakkımızda', ilkZiyaret: 'İlk ziyaret rehberi', iletisim: 'İletişim', yolTarifi: 'Yol tarifi',
-  kadinGenclik: 'Kadın ve gençlik kolları programları için', irsat: 'İrşat Takvimi',
-  fotoAlt: 'Ulu Camii iç mekânı', egitimAlt: 'Çalışma masası, defter ve kitap'
-} : dil === 'en' ? {
-  haftalikYasamUst: 'Learning and growing together',
-  haftalikYasamAlt: 'Our weekend Qur’an classes are taught in Turkish and French. On Fridays, the Turkish sermon is followed by a French sermon. You can also speak with our imam in French.',
-  veliPortali: 'Education & Parent Portal',
-  kursBilgisi: 'Qur’an Course Registration',
-  buHafta: 'This week at the mosque',
-  duyurular: 'Announcements', tumu: 'All',
-  takvim: 'Calendar',
-  etkinlikBos: 'No upcoming events.',
-  hizmetler: 'How can we help you?',
-  hizmetIhtida: 'Conversion to Islam', ihtidaAlt: 'Guidance and certification for those wishing to become Muslim.',
-  hizmetCenaze: 'Funeral', cenazeAlt: 'Diyanet Foundation funeral fund and burial procedures.',
-  hizmetKonsolosluk: 'Consulate', konsoloslukAlt: 'Guidance for basic consular procedures for our citizens.',
-  hizmetUyelik: 'Membership', uyelikAlt: 'To support our mosque and its activities.',
-  ziyaret: 'Our door is open to everyone',
-  ziyaretGovde: 'Marche-en-Famenne Ulu Mosque, carried by our association founded in 1979, has served the Muslims of our region with worship, education and mutual support since 1986. Recognised by the Walloon Region as a place of worship and affiliated with the Diyanet Foundation of Belgium, our door is open to neighbours of every background.',
-  hakkimizda: 'About us', ilkZiyaret: 'Guide for your first visit', iletisim: 'Contact', yolTarifi: 'Directions',
-  kadinGenclik: 'For women and youth branch programs:', irsat: 'Guidance Calendar',
-  fotoAlt: 'Interior of the mosque', egitimAlt: 'Study desk, notebook and book',
-  fallbackNotu: 'Announcement and event titles below are published in Turkish and French; only the dates are shown in English. For a summary in English, write to info@ulucamii.be.'
-} : {
-  haftalikYasamUst: 'Apprendre et grandir ensemble',
-  haftalikYasamAlt: 'Nos cours de Coran du week-end sont proposés en turc et en français. Le vendredi, le sermon en turc est suivi d’un sermon en français. Vous pouvez également échanger en français avec notre imam.',
-  veliPortali: 'Portail Éducation & Parents',
-  kursBilgisi: 'Inscription Cours de Coran',
-  buHafta: 'Cette semaine à la mosquée',
-  duyurular: 'Annonces', tumu: 'Toutes',
-  takvim: 'Calendrier',
-  etkinlikBos: 'Aucun événement à venir.',
-  hizmetler: 'Comment pouvons-nous vous aider ?',
-  hizmetIhtida: 'Conversion à l’Islam', ihtidaAlt: 'Accompagnement et attestation pour ceux qui souhaitent devenir musulmans.',
-  hizmetCenaze: 'Funérailles', cenazeAlt: 'Fonds funéraire de la Fondation Diyanet et démarches.',
-  hizmetKonsolosluk: 'Consulat', konsoloslukAlt: 'Accompagnement pour les démarches consulaires de base pour nos concitoyens.',
-  hizmetUyelik: 'Adhésion', uyelikAlt: 'Pour soutenir notre mosquée et ses activités.',
-  ziyaret: 'Notre porte est ouverte à tous',
-  ziyaretGovde: 'La mosquée Ulu Camii de Marche-en-Famenne, portée par notre association fondée en 1979, accueille depuis 1986 les musulmans de la région pour le culte, l’enseignement et l’entraide. Communauté cultuelle reconnue par la Région wallonne et rattachée à la Fondation Diyanet de Belgique, notre porte est ouverte à tous nos voisins, de toutes origines.',
-  hakkimizda: 'À propos', ilkZiyaret: 'Guide pour la première visite', iletisim: 'Contact', yolTarifi: 'Itinéraire',
-  kadinGenclik: 'Pour les programmes des femmes et des jeunes :', irsat: 'Calendrier d’Orientation',
-  fotoAlt: 'Intérieur de la mosquée', egitimAlt: 'Bureau d’étude, cahier et livre'
-};
+const m = {
+  tr: {
+    haftalikYasamUst: 'Birlikte öğreniyor, birlikte büyüyoruz',
+    haftalikYasamAlt: 'Hafta sonu Kur’an kurslarımız Türkçe ve Fransızca veriliyor. Cuma günleri Türkçe hutbenin ardından Fransızca hutbe okunuyor. Din görevlimizle Fransızca da iletişim kurabilirsiniz.',
+    veliPortali: 'Veli portalı',
+    kursBilgisi: 'Kur’an kursuna kayıt',
+    buHafta: 'Bu hafta camide',
+    duyurular: 'Duyurular', tumu: 'Tümü',
+    takvim: 'Takvim',
+    etkinlikBos: 'Yaklaşan etkinlik bulunmuyor.',
+    hizmetler: 'Size nasıl yardımcı olabiliriz?',
+    hizmetIhtida: 'İhtida (Kelime-i Şehadet)', ihtidaAlt: 'Müslüman olmak isteyenler için rehberlik ve belge işlemleri.',
+    hizmetCenaze: 'Cenaze', cenazeAlt: 'Belçika Diyanet Vakfı cenaze fonu ve defin işlemleri.',
+    hizmetKonsolosluk: 'Konsolosluk', konsoloslukAlt: 'Vatandaşlarımız için temel konsolosluk işlemleri rehberliği.',
+    hizmetUyelik: 'Dernek Üyeliği', uyelikAlt: 'Camimizi yaşatmak ve faaliyetlere destek olmak için.',
+    ziyaret: 'Kapımız herkese açık',
+    ziyaretGovde: 'Marche-en-Famenne Ulu Camii, 1979’da kurulan derneğimizin çatısı altında 1986’dan beri bölgemizdeki Müslümanlara ibadet, eğitim ve dayanışma hizmeti sunmaktadır. Valon Bölgesi tarafından tanınmış bir ibadet topluluğu olarak Belçika Diyanet Vakfı’na bağlıyız; kapımız her milletten komşumuza açıktır.',
+    hakkimizda: 'Hakkımızda', ilkZiyaret: 'İlk ziyaret rehberi', iletisim: 'İletişim', yolTarifi: 'Yol tarifi',
+    kadinGenclik: 'Kadın ve gençlik kolları programları için', irsat: 'İrşat Takvimi',
+    fotoAlt: 'Ulu Camii iç mekânı', egitimAlt: 'Çalışma masası, defter ve kitap',
+    fallbackNotu: ''
+  },
+  en: {
+    haftalikYasamUst: 'Learning and growing together',
+    haftalikYasamAlt: 'Our weekend Qur’an classes are taught in Turkish and French. On Fridays, the Turkish sermon is followed by a French sermon. You can also speak with our imam in French.',
+    veliPortali: 'Education & Parent Portal',
+    kursBilgisi: 'Qur’an Course Registration',
+    buHafta: 'This week at the mosque',
+    duyurular: 'Announcements', tumu: 'All',
+    takvim: 'Calendar',
+    etkinlikBos: 'No upcoming events.',
+    hizmetler: 'How can we help you?',
+    hizmetIhtida: 'Conversion to Islam', ihtidaAlt: 'Guidance and certification for those wishing to become Muslim.',
+    hizmetCenaze: 'Funeral', cenazeAlt: 'Diyanet Foundation funeral fund and burial procedures.',
+    hizmetKonsolosluk: 'Consulate', konsoloslukAlt: 'Guidance for basic consular procedures for our citizens.',
+    hizmetUyelik: 'Membership', uyelikAlt: 'To support our mosque and its activities.',
+    ziyaret: 'Our door is open to everyone',
+    ziyaretGovde: 'Marche-en-Famenne Ulu Mosque, carried by our association founded in 1979, has served the Muslims of our region with worship, education and mutual support since 1986. Recognised by the Walloon Region as a place of worship and affiliated with the Diyanet Foundation of Belgium, our door is open to neighbours of every background.',
+    hakkimizda: 'About us', ilkZiyaret: 'Guide for your first visit', iletisim: 'Contact', yolTarifi: 'Directions',
+    kadinGenclik: 'For women and youth branch programs:', irsat: 'Guidance Calendar',
+    fotoAlt: 'Interior of the mosque', egitimAlt: 'Study desk, notebook and book',
+    fallbackNotu: 'Announcement and event titles below are published in Turkish and French; only the dates are shown in English. For a summary in English, write to info@ulucamii.be.'
+  },
+  fr: {
+    haftalikYasamUst: 'Apprendre et grandir ensemble',
+    haftalikYasamAlt: 'Nos cours de Coran du week-end sont proposés en turc et en français. Le vendredi, le sermon en turc est suivi d’un sermon en français. Vous pouvez également échanger en français avec notre imam.',
+    veliPortali: 'Portail Éducation & Parents',
+    kursBilgisi: 'Inscription Cours de Coran',
+    buHafta: 'Cette semaine à la mosquée',
+    duyurular: 'Annonces', tumu: 'Toutes',
+    takvim: 'Calendrier',
+    etkinlikBos: 'Aucun événement à venir.',
+    hizmetler: 'Comment pouvons-nous vous aider ?',
+    hizmetIhtida: 'Conversion à l’Islam', ihtidaAlt: 'Accompagnement et attestation pour ceux qui souhaitent devenir musulmans.',
+    hizmetCenaze: 'Funérailles', cenazeAlt: 'Fonds funéraire de la Fondation Diyanet et démarches.',
+    hizmetKonsolosluk: 'Consulat', konsoloslukAlt: 'Accompagnement pour les démarches consulaires de base pour nos concitoyens.',
+    hizmetUyelik: 'Adhésion', uyelikAlt: 'Pour soutenir notre mosquée et ses activités.',
+    ziyaret: 'Notre porte est ouverte à tous',
+    ziyaretGovde: 'La mosquée Ulu Camii de Marche-en-Famenne, portée par notre association fondée en 1979, accueille depuis 1986 les musulmans de la région pour le culte, l’enseignement et l’entraide. Communauté cultuelle reconnue par la Région wallonne et rattachée à la Fondation Diyanet de Belgique, notre porte est ouverte à tous nos voisins, de toutes origines.',
+    hakkimizda: 'À propos', ilkZiyaret: 'Guide pour la première visite', iletisim: 'Contact', yolTarifi: 'Itinéraire',
+    kadinGenclik: 'Pour les programmes des femmes et des jeunes :', irsat: 'Calendrier d’Orientation',
+    fotoAlt: 'Intérieur de la mosquée', egitimAlt: 'Bureau d’étude, cahier et livre',
+    fallbackNotu: ''
+  },
+  nl: {
+    haftalikYasamUst: 'Samen leren, samen groeien',
+    haftalikYasamAlt: 'Onze Koranlessen in het weekend worden in het Turks en het Frans gegeven. Op vrijdag volgt na de Turkse preek een Franse preek. U kunt ook in het Frans terecht bij onze imam.',
+    veliPortali: 'Ouderportaal',
+    kursBilgisi: 'Inschrijving Koranschool',
+    buHafta: 'Deze week in de moskee',
+    duyurular: 'Berichten', tumu: 'Alle',
+    takvim: 'Kalender',
+    etkinlikBos: 'Geen komende activiteiten.',
+    hizmetler: 'Hoe kunnen wij u helpen?',
+    hizmetIhtida: 'Moslim worden', ihtidaAlt: 'Begeleiding en attest voor wie moslim wil worden.',
+    hizmetCenaze: 'Uitvaart', cenazeAlt: 'Uitvaartfonds van de Belgische Diyanetstichting en de formaliteiten.',
+    hizmetKonsolosluk: 'Consulaat', konsoloslukAlt: 'Begeleiding bij de basisformaliteiten voor onze landgenoten.',
+    hizmetUyelik: 'Lidmaatschap', uyelikAlt: 'Om onze moskee en haar werking te steunen.',
+    ziyaret: 'Onze deur staat voor iedereen open',
+    ziyaretGovde: 'De Ulu Camii van Marche-en-Famenne, gedragen door onze vereniging die in 1979 werd opgericht, staat sinds 1986 ten dienste van de moslims in onze regio voor gebed, onderwijs en onderlinge steun. Als door het Waals Gewest erkende geloofsgemeenschap zijn wij verbonden aan de Belgische Diyanetstichting; onze deur staat open voor buren van elke herkomst.',
+    hakkimizda: 'Over ons', ilkZiyaret: 'Gids voor uw eerste bezoek', iletisim: 'Contact', yolTarifi: 'Route',
+    kadinGenclik: 'Voor de programma’s van de vrouwen- en jongerenwerking:', irsat: 'Vormingskalender',
+    fotoAlt: 'Interieur van de moskee', egitimAlt: 'Studeertafel, schrift en boek',
+    fallbackNotu: 'De titels van de berichten en activiteiten hieronder worden in het Turks en het Frans gepubliceerd; alleen de datums verschijnen in het Nederlands. Voor een samenvatting in het Nederlands schrijft u naar info@ulucamii.be.'
+  },
+  de: {
+    haftalikYasamUst: 'Gemeinsam lernen, gemeinsam wachsen',
+    haftalikYasamAlt: 'Unser Koranunterricht am Wochenende findet auf Türkisch und Französisch statt. Freitags folgt auf die türkische Predigt eine französische Predigt. Mit unserem Imam können Sie auch auf Französisch sprechen.',
+    veliPortali: 'Elternportal',
+    kursBilgisi: 'Anmeldung Koranschule',
+    buHafta: 'Diese Woche in der Moschee',
+    duyurular: 'Mitteilungen', tumu: 'Alle',
+    takvim: 'Kalender',
+    etkinlikBos: 'Keine anstehenden Veranstaltungen.',
+    hizmetler: 'Wie können wir Ihnen helfen?',
+    hizmetIhtida: 'Muslim werden', ihtidaAlt: 'Begleitung und Bescheinigung für alle, die Muslim werden möchten.',
+    hizmetCenaze: 'Bestattung', cenazeAlt: 'Bestattungsfonds der Belgischen Diyanet-Stiftung und alle Formalitäten.',
+    hizmetKonsolosluk: 'Konsulat', konsoloslukAlt: 'Begleitung bei den grundlegenden konsularischen Angelegenheiten.',
+    hizmetUyelik: 'Mitgliedschaft', uyelikAlt: 'Um unsere Moschee und ihre Arbeit zu unterstützen.',
+    ziyaret: 'Unsere Tür steht allen offen',
+    ziyaretGovde: 'Die Ulu Camii in Marche-en-Famenne, getragen von unserem 1979 gegründeten Verein, dient seit 1986 den Muslimen unserer Region für Gebet, Unterricht und gegenseitige Hilfe. Als von der Wallonischen Region anerkannte Kultusgemeinde sind wir der Belgischen Diyanet-Stiftung angeschlossen; unsere Tür steht Nachbarn jeder Herkunft offen.',
+    hakkimizda: 'Über uns', ilkZiyaret: 'Leitfaden für Ihren ersten Besuch', iletisim: 'Kontakt', yolTarifi: 'Anfahrt',
+    kadinGenclik: 'Für die Programme der Frauen- und Jugendarbeit:', irsat: 'Orientierungskalender',
+    fotoAlt: 'Innenraum der Moschee', egitimAlt: 'Schreibtisch, Heft und Buch',
+    fallbackNotu: 'Die Titel der Mitteilungen und Veranstaltungen unten werden auf Türkisch und Französisch veröffentlicht; nur die Daten erscheinen auf Deutsch. Für eine Zusammenfassung auf Deutsch schreiben Sie an info@ulucamii.be.'
+  },
+}[dil];
 
 const adresStr = `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}, ${site.adres.ulke}`;
 const kursKayit = kayitBaglantisi(site.kursKayitLinki || '/kayit/', dil);
@@ -112,7 +162,7 @@ const haritaUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.gps
           <h2>{m.duyurular}</h2>
           <a href={yol(dil, 'duyurular')} class="ana-akis-tumu-link" aria-label={`${m.duyurular}: ${m.tumu}`}>{m.tumu} <Ikon ad="ok" class="h-4 w-4" /></a>
         </div>
-        {dil === 'en' && <p class="ana-akis-p text-sm mb-6 bg-(--zemin-2) p-3 rounded border border-(--cizgi)">{m.fallbackNotu}</p>}
+        {m.fallbackNotu && <p class="ana-akis-p text-sm mb-6 bg-(--zemin-2) p-3 rounded border border-(--cizgi)">{m.fallbackNotu}</p>}
         <ul class="ana-akis-liste">
           {sonDuyurular.map((d) => {
             const kapakYolu = d.data.kapakKucuk ?? kucukSurum(d.data.kapak) ?? d.data.kapak;
@@ -128,8 +178,8 @@ const haritaUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.gps
                   )}
                   <div>
                     <span class="ana-akis-kart-tarih"><time datetime={d.data.tarih.toISOString()}>{tarihBicimle(d.data.tarih, dil)}</time></span>
-                    <h3 class="ana-akis-kart-baslik" lang={dil === 'en' ? 'fr' : undefined}>{d.data.baslik}</h3>
-                    {d.data.ozet && <p class="ana-akis-kart-ozet" lang={dil === 'en' ? 'fr' : undefined}>{d.data.ozet}</p>}
+                    <h3 class="ana-akis-kart-baslik" lang={icDil !== dil ? icDil : undefined}>{d.data.baslik}</h3>
+                    {d.data.ozet && <p class="ana-akis-kart-ozet" lang={icDil !== dil ? icDil : undefined}>{d.data.ozet}</p>}
                   </div>
                 </a>
               </li>
@@ -161,8 +211,8 @@ const haritaUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.gps
                     )}
                     <div>
                       <span class="ana-akis-kart-tarih"><time datetime={e.data.baslangic.toISOString()}>{tarihStr}</time>{e.data.saat && <span> · {e.data.saat}</span>}</span>
-                      <h3 class="ana-akis-kart-baslik" lang={dil === 'en' ? 'fr' : undefined}>{e.data.baslik}</h3>
-                      {e.data.ozet && <p class="ana-akis-kart-ozet" lang={dil === 'en' ? 'fr' : undefined}>{e.data.ozet}</p>}
+                      <h3 class="ana-akis-kart-baslik" lang={icDil !== dil ? icDil : undefined}>{e.data.baslik}</h3>
+                      {e.data.ozet && <p class="ana-akis-kart-ozet" lang={icDil !== dil ? icDil : undefined}>{e.data.ozet}</p>}
                     </div>
                   </a>
                 </li>

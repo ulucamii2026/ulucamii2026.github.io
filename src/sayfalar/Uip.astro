@@ -14,7 +14,7 @@ import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import VideoCephe from '../components/VideoCephe.astro';
 import Ikon from '../components/Ikon.astro';
-import { yol } from '../i18n/utils';
+import { yol, yerelKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { uipMetin } from '../i18n/uip';
 import { siteAyarlari, bugunBrussels } from '../lib/icerik';
@@ -24,19 +24,29 @@ const { dil } = Astro.props;
 const m = uipMetin[dil];
 const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
-const yerel = dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE';
-const tarihUzun = (iso: string) => new Intl.DateTimeFormat(yerel, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso + 'T12:00:00'));
+const tarihUzun = (iso: string) => new Intl.DateTimeFormat(yerelKodu[dil], { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso + 'T12:00:00'));
 const bugun = bugunBrussels();
 const durum: 'yakinda' | 'acik' | 'kapandi' = bugun < UIP_BASVURU_BASLANGIC ? 'yakinda' : bugun <= UIP_BASVURU_SON ? 'acik' : 'kapandi';
 const doldur = (s: string) => s.replace(/\{\{donem\}\}/g, String(UIP_DONEM)).replace(/\{\{son\}\}/g, tarihUzun(UIP_BASVURU_SON)).replace(/\{\{baslangic\}\}/g, tarihUzun(UIP_BASVURU_BASLANGIC));
 const durumMetni = doldur(m.durum[durum]);
 const BASVURU = 'https://dibbys.diyanet.gov.tr/IKYS/Sinav/KurumDisi/DisIliskiler/UIPBasvuru.aspx';
 const KILAVUZ = '/belgeler/uip/uip-tanitim-ve-basvuru-kilavuzu-2026.pdf';
-const OG = `/media/uip/uip-og-${dil}.webp`;
+/* Yazılı görseller (paylaşım kartı, film kapağı, burs afişi) yalnız tr/fr/en için üretildi; Flemenkçe ve Almanca sayfa İngilizce
+   görseli kullanır (kırık görsel yerine). nl/de görselleri üretilince bu yedek kendiliğinden devreden çıkar: listeye eklemek yeter. */
+const GORSEL_DILLERI: readonly string[] = ['tr', 'fr', 'en'];
+const gorselDili = GORSEL_DILLERI.includes(dil) ? dil : 'en';
+const OG = `/media/uip/uip-og-${gorselDili}.webp`;
 const BDV_TEL = '+32 2 218 57 55', BDV_EPOSTA = 'info@diyanet.be', MUSAVIRLIK_TEL = '+32 2 506 11 73';
 const kanonikUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const waMetin = `${m.baslik} — ${kanonikUrl}`;
-const waEtiket = dil === 'tr' ? "WhatsApp'ta paylaş" : dil === 'en' ? 'Share on WhatsApp' : 'Partager sur WhatsApp';
+const waEtiketleri: Record<Dil, string> = {
+  tr: "WhatsApp'ta paylaş",
+  fr: 'Partager sur WhatsApp',
+  en: 'Share on WhatsApp',
+  nl: 'Delen via WhatsApp',
+  de: 'Auf WhatsApp teilen',
+};
+const waEtiket = waEtiketleri[dil];
 const kariyerIkon = ['cami', 'kurs', 'dunya', 'belge', 'mezuniyet', 'kurs'] as const;
 /** Tanıtım filmi — Belçika Diyanet Vakfı'nın ana sayfasındaki dosya (1080p, ~560 MB, moov sonda; sunucu Range destekliyor) */
 const FILM = 'https://www.diyanet.be/portals/0/uip/sinevizyon.mov';
@@ -50,9 +60,23 @@ const sssJsonLd = {
   '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: m.sss.liste.map((x) => ({ '@type': 'Question', name: x.s, acceptedAnswer: { '@type': 'Answer', text: x.c } })),
 };
+const kursSayfasiEtiket: Record<Dil, string> = {
+  tr: 'Kur’an kursu sayfası',
+  fr: 'Page de l’école coranique',
+  en: 'Qur’an school page',
+  nl: 'Pagina van de Koranschool',
+  de: 'Seite der Koranschule',
+};
+const diyanetHizmetleriEtiket: Record<Dil, string> = {
+  tr: 'Diyanet hizmetleri',
+  fr: 'Services Diyanet',
+  en: 'Diyanet services',
+  nl: 'Diyanet-diensten',
+  de: 'Diyanet-Dienste',
+};
 const afisler = [
   { href: '/media/afisler/bdv-2026-uip-basvurulari.webp', kucuk: '/media/afisler/bdv-2026-uip-basvurulari-thumb.webp', alt: m.ekler.afisUip, w: 480, h: 256 },
-  { href: `/media/uip/diyanet-burslari-2026-${dil}.webp`, kucuk: `/media/uip/diyanet-burslari-2026-${dil}-thumb.webp`, alt: m.ekler.afisBurs, w: 448, h: 640 },
+  { href: `/media/uip/diyanet-burslari-2026-${gorselDili}.webp`, kucuk: `/media/uip/diyanet-burslari-2026-${gorselDili}-thumb.webp`, alt: m.ekler.afisBurs, w: 448, h: 640 },
 ];
 ---
 <Base baslik={m.baslik} dil={dil} aciklama={m.metaAciklama} kapak={OG} kapakAlt={m.baslik} ekJsonLd={[sssJsonLd]}>
@@ -118,7 +142,7 @@ const afisler = [
       {/* Kapak: filmin kütüphane karesi üstüne tasarlanmış üç dilli kapak (scratchpad uip_kapak.py); başlık kapakta olduğu için kapakYazili */}
       {/* Film diyanet.be'nin sunucusundan (Rıdvan, 3 Eyl 2026: kendi 33 MB'lık 540p kopyamız Pages trafiğimizi tüketmesin);
           .mov (H.264/AAC, Range destekli) Chromium/Firefox/WebKit'te doğrulandı. Kapak bizde kalır. */}
-      <VideoCephe src={FILM} baslik={`${m.baslik} · ${m.video.baslik}`} poster={`/media/uip/video-kapak-${dil}.webp`} dil={dil} altyazi={m.video.kaynak} not={m.video.sunucu} kapakYazili />
+      <VideoCephe src={FILM} baslik={`${m.baslik} · ${m.video.baslik}`} poster={`/media/uip/video-kapak-${gorselDili}.webp`} dil={dil} altyazi={m.video.kaynak} not={m.video.sunucu} kapakYazili />
     </div>
     <h3 class="mt-8 text-xl">{m.video.digerBaslik}</h3>
     <div class="mt-3 grid gap-5 md:grid-cols-2">
@@ -296,7 +320,7 @@ const afisler = [
         <div class="kart p-4"><dt class="etiket">{m.iletisim.bdv}</dt><dd class="mt-1"><a href={tel(BDV_TEL)} class="mono inline-flex min-h-11 items-center">{BDV_TEL}</a><br /><a href={`mailto:${BDV_EPOSTA}`} class="inline-flex min-h-11 items-center">{BDV_EPOSTA}</a></dd><dd class="mt-1 text-(--metin-2)">{m.iletisim.mesai}</dd></div>
         <div class="kart p-4"><dt class="etiket">{m.iletisim.musavirlik}</dt><dd class="mt-1">{m.belcika.musavirlik.adres}</dd><dd class="mt-1"><a href={tel(MUSAVIRLIK_TEL)} class="mono inline-flex min-h-11 items-center">{MUSAVIRLIK_TEL}</a></dd></div>
       </dl>
-      <p class="mt-6 text-sm"><a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{dil === 'tr' ? 'Kur’an kursu sayfası' : dil === 'fr' ? 'Page de l’école coranique' : 'Qur’an school page'}</a> <a href={yol(dil, 'diyanet')} class="dugme dugme-ikincil">{dil === 'tr' ? 'Diyanet hizmetleri' : dil === 'fr' ? 'Services Diyanet' : 'Diyanet services'}</a></p>
+      <p class="mt-6 text-sm"><a href={yol(dil, 'kurankursu')} class="dugme dugme-ikincil">{kursSayfasiEtiket[dil]}</a> <a href={yol(dil, 'diyanet')} class="dugme dugme-ikincil">{diyanetHizmetleriEtiket[dil]}</a></p>
     </div>
   </section>
 

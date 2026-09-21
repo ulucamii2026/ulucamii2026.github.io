@@ -27,14 +27,15 @@ const seviyePaketi = buildSync({
 }).outputFiles[0].text;
 
 const kaynak = [
-  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v38.gs'),
+  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs'),
   gs('veli-mail-listesi.gs'), gs('seviye-testi-isleri.gs'), seviyePaketi,
 ].join('\n;\n');
 
 const BASLIKLAR = ['Zaman', 'Referans', 'Ad Soyad', 'E-posta', 'Telefon', 'Test dili', 'Ders dili', 'Yaş aralığı', 'Cinsiyet',
   'Müslümanlık süresi', 'Önceki eğitim', 'Hedefler', 'Müsaitlik', 'Biçim', 'Not', "Kur'an düzeyi", 'Tecvid',
   "Kur'an bilgisi", 'İnanç', 'Namaz', 'İbadet', 'Siyer', 'Ahlak', 'Yüzdeler', 'Önerilen program',
-  'Atlananlar', 'Ezberler', 'Beyanlar', 'Cevaplar', 'Süre (dk)', 'Banka sürümü', 'Rıza sürümü', 'Durum', 'Gönderim anahtarı'];
+  'Atlananlar', 'Ezberler', 'Beyanlar', 'Cevaplar', 'Süre (dk)', 'Banka sürümü', 'Rıza sürümü', 'Durum', 'Gönderim anahtarı',
+  'Ülke', 'Şehir', 'En yakın Diyanet camisi', 'Camiyi biliyor', 'Görevliyi tanıyor', 'Ataşelik bilgisi', 'Yerel görevli onayı', 'Ataşelik onayı'];
 
 /* ---------- Sahte Google altyapısı ---------- */
 
@@ -190,8 +191,9 @@ test('seviyeDogrula: her doğrulama kodu ayrı ayrı çıkar; geçerli gövde ge
   const o = ortam();
   const dene = ek => o.post(govdeUret(ek)).hata;
   assert.equal(dene({ sir: 'YANLIS' }), 'yetkisiz');
-  assert.equal(dene({ formSurumu: 2 }), 'form-surumu-gecersiz');
-  assert.equal(dene({ dil: 'de' }), 'dil-gecersiz');
+  assert.equal(dene({ formSurumu: 3 }), 'form-surumu-gecersiz');
+  assert.equal(dene({ dil: 'es' }), 'dil-gecersiz');
+  for (const dil of ['nl', 'de']) assert.equal(ortam().post(govdeUret({ dil })).ok, true, dil + ': site dili kabul edilir');
   assert.equal(dene({ gonderimAnahtari: 'kisa' }), 'anahtar-gecersiz');
   assert.equal(dene({ onay: { riza: true } }), 'onay-yas-eksik');
   assert.equal(dene({ onay: { yas18: true } }), 'onay-riza-eksik');
@@ -268,7 +270,7 @@ test('Alıcılar: tam iki ileti; katılımcı → yanıt imam@, hoca → imam@ y
   // İnceleme için: SEVIYE_EPOSTA_DOKUM=<klasör> verilirse iletiler HTML olarak yazılır (hiçbir şey gönderilmez).
   if (process.env.SEVIYE_EPOSTA_DOKUM) {
     mkdirSync(process.env.SEVIYE_EPOSTA_DOKUM, { recursive: true });
-    for (const dil of ['tr', 'fr', 'en']) {
+    for (const dil of ['tr', 'fr', 'en', 'nl', 'de']) {
       const d = ortam();
       d.post(govdeUret({ dil, gonderimAnahtari: 'anahtar-dokum-' + dil + '-0001' }));
       for (const m of d.gonderilen) {
@@ -550,7 +552,7 @@ test('Panel anahtarı tanımsızken gömülü yer tutucu seviye uçlarını AÇM
 test('Sağlık yanıtı seviye testini ve banka sürümünü bildirir; paket yoksa uç kapalıdır', () => {
   const o = ortam();
   const saglik = o.get({});
-  assert.equal(saglik.surum, 38);
+  assert.equal(saglik.surum, 39);
   assert.equal(saglik.seviyeTesti, true);
   assert.equal(saglik.seviyeBankaSurumu, SORU_BANKASI_SURUMU);
 
@@ -560,7 +562,7 @@ test('Sağlık yanıtı seviye testini ve banka sürümünü bildirir; paket yok
     ContentService: { createTextOutput: t => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } },
     PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v38.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs')].join('\n;\n'), ctx);
   const yanit = JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ tur: 'seviye' }) } }).getContent());
   assert.deepEqual(yanit, { ok: false, hata: 'seviye-hazir-degil' });
   assert.equal(JSON.parse(ctx.doGet({ parameter: {} }).getContent()).seviyeTesti, false);
@@ -575,7 +577,7 @@ test('epostaGonder: yedeksiz:true Brevo düşünce MailApp\'e düşmez; seçenek
     MailApp: { sendEmail: m => gonderilen.push(m) },
     UrlFetchApp: { fetch: () => ({ getResponseCode: () => 500, getContentText: () => 'hata' }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v38.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs')].join('\n;\n'), ctx);
   const rapor = { to: 'imam@ulucamii.be', subject: 'Rapor', body: 'x', kurum: 'cami', yedeksiz: true };
   assert.throws(() => ctx.epostaGonder(rapor), /Brevo HTTP 500/);
   assert.equal(gonderilen.length, 0, 'yedeksiz ileti MailApp\'e düşmez');
@@ -591,7 +593,7 @@ test('epostaGonder: yedeksiz:true Brevo düşünce MailApp\'e düşmez; seçenek
     PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) },
     MailApp: { sendEmail: () => { throw new Error('MailApp cagrilmamaliydi'); } },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v38.gs')].join('\n;\n'), ctx2);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs')].join('\n;\n'), ctx2);
   assert.throws(() => ctx2.epostaGonder({ to: 'imam@ulucamii.be', subject: 'x', body: 'x', kurum: 'cami', yedeksiz: true }), /brevo-anahtari-yok/);
 });
 
@@ -620,4 +622,56 @@ test('20 KiB gövde sınırı UTF-8 bayt sayar: Türkçe karakterli büyük göv
   assert.ok(JSON.stringify(govde).length < 20 * 1024 && Buffer.byteLength(JSON.stringify(govde)) > 20 * 1024);
   assert.equal(o.post(govde).hata, 'cok-buyuk');
   assert.equal(o.post(govdeUret()).ok, true, 'olağan gövde etkilenmez');
+});
+
+/* ---------- Form sürümü 2: «Nereden başvuruyorsunuz?» (v39) ---------- */
+const yerelUret = (ek = {}) => ({ ulke: 'DE', sehir: 'Köln 50667', camiBiliyor: 'evet', yakinCami: 'Köln Merkez Camii', gorevliTaniyor: 'hayir', ateselikBilgisi: 'hayir', ...ek });
+
+test('Yer bilgisi: sürüm 2 doğrulaması, isteğe bağlı paylaşım onayları, defter sütunları ve hoca raporu', () => {
+  const o = ortam();
+  let sira = 0;
+  const dene = ek => o.post(govdeUret({ formSurumu: 2, gonderimAnahtari: 'anahtar-yerel-' + String(++sira).padStart(5, '0'), ...ek })).hata;
+  assert.equal(dene({}), 'yerel-eksik');
+  assert.equal(dene({ yerel: yerelUret({ ulke: 'XX' }) }), 'yerel-ulke-gecersiz');
+  assert.equal(dene({ yerel: yerelUret({ sehir: '  ' }) }), 'yerel-sehir-gecersiz');
+  assert.equal(dene({ yerel: yerelUret({ yakinCami: 'x'.repeat(121) }) }), 'yerel-cami-uzun');
+  assert.equal(dene({ yerel: yerelUret({ gorevliTaniyor: 'belki' }) }), 'yerel-gorevliTaniyor-gecersiz');
+  assert.equal(dene({ yerel: yerelUret(), onay: { yas18: true, riza: true, ateselik: 'true' } }), 'onay-paylasim-gecersiz');
+
+  // Onaysız gönderim geçerlidir (paylaşım onayları testin şartı DEĞİLDİR) ve defterde açıkça «Hayır» yazar.
+  const a = ortam();
+  const ra = a.post(govdeUret({ formSurumu: 2, yerel: yerelUret() }));
+  assert.equal(ra.ok, true, JSON.stringify(ra));
+  const sa = satirNesnesi(a.seviyeSayfa()._satirlar[1]);
+  assert.equal(sa['Ülke'], 'DE');
+  assert.equal(sa['Şehir'], 'Köln 50667');
+  assert.equal(sa['En yakın Diyanet camisi'], 'Köln Merkez Camii');
+  assert.equal(sa['Yerel görevli onayı'], 'Hayır');
+  assert.equal(sa['Ataşelik onayı'], 'Hayır');
+  const hocaA = a.gonderilen.find(m => m.to === 'imam@ulucamii.be');
+  assert.match(hocaA.htmlBody, /Yer ve yerel destek/);
+  assert.match(hocaA.htmlBody, /ONAY VERMEDİ/);
+  assert.match(hocaA.htmlBody, /Onay verilmeyen paylaşım YAPILMAZ/);
+  assert.match(hocaA.htmlBody, /Almanya/);
+  // Katılımcıya giden iletide yer/onay dökümü yoktur (yalnız düzeyler).
+  const katA = a.gonderilen.find(m => m.to === 'deniz@example.test');
+  assert.ok(!/ONAY VER/.test(katA.htmlBody));
+
+  // İki onay da verilirse rapor bunu yazar, uyarı kutusu çıkmaz.
+  const b = ortam();
+  b.post(govdeUret({ formSurumu: 2, yerel: yerelUret(), onay: { yas18: true, riza: true, yerelGorevli: true, ateselik: true } }));
+  const sb = satirNesnesi(b.seviyeSayfa()._satirlar[1]);
+  assert.equal(sb['Yerel görevli onayı'], 'Evet');
+  assert.equal(sb['Ataşelik onayı'], 'Evet');
+  const hocaB = b.gonderilen.find(m => m.to === 'imam@ulucamii.be');
+  assert.ok(!/Onay verilmeyen paylaşım YAPILMAZ/.test(hocaB.htmlBody));
+  assert.match(hocaB.htmlBody, /onayı var/);
+
+  // Sürüm 1 (dağıtım geçişi): yer bilgisi yoktur, sütunlar boş kalır, raporda bölüm çıkmaz.
+  const c = ortam();
+  c.post(govdeUret());
+  const sc = satirNesnesi(c.seviyeSayfa()._satirlar[1]);
+  assert.equal(sc['Ülke'], '');
+  assert.equal(sc['Yerel görevli onayı'], '');
+  assert.ok(!/Yer ve yerel destek/.test(c.gonderilen.find(m => m.to === 'imam@ulucamii.be').htmlBody));
 });

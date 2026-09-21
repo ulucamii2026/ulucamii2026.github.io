@@ -100,7 +100,7 @@ const ETIKET = {
   cinsiyet: { kiz: 'Kız', erkek: 'Erkek', kadin: 'Kadın', kadın: 'Kadın', male: 'Erkek', female: 'Kız' },
   yakinlik: { anne: 'Anne', baba: 'Baba', vasi: 'Vasi', father: 'Baba', mother: 'Anne', guardian: 'Vasi' },
   evet: { evet: 'Evet', hayir: 'Hayır', hayır: 'Hayır', yes: 'Evet', no: 'Hayır', true: 'Evet', false: 'Hayır' },
-  dil: { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce', ar: 'Arapça' },
+  dil: { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce', nl: 'Flemenkçe', de: 'Almanca', ar: 'Arapça' },
   medeni: { bekar: 'Bekâr', evli: 'Evli', dul: 'Dul', bosanmis: 'Boşanmış' },
   kurs: { yeni: 'Yeni kayıt', devam: 'Devam eden öğrenci' },
   // 13 Eyl 2026: Defterdeki sabit kimlik durumları açık etiketle gösterilir.

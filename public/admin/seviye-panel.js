@@ -30,7 +30,7 @@ const sut = (basliklar, ...adaylar) => {
   return -1;
 };
 
-const DILLER = { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce', ar: 'Arapça' };
+const DILLER = { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce', nl: 'Flemenkçe', de: 'Almanca', ar: 'Arapça' };
 const dilAdi = (kod) => DILLER[String(kod || '').trim().toLocaleLowerCase('tr')] || String(kod || '').trim();
 
 /* Arap harfi taşıyan şık metni `lang="ar" dir="rtl"` ile yazılır (Arapça şıklı okuma maddeleri). */
@@ -274,6 +274,19 @@ export function seviyePanelKur({ gasIstek, gasPost, kacir, yenile, tarihBicim, t
       parcalar.push(bolum('Katılımcı bilgileri',
         `<table class="sv-tablo sv-profil"><tbody>${r.profil
           .map((x) => `<tr><th scope="row">${kac(x.etiket)}</th><td>${kac(x.deger) || '—'}</td></tr>`).join('')}</tbody></table>`));
+    }
+
+    /* 2b) Yer ve yerel destek (form sürümü 2) — eğitim katılımcıya en yakın yerde planlanabilsin.
+       Paylaşım onayı yoksa uyarı kutusu çıkar: onaysız hiçbir bilgi başka görevliye / Müşavirliğe verilmez. */
+    if (r.yerel) {
+      const y = r.yerel;
+      parcalar.push(bolum('Yer ve yerel destek', [
+        liste((y.satirlar || []).map(kac)),
+        '<h4>Paylaşım onayları</h4>',
+        liste((y.onaylar || []).map((x) => `<b>${kac(x)}</b>`)),
+        y.uyari ? `<div class="bilgi-kutu uyari">${kac(y.uyari)}</div>` : '',
+        liste((y.oneriler || []).map(kac)),
+      ].join('')));
     }
 
     /* 3) Alan düzeyleri — metin + basit çubuk (çubuk süs, ekran okuyucuya metin yeter). */

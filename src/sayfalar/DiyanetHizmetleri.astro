@@ -22,7 +22,7 @@
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Ikon from '../components/Ikon.astro';
-import { ceviri, yol } from '../i18n/utils';
+import { ceviri, yol, tarihBicimle } from '../i18n/utils';
 import { siteAyarlari } from '../lib/icerik';
 import { HAC_SON_GUN, HAC_KESIN_SON_GUN, HAC_DUYURU_SLUG, UMRE_SON_GUN, UMRE_DUYURU_SLUG } from '../lib/etkinlik-tarihleri';
 import type { Dil } from '../i18n/ui';
@@ -39,9 +39,10 @@ const umreAcik = Date.now() <= UMRE_SON_GUN.getTime();
 const hacAcik = Date.now() <= HAC_SON_GUN.getTime();
 /* Ön kayıt kapandıktan sonra kesin kayıt dönemi: ön kayıt yapanlar e-postalarını takip etsin (30 Ekim'e kadar). */
 const hacKesin = !hacAcik && Date.now() <= HAC_KESIN_SON_GUN.getTime();
-const hacSonTarih = { tr: '30 Ekim 2026', fr: '30 octobre 2026', en: '30 October 2026' }[dil];
+const hacSonTarih = tarihBicimle(HAC_SON_GUN, dil);
 
-const m = dil === 'tr' ? {
+const M = {
+  tr: {
   etiket: 'Belçika Diyanet Vakfı',
   altBaslik: 'Camimiz, Belçika Diyanet Vakfı (BDV) çatısı altında hizmet veriyor. Hac, umre, cenaze, kurban, zekât-fitre, eğitim, hukuk danışmanlığı ve dinî takvim hizmetlerine buradan ulaşabilirsiniz.',
   oneCikanEtiket: 'Başvuru sürüyor',
@@ -54,6 +55,7 @@ const m = dil === 'tr' ? {
   kurumsal: 'Belçika Diyanet Vakfı, 3 Eylül 1982 tarihli Belçika Kraliyet Kararnamesi ile onaylanmış bir “Uluslararası Birlik”tir. Bugün kendisine bağlı 73 cami, 1 araştırma merkezi, 1 yatılı-gündüzlü eğitim enstitüsü ve yüzden fazla derneğiyle; aile bazında kayıtlı 38.000 üyesi olan ve yaklaşık 160.000 kişiye hizmet veren Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu ile Belçika’da yaşayan Müslüman Türk toplumuna hizmet vermeye devam ediyor.',
   iletisimBaslik: 'BDV Genel Merkezi',
   cami: 'Camimizin iletişim sayfası',
+  musavirLink: 'Müşavirimiz Salih GÖR’ü tanıyın', yayinLink: 'Dergi aboneliği ve ücretsiz yayınlar',
   hac: {
     baslik: '2027 Hac Ön Kaydı',
     ozetAcik: 'Ön kayıt için son gün 30 Ekim 2026. Kayıt Belçika Diyanet Vakfı’nın hac organizasyonu üzerinden yapılır; kontenjan sınırlı olduğu için kesin kayıt hakkı ödeme sırasına göre verilir. Ön kayıt yapanlara kesin kayıt e-postası 7 Eylül’den itibaren gönderiliyor.',
@@ -98,7 +100,8 @@ const m = dil === 'tr' ? {
       ],
     },
   ] as Grup[],
-} : dil === 'en' ? {
+  },
+  en: {
   etiket: 'Diyanet Foundation of Belgium',
   altBaslik: 'Our mosque operates under the umbrella of the Diyanet Foundation of Belgium (BDV). Services related to hajj, omra, funerals, sacrifice, zakât-fitre, education, legal counselling and the religious calendar can all be reached here.',
   oneCikanEtiket: 'Applications open',
@@ -111,6 +114,7 @@ const m = dil === 'tr' ? {
   kurumsal: 'The Diyanet Foundation of Belgium is an "international union" approved by Belgian royal decree of 3 September 1982. It now brings together 73 mosques, a research centre, a boarding-and-day education institute, and more than a hundred associations; through its Funeral, Mutual Aid and Solidarity Fund, with around 38,000 registered member families serving nearly 160,000 people, it continues to serve the Muslim Turkish community living in Belgium.',
   iletisimBaslik: 'BDV Head Office',
   cami: 'Our mosque’s contact page',
+  musavirLink: 'Meet Counsellor Salih GÖR', yayinLink: 'Subscriptions and free publications',
   hac: {
     baslik: '2027 Hajj Pre-registration',
     ozetAcik: 'Pre-registration closes on 30 October 2026. Registration is handled through the hajj organisation of the Diyanet Foundation of Belgium; places are limited, so the right to final registration is granted in order of payment. Those already pre-registered receive the final-registration e-mail from 7 September.',
@@ -155,7 +159,8 @@ const m = dil === 'tr' ? {
       ],
     },
   ] as Grup[],
-} : {
+  },
+  fr: {
   etiket: 'Fondation Diyanet de Belgique',
   altBaslik: 'Notre mosquée est rattachée à la Fondation Diyanet de Belgique (BDV). Retrouvez ici les services liés au hajj, à l’omra, aux funérailles, au sacrifice, à la zakât-fitre, à l’éducation, au conseil juridique et au calendrier religieux.',
   oneCikanEtiket: 'Inscriptions ouvertes',
@@ -168,6 +173,7 @@ const m = dil === 'tr' ? {
   kurumsal: 'La Fondation Diyanet de Belgique est une « union internationale » agréée par arrêté royal belge du 3 septembre 1982. Elle regroupe aujourd’hui 73 mosquées, un centre de recherche, un institut d’enseignement avec internat, et plus de cent associations ; avec son Fonds funéraire, d’entraide et de solidarité comptant environ 38 000 familles membres et servant près de 160 000 personnes, elle continue de servir la communauté musulmane turque de Belgique.',
   iletisimBaslik: 'Siège de la BDV',
   cami: 'La page de contact de notre mosquée',
+  musavirLink: 'Découvrir le conseiller Salih GÖR', yayinLink: 'Abonnement et publications gratuites',
   hac: {
     baslik: 'Préinscription au Hajj 2027',
     ozetAcik: 'Les préinscriptions se clôturent le 30 octobre 2026. L’inscription se fait via l’organisation du hajj de la Fondation Diyanet de Belgique ; les places étant limitées, le droit à l’inscription définitive est accordé selon l’ordre des paiements. Les préinscrits reçoivent l’e-mail d’inscription définitive à partir du 7 septembre.',
@@ -212,7 +218,127 @@ const m = dil === 'tr' ? {
       ],
     },
   ] as Grup[],
-};
+  },
+  nl: {
+  etiket: 'Belgische Diyanetstichting',
+  altBaslik: 'Onze moskee valt onder de koepel van de Belgische Diyanetstichting (BDV). Diensten voor hadj, omra, uitvaart, offer, zakat-fitre, onderwijs, juridisch advies en de religieuze kalender vindt u hier.',
+  oneCikanEtiket: 'Inschrijvingen lopen',
+  oneCikanKapaliEtiket: 'Inschrijvingen gesloten',
+  sonTarihEtiket: 'Uiterste datum',
+  kesinKayitEtiket: 'Definitieve inschrijving',
+  ucretEtiket: 'Kosten voorinschrijving',
+  disKaynak: 'opent op diyanet.be',
+  kurumsalBaslik: 'Over de Belgische Diyanetstichting',
+  kurumsal: 'De Belgische Diyanetstichting is een “internationale unie” erkend bij Belgisch koninklijk besluit van 3 september 1982. Vandaag brengt zij 73 moskeeën, een onderzoekscentrum, een internaats- en dagschoolinstituut en meer dan honderd verenigingen samen; met haar Uitvaart-, Onderlinge Hulp- en Solidariteitsfonds, waarbij ongeveer 38.000 gezinnen zijn aangesloten en dat bijna 160.000 mensen dient, blijft zij de Turks-islamitische gemeenschap in België dienen.',
+  iletisimBaslik: 'Hoofdzetel van de BDV',
+  cami: 'Contactpagina van onze moskee',
+  musavirLink: 'Maak kennis met raadgever Salih GÖR', yayinLink: 'Abonnement en gratis publicaties',
+  hac: {
+    baslik: 'Voorinschrijving Hadj 2027',
+    ozetAcik: 'De voorinschrijving sluit op 30 oktober 2026. De inschrijving verloopt via de hadjorganisatie van de Belgische Diyanetstichting; het aantal plaatsen is beperkt, dus het recht op definitieve inschrijving wordt toegekend in volgorde van betaling. Wie al voorinschreef, ontvangt vanaf 7 september de e-mail voor de definitieve inschrijving.',
+    ozetKesin: 'Voorinschrijving en definitieve inschrijving sluiten beide op 30 oktober 2026. Het aantal plaatsen is beperkt. Gebruik het officiële formulier voor uw voorinschrijving en volg de berichten van de Stichting voor de definitieve inschrijving.',
+    ozetKapali: 'De voorinschrijvingsperiode voor de hadj 2027 is afgelopen. Zodra een nieuwe periode wordt aangekondigd, kunt u informatie krijgen bij onze moskee en bij de Belgische Diyanetstichting.',
+    ucret: '2.000 € (per persoon)',
+    kesinKayit: '7 september – 30 oktober 2026 (per e-mail)',
+    eylem: 'Voorinschrijvingsformulier',
+    ayrinti: 'Voorwaarden en vereiste documenten',
+  },
+  umre: {
+    baslik: 'Omrareizen',
+    ozetAcik: 'Omra van december met bezoek aan Taïf: 20 december 2026 – 1 januari 2027, 13 dagen en 12 nachten, verblijf op wandelafstand. Vanaf 2.290 € per persoon; inschrijving sluit op 20 november 2026.',
+    ozetKapali: 'De Belgische Diyanetstichting organiseert het hele jaar door omrareizen; de actuele reiskalender en voorwaarden staan op de website van de Stichting.',
+    eylem: 'Reiskalender',
+    ayrinti: 'Programma, tarieven en documenten',
+  },
+  gruplar: [
+    {
+      baslik: 'Fondsen en onderlinge hulp',
+      kartlar: [
+        { ikon: 'cenaze', baslik: 'Uitvaart-, Onderlinge Hulp- en Solidariteitsfonds', ozet: 'Elk jaar wordt in de eerste week van januari een jaarlijkse lidgeldbrief naar de leden gestuurd; leden die deze brief niet vóór 25 januari hebben ontvangen, moeten het fonds daarvan op de hoogte brengen.', href: yol(dil, 'cenaze'), eylem: 'Maak kennis met het fonds' },
+        { ikon: 'kurban', baslik: 'Offer bij volmacht (Kurban)', ozet: 'U kunt uw offer bij volmacht laten uitvoeren via de coördinatie van de Belgische Diyanetstichting of via de eigen organisatie van onze moskee. Het bedrag en de uiterste inschrijvingsdatum worden elk jaar bekendgemaakt.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', eylem: 'Donatiepagina' },
+        { ikon: 'bagis', baslik: 'Zakat- en Fitrefonds', ozet: 'Het minimumbedrag voor de fitre is 10 €. U kunt doneren aan het BDV Zakat-Fitrefonds (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181) door het type gift in de mededeling te vermelden.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', eylem: 'Fondsinformatie', disLink: true },
+        { ikon: 'bagis', baslik: 'Online donatieportaal (BDV)', ozet: 'Via het officiële online donatiesysteem van de Belgische Diyanetstichting kunt u veilig met Bancontact of kredietkaart uw fitre-, zakat-, offer- en hulpgiften overmaken.', href: 'https://bagis.diyanet.be', eylem: 'bagis.diyanet.be ↗', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Onderwijs en advies',
+      kartlar: [
+        { ikon: 'kurs', baslik: 'Internationaal theologieprogramma (UİP)', ozet: 'Een door Diyanet gefinancierde theologieopleiding in Turkije voor jongeren die hun middelbare school in België hebben afgerond: voorwaarden, tijdlijn, aanvraagstappen, documenten en de steun van onze moskee.', href: yol(dil, 'uip'), eylem: 'Ontdek het programma' },
+        { ikon: 'kurs', baslik: 'Onderwijsdiensten en UİP-beurs', ozet: 'Naast koran-, godsdienst-, taal- en computerlessen wordt via het Fitre-Zakatfonds ook een eenmalige onderwijsbeurs toegekend aan UİP- en andere studenten.', href: 'https://www.diyanet.be/Burs', eylem: 'Beursvoorwaarden', disLink: true },
+        { ikon: 'hukuk', baslik: 'Juridisch advies', ozet: 'Voor juridische kwesties waarmee u in België te maken kunt krijgen, kunt u gebruikmaken van de juridische adviesdienst van de Belgische Diyanetstichting.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', eylem: 'Naar het advies', disLink: true },
+        { ikon: 'kurs', baslik: 'Diyanet-bibliotheek', ozet: 'Gratis e-boeken van het Presidium voor Religieuze Zaken: introductiebrochures, een gebedsgids, boekjes met veertig hadith, koranvertalingen, kinderboeken en lesboeken — meer dan vijfhonderd titels in ruim veertig talen.', href: yol(dil, 'kutuphane'), eylem: 'Naar de bibliotheek' },
+      ],
+    },
+    {
+      baslik: 'Religieuze kalender',
+      kartlar: [
+        { ikon: 'indir', baslik: 'Gebedskalender (Marche-en-Famenne)', ozet: 'U kunt de jaarlijkse gebedstijdenkalender voor onze regio als PDF downloaden.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', eylem: 'PDF downloaden', disLink: true },
+        { ikon: 'kandil', baslik: 'Gezegende nachten en religieuze dagen', ozet: 'De actuele data van gezegende nachten, feesten en belangrijke religieuze dagen kunt u volgen in de kalender op onze pagina met gebedstijden.', href: yol(dil, 'namaz') + '#dini-gunler', eylem: 'Naar de kalender' },
+      ],
+    },
+  ] as Grup[],
+  },
+  de: {
+  etiket: 'Belgische Diyanet-Stiftung',
+  altBaslik: 'Unsere Moschee gehört zur Belgischen Diyanet-Stiftung (BDV). Dienste rund um Hadsch, Omra, Bestattung, Opfer, Zakat-Fitre, Bildung, Rechtsberatung und den religiösen Kalender finden Sie hier.',
+  oneCikanEtiket: 'Anmeldung läuft',
+  oneCikanKapaliEtiket: 'Anmeldung geschlossen',
+  sonTarihEtiket: 'Anmeldeschluss',
+  kesinKayitEtiket: 'Endgültige Anmeldung',
+  ucretEtiket: 'Gebühr für die Voranmeldung',
+  disKaynak: 'öffnet auf diyanet.be',
+  kurumsalBaslik: 'Über die Belgische Diyanet-Stiftung',
+  kurumsal: 'Die Belgische Diyanet-Stiftung ist eine durch königlichen Erlass vom 3. September 1982 anerkannte „internationale Vereinigung“. Sie vereint heute 73 Moscheen, ein Forschungszentrum, ein Internats- und Tagesbildungsinstitut sowie über hundert Vereine; mit ihrem Bestattungs-, Beistands- und Solidaritätsfonds, dem rund 38.000 Familien als Mitglieder angehören und der fast 160.000 Menschen dient, setzt sie ihren Dienst an der türkisch-muslimischen Gemeinschaft in Belgien fort.',
+  iletisimBaslik: 'Hauptsitz der BDV',
+  cami: 'Kontaktseite unserer Moschee',
+  musavirLink: 'Lernen Sie unseren Botschaftsrat Salih GÖR kennen', yayinLink: 'Abonnement und kostenlose Veröffentlichungen',
+  hac: {
+    baslik: 'Voranmeldung Hadsch 2027',
+    ozetAcik: 'Die Voranmeldung endet am 30. Oktober 2026. Die Anmeldung erfolgt über die Hadsch-Organisation der Belgischen Diyanet-Stiftung; da die Plätze begrenzt sind, wird das Recht auf endgültige Anmeldung in der Reihenfolge der Zahlungen vergeben. Wer sich bereits voranmeldete, erhält ab dem 7. September die E-Mail zur endgültigen Anmeldung.',
+    ozetKesin: 'Voranmeldung und endgültige Anmeldung enden beide am 30. Oktober 2026. Die Plätze sind begrenzt. Nutzen Sie das offizielle Formular für die Voranmeldung und folgen Sie den Hinweisen der Stiftung zur endgültigen Anmeldung.',
+    ozetKapali: 'Die Voranmeldephase für den Hadsch 2027 ist beendet. Sobald ein neuer Zeitraum angekündigt wird, erhalten Sie Informationen bei unserer Moschee und bei der Belgischen Diyanet-Stiftung.',
+    ucret: '2.000 € (pro Person)',
+    kesinKayit: '7. September – 30. Oktober 2026 (per E-Mail)',
+    eylem: 'Voranmeldeformular',
+    ayrinti: 'Bedingungen und erforderliche Unterlagen',
+  },
+  umre: {
+    baslik: 'Omra-Reisen',
+    ozetAcik: 'Dezember-Omra mit Besuch von Taif: 20. Dezember 2026 – 1. Januar 2027, 13 Tage und 12 Nächte, Unterkunft in Gehdistanz. Ab 2.290 € pro Person; Anmeldeschluss ist der 20. November 2026.',
+    ozetKapali: 'Die Belgische Diyanet-Stiftung organisiert das ganze Jahr über Omra-Reisen; der aktuelle Reisekalender und die Teilnahmebedingungen stehen auf der Website der Stiftung.',
+    eylem: 'Reisekalender',
+    ayrinti: 'Programm, Preise und Unterlagen',
+  },
+  gruplar: [
+    {
+      baslik: 'Fonds und gegenseitige Hilfe',
+      kartlar: [
+        { ikon: 'cenaze', baslik: 'Bestattungs-, Beistands- und Solidaritätsfonds', ozet: 'Jedes Jahr wird in der ersten Januarwoche ein jährliches Beitragsschreiben an die Mitglieder verschickt; Mitglieder, die dieses Schreiben nicht bis zum 25. Januar erhalten haben, müssen den Fonds informieren.', href: yol(dil, 'cenaze'), eylem: 'Über den Fonds' },
+        { ikon: 'kurban', baslik: 'Opfer durch Stellvertretung (Kurban)', ozet: 'Sie können Ihr Opfer durch Stellvertretung über die Koordination der Belgischen Diyanet-Stiftung oder über die eigene Organisation unserer Moschee durchführen lassen. Betrag und Anmeldeschluss werden jedes Jahr bekannt gegeben.', href: yol(dil, 'bagis', undefined) + '#vekaletle-kurban', eylem: 'Spendenseite' },
+        { ikon: 'bagis', baslik: 'Zakat- und Fitre-Fonds', ozet: 'Der Mindestbetrag für die Fitre beträgt 10 €. Sie können an den BDV-Zakat-Fitre-Fonds (Ass. Inter. Diyanet de Belgique — BE36 4300 8889 0181) spenden, indem Sie die Art der Spende im Verwendungszweck angeben.', href: 'https://www.diyanet.be/Anamenu/Zekat-Fitre-Fonu', eylem: 'Angaben zum Fonds', disLink: true },
+        { ikon: 'bagis', baslik: 'Online-Spendenportal (BDV)', ozet: 'Über das offizielle Online-Spendensystem der Belgischen Diyanet-Stiftung können Sie Ihre Fitre-, Zakat-, Opfer- und Hilfsspenden sicher per Bancontact oder Kreditkarte überweisen.', href: 'https://bagis.diyanet.be', eylem: 'bagis.diyanet.be ↗', disLink: true },
+      ],
+    },
+    {
+      baslik: 'Bildung und Beratung',
+      kartlar: [
+        { ikon: 'kurs', baslik: 'Internationales Theologieprogramm (UİP)', ozet: 'Ein von Diyanet finanziertes Theologiestudium in der Türkei für Jugendliche, die ihre Sekundarschule in Belgien abgeschlossen haben: Bedingungen, Zeitplan, Bewerbungsschritte, Unterlagen und die Unterstützung unserer Moschee.', href: yol(dil, 'uip'), eylem: 'Programm entdecken' },
+        { ikon: 'kurs', baslik: 'Bildungsdienste und UİP-Stipendium', ozet: 'Neben Koran-, Religions-, Sprach- und Computerkursen wird UİP- und anderen Studierenden aus dem Fitre-Zakat-Fonds ein einmaliges Bildungsstipendium gewährt.', href: 'https://www.diyanet.be/Burs', eylem: 'Stipendienbedingungen', disLink: true },
+        { ikon: 'hukuk', baslik: 'Rechtsberatung', ozet: 'Für rechtliche Fragen, die Ihnen in Belgien begegnen können, können Sie den Rechtsberatungsdienst der Belgischen Diyanet-Stiftung in Anspruch nehmen.', href: 'https://www.diyanet.be/Hizmetlerimiz/Hukuk-Danışmanlığı', eylem: 'Zur Beratung', disLink: true },
+        { ikon: 'kurs', baslik: 'Diyanet-Bibliothek', ozet: 'Kostenlose E-Books des Präsidiums für Religiöse Angelegenheiten: Einführungsbroschüren, ein Gottesdienstleitfaden, Vierzig-Hadith-Hefte, Koranübersetzungen, Kinderbücher und Lehrbücher — mehr als fünfhundert Titel in über vierzig Sprachen.', href: yol(dil, 'kutuphane'), eylem: 'Zur Bibliothek' },
+      ],
+    },
+    {
+      baslik: 'Religiöser Kalender',
+      kartlar: [
+        { ikon: 'indir', baslik: 'Gebetskalender (Marche-en-Famenne)', ozet: 'Sie können den für unsere Region erstellten jährlichen Gebetszeitenkalender als PDF herunterladen.', href: site.imsakiyePdf ?? 'https://www.diyanet.be/imsakiyeler', eylem: 'PDF herunterladen', disLink: true },
+        { ikon: 'kandil', baslik: 'Gesegnete Nächte und religiöse Tage', ozet: 'Die aktuellen Termine gesegneter Nächte, Feste und wichtiger religiöser Tage können Sie im Kalender auf unserer Seite mit den Gebetszeiten verfolgen.', href: yol(dil, 'namaz') + '#dini-gunler', eylem: 'Zum Kalender' },
+      ],
+    },
+  ] as Grup[],
+  },
+} satisfies Record<Dil, unknown>;
+const m = M[dil];
 
 /* Ikon.astro'da bulunmayan dört işaret burada; aynı çizim dili: 24×24, 1.75 kalınlık,
    yuvarlak uç. Önce Hac ile Umre aynı "harita" işaretini, imsakiye ile kandiller aynı
@@ -319,14 +445,14 @@ const ekIkon: Partial<Record<IkonAd, string>> = {
       <section class="kart-kagit p-6 sm:p-8" aria-labelledby="bdv-hakkinda">
         <h2 id="bdv-hakkinda" class="font-serif text-xl leading-tight mb-3">{m.kurumsalBaslik}</h2>
         <p class="text-(--metin-2) max-w-[70ch]">{m.kurumsal}</p>
-        <p class="mt-4"><a class="metin-baglanti" href={yol(dil, 'musavirlik')}>{dil === 'tr' ? 'Müşavirimiz Salih GÖR’ü tanıyın' : dil === 'fr' ? 'Découvrir le conseiller Salih GÖR' : 'Meet Counsellor Salih GÖR'}</a></p>
-        <p class="mt-3"><a class="metin-baglanti" href={yol(dil, 'yayinrehberi')}>{dil === 'tr' ? 'Dergi aboneliği ve ücretsiz yayınlar' : dil === 'fr' ? 'Abonnement et publications gratuites' : 'Subscriptions and free publications'}</a></p>
+        <p class="mt-4"><a class="metin-baglanti" href={yol(dil, 'musavirlik')}>{m.musavirLink}</a></p>
+        <p class="mt-3"><a class="metin-baglanti" href={yol(dil, 'yayinrehberi')}>{m.yayinLink}</a></p>
       </section>
       <section class="kart p-6" aria-labelledby="bdv-merkez">
         <h2 id="bdv-merkez" class="etiket etiket-vurgu mb-3">{m.iletisimBaslik}</h2>
         <dl class="grid gap-3.5 text-sm">
-          <div><dt class="etiket">{dil === 'tr' ? 'Adres' : dil === 'en' ? 'Address' : 'Adresse'}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
-          <div><dt class="etiket">{dil === 'tr' ? 'E-posta' : dil === 'en' ? 'E-mail' : 'E-mail'}</dt><dd><a class="metin-baglanti" href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
+          <div><dt class="etiket">{t('footer.adres')}</dt><dd>Chaussée de Haecht 67, 1210 Bruxelles</dd></div>
+          <div><dt class="etiket">{t('genel.eposta')}</dt><dd><a class="metin-baglanti" href={`mailto:${c?.fonEposta ?? 'info@diyanet.be'}`}>{c?.fonEposta ?? 'info@diyanet.be'}</a></dd></div>
           <div><dt class="etiket">Web</dt><dd><a class="metin-baglanti" href="https://www.diyanet.be" target="_blank" rel="noopener">diyanet.be <span aria-hidden="true"> ↗</span></a></dd></div>
         </dl>
         <p class="mt-4 text-sm"><a class="metin-baglanti" href={yol(dil, 'iletisim')}>{m.cami} <span aria-hidden="true">→</span></a></p>

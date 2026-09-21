@@ -25,27 +25,45 @@ const acik = simdi <= HAC_SON_GUN.getTime();
 /* Bugün de sayılsın diye yukarı yuvarlanır: son gün sabahı "Son 1 gün" yazar, "0 gün" değil. */
 const kalan = Math.max(1, Math.ceil((HAC_SON_GUN.getTime() - simdi) / 86_400_000));
 
-const m = dil === 'tr' ? {
-  rozet: kalan === 1 ? 'Son gün' : `Son ${kalan} gün`,
-  baslik: '2027 Hac ön kayıtları — son başvuru 30 Ekim',
-  alt: 'Ön kayıt 2.000 € · Kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre · Yalnızca çevrimiçi · Ön kayıt yapanlar: kesin kayıt e-postanızı takip edin (son gün 30 Ekim)',
-  dugme: 'Ayrıntılar ve yardım',
-  dis: 'Ön kayıt: diyanet.be/onkayit',
-} : dil === 'en' ? {
-  rozet: kalan === 1 ? 'Last day' : `${kalan} days left`,
-  baslik: 'Hajj 2027 pre-registration — deadline 30 October',
-  alt: 'Pre-registration €2,000 · Limited places, confirmed by order of payment · Online only · Already pre-registered? Watch for the final-registration e-mail (deadline 30 October)',
-  dugme: 'Details and help',
-  dis: 'Register: diyanet.be/onkayit',
-} : {
-  rozet: kalan === 1 ? 'Dernier jour' : `Plus que ${kalan} jours`,
-  baslik: 'Préinscriptions au Hajj 2027 — date limite le 30 octobre',
-  alt: 'Préinscription 2 000 € · Places limitées, inscription selon l’ordre des paiements · Uniquement en ligne · Déjà préinscrit ? Surveillez l’e-mail d’inscription définitive (date limite le 30 octobre)',
-  dugme: 'Détails et aide',
-  dis: 'Préinscription : diyanet.be/onkayit',
-};
+const m = {
+  tr: {
+    rozet: kalan === 1 ? 'Son gün' : `Son ${kalan} gün`,
+    baslik: '2027 Hac ön kayıtları — son başvuru 30 Ekim',
+    alt: 'Ön kayıt 2.000 € · Kontenjan sınırlı, kesin kayıt hakkı ödeme sırasına göre · Yalnızca çevrimiçi · Ön kayıt yapanlar: kesin kayıt e-postanızı takip edin (son gün 30 Ekim)',
+    dugme: 'Ayrıntılar ve yardım',
+    dis: 'Ön kayıt: diyanet.be/onkayit',
+  },
+  fr: {
+    rozet: kalan === 1 ? 'Dernier jour' : `Plus que ${kalan} jours`,
+    baslik: 'Préinscriptions au Hajj 2027 — date limite le 30 octobre',
+    alt: 'Préinscription 2 000 € · Places limitées, inscription selon l’ordre des paiements · Uniquement en ligne · Déjà préinscrit ? Surveillez l’e-mail d’inscription définitive (date limite le 30 octobre)',
+    dugme: 'Détails et aide',
+    dis: 'Préinscription : diyanet.be/onkayit',
+  },
+  en: {
+    rozet: kalan === 1 ? 'Last day' : `${kalan} days left`,
+    baslik: 'Hajj 2027 pre-registration — deadline 30 October',
+    alt: 'Pre-registration €2,000 · Limited places, confirmed by order of payment · Online only · Already pre-registered? Watch for the final-registration e-mail (deadline 30 October)',
+    dugme: 'Details and help',
+    dis: 'Register: diyanet.be/onkayit',
+  },
+  nl: {
+    rozet: kalan === 1 ? 'Laatste dag' : `Nog ${kalan} dagen`,
+    baslik: 'Voorinschrijving hadj 2027 — uiterste datum 30 oktober',
+    alt: 'Voorinschrijving 2.000 € · Beperkt aantal plaatsen, definitieve inschrijving volgens volgorde van betaling · Uitsluitend online · Al vooringeschreven? Let op de e-mail voor de definitieve inschrijving (uiterste datum 30 oktober)',
+    dugme: 'Details en hulp',
+    dis: 'Voorinschrijving: diyanet.be/onkayit',
+  },
+  de: {
+    rozet: kalan === 1 ? 'Letzter Tag' : `Noch ${kalan} Tage`,
+    baslik: 'Hadsch 2027 — Voranmeldung bis zum 30. Oktober',
+    alt: 'Voranmeldung 2.000 € · Begrenzte Plätze, endgültige Anmeldung nach Reihenfolge der Zahlungen · Nur online · Schon vorangemeldet? Achten Sie auf die E-Mail zur endgültigen Anmeldung (Frist 30. Oktober)',
+    dugme: 'Details und Hilfe',
+    dis: 'Voranmeldung: diyanet.be/onkayit',
+  },
+}[dil];
 
-const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)' }[dil];
+const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)', nl: '(externe link)', de: '(externer Link)' }[dil];
 ---
 {acik && (
   <aside class="hac-bandi border-y" aria-label={m.baslik}>

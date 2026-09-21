@@ -17,7 +17,7 @@ SITE = KOK / "public" / "media" / "ses" / "seviye"
 ARSIV = Path(os.environ.get("SEVIYE_SES_ARSIV", "D:/sesli-anlatim/seviye-testi"))
 KAYIT = ARSIV / "denetim.json"
 MODEL = "gemini-2.5-flash"
-SIZINTI = re.compile(r"director|transcript|notes|talimat|ogretmen gibi|enseignant qui lit|teacher reading|sakin sicak|voix calme|calm warm", re.I)
+SIZINTI = re.compile(r"director|transcript|notes|talimat|ogretmen gibi|enseignant qui lit|teacher reading|sakin sicak|voix calme|calm warm|leerkracht die|rustige warme|lehrkraft die|ruhige warme|toetsvraag|prufungsfrage", re.I)
 
 
 def anahtarlar():
@@ -34,8 +34,8 @@ def sade(s):
     return re.sub(r"[^a-z0-9\s]", " ", s).split()
 
 
-SAYI = {"1": ["bir", "un", "one"], "2": ["iki", "deux", "two"], "3": ["uc", "trois", "three"],
-        "4": ["dort", "quatre", "four"], "5": ["bes", "cinq", "five"], "6": ["alti", "six", "six"]}
+SAYI = {"1": ["bir", "un", "one", "een", "eins", "ein"], "2": ["iki", "deux", "two", "twee", "zwei"], "3": ["uc", "trois", "three", "drie", "drei"],
+        "4": ["dort", "quatre", "four", "vier"], "5": ["bes", "cinq", "five", "vijf", "funf"], "6": ["alti", "six", "zes", "sechs"]}
 
 
 _vertex = {"belirtec": "", "an": 0.0, "kilit": threading.Lock()}

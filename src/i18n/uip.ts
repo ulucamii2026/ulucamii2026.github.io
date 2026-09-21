@@ -9,6 +9,8 @@
 import type { Dil } from './ui';
 import { fr } from './uip-fr';
 import { en } from './uip-en';
+import { nl } from './uip-nl';
+import { de } from './uip-de';
 
 export interface UipMetin {
   etiket: string; baslik: string; alt: string; metaAciklama: string;
@@ -287,4 +289,4 @@ export const tr: UipMetin = {
   },
 };
 
-export const uipMetin: Record<Dil, UipMetin> = { tr, fr, en };
+export const uipMetin: Record<Dil, UipMetin> = { tr, fr, en, nl, de };

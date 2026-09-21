@@ -10,11 +10,13 @@
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
-const m = dil === 'tr'
-  ? { kapat: 'Kapat', onceki: 'Önceki görsel', sonraki: 'Sonraki görsel', goruntuleyici: 'Görsel görüntüleyici' }
-  : dil === 'en'
-  ? { kapat: 'Close', onceki: 'Previous image', sonraki: 'Next image', goruntuleyici: 'Image viewer' }
-  : { kapat: 'Fermer', onceki: 'Image précédente', sonraki: 'Image suivante', goruntuleyici: 'Visionneuse d’images' };
+const m = {
+  tr: { kapat: 'Kapat', onceki: 'Önceki görsel', sonraki: 'Sonraki görsel', goruntuleyici: 'Görsel görüntüleyici' },
+  fr: { kapat: 'Fermer', onceki: 'Image précédente', sonraki: 'Image suivante', goruntuleyici: 'Visionneuse d’images' },
+  en: { kapat: 'Close', onceki: 'Previous image', sonraki: 'Next image', goruntuleyici: 'Image viewer' },
+  nl: { kapat: 'Sluiten', onceki: 'Vorige afbeelding', sonraki: 'Volgende afbeelding', goruntuleyici: 'Afbeeldingsviewer' },
+  de: { kapat: 'Schließen', onceki: 'Vorheriges Bild', sonraki: 'Nächstes Bild', goruntuleyici: 'Bildbetrachter' },
+}[dil];
 ---
 <dialog id="lightbox" class="lightbox" aria-label={m.goruntuleyici}>
   <button type="button" class="lb-kapat" data-lb="kapat" aria-label={m.kapat}>

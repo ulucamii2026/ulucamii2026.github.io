@@ -13,59 +13,98 @@ interface Props {
 
 const { dil, banka, kompakt = false } = Astro.props;
 const ibanDuz = banka.iban.replace(/\s+/g, '');
-const aciklama = dil === 'tr' ? 'Bagis Ulu Camii Marche' : dil === 'en' ? 'Donation Ulu Camii Marche' : 'Don Ulu Camii Marche';
+/* EPC/SEPA QR açıklaması: banka uygulamaları için aksansız, kısa tutulur. */
+const aciklama = { tr: 'Bagis Ulu Camii Marche', fr: 'Don Ulu Camii Marche', en: 'Donation Ulu Camii Marche', nl: 'Gift Ulu Camii Marche', de: 'Spende Ulu Camii Marche' }[dil];
 const epc = ['BCD', '002', '1', 'SCT', banka.bic, banka.hesapAdi.normalize('NFD').replace(/[̀-ͯ]/g, '').slice(0, 70), ibanDuz, '', '', '', aciklama].join('\n');
 const qr = await QRCode.toString(epc, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#2f221a', light: '#0000' } });
 
-const m = dil === 'tr' ? {
-  baslik: 'Camimiz cemaatin bağışlarıyla ayakta',
-  alt: 'Elektrik, ısınma, bakım ve Kur’an kursu giderleri yalnızca sizin katkılarınızla karşılanıyor. Bankacılık uygulamanızla kodu okutun ya da IBAN’ı kopyalayın.',
-  kopyala: 'IBAN’ı kopyala',
-  kopyalandi: 'Kopyalandı ✓',
-  kopyalanamadi: 'Kopyalanamadı, seçip kopyalayın',
-  qr: 'Bankacılık uygulamasıyla okutun',
-  acik: 'Açıklama',
-  detaylar: 'Banka bilgileri ve QR kodu',
-  yollar: [
-    { a: 'Genel bağış', s: 'Caminin aylık giderleri', h: yol(dil, 'bagis') },
-    { a: 'Vekâletle kurban', s: 'Her yıl Kurban Bayramı öncesi', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
-    { a: 'Kütüphaneye kitap', s: 'TDV ve Diyanet yayınları', h: yol(dil, 'bagis') + '#kitap-bagisi' },
-    { a: 'Dernek üyeliği', s: 'Yıllık aidatla destek', h: yol(dil, 'uyelik') }
-  ],
-  hepsi: 'Bağış sayfası',
-} : dil === 'en' ? {
-  baslik: 'Our mosque runs on the community’s donations',
-  alt: 'Electricity, heating, maintenance and the Qur’an school are covered solely by your contributions. Scan the code with your banking app or copy the IBAN.',
-  kopyala: 'Copy IBAN',
-  kopyalandi: 'Copied ✓',
-  kopyalanamadi: 'Failed to copy, select to copy',
-  qr: 'Scan with your banking app',
-  acik: 'Reference',
-  detaylar: 'Bank details and QR code',
-  yollar: [
-    { a: 'General donation', s: 'Monthly running costs of the mosque', h: yol(dil, 'bagis') },
-    { a: 'Sacrifice by proxy', s: 'Every year before Eid al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
-    { a: 'Books for the library', s: 'TDV and Diyanet publications', h: yol(dil, 'bagis') + '#kitap-bagisi' },
-    { a: 'Association membership', s: 'Support through annual dues', h: yol(dil, 'uyelik') }
-  ],
-  hepsi: 'Donations page',
-} : {
-  baslik: 'Notre mosquée vit des dons de la communauté',
-  alt: 'Électricité, chauffage, entretien et école coranique ne sont financés que par vos contributions. Scannez le code avec votre application bancaire ou copiez l’IBAN.',
-  kopyala: 'Copier l’IBAN',
-  kopyalandi: 'Copié ✓',
-  kopyalanamadi: 'Échec de la copie, sélectionnez pour copier',
-  qr: 'Scannez avec votre application bancaire',
-  acik: 'Communication',
-  detaylar: 'Coordonnées bancaires et code QR',
-  yollar: [
-    { a: 'Don général', s: 'Frais mensuels de la mosquée', h: yol(dil, 'bagis') },
-    { a: 'Sacrifice par procuration', s: 'Chaque année avant l’Aïd al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
-    { a: 'Livres pour la bibliothèque', s: 'Éditions TDV et Diyanet', h: yol(dil, 'bagis') + '#kitap-bagisi' },
-    { a: 'Adhésion', s: 'Soutien par la cotisation annuelle', h: yol(dil, 'uyelik') }
-  ],
-  hepsi: 'Page des dons',
-};
+const m = {
+  tr: {
+    baslik: 'Camimiz cemaatin bağışlarıyla ayakta',
+    alt: 'Elektrik, ısınma, bakım ve Kur’an kursu giderleri yalnızca sizin katkılarınızla karşılanıyor. Bankacılık uygulamanızla kodu okutun ya da IBAN’ı kopyalayın.',
+    kopyala: 'IBAN’ı kopyala',
+    kopyalandi: 'Kopyalandı ✓',
+    kopyalanamadi: 'Kopyalanamadı, seçip kopyalayın',
+    qr: 'Bankacılık uygulamasıyla okutun',
+    acik: 'Açıklama',
+    detaylar: 'Banka bilgileri ve QR kodu',
+    yollar: [
+      { a: 'Genel bağış', s: 'Caminin aylık giderleri', h: yol(dil, 'bagis') },
+      { a: 'Vekâletle kurban', s: 'Her yıl Kurban Bayramı öncesi', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+      { a: 'Kütüphaneye kitap', s: 'TDV ve Diyanet yayınları', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+      { a: 'Dernek üyeliği', s: 'Yıllık aidatla destek', h: yol(dil, 'uyelik') }
+    ],
+    hepsi: 'Bağış sayfası',
+  },
+  fr: {
+    baslik: 'Notre mosquée vit des dons de la communauté',
+    alt: 'Électricité, chauffage, entretien et école coranique ne sont financés que par vos contributions. Scannez le code avec votre application bancaire ou copiez l’IBAN.',
+    kopyala: 'Copier l’IBAN',
+    kopyalandi: 'Copié ✓',
+    kopyalanamadi: 'Échec de la copie, sélectionnez pour copier',
+    qr: 'Scannez avec votre application bancaire',
+    acik: 'Communication',
+    detaylar: 'Coordonnées bancaires et code QR',
+    yollar: [
+      { a: 'Don général', s: 'Frais mensuels de la mosquée', h: yol(dil, 'bagis') },
+      { a: 'Sacrifice par procuration', s: 'Chaque année avant l’Aïd al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+      { a: 'Livres pour la bibliothèque', s: 'Éditions TDV et Diyanet', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+      { a: 'Adhésion', s: 'Soutien par la cotisation annuelle', h: yol(dil, 'uyelik') }
+    ],
+    hepsi: 'Page des dons',
+  },
+  en: {
+    baslik: 'Our mosque runs on the community’s donations',
+    alt: 'Electricity, heating, maintenance and the Qur’an school are covered solely by your contributions. Scan the code with your banking app or copy the IBAN.',
+    kopyala: 'Copy IBAN',
+    kopyalandi: 'Copied ✓',
+    kopyalanamadi: 'Failed to copy, select to copy',
+    qr: 'Scan with your banking app',
+    acik: 'Reference',
+    detaylar: 'Bank details and QR code',
+    yollar: [
+      { a: 'General donation', s: 'Monthly running costs of the mosque', h: yol(dil, 'bagis') },
+      { a: 'Sacrifice by proxy', s: 'Every year before Eid al-Adha', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+      { a: 'Books for the library', s: 'TDV and Diyanet publications', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+      { a: 'Association membership', s: 'Support through annual dues', h: yol(dil, 'uyelik') }
+    ],
+    hepsi: 'Donations page',
+  },
+  nl: {
+    baslik: 'Onze moskee draait op de giften van de gemeenschap',
+    alt: 'Elektriciteit, verwarming, onderhoud en de Koranschool worden uitsluitend door uw bijdragen gedragen. Scan de code met uw bankapp of kopieer het IBAN.',
+    kopyala: 'IBAN kopiëren',
+    kopyalandi: 'Gekopieerd ✓',
+    kopyalanamadi: 'Kopiëren mislukt, selecteer en kopieer',
+    qr: 'Scan met uw bankapp',
+    acik: 'Mededeling',
+    detaylar: 'Bankgegevens en QR-code',
+    yollar: [
+      { a: 'Algemene gift', s: 'Maandelijkse werkingskosten van de moskee', h: yol(dil, 'bagis') },
+      { a: 'Offer bij volmacht', s: 'Elk jaar vóór het Offerfeest', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+      { a: 'Boeken voor de bibliotheek', s: 'Uitgaven van TDV en Diyanet', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+      { a: 'Lidmaatschap', s: 'Steun via het jaarlijkse lidgeld', h: yol(dil, 'uyelik') }
+    ],
+    hepsi: 'Giftenpagina',
+  },
+  de: {
+    baslik: 'Unsere Moschee lebt von den Spenden der Gemeinde',
+    alt: 'Strom, Heizung, Instandhaltung und die Koranschule werden allein durch Ihre Beiträge getragen. Scannen Sie den Code mit Ihrer Banking-App oder kopieren Sie die IBAN.',
+    kopyala: 'IBAN kopieren',
+    kopyalandi: 'Kopiert ✓',
+    kopyalanamadi: 'Kopieren fehlgeschlagen, bitte markieren und kopieren',
+    qr: 'Mit Ihrer Banking-App scannen',
+    acik: 'Verwendungszweck',
+    detaylar: 'Bankverbindung und QR-Code',
+    yollar: [
+      { a: 'Allgemeine Spende', s: 'Laufende monatliche Kosten der Moschee', h: yol(dil, 'bagis') },
+      { a: 'Opfer per Vollmacht', s: 'Jedes Jahr vor dem Opferfest', h: yol(dil, 'bagis') + '#vekaletle-kurban' },
+      { a: 'Bücher für die Bibliothek', s: 'Ausgaben von TDV und Diyanet', h: yol(dil, 'bagis') + '#kitap-bagisi' },
+      { a: 'Mitgliedschaft', s: 'Unterstützung durch den Jahresbeitrag', h: yol(dil, 'uyelik') }
+    ],
+    hepsi: 'Spendenseite',
+  },
+}[dil];
 ---
 
 {kompakt ? (

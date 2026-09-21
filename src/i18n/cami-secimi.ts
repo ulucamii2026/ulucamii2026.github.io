@@ -1,4 +1,4 @@
-/** İhtida cami seçicisi; üç dilde aynı basit akış. */
+/** İhtida cami seçicisi; beş dilde aynı basit akış. */
 export const camiMetinleri = {
   "tr": {
     "baslik": "Başvuru yapılan cami",
@@ -74,6 +74,56 @@ export const camiMetinleri = {
     "postaHata": "Enter a four-digit Belgian postcode.",
     "digerOzet": "Mosque details to be completed",
     "zorunlu": "Required"
+  },
+  "nl": {
+    "baslik": "Moskee waarop de aanvraag betrekking heeft",
+    "degistir": "Van moskee veranderen",
+    "ara": "Naam van de moskee, gemeente of postcode",
+    "aramaOrnek": "Bijvoorbeeld: Genk, Selimiye, 6900",
+    "liste": "Gevonden moskeeën",
+    "sec": "Deze moskee kiezen",
+    "diger": "Mijn moskee staat niet in de lijst",
+    "digerBaslik": "Vul de gegevens van de moskee in",
+    "ad": "Naam van de moskee",
+    "sehir": "Gemeente",
+    "posta": "Postcode",
+    "adres": "Adres van de moskee (straat en nummer)",
+    "sonuc": "{sayi} moskeeën gevonden.",
+    "bulunamadi": "Geen enkele moskee komt overeen. Probeer een andere naam of gemeente, of vul de gegevens zelf in.",
+    "kapsam": "Deze lijst is opgesteld met de gegevens die de betrokken instanties publiceren. Staat uw moskee er niet bij, dan kunt u ze zelf toevoegen.",
+    "isleyis": "Het team van Ulu Camii volgt uw aanvraag op. Een moskee kiezen stuurt die moskee niet automatisch een aanvraag of e-mail.",
+    "sahit": "U hebt een andere moskee gekozen. Vul de naam en voornaam van beide getuigen in. De standaardgetuigen en de bewaarde handtekeningen van Ulu Camii worden in deze aanvraag niet gebruikt.",
+    "sahitAyni": "Vul de naam en voornaam van twee verschillende getuigen in.",
+    "sahitEksik": "Voor deze moskee zijn de naam en voornaam van beide getuigen verplicht.",
+    "secimHata": "Kies de moskee opnieuw of vul de gegevens zelf in.",
+    "postaHata": "Vul een Belgische postcode van vier cijfers in.",
+    "digerOzet": "Gegevens van de moskee nog in te vullen",
+    "zorunlu": "Verplicht"
+  },
+  "de": {
+    "baslik": "Moschee, die der Antrag betrifft",
+    "degistir": "Moschee ändern",
+    "ara": "Name der Moschee, Gemeinde oder Postleitzahl",
+    "aramaOrnek": "Zum Beispiel: Genk, Selimiye, 6900",
+    "liste": "Gefundene Moscheen",
+    "sec": "Diese Moschee wählen",
+    "diger": "Meine Moschee steht nicht in der Liste",
+    "digerBaslik": "Geben Sie die Daten der Moschee ein",
+    "ad": "Name der Moschee",
+    "sehir": "Gemeinde",
+    "posta": "Postleitzahl",
+    "adres": "Anschrift der Moschee (Straße und Nummer)",
+    "sonuc": "{sayi} Moscheen gefunden.",
+    "bulunamadi": "Keine Moschee gefunden. Versuchen Sie einen anderen Namen oder eine andere Gemeinde, oder geben Sie die Daten selbst ein.",
+    "kapsam": "Diese Liste beruht auf den von den zuständigen Stellen veröffentlichten Angaben. Fehlt Ihre Moschee, können Sie sie selbst hinzufügen.",
+    "isleyis": "Das Team von Ulu Camii bearbeitet Ihren Antrag. Die Wahl einer Moschee sendet dieser Moschee nicht automatisch einen Antrag oder eine E-Mail.",
+    "sahit": "Sie haben eine andere Moschee gewählt. Geben Sie Vor- und Nachnamen beider Zeugen an. Die Standardzeugen und die hinterlegten Unterschriften von Ulu Camii werden in diesem Antrag nicht verwendet.",
+    "sahitAyni": "Geben Sie Vor- und Nachnamen von zwei verschiedenen Zeugen an.",
+    "sahitEksik": "Für diese Moschee sind Vor- und Nachnamen beider Zeugen erforderlich.",
+    "secimHata": "Wählen Sie die Moschee erneut oder geben Sie ihre Daten selbst ein.",
+    "postaHata": "Geben Sie eine vierstellige belgische Postleitzahl ein.",
+    "digerOzet": "Daten der Moschee noch zu ergänzen",
+    "zorunlu": "Pflichtfeld"
   }
 };
 export type CamiMetinleri = typeof camiMetinleri.tr;

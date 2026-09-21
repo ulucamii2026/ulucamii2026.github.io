@@ -6,10 +6,14 @@
  * Türkçe'den İngilizce'ye çevrildi: Belçika'da Felemenkçe tarayıcı çok yaygın ve bu
  * ziyaretçiler Türkçe sayfaya düşüyordu — ölçüldü (nl, de, ar, es hepsi /tr/ açıyordu).
  * Türkçe, Fransızca ve İngilizce tarayıcılar kendi dillerine gider; ortak dil İngilizce.
+ * 21 Eylül 2026: site Flemenkçe ve Almanca da yayımlanıyor — nl ve de tarayıcılar artık kendi dillerine gider.
+ * Dil listesi ve hreflang satırları `src/i18n` tek kaynağından üretilir.
  *
  * JS kapalıysa meta refresh Türkçe'ye gider: tarayıcı dili okunamadığı için tercih
  * yapılamaz ve caminin ana cemaati Türkçe konuşur (x-default de Türkçe).
  */
+import { diller } from '../i18n/ui';
+import { dilListesi, hreflangKodu } from '../i18n/utils';
 ---
 <!doctype html>
 <html lang="tr">
@@ -17,13 +21,10 @@
     <meta charset="utf-8" />
     <meta name="robots" content="noindex" />
     <title>Marche-en-Famenne Ulu Camii</title>
-    <link rel="alternate" hreflang="tr" href="https://ulucamii.be/tr/" />
-    <link rel="alternate" hreflang="fr-BE" href="https://ulucamii.be/fr/" />
-    <link rel="alternate" hreflang="en" href="https://ulucamii.be/en/" />
+    {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={`https://ulucamii.be/${d}/`} />)}
     <link rel="alternate" hreflang="x-default" href="https://ulucamii.be/tr/" />
-    <script is:inline>
+    <script is:inline define:vars={{ DILLER: dilListesi }}>
       (function () {
-        var DILLER = ['tr', 'fr', 'en'];
         var hedef = null;
 
         // 1) Ziyaretçinin kendi seçimi her şeyin önünde: sitede en son hangi dilde
@@ -42,11 +43,11 @@
           }
         }
 
-        // 3) Tarayıcı bu üç dilden hiçbirini istemiyorsa ortak dil İngilizce.
+        // 3) Tarayıcı site dillerinden hiçbirini istemiyorsa ortak dil İngilizce.
         location.replace('/' + (hedef || 'en') + '/');
       })();
     </script>
     <meta http-equiv="refresh" content="1; url=/tr/" />
   </head>
-  <body><p><a href="/tr/">Türkçe</a> · <a href="/fr/">Français</a> · <a href="/en/">English</a></p></body>
+  <body><p>{dilListesi.map((d, i) => <>{i > 0 && ' · '}<a href={`/${d}/`} lang={d}>{diller[d]}</a></>)}</p></body>
 </html>

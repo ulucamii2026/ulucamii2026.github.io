@@ -21,7 +21,7 @@
  */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import { ceviri, yol, kayitBaglantisi } from '../i18n/utils';
+import { ceviri, hreflangKodu, yerelKodu, yol, kayitBaglantisi } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari } from '../lib/icerik';
 import plan from '../data/yillik-plan-2026-2027.json';
@@ -52,26 +52,36 @@ const ALAN_ADI: Record<Dil, Record<string, string>> = {
   tr: { kuran: 'Kur’an', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak' },
   fr: { kuran: 'Coran', itikat: 'Credo', ibadet: 'Culte', siyer: 'Vie du Prophète', ahlak: 'Morale' },
   en: { kuran: 'Qur’an', itikat: 'Creed', ibadet: 'Worship', siyer: 'Life of the Prophet', ahlak: 'Ethics' },
+  nl: { kuran: 'Koran', itikat: 'Geloofsleer', ibadet: 'Eredienst', siyer: 'Leven van de Profeet', ahlak: 'Moraal' },
+  de: { kuran: 'Koran', itikat: 'Glaubenslehre', ibadet: 'Gottesdienst', siyer: 'Leben des Propheten', ahlak: 'Moral' },
 };
 const DURUM_ADI: Record<Dil, Record<DurumKodu | 'bekliyor', string>> = {
   tr: { islendi: 'İşlendi', kismen: 'Kısmen işlendi', ertelendi: 'Ertelendi', bekliyor: 'Defter kaydı bekleniyor' },
   fr: { islendi: 'Vu en classe', kismen: 'Vu en partie', ertelendi: 'Reporté', bekliyor: 'En attente du cahier' },
   en: { islendi: 'Covered', kismen: 'Partly covered', ertelendi: 'Postponed', bekliyor: 'Log pending' },
+  nl: { islendi: 'Behandeld', kismen: 'Gedeeltelijk behandeld', ertelendi: 'Uitgesteld', bekliyor: 'Wacht op notitie in het klassenboek' },
+  de: { islendi: 'Behandelt', kismen: 'Teilweise behandelt', ertelendi: 'Verschoben', bekliyor: 'Wartet auf Eintrag im Klassenbuch' },
 };
 
-const yerel = dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE';
 const bicim = (iso: string, secenek: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat(yerel, { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
-const sayi = (n: number) => new Intl.NumberFormat(yerel).format(n);
+  new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
+const sayi = (n: number) => new Intl.NumberFormat(yerelKodu[dil]).format(n);
 
 /* Derleme anındaki Brüksel tarihi: «geçmiş / bugün / gelecek» ayrımının tek ölçütü. */
 const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
-/* ——— Konu başlığı: tr → konu, fr/en → sözlük, yoksa fr, yoksa tr ——— */
+/* ——— Konu başlığı: tr → konu, fr → sözlük FR, en → sözlük EN (yoksa FR, yoksa tr).
+   nl/de için ayrı bir sözlük yok: konu yalnız TR+FR (+kısmen EN) çevrilmiştir; nl/de bugün
+   en'in de düştüğü Fransızcaya düşer (docs/DIL-NL-DE.md içerik geriye düşüş kuralı). */
 const sozlukFr = konularFr as Record<string, string>;
 const sozlukEn = konularEn as Record<string, string>;
-const konuBasligi = (konu: string) =>
-  dil === 'tr' ? konu : dil === 'fr' ? (sozlukFr[konu] || konu) : (sozlukEn[konu] || sozlukFr[konu] || konu);
+const konuBasligi = (konu: string) => {
+  const zincir: Record<Dil, (string | undefined)[]> = {
+    tr: [konu], fr: [sozlukFr[konu], konu], en: [sozlukEn[konu], sozlukFr[konu], konu],
+    nl: [sozlukFr[konu], konu], de: [sozlukFr[konu], konu],
+  };
+  return zincir[dil].find(Boolean) ?? konu;
+};
 
 /* ——— Saat: yıllık plandan (gün bazında yaz/kış saati zaten doğru) ——— */
 const saatler = new Map<string, string>();
@@ -151,6 +161,8 @@ const TUR_ADI: Record<Dil, Record<string, string>> = {
   tr: {},
   fr: { tatil: 'Congé', bayram: 'Fête (Bayram)', kandil: 'Nuit bénie', ramazan: 'Ramadan', pazartesi: 'Cours supplémentaire du lundi' },
   en: { tatil: 'Holiday', bayram: 'Eid', kandil: 'Blessed night', ramazan: 'Ramadan', pazartesi: 'Extra Monday lesson' },
+  nl: { tatil: 'Vakantie', bayram: 'Feest (Bayram)', kandil: 'Gezegende nacht', ramazan: 'Ramadan', pazartesi: 'Extra maandagles' },
+  de: { tatil: 'Ferien', bayram: 'Fest (Bayram)', kandil: 'Gesegnete Nacht', ramazan: 'Ramadan', pazartesi: 'Zusätzliche Montagsstunde' },
 };
 const takvimNotlari = rozetler.slice(0, 4).map((r) => ({ tarih: r.tarih, etiket: TUR_ADI[dil][r.tur] ?? '', metin: r.metin, tr: true }));
 if (kisGunu && bugun <= kisGunu) takvimNotlari.push({ tarih: kisGunu, etiket: '', metin: '', tr: false });
@@ -182,7 +194,8 @@ const aralik = (ilk: string, son: string) => {
     : `${bicim(ilk, { day: 'numeric', month: 'long' })} – ${bicim(son, { day: 'numeric', month: 'long', year: 'numeric' })}`;
 };
 
-const m = dil === 'tr' ? {
+const METIN = {
+  tr: {
   baslik: 'Kur’an Kursu Ders Günlüğü 2026-2027',
   alt: 'Hafta hafta işlenen konular, sınıfın geldiği nokta ve sıradaki dersler. Sayfa her gece yeniden derlenir; hoca defteri kayıtları hafta sonu derslerinden sonra işlenir.',
   aciklama: `Ulu Camii Kur’an Kursu 2026-2027 ders günlüğü: hafta hafta işlenen konular, sınıfın ilerlemesi ve sıradaki dersler.`,
@@ -204,7 +217,8 @@ const m = dil === 'tr' ? {
   takvim: 'Takvim notları',
   kis: (g: string) => `${g}’dan itibaren (kış saati) dersler 10:00’da başlar.`,
   kayit: 'Kur’an kursu kaydı', kurs: 'Kur’an kursu sayfası', sorular: 'Sorular',
-} : dil === 'en' ? {
+  },
+  en: {
   baslik: 'Qur’an Course Journal 2026-2027',
   alt: 'Week by week: what was taught, where the class stands and what comes next. The page is rebuilt every night; the teacher’s log is transferred after the weekend lessons.',
   aciklama: 'Ulu Camii Qur’an School 2026-2027 course journal: what was taught week by week, how the class is progressing and what comes next.',
@@ -226,7 +240,8 @@ const m = dil === 'tr' ? {
   takvim: 'Calendar notes',
   kis: (g: string) => `From ${g} (winter time) lessons start at 10:00.`,
   kayit: 'Qur’an school enrolment', kurs: 'Qur’an school page', sorular: 'Questions',
-} : {
+  },
+  fr: {
   baslik: 'Journal des cours de Coran 2026-2027',
   alt: 'Semaine après semaine : ce qui a été vu en classe, où en est le groupe et ce qui vient ensuite. La page est régénérée chaque nuit ; le cahier de l’enseignant est reporté après les cours du week-end.',
   aciklama: 'Journal des cours de l’école coranique Ulu Camii 2026-2027 : ce qui a été vu semaine après semaine, la progression du groupe et les prochains cours.',
@@ -248,13 +263,61 @@ const m = dil === 'tr' ? {
   takvim: 'Notes de calendrier',
   kis: (g: string) => `À partir du ${g} (heure d’hiver), les cours commencent à 10 h 00.`,
   kayit: 'Inscription à l’école coranique', kurs: 'Page de l’école coranique', sorular: 'Questions',
-};
+  },
+  nl: {
+  baslik: 'Lesdagboek van de koranschool 2026-2027',
+  alt: 'Week na week: wat er in de les werd behandeld, waar de klas staat en wat er nu aan komt. De pagina wordt elke nacht opnieuw opgebouwd; het klassenboek van de leerkracht wordt na de weekendlessen overgenomen.',
+  aciklama: 'Lesdagboek 2026-2027 van de koranschool Ulu Camii: wat er week na week werd behandeld, hoe de klas vordert en wat er nu aan komt.',
+  sGun: 'Gegeven lesdagen', sDers: 'Behandelde lessen', sHafta: 'Afgeronde weken', sSonraki: 'Eerstvolgende lesdag',
+  bitti: 'Het schooljaar is afgelopen', ilerlemeEt: 'Voortgang van het schooljaar',
+  bugunBaslik: 'Vandaag les', hafta: (n: number) => `Week ${n}`, bugunEt: 'Vandaag',
+  materyalBag: 'Lesmateriaal', zaman: 'Dagboek week na week',
+  zamanBos: 'Het dagboek verschijnt hier zodra de eerste lesdag heeft plaatsgevonden.',
+  planPdf: 'Lesplan (PDF)', sunumPdf: 'Presentatie (PDF)',
+  notBaslik: 'Notitie voor thuis van de week', notOdev: 'Herhaling thuis', notEzber: 'Memorisatie',
+  takip: 'Hoe we de vooruitgang opvolgen',
+  defterBaslik: 'Les- en communicatieschrift (gedrukt)',
+  defterMetin: 'Elke leerling krijgt een gedrukt, spiraalgebonden les- en communicatieschrift op zijn of haar naam (schoolrapportboekje). Na elke les schrijft de leerkracht hierin wat er behandeld en gelezen werd en wat er thuis geoefend moet worden; de ouders lezen en ondertekenen het elk weekend. De schriften worden in de klas uitgedeeld zodra ze gedrukt en ingebonden zijn.',
+  portalBaslik: 'Ouderportaal',
+  portalMetin: 'Op het portaal zien ouders de aanwezigheid van hun kind, het klassenboek van de leerkracht, de wekelijkse memorisatie en de notitie voor thuis, en de mededelingen; ze kunnen ook een afwezigheid melden.',
+  materyalBaslik: 'Lesmateriaal en planning',
+  materyalMetin: 'Het lesplan en de presentaties (PDF) van elk weekend staan op de materialenpagina; het volledige jaar staat in de jaarplanning dag per dag en in het leerplan.',
+  kapanis: 'Deze pagina bevat geen namen van leerlingen of persoonlijke gegevens; de individuele opvolging staat in het gedrukte schrift en op het ouderportaal.',
+  takvim: 'Kalendernotities',
+  kis: (g: string) => `Vanaf ${g} (winteruur) beginnen de lessen om 10.00 uur.`,
+  kayit: 'Inschrijving koranschool', kurs: 'Pagina van de koranschool', sorular: 'Vragen',
+  },
+  de: {
+  baslik: 'Kurstagebuch der Koranschule 2026-2027',
+  alt: 'Woche für Woche: was im Unterricht behandelt wurde, wo die Klasse steht und was als Nächstes kommt. Die Seite wird jede Nacht neu erstellt; das Klassenbuch der Lehrkraft wird nach den Wochenendstunden übertragen.',
+  aciklama: 'Kurstagebuch 2026-2027 der Koranschule Ulu Camii: was Woche für Woche behandelt wurde, wie die Klasse vorankommt und was als Nächstes kommt.',
+  sGun: 'Gehaltene Unterrichtstage', sDers: 'Behandelte Lektionen', sHafta: 'Abgeschlossene Wochen', sSonraki: 'Nächster Unterrichtstag',
+  bitti: 'Das Schuljahr ist beendet', ilerlemeEt: 'Fortschritt des Schuljahres',
+  bugunBaslik: 'Heute Unterricht', hafta: (n: number) => `Woche ${n}`, bugunEt: 'Heute',
+  materyalBag: 'Unterrichtsmaterial', zaman: 'Wochentagebuch',
+  zamanBos: 'Das Tagebuch erscheint hier, sobald der erste Unterrichtstag stattgefunden hat.',
+  planPdf: 'Unterrichtsplan (PDF)', sunumPdf: 'Präsentation (PDF)',
+  notBaslik: 'Hinweis zur Wiederholung zu Hause der Woche', notOdev: 'Wiederholung zu Hause', notEzber: 'Memorierung',
+  takip: 'Wie wir den Fortschritt verfolgen',
+  defterBaslik: 'Unterrichts- und Kommunikationsheft (gedruckt)',
+  defterMetin: 'Jeder Schüler erhält ein gedrucktes, spiralgebundenes Unterrichts- und Kommunikationsheft mit seinem Namen (Schulberichtsheft). Nach jeder Stunde trägt die Lehrkraft ein, was behandelt und gelesen wurde und was zu Hause geübt werden soll; die Eltern lesen und unterschreiben es jedes Wochenende. Die Hefte werden im Unterricht ausgeteilt, sobald sie gedruckt und gebunden sind.',
+  portalBaslik: 'Elternportal',
+  portalMetin: 'Im Portal sehen die Eltern die Anwesenheit ihres Kindes, das Klassenbuch der Lehrkraft, die wöchentliche Memorierung und den Hinweis zur Wiederholung zu Hause sowie die Mitteilungen; sie können auch eine Abwesenheit melden.',
+  materyalBaslik: 'Unterrichtsmaterial und Plan',
+  materyalMetin: 'Der Unterrichtsplan und die Präsentationen (PDF) jedes Wochenendes stehen auf der Materialseite; das ganze Jahr ist im Tag-für-Tag-Jahresplan und im Lehrplan dargestellt.',
+  kapanis: 'Diese Seite enthält keine Schülernamen oder persönlichen Daten; die individuelle Begleitung erfolgt im gedruckten Heft und im Elternportal.',
+  takvim: 'Kalenderhinweise',
+  kis: (g: string) => `Ab dem ${g} (Winterzeit) beginnt der Unterricht um 10:00 Uhr.`,
+  kayit: 'Anmeldung zur Koranschule', kurs: 'Seite der Koranschule', sorular: 'Fragen',
+  },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
 
 const jsonLd = {
   '@type': 'WebPage',
   name: m.baslik,
   description: m.aciklama,
-  inLanguage: dil === 'tr' ? 'tr' : dil === 'en' ? 'en' : 'fr-BE',
+  inLanguage: hreflangKodu(dil),
   isPartOf: { '@type': 'WebSite', url: 'https://ulucamii.be/' },
   about: {
     '@type': 'Course',
@@ -264,7 +327,7 @@ const jsonLd = {
 };
 
 const kayitUrl = site.kursKayitLinki ? kayitBaglantisi(site.kursKayitLinki, dil) : '';
-const oran = new Intl.NumberFormat(yerel, { style: 'percent' }).format(toplamGun ? gecmisGunler.length / toplamGun : 0);
+const oran = new Intl.NumberFormat(yerelKodu[dil], { style: 'percent' }).format(toplamGun ? gecmisGunler.length / toplamGun : 0);
 const ilerlemeMetni = `${sayi(gecmisGunler.length)} / ${sayi(toplamGun)} · ${oran}`;
 ---
 <Base baslik={m.baslik} dil={dil} aciklama={m.alt} ekJsonLd={[jsonLd]}>

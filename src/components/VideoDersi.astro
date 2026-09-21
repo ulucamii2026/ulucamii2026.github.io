@@ -14,11 +14,14 @@ interface Props {
   acik?: boolean;
 }
 const { id, baslik, poster, kaynak, kanal, dil, dilAdi, yardim, no, acik = false } = Astro.props;
-const metin = {
+const METIN: Record<Dil, { ac: string; kapat: string }> = {
   tr: { ac: 'Videoyu göster', kapat: 'Videoyu kapat' },
   fr: { ac: 'Afficher la vidéo', kapat: 'Fermer la vidéo' },
   en: { ac: 'Show video', kapat: 'Close video' },
-}[dil];
+  nl: { ac: 'Video tonen', kapat: 'Video sluiten' },
+  de: { ac: 'Video anzeigen', kapat: 'Video schließen' },
+};
+const metin = METIN[dil];
 ---
 <details class="video-dersi" data-video-dersi data-ders-id={id} open={acik}>
   <summary>

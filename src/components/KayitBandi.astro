@@ -17,25 +17,43 @@ const { dil, link, ikincil = false } = Astro.props;
 const kayitLink = link ? kayitBaglantisi(link, dil) : link;
 const DERS_BASLANGIC = new Date('2026-09-05T00:00:00+02:00');
 const baslamadi = Date.now() < DERS_BASLANGIC.getTime();
-const m = dil === 'tr' ? {
-  baslik: `Kur’an Kursu ${DERS_YILI_ETIKETI} — kayıtlar açık`,
-  alt: baslamadi
-    ? 'Dersler 5 Eylül Cumartesi başlıyor · Kayıt telefonunuzdan 5 dakika sürer'
-    : 'Dersler başladı · Kayıt telefonunuzdan 5 dakika sürer',
-  dugme: 'Öğrenci Kaydı Yap',
-} : dil === 'en' ? {
-  baslik: `Qur’an School ${DERS_YILI_ETIKETI} — enrolment open`,
-  alt: baslamadi
-    ? 'Classes start Saturday 5 September · Registration takes 5 minutes on your phone'
-    : 'Classes have started · Registration takes 5 minutes on your phone',
-  dugme: 'Register a student',
-} : {
-  baslik: `Cours de Coran ${DERS_YILI_ETIKETI} — inscriptions ouvertes`,
-  alt: baslamadi
-    ? 'Rentrée le samedi 5 septembre · Inscription en 5 minutes depuis votre téléphone'
-    : 'Les cours ont commencé · Inscription en 5 minutes depuis votre téléphone',
-  dugme: 'Inscrire un élève',
-};
+const m = {
+  tr: {
+    baslik: `Kur’an Kursu ${DERS_YILI_ETIKETI} — kayıtlar açık`,
+    alt: baslamadi
+      ? 'Dersler 5 Eylül Cumartesi başlıyor · Kayıt telefonunuzdan 5 dakika sürer'
+      : 'Dersler başladı · Kayıt telefonunuzdan 5 dakika sürer',
+    dugme: 'Öğrenci Kaydı Yap',
+  },
+  fr: {
+    baslik: `Cours de Coran ${DERS_YILI_ETIKETI} — inscriptions ouvertes`,
+    alt: baslamadi
+      ? 'Rentrée le samedi 5 septembre · Inscription en 5 minutes depuis votre téléphone'
+      : 'Les cours ont commencé · Inscription en 5 minutes depuis votre téléphone',
+    dugme: 'Inscrire un élève',
+  },
+  en: {
+    baslik: `Qur’an School ${DERS_YILI_ETIKETI} — enrolment open`,
+    alt: baslamadi
+      ? 'Classes start Saturday 5 September · Registration takes 5 minutes on your phone'
+      : 'Classes have started · Registration takes 5 minutes on your phone',
+    dugme: 'Register a student',
+  },
+  nl: {
+    baslik: `Koranschool ${DERS_YILI_ETIKETI} — inschrijvingen open`,
+    alt: baslamadi
+      ? 'De lessen starten op zaterdag 5 september · Inschrijven duurt 5 minuten op uw gsm'
+      : 'De lessen zijn gestart · Inschrijven duurt 5 minuten op uw gsm',
+    dugme: 'Leerling inschrijven',
+  },
+  de: {
+    baslik: `Koranschule ${DERS_YILI_ETIKETI} — Anmeldung offen`,
+    alt: baslamadi
+      ? 'Unterrichtsbeginn am Samstag, 5. September · Die Anmeldung dauert 5 Minuten am Handy'
+      : 'Der Unterricht hat begonnen · Die Anmeldung dauert 5 Minuten am Handy',
+    dugme: 'Lernende anmelden',
+  },
+}[dil];
 ---
 {link && (
   <aside

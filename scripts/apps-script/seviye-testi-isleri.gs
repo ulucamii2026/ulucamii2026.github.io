@@ -26,8 +26,14 @@ var BASLIKLAR_SEVIYE = [
   "Zaman", "Referans", "Ad Soyad", "E-posta", "Telefon", "Test dili", "Ders dili", "Yaş aralığı", "Cinsiyet",
   "Müslümanlık süresi", "Önceki eğitim", "Hedefler", "Müsaitlik", "Biçim", "Not", "Kur'an düzeyi", "Tecvid",
   "Kur'an bilgisi", "İnanç", "Namaz", "İbadet", "Siyer", "Ahlak", "Yüzdeler", "Önerilen program",
-  "Atlananlar", "Ezberler", "Beyanlar", "Cevaplar", "Süre (dk)", "Banka sürümü", "Rıza sürümü", "Durum", "Gönderim anahtarı"
+  "Atlananlar", "Ezberler", "Beyanlar", "Cevaplar", "Süre (dk)", "Banka sürümü", "Rıza sürümü", "Durum", "Gönderim anahtarı",
+  // v39 (form sürümü 2): başvuranın yeri ve yerel destek — eski satırlarda boştur
+  "Ülke", "Şehir", "En yakın Diyanet camisi", "Camiyi biliyor", "Görevliyi tanıyor", "Ataşelik bilgisi",
+  "Yerel görevli onayı", "Ataşelik onayı"
 ];
+
+/** Test dili = sitenin beş dili (src/i18n/ui.ts → diller). Hoca raporu her zaman Türkçedir. */
+var SEVIYE_DILLERI = ["tr", "fr", "en", "nl", "de"];
 
 /** Başlık dizisinden türetilen 1 tabanlı sütun numarası — sıra elle yazılmaz. */
 function seviyeSutun(ad) { return BASLIKLAR_SEVIYE.indexOf(ad) + 1; }
@@ -137,8 +143,9 @@ function seviyeAdGecerli(deger) {
 function seviyeDogrula(v) {
   if (!seviyeDuzNesne(v)) return h("bos-istek");
   if (v.sir !== AYAR_SEVIYE.ortakSir) return h("yetkisiz");
-  if (v.formSurumu !== 1) return h("form-surumu-gecersiz");
-  if (["tr", "fr", "en"].indexOf(v.dil) < 0) return h("dil-gecersiz");
+  // Sürüm 1 (yer bilgisi yok) yalnız dağıtım geçişinde, eski sayfa önbelleğinden gelen gönderimler için kabul edilir.
+  if (v.formSurumu !== 1 && v.formSurumu !== 2) return h("form-surumu-gecersiz");
+  if (SEVIYE_DILLERI.indexOf(v.dil) < 0) return h("dil-gecersiz");
   if (!temizAnahtar(v.gonderimAnahtari)) return h("anahtar-gecersiz");
 
   var onay = seviyeDuzNesne(v.onay) ? v.onay : {};
@@ -171,6 +178,11 @@ function seviyeDogrula(v) {
     }
   }
   if (!uzunlukTamam(p.not == null ? "" : p.not, sinir.not)) return h("not-uzun");
+
+  if (v.formSurumu === 2) {
+    var yerelDurumu = seviyeYerelDogrula(v.yerel, onay);
+    if (yerelDurumu) return h(yerelDurumu);
+  }
 
   var alanlar = seviyeAlanKodlari();
   if (v.atla !== undefined && v.atla !== null) {
@@ -210,6 +222,35 @@ function seviyeDogrula(v) {
   return { tamam: true };
 }
 
+/** Form sürümü 2: «Nereden başvuruyorsunuz?» bölümü. Hata kodu döner, sorun yoksa "" (tek kaynak: src/lib/seviye-testi/yerel.ts). */
+function seviyeYerelDogrula(yerel, onay) {
+  if (!seviyeDuzNesne(yerel)) return "yerel-eksik";
+  var degerler = SeviyeTesti.YEREL_DEGERLERI, sinir = SeviyeTesti.YEREL_SINIRLARI;
+  for (var i = 0; i < SeviyeTesti.YEREL_TEKLI.length; i++) {
+    var alan = SeviyeTesti.YEREL_TEKLI[i];
+    if (degerler[alan].indexOf(yerel[alan]) < 0) return "yerel-" + alan + "-gecersiz";
+  }
+  if (!metinDolu(yerel.sehir) || !uzunlukTamam(yerel.sehir, sinir.sehir)) return "yerel-sehir-gecersiz";
+  if (!uzunlukTamam(yerel.yakinCami == null ? "" : yerel.yakinCami, sinir.yakinCami)) return "yerel-cami-uzun";
+  // Paylaşım onayları İSTEĞE BAĞLIDIR; gelirse yalnız boolean olabilir (dize "true" onay sayılmaz).
+  for (var j = 0; j < SeviyeTesti.YEREL_ONAYLARI.length; j++) {
+    var o = onay[SeviyeTesti.YEREL_ONAYLARI[j]];
+    if (o !== undefined && o !== null && typeof o !== "boolean") return "onay-paylasim-gecersiz";
+  }
+  return "";
+}
+
+function seviyeYerelKur(v) {
+  if (v.formSurumu !== 2 || !seviyeDuzNesne(v.yerel)) return null;
+  var y = v.yerel, onay = seviyeDuzNesne(v.onay) ? v.onay : {};
+  return {
+    ulke: y.ulke, sehir: String(y.sehir).trim(), camiBiliyor: y.camiBiliyor,
+    yakinCami: String(y.yakinCami == null ? "" : y.yakinCami).trim(),
+    gorevliTaniyor: y.gorevliTaniyor, ateselikBilgisi: y.ateselikBilgisi,
+    onayYerelGorevli: onay.yerelGorevli === true, onayAteselik: onay.ateselik === true
+  };
+}
+
 function seviyeBeyanBul(id) {
   var liste = SeviyeTesti.BEYAN;
   for (var i = 0; i < liste.length; i++) if (liste[i].id === id) return liste[i];
@@ -224,7 +265,8 @@ function seviyeKayitKur(v, ref, zaman, anahtar) {
   var p = v.profil, alanlar = seviyeAlanKodlari(), atla = {};
   for (var i = 0; i < alanlar.length; i++) if (v.atla && v.atla[alanlar[i]] === true) atla[alanlar[i]] = true;
   return {
-    ref: ref, zaman: zaman, gonderimAnahtari: anahtar, dil: ["tr", "fr", "en"].indexOf(v.dil) >= 0 ? v.dil : "tr",
+    ref: ref, zaman: zaman, gonderimAnahtari: anahtar, dil: SEVIYE_DILLERI.indexOf(v.dil) >= 0 ? v.dil : "tr",
+    yerel: seviyeYerelKur(v),
     adSoyad: String(p.adSoyad).trim(), eposta: String(p.eposta).trim(),
     telefon: String(p.telefon == null ? "" : p.telefon).trim(),
     profil: {
@@ -278,6 +320,18 @@ function seviyeSatirKur(kayit, sonuc) {
   satir[seviyeSutun("Rıza sürümü") - 1] = kayit.rizaSurumu;
   satir[seviyeSutun("Durum") - 1] = "Yeni | " + SEVIYE_BEKLENIYOR;
   satir[seviyeSutun("Gönderim anahtarı") - 1] = temizAnahtar(kayit.gonderimAnahtari);
+  if (kayit.yerel) {
+    var y = kayit.yerel;
+    satir[seviyeSutun("Ülke") - 1] = y.ulke;
+    satir[seviyeSutun("Şehir") - 1] = y.sehir;
+    satir[seviyeSutun("En yakın Diyanet camisi") - 1] = y.yakinCami;
+    satir[seviyeSutun("Camiyi biliyor") - 1] = y.camiBiliyor;
+    satir[seviyeSutun("Görevliyi tanıyor") - 1] = y.gorevliTaniyor;
+    satir[seviyeSutun("Ataşelik bilgisi") - 1] = y.ateselikBilgisi;
+    // Onaylar defterde açık sözcükle durur: boş hücre «sorulmadı» (form sürümü 1), «Hayır» «sorulup verilmedi» demektir.
+    satir[seviyeSutun("Yerel görevli onayı") - 1] = y.onayYerelGorevli ? "Evet" : "Hayır";
+    satir[seviyeSutun("Ataşelik onayı") - 1] = y.onayAteselik ? "Evet" : "Hayır";
+  }
   for (var i = 0; i < BASLIKLAR_SEVIYE.length; i++) if (satir[i] === undefined) satir[i] = "";
   return satir;
 }
@@ -306,6 +360,13 @@ function seviyeSatirdanKayit(basliklar, satir) {
       gunler: ayir(musaitlik[0]), dilim: ayir(musaitlik[1]), bicim: String(al("Biçim") || "").trim()
     },
     not: String(al("Not") || "").trim(),
+    yerel: String(al("Ülke") || "").trim() === "" ? null : {
+      ulke: String(al("Ülke")).trim(), sehir: String(al("Şehir") || "").trim(),
+      yakinCami: String(al("En yakın Diyanet camisi") || "").trim(), camiBiliyor: String(al("Camiyi biliyor") || "").trim(),
+      gorevliTaniyor: String(al("Görevliyi tanıyor") || "").trim(), ateselikBilgisi: String(al("Ataşelik bilgisi") || "").trim(),
+      onayYerelGorevli: String(al("Yerel görevli onayı") || "").trim() === "Evet",
+      onayAteselik: String(al("Ataşelik onayı") || "").trim() === "Evet"
+    },
     atla: seviyeJsonOku(al("Atlananlar")), cevaplar: seviyeJsonOku(al("Cevaplar")),
     ezber: seviyeJsonOku(al("Ezberler")), beyan: seviyeJsonOku(al("Beyanlar")),
     sureSn: Math.round(Number(al("Süre (dk)") || 0) * 60),
@@ -525,6 +586,8 @@ function seviyeRaporVerisi(kayit, sonuc) {
   var atlananlar = [];
   seviyeAlanKodlari().forEach(function (alan) { if (kayit.atla && kayit.atla[alan] === true) atlananlar.push(M.alanAdlari[alan]); });
 
+  var yerel = seviyeYerelRaporu(kayit.yerel);
+
   var okumaBeyanlari = [], uygulamaBeyanlari = [], celiskiler = [];
   SeviyeTesti.BEYAN.forEach(function (b) {
     var secim = kayit.beyan ? kayit.beyan[b.id] : undefined;
@@ -583,7 +646,7 @@ function seviyeRaporVerisi(kayit, sonuc) {
   return {
     ref: kayit.ref, zaman: seviyeGun(kayit.zaman), adSoyad: seviyeSerbest(kayit.adSoyad), eposta: kayit.eposta,
     telefon: kayit.telefon, testDili: dil, sureDk: sureDk, bankaSurumu: kayit.bankaSurumu, rizaSurumu: kayit.rizaSurumu,
-    profil: profil,
+    profil: profil, yerel: yerel,
     okuma: {
       duzey: sonuc.okuma.duzey, ad: SeviyeTesti.OKUMA_DUZEYLERI_TR[sonuc.okuma.duzey],
       atlandi: sonuc.okuma.atlandi, tecvid: sonuc.okuma.tecvid, basamaklar: sonuc.okuma.basamaklar
@@ -600,6 +663,40 @@ function seviyeRaporVerisi(kayit, sonuc) {
     program: { kod: sonuc.program, ad: M.programlar[sonuc.program].ad, aciklama: M.programlar[sonuc.program].aciklama },
     atlananlar: atlananlar, uyarilar: uyarilar, not: seviyeSerbest(kayit.not)
   };
+}
+
+/** «Yer ve yerel destek» bölümü: hoca, eğitimi katılımcıya en yakın yerde planlayabilsin diye.
+    Paylaşım onayı YOKSA bunu açıkça yazar — onaysız hiçbir bilgi başka görevliye ya da Müşavirliğe verilmez. */
+function seviyeYerelRaporu(y) {
+  if (!y) return null;
+  var E = SeviyeTesti.YEREL_ETIKETLERI_TR, EH = SeviyeTesti.EVET_HAYIR_TR;
+  var ulke = SeviyeTesti.ULKE_ADLARI[y.ulke] ? SeviyeTesti.ULKE_ADLARI[y.ulke].tr : String(y.ulke || "");
+  var satirlar = [
+    E.ulke + ": " + ulke,
+    E.sehir + ": " + seviyeSerbest(y.sehir),
+    E.camiBiliyor + ": " + (EH[y.camiBiliyor] || "—"),
+    E.yakinCami + ": " + (y.yakinCami ? seviyeSerbest(y.yakinCami) : "—"),
+    E.gorevliTaniyor + ": " + (EH[y.gorevliTaniyor] || "—"),
+    E.ateselikBilgisi + ": " + (EH[y.ateselikBilgisi] || "—")
+  ];
+  var onaylar = [
+    E.yerelGorevli + ": " + (y.onayYerelGorevli ? "ONAY VERDİ" : "ONAY VERMEDİ"),
+    E.ateselik + ": " + (y.onayAteselik ? "ONAY VERDİ" : "ONAY VERMEDİ")
+  ];
+  var oneriler = [];
+  if (y.ulke !== "BE") {
+    oneriler.push("Başvuru Belçika dışından: eğitim katılımcıya en yakın yerde planlanmalıdır" +
+      (y.onayYerelGorevli ? " — onayı var; en yakın Diyanet camisinin din görevlisiyle görüşülebilir." : " — ancak paylaşım onayı YOK; önce katılımcının kendisiyle görüşünüz, çevrim içi ders seçeneğini sununuz."));
+  } else {
+    oneriler.push("Başvuru Belçika içinden: şehir Marche-en-Famenne'e uzaksa en yakın Diyanet camisiyle yerel planlama düşünülebilir" +
+      (y.onayYerelGorevli ? " (paylaşım onayı var)." : " (paylaşım onayı YOK — önce katılımcıya sorunuz)."));
+  }
+  if (y.camiBiliyor === "hayir") oneriler.push("En yakın Diyanet camisini bilmiyor: ilk görüşmede kendisine en yakın cami bildirilmelidir.");
+  if (y.ateselikBilgisi === "hayir") oneriler.push("Ülkesindeki Din Hizmetleri Müşavirliği / Ataşeliğinden haberdar değil: kısaca tanıtılabilir.");
+  var uyari = (!y.onayYerelGorevli || !y.onayAteselik)
+    ? "Onay verilmeyen paylaşım YAPILMAZ: bu sonuç ve kişi bilgileri onay verilmeyen tarafa (başka din görevlisi / Müşavirlik-Ataşelik) iletilmez."
+    : "";
+  return { satirlar: satirlar, onaylar: onaylar, oneriler: oneriler, uyari: uyari, ulke: ulke, sehir: seviyeSerbest(y.sehir) };
 }
 
 function seviyeBasamakDokumu(basamaklar, onEk) {
@@ -629,6 +726,15 @@ function seviyeImamBloklari(rapor, sinir) {
 
   bloklar.push({ tur: "baslik", metin: "Katılımcı bilgileri" });
   bloklar.push({ tur: "madde", ogeler: rapor.profil.map(function (x) { return x.etiket + ": " + x.deger; }) });
+
+  if (rapor.yerel) {
+    bloklar.push({ tur: "baslik", metin: "Yer ve yerel destek" });
+    bloklar.push({ tur: "madde", ogeler: rapor.yerel.satirlar });
+    bloklar.push({ tur: "paragraf", metin: "**Paylaşım onayları**" });
+    bloklar.push({ tur: "madde", ogeler: rapor.yerel.onaylar });
+    if (rapor.yerel.uyari) bloklar.push({ tur: "not", metin: rapor.yerel.uyari });
+    bloklar.push({ tur: "madde", ogeler: rapor.yerel.oneriler });
+  }
 
   bloklar.push({ tur: "baslik", metin: "Dinî bilgi alanları" });
   bloklar.push({
@@ -698,6 +804,7 @@ function seviyeImamDuzMetin(rapor) {
     s.push(a.ad + ": " + (a.atlandi ? "Bölüm atlandı" : a.duzeyAdi) + " (" + (a.atlandi ? 0 : a.duzey) + "/3)");
   });
   s.push("", "Önerilen program: " + rapor.program.kod + " — " + rapor.program.ad, "");
+  if (rapor.yerel) s.push("Yer: " + rapor.yerel.ulke + " · " + rapor.yerel.sehir, rapor.yerel.onaylar.join(" · "), "");
   var kimlikler = [];
   seviyeAlanKodlari().forEach(function (alan) {
     (rapor.yanlislar[alan] || []).forEach(function (m) { kimlikler.push(m.id); });

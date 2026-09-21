@@ -15,11 +15,16 @@ const toplamTohum = (istatistik as { toplam?: number }).toplam ?? 0;
 const adresSatir = `${site.adres.sokak}, ${site.adres.posta} ${site.adres.sehir}`;
 const haritaUrl = `https://www.openstreetmap.org/?mlat=${site.gps.enlem}&mlon=${site.gps.boylam}#map=17/${site.gps.enlem}/${site.gps.boylam}`;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
-const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)' }[dil];
+const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)', nl: '(externe link)', de: '(externer Link)' }[dil];
+const KURUM_ADI = {
+  diyanetTv: { tr: 'Diyanet TV canlı yayın', fr: 'Diyanet TV en direct', en: 'Diyanet TV live', nl: 'Diyanet TV live', de: 'Diyanet TV live' },
+  diyanet: { tr: 'Diyanet İşleri Başkanlığı', fr: 'Présidence des Affaires religieuses (Türkiye)', en: 'Presidency of Religious Affairs (Türkiye)', nl: 'Presidium voor Godsdienstzaken (Türkiye)', de: 'Präsidium für Religionsangelegenheiten (Türkiye)' },
+  bdv: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium', nl: 'Belgische Diyanetstichting', de: 'Belgische Diyanet-Stiftung' },
+} satisfies Record<string, Record<Dil, string>>;
 const diyanetLinkler = [
-  { h: 'https://www.diyanet.tv/canli-izle', ad: dil === 'tr' ? 'Diyanet TV canlı yayın' : dil === 'en' ? 'Diyanet TV live' : 'Diyanet TV en direct', logo: '/media/dis-logolar/diyanet-tv.png', g: 135, y: 36 },
-  { h: 'https://www.diyanet.gov.tr', ad: dil === 'tr' ? 'Diyanet İşleri Başkanlığı' : dil === 'en' ? 'Presidency of Religious Affairs (Türkiye)' : 'Présidence des Affaires religieuses (Türkiye)', logo: '/media/dis-logolar/diyanet.png', g: 36, y: 36 },
-  { h: 'https://www.diyanet.be', ad: dil === 'tr' ? 'Belçika Diyanet Vakfı' : dil === 'en' ? 'Diyanet Foundation of Belgium' : 'Fondation Diyanet de Belgique', logo: '/media/dis-logolar/bdv.png', g: 143, y: 36 },
+  { h: 'https://www.diyanet.tv/canli-izle', ad: KURUM_ADI.diyanetTv[dil], logo: '/media/dis-logolar/diyanet-tv.png', g: 135, y: 36 },
+  { h: 'https://www.diyanet.gov.tr', ad: KURUM_ADI.diyanet[dil], logo: '/media/dis-logolar/diyanet.png', g: 36, y: 36 },
+  { h: 'https://www.diyanet.be', ad: KURUM_ADI.bdv[dil], logo: '/media/dis-logolar/bdv.png', g: 143, y: 36 },
 ];
 const siteLinkleri = [
   { h: yol(dil, 'vefat'), ad: t('vefat.baslik') },

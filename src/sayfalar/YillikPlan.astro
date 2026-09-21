@@ -12,13 +12,14 @@
  */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import { ceviri, yol } from '../i18n/utils';
+import { ceviri, yerelKodu, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import plan from '../data/yillik-plan-2026-2027.json';
 import materyal from '../data/ders-materyalleri.json';
 const materyalGunleri = new Set((materyal.gunler as { tarih: string }[]).map((g) => g.tarih));
 interface Props { dil: Dil }
-const { dil } = Astro.props;
+/* Açık tür: bu dosyada derleyici Props bağını kuramıyor (dil sessizce any oluyordu); METIN[dil] tip güvenliği buna bağlı. */
+const { dil } = Astro.props as Props;
 const t = ceviri(dil);
 
 const PDF = '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
@@ -36,9 +37,8 @@ const ALAN_ADI: Record<string, string> = {
   kuran: 'Kur’an', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak',
 };
 
-const yerel = dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE';
 const bicim = (iso: string, secenek: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat(yerel, { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
+  new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
 
 /* Ay bölümleri + ay başına sayımlar (filtre açıkken başlık yalan söylemesin diye
    her ders alanının kendi sayısı da veriye gömülür). */
@@ -64,7 +64,8 @@ const durum = !sonraki ? 'bitti' : sonraki.tarih === bugun ? 'bugun' : bugun < i
 
 const toplamDers = dersGunleri.reduce((n, g) => n + g.dersler.length, 0);
 
-const m = dil === 'tr' ? {
+const METIN = {
+  tr: {
   baslik: 'Gün Gün Yıllık Ders Planı 2026-2027',
   alt: `${dersGunleri.length} ders günü, ${toplamDers} ders. Her dersin konusu, kazanımı, konu özeti ve etkinlik önerisi.`,
   aciklama: `Ulu Camii Kur’an Kursu 2026-2027 yıllık ders planı: ${dersGunleri.length} ders günü, ${toplamDers} ders, gün gün konular ve kazanımlar.`,
@@ -79,7 +80,8 @@ const m = dil === 'tr' ? {
   materyal: 'Ders materyalleri: plan (PDF) ve sesli sunumlar →',
   kaynakEt: 'Kaynak', mufredat: 'Müfredat sayfası', pdf: 'PDF indir (A4)',
   kitapNot: 'Ders kitapları velilerce temin edilir', kitapBag: 'temin bilgileri', kitapCapa: '#ders-kitaplari',
-} : dil === 'en' ? {
+  },
+  en: {
   baslik: 'Day-by-Day Lesson Plan 2026-2027',
   alt: `${dersGunleri.length} teaching days, ${toplamDers} lessons. Topic, learning outcome, summary and suggested activity for every lesson.`,
   aciklama: `Ulu Camii Qur’an School 2026-2027 day-by-day lesson plan: ${dersGunleri.length} teaching days, ${toplamDers} lessons.`,
@@ -94,7 +96,8 @@ const m = dil === 'tr' ? {
   materyal: 'Lesson materials: plan (PDF) and audio decks →',
   kaynakEt: 'Kaynak', mufredat: 'Curriculum page', pdf: 'Download PDF (A4)',
   kitapNot: 'Textbooks are obtained by the parents', kitapBag: 'how to obtain', kitapCapa: '#manuels',
-} : {
+  },
+  fr: {
   baslik: 'Plan annuel des cours 2026-2027, jour par jour',
   alt: `${dersGunleri.length} jours de cours, ${toplamDers} leçons. Sujet, acquis, résumé et activité proposée pour chaque leçon.`,
   aciklama: `École coranique Ulu Camii, plan annuel 2026-2027 jour par jour : ${dersGunleri.length} jours de cours, ${toplamDers} leçons.`,
@@ -109,7 +112,41 @@ const m = dil === 'tr' ? {
   materyal: 'Supports de cours : plan (PDF) et présentations sonores →',
   kaynakEt: 'Kaynak', mufredat: 'Page du programme', pdf: 'Télécharger le PDF (A4)',
   kitapNot: 'Les manuels sont à la charge des parents', kitapBag: 'où se les procurer', kitapCapa: '#manuels',
-};
+  },
+  nl: {
+  baslik: 'Jaarplanning van de lessen 2026-2027, dag per dag',
+  alt: `${dersGunleri.length} lesdagen, ${toplamDers} lessen. Onderwerp, leerdoel, samenvatting en voorgestelde activiteit voor elke les.`,
+  aciklama: `Jaarplanning 2026-2027 van de koranschool Ulu Camii, dag per dag: ${dersGunleri.length} lesdagen, ${toplamDers} lessen.`,
+  not: 'De inhoud van de lessen is in het Turks, de onderwijstaal. De vaknamen op de filterknoppen komen overeen met de gekleurde badges bij elke les.',
+  siradaki: 'Eerstvolgende lesdag', bugunEt: 'Vandaag les', baslangicEt: 'De lessen beginnen',
+  bitti: 'Het schooljaar 2026-2027 is afgelopen', bittiA: 'De planning van het nieuwe schooljaar wordt hier gepubliceerd zodra ze klaar is.',
+  gunuGor: 'Bekijk de dag',
+  ayEt: 'Maand', alanEt: 'Vak', tumu: 'Alle',
+  dersGunu: (n: number) => `${n} lesdagen`, dersAdet: (n: number) => `${n} lessen`,
+  hafta: (n: number) => `Week ${n}`, derssiz: 'Geen les',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Lesmateriaal: plan (PDF) en presentaties met geluid →',
+  kaynakEt: 'Kaynak', mufredat: 'Programmapagina', pdf: 'PDF downloaden (A4)',
+  kitapNot: 'De handboeken worden door de ouders aangeschaft', kitapBag: 'waar verkrijgbaar', kitapCapa: '#manuels',
+  },
+  de: {
+  baslik: 'Jahresplan des Unterrichts 2026-2027, Tag für Tag',
+  alt: `${dersGunleri.length} Unterrichtstage, ${toplamDers} Lektionen. Thema, Lernziel, Zusammenfassung und Aktivitätsvorschlag für jede Lektion.`,
+  aciklama: `Jahresplan 2026-2027 der Koranschule Ulu Camii, Tag für Tag: ${dersGunleri.length} Unterrichtstage, ${toplamDers} Lektionen.`,
+  not: 'Der Inhalt des Unterrichts ist auf Türkisch, der Unterrichtssprache. Die Fachnamen auf den Filterschaltflächen entsprechen den farbigen Abzeichen bei jeder Lektion.',
+  siradaki: 'Nächster Unterrichtstag', bugunEt: 'Heute Unterricht', baslangicEt: 'Der Unterricht beginnt',
+  bitti: 'Das Schuljahr 2026-2027 ist beendet', bittiA: 'Der Plan des neuen Schuljahres wird hier veröffentlicht, sobald er fertig ist.',
+  gunuGor: 'Den Tag ansehen',
+  ayEt: 'Monat', alanEt: 'Fach', tumu: 'Alle',
+  dersGunu: (n: number) => `${n} Unterrichtstage`, dersAdet: (n: number) => `${n} Lektionen`,
+  hafta: (n: number) => `Woche ${n}`, derssiz: 'Kein Unterricht',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Unterrichtsmaterial: Plan (PDF) und Präsentationen mit Ton →',
+  kaynakEt: 'Kaynak', mufredat: 'Lehrplanseite', pdf: 'PDF herunterladen (A4)',
+  kitapNot: 'Die Lehrbücher werden von den Eltern besorgt', kitapBag: 'wo erhältlich', kitapCapa: '#manuels',
+  },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
 
 const BLOK: [keyof typeof m.bloklar, string][] = [
   ['kazanim', 'kazanim'], ['ozet', 'ozet'], ['etkinlik', 'etkinlik'], ['ezber', 'ezber'],

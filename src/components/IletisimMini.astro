@@ -8,11 +8,13 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil; site: any }
 const { dil, site } = Astro.props; const t = ceviri(dil);
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
-const m = dil === 'tr'
-  ? { baslik: 'Bize ulaşın', alt: 'Marche-en-Famenne’in merkezinde, tren garına yürüme mesafesinde. Ziyaret, cenaze, nikâh ve her türlü soru için kapımız açık.', sayfa: 'İletişim sayfası', facebook: 'Facebook sayfamız', disKaynak: '(dış bağlantı)' }
-  : dil === 'en'
-  ? { baslik: 'Contact us', alt: 'In the centre of Marche-en-Famenne, a short walk from the train station. For visits, funerals, weddings or any question — our door is open.', sayfa: 'Contact page', facebook: 'Our Facebook page', disKaynak: '(external link)' }
-  : { baslik: 'Nous contacter', alt: 'Au centre de Marche-en-Famenne, à quelques minutes à pied de la gare. Visite, funérailles, mariage ou toute question : notre porte est ouverte.', sayfa: 'Page de contact', facebook: 'Notre page Facebook', disKaynak: '(lien externe)' };
+const m = {
+  tr: { baslik: 'Bize ulaşın', alt: 'Marche-en-Famenne’in merkezinde, tren garına yürüme mesafesinde. Ziyaret, cenaze, nikâh ve her türlü soru için kapımız açık.', sayfa: 'İletişim sayfası', facebook: 'Facebook sayfamız', disKaynak: '(dış bağlantı)' },
+  fr: { baslik: 'Nous contacter', alt: 'Au centre de Marche-en-Famenne, à quelques minutes à pied de la gare. Visite, funérailles, mariage ou toute question : notre porte est ouverte.', sayfa: 'Page de contact', facebook: 'Notre page Facebook', disKaynak: '(lien externe)' },
+  en: { baslik: 'Contact us', alt: 'In the centre of Marche-en-Famenne, a short walk from the train station. For visits, funerals, weddings or any question — our door is open.', sayfa: 'Contact page', facebook: 'Our Facebook page', disKaynak: '(external link)' },
+  nl: { baslik: 'Contacteer ons', alt: 'In het centrum van Marche-en-Famenne, op wandelafstand van het station. Voor een bezoek, een uitvaart, een huwelijk of welke vraag ook — onze deur staat open.', sayfa: 'Contactpagina', facebook: 'Onze Facebookpagina', disKaynak: '(externe link)' },
+  de: { baslik: 'Kontaktieren Sie uns', alt: 'Im Zentrum von Marche-en-Famenne, wenige Gehminuten vom Bahnhof. Für einen Besuch, eine Bestattung, eine Trauung oder jede Frage — unsere Tür steht offen.', sayfa: 'Kontaktseite', facebook: 'Unsere Facebook-Seite', disKaynak: '(externer Link)' },
+}[dil];
 ---
 <section class="bg-(--zemin-2) border-y border-(--cizgi) reveal" aria-labelledby="iletisim-baslik">
   <div class="kapsayici py-12 sm:py-16 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-start">

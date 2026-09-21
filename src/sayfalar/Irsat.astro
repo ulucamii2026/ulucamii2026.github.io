@@ -4,62 +4,104 @@ import Base from '../layouts/Base.astro';
 import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Ikon from '../components/Ikon.astro';
-import { yol } from '../i18n/utils';
+import { yol, yerelKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { siteAyarlari, bugunBrussels } from '../lib/icerik';
+import { siteAyarlari, bugunBrussels, icerikDili } from '../lib/icerik';
 import veri from '../data/irsat-mufredati.json';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
-/** İngilizce sayfa metni İngilizcedir; ancak 36 haftalık müfredat verisi (irsat-mufredati.json) yalnız tr/fr içerir — EN görünümünde program içerikleri Fransızcaya düşer. */
-const icDil = dil === 'en' ? 'fr' : dil;
+/** Sayfa metni ziyaretçinin dilindedir; ancak 36 haftalık müfredat verisi (irsat-mufredati.json) yalnız tr/fr içerir — tr/fr dışındaki dillerde program içerikleri Fransızcaya düşer (icerikDili). */
+const icDil = icerikDili(dil);
 const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 const bugun = bugunBrussels(); // YYYY-MM-DD (Brüksel)
 const haftalar = veri.haftalar as Array<{ n?: number; tarih: string; modul?: number; kuran?: { tr: string; fr: string }; hanimlar?: { tr: string; fr: string }; gencKizlar?: { tr: string; fr: string }; not?: { tr: string; fr: string }; tur?: string; tatil?: { tr: string; fr: string } }>;
 const siradaki = haftalar.find((h) => h.tarih >= bugun);
-const tarihUzun = (iso: string) => new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }).format(new Date(iso + 'T12:00:00'));
-const tarihKisa = (iso: string) => new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE', { day: 'numeric', month: 'short' }).format(new Date(iso + 'T12:00:00'));
-const m = dil === 'tr' ? {
-  etiket: 'Her Çarşamba · Esma AVCI Hoca Hanım', baslik: 'Hanımlar ve Genç Kızlar İrşat Programı',
-  alt: 'Müşavirliğimizce bölgemize görevlendirilen Esma AVCI Hoca Hanım, her Çarşamba camimizde sabah hanımlara, öğleden sonra genç kızlara yönelik program yürütüyor. Ücretsizdir, kayıt gerekmez.',
-  gun: 'Gün', gunD: 'Her Çarşamba', oturum: 'Oturumlar', donem: 'Dönem', donemD: '2 Eylül 2026 – 30 Haziran 2027 · 36 hafta · 6 modül', gorevli: 'Din görevlisi', gorevliD: 'Esma AVCI — Belçika Diyanet Müşavirliği görevlendirmesi', yer: 'Yer', yerD: 'Ulu Camii ders salonu',
-  buHafta: 'Bu Çarşamba', sonraki: 'Sıradaki program', hafta: 'Hafta', kuran: 'Kur’an-ı Kerim', hanimlar: 'Hanımlar · ana ders', genc: 'Genç kızlar · atölye', tatil: 'program yok', modul: 'Modül',
-  akisBaslik: 'Gün akışı', akisAlt: 'Her Çarşamba aynı omurga: Kur’an, ana ders, soru-cevap. Kış aylarında ikindi namazı öğleden sonraki oturuma denk gelir; genç kızlarla birlikte kılınır.',
-  ilkeBaslik: 'Programı taşıyan altı ilke', haritaBaslik: 'Yıl haritası', haritaAlt: 'Hanımlar oturumunun ana ders ekseni. Genç kızlar atölyesi aynı haftalarda paralel temalarla ilerler.',
-  haftalikBaslik: '36 Çarşamba', haftalikAlt: 'Tarihler 2026–2027 eğitim yılının Çarşamba günleridir; Fédération Wallonie-Bruxelles okul tatilleri çıkarılmıştır. Geçmiş haftalar soluk zeminle işaretlidir.',
-  kandil: 'Kandil / dinî gün', ramazan: 'Ramazan', bayram: 'Bayramlaşma',
-  yontemBaslik: 'Yöntem ve takip',
-  yontem: ['İsimsiz soru kutusu: cevaplar bir sonraki hafta; mahrem sorular birebir görüşmeyle.', 'Ev ödevi yok, ev sohbeti var: haftanın konusu evde çocuklarla konuşulmak üzere bir cümleye indirgenir.', 'Genç kızlarda anahtar kavramlar Fransızca da verilir; okulda sorulan sorulara birlikte cevap hazırlanır.', 'Kurban haftasında yardım projesi; yıl sonunda sunumlar, sertifika ve ikram.', 'Duyurular: dernek WhatsApp grupları, Kur’an kursu velileri ve cami panosu (haftalık konu yazılır).'],
-  notBaslik: 'Not', not: 'Bu müfredat örnek ve öneri niteliğindedir; konuların sırası ve ağırlığı cemaatin ihtiyacına göre Esma AVCI Hoca Hanım tarafından yeniden düzenlenebilir. Başlangıç tarihi Müşavirliğimizin görevlendirme yazısının tebliğine bağlıdır.',
-  iletisim: 'Bilgi ve iletişim', iletisimA: 'Program hakkında sorularınız için cami yönetimine ulaşabilirsiniz.', cami: 'Cami', dinGorevlisi: 'Din görevlisi', kurs: 'Kur’an kursu sayfası', anasayfa: 'Haftalık program',
-} : dil === 'en' ? {
-  etiket: 'Every Wednesday · Mrs Esma AVCI', baslik: 'Women and Girls Guidance Programme',
-  alt: 'Mrs Esma AVCI, a religious teacher assigned to our region by our Counsellor’s office, leads a session at our mosque every Wednesday — for women in the morning and for young girls in the afternoon. Free of charge, no registration required.',
-  gun: 'Day', gunD: 'Every Wednesday', oturum: 'Sessions', donem: 'Term', donemD: '2 September 2026 – 30 June 2027 · 36 weeks · 6 modules', gorevli: 'Religious teacher', gorevliD: 'Esma AVCI — assigned by the Diyanet Counsellor’s Office of Belgium', yer: 'Venue', yerD: 'Ulu Camii classroom',
-  buHafta: 'This Wednesday', sonraki: 'Next session', hafta: 'Week', kuran: 'Qur’an', hanimlar: 'Women · main lesson', genc: 'Young girls · workshop', tatil: 'no session', modul: 'Module',
-  akisBaslik: 'Daily schedule', akisAlt: 'Every Wednesday follows the same structure: Qur’an, main lesson, questions and answers. In winter, the afternoon prayer falls during the afternoon session and is performed together with the young girls.',
-  ilkeBaslik: 'Six principles behind the programme', haritaBaslik: 'Year map', haritaAlt: 'The main lesson axis of the women’s session. The young girls’ workshop follows parallel themes in the same weeks.',
-  haftalikBaslik: '36 Wednesdays', haftalikAlt: 'The dates are the Wednesdays of the 2026–2027 school year, excluding Fédération Wallonie-Bruxelles school holidays. Past weeks are shown on a tinted background.',
-  kandil: 'Holy night / religious day', ramazan: 'Ramadan', bayram: 'Eid visits',
-  yontemBaslik: 'Method and follow-up',
-  yontem: ['Anonymous question box: answers given the following week; sensitive questions handled in a private conversation.', 'No homework, but a “home conversation”: the week’s topic is condensed into one sentence to discuss with the children at home.', 'For young girls, key concepts are also given in French; answers to questions raised at school are prepared together.', 'A solidarity project during the week of the sacrifice; presentations, certificates and refreshments at year’s end.', 'Announcements: the association’s WhatsApp groups, Qur’an school parents and the mosque noticeboard (the weekly topic is posted).'],
-  notBaslik: 'Note', not: 'This curriculum is indicative and a proposal; the order and weight of the topics may be rearranged by Mrs Esma AVCI according to the community’s needs. The start date depends on the notification of the official assignment from our Counsellor’s office.',
-  iletisim: 'Information and contact', iletisimA: 'For any questions about the programme, you can contact the mosque committee.', cami: 'Mosque', dinGorevlisi: 'Religious teacher', kurs: 'Qur’an school page', anasayfa: 'Weekly programme',
-  icerikNot: 'Programme content is shown in French; sessions are held in Turkish with French support.',
-} : {
-  etiket: 'Chaque mercredi · Mme Esma AVCI', baslik: 'Programme pour femmes et jeunes filles',
-  alt: 'Mme Esma AVCI, enseignante religieuse affectée à notre région par le Conseil des affaires religieuses (Diyanet), anime chaque mercredi à la mosquée une séance pour les femmes le matin et un atelier pour les jeunes filles l’après-midi. Gratuit, sans inscription.',
-  gun: 'Jour', gunD: 'Chaque mercredi', oturum: 'Séances', donem: 'Période', donemD: '2 septembre 2026 – 30 juin 2027 · 36 semaines · 6 modules', gorevli: 'Enseignante', gorevliD: 'Esma AVCI — affectée par le Conseil des affaires religieuses (Diyanet Belgique)', yer: 'Lieu', yerD: 'Salle de cours de la mosquée Ulu Camii',
-  buHafta: 'Ce mercredi', sonraki: 'Prochaine séance', hafta: 'Semaine', kuran: 'Coran', hanimlar: 'Femmes · cours principal', genc: 'Jeunes filles · atelier', tatil: 'pas de séance', modul: 'Module',
-  akisBaslik: 'Déroulement de la journée', akisAlt: 'Chaque mercredi, la même structure : Coran, cours principal, questions-réponses. En hiver, la prière de l’après-midi tombe pendant l’atelier et se fait ensemble.',
-  ilkeBaslik: 'Les six principes du programme', haritaBaslik: 'Carte de l’année', haritaAlt: 'Axe du cours principal des femmes. L’atelier des jeunes filles suit des thèmes parallèles les mêmes semaines.',
-  haftalikBaslik: '36 mercredis', haftalikAlt: 'Les dates sont les mercredis de l’année scolaire 2026–2027, congés de la Fédération Wallonie-Bruxelles exclus. Les semaines passées sont sur fond teinté.',
-  kandil: 'Nuit bénie / jour religieux', ramazan: 'Ramadan', bayram: 'Visites de l’Aïd',
-  yontemBaslik: 'Méthode et suivi',
-  yontem: ['Boîte à questions anonyme : réponses la semaine suivante ; questions intimes en entretien individuel.', 'Pas de devoirs, mais une « conversation à la maison » : le thème de la semaine se résume en une phrase à partager avec les enfants.', 'Pour les jeunes filles, les notions clés sont aussi données en français ; on prépare ensemble les réponses aux questions posées à l’école.', 'Projet solidaire la semaine du sacrifice ; présentations, certificats et collation en fin d’année.', 'Annonces : groupes WhatsApp de l’association, parents de l’école coranique et panneau de la mosquée (thème hebdomadaire affiché).'],
-  notBaslik: 'Remarque', not: 'Ce programme est indicatif ; l’ordre et le poids des thèmes peuvent être réaménagés par Mme Esma AVCI selon les besoins de la communauté. La date de début dépend de la notification officielle de l’affectation.',
-  iletisim: 'Informations et contact', iletisimA: 'Pour toute question sur le programme, contactez le comité de la mosquée.', cami: 'Mosquée', dinGorevlisi: 'Imam', kurs: 'Page de l’école coranique', anasayfa: 'Programme hebdomadaire',
+const tarihUzun = (iso: string) => new Intl.DateTimeFormat(yerelKodu[dil], { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }).format(new Date(iso + 'T12:00:00'));
+const tarihKisa = (iso: string) => new Intl.DateTimeFormat(yerelKodu[dil], { day: 'numeric', month: 'short' }).format(new Date(iso + 'T12:00:00'));
+interface Metin {
+  etiket: string; baslik: string; alt: string; gun: string; gunD: string; oturum: string; donem: string; donemD: string; gorevli: string; gorevliD: string; yer: string; yerD: string;
+  buHafta: string; sonraki: string; hafta: string; haftaKelime: string; kuran: string; hanimlar: string; genc: string; tatil: string; modul: string;
+  akisBaslik: string; akisAlt: string; ilkeBaslik: string; haritaBaslik: string; haritaAlt: string; haftalikBaslik: string; haftalikAlt: string;
+  kandil: string; ramazan: string; bayram: string; yontemBaslik: string; yontem: string[]; notBaslik: string; not: string;
+  iletisim: string; iletisimA: string; cami: string; dinGorevlisi: string; kurs: string; anasayfa: string; icerikNot?: string;
+}
+const M: Record<Dil, Metin> = {
+  tr: {
+    etiket: 'Her Çarşamba · Esma AVCI Hoca Hanım', baslik: 'Hanımlar ve Genç Kızlar İrşat Programı',
+    alt: 'Müşavirliğimizce bölgemize görevlendirilen Esma AVCI Hoca Hanım, her Çarşamba camimizde sabah hanımlara, öğleden sonra genç kızlara yönelik program yürütüyor. Ücretsizdir, kayıt gerekmez.',
+    gun: 'Gün', gunD: 'Her Çarşamba', oturum: 'Oturumlar', donem: 'Dönem', donemD: '2 Eylül 2026 – 30 Haziran 2027 · 36 hafta · 6 modül', gorevli: 'Din görevlisi', gorevliD: 'Esma AVCI — Belçika Diyanet Müşavirliği görevlendirmesi', yer: 'Yer', yerD: 'Ulu Camii ders salonu',
+    buHafta: 'Bu Çarşamba', sonraki: 'Sıradaki program', hafta: 'Hafta', haftaKelime: 'hafta', kuran: 'Kur’an-ı Kerim', hanimlar: 'Hanımlar · ana ders', genc: 'Genç kızlar · atölye', tatil: 'program yok', modul: 'Modül',
+    akisBaslik: 'Gün akışı', akisAlt: 'Her Çarşamba aynı omurga: Kur’an, ana ders, soru-cevap. Kış aylarında ikindi namazı öğleden sonraki oturuma denk gelir; genç kızlarla birlikte kılınır.',
+    ilkeBaslik: 'Programı taşıyan altı ilke', haritaBaslik: 'Yıl haritası', haritaAlt: 'Hanımlar oturumunun ana ders ekseni. Genç kızlar atölyesi aynı haftalarda paralel temalarla ilerler.',
+    haftalikBaslik: '36 Çarşamba', haftalikAlt: 'Tarihler 2026–2027 eğitim yılının Çarşamba günleridir; Fédération Wallonie-Bruxelles okul tatilleri çıkarılmıştır. Geçmiş haftalar soluk zeminle işaretlidir.',
+    kandil: 'Kandil / dinî gün', ramazan: 'Ramazan', bayram: 'Bayramlaşma',
+    yontemBaslik: 'Yöntem ve takip',
+    yontem: ['İsimsiz soru kutusu: cevaplar bir sonraki hafta; mahrem sorular birebir görüşmeyle.', 'Ev ödevi yok, ev sohbeti var: haftanın konusu evde çocuklarla konuşulmak üzere bir cümleye indirgenir.', 'Genç kızlarda anahtar kavramlar Fransızca da verilir; okulda sorulan sorulara birlikte cevap hazırlanır.', 'Kurban haftasında yardım projesi; yıl sonunda sunumlar, sertifika ve ikram.', 'Duyurular: dernek WhatsApp grupları, Kur’an kursu velileri ve cami panosu (haftalık konu yazılır).'],
+    notBaslik: 'Not', not: 'Bu müfredat örnek ve öneri niteliğindedir; konuların sırası ve ağırlığı cemaatin ihtiyacına göre Esma AVCI Hoca Hanım tarafından yeniden düzenlenebilir. Başlangıç tarihi Müşavirliğimizin görevlendirme yazısının tebliğine bağlıdır.',
+    iletisim: 'Bilgi ve iletişim', iletisimA: 'Program hakkında sorularınız için cami yönetimine ulaşabilirsiniz.', cami: 'Cami', dinGorevlisi: 'Din görevlisi', kurs: 'Kur’an kursu sayfası', anasayfa: 'Haftalık program',
+  },
+  fr: {
+    etiket: 'Chaque mercredi · Mme Esma AVCI', baslik: 'Programme pour femmes et jeunes filles',
+    alt: 'Mme Esma AVCI, enseignante religieuse affectée à notre région par le Conseil des affaires religieuses (Diyanet), anime chaque mercredi à la mosquée une séance pour les femmes le matin et un atelier pour les jeunes filles l’après-midi. Gratuit, sans inscription.',
+    gun: 'Jour', gunD: 'Chaque mercredi', oturum: 'Séances', donem: 'Période', donemD: '2 septembre 2026 – 30 juin 2027 · 36 semaines · 6 modules', gorevli: 'Enseignante', gorevliD: 'Esma AVCI — affectée par le Conseil des affaires religieuses (Diyanet Belgique)', yer: 'Lieu', yerD: 'Salle de cours de la mosquée Ulu Camii',
+    buHafta: 'Ce mercredi', sonraki: 'Prochaine séance', hafta: 'Semaine', haftaKelime: 'semaines', kuran: 'Coran', hanimlar: 'Femmes · cours principal', genc: 'Jeunes filles · atelier', tatil: 'pas de séance', modul: 'Module',
+    akisBaslik: 'Déroulement de la journée', akisAlt: 'Chaque mercredi, la même structure : Coran, cours principal, questions-réponses. En hiver, la prière de l’après-midi tombe pendant l’atelier et se fait ensemble.',
+    ilkeBaslik: 'Les six principes du programme', haritaBaslik: 'Carte de l’année', haritaAlt: 'Axe du cours principal des femmes. L’atelier des jeunes filles suit des thèmes parallèles les mêmes semaines.',
+    haftalikBaslik: '36 mercredis', haftalikAlt: 'Les dates sont les mercredis de l’année scolaire 2026–2027, congés de la Fédération Wallonie-Bruxelles exclus. Les semaines passées sont sur fond teinté.',
+    kandil: 'Nuit bénie / jour religieux', ramazan: 'Ramadan', bayram: 'Visites de l’Aïd',
+    yontemBaslik: 'Méthode et suivi',
+    yontem: ['Boîte à questions anonyme : réponses la semaine suivante ; questions intimes en entretien individuel.', 'Pas de devoirs, mais une « conversation à la maison » : le thème de la semaine se résume en une phrase à partager avec les enfants.', 'Pour les jeunes filles, les notions clés sont aussi données en français ; on prépare ensemble les réponses aux questions posées à l’école.', 'Projet solidaire la semaine du sacrifice ; présentations, certificats et collation en fin d’année.', 'Annonces : groupes WhatsApp de l’association, parents de l’école coranique et panneau de la mosquée (thème hebdomadaire affiché).'],
+    notBaslik: 'Remarque', not: 'Ce programme est indicatif ; l’ordre et le poids des thèmes peuvent être réaménagés par Mme Esma AVCI selon les besoins de la communauté. La date de début dépend de la notification officielle de l’affectation.',
+    iletisim: 'Informations et contact', iletisimA: 'Pour toute question sur le programme, contactez le comité de la mosquée.', cami: 'Mosquée', dinGorevlisi: 'Imam', kurs: 'Page de l’école coranique', anasayfa: 'Programme hebdomadaire',
+  },
+  en: {
+    etiket: 'Every Wednesday · Mrs Esma AVCI', baslik: 'Women and Girls Guidance Programme',
+    alt: 'Mrs Esma AVCI, a religious teacher assigned to our region by our Counsellor’s office, leads a session at our mosque every Wednesday — for women in the morning and for young girls in the afternoon. Free of charge, no registration required.',
+    gun: 'Day', gunD: 'Every Wednesday', oturum: 'Sessions', donem: 'Term', donemD: '2 September 2026 – 30 June 2027 · 36 weeks · 6 modules', gorevli: 'Religious teacher', gorevliD: 'Esma AVCI — assigned by the Diyanet Counsellor’s Office of Belgium', yer: 'Venue', yerD: 'Ulu Camii classroom',
+    buHafta: 'This Wednesday', sonraki: 'Next session', hafta: 'Week', haftaKelime: 'weeks', kuran: 'Qur’an', hanimlar: 'Women · main lesson', genc: 'Young girls · workshop', tatil: 'no session', modul: 'Module',
+    akisBaslik: 'Daily schedule', akisAlt: 'Every Wednesday follows the same structure: Qur’an, main lesson, questions and answers. In winter, the afternoon prayer falls during the afternoon session and is performed together with the young girls.',
+    ilkeBaslik: 'Six principles behind the programme', haritaBaslik: 'Year map', haritaAlt: 'The main lesson axis of the women’s session. The young girls’ workshop follows parallel themes in the same weeks.',
+    haftalikBaslik: '36 Wednesdays', haftalikAlt: 'The dates are the Wednesdays of the 2026–2027 school year, excluding Fédération Wallonie-Bruxelles school holidays. Past weeks are shown on a tinted background.',
+    kandil: 'Holy night / religious day', ramazan: 'Ramadan', bayram: 'Eid visits',
+    yontemBaslik: 'Method and follow-up',
+    yontem: ['Anonymous question box: answers given the following week; sensitive questions handled in a private conversation.', 'No homework, but a “home conversation”: the week’s topic is condensed into one sentence to discuss with the children at home.', 'For young girls, key concepts are also given in French; answers to questions raised at school are prepared together.', 'A solidarity project during the week of the sacrifice; presentations, certificates and refreshments at year’s end.', 'Announcements: the association’s WhatsApp groups, Qur’an school parents and the mosque noticeboard (the weekly topic is posted).'],
+    notBaslik: 'Note', not: 'This curriculum is indicative and a proposal; the order and weight of the topics may be rearranged by Mrs Esma AVCI according to the community’s needs. The start date depends on the notification of the official assignment from our Counsellor’s office.',
+    iletisim: 'Information and contact', iletisimA: 'For any questions about the programme, you can contact the mosque committee.', cami: 'Mosque', dinGorevlisi: 'Religious teacher', kurs: 'Qur’an school page', anasayfa: 'Weekly programme',
+    icerikNot: 'Programme content is shown in French; sessions are held in Turkish with French support.',
+  },
+  nl: {
+    etiket: 'Elke woensdag · Mevrouw Esma AVCI', baslik: 'Programma voor vrouwen en meisjes',
+    alt: 'Mevrouw Esma AVCI, een godsdienstlerares die door onze Raad voor Religieuze Zaken aan onze regio is toegewezen, leidt elke woensdag in onze moskee een sessie voor vrouwen in de ochtend en een workshop voor jonge meisjes in de namiddag. Gratis, geen inschrijving nodig.',
+    gun: 'Dag', gunD: 'Elke woensdag', oturum: 'Sessies', donem: 'Periode', donemD: '2 september 2026 – 30 juni 2027 · 36 weken · 6 modules', gorevli: 'Godsdienstlerares', gorevliD: 'Esma AVCI — toegewezen door de Raad voor Religieuze Zaken (Diyanet België)', yer: 'Locatie', yerD: 'Leslokaal van Ulu Camii',
+    buHafta: 'Deze woensdag', sonraki: 'Volgende sessie', hafta: 'Week', haftaKelime: 'weken', kuran: 'Koran', hanimlar: 'Vrouwen · hoofdles', genc: 'Jonge meisjes · workshop', tatil: 'geen sessie', modul: 'Module',
+    akisBaslik: 'Dagindeling', akisAlt: 'Elke woensdag volgt dezelfde structuur: Koran, hoofdles, vragen en antwoorden. In de winter valt het middaggebed tijdens de namiddagsessie en wordt het samen met de jonge meisjes verricht.',
+    ilkeBaslik: 'Zes principes achter het programma', haritaBaslik: 'Jaaroverzicht', haritaAlt: 'De as van de hoofdles voor de vrouwensessie. De workshop voor jonge meisjes volgt in dezelfde weken parallelle thema’s.',
+    haftalikBaslik: '36 woensdagen', haftalikAlt: 'De data zijn de woensdagen van het schooljaar 2026–2027, exclusief de schoolvakanties van de Fédération Wallonie-Bruxelles. Voorbije weken zijn met een getinte achtergrond aangeduid.',
+    kandil: 'Gezegende nacht / religieuze dag', ramazan: 'Ramadan', bayram: 'Feestbezoeken',
+    yontemBaslik: 'Methode en opvolging',
+    yontem: ['Anonieme vragenbox: antwoorden de week erna; gevoelige vragen in een persoonlijk gesprek.', 'Geen huiswerk, wel een “gesprek thuis”: het thema van de week wordt samengevat in één zin om thuis met de kinderen te bespreken.', 'Voor de jonge meisjes worden de kernbegrippen ook in het Frans gegeven; antwoorden op vragen die op school worden gesteld, worden samen voorbereid.', 'Solidariteitsproject in de week van het offerfeest; presentaties, getuigschriften en versnapering aan het einde van het jaar.', 'Mededelingen: WhatsApp-groepen van de vereniging, ouders van de koranschool en het mededelingenbord van de moskee (het wekelijkse thema wordt opgehangen).'],
+    notBaslik: 'Opmerking', not: 'Dit programma is indicatief; de volgorde en het gewicht van de onderwerpen kunnen door mevrouw Esma AVCI worden aangepast naargelang de behoeften van de gemeenschap. De startdatum hangt af van de kennisgeving van de officiële opdracht door onze Raad voor Religieuze Zaken.',
+    iletisim: 'Informatie en contact', iletisimA: 'Voor vragen over het programma kunt u contact opnemen met het moskeebestuur.', cami: 'Moskee', dinGorevlisi: 'Imam', kurs: 'Pagina van de koranschool', anasayfa: 'Weekprogramma',
+    icerikNot: 'De programma-inhoud wordt in het Frans getoond; de sessies vinden plaats in het Turks met Franse ondersteuning.',
+  },
+  de: {
+    etiket: 'Jeden Mittwoch · Frau Esma AVCI', baslik: 'Programm für Frauen und Mädchen',
+    alt: 'Frau Esma AVCI, eine von unserem Botschaftsrat für religiöse Angelegenheiten unserer Region zugewiesene Religionslehrerin, leitet jeden Mittwoch in unserer Moschee eine Sitzung für Frauen am Vormittag und einen Workshop für junge Mädchen am Nachmittag. Kostenlos, keine Anmeldung erforderlich.',
+    gun: 'Tag', gunD: 'Jeden Mittwoch', oturum: 'Sitzungen', donem: 'Zeitraum', donemD: '2. September 2026 – 30. Juni 2027 · 36 Wochen · 6 Module', gorevli: 'Religionslehrerin', gorevliD: 'Esma AVCI — zugewiesen durch den Botschaftsrat für religiöse Angelegenheiten (Diyanet Belgien)', yer: 'Ort', yerD: 'Unterrichtsraum der Ulu-Camii-Moschee',
+    buHafta: 'Diesen Mittwoch', sonraki: 'Nächste Sitzung', hafta: 'Woche', haftaKelime: 'Wochen', kuran: 'Koran', hanimlar: 'Frauen · Hauptunterricht', genc: 'Junge Mädchen · Workshop', tatil: 'keine Sitzung', modul: 'Modul',
+    akisBaslik: 'Tagesablauf', akisAlt: 'Jeden Mittwoch gilt derselbe Aufbau: Koran, Hauptunterricht, Fragen und Antworten. Im Winter fällt das Nachmittagsgebet in die Nachmittagssitzung und wird gemeinsam mit den jungen Mädchen verrichtet.',
+    ilkeBaslik: 'Sechs Prinzipien des Programms', haritaBaslik: 'Jahresübersicht', haritaAlt: 'Die Achse des Hauptunterrichts der Frauensitzung. Der Workshop der jungen Mädchen folgt in denselben Wochen parallelen Themen.',
+    haftalikBaslik: '36 Mittwoche', haftalikAlt: 'Die Termine sind die Mittwoche des Schuljahres 2026–2027, ohne die Schulferien der Fédération Wallonie-Bruxelles. Vergangene Wochen sind mit getöntem Hintergrund gekennzeichnet.',
+    kandil: 'Gesegnete Nacht / religiöser Tag', ramazan: 'Ramadan', bayram: 'Festbesuche',
+    yontemBaslik: 'Methode und Begleitung',
+    yontem: ['Anonyme Fragenbox: Antworten in der Folgewoche; sensible Fragen im Einzelgespräch.', 'Keine Hausaufgaben, aber ein „Gespräch zu Hause“: Das Thema der Woche wird auf einen Satz verdichtet, der zu Hause mit den Kindern besprochen wird.', 'Für die jungen Mädchen werden die Schlüsselbegriffe auch auf Französisch vermittelt; Antworten auf in der Schule gestellte Fragen werden gemeinsam vorbereitet.', 'Solidaritätsprojekt in der Woche des Opferfestes; Präsentationen, Urkunden und ein kleiner Imbiss zum Jahresende.', 'Mitteilungen: WhatsApp-Gruppen des Vereins, Eltern der Koranschule und die Anschlagtafel der Moschee (das Wochenthema wird ausgehängt).'],
+    notBaslik: 'Hinweis', not: 'Dieses Programm ist als Orientierung gedacht; Reihenfolge und Gewichtung der Themen können von Frau Esma AVCI je nach den Bedürfnissen der Gemeinde angepasst werden. Der Starttermin hängt von der Bekanntgabe der offiziellen Zuweisung durch unseren Botschaftsrat ab.',
+    iletisim: 'Information und Kontakt', iletisimA: 'Bei Fragen zum Programm können Sie sich an den Moscheevorstand wenden.', cami: 'Moschee', dinGorevlisi: 'Imam', kurs: 'Seite der Koranschule', anasayfa: 'Wochenprogramm',
+    icerikNot: 'Die Programminhalte werden auf Französisch angezeigt; die Sitzungen finden auf Türkisch mit französischer Unterstützung statt.',
+  },
 };
+const m = M[dil];
 const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(--vurgu-2)' : tur === 'ramazan' ? 'bg-(--vurgu)/12 text-(--vurgu-metin)' : tur === 'bayram' ? 'bg-[color-mix(in_oklab,var(--color-ochre)_18%,transparent)] text-(--metin)' : '');
 ---
 <Base baslik={m.baslik} dil={dil} aciklama={m.alt}>
@@ -135,7 +177,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
         {veri.moduller.map((md) => (
           <li class="kart-kagit p-4 flex gap-3">
             <span class="font-serif text-3xl font-semibold text-(--vurgu) leading-none">{md.n}</span>
-            <span><span class="etiket block">{md.ay[icDil]} · {md.bitis - md.baslangic + 1} {dil === 'tr' ? 'hafta' : dil === 'en' ? 'weeks' : 'semaines'}</span><span class="block font-semibold">{md.baslik[icDil]}</span><span class="block text-sm text-(--metin-2)">{md.alan[icDil]}</span></span>
+            <span><span class="etiket block">{md.ay[icDil]} · {md.bitis - md.baslangic + 1} {m.haftaKelime}</span><span class="block font-semibold">{md.baslik[icDil]}</span><span class="block text-sm text-(--metin-2)">{md.alan[icDil]}</span></span>
           </li>
         ))}
       </ol>
@@ -152,7 +194,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
       </ul>
     </div>
     <p class="mt-2 text-(--metin-2) max-w-[70ch]">{m.haftalikAlt}</p>
-    {dil === 'en' && <p class="bilgi mt-4 text-sm">{m.icerikNot}</p>}
+    {icDil !== dil && m.icerikNot && <p class="bilgi mt-4 text-sm">{m.icerikNot}</p>}
     <div class="mt-6 border border-(--cizgi) rounded-(--radius-kose) overflow-hidden bg-(--zemin)">
       <div class="hidden lg:grid grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1.3fr)] gap-4 px-4 py-2 bg-(--zemin-2) border-b border-(--cizgi)">
         <span class="etiket">{m.hafta}</span><span class="etiket">{m.kuran}</span><span class="etiket">{m.hanimlar}</span><span class="etiket">{m.genc}</span>

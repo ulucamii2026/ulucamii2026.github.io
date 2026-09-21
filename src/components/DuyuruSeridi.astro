@@ -14,7 +14,9 @@ import type { Dil, SayfaAnahtari } from '../i18n/ui';
 import { yollar } from '../i18n/ui';
 /* baslangic/son: süreli mesajlar (ör. hac ön kaydı) o günler dışında derlemeye girmez; site her gün
    yeniden yayımlandığı için (deploy.yml cron) kimsenin elle silmesi gerekmez. `son` günü dâhildir. */
-interface Mesaj { metin: { tr: string; fr: string; en?: string }; sayfa?: string; baglanti?: string; baslangic?: Date; son?: Date }
+/* site.yaml yalnız tr/fr (ve varsa en) sağlar; nl/de girilmemişse — bugün olduğu gibi —
+   İngilizcedeki davranışın aynısıyla Fransızcaya düşer. */
+interface Mesaj { metin: { tr: string; fr: string; en?: string; nl?: string; de?: string }; sayfa?: string; baglanti?: string; baslangic?: Date; son?: Date }
 interface Props { dil: Dil; mesajlar: Mesaj[] }
 const { dil, mesajlar } = Astro.props;
 const metni = (mesaj: Mesaj) => mesaj.metin[dil] ?? mesaj.metin.fr ?? mesaj.metin.tr;

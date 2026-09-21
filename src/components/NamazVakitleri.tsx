@@ -3,6 +3,7 @@ import { hicriCevir } from '../i18n/hicri';
 import { SIRA, TZ, durumHesapla, haftaGunu, sureMetni, type Gun, type Vakit } from '../lib/namaz';
 import { useDakikaSaati } from '../lib/saat';
 import type { Dil } from '../i18n/ui';
+import { yerelKodu } from '../i18n/utils';
 
 export type { Gun };
 interface Props {
@@ -21,19 +22,10 @@ interface Props {
   cumaAciklama?: string;
 }
 
-/** sureMetni yalnız tr/fr biliyor (src/lib/namaz.ts kapsam dışı) — İngilizce burada yerelce eklenir. */
-function sureMetniYerel(dk: number, dil: Dil): string {
-  if (dil === 'en') {
-    const sa = Math.floor(dk / 60), d = dk % 60;
-    return sa > 0 ? `${sa}h ${String(d).padStart(2, '0')}m` : `${d} min`;
-  }
-  return sureMetni(dk, dil);
-}
-
 export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false, vurgulu = false, cumaEtiket, cumaKisaEtiket, cumaSaati, cumaAciklama }: Props) {
   const simdi = useDakikaSaati();
   const d = durumHesapla(gunler, simdi);
-  const yerelKod = dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE';
+  const yerelKod = yerelKodu[dil];
   /* Intl.DateTimeFormat kurulumu pahalıdır; dile göre bir kez kurulur (her render'da değil). */
   const bicimci = useMemo(
     () => new Intl.DateTimeFormat(yerelKod, { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
@@ -45,7 +37,13 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
      (yerel 'T12:00:00' UTC-11 gibi dilimlerde bir gün kaydırıyordu). */
   const gunOrtasi = new Date(bugun.tarih + 'T12:00:00Z');
   const tarihStr = bicimci.format(gunOrtasi);
-  const uyari = dil === 'tr' ? 'Vakit tablosu güncellenmeyi bekliyor — lütfen cami ilan panosundaki çizelgeye bakınız.' : dil === 'en' ? 'The prayer schedule is awaiting an update — please check the notice board at the mosque.' : 'Le tableau des horaires attend une mise à jour — veuillez consulter l’affichage à la mosquée.';
+  const uyari = {
+    tr: 'Vakit tablosu güncellenmeyi bekliyor — lütfen cami ilan panosundaki çizelgeye bakınız.',
+    fr: 'Le tableau des horaires attend une mise à jour — veuillez consulter l’affichage à la mosquée.',
+    en: 'The prayer schedule is awaiting an update — please check the notice board at the mosque.',
+    nl: 'Het gebedsrooster wacht op een update — raadpleeg het uithangbord in de moskee.',
+    de: 'Der Gebetsplan wartet auf eine Aktualisierung — bitte beachten Sie den Aushang in der Moschee.',
+  }[dil];
   /* Cuma: cemaatin en sık sorduğu saat. Sabit bir Cuma saati girilmemişse (site.yaml → cumaSaati)
      o günün Diyanet ÖĞLE vaktini gösteririz — bu bir varsayım değil, caminin fiilî uygulamasıdır
      ("Öğle vaktinde", site.yaml haftalikProgram). Uydurma bir saat asla yazılmaz. */
@@ -85,7 +83,7 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
             tablodaki vurgulu hücrede zaten var, üçüncü kez tekrarlanmaz (4 Eylül 2026 denetimi). */}
         {siradaki && !vurgulu && (
           <p>
-            <span class="etiket">{etiketler.siradaki}:</span> <strong class="text-(--metin)">{etiketler[siradaki.vakit]} {siradaki.saat}</strong> · <span class="mono">{sureMetniYerel(siradaki.kalanDk, dil)}</span> {etiketler.kalan}
+            <span class="etiket">{etiketler.siradaki}:</span> <strong class="text-(--metin)">{etiketler[siradaki.vakit]} {siradaki.saat}</strong> · <span class="mono">{sureMetni(siradaki.kalanDk, dil)}</span> {etiketler.kalan}
           </p>
         )}
         {cumaGoster && (

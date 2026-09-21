@@ -8,6 +8,8 @@ import type { Dil } from '../../i18n/ui';
 import { yol } from '../../i18n/utils';
 import { formMetinleri } from '../../i18n/formlar';
 import { seviyeMetinleri, RIZA_SURUMU } from '../../i18n/seviye-testi';
+import { seviyeYerelMetinleri } from '../../i18n/seviye-yerel';
+import { YEREL_DEGERLERI, YEREL_SINIRLARI, ULKE_ADLARI } from '../../lib/seviye-testi/yerel';
 import { MADDELER, EZBER, BEYAN, SORU_BANKASI_SURUMU } from '../../lib/seviye-testi/index.ts';
 import type { BilgiAlani } from '../../lib/seviye-testi/tipler.ts';
 import FormAdimlar from './FormAdimlar.astro';
@@ -19,7 +21,9 @@ interface Props { dil: Dil; uc: string }
 const { dil, uc } = Astro.props;
 const m = seviyeMetinleri[dil];
 const o = formMetinleri(dil).ortak;
-/** Sesli okuma klibi (varsa): kimlik metnin özetidir, manifest yalnız diskteki klipleri listeler. */
+/** Sesli okuma klibi (varsa): kimlik metnin özetidir, manifest yalnız diskteki klipleri listeler.
+    Klibi henüz üretilmemiş dilde (nl, de) manifestte anahtar yoktur → undefined döner, hoparlör
+    düğmesi hiç basılmaz; form ve sesli okuma betiği bundan etkilenmez. */
 const okuYolu = (id: string): string | undefined => {
   const kimlik = (sesler.diller as Record<string, Record<string, string>>)[dil]?.[id];
   return kimlik ? `/media/ses/seviye/${dil}/${kimlik}.mp3` : undefined;
@@ -39,7 +43,7 @@ const bolumler: { alan: BilgiAlani; id: string }[] = [
 
 /** Adım motoru için bölüm kümeleri; sıra `m.adimlar.adimlar` ile birebir aynıdır. */
 const adimGruplari = [
-  ['b-profil'], ['b-okuma'], ['b-kuran-bilgi', 'b-ezber'], ['b-itikat'], ['b-namaz'],
+  ['b-profil', 'b-yerel'], ['b-okuma'], ['b-kuran-bilgi', 'b-ezber'], ['b-itikat'], ['b-namaz'],
   ['b-ibadet'], ['b-siyer'], ['b-ahlak'], ['b-uygulama'], ['b-ozet', 'b-onay'],
 ];
 
@@ -78,6 +82,15 @@ const profilTekli = [
   { ad: 'dersDili', etiket: m.profil.dersDili, secenekler: m.profil.dersDiliSecenekleri },
   { ad: 'bicim', etiket: m.profil.bicim, secenekler: m.profil.bicimSecenekleri },
 ];
+/* Form sürümü 2 (21 Eyl 2026): başvuranın yeri ve yerel destek — değerler src/lib/seviye-testi/yerel.ts tek kaynağından. */
+const y = seviyeYerelMetinleri[dil];
+const evetHayir = [{ deger: 'evet', ad: y.evet }, { deger: 'hayir', ad: y.hayir }];
+const yerelTekli = [
+  { ad: 'camiBiliyor', etiket: y.camiBiliyor, yardim: '' },
+  { ad: 'gorevliTaniyor', etiket: y.gorevliTaniyor, yardim: '' },
+  { ad: 'ateselikBilgisi', etiket: y.ateselikBilgisi, yardim: y.ateselikYardim },
+];
+const ulkeler = YEREL_DEGERLERI.ulke.map((kod) => ({ kod, ad: ULKE_ADLARI[kod][dil] }));
 const profilCoklu = [
   { ad: 'hedefler', etiket: m.profil.hedefler, yardim: m.profil.hedeflerYardim, secenekler: m.profil.hedefSecenekleri },
   { ad: 'gunler', etiket: m.profil.gunler, yardim: '', secenekler: m.profil.gunSecenekleri },
@@ -89,10 +102,11 @@ const ozetSatirlari = [
   { anahtar: 'eposta', etiket: m.profil.eposta },
   { anahtar: 'telefon', etiket: m.profil.telefon },
   { anahtar: 'dersDili', etiket: m.profil.dersDili },
+  { anahtar: 'yer', etiket: seviyeYerelMetinleri[dil].ozetYer },
 ];
 ---
-<form class="ucf st-form mt-8" data-form="seviye" data-form-surumu="1" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-SEVIYE-2026"
-      data-asgari-servis-surumu="38" data-asgari-servis-bayrak="seviyeTesti" data-taslak="ulucamii:seviye:v1" data-taslak-gun="14"
+<form class="ucf st-form mt-8" data-form="seviye" data-form-surumu="2" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-SEVIYE-2026"
+      data-asgari-servis-surumu="39" data-asgari-servis-bayrak="seviyeTesti" data-taslak="ulucamii:seviye:v1" data-taslak-gun="14"
       data-eposta-alani="profil.eposta" data-banka-surumu={SORU_BANKASI_SURUMU} data-riza-surumu={RIZA_SURUMU} novalidate>
   <script is:inline type="application/json" data-metin set:html={metinJson} />
   <script is:inline type="application/json" data-metin-seviye set:html={seviyeJson} />
@@ -171,6 +185,63 @@ const ozetSatirlari = [
         <p class="sayac" data-sayac-metin aria-hidden="true"></p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
+    </div>
+  </section>
+
+  <!-- Nereden başvuruyorsunuz? (ilk adımın ikinci bölümü) -->
+  <section class="ucf-bolum" id="b-yerel" aria-labelledby="h-yerel">
+    <h2 id="h-yerel">{y.baslik}</h2>
+    <p class="bolum-not">{y.giris}</p>
+    <div class="ucf-izgara">
+      <div data-alan>
+        <label for="st-ulke">{y.ulke} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <select id="st-ulke" name="yerel.ulke" required autocomplete="country">
+          <option value="">{y.ulkeSec}</option>
+          {ulkeler.map((u) => <option value={u.kod}>{u.ad}</option>)}
+        </select>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <div data-alan>
+        <label for="st-sehir">{y.sehir} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="st-sehir" name="yerel.sehir" type="text" required maxlength={YEREL_SINIRLARI.sehir} autocomplete="address-level2" />
+        <p class="yardim">{y.sehirYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      {yerelTekli.slice(0, 1).map((grup) => (
+        <fieldset data-alan class="tam">
+          <legend>{grup.etiket} <span class="zorunlu" aria-hidden="true">*</span></legend>
+          <div class="st-secenekler">
+            {evetHayir.map((s, i) => (
+              <span class="secenek st-sik">
+                <input type="radio" id={secenekId(grup.ad, s.deger)} name={`yerel.${grup.ad}`} value={s.deger} required={i === 0} />
+                <label for={secenekId(grup.ad, s.deger)}>{s.ad}</label>
+              </span>
+            ))}
+          </div>
+          <p class="hata" aria-live="polite" hidden></p>
+        </fieldset>
+      ))}
+      <div data-alan class="tam">
+        <label for="st-yakin-cami">{y.yakinCami} <span class="istege">({o.istegeBagli})</span></label>
+        <input id="st-yakin-cami" name="yerel.yakinCami" type="text" maxlength={YEREL_SINIRLARI.yakinCami} />
+        <p class="yardim">{y.yakinCamiYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      {yerelTekli.slice(1).map((grup) => (
+        <fieldset data-alan class="tam">
+          <legend>{grup.etiket} <span class="zorunlu" aria-hidden="true">*</span></legend>
+          {grup.yardim && <p class="yardim">{grup.yardim}</p>}
+          <div class="st-secenekler">
+            {evetHayir.map((s, i) => (
+              <span class="secenek st-sik">
+                <input type="radio" id={secenekId(grup.ad, s.deger)} name={`yerel.${grup.ad}`} value={s.deger} required={i === 0} />
+                <label for={secenekId(grup.ad, s.deger)}>{s.ad}</label>
+              </span>
+            ))}
+          </div>
+          <p class="hata" aria-live="polite" hidden></p>
+        </fieldset>
+      ))}
     </div>
   </section>
 
@@ -329,6 +400,24 @@ const ozetSatirlari = [
         </div>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
+      {/* İsteğe bağlı paylaşım onayları: işaretsiz gelir, `required` YOKTUR, taslağa yazılmaz (onay.* hassas alandır). */}
+      <fieldset class="tam st-paylasim" aria-describedby="st-paylasim-giris">
+        <legend>{y.onayBaslik}</legend>
+        <p class="yardim" id="st-paylasim-giris">{y.onayGiris}</p>
+        <div data-alan>
+          <div class="onay-kutu">
+            <input id="st-onay-yerel" type="checkbox" name="onay.yerelGorevli" />
+            <label for="st-onay-yerel">{y.onayYerelGorevli}</label>
+          </div>
+        </div>
+        <div data-alan>
+          <div class="onay-kutu">
+            <input id="st-onay-ateselik" type="checkbox" name="onay.ateselik" />
+            <label for="st-onay-ateselik">{y.onayAteselik}</label>
+          </div>
+        </div>
+        <p class="yardim">{y.onayNot}</p>
+      </fieldset>
       <div class="tam ucf-not st-bilgilendirme">
         <span class="simge" aria-hidden="true">🔒</span>
         <div>

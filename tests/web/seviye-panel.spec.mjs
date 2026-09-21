@@ -107,12 +107,12 @@ async function gasTaklidi(page, secenekler = {}) {
         if (durum.silYaniti.ok) durum.seviyeSatirlari = durum.seviyeSatirlari.filter((r) => r[1] !== govde.ref);
         return route.fulfill({ json: durum.silYaniti });
       }
-      return route.fulfill({ json: { ok: true, surum: 38 } });
+      return route.fulfill({ json: { ok: true, surum: 39 } });
     }
     const islem = new URL(request.url()).searchParams.get('islem');
     if (islem === 'liste') {
       const yanit = {
-        ok: true, surum: 38,
+        ok: true, surum: 39,
         kayitlar: {
           basliklar: ['Zaman damgası', 'Referans', 'Öğrenci adı', 'Öğrenci soyadı', 'Durum'],
           satirlar: [['18.09.2026 10:00', 'UC-2099-0001', 'Kayıt', 'TESTOGLU', 'Yeni kayıt']],
@@ -126,7 +126,7 @@ async function gasTaklidi(page, secenekler = {}) {
       detayIstekleri.push(new URL(request.url()).searchParams.get('ref'));
       return route.fulfill({ json: durum.detayYaniti });
     }
-    return route.fulfill({ json: { ok: true, surum: 38 } });
+    return route.fulfill({ json: { ok: true, surum: 39 } });
   });
 
   return { durum, gonderilenler, detayIstekleri };

@@ -1,3 +1,8 @@
+/* v39 — 21 Eyl 2026: site dilleri tr/fr/en + nl/de. SITE_DILLERI tek beyaz liste (kayıt, ihtida, pdf-ornek); dile bağlı bütün
+   sözlükler (ETIKET_KAYIT, ETIKET_IHTIDA, ONAY_METIN, ENUM_*, BOLUM_BASLIK, EVET_HAYIR, ihtida/kayıt e-posta metinleri) beş dilli; tr/fr/en
+   çıktıları birebir aynı (eşdeğerlik sınaması). Veli İLETİŞİM dili (tr|fr) ve TÖREN dilleri bilerek genişlemedi. Seviye testi form sürümü 2:
+   başvuranın yeri (ülke, şehir, en yakın Diyanet camisi, görevliyi tanıma, Müşavirlik/Ataşelik bilgisi) + iki İSTEĞE BAĞLI paylaşım onayı;
+   defterin SONUNA sekiz sütun; hoca raporunda «Yer ve yerel destek» bölümü; otomatik aktarım YOK (seviye-testi-isleri.gs). */
 /* v36 — 14 Eyl 2026 (3): veli-cuma gönderim durumları cuma başına TEK Script Property (veliCumaDurumlar/veliCumaDurumYaz),
    çeviri önbelleği CacheService, veliCumaOzellikBakim (eski tekil kayıtları katlar, 12 haftadan eskileri siler; her cuma
    gönderiminin sonunda kendiliğinden); panel anahtarlı POST { tur: "ozellik-bakim" } ucu; veli-mail-listesi'nin öğrenci
@@ -47,7 +52,7 @@
  *     EL YAZISI görünümünde basılır (Caveat, SIL OFL; dosyanın sonunda base64 gömülü TTF —
  *     dönüştürücü dış yazı tipi adresi yüklemez, gömülü olan tek yol). Seçenekli alanlar
  *     basılı kare kutu + kalemle çarpı, onaylar kutu, sonda tarih + imza satırı.
- *     ?islem=pdf-ornek&anahtar=…&dil=tr|fr|en[&saglik=0][&gizle=1][&sade=1] örnek veriyle
+ *     ?islem=pdf-ornek&anahtar=…&dil=tr|fr|en|nl|de[&saglik=0][&gizle=1][&sade=1] örnek veriyle
  *     şablon önizlemesi döndürür (defter/Drive/e-postaya dokunmaz). Dönüşüm gömülü yazı tipiyle
  *     takılırsa kayitPdfUret() aynı belgeyi yazı tipsiz üretir (kayıt PDF yüzünden düşmez).
  *     ?islem=arsiv-saglik-gizle&anahtar=…[&uygula=1]: sağlık notu olan kayıtların Drive arşiv PDF'ini
@@ -77,7 +82,12 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 38;
+var SURUM = 39;
+/* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
+   ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
+   DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
+   ayrı ve dar kümelerdir (sırasıyla tr|fr ve tr|fr|en|ar); onlar bu listeyle genişlemez. */
+var SITE_DILLERI = ["tr", "fr", "en", "nl", "de"];
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
 
 /* ===================================================================
@@ -285,7 +295,7 @@ function adSadelestirEsit(a, b) {
   return sa.length > 0 && sa === sb;
 }
 
-/** {tr,fr,en} sözlüğünden dile göre "TR" veya "TR / İkincilDil" metni üretir. */
+/** {tr,fr,en,nl,de} sözlüğünden dile göre "TR" veya "TR / İkincilDil" metni üretir. */
 function ikiDilliEtiket(sozluk, dil) {
   var e = sozluk || {};
   var tr = e.tr || "";
@@ -293,7 +303,7 @@ function ikiDilliEtiket(sozluk, dil) {
   return kacis(tr) + " / " + kacis(e[dil]);
 }
 
-/** Kod → {tr,fr,en} eşlemesinden görüntülenecek değeri üretir; eşleşme yoksa kodu olduğu gibi gösterir. */
+/** Kod → {tr,fr,en,nl,de} eşlemesinden görüntülenecek değeri üretir; eşleşme yoksa kodu olduğu gibi gösterir. */
 function etiketDeger(harita, kod, dil) {
   var e = (harita && harita[kod]) || null;
   if (!e) return kacis(kod || "—");
@@ -301,10 +311,21 @@ function etiketDeger(harita, kod, dil) {
   return kacis(e.tr) + " / " + kacis(e[dil]);
 }
 
+/* 21 Eyl 2026 (nl/de): Evet/Hayır artık if zinciriyle değil sözlükle seçilir — yeni bir dil eklenince
+   sessizce Türkçeye düşmesin. Biçim kayıt PDF'inin başından beri «İkincil dil / Türkçe» şeklindedir;
+   tr/fr/en çıktıları birebir korunmuştur. */
+var EVET_HAYIR = {
+  tr: { evet: "Evet", hayir: "Hayır" },
+  fr: { evet: "Oui / Evet", hayir: "Non / Hayır" },
+  en: { evet: "Yes / Evet", hayir: "No / Hayır" },
+  nl: { evet: "Ja / Evet", hayir: "Nee / Hayır" },
+  de: { evet: "Ja / Evet", hayir: "Nein / Hayır" }
+};
+function evetHayirSozluk(dil) { return EVET_HAYIR[dil] || EVET_HAYIR.tr; }
+
 function evetHayirGoster(bool, dil) {
-  if (dil === "fr") return bool ? "Oui / Evet" : "Non / Hayır";
-  if (dil === "en") return bool ? "Yes / Evet" : "No / Hayır";
-  return bool ? "Evet" : "Hayır";
+  var s = evetHayirSozluk(dil);
+  return bool ? s.evet : s.hayir;
 }
 
 /* ---- v19: "mavi kalemle el yazısı" görünümü (yalnız kayıt PDF'i) ----------------------------
@@ -314,19 +335,47 @@ function evetHayirGoster(bool, dil) {
    Yazı tipi dosyanın sonundaki EL_YAZISI_B64 sabitindedir (@font-face, data: URI). */
 var MUREKKEP = "#1c3e9e";
 var ENUM_FORM_DILI = {
-  tr: { tr: "Türkçe", fr: "Turc", en: "Turkish" },
-  fr: { tr: "Fransızca", fr: "Français", en: "French" },
-  en: { tr: "İngilizce", fr: "Anglais", en: "English" }
+  tr: { tr: "Türkçe", fr: "Turc", en: "Turkish", nl: "Turks", de: "Türkisch" },
+  fr: { tr: "Fransızca", fr: "Français", en: "French", nl: "Frans", de: "Französisch" },
+  en: { tr: "İngilizce", fr: "Anglais", en: "English", nl: "Engels", de: "Englisch" },
+  nl: { tr: "Flemenkçe", fr: "Néerlandais", en: "Dutch", nl: "Nederlands", de: "Niederländisch" },
+  de: { tr: "Almanca", fr: "Allemand", en: "German", nl: "Duits", de: "Deutsch" }
 };
-var DEVAM_METIN = { tr: "Kurallar, onaylar ve imza 2. sayfadadır.", fr: "Règlement, consentements et signature en page 2.", en: "Rules, consents and signature are on page 2." };
-var SOZLESME_BASLIK = { tr: "Kurs kuralları ve kurs–veli sözleşmesi", fr: "Règlement du cours et engagement parent–cours", en: "Course rules and parent–course agreement" };
-var DERS_YILI_ETIKET = { tr: "Ders yılı", fr: "Année scolaire", en: "School year" };
-var ONAY_BASLIK = { tr: "Onaylar", fr: "Consentements", en: "Consents" };
-var ONAY_GIRIS = { tr: "Aşağıdaki kutuları işaretleyerek veli olarak beyan ederim:", fr: "En cochant les cases ci-dessous, je déclare en tant que parent :", en: "By ticking the boxes below, I declare as the parent:" };
+var DEVAM_METIN = { tr: "Kurallar, onaylar ve imza 2. sayfadadır.", fr: "Règlement, consentements et signature en page 2.", en: "Rules, consents and signature are on page 2.", nl: "Reglement, toestemmingen en handtekening staan op pagina 2.", de: "Regeln, Einwilligungen und Unterschrift stehen auf Seite 2." };
+var SOZLESME_BASLIK = { tr: "Kurs kuralları ve kurs–veli sözleşmesi", fr: "Règlement du cours et engagement parent–cours", en: "Course rules and parent–course agreement", nl: "Cursusreglement en overeenkomst cursus–ouder", de: "Kursregeln und Vereinbarung Kurs–Eltern" };
+var DERS_YILI_ETIKET = { tr: "Ders yılı", fr: "Année scolaire", en: "School year", nl: "Schooljaar", de: "Schuljahr" };
+var ONAY_BASLIK = { tr: "Onaylar", fr: "Consentements", en: "Consents", nl: "Toestemmingen", de: "Einwilligungen" };
+var ONAY_GIRIS = { tr: "Aşağıdaki kutuları işaretleyerek veli olarak beyan ederim:", fr: "En cochant les cases ci-dessous, je déclare en tant que parent :", en: "By ticking the boxes below, I declare as the parent:", nl: "Door de onderstaande vakjes aan te kruisen verklaar ik als ouder:", de: "Mit dem Ankreuzen der folgenden Kästchen erkläre ich als Elternteil:" };
 var ONAY_METIN = {
-  kurallar: { tr: "Kurs kurallarını ve kurs–veli sözleşmesini okudum, kabul ediyorum.", fr: "J'ai lu et j'accepte le règlement du cours et l'engagement parent–cours.", en: "I have read and accept the course rules and the parent–course agreement." },
-  gizlilik: { tr: "Gizlilik bildirimini okudum.", fr: "J'ai lu la notice de confidentialité.", en: "I have read the privacy notice." },
-  saglikRiza: { tr: "Sağlık bilgisinin işlenmesine açık rıza veriyorum (GDPR md. 9/2-a).", fr: "Je consens explicitement au traitement de l'information de santé (art. 9.2.a RGPD).", en: "I give explicit consent to the processing of the health information (Art. 9(2)(a) GDPR)." }
+  kurallar: { tr: "Kurs kurallarını ve kurs–veli sözleşmesini okudum, kabul ediyorum.", fr: "J'ai lu et j'accepte le règlement du cours et l'engagement parent–cours.", en: "I have read and accept the course rules and the parent–course agreement.", nl: "Ik heb het cursusreglement en de overeenkomst cursus–ouder gelezen en ga ermee akkoord.", de: "Ich habe die Kursregeln und die Vereinbarung Kurs–Eltern gelesen und stimme ihnen zu." },
+  gizlilik: { tr: "Gizlilik bildirimini okudum.", fr: "J'ai lu la notice de confidentialité.", en: "I have read the privacy notice.", nl: "Ik heb de privacyverklaring gelezen.", de: "Ich habe die Datenschutzerklärung gelesen." },
+  saglikRiza: { tr: "Sağlık bilgisinin işlenmesine açık rıza veriyorum (GDPR md. 9/2-a).", fr: "Je consens explicitement au traitement de l'information de santé (art. 9.2.a RGPD).", en: "I give explicit consent to the processing of the health information (Art. 9(2)(a) GDPR).", nl: "Ik geef uitdrukkelijke toestemming voor de verwerking van de gezondheidsgegevens (art. 9, lid 2, a AVG).", de: "Ich erteile meine ausdrückliche Einwilligung in die Verarbeitung der Gesundheitsdaten (Art. 9 Abs. 2 lit. a DSGVO)." }
+};
+/* Kayıt PDF'inin 1. sayfasındaki bölüm şeritleri: «Türkçe / form dili». Eskiden pdfHtmlKayit içinde
+   üç konumlu bir yardımcıyla (tr, fr, en) yazılıyordu; beş dil için sözlüğe alındı. */
+var BOLUM_BASLIK = {
+  ogrenci: { tr: "Öğrenci", fr: "Élève", en: "Student", nl: "Leerling", de: "Lernende" },
+  veli: { tr: "Veli", fr: "Parent", en: "Parent", nl: "Ouder", de: "Elternteil" },
+  acil: { tr: "Acil durum", fr: "Urgence", en: "Emergency", nl: "Noodgeval", de: "Notfall" },
+  saglik: { tr: "Sağlık ve izinler", fr: "Santé et autorisations", en: "Health and permissions", nl: "Gezondheid en toestemmingen", de: "Gesundheit und Einwilligungen" }
+};
+/* Kayıt PDF'i başlığının ikinci dili (Türkçe başlığın yanına gelir); tr'de ikinci başlık yazılmaz. */
+var KAYIT_BASLIK_IKINCI = { tr: "", fr: "Formulaire d'inscription à l'école coranique", en: "Qur'an course registration form", nl: "Inschrijvingsformulier voor de Koranschool", de: "Anmeldeformular für die Koranschule" };
+/* Drive arşiv kopyasında sağlık notunun yerine basılan sistem notu (not yalnız defterde tutulur). */
+var SAGLIK_ARSIV_NOTU = {
+  tr: "Yalnız kayıt defterinde tutulur; bu belgeye yazılmamıştır.",
+  fr: "Conservée uniquement dans le registre d’inscription ; non reprise dans ce document.",
+  en: "Kept only in the registration register; not included in this document.",
+  nl: "Wordt alleen in het inschrijvingsregister bewaard; staat niet in dit document.",
+  de: "Wird nur im Anmelderegister aufbewahrt; in diesem Dokument nicht enthalten."
+};
+/* Sağlık notu satırının yanındaki küçük açıklama: veri açık rızayla verilmiştir (GDPR md. 9/2-a). */
+var RIZA_NOTU = {
+  tr: "açık rızayla verilmiştir",
+  fr: "communiquée avec consentement explicite",
+  en: "shared with explicit consent",
+  nl: "met uitdrukkelijke toestemming verstrekt",
+  de: "mit ausdrücklicher Einwilligung übermittelt"
 };
 
 /** Kayıt PDF'ine eklenen ek CSS: gömülü el yazısı yazı tipi, bölüm şeritli form, iki sayfalık düzen, sözleşme sayfası. */
@@ -400,9 +449,8 @@ function secenekKutulari(harita, kod, dil) {
   return kodlar.map(function (k) { return kutu(k === kod, etiketDeger(harita, k, dil)); }).join("");
 }
 function evetHayirKutu(bool, dil) {
-  var hayir = dil === "fr" ? "Non / Hayır" : dil === "en" ? "No / Hayır" : "Hayır";
-  var evet = dil === "fr" ? "Oui / Evet" : dil === "en" ? "Yes / Evet" : "Evet";
-  return kutu(!bool, hayir) + kutu(!!bool, evet);
+  var s = evetHayirSozluk(dil);
+  return kutu(!bool, s.hayir) + kutu(!!bool, s.evet);
 }
 /** Şablon önizlemesi için uydurma ama biçimce gerçek kayıt verisi (gerçek kişi yok). */
 function ornekKayitVerisi(dil, saglikVar) {
@@ -419,92 +467,102 @@ function ornekKayitVerisi(dil, saglikVar) {
 }
 
 var ENUM_CINSIYET_OGRENCI = {
-  kiz: { tr: "Kız", fr: "Fille", en: "Girl" },
-  erkek: { tr: "Erkek", fr: "Garçon", en: "Boy" }
+  kiz: { tr: "Kız", fr: "Fille", en: "Girl", nl: "Meisje", de: "Mädchen" },
+  erkek: { tr: "Erkek", fr: "Garçon", en: "Boy", nl: "Jongen", de: "Junge" }
 };
 var ENUM_CINSIYET_BASVURAN = {
-  kadin: { tr: "Kadın", fr: "Femme", en: "Woman" },
-  erkek: { tr: "Erkek", fr: "Homme", en: "Man" }
+  kadin: { tr: "Kadın", fr: "Femme", en: "Woman", nl: "Vrouw", de: "Frau" },
+  erkek: { tr: "Erkek", fr: "Homme", en: "Man", nl: "Man", de: "Mann" }
 };
 var ENUM_YAKINLIK = {
-  anne: { tr: "Anne", fr: "Mère", en: "Mother" },
-  baba: { tr: "Baba", fr: "Père", en: "Father" },
-  vasi: { tr: "Vasi", fr: "Tuteur / tutrice légal(e)", en: "Legal guardian" }
+  anne: { tr: "Anne", fr: "Mère", en: "Mother", nl: "Moeder", de: "Mutter" },
+  baba: { tr: "Baba", fr: "Père", en: "Father", nl: "Vader", de: "Vater" },
+  vasi: { tr: "Vasi", fr: "Tuteur / tutrice légal(e)", en: "Legal guardian", nl: "Wettelijke voogd", de: "Gesetzliche Vertretung" }
 };
 var ENUM_KURS_DURUMU = {
-  yeni: { tr: "Yeni kayıt", fr: "Nouvelle inscription", en: "New enrollment" },
-  devam: { tr: "Devam eden öğrenci", fr: "Élève déjà inscrit(e)", en: "Continuing student" }
+  yeni: { tr: "Yeni kayıt", fr: "Nouvelle inscription", en: "New enrollment", nl: "Nieuwe inschrijving", de: "Neuanmeldung" },
+  devam: { tr: "Devam eden öğrenci", fr: "Élève déjà inscrit(e)", en: "Continuing student", nl: "Reeds ingeschreven leerling", de: "Bereits angemeldet" }
 };
+/* İLETİŞİM dili KASITLI olarak yalnız tr ve fr'dir (9 Eylül 2026 kalıcı kararı: veliye giden e-posta
+   kayıt formundaki iletişim dilini izler). nl/de yalnız ETİKET olarak eklendi; anahtarlar genişletilmedi. */
 var ENUM_ILETISIM_DILI = {
-  tr: { tr: "Türkçe", fr: "Turc", en: "Turkish" },
-  fr: { tr: "Fransızca", fr: "Français", en: "French" }
+  tr: { tr: "Türkçe", fr: "Turc", en: "Turkish", nl: "Turks", de: "Türkisch" },
+  fr: { tr: "Fransızca", fr: "Français", en: "French", nl: "Frans", de: "Französisch" }
 };
 var ENUM_MEDENI = {
-  bekar: { tr: "Bekâr", fr: "Célibataire", en: "Single" },
-  evli: { tr: "Evli", fr: "Marié(e)", en: "Married" },
-  dul: { tr: "Dul", fr: "Veuf / veuve", en: "Widowed" },
-  bosanmis: { tr: "Boşanmış", fr: "Divorcé(e)", en: "Divorced" }
+  bekar: { tr: "Bekâr", fr: "Célibataire", en: "Single", nl: "Ongehuwd", de: "Ledig" },
+  evli: { tr: "Evli", fr: "Marié(e)", en: "Married", nl: "Gehuwd", de: "Verheiratet" },
+  dul: { tr: "Dul", fr: "Veuf / veuve", en: "Widowed", nl: "Weduwe / weduwnaar", de: "Verwitwet" },
+  bosanmis: { tr: "Boşanmış", fr: "Divorcé(e)", en: "Divorced", nl: "Gescheiden", de: "Geschieden" }
 };
+/* TÖREN dilinin anahtarları da değişmedi (tr|fr|en|ar — TOREN_DILLERI_GECERLI); yalnız etiketleri beş dilde. */
 var ENUM_TOREN_DILI = {
-  tr: { tr: "Türkçe", fr: "Turc", en: "Turkish" },
-  fr: { tr: "Fransızca", fr: "Français", en: "French" },
-  en: { tr: "İngilizce", fr: "Anglais", en: "English" },
-  ar: { tr: "Arapça", fr: "Arabe", en: "Arabic" }
+  tr: { tr: "Türkçe", fr: "Turc", en: "Turkish", nl: "Turks", de: "Türkisch" },
+  fr: { tr: "Fransızca", fr: "Français", en: "French", nl: "Frans", de: "Französisch" },
+  en: { tr: "İngilizce", fr: "Anglais", en: "English", nl: "Engels", de: "Englisch" },
+  ar: { tr: "Arapça", fr: "Arabe", en: "Arabic", nl: "Arabisch", de: "Arabisch" }
 };
 
 var ETIKET_KAYIT = {
-  ogrenciAdSoyad: { tr: "Öğrenci adı soyadı", fr: "Nom et prénom de l'élève", en: "Student's full name" },
-  ogrenciDogum: { tr: "Doğum tarihi", fr: "Date de naissance", en: "Date of birth" },
-  ogrenciCinsiyet: { tr: "Cinsiyet", fr: "Sexe", en: "Gender" },
-  okul: { tr: "Okul", fr: "École", en: "School" },
-  sinif: { tr: "Sınıf", fr: "Classe", en: "Grade" },
-  kursDurumu: { tr: "Kurs durumu", fr: "Statut d'inscription", en: "Enrollment status" },
-  veliYakinlik: { tr: "Veli yakınlığı", fr: "Lien de parenté", en: "Relationship to student" },
-  veliAdSoyad: { tr: "Veli adı soyadı", fr: "Nom et prénom du parent", en: "Parent's full name" },
-  veliCep: { tr: "Veli cep telefonu", fr: "GSM du parent", en: "Parent's mobile phone" },
-  veliEposta: { tr: "Veli e-posta", fr: "E-mail du parent", en: "Parent's e-mail" },
-  adres: { tr: "Adres", fr: "Adresse", en: "Address" },
-  postaKodu: { tr: "Posta kodu", fr: "Code postal", en: "Postal code" },
-  sehir: { tr: "Şehir", fr: "Ville", en: "City" },
-  iletisimDili: { tr: "İletişim dili", fr: "Langue de communication", en: "Communication language" },
-  acilKisi: { tr: "Acil durum kişisi", fr: "Personne à contacter en cas d'urgence", en: "Emergency contact" },
-  acilCep: { tr: "Acil durum telefonu", fr: "GSM d'urgence", en: "Emergency phone" },
-  saglikBilgisi: { tr: "Sağlık notu", fr: "Note de santé", en: "Health note" },
-  goruntuIzni: { tr: "Görüntü izni (site ve duyurular)", fr: "Autorisation image (site et annonces)", en: "Image permission (website and announcements)" },
-  goruntuSosyalIzni: { tr: "Görüntü izni (sosyal medya)", fr: "Autorisation image (réseaux sociaux)", en: "Image permission (social media)" },
-  formDili: { tr: "Form dili", fr: "Langue du formulaire", en: "Form language" },
-  elektronikImza: { tr: "Elektronik imza (veli)", fr: "Signature électronique (parent)", en: "Electronic signature (parent)" },
-  imza: { tr: "İmza (veli)", fr: "Signature (parent)", en: "Signature (parent)" },
-  saglikVar: { tr: "Bildirilecek sağlık bilgisi", fr: "Information de santé à signaler", en: "Health information to report" },
-  tarih: { tr: "Tarih", fr: "Date", en: "Date" },
-  postaSehir: { tr: "Posta kodu ve şehir", fr: "Code postal et localité", en: "Postal code and city" }
+  ogrenciAdSoyad: { tr: "Öğrenci adı soyadı", fr: "Nom et prénom de l'élève", en: "Student's full name", nl: "Naam en voornaam van de leerling", de: "Name und Vorname der/des Lernenden" },
+  ogrenciDogum: { tr: "Doğum tarihi", fr: "Date de naissance", en: "Date of birth", nl: "Geboortedatum", de: "Geburtsdatum" },
+  ogrenciCinsiyet: { tr: "Cinsiyet", fr: "Sexe", en: "Gender", nl: "Geslacht", de: "Geschlecht" },
+  okul: { tr: "Okul", fr: "École", en: "School", nl: "School", de: "Schule" },
+  sinif: { tr: "Sınıf", fr: "Classe", en: "Grade", nl: "Klas", de: "Klasse" },
+  kursDurumu: { tr: "Kurs durumu", fr: "Statut d'inscription", en: "Enrollment status", nl: "Inschrijvingsstatus", de: "Anmeldestatus" },
+  veliYakinlik: { tr: "Veli yakınlığı", fr: "Lien de parenté", en: "Relationship to student", nl: "Verwantschap met de leerling", de: "Verwandtschaftsverhältnis" },
+  veliAdSoyad: { tr: "Veli adı soyadı", fr: "Nom et prénom du parent", en: "Parent's full name", nl: "Naam en voornaam van de ouder", de: "Name und Vorname des Elternteils" },
+  veliCep: { tr: "Veli cep telefonu", fr: "GSM du parent", en: "Parent's mobile phone", nl: "Gsm van de ouder", de: "Handynummer des Elternteils" },
+  veliEposta: { tr: "Veli e-posta", fr: "E-mail du parent", en: "Parent's e-mail", nl: "E-mail van de ouder", de: "E-Mail des Elternteils" },
+  adres: { tr: "Adres", fr: "Adresse", en: "Address", nl: "Adres", de: "Adresse" },
+  postaKodu: { tr: "Posta kodu", fr: "Code postal", en: "Postal code", nl: "Postcode", de: "Postleitzahl" },
+  sehir: { tr: "Şehir", fr: "Ville", en: "City", nl: "Gemeente", de: "Gemeinde" },
+  iletisimDili: { tr: "İletişim dili", fr: "Langue de communication", en: "Communication language", nl: "Communicatietaal", de: "Kommunikationssprache" },
+  acilKisi: { tr: "Acil durum kişisi", fr: "Personne à contacter en cas d'urgence", en: "Emergency contact", nl: "Contactpersoon bij noodgevallen", de: "Kontaktperson für Notfälle" },
+  acilCep: { tr: "Acil durum telefonu", fr: "GSM d'urgence", en: "Emergency phone", nl: "Gsm voor noodgevallen", de: "Notfallnummer" },
+  saglikBilgisi: { tr: "Sağlık notu", fr: "Note de santé", en: "Health note", nl: "Gezondheidsnota", de: "Gesundheitsnotiz" },
+  goruntuIzni: { tr: "Görüntü izni (site ve duyurular)", fr: "Autorisation image (site et annonces)", en: "Image permission (website and announcements)", nl: "Beeldtoestemming (website en aankondigingen)", de: "Bildfreigabe (Website und Ankündigungen)" },
+  goruntuSosyalIzni: { tr: "Görüntü izni (sosyal medya)", fr: "Autorisation image (réseaux sociaux)", en: "Image permission (social media)", nl: "Beeldtoestemming (sociale media)", de: "Bildfreigabe (soziale Medien)" },
+  formDili: { tr: "Form dili", fr: "Langue du formulaire", en: "Form language", nl: "Taal van het formulier", de: "Sprache des Formulars" },
+  elektronikImza: { tr: "Elektronik imza (veli)", fr: "Signature électronique (parent)", en: "Electronic signature (parent)", nl: "Elektronische handtekening (ouder)", de: "Elektronische Unterschrift (Elternteil)" },
+  imza: { tr: "İmza (veli)", fr: "Signature (parent)", en: "Signature (parent)", nl: "Handtekening (ouder)", de: "Unterschrift (Elternteil)" },
+  saglikVar: { tr: "Bildirilecek sağlık bilgisi", fr: "Information de santé à signaler", en: "Health information to report", nl: "Te melden gezondheidsinformatie", de: "Zu meldende Gesundheitsinformation" },
+  tarih: { tr: "Tarih", fr: "Date", en: "Date", nl: "Datum", de: "Datum" },
+  postaSehir: { tr: "Posta kodu ve şehir", fr: "Code postal et localité", en: "Postal code and city", nl: "Postcode en gemeente", de: "Postleitzahl und Gemeinde" }
 };
 
 var ETIKET_IHTIDA = {
-  adSoyad: { tr: "Adı Soyadı", fr: "Nom et prénom", en: "Full name" },
-  cinsiyet: { tr: "Cinsiyet", fr: "Sexe", en: "Gender" },
-  dogumTarihi: { tr: "Doğum tarihi", fr: "Date de naissance", en: "Date of birth" },
-  dogumYeri: { tr: "Doğum yeri", fr: "Lieu de naissance", en: "Place of birth" },
-  uyruk: { tr: "Uyruk", fr: "Nationalité", en: "Nationality" },
-  anneAdi: { tr: "Anne adı", fr: "Prénom de la mère", en: "Mother's first name" },
-  babaAdi: { tr: "Baba adı", fr: "Prénom du père", en: "Father's first name" },
-  medeniHali: { tr: "Medeni hâli", fr: "État civil", en: "Marital status" },
-  ogrenimDurumu: { tr: "Öğrenim durumu", fr: "Niveau d'études", en: "Education level" },
-  meslek: { tr: "Mesleği", fr: "Profession", en: "Occupation" },
-  oncekiDin: { tr: "Önceki din/mezhep", fr: "Religion/confession précédente", en: "Previous religion" },
-  ihtidaSebebi: { tr: "İhtida sebebi", fr: "Motif de la conversion", en: "Reason for conversion" },
-  yeniIsim: { tr: "Yeni isim tercihi", fr: "Nouveau prénom souhaité", en: "Preferred new name" },
-  eposta: { tr: "E-posta", fr: "E-mail", en: "E-mail" },
-  telefon: { tr: "Telefon", fr: "Téléphone", en: "Phone" },
-  adres: { tr: "Adres", fr: "Adresse", en: "Address" },
-  torenDili: { tr: "Tören dili", fr: "Langue de la cérémonie", en: "Ceremony language" },
-  torenTarihi: { tr: "Tören tarihi tercihi", fr: "Date souhaitée pour la cérémonie", en: "Preferred ceremony date" },
-  nasilHaberdar: { tr: "Nasıl haberdar oldu", fr: "Comment vous nous avez connus", en: "How you heard about us" },
-  ekNot: { tr: "Ek not", fr: "Remarque complémentaire", en: "Additional note" },
-  fotografIzni: { tr: "Fotoğraf izni", fr: "Autorisation photo", en: "Photo consent" },
-  sahit1: { tr: "1. şahit", fr: "1er témoin", en: "1st witness" },
-  sahit2: { tr: "2. şahit", fr: "2e témoin", en: "2nd witness" },
-  formDili: { tr: "Form dili", fr: "Langue du formulaire", en: "Form language" }
+  adSoyad: { tr: "Adı Soyadı", fr: "Nom et prénom", en: "Full name", nl: "Naam en voornaam", de: "Name und Vorname" },
+  cinsiyet: { tr: "Cinsiyet", fr: "Sexe", en: "Gender", nl: "Geslacht", de: "Geschlecht" },
+  dogumTarihi: { tr: "Doğum tarihi", fr: "Date de naissance", en: "Date of birth", nl: "Geboortedatum", de: "Geburtsdatum" },
+  dogumYeri: { tr: "Doğum yeri", fr: "Lieu de naissance", en: "Place of birth", nl: "Geboorteplaats", de: "Geburtsort" },
+  uyruk: { tr: "Uyruk", fr: "Nationalité", en: "Nationality", nl: "Nationaliteit", de: "Staatsangehörigkeit" },
+  anneAdi: { tr: "Anne adı", fr: "Prénom de la mère", en: "Mother's first name", nl: "Voornaam van de moeder", de: "Vorname der Mutter" },
+  babaAdi: { tr: "Baba adı", fr: "Prénom du père", en: "Father's first name", nl: "Voornaam van de vader", de: "Vorname des Vaters" },
+  medeniHali: { tr: "Medeni hâli", fr: "État civil", en: "Marital status", nl: "Burgerlijke staat", de: "Familienstand" },
+  ogrenimDurumu: { tr: "Öğrenim durumu", fr: "Niveau d'études", en: "Education level", nl: "Opleidingsniveau", de: "Bildungsstand" },
+  meslek: { tr: "Mesleği", fr: "Profession", en: "Occupation", nl: "Beroep", de: "Beruf" },
+  oncekiDin: { tr: "Önceki din/mezhep", fr: "Religion/confession précédente", en: "Previous religion", nl: "Vorige godsdienst/strekking", de: "Frühere Religion/Konfession" },
+  ihtidaSebebi: { tr: "İhtida sebebi", fr: "Motif de la conversion", en: "Reason for conversion", nl: "Reden van de bekering", de: "Grund der Konversion" },
+  yeniIsim: { tr: "Yeni isim tercihi", fr: "Nouveau prénom souhaité", en: "Preferred new name", nl: "Gewenste nieuwe voornaam", de: "Gewünschter neuer Vorname" },
+  eposta: { tr: "E-posta", fr: "E-mail", en: "E-mail", nl: "E-mail", de: "E-Mail" },
+  telefon: { tr: "Telefon", fr: "Téléphone", en: "Phone", nl: "Telefoon", de: "Telefon" },
+  adres: { tr: "Adres", fr: "Adresse", en: "Address", nl: "Adres", de: "Adresse" },
+  torenDili: { tr: "Tören dili", fr: "Langue de la cérémonie", en: "Ceremony language", nl: "Taal van de plechtigheid", de: "Sprache der Zeremonie" },
+  torenTarihi: { tr: "Tören tarihi tercihi", fr: "Date souhaitée pour la cérémonie", en: "Preferred ceremony date", nl: "Gewenste datum voor de plechtigheid", de: "Gewünschtes Datum der Zeremonie" },
+  nasilHaberdar: { tr: "Nasıl haberdar oldu", fr: "Comment vous nous avez connus", en: "How you heard about us", nl: "Hoe u ons hebt leren kennen", de: "Wie Sie von uns erfahren haben" },
+  ekNot: { tr: "Ek not", fr: "Remarque complémentaire", en: "Additional note", nl: "Aanvullende opmerking", de: "Ergänzende Anmerkung" },
+  fotografIzni: { tr: "Fotoğraf izni", fr: "Autorisation photo", en: "Photo consent", nl: "Fototoestemming", de: "Fotofreigabe" },
+  sahit1: { tr: "1. şahit", fr: "1er témoin", en: "1st witness", nl: "1e getuige", de: "1. Zeuge" },
+  sahit2: { tr: "2. şahit", fr: "2e témoin", en: "2nd witness", nl: "2e getuige", de: "2. Zeuge" },
+  formDili: { tr: "Form dili", fr: "Langue du formulaire", en: "Form language", nl: "Taal van het formulier", de: "Sprache des Formulars" }
+};
+
+/* İhtida PDF'inin son üç satırının etiketleri (eskiden pdfHtmlIhtida içinde satır içi sözlüklerdi). */
+var ETIKET_IHTIDA_EK = {
+  camiSecimi: { tr: "Başvuru / tören camisi", fr: "Mosquée choisie pour la demande et la cérémonie", en: "Mosque selected for the application and ceremony", nl: "Moskee gekozen voor de aanvraag en de plechtigheid", de: "Für Antrag und Zeremonie gewählte Moschee" },
+  belgeTeslimi: { tr: "Belge teslimi", fr: "Réception de l’attestation", en: "Certificate delivery", nl: "Ontvangst van het attest", de: "Zustellung der Bescheinigung" },
+  sahitSecimi: { tr: "Şahit seçimi", fr: "Choix des témoins", en: "Witness selection", nl: "Keuze van de getuigen", de: "Wahl der Zeugen" }
 };
 
 var PDF_CSS = [
@@ -576,7 +634,7 @@ function pdfHtmlKayit(veri, meta) {
   var okulGoster = (o.okul === "diger" && o.okulDiger) ? o.okulDiger : (o.okul || "");
   var E = function (anahtar) { return ikiDilliEtiket(ETIKET_KAYIT[anahtar], dil); };
   var D = function (sozluk) { return ikiDilliEtiket(sozluk, dil); };
-  var bolum = function (tr, fr, en) { return { bolum: ikiDilliEtiket({ tr: tr, fr: fr, en: en }, dil) }; };
+  var bolum = function (anahtar) { return { bolum: ikiDilliEtiket(BOLUM_BASLIK[anahtar], dil) }; };
   var ogrenciAd = ((o.ad || "") + " " + (o.soyad || "")).trim();
   var tarihKisa = (String(zaman).match(/^\d{2}\.\d{2}\.\d{4}/) || [""])[0]; // tarihle başlamıyorsa kutu boş kalır
   var formDiliBuyuk = kacis((veri.dil || "tr").toUpperCase());
@@ -586,23 +644,21 @@ function pdfHtmlKayit(veri, meta) {
   var saglikNotHucre = "";
   if (saglik.var) {
     saglikNotHucre = meta.saglikGizle
-      ? '<span class="sistem-not">' + (dil === "fr" ? "Conservée uniquement dans le registre d’inscription ; non reprise dans ce document."
-         : dil === "en" ? "Kept only in the registration register; not included in this document."
-         : "Yalnız kayıt defterinde tutulur; bu belgeye yazılmamıştır.") + "</span>"
+      ? '<span class="sistem-not">' + (SAGLIK_ARSIV_NOTU[dil] || SAGLIK_ARSIV_NOTU.tr) + "</span>"
       : '<span class="not">' + elYazisi(saglik.not, String(saglik.not || "").length > 300 ? "el-k" : "") + "</span>";
   }
-  var rizaNotu = dil === "fr" ? "communiquée avec consentement explicite" : dil === "en" ? "shared with explicit consent" : "açık rızayla verilmiştir";
+  var rizaNotu = RIZA_NOTU[dil] || RIZA_NOTU.tr;
 
   // 1. SAYFA — form: velinin yazdığı her değer mavi el yazısı; seçenekli sorular basılı kutu + kalemle çarpı
   var satirlar = [
-    bolum("Öğrenci", "Élève", "Student"),
+    bolum("ogrenci"),
     [E("ogrenciAdSoyad"), elYazisi(ogrenciAd)],
     [E("ogrenciDogum"), elYazisi(tarihGoster(o.dogumTarihi))],
     [E("ogrenciCinsiyet"), secenekKutulari(ENUM_CINSIYET_OGRENCI, o.cinsiyet, dil)],
     [E("okul"), elYazisi(okulGoster)],
     [E("sinif"), elYazisi(o.sinif)],
     [E("kursDurumu"), secenekKutulari(ENUM_KURS_DURUMU, o.kursDurumu, dil)],
-    bolum("Veli", "Parent", "Parent"),
+    bolum("veli"),
     [E("veliYakinlik"), secenekKutulari(ENUM_YAKINLIK, veli.yakinlik, dil)],
     [E("veliAdSoyad"), elYazisi(veli.adSoyad)],
     [E("veliCep"), elYazisi(veli.cep)],
@@ -610,10 +666,10 @@ function pdfHtmlKayit(veri, meta) {
     [E("adres"), elYazisi(veli.adres)],
     [E("postaSehir"), elYazisi(((veli.postaKodu || "") + " " + (veli.sehir || "")).trim())],
     [E("iletisimDili"), secenekKutulari(ENUM_ILETISIM_DILI, veli.iletisimDili, dil)],
-    bolum("Acil durum", "Urgence", "Emergency"),
+    bolum("acil"),
     [E("acilKisi"), elYazisi(acil.adSoyad)],
     [E("acilCep"), elYazisi(acil.cep)],
-    bolum("Sağlık ve izinler", "Santé et autorisations", "Health and permissions"),
+    bolum("saglik"),
     [E("saglikVar"), evetHayirKutu(!!saglik.var, dil)],
     saglik.var ? [E("saglikBilgisi") + ' <span class="kucuk">(' + rizaNotu + ")</span>", saglikNotHucre] : null,
     [E("goruntuIzni"), evetHayirKutu(!!veri.goruntuIzni, dil)],
@@ -622,7 +678,7 @@ function pdfHtmlKayit(veri, meta) {
   ].filter(Boolean);
 
   var dersYiliHtml = dersYili ? '<span class="yil">' + D(DERS_YILI_ETIKET) + " " + kacis(dersYili) + "</span>" : "";
-  var sayfa1 = pdfUst("Kur'an Kursu Kayıt Formu", dil === "fr" ? "Formulaire d'inscription à l'école coranique" : dil === "en" ? "Qur'an course registration form" : "", dil, ref, zaman, dersYiliHtml)
+  var sayfa1 = pdfUst("Kur'an Kursu Kayıt Formu", KAYIT_BASLIK_IKINCI[dil] || "", dil, ref, zaman, dersYiliHtml)
     + pdfTablo(satirlar);
 
   // 2. SAYFA — veli sözleşmesi: kurallar TR | FR yan yana, onay kutuları (kalemle çarpı), tarih / imza satırı.
@@ -736,10 +792,10 @@ function pdfHtmlIhtida(veri, meta) {
   ];
 
   var seciliCami = ihtidaCamiCoz(veri.cami) || { ad: "Ulu Camii", adres: "Thier des Corbeaux 14", postaKodu: "6900", sehir: "Marche-en-Famenne" };
-  satirlar.push([ikiDilliEtiket({tr: "Başvuru / tören camisi", fr: "Mosquée choisie pour la demande et la cérémonie", en: "Mosque selected for the application and ceremony"}, dil), d(seciliCami.ad + " — " + [seciliCami.adres, seciliCami.postaKodu, seciliCami.sehir].filter(Boolean).join(", "))]);
+  satirlar.push([ikiDilliEtiket(ETIKET_IHTIDA_EK.camiSecimi, dil), d(seciliCami.ad + " — " + [seciliCami.adres, seciliCami.postaKodu, seciliCami.sehir].filter(Boolean).join(", "))]);
 
-  satirlar.push([ikiDilliEtiket({tr: "Belge teslimi", fr: "Réception de l’attestation", en: "Certificate delivery"}, dil), d(ihtidaTeslimMetni(veri, dil))]);
-  satirlar.push([ikiDilliEtiket({tr: "Şahit seçimi", fr: "Choix des témoins", en: "Witness selection"}, dil), d(ihtidaSahitMetni(veri, dil))]);
+  satirlar.push([ikiDilliEtiket(ETIKET_IHTIDA_EK.belgeTeslimi, dil), d(ihtidaTeslimMetni(veri, dil))]);
+  satirlar.push([ikiDilliEtiket(ETIKET_IHTIDA_EK.sahitSecimi, dil), d(ihtidaSahitMetni(veri, dil))]);
 
   var beyanTr = "Kendi hür irademle, hiçbir baskı altında kalmadan İslam dinine girmek istediğimi beyan ederim.";
   var beyanFr = "Je déclare vouloir embrasser l'islam de mon plein gré, sans aucune contrainte.";
@@ -865,7 +921,7 @@ function kayitDogrulaV2(v) {
   if (v.imzaYok !== false) return h("imza-gecersiz");
   if (typeof v.imza !== "string" || !/^data:image\/png;base64,[A-Za-z0-9+\/=]+$/.test(v.imza) || !gorselGecerli(v.imza, 1)) return h("imza-gecersiz");
 
-  if (["tr", "fr", "en"].indexOf(v.dil) === -1) return h("dil-gecersiz");
+  if (SITE_DILLERI.indexOf(v.dil) === -1) return h("dil-gecersiz");
   return kayitKimlikDogrula(v);
 }
 
@@ -972,7 +1028,7 @@ function ihtidaDogrulaV2(v) {
   if (!metinDolu(onay.beyan)) return h("onay-beyan-eksik");
   if (!adSadelestirEsit(onay.beyan, b.adSoyad)) return h("onay-beyan-eslesmiyor");
 
-  if (["tr", "fr", "en"].indexOf(v.dil) === -1) return h("dil-gecersiz");
+  if (SITE_DILLERI.indexOf(v.dil) === -1) return h("dil-gecersiz");
   return { tamam: true };
 }
 
@@ -1459,6 +1515,8 @@ function mailHtml(govde, dil, baslik, kurum) {
 /** Veli e-postası yalnız kayıt formundaki iletişim dilinde hazırlanır (9 Eylül 2026). */
 function kopyaGonderV2(blob, ref, adSoyad, adresler, dil, kimlik, formDili, kimlikHatalari) {
   // 13 Eyl 2026: Kimlik talimatı da kalıcı veli iletişim diline uyar; formDili uyumluluk için kalır.
+  // 21 Eyl 2026 (nl/de): Site beş dilli olsa da bu küme KASITLI olarak tr|fr kalır — veliye giden e-posta
+  // 9 Eylül 2026 kalıcı kararı gereği kayıt formundaki İLETİŞİM dilini izler, form dilini değil. SITE_DILLERI buraya uygulanmaz.
   if (["tr", "fr"].indexOf(dil) === -1) throw new Error("Veli iletişim dili doğrulanamadı");
   var gecerli = [];
   (adresler || []).forEach(function (a) {
@@ -1531,15 +1589,23 @@ function kayitKimlikEpostaMetni(kimlik, dil, ref, adSoyad, hatalar) {
   var metinler = {
     tr: { yukle: "Kimlik belgesi kopyası alındı.", eposta: "Lütfen bu e-postayı kimlik belgesinin fotoğrafını ekleyerek yanıtlayın.", whatsapp: "Lütfen kimlik belgesinin fotoğrafını imama WhatsApp'tan gönderin.", elden: "Lütfen kimlik belgesini ilk derste hocaya gösterin.", hata: "Kaydınız alındı; kimlik belgesinin bir veya daha fazla yüzü kaydedilemedi. Lütfen bu e-postayı belgenin fotoğrafını ekleyerek yanıtlayın." },
     fr: { yukle: "La copie du document d’identité a été reçue.", eposta: "Veuillez répondre à cet e-mail en joignant la photo du document d’identité.", whatsapp: "Veuillez envoyer la photo du document d’identité à l’imam via WhatsApp.", elden: "Veuillez présenter le document d’identité à l’enseignant lors du premier cours.", hata: "Votre inscription a été reçue, mais une ou plusieurs faces du document d’identité n’ont pas pu être enregistrées. Veuillez répondre à cet e-mail en joignant la photo du document." },
-    en: { yukle: "The copy of the identity document has been received.", eposta: "Please reply to this email with a photo of the identity document attached.", whatsapp: "Please send the photo of the identity document to the imam via WhatsApp.", elden: "Please show the identity document to the teacher at the first lesson.", hata: "Your registration has been received, but one or more sides of the identity document could not be saved. Please reply to this email with a photo of the document attached." }
+    en: { yukle: "The copy of the identity document has been received.", eposta: "Please reply to this email with a photo of the identity document attached.", whatsapp: "Please send the photo of the identity document to the imam via WhatsApp.", elden: "Please show the identity document to the teacher at the first lesson.", hata: "Your registration has been received, but one or more sides of the identity document could not be saved. Please reply to this email with a photo of the document attached." },
+    nl: { yukle: "De kopie van het identiteitsbewijs is ontvangen.", eposta: "Gelieve op deze e-mail te antwoorden met een foto van het identiteitsbewijs in bijlage.", whatsapp: "Gelieve de foto van het identiteitsbewijs via WhatsApp naar de imam te sturen.", elden: "Gelieve het identiteitsbewijs bij de eerste les aan de leerkracht te tonen.", hata: "Uw inschrijving is ontvangen, maar een of meer zijden van het identiteitsbewijs konden niet worden bewaard. Gelieve op deze e-mail te antwoorden met een foto van het document in bijlage." },
+    de: { yukle: "Die Kopie des Ausweisdokuments ist eingegangen.", eposta: "Bitte antworten Sie auf diese E-Mail und fügen Sie ein Foto des Ausweisdokuments bei.", whatsapp: "Bitte senden Sie das Foto des Ausweisdokuments per WhatsApp an den Imam.", elden: "Bitte zeigen Sie das Ausweisdokument der Lehrkraft in der ersten Unterrichtsstunde.", hata: "Ihre Anmeldung ist eingegangen, aber eine oder mehrere Seiten des Ausweisdokuments konnten nicht gespeichert werden. Bitte antworten Sie auf diese E-Mail und fügen Sie ein Foto des Dokuments bei." }
+  };
+  /* WhatsApp'ta yalnız hazır ileti metni taşınır; numara hiçbir yerde metin olarak görünmez (wa.me bağlantısı). */
+  var whatsappIleti = {
+    tr: "Merhaba, kayıt " + ref + " (" + adSoyad + ") için kimlik belgesinin fotoğrafını gönderiyorum",
+    fr: "Bonjour, j’envoie la photo du document d’identité pour l’inscription " + ref + " (" + adSoyad + ")",
+    en: "Hello, I am sending the identity document photo for registration " + ref + " (" + adSoyad + ")",
+    nl: "Hallo, ik stuur de foto van het identiteitsbewijs voor inschrijving " + ref + " (" + adSoyad + ")",
+    de: "Guten Tag, ich sende das Foto des Ausweisdokuments für die Anmeldung " + ref + " (" + adSoyad + ")"
   };
   var secim = yol === "yukle" && hatalar && hatalar.length ? "hata" : yol;
   if (!metinler[dil]) throw new Error("Veli iletişim dili doğrulanamadı");
   var parcalar = [metinler[dil][secim]];
   if (yol === "whatsapp") {
-    var ileti = dil === "fr" ? "Bonjour, j’envoie la photo du document d’identité pour l’inscription " + ref + " (" + adSoyad + ")"
-      : dil === "en" ? "Hello, I am sending the identity document photo for registration " + ref + " (" + adSoyad + ")"
-      : "Merhaba, kayıt " + ref + " (" + adSoyad + ") için kimlik belgesinin fotoğrafını gönderiyorum";
+    var ileti = whatsappIleti[dil] || whatsappIleti.tr;
     // encodeURIComponent parantez/apostrofu bırakır; bağlantı şablonu kesmesin diye onlar da kodlanır.
     var kodlu = encodeURIComponent(ileti).replace(/[!'()*]/g, function (c) { return "%" + c.charCodeAt(0).toString(16).toUpperCase(); });
     parcalar.push("https://wa.me/" + DIN_GOREVLISI_WHATSAPP + "?text=" + kodlu);
@@ -1614,22 +1680,37 @@ function ihtidaV2AnahtarKaydet(anahtar, ref) {
   try { CacheService.getScriptCache().put("ihtida2:" + anahtar, JSON.stringify({ ref: ref }), 21600); } catch (_) {}
 }
 
+/* 21 Eyl 2026 (nl/de): teslim ve şahit özetleri if zincirinden sözlüğe alındı; tr/fr/en metinleri aynen korundu.
+   Bu metinler İHTİDA formunun dilini izler (ihtida formunda ayrı bir kalıcı iletişim dili yoktur). */
+var IHTIDA_TESLIM_METIN = {
+  teyit: { tr: "Başvuranla teyit edilecek", fr: "À confirmer avec le demandeur", en: "Confirm with the applicant", nl: "Te bevestigen met de aanvrager", de: "Mit der antragstellenden Person zu klären" },
+  cami: { tr: "Camiye postalanacak: ", fr: "Envoi à la mosquée : ", en: "Post to the mosque: ", nl: "Verzending naar de moskee: ", de: "Versand an die Moschee: " },
+  adres: { tr: "İkamet adresine posta: ", fr: "Envoi au domicile : ", en: "Post to home address: ", nl: "Verzending naar het thuisadres: ", de: "Versand an die Wohnadresse: " }
+};
+var IHTIDA_SAHIT_METIN = {
+  cami: { tr: "Şahitleri cami ayarlayacak", fr: "Témoins organisés par la mosquée", en: "Witnesses arranged by the mosque", nl: "De getuigen worden door de moskee geregeld", de: "Die Zeugen werden von der Moschee gestellt" },
+  kendi: { tr: "Başvuran kendi şahidini bildirdi", fr: "Témoin(s) indiqué(s) par le demandeur", en: "Witness(es) named by the applicant", nl: "Getuige(n) opgegeven door de aanvrager", de: "Zeugen von der antragstellenden Person benannt" },
+  teyit: { tr: "Teyit edilecek", fr: "À confirmer", en: "To be confirmed", nl: "Nog te bevestigen", de: "Wird noch bestätigt" }
+};
+/** Beş dilli küçük sözlükten seçer; bilinmeyen dilde Türkçeye döner (eski davranışla aynı). */
+function ihtidaMetinSec(sozluk, dil) { return sozluk[dil] || sozluk.tr; }
+
 /** Posta için başvuranın mevcut tam adresi kullanılır; ikinci bir kişisel adres toplanmaz. */
 function ihtidaTeslimMetni(v, dil) {
   var secim = v.teslimat && v.teslimat.yontem;
-  if (!secim) return dil === "fr" ? "À confirmer avec le demandeur" : dil === "en" ? "Confirm with the applicant" : "Başvuranla teyit edilecek";
+  if (!secim) return ihtidaMetinSec(IHTIDA_TESLIM_METIN.teyit, dil);
   if (secim === "cami") {
     var cami = ihtidaCamiCoz(v.cami) || { ad: "Ulu Camii", adres: "Thier des Corbeaux 14", postaKodu: "6900", sehir: "Marche-en-Famenne" };
     var adres = [cami.adres, cami.postaKodu, cami.sehir].filter(Boolean).join(", ");
-    return (dil === "fr" ? "Envoi à la mosquée : " : dil === "en" ? "Post to the mosque: " : "Camiye postalanacak: ") + cami.ad + " — " + adres;
+    return ihtidaMetinSec(IHTIDA_TESLIM_METIN.cami, dil) + cami.ad + " — " + adres;
   }
   var b = v.basvuran || {};
-  return (dil === "fr" ? "Envoi au domicile : " : dil === "en" ? "Post to home address: " : "İkamet adresine posta: ") + (b.adSoyad || "") + " — " + (b.adres || "");
+  return ihtidaMetinSec(IHTIDA_TESLIM_METIN.adres, dil) + (b.adSoyad || "") + " — " + (b.adres || "");
 }
 function ihtidaSahitMetni(v, dil) {
-  if (v.sahitSecimi === "cami") return dil === "fr" ? "Témoins organisés par la mosquée" : dil === "en" ? "Witnesses arranged by the mosque" : "Şahitleri cami ayarlayacak";
-  if (v.sahitSecimi === "kendi") return dil === "fr" ? "Témoin(s) indiqué(s) par le demandeur" : dil === "en" ? "Witness(es) named by the applicant" : "Başvuran kendi şahidini bildirdi";
-  return dil === "fr" ? "À confirmer" : dil === "en" ? "To be confirmed" : "Teyit edilecek";
+  if (v.sahitSecimi === "cami") return ihtidaMetinSec(IHTIDA_SAHIT_METIN.cami, dil);
+  if (v.sahitSecimi === "kendi") return ihtidaMetinSec(IHTIDA_SAHIT_METIN.kendi, dil);
+  return ihtidaMetinSec(IHTIDA_SAHIT_METIN.teyit, dil);
 }
 
 function sahitOzetMetni(sahitler) {
@@ -1994,7 +2075,9 @@ function ihtidaKopyaGonderV2(blob, ref, adSoyad, eposta, dil) {
   var konu = {
     tr: "İhtida ön başvurunuz alındı — ",
     fr: "Votre pré-demande de conversion — ",
-    en: "Your preliminary conversion application — "
+    en: "Your preliminary conversion application — ",
+    nl: "Uw voorlopige aanvraag tot bekering — ",
+    de: "Ihr Vorantrag zur Konversion — "
   }[dil] + ref;
   var metinler = {
     tr: [adSoyad + " adına yaptığınız İhtida Belgesi ön başvurusu alınmıştır. Referans numaranız: " + ref,
@@ -2008,7 +2091,15 @@ function ihtidaKopyaGonderV2(blob, ref, adSoyad, eposta, dil) {
     en: ["The preliminary conversion application for " + adSoyad + " has been received. Reference number: " + ref,
       "Your completed form is attached to this e-mail; please keep it.",
       "This is a preliminary application. The official conversion certificate (EK-9) is issued after the ceremony at the mosque, with the approval of the Social Affairs Office of the Turkish Embassy in Brussels.",
-      "The mosque will contact you to arrange the ceremony date."]
+      "The mosque will contact you to arrange the ceremony date."],
+    nl: ["Uw voorlopige aanvraag voor een bekeringsattest op naam van " + adSoyad + " is goed ontvangen. Uw referentienummer: " + ref,
+      "Het ingevulde formulier vindt u in bijlage; bewaar het zorgvuldig.",
+      "Dit is een voorlopige aanvraag. Het officiële bekeringsattest (EK-9) wordt na de plechtigheid in onze moskee afgeleverd, met de goedkeuring van de Attaché voor Sociale Zaken van de Turkse ambassade in Brussel.",
+      "De moskee neemt contact met u op om een datum voor de plechtigheid vast te leggen."],
+    de: ["Ihr Vorantrag auf eine Konversionsbescheinigung auf den Namen " + adSoyad + " ist bei uns eingegangen. Ihre Referenznummer: " + ref,
+      "Das ausgefüllte Formular finden Sie im Anhang; bitte bewahren Sie es auf.",
+      "Dies ist ein Vorantrag. Die offizielle Konversionsbescheinigung (EK-9) wird nach der Zeremonie in unserer Moschee mit der Bestätigung des Attachés für Soziale Angelegenheiten der türkischen Botschaft in Brüssel ausgestellt.",
+      "Die Moschee wird sich mit Ihnen in Verbindung setzen, um einen Termin für die Zeremonie zu vereinbaren."]
   };
   var hitap = KIMLIK.yazisma.hitap[dil].resmi.replace(/\{adSoyad\}/g, adSoyad);
   var govde = [hitap].concat(metinler[dil], KIMLIK.yazisma.kapanis[dil].genel).join("\n\n");
@@ -2641,10 +2732,10 @@ function saglikTemizleIsle(e) {
 }
 
 /** v19: kayıt PDF şablonunun önizlemesi — örnek veriyle PDF üretir, base64 döndürür.
-    Defter/Drive/e-postaya DOKUNMAZ; panel anahtarı ister. dil=tr|fr|en, saglik=0 (sağlık yok), gizle=1 (Drive arşiv görünümü), sade=1 (yazı tipsiz yedek görünüm). */
+    Defter/Drive/e-postaya DOKUNMAZ; panel anahtarı ister. dil=tr|fr|en|nl|de, saglik=0 (sağlık yok), gizle=1 (Drive arşiv görünümü), sade=1 (yazı tipsiz yedek görünüm). */
 function pdfOrnekIsle(e) {
   if (!panelYetkiTamam(e)) return json({ ok: false, hata: "yetki" });
-  var dil = ["tr", "fr", "en"].indexOf(e.parameter.dil) === -1 ? "tr" : e.parameter.dil;
+  var dil = SITE_DILLERI.indexOf(e.parameter.dil) === -1 ? "tr" : e.parameter.dil;
   var v = ornekKayitVerisi(dil, e.parameter.saglik !== "0");
   var meta = { ref: "UC-0000-0000", zaman: Utilities.formatDate(new Date(), "Europe/Brussels", "dd.MM.yyyy HH:mm"), dil: dil, saglikGizle: e.parameter.gizle === "1", sade: e.parameter.sade === "1" };
   var blob = htmlPdfUret(pdfHtmlKayit(v, meta), "ornek-kayit-" + dil + ".pdf");

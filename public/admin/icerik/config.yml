@@ -143,7 +143,7 @@ collections:
     create: false
     delete: false
     i18n:
-      locales: [tr, fr, en]
+      locales: [tr, fr, en, nl, de]
     format: frontmatter
     extension: md
     summary: "{{baslik}}"
@@ -328,6 +328,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string, required: false }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
                   - { name: sayfa, label: "Bağlantı (site içi sayfa anahtarı: duyurular, kurankursu, irsat, uip, ihtida, diyanet, bagis, namaz…)", widget: string, required: false }
                   - { name: baglanti, label: "Bağlantı (tam URL, isteğe bağlı)", widget: string, required: false }
                   - { name: baslangic, label: Gösterim başlangıcı, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, hint: "Boşsa hemen gösterilir" }
@@ -448,6 +450,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
               - name: denetim
                 label: Denetim kurulu
                 label_singular: Üye
@@ -464,6 +468,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
               - name: dinGorevlisi
                 label: Din görevlisi
                 widget: object
@@ -478,6 +484,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
               - name: personel
                 label: Cami personeli
                 label_singular: Personel
@@ -495,6 +503,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
                   - { name: dogumYili, label: Doğum yılı, widget: number, value_type: int, required: false }
                   - name: memleket
                     label: Memleket
@@ -504,6 +514,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
                   - name: meslek
                     label: Meslek
                     widget: object
@@ -512,6 +524,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: string }
                       - { name: fr, label: Fransızca, widget: string }
                       - { name: en, label: İngilizce, widget: string }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: string, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: string, required: false }
                   - { name: ikamet, label: İkamet, widget: string, required: false }
                   - name: mesaj
                     label: Mesaj
@@ -521,6 +535,8 @@ collections:
                       - { name: tr, label: Türkçe, widget: text }
                       - { name: fr, label: Fransızca, widget: text }
                       - { name: en, label: İngilizce, widget: text }
+                      - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: text, required: false }
+                      - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: text, required: false }
               - name: not
                 label: Alt not (dönem/değişiklik açıklaması)
                 widget: object
@@ -528,3 +544,5 @@ collections:
                   - { name: tr, label: Türkçe, widget: text }
                   - { name: fr, label: Fransızca, widget: text }
                   - { name: en, label: İngilizce, widget: text }
+                  - { name: nl, label: Flemenkçe (boşsa İngilizce gösterilir), widget: text, required: false }
+                  - { name: de, label: Almanca (boşsa İngilizce gösterilir), widget: text, required: false }

@@ -18,13 +18,15 @@ const grupAdi: Record<Dil, [string, string, string, string]> = {
   tr: ['Cami', 'Haberler', 'Eğitim', 'Hizmetler'],
   fr: ['Mosquée', 'Actualités', 'Enseignement', 'Services'],
   en: ['Mosque', 'News', 'Education', 'Services'],
+  nl: ['Moskee', 'Nieuws', 'Onderwijs', 'Diensten'],
+  de: ['Moschee', 'Aktuelles', 'Bildung', 'Dienste'],
 };
 /** Menüde kısa biçim: ui.ts'teki karşılığı "Etkinlikler & Afişler" gibi uzun. */
-const etkinlikKisa: Record<Dil, string> = { tr: 'Etkinlikler', fr: 'Événements', en: 'Events' };
+const etkinlikKisa: Record<Dil, string> = { tr: 'Etkinlikler', fr: 'Événements', en: 'Events', nl: 'Activiteiten', de: 'Veranstaltungen' };
 /* Fransızca menü öbeği («Mosquée · Actualités · Enseignement · Services») Türkçesinden ~100 px
    geniş; 1280 px ve üstünde «Horaires de prière» marka bloğunu 72 px sıkıştırıp üst şeridi
    taşırıyordu (7 Eyl 2026 tasarım taraması). Menüde kısa biçim kullanılır; sayfa başlığı aynı kaldı. */
-const namazKisa: Record<Dil, string> = { tr: 'Namaz Vakitleri', fr: 'Horaires', en: 'Prayer Times' };
+const namazKisa: Record<Dil, string> = { tr: 'Namaz Vakitleri', fr: 'Horaires', en: 'Prayer Times', nl: 'Gebedstijden', de: 'Gebetszeiten' };
 const [gCami, gHaber, gEgitim, gHizmet] = grupAdi[dil];
 const gruplar: Grup[] = [
   { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
@@ -32,12 +34,12 @@ const gruplar: Grup[] = [
   { ad: gEgitim, maddeler: [L('kurankursu'), L('dersmateryalleri'), L('kursgunlugu'), L('vaazlar'), L('irsat'), L('uip'), L('ihtida'), L('seviyeTesti')] },
   { ad: gHizmet, maddeler: [L('bagis'), L('uyelik'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ];
-const temaEtiketi: Record<Dil, string> = { tr: 'Karanlık / aydınlık tema', fr: 'Thème sombre / clair', en: 'Dark / light theme' };
+const temaEtiketi: Record<Dil, string> = { tr: 'Karanlık / aydınlık tema', fr: 'Thème sombre / clair', en: 'Dark / light theme', nl: 'Donker / licht thema', de: 'Dunkles / helles Design' };
 const dogrudan: Madde[] = [L('namaz', namazKisa[dil]), L('iletisim')];
 const aktif = (href: string) => Astro.url.pathname === href || (href !== yol(dil, 'anasayfa') && Astro.url.pathname.startsWith(href));
 const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
 ---
-<header class:list={['vt-baslik sticky top-0 z-40 bg-(--zemin) border-b border-(--cizgi)', /^\/(tr|fr|en)\/$/.test(Astro.url.pathname) && 'ana-baslik']}>
+<header class:list={['vt-baslik sticky top-0 z-40 bg-(--zemin) border-b border-(--cizgi)', Astro.url.pathname === `/${dil}/` && 'ana-baslik']}>
   <div class="kilim-serit" aria-hidden="true"></div>
   <div class="kapsayici flex items-center gap-3 py-3">
     <a href={yol(dil, 'anasayfa')} class="flex items-center gap-3 no-underline text-(--metin) hover:text-(--metin) min-w-0">
@@ -116,6 +118,11 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
 </header>
 
 <style>
+  /* Dar ekranda marka adı kırpılmasın; mevcut üç dilin düzeni korunur. */
+  @media (max-width: 23.99rem) {
+    header:lang(nl) > .kapsayici, header:lang(de) > .kapsayici,
+    header:lang(nl) > .kapsayici > a, header:lang(de) > .kapsayici > a { column-gap: .375rem; }
+  }
   header :global(button[aria-expanded]), header :global(#tema-dugme) { min-height: 44px; }
   .ana-baslik > .kilim-serit { background: var(--vurgu-2); }
   .ana-baslik nav > :global(a), .ana-baslik nav > div > button { color: var(--vurgu-2); }

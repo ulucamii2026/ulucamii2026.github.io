@@ -9,20 +9,34 @@ interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
-const m = dil === 'tr'
-  ? { materyal: 'Ders materyalleri', materyalA: 'Her ders gününün planı (PDF) ve sınıfta kullanılan sesli, iki dilli PowerPoint sunumları; evde tekrar için indirilebilir.', mufredat: 'Müfredat ve yıllık ders planı', mufredatA: `${DERS_YILI_ETIKETI} dönemi: beş ders alanının konuları, kaynak kitapları ve gün gün yıllık plan.`, mufredatPdf: 'PDF (A4)',
+const METIN = {
+  tr: { materyal: 'Ders materyalleri', materyalA: 'Her ders gününün planı (PDF) ve sınıfta kullanılan sesli, iki dilli PowerPoint sunumları; evde tekrar için indirilebilir.', mufredat: 'Müfredat ve yıllık ders planı', mufredatA: `${DERS_YILI_ETIKETI} dönemi: beş ders alanının konuları, kaynak kitapları ve gün gün yıllık plan.`, mufredatPdf: 'PDF (A4)',
       kitap: 'Ders kitapları', kitapA: 'Öğrenciler derslere müfredatta belirtilen kitaplar, defter ve kalemle gelir; kurs ücretsizdir.', kitapBag: 'Temin bilgileri', kitapCapa: '#ders-kitaplari',
       kayit: 'Online kayıt formu', kayitA: `${DERS_YILI_ETIKETI} dönemi kayıtları açıktır. Formu doldurduktan sonra din görevlimiz sizinle iletişime geçer.`, portal: 'Veli portalı', portalA: 'Yoklama, ilerleme, haftalık ezber-ödev, duyurular; giriş kayıt formundaki veli e-postasıyla.', soru: 'Sorularınız için', logoAlt: 'Ulu Camii Kur’an Kursu logosu',
-      seviye: 'Yetişkinler için: Kur’an okumayı ve temel dinî bilgileri öğrenmek isteyenler seviye tespit testini doldurabilir.' }
-  : dil === 'en'
-  ? { materyal: 'Lesson materials', materyalA: 'The lesson plan (PDF) and the bilingual PowerPoint decks with audio for every lesson day; download them for revision at home.', mufredat: 'Curriculum & yearly lesson plan', mufredatA: `${DERS_YILI_ETIKETI}: topics, textbooks and the day-by-day plan for the five subjects (in Turkish).`, mufredatPdf: 'PDF (A4)',
+      seviye: 'Yetişkinler için: Kur’an okumayı ve temel dinî bilgileri öğrenmek isteyenler seviye tespit testini doldurabilir.',
+      uipEt: 'Lise sonrası', uipA: 'Türkiye’de Diyanet burslu ilahiyat lisansı: Uluslararası İlahiyat Programı (UİP). Şartlar, takvim ve başvuru desteği.' },
+  en: { materyal: 'Lesson materials', materyalA: 'The lesson plan (PDF) and the bilingual PowerPoint decks with audio for every lesson day; download them for revision at home.', mufredat: 'Curriculum & yearly lesson plan', mufredatA: `${DERS_YILI_ETIKETI}: topics, textbooks and the day-by-day plan for the five subjects (in Turkish).`, mufredatPdf: 'PDF (A4)',
       kitap: 'Textbooks', kitapA: 'Students come to every lesson with the books listed in the curriculum, a notebook and a pen; the course is free of charge.', kitapBag: 'How to obtain', kitapCapa: '#manuels',
       kayit: 'Online registration form', kayitA: `Registration for the ${DERS_YILI_ETIKETI} term is open. After you submit the form, our imam will contact you.`, portal: 'Parents’ portal', portalA: 'Attendance, progress, weekly memorisation and homework, announcements; sign in with the parent e-mail from the registration form.', soru: 'For your questions', logoAlt: 'Ulu Camii Qur’an School logo',
-      seviye: 'For adults: those who wish to learn to read the Qur’an and the basics of the religion can fill in the level assessment.' }
-  : { materyal: 'Supports de cours', materyalA: 'Le plan de cours (PDF) et les présentations PowerPoint bilingues et sonores de chaque jour de cours ; à télécharger pour réviser à la maison.', mufredat: 'Programme et plan annuel des cours', mufredatA: `${DERS_YILI_ETIKETI} : sujets, manuels et plan jour par jour des cinq matières (en turc).`, mufredatPdf: 'PDF (A4)',
+      seviye: 'For adults: those who wish to learn to read the Qur’an and the basics of the religion can fill in the level assessment.',
+      uipEt: 'After secondary school', uipA: 'A Diyanet-funded theology degree in Türkiye: the International Theology Programme (UİP). Conditions, timeline and application support.' },
+  fr: { materyal: 'Supports de cours', materyalA: 'Le plan de cours (PDF) et les présentations PowerPoint bilingues et sonores de chaque jour de cours ; à télécharger pour réviser à la maison.', mufredat: 'Programme et plan annuel des cours', mufredatA: `${DERS_YILI_ETIKETI} : sujets, manuels et plan jour par jour des cinq matières (en turc).`, mufredatPdf: 'PDF (A4)',
       kitap: 'Manuels', kitapA: 'Les élèves viennent à chaque cours avec les manuels prévus au programme, un cahier et de quoi écrire ; le cours est gratuit.', kitapBag: 'Où se les procurer', kitapCapa: '#manuels',
       kayit: 'Formulaire d’inscription en ligne', kayitA: `Les inscriptions ${DERS_YILI_ETIKETI} sont ouvertes. Après l’envoi du formulaire, l’imam vous contactera.`, portal: 'Portail des parents', portalA: 'Présences, progression, mémorisation et devoirs de la semaine, annonces ; connexion avec l’e-mail du parent indiqué à l’inscription.', soru: 'Pour toute question', logoAlt: 'Logo de l’école coranique Ulu Camii',
-      seviye: 'Pour les adultes : celles et ceux qui souhaitent apprendre à lire le Coran et les bases de la religion peuvent remplir le test de niveau.' };
+      seviye: 'Pour les adultes : celles et ceux qui souhaitent apprendre à lire le Coran et les bases de la religion peuvent remplir le test de niveau.',
+      uipEt: 'Après le secondaire', uipA: 'Une licence de théologie en Turquie avec bourse Diyanet : le Programme international de théologie (UİP). Conditions, calendrier et aide à la candidature.' },
+  nl: { materyal: 'Lesmateriaal', materyalA: 'Het lesplan (PDF) en de tweetalige PowerPointpresentaties met geluid van elke lesdag; te downloaden om thuis te herhalen.', mufredat: 'Leerplan en jaarplanning', mufredatA: `${DERS_YILI_ETIKETI}: de onderwerpen, de handboeken en de dag-per-dagplanning van de vijf vakken (in het Turks).`, mufredatPdf: 'PDF (A4)',
+      kitap: 'Handboeken', kitapA: 'De leerlingen komen naar elke les met de boeken uit het leerplan, een schrift en een pen; de lessen zijn gratis.', kitapBag: 'Waar verkrijgbaar', kitapCapa: '#manuels',
+      kayit: 'Online inschrijvingsformulier', kayitA: `De inschrijvingen voor ${DERS_YILI_ETIKETI} zijn open. Nadat u het formulier hebt verstuurd, neemt onze imam contact met u op.`, portal: 'Ouderportaal', portalA: 'Aanwezigheid, vordering, memorisatie en huiswerk van de week, mededelingen; u meldt zich aan met het e-mailadres van de ouder uit het inschrijvingsformulier.', soru: 'Voor uw vragen', logoAlt: 'Logo van de Koranschool Ulu Camii',
+      seviye: 'Voor volwassenen: wie de Koran wil leren lezen en de basis van het geloof wil leren kennen, kan de niveautest invullen.',
+      uipEt: 'Na het secundair onderwijs', uipA: 'Een bachelor theologie in Türkiye met een beurs van de Diyanet: het Internationaal Theologieprogramma (UİP). Voorwaarden, kalender en hulp bij uw aanvraag.' },
+  de: { materyal: 'Unterrichtsmaterial', materyalA: 'Der Unterrichtsplan (PDF) und die zweisprachigen PowerPoint-Präsentationen mit Ton für jeden Unterrichtstag; zum Herunterladen für die Wiederholung zu Hause.', mufredat: 'Lehrplan und Jahresplan', mufredatA: `${DERS_YILI_ETIKETI}: die Themen, die Lehrbücher und der Tag-für-Tag-Plan der fünf Fächer (auf Türkisch).`, mufredatPdf: 'PDF (A4)',
+      kitap: 'Lehrbücher', kitapA: 'Die Lernenden kommen zu jedem Unterricht mit den im Lehrplan genannten Büchern, einem Heft und einem Stift; der Unterricht ist kostenlos.', kitapBag: 'Wo erhältlich', kitapCapa: '#manuels',
+      kayit: 'Online-Anmeldeformular', kayitA: `Die Anmeldungen für ${DERS_YILI_ETIKETI} sind offen. Nachdem Sie das Formular abgeschickt haben, meldet sich unser Imam bei Ihnen.`, portal: 'Elternportal', portalA: 'Anwesenheit, Fortschritt, Memorierung und Hausaufgaben der Woche, Mitteilungen; die Anmeldung erfolgt mit der E-Mail-Adresse der Eltern aus dem Anmeldeformular.', soru: 'Für Ihre Fragen', logoAlt: 'Logo der Koranschule Ulu Camii',
+      seviye: 'Für Erwachsene: Wer den Koran lesen lernen und die Grundlagen der Religion kennenlernen möchte, kann den Einstufungstest ausfüllen.',
+      uipEt: 'Nach der Sekundarstufe', uipA: 'Ein Theologiestudium in Türkiye mit einem Diyanet-Stipendium: das Internationale Theologieprogramm (UİP). Voraussetzungen, Zeitplan und Unterstützung bei der Bewerbung.' },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
 ---
 <IcerikSayfasi dil={dil} anahtar="kurankursu" etiket={t('nav.kurankursu')}>
   <div slot="yan" class="kart p-5 text-center">
@@ -63,8 +77,8 @@ const m = dil === 'tr'
     <a href={yol(dil, 'veli')} class="dugme dugme-birincil mt-3 w-full justify-center">{t('nav.veli')}</a>
   </div>
   <div slot="yan" class="kart-kagit p-5">
-    <p class="etiket etiket-vurgu">{dil === 'tr' ? 'Lise sonrası' : dil === 'fr' ? 'Après le secondaire' : 'After secondary school'}</p>
-    <p class="mt-1 text-sm text-(--metin-2)">{dil === 'tr' ? 'Türkiye’de Diyanet burslu ilahiyat lisansı: Uluslararası İlahiyat Programı (UİP). Şartlar, takvim ve başvuru desteği.' : dil === 'fr' ? 'Une licence de théologie en Turquie avec bourse Diyanet : le Programme international de théologie (UİP). Conditions, calendrier et aide à la candidature.' : 'A Diyanet-funded theology degree in Türkiye: the International Theology Programme (UİP). Conditions, timeline and application support.'}</p>
+    <p class="etiket etiket-vurgu">{m.uipEt}</p>
+    <p class="mt-1 text-sm text-(--metin-2)">{m.uipA}</p>
     <a href={yol(dil, 'uip')} class="dugme dugme-ikincil mt-3 w-full justify-center">{t('nav.uip')}</a>
   </div>
   {/* Yetişkin yerleştirme testi; çocuk kaydıyla karışmasın diye tek satır + bağlantı. */}

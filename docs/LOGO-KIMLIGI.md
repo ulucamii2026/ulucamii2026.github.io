@@ -34,3 +34,10 @@ Eski kusurlu logo kaynakları yerel arşivden de silinmiştir
 
 **Logo bir daha değişirse** yukarıdaki üç türev de yenilenmelidir; aksi hâlde sekme simgesi ve
 sosyal medya kartı eski amblemi göstermeye devam eder.
+
+## Paylaşım kartı şablonu kalıcı (21 Eylül 2026)
+
+Site Flemenkçe ve Almanca da yayımlanınca silinmiş olan kart şablonu `scripts/og-kart-uret.mjs` olarak yeniden kuruldu (Playwright,
+ana SVG amblem + yerel Lora / IBM Plex Mono; yayındaki Fransızca kartla yan yana karşılaştırıldı). `node scripts/og-kart-uret.mjs nl de`
+yalnız yeni dilleri üretir; logo değişirse `--hepsi` ile beş kart birden yenilenir. Kart raster olmak zorundadır («vektör önce»
+kuralının bilinen istisnası); amblem karta vektör olarak yerleşir.

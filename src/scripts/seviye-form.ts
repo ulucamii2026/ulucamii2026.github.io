@@ -271,6 +271,7 @@ export function seviyeFormuBaslat() {
     govde(v) {
       const profil = (v.profil ?? {}) as Veriler;
       const onay = (v.onay ?? {}) as Veriler;
+      const yerel = (v.yerel ?? {}) as Veriler;
       const telefon = String(profil.telefon ?? '').trim();
       // `okumaAtla.*` yalnız arayüz içindir, gövdeye girmez.
       // E-posta küçük harfe çevrilmez: normalleştirmeyi sunucu yapar.
@@ -292,7 +293,16 @@ export function seviyeFormuBaslat() {
           bicim: String(profil.bicim ?? ''),
           not: String(profil.not ?? ''),
         },
-        onay: { yas18: onay.yas18 === true, riza: onay.riza === true },
+        // Form sürümü 2: başvuranın yeri + İSTEĞE BAĞLI iki paylaşım onayı (işaretlenmediyse açıkça false gider).
+        yerel: {
+          ulke: String(yerel.ulke ?? ''),
+          sehir: String(yerel.sehir ?? '').trim(),
+          camiBiliyor: String(yerel.camiBiliyor ?? ''),
+          yakinCami: String(yerel.yakinCami ?? '').trim(),
+          gorevliTaniyor: String(yerel.gorevliTaniyor ?? ''),
+          ateselikBilgisi: String(yerel.ateselikBilgisi ?? ''),
+        },
+        onay: { yas18: onay.yas18 === true, riza: onay.riza === true, yerelGorevli: onay.yerelGorevli === true, ateselik: onay.ateselik === true },
         atla: Object.fromEntries(isaretliler(v.atla).map((alan) => [alan, true])),
         cevaplar: sayilar(v.cevaplar),
         ezber: sayilar(v.ezber),
@@ -313,6 +323,12 @@ export function seviyeFormuBaslat() {
         eposta: String(profil.eposta ?? ''),
         telefon: String(profil.telefon ?? ''),
         dersDili: etiket('profil.dersDili', profil.dersDili),
+        yer: (() => {
+          const yerel = (v.yerel ?? {}) as Veriler;
+          const secili = f.querySelector<HTMLSelectElement>('select[name="yerel.ulke"]')?.selectedOptions[0];
+          const ulke = secili && secili.value ? secili.textContent?.trim() ?? '' : '';
+          return [ulke, String(yerel.sehir ?? '').trim()].filter(Boolean).join(' · ');
+        })(),
         cevaplanan: doldur(metin.cevaplanan, { n: acik.filter((s) => s.yanitli).length, toplam: metin.toplamSoru }),
         atlanan: doldur(metin.atlanan, { liste: atlananlar.join(', ') || '—' }),
       };

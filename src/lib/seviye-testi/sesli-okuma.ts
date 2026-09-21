@@ -8,30 +8,38 @@
  *  (şıklar harf adı / okunuştur), Arap harfli hiçbir metin klibe girmez. */
 import type { BeyanMaddesi, EzberMaddesi, Madde } from './tipler.ts';
 
-export type OkumaDili = 'tr' | 'fr' | 'en';
+/** Site dilleriyle aynı beşli (bkz. tipler.ts → Dil). Klibi olmayan dilde düğme hiç basılmaz:
+ *  manifest (`src/data/seviye-sesler.json`) yalnız diskteki klipleri listeler, eksik dil sessizce atlanır. */
+export type OkumaDili = 'tr' | 'fr' | 'en' | 'nl' | 'de';
 
 const KALIP: Record<OkumaDili, { siklar: string; sira: string[]; yaDa: string; ayrac: string }> = {
   tr: { siklar: 'Şıklar.', sira: ['Bir', 'İki', 'Üç', 'Dört', 'Beş', 'Altı'], yaDa: 'Ya da', ayrac: ': ' },
   fr: { siklar: 'Réponses possibles.', sira: ['Un', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six'], yaDa: 'Ou bien', ayrac: ' : ' },
   en: { siklar: 'Options.', sira: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'], yaDa: 'Or', ayrac: ': ' },
+  nl: { siklar: 'Antwoordmogelijkheden.', sira: ['Eén', 'Twee', 'Drie', 'Vier', 'Vijf', 'Zes'], yaDa: 'Of', ayrac: ': ' },
+  de: { siklar: 'Antwortmöglichkeiten.', sira: ['Eins', 'Zwei', 'Drei', 'Vier', 'Fünf', 'Sechs'], yaDa: 'Oder', ayrac: ': ' },
 };
 
 const ARAPCA = /[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]/;
 const nokta = (s: string) => (/[.!?…»”"]$/.test(s.trim()) ? s.trim() : `${s.trim()}.`);
 
-/** Yazı dilindeki kısaltmalar konuşma diline çevrilir (yalnız SESTE; ekrandaki metin değişmez). */
-function konusmaDili(metin: string, dil: OkumaDili): string {
-  if (dil === 'tr') {
-    return metin
-      .replace(/\bHz\.\s*/g, 'Hazreti ')
-      .replace(/\s*\(s\.a\.s\.\)/g, ' sallallâhu aleyhi ve sellem')
-      .replace(/\s*\(a\.s\.\)/g, ' aleyhisselâm')
-      .replace(/\s*\(r\.a\.\)/g, ' radıyallâhu anh');
-  }
+/** Yazı dilindeki kısaltmalar konuşma diline çevrilir (yalnız SESTE; ekrandaki metin değişmez).
+ *  Dil başına tek kural: yeni dil eklenince TypeScript eksik anahtarı bildirir; kuralı olmayan dil
+ *  metni olduğu gibi bırakır (nl ve de metinleri kısaltmasız ve cinsiyet ekisiz yazılır). */
+const KONUSMA: Record<OkumaDili, (metin: string) => string> = {
+  tr: (metin) => metin
+    .replace(/\bHz\.\s*/g, 'Hazreti ')
+    .replace(/\s*\(s\.a\.s\.\)/g, ' sallallâhu aleyhi ve sellem')
+    .replace(/\s*\(a\.s\.\)/g, ' aleyhisselâm')
+    .replace(/\s*\(r\.a\.\)/g, ' radıyallâhu anh'),
   // «musulman(e)», «né(e)»: yazıdaki cinsiyet eki seste okunmaz.
-  if (dil === 'fr') return metin.replace(/\((?:e|ne|s|es)\)/g, '');
-  return metin;
-}
+  fr: (metin) => metin.replace(/\((?:e|ne|s|es)\)/g, ''),
+  en: (metin) => metin,
+  nl: (metin) => metin,
+  de: (metin) => metin,
+};
+
+const konusmaDili = (metin: string, dil: OkumaDili): string => KONUSMA[dil](metin);
 
 /** Arap harfi içeren metin seslendirilmez (boş döner → klip üretilmez, düğme çıkmaz). */
 const guvenli = (metin: string, dil: OkumaDili) => (ARAPCA.test(metin) ? '' : konusmaDili(metin, dil));

@@ -4,10 +4,10 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yol, tarihBicimle } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { vefatlar, siteAyarlari } from '../lib/icerik';
+import { vefatlar, siteAyarlari, icerikDili } from '../lib/icerik';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
-const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
+const icDil = icerikDili(dil); // içerik alanları yalnız tr/fr — diğer dillerde Fransızcaya düş
 const liste = await vefatlar();
 const site = await siteAyarlari();
 const c = site.cenaze;
@@ -19,58 +19,113 @@ const monogram = (ad: string) => {
   const son = kelimeler.length > 1 ? kelimeler[kelimeler.length - 1][0] : '';
   return (ilk + son).toLocaleUpperCase('tr');
 };
-const m = dil === 'tr' ? {
-  alt: 'Cemaatimizden Hakk’a yürüyen kardeşlerimizi rahmetle, minnetle anıyoruz. Cenaze namazı duyuruları da bu sayfada yayınlanır.',
-  ayetMeal: '“Biz Allah’a aidiz ve O’na döneceğiz.” (Bakara, 2/156)',
-  bos: 'Şu anda yayınlanmış vefat haberi bulunmuyor.',
-  cenazeNamazi: 'Cenaze namazı', defin: 'Defin', memleket: 'Memleketi', taziye: 'Taziye', yas: 'yaşında',
-  dua: 'Allah rahmet eylesin, mekânı cennet olsun.',
-  hizmetBaslik: 'Cenaze hizmetleri kimin sorumluluğunda?',
-  hizmet: ['Gasil (yıkama), techiz-tekfin, Türkiye’ye nakil veya Belçika’da defin ve bütün resmî cenaze işlemleri: Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu (1982’den beri). Vefat hâlinde ilk aranacak yer fondur.', 'Camimizin görevi: cenaze namazının kıldırılması, vefat haberinin cemaate duyurulması (cami, web sitesi, WhatsApp) ve taziye/mevlid programları.', 'Din görevlimiz, cenaze camimize getirilip namazı kılınacağı zaman devreye girer; yıkama ve nakil işlemlerini yürütmez.'],
-  hizmetNot: 'Fonun bilgisi dışında yapılan cenaze işlemleri için fon yardımı yapılmaz. Cenaze namazı için camimizle din görevlimiz üzerinden irtibat kurulur.',
-  nakil: 'Cenaze ve Türkiye’ye nakil işlemleri →',
-  aileNot: 'Bu sayfadaki kayıtlar ailelerin bilgisi ve isteğiyle yayınlanır. Ekleme, düzeltme veya kaldırma talepleri için dernek yönetimine ulaşın.',
-  acilBaslik: 'Vefat anında aranacak numaralar',
-  acil1: 'BDV Cenaze Fonu — vefat hattı', acil1b: 'hafta içi mesai saatinde', acil2: 'Din görevlimiz — cenaze namazı', acil3: 'Başkonsolosluk nöbetçi hattı',
-  surecBaslik: 'Adım adım süreç',
-  surec: ['Vefatı doktora tespit ettirin (ölüm raporu).', 'Hemen BDV Cenaze Fonu’nu arayın: yıkama, kefenleme, nakil veya defin ve cenaze firmasıyla bütün işlemleri fon yürütür. Fon onayı olmadan başka firma kullanılırsa masraflar karşılanmaz.', 'Cenaze namazı camimizde kılınacaksa din görevlimizi arayın; namazın günü ve vakti kararlaştırılır, cemaate duyurulur.', 'Belediyeye (Marche-en-Famenne nüfus servisi) ölüm bildirimi yapılır (genellikle cenaze firması yürütür).', 'Türkiye’ye nakil: Başkonsolosluk cenaze nakil belgesi + Saniport “laissez-passer mortuaire” — fon ve cenaze firması takip eder.', 'Belçika’da defin tercih edilirse: Marche-en-Famenne/Aye çok dinli mezarlığı (Müslüman parseli) veya Namur, Liège, Charleroi.'],
-  fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Her yıl Ocak ayının ilk haftası aidat mektubu gönderilir; 25 Ocak’a kadar mektup gelmezse fona bilgi verilmelidir. Aidat, mektup ulaştıktan sonra en geç 10 gün içinde ödenir; doğum, evlenme, boşanma ve adres değişiklikleri fona bildirilir.',
-  belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
-} : dil === 'en' ? {
-  alt: 'We remember with mercy and gratitude the members of our community who have passed into the presence of Allah. Announcements of funeral prayers are also published on this page.',
-  ayetMeal: '“Indeed we belong to Allah, and indeed to Him we will return.” (Qur’an, 2:156)',
-  bos: 'No obituary has been published at this time.',
-  cenazeNamazi: 'Funeral prayer', defin: 'Burial', memleket: 'Hometown', taziye: 'Condolences', yas: 'years old',
-  dua: 'May Allah have mercy on them and grant them Paradise.',
-  hizmetBaslik: 'Who is responsible for funeral services?',
-  hizmet: ['Ritual washing (ghusl), shrouding, transfer to Turkey or burial in Belgium, and all official funeral procedures: the Diyanet Foundation of Belgium’s Funeral, Mutual Aid and Solidarity Fund (since 1982). In the event of a death, the fund is the first point of contact.', 'The mosque’s role: leading the funeral prayer, announcing the death to the community (mosque, website, WhatsApp), and organising condolence and mevlid programmes.', 'Our imam becomes involved once the deceased is brought to our mosque for the funeral prayer; he does not carry out the washing or the transfer.'],
-  hizmetNot: 'No assistance is provided by the fund for funeral arrangements made without its knowledge. For the funeral prayer, please contact our mosque through our imam.',
-  nakil: 'Death and transfer to Turkey →',
-  aileNot: 'The records on this page are published with the knowledge and consent of the families. For requests to add, correct or remove an entry, please contact the association committee.',
-  acilBaslik: 'Numbers to call at the time of a death',
-  acil1: 'BDV Funeral Fund — death line', acil1b: 'weekday office hours', acil2: 'Our imam — funeral prayer', acil3: 'Consulate General — duty line',
-  surecBaslik: 'Step-by-step process',
-  surec: ['Have the death certified by a doctor (death report).', 'Call the BDV Funeral Fund immediately: washing, shrouding, transfer or burial, and all arrangements with the funeral company are handled by the fund. If another company is used without the fund’s approval, costs will not be covered.', 'If the funeral prayer is to be performed at our mosque, call our imam; the day and time are agreed and announced to the community.', 'The death is reported to the municipality (Marche-en-Famenne population department) — usually handled by the funeral company.', 'Transfer to Turkey: a Consulate transfer certificate plus a Saniport “laissez-passer mortuaire”, followed up by the fund and the funeral company.', 'If burial in Belgium is preferred: the multi-faith cemetery of Marche-en-Famenne/Aye (Muslim section), or Namur, Liège, Charleroi.'],
-  fonNot: 'Fund membership: Turkish citizens with at least 1 year of permanent residence in Belgium; spouses and children under 18 are covered; membership takes effect 60 days after payment (except in case of accident). An annual dues letter is sent in the first week of January each year; if it has not arrived by 25 January, the fund should be informed. Dues must be paid within 10 days of receiving the letter; births, marriages, divorces and address changes must be reported to the fund.',
-  belediye: 'Municipal population department', mezarlik: 'Cemetery', fonSayfa: 'Fund information page ↗',
-} : {
-  alt: 'Nous honorons la mémoire des membres de notre communauté qui nous ont quittés. Les annonces de prières funéraires sont également publiées ici.',
-  ayetMeal: '« Nous appartenons à Allah et c’est à Lui que nous retournons. » (Coran, 2/156)',
-  bos: 'Aucun avis de décès publié pour le moment.',
-  cenazeNamazi: 'Prière funéraire', defin: 'Inhumation', memleket: 'Originaire de', taziye: 'Condoléances', yas: 'ans',
-  dua: 'Qu’Allah lui fasse miséricorde et l’accueille au Paradis.',
-  hizmetBaslik: 'Qui est responsable des funérailles ?',
-  hizmet: ['Toilette mortuaire (ghusl), linceul, rapatriement en Turquie ou inhumation en Belgique et toutes les démarches officielles : le Fonds funéraire de la Fondation Diyanet de Belgique (depuis 1982). En cas de décès, c’est le premier numéro à appeler.', 'Rôle de la mosquée : célébrer la prière funéraire, annoncer le décès à la communauté (mosquée, site web, WhatsApp) et organiser les programmes de condoléances et de mevlid.', 'Notre imam intervient lorsque le défunt est amené à la mosquée pour la prière funéraire ; il ne s’occupe ni de la toilette ni du transport.'],
-  hizmetNot: 'Aucune aide n’est accordée par le fonds pour des démarches entreprises à son insu. Pour la prière funéraire, contactez la mosquée via notre imam.',
-  nakil: 'Décès et rapatriement en Turquie →',
-  aileNot: 'Les avis publiés ici le sont avec l’accord des familles. Pour toute demande d’ajout, de correction ou de retrait, contactez le comité de l’association.',
-  acilBaslik: 'Numéros à appeler en cas de décès',
-  acil1: 'Fonds funéraire BDV — ligne décès', acil1b: 'heures de bureau en semaine', acil2: 'Notre imam — prière funéraire', acil3: 'Consulat général — permanence',
-  surecBaslik: 'Démarches étape par étape',
-  surec: ['Faire constater le décès par un médecin (certificat de décès).', 'Appeler immédiatement le Fonds funéraire BDV : toilette, linceul, rapatriement ou inhumation et toutes les démarches avec l’entreprise funéraire sont pris en charge par le fonds. Sans son accord, les frais d’une autre entreprise ne sont pas remboursés.', 'Si la prière funéraire a lieu à la mosquée, appeler notre imam : le jour et l’heure sont fixés et annoncés à la communauté.', 'Déclarer le décès à la commune (service population de Marche-en-Famenne) — généralement effectué par l’entreprise funéraire.', 'Rapatriement en Turquie : attestation de transport du Consulat + laissez-passer mortuaire (Saniport), suivis par le fonds et l’entreprise funéraire.', 'Inhumation en Belgique : cimetière multiconfessionnel de Marche-en-Famenne/Aye (parcelle musulmane) ou Namur, Liège, Charleroi.'],
-  fonNot: 'Affiliation au fonds : citoyens turcs résidant en Belgique depuis au moins 1 an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Chaque année, la lettre de cotisation est envoyée la première semaine de janvier ; si elle n’est pas reçue avant le 25 janvier, prévenir le fonds. La cotisation se paie dans les 10 jours suivant la réception ; naissances, mariages, divorces et changements d’adresse doivent être signalés au fonds.',
-  belediye: 'Service population de la commune', mezarlik: 'Cimetière', fonSayfa: 'Page d’information du fonds ↗',
+interface Metin {
+  alt: string; ayetMeal: string; bos: string; cenazeNamazi: string; defin: string; memleket: string; taziye: string; yas: string; dua: string;
+  hizmetBaslik: string; hizmet: string[]; hizmetNot: string; nakil: string; aileNot: string; acilBaslik: string; acil1: string; acil1b: string; acil2: string; acil3: string;
+  surecBaslik: string; surec: string[]; fonNot: string; belediye: string; mezarlik: string; fonSayfa: string;
+  icerikNot?: string; neYapilirBaslik: string; neYapilirMetin: string;
+}
+const M: Record<Dil, Metin> = {
+  tr: {
+    alt: 'Cemaatimizden Hakk’a yürüyen kardeşlerimizi rahmetle, minnetle anıyoruz. Cenaze namazı duyuruları da bu sayfada yayınlanır.',
+    ayetMeal: '“Biz Allah’a aidiz ve O’na döneceğiz.” (Bakara, 2/156)',
+    bos: 'Şu anda yayınlanmış vefat haberi bulunmuyor.',
+    cenazeNamazi: 'Cenaze namazı', defin: 'Defin', memleket: 'Memleketi', taziye: 'Taziye', yas: 'yaşında',
+    dua: 'Allah rahmet eylesin, mekânı cennet olsun.',
+    hizmetBaslik: 'Cenaze hizmetleri kimin sorumluluğunda?',
+    hizmet: ['Gasil (yıkama), techiz-tekfin, Türkiye’ye nakil veya Belçika’da defin ve bütün resmî cenaze işlemleri: Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu (1982’den beri). Vefat hâlinde ilk aranacak yer fondur.', 'Camimizin görevi: cenaze namazının kıldırılması, vefat haberinin cemaate duyurulması (cami, web sitesi, WhatsApp) ve taziye/mevlid programları.', 'Din görevlimiz, cenaze camimize getirilip namazı kılınacağı zaman devreye girer; yıkama ve nakil işlemlerini yürütmez.'],
+    hizmetNot: 'Fonun bilgisi dışında yapılan cenaze işlemleri için fon yardımı yapılmaz. Cenaze namazı için camimizle din görevlimiz üzerinden irtibat kurulur.',
+    nakil: 'Cenaze ve Türkiye’ye nakil işlemleri →',
+    aileNot: 'Bu sayfadaki kayıtlar ailelerin bilgisi ve isteğiyle yayınlanır. Ekleme, düzeltme veya kaldırma talepleri için dernek yönetimine ulaşın.',
+    acilBaslik: 'Vefat anında aranacak numaralar',
+    acil1: 'BDV Cenaze Fonu — vefat hattı', acil1b: 'hafta içi mesai saatinde', acil2: 'Din görevlimiz — cenaze namazı', acil3: 'Başkonsolosluk nöbetçi hattı',
+    surecBaslik: 'Adım adım süreç',
+    surec: ['Vefatı doktora tespit ettirin (ölüm raporu).', 'Hemen BDV Cenaze Fonu’nu arayın: yıkama, kefenleme, nakil veya defin ve cenaze firmasıyla bütün işlemleri fon yürütür. Fon onayı olmadan başka firma kullanılırsa masraflar karşılanmaz.', 'Cenaze namazı camimizde kılınacaksa din görevlimizi arayın; namazın günü ve vakti kararlaştırılır, cemaate duyurulur.', 'Belediyeye (Marche-en-Famenne nüfus servisi) ölüm bildirimi yapılır (genellikle cenaze firması yürütür).', 'Türkiye’ye nakil: Başkonsolosluk cenaze nakil belgesi + Saniport “laissez-passer mortuaire” — fon ve cenaze firması takip eder.', 'Belçika’da defin tercih edilirse: Marche-en-Famenne/Aye çok dinli mezarlığı (Müslüman parseli) veya Namur, Liège, Charleroi.'],
+    fonNot: 'Fon üyeliği: Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamda; üyelik ödeme sonrası 60 gün içinde başlar (kaza hariç). Her yıl Ocak ayının ilk haftası aidat mektubu gönderilir; 25 Ocak’a kadar mektup gelmezse fona bilgi verilmelidir. Aidat, mektup ulaştıktan sonra en geç 10 gün içinde ödenir; doğum, evlenme, boşanma ve adres değişiklikleri fona bildirilir.',
+    belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
+    neYapilirBaslik: 'Vefat hâlinde ne yapılır?', neYapilirMetin: 'BDV Cenaze Fonu, vefat anında aranacak numaralar ve adım adım süreç ayrı bir bilgilendirme sayfasında toplanmıştır.',
+  },
+  fr: {
+    alt: 'Nous honorons la mémoire des membres de notre communauté qui nous ont quittés. Les annonces de prières funéraires sont également publiées ici.',
+    ayetMeal: '« Nous appartenons à Allah et c’est à Lui que nous retournons. » (Coran, 2/156)',
+    bos: 'Aucun avis de décès publié pour le moment.',
+    cenazeNamazi: 'Prière funéraire', defin: 'Inhumation', memleket: 'Originaire de', taziye: 'Condoléances', yas: 'ans',
+    dua: 'Qu’Allah lui fasse miséricorde et l’accueille au Paradis.',
+    hizmetBaslik: 'Qui est responsable des funérailles ?',
+    hizmet: ['Toilette mortuaire (ghusl), linceul, rapatriement en Turquie ou inhumation en Belgique et toutes les démarches officielles : le Fonds funéraire de la Fondation Diyanet de Belgique (depuis 1982). En cas de décès, c’est le premier numéro à appeler.', 'Rôle de la mosquée : célébrer la prière funéraire, annoncer le décès à la communauté (mosquée, site web, WhatsApp) et organiser les programmes de condoléances et de mevlid.', 'Notre imam intervient lorsque le défunt est amené à la mosquée pour la prière funéraire ; il ne s’occupe ni de la toilette ni du transport.'],
+    hizmetNot: 'Aucune aide n’est accordée par le fonds pour des démarches entreprises à son insu. Pour la prière funéraire, contactez la mosquée via notre imam.',
+    nakil: 'Décès et rapatriement en Turquie →',
+    aileNot: 'Les avis publiés ici le sont avec l’accord des familles. Pour toute demande d’ajout, de correction ou de retrait, contactez le comité de l’association.',
+    acilBaslik: 'Numéros à appeler en cas de décès',
+    acil1: 'Fonds funéraire BDV — ligne décès', acil1b: 'heures de bureau en semaine', acil2: 'Notre imam — prière funéraire', acil3: 'Consulat général — permanence',
+    surecBaslik: 'Démarches étape par étape',
+    surec: ['Faire constater le décès par un médecin (certificat de décès).', 'Appeler immédiatement le Fonds funéraire BDV : toilette, linceul, rapatriement ou inhumation et toutes les démarches avec l’entreprise funéraire sont pris en charge par le fonds. Sans son accord, les frais d’une autre entreprise ne sont pas remboursés.', 'Si la prière funéraire a lieu à la mosquée, appeler notre imam : le jour et l’heure sont fixés et annoncés à la communauté.', 'Déclarer le décès à la commune (service population de Marche-en-Famenne) — généralement effectué par l’entreprise funéraire.', 'Rapatriement en Turquie : attestation de transport du Consulat + laissez-passer mortuaire (Saniport), suivis par le fonds et l’entreprise funéraire.', 'Inhumation en Belgique : cimetière multiconfessionnel de Marche-en-Famenne/Aye (parcelle musulmane) ou Namur, Liège, Charleroi.'],
+    fonNot: 'Affiliation au fonds : citoyens turcs résidant en Belgique depuis au moins 1 an ; conjoint et enfants de moins de 18 ans couverts ; la couverture débute 60 jours après le paiement (sauf accident). Chaque année, la lettre de cotisation est envoyée la première semaine de janvier ; si elle n’est pas reçue avant le 25 janvier, prévenir le fonds. La cotisation se paie dans les 10 jours suivant la réception ; naissances, mariages, divorces et changements d’adresse doivent être signalés au fonds.',
+    belediye: 'Service population de la commune', mezarlik: 'Cimetière', fonSayfa: 'Page d’information du fonds ↗',
+    neYapilirBaslik: 'Que faire en cas de décès ?', neYapilirMetin: 'Le Fonds funéraire BDV, les numéros à appeler et les démarches étape par étape sont réunis sur une page d’information distincte.',
+  },
+  en: {
+    alt: 'We remember with mercy and gratitude the members of our community who have passed into the presence of Allah. Announcements of funeral prayers are also published on this page.',
+    ayetMeal: '“Indeed we belong to Allah, and indeed to Him we will return.” (Qur’an, 2:156)',
+    bos: 'No obituary has been published at this time.',
+    cenazeNamazi: 'Funeral prayer', defin: 'Burial', memleket: 'Hometown', taziye: 'Condolences', yas: 'years old',
+    dua: 'May Allah have mercy on them and grant them Paradise.',
+    hizmetBaslik: 'Who is responsible for funeral services?',
+    hizmet: ['Ritual washing (ghusl), shrouding, transfer to Turkey or burial in Belgium, and all official funeral procedures: the Diyanet Foundation of Belgium’s Funeral, Mutual Aid and Solidarity Fund (since 1982). In the event of a death, the fund is the first point of contact.', 'The mosque’s role: leading the funeral prayer, announcing the death to the community (mosque, website, WhatsApp), and organising condolence and mevlid programmes.', 'Our imam becomes involved once the deceased is brought to our mosque for the funeral prayer; he does not carry out the washing or the transfer.'],
+    hizmetNot: 'No assistance is provided by the fund for funeral arrangements made without its knowledge. For the funeral prayer, please contact our mosque through our imam.',
+    nakil: 'Death and transfer to Turkey →',
+    aileNot: 'The records on this page are published with the knowledge and consent of the families. For requests to add, correct or remove an entry, please contact the association committee.',
+    acilBaslik: 'Numbers to call at the time of a death',
+    acil1: 'BDV Funeral Fund — death line', acil1b: 'weekday office hours', acil2: 'Our imam — funeral prayer', acil3: 'Consulate General — duty line',
+    surecBaslik: 'Step-by-step process',
+    surec: ['Have the death certified by a doctor (death report).', 'Call the BDV Funeral Fund immediately: washing, shrouding, transfer or burial, and all arrangements with the funeral company are handled by the fund. If another company is used without the fund’s approval, costs will not be covered.', 'If the funeral prayer is to be performed at our mosque, call our imam; the day and time are agreed and announced to the community.', 'The death is reported to the municipality (Marche-en-Famenne population department) — usually handled by the funeral company.', 'Transfer to Turkey: a Consulate transfer certificate plus a Saniport “laissez-passer mortuaire”, followed up by the fund and the funeral company.', 'If burial in Belgium is preferred: the multi-faith cemetery of Marche-en-Famenne/Aye (Muslim section), or Namur, Liège, Charleroi.'],
+    fonNot: 'Fund membership: Turkish citizens with at least 1 year of permanent residence in Belgium; spouses and children under 18 are covered; membership takes effect 60 days after payment (except in case of accident). An annual dues letter is sent in the first week of January each year; if it has not arrived by 25 January, the fund should be informed. Dues must be paid within 10 days of receiving the letter; births, marriages, divorces and address changes must be reported to the fund.',
+    belediye: 'Municipal population department', mezarlik: 'Cemetery', fonSayfa: 'Fund information page ↗',
+    icerikNot: 'Obituary notices are written in Turkish and French. An English version is not available.',
+    neYapilirBaslik: 'What to do in the event of a death?', neYapilirMetin: 'The BDV Funeral Fund, the numbers to call and the step-by-step process are gathered on a separate information page.',
+  },
+  nl: {
+    alt: 'We herdenken met barmhartigheid en dankbaarheid de leden van onze gemeenschap die naar Allah zijn teruggekeerd. Aankondigingen van het rouwgebed worden ook op deze pagina gepubliceerd.',
+    ayetMeal: '“Voorwaar, wij behoren Allah toe en tot Hem keren wij terug.” (Koran, 2:156)',
+    bos: 'Er is op dit moment geen overlijdensbericht gepubliceerd.',
+    cenazeNamazi: 'Rouwgebed', defin: 'Begrafenis', memleket: 'Herkomst', taziye: 'Condoleances', yas: 'jaar oud',
+    dua: 'Moge Allah hem/haar genadig zijn en het Paradijs schenken.',
+    hizmetBaslik: 'Wie is verantwoordelijk voor de uitvaartdiensten?',
+    hizmet: ['Rituele wassing (ghusl), inwikkeling in het lijkkleed, overbrenging naar Turkije of begrafenis in België en alle officiële uitvaartformaliteiten: het Uitvaart-, Onderlinge Hulp- en Solidariteitsfonds van de Belgische Diyanetstichting (sinds 1982). Bij een overlijden is het fonds het eerste aanspreekpunt.', 'Rol van de moskee: het rouwgebed leiden, het overlijden aan de gemeenschap bekendmaken (moskee, website, WhatsApp) en condoleance- en mevlidprogramma’s organiseren.', 'Onze imam komt tussen zodra de overledene voor het rouwgebed naar onze moskee wordt gebracht; hij verzorgt niet de wassing of het vervoer.'],
+    hizmetNot: 'Voor uitvaartregelingen die buiten medeweten van het fonds worden getroffen, wordt geen tussenkomst verleend. Neem voor het rouwgebed contact op met onze moskee via onze imam.',
+    nakil: 'Overlijden en overbrenging naar Turkije →',
+    aileNot: 'De berichten op deze pagina worden gepubliceerd met medeweten en op verzoek van de families. Voor een toevoeging, correctie of verwijdering kunt u contact opnemen met het verenigingsbestuur.',
+    acilBaslik: 'Te bellen nummers bij een overlijden',
+    acil1: 'BDV Uitvaartfonds — overlijdenslijn', acil1b: 'kantooruren op weekdagen', acil2: 'Onze imam — rouwgebed', acil3: 'Consulaat-generaal — wachtdienst',
+    surecBaslik: 'Stap voor stap',
+    surec: ['Laat het overlijden door een arts vaststellen (overlijdensverklaring).', 'Bel onmiddellijk het BDV Uitvaartfonds: wassing, inwikkeling, overbrenging of begrafenis en alle afspraken met de uitvaartonderneming worden door het fonds geregeld. Als zonder toestemming van het fonds een andere onderneming wordt ingeschakeld, worden de kosten niet vergoed.', 'Als het rouwgebed in onze moskee plaatsvindt, belt u onze imam; dag en tijdstip worden afgesproken en aan de gemeenschap bekendgemaakt.', 'Het overlijden wordt aangegeven bij de gemeente (bevolkingsdienst van Marche-en-Famenne) — meestal door de uitvaartonderneming.', 'Overbrenging naar Turkije: een transportattest van het consulaat plus een “laissez-passer mortuaire” (Saniport), opgevolgd door het fonds en de uitvaartonderneming.', 'Bij begrafenis in België: de multiconfessionele begraafplaats van Marche-en-Famenne/Aye (moslimperceel), of Namen, Luik, Charleroi.'],
+    fonNot: 'Lidmaatschap van het fonds: Turkse staatsburgers met minstens 1 jaar vaste verblijfplaats in België; echtgeno(o)t(e) en kinderen onder de 18 jaar zijn gedekt; het lidmaatschap gaat 60 dagen na betaling in (behalve bij een ongeval). Elk jaar wordt in de eerste week van januari een bijdragebrief verstuurd; als deze brief niet vóór 25 januari is aangekomen, moet het fonds worden verwittigd. De bijdrage wordt uiterlijk 10 dagen na ontvangst van de brief betaald; geboorten, huwelijken, echtscheidingen en adreswijzigingen moeten aan het fonds worden gemeld.',
+    belediye: 'Bevolkingsdienst van de gemeente', mezarlik: 'Begraafplaats', fonSayfa: 'Informatiepagina van het fonds ↗',
+    icerikNot: 'Overlijdensberichten worden in het Turks en het Frans geschreven. Een Nederlandse versie is niet beschikbaar.',
+    neYapilirBaslik: 'Wat te doen bij een overlijden?', neYapilirMetin: 'Het BDV Uitvaartfonds, de te bellen nummers en de stap-voor-stapprocedure zijn samengebracht op een aparte informatiepagina.',
+  },
+  de: {
+    alt: 'Wir gedenken mit Barmherzigkeit und Dankbarkeit der Mitglieder unserer Gemeinde, die zu Allah zurückgekehrt sind. Ankündigungen von Totengebeten werden ebenfalls auf dieser Seite veröffentlicht.',
+    ayetMeal: '„Wahrlich, wir gehören Allah, und zu Ihm werden wir zurückkehren.“ (Koran, 2:156)',
+    bos: 'Derzeit ist keine Todesanzeige veröffentlicht.',
+    cenazeNamazi: 'Totengebet', defin: 'Bestattung', memleket: 'Herkunft', taziye: 'Beileid', yas: 'Jahre alt',
+    dua: 'Möge Allah ihm/ihr gnädig sein und ihm/ihr das Paradies gewähren.',
+    hizmetBaslik: 'Wer ist für die Bestattungsdienste zuständig?',
+    hizmet: ['Rituelle Waschung (Ghusl), Einhüllung in das Leichentuch, Überführung in die Türkei oder Bestattung in Belgien sowie alle amtlichen Bestattungsformalitäten: der Bestattungs-, Beistands- und Solidaritätsfonds der Belgischen Diyanet-Stiftung (seit 1982). Im Todesfall ist der Fonds die erste Anlaufstelle.', 'Aufgabe der Moschee: die Leitung des Totengebets, die Bekanntgabe des Todesfalls an die Gemeinde (Moschee, Website, WhatsApp) sowie die Organisation von Beileids- und Mevlid-Veranstaltungen.', 'Unser Imam wird tätig, sobald der Verstorbene zum Totengebet in unsere Moschee gebracht wird; die Waschung und die Überführung übernimmt er nicht.'],
+    hizmetNot: 'Für Bestattungsregelungen, die ohne Wissen des Fonds getroffen werden, wird keine Unterstützung gewährt. Für das Totengebet wenden Sie sich bitte über unseren Imam an unsere Moschee.',
+    nakil: 'Todesfall und Überführung in die Türkei →',
+    aileNot: 'Die Einträge auf dieser Seite werden mit Wissen und auf Wunsch der Familien veröffentlicht. Für Ergänzungen, Korrekturen oder das Entfernen eines Eintrags wenden Sie sich bitte an den Vereinsvorstand.',
+    acilBaslik: 'Im Todesfall zu kontaktierende Nummern',
+    acil1: 'BDV-Bestattungsfonds — Notrufnummer für Todesfälle', acil1b: 'werktags während der Bürozeiten', acil2: 'Unser Imam — Totengebet', acil3: 'Generalkonsulat — Bereitschaftsdienst',
+    surecBaslik: 'Schritt für Schritt',
+    surec: ['Den Tod von einem Arzt feststellen lassen (Totenschein).', 'Rufen Sie sofort den BDV-Bestattungsfonds an: Waschung, Einhüllung, Überführung oder Bestattung sowie alle Absprachen mit dem Bestattungsunternehmen übernimmt der Fonds. Wird ohne Zustimmung des Fonds ein anderes Unternehmen beauftragt, werden die Kosten nicht übernommen.', 'Findet das Totengebet in unserer Moschee statt, rufen Sie unseren Imam an; Tag und Uhrzeit werden vereinbart und der Gemeinde bekannt gegeben.', 'Der Todesfall wird bei der Gemeinde gemeldet (Einwohnermeldeamt von Marche-en-Famenne) — in der Regel durch das Bestattungsunternehmen.', 'Überführung in die Türkei: eine Transportbescheinigung des Konsulats sowie ein „laissez-passer mortuaire“ (Saniport), begleitet vom Fonds und dem Bestattungsunternehmen.', 'Bei Bestattung in Belgien: der multikonfessionelle Friedhof von Marche-en-Famenne/Aye (muslimisches Feld) oder Namur, Lüttich, Charleroi.'],
+    fonNot: 'Mitgliedschaft im Fonds: türkische Staatsangehörige mit mindestens 1 Jahr ständigem Wohnsitz in Belgien; Ehepartner und Kinder unter 18 Jahren sind mitversichert; die Mitgliedschaft beginnt 60 Tage nach Zahlung (außer bei Unfall). Jedes Jahr wird in der ersten Januarwoche ein Beitragsschreiben verschickt; ist es bis zum 25. Januar nicht eingetroffen, muss der Fonds informiert werden. Der Beitrag ist spätestens 10 Tage nach Erhalt des Schreibens zu zahlen; Geburten, Eheschließungen, Scheidungen und Adressänderungen sind dem Fonds zu melden.',
+    belediye: 'Einwohnermeldeamt der Gemeinde', mezarlik: 'Friedhof', fonSayfa: 'Informationsseite des Fonds ↗',
+    icerikNot: 'Todesanzeigen werden auf Türkisch und Französisch verfasst. Eine deutsche Fassung ist nicht verfügbar.',
+    neYapilirBaslik: 'Was tun im Todesfall?', neYapilirMetin: 'Der BDV-Bestattungsfonds, die im Todesfall zu kontaktierenden Nummern und die schrittweise Vorgehensweise sind auf einer eigenen Informationsseite zusammengefasst.',
+  },
 };
+const m = M[dil];
 ---
 <Base baslik={t('vefat.baslik')} dil={dil} aciklama={m.alt}>
   <SayfaBasligi etiket={t('nav.vefat')} baslik={t('vefat.baslik')} altBaslik={m.alt}>
@@ -79,7 +134,7 @@ const m = dil === 'tr' ? {
   </SayfaBasligi>
   <div class="kapsayici py-10 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
     <section>
-      {dil === 'en' && <p class="bilgi mb-6 text-sm">Obituary notices are written in Turkish and French. An English version is not available.</p>}
+      {icDil !== dil && m.icerikNot && <p class="bilgi mb-6 text-sm">{m.icerikNot}</p>}
       {liste.length === 0 && <p class="text-(--metin-2)">{m.bos}</p>}
       {yillar.map((yil) => (
         <div class="mb-10">
@@ -123,10 +178,10 @@ const m = dil === 'tr' ? {
     </section>
     <div class="grid gap-5 content-start lg:sticky lg:top-24">
       <div class="kart p-5 border-(--vurgu)">
-        <p class="etiket etiket-vurgu">{dil === 'tr' ? 'Vefat hâlinde ne yapılır?' : dil === 'en' ? 'What to do in the event of a death?' : 'Que faire en cas de décès ?'}</p>
-        <p class="mt-3 text-sm text-(--metin-2)">{dil === 'tr' ? 'BDV Cenaze Fonu, vefat anında aranacak numaralar ve adım adım süreç ayrı bir bilgilendirme sayfasında toplanmıştır.' : dil === 'en' ? 'The BDV Funeral Fund, the numbers to call and the step-by-step process are gathered on a separate information page.' : 'Le Fonds funéraire BDV, les numéros à appeler et les démarches étape par étape sont réunis sur une page d’information distincte.'}</p>
-        <p class="mt-4"><a href={yol(dil, 'cenaze')} class="dugme dugme-birincil w-full justify-center">{dil === 'tr' ? 'Cenaze Hizmetleri' : dil === 'en' ? 'Funeral Services' : 'Services funéraires'}</a></p>
-        {c && <p class="mt-3 text-center"><span class="etiket block">{dil === 'tr' ? 'BDV Cenaze Fonu — vefat hattı' : dil === 'en' ? 'BDV Funeral Fund — death line' : 'Fonds funéraire BDV — ligne décès'}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a></p>}
+        <p class="etiket etiket-vurgu">{m.neYapilirBaslik}</p>
+        <p class="mt-3 text-sm text-(--metin-2)">{m.neYapilirMetin}</p>
+        <p class="mt-4"><a href={yol(dil, 'cenaze')} class="dugme dugme-birincil w-full justify-center">{t('nav.cenaze')}</a></p>
+        {c && <p class="mt-3 text-center"><span class="etiket block">{m.acil1}</span><a href={tel(c.fonAcil)} class="mono text-base font-semibold">{c.fonAcil}</a></p>}
       </div>
     </div>
   </div>

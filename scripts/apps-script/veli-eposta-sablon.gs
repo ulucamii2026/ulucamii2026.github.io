@@ -5,7 +5,9 @@ function veliEpostaKacis(v) {
   });
 }
 function veliEpostaBaglami(dil, secenekler) {
-  if (['tr', 'fr', 'en'].indexOf(dil) < 0) throw new Error('veli-eposta-dil');
+  // 21 Eyl 2026 (nl/de): geçerli diller kimliğin tek kaynağından okunur (KIMLIK.diller = tr, fr, en, nl, de);
+  // şablon kendi dil listesini tutmaz — bu dosya yalnız üretilen KIMLIK sabitlerine dayanır.
+  if (!KIMLIK || !KIMLIK.diller || KIMLIK.diller.indexOf(dil) < 0) throw new Error('veli-eposta-dil');
   // v1'in dördüncü konumdaki düz alt notu da kabul edilir.
   var s = typeof secenekler === 'string' ? {altNot: secenekler} : (secenekler || {});
   var kurum = s.kurum === undefined ? 'kurs' : s.kurum;

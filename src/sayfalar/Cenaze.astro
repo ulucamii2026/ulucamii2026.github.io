@@ -11,7 +11,8 @@ const { dil } = Astro.props;
 const site = await siteAyarlari();
 const c = site.cenaze;
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
-const m = dil === 'tr' ? {
+const M = {
+  tr: {
   baslik: 'Cenaze Hizmetleri',
   alt: 'Vefat hâlinde ne yapılır? BDV Cenaze Fonu, aranacak numaralar ve adım adım süreç.',
   hizmetBaslik: 'Cenaze hizmetleri kimin sorumluluğunda?',
@@ -27,7 +28,9 @@ const m = dil === 'tr' ? {
   belediye: 'Belediye nüfus servisi', mezarlik: 'Mezarlık', fonSayfa: 'Fon bilgi sayfası ↗',
   fonKayitButon: 'Cenaze Fonu Çevrim İçi Kayıt Formu ↗',
   vefatSayfa: 'Vefat duyuruları ve Rahmetle Anıyoruz sayfası →',
-} : dil === 'en' ? {
+  etiket: 'Hizmetler',
+  },
+  en: {
   baslik: 'Funeral Services',
   alt: 'What to do in the event of a death: the BDV Funeral Fund, the numbers to call, and the step-by-step process.',
   hizmetBaslik: 'Who is responsible for funeral services?',
@@ -43,7 +46,9 @@ const m = dil === 'tr' ? {
   belediye: 'Municipal population department', mezarlik: 'Cemetery', fonSayfa: 'Fund information page ↗',
   fonKayitButon: 'Funeral Fund Online Registration Form ↗',
   vefatSayfa: 'Obituaries — In Memoriam page →',
-} : {
+  etiket: 'Services',
+  },
+  fr: {
   baslik: 'Services funéraires',
   alt: 'Que faire en cas de décès ? Le Fonds funéraire BDV, les numéros à appeler et les démarches étape par étape.',
   hizmetBaslik: 'Qui est responsable des funérailles ?',
@@ -59,10 +64,49 @@ const m = dil === 'tr' ? {
   belediye: 'Service population de la commune', mezarlik: 'Cimetière', fonSayfa: 'Page d’information du fonds ↗',
   fonKayitButon: 'Formulaire d’adhésion en ligne au Fonds funéraire ↗',
   vefatSayfa: 'Avis de décès — page In memoriam →',
-};
+  etiket: 'Services',
+  },
+  nl: {
+  baslik: 'Uitvaartdiensten',
+  alt: 'Wat te doen bij een overlijden? Het BDV-uitvaartfonds, de nummers die u belt en de stappen één voor één.',
+  hizmetBaslik: 'Wie staat in voor de uitvaart?',
+  hizmet: ['De rituele wassing (ghusl), het lijkkleed, de repatriëring naar Turkije of de begrafenis in België en alle officiële formaliteiten: het Uitvaart-, Hulp- en Solidariteitsfonds van de Belgische Diyanetstichting (sinds 1982). Bij een overlijden belt u in de eerste plaats het fonds.', 'De taak van onze moskee: het gebed voor de overledene leiden, het overlijden aan de gemeenschap meedelen (moskee, website, WhatsApp) en de condoleance- en mevlidbijeenkomsten organiseren.', 'Onze imam komt tussenbeide wanneer de overledene voor het gebed naar onze moskee wordt gebracht; hij verzorgt de wassing en het vervoer niet.'],
+  hizmetNot: 'Voor uitvaartregelingen die buiten het fonds om gebeuren, wordt geen tussenkomst verleend. Voor het gebed voor de overledene neemt u via onze imam contact op met de moskee.',
+  nakil: 'Overlijden en repatriëring naar Turkije →',
+  acilBaslik: 'Nummers om te bellen bij een overlijden',
+  acil1: 'BDV-uitvaartfonds — overlijdenslijn', acil1b: 'tijdens de kantooruren op weekdagen', acil2: 'Onze imam — gebed voor de overledene', acil3: 'Generaal consulaat — wachtdienst',
+  surecBaslik: 'De stappen één voor één',
+  surec: ['Laat het overlijden door een arts vaststellen (overlijdensattest).', 'Bel meteen het BDV-uitvaartfonds: de wassing, het lijkkleed, de repatriëring of de begrafenis en alle afspraken met de begrafenisondernemer worden door het fonds geregeld. Wordt zonder toestemming van het fonds een andere onderneming ingeschakeld, dan worden de kosten niet vergoed.', 'Vindt het gebed voor de overledene in onze moskee plaats, bel dan onze imam; dag en uur worden afgesproken en aan de gemeenschap meegedeeld.', 'Het overlijden wordt aangegeven bij de gemeente (dienst bevolking van Marche-en-Famenne) — meestal doet de begrafenisondernemer dat.', 'Repatriëring naar Turkije: een vervoersattest van het consulaat en een “laissez-passer mortuaire” van Saniport — opgevolgd door het fonds en de begrafenisondernemer.', 'Verkiest u een begrafenis in België: de multiconfessionele begraafplaats van Marche-en-Famenne/Aye (islamitisch perceel), of Namen, Luik of Charleroi.'],
+  fonBaslik: 'Over de aansluiting bij het fonds',
+  fonNot: 'Aansluiting bij het fonds: Turkse staatsburgers die minstens 1 jaar vast in België verblijven; echtgenoot en kinderen onder 18 jaar zijn mee gedekt; de dekking begint 60 dagen na de betaling (behalve bij een ongeval). Elk jaar wordt in de eerste week van januari de brief met het lidgeld verstuurd; is die op 25 januari nog niet aangekomen, verwittig dan het fonds. Het lidgeld wordt binnen 10 dagen na ontvangst van de brief betaald; geboorten, huwelijken, echtscheidingen en adreswijzigingen moeten aan het fonds worden gemeld.',
+  belediye: 'Dienst bevolking van de gemeente', mezarlik: 'Begraafplaats', fonSayfa: 'Informatiepagina van het fonds ↗',
+  fonKayitButon: 'Online aansluitingsformulier van het uitvaartfonds ↗',
+  vefatSayfa: 'Overlijdensberichten — pagina In memoriam →',
+  etiket: 'Diensten',
+  },
+  de: {
+  baslik: 'Bestattungsdienste',
+  alt: 'Was ist im Todesfall zu tun? Der BDV-Bestattungsfonds, die Nummern zum Anrufen und die einzelnen Schritte.',
+  hizmetBaslik: 'Wer ist für die Bestattung zuständig?',
+  hizmet: ['Die rituelle Waschung (Ghusl), das Leichentuch, die Überführung in die Türkei oder die Beisetzung in Belgien und alle amtlichen Formalitäten: der Bestattungs-, Hilfs- und Solidaritätsfonds der Belgischen Diyanet-Stiftung (seit 1982). Im Todesfall rufen Sie zuerst den Fonds an.', 'Die Aufgabe unserer Moschee: das Totengebet zu leiten, den Todesfall der Gemeinschaft mitzuteilen (Moschee, Website, WhatsApp) und die Kondolenz- und Mevlid-Programme zu organisieren.', 'Unser Imam kommt hinzu, wenn der Verstorbene für das Totengebet in unsere Moschee gebracht wird; die Waschung und die Überführung übernimmt er nicht.'],
+  hizmetNot: 'Für Bestattungen, die ohne Wissen des Fonds organisiert werden, wird keine Unterstützung gewährt. Für das Totengebet wenden Sie sich über unseren Imam an die Moschee.',
+  nakil: 'Todesfall und Überführung in die Türkei →',
+  acilBaslik: 'Nummern, die im Todesfall anzurufen sind',
+  acil1: 'BDV-Bestattungsfonds — Todesfallnummer', acil1b: 'werktags zu den Bürozeiten', acil2: 'Unser Imam — Totengebet', acil3: 'Generalkonsulat — Bereitschaftsdienst',
+  surecBaslik: 'Die einzelnen Schritte',
+  surec: ['Lassen Sie den Tod ärztlich feststellen (Totenschein).', 'Rufen Sie sofort den BDV-Bestattungsfonds an: Waschung, Leichentuch, Überführung oder Beisetzung und alle Absprachen mit dem Bestattungsunternehmen übernimmt der Fonds. Wird ohne seine Zustimmung ein anderes Unternehmen beauftragt, werden die Kosten nicht erstattet.', 'Findet das Totengebet in unserer Moschee statt, rufen Sie unseren Imam an; Tag und Uhrzeit werden vereinbart und der Gemeinschaft mitgeteilt.', 'Der Todesfall wird bei der Gemeindeverwaltung angemeldet (Einwohnerdienst von Marche-en-Famenne) — das übernimmt in der Regel das Bestattungsunternehmen.', 'Überführung in die Türkei: eine Transportbescheinigung des Konsulats und ein „laissez-passer mortuaire“ von Saniport — begleitet vom Fonds und vom Bestattungsunternehmen.', 'Wird eine Beisetzung in Belgien gewünscht: der multikonfessionelle Friedhof von Marche-en-Famenne/Aye (muslimisches Feld) oder Namur, Lüttich, Charleroi.'],
+  fonBaslik: 'Zur Mitgliedschaft im Fonds',
+  fonNot: 'Mitgliedschaft im Fonds: türkische Staatsangehörige mit mindestens 1 Jahr ständigem Wohnsitz in Belgien; Ehepartner und Kinder unter 18 Jahren sind mitgedeckt; der Schutz beginnt 60 Tage nach der Zahlung (außer bei einem Unfall). Jedes Jahr wird in der ersten Januarwoche der Beitragsbrief verschickt; ist er bis zum 25. Januar nicht angekommen, verständigen Sie bitte den Fonds. Der Beitrag ist innerhalb von 10 Tagen nach Erhalt des Briefes zu zahlen; Geburten, Eheschließungen, Scheidungen und Adressänderungen sind dem Fonds zu melden.',
+  belediye: 'Einwohnerdienst der Gemeinde', mezarlik: 'Friedhof', fonSayfa: 'Informationsseite des Fonds ↗',
+  fonKayitButon: 'Online-Beitrittsformular des Bestattungsfonds ↗',
+  vefatSayfa: 'Todesanzeigen — Seite In memoriam →',
+  etiket: 'Dienste',
+  },
+} satisfies Record<Dil, unknown>;
+const m = M[dil];
 ---
 <Base baslik={m.baslik} dil={dil} aciklama={m.alt}>
-  <SayfaBasligi etiket={dil === 'tr' ? 'Hizmetler' : dil === 'en' ? 'Services' : 'Services'} baslik={m.baslik} altBaslik={m.alt} />
+  <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} />
   <div class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
     <section>
       <div class="kart p-5 sm:p-6">

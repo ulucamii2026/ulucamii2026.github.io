@@ -20,104 +20,123 @@ import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 
-type Metin = { tr: string; fr: string; en: string };
+type Metin = Record<Dil, string>;
 interface Hizmet { url: string; ad: Metin; aciklama: Metin; diller: string[] }
 
 /* Hepsi 8 Eyl 2026'da elle doğrulandı (HTTP 200). */
 const HIZMETLER: Hizmet[] = [
   {
     url: 'https://kuran.diyanet.gov.tr/mushaf',
-    ad: { tr: 'Kur’an-ı Kerim ve meâli', fr: 'Le Coran et sa traduction', en: 'The Qur’an and its translation' },
+    ad: { tr: 'Kur’an-ı Kerim ve meâli', fr: 'Le Coran et sa traduction', en: 'The Qur’an and its translation', nl: 'De Koran en zijn vertaling', de: 'Der Koran und seine Übersetzung' },
     aciklama: {
       tr: 'Arapça metin, Türkçe meâl ve sayfa sayfa sesli okunuş.',
       fr: 'Le texte arabe, la traduction turque et la récitation page par page.',
       en: 'The Arabic text, the Turkish translation and page-by-page recitation.',
+      nl: 'De Arabische tekst, de Turkse vertaling en de recitatie pagina per pagina.',
+      de: 'Der arabische Text, die türkische Übersetzung und die Rezitation Seite für Seite.',
     },
     diller: ['AR', 'TR'],
   },
   {
     url: 'https://kuran.diyanet.gov.tr/elifba/',
-    ad: { tr: 'Elifbâ — Arap alfabesi', fr: 'Elifbâ — l’alphabet arabe', en: 'Elifbâ — the Arabic alphabet' },
+    ad: { tr: 'Elifbâ — Arap alfabesi', fr: 'Elifbâ — l’alphabet arabe', en: 'Elifbâ — the Arabic alphabet', nl: 'Elifbâ — het Arabische alfabet', de: 'Elifbâ — das arabische Alphabet' },
     aciklama: {
       tr: 'Harfleri sıfırdan öğreten sesli ve etkileşimli ders; okumayı bilmeyen için ilk adım.',
       fr: 'Un cours sonore et interactif qui enseigne les lettres depuis zéro : la première étape pour apprendre à lire.',
       en: 'An interactive audio course teaching the letters from scratch — the first step to reading.',
+      nl: 'Een interactieve cursus met geluid die de letters vanaf nul aanleert: de eerste stap om te leren lezen.',
+      de: 'Ein interaktiver Audiokurs, der die Buchstaben von Grund auf lehrt — der erste Schritt zum Lesen.',
     },
     diller: ['AR', 'TR'],
   },
   {
     url: 'https://diyanetkuranradyo.com/',
-    ad: { tr: 'Diyanet Kur’an Radyo', fr: 'Radio coranique du Diyanet', en: 'Diyanet Qur’an Radio' },
+    ad: { tr: 'Diyanet Kur’an Radyo', fr: 'Radio coranique du Diyanet', en: 'Diyanet Qur’an Radio', nl: 'Koranradio van het Diyanet', de: 'Koranradio des Diyanet' },
     aciklama: {
       tr: 'Kesintisiz Kur’an tilaveti — dil bilmeye gerek yok, açıp dinlersiniz.',
       fr: 'Récitation continue du Coran — aucune langue requise, il suffit d’écouter.',
       en: 'Continuous Qur’an recitation — no language needed, just listen.',
+      nl: 'Onafgebroken Koranrecitatie — u hoeft geen taal te kennen, u zet het aan en luistert.',
+      de: 'Durchgehende Koranrezitation — Sie brauchen keine Sprachkenntnisse, Sie schalten ein und hören zu.',
     },
     diller: ['AR'],
   },
   {
     url: 'https://hadislerleislam.diyanet.gov.tr/',
-    ad: { tr: 'Hadislerle İslam', fr: 'L’islam par les hadiths', en: 'Islam through the Hadith' },
+    ad: { tr: 'Hadislerle İslam', fr: 'L’islam par les hadiths', en: 'Islam through the Hadith', nl: 'De islam aan de hand van de hadith', de: 'Der Islam anhand der Hadithe' },
     aciklama: {
       tr: 'Diyanet’in yedi ciltlik hadis külliyatı; çevrimiçi okunur, PDF olarak indirilir.',
       fr: 'Le corpus de hadiths du Diyanet en sept volumes ; lecture en ligne et téléchargement PDF.',
       en: 'Diyanet’s seven-volume hadith corpus; read online or download as PDF.',
+      nl: 'Het hadithcorpus van het Diyanet in zeven delen; online te lezen of als pdf te downloaden.',
+      de: 'Das siebenbändige Hadith-Korpus des Diyanet; online lesen oder als PDF herunterladen.',
     },
     diller: ['TR'],
   },
   {
     url: 'https://kurul.diyanet.gov.tr/tr/fetvalar',
-    ad: { tr: 'Din İşleri Yüksek Kurulu — fetvalar', fr: 'Haut Conseil des Affaires religieuses — fatwas', en: 'High Board of Religious Affairs — fatwas' },
+    ad: { tr: 'Din İşleri Yüksek Kurulu — fetvalar', fr: 'Haut Conseil des Affaires religieuses — fatwas', en: 'High Board of Religious Affairs — fatwas', nl: 'Hoge Raad voor Religieuze Zaken — fatwa’s', de: 'Hoher Rat für Religiöse Angelegenheiten — Fatwas' },
     aciklama: {
       tr: 'Konu konu resmî fetvalar. Fransızca derlemesi kütüphanemizde («Fatwas») bulunur.',
       fr: 'Les fatwas officielles par thème. Le recueil français se trouve dans la bibliothèque ci-dessous (« Fatwas »).',
       en: 'Official fatwas by topic. The French collection is in the library below (“Fatwas”).',
+      /* Felemenkçe derleme yok; Almanca derleme kütüphanede var (id 5229). */
+      nl: 'Officiële fatwa’s per thema. De Franse bundel vindt u in de bibliotheek hieronder (“Fatwas”).',
+      de: 'Offizielle Fatwas nach Themen. Die deutsche Sammlung finden Sie in der Bibliothek weiter unten („Fatwas“).',
     },
     diller: ['TR'],
   },
   {
     url: 'https://islamansiklopedisi.org.tr/',
-    ad: { tr: 'TDV İslâm Ansiklopedisi', fr: 'Encyclopédie de l’Islam (TDV)', en: 'TDV Encyclopaedia of Islam' },
+    ad: { tr: 'TDV İslâm Ansiklopedisi', fr: 'Encyclopédie de l’Islam (TDV)', en: 'TDV Encyclopaedia of Islam', nl: 'TDV Encyclopedie van de islam', de: 'TDV Enzyklopädie des Islams' },
     aciklama: {
       tr: 'Bir kavramın, kişinin veya kurumun ilmî karşılığını aramak için başvuru kaynağı.',
       fr: 'L’ouvrage de référence pour chercher la définition savante d’un concept, d’une personne ou d’une institution.',
       en: 'The reference work for the scholarly meaning of a concept, a person or an institution.',
+      nl: 'Het naslagwerk om de wetenschappelijke betekenis van een begrip, een persoon of een instelling op te zoeken.',
+      de: 'Das Nachschlagewerk für die wissenschaftliche Bedeutung eines Begriffs, einer Person oder einer Einrichtung.',
     },
     diller: ['TR'],
   },
   {
     url: 'https://diyanet.tv/',
-    ad: { tr: 'Diyanet TV', fr: 'Diyanet TV', en: 'Diyanet TV' },
+    ad: { tr: 'Diyanet TV', fr: 'Diyanet TV', en: 'Diyanet TV', nl: 'Diyanet TV', de: 'Diyanet TV' },
     aciklama: {
       tr: 'Canlı yayın, program arşivi ve Kâbe yayını.',
       fr: 'Diffusion en direct, archives des émissions et retransmission de la Kaaba.',
       en: 'Live broadcast, programme archive and the Kaaba stream.',
+      nl: 'Live-uitzending, programma-archief en de uitzending vanuit de Kaäba.',
+      de: 'Live-Übertragung, Programmarchiv und die Übertragung aus der Kaaba.',
     },
     diller: ['TR'],
   },
   {
     url: 'https://dijital.diyanet.gov.tr/',
-    ad: { tr: 'Diyanet Dijital', fr: 'Diyanet Digital', en: 'Diyanet Digital' },
+    ad: { tr: 'Diyanet Dijital', fr: 'Diyanet Digital', en: 'Diyanet Digital', nl: 'Diyanet Digital', de: 'Diyanet Digital' },
     aciklama: {
       tr: 'Aşağıdaki kütüphanenin kaynağı: e-kitap, e-dergi, sesli kitap ve video arşivi.',
       fr: 'La source de la bibliothèque ci-dessous : livres, revues, livres audio et vidéos.',
       en: 'The source of the library below: e-books, magazines, audiobooks and videos.',
+      nl: 'De bron van de bibliotheek hieronder: e-boeken, tijdschriften, luisterboeken en video’s.',
+      de: 'Die Quelle der Bibliothek weiter unten: E-Books, Zeitschriften, Hörbücher und Videos.',
     },
     diller: ['TR'],
   },
   {
     url: 'https://www.diyanet.be/',
-    ad: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium' },
+    ad: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium', nl: 'Belgische Diyanetstichting', de: 'Belgische Diyanet-Stiftung' },
     aciklama: {
       tr: 'Camimizin bağlı olduğu üst kuruluş: duyurular, hac-umre ve cenaze fonu.',
       fr: 'L’organisation faîtière dont dépend notre mosquée : annonces, hajj-omra et fonds funéraire.',
       en: 'The umbrella body our mosque belongs to: announcements, hajj/umrah and the funeral fund.',
+      nl: 'De koepelorganisatie waartoe onze moskee behoort: aankondigingen, hadj en umra, en het uitvaartfonds.',
+      de: 'Der Dachverband, dem unsere Moschee angehört: Ankündigungen, Hadsch und Umra sowie der Bestattungsfonds.',
     },
     diller: ['TR'],
   },
 ];
 
-const M = {
+const M: Record<Dil, { etiket: string; baslik: string; giris: string; dilEtiketi: string; dis: string }> = {
   tr: { etiket: 'Diyanet kaynakları', baslik: 'Diyanet’in Çevrimiçi Hizmetleri',
         giris: 'Kur’an’dan fetvaya, elifbâdan ansiklopediye — Diyanet İşleri Başkanlığı’nın herkese açık ve ücretsiz portalları. Her kartta içeriğin dili yazılıdır.',
         dilEtiketi: 'Dil', dis: 'yeni sekmede açılır' },
@@ -127,7 +146,13 @@ const M = {
   en: { etiket: 'Diyanet resources', baslik: 'Diyanet’s Online Services',
         giris: 'From the Qur’an to fatwas, from the Arabic alphabet to the encyclopaedia — the free public portals of the Presidency of Religious Affairs. Each card states the language of the content.',
         dilEtiketi: 'Language', dis: 'opens in a new tab' },
-} as const;
+  nl: { etiket: 'Bronnen van het Diyanet', baslik: 'De onlinediensten van het Diyanet',
+        giris: 'Van de Koran tot de fatwa’s, van het Arabische alfabet tot de encyclopedie — de gratis en voor iedereen toegankelijke portalen van het Presidium voor Religieuze Zaken. Op elke kaart staat in welke taal de inhoud is.',
+        dilEtiketi: 'Taal', dis: 'opent in een nieuw tabblad' },
+  de: { etiket: 'Quellen des Diyanet', baslik: 'Die Onlinedienste des Diyanet',
+        giris: 'Vom Koran bis zu den Fatwas, vom arabischen Alphabet bis zur Enzyklopädie — die kostenlosen, öffentlich zugänglichen Portale des Präsidiums für Religiöse Angelegenheiten. Auf jeder Karte steht, in welcher Sprache der Inhalt ist.',
+        dilEtiketi: 'Sprache', dis: 'öffnet in einem neuen Tab' },
+};
 
 const m = M[dil];
 const alan = (u: string) => new URL(u).hostname.replace(/^www\./, '');

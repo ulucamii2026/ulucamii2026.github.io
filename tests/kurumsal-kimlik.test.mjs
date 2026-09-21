@@ -11,7 +11,7 @@ import { kimlikKaynakOku, kimlikDosyalari, kimlikDenetle, kopyaYolu, sabitYolu, 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const oku = ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8');
 const kaynak = await kimlikKaynakOku(), kimlik = kaynak.kimlik;
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v38.gs', 'veli-cuma.gs'].map(oku).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v39.gs', 'veli-cuma.gs'].map(oku).join('\n');
 function ortam() {
   const sent = [];
   const c = vm.createContext({ console: {error() {}, log() {}}, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})},
@@ -47,7 +47,7 @@ test('Denetim değiştirilmiş/eksik kopyayı dosya adıyla bildirir; sağlam CL
   const r = spawnSync(process.execPath, [join(root, 'scripts/kimlik-uret.mjs'), '--denetle'], {encoding:'utf8', windowsHide:true});
   assert.equal(r.status, 0, r.stderr);
 });
-for (const kurum of ['kurs', 'cami']) for (const dil of ['tr', 'fr', 'en']) {
+for (const kurum of ['kurs', 'cami']) for (const dil of kimlik.diller) {
   test(`${kurum}/${dil}: ad, renk, logo, imza, gizlilik ve hukukî satır doğru tek kimlikten gelir`, () => {
     const k = kimlik.kurumlar[kurum];
     const html = c.veliEpostaDuzMetin('Sayın TESTOGLU,\n\nÖrnek içerik.', dil, 'Örnek başlık', {kurum});
@@ -75,7 +75,7 @@ test('Renkler, kurum metinleri ve font şablona gömülmez; KIMLIK değişimi ç
   assert.match(html, /#123456/); assert.match(html, /École TESTOGLU/); assert.match(html, /font-size:19px/);
 });
 test('Bilinmeyen/eksik dil ve kurum reddedilir; yalnız kurum için kurs varsayılır', () => {
-  for (const dil of [undefined, null, '', 'nl', 'TR']) {
+  for (const dil of [undefined, null, '', 'es', 'TR']) {   // 21 Eyl 2026: nl ve de artık site dili — «bilinmeyen» örneği İspanyolca
     for (const render of [() => c.veliEpostaBelge(dil, '', ''), () => c.veliEpostaDuzMetin('', dil, ''), () => c.veliEpostaZengin([], dil, '')]) assert.throws(render, /veli-eposta-dil/);
   }
   for (const kurum of ['', null, 'baska', '__proto__']) assert.throws(() => c.veliEpostaDuzMetin('', 'tr', '', {kurum}), /veli-eposta-kurum/);

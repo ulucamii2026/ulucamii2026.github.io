@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import VaazDilUyarisi from '../components/VaazDilUyarisi.astro';
-import { yol } from '../i18n/utils';
+import { yol, dilListesi, yerelKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { katAd, katSira } from '../i18n/vaaz-kategori';
 import istatistik from '../data/istatistik.json';
@@ -17,7 +17,12 @@ const { dil } = Astro.props as { dil: Dil };
 const hepsi = (await getCollection('vaazlar')).filter((v) => !v.data.taslak);
 hepsi.sort((a, b) => (a.data.siraNo ?? 0) - (b.data.siraNo ?? 0) || a.data.baslik.localeCompare(b.data.baslik, 'tr'));
 
-const m = {
+type VaazMetni = {
+  etiket: string; baslik: string; alt: string; giris: string;
+  ara: string; tumu: string; bulunamadi: string; aramaBos: string;
+  sonuc: string; okuma: string; temizle: string;
+};
+const METIN: Record<Dil, VaazMetni> = {
   tr: {
     etiket: 'Vaazlar', baslik: 'Vaazlar', alt: 'Camimizde okunan vaazlardan bir derleme',
     giris: 'Aşağıdaki vaazlar herkesin istifadesine açıktır; dilediğiniz gibi okuyabilir, indirebilir ve kullanabilirsiniz. Metinler tamamen anonimdir — hiçbir kişisel bilgi içermez.',
@@ -36,30 +41,48 @@ const m = {
     ara: 'Search sermons…', tumu: 'All', bulunamadi: 'No sermons in this category.', aramaBos: 'No sermon matches your search.',
     sonuc: '{n} sermons shown', okuma: 'min', temizle: 'Clear search',
   },
-}[dil];
+  nl: {
+    etiket: 'Preken', baslik: 'Preken', alt: 'Een selectie van preken die in onze moskee zijn gehouden',
+    giris: 'De onderstaande preken staan voor iedereen ter beschikking: u mag ze vrij lezen, downloaden en gebruiken. De teksten zijn volledig anoniem en bevatten geen persoonsgegevens. (Inhoud in het Turks.)',
+    ara: 'Zoeken in de preken…', tumu: 'Alle', bulunamadi: 'Geen preken in deze categorie.', aramaBos: 'Geen preek komt overeen met uw zoekopdracht.',
+    sonuc: '{n} preken weergegeven', okuma: 'min.', temizle: 'Zoekopdracht wissen',
+  },
+  de: {
+    etiket: 'Predigten', baslik: 'Predigten', alt: 'Eine Auswahl von Predigten aus unserer Moschee',
+    giris: 'Die folgenden Predigten stehen allen offen: Sie dürfen sie frei lesen, herunterladen und verwenden. Die Texte sind vollständig anonym und enthalten keine personenbezogenen Daten. (Inhalt auf Türkisch.)',
+    ara: 'Predigten durchsuchen…', tumu: 'Alle', bulunamadi: 'Keine Predigten in dieser Kategorie.', aramaBos: 'Keine Predigt entspricht Ihrer Suche.',
+    sonuc: '{n} Predigten angezeigt', okuma: 'Min.', temizle: 'Suche löschen',
+  },
+};
+const m = METIN[dil];
 
 // bilgi notunun üst etiketi (açık kaynak + anonimlik, tek bakışta)
-const notEtiket = { tr: 'Herkese açık · Anonim', fr: 'Libre d’accès · Anonyme', en: 'Open access · Anonymous' }[dil];
+const NOT_ETIKET: Record<Dil, string> = {
+  tr: 'Herkese açık · Anonim', fr: 'Libre d’accès · Anonyme', en: 'Open access · Anonymous',
+  nl: 'Vrij toegankelijk · Anoniem', de: 'Frei zugänglich · Anonym',
+};
+const notEtiket = NOT_ETIKET[dil];
 
 // yalnız kullanılan kategoriler, sabit sırayla (sözlük: src/i18n/vaaz-kategori.ts — okuma sayfasıyla ortak)
 const kullanilan = katSira.filter((k) => hepsi.some((v) => v.data.kategori === k));
 const okumaDk = (kelime?: number) => (kelime ? Math.max(1, Math.round(kelime / 180)) : null);
 
-/* Okunma sayısı: derleme anında GoatCounter'dan alınır (scripts/istatistik-cek.mjs). Üç dilin
-   yolu toplanır — metin aynı vaazdır. GoatCounter yolları sondaki eğik çizgisiz tutar; iki
-   biçim de denenir. Üçün altındaki sayılar gösterilmez (gürültü) ve veri yoksa özellik kapanır. */
+/* Okunma sayısı: derleme anında GoatCounter'dan alınır (scripts/istatistik-cek.mjs). Bütün
+   site dillerinin yolu toplanır — metin aynı vaazdır. GoatCounter yolları sondaki eğik
+   çizgisiz tutar; iki biçim de denenir. Üçün altındaki sayılar gösterilmez (gürültü) ve
+   veri yoksa özellik kapanır. */
 const sayac = (istatistik as { yollar: Record<string, number> }).yollar ?? {};
 const okunma = (slug: string) => {
   let t = 0;
-  for (const d of ['tr', 'fr', 'en']) {
+  for (const d of dilListesi) {
     const y = `/${d}/vaaz/${slug}`;
     t += sayac[y] ?? sayac[`${y}/`] ?? 0;
   }
   return t >= 3 ? t : 0;
 };
-const okunmaAd = { tr: 'okunma', fr: 'lectures', en: 'reads' }[dil];
-const yerelAd = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
-const sayiBicim = (n: number) => new Intl.NumberFormat(yerelAd).format(n);
+const OKUNMA_AD: Record<Dil, string> = { tr: 'okunma', fr: 'lectures', en: 'reads', nl: 'keer gelezen', de: 'Aufrufe' };
+const okunmaAd = OKUNMA_AD[dil];
+const sayiBicim = (n: number) => new Intl.NumberFormat(yerelKodu[dil]).format(n);
 ---
 <Base baslik={m.baslik} aciklama={m.alt} dil={dil}>
   <div class="kapsayici py-8 sm:py-12">

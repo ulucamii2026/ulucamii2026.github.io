@@ -41,7 +41,7 @@ export default defineConfig({
     }),
   ],
   i18n: {
-    locales: ['tr', 'fr', 'en'],
+    locales: ['tr', 'fr', 'en', 'nl', 'de'],
     defaultLocale: 'tr',
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },

@@ -1,4 +1,6 @@
 /** Namaz vakti yardımcıları — istemci ve sunucu tarafında ortak (Brüksel saati, DST güvenli) */
+import type { Dil } from '../i18n/ui';
+
 export interface Gun { tarih: string; hicri: string; imsak: string; gunes: string; ogle: string; ikindi: string; aksam: string; yatsi: string }
 export const SIRA = ['imsak', 'gunes', 'ogle', 'ikindi', 'aksam', 'yatsi'] as const;
 export type Vakit = (typeof SIRA)[number];
@@ -22,10 +24,19 @@ export function brukselTarih(tarih: string, hm: string): Date {
   return new Date(tahmin - ofset(ilk));
 }
 
-export function sureMetni(dk: number, dil: 'tr' | 'fr'): string {
+/* Geri sayım metni her dilin kendi saat/dakika kısaltmasıyla yazılır (üç dilli üçlü koşul yerine
+   beş dilli kayıt: eksik dil derleme hatası olur). `sa` saat, `dd` iki haneli dakikadır. */
+const SURE_BICIMI: Record<Dil, (sa: number, dd: string, dk: number) => string> = {
+  tr: (sa, dd, dk) => (sa > 0 ? `${sa} sa ${dd} dk` : `${dk} dk`),
+  fr: (sa, dd, dk) => (sa > 0 ? `${sa} h ${dd}` : `${dk} min`),
+  en: (sa, dd, dk) => (sa > 0 ? `${sa}h ${dd}m` : `${dk} min`),
+  nl: (sa, dd, dk) => (sa > 0 ? `${sa} u ${dd}` : `${dk} min`),
+  de: (sa, dd, dk) => (sa > 0 ? `${sa} Std. ${dd} Min.` : `${dk} Min.`),
+};
+
+export function sureMetni(dk: number, dil: Dil): string {
   const sa = Math.floor(dk / 60), d = dk % 60;
-  if (dil === 'fr') return sa > 0 ? `${sa} h ${String(d).padStart(2, '0')}` : `${d} min`;
-  return sa > 0 ? `${sa} sa ${String(d).padStart(2, '0')} dk` : `${d} dk`;
+  return SURE_BICIMI[dil](sa, String(d).padStart(2, '0'), d);
 }
 
 export interface Durum { bugun: Gun; yarin?: Gun; eski: boolean; siradaki: { vakit: Vakit; saat: string; kalanDk: number; yarinMi: boolean } | null }

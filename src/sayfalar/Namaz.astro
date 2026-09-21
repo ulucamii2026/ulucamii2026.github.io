@@ -14,21 +14,27 @@ const namaz = namazVakitleri(); const site = await siteAyarlari();
 const bugun = bugunBrussels();
 const tablo = namaz.gunler.filter((g) => g.tarih >= bugun);
 const etiketler = { imsak: t('namaz.imsak'), gunes: t('namaz.gunes'), ogle: t('namaz.ogle'), ikindi: t('namaz.ikindi'), aksam: t('namaz.aksam'), yatsi: t('namaz.yatsi'), siradaki: t('namaz.siradaki'), kalan: t('namaz.kalan'), hicri: t('namaz.hicri') };
-const not = dil === 'tr'
-  ? 'Vakitler Diyanet İşleri Başkanlığı takvimine göre Marche-en-Famenne için hesaplanmıştır. Camimizde sabah namazı, güneş doğmadan yaklaşık 20 dakika önce cemaatle kılınır; diğer vakitlerin cemaat saatleri mevsime göre cami ilan panosunda duyurulur. Her cuma Türkçe hutbenin ardından Fransızca hutbe okunur.'
-  : dil === 'en'
-  ? 'Prayer times are calculated for Marche-en-Famenne according to the calendar of the Presidency of Religious Affairs (Diyanet). In our mosque the dawn prayer is performed in congregation about 20 minutes before sunrise; congregational times for the other prayers are announced on the mosque noticeboard according to the season. Every Friday, a French sermon follows the Turkish sermon.'
-  : 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Dans notre mosquée, la prière de l’aube est accomplie en congrégation environ 20 minutes avant le lever du soleil ; les heures des autres prières en congrégation sont affichées à la mosquée selon la saison. Chaque vendredi, un sermon en français suit le sermon en turc.';
+const NOT = {
+  tr: 'Vakitler Diyanet İşleri Başkanlığı takvimine göre Marche-en-Famenne için hesaplanmıştır. Camimizde sabah namazı, güneş doğmadan yaklaşık 20 dakika önce cemaatle kılınır; diğer vakitlerin cemaat saatleri mevsime göre cami ilan panosunda duyurulur. Her cuma Türkçe hutbenin ardından Fransızca hutbe okunur.',
+  fr: 'Les horaires sont calculés pour Marche-en-Famenne selon le calendrier de la Diyanet. Dans notre mosquée, la prière de l’aube est accomplie en congrégation environ 20 minutes avant le lever du soleil ; les heures des autres prières en congrégation sont affichées à la mosquée selon la saison. Chaque vendredi, un sermon en français suit le sermon en turc.',
+  en: 'Prayer times are calculated for Marche-en-Famenne according to the calendar of the Presidency of Religious Affairs (Diyanet). In our mosque the dawn prayer is performed in congregation about 20 minutes before sunrise; congregational times for the other prayers are announced on the mosque noticeboard according to the season. Every Friday, a French sermon follows the Turkish sermon.',
+  nl: 'De gebedstijden zijn voor Marche-en-Famenne berekend volgens de kalender van het Presidium voor Godsdienstzaken (Diyanet). In onze moskee wordt het ochtendgebed (fajr) ongeveer 20 minuten voor zonsopgang in gemeenschap verricht; de gemeenschappelijke tijden van de andere gebeden worden naargelang het seizoen op het mededelingenbord van de moskee bekendgemaakt. Elke vrijdag volgt na de Turkse khutba een khutba in het Frans.',
+  de: 'Die Gebetszeiten sind für Marche-en-Famenne nach dem Kalender des Präsidiums für Religionsangelegenheiten (Diyanet) berechnet. In unserer Moschee wird das Morgengebet (Fadschr) etwa 20 Minuten vor Sonnenaufgang in Gemeinschaft verrichtet; die Gemeinschaftszeiten der übrigen Gebete werden je nach Jahreszeit am Aushang der Moschee bekannt gegeben. Jeden Freitag folgt auf die türkische Chutba eine Chutba auf Französisch.',
+} satisfies Record<Dil, string>;
+const not = NOT[dil];
 
 const gunlerListe = yaklasanDiniGunler(bugun);
 // «Yaklaşan» vurgusu tek bir güne değil, en yakın tarihe düşen TÜM günlere verilir
 // (ör. Üç Ayların Başlangıcı ile Regaib Kandili aynı gün: ikisi de işaretlenir).
 const enYakinTarih = gunlerListe[0]?.tarih;
-const dg = dil === 'tr'
-  ? { baslik: 'Dinî Günler ve Kandiller', alt: 'Diyanet İşleri Başkanlığı’nın resmî takvimine göre yaklaşan kandil geceleri, bayramlar ve önemli günler.', yaklasan: 'Yaklaşan', kaynakNot: 'Kaynak: Diyanet İşleri Başkanlığı dinî günler takvimi', kandil: 'Kandil', bayram: 'Bayram', gun: 'Önemli gün' }
-  : dil === 'en'
-  ? { baslik: 'Religious Days and Holy Nights', alt: 'Upcoming holy nights, festivals and significant days according to the official calendar of the Turkish Presidency of Religious Affairs (Diyanet).', yaklasan: 'Next', kaynakNot: 'Source: Diyanet official calendar of religious days', kandil: 'Holy night', bayram: 'Festival', gun: 'Significant day' }
-  : { baslik: 'Jours religieux et nuits bénies', alt: 'Les nuits bénies, fêtes et jours importants à venir selon le calendrier officiel de la Présidence des Affaires religieuses (Diyanet).', yaklasan: 'Prochain', kaynakNot: 'Source : calendrier officiel des jours religieux de la Diyanet', kandil: 'Nuit bénie', bayram: 'Fête', gun: 'Jour important' };
+const DINI_GUN = {
+  tr: { baslik: 'Dinî Günler ve Kandiller', alt: 'Diyanet İşleri Başkanlığı’nın resmî takvimine göre yaklaşan kandil geceleri, bayramlar ve önemli günler.', yaklasan: 'Yaklaşan', kaynakNot: 'Kaynak: Diyanet İşleri Başkanlığı dinî günler takvimi', kandil: 'Kandil', bayram: 'Bayram', gun: 'Önemli gün' },
+  fr: { baslik: 'Jours religieux et nuits bénies', alt: 'Les nuits bénies, fêtes et jours importants à venir selon le calendrier officiel de la Présidence des Affaires religieuses (Diyanet).', yaklasan: 'Prochain', kaynakNot: 'Source : calendrier officiel des jours religieux de la Diyanet', kandil: 'Nuit bénie', bayram: 'Fête', gun: 'Jour important' },
+  en: { baslik: 'Religious Days and Holy Nights', alt: 'Upcoming holy nights, festivals and significant days according to the official calendar of the Turkish Presidency of Religious Affairs (Diyanet).', yaklasan: 'Next', kaynakNot: 'Source: Diyanet official calendar of religious days', kandil: 'Holy night', bayram: 'Festival', gun: 'Significant day' },
+  nl: { baslik: 'Religieuze dagen en gezegende nachten', alt: 'De komende gezegende nachten, feesten en belangrijke dagen volgens de officiële kalender van het Presidium voor Godsdienstzaken (Diyanet).', yaklasan: 'Eerstvolgende', kaynakNot: 'Bron: officiële kalender van de religieuze dagen van de Diyanet', kandil: 'Gezegende nacht', bayram: 'Feest', gun: 'Belangrijke dag' },
+  de: { baslik: 'Religiöse Tage und gesegnete Nächte', alt: 'Die kommenden gesegneten Nächte, Feste und bedeutenden Tage nach dem offiziellen Kalender des Präsidiums für Religionsangelegenheiten (Diyanet).', yaklasan: 'Als Nächstes', kaynakNot: 'Quelle: offizieller Kalender der religiösen Tage der Diyanet', kandil: 'Gesegnete Nacht', bayram: 'Fest', gun: 'Bedeutender Tag' },
+} satisfies Record<Dil, unknown>;
+const dg = DINI_GUN[dil];
 ---
 <Base baslik={t('nav.namaz')} dil={dil} aciklama={t('namaz.kaynak')}>
   <SayfaBasligi etiket="Marche-en-Famenne" baslik={t('nav.namaz')} altBaslik={t('namaz.kaynak')} />

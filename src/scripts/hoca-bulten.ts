@@ -3,7 +3,9 @@ import { collection, getDocs, query, where } from "firebase/firestore/lite";
 import {
   bultenDeposu,
   bultenSinirlari,
+  BULTEN_DILLERI,
   type Bulten,
+  type BultenDil,
   type BultenMetni,
 } from "../lib/haftalik-bulten";
 import {
@@ -13,7 +15,6 @@ import {
   type Envanter,
 } from "../lib/portal-idare";
 import { bultenIcerik, bultenYazdir, bultenEsc as e } from "./bulten-gorunumu";
-import type { Dil } from "../i18n/ui";
 import { defterDeposu, defterdenBulten } from "../lib/ders-defteri";
 import {
   ceviriDeposu,
@@ -65,7 +66,7 @@ export function hocaBulteni(
     if (kapali) return;
     root.innerHTML = `<h2>Bülten · İdari işlemler</h2><p>Haftanın derslerini aileye aktarın; yazılı bülten ile portal takibini birlikte yürütün.</p>${secici()}${ref ? `<button type="button" data-hb-yenile ${mesgul ? "disabled" : ""}>Bülteni yeniden yükle</button>` : ""}<p data-hb-durum role="status">${e(mesaj)}</p>${
       b
-        ? `<form data-hb-form><fieldset ${mesgul ? "disabled" : ""}><legend>${e(ad())} · ${b.hafta}. hafta</legend><p>${b.surum ? `${b.yayin ? "Yayımlanmış" : "Taslak"} bülten · sürüm ${b.surum}` : "Yeni bülten · henüz kaydedilmedi"}</p><p class="bulten-aciklama">Ders planı Türkçe aktarılır. İçerik dilini değiştirdiğinizde metinleri de o dilde hazırlayın. Kayıtlı taslaklar kendiliğinden değişmez.</p><label>İçerik dili<select name="dil">${(["tr", "fr", "en"] as const).map((d) => `<option value="${d}" ${b!.dil === d ? "selected" : ""}>${{ tr: "Türkçe", fr: "Fransızca", en: "İngilizce" }[d]}</option>`).join("")}</select></label>${Object.entries(
+        ? `<form data-hb-form><fieldset ${mesgul ? "disabled" : ""}><legend>${e(ad())} · ${b.hafta}. hafta</legend><p>${b.surum ? `${b.yayin ? "Yayımlanmış" : "Taslak"} bülten · sürüm ${b.surum}` : "Yeni bülten · henüz kaydedilmedi"}</p><p class="bulten-aciklama">Ders planı Türkçe aktarılır. İçerik dilini değiştirdiğinizde metinleri de o dilde hazırlayın. Kayıtlı taslaklar kendiliğinden değişmez.</p><label>İçerik dili<select name="dil">${BULTEN_DILLERI.map((d) => `<option value="${d}" ${b!.dil === d ? "selected" : ""}>${{ tr: "Türkçe", fr: "Fransızca", en: "İngilizce" }[d]}</option>`).join("")}</select></label>${Object.entries(
             {
               ders: "Bu haftanın dersleri",
               odev: "Evde birlikte tekrar · kitap / sayfa",
@@ -116,7 +117,7 @@ export function hocaBulteni(
     const d = new FormData(f);
     return {
       ...b,
-      dil: d.get("dil") as Dil,
+      dil: d.get("dil") as BultenDil,
       yayin,
       metin: Object.fromEntries(
         Object.keys(bultenSinirlari).map((k) => [

@@ -40,6 +40,16 @@ const m = {
     baglilik: 'Mosque affiliated with the Presidency of Religious Affairs of Türkiye',
     uyelik: 'Member of the Diyanet Foundation of Belgium',
   },
+  nl: {
+    bolge: 'Institutionele banden',
+    baglilik: 'Moskee verbonden aan het Presidium voor Godsdienstzaken van Türkiye',
+    uyelik: 'Lid van de Belgische Diyanetstichting',
+  },
+  de: {
+    bolge: 'Institutionelle Anbindung',
+    baglilik: 'Moschee angeschlossen an das Präsidium für Religionsangelegenheiten von Türkiye',
+    uyelik: 'Mitglied der Belgischen Diyanet-Stiftung',
+  },
 }[dil];
 
 /**
@@ -53,7 +63,7 @@ function sonSozcuk(metin: string) {
 }
 const bagli = sonSozcuk(m.baglilik);
 const uye = sonSozcuk(m.uyelik);
-const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)' }[dil];
+const disKaynak = { tr: '(dış bağlantı)', fr: '(lien externe)', en: '(external link)', nl: '(externe link)', de: '(externer Link)' }[dil];
 ---
 <aside class="bg-(--zemin-2) border-b border-(--cizgi)" aria-label={m.bolge}>
   <div class="kapsayici py-3 flex flex-wrap items-center justify-start sm:justify-center gap-x-10 gap-y-3">

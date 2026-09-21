@@ -11,32 +11,49 @@ const liste = await etkinlikler(dil);
 const dun = dunBrussels(); // dün dâhil; Brüksel takvim günü (derleme saatinden bağımsız)
 const yaklasan = liste.filter((e) => etkinlikGunu(e) >= dun).sort((a, b) => a.data.baslangic.getTime() - b.data.baslangic.getTime());
 const gecmis = liste.filter((e) => etkinlikGunu(e) < dun);
-const altBaslik = dil === 'tr'
-  ? 'Bayram ve kandil programları, Ramazan etkinlikleri, kurban organizasyonu, yarışmalar ve afişlerimiz.'
-  : dil === 'en'
-  ? 'Eid and holy-night programmes, Ramadan activities, the sacrifice organisation, competitions and our posters.'
-  : 'Programmes des fêtes et nuits bénies, activités du Ramadan, organisation du sacrifice, concours et affiches.';
-const gecmisBaslik = dil === 'tr' ? 'Geçmiş etkinlikler ve afiş arşivi' : dil === 'en' ? 'Past events and poster archive' : 'Événements passés et archives d’affiches';
-const enNotu = 'Events are published in Turkish and French. An English version is not available.';
+/* Etkinlik arşivi yalnız TR+FR yayımlanır: en/nl/de ziyaretçisi Fransızca kartları görür ve
+   bunu kendi dilinde yazan bir not okur (bkz. icerikDili, docs/DIL-NL-DE.md). */
+const M = {
+  tr: { alt: 'Bayram ve kandil programları, Ramazan etkinlikleri, kurban organizasyonu, yarışmalar ve afişlerimiz.',
+        gecmis: 'Geçmiş etkinlikler ve afiş arşivi', hepsi: 'Tümü',
+        aciklama: 'Camimizin program takvimi: kandil geceleri, bayram programları, konferanslar, gençlik ve hanımlar etkinlikleri.',
+        dilNotu: '' },
+  fr: { alt: 'Programmes des fêtes et nuits bénies, activités du Ramadan, organisation du sacrifice, concours et affiches.',
+        gecmis: 'Événements passés et archives d’affiches', hepsi: 'Toutes',
+        aciklama: 'Calendrier des activités de notre mosquée : nuits bénies, programmes de fêtes, conférences, activités jeunesse et femmes.',
+        dilNotu: '' },
+  en: { alt: 'Eid and holy-night programmes, Ramadan activities, the sacrifice organisation, competitions and our posters.',
+        gecmis: 'Past events and poster archive', hepsi: 'All',
+        aciklama: 'Our mosque’s events calendar: holy nights, Eid programmes, lectures, youth and women’s activities.',
+        dilNotu: 'Events are published in Turkish and French. An English version is not available.' },
+  nl: { alt: 'Programma’s van de feestdagen en gezegende nachten, ramadanactiviteiten, de offerorganisatie, wedstrijden en onze affiches.',
+        gecmis: 'Voorbije activiteiten en affichearchief', hepsi: 'Alle',
+        aciklama: 'De activiteitenkalender van onze moskee: gezegende nachten, feestprogramma’s, lezingen, activiteiten voor jongeren en voor vrouwen.',
+        dilNotu: 'Activiteiten worden in het Turks en het Frans gepubliceerd. Er is geen Nederlandse versie beschikbaar.' },
+  de: { alt: 'Programme zu den Festtagen und gesegneten Nächten, Ramadanveranstaltungen, die Opferorganisation, Wettbewerbe und unsere Plakate.',
+        gecmis: 'Vergangene Veranstaltungen und Plakatarchiv', hepsi: 'Alle',
+        aciklama: 'Der Veranstaltungskalender unserer Moschee: gesegnete Nächte, Festprogramme, Vorträge, Angebote für Jugendliche und für Frauen.',
+        dilNotu: 'Veranstaltungen werden auf Türkisch und Französisch veröffentlicht. Eine deutsche Fassung ist nicht verfügbar.' },
+} satisfies Record<Dil, unknown>;
+const m = M[dil];
 // "genel" etiketsiz kabul edilir (bkz. EtkinlikKarti.astro) — filtre listesinden hariç tutulur
 const kategoriler = [...new Set(liste.map((e) => e.data.kategori).filter((k) => k && k !== 'genel'))].sort();
-const filtreHepsi = dil === 'tr' ? 'Tümü' : dil === 'en' ? 'All' : 'Toutes';
 ---
-<Base baslik={t('nav.etkinlikler')} dil={dil} aciklama={dil === 'tr' ? 'Camimizin program takvimi: kandil geceleri, bayram programları, konferanslar, gençlik ve hanımlar etkinlikleri.' : dil === 'en' ? 'Our mosque’s events calendar: holy nights, Eid programmes, lectures, youth and women’s activities.' : 'Calendrier des activités de notre mosquée : nuits bénies, programmes de fêtes, conférences, activités jeunesse et femmes.'}>
-  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.etkinlikler')} altBaslik={altBaslik} />
+<Base baslik={t('nav.etkinlikler')} dil={dil} aciklama={m.aciklama}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.etkinlikler')} altBaslik={m.alt} />
   <div class="kapsayici py-10">
-    {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
+    {m.dilNotu && <p class="bilgi mb-6 text-sm">{m.dilNotu}</p>}
     <h2 class="etiket etiket-vurgu text-base mb-4">{t('ana.etkinlikler')}</h2>
     {kategoriler.length > 1 && (
       <div class="flex flex-wrap gap-2 mb-4" role="group" aria-label={t('nav.etkinlikler')}>
-        <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm etkinlik-filtre" data-kategori="hepsi" aria-pressed="true">{filtreHepsi}</button>
+        <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm etkinlik-filtre" data-kategori="hepsi" aria-pressed="true">{m.hepsi}</button>
         {kategoriler.map((k) => <button type="button" class="dugme dugme-ikincil !py-1.5 !px-3.5 text-sm etkinlik-filtre" data-kategori={k} aria-pressed="false">{t(`kategori.${k}` as any)}</button>)}
       </div>
     )}
     {yaklasan.length ? <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{yaklasan.map((e, i) => <div class="etkinlik-sarmal" data-kategori={e.data.kategori}><EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} /></div>)}</div> : <p class="text-(--metin-2)">{t('etkinlik.bos')}</p>}
     {gecmis.length > 0 && (
       <div>
-        <h2 class="etiket text-base mt-12 mb-4 cetvel pt-4">{gecmisBaslik}</h2>
+        <h2 class="etiket text-base mt-12 mb-4 cetvel pt-4">{m.gecmis}</h2>
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{gecmis.map((e, i) => <div class="etkinlik-sarmal" data-kategori={e.data.kategori}><EtkinlikKarti dil={dil} slug={e.slug} {...e.data} sira={i} /></div>)}</div>
       </div>
     )}

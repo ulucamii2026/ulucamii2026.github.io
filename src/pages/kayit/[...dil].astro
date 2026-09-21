@@ -1,5 +1,5 @@
 ---
-/** Kur'an kursu kayıt formu — /kayit/ (TR, sabit: afiş QR'ları buna bağlı), /kayit/fr/, /kayit/en/.
+/** Kur'an kursu kayıt formu — /kayit/ (TR, sabit: afiş QR'ları buna bağlı), /kayit/fr/, /kayit/en/, /kayit/nl/, /kayit/de/.
     30 Ağustos 2026 v2: form bileşeni src/components/formlar/KayitFormu.astro; istemci tarafı PDF, OCR,
     kimlik/görsel yükleme ve imza kanvası kaldırıldı (hukuki gerekçe bileşen başlığında).
     13 Eylül 2026: v3 kimlik görseli (açık rıza) ve akşamı çizilen imza + WhatsApp bağlantısı geri geldi
@@ -8,6 +8,7 @@ import Base from '../../layouts/Base.astro';
 import SayfaBasligi from '../../components/SayfaBasligi.astro';
 import KayitFormu from '../../components/formlar/KayitFormu.astro';
 import type { Dil } from '../../i18n/ui';
+import { dilListesi } from '../../i18n/utils';
 import { formMetinleri } from '../../i18n/formlar';
 import { siteAyarlari } from '../../lib/icerik';
 import '../../styles/formlar.css';
@@ -17,11 +18,7 @@ import workLatin from '@fontsource-variable/work-sans/files/work-sans-latin-wght
 import workGenis from '@fontsource-variable/work-sans/files/work-sans-latin-ext-wght-normal.woff2?url';
 
 export function getStaticPaths() {
-  return [
-    { params: { dil: undefined }, props: { dil: 'tr' as Dil } },
-    { params: { dil: 'fr' }, props: { dil: 'fr' as Dil } },
-    { params: { dil: 'en' }, props: { dil: 'en' as Dil } },
-  ];
+  return dilListesi.map((dil) => ({ params: { dil: dil === 'tr' ? undefined : dil }, props: { dil } }));
 }
 
 const { dil } = Astro.props as { dil: Dil };

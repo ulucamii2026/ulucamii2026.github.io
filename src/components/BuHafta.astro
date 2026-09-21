@@ -4,6 +4,7 @@ import Ikon from './Ikon.astro';
 import { yol } from '../i18n/utils';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 import { haftaGunu } from '../lib/namaz';
+import { icerikDili } from '../lib/icerik';
 
 interface Props {
   dil: Dil;
@@ -14,21 +15,27 @@ interface Props {
 
 const { dil, program, bugunIdx, kompakt = false } = Astro.props;
 const bugun = bugunIdx ?? haftaGunu(new Date());
-const gunler = dil === 'tr'
-  ? ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar']
-  : dil === 'en'
-    ? ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    : ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-const kisa = dil === 'tr'
-  ? ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz']
-  : dil === 'en'
-    ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    : ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-const bosGun = dil === 'tr' ? 'Beş vakit namaz' : dil === 'en' ? 'Five daily prayers' : 'Cinq prières quotidiennes';
-const bugunEtiket = dil === 'tr' ? 'Bugün' : dil === 'en' ? 'Today' : 'Auj.';
+const GUNLER: Record<Dil, string[]> = {
+  tr: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'],
+  fr: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+  en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+  nl: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
+  de: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
+};
+const KISA: Record<Dil, string[]> = {
+  tr: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+  fr: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+  en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  nl: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
+  de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+};
+const gunler = GUNLER[dil];
+const kisa = KISA[dil];
+const bosGun = { tr: 'Beş vakit namaz', fr: 'Cinq prières quotidiennes', en: 'Five daily prayers', nl: 'Vijf dagelijkse gebeden', de: 'Fünf tägliche Gebete' }[dil];
+const bugunEtiket = { tr: 'Bugün', fr: 'Auj.', en: 'Today', nl: 'Vandaag', de: 'Heute' }[dil];
 const ikonSec = (s?: string) => (s === 'kurankursu' || s === 'irsat' ? 'kurs' : s === 'namaz' ? 'cami' : 'takvim');
-// program içeriği (site verisi) yalnız tr/fr sağlıyor; İngilizcede Fransızcaya düşer (içerik src/content kapsam dışı)
-const icerikDil = dil === 'en' ? 'fr' : dil;
+// program içeriği (site verisi) yalnız tr/fr sağlıyor; öbür dillerde Fransızcaya düşer (içerik src/content kapsam dışı)
+const icerikDil = icerikDili(dil);
 
 // Kompakt mod için özel günlerin ve genel namaz bilgisinin hazırlanması
 const ozelGunler = [1, 2, 3, 4, 5, 6, 7]
@@ -36,11 +43,13 @@ const ozelGunler = [1, 2, 3, 4, 5, 6, 7]
   .filter((g) => g.maddeler.length > 0);
 
 // Bu görünüm haftalık programdır; statik derlemenin gününü "bugün" diye göstermez.
-const genelBilgiMetni = dil === 'tr'
-  ? 'Camimiz haftanın her günü beş vakit cemaatle namaza açıktır.'
-  : dil === 'en'
-    ? 'The mosque is open every day for the five daily prayers.'
-    : 'La mosquée est ouverte tous les jours pour les cinq prières quotidiennes.';
+const genelBilgiMetni = {
+  tr: 'Camimiz haftanın her günü beş vakit cemaatle namaza açıktır.',
+  fr: 'La mosquée est ouverte tous les jours pour les cinq prières quotidiennes.',
+  en: 'The mosque is open every day for the five daily prayers.',
+  nl: 'Onze moskee is elke dag open voor de vijf dagelijkse gebeden in gemeenschap.',
+  de: 'Unsere Moschee ist täglich für die fünf Gemeinschaftsgebete geöffnet.',
+}[dil];
 ---
 
 {kompakt ? (
@@ -79,13 +88,13 @@ const genelBilgiMetni = dil === 'tr'
                     <span class="min-w-0">
                       <strong
                         class="block text-base font-semibold leading-snug group-hover:underline"
-                        lang={dil === 'en' ? 'fr' : undefined}
+                        lang={icerikDil !== dil ? icerikDil : undefined}
                       >
                         {m.baslik[icerikDil]}
                       </strong>
                       <span
                         class="block text-sm text-(--metin-2) mt-0.5"
-                        lang={dil === 'en' ? 'fr' : undefined}
+                        lang={icerikDil !== dil ? icerikDil : undefined}
                       >
                         {m.saat[icerikDil]}
                       </span>
@@ -103,13 +112,13 @@ const genelBilgiMetni = dil === 'tr'
                     <span class="min-w-0">
                       <strong
                         class="block text-base font-semibold leading-snug"
-                        lang={dil === 'en' ? 'fr' : undefined}
+                        lang={icerikDil !== dil ? icerikDil : undefined}
                       >
                         {m.baslik[icerikDil]}
                       </strong>
                       <span
                         class="block text-sm text-(--metin-2) mt-0.5"
-                        lang={dil === 'en' ? 'fr' : undefined}
+                        lang={icerikDil !== dil ? icerikDil : undefined}
                       >
                         {m.saat[icerikDil]}
                       </span>

@@ -1,0 +1,19 @@
+{
+  "name": "Ouderportaal — Ulu Camii",
+  "short_name": "Ouderportaal",
+  "description": "Ouderportaal van de Koranschool van Ulu Camii in Marche-en-Famenne: aanwezigheid, wekelijks memoriseren en huiswerk, voortgang, notities van de leerkracht en mededelingen.",
+  "lang": "nl",
+  "dir": "ltr",
+  "start_url": "/nl/ouderportaal/",
+  "scope": "/nl/ouderportaal/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f3ea",
+  "theme_color": "#b5452b",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/portal/ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/portal/ikon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/portal/ikon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

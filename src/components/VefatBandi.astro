@@ -15,7 +15,7 @@
  */
 import { tarihBicimle, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { vefatlar } from '../lib/icerik';
+import { icerikDili, vefatlar } from '../lib/icerik';
 
 interface Props { dil: Dil }
 const { dil } = Astro.props;
@@ -52,10 +52,13 @@ const m = {
   tr: { etiket: 'Vefat', tumu: 'Vefat edenlerimiz', namaz: 'Cenaze namazı', defin: 'Defin', bas: 'Ailesine ve cemaatimize baş sağlığı dileriz.' },
   fr: { etiket: 'Décès', tumu: 'Nos défunts', namaz: 'Prière funéraire', defin: 'Inhumation', bas: 'Nous présentons nos condoléances à sa famille et à notre communauté.' },
   en: { etiket: 'Bereavement', tumu: 'Our departed', namaz: 'Funeral prayer', defin: 'Burial', bas: 'Our condolences to the family and to our community.' },
+  nl: { etiket: 'Overlijden', tumu: 'Onze overledenen', namaz: 'Uitvaartgebed', defin: 'Begrafenis', bas: 'Wij bieden de familie en onze gemeenschap ons medeleven aan.' },
+  de: { etiket: 'Todesfall', tumu: 'Unsere Verstorbenen', namaz: 'Totengebet', defin: 'Beisetzung', bas: 'Wir sprechen der Familie und unserer Gemeinde unser Beileid aus.' },
 }[dil];
 
-const icerikDili = dil === 'en' ? 'fr' : dil;
-const govde = kayit?.data.metin?.[icerikDili] ?? kayit?.data.metin?.tr;
+/* Vefat metni yalnız TR ve FR yazılır; en/nl/de ziyaretçisi Fransızcasını görür. */
+const icDil = icerikDili(dil);
+const govde = kayit?.data.metin?.[icDil] ?? kayit?.data.metin?.tr;
 const cenaze = kayit?.data.cenazeNamazi;
 const cenazeMetni = cenaze
   ? [cenaze.tarih ? tarihBicimle(cenaze.tarih, dil) : null, cenaze.saat, cenaze.yer].filter(Boolean).join(' · ')

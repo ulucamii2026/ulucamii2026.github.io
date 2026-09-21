@@ -84,6 +84,10 @@
 .st-ozet { display: grid; gap: .85rem; }
 .st-form .st-ozet-sayi { margin: 0; padding: .7rem .95rem; font-size: .93rem; line-height: 1.5; font-variant-numeric: tabular-nums;
   color: var(--metin); background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: calc(var(--radius-kose) * .6); }
+/* İsteğe bağlı paylaşım onayları (form sürümü 2): zorunlu kutulardan görsel olarak ayrılır — kesikli çerçeve «isteğe bağlı» der. */
+.st-form .st-paylasim { margin: .4rem 0 0; padding: .9rem 1rem 1rem; border: 1px dashed var(--cizgi); border-radius: .6rem; display: grid; gap: .7rem; min-width: 0; }
+.st-form .st-paylasim > legend { padding: 0 .4rem; font-weight: 600; font-size: .98rem; }
+.st-form .st-paylasim .yardim { margin: 0; }
 .st-form .st-bilgilendirme ul { display: grid; gap: .45rem; margin: .55rem 0 0; padding-left: 1.15rem; list-style: square; }
 .st-form .st-bilgilendirme p { margin: .7rem 0 0; }
 

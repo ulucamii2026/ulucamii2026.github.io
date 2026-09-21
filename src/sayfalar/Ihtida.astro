@@ -16,8 +16,8 @@ const { dil } = Astro.props; const t = ceviri(dil);
 const site = await siteAyarlari();
 const tel = (s: string) => 'tel:' + s.replace(/\s+/g, '');
 
-const m = dil === 'tr'
-  ? {
+const METIN = {
+  tr: {
       surecBaslik: 'Süreç Nasıl İşler?',
       surec: [
         { b: 'Başvuru', a: 'Online formu doldurun veya doğrudan din görevlimizi arayın. Ücretsiz, bağlayıcılığı yok.' },
@@ -50,9 +50,8 @@ const m = dil === 'tr'
       kaynakBaslik: 'Diyanet Kütüphanesi',
       kaynakAlt: 'Diyanet’in ücretsiz e-kitapları — tanıtım broşürleri, ibadet rehberi, kırk hadis, fetvalar, mealler. Kırktan fazla dilde, beş yüzün üzerinde kitap.',
       kaynakButon: 'Kütüphaneye git',
-    }
-  : dil === 'en'
-  ? {
+    },
+  en: {
       surecBaslik: 'How Does the Process Work?',
       surec: [
         { b: 'Application', a: 'Fill in the online form or simply call our imam. Free, and it commits you to nothing.' },
@@ -85,8 +84,8 @@ const m = dil === 'tr'
       kaynakBaslik: 'Diyanet Library',
       kaynakAlt: 'Diyanet’s free e-books — introductory booklets, worship guide, forty hadiths, fatwas, Qur’an translations. Over five hundred books in more than forty languages.',
       kaynakButon: 'Go to the library',
-    }
-  : {
+    },
+  fr: {
       surecBaslik: 'Comment se déroule la démarche ?',
       surec: [
         { b: 'Demande', a: 'Formulaire en ligne ou appel direct à l’imam. Gratuit et sans engagement.' },
@@ -119,7 +118,77 @@ const m = dil === 'tr'
       kaynakBaslik: 'Bibliothèque Diyanet',
       kaynakAlt: 'Les livres numériques gratuits du Diyanet — brochures d’introduction, guide du culte, quarante hadiths, fatwas, traductions du Coran. Plus de cinq cents ouvrages en plus de quarante langues.',
       kaynakButon: 'Aller à la bibliothèque',
-    };
+    },
+  nl: {
+      surecBaslik: 'Hoe verloopt de procedure?',
+      surec: [
+        { b: 'Aanvraag', a: 'Vul het online formulier in of bel gewoon onze imam. Gratis en vrijblijvend.' },
+        { b: 'Kennismakingsgesprek', a: 'Wij luisteren naar uw vragen en leggen de procedure uit — in het Frans of het Turks.' },
+        { b: 'De datum vastleggen', a: 'Dag en uur worden samen afgesproken, volgens uw beschikbaarheid.' },
+        { b: 'Bekeringsplechtigheid', a: 'Koranrecitatie, een korte toespraak, de vraag naar de vrije wil, de geloofsgetuigenis (shahada), takbir en felicitaties.' },
+        { b: 'Overhandiging van het attest', a: 'Een op glanspapier gedrukt exemplaar krijgt u dezelfde dag mee.' },
+        { b: 'Officiële registratie en daarna', a: 'Het officiële exemplaar wordt geregistreerd via de Raad voor Religieuze Zaken (enkele weken); begeleiding en lessen lopen door.' },
+      ],
+      belgelerBaslik: 'Vereiste documenten',
+      belgeler: [
+        'Bij het formulier: 1 pasfoto — die op het bekeringsattest wordt gedrukt',
+        'Bij het formulier: de voor- en achterkant van uw identiteitskaart (bij een paspoort volstaat de gegevenspagina)',
+        'Bij het formulier: uw handtekening — op het scherm getekend; u mag ook op de dag zelf met de pen tekenen',
+        'Op de dag zelf: het origineel van uw identiteitskaart of paspoort — u toont het aan de imam',
+        'Op de dag zelf: 2 getuigen (onze moskee zorgt er zo nodig voor) en de toestemmingstekst EK-10, op papier ondertekend',
+      ],
+      iletisimBaslik: 'Afspraak en vragen',
+      iletisimAlt: 'Wilt u over de procedure praten, dan kunt u onze imam bellen of hem een e-mail sturen.',
+      basvuruBaslik: 'Online aanvraag',
+      basvuruAlt: 'Vul het formulier in enkele stappen in; uw aanvraag gaat naar onze moskee en u ontvangt ze als PDF.',
+      basvuruButon: 'Dien uw aanvraag online in',
+      seviyeBaslik: 'Waar begin ik?',
+      seviyeAlt: 'Bepaal uw niveau in het lezen van de Koran en in religieuze kennis; wij stellen een lesplan op uw maat op.',
+      seviyeButon: 'Naar de niveautest',
+      indirBaslik: 'Documenten',
+      ek9: 'Bekeringsattest (EK-9) — officieel model',
+      ek10: 'Tekst uitdrukkelijke toestemming AVG (EK-10) — volledige tekst',
+      ucretsiz: 'De procedure is volledig gratis.',
+      kaynakBaslik: 'Diyanet-bibliotheek',
+      kaynakAlt: 'De gratis e-boeken van de Diyanet — kennismakingsbrochures, gids voor de eredienst, veertig hadiths, fatwa’s, Koranvertalingen. Meer dan vijfhonderd boeken in meer dan veertig talen.',
+      kaynakButon: 'Naar de bibliotheek',
+    },
+  de: {
+      surecBaslik: 'Wie läuft das Verfahren ab?',
+      surec: [
+        { b: 'Antrag', a: 'Füllen Sie das Online-Formular aus oder rufen Sie einfach unseren Imam an. Kostenlos und unverbindlich.' },
+        { b: 'Kennenlerngespräch', a: 'Wir hören Ihre Fragen an und erklären den Ablauf — auf Französisch oder Türkisch.' },
+        { b: 'Terminabsprache', a: 'Tag und Uhrzeit werden gemeinsam festgelegt, ganz nach Ihrer Verfügbarkeit.' },
+        { b: 'Konversionsfeier', a: 'Koranrezitation, eine kurze Ansprache, die Frage nach dem freien Willen, das Glaubensbekenntnis (Schahada), Takbir und Glückwünsche.' },
+        { b: 'Übergabe der Urkunde', a: 'Ein auf Glanzpapier gedrucktes Exemplar erhalten Sie noch am selben Tag.' },
+        { b: 'Amtliche Eintragung und danach', a: 'Das amtliche Exemplar wird über den Botschaftsrat für religiöse Angelegenheiten eingetragen (einige Wochen); Begleitung und Unterricht gehen weiter.' },
+      ],
+      belgelerBaslik: 'Erforderliche Unterlagen',
+      belgeler: [
+        'Mit dem Formular: 1 Passfoto — es wird auf die Konversionsurkunde gedruckt',
+        'Mit dem Formular: Vorder- und Rückseite Ihres Personalausweises (beim Reisepass genügt die Datenseite)',
+        'Mit dem Formular: Ihre Unterschrift — auf dem Bildschirm gezeichnet; Sie können auch am Tag selbst mit dem Stift unterschreiben',
+        'Am Tag selbst: das Original Ihres Personalausweises oder Reisepasses — Sie zeigen es dem Imam',
+        'Am Tag selbst: 2 Zeugen (unsere Moschee stellt sie bei Bedarf) und die auf Papier unterschriebene Einwilligungserklärung EK-10',
+      ],
+      iletisimBaslik: 'Termine und Fragen',
+      iletisimAlt: 'Wenn Sie über das Verfahren sprechen möchten, können Sie unseren Imam anrufen oder ihm eine E-Mail schreiben.',
+      basvuruBaslik: 'Online-Antrag',
+      basvuruAlt: 'Füllen Sie das Formular in wenigen Schritten aus; Ihr Antrag geht an unsere Moschee und erreicht Sie als PDF.',
+      basvuruButon: 'Antrag online stellen',
+      seviyeBaslik: 'Wo fange ich an?',
+      seviyeAlt: 'Ermitteln Sie Ihr Niveau im Koranlesen und in religiösem Wissen; wir stellen einen Unterricht zusammen, der zu Ihnen passt.',
+      seviyeButon: 'Zum Einstufungstest',
+      indirBaslik: 'Unterlagen',
+      ek9: 'Konversionsurkunde (EK-9) — amtliche Vorlage',
+      ek10: 'Text der ausdrücklichen Einwilligung (DSGVO, EK-10) — vollständiger Text',
+      ucretsiz: 'Das Verfahren ist vollständig kostenlos.',
+      kaynakBaslik: 'Diyanet-Bibliothek',
+      kaynakAlt: 'Die kostenlosen E-Books der Diyanet — Einführungsbroschüren, Leitfaden zur Gottesdienstpraxis, vierzig Hadithe, Fatwas, Koranübersetzungen. Über fünfhundert Bücher in mehr als vierzig Sprachen.',
+      kaynakButon: 'Zur Bibliothek',
+    },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
 ---
 <IcerikSayfasi dil={dil} anahtar="ihtida" etiket={t('nav.ihtida')} icindekiler>
   <div slot="yan" class="kart-kagit p-5 border-(--vurgu-2)">

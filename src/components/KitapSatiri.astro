@@ -10,7 +10,9 @@ export interface Kitap {
       düşülür, o zaman «tr» olur — h4'ün lang'i buna göre yazılır. */
   baslikDili: string;
   baslikTr: string;
-  aciklama?: { tr: string; fr: string; en: string } | null;
+  /** Küratörlü açıklama. Veride yalnız tr/fr/en var (37 Fransızca kitap); nl/de için
+      İngilizcesine düşülür — aşağıda `lang` da ona göre yazılır. */
+  aciklama?: Partial<Record<Dil, string>> | null;
   grup?: string | null;
   sayfa?: number | null;
   boyut?: number | null;
@@ -27,11 +29,14 @@ interface Props {
 const { kitap: k, dil, metin: m } = Astro.props;
 
 /* Kendi dilindeki başlık ile Türkçe başlık farklıysa ikisi de gösterilir: otomatik çıkarılan
-   başlık kusurlu olsa bile okuyucu Türkçe künyeden hangi kitap olduğunu anlar. */
-const aciklama = k.aciklama?.[dil] || (k.baslikTr && k.baslikTr !== k.baslik ? k.baslikTr : '');
-/* Küratörlü açıklama sayfanın dilindedir; onun yerine Türkçe künye düşüyorsa lang de Türkçe
+   başlık kusurlu olsa bile okuyucu Türkçe künyeden hangi kitap olduğunu anlar.
+   Küratörlü açıklama veride yalnız tr/fr/en olduğu için Felemenkçe ve Almanca sayfada
+   İngilizcesi gösterilir; o da yoksa Türkçe künyeye düşülür. */
+const aciklamaKaynagi: Dil | null = k.aciklama?.[dil] ? dil : k.aciklama?.en ? 'en' : null;
+const aciklama = (aciklamaKaynagi ? k.aciklama?.[aciklamaKaynagi] : '') || (k.baslikTr && k.baslikTr !== k.baslik ? k.baslikTr : '');
+/* Küratörlü açıklama gösterilen dildedir; onun yerine Türkçe künye düşüyorsa lang de Türkçe
    olmalı — yoksa ekran okuyucu Türkçe künyeyi Fransızca diye seslendiriyor. */
-const aciklamaDili = k.aciklama?.[dil] ? dil : 'tr';
+const aciklamaDili: string = aciklamaKaynagi ?? 'tr';
 /* Süzgeç anahtarı öznitelikle taşınmaz: 530 satırda ~50 KB HTML ederdi. Bunun yerine
    DiyanetKitapligi.astro açılışta .kitap-metin'in metnini okur (dil adını da ekleyerek). */
 const mb = (b?: number | null) => (b ? `${(b / 1048576).toFixed(1)} MB` : '');

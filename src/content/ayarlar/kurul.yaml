@@ -8,6 +8,8 @@ kurul:
         tr: Dernek Başkanı
         fr: Président
         en: President
+        nl: Voorzitter
+        de: Vorsitzender
     - ad: Yasin Ağılönü
       eposta: yasinagilonu@ulucamii.be
       foto: /media/kurul/yasin-agilonu.webp
@@ -15,6 +17,8 @@ kurul:
         tr: Başkan Yardımcısı
         fr: Vice-président
         en: Vice-President
+        nl: Ondervoorzitter
+        de: Stellvertretender Vorsitzender
     - ad: Mehmet Sadık Gülkılık
       eposta: mehmetgulkilik@ulucamii.be
       foto: /media/kurul/mehmet-sadik-gulkilik.webp
@@ -22,24 +26,32 @@ kurul:
         tr: "Genel Sekreter - Danışman"
         fr: "Secrétaire général - Conseiller"
         en: "Secretary General - Adviser"
+        nl: "Secretaris-generaal - Adviseur"
+        de: "Generalsekretär - Berater"
     - ad: Volkan Kutlu
       foto: /media/kurul/volkan-kutlu.webp
       gorev:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
         en: Board Member
+        nl: Bestuurslid
+        de: Vorstandsmitglied
     - ad: Fehmi Karali
       foto: /media/kurul/fehmi-karali.webp
       gorev:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
         en: Board Member
+        nl: Bestuurslid
+        de: Vorstandsmitglied
     - ad: Tekin Biçer
       foto: /media/kurul/tekin-bicer.webp
       gorev:
         tr: Yönetim Kurulu Üyesi
         fr: Membre du conseil
         en: Board Member
+        nl: Bestuurslid
+        de: Vorstandsmitglied
   denetim:
     - ad: İsmail Gün
       foto: /media/kurul/ismail-gun.webp
@@ -47,12 +59,16 @@ kurul:
         tr: Denetim Kurulu Başkanı
         fr: Président du comité de contrôle
         en: Audit Committee Chair
+        nl: Voorzitter van het controlecomité
+        de: Vorsitzender des Kontrollausschusses
     - ad: Mehmet Kutlu
       foto: /media/kurul/mehmet-kutlu.webp
       gorev:
         tr: Denetim Kurulu Üyesi
         fr: Membre du comité de contrôle
         en: Audit Committee Member
+        nl: Lid van het controlecomité
+        de: Mitglied des Kontrollausschusses
   dinGorevlisi:
     ad: Rıdvan Kayahan
     eposta: imam@ulucamii.be
@@ -60,6 +76,8 @@ kurul:
       tr: Din Görevlisi (Diyanet İşleri Başkanlığı görevlendirmesi)
       fr: Imam (détaché par la Présidence des Affaires religieuses de Türkiye)
       en: Imam (appointed by the Turkish Presidency of Religious Affairs)
+      nl: Imam (gedetacheerd door Diyanet, het Presidium voor Godsdienstzaken van Türkiye)
+      de: Imam (entsandt von Diyanet, dem Präsidium für Religionsangelegenheiten der Türkei)
   personel:
     - ad: Abdulrahman Hallak
       foto: /media/kurul/abdulrahman-hallak.webp
@@ -68,20 +86,30 @@ kurul:
         tr: Halep (Suriye)
         fr: Alep (Syrie)
         en: Aleppo (Syria)
+        nl: Aleppo (Syrië)
+        de: Aleppo (Syrien)
       meslek:
         tr: Öğretmen
         fr: Enseignant
         en: Teacher
+        nl: Leerkracht
+        de: Lehrer
       ikamet: Saint-Hubert
       gorev:
         tr: Cami Personeli (Kafeterya ve İkram Hizmetleri)
         fr: Personnel de la mosquée (Responsable de la cafétéria)
         en: Mosque Staff (Cafeteria & Hospitality Services)
+        nl: Moskeepersoneel (cafetaria en onthaal)
+        de: Moscheepersonal (Cafeteria und Bewirtung)
       mesaj:
         tr: "Suriye'den kardeşiniz Abdulrahman, öğretmenim, Saint-Hubert'te ikamet ediyorum. Camimize hizmet etmekten onur duyuyorum. Allah bizleri iyilik ve takva üzere yardımlaşanlardan eylesin."
         fr: "Votre frère Abdulrahman, originaire de Syrie, enseignant, résidant à Saint-Hubert. C'est un honneur pour moi de servir notre mosquée. Qu'Allah fasse de nous des personnes qui s'entraident dans la bonté et la piété."
         en: "Your brother Abdulrahman, originally from Syria, teacher, residing in Saint-Hubert. It is an honor for me to serve our mosque. May Allah make us among those who cooperate in goodness and piety."
+        nl: "Uw broeder Abdulrahman, afkomstig uit Syrië, leerkracht, woonachtig in Saint-Hubert. Het is een eer voor mij om onze moskee te mogen dienen. Moge Allah ons laten behoren tot hen die elkaar helpen in goedheid en godsvrucht."
+        de: "Ihr Bruder Abdulrahman, aus Syrien stammend, Lehrer, wohnhaft in Saint-Hubert. Es ist mir eine Ehre, unserer Moschee zu dienen. Möge Allah uns zu denen gehören lassen, die einander in Güte und Gottesfurcht beistehen."
   not:
     tr: "9 Ocak 2026 Genel Kurulu'nda seçilen ve 2026 yılı içinde güncellenen yönetim kuruludur. (Son güncelleme: 17 Eylül 2026)"
     fr: "Conseil d'administration élu lors de l'Assemblée générale du 9 janvier 2026 et actualisé en 2026. (Dernière mise à jour : 17 septembre 2026)"
     en: "Board elected at the General Assembly of 9 January 2026 and updated during 2026. (Last updated: 17 September 2026)"
+    nl: "Bestuur verkozen op de algemene vergadering van 9 januari 2026 en in de loop van 2026 geactualiseerd. (Laatste bijwerking: 17 september 2026)"
+    de: "Vorstand, gewählt in der Generalversammlung vom 9. Januar 2026 und im Laufe des Jahres 2026 aktualisiert. (Letzte Aktualisierung: 17. September 2026)"

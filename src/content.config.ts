@@ -75,7 +75,9 @@ const ayarlar = defineCollection({
     cumaSaati: z.string().optional(),
     kursKayitLinki: z.string().url().optional(),
     servisler: z.object({ basvuru: z.string().default('') }).default({ basvuru: '' }),
-    heroMesajlar: z.array(z.object({ metin: z.object({ tr: z.string(), fr: z.string(), en: z.string().optional() }), sayfa: z.string().optional(), baglanti: z.string().optional(), baslangic: z.coerce.date().optional(), son: z.coerce.date().optional() })).default([]),
+    /* metin: tr/fr zorunlu, en/nl/de isteğe bağlı — mesajları Sveltia'dan kurul giriyor,
+       eksik dil DuyuruSeridi içinde fr'ye düşer (21 Eyl 2026: nl+de eklendi). */
+    heroMesajlar: z.array(z.object({ metin: z.object({ tr: z.string(), fr: z.string(), en: z.string().optional(), nl: z.string().optional(), de: z.string().optional() }), sayfa: z.string().optional(), baglanti: z.string().optional(), baslangic: z.coerce.date().optional(), son: z.coerce.date().optional() })).default([]),
     imsakiyePdf: z.string().url().optional(),
     sosyal: z.object({ facebook: z.string().url().optional(), instagram: z.string().url().optional(), youtube: z.string().url().optional() }).default({}),
     konsolosluk: z.object({
@@ -145,7 +147,13 @@ const afisler = defineCollection({
 });
 
 /** Yönetim kurulu (tek dosya) — src/content/ayarlar/kurul.yaml */
-const uc = z.object({ tr: z.string(), fr: z.string(), en: z.string() });
+/** Çok dilli kısa metin alanı (görev, memleket, meslek, mesaj, not…).
+ *  tr/fr/en ZORUNLU, nl/de İSTEĞE BAĞLI (21 Eylül 2026, nl+de eklenirken):
+ *  bu veriyi Sveltia CMS'ten teknik olmayan kurul üyeleri giriyor; yeni bir üye
+ *  eklenirken iki yeni dil boş kalırsa derleme kırılmamalı. Okuma tarafında
+ *  boşluğu `ucMetin()` (src/lib/icerik.ts) kapatır: kendi dili → en → fr.
+ *  Veri dosyasındaki nl/de alanları bugün DOLU; bu yedek yalnız ağ emniyeti. */
+const uc = z.object({ tr: z.string(), fr: z.string(), en: z.string(), nl: z.string().optional(), de: z.string().optional() });
 const kisi = z.object({ ad: z.string(), foto: z.string().optional(), eposta: z.string().optional(), gorev: uc });
 const personelKisi = z.object({
   ad: z.string(),

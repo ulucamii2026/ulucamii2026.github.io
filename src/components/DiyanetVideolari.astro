@@ -10,10 +10,22 @@ import { yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
-const liste = videolar[dil];
-const dersler = dil === 'en' ? enSeri.bolumler : seri.bolumler.map(b => ({ ...b, kaynak: b.sayfa, kanal: 'Diyanet Dijital', poster: `/media/ihtida/kapaklar/ders-${String(b.no).padStart(2, '0')}.webp` }));
+/* İhtida videoları YALNIZ doğrulanmış Diyanet kaynaklarından seçilir (docs/IHTIDA-VIDEOLARI.md).
+   Diyanet'in doğrulanmış Felemenkçe/Almanca video serisi yok; bu iki dilde İngilizce seri
+   gösterilir (aynı 37 bölüm, Diyanet Publications) ve ziyaretçiye KENDİ dilinde videoların
+   İngilizce olduğu yazılır — uydurma çeviri yapılmaz, video kendisi değiştirilmez. */
+const VIDEO_DILI: Record<Dil, 'tr' | 'fr' | 'en'> = { tr: 'tr', fr: 'fr', en: 'en', nl: 'en', de: 'en' };
+const videoDili = VIDEO_DILI[dil];
+const liste = videolar[videoDili];
+const dersler = videoDili === 'en' ? enSeri.bolumler : seri.bolumler.map(b => ({ ...b, kaynak: b.sayfa, kanal: 'Diyanet Dijital', poster: `/media/ihtida/kapaklar/ders-${String(b.no).padStart(2, '0')}.webp` }));
 const ekDersler = seri.ekler.map((b, i) => ({ ...b, kaynak: b.sayfa, kanal: 'Diyanet Dijital', poster: `/media/ihtida/kapaklar/extra-${String(i + 1).padStart(2, '0')}.webp` }));
-const M = {
+type Grup = 'baslarken' | 'inanc' | 'ibadet' | 'cagri' | 'musluman';
+type VideoMetni = {
+  baslik: string; giris: string; dil: string; devam: string; seri: string;
+  grup: Record<Grup, string>; ek: string; katalog: string; kutuphane: string;
+  kaynakNotu: string; yardim: string; aciklama: string; dis: string;
+};
+const M: Record<Dil, VideoMetni> = {
   tr: {
     baslik: 'İslam’ı videolarla tanıyın',
     giris: 'Diyanet’in Türkçe videolarıyla şehadetin anlamını, İslam’ı ve iman esaslarını öğrenin. İzlemek için videonun üzerindeki oynat düğmesine dokunun.',
@@ -34,7 +46,11 @@ const M = {
     giris: 'Découvrez un sermon prononcé en français par Ali Erbaş à la mosquée Yunus Emre de Strasbourg et publié par Diyanet Haber. Touchez le bouton de lecture pour regarder la vidéo ici.',
     dil: 'Français',
     devam: 'Pour aller plus loin',
-    seri: '', grup: {}, ek: '', katalog: '',
+    /* Fransızca sayfada 37 bölümlük seri GÖSTERİLMEZ (aşağıdaki `dil !== 'fr'` kapısı);
+       grup başlıkları yine de tam tutulur ki sözlük beş dilde eksiksiz kalsın. */
+    seri: '',
+    grup: { baslarken: 'Pour commencer', inanc: 'Les fondements de la foi', ibadet: 'Le culte', cagri: 'À quoi l’islam appelle-t-il ?', musluman: 'Vivre en musulman' },
+    ek: '', katalog: '',
     kutuphane: 'Découvrir l’islam : les livres du Diyanet en français',
     kaynakNotu: 'Les vidéos sont publiées par le Diyanet. Les couvertures sont des illustrations créées pour Ulu Camii. Aucune connexion au fournisseur vidéo n’est établie avant votre clic sur Lecture.',
     yardim: 'Si la vidéo ne démarre pas ou demande une connexion, essayez « Ouvrir sur YouTube » ou « Ouvrir à la source ». YouTube peut aussi demander une connexion sur le site source.',
@@ -56,9 +72,39 @@ const M = {
     aciklama: '',
     dis: 'opens in a new tab',
   },
+  nl: {
+    baslik: 'Ontdek de islam met video’s',
+    giris: 'Leer de geloofsgetuigenis, de islam en de geloofsgrondslagen kennen met de video’s van het Diyanet. Druk op de afspeelknop om een video hier te bekijken.',
+    dil: 'Engels',
+    devam: 'Verder ontdekken',
+    seri: '',
+    grup: { baslarken: 'Om te beginnen', inanc: 'De grondslagen van het geloof', ibadet: 'Eredienst', cagri: 'Waartoe de islam oproept', musluman: 'Leven als moslim' },
+    ek: '',
+    katalog: 'Alle 37 Engelstalige video’s van What is Islam?',
+    kutuphane: 'Liever lezen? De boeken van het Diyanet in het Nederlands',
+    kaynakNotu: 'De video’s zijn uitgaven van het Diyanet. De omslagbeelden zijn illustraties die voor Ulu Camii zijn gemaakt. Er wordt geen verbinding met de videoaanbieder gemaakt voordat u op afspelen drukt.',
+    yardim: 'Start de video niet of wordt u gevraagd om in te loggen, probeer dan “Openen op YouTube” of “Openen bij de bron”. YouTube kan ook op de bronsite om een login vragen.',
+    aciklama: 'Het Diyanet heeft geen geverifieerde videoreeks in het Nederlands; daarom tonen wij hier de Engelstalige reeks. De video’s en hun ondertiteling zijn in het Engels. Nederlandstalige boeken vindt u in de bibliotheek hieronder.',
+    dis: 'opent in een nieuw tabblad',
+  },
+  de: {
+    baslik: 'Den Islam mit Videos entdecken',
+    giris: 'Lernen Sie das Glaubensbekenntnis, den Islam und die Glaubensgrundlagen mit den Videos des Diyanet kennen. Drücken Sie auf die Abspielschaltfläche, um ein Video hier anzusehen.',
+    dil: 'Englisch',
+    devam: 'Weiter entdecken',
+    seri: '',
+    grup: { baslarken: 'Zum Einstieg', inanc: 'Die Grundlagen des Glaubens', ibadet: 'Gottesdienst', cagri: 'Wozu der Islam aufruft', musluman: 'Als Muslim leben' },
+    ek: '',
+    katalog: 'Alle 37 englischsprachigen Videos von What is Islam?',
+    kutuphane: 'Lieber lesen? Die Bücher des Diyanet auf Deutsch',
+    kaynakNotu: 'Die Videos sind Veröffentlichungen des Diyanet. Die Titelbilder sind Illustrationen, die für Ulu Camii angefertigt wurden. Vor dem Drücken der Abspielschaltfläche wird keine Verbindung zum Videoanbieter hergestellt.',
+    yardim: 'Startet das Video nicht oder werden Sie zum Anmelden aufgefordert, versuchen Sie „Auf YouTube öffnen“ oder „An der Quelle öffnen“. YouTube kann auch auf der Quellseite eine Anmeldung verlangen.',
+    aciklama: 'Das Diyanet hat keine geprüfte Videoreihe auf Deutsch; deshalb zeigen wir hier die englischsprachige Reihe. Die Videos und ihre Untertitel sind auf Englisch. Deutschsprachige Bücher finden Sie in der Bibliothek weiter unten.',
+    dis: 'öffnet in einem neuen Tab',
+  },
 };
 const m = M[dil];
-const grupBasliklari = dil === 'en' ? M.en.grup : M.tr.grup;
+const grupBasliklari = m.grup;
 const gruplar = ['baslarken', 'inanc', 'ibadet', 'cagri', 'musluman'] as const;
 ---
 <section id="diyanet-videolari" class="video-bant" data-video-dil={dil} data-video-grubu>

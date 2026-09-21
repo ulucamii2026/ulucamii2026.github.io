@@ -68,7 +68,7 @@ export async function kimlikUret() {
 Üretildi: ${kimlik.surum}. Tek kaynak: [kimlik.json](../kimlik.json); kurallar: [YAZISMA-KILAVUZU.md](../YAZISMA-KILAVUZU.md).
 İmzaları elle değiştirmeyin; ana kaynak güncellendikten sonra site deposunda \`npm run kimlik:uret\` çalıştırın.
 
-Altı imza takımı (her biri HTML + düz metin):
+${adlar.length} imza takımı (her biri HTML + düz metin):
 
 ${adlar.map(ad => '- [' + ad + '.html](' + ad + '.html) · [' + ad + '.txt](' + ad + '.txt)').join('\n')}
 

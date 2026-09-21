@@ -5,7 +5,7 @@ import {readFileSync} from 'node:fs';
 const source=readFileSync(new URL('../scripts/apps-script/veli-mail-listesi.gs',import.meta.url),'utf8');
 // Portal aktarımı Apps Script'te tek küresel kapsamı paylaşır: soyadBuyuk gibi ortak yardımcılar başka dosyalardadır.
 // Sınama da aynı dosyaları birleştirip yükler (gas-ceviri.test.mjs ile aynı sıra); `source` yalnız bu dosyanın metnidir.
-const butunKaynak=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v38.gs','veli-mail-listesi.gs']
+const butunKaynak=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v39.gs','veli-mail-listesi.gs']
  .map((ad)=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
 const c=vm.createContext({console:{log(){},error(){}}});vm.runInContext(butunKaynak,c);
 const row=(n,extra={})=>({'Referans':`UC-2099-000${n}`,'Öğrenci adı':'Deniz','Öğrenci soyadı':'Örnek','Veli adı soyadı':'Veli Örnek','Veli e-posta':'veli@example.test','İletişim dili':'fr',...extra});

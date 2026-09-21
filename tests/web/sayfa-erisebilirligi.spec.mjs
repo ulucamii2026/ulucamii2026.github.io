@@ -5,6 +5,8 @@ const yollar={
  tr:['hakkimizda','uyelik','ihtida','diyanet-hizmetleri','kuran-kursu-mufredati','seviye-tespit-testi'],
  fr:['a-propos','adhesion','conversion-a-l-islam','services-diyanet','programme-ecole-coranique','test-de-niveau'],
  en:['about','membership','becoming-muslim','diyanet-services','quran-school-curriculum','level-assessment'],
+ nl:['over-ons','lidmaatschap','moslim-worden','diyanet-diensten','leerplan-koranschool','niveautest'],
+ de:['ueber-uns','mitgliedschaft','muslim-werden','diyanet-dienste','lehrplan-koranschule','einstufungstest'],
 };
 for(const [lang,paths] of Object.entries(yollar))test(`${lang}: bilgi listeleri ve küçük metin kontrastı`,async({page,context})=>{
  test.setTimeout(90000);

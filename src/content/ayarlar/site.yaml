@@ -43,46 +43,62 @@ site:
         tr: "Diyanet yurt dışı sözleşmeli din görevlisi sınavına başvurular açık — son gün 25 Eylül 2026, 17.00 (TSİ)."
         fr: "Concours Diyanet : candidatures ouvertes — clôture le 25 septembre 2026 à 17h00 (heure de Turquie)."
         en: "Diyanet exam for religious officials abroad: applications open until 25 September 2026, 17:00 (Türkiye time)."
+        nl: "Inschrijvingen voor het Diyanet-examen voor imams in het buitenland zijn open — tot 25 september 2026, 17.00 uur (Turkse tijd)."
+        de: "Bewerbungen für die Diyanet-Prüfung für Religionsbeauftragte im Ausland sind offen — bis 25. September 2026, 17:00 Uhr (türkische Zeit)."
       sayfa: duyurular
       son: "2026-09-25"
     - metin:
         tr: "Camimizin yeni web sitesi hayırlı olsun — vakitler, duyurular ve başvurular artık tek adreste."
         fr: "Bienvenue sur le nouveau site de notre mosquée — horaires, annonces et inscriptions à une seule adresse."
         en: "Welcome to our mosque’s new website — prayer times, announcements and applications in one place."
+        nl: "Welkom op de nieuwe website van onze moskee — gebedstijden, aankondigingen en inschrijvingen op één adres."
+        de: "Willkommen auf der neuen Website unserer Moschee — Gebetszeiten, Ankündigungen und Anmeldungen an einer Adresse."
       sayfa: duyurular
       son: "2026-10-31"
     - metin:
         tr: "Kur’an kursumuz devam ediyor, kayıtlarımız açık — 7 yaş ve üzeri, kayıt ve dersler ücretsiz."
         fr: "Les cours de Coran continuent et les inscriptions restent ouvertes — dès 7 ans, inscription et cours gratuits."
         en: "Qur’an classes continue and enrolment remains open — ages 7 and up, free enrolment and classes."
+        nl: "Onze Koranschool loopt door en de inschrijvingen blijven open — vanaf 7 jaar, inschrijving en lessen gratis."
+        de: "Unsere Koranschule läuft weiter, die Anmeldung ist offen — ab 7 Jahren, Anmeldung und Unterricht kostenlos."
       sayfa: kurankursu
       son: "2027-06-06"
     - metin:
         tr: "Hanımlar ve genç kızlar irşat programı — her çarşamba camimizde, Esma AVCI Hoca Hanım ile."
         fr: "Programme pour femmes et jeunes filles — chaque mercredi à la mosquée, avec Mme Esma AVCI."
         en: "Women’s and girls’ programme — every Wednesday at the mosque, with Mrs Esma AVCI."
+        nl: "Programma voor vrouwen en jonge meisjes — elke woensdag in de moskee, met mevrouw Esma AVCI."
+        de: "Programm für Frauen und junge Mädchen — jeden Mittwoch in der Moschee, mit Frau Esma AVCI."
       sayfa: irsat
       son: "2027-06-30"
     - metin:
         tr: "Liseyi bitiren gençlere Türkiye’de Diyanet burslu ilahiyat lisansı — Uluslararası İlahiyat Programı’nı (UİP) tanıyın, başvuruda yanınızdayız."
         fr: "Une licence de théologie en Turquie avec bourse Diyanet pour les jeunes diplômés du secondaire — découvrez le Programme international de théologie (UİP), nous vous accompagnons."
         en: "A Diyanet-funded theology degree in Türkiye for secondary-school graduates — discover the International Theology Programme (UİP); we help you apply."
+        nl: "Een theologieopleiding in Türkiye met een Diyanet-beurs voor wie het secundair onderwijs afrondt — ontdek het Internationaal Theologieprogramma (UİP); wij helpen u bij de aanvraag."
+        de: "Ein Theologiestudium in der Türkei mit Diyanet-Stipendium für junge Menschen mit Abschluss der Sekundarstufe — entdecken Sie das Internationale Theologieprogramm (UİP); wir begleiten Sie bei der Bewerbung."
       sayfa: uip
     - metin:
         tr: "İhtida başvurusu artık online — bilgi, belgeler ve başvuru formu sitemizde."
         fr: "La demande de conversion se fait désormais en ligne — informations, documents et formulaire sur notre site."
         en: "Applying to become Muslim is now online — information, documents and the application form are on our site."
+        nl: "Moslim worden aanvragen kan nu online — informatie, documenten en het aanvraagformulier staan op onze site."
+        de: "Der Antrag, Muslim zu werden, ist jetzt online — Informationen, Unterlagen und das Formular finden Sie auf unserer Website."
       sayfa: ihtida
     - metin:
         tr: "2027 hac ön kayıtları 11 Eylül’de kapanıyor — kontenjan sınırlı, gecikmeyin."
         fr: "Préinscriptions au Hajj 2027 : clôture le 11 septembre — places limitées, ne tardez pas."
         en: "Hajj 2027 pre-registration closes on 11 September — places are limited, don’t wait."
+        nl: "De voorinschrijvingen voor de hadj 2027 sluiten op 11 september — beperkt aantal plaatsen, wacht niet te lang."
+        de: "Die Voranmeldung für die Hadsch 2027 endet am 11. September — begrenzte Plätze, warten Sie nicht zu lange."
       sayfa: diyanet
       son: "2026-09-11"
     - metin:
         tr: "2027 Hac kayıtları devam ediyor — son başvuru 30 Ekim 2026, sınırlı kontenjan, T.C. pasaportu şart."
         fr: "Inscriptions au Hajj 2027 en cours — date limite le 30 octobre 2026, places limitées, passeport turc requis."
         en: "Hajj 2027 registration is open — deadline 30 October 2026, limited places, Turkish passport required."
+        nl: "De inschrijvingen voor de hadj 2027 lopen — uiterste datum 30 oktober 2026, beperkt aantal plaatsen, Turks paspoort vereist."
+        de: "Die Anmeldung für die Hadsch 2027 läuft — Frist 30. Oktober 2026, begrenzte Plätze, türkischer Reisepass erforderlich."
       sayfa: duyurular
       baslangic: "2026-09-18"
       son: "2026-10-30"
@@ -90,6 +106,8 @@ site:
         tr: "İmam-ı Azam Eğitim Merkezi’nde 12–17 yaş hafta sonu yatılı Kur’an kursu kayıtları başladı — ayrıntılar duyurularda."
         fr: "Inscriptions ouvertes au cours coranique en internat de week-end (12–17 ans) du centre İmam-ı Azam — détails dans les annonces."
         en: "Enrolment is open for the İmam-ı Azam centre’s weekend boarding Qur’an course (ages 12–17) — details in the announcements."
+        nl: "Inschrijvingen geopend voor de Koranschool met weekendinternaat (12–17 jaar) van het İmam-ı Azam-centrum — details in de aankondigingen."
+        de: "Anmeldungen offen für die Koranschule mit Wochenendinternat (12–17 Jahre) im İmam-ı Azam-Zentrum — Einzelheiten in den Ankündigungen."
       sayfa: duyurular
   sosyal:
     facebook: https://www.facebook.com/profile.php?id=61591465715992

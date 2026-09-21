@@ -42,11 +42,14 @@ const { id, src, kaynak, yardim, not, baslik, poster, dil, altyazi, kapakYazili 
 if (Boolean(id) === Boolean(src)) throw new Error('VideoCephe: ya id (YouTube) ya src (video dosyası) verilmeli, ikisi birden değil');
 if (id && !/^[A-Za-z0-9_-]{11}$/.test(id)) throw new Error(`VideoCephe: geçersiz YouTube kimliği "${id}"`);
 const dis = !!src && /^https?:\/\//.test(src);
-const m = {
+const METIN: Record<Dil, { oynat: string; not: string; ac: string; yerelNot: string; disNot: string; indir: string; kaynakAc: string }> = {
   tr: { oynat: 'Videoyu oynat', not: 'Oynattığınızda video YouTube’un (Google) gizlilik güçlendirilmiş alanından yüklenir; o ana kadar YouTube’a hiçbir istek gitmez.', ac: 'YouTube’da aç', yerelNot: 'Video kendi sunucumuzdan yüklenir; oynatana kadar hiçbir veri inmez.', disNot: 'Video kaynak sitenin sunucusundan yüklenir; oynatana kadar hiçbir istek gitmez.', indir: 'MP4 olarak indir', kaynakAc: 'Kaynağında aç' },
   fr: { oynat: 'Lire la vidéo', not: 'À la lecture, la vidéo est chargée depuis le domaine « confidentialité renforcée » de YouTube (Google) ; jusque-là, aucune requête n’est envoyée à YouTube.', ac: 'Ouvrir sur YouTube', yerelNot: 'La vidéo est servie depuis notre propre serveur ; rien n’est téléchargé avant la lecture.', disNot: 'La vidéo est lue depuis le serveur du site source ; aucune requête n’est envoyée avant la lecture.', indir: 'Télécharger en MP4', kaynakAc: 'Ouvrir à la source' },
   en: { oynat: 'Play video', not: 'When you press play, the video loads from YouTube’s (Google) privacy-enhanced domain; until then no request is sent to YouTube.', ac: 'Open on YouTube', yerelNot: 'The video is served from our own server; nothing is downloaded until you press play.', disNot: 'The video streams from the source site’s server; no request is sent until you press play.', indir: 'Download as MP4', kaynakAc: 'Open at source' },
-}[dil];
+  nl: { oynat: 'Video afspelen', not: 'Zodra u op afspelen drukt, wordt de video geladen vanaf het privacyvriendelijke domein van YouTube (Google); tot dan wordt er geen enkele aanvraag naar YouTube gestuurd.', ac: 'Openen op YouTube', yerelNot: 'De video staat op onze eigen server; er wordt niets gedownload voordat u op afspelen drukt.', disNot: 'De video wordt afgespeeld vanaf de server van de bronsite; er wordt geen aanvraag verstuurd voordat u op afspelen drukt.', indir: 'Downloaden als MP4', kaynakAc: 'Openen bij de bron' },
+  de: { oynat: 'Video abspielen', not: 'Sobald Sie auf Abspielen drücken, wird das Video aus der datenschutzfreundlichen Domain von YouTube (Google) geladen; bis dahin geht keine Anfrage an YouTube.', ac: 'Auf YouTube öffnen', yerelNot: 'Das Video liegt auf unserem eigenen Server; vor dem Abspielen wird nichts heruntergeladen.', disNot: 'Das Video wird vom Server der Quellseite abgespielt; vor dem Abspielen geht keine Anfrage hinaus.', indir: 'Als MP4 herunterladen', kaynakAc: 'An der Quelle öffnen' },
+};
+const m = METIN[dil];
 const notMetni = not ?? (id ? m.not : dis ? m.disNot : m.yerelNot);
 const izle = id ? `https://www.youtube.com/watch?v=${id}` : src!;
 const gom = id ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&hl=${dil}` : undefined;

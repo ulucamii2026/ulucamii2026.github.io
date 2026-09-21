@@ -14,15 +14,18 @@ const pages = {
   tr: ['namaz-vakitleri', 'iletisim', 'kuran-kursu'],
   fr: ['horaires-de-priere', 'contact', 'ecole-coranique'],
   en: ['prayer-times', 'contact', 'quran-school'],
+  nl: ['gebedstijden', 'contact', 'koranschool'],
+  de: ['gebetszeiten', 'kontakt', 'koranschule'],
 };
 
-for (const lang of ['tr', 'fr', 'en']) {
+const htmlLang = { tr: 'tr', fr: 'fr-BE', en: 'en', nl: 'nl-BE', de: 'de-BE' };
+for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
   test(`${lang}: ana sayfa, tema, gezinme ve taşma`, async ({ page, isMobile }, info) => {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     const response = await page.goto(`/${lang}/`);
     expect(response.status()).toBe(200);
-    await expect(page.locator('html')).toHaveAttribute('lang', lang === 'fr' ? 'fr-BE' : lang);
+    await expect(page.locator('html')).toHaveAttribute('lang', htmlLang[lang]);
     await expect(page.locator('main')).toBeVisible();
     await expect(page.locator('h1')).toHaveCount(1);
     await page.evaluate(() => document.fonts.ready);
@@ -46,7 +49,7 @@ for (const lang of ['tr', 'fr', 'en']) {
     }
     await page.locator('[aria-controls="dil-menu"]').click();
     await expect(page.locator('#dil-menu')).toBeVisible();
-    for (const target of ['tr', 'fr', 'en']) {
+    for (const target of ['tr', 'fr', 'en', 'nl', 'de']) {
       await expect(page.locator(`#dil-menu a[hreflang="${target}"]`)).toHaveAttribute('href', `/${target}/`);
     }
     await page.keyboard.press('Escape');
@@ -58,9 +61,18 @@ for (const lang of ['tr', 'fr', 'en']) {
     for (const slug of pages[lang]) {
       const response = await page.goto(`/${lang}/${slug}/`);
       expect(response.status(), slug).toBe(200);
-      await expect(page.locator('html')).toHaveAttribute('lang', lang === 'fr' ? 'fr-BE' : lang);
+      await expect(page.locator('html')).toHaveAttribute('lang', htmlLang[lang]);
       await expect(page.locator('main')).toBeVisible();
       await expect(page.locator('h1')).toHaveCount(1);
+      // Ortak WhatsApp bağlantısı telefon NUMARASINI görünür metne ya da başlık ipucuna taşımaz (kalıcı kural); numara yalnız
+      // wa.me hedefindedir. Görünen etiket WhatsApp kullanıcı adıdır (7 Eylül 2026 kararı) — beş dilde aynı bileşen.
+      const whatsapp = page.locator('a.wa-bag');
+      expect(await whatsapp.count()).toBeGreaterThan(0);
+      for (const link of await whatsapp.all()) {
+        expect(await link.innerText()).not.toMatch(/\d{6,}|\+\s?\d{2}/);
+        expect((await link.getAttribute('title')) ?? '').not.toMatch(/\d{6,}|\+\s?\d{2}/);
+        await expect(link).toHaveAttribute('href', /^https:\/\/wa\.me\/\d+$/);
+      }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), slug).toBe(true);
     }
   });

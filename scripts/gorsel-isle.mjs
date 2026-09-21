@@ -45,5 +45,5 @@ for (const f of ['marche-ulu-camii-logo.svg', 'marche-ulu-camii-logo-beyaz.svg',
 }
 // Logo değişirse türevleri de yenilenmelidir, yoksa sitede eski amblem kalır:
 //   marche-cami-sitesi/simge/simge-uret.py   → favicon.svg/.ico, apple-touch-icon.png
-//   public/media/og/ulu-camii-{tr,fr,en}.png → paylaşım kartlarındaki amblem
+//   public/media/og/ulu-camii-<dil>.png       → paylaşım kartları: node scripts/og-kart-uret.mjs --hepsi (şablon kalıcı, 21 Eyl 2026)
 console.log('bitti');

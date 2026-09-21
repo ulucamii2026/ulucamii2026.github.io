@@ -25,6 +25,8 @@ USLUP = {
     "tr": "Dil: Türkçe. Sakin, sıcak ve net bir ses; tane tane, orta tempo; sınav sorusunu okuyan bir öğretmen gibi. Şıklar arasında kısa duraklama.",
     "fr": "Langue : français. Voix calme, chaleureuse et claire ; rythme posé ; comme un enseignant qui lit une question d'examen. Courte pause entre les réponses.",
     "en": "Language: English. Calm, warm and clear voice; measured pace; like a teacher reading out a test question. Short pause between the options.",
+    "nl": "Taal: Nederlands (Belgisch-Nederlandse uitspraak). Rustige, warme en duidelijke stem; bedaard tempo; zoals een leerkracht die een toetsvraag voorleest. Korte pauze tussen de antwoorden.",
+    "de": "Sprache: Deutsch. Ruhige, warme und klare Stimme; gemessenes Tempo; wie eine Lehrkraft, die eine Prüfungsfrage vorliest. Kurze Pause zwischen den Antworten.",
 }
 
 

@@ -6,12 +6,12 @@ import {
   BILGI_ALANLARI, bankaPuanla, girdiDogrula, maddeBul, puanla,
 } from '../src/lib/seviye-testi/index.ts';
 
-const diller = ['tr', 'fr', 'en'];
+const diller = ['tr', 'fr', 'en', 'nl', 'de'];
 const onekler = { ok: 'okuma', kb: 'kuranBilgi', it: 'itikat', nm: 'namaz', ib: 'ibadet', sy: 'siyer', ah: 'ahlak' };
 const alanlar = ['okuma', ...BILGI_ALANLARI];
 const puanli = MADDELER.filter(m => !m.emekli && !m.mezhepBagli);
 const normalize = (s, dil) => s.normalize('NFC').toLocaleLowerCase(dil).replace(/\s+/gu, ' ').trim();
-const bilmiyorum = /bilmiyorum|je ne sais pas|i don['’]t know/iu;
+const bilmiyorum = /bilmiyorum|je ne sais pas|i don['’]t know|ik weet het niet|ich wei(ß|ss) es nicht/iu;
 // U+0656/U+0657: Diyanet mushaf\u0131n\u0131n \u00E7eker i\u015Faretleri (uzun \u00AB\u00EE\u00BB/\u00AB\u00FB\u00BB); tam Amiri ikisini de i\u00E7erir.
 const arapca = /^[\u0621-\u0657\u0670\u0671\u0640\u200D\u06D6-\u06ED ]+$/u;
 

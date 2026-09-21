@@ -12,16 +12,17 @@
  *     görünür, JavaScript kapalıyken de kaybolmaz; istemci canlı sayıyı alınca günceller.
  */
 import type { Dil } from '../i18n/ui';
+import { yerelKodu } from '../i18n/utils';
 
 interface Props { dil: Dil; sinif?: string; kapsam?: 'sayfa' | 'site'; onek?: string; baslangic?: number }
 const { dil, sinif, kapsam = 'sayfa', onek = '', baslangic } = Astro.props;
 
 const adlar = {
-  sayfa: { tr: ['görüntülenme', 'görüntülenme'], fr: ['vue', 'vues'], en: ['view', 'views'] },
-  site: { tr: ['sayfa görüntülenmesi', 'sayfa görüntülenmesi'], fr: ['page vue', 'pages vues'], en: ['page view', 'page views'] },
+  sayfa: { tr: ['görüntülenme', 'görüntülenme'], fr: ['vue', 'vues'], en: ['view', 'views'], nl: ['weergave', 'weergaven'], de: ['Aufruf', 'Aufrufe'] },
+  site: { tr: ['sayfa görüntülenmesi', 'sayfa görüntülenmesi'], fr: ['page vue', 'pages vues'], en: ['page view', 'page views'], nl: ['paginaweergave', 'paginaweergaven'], de: ['Seitenaufruf', 'Seitenaufrufe'] },
 }[kapsam];
 const ad = adlar[dil];
-const yerel = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' }[dil];
+const yerel = yerelKodu[dil];
 const hazirMetin = typeof baslangic === 'number'
   ? `${onek}${new Intl.NumberFormat(yerel).format(baslangic)} ${baslangic === 1 ? ad[0] : ad[1]}`
   : '';

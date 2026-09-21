@@ -31,20 +31,21 @@ interface Props {
 const dil: Dil = Astro.props.dil ?? dilBul(Astro.url);
 const t = ceviri(dil);
 /* Paylaşım görseli (WhatsApp/Facebook): sayfanın kendi görseli varsa o, yoksa camimizin
-   logolu kartı (public/media/og/, 1200x630, üç dil). 27 Ağustos 2026'ya kadar varsayılan
+   logolu kartı (public/media/og/, 1200x630, her site dili için bir kart). 27 Ağustos 2026'ya kadar varsayılan
    ana sayfanın cami fotoğrafıydı; bu yüzden yönetim kurulu gibi ilgisiz sayfaların
    önizlemesinde de o fotoğraf çıkıyordu. */
 const ogKart = `/media/og/ulu-camii-${dil}.png`;
 const { baslik, aciklama = t('site.slogan'), kapak = ogKart, kapakAlt, kapakGenislik = 1200, kapakYukseklik = 630, kapakTipi = 'image/webp', noindex = false, dilHatirla = true, ogTuru = 'website', ekJsonLd = [] } = Astro.props;
 /** Yalnız ana sayfada masaüstü hero görselini erkenden bildir (LCP); afis/1600px görsel büyük olduğu için mobil kırpmasını değil bunu hedefler. */
-const anaSayfaMi = /^\/(tr|fr|en)\/$/.test(Astro.url.pathname);
+const anaSayfaMi = Astro.url.pathname === `/${dil}/`;
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
 /** Arama motoru açıklaması: 155 karakteri aşarsa kelime sınırında kısalt */
 const metaAciklama = aciklama.length <= 155 ? aciklama : aciklama.slice(0, 152).replace(/\s+\S*$/, '') + '…';
 const kanonik = new URL(Astro.url.pathname, Astro.site);
 const kapakUrl = new URL(kapak, Astro.site);
 const ogKartMi = kapak === ogKart;
-const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au contenu', en: 'Skip to content' };
+const atlaEtiketi: Record<Dil, string> = { tr: 'İçeriğe atla', fr: 'Aller au contenu', en: 'Skip to content', nl: 'Naar de inhoud', de: 'Zum Inhalt springen' };
+const ogYerel: Record<Dil, string> = { tr: 'tr_TR', fr: 'fr_BE', en: 'en_GB', nl: 'nl_BE', de: 'de_BE' };
 /* Kurumsal kimlik (schema.org) — her sayfada. Derneğin BCE/KBO numarası, hukuki formu ve
    resmî sicil kaydı makine tarafından okunabilir olsun diye eklendi (30 Ağu 2026): güvenlik
    süzgeçleri ve arama motorları için "kayıtlı, gerçek kurum" kanıtı. Değerler site.yaml'dan. */
@@ -70,7 +71,7 @@ const kurumJsonLd = {
     `https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=${kboSade}`,
     a.sosyal?.facebook,
   ].filter(Boolean),
-  knowsLanguage: ['tr', 'fr', 'en', 'ar'],
+  knowsLanguage: [...dilListesi, 'ar'],
   areaServed: { '@type': 'AdministrativeArea', name: 'Marche-en-Famenne, Luxembourg, Wallonie' },
   isAccessibleForFree: true,
   publicAccess: true,
@@ -153,7 +154,7 @@ const yapisalVeri = {
       </Fragment>
     )}
     <meta property="og:url" content={kanonik} />
-    <meta property="og:locale" content={dil === 'tr' ? 'tr_TR' : dil === 'en' ? 'en_GB' : 'fr_BE'} />
+    <meta property="og:locale" content={ogYerel[dil]} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={tamBaslik} />
     <meta name="twitter:description" content={metaAciklama} />

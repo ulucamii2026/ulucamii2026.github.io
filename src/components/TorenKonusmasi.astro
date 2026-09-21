@@ -8,9 +8,10 @@
  * yönelik sahne yönergeleri («sakin bir tempoyla okur», tarih/ad boşlukları) yayımlanmaz —
  * okura yalnız törende DUYACAĞI metin gösterilir.
  *
- * DİL: Fransızca sayfada iki konuşmanın Fransızca aslı verilir (aday erkek / kadın). Türkçe ve
- * İngilizce sayfalarda tek bir çeviri durur: Türkçede dil bilgisel cinsiyet yoktur, İngilizcede de
- * metnin gövdesi cinsiyetten bağımsızdır; okur zaten törenin kendi dilinde yapılacağını bilir.
+ * DİL: Fransızca sayfada iki konuşmanın Fransızca aslı verilir (aday erkek / kadın). Türkçe,
+ * İngilizce, Felemenkçe ve Almanca sayfalarda tek bir çeviri durur: Türkçede dil bilgisel cinsiyet
+ * yoktur, diğer üçünde de metnin gövdesi cinsiyetten bağımsız tutulmuştur. Tören Türkçe veya
+ * Fransızca yapılır; nl/de metinleri okumak içindir ve sayfa altındaki not bunu açıkça söyler.
  */
 import type { Dil } from '../i18n/ui';
 
@@ -80,14 +81,49 @@ const EN_METIN: string[] = [
   'May God make your heart firm, light your path, calm your worries, and make of you a person of uprightness, wisdom and peace.',
 ];
 
-const M = {
+/* Felemenkçe ve Almanca metinler, Türkçe aslından (Fransızca ve İngilizce sürümlerle
+   karşılaştırılarak) çevrilmiştir; tören Türkçe veya Fransızca yapılır, bu iki dildeki
+   metin okumak içindir — sayfa altındaki not bunu açıkça söyler. */
+const NL_METIN: string[] = [
+  'Wij hebben zojuist de slotverzen van soera Al-Baqara beluisterd: woorden die een lange soera sluiten zoals men een deur sluit voor de twijfel, en die een venster openen op de zekerheid. Zij zeggen iets wezenlijks: geloof is geen dwang, het is een vrij antwoord. Allah legt niemand een last op die zijn krachten te boven gaat; Hij kent de grenzen van de mens beter dan de mens zichzelf kent.',
+  'U bent hier vandaag niet bij toeval, niet onder druk, niet uit zwakte, maar aan het einde van een innerlijke weg. Een weg die soms stil was, soms pijnlijk, en vaak eenzaam. De waarheid zoeken is nooit comfortabel. Het is een overtocht. En elke overtocht die die naam waardig is, kent vragen, breuken, angsten — en ook heldere luchten.',
+  'De islam die u op het punt staat te omarmen, is geen vreemde cultuur, geen etnische afkomst en geen geërfde traditie. De islam is vóór alles een erkenning: de erkenning van de absolute Eenheid van Allah. Allah, de Enige, zonder deelgenoot, zonder tussenpersoon, zonder menswording. Allah, die niet verwekt en niet verwekt is. Allah, die op niets lijkt wat de menselijke geest zich kan voorstellen, en die u toch nader is dan uw eigen adem.',
+  'Moslim worden betekent niet dat u uw verleden verloochent. Het betekent niet dat u uw geschiedenis, uw identiteit of uw weg afwijst. Het geeft die weg een nieuwe betekenis. De islam wist niet uit wat u geweest bent; hij brengt orde in wat u aan het worden bent. Hij maakt van het zoeken een richting, van de twijfel een verantwoordelijkheid, van de vrijheid een bewuste verbintenis.',
+  'Weet dit vooral: in de islam zoekt Allah geen engelen, Hij ontvangt mensen. Onvolmaakte, kwetsbare mensen, die kunnen vallen en weer kunnen opstaan. De deur van het berouw gaat nooit dicht. Goddelijke barmhartigheid wordt niet verdiend door volmaaktheid; zij wordt ontvangen door oprechtheid.',
+  'Door vandaag moslim te worden, bevestigt u dat het leven niet zinloos is. Dat het niet aan het toeval is overgelaten. Dat het een oorsprong, een betekenis en een doel heeft. U bevestigt dat elke daad telt, dat elk woord gewicht heeft, dat elke intentie waarde heeft. U aanvaardt dat u voor Allah verantwoording aflegt — niet om verpletterd te worden door angst, maar om verheven te worden door het geweten.',
+  'De islam belooft u geen leven zonder beproevingen; hij belooft u een kompas. Hij belooft u niet de afwezigheid van pijn; hij belooft de pijn een betekenis. Hij belooft u niet dat alles gemakkelijk zal zijn; hij belooft dat niets tevergeefs zal zijn.',
+  'U zult stap voor stap leren. Geloof is geen schakelaar; het is een licht dat zich vestigt. Niemand zal van u vragen vandaag al volmaakt te zijn. Wat Allah van u verwacht, is de eerlijkheid van het hart en de standvastigheid van de stap, hoe langzaam die ook is.',
+  'Vanaf dit ogenblik treedt u binnen in een broederschap zonder grenzen, zonder één enkele kleur, zonder één enkele taal. Een gemeenschap die rust op het geloof in Allah, op de menselijke waardigheid, op rechtvaardigheid en op barmhartigheid. U bent niet alleen. U bent het niet meer.',
+  'Zo dadelijk zult u het woord uitspreken dat eeuwen, woestijnen, rijken en gewetens is doorgegaan: de geloofsgetuigenis. Een korte zin, en toch zwaarder dan de bergen. Een zin die van u in de ogen van de mensen niet iemand anders maakt, maar die u voor Allah opnieuw doet geboren worden.',
+  'Spreek haar uit met helderheid, met kalmte, met overtuiging — niet als een toverformule, maar als een vrije verbintenis. En weet dat volgens de leer van de islam uw verleden wordt afgewassen op het ogenblik zelf dat u haar oprecht uitspreekt: niet door vergetelheid, maar door barmhartigheid.',
+  'Moge Allah uw hart standvastig maken, uw weg verlichten, uw zorgen tot rust brengen en u tot een mens maken van oprechtheid, wijsheid en vrede.',
+];
+
+const DE_METIN: string[] = [
+  'Wir haben soeben die abschließenden Verse der Sure al-Baqara gehört: Worte, die eine lange Sure schließen, wie man eine Tür vor dem Zweifel schließt, und die ein Fenster zur Gewissheit öffnen. Sie sagen etwas Grundlegendes: Der Glaube ist kein Zwang, er ist eine freie Antwort. Allah legt keiner Seele eine Last auf, die über ihre Kraft geht; Er kennt die Grenzen des Menschen besser, als der Mensch sich selbst kennt.',
+  'Sie sind heute nicht zufällig hier, nicht unter Druck, nicht aus Schwäche, sondern am Ende eines inneren Weges. Eines Weges, der manchmal still war, manchmal schmerzhaft und oft einsam. Die Wahrheit zu suchen ist nie bequem. Es ist eine Überfahrt. Und jede Überfahrt, die diesen Namen verdient, kennt Fragen, Brüche, Ängste — und auch klare Himmel.',
+  'Der Islam, den Sie annehmen wollen, ist keine fremde Kultur, keine ethnische Zugehörigkeit und keine ererbte Tradition. Der Islam ist vor allem ein Anerkennen: das Anerkennen der absoluten Einheit Allahs. Allah, der Eine, ohne Teilhaber, ohne Vermittler, ohne Menschwerdung. Allah, der nicht zeugt und nicht gezeugt wurde. Allah, der nichts gleicht, was der menschliche Geist sich vorstellen kann, und der Ihnen doch näher ist als Ihr eigener Atem.',
+  'In den Islam einzutreten heißt nicht, Ihre Vergangenheit zu verleugnen. Es heißt nicht, Ihre Geschichte, Ihre Identität, Ihren Weg zu verwerfen. Es gibt diesem Weg einen neuen Sinn. Der Islam löscht nicht aus, was Sie gewesen sind; er ordnet, was Sie gerade werden. Er macht aus der Suche eine Richtung, aus dem Zweifel eine Verantwortung, aus der Freiheit eine bewusste Bindung.',
+  'Wissen Sie vor allem dies: Im Islam sucht Allah keine Engel, Er nimmt Menschen an. Unvollkommene, zerbrechliche Menschen, die fallen und wieder aufstehen können. Die Tür der Umkehr schließt sich nie. Die göttliche Barmherzigkeit wird nicht durch Vollkommenheit verdient; sie wird durch Aufrichtigkeit empfangen.',
+  'Indem Sie heute Muslim werden, bekräftigen Sie, dass das Leben nicht sinnlos ist. Dass es nicht dem Zufall überlassen ist. Dass es einen Ursprung, einen Sinn und ein Ziel hat. Sie bekräftigen, dass jede Tat zählt, dass jedes Wort Gewicht hat, dass jede Absicht einen Wert hat. Sie nehmen an, vor Allah verantwortlich zu sein — nicht um von Furcht erdrückt, sondern um vom Gewissen erhoben zu werden.',
+  'Der Islam verspricht Ihnen kein Leben ohne Prüfungen; er verspricht Ihnen einen Kompass. Er verspricht Ihnen nicht die Abwesenheit des Schmerzes; er verspricht dem Schmerz einen Sinn. Er verspricht Ihnen nicht, dass alles leicht sein wird; er verspricht, dass nichts vergeblich sein wird.',
+  'Sie werden Schritt für Schritt lernen. Der Glaube ist kein Schalter; er ist ein Licht, das einzieht. Niemand wird von Ihnen verlangen, schon heute vollkommen zu sein. Was Allah von Ihnen erwartet, ist die Ehrlichkeit des Herzens und die Beständigkeit des Schrittes, so langsam er auch sein mag.',
+  'Von diesem Augenblick an treten Sie in eine Geschwisterlichkeit ohne Grenzen ein, ohne eine einzige Farbe, ohne eine einzige Sprache. Eine Gemeinschaft, die auf dem Glauben an Allah, auf der Würde des Menschen, auf Gerechtigkeit und auf Barmherzigkeit gegründet ist. Sie sind nicht allein. Sie sind es nicht mehr.',
+  'Gleich werden Sie das Wort sprechen, das Jahrhunderte, Wüsten, Reiche und Gewissen durchquert hat: das Glaubensbekenntnis. Ein kurzer Satz, und doch schwerer als die Berge. Ein Satz, der Sie in den Augen der Menschen nicht zu jemand anderem macht, der Sie aber vor Allah neu geboren werden lässt.',
+  'Sprechen Sie es mit Klarheit, mit Ruhe, mit Überzeugung — nicht als Zauberformel, sondern als freie Bindung. Und wissen Sie: Nach der Lehre des Islam wird Ihre Vergangenheit in dem Augenblick abgewaschen, in dem Sie es aufrichtig bezeugen — nicht durch Vergessen, sondern durch Barmherzigkeit.',
+  'Möge Allah Ihr Herz festigen, Ihren Weg erhellen, Ihre Sorgen beruhigen und Sie zu einem Menschen der Aufrichtigkeit, der Weisheit und des Friedens machen.',
+];
+
+type Konusma = { etiket: string; baslik: string; giris: string; ac: string; bloklar: Blok[]; not: string };
+
+const M: Record<Dil, Konusma> = {
   tr: {
     etiket: 'Törende ne duyacaksınız',
     baslik: 'Telkin Konuşması',
     giris:
       'Kelime-i şehadetten hemen önce görevlimiz size hitap eder. Bu konuşmayı önceden okuyabilmeniz için buraya koyduk: törene geldiğinizde hiçbir şey sizin için sürpriz olmasın, sözler yabancı gelmesin. Metin caminin kendi hazırladığı örnek konuşmadır; her adaya, o günün havasına ve sizin sorularınıza göre kısaltılır ya da genişletilir.',
     ac: 'Konuşmanın tamamını okuyun',
-    bloklar: [{ baslik: 'Telkin konuşması — örnek metin', paragraflar: TR_METIN }] as Blok[],
+    bloklar: [{ baslik: 'Telkin konuşması — örnek metin', paragraflar: TR_METIN }],
     not: 'Tören Türkçe yapılabileceği gibi tamamen Fransızca da yürütülebilir; bu durumda görevlimiz konuşmayı Fransızca okur. Konuşmanın hemen ardından, şahitlerin huzurunda hür irade sorusu sorulur ve kelime-i şehadet bölüm bölüm tekrar ettirilir — ezberlemeniz gerekmez.',
   },
   fr: {
@@ -99,7 +135,7 @@ const M = {
     bloklar: [
       { baslik: 'Discours — candidat', ozet: 'Version adressée à un homme', paragraflar: FR_ERKEK },
       { baslik: 'Discours — candidate', ozet: 'Version adressée à une femme', paragraflar: FR_KADIN },
-    ] as Blok[],
+    ],
     not: 'Aussitôt après le discours vient, devant les témoins, la question du libre arbitre, puis la profession de foi, que l’imam dit en arabe morceau par morceau et que vous répétez — rien à apprendre par cœur.',
   },
   en: {
@@ -108,10 +144,28 @@ const M = {
     giris:
       'Just before the declaration of faith, our imam speaks to you. We publish that address here so you can read it beforehand: on the day itself, nothing should come as a surprise. It is the text our mosque has prepared; it is adapted to each person, to their questions and to the mood of the day.',
     ac: 'Read the full address',
-    bloklar: [{ baslik: 'The address — sample text', paragraflar: EN_METIN }] as Blok[],
+    bloklar: [{ baslik: 'The address — sample text', paragraflar: EN_METIN }],
     not: 'The ceremony can be held in French, Turkish or English. Immediately after the address comes the question of free will, asked before the witnesses, and then the declaration of faith, which the imam says in Arabic phrase by phrase for you to repeat — nothing needs to be memorised.',
   },
-} as const;
+  nl: {
+    etiket: 'Wat u zult horen',
+    baslik: 'De toespraak bij de plechtigheid',
+    giris:
+      'Vlak vóór de geloofsgetuigenis richt onze imam het woord tot u. Wij publiceren die toespraak hier zodat u ze vooraf kunt lezen: op de dag zelf hoeft niets u te verrassen. Het is de tekst die onze moskee heeft voorbereid; hij wordt aangepast aan elke persoon, aan zijn vragen en aan de sfeer van die dag.',
+    ac: 'De volledige toespraak lezen',
+    bloklar: [{ baslik: 'De toespraak — voorbeeldtekst', paragraflar: NL_METIN }],
+    not: 'De plechtigheid wordt in het Turks of in het Frans gehouden; de tekst hierboven is de Nederlandse vertaling, zodat u vooraf weet wat er gezegd wordt. Meteen na de toespraak wordt in het bijzijn van de getuigen de vraag naar de vrije wil gesteld, en daarna volgt de geloofsgetuigenis, die de imam zin voor zin in het Arabisch voorzegt en die u herhaalt — u hoeft niets uit het hoofd te leren.',
+  },
+  de: {
+    etiket: 'Was Sie hören werden',
+    baslik: 'Die Ansprache bei der Zeremonie',
+    giris:
+      'Unmittelbar vor dem Glaubensbekenntnis wendet sich unser Imam an Sie. Wir veröffentlichen diese Ansprache hier, damit Sie sie vorher lesen können: Am Tag selbst soll Sie nichts überraschen. Es ist der Text, den unsere Moschee vorbereitet hat; er wird an jede Person, an ihre Fragen und an die Stimmung des Tages angepasst.',
+    ac: 'Die vollständige Ansprache lesen',
+    bloklar: [{ baslik: 'Die Ansprache — Beispieltext', paragraflar: DE_METIN }],
+    not: 'Die Zeremonie wird auf Türkisch oder auf Französisch gehalten; der Text oben ist die deutsche Übersetzung, damit Sie vorher wissen, was gesagt wird. Unmittelbar nach der Ansprache folgt vor den Zeugen die Frage nach dem freien Willen und danach das Glaubensbekenntnis, das der Imam Satz für Satz auf Arabisch vorspricht und das Sie wiederholen — nichts muss auswendig gelernt werden.',
+  },
+};
 
 const m = M[dil];
 ---
@@ -130,7 +184,7 @@ const m = M[dil];
             {b.ozet && <span class="ozet">{b.ozet}</span>}
             <span class="ac" aria-hidden="true">{m.ac}</span>
           </summary>
-          <div class="govde" lang={dil === 'tr' ? 'tr' : dil === 'en' ? 'en' : 'fr'}>
+          <div class="govde" lang={dil}>
             {b.paragraflar.map((p) => <p>{p}</p>)}
           </div>
         </details>

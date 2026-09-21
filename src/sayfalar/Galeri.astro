@@ -3,18 +3,32 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { galeri } from '../lib/icerik';
+import { galeri, icerikDili } from '../lib/icerik';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
-const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
+const icDil = icerikDili(dil); // fotoğraf açıklamaları yalnız tr/fr — en/nl/de Fransızcaya düşer
 const liste = await galeri();
-const altBaslik = dil === 'tr' ? 'Camimizin dış ve iç mekânından fotoğraflar. Bir kareye dokunarak büyütebilir, ok tuşları veya kaydırma ile gezebilirsiniz.' : dil === 'en' ? 'Photos of the exterior and interior of the mosque. Tap an image to enlarge it, and browse with the arrow keys or by swiping.' : 'Photos de l’extérieur et de l’intérieur de la mosquée. Touchez une image pour l’agrandir, naviguez avec les flèches ou en glissant.';
-const enNotu = 'Photo captions are written in Turkish and French. An English version is not available.';
+const M = {
+  tr: { alt: 'Camimizin dış ve iç mekânından fotoğraflar. Bir kareye dokunarak büyütebilir, ok tuşları veya kaydırma ile gezebilirsiniz.',
+        aciklama: 'Marche-en-Famenne Ulu Camii’nin iç ve dış mekânlarından fotoğraflar.', dilNotu: '' },
+  fr: { alt: 'Photos de l’extérieur et de l’intérieur de la mosquée. Touchez une image pour l’agrandir, naviguez avec les flèches ou en glissant.',
+        aciklama: 'Photos de l’intérieur et de l’extérieur de la Mosquée Ulu Camii de Marche-en-Famenne.', dilNotu: '' },
+  en: { alt: 'Photos of the exterior and interior of the mosque. Tap an image to enlarge it, and browse with the arrow keys or by swiping.',
+        aciklama: 'Photographs of the interior and exterior of the Ulu Mosque of Marche-en-Famenne.',
+        dilNotu: 'Photo captions are written in Turkish and French. An English version is not available.' },
+  nl: { alt: 'Foto’s van de buiten- en de binnenkant van onze moskee. Tik op een foto om ze te vergroten en blader met de pijltoetsen of door te vegen.',
+        aciklama: 'Foto’s van het interieur en het exterieur van de moskee Ulu Camii in Marche-en-Famenne.',
+        dilNotu: 'De bijschriften bij de foto’s zijn in het Turks en het Frans geschreven. Er is geen Nederlandse versie beschikbaar.' },
+  de: { alt: 'Fotos vom Äußeren und vom Inneren unserer Moschee. Tippen Sie auf ein Bild, um es zu vergrößern, und blättern Sie mit den Pfeiltasten oder durch Wischen.',
+        aciklama: 'Fotos vom Inneren und vom Äußeren der Moschee Ulu Camii in Marche-en-Famenne.',
+        dilNotu: 'Die Bildunterschriften sind auf Türkisch und Französisch verfasst. Eine deutsche Fassung ist nicht verfügbar.' },
+} satisfies Record<Dil, unknown>;
+const m = M[dil];
 ---
-<Base baslik={t('nav.galeri')} dil={dil} kapak={liste[0]?.data.dosya} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii’nin iç ve dış mekânlarından fotoğraflar.' : dil === 'en' ? 'Photographs of the interior and exterior of the Ulu Mosque of Marche-en-Famenne.' : 'Photos de l’intérieur et de l’extérieur de la Mosquée Ulu Camii de Marche-en-Famenne.'}>
-  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.galeri')} altBaslik={altBaslik} />
+<Base baslik={t('nav.galeri')} dil={dil} kapak={liste[0]?.data.dosya} aciklama={m.aciklama}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.galeri')} altBaslik={m.alt} />
   <div class="kapsayici py-10">
-    {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
+    {m.dilNotu && <p class="bilgi mb-6 text-sm">{m.dilNotu}</p>}
     <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" role="list">
       {liste.map((g) => (
         <li>

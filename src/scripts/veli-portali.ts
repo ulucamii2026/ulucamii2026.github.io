@@ -6,6 +6,8 @@ import { odevMetni } from '../lib/haftalik-odev';
  * firebase/firestore.rules ile sınırlı (veli yalnız aileler/{e-posta}.ogrenciler listesindeki öğrencileri okur).
  */
 import type { Dil } from '../i18n/ui';
+import { diller } from '../i18n/ui';
+import { dilListesi, yerelKodu } from '../i18n/utils';
 import { veliBulteni } from './bulten-gorunumu';
 import { veliMetni, yerlestir, type VeliMetin } from '../i18n/veli';
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
@@ -35,7 +37,7 @@ type Duyuru = { tarih: string; baslik: Record<string, string>; metin: Record<str
 type Bildirim = { id?: string; ref: string; tur: string; tarih?: string; metin: string; okundu: boolean; zaman?: { toDate?: () => Date } | string; yanit?: string; yanitZaman?: { toDate?: () => Date } | string };
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
-const yerel: Record<Dil, string> = { tr: 'tr-TR', fr: 'fr-BE', en: 'en-GB' };
+const yerel = yerelKodu;
 const bugunISO = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date());
 const gunEkle = (iso: string, n: number) => { const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
 
@@ -50,6 +52,9 @@ export async function veliPortali(): Promise<void> {
     iso ? new Intl.DateTimeFormat(yerel[dil], { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00')) : '';
   const hadisSesKaydiVar = (sesDili: string, id: string) => (veri.hadisSesleri?.[sesDili] || []).includes(id);
   const cok = (o: Record<string, string> | undefined) => (o ? (o[dil] || o.fr || o.tr || '') : '');
+  // Kod içine gömülü arayüz metinleri (kesif/ezber/quiz köşesi): beş dilli sabit — nl/de burada TAM çeviri alır,
+  // stored-content (ödev/duyuru) yedeği değildir. Bkz. docs/DIL-NL-DE.md.
+  const t5 = (v: Record<Dil, string>) => v[dil];
   // Duyuru/ödev metnindeki https bağlantılarını tıklanabilir yapar (önce kaçış, sonra bağlantı; sondaki noktalama bağlantıya girmez)
   const bagla = (s: string) => esc(s).replace(/https?:\/\/[^\s<]*[^\s<.,;:!?)]/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
   // Duyuru metni: zengin editör HTML'i ise sanitize; düz metin (eski) ise kaçış + bağlantı + satır sonu.
@@ -663,9 +668,9 @@ export async function veliPortali(): Promise<void> {
 
                 <div class="kesif-kutusu gunun-hadisi-kutu hadis-tezyinat-kart">
                   <div class="kesif-etiket-satir hadis-baslik-satir">
-                    <span class="kesif-rozet hadis-rozet">✦ ${dil === 'fr' ? 'HADITH DU JOUR • ÉTHIQUE PROPHÉTIQUE' : dil === 'en' ? 'HADITH OF THE DAY • PROPHETIC ETHICS' : 'GÜNÜN NEBEVÎ AHLÂK HADİSİ'}</span>
+                    <span class="kesif-rozet hadis-rozet">✦ ${t5({ tr: 'GÜNÜN NEBEVÎ AHLÂK HADİSİ', fr: 'HADITH DU JOUR • ÉTHIQUE PROPHÉTIQUE', en: 'HADITH OF THE DAY • PROPHETIC ETHICS', nl: 'HADITH VAN DE DAG • PROFETISCHE ETHIEK', de: 'HADITH DES TAGES • PROPHETISCHE ETHIK' })}</span>
                     <button type="button" class="dugme dugme-ikincil kucuk-dugme kesif-ses-btn hadis-ana-ses-btn" data-eylem="hadisSesCal" data-hadis-tur="arapca" title="${esc(m.hadisiArapcaDinle)}">
-                      🔊 <span>${dil === 'fr' ? 'Écouter en arabe' : dil === 'en' ? 'Listen Arabic' : 'Arapça Dinle'}</span>
+                      🔊 <span>${t5({ tr: 'Arapça Dinle', fr: 'Écouter en arabe', en: 'Listen Arabic', nl: 'Beluister Arabisch', de: 'Arabisch anhören' })}</span>
                     </button>
                   </div>
                   <div class="gunun-hadisi-govde">
@@ -674,7 +679,7 @@ export async function veliPortali(): Promise<void> {
                       <span class="hadis-tirnak-sol" aria-hidden="true">«</span>
                       <span class="hadis-ic-metin">${esc(gununHadisi.arapca)}</span>
                       <span class="hadis-tirnak-sag" aria-hidden="true">»</span>
-                      <span class="hadis-ses-ipucu-cip">🔊 ${dil === 'fr' ? 'Arabe (Studio)' : (dil === 'en' ? 'Arabic Studio Audio' : 'Arapça Stüdyo Sesi (Dinle)')}</span>
+                      <span class="hadis-ses-ipucu-cip">🔊 ${t5({ tr: 'Arapça Stüdyo Sesi (Dinle)', fr: 'Arabe (Studio)', en: 'Arabic Studio Audio', nl: 'Arabisch (studio-opname)', de: 'Arabisch (Studioaufnahme)' })}</span>
                     </button>
                     <!-- HADİS MEALİ (ORTALI & TIKLAYINCA PRO STÜDYO TÜRKÇE SESİ) -->
                     <div class="hadis-meal-kutu hadis-ortali" data-eylem="hadisSesCal" data-hadis-tur="meal" aria-disabled="${!hadisSesKaydiVar(dil, gununHadisi.id)}" role="button" tabindex="0" title="${esc(m.hadisMealiDinle)}">
@@ -699,7 +704,7 @@ export async function veliPortali(): Promise<void> {
               <!-- SÛRE VE DUA KATEGORİ FİLTRESİ -->
               <div class="sure-filtre-sekmeler" role="tablist" aria-label="${esc(m.sureSec)}">
                 <button type="button" class="sure-filtre-btn ${ezberFiltreTur === 'hepsi' ? 'aktif-filtre' : ''}" data-eylem="ezberFiltreTur" data-tur="hepsi">
-                  ✨ ${dil === 'fr' ? 'Tous' : dil === 'en' ? 'All' : 'Tümü'} <span class="filtre-sayac">(${EZBER_LISTESI.length})</span>
+                  ✨ ${t5({ tr: 'Tümü', fr: 'Tous', en: 'All', nl: 'Alle', de: 'Alle' })} <span class="filtre-sayac">(${EZBER_LISTESI.length})</span>
                 </button>
                 <button type="button" class="sure-filtre-btn ${ezberFiltreTur === 'sure' ? 'aktif-filtre' : ''}" data-eylem="ezberFiltreTur" data-tur="sure">
                   📖 ${esc(m.sureler)} <span class="filtre-sayac">(${EZBER_LISTESI.filter((x) => x.tur === 'sure').length})</span>
@@ -722,7 +727,7 @@ export async function veliPortali(): Promise<void> {
               <div class="ezber-secici-sar">
                 <label for="ezber-secim-select" class="kucuk"><b>${esc(m.sureSec)}:</b></label>
                 <select id="ezber-secim-select" data-eylem="ezberDegistir" class="ezber-secim">
-                  ${filtreliEzberler.map((ez) => `<option value="${ez.id}" ${ez.id === seciliEzber.id ? 'selected' : ''}>${esc(ez.ad[dil] || ez.ad.tr)} (${ez.tur === 'sure' ? (dil === 'fr' ? 'Sourate' : (dil === 'en' ? 'Surah' : 'Kur’an Sûresi')) : (dil === 'fr' ? 'Prière' : (dil === 'en' ? 'Supplication' : 'Dua'))})</option>`).join('')}
+                  ${filtreliEzberler.map((ez) => `<option value="${ez.id}" ${ez.id === seciliEzber.id ? 'selected' : ''}>${esc(ez.ad[dil] || ez.ad.tr)} (${ez.tur === 'sure' ? t5({ tr: 'Kur’an Sûresi', fr: 'Sourate', en: 'Surah', nl: 'Soera', de: 'Sure' }) : t5({ tr: 'Dua', fr: 'Prière', en: 'Supplication', nl: 'Smeekbede', de: 'Bittgebet' })})</option>`).join('')}
                 </select>
               </div>
 
@@ -733,7 +738,9 @@ export async function veliPortali(): Promise<void> {
                   <div class="serlevha-motif serlevha-sol" aria-hidden="true"></div>
                   <div class="serlevha-icerik">
                     <span class="serlevha-tur-rozet ${seciliEzber.tur === 'sure' ? 'rozet-sure' : 'rozet-dua'}">
-                      ${seciliEzber.tur === 'sure' ? (dil === 'fr' ? 'SOURATE DU SAINT CORAN' : (dil === 'en' ? 'SURAH OF THE HOLY QURAN' : "KUR'AN-I KERÎM SÛRESİ")) : (dil === 'fr' ? 'INVOCATION DE LA PRIÈRE' : (dil === 'en' ? 'PRAYER SUPPLICATION • CURRICULUM' : 'NAMAZ DUASI • MEKTEP MÜFREDATI'))}
+                      ${seciliEzber.tur === 'sure'
+                        ? t5({ tr: "KUR'AN-I KERÎM SÛRESİ", fr: 'SOURATE DU SAINT CORAN', en: 'SURAH OF THE HOLY QURAN', nl: 'SOERA VAN DE HEILIGE KORAN', de: 'SURE DES HEILIGEN KORAN' })
+                        : t5({ tr: 'NAMAZ DUASI • MEKTEP MÜFREDATI', fr: 'INVOCATION DE LA PRIÈRE', en: 'PRAYER SUPPLICATION • CURRICULUM', nl: 'GEBEDSSMEEKBEDE • MEKTEP-LEERPLAN', de: 'GEBETSBITTE • MEKTEP-LEHRPLAN' })}
                     </span>
                     <h3 class="mushaf-sure-baslik">${esc(seciliEzber.ad[dil] || seciliEzber.ad.tr)}</h3>
                   </div>
@@ -750,17 +757,23 @@ export async function veliPortali(): Promise<void> {
                       <span class="besmele-hat-metin">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
                     </div>
                     <span class="euzu-besmele-latin">E’ûzü billâhi mineş-şeytânir-racîm • Bismillâhir-rahmânir-rahîm</span>
-                    <span class="euzu-besmele-anlam">${dil === 'fr' ? 'Je cherche refuge auprès d’Allah contre Satan le maudit • Au nom d’Allah, le Tout Miséricordieux, le Très Miséricordieux' : (dil === 'en' ? 'I seek refuge in Allah from Satan the accursed • In the name of Allah, the Entirely Merciful, the Especially Merciful' : 'Kovulmuş şeytandan Allah’a sığınırım • Rahmân ve Rahîm olan Allah’ın adıyla')}</span>
+                    <span class="euzu-besmele-anlam">${t5({
+                      tr: 'Kovulmuş şeytandan Allah’a sığınırım • Rahmân ve Rahîm olan Allah’ın adıyla',
+                      fr: 'Je cherche refuge auprès d’Allah contre Satan le maudit • Au nom d’Allah, le Tout Miséricordieux, le Très Miséricordieux',
+                      en: 'I seek refuge in Allah from Satan the accursed • In the name of Allah, the Entirely Merciful, the Especially Merciful',
+                      nl: 'Ik zoek toevlucht bij Allah tegen de vervloekte satan • In de naam van Allah, de Erbarmer, de Meest Barmhartige',
+                      de: 'Ich suche Zuflucht bei Allah vor dem verfluchten Satan • Im Namen Allahs, des Allerbarmers, des Barmherzigen',
+                    })}</span>
                   </div>
                 ` : ''}
 
                 <!-- EZBER VE MEŞK ARAÇLARI ÇUBUĞU -->
                 <div class="ezber-arac-bar">
                   <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberGizli ? 'aktif-arac' : ''}" data-eylem="ezberGizleToggle" aria-pressed="${Boolean(d.ezberGizli)}" title="${esc(m.ezberTesti)}">
-                    ${d.ezberGizli ? '👁️ ' + (dil === 'fr' ? 'Afficher le texte' : (dil === 'en' ? 'Show text' : 'Metni Göster')) : '🙈 ' + esc(m.ezberTesti)}
+                    ${d.ezberGizli ? '👁️ ' + t5({ tr: 'Metni Göster', fr: 'Afficher le texte', en: 'Show text', nl: 'Toon de tekst', de: 'Text anzeigen' }) : '🙈 ' + esc(m.ezberTesti)}
                   </button>
                   <button type="button" class="dugme dugme-ikincil ezber-arac-btn ${d.ezberDongu ? 'aktif-arac' : ''}" data-eylem="ezberDonguToggle" aria-pressed="${Boolean(d.ezberDongu)}" title="${esc(m.meskDongusu)}">
-                    🔁 ${esc(m.meskDongusu)}: ${d.ezberDongu ? (dil === 'fr' ? 'Actif' : (dil === 'en' ? 'On' : 'Açık')) : (dil === 'fr' ? 'Inactif' : (dil === 'en' ? 'Off' : 'Kapalı'))}
+                    🔁 ${esc(m.meskDongusu)}: ${d.ezberDongu ? t5({ tr: 'Açık', fr: 'Actif', en: 'On', nl: 'Aan', de: 'Ein' }) : t5({ tr: 'Kapalı', fr: 'Inactif', en: 'Off', nl: 'Uit', de: 'Aus' })}
                   </button>
                   <button type="button" class="dugme dugme-ikincil ezber-arac-btn" data-eylem="ezberMetinKopyala" title="${esc(m.metniKopyala)}">
                     📋 ${esc(m.metniKopyala)}
@@ -780,7 +793,7 @@ export async function veliPortali(): Promise<void> {
                 <!-- TECVİDLİ OKUNUŞ VE MEÂL KARTLARI -->
                 <div class="mushaf-anlam-izgara">
                   <div class="ezber-okunus mushaf-bilgi-kutu">
-                    <span class="ezber-etiket">📖 ${dil === 'fr' ? 'Prononciation :' : dil === 'en' ? 'Transliteration:' : 'Tecvidli Okunuş:'}</span>
+                    <span class="ezber-etiket">📖 ${t5({ tr: 'Tecvidli Okunuş:', fr: 'Prononciation :', en: 'Transliteration:', nl: 'Uitspraak (tadjwied):', de: 'Aussprache (Tadschwid):' })}</span>
                     <p class="okunus-metin">${esc(seciliEzber.okunus)}</p>
                   </div>
                 </div>
@@ -1043,7 +1056,7 @@ export async function veliPortali(): Promise<void> {
                     </div>
                     <h3 class="quiz-bitti-baslik">${esc(m.haftaninTestiBitti)}</h3>
                     <div class="quiz-skor-serit">
-                      <span class="quiz-skor-rozeti">🎯 ${d.quizDogruSayisi ?? toplamSoru} / ${toplamSoru} ${dil === 'fr' ? 'Bonnes réponses' : dil === 'en' ? 'Correct answers' : 'Doğru Cevap'}</span>
+                      <span class="quiz-skor-rozeti">🎯 ${d.quizDogruSayisi ?? toplamSoru} / ${toplamSoru} ${t5({ tr: 'Doğru Cevap', fr: 'Bonnes réponses', en: 'Correct answers', nl: 'Juiste antwoorden', de: 'Richtige Antworten' })}</span>
                     </div>
                     <p class="quiz-bitti-metin">${esc(m.haftaninTestiNot)}</p>
                     <div class="quiz-eylem-satir" style="justify-content:center;margin-top:1.2rem">
@@ -1180,7 +1193,7 @@ export async function veliPortali(): Promise<void> {
                     <img src="/media/mektep/elifba-bahcesi.webp" alt="Diyanet Çocuk Eğitici Medya" class="mektep-video-afis-resim" loading="lazy" width="600" height="200" />
                     <a href="https://kuran.diyanet.gov.tr/elifba/" target="_blank" rel="noopener" class="mektep-video-oynat-btn" title="Diyanet İnteraktif Elifbâ">
                       <span class="oynat-simge" aria-hidden="true">▶</span>
-                      <span class="oynat-yazi">${dil === 'fr' ? 'Ouvrir l’animation Elif-Bâ' : dil === 'en' ? 'Open Elif-Ba Animation' : 'Diyanet Elif-Bâ Animasyonunu Başlat'}</span>
+                      <span class="oynat-yazi">${t5({ tr: 'Diyanet Elif-Bâ Animasyonunu Başlat', fr: 'Ouvrir l’animation Elif-Bâ', en: 'Open Elif-Ba Animation', nl: 'Open de Elif-Ba-animatie', de: 'Elif-Ba-Animation öffnen' })}</span>
                     </a>
                   </div>
                 </div>
@@ -1403,7 +1416,7 @@ export async function veliPortali(): Promise<void> {
 
         <section class="bolum r-kiremit">
           ${bas('ayar', m.hesap)}
-          <label>${esc(m.dil)}<select name="dil" data-dil-sec>${(['tr', 'fr', 'en'] as Dil[]).map((x) => `<option value="${x}" ${x === dil ? 'selected' : ''}>${x === 'tr' ? 'Türkçe' : x === 'fr' ? 'Français' : 'English'}</option>`).join('')}</select></label>
+          <label>${esc(m.dil)}<select name="dil" data-dil-sec>${dilListesi.map((x) => `<option value="${x}" ${x === dil ? 'selected' : ''}>${esc(diller[x])}</option>`).join('')}</select></label>
           <p class="kucuk" style="margin:.9rem 0 .1rem">${esc(m.girisBilgisi)}</p>
           <p style="margin:0;font-weight:600;overflow-wrap:anywhere">${esc(d.eposta)}</p>
           <details class="katlanir" style="margin-top:.95rem">
@@ -1559,7 +1572,9 @@ export async function veliPortali(): Promise<void> {
       const rozetAd = hedef.dataset.rozetAd || '';
       const kutlamaEl = kok.querySelector<HTMLElement>('[data-kutlama]');
       if (kutlamaEl) {
-        kutlamaEl.textContent = (kazandi ? '🏅 ' : '🔒 ') + rozetAd + (kazandi ? (dil === 'fr' ? ' — Félicitations !' : dil === 'en' ? ' — Well done!' : ' — Tebrikler!') : (dil === 'fr' ? ' — Continue tes efforts !' : dil === 'en' ? ' — Keep going!' : ' — Yakında kazanacaksın!'));
+        kutlamaEl.textContent = (kazandi ? '🏅 ' : '🔒 ') + rozetAd + (kazandi
+          ? t5({ tr: ' — Tebrikler!', fr: ' — Félicitations !', en: ' — Well done!', nl: ' — Gefeliciteerd!', de: ' — Herzlichen Glückwunsch!' })
+          : t5({ tr: ' — Yakında kazanacaksın!', fr: ' — Continue tes efforts !', en: ' — Keep going!', nl: ' — Ga zo door!', de: ' — Weiter so!' }));
         kutlamaEl.hidden = false;
         setTimeout(() => { if (kutlamaEl) kutlamaEl.hidden = true; }, 3500);
       }

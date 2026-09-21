@@ -12,7 +12,7 @@
  * kimi gün «Harf Tanıma Pekiştirmesi (28 harf) · Ezber köşesi: …» gibi bir paragraf), `baslik` ise her zaman
  * dersin kısa adı. Uzun özet iki satıra kırpılır (-webkit-line-clamp).
  */
-import { tarihBicimle, yol } from '../i18n/utils';
+import { tarihBicimle, yerelKodu, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 export type Dosya = { dosya: string; url: string; boyut: number };
 export type Sunum = Dosya & { no: number; saat: string; alan: string; kod: string; konu: string; konuFr?: string;
@@ -27,7 +27,7 @@ export type Metin = {
 };
 interface Props { g: Gun; dil: Dil; m: Metin; bugun: string; acik?: boolean }
 const { g, dil, m, bugun, acik = false } = Astro.props;
-const mb = (b: number) => new Intl.NumberFormat(dil, { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
+const mb = (b: number) => new Intl.NumberFormat(yerelKodu[dil], { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(g.tarih + 'T12:00:00'), dil, secenek);
 const konuMetni = (s: Sunum) => (dil === 'tr' ? s.konu : (s.konuFr || s.konu));
 const baslikMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
@@ -42,7 +42,7 @@ const aranabilir = [
   tarih({ day: 'numeric', month: 'long', weekday: 'long', year: 'numeric' }),
   m.hafta(g.hafta),
   ...g.sunumlar.map((s) => `${baslikMetni(s)} ${konuMetni(s)} ${s.alan}`),
-].join(' ').toLocaleLowerCase(dil);
+].join(' ').toLocaleLowerCase(yerelKodu[dil]);
 ---
 <details class="gun" id={`g-${g.tarih}`} data-gun={g.tarih} data-kodlar={kodlar} data-ara={aranabilir} open={acik}>
   <summary>

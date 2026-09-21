@@ -35,7 +35,7 @@ function veliPortalKayitlari(satirlar, ayar) {
     var s = guncel[ref].satir, ep = veliPortalMetin(s["Veli e-posta"]).toLowerCase();
     ep = veliPortalMetin((ayar.epostaDuzelt || {})[ep] || ep).toLowerCase();
     if (!/^[^\s@/\\]+@[^\s@/\\]+\.[^\s@/\\]+$/.test(ep) || ep.length > 254) { sayi++; return; }
-    // v33 soyad kuralı portalda da geçerli: büyük harf yereli tek kaynaktan (soyadBuyuk, ulucamii-Kod-v38.gs).
+    // v33 soyad kuralı portalda da geçerli: büyük harf yereli tek kaynaktan (soyadBuyuk, ulucamii-Kod-v39.gs).
     // Defter okuması «Form dili» sütununu getirmediği için dil="" geçilir; yerel seçimi iletişim diline ve soyadın harflerine kalır.
     var iletisimDili = veliPortalMetin(s["İletişim dili"]).toLowerCase();
     kayitlar.push({ ref: ref, kayitRef: guncel[ref].ref, ad: veliPortalAd(s["Öğrenci adı"]), soyad: soyadBuyuk(s["Öğrenci soyadı"], "", iletisimDili), veliAd: veliPortalAd(s["Veli adı soyadı"]), eposta: ep, iletisimDili: iletisimDili });

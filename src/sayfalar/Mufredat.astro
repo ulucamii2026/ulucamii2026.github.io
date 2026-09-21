@@ -11,7 +11,7 @@
  */
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
-import { ceviri, yol } from '../i18n/utils';
+import { ceviri, yerelKodu, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import govdeHam from '../data/mufredat-2026-2027.html?raw';
 import plan from '../data/yillik-plan-2026-2027.json';
@@ -75,27 +75,27 @@ for (const d of dagilim) {
 }
 
 /* ——— Ay ay bakış (gün gün plan verisinden) ——— */
-const yerel = dil === 'tr' ? 'tr-TR' : dil === 'en' ? 'en-GB' : 'fr-BE';
 const bicim = (iso: string, secenek: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat(yerel, { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
+  new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
 /* Derleme anındaki Brüksel tarihi; site her gün 03:30 UTC yeniden derlenir. */
 const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const dersGunleri = gunler.filter((g) => g.dersler.length > 0);
 const sonraki = dersGunleri.find((g) => g.tarih >= bugun);
 
-const ROZET: Record<string, { fr: string; en: string }> = {
-  "Sonbahar tatili (Congé d'automne)": { fr: "Congé d'automne", en: 'Autumn break' },
-  "Kış tatili (Vacances d'hiver / Noël)": { fr: "Vacances d'hiver", en: 'Winter break' },
-  'Dinlenme tatili (Congé de détente / Carnaval)': { fr: 'Congé de détente', en: 'Carnival break' },
-  'İlkbahar tatili (Vacances de printemps / Pâques)': { fr: 'Vacances de printemps', en: 'Spring break' },
-  'Ramazan programı': { fr: 'Programme du Ramadan', en: 'Ramadan programme' },
-  'Ramazan hazırlığı': { fr: 'Préparation au Ramadan', en: 'Ramadan preparation' },
-  'Kurban Bayramı arifesi': { fr: "Veille de l'Aïd al-Adha", en: 'Eve of Eid al-Adha' },
-  'Bayram tatili': { fr: "Congé de l'Aïd", en: 'Eid holiday' },
+const ROZET: Record<string, { fr: string; en: string; nl: string; de: string }> = {
+  "Sonbahar tatili (Congé d'automne)": { fr: "Congé d'automne", en: 'Autumn break', nl: 'Herfstvakantie', de: 'Herbstferien' },
+  "Kış tatili (Vacances d'hiver / Noël)": { fr: "Vacances d'hiver", en: 'Winter break', nl: 'Kerstvakantie', de: 'Weihnachtsferien' },
+  'Dinlenme tatili (Congé de détente / Carnaval)': { fr: 'Congé de détente', en: 'Carnival break', nl: 'Krokusvakantie', de: 'Karnevalsferien' },
+  'İlkbahar tatili (Vacances de printemps / Pâques)': { fr: 'Vacances de printemps', en: 'Spring break', nl: 'Paasvakantie', de: 'Osterferien' },
+  'Ramazan programı': { fr: 'Programme du Ramadan', en: 'Ramadan programme', nl: 'Ramadanprogramma', de: 'Ramadanprogramm' },
+  'Ramazan hazırlığı': { fr: 'Préparation au Ramadan', en: 'Ramadan preparation', nl: 'Voorbereiding op de ramadan', de: 'Vorbereitung auf den Ramadan' },
+  'Kurban Bayramı arifesi': { fr: "Veille de l'Aïd al-Adha", en: 'Eve of Eid al-Adha', nl: 'Vooravond van het Offerfeest', de: 'Vorabend des Opferfests' },
+  'Bayram tatili': { fr: "Congé de l'Aïd", en: 'Eid holiday', nl: 'Feestvakantie', de: 'Festferien' },
 };
 const rozetAdi = (r: Rozet) => (dil === 'tr' ? r.metin.replace(/\s*\([^)]*\)\s*$/, '') : (ROZET[r.metin]?.[dil] ?? r.metin));
 
-const m = dil === 'tr' ? {
+const METIN = {
+  tr: {
   baslik: 'Müfredat ve Yıllık Ders Planı 2026-2027',
   alt: 'Kur’an-ı Kerim, İtikat, İbadet, Siyer ve Ahlak derslerinin konuları, kaynak kitapları, kazanımları ve gün gün yıllık planı.',
   aciklama: 'Ulu Camii Kur’an Kursu 2026-2027 müfredatı ve yıllık ders planı: 87 ders günü, 261 ders saati, beş ders alanı.',
@@ -122,7 +122,8 @@ const m = dil === 'tr' ? {
   lejant: [['Cumartesi / Pazar', 'g-normal'], ['İlâve Pazartesi', 'g-pazartesi'], ['Ramazan programı', 'g-ramazan'], ['Bayram / ders yok', 'g-tatil']],
   planCta: 'Gün gün yıllık plan',
   planCtaAlt: 'Her ders gününün saatleri, konuları, kaynakları ve kazanımları; ay ve ders alanı filtresiyle.',
-} : dil === 'en' ? {
+  },
+  en: {
   baslik: 'Curriculum & Yearly Lesson Plan 2026-2027',
   alt: 'Topics, textbooks, learning outcomes and the day-by-day yearly plan for Qur’an, Creed, Worship, Sīrah and Ethics.',
   aciklama: 'Ulu Camii Qur’an School 2026-2027 curriculum and yearly lesson plan: 87 teaching days, 261 lessons, five subjects.',
@@ -149,7 +150,8 @@ const m = dil === 'tr' ? {
   lejant: [['Saturday / Sunday', 'g-normal'], ['Extra Monday', 'g-pazartesi'], ['Ramadan programme', 'g-ramazan'], ['Eid / no lessons', 'g-tatil']],
   planCta: 'Day-by-day yearly plan',
   planCtaAlt: 'Hours, topics, sources and outcomes of every teaching day, with month and subject filters.',
-} : {
+  },
+  fr: {
   baslik: 'Programme et plan annuel des cours 2026-2027',
   alt: 'Sujets, manuels, acquis d’apprentissage et plan annuel jour par jour pour le Coran, la croyance, le culte, la Sīra et la morale.',
   aciklama: 'École coranique Ulu Camii, programme et plan annuel 2026-2027 : 87 jours de cours, 261 leçons, cinq matières.',
@@ -176,10 +178,68 @@ const m = dil === 'tr' ? {
   lejant: [['samedi / dimanche', 'g-normal'], ['lundi supplémentaire', 'g-pazartesi'], ['programme du Ramadan', 'g-ramazan'], ['Aïd / pas de cours', 'g-tatil']],
   planCta: 'Plan annuel jour par jour',
   planCtaAlt: 'Horaires, sujets, sources et acquis de chaque jour de cours, avec filtres par mois et par matière.',
-};
+  },
+  nl: {
+  baslik: 'Leerplan en jaarplanning van de lessen 2026-2027',
+  alt: 'Onderwerpen, handboeken, leerdoelen en de jaarplanning dag per dag voor Koran, geloofsleer, eredienst, Sīra en moraal.',
+  aciklama: 'Leerplan en jaarplanning 2026-2027 van de koranschool Ulu Camii: 87 lesdagen, 261 lessen, vijf vakken.',
+  not: 'Het volledige document is in het Turks, de onderwijstaal. De belangrijkste gegevens, de verdeling van de vakken en het overzicht maand per maand worden in het Nederlands gegeven; voor vragen kunt u de imam contacteren.',
+  ozet: [
+    ['Start van de lessen', 'zaterdag 5 september 2026'], ['Einde van de lessen', 'zondag 6 juni 2027'],
+    ['Lesdagen', 'zaterdag en zondag · tijdens schoolvakantieweken ook maandag'],
+    ['Winter-/zomeruren', '10.00–12.40 uur · 11.00–13.40 uur'], ['Totaal', '87 lesdagen · 261 lessen'],
+  ],
+  sonrakiEt: 'Eerstvolgende lesdag', bitti: 'Schooljaar afgelopen', bugunEt: 'vandaag',
+  icindekiler: 'Inhoud', tocAlt: 'Ga naar het onderdeel',
+  pdf: 'PDF downloaden', pdfAlt: (s: number, mb: string) => `A4 · ${s} pagina’s · ${mb} MB`, yazdir: 'Afdrukbare versie',
+  kayit: 'Inschrijvingspagina', surum: 'Versie van het document',
+  kitapNot: 'De handboeken worden door de ouders aangeschaft', kitapBag: 'waar verkrijgbaar', kitapCapa: '#manuels',
+  dagilimBaslik: 'Verdeling van de vakken',
+  dagilimAlt: `Hoe de ${toplamSaat} lessen van het jaar over de vakken worden verdeeld. Speciaal programma: ramadan (2.6) en de vooravond van het Offerfeest (2.7).`,
+  saat: 'lessen', genel: 'algemeen', ozel: 'speciaal',
+  alanAd: { kuran: 'Koran', itikat: 'Geloofsleer', ibadet: 'Eredienst', siyer: 'Sīra', ahlak: 'Moraal' } as Record<Kod, string>,
+  ayGiris: 'De lesdagen, vakanties en speciale programma’s van elke maand in één oogopslag. Voor de onderwerpen, bronnen en leerdoelen uur per uur opent u de dag-per-dagpagina; op een dag tikken opent die dag.',
+  dersGunu: (n: number) => `${n} lesdag${n === 1 ? '' : 'en'}`, ders: (n: number) => `${n} les${n === 1 ? '' : 'sen'}`,
+  pazartesi: (n: number) => `Extra maandag ×${n}`,
+  saatGecis: (mod: string, d: string) => `${mod} vanaf ${d}`,
+  gunGun: 'Bekijk dag per dag', buAy: 'Deze maand', gecti: 'voorbij', dersYok: 'geen les',
+  lejant: [['zaterdag / zondag', 'g-normal'], ['extra maandag', 'g-pazartesi'], ['ramadanprogramma', 'g-ramazan'], ['offerfeest / geen les', 'g-tatil']],
+  planCta: 'Jaarplanning dag per dag',
+  planCtaAlt: 'Uren, onderwerpen, bronnen en leerdoelen van elke lesdag, met filters op maand en vak.',
+  },
+  de: {
+  baslik: 'Lehrplan und Jahresplan des Unterrichts 2026-2027',
+  alt: 'Themen, Lehrbücher, Lernziele und der Tag-für-Tag-Jahresplan für Koran, Glaubenslehre, Gottesdienst, Sīra und Moral.',
+  aciklama: 'Lehrplan und Jahresplan 2026-2027 der Koranschule Ulu Camii: 87 Unterrichtstage, 261 Lektionen, fünf Fächer.',
+  not: 'Das vollständige Dokument ist auf Türkisch, der Unterrichtssprache. Die wichtigsten Angaben, die Aufteilung der Fächer und der Monatsüberblick werden auf Deutsch gegeben; bei Fragen wenden Sie sich an den Imam.',
+  ozet: [
+    ['Unterrichtsbeginn', 'Samstag, 5. September 2026'], ['Unterrichtsende', 'Sonntag, 6. Juni 2027'],
+    ['Unterrichtstage', 'Samstag und Sonntag · während der Schulferienwochen auch montags'],
+    ['Winter-/Sommerzeiten', '10:00–12:40 Uhr · 11:00–13:40 Uhr'], ['Insgesamt', '87 Unterrichtstage · 261 Lektionen'],
+  ],
+  sonrakiEt: 'Nächster Unterrichtstag', bitti: 'Schuljahr beendet', bugunEt: 'heute',
+  icindekiler: 'Inhalt', tocAlt: 'Zum Abschnitt gehen',
+  pdf: 'PDF herunterladen', pdfAlt: (s: number, mb: string) => `A4 · ${s} Seiten · ${mb} MB`, yazdir: 'Druckbare Version',
+  kayit: 'Anmeldeseite', surum: 'Version des Dokuments',
+  kitapNot: 'Die Lehrbücher werden von den Eltern besorgt', kitapBag: 'wo erhältlich', kitapCapa: '#manuels',
+  dagilimBaslik: 'Aufteilung der Fächer',
+  dagilimAlt: `Wie sich die ${toplamSaat} Lektionen des Jahres auf die Fächer verteilen. Sonderprogramm: Ramadan (2.6) und der Vorabend des Opferfests (2.7).`,
+  saat: 'Lektionen', genel: 'allgemein', ozel: 'speziell',
+  alanAd: { kuran: 'Koran', itikat: 'Glaubenslehre', ibadet: 'Gottesdienst', siyer: 'Sīra', ahlak: 'Moral' } as Record<Kod, string>,
+  ayGiris: 'Die Unterrichtstage, Ferien und Sonderprogramme jedes Monats auf einen Blick. Für die Themen, Quellen und Lernziele Stunde für Stunde öffnen Sie die Tag-für-Tag-Seite; ein Antippen eines Tages öffnet diesen Tag.',
+  dersGunu: (n: number) => `${n} Unterrichtstag${n === 1 ? '' : 'e'}`, ders: (n: number) => `${n} Lektion${n === 1 ? '' : 'en'}`,
+  pazartesi: (n: number) => `Zusätzlicher Montag ×${n}`,
+  saatGecis: (mod: string, d: string) => `${mod} ab ${d}`,
+  gunGun: 'Tag für Tag ansehen', buAy: 'Diesen Monat', gecti: 'vergangen', dersYok: 'kein Unterricht',
+  lejant: [['Samstag / Sonntag', 'g-normal'], ['zusätzlicher Montag', 'g-pazartesi'], ['Ramadanprogramm', 'g-ramazan'], ['Opferfest / kein Unterricht', 'g-tatil']],
+  planCta: 'Jahresplan Tag für Tag',
+  planCtaAlt: 'Uhrzeiten, Themen, Quellen und Lernziele jedes Unterrichtstages, mit Filtern nach Monat und Fach.',
+  },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
 const SAAT_MODU: Record<string, Record<Dil, string>> = {
-  'Kış saati': { tr: 'Kış saati', fr: 'Horaire d’hiver', en: 'Winter hours' },
-  'Yaz saati': { tr: 'Yaz saati', fr: 'Horaire d’été', en: 'Summer hours' },
+  'Kış saati': { tr: 'Kış saati', fr: 'Horaire d’hiver', en: 'Winter hours', nl: 'Winteruren', de: 'Winterzeiten' },
+  'Yaz saati': { tr: 'Yaz saati', fr: 'Horaire d’été', en: 'Summer hours', nl: 'Zomeruren', de: 'Sommerzeiten' },
 };
 
 type AyGun = { tarih: string; tur: 'normal' | 'pazartesi' | 'ramazan' | 'tatil'; ad: string; gecti: boolean; bugun: boolean; dersYok: boolean };
@@ -209,7 +269,7 @@ for (const g of gunler) {
   const tur: AyGun['tur'] = !dersVar ? 'tatil' : g.rozetler.some((r) => r.tur === 'ramazan') ? 'ramazan' : g.gun === 'Pazartesi' ? 'pazartesi' : 'normal';
   ay.gunler.push({ tarih: g.tarih, tur, ad: bicim(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }), gecti: g.tarih < bugun, bugun: g.tarih === bugun, dersYok: !dersVar });
 }
-const mbBicim = new Intl.NumberFormat(yerel, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(meta.pdfKB / 1024);
+const mbBicim = new Intl.NumberFormat(yerelKodu[dil], { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(meta.pdfKB / 1024);
 const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <Base baslik={m.baslik} dil={dil} aciklama={m.aciklama}>

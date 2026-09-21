@@ -26,6 +26,7 @@
 import veri from '../data/diyanet-yayinlar.json';
 import KitapSatiri from './KitapSatiri.astro';
 import type { Kitap } from './KitapSatiri.astro';
+import { yerelKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 
 interface Props {
@@ -36,7 +37,15 @@ interface Props {
 }
 const { dil, sayfaModu = false } = Astro.props;
 
-const M = {
+type TemaAnahtari = 'baslangic' | 'ibadet' | 'hadis' | 'aile' | 'derinlesme' | 'cocuk' | 'istismar';
+type KitaplikMetni = {
+  etiket: string; baslik: string; giris: string; ara: string; dilSerit: string; tumu: string;
+  dahaFazla: (n: number) => string; bulunanTek: string; bulunanCok: string; sizinDil: string;
+  araYer: string; sonucYok: string; adet: (n: number) => string; toplam: (n: number, d: number) => string;
+  sayfaKisa: string; pdfAc: string; epub: string; kunye: string; dis: string; kaynakNot: string;
+  gruplar: Record<TemaAnahtari, string>;
+};
+const M: Record<Dil, KitaplikMetni> = {
   tr: {
     etiket: 'Ücretsiz kütüphane',
     baslik: 'Diyanet Yayınları — Ücretsiz Kütüphane',
@@ -109,7 +118,55 @@ const M = {
       istismar: 'Religion, extremism and terrorism',
     },
   },
-} as const;
+  nl: {
+    etiket: 'Gratis bibliotheek',
+    baslik: 'Uitgaven van het Diyanet — gratis bibliotheek',
+    giris:
+      'De gratis e-boeken van het Presidium voor Religieuze Zaken: brochures die de islam voorstellen, een gids voor de eredienst, bundels met veertig hadith, fatwa’s en schoolboeken. De bestanden blijven op de server van het Diyanet staan en worden van daaruit rechtstreeks geopend.',
+    ara: 'Zoeken in de bibliotheek',
+    dilSerit: 'Talen',
+    tumu: 'Alle uitgaven',
+    dahaFazla: (n: number) => `${n} uitgaven meer tonen`,
+    bulunanTek: '{n} uitgave gevonden', bulunanCok: '{n} uitgaven gevonden',
+    sizinDil: 'taal van de pagina',
+    araYer: 'Titel, thema of taal — bv. gebed, Koran, gezin…',
+    sonucYok: 'Geen uitgave komt overeen met uw zoekopdracht.',
+    adet: (n: number) => `${n} uitgave${n > 1 ? 'n' : ''}`,
+    toplam: (n: number, d: number) => `${n} uitgaven · ${d} talen`,
+    sayfaKisa: 'pagina’s', pdfAc: 'Lezen (pdf)', epub: 'Downloaden (EPUB)', kunye: 'Diyanet-fiche', dis: 'opent in een nieuw tabblad',
+    kaynakNot:
+      'Bron: dijital.diyanet.gov.tr — Presidium voor Religieuze Zaken (Diyanet). De bestanden blijven op de server van het Diyanet staan en wij bewaren er geen kopie van: “Lezen (pdf)” opent het document in de lezer van uw browser (met de downloadknop daar of Ctrl+S bewaart u het), “Downloaden (EPUB)” downloadt het rechtstreeks. De links zijn op {tarih} gecontroleerd; laat het ons weten als een link niet meer werkt.',
+    gruplar: {
+      baslangic: 'Om te beginnen', ibadet: 'Leren praktiseren', hadis: 'Bundels met veertig hadith',
+      aile: 'Gezin en dagelijks leven', derinlesme: 'Om te verdiepen', cocuk: 'Voor kinderen',
+      istismar: 'Religie, extremisme en terrorisme',
+    },
+  },
+  de: {
+    etiket: 'Kostenlose Bibliothek',
+    baslik: 'Veröffentlichungen des Diyanet — kostenlose Bibliothek',
+    giris:
+      'Die kostenlosen E-Books des Präsidiums für Religiöse Angelegenheiten: Broschüren, die den Islam vorstellen, ein Leitfaden zum Gottesdienst, Sammlungen von vierzig Hadithen, Fatwas und Schulbücher. Die Dateien bleiben auf dem Server des Diyanet und werden von dort direkt geöffnet.',
+    ara: 'In der Bibliothek suchen',
+    dilSerit: 'Sprachen',
+    tumu: 'Alle Veröffentlichungen',
+    dahaFazla: (n: number) => `${n} weitere Veröffentlichungen anzeigen`,
+    bulunanTek: '{n} Veröffentlichung gefunden', bulunanCok: '{n} Veröffentlichungen gefunden',
+    sizinDil: 'Sprache der Seite',
+    araYer: 'Titel, Thema oder Sprache — z. B. Gebet, Koran, Familie…',
+    sonucYok: 'Keine Veröffentlichung entspricht Ihrer Suche.',
+    adet: (n: number) => `${n} Veröffentlichung${n > 1 ? 'en' : ''}`,
+    toplam: (n: number, d: number) => `${n} Veröffentlichungen · ${d} Sprachen`,
+    sayfaKisa: 'Seiten', pdfAc: 'Lesen (PDF)', epub: 'Herunterladen (EPUB)', kunye: 'Diyanet-Seite', dis: 'öffnet in einem neuen Tab',
+    kaynakNot:
+      'Quelle: dijital.diyanet.gov.tr — Präsidium für Religiöse Angelegenheiten (Diyanet). Die Dateien bleiben auf dem Server des Diyanet und wir bewahren keine Kopie auf: „Lesen (PDF)“ öffnet das Dokument im Betrachter Ihres Browsers (mit dessen Download-Schaltfläche oder Strg+S speichern Sie es), „Herunterladen (EPUB)“ lädt es direkt herunter. Die Links wurden am {tarih} geprüft; bitte melden Sie uns jeden Link, der nicht mehr funktioniert.',
+    gruplar: {
+      baslangic: 'Für den Anfang', ibadet: 'Die Praxis lernen', hadis: 'Sammlungen von vierzig Hadithen',
+      aile: 'Familie und Alltag', derinlesme: 'Zum Vertiefen', cocuk: 'Für Kinder',
+      istismar: 'Religion, Extremismus und Terrorismus',
+    },
+  },
+};
 
 const m = M[dil];
 const yayinlar = veri.yayinlar as Kitap[];
@@ -120,7 +177,7 @@ const ONCELIK = ['fr', 'nl', 'en', 'de', 'ar', 'tr', 'es', 'it'];
 const dilSirasi = (kod: string) => (kod === dil ? -1 : ONCELIK.indexOf(kod) === -1 ? 99 : ONCELIK.indexOf(kod));
 
 /* Yalnız Fransızca yayınlar konu konu kümelenmiştir (`grup` alanı); diğer diller tek liste. */
-const TEMA_SIRA = ['baslangic', 'ibadet', 'hadis', 'aile', 'cocuk', 'derinlesme', 'istismar'] as const;
+const TEMA_SIRA: readonly TemaAnahtari[] = ['baslangic', 'ibadet', 'hadis', 'aile', 'cocuk', 'derinlesme', 'istismar'];
 
 const dilKumeleri = veri.diller
   .map((d) => ({ ...d, kitaplar: yayinlar.filter((y) => y.dilKodu === d.kod) }))
@@ -141,7 +198,7 @@ const temaliKume = (kitaplar: Kitap[]) => {
   return { gruplu, kalan };
 };
 
-const tarihMetni = new Intl.DateTimeFormat(dil === 'tr' ? 'tr-TR' : dil === 'fr' ? 'fr-BE' : 'en-GB', {
+const tarihMetni = new Intl.DateTimeFormat(yerelKodu[dil], {
   day: 'numeric', month: 'long', year: 'numeric',
 }).format(new Date(veri.guncelleme + 'T12:00:00Z'));
 ---

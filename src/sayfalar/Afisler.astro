@@ -5,44 +5,58 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, tarihBicimle, yol } from '../i18n/utils';
 import { yollar } from '../i18n/ui';
+import { icerikDili } from '../lib/icerik';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
-const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
+const icDil = icerikDili(dil); // içerik alanları yalnız tr/fr — diğer dillerde Fransızcaya düş
 
 const hepsi = await getCollection('afisler', ({ data }) => !data.taslak);
 const liste = hepsi.sort((a, b) => b.data.tarih.getTime() - a.data.tarih.getTime());
 
 const KATEGORI: Record<string, Record<Dil, string>> = {
-  kampanya: { tr: 'Kampanya', fr: 'Campagne', en: 'Campaign' },
-  program: { tr: 'Program', fr: 'Programme', en: 'Programme' },
-  egitim: { tr: 'Eğitim', fr: 'Éducation', en: 'Education' },
-  'hac-umre': { tr: 'Hac ve Umre', fr: 'Hajj et Omra', en: 'Hajj and Omra' },
-  kurban: { tr: 'Kurban', fr: 'Sacrifice (Kurban)', en: 'Sacrifice (Kurban)' },
-  zekat: { tr: 'Zekât ve Fitre', fr: 'Zakât et Fitre', en: 'Zakât and Fitr' },
-  cenaze: { tr: 'Cenaze', fr: 'Funérailles', en: 'Funerals' },
-  ramazan: { tr: 'Ramazan', fr: 'Ramadan', en: 'Ramadan' },
-  diger: { tr: 'Diğer', fr: 'Autre', en: 'Other' },
+  kampanya: { tr: 'Kampanya', fr: 'Campagne', en: 'Campaign', nl: 'Campagne', de: 'Kampagne' },
+  program: { tr: 'Program', fr: 'Programme', en: 'Programme', nl: 'Programma', de: 'Programm' },
+  egitim: { tr: 'Eğitim', fr: 'Éducation', en: 'Education', nl: 'Onderwijs', de: 'Bildung' },
+  'hac-umre': { tr: 'Hac ve Umre', fr: 'Hajj et Omra', en: 'Hajj and Omra', nl: 'Hadj en Omra', de: 'Hadsch und Omra' },
+  kurban: { tr: 'Kurban', fr: 'Sacrifice (Kurban)', en: 'Sacrifice (Kurban)', nl: 'Offer (Kurban)', de: 'Opfer (Kurban)' },
+  zekat: { tr: 'Zekât ve Fitre', fr: 'Zakât et Fitre', en: 'Zakât and Fitr', nl: 'Zakat en Zakat al-Fitr (Fitre)', de: 'Zakat und Zakat al-Fitr (Fitre)' },
+  cenaze: { tr: 'Cenaze', fr: 'Funérailles', en: 'Funerals', nl: 'Uitvaart', de: 'Bestattung' },
+  ramazan: { tr: 'Ramazan', fr: 'Ramadan', en: 'Ramadan', nl: 'Ramadan', de: 'Ramadan' },
+  diger: { tr: 'Diğer', fr: 'Autre', en: 'Other', nl: 'Overige', de: 'Sonstiges' },
 };
 const KAYNAK: Record<string, Record<Dil, string>> = {
-  ulucamii: { tr: 'Ulu Camii', fr: 'Ulu Camii', en: 'Ulu Camii' },
-  bdv: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium' },
-  diyanet: { tr: 'Diyanet İşleri Başkanlığı', fr: 'Présidence des Affaires religieuses', en: 'Presidency of Religious Affairs' },
-  diger: { tr: 'Diğer kaynak', fr: 'Autre source', en: 'Other source' },
+  ulucamii: { tr: 'Ulu Camii', fr: 'Ulu Camii', en: 'Ulu Camii', nl: 'Ulu Camii', de: 'Ulu Camii' },
+  bdv: { tr: 'Belçika Diyanet Vakfı', fr: 'Fondation Diyanet de Belgique', en: 'Diyanet Foundation of Belgium', nl: 'Belgische Diyanetstichting', de: 'Belgische Diyanet-Stiftung' },
+  diyanet: { tr: 'Diyanet İşleri Başkanlığı', fr: 'Présidence des Affaires religieuses', en: 'Presidency of Religious Affairs', nl: 'Directoraat voor Godsdienstzaken (Diyanet)', de: 'Präsidium für Religiöse Angelegenheiten (Diyanet)' },
+  diger: { tr: 'Diğer kaynak', fr: 'Autre source', en: 'Other source', nl: 'Andere bron', de: 'Andere Quelle' },
 };
 
 const kategoriler = [...new Set(liste.map((a) => a.data.kategori))].sort((a, b) => (KATEGORI[a]?.[dil] ?? a).localeCompare(KATEGORI[b]?.[dil] ?? b, dil));
 
-const m = dil === 'tr' ? {
-  altBaslik: 'Camimizin kampanya ve program afişleri; Belçika Diyanet Vakfı’nın hac, umre, kurban, zekât-fitre ve eğitim afişlerinden bir seçki. Bir afişe dokunarak büyütebilirsiniz.',
-  hepsi: 'Tümü', dis: 'Bağlantı ↗', sayfa: 'Sayfaya git →',
-} : dil === 'en' ? {
-  altBaslik: 'Campaign and programme posters from our mosque, alongside a selection of posters from the Diyanet Foundation of Belgium (hajj, omra, sacrifice, zakât-fitre, education). Tap a poster to enlarge it.',
-  hepsi: 'All', dis: 'Link ↗', sayfa: 'Go to page →',
-} : {
-  altBaslik: 'Affiches de campagnes et de programmes de notre mosquée, ainsi qu’une sélection d’affiches de la Fondation Diyanet de Belgique (hajj, omra, sacrifice, zakât-fitre, éducation). Touchez une affiche pour l’agrandir.',
-  hepsi: 'Toutes', dis: 'Lien ↗', sayfa: 'Voir la page →',
+const M: Record<Dil, { altBaslik: string; hepsi: string; dis: string; sayfa: string }> = {
+  tr: {
+    altBaslik: 'Camimizin kampanya ve program afişleri; Belçika Diyanet Vakfı’nın hac, umre, kurban, zekât-fitre ve eğitim afişlerinden bir seçki. Bir afişe dokunarak büyütebilirsiniz.',
+    hepsi: 'Tümü', dis: 'Bağlantı ↗', sayfa: 'Sayfaya git →',
+  },
+  fr: {
+    altBaslik: 'Affiches de campagnes et de programmes de notre mosquée, ainsi qu’une sélection d’affiches de la Fondation Diyanet de Belgique (hajj, omra, sacrifice, zakât-fitre, éducation). Touchez une affiche pour l’agrandir.',
+    hepsi: 'Toutes', dis: 'Lien ↗', sayfa: 'Voir la page →',
+  },
+  en: {
+    altBaslik: 'Campaign and programme posters from our mosque, alongside a selection of posters from the Diyanet Foundation of Belgium (hajj, omra, sacrifice, zakât-fitre, education). Tap a poster to enlarge it.',
+    hepsi: 'All', dis: 'Link ↗', sayfa: 'Go to page →',
+  },
+  nl: {
+    altBaslik: 'Campagne- en programma-affiches van onze moskee, samen met een selectie affiches van de Belgische Diyanetstichting (hadj, omra, offer, zakat-fitre, onderwijs). Tik op een affiche om ze te vergroten.',
+    hepsi: 'Alle', dis: 'Link ↗', sayfa: 'Naar de pagina →',
+  },
+  de: {
+    altBaslik: 'Kampagnen- und Programmplakate unserer Moschee sowie eine Auswahl an Plakaten der Belgischen Diyanet-Stiftung (Hadsch, Omra, Opfer, Zakat-Fitre, Bildung). Tippen Sie auf ein Plakat, um es zu vergrößern.',
+    hepsi: 'Alle', dis: 'Link ↗', sayfa: 'Zur Seite →',
+  },
 };
+const m = M[dil];
 ---
 <Base baslik={t('nav.afisler')} kapak={liste[0]?.data.gorsel} dil={dil} aciklama={m.altBaslik}>
   <SayfaBasligi etiket={t('nav.afisler')} baslik={t('nav.afisler')} altBaslik={m.altBaslik} />

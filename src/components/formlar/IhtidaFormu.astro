@@ -22,6 +22,12 @@ const waSite = whatsapp ? { whatsapp } : null;
 const m = formMetinleri(dil);
 const h = m.ihtida, o = m.ortak;
 const adimMetin = ihtidaAdimMetinleri[dil];
+const camiMetin = camiMetinleri[dil];
+/** Tören dili arka uçta yalnız tr|fr|en|ar olabilir (Apps Script TOREN_DILLERI_GECERLI);
+    nl/de bu listeye EKLENMEZ. Sayfa dili nl/de ise hiçbir seçenek önceden işaretlenmez,
+    ziyaretçi tören dilini kendisi seçer. */
+const torenDiliOnSecim: Record<Dil, 'tr' | 'fr' | 'en' | ''> = { tr: 'tr', fr: 'fr', en: 'en', nl: '', de: '' };
+const torenOn = torenDiliOnSecim[dil];
 
 const bugun = new Date();
 const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
@@ -219,9 +225,9 @@ const gorselKutulari = [
         <label for="i-toren-dili">{h.ihtida.torenDili} <span class="zorunlu" aria-hidden="true">*</span></label>
         <select id="i-toren-dili" name="basvuran.torenDili" required>
           <option value="">{o.seciniz}</option>
-          <option value="fr" selected={dil === 'fr'}>{h.ihtida.dilFr}</option>
-          <option value="tr" selected={dil === 'tr'}>{h.ihtida.dilTr}</option>
-          <option value="en" selected={dil === 'en'}>{h.ihtida.dilEn}</option>
+          <option value="fr" selected={torenOn === 'fr'}>{h.ihtida.dilFr}</option>
+          <option value="tr" selected={torenOn === 'tr'}>{h.ihtida.dilTr}</option>
+          <option value="en" selected={torenOn === 'en'}>{h.ihtida.dilEn}</option>
           <option value="ar">{h.ihtida.dilAr}</option>
         </select>
         <p class="hata" aria-live="polite" hidden></p>
@@ -384,7 +390,7 @@ const gorselKutulari = [
     <p class="bolum-not">{o.ozetAciklama}</p>
     <dl class="ozet-liste" data-ozet>
       {([
-        ['cami', camiMetinleri[dil].baslik, '#b-cami'],
+        ['cami', camiMetin.baslik, '#b-cami'],
         ['kisi', h.ozet.kisi, '#b-kisi'], ['dogum', h.ozet.dogum, '#b-kisi'], ['uyruk', h.ozet.uyruk, '#b-kisi'], ['aile', h.ozet.aile, '#b-kisi'],
         ['durum', h.ozet.durum, '#b-durum'], ['iletisim', h.ozet.iletisim, '#b-iletisim'], ['din', h.ozet.din, '#b-ihtida'],
         ['teslimat', h.teslimat.baslik, '#b-iletisim'],

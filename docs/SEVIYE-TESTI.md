@@ -56,16 +56,32 @@ Okuma merdiveni: K1 harfleri tanıma (3 gör + 3 dinle) · K2 harfin başta/orta
 ## 4. Veri sözleşmesi (istemci → Apps Script, `tur: "seviye"`)
 
 ```
-{ tur:'seviye', sir, formSurumu:1, dil, gonderimAnahtari, bankaSurumu, rizaSurumu,
+{ tur:'seviye', sir, formSurumu:2, dil /* tr|fr|en|nl|de */, gonderimAnahtari, bankaSurumu, rizaSurumu,
   profil:{ adSoyad, eposta, telefon?, yasAraligi, cinsiyet, muslumanlik, oncekiEgitim, hedefler[], dersDili,
            gunler[], dilim[], bicim, not? },
-  onay:{ yas18:true, riza:true },
+  yerel:{ ulke, sehir, camiBiliyor:'evet'|'hayir', yakinCami?, gorevliTaniyor:'evet'|'hayir', ateselikBilgisi:'evet'|'hayir' },
+  onay:{ yas18:true, riza:true, yerelGorevli?:boolean, ateselik?:boolean },
   atla:{ okuma?, kuranBilgi?, itikat?, namaz?, ibadet?, siyer?, ahlak? },
   cevaplar:{ <maddeId>: 0..n-1 | -1 }, ezber:{ <id>: 0|1|2 }, beyan:{ <id>: 0..n-1 },
   meta:{ sureSn } }
 ```
 Sunucu yetkilidir: kimlikleri ve şık sıralarını bankaya göre doğrular, puanı kendisi hesaplar, yanıtta `sonuc` döner.
 Sayfanın derlenmiş HTML'inde doğru cevap ve kaynak bulunmaz. Gövde < 20 KiB. Referans `ST-YYYY-NNNN`.
+
+**Form sürümü 2 — «Nereden başvuruyorsunuz?» (21 Eyl 2026, Apps Script v39).** Karar (Rıdvan): teste Avrupa'nın her yerinden
+girilebilir; eğitim planlaması katılımcıya en yakın yerde yapılabilmelidir. `yerel` bloğu zorunludur (değer listeleri, sınırlar ve beş
+dilde ülke adları tek kaynak: `src/lib/seviye-testi/yerel.ts`; arayüz metinleri `src/i18n/seviye-yerel.ts`). İki paylaşım onayı
+(`onay.yerelGorevli`: en yakın Diyanet camisinin din görevlisi · `onay.ateselik`: ülkedeki Din Hizmetleri Müşavirliği / Ataşeliği)
+**isteğe bağlıdır**: işaretsiz gelir, taslağa yazılmaz, gönderim şartı değildir; yalnız boolean kabul edilir. Defterde sekiz yeni sütun
+SONA eklendi (Ülke … Ataşelik onayı); onay hücresinde boş = «sorulmadı» (sürüm 1), «Hayır» = «sorulup verilmedi». Hoca raporu ve panel
+ayrıntısı «Yer ve yerel destek» bölümünü, onayları büyük harfle ve — onay eksikse — «onay verilmeyen paylaşım YAPILMAZ» uyarısını
+gösterir; katılımcı e-postasında bu döküm yoktur. Paylaşımı din görevlisi tek tek ve elle yapar; otomatik aktarım YOKTUR. Sürüm 1
+gövdeler yalnız dağıtım geçişinde (eski sayfa önbelleği) kabul edilir. Gizlilik bildirimi (beş dil) ve rıza arşivi (sürüm 2026-09-21)
+buna göre güncellendi.
+
+**Diller (21 Eyl 2026).** Test sitenin beş dilinde çalışır (tr, fr, en, nl, de): banka, arayüz, sonuç ekranı ve katılımcı e-postası.
+Hoca raporu her zaman Türkçedir. `profil.dersDili` (din görevlisinin ders verebildiği diller: tr, fr, en) bilerek genişletilmedi.
+Çeviri kuralları: `docs/DIL-NL-DE.md`.
 
 ## 5. Soru yazım kılavuzu (içerik yazarları için — bağlayıcı)
 

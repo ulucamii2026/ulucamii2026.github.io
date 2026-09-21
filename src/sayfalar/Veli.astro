@@ -27,7 +27,7 @@ const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
 const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
 const hadisSesleri = Object.fromEntries(['ar', 'tr', 'fr', 'en'].map((d) => [d, AHLAK_HADISLERI.filter((h) => existsSync(`public/media/ses/hadisler/${d}/${h.id}.mp3`)).map((h) => h.id)]));
 const veri = { donem: (plan as { donem: string }).donem, gunler, hadisSesleri, materyalGunleri, materyalYolu: yol(dil, 'dersmateryalleri'), gizlilikYolu: yol(dil, 'gizlilik'), kursYolu: yol(dil, 'kurankursu'),
-  dilYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli') } };
+  dilYollari: { tr: yol('tr', 'veli'), fr: yol('fr', 'veli'), en: yol('en', 'veli'), nl: yol('nl', 'veli'), de: yol('de', 'veli') } };
 ---
 <Base baslik={t('nav.veli')} dil={dil} aciklama={m.altBaslik} noindex>
   {/* Portal telefona kurulabilir olsun: her dilin kendi manifesti (start_url + kapsam o dilin yolu). */}
@@ -44,7 +44,7 @@ const veri = { donem: (plan as { donem: string }).donem, gunler, hadisSesleri, m
     <div id="veli-durum" role="status" aria-live="polite" class="ekran-okuyucu"></div>
     <div id="veli-portal" data-dil={dil} class="portal">
       <p class="not">{m.yukleniyor}</p>
-      <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript.</p></noscript>
+      <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript. · Deze pagina vereist JavaScript. · Diese Seite benötigt JavaScript.</p></noscript>
     </div>
     <script is:inline type="application/json" id="veli-veri" set:html={JSON.stringify(veri)} />
     <p class="alt-baglantilar">

@@ -10,19 +10,34 @@ interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
 const liste = await duyurular(dil);
 const yillar = [...new Set(liste.map((d) => d.data.tarih.getFullYear()))].sort((a, b) => b - a);
-const altBaslik = dil === 'tr' ? 'Camimizden haberler, duyurular ve bilgilendirmeler — Facebook sayfamızdaki geçmiş duyurular da arşiv olarak burada.' : dil === 'en' ? 'News, announcements and information from our mosque — past announcements from our Facebook page are also archived here.' : 'Nouvelles, annonces et informations de la mosquée — les anciennes annonces de notre page Facebook sont archivées ici.';
-const arsivNot = dil === 'tr' ? 'Arşiv' : dil === 'en' ? 'Archive' : 'Archives';
-const enNotu = 'Announcements are published in Turkish and French. An English version is not available.';
+/* Duyuru arşivi yalnız TR+FR yayımlanır: en/nl/de ziyaretçisi Fransızca kartları görür ve
+   bunu kendi dilinde yazan bir not okur (bkz. icerikDili, docs/DIL-NL-DE.md). */
+const M = {
+  tr: { alt: 'Camimizden haberler, duyurular ve bilgilendirmeler — Facebook sayfamızdaki geçmiş duyurular da arşiv olarak burada.', arsiv: 'Arşiv',
+        aciklama: 'Marche-en-Famenne Ulu Camii’nden güncel duyurular: program ve etkinlik haberleri, kayıt dönemleri ve vefat ilanları.', dilNotu: '' },
+  fr: { alt: 'Nouvelles, annonces et informations de la mosquée — les anciennes annonces de notre page Facebook sont archivées ici.', arsiv: 'Archives',
+        aciklama: 'Annonces de la Mosquée Ulu Camii de Marche-en-Famenne : programmes, activités, périodes d’inscription et avis de décès.', dilNotu: '' },
+  en: { alt: 'News, announcements and information from our mosque — past announcements from our Facebook page are also archived here.', arsiv: 'Archive',
+        aciklama: 'News and announcements from the Ulu Mosque of Marche-en-Famenne: programmes, activities, registration periods and obituaries.',
+        dilNotu: 'Announcements are published in Turkish and French. An English version is not available.' },
+  nl: { alt: 'Nieuws, mededelingen en informatie van onze moskee — ook de oudere berichten van onze Facebookpagina staan hier in het archief.', arsiv: 'Archief',
+        aciklama: 'Actuele mededelingen van de moskee Ulu Camii in Marche-en-Famenne: programma’s en activiteiten, inschrijvingsperiodes en overlijdensberichten.',
+        dilNotu: 'Mededelingen worden in het Turks en het Frans gepubliceerd. Er is geen Nederlandse versie beschikbaar.' },
+  de: { alt: 'Nachrichten, Mitteilungen und Informationen aus unserer Moschee — auch die älteren Beiträge unserer Facebook-Seite sind hier archiviert.', arsiv: 'Archiv',
+        aciklama: 'Aktuelle Mitteilungen der Moschee Ulu Camii in Marche-en-Famenne: Programme und Veranstaltungen, Anmeldezeiträume und Todesanzeigen.',
+        dilNotu: 'Mitteilungen werden auf Türkisch und Französisch veröffentlicht. Eine deutsche Fassung ist nicht verfügbar.' },
+} satisfies Record<Dil, unknown>;
+const m = M[dil];
 ---
-<Base baslik={t('nav.duyurular')} dil={dil} aciklama={dil === 'tr' ? 'Marche-en-Famenne Ulu Camii’nden güncel duyurular: program ve etkinlik haberleri, kayıt dönemleri ve vefat ilanları.' : dil === 'en' ? 'News and announcements from the Ulu Mosque of Marche-en-Famenne: programmes, activities, registration periods and obituaries.' : 'Annonces de la Mosquée Ulu Camii de Marche-en-Famenne : programmes, activités, périodes d’inscription et avis de décès.'}>
-  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.duyurular')} altBaslik={altBaslik} />
+<Base baslik={t('nav.duyurular')} dil={dil} aciklama={m.aciklama}>
+  <SayfaBasligi etiket={t('site.kisa')} baslik={t('nav.duyurular')} altBaslik={m.alt} />
   <div class="kapsayici py-10">
-    {dil === 'en' && <p class="bilgi mb-6 text-sm">{enNotu}</p>}
+    {m.dilNotu && <p class="bilgi mb-6 text-sm">{m.dilNotu}</p>}
     {liste.length === 0 && <p class="text-(--metin-2)">{t('duyuru.bos')}</p>}
     <YilFiltresi yillar={yillar} dil={dil} />
     {yillar.map((y, idx) => (
       <section id={`yil-${y}`} data-yil={y} class="[&:not([hidden])~&:not([hidden])]:mt-12">
-        <h2 class="etiket etiket-vurgu text-base cetvel pt-3 mb-4">{y}{idx > 0 && <span class="ml-2 text-(--metin-2)">· {arsivNot}</span>}</h2>
+        <h2 class="etiket etiket-vurgu text-base cetvel pt-3 mb-4">{y}{idx > 0 && <span class="ml-2 text-(--metin-2)">· {m.arsiv}</span>}</h2>
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {liste.filter((d) => d.data.tarih.getFullYear() === y).map((d, i) => <DuyuruKarti dil={dil} slug={d.slug} baslik={d.data.baslik} tarih={d.data.tarih} ozet={d.data.ozet} kapak={d.data.kapak} kapakKucuk={d.data.kapakKucuk} kapakAlt={d.data.kapakAlt} etiketler={d.data.etiketler} sira={i} />)}
         </div>

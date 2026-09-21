@@ -3,22 +3,25 @@ import { Image } from 'astro:assets';
 import IcerikSayfasi from '../components/IcerikSayfasi.astro';
 import { ceviri, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
-import { siteAyarlari, galeri } from '../lib/icerik';
+import { siteAyarlari, galeri, icerikDili } from '../lib/icerik';
 import icMekan from '../assets/foto/ic-mekan.jpg';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
-const icDil = (dil === 'en' ? 'fr' : dil) as 'tr' | 'fr'; // içerik alanları yalnız tr/fr — İngilizcede Fransızcaya düş
+const icDil = icerikDili(dil); // fotoğraf açıklamaları yalnız tr/fr — en/nl/de Fransızcaya düşer
 const site = await siteAyarlari();
 const fotolar = (await galeri()).slice(2, 8);
-const m = dil === 'tr'
-  ? { kunye: 'Kısa künye', kurulus: 'Dernek kuruluşu', bina: 'Cami binası', taninma: 'Valon Bölgesi tarafından tanınmış ibadet topluluğu', bagli: 'Belçika Diyanet Vakfı’na bağlı', foto: 'Camimizden kareler', galeri: 'Galeriye git' }
-  : dil === 'en'
-  ? { kunye: 'At a glance', kurulus: 'Association founded', bina: 'Mosque building', taninma: 'Place of worship recognised by the Walloon Region', bagli: 'Affiliated with the Diyanet Foundation of Belgium', foto: 'Views of our mosque', galeri: 'Go to gallery' }
-  : { kunye: 'En bref', kurulus: 'Fondation de l’association', bina: 'Bâtiment de la mosquée', taninma: 'Communauté cultuelle reconnue par la Région wallonne', bagli: 'Affiliée à la Fondation Diyanet de Belgique', foto: 'Images de la mosquée', galeri: 'Voir la galerie' };
+const M = {
+  tr: { kunye: 'Kısa künye', kurulus: 'Dernek kuruluşu', bina: 'Cami binası', taninma: 'Valon Bölgesi tarafından tanınmış ibadet topluluğu', bagli: 'Belçika Diyanet Vakfı’na bağlı', foto: 'Camimizden kareler', galeri: 'Galeriye git', icAlt: 'Ulu Camii iç mekânı' },
+  fr: { kunye: 'En bref', kurulus: 'Fondation de l’association', bina: 'Bâtiment de la mosquée', taninma: 'Communauté cultuelle reconnue par la Région wallonne', bagli: 'Affiliée à la Fondation Diyanet de Belgique', foto: 'Images de la mosquée', galeri: 'Voir la galerie', icAlt: 'Intérieur de la mosquée' },
+  en: { kunye: 'At a glance', kurulus: 'Association founded', bina: 'Mosque building', taninma: 'Place of worship recognised by the Walloon Region', bagli: 'Affiliated with the Diyanet Foundation of Belgium', foto: 'Views of our mosque', galeri: 'Go to gallery', icAlt: 'Interior of the mosque' },
+  nl: { kunye: 'In het kort', kurulus: 'Oprichting van de vereniging', bina: 'Gebouw van de moskee', taninma: 'Door het Waals Gewest erkende geloofsgemeenschap', bagli: 'Aangesloten bij de Belgische Diyanetstichting', foto: 'Beelden van onze moskee', galeri: 'Naar de galerij', icAlt: 'Interieur van de moskee' },
+  de: { kunye: 'Kurz gefasst', kurulus: 'Gründung des Vereins', bina: 'Moscheegebäude', taninma: 'Von der Wallonischen Region anerkannte Kultusgemeinschaft', bagli: 'Der Belgischen Diyanet-Stiftung angeschlossen', foto: 'Bilder aus unserer Moschee', galeri: 'Zur Galerie', icAlt: 'Innenraum der Moschee' },
+} satisfies Record<Dil, unknown>;
+const m = M[dil];
 ---
 <IcerikSayfasi dil={dil} anahtar="hakkimizda" etiket={t('nav.hakkimizda')}>
   <div slot="yan" class="gorsel-cerceve">
-    <Image src={icMekan} alt={dil === 'tr' ? 'Ulu Camii iç mekânı' : dil === 'en' ? 'Interior of the mosque' : 'Intérieur de la mosquée'} widths={[360, 720]} sizes="360px" loading="lazy" />
+    <Image src={icMekan} alt={m.icAlt} widths={[360, 720]} sizes="360px" loading="lazy" />
   </div>
   <div slot="yan" class="kart p-5 grid gap-3 text-sm">
     <p class="etiket etiket-vurgu">{m.kunye}</p>
