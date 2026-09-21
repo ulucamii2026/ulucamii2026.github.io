@@ -58,7 +58,7 @@
 /* İlerleme: yeri baştan ayrılmıştır, çalmaya başlayınca hiçbir şey yer değiştirmez. */
 .ec-ilerleme { margin-top: .6rem; }
 .ec-cubuk { height: 6px; border-radius: 999px; background: var(--zemin-3); overflow: hidden; }
-.ec-cubuk > span { display: block; width: 0; height: 100%; background: var(--vurgu); transition: width .2s linear; }
+.ec-cubuk > span { display: block; width: 0; height: 100%; background: var(--vurgu); }
 .ec-sure { display: flex; justify-content: space-between; gap: .5rem; margin-top: .35rem; font-size: .82rem; color: var(--metin-2); }
 .ec-sure > span:nth-child(2) { opacity: .6; }
 
