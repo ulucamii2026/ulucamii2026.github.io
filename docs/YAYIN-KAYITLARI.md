@@ -4,6 +4,54 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (11) — görünür besmele ve dinleme derslerinde hata avı
+
+- Zaman: `2026-09-21T23:06:42+02:00` (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.**
+- Kullanıcı: Asr'da âyetlerin üzerinde besmele hücresi ve diğer derslerde benzer hata avı.
+- İlk içerik `7ca0e2e11ab78ba429011ff726bc3dec488b23a8` (9 dosya), son kaydırma
+  düzeltmesi `6840174c3c16e0b2a13e0e03179160a19143263c` (3 dosya); toplam 9 farklı yol. İlk
+  [deploy](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35654145461)
+  22:58:28+02:00'da doğrulandı; ardından 372 sayfalık canlı kontrol geçti. Dernek kimliği `ulucamii2026` doğrulandı;
+  pull --rebase, push ve [Pages yayını](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35654892416) başarılı. Release: 0; yeni ses/PDF: 0.
+- Asr dâhil 13 sûre ve `e81/e85/e86` rehberli okumasında ayrı, numarasız, ortalı ve
+  dokunulabilir besmele hücresi. Fâtiha ve `e76` içinde mevcut besmele çiftlenmiyor;
+  âyet numaraları değişmedi. Beş dil, klavye, sıralı dinleme ve betiksiz ses erişimi çalışır.
+  Dört rehberli sûre dersinde uzun âyetler tam genişlikte gösterilir.
+- Âyetü’l-Kürsî hücresi yalnız Bakara 255 kaydını çalar; tam kayıt eûzü–besmele–âyet
+  sırasını korur. Tekrar arası sırasında kip kapatıldığında bekleyen sesin yeniden
+  başlaması düzeltildi. İlerleme çubuğu genişlik yerine transform ile güncellenir.
+  Uzun hücrede ilk satırı sabit başlık arkasına bırakan kaydırma payı düzeltildi;
+  yerelde ve canlıda başlık/ilk Arapça satır koordinatlarıyla doğrulandı.
+- Kaynak üretici `motor/site-veri-uret.mjs` besmele/metinSesi alanlarını üretir.
+  `icerik/web-okunus.json`, 7 dersteki önceki 11 web okunuş düzeltmesini korur.
+  `--denetle`: 74 kod, 815 öge, site JSON'uyla birebir eşleşme; dosya yazmaz.
+  Kaynak kitap metinleri/PDF'leri değiştirilmedi.
+- Metin: 14 sûredeki 71 âyet güncel Diyanet mushafıyla karşılaştırıldı; NFC ve boşluk
+  normalleştirmesi dışında Arapça metinler aynı (harekeler korunarak karşılaştırıldı).
+  Kaynak örneği: [Asr mushafı](https://kuran.diyanet.gov.tr/mushaf/kuran-tefsir-1/asr-suresi-103/ayet-1/diyanet-isleri-baskanligi-meali-1).
+- Ses: resmî Osman Şahin `1_1.mp3` ve `2_255.mp3` yeniden indirilip yerelle eşleştirildi.
+  Besmele SHA-256 `ce2f8701f14fb41028cfe9fc92daac454d3657baf9ccc147857425cc58809145`;
+  Bakara 255 `1d62b8de5e45bfd13f88319f26c665144eb2913d58fde75c1222b7d5e6d330d8`.
+  `ecouter.json` SHA-256 `f358a4b940a9ff0066f5fc47e8243bd79c8a32ee4179590c019e19468d50c372`.
+- Kalite: `npm run dogrula:codex` tüm aşamaları geçti; **614/614** tarayıcı, 42 güvenlik,
+  58 veli e-postası, 14 otomatik kayıt, 10 öğrenme/kitap testi. Ses regresyonu **6/6**.
+  Son tip kontrolü 0 hata/0 uyarı. Son görünüm ve kaydırma değişikliklerinden sonra build
+  (1.885 sayfa) ve ilgili iki test dosyası **88/88** yeniden geçti. 485 eğitim iç bağlantısı sağlam.
+  320 px açık/1280 px koyu temada 8 görünüm; metin ortalaması, taşma, gerçek ses çözümleme ve
+  axe serious/critical kontrolü geçti. Görseller incelendi. Impeccable 0 bulgu;
+  yeni bastırma yok. Önceki genel site denetiminin 2 orta/58 düşük kaydı kapsam dışıdır.
+- Canlı: 372 eğitim/QR HTML sayfası ve 2 ses özeti doğrulandı. Beş dilde Asr tam kayıt,
+  besmele ve ilk âyet gerçekten oynadı (15 oynatma); numaralar 1–2–3. Rehberli Kevser
+  genişliği ve Âyetü’l-Kürsî hücresinin ses yolu ayrıca 320 px canlı tarayıcıda doğrulandı.
+  URL'ler: https://ulucamii.be/tr/audio/asr/ · https://ulucamii.be/e/asr/ ·
+  https://ulucamii.be/tr/muhtedi-egitimi/ . 74 basılı QR adresi korunuyor.
+- Değişen yollar: `src/components/SesliDers.astro`, `src/data/ecouter.json`,
+  `src/i18n/dinleme.ts`, `src/lib/ecouter.ts`, `src/scripts/ecouter.ts`,
+  `src/styles/ecouter.css`, `tests/ecouter-ses.test.mjs`, `tests/web/ecouter.spec.mjs`,
+  `docs/DINLEME-SAYFALARI.md`. Yerel kanıtlar `.codex/besmele-denetim/`.
+- Açık sınır: fiziksel iPhone/Safari testi ve bütün kayıtların baştan sona bağımsız
+  insan dinleme denetimi yapılmadı. Bu tur mevcut resmî sesleri değiştirmedi.
+
 ## 21 Eylül 2026 (10) — sûre/dua ses düzeltmeleri ve hocaya özel kitap indirme
 
 - Zaman: `2026-09-21T20:02:52+02:00` (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.**
