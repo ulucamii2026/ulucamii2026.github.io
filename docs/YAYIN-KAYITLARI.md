@@ -4,6 +4,65 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (9) — Dinimi Öğreniyorum ve eğitim yardımı kampanyası
+
+- Zaman: `2026-09-21T18:55:05+02:00` (Europe/Brussels). Durum: **yayımlandı ve canlı doğrulandı**.
+- Kullanıcı, beş dilde eğitim hata avı, kapsayıcı başlık, resmî kampanya yayını ve özel imzalı tutanak istedi.
+- İçerik commit'i `ff875f57626a9edcc542861cfb4abacb76221f8e`; pull --rebase ve push tamamlandı. Deploy <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35628304909> **success**.
+- Release 0; içerik commit'inde 27 dosya. 1 resmî PDF (125.916 bayt); SHA-256
+  `99fc9e1407b0773ff317b4cdaf89c527a174398bd8964f04dc2f9e37009c7658`.
+- Eğitim başlığı TR/FR/EN/NL/DE dillerinde **Dinimi Öğreniyorum** karşılıklarıyla değişti.
+  73 dersin beş dilde toplam 365 karşılığı, dil koruyan bağlantılar/arama/oynatıcı, yerel hata
+  mesajları ve 14 ek yerel dilde Diyanet kitap bağlantısı var. 74 eski QR rotası korundu.
+  Eski oynatma isteğinin gecikmiş hatası yeni sesi durdurmuyor.
+- `npm run dogrula:codex`: **8/8**; Playwright **590/590**. Derleme 1.885 sayfa.
+  18 resmî Diyanet PDF bağlantısı canlı doğrulandı. Beş dilde mobil/açık ve masaüstü/koyu
+  görünüm, Almanca 320 px ve TR/FR kampanya görselleri incelendi; taşma yok. Impeccable 0 bulgu;
+  bastırma eklenmedi. Kampanya vitrin sırasını değiştirdiği için 6 ana sayfa referansı güncellendi.
+- Canlı kontrol: **374 HTML** (365 ders, 5 merkez, /e/, /e/test/, 2 kampanya)
+  başlık/dil/ses kontrolleri geçti. PDF ve iki örnek ses için **3/3 SHA-256** yerelle aynı.
+- Canlı adresler: <https://ulucamii.be/tr/muhtedi-egitimi/>,
+  <https://ulucamii.be/tr/audio/fatha/>, <https://ulucamii.be/e/fatha/>,
+  <https://ulucamii.be/tr/duyurular/egitim-yardimi-kampanyasi-2026/>,
+  <https://ulucamii.be/fr/annonces/egitim-yardimi-kampanyasi-2026/>,
+  <https://ulucamii.be/belgeler/egitim-yardimi-kampanyasi-2026-09-21.pdf>.
+- Kaynak proje `D:/koordinatörlük`: yayın kaydı ve DEVAM güncellendi. Başkan ve din görevlisi
+  imzalı tutanak yalnız özel çıktı klasöründedir; web deposunda yoktur. Tahsilat ve aktarım
+  henüz gerçekleşmediğinden tutar, sayım ve dekont alanları boş bırakıldı. Üçüncü kişiye gönderim yok.
+- Sınırlar: kitaptan gelen Fransızca okunuş/anlamlar açıkça etiketlenerek korunur; yeni meal
+  üretilmez. Fiziksel telefon/Safari ve tüm seslerin insan tarafından dinlenmesi yapılmadı.
+- Ayrıntı: `docs/EGITIM-DIL-DENETIMI-2026-09-21.md`; kanıtlar `.codex/egitim-son-kalite.log`,
+  `.codex/egitim-canli-sonuc.json`, `.codex/egitim-gorsel/`.
+- Değişen yollar:
+  - `docs/DINLEME-SAYFALARI.md`
+  - `docs/EGITIM-DIL-DENETIMI-2026-09-21.md`
+  - `docs/PROJE-HAFIZASI.md`
+  - `public/belgeler/egitim-yardimi-kampanyasi-2026-09-21.pdf`
+  - `src/components/SesliDers.astro`
+  - `src/components/SesliDersDizini.astro`
+  - `src/content/duyurular/fr/egitim-yardimi-kampanyasi-2026.md`
+  - `src/content/duyurular/tr/egitim-yardimi-kampanyasi-2026.md`
+  - `src/i18n/dinleme.ts`
+  - `src/i18n/egitim-kitaplari.ts`
+  - `src/i18n/egitim.ts`
+  - `src/i18n/ui.ts`
+  - `src/i18n/utils.ts`
+  - `src/lib/ecouter.ts`
+  - `src/pages/[lang]/audio/[kod].astro`
+  - `src/pages/e/[kod].astro`
+  - `src/pages/e/index.astro`
+  - `src/sayfalar/MuhtediEgitimi.astro`
+  - `src/scripts/ecouter.ts`
+  - `tests/web/design-visual.spec.mjs-snapshots/ana-sayfa-en-dark-masaustu-chromium-win32.png`
+  - `tests/web/design-visual.spec.mjs-snapshots/ana-sayfa-en-light-masaustu-chromium-win32.png`
+  - `tests/web/design-visual.spec.mjs-snapshots/ana-sayfa-fr-dark-masaustu-chromium-win32.png`
+  - `tests/web/design-visual.spec.mjs-snapshots/ana-sayfa-fr-light-masaustu-chromium-win32.png`
+  - `tests/web/design-visual.spec.mjs-snapshots/ana-sayfa-tr-dark-masaustu-chromium-win32.png`
+  - `tests/web/design-visual.spec.mjs-snapshots/ana-sayfa-tr-light-masaustu-chromium-win32.png`
+  - `tests/web/ecouter.spec.mjs`
+  - `tests/web/egitim-diller.spec.mjs`
+
+
 ## 21 Eylül 2026 (8) — son tasarım uyarısı kapatıldı; proje devri tamamlandı
 
 - Zaman `2026-09-21T16:53:13+02:00` (Europe/Brussels); durum **yayımlandı ve canlı doğrulandı**.

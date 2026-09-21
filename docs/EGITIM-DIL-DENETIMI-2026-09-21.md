@@ -41,6 +41,6 @@ değişmedi. Kaynak kitap özel depodadır; kişisel belge ve imzalar web deposu
 - Kanıtlar: `.codex/egitim-dil-*.log`, `.codex/egitim-dis-kaynak.json`,
   `.codex/egitim-gorsel/`, `.codex/egitim-dil-design.json`.
 
-Son toplu kalite kapısı ve canlı yayın sonucu, aynı oturumdaki `YAYIN-KAYITLARI.md` kaydında
-tamamlanacaktır. Fiziksel iPhone/Safari testi ve bütün kayıtların insan tarafından dinlenmesi
+Son toplu kalite kapısı 8/8, tarayıcı testleri 590/590 geçti. İçerik commit `ff875f57626a9edcc542861cfb4abacb76221f8e`;
+deploy [35628304909](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35628304909) başarılı. Canlı 374 HTML ve 3 varlık kontrolü geçti. Ayrıntı `YAYIN-KAYITLARI.md` kaydındadır. Fiziksel iPhone/Safari testi ve bütün kayıtların insan tarafından dinlenmesi
 yapılmadı; otomatik erişilebilirlik kontrolü sertifika değildir.
