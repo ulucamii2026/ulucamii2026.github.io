@@ -4,6 +4,62 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (6) — Yeni Müslümanlar eğitim platformu ve Elifbâ ses düzeltmesi
+
+- Zaman: 21 Eylül 2026 öğleden sonra; canlı kontrol `2026-09-21T16:05:00.539675+02:00` (Europe/Brussels, CEST).
+  Durum: **yayımlandı ve canlı doğrulandı**. Kullanıcı, fetha ses hatasının ve benzerlerinin
+  düzeltilmesini, kitap karekodları korunarak derslerin herkese açılmasını ve yeni
+  Müslümanlar için ayrıntılı bir eğitim platformunun tam otonom kurulmasını istedi.
+- Platform: beş dilde sekiz öğrenme bölümü, 24 çalışma konusu, sekiz uygulama,
+  günlük çalışma önerisi, dört SSS, dört resmî Fransızca Diyanet PDF kaynağı,
+  çok dilli kütüphane ve mevcut seviye testi/iletişim bağlantıları. İsteğe bağlı ilerleme
+  işaretleri yalnız cihazda saklanır; üyelik, yeni sunucu kaydı veya veri toplama yoktur.
+- 73 sesli ders `/e/` üzerinden aramalı/kategorili dizinde ve bütün eğitim merkezlerinde
+  erişilebilir; indexlenebilir ve site haritasındadır. Ders açıklamaları FR, tilavetler AR;
+  rehber TR/FR/EN/NL/DE. 74 basılı QR adresi sabit; `/e/test/` yönlendirmesi korunur.
+- Ses: yanlış klasör/numaralandırmadan gelen 28 yalın harf + 28 fetha dosyası resmî Diyanet
+  asıllarıyla değiştirildi. 787 Elifbâ yolu / 759 benzersiz resmî URL bayt eşitliği ve
+  41 bölümde 787 metin–ses bağı kontrol edildi. `e09` aynı kayıtta okunan kısa–uzun
+  heceleri 28 çift düğmede gösterir. Ses URL'leri JS ve betiksiz erişimde `?v=2` kullanır.
+- Değişen yollar: `src/sayfalar/MuhtediEgitimi.astro`, `src/i18n/egitim.ts`,
+  `src/i18n/egitim-rehberi.ts`, `src/scripts/muhtedi-egitimi.ts`,
+  `src/components/SesliDersDizini.astro`, `src/pages/e/index.astro`, `src/pages/e/[kod].astro`,
+  `src/pages/[lang]/[sayfa]/index.astro`, `src/components/Header.astro`, `src/i18n/ui.ts`,
+  `src/layouts/Base.astro`, `src/lib/ecouter.ts`, `src/scripts/ecouter.ts`,
+  `src/styles/ecouter.css`, `src/data/ecouter.json`, 56 `public/media/ses/elifba/` MP3,
+  `scripts/indir-elifba-ustun.ps1`, `scripts/elifba-ses-denetle.py`, `package.json`,
+  `tests/ecouter-ses.test.mjs`, `tests/fixtures/elifba-resmi-eslesmeler.json`,
+  `tests/web/ecouter.spec.mjs`, `docs/dinleme-ses-kaynaklari.json`,
+  `docs/DINLEME-SAYFALARI.md`, `docs/PROJE-HAFIZASI.md`.
+- İçerik commit'i `413f013ab7bd8aa9d9a8a50430ec275dd9d2acc5` — 80 dosya; push tamamlandı. Release: **0** (yeni Release
+  gerekmiyor; 56 ses Git deposu üzerinden). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35609410527> — build/deploy **success**.
+- Yerel kalite: `npm run dogrula:codex` **8/8 geçti**, çıkış 0; Astro 303 dosyada
+  0 hata/0 uyarı, 1588 sayfa; Playwright **564/564**, buna eğitim/dinleme **38** senaryosu
+  dahil. Yeni ses regresyonları 3/3. Bütün 856 kullanılan ses Chromium AudioContext ile
+  çözümlendi, hata 0. Mobil/masaüstü, açık/koyu, klavye, JavaScript kapalı ve engelli
+  depolama kontrolleri geçti; görseller gözle incelendi.
+- Canlı kontrol: **80/80** adres HTTP 200 (5 merkez + dizin + 74 QR); 56/56 düzeltilmiş
+  MP3 SHA-256 yerel/resmî manifestle eşleşti. Beş merkezde 8 bölüm/73 ders, arama,
+  ilerleme kalıcılığı ve mobil taşma kontrol edildi. Fetha `be.mp3?v=2` gerçek tarayıcı
+  oynatması başarılı (1.110204 saniye, medya hatası yok).
+- Canlı adresler: <https://ulucamii.be/tr/muhtedi-egitimi/>,
+  <https://ulucamii.be/fr/formation-nouveaux-musulmans/>,
+  <https://ulucamii.be/en/learning-new-muslims/>,
+  <https://ulucamii.be/nl/onderwijs-nieuwe-moslims/>,
+  <https://ulucamii.be/de/unterricht-neue-muslime/>, <https://ulucamii.be/e/>,
+  <https://ulucamii.be/e/fatha/>.
+- SHA-256: `src/data/ecouter.json` = `bfa1e50341283772f3449e204ab26b17a44906c93684617c1bf15092ceff6ebe`;
+  kaynak manifesti = `8215dea311cea7b458bd44dbaf9c21d86ba8a1faf0385817a19bb130c2af7281`.
+  Dosya başına ses özetleri manifesttedir. Özel kaynak PDF değişmedi; 766 sayfa,
+  99 karekod / 74 kod, hata 0; başlangıç/son SHA-256 eşitliği doğrulandı.
+- Kaynak kitap projesindeki katalog/doğrulama/üretici, kalite raporu ve `DEVAM.md`
+  güncellendi. Özel kitap ve kişisel bilgiler siteye yüklenmedi. Yerel kanıtlar
+  `.codex/dinleme-platform-kalite.log`, `dinleme-canli-sonuc.json`,
+  `dinleme-canli-tarayici.json`; kaynak raporu `inceleme/WEB-SES-DUZELTMESI-2026-09-21.md`.
+- Sınırlar: bütün kayıtlar kıraat hocası tarafından tek tek dinlenmedi; fiziksel
+  telefon/Safari testi yapılmadı. Kaynak kitapların bağlantıları doğrulandı;
+  Diyanet'in ileride değiştirebileceği dış adresler site denetiminin dışındadır.
+
 ## 21 Eylül 2026 (5) — site dilleri: Flemenkçe (nl) + Almanca (de); seviye testi form sürümü 2 (Apps Script v39)
 
 - Zaman: 21 Eylül 2026 sabah (istek) – 14:40 (Europe/Brussels, CEST). Durum: **yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının talimatı («camimiz bundan sonra Flemenkçe ve Almanca da olsun, iki dil daha ekle»; seviye testi için «Flemenkçe ve Almanca… seslendirme vesaire her şey olsun» + başvuranın yeri, en yakın Diyanet camisi, görevliyi tanıma, ataşelik bilgisi ve iki paylaşım onayı).
