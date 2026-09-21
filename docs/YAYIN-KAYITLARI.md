@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Eylül 2026 (7) — eğitim kutularında dar kapsamlı tasarım düzeltmesi
+
+- Zaman: `2026-09-21T16:24:59.633033+02:00` (Europe/Brussels). Kullanıcının tasarım denetimi geri bildirimi
+  kapsamında **yayımlandı ve canlı doğrulandı**.
+- `src/styles/ecouter.css`: `.eg-takip` ve `.eg-uygulama` üzerindeki dekoratif yan
+  çizgiler kaldırıldı (iki satır). Mevcut zemin, içerik ve işlevler korundu.
+- Triage: yinelenen raporda üç benzersiz bulgu vardı. İki yeni `side-tab` düzeltildi.
+  `layout-transition` (`.ec-cubuk > span`, `transition: width .2s linear`) başlangıç
+  commit'i `13624c2` içinde de bulunduğundan önceden var olan bulgu olarak bırakıldı;
+  bu görsel düzeltmede kapsam genişletilmedi. **Bastırma/ignore eklenmedi.**
+- İçerik commit'i `151352c50ee57ffd31d7c46cd62b36f2c1ad36cb`; push tamamlandı. Deploy <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35611599948> **success**.
+  Release: 0; değişen içerik dosyası: 1 CSS. SHA-256: `90094db0600fd7d59e68e29803ebd599731c90831be4076d983336b343cf400c`.
+- Kalite: `npm run dogrula:codex` 8/8; Playwright 564/564. Yerel mobil açık/masaüstü
+  koyu görseller incelendi. Canlı aynı iki ölçekte 9 kutunun yan çizgisi 0 px,
+  taşma yok, 8 bölüm ve 73 ders korundu. Kayıtlar `.codex/dinleme-tasarim-*.json/log/png`.
+- Canlı: <https://ulucamii.be/tr/muhtedi-egitimi/>,
+  <https://ulucamii.be/fr/formation-nouveaux-musulmans/>.
+- Önceki yayın (6) içindeki 56 ses düzeltmesi ve 74 QR adresi değişmedi. Kaynak
+  kitap kalite raporu ve iki projenin `DEVAM.md` kayıtları güncellendi.
+  Sınır: önceden mevcut ilerleme animasyonu uyarısı açık; yeni fiziksel telefon testi yok.
+
 ## 21 Eylül 2026 (6) — Yeni Müslümanlar eğitim platformu ve Elifbâ ses düzeltmesi
 
 - Zaman: 21 Eylül 2026 öğleden sonra; canlı kontrol `2026-09-21T16:05:00.539675+02:00` (Europe/Brussels, CEST).
