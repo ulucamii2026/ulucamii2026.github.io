@@ -21,11 +21,16 @@ const satirlar: EcouterParca[] = butunMetin ? [{
   ar: asilSatirlar.map(s => s.ar).filter(Boolean).join('\n'),
   okunus: asilSatirlar.map(s => s.okunus).filter(Boolean).join(' '),
   fr: asilSatirlar.map(s => s.fr).filter(Boolean).join(' '),
-  ses: icerik.tam!.ses,
+  ses: icerik.metinSesi ?? icerik.tam!.ses,
 }] : asilSatirlar;
+const gorunenSatirlar = [
+  ...(icerik.besmele ? [{ ...icerik.besmele, ad: m.besmeleCal, etiket: m.besmele, besmele: true }] : []),
+  ...satirlar.map((s, i) => ({ ...s, ad: butunMetin ? m.metinCal : parcaAdi(s, i + 1, false), etiket: s.no, besmele: false })),
+];
 const ogeler = icerik.ogeler ?? [];
+const rehberliSure = ['e76', 'e81', 'e85', 'e86'].includes(kod);
 /** Gerçekten çalınabilen parça sayısı: «Lecture continue» ancak ikisi varsa anlamlıdır. */
-const calinabilir = [...satirlar, ...ogeler].filter((p) => p.ses).length;
+const calinabilir = [...gorunenSatirlar, ...ogeler].filter((p) => p.ses).length;
 /** Satırların bir kısmı sesliyse sessiz satıra boş yer bırakılır (hiza bozulmasın);
     hiçbirinde ses yoksa sütun tamamen kalkar — boş halka gösterilmez. */
 const calarVar = calinabilir > 0 || Boolean(icerik.tam);
@@ -33,7 +38,7 @@ const aciklama = [icerik.baslik, icerik.altbaslik].filter(Boolean).join(' — ')
 /** Betiksiz erişim listesi: her ses en azından düz bağlantı olarak açılabilir. */
 const yedekler = [
   ...(icerik.tam ? [{ ad: icerik.tam.etiket ?? m.tamEtiket, ses: icerik.tam.ses }] : []),
-  ...satirlar.map((p, i) => ({ ad: parcaAdi(p, i + 1, false), ses: p.ses })),
+  ...gorunenSatirlar.map((p) => ({ ad: p.ad, ses: p.ses })),
   ...ogeler.map((p, i) => ({ ad: parcaAdi(p, i + 1, true), ses: p.ses })),
 ].filter((y): y is { ad: string; ses: string } => Boolean(y.ses));
 const surumVar = veri.surum;
@@ -94,21 +99,21 @@ const surumVar = veri.surum;
 
         {dil !== 'fr' && <p class="ec-altbaslik">{m.frNotu}</p>}
 
-        {satirlar.length > 0 && (
+        {gorunenSatirlar.length > 0 && (
           <p class="ec-ipucu">{m.dokun}</p>
           <ul class="ec-satirlar" role="list">
-            {satirlar.map((s, i) => (
-              <li class="ec-satir" data-ec-parca>
+            {gorunenSatirlar.map((s) => (
+              <li class="ec-satir" data-ec-parca data-ec-besmele={s.besmele || undefined}>
                 {s.ses ? (
-                  <button type="button" class="ec-satir-dugme" data-ec-cal data-ses={s.ses} aria-pressed="false" aria-label={butunMetin ? (icerik.tam?.etiket ?? m.tamEtiket) : parcaAdi(s, i + 1, false)}>
-                    <span class="ec-satir-ust" aria-hidden="true"><span class="ec-no mono">{'no' in s ? s.no : null}</span><span class="ec-simge"></span></span>
+                  <button type="button" class="ec-satir-dugme" data-ec-cal data-ses={s.ses} aria-pressed="false" aria-label={s.ad}>
+                    <span class="ec-satir-ust" aria-hidden="true"><span class:list={[s.besmele ? 'ec-besmele-etiket' : 'ec-no mono']}>{s.etiket}</span><span class="ec-simge"></span></span>
                     {s.ar && <span class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</span>}
                     {s.okunus && <span class="ec-okunus" lang="fr">{s.okunus}</span>}
                     {s.fr && <span class="ec-fr" lang="fr">{s.fr}</span>}
                   </button>
                 ) : (
                   <div class="ec-satir-metin">
-                    {'no' in s && s.no != null && <span class="ec-no mono">{s.no}</span>}
+                    {s.etiket != null && <span class:list={[s.besmele ? 'ec-besmele-etiket' : 'ec-no mono']}>{s.etiket}</span>}
                     {s.ar && <p class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</p>}
                     {s.okunus && <p class="ec-okunus" lang="fr">{s.okunus}</p>}
                     {s.fr && <p class="ec-fr" lang="fr">{s.fr}</p>}
@@ -120,7 +125,7 @@ const surumVar = veri.surum;
         )}
 
         {ogeler.length > 0 && (
-          <ul class:list={['ec-izgara', ogeler.some((o) => o.ar?.includes(' — ')) && 'ec-izgara-cift']} role="list" dir="rtl">
+          <ul class:list={['ec-izgara', rehberliSure && 'ec-izgara-sure', ogeler.some((o) => o.ar?.includes(' — ')) && 'ec-izgara-cift']} role="list" dir="rtl">
             {ogeler.map((o, i) => (
               <li class="ec-kare" data-ec-parca>
                 {o.ses ? (

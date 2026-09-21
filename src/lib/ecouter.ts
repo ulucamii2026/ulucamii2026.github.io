@@ -38,6 +38,10 @@ export type EcouterKod = {
   /** Altbilgide yazılan ses/metin kaynağı künyesi. */
   kaynak?: string;
   tam?: EcouterTam;
+  /** Sûre başındaki numarasız besmele; Fâtiha'nın 1. âyetine ayrıca eklenmez. */
+  besmele?: EcouterParca;
+  /** Tam kaydın girişinden ayrı olarak yalnız hücrede yazılı metni okuyan kayıt. */
+  metinSesi?: string;
   /** Satır satır liste (sûre, dua). */
   satirlar?: EcouterParca[];
   /** Dokunmatik kare ızgarası (Elifbâ heceleri). */

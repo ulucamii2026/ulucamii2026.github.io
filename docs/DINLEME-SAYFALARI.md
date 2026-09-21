@@ -25,6 +25,17 @@ açılır. Bu kalıcı karekod sayfası Fransızcadır; aynı ders Türkçe, İn
 - Ek regresyonlar: `tests/web/egitim-diller.spec.mjs`; 365 ders adresi/ses eşliği, beş dilde
   yerel hata mesajı, tema/erişilebilirlik, JavaScript kapalıyken sesler ve gecikmiş oynatma hatası.
 - Bilinmeyen kod → normal 404 (yalnız statik yollar üretilir).
+- 21 Eylül 2026 besmele denetimi: Asr dâhil 13 sûrede ve `e81/e85/e86` rehberli
+  okumalarında âyetlerden önce numarasız, ortalı, dokunulabilir besmele hücresi vardır.
+  Fâtiha ve `e76` ilk âyetinde besmele bulunduğundan ikinci hücre eklenmez. Sıralı
+  dinleme besmeleden ilk âyete geçer; özgün âyet numaraları korunur.
+  Hücre yalnız resmî Osman Şahin `1_1.mp3` kaydını açar; `1_0.mp3` eûzü kaydıdır.
+  Dört rehberli sûre dersinde uzun âyetler dar hece kutuları yerine tam genişlikte,
+  ortalı hücrelerde gösterilir; diğer Elifbâ derslerinin ızgarası korunur.
+  Metin sırası: [Diyanet Asr mushaf sayfası](https://kuran.diyanet.gov.tr/mushaf/kuran-tefsir-1/asr-suresi-103/ayet-1/diyanet-isleri-baskanligi-meali-1).
+- Âyetü’l-Kürsî'nin metin hücresi yalnız `2-255.mp3` çalar; tam kayıt düğmesindeki
+  eûzü–besmele–âyet dizisi korunur. Tekrar arasındayken tekrar kapatılırsa bekleyen
+  zamanlayıcı iptal edilir; sıralı dinleme açıksa sıradaki parçaya geçilir.
 - Sitenin olağan başlığı, alt bilgisi ve Kilim Kartografyası jetonları kullanılır; içerik sütunu
   dardır (en çok 40 rem).
 
@@ -51,6 +62,9 @@ Türler ve bütün Fransızca arayüz metinleri: `src/lib/ecouter.ts`.
   gecikme 0 — gecikmeli yenileme WCAG 2.2.1'e takılır).
 - `satirlar` → numara, büyük Arapça, çeviri yazı, Fransızca anlam. `ogeler` → sağdan sola dokunmatik
   kare ızgarası (Elifbâ heceleri).
+- İsteğe bağlı `besmele` bir `EcouterParca` nesnesidir ve `no` içermez. Satır/kare
+  listesinden önce gösterilir; erişilebilir adı ve görünür etiketi beş dilde çevrilir.
+  `metinSesi`, birleşik metin hücresinin tam kayıttan ayrı bir sesi varsa onu belirtir.
 - Çeviri yazı şeması kitapla aynıdır: `motor/YAZIM-KILAVUZU.md` §4 (Fransız okura göre; a/i/ou, â/î/oû,
   ḥ ṣ ḍ ṭ ẓ ʿ).
 - Arapça her zaman `class="arabic" lang="ar" dir="rtl"` ile basılır. **`.arabic-ana` kullanılmaz** —
@@ -66,6 +80,9 @@ içermeyen kopyasından bir betikle üretilir (`D:\ulu-camii-yetiskin-egitimi`).
 - **Ses kaynağı yalnız resmî Diyanet'tir** (AGENTS.md kalıcı kuralı): `public/media/ses/…` altındaki
   yerel kayıtlar, Diyanet Namaz Portalı ve Elifbâ portalı. Üçüncü taraf kıraat ya da üretilmiş ses
   (TTS) Arapça okumaz. Fransızca meâl kaynağı künyede adıyla yazılır.
+- Kaynak üreticide `node motor/site-veri-uret.mjs --denetle`, dosya yazmadan üretilen
+  veriyle site JSON'unu karşılaştırır. `icerik/web-okunus.json`, önceki web düzeltmelerini
+  yeniden üretimde korur; özgün kitap metinleri/PDF'leri bu amaçla değiştirilmez.
 - `ses` yolları `public/` altında **gerçekten var olmalıdır**; olmayan yol yerine alanı boş bırakın.
 - **Satır sesi yalnız tam sûrelerde bağlanır** (satır no = âyet no) ve sûre boyunca **tek kayıttan** gelir:
   `public/media/ses/ayet/<sure>-<ayet>.mp3`, resmî Diyanet mushaf kaydı (Hafız Osman Şahin,

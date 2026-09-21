@@ -12,7 +12,7 @@ import { readFileSync } from 'node:fs';
 import { EC_METIN, EC_TEKRAR_SAYISI, ecParcaAdi } from '../../src/lib/ecouter.ts';
 import { yollar } from '../../src/i18n/ui.ts';
 import { EGITIM } from '../../src/i18n/egitim.ts';
-import { dersYolu } from '../../src/i18n/dinleme.ts';
+import { dersYolu, DINLEME } from '../../src/i18n/dinleme.ts';
 
 const VERI = JSON.parse(readFileSync(new URL('../../src/data/ecouter.json', import.meta.url), 'utf8'));
 const KODLAR = VERI.kodlar;
@@ -302,6 +302,90 @@ test('Bölüm kaydı olmayan dua tek tam metin hücresinden dinlenir; âyet böl
 });
 
 /* ---------- 3. Kare ızgara: tek dokunuşla çalma ---------- */
+
+for (const dil of ['tr','fr','en','nl','de']) {
+  test(`${dil}: bütün sûrelerde besmele bir kez görünür, âyet numaraları korunur`, async ({page}) => {
+    test.setTimeout(120_000);
+    await calarTaklidi(page);
+    const kodlar = [...Object.keys(KODLAR).filter(k=>KODLAR[k].besmele),'fatiha','e76'];
+    for (const kod of kodlar) {
+      await page.goto(dersYolu(dil,kod));
+      const veri = KODLAR[kod];
+      const besmele = page.locator('[data-ec-besmele]');
+      await expect(besmele).toHaveCount(veri.besmele ? 1 : 0);
+      if (veri.besmele) {
+        await expect(besmele.locator('button')).toHaveAccessibleName(DINLEME[dil].besmeleCal);
+        await expect(besmele.locator('.ec-no')).toHaveCount(0);
+        await expect(besmele.locator('.ec-ar')).toHaveCSS('text-align','center');
+        await expect(page.locator('[data-ec-cal]').first()).toHaveAttribute('data-ses', '/media/ses/ayet/1-1.mp3');
+      }
+      if (veri.satirlar) {
+        expect(await page.locator('.ec-no').allTextContents()).toEqual(veri.satirlar.map(s=>String(s.no)));
+        await expect(page.locator('[data-ec-cal]')).toHaveCount(veri.satirlar.length + (veri.besmele ? 1 : 0));
+      } else {
+        await expect(page.locator('.ec-kare')).toHaveCount(veri.ogeler.length);
+      }
+    }
+    await page.goto(dersYolu(dil,'asr'));
+    const bas = page.locator('[data-ec-besmele] button');
+    await bas.focus();
+    await page.keyboard.press('Space');
+    expect(await calinanlar(page)).toEqual(['/media/ses/ayet/1-1.mp3']);
+    await page.keyboard.press('Space');
+    await expect(bas).toHaveAttribute('aria-pressed','false');
+  });
+}
+
+for (const kod of ['asr','e81']) {
+  test(`${kod}: sıralı dinleme besmeleden ilk âyete geçer`, async ({page}) => {
+    await calarTaklidi(page,{bitir:true});
+    await sayfayiAc(page,kod);
+    await page.locator('[data-ec-zincir]').click();
+    await page.locator('[data-ec-besmele] button').click();
+    const parcalar = KODLAR[kod].satirlar ?? KODLAR[kod].ogeler;
+    const beklenen = ['/media/ses/ayet/1-1.mp3',...parcalar.map(s=>s.ses)];
+    await expect.poll(()=>calinanlar(page)).toEqual(beklenen);
+    await expect(page.locator('[data-ec-cal][aria-pressed="true"]')).toHaveCount(0);
+  });
+}
+
+test('Âyetü’l-Kürsî hücresi yalnız yazılı âyeti, tam kayıt girişle birlikte çalar', async ({page}) => {
+  await calarTaklidi(page);
+  await sayfayiAc(page,'ayetel-kursi');
+  await page.locator('.ec-satir button').click();
+  expect(await calinanlar(page)).toEqual(['/media/ses/ayet/2-255.mp3']);
+  await page.locator('[data-ec-tam]').click();
+  expect((await calinanlar(page)).at(-1)).toBe(KODLAR['ayetel-kursi'].tam.ses);
+});
+
+test('Besmele JavaScript kapalıyken de görünür ve ses bağlantısı açılır', async ({browser}) => {
+  const context=await browser.newContext({javaScriptEnabled:false});
+  await context.route('**/*', r=>r.request().url().startsWith('http://127.0.0.1:4401/')?r.continue():r.abort());
+  const page=await context.newPage();
+  await page.goto('http://127.0.0.1:4401/tr/audio/asr/');
+  await expect(page.locator('[data-ec-besmele] .ec-ar')).toBeVisible();
+  const baglanti=page.getByRole('link',{name:DINLEME.tr.besmeleCal,exact:true});
+  await expect(baglanti).toHaveAttribute('href',`/media/ses/ayet/1-1.mp3?v=${VERI.surum}`);
+  expect((await page.request.get(await baglanti.getAttribute('href'))).status()).toBe(200);
+  await context.close();
+});
+
+for (const zincir of [false,true]) {
+  test(`Tekrar beklerken kapatılırsa bekleyen ses iptal edilir (zincir=${zincir})`,async({page})=>{
+    await calarTaklidi(page,{bitir:true,sure:1});
+    await sayfayiAc(page,'asr');
+    await page.locator('[data-ec-tekrar]').click();
+    if(zincir) await page.locator('[data-ec-zincir]').click();
+    await page.locator('[data-ec-besmele] button').click();
+    await page.waitForTimeout(150); // 1 saniyelik tekrar arasının içi
+    await page.locator('[data-ec-tekrar]').click();
+    const beklenen=['/media/ses/ayet/1-1.mp3',...(zincir?KODLAR.asr.satirlar.map(s=>s.ses):[])];
+    await expect.poll(()=>calinanlar(page)).toEqual(beklenen);
+    await page.waitForTimeout(1100); // Eski zamanlayıcı tekrar başlatmamalı.
+    expect(await calinanlar(page)).toEqual(beklenen);
+    await expect(page.locator('[data-ec-cal][aria-pressed="true"]')).toHaveCount(0);
+  });
+}
 
 test('Elifbâ kareleri: dokunuş sesi çalar, ikinci dokunuş durdurur, öteki kare devralır', async ({ page }) => {
   await calarTaklidi(page);

@@ -81,7 +81,7 @@ export function dinlemeyiBaslat(): void {
   function ilerleme(): void {
     if (!calar || acik !== tamDugme) return;
     const oran = Number.isFinite(calar.duration) && calar.duration > 0 ? calar.currentTime / calar.duration : 0;
-    if (dolgu) dolgu.style.width = `${Math.min(100, Math.max(0, oran * 100))}%`;
+    if (dolgu) dolgu.style.transform = `scaleX(${Math.min(1, Math.max(0, oran))})`;
     if (gecenKutu) gecenKutu.textContent = sureBicim(calar.currentTime);
   }
 
@@ -100,7 +100,7 @@ export function dinlemeyiBaslat(): void {
     calar?.pause();
     if (acik) isaretle(acik, false);
     acik = null;
-    if (dolgu) dolgu.style.width = '0%';
+    if (dolgu) dolgu.style.transform = 'scaleX(0)';
     if (gecenKutu) gecenKutu.textContent = EC_METIN.sureSifir;
   }
 
@@ -170,11 +170,15 @@ export function dinlemeyiBaslat(): void {
   };
 
   const tekrarAyarla = (acikMi: boolean): void => {
+    const bekliyordu = Boolean(bekleme);
+    if (!acikMi && bekleme) { clearTimeout(bekleme); bekleme = 0; }
     tercih.tekrar = acikMi;
     tekrarDugme?.setAttribute('aria-pressed', acikMi ? 'true' : 'false');
     if (acikMi) kok.dataset.tekrar = '1'; else delete kok.dataset.tekrar;
     if (acik) kalanTekrar = acikMi ? EC_TEKRAR_SAYISI - 1 : 0;
     tercihYaz();
+    // Dinleme arasındayken tekrar kapatılırsa eski zamanlayıcı yeniden ses başlatmasın.
+    if (!acikMi && bekliyordu) bitti();
   };
 
   for (const dugme of [...parcalar, ...(tamDugme ? [tamDugme] : [])]) {

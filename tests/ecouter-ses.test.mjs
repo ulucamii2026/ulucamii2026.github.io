@@ -29,12 +29,26 @@ test('112 harf/hareke kaydı resmî metin, kaynak ve ses özetiyle eşleşir', (
 
 test('Her ses dosyası vardır ve belgelenmiş kayıtların özeti değişmemiştir', () => {
   for (const ders of Object.values(veri.kodlar)) {
-    for (const p of [ders.tam, ...(ders.ogeler ?? []), ...(ders.satirlar ?? [])].filter((p) => p?.ses)) {
+    for (const p of [ders.tam, ders.besmele, {ses:ders.metinSesi}, ...(ders.ogeler ?? []), ...(ders.satirlar ?? [])].filter((p) => p?.ses)) {
       assert.ok(existsSync(new URL('public' + p.ses, root)), p.ses);
       if (p.ses.includes('/elifba/')) assert.ok(kaynaklar[p.ses], p.ses);
     }
   }
   for (const [path, r] of Object.entries(kaynaklar)) assert.equal(hash(path), r.sha256, path);
+});
+
+test('13 sûre ve 3 rehberli okuma numarasız, resmî besmeleyle başlar; Fâtiha çiftlenmez', () => {
+  const beklenen = ['insirah','kadir','asr','fil','kureys','maun','kevser','kafirun','nasr','tebbet','ihlas','felak','nas','e81','e85','e86'];
+  assert.deepEqual(Object.keys(veri.kodlar).filter(k=>veri.kodlar[k].besmele).sort(), beklenen.sort());
+  const {no, ...besmele} = veri.kodlar.fatiha.satirlar[0];
+  for (const kod of beklenen) {
+    assert.deepEqual(veri.kodlar[kod].besmele, besmele, kod);
+    assert.equal(veri.kodlar[kod].besmele.no, undefined, kod);
+  }
+  assert.deepEqual(veri.kodlar.asr.satirlar.map(s=>s.no),[1,2,3]);
+  assert.equal(veri.kodlar.fatiha.satirlar.length,7);
+  assert.equal(veri.kodlar.e76.ogeler.length,7);
+  assert.equal(veri.kodlar['ayetel-kursi'].metinSesi,'/media/ses/ayet/2-255.mp3');
 });
 
 test('Kısa–uzun karşılaştırmasında tek kayıt tek düğmede iki heceyi gösterir', () => {
