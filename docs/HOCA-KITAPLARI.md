@@ -4,6 +4,16 @@
 `/hoca/ → Ders kitapları`: Camiye Gidiyorum 1–2, Fransızca Belçika ve Türkçe vektörel sürümler.
 Kaynak PDF'ler değiştirilmez; indirme sonunda SHA-256 ile birebir eşitlik aranır.
 
+**23 Eylül 2026 yenileme.** Dört kitap, kullanıcının teslim klasöründeki A4 ev yazıcısı baskı
+sürümleriyle (22–23 Eylül hazırlığı; klasördeki `BASKI_NOTLARI.md` + `SHA256.txt`) değiştirildi.
+Kimlikler `…-20260921` → `…-20260923`; eski 21 parça silindi, yeni 25 parça yazıldı; her kitap
+yeni bağımsız anahtar aldı. Yenileme adımları: `.codex/kitap-yenile-20260923.py` (kaynak özeti
+`SHA256.txt` ile doğrulanır, eski anahtar dosyası tarihli adla yedeklenir) → birim/tarayıcı
+testleri → `.codex/kitap-yayin-20260923.py --firestore birlestir` (eski ∪ yeni anahtar; canlı
+site kesintisiz) → Pages yayını → `--canli` (dört kitap + eski parçaların 404 olduğu) →
+`--firestore yeni` (yalnız yeni dört anahtar). Eski parçalar Git geçmişinde kalır ama anahtarları
+Firestore'dan silindiği için çözülemez.
+
 ## Erişim ve dosyalar
 
 - Düz PDF'ler herkese açık Git deposuna veya Release'e konmaz. Yayınlanan 21 `.bin` parçası
@@ -37,9 +47,12 @@ Kaynak PDF'ler değiştirilmez; indirme sonunda SHA-256 ile birebir eşitlik ara
   Yenilemede önce dosyalar ve testler hazırlanır, tek özel anahtar belgesi güncellenir,
   Pages yayını ve dört canlı indirme doğrulanır. Eski anahtar körlemesine değiştirilmez.
 
-| Kitap | Sürüm | Sayfa | Bayt |
-|---|---|---:|---:|
-| Camiye Gidiyorum 1 | Fransızca Belçika | 228 | 119508776 |
-| Camiye Gidiyorum 1 | Türkçe vektörel | 227 | 47574147 |
-| Camiye Gidiyorum 2 | Fransızca Belçika | 270 | 94836992 |
-| Camiye Gidiyorum 2 | Türkçe vektörel | 270 | 63422630 |
+| Kitap | Sürüm | Kimlik | Sayfa | Bayt | Parça |
+|---|---|---|---:|---:|---:|
+| Camiye Gidiyorum 1 | Fransızca Belçika | `cg1-fr-20260923` | 228 | 97003740 | 6 |
+| Camiye Gidiyorum 1 | Türkçe vektörel | `cg1-tr-20260923` | 228 | 87384744 | 6 |
+| Camiye Gidiyorum 2 | Fransızca Belçika | `cg2-fr-20260923` | 270 | 69277461 | 5 |
+| Camiye Gidiyorum 2 | Türkçe vektörel | `cg2-tr-20260923` | 270 | 119001909 | 8 |
+
+Önceki sürüm (21 Eylül 2026, kaldırıldı): FR1 228 s. / 119508776 B, TR1 227 s. / 47574147 B,
+FR2 270 s. / 94836992 B, TR2 270 s. / 63422630 B.
