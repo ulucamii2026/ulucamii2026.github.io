@@ -12,7 +12,8 @@ yeni bağımsız anahtar aldı. Yenileme adımları: `.codex/kitap-yenile-202609
 testleri → `.codex/kitap-yayin-20260923.py --firestore birlestir` (eski ∪ yeni anahtar; canlı
 site kesintisiz) → Pages yayını → `--canli` (dört kitap + eski parçaların 404 olduğu) →
 `--firestore yeni` (yalnız yeni dört anahtar). Eski parçalar Git geçmişinde kalır ama anahtarları
-Firestore'dan silindiği için çözülemez.
+Firestore'dan silindiği için çözülemez; 23 Eylül 22:20'de yerel eski anahtar yedeği de kullanıcının
+isteğiyle silindi.
 
 ## Erişim ve dosyalar
 
