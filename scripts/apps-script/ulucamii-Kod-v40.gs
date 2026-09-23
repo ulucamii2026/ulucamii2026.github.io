@@ -1,3 +1,7 @@
+/* v40 — 23 Eyl 2026: herkese açık kayıt ve ihtida POST uçlarına sunucu tarafı hacim sınırı (AYAR_BASVURU_SINIRI): tür başına
+   10 dakikada 10 yeni kayıt ("cok-sik"), günde kayıt 60 / ihtida 20 ("gunluk-sinir"), aynı e-posta günde 3 ("eposta-gunluk-sinir");
+   sayım defterdeki gerçek satırlardan, kilit içinde ve tekrar denetiminden SONRA — aynı gonderimAnahtari ile yinelenen istek
+   hiç engellenmez ve sayılmaz. İstemcinin tuzak alanı («web») doluysa gövde "bos-istek" ile reddedilir. Başka davranış değişmedi. */
 /* v39 — 21 Eyl 2026: site dilleri tr/fr/en + nl/de. SITE_DILLERI tek beyaz liste (kayıt, ihtida, pdf-ornek); dile bağlı bütün
    sözlükler (ETIKET_KAYIT, ETIKET_IHTIDA, ONAY_METIN, ENUM_*, BOLUM_BASLIK, EVET_HAYIR, ihtida/kayıt e-posta metinleri) beş dilli; tr/fr/en
    çıktıları birebir aynı (eşdeğerlik sınaması). Veli İLETİŞİM dili (tr|fr) ve TÖREN dilleri bilerek genişlemedi. Seviye testi form sürümü 2:
@@ -82,13 +86,21 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 39;
+var SURUM = 40;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
    ayrı ve dar kümelerdir (sırasıyla tr|fr ve tr|fr|en|ar); onlar bu listeyle genişlemez. */
 var SITE_DILLERI = ["tr", "fr", "en", "nl", "de"];
 var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, ""); // 13 Eyl 2026: iletişim bloğunda değil, yalnız kayıt formu WhatsApp yolu
+/* v40 (23 Eyl 2026): herkese açık kayıt/ihtida uçlarının hacim sınırı — sayılar YALNIZ burada değiştirilir.
+   pencereSinir: pencereDakika içinde en çok yeni kayıt ("cok-sik"); gunlukSinir: Brüksel gününde en çok yeni kayıt
+   ("gunluk-sinir"); epostaGunlukSinir: aynı e-posta adresiyle (küçük harf, kırpılmış) günde en çok yeni kayıt
+   ("eposta-gunluk-sinir"). Yalnız defterdeki GERÇEK satırlar sayılır; aynı gonderimAnahtari ile yinelenen istek sayılmaz. */
+var AYAR_BASVURU_SINIRI = {
+  kayit: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 60, epostaGunlukSinir: 3 },
+  ihtida: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 20, epostaGunlukSinir: 3 }
+};
 
 /* ===================================================================
    ORTAK — doGet / doPost yönlendirme, JSON yardımcıları, güvenlik
@@ -119,7 +131,7 @@ function doGet(e) {
     if (e.parameter.islem === "seviye-detay") return seviyeDetayIsle(e); // v38: yan etkisiz, defter yaratmaz
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -188,6 +200,41 @@ function json(nesne) {
 function temizAnahtar(a) {
   var t = String(a || "").trim();
   return /^[A-Za-z0-9_-]{16,64}$/.test(t) ? t : "";
+}
+
+/** v40: formdaki görünmez tuzak alan («web»). Gerçek istemci bu alanı hiç göndermez (doluysa isteği kendisi keser);
+    uca doğrudan yazan bir bot alanı doldurursa gövde hiçbir kayıt açılmadan reddedilir. */
+function tuzakAlanDolu(v) {
+  return !!v && v.web != null && String(v.web).trim() !== "";
+}
+
+/** v40: YENİ kayıt açmadan önce hacim denetimi (AYAR_BASVURU_SINIRI). Kilit İÇİNDE ve gönderim anahtarı tekrar
+    denetiminden SONRA çağrılır; böylece yinelenen istek hiç engellenmez ve sayım eşzamanlı isteklerde de doğrudur.
+    sayfa = v2 defteri (1. sütun zaman damgası), epostaSutunu = e-posta sütunu (1 tabanlı; 0 = e-posta denetimi yok).
+    Hata kodu ya da "" döner; kişisel veri döndürmez ve günlüğe yazmaz. */
+function basvuruSinirKodu(tur, sayfa, epostaSutunu, eposta, simdi) {
+  var ayar = AYAR_BASVURU_SINIRI[tur];
+  if (!ayar) return "";
+  var son = sayfa.getLastRow();
+  if (son < 2) return "";
+  var an = (simdi || new Date()).getTime();
+  var bugun = Utilities.formatDate(new Date(an), "Europe/Brussels", "yyyy-MM-dd");
+  var adres = String(eposta == null ? "" : eposta).trim().toLowerCase();
+  var sutun = epostaSutunu > 0 ? epostaSutunu : 0;
+  var veri = sayfa.getRange(2, 1, son - 1, Math.max(1, sutun)).getValues();
+  var pencereMs = ayar.pencereDakika * 60 * 1000, pencere = 0, gun = 0, ayniAdres = 0;
+  for (var i = 0; i < veri.length; i++) {
+    var t = new Date(veri[i][0]).getTime();
+    if (isNaN(t) || an - t > 26 * 3600 * 1000) continue; // Brüksel günü en çok 25 saattir; eski satır biçimlenmez
+    if (an - t < pencereMs) pencere++;
+    if (Utilities.formatDate(new Date(t), "Europe/Brussels", "yyyy-MM-dd") !== bugun) continue;
+    gun++;
+    if (adres && sutun && String(veri[i][sutun - 1]).trim().toLowerCase() === adres) ayniAdres++;
+  }
+  if (pencere >= ayar.pencereSinir) return "cok-sik";
+  if (gun >= ayar.gunlukSinir) return "gunluk-sinir";
+  if (ayniAdres >= ayar.epostaGunlukSinir) return "eposta-gunluk-sinir";
+  return "";
 }
 
 /**
@@ -1197,6 +1244,7 @@ function kayitDosyaAdi(ref, ad, soyad, dil, iletisimDili) {
 function kayitPostIsleV2(v) {
   // 13 Eyl 2026: Kimlik ayrı Drive dosyasıdır; belge hatası kaydı durdurmaz, kopya sonucu dürüst döner.
   try {
+    if (tuzakAlanDolu(v)) { console.warn("kayit: tuzak alan dolu, reddedildi"); return json({ ok: false, hata: "bos-istek" }); } // v40
     var dogrulama = kayitDogrulaV2(v);
     if (!dogrulama.tamam) return json({ ok: false, hata: dogrulama.kod });
 
@@ -1217,6 +1265,10 @@ function kayitPostIsleV2(v) {
     try {
       onceki = anahtar ? kayitV2AnahtarBul(sayfaV2, anahtar) : null;
       if (onceki) return kayitTekrarYaniti(onceki);
+
+      // v40: hacim sınırı yalnız YENİ kayıtta (tekrar yanıtı yukarıda döndü).
+      var sinirKodu = basvuruSinirKodu("kayit", sayfaV2, BASLIKLAR2.indexOf("Veli e-posta") + 1, veli.eposta);
+      if (sinirKodu) { console.warn("kayit: hacim siniri (" + sinirKodu + ")"); return json({ ok: false, hata: sinirKodu }); }
 
       var sayfaV1 = v1SayfaBulTablo("TABLO_ID", AYAR.tabloAdi);
       ref = "UC-" + AYAR2.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "UC")).slice(-4);
@@ -1998,6 +2050,7 @@ function ihtidaGorselSilIsle(e) {
 
 function ihtidaPostIsleV2(v) {
   try {
+    if (tuzakAlanDolu(v)) { console.warn("ihtida: tuzak alan dolu, reddedildi"); return json({ ok: false, hata: "bos-istek" }); } // v40
     var dogrulama = ihtidaDogrulaV2(v);
     if (!dogrulama.tamam) return json({ ok: false, hata: dogrulama.kod });
 
@@ -2025,6 +2078,10 @@ function ihtidaPostIsleV2(v) {
         ihtidaPaketKuyrugaAl(onceki.ref); // Satır kaydolup kuyruk yazımı kesilmişse tamamla.
         return json({ ok: true, ref: onceki.ref, tekrar: true, paket: "sirada" });
       }
+
+      // v40: hacim sınırı yalnız YENİ başvuruda (tekrar yanıtı yukarıda döndü).
+      var sinirKodu = basvuruSinirKodu("ihtida", sayfaV2, BASLIKLAR2_IHTIDA.indexOf("E-posta") + 1, b.eposta);
+      if (sinirKodu) { console.warn("ihtida: hacim siniri (" + sinirKodu + ")"); return json({ ok: false, hata: sinirKodu }); }
 
       var sayfaV1 = v1SayfaBulTablo("IHTIDA_TABLO_ID", AYAR_IHTIDA.tabloAdi);
       ref = "IH-" + AYAR2_IHTIDA.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "IH")).slice(-4);

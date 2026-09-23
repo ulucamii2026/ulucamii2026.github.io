@@ -45,7 +45,9 @@ const iletisimDiliVarsayilan: Record<Dil, 'tr' | 'fr'> = { tr: 'tr', fr: 'fr', e
 const varsayilanIletisimDili = iletisimDiliVarsayilan[dil];
 const dilNotuGoster: Record<Dil, boolean> = { tr: false, fr: false, en: true, nl: true, de: true };
 const metinJson = JSON.stringify({
-  hata: o.hata, basari: { gonderiliyor: v3.gonderiliyor, epostaGitti: o.basari.epostaGitti, epostaGitmedi: v3.epostaGitmedi },
+  // v40 (23 Eyl 2026): sunucu hacim sınırının üç kodu aynı yerelleştirilmiş iletiye düşer (başvuru gönderilmemiştir).
+  hata: { ...o.hata, 'sunucu:gunluk-sinir': o.hata.yogunluk, 'sunucu:eposta-gunluk-sinir': o.hata.yogunluk, 'sunucu:cok-sik': o.hata.yogunluk },
+  basari: { gonderiliyor: v3.gonderiliyor, epostaGitti: o.basari.epostaGitti, epostaGitmedi: v3.epostaGitmedi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
   taslakHassasNot: v3.taslakNot, taslakGuvence: v3.guvence, taslakKaydedilemedi: v3.kaydedilemedi,
 });

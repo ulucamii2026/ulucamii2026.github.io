@@ -21,6 +21,7 @@ export const fr: FormMetinleri = {
     seciniz: 'Choisissez',
     hata: {
       servisHazirDegil: "Le service de demande est en cours de mise à jour. Vos informations n’ont pas été envoyées. Réessayez plus tard ou contactez la mosquée.",
+      yogunluk: 'Nous avons reçu un très grand nombre de demandes aujourd’hui. Vos informations n’ont pas été envoyées ; réessayez plus tard ou écrivez à info@ulucamii.be.',
       zorunlu: 'Ce champ est obligatoire.',
       eposta: 'Indiquez une adresse e-mail valide (exemple : nom@exemple.be).',
       telefon: 'Indiquez un numéro de téléphone valide (exemple : 0470 12 34 56 ou +32 470 12 34 56).',

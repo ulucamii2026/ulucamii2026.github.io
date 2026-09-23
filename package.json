@@ -18,7 +18,7 @@
     "test:oto-kaydet": "node --test tests/oto-kaydet.test.mjs",
     "test:ogrenme": "node --test tests/ogrenme-ilerleme.test.mjs tests/hoca-kitaplari.test.mjs",
     "test:imza": "node scripts/ek9-imza-zinciri.mjs",
-    "test:kayit": "node --test tests/kayit-imza.test.mjs",
+    "test:kayit": "node --test tests/kayit-imza.test.mjs tests/basvuru-siniri.test.mjs",
     "test:duzelt": "node --test tests/kayit-duzelt.test.mjs",
     "test:gunluk": "node --test tests/kurs-gunlugu.test.mjs",
     "test:kaliplar": "node --test tests/defter-kaliplari.test.mjs tests/haftalik-odev.test.mjs",

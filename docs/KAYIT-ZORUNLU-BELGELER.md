@@ -27,7 +27,7 @@ imzasız veya kimliksiz yeni kayıt oluşturamaz. İhtida formunun akışı değ
 
 - `src/components/formlar/KayitFormu.astro`, `src/scripts/kayit-form.ts`,
   `src/scripts/kayit-etkilesim.ts`; TR/FR/EN form ve gizlilik açıklamaları.
-- `scripts/apps-script/ulucamii-Kod-v39.gs`; sağlık yanıtında
+- `scripts/apps-script/ulucamii-Kod-v40.gs`; sağlık yanıtında
   `kayitBelgeleriZorunlu: true`. GAS sürümü site yayınından ayrı doğrulanır.
 - `tests/kayit-imza.test.mjs`, `tests/kayit-duzelt.test.mjs`,
   `tests/veli-eposta-dili.test.mjs`, `tests/web/kayit-v3-inceleme.spec.mjs`.

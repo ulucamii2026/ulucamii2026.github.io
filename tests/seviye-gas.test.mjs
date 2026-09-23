@@ -27,7 +27,7 @@ const seviyePaketi = buildSync({
 }).outputFiles[0].text;
 
 const kaynak = [
-  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs'),
+  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v40.gs'),
   gs('veli-mail-listesi.gs'), gs('seviye-testi-isleri.gs'), seviyePaketi,
 ].join('\n;\n');
 
@@ -552,7 +552,7 @@ test('Panel anahtarı tanımsızken gömülü yer tutucu seviye uçlarını AÇM
 test('Sağlık yanıtı seviye testini ve banka sürümünü bildirir; paket yoksa uç kapalıdır', () => {
   const o = ortam();
   const saglik = o.get({});
-  assert.equal(saglik.surum, 39);
+  assert.equal(saglik.surum, 40);
   assert.equal(saglik.seviyeTesti, true);
   assert.equal(saglik.seviyeBankaSurumu, SORU_BANKASI_SURUMU);
 
@@ -562,7 +562,7 @@ test('Sağlık yanıtı seviye testini ve banka sürümünü bildirir; paket yok
     ContentService: { createTextOutput: t => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } },
     PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v40.gs')].join('\n;\n'), ctx);
   const yanit = JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ tur: 'seviye' }) } }).getContent());
   assert.deepEqual(yanit, { ok: false, hata: 'seviye-hazir-degil' });
   assert.equal(JSON.parse(ctx.doGet({ parameter: {} }).getContent()).seviyeTesti, false);
@@ -577,7 +577,7 @@ test('epostaGonder: yedeksiz:true Brevo düşünce MailApp\'e düşmez; seçenek
     MailApp: { sendEmail: m => gonderilen.push(m) },
     UrlFetchApp: { fetch: () => ({ getResponseCode: () => 500, getContentText: () => 'hata' }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v40.gs')].join('\n;\n'), ctx);
   const rapor = { to: 'imam@ulucamii.be', subject: 'Rapor', body: 'x', kurum: 'cami', yedeksiz: true };
   assert.throws(() => ctx.epostaGonder(rapor), /Brevo HTTP 500/);
   assert.equal(gonderilen.length, 0, 'yedeksiz ileti MailApp\'e düşmez');
@@ -593,7 +593,7 @@ test('epostaGonder: yedeksiz:true Brevo düşünce MailApp\'e düşmez; seçenek
     PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) },
     MailApp: { sendEmail: () => { throw new Error('MailApp cagrilmamaliydi'); } },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v39.gs')].join('\n;\n'), ctx2);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v40.gs')].join('\n;\n'), ctx2);
   assert.throws(() => ctx2.epostaGonder({ to: 'imam@ulucamii.be', subject: 'x', body: 'x', kurum: 'cami', yedeksiz: true }), /brevo-anahtari-yok/);
 });
 

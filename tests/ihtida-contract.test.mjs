@@ -15,7 +15,7 @@ import { dilekceUret } from '../public/admin/dilekce.js';
 import { camiCoz } from '../public/admin/cami-secimi.js';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v39.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v40.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
@@ -130,7 +130,7 @@ test('Defter ve bildirim teslim seçimini kaybetmez; eski sütun sırası deği�
   let satir;
   c.json = x => x;
   c.ihtidaKlasorGetir = () => ({ createFile: () => ({ getUrl: () => 'https://example.test/arsiv' }) });
-  c.ihtidaV2SayfaGetir = () => ({ getParent: () => ({ getUrl: () => 'https://example.test/defter' }) });
+  c.ihtidaV2SayfaGetir = () => ({ getLastRow: () => 1, getParent: () => ({ getUrl: () => 'https://example.test/defter' }) }); // v40: boş defter — hacim sınırı sayacak satır yok
   c.ihtidaV2AnahtarBul = () => null; c.ihtidaV2AnahtarKaydet = () => {};
   c.ihtidaPaketKuyrugaAl = () => {}; c.ihtidaPaketIsle = async () => {};
   c.v1SayfaBulTablo = () => null; c.referansMaxBul = () => 9999;

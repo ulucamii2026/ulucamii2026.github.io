@@ -38,6 +38,7 @@ export interface OrtakMetinler {
     zamanAsimi: string;
     isleniyor: string;
     servisHazirDegil: string;
+    yogunluk: string;              // v40 (23 Eyl 2026): sunucu hacim sınırı — gunluk-sinir / eposta-gunluk-sinir / cok-sik
   };
   basari: {
     baslik: string;

@@ -22,6 +22,7 @@ export const de: FormMetinleri = {
     seciniz: 'Bitte wählen',
     hata: {
       servisHazirDegil: 'Der Antragsdienst wird gerade aktualisiert. Ihre Angaben wurden nicht gesendet. Bitte versuchen Sie es später erneut oder wenden Sie sich an die Moschee.',
+      yogunluk: 'Heute sind sehr viele Anträge eingegangen. Ihre Angaben wurden nicht gesendet; bitte versuchen Sie es später erneut oder schreiben Sie an info@ulucamii.be.',
       zorunlu: 'Dieses Feld ist ein Pflichtfeld.',
       eposta: 'Bitte geben Sie eine gültige E-Mail-Adresse an (Beispiel: name@beispiel.be).',
       telefon: 'Bitte geben Sie eine gültige Telefonnummer an (Beispiel: 0470 12 34 56 oder +32 470 12 34 56).',

@@ -20,6 +20,7 @@ export const tr: FormMetinleri = {
     seciniz: 'Seçiniz',
     hata: {
       servisHazirDegil: "Başvuru sistemi şu anda güncelleniyor. Bilgileriniz gönderilmedi; lütfen daha sonra tekrar deneyin veya camimizle iletişime geçin.",
+      yogunluk: 'Bugün çok sayıda başvuru alındı. Bilgileriniz gönderilmedi; lütfen daha sonra tekrar deneyin veya info@ulucamii.be adresine yazın.',
       zorunlu: 'Bu alan zorunludur.',
       eposta: 'Geçerli bir e-posta adresi yazın (örnek: ad@ornek.be).',
       telefon: 'Geçerli bir telefon numarası yazın (örnek: 0470 12 34 56 veya +32 470 12 34 56).',

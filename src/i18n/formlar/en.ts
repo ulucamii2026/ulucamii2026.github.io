@@ -20,6 +20,7 @@ export const en: FormMetinleri = {
     seciniz: 'Please select',
     hata: {
       servisHazirDegil: "The application service is being updated. Your information has not been sent. Please try again later or contact the mosque.",
+      yogunluk: 'We have received a very large number of applications today. Your information has not been sent; please try again later or write to info@ulucamii.be.',
       zorunlu: 'This field is required.',
       eposta: 'Enter a valid e-mail address (example: name@example.be).',
       telefon: 'Enter a valid phone number (example: 0470 12 34 56 or +32 470 12 34 56).',

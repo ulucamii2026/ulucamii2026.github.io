@@ -35,7 +35,9 @@ const dogumMin = tarihStr(new Date(bugun.getFullYear() - 110, 0, 1));
 const dogumMax = tarihStr(new Date(bugun.getFullYear() - 16, bugun.getMonth(), bugun.getDate()));
 
 const metinJson = JSON.stringify({
-  hata: o.hata, basari: { gonderiliyor: o.gonderiliyor, epostaGitti: h.paketBildirimi },
+  // v40 (23 Eyl 2026): sunucu hacim sınırının üç kodu aynı yerelleştirilmiş iletiye düşer (başvuru gönderilmemiştir).
+  hata: { ...o.hata, 'sunucu:gunluk-sinir': o.hata.yogunluk, 'sunucu:eposta-gunluk-sinir': o.hata.yogunluk, 'sunucu:cok-sik': o.hata.yogunluk },
+  basari: { gonderiliyor: o.gonderiliyor, epostaGitti: h.paketBildirimi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
 });
 

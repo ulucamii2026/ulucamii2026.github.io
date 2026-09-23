@@ -22,6 +22,7 @@ export const nl: FormMetinleri = {
     seciniz: 'Maak een keuze',
     hata: {
       servisHazirDegil: 'De aanvraagdienst wordt momenteel bijgewerkt. Uw gegevens zijn niet verzonden. Probeer het later opnieuw of neem contact op met de moskee.',
+      yogunluk: 'We hebben vandaag zeer veel aanvragen ontvangen. Uw gegevens zijn niet verzonden; probeer het later opnieuw of schrijf naar info@ulucamii.be.',
       zorunlu: 'Dit veld is verplicht.',
       eposta: 'Geef een geldig e-mailadres op (voorbeeld: naam@voorbeeld.be).',
       telefon: 'Geef een geldig telefoonnummer op (voorbeeld: 0470 12 34 56 of +32 470 12 34 56).',
