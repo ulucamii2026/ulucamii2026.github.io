@@ -627,7 +627,7 @@ async function basvuruYukle(sessiz) {
 /* Panel HER ZAMAN Kur'an kursu kayıtlarıyla açılır. Önceden "boş sekmede kalınmasın"
    diye dolu olan listeye kendiliğinden geçiliyordu; kayıt 0, ihtida 1 olduğu için panel
    İhtida Başvuruları ekranıyla açılıyor ve iki defter karışmış gibi görünüyordu
-   (26 Ağustos 2026, Rıdvan bildirdi). Hangi defterde olduğun her zaman seçili sekmeden
+   (26 Ağustos 2026, yönetici bildirdi). Hangi defterde olduğun her zaman seçili sekmeden
    ve rozetlerden okunur; sekmeyi kullanıcı değiştirir, panel değil. */
 function rozetleriYaz() {
   /* Satır değil ÖĞRENCİ sayılır: düzeltilmiş bir kayıt defterde iki satırdır. */
@@ -669,7 +669,7 @@ const sut = (basliklar, ...adaylar) => {
   return -1;
 };
 
-/* SÜRÜM GRUPLAMA (27 Ağustos 2026, Rıdvan bildirdi).
+/* SÜRÜM GRUPLAMA (27 Ağustos 2026, yönetici bildirdi).
    Bir kaydın düzeltilmesi deftere YENİ bir satır yazar (UC-2026-0002 → -R2) ve
    eskisini "Güncellendi →" diye işaretler; defter böylece bir denetim izi olur ve
    bu doğru bir tasarımdır. Ama panel her satırı ayrı kart olarak çiziyordu: aynı
