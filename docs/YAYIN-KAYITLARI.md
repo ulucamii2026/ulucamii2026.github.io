@@ -4,6 +4,16 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Eylül 2026 — Kur'an kursu müfredatı ders kitaplarına göre yenilendi (26 Eylül'den itibaren)
+
+- Zaman: 24 Eylül 2026 ≈ 20:05 (istek) – 20:35 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının yeni yıllık planı onaylayıp «web sitesindeki sunumlar, müfredat, her şey güncellensin» demesi (kurs üretim oturumundan, kullanıcının açık isteğiyle).
+- Kapsam: yıllık plan (İtikat/İbadet/Siyer/Ahlak Camiye Gidiyorum 1-2 + Temel Dinî Bilgiler sayfalarına göre, Kur'an satırı Elifbâ sayfası; 87 gün / 261 ders), müfredat sayfası + bağımsız HTML + PDF (43 → 41 s.) + MD, hoca ekranı ders defteri verisi (261 konu/kaynak, 89 dersin hedef/etkinliği), 84 yeni başlığın FR/EN sözlüğü, 26-27 Eyl ve 3-4 Eki sunumlarının kapakta kitap/sayfa satırlı yeni sürümleri.
+- Değişen dosyalar: `src/data/{yillik-plan-2026-2027.json, mufredat-2026-2027.html, mufredat-meta.json, ders-defteri-2026-2027.json, konular-fr.json, konular-en.json, ders-konu-fr.ts, ders-materyalleri.json}`, `public/belgeler/kuran-kursu/{mufredat-2026-2027.html, Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf}`, `docs/kuran-kursu-{mufredati,yillik-plan-ozetli}-2026-2027.md`. Üretici: `D:/app/marche-cami-sitesi/mufredat/` (`revizyon-uygula.py` yeni; `yillik-plan-cikar.py` artık `indent=1` yazar).
+- İçerik commit'i `a4b802b` (push `41eddc0..a4b802b`). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36041808956> — **success** (20:33).
+- Release: `ders-2026-09-26`, `-09-27`, `-10-03`, `-10-04` — her birine 12 dosya (1'i güncel, atlandı). Canlı indirme: 24/24 sunum dosyası SHA-256 eşit; müfredat PDF'i canlı = yerel (611 028 B). Kayıt formu eki: Apps Script `mufredat-yukle` → Drive kopyası 611 028 B (`mufredat-sina` doğruladı).
+- Testler: `npm run check` 0 hata; `npm run dogrula` geçti; `mufredat-test.py` 52/57 (kalan 5 kaydırma testi canlıda da aynı, önceden var; sabit «43 sayfa» kontrolü `mufredat-meta.json`'dan okunur hâle getirildi). OneDrive: 28/28 dosya eşit.
+- Açık sınırlar: öğrenci defterleri yeniden üretilmedi; hoca ekranı `sayfa` +4 kayması bu yayında ele alınmadı. Ayrıntı: kurs projesi `belgeler/YAYIN-RAPORU-2026-09-24-MUFREDAT-REVIZYONU.md`.
+
 ## 23 Eylül 2026 (2) — hoca portalındaki Camiye Gidiyorum kitapları A4 baskı sürümleriyle yenilendi
 
 - Zaman: 23 Eylül 2026 21:55 (istek) – 22:12 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının talimatı («hoca portalındaki kitapları güncelle bu dosyadaki en güncel versiyonları ile, eskileri at gitsin»).
