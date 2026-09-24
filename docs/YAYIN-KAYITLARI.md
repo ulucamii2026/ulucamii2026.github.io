@@ -20,7 +20,8 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - İçerik commit'i `97f52ff` (push `0216ef4..97f52ff`). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36058544951> — **success** (23:01:44).
 - Canlı doğrulama: `https://ulucamii.be/tr/vaaz/gurbette-komsuluk/` 200; `/vaazlar/gurbette-komsuluk.docx` 61 991 B ve `.pdf` 4 750 456 B, SHA-256 yerel kopyayla eşit; `/tr/vaazlar/` listesinde görünüyor.
 - Testler: `npm run check` 0 hata / 0 uyarı; `npx astro build` 1890 sayfa; derlenmiş sayfada imam telefonu 0; 390 ve 1280 px'te yatay taşma 0 (Playwright). Word belgesinde metinli 480 run'ın hepsi dil etiketli (tr-TR/ar-SA), PDF'te raster görsel 0.
-- Açık sınırlar: `npm run dogrula` tam zinciri koşturulmadı (yalnız check + build). Hadis atıfları araştırma ajanıyla doğrulandı; Kurtubî V/188, Kur'an Yolu II/65-66 ve Ebû Dâvûd Et'ime 9 kullanıcının özgün metninden aynen alındı. Ek bulgu (bu yayından bağımsız): site genelindeki bir satır içi yorum her sayfada kullanıcının adını içeriyor («animasyon efektleri… (Rıdvan'ınki dâhil)») — aynı gece (3) numaralı kayıtla temizlendi.
+- Tam zincir: `npm run dogrula` 25 Eylül 2026 ≈ 00:05'te sonradan koşturuldu — çıkış 0; 1890 sayfa derlendi, site denetimi 1899 sayfa / 2892 iç bağlantı temiz, node testleri 181 geçti / 0 kaldı.
+- Açık sınırlar: Hadis atıfları araştırma ajanıyla doğrulandı; Kurtubî V/188, Kur'an Yolu II/65-66 ve Ebû Dâvûd Et'ime 9 kullanıcının özgün metninden aynen alındı. Ek bulgu (bu yayından bağımsız): site genelindeki bir satır içi yorum her sayfada kullanıcının adını içeriyor («animasyon efektleri… (Rıdvan'ınki dâhil)») — aynı gece (3) numaralı kayıtla temizlendi.
 
 ## 24 Eylül 2026 — Kur'an kursu müfredatı ders kitaplarına göre yenilendi (26 Eylül'den itibaren)
 
