@@ -44,6 +44,8 @@ kalıcı kuraldır; işlem günlüğü ayrı dosyada tutulur.
 - Veli/hoca portalı: `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts`,
   `src/lib/firebase.ts`, `src/pages/hoca`, `firebase/`.
 - Form backend'i: `scripts/apps-script/`; yerel sürüm numarası canlı sürüm kanıtı değildir.
+- Kur'an kursu yıllık planı/müfredatı değişirse (24 Eylül 2026 kitap-sayfa revizyonu dahil) önce
+  `docs/MUFREDAT-VE-YILLIK-PLAN.md`: plan JSON'u elle düzenlenmez; bağımlı dosyalar ve sıra oradadır.
 - `ulucamii-site` becerisini oku; hesap, içerik ve operasyon ayrıntılarında kullan.
   Özel tarihçe notlarında sır bulunabilir: yalnız gereken bölümü incele, kopyalama.
 - Arayüz/tasarım işinde `impeccable`; kütüphane API'sinde Context7;
