@@ -4,6 +4,16 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Eylül 2026 (2) — «Gurbette Komşuluk» vaazı (25 Eylül Cuma) yayımlandı
+
+- Zaman: 24 Eylül 2026 ≈ 22:40 (istek) – 23:02 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının vaaz oturumundaki açık talimatı («web sitemizde bu vaazı yayınla»; vaaz skill'inin «yayın ayrı oturumda» kuralı hatırlatıldı, kullanıcı «bu oturumda yayınla, notları bütün oturumların görebileceği yerlere yaz» dedi).
+- Kapsam: `vaazlar` koleksiyonuna yeni vaaz — web okuma sayfası + indirilebilir Word/PDF (14 sayfa, Avrupa Kürsü Vaaz ve İrşat Rehberi biçimi). Kategori `toplum`, ~3 300 kelime. Kürsü nüshasındaki künye/zamanlama/kavram tabloları ve «hatip notu» kutuları web sayfasına alınmadı.
+- Değişen dosyalar: `src/content/vaazlar/gurbette-komsuluk.md`, `public/vaazlar/gurbette-komsuluk.{docx,pdf}`. Üretim: `~/.claude/skills/vaaz-mukemmel/scripts/{ornek_komsuluk.py, vaaz_lib.py}`; Markdown `scripts/docx_to_md.py` ile docx'ten türetildi (elle yazılmadı).
+- İçerik commit'i `97f52ff` (push `0216ef4..97f52ff`). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36058544951> — **success** (23:01:44).
+- Canlı doğrulama: `https://ulucamii.be/tr/vaaz/gurbette-komsuluk/` 200; `/vaazlar/gurbette-komsuluk.docx` 61 991 B ve `.pdf` 4 750 456 B, SHA-256 yerel kopyayla eşit; `/tr/vaazlar/` listesinde görünüyor.
+- Testler: `npm run check` 0 hata / 0 uyarı; `npx astro build` 1890 sayfa; derlenmiş sayfada imam telefonu 0; 390 ve 1280 px'te yatay taşma 0 (Playwright). Word belgesinde metinli 480 run'ın hepsi dil etiketli (tr-TR/ar-SA), PDF'te raster görsel 0.
+- Açık sınırlar: `npm run dogrula` tam zinciri koşturulmadı (yalnız check + build). Hadis atıfları araştırma ajanıyla doğrulandı; Kurtubî V/188, Kur'an Yolu II/65-66 ve Ebû Dâvûd Et'ime 9 kullanıcının özgün metninden aynen alındı. Ek bulgu (bu yayından bağımsız): site genelindeki bir satır içi yorum her sayfada kullanıcının adını içeriyor («animasyon efektleri… (Rıdvan'ınki dâhil)») — ayrı işte temizlenmeli.
+
 ## 24 Eylül 2026 — Kur'an kursu müfredatı ders kitaplarına göre yenilendi (26 Eylül'den itibaren)
 
 - Zaman: 24 Eylül 2026 ≈ 20:05 (istek) – 20:35 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının yeni yıllık planı onaylayıp «web sitesindeki sunumlar, müfredat, her şey güncellensin» demesi (kurs üretim oturumundan, kullanıcının açık isteğiyle).
