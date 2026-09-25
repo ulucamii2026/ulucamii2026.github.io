@@ -11,6 +11,14 @@ export default defineConfig({
   site: 'https://ulucamii.be',
   output: 'static',
   trailingSlash: 'always',
+  // 21 Eylül'deki eğitim yardımı duyurusu 25 Eylül'de güncel duyuruyla birleştirildi; eski adres paylaşılmış olabilir.
+  redirects: {
+    '/tr/duyurular/egitim-yardimi-kampanyasi-2026/': '/tr/duyurular/egitim-kampanyasi-2026/',
+    '/fr/annonces/egitim-yardimi-kampanyasi-2026/': '/fr/annonces/egitim-kampanyasi-2026/',
+    '/en/announcements/egitim-yardimi-kampanyasi-2026/': '/en/announcements/egitim-kampanyasi-2026/',
+    '/nl/mededelingen/egitim-yardimi-kampanyasi-2026/': '/nl/mededelingen/egitim-kampanyasi-2026/',
+    '/de/mitteilungen/egitim-yardimi-kampanyasi-2026/': '/de/mitteilungen/egitim-kampanyasi-2026/',
+  },
   integrations: [
     preact({ compat: false }),
     sitemap({
