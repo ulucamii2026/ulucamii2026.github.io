@@ -513,3 +513,14 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - İçerik commit'i `61bde97dcf563b04c3968c43f9eb6aceff147ae0`; Pages [35455560570](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/35455560570) başarılı.
 - Yayın sonrası kanıt: 65/65 canlı Release indirmesi HTTP 200 ve SHA-256 eşleşmesi; OneDrive yerel 55/55 SHA-256 eşleşmesi. TR/FR/EN canlı ve yerel kontrollerde her gün 13 bağlantı, altısı öğretici; 320/390/1440 px taşma 0, açık/koyu temada ciddi/kritik ihlal 0 ve klavye odağı geçer.
 - Özel veli iletileri ve öğrenciye özel meşk defterleri kamuya açık yayına dahil edilmedi; kişisel bilgiler bu depoya alınmadı.
+
+## 25 Eylül 2026 — Eğitim Kampanyası duyurusu (cuma sonrası yardım + 2027 hac hatırlatması)
+
+- Tarih/saat: 25 Eylül 2026, 13:37 (Europe/Brussels) push; Pages yayını ~13:40.
+- Kapsam: Müşavirliğin 21.09.2026 tarihli E-83253331-814-8175167 sayılı yazısı ve Müşavir Beyin 25 Eylül mesajı üzerine TR + FR duyuru `egitim-kampanyasi-2026` (kapak görseli, bugün vurgusu, Müşavirlik aktarım hesabı, resmî yazı PDF bağlantısı, 2027 hac kayıtları hatırlatması → `2027-hac-kayitlari-devam-ediyor`). 21 Eylül'deki `egitim-yardimi-kampanyasi-2026` duyurusu bununla birleştirildi; eski adres beş dilde `astro.config.mjs → redirects` ile yeni duyuruya yönlenir.
+- Değişen yollar: `src/content/duyurular/{tr,fr}/egitim-kampanyasi-2026.md` (yeni), `src/content/duyurular/{tr,fr}/egitim-yardimi-kampanyasi-2026.md` (silindi), `astro.config.mjs`, `public/media/afisler/egitim-kampanyasi-2026{,-thumb}.webp` (SHA-256 `b0839ba0d8296c8e…` / `004f581a1c775333…`), ana sayfa görsel temel resimleri (6 PNG).
+- İçerik commit'i `7675c6a42a97fbe659183a26b0dff2802d452849`; Pages [36130405303](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36130405303) başarılı.
+- Testler: `npm run dogrula:codex` tamamı geçti (web 616/616; önceki koşuda yalnız ana sayfa görsel temel resimleri yeni gündem kartı nedeniyle farklıydı, `--update-snapshots` ile yenilendi).
+- Canlı kontrol: `/tr/duyurular/egitim-kampanyasi-2026/`, `/fr/annonces/egitim-kampanyasi-2026/`, kapak WebP → HTTP 200; başlık, IBAN ve «30 Ekim 2026» metni sayfada; eski TR adresi `url=/tr/duyurular/egitim-kampanyasi-2026/` yönlendirmesi veriyor; `/tr/` ana sayfa gündeminde duyuru var.
+- Sosyal medya: Facebook «Mosquée Ulu Camii» profilinde TR+FR gönderi (1080×1350 görsel, Public, zaman tünelinde doğrulandı) ve 24 saatlik durum (1080×1920). Görsellerin kaynağı oturum çalışma alanındaki HTML/Playwright üreticisi; depoya alınmadı.
+- Açık sınırlar: duyuru 26 Eylül'de öne çıkandan düşer (`oneCikanSon`/`vitrinSon`). Toplanan tutar ve havale dekontu dernek başkanlığında; siteye yazılmaz.
