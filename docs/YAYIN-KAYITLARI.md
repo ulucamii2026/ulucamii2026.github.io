@@ -524,3 +524,17 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - Canlı kontrol: `/tr/duyurular/egitim-kampanyasi-2026/`, `/fr/annonces/egitim-kampanyasi-2026/`, kapak WebP → HTTP 200; başlık, IBAN ve «30 Ekim 2026» metni sayfada; eski TR adresi `url=/tr/duyurular/egitim-kampanyasi-2026/` yönlendirmesi veriyor; `/tr/` ana sayfa gündeminde duyuru var.
 - Sosyal medya: Facebook «Mosquée Ulu Camii» profilinde TR+FR gönderi (1080×1350 görsel, Public, zaman tünelinde doğrulandı) ve 24 saatlik durum (1080×1920). Görsellerin kaynağı oturum çalışma alanındaki HTML/Playwright üreticisi; depoya alınmadı.
 - Açık sınırlar: duyuru 26 Eylül'de öne çıkandan düşer (`oneCikanSon`/`vitrinSon`). Toplanan tutar ve havale dekontu dernek başkanlığında; siteye yazılmaz.
+
+
+## 26 Eylül 2026 — 26–27 Eylül derslerine hızlı başlangıç rehberi
+
+- Tarih/saat: 2026-09-26T11:11:23+02:00, Europe/Brussels (+02:00); kullanıcının iki günü geliştirme ve webde güncelleme talimatı.
+- Kapsam: iki günlük plan PDF'si 15→16 sayfa; TR/FR kitap/sayfa, hazırlık ve kısa değerlendirme rehberi eklendi. Aynı rehber ayrı PDF olarak sunuldu; sunumlar ve sesler değişmedi.
+- Site dosyası: `src/data/ders-materyalleri.json`. Kaynak: `D:/ulu-camii-kuran-kursu/scripts/ders-plani-2026-09-26.js`, `ders-plani-2026-09-27.js`, `hizli-baslangic-pdf.py`, `onedrive-kopyala.sh`; iki günün plan DOCX/PDF ve ekler klasörleri.
+- İçerik commit'i `43cc77d9aa9a2fa0f1cb487418672913cf84e548`; [Pages 36231817134](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36231817134) başarılı. Hazırlık → Release yükleme → push → başarılı deploy → canlı sayfa doğrulaması tamamlandı.
+- Release etiketleri `ders-2026-09-26`, `ders-2026-09-27`; her biri 14 dosya. Gün başına güncel plan PDF + yeni rehber yüklendi, 12 mevcut dosya korundu. 28/28 canlı indirme HTTP 200 ve SHA-256 yerel dosyayla eşit.
+- Canlı [26 Eylül](https://ulucamii.be/tr/ders-materyalleri/#g-2026-09-26), [27 Eylül](https://ulucamii.be/tr/ders-materyalleri/#g-2026-09-27); TR/FR/EN sayfalarda her güne 14 bağlantı ve bir rehber doğrulandı.
+- Kontroller: materyal denetimleri temiz; 134 öğrenci/öğretici slayt eşleşmesi, 7 gömülü oyun denetimi, 32 plan sayfası ve altı sunum görsel incelemesi. OneDrive yerel 24/24 SHA-256 eşit; bulut eşitlemesi ayrıca teyit edilmedi.
+- `npm run dogrula:codex`: design:check, check, dogrula, kurallar, veli-eposta, oto-kaydet, ogrenme geçti. Web 604 geçti / 12 ana sayfa görsel temel resim karşılaştırması başarısız; komut exit 1. Eski resimde ilk sıradaki din görevlisi sınav duyurusunun `vitrinSon`/`oneCikanSon` değeri 25 Eylül olduğundan 26 Eylül'de kurs duyurusu ilk sıraya geldi; gerçek/temel görüntüler karşılaştırılarak doğrulandı. Kapsam dışı temel resimler değiştirilmedi.
+- Açık sınır: sınıfta fiziksel ses/projeksiyon ve güncel PowerPoint canlı tıklama denemesi yapılmadı. Kişisel veli/öğrenci verisi yayına dahil edilmedi.
+- Kaynak rapor: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-09-26-HIZLI-BASLANGIC.md`; kanıt `scratchpad/hazirlik-2026-09-26/`. Kurs yayın indeksi ve DEVAM.md güncellendi. Bu kaydın belge commit'i ayrı izlenir.
