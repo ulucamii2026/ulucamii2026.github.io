@@ -13,7 +13,10 @@ assert.equal(process.env.GCLOUD_PROJECT, 'demo-ulucamii', 'Yalnız demo projesi 
 setLogLevel('silent'); // Beklenen permission-denied denemeleri günlükleri şişirmesin.
 let env;
 let portal;
-const parent = () => env.authenticatedContext('veli-a', { email: 'veli-a@example.test' }).firestore();
+// 26 Eyl 2026: e-postaya dayanan roller doğrulanmış e-posta ister; gerçek veli ilk girişi e-posta bağlantısıyla yapar.
+// Hoca rolü uid'ye bağlıdır: teacher() bilerek doğrulama alanı taşımaz.
+const veli = (uid, email) => env.authenticatedContext(uid, { email, email_verified: true }).firestore();
+const parent = () => veli('veli-a', 'veli-a@example.test');
 const teacher = () => env.authenticatedContext('hoca-a', { email: 'hoca@example.test' }).firestore();
 const dYol='dersDefteri/ogrenci-a/kayitlar/2026-09-05_1';
 const dersKaydi=(extra={})=>({donem:'2026-2027',tarih:'2026-09-05',sira:1,no:1,sayfa:51,konu:'Örnek konu',kaynak:'Örnek kitap',grup:'',durum:'islendi',giris:'kagit',calisma:'Örnek çalışma',okunan:'',dikkat:'',oz:'',odev:'Tekrar',sonraki:'Birlikte okuyalım',surum:1,guncelleme:serverTimestamp(),...extra});
@@ -37,7 +40,7 @@ test('Kitap çözme anahtarı yalnız hocaya açık; veli ve ziyaretçi okuyamaz
    await setDoc(doc(context.firestore(),'ayarlar','hocaKitaplari'),{anahtarlar:{ornek:'yalniz-test-anahtari'}});
  });
  await assertSucceeds(read(teacher(),'ayarlar/hocaKitaplari'));
- for(const db of [parent(),env.unauthenticatedContext().firestore(),env.authenticatedContext('yetkisiz',{email:'yetkisiz@example.test'}).firestore()]){
+ for(const db of [parent(),env.unauthenticatedContext().firestore(),veli('yetkisiz', 'yetkisiz@example.test')]){
   await assertFails(read(db,'ayarlar/hocaKitaplari'));
   await assertFails(setDoc(doc(db,'ayarlar/hocaKitaplari'),{anahtarlar:{}}));
  }
@@ -46,7 +49,7 @@ test('Kitap çözme anahtarı yalnız hocaya açık; veli ve ziyaretçi okuyamaz
 test('Ders defteri yalnız hocaya açık; veli kendi çocuğunun özel ders notunu da okuyamaz',async()=>{
  await assertSucceeds(setDoc(doc(teacher(),dYol),dersKaydi()));
  await assertSucceeds(read(teacher(),dYol));
- for(const db of [parent(),env.unauthenticatedContext().firestore(),env.authenticatedContext('veli-b',{email:'veli-b@example.test'}).firestore()]){
+ for(const db of [parent(),env.unauthenticatedContext().firestore(),veli('veli-b', 'veli-b@example.test')]){
   await assertFails(read(db,dYol));await assertFails(getDocs(collection(db,'dersDefteri/ogrenci-a/kayitlar')));
   await assertFails(setDoc(doc(db,dYol),dersKaydi({surum:2})));await assertFails(deleteDoc(doc(db,dYol)));
  }
@@ -167,7 +170,7 @@ test('Anonim kullanıcı öğrenci ve duyuru okuyamaz', async () => {
   await assertFails(read(db, 'duyurular/yayinda'));
 });
 test('Kayıtsız hesap aile verisi okuyamaz', async () => {
-  await assertFails(read(env.authenticatedContext('yabanci', { email: 'yabanci@example.test' }).firestore(), 'ogrenciler/ogrenci-a'));
+  await assertFails(read(veli('yabanci', 'yabanci@example.test'), 'ogrenciler/ogrenci-a'));
 });
 test('Veli yalnız kendi öğrencisini okur', async () => {
   await assertSucceeds(read(parent(), 'ogrenciler/ogrenci-a'));
@@ -175,7 +178,7 @@ test('Veli yalnız kendi öğrencisini okur', async () => {
   await assertFails(getDocs(collection(parent(), 'ogrenciler')));
 });
 test('E-posta büyük/küçük harf normalizasyonu çalışır', async () => {
-  await assertSucceeds(read(env.authenticatedContext('veli-a', { email: 'VELI-A@EXAMPLE.TEST' }).firestore(), 'ogrenciler/ogrenci-a'));
+  await assertSucceeds(read(veli('veli-a', 'VELI-A@EXAMPLE.TEST'), 'ogrenciler/ogrenci-a'));
 });
 test('Veli öğrenci yazamaz ve silemez', async () => {
   await assertFails(setDoc(doc(parent(), 'ogrenciler/yeni'), { ad: 'Deneme' }));
@@ -279,7 +282,7 @@ test('Bülteni yalnız hoca yazar; veli yalnız kendi yayımlanmış bültenleri
  await assertSucceeds(setDoc(doc(teacher(),bYol),bulten()));
  await assertFails(setDoc(doc(parent(),bYol),bulten()));
  await assertSucceeds(read(parent(),bYol));
- await assertFails(read(env.authenticatedContext('veli-b',{email:'veli-b@example.test'}).firestore(),bYol));
+ await assertFails(read(veli('veli-b', 'veli-b@example.test'),bYol));
  await assertSucceeds(getDocs(query(collection(parent(),'bultenler/ogrenci-a/haftalar'),where('yayin','==',true))));
  await assertFails(getDocs(collection(parent(),'bultenler/ogrenci-a/haftalar')));
  await assertSucceeds(setDoc(doc(teacher(),bYol),bulten({surum:2,yayin:false})));
@@ -368,7 +371,7 @@ test('Ev çalışması yalnız bağlı aileye ve hocaya görünür; anonim, yaba
  await assertSucceeds(read(teacher(),evYol));
  await assertSucceeds(getDocs(collection(parent(),'evCalismalari/ogrenci-a/etkinlikler')));
  await assertFails(read(env.unauthenticatedContext().firestore(),evYol));
- await assertFails(read(env.authenticatedContext('veli-b',{email:'veli-b@example.test'}).firestore(),evYol));
+ await assertFails(read(veli('veli-b', 'veli-b@example.test'),evYol));
  await assertFails(getDocs(collection(parent(),'evCalismalari/ogrenci-b/etkinlikler')));
 });
 test('Ev çalışması başka öğrenci adına, katalog dışına veya öğretmen notuna yazılamaz',async()=>{
@@ -387,7 +390,7 @@ test('Ev çalışmasını veli silemez; hoca silebilir; bağlı ikinci veli okuy
  await assertSucceeds(setDoc(doc(parent(),evYol),evKayit()));
  await assertFails(deleteDoc(doc(parent(),evYol)));
  await env.withSecurityRulesDisabled(async c=>setDoc(doc(c.firestore(),'aileler/ikinci@example.test'),{ogrenciler:['ogrenci-a']}));
- await assertSucceeds(read(env.authenticatedContext('ikinci',{email:'ikinci@example.test'}).firestore(),evYol));
+ await assertSucceeds(read(veli('ikinci', 'ikinci@example.test'),evYol));
  await assertSucceeds(deleteDoc(doc(teacher(),evYol)));
 });
 
@@ -413,4 +416,46 @@ test('Ders defteri çevirisi yalnız hocaya açık; kimlik = kayıt_dil; alanlar
  await setDoc(doc(teacher(),'portalSilme/ogrenci-a'),{islem:'test',zaman:serverTimestamp()});
  await assertFails(setDoc(doc(teacher(),cYol),ceviri({kaynakSurum:3})));
  await deleteDoc(doc(teacher(),'portalSilme/ogrenci-a'));
+});
+/* 26 Eyl 2026 (Ezber Kilimi Faz 0 kural denetimi): hesap açma herkese açık. Veli henüz giriş yapmadan biri onun
+   adresiyle herkese açık kayıt ucundan DOĞRULANMAMIŞ şifreli hesap açarsa aile rolünü alamamalı. */
+test('Doğrulanmamış e-postayla açılan hesap aile rolünü alamaz', async () => {
+  const sahteler = [
+    env.authenticatedContext('saldirgan', { email: 'veli-a@example.test', email_verified: false }).firestore(),
+    env.authenticatedContext('saldirgan-2', { email: 'veli-a@example.test' }).firestore(),
+  ];
+  for (const sahte of sahteler) {
+    for (const yol of ['ogrenciler/ogrenci-a', 'aileler/veli-a@example.test', 'yoklama/a', 'ilerleme/ogrenci-a', 'degerlendirme/a',
+      'notlar/gorunur', 'odevler/yayinda', 'duyurular/yayinda', 'bildirimler/kendi', evYol]) await assertFails(read(sahte, yol));
+    await assertFails(getDocs(query(collection(sahte, 'yoklama'), where('ref', '==', 'ogrenci-a'))));
+    await assertFails(getDocs(query(collection(sahte, 'bildirimler'), where('eposta', '==', 'veli-a@example.test'))));
+    await assertFails(setDoc(doc(sahte, 'bildirimler/sahte'), message()));
+    await assertFails(updateDoc(doc(sahte, 'aileler/veli-a@example.test'), { dil: 'fr' }));
+    await assertFails(deleteDoc(doc(sahte, 'bildirimler/kendi')));
+    await assertFails(setDoc(doc(sahte, evYol), evKayit()));
+  }
+});
+/* Faz 3'te genel cemaate hesap açılacak: aileye ve hocaya bağlı olmayan doğrulanmış bir hesap hiçbir portal
+   verisine erişememeli ve kendini aile/hoca yapamamalı. */
+test('Kayıtsız doğrulanmış hesap portal verisine erişemez ve kendini yükseltemez', async () => {
+  const uye = veli('uye-1', 'uye@example.test');
+  await env.withSecurityRulesDisabled(async (context) => {
+    await setDoc(doc(context.firestore(), bYol), bulten());
+    await setDoc(doc(context.firestore(), dYol), dersKaydi({ guncelleme: Timestamp.now() }));
+  });
+  for (const yol of ['ogrenciler/ogrenci-a', 'aileler/veli-a@example.test', 'yoklama/a', 'ilerleme/ogrenci-a', 'degerlendirme/a',
+    'notlar/gorunur', 'odevler/yayinda', 'duyurular/yayinda', 'bildirimler/kendi', 'ayarlar/genel', 'hocalar/hoca-a', dYol, bYol, evYol]) {
+    await assertFails(read(uye, yol));
+  }
+  for (const ad of ['ogrenciler', 'aileler', 'yoklama', 'ilerleme', 'degerlendirme', 'notlar', 'bildirimler', 'hocalar', 'ayarlar']) {
+    await assertFails(getDocs(collection(uye, ad)));
+  }
+  for (const ad of ['odevler', 'duyurular']) await assertFails(getDocs(query(collection(uye, ad), where('yayin', '==', true))));
+  await assertFails(setDoc(doc(uye, 'aileler/uye@example.test'), { ogrenciler: ['ogrenci-a'], dil: 'tr' }));
+  await assertFails(setDoc(doc(uye, 'hocalar/uye-1'), { adSoyad: 'Sahte hoca' }));
+  await assertFails(setDoc(doc(uye, 'bildirimler/uye'), message({ eposta: 'uye@example.test' })));
+  await assertFails(setDoc(doc(uye, 'ilerleme/ogrenci-a'), { seviye: 9 }));
+  await assertFails(setDoc(doc(uye, 'yoklama/sahte'), { ref: 'ogrenci-a' }));
+  await assertFails(setDoc(doc(uye, 'portalSilme/ogrenci-a'), { islem: 'x', zaman: serverTimestamp() }));
+  await assertFails(setDoc(doc(uye, evYol), evKayit()));
 });
