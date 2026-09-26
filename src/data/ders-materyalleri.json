@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-09-24",
+  "guncelleme": "2026-09-26",
   "depo": "ulucamii2026/ulucamii2026.github.io",
   "donem": "2026-2027",
   "gunler": [
@@ -600,8 +600,8 @@
       "etiket": "ders-2026-09-26",
       "plan": {
         "dosya": "Ders-Plani-2026-09-26.pdf",
-        "boyut": 535158,
-        "sayfa": 15,
+        "boyut": 548020,
+        "sayfa": 16,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-26/Ders-Plani-2026-09-26.pdf"
       },
       "sunumlar": [
@@ -671,6 +671,16 @@
       ],
       "ekler": [
         {
+          "dosya": "Derse-Hizli-Baslangic.pdf",
+          "boyut": 156926,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
+            "fr": "Bien commencer le cours · livres et pages"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-26/Derse-Hizli-Baslangic.pdf"
+        },
+        {
           "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
           "boyut": 133733,
           "tur": "pptx",
@@ -739,8 +749,8 @@
       "etiket": "ders-2026-09-27",
       "plan": {
         "dosya": "Ders-Plani-2026-09-27.pdf",
-        "boyut": 556694,
-        "sayfa": 15,
+        "boyut": 570041,
+        "sayfa": 16,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-27/Ders-Plani-2026-09-27.pdf"
       },
       "sunumlar": [
@@ -809,6 +819,16 @@
         }
       ],
       "ekler": [
+        {
+          "dosya": "Derse-Hizli-Baslangic.pdf",
+          "boyut": 160290,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
+            "fr": "Bien commencer le cours · livres et pages"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-09-27/Derse-Hizli-Baslangic.pdf"
+        },
         {
           "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
           "boyut": 137618,
