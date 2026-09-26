@@ -9,9 +9,14 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{db}/documents {
     function girisli() { return request.auth != null && request.auth.token.email != null; }
+    /* 26 Eyl 2026: e-postaya dayanan her yetki DOĞRULANMIŞ e-posta ister. Veli hesabını ilk e-posta
+       bağlantısıyla kendisi açar (bağlantı adresi doğrular). Ama hesap açma herkese açık olduğundan biri,
+       henüz giriş yapmamış bir velinin adresiyle herkese açık web anahtarı üzerinden doğrulanmamış bir
+       şifreli hesap açıp aile rolünü alabiliyordu. Hoca rolü uid'ye bağlıdır; bundan etkilenmez. */
+    function dogrulanmis() { return girisli() && request.auth.token.email_verified == true; }
     function eposta() { return request.auth.token.email.lower(); }
     function hoca() { return girisli() && exists(/databases/$(db)/documents/hocalar/$(request.auth.uid)); }
-    function aile() { return girisli() && exists(/databases/$(db)/documents/aileler/$(eposta())); }
+    function aile() { return dogrulanmis() && exists(/databases/$(db)/documents/aileler/$(eposta())); }
     function aileOgrencileri() { return get(/databases/$(db)/documents/aileler/$(eposta())).data.ogrenciler; }
     function veliOkur(ref) { return aile() && ref in aileOgrencileri(); }
     function islemeAcik(ref) { return !exists(/databases/$(db)/documents/portalSilme/$(ref)); }
@@ -109,10 +114,10 @@ service cloud.firestore {
       allow read, write: if hoca();
     }
     match /aileler/{ep} {
-      allow read: if hoca() || (girisli() && eposta() == ep);
+      allow read: if hoca() || (dogrulanmis() && eposta() == ep);
       allow create, delete: if hoca();
       allow update: if hoca()
-        || (girisli() && eposta() == ep
+        || (dogrulanmis() && eposta() == ep
             && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['dil', 'cep', 'adSoyad', 'sonGiris', 'sifreVar', 'kitapSecim']));
     }
     match /ogrenciler/{ref} {
@@ -185,7 +190,7 @@ service cloud.firestore {
           && (!('dil' in d) || d.dil in ['tr', 'fr', 'en'])
           && (!('tarih' in d) || d.tarih == null || (d.tarih is string && d.tarih.size() <= 10));
       }
-      allow read: if hoca() || (girisli() && resource.data.eposta == eposta());
+      allow read: if hoca() || (dogrulanmis() && resource.data.eposta == eposta());
       allow create: if aile()
         && islemeAcik(request.resource.data.ref)
         && veliAlanlari()
@@ -207,7 +212,7 @@ service cloud.firestore {
           && request.resource.data.tur in ['mazeret', 'iletisim', 'soru']
           && islemeAcik(request.resource.data.ref)
           && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000));
-      allow delete: if hoca() || (girisli() && resource.data.eposta == eposta());
+      allow delete: if hoca() || (dogrulanmis() && resource.data.eposta == eposta());
     }
   }
 }
