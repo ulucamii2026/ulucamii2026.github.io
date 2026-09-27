@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /ekran/
 Sitemap: https://ulucamii.be/sitemap-index.xml
