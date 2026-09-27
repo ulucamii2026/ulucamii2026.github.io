@@ -1,0 +1,23 @@
+---
+/** Bulunamayan sayfa: tek sayfa, beş dilde kısa yol gösterici (dil öneki bilinmediğinden hepsi birlikte). */
+import { dilListesi } from '@ortak/i18n/utils';
+import { metin } from '../i18n/metinler';
+import Taban from '../layouts/Taban.astro';
+
+const tr = metin('tr');
+---
+<Taban dil="tr" baslik={tr.bulunamadi} aciklama={tr.bulunamadiMetin} noindex>
+  <section class="bolum bulunamadi" aria-labelledby="baslik">
+    <div class="icerik">
+      <div class="bolum-bas">
+        <h1 id="baslik">{tr.bulunamadi}</h1>
+        <p>{tr.bulunamadiMetin}</p>
+      </div>
+      <ul class="dil-yollari">
+        {dilListesi.map((d) => (
+          <li lang={d}><a href={`/${d}/`}>{metin(d).giriseDon}</a> <span>· {metin(d).bulunamadi}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Taban>

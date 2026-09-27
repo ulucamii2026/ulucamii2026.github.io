@@ -1,0 +1,56 @@
+---
+/**
+ * Ezber Kilimi girişi (Faz 1f, 27 Eylül 2026): başlık + çini pano, dört basamak, şeritler (ses varsa «Dinle»), örnek
+ * kilim ve kaynaklar. Beş dil (tr, fr, en, nl, de). Onaylı taslak: egitim/docs/taslaklar/giris.html; görünüm
+ * egitim/DESIGN.md. Madde sayfaları Faz 2'dir; «Fâtiha ile başla» şimdilik listedeki Fâtiha'ya götürür.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { KATALOG } from '@ortak/lib/ezber/katalog';
+import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
+import Basamaklar from '../../components/Basamaklar.astro';
+import Ikon from '../../components/Ikon.astro';
+import Kaynaklar from '../../components/Kaynaklar.astro';
+import Kilimim from '../../components/Kilimim.astro';
+import Pano from '../../components/Pano.astro';
+import Seritler from '../../components/Seritler.astro';
+import { metin } from '../../i18n/metinler';
+import Taban from '../../layouts/Taban.astro';
+import { cizim } from '../../lib/cizim';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = metin(dil);
+const n = KATALOG.ogeler.length;
+---
+<Taban dil={dil} aciklama={m.aciklama(n)} yol="">
+  <section class="giris" aria-labelledby="baslik">
+    <div class="icerik">
+      <div class="giris-metin">
+        <h1 id="baslik">{KILIM_METINLERI.baslik[dil]}</h1>
+        <p class="vaat">{m.vaat(n)}</p>
+        <div class="eylem">
+          <a class="dugme birincil" href="#m-s-fatiha">{m.baslaDugme} <Ikon ad="ok" /></a>
+          <a class="dugme ikincil" href="#seritler">{m.seritleriGez}</a>
+        </div>
+      </div>
+      <Pano dil={dil} />
+      <p class="guven"><Fragment set:html={cizim('serit-6-mushaf', 'muhur')} /><span>{m.guven}</span></p>
+    </div>
+  </section>
+  <Basamaklar dil={dil} />
+  <Seritler dil={dil} />
+  <Kilimim dil={dil} />
+  <Kaynaklar dil={dil} />
+  <p class="gorunmez" role="status" aria-live="polite" data-ses-durumu data-hata={m.sesHatasi}></p>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/pano';
+  import '../../scripts/seritler';
+  import '../../scripts/calar';
+</script>

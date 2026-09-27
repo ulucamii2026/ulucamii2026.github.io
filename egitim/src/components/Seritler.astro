@@ -1,0 +1,63 @@
+---
+/**
+ * Şeritler bölümü: 1–7. şeritler namaz sırasıyla, 8. şerit Amme (beş durak başlığıyla), sonra kenar suyu. Her şeridin
+ * Codex çizimi; sınıf hedefi yıllık plandan (`sinifHedefleri`).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { KATALOG, seviyeOgeleri, sinifHedefleri, type Seviye } from '@ortak/lib/ezber/katalog';
+import { SERIT_MOTIFI } from '@ortak/lib/ezber/kilim';
+import { durakAdi } from '@ortak/lib/ezber/metinler';
+import plan from '@ortak/data/yillik-plan-2026-2027.json';
+import { ilkHarfBuyuk, metin } from '../i18n/metinler';
+import MaddeSatiri from './MaddeSatiri.astro';
+import Serit from './Serit.astro';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = metin(dil);
+const hedef = sinifHedefleri(plan);
+const tanim = (k: Seviye) => KATALOG.seviyeler.find((s) => s.kimlik === k)!;
+const VINYET: Record<Exclude<Seviye, 'kenar'>, string> = {
+  1: 'serit-1-kapi', 2: 'serit-2-abdest', 3: 'serit-3-seccade', 4: 'serit-4-oturus',
+  5: 'serit-5-rahle', 6: 'serit-6-mushaf', 7: 'serit-7-minare', 8: 'serit-8-cuz',
+};
+const YEDI = [1, 2, 3, 4, 5, 6, 7] as const;
+const amme = seviyeOgeleri(8);
+const duraklar = [...new Set(amme.map((o) => o.durak ?? 0))].sort((a, b) => a - b);
+const kenar = seviyeOgeleri('kenar');
+---
+<section class="bolum" id="seritler" aria-labelledby="serit-baslik">
+  <div class="icerik">
+    <div class="bolum-bas">
+      <h2 id="serit-baslik">{m.seritBaslik}</h2>
+      <p>{m.seritGiris}</p>
+    </div>
+    <div class="seritler">
+      {YEDI.map((sv) => {
+        const ogeler = seviyeOgeleri(sv);
+        return (
+          <Serit id={`serit-${sv}`} no={sv} ad={tanim(sv).ad[dil]} amac={tanim(sv).amac[dil]} vinyet={VINYET[sv]}
+            motif={SERIT_MOTIFI[sv]} sayi={ogeler.length} dil={dil}>
+            {ogeler.map((o) => <MaddeSatiri oge={o} motif={SERIT_MOTIFI[sv]} dil={dil} hedef={hedef[o.id]} />)}
+          </Serit>
+        );
+      })}
+      <Serit id="serit-8" no={8} ad={tanim(8).ad[dil]} amac={`${tanim(8).amac[dil]} ${m.ammeEk(duraklar.length, amme.length)}`}
+        vinyet={VINYET[8]} motif={SERIT_MOTIFI[8]} sayi={amme.length} dil={dil}>
+        {duraklar.map((d) => {
+          const ogeler = amme.filter((o) => (o.durak ?? 0) === d);
+          return (
+            <>
+              <li class="durak-basligi">{m.durakBasligi(ilkHarfBuyuk(durakAdi(d, dil), dil), ogeler.length)}</li>
+              {ogeler.map((o) => <MaddeSatiri oge={o} motif={SERIT_MOTIFI[8]} dil={dil} hedef={hedef[o.id]} />)}
+            </>
+          );
+        })}
+      </Serit>
+      <Serit id="kenar-suyu" no={0} ad={tanim('kenar').ad[dil]} amac={tanim('kenar').amac[dil]} vinyet="kenar-kandil"
+        motif={SERIT_MOTIFI.kenar} sayi={kenar.length} dil={dil}>
+        {kenar.map((o) => <MaddeSatiri oge={o} motif={SERIT_MOTIFI.kenar} dil={dil} hedef={hedef[o.id]} />)}
+      </Serit>
+    </div>
+  </div>
+</section>

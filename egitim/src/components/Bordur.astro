@@ -1,0 +1,6 @@
+---
+/** Kuşak bordürü: koçboynuzu deseniyle dolu ince şerit (MotifSembolleri'ndeki desenler). Süstür. */
+interface Props { desen: 'bordur-acik' | 'bordur-koyu' }
+const { desen } = Astro.props;
+---
+<svg class="bordur" aria-hidden="true" focusable="false" preserveAspectRatio="none"><rect width="100%" height="100%" fill={`url(#${desen})`} /></svg>

@@ -1,0 +1,19 @@
+---
+/** Metin ve sesin kaynağı: Kur'an metni, meâl ve tilavet yalnız Diyanet İşleri Başkanlığı'ndan. */
+import type { Dil } from '@ortak/i18n/ui';
+import { metin } from '../i18n/metinler';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = metin(dil);
+---
+<section class="bolum" aria-labelledby="kaynak-baslik">
+  <div class="icerik">
+    <div class="bolum-bas">
+      <h2 id="kaynak-baslik">{m.kaynakBaslik}</h2>
+    </div>
+    <div class="kaynaklar">
+      {m.kaynaklar.map(([baslik, metinParcasi]) => <div><h3>{baslik}</h3><p>{metinParcasi}</p></div>)}
+    </div>
+  </div>
+</section>

@@ -20,6 +20,10 @@ await run('check');
 const build = await run('dogrula');
 if (build === 0) await run('test:web');
 else { results.push({ task: 'test:web (güncel build yok; atlandı)', code: 1 }); }
+// egitim.ulucamii.be (egitim/, Faz 1f): ortak koddaki (src/lib/ezber, src/i18n) bir değişiklik ikinci uygulamayı da bozabilir.
+const egitim = await run('egitim:build');
+if (egitim === 0) await run('test:egitim');
+else { results.push({ task: 'test:egitim (egitim derlemesi yok; atlandı)', code: 1 }); }
 // Web hatası, bağımsız güvenlik testlerinin çalışmasını engellemez.
 await run('test:kurallar');
 await run('test:veli-eposta');

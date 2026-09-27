@@ -1,0 +1,29 @@
+---
+/** Üst bilgi: kurs logosu, bölüm bağlantısı, ana siteye dönüş ve beş dil. Altında kuşak bordürü. */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
+import { metin } from '../i18n/metinler';
+import { ANA_SITE, kursTamAdi } from '../lib/kimlik';
+import Bordur from './Bordur.astro';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil; sayfa?: 'giris' | 'diger' }
+const { dil, sayfa = 'giris' } = Astro.props;
+const m = metin(dil);
+---
+<header class="ust">
+  <div class="icerik">
+    <a class="logo" href={`/${dil}/`}><img src="/logo/kuran-kursu-yatay.svg" alt={kursTamAdi(dil)} width="134" height="64" /></a>
+    <nav aria-label={m.anaMenu}>
+      <a class="bolum-bag" href={`/${dil}/`} aria-current={sayfa === 'giris' ? 'page' : undefined}>{KILIM_METINLERI.baslik[dil]}</a>
+      <a href={`${ANA_SITE}/${dil}/`}>ulucamii.be <Ikon ad="dis" /></a>
+      <div class="diller" role="group" aria-label={m.dilGrubu}>
+        {dilListesi.map((d) => (
+          <a href={`/${d}/`} lang={d} hreflang={d} aria-current={d === dil ? 'true' : undefined}>{d.toUpperCase()}</a>
+        ))}
+      </div>
+    </nav>
+  </div>
+  <Bordur desen="bordur-acik" />
+</header>

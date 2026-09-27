@@ -1,0 +1,14 @@
+---
+/**
+ * Sayfada bir kez: motif sembolleri (`#mt-…`, src/lib/ezber/motifler.ts) ve üst/alt bordürün iki koçboynuzu deseni.
+ * Desen dolgusu desen içinde çözüldüğünden renk sabittir (açık zemin kurs yeşili, koyu zemin bir ton açığı).
+ */
+import { MOTIFLER } from '@ortak/lib/ezber/motifler';
+
+const kb = MOTIFLER['kenar-kocboynuzu'];
+const desen = (id: string, renk: string) => `<pattern id="${id}" width="32" height="16" patternUnits="userSpaceOnUse">`
+  + `<svg viewBox="${kb.kutu}" width="32" height="16"><g fill="${renk}">${kb.icerik}</g></svg></pattern>`;
+const icerik = Object.entries(MOTIFLER).map(([ad, m]) => `<symbol id="mt-${ad}" viewBox="${m.kutu}">${m.icerik}</symbol>`).join('')
+  + desen('bordur-acik', '#134420') + desen('bordur-koyu', '#2A6A3F');
+---
+<svg class="semboller" width="0" height="0" aria-hidden="true" focusable="false"><defs set:html={icerik} /></svg>

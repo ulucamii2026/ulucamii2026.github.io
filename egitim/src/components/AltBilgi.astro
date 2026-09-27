@@ -1,0 +1,41 @@
+---
+/**
+ * Alt bilgi: kurs tanıtımı ve ana siteye dönüş, iletişim bloğu (adres · info@ulucamii.be · cami hattı · web; din
+ * görevlisinin bilgisi yok), kaynaklar ve hukuki satır. Değerler kurumsal kimlikten gelir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { metin } from '../i18n/metinler';
+import { ANA_SITE, ILETISIM, hukukiSatir, kursAdi } from '../lib/kimlik';
+import Bordur from './Bordur.astro';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = metin(dil);
+---
+<footer class="alt">
+  <Bordur desen="bordur-koyu" />
+  <div class="icerik">
+    <div>
+      <h2>{kursAdi(dil)}</h2>
+      <p>{m.altTanitim}</p>
+      <p class="don"><a href={`${ANA_SITE}/${dil}/`}>{m.anaSiteyeDon}</a></p>
+    </div>
+    <div>
+      <h2>{m.iletisim}</h2>
+      <ul>
+        <li>{ILETISIM.adres}</li>
+        <li><a href={`mailto:${ILETISIM.eposta}`}>{ILETISIM.eposta}</a></li>
+        <li><a href={`tel:${ILETISIM.telefon.e164}`}>{ILETISIM.telefon.goster}</a></li>
+        <li><a href={ILETISIM.web.adres}>{ILETISIM.web.goster}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>{m.kaynaklarBasligi}</h2>
+      <ul>
+        <li>{m.kaynakDiyanet} <a href="https://kuran.diyanet.gov.tr">{m.diyanetAdi}</a></li>
+        <li>{m.yaziTipleri}</li>
+      </ul>
+    </div>
+    <p class="kucuk">{hukukiSatir(dil)}</p>
+  </div>
+</footer>

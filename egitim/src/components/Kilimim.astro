@@ -1,0 +1,34 @@
+---
+/**
+ * «Kilimim»: her öğrencinin kilimi panoyla aynı düzende dokunur. Burada uydurma bir ilerlemeyle örnek kilim (ad yok,
+ * «Örnek» etiketi), yanında açıklama ve lejant. Çizici src/lib/ezber/kilim.ts (veli portalındakiyle aynı).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { kilimLejanti, kilimOzeti, kilimSvg } from '@ortak/lib/ezber/kilim';
+import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
+import { metin } from '../i18n/metinler';
+import { veliPortali } from '../lib/kimlik';
+import { ORNEK_KILIM } from '../lib/ornek';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = metin(dil);
+const secenek = { onek: 'kl-ornek', dil, baslik: m.kilimSvgBasligi };
+---
+<section class="bolum" aria-labelledby="kilim-baslik">
+  <div class="icerik kilimim">
+    <div class="yan yan-ust">
+      <h2 id="kilim-baslik">{KILIM_METINLERI.kilimim[dil]}</h2>
+      <p class="aciklama">{m.kilimAciklama}</p>
+      <p><span class="ornek-etiket">{m.ornekEtiket}</span></p>
+    </div>
+    <div class="kilim-kutu" set:html={kilimSvg(ORNEK_KILIM, secenek)} />
+    <div class="yan yan-alt">
+      <p class="ozet">{kilimOzeti(ORNEK_KILIM, dil)}</p>
+      <Fragment set:html={kilimLejanti(secenek)} />
+      <p class="not">{m.kilimNot}</p>
+      <p><a class="dugme ikincil" href={veliPortali(dil)}>{m.veliPortali} <Ikon ad="dis" /></a></p>
+    </div>
+  </div>
+</section>

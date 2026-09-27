@@ -87,7 +87,7 @@ test('Aynı sayfada iki kilim kimlik paylaşmaz; geçersiz önek reddedilir; ba�
   for (const kotu of ['', '1kl', 'Kl', 'kl a', 'kl"><script>', 'k'.repeat(41)])
     assert.throws(() => m.kilimSvg({}, { onek: kotu, dil: 'tr', baslik: 'x' }), /Geçersiz kilim öneki/, JSON.stringify(kotu));
   const fr = m.kilimSvg({ 's-fatiha': d(3, '2026-10-24') }, { onek: 'kl-fr', dil: 'fr', baslik: 'Kilim <b>' });
-  assert.match(fr, /<title>Sourate Al-Fatiha — Consolidé<\/title>/);
+  assert.match(fr, /<title>Sourate Al-Fatiha, Consolidé<\/title>/);
   assert.match(fr, /<title id="kl-fr-b">Kilim &lt;b&gt;<\/title>/);
   for (const dil of DILLER) assert.doesNotThrow(() => optimize(m.kilimSvg({ 'd-euzu-besmele': d(4) }, { onek: `kl-${dil}`, dil, baslik: 'x' })), dil);
 });

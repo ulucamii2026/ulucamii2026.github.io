@@ -1,0 +1,37 @@
+---
+/**
+ * Dört basamak: aynı motif dört çini aşamasında (kontur → firuze → yeşil → altın). Adlar src/lib/ezber/metinler.ts;
+ * eşikler docs/EZBER-KILIMI.md (sertifika şeritteki tümü ≥ Pekişti, altın kenar tümü Kalıcı).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { BASAMAK_ADLARI } from '@ortak/lib/ezber/metinler';
+import { metin } from '../i18n/metinler';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = metin(dil);
+const ADIMLAR = [1, 2, 3, 4] as const;
+---
+<section class="bolum" aria-labelledby="basamak-baslik">
+  <div class="icerik">
+    <div class="bolum-bas">
+      <h2 id="basamak-baslik">{m.basamakBaslik}</h2>
+      <p>{m.basamakGiris}</p>
+    </div>
+    <ol class="basamaklar">
+      {ADIMLAR.map((b) => (
+        <li>
+          <svg class="motif" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            {b === 4 && <rect x="4" y="4" width="112" height="112" class="kl-b4-cerceve" />}
+            <use href="#mt-goz" class={`kl-m kl-b${b}`} />
+          </svg>
+          <h3>{BASAMAK_ADLARI[b][dil]}</h3>
+          <p>{m.basamak[b][0]}</p>
+          <span class="saat"><Ikon ad="saat" />{m.basamak[b][1]}</span>
+        </li>
+      ))}
+    </ol>
+    <div class="ilke"><p>{m.ilke}</p></div>
+  </div>
+</section>

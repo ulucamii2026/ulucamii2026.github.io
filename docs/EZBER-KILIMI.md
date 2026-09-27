@@ -316,10 +316,20 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
   [`egitim/DESIGN.md`](../egitim/DESIGN.md); süreç, yazı tipleri ve seçenekler
   [Faz 1e belgesinde](superpowers/plans/2026-09-27-ezber-kilimi-faz-1e-tasarim.md).
 - **Taslaklar:** `egitim/docs/taslaklar/{giris,madde,hoca}.html` (gerçek katalog, yıllık plan ve Diyanet metniyle
-  üretilir; üretim hattı `egitim/docs/taslaklar/uretim/`). Yayında değildir; Faz 1f'de Astro'ya taşınır.
+  üretilir; üretim hattı `egitim/docs/taslaklar/uretim/`). Yayında değildir. Giriş taslağı Faz 1f'de Astro'ya
+  taşındı (aşağıda); madde ve hoca taslakları Faz 2'dir.
 - **Ana sitedeki kilim:** veli portalındaki çizim (`src/styles/ezber-kilim.css`) şimdilik ana sitenin Kilim
   Kartografyası paletindedir (rozet aşı boyası tonunda). egitim'e taşınınca çini jetonlarına geçer; orada ödül,
   kazandıran basamağın rengini taşır (rozet firuze, mühür yeşil, altın kenar altın).
+
+## egitim iskeleti (Faz 1f, 27 Eylül 2026; yerelde, yayında değil)
+
+- `egitim/` ikinci Astro uygulaması: Ezber Kilimi girişi beş dilde (pano, dört basamak, şeritler, örnek kilim,
+  kaynaklar); sesi olan 27 maddede kare çal düğmesi (ses ulucamii.be'den). Komutlar `npm run egitim:build`,
+  `npm run test:egitim`; ayrıntı, taslaktan farklar ve açık kalemler
+  [Faz 1f belgesinde](superpowers/plans/2026-09-27-ezber-kilimi-faz-1f-iskelet.md).
+- Basamak kartları eşikleri doğru söyler: sertifika Pekişti kartında (şeritteki tümü ≥ Pekişti), altın kenar Kalıcı
+  kartında. Kilim madde başlıkları «Ad, basamak» biçimindedir (ekran okuyucu için; veli kilimi de aynı çiziciyi kullanır).
 
 ## Bağımsız inceleme ve yayın sırası (27 Eylül 2026)
 

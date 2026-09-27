@@ -1,0 +1,52 @@
+---
+/**
+ * Ezber panosu: 13 × 14 çini ızgara (yerleşim src/lib/pano.ts). Madde karoları listedeki maddeye bağlanır
+ * (`#m-…`); üstündeki yeşil kuşak, gezilen karonun adını ve bilgisini yazar (betik: src/scripts/pano.ts).
+ * Hücre konumu sınıfla verilir (r1…r14, c1…c13): satır içi stil yok.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { KATALOG, sinifHedefleri } from '@ortak/lib/ezber/katalog';
+import { durakAdi } from '@ortak/lib/ezber/metinler';
+import { MOTIFLER } from '@ortak/lib/ezber/motifler';
+import plan from '@ortak/data/yillik-plan-2026-2027.json';
+import { metin, tarihYaz } from '../i18n/metinler';
+import { pano, type PanoSirasi } from '../lib/pano';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = metin(dil);
+const P = pano();
+const hedef = sinifHedefleri(plan);
+const kenarAdi = KATALOG.seviyeler.find((s) => s.kimlik === 'kenar')!.ad[dil];
+const seritSayisi = P.siralar.filter((s) => s.seviye !== 8).length;
+const durakSayisi = P.siralar.filter((s) => s.seviye === 8).length;
+const seritEtiketi = (s: PanoSirasi | null) =>
+  s === null ? kenarAdi : s.seviye === 8 ? `${m.amme}, ${durakAdi(s.durak ?? 0, dil)}` : m.seritAdi(s.seviye);
+const kusakEki = (id: string, tur: 'sure' | 'dua' | 'bilgi', sesli: boolean, s: PanoSirasi | null) =>
+  ` · ${[seritEtiketi(s), m.tur[tur], sesli ? m.sesli : '', hedef[id] ? m.sinifHedefi(tarihYaz(hedef[id], dil)) : ''].filter(Boolean).join(' · ')}`;
+const kb = MOTIFLER['kenar-kocboynuzu'].kutu;
+const yer = (r: number, c: number) => `r${r} c${c}`;
+---
+<figure class="pano-cerceve" aria-labelledby="pano-baslik">
+  <figcaption class="kusak-yazi" id="pano-baslik"><span data-kusak><b>{m.kusakSayi(KATALOG.ogeler.length)}</b> <span class="kusak-ek">· {m.kusakEk(seritSayisi, durakSayisi)}</span></span></figcaption>
+  <nav class="pano" aria-label={m.panoEtiketi} data-pano>
+    {P.hucreler.map((h) => {
+      if (h.tur === 'madde') {
+        const ad = h.oge.ad[dil];
+        return (
+          <a class={`karo madde ${yer(h.r, h.c)}`} href={`#m-${h.oge.id}`} data-r={h.r} data-c={h.c} data-ad={ad}
+            data-ek={kusakEki(h.oge.id, h.oge.tur, Boolean(h.oge.ses), h.sira)} aria-label={`${ad}, ${seritEtiketi(h.sira)}`}>
+            <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><use href={`#mt-${h.motif}`} /></svg>
+          </a>
+        );
+      }
+      if (h.tur === 'sira') return <span class={`karo sira ${yer(h.r, h.c)}`} aria-hidden="true">{h.seviye}</span>;
+      if (h.tur === 'amme') return <span class={`karo amme ${yer(h.r, h.c)}`} aria-hidden="true"><span>{m.amme}</span></span>;
+      if (h.tur === 'bos') return <span class={`karo bos ${yer(h.r, h.c)}`} aria-hidden="true" />;
+      if (h.tur === 'kose') {
+        return <span class={`karo kose ${yer(h.r, h.c)}`} aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><use href="#mt-kenar-kose" /></svg></span>;
+      }
+      return <span class={`karo bordur-karo yon-${h.yon} ${yer(h.r, h.c)}`} aria-hidden="true"><svg viewBox={kb} focusable="false"><use href="#mt-kenar-kocboynuzu" /></svg></span>;
+    })}
+  </nav>
+</figure>

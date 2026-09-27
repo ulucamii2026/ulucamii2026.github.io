@@ -113,7 +113,7 @@ export function kilimSvg(ogeler: Readonly<Record<string, OgeDurumu>>, s: KilimSe
     const b: Basamak = gorunenBasamak(ogeler, id);
     const x = cx - M / 2;
     const y = cy - M / 2;
-    return `<g class="kl-oge" data-id="${esc(id)}" data-basamak="${b}"><title>${esc(`${m.ad[s.dil]} — ${BASAMAK_ADLARI[b][s.dil]}`)}</title>`
+    return `<g class="kl-oge" data-id="${esc(id)}" data-basamak="${b}"><title>${esc(`${m.ad[s.dil]}, ${BASAMAK_ADLARI[b][s.dil]}`)}</title>`
       + `${b === 4 ? `<rect x="${n2(x - 3)}" y="${n2(y - 3)}" width="${M + 6}" height="${M + 6}" class="kl-b4-cerceve"/>` : ''}`
       + `${use(motif, x, y, M, M, `kl-m kl-b${b}`)}</g>`;
   };

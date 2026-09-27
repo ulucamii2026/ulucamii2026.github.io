@@ -1,0 +1,32 @@
+---
+/**
+ * Bir şerit: solda (telefonda üstte) şerit çizimi, başlık ve amaç; sağda madde karoları. Liste telefonda katlanır
+ * (details; betik: src/scripts/seritler.ts), geniş ekranda hep açık ve özet satırı gizlidir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import type { MotifAdi } from '@ortak/lib/ezber/motifler';
+import { metin } from '../i18n/metinler';
+import { cizim } from '../lib/cizim';
+import Ikon from './Ikon.astro';
+
+interface Props { id: string; no: number; ad: string; amac: string; vinyet: string; motif: MotifAdi; sayi: number; dil: Dil }
+const { id, no, ad, amac, vinyet, motif, sayi, dil } = Astro.props;
+const m = metin(dil);
+---
+<section class="serit" id={id} aria-labelledby={`${id}-b`}>
+  <div class="serit-bas">
+    <Fragment set:html={cizim(vinyet)} />
+    <div class="serit-yazi">
+      <h3 id={`${id}-b`}>{no > 0 && <span class="no">{no}</span>}{ad}</h3>
+      <p>{amac}</p>
+    </div>
+  </div>
+  <details class="serit-liste" open>
+    <summary>
+      <span class="rozet-karo" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><use href={`#mt-${motif}`} /></svg></span>
+      <span>{m.maddeSayisi(sayi)}</span>
+      <span class="eylem-yazi"><span class="ac">{m.goster}</span><span class="kapa">{m.gizle}</span><Ikon ad="asagi" /></span>
+    </summary>
+    <ul class="maddeler"><slot /></ul>
+  </details>
+</section>

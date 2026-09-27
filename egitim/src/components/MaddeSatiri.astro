@@ -1,0 +1,34 @@
+---
+/**
+ * Şerit listesindeki bir madde: rozet karo, ad, tür ve sınıf hedefi. Sesi olan maddede kare çal düğmesi (DESIGN.md
+ * «Çal düğmesi»; erişilebilir adı «Dinle: …» / «Durdur: …»); ses ulucamii.be'den gelir (Hosting ses taşımaz). Yalnız
+ * parça sesleri olan madde (Eûzü–Besmele) parçaları sırayla çalar.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import type { KatalogOgesi } from '@ortak/lib/ezber/katalog';
+import type { MotifAdi } from '@ortak/lib/ezber/motifler';
+import { metin, tarihYaz } from '../i18n/metinler';
+import { ANA_SITE } from '../lib/kimlik';
+import Ikon from './Ikon.astro';
+
+interface Props { oge: KatalogOgesi; motif: MotifAdi; dil: Dil; hedef?: string }
+const { oge, motif, dil, hedef } = Astro.props;
+const m = metin(dil);
+const ad = oge.ad[dil];
+const sesler = (oge.ses?.tam ? [oge.ses.tam] : [...(oge.ses?.parcalar ?? [])]).map((s) => `${ANA_SITE}${s}`);
+---
+<li id={`m-${oge.id}`}>
+  <div class="madde-ic">
+    <span class="rozet-karo" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><use href={`#mt-${motif}`} /></svg></span>
+    <span>
+      <span class="ad">{ad}</span>
+      <span class="ust-bilgi"><span>{m.tur[oge.tur]}</span>{hedef && <span>{m.sinifHedefi(tarihYaz(hedef, dil))}</span>}</span>
+    </span>
+  </div>
+  {sesler.length > 0 && (
+    <button class="dinle" type="button" data-ses={sesler.join(' ')} data-etiket-dinle={m.dinleEtiketi(ad)}
+      data-etiket-durdur={m.durdurEtiketi(ad)} aria-label={m.dinleEtiketi(ad)}>
+      <Ikon ad="cal" sinif="ikon-cal" /><Ikon ad="durdur" sinif="ikon-dur" />
+    </button>
+  )}
+</li>

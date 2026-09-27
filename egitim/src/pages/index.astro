@@ -1,0 +1,40 @@
+---
+/**
+ * Kök (/) — ziyaretçiyi diline gönderir; ana sitenin kök sayfasıyla aynı düzen (src/pages/index.astro):
+ * (1) bu platformda en son seçilen dil, (2) tarayıcının dil sırası, (3) hiçbiri tutmazsa İngilizce.
+ * JS kapalıysa meta refresh Türkçe'ye gider (x-default de Türkçe). Satır içi betik: Hosting'de CSP özetiyle izinlenecek.
+ */
+import { diller } from '@ortak/i18n/ui';
+import { dilListesi, hreflangKodu } from '@ortak/i18n/utils';
+
+const site = 'https://egitim.ulucamii.be';
+---
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Ulu Camii Kur’an Kursu</title>
+    {dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={`${site}/${d}/`} />)}
+    <link rel="alternate" hreflang="x-default" href={`${site}/tr/`} />
+    <script is:inline define:vars={{ DILLER: dilListesi }}>
+      (function () {
+        var hedef = null;
+        try {
+          var kayitli = localStorage.getItem('ulucamiiEgitimDili');
+          if (DILLER.indexOf(kayitli) !== -1) hedef = kayitli;
+        } catch (e) { /* gizli sekme ya da depolama kapalı: tarayıcı diline düş */ }
+        if (!hedef) {
+          var istenen = navigator.languages || [navigator.language || ''];
+          for (var i = 0; i < istenen.length; i++) {
+            var kod = String(istenen[i]).toLowerCase().slice(0, 2);
+            if (DILLER.indexOf(kod) !== -1) { hedef = kod; break; }
+          }
+        }
+        location.replace('/' + (hedef || 'en') + '/');
+      })();
+    </script>
+    <meta http-equiv="refresh" content="1; url=/tr/" />
+  </head>
+  <body><p>{dilListesi.map((d, i) => <>{i > 0 && ' · '}<a href={`/${d}/`} lang={d}>{diller[d]}</a></>)}</p></body>
+</html>

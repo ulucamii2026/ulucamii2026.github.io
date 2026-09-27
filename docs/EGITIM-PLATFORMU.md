@@ -1,7 +1,9 @@
 # Eğitim platformu — egitim.ulucamii.be
 
 Karar tarihi: 26 Eylül 2026 (Rıdvan: «eğitim işleri için egitim.ulucamii.be adlı ayrı bir platforma geçelim»).
-Durum: **planlandı**; iskelet Faz 1f'de. Her canlı adım (Hosting sitesi, DNS, Auth alanı) ayrıca onaylanır.
+Durum: **iskelet yerelde** (Faz 1f, 27 Eylül 2026: `egitim/`, Ezber Kilimi girişi beş dilde); yayında değil. Her canlı
+adım (Hosting sitesi, DNS, Auth alanı) ayrıca onaylanır. İskelet, komutlar ve açık kalemler:
+[Faz 1f belgesi](superpowers/plans/2026-09-27-ezber-kilimi-faz-1f-iskelet.md).
 Ana plan §3.1 ve §4: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md).
 İlk bölüm: [Ezber Kilimi](EZBER-KILIMI.md).
 

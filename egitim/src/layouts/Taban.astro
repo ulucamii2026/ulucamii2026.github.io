@@ -1,0 +1,60 @@
+---
+/**
+ * Sayfa iskeleti: baş etiketleri (kanonik adres, beş dilin hreflang'ı, Open Graph), motif sembolleri, üst ve alt bilgi.
+ * Satır içi stil ve betik yok: ileride Hosting'de tanımlanacak sıkı CSP'ye hazır (stil ve betik dış dosyada).
+ */
+import '../styles/cini.css';
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, hreflangKodu, yerelKodu } from '@ortak/i18n/utils';
+import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
+import { metin } from '../i18n/metinler';
+import { kursAdi } from '../lib/kimlik';
+import AltBilgi from '../components/AltBilgi.astro';
+import MotifSembolleri from '../components/MotifSembolleri.astro';
+import UstBilgi from '../components/UstBilgi.astro';
+
+interface Props {
+  dil: Dil;
+  baslik?: string;
+  aciklama: string;
+  /** Dile bağlı sayfanın dil öneksiz yolu (ör. «»); yoksa hreflang ve kanonik adres basılmaz (404). */
+  yol?: string;
+  noindex?: boolean;
+}
+const { dil, baslik = KILIM_METINLERI.baslik[dil], aciklama, yol, noindex = false } = Astro.props;
+const m = metin(dil);
+const tamBaslik = `${baslik} — ${kursAdi(dil)}`;
+const adres = (d: Dil) => new URL(`/${d}/${yol ? `${yol}/` : ''}`, Astro.site).toString();
+const ogYerel = yerelKodu[dil].replace('-', '_');
+---
+<!doctype html>
+<html lang={hreflangKodu(dil)} dir="ltr" data-dil={yol !== undefined ? dil : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tamBaslik}</title>
+    <meta name="description" content={aciklama} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {yol !== undefined && !noindex && <link rel="canonical" href={adres(dil)} />}
+    {yol !== undefined && dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={adres(d)} />)}
+    {yol !== undefined && <link rel="alternate" hreflang="x-default" href={adres('tr')} />}
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#134420" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-next.woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={kursAdi(dil)} />
+    <meta property="og:title" content={tamBaslik} />
+    <meta property="og:description" content={aciklama} />
+    <meta property="og:locale" content={ogYerel} />
+    {yol !== undefined && <meta property="og:url" content={adres(dil)} />}
+  </head>
+  <body>
+    <MotifSembolleri />
+    <a class="gorunmez" href="#ana">{m.icerigeGec}</a>
+    <UstBilgi dil={dil} sayfa={yol === '' ? 'giris' : 'diger'} />
+    <main id="ana">
+      <slot />
+    </main>
+    <AltBilgi dil={dil} />
+  </body>
+</html>

@@ -116,8 +116,8 @@ for (let r = 1; r <= SATIR; r++) {
 const BASAMAK = [
   { b: 1, ad: 'Çalışıyor', metin: 'Öğrenci bu maddeye başladı. Motif yalnız konturla çizilir.', saat: 'Hoca dinleyince ilerler' },
   { b: 2, ad: 'Hocaya okudu', metin: 'Hocasına ilk kez okudu: «Tam» ya da «Az hatalı». Motif firuzeyle boyanır.', saat: 'En erken 7 gün sonra pekişir' },
-  { b: 3, ad: 'Pekişti', metin: 'Bir hafta sonra yine okudu, unutmamış. Motif yeşille sırlanır.', saat: 'En erken 30 gün sonra kalıcı olur' },
-  { b: 4, ad: 'Kalıcı', metin: 'Bir ay sonra da hatırladı. Motif altınla bezenir; Ezber Sertifikası bu basamakta verilir.', saat: 'Tekrarlarla korunur' },
+  { b: 3, ad: 'Pekişti', metin: 'Bir hafta sonra yine okudu, unutmamış. Motif yeşille sırlanır; şeridin bütün maddeleri pekişince Ezber Sertifikası verilir.', saat: 'En erken 30 gün sonra kalıcı olur' },
+  { b: 4, ad: 'Kalıcı', metin: 'Bir ay sonra da hatırladı. Motif altınla bezenir; şeridin bütün maddeleri kalıcı olunca kilime altın kenar dokunur.', saat: 'Tekrarlarla korunur' },
 ];
 const BASAMAKLAR = BASAMAK.map((x) => `        <li><svg class="motif" viewBox="0 0 120 120" aria-hidden="true" focusable="false">${x.b === 4 ? '<rect x="4" y="4" width="112" height="112" class="kl-b4-cerceve" style="stroke-width:4"/>' : ''}<use href="#mt-goz" class="kl-m kl-b${x.b}"/></svg><h3>${x.ad}</h3><p>${x.metin}</p><span class="saat">${ikon('saat')}${x.saat}</span></li>`).join('\n');
 

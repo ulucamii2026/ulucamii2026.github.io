@@ -40,7 +40,8 @@ kuralları, hesap ayrımı ve tekrar çalıştırılabilir doğrulamadır.
 |---|---|
 | `npm run dev` | Astro geliştirme ortamı |
 | `npm run onizle` | Derlenmiş siteyi 4399 portunda inceleme |
-| `npm run dogrula:codex` | Tip kontrolü, mevcut denetimler/build, tarayıcı ve kural testleri |
+| `npm run dogrula:codex` | Tip kontrolü, mevcut denetimler/build, tarayıcı ve kural testleri; `egitim/` derlemesi ve testleri |
+| `npm run egitim:build` / `npm run test:egitim` | egitim.ulucamii.be uygulaması (`egitim/`): astro check + derleme; birim + ekran testleri (4402 portu) |
 | `npm run design:check` | Görsel token, yüzey belgesi ve yerel medya sözleşmesini hızlı denetleme |
 | `npm run test:web` | Mevcut `dist` üzerinde mobil/masaüstü senaryoları |
 | `npm run test:ihtida` | Yerel VM ve PDF üretiminde ihtida sözleşme/akış senaryoları |

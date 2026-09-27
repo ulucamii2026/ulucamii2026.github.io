@@ -9,7 +9,8 @@
     "playwright-report",
     "test-results",
     ".playwright-mcp",
-    ".codex/cikti"
+    ".codex/cikti",
+    "egitim"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

@@ -1,0 +1,16 @@
+---
+/** Çizgi ikonları (24 × 24, kontur `currentColor`); onaylı taslaktaki takımla aynı. Süstür: ekran okuyucudan gizli. */
+const IKONLAR = {
+  ok: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  dis: '<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+  saat: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  ses: '<path d="M4 10v4h3l5 4V6L7 10z"/><path d="M16 9a4 4 0 0 1 0 6"/>',
+  asagi: '<path d="M6 9l6 6 6-6"/>',
+  cal: '<path d="M8 5.5v13l10-6.5z" fill="currentColor" stroke="none"/>',
+  durdur: '<path d="M8.5 5v14M15.5 5v14"/>',
+} as const;
+export type IkonAdi = keyof typeof IKONLAR;
+interface Props { ad: IkonAdi; sinif?: string }
+const { ad, sinif = '' } = Astro.props;
+---
+<svg class:list={['ikon', sinif]} viewBox="0 0 24 24" aria-hidden="true" focusable="false" set:html={IKONLAR[ad]} />
