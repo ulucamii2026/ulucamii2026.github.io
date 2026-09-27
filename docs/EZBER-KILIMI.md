@@ -1,9 +1,11 @@
 # Ezber Kilimi
 
-Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a tamam; seviye listesi v3 kesin (81 madde,
-27 Eylül 2026); Faz 1b sürüyor**. Ana plan: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md);
-Faz 1a planı: [2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md);
-platform: [Eğitim platformu](EGITIM-PLATFORMU.md). Yayın kanıtları: [Yayın kayıtları](YAYIN-KAYITLARI.md).
+Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a ve 1b tamam (27 Eylül 2026): seviye listesi
+v3 kesin (81 madde); durum makinesi, veri modeli, kurallar ve geçiş betiği emülatörde yeşil; Faz 1c sürüyor**. Ana plan:
+[2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md); Faz 1a planı:
+[2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md); Faz 1b planı:
+[2026-09-27-ezber-kilimi-faz-1b-durum.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1b-durum.md); platform:
+[Eğitim platformu](EGITIM-PLATFORMU.md). Yayın kanıtları: [Yayın kayıtları](YAYIN-KAYITLARI.md).
 
 ## Bağlayıcı kararlar (özet)
 
@@ -76,8 +78,9 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 - **`not`:** maddeye özgü uyarı (ör. ezan kaydının sabah ezanı olması); hüküm bildiren not kaynak gösterir
   (ör. «Diyanet İlmihali c. 1 s. 399»).
 - **Örtüşen maddeler:** `s-alak-1-5` (kenar suyu: ilk vahiy, Kadir Gecesi dersi) `s-alak`'ın (8. şerit) ilk beş
-  âyetidir; ikisi ayrı ilerleme tutar. Faz 1b önerisi: `s-alak` bir basamağa ulaşınca `s-alak-1-5` en az o basamakta
-  **gösterilir** (türetilir, ayrıca yazılmaz); tersi geçerli değildir.
+  âyetidir; ikisi ayrı ilerleme tutar. Kural (Faz 1b, `gorunenBasamak`): `s-alak` bir basamağa ulaşınca `s-alak-1-5` en
+  az o basamakta **gösterilir** (türetilir, ayrıca yazılmaz); tersi geçerli değildir. Kapsama `kuran` aralığından
+  hesaplanır (aynı sûre, aralık içinde); test bugün yalnız bu çifti bulur.
 
 ## Madde ekleme / değiştirme
 
@@ -85,7 +88,62 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 2. Yıllık plandaki ezber dizesi değişti ya da eklendiyse `plan-eslesme.json`'u güncelle; test, plandaki her dizenin
    eşlendiğini ve fazlalık olmadığını denetler. Plandan **kalkan** dize silinmez, `eski-kimlikler.json` → `eskiPlan`'a
    taşınır (hoca ekranının eski kayıtları dizeyle anahtarlıdır).
-3. `npm run test:ezber` → yeşil. `npm run ezber:tablo` (isteğe bağlı `-- --dil fr`) ile tabloya bak.
+3. Madde eklendi ya da kaldırıldıysa `firebase/firestore.rules` → `evCalismalari` → `katalogEzberi()` listesine
+   `'ezber-<kimlik>'` ekle/çıkar (test katalogla birebir karşılaştırır) ve kuralları yayına al (`npm run firebase:kurallar`).
+4. `npm run test:ezber` → yeşil. `npm run ezber:tablo` (isteğe bağlı `-- --dil fr`) ile tabloya bak.
+
+## Durum makinesi ve veri modeli (Faz 1b, 27 Eylül 2026)
+
+| Dosya | Sorumluluk |
+|---|---|
+| `src/lib/ezber/durum.ts` | Saf durum makinesi (`dinle`, `ata`, `elleBasamak`, `duzelt`, `gecisDurumu`), okuma süzgeçleri (`ezberDurumuOku`, `olayOku`), `kontrolSirasi`, `gorunenBasamak`, bölüm ve ödül özeti |
+| `src/lib/ezber/gecis.ts` | Eski `ilerleme.ezber` → yazılacak geçişler (saf) |
+| `src/lib/ezber/depo.ts` | Firestore: `ezberDeposu(db, ref)` (`oku`, `uygula`, `olaylar`), `ezberSinifi`, `eskiKayitlariTasi`; tam SDK |
+| `firebase/firestore.rules` | `ezberDurum/{ref}` + `olaylar`; `evCalismalari` katalog kimlikleri |
+| `tests/ezber-durum.test.mjs`, `tests/kurallar/firestore.test.mjs` | Makine ve plan testleri; kural, depo, geçiş ve silme testleri (emülatör) |
+
+**Basamaklar:** 0 yok · 1 Çalışıyor · 2 Hocaya okudu · 3 Pekişti · 4 Kalıcı (kayıtta yalnız 1–4).
+
+| Önceki | Tam / Az hatalı | Tekrar gelsin |
+|---|---|---|
+| 0 (kayıt yok), 1 | 2, kontrol +7 gün (kontrol günü beklenmez) | 1, +7 gün |
+| 2 | kontrol günü geldiyse 3, +30 gün; gelmediyse yalnız olay | 1, +7 gün |
+| 3 | kontrol günü geldiyse 4, kontrol yok; gelmediyse yalnız olay | 2, +7 gün |
+| 4 | yalnız olay | 3, +7 gün |
+
+- **«Yine de ilerlet»** (`zorla`): kontrol gününden önce 2 → 3 ya da 3 → 4; olayda `zorla: true` kalır.
+- **Kontrol günü** o gün dahil gelmiş sayılır. Günler Brüksel ders günüdür (`YYYY-AA-GG`); takvim dönümleri testlidir.
+- **Atama** (`ata`): kaydı olmayan madde Çalışıyor olur; kaydı olana dokunulmaz. **Elle düzeltme** (`duzelt`) hedef
+  durumu aynen yazar, «geri al» için de kullanılır; 0 kaydı kaldırır.
+- **Veliye not:** yalnız kalıp anahtarı (en çok 3, `^[a-z0-9-]{1,40}$`). Serbest metin ezber kaydına girmez; serbest söz
+  ders defterinde kalır (oranın çeviri hattı var). Kalıp metinleri beş dilde Faz 1c'de; öğrenci adı hiçbir kalıba girmez.
+- **Ödüller** (gösterilen basamakla): rozet = bölümde tümü ≥ 2 · sertifika = tümü ≥ 3 · altın kenar = tümü 4. Bölümler:
+  1–8. şeritler ve Amme durakları 8.1–8.5. Kenar suyu seviye dışıdır, ödülü yoktur.
+
+**Firestore**
+
+```text
+ezberDurum/{ref}                       hoca yazar · bağlı veli okur · idari kilitte yazım yok
+  ogeler.<katalogId>: { basamak 1–4, kalite ''|tam|az|tekrar, notlar [≤ 3 kalıp], son (sunucu zamanı),
+                        sonrakiKontrol 'YYYY-AA-GG'|'', surum }
+  degisen: <katalogId>                 bu yazımda değişen tek madde (kural yalnız onu doğrular)
+  guncelleme: sunucu zamanı
+ezberDurum/{ref}/olaylar/{otomatik}    yalnız eklenir; güncellenmez; yalnız hoca siler (öğrenci silme)
+  ezber, tur atama|dinleme|duzeltme|gecis, kalite, notlar, basamakOnce, basamakSonra, zorla, tarih, zaman
+```
+
+- **Neden öğrenci başına tek belge:** sınıf görünümü (Bugün, Tekrar kuyruğu, Tablo) öğrenci başına tek okuma yapar;
+  madde başına belge 30 öğrenci × 81 madde = 2.430 okuma olurdu (Spark günlük sınırı 50.000).
+- **Yazım başına tek madde:** kural haritada döngü kuramaz; yazım değiştirdiği maddeyi `degisen` ile bildirir, kural
+  `diff().affectedKeys()` ile yalnız onun değiştiğini ve biçimini doğrular. Durum ve olay **tek toplu yazımdır**
+  (`depo.uygula`): biri reddedilirse ikisi de yazılmaz.
+- **Eşzamanlılık:** madde `surum`'u eski + 1 olmalı. Ortak hoca hesabı iki telefonda açıkken farklı maddeler birbirini
+  ezmez; aynı maddede eski ekrandan ya da çevrim dışı kuyruktan gelen yazım reddedilir ve `EZBER_CAKISMA` iletisiyle
+  ekrana döner (ekran durumu yeniden okur). Madde kaldırma sürüm istemez (hocanın düzeltmesi).
+- **Sahipsiz olay yok:** olay, durum belgesi yazım sonunda varsa eklenir (`existsAfter`); silinen öğrencinin açık kalan
+  ekranı ne durumu yeniden açabilir (öğrenci profili gerekir) ne olay bırakabilir.
+- **Silme dökümü:** `portal-idare.ts` «Ezber durumu» ve «Ezber olayları»nı listeler; «ev» kapsamı dokunmaz, «tüm» siler.
+- **Ev çalışması:** `evCalismalari` kimlikleri eski 19 `ezber-*` + katalogdaki 81 madde `ezber-<katalogId>` (açık liste).
 
 ## Eski kayıtların geçişi (Faz 1b kuralları, 27 Eylül 2026)
 
@@ -103,8 +161,13 @@ Bugünkü hoca ekranı ezber durumunu `ilerleme/{ref}.ezber` içinde **plandaki 
 4. **Bilerek karşılıksız:** «Salât-ı ümmiye (kısa salavat)» (planın 3–12 Eylül 2026 sürümlerinde vardı; katalogda
    maddesi yok, Rıdvan'ın kararı bekleniyor) taşınmaz; değeri eski alanda kalır.
 5. **Eski alan salt okunur kalır**, silinmez; yeni ekran yalnız `ezberDurum`'a yazar.
-6. Eski durumun yeni basamağa çevrilmesi Faz 1b planında kesinleşir. Öneri: `ogrendi` → Hocaya okudu,
-   `tekrar` → Çalışıyor, `baslamadi` → kayıt açılmaz.
+6. **Kesinleşti (27 Eylül 2026, Faz 1b):** `ogrendi` → Hocaya okudu (kontrol geçiş günü + 7; Pekişti yeniden
+   dinlemeyle gelir), `tekrar` → Çalışıyor, `baslamadi` → kayıt açılmaz. Yeni sistemde kaydı olan madde **ezilmez**
+   (hocanın yeni kaydı her zaman önde). Her taşınan madde `gecis` olayı bırakır.
+7. **Betik:** `HOCA_EPOSTA=… HOCA_SIFRE=… npm run ezber:gecis` (kuru; yalnız sayılar ve plan dizeleri yazar, öğrenci
+   kimliği yazmaz) → sonuç temizse aynı komut `-- --yaz`. Yinelenebilir: yarıda kalırsa yeniden çalıştırmak kalanı
+   tamamlar. Ne zaman: yeni hoca «Ezber» sekmesi yayına girdiği gün, kurallar canlıdayken. Mantık tek yerde
+   (`src/lib/ezber/depo.ts` → `eskiKayitlariTasi`) ve emülatörde uçtan uca test edilir.
 
 Planın eski yazımları git geçmişinden çıkarıldı (`src/data/yillik-plan-2026-2027.json`, bbddea8…a4b802b): bugünkü
 49 dizenin dışında yalnız iki dize var («Telbiye: Lebbeyk Allahümme lebbeyk…» → `d-telbiye` ve Salât-ı ümmiye). Plan
@@ -123,8 +186,15 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
   ezanı Faz 2'de Diyanet'ten eklenir.
 - 54 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm, kenar suyu); Faz 2 ses işi.
 - Yeni maddelerin FR/EN/NL/DE adları ilk taslaktır; ana dili konuşan okuması Faz 2'de.
-- `npm run test:ezber` yalnız yerel `dogrula` zincirinde koşuyor; Faz 1b'de kimlikler Firestore anahtarı olunca
-  `.github/workflows/deploy.yml` kapısına eklenir.
+- `npm run test:ezber` 27 Eylül 2026'dan beri `.github/workflows/deploy.yml` yayın kapısında da koşuyor (kimlikler
+  Firestore anahtarı oldu). Dal `main`'e birleşince etkinleşir.
+- Öğrenci silme dökümü tek işlemde en çok 400 belge siler; ezber olayları (öğrenci başına yılda ~100) sınıra daha erken
+  yaklaştırır. Sınır aşılırsa döküm hiçbir şey silmez ve yönetici bakımı ister (mevcut davranış).
+- `ezberUyeleri` (genel cemaat hesabı) ve `oneriler` (seviye testinden öneri) Faz 3'e kaldı: yazanı olmayan alan kurala
+  girmedi.
+- **Faz 1c için tuzak:** bugünkü hoca ekranı `ilerleme/{ref}`'i `setDoc` ile **bütün olarak** yazıyor (ezber seçimleri
+  dahil). Eski ezber formu kalkınca bu kayıt `ezber` alanını silmemeli: ilerleme kaydı `ezber`'i okunduğu gibi
+  korumalı (geçiş öncesi veri kaybı olur).
 - Eski Ezber Odası'nın Arapça metinleri Diyanet yazımında değil (genel mushaf yazımı); Faz 2'de katalog metinleri
   resmî yayından alınınca Ezber Odası da kataloğa bağlanır. Fâtiha'nın **âyet numaraları** 27 Eylül 2026'da Medine
   sayımından Diyanet (Kûfe) sayımına çevrildi: besmele ﴿١﴾, «…الضالين» ﴿٧﴾ (portal besmeleyi serlevhada gösterir,

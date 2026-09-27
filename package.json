@@ -62,8 +62,9 @@
     "test:dinleme": "node --test tests/ecouter-ses.test.mjs",
     "denetim:svg": "node scripts/svg-denetim.mjs",
     "test:svg": "node --test tests/svg-denetim.test.mjs",
-    "test:ezber": "node --test tests/ezber-katalog.test.mjs",
-    "ezber:tablo": "node scripts/ezber-seviye-tablosu.mjs"
+    "test:ezber": "node --test tests/ezber-katalog.test.mjs tests/ezber-durum.test.mjs",
+    "ezber:tablo": "node scripts/ezber-seviye-tablosu.mjs",
+    "ezber:gecis": "node scripts/ezber-gecis.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",

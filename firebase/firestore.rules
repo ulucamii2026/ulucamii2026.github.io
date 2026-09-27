@@ -20,6 +20,14 @@ service cloud.firestore {
     function aileOgrencileri() { return get(/databases/$(db)/documents/aileler/$(eposta())).data.ogrenciler; }
     function veliOkur(ref) { return aile() && ref in aileOgrencileri(); }
     function islemeAcik(ref) { return !exists(/databases/$(db)/documents/portalSilme/$(ref)); }
+    // Ezber Kilimi (27 Eyl 2026, Faz 1b): katalog kimliği, ders günü ve veliye giden kalıp notu biçimleri.
+    function ezberKimligi(k) { return k is string && k.size() <= 40 && k.matches('^[sdb]-[a-z0-9]+(-[a-z0-9]+)*$'); }
+    function gunDizesi(g) { return g is string && g.matches('^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'); }
+    function kalipNotu(n) { return n is string && n.matches('^[a-z0-9-]{1,40}$'); }
+    function kalipNotlari(l) {
+      return l is list && l.size() <= 3 && (l.size() < 1 || kalipNotu(l[0])) && (l.size() < 2 || kalipNotu(l[1]))
+        && (l.size() < 3 || kalipNotu(l[2]));
+    }
 
     match /portalSilme/{ref} {
       allow read, delete: if hoca();
@@ -127,9 +135,30 @@ service cloud.firestore {
 
     // Son öz değerlendirme; katalog dışında belge üretilemez, veli başkasının kaydını göremez.
     match /evCalismalari/{ref}/etkinlikler/{id} {
+      /* 27 Eyl 2026 (Ezber Kilimi Faz 1b): katalogdaki 81 madde `ezber-<katalogId>` olarak eklendi; eski 19 `ezber-*`
+         kimliği geçiş boyunca kalır. Liste bilerek açık yazılır (kalıp, velinin sınırsız belge açmasına izin verirdi).
+         Katalog değişirse bu liste de değişir: tests/ezber-katalog.test.mjs katalogla birebir karşılaştırır. */
+      function katalogEzberi() {
+        return id in [
+          'ezber-d-euzu-besmele', 'ezber-d-kelime-i-tevhid', 'ezber-d-kelime-i-sehadet', 'ezber-b-imanin-sartlari', 'ezber-b-islamin-sartlari', 'ezber-b-abdestin-farzlari',
+          'ezber-b-guslun-farzlari', 'ezber-b-teyemmumun-farzlari', 'ezber-d-abdest-niyeti', 'ezber-b-namazin-farzlari', 'ezber-d-namaz-niyeti', 'ezber-d-tekbir',
+          'ezber-d-subhaneke', 'ezber-s-fatiha', 'ezber-s-ihlas', 'ezber-s-kevser', 'ezber-d-ruku-tesbihi', 'ezber-d-tesmi-tahmid',
+          'ezber-d-secde-tesbihi', 'ezber-d-ettehiyyatu', 'ezber-d-salli', 'ezber-d-barik', 'ezber-d-rabbena-atina', 'ezber-d-rabbenagfirli',
+          'ezber-d-selam', 'ezber-s-asr', 'ezber-s-fil', 'ezber-s-nasr', 'ezber-s-felak', 'ezber-s-nas',
+          'ezber-s-kureys', 'ezber-s-maun', 'ezber-s-kafirun', 'ezber-s-tebbet', 'ezber-s-insirah', 'ezber-d-kunut-1',
+          'ezber-d-kunut-2', 'ezber-s-ayetel-kursi', 'ezber-d-tesbihat', 'ezber-d-ezan', 'ezber-d-kamet', 'ezber-d-ezan-duasi',
+          'ezber-d-amentu', 'ezber-s-humeze', 'ezber-s-tekasur', 'ezber-s-karia', 'ezber-s-adiyat', 'ezber-s-zilzal',
+          'ezber-s-beyyine', 'ezber-s-kadir', 'ezber-s-alak', 'ezber-s-tin', 'ezber-s-duha', 'ezber-s-leyl',
+          'ezber-s-sems', 'ezber-s-beled', 'ezber-s-fecr', 'ezber-s-gasiye', 'ezber-s-ala', 'ezber-s-tarik',
+          'ezber-s-buruc', 'ezber-s-insikak', 'ezber-s-mutaffifin', 'ezber-s-infitar', 'ezber-s-tekvir', 'ezber-s-abese',
+          'ezber-s-naziat', 'ezber-s-nebe', 'ezber-b-ulul-azm', 'ezber-d-tesrik-tekbiri', 'ezber-d-kadir-gecesi-duasi', 'ezber-d-rabbisrahli',
+          'ezber-d-telbiye', 'ezber-d-oruc-niyeti', 'ezber-s-alak-1-5', 'ezber-b-secme-hadisler', 'ezber-b-kuran-fazileti-hadisleri', 'ezber-b-dort-halife',
+          'ezber-d-yemek-duasi', 'ezber-s-bakara-285-286', 'ezber-s-hasr-22-24'
+        ];
+      }
       function kayitGecerli() {
         let d=request.resource.data;
-        return id in ['harf-elif','harf-be','harf-te','harf-se','harf-cim','harf-ha','harf-hi','harf-dal','harf-zel','harf-ra','harf-ze','harf-sin','harf-sin2','harf-sad','harf-dad','harf-ti','harf-zi','harf-ayn','harf-gayn','harf-fe','harf-kaf','harf-kef','harf-lam','harf-mim','harf-nun','harf-he','harf-vav','harf-ye','ezber-fatiha','ezber-ayetel-kursi','ezber-insirah','ezber-kadir','ezber-asr','ezber-fil','ezber-kureys','ezber-maun','ezber-kevser','ezber-kafirun','ezber-nasr','ezber-tebbet','ezber-ihlas','ezber-felak','ezber-nas','ezber-subhaneke','ezber-tahiyyat','ezber-salli-barik','ezber-rabbena','bilgi-islam-sartlari','bilgi-kuran-ilk-ayet','bilgi-namaz-vakitleri','bilgi-besmele-anlami','bilgi-iman-sartlari','bilgi-abdest-temizlik','bilgi-peygamberimiz-dogum','bilgi-selamlasma-adabi','bilgi-fatiha-suresi','bilgi-elifba-harf-sayisi','hayat-davet','hayat-hata','hayat-emanet','hayat-su','hayat-dinle','hayat-tesekkur','hayat-guven','hayat-baris']
+        return (id in ['harf-elif','harf-be','harf-te','harf-se','harf-cim','harf-ha','harf-hi','harf-dal','harf-zel','harf-ra','harf-ze','harf-sin','harf-sin2','harf-sad','harf-dad','harf-ti','harf-zi','harf-ayn','harf-gayn','harf-fe','harf-kaf','harf-kef','harf-lam','harf-mim','harf-nun','harf-he','harf-vav','harf-ye','ezber-fatiha','ezber-ayetel-kursi','ezber-insirah','ezber-kadir','ezber-asr','ezber-fil','ezber-kureys','ezber-maun','ezber-kevser','ezber-kafirun','ezber-nasr','ezber-tebbet','ezber-ihlas','ezber-felak','ezber-nas','ezber-subhaneke','ezber-tahiyyat','ezber-salli-barik','ezber-rabbena','bilgi-islam-sartlari','bilgi-kuran-ilk-ayet','bilgi-namaz-vakitleri','bilgi-besmele-anlami','bilgi-iman-sartlari','bilgi-abdest-temizlik','bilgi-peygamberimiz-dogum','bilgi-selamlasma-adabi','bilgi-fatiha-suresi','bilgi-elifba-harf-sayisi','hayat-davet','hayat-hata','hayat-emanet','hayat-su','hayat-dinle','hayat-tesekkur','hayat-guven','hayat-baris'] || katalogEzberi())
           && d.keys().hasAll(['son','sonraki','basamak','cevap','guncelleme'])
           && d.keys().hasOnly(['son','sonraki','basamak','cevap','guncelleme'])
           && d.son is timestamp && d.sonraki is timestamp
@@ -159,6 +188,63 @@ service cloud.firestore {
       allow read: if hoca() || veliOkur(ref);
       allow create, update: if hoca() && islemeAcik(ref);
       allow delete: if hoca();
+    }
+    /* 27 Eyl 2026 (Ezber Kilimi Faz 1b): öğrencinin ezber durumu. Öğrenci başına tek belge (sınıf görünümü öğrenci başına
+       tek okuma); `ogeler` katalog kimliğiyle anahtarlı. Kural haritada döngü kuramadığı için her yazım TEK maddeyi
+       değiştirir ve onu `degisen` ile bildirir; kural diff ile yalnız o maddenin değiştiğini ve biçimini doğrular.
+       Madde `surum`'u eski + 1 olmalı: ortak hoca hesabı iki telefonda açıkken eski ekrandan ya da çevrim dışı kuyruktan
+       gelen yazım sessizce ezmez, reddedilir. Madde silme (hocanın düzeltmesi) serbesttir. Olaylar yalnız eklenir.
+       Durum makinesi: src/lib/ezber/durum.ts · yazan: src/lib/ezber/depo.ts · belge: docs/EZBER-KILIMI.md. */
+    match /ezberDurum/{ref} {
+      function belgeGecerli() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['ogeler', 'degisen', 'guncelleme']) && d.ogeler is map && d.ogeler.size() <= 150
+          && ezberKimligi(d.degisen) && d.guncelleme == request.time;
+      }
+      function maddeGecerli(o, eski) {
+        let id = request.resource.data.degisen;
+        return o is map
+          && o.keys().hasOnly(['basamak', 'kalite', 'notlar', 'son', 'sonrakiKontrol', 'surum'])
+          && o.keys().hasAll(['basamak', 'kalite', 'notlar', 'son', 'sonrakiKontrol', 'surum'])
+          && o.basamak is int && o.basamak >= 1 && o.basamak <= 4
+          && o.kalite in ['', 'tam', 'az', 'tekrar'] && kalipNotlari(o.notlar) && o.son == request.time
+          && (o.sonrakiKontrol == '' || gunDizesi(o.sonrakiKontrol))
+          // Hocaya okudu ve Pekişti kontrol günü taşır, Kalıcı taşımaz; Çalışıyor ikisi de olabilir.
+          && (o.basamak == 1 || (o.basamak == 4) == (o.sonrakiKontrol == ''))
+          && o.surum is int && o.surum == (id in eski ? eski[id].surum + 1 : 1);
+      }
+      function degisenGecerli(yeni, eski) {
+        let id = request.resource.data.degisen;
+        return !(id in yeni) || maddeGecerli(yeni[id], eski);
+      }
+      allow read: if hoca() || veliOkur(ref);
+      allow create: if hoca() && islemeAcik(ref) && exists(/databases/$(db)/documents/ogrenciler/$(ref)) && belgeGecerli()
+        && request.resource.data.degisen in request.resource.data.ogeler
+        && request.resource.data.ogeler.keys().hasOnly([request.resource.data.degisen])
+        && degisenGecerli(request.resource.data.ogeler, {});
+      allow update: if hoca() && islemeAcik(ref) && belgeGecerli()
+        && request.resource.data.ogeler.diff(resource.data.ogeler).affectedKeys().hasOnly([request.resource.data.degisen])
+        && degisenGecerli(request.resource.data.ogeler, resource.data.ogeler);
+      allow delete: if hoca();
+      match /olaylar/{olay} {
+        function olayGecerli() {
+          let d = request.resource.data;
+          return d.keys().hasOnly(['ezber', 'tur', 'kalite', 'notlar', 'basamakOnce', 'basamakSonra', 'zorla', 'tarih', 'zaman'])
+            && d.keys().hasAll(['ezber', 'tur', 'kalite', 'notlar', 'basamakOnce', 'basamakSonra', 'zorla', 'tarih', 'zaman'])
+            && ezberKimligi(d.ezber) && d.tur in ['atama', 'dinleme', 'duzeltme', 'gecis']
+            && d.kalite in ['', 'tam', 'az', 'tekrar'] && (d.tur == 'dinleme') == (d.kalite != '')
+            && kalipNotlari(d.notlar) && d.zorla is bool && (!d.zorla || d.tur == 'dinleme')
+            && d.basamakOnce is int && d.basamakOnce >= 0 && d.basamakOnce <= 4
+            && d.basamakSonra is int && d.basamakSonra >= 0 && d.basamakSonra <= 4
+            && (d.tur != 'atama' || (d.basamakOnce == 0 && d.basamakSonra == 1))
+            && (d.tur != 'gecis' || (d.basamakOnce == 0 && d.basamakSonra in [1, 2]))
+            && gunDizesi(d.tarih) && d.zaman == request.time;
+        }
+        allow read: if hoca() || veliOkur(ref);
+        // Sahipsiz olay yok: durum belgesi (aynı toplu yazımda açılsa bile) yazım sonunda var olmalı.
+        allow create: if hoca() && islemeAcik(ref) && existsAfter(/databases/$(db)/documents/ezberDurum/$(ref)) && olayGecerli();
+        allow delete: if hoca();
+      }
     }
     match /degerlendirme/{id} {
       allow read: if hoca() || veliOkur(resource.data.ref);

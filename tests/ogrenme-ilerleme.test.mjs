@@ -68,5 +68,6 @@ test('İki cihazın aynı günkü kayıtları sıradan bağımsız birleşir; da
 test('Güvenlik kuralının etkinlik izin listesi yayınlanan katalogla aynı kalır',()=>{
  const model={module:{exports:{}}};runInNewContext(buildSync({entryPoints:['src/lib/ogrenme-icerigi.ts'],bundle:true,write:false,format:'cjs'}).outputFiles[0].text,model);
  const ids=Array.from(model.module.exports.ETKINLIKLER,e=>e.id).sort();
- const rules=readFileSync('firebase/firestore.rules','utf8');const izin=JSON.parse(rules.match(/return id in (\[[^\n]+\])/)[1].replaceAll("'",'"')).sort();assert.deepEqual(izin,ids);
+ const rules=readFileSync('firebase/firestore.rules','utf8');// 27 Eyl 2026: listeye «|| katalogEzberi()» eklendi (Ezber Kilimi); eski etkinlik listesi yine birebir denetlenir.
+ const izin=JSON.parse(rules.match(/return \(?id in (\[[^\n\]]+\])/)[1].replaceAll("'",'"')).sort();assert.deepEqual(izin,ids);
 });

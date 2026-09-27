@@ -58,6 +58,8 @@ export async function portalEnvanteri(
   await al(`evCalismalari/${ref}/etkinlikler`, "Evde çalışma");
   const bultenler = await al(`bultenler/${ref}/haftalar`, "Haftalık bülten");
   await al(`dersDefteri/${ref}/kayitlar`, "Ders defteri");
+  // 27 Eyl 2026 (Ezber Kilimi Faz 1b): yalnız eklenen ezber olayları; durum belgesi aşağıda tek belge olarak.
+  await al(`ezberDurum/${ref}/olaylar`, "Ezber olayları");
   let okumalar = 0;
   await Promise.all(
     bultenler.map(async (b) => {
@@ -70,6 +72,7 @@ export async function portalEnvanteri(
   for (const [y, ad] of [
     ["ogrenciler", "Öğrenci profili"],
     ["ilerleme", "Ders ilerlemesi"],
+    ["ezberDurum", "Ezber durumu"],
   ]) {
     const r = await getDoc(doc(db, y, ref));
     sayilar[ad] = r.exists() ? 1 : 0;

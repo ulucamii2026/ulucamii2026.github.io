@@ -129,8 +129,13 @@ test('eski kimlikler: 19 EZBER_LISTESI + 14 seviye testi + planın eski yazımla
       for (const id of idler) assert.ok(kimlikler.has(id), `katalogda yok: ${id} ← ${k}`);
     }
   assert.deepEqual(eski.eskiPlan[ESKI_TELBIYE], ['d-telbiye']);
+  // Ev çalışması kimlikleri (evCalismalari): eski 19 `ezber-fatiha` biçimi geçiş boyunca kalır; Faz 1b'den beri
+  // katalog kimlikleri `ezber-s-fatiha` biçiminde AÇIK liste (kalıp değil: veli sınırsız belge açamasın). İkisi de birebir.
   const kurallar = readFileSync('firebase/firestore.rules', 'utf8');
-  for (const [, k] of kurallar.matchAll(/'ezber-([a-z-]+)'/g)) assert.ok(eski.ezberListesi[k], `kuraldaki ezber-${k} eşlenmemiş`);
+  const eskiKural = [...kurallar.matchAll(/'ezber-(?![sdb]-)([a-z-]+)'/g)].map(([, k]) => k);
+  assert.deepEqual(eskiKural.sort(), Object.keys(eski.ezberListesi).sort(), 'kuraldaki eski ev çalışması kimlikleri');
+  const yeniKural = [...kurallar.matchAll(/'ezber-([sdb]-[a-z0-9-]+)'/g)].map(([, k]) => k);
+  assert.deepEqual(yeniKural.sort(), [...kimlikler].sort(), 'kuraldaki katalog kimlikleri katalogla birebir aynı olmalı');
 });
 
 test('eskiEzberGecisi: ilerleme.ezber → katalog; aynı maddede en ileri durum; eşleşmeyen ve bilinmeyen ayrı listede', () => {

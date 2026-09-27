@@ -5,7 +5,7 @@ import { build } from 'esbuild';
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, setLogLevel, Timestamp, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, deleteField, collection, getDocs, query, where, setLogLevel, Timestamp, serverTimestamp } from 'firebase/firestore';
 
 // Bu kontroller initializeTestEnvironment'dan ÖNCE: üretime sessiz geri dönüş yok.
 assert.equal(process.env.FIRESTORE_EMULATOR_HOST, '127.0.0.1:8185', 'Yalnız test emülatörü kullanılabilir.');
@@ -26,7 +26,7 @@ const message = (extra = {}) => ({ eposta: 'veli-a@example.test', ref: 'ogrenci-
 before(async () => {
   mkdirSync('node_modules/.cache', {recursive:true});
   const outfile=resolve('node_modules/.cache/portal-idare-test.mjs');
-  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts"; export * from "./src/lib/ders-defteri.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
+  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts"; export * from "./src/lib/ders-defteri.ts"; export * from "./src/lib/ezber/depo.ts"; export * from "./src/lib/ezber/durum.ts"; export * from "./src/lib/ezber/gecis.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
   portal=await import(pathToFileURL(outfile).href);
   env = await initializeTestEnvironment({ projectId: 'demo-ulucamii', firestore: {
     host: '127.0.0.1', port: 8185,
@@ -458,4 +458,185 @@ test('Kayıtsız doğrulanmış hesap portal verisine erişemez ve kendini yüks
   await assertFails(setDoc(doc(uye, 'yoklama/sahte'), { ref: 'ogrenci-a' }));
   await assertFails(setDoc(doc(uye, 'portalSilme/ogrenci-a'), { islem: 'x', zaman: serverTimestamp() }));
   await assertFails(setDoc(doc(uye, evYol), evKayit()));
+});
+
+/* 27 Eyl 2026 — Ezber Kilimi Faz 1b: ezberDurum/{ref} (öğrenci başına tek belge, yazım başına tek madde) ve olaylar.
+   Plan: docs/superpowers/plans/2026-09-27-ezber-kilimi-faz-1b-durum.md; belge: docs/EZBER-KILIMI.md. */
+const ezYol = 'ezberDurum/ogrenci-a';
+const ezGun = '2026-10-17';
+const ezOge = (ek = {}) => ({ basamak: 2, kalite: 'tam', notlar: ['med'], son: serverTimestamp(), sonrakiKontrol: '2026-10-24', surum: 1, ...ek });
+const ezBelge = (id = 's-fatiha', oge = ezOge(), ek = {}) => ({ ogeler: { [id]: oge }, degisen: id, guncelleme: serverTimestamp(), ...ek });
+const ezOlay = (ek = {}) => ({ ezber: 's-fatiha', tur: 'dinleme', kalite: 'tam', notlar: [], basamakOnce: 0, basamakSonra: 2, zorla: false, tarih: ezGun, zaman: serverTimestamp(), ...ek });
+const ezYaz = (db, veri, yol = ezYol) => setDoc(doc(db, yol), veri, { merge: true });
+
+test('Ezber durumu: hoca yazar ve okur, bağlı veli okur; başkası okuyamaz, veli ve üye yazamaz', async () => {
+  await assertSucceeds(ezYaz(teacher(), ezBelge()));
+  await assertSucceeds(setDoc(doc(teacher(), ezYol + '/olaylar/o1'), ezOlay()));
+  await assertSucceeds(read(teacher(), ezYol));
+  await assertSucceeds(getDocs(collection(teacher(), 'ezberDurum')));
+  await assertSucceeds(read(parent(), ezYol));
+  await assertSucceeds(getDocs(collection(parent(), ezYol + '/olaylar')));
+  await assertFails(getDocs(collection(parent(), 'ezberDurum')));
+  const yabancilar = [veli('veli-b', 'veli-b@example.test'), env.unauthenticatedContext().firestore(), veli('uye-1', 'uye@example.test'),
+    env.authenticatedContext('saldirgan', { email: 'veli-a@example.test', email_verified: false }).firestore()];
+  for (const db of yabancilar) {
+    await assertFails(read(db, ezYol));
+    await assertFails(read(db, ezYol + '/olaylar/o1'));
+    await assertFails(getDocs(collection(db, ezYol + '/olaylar')));
+  }
+  for (const db of [parent(), veli('uye-1', 'uye@example.test')]) {
+    await assertFails(ezYaz(db, ezBelge('s-ihlas')));
+    await assertFails(setDoc(doc(db, ezYol + '/olaylar/o2'), ezOlay()));
+    await assertFails(deleteDoc(doc(db, ezYol + '/olaylar/o1')));
+    await assertFails(deleteDoc(doc(db, ezYol)));
+  }
+});
+
+test('Ezber durumu biçimi: bozuk madde, sürüm, bildirilmeyen ya da iki madde, istemci saati reddedilir', async () => {
+  const bozuk = [ezOge({ basamak: 0 }), ezOge({ basamak: 5 }), ezOge({ basamak: '2' }), ezOge({ kalite: 'super' }),
+    ezOge({ notlar: ['a', 'b', 'c', 'd'] }), ezOge({ notlar: [3] }), ezOge({ notlar: ['Med'] }), ezOge({ notlar: 'med' }),
+    ezOge({ sonrakiKontrol: '24.10.2026' }), ezOge({ sonrakiKontrol: '2026-13-01' }), ezOge({ sonrakiKontrol: '' }),
+    ezOge({ basamak: 4 }), ezOge({ basamak: 3, sonrakiKontrol: '' }), ezOge({ surum: 2 }), ezOge({ surum: 0 }),
+    ezOge({ son: Timestamp.fromMillis(0) }), ezOge({ ek: 'x' }), (({ surum, ...o }) => o)(ezOge())];
+  for (const oge of bozuk) await assertFails(ezYaz(teacher(), ezBelge('s-fatiha', oge)));
+  await assertFails(ezYaz(teacher(), ezBelge('s-fatiha', ezOge(), { guncelleme: Timestamp.fromMillis(0) })));
+  await assertFails(ezYaz(teacher(), ezBelge('s-fatiha', ezOge(), { fazla: 1 })));
+  await assertFails(ezYaz(teacher(), { ogeler: { 's-fatiha': ezOge(), 's-ihlas': ezOge() }, degisen: 's-fatiha', guncelleme: serverTimestamp() }));
+  await assertFails(ezYaz(teacher(), { ogeler: { 's-fatiha': ezOge() }, degisen: 's-ihlas', guncelleme: serverTimestamp() }));
+  for (const id of ['S-fatiha', 'x-fatiha', 's-' + 'a'.repeat(39), 's--fatiha']) await assertFails(ezYaz(teacher(), ezBelge(id)));
+  // Geçerli akış: ilk kayıt, sürümlü güncellemeler, başka maddeler.
+  await assertSucceeds(ezYaz(teacher(), ezBelge()));
+  await assertFails(ezYaz(teacher(), ezBelge()));                                   // aynı sürüm yeniden: eski ekran
+  for (const oge of [ezOge({ basamak: 5, surum: 2 }), ezOge({ kalite: 'super', surum: 2 }), ezOge({ surum: 2, son: Timestamp.fromMillis(0) })])
+    await assertFails(ezYaz(teacher(), ezBelge('s-fatiha', oge)));
+  await assertSucceeds(ezYaz(teacher(), ezBelge('s-fatiha', ezOge({ basamak: 3, sonrakiKontrol: '2026-11-16', surum: 2 }))));
+  await assertFails(ezYaz(teacher(), ezBelge('s-fatiha', ezOge({ basamak: 4, sonrakiKontrol: '', surum: 4 }))));
+  await assertSucceeds(ezYaz(teacher(), ezBelge('s-fatiha', ezOge({ basamak: 4, sonrakiKontrol: '', surum: 3 }))));
+  await assertSucceeds(ezYaz(teacher(), ezBelge('s-ihlas', ezOge({ basamak: 1, kalite: '', notlar: [], sonrakiKontrol: '', surum: 1 }))));
+  await assertSucceeds(ezYaz(teacher(), ezBelge('s-kevser', ezOge({ basamak: 1, kalite: 'tekrar', sonrakiKontrol: '2026-10-24', surum: 1 }))));
+  // Bildirilmeyen madde değişemez; bütün haritayı yazan updateDoc başka maddeleri silemez.
+  await assertFails(ezYaz(teacher(), { ogeler: { 's-ihlas': ezOge({ surum: 2 }) }, degisen: 's-kevser', guncelleme: serverTimestamp() }));
+  await assertFails(updateDoc(doc(teacher(), ezYol), { ogeler: { 's-fatiha': ezOge({ basamak: 4, sonrakiKontrol: '', surum: 4 }) }, degisen: 's-fatiha', guncelleme: serverTimestamp() }));
+  // Madde kaldırma (hocanın düzeltmesi) serbest; öbür maddeler durur.
+  await assertSucceeds(ezYaz(teacher(), { ogeler: { 's-ihlas': deleteField() }, degisen: 's-ihlas', guncelleme: serverTimestamp() }));
+  const son = (await read(teacher(), ezYol)).data();
+  assert.deepEqual(Object.keys(son.ogeler).sort(), ['s-fatiha', 's-kevser']);
+  assert.deepEqual([son.ogeler['s-fatiha'].basamak, son.ogeler['s-fatiha'].surum, son.degisen], [4, 3, 's-ihlas']);
+});
+
+test('Ezber durumu: öğrenci yoksa açılmaz; idari kilit yazımı durdurur; silinen öğrencinin açık ekranı yazamaz', async () => {
+  await assertFails(ezYaz(teacher(), ezBelge(), 'ezberDurum/yok'));
+  await assertSucceeds(ezYaz(teacher(), ezBelge()));
+  await setDoc(doc(teacher(), 'portalSilme/ogrenci-a'), { islem: 'test', zaman: serverTimestamp() });
+  await assertFails(ezYaz(teacher(), ezBelge('s-ihlas')));
+  await assertFails(setDoc(doc(teacher(), ezYol + '/olaylar/k1'), ezOlay()));
+  await assertSucceeds(ezYaz(teacher(), ezBelge('s-ihlas'), 'ezberDurum/ogrenci-b'));  // kardeş etkilenmez
+  await deleteDoc(doc(teacher(), 'portalSilme/ogrenci-a'));
+  await deleteDoc(doc(teacher(), ezYol));
+  await deleteDoc(doc(teacher(), 'ogrenciler/ogrenci-a'));
+  await assertFails(ezYaz(teacher(), ezBelge()));
+  await assertFails(setDoc(doc(teacher(), ezYol + '/olaylar/k2'), ezOlay()));
+});
+
+test('Ezber olayları: biçim doğrulanır, yalnız eklenir; güncellenemez; sahipsiz olay yazılamaz', async () => {
+  await assertFails(setDoc(doc(teacher(), ezYol + '/olaylar/sahipsiz'), ezOlay()));
+  await ezYaz(teacher(), ezBelge());
+  const o = (id) => doc(teacher(), `${ezYol}/olaylar/${id}`);
+  const bozuk = [{ tur: 'sinav' }, { kalite: '' }, { tur: 'atama', kalite: 'tam' }, { zorla: 'evet' },
+    { tur: 'duzeltme', kalite: '', zorla: true }, { basamakOnce: 5 }, { basamakSonra: -1 }, { basamakOnce: 1.5 },
+    { tur: 'atama', kalite: '', basamakOnce: 0, basamakSonra: 2 }, { tur: 'gecis', kalite: '', basamakOnce: 1, basamakSonra: 2 },
+    { tur: 'gecis', kalite: '', basamakOnce: 0, basamakSonra: 3 }, { notlar: ['a', 'b', 'c', 'd'] }, { notlar: ['Serbest not'] },
+    { tarih: '17.10.2026' }, { tarih: '2026-10-32' }, { ezber: 'ezber-fatiha' }, { zaman: Timestamp.fromMillis(0) }, { metin: 'serbest not' }];
+  for (const ek of bozuk) await assertFails(setDoc(o('bozuk'), ezOlay(ek)));
+  const { zorla, ...eksik } = ezOlay();
+  await assertFails(setDoc(o('eksik'), eksik));
+  await assertSucceeds(setDoc(o('a1'), ezOlay()));
+  await assertSucceeds(setDoc(o('a2'), ezOlay({ tur: 'atama', kalite: '', basamakOnce: 0, basamakSonra: 1 })));
+  await assertSucceeds(setDoc(o('a3'), ezOlay({ tur: 'gecis', kalite: '', basamakOnce: 0, basamakSonra: 2 })));
+  await assertSucceeds(setDoc(o('a4'), ezOlay({ tur: 'duzeltme', kalite: '', basamakOnce: 3, basamakSonra: 0 })));
+  await assertSucceeds(setDoc(o('a5'), ezOlay({ basamakOnce: 2, basamakSonra: 3, zorla: true, notlar: ['med', 'mahrec', 'gayret'] })));
+  await assertFails(setDoc(o('a1'), ezOlay({ kalite: 'az' })));
+  await assertFails(updateDoc(o('a1'), { kalite: 'az' }));
+  await assertSucceeds(deleteDoc(o('a1')));
+});
+
+test('Ezber deposu: durum ve olay tek toplu yazımda; iki telefonda farklı madde geçer, aynı maddede eski ekran çakışma alır', async () => {
+  const A = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  const Bt = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  await A.uygula(portal.dinle(undefined, 's-fatiha', 'tam', ezGun));
+  const [eskiA, eskiB] = [await A.oku(), await Bt.oku()];                       // iki telefon aynı anda açık
+  await A.uygula(portal.dinle(eskiA['s-fatiha'], 's-fatiha', 'tekrar', ezGun, { notlar: ['med'] }));
+  await Bt.uygula(portal.ata(eskiB['s-ihlas'], 's-ihlas', ezGun));              // başka madde: geçer
+  await assert.rejects(() => Bt.uygula(portal.dinle(eskiB['s-fatiha'], 's-fatiha', 'az', ezGun, { zorla: true })),
+    (e) => e.message === portal.EZBER_CAKISMA);
+  await assert.rejects(() => Bt.uygula(portal.ata(undefined, 's-ihlas', ezGun)), (e) => e.message === portal.EZBER_CAKISMA);
+  const son = await A.oku();
+  assert.deepEqual(son['s-fatiha'], { basamak: 1, kalite: 'tekrar', notlar: ['med'], sonrakiKontrol: '2026-10-24', surum: 2 });
+  assert.deepEqual(son['s-ihlas'], { basamak: 1, kalite: '', notlar: [], sonrakiKontrol: '', surum: 1 });
+  // Erken dinleme yalnız olay yazar; madde kaldırma olayıyla birlikte gider.
+  await A.uygula(portal.dinle(son['s-ihlas'], 's-ihlas', 'tam', ezGun));
+  const ihlas = (await A.oku())['s-ihlas'];
+  assert.equal(portal.dinle(ihlas, 's-ihlas', 'tam', ezGun).islem, 'olay');
+  await A.uygula(portal.dinle(ihlas, 's-ihlas', 'tam', ezGun));
+  assert.deepEqual((await A.oku())['s-ihlas'], ihlas);
+  await A.uygula(portal.duzelt(ihlas, 's-ihlas', null, ezGun));
+  assert.deepEqual(Object.keys(await A.oku()), ['s-fatiha']);
+  const olaylar = await A.olaylar();
+  assert.deepEqual(olaylar.map((x) => [x.ezber, x.tur, x.kalite, x.basamakOnce, x.basamakSonra]), [
+    ['s-ihlas', 'duzeltme', '', 2, 0], ['s-ihlas', 'dinleme', 'tam', 2, 2], ['s-ihlas', 'dinleme', 'tam', 1, 2],
+    ['s-ihlas', 'atama', '', 0, 1], ['s-fatiha', 'dinleme', 'tekrar', 2, 1], ['s-fatiha', 'dinleme', 'tam', 0, 2]]);
+  assert.ok(olaylar.every((x) => x.zamanMs > 0 && x.id));
+  assert.equal((await A.olaylar(2)).length, 2);
+  assert.deepEqual(Object.keys(await portal.ezberSinifi(teacher())), ['ogrenci-a']);
+  assert.throws(() => portal.ezberDeposu(teacher(), 'a/b'), /geçersiz/);
+});
+
+test('Ezber geçişi uçtan uca: eski ilerleme → ezberDurum; hocanın yeni kaydı ezilmez; ikinci koşu boş; eski alan durur', async () => {
+  await env.withSecurityRulesDisabled(async (c) => {
+    await setDoc(doc(c.firestore(), 'ilerleme/ogrenci-a'), { kuranAdim: 3, ezber: { 'Fâtiha': 'ogrendi', 'Kevser; Asr; Nasr': 'tekrar', 'İhlâs': 'baslamadi', 'Tebbet': '' } });
+    await setDoc(doc(c.firestore(), 'ilerleme/ogrenci-b'), { ezber: { 'Felak; Nâs': 'ogrendi' } });
+  });
+  await portal.ezberDeposu(teacher(), 'ogrenci-a').uygula(portal.dinle(undefined, 's-asr', 'tam', ezGun));
+  const kuru = await portal.eskiKayitlariTasi(teacher(), ezGun);
+  assert.deepEqual([kuru.yazilacak.length, kuru.yazilan, kuru.atlanan, kuru.basamaklar], [5, 0, 1, { 1: 2, 2: 3 }]);
+  assert.equal((await read(teacher(), 'ezberDurum/ogrenci-b')).exists(), false);        // kuru koşu yazmaz
+  const ilk = await portal.eskiKayitlariTasi(teacher(), ezGun, { yaz: true });
+  assert.deepEqual([ilk.yazilan, ilk.hatali], [5, 0]);
+  const a = await portal.ezberDeposu(teacher(), 'ogrenci-a').oku();
+  assert.deepEqual(Object.fromEntries(Object.entries(a).map(([k, v]) => [k, v.basamak])), { 's-fatiha': 2, 's-kevser': 1, 's-asr': 2, 's-nasr': 1 });
+  assert.equal(a['s-asr'].kalite, 'tam');
+  assert.equal(a['s-fatiha'].sonrakiKontrol, '2026-10-24');
+  const bOlay = await portal.ezberDeposu(teacher(), 'ogrenci-b').olaylar();
+  assert.deepEqual(bOlay.map((x) => x.tur), ['gecis', 'gecis']);
+  const ikinci = await portal.eskiKayitlariTasi(teacher(), ezGun, { yaz: true });
+  assert.deepEqual([ikinci.yazilacak.length, ikinci.yazilan, ikinci.atlanan], [0, 0, 6]);
+  assert.equal((await read(teacher(), 'ilerleme/ogrenci-a')).data().ezber['Fâtiha'], 'ogrendi');
+  // Engel: eşleşmeyen dize varsa --yaz bile hiçbir şey yazmaz.
+  await env.withSecurityRulesDisabled(async (c) => setDoc(doc(c.firestore(), 'ilerleme/ogrenci-b'), { ezber: { 'Felak; Nâs': 'ogrendi', 'Bilinmeyen': 'ogrendi', 'İhlâs': 'ogrendi' } }));
+  const engel = await portal.eskiKayitlariTasi(teacher(), ezGun, { yaz: true });
+  assert.deepEqual([engel.eslesmeyen, engel.yazilan], [['Bilinmeyen'], 0]);
+  assert.equal((await portal.ezberDeposu(teacher(), 'ogrenci-b').oku())['s-ihlas'], undefined);
+});
+
+test('Ev çalışması: katalog kimlikleri (ezber-s-…) yazılır; katalog dışı ve biçimsiz kimlik reddedilir; eski kimlik sürer', async () => {
+  for (const id of ['ezber-s-fatiha', 'ezber-s-bakara-285-286', 'ezber-d-kelime-i-tevhid', 'ezber-fatiha'])
+    await assertSucceeds(setDoc(doc(parent(), `evCalismalari/ogrenci-a/etkinlikler/${id}`), evKayit()));
+  for (const id of ['ezber-s-yok', 'ezber-x-fatiha', 'ezber-S-fatiha', 'ezber-s-fatiha-2', 'ezber-', 'ezber-s-'])
+    await assertFails(setDoc(doc(parent(), `evCalismalari/ogrenci-a/etkinlikler/${id}`), evKayit()));
+  await assertFails(setDoc(doc(parent(), 'evCalismalari/ogrenci-b/etkinlikler/ezber-s-fatiha'), evKayit()));
+});
+
+test('Gerçek silme: ezber durumu ve olayları dökümde; «ev» kapsamı dokunmaz, «tüm» siler; kardeşinki durur', async () => {
+  await portal.ezberDeposu(teacher(), 'ogrenci-a').uygula(portal.dinle(undefined, 's-fatiha', 'tam', ezGun));
+  await portal.ezberDeposu(teacher(), 'ogrenci-b').uygula(portal.ata(undefined, 's-ihlas', ezGun));
+  let envt = await portal.portalEnvanteri(teacher(), 'ogrenci-a');
+  assert.deepEqual([envt.sayilar['Ezber durumu'], envt.sayilar['Ezber olayları']], [1, 1]);
+  await portal.portalKayitlariniSil(teacher(), envt, 'ev');
+  assert.equal((await read(teacher(), ezYol)).exists(), true);
+  envt = await portal.portalEnvanteri(teacher(), 'ogrenci-a');
+  await portal.portalKayitlariniSil(teacher(), envt, 'tum');
+  assert.equal((await read(teacher(), ezYol)).exists(), false);
+  assert.equal((await getDocs(collection(teacher(), ezYol + '/olaylar'))).size, 0);
+  assert.equal((await read(teacher(), 'ezberDurum/ogrenci-b')).exists(), true);
+  assert.equal((await getDocs(collection(teacher(), 'ezberDurum/ogrenci-b/olaylar'))).size, 1);
 });

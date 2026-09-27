@@ -43,6 +43,10 @@ jobs:
       # yanlış girintili iki alan CMS'i bir gün kapalı bıraktı, site derlemesi bunu görmüyordu.
       - name: İçerik yönetimi yapılandırma denetimi
         run: node scripts/cms-config-denetim.mjs
+      # Ezber Kilimi (27 Eyl 2026): katalog kimlikleri Firestore anahtarıdır (ezberDurum, evCalismalari kuralı);
+      # katalog, eşlemeler, ses kaynakları ve durum makinesi bozuksa yayın durur.
+      - name: Ezber kataloğu ve durum makinesi
+        run: npm run test:ezber
 
   deploy:
     needs: build
