@@ -96,6 +96,17 @@ untranslated on purpose.
   this machine's bash heredocs mangle backslashes). Never rewrite a whole large file when an insertion will do.
 - Privacy: no personal data, no secrets, the imam's phone number never appears as text; institutional contact is `info@ulucamii.be` and the
   mosque line `+32 472 98 50 73`.
+- **French typography is applied at build time (27 Sep 2026):** `src/middleware.ts` → `src/lib/fransiz-tipografi.ts` (test `npm run test:tipografi`).
+  On every page whose `<html lang>` starts with `fr`, a plain space before `; ! ?` becomes U+202F and a plain space before `:` or inside « »
+  becomes U+00A0, in text nodes only (tags, attributes, comments, `script`/`style`/`textarea` and `pre`/`code`/`template`/`astro-island`
+  subtrees stay untouched). Write French content with ordinary spaces; the transform is idempotent. Not covered: strings rendered in the
+  browser (Preact islands, parent-portal and teacher-screen scripts) — there, write the character yourself for French only (e.g. `' :'`).
+- **Dates (27 Sep 2026):** never capitalise a date with a CSS case transformation — it capitalises every word, while French and Dutch month
+  names are lower-case («Dimanche 27 septembre», not «Dimanche 27 Septembre»). Use `ilkHarfBuyuk(s, dil)` from `src/i18n/utils.ts`
+  (locale-aware first letter). A standalone one-word month or day label may keep the CSS transformation.
+- **Docs are scanned by Tailwind:** the root stylesheet's automatic source detection includes `docs/*.md`, so a bare utility class name written
+  in a document ends up in the production CSS and changes its hash. Describe utilities in words in documents; after editing documents,
+  confirm that the `Base.*.css` name in `dist/` is unchanged.
 
 
 ## Yerel doğrulamada tamamlananlar — 21 Eylül 2026
