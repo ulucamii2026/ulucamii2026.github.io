@@ -6,6 +6,10 @@ Amaç: yetişkin (18+) yeni Müslümanların ve temel dinî eğitim almak isteye
 
 Dayanak: Diyanet 2025 «Kur'an-ı Kerim ve Temel Dinî Bilgiler Öğretim Programı» (öğrenme alanları; «dönem başında
 hazırbulunuşluk düzeyinin tespiti»); TDV İslâm Ansiklopedisi «İlmihal» maddesi (her Müslümanın bilmesi gereken asgari bilgi).
+**Not (27 Eylül 2026, kaynak araştırması):** 2025 programı lise çağındaki yatılı öğrenciler içindir (s. 4, 8); ezber
+maddelerinin sırası onun listesini birebir izlemez, Diyanet programlarının ortak omurgasından uyarlanmıştır (7–10 Yaş
+2024, 11–14 Yaş 2025). Yetişkinler için en yakın resmî program: İhtiyaç Odaklı Kur'an Kursları Temel Öğretim Programı
+(2026). Ayrıntı: [Ezber Kilimi](EZBER-KILIMI.md).
 
 ## 1. Kalıcı kararlar (kullanıcı, 20 Eyl 2026)
 

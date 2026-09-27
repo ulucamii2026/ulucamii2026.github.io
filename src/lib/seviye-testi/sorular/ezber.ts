@@ -1,6 +1,8 @@
 /** Seviye testi soru bankası — ezber (içerik yazımı sürüyor; docs/SEVIYE-TESTI.md kılavuzu).
  *
- *  Sıra, Diyanet 2025 «Kur’an-ı Kerim ve Temel Dinî Bilgiler Öğretim Programı» ezber listesini izler.
+ *  Sıra, Diyanet öğretim programlarının ortak ezber omurgasından uyarlanmıştır (7–10 Yaş 2024, 11–14 Yaş 2025,
+ *  İhtiyaç Odaklı Temel 2026). 2025 «Kur’an-ı Kerim ve Temel Dinî Bilgiler» programı lise çağı yatılı öğrenciler
+ *  içindir ve listesi bu sırayla birebir aynı değildir (27 Eyl 2026 kaynak araştırması; docs/EZBER-KILIMI.md).
  *  Katılımcı her madde için üç durumdan birini işaretler (0 bilmiyorum · 1 bakarak okurum · 2 ezbere biliyorum);
  *  bu durumlar bileşende yazılıdır, bankada değil.
  */
