@@ -339,6 +339,10 @@ salt okunur) incelemesinden geçti. Kurallar, XSS ve veli tarafı temiz çıktı
 kartında hata iletisi, eski liste yerinde kalır) ve hocanın o arada kuyruğa aldığı yazımlar reddedilir (sekme bunları
 «sunucuya ulaşmadı» diye söyler). Geçiş betiği (`npm run ezber:gecis`) ikisinden sonra, önce kuru çalıştırılır.
 
+**Yayın (27 Eylül 2026, bu sırayla):** kurallar ≈15.15 → site `5b63366` (Pages koşusu 36321927828 başarılı) → geçiş
+kuru koşusu: 3 öğrenci tarandı, eski ezber kaydı yok, yazılacak 0; `--yaz` gerekmedi. Kanıtlar ve açık kalem (canlı kural
+kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026 — Ezber Kilimi Faz 1» kaydında.
+
 ## Bilinen açıklar (27 Eylül 2026)
 
 - Rabbenâ sesleri. Katalog, namaz sayfasındaki özgün «Rabbenâ duaları» kaydından kesilmiş `rabbena-atina.mp3` (0–12 sn)
