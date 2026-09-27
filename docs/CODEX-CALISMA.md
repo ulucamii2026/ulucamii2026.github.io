@@ -62,7 +62,10 @@ böylece başka koşu bittiğinde onun sunucusuyla birlikte test bağlantısı k
 `test:web`, `tests/web/design-visual.spec.mjs` ile ana sayfa ve ihtida yüzeylerinin
 TR/FR/EN ışık/koyu masaüstü ve mobil baseline’larını da kontrol eder. Baseline
 değişecekse `npx playwright test tests/web/design-visual.spec.mjs --update-snapshots`
-yalnız bilinçli görsel karar sonrasında çalıştırılır.
+yalnız bilinçli görsel karar sonrasında çalıştırılır. 27 Eylül 2026'dan beri içeriği
+tarihe bağlı bölgeler (gündem slaytları ve küçük resimleri, namaz vakti değerleri)
+maskelenir; `tests/web/design-visual.css` sahne yüksekliğini sabitler. Yeni duyuru
+ya da süresi dolan duyuru bu testi düşürmez; düşüyorsa gerçek tasarım farkı aranır.
 
 Toplu doğrulama web hatası olsa da bağımsız backend testlerini çalıştırır.
 Build/ön denetim başarısızsa eski çıktıyı geçerli sanmamak için web testi atlanır.

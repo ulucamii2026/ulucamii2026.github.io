@@ -1,7 +1,12 @@
+import { fileURLToPath } from 'node:url';
 import { test, expect } from '@playwright/test';
 
 // Görsel regresyonlar dış ağdan etkilenmesin; proje test sunucusu dışındaki her
 // isteği kesiyoruz. Baseline dosyaları bu test dosyasının yanında tutulur.
+// İçeriği tarihe ve duyurulara bağlı bölgeler (gündem slaytları ve küçük resimleri,
+// namaz vakti değerleri) maskelenir; tasarım çerçevesi karşılaştırılmaya devam eder.
+const sabitStil = fileURLToPath(new URL('./design-visual.css', import.meta.url));
+const degisenBolgeler = ['.gv-sahne', '.gv-filmseridi', '.ana-vakit-kapsam', '.ana-siradaki-kapsam'];
 test.beforeEach(async ({ context }) => {
   await context.route('**/*', route => new URL(route.request().url()).origin === 'http://127.0.0.1:4401'
     ? route.continue() : route.abort('blockedbyclient'));
@@ -37,6 +42,8 @@ for (const surface of surfaces) {
           caret: 'hide',
           fullPage: false,
           scale: 'css',
+          mask: degisenBolgeler.map(secici => page.locator(secici)),
+          stylePath: sabitStil,
           maxDiffPixels: 1200,
         });
       });

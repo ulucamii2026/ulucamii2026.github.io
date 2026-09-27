@@ -1,0 +1,11 @@
+/* Yalnız design-visual ekran görüntülerinde uygulanır (toHaveScreenshot stylePath).
+   «Camimizde Gündem» sahnesinin yüksekliği en uzun slaytın içeriğine göre değişir
+   (flex slaytlar en uzun olana gerilir); başlık uzayınca alttaki bölümler kayar ve
+   temel resim tutmaz. Sahne sabit yüksekliğe çekilir, içeriği testte maskelenir. */
+@container (min-width: 768px) {
+  .gv-sahne-icerik { height: 500px !important; overflow: hidden !important; }
+}
+
+@container (max-width: 767px) {
+  .gv-sahne-icerik { height: 640px !important; overflow: hidden !important; }
+}
