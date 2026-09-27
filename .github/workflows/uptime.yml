@@ -2,7 +2,9 @@ name: Erişilebilirlik denetimi (uptime)
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    # 27 Eyl 2026: '*/30' (saat başı ve buçuk, GitHub'ın en yoğun anları) 21–27 Eylül'de ancak ortanca 2,5 saatte bir,
+    # en geç 6 saatte bir başladı. GitHub yükü dağıtmak için saat başı dışında bir dakika öneriyor.
+    - cron: '13,43 * * * *'
   workflow_dispatch:
 
 permissions:

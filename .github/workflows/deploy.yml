@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   schedule:
+    # 27 Eyl 2026: 23 Eylül'den beri 03:30 koşusu 5–6 saat geç başlıyor (08.37–09.26 UTC); listeler öğleye dek dünkü
+    # günü gösteriyordu. Gece yarısından hemen sonraki ilk koşu (Brüksel saatiyle yazın 01.11, kışın 00.11; «bugün»
+    # derlemede Europe/Brussels'e göre hesaplanır) asıl tazelemedir; 03:30 yedek olarak kalır.
+    - cron: "11 23 * * *"
     - cron: "30 3 * * *"   # her gün 03:30 UTC — "bugün" esaslı listeler (vakit tablosu, haftalık program, irşat) tazelenir
   workflow_dispatch:
 
