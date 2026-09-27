@@ -110,9 +110,37 @@ test('Bağlantı yokken dokunuş kaybolmaz: ekran hemen güncellenir, rozet bekl
   await expect(kok.locator('[data-ez-baglanti]')).toContainText('Bağlantı yok · 1 kayıt telefonda bekliyor');
   await expect(kart(kok, 'TEST-1')).toContainText('Sıradaki: Kelime-i Tevhid'); // yerel önbellek hemen yansır
   expect((await durum(page, 'TEST-1'))['d-euzu-besmele']).toMatchObject({ basamak: 2, kalite: 'az' });
+  // Telefondaki bekleyen yazım defteri (inceleme D1): yazım gidene kadar kayıtlı, onaydan sonra düşer.
+  const defter = () => page.evaluate(() => JSON.parse(localStorage.getItem('ulucamii.ezber.bekleyen.v1') || '[]'));
+  expect((await defter()).map((x) => [x.ref, x.id, x.tur, x.kalite])).toEqual([['TEST-1', 'd-euzu-besmele', 'dinleme', 'az']]);
   await page.evaluate(() => window.__ezberBaglan());
   await expect(kok.locator('[data-ez-baglanti]')).toContainText('Bütün kayıtlar gönderildi');
   await expect(panel.locator('.ez-sonuc')).toContainText('Kaydedildi.');
+  expect(await defter()).toEqual([]);
+});
+
+/* 27 Eyl 2026 — inceleme D1: önceki oturumda kuyruğa alınıp sonra sunucuda reddedilen yazım sessizce kaybolmaz. */
+test('Önceki oturumdan sunucuya ulaşmayan kayıt: sekme adıyla söyler, «Anladım» kapatır; ulaşan kayıt sessizce düşer', async ({ page, context }) => {
+  await context.addInitScript(() => {
+    if (sessionStorage.getItem('kayip-tohum')) return;
+    sessionStorage.setItem('kayip-tohum', '1');
+    localStorage.setItem('ulucamii.ezber.bekleyen.v1', JSON.stringify([
+      { ref: 'TEST-1', olayId: 'reddedilen-1', id: 's-fatiha', tur: 'dinleme', kalite: 'tam', zaman: 1 },
+      { ref: 'TEST-2', olayId: 'ulasan-1', id: 's-ihlas', tur: 'atama', kalite: '', zaman: 2 },
+    ]));
+  });
+  const kok = await ezberAc(page, context, {
+    ezber: { 'TEST-2': { 's-ihlas': oge(1) } },
+    records: { 'ezberDurum/TEST-2/olaylar': [{ id: 'ulasan-1', ezber: 's-ihlas', tur: 'atama', kalite: '', notlar: [], basamakOnce: 0, basamakSonra: 1, zorla: false, tarih: gun }] },
+  });
+  const uyari = kok.locator('[data-ez-kayip]');
+  await expect(uyari).toContainText('1 ezber kaydı sunucuya ulaşmadı');
+  await expect(uyari).toContainText('Örnek Talebe — Fâtiha Sûresi');
+  await expect(uyari).not.toContainText('İkinci Örnek');
+  expect(await page.evaluate(() => localStorage.getItem('ulucamii.ezber.bekleyen.v1'))).toBe('[]');
+  await uyari.locator('[data-ez-kayip-kapat]').click();
+  await expect(kok.locator('[data-ez-kayip]')).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem('ulucamii.ezber.kayip.v1'))).toBe('[]');
 });
 
 test('İki telefon aynı maddede: eski ekranın yazımı çakışma alır, güncel durum gösterilir, geri alma sunulmaz', async ({ page, context }) => {
@@ -207,6 +235,32 @@ test('Defter: «Ezber dinlendi» aynı paneli açar; kayıt cümleyi «Bugün s�
   await page.locator('[data-dd-ezber-kap] [data-ez-kapat]').click();
   await expect(page.locator('[data-dd-ezber-kap]')).toBeHidden();
   await expect(page.locator('[data-dd-ezber]')).toBeFocused();
+});
+
+/* 27 Eyl 2026 — inceleme D2: defter cümlesi sunucunun sonucunu izler; kaydı olmayan dinleme deftere yazılı kalmaz,
+   reddedilen geri almada kayıtlı kalan dinlemenin cümlesi geri gelir. */
+test('Defter: dinleme reddedilirse cümle çıkar; geri alma reddedilirse cümle geri gelir', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, students });
+  await page.locator('[data-sekme=defter]').click();
+  await page.locator('[data-dd-gun]').selectOption('2026-09-12');
+  await page.locator('[data-dd-ogr]').selectOption('TEST-1');
+  const calisma = page.locator('[data-dd-form] [name=calisma]');
+  await calisma.fill('Birlikte okuduk.');
+  await page.locator('[data-dd-ezber]').click();
+  const panel = page.locator('[data-dd-ezber-kap] [data-ez-dinle="TEST-1"]');
+  await page.evaluate(() => { window.__ezberReddet = { kod: 'permission-denied' }; });
+  await panel.locator('[data-ez-kalite=tam]').click();
+  await expect(panel.locator('.ez-sonuc.hata')).toContainText('Kaydedilemedi');
+  await expect(calisma).toHaveValue('Birlikte okuduk.');
+  expect(await olaylar(page, 'TEST-1')).toEqual([]);
+  await panel.locator('[data-ez-kalite=tam]').click();
+  await expect(panel.locator('.ez-sonuc')).toContainText('Kaydedildi.');
+  await expect(calisma).toHaveValue('Birlikte okuduk. Ezber — Eûzü-Besmele: çok güzel okudu.');
+  await page.evaluate(() => { window.__ezberReddet = { kod: 'permission-denied' }; });
+  await panel.locator('[data-ez-geri]').click();
+  await expect(panel.locator('.ez-sonuc.hata')).toContainText('Kaydedilemedi');
+  await expect(calisma).toHaveValue('Birlikte okuduk. Ezber — Eûzü-Besmele: çok güzel okudu.');
+  expect((await olaylar(page, 'TEST-1')).length).toBe(1);
 });
 
 test('Görünümler iki temada erişilebilir; telefonda yatay taşma yok (tablo kendi kaydırıcısında)', async ({ page, context }, info) => {

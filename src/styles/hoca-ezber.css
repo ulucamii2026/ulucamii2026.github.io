@@ -173,6 +173,10 @@
 .ez-kok .ez-sonuc.buyuk .ez-sonuc-metin { font-size: 1rem; }
 .ez-kok .ez-sonuc-metin > .simge { width: 1.2rem; height: 1.2rem; flex: none; margin-top: 0.1rem; color: color-mix(in oklab, var(--dr) 75%, var(--metin)); }
 .ez-kok .ez-sonuc-dugmeler { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.65rem; }
+/* Önceki oturumdan sunucuya ulaşmamış kayıtlar (inceleme D1). */
+.ez-kok .ez-kayip { margin: 0 0 1rem; }
+.ez-kok .ez-kayip-liste { margin: 0.5rem 0 0; padding-inline-start: 1.75rem; font-size: 0.9rem; line-height: 1.5; color: color-mix(in oklab, var(--dr) 30%, var(--metin)); }
+.ez-kok .ez-kayip-liste .ez-tarih { color: var(--metin-2); white-space: nowrap; }
 
 .ez-kok .ez-ikincil {
   display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0.4rem 0.9rem;

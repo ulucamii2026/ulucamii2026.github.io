@@ -517,8 +517,13 @@ test('Ezber durumu biçimi: bozuk madde, sürüm, bildirilmeyen ya da iki madde,
   // Bildirilmeyen madde değişemez; bütün haritayı yazan updateDoc başka maddeleri silemez.
   await assertFails(ezYaz(teacher(), { ogeler: { 's-ihlas': ezOge({ surum: 2 }) }, degisen: 's-kevser', guncelleme: serverTimestamp() }));
   await assertFails(updateDoc(doc(teacher(), ezYol), { ogeler: { 's-fatiha': ezOge({ basamak: 4, sonrakiKontrol: '', surum: 4 }) }, degisen: 's-fatiha', guncelleme: serverTimestamp() }));
-  // Madde kaldırma (hocanın düzeltmesi) serbest; öbür maddeler durur.
-  await assertSucceeds(ezYaz(teacher(), { ogeler: { 's-ihlas': deleteField() }, degisen: 's-ihlas', guncelleme: serverTimestamp() }));
+  // Madde kaldırma (hocanın düzeltmesi) yalnız maddenin sunucudaki sürümüyle: kuyrukta kalmış eski «Geri al» ya da eski
+  // ekrandaki «Kaydı kaldır», o arada başka telefonun yazdığı daha yeni kaydı silemez (27 Eyl 2026, inceleme F2).
+  const kaldir = (id, ek = {}) => ({ ogeler: { [id]: deleteField() }, degisen: id, guncelleme: serverTimestamp(), ...ek });
+  await assertFails(ezYaz(teacher(), kaldir('s-ihlas')));
+  for (const silinenSurum of [2, 0, '1', 1.5]) await assertFails(ezYaz(teacher(), kaldir('s-ihlas', { silinenSurum })));
+  await assertFails(ezYaz(teacher(), kaldir('s-tebbet', { silinenSurum: 1 })));          // olmayan madde
+  await assertSucceeds(ezYaz(teacher(), kaldir('s-ihlas', { silinenSurum: 1 })));
   const son = (await read(teacher(), ezYol)).data();
   assert.deepEqual(Object.keys(son.ogeler).sort(), ['s-fatiha', 's-kevser']);
   assert.deepEqual([son.ogeler['s-fatiha'].basamak, son.ogeler['s-fatiha'].surum, son.degisen], [4, 3, 's-ihlas']);
@@ -628,6 +633,39 @@ test('Ezber geri alma: yeni madde kalkar, ilerletme eski hâline döner, erken d
   await assert.rejects(() => A.geriAl(d4, araya), (e) => e.message === portal.EZBER_CAKISMA);
   assert.deepEqual((await A.oku())['s-ihlas'], simdi);
   assert.equal((await A.olaylar()).length, 3);
+  // 5) Erken dinleme (yalnız olay) geri alınırken madde o arada başka telefonda ilerlediyse ilerleme yerinde kalır:
+  //    geri alma durumu hiç yazmaz, yalnız kendi olayını siler (27 Eyl 2026, inceleme F1).
+  await A.uygula(portal.dinle(undefined, 's-kevser', 'tam', ezGun));
+  const kevser = (await A.oku())['s-kevser'];
+  const d5 = await dokun(kevser, portal.dinle(kevser, 's-kevser', 'tam', ezGun));
+  assert.equal(d5.gecis.islem, 'olay');
+  await B.uygula(portal.dinle(kevser, 's-kevser', 'tam', ezGun, { zorla: true }));
+  const ilerlemis = (await A.oku())['s-kevser'];
+  assert.equal(ilerlemis.basamak, 3);
+  await A.geriAl(d5, ilerlemis);
+  assert.deepEqual((await A.oku())['s-kevser'], ilerlemis);
+  assert.deepEqual((await A.olaylar()).filter((x) => x.ezber === 's-kevser').map((x) => [x.basamakOnce, x.basamakSonra, x.zorla]),
+    [[2, 3, true], [0, 2, false]]);
+});
+
+/* 27 Eyl 2026 — inceleme F2: çevrim dışı kuyrukta kalmış ya da eski ekrandan gelen madde silme, o arada başka telefonun
+   yazdığı daha yeni kaydı silemez; kural silinen sürümü ister, depo reddi çakışma diye ayırır. */
+test('Ezber madde silme: eski sürümle silme (kuyruktaki «Geri al», eski ekran) çakışma alır; güncel sürümle silinir', async () => {
+  const A = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  const B = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  const olayId = A.olayKimligi();
+  const gecis = portal.ata(undefined, 's-nas', ezGun);
+  await A.uygula(gecis, olayId);
+  const gordugu = (await A.oku())['s-nas'];                                       // A'nın ekranı: sürüm 1
+  await B.uygula(portal.dinle(gordugu, 's-nas', 'tam', ezGun));                    // B ilerletti: sürüm 2
+  await assert.rejects(() => A.geriAl({ id: 's-nas', once: undefined, gecis, olayId, bugun: ezGun }, gordugu),
+    (e) => e.message === portal.EZBER_CAKISMA);
+  await assert.rejects(() => A.uygula(portal.duzelt(gordugu, 's-nas', null, ezGun)), (e) => e.message === portal.EZBER_CAKISMA);
+  const son = (await B.oku())['s-nas'];
+  assert.deepEqual([son.basamak, son.surum], [2, 2]);
+  assert.equal((await A.olaylar()).length, 2);
+  await A.uygula(portal.duzelt(son, 's-nas', null, ezGun));
+  assert.deepEqual(await A.oku(), {});
 });
 
 test('Ezber geçişi uçtan uca: eski ilerleme → ezberDurum; hocanın yeni kaydı ezilmez; ikinci koşu boş; eski alan durur', async () => {
@@ -648,7 +686,13 @@ test('Ezber geçişi uçtan uca: eski ilerleme → ezberDurum; hocanın yeni kay
   const bOlay = await portal.ezberDeposu(teacher(), 'ogrenci-b').olaylar();
   assert.deepEqual(bOlay.map((x) => x.tur), ['gecis', 'gecis']);
   const ikinci = await portal.eskiKayitlariTasi(teacher(), ezGun, { yaz: true });
-  assert.deepEqual([ikinci.yazilacak.length, ikinci.yazilan, ikinci.atlanan], [0, 0, 6]);
+  assert.deepEqual([ikinci.yazilacak.length, ikinci.yazilan, ikinci.atlanan, ikinci.gecmisli], [0, 0, 6, 0]);
+  // Hoca geçişin getirdiği maddeyi kaldırdı: betik yeniden çalıştırılınca geri gelmez (27 Eyl 2026, inceleme F3).
+  const A = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  await A.uygula(portal.duzelt((await A.oku())['s-fatiha'], 's-fatiha', null, ezGun));
+  const ucuncu = await portal.eskiKayitlariTasi(teacher(), ezGun, { yaz: true });
+  assert.deepEqual([ucuncu.yazilacak.length, ucuncu.yazilan, ucuncu.atlanan, ucuncu.gecmisli], [0, 0, 5, 1]);
+  assert.equal((await A.oku())['s-fatiha'], undefined);
   assert.equal((await read(teacher(), 'ilerleme/ogrenci-a')).data().ezber['Fâtiha'], 'ogrendi');
   // Engel: eşleşmeyen dize varsa --yaz bile hiçbir şey yazmaz.
   await env.withSecurityRulesDisabled(async (c) => setDoc(doc(c.firestore(), 'ilerleme/ogrenci-b'), { ezber: { 'Felak; Nâs': 'ogrendi', 'Bilinmeyen': 'ogrendi', 'İhlâs': 'ogrendi' } }));

@@ -52,10 +52,13 @@ export interface EzberOlayi {
   /** Ders günü. */
   readonly tarih: string;
 }
-/** `yaz`: durum ve olay · `sil`: madde kaydı kalkar + olay · `olay`: durum değişmez, yalnız olay yazılır. */
+/**
+ * `yaz`: durum ve olay · `sil`: madde kaydı kalkar + olay; `surum` silinen kaydın sürümüdür (kural, sunucudaki sürüm
+ * buysa siler: eski ekran daha yeni kaydı silemez) · `olay`: durum değişmez, yalnız olay yazılır.
+ */
 export type Gecis =
   | { readonly islem: 'yaz'; readonly durum: OgeDurumu; readonly olay: EzberOlayi }
-  | { readonly islem: 'sil'; readonly olay: EzberOlayi }
+  | { readonly islem: 'sil'; readonly surum: number; readonly olay: EzberOlayi }
   | { readonly islem: 'olay'; readonly olay: EzberOlayi };
 
 function gunDenetle(bugun: string): void {
@@ -144,7 +147,7 @@ export function duzelt(onceki: OgeDurumu | undefined, id: string, hedef: Hedef |
   kimlikDenetle(id);
   gunDenetle(bugun);
   const once: Basamak = onceki?.basamak ?? 0;
-  if (hedef === null) return onceki ? { islem: 'sil', olay: olayYap(id, 'duzeltme', once, 0, bugun) } : null;
+  if (hedef === null) return onceki ? { islem: 'sil', surum: onceki.surum, olay: olayYap(id, 'duzeltme', once, 0, bugun) } : null;
   const hata = hedefHatasi(hedef as unknown as Record<string, unknown>);
   if (hata) throw new Error(hata);
   const notlar = [...hedef.notlar];

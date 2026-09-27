@@ -52,6 +52,7 @@ console.log(`Ezber geçişi (${bugun}) — kip: ${YAZ ? 'YAZ' : 'kuru'}`);
 console.log(`  taranan öğrenci ${s.ogrenci} · eski ezber kaydı olan ${s.ezberli}`);
 console.log(`  yazılacak madde ${s.yazilacak.length} (Hocaya okudu ${s.basamaklar[2]} · Çalışıyor ${s.basamaklar[1]})`);
 console.log(`  yeni sistemde zaten olan (atlandı) ${s.atlanan} · bilerek karşılıksız ${s.karsiliksiz}`);
+console.log(`  hocanın geçişten sonra kaldırdığı (yeniden yazılmaz) ${s.gecmisli}`);
 for (const k of s.eslesmeyen) console.log('  ENGEL — eşleşmeyen plan dizesi:', k);
 for (const k of s.bilinmeyenDurum) console.log('  ENGEL — tanınmayan durum değeri, dize:', k);
 const engel = s.eslesmeyen.length + s.bilinmeyenDurum.length;

@@ -3,6 +3,7 @@
  * `ezberDurum/{ref}.ogeler.<id>` (birleştirerek) ve olay `ezberDurum/{ref}/olaylar/{otomatik}` TEK toplu yazımda gider;
  * kural birini reddederse ikisi de yazılmaz. Eşzamanlılık madde `surum`'uyla kuralda denetlenir: ortak hoca hesabı iki
  * telefonda açıkken eski ekrandan (ya da çevrim dışı kuyruktan) gelen yazım sessizce ezmez, `EZBER_CAKISMA` alır.
+ * Madde silme de sürümlüdür: yazım silinen kaydın sürümünü (`silinenSurum`) taşır, kural sunucudaki sürümle karşılaştırır.
  * Tam SDK (`firebase/firestore`): Faz 1c'deki yerel önbellek ve bekleyen yazma göstergesi bunu ister. Faz 1c (27 Eylül
  * 2026): olay kimliği istemcide üretilir; «Geri al» durumu geri yazar ve yanlış dokunuşun olayını aynı yazımda siler.
  * Kurallar: firebase/firestore.rules «ezberDurum»; belge: docs/EZBER-KILIMI.md «Durum makinesi ve veri modeli».
@@ -56,17 +57,18 @@ export function ezberDeposu(db: Firestore, ref: string) {
         degisen: id, guncelleme: serverTimestamp(),
       }, { merge: true });
     else if (gecis.islem === 'sil')
-      batch.set(belge, { ogeler: { [id]: deleteField() }, degisen: id, guncelleme: serverTimestamp() }, { merge: true });
+      batch.set(belge, { ogeler: { [id]: deleteField() }, degisen: id, silinenSurum: gecis.surum, guncelleme: serverTimestamp() }, { merge: true });
   };
   /** Gönderir; kural sürümü tutmadıysa sunucudaki sürüm kararın dayandığı sürümden farklıdır: ayırt edilebilir ileti. */
   const gonder = async (batch: WriteBatch, gecis: Gecis | null) => {
     try {
       await batch.commit();
     } catch (e) {
-      if (gecis?.islem === 'yaz' && kodu(e) === 'permission-denied') {
+      const dayanak = gecis?.islem === 'yaz' ? gecis.durum.surum - 1 : gecis?.islem === 'sil' ? gecis.surum : null;
+      if (gecis && dayanak !== null && kodu(e) === 'permission-denied') {
         const sunucu = await getDocFromServer(belge).catch(() => null);
         const simdi = sunucu?.exists() ? (ezberDurumuOku(sunucu.data())[gecis.olay.ezber]?.surum ?? 0) : 0;
-        if (sunucu && simdi !== gecis.durum.surum - 1) throw new Error(EZBER_CAKISMA);
+        if (sunucu && simdi !== dayanak) throw new Error(EZBER_CAKISMA);
       }
       throw e;
     }
@@ -95,16 +97,19 @@ export function ezberDeposu(db: Firestore, ref: string) {
     /**
      * Yanlış dokunuşu geri alır (tek toplu yazım): madde dokunuştan önceki hâline döner — sürüm yine bir artar, önceden
      * kaydı yoksa madde kalkar — ve dokunuşun olayı silinir; veli geçmişinde yanlış dokunuş kalmaz. Madde o arada başka
-     * bir cihazda değiştiyse (`simdi` dokunuşun yazdığı durum değilse) hiçbir şey yazılmaz: `EZBER_CAKISMA`.
+     * bir cihazda değiştiyse (`simdi` dokunuşun yazdığı durum değilse) hiçbir şey yazılmaz: `EZBER_CAKISMA`. Yalnız olay
+     * yazan dokunuş (erken dinleme, Kalıcı'da dinleme) durumu hiç değiştirmemişti: geri alma yalnız olayı siler; madde o
+     * arada başka cihazda ilerlediyse o ilerleme yerinde kalır.
      */
     async geriAl(d: EzberDokunusu, simdi: OgeDurumu | undefined): Promise<void> {
-      const yazilan = d.gecis.islem === 'yaz' ? d.gecis.durum.surum : d.gecis.islem === 'sil' ? 0 : (simdi?.surum ?? 0);
+      const batch = writeBatch(db);
+      batch.delete(doc(olayYolu, d.olayId));
+      if (d.gecis.islem === 'olay') return gonder(batch, null);
+      const yazilan = d.gecis.islem === 'yaz' ? d.gecis.durum.surum : 0;
       if ((simdi?.surum ?? 0) !== yazilan) throw new Error(EZBER_CAKISMA);
       const hedef = d.once ? { basamak: d.once.basamak, kalite: d.once.kalite, notlar: d.once.notlar, sonrakiKontrol: d.once.sonrakiKontrol } : null;
       const geri = duzelt(simdi, d.id, hedef, d.bugun);
-      const batch = writeBatch(db);
       if (geri) durumYaz(batch, geri);
-      batch.delete(doc(olayYolu, d.olayId));
       await gonder(batch, geri);
     },
     /** Son olaylar, yeniden eskiye (karne, haftalık özet, veli geçmişi). */
@@ -130,11 +135,18 @@ export type TasimaSonucu = GecisPlani & { readonly yazilan: number; readonly hat
 /**
  * Eski `ilerleme/{ref}.ezber` → `ezberDurum` (hoca hesabıyla; kurallar geçerli). Varsayılan kuru: yalnız plan döner.
  * Engel (eşleşmeyen dize, bilinmeyen değer) varsa plan boştur, hiçbir şey yazılmaz. Yazımlar birbirinden bağımsız ve
- * yinelenebilir: yarıda kalırsa yeniden çalıştırmak kalanı yazar. Hata iletileri kişisel veri taşımaz (yalnız kod).
+ * yinelenebilir: yarıda kalırsa yeniden çalıştırmak kalanı yazar. Olayı olan ama kaydı olmayan madde (hoca kaldırmış)
+ * yeniden yazılmaz; bunun için eski kaydı olan öğrencilerin olayları okunur. Hata iletileri kişisel veri taşımaz.
  */
 export async function eskiKayitlariTasi(db: Firestore, bugun: string, secenek: { yaz?: boolean } = {}): Promise<TasimaSonucu> {
   const [ilerleme, mevcut] = await Promise.all([getDocs(collection(db, 'ilerleme')), ezberSinifi(db)]);
-  const plan = gecisPlani(ilerleme.docs.map((d) => ({ ref: d.id, ezber: d.data().ezber })), mevcut, bugun);
+  const girdi = ilerleme.docs.map((d) => ({ ref: d.id, ezber: d.data().ezber }));
+  const eskili = girdi.filter((g) => g.ezber && typeof g.ezber === 'object' && Object.keys(g.ezber).length).map((g) => g.ref);
+  const gecmis = Object.fromEntries(await Promise.all(eskili.map(async (ref) => {
+    const s = await getDocs(collection(db, 'ezberDurum', ref, 'olaylar'));
+    return [ref, s.docs.map((d) => String(d.data().ezber))] as const;
+  })));
+  const plan = gecisPlani(girdi, mevcut, bugun, gecmis);
   let yazilan = 0;
   const hatalar: string[] = [];
   if (secenek.yaz)

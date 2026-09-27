@@ -135,7 +135,7 @@ test('Düzeltme: hedef aynen yazılır, aynı hedef işlem değildir, boş hedef
   let g = m.duzelt(once, 's-fil', m.elleBasamak(3, once, B), B);
   assert.deepEqual(g, { islem: 'yaz', durum: { basamak: 3, kalite: '', notlar: [], sonrakiKontrol: '2026-11-16', surum: 4 },
     olay: { ezber: 's-fil', tur: 'duzeltme', kalite: '', notlar: [], basamakOnce: 2, basamakSonra: 3, zorla: false, tarih: B } });
-  assert.deepEqual(m.duzelt(once, 's-fil', null, B), { islem: 'sil',
+  assert.deepEqual(m.duzelt(once, 's-fil', null, B), { islem: 'sil', surum: once.surum,
     olay: { ezber: 's-fil', tur: 'duzeltme', kalite: '', notlar: [], basamakOnce: 2, basamakSonra: 0, zorla: false, tarih: B } });
   assert.equal(m.duzelt(undefined, 's-fil', null, B), null);
   const ayni = d(2, '2026-10-20', { kalite: 'tam', notlar: ['med'] });
@@ -258,6 +258,15 @@ test('Geçiş planı: eşleşmeyen dize ya da bilinmeyen değer varsa hiçbir ş
   for (const y of ilk.yazilacak) (mevcut[y.ref] ??= {})[y.id] = y.gecis.durum;
   const ikinci = m.gecisPlani(girdi, mevcut, B);
   assert.deepEqual([ikinci.yazilacak.length, ikinci.atlanan], [0, 3]);
+});
+
+/* 27 Eyl 2026 — inceleme F3: geçişten sonra hocanın kaldırdığı madde, betik yeniden çalıştırılınca geri gelmemeli. */
+test('Geçiş planı: yeni sistemde geçmişi (olayı) olan ama kaydı olmayan madde yeniden yazılmaz; öbürleri yazılır', () => {
+  const girdi = [{ ref: 'a', ezber: { 'Fâtiha': 'ogrendi', 'Felak; Nâs': 'tekrar' } }, { ref: 'b', ezber: { 'Fâtiha': 'ogrendi' } }];
+  const p = m.gecisPlani(girdi, { a: { 's-nas': d(2, '2026-10-20') } }, B, { a: ['s-fatiha', 's-nas'], b: new Set(['s-ihlas']) });
+  assert.deepEqual(p.yazilacak.map((y) => [y.ref, y.id]), [['a', 's-felak'], ['b', 's-fatiha']]);
+  assert.deepEqual([p.atlanan, p.gecmisli, p.basamaklar], [1, 1, { 1: 1, 2: 1 }]);
+  assert.equal(m.gecisPlani(girdi, {}, B).gecmisli, 0);
 });
 
 test('Olay süzgeci: geçerli olay aynen döner; bozuk, katalog dışı ve eksik alanlı olay düşer', () => {

@@ -127,6 +127,7 @@ ezberDurum/{ref}                       hoca yazar · bağlı veli okur · idari 
   ogeler.<katalogId>: { basamak 1–4, kalite ''|tam|az|tekrar, notlar [≤ 3 kalıp], son (sunucu zamanı),
                         sonrakiKontrol 'YYYY-AA-GG'|'', surum }
   degisen: <katalogId>                 bu yazımda değişen tek madde (kural yalnız onu doğrular)
+  silinenSurum: <int>                  madde kaldırılırken kaldırılan kaydın sürümü (kural sunucudakiyle karşılaştırır)
   guncelleme: sunucu zamanı
 ezberDurum/{ref}/olaylar/{otomatik}    yalnız eklenir; güncellenmez; yalnız hoca siler (öğrenci silme)
   ezber, tur atama|dinleme|duzeltme|gecis, kalite, notlar, basamakOnce, basamakSonra, zorla, tarih, zaman
@@ -139,7 +140,9 @@ ezberDurum/{ref}/olaylar/{otomatik}    yalnız eklenir; güncellenmez; yalnız h
   (`depo.uygula`): biri reddedilirse ikisi de yazılmaz.
 - **Eşzamanlılık:** madde `surum`'u eski + 1 olmalı. Ortak hoca hesabı iki telefonda açıkken farklı maddeler birbirini
   ezmez; aynı maddede eski ekrandan ya da çevrim dışı kuyruktan gelen yazım reddedilir ve `EZBER_CAKISMA` iletisiyle
-  ekrana döner (ekran durumu yeniden okur). Madde kaldırma sürüm istemez (hocanın düzeltmesi).
+  ekrana döner (ekran durumu yeniden okur). Madde kaldırma da sürümlüdür (27 Eylül 2026, bağımsız inceleme): yazım
+  kaldırılan kaydın sürümünü `silinenSurum` ile bildirir; sunucudaki sürüm o değilse reddedilir. Böylece çevrim dışı
+  kuyrukta kalmış «Geri al» ya da eski ekrandaki «Kaydı kaldır», o arada başka telefonun yazdığı kaydı silemez.
 - **Sahipsiz olay yok:** olay, durum belgesi yazım sonunda varsa eklenir (`existsAfter`); silinen öğrencinin açık kalan
   ekranı ne durumu yeniden açabilir (öğrenci profili gerekir) ne olay bırakabilir.
 - **Silme dökümü:** `portal-idare.ts` «Ezber durumu» ve «Ezber olayları»nı listeler; «ev» kapsamı dokunmaz, «tüm» siler.
@@ -168,6 +171,9 @@ Bugünkü hoca ekranı ezber durumunu `ilerleme/{ref}.ezber` içinde **plandaki 
    kimliği yazmaz) → sonuç temizse aynı komut `-- --yaz`. Yinelenebilir: yarıda kalırsa yeniden çalıştırmak kalanı
    tamamlar. Ne zaman: yeni hoca «Ezber» sekmesi yayına girdiği gün, kurallar canlıdayken. Mantık tek yerde
    (`src/lib/ezber/depo.ts` → `eskiKayitlariTasi`) ve emülatörde uçtan uca test edilir.
+8. **Yeniden çalıştırma hocanın kaldırdığını geri getirmez (27 Eylül 2026, bağımsız inceleme):** yeni sistemde kaydı
+   olmayan ama olayı olan madde (geçişten sonra hoca kaldırmış) atlanır ve «hocanın geçişten sonra kaldırdığı» diye
+   sayılır; betik bunun için eski kaydı olan öğrencilerin olaylarını okur.
 
 Planın eski yazımları git geçmişinden çıkarıldı (`src/data/yillik-plan-2026-2027.json`, bbddea8…a4b802b): bugünkü
 49 dizenin dışında yalnız iki dize var («Telbiye: Lebbeyk Allahümme lebbeyk…» → `d-telbiye` ve Salât-ı ümmiye). Plan
@@ -201,6 +207,11 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
    - Veli geçmişinde iz kalmaz.
    - Arada başka bir cihaz aynı maddeyi değiştirdiyse geri alma yapılmaz; `EZBER_CAKISMA` iletisi çıkar ve ekran
      güncel durumu gösterir.
+   - Yalnız olay yazan dokunuşun (erken dinleme, Kalıcı'da dinleme) geri alınması durumu hiç yazmaz, yalnız olayı
+     siler: madde o arada başka telefonda ilerlediyse ilerleme yerinde kalır.
+   - Defterdeki dinlemenin cümlesi sunucunun yanıtını izler: dinleme reddedilirse cümle defterden çıkar, geri alma
+     reddedilirse (dinleme kayıtlı kaldı) cümle geri gelir.
+   - «Geri al»a yazımın onayından önce basılırsa gelen onay ekranı yeniden «Kaydedildi»ye çevirmez.
 5. **Erken dinleme:** kontrol günü gelmemiş 2. ya da 3. basamakta «Tam» ve «Az hatalı» basamağı değiştirmez.
    «Kontrol günü … gelmedi; … yine de ilerletsin» kutusu işaretlenirse ilerletir; olayda `zorla: true` kalır.
 6. **Tekrar:** kontrol günü gelen maddeler listelenir, en eskisi önce. Düğmedeki sayı madde sayısını gösterir;
@@ -212,6 +223,11 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
 8. **Bağlantı yokken:** tam SDK yazımı telefondaki önbelleğe koyar ve ekran hemen güncellenir.
    - Başlıktaki rozet «Bağlantı yok · N kayıt telefonda bekliyor» der; bağlantı gelince kayıtlar gönderilir.
    - Hoca girişinden sonra `ezberOnYukle`, önceki oturumdan telefonda kalan yazımları sekme açılmadan gönderir.
+   - **Sunucuya ulaşmayan kayıt söylenir** (27 Eylül 2026, bağımsız inceleme): her yazım olay kimliğiyle telefondaki
+     küçük bir deftere (`src/lib/ezber/bekleyen.ts`, localStorage; ad yok) girer, bu oturumda yanıt gelince çıkar.
+     Sekme açılınca önceki oturumlardan kalanların olayı sunucuda aranır; olay yoksa yazım reddedilmiştir (araya başka
+     telefon girdi, kayıt kilitlendi). Sekmenin başında öğrenci adı ve maddeyle uyarı çıkar, «Anladım» deyince kalkar;
+     defterdeki dinleme panelinde kısa bir satır «Ezber» sekmesine yönlendirir.
    - Çıkışta önbellek silinmez: içinde yalnız öğrenci kimliği ve basamaklar vardır, ad yoktur.
 9. **Defter:** «Bugün sınıfta» alanının altındaki «Ezber dinlendi…» aynı paneli defterin içinde açar.
    - Kaydedilen dinlemenin cümlesi alana eklenir (ör. «Ezber — Eûzü-Besmele: çok güzel okudu.»); dinleme geri
@@ -292,6 +308,24 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
   - iki temada axe ve telefonda taşma.
 - Sahte lite SDK'da `orderBy`/`limit` ve okuma reddi için `__ezberHata` vardır.
 - **Sonraya kalan:** hoca öğrenci kartında kilim, A4 baskı, sertifika ve karne (ana plan §3, «kullanıldığı yerler»).
+
+## Bağımsız inceleme ve yayın sırası (27 Eylül 2026)
+
+Faz 1'in bütün dalı (`main...ezber-kilimi`) yayından önce bağımsız bir gözden geçiricinin (ayrı model oturumu,
+salt okunur) incelemesinden geçti. Kurallar, XSS ve veli tarafı temiz çıktı; beş bulgu doğrulandı ve testle düzeltildi:
+
+| Bulgu | Düzeltme | Test |
+|---|---|---|
+| Yalnız olay yazan dokunuşun «Geri al»ı, o arada başka telefonda ilerleyen maddeyi eski hâline yazıyordu | Geri alma durumu yazmaz, yalnız olayı siler | emülatör: geri alma senaryosu 5 |
+| Madde silme sürümsüzdü: kuyruktaki eski «Geri al» ya da eski ekran daha yeni kaydı siliyordu | `silinenSurum` + kural | emülatör: biçim testi, «Ezber madde silme» |
+| Geçiş betiğini yeniden çalıştırmak hocanın kaldırdığı maddeyi geri getiriyordu | Olayı olan madde atlanır | birim + emülatör uçtan uca |
+| Önceki oturumdan kalıp reddedilen yazım görünmüyordu | Bekleyen yazım defteri + sekmede uyarı | birim (`ezber-bekleyen`) + ekran |
+| Defter cümlesi yazımın sonucunu beklemiyordu | Cümle sunucu yanıtıyla eşitlenir | ekran («Defter: dinleme reddedilirse…») |
+
+**Yayın sırası (bağlayıcı):** yayın iş akışı (`deploy.yml`) Firestore kurallarını yayımlamaz. Önce kurallar
+(`npm run firebase:kurallar`, dernek hesabıyla), sonra site. Site önce çıkarsa kilim okuması yetki hatası alır (veli
+kartında hata iletisi, eski liste yerinde kalır) ve hocanın o arada kuyruğa aldığı yazımlar reddedilir (sekme bunları
+«sunucuya ulaşmadı» diye söyler). Geçiş betiği (`npm run ezber:gecis`) ikisinden sonra, önce kuru çalıştırılır.
 
 ## Bilinen açıklar (27 Eylül 2026)
 

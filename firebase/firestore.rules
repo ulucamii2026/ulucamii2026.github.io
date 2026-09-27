@@ -193,13 +193,16 @@ service cloud.firestore {
        tek okuma); `ogeler` katalog kimliğiyle anahtarlı. Kural haritada döngü kuramadığı için her yazım TEK maddeyi
        değiştirir ve onu `degisen` ile bildirir; kural diff ile yalnız o maddenin değiştiğini ve biçimini doğrular.
        Madde `surum`'u eski + 1 olmalı: ortak hoca hesabı iki telefonda açıkken eski ekrandan ya da çevrim dışı kuyruktan
-       gelen yazım sessizce ezmez, reddedilir. Madde silme (hocanın düzeltmesi) serbesttir. Olaylar yalnız eklenir.
+       gelen yazım sessizce ezmez, reddedilir. Madde silme (hocanın düzeltmesi, «Geri al») da sürümlüdür: yazım silinen
+       kaydın sürümünü `silinenSurum` ile bildirir; sunucudaki sürüm o değilse (araya başka telefon girdi) reddedilir.
+       Olaylar yalnız eklenir.
        Durum makinesi: src/lib/ezber/durum.ts · yazan: src/lib/ezber/depo.ts · belge: docs/EZBER-KILIMI.md. */
     match /ezberDurum/{ref} {
       function belgeGecerli() {
         let d = request.resource.data;
-        return d.keys().hasOnly(['ogeler', 'degisen', 'guncelleme']) && d.ogeler is map && d.ogeler.size() <= 150
-          && ezberKimligi(d.degisen) && d.guncelleme == request.time;
+        return d.keys().hasOnly(['ogeler', 'degisen', 'guncelleme', 'silinenSurum']) && d.ogeler is map && d.ogeler.size() <= 150
+          && ezberKimligi(d.degisen) && d.guncelleme == request.time
+          && (!('silinenSurum' in d) || d.silinenSurum is int);
       }
       function maddeGecerli(o, eski) {
         let id = request.resource.data.degisen;
@@ -215,7 +218,8 @@ service cloud.firestore {
       }
       function degisenGecerli(yeni, eski) {
         let id = request.resource.data.degisen;
-        return !(id in yeni) || maddeGecerli(yeni[id], eski);
+        return (id in yeni && maddeGecerli(yeni[id], eski))
+          || (!(id in yeni) && id in eski && request.resource.data.get('silinenSurum', 0) == eski[id].surum);
       }
       allow read: if hoca() || veliOkur(ref);
       allow create: if hoca() && islemeAcik(ref) && exists(/databases/$(db)/documents/ogrenciler/$(ref)) && belgeGecerli()

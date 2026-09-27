@@ -9,7 +9,7 @@
  * Kurallar ve veri modeli: docs/EZBER-KILIMI.md · plan: docs/superpowers/plans/2026-09-27-ezber-kilimi-faz-1c-hoca.md.
  */
 import type { FirebaseApp } from 'firebase/app';
-import { collection, onSnapshot, waitForPendingWrites, type Firestore } from 'firebase/firestore';
+import { collection, doc, getDocFromServer, onSnapshot, waitForPendingWrites, type Firestore } from 'firebase/firestore';
 import { tamFirestore } from '../lib/firebase-tam';
 import { KATALOG, SEVIYE_SIRASI, ezberBul, seviyeOgeleri, sinifHedefleri } from '../lib/ezber/katalog';
 import {
@@ -35,6 +35,7 @@ import { EZBER_CAKISMA, ezberDeposu, type EzberDokunusu } from '../lib/ezber/dep
 import { BASAMAK_ADLARI, KALITE_ETIKETI, NOT_KALIPLARI, defterCumlesi } from '../lib/ezber/metinler';
 import { ogrenciOnerisi } from '../lib/ezber/oneri';
 import { basamakIsareti } from '../lib/ezber/isaret';
+import { bekleyenCikar, bekleyenEkle, bekleyenler, kayiplar, kayiplariBul, kayiplariKapat, type BekleyenYazim } from '../lib/ezber/bekleyen';
 
 export type EzberOgrencisi = { ref: string; ad: string; soyad: string; durum?: string };
 export type EzberPlanGunu = { tarih: string; hafta: number; dersler: { ezber?: string[] }[] };
@@ -79,15 +80,34 @@ export interface Dokunus extends EzberDokunusu {
   /** gidiyor: yerelde yazıldı, sunucu onayı bekleniyor · geri-aliniyor: geri alma yerelde, onay bekleniyor. */
   durum: 'gidiyor' | 'yazildi' | 'hata' | 'geri-aliniyor' | 'geri-alindi';
   hata: string;
+  /** Sunucunun yanıtları: yazım ve (başladıysa) geri alma. Defter cümlesi bunlara göre eşitlenir. */
+  yazim: 'bekliyor' | 'onay' | 'ret';
+  geriAlma?: 'bekliyor' | 'onay' | 'ret';
+  /** Deftere eklenen cümle (yalnız defterdeki dinlemede) ve şu an defterde olup olmadığı. */
+  cumle?: string;
+  cumleDefterde?: boolean;
 }
 
 interface SinifDeposu {
   readonly sinif: Sinif;
   durum(): { hazir: boolean; hata: string; onbellekten: boolean; bekleyen: number };
   abone(f: () => void): () => void;
-  yaz(ref: string, once: OgeDurumu | undefined, gecis: Gecis, bugun: string): Dokunus;
-  geriAl(d: Dokunus): void;
+  /** `sonuc`: sunucunun yanıtı gelince (çevrim dışıyken bağlantı gelince) çağrılır. */
+  yaz(ref: string, once: OgeDurumu | undefined, gecis: Gecis, bugun: string, sonuc?: () => void): Dokunus;
+  geriAl(d: Dokunus, sonuc?: () => void): void;
+  /** Önceki oturumlardan kalıp sunucuya ulaşmamış yazımlar (inceleme D1); hoca kapatana kadar söylenir. */
+  kayiplar(): readonly BekleyenYazim[];
+  kayiplariKapat(): void;
 }
+
+/** Telefonun yerel deposu; gizli sekmede ya da kapalıysa `null` (bekleyen yazım defteri tutulmaz, ekran çalışır). */
+const yerelDepo = (): Storage | null => {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+};
 
 let tekDepo: { db: Firestore; depo: SinifDeposu } | null = null;
 
@@ -121,19 +141,41 @@ function sinifDeposu(db: Firestore): SinifDeposu {
       bildir();
     });
   };
-  const izle = (d: Dokunus, p: Promise<unknown>, basari: Dokunus['durum']) => {
+  /**
+   * Sunucu yanıtını dokunuşa işler. Durum yalnız beklenen durumdan ilerler: «Geri al» yazımın onayından önce başladıysa
+   * gelen onay ekranı yeniden «Kaydedildi»ye çevirmez. İlk hata iletisi kalır (kök neden; ardından gelen geri alma reddi
+   * onu ezmez).
+   */
+  const izle = (d: Dokunus, p: Promise<unknown>, bekleyenDurum: Dokunus['durum'], basari: Dokunus['durum'], sonuc: (basarili: boolean) => void) => {
     bekleyen++;
     bildir();
     p.then(() => {
-      if (d.durum !== 'hata') d.durum = basari;
+      if (d.durum === bekleyenDurum) d.durum = basari;
+      sonuc(true);
     }, (e) => {
-      d.durum = 'hata';
-      d.hata = ezberHataMetni(e);
+      if (d.durum !== 'hata') {
+        d.durum = 'hata';
+        d.hata = ezberHataMetni(e);
+      }
+      sonuc(false);
     }).finally(() => {
       bekleyen--;
       bildir();
     });
   };
+  // Önceki oturumlardan kalan yazımlar (inceleme D1): kuyruktakiler gönderildikten sonra olayları sunucuda aranır;
+  // olayı olmayan yazım reddedilmiştir. Yalnız açılışta defterde olanlar sorulur (bu oturumunkiler kendi sözünü izler).
+  const ls = yerelDepo();
+  const oncekiler = new Set(bekleyenler(ls).map((y) => y.olayId));
+  let kayip = kayiplar(ls);
+  if (oncekiler.size)
+    void waitForPendingWrites(db)
+      .then(() => kayiplariBul(ls, async (y) => (await getDocFromServer(doc(db, 'ezberDurum', y.ref, 'olaylar', y.olayId))).exists(), { yalniz: oncekiler }))
+      .then((yeni) => {
+        if (!yeni.length) return;
+        kayip = kayiplar(ls);
+        bildir();
+      }, () => {});
   const depo: SinifDeposu = {
     sinif,
     durum: () => ({ hazir, hata, onbellekten, bekleyen: Math.max(bekleyen, bekleyenBelge) }),
@@ -152,17 +194,33 @@ function sinifDeposu(db: Firestore): SinifDeposu {
         }
       };
     },
-    yaz(ref, once, gecis, bugun) {
+    yaz(ref, once, gecis, bugun, sonuc) {
       const d0 = ezberDeposu(db, ref);
       const olayId = d0.olayKimligi();
-      const d: Dokunus = { ref, id: gecis.olay.ezber, once, gecis, olayId, bugun, durum: 'gidiyor', hata: '' };
-      izle(d, d0.uygula(gecis, olayId), 'yazildi');
+      const d: Dokunus = { ref, id: gecis.olay.ezber, once, gecis, olayId, bugun, durum: 'gidiyor', hata: '', yazim: 'bekliyor' };
+      bekleyenEkle(ls, { ref, olayId, id: d.id, tur: gecis.olay.tur, kalite: gecis.olay.kalite, zaman: Date.now() });
+      izle(d, d0.uygula(gecis, olayId), 'gidiyor', 'yazildi', (basarili) => {
+        d.yazim = basarili ? 'onay' : 'ret';
+        bekleyenCikar(ls, olayId);
+        sonuc?.();
+      });
       return d;
     },
-    geriAl(d) {
+    geriAl(d, sonuc) {
       const simdi = sinif[d.ref]?.[d.id];
       d.durum = 'geri-aliniyor';
-      izle(d, ezberDeposu(db, d.ref).geriAl(d, simdi), 'geri-alindi');
+      d.geriAlma = 'bekliyor';
+      bekleyenCikar(ls, d.olayId); // olay silinecek: sonraki açılışta «ulaşmadı» sanılmasın
+      izle(d, ezberDeposu(db, d.ref).geriAl(d, simdi), 'geri-aliniyor', 'geri-alindi', (basarili) => {
+        d.geriAlma = basarili ? 'onay' : 'ret';
+        sonuc?.();
+      });
+    },
+    kayiplar: () => kayip,
+    kayiplariKapat() {
+      kayiplariKapat(ls);
+      kayip = [];
+      bildir();
     },
   };
   tekDepo = { db, depo };
@@ -266,17 +324,35 @@ function dinlemeKatmani(o: {
     if (olay.tur === 'atama') return `${ad}: çalışmaya başladı`;
     return g.islem === 'sil' ? `${ad}: kaydı kaldırıldı` : `${ad}: basamak elle «${BASAMAK_ADLARI[olay.basamakSonra].tr}» yapıldı`;
   };
+  /**
+   * Defter cümlesi dinlemenin kaydını izler (inceleme D2): dinleme kayıtlıysa (reddedilmedi, geri alınmadı ya da geri
+   * alma reddedildi) cümle defterde durur, değilse çıkar. Ekran yazımı beklemez; sunucu yanıtı gelince yeniden eşitlenir.
+   */
+  const cumleEsitle = (d: Dokunus) => {
+    if (!d.cumle) return;
+    const olmali = d.yazim !== 'ret' && d.geriAlma !== 'bekliyor' && d.geriAlma !== 'onay';
+    if (olmali && !d.cumleDefterde) {
+      d.cumleDefterde = true;
+      o.cumleEklendi?.(d.cumle);
+    } else if (!olmali && d.cumleDefterde) {
+      d.cumleDefterde = false;
+      o.cumleKaldirildi?.(d.cumle);
+    }
+  };
   const kaydet = (ref: string, gecis: Gecis | null) => {
     if (!gecis) return;
     const once = ogeleri(ref)[gecis.olay.ezber];
-    const d = depo.yaz(ref, once, gecis, bugun);
+    const d = depo.yaz(ref, once, gecis, bugun, () => cumleEsitle(d));
     sonDokunus.set(ref, d);
     const s = secim(ref);
     s.notlar = [];
     s.zorla = false;
     s.yeniden = false;
     s.elleAcik = false;
-    if (gecis.olay.tur === 'dinleme' && gecis.olay.kalite) o.cumleEklendi?.(defterCumlesi(gecis.olay.ezber, gecis.olay.kalite as Kalite).tr);
+    if (gecis.olay.tur === 'dinleme' && gecis.olay.kalite && o.cumleEklendi) {
+      d.cumle = defterCumlesi(gecis.olay.ezber, gecis.olay.kalite as Kalite).tr;
+      cumleEsitle(d);
+    }
     o.degisti(`${depo.durum().onbellekten ? 'Telefonda tutuluyor' : 'Kaydedildi'}: ${ozet(d)}.`, `geri-${ref}`);
   };
 
@@ -398,9 +474,9 @@ function dinlemeKatmani(o: {
         if (el.dataset.ezGeri) {
           const d = sonDokunus.get(ref);
           if (d && (d.durum === 'gidiyor' || d.durum === 'yazildi')) {
-            depo.geriAl(d);
+            depo.geriAl(d, () => cumleEsitle(d));
+            cumleEsitle(d);
             s.yeniden = false;
-            if (d.gecis.olay.tur === 'dinleme' && d.gecis.olay.kalite) o.cumleKaldirildi?.(defterCumlesi(d.id, d.gecis.olay.kalite as Kalite).tr);
             o.degisti(`Geri alındı: ${ozet(d)}.`, `kalite-${ref}-tam`);
           }
           return true;
@@ -683,12 +759,34 @@ export function ezberPaneli(kok: HTMLElement, s: EzberPaneliSecenek): { temizle(
     const icerik = st.hata ? `<p class="not hata">Ezber kayıtları okunamadı (${esc(st.hata)}). Bağlantınızı kontrol edip sekmeyi yeniden açın.</p>`
       : !st.hazir ? '<p class="ez-bilgi">Ezber kayıtları yükleniyor…</p>'
       : gorunum === 'bugun' ? bugunHtml() : gorunum === 'tekrar' ? tekrarHtml() : tabloHtml();
-    return `<div class="ez-gorunum" role="group" aria-label="Görünüm">${dugme('bugun', 'Bugün')}${dugme('tekrar', 'Tekrar', vadeSayi)}${dugme('tablo', 'Tablo')}</div>${icerik}`;
+    return `${kayipHtml()}<div class="ez-gorunum" role="group" aria-label="Görünüm">${dugme('bugun', 'Bugün')}${dugme('tekrar', 'Tekrar', vadeSayi)}${dugme('tablo', 'Tablo')}</div>${icerik}`;
+  };
+  /** Önceki oturumdan sunucuya ulaşmamış yazımlar (inceleme D1): öğrenci adı ve madde ile, «Anladım» deyince kalkar. */
+  const kayipHtml = () => {
+    const l = depo.kayiplar();
+    if (!l.length) return '';
+    const ne = (y: BekleyenYazim) => (y.tur === 'dinleme' ? `dinleme (${KALITE_ETIKETI[y.kalite as Kalite] || y.kalite})`
+      : y.tur === 'atama' ? 'çalışmaya başladı' : 'elle düzeltme');
+    const ogr = (ref: string) => s.ogrenciler().find((x) => x.ref === ref);
+    const zaman = (ms: number) => new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).format(new Date(ms));
+    return `<div class="ez-sonuc hata ez-kayip" data-ez-kayip>
+      <p class="ez-sonuc-metin">${simge('uyari')}<span><b>Önceki bir oturumdan ${l.length} ezber kaydı sunucuya ulaşmadı.</b> O arada başka bir cihazda değişmiş ya da öğrencinin kaydı kilitlenmiş olabilir; gerekirse yeniden dinleyip işleyin.</span></p>
+      <ul class="ez-kayip-liste">${l.map((y) => {
+        const o = ogr(y.ref);
+        return `<li>${esc(o ? adSoyad(o) : 'Kaydı silinmiş öğrenci')} — ${esc(ezberBul(y.id)?.ad.tr || y.id)} · ${esc(ne(y))} · <span class="ez-tarih">${esc(zaman(y.zaman))}</span></li>`;
+      }).join('')}</ul>
+      <div class="ez-sonuc-dugmeler"><button type="button" class="ez-ikincil" data-ez-kayip-kapat data-odak="kayip-kapat">${simge('onay')}Anladım</button></div>
+    </div>`;
   };
 
   kok.addEventListener('click', (ev) => {
-    const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-ez-gorunum],[data-ez-ac],[data-ez-hucre],[data-ez-hucre-kapat],[data-ez-madde],[data-ez-not],[data-ez-kalite],[data-ez-ata],[data-ez-geri],[data-ez-yeniden],[data-ez-elle]');
+    const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-ez-gorunum],[data-ez-ac],[data-ez-hucre],[data-ez-hucre-kapat],[data-ez-kayip-kapat],[data-ez-madde],[data-ez-not],[data-ez-kalite],[data-ez-ata],[data-ez-geri],[data-ez-yeniden],[data-ez-elle]');
     if (!el || !kok.contains(el)) return;
+    if (el.hasAttribute('data-ez-kayip-kapat')) {
+      depo.kayiplariKapat();
+      ciz(`gorunum-${gorunum}`);
+      return;
+    }
     if (el.dataset.ezGorunum) {
       gorunum = el.dataset.ezGorunum as Gorunum;
       ciz(`gorunum-${gorunum}`);
@@ -778,7 +876,8 @@ export function ezberDinlemesi(kap: HTMLElement, s: EzberDinlemesiSecenek): { te
     for (const h of katman.yeniHatalar()) duyur(h);
     if (st.hata) return `<p class="not hata">Ezber kayıtları okunamadı (${esc(st.hata)}).</p>`;
     if (!st.hazir) return '<p class="ez-bilgi">Ezber kayıtları yükleniyor…</p>';
-    return `<div class="ez-dinle">${katman.html(ref, adSoyad(s.ogrenci))}</div><p class="ez-bilgi">Kaydedilen dinleme deftere bir cümle olarak eklenir; defteri yine «Kaydet» ile kaydedin.</p>`;
+    const kayip = depo.kayiplar().length;
+    return `${kayip ? `<p class="not hata">Önceki bir oturumdan ${kayip} ezber kaydı sunucuya ulaşmadı; ayrıntısı «Ezber» sekmesinde.</p>` : ''}<div class="ez-dinle">${katman.html(ref, adSoyad(s.ogrenci))}</div><p class="ez-bilgi">Kaydedilen dinleme deftere bir cümle olarak eklenir; defteri yine «Kaydet» ile kaydedin.</p>`;
   }, depo, ac.signal);
   const katman = dinlemeKatmani({ depo, bugun: s.bugun, hedefler, degisti: (d, odak) => { ciz(odak ?? null); if (d) duyur(d); }, cumleEklendi: s.cumleEklendi, cumleKaldirildi: s.cumleKaldirildi });
   kap.addEventListener('click', (ev) => {
