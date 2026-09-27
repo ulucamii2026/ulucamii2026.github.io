@@ -3,8 +3,9 @@
 Karar tarihi: 26 Eylül 2026 (Rıdvan: «eğitim işleri için egitim.ulucamii.be adlı ayrı bir platforma geçelim»).
 Durum: **yayında** (27 Eylül 2026 akşamı): https://egitim.ulucamii.be — Ezber Kilimi girişi beş dilde (Faz 1f
 iskeleti `egitim/`), Firebase Hosting sitesi `ulucamii-egitim`; barındırma ayrıntısı aşağıda, yayın kanıtı
-[YAYIN-KAYITLARI.md](YAYIN-KAYITLARI.md) «27 Eylül 2026 (2)». Ana siteden bağlantı ve duyuru henüz yok (karar
-Rıdvan'da). Auth alanı ayrıca onaylanır (Faz 3). İskelet ve açık kalemler:
+[YAYIN-KAYITLARI.md](YAYIN-KAYITLARI.md) «27 Eylül 2026 (2)». Ana siteden bağlantı aynı akşam eklendi (Rıdvan: «ana
+siteye egitim.ulucamii.be bağlantısı ekle»; aşağıda «Ana siteden bağlantı», kayıt «27 Eylül 2026 (3)»); duyuru yok.
+Auth alanı ayrıca onaylanır (Faz 3). İskelet ve açık kalemler:
 [Faz 1f belgesi](superpowers/plans/2026-09-27-ezber-kilimi-faz-1f-iskelet.md).
 Ana plan §3.1 ve §4: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md).
 İlk bölüm: [Ezber Kilimi](EZBER-KILIMI.md).
@@ -37,6 +38,8 @@ Ana plan §3.1 ve §4: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2
 | Paylaşım kartı | `egitim/public/og/ezber-kilimi-<dil>.png` (1200 × 630, en çok 300 KB — WhatsApp önizlemesi): giriş sayfasının üst kısmından, menü ve düğmeler gizlenerek `node scripts/egitim-og-kart.mjs`. Giriş sayfasının görünümü değişirse: derle → kartları üret → yeniden derle |
 | Arama motoru | `robots.txt` + `@astrojs/sitemap`: haritada yalnız beş dil sayfası; hreflang sayfanın kendi `<head>`'inden (kök `astro.config.mjs` düzeni). `*.web.app` kopyası kanonik adresle `egitim.ulucamii.be`'yi gösterir |
 | Kota | Spark: Hosting 10 GB depolama, günde 360 MB aktarım (ücretli aşım yok; kota dolarsa o gün hizmet kesilir, uptime denetimi bildirir). Sesler ana siteden gelir, bu kotayı harcamaz |
+| Uptime | `.github/workflows/uptime.yml` yarım saatte bir `https://egitim.ulucamii.be/tr/` adresini yoklar (200 ve «Ezber» metni); sertifika `CERT_ACTIVE` olduktan sonra eklendi (27 Eylül 2026 19.50). Kesintide info@ulucamii.be'ye tek uyarı gider |
+| Ana siteden bağlantı | Adres yalnız `src/i18n/utils.ts`'te (`EGITIM_SITESI`, `egitimBaglantisi(dil)`): ziyaretçi kendi dilinin giriş sayfasına gider. Üç yer: menünün «Eğitim» grubunda «Ders günlüğü»nden sonraki madde (adı platformun başlığı `KILIM_METINLERI.baslik`; ↗ işareti, ekran okuyucuya alan adı), altbilgi «Bağlantılar» (alan adıyla), Kur'an kursu sayfasının yan sütununda kısa tanıtımlı kart. Platform ikinci bölümünü açınca menü maddesine genel bir ad verilir. Test: `tests/web/site.spec.mjs` «egitim.ulucamii.be bağlantısı» (beş dil, masaüstü ve mobil) |
 
 ## Kademeli taşıma (Faz 4, Ocak–Mart 2027; her bölüm ayrı yayın)
 
