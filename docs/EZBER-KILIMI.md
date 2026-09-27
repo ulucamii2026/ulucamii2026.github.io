@@ -44,40 +44,89 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 | `src/data/ezber/katalog.json` | Seviye tanımları (ad + amaç, beş dilde) ve maddeler |
 | `src/data/ezber/katalog.schema.json` | Şema (draft-07); çapraz alan kuralları `tests/ezber-katalog.test.mjs` içinde |
 | `src/data/ezber/plan-eslesme.json` | Yıllık plandaki serbest ezber dizesi → katalog kimlikleri (dizi) |
-| `src/data/ezber/eski-kimlikler.json` | `ezberListesi` (eski `EZBER_LISTESI.id`, ev çalışması `ezber-<id>`) ve `seviyeTesti` (`ez01…ez14`) → katalog kimlikleri |
-| `src/lib/ezber/katalog.ts` | Tipli erişim: `KATALOG`, `ezberBul`, `seviyeOgeleri`, `planKimlikleri`, `eskiKimliktenYeni`, `sinifHedefleri` |
+| `src/data/ezber/eski-kimlikler.json` | `ezberListesi` (eski `EZBER_LISTESI.id`, ev çalışması `ezber-<id>`), `seviyeTesti` (`ez01…ez14`) ve `eskiPlan` (planın git geçmişindeki eski yazımları) → katalog kimlikleri |
+| `src/lib/ezber/katalog.ts` | Tipli erişim: `KATALOG`, `ezberBul`, `seviyeOgeleri`, `planKimlikleri`, `eskiKimliktenYeni`, `eskiEzberGecisi`, `sinifHedefleri` |
 
 **Kurallar**
 - **Kimlik:** `s-` sûre/âyet, `d-` dua (Kur'an'dan olan dualar dahil), `b-` bilgi; küçük ASCII, `-` ayraç.
-  Öneki türle aynı olmalı. Faz 1 yayına girdikten sonra kimlik **değiştirilmez ve silinmez** (Firestore kayıtları
-  kimliğe bağlıdır); gerekirse yeni kimlik açılır, eskisi `eski-kimlikler.json`'a taşınır ve `surum` artar.
+  Öneki türle aynı olmalı. Faz 1 yayına girdikten sonra bir kimliğin **anlamı değişmez ve kimlik başka madde için
+  yeniden kullanılmaz** (Firestore kayıtları kimliğe bağlıdır). Madde bölünür ya da birleşirse yeni kimlik açılır; eski
+  kimlik katalogdan ancak `eski-kimlikler.json`'da yeni bir bölümle (ör. `katalog`: eski → yeni kimlikler) eşlenip
+  kayıtlar kuru çalıştırılan betikle taşındıktan sonra çıkar ve `surum` artar. O bölüm, `EskiKaynak` türüne ve teste
+  ilk böyle değişiklikte eklenir. Faz 1 yayınından önce kimlikler serbestçe düzeltilebilir.
 - **Seviye ve sıra:** `seviye` 1–8 ya da `kenar`; her seviyede `sira` 1'den başlar, kesintisizdir. Kenar suyunda sıra
   sınıf hedefi tarihine göredir.
 - **`kuranMetni`:** Kur'an metni olan her madde (Kur'an'dan olan dualar dahil; ör. Rabbenâ âtinâ = Bakara 201) `true`
   taşır. Bu bayrak yapay ses yasağının ve «yalnız Diyanet» kuralının dayanağıdır. Sûrelerde `kuran` (sûre + âyet
   aralığı, Diyanet mushafı sayımı) zorunludur.
 - **Ses:** yalnız `docs/dinleme-ses-kaynaklari.json`'da kaydı olan ve sha256'sı tutan dosya bağlanır; kaynak Diyanet
-  alan adıdır, sûre sesi Kur'an sunucusundandır. Âyet parçaları sırayla `parcalar`'da (`1-0` besmele kaydı Fâtiha
-  parçalarına girmez).
-- **Adlar:** beş dilde zorunlu. Eski 19 maddenin adları `src/lib/ezber-verisi.ts` ile birebir aynıdır (test korur).
-- **`not`:** maddeye özgü uyarı (ör. ezan kaydının sabah ezanı olması).
+  alan adıdır, sûre sesi Kur'an sunucusundandır. Tek resmî dosyadan kesilen seste `kesim` (saniye) ve `ozgunSha256`
+  zorunludur (test: Kunut 1–2, Rabbenâ âtinâ / Rabbenağfirlî). Âyet parçaları sırayla `parcalar`'dadır ve `kuran`
+  aralığıyla birebir aynıdır (test). **`1-0` eûzü (istiâze) kaydıdır; `1-1` besmeledir = Fâtiha'nın 1. âyeti** (Kûfe
+  sayımı). Birleşik sûre kayıtları (`sureler/*.mp3`) `1-0` + `1-1` ile başlar (Fâtiha'da yalnız `1-0`); `1-0` hiçbir
+  sûrenin âyet parçalarına girmez, yalnız `d-euzu-besmele`'de `1-1` ile birlikte durur.
+- **Âyet sayıları:** Diyanet mushafı (Kûfe sayımı); katalogda geçen 41 sûrenin sayısı testte tablo olarak durur ve
+  27 Eylül 2026'da Diyanet'in âyet ses dosyalarıyla doğrulandı (`{sûre}_{n}.mp3` var, `{sûre}_{n+1}.mp3` yok).
+- **Adlar:** beş dilde zorunlu. Tek karşılığı olan 17 eski maddenin adları `src/lib/ezber-verisi.ts` ile birebir
+  aynıdır (test korur; `salli-barik` ve `rabbena` ikişer maddeye bölündü). Türkçe sûre adları kuran.diyanet.gov.tr /
+  Kur'an Yolu başlıklarıyla aynıdır (kesme işareti ’); tek istisna «Mâûn Sûresi» (eski Ezber Odası adı korunur; Kur'an
+  Yolu başlığı «Maûn»). NL/DE din terimleri [DIL-NL-DE.md](DIL-NL-DE.md) sözlüğüne uyar (abdest = wudu, gusül = ghusl).
+- **`not`:** maddeye özgü uyarı (ör. ezan kaydının sabah ezanı olması); hüküm bildiren not kaynak gösterir
+  (ör. «Diyanet İlmihali c. 1 s. 399»).
+- **Örtüşen maddeler:** `s-alak-1-5` (kenar suyu: ilk vahiy, Kadir Gecesi dersi) `s-alak`'ın (8. şerit) ilk beş
+  âyetidir; ikisi ayrı ilerleme tutar. Faz 1b önerisi: `s-alak` bir basamağa ulaşınca `s-alak-1-5` en az o basamakta
+  **gösterilir** (türetilir, ayrıca yazılmaz); tersi geçerli değildir.
 
 ## Madde ekleme / değiştirme
 
 1. `katalog.json`'da maddeyi ekle ya da düzelt (sıralar kesintisiz kalsın).
 2. Yıllık plandaki ezber dizesi değişti ya da eklendiyse `plan-eslesme.json`'u güncelle; test, plandaki her dizenin
-   eşlendiğini ve fazlalık olmadığını denetler.
+   eşlendiğini ve fazlalık olmadığını denetler. Plandan **kalkan** dize silinmez, `eski-kimlikler.json` → `eskiPlan`'a
+   taşınır (hoca ekranının eski kayıtları dizeyle anahtarlıdır).
 3. `npm run test:ezber` → yeşil. `npm run ezber:tablo` (isteğe bağlı `-- --dil fr`) ile tabloya bak.
+
+## Eski kayıtların geçişi (Faz 1b kuralları, 27 Eylül 2026)
+
+Bugünkü hoca ekranı ezber durumunu `ilerleme/{ref}.ezber` içinde **plandaki serbest dizeyle** anahtarlar (değerler
+`baslamadi` · `tekrar` · `ogrendi`). Yeni sistem `ezberDurum`'a katalog kimliğiyle yazar. Geçiş şu kurallarla yapılır:
+
+1. **Tek çekirdek:** `eskiEzberGecisi(ilerleme.ezber)` (saf işlev, testli). Anahtar önce bugünkü planda
+   (`plan-eslesme.json`), sonra planın eski yazımlarında (`eski-kimlikler.json` → `eskiPlan`) aranır. Ev çalışması
+   `ezber-<id>` → `eskiKimliktenYeni('ezberListesi', id)`; seviye testi → `eskiKimliktenYeni('seviyeTesti', 'ez..')`.
+2. **Önce kuru çalıştırma:** eşleşmeyen anahtar ya da tanınmayan durum değeri varsa betik listeyi yazar ve **durur**;
+   hiçbir kayıt yazılmaz. Eksik eşleme eklenip `npm run test:ezber` yeşil olunca yeniden çalıştırılır.
+3. **Aynı maddeye birden çok dize** (bugün 7 madde: kelime-i tevhid, kelime-i şehâdet, Âmentü, Kadir Gecesi duası,
+   Rabbenâ âtinâ, namaz niyeti, tesbihat): **en ileri durum** alınır. Yeni basamaklar (Pekişti ≥ 1 hafta, Kalıcı ≥ 1 ay)
+   yeniden dinlemeyi zaten istediği için fazla tahmin kendiliğinden düzelir; eksik tahmin çocuğun emeğini siler.
+4. **Bilerek karşılıksız:** «Salât-ı ümmiye (kısa salavat)» (planın 3–12 Eylül 2026 sürümlerinde vardı; katalogda
+   maddesi yok, Rıdvan'ın kararı bekleniyor) taşınmaz; değeri eski alanda kalır.
+5. **Eski alan salt okunur kalır**, silinmez; yeni ekran yalnız `ezberDurum`'a yazar.
+6. Eski durumun yeni basamağa çevrilmesi Faz 1b planında kesinleşir. Öneri: `ogrendi` → Hocaya okudu,
+   `tekrar` → Çalışıyor, `baslamadi` → kayıt açılmaz.
+
+Planın eski yazımları git geçmişinden çıkarıldı (`src/data/yillik-plan-2026-2027.json`, bbddea8…a4b802b): bugünkü
+49 dizenin dışında yalnız iki dize var («Telbiye: Lebbeyk Allahümme lebbeyk…» → `d-telbiye` ve Salât-ı ümmiye). Plan
+yeniden üretildiğinde (müfredat değişikliği) kaybolan her dize `eskiPlan`'a eklenir; test, `eskiPlan` anahtarlarının
+bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini denetler.
 
 ## Bilinen açıklar (27 Eylül 2026)
 
-- `public/media/ses/dualar/rabbena.mp3`: kaynak kaydı yok ve Diyanet'in özgün «Rabbenâ duaları» dosyasıyla aynı değil
-  (137 KB / 879 KB). Yeni katalog onun yerine kaynağı kayıtlı `rabbena-atina.mp3` ve `rabbenagfirli.mp3`'ü kullanır;
-  eski dosya yalnız eski Ezber Odası'nda (`ezber-verisi.ts`) kalıyor — Faz 1d'de Ezber Odası kataloğa bağlanınca düşer.
+- `public/media/ses/dualar/rabbena.mp3`: kaynak kaydı yok ve Diyanet'in özgün «Rabbenâ duaları» dosyasıyla aynı kayıt
+  değil (ilinti 0,04). Yeni katalog onun yerine özgünden kesilmiş `rabbena-atina.mp3` (0–12 sn) ve `rabbenagfirli.mp3`
+  (12–21,9951 sn) dosyalarını kullanır; `kesim` + `ozgunSha256` 27 Eylül 2026'da kayda işlendi (ilinti 0,998). Makine
+  dökümü ve sessizlik kesitleri: ilk kesit Bakara 201 «…ve kınâ azâbe'n-nâr»da biter, «bi rahmetike…» eki yoktur;
+  hocanın bir kez dinleyerek teyidi yeterlidir. `rabbena.mp3` ve iki kaydın birleşimi `sallibarik.mp3` yalnız eski
+  Ezber Odası'nda (`ezber-verisi.ts`) kalıyor; Faz 1d'de Ezber Odası kataloğa bağlanınca düşer (test katalogda yasaklar).
 - `public/media/ses/dualar/ezan.mp3` Diyanet'in **sabah ezanıdır**; katalogda `not` ile belirtildi. Diğer vakitlerin
   ezanı Faz 2'de Diyanet'ten eklenir.
-- 53 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm); Faz 2 ses işi.
+- 52 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm); Faz 2 ses işi.
 - Yeni maddelerin FR/EN/NL/DE adları ilk taslaktır; ana dili konuşan okuması Faz 2'de.
+- `npm run test:ezber` yalnız yerel `dogrula` zincirinde koşuyor; Faz 1b'de kimlikler Firestore anahtarı olunca
+  `.github/workflows/deploy.yml` kapısına eklenir.
+- Eski Ezber Odası'nın Arapça metinleri Diyanet yazımında değil (genel mushaf yazımı); Faz 2'de katalog metinleri
+  resmî yayından alınınca Ezber Odası da kataloğa bağlanır. Fâtiha'nın **âyet numaraları** 27 Eylül 2026'da Medine
+  sayımından Diyanet (Kûfe) sayımına çevrildi: besmele ﴿١﴾, «…الضالين» ﴿٧﴾ (portal besmeleyi serlevhada gösterir,
+  metin ﴿٢﴾'den başlar; test korur).
 - Kurs müfredatındaki «Amme Cüzü Satırları — Elifbâ s. 32–33» atfı yanlış (s. 32 Fâtiha, s. 33 Bakara'nın başı). Kaynak
   OneDrive'daki müfredat belgesidir; yıllık plan ve müfredat çıktıları elle düzenlenmez → kaynakta düzeltilip yeniden
   üretilmeli (Rıdvan'ın kararı).
@@ -89,7 +138,8 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 1. Sübhâneke'deki «ve celle senâük»: Elif-Bâ'da notsuz var; Namaz İlmihali «yalnız cenaze namazında» der. Öneri:
    Temel Dinî Bilgiler modeli (parantez + not).
 2. Ezan duasının son cümlesi («inneke lâ tuhlifü'l-mîâd») Beyhakî ziyadesidir; öneri Buhârî metni + not.
-3. Rabbenâ âtinâ âyetle (Bakara 201) biter; «bi rahmetike…» ayrı, isteğe bağlı ek. Rabbenağfirlî yalnız İbrâhîm 41.
+3. Rabbenâ âtinâ âyetle (Bakara 201) biter; «bi rahmetike…» ayrı, isteğe bağlı ek (namaz.diyanet.gov.tr kaydı da
+   âyetle biter). Rabbenağfirlî yalnız İbrâhîm 41.
 4. Meâlle kıraat: Diyanet İlmihali s. 243 «öğreninceye kadar caiz», Namaz İlmihali «geçersiz» — Fransızca konuşan
    yeni Müslümanlar için hoca notu gerekir (hocanın ve Rıdvan'ın kararı).
 5. Katalog metinleri arşivden kopyalanmaz; resmî yayından (kuran.diyanet.gov.tr, Elif-Bâ, namaz.diyanet.gov.tr) alınır.
@@ -99,3 +149,14 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 - Seviye listesi **v2** (79 madde; kaynak araştırmasının «asgari değişiklik» önerisi uygulandı: tekbir ve selâm
   eklendi, Kevser 3. şeride, Fîl 5. şeride, gusül ve teyemmüm farzları 2. şeride): **Rıdvan onayı bekleniyor**
   (27 Eylül 2026). Onaydan sonra yalnız `seviye`, `sira` ve seviye adları değişir; `npm run test:ezber` yeniden koşar.
+- Onayla birlikte kararı beklenen seçenekler ([araştırma](EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md) §I.3–I.6):
+  1. Seçenek A (şimdiki: Kunut 7. şeritte, 4. şeritte Rabbenâ yedeği) ya da **Seçenek B** (Kunut + Âmentü 5. şeride,
+     namaz sûreleri tek blok, İnşirâh Amme şeridine).
+  2. İnşirâh 6. şeritte mi, Amme şeridinde mi.
+  3. Amme şeridi (25 sûre, 505 âyet) **5 durağa** bölünsün mü (§I.4).
+  4. Kenar suyuna Âmene'r-Resûlü (Bakara 285–286) ve Haşr 22–24 eklensin mi; «Rabbi yessir» (hadis kaynağı
+     doğrulanamadı) eklensin mi (§I.5).
+  5. «Salât-ı ümmiye» katalog maddesi olsun mu (metni önce doğrulanmalı; bugün `eskiPlan`'da bilerek karşılıksız).
+  6. 32 farzın 6 bilgi maddesi olarak durması uygun mu (1. şeritte imanın ve İslâm'ın şartları; 2. şeritte abdestin,
+     guslün, teyemmümün ve namazın farzları).
+  7. Yemek duası kenar suyunda mı kalsın, 1.–2. şeride mi alınsın (§I.5).

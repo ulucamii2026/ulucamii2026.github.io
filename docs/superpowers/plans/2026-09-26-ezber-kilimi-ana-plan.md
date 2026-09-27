@@ -215,7 +215,7 @@ Dosya: `src/lib/ezber/durum.ts`. Ekran ve veritabanı bilmez; birim testlidir.
   - TR anlam yalnız `kuran.diyanet.gov.tr/mushaf/kuran-meal-2/…` adresinden alınır. FR ve EN için `ezber-verisi.ts` kaynak sözleşmesi izlenir; nl/de Diyanet TR'den çevrilir ve `inceleme` bayrağı taşır.
   - Okunuş iki usulle; hoca kontrolünden geçer.
   - **Ses:**
-    - Eksik sûreler (Alak, Hümeze, Tekâsür, Kâria, Âdiyât, Zilzâl, Beyyine ve Amme'nin kalan 18 sûresi) Diyanet'ten tam ve âyet âyet indirilir. Kaynak ve sha256 `docs/dinleme-ses-kaynaklari.json` dosyasına yazılır.
+    - Eksik sûreler (Alak, Hümeze, Tekâsür, Kâria, Âdiyât, Zilzâl, Beyyine ve Amme'nin kalan 17 sûresi) Diyanet'ten tam ve âyet âyet indirilir. Kaynak ve sha256 `docs/dinleme-ses-kaynaklari.json` dosyasına yazılır.
     - Dualar namaz.diyanet.gov.tr'den alınır. Yalnız bulunamayan Kur'an dışı metinler Gemini TTS ile `sesli-anlatim` hattından üretilir (rotasyonlu anahtar havuzu).
     - Yapay ses arayüzde küçük bir notla belirtilir; yayından önce hoca onaylar.
 - **Madde sayfaları:** Arapça (Türk mushaf hattı, `lang="ar"`, `dir="rtl"`), katlanır okunuş, anlam, ses, «namazda nerede okunur» etiketi, motif ve sınıf hedef haftası.

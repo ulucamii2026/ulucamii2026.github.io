@@ -35,5 +35,9 @@
     "ez12": ["s-ayetel-kursi"],
     "ez13": ["d-ezan","d-kamet"],
     "ez14": ["d-yemek-duasi"]
+  },
+  "eskiPlan": {
+    "Telbiye: Lebbeyk Allahümme lebbeyk…": ["d-telbiye"],
+    "Salât-ı ümmiye (kısa salavat)": []
   }
 }

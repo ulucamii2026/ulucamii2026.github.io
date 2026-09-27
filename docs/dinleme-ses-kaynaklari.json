@@ -285,11 +285,21 @@
  },
  "/media/ses/dualar/rabbena-atina.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/10_RABBENA_DUALARI.mp3",
-  "sha256": "d723a98677a0d9482cbc5a0bef5be810d4a5f573ac06d22b79ee1e7d1245b8ab"
+  "sha256": "d723a98677a0d9482cbc5a0bef5be810d4a5f573ac06d22b79ee1e7d1245b8ab",
+  "kesim": [
+   0,
+   12.0
+  ],
+  "ozgunSha256": "c27698a556be1cc6dafcc4637bc28b8256274a2c011f2e98d2c5dae2324c80a1"
  },
  "/media/ses/dualar/rabbenagfirli.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/10_RABBENA_DUALARI.mp3",
-  "sha256": "a7b3829afe92c7ff15a34fa0d2564552bd0acfb6bf5fb766dfbba556ab20fa48"
+  "sha256": "a7b3829afe92c7ff15a34fa0d2564552bd0acfb6bf5fb766dfbba556ab20fa48",
+  "kesim": [
+   12.0,
+   21.9951
+  ],
+  "ozgunSha256": "c27698a556be1cc6dafcc4637bc28b8256274a2c011f2e98d2c5dae2324c80a1"
  },
  "/media/ses/dualar/subhaneke.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/3_SUBHANEKE.mp3",

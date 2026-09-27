@@ -20,7 +20,7 @@ export const EZBER_LISTESI: EzberOgesi[] = [
     id: 'fatiha',
     ad: { tr: 'Fâtiha Sûresi', fr: 'Sourate Al-Fatiha', en: 'Surah Al-Fatihah', nl: 'Soera Al-Fatiha', de: 'Sure Al-Fatiha' },
     tur: 'sure',
-    arapca: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿١﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٢﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٣﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٤﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٥﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ ﴿٦﴾ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾',
+    arapca: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾',
     okunus: 'Bismillâhir-rahmânir-rahîm. Elhamdü lillâhi rabbil-âlemîn. Er-rahmânir-rahîm. Mâliki yevmid-dîn. İyyâke na’büdü ve iyyâke neste’în. İhdinas-sırâtal-müstekîm. Sırâtallezîne en’amte aleyhim, ğayril-mağdûbi aleyhim veled-dâllîn.',
     anlam: {
       tr: 'Hamd, âlemlerin Rabbi Allah’a mahsustur. O, Rahmân ve Rahîmdir. Ceza ve hesap gününün mâlikidir. Yalnız sana ibadet eder, yalnız senden yardım dileriz. Bizi doğru yola ilet; kendilerine lütufta bulunduğun kimselerin yoluna; gazaba uğramışların ve sapmışların yoluna değil.',

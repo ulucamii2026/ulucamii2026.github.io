@@ -16,15 +16,24 @@ await build({
 });
 const m = await import(pathToFileURL(outfile).href);
 
-const i = process.argv.indexOf('--dil');
-const dil = i > 0 ? process.argv[i + 1] : 'tr';
+const argumanlar = process.argv.slice(2);
+const DILLER = Object.keys(m.KATALOG.seviyeler[0].ad);
+const i = argumanlar.indexOf('--dil');
+const dil = i >= 0 ? argumanlar[i + 1] : 'tr';
+const tanimsiz = i < 0 ? argumanlar : argumanlar.filter((_, k) => k !== i && k !== i + 1);
+if (!DILLER.includes(dil) || tanimsiz.length) {
+  const neden = tanimsiz.length ? `tanınmayan seçenek: ${tanimsiz.join(' ')}` : `dil verilmedi ya da tanınmıyor: ${dil ?? '(boş)'}`;
+  console.error(`Kullanım: npm run ezber:tablo [-- --dil <dil>] · dil: ${DILLER.join(', ')} · ${neden}`);
+  process.exit(1);
+}
 const plan = JSON.parse(readFileSync('src/data/yillik-plan-2026-2027.json', 'utf8'));
 const eski = JSON.parse(readFileSync('src/data/ezber/eski-kimlikler.json', 'utf8'));
 const hedef = m.sinifHedefleri(plan);
 const TUR = { sure: 'sûre', dua: 'dua', bilgi: 'bilgi' };
 
+// Eski kimlik sistemleri (EZBER_LISTESI → «eski:…», seviye testi → «ez..»); planın eski yazımları (`eskiPlan`) kimlik değildir.
 const eskiAdlari = (id) =>
-  Object.entries(eski).flatMap(([kaynak, tablo]) =>
+  Object.entries(eski).filter(([kaynak]) => kaynak !== 'eskiPlan').flatMap(([kaynak, tablo]) =>
     Object.entries(tablo).filter(([, idler]) => idler.includes(id)).map(([k]) => (kaynak === 'seviyeTesti' ? k : `eski:${k}`)));
 const tarih = (t) => (t ? new Date(`${t}T12:00:00Z`).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }) : '—');
 const kuranHucresi = (o) => {

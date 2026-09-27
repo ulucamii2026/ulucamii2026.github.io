@@ -73,18 +73,23 @@ Onay tablosu katalogdan üretilir (tek kaynak).
 ```ts
 export type Seviye = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 'kenar';
 export type EzberTuru = 'sure' | 'dua' | 'bilgi';
-export type BesDil = Record<Dil, string>;
-export interface EzberOgesi { id: string; tur: EzberTuru; seviye: Seviye; sira: number; ad: BesDil; kuranMetni: boolean;
-  kuran?: { sure: number; ayetler: [number, number] }; ses?: { tam?: string; parcalar?: string[] }; not?: string; }
+export type BesDil = Readonly<Record<Dil, string>>;
+// Alanların hepsi readonly; veri modül yüklenirken derinden dondurulur (gözden geçirme sonrası, 27 Eyl 2026).
+// Ad KatalogOgesi: eski Ezber Odası'nın src/lib/ezber-verisi.ts → EzberOgesi tipiyle karışmasın.
+export interface KatalogOgesi { id: string; tur: EzberTuru; seviye: Seviye; sira: number; ad: BesDil; kuranMetni: boolean;
+  kuran?: { sure: number; ayetler: readonly [number, number] }; ses?: { tam?: string; parcalar?: readonly string[] }; not?: string; }
 export interface SeviyeTanimi { kimlik: Seviye; ad: BesDil; amac: BesDil; }
-export interface Katalog { surum: number; seviyeler: SeviyeTanimi[]; ogeler: EzberOgesi[]; }
-export type EskiKaynak = 'ezberListesi' | 'seviyeTesti';
+export interface Katalog { surum: number; seviyeler: readonly SeviyeTanimi[]; ogeler: readonly KatalogOgesi[]; }
+export type EskiKaynak = 'ezberListesi' | 'seviyeTesti' | 'eskiPlan';
 export const KATALOG: Katalog;
 export const SEVIYE_SIRASI: readonly Seviye[];            // [1..8, 'kenar']
-export function ezberBul(id: string): EzberOgesi | undefined;
-export function seviyeOgeleri(seviye: Seviye, katalog?: Katalog): EzberOgesi[];   // sira'ya göre
-export function planKimlikleri(planMetni: string): string[];                       // eşlenmemişse []
-export function eskiKimliktenYeni(kaynak: EskiKaynak, eski: string): string[];    // eşlenmemişse []
+export const ESKI_DURUM_SIRASI: readonly ['baslamadi', 'tekrar', 'ogrendi'];
+export function ezberBul(id: string): KatalogOgesi | undefined;
+export function seviyeOgeleri(seviye: Seviye, katalog?: Katalog): KatalogOgesi[];  // sira'ya göre, yeni dizi
+export function planKimlikleri(planMetni: string): readonly string[];              // eşlenmemişse []
+export function eskiKimliktenYeni(kaynak: EskiKaynak, eski: string): readonly string[]; // eşlenmemişse []
+export function eskiEzberGecisi(eski: Record<string, unknown>): { durumlar: Record<string, EskiDurum>;
+  eslesmeyen: string[]; karsiliksiz: string[]; bilinmeyenDurum: string[] };     // Faz 1b geçişinin saf çekirdeği
 export function sinifHedefleri(plan: { gunler: { tarih: string; dersler?: { ezber?: string[] }[] }[] }): Record<string, string>;
 ```
 
@@ -316,7 +321,7 @@ import eskiKimlikler from '../../data/ezber/eski-kimlikler.json';
 export type Seviye = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 'kenar';
 export type EzberTuru = 'sure' | 'dua' | 'bilgi';
 export type BesDil = Record<Dil, string>;
-export interface EzberOgesi {
+export interface KatalogOgesi {
   id: string;
   tur: EzberTuru;
   seviye: Seviye;
@@ -329,7 +334,7 @@ export interface EzberOgesi {
   not?: string;
 }
 export interface SeviyeTanimi { kimlik: Seviye; ad: BesDil; amac: BesDil }
-export interface Katalog { surum: number; seviyeler: SeviyeTanimi[]; ogeler: EzberOgesi[] }
+export interface Katalog { surum: number; seviyeler: SeviyeTanimi[]; ogeler: KatalogOgesi[] }
 export type EskiKaynak = 'ezberListesi' | 'seviyeTesti';
 type PlanGunu = { tarih: string; dersler?: { ezber?: string[] }[] };
 
@@ -340,11 +345,11 @@ const dizin = new Map(KATALOG.ogeler.map((o) => [o.id, o]));
 const planTablosu = planEslesme as Record<string, string[]>;
 const eskiTablo = eskiKimlikler as Record<EskiKaynak, Record<string, string[]>>;
 
-export function ezberBul(id: string): EzberOgesi | undefined {
+export function ezberBul(id: string): KatalogOgesi | undefined {
   return dizin.get(id);
 }
 
-export function seviyeOgeleri(seviye: Seviye, katalog: Katalog = KATALOG): EzberOgesi[] {
+export function seviyeOgeleri(seviye: Seviye, katalog: Katalog = KATALOG): KatalogOgesi[] {
   return katalog.ogeler.filter((o) => o.seviye === seviye).sort((a, b) => a.sira - b.sira);
 }
 
@@ -378,10 +383,11 @@ export function sinifHedefleri(plan: { gunler: PlanGunu[] }): Record<string, str
 **Dosyalar:** Oluştur `src/data/ezber/katalog.json`, `plan-eslesme.json`, `eski-kimlikler.json`
 **Tüketir:** Görev 1 şeması ve testleri. **Üretir:** Faz 1b–1d'nin kullanacağı kimlikler (aşağıdaki tablo).
 
-Kaynak kuralları: TR adlar Diyanet yazımı; 19 eski maddenin beş dildeki adı `ezber-verisi.ts`'ten birebir; yeni
-sûrelerin FR/EN/NL/DE adları aynı düzende («Sourate Al-…», «Surah Al-…», «Soera Al-…», «Sure Al-…»). Âyet sayıları
-Diyanet mushafı (Kûfe sayımı). Ses yalnız `docs/dinleme-ses-kaynaklari.json`'da kaydı olan dosyalar; Fâtiha parçaları
-`1-1…1-7` (`1-0` besmeledir, parçalara girmez).
+Kaynak kuralları: TR adlar Diyanet yazımı; eski 19 maddeden tek karşılığı olan 17'sinin beş dildeki adı
+`ezber-verisi.ts`'ten birebir (`salli-barik` ve `rabbena` ikişer maddeye bölündü); yeni sûrelerin FR/EN/NL/DE adları aynı
+düzende («Sourate Al-…», «Surah Al-…», «Soera Al-…», «Sure Al-…»). Âyet sayıları Diyanet mushafı (Kûfe sayımı).
+Ses yalnız `docs/dinleme-ses-kaynaklari.json`'da kaydı olan dosyalar; Fâtiha parçaları `1-1…1-7` (besmele Fâtiha'nın
+1. âyetidir = `1-1`; `1-0` eûzü kaydıdır ve âyet parçalarına girmez, birleşik sûre kayıtlarının başında durur).
 
 **Seviye önerisi v2** (27 Eylül 2026: v1, kaynak araştırmasının «asgari değişiklik» önerisiyle güncellendi —
 [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](../../EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md) §I.3 Seçenek A; Rıdvan onayına kadar
@@ -413,7 +419,9 @@ Diyanet mushafı (Kûfe sayımı). Ses yalnız `docs/dinleme-ses-kaynaklari.json
   iki niyet dizesi → `["d-namaz-niyeti"]`.
 - [ ] **Adım 3:** `eski-kimlikler.json` — `ezberListesi`: 19 kimlik (`salli-barik` → `["d-salli","d-barik"]`,
   `rabbena` → `["d-rabbena-atina","d-rabbenagfirli"]`, `tahiyyat` → `["d-ettehiyyatu"]`, diğerleri tek); `seviyeTesti`:
-  `ez01`…`ez14` (ez02 → tevhid + şehâdet, ez10 → Fîl…Tebbet 7 sûre, ez11 → İhlâs/Felak/Nâs, ez13 → ezan + kâmet).
+  `ez01`…`ez14` (ez02 → yalnız şehâdet, ez10 → Fîl…Tebbet 7 sûre, ez11 → İhlâs/Felak/Nâs, ez13 → ezan + kâmet).
+  Gözden geçirme sonrası (27 Eyl 2026) üçüncü bölüm `eskiPlan`: planın git geçmişindeki eski yazımları
+  («Telbiye: Lebbeyk Allahümme lebbeyk…» → `["d-telbiye"]`, «Salât-ı ümmiye (kısa salavat)» → `[]` bilerek karşılıksız).
 - [ ] **Adım 4:** `npm run test:ezber` → tüm testler geçer. `npx astro check` temiz.
 - [ ] **Adım 5: Commit** — `git add src/data/ezber src/lib/ezber tests/ezber-katalog.test.mjs package.json` →
   «Ezber Kilimi Faz 1a: tek ezber kataloğu, eşlemeler ve bütünlük testleri».

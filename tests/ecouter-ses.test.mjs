@@ -72,6 +72,25 @@ test('Tam sûreler eûzü, tek besmele ve eksiksiz âyet sırasıyla üretilir',
   assert.ok(veri.surum>=3,'Eski sesler tarayıcı önbelleğinden ayrılmalı');
 });
 
+test('Tek resmî dosyadan kesilen sesler kesim aralığı ve özgün özetiyle belgelenir',()=>{
+  const gruplar={};
+  for(const [path,r] of Object.entries(kaynaklar)){
+    assert.equal(!!r.kesim,!!r.ozgunSha256,path);
+    if(!r.parcalar)(gruplar[r.kaynak]??=[]).push([path,r]);
+  }
+  // Aynı kaynaktan birebir kopya (Elif-Bâ karşılaştırması) serbest; özeti farklıysa dosya bir kesittir.
+  const kesitli=Object.values(gruplar).filter(l=>new Set(l.map(([,r])=>r.sha256)).size>1);
+  assert.ok(kesitli.length>=2);
+  for(const l of kesitli){
+    assert.equal(new Set(l.map(([,r])=>r.ozgunSha256)).size,1,l[0][0]);
+    const araliklar=l.map(([path,r])=>{assert.match(r.ozgunSha256??'',/^[a-f0-9]{64}$/,path);return r.kesim;}).sort((a,b)=>a[0]-b[0]);
+    araliklar.forEach(([a,b],i)=>{assert.ok(a>=0&&a<b,String(a));if(i)assert.ok(a>=araliklar[i-1][1],'kesitler çakışıyor');});
+  }
+  // Rabbenâ âtinâ = Bakara 201 (âyet dışı ek yok), Rabbenağfirlî = İbrâhîm 41; sınır iki dua arasındaki sessizlik.
+  assert.deepEqual(kaynaklar['/media/ses/dualar/rabbena-atina.mp3'].kesim,[0,12]);
+  assert.deepEqual(kaynaklar['/media/ses/dualar/rabbenagfirli.mp3'].kesim,[12,21.9951]);
+});
+
 test('Kunut sınırı son cümleyi korur; sabah ezanı ve uzun ezan duası metinle eşleşir',()=>{
   assert.deepEqual(kaynaklar['/media/ses/dualar/kunut-1.mp3'].kesim,[0,29.4]);
   assert.deepEqual(kaynaklar['/media/ses/dualar/kunut-2.mp3'].kesim,[29.4,50.3208]);
