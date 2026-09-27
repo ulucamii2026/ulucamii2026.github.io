@@ -1,16 +1,20 @@
 ---
 /* Menü/tema betiği /vendor/govde.js içindedir (Base.astro tek sefer yükler); her sayfada aynı
    satır içi betiği tekrarlamamak için taşındı (performans denetimi, Eylül 2026). */
-import { ceviri, yol, dilDegistirYolu, dilListesi } from '../i18n/utils';
+import { ceviri, yol, dilDegistirYolu, dilListesi, egitimBaglantisi } from '../i18n/utils';
 import { diller } from '../i18n/ui';
+import { KILIM_METINLERI } from '../lib/ezber/metinler';
 import Bayrak from './Bayrak.astro';
 import type { Dil, SayfaAnahtari } from '../i18n/ui';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
-type Madde = { href: string; ad: string; aciklama?: string };
+/** `dis`: başka alan adına giden madde (eğitim platformu) — ↗ işareti ve ekran okuyucuya alan adı eklenir. */
+type Madde = { href: string; ad: string; aciklama?: string; dis?: boolean };
 type Grup = { ad: string; maddeler: Madde[] };
 const L = (anahtar: SayfaAnahtari, ad?: string): Madde => ({ href: yol(dil, anahtar), ad: ad ?? t(`nav.${anahtar}` as any) });
+/* Eğitim platformunun (egitim.ulucamii.be) şimdilik tek bölümü Ezber Kilimi: madde adı oradaki başlıkla aynı kaynaktan. */
+const egitim: Madde = { href: egitimBaglantisi(dil), ad: KILIM_METINLERI.baslik[dil], dis: true };
 /** Gruplu menü: 4 açılır grup + 2 doğrudan bağlantı; mobilde aynı gruplar başlıklı listeler olur.
     Grup başlıkları menüye özgüdür (ui.ts'te karşılığı yok) — üçü de burada tutulur; ikili
     `dil === 'tr' ? … : …` kullanılmaz, yoksa İngilizce sayfa Fransızca başlık gösterir. */
@@ -31,7 +35,7 @@ const [gCami, gHaber, gEgitim, gHizmet] = grupAdi[dil];
 const gruplar: Grup[] = [
   { ad: gCami, maddeler: [L('hakkimizda'), L('yonetim'), L('namaz'), L('adab'), L('vefat'), L('galeri'), L('iletisim')] },
   { ad: gHaber, maddeler: [L('duyurular'), L('etkinlikler', etkinlikKisa[dil]), L('afisler')] },
-  { ad: gEgitim, maddeler: [L('kurankursu'), L('muhtediEgitimi'), L('dersmateryalleri'), L('kursgunlugu'), L('vaazlar'), L('irsat'), L('uip'), L('ihtida'), L('seviyeTesti')] },
+  { ad: gEgitim, maddeler: [L('kurankursu'), L('muhtediEgitimi'), L('dersmateryalleri'), L('kursgunlugu'), egitim, L('vaazlar'), L('irsat'), L('uip'), L('ihtida'), L('seviyeTesti')] },
   { ad: gHizmet, maddeler: [L('bagis'), L('uyelik'), L('cenaze'), L('konsolosluk'), L('diyanet'), L('ihtidaBasvuru')] },
 ];
 const temaEtiketi: Record<Dil, string> = { tr: 'Karanlık / aydınlık tema', fr: 'Thème sombre / clair', en: 'Dark / light theme', nl: 'Donker / licht thema', de: 'Dunkles / helles Design' };
@@ -58,7 +62,7 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
           </button>
           <ul id={`grup-${i}`} class="acilir hidden absolute left-0 top-full mt-1 min-w-[15rem] kart p-1.5 z-50" role="list">
             {g.maddeler.map((m) => (
-              <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-3 py-2 text-[0.92rem] no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a></li>
+              <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-3 py-2 text-[0.92rem] no-underline rounded-(--radius-kose) text-(--metin) hover:bg-(--zemin-3)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}{m.dis && <><span aria-hidden="true"> ↗</span><span class="sr-only"> ({new URL(m.href).host})</span></>}</a></li>
             ))}
           </ul>
         </div>
@@ -101,7 +105,7 @@ const grupAktif = (g: Grup) => g.maddeler.some((m) => aktif(m.href));
         <div>
           <p class="etiket etiket-vurgu px-2 mb-1">{g.ad}</p>
           <ul class="grid gap-0.5" role="list">
-            {g.maddeler.map((m) => <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-2 py-2 no-underline text-(--metin) hover:bg-(--zemin-3) rounded-(--radius-kose)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}</a></li>)}
+            {g.maddeler.map((m) => <li><a href={m.href} aria-current={aktif(m.href) ? 'page' : undefined} class:list={['block px-2 py-2 no-underline text-(--metin) hover:bg-(--zemin-3) rounded-(--radius-kose)', aktif(m.href) && 'bg-(--zemin-3) font-semibold']}>{m.ad}{m.dis && <><span aria-hidden="true"> ↗</span><span class="sr-only"> ({new URL(m.href).host})</span></>}</a></li>)}
           </ul>
         </div>
       ))}

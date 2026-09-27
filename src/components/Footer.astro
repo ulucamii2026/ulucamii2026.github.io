@@ -1,6 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
-import { ceviri, yol } from '../i18n/utils';
+import { ceviri, yol, egitimBaglantisi, EGITIM_SITESI } from '../i18n/utils';
 import WhatsappBaglanti from './WhatsappBaglanti.astro';
 import Goruntulenme from './Goruntulenme.astro';
 import type { Dil } from '../i18n/ui';
@@ -26,11 +26,13 @@ const diyanetLinkler = [
   { h: 'https://www.diyanet.gov.tr', ad: KURUM_ADI.diyanet[dil], logo: '/media/dis-logolar/diyanet.png', g: 36, y: 36 },
   { h: 'https://www.diyanet.be', ad: KURUM_ADI.bdv[dil], logo: '/media/dis-logolar/bdv.png', g: 143, y: 36 },
 ];
-const siteLinkleri = [
+/* Eğitim platformu alan adıyla anılır (her dilde aynı); `dis` → ↗ işareti. */
+const siteLinkleri: { h: string; ad: string; dis?: boolean }[] = [
   { h: yol(dil, 'vefat'), ad: t('vefat.baslik') },
   { h: yol(dil, 'kunye'), ad: t('footer.kunye') },
   { h: yol(dil, 'gizlilik'), ad: t('footer.gizlilik') },
   { h: yol(dil, 'portal'), ad: t('nav.portal') },
+  { h: egitimBaglantisi(dil), ad: new URL(EGITIM_SITESI).host, dis: true },
 ];
 ---
 <footer class="vt-altbilgi mt-14 border-t border-(--cizgi) bg-(--zemin-2)">
@@ -71,7 +73,7 @@ const siteLinkleri = [
     <nav class="text-sm leading-6" aria-label={t('footer.yasal')}>
       <p class="etiket etiket-vurgu mb-2">{t('footer.baglantilar')}</p>
       <ul class="grid grid-cols-2 gap-x-4" role="list">
-        {siteLinkleri.map((l) => <li><a href={l.h} rel={l.h === '/admin/' ? 'nofollow' : undefined}>{l.ad}</a></li>)}
+        {siteLinkleri.map((l) => <li><a href={l.h} rel={l.h === '/admin/' ? 'nofollow' : undefined}>{l.ad}{l.dis && <span aria-hidden="true"> ↗</span>}</a></li>)}
       </ul>
     </nav>
   </div>

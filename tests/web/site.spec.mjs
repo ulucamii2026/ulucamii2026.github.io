@@ -19,6 +19,9 @@ const pages = {
 };
 
 const htmlLang = { tr: 'tr', fr: 'fr-BE', en: 'en', nl: 'nl-BE', de: 'de-BE' };
+/* Eğitim platformu bağlantısı (27 Eylül 2026): adres src/i18n/utils.ts → egitimBaglantisi, menü adı
+   src/lib/ezber/metinler.ts → KILIM_METINLERI.baslik (platformun şimdilik tek bölümü). */
+const egitimAdi = { tr: 'Ezber Kilimi', fr: 'Kilim de mémorisation', en: 'Memorisation kilim', nl: 'Memorisatiekelim', de: 'Memorier-Kelim' };
 for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
   test(`${lang}: ana sayfa, tema, gezinme ve taşma`, async ({ page, isMobile }, info) => {
     const errors = [];
@@ -75,6 +78,25 @@ for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), slug).toBe(true);
     }
+  });
+
+  test(`${lang}: egitim.ulucamii.be bağlantısı (menü, altbilgi, Kur'an kursu)`, async ({ page, isMobile }) => {
+    const hedef = `https://egitim.ulucamii.be/${lang}/`;
+    await page.goto(`/${lang}/`);
+    // «Eğitim» grubu (üçüncü açılır liste; mobilde menü düğmesi): ad sayfa dilinde, ↗ ekran okuyucuya alan adı olarak.
+    if (isMobile) await page.locator('#menu-dugme').click();
+    else await page.locator('button[aria-controls="grup-2"]').click();
+    const madde = page.locator(`${isMobile ? '#mobil-menu' : '#grup-2'} a[href="${hedef}"]`);
+    await expect(madde).toBeVisible();
+    await expect(madde).toHaveAccessibleName(`${egitimAdi[lang]} (egitim.ulucamii.be)`);
+    await expect(page.locator(`footer a[href="${hedef}"]`)).toHaveText(/^egitim\.ulucamii\.be/);
+    // Kur'an kursu sayfasının yan sütununda kart: başlık platformla aynı, düğme alan adını gösterir.
+    await page.goto(`/${lang}/${pages[lang][2]}/`);
+    const kart = page.locator(`main a[href="${hedef}"]`);
+    await expect(kart).toHaveCount(1);
+    await expect(kart).toBeVisible();
+    await expect(page.locator('main aside')).toContainText(egitimAdi[lang]);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   });
 
   test(`${lang}: ana sayfa ciddi erişilebilirlik ihlali`, async ({ page }, info) => {

@@ -72,6 +72,11 @@ export function kayitBaglantisi(link: string, dil: Dil): string {
   return kok + (dil === 'tr' ? '/kayit/' : `/kayit/${dil}/`);
 }
 
+/** Eğitim platformu (Firebase Hosting, 27 Eylül 2026). Beş dili bu siteninkilerle aynıdır: ziyaretçi bulunduğu dilin
+    giriş sayfasına gider. Adres yalnız burada yazılır (menü, altbilgi, Kur'an kursu sayfası buradan alır). */
+export const EGITIM_SITESI = 'https://egitim.ulucamii.be';
+export const egitimBaglantisi = (dil: Dil): string => `${EGITIM_SITESI}/${dil}/`;
+
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
   const d = typeof tarih === 'string' ? new Date(tarih) : tarih;
   return new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'Europe/Brussels', ...secenek }).format(d);
