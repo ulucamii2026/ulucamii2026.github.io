@@ -41,7 +41,9 @@ kuralları, hesap ayrımı ve tekrar çalıştırılabilir doğrulamadır.
 | `npm run dev` | Astro geliştirme ortamı |
 | `npm run onizle` | Derlenmiş siteyi 4399 portunda inceleme |
 | `npm run dogrula:codex` | Tip kontrolü, mevcut denetimler/build, tarayıcı ve kural testleri; `egitim/` derlemesi ve testleri |
-| `npm run egitim:build` / `npm run test:egitim` | egitim.ulucamii.be uygulaması (`egitim/`): astro check + derleme; birim + ekran testleri (4402 portu) |
+| `npm run egitim:build` / `npm run test:egitim` | egitim.ulucamii.be uygulaması (`egitim/`): astro check + derleme; birim + ekran testleri (4402 portu, Hosting'in CSP başlıklarıyla) |
+| `npm run firebase:cami -- <komut>` | Firebase CLI'yı dernek hesabı ve `ulucamii-portal` projesiyle çalıştırır (`scripts/firebase-cami.ps1`; oturum/hesap/proje değiştirme reddedilir). Salt okunur örnek: `npm run firebase:cami -- hosting:sites:list` |
+| `npm run egitim:yayinla` / `npm run egitim:canli -- <adres>` | **Canlı:** egitim Hosting yayını (derleme + testler + dernek hesabıyla `deploy --only hosting:ulucamii-egitim`; yalnız açık istekle) · yayın sonrası salt okunur canlı denetim ([EGITIM-PLATFORMU.md](EGITIM-PLATFORMU.md)) |
 | `npm run design:check` | Görsel token, yüzey belgesi ve yerel medya sözleşmesini hızlı denetleme |
 | `npm run test:web` | Mevcut `dist` üzerinde mobil/masaüstü senaryoları |
 | `npm run test:ihtida` | Yerel VM ve PDF üretiminde ihtida sözleşme/akış senaryoları |

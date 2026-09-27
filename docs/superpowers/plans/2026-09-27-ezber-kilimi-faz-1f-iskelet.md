@@ -65,10 +65,10 @@ Veri derleme anında ortak koddan gelir: katalog (`src/lib/ezber/katalog.ts`), y
 
 ## Açık kalemler (sonraki adımlar)
 
-- **Canlı adımlar (ayrı onay):** Hosting sitesi, DNS kaydı (Rıdvan), Auth alanı (`authDomain`); güvenlik başlıkları
-  (CSP, HSTS, `X-Content-Type-Options`). CSP'de kök yönlendirme sayfasının satır içi betiği için özet (sha256) verilir
-  ya da betik dış dosyaya alınır.
-- **Favicon, uygulama simgesi ve paylaşım kartı (Open Graph görseli) yok:** kurs logosundan, kimlik paketindeki ana
-  SVG'den üretilecek (favicon.ico ve OG kartı zorunlu raster istisnalarıdır; ana SVG'den türetilir).
+- **Canlıya alma (27 Eylül 2026, Rıdvan: «egitim.ulucamii.be canlıya alınmasını planla, devam et»):** barındırma
+  yapılandırması ve güvenlik başlıkları (`firebase.json`), kök yönlendirme dış betiğe alındı (CSP'de özet gerekmedi),
+  simgeler ve beş dilde paylaşım kartı, site haritası ve `robots.txt` eklendi — ayrıntı
+  [EGITIM-PLATFORMU.md](../../EGITIM-PLATFORMU.md) «Barındırma ve yayın». Hosting sitesi, alan adı ve DNS adımlarının
+  sonucu [YAYIN-KAYITLARI.md](../../YAYIN-KAYITLARI.md)'de. Auth alanı (`authDomain`) giriş gerektiren ilk bölümle (Faz 3).
 - **Madde sayfaları** (Arapça metin, harf harf Diyanet denetimi, çalar, «namazda nerede okunur») ve hoca görünümü
   Faz 2; taslakları `egitim/docs/taslaklar/{madde,hoca}.html`.

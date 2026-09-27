@@ -1,7 +1,7 @@
 ---
 /**
- * Sayfa iskeleti: baş etiketleri (kanonik adres, beş dilin hreflang'ı, Open Graph), motif sembolleri, üst ve alt bilgi.
- * Satır içi stil ve betik yok: ileride Hosting'de tanımlanacak sıkı CSP'ye hazır (stil ve betik dış dosyada).
+ * Sayfa iskeleti: baş etiketleri (kanonik adres, beş dilin hreflang'ı, simgeler, Open Graph + paylaşım kartı), motif
+ * sembolleri, üst ve alt bilgi. Satır içi stil ve betik yok: Hosting'deki sıkı CSP (firebase.json) buna dayanır.
  */
 import '../styles/cini.css';
 import type { Dil } from '@ortak/i18n/ui';
@@ -11,6 +11,7 @@ import { metin } from '../i18n/metinler';
 import { kursAdi } from '../lib/kimlik';
 import AltBilgi from '../components/AltBilgi.astro';
 import MotifSembolleri from '../components/MotifSembolleri.astro';
+import Simgeler from '../components/Simgeler.astro';
 import UstBilgi from '../components/UstBilgi.astro';
 
 interface Props {
@@ -26,6 +27,8 @@ const m = metin(dil);
 const tamBaslik = `${baslik} — ${kursAdi(dil)}`;
 const adres = (d: Dil) => new URL(`/${d}/${yol ? `${yol}/` : ''}`, Astro.site).toString();
 const ogYerel = yerelKodu[dil].replace('-', '_');
+// Paylaşım kartı (1200 × 630, dil başına bir tane): scripts/egitim-og-kart.mjs üretir.
+const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
 ---
 <!doctype html>
 <html lang={hreflangKodu(dil)} dir="ltr" data-dil={yol !== undefined ? dil : undefined}>
@@ -39,6 +42,8 @@ const ogYerel = yerelKodu[dil].replace('-', '_');
     {yol !== undefined && dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={adres(d)} />)}
     {yol !== undefined && <link rel="alternate" hreflang="x-default" href={adres('tr')} />}
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <Simgeler />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#134420" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-next.woff2" crossorigin />
     <meta property="og:type" content="website" />
@@ -47,6 +52,12 @@ const ogYerel = yerelKodu[dil].replace('-', '_');
     <meta property="og:description" content={aciklama} />
     <meta property="og:locale" content={ogYerel} />
     {yol !== undefined && <meta property="og:url" content={adres(dil)} />}
+    <meta property="og:image" content={ogKart} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={tamBaslik} />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <MotifSembolleri />

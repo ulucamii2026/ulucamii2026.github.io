@@ -3,6 +3,8 @@
  * oynatma sahte `play` ile sınanır). Neden: panonun 81 maddesi listeye bağlanmalı, telefonda katlı liste bağlantıyla
  * açılmalı, klavye tek sekme durağıyla gezebilmeli; çal düğmesi yalnız sesi olan 27 maddede olmalı ve aynı anda tek ses
  * çalmalı; iletişimde yalnız cami hattı; açık/koyu temada erişilebilirlik ve telefon genişliğinde yatay taşma yok.
+ * Önizleme sunucusu Hosting'in güvenlik başlıklarını (firebase.json: CSP…) da gönderir: bütün testler gerçek CSP
+ * altında koşar; ihlal canlıda sayfayı sessizce bozacağından ayrıca sayılır.
  */
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
@@ -188,6 +190,44 @@ test('Kök adres: kayıtlı dil, sonra tarayıcı dili, yoksa İngilizce', async
   expect(await dene('nl-BE')).toBe('/nl/');
   expect(await dene('es-ES')).toBe('/en/');
   expect(await dene('fr-BE', '/de/')).toBe('/de/');
+});
+
+test('Hosting güvenlik başlıkları: beş dil ve 404 CSP ihlalsiz; ses adresi media-src içinde', async ({ page, context }, info) => {
+  test.skip(info.project.name !== 'masaustu-chromium', 'başlıklar cihazdan bağımsız');
+  await context.addInitScript(() => {
+    window.__ihlaller = [];
+    addEventListener('securitypolicyviolation', (e) => window.__ihlaller.push(`${e.effectiveDirective} ${e.blockedURI}`));
+  });
+  const yanit = await page.goto('/tr/');
+  const basliklar = yanit.headers();
+  expect(basliklar['content-security-policy']).toContain("default-src 'none'; script-src 'self'; style-src 'self'");
+  expect(basliklar['x-content-type-options']).toBe('nosniff');
+  expect(basliklar['x-frame-options']).toBe('DENY');
+  for (const yol of ['/tr/', '/fr/', '/en/', '/nl/', '/de/', '/boyle-bir-sayfa-yok/']) {
+    await page.goto(yol);
+    await page.evaluate(() => document.fonts.ready);
+    const karo = page.locator('.pano .karo.madde').first();
+    if (await karo.count()) await karo.hover(); // kuşak betiği de çalışsın (404'te pano yok)
+    expect(await page.evaluate(() => window.__ihlaller), yol).toEqual([]);
+  }
+  // Ses yüklemesi: ana sitedeki kayıt media-src'ye uyar (istek testte yine kesilir); başka köken engellenir.
+  await page.goto('/tr/');
+  const ses = (await page.locator('button.dinle').first().getAttribute('data-ses')).split(' ')[0];
+  const yabanci = 'https://example.com/ses.mp3';
+  const ihlal = await page.evaluate(async (adresler) => {
+    const sonuc = {};
+    for (const adres of adresler) {
+      window.__ihlaller = [];
+      const a = new Audio();
+      a.preload = 'auto';
+      await new Promise((bitti) => { a.addEventListener('error', bitti, { once: true }); setTimeout(bitti, 3000); a.src = adres; a.load(); });
+      await new Promise((r) => setTimeout(r, 150));
+      sonuc[adres] = window.__ihlaller.filter((x) => x.startsWith('media-src')).length;
+    }
+    return sonuc;
+  }, [ses, yabanci]);
+  expect(ihlal[ses]).toBe(0);
+  expect(ihlal[yabanci]).toBeGreaterThan(0);
 });
 
 test('Bulunamayan sayfa beş dilde girişe yol gösterir', async ({ page }) => {

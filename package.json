@@ -44,6 +44,7 @@
     "panel:fontlar": "py -3.14 scripts/panel-fontlar-uret.py",
     "denetim:cms": "node scripts/cms-config-denetim.mjs",
     "firebase:kurallar": "powershell -NoProfile -File scripts/firebase-cami.ps1 deploy --only firestore:rules,firestore:indexes",
+    "firebase:cami": "powershell -NoProfile -File scripts/firebase-cami.ps1",
     "denetim:diyanet": "node scripts/diyanet-kontrol.mjs",
     "test:web": "playwright test",
     "test:web:rapor": "playwright show-report",
@@ -69,7 +70,9 @@
     "egitim:dev": "astro dev --root egitim",
     "egitim:build": "astro check --root egitim && astro build --root egitim",
     "egitim:onizle": "node scripts/egitim-onizle.mjs",
-    "test:egitim": "node --test tests/egitim/pano.test.mjs && playwright test -c playwright.egitim.config.mjs"
+    "test:egitim": "node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs && playwright test -c playwright.egitim.config.mjs",
+    "egitim:yayinla": "npm run egitim:build && npm run test:egitim && powershell -NoProfile -File scripts/firebase-cami.ps1 deploy --only hosting:ulucamii-egitim",
+    "egitim:canli": "node scripts/egitim-canli-denetim.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.0.4",
