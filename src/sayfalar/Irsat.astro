@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Ikon from '../components/Ikon.astro';
-import { yol, yerelKodu } from '../i18n/utils';
+import { ilkHarfBuyuk, yol, yerelKodu } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari, bugunBrussels, icerikDili } from '../lib/icerik';
 import veri from '../data/irsat-mufredati.json';
@@ -120,7 +120,7 @@ const turRenk = (tur?: string) => (tur === 'kandil' ? 'bg-(--vurgu-2)/12 text-(-
     {siradaki && (
       <div class="kart p-5 sm:p-6 border-(--vurgu) bg-(--vurgu)/6">
         <p class="etiket etiket-vurgu">{siradaki.tarih === bugun ? m.buHafta : m.sonraki}</p>
-        <p class="font-serif text-2xl font-semibold mt-1 capitalize">{tarihUzun(siradaki.tarih)}</p>
+        <p class="font-serif text-2xl font-semibold mt-1">{ilkHarfBuyuk(tarihUzun(siradaki.tarih), dil)}</p>
         {siradaki.tatil ? (
           <p class="mt-2 text-(--metin-2)">{siradaki.tatil[icDil]} — {m.tatil}</p>
         ) : (

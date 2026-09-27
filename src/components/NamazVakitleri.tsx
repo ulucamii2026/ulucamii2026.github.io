@@ -3,7 +3,7 @@ import { hicriCevir } from '../i18n/hicri';
 import { SIRA, TZ, durumHesapla, haftaGunu, sureMetni, type Gun, type Vakit } from '../lib/namaz';
 import { useDakikaSaati } from '../lib/saat';
 import type { Dil } from '../i18n/ui';
-import { yerelKodu } from '../i18n/utils';
+import { ilkHarfBuyuk, yerelKodu } from '../i18n/utils';
 
 export type { Gun };
 interface Props {
@@ -36,7 +36,7 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
   /* UTC öğlen: ziyaretçinin saat dilimi ne olursa olsun Brüksel'de aynı takvim gününe düşer
      (yerel 'T12:00:00' UTC-11 gibi dilimlerde bir gün kaydırıyordu). */
   const gunOrtasi = new Date(bugun.tarih + 'T12:00:00Z');
-  const tarihStr = bicimci.format(gunOrtasi);
+  const tarihStr = ilkHarfBuyuk(bicimci.format(gunOrtasi), dil);
   const uyari = {
     tr: 'Vakit tablosu güncellenmeyi bekliyor — lütfen cami ilan panosundaki çizelgeye bakınız.',
     fr: 'Le tableau des horaires attend une mise à jour — veuillez consulter l’affichage à la mosquée.',
@@ -57,8 +57,9 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
        ekran okuyucunun her tazelemede araya girmesi istenmez (SiradakiVakit ile aynı karar). */
     <div class={kompakt || vurgulu ? '' : 'kart p-5 sm:p-6'} aria-live="off">
       <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
-        <p class="font-serif text-lg sm:text-xl font-semibold capitalize">{tarihStr}</p>
-        <p class="etiket">{etiketler.hicri}: <span class="normal-case tracking-normal">{hicriCevir(bugun.hicri, dil)}</span></p>
+        <p class="font-serif text-lg sm:text-xl font-semibold">{tarihStr}</p>
+        {/* Fransızcada «:» öncesi bölünmez boşluk (adacık metni derleme sonrası dönüşümün dışında kalır). */}
+        <p class="etiket">{etiketler.hicri}{dil === 'fr' ? ' :' : ':'} <span class="normal-case tracking-normal">{hicriCevir(bugun.hicri, dil)}</span></p>
       </div>
       {eski && <p class="uyari text-sm mb-4" role="status">{uyari}</p>}
       <ul class={`grid grid-cols-3 gap-2 sm:gap-3 ${vurgulu ? 'md:grid-cols-6' : 'sm:grid-cols-6'}`} role="list">

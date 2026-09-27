@@ -99,6 +99,34 @@ for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   });
 
+  /* Fransızca ve Felemenkçede gün ve ay adları küçük yazılır, yalnız cümle başı büyür (27 Eylül 2026): CSS «capitalize»
+     «Dimanche 27 Septembre» yazıyordu. innerText CSS text-transform'u da uygular; «ANNONCE · 5 SEPTEMBRE» gibi büyük
+     harfli etiketler bu kalıba girmez. */
+  if (lang === 'fr' || lang === 'nl') test(`${lang}: tarihlerde ay adı küçük harf (ana sayfa, namaz, ders materyalleri)`, async ({ page }) => {
+    const aylar = lang === 'fr'
+      ? 'Janvier|Février|Mars|Avril|Mai|Juin|Juillet|Août|Septembre|Octobre|Novembre|Décembre'
+      : 'Januari|Februari|Maart|April|Mei|Juni|Juli|Augustus|September|Oktober|November|December';
+    const buyukAy = new RegExp(`\\d{1,2}\\s(${aylar})\\b`);
+    for (const yolu of [`/${lang}/`, `/${lang}/${pages[lang][0]}/`, `/${lang}/${lang === 'fr' ? 'supports-de-cours' : 'lesmateriaal'}/`]) {
+      expect((await page.goto(yolu)).status(), yolu).toBe(200);
+      expect(await page.locator('main').innerText(), yolu).not.toMatch(buyukAy);
+    }
+  });
+
+  /* Namaz sayfasının mobil gün kartları: 360 px'lik telefonda etiket ve saat hücreden taşmaz, üst üste binmez
+     («MAGHRIB 19:35» yandaki «ISHA» hücresine taşıyordu, 27 Eylül 2026). */
+  test(`${lang}: namaz gün kartlarında etiket ve saat hücreye sığar (360 px)`, async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 780 });
+    await page.goto(`/${lang}/${pages[lang][0]}/`);
+    await page.evaluate(() => document.fonts.ready);
+    const hatalar = await page.locator('#vakit-kartlari dl > div').evaluateAll((hucreler) => hucreler.flatMap((h) => {
+      const k = h.getBoundingClientRect(), [dt, dd] = [h.querySelector('dt'), h.querySelector('dd')].map((e) => e.getBoundingClientRect());
+      const kesisir = dt.right > dd.left + 0.5 && dt.bottom > dd.top + 0.5 && dd.bottom > dt.top + 0.5;
+      return dd.right > k.right + 0.5 || dt.right > k.right + 0.5 || kesisir ? [h.textContent] : [];
+    }));
+    expect(hatalar).toEqual([]);
+  });
+
   test(`${lang}: ana sayfa ciddi erişilebilirlik ihlali`, async ({ page }, info) => {
     await page.goto(`/${lang}/`);
     await page.evaluate(() => document.fonts.ready);

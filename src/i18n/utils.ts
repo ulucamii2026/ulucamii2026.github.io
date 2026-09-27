@@ -77,6 +77,11 @@ export function kayitBaglantisi(link: string, dil: Dil): string {
 export const EGITIM_SITESI = 'https://egitim.ulucamii.be';
 export const egitimBaglantisi = (dil: Dil): string => `${EGITIM_SITESI}/${dil}/`;
 
+/** Yalnız ilk harfi büyütür (dile göre: tr «i» → «İ»). CSS «capitalize» her sözcüğü büyüttüğü için Fransızca ve
+    Felemenkçe tarihlerde ay adını da büyütüyordu («Dimanche 27 Septembre»); bu dillerde gün ve ay adları küçük yazılır,
+    yalnız cümle başı büyür (27 Eylül 2026; kural KursGunlugu.astro'da da yazılı). */
+export const ilkHarfBuyuk = (s: string, dil: Dil): string => s.charAt(0).toLocaleUpperCase(yerelKodu[dil]) + s.slice(1);
+
 export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }): string {
   const d = typeof tarih === 'string' ? new Date(tarih) : tarih;
   return new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'Europe/Brussels', ...secenek }).format(d);

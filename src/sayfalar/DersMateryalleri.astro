@@ -29,7 +29,7 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import DersGunuKarti from '../components/DersGunuKarti.astro';
 import type { Gun, Metin } from '../components/DersGunuKarti.astro';
-import { ceviri, tarihBicimle, yerelKodu, yol } from '../i18n/utils';
+import { ceviri, ilkHarfBuyuk, tarihBicimle, yerelKodu, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import veri from '../data/ders-materyalleri.json';
 import plan from '../data/yillik-plan-2026-2027.json';
@@ -247,7 +247,7 @@ const grupTarihi = (() => {
       <section class="bolum one-cikan" data-bolum>
         <h2 class="bolum-baslik">
           {oneCikanBaslik === 'bugunDers' ? m.bugunDers : oneCikanBaslik === 'yaklasan' ? m.yaklasan : m.sonDers}
-          <span class="bolum-tarih">{grupTarihi}</span>
+          <span class="bolum-tarih">{ilkHarfBuyuk(grupTarihi, dil)}</span>
         </h2>
         <div class="one-cikan-liste">
           {oneCikanGrup.map((g) => <DersGunuKarti g={g} dil={dil} m={kartMetni} bugun={bugun} acik={g.tarih === oneCikan.tarih} />)}
@@ -258,7 +258,7 @@ const grupTarihi = (() => {
     {siradaki && !siradakiHazir && (
       <p class="siradaki">
         <span class="etiket etiket-vurgu">{m.siradaki}</span>
-        <b>{tarih(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' })}</b>
+        <b>{ilkHarfBuyuk(tarih(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }), dil)}</b>
         <span class="siradaki-konu">{siradaki.dersler.map((d) => `${d.sira ?? d.no}. ${alanAdi[dil][d.kod] || d.alan}`).join(' · ')}</span>
         <span class="kucuk">{m.siradakiNot}</span>
         <a href={`${yol(dil, 'yillikplan')}#g-${siradaki.tarih}`} class="plan-bag">{m.planBag} →</a>
@@ -460,7 +460,8 @@ const grupTarihi = (() => {
   .one-cikan-liste { padding: 0 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
   .one-cikan-liste :global(.gun:last-child) { border-bottom: 0; }
   /* Tarih başlığın parçası: ziyaretçi hangi güne baktığını okumak için karta bakmak zorunda kalmasın. */
-  .bolum-tarih { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 400; color: var(--metin-2); text-transform: capitalize; }
+  /* İlk harf metinde büyütülür (ilkHarfBuyuk): «capitalize» Fransızca ve Felemenkçede ay adını da büyütüyordu. */
+  .bolum-tarih { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 400; color: var(--metin-2); }
 
   /* ——— Süzgeç ——— */
   .suzgec { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin: 0 0 1.2rem; }
@@ -493,7 +494,7 @@ const grupTarihi = (() => {
 
   /* ——— Sıradaki ders günü bandı ——— */
   .siradaki { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; margin: -0.8rem 0 2.4rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px dashed var(--cizgi-etkilesim); border-radius: var(--radius-kose); }
-  .siradaki b { font-size: 1.05rem; text-transform: capitalize; }
+  .siradaki b { font-size: 1.05rem; }
   .siradaki .kucuk, .siradaki-konu { font-size: 0.9rem; color: var(--metin-2); }
   .siradaki .plan-bag { font-size: 0.9rem; font-weight: 600; color: var(--vurgu); margin-left: auto; }
 

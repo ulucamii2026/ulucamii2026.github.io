@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import NamazVakitleri from '../components/NamazVakitleri';
-import { ceviri, tarihBicimle } from '../i18n/utils';
+import { ceviri, ilkHarfBuyuk, tarihBicimle } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { namazVakitleri, siteAyarlari, bugunBrussels } from '../lib/icerik';
 import { hicriCevir } from '../i18n/hicri';
@@ -43,17 +43,18 @@ const dg = DINI_GUN[dil];
     {site.cumaSaati && <p class="bilgi mt-6"><strong>{t('namaz.cuma')}:</strong> {site.cumaSaati}</p>}
     <p class="mt-6 text-(--metin-2) max-w-prose">{not}</p>
     <h2 class="mt-12 mb-4">{t('ana.tumvakitler')}</h2>
-    <!-- Mobil: gün kartları (tablo dar ekrana sığmaz); sm ve üstü: tablo -->
+    <!-- Mobil: gün kartları (tablo dar ekrana sığmaz); sm ve üstü: tablo. Hücrede etiket ve saat sığmazsa saat alt
+         satıra, sağa geçer: «MAGHRIB 19:35» 390 px'lik telefonda yandaki «ISHA» hücresine taşıyordu (27 Eylül 2026). -->
     <ol id="vakit-kartlari" class="sm:hidden grid gap-2" role="list">
       {tablo.map((g) => (
         <li data-tarih={g.tarih} class:list={['kart-kagit px-3 py-2.5', g.tarih === bugun && 'border-(--vurgu) bg-(--vurgu)/6']}>
           <div class="flex items-baseline justify-between gap-2 mb-1.5">
-            <span class="font-serif font-semibold capitalize">{tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'long', day: 'numeric', month: 'long' })}</span>
+            <span class="font-serif font-semibold">{ilkHarfBuyuk(tarihBicimle(g.tarih + 'T12:00:00', dil, { weekday: 'long', day: 'numeric', month: 'long' }), dil)}</span>
             <span class="etiket normal-case tracking-normal text-right">{hicriCevir(g.hicri, dil)}</span>
           </div>
           <dl class="grid grid-cols-3 gap-x-2 gap-y-1">
             {SIRA.map((v) => (
-              <div class="flex items-baseline justify-between gap-1 border-t border-(--cizgi) pt-1"><dt class="etiket">{t(`namaz.${v}` as any)}</dt><dd class="mono text-[0.95rem] tabular-nums">{g[v]}</dd></div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-1 border-t border-(--cizgi) pt-1"><dt class="etiket">{t(`namaz.${v}` as any)}</dt><dd class="mono text-[0.95rem] tabular-nums ml-auto">{g[v]}</dd></div>
             ))}
           </dl>
         </li>

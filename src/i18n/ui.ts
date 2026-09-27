@@ -383,7 +383,8 @@ export const ui = {
     'ana.hizli.irsat': 'Vrouwen & meisjes',
     'ana.hizli.adab': 'Komt u voor het eerst?',
     'namaz.imsak': 'Fajr',
-    'namaz.gunes': 'Zonsopgang',
+    // Yumuşak tire (U+00AD): 360 px'lik telefonda gün kartı hücresine sığmayan sözcük «ZONS-OPGANG» diye bölünür.
+    'namaz.gunes': 'Zons­op­gang',
     'namaz.ogle': 'Dhuhr',
     'namaz.ikindi': 'Asr',
     'namaz.aksam': 'Maghrib',
@@ -491,7 +492,8 @@ export const ui = {
     'ana.hizli.irsat': 'Frauen & Mädchen',
     'ana.hizli.adab': 'Zum ersten Mal hier?',
     'namaz.imsak': 'Fadschr',
-    'namaz.gunes': 'Sonnenaufgang',
+    // Yumuşak tire (U+00AD): 360 px'lik telefonda gün kartı hücresine sığmayan sözcük «SONNEN-AUFGANG» diye bölünür.
+    'namaz.gunes': 'Sonnen­auf­gang',
     'namaz.ogle': 'Dhuhr',
     'namaz.ikindi': 'Asr',
     'namaz.aksam': 'Maghrib',
