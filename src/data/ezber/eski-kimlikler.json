@@ -1,0 +1,39 @@
+{
+  "ezberListesi": {
+    "fatiha": ["s-fatiha"],
+    "ayetel-kursi": ["s-ayetel-kursi"],
+    "insirah": ["s-insirah"],
+    "kadir": ["s-kadir"],
+    "asr": ["s-asr"],
+    "fil": ["s-fil"],
+    "kureys": ["s-kureys"],
+    "maun": ["s-maun"],
+    "kevser": ["s-kevser"],
+    "kafirun": ["s-kafirun"],
+    "nasr": ["s-nasr"],
+    "tebbet": ["s-tebbet"],
+    "ihlas": ["s-ihlas"],
+    "felak": ["s-felak"],
+    "nas": ["s-nas"],
+    "subhaneke": ["d-subhaneke"],
+    "tahiyyat": ["d-ettehiyyatu"],
+    "salli-barik": ["d-salli","d-barik"],
+    "rabbena": ["d-rabbena-atina","d-rabbenagfirli"]
+  },
+  "seviyeTesti": {
+    "ez01": ["d-euzu-besmele"],
+    "ez02": ["d-kelime-i-sehadet"],
+    "ez03": ["d-subhaneke"],
+    "ez04": ["s-fatiha"],
+    "ez05": ["d-ettehiyyatu"],
+    "ez06": ["d-salli","d-barik"],
+    "ez07": ["d-rabbena-atina","d-rabbenagfirli"],
+    "ez08": ["d-kunut-1","d-kunut-2"],
+    "ez09": ["d-amentu"],
+    "ez10": ["s-fil","s-kureys","s-maun","s-kevser","s-kafirun","s-nasr","s-tebbet"],
+    "ez11": ["s-ihlas","s-felak","s-nas"],
+    "ez12": ["s-ayetel-kursi"],
+    "ez13": ["d-ezan","d-kamet"],
+    "ez14": ["d-yemek-duasi"]
+  }
+}

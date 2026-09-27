@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ezber Kilimi kataloğu",
+  "description": "Tek ezber kataloğu (27 Eylül 2026, Faz 1a). Kurallar: docs/EZBER-KILIMI.md. Çapraz alan kuralları tests/ezber-katalog.test.mjs içindedir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["surum", "seviyeler", "ogeler"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "surum": { "type": "integer", "minimum": 1 },
+    "seviyeler": { "type": "array", "minItems": 9, "maxItems": 9, "items": { "$ref": "#/definitions/seviyeTanimi" } },
+    "ogeler": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/oge" } }
+  },
+  "definitions": {
+    "seviye": { "oneOf": [{ "type": "integer", "minimum": 1, "maximum": 8 }, { "const": "kenar" }] },
+    "metin": { "type": "string", "minLength": 1, "maxLength": 200, "pattern": "^\\S(.*\\S)?$" },
+    "besDil": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tr", "fr", "en", "nl", "de"],
+      "properties": {
+        "tr": { "$ref": "#/definitions/metin" },
+        "fr": { "$ref": "#/definitions/metin" },
+        "en": { "$ref": "#/definitions/metin" },
+        "nl": { "$ref": "#/definitions/metin" },
+        "de": { "$ref": "#/definitions/metin" }
+      }
+    },
+    "sesYolu": { "type": "string", "pattern": "^/media/ses/[a-z0-9-]+/[a-z0-9-]+\\.mp3$" },
+    "seviyeTanimi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kimlik", "ad", "amac"],
+      "properties": {
+        "kimlik": { "$ref": "#/definitions/seviye" },
+        "ad": { "$ref": "#/definitions/besDil" },
+        "amac": { "$ref": "#/definitions/besDil" }
+      }
+    },
+    "oge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "tur", "seviye", "sira", "ad", "kuranMetni"],
+      "properties": {
+        "id": { "type": "string", "maxLength": 40, "pattern": "^[sdb]-[a-z0-9]+(-[a-z0-9]+)*$" },
+        "tur": { "enum": ["sure", "dua", "bilgi"] },
+        "seviye": { "$ref": "#/definitions/seviye" },
+        "sira": { "type": "integer", "minimum": 1, "maximum": 99 },
+        "ad": { "$ref": "#/definitions/besDil" },
+        "kuranMetni": { "type": "boolean" },
+        "kuran": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sure", "ayetler"],
+          "properties": {
+            "sure": { "type": "integer", "minimum": 1, "maximum": 114 },
+            "ayetler": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "integer", "minimum": 1, "maximum": 286 }
+            }
+          }
+        },
+        "ses": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "tam": { "$ref": "#/definitions/sesYolu" },
+            "parcalar": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/sesYolu" } }
+          }
+        },
+        "not": { "type": "string", "maxLength": 300 }
+      }
+    }
+  }
+}
