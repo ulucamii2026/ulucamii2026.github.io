@@ -103,15 +103,25 @@ test('bugünün Diyanet kaydı yoksa vakit yerine uyarı çıkar, geri sayım ya
   await expect(page.locator('.geri-sayim')).toHaveCount(0);
 });
 
+test('bugünün kaydı var ama sıradaki vakit yok (yarının kaydı eksik)', async ({ page }) => {
+  await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: vakitAkisi([ornek]) }));
+  await page.clock.install({ time: an(ornek, ornek.yatsi, 30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await expect(page.locator('.vakit.siradaki')).toHaveCount(0);
+  await expect(page.locator('.geri-sayim')).toHaveText(''); // kutu çizilir ama içi boş kalır, geri sayım metni yok
+  await expect(page.locator('.vakit-yok')).toHaveCount(0);
+});
+
 test('görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {
   test.skip(!process.env.EKRAN_GORSEL, 'görüntü üretimi isteğe bağlı');
   await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
   await page.goto('/ekran/');
   await expect(page.locator('.vakit')).toHaveCount(6);
-  await page.screenshot({ path: 'test-results/ekran-gorsel/dikey-acik.png' });
+  await page.screenshot({ path: 'test-results/ekran-gorsel/dikey-acik.png', animations: 'disabled' });
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.clock.setSystemTime(an(ornek, ornek.aksam, 30));
   await page.goto('/ekran/?don=90');
   await expect(page.locator('#ekran')).toHaveAttribute('data-tema', 'koyu');
-  await page.screenshot({ path: 'test-results/ekran-gorsel/yatay-don90-koyu.png' });
+  await page.screenshot({ path: 'test-results/ekran-gorsel/yatay-don90-koyu.png', animations: 'disabled' });
 });
