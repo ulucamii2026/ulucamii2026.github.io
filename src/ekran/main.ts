@@ -6,11 +6,12 @@
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
-import { brukselSaat, donmeOku, saatGecerliMi, temaSec, vakitGorunumu } from '../lib/ekran/secim.ts';
+import { brukselSaat, donmeOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
 import { alan, yaz } from './gorunum.ts';
 import { METIN } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
 import { vakitleriCiz } from './vakitler.ts';
+import { bosCiz, sigdir, slaytCiz } from './slaytlar.ts';
 import { tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 
 interface SayfaVerisi {
@@ -22,6 +23,7 @@ interface SayfaVerisi {
 const sayfa = JSON.parse(document.getElementById('ekran-veri')?.textContent || '{}') as SayfaVerisi;
 const parametre = new URLSearchParams(location.search);
 const ekran = document.getElementById('ekran') as HTMLElement;
+const ekranId = ekranIdOku(parametre.get('ekran'));
 olcekKur(ekran, donmeOku(parametre.get('don')));
 yaz('cami-tr', sayfa.cami.tr);
 yaz('cami-fr', sayfa.cami.fr);
@@ -82,8 +84,45 @@ async function veriDongusu(): Promise<void> {
     await tazele(veri);
     ilkTazelemeBitti = true;
     dakikalik(new Date());
+    if (!slaytBasladi) {
+      slaytBasladi = true;
+      sonrakiSlayt();
+    }
   } finally {
     setTimeout(() => { void veriDongusu(); }, sonrakiTazelemeMs(veri));
+  }
+}
+
+/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, günün hadisi (src/lib/ekran/secim.ts).
+   Tur bitince liste yeni veriyle yeniden kurulur; süre metin uzunluğundan (ekran.yaml → slayt).
+   Sayfa aylarca yeniden yüklenmeden açık kalır: burada çıkan tek bir istisna (ör. `referans` alanı eksik
+   bir CMS kaydı) turu asla sonsuza dek durdurmasın diye hiçbir zaman çağırana fırlatılmaz; her koşulda
+   (başarı ya da hata) bir sonraki slayt zamanlanır. */
+const VARSAYILAN_SLAYT: SlaytAyari = { tabanSn: 8, karakterSn: 0.05, enAzSn: 10, enCokSn: 30 };
+let tur: Slayt[] = [];
+let sira = 0;
+let slaytBasladi = false;
+function sonrakiSlayt(): void {
+  let sureMs = 15_000;
+  try {
+    const kok = alan('slayt');
+    if (!kok) return;
+    if (sira >= tur.length) {
+      tur = slaytListesi({ duyurular: veri.akis?.duyurular ?? [], ayetler: veri.icerik?.ayetler ?? [], hadisler: veri.icerik?.hadisler ?? [] }, ekranId, bugunTarih(new Date()));
+      sira = 0;
+    }
+    const s = tur[sira++];
+    if (!s) {
+      bosCiz(kok, sayfa.cami);
+      return;
+    }
+    slaytCiz(kok, s);
+    sigdir(kok);
+    sureMs = slaytSuresi(s.karakter, veri.akis?.ayar.slayt ?? VARSAYILAN_SLAYT) * 1000;
+  } catch (hata) {
+    console.error(hata);
+  } finally {
+    setTimeout(sonrakiSlayt, sureMs);
   }
 }
 
