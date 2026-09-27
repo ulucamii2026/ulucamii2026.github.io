@@ -6,10 +6,11 @@
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
-import { brukselSaat, donmeOku, saatGecerliMi } from '../lib/ekran/secim.ts';
-import { yaz } from './gorunum.ts';
+import { brukselSaat, donmeOku, saatGecerliMi, temaSec, vakitGorunumu } from '../lib/ekran/secim.ts';
+import { alan, yaz } from './gorunum.ts';
 import { METIN } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
+import { vakitleriCiz } from './vakitler.ts';
 import { tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 
 interface SayfaVerisi {
@@ -26,6 +27,7 @@ yaz('cami-tr', sayfa.cami.tr);
 yaz('cami-fr', sayfa.cami.fr);
 
 const veri: EkranVerisi = { vakit: null, akis: null, icerik: null };
+let ilkTazelemeBitti = false;
 const TARIH_TR = new Intl.DateTimeFormat('tr-TR', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const TARIH_FR = new Intl.DateTimeFormat('fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const iki = (n: number): string => (n < 10 ? '0' : '') + n;
@@ -42,6 +44,10 @@ function dakikalik(simdi: Date): void {
     const gun = gecerli && veri.vakit ? veri.vakit.gunler.filter((g) => g.tarih === bugun)[0] : undefined;
     yaz('hicri-tr', gun ? gun.hicri : '');
     yaz('hicri-fr', gun ? hicriCevir(gun.hicri, 'fr') : '');
+    const gorunum = gecerli && veri.vakit ? vakitGorunumu(veri.vakit.gunler, simdi) : null;
+    const kok = alan('vakitler');
+    if (kok && (veri.vakit || ilkTazelemeBitti)) vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli);
+    ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
   } catch (hata) {
     console.error(hata);
   }
@@ -74,6 +80,7 @@ function saniyelik(): void {
 async function veriDongusu(): Promise<void> {
   try {
     await tazele(veri);
+    ilkTazelemeBitti = true;
     dakikalik(new Date());
   } finally {
     setTimeout(() => { void veriDongusu(); }, sonrakiTazelemeMs(veri));

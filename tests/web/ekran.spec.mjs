@@ -65,3 +65,53 @@ test.describe('yatay sinyalde döndürme', () => {
     expect(await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight])).toEqual([1920, 1080]);
   });
 });
+
+test('sıradaki vakit vurgulanır, geri sayım iki dilde yazılır', async ({ page }) => {
+  await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', 'ogle');
+  await expect(page.locator('.vakit[data-vakit="ogle"] .deger')).toHaveText(ornek.ogle);
+  await expect(page.locator('.geri-sayim b')).toHaveText('Öğle vaktine 30 dk');
+  await expect(page.locator('.geri-sayim .fr')).toHaveText('Dhuhr dans 30 min');
+});
+
+test('Cuma günü öğle satırı ve geri sayım Cuma olarak yazılır', async ({ page }) => {
+  const cuma = kaynak.gunler.find(cumaMi);
+  test.skip(!cuma, 'veride Cuma yok');
+  await page.clock.install({ time: an(cuma, cuma.ogle, -90) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit[data-vakit="ogle"] .ad b')).toHaveText('Cuma');
+  await expect(page.locator('.vakit[data-vakit="ogle"] .ad i')).toHaveText('Vendredi');
+  await expect(page.locator('.geri-sayim .fr')).toHaveText('Prière du vendredi dans 1 h 30');
+});
+
+test('tema güneşten akşama açık, akşam vaktinden sonra koyu', async ({ page }) => {
+  await page.clock.install({ time: an(ornek, ornek.aksam, -1) });
+  await page.goto('/ekran/');
+  await expect(page.locator('#ekran')).toHaveAttribute('data-tema', 'acik');
+  await page.clock.runFor(2 * 60_000);
+  await expect(page.locator('#ekran')).toHaveAttribute('data-tema', 'koyu');
+});
+
+test('bugünün Diyanet kaydı yoksa vakit yerine uyarı çıkar, geri sayım yapılmaz', async ({ page }) => {
+  await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: vakitAkisi(kaynak.gunler.filter((g) => g.tarih !== ornek.tarih)) }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit-yok b')).toHaveText('Namaz vakitleri güncellenemedi');
+  await expect(page.locator('.vakit')).toHaveCount(0);
+  await expect(page.locator('.geri-sayim')).toHaveCount(0);
+});
+
+test('görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {
+  test.skip(!process.env.EKRAN_GORSEL, 'görüntü üretimi isteğe bağlı');
+  await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await page.screenshot({ path: 'test-results/ekran-gorsel/dikey-acik.png' });
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.clock.setSystemTime(an(ornek, ornek.aksam, 30));
+  await page.goto('/ekran/?don=90');
+  await expect(page.locator('#ekran')).toHaveAttribute('data-tema', 'koyu');
+  await page.screenshot({ path: 'test-results/ekran-gorsel/yatay-don90-koyu.png' });
+});
