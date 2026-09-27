@@ -47,13 +47,13 @@ const SALAT_I_UMMIYE = 'Salât-ı ümmiye (kısa salavat)';
 // Katalogda geçen sûrelerin âyet sayısı, Diyanet mushafı (Kûfe sayımı). 27 Eyl 2026'da Diyanet'in âyet ses dosyalarıyla
 // doğrulandı: webdosya.diyanet.gov.tr/…/ar_OsmanSahin/{sûre}_{n}.mp3 var, {sûre}_{n+1}.mp3 yok (41 sûrenin 41'i).
 const AYET_SAYISI = {
-  1: 7, 2: 286, 14: 52, 20: 135, 78: 40, 79: 46, 80: 42, 81: 29, 82: 19, 83: 36, 84: 25, 85: 22, 86: 17, 87: 19, 88: 26,
+  1: 7, 2: 286, 14: 52, 20: 135, 59: 24, 78: 40, 79: 46, 80: 42, 81: 29, 82: 19, 83: 36, 84: 25, 85: 22, 86: 17, 87: 19, 88: 26,
   89: 30, 90: 20, 91: 15, 92: 21, 93: 11, 94: 8, 95: 8, 96: 19, 97: 5, 98: 8, 99: 8, 100: 11, 101: 11, 102: 8, 103: 3,
   104: 9, 105: 5, 106: 4, 107: 7, 108: 3, 109: 6, 110: 3, 111: 5, 112: 4, 113: 5, 114: 6,
 };
 // Sûrenin tamamı olmayan Kur'an maddeleri: [sûre, ilk âyet, son âyet].
 const KURAN_PARCALARI = {
-  's-ayetel-kursi': [2, 255, 255], 's-alak-1-5': [96, 1, 5],
+  's-ayetel-kursi': [2, 255, 255], 's-alak-1-5': [96, 1, 5], 's-bakara-285-286': [2, 285, 286], 's-hasr-22-24': [59, 22, 24],
   'd-rabbena-atina': [2, 201, 201], 'd-rabbenagfirli': [14, 41, 41], 'd-rabbisrahli': [20, 25, 28],
 };
 const ayetSesleri = (s, a, b) => Array.from({ length: b - a + 1 }, (_, i) => `/media/ses/ayet/${s}-${a + i}.mp3`);
@@ -235,6 +235,19 @@ test('eski Ezber Odası Fâtiha metni Diyanet (Kûfe) sayımında: besmele 1. â
   const harekesiz = ar.normalize('NFD').replace(/[\u064B-\u065F\u0670]/g, '');
   assert.match(harekesiz, /المستقيم ﴿٦﴾ صراط/);
   assert.match(harekesiz, /عليهم غير المغضوب عليهم ولا الضالين ﴿٧﴾$/);
+});
+
+test('seviye listesi v3 (27 Eyl 2026 kararı): 81 madde; kenar suyunda aşır üçlüsünün iki parçası; Amme 5 durak', () => {
+  const say = Object.fromEntries(SEVIYELER.map((s) => [s, katalog.ogeler.filter((o) => o.seviye === s).length]));
+  assert.deepEqual(say, { 1: 5, 2: 8, 3: 6, 4: 6, 5: 5, 6: 5, 7: 8, 8: 25, kenar: 13 });
+  const kenar = m.seviyeOgeleri('kenar').map((o) => o.id);
+  assert.deepEqual(kenar.slice(-2), ['s-bakara-285-286', 's-hasr-22-24']);
+  const amme = m.seviyeOgeleri(8);
+  assert.deepEqual([...new Set(amme.map((o) => o.durak))], [1, 2, 3, 4, 5]);
+  amme.forEach((o, i) => { if (i) assert.ok(o.durak >= amme[i - 1].durak, `${o.id}: durak geri gidemez`); });
+  assert.deepEqual(amme.filter((o) => o.durak === 1).map((o) => o.id).slice(-2), ['s-tin', 's-duha']);
+  assert.deepEqual(amme.filter((o) => o.durak === 5).map((o) => o.id), ['s-abese', 's-naziat', 's-nebe']);
+  for (const o of katalog.ogeler.filter((x) => x.seviye !== 8)) assert.equal(o.durak, undefined, `${o.id}: durak yalnız Amme'de`);
 });
 
 test('katalog salt okunur: paylaşılan veri dışarıdan değiştirilemez', () => {

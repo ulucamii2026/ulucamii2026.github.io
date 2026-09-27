@@ -46,6 +46,7 @@
         "tur": { "enum": ["sure", "dua", "bilgi"] },
         "seviye": { "$ref": "#/definitions/seviye" },
         "sira": { "type": "integer", "minimum": 1, "maximum": 99 },
+        "durak": { "type": "integer", "minimum": 1, "maximum": 9, "description": "Yalnız 8. şerit (Amme): ara durak; sırayla artar" },
         "ad": { "$ref": "#/definitions/besDil" },
         "kuranMetni": { "type": "boolean" },
         "kuran": {

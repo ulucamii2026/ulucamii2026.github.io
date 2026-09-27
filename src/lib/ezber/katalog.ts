@@ -19,6 +19,8 @@ export interface KatalogOgesi {
   readonly tur: EzberTuru;
   readonly seviye: Seviye;
   readonly sira: number;
+  /** Yalnız 8. şerit (Amme): 1–5 ara durak (27 Eylül 2026 kararı); rozet ve kilim bölmeleri buna göre. */
+  readonly durak?: number;
   readonly ad: BesDil;
   /** Kur'an metni mi (Kur'an'dan olan dualar dahil): yapay ses yasağının ve «yalnız Diyanet» kuralının dayanağı. */
   readonly kuranMetni: boolean;

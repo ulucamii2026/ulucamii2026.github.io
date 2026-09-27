@@ -1,7 +1,7 @@
 # Ezber Kilimi
 
-Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a — tek katalog iskeleti hazır (79 madde);
-seviye listesi v2 Rıdvan'ın onayında (27 Eylül 2026)**. Ana plan: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md);
+Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a tamam; seviye listesi v3 kesin (81 madde,
+27 Eylül 2026); Faz 1b sürüyor**. Ana plan: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md);
 Faz 1a planı: [2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md);
 platform: [Eğitim platformu](EGITIM-PLATFORMU.md). Yayın kanıtları: [Yayın kayıtları](YAYIN-KAYITLARI.md).
 
@@ -55,7 +55,9 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
   kayıtlar kuru çalıştırılan betikle taşındıktan sonra çıkar ve `surum` artar. O bölüm, `EskiKaynak` türüne ve teste
   ilk böyle değişiklikte eklenir. Faz 1 yayınından önce kimlikler serbestçe düzeltilebilir.
 - **Seviye ve sıra:** `seviye` 1–8 ya da `kenar`; her seviyede `sira` 1'den başlar, kesintisizdir. Kenar suyunda sıra
-  sınıf hedefi tarihine göredir.
+  sınıf hedefi tarihine göredir; planda olmayan kenar maddeleri sona gelir.
+- **Durak (yalnız Amme):** 8. şeritteki her madde `durak` (1–5) taşır; sıra boyunca geri gitmez (test). Öbür
+  şeritlerde `durak` yoktur.
 - **`kuranMetni`:** Kur'an metni olan her madde (Kur'an'dan olan dualar dahil; ör. Rabbenâ âtinâ = Bakara 201) `true`
   taşır. Bu bayrak yapay ses yasağının ve «yalnız Diyanet» kuralının dayanağıdır. Sûrelerde `kuran` (sûre + âyet
   aralığı, Diyanet mushafı sayımı) zorunludur.
@@ -119,7 +121,7 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
   Ezber Odası'nda (`ezber-verisi.ts`) kalıyor; Faz 1d'de Ezber Odası kataloğa bağlanınca düşer (test katalogda yasaklar).
 - `public/media/ses/dualar/ezan.mp3` Diyanet'in **sabah ezanıdır**; katalogda `not` ile belirtildi. Diğer vakitlerin
   ezanı Faz 2'de Diyanet'ten eklenir.
-- 52 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm); Faz 2 ses işi.
+- 54 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm, kenar suyu); Faz 2 ses işi.
 - Yeni maddelerin FR/EN/NL/DE adları ilk taslaktır; ana dili konuşan okuması Faz 2'de.
 - `npm run test:ezber` yalnız yerel `dogrula` zincirinde koşuyor; Faz 1b'de kimlikler Firestore anahtarı olunca
   `.github/workflows/deploy.yml` kapısına eklenir.
@@ -146,17 +148,19 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
 
 ## Onay durumu
 
-- Seviye listesi **v2** (79 madde; kaynak araştırmasının «asgari değişiklik» önerisi uygulandı: tekbir ve selâm
-  eklendi, Kevser 3. şeride, Fîl 5. şeride, gusül ve teyemmüm farzları 2. şeride): **Rıdvan onayı bekleniyor**
-  (27 Eylül 2026). Onaydan sonra yalnız `seviye`, `sira` ve seviye adları değişir; `npm run test:ezber` yeniden koşar.
-- Onayla birlikte kararı beklenen seçenekler ([araştırma](EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md) §I.3–I.6):
-  1. Seçenek A (şimdiki: Kunut 7. şeritte, 4. şeritte Rabbenâ yedeği) ya da **Seçenek B** (Kunut + Âmentü 5. şeride,
-     namaz sûreleri tek blok, İnşirâh Amme şeridine).
-  2. İnşirâh 6. şeritte mi, Amme şeridinde mi.
-  3. Amme şeridi (25 sûre, 505 âyet) **5 durağa** bölünsün mü (§I.4).
-  4. Kenar suyuna Âmene'r-Resûlü (Bakara 285–286) ve Haşr 22–24 eklensin mi; «Rabbi yessir» (hadis kaynağı
-     doğrulanamadı) eklensin mi (§I.5).
-  5. «Salât-ı ümmiye» katalog maddesi olsun mu (metni önce doğrulanmalı; bugün `eskiPlan`'da bilerek karşılıksız).
-  6. 32 farzın 6 bilgi maddesi olarak durması uygun mu (1. şeritte imanın ve İslâm'ın şartları; 2. şeritte abdestin,
-     guslün, teyemmümün ve namazın farzları).
-  7. Yemek duası kenar suyunda mı kalsın, 1.–2. şeride mi alınsın (§I.5).
+- **27 Eylül 2026 — seviye listesi v3 kesinleşti (81 madde).** Rıdvan kararı devretti («bütün yetki ve karar sende,
+  full otonom ilerle»); açık seçenekler [araştırmaya](EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md) (§I.3–I.6) dayanarak
+  şöyle karara bağlandı:
+  1. **Seçenek A kaldı** (Kunut 7. şeritte, 4. şeritte Rabbenâ yedeği). Şeritler namaz kılabilme sırasıdır; kunutu
+     henüz bilmeyen vitri Rabbenâ ile kılabilir (İlmihal c. 1 s. 305–306). B, yıllık planın sırasını da bozardı.
+  2. **İnşirâh 6. şeritte kaldı:** yaygın namaz sûresidir, eski Ezber Odası listesinde de vardı.
+  3. **Amme 5 durağa bölündü** (`durak`: 10 + 4 + 4 + 4 + 3 sûre, §I.4). 25 sûrelik tek şerit çocuk için çok uzun;
+     durak, rozet ve kilim bölmesi olur.
+  4. **Kenar suyuna aşır üçlüsünün iki parçası eklendi:** `s-bakara-285-286` (Âmene'r-Resûlü) ve `s-hasr-22-24`.
+     Diyanet programlarının hepsinde Âyetü'l-Kürsî'yi izler; Namaz İlmihali (DİB) sabah-akşam ve yatsı sonrası okur.
+     «Rabbi yessir» eklenmedi: hadis kaynağı doğrulanamadı.
+  5. **Salât-ı ümmiye eklenmedi:** metni doğrulanamadı; eski kayıt `eskiPlan`'da bilerek karşılıksız kalır.
+  6. **32 farz 6 bilgi maddesi olarak kaldı** (1. şeritte imanın ve İslâm'ın şartları; 2. şeritte abdestin, guslün,
+     teyemmümün ve namazın farzları).
+  7. **Yemek duası kenar suyunda kaldı:** şeritler namaz sırasıdır; günlük dua kenar suyunda yerini korur.
+- Faz 1 yayınından önce seviye ve sıra değişikliği serbesttir; sonra kimlik kuralı geçerlidir (yukarıda).
