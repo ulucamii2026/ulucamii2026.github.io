@@ -25,7 +25,7 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
 | Ekran hedefleme | Ortak akış + ekrana özel duyuru |
 | Yönetim | İmam: sitenin paneli (Sveltia CMS). Başkan, kadınlar kolu, gençlik/kurs: **telefondan basit form, doğrudan yayın** |
 | Uzaktan | Arıza e-postası, sessiz güncelleme, anlık ekran görüntüsü, uzaktan yeniden başlatma |
-| FR meal | Diyanet çizgisindeki Fransızca meal: **TDV Yayınları, Muhammed Hamidullah tercümesi** (ISBN 9789753897334). *27 Eylül 2026 araştırması (İ0): DİB'in kendi çevirisi de var: Mohammed Chiadmi, "Le Noble Coran" (2022; TDV 2023'te Arapça metinle bastı). Hangisinin kullanılacağına imam karar verecek; yazılı izin gelene kadar ekranda FR meal yok.* |
+| FR meal | Diyanet İşleri Başkanlığı'nın Fransızca meali: **Mohammed Chiadmi, «Le Noble Coran»** (DİB, 2022, ISBN 978-625-435-299-7). *İmam kararı: 27 Eylül 2026. Cami Diyanet'e bağlı olduğundan Diyanet yayınlarının kullanımında izin sorunu yok; kaynak her ayetin altında belirtilir. TDV'nin Hamidullah baskısı (ISBN 9789753897334) incelendi, seçilmedi.* |
 | Devreye alma | Önce tek ekran pilot (LED'in yanında), sonra 3 ekran; **mümkün olan en kısa sürede** |
 | Kapsam | Şimdilik yalnız Ulu Camii (ad/logo/ilçe kodu tek ayar dosyasında) |
 
@@ -177,10 +177,10 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 **Paralel içerik hattı (hemen başlar)**
 - **İ0 — Kaynak ve izin.**
   - TR meal kuran.diyanet.gov.tr'deki resmî metinden alınır.
-  - FR meal: TDV'nin Hamidullah baskısı (ISBN 9789753897334) ya da DİB'in Chiadmi çevirisi ("Le Noble Coran", 2022) temin edilir; seçim imamındır. Yayıncıdan (TDV ya da DİB) veya Belçika Diyanet Vakfı'ndan cami içi gösterim ve site için yazılı izin istenir. Çevirmenler 2002 ve 2016'da vefat ettiği için eserler AB'de telif koruması altındadır.
-  - FR hadis: DİB'in Fransızca "40 Hadis" kitapçıkları (dijital.diyanet.gov.tr; Arapça + Fransızca + kaynak) aday kaynaktır; aynı izin talebine eklenir.
+  - FR meal: DİB'in Chiadmi çevirisi («Le Noble Coran», 2022, ISBN 978-625-435-299-7); imam kararı 27 Eylül 2026. Cami Diyanet'e bağlı; Diyanet yayınları ekranda ve sitede kaynak belirtilerek kullanılır, ayrıca izin yazışması gerekmez.
+  - FR hadis: DİB'in Fransızca "40 Hadis" kitapçıkları (dijital.diyanet.gov.tr; Arapça + Fransızca + kaynak) kullanılır.
   - FR hadis için Diyanet'in Fransızca hadis yayını aranır; bulunamazsa imam onaylı "Traduction : Mosquée Ulu Camii".
-  - `D:\ihtisas` arşivi **yalnız seçim ve doğrulama** için kullanılır; telif kuralı gereği metin oradan kopyalanmaz.
+  - Yerel ihtisas arşivi **yalnız seçim ve doğrulama** için kullanılır; telif kuralı gereği metin oradan kopyalanmaz.
 - **İ1 — Setler.** TR ≤ 280 karakter, bağlamından koparılmamış.
   - 365 günlük ayet + 365 günlük hadis
   - 52 Cuma seti, her kandil için 3 metin, 30 Ramazan metni
@@ -200,7 +200,7 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 - Kötü bir site deploy'u üç ekranı birden bozabilir → service worker son sağlam sürümü tutar; yeni tasarım önce `/ekran-beta/` üzerinde pilotta denenir.
 - Doğrudan yayında hata olabilir → kaldır düğmesi + imama e-posta + git geçmişi.
 - Ucuz kutuda zararlı yazılım → yalnız Google sertifikalı kutu (ana Wi-Fi kullanılacağı için bu şart).
-- Telif → İ0 izinleri alınmadan FR meal yayına girmez.
+- Telif → metinler Diyanet yayınlarından (kaynak belirtilerek) ya da caminin kendi imam onaylı tercümesinden gelir; cami Diyanet'e bağlı olduğundan izin sorunu yok.
 
 ## Doğrulama
 - **Site**:
@@ -224,4 +224,4 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 ## Onaydan sonra ilk adımlar
 1. Yol haritası bu dosya olarak (`docs/EKRAN-YOL-HARITASI.md`) depoya konur; `superpowers:writing-plans` ile Faz 1 uygulama planı çıkarılır (`docs/EKRAN-FAZ1-UYGULAMA-PLANI.md`).
 2. Faz 0 donanım avı başlar: Vinted favorileri, diğer siteler, masaüstüne PDF.
-3. Aynı anda Faz 1 (ekran sayfası MVP) ve İ0 (FR meal izni, kaynak teyidi) başlar.
+3. Aynı anda Faz 1 (ekran sayfası MVP) ve İ0 (kaynak teyidi) başlar.
