@@ -36,6 +36,7 @@ jobs:
           }
           yokla "Web sitesi"     "https://ulucamii.be/tr/"   "Ulu Camii"
           yokla "Kayıt formu"    "https://ulucamii.be/kayit/" "ulucamii"
+          yokla "Eğitim sitesi"  "https://egitim.ulucamii.be/tr/" "Ezber"
           yokla "Kayıt arka ucu" "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec?islem=saglik" '"ok":true' 5 60
           if [ -n "$hatalar" ]; then
             printf 'hatalar<<SON\n%b\nSON\n' "$hatalar" >> "$GITHUB_OUTPUT"
