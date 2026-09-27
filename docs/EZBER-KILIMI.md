@@ -162,7 +162,7 @@ Bugünkü hoca ekranı ezber durumunu `ilerleme/{ref}.ezber` içinde **plandaki 
    Rabbenâ âtinâ, namaz niyeti, tesbihat): **en ileri durum** alınır. Yeni basamaklar (Pekişti ≥ 1 hafta, Kalıcı ≥ 1 ay)
    yeniden dinlemeyi zaten istediği için fazla tahmin kendiliğinden düzelir; eksik tahmin çocuğun emeğini siler.
 4. **Bilerek karşılıksız:** «Salât-ı ümmiye (kısa salavat)» (planın 3–12 Eylül 2026 sürümlerinde vardı; katalogda
-   maddesi yok, Rıdvan'ın kararı bekleniyor) taşınmaz; değeri eski alanda kalır.
+   maddesi yok; 27 Eylül 2026 kararı: eklenmez, gerekçe «Onay durumu» 5) taşınmaz; değeri eski alanda kalır.
 5. **Eski alan salt okunur kalır**, silinmez; yeni ekran yalnız `ezberDurum`'a yazar.
 6. **Kesinleşti (27 Eylül 2026, Faz 1b):** `ogrendi` → Hocaya okudu (kontrol geçiş günü + 7; Pekişti yeniden
    dinlemeyle gelir), `tekrar` → Çalışıyor, `baslamadi` → kayıt açılmaz. Yeni sistemde kaydı olan madde **ezilmez**
@@ -412,6 +412,14 @@ kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026
      Diyanet programlarının hepsinde Âyetü'l-Kürsî'yi izler; Namaz İlmihali (DİB) sabah-akşam ve yatsı sonrası okur.
      «Rabbi yessir» eklenmedi: hadis kaynağı doğrulanamadı.
   5. **Salât-ı ümmiye eklenmedi:** metni doğrulanamadı; eski kayıt `eskiPlan`'da bilerek karşılıksız kalır.
+     **Kesin karar, 27 Eylül 2026 akşamı** (Rıdvan kararı yine devretti: «ne yapman gerekiyorsa yap, bütün yetki ve
+     karar sende»): **eklenmez.** Metin artık doğrulandı: TDV İslâm Ansiklopedisi, «Salât-ı Ümmiyye» (Nuri Özcan,
+     c. 36, s. 20–21): “Allāhümme salli alâ seyyidinâ Muhammedini’n-nebiyyi’l-ümmiyyi ve alâ âlihî ve sahbihî ve
+     sellim.” Madde onu mevlid, teravih ve sakal-ı şerif ziyaretinde toplu okunan bir salâ formu olarak tanımlar.
+     Eklenmemesinin gerekçesi yıllık plandır: 24 Eylül revizyonundan (`a4b802b`) beri planda yok; planın salavat
+     ezberi «Salavat Duaları» dersindeki Allâhümme Salli ve Bârik'tir, ikisi de katalogdadır. Namaz sonrası salavat
+     ise ayrı ezber değil, sıralama etkinliğidir. Eski kayıtta taşınacak veri de yok (geçiş: 0). Hoca dönemlik
+     okutmak isterse (mevlid kandili, teravih) kenar suyuna yeni kimlikle eklenir; mevcut kayıtlar etkilenmez.
   6. **32 farz 6 bilgi maddesi olarak kaldı** (1. şeritte imanın ve İslâm'ın şartları; 2. şeritte abdestin, guslün,
      teyemmümün ve namazın farzları).
   7. **Yemek duası kenar suyunda kaldı:** şeritler namaz sırasıdır; günlük dua kenar suyunda yerini korur.
