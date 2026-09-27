@@ -61,12 +61,14 @@ export function ekranIcerigi(ayetler: AyetKaydi[], hadisler: HadisKaydi[], siteH
     if (!tam) { eksik.push(String(a.id)); continue; }
     if (!yeni(a.id)) continue;
     const ek = aralik(a.ayet);
+    const frGecerli = dolu(a.fr) && dolu(a.kaynakFr);
+    if (dolu(a.fr) && !frGecerli) eksik.push(String(a.id) + ' (FR kaynağı yok)');
     ekranAyetleri.push({
       id: a.id,
       referans: { tr: `${a.sureAdi.tr}, ${a.sure}/${ek}`, fr: `${a.sureAdi.fr}, ${a.sure}:${ek}` },
       ar: a.ar,
       tr: a.tr,
-      ...(dolu(a.fr) ? { fr: a.fr, kaynakFr: a.kaynakFr } : {}),
+      ...(frGecerli ? { fr: a.fr, kaynakFr: a.kaynakFr } : {}),
       kaynakTr: a.kaynakTr,
     });
   }
@@ -74,7 +76,7 @@ export function ekranIcerigi(ayetler: AyetKaydi[], hadisler: HadisKaydi[], siteH
   const ekranHadisleri: EkranHadis[] = [];
   for (const h of siteHadisleri) {
     const id = 'site-' + h.id;
-    if (yeni(id)) ekranHadisleri.push({ id, ar: h.arapca, tr: h.metin.tr, fr: h.metin.fr, kaynak: h.kaynak });
+    if (yeni(id)) ekranHadisleri.push({ id, ar: h.arapca, tr: h.metin.tr, ...(dolu(h.metin.fr) ? { fr: h.metin.fr } : {}), kaynak: h.kaynak });
   }
   for (const h of hadisler) {
     if (h.durum !== 'imam-onayli') continue;
