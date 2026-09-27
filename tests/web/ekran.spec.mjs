@@ -197,6 +197,37 @@ test('slayt çiziminde istisna çıkarsa tur donmaz; sonraki turda geçerli slay
   await expect(slayt.locator('.slayt-hadis p.fr')).toHaveText('Sourire à ton frère est pour toi une aumône.');
 });
 
+test.describe('internetsiz açılış', () => {
+  test.use({ serviceWorkers: 'allow' });
+  test('internet kesilse de ekran son sağlam hâliyle açılır', async ({ page, context }) => {
+    await page.goto('/ekran/');
+    await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    await context.setOffline(true);
+    await page.reload();
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    await expect(page.locator('[data-alan="saat"]')).toHaveText(/^\d\d:\d\d:\d\d$/);
+    await context.setOffline(false);
+  });
+
+  // Kontrolör kuralı 1: Wi-Fi ayakta ama internet tıkandığında (taşıyıcı portalı, yarım kalan DNS…)
+  // fetch() hiç çözülmeyebilir — context.setOffline(true) gibi net bir hata fırlatmaz, sadece asılı kalır.
+  // Adaptasyonsuz agOnce (fetch().then().catch()) bu durumda önbelleğe hiç düşmez: sayfanın kendi isteği
+  // (src/ekran/veri.ts → getir) 30 sn'de vazgeçer ve önbelleği hiç görmez. sw.ts → agOnce ağ isteğini
+  // 10 sn'lik bir zamanlayıcıyla yarıştırır; zamanlayıcı kazanırsa önbellekten yanıtlanır. Ağ isteği
+  // arka planda sürer ve geç de gelse sakla() ile önbelleğe yazılır (bu test bunu doğrulamaz, ayrı ilgi).
+  test('ağ askıda kalırsa (Wi-Fi ayakta, internet cevap vermiyor) vakitler ~10 sn içinde önbellekten gelir', async ({ page, context }) => {
+    await page.goto('/ekran/');
+    await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    // context.setOffline DEĞİL: gerçek bir kopukluk değil, hiç yanıt vermeyen bir bağlantı canlandırılıyor.
+    // route.fulfill/abort/continue'dan hiçbiri çağrılmaz — istek tarayıcı tarafında asılı kalır.
+    await context.route('**/ekran/vakitler.json', () => {});
+    await page.reload();
+    await expect(page.locator('.vakit')).toHaveCount(6, { timeout: 13_000 });
+  });
+});
+
 test('görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {
   test.skip(!process.env.EKRAN_GORSEL, 'görüntü üretimi isteğe bağlı');
   await page.clock.install({ time: an(ornek, ornek.ogle, -30) });

@@ -34,6 +34,10 @@ writeFileSync(CIKTI + 'ekran.css', degiskenler + readFileSync(yol('src/ekran/ekr
 const ortak = { bundle: true, format: 'iife', target: HEDEF, minify: true, legalComments: 'none', logLevel: 'warning', charset: 'utf8' };
 const paketler = [{ ...ortak, entryPoints: [yol('src/ekran/main.ts')], outfile: CIKTI + 'ekran.js' }];
 
+/* Her derleme yeni bir SW sürümü: kutu yeni paketi bir sonraki güncelleme denetiminde alır. */
+const damga = (process.env.GITHUB_SHA || 'yerel').slice(0, 12) + '-' + Date.now().toString(36);
+paketler.push({ ...ortak, entryPoints: [yol('src/ekran/sw.ts')], outfile: CIKTI + 'sw.js', define: { __EKRAN_SURUM__: JSON.stringify(damga) } });
+
 if (process.argv.includes('--izle')) {
   for (const p of paketler) await (await context(p)).watch();
   console.log('[ekran] paket izleniyor (CSS değişince betiği yeniden çalıştırın)…');

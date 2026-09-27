@@ -42,7 +42,7 @@ const YASAK_CSS = [
   /@media[^{]*[<>]/, // Chrome 104 (aralık sözdizimi)
 ];
 
-for (const dosya of ['public/ekran/ekran.js']) {
+for (const dosya of ['public/ekran/ekran.js', 'public/ekran/sw.js']) {
   test(`${dosya} Chromium 70 dışı sözdizimi ya da API içermez`, () => {
     const js = oku(dosya);
     for (const r of YASAK_JS) assert.doesNotMatch(js, r, `${dosya}: ${r}`);

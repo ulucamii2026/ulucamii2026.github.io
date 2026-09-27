@@ -126,5 +126,16 @@ function sonrakiSlayt(): void {
   }
 }
 
+/* İnternetsiz açılış için service worker (src/ekran/sw.ts). Yeni sürüm denetimi 6 saatte bir; yeni SW
+   denetimi devralınca sayfa bir kez yenilenir (ilk kurulumda değil). */
+if ('serviceWorker' in navigator) {
+  const oncekiDenetci = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker
+    .register('/ekran/sw.js', { scope: '/ekran/' })
+    .then((kayit) => { setInterval(() => { kayit.update().catch(() => {}); }, 6 * 3_600_000); })
+    .catch(() => {});
+  navigator.serviceWorker.addEventListener('controllerchange', () => { if (oncekiDenetci) location.reload(); });
+}
+
 saniyelik();
 void veriDongusu();
