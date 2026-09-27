@@ -1,0 +1,484 @@
+/* egitim.ulucamii.be — «Çini Panosu» taslak stili (Faz 1e, 27 Eylül 2026).
+   Dünya: caminin duvarındaki çini panosu. Beyaz sırlı karo, derz çizgisi, kurs yeşili sır; firuze ve altın yalnız
+   basamak sırrı (Hocaya okudu → firuze, Pekişti → yeşil, Kalıcı → altın). Latin: Atkinson Hyperlegible Next;
+   Arapça: Ulu Nesih (cv62 = Türk usulü şeddeli esre). Gölge yok, geçiş rengi yok; derinliği derz verir. */
+
+@font-face { font-family: "Atkinson Next"; src: url("../../public/fonts/atkinson-next.woff2") format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Atkinson Next"; src: url("../../public/fonts/atkinson-next-italik.woff2") format("woff2");
+  font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Ulu Nesih"; src: url("../../public/fonts/ulu-nesih.woff2") format("woff2"); font-display: swap; }
+
+:root {
+  color-scheme: light;
+  --astar: #F3F6F1;          /* zemin: beyaz astar */
+  --karo: #FFFFFF;           /* karo yüzü */
+  --derz: #D3DDD5;           /* derz çizgisi */
+  --derz-koyu: #B5C5B9;
+  --kontur: #0E2217;         /* mürekkep: metin ve kontur */
+  --kontur-2: #475B4E;       /* ikincil metin (astar üstünde 6,6:1) */
+  --yesil: #134420;          /* kurs yeşili sır */
+  --yesil-2: #1C5A30;        /* sırın parlak yüzü (üzerine gelince) */
+  --yesil-soluk: #E3EEE5;    /* soluk yeşil alan */
+  --yesil-bag: #1D5E33;      /* bağlantı rengi */
+  --sir-motif: #F5FAF6;      /* yeşil karodaki beyaz motif */
+  --motif: color-mix(in oklab, var(--yesil-bag) 58%, var(--karo));   /* beyaz karodaki motifin dolgusu; çevresi koyu kontur */
+  --kenar-zemin: color-mix(in oklab, var(--yesil) 14%, var(--karo)); /* kenar suyu bordürünün karoları */
+  --kusak: #134420;          /* yazı kuşağı: kurs yeşili */
+  --kusak-yazi: #E9F2EB;
+  --firuze: #2E9E97;         /* basamak: Hocaya okudu */
+  --firuze-yazi: #0D6660;
+  --altin: #C9A23C;          /* basamak: Kalıcı */
+  --altin-yazi: #765A0C;
+  --r: 3px;                  /* karo köşesi */
+  --olcu: 1.0625rem;
+  --font: "Atkinson Next", "Segoe UI", system-ui, sans-serif;
+  --font-ar: "Ulu Nesih", "Scheherazade New", "Amiri", serif;
+  --genislik: 84rem;
+  --yayil: cubic-bezier(0.16, 1, 0.3, 1);   /* sırın yayılışı: üstel yavaşlama */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --astar: #08130D; --karo: #0F1D16; --derz: #1F3227; --derz-koyu: #2D463A;
+    --kontur: #E5EEE7; --kontur-2: #A3B7A8;
+    --yesil: #1E5B34; --yesil-2: #277143; --yesil-soluk: #12261A; --yesil-bag: #93D3A7; --sir-motif: #D9E7DC;
+    --kusak: #1E5B34; --kusak-yazi: #E9F2EB;
+    --firuze: #41B8AF; --firuze-yazi: #7FD6CE; --altin: #D8B452; --altin-yazi: #E6C66C;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --astar: #08130D; --karo: #0F1D16; --derz: #1F3227; --derz-koyu: #2D463A;
+  --kontur: #E5EEE7; --kontur-2: #A3B7A8;
+  --yesil: #1E5B34; --yesil-2: #277143; --yesil-soluk: #12261A; --yesil-bag: #93D3A7; --sir-motif: #D9E7DC;
+  --kusak: #1E5B34; --kusak-yazi: #E9F2EB;
+  --firuze: #41B8AF; --firuze-yazi: #7FD6CE; --altin: #D8B452; --altin-yazi: #E6C66C;
+}
+
+/* ——— Temel ———
+   Satır ölçüleri em ile verilir, ch ile değil: Chromium ch birimini yazı tipi yüklenmeden önce yedek yazı tipinin
+   «0» genişliğiyle hesaplayıp sonra güncellemeyebiliyor (27 Eylül 2026 ölçümü: aynı sayfada 405 px ↔ 487 px). */
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--astar); color: var(--kontur); font: 400 var(--olcu)/1.55 var(--font);
+  -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-color: var(--derz-koyu) var(--astar);
+  caret-color: var(--yesil-bag); }
+body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; }
+main { flex: 1; }
+::selection { background: var(--yesil); color: #fff; }
+:focus-visible { outline: 3px solid var(--kontur); outline-offset: 3px; border-radius: 2px; }
+img, svg { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+a { color: var(--yesil-bag); text-decoration-thickness: 1.5px; text-underline-offset: 0.22em; }
+a:hover { text-decoration-thickness: 2.5px; }
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; font-weight: 750; line-height: 1.12; }
+p { margin: 0; text-wrap: pretty; }
+button { font: inherit; color: inherit; }
+[lang="ar"] { font-family: var(--font-ar); font-feature-settings: "cv62" 1; direction: rtl; unicode-bidi: isolate;
+  font-weight: 400; letter-spacing: 0; }
+.gorunmez { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0; }
+.rakam { font-variant-numeric: tabular-nums lining-nums; }
+.ikon { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
+.icerik { width: min(100% - 2rem, var(--genislik)); margin-inline: auto; }
+@media (min-width: 48rem) { .icerik { width: min(100% - 5rem, var(--genislik)); } }
+
+/* Sahne ve şerit çizimleri (Codex, egitim/src/assets/cizim/sahne): kontur mürekkepten, sır sınıftan. */
+.cizim { color: var(--kontur); }
+.cizim [class$="__s1"] { fill: var(--yesil); }
+.cizim [class$="__s2"] { fill: var(--firuze); }
+.cizim [class$="__s3"] { fill: var(--altin); }
+.cizim [class$="__s0"] { fill: var(--karo); }
+
+/* ——— Üst bilgi ve kuşak bordürü ——— */
+.ust { background: var(--astar); }
+.ust .icerik { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem 2rem; flex-wrap: wrap;
+  padding-block: 0.75rem; }
+/* Yatay kurs logosu kimlik paketinden birebir gelir; tuvalin sağ yarısı boştur. Dosyaya dokunmadan yalnız görünür
+   kısmı (0–836 birim) gösterilir; koyu zeminde kimlik kılavuzundaki gibi beyaz koruma alanına oturur. */
+.ust .logo { display: block; flex: none; padding: 0.4rem 0.55rem; margin-left: -0.55rem; border-radius: var(--r); }
+.ust .logo img { width: auto; height: 3.5rem; aspect-ratio: 836 / 400; object-fit: cover; object-position: 0 50%; }
+@media (min-width: 48rem) { .ust .logo img { height: 4rem; } }
+:root[data-theme="dark"] .ust .logo, :root:not([data-theme="light"]) .ust .logo { background: #fff; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .ust .logo { background: transparent; } }
+:root[data-theme="light"] .ust .logo { background: transparent; }
+.ust nav { display: flex; align-items: center; gap: 0.25rem 1.25rem; flex-wrap: wrap; }
+/* Telefonda menü tek satır: bulunulan bölümün bağlantısı logoda zaten var; ana siteye dönüş ve diller kalır. */
+@media (max-width: 39.99rem) {
+  .ust nav { flex: 1 1 100%; justify-content: space-between; column-gap: 0.75rem; }
+  .ust nav > .bolum-bag { display: none; }
+  .ust .diller a { min-width: 2.35rem; }
+}
+.ust nav > a { color: var(--kontur); font-weight: 650; text-decoration: none; padding: 0.4rem 0; display: inline-flex;
+  align-items: center; gap: 0.35rem; }
+.ust nav > a[aria-current="page"] { box-shadow: inset 0 -3px 0 var(--yesil-bag); }
+.ust nav > a:hover { color: var(--yesil-bag); }
+.diller { display: inline-grid; grid-auto-flow: column; gap: 1px; background: var(--derz); border: 1px solid var(--derz);
+  border-radius: var(--r); overflow: hidden; }
+.diller a { display: grid; place-items: center; min-width: 2.6rem; min-height: 2.5rem; padding: 0 0.4rem; background: var(--karo);
+  color: var(--kontur); text-decoration: none; font-weight: 700; font-size: 0.84rem; letter-spacing: 0.04em; }
+.diller a[aria-current="true"] { background: var(--yesil); color: #fff; }
+.diller a:not([aria-current]):hover { background: var(--yesil-soluk); }
+.bordur { display: block; width: 100%; height: 14px; color: var(--yesil); background: var(--karo);
+  border-block: 1px solid var(--derz); }
+
+/* ——— Düğmeler ——— */
+.dugme { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 3.25rem;
+  padding: 0.75rem 1.35rem; border-radius: var(--r); font-weight: 750; font-size: 1.06rem; text-decoration: none;
+  border: 2px solid var(--yesil); cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+.dugme.birincil { background: var(--yesil); color: #fff; }
+.dugme.birincil:hover { background: var(--yesil-2); border-color: var(--yesil-2); }
+.dugme.ikincil { background: var(--karo); color: var(--kontur); border-color: var(--kontur); }
+.dugme.ikincil:hover { background: var(--yesil-soluk); }
+.dugme .ikon { width: 1.3rem; height: 1.3rem; }
+:root[data-theme="dark"] .dugme.birincil, :root:not([data-theme="light"]) .dugme.birincil { color: #fff; }
+
+/* ——— Giriş: başlık + pano ——— */
+/* Telefonda sıra: başlık → pano → güven satırı; geniş ekranda metin solda ortalanır, pano sağda iki satırı kaplar. */
+.giris .icerik { display: grid; grid-template-areas: "metin" "pano" "guven"; gap: 2.25rem 3.5rem; padding-block: 2rem 3.5rem; }
+@media (min-width: 64rem) {
+  .giris .icerik { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "metin pano" "guven pano";
+    padding-block: 2.5rem 4rem; }
+  .giris .giris-metin { align-self: end; }
+  .giris .guven { align-self: start; }
+}
+.giris .giris-metin { grid-area: metin; }
+.giris h1 { font-size: clamp(3rem, 1.6rem + 4.6vw, 4.25rem); line-height: 0.96; letter-spacing: -0.028em; font-weight: 800; }
+.giris .vaat { margin-top: 1.4rem; font-size: clamp(1.12rem, 1rem + 0.45vw, 1.3rem); line-height: 1.5; max-width: 22em; }
+.giris .eylem { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+@media (max-width: 29.99rem) { .giris .eylem .dugme { flex: 1 1 100%; } }
+.giris .guven { grid-area: guven; display: flex; gap: 0.75rem; align-items: flex-start; max-width: 29em;
+  color: var(--kontur-2); font-size: 0.95rem; line-height: 1.45; }
+.giris .guven .muhur { flex: none; width: 2.5rem; height: 2.5rem; color: var(--yesil-bag); }
+
+/* Pano: 13 × 14 ızgara. Ortada 12 sıra (sıra karosu + en çok 10 madde); çevresinde kenar suyu bordürü, kilimle aynı
+   düzende (maddeler saat yönünde dağılır, arası koçboynuzu bordür karosu). Çerçeve genişliği karo ölçüsünden hesaplanır
+   (içerikten değil); karo ölçüsü geniş ekranda ekran yüksekliğine uyar ki kuşak ve bütün pano ilk görünüme sığsın. */
+.pano-cerceve { --karo-boy: clamp(1.4rem, min(3.6vw, (100svh - 16rem) / 14), 3rem); grid-area: pano;
+  justify-self: center; width: calc(13 * var(--karo-boy) + 28px); max-width: 100%; background: var(--derz); padding: 2px;
+  border-radius: calc(var(--r) + 2px); display: grid; gap: 2px; margin: 0; }
+@media (min-width: 64rem) { .pano-cerceve { justify-self: end; } }
+@media (max-width: 63.99rem) { .pano-cerceve { --karo-boy: clamp(1.1rem, (100vw - 2rem - 28px) / 13, 2.8rem); } }
+.kusak-yazi { background: var(--kusak); color: var(--kusak-yazi); border-radius: var(--r) var(--r) 1px 1px;
+  min-height: 3.65rem; padding: 0.55rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.98rem;
+  line-height: 1.3; }
+/* Kuşak yazısı en çok iki satır: karo üzerinde gezinirken yükseklik zıplamaz. */
+.kusak-yazi [data-kusak] { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  overflow: hidden; }
+.kusak-yazi b { font-weight: 750; }
+.kusak-yazi .kusak-ek { color: color-mix(in oklab, var(--kusak-yazi) 80%, var(--kusak)); }
+.kusak-yazi svg { width: 1.6rem; height: 1.6rem; flex: none; color: var(--kusak-yazi); }
+.pano { display: grid; grid-template-columns: repeat(13, var(--karo-boy)); grid-auto-rows: var(--karo-boy); gap: 2px; }
+.karo { position: relative; display: grid; place-items: center; border-radius: 1px; background: var(--karo);
+  color: var(--kontur); text-decoration: none; overflow: hidden; isolation: isolate; }
+/* Madde karosu: beyaz sırlı yüz; motif yeşil dolgulu, koyu konturlu (çinideki tahrir). */
+.pano .karo.madde { background: var(--karo); color: var(--motif); cursor: pointer; }
+.pano .karo.madde svg { width: 72%; height: 72%; fill: currentColor; stroke: var(--kontur); stroke-width: 4;
+  stroke-linejoin: round; position: relative; z-index: 1; transition: color 420ms var(--yayil); }
+/* İmza: kurs yeşili sır dokunulan noktadan karoya yayılır, motif aynı anda sırrın beyazına döner (tek hareket yasası).
+   Azaltılmış harekette anında. */
+.pano .karo.madde::after { content: ""; position: absolute; inset: 0; background: var(--yesil); z-index: 0;
+  clip-path: circle(0% at var(--x, 50%) var(--y, 50%)); transition: clip-path 420ms var(--yayil); }
+.pano .karo.madde:is(:hover, :focus-visible, .odak)::after { clip-path: circle(145% at var(--x, 50%) var(--y, 50%)); }
+.pano .karo.madde:is(:hover, :focus-visible, .odak) svg { color: var(--sir-motif); }
+.pano .karo.madde:focus-visible { outline: 3px solid var(--kontur); outline-offset: 1px; z-index: 2; }
+.pano .karo.sira { background: var(--karo); color: var(--yesil-bag); font-weight: 800; font-size: calc(var(--karo-boy) * 0.42);
+  font-variant-numeric: tabular-nums; }
+.pano .karo.amme { grid-row: span 5; background: var(--karo); color: var(--yesil-bag); }
+.pano .karo.amme span { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 800; letter-spacing: 0.06em;
+  font-size: calc(var(--karo-boy) * 0.36); }
+.pano .karo.bos { background: var(--astar); }
+.pano .karo.bos::before { content: ""; width: 18%; aspect-ratio: 1; background: var(--derz); transform: rotate(45deg); }
+/* Kenar suyu bordürü: soluk yeşil karolarda koçboynuzu, desen her kenarda panoya dönük; köşelerde köşe motifi.
+   Kenar suyunun maddeleri bordürün içinde beyaz karolar olarak durur. */
+.pano .karo:is(.bordur-karo, .kose) { background: var(--kenar-zemin); color: var(--yesil); }
+.pano .karo.bordur-karo svg { width: 100%; height: 50%; fill: currentColor; }
+.pano .karo.bordur-karo.yon-sag svg { transform: rotate(90deg); }
+.pano .karo.bordur-karo.yon-alt svg { transform: rotate(180deg); }
+.pano .karo.bordur-karo.yon-sol svg { transform: rotate(-90deg); }
+.pano .karo.kose svg { width: 78%; height: 78%; fill: currentColor; }
+/* Rozet karolar (şerit listesi, özet satırı, madde başı, hoca listesi): panodaki madde karosunun küçüğü. Beyaz sırlı
+   yüz, derz çizgisi, yeşil dolgulu koyu konturlu motif; sır yalnız imzada yayılır. */
+.rozet-karo, .madde-bas .madalyon { position: relative; isolation: isolate; overflow: hidden; display: grid; place-items: center;
+  border-radius: 1px; background: var(--karo); color: var(--motif); box-shadow: inset 0 0 0 1px var(--derz-koyu); }
+.rozet-karo svg, .madde-bas .madalyon svg { position: relative; z-index: 1; fill: currentColor; stroke: var(--kontur);
+  stroke-width: 4; stroke-linejoin: round; transition: color 420ms var(--yayil); }
+.rozet-karo svg { width: 74%; height: 74%; }
+.rozet-karo::after { content: ""; position: absolute; inset: 0; z-index: 0; background: var(--yesil);
+  clip-path: circle(0% at 50% 50%); transition: clip-path 420ms var(--yayil); }
+@keyframes sir-yayil { from { clip-path: circle(0% at 50% 50%); } to { clip-path: circle(145% at 50% 50%); } }
+@keyframes sir-motif { to { color: var(--sir-motif); } }
+
+/* ——— Bölümler ——— */
+.bolum { padding-block: clamp(3.5rem, 2.5rem + 4vw, 6.5rem) 0; }
+.bolum > .icerik > h2, .bolum-bas h2 { font-size: clamp(1.9rem, 1.4rem + 1.9vw, 2.75rem); letter-spacing: -0.02em; }
+.bolum-bas { display: grid; gap: 0.9rem; max-width: 46rem; margin-bottom: 2.25rem; }
+.bolum-bas p { font-size: 1.12rem; max-width: 40em; color: var(--kontur); }
+
+/* Dört basamak: aynı motif dört çini aşamasında. */
+.basamaklar { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz);
+  border-radius: calc(var(--r) + 2px); counter-reset: none; }
+@media (min-width: 48rem) { .basamaklar { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 72rem) { .basamaklar { grid-template-columns: repeat(4, 1fr); } }
+.basamaklar li { background: var(--karo); padding: 1.5rem 1.4rem 1.6rem; display: grid; gap: 0.6rem; align-content: start; }
+.basamaklar .motif { width: 5.5rem; height: 5.5rem; margin-bottom: 0.6rem; }
+.basamaklar h3 { font-size: 1.35rem; }
+.basamaklar p { font-size: 1rem; line-height: 1.5; }
+.basamaklar .saat { display: inline-flex; gap: 0.45rem; align-items: center; font-weight: 700; font-size: 0.95rem;
+  color: var(--kontur); margin-top: 0.25rem; }
+.basamaklar .saat .ikon { color: var(--kontur-2); }
+/* Telefonda kart yatay: motif solda, yazı sağda (dört kart bir ekrana yaklaşır). */
+@media (max-width: 47.99rem) {
+  .basamaklar li { grid-template-columns: 3.5rem minmax(0, 1fr); column-gap: 1rem; row-gap: 0.35rem; padding: 1.1rem 1.1rem 1.2rem; }
+  .basamaklar .motif { grid-row: 1 / span 3; width: 3.5rem; height: 3.5rem; margin: 0; }
+  .basamaklar h3 { font-size: 1.2rem; }
+}
+.ilke { margin-top: 1.25rem; display: grid; gap: 0.35rem; color: var(--kontur-2); font-size: 1rem; max-width: 45em; }
+
+/* Şeritler: her şerit bir pano parçası — solda şerit çizimi, sağda madde karoları. */
+.seritler { display: grid; gap: 2.25rem; }
+@media (min-width: 60rem) { .seritler { gap: 3.25rem; } }
+.serit { display: grid; gap: 1rem 2.5rem; scroll-margin-top: 1.5rem; align-items: start; }
+@media (min-width: 60rem) { .serit { grid-template-columns: 17rem minmax(0, 1fr); } }
+/* Şerit başı: telefonda çizim solda küçük, geniş ekranda çizim üstte büyük. */
+.serit-bas { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.6rem 1rem; align-items: center; }
+.serit-bas .cizim { width: 4.5rem; height: 4.5rem; }
+.serit-yazi { display: grid; gap: 0.4rem; }
+@media (min-width: 60rem) {
+  .serit-bas { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .serit-bas .cizim { width: 6.5rem; height: 6.5rem; margin-left: -0.4rem; }
+  .serit-yazi { gap: 0.6rem; }
+}
+.serit-bas h3 { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem); display: flex; gap: 0.6rem; align-items: baseline; }
+.serit-bas h3 .no { color: var(--yesil-bag); font-variant-numeric: tabular-nums; }
+.serit-bas p { color: var(--kontur-2); font-size: 1rem; line-height: 1.5; }
+/* Madde listesi telefonda katlanır (details); geniş ekranda hep açık, özet satırı gizli. */
+.serit-liste > summary { list-style: none; display: flex; align-items: center; gap: 0.75rem; min-height: 3.25rem;
+  padding: 0.45rem 0.9rem 0.45rem 0.5rem; background: var(--karo); border: 1px solid var(--derz-koyu); border-radius: var(--r);
+  font-weight: 700; cursor: pointer; }
+.serit-liste > summary::-webkit-details-marker { display: none; }
+.serit-liste > summary:hover { background: var(--yesil-soluk); }
+.serit-liste > summary .rozet-karo { width: 2.25rem; height: 2.25rem; flex: none; }
+.serit-liste > summary .eylem-yazi { margin-left: auto; display: inline-flex; align-items: center; gap: 0.35rem;
+  color: var(--yesil-bag); font-size: 0.95rem; }
+.serit-liste > summary .eylem-yazi .ikon { transition: transform 200ms var(--yayil); }
+.serit-liste[open] > summary { margin-bottom: 0.75rem; }
+.serit-liste[open] > summary .eylem-yazi .ikon { transform: rotate(180deg); }
+.serit-liste:not([open]) > summary .kapa, .serit-liste[open] > summary .ac { display: none; }
+@media (min-width: 60rem) { .serit-liste > summary { display: none; } }
+/* Karolar arası derz: her karonun 1 px dış çizgisi 1 px aralığı doldurur; boş kalan yer zemin rengidir. */
+.maddeler { list-style: none; margin: 0; padding: 1px; display: grid; gap: 1px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr)); align-content: start; }
+.maddeler li { background: var(--karo); display: flex; outline: 1px solid var(--derz); }
+.maddeler a, .maddeler .madde-ic { flex: 1; display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.85rem;
+  align-items: center; padding: 0.85rem 1rem; color: var(--kontur); text-decoration: none; min-height: 4.6rem; }
+.maddeler a:hover { background: var(--yesil-soluk); }
+.maddeler .rozet-karo { width: 2.75rem; height: 2.75rem; }
+/* Bağlantıyla gelinen madde (#m-…): panodaki imza, rozet karodan sır yayılır; üzerine gelince de aynısı. */
+.maddeler li:target { outline: 2px solid var(--yesil-bag); outline-offset: -1px; position: relative; z-index: 1; }
+.maddeler li:target .rozet-karo::after { animation: sir-yayil 900ms var(--yayil) 150ms both; }
+.maddeler li:target .rozet-karo svg { animation: sir-motif 900ms var(--yayil) 150ms both; }
+.maddeler a:is(:hover, :focus-visible) .rozet-karo::after { clip-path: circle(145% at 50% 50%); }
+.maddeler a:is(:hover, :focus-visible) .rozet-karo svg { color: var(--sir-motif); }
+.maddeler .ad { font-weight: 700; line-height: 1.3; }
+.maddeler .ust-bilgi { color: var(--kontur-2); font-size: 0.86rem; line-height: 1.35; margin-top: 0.15rem;
+  display: flex; flex-wrap: wrap; gap: 0 0.5rem; }
+.maddeler .ust-bilgi .ses { display: inline-flex; gap: 0.25rem; align-items: center; color: var(--yesil-bag); font-weight: 650; }
+.maddeler .ust-bilgi .ikon { width: 1rem; height: 1rem; }
+.durak-basligi { grid-column: 1 / -1; background: var(--yesil-soluk) !important; padding: 0.45rem 1rem; font-weight: 750;
+  font-size: 0.9rem; color: var(--kontur); }
+
+/* Kilimim */
+/* Telefonda: başlık → kilim → özet ve lejant. Geniş ekranda yazı solda, kilim sağda iki satırı kaplar. */
+.kilimim { display: grid; grid-template-areas: "ust" "kilim" "alt"; gap: 1.5rem 3.5rem; align-items: start; }
+@media (min-width: 64rem) {
+  .kilimim { grid-template-columns: minmax(0, 1fr) minmax(0, 28rem); grid-template-rows: auto 1fr;
+    grid-template-areas: "ust kilim" "alt kilim"; }
+}
+.kilimim .yan-ust { grid-area: ust; }
+.kilimim .yan-alt { grid-area: alt; }
+.kilimim h2 { font-size: clamp(1.9rem, 1.4rem + 1.9vw, 2.75rem); letter-spacing: -0.02em; }
+.kilimim .aciklama { font-size: 1.12rem; max-width: 37em; }
+.kilimim .not { color: var(--kontur-2); max-width: 37em; }
+.kilimim .kilim-kutu { grid-area: kilim; background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1.25rem; }
+.kilimim .ornek-etiket { display: inline-flex; gap: 0.4rem; align-items: center; font-size: 0.82rem; font-weight: 700;
+  color: var(--kontur-2); border: 1px dashed var(--derz-koyu); border-radius: var(--r); padding: 0.15rem 0.5rem; }
+.kilimim .yan { display: grid; gap: 1.1rem; max-width: 40rem; }
+.kilimim .ozet { font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.5; }
+
+/* Kaynak ve alt bilgi */
+.kaynaklar { display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz); border-radius: calc(var(--r) + 2px); }
+@media (min-width: 56rem) { .kaynaklar { grid-template-columns: repeat(3, 1fr); } }
+.kaynaklar > div { background: var(--karo); padding: 1.3rem 1.3rem 1.4rem; display: grid; gap: 0.45rem; align-content: start; }
+.kaynaklar h3 { font-size: 1.2rem; }
+.kaynaklar p { color: var(--kontur-2); font-size: 0.98rem; }
+.alt { margin-top: clamp(4rem, 3rem + 4vw, 7rem); background: var(--yesil); color: #EAF3EC; }
+.alt .bordur { background: var(--yesil); color: color-mix(in oklab, #fff 22%, var(--yesil)); border-color: transparent; }
+.alt .icerik { display: grid; gap: 2rem 3rem; padding-block: 2.75rem 3rem; }
+@media (min-width: 56rem) { .alt .icerik { grid-template-columns: 1.3fr 1fr 1fr; } }
+.alt h2 { font-size: 1.25rem; margin-bottom: 0.6rem; color: #fff; }
+.alt p, .alt li { font-size: 0.98rem; line-height: 1.6; }
+.alt ul { list-style: none; margin: 0; padding: 0; }
+.alt a { color: #fff; }
+.alt .kucuk { color: #C9DDCD; font-size: 0.85rem; grid-column: 1 / -1; border-top: 1px solid color-mix(in oklab, #fff 18%, var(--yesil));
+  padding-top: 1.25rem; }
+:root[data-theme="dark"] .alt, :root:not([data-theme="light"]) .alt { color: #EAF3EC; }
+
+/* ——— Madde sayfası ——— */
+.yol { font-size: 0.92rem; color: var(--kontur-2); padding-top: 1.5rem; }
+.yol ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.yol li + li::before { content: "/"; margin-right: 0.35rem; color: var(--derz-koyu); }
+.yol a { color: var(--kontur-2); }
+/* Madde başı: telefonda karo + Arapça ad bir satırda, Türkçe ad altta; geniş ekranda üçü tek satır (serlevha). */
+.madde-bas { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "madalyon ar" "baslik baslik";
+  gap: 1rem 1.25rem; align-items: center; padding-block: 1.25rem 2.25rem; }
+@media (min-width: 56rem) {
+  .madde-bas { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "madalyon baslik ar"; gap: 1.5rem 2rem; }
+}
+.madde-bas .madalyon { grid-area: madalyon; width: clamp(4.25rem, 3.5rem + 2.5vw, 6rem); aspect-ratio: 1; border-radius: var(--r); }
+.madde-bas .madalyon svg { width: 72%; height: 72%; stroke-width: 2.5; }
+.madde-bas .baslik-blok { grid-area: baslik; min-width: 0; }
+.madde-bas .ar-ad { grid-area: ar; justify-self: end; font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.5rem); line-height: 1.6;
+  color: var(--yesil-bag); }
+.madde-bas h1 { font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.25rem); letter-spacing: -0.025em; font-weight: 800; line-height: 1; }
+.madde-bas .bilgi { margin-top: 0.9rem; color: var(--kontur-2); font-size: 1.05rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.madde-duzen { display: grid; gap: 2.5rem 3.5rem; align-items: start; }
+@media (min-width: 64rem) { .madde-duzen { grid-template-columns: minmax(0, 1fr) 22rem; } }
+.yan-panel { display: grid; gap: 1.25rem; }
+@media (min-width: 64rem) { .yan-panel { position: sticky; top: 1.5rem; } }
+
+/* Çalar: âyet karoları çalınan âyeti sırlar. */
+.calar { background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1.1rem; display: grid; gap: 0.9rem; }
+.calar .bas { display: flex; gap: 0.9rem; align-items: center; }
+.calar .cal { width: 3.5rem; height: 3.5rem; flex: none; border-radius: var(--r); background: var(--yesil); color: #fff; border: 0;
+  display: grid; place-items: center; cursor: pointer; }
+.calar .cal:hover { background: var(--yesil-2); }
+.calar .cal .ikon { width: 1.6rem; height: 1.6rem; stroke-width: 2.4; }
+.calar .baslik { font-weight: 750; line-height: 1.3; }
+.calar .alt-baslik { color: var(--kontur-2); font-size: 0.88rem; }
+.ayet-karolari { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: var(--derz); padding: 2px; border-radius: 2px; }
+.ayet-karolari button { aspect-ratio: 1; border: 0; background: var(--karo); color: var(--kontur-2); font-weight: 750; font-size: 0.85rem;
+  cursor: pointer; border-radius: 1px; font-variant-numeric: tabular-nums; position: relative; overflow: hidden; isolation: isolate; }
+.ayet-karolari button::after { content: ""; position: absolute; inset: 0; background: var(--yesil); z-index: -1;
+  clip-path: circle(0% at 50% 50%); transition: clip-path 420ms var(--yayil); }
+.ayet-karolari button[aria-current="true"] { color: #fff; }
+.ayet-karolari button[aria-current="true"]::after { clip-path: circle(80% at 50% 50%); }
+.ayet-karolari button.bitti { background: var(--yesil-soluk); color: var(--kontur); }
+.secimler { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.secim { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.5rem; padding: 0.3rem 0.8rem; border: 1px solid var(--derz-koyu);
+  border-radius: var(--r); background: var(--karo); font-weight: 650; font-size: 0.92rem; cursor: pointer; }
+.secim[aria-pressed="true"] { background: var(--yesil-soluk); border-color: var(--yesil-bag); color: var(--kontur); }
+.secim .ikon { width: 1.05rem; height: 1.05rem; }
+
+/* Metin: dört ses — Kur'an (Ulu Nesih), okunuş (italik), anlam (düz), hocanın notu (çip). */
+.metin { display: grid; gap: 0; }
+.ayet-grubu:first-child { border-top: 1px solid var(--derz); }
+.ayet-grubu { display: grid; gap: 0.9rem; padding: 1.75rem 0; border-bottom: 1px solid var(--derz); }
+.ayet-grubu .ar { font-size: clamp(1.9rem, 1.35rem + 1.9vw, 2.6rem); line-height: 2.05; text-align: right; color: var(--kontur); }
+.ayet-grubu .ar .no { font-size: 0.9em; color: var(--yesil-bag); }
+.okunuslar { display: grid; gap: 0.2rem; }
+.okunus { font-style: italic; font-size: 1.12rem; line-height: 1.55; color: var(--kontur); }
+.okunus .no { font-style: normal; font-weight: 700; color: var(--kontur-2); font-size: 0.82rem; margin-right: 0.45rem;
+  font-variant-numeric: tabular-nums; }
+.meal { font-size: 1.12rem; line-height: 1.6; max-width: 42em; }
+.meal .no { font-weight: 750; color: var(--yesil-bag); margin-right: 0.4rem; font-variant-numeric: tabular-nums; }
+.metin[data-okunus="gizli"] .okunuslar { display: none; }
+.kaynak-satiri { color: var(--kontur-2); font-size: 0.9rem; line-height: 1.5; margin-top: 1rem; max-width: 45em; }
+
+/* Durum karosu (öğrenci görünümü): basamak işareti + zaman yazıyla. */
+.durum-karo { background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1rem 1.1rem; display: grid; gap: 0.5rem; }
+.durum-karo .ust-satir { display: flex; justify-content: space-between; gap: 0.75rem; align-items: center; }
+.durum-karo .kim { font-weight: 750; }
+.durum-karo .basamak { display: flex; gap: 0.6rem; align-items: center; font-weight: 750; font-size: 1.1rem; }
+.durum-karo .basamak svg { width: 2rem; height: 2rem; }
+.durum-karo .zaman { color: var(--kontur-2); font-size: 0.95rem; }
+.ez-isaret { width: 1.4rem; height: 1.4rem; flex: none; }
+.ez-isaret.b0 { color: color-mix(in oklab, var(--kontur-2) 70%, var(--karo)); }   /* Başlanmadı: kesikli, soluk ama seçilir */
+.ez-isaret.b1 { color: var(--kontur-2); }
+.ez-isaret.b2 { color: var(--firuze); }
+.ez-isaret.b3 { color: var(--yesil-bag); }
+.ez-isaret.b4 { color: var(--altin); }
+.ornek { display: inline-flex; font-size: 0.75rem; font-weight: 700; color: var(--kontur-2); border: 1px dashed var(--derz-koyu);
+  border-radius: var(--r); padding: 0.05rem 0.45rem; }
+
+/* Namazda nerede okunur */
+.namazda { background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1.25rem; display: grid; gap: 1rem; }
+.namazda h2 { font-size: 1.2rem; }
+.durus-sirasi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--derz); padding: 2px; border-radius: 2px; }
+.durus-sirasi figure { margin: 0; background: var(--karo); display: grid; justify-items: center; gap: 0.3rem; padding: 0.6rem 0.25rem 0.5rem;
+  color: var(--kontur-2); }
+.durus-sirasi figure .cizim { width: 100%; max-width: 4.2rem; opacity: 0.45; }
+.durus-sirasi figcaption { font-size: 0.82rem; font-weight: 650; }
+.durus-sirasi figure.burada { background: var(--yesil-soluk); color: var(--kontur); }
+.durus-sirasi figure.burada .cizim { opacity: 1; }
+.durus-sirasi figure.burada figcaption { font-weight: 800; }
+.namazda p { font-size: 1rem; line-height: 1.5; }
+
+.namazda .kaynak-satiri { margin-top: 0; }
+
+/* Çalışma yolları (Faz 2) */
+.calisma-bolumu { padding-top: 3.5rem; }
+.calisma-bolumu h2 { font-size: 1.6rem; margin-bottom: 1.25rem; }
+.calisma { display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz); border-radius: calc(var(--r) + 2px); }
+@media (min-width: 40rem) { .calisma { grid-template-columns: repeat(3, 1fr); } }
+.calisma > div { background: var(--karo); padding: 1.1rem 1.1rem 1.2rem; display: grid; gap: 0.35rem; align-content: start; }
+.calisma h3 { font-size: 1.2rem; display: flex; gap: 0.5rem; align-items: center; }
+.calisma p { color: var(--kontur-2); font-size: 0.95rem; }
+.calisma .yakinda { justify-self: start; font-size: 0.78rem; font-weight: 700; color: var(--kontur-2); background: var(--yesil-soluk);
+  border-radius: var(--r); padding: 0.1rem 0.5rem; }
+.komsu { display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz); border-radius: calc(var(--r) + 2px); margin-top: 2.5rem; }
+@media (min-width: 40rem) { .komsu { grid-template-columns: 1fr 1fr; } }
+.komsu a { background: var(--karo); padding: 1rem 1.2rem; text-decoration: none; color: var(--kontur); display: grid; gap: 0.15rem; }
+.komsu a:hover { background: var(--yesil-soluk); }
+.komsu a span { color: var(--kontur-2); font-size: 0.86rem; font-weight: 650; display: inline-flex; align-items: center;
+  gap: 0.35rem; }
+.komsu a span .ikon { width: 1rem; height: 1rem; }
+.komsu a b { font-size: 1.1rem; }
+.komsu a.sonraki { text-align: right; }
+.komsu a.sonraki span { justify-content: flex-end; }
+
+/* ——— Kilim (src/lib/ezber/kilim.ts): çini dünyasının jetonlarıyla ——— */
+:where(.ezber-kilim, .kilim-lejant) {
+  --kl-zemin-0: var(--karo); --kl-zemin-1: color-mix(in oklab, var(--yesil) 5%, var(--karo));
+  --kl-kenar: color-mix(in oklab, var(--yesil) 9%, var(--karo)); --kl-bordur: var(--yesil);
+  --kl-cizgi: color-mix(in oklab, var(--kontur) 32%, var(--karo)); --kl-cozgu: var(--derz-koyu);
+  --kl-b1: var(--kontur-2); --kl-b2: var(--firuze); --kl-b3: var(--yesil-bag); --kl-b4: var(--altin);
+  --kl-rozet: var(--firuze); --kl-muhur: var(--yesil-bag);   /* ödül, kazandıran basamağın rengini taşır: rozet ≥ Hocaya okudu */
+}
+svg.ezber-kilim { display: block; width: 100%; height: auto; max-width: 30rem; margin-inline: auto; }
+.ezber-kilim .kl-sacak { fill: none; stroke: var(--kl-cizgi); stroke-width: 1.4; stroke-linecap: round; }
+.ezber-kilim .kl-kenar-zemin { fill: var(--kl-kenar); }
+.ezber-kilim :is(.kl-bordur, .kl-kose) { fill: var(--kl-bordur); }
+.ezber-kilim .kl-kenar-oge-zemin { fill: var(--kl-zemin-0); stroke: var(--kl-cizgi); stroke-width: 1; }
+.ezber-kilim .kl-zemin-0 { fill: var(--kl-zemin-0); }
+.ezber-kilim .kl-zemin-1 { fill: var(--kl-zemin-1); }
+.ezber-kilim .kl-ayrac { fill: none; stroke: var(--kl-cizgi); stroke-width: 1; stroke-dasharray: 2 3; }
+.ezber-kilim .kl-ara { fill: var(--kl-cozgu); }
+.ezber-kilim .kl-cerceve { fill: none; stroke: var(--kl-cizgi); stroke-width: 1.5; }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-m { fill: none; stroke: none; stroke-linejoin: miter; }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-b0 { stroke: var(--kl-cozgu); stroke-width: 5; stroke-dasharray: 7 9; }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-b1 { stroke: var(--kl-b1); stroke-width: 8; }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-b2 { fill: var(--kl-b2); fill-opacity: 0.3; stroke: var(--kl-b2); stroke-width: 8; }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-b3 { fill: var(--kl-b3); }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-b4 { fill: var(--kl-b4); }
+:where(.ezber-kilim, .kilim-lejant, .basamaklar) .kl-b4-cerceve { fill: none; stroke: var(--kl-b4); stroke-width: 1.5; }
+:where(.ezber-kilim, .kilim-lejant) .kl-odul { fill: none; stroke: var(--kl-cozgu); stroke-width: 5; stroke-dasharray: 7 9; }
+:where(.ezber-kilim, .kilim-lejant) .kl-rozet.kazanildi { fill: var(--kl-rozet); stroke: none; }
+:where(.ezber-kilim, .kilim-lejant) .kl-muhur.kazanildi { fill: var(--kl-muhur); stroke: none; }
+:where(.ezber-kilim, .kilim-lejant) .kl-altin { fill: none; stroke: var(--kl-b4); stroke-width: 3; }
+.basamaklar { --kl-cozgu: var(--derz-koyu); --kl-b1: var(--kontur-2); --kl-b2: var(--firuze); --kl-b3: var(--yesil-bag); --kl-b4: var(--altin); }
+.kilim-lejant { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; font-size: 0.95rem; }
+.kilim-lejant li { display: flex; align-items: center; gap: 0.6rem; margin: 0; }
+.kilim-lejant .kl-lejant-isaret { flex: none; width: 1.8rem; height: 1.8rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}
+@media (forced-colors: active) {
+  .pano .karo.madde, .rozet-karo, .madde-bas .madalyon { forced-color-adjust: none; background: Canvas; color: Canvas;
+    outline: 1px solid CanvasText; outline-offset: -1px; }
+  :is(.pano .karo.madde, .rozet-karo, .madde-bas .madalyon) svg { stroke: CanvasText; }
+  :is(.pano .karo.madde, .rozet-karo)::after { background: Highlight; }
+  .maddeler li { outline-color: CanvasText; }
+}

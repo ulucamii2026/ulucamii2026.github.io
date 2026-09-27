@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fâtiha Sûresi — Ezber Kilimi</title>
+<meta name="description" content="Fâtiha Sûresi: Diyanet metni, meâli, okunuşu ve tilaveti; namazda nerede okunduğu.">
+<link rel="stylesheet" href="cini.css">
+<style>
+  .madde-duzen { grid-template-areas: "ust" "metin" "alt"; }
+  .madde-duzen .yan-ust { grid-area: ust; }
+  .madde-duzen .metin-alani { grid-area: metin; min-width: 0; }
+  .madde-duzen .yan-alt { grid-area: alt; }
+  @media (min-width: 64rem) {
+    .madde-duzen { grid-template-areas: "metin ust" "metin alt"; grid-template-rows: auto 1fr; }
+    .madde-duzen .yan-ust { position: sticky; top: 1.5rem; }
+  }
+  .metin-ust { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 1rem; align-items: center; margin-bottom: 0.25rem; }
+  .metin-ust h2 { font-size: 1.35rem; }
+</style>
+</head>
+<body>
+{{MOTIF_SEMBOLLERI}}
+<a class="gorunmez" href="#ana">İçeriğe geç</a>
+{{UST}}
+<main id="ana">
+  <div class="icerik">
+    <nav class="yol" aria-label="Bulunduğunuz yer">
+      <ol><li><a href="giris.html">Ezber Kilimi</a></li><li><a href="giris.html#serit-3">3. şerit: Kıyam, rükû ve secde</a></li><li aria-current="page">Fâtiha Sûresi</li></ol>
+    </nav>
+    <header class="madde-bas">
+      <div class="madalyon" aria-hidden="true"><svg viewBox="0 0 120 120"><use href="#mt-mihrap"/></svg></div>
+      <div class="baslik-blok">
+        <h1>Fâtiha Sûresi</h1>
+        <p class="bilgi"><span>Sûre · {{AYET_SAYISI}} âyet</span><span>Mushafın ilk sûresi</span><span>Her rekâtta, kıyamda okunur</span></p>
+      </div>
+      <p class="ar-ad" lang="ar">{{AR_AD}}</p>
+    </header>
+
+    <div class="madde-duzen">
+      <div class="yan-panel yan-ust">
+        <div class="calar" data-calar>
+          <div class="bas">
+            <button class="cal" type="button" aria-label="Tilaveti dinle" data-cal>{{IKON_CAL}}</button>
+            <div><div class="baslik">Diyanet tilaveti</div><div class="alt-baslik">Âyet âyet · her âyet bir karo</div></div>
+          </div>
+          <div class="ayet-karolari" role="group" aria-label="Âyet seç">
+{{AYET_KAROLARI}}
+          </div>
+          <div class="secimler">
+            <button class="secim" type="button" aria-pressed="true" data-tekrar>{{IKON:tekrar}} 3 kez tekrar</button>
+            <button class="secim" type="button" aria-pressed="false" data-yavas>Yavaş · 0,75×</button>
+          </div>
+        </div>
+        <div class="durum-karo">
+          <div class="ust-satir"><span class="kim">Deniz Örnek</span><span class="ornek">Örnek veri</span></div>
+          <div class="basamak">{{ISARET:2}}<span>Hocaya okudu</span></div>
+          <p class="zaman">17 Ekim’de hocaya okudu: «Çok güzel okudu». <b>Pekişme kontrolü 24 Ekim’de.</b></p>
+        </div>
+      </div>
+
+      <div class="metin-alani">
+        <div class="metin-ust">
+          <h2>Metin, okunuş ve meâl</h2>
+          <button class="secim" type="button" aria-pressed="true" data-okunus-dugme>{{IKON:goz}} Okunuşu göster</button>
+        </div>
+        <div class="metin" data-okunus="acik">
+{{AYETLER}}
+        </div>
+        <p class="kaynak-satiri">Arapça metin ve meâl: Diyanet İşleri Başkanlığı, <a href="{{KAYNAK_URL}}">kuran.diyanet.gov.tr</a> (Diyanet İşleri Başkanlığı Meali). Meâl, Diyanet’in gruplamasıyla verilir (1 · 2–4 · 5 · 6–7). Okunuş Türkçe usulüdür; Fransızca sayfada Fransızca usulüyle gösterilir.</p>
+
+        <section class="calisma-bolumu" aria-labelledby="calisma-baslik">
+          <h2 id="calisma-baslik">Nasıl çalışılır</h2>
+          <div class="calisma">
+            <div><h3>{{IKON:tekrar}} Dinle ve tekrarla</h3><p>Her âyeti üç kez dinle, sonra kendin söyle. İstersen yavaş çal.</p><span class="yakinda">Yakında</span></div>
+            <div><h3>{{IKON:goz}} Kademeli gizle</h3><p>Kelimeler adım adım silinir; ilk harfle hatırla. Son adım kendi sınavındır.</p><span class="yakinda">Yakında</span></div>
+            <div><h3>{{IKON:karo}} Sırala ve eşleştir</h3><p>Âyetleri doğru sıraya koy, anlamlarıyla eşleştir. Dokunarak ya da klavyeyle.</p><span class="yakinda">Yakında</span></div>
+          </div>
+        </section>
+
+        <nav class="komsu" aria-label="Aynı şeritte">
+          <a href="giris.html#m-d-subhaneke"><span>{{IKON:geri}} Önceki madde</span><b>Sübhâneke Duası</b></a>
+          <a class="sonraki" href="giris.html#m-s-ihlas"><span>Sonraki madde {{IKON:ok}}</span><b>İhlâs Sûresi</b></a>
+        </nav>
+      </div>
+
+      <div class="yan-panel yan-alt">
+        <section class="namazda" aria-labelledby="namazda-baslik">
+          <h2 id="namazda-baslik">Namazda nerede okunur</h2>
+          <div class="durus-sirasi">
+            <figure class="burada">{{CIZIM:durus-kiyam}}<figcaption>Kıyam</figcaption></figure>
+            <figure>{{CIZIM:durus-ruku}}<figcaption>Rükû</figcaption></figure>
+            <figure>{{CIZIM:durus-secde}}<figcaption>Secde</figcaption></figure>
+            <figure>{{CIZIM:durus-kade}}<figcaption>Oturuş</figcaption></figure>
+          </div>
+          <p>Namazın her rekâtında, ayakta (kıyamda) okunur; bitince «âmin» denir. İlk iki rekâtta ardından bir sûre ya da birkaç âyet eklenir.</p>
+          <p class="kaynak-satiri">Kaynak: Diyanet İlmihali I, «Namaz».</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+{{ALT}}
+<script>
+{{MADDE_JS}}
+</script>
+</body>
+</html>

@@ -26,6 +26,19 @@ cikti/
 *.png.tmp
 
 
+# impeccable çalışma durumu (yapım aşaması, inceleme ekranları, makineye özel ayar); yüzey özetleri
+# (egitim/.impeccable/surfaces/) depoda kalır.
+.impeccable/config.local.json
+.impeccable/build/
+.impeccable/review/
+.impeccable/mocks/
+egitim/.impeccable/config.local.json
+egitim/.impeccable/hook.cache.json
+.impeccable/hook.cache.json
+egitim/.impeccable/build/
+egitim/.impeccable/review/
+egitim/.impeccable/mocks/
+
 # Hero görsellerinin sıkıştırma öncesi kopyaları (scripts/hero-gorsel-uret.mjs).
 # Depoya girmez: 2,4 MB'lık ikinci kopya hem Pages yayınını şişirir hem gereksizdir —
 # asılları git geçmişinde durur (bkz. betiğin başlığındaki geri getirme komutu).

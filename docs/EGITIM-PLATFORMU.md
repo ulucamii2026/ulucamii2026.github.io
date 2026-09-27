@@ -16,7 +16,7 @@ Ana plan §3.1 ve §4: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2
 | Giriş | Platformda `authDomain: 'egitim.ulucamii.be'` (Hosting `/__/auth` yardımcısı; Google girişi kendi alan adımızda, Safari/iPhone uyumlu). Ana site eski ayarla sürer |
 | Güvenlik başlıkları | Hosting'de CSP, HSTS, `X-Content-Type-Options` |
 | Diller | tr, fr, en, nl, de — ana sitenin `yollar` + `Record<Dil, …>` düzeni ve [DIL-NL-DE.md](DIL-NL-DE.md) kuralları |
-| Tasarım | Yepyeni ayrı tasarım: modern ve ferah, çizimlerle sıcak; kurs yeşili `#134420` + altın; Arapça Türk mushaf hattına yakın bir fontla (lisans doğrulanır; yedek Amiri Quran) |
+| Tasarım | Yön «Çini Panosu» (Faz 1e, 27 Eylül 2026): beyaz sırlı karo, derz çizgisi, kurs yeşili `#134420` kuşak; firuze ve altın yalnız ezber basamaklarında; gölge yok, yalnız vektör (Codex çizimleri). Arapça «Ulu Nesih» (Scheherazade New 4.500 alt kümesi, Türk usulü yazım), Latin Atkinson Hyperlegible Next. Tasarım sistemi [`egitim/DESIGN.md`](../egitim/DESIGN.md); karar, taslaklar ve Rıdvan'ın seçenekleri: [Faz 1e belgesi](superpowers/plans/2026-09-27-ezber-kilimi-faz-1e-tasarim.md) |
 
 ## Kademeli taşıma (Faz 4, Ocak–Mart 2027; her bölüm ayrı yayın)
 

@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T00:00:00+02:00",
+  "title": "Design System: Ezber Kilimi — Çini Panosu",
+  "extensions": {
+    "colorMeta": {
+      "astar": { "role": "neutral", "displayName": "Beyaz Astar", "canonical": "oklch(96.9% 0.007 132)", "dark": "#08130D", "tonalRamp": ["#0A0C09", "#232521", "#3E413D", "#5C5E5A", "#7E817D", "#A3A6A1", "#C9CBC7", "#EDF0EB"] },
+      "karo": { "role": "neutral", "displayName": "Sırlı Karo Yüzü", "canonical": "oklch(100% 0 0)", "dark": "#0F1D16", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#808080", "#A4A4A4", "#CACACA", "#EEEEEE"] },
+      "derz": { "role": "neutral", "displayName": "Derz", "canonical": "oklch(88.8% 0.015 151)", "dark": "#1F3227", "tonalRamp": ["#070D08", "#1F2620", "#3A423C", "#586059", "#7A837C", "#9EA7A0", "#C4CEC6", "#E7F2E9"] },
+      "derz-koyu": { "role": "neutral", "displayName": "Koyu Derz", "canonical": "oklch(80.8% 0.024 153)", "dark": "#2D463A", "tonalRamp": ["#040E07", "#1B281F", "#36443A", "#546257", "#76857A", "#9AA99E", "#BFCFC3", "#E3F4E7"] },
+      "kontur": { "role": "neutral", "displayName": "Mürekkep", "canonical": "oklch(23.1% 0.034 158)", "dark": "#E5EEE7", "tonalRamp": ["#000F06", "#15291E", "#304539", "#4E6456", "#708779", "#94AB9D", "#B9D2C2", "#DDF6E6"] },
+      "kontur-2": { "role": "neutral", "displayName": "İkincil Mürekkep", "canonical": "oklch(45.0% 0.032 156)", "dark": "#A3B7A8", "tonalRamp": ["#010F06", "#16291E", "#324539", "#4F6356", "#718678", "#95AB9C", "#BAD1C2", "#DEF5E6"] },
+      "yesil": { "role": "primary", "displayName": "Kurs Yeşili Sır", "canonical": "oklch(34.4% 0.081 148)", "dark": "#1E5B34", "tonalRamp": ["#001300", "#002E0B", "#1B4B27", "#3B6A44", "#5D8E65", "#81B389", "#A6DAAE", "#CAFED1"] },
+      "yesil-2": { "role": "primary", "displayName": "Sırın Parlak Yüzü", "canonical": "oklch(41.6% 0.094 150)", "dark": "#277143", "tonalRamp": ["#001400", "#002F07", "#0A4D24", "#306C41", "#549063", "#78B686", "#9EDCAB", "#C1FFCE"] },
+      "yesil-soluk": { "role": "neutral", "displayName": "Soluk Yeşil", "canonical": "oklch(93.8% 0.017 151)", "dark": "#12261A", "tonalRamp": ["#060D08", "#1E2620", "#3A423B", "#576059", "#79837B", "#9DA89F", "#C3CEC5", "#E7F2E9"] },
+      "yesil-bag": { "role": "primary", "displayName": "Bağlantı Yeşili", "canonical": "oklch(42.9% 0.096 151)", "dark": "#93D3A7", "tonalRamp": ["#001400", "#003007", "#054D23", "#2D6D41", "#529162", "#76B686", "#9CDDAB", "#BFFFCE"] },
+      "sir-motif": { "role": "neutral", "displayName": "Sır Beyazı", "canonical": "oklch(98.0% 0.007 151)", "dark": "#D9E7DC", "tonalRamp": ["#090C0A", "#212522", "#3D413E", "#5B5F5B", "#7D817E", "#A1A6A2", "#C7CCC8", "#EBF0EC"] },
+      "motif": { "role": "primary", "displayName": "Motif Dolgusu", "canonical": "color-mix(in oklab, var(--yesil-bag) 58%, var(--karo))", "tonalRamp": ["#001004", "#102A1A", "#2C4735", "#496552", "#6B8974", "#8FAD98", "#B5D4BE", "#D8F8E1"] },
+      "kenar-zemin": { "role": "neutral", "displayName": "Kenar Suyu Zemini", "canonical": "color-mix(in oklab, var(--yesil) 14%, var(--karo))", "tonalRamp": ["#070D08", "#1F2621", "#3B423C", "#58605A", "#7B837C", "#9FA7A1", "#C4CDC6", "#E8F1EA"] },
+      "kusak": { "role": "primary", "displayName": "Kuşak", "canonical": "oklch(34.4% 0.081 148)", "dark": "#1E5B34", "tonalRamp": ["#001300", "#002E0B", "#1B4B27", "#3B6A44", "#5D8E65", "#81B389", "#A6DAAE", "#CAFED1"] },
+      "kusak-yazi": { "role": "neutral", "displayName": "Kuşak Yazısı", "canonical": "oklch(95.2% 0.013 152)", "dark": "#E9F2EB", "tonalRamp": ["#070D09", "#1F2621", "#3B423C", "#58605A", "#7B837C", "#9FA7A1", "#C4CDC6", "#E8F1EA"] },
+      "firuze": { "role": "secondary", "displayName": "Firuze Boya (yalnız basamak)", "canonical": "oklch(63.7% 0.098 188)", "dark": "#41B8AF", "tonalRamp": ["#001513", "#00312E", "#004F4A", "#006F69", "#1C938C", "#4EB8B1", "#77DFD7", "#9CFFFC"] },
+      "firuze-yazi": { "role": "secondary", "displayName": "Firuze Yazı", "canonical": "oklch(46.1% 0.077 187)", "dark": "#7FD6CE", "tonalRamp": ["#001311", "#002F2B", "#004C47", "#176B65", "#428F88", "#68B4AD", "#8EDBD3", "#B2FFF8"] },
+      "altin": { "role": "tertiary", "displayName": "Altın Bezeme (yalnız basamak)", "canonical": "oklch(72.9% 0.126 87)", "dark": "#D8B452", "tonalRamp": ["#1F0100", "#3C1B00", "#5A3900", "#7A5700", "#9E7B0B", "#C49F41", "#ECC669", "#FFEA8D"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Yalnız giriş başlığı «Ezber Kilimi»; tavan 4.25rem = 72,25 px (kök 17 px)." },
+      "display-madde": { "displayName": "Display — madde", "purpose": "Madde sayfası serlevhasındaki Türkçe ad." },
+      "headline": { "displayName": "Headline", "purpose": "Bölüm başlıkları." },
+      "title": { "displayName": "Title", "purpose": "Kart, basamak ve şerit başlıkları (1.2–1.45rem)." },
+      "lead": { "displayName": "Lead", "purpose": "Vaat cümlesi ve bölüm açıklaması; en çok 22–40em." },
+      "body": { "displayName": "Body", "purpose": "Gövde; kök 1.0625rem = 17 px; satır ölçüsü em ile, asla ch ile." },
+      "label": { "displayName": "Label", "purpose": "Üst bilgi, dil kısaltmaları, etiketler, dipnot (0.82–0.95rem, 650–750)." },
+      "okunus": { "displayName": "Okunuş", "purpose": "Transliterasyon, Atkinson italik." },
+      "meal": { "displayName": "Meâl", "purpose": "Diyanet meâli, Atkinson düz, en çok 42em." },
+      "kuran": { "displayName": "Kur'an", "purpose": "Âyet metni, Ulu Nesih, sağa hizalı, cv62 (Türk usulü şeddeli esre)." },
+      "kuran-serlevha": { "displayName": "Kur'an — serlevha", "purpose": "Madde başındaki Arapça ad, bağlantı yeşili." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "yayil", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Sırın yayılışı: üstel yavaşlama; bütün sır ve açılır-kapanır geçişleri." },
+      { "name": "sir-yayilma", "value": "clip-path: circle(0% → 145% at var(--x) var(--y)) 420ms var(--yayil)", "purpose": "İmza: madde karosunda kurs yeşili sır imleç noktasından yayılır, motif aynı anda sir-motif'e döner." },
+      { "name": "sir-hedef", "value": "animation: sir-yayil 900ms var(--yayil) 150ms both", "purpose": "Bağlantıyla gelinen (#m-…, :target) liste maddesinde sır rozet karodan yayılır." },
+      { "name": "renk-gecisi", "value": "background-color 160ms ease, color 160ms ease", "purpose": "Düğme üzerine gelme." },
+      { "name": "azaltilmis-hareket", "value": "transition-duration: 1ms; animation-duration: 1ms", "purpose": "prefers-reduced-motion: son hâl anında." }
+    ],
+    "breakpoints": [
+      { "name": "telefon-dar", "value": "30rem" },
+      { "name": "menu-tek-satir", "value": "40rem" },
+      { "name": "tablet", "value": "48rem" },
+      { "name": "genis-liste", "value": "56rem" },
+      { "name": "serit-iki-sutun", "value": "60rem" },
+      { "name": "giris-iki-sutun", "value": "64rem" },
+      { "name": "basamak-dort-sutun", "value": "72rem" }
+    ],
+    "focus": { "value": "outline: 3px solid var(--kontur); outline-offset: 3px", "purpose": "Her etkileşimli öğede aynı odak halkası; pano karosunda offset 1px." },
+    "pano": {
+      "grid": "13 × 14; 12 sıra (7 şerit + Amme'nin 5 durağı), sıra etiketi sütunu, sırada en çok 10 madde, çevrede kenar suyu bordürü",
+      "karoBoyGenis": "clamp(1.4rem, min(3.6vw, (100svh - 16rem) / 14), 3rem)",
+      "karoBoyDar": "clamp(1.1rem, (100vw - 2rem - 28px) / 13, 2.8rem)",
+      "cerceveGenislik": "calc(13 * var(--karo-boy) + 28px)",
+      "kenarSuyuDuzeni": "13 madde saat yönünde: üst 4, sağ 3, alt 3 sağdan sola, sol 3 aşağıdan yukarı; arada panoya dönük koçboynuzu, köşelerde kenar-kose (src/lib/ezber/kilim.ts ile aynı)",
+      "tahrir": "motif dolgusu var(--motif), stroke var(--kontur), stroke-width 4 (120 birimlik viewBox)"
+    },
+    "notes": [
+      "Taslaklar prototiptir; Faz 1f bunları egitim/ Astro uygulamasına taşır ve kaynak bu DESIGN.md'dir.",
+      "Bilinen ayrılık: ulucamii.be üretim veli portalı kilimi (src/styles/ezber-kilim.css) hâlâ Kilim Kartografyası paletini kullanır (rozet aşı boyası); Faz 1f'de çini jetonlarına geçer (rozet firuze).",
+      "--altin-yazi (#765A0C, koyu #E6C66C) cini.css'te tanımlı ama hiçbir yüzeyde kullanılmıyor; sisteme alınmadı."
+    ]
+  },
+  "components": [
+    {
+      "name": "Birincil düğme",
+      "kind": "button",
+      "refersTo": "dugme-birincil",
+      "description": "Sayfadaki tek ana eylem («Fâtiha ile başla»); kurs yeşili, 3 px köşe.",
+      "html": "<a class=\"ds-dugme ds-birincil\" href=\"#\">Fâtiha ile başla <svg class=\"ds-ikon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-dugme { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 3.25rem; padding: 0.75rem 1.35rem; border-radius: var(--r, 3px); font-family: var(--font); font-weight: 750; font-size: 1.06rem; text-decoration: none; border: 2px solid var(--yesil, #134420); cursor: pointer; transition: background-color 160ms ease, color 160ms ease; } .ds-birincil { background: var(--yesil, #134420); color: #fff; } .ds-birincil:hover { background: var(--yesil-2, #1C5A30); border-color: var(--yesil-2, #1C5A30); } .ds-dugme:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: 3px; } .ds-ikon { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "İkincil düğme",
+      "kind": "button",
+      "refersTo": "dugme-ikincil",
+      "description": "Yan eylem («Şeritleri gez», pekişmiş öğrencide «Dinle»); karo zemin, mürekkep kenar.",
+      "html": "<a class=\"ds-dugme2\" href=\"#\">Şeritleri gez</a>",
+      "css": ".ds-dugme2 { display: inline-flex; align-items: center; min-height: 3.25rem; padding: 0.75rem 1.35rem; border-radius: var(--r, 3px); font-family: var(--font); font-weight: 750; font-size: 1.06rem; text-decoration: none; background: var(--karo, #fff); color: var(--kontur, #0E2217); border: 2px solid var(--kontur, #0E2217); transition: background-color 160ms ease; } .ds-dugme2:hover { background: var(--yesil-soluk, #E3EEE5); } .ds-dugme2:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: 3px; }"
+    },
+    {
+      "name": "Seçim / not çipi",
+      "kind": "chip",
+      "refersTo": "cip",
+      "description": "Aç-kapa seçim («3 kez tekrar») ve hocanın veliye not çipi; basılıyken soluk yeşil.",
+      "html": "<div class=\"ds-cipler\"><button class=\"ds-cip\" aria-pressed=\"true\">Akıcı</button><button class=\"ds-cip\" aria-pressed=\"false\">Mahreç</button><button class=\"ds-cip\" aria-pressed=\"false\">Med</button></div>",
+      "css": ".ds-cipler { display: flex; flex-wrap: wrap; gap: 0.4rem; } .ds-cip { min-height: 2.6rem; padding: 0 0.85rem; border: 1px solid var(--derz-koyu, #B5C5B9); border-radius: var(--r, 3px); background: var(--karo, #fff); color: var(--kontur, #0E2217); font-family: var(--font); font-weight: 650; font-size: 0.93rem; cursor: pointer; } .ds-cip:hover { background: var(--yesil-soluk, #E3EEE5); } .ds-cip[aria-pressed=\"true\"] { background: var(--yesil-soluk, #E3EEE5); border-color: var(--yesil-bag, #1D5E33); box-shadow: inset 0 0 0 1px var(--yesil-bag, #1D5E33); } .ds-cip:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: 3px; }"
+    },
+    {
+      "name": "Dil seçici",
+      "kind": "nav",
+      "refersTo": "dil-secici-etkin",
+      "description": "Derzle ayrılmış karo dizisi; etkin dil kurs yeşili.",
+      "html": "<nav class=\"ds-diller\" aria-label=\"Dil\"><a href=\"#\" aria-current=\"true\">TR</a><a href=\"#\">FR</a><a href=\"#\">EN</a><a href=\"#\">NL</a><a href=\"#\">DE</a></nav>",
+      "css": ".ds-diller { display: inline-grid; grid-auto-flow: column; gap: 1px; background: var(--derz, #D3DDD5); border: 1px solid var(--derz, #D3DDD5); border-radius: var(--r, 3px); overflow: hidden; } .ds-diller a { display: grid; place-items: center; min-width: 2.6rem; min-height: 2.5rem; padding: 0 0.4rem; background: var(--karo, #fff); color: var(--kontur, #0E2217); text-decoration: none; font-family: var(--font); font-weight: 700; font-size: 0.84rem; letter-spacing: 0.04em; } .ds-diller a[aria-current=\"true\"] { background: var(--yesil, #134420); color: #fff; } .ds-diller a:not([aria-current]):hover { background: var(--yesil-soluk, #E3EEE5); } .ds-diller a:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: -3px; }"
+    },
+    {
+      "name": "Çini panosu: kuşak + madde karoları",
+      "kind": "custom",
+      "refersTo": "karo-madde",
+      "description": "İmza: beyaz sırlı karo, tahrirli motif; üzerine gelince kurs yeşili sır yayılır, kuşak karonun adını yazar.",
+      "html": "<figure class=\"ds-pano\"><div class=\"ds-kusak\"><b>Fâtiha Sûresi</b>&nbsp;· 3. şerit · sûre · sesli</div><div class=\"ds-karolar\"><a class=\"ds-karo\" href=\"#\" aria-label=\"Fâtiha Sûresi\"><svg viewBox=\"0 0 120 120\"><path fill-rule=\"evenodd\" d=\"M28 112 L28 64 L44 48 L60 32 L76 48 L92 64 L92 112 L112 112 L112 56 L96 40 L96 32 L80 32 L60 12 L40 32 L24 32 L24 40 L8 56 L8 112 Z M48 64 L60 76 L72 64 L60 52 Z\"/></svg></a><a class=\"ds-karo\" href=\"#\" aria-label=\"İhlâs Sûresi\"><svg viewBox=\"0 0 120 120\"><path fill-rule=\"evenodd\" d=\"M60 112 L112 60 L60 8 L8 60 Z M60 92 L28 60 L60 28 L92 60 Z M48 60 L60 72 L72 60 L60 48 Z\"/></svg></a><span class=\"ds-bos\"></span></div></figure>",
+      "css": ".ds-pano { margin: 0; display: grid; gap: 2px; padding: 2px; background: var(--derz, #D3DDD5); border-radius: 5px; width: max-content; } .ds-kusak { background: var(--kusak, #134420); color: var(--kusak-yazi, #E9F2EB); border-radius: 3px 3px 1px 1px; min-height: 3.65rem; padding: 0.55rem 0.9rem; display: flex; align-items: center; font-family: var(--font); font-size: 0.98rem; line-height: 1.3; } .ds-karolar { display: grid; grid-template-columns: repeat(3, 3rem); grid-auto-rows: 3rem; gap: 2px; } .ds-karo { position: relative; display: grid; place-items: center; border-radius: 1px; background: var(--karo, #fff); color: color-mix(in oklab, var(--yesil-bag, #1D5E33) 58%, var(--karo, #fff)); overflow: hidden; isolation: isolate; } .ds-karo svg { width: 72%; height: 72%; fill: currentColor; stroke: var(--kontur, #0E2217); stroke-width: 4; stroke-linejoin: round; position: relative; z-index: 1; transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-karo::after { content: \"\"; position: absolute; inset: 0; background: var(--yesil, #134420); clip-path: circle(0% at 50% 50%); transition: clip-path 420ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-karo:is(:hover, :focus-visible)::after { clip-path: circle(145% at 50% 50%); } .ds-karo:is(:hover, :focus-visible) svg { color: var(--sir-motif, #F5FAF6); } .ds-karo:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: 1px; z-index: 2; } .ds-bos { background: var(--astar, #F3F6F1); display: grid; place-items: center; } .ds-bos::before { content: \"\"; width: 18%; aspect-ratio: 1; background: var(--derz, #D3DDD5); transform: rotate(45deg); } @media (prefers-reduced-motion: reduce) { .ds-karo::after, .ds-karo svg { transition-duration: 1ms; } }"
+    },
+    {
+      "name": "Durum karosu (basamak + zaman)",
+      "kind": "card",
+      "refersTo": "kart",
+      "description": "Öğrencinin maddedeki basamağı biçimle ve renkle; zaman yazıyla.",
+      "html": "<div class=\"ds-durum\"><div class=\"ds-basamak\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M9 2H11V4H13V6H15V8H17V12H15V14H13V16H11V18H9V16H7V14H5V12H3V8H5V6H7V4H9Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M9 7H11V9H13V11H11V13H9V11H7V9H9Z\" fill=\"currentColor\"/></svg>Hocaya okudu</div><p class=\"ds-zaman\">17 Ekim’de hocaya okudu: «Çok güzel okudu». <b>Pekişme kontrolü 24 Ekim’de.</b></p></div>",
+      "css": ".ds-durum { background: var(--karo, #fff); border: 1px solid var(--derz, #D3DDD5); border-radius: var(--r, 3px); padding: 1rem 1.1rem; display: grid; gap: 0.5rem; font-family: var(--font); color: var(--kontur, #0E2217); max-width: 22rem; } .ds-basamak { display: flex; gap: 0.6rem; align-items: center; font-weight: 750; font-size: 1.1rem; } .ds-basamak svg { width: 2rem; height: 2rem; color: var(--firuze, #2E9E97); } .ds-zaman { margin: 0; color: var(--kontur-2, #475B4E); font-size: 0.95rem; }"
+    },
+    {
+      "name": "Hoca: kalite düğmeleri",
+      "kind": "custom",
+      "refersTo": "kalite-dugmesi",
+      "description": "Dinleme penceresinde üç büyük düğme; veliye gidecek yumuşak cümle düğmenin üstünde yazılı.",
+      "html": "<div class=\"ds-kaliteler\"><button class=\"ds-kalite ds-tam\"><span class=\"ds-kare\"></span><span><b>Tam</b><small>Veliye: «Çok güzel okudu»</small></span></button><button class=\"ds-kalite ds-az\"><span class=\"ds-kare\"></span><span><b>Az hatalı</b><small>Veliye: «Küçük düzeltmelerle geçti»</small></span></button><button class=\"ds-kalite ds-tekrar\"><span class=\"ds-kare\"></span><span><b>Tekrar gelsin</b><small>Veliye: «Bir kez daha çalışalım»</small></span></button></div>",
+      "css": ".ds-kaliteler { display: grid; gap: 2px; background: var(--derz, #D3DDD5); border: 2px solid var(--derz, #D3DDD5); border-radius: 5px; max-width: 24rem; } .ds-kalite { border: 0; background: var(--karo, #fff); color: var(--kontur, #0E2217); text-align: left; display: grid; grid-template-columns: 3.1rem minmax(0, 1fr); gap: 0.8rem; align-items: center; padding: 0.8rem 0.9rem; min-height: 4.6rem; cursor: pointer; font-family: var(--font); } .ds-kalite:hover { background: var(--yesil-soluk, #E3EEE5); } .ds-kalite:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: -3px; } .ds-kare { width: 3.1rem; height: 3.1rem; border-radius: 1px; } .ds-tam .ds-kare { background: var(--yesil, #134420); } .ds-az .ds-kare { background: var(--yesil-soluk, #E3EEE5); border: 2px solid var(--yesil-bag, #1D5E33); } .ds-tekrar .ds-kare { background: var(--karo, #fff); border: 2px dashed var(--kontur-2, #475B4E); } .ds-kalite b { display: block; font-size: 1.2rem; line-height: 1.2; } .ds-kalite small { display: block; color: var(--kontur-2, #475B4E); font-size: 0.86rem; margin-top: 0.15rem; }"
+    },
+    {
+      "name": "Hoca: sıradaki kayıt satırı",
+      "kind": "custom",
+      "refersTo": "kart",
+      "description": "Bağlantı yokken kaydedilmiş dinleme; akışta satır olarak, kesikli iç çerçeve ve «Geri al».",
+      "html": "<div class=\"ds-kayit ds-bekliyor\"><span>Sırada · 10.43 · Tam; deftere yazıldı</span><button class=\"ds-geri\">Geri al</button></div>",
+      "css": ".ds-kayit { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; font-family: var(--font); font-size: 0.9rem; color: var(--kontur, #0E2217); background: var(--yesil-soluk, #E3EEE5); padding: 0.55rem 0.85rem 0.55rem 1rem; max-width: 24rem; } .ds-bekliyor { background: var(--karo, #fff); outline: 1px dashed var(--kontur-2, #475B4E); outline-offset: -5px; } .ds-geri { flex: none; border: 1px solid var(--kontur, #0E2217); background: var(--karo, #fff); color: var(--kontur, #0E2217); border-radius: var(--r, 3px); min-height: 2.5rem; padding: 0 0.8rem; font: inherit; font-weight: 700; cursor: pointer; } .ds-geri:hover { background: var(--yesil-soluk, #E3EEE5); } .ds-geri:focus-visible { outline: 3px solid var(--kontur, #0E2217); outline-offset: 3px; }"
+    },
+    {
+      "name": "Örnek veri etiketi",
+      "kind": "chip",
+      "refersTo": "kart",
+      "description": "Uydurma verinin gösterildiği her yerde kesikli etiket.",
+      "html": "<span class=\"ds-ornek\">Örnek veri</span>",
+      "css": ".ds-ornek { display: inline-flex; font-family: var(--font); font-size: 0.75rem; font-weight: 700; color: var(--kontur-2, #475B4E); border: 1px dashed var(--derz-koyu, #B5C5B9); border-radius: var(--r, 3px); padding: 0.05rem 0.45rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Caminin duvarındaki çini panosu",
+    "overview": "Bütün ezber yolu tek bir çini panosudur: açık bir astar zeminde derzle ayrılmış beyaz sırlı karolar, her karoda koyu konturlu (tahrirli) bir kilim motifi, üstte kurs yeşili bir yazı kuşağı, çevrede kenar suyu bordürü. Müfredat kahramandır; arabesk süslemeli yeşil-altın kahraman görseli, cami silueti ve stok fotoğraf yoktur. Pano 12 sıradır (7 şerit + Amme'nin 5 durağı) ve her karo bir ezberdir; ziyaretçi yolu bir bakışta görür, karoya dokunup Diyanet metnine ve sesine geçer.\n\nYüzey ferah ve düzdür: gölge yok, geçiş rengi yok, derinlik yalnız 1–2 px derz çizgisinden ve 3 px karo köşesinden gelir. Renk tasarruflu kullanılır: zemin astar ve beyaz karo, yazı koyu mürekkep, kurs yeşili yalnız kuşakta, birincil düğmede ve yayılan sırda; firuze ve altın yalnız ezber basamaklarının sırrıdır. Tek bir hareket yasası vardır: her değişim dokunulan karodan yayılır. Zaman her yerde yazıyla söylenir, ilerleme çubuğu ya da seri sayacıyla değil.\n\nYazı iki aileyle konuşur: Latin metin okunabilirlik için tasarlanmış Atkinson Hyperlegible Next, Kur'an metni Türk mushaf usulüne yakın «Ulu Nesih». Dört ses dört biçimde durur: Kur'an, okunuş, anlam, hocanın notu. Çizimler yalnız vektördür; yayındaki tek piksel yoktur.",
+    "keyCharacteristics": [
+      "Tek pano, 13 × 14 ızgara: 12 sıra, sıra etiketi sütunu, sırada en çok 10 madde karosu, kilimle aynı düzende kenar suyu bordürü.",
+      "Beyaz sırlı karo + yeşil dolgulu, koyu konturlu motif (tahrir); boş hücre astara çekilir.",
+      "Kurs yeşili (#134420) kuşakta ve sırda; firuze ve altın yalnız basamakta.",
+      "Gölgesiz, geçişsiz; derinlik derzden (1–2 px) ve 3 px köşeden.",
+      "Tek hareket yasası: sır dokunulan noktadan yayılır (420 ms, üstel yavaşlama); azaltılmış harekette anında.",
+      "Kök yazı boyu 17 px; satır ölçüleri em ile.",
+      "Zaman yazıyla («Pekişme kontrolü 24 Ekim’de»); sıralama, puan, seri yok."
+    ],
+    "rules": [
+      { "name": "The Tek Dünya Rule (kilim ↔ çini köprüsü)", "body": "Kilim ile çini iki ayrı zanaat değil, tek dünyadır. Pano müfredattır: her karo bir ezber maddesidir. Kilim öğrencinin kendi yoludur: öğrenci okudukça o karonun motifi, panodakiyle aynı yerleşimde kendi kilimine dokunur (kenar suyu maddeleri iki yerde de saat yönünde: üst 4, sağ 3, alt 3 sağdan sola, sol 3 aşağıdan yukarı). Dört basamak, bir çini karonun dört olgunlaşma aşamasıdır: kontur çizilir (Çalışıyor) → firuzeyle boyanır (Hocaya okudu) → yeşille sırlanır (Pekişti) → altınla bezenir (Kalıcı). Yeni bir yüzey bu üç eşlemeden birini bozuyorsa dünyanın dışındadır.", "section": "overview" },
+      { "name": "The Müfredat Kahramandır Rule", "body": "İlk görünümde tek baskın öğe panodur; kahramanın yerine süsleme, fotoğraf ya da soyut görsel konmaz. Her ekranda bir baskın öğe ve bir sakin alan bulunur.", "section": "overview" },
+      { "name": "The Ayrılmış Sır Rule", "body": "Firuze ve altın yalnız basamak sırrıdır. Düğmede, başlıkta, süslemede, bağlantıda kullanılmaz. Kilim ödülleri kendilerini kazandıran basamağın rengini taşır: rozet (hepsi ≥ Hocaya okudu) firuze, mühür (hepsi ≥ Pekişti) yeşil, altın kenar (hepsi Kalıcı) altın.", "section": "colors" },
+      { "name": "The Yeşil Kuşakta ve Sırdadır Rule", "body": "Kurs yeşili dolu alan olarak yalnız kuşakta, birincil eylemde, etkin seçimde, alt bilgide ve yayılan sırda görünür. Madde karosunun dinlenme yüzü beyazdır; yeşil karoya ancak dokunulunca yayılır.", "section": "colors" },
+      { "name": "The Dört Ses Rule", "body": "Kur'an metni Ulu Nesih'le (büyük, sağa hizalı, satır aralığı ~2), okunuş Atkinson italikle, anlam Atkinson düzle yazılır; hocanın notu hoca ekranında çiple seçilir, öğrenci ve veli görünümünde durum karosunda tırnak içinde, alıntı olarak durur. Bir ses bir başkasının biçimini ödünç almaz. Arapça her zaman lang=\"ar\", dir=\"rtl\", font-feature-settings: \"cv62\" 1 (şeddeli esre harfin altında, Türk usulü), harf aralığı 0, ağırlık 400; Arapça yazı hiçbir zaman çizim olarak konmaz.", "section": "typography" },
+      { "name": "The On Yedi Piksel Rule", "body": "Kök yazı boyu --olcu = 1.0625rem, yani 1rem = 17 px her yerde. Satır ölçüleri em ile verilir, asla ch ile değil: Chromium ch'yi web yazı tipi yüklenmeden önce yedek yazı tipinden hesaplayıp güncellemedi (aynı sayfada 405 px ↔ 487 px ölçüldü).", "section": "typography" },
+      { "name": "The Derz Rule", "body": "Yüzeyleri gölge ayırmaz, derz ayırır: 1–2 px derz çizgisi ve 3 px köşe. Bulanık gölge, geçiş rengi ve yarı saydam cam yüzey bu dünyada yoktur. Tek istisna modal alt sayfanın arkasındaki mürekkep perdesidir (kontur %38).", "section": "elevation" }
+    ],
+    "dos": [
+      "Do her yeni yüzeyi derzli karo diliyle kur: karo zemini derz rengine 2 px aralıkla dizilir, köşe 3 px.",
+      "Do her değişimi dokunulan karodan yayılan sırla göster (420 ms, --yayil); azaltılmış harekette süre 1 ms, son hâl anında.",
+      "Do basamakları önce biçimle ayır (kontur, boya, dolu sır, altın + çerçeve), sonra renkle.",
+      "Do zamanı yazıyla söyle («En erken 7 gün sonra pekişir», «sınıf hedefi 28 Mart»).",
+      "Do kök yazı boyunu 17 px tut ve satır ölçülerini em ile ver.",
+      "Do Arapçayı Ulu Nesih, cv62, lang=\"ar\" ve dir=\"rtl\" ile yaz; okunuşu italik, meâli düz tut.",
+      "Do uydurma veriyi kesikli «Örnek veri» etiketiyle işaretle.",
+      "Do logoyu kimlik paketinden birebir SVG olarak kullan; koyu temada beyaz koruma alanına oturt.",
+      "Do bağlantı durumunu ve kayıt kuyruğunu akışın içinde bir satır olarak yaz."
+    ],
+    "donts": [
+      "Don't gölge, geçiş rengi ya da bulanık cam yüzey kullanma; derinlik yalnız derzden gelir.",
+      "Don't firuzeyi ya da altını basamak dışında (düğme, başlık, süsleme, bağlantı) kullanma.",
+      "Don't madde karosunu dinlenme hâlinde yeşile boyama; yeşil yalnız kuşakta ve yayılan sırdadır.",
+      "Don't ilerlemeyi ilerleme çubuğu, yüzde, seri, puan ya da sıralamayla gösterme.",
+      "Don't satır ölçüsünü ch ile verme.",
+      "Don't yeşil-altın arabesk kahraman, cami silueti ya da stok fotoğrafla kahraman kurma; müfredat kahramandır.",
+      "Don't piksel görsel koyma, logoyu yeniden çizme, Arapça yazıyı çizim olarak koyma; canlı figür yalnız yüzsüz küçük siluet.",
+      "Don't açılır bildirimle (toast) bağlantı ya da kayıt durumu söyleme."
+    ]
+  }
+}

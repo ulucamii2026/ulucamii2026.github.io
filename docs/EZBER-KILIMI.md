@@ -309,6 +309,18 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
 - Sahte lite SDK'da `orderBy`/`limit` ve okuma reddi için `__ezberHata` vardır.
 - **Sonraya kalan:** hoca öğrenci kartında kilim, A4 baskı, sertifika ve karne (ana plan §3, «kullanıldığı yerler»).
 
+## Tasarım yönü ve egitim taslakları (Faz 1e, 27 Eylül 2026)
+
+- **Yön «Çini Panosu»:** bütün ezber yolu tek çini panosudur (12 sıra + kilimdeki gibi kenar suyu bordürü); pano
+  müfredattır, kilim öğrencinin kendi yoludur, dört basamak bir çini karonun dört aşamasıdır. Tasarım sistemi
+  [`egitim/DESIGN.md`](../egitim/DESIGN.md); süreç, yazı tipleri ve seçenekler
+  [Faz 1e belgesinde](superpowers/plans/2026-09-27-ezber-kilimi-faz-1e-tasarim.md).
+- **Taslaklar:** `egitim/docs/taslaklar/{giris,madde,hoca}.html` (gerçek katalog, yıllık plan ve Diyanet metniyle
+  üretilir; üretim hattı `egitim/docs/taslaklar/uretim/`). Yayında değildir; Faz 1f'de Astro'ya taşınır.
+- **Ana sitedeki kilim:** veli portalındaki çizim (`src/styles/ezber-kilim.css`) şimdilik ana sitenin Kilim
+  Kartografyası paletindedir (rozet aşı boyası tonunda). egitim'e taşınınca çini jetonlarına geçer; orada ödül,
+  kazandıran basamağın rengini taşır (rozet firuze, mühür yeşil, altın kenar altın).
+
 ## Bağımsız inceleme ve yayın sırası (27 Eylül 2026)
 
 Faz 1'in bütün dalı (`main...ezber-kilimi`) yayından önce bağımsız bir gözden geçiricinin (ayrı model oturumu,
