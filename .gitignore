@@ -30,3 +30,6 @@ cikti/
 # Depoya girmez: 2,4 MB'lık ikinci kopya hem Pages yayınını şişirir hem gereksizdir —
 # asılları git geçmişinde durur (bkz. betiğin başlığındaki geri getirme komutu).
 public/media/hero/_kaynak/
+
+# Cami ekranı istemci paketi — scripts/ekran-derle.mjs üretir (build/dev öncesi); depoya girmez.
+public/ekran/
