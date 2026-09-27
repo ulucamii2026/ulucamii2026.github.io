@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku } from '../src/lib/ekran/secim.ts';
+import { bugunTarih } from '../src/lib/namaz.ts';
 
 process.env.TZ = 'America/New_York';
 
@@ -115,6 +116,28 @@ test('slayt turu: bu ekrana özel duyuru, ortak duyuru, günün ayeti, günün h
   }, 'kadin', '2026-09-27');
   assert.deepEqual(s.map((x) => x.tur + ':' + x.oge.id), ['duyuru:kadin', 'duyuru:ortak', 'ayet:a1', 'hadis:h1']);
   assert.equal(s[0].karakter, 'kadin'.length + 'metin'.length);
+});
+
+test('bugunTarih: Brüksel takvim günü sınırları (yaz/kış saati geçişleri dâhil)', () => {
+  assert.equal(bugunTarih(new Date('2026-10-24T22:30:00Z')), '2026-10-25');
+  assert.equal(bugunTarih(new Date('2026-10-25T22:30:00Z')), '2026-10-25');
+  assert.equal(bugunTarih(new Date('2027-03-27T23:30:00Z')), '2027-03-28');
+});
+
+test('bugunTarih: kırpılmış ICU en-CA’yı en-US’e düşürse bile doğru kalır (parçalar type ile seçilir)', () => {
+  const Orijinal = Intl.DateTimeFormat;
+  class Kirpik extends Orijinal {
+    constructor(locale, secenek) {
+      super(locale === 'en-CA' ? 'en-US' : locale, secenek);
+    }
+  }
+  // @ts-expect-error test amaçlı global yerine geçirme
+  Intl.DateTimeFormat = Kirpik;
+  try {
+    assert.equal(bugunTarih(new Date('2026-09-27T10:00:00Z')), '2026-09-27');
+  } finally {
+    Intl.DateTimeFormat = Orijinal;
+  }
 });
 
 test('ekran ve döndürme parametresi güvenli okunur', () => {

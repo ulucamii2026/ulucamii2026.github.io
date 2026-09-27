@@ -10,7 +10,7 @@ import { brukselSaat, donmeOku, saatGecerliMi } from '../lib/ekran/secim.ts';
 import { yaz } from './gorunum.ts';
 import { METIN } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
-import { tazele, type EkranVerisi } from './veri.ts';
+import { tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 
 interface SayfaVerisi {
   cami: { tr: string; fr: string };
@@ -30,42 +30,54 @@ const TARIH_TR = new Intl.DateTimeFormat('tr-TR', { timeZone: TZ, weekday: 'long
 const TARIH_FR = new Intl.DateTimeFormat('fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const iki = (n: number): string => (n < 10 ? '0' : '') + n;
 
-/** Dakikada bir ve her veri tazelemesinden sonra yeniden çizilenler. */
+/** Dakikada bir ve her veri tazelemesinden sonra yeniden çizilenler. Sayfa aylarca yeniden yüklenmeden
+ *  açık kalır: burada çıkan tek bir istisna (ör. bozuk bir gün kaydı) saati de durdurmasın diye
+ *  hiçbir zaman çağırana fırlatılmaz. */
 function dakikalik(simdi: Date): void {
-  const gecerli = saatGecerliMi(simdi);
-  yaz('tarih-tr', gecerli ? TARIH_TR.format(simdi) : '');
-  yaz('tarih-fr', gecerli ? TARIH_FR.format(simdi) : '');
-  const bugun = bugunTarih(simdi);
-  const gun = gecerli && veri.vakit ? veri.vakit.gunler.filter((g) => g.tarih === bugun)[0] : undefined;
-  yaz('hicri-tr', gun ? gun.hicri : '');
-  yaz('hicri-fr', gun ? hicriCevir(gun.hicri, 'fr') : '');
+  try {
+    const gecerli = saatGecerliMi(simdi);
+    yaz('tarih-tr', gecerli ? TARIH_TR.format(simdi) : '');
+    yaz('tarih-fr', gecerli ? TARIH_FR.format(simdi) : '');
+    const bugun = bugunTarih(simdi);
+    const gun = gecerli && veri.vakit ? veri.vakit.gunler.filter((g) => g.tarih === bugun)[0] : undefined;
+    yaz('hicri-tr', gun ? gun.hicri : '');
+    yaz('hicri-fr', gun ? hicriCevir(gun.hicri, 'fr') : '');
+  } catch (hata) {
+    console.error(hata);
+  }
 }
 
 let sonDakika = -1;
 function saniyelik(): void {
-  const simdi = new Date();
-  if (saatGecerliMi(simdi)) {
-    const s = brukselSaat(simdi);
-    yaz('saat-sd', iki(s.sa) + ':' + iki(s.dk));
-    yaz('saat-sn', ':' + iki(s.sn));
-    ekran.classList.remove('saat-yok');
-  } else {
-    yaz('saat-sd', METIN.saatYok.tr + ' · ' + METIN.saatYok.fr);
-    yaz('saat-sn', '');
-    ekran.classList.add('saat-yok');
+  try {
+    const simdi = new Date();
+    if (saatGecerliMi(simdi)) {
+      const s = brukselSaat(simdi);
+      yaz('saat-sd', iki(s.sa) + ':' + iki(s.dk));
+      yaz('saat-sn', ':' + iki(s.sn));
+      ekran.classList.remove('saat-yok');
+    } else {
+      yaz('saat-sd', METIN.saatYok.tr + ' · ' + METIN.saatYok.fr);
+      yaz('saat-sn', '');
+      ekran.classList.add('saat-yok');
+    }
+    const dakika = Math.floor(simdi.getTime() / 60_000);
+    if (dakika !== sonDakika) {
+      sonDakika = dakika;
+      dakikalik(simdi);
+    }
+  } finally {
+    setTimeout(saniyelik, 1000 - (Date.now() % 1000) + 15);
   }
-  const dakika = Math.floor(simdi.getTime() / 60_000);
-  if (dakika !== sonDakika) {
-    sonDakika = dakika;
-    dakikalik(simdi);
-  }
-  setTimeout(saniyelik, 1000 - (Date.now() % 1000) + 15);
 }
 
 async function veriDongusu(): Promise<void> {
-  await tazele(veri);
-  dakikalik(new Date());
-  setTimeout(() => { void veriDongusu(); }, 10 * 60_000);
+  try {
+    await tazele(veri);
+    dakikalik(new Date());
+  } finally {
+    setTimeout(() => { void veriDongusu(); }, sonrakiTazelemeMs(veri));
+  }
 }
 
 saniyelik();

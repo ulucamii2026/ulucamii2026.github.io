@@ -6,8 +6,14 @@ export const SIRA = ['imsak', 'gunes', 'ogle', 'ikindi', 'aksam', 'yatsi'] as co
 export type Vakit = (typeof SIRA)[number];
 export const TZ = 'Europe/Brussels';
 
+/* 'en-CA' yerel biçimi zaten YYYY-MM-DD verir, ama Android WebView'in kırpılmış ICU verisinde
+   desteklenmeyip 'en'e düşebilir — bu durumda format() "09/27/2026" döner ve hiçbir kayıt bugünle
+   eşleşmez. 'en-US' (kırpılmış ICU'da da hep var) + formatToParts ile parçalar type'a göre seçilir;
+   böylece yerelin verdiği sıraya bağlı kalınmaz. Tam ICU'da çıktı öncekiyle birebir aynıdır. */
 export function bugunTarih(simdi: Date): string {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(simdi);
+  const p = new Intl.DateTimeFormat('en-US', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(simdi);
+  const g = (tur: string) => p.find((x) => x.type === tur)!.value;
+  return `${g('year')}-${g('month')}-${g('day')}`;
 }
 
 /** Brüksel'deki "tarih + HH:MM" duvar saatini gerçek Date'e çevirir (iki geçişli ofset; yaz/kış saati dâhil) */

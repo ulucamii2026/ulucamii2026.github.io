@@ -27,24 +27,37 @@ export function icerikGecerli(x: unknown): x is IcerikGovdesi {
   return nesne(x) && Array.isArray(x.ayetler) && Array.isArray(x.hadisler);
 }
 
-async function getir<T>(yol: string, gecerli: (x: unknown) => x is T): Promise<T | null> {
+/* Zaman aşımı AbortController ile kurulur (Chrome 66+); AbortSignal.timeout Chrome 103 ister ve
+   eski WebView'de yoktur. Tek zamanlayıcı hem fetch()'i hem yanit.json()'ı kapsar (abort, yanıt
+   gövdesinin okunmasını da reddeder) ve finally'de temizlenir — sızıntı bırakmaz. */
+async function getir<T>(yol: string, gecerli: (x: unknown) => x is T, zamanAsimiMs: number): Promise<T | null> {
+  const denetleyici = new AbortController();
+  const zamanlayici = setTimeout(() => denetleyici.abort(), zamanAsimiMs);
   try {
-    const yanit = await fetch(yol, { cache: 'no-cache' });
+    const yanit = await fetch(yol, { cache: 'no-cache', signal: denetleyici.signal });
     if (!yanit.ok) return null;
     const govde: unknown = await yanit.json();
     return gecerli(govde) ? govde : null;
   } catch {
     return null;
+  } finally {
+    clearTimeout(zamanlayici);
   }
 }
 
-export async function tazele(v: EkranVerisi): Promise<void> {
+export async function tazele(v: EkranVerisi, zamanAsimiMs = 30_000): Promise<void> {
   const [vakit, akis, icerik] = await Promise.all([
-    getir('/ekran/vakitler.json', vakitGecerli),
-    getir('/ekran/akis.json', akisGecerli),
-    getir('/ekran/icerik.json', icerikGecerli),
+    getir('/ekran/vakitler.json', vakitGecerli, zamanAsimiMs),
+    getir('/ekran/akis.json', akisGecerli, zamanAsimiMs),
+    getir('/ekran/icerik.json', icerikGecerli, zamanAsimiMs),
   ]);
   if (vakit) v.vakit = vakit;
   if (akis) v.akis = akis;
   if (icerik) v.icerik = icerik;
+}
+
+/** Bir akış hâlâ hiç gelmediyse (kutu Wi-Fi ayağa kalkmadan önce açıldıysa) bir dakika sonra yeniden
+ *  dener; hepsi doluysa normal 10 dakikalık tazeleme aralığına döner. */
+export function sonrakiTazelemeMs(v: EkranVerisi): number {
+  return v.vakit === null || v.akis === null || v.icerik === null ? 60_000 : 10 * 60_000;
 }
