@@ -20,6 +20,7 @@ import { panoyaKopyala } from '../lib/pano';
 import elifbaAlistirmalari from '../data/elifba-alistirmalari.json';
 import { ogrenmeAtolyesi } from './ogrenme-atolyesi';
 import { ogrenmeMetni } from '../i18n/ogrenme';
+import type { VeliEzberi } from './veli-ezber';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
@@ -280,6 +281,9 @@ export async function veliPortali(): Promise<void> {
     kalem: '<path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.83-2.83L5 17.5z"/><path d="M14 7l3 3"/>',
     geri: '<path d="M9 7L4 12l5 5"/><path d="M4 12h11a5 5 0 0 1 0 10h-1.5"/>',
     paylas: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>',
+    // Ezber Kilimi (Faz 1d): saçaklı küçük kilim ve liste.
+    kilim: '<rect x="5" y="2.5" width="14" height="16.5" rx="1"/><path d="M12 6.5l4 4.25-4 4.25-4-4.25z"/><path d="M7.5 19v2.5M10.5 19v2.5M13.5 19v2.5M16.5 19v2.5"/>',
+    liste: '<path d="M9.5 6h10.5M9.5 12h10.5M9.5 18h10.5"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
     ates: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
   };
   const simge = (ad: string) => `<svg class="simge" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${SIMGELER[ad] || ''}</svg>`;
@@ -450,7 +454,7 @@ export async function veliPortali(): Promise<void> {
     seciliHarfGrup?: HarfGrup; seciliHarfId?: string;
     kulakHedefHarfId?: string; kulakSecenekler?: string[]; kulakCevaplandi?: boolean; kulakSecilenId?: string; kulakDogruMu?: boolean; kulakSkoru?: number;
     quizSoruNo?: number; quizDogruSayisi?: number; quizCevaplandi?: boolean; quizSecilenIndex?: number | null; quizBitti?: boolean;
-    odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[] }> };
+    odevler: Odev[]; duyurular: Duyuru[]; bildirimler: Bildirim[]; cocuk: Record<string, { yoklama: Yoklama[]; ilerleme: Ilerleme | null; degerlendirme: Degerlendirme[]; notlar: Not[]; ezber: VeliEzberi | null }> };
   let durum: Durum | null = null;
   let duzenlenenBildirim: string | null = null; // veli bir gönderdiği mesajı düzenliyorsa id'si
 
@@ -478,18 +482,27 @@ export async function veliPortali(): Promise<void> {
     return d;
   };
 
+  // Ezber Kilimi (Faz 1d): kart, katalog ve motifler ayrı parça. Parça inmezse kart hiç çizilmez, eski liste kalır;
+  // parça inip veri okunamazsa kart hata iletisini gösterir (veli-ezber.ts ezberGorunumu).
+  let ezberKarti: typeof import('./veli-ezber') | null = null;
+  const ezberYukle = (ref: string): Promise<VeliEzberi | null> => import('./veli-ezber')
+    .then((mod) => { ezberKarti = mod; return mod.veliEzberiYukle(fs, db, ref); })
+    .catch((e) => { console.warn('Ezber kilimi parçası yüklenemedi:', e); return null; });
+
   const cocukYukle = async (d: Durum, ref: string) => {
-    const [yok, ile, deg, not] = await Promise.all([
+    const [yok, ile, deg, not, ezber] = await Promise.all([
       fs.getDocs(fs.query(fs.collection(db, 'yoklama'), fs.where('ref', '==', ref))),
       fs.getDoc(fs.doc(db, 'ilerleme', ref)),
       fs.getDocs(fs.query(fs.collection(db, 'degerlendirme'), fs.where('ref', '==', ref))),
       fs.getDocs(fs.query(fs.collection(db, 'notlar'), fs.where('ref', '==', ref), fs.where('veliyeGorunur', '==', true))),
+      ezberYukle(ref),
     ]);
     d.cocuk[ref] = {
       yoklama: yok.docs.map((x) => x.data() as Yoklama).sort((x, y) => x.tarih.localeCompare(y.tarih)),
       ilerleme: ile.exists() ? (ile.data() as Ilerleme) : null,
       degerlendirme: deg.docs.map((x) => x.data() as Degerlendirme).sort((x, y) => y.tarih.localeCompare(x.tarih)),
       notlar: not.docs.map((x) => x.data() as Not).sort((x, y) => y.tarih.localeCompare(x.tarih)),
+      ezber,
     };
   };
 
@@ -542,6 +555,16 @@ export async function veliPortali(): Promise<void> {
     if (haftaGunleri.length) kunyeler.push({ ikon: 'kitap', deger: yerlestir(m.dersSayi, { n: haftaGunleri.reduce((s, g) => s + g.dersler.length, 0) }), etiket: m.ozetHafta });
     else if (siradaki) kunyeler.push({ ikon: 'kitap', deger: tarihYaz(siradaki.tarih, { day: 'numeric', month: 'short' }), etiket: m.ozetHafta });
     const bas = (ikon: string, baslik: string, sag = '') => `<div class="bolum-bas">${simge(ikon)}<h2>${esc(baslik)}</h2>${sag ? `<span class="sag">${esc(sag)}</span>` : ''}</div>`;
+    // Ezber Kilimi: yeni kayıt varsa kilim eski listenin yerini alır; geçişten önce yalnız eski liste görünür.
+    const ezk = ezberKarti; const ezberKaydi = c?.ezber ?? null;
+    const ezGorunum = ezk && o ? ezk.ezberGorunumu(ezberKaydi, Boolean(ile?.ezber && Object.keys(ile.ezber).length)) : 'eski';
+    const kartYardimi = { dil, bas, bosDurum, simge, tarihYaz: (iso: string) => tarihYaz(iso) };
+    /** Ezber Odası çipinde çocuğun basamağı (yalnız kilim görünümündeyken; geçişten önce işaret yok). */
+    const odaIsareti = (odaId: string) => (ezk && ezberKaydi && ezGorunum === 'kilim' ? ezk.odaIsareti(ezberKaydi, odaId, dil) : '');
+    // İlerleme kartı: kilim görünürken eski ezber listesi gizlenir. Kayıtta başka bir şey yoksa kart başlıkla boş
+    // kalmasın, boş durum yazsın (alanları boş eski kayıtlar için de).
+    const eskiEzberGoster = ezGorunum !== 'kilim' && Boolean(ile?.ezber && Object.keys(ile.ezber).length);
+    const ilerlemeVar = Boolean(ile && (kuranKonu || eskiEzberGoster || (ile.alanlar && Object.keys(ile.alanlar).length) || ile.hocaNotu));
 
     const ogrenciPanoCiz = () => {
       const basamaklar = m.basamaklar as readonly string[];
@@ -719,7 +742,7 @@ export async function veliPortali(): Promise<void> {
                 ${filtreliEzberler.map((ez) => `
                   <button type="button" class="sure-cip-btn ${ez.id === seciliEzber.id ? 'aktif-cip' : ''}" data-eylem="ezberHizliSec" data-ezber-id="${ez.id}" title="${esc(ez.ad[dil] || ez.ad.tr)}">
                     <span class="cip-simge">${ez.tur === 'sure' ? '📖' : '🤲'}</span>
-                    <span class="cip-ad">${esc(ez.ad[dil] || ez.ad.tr)}</span>
+                    <span class="cip-ad">${esc(ez.ad[dil] || ez.ad.tr)}</span>${odaIsareti(ez.id)}
                   </button>
                 `).join('')}
               </div>
@@ -882,6 +905,9 @@ export async function veliPortali(): Promise<void> {
                 <p class="kutlama-mesaji" data-kutlama hidden></p>
               </div>
             </section>
+
+            <!-- KİLİMİM (Ezber Kilimi, Faz 1d) -->
+            ${ezk && ezberKaydi && ezGorunum === 'kilim' ? ezk.ogrenciKilimKarti(ezberKaydi, `kl-o${d.secili}`, kartYardimi) : ''}
 
             <!-- İNTERAKTİF ELİF-BÂ TAHTASI -->
             <section class="bolum r-ochre genis elifba-tahtasi-kart">
@@ -1365,6 +1391,7 @@ export async function veliPortali(): Promise<void> {
             ${haftaOdev.materyal ? `<p style="margin-top:.7rem"><a class="ic-bag" href="${esc(haftaOdev.materyal)}">${esc(m.materyal)}${simge('disari')}</a></p>` : ''}` : bosDurum('kitap', m.odevYok)}
           ${siradaki ? `<p class="kucuk" style="margin-top:1rem;display:flex;align-items:center;gap:.45rem">${simge('takvim')}<span><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</span></p>` : ''}
         </section>
+        ${ezk && ezGorunum !== 'eski' ? ezk.veliKilimKarti(ezberKaydi, `kl-v${d.secili}`, kartYardimi) : ''}
 
         <section class="bolum r-adacayi">
           ${bas('takvim', m.yoklama)}
@@ -1375,10 +1402,10 @@ export async function veliPortali(): Promise<void> {
         </section>
 
         <section class="bolum r-kiremit">
-          ${bas('grafik', m.ilerleme, ile && ile.guncelleme ? tarihYaz(ile.guncelleme, { day: 'numeric', month: 'short' }) : '')}
-          ${ile ? `
+          ${bas('grafik', m.ilerleme, ilerlemeVar && ile?.guncelleme ? tarihYaz(ile.guncelleme, { day: 'numeric', month: 'short' }) : '')}
+          ${ilerlemeVar && ile ? `
             ${kuranKonu ? `<h3>${esc(m.kuranAdim)}</h3><div class="ilerleme-not"><b lang="tr">${esc(kuranKonu)}</b><span class="kucuk">${kuranNo + 1}/${kuranSirasi.length}</span></div><div class="cubuk"><span style="width:${yuzde}%"></span></div>` : ''}
-            ${ile.ezber && Object.keys(ile.ezber).length ? `<h3>${esc(m.ezberler)}</h3><ul class="liste">${Object.entries(ile.ezber).map(([ad, dr]) => `<li><span lang="tr">${esc(ad)}</span><span class="rozet ${esc(dr)}">${esc((m.ezberDurum as Record<string, string>)[dr] || dr)}</span></li>`).join('')}</ul>` : ''}
+            ${eskiEzberGoster && ile.ezber ? `<h3>${esc(m.ezberler)}</h3><ul class="liste">${Object.entries(ile.ezber).map(([ad, dr]) => `<li><span lang="tr">${esc(ad)}</span><span class="rozet ${esc(dr)}">${esc((m.ezberDurum as Record<string, string>)[dr] || dr)}</span></li>`).join('')}</ul>` : ''}
             ${ile.alanlar && Object.keys(ile.alanlar).length ? `<h3>${esc(m.alanlar)}</h3><div class="dereceler">${Object.entries(ile.alanlar).map(([k, n]) => `<div class="derece"><b>${esc(alanAdi(k))}</b><span class="pipler" aria-hidden="true">${Array.from({ length: 5 }, (_, i) => `<span class="pip ${i < n ? 'dolu' : ''}"></span>`).join('')}</span><span class="d-ad">${esc(dereceAdi(n))}</span></div>`).join('')}</div>` : ''}
             ${ile.hocaNotu ? `<h3>${esc(m.hocaNotu)}</h3><p style="white-space:pre-line">${esc(ile.hocaNotu)}</p>` : ''}`
             : bosDurum('grafik', m.ilerlemeYok)}

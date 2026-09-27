@@ -101,3 +101,52 @@ export function defterSozlugu(): Record<string, string> {
   return s;
 }
 
+/**
+ * Veli portalındaki «Ezber Kilimi» bölümü ve kilimin erişilebilir özeti (27 Eylül 2026, Faz 1d). Beş dilde; öğrenci
+ * adı yok. Fransızca terimler portalla aynı («l’enseignant», «mémorisation»); kilim fr/en «kilim», nl/de «kelim».
+ */
+export const KILIM_METINLERI = Object.freeze({
+  baslik: { tr: 'Ezber Kilimi', fr: 'Kilim de mémorisation', en: 'Memorisation kilim', nl: 'Memorisatiekelim', de: 'Memorier-Kelim' },
+  aciklama: {
+    tr: 'Ezberlenen her metin kilimde bir motiftir; hocaya okundukça motif dolar. Bir şeridin bütün metinleri tamamlanınca yanına rozet, sonra mühür dokunur.',
+    fr: 'Chaque texte mémorisé est un motif du kilim ; il se remplit à mesure qu’il est récité à l’enseignant. Quand tous les textes d’une bande sont acquis, un insigne puis un sceau sont tissés à côté.',
+    en: 'Every memorised text is a motif in the kilim; it fills in as it is recited to the teacher. When every text in a band is done, a badge and then a seal are woven beside it.',
+    nl: 'Elke gememoriseerde tekst is een motief in de kelim; het vult zich naarmate hij bij de leraar wordt opgezegd. Als alle teksten van een band klaar zijn, worden er een insigne en daarna een zegel naast geweven.',
+    de: 'Jeder auswendig gelernte Text ist ein Motiv im Kelim; es füllt sich, je öfter er beim Lehrer vorgetragen wird. Sind alle Texte eines Streifens geschafft, werden daneben ein Abzeichen und dann ein Siegel eingewebt.',
+  },
+  madde: { tr: 'metin başladı', fr: 'textes commencés', en: 'texts started', nl: 'teksten begonnen', de: 'Texte begonnen' },
+  rozet: { tr: 'Rozet', fr: 'Insigne', en: 'Badge', nl: 'Insigne', de: 'Abzeichen' },
+  muhur: { tr: 'Mühür', fr: 'Sceau', en: 'Seal', nl: 'Zegel', de: 'Siegel' },
+  altin: { tr: 'Altın kenar', fr: 'Bordure d’or', en: 'Golden border', nl: 'Gouden rand', de: 'Goldener Rand' },
+  rozetAnlam: {
+    tr: 'şeridin bütün metinleri hocaya okundu', fr: 'tous les textes de la bande ont été récités à l’enseignant',
+    en: 'every text in the band has been recited to the teacher', nl: 'alle teksten van de band zijn bij de leraar opgezegd',
+    de: 'alle Texte des Streifens wurden beim Lehrer vorgetragen' },
+  muhurAnlam: { tr: 'hepsi pekişti', fr: 'tous sont consolidés', en: 'all are consolidated', nl: 'alles is verstevigd', de: 'alle sind gefestigt' },
+  altinAnlam: { tr: 'hepsi kalıcı', fr: 'tous sont acquis durablement', en: 'all are firmly memorised', nl: 'alles is blijvend gekend', de: 'alle sind dauerhaft gelernt' },
+  sonDinlemeler: { tr: 'Son dinlemeler', fr: 'Dernières récitations', en: 'Latest recitations', nl: 'Laatste voordrachten', de: 'Letzte Vorträge' },
+  seritSerit: { tr: 'Şerit şerit', fr: 'Bande par bande', en: 'Band by band', nl: 'Band per band', de: 'Streifen für Streifen' },
+  basladi: { tr: 'çalışmaya başladı', fr: 'début de l’apprentissage', en: 'started learning', nl: 'begonnen met leren', de: 'mit dem Lernen begonnen' },
+  guncellendi: {
+    tr: 'hoca kaydı güncelledi', fr: 'l’enseignant a mis à jour le suivi', en: 'the teacher updated the record',
+    nl: 'de leraar heeft de voortgang bijgewerkt', de: 'der Lehrer hat den Stand aktualisiert' },
+  bos: {
+    tr: 'Henüz ezber kaydı yok. Hoca dinledikçe kilim dokunacak.', fr: 'Pas encore de suivi de mémorisation. Le kilim se tissera au fil des récitations.',
+    en: 'No memorisation record yet. The kilim will be woven as the teacher listens.', nl: 'Nog geen memorisatievoortgang. De kelim wordt geweven naarmate de leraar luistert.',
+    de: 'Noch kein Lernstand. Der Kelim wird gewebt, während der Lehrer zuhört.' },
+  hata: {
+    tr: 'Ezber kilimi şu an yüklenemedi; sayfayı daha sonra yenileyin.', fr: 'Le kilim de mémorisation n’a pas pu être chargé ; réessayez plus tard.',
+    en: 'The memorisation kilim could not be loaded; please try again later.', nl: 'De memorisatiekelim kon niet worden geladen; probeer het later opnieuw.',
+    de: 'Der Memorier-Kelim konnte nicht geladen werden; bitte später erneut versuchen.' },
+  dinlemeYok: {
+    tr: 'Henüz dinleme kaydı yok.', fr: 'Pas encore de récitation enregistrée.', en: 'No recitation recorded yet.',
+    nl: 'Nog geen voordracht geregistreerd.', de: 'Noch kein Vortrag erfasst.' },
+  lejant: { tr: 'Kilimi okumak', fr: 'Lire le kilim', en: 'Reading the kilim', nl: 'De kelim lezen', de: 'Den Kelim lesen' },
+  /** Öğrenci kipindeki kartın başlığı (çocuk kendi kilimine bakar). */
+  kilimim: { tr: 'Kilimim', fr: 'Mon kilim', en: 'My kilim', nl: 'Mijn kelim', de: 'Mein Kelim' },
+} satisfies Record<string, BesDil>);
+
+/** Amme durağının adı: «2. durak». */
+export function durakAdi(durak: number, dil: Dil): string {
+  return { tr: `${durak}. durak`, fr: `étape ${durak}`, en: `stage ${durak}`, nl: `etappe ${durak}`, de: `Etappe ${durak}` }[dil];
+}

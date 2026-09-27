@@ -232,14 +232,78 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
 - `tests/ezber-metin.test.mjs`: metinler.
 - `tests/defter-ceviri.test.mjs`: 243 defter cümlesinin Fransızcası.
 
+## Kilim çizimi ve veli portalı (Faz 1d, 27 Eylül 2026)
+
+| Dosya | Sorumluluk |
+|---|---|
+| `src/assets/cizim/ezber-kilim/*.svg` | Codex'in çizdiği 12 motif (8 şerit motifi, koçboynuzu bordür, köşe, rozet, mühür) ve elle yazılan kenar suyu muskası; saf vektör, `npm run denetim:svg` |
+| `scripts/ezber-motif-uret.mjs` | Çizimleri `src/lib/ezber/motifler.ts`'e çevirir; yalnız izinli nitelikler kalır (renk ve kimlik yok). `npm run ezber:motif`; `--denetle` kipi `test:ezber`'in başında koşar |
+| `src/lib/ezber/kilim.ts` | Saf çizici: `kilimSvg`, `kilimLejanti`, `kilimOzeti`, `motifIsareti`, `kilimSeritleri`, `SERIT_MOTIFI` |
+| `src/lib/ezber/veli.ts` | Veliye giden satırlar: `veliDinlemeleri` (yumuşak dil, kalıp notlar), `veliSeritleri` (kilimin metin karşılığı) |
+| `src/scripts/veli-ezber.ts` | Portalın ayrı parçası: `veliEzberiYukle`, `ezberGorunumu`, `veliKilimKarti`, `ogrenciKilimKarti`, `odaBasamagi`, `odaIsareti` |
+| `src/styles/ezber-kilim.css` | Kilim, açıklama, kart ve Oda çipi işaretleri; açık/koyu tema (Kilim Kartografyası jetonları) |
+
+**Kilim:**
+
+- **Tek yerleşim:** 12 şerit (1–7 ve Amme'nin 5 durağı) × en çok 10 madde; rozet yuvası solda, mühür yuvası sağda.
+  Kenar suyunun 13 maddesi bordürdedir, saat yönünde 4/3/3/3. Alan kareye yakın (448 × 476 birim); telefon ve
+  masaüstü için ayrı yerleşim gerekmedi.
+- **Basamak dokusu** (renk tek başına bilgi taşımaz): 0 kesik çözgü · 1 çizgi · 2 çizgi + yarı dolu · 3 dolu ·
+  4 altın + çerçeve. Ödüller durum makinesinin `bolumOzetleri` sonucundan: rozet ≥ 2, mühür ≥ 3, altın kenar = 4.
+- **Kimlikler önekli** (`kl-v0` veli, `kl-o0` öğrenci): aynı sayfada iki kilim çakışmaz. Dış bağlantı, betik ve
+  `<text>` yoktur (test).
+- **Erişilebilirlik:** SVG `role="img"`, adı başlık + özettir; her maddenin `<title>`ı «ad — basamak». Metin
+  karşılığı katlanır «Şerit şerit» listesidir; her madde kilimdeki dokusuyla ve basamak adıyla yazılır.
+
+**Veli portalı** (`src/sayfalar/Veli.astro`, `src/scripts/veli-portali.ts`):
+
+1. **Veri:** `ezberDurum/{ref}` ve son 20 olay (`orderBy('zaman', 'desc')`, `limit(20)`), lite SDK. Kurallarda
+   `veliOkur`; ek kural gerekmedi.
+2. **Kart «Bu hafta»dan sonra gelir:** kilim, özet, son 5 dinleme, «Kilimi okumak» açıklaması ve «Şerit şerit».
+3. **Görünüm kuralı** (`ezberGorunumu`):
+   - Yeni kayıt varsa kilim, «İlerleme»deki eski «Ezberler» listesinin yerini alır.
+   - Hiç kayıt yoksa boş kilim ve beklenti cümlesi görünür.
+   - Yeni kayıt yok ama eski listede ezber varsa (geçiş betiği henüz koşmadı) yalnız eski liste görünür.
+   - Okuma hatasında kartta hata iletisi çıkar, eski liste yerinde kalır.
+   - Kilim görünürken «İlerleme» kartında gösterilecek başka bir şey yoksa kart boş durum cümlesini yazar.
+4. **Dil:** notlar kalıp anahtarıdır; velinin dilindeki cümle `metinler.ts`'ten gelir. Makine çevirisi gerekmez; ana
+   plandaki «Fransızca notlar çeviri hattıyla» maddesi böyle karşılandı. Geçiş olayları (`gecis`) veliye gösterilmez;
+   hocanın düğme adları («Tekrar gelsin») veliye gitmez.
+5. **Paket:** kart, katalog ve motifler ayrı parçadır (`import('./veli-ezber')`); ana veli paketi yaklaşık 1 KB
+   büyüdü. Parça inmezse kart çizilmez, eski liste kalır.
+
+**Öğrenci kipi:**
+
+- Ezber Odası'ndan sonra «Kilimim» kartı gelir: kilim, özet ve açıklama. Dinleme geçmişi ve liste yoktur.
+- Ezber Odası çiplerinde çocuğun basamak işareti görünür (`isaret.ts`, hoca tablosundakinin aynısı); basamak adı
+  `sr-only`'dir.
+- Oda kimlikleri değişmez; karşılıkları `eski-kimlikler.json` → `ezberListesi`'ndedir.
+- Bileşik maddede (Salli + Bârik, iki Rabbenâ) en düşük basamak alınır. Başlanmamış maddede ve geçişten önce işaret
+  yoktur.
+
+**Sınama:**
+
+- `tests/ezber-kilim.test.mjs`: çizici, açıklama, veli satırları, kart, okuma sorgusunun biçimi ve Oda eşlemesi.
+- `tests/web/veli-ezber.spec.mjs`:
+  - tr ve fr;
+  - görünüm kuralının dört hâli;
+  - iki çocuk ve öğrenci kipi;
+  - Oda çipleri;
+  - iki temada axe ve telefonda taşma.
+- Sahte lite SDK'da `orderBy`/`limit` ve okuma reddi için `__ezberHata` vardır.
+- **Sonraya kalan:** hoca öğrenci kartında kilim, A4 baskı, sertifika ve karne (ana plan §3, «kullanıldığı yerler»).
+
 ## Bilinen açıklar (27 Eylül 2026)
 
-- `public/media/ses/dualar/rabbena.mp3`: kaynak kaydı yok ve Diyanet'in özgün «Rabbenâ duaları» dosyasıyla aynı kayıt
-  değil (ilinti 0,04). Yeni katalog onun yerine özgünden kesilmiş `rabbena-atina.mp3` (0–12 sn) ve `rabbenagfirli.mp3`
-  (12–21,9951 sn) dosyalarını kullanır; `kesim` + `ozgunSha256` 27 Eylül 2026'da kayda işlendi (ilinti 0,998). Makine
-  dökümü ve sessizlik kesitleri: ilk kesit Bakara 201 «…ve kınâ azâbe'n-nâr»da biter, «bi rahmetike…» eki yoktur;
-  hocanın bir kez dinleyerek teyidi yeterlidir. `rabbena.mp3` ve iki kaydın birleşimi `sallibarik.mp3` yalnız eski
-  Ezber Odası'nda (`ezber-verisi.ts`) kalıyor; Faz 1d'de Ezber Odası kataloğa bağlanınca düşer (test katalogda yasaklar).
+- Rabbenâ sesleri. Katalog, namaz sayfasındaki özgün «Rabbenâ duaları» kaydından kesilmiş `rabbena-atina.mp3` (0–12 sn)
+  ve `rabbenagfirli.mp3` (12–21,9951 sn) dosyalarını kullanır; `kesim` + `ozgunSha256` 27 Eylül 2026'da kayda işlendi
+  (ilinti 0,998). Makine dökümü ve sessizlik kesitleri: ilk kesit Bakara 201 «…ve kınâ azâbe'n-nâr»da biter,
+  «bi rahmetike…» eki yoktur; hocanın bir kez dinleyerek teyidi yeterlidir. Eski Ezber Odası'nın `rabbena.mp3`
+  dosyasının kaynak kaydı eksikti; Faz 1d'de ölçüldü: Diyanet Kur'an sitesindeki Davut Kaya kayıtlarının
+  (`ar_DavutKaya/2_201.mp3` + `14_41.mp3`) **bayt bayt birleşimi**, yani resmî kaynak. Kaydı 27 Eylül 2026'da işlendi,
+  ses değişmedi. Faz 1a'daki «özgünle aynı değil» ölçümü doğruydu (başka bir Diyanet kaydı), «kaynaksız» yargısı
+  ise yalnız kaydın eksikliğiydi. `rabbena.mp3` ve iki namaz kaydının birleşimi `sallibarik.mp3` yalnız Ezber
+  Odası'nda (`ezber-verisi.ts`) kullanılır; katalog maddelerine bağlanmaz (test yasaklar).
 - `public/media/ses/dualar/ezan.mp3` Diyanet'in **sabah ezanıdır**; katalogda `not` ile belirtildi. Diğer vakitlerin
   ezanı Faz 2'de Diyanet'ten eklenir.
 - 54 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm, kenar suyu); Faz 2 ses işi.

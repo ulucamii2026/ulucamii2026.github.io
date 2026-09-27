@@ -11,6 +11,7 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - Müfredattaki 15 Kur'an sûresi (Fâtiha, Âyetü’l-Kürsî, İnşirâh, Kadir, Asr, Fîl, Kureyş, Mâûn, Kevser, Kâfirûn, Nasr, Tebbet, İhlâs, Felak, Nâs) ve 4 temel namaz duası (Sübhâneke, Ettehiyyâtü, Salli-Bârik, Rabbenâ) tam harekeli Amiri Arapça hattıyla yer alır.
 - Türkçe, Fransızca ve İngilizce transkripsiyonlu okunuş ve mealler sunulur.
 - Doğrudan ses dinleme, 0.8x/1.0x hız ayarı ve öğrencinin gayretini ödüllendiren `localStorage` tabanlı `+1 ⭐` yıldız sayacı içerir.
+- **Ezber Kilimi bağı (27 Eylül 2026, Faz 1d):** çiplerde çocuğun hocaya okuduğu basamak işaretlenir (başlanmamış maddede işaret yok); Oda kimlikleri değişmez, karşılıkları `src/data/ezber/eski-kimlikler.json`'dadır. Odanın ardından «Kilimim» kartı gelir. Ayrıntı: [Ezber Kilimi](EZBER-KILIMI.md).
 
 ## 3. İnteraktif Elif-Bâ ve Harekeler
 - 28 Arapça harf, müfredatın 5 grubuna (Elif, Hı, Şîn, Ayn, Lâm) göre filtrelenebilir.
@@ -35,7 +36,7 @@ Amaç: Veli Portalı içinde çocukların müfredata uygun, etkileşimli, güven
 - **Üç Boyutlu Başarı Rozetleri:** Haftanın Yıldızı, Kur'an Rehberi, Güzel Ahlak, Kur’an-ı Kerim / Hatim ve İstikrarlı Devam madalyaları için yüksek çözünürlüklü özel WebP rozet illüstrasyonları (`rozet-yildiz.webp`, `rozet-kuran.webp`, `rozet-ahlak.webp`, `rozet-hatim.webp`, `rozet-devam.webp`).
 
 ## 7. Namaz Duaları ve Sûre Sesleri Altyapısı (Kalıcı Karar)
-- **4 Temel Namaz Duası (`public/media/ses/dualar/`):** Sübhâneke (`subhaneke.mp3`), Ettehiyyâtü (`tahiyyat.mp3`), Allâhümme Salli & Bârik (`sallibarik.mp3`) ve Rabbenâ Âtinâ & Rabbenâğfirlî (`rabbena.mp3` — Bakara 201 + İbrahim 41 Diyanet resmî tilaveti) duaları yerel dizine aktarıldı.
+- **4 Temel Namaz Duası (`public/media/ses/dualar/`):** Sübhâneke (`subhaneke.mp3`), Ettehiyyâtü (`tahiyyat.mp3`), Allâhümme Salli & Bârik (`sallibarik.mp3`) ve Rabbenâ Âtinâ & Rabbenâğfirlî (`rabbena.mp3` — Bakara 201 + İbrahim 41 Diyanet resmî tilaveti; Davut Kaya kayıtlarının bayt bayt birleşimi, kaynak kaydı 27 Eylül 2026'da `docs/dinleme-ses-kaynaklari.json`'a işlendi) duaları yerel dizine aktarıldı.
 - **15 Kur'an Sûresi (`public/media/ses/sureler/`):** Fâtiha, Âyetü’l-Kürsî, İnşirâh, Kadir, Asr, Fîl, Kureyş, Mâûn, Kevser, Kâfirûn, Nasr, Tebbet, İhlâs, Felak, Nâs sesleri dış CDN bağımlılığından kurtarılarak yerel dizine aktarıldı. Sesler siteyle aynı kaynaktan sunulur. Bu, çevrimdışı çalışma garantisi değildir; sesleri çevrimdışı önbelleğe alan bir servis çalışanı bu kapsamda kurulmadı.
 - **Dua Metni Doğruluğu:** Rabbenâ duası Arapça metnindeki yazım kontrol edildi ve tashih edildi.
 

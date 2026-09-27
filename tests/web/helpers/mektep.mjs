@@ -16,8 +16,13 @@ export const getFirestore = () => ({});
 export const doc = (_db, ...p) => {const parts=p.flatMap(x=>x.split('/'));return {col:parts.slice(0,-1).join('/'),id:parts.at(-1)};};
 export const collection = (_db, ...p) => ({ col:p.join("/") });
 export const where = (field, op, value) => ({ field, op, value });
+/* orderBy/limit (27 Eyl 2026, Ezber Kilimi 1d): veli portalı son ezber olaylarını sıralı ve sınırlı okur. */
+export const orderBy = (alan, yon = 'asc') => ({ alan, yon });
+export const limit = n => ({ limit: n });
 export const query = (ref, ...filters) => ({ ...ref, filters });
+const ezberHatasi = ref => { if (window.__ezberHata && ref.col.startsWith('ezberDurum')) throw Object.assign(Error('Missing or insufficient permissions.'), { code: 'permission-denied' }); };
 export const getDoc = async ref => {
+ ezberHatasi(ref);
  if(window.__dataError && (ref.col.startsWith('bultenler/')||ref.col.startsWith('dersDefteri/')))throw Error('offline');
  if(ref.col.startsWith('evCalismalari/')){const data=decode(window.__cloud[ref.col]?.[ref.id]);return{id:ref.id,exists:()=>!!data,data:()=>data};}
  const stored=(window.__records[ref.col]||[]).find(d=>d.id===ref.id);
@@ -31,6 +36,7 @@ export const Timestamp={fromDate:d=>({toDate:()=>d})};
 export const serverTimestamp=()=> 'server-time';
 const decode=d=>d&&({...d,son:d.son?Timestamp.fromDate(new Date(d.son+'T12:00:00Z')):undefined,sonraki:d.sonraki?Timestamp.fromDate(new Date(d.sonraki+'T12:00:00Z')):undefined});
 export const getDocs = async ref => {
+ ezberHatasi(ref);
  if(window.__dataError && (ref.col.startsWith('bultenler/')||ref.col.startsWith('dersDefteri/')))throw Error('offline');
  if(window.__bultenDelay && ref.col.startsWith('bultenler/'))await new Promise(r=>window.__releaseBulten=r);
  if(ref.col.startsWith('evCalismalari/')){
@@ -38,7 +44,12 @@ export const getDocs = async ref => {
   if(window.__cloudDelay)await new Promise(r=>window.__releaseCloud=r);
   return {docs:Object.entries(window.__cloud[ref.col]||{}).map(([id,d])=>({id,data:()=>decode(d)}))};
  }
- return {docs:(ref.col==='ogrenciler'?window.__students:window.__records[ref.col]||[]).filter(d=>!ref.filters||ref.filters.every(f=>f.op==='array-contains'?d[f.field]?.includes(f.value):d[f.field]===f.value)).map((data,i)=>({id:data.id||data.ref||String(i),data:()=>Object.fromEntries(Object.entries(data).filter(([k])=>k!=='id'))}))};
+ let liste=(ref.col==='ogrenciler'?window.__students:window.__records[ref.col]||[]).filter(d=>(ref.filters||[]).filter(f=>f.op).every(f=>f.op==='array-contains'?d[f.field]?.includes(f.value):d[f.field]===f.value));
+ for(const f of ref.filters||[]){
+  if(f.alan){const s=v=>v&&v.toMillis?v.toMillis():v;liste=[...liste].sort((x,y)=>{const a=s(x[f.alan]),b=s(y[f.alan]);return(a<b?-1:a>b?1:0)*(f.yon==='desc'?-1:1);});}
+  if(f.limit)liste=liste.slice(0,f.limit);
+ }
+ return {docs:liste.map((data,i)=>({id:data.id||data.ref||String(i),data:()=>Object.fromEntries(Object.entries(data).filter(([k])=>k!=='id'))}))};
 };
 const yaz=(ref,data)=>{
  if(ref.col.startsWith('evCalismalari/')){(window.__cloud[ref.col]||={})[ref.id]={...data,son:data.son.toDate().toISOString().slice(0,10),sonraki:data.sonraki.toDate().toISOString().slice(0,10)};window.__writes.push({ref,data:window.__cloud[ref.col][ref.id]});return;}

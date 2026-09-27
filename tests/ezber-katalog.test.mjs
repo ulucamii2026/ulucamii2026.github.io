@@ -220,10 +220,12 @@ test('inceleme odağı: eûzü-besmele Kur\'an metni ve Diyanet sesi; kaynaksız
   assert.equal(eb.kuranMetni, true);
   assert.deepEqual(eb.ses, { parcalar: ['/media/ses/ayet/1-0.mp3', '/media/ses/ayet/1-1.mp3'] }); // 1-0 eûzü, 1-1 besmele
   const yollar = katalog.ogeler.flatMap((o) => [o.ses?.tam, ...(o.ses?.parcalar ?? [])]).filter(Boolean);
-  // Eski Ezber Odası dosyaları katalog maddesine bağlanmaz: rabbena.mp3 kaynaksız (Diyanet özgünüyle aynı değil),
-  // sallibarik.mp3 iki Diyanet kaydının birleşimi (katalogda Salli ve Bârik ayrı maddeler).
+  // Eski Ezber Odası'nın birleşik dosyaları katalog maddesine bağlanmaz; katalogda her dua ayrı madde ve namaz
+  // sayfasının özgün kaydından kesittir. rabbena.mp3 Davut Kaya'nın Bakara 201 + İbrahim 41 kayıtlarının bayt bayt
+  // birleşimi (27 Eyl 2026'da doğrulandı, kaydı o gün işlendi), sallibarik.mp3 iki namaz kaydının birleşimi.
   for (const yasak of ['/media/ses/dualar/rabbena.mp3', '/media/ses/dualar/sallibarik.mp3']) assert.ok(!yollar.includes(yasak), yasak);
-  assert.equal(sesKaynaklari['/media/ses/dualar/rabbena.mp3'], undefined, 'rabbena.mp3 artık kayıtlıysa bu testi gözden geçirin');
+  assert.deepEqual(sesKaynaklari['/media/ses/dualar/rabbena.mp3'].kaynak.split(' + ').map((u) => u.split('/').slice(-2).join('/')),
+    ['ar_DavutKaya/2_201.mp3', 'ar_DavutKaya/14_41.mp3']);
   assert.equal(sesKaynaklari['/media/ses/dualar/sallibarik.mp3'].kaynak.split(' + ').length, 2);
   assert.deepEqual(m.planKimlikleri('Allâhümme Salli; Allâhümme Bârik'), ['d-salli', 'd-barik']);
   assert.deepEqual(m.planKimlikleri('Kelime-i Tevhid ve Kelime-i Şehâdet'), ['d-kelime-i-tevhid', 'd-kelime-i-sehadet']);

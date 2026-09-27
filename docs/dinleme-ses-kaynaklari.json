@@ -3499,6 +3499,10 @@
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/8_ALLAHUMMESALLI.mp3 + https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/9_ALLAHUMMEBARIK.mp3",
   "sha256": "0d7bc085aae951533da3626b075eed6dafb31296a7f7e4a79697213d217e6834"
  },
+ "/media/ses/dualar/rabbena.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_DavutKaya/2_201.mp3 + https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_DavutKaya/14_41.mp3",
+  "sha256": "3a9b00889d62fcae46a9b72f819e7b7ea01895f62424e3f913d81d5c4401e42d"
+ },
  "/media/ses/ayet/1-0.mp3": {
   "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/1_0.mp3",
   "sha256": "76af24a0cc01fd6df45beaca05843f121e6d4487d09f77e3a293ff7b75c49b1b"

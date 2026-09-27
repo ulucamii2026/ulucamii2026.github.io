@@ -1,0 +1,100 @@
+/* Ezber Kilimi — kilim çizimi (src/lib/ezber/kilim.ts), yanındaki açıklama ve veli portalındaki kart
+   (src/scripts/veli-ezber.ts) (27 Eylül 2026, Faz 1d).
+   Kilim Kartografyası jetonlarından: kâğıt zemin, kiremit bordür, okra ara şerit. Basamak renkleri hoca ekranıyla aynı
+   (src/styles/hoca-ezber.css): Çalışıyor mürekkep, Hocaya okudu İznik, Pekişti adaçayı, Kalıcı altın. Renk tek başına
+   bilgi taşımaz: basamak dokusu da değişir (kesik çözgü → çizgi → yarı dolu → dolu → dolu + çerçeve).
+   Çizgi kalınlıkları motifin kendi biriminde (120'lik kutu, ekranda ~24 px): 7 birim ≈ 1,4 px. */
+
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) {
+  --kl-zemin-0: var(--zemin);
+  --kl-zemin-1: color-mix(in oklab, var(--color-ochre) 9%, var(--zemin));
+  --kl-kenar: color-mix(in oklab, var(--color-kiremit) 13%, var(--zemin));
+  --kl-bordur: color-mix(in oklab, var(--color-kiremit) 62%, var(--zemin));
+  --kl-cizgi: color-mix(in oklab, var(--metin) 30%, var(--zemin));
+  --kl-cozgu: color-mix(in oklab, var(--metin-2) 55%, var(--zemin));
+  --kl-b1: var(--metin-2);
+  --kl-b2: var(--vurgu-2);
+  --kl-b3: var(--color-adacayi-koyu);
+  --kl-b4: color-mix(in srgb, var(--color-ochre) 62%, var(--color-ceviz));
+  --kl-rozet: color-mix(in srgb, var(--color-ochre) 80%, var(--color-ceviz));
+  --kl-muhur: var(--color-kiremit);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) :where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) {
+    --kl-bordur: color-mix(in oklab, var(--color-kiremit) 70%, var(--zemin));
+    --kl-b3: var(--color-adacayi-acik); --kl-b4: var(--color-ochre-acik); --kl-rozet: var(--color-ochre-acik);
+  }
+}
+:root[data-theme="dark"] :where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) {
+  --kl-bordur: color-mix(in oklab, var(--color-kiremit) 70%, var(--zemin));
+  --kl-b3: var(--color-adacayi-acik); --kl-b4: var(--color-ochre-acik); --kl-rozet: var(--color-ochre-acik);
+}
+
+svg.ezber-kilim { display: block; width: 100%; height: auto; max-width: 34rem; margin-inline: auto; }
+.ezber-kilim .kl-sacak { fill: none; stroke: var(--kl-cizgi); stroke-width: 1.4; stroke-linecap: round; }
+.ezber-kilim .kl-kenar-zemin { fill: var(--kl-kenar); }
+.ezber-kilim :is(.kl-bordur, .kl-kose) { fill: var(--kl-bordur); }
+.ezber-kilim .kl-kenar-oge-zemin { fill: var(--kl-zemin-0); stroke: var(--kl-cizgi); stroke-width: 1; }
+.ezber-kilim .kl-zemin-0 { fill: var(--kl-zemin-0); }
+.ezber-kilim .kl-zemin-1 { fill: var(--kl-zemin-1); }
+.ezber-kilim .kl-ayrac { fill: none; stroke: var(--kl-cizgi); stroke-width: 1; stroke-dasharray: 2 3; }
+.ezber-kilim .kl-ara { fill: var(--kl-cozgu); }
+.ezber-kilim .kl-cerceve { fill: none; stroke: var(--kl-cizgi); stroke-width: 1.5; }
+
+/* Madde motifi: basamak dokusu. */
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-m { fill: none; stroke: none; stroke-linejoin: miter; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-b0 { stroke: var(--kl-cozgu); stroke-width: 5; stroke-dasharray: 7 9; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-b1 { stroke: var(--kl-b1); stroke-width: 8; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-b2 { fill: var(--kl-b2); fill-opacity: 0.3; stroke: var(--kl-b2); stroke-width: 8; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-b3 { fill: var(--kl-b3); }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-b4 { fill: var(--kl-b4); }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-b4-cerceve { fill: none; stroke: var(--kl-b4); stroke-width: 1.5; }
+
+/* Ödül yuvaları: kazanılmamışı soluk kesik çizgi (dokunacak yer), kazanılmışı dolu. */
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-odul { fill: none; stroke: var(--kl-cozgu); stroke-width: 5; stroke-dasharray: 7 9; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-rozet.kazanildi { fill: var(--kl-rozet); stroke: none; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-muhur.kazanildi { fill: var(--kl-muhur); stroke: none; }
+:where(.ezber-kilim, .kilim-lejant, .kilim-kart, .cip-basamak) .kl-altin { fill: none; stroke: var(--kl-b4); stroke-width: 3; }
+
+/* Açıklama (lejant). */
+.kilim-lejant { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; font-size: 0.9rem; }
+.kilim-lejant li { display: flex; align-items: center; gap: 0.55rem; margin: 0; }
+.kilim-lejant .kl-lejant-isaret { flex: none; width: 1.75rem; height: 1.75rem; }
+
+/* Kilim kartı: veli portalında «Ezber Kilimi», öğrenci kipinde «Kilimim». Geniş ekranda kilim solda, yanında özet,
+   son dinlemeler ve açıklama; telefonda alt alta. Şerit listesi kilimin metin karşılığıdır (katlanır). */
+.kilim-kart .kilim-aciklama { margin: 0 0 1rem; max-width: 70ch; }
+.kilim-kart .kilim-duzen { display: grid; gap: 1.1rem 1.75rem; align-items: start; }
+@media (min-width: 60rem) { .kilim-kart .kilim-duzen { grid-template-columns: minmax(0, 27rem) minmax(0, 1fr); } }
+.kilim-kart .kilim-cizim, .kilim-kart .kilim-yan { min-width: 0; }
+.kilim-kart .kilim-ozet { margin: 0; font-weight: 600; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.kilim-kart .kilim-yan > .kucuk { margin: 0.5rem 0 0; }
+.kilim-kart .kilim-lejant { font-size: 0.86rem; }
+.kilim-kart .kilim-dinlemeler .kl-notlar { flex-basis: 100%; }
+.kilim-kart .kilim-seritler { margin-top: 1.25rem; }
+.kilim-kart .kilim-seritler summary h3,
+.kilim-kart .kilim-seritler summary h3:first-of-type { font: inherit; letter-spacing: normal; text-transform: none; color: inherit; margin: 0; }
+/* Geniş ekranda şerit kutuları sütunlara dizilir: madde adı ile basamağı yan yana kalır. */
+.kilim-kart .kilim-seritler .govde { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); align-items: start; padding-bottom: 0.9rem; }
+.kilim-kart .kl-serit-kutu { padding: 0.75rem 0.85rem 0.55rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+.kilim-kart .kl-serit-kutu h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.7rem; margin: 0 0 0.5rem; font-size: 0.95rem; line-height: 1.35; }
+.kilim-kart .kl-sayac { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; color: var(--metin-2); font-variant-numeric: tabular-nums; }
+.kilim-kart .kl-oduller { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0 0 0.55rem; }
+.kilim-kart .rozet.kl-odul-rozet { --dr: var(--kl-rozet); }
+.kilim-kart .kl-maddeler { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+.kilim-kart .kl-maddeler li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.1rem 0.55rem; min-height: 1.9rem; font-size: 0.9rem; line-height: 1.35; }
+.kilim-kart .kl-maddeler .kl-lejant-isaret { flex: none; width: 1.5rem; height: 1.5rem; }
+.kilim-kart .kl-madde-ad { flex: 1 1 9rem; min-width: 0; }
+.kilim-kart .kl-basamak { font-size: 0.8rem; color: var(--metin-2); }
+.kilim-kart .kl-basamak.kl-t1 { color: var(--metin); }
+.kilim-kart .kl-basamak.kl-t2 { color: color-mix(in oklab, var(--kl-b2) 72%, var(--metin)); font-weight: 600; }
+.kilim-kart .kl-basamak.kl-t3 { color: color-mix(in oklab, var(--kl-b3) 72%, var(--metin)); font-weight: 600; }
+.kilim-kart .kl-basamak.kl-t4 { color: color-mix(in oklab, var(--kl-b4) 66%, var(--metin)); font-weight: 600; }
+
+/* Ezber Odası çiplerinde çocuğun basamağı: hoca tablosundaki işaretin aynısı (src/lib/ezber/isaret.ts); adı sr-only. */
+.cip-basamak { display: inline-flex; align-items: center; margin-inline-start: 0.1rem; }
+.cip-basamak .ez-isaret { width: 1.05rem; height: 1.05rem; }
+.cip-basamak[data-basamak="1"] { color: var(--kl-b1); }
+.cip-basamak[data-basamak="2"] { color: var(--kl-b2); }
+.cip-basamak[data-basamak="3"] { color: var(--kl-b3); }
+.cip-basamak[data-basamak="4"] { color: var(--kl-b4); }

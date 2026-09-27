@@ -1,0 +1,27 @@
+/* ÜRETİLDİ — elle düzenlemeyin: node scripts/ezber-motif-uret.mjs
+   Kaynak: src/assets/cizim/ezber-kilim/*.svg (Codex saf vektör çizimleri, 27 Eylül 2026; npm run denetim:svg).
+   Şekiller renk taşımaz; kilim.ts maddeyi basamağına göre boyar. */
+export interface Motif {
+  /** viewBox */
+  readonly kutu: string;
+  /** Renksiz şekiller (path / polygon / rect). */
+  readonly icerik: string;
+}
+
+export const MOTIFLER = Object.freeze({
+  "kenar-kocboynuzu": { kutu: "0 0 120 60", icerik: "<path fill-rule=\"evenodd\" d=\"M32 16 L44 16 L44 20 L56 20 L56 4 L20 4 L20 24 L0 24 L0 36 L88 36 L88 44 L76 44 L76 40 L64 40 L64 56 L100 56 L100 36 L120 36 L120 24 L32 24 Z\"/>" },
+  "kenar-kose": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M8 112 L112 112 L112 8 L8 8 Z M20 100 L20 20 L100 20 L100 100 Z M36 60 L60 84 L84 60 L60 36 Z\"/>" },
+  "hatem": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M44 24 L24 24 L24 44 L8 60 L24 76 L24 96 L44 96 L60 112 L76 96 L96 96 L96 76 L112 60 L96 44 L96 24 L76 24 L60 8 Z M72 72 L48 72 L48 48 L72 48 Z\"/>" },
+  "su-yolu": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M8 16 L36 44 L84 44 L112 16 L112 8 L96 8 L80 24 L40 24 L24 8 L8 8 Z M36 76 L84 76 L112 48 L112 40 L96 40 L80 56 L40 56 L24 40 L8 40 L8 48 Z M36 108 L84 108 L112 80 L112 72 L96 72 L80 88 L40 88 L24 72 L8 72 L8 80 Z\"/>" },
+  "mihrap": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M28 112 L28 64 L44 48 L60 32 L76 48 L92 64 L92 112 L112 112 L112 56 L96 40 L96 32 L80 32 L60 12 L40 32 L24 32 L24 40 L8 56 L8 112 Z M48 64 L60 76 L72 64 L60 52 Z\"/>" },
+  "bereket": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M68 24 L72 24 L72 32 L88 32 L88 8 L52 8 L52 32 L32 52 L24 52 L24 48 L32 48 L32 32 L8 32 L8 68 L32 68 L52 88 L52 96 L48 96 L48 88 L32 88 L32 112 L68 112 L68 88 L88 68 L96 68 L96 72 L88 72 L88 88 L112 88 L112 52 L88 52 L68 32 Z M44 60 L60 44 L76 60 L60 76 Z\"/>" },
+  "goz": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M60 112 L112 60 L60 8 L8 60 Z M60 92 L28 60 L60 28 L92 60 Z M48 60 L60 72 L72 60 L60 48 Z\"/>" },
+  "pitrak": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M8 8 L8 36 L20 36 L20 52 L36 52 L28 60 L36 68 L20 68 L20 84 L8 84 L8 112 L40 112 L40 96 L36 96 L36 84 L52 84 L60 92 L68 84 L84 84 L84 96 L80 96 L80 112 L112 112 L112 84 L100 84 L100 68 L84 68 L92 60 L84 52 L100 52 L100 36 L112 36 L112 8 L80 8 L80 24 L84 24 L84 36 L68 36 L60 28 L52 36 L36 36 L36 24 L40 24 L40 8 Z M72 60 L60 72 L48 60 L60 48 Z\"/>" },
+  "kandil": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M68 8 L52 8 L52 28 L44 28 L44 40 L28 40 L28 52 L12 52 L12 64 L28 64 L28 76 L44 76 L44 84 L76 84 L76 76 L92 76 L92 64 L108 64 L108 52 L92 52 L92 40 L76 40 L76 28 L68 28 Z M60 112 L72 100 L60 88 L48 100 Z\"/>" },
+  "hayat-agaci": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M52 24 L52 28 L44 28 L44 36 L32 36 L32 44 L24 44 L24 32 L8 32 L8 48 L20 48 L20 60 L32 60 L32 72 L44 72 L44 84 L52 84 L52 92 L44 92 L44 100 L36 100 L36 112 L84 112 L84 100 L76 100 L76 92 L68 92 L68 84 L76 84 L76 72 L88 72 L88 60 L100 60 L100 48 L112 48 L112 32 L96 32 L96 44 L88 44 L88 36 L76 36 L76 28 L68 28 L68 24 L72 20 L60 8 L48 20 Z M68 64 L72 64 L72 68 L68 68 Z M68 44 L72 44 L72 48 L68 48 Z M44 56 L36 56 L36 52 L44 52 Z M52 44 L52 48 L48 48 L48 44 Z M48 68 L48 64 L52 64 L52 68 Z M84 56 L76 56 L76 52 L84 52 Z\"/>" },
+  "muska": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M16 20 L104 20 L60 64 Z M60 28 L68 36 L60 44 L52 36 Z\"/><path d=\"M60 76 L72 88 L60 100 L48 88 Z\"/>" },
+  "muhur": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M24 8 L24 16 L16 16 L16 24 L8 24 L8 28 L12 28 L12 32 L8 32 L8 44 L12 44 L12 48 L8 48 L8 72 L12 72 L12 76 L8 76 L8 88 L12 88 L12 92 L8 92 L8 96 L16 96 L16 104 L24 104 L24 112 L28 112 L28 108 L32 108 L32 112 L44 112 L44 108 L48 108 L48 112 L72 112 L72 108 L76 108 L76 112 L88 112 L88 108 L92 108 L92 112 L96 112 L96 104 L104 104 L104 96 L112 96 L112 92 L108 92 L108 88 L112 88 L112 76 L108 76 L108 72 L112 72 L112 48 L108 48 L108 44 L112 44 L112 32 L108 32 L108 28 L112 28 L112 24 L104 24 L104 16 L96 16 L96 8 L92 8 L92 12 L88 12 L88 8 L76 8 L76 12 L72 12 L72 8 L48 8 L48 12 L44 12 L44 8 L32 8 L32 12 L28 12 L28 8 Z M84 60 L60 84 L36 60 L60 36 Z\"/>" },
+  "rozet": { kutu: "0 0 120 120", icerik: "<path fill-rule=\"evenodd\" d=\"M20 20 L20 32 L8 32 L8 88 L20 88 L20 100 L32 100 L32 112 L88 112 L88 100 L100 100 L100 88 L112 88 L112 32 L100 32 L100 20 L88 20 L88 8 L32 8 L32 20 Z M80 40 L96 40 L96 80 L80 80 L80 96 L40 96 L40 80 L24 80 L24 40 L40 40 L40 24 L80 24 Z M52 48 L48 48 L48 52 L40 60 L48 68 L48 72 L52 72 L60 80 L68 72 L72 72 L72 68 L80 60 L72 52 L72 48 L68 48 L60 40 Z\"/>" },
+}) satisfies Readonly<Record<string, Motif>>;
+
+export type MotifAdi = keyof typeof MOTIFLER;
