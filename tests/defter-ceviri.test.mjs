@@ -13,7 +13,7 @@ import { build } from 'esbuild';
 mkdirSync('node_modules/.cache', { recursive: true });
 const outfile = resolve('node_modules/.cache/defter-ceviri-test.mjs');
 await build({
-  stdin: { contents: 'export * from "./src/lib/defter-ceviri.ts"; export * from "./src/lib/defter-kaliplari.ts"; export { GELMEDI_NOTU } from "./src/lib/ders-defteri.ts"; export * from "./src/lib/ceviri-servisi.ts";', resolveDir: process.cwd() },
+  stdin: { contents: 'export * from "./src/lib/defter-ceviri.ts"; export * from "./src/lib/defter-kaliplari.ts"; export { GELMEDI_NOTU } from "./src/lib/ders-defteri.ts"; export * from "./src/lib/ceviri-servisi.ts"; export { defterSozlugu, defterCumlesi } from "./src/lib/ezber/metinler.ts";', resolveDir: process.cwd() },
   outfile, bundle: true, platform: 'node', format: 'esm', packages: 'external',
 });
 const m = await import(pathToFileURL(outfile).href);
@@ -52,6 +52,20 @@ test('ekrandaki her kalıp cümlesinin (çip, hazır kayıt, kanonik not) Frans�
   // Fransızca cümleler cinsiyetsiz: «il/elle» öznesi yok.
   const sozluk = m.kalipSozlugu(kuran, sonraki(kuran));
   for (const fr of Object.values(sozluk)) assert.doesNotMatch(fr, /\b(Il|Elle) /);
+});
+
+/* 27 Eyl 2026 — Ezber Kilimi Faz 1c: «Ezber dinlendi» defter cümlesi kalıptır; Fransızcası makineye gitmez. */
+test('ezber dinleme cümleleri kalıp sözlüğünde: 81 × 3 cümle her derste tanınır, serbest parçadan ayrılır', () => {
+  const ezber = m.defterSozlugu();
+  assert.equal(Object.keys(ezber).length, 243);
+  for (const d of [kuran, siyer]) {
+    const s = m.kalipSozlugu(d, sonraki(d));
+    for (const [tr, fr] of Object.entries(ezber)) assert.equal(s[tr], fr, tr);
+  }
+  const c = m.defterCumlesi('s-fatiha', 'az');
+  const parcalar = m.bolumle(`«${kuran.konu}» konusunu birlikte işledik. ${c.tr} Bugün biraz üşüttü ama gayretliydi.`, m.kalipSozlugu(kuran, sonraki(kuran)));
+  assert.deepEqual(parcalar.map((p) => Boolean(p.fr)), [true, true, false]);
+  assert.equal(parcalar[1].fr, c.fr);
 });
 
 test('bölümleme: kalıp cümleler tanınır, aradaki serbest cümle ayrı parça olur; makineye yalnız o gider', async () => {

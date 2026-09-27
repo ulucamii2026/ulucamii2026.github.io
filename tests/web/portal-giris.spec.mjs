@@ -28,6 +28,9 @@ async function bundle(kind) {
         b.onLoad({ filter: /.*/, namespace:'test' }, args => ({ contents:
           args.path === 'firebase/auth' ? authMock : args.path === 'firebase/firestore/lite'
           ? 'export const getFirestore = () => ({}); export const collection=()=>{throw Error("Girişten önce veri okunamaz")}; export const doc=collection, getDoc=collection, getDocs=collection, setDoc=collection, query=collection, where=collection, runTransaction=collection, serverTimestamp=collection, writeBatch=collection; export const Timestamp={};'
+          // 27 Eyl 2026 (Ezber Kilimi): hoca ekranı girişten sonra ezber panelini tam SDK ile yükler; girişten önce çağrılmaz.
+          : args.path === 'firebase/firestore'
+          ? 'const yok=()=>{throw Error("Girişten önce veri okunamaz")}; export const getFirestore=yok, initializeFirestore=yok, persistentLocalCache=yok, persistentMultipleTabManager=yok, collection=yok, doc=yok, getDoc=yok, getDocFromServer=yok, getDocs=yok, onSnapshot=yok, query=yok, where=yok, orderBy=yok, limit=yok, serverTimestamp=yok, deleteField=yok, writeBatch=yok, waitForPendingWrites=yok;'
           : 'export const firebaseUygulamasi = () => ({});', loader:'js' }));
       } }],
     });

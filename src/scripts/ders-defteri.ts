@@ -60,6 +60,13 @@ export function dersDefteri(
     /** 14 Eyl 2026 (Rıdvan): velinin iletişim dili Türkçe değilse kayıt kaydedilince çevirisi de yazılır
      *  (dersDefteri/{ref}/ceviriler). hedefDil(ref) → 'fr' | null; makine = serbest cümleler için çeviri ucu. */
     ceviri?: { hedefDil: (ref: string) => CeviriDili | null; makine: MakineCevirici };
+    /** 27 Eyl 2026 (Ezber Kilimi): «Ezber dinlendi» — seçili öğrenci için ezber dinleme paneli (hoca-ezber.ts) bu kaba
+     *  gömülür; kaydedilen dinlemenin cümlesi «Bugün sınıfta» alanına eklenir, geri alınınca çıkar. */
+    ezberDinle?: (
+      kap: HTMLElement,
+      ogrenci: Ogr,
+      yardim: { tarih: string; cumleEklendi: (tr: string) => void; cumleKaldirildi: (tr: string) => void; kapat: () => void },
+    ) => Promise<{ temizle(): void }>;
   },
 ) {
   const ac = new AbortController();
@@ -136,6 +143,49 @@ export function dersDefteri(
       .sort((a, b) => (hepsi[b].zaman || 0) - (hepsi[a].zaman || 0))
       .slice(0, 40);
     depoYaz(sonAnahtar, Object.fromEntries(kalanlar.map((i) => [i, hepsi[i]])));
+  };
+  /* Ezber dinleme (27 Eyl 2026): defter yeniden çizilince kap gider; önce kapatılır (canlı dinleme sızmasın). */
+  let ezberGomulu: { temizle(): void } | undefined;
+  let ezberSayac = 0;
+  const ezberKapat = () => {
+    ezberSayac++;
+    ezberGomulu?.temizle();
+    ezberGomulu = undefined;
+    const kap = root.querySelector<HTMLElement>("[data-dd-ezber-kap]");
+    if (kap) {
+      kap.hidden = true;
+      kap.innerHTML = "";
+    }
+    root.querySelector("[data-dd-ezber]")?.setAttribute("aria-expanded", "false");
+  };
+  const calismaAlani = () => root.querySelector<HTMLTextAreaElement>('[data-dd-form] textarea[name="calisma"]');
+  const calismaDegisti = (ta: HTMLTextAreaElement, bilgi: string) => {
+    kirli = true;
+    buyut(ta);
+    root
+      .querySelectorAll<HTMLButtonElement>('[data-dd-kalip="calisma"]')
+      .forEach((c) => c.setAttribute("aria-pressed", String(kalipVar(ta.value, c.dataset.metin || ""))));
+    const p = root.querySelector("[data-dd-durum]");
+    if (p) p.textContent = bilgi;
+  };
+  const ezberCumlesiEkle = (tr: string) => {
+    const ta = calismaAlani();
+    if (!ta) return;
+    const yeni = ta.value.trim() ? `${ta.value.trim()} ${tr}` : tr;
+    if (yeni.length > ta.maxLength) {
+      const p = root.querySelector("[data-dd-durum]");
+      if (p) p.textContent = "Ezber kaydedildi; ancak «Bugün sınıfta» alanı dolu olduğu için cümle eklenemedi. Notu kısaltıp elle ekleyin.";
+      return;
+    }
+    ta.value = yeni;
+    calismaDegisti(ta, "Ezber cümlesi deftere eklendi. Defteri kaydetmeyi unutmayın.");
+  };
+  const ezberCumlesiCikar = (tr: string) => {
+    const ta = calismaAlani();
+    const i = ta ? ta.value.lastIndexOf(tr) : -1;
+    if (!ta || i < 0) return;
+    ta.value = `${ta.value.slice(0, i)} ${ta.value.slice(i + tr.length)}`.replace(/\s{2,}/g, " ").trim();
+    calismaDegisti(ta, "Ezber cümlesi defterden çıkarıldı.");
   };
   /** Metin alanı içeriğe göre uzar; çipler eklerken kaydırma çubuğu çıkmaz. */
   const buyut = (ta: HTMLTextAreaElement) => {
@@ -409,6 +459,7 @@ export function dersDefteri(
   };
   const ciz = (taslak?: DersKaydi) => {
     if (kapali) return;
+    ezberKapat();
     if (gorunum === "eksikler") {
       root.innerHTML = eksiklerHtml();
       return;
@@ -451,7 +502,11 @@ export function dersDefteri(
             ? "Kısa notunuzu yazın…"
             : "Aşağıdaki kalıplara dokunun ya da kendi notunuzu yazın…";
       const deger = String(k?.[key] || "");
-      return `<label>${f.ad}<textarea name="${key}" maxlength="${f.max}" ${zorunlu ? "required" : ""} rows="${key === "calisma" ? 4 : 2}" placeholder="${e(ipucu)}">${e(deger)}</textarea></label>${kalipSatiri(key, deger)}`;
+      const ezberSatiri =
+        key === "calisma" && !gelmedi && opt.ezberDinle
+          ? `<div class="dd-kaliplar dd-ezber-satir"><div class="dd-kalip-grup"><span class="dd-kalip-ad">Ezber</span><button type="button" class="dd-kalip dd-ezber-dugme" data-dd-ezber aria-expanded="false" aria-controls="dd-ezber-kap">Ezber dinlendi…</button></div></div><div class="ez-kok ez-gomulu" id="dd-ezber-kap" data-dd-ezber-kap hidden></div>`
+          : "";
+      return `<label>${f.ad}<textarea name="${key}" maxlength="${f.max}" ${zorunlu ? "required" : ""} rows="${key === "calisma" ? 4 : 2}" placeholder="${e(ipucu)}">${e(deger)}</textarea></label>${kalipSatiri(key, deger)}${ezberSatiri}`;
     };
     /* Hazır kayıt: tek dokunuşla durum + standart notlar (yalnız boş alanlar). «Son kayıtla aynı»
        bu ders için en son kaydedilen notları kopyalar — sınıfın ortak ödevi bir kez yazılır. */
@@ -562,6 +617,7 @@ export function dersDefteri(
   root.addEventListener(
     "input",
     (ev) => {
+      if ((ev.target as HTMLElement).closest(".ez-kok")) return;
       if ((ev.target as HTMLElement).matches("[data-dd-ara]")) {
         ogrArama = (ev.target as HTMLInputElement).value;
         const sonuclar = root.querySelector<HTMLElement>("[data-dd-arama-sonuc]");
@@ -591,6 +647,7 @@ export function dersDefteri(
     "change",
     (ev) => {
       const t = ev.target as HTMLSelectElement;
+      if (t.closest(".ez-kok")) return;
       if (t.closest("[data-dd-form]")) {
         kirli = true;
         if (t.name === "giris") girisYaz(t.value);
@@ -634,7 +691,28 @@ export function dersDefteri(
     "click",
     async (ev) => {
       const b = (ev.target as HTMLElement).closest<HTMLButtonElement>("button");
-      if (!b || mesgul) return;
+      if (!b || mesgul || b.closest(".ez-kok")) return;
+      if (b.hasAttribute("data-dd-ezber")) {
+        const kap = root.querySelector<HTMLElement>("[data-dd-ezber-kap]");
+        const o = opt.ogrenciler.find((x) => x.ref === ref);
+        if (!kap || !o || !opt.ezberDinle) return;
+        if (!kap.hidden) {
+          ezberKapat();
+          return;
+        }
+        const benim = ++ezberSayac;
+        kap.hidden = false;
+        kap.innerHTML = '<p class="ez-bilgi" role="status">Ezber dinleme açılıyor…</p>';
+        b.setAttribute("aria-expanded", "true");
+        try {
+          const g = await opt.ezberDinle(kap, o, { tarih, cumleEklendi: ezberCumlesiEkle, cumleKaldirildi: ezberCumlesiCikar, kapat: () => { ezberKapat(); b.focus(); } });
+          if (benim !== ezberSayac || !kap.isConnected) g.temizle();
+          else ezberGomulu = g;
+        } catch {
+          if (benim === ezberSayac && kap.isConnected) kap.innerHTML = '<p class="not hata" role="status">Ezber dinleme açılamadı; bağlantınızı kontrol edip yeniden deneyin.</p>';
+        }
+        return;
+      }
       if (b.hasAttribute("data-dd-ogr-git") || b.hasAttribute("data-dd-gun-git")) {
         const ogrenci = b.hasAttribute("data-dd-ogr-git");
         const select = root.querySelector<HTMLSelectElement>(ogrenci ? "[data-dd-ogr]" : "[data-dd-gun]");
@@ -1056,6 +1134,7 @@ export function dersDefteri(
     temizle: () => {
       kapali = true;
       token++;
+      ezberKapat();
       ac.abort();
     },
   };

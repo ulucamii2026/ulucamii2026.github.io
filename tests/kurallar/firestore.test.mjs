@@ -591,6 +591,45 @@ test('Ezber deposu: durum ve olay tek toplu yazımda; iki telefonda farklı madd
   assert.throws(() => portal.ezberDeposu(teacher(), 'a/b'), /geçersiz/);
 });
 
+/* 27 Eyl 2026 — Faz 1c: «Geri al» yanlış dokunuşu iz bırakmadan geri alır (veli geçmişinde görünmez); araya başka
+   cihaz girdiyse hiçbir şey yazılmaz. */
+test('Ezber geri alma: yeni madde kalkar, ilerletme eski hâline döner, erken dinlemenin olayı silinir; başka cihaz girdiyse çakışma', async () => {
+  const A = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  const dokun = async (once, gecis) => ({ id: gecis.olay.ezber, once, gecis, bugun: ezGun, olayId: await A.uygula(gecis, A.olayKimligi()) });
+  // 1) İlk dinleme geri alınınca madde ve olayı kalmaz.
+  const d1 = await dokun(undefined, portal.dinle(undefined, 's-fatiha', 'tam', ezGun));
+  assert.equal((await A.olaylar()).length, 1);
+  await A.geriAl(d1, (await A.oku())['s-fatiha']);
+  assert.deepEqual(await A.oku(), {});
+  assert.deepEqual(await A.olaylar(), []);
+  // 2) «Yine de ilerlet» geri alınınca önceki basamak, kalite ve notlar döner; sürüm artmaya devam eder.
+  await A.uygula(portal.dinle(undefined, 's-ihlas', 'az', ezGun, { notlar: ['med'] }));
+  const once = (await A.oku())['s-ihlas'];
+  const d2 = await dokun(once, portal.dinle(once, 's-ihlas', 'tam', ezGun, { zorla: true, notlar: ['akici'] }));
+  assert.equal((await A.oku())['s-ihlas'].basamak, 3);
+  await A.geriAl(d2, (await A.oku())['s-ihlas']);
+  assert.deepEqual((await A.oku())['s-ihlas'], { ...once, surum: 3 });
+  assert.deepEqual((await A.olaylar()).map((x) => [x.ezber, x.basamakSonra]), [['s-ihlas', 2]]);
+  // 3) Erken dinleme yalnız olaydır: geri alma yalnız olayı siler, durum aynen kalır.
+  const ihlas = (await A.oku())['s-ihlas'];
+  const d3 = await dokun(ihlas, portal.dinle(ihlas, 's-ihlas', 'tam', ezGun));
+  assert.equal(d3.gecis.islem, 'olay');
+  await A.geriAl(d3, (await A.oku())['s-ihlas']);
+  assert.deepEqual((await A.oku())['s-ihlas'], ihlas);
+  assert.equal((await A.olaylar()).length, 1);
+  // 4) Dokunuştan sonra başka telefon aynı maddeyi değiştirdiyse geri alma yazmaz.
+  const d4 = await dokun(ihlas, portal.dinle(ihlas, 's-ihlas', 'tekrar', ezGun));
+  const B = portal.ezberDeposu(teacher(), 'ogrenci-a');
+  const araya = (await B.oku())['s-ihlas'];
+  await B.uygula(portal.dinle(araya, 's-ihlas', 'tam', ezGun));
+  const simdi = (await A.oku())['s-ihlas'];
+  await assert.rejects(() => A.geriAl(d4, simdi), (e) => e.message === portal.EZBER_CAKISMA);
+  // Eski ekran (sürümü geride) de yazamaz: kural reddeder, depo çakışma diye ayırır.
+  await assert.rejects(() => A.geriAl(d4, araya), (e) => e.message === portal.EZBER_CAKISMA);
+  assert.deepEqual((await A.oku())['s-ihlas'], simdi);
+  assert.equal((await A.olaylar()).length, 3);
+});
+
 test('Ezber geçişi uçtan uca: eski ilerleme → ezberDurum; hocanın yeni kaydı ezilmez; ikinci koşu boş; eski alan durur', async () => {
   await env.withSecurityRulesDisabled(async (c) => {
     await setDoc(doc(c.firestore(), 'ilerleme/ogrenci-a'), { kuranAdim: 3, ezber: { 'Fâtiha': 'ogrendi', 'Kevser; Asr; Nasr': 'tekrar', 'İhlâs': 'baslamadi', 'Tebbet': '' } });

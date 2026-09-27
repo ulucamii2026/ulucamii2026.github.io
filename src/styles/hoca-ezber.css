@@ -1,0 +1,274 @@
+/* Ezber Kilimi — hoca ekranı «Ezber» sekmesi ve defterdeki dinleme (27 Eylül 2026, Faz 1c).
+   Kilim Kartografyası jetonları (global.css): kâğıt zemin, kiremit/İznik vurgu, Lora başlık, Plex Mono etiket.
+   Telefon önce: dokunma hedefi ≥ 44 px; üç kalite düğmesi tek elle, başparmak boyunda. Renk tek başına bilgi
+   taşımaz: basamak işaretinin biçimi farklıdır (src/lib/ezber/isaret.ts), düğmeler metin taşır.
+   Kapsam: .ez-kok (sekme kökü ve defterdeki gömülü dinleme). */
+
+.ez-kok {
+  --ez-b0: color-mix(in oklab, var(--metin-2) 50%, var(--zemin));
+  --ez-b1: var(--metin-2);
+  --ez-b2: var(--vurgu-2);
+  --ez-b3: var(--color-adacayi-koyu);
+  --ez-b4: color-mix(in srgb, var(--color-ochre) 62%, var(--color-ceviz));
+  --ez-tam: var(--color-adacayi);
+  --ez-az: var(--vurgu-2);
+  --ez-tekrar: var(--color-ochre);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ez-kok { --ez-b3: var(--color-adacayi-acik); --ez-b4: var(--color-ochre-acik); }
+}
+:root[data-theme="dark"] .ez-kok { --ez-b3: var(--color-adacayi-acik); --ez-b4: var(--color-ochre-acik); }
+
+/* ── başlık, bağlantı rozeti, görünüm seçici ── */
+.ez-kok .ez-ust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.9rem; }
+.portal .ez-kok .ez-ust h2 { margin: 0; }
+.ez-kok .ez-gun { font-family: var(--font-sans); font-weight: 500; }
+.ez-kok .ez-baglanti-kap { margin: 0; }
+.ez-kok .ez-baglanti {
+  --dr: var(--cizgi-etkilesim);
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.7rem; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 600; font-variant-numeric: tabular-nums;
+  border: 1px solid color-mix(in oklab, var(--dr) 36%, var(--cizgi));
+  background: color-mix(in oklab, var(--dr) 10%, var(--zemin));
+  color: color-mix(in oklab, var(--dr) 55%, var(--metin));
+}
+.ez-kok .ez-baglanti .simge { width: 1rem; height: 1rem; flex: none; }
+.ez-kok .ez-baglanti.tamam { --dr: var(--color-adacayi); }
+.ez-kok .ez-baglanti.bekliyor { --dr: var(--color-ochre); }
+.ez-kok .ez-baglanti.hata { --dr: var(--color-kiremit); }
+
+.ez-kok .ez-gorunum {
+  display: inline-flex; gap: 2px; padding: 3px; margin: 0 0 1rem;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin-2);
+}
+.ez-kok .ez-gorunum-dugme {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; min-height: 44px; padding: 0.35rem 1.15rem;
+  font: inherit; font-size: 0.92rem; font-weight: 600; color: var(--metin-2);
+  border: 0; border-radius: 999px; background: transparent; cursor: pointer;
+}
+.ez-kok .ez-gorunum-dugme:hover { color: var(--metin); }
+.ez-kok .ez-gorunum-dugme[aria-pressed="true"] { background: var(--zemin); color: var(--metin); box-shadow: 0 1px 3px rgb(36 32 28 / 0.14), 0 0 0 1px var(--cizgi); }
+.ez-kok .ez-sayi {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 1.4rem; height: 1.4rem; padding: 0 0.35rem;
+  border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  background: color-mix(in oklab, var(--color-ochre) 20%, var(--zemin));
+  color: color-mix(in oklab, var(--color-ochre) 45%, var(--metin));
+}
+.ez-kok .ez-bilgi { margin: 0 0 0.8rem; font-size: 0.88rem; line-height: 1.5; color: var(--metin-2); max-width: 70ch; }
+
+/* ── öğrenci kartları (Bugün, Tekrar) ── */
+.ez-kok .ez-liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--cizgi); }
+.ez-kok .ez-kart { border-bottom: 1px solid var(--cizgi); }
+.ez-kok .ez-kart[data-acik] { background: color-mix(in oklab, var(--vurgu-2) 5%, var(--zemin)); }
+.ez-kok .ez-kart-bas {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "ad rozet ok" "alt rozet ok";
+  align-items: center; gap: 0.15rem 0.75rem; width: 100%; min-height: 60px; padding: 0.7rem 0.5rem;
+  font: inherit; text-align: start; color: var(--metin); background: none; border: 0; cursor: pointer;
+}
+.ez-kok .ez-kart-bas:hover { background: var(--zemin-2); }
+.ez-kok .ez-kart[data-acik] .ez-kart-bas:hover { background: transparent; }
+.ez-kok .ez-kart-ad { grid-area: ad; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.ez-kok .ez-kart-alt { grid-area: alt; font-size: 0.86rem; color: var(--metin-2); line-height: 1.4; }
+.ez-kok .ez-etiket-yan {
+  display: inline-block; margin-inline-start: 0.35rem; padding: 0.05rem 0.45rem; vertical-align: 0.1em;
+  font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); color: var(--metin-2);
+}
+.ez-kok .ez-rozet {
+  grid-area: rozet; display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap;
+  font-size: 0.78rem; font-weight: 600; font-variant-numeric: tabular-nums;
+  background: color-mix(in oklab, var(--color-ochre) 16%, var(--zemin));
+  color: color-mix(in oklab, var(--color-ochre) 42%, var(--metin));
+  border: 1px solid color-mix(in oklab, var(--color-ochre) 40%, var(--cizgi));
+}
+.ez-kok .ez-rozet .simge { width: 0.9rem; height: 0.9rem; }
+.ez-kok .ez-kart-ok { grid-area: ok; display: inline-flex; color: var(--metin-2); }
+.ez-kok .ez-kart-ok .simge { width: 1.1rem; height: 1.1rem; }
+.ez-kok .ez-kart-bas[aria-expanded="true"] .ez-kart-ok { transform: rotate(90deg); }
+.ez-kok .ez-tarih { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--metin); }
+.ez-kok .ez-dinle { padding: 0 0.5rem 1rem; }
+
+/* ── dinleme paneli ── */
+.ez-kok .ez-etiket {
+  display: block; margin: 0.9rem 0 0.45rem; padding: 0;
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--metin-2);
+}
+.ez-kok .ez-dinle-ic > .ez-bolum:first-child .ez-etiket { margin-top: 0.2rem; }
+.ez-kok .ez-etiket-ek { text-transform: none; letter-spacing: 0; font-family: var(--font-sans); font-weight: 500; font-size: 0.78rem; margin-inline-start: 0.35rem; }
+.ez-kok .ez-oneriler { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.ez-kok .ez-oneri {
+  display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; padding: 0.3rem 0.8rem 0.3rem 0.55rem;
+  font: inherit; font-size: 0.92rem; line-height: 1.25; text-align: start; color: var(--metin);
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); cursor: pointer;
+}
+.ez-kok .ez-oneri:hover { border-color: var(--metin-2); background: var(--zemin-2); }
+.ez-kok .ez-oneri[aria-pressed="true"] {
+  font-weight: 600;
+  border-color: color-mix(in oklab, var(--vurgu-2) 62%, var(--cizgi));
+  background: color-mix(in oklab, var(--vurgu-2) 12%, var(--zemin));
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--vurgu-2) 40%, transparent);
+}
+.ez-kok .ez-oneri-et { font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--metin-2); }
+.ez-kok .ez-baska { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; margin: 0.65rem 0 0; font-size: 0.85rem; font-weight: 600; }
+/* Seçim kutusu en uzun seçenek kadar genişler; telefonda kabı taşırmasın (27 Eyl 2026 ekran testi: 517 px). */
+.ez-kok select { max-width: 100%; min-width: 0; }
+.ez-kok .ez-baska select { flex: 1 1 14rem; width: auto; min-height: 44px; }
+.ez-kok .ez-madde-durum {
+  display: flex; align-items: flex-start; gap: 0.55rem; margin: 0.9rem 0 0; padding: 0.65rem 0.8rem;
+  font-size: 0.93rem; line-height: 1.45; border-radius: var(--radius-kose); background: var(--zemin-2);
+}
+.ez-kok .ez-madde-durum .ez-isaret-kap { margin-top: 0.05rem; }
+.ez-kok .ez-vade { color: color-mix(in oklab, var(--color-kiremit) 82%, var(--metin)); font-weight: 600; }
+.ez-kok .ez-zorla {
+  display: flex; align-items: flex-start; gap: 0.6rem; margin: 0.7rem 0 0; padding: 0.6rem 0.75rem;
+  font-size: 0.9rem; font-weight: 500; line-height: 1.45;
+  border: 1px dashed color-mix(in oklab, var(--color-ochre) 60%, var(--cizgi)); border-radius: var(--radius-kose);
+}
+.ez-kok .ez-zorla input { width: 1.25rem; height: 1.25rem; margin: 0.05rem 0 0; flex: none; accent-color: var(--vurgu-2); }
+.ez-kok .ez-notlar { border: 0; margin: 0; padding: 0; min-width: 0; }
+.ez-kok .ez-not-cipler { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.ez-kok .ez-not {
+  display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; padding: 0.3rem 0.85rem;
+  font: inherit; font-size: 0.88rem; font-weight: 500; color: var(--metin);
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); cursor: pointer;
+}
+.ez-kok .ez-not:hover:not(:disabled) { border-color: var(--metin-2); background: var(--zemin-2); }
+.ez-kok .ez-not[aria-pressed="true"] {
+  font-weight: 600;
+  background: color-mix(in oklab, var(--vurgu) 14%, var(--zemin));
+  border-color: color-mix(in oklab, var(--vurgu) 55%, var(--cizgi));
+  color: color-mix(in oklab, var(--vurgu) 72%, var(--metin));
+}
+.ez-kok .ez-not .simge { width: 0.95rem; height: 0.95rem; }
+.ez-kok .ez-not:disabled { opacity: 0.5; cursor: not-allowed; }
+.ez-kok .ez-not-onizleme { margin: 0.55rem 0 0; font-size: 0.86rem; line-height: 1.5; color: var(--metin-2); }
+
+.ez-kok .ez-kaliteler { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; margin: 1.1rem 0 0; }
+.ez-kok .ez-k {
+  --dr: var(--ez-tam);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem;
+  min-height: 4.4rem; padding: 0.55rem 0.4rem; font: inherit; text-align: center; cursor: pointer;
+  border: 1.5px solid color-mix(in oklab, var(--dr) 58%, var(--cizgi));
+  border-radius: calc(var(--radius-kose) + 2px);
+  background: color-mix(in oklab, var(--dr) 15%, var(--zemin));
+  color: color-mix(in oklab, var(--dr) 55%, var(--metin));
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--dr) 30%, transparent);
+}
+.ez-kok .ez-k.az { --dr: var(--ez-az); }
+.ez-kok .ez-k.tekrar { --dr: var(--ez-tekrar); }
+.ez-kok .ez-k:hover { background: color-mix(in oklab, var(--dr) 24%, var(--zemin)); }
+.ez-kok .ez-k-ad { font-size: 1.06rem; font-weight: 700; line-height: 1.2; }
+.ez-kok .ez-k-alt { font-size: 0.78rem; font-weight: 500; line-height: 1.25; color: color-mix(in oklab, var(--dr) 40%, var(--metin)); }
+
+.ez-kok .ez-sonuc {
+  --dr: var(--color-adacayi);
+  margin: 0.8rem 0 0; padding: 0.65rem 0.8rem; border-radius: var(--radius-kose);
+  border: 1px solid color-mix(in oklab, var(--dr) 38%, var(--cizgi));
+  background: color-mix(in oklab, var(--dr) 11%, var(--zemin));
+}
+.ez-kok .ez-sonuc.geri { --dr: var(--vurgu-2); }
+.ez-kok .ez-sonuc.hata { --dr: var(--color-kiremit); }
+.ez-kok .ez-sonuc.buyuk { margin-top: 1rem; padding: 0.95rem 1rem; }
+.ez-kok .ez-sonuc-metin { display: flex; align-items: flex-start; gap: 0.55rem; margin: 0; font-size: 0.92rem; line-height: 1.5; color: color-mix(in oklab, var(--dr) 30%, var(--metin)); }
+.ez-kok .ez-sonuc.buyuk .ez-sonuc-metin { font-size: 1rem; }
+.ez-kok .ez-sonuc-metin > .simge { width: 1.2rem; height: 1.2rem; flex: none; margin-top: 0.1rem; color: color-mix(in oklab, var(--dr) 75%, var(--metin)); }
+.ez-kok .ez-sonuc-dugmeler { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.65rem; }
+
+.ez-kok .ez-ikincil {
+  display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0.4rem 0.9rem;
+  font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--metin);
+  border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); cursor: pointer;
+}
+.ez-kok .ez-ikincil:hover { border-color: var(--metin-2); background: var(--zemin-2); }
+.ez-kok .ez-ikincil .simge { width: 1rem; height: 1rem; flex: none; }
+.ez-kok .ez-alt-eylem { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.6rem 1.2rem; margin-top: 1.1rem; padding-top: 0.8rem; border-top: 1px dashed var(--cizgi); }
+.ez-kok .ez-elle { flex: 1 1 16rem; }
+.ez-kok .ez-elle summary { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.88rem; font-weight: 600; color: var(--metin-2); cursor: pointer; }
+.ez-kok .ez-elle summary:hover { color: var(--metin); }
+.ez-kok .ez-elle-ic { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.5rem 0.7rem; padding: 0.2rem 0 0.2rem; }
+.ez-kok .ez-elle-ic label { margin: 0; flex: 1 1 12rem; min-width: 0; }
+.ez-kok .ez-elle-ic label span { display: block; margin-bottom: 0.25rem; }
+.ez-kok .ez-elle-ic select { min-height: 44px; }
+.ez-kok .ez-elle-ic .kucuk { flex-basis: 100%; margin: 0.2rem 0 0; }
+
+/* ── basamak işareti (dokuma göz) ── */
+.ez-kok .ez-isaret { width: 20px; height: 20px; flex: none; display: block; }
+.ez-kok .ez-isaret.b0 { color: var(--ez-b0); }
+.ez-kok .ez-isaret.b1 { color: var(--ez-b1); }
+.ez-kok .ez-isaret.b2 { color: var(--ez-b2); }
+.ez-kok .ez-isaret.b3 { color: var(--ez-b3); }
+.ez-kok .ez-isaret.b4 { color: var(--ez-b4); }
+.ez-kok .ez-isaret-kap { position: relative; display: inline-grid; place-items: center; flex: none; }
+/* Kontrol günü gelen madde: köşede kiremit nokta (erişilebilir adda da yazılı). */
+.ez-kok .ez-isaret-kap.vadeli::after {
+  content: ""; position: absolute; top: -3px; right: -4px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--color-kiremit); box-shadow: 0 0 0 2px var(--zemin);
+}
+
+/* ── tablo ── */
+.ez-kok .ez-tablo-ust { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0.8rem 1.4rem; margin-bottom: 0.9rem; }
+.ez-kok .ez-serit { display: flex; flex-direction: column; gap: 0.3rem; margin: 0; flex: 1 1 18rem; min-width: 0; max-width: 30rem; }
+.ez-kok .ez-serit select { min-height: 44px; }
+.ez-kok .ez-lejant { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 0.95rem; font-size: 0.8rem; color: var(--metin-2); }
+.ez-kok .ez-lejant li { display: inline-flex; align-items: center; gap: 0.35rem; }
+.ez-kok .ez-tablo-kap { overflow-x: auto; max-width: 100%; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); overscroll-behavior-x: contain; }
+.ez-kok .ez-tablo { border-collapse: separate; border-spacing: 0; font-size: 0.86rem; }
+.ez-kok .ez-tablo th, .ez-kok .ez-tablo td { padding: 0.2rem 0.25rem; border-bottom: 1px solid var(--cizgi); text-align: center; vertical-align: middle; }
+.ez-kok .ez-tablo tbody tr:last-child > * { border-bottom: 0; }
+.ez-kok .ez-tablo thead th { vertical-align: bottom; padding: 0.55rem 0.3rem; font-size: 0.72rem; font-weight: 600; line-height: 1.25; color: var(--metin-2); min-width: 4.6rem; max-width: 6.6rem; }
+/* Sitenin genel th'si eşaralıklı büyük harftir; madde ve öğrenci adları olağan yazımla daha kolay taranır. Tireli
+   ad («Kelime-i Tevhid») tireden bölünmez (27 Eyl 2026 telefon incelemesi: «KELİME- / İ / TEVHİD»). */
+.ez-kok .ez-tablo th { font-family: var(--font-sans); text-transform: none; letter-spacing: 0; }
+.ez-kok .ez-tablo thead th span { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: normal; hyphens: none; }
+.ez-kok .ez-nw { white-space: nowrap; }
+.ez-kok .ez-tablo .ez-tablo-ogr {
+  position: sticky; inset-inline-start: 0; z-index: 1; min-width: 8.5rem; max-width: 11rem; padding-inline: 0.7rem 0.6rem;
+  text-align: start; white-space: normal; font-weight: 600; color: var(--metin); background: var(--zemin); box-shadow: 1px 0 0 var(--cizgi);
+}
+.ez-kok .ez-tablo thead .ez-tablo-ogr { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--metin-2); }
+.ez-kok .ez-hucre {
+  position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 1px solid transparent; border-radius: var(--radius-kose); background: transparent; cursor: pointer;
+}
+.ez-kok .ez-hucre:hover { background: var(--zemin-2); border-color: var(--cizgi); }
+.ez-kok .ez-hucre[aria-pressed="true"] { border-color: var(--vurgu-2); background: color-mix(in oklab, var(--vurgu-2) 12%, var(--zemin)); }
+.ez-kok .ez-tablo-dinle {
+  margin-top: 1rem; padding: 0.4rem 0.9rem 0.2rem; border-radius: var(--radius-kose);
+  border: 1px solid color-mix(in oklab, var(--vurgu-2) 32%, var(--cizgi));
+  background: color-mix(in oklab, var(--vurgu-2) 4%, var(--zemin));
+}
+.ez-kok .ez-tablo-dinle-bas { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding-top: 0.4rem; }
+.portal .ez-kok .ez-tablo-dinle-bas h3 { margin: 0; font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--metin); }
+.ez-kok .ez-tablo-dinle .ez-dinle { padding: 0 0 0.8rem; }
+
+/* ── defterdeki gömülü dinleme ── */
+.ez-kok.ez-gomulu { margin: 0.2rem 0 1.1rem; padding: 0.6rem 0.9rem 0.3rem; border-radius: var(--radius-kose); border: 1px solid color-mix(in oklab, var(--vurgu-2) 32%, var(--cizgi)); background: color-mix(in oklab, var(--vurgu-2) 4%, var(--zemin)); }
+.ez-kok .ez-ust-kucuk { margin-bottom: 0.2rem; }
+.ez-kok .ez-ust-kucuk h3 { display: flex; align-items: center; gap: 0.45rem; margin: 0; font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--metin); flex: 1 1 14rem; }
+.ez-kok .ez-ust-kucuk h3 .simge, .ez-kok .ez-ust h2 .simge { color: var(--vurgu); }
+.ez-kok.ez-gomulu .ez-dinle { padding: 0; }
+
+/* ── odak, hareket, telefon ── */
+.ez-kok :is(button, select, summary, [tabindex="0"]):focus-visible { outline: 2px solid var(--vurgu-2); outline-offset: 2px; }
+.ez-kok .ez-hucre:focus-visible { outline-offset: -2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .ez-kok .ez-kart-ok { transition: transform 180ms cubic-bezier(.16, 1, .3, 1); }
+  .ez-kok .ez-k { transition: background-color 120ms ease-out, transform 90ms ease-out; }
+  .ez-kok .ez-k:active { transform: scale(0.97); }
+  .ez-kok .ez-sonuc { animation: ez-sonuc-belir 260ms cubic-bezier(.16, 1, .3, 1) both; }
+  @keyframes ez-sonuc-belir { from { opacity: 0.4; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+@media (max-width: 600px) {
+  .portal .bolum.ez-kok { padding: 1rem 0.85rem; }
+  .ez-kok .ez-gorunum { display: flex; }
+  .ez-kok .ez-gorunum-dugme { flex: 1 1 0; padding-inline: 0.5rem; }
+  .ez-kok .ez-kart-bas { padding-inline: 0.2rem; }
+  .ez-kok .ez-dinle { padding-inline: 0.1rem; }
+  .ez-kok .ez-k { min-height: 4.6rem; }
+  .ez-kok .ez-k-ad { font-size: 1rem; }
+  .ez-kok .ez-tablo-dinle { padding-inline: 0.65rem; }
+}
+
+/* Öğrenci kartındaki ezber özeti (hoca-ekrani.ts «Öğrenciler»): kontrol günü gelen madde sayısı kiremit. */
+.portal .devam-satir .ogr-ezber-vade { color: color-mix(in oklab, var(--color-kiremit) 80%, var(--metin)); }
+.portal .devam-satir .ogr-ezber-vade b { color: inherit; }

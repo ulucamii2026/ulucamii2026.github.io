@@ -98,7 +98,7 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 |---|---|
 | `src/lib/ezber/durum.ts` | Saf durum makinesi (`dinle`, `ata`, `elleBasamak`, `duzelt`, `gecisDurumu`), okuma süzgeçleri (`ezberDurumuOku`, `olayOku`), `kontrolSirasi`, `gorunenBasamak`, bölüm ve ödül özeti |
 | `src/lib/ezber/gecis.ts` | Eski `ilerleme.ezber` → yazılacak geçişler (saf) |
-| `src/lib/ezber/depo.ts` | Firestore: `ezberDeposu(db, ref)` (`oku`, `uygula`, `olaylar`), `ezberSinifi`, `eskiKayitlariTasi`; tam SDK |
+| `src/lib/ezber/depo.ts` | Firestore: `ezberDeposu(db, ref)` (`oku`, `uygula`, `olayKimligi`, `geriAl`, `olaylar`), `ezberSinifi`, `eskiKayitlariTasi`; tam SDK |
 | `firebase/firestore.rules` | `ezberDurum/{ref}` + `olaylar`; `evCalismalari` katalog kimlikleri |
 | `tests/ezber-durum.test.mjs`, `tests/kurallar/firestore.test.mjs` | Makine ve plan testleri; kural, depo, geçiş ve silme testleri (emülatör) |
 
@@ -174,6 +174,64 @@ Planın eski yazımları git geçmişinden çıkarıldı (`src/data/yillik-plan-
 yeniden üretildiğinde (müfredat değişikliği) kaybolan her dize `eskiPlan`'a eklenir; test, `eskiPlan` anahtarlarının
 bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini denetler.
 
+## Hoca ekranı: «Ezber» sekmesi (Faz 1c, 27 Eylül 2026)
+
+| Dosya | Sorumluluk |
+|---|---|
+| `src/scripts/hoca-ezber.ts` | Sekme (`ezberPaneli`: Bugün · Tekrar · Tablo), sekme ile defterin ortak dinleme paneli, sınıf deposu (tek canlı dinleme), bağlantı rozeti |
+| `src/styles/hoca-ezber.css` | `.ez-kok` kapsamı; basamak renkleri `--ez-b0…b4` Kilim jetonlarından; açık/koyu tema |
+| `src/lib/ezber/metinler.ts` | Basamak adları, veliye giden yumuşak karşılıklar ve 8 not kalıbı (5 dil); defter cümlesi ve Fransızca sözlüğü |
+| `src/lib/ezber/oneri.ts` | Öğrenci önerisi: kontrol günü gelenler → Çalışıyor → sıradaki (önce plan hedefi, sonra katalog sırası) |
+| `src/lib/ezber/isaret.ts` | Kilim basamak işareti (20 px SVG); basamak renkle birlikte biçimle de okunur |
+| `src/lib/firebase-tam.ts` | Tam Firestore SDK'sı (kalıcı önbellek, çok sekme); yalnız ezber paneli yükler, hoca ekranının geri kalanı lite kalır |
+
+**Sınıfta akış (telefon):**
+
+1. **Bugün:** yoklamada «Var» ya da «Geç» işaretli öğrenciler. Yoklama henüz işaretlenmediyse ya da gün ders günü
+   değilse bütün aktif öğrenciler gelir; ekranda bunun açıklaması yazar. Karta dokunulunca kart yerinde açılır; açılır
+   pencere yoktur.
+2. **Madde seçimi:** önce kontrol günü gelen madde (en eskisi), sonra Çalışıyor, sonra sıradaki madde önerilir.
+   «Başka madde» ile katalogdan herhangi bir madde seçilebilir.
+3. **Kayıt:** isteğe bağlı veliye not çipleri seçilir (en çok 3; «Veli görecek:» önizlemesi çıkar). Sonra üç büyük
+   düğmeden biri: **Tam · Az hatalı · Tekrar gelsin**.
+   - Her düğmenin altında sonucu yazar («→ Pekişti», «Basamak değişmez»).
+   - Dokunuş kaydeder; ikinci bir onay istenmez.
+4. **Geri al:** sonuç kartında «Kaydedildi» ya da «Telefonda tutuluyor» yazar, odak «Geri al»a gelir.
+   - Geri alma, tek toplu yazımda önceki durumu döndürür (sürüm + 1) ya da kaydı kaldırır; yanlış olayı da siler.
+   - Veli geçmişinde iz kalmaz.
+   - Arada başka bir cihaz aynı maddeyi değiştirdiyse geri alma yapılmaz; `EZBER_CAKISMA` iletisi çıkar ve ekran
+     güncel durumu gösterir.
+5. **Erken dinleme:** kontrol günü gelmemiş 2. ya da 3. basamakta «Tam» ve «Az hatalı» basamağı değiştirmez.
+   «Kontrol günü … gelmedi; … yine de ilerletsin» kutusu işaretlenirse ilerletir; olayda `zorla: true` kalır.
+6. **Tekrar:** kontrol günü gelen maddeler listelenir, en eskisi önce. Düğmedeki sayı madde sayısını gösterir;
+   yoklamada gelmediği görünen öğrenci «bugün yok» etiketi alır.
+7. **Tablo:** şerit × öğrenci. Varsayılan şerit, plandaki son sınıf hedefinin şerididir.
+   - Hücrenin erişilebilir adı «Ad Soyad — Madde: Basamak[, kontrol günü geldi]» biçimindedir.
+   - Hücreye dokununca aynı dinleme paneli ve «Basamağı elle düzelt» açılır.
+   - Elle düzeltmenin olay türü `duzeltme`dir; kontrol günü basamaktan yeniden hesaplanır.
+8. **Bağlantı yokken:** tam SDK yazımı telefondaki önbelleğe koyar ve ekran hemen güncellenir.
+   - Başlıktaki rozet «Bağlantı yok · N kayıt telefonda bekliyor» der; bağlantı gelince kayıtlar gönderilir.
+   - Hoca girişinden sonra `ezberOnYukle`, önceki oturumdan telefonda kalan yazımları sekme açılmadan gönderir.
+   - Çıkışta önbellek silinmez: içinde yalnız öğrenci kimliği ve basamaklar vardır, ad yoktur.
+9. **Defter:** «Bugün sınıfta» alanının altındaki «Ezber dinlendi…» aynı paneli defterin içinde açar.
+   - Kaydedilen dinlemenin cümlesi alana eklenir (ör. «Ezber — Eûzü-Besmele: çok güzel okudu.»); dinleme geri
+     alınınca cümle de çıkar.
+   - Fransızca aileye giden bülten çevirisi bu cümleyi kalıp sözlüğünden alır, makineye göndermez.
+   - Olayın günü defterin günüdür (bugünden eskiyse).
+10. **Öğrenci kartı:** basamak sayıları, kontrol günü gelen madde sayısı ve «Ezber sekmesinde aç» düğmesi.
+    - Eski ezber tablosu kalktı. «İlerlemeyi kaydet», `ilerleme.ezber`'i okunduğu gibi geri yazar; geçişin kaynağı
+      korunur.
+    - WhatsApp karnesi `ezberDurum`'dan kurulur: «Hocaya okudu» ve üstü, katalog sırasıyla, velinin dilinde.
+
+**Sınama:**
+
+- `tests/web/hoca-ezber.spec.mjs`: sahte tam SDK `tests/web/helpers/mektep.mjs` → `firestoreTam` içindedir.
+  Bağlantı `__ezberBaglantiKes()` / `__ezberBaglan()` ile kesilip açılır; iki telefon çakışması `__ezberReddet` ile
+  kurulur.
+- `tests/kurallar/firestore.test.mjs`: geri almanın dört senaryosu, emülatörde.
+- `tests/ezber-metin.test.mjs`: metinler.
+- `tests/defter-ceviri.test.mjs`: 243 defter cümlesinin Fransızcası.
+
 ## Bilinen açıklar (27 Eylül 2026)
 
 - `public/media/ses/dualar/rabbena.mp3`: kaynak kaydı yok ve Diyanet'in özgün «Rabbenâ duaları» dosyasıyla aynı kayıt
@@ -192,9 +250,9 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
   yaklaştırır. Sınır aşılırsa döküm hiçbir şey silmez ve yönetici bakımı ister (mevcut davranış).
 - `ezberUyeleri` (genel cemaat hesabı) ve `oneriler` (seviye testinden öneri) Faz 3'e kaldı: yazanı olmayan alan kurala
   girmedi.
-- **Faz 1c için tuzak:** bugünkü hoca ekranı `ilerleme/{ref}`'i `setDoc` ile **bütün olarak** yazıyor (ezber seçimleri
-  dahil). Eski ezber formu kalkınca bu kayıt `ezber` alanını silmemeli: ilerleme kaydı `ezber`'i okunduğu gibi
-  korumalı (geçiş öncesi veri kaybı olur).
+- **Faz 1c tuzağı (çözüldü, 27 Eylül 2026):** hoca ekranı `ilerleme/{ref}`'i `setDoc` ile **bütün olarak** yazar.
+  Eski ezber formu kalktı; ilerleme kaydı `ezber` alanını okunduğu gibi geri yazar, geçiş öncesinde veri kaybolmaz.
+  Ekran testi bunu korur.
 - Eski Ezber Odası'nın Arapça metinleri Diyanet yazımında değil (genel mushaf yazımı); Faz 2'de katalog metinleri
   resmî yayından alınınca Ezber Odası da kataloğa bağlanır. Fâtiha'nın **âyet numaraları** 27 Eylül 2026'da Medine
   sayımından Diyanet (Kûfe) sayımına çevrildi: besmele ﴿١﴾, «…الضالين» ﴿٧﴾ (portal besmeleyi serlevhada gösterir,

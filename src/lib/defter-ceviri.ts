@@ -32,6 +32,7 @@ import {
 import type { DefterDersi, DersKaydi } from "./ders-defteri";
 import { GELMEDI_NOTU, dersDurumlari, refPaketleri } from "./ders-defteri";
 import { defterKaliplari, hazirKayitlar } from "./defter-kaliplari";
+import { defterSozlugu } from "./ezber/metinler";
 import konuFrVeri from "../data/ders-konu-fr";
 
 export type CeviriDili = "fr";
@@ -188,9 +189,13 @@ function dersSozlugu(d: DefterDersi, sonraki?: DefterDersi | null): Record<strin
   if (sonraki) s[`Sıradaki konu: «${sonraki.konu}».`] = `Prochain thème : « ${konuFr(sonraki.konu)} ».`;
   return s;
 }
-/** Bir dersin tüm kalıp sözlüğü (sabit + derse bağlı). Uzun cümle önce eşleşir. */
+/* 27 Eyl 2026 (Ezber Kilimi): «Ezber dinlendi» ile deftere eklenen cümleler (katalog × kalite, 243 cümle) de kalıptır;
+   Fransızcası elle yazılmış kalite karşılığından kurulur, makineye gitmez (src/lib/ezber/metinler.ts defterCumlesi). */
+let ezberSozlugu: Record<string, string> | null = null;
+/** Bir dersin tüm kalıp sözlüğü (sabit + ezber + derse bağlı). Uzun cümle önce eşleşir. */
 export function kalipSozlugu(d: DefterDersi, sonraki?: DefterDersi | null): Record<string, string> {
-  return { ...SABIT_FR, ...dersSozlugu(d, sonraki) };
+  ezberSozlugu ??= defterSozlugu();
+  return { ...SABIT_FR, ...ezberSozlugu, ...dersSozlugu(d, sonraki) };
 }
 /** Birim testi için: bu dersin ekrandaki her kalıp cümlesinin Fransızcası var mı? Eksikleri döndürür. */
 export function eksikKaliplar(d: DefterDersi, sonraki?: DefterDersi | null): string[] {

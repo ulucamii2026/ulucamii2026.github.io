@@ -64,6 +64,119 @@ export const runTransaction=async(_db,cb)=>{
 };
 `;
 
+/* Tam SDK sahtesi (27 Eyl 2026, Ezber Kilimi Faz 1c): ezber paneli `firebase/firestore`'u (kalıcı önbellek,
+   onSnapshot, bekleyen yazma) kullanır. Veri lite sahtesiyle aynı yerde (window.__records) durur; öğrenci kartı
+   lite ile okuyunca paneldeki yazımı görür. Sınama düğmeleri: __ezberBaglantiKes()/__ezberBaglan() (yazım
+   sunucuya gitmez, ekran hemen güncellenir, metadata bekleyen yazma gösterir); __ezberReddet = {kod, sunucu}
+   (sıradaki yazım reddedilir; yerel değişiklik geri sarılır, sunucu durumu `sunucu` olur — iki telefon çakışması);
+   __ezberDinlemeHatasi (dinleme yetki hatası). Her toplu yazım __ezberYazimlar'a düşer. */
+const firestoreTam = `
+const parca=(...p)=>p.flatMap(x=>String(x).split('/')).filter(Boolean);
+let oto=0;
+const tablo=col=>(window.__records[col]||=[]);
+const bul=ref=>(window.__records[ref.col]||[]).find(d=>d.id===ref.id);
+const temiz=v=>Object.fromEntries(Object.entries(v).filter(([k])=>k!=='id'));
+const kopya=v=>Array.isArray(v)?v.map(kopya):v&&typeof v==='object'&&!v.toMillis?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,kopya(x)])):v;
+export const Timestamp={fromDate:d=>({toDate:()=>d,toMillis:()=>d.getTime()})};
+const zaman=()=>Timestamp.fromDate(new Date());
+export const serverTimestamp=()=>({__sunucu:true});
+export const deleteField=()=>({__sil:true});
+export const initializeFirestore=()=>({tam:true});
+export const getFirestore=()=>({tam:true});
+export const persistentLocalCache=o=>({o});
+export const persistentMultipleTabManager=()=>({});
+export const terminate=async()=>{};
+export const clearIndexedDbPersistence=async()=>{};
+export const waitForPendingWrites=async()=>{};
+export const where=(field,op,value)=>({field,op,value});
+export const orderBy=(alan,yon='asc')=>({alan,yon});
+export const limit=n=>({limit:n});
+export const query=(ref,...k)=>({...ref,kosullar:k});
+export function doc(ust,...p){
+  if(ust&&ust.col!==undefined&&ust.id===undefined)return{col:ust.col,id:p.length?parca(...p).join('/'):'oto'+(++oto).toString(36)+Math.random().toString(36).slice(2,8)};
+  const yol=ust&&ust.id!==undefined?[...parca(ust.col,ust.id),...parca(...p)]:parca(...p);
+  return{col:yol.slice(0,-1).join('/'),id:yol.at(-1)};
+}
+export function collection(ust,...p){return{col:ust&&ust.id!==undefined?[...parca(ust.col,ust.id),...parca(...p)].join('/'):parca(...p).join('/')};}
+const coz=v=>v&&v.__sunucu?zaman():Array.isArray(v)?v.map(coz):v&&typeof v==='object'&&!v.toMillis?Object.fromEntries(Object.entries(v).filter(([,x])=>!(x&&x.__sil)).map(([k,x])=>[k,coz(x)])):v;
+function birlestir(eski,yeni){
+  const s={...(eski||{})};
+  for(const[k,v]of Object.entries(yeni)){
+    if(v&&v.__sil){delete s[k];continue;}
+    if(v&&typeof v==='object'&&!Array.isArray(v)&&!v.__sunucu&&!v.toMillis&&s[k]&&typeof s[k]==='object'&&!Array.isArray(s[k])&&!s[k].toMillis)s[k]=birlestir(s[k],v);
+    else s[k]=coz(v);
+  }
+  return s;
+}
+const bekleyen=new Map();
+const yolu=ref=>ref.col+'/'+ref.id;
+function uygula(op){
+  const t=tablo(op.ref.col),i=t.findIndex(d=>d.id===op.ref.id);
+  if(op.tur==='delete'){if(i>=0)t.splice(i,1);return;}
+  const eski=i>=0?temiz(t[i]):null;
+  const yeni={id:op.ref.id,...(op.merge||op.tur==='update'?birlestir(eski,op.veri):coz(op.veri))};
+  if(i>=0)t[i]=yeni;else t.push(yeni);
+}
+const anlik=d=>{
+  const belge=x=>({id:x.id,exists:()=>true,data:()=>temiz(x),metadata:{hasPendingWrites:bekleyen.has(d.ref.col+'/'+x.id),fromCache:!!window.__ezberCevrimdisi}});
+  if(d.ref.id!==undefined){const x=bul(d.ref);return x?belge(x):{id:d.ref.id,exists:()=>false,data:()=>undefined,metadata:{hasPendingWrites:false,fromCache:!!window.__ezberCevrimdisi}};}
+  const docs=(window.__records[d.ref.col]||[]).map(belge);
+  return{docs,size:docs.length,empty:!docs.length,forEach:f=>docs.forEach(f),metadata:{hasPendingWrites:docs.some(x=>x.metadata.hasPendingWrites),fromCache:!!window.__ezberCevrimdisi}};
+};
+const dinleyiciler=new Set();
+const yayinla=d=>{if(window.__ezberDinlemeHatasi){d.error?.(Object.assign(Error('Missing or insufficient permissions.'),{code:'permission-denied'}));return;}d.next?.(anlik(d));};
+const herkese=()=>{for(const d of dinleyiciler)yayinla(d);};
+export function onSnapshot(ref,...a){
+  let sec={},next,error;
+  if(typeof a[0]==='function'){next=a[0];error=a[1];}
+  else if(typeof a[1]==='function'){sec=a[0]||{};next=a[1];error=a[2];}
+  else{sec=a[0]||{};next=a[1]?.next;error=a[1]?.error;}
+  const d={ref,next,error,meta:!!sec.includeMetadataChanges};
+  dinleyiciler.add(d);setTimeout(()=>{if(dinleyiciler.has(d))yayinla(d);},0);
+  return()=>dinleyiciler.delete(d);
+}
+const bekleyenler=[];
+window.__ezberYazimlar=[];
+window.__ezberBaglantiKes=()=>{window.__ezberCevrimdisi=true;herkese();};
+window.__ezberBaglan=()=>{window.__ezberCevrimdisi=false;for(const r of bekleyenler.splice(0))r();herkese();};
+export function writeBatch(){
+  const ops=[];
+  const b={set:(ref,veri,s)=>{ops.push({tur:'set',ref,veri,merge:!!s?.merge});return b;},update:(ref,veri)=>{ops.push({tur:'update',ref,veri});return b;},delete:ref=>{ops.push({tur:'delete',ref});return b;},
+    async commit(){
+      const once=ops.map(op=>({ref:op.ref,veri:bul(op.ref)?kopya(bul(op.ref)):null}));
+      for(const op of ops)uygula(op);
+      const yollar=ops.map(op=>yolu(op.ref));
+      for(const y of yollar)bekleyen.set(y,(bekleyen.get(y)||0)+1);
+      window.__ezberYazimlar.push(ops.map(op=>({tur:op.tur,yol:yolu(op.ref),veri:kopya(op.veri??null)})));
+      herkese();
+      if(window.__ezberCevrimdisi)await new Promise(r=>bekleyenler.push(r));
+      await new Promise(r=>setTimeout(r,0));
+      for(const y of yollar){const n=(bekleyen.get(y)||1)-1;if(n>0)bekleyen.set(y,n);else bekleyen.delete(y);}
+      const red=window.__ezberReddet;
+      if(red){
+        window.__ezberReddet=null;
+        for(const o of once.reverse()){const t=tablo(o.ref.col),i=t.findIndex(d=>d.id===o.ref.id);if(i>=0)t.splice(i,1);if(o.veri)t.push(o.veri);}
+        if(red.sunucu){const t=tablo('ezberDurum'),i=t.findIndex(d=>d.id===red.sunucu.id);if(i>=0)t.splice(i,1);t.push(red.sunucu);}
+        herkese();
+        throw Object.assign(new Error('Missing or insufficient permissions.'),{code:red.kod||'permission-denied'});
+      }
+      herkese();
+    }};
+  return b;
+}
+export const getDoc=async ref=>anlik({ref});
+export const getDocFromServer=async ref=>{if(window.__ezberCevrimdisi)throw Object.assign(Error('offline'),{code:'unavailable'});return anlik({ref});};
+export const getDocs=async ref=>{
+  let docs=anlik({ref:{col:ref.col}}).docs;
+  for(const k of ref.kosullar||[]){
+    if(k.field)docs=docs.filter(x=>{const v=x.data()[k.field];return k.op==='array-contains'?v?.includes(k.value):v===k.value;});
+    if(k.alan){const s=v=>v&&v.toMillis?v.toMillis():v;docs=[...docs].sort((x,y)=>{const a=s(x.data()[k.alan]),b=s(y.data()[k.alan]);return(a<b?-1:a>b?1:0)*(k.yon==='desc'?-1:1);});}
+    if(k.limit)docs=docs.slice(0,k.limit);
+  }
+  return{docs,size:docs.length,empty:!docs.length,forEach:f=>docs.forEach(f)};
+};
+`;
+
 async function bundle(hoca=false) {
   const mode=hoca?'hoca':'veli';
   if (!kod[mode]) {
@@ -74,7 +187,7 @@ async function bundle(hoca=false) {
         b.onResolve({ filter: /^(firebase\/|\.\.\/lib\/firebase$)/ }, a => ({ path: a.path, namespace: 'test' }));
         b.onLoad({ filter: /.*/, namespace: 'test' }, a => ({ loader: 'js', contents:
           a.path === 'firebase/auth' ? auth : a.path === 'firebase/firestore/lite' ? firestore
-            : 'export const firebaseUygulamasi = () => ({});' }));
+            : a.path === 'firebase/firestore' ? firestoreTam : 'export const firebaseUygulamasi = () => ({});' }));
       } }],
     });
     kod[mode] = result.outputFiles[0].text;
