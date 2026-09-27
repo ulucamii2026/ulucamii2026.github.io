@@ -47,7 +47,8 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   assert.equal(deger(genel, 'Referrer-Policy'), 'strict-origin-when-cross-origin');
   assert.equal(deger(genel, 'X-Frame-Options'), 'DENY');
   assert.match(deger(genel, 'Permissions-Policy'), /camera=\(\).*microphone=\(\)/);
-  // HSTS'yi Firebase Hosting kendisi ekler (max-age=31556926; includeSubDomains; preload) — ikinci kez yazılmaz.
+  // HSTS'yi Firebase Hosting kendisi ekler (özel alan adında max-age=31556926; web.app'te ayrıca includeSubDomains;
+  // preload) — ikinci kez yazılmaz.
   assert.equal(deger(genel, 'Strict-Transport-Security'), undefined);
 });
 

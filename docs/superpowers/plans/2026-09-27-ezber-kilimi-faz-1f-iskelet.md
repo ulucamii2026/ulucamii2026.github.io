@@ -1,7 +1,9 @@
 # Ezber Kilimi Faz 1f — `egitim/` Astro iskeleti
 
-**Tarih:** 27 Eylül 2026. **Durum:** yerelde tamam, **yayında değil**. Hosting sitesi, DNS (`egitim.ulucamii.be`) ve
-Auth alanı ayrı onaylı canlı adımlardır; `firebase.json` ve `.firebaserc` değişmedi.
+**Tarih:** 27 Eylül 2026. **Durum:** iskelet yerelde bitti; aynı akşam onaylı planla **yayında**
+(https://egitim.ulucamii.be; Hosting, alan adı ve DNS: [YAYIN-KAYITLARI](../../YAYIN-KAYITLARI.md) «27 Eylül 2026 (2)»).
+Auth alanı ayrı onaylı canlı adımdır (Faz 3). Barındırma yapılandırması sonradan eklendi (`firebase.json` Hosting
+bloğu; `.firebaserc` değişmedi).
 
 **Şartname:** [Ana plan](2026-09-26-ezber-kilimi-ana-plan.md) §3.1 ve §4 Faz 1f; görünüm
 [`egitim/DESIGN.md`](../../../egitim/DESIGN.md) ve onaylı taslak `egitim/docs/taslaklar/giris.html`

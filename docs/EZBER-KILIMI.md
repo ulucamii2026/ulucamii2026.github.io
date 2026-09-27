@@ -322,7 +322,7 @@ bugünkü planda olmadığını ve hepsinin katalogdaki bir kimliğe gittiğini 
   Kartografyası paletindedir (rozet aşı boyası tonunda). egitim'e taşınınca çini jetonlarına geçer; orada ödül,
   kazandıran basamağın rengini taşır (rozet firuze, mühür yeşil, altın kenar altın).
 
-## egitim iskeleti (Faz 1f, 27 Eylül 2026; yerelde, yayında değil)
+## egitim iskeleti (Faz 1f, 27 Eylül 2026; aynı akşam yayında: https://egitim.ulucamii.be)
 
 - `egitim/` ikinci Astro uygulaması: Ezber Kilimi girişi beş dilde (pano, dört basamak, şeritler, örnek kilim,
   kaynaklar); sesi olan 27 maddede kare çal düğmesi (ses ulucamii.be'den). Komutlar `npm run egitim:build`,
