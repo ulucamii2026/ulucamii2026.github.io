@@ -2,8 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku } from '../src/lib/ekran/secim.ts';
 
+process.env.TZ = 'America/New_York';
+
 const AYAR = { tabanSn: 8, karakterSn: 0.05, enAzSn: 10, enCokSn: 30 };
 const gun = (tarih, ek = {}) => ({ tarih, hicri: '16 Rebiulahir 1448', imsak: '05:43', gunes: '07:26', ogle: '13:34', ikindi: '16:47', aksam: '19:35', yatsi: '21:04', ...ek });
+
+test('cihaz saat dilimi New York saat dilimine ayarlandı (bayrağın etkili olduğunun kanıtı)', () => {
+  assert.equal(new Date('2026-09-27T12:00:00Z').getTimezoneOffset(), 240);
+});
 
 test('slayt süresi metin uzunluğuyla artar ve 10–30 sn arasında kalır', () => {
   assert.equal(slaytSuresi(0, AYAR), 10);
@@ -43,6 +49,8 @@ test('tema güneşten akşama açık, sonra koyu (kış saatine geçilen gün d�
   assert.equal(temaSec(g, new Date('2026-10-25T17:59:59+01:00')), 'acik');
   assert.equal(temaSec(g, new Date('2026-10-25T18:00:00+01:00')), 'koyu');
   assert.equal(temaSec(undefined, new Date('2026-10-25T12:00:00+01:00')), 'acik');
+  assert.equal(temaSec(undefined, new Date('2026-10-25T10:00:00+01:00')), 'acik');
+  assert.equal(temaSec(undefined, new Date('2026-10-25T22:00:00+01:00')), 'koyu');
 });
 
 test('pilsiz kutuda saat 1970e dönerse güvenilmez sayılır', () => {
@@ -64,6 +72,38 @@ test('bugünün kaydı yoksa vakit görünümü yok; varsa sıradaki vakit ve Cu
   assert.equal(vakitGorunumu([gun('2026-10-02'), gun('2026-10-03')], new Date('2026-10-02T10:00:00+02:00')).cuma, true);
   const gece = vakitGorunumu([gun('2026-09-27'), gun('2026-09-28')], new Date('2026-09-27T22:00:00+02:00'));
   assert.deepEqual([gece.siradaki.vakit, gece.siradaki.yarinMi], ['imsak', true]);
+});
+
+test('vakitGorunumu: "yarın" gerçek takvim günü değilse (veri boşluğu ya da mükerrer gün) sıradaki vakit boşalır; ardışık günde tam dakikayla kalır', () => {
+  const bosluk = vakitGorunumu([gun('2026-10-26'), gun('2027-01-01', { imsak: '06:39' })], new Date('2026-10-26T22:00:00+01:00'));
+  assert.equal(bosluk.siradaki, null);
+  assert.equal(bosluk.gun.tarih, '2026-10-26');
+
+  const mukerrer = vakitGorunumu([gun('2026-09-27'), gun('2026-09-27')], new Date('2026-09-27T22:00:00+02:00'));
+  assert.equal(mukerrer.siradaki, null);
+
+  const simdi = new Date('2026-09-27T22:00:00+02:00');
+  const ardisik = vakitGorunumu([gun('2026-09-27'), gun('2026-09-28')], simdi);
+  const beklenenKalan = Math.max(0, Math.ceil((new Date('2026-09-28T05:43:00+02:00').getTime() - simdi.getTime()) / 60000));
+  assert.deepEqual([ardisik.siradaki.vakit, ardisik.siradaki.yarinMi, ardisik.siradaki.kalanDk], ['imsak', true, beklenenKalan]);
+});
+
+test('Cuma ve "bugün" her zaman Brüksel saatiyle belirlenir (cihaz saat dilimi New York olsa bile)', () => {
+  const v1 = vakitGorunumu([gun('2026-10-02')], new Date('2026-10-01T22:30:00Z'));
+  assert.equal(v1.gun.tarih, '2026-10-02');
+  assert.equal(v1.cuma, true);
+  const v2 = vakitGorunumu([gun('2026-10-03')], new Date('2026-10-02T22:30:00Z'));
+  assert.equal(v2.cuma, false);
+});
+
+test('vakit sınırında: bir saniye önce o vakit 1 dakika kalanla, tam anında bir sonraki vakit gösterilir', () => {
+  const ogleAni = new Date('2026-09-27T13:34:00+02:00');
+  const once = vakitGorunumu([gun('2026-09-27')], new Date(ogleAni.getTime() - 1000));
+  assert.equal(once.siradaki.vakit, 'ogle');
+  assert.equal(once.siradaki.kalanDk, 1);
+  const aninda = vakitGorunumu([gun('2026-09-27')], ogleAni);
+  assert.equal(aninda.siradaki.vakit, 'ikindi');
+  assert.equal(aninda.siradaki.kalanDk, 193);
 });
 
 test('slayt turu: bu ekrana özel duyuru, ortak duyuru, günün ayeti, günün hadisi', () => {

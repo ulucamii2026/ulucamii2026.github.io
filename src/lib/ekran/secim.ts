@@ -30,9 +30,14 @@ export function gununOgesi<T>(liste: readonly T[], tarih: string): T | undefined
   return liste[((gunNo(tarih) % liste.length) + liste.length) % liste.length];
 }
 
-/** Güneş vaktinden akşam vaktine kadar açık tema; geri kalan saatlerde koyu. Günün verisi yoksa açık. */
+/** Güneş vaktinden akşam vaktine kadar açık tema; geri kalan saatlerde koyu. Günün verisi yoksa (veri kesintisi)
+ *  sabit Brüksel saat aralığına (07:00–19:00) göre açık/koyu seçilir — cami ekranı geceleri bembeyaz kalmasın
+ *  diye; bu bir tema tercihidir, namaz vakti hesabı değildir. */
 export function temaSec(gun: Gun | undefined, simdi: Date): 'acik' | 'koyu' {
-  if (!gun) return 'acik';
+  if (!gun) {
+    const sa = brukselSaat(simdi).sa;
+    return sa >= 7 && sa < 19 ? 'acik' : 'koyu';
+  }
   const t = simdi.getTime();
   return t >= brukselTarih(gun.tarih, gun.gunes).getTime() && t < brukselTarih(gun.tarih, gun.aksam).getTime() ? 'acik' : 'koyu';
 }
@@ -59,14 +64,19 @@ export interface VakitGorunumu {
   cuma: boolean;
 }
 
-/** Bugünün Diyanet kaydı yoksa null: ekran başka bir günün vakitlerini ASLA bugünün gibi göstermez, hesaplamaz. */
+/** Bugünün Diyanet kaydı yoksa null: ekran başka bir günün vakitlerini ASLA bugünün gibi göstermez, hesaplamaz.
+ *  `durumHesapla` (namaz.ts) "yarın" için listedeki BİR SONRAKİ KAYDI alır; veri boşluğu (ör. 26 Ekim'den
+ *  1 Ocak'a atlayan kayıtlar) ya da mükerrer günlü bir kayıtta bu, gerçek yarın değildir. Böyle durumda
+ *  sıradaki vakit gösterilmez (bugünün satırı kalır, geri sayım ve vurgu olmaz). */
 export function vakitGorunumu(gunler: Gun[], simdi: Date): VakitGorunumu | null {
   const bugun = bugunTarih(simdi);
   let gun: Gun | undefined;
   for (const g of gunler) if (g.tarih === bugun) { gun = g; break; }
   if (!gun) return null;
   const durum = durumHesapla(gunler, simdi);
-  return { gun, siradaki: durum ? durum.siradaki : null, cuma: haftaGunu(simdi) === 5 };
+  let siradaki = durum ? durum.siradaki : null;
+  if (durum && siradaki && siradaki.yarinMi && (!durum.yarin || gunNo(durum.yarin.tarih) !== gunNo(bugun) + 1)) siradaki = null;
+  return { gun, siradaki, cuma: haftaGunu(simdi) === 5 };
 }
 
 export type Slayt =
