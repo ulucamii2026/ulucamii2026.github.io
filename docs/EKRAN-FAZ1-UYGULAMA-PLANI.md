@@ -13,7 +13,7 @@
 
 ## Çalışma ortamı
 
-- **Çalışma ağacı:** `D:\tmp\ulucamii-ekran-mvp`, dal `ekran-mvp`. Git Bash'te `cd /d/tmp/ulucamii-ekran-mvp`. Ana depoda (`main`) başka bir oturum çalışıyor; ona dokunulmaz.
+- **Çalışma ağacı:** ana depodan ayrı bir git çalışma ağacı (worktree), dal `ekran-mvp`. Ana depoda (`main`) başka bir oturum çalışıyor; ona dokunulmaz.
 - **node_modules:** Ana depoya bağlantıdır (junction). Bu ağaçta **`npm install` çalıştırılmaz**, çünkü ana deponun paketlerini değiştirir. Planın ek bağımlılığı yoktur: esbuild, preact ve qrcode zaten kurulu.
 - **Başlangıç ölçümü (27 Eylül 2026):** `npm run build` 1890 sayfayı 44 saniyede derliyor. `node scripts/site-denetim.mjs` çıktısı `orta=2 dusuk=58`, kritik bulgu yok. Bu ölçüm karşılaştırma tabanıdır.
 - **Vakit verisi:** `src/data/namaz-vakitleri.json` 2026-09-25 ile 2026-10-26 arasını ve 2027'nin tamamını kapsıyor; arada 67 günlük boşluk var. Günlük Diyanet işi yaklaşık 30 gün ileriyi dolduruyor. Bu yüzden testler sabit tarih kullanmaz, günleri veriden seçer. Denetim de kapsamı bugünden itibaren **kesintisiz** gün sayısıyla ölçer.
@@ -33,7 +33,7 @@
   - CSS'te şunlar kullanılmaz: `oklch`, `color-mix`, `clamp/min/max()`, `:has`, `@layer`, `@container`, `cq*`/`dvh` birimleri, `inset`, `aspect-ratio`, `gap`, `&`.
   - Bütün ölçüler `--u` değişkenine bağlıdır: tuval genişliğinin %1'i, JS ile verilir.
 - Ekran cihazın saat diliminden bağımsız olarak Brüksel saatini gösterir. Kutuların saat dilimi UTC olabilir.
-- Yalnız `durum: "imam-onayli"` ayet ve hadis yayına girer. Metinler resmî Diyanet yayınlarından alınır; `D:\ihtisas` arşivinden metin kopyalanmaz.
+- Yalnız `durum: "imam-onayli"` ayet ve hadis yayına girer. Metinler resmî Diyanet yayınlarından alınır; yerel ihtisas arşivinden metin kopyalanmaz.
 - Hava Open-Meteo'dan 30 dakikada bir alınır. Veri 3 saatten eskiyse gösterilmez. Ekranda "Open-Meteo" ibaresi bulunur.
 - İmamın telefonu hiçbir yerde görünmez. Yalnız dernek hesapları kullanılır: GitHub `ulucamii2026`.
 - Commit mesajları Türkçe yazılır ve şu satırla biter: `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
@@ -597,7 +597,7 @@ test('mükerrer kimlik ikinci kez alınmaz ve raporlanır', () => {
  *
  * Yalnız imamın onayladığı kayıtlar (durum: "imam-onayli") yayına girer; eksik alanlı ya da mükerrer
  * kimlikli kayıt atlanır ve `eksik` listesinde raporlanır. Metinler resmî Diyanet yayınlarından alınır;
- * D:\ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal DİB / Mohammed Chiadmi
+ * Yerel ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal DİB / Mohammed Chiadmi
  * «Le Noble Coran» (2022) çevirisidir; cami Diyanet'e bağlı olduğu için Diyanet yayınları için ayrıca izin
  * istenmez. `fr` ile `kaynakFr` birlikte dolu değilse FR yayımlanmaz, ekran AR + TR gösterir. Sitedeki 10 ahlâk
  * hadisi (src/lib/hadis-verisi.ts) zaten yayında olduğu için başlangıç havuzudur.

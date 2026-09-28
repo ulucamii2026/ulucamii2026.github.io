@@ -55,7 +55,7 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
                         ↳ yanıtta komut: ekran görüntüsü (Drive) / yeniden başlat / güncelle
 ```
 
-### Site tarafı (`D:\app\ulucamii-site`)
+### Site tarafı (bu depo)
 Görüntünün ve mantığın tamamı burada, tek depoda durur.
 - **Sayfa** `src/pages/ekran/index.astro` + `src/components/ekran/*.tsx`. Düzen dikey 1080×1920: üst bant (logo, ad, miladi/hicrî tarih, büyük saat, hava), orta slayt alanı, alt 6 vakit (TR · FR adlar) + geri sayım.
   - `?don=90` sayfayı CSS ile döndürür. Kutu yatay sinyal verir, telefonda önizlemede döndürme yapılmaz.
@@ -78,7 +78,7 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
   - Logo SVG'leri (`public/media/logo/`).
 - `public/robots.txt` dosyasına `Disallow: /ekran/` eklenir. `scripts/site-denetim.mjs` akış şemasını denetleyecek şekilde genişletilir.
 
-### Android kabuk (`D:\app\UluCamiiEkran`, yeni, küçük)
+### Android kabuk (ayrı, yeni ve küçük bir Android projesi)
 - Tek activity, tam ekran WebView. JavaScript, DOM storage, service worker ve kullanıcı dokunuşu olmadan ses çalma açıktır.
 - **Device owner** kurulumu hesapsız kutuda `adb -s SERIAL shell dpm set-device-owner` ile yapılır. Uygulama ana ekran (HOME) olur, lock task ile kiosk moduna geçer, açılışta kendiliğinden başlar, saat dilimi `Europe/Brussels` yapılır.
   - Device owner kurulamazsa yedek: HOME filtresi + `BOOT_COMPLETED`.
@@ -89,10 +89,10 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
   - Yeniden başlatma.
   - Güncelleme `PackageInstaller` ile sessiz yapılır; sha256 ve imza kontrol edilir.
 - **Yeniden kullanılacaklar**:
-  - Güncelleme doğrulaması: yerel HafizAI projesindeki `update/Updater.kt` (sha256 + imza denetimi).
-  - Ekranı açık tutma: yerel CoranTtsApp projesindeki `MainActivity.kt` (satır 40–47).
-  - Açılış alıcısı: yerel Brocante projesindeki `core/notify/BootReceiver.kt`.
-- Derleme yığını en yeni projelere uyar (StokApp: AGP 8.9.x, Kotlin 2.1+, OkHttp, Hilt yok çünkü gereksiz); derleme `android-builder` alt ajanıyla yapılır.
+  - Güncelleme doğrulaması: yerel bir Android projesindeki güncelleme doğrulaması (sha256 + imza denetimi).
+  - Ekranı açık tutma: yerel bir Android projesindeki ekranı açık tutma kodu.
+  - Açılış alıcısı: yerel bir Android projesindeki açılış alıcısı (`BootReceiver`).
+- Derleme yığını en yeni yerel Android projelerine uyar (AGP 8.9.x, Kotlin 2.1+, OkHttp; Hilt gereksiz olduğu için yok); derleme yerel bir Android derleme ajanıyla yapılır.
 
 ### Editör formu (dernek Google hesabı, Apps Script web uygulaması)
 - Alanlar: tür (duyuru / etkinlik / vefat), başlık ve metin (TR zorunlu, FR isteğe bağlı), görsel, başlangıç/bitiş, hedef ekran(lar).
@@ -186,9 +186,9 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
   - 52 Cuma seti, her kandil için 3 metin, 30 Ramazan metni
   - 99 Esmâ, yaklaşık 60 dua
 - **İ2 — Taslak.**
-  - Arapça: yerel `coran-tts` mushaf verisi (`mushaf.json`) + kuran.diyanet.gov.tr.
+  - Arapça: yerel mushaf verisi + kuran.diyanet.gov.tr.
   - Hadis: resmî Diyanet yayınından, tahricle.
-  - Karşılaştırma için: `D:\app\Ihtisas2027\data-prep\kaynak\kuran_meal_diyanet.txt`, `D:\coran-francais\_outils\sourateN_clean.json`.
+  - Karşılaştırma için: yerel Kur'an veri dosyaları (Diyanet TR meali ve FR meal metinleri).
 - **İ3 — İmam onayı.** 30'luk partiler hâlinde verilir. Kural: **her an en az 60 günlük onaylı içerik hazırda olmalı.** Pilottan önce ilk 30–60 gün onaylanmış olur.
 
 ## Riskler → önlemler

@@ -3,7 +3,7 @@
  *
  * Yalnız imamın onayladığı kayıtlar (durum: "imam-onayli") yayına girer; eksik alanlı ya da mükerrer
  * kimlikli kayıt atlanır ve `eksik` listesinde raporlanır. Metinler resmî Diyanet yayınlarından alınır;
- * D:\ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal DİB / Mohammed Chiadmi
+ * Yerel ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal DİB / Mohammed Chiadmi
  * «Le Noble Coran» (2022) çevirisidir; cami Diyanet'e bağlı olduğu için Diyanet yayınları için ayrıca izin
  * istenmez. `fr` ile `kaynakFr` birlikte dolu değilse FR yayımlanmaz, ekran AR + TR gösterir. Sitedeki 10 ahlâk
  * hadisi (src/lib/hadis-verisi.ts) zaten yayında olduğu için başlangıç havuzudur.
