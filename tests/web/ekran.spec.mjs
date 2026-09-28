@@ -108,6 +108,14 @@ test('sıradaki vakit vurgulanır, geri sayım iki dilde yazılır', async ({ pa
   await expect(page.locator('.geri-sayim .fr')).toHaveText('Dhuhr dans 30 min');
 });
 
+test('imsak ile güneş arasında güneş vurgulanır ve güneşe kalan süre iki dilde yazılır', async ({ page }) => {
+  await page.clock.install({ time: an(ornek, ornek.gunes, -15) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', 'gunes');
+  await expect(page.locator('.geri-sayim b')).toHaveText('Güneş vaktine 15 dk');
+  await expect(page.locator('.geri-sayim .fr')).toHaveText('Lever du soleil dans 15 min');
+});
+
 test('Cuma günü öğle satırı ve geri sayım Cuma olarak yazılır', async ({ page }) => {
   const cuma = kaynak.gunler.find(cumaMi);
   test.skip(!cuma, 'veride Cuma yok');

@@ -28,7 +28,8 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
   if (!v) return uyari(kok, METIN.vakitYok);
   const cumaOgle = v.cuma && cumaSaati === '';
   const adi = (dil: 'tr' | 'fr', vakit: Vakit, uzun = false): string =>
-    cumaOgle && vakit === 'ogle' ? ad[dil][uzun ? 'cumaUzun' : 'cuma'] : ad[dil][vakit];
+    uzun && vakit === 'gunes' ? METIN.gunesUzun[dil]
+      : cumaOgle && vakit === 'ogle' ? ad[dil][uzun ? 'cumaUzun' : 'cuma'] : ad[dil][vakit];
   const vurgu = v.siradaki && !v.siradaki.yarinMi ? v.siradaki.vakit : null;
   for (const vakit of SIRA) {
     const satir = el('div', vakit === vurgu ? 'vakit siradaki' : 'vakit');

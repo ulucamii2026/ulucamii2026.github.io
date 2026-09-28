@@ -4,6 +4,7 @@ export const METIN = {
   hadis: { tr: 'Günün Hadisi', fr: 'Hadith du jour' },
   duyuru: { tr: 'Duyuru', fr: 'Annonce' },
   vaktine: { tr: 'vaktine', fr: 'dans' },
+  gunesUzun: { tr: 'Güneş', fr: 'Lever du soleil' }, // geri sayımda: satırdaki kısa «Lever» tek başına anlaşılmıyor
   vakitYok: { tr: 'Namaz vakitleri güncellenemedi', fr: 'Horaires de prière indisponibles' },
   saatYok: { tr: 'Saat doğrulanıyor', fr: 'Vérification de l’heure…' },
   hosgeldiniz: { tr: 'Hoş geldiniz', fr: 'Bienvenue' },

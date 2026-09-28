@@ -76,6 +76,12 @@ export function vakitGorunumu(gunler: Gun[], simdi: Date): VakitGorunumu | null 
   const durum = durumHesapla(gunler, simdi);
   let siradaki = durum ? durum.siradaki : null;
   if (durum && siradaki && siradaki.yarinMi && (!durum.yarin || gunNo(durum.yarin.tarih) !== gunNo(bugun) + 1)) siradaki = null;
+  /* Sabah namazının son vakti güneştir: imsak ile güneş arasında ekran güneşe kalan süreyi gösterir (28 Eylül 2026
+     kararı). durumHesapla güneşi atlar ve bu aralıkta öğleyi verir; site bu davranışla kalır, yalnız ekran ayrışır. */
+  const gunesAni = brukselTarih(gun.tarih, gun.gunes).getTime();
+  if (siradaki && siradaki.vakit === 'ogle' && !siradaki.yarinMi && simdi.getTime() < gunesAni) {
+    siradaki = { vakit: 'gunes', saat: gun.gunes, kalanDk: Math.ceil((gunesAni - simdi.getTime()) / 60000), yarinMi: false };
+  }
   return { gun, siradaki, cuma: haftaGunu(simdi) === 5 };
 }
 

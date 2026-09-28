@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku } from '../src/lib/ekran/secim.ts';
-import { bugunTarih } from '../src/lib/namaz.ts';
+import { bugunTarih, durumHesapla } from '../src/lib/namaz.ts';
 import { readFileSync } from 'node:fs';
 
 process.env.TZ = 'America/New_York';
@@ -133,6 +133,21 @@ test('vakit sınırında: bir saniye önce o vakit 1 dakika kalanla, tam anında
   const aninda = vakitGorunumu([gun('2026-09-27')], ogleAni);
   assert.equal(aninda.siradaki.vakit, 'ikindi');
   assert.equal(aninda.siradaki.kalanDk, 193);
+});
+
+/* Sabah namazının son vakti güneştir: imsak ile güneş arasında ekran güneşe kalan süreyi gösterir
+   (Rıdvan'ın kararı, 28 Eylül 2026). Site (durumHesapla) güneşi sıradaki vakit saymamaya devam eder. */
+test('imsak ile güneş arasında sıradaki vakit güneştir; güneş anında öğleye geçer, imsaktan önce imsak kalır', () => {
+  const gunler = [gun('2026-09-27'), gun('2026-09-28')];
+  const sabah = vakitGorunumu(gunler, new Date('2026-09-27T07:12:00+02:00'));
+  assert.deepEqual(sabah.siradaki, { vakit: 'gunes', saat: '07:26', kalanDk: 14, yarinMi: false });
+  const birSaniyeOnce = vakitGorunumu(gunler, new Date(new Date('2026-09-27T07:26:00+02:00').getTime() - 1000));
+  assert.deepEqual([birSaniyeOnce.siradaki.vakit, birSaniyeOnce.siradaki.kalanDk], ['gunes', 1]);
+  const gunesAni = vakitGorunumu(gunler, new Date('2026-09-27T07:26:00+02:00'));
+  assert.deepEqual([gunesAni.siradaki.vakit, gunesAni.siradaki.kalanDk], ['ogle', 368]);
+  const imsaktanOnce = vakitGorunumu(gunler, new Date('2026-09-27T05:00:00+02:00'));
+  assert.deepEqual([imsaktanOnce.siradaki.vakit, imsaktanOnce.siradaki.kalanDk], ['imsak', 43]);
+  assert.equal(durumHesapla(gunler, new Date('2026-09-27T07:12:00+02:00')).siradaki.vakit, 'ogle');
 });
 
 test('slayt turu: bu ekrana özel duyuru, ortak duyuru, günün ayeti, günün hadisi', () => {
