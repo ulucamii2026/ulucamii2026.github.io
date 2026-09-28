@@ -1,6 +1,6 @@
-import test from 'node:test';
+import test, { afterEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { YATAY_ESIGI, duzenSec, tuvalGeometrisi } from '../src/ekran/olcek.ts';
+import { YATAY_ESIGI, duzenSec, olcekKur, tuvalGeometrisi } from '../src/ekran/olcek.ts';
 
 /* Kayan noktalı ölçüler bire bir tutmayabilir (961 × 9/16 × 16/9 gibi); dönüşüm dizgisi ise harfi harfine eşleşmeli. */
 const yakin = (a, b, tol = 1e-9) => Math.abs(a - b) < tol;
@@ -45,6 +45,9 @@ const SATIRLAR = [
   ['yatay pencerede dikey zorlanır: u tuval genişliğinin %1’i', [1920, 1080, 0, 'dikey'], { duzen: 'dikey', genislik: 607.5, yukseklik: 1080, u: 6.075, donusum: 'translate(656.25px, 0px)' }],
   ['dikey pencerede yatay zorlanır: u tuval yüksekliğinin %1’i', [1080, 1920, 0, 'yatay'], { duzen: 'yatay', genislik: 1080, yukseklik: 607.5, u: 6.075, donusum: 'translate(0px, 656.25px)' }],
   ['döndürülmüş dikey pencerede dikey zorlanır: pay tuvalin kendi ekseninde', [1080, 1920, 90, 'dikey'], { duzen: 'dikey', genislik: 607.5, yukseklik: 1080, u: 6.075, donusum: 'translate(1080px, 656.25px) rotate(90deg)' }],
+  ['768×1366 dikey TV: 9:16 yuvarlaması yükseklikte 1 pikselden az pay bırakır, dikeyde de alana yapışır', [768, 1366, 0, null], { duzen: 'dikey', genislik: 768, yukseklik: 1366, u: 7.68, donusum: 'translate(0px, 0px)' }],
+  ['1920×1200, don=270: döndürülmüş tuval 1080×1920 kalır, pencere yüksekliğinde iki kenarda 60 px pay', [1920, 1200, 270, null], { duzen: 'dikey', genislik: 1080, yukseklik: 1920, u: 10.8, donusum: 'translate(0px, 1140px) rotate(270deg)' }],
+  ['2000×1080, don=90: döndürülmüş tuval 1080×1920 kalır, pencere genişliğinde iki kenarda 40 px pay', [2000, 1080, 90, null], { duzen: 'dikey', genislik: 1080, yukseklik: 1920, u: 10.8, donusum: 'translate(1960px, 0px) rotate(90deg)' }],
 ];
 for (const [etiket, cagri, beklenen, tol] of SATIRLAR) {
   test(`tuvalGeometrisi(${cagri.map((a) => JSON.stringify(a)).join(', ')}): ${etiket}`, () => esles(tuvalGeometrisi(...cagri), beklenen, tol));
@@ -100,4 +103,77 @@ test('hiçbir pencerede tuval alanı aşmaz, en az bir ekseni tam doldurur ve 1 
       }
     }
   }
+});
+
+/* olcekKur'un DOM tarafı sahte pencere ve tuvalle sınanır. Tarayıcı testleri sahne kabının her zaman var ve dolu olduğu
+   durumu görür; kabın yokluğu, 0 ölçüsü ve geri çağrının sırası yalnız burada denetlenebilir. `kap`, kabın
+   getBoundingClientRect değeridir (null: kap yok) ve sonradan değiştirilerek pencerenin boyutlanması taklit edilir. */
+afterEach(() => { delete globalThis.window; });
+
+function ortam(kap, pencere = [1000, 1000]) {
+  const dinleyiciler = [];
+  globalThis.window = { innerWidth: pencere[0], innerHeight: pencere[1], addEventListener: (ad, fn) => dinleyiciler.push([ad, fn]) };
+  const oznitelikler = {};
+  const ozel = {};
+  const stil = { setProperty: (ad, deger) => { ozel[ad] = deger; } };
+  const tuval = { parentElement: kap && { getBoundingClientRect: () => kap }, style: stil, setAttribute: (ad, deger) => { oznitelikler[ad] = deger; } };
+  const resizeTetikle = () => dinleyiciler.filter(([ad]) => ad === 'resize').forEach(([, fn]) => fn());
+  return { tuval, oznitelikler, ozel, stil, resizeTetikle };
+}
+
+test('olcekKur: boyutu sahne kabının kesirli ölçüsünden alır, pencerenin tam sayılı ölçüsünden değil', () => {
+  const e = ortam({ width: 961.5023, height: 540.8451 }, [961, 541]);
+  olcekKur(e.tuval, 0, null);
+  assert.equal(e.oznitelikler['data-duzen'], 'yatay');
+  assert.ok(e.stil.width.endsWith('px') && yakin(parseFloat(e.stil.width), 961.5023, 1e-6), e.stil.width);
+  assert.ok(e.stil.height.endsWith('px') && yakin(parseFloat(e.stil.height), 540.8451, 1e-6), e.stil.height);
+  assert.ok(e.ozel['--u'].endsWith('px') && yakin(parseFloat(e.ozel['--u']), 5.408451, 1e-6), e.ozel['--u']);
+  assert.equal(e.stil.transformOrigin, '0 0');
+  assert.equal(e.stil.transform, 'translate(0px, 0px)');
+});
+
+test('olcekKur: sahne kabı yoksa ya da bir kenarı 0 ise pencere ölçüsüne düşer', () => {
+  for (const kap of [null, { width: 0, height: 500 }, { width: 500, height: 0 }, { width: 0, height: 0 }]) {
+    const e = ortam(kap, [1080, 1920]);
+    olcekKur(e.tuval, 0, null);
+    const nerede = JSON.stringify(kap);
+    assert.equal(e.oznitelikler['data-duzen'], 'dikey', nerede);
+    assert.equal(e.stil.width, '1080px', nerede);
+    assert.equal(e.stil.height, '1920px', nerede);
+    assert.equal(e.ozel['--u'], '10.8px', nerede);
+  }
+});
+
+test('olcekKur: don ile tercihi geometriye iletir', () => {
+  const e = ortam({ width: 1080, height: 1920 });
+  olcekKur(e.tuval, 90, 'dikey');
+  assert.equal(e.oznitelikler['data-duzen'], 'dikey');
+  assert.equal(e.stil.width, '607.5px');
+  assert.equal(e.stil.height, '1080px');
+  assert.equal(e.ozel['--u'], '6.075px');
+  assert.equal(e.stil.transform, 'translate(1080px, 656.25px) rotate(90deg)');
+});
+
+test('olcekKur: geri çağrı ilk uygulamada çalışmaz; her resize’da, yeni düzen uygulandıktan SONRA çalışır', () => {
+  const kap = { width: 1920, height: 1080 };
+  const e = ortam(kap);
+  const gorulen = [];
+  olcekKur(e.tuval, 0, null, () => gorulen.push(e.oznitelikler['data-duzen']));
+  assert.deepEqual(gorulen, [], 'ilk uygulamada çağrılırsa main.ts’in durumu henüz kurulmamıştır');
+  assert.equal(e.oznitelikler['data-duzen'], 'yatay');
+  Object.assign(kap, { width: 1080, height: 1920 });
+  e.resizeTetikle();
+  assert.deepEqual(gorulen, ['dikey'], 'geri çağrı yeni düzeni görmeli');
+  Object.assign(kap, { width: 1920, height: 1080 });
+  e.resizeTetikle();
+  assert.deepEqual(gorulen, ['dikey', 'yatay']);
+});
+
+test('olcekKur: geri çağrı verilmemişse resize hata vermez, düzen yine güncellenir', () => {
+  const kap = { width: 1920, height: 1080 };
+  const e = ortam(kap);
+  olcekKur(e.tuval, 0, null);
+  Object.assign(kap, { width: 1080, height: 1920 });
+  assert.doesNotThrow(() => e.resizeTetikle());
+  assert.equal(e.oznitelikler['data-duzen'], 'dikey');
 });

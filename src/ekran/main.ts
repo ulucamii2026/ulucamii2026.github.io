@@ -7,7 +7,7 @@
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
-import { brukselSaat, donmeOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
+import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
 import { alan, yaz } from './gorunum.ts';
 import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
@@ -51,7 +51,12 @@ const sayfa = sayfaVerisiOku();
 const parametre = new URLSearchParams(location.search);
 const ekran = document.getElementById('ekran') as HTMLElement;
 const ekranId = ekranIdOku(parametre.get('ekran'));
-olcekKur(ekran, donmeOku(parametre.get('don')));
+// Düzen pencere boyutuyla değişebilir (ör. döndürülmüş pencere): vakit bloğu yeniden çizilir, slayt sığdırılır; geri çağrı açılışta çalışmaz (durum henüz kurulmadı).
+olcekKur(ekran, donmeOku(parametre.get('don')), duzenOku(parametre.get('duzen')), () => {
+  dakikalik(new Date());
+  const slayt = alan('slayt');
+  if (slayt) sigdir(slayt);
+});
 yaz('cami-tr', sayfa.cami.tr);
 yaz('cami-fr', sayfa.cami.fr);
 

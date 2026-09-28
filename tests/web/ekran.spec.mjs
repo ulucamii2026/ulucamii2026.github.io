@@ -120,6 +120,118 @@ test.describe('yatay sinyalde döndürme', () => {
   });
 });
 
+/* Tuval düzeni (src/ekran/olcek.ts): pencerenin (?don= ile döndürülmüş) alan oranı 1,2 ve üzerindeyse yatay 16:9, altındaysa
+   dikey 9:16; ?duzen=yatay|dikey zorlar, geçersiz değer otomatik seçim demektir. Bu bloklar yalnız tuvalin geometrisini
+   sınar: data-duzen, kutu ve --u (dikeyde tuval genişliğinin, yatayda yüksekliğinin %1'i). */
+const ekranKutusu = (page) => page.locator('#ekran').boundingBox();
+const birimOku = (page) => page.locator('#ekran').evaluate((e) => getComputedStyle(e).getPropertyValue('--u').trim());
+const kutuBoyutu = async (page) => {
+  const kutu = await ekranKutusu(page);
+  return [Math.round(kutu.width), Math.round(kutu.height)];
+};
+
+test.describe('yatay düzen: tuval, 1920×1080 pencere', () => {
+  test.use({ viewport: { width: 1920, height: 1080 } });
+
+  test('yatay pencerede düzen yatay olur; tuval pencereyi taşmadan tam kaplar, u yüksekliğin %1’idir', async ({ page }) => {
+    await page.goto('/ekran/');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    const kutu = await ekranKutusu(page);
+    expect(kutu.x).toBeCloseTo(0, 1);
+    expect(kutu.y).toBeCloseTo(0, 1);
+    expect(Math.round(kutu.width)).toBe(1920);
+    expect(Math.round(kutu.height)).toBe(1080);
+    expect(await birimOku(page)).toBe('10.8px');
+    expect(await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight])).toEqual([1920, 1080]);
+  });
+
+  test('?duzen=dikey yatay pencerede dikey tuvali ortalar; u tuval genişliğinin %1’idir', async ({ page }) => {
+    await page.goto('/ekran/?duzen=dikey');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'dikey');
+    const kutu = await ekranKutusu(page);
+    expect(kutu.width).toBeCloseTo(607.5, 0); // ±0,5
+    expect(kutu.x).toBeCloseTo(656.25, 0);
+    expect(Math.round(kutu.height)).toBe(1080);
+    expect(await birimOku(page)).toBe('6.075px');
+  });
+
+  test('?duzen= geçersizse (abc) otomatik seçim: yatay pencerede yatay', async ({ page }) => {
+    await page.goto('/ekran/?duzen=abc');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    expect(await kutuBoyutu(page)).toEqual([1920, 1080]);
+  });
+
+  test('pencere yeniden boyutlanınca düzen sayfa yenilenmeden değişir: yatay → dikey → yatay', async ({ page }) => {
+    await page.goto('/ekran/');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    await page.setViewportSize({ width: 1080, height: 1920 });
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'dikey');
+    await expect.poll(() => kutuBoyutu(page)).toEqual([1080, 1920]);
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    await expect.poll(() => kutuBoyutu(page)).toEqual([1920, 1080]);
+  });
+
+  test('yeniden boyutlanınca main.ts’teki geri çağrı çalışır: tarih bloğu yeniden çizilir', async ({ page }) => {
+    const t = an(ornek, '12:00');
+    await page.clock.install({ time: t });
+    await page.goto('/ekran/');
+    await expect(page.locator('[data-alan="tarih-tr"]')).toContainText(ayAdi(t, 'tr-TR'));
+    // Dakika değişmediği sürece tarihi yalnız bu geri çağrı (dakikalik) yeniden yazabilir.
+    await page.locator('[data-alan="tarih-tr"]').evaluate((e) => { e.textContent = ''; });
+    await page.setViewportSize({ width: 1080, height: 1920 });
+    await expect(page.locator('[data-alan="tarih-tr"]')).toContainText(ayAdi(t, 'tr-TR'));
+  });
+});
+
+test.describe('yatay düzen: tuval, 1080×1920 pencere', () => {
+  test.use({ viewport: { width: 1080, height: 1920 } });
+
+  test('dikey pencerede düzen dikey kalır: tuval pencereyi tam kaplar', async ({ page }) => {
+    await page.goto('/ekran/');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'dikey');
+    expect(await kutuBoyutu(page)).toEqual([1080, 1920]);
+    expect(await birimOku(page)).toBe('10.8px');
+  });
+
+  test('?duzen=yatay dikey pencerede yatay tuvali genişliğe yaslar ve dikeyde ortalar', async ({ page }) => {
+    await page.goto('/ekran/?duzen=yatay');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    const kutu = await ekranKutusu(page);
+    expect(Math.round(kutu.width)).toBe(1080);
+    expect(kutu.height).toBeCloseTo(607.5, 0);
+    expect(kutu.y).toBeCloseTo(656.25, 0);
+    expect(await birimOku(page)).toBe('6.075px');
+  });
+
+  test('?don=90 dikey pencereyi yatay alana çevirir: düzen yatay, döndürülmüş tuval pencereyi tam kaplar', async ({ page }) => {
+    await page.goto('/ekran/?don=90');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    const kutu = await ekranKutusu(page);
+    expect(kutu.x).toBeCloseTo(0, 1);
+    expect(kutu.y).toBeCloseTo(0, 1);
+    expect(Math.round(kutu.width)).toBe(1080);
+    expect(Math.round(kutu.height)).toBe(1920);
+    expect(await birimOku(page)).toBe('10.8px');
+    expect(await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.scrollHeight])).toEqual([1080, 1920]);
+  });
+});
+
+test.describe('yatay düzen: tuval, 961×541 pencere (Polaroid TV)', () => {
+  test.use({ viewport: { width: 961, height: 541 } });
+
+  test('16:9 yuvarlaması alanı 1 pikselden az açıkta bırakırsa tuval alana yapışır, u = 5.41px', async ({ page }) => {
+    await page.goto('/ekran/');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    const kutu = await ekranKutusu(page);
+    expect(kutu.x).toBeCloseTo(0, 3);
+    expect(kutu.y).toBeCloseTo(0, 3);
+    expect(kutu.width).toBeCloseTo(961, 3); // 541 yerine 540,5625 kalsaydı alt-piksellik siyah çizgi görünürdü
+    expect(kutu.height).toBeCloseTo(541, 3);
+    expect(await birimOku(page)).toBe('5.41px');
+  });
+});
+
 test('sıradaki vakit vurgulanır, geri sayım iki dilde yazılır', async ({ page }) => {
   await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
   await page.goto('/ekran/');

@@ -1,7 +1,8 @@
 ---
 /**
  * /ekran/ — cami ekranı (27 Eylül 2026; docs/EKRAN-YOL-HARITASI.md). Android TV kutusundaki kabuk
- * uygulaması bu sayfayı tam ekran açar: /ekran/?ekran=ana|giris|kadin&don=90.
+ * uygulaması bu sayfayı tam ekran açar: /ekran/?ekran=ana|giris|kadin[&don=90|270]. Sayfa dikey ya da yatay düzeni
+ * pencere oranından kendisi seçer; ?duzen=yatay|dikey seçimi zorlar.
  * Statik iskelet: görüntüyü /ekran/ekran.js doldurur (src/ekran/main.ts → scripts/ekran-derle.mjs).
  * Sitenin Base düzeni ve Tailwind CSS'i bilerek kullanılmaz: ekran eski WebView'de (Chromium 70) de
  * çalışmalı. Arama motorlarına kapalıdır (noindex + robots.txt).
