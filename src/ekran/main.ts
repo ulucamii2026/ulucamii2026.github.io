@@ -87,7 +87,15 @@ function dakikalik(simdi: Date): void {
     yaz('hicri-fr', gun ? hicriCevir(gun.hicri, 'fr') : '');
     const gorunum = gecerli && veri.vakit ? vakitGorunumu(veri.vakit.gunler, simdi) : null;
     const kok = alan('vakitler');
-    if (kok && (veri.vakit || ilkTazelemeBitti)) vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli, sayfa.cumaSaati || '');
+    if (kok && (veri.vakit || ilkTazelemeBitti)) {
+      const cumaliydi = kok.classList.contains('cumali');
+      vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli, sayfa.cumaSaati || '');
+      // Cuma satırı açılıp kapanınca (Perşembe→Cuma gece yarısı ve ertesi gün) vakit alanı 10u uzar/kısalır, slayt
+      // alanı tersine değişir: ekrandaki slayt yeni alana hemen yeniden sığdırılır, yoksa altı sonraki slayta dek
+      // (≤ 30 sn) kırpılırdı. sigdir yalnız slayt çizilirken ve görsel/yazı tipi yüklenince çalışıyordu.
+      const slayt = alan('slayt');
+      if (slayt && kok.classList.contains('cumali') !== cumaliydi) sigdir(slayt);
+    }
     ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
     havaCiz();
   } catch (hata) {

@@ -209,7 +209,7 @@ test('bugünün kaydı var ama sıradaki vakit yok (yarının kaydı eksik)', as
 });
 
 const SABIT_10SN = { tabanSn: 10, karakterSn: 0, enAzSn: 10, enCokSn: 10 };
-const AKIS = (duyurular) => ({ derleme: '', ayar: { slayt: SABIT_10SN, gece: { kapanmaDk: 60, acilmaDk: 30 }, duyuruVarsayilanGun: 30 }, duyurular });
+const AKIS = (duyurular, slayt = SABIT_10SN) => ({ derleme: '', ayar: { slayt, gece: { kapanmaDk: 60, acilmaDk: 30 }, duyuruVarsayilanGun: 30 }, duyurular });
 const DUYURU = (ek = {}) => ({ id: 'kermes', tur: 'duyuru', tr: { baslik: 'Hayır çarşısı', metin: 'Pazar günü öğleden sonra cami bahçesinde.' }, fr: { baslik: 'Kermesse', metin: 'Dimanche après-midi dans la cour de la mosquée.' }, baslangic: '2000-01-01', son: '2099-12-31', hedef: [], ...ek });
 const ICERIK = { derleme: '', eksik: [],
   ayetler: [{ id: 'a1', referans: { tr: 'İnşirah, 94/5-6', fr: 'Ach-Charh, 94:5-6' }, ar: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', tr: 'Demek ki zorlukla beraber bir kolaylık vardır.', kaynakTr: 'Kur’an Yolu Meali (DİB)' }],
@@ -247,6 +247,44 @@ test('uzun duyuru metni slayt alanından taşmaz', async ({ page }) => {
   await page.goto('/ekran/');
   await expect(page.locator('.slayt-duyuru')).toBeVisible();
   expect(await page.locator('[data-alan="slayt"]').evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
+});
+
+// Sitede Cuma saati girilmişse Perşembe→Cuma gece yarısı vakit alanı Cuma satırı için 10u uzar, slayt alanı o kadar
+// kısalır (ekran.css → .vakitler.cumali). Ekrandaki slayt yeni alana hemen yeniden sığdırılmalı; yoksa altı sonraki
+// slayta dek (≤ 30 sn) kırpılırdı. Slayt bilerek uzun (TR ve FR metin 280'er karakter, bugünkü en uzun duyuru özeti
+// kadar) ve 60 sn'lik: gece yarısı ekranda hâlâ aynı slayt vardır. Sahte saat slayt görününce durdurulur; gece yarısı
+// makine yüküne değil runFor'a bağlı gelir.
+test('Perşembe→Cuma gece yarısı Cuma satırı açılınca ekrandaki slayt yeni alana yeniden sığdırılır', async ({ page }) => {
+  const cuma = kaynak.gunler.find(cumaMi);
+  test.skip(!cuma, 'veride Cuma yok');
+  const geceYarisi = an(cuma, '00:00').getTime();
+  const uzun = 'Cemaatimizin dikkatine: '.repeat(12).slice(0, 280);
+  await page.route('**/ekran/', cumaSaatiEkle('13:30'));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ tr: { baslik: 'Yıllık genel kurul toplantısı ve yönetim kurulu seçimi hakkında', metin: uzun }, fr: { baslik: 'Assemblée générale annuelle et élection du conseil d’administration', metin: uzun } })], { tabanSn: 60, karakterSn: 0, enAzSn: 60, enCokSn: 60 }) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: new Date(geceYarisi - 20_000) });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  const vakitler = page.locator('[data-alan="vakitler"]');
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible();
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 500));
+  await expect(vakitler).not.toHaveClass(/cumali/);
+  // Testin kendi varsayımı: Perşembe ölçeğindeki slayt Cuma'nın kısalmış alanına sığmıyor olmalı; sığsaydı test
+  // hiçbir şey kanıtlamazdı. Sınıf bir anlığına elle eklenip ölçülür, sonra geri alınır.
+  const tasma = await page.evaluate(() => {
+    const v = document.querySelector('[data-alan="vakitler"]');
+    const s = document.querySelector('[data-alan="slayt"]');
+    v.classList.add('cumali');
+    const t = s.scrollHeight - s.clientHeight;
+    v.classList.remove('cumali');
+    return t;
+  });
+  expect(tasma).toBeGreaterThan(1);
+  await page.clock.runFor(geceYarisi - (await page.evaluate(() => Date.now())) + 2_000);
+  await expect(vakitler).toHaveClass(/cumali/);
+  await expect(page.locator('.cuma-saati b')).toHaveText('Cuma namazı 13:30');
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // aynı slayt, sıradaki slayt değil
+  expect(await slayt.evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
 });
 
 test('akış bozulursa ekran son sağlam içerikle dönmeye devam eder', async ({ page }) => {
