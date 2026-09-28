@@ -6,9 +6,11 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node scripts/ekran-derle.mjs && astro dev",
+    "build": "node scripts/ekran-derle.mjs && astro build",
     "preview": "astro preview",
+    "ekran:derle": "node scripts/ekran-derle.mjs",
+    "test:ekran": "node --test tests/ekran-vakit-kapisi.test.mjs tests/ekran-akis.test.mjs tests/ekran-icerik.test.mjs tests/ekran-secim.test.mjs tests/ekran-veri.test.mjs tests/ekran-eski-tarayici.test.mjs tests/ekran-hava.test.mjs",
     "astro": "astro",
     "check": "astro check",
     "denetim": "node scripts/site-denetim.mjs",
@@ -29,7 +31,7 @@
     "test:eksik": "node --test tests/defter-eksik.test.mjs",
     "test:gas-ceviri": "node --test tests/gas-ceviri.test.mjs",
     "test:kutuphane": "py -3.14 scripts/kutuphane-erisim-testi.py",
-    "dogrula": "npm run kimlik:denetle && npm run test:kimlik && npm run denetim:panel && npm run denetim:cms && npm run denetim:dinigun && npm run test:ezber && npm run test:svg && npm run denetim:svg && npm run build && npm run denetim && npm run test:tipografi && npm run test:ek9 && npm run test:ihtida && npm run test:kayit && npm run test:duzelt && npm run test:gunluk && npm run test:kaliplar && npm run test:ceviri && npm run test:eksik && npm run test:gas-ceviri && npm run test:seviye && npm run test:dinleme",
+    "dogrula": "npm run kimlik:denetle && npm run test:kimlik && npm run denetim:panel && npm run denetim:cms && npm run denetim:dinigun && npm run test:ezber && npm run test:svg && npm run denetim:svg && npm run build && npm run denetim && npm run test:tipografi && npm run test:ek9 && npm run test:ihtida && npm run test:kayit && npm run test:duzelt && npm run test:gunluk && npm run test:kaliplar && npm run test:ceviri && npm run test:eksik && npm run test:gas-ceviri && npm run test:seviye && npm run test:dinleme && npm run test:ekran",
     "kimlik:uret": "node scripts/kimlik-uret.mjs",
     "kimlik:denetle": "node scripts/kimlik-uret.mjs --denetle",
     "test:kimlik": "node --test tests/kurumsal-kimlik.test.mjs",

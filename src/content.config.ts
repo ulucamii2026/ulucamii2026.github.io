@@ -1,6 +1,10 @@
 import { defineCollection, z } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { parse as yamlParse } from 'yaml';
+import { EKRANLAR } from './lib/ekran/akis.ts';
+
+/** Sveltia boş bırakılan isteğe bağlı alanı "" (ya da null) yazabilir; ekran alanlarında bu "yok" demektir. */
+const bosIseYok = (v: unknown) => (v === '' || v === null ? undefined : v);
 
 const dil = z.enum(['tr', 'fr']);
 
@@ -22,6 +26,14 @@ const duyurular = defineCollection({
     /* Öne çıkarmanın son günü (dâhil). Süreli kampanyalar (hac ön kaydı gibi) bu tarihten sonra
        ana sayfadaki öne çıkan yerini kendiliğinden bırakır; alan boşsa süresiz. */
     oneCikanSon: z.coerce.date().optional(),
+    /* Cami ekranı (ulucamii.be/ekran, 27 Eylül 2026). İşaretli değilse duyuru ekranlarda görünmez;
+       son gün boşsa ekran.yaml → duyuruVarsayilanGun kadar gösterilir. Hedef boşsa bütün ekranlar.
+       Boş bırakılan tarih "" olarak gelse de derleme kırılmaz (bosIseYok). */
+    ekranda: z.boolean().default(false),
+    ekranBaslangic: z.preprocess(bosIseYok, z.coerce.date().optional()),
+    ekranSon: z.preprocess(bosIseYok, z.coerce.date().optional()),
+    ekranHedef: z.array(z.enum(EKRANLAR)).default([]),
+    ekranMetni: z.string().max(160).optional(),
     taslak: z.boolean().default(false),
   }),
 });
@@ -214,5 +226,20 @@ const vaazlar = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller, vaazlar };
+/** Cami ekranı ayarları — src/content/ayarlar/ekran.yaml (27 Eylül 2026; İçerik Yönetimi → Site Ayarları → Cami ekranı) */
+const ekranAyar = defineCollection({
+  loader: file('./src/content/ayarlar/ekran.yaml', { parser: (text) => [{ id: 'ekran', ...yamlParse(text).ekran }] }),
+  schema: z.object({
+    slayt: z.object({
+      tabanSn: z.number().min(0).max(60),
+      karakterSn: z.number().min(0).max(1),
+      enAzSn: z.number().int().min(3).max(120),
+      enCokSn: z.number().int().min(3).max(300),
+    }),
+    gece: z.object({ kapanmaDk: z.number().int().min(0).max(240), acilmaDk: z.number().int().min(0).max(240) }),
+    duyuruVarsayilanGun: z.number().int().min(1).max(365).default(30),
+  }),
+});
+
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller, vaazlar, ekranAyar };
 export { dil };

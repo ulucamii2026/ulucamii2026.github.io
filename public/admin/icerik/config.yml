@@ -84,6 +84,11 @@ collections:
       - { name: oneCikanSon, label: "Öne çıkarmanın son günü (isteğe bağlı)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu günden sonra duyuru ana sayfadaki öne çıkan yerini kendiliğinden bırakır." }
       - { name: vitrin, label: "Ana sayfa vitrini", widget: select, options: [{ label: "Otomatik (son 90 gün)", value: otomatik }, { label: "Öncelikli göster", value: goster }, { label: "Vitrinde gösterme", value: gizle }], default: otomatik, i18n: duplicate }
       - { name: vitrinSon, label: "Vitrinde son gösterim günü", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu gün dâhil gösterilir; sonra arşivde kalır. Süreli afişlerde doldurun." }
+      - { name: ekranda, label: "Cami ekranında göster", widget: boolean, default: false, i18n: duplicate, hint: "İşaretlenirse duyuru camideki ekranlarda da döner (ulucamii.be/ekran)." }
+      - { name: ekranBaslangic, label: "Ekranda ilk gün (boşsa duyuru tarihi)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
+      - { name: ekranSon, label: "Ekranda son gün (boşsa Cami ekranı ayarlarındaki varsayılan gün sayısı)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu gün dâhil gösterilir, sonra ekrandan kendiliğinden kalkar." }
+      - { name: ekranHedef, label: "Hangi ekranlar (boşsa hepsi)", widget: select, multiple: true, required: false, default: [], i18n: duplicate, options: [{ label: "Ana ekran (LED panonun yeri)", value: ana }, { label: "Giriş / çay ocağı", value: giris }, { label: "Kadınlar bölümü", value: kadin }] }
+      - { name: ekranMetni, label: "Ekran metni (boşsa özet)", widget: text, required: false, i18n: true, hint: "En fazla 160 karakter; ekranda başlığın altında görünür.", pattern: ["^[\\s\\S]{0,160}$", "En fazla 160 karakter"] }
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
 
@@ -419,6 +424,30 @@ collections:
                   - { name: fr, label: Fransızca, widget: string }
               - { name: tarih, label: Tarih, widget: string, required: false }
               - { name: sira, label: Sıra (küçük önce), widget: number, default: 100 }
+      - name: ekran
+        label: Cami ekranı
+        file: src/content/ayarlar/ekran.yaml
+        fields:
+          - name: ekran
+            label: Cami ekranı ayarları
+            widget: object
+            collapsed: false
+            fields:
+              - name: slayt
+                label: "Slayt süresi (taban + karakter başına ek süre × karakter sayısı)"
+                widget: object
+                fields:
+                  - { name: tabanSn, label: "Taban süre (sn)", widget: number, value_type: float, min: 0, max: 60 }
+                  - { name: karakterSn, label: "Karakter başına ek süre (sn)", widget: number, value_type: float, min: 0, max: 1 }
+                  - { name: enAzSn, label: "En kısa slayt (sn)", widget: number, value_type: int, min: 3, max: 120 }
+                  - { name: enCokSn, label: "En uzun slayt (sn)", widget: number, value_type: int, min: 3, max: 300 }
+              - name: gece
+                label: "Gece kapanması (kutudaki uygulama uygular)"
+                widget: object
+                fields:
+                  - { name: kapanmaDk, label: "Yatsıdan kaç dakika sonra kapansın", widget: number, value_type: int, min: 0, max: 240 }
+                  - { name: acilmaDk, label: "İmsaktan kaç dakika önce açılsın", widget: number, value_type: int, min: 0, max: 240 }
+              - { name: duyuruVarsayilanGun, label: "Son günü girilmemiş duyuru kaç gün gösterilsin", widget: number, value_type: int, min: 1, max: 365 }
 
   - name: kurulAyar
     label: Yönetim Kurulu

@@ -84,7 +84,7 @@ export const AHLAK_HADISLERI: HadisOgesi[] = [
       nl: 'Wie niet barmhartig is voor onze kleinen en onze ouderen niet respecteert, hoort niet bij ons.',
       de: 'Wer unseren Kleinen keine Barmherzigkeit zeigt und unsere Älteren nicht achtet, gehört nicht zu uns.',
     },
-    kaynak: 'Ebû Dâvûd, Edeb, 58',
+    kaynak: 'Tirmizî, Birr, 15',
     konu: {
       tr: 'Saygı & Merhamet',
       fr: 'Respect & Compassion',

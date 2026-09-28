@@ -1,0 +1,47 @@
+/**
+ * Cami ekranı istemci paketini üretir → public/ekran/ (üretilen çıktı; .gitignore'da, her derlemede yenilenir).
+ *
+ * Neden ayrı paket: ekran ikinci el Android TV kutularının WebView'ünde çalışır; hesapsız kurulan
+ * Android 9 kutusunda WebView Chromium 70 civarında kalabilir. Sitenin Vite/Tailwind 4 çıktısı yeni
+ * tarayıcı ister; esbuild bu paketin SÖZDİZİMİNİ chrome70'e indirir (API'ler inmez — src/ekran/ ve
+ * src/lib/ekran/ yalnız Chromium 70'te olan API'leri kullanır; tests/ekran-eski-tarayici.test.mjs denetler).
+ * Renkler kurumsal kimlik dosyasından CSS değişkeni olarak eklenir (elle renk yazılmaz).
+ *
+ * Kullanım: node scripts/ekran-derle.mjs [--izle]   (npm run build ve npm run dev bunu önce çalıştırır)
+ */
+import { build, context } from 'esbuild';
+import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const yol = (p) => fileURLToPath(new URL('../' + p, import.meta.url));
+const CIKTI = yol('public/ekran/');
+const HEDEF = ['chrome70'];
+
+mkdirSync(CIKTI + 'fonts', { recursive: true });
+const FONTLAR = {
+  'work-sans-latin.woff2': 'node_modules/@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2',
+  'work-sans-latin-ext.woff2': 'node_modules/@fontsource-variable/work-sans/files/work-sans-latin-ext-wght-normal.woff2',
+  'amiri-arabic.woff2': 'node_modules/@fontsource/amiri/files/amiri-arabic-400-normal.woff2',
+};
+for (const [ad, kaynak] of Object.entries(FONTLAR)) copyFileSync(yol(kaynak), CIKTI + 'fonts/' + ad);
+
+const kimlik = JSON.parse(readFileSync(yol('src/data/kurumsal-kimlik.json'), 'utf8'));
+const r = kimlik.gorunum.ortakRenk;
+const cami = kimlik.kurumlar.cami.renk;
+const degiskenler = `:root{--ana:${cami.ana};--siyah:${cami.koyu};--beyaz:${cami.acik};--zemin:${r.zemin};--yuzey:${r.acikYuzey};--metin:${r.metin};--ikincil:${r.ikincil};--cizgi:${r.cizgi}}\n`;
+writeFileSync(CIKTI + 'ekran.css', degiskenler + readFileSync(yol('src/ekran/ekran.css'), 'utf8'));
+
+const ortak = { bundle: true, format: 'iife', target: HEDEF, minify: true, legalComments: 'none', logLevel: 'warning', charset: 'utf8' };
+const paketler = [{ ...ortak, entryPoints: [yol('src/ekran/main.ts')], outfile: CIKTI + 'ekran.js' }];
+
+/* Her derleme yeni bir SW sürümü: kutu yeni paketi bir sonraki güncelleme denetiminde alır. */
+const damga = (process.env.GITHUB_SHA || 'yerel').slice(0, 12) + '-' + Date.now().toString(36);
+paketler.push({ ...ortak, entryPoints: [yol('src/ekran/sw.ts')], outfile: CIKTI + 'sw.js', define: { __EKRAN_SURUM__: JSON.stringify(damga) } });
+
+if (process.argv.includes('--izle')) {
+  for (const p of paketler) await (await context(p)).watch();
+  console.log('[ekran] paket izleniyor (CSS değişince betiği yeniden çalıştırın)…');
+} else {
+  await Promise.all(paketler.map((p) => build(p)));
+  console.log('[ekran] paket hazır → public/ekran/');
+}

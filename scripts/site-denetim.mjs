@@ -34,9 +34,10 @@ const sayfalar = [];
 })(KOK);
 
 const yol = (dosya) => '/' + relative(KOK, dosya).split(sep).join('/').replace(/index\.html$/, '');
-/** Site sayfasi olmayanlar: panel (noindex, kendi iskeleti), gomulu kayit uygulamasi ve
-    arama motoru dogrulama dosyasi. Bunlarda canonical/h1/hreflang beklenmez. */
-const uygulamaSayfasi = (u) => u.startsWith('/admin') || u.startsWith('/kayit') || /^\/google[0-9a-f]+\.html$/.test(u);
+/** Site sayfasi olmayanlar: panel (noindex, kendi iskeleti), cami ekrani (noindex, kendi
+    iskeleti), gomulu kayit uygulamasi ve arama motoru dogrulama dosyasi. Bunlarda
+    canonical/h1/hreflang beklenmez. */
+const uygulamaSayfasi = (u) => u.startsWith('/admin') || u.startsWith('/kayit') || u.startsWith('/ekran') || /^\/google[0-9a-f]+\.html$/.test(u);
 /* Site dilleri ve hreflang kodları — src/i18n/ui.ts → diller ve utils.ts → hreflangKodu ile eş tutulur. */
 const SITE_DILLERI = ['tr', 'fr', 'en', 'nl', 'de'];
 const HREFLANG_KODLARI = ['tr', 'fr-BE', 'en', 'nl-BE', 'de-BE'];
@@ -186,6 +187,56 @@ for (const d of SITE_DILLERI.filter((x) => x !== 'tr')) {
   }
 }
 
+/* ---------------------------------------------------------------- cami ekranı (/ekran/) */
+/* Ekran ikinci el Android TV kutularında çalışır (27 Eylül 2026, docs/EKRAN-YOL-HARITASI.md). Paket ya
+   da akış eksikse ekran boş kalır; vakit akışı Diyanet değilse ya da kapsamı daralıyorsa yayın öncesi
+   burada yakalanır. */
+{
+  const dizin = join(KOK, 'ekran');
+  if (!existsSync(join(dizin, 'index.html'))) ekle('kritik', 'cami ekranı sayfası üretilmemiş', '/ekran/');
+  else {
+    /* Service worker'ın önbelleğe aldığı her dosya (src/ekran/kabuk.json, sw.ts ile TEK liste) gerçekten
+       üretilmiş olmalı: biri eksikse cache.addAll reddeder, yeni SW hiç kurulamaz — kutular eski pakette donar,
+       yeni kutu internetsiz hiç açılamaz, yayın ise yeşil kalır. /ekran/ → dist/ekran/index.html, gerisi dist + yol. */
+    let kabuk = null;
+    try { kabuk = JSON.parse(readFileSync(new URL('../src/ekran/kabuk.json', import.meta.url), 'utf8')); } catch { /* aşağıda kritik */ }
+    if (!Array.isArray(kabuk) || !kabuk.length) ekle('kritik', 'cami ekranı önbellek listesi okunamadı', 'src/ekran/kabuk.json');
+    else for (const u of kabuk) {
+      const dosya = u === '/ekran/' ? join(dizin, 'index.html') : join(KOK, ...String(u).replace(/^\//, '').split('/'));
+      if (!existsSync(dosya)) ekle('kritik', 'cami ekranı önbellek dosyası eksik', u);
+    }
+    // Service worker'ın kendisi önbellek listesinde yer almaz (kendini önbelleğe almaz); ayrıca aranır.
+    if (!existsSync(join(dizin, 'sw.js'))) ekle('kritik', 'cami ekranı dosyası eksik', '/ekran/sw.js');
+    /* Önek kontrolü ("noindex" ile başlıyor mu) nofollow'un düşmesini yakalamazdı; plan
+       (EKRAN-FAZ1-UYGULAMA-PLANI.md, "Genel kısıtlar") ikisini BİRDEN ve robots.txt'de
+       ayrıca bir Disallow satırı ister — arama motoru koruması tek noktaya bağlı kalmasın. */
+    const robotsMeta = (readFileSync(join(dizin, 'index.html'), 'utf8').match(/<meta name="robots" content="([^"]*)"/) || [])[1] || '';
+    if (!/\bnoindex\b/.test(robotsMeta) || !/\bnofollow\b/.test(robotsMeta))
+      ekle('yuksek', 'cami ekranı arama motorlarına açık', `/ekran/ robots meta: "${robotsMeta || 'yok'}"`);
+    const robotsTxt = existsSync(join(KOK, 'robots.txt')) ? readFileSync(join(KOK, 'robots.txt'), 'utf8') : '';
+    if (!/^Disallow:\s*\/ekran\/\s*$/m.test(robotsTxt))
+      ekle('yuksek', "cami ekranı robots.txt'de engelli değil", robotsTxt ? '/ekran/' : 'robots.txt yok');
+    if (existsSync(join(dizin, 'vakitler.json'))) {
+      const v = JSON.parse(readFileSync(join(dizin, 'vakitler.json'), 'utf8'));
+      if (v.kaynakTuru !== 'diyanet') ekle('kritik', 'cami ekranı vakitleri Diyanet değil', String(v.kaynakTuru));
+      /* Kapsam, bugünden itibaren KESİNTİSİZ gün sayısıdır. Verideki bir boşluk (27 Eylül 2026'da:
+         27 Ekim–31 Aralık 2026) ekranın o günlerde "güncellenemedi" demesi demektir; toplam gün sayısı bunu gizler. */
+      const tarihler = new Set((v.gunler || []).map((g) => g.tarih));
+      let kesintisiz = 0;
+      for (let t = Date.parse(new Date().toISOString().slice(0, 10) + 'T12:00:00Z'); tarihler.has(new Date(t).toISOString().slice(0, 10)); t += 86_400_000) kesintisiz++;
+      if (kesintisiz < 7) ekle('yuksek', 'cami ekranı vakit kapsamı daralıyor', `bugünden itibaren ${kesintisiz} kesintisiz gün`);
+      else if (kesintisiz < 14) ekle('orta', 'cami ekranı vakit kapsamı', `bugünden itibaren ${kesintisiz} kesintisiz gün`);
+      if ((v.atlanan || []).length) ekle('yuksek', 'cami ekranında bozuk vakit günü yayımlanmadı', v.atlanan.join(', '));
+    }
+    for (const f of readdirSync(KOK).filter((f) => /^sitemap.*\.xml$/.test(f)))
+      if (readFileSync(join(KOK, f), 'utf8').includes('/ekran/')) ekle('yuksek', 'cami ekranı sitemap içinde', f);
+    if (existsSync(join(dizin, 'icerik.json'))) {
+      const i = JSON.parse(readFileSync(join(dizin, 'icerik.json'), 'utf8'));
+      if (!(i.hadisler || []).length) ekle('orta', 'cami ekranında hadis yok', 'icerik.json boş');
+      if ((i.eksik || []).length) ekle('orta', 'cami ekranı içeriğinde eksik/mükerrer kayıt', i.eksik.join(', '));
+    }
+  }
+}
 
 /* ---------------------------------------------------------------- ders materyalleri verisi */
 /* src/data/ders-materyalleri.json betik ciktisidir (kurs projesi site-materyal-yayinla.py). Elle bozulmus

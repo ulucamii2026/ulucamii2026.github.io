@@ -1,5 +1,6 @@
 /** Diyanet verisindeki Türkçe hicrî ay adlarını ziyaretçinin dilindeki karşılığına çevirir.
     Türkçe olduğu gibi kalır; diğer diller kendi yazımlarını alır (sessiz Fransızca yok). */
+// Cami ekranının Chromium 70 paketine (public/ekran/ekran.js) girer: daha yeni bir JS API'si kullanılmaz, `npm run test:ekran` denetler.
 import type { Dil } from './ui';
 
 const FR: Record<string, string> = {

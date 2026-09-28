@@ -1,0 +1,70 @@
+---
+/**
+ * /ekran/ — cami ekranı (27 Eylül 2026; docs/EKRAN-YOL-HARITASI.md). Android TV kutusundaki kabuk
+ * uygulaması bu sayfayı tam ekran açar: /ekran/?ekran=ana|giris|kadin&don=90.
+ * Statik iskelet: görüntüyü /ekran/ekran.js doldurur (src/ekran/main.ts → scripts/ekran-derle.mjs).
+ * Sitenin Base düzeni ve Tailwind CSS'i bilerek kullanılmaz: ekran eski WebView'de (Chromium 70) de
+ * çalışmalı. Arama motorlarına kapalıdır (noindex + robots.txt).
+ */
+import { ui } from '../../i18n/ui';
+import kimlik from '../../data/kurumsal-kimlik.json';
+import { siteAyarlari } from '../../lib/icerik';
+import { SIRA } from '../../lib/namaz';
+
+const ayar = await siteAyarlari();
+const vakitAdlari = (dil: 'tr' | 'fr'): Record<string, string> => {
+  const sozluk = ui[dil] as Record<string, string>;
+  const adlar: Record<string, string> = { cuma: sozluk['namaz.cumaKisa'], cumaUzun: sozluk['namaz.cuma'] };
+  for (const v of SIRA) adlar[v] = sozluk[`namaz.${v}`];
+  return adlar;
+};
+/* Sitedeki sabit Cuma namazı saati (İçerik Yönetimi → Site Ayarları → "Cuma namazı saati"; site.yaml → cumaSaati).
+   Ekran siteyle aynı kuralı izler (src/components/NamazVakitleri.tsx): boşsa Cuma günü öğle satırı Cuma olur ve
+   Diyanet öğle vaktini gösterir; doluysa öğle satırı öğle kalır, Cuma saati ayrı satırda yazar. Bu, cemaatin
+   toplanma saatidir, hesaplanmış bir vakit değildir. Yalnız SS:DD biçimindeyse kullanılır. */
+const cumaSaatiHam = (ayar.cumaSaati ?? '').trim();
+const cumaSaati = /^\d{2}:\d{2}$/.test(cumaSaatiHam) ? cumaSaatiHam : '';
+if (cumaSaatiHam && !cumaSaati) {
+  console.warn(`[ekran] UYARI: site.yaml → cumaSaati "${cumaSaatiHam}" SS:DD biçiminde değil; ekran Cuma günü öğle satırını Cuma olarak gösterir, site ise bu değeri yazar.`);
+}
+const sayfaVerisi = {
+  cami: { tr: kimlik.kurumlar.cami.ad.tr, fr: kimlik.kurumlar.cami.ad.fr },
+  vakit: { tr: vakitAdlari('tr'), fr: vakitAdlari('fr') },
+  gps: { enlem: ayar.gps.enlem, boylam: ayar.gps.boylam },
+  cumaSaati,
+};
+---
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{kimlik.kurumlar.cami.kisaAd} · Ekran</title>
+    <link rel="stylesheet" href="/ekran/ekran.css" />
+  </head>
+  <body>
+    <div class="sahne">
+      <main id="ekran" class="ekran" data-tema="acik">
+        <header class="ust">
+          <div class="kimlik">
+            <img class="logo logo-acik" src="/media/logo/ulu-camii-logo.svg" alt="" />
+            <img class="logo logo-koyu" src="/media/logo/ulu-camii-logo-beyaz.svg" alt="" />
+            <div class="cami-adi"><span data-alan="cami-tr"></span><span class="fr" lang="fr" data-alan="cami-fr"></span></div>
+          </div>
+          <div class="zaman">
+            <div class="saat" data-alan="saat"><span data-alan="saat-sd">--:--</span><small data-alan="saat-sn"></small></div>
+            <div class="hava" data-alan="hava" hidden></div>
+          </div>
+          {/* "·" ayıracı CSS'ten gelir (.hicri::before): hicrî tarih boşken (veri boşluğu, saat doğrulanıyor) asılı kalmaz */}
+          <div class="takvim"><span data-alan="tarih-tr"></span><span class="hicri" data-alan="hicri-tr"></span></div>
+          <div class="takvim fr" lang="fr"><span data-alan="tarih-fr"></span><span class="hicri" data-alan="hicri-fr"></span></div>
+        </header>
+        <section class="slayt-alani" data-alan="slayt"></section>
+        <section class="vakitler" data-alan="vakitler"></section>
+      </main>
+    </div>
+    <script is:inline id="ekran-veri" type="application/json" set:html={JSON.stringify(sayfaVerisi)}></script>
+    <script is:inline src="/ekran/ekran.js"></script>
+  </body>
+</html>

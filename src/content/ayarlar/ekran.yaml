@@ -1,0 +1,13 @@
+# Cami ekranı ayarları — İçerik Yönetimi → Site Ayarları → Cami ekranı (27 Eylül 2026).
+# Slayt süresi = tabanSn + karakterSn × karakter sayısı; enAzSn ile enCokSn arasında tutulur.
+# Gece: ekran yatsıdan kapanmaDk sonra kapanır, imsaktan acilmaDk önce açılır (kutudaki uygulama uygular, Faz 2).
+ekran:
+  slayt:
+    tabanSn: 8
+    karakterSn: 0.05
+    enAzSn: 10
+    enCokSn: 30
+  gece:
+    kapanmaDk: 60
+    acilmaDk: 30
+  duyuruVarsayilanGun: 30
