@@ -8,11 +8,31 @@ Ekran Diyanet vakitlerini sürekli gösterecek; ayet, hadis, duyuru ve diğer sl
 Amaç: daha zengin, iki dilli (TR+FR), uzaktan yönetilen, 2027 devrinde derneğe sorunsuz kalan bir sistem.
 Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uygulama planına dökülecek.
 
+## Karar değişikliği: ana ekran YATAY, «A+» yerleşimi (28 Eylül 2026)
+- **Neden:** Ana salona Polaroid 40" Android TV asılıyor (88,6 × 49,8 cm).
+  - Salon yaklaşık 100 m², en uzak izleyici 12–14 m.
+  - ISO 9241-303'e göre rakam en az 16 açı dakikası olmalı. Dikey tasarım 40"ta vakit rakamını 2,0 cm çiziyor,
+    bu ancak ~4 m'den okunur.
+  - Üreticiler ev TV'sinin dik kullanılmasını önermiyor (ısı).
+- **Yerleşim:**
+  - Solda 6 vakit. Sıradaki vakit kırmızı büyük blok: rakam ~6,8 cm, ~14,5 m'den okunur. Geri sayım bloğun
+    içinde. Yatsıdan sonra blokta «Yarın · Demain» etiketiyle yarının imsakı.
+  - Sağda kimlik, saat ve hava, tarihler, slayt.
+- **Düzen seçimi:** Sayfa düzeni en-boy oranından kendisi seçer (≥ 1,2 → yatay). `?duzen=yatay|dikey` zorlar,
+  `?don=90|270` döndürür.
+  - Dikey tasarım silinmedi; dik monitör ve giriş ya da kadınlar ekranları için geçerli.
+- **Yer:** Ekran bugünkü LED panonun durduğu sol yan duvara asılır, kıble duvarına değil. Din Görevlisi Rehberi
+  (DİB 2016): «kıble cihetine saat takılmamalı».
+- **Ayrıntılar:**
+  - Plan ve araştırma: `C:\Users\ridva\.claude\plans\camimizde-bu-var-bunu-tranquil-glacier.md`.
+  - Kod: `src/ekran/olcek.ts` (`tuvalGeometrisi`), `src/ekran/vakitler.ts` (yatay blok),
+    `src/ekran/ekran.css` (`.ekran[data-duzen='yatay']`).
+
 ## Senin kararların (9 tur, 36 soru)
 | Konu | Karar |
 |---|---|
 | Yerler | 3 ekran: LED panonun yeri (ana), giriş/şadırvan/çay ocağı, kadınlar bölümü |
-| Donanım | Monitör/TV 32–43 inç + Android TV kutusu; **dikey**; ikinci el/kelepir; prizler hazır; mevcut ana Wi-Fi |
+| Donanım | Monitör/TV 32–43 inç + Android TV kutusu; ~~dikey~~ **ana ekran yatay (28 Eyl 2026 kararı, yukarıda)**; ikinci el/kelepir; prizler hazır; mevcut ana Wi-Fi |
 | Mimari | **Hibrit:** görüntü sitede `ulucamii.be/ekran` sayfası, kutuda ince Android kabuk uygulaması |
 | Dil | TR + FR aynı slaytta alt alta; ayet/hadiste Arapça aslı üstte |
 | Vakitler | Yalnız Diyanet (ilçe 11890); kamet yok; sıradaki vakit vurgulu + geri sayım |
@@ -45,7 +65,7 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
    └──────────► ulucamii2026/ulucamii2026.github.io ◄────────────┘   (commit → deploy)
                                 │  GitHub Pages
                                 ▼
-   ulucamii.be/ekran/?ekran=ana|giris|kadin&don=90   ← sayfa (Astro + TSX, service worker, noindex)
+   ulucamii.be/ekran/?ekran=ana|giris|kadin[&don=90][&duzen=yatay|dikey]   ← sayfa (Astro + TSX, service worker, noindex)
    ulucamii.be/ekran/vakitler.json · akis.json · icerik.json · surum.json
                                 │  Wi-Fi (yoksa önbellek)
                                 ▼
@@ -57,7 +77,7 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
 
 ### Site tarafı (bu depo)
 Görüntünün ve mantığın tamamı burada, tek depoda durur.
-- **Sayfa** `src/pages/ekran/index.astro` + `src/components/ekran/*.tsx`. Düzen dikey 1080×1920: üst bant (logo, ad, miladi/hicrî tarih, büyük saat, hava), orta slayt alanı, alt 6 vakit (TR · FR adlar) + geri sayım.
+- **Sayfa** `src/pages/ekran/index.astro` + `src/components/ekran/*.tsx`. Yatay ekranda A+ yerleşimi (yukarıdaki karar); dikey 1080×1920'de: üst bant (logo, ad, miladi/hicrî tarih, büyük saat, hava), orta slayt alanı, alt 6 vakit (TR · FR adlar) + geri sayım.
   - `?don=90` sayfayı CSS ile döndürür. Kutu yatay sinyal verir, telefonda önizlemede döndürme yapılmaz.
   - `?ekran=` hedeflemeyi seçer.
   - Service worker sayfayı ve JSON'ları önbelleğe alır, internet giderse son sağlam hâl kalır.
