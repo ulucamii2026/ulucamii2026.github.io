@@ -199,10 +199,22 @@ test('slayt çiziminde istisna çıkarsa tur donmaz; sonraki turda geçerli slay
 
 test.describe('internetsiz açılış', () => {
   test.use({ serviceWorkers: 'allow' });
+
+  // Düzeltme turu 1 / F7: SW testleri artık gerçek takvime değil (bugünün Diyanet kaydı dolup taşabilir),
+  // diğer testler gibi veriden seçilmiş sabit bir güne bağlı. page.clock yalnız SAYFANIN zamanlayıcılarını
+  // sahteler (main.ts → saniyelik/veriDongusu); SW kendi gerçek setTimeout'unu kullanır, 10 sn'lik yarış
+  // bundan etkilenmez. page.clock.install'ın page.reload() sonrasında da geçerli kaldığı elle doğrulandı
+  // (rapora bkz.): sahte tarih reload sonrası hâlâ aynı, gerçek sistem saatinden farklı çıktı.
   test('internet kesilse de ekran son sağlam hâliyle açılır', async ({ page, context }) => {
+    await page.clock.install({ time: an(ornek, '12:00') });
     await page.goto('/ekran/');
     await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
     await expect(page.locator('.vakit')).toHaveCount(6);
+    // F8: beforeEach'teki vakitler.json mock'u context.setOffline(true) sırasında da "başarıyla" yanıtlar
+    // (route.fulfill ağa hiç dokunmaz) — bu, SW'nin önbellek yolunu O kaynak için hiç sınamaz. unroute ile
+    // kaldırılınca istek genel context.route('**/*', …) yoluna (route.continue) düşer, offline sırasında
+    // GERÇEKTEN başarısız olur; SW'nin agOnce → caches.open(ONBELLEK) yoluna gerçekten muhtaç kalır.
+    await context.unroute('**/ekran/vakitler.json');
     await context.setOffline(true);
     await page.reload();
     await expect(page.locator('.vakit')).toHaveCount(6);
@@ -210,21 +222,96 @@ test.describe('internetsiz açılış', () => {
     await context.setOffline(false);
   });
 
-  // Kontrolör kuralı 1: Wi-Fi ayakta ama internet tıkandığında (taşıyıcı portalı, yarım kalan DNS…)
-  // fetch() hiç çözülmeyebilir — context.setOffline(true) gibi net bir hata fırlatmaz, sadece asılı kalır.
-  // Adaptasyonsuz agOnce (fetch().then().catch()) bu durumda önbelleğe hiç düşmez: sayfanın kendi isteği
-  // (src/ekran/veri.ts → getir) 30 sn'de vazgeçer ve önbelleği hiç görmez. sw.ts → agOnce ağ isteğini
-  // 10 sn'lik bir zamanlayıcıyla yarıştırır; zamanlayıcı kazanırsa önbellekten yanıtlanır. Ağ isteği
-  // arka planda sürer ve geç de gelse sakla() ile önbelleğe yazılır (bu test bunu doğrulamaz, ayrı ilgi).
-  test('ağ askıda kalırsa (Wi-Fi ayakta, internet cevap vermiyor) vakitler ~10 sn içinde önbellekten gelir', async ({ page, context }) => {
+  // Kontrolör kuralı 1 (Görev 8) + düzeltme F9: Wi-Fi ayakta ama internet tıkandığında (taşıyıcı portalı,
+  // yarım kalan DNS…) fetch() hiç çözülmeyebilir — context.setOffline(true) gibi net bir hata fırlatmaz,
+  // sadece asılı kalır. sw.ts → agOnce ağ isteğini 10 sn'lik bir zamanlayıcıyla yarıştırır; zamanlayıcı
+  // kazanırsa önbellekten yanıtlanır. Ağ isteği arka planda sürer; F9 artık bunun GERÇEKTEN gerçekleştiğini
+  // (testin kendi varsayımı: istek context.route'a hiç düşmüş mü) ve geç gelen yanıtın sakla() ile
+  // önbelleğe yazıldığını da doğruluyor.
+  test('ağ askıda kalırsa vakitler ~10 sn içinde önbellekten gelir; geç gelen ağ yanıtı yine de önbelleğe yazılır', async ({ page, context }) => {
+    await page.clock.install({ time: an(ornek, '12:00') });
     await page.goto('/ekran/');
     await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
     await expect(page.locator('.vakit')).toHaveCount(6);
+
+    let vurus = 0;
+    let tutulanRoute = null;
     // context.setOffline DEĞİL: gerçek bir kopukluk değil, hiç yanıt vermeyen bir bağlantı canlandırılıyor.
-    // route.fulfill/abort/continue'dan hiçbiri çağrılmaz — istek tarayıcı tarafında asılı kalır.
-    await context.route('**/ekran/vakitler.json', () => {});
+    // route.fulfill/abort/continue'dan hiçbiri hemen çağrılmaz — istek tarayıcı tarafında asılı kalır; route
+    // nesnesi saklanır, testin sonunda "geç gelen yanıt" için elle yanıtlanacak.
+    await context.route('**/ekran/vakitler.json', (route) => { vurus += 1; tutulanRoute = route; });
+
+    const basla = Date.now();
     await page.reload();
-    await expect(page.locator('.vakit')).toHaveCount(6, { timeout: 13_000 });
+    await expect(page.locator('.vakit')).toHaveCount(6, { timeout: 20_000 });
+    const gecenMs = Date.now() - basla;
+
+    // F9a: testin kendi varsayımını denetlemesi — istek gerçekten yukarıdaki route'a düşmüş mü? Düşmediyse
+    // test SW'nin ağ davranışı hakkında hiçbir şey kanıtlamaz.
+    expect(vurus).toBeGreaterThan(0);
+    // F9b alt sınır: sonuç anında (mock'lanmış ağdan) değil, gerçekten ~10 sn'lik yarıştan sonra geldi.
+    expect(gecenMs).toBeGreaterThanOrEqual(9_000);
+    // F9b üst sınır: RED senaryosunda (yarış yok) satırlar sayfanın kendi 30 sn'lik zaman aşımına (veya
+    // daha ötesine) kadar hiç çıkmaz; 20 sn hâlâ iki durumu net ayırır.
+    expect(gecenMs).toBeLessThan(20_000);
+
+    // F9c — Kural 1'in "ağ geç de gelse sakla() ile önbelleğe yazılır" şartı: tutulan isteği şimdi ayırt
+    // edici bir imzayla yanıtla, SW'nin bunu GÜNCEL sürümün önbelleğine gerçekten yazdığını sayfa
+    // tarafından (aynı orijindeki Cache Storage paylaşılır) doğrula.
+    const imza = 'GEC-GELEN-' + Date.now();
+    await tutulanRoute.fulfill({ json: { ...vakitAkisi(), imza } });
+    await expect
+      .poll(
+        () => page.evaluate(async (yol) => {
+          const yanit = await caches.match(yol, { ignoreSearch: true });
+          if (!yanit) return null;
+          const govde = await yanit.json();
+          return govde.imza ?? null;
+        }, '/ekran/vakitler.json'),
+        { timeout: 5_000 },
+      )
+      .toBe(imza);
+  });
+
+  // Düzeltme F1: main.ts'teki `oncekiDenetci` Görev 8'de SABİT hesaplanıyordu — kutunun İLK kurulumunda
+  // (henüz denetleyici yokken) hep false kalıyordu, bu yüzden SONRAKİ HİÇBİR güncelleme sayfayı bir daha
+  // asla yenilemiyordu: yeni SW eski önbelleği çoktan silmiş olsa bile sayfa aylarca eski paketi belleğinden
+  // çalıştırmaya devam ederdi (kutular aylarca yeniden başlatılmadığı için hiçbir düzeltme asla ekrana
+  // ulaşmazdı). main.ts artık `denetciVardi`yı her controllerchange'te güncelliyor ve `yenileniyor` tek
+  // seferlik koruması ile en fazla bir kez yeniliyor.
+  test('yeni SW sürümü devraldığında sayfa bir kez yenilenir, ilk kurulumda yenilenmez', async ({ page }) => {
+    await page.clock.install({ time: an(ornek, '12:00') });
+    await page.goto('/ekran/');
+    await page.evaluate(() => { window.__isaret = 'ilk-yukleme'; });
+    await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
+    await page.waitForTimeout(1_000); // ilk kurulum kendini yenilerse işaret burada zaten silinmiş olurdu
+    expect(await page.evaluate(() => window.__isaret)).toBe('ilk-yukleme');
+
+    const yenilemeBeklentisi = page.waitForEvent('framenavigated');
+    // Farklı betik URL'si SW şartnamesine göre her zaman yeni bir worker kurar; statik sunucu sorgu
+    // dizesini yok sayar (aynı public/ekran/sw.js dosyasını verir) — kontrolör talimatı F1 notu.
+    await page.evaluate(() => navigator.serviceWorker.register('/ekran/sw.js?surum=2', { scope: '/ekran/' }));
+    await yenilemeBeklentisi;
+
+    expect(await page.evaluate(() => window.__isaret)).toBeUndefined();
+    await expect(page.locator('.vakit')).toHaveCount(6);
+  });
+
+  // Düzeltme F3: agOnce eskiden HERHANGİ bir ÇÖZÜLEN fetch'i (5xx dâhil) başarı sayıyordu. GitHub Pages
+  // kesintisinde (5xx) kutu, içinde ekran.js bile olmayan bir hata sayfasını önbelleğe alır ve ekran kendi
+  // kendine bir daha asla toparlanamazdı; JSON akışları için de iyi veri önbellekte dururken
+  // "güncellenemedi" yazardı. Artık yalnız ok ya da opaqueredirect (redirect modu manual olan gezinme
+  // isteklerinde) başarı sayılır, geri kalanı önbelleğe düşer.
+  test('GitHub Pages 5xx döndürürse hem sayfa kabuğu hem vakitler önbellekten gelir', async ({ page, context }) => {
+    await page.clock.install({ time: an(ornek, '12:00') });
+    await page.goto('/ekran/');
+    await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
+    await expect(page.locator('.vakit')).toHaveCount(6);
+
+    await context.route('**/ekran/', (route) => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Service Unavailable' }));
+    await context.route('**/ekran/vakitler.json', (route) => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Service Unavailable' }));
+    await page.reload();
+    await expect(page.locator('.vakit')).toHaveCount(6);
   });
 });
 

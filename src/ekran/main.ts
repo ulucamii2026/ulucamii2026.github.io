@@ -127,14 +127,35 @@ function sonrakiSlayt(): void {
 }
 
 /* İnternetsiz açılış için service worker (src/ekran/sw.ts). Yeni sürüm denetimi 6 saatte bir; yeni SW
-   denetimi devralınca sayfa bir kez yenilenir (ilk kurulumda değil). */
-if ('serviceWorker' in navigator) {
-  const oncekiDenetci = !!navigator.serviceWorker.controller;
-  navigator.serviceWorker
-    .register('/ekran/sw.js', { scope: '/ekran/' })
-    .then((kayit) => { setInterval(() => { kayit.update().catch(() => {}); }, 6 * 3_600_000); })
-    .catch(() => {});
-  navigator.serviceWorker.addEventListener('controllerchange', () => { if (oncekiDenetci) location.reload(); });
+   denetimi devralınca sayfa bir kez yenilenir (ilk kurulumda değil). Kutu aylarca yeniden yüklenmeden
+   çalışır: bu blokta çıkan senkron bir istisna (sandbox'lı/opak bir kiosk kabuğunda SW API'si) saati ve
+   veri döngüsünü hiç başlatmadan ekranı boş bırakmasın diye tamamı try/catch içinde. */
+try {
+  if ('serviceWorker' in navigator) {
+    // `denetciVardi` SABİT değil: kutunun İLK kurulumunda henüz denetleyici yoktur (false), ama SONRAKİ
+    // her sürüm güncellemesinde bu artık true olmalı — yoksa güncelleme hiç yenilenmez, sayfa aylarca
+    // eski paketi belleğinden çalıştırmaya devam eder (yeni SW eski önbelleği çoktan silmiş olsa bile).
+    let denetciVardi = !!navigator.serviceWorker.controller;
+    let yenileniyor = false; // en fazla bir kez yenile
+    navigator.serviceWorker
+      .register('/ekran/sw.js', { scope: '/ekran/' })
+      .catch((hata) => console.error(hata));
+    setInterval(() => {
+      // register() zaten var olan kaydı yan etkisiz döner, silinmişse (depolama tahliyesi, başarısız ilk
+      // kurulum) yeniden oluşturur — yalnız update() çağırmak kayıt kaybolduğunda sonsuza dek sessizce
+      // reddederdi.
+      navigator.serviceWorker
+        .register('/ekran/sw.js', { scope: '/ekran/' })
+        .then((kayit) => kayit.update())
+        .catch((hata) => console.error(hata));
+    }, 6 * 3_600_000);
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (denetciVardi && !yenileniyor) { yenileniyor = true; location.reload(); }
+      denetciVardi = true;
+    });
+  }
+} catch (hata) {
+  console.error(hata);
 }
 
 saniyelik();
