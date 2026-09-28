@@ -68,8 +68,11 @@ test('yasaklı kalıplar örnek kodu gerçekten yakalar', () => {
   }
 });
 
-for (const dosya of ['public/ekran/ekran.js', 'public/ekran/sw.js']) {
-  test(`${dosya} Chromium 70 dışı sözdizimi ya da API içermez`, () => {
+/* Yayımlanan dist/ekran/sw.js derleme sonunda içerik damgasıyla ayrıca derlenir (scripts/ekran-damga.mjs); aynı
+   ayarlarla ama ayrı bir yoldan geldiği için o da taranır (yalnız `npm run build` sonrasında vardır). */
+for (const dosya of ['public/ekran/ekran.js', 'public/ekran/sw.js', 'dist/ekran/sw.js']) {
+  const yok = dosya.startsWith('dist/') && !existsSync(kok + dosya);
+  test(`${dosya} Chromium 70 dışı sözdizimi ya da API içermez`, { skip: yok && `${dosya} yok — önce \`npm run build\`; tarama atlandı` }, () => {
     const js = oku(dosya);
     for (const r of YASAK_JS) assert.doesNotMatch(js, r, `${dosya}: ${r}`);
   });

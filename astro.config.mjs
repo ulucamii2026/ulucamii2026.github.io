@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { swDamgala } from './scripts/ekran-damga.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -47,6 +48,17 @@ export default defineConfig({
         return item;
       },
     }),
+    // Cami ekranı (/ekran/): service worker'ın sürüm damgası derleme SONUNDA, yayımlanan ekran dosyalarının
+    // (paket, CSS, sayfa iskeleti, fontlar, logolar, SW kodu) içerik özetinden gelir; dist/ekran/sw.js onunla
+    // yeniden derlenir (scripts/ekran-damga.mjs). Ekran dosyaları değişmeyen bir yayın kutuya yeni SW kurdurmaz.
+    {
+      name: 'ekran-sw-damgasi',
+      hooks: {
+        'astro:build:done': async ({ dir, logger }) => {
+          logger.info(`cami ekranı SW damgası ${await swDamgala(fileURLToPath(dir))}`);
+        },
+      },
+    },
   ],
   i18n: {
     locales: ['tr', 'fr', 'en', 'nl', 'de'],

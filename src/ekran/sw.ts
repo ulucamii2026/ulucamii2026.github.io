@@ -1,8 +1,9 @@
 /**
  * Cami ekranının service worker'ı — /ekran/sw.js (kapsam /ekran/). 27 Eylül 2026, düzeltme turu 1.
  * Ekran internetsiz de açılabilsin diye sayfa iskeleti, paket, fontlar, logolar ve üç veri akışı
- * önbellekte tutulur. Sayfa ve JSON'lar AĞ ÖNCE (taze veri), diğerleri ÖNBELLEK ÖNCE gelir. Her derleme
- * yeni bir sürüm damgası taşır; yeni SW eski önbelleği siler, sayfa bir kez yenilenir (main.ts).
+ * önbellekte tutulur. Sayfa ve JSON'lar AĞ ÖNCE (taze veri), diğerleri ÖNBELLEK ÖNCE gelir. Sürüm damgası
+ * yayımlanan ekran dosyalarının içerik özetidir (scripts/ekran-damga.mjs): yalnız ekran dosyaları değişen bir yayın
+ * yeni sürüm getirir; yeni SW eski önbelleği siler, sayfa bir kez yenilenir (main.ts).
  */
 /* Önbelleğe alınacak dosyaların TEK listesi (esbuild JSON'u pakete gömer). Site denetimi (scripts/site-denetim.mjs)
    aynı dosyayı okur ve her yolun dist/ altında gerçekten üretildiğini `kritik` olarak denetler: tek bir eksik dosya

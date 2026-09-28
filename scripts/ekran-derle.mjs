@@ -12,10 +12,10 @@
 import { build, context } from 'esbuild';
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { ORTAK, swAyari } from './ekran-damga.mjs';
 
 const yol = (p) => fileURLToPath(new URL('../' + p, import.meta.url));
 const CIKTI = yol('public/ekran/');
-const HEDEF = ['chrome70'];
 
 mkdirSync(CIKTI + 'fonts', { recursive: true });
 const FONTLAR = {
@@ -31,12 +31,13 @@ const cami = kimlik.kurumlar.cami.renk;
 const degiskenler = `:root{--ana:${cami.ana};--siyah:${cami.koyu};--beyaz:${cami.acik};--zemin:${r.zemin};--yuzey:${r.acikYuzey};--metin:${r.metin};--ikincil:${r.ikincil};--cizgi:${r.cizgi}}\n`;
 writeFileSync(CIKTI + 'ekran.css', degiskenler + readFileSync(yol('src/ekran/ekran.css'), 'utf8'));
 
-const ortak = { bundle: true, format: 'iife', target: HEDEF, minify: true, legalComments: 'none', logLevel: 'warning', charset: 'utf8' };
-const paketler = [{ ...ortak, entryPoints: [yol('src/ekran/main.ts')], outfile: CIKTI + 'ekran.js' }];
+const paketler = [{ ...ORTAK, entryPoints: [yol('src/ekran/main.ts')], outfile: CIKTI + 'ekran.js' }];
 
-/* Her derleme yeni bir SW sürümü: kutu yeni paketi bir sonraki güncelleme denetiminde alır. */
-const damga = (process.env.GITHUB_SHA || 'yerel').slice(0, 12) + '-' + Date.now().toString(36);
-paketler.push({ ...ortak, entryPoints: [yol('src/ekran/sw.ts')], outfile: CIKTI + 'sw.js', define: { __EKRAN_SURUM__: JSON.stringify(damga) } });
+/* public/ekran/sw.js yalnız geliştirme (astro dev) içindir: her çalıştırmada yeni bir yerel damga, tarayıcı yeni
+   paketi alır. Yayımlanan dist/ekran/sw.js'in damgası derleme SONUNDA ekran dosyalarının içerik özetinden gelir
+   (scripts/ekran-damga.mjs; astro.config.mjs → ekran-sw-damgasi): ekran dosyaları değişmeyen bir yayın kutuya yeni
+   SW kurdurmaz, ekranı yenilemez. */
+paketler.push(swAyari('yerel-' + Date.now().toString(36), { outfile: CIKTI + 'sw.js' }));
 
 if (process.argv.includes('--izle')) {
   for (const p of paketler) await (await context(p)).watch();
