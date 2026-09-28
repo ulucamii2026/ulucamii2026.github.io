@@ -76,5 +76,6 @@ test('kabuk dosyası derleme çıktısında yoksa damga hesaplanmaz (yayın duru
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 test('dist/ekran/sw.js yayımlanan ekran dosyalarının içerik damgasını taşır', { skip: !existsSync(join(DIST, 'ekran', 'sw.js')) && 'dist/ekran/sw.js yok — önce `npm run build`; denetim atlandı' }, async () => {
   const damga = await damgaHesapla(DIST);
-  assert.ok(readFileSync(join(DIST, 'ekran', 'sw.js'), 'utf8').includes(damga), `dist/ekran/sw.js ${damga} damgasını taşımıyor`);
+  assert.ok(readFileSync(join(DIST, 'ekran', 'sw.js'), 'utf8').includes(damga),
+    `dist/ekran/sw.js ${damga} damgasını taşımıyor. Yerelde dist/ eski bir derlemeden kalmış olabilir (bir kabuk dosyası ya da sw.ts sonradan değişti): önce \`npm run build\` ile yeniden derleyin. Yeni derlemede de düşüyorsa derleme sonu adımı (astro.config.mjs → ekran-sw-damgasi) çalışmamıştır.`);
 });

@@ -272,7 +272,7 @@ test('Perşembe→Cuma gece yarısı Cuma satırı açılınca ekrandaki slayt y
   const slayt = page.locator('[data-alan="slayt"]');
   const vakitler = page.locator('[data-alan="vakitler"]');
   await expect(slayt.locator('.slayt-duyuru')).toBeVisible();
-  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 500));
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 2_000));
   await expect(vakitler).not.toHaveClass(/cumali/);
   // Testin kendi varsayımı: Perşembe ölçeğindeki slayt Cuma'nın kısalmış alanına sığmıyor olmalı; sığsaydı test
   // hiçbir şey kanıtlamazdı. Sınıf bir anlığına elle eklenip ölçülür, sonra geri alınır.
@@ -321,7 +321,7 @@ test('yeni duyuru en geç 3 dakika + bir slayt sonra ekrana gelir; tur sonu bekl
   // Sahte saat burada durdurulur: bundan sonra yalnız runFor ile ilerler. Durdurulmasaydı yoklama beklenirken ve
   // expect penceresinde gerçek zamanla akmaya devam ederdi; eski tur (yeniden kurma olmasa bile) Duyuru 1'den
   // 200 sn sonra kendiliğinden biter ve yük altındaki bir makinede gerileme yakalanmadan geçebilirdi.
-  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 500));
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 2_000));
   // İmam yeni bir duyuru yayımladı: yeni derleme.
   govde = { ...AKIS([DUYURU({ id: 'mevlid', tr: { baslik: 'Mevlid programı', metin: 'Perşembe akşamı yatsıdan sonra.' }, fr: { baslik: 'Programme du Mawlid', metin: 'Jeudi soir après la prière de la nuit.' } })]), derleme: 'derleme-2' };
   // Eski 10 dakikalık aralıkta akis.json bu 3 dakikada hiç yeniden istenmez: bekleme zaman aşımıyla düşer.
@@ -345,7 +345,7 @@ test('duyurular aynıysa yalnız derleme damgası değişen akış slayt turunu 
   await page.goto('/ekran/');
   const baslik = page.locator('[data-alan="slayt"] .slayt-duyuru .baslik').first();
   await expect(baslik).toHaveText('Duyuru 1');
-  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 500));
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 2_000));
   // Yeni yayın (ör. başka bir sayfa düzeltildi) ama duyurular aynı: yalnız derleme damgası yeni.
   govde = { ...AKIS(duyurular), derleme: 'derleme-2' };
   const yoklama = page.waitForResponse((y) => y.url().endsWith('/ekran/akis.json'), { timeout: 15_000 });
