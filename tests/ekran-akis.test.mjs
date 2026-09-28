@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { ekranDuyurulari, EKRANLAR } from '../src/lib/ekran/akis.ts';
+import { gorselSurumu, publicDosyasi } from '../src/lib/ekran/gorsel-surumu.ts';
+import { createHash } from 'node:crypto';
 
 const d = (id, data) => ({ id, data: { baslik: 'Başlık ' + id, tarih: new Date('2026-09-20'), taslak: false, ekranHedef: [], ...data } });
 
@@ -58,4 +60,30 @@ test("CMS formundaki ekran seçenekleri EKRANLAR ile aynı", () => {
   })(config);
   assert.ok(bulunan.length > 0, 'config.yml içinde ekranHedef alanı bulunamadı');
   for (const secenekler of bulunan) assert.deepEqual(secenekler, [...EKRANLAR]);
+});
+
+// Duyuru görseli aynı adla yeniden yüklenirse (CMS aynı dosya adının üstüne yazar ya da afiş yerinde yenilenir) ekranın
+// SW'si onu önbellekten vermeye devam ederdi: akıştaki adres görselin içerik özetiyle (?v=) sürümlenir, yeni bayt yeni
+// adres (ve yeni slayt turu) demektir. Dış adresler ve bulunamayan dosyalar olduğu gibi kalır.
+test('duyuru görseli adresi içerik özetiyle sürümlenir; dış adres ve bulunamayan dosya olduğu gibi kalır', () => {
+  const dosyalar = { '/media/duyurular/kermes.webp': Buffer.from('ilk afiş') };
+  const oku = (yol) => dosyalar[yol] ?? null;
+  const ilk = gorselSurumu('/media/duyurular/kermes.webp', oku);
+  assert.match(ilk, /^\/media\/duyurular\/kermes\.webp\?v=[0-9a-f]{8}$/);
+  assert.equal(gorselSurumu('/media/duyurular/kermes.webp', oku), ilk, 'aynı bayt → aynı adres');
+  dosyalar['/media/duyurular/kermes.webp'] = Buffer.from('düzeltilmiş afiş');
+  assert.notEqual(gorselSurumu('/media/duyurular/kermes.webp', oku), ilk, 'değişen bayt → yeni adres');
+  assert.equal(gorselSurumu('/media/duyurular/yok.webp', oku), '/media/duyurular/yok.webp', 'bulunamayan dosya');
+  for (const dis of ['https://ornek.org/afis.webp', '//cdn.ornek.org/afis.webp']) assert.equal(gorselSurumu(dis, oku), dis, dis);
+  assert.equal(gorselSurumu(undefined, oku), undefined);
+  const ozet = createHash('sha256').update('düzeltilmiş afiş').digest('hex').slice(0, 8);
+  assert.equal(gorselSurumu('/media/duyurular/kermes.webp', oku), '/media/duyurular/kermes.webp?v=' + ozet, 'özet: dosya baytlarının SHA-256’sının ilk 8 hanesi');
+  assert.equal(gorselSurumu('/media/duyurular/kermes.webp?boyut=740', oku), '/media/duyurular/kermes.webp?boyut=740&v=' + ozet, 'var olan sorgu korunur');
+});
+
+test('gerçek dosya public/ altından okunur; public dışına çıkan yol okunmaz', () => {
+  const logo = readFileSync(new URL('../public/media/logo/ulu-camii-logo.svg', import.meta.url));
+  const v = createHash('sha256').update(logo).digest('hex').slice(0, 8);
+  assert.equal(gorselSurumu('/media/logo/ulu-camii-logo.svg', publicDosyasi), '/media/logo/ulu-camii-logo.svg?v=' + v);
+  assert.equal(publicDosyasi('/../package.json'), null);
 });
