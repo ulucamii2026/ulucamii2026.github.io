@@ -19,8 +19,11 @@ const ayAdi = (t, yerel) => new Intl.DateTimeFormat(yerel, { timeZone: 'Europe/B
 test.beforeEach(async ({ context }) => {
   test.skip(test.info().project.name !== 'masaustu-chromium', 'ekran testleri tek tarayıcı projesinde koşar');
   // Ağ yalıtımı (depodaki öteki web testleriyle aynı): 4401 dışındaki HTTP ve WebSocket kesilir.
+  // Open-Meteo'nun anahtarsız API'si burada sabit bir yanıtla taklit edilir (18.6°C → yuvarlanınca 19°C,
+  // kod 61 → yağmur simgesi); testler bunu ezmek isterse sonradan eklenen route öncelik kazanır.
   await context.route('**/*', (route) => {
     const u = new URL(route.request().url());
+    if (u.hostname === 'api.open-meteo.com') return route.fulfill({ json: { current: { temperature_2m: 18.6, weather_code: 61 } } });
     return u.origin === 'http://127.0.0.1:4401' || u.origin === 'http://localhost:4401' ? route.continue() : route.abort('blockedbyclient');
   });
   await context.routeWebSocket(/.*/, (socket) => socket.close());
@@ -313,6 +316,40 @@ test.describe('internetsiz açılış', () => {
     await page.reload();
     await expect(page.locator('.vakit')).toHaveCount(6);
   });
+});
+
+test('dış hava sıcaklığı, simgesi ve kaynak ibaresi üst bantta görünür', async ({ page }) => {
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect(page.locator('[data-alan="hava"]')).toBeVisible();
+  await expect(page.locator('[data-alan="hava"] span')).toHaveText('19°C');
+  await expect(page.locator('[data-alan="hava"] small')).toHaveText('Open-Meteo');
+  await expect(page.locator('[data-alan="hava"] svg path').first()).toBeAttached();
+});
+
+test('3 saatten eski dış hava üst bantta gizlenir', async ({ page, context }) => {
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect(page.locator('[data-alan="hava"]')).toBeVisible();
+  // Open-Meteo artık hiç yanıt vermiyor (taşıyıcı kesintisi vb.): son değer bayatlayınca gizlenmeli.
+  await context.route('https://api.open-meteo.com/**', (route) => route.abort());
+  // fastForward (runFor'un tersine) her zamanlayıcıyı en fazla bir kez ateşler; saniyelik/havaDongusu
+  // döngüleri saatlerce süren gerçek 1 sn'lik adımlar yerine doğrudan hedef ana sıçrar.
+  await page.clock.fastForward(3 * 3_600_000 + 60_000); // 3 saatten biraz fazlası
+  await expect(page.locator('[data-alan="hava"]')).toBeHidden();
+});
+
+test('Open-Meteo ilk denemede yanıt vermezse 30 dakika sonra yeniden denenir', async ({ page, context }) => {
+  let vurus = 0;
+  await context.route('https://api.open-meteo.com/**', (route) => { vurus += 1; route.abort(); });
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  // Testin kendi varsayımı: ilk deneme gerçekten bu route'a düşmüş mü (düşmediyse test hiçbir şey kanıtlamaz).
+  await expect.poll(() => vurus).toBeGreaterThan(0);
+  await expect(page.locator('[data-alan="hava"]')).toBeHidden();
+  await context.unroute('https://api.open-meteo.com/**'); // kaldırılınca beforeEach'in mock'u yine yanıtlar
+  await page.clock.fastForward(30 * 60_000);
+  await expect(page.locator('[data-alan="hava"] span')).toHaveText('19°C');
 });
 
 test('görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {

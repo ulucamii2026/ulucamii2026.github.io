@@ -12,6 +12,7 @@ import { METIN } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, sigdir, slaytCiz } from './slaytlar.ts';
+import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
 import { tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 
 interface SayfaVerisi {
@@ -34,6 +35,17 @@ const TARIH_TR = new Intl.DateTimeFormat('tr-TR', { timeZone: TZ, weekday: 'long
 const TARIH_FR = new Intl.DateTimeFormat('fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const iki = (n: number): string => (n < 10 ? '0' : '') + n;
 
+let hava: HavaDurumu | null = null;
+/** Üst bantta dış hava; 3 saatten eskiyse gizlenir. SVG ve sayı sabit/sayısal olduğu için innerHTML güvenli. */
+function havaCiz(): void {
+  const kutu = alan('hava');
+  const h = hava;
+  if (!kutu) return;
+  if (!havaTazeMi(h, Date.now())) { kutu.hidden = true; return; }
+  kutu.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SIMGE_YOLLARI[havaSimgesi(h.kod)]}</svg><span>${h.sicaklik}°C</span><small>Open-Meteo</small>`;
+  kutu.hidden = false;
+}
+
 /** Dakikada bir ve her veri tazelemesinden sonra yeniden çizilenler. Sayfa aylarca yeniden yüklenmeden
  *  açık kalır: burada çıkan tek bir istisna (ör. bozuk bir gün kaydı) saati de durdurmasın diye
  *  hiçbir zaman çağırana fırlatılmaz. */
@@ -50,6 +62,7 @@ function dakikalik(simdi: Date): void {
     const kok = alan('vakitler');
     if (kok && (veri.vakit || ilkTazelemeBitti)) vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli);
     ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
+    havaCiz();
   } catch (hata) {
     console.error(hata);
   }
@@ -126,6 +139,23 @@ function sonrakiSlayt(): void {
   }
 }
 
+/** Bir sonraki koşu finally'de zamanlanır: fetch ya da JSON çözümü patlasa bile aylarca kapanmayan bu sayfa hava döngüsünü tek bir istisna yüzünden asla kaybetmemeli. */
+async function havaDongusu(): Promise<void> {
+  const denetim = new AbortController();
+  const zamanlayici = setTimeout(() => denetim.abort(), 30_000);
+  try {
+    const yanit = await fetch(havaAdresi(sayfa.gps.enlem, sayfa.gps.boylam), { cache: 'no-cache', signal: denetim.signal });
+    const h = yanit.ok ? havaCoz(await yanit.json(), Date.now()) : null;
+    if (h) hava = h;
+  } catch {
+    /* ağ yok ya da 30 sn'de yanıt gelmedi: son değer 3 saat daha gösterilir */
+  } finally {
+    clearTimeout(zamanlayici);
+    try { havaCiz(); } catch (hata) { console.error(hata); }
+    setTimeout(() => { void havaDongusu(); }, 30 * 60_000);
+  }
+}
+
 /* İnternetsiz açılış için service worker (src/ekran/sw.ts). Yeni sürüm denetimi 6 saatte bir; yeni SW
    denetimi devralınca sayfa bir kez yenilenir (ilk kurulumda değil). Kutu aylarca yeniden yüklenmeden
    çalışır: bu blokta çıkan senkron bir istisna (sandbox'lı/opak bir kiosk kabuğunda SW API'si) saati ve
@@ -160,3 +190,4 @@ try {
 
 saniyelik();
 void veriDongusu();
+void havaDongusu();

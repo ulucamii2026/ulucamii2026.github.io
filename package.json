@@ -10,7 +10,7 @@
     "build": "node scripts/ekran-derle.mjs && astro build",
     "preview": "astro preview",
     "ekran:derle": "node scripts/ekran-derle.mjs",
-    "test:ekran": "node --test tests/ekran-vakit-kapisi.test.mjs tests/ekran-akis.test.mjs tests/ekran-icerik.test.mjs tests/ekran-secim.test.mjs tests/ekran-veri.test.mjs tests/ekran-eski-tarayici.test.mjs",
+    "test:ekran": "node --test tests/ekran-vakit-kapisi.test.mjs tests/ekran-akis.test.mjs tests/ekran-icerik.test.mjs tests/ekran-secim.test.mjs tests/ekran-veri.test.mjs tests/ekran-eski-tarayici.test.mjs tests/ekran-hava.test.mjs",
     "astro": "astro",
     "check": "astro check",
     "denetim": "node scripts/site-denetim.mjs",
