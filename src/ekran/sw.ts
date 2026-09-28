@@ -7,8 +7,9 @@
  */
 /* Önbelleğe alınacak dosyaların TEK listesi (esbuild JSON'u pakete gömer). Site denetimi (scripts/site-denetim.mjs)
    aynı dosyayı okur ve her yolun dist/ altında gerçekten üretildiğini `kritik` olarak denetler: tek bir eksik dosya
-   (ör. yeniden adlandırılmış bir logo) cache.addAll'ı reddettirir, bundan sonraki hiçbir SW sürümü kurulamaz. */
+   (ör. yeniden adlandırılmış bir logo) kurulumu reddettirir, bundan sonraki hiçbir SW sürümü kurulamaz. */
 import KABUK from './kabuk.json';
+import { budanacaklar, surumluAdres } from './onbellek.ts';
 
 declare const __EKRAN_SURUM__: string;
 
@@ -22,13 +23,19 @@ const ONBELLEK = 'ekran-' + __EKRAN_SURUM__;
 interface UzatilabilirOlay { waitUntil(p: Promise<unknown>): void }
 interface AgIstegiOlayi extends UzatilabilirOlay { request: Request; respondWith(p: Promise<Response>): void }
 
-/* GitHub Pages KABUK dosyalarını max-age=600 ile sunar: adressiz bir addAll() bu dosyaları HTTP
-   önbelleğinden alabilir ve yeni SW sürümü altında eski ekran.js/ekran.css'i saklayabilir. Her istek
-   { cache: 'reload' } ile kurulur (Chrome 64+): HTTP önbelleği atlanır, doğrudan ağdan taze kopya alınır. */
+/* GitHub Pages KABUK dosyalarını max-age=600 ile sunar ve önlerinde bir CDN vardır: yayından hemen sonra ikisi de
+   eski ekran.js/ekran.css'i verebilir, yeni SW onu yeni damga altında bir sonraki ekran değişikliğine dek saklardı.
+   Her dosya sürümlü adresle (?v=<damga>, onbellek.ts → surumluAdres; CDN'de hiç görülmemiş adres) ve
+   { cache: 'reload' } ile (Chrome 64+, tarayıcının HTTP önbelleği atlanır) istenir, önbelleğe ASIL adresle yazılır.
+   Yanıtların HEPSİ tam (ok) gelmedikçe önbelleğe hiçbir şey yazılmaz ve kurulum reddedilir: yarım dolmuş bir
+   önbellek hiçbir zaman etkinleşmez (eski addAll'ın "ya hep ya hiç" kuralı). */
 sw.addEventListener('install', (e: UzatilabilirOlay) => {
   e.waitUntil(
-    caches.open(ONBELLEK)
-      .then((c) => c.addAll(KABUK.map((u) => new Request(u, { cache: 'reload' }))))
+    Promise.all(KABUK.map((u) => fetch(new Request(surumluAdres(u, __EKRAN_SURUM__), { cache: 'reload' })).then((y) => {
+      if (!y.ok) throw new Error('[ekran] kabuk dosyası alınamadı: ' + u + ' (' + y.status + ')');
+      return { u, y };
+    })))
+      .then((yanitlar) => caches.open(ONBELLEK).then((c) => Promise.all(yanitlar.map((x) => c.put(x.u, x.y)))))
       .then(() => sw.skipWaiting()),
   );
 });
@@ -56,6 +63,22 @@ async function sakla(istek: Request, yanit: Response): Promise<Response> {
   return yanit;
 }
 
+/* Duyuru görselleri (/media/) ÖNBELLEK ÖNCE gelir ve adresleri içerik özetiyle sürümlüdür (?v=, src/lib/ekran/
+   gorsel-surumu.ts). Duyuru akışı ağdan tam (200) her geldiğinde /media/ altında ne kabukta ne akışta olan kayıtlar
+   (eski sürümler, süresi dolmuş duyuruların görselleri) silinir (onbellek.ts → budanacaklar). Hiçbir zaman
+   reddetmez: budama başarısız olursa önbellek olduğu gibi kalır, akış yanıtı hiç etkilenmez. */
+const AKIS_YOLU = '/ekran/akis.json';
+async function medyaBuda(yanit: Response): Promise<void> {
+  try {
+    const akis: unknown = await yanit.json();
+    const c = await caches.open(ONBELLEK);
+    const silinecek = budanacaklar((await c.keys()).map((r) => r.url), KABUK, akis, sw.location.origin);
+    await Promise.all(silinecek.map((u) => c.delete(u)));
+  } catch (hata) {
+    console.error(hata);
+  }
+}
+
 const AG_ZAMAN_ASIMI_MS = 10_000;
 type AgSonuc = { tamam: true; yanit: Response } | { tamam: false };
 
@@ -80,10 +103,15 @@ function zamanAsimiBekle(ms: number): { soz: Promise<AgSonuc>; iptal: () => void
 }
 
 const agOnce = async (istek: Request, e: AgIstegiOlayi): Promise<Response> => {
-  const ag: Promise<Response> = fetch(istek).then((y) => sakla(istek, y));
-  // Ağ geç de gelse sakla() çalışsın diye SW bu isteğin ömrü boyunca ayakta tutulur (hata da olsa asla
+  let budama: Promise<void> = Promise.resolve();
+  const ag: Promise<Response> = fetch(istek).then((y) => {
+    // Duyuru akışı tam geldiyse budama yanıtın bir kopyasıyla (gövde tüketilmeden önce) arka planda yapılır.
+    if (y.status === 200 && new URL(istek.url).pathname === AKIS_YOLU) budama = medyaBuda(y.clone());
+    return sakla(istek, y);
+  });
+  // Ağ geç de gelse sakla() ve budama bitsin diye SW bu isteğin ömrü boyunca ayakta tutulur (hata da olsa asla
   // reddetmeyen bir söz — waitUntil'e verilen söz reddederse SW'nin kendisi "hata verdi" sayılabilir).
-  e.waitUntil(ag.then(() => undefined).catch(() => undefined));
+  e.waitUntil(ag.then(() => budama).catch(() => undefined));
 
   const { soz: zamanAsimi, iptal: zamanAsimiIptal } = zamanAsimiBekle(AG_ZAMAN_ASIMI_MS);
   const agSonucu: Promise<AgSonuc> = ag.then((yanit): AgSonuc => ({ tamam: true, yanit }));

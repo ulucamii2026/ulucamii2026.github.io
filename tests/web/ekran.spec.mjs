@@ -14,6 +14,9 @@ const vakitAkisi = (gunler = kaynak.gunler) => ({ kaynak: kaynak.kaynak, kaynakT
 const cumaMi = (g) => new Date(g.tarih + 'T12:00:00Z').getUTCDay() === 5;
 const ornek = kaynak.gunler.find((g, i) => i >= 2 && !cumaMi(g));
 const an = (g, hm, dkFark = 0) => new Date(brukselTarih(g.tarih, hm).getTime() + dkFark * 60_000);
+/* Vakit akışı adresi sorgu dizesinden bağımsız eşlenir: SW kurulumda kabuk dosyalarını ?v=<damga> ile ister
+   (src/ekran/sw.ts), "internetsiz açılış" testleri önbellekteki kopyanın bu taklitten gelmesine dayanır. */
+const VAKIT_AKISI = (u) => u.pathname === '/ekran/vakitler.json';
 const ayAdi = (t, yerel) => new Intl.DateTimeFormat(yerel, { timeZone: 'Europe/Brussels', month: 'long' }).format(t);
 
 test.beforeEach(async ({ context }) => {
@@ -27,7 +30,7 @@ test.beforeEach(async ({ context }) => {
     return u.origin === 'http://127.0.0.1:4401' || u.origin === 'http://localhost:4401' ? route.continue() : route.abort('blockedbyclient');
   });
   await context.routeWebSocket(/.*/, (socket) => socket.close());
-  await context.route('**/ekran/vakitler.json', (route) => route.fulfill({ json: vakitAkisi() }));
+  await context.route(VAKIT_AKISI, (route) => route.fulfill({ json: vakitAkisi() }));
 });
 
 test('kimlik, saat, miladi ve hicrî tarih Brüksel saatine göre yazılır', async ({ page }) => {
@@ -427,7 +430,7 @@ test.describe('internetsiz açılış', () => {
     // (route.fulfill ağa hiç dokunmaz) — bu, SW'nin önbellek yolunu O kaynak için hiç sınamaz. unroute ile
     // kaldırılınca istek genel context.route('**/*', …) yoluna (route.continue) düşer, offline sırasında
     // GERÇEKTEN başarısız olur; SW'nin agOnce → caches.open(ONBELLEK) yoluna gerçekten muhtaç kalır.
-    await context.unroute('**/ekran/vakitler.json');
+    await context.unroute(VAKIT_AKISI);
     await context.setOffline(true);
     await page.reload();
     await expect(page.locator('.vakit')).toHaveCount(6);
@@ -515,6 +518,62 @@ test.describe('internetsiz açılış', () => {
   // kendine bir daha asla toparlanamazdı; JSON akışları için de iyi veri önbellekte dururken
   // "güncellenemedi" yazardı. Artık yalnız ok ya da opaqueredirect (redirect modu manual olan gezinme
   // isteklerinde) başarı sayılır, geri kalanı önbelleğe düşer.
+  // GitHub Pages'in CDN'i yayından hemen sonra eski ekran.js'i verebilir; yeni SW onu yeni damga altında saklarsa
+  // eski paket bir sonraki ekran değişikliğine dek kalırdı. Kurulum her kabuk dosyasını ?v=<damga> ile (CDN'de hiç
+  // görülmemiş adres) ister, önbelleğe asıl adresle yazar (src/ekran/sw.ts, onbellek.ts → surumluAdres).
+  test('SW kurulumu kabuk dosyalarını sürümlü adresle ister, önbelleğe asıl adresle yazar', async ({ page, context }) => {
+    const istenen = [];
+    await context.route(/\/ekran\/ekran\.js\?v=/, (route) => { istenen.push(route.request().url()); return route.continue(); });
+    await page.clock.install({ time: an(ornek, '12:00') });
+    await page.goto('/ekran/');
+    await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
+    expect(istenen.length).toBeGreaterThan(0);
+    for (const u of istenen) expect(new URL(u).search).toMatch(/^\?v=[0-9a-f]{16}$/);
+    const kayitlar = await page.evaluate(async () => {
+      const ad = (await caches.keys()).filter((a) => a.indexOf('ekran-') === 0)[0];
+      return (await (await caches.open(ad)).keys()).map((r) => new URL(r.url).pathname + new URL(r.url).search);
+    });
+    expect(kayitlar).toContain('/ekran/ekran.js');
+    expect(kayitlar).toContain('/ekran/');
+    expect(kayitlar.filter((u) => u.indexOf('v=') >= 0)).toEqual([]);
+  });
+
+  // Kurulum "ya hep ya hiç": kabuk dosyalarından biri tam gelmezse önbelleğe hiçbir şey yazılmaz ve SW kurulmaz;
+  // yarım dolmuş bir önbellek hiçbir zaman etkinleşmez. Sayfa yine de ağdan açılır.
+  test('kabuk dosyalarından biri alınamazsa SW kurulmaz, önbelleğe yarım kopya yazılmaz', async ({ page, context }) => {
+    await context.route(/\/ekran\/ekran\.css\?v=/, (route) => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Service Unavailable' }));
+    await page.clock.install({ time: an(ornek, '12:00') });
+    await page.goto('/ekran/');
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    // İlk kurulum başarısız olunca kayıt temizlenir (etkin SW yok).
+    await expect.poll(() => page.evaluate(async () => { const k = await navigator.serviceWorker.getRegistration('/ekran/'); return !!(k && k.active); }), { timeout: 10_000 }).toBe(false);
+    await expect.poll(() => page.evaluate(async () => { const k = await navigator.serviceWorker.getRegistration('/ekran/'); return !k || (!k.installing && !k.waiting); }), { timeout: 10_000 }).toBe(true);
+    expect(await page.evaluate(async () => (await caches.keys()).filter((a) => a.indexOf('ekran-') === 0))).toEqual([]);
+    expect(await page.evaluate(() => navigator.serviceWorker.controller)).toBeNull();
+  });
+
+  // Duyuru görseli yerinde değişince akış adresi ?v=<içerik özeti> ile değişir (src/pages/ekran/akis.json.ts); eski
+  // adres önbellekte kalmasın diye duyuru akışı ağdan her geldiğinde /media/ altında ne kabukta ne akışta olan
+  // kayıtlar silinir (onbellek.ts → budanacaklar). Akış isteği sayfadan, SW üzerinden yapılır.
+  test('duyuru akışı ağdan gelince akışta olmayan eski duyuru görselleri önbellekten silinir', async ({ page, context }) => {
+    await page.clock.install({ time: an(ornek, '12:00') });
+    await page.goto('/ekran/');
+    await page.waitForFunction(() => !!navigator.serviceWorker && navigator.serviceWorker.controller !== null);
+    const medya = () => page.evaluate(async () => {
+      const ad = (await caches.keys()).filter((a) => a.indexOf('ekran-') === 0)[0];
+      return (await (await caches.open(ad)).keys()).map((r) => new URL(r.url).pathname + new URL(r.url).search).filter((u) => u.indexOf('/media/') === 0).sort();
+    });
+    await page.evaluate(async () => {
+      const ad = (await caches.keys()).filter((a) => a.indexOf('ekran-') === 0)[0];
+      const c = await caches.open(ad);
+      await c.put('/media/duyurular/kermes.webp?v=11111111', new Response('eski afiş'));
+      await c.put('/media/duyurular/kermes.webp?v=22222222', new Response('yeni afiş'));
+    });
+    await context.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ gorsel: '/media/duyurular/kermes.webp?v=22222222' })]) }));
+    await page.evaluate(() => fetch('/ekran/akis.json', { cache: 'no-cache' }).then((y) => y.json()));
+    await expect.poll(medya).toEqual(['/media/duyurular/kermes.webp?v=22222222', '/media/logo/ulu-camii-logo-beyaz.svg', '/media/logo/ulu-camii-logo.svg']);
+  });
+
   test('GitHub Pages 5xx döndürürse hem sayfa kabuğu hem vakitler önbellekten gelir', async ({ page, context }) => {
     await page.clock.install({ time: an(ornek, '12:00') });
     await page.goto('/ekran/');
