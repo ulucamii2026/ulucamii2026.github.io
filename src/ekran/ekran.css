@@ -73,3 +73,61 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .vakit-yok { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: calc(var(--u) * 5); color: var(--ana); }
 .vakit-yok b { font-size: calc(var(--u) * 5); }
 .vakit-yok .fr { font-size: calc(var(--u) * 3.8); margin-top: calc(var(--u) * 1.5); }
+
+/* Yatay düzen «A+» (src/ekran/olcek.ts → data-duzen='yatay'; u = tuval YÜKSEKLİĞİNİN %1'i, tuval 177,78u × 100u).
+   Solda 80u vakit sütunu: sıradaki vakit büyük bir blok olur, geri sayımı içinde taşır (vakitler.ts); sağda üstte
+   kimlik/saat/tarih (42u), altta slayt alanı. Hedef 40" TV, 9–14 m'den okunur (1u ≈ 0,5 cm). Dikey düzenin kuralları
+   ve pikselleri değişmez: her kural bu seçicinin altındadır. Taban kurallardaki sabit yükseklikler (44u, 56u, 66u),
+   miras line-height 1.3 ve yatay flex satırlar burada bilerek ezilir; yoksa satırlar taşardı
+   (tests/web/ekran.spec.mjs → «yatay A+ yerleşimi» ölçer). */
+.ekran[data-duzen='yatay'] { display: grid; grid-template-columns: calc(var(--u) * 80) minmax(0, 1fr); grid-template-rows: calc(var(--u) * 42) minmax(0, 1fr); grid-template-areas: 'vakit ust' 'vakit slayt'; }
+
+.ekran[data-duzen='yatay'] .ust { grid-area: ust; height: auto; min-height: 0; padding: calc(var(--u) * 2.5) calc(var(--u) * 4) calc(var(--u) * 2); }
+.ekran[data-duzen='yatay'] .kimlik { height: calc(var(--u) * 6.6); margin-bottom: calc(var(--u) * .6); }
+.ekran[data-duzen='yatay'] .logo { width: calc(var(--u) * 6); height: calc(var(--u) * 6); margin-right: calc(var(--u) * 2); }
+.ekran[data-duzen='yatay'] .cami-adi span:first-child { font-size: calc(var(--u) * 3.2); line-height: 1.1; }
+.ekran[data-duzen='yatay'] .cami-adi .fr { font-size: calc(var(--u) * 2.4); line-height: 1.1; margin-top: calc(var(--u) * .2); }
+.ekran[data-duzen='yatay'] .zaman { height: calc(var(--u) * 20); }
+/* overflow: Work Sans'ın içerik alanı (~1,17 em) 1'lik satır yüksekliğini aşar ve 20u'luk .zaman'dan ~1,7u taşmış
+   sayılırdı; rakam mürekkebi (~0,7 em) satırın içinde kalır, kırpılan yalnız görünmeyen içerik alanıdır. */
+.ekran[data-duzen='yatay'] .saat { font-size: calc(var(--u) * 20); overflow: hidden; }
+/* Taban .ekran.saat-yok .saat ile aynı özgüllükteki yukarıdaki kural uyarıyı 20u'ya büyütürdü (~5 satır). */
+.ekran[data-duzen='yatay'].saat-yok .saat { font-size: calc(var(--u) * 5); line-height: 1.15; white-space: normal; }
+/* "Open-Meteo" sıcaklığın altına iner: saatin yanında en uzun değerde (−12 °C) de pay kalsın. */
+.ekran[data-duzen='yatay'] .hava { display: grid; grid-template-columns: auto auto; grid-template-areas: 'simge derece' 'simge kaynak'; align-items: center; line-height: 1.1; }
+.ekran[data-duzen='yatay'] .hava svg { grid-area: simge; width: calc(var(--u) * 6); height: calc(var(--u) * 6); margin-right: calc(var(--u) * 1.5); }
+.ekran[data-duzen='yatay'] .hava span { grid-area: derece; align-self: end; }
+.ekran[data-duzen='yatay'] .hava small { grid-area: kaynak; align-self: start; margin-left: 0; }
+.ekran[data-duzen='yatay'] .takvim { font-size: calc(var(--u) * 3.4); line-height: 1.25; }
+.ekran[data-duzen='yatay'] .takvim.fr { font-size: calc(var(--u) * 2.9); }
+
+.ekran[data-duzen='yatay'] .slayt-alani { grid-area: slayt; min-height: 0; padding: calc(var(--u) * 3.5) calc(var(--u) * 4); }
+/* Görsel sigdir ile küçülmez; taban 30u sınırı metni kırpardı. */
+.ekran[data-duzen='yatay'] .slayt img { max-height: calc(var(--u) * 20); }
+
+/* Sol sütun: .vakitler (ve Cuma'daki .cumali) yüksekliği ızgara satırından gelir. */
+.ekran[data-duzen='yatay'] .vakitler { grid-area: vakit; height: auto; min-height: 0; border-top: 0; border-right: calc(var(--u) * .7) solid var(--ana); padding: calc(var(--u) * 2) 0; }
+.ekran[data-duzen='yatay'] .vakit { height: auto; flex: 1 1 0; min-height: 0; padding: 0 calc(var(--u) * 3.5); line-height: 1.15; }
+.ekran[data-duzen='yatay'] .vakit .ad b { font-size: calc(var(--u) * 5.5); }
+.ekran[data-duzen='yatay'] .vakit .ad i { font-size: calc(var(--u) * 3.8); }
+.ekran[data-duzen='yatay'] .vakit .deger { font-size: calc(var(--u) * 8.5); line-height: 1; }
+/* Sıradaki vakit: ad satırı, büyük saat ve geri sayım alt alta; kalan beş satır sütunun geri kalanını paylaşır. */
+.ekran[data-duzen='yatay'] .vakit.siradaki { flex: 0 0 auto; flex-direction: column; align-items: stretch; justify-content: center; padding: calc(var(--u) * 2.2) calc(var(--u) * 3.5); }
+.ekran[data-duzen='yatay'] .vakit.siradaki .ad b { font-size: calc(var(--u) * 7); }
+.ekran[data-duzen='yatay'] .vakit.siradaki .ad i { font-size: calc(var(--u) * 4.5); }
+.ekran[data-duzen='yatay'] .vakit.siradaki .deger { display: block; font-size: calc(var(--u) * 20); }
+.ekran[data-duzen='yatay'] .yarin { font-size: calc(var(--u) * 4); font-weight: 600; margin-left: calc(var(--u) * 2); }
+.ekran[data-duzen='yatay'] .yarin .fr::before { content: ' · '; }
+/* Vurgulu satır yoksa (veri boşluğu) boş geri sayım kutusu satırlardan pay almaz: altı satır eşit bölüşür. */
+.ekran[data-duzen='yatay'] .geri-sayim { flex: none; padding: 0; }
+.ekran[data-duzen='yatay'] .geri-sayim b { display: block; font-size: calc(var(--u) * 5); }
+.ekran[data-duzen='yatay'] .geri-sayim .fr { display: block; font-size: calc(var(--u) * 4); }
+/* Sabit Cuma saati sütunun altında TEK satır: «Cuma namazı 13:30 · Prière du vendredi 13:30» (~22 em). Satırlar
+   ~10u'ya iner; 8,5u'luk saatin içerik alanı (~10u) sığsın diye sütunun dikey dolgusu 2u'dan 1u'ya iner. */
+.ekran[data-duzen='yatay'] .vakitler.cumali { padding: calc(var(--u) * 1) 0; }
+.ekran[data-duzen='yatay'] .cuma-saati { display: block; flex: none; padding: calc(var(--u) * .8) calc(var(--u) * 3.5) 0; line-height: 1.15; white-space: nowrap; }
+.ekran[data-duzen='yatay'] .cuma-saati b { font-size: calc(var(--u) * 3.2); }
+.ekran[data-duzen='yatay'] .cuma-saati .fr { font-size: calc(var(--u) * 2.8); }
+.ekran[data-duzen='yatay'] .cuma-saati .fr::before { content: ' · '; }
+.ekran[data-duzen='yatay'] .vakit-yok b { font-size: calc(var(--u) * 6); line-height: 1.15; }
+.ekran[data-duzen='yatay'] .vakit-yok .fr { font-size: calc(var(--u) * 4.5); line-height: 1.15; }

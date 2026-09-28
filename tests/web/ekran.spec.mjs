@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { brukselTarih } from '../../src/lib/namaz.ts';
+import { hicriCevir } from '../../src/i18n/hicri.ts';
 
 /* Cami ekranı (/ekran/, docs/EKRAN-FAZ1-UYGULAMA-PLANI.md). Tuval dikey 1080×1920; kutu yatay sinyal
    verdiğinde ?don=90. Saat page.clock ile kurulur. Testler bilerek New York saat diliminde koşar:
@@ -856,4 +857,285 @@ test('görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page })
   await page.goto('/ekran/?don=90');
   await expect(page.locator('#ekran')).toHaveAttribute('data-tema', 'koyu');
   await page.screenshot({ path: 'test-results/ekran-gorsel/yatay-don90-koyu.png', animations: 'disabled' });
+});
+
+/* Yatay «A+» yerleşimi (ekran.css → .ekran[data-duzen='yatay']): solda 80u vakit sütunu (sıradaki vakit büyük blok,
+   geri sayım içinde), sağda üst bant ve slayt alanı. Hedef 40" TV'dir (1u ≈ 0,5 cm, 9–14 m'den okunur; WebView görüntü
+   alanı 961,5×540,8 CSS px). Bu testler yerleşimin taşmadan sığdığını ve rakamların yeterince büyük olduğunu ÖLÇER.
+   Rakam boyu = '0' glifinin mürekkep yüksekliği ÷ TUVAL yüksekliği (innerHeight değil; 961×541'de tuval yuvarlanır).
+   Slayt içeriği sabit fikstürden gelir ve 60 sn'liktir: ölçüm sırasında slayt değişmez. */
+const TASMA_OGELERI = ['.vakitler', '.vakit', '.ust', '.kimlik', '.zaman', '.takvim', '.slayt-alani'];
+const SABIT_60SN = { tabanSn: 60, karakterSn: 0, enAzSn: 60, enCokSn: 60 };
+const yatayOlcum = (page, ogeler = TASMA_OGELERI) => page.evaluate(async (secimler) => {
+  await document.fonts.ready;
+  const ekran = document.getElementById('ekran');
+  const t = ekran.getBoundingClientRect();
+  const u = parseFloat(getComputedStyle(ekran).getPropertyValue('--u'));
+  const tasmalar = [];
+  for (const s of secimler) {
+    const liste = document.querySelectorAll(s);
+    if (!liste.length) tasmalar.push(s + ': öğe yok');
+    liste.forEach((e, i) => {
+      const dx = e.scrollWidth - e.clientWidth;
+      const dy = e.scrollHeight - e.clientHeight;
+      if (dx > 1 || dy > 1) tasmalar.push(`${s}[${i}] yatay ${dx} px, dikey ${dy} px`);
+    });
+  }
+  const ctx = document.createElement('canvas').getContext('2d');
+  // getComputedStyle().font kısaltması tabular-nums gibi uzun biçimlerde boş döner; parçalardan kurulur.
+  const rakam = (e) => {
+    const cs = getComputedStyle(e);
+    ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    const m = ctx.measureText('0');
+    return (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) / t.height;
+  };
+  const kutu = (s) => {
+    const e = document.querySelector(s);
+    if (!e) return null;
+    const r = e.getBoundingClientRect();
+    return { x: r.left - t.left, sag: r.right - t.left, w: r.width, h: r.height };
+  };
+  const siradaki = document.querySelector('.vakit.siradaki .deger');
+  return {
+    u, tasmalar,
+    vakitler: kutu('.vakitler'), ust: kutu('.ust'), slayt: kutu('.slayt-alani'), saatKutusu: kutu('.saat'), hava: kutu('.hava'),
+    siradaki: siradaki ? rakam(siradaki) : null,
+    digerleri: Array.prototype.map.call(document.querySelectorAll('.vakit:not(.siradaki) .deger'), rakam),
+    saat: rakam(document.querySelector('[data-alan="saat-sd"]')),
+  };
+}, ogeler);
+
+/** Sütunlar yerinde (±1 px), hiçbir öğe taşmıyor, rakamlar yeterince büyük. */
+async function yatayDenetle(page, { siradakiVar = true } = {}) {
+  const o = await yatayOlcum(page);
+  expect(o.tasmalar, 'taşan öğe olmamalı').toEqual([]);
+  expect(Math.abs(o.vakitler.x), 'vakit sütunu solda').toBeLessThanOrEqual(1);
+  expect(Math.abs(o.vakitler.w - 80 * o.u), 'vakit sütunu 80u genişlikte').toBeLessThanOrEqual(1);
+  expect(Math.abs(o.ust.x - 80 * o.u), 'üst bant 80u’da başlar').toBeLessThanOrEqual(1);
+  expect(Math.abs(o.slayt.x - 80 * o.u), 'slayt alanı 80u’da başlar').toBeLessThanOrEqual(1);
+  expect(o.saat, 'saat rakamı ÷ tuval yüksekliği').toBeGreaterThanOrEqual(0.13);
+  if (siradakiVar) expect(o.siradaki, 'sıradaki vakit rakamı ÷ tuval yüksekliği').toBeGreaterThanOrEqual(0.13);
+  expect(o.digerleri).toHaveLength(siradakiVar ? 5 : 6);
+  for (const r of o.digerleri) expect(r, 'vakit rakamı ÷ tuval yüksekliği').toBeGreaterThanOrEqual(0.054);
+  return o;
+}
+
+/** Öğenin metni tek satırda mı: metin kutularının toplam yüksekliği yazı boyunun 1,6 katından az. */
+const tekSatirMi = (page, secici, olcuSecici = secici) => page.evaluate(([s, o]) => {
+  const e = document.querySelector(s);
+  const aralik = document.createRange();
+  aralik.selectNodeContents(e);
+  const kutular = Array.prototype.filter.call(aralik.getClientRects(), (r) => r.height > 0);
+  const ust = Math.min.apply(null, kutular.map((r) => r.top));
+  const alt = Math.max.apply(null, kutular.map((r) => r.bottom));
+  return alt - ust < 1.6 * parseFloat(getComputedStyle(document.querySelector(o)).fontSize);
+}, [secici, olcuSecici]);
+
+async function yatayYukle(page, siradaki) {
+  await page.goto('/ekran/');
+  await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  if (siradaki) await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', siradaki);
+  await expect(page.locator('[data-alan="hava"]')).toBeVisible();
+  await expect(page.locator('[data-alan="slayt"] .slayt')).toBeAttached(); // görünürlüğü yerleşim belirler; ölçüm denetler
+}
+
+async function yatayAc(page, zaman, { siradaki, akis = AKIS([DUYURU()], SABIT_60SN), icerik = ICERIK, sayfa } = {}) {
+  if (sayfa) await page.route('**/ekran/', sayfa);
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: icerik }));
+  await page.clock.install({ time: zaman });
+  await yatayYukle(page, siradaki);
+}
+
+for (const [genislik, yukseklik] of [[1920, 1080], [1280, 720], [961, 541]]) {
+  test.describe(`yatay A+ yerleşimi: ${genislik}×${yukseklik}`, () => {
+    test.use({ viewport: { width: genislik, height: yukseklik } });
+    test('öğleye 30 dk kala: vakitler solda 80u, üst bant ve slayt sağda; taşma yok, rakamlar büyük', async ({ page }) => {
+      await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle' });
+      await yatayDenetle(page);
+    });
+  });
+}
+
+const cumaGunu = kaynak.gunler.find(cumaMi);
+const dakika = (hm) => Number(hm.slice(0, 2)) * 60 + Number(hm.slice(3, 5));
+// Yatsıdan ertesi günün imsakına en uzun gece: geri sayımın en uzun metni («İmsak vaktine 9 sa 59 dk» gibi).
+const enUzunGece = kaynak.gunler
+  .map((g, i, t) => (t[i + 1] && t[i + 1].tarih === ertesiGun(g) ? { g, dk: 1440 - dakika(g.yatsi) + dakika(t[i + 1].imsak) } : null))
+  .filter(Boolean)
+  .reduce((a, b) => (b.dk > a.dk ? b : a), { g: null, dk: -1 });
+const UZUN_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [{ id: 'uzun', kaynak: 'Buhârî, Bed’ü’l-vahy, 1; Müslim, İmâre, 155',
+  // Sentetik uzunluk fikstürü (Arapça ~210, TR ~260, FR ~350 karakter): gerçek bir hadis metni değildir.
+  ar: 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى '.repeat(5).slice(0, 210),
+  tr: 'Ameller ancak niyetlere göre değerlendirilir ve herkese ancak niyet ettiği şey vardır. '.repeat(4).slice(0, 260),
+  fr: 'Les actes ne valent que par les intentions, et chacun n’obtient que ce qu’il a eu l’intention de faire. '.repeat(4).slice(0, 350) }] };
+const AFIS_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 16 9"><rect width="16" height="9" fill="#8a8a8a"/></svg>';
+const UZUN_DUYURU_METNI = 'Cemaatimizin dikkatine: '.repeat(7).slice(0, 160);
+const UZUN_DUYURU = DUYURU({ tr: { baslik: 'Yıllık genel kurul toplantısı ve yönetim kurulu seçimi hakkında', metin: UZUN_DUYURU_METNI }, fr: { baslik: 'Assemblée générale annuelle et élection du conseil d’administration', metin: UZUN_DUYURU_METNI } });
+
+test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
+  test.use({ viewport: { width: 961, height: 541 } });
+
+  for (const [ad, zaman, siradaki] of [
+    ['imsaktan önce', () => an(ornek, ornek.imsak, -30), 'imsak'],
+    ['güneşe 15 dk kala', () => an(ornek, ornek.gunes, -15), 'gunes'],
+    ['ikindiye 30 dk kala', () => an(ornek, ornek.ikindi, -30), 'ikindi'],
+    ['akşama 30 dk kala', () => an(ornek, ornek.aksam, -30), 'aksam'],
+    ['yatsıya 30 dk kala', () => an(ornek, ornek.yatsi, -30), 'yatsi'],
+    ['yatsıdan 30 dk sonra (yarının imsakı)', () => an(yatsiGunu, yatsiGunu.yatsi, 30), 'imsak'],
+  ]) {
+    test(`${ad}: taşma yok, rakamlar büyük`, async ({ page }) => {
+      await yatayAc(page, zaman(), { siradaki });
+      await yatayDenetle(page);
+    });
+  }
+
+  test('Cuma, sitede Cuma saati yok: öğle satırı Cuma/Vendredi, taşma yok', async ({ page }) => {
+    test.skip(!cumaGunu, 'veride Cuma yok');
+    await yatayAc(page, an(cumaGunu, cumaGunu.ogle, -30), { siradaki: 'ogle', sayfa: cumaSaatiEkle('') });
+    await expect(page.locator('.vakit[data-vakit="ogle"] .ad b')).toHaveText('Cuma');
+    await expect(page.locator('.vakit[data-vakit="ogle"] .ad i')).toHaveText('Vendredi');
+    await expect(page.locator('.cuma-saati')).toHaveCount(0);
+    await yatayDenetle(page);
+  });
+
+  test('Cuma, sitede Cuma saati 13:30: Cuma satırı sütunun altında TEK satır, taşma yok', async ({ page }) => {
+    test.skip(!cumaGunu, 'veride Cuma yok');
+    await yatayAc(page, an(cumaGunu, cumaGunu.ogle, -30), { siradaki: 'ogle', sayfa: cumaSaatiEkle('13:30') });
+    await expect(page.locator('.cuma-saati')).toBeVisible();
+    await expect(page.locator('.cuma-saati b')).toHaveText('Cuma namazı 13:30');
+    expect(await tekSatirMi(page, '.cuma-saati', '.cuma-saati b'), 'Cuma satırı tek satır').toBe(true);
+    expect(await page.locator('.cuma-saati .fr').evaluate((e) => getComputedStyle(e, '::before').content)).toBe('" · "');
+    await yatayDenetle(page);
+  });
+
+  test('en uzun miladi + hicrî tarih satırları (TR ve FR) kısaltılmadan sığar', async ({ page }) => {
+    const bicim = (yerel) => new Intl.DateTimeFormat(yerel, { timeZone: 'Europe/Brussels', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const [TR, FR] = [bicim('tr-TR'), bicim('fr-BE')];
+    const satirlar = kaynak.gunler.filter((g) => g.hicri).map((g) => ({ g,
+      tr: TR.format(an(g, '12:00')) + ' · ' + g.hicri,
+      fr: FR.format(an(g, '12:00')) + ' · ' + hicriCevir(g.hicri, 'fr') }));
+    const enUzun = (dil) => satirlar.reduce((a, b) => (b[dil].length > a[dil].length ? b : a));
+    const trGunu = enUzun('tr');
+    const frGunu = enUzun('fr');
+    await yatayAc(page, an(trGunu.g, '12:00'));
+    for (const [i, gun] of [[0, trGunu], [1, frGunu]]) {
+      if (i === 1) { await page.clock.setSystemTime(an(gun.g, '12:00')); await yatayYukle(page); }
+      await expect(page.locator('[data-alan="hicri-tr"]')).toHaveText(gun.g.hicri);
+      const takvim = page.locator('.takvim').nth(i);
+      await expect(takvim).toHaveText((i === 0 ? gun.tr : gun.fr).replace(' · ', ''));
+      await page.evaluate(() => document.fonts.ready.then(() => undefined));
+      expect(await takvim.evaluate((e) => e.scrollWidth - e.clientWidth), (i === 0 ? gun.tr : gun.fr)).toBeLessThanOrEqual(0);
+    }
+    // Veri dosyasındaki bütün günler: yazılan metin tarih satırlarına tek tek konur, hiçbiri kısaltılmaz.
+    const tasanlar = await page.evaluate((liste) => {
+      const alan = (a) => document.querySelector(`[data-alan="${a}"]`);
+      const sonuc = [];
+      for (const [trTarih, trHicri, frTarih, frHicri] of liste) {
+        alan('tarih-tr').textContent = trTarih; alan('hicri-tr').textContent = trHicri;
+        alan('tarih-fr').textContent = frTarih; alan('hicri-fr').textContent = frHicri;
+        document.querySelectorAll('.takvim').forEach((e) => { if (e.scrollWidth > e.clientWidth) sonuc.push(e.textContent); });
+      }
+      return sonuc;
+    }, satirlar.map(({ g }) => [TR.format(an(g, '12:00')), g.hicri, FR.format(an(g, '12:00')), hicriCevir(g.hicri, 'fr')]));
+    expect(tasanlar).toEqual([]);
+  });
+
+  test('−12 °C’de hava bloğu saatin yanında en az 3u boşlukla üst bandın içinde biter', async ({ page }) => {
+    await page.route('https://api.open-meteo.com/**', (r) => r.fulfill({ json: { current: { temperature_2m: -12.4, weather_code: 71 } } }));
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle' });
+    expect(await page.locator('[data-alan="hava"] span').evaluate((e) => e.textContent)).toBe('-12 °C');
+    const o = await yatayDenetle(page);
+    expect(o.hava.sag, 'hava bloğu üst bandın içinde biter').toBeLessThanOrEqual(o.ust.sag + 0.5);
+    expect(o.hava.x - o.saatKutusu.sag, 'saat ile hava arası ≥ 3u').toBeGreaterThanOrEqual(3 * o.u);
+  });
+
+  test('en uzun gece (yatsıdan 1 dk sonra): geri sayım satırları tek satır', async ({ page }) => {
+    expect(enUzunGece.g, 'veride ardışık gün çifti yok').toBeTruthy();
+    await yatayAc(page, an(enUzunGece.g, enUzunGece.g.yatsi, 1), { siradaki: 'imsak' });
+    await expect(page.locator('.vakit.siradaki .geri-sayim b')).toContainText(/^İmsak vaktine \d+ sa \d+ dk$/);
+    expect(await tekSatirMi(page, '.vakit.siradaki .geri-sayim b'), 'TR geri sayım tek satır').toBe(true);
+    expect(await tekSatirMi(page, '.vakit.siradaki .geri-sayim .fr'), 'FR geri sayım tek satır').toBe(true);
+    await yatayDenetle(page);
+  });
+
+  test('uzun duyuru slayt alanından taşmaz', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([UZUN_DUYURU], SABIT_60SN) });
+    await expect(page.locator('.slayt-duyuru')).toBeVisible();
+    await yatayDenetle(page);
+  });
+
+  test('uzun hadis (Arapça ~210, TR ~260, FR ~350 karakter) slayt alanından taşmaz', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([], SABIT_60SN), icerik: UZUN_HADIS });
+    await expect(page.locator('.slayt-hadis .kaynak')).toBeVisible();
+    await yatayDenetle(page);
+  });
+
+  test('görselli duyuru slayt alanından taşmaz; görsel en çok 20u yüksekliğinde', async ({ page }) => {
+    await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([DUYURU({ gorsel: '/media/duyurular/test-afis.svg' })], SABIT_60SN) });
+    const img = page.locator('.slayt-duyuru img');
+    await expect.poll(() => img.evaluate((e) => e.complete && e.naturalWidth > 0)).toBe(true);
+    await expect.poll(() => page.locator('[data-alan="slayt"]').evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
+    const o = await yatayDenetle(page);
+    expect((await img.boundingBox()).height).toBeLessThanOrEqual(20 * o.u + 1);
+  });
+
+  test('saat 1970e dönmüşse uyarı 5u yazıyla üst banda sığar', async ({ page }) => {
+    await page.clock.install({ time: new Date(0) });
+    await page.goto('/ekran/');
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'yatay');
+    await expect(page.locator('[data-alan="saat"]')).toContainText('Saat doğrulanıyor');
+    await expect(page.locator('.vakit-yok')).toBeVisible();
+    const o = await yatayOlcum(page, ['.ust', '.kimlik', '.zaman', '.takvim', '.vakitler', '.slayt-alani']);
+    expect(o.tasmalar).toEqual([]);
+    const boyut = await page.locator('.saat').evaluate((e) => parseFloat(getComputedStyle(e).fontSize));
+    expect(boyut).toBeCloseTo(5 * o.u, 1);
+  });
+
+  test('veri boşluğunda (vurgulu satır yok) altı satır sütunu eşit bölüşür, taşma yok', async ({ page }) => {
+    await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: vakitAkisi([ornek]) }));
+    await yatayAc(page, an(ornek, ornek.yatsi, 30));
+    await expect(page.locator('.vakit.siradaki')).toHaveCount(0);
+    await yatayDenetle(page, { siradakiVar: false });
+    const boylar = await page.locator('.vakit').evaluateAll((l) => l.map((e) => e.getBoundingClientRect().height));
+    expect(Math.max(...boylar) - Math.min(...boylar)).toBeLessThanOrEqual(1);
+  });
+
+  test('koyu tema (akşamdan 30 dk sonra): taşma yok, rakamlar büyük', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.aksam, 30), { siradaki: 'yatsi' });
+    await expect(page.locator('#ekran')).toHaveAttribute('data-tema', 'koyu');
+    await yatayDenetle(page);
+  });
+});
+
+test('yatay A+ görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {
+  test.skip(!process.env.EKRAN_GORSEL, 'görüntü üretimi isteğe bağlı');
+  let cumaSaati = null;
+  let hadisModu = false;
+  await page.route('**/ekran/', (route) => (cumaSaati === null ? route.fallback() : cumaSaatiEkle(cumaSaati)(route)));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: hadisModu ? AKIS([], SABIT_60SN) : AKIS([DUYURU()], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: hadisModu ? UZUN_HADIS : ICERIK }));
+  const sahneler = [
+    ['yatay-duzen-acik', [1920, 1080], an(ornek, ornek.ogle, -30), 'ogle'],
+    ['yatay-duzen-koyu', [1920, 1080], an(ornek, ornek.aksam, 30), 'yatsi'],
+    ['yatay-duzen-961x541', [961, 541], an(ornek, ornek.ogle, -30), 'ogle'],
+    ['yatay-duzen-cuma', [961, 541], cumaGunu ? an(cumaGunu, cumaGunu.ogle, -30) : null, 'ogle', () => { cumaSaati = '13:30'; }],
+    ['yatay-duzen-uzun-hadis', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { cumaSaati = null; hadisModu = true; }],
+    ['yatay-duzen-yarin-imsak', [961, 541], an(yatsiGunu, yatsiGunu.yatsi, 30), 'imsak', () => { hadisModu = false; }],
+    ['yatay-duzen-1970', [961, 541], new Date(0), null],
+  ];
+  let kurulu = false;
+  for (const [ad, [w, h], zaman, siradaki, hazirla] of sahneler) {
+    if (!zaman) continue;
+    if (hazirla) hazirla();
+    await page.setViewportSize({ width: w, height: h });
+    if (kurulu) await page.clock.setSystemTime(zaman);
+    else { await page.clock.install({ time: zaman }); kurulu = true; }
+    if (siradaki) await yatayYukle(page, siradaki);
+    else { await page.goto('/ekran/'); await expect(page.locator('.vakit-yok')).toBeVisible(); } // saat 1970: uyarı
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    await page.screenshot({ path: `test-results/ekran-gorsel/${ad}.png`, animations: 'disabled' });
+  }
 });
