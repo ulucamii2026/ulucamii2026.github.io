@@ -96,14 +96,16 @@ for (const [durum, degistir] of [
   });
 }
 
-// Sayfa verisi geçerli ama vakit adlarından biri eksikse (elle bozulmuş iskelet) de ekranda "undefined" yazmaz.
-test('sayfa verisinde vakit adları eksikse geri sayım "undefined" yazmaz', async ({ page }) => {
+// Sayfa verisi geçerli ama vakit adları eksikse (elle bozulmuş iskelet) de ekranda "undefined" yazmaz: eksik ad
+// anahtar anahtar ekranın güvenli varsayılanından (VAKIT_ADLARI) gelir.
+test('sayfa verisinde vakit adları eksikse geri sayım "undefined" yazmaz, adı güvenli varsayılandan alır', async ({ page }) => {
   await page.route('**/ekran/', sayfaVerisiDegistir((html) => html.replace(/(<script[^>]*id="ekran-veri"[^>]*>)([\s\S]*?)(<\/script>)/, (_, ac, json, kapa) => ac + JSON.stringify({ ...JSON.parse(json), vakit: { tr: {}, fr: {} } }) + kapa)));
   await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
   await page.goto('/ekran/');
   await expect(page.locator('.vakit')).toHaveCount(6);
-  await expect(page.locator('.geri-sayim b')).toContainText('vaktine 30 dk');
-  await expect(page.locator('.geri-sayim .fr')).toContainText('dans 30 min');
+  await expect(page.locator('.vakit[data-vakit="ogle"] .ad b')).toHaveText('Öğle');
+  await expect(page.locator('.geri-sayim b')).toHaveText('Öğle vaktine 30 dk');
+  await expect(page.locator('.geri-sayim .fr')).toHaveText('Dhuhr dans 30 min');
   await expect(page.locator('[data-alan="vakitler"]')).not.toContainText('undefined');
 });
 

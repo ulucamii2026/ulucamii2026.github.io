@@ -2,7 +2,7 @@
 import { SIRA, sureMetni, type Vakit } from '../lib/namaz.ts';
 import type { VakitGorunumu } from '../lib/ekran/secim.ts';
 import { el } from './gorunum.ts';
-import { METIN } from './metinler.ts';
+import { METIN, VAKIT_ADLARI } from './metinler.ts';
 
 export type VakitAdlari = Record<'tr' | 'fr', Record<string, string>>;
 
@@ -27,8 +27,9 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
   if (!saatGecerli) return uyari(kok, METIN.saatYok);
   if (!v) return uyari(kok, METIN.vakitYok);
   const cumaOgle = v.cuma && cumaSaati === '';
-  // Sayfa verisinde bir ad eksikse ekrana "undefined" değil boş metin yazılır.
-  const sozluk = (dil: 'tr' | 'fr', anahtar: string): string => ad[dil][anahtar] ?? '';
+  // Sayfa verisinde bir ad eksikse anahtar anahtar ekranın güvenli varsayılanı (metinler.ts → VAKIT_ADLARI), o da
+  // yoksa boş metin yazılır; ekrana hiçbir koşulda "undefined" çıkmaz.
+  const sozluk = (dil: 'tr' | 'fr', anahtar: string): string => ad[dil][anahtar] ?? VAKIT_ADLARI[dil][anahtar] ?? '';
   const adi = (dil: 'tr' | 'fr', vakit: Vakit, uzun = false): string =>
     uzun && vakit === 'gunes' ? METIN.gunesUzun[dil]
       : cumaOgle && vakit === 'ogle' ? sozluk(dil, uzun ? 'cumaUzun' : 'cuma') : sozluk(dil, vakit);
