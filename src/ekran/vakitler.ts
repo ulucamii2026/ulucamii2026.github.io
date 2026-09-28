@@ -27,9 +27,11 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
   if (!saatGecerli) return uyari(kok, METIN.saatYok);
   if (!v) return uyari(kok, METIN.vakitYok);
   const cumaOgle = v.cuma && cumaSaati === '';
+  // Sayfa verisinde bir ad eksikse ekrana "undefined" değil boş metin yazılır.
+  const sozluk = (dil: 'tr' | 'fr', anahtar: string): string => ad[dil][anahtar] ?? '';
   const adi = (dil: 'tr' | 'fr', vakit: Vakit, uzun = false): string =>
     uzun && vakit === 'gunes' ? METIN.gunesUzun[dil]
-      : cumaOgle && vakit === 'ogle' ? ad[dil][uzun ? 'cumaUzun' : 'cuma'] : ad[dil][vakit];
+      : cumaOgle && vakit === 'ogle' ? sozluk(dil, uzun ? 'cumaUzun' : 'cuma') : sozluk(dil, vakit);
   const vurgu = v.siradaki && !v.siradaki.yarinMi ? v.siradaki.vakit : null;
   for (const vakit of SIRA) {
     const satir = el('div', vakit === vurgu ? 'vakit siradaki' : 'vakit');
@@ -54,8 +56,8 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
   kok.appendChild(sayim);
   if (cumaSatiri) {
     const cuma = el('div', 'cuma-saati');
-    cuma.appendChild(el('b', '', `${ad.tr.cumaUzun} ${cumaSaati}`));
-    const fr = el('span', 'fr', `${ad.fr.cumaUzun} ${cumaSaati}`);
+    cuma.appendChild(el('b', '', `${sozluk('tr', 'cumaUzun')} ${cumaSaati}`));
+    const fr = el('span', 'fr', `${sozluk('fr', 'cumaUzun')} ${cumaSaati}`);
     fr.setAttribute('lang', 'fr');
     cuma.appendChild(fr);
     kok.appendChild(cuma);

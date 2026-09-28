@@ -9,7 +9,7 @@ import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
 import { brukselSaat, donmeOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
 import { alan, yaz } from './gorunum.ts';
-import { METIN } from './metinler.ts';
+import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, sigdir, slaytCiz } from './slaytlar.ts';
@@ -26,10 +26,11 @@ interface SayfaVerisi {
 }
 
 /** Sayfa verisi (#ekran-veri) eksik ya da bozuksa (ör. önbellekteki eski iskelet ile yeni paket) açılış çökmez,
- *  güvenli varsayılanlar kullanılır: cami ve vakit adları boş kalır, saat ve Diyanet vakitleri yine çalışır;
- *  konum yoksa hava gösterilmez (uydurma bir konumun havası yerine hiç). */
+ *  güvenli varsayılanlar kullanılır: cami adı boş kalır, vakit adları ekranın kendi kopyasından gelir
+ *  (metinler.ts → VAKIT_ADLARI), saat ve Diyanet vakitleri yine çalışır; konum yoksa hava gösterilmez (uydurma
+ *  bir konumun havası yerine hiç). */
 function sayfaVerisiOku(): SayfaVerisi {
-  const bos: SayfaVerisi = { cami: { tr: '', fr: '' }, vakit: { tr: {}, fr: {} }, cumaSaati: '' };
+  const bos: SayfaVerisi = { cami: { tr: '', fr: '' }, vakit: VAKIT_ADLARI, cumaSaati: '' };
   try {
     const x = JSON.parse(document.getElementById('ekran-veri')?.textContent || 'null') as Partial<SayfaVerisi> | null;
     if (!x || typeof x !== 'object') return bos;

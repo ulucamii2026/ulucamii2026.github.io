@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { tazele, akisTazele, vakitGecerli, akisGecerli, icerikGecerli, sonrakiTazelemeMs, AKIS_ARALIGI_MS } from '../src/ekran/veri.ts';
+import { VAKIT_ADLARI } from '../src/ekran/metinler.ts';
+import { ui } from '../src/i18n/ui.ts';
+import { SIRA } from '../src/lib/namaz.ts';
 
 const VAKIT = { kaynakTuru: 'diyanet', ilce: '11890', gunler: [{ tarih: '2026-09-27' }] };
 const AKIS = { duyurular: [], ayar: { slayt: { tabanSn: 8 } } };
@@ -97,5 +100,17 @@ test('akisTazele yalnız akis.json ister; bozuk yanıt son sağlam duyuru akış
     assert.equal(v.akis, onceki);
   } finally {
     globalThis.fetch = eski;
+  }
+});
+
+// Sayfa verisi (#ekran-veri) bozuksa ekran vakit adlarını kendi kopyasından alır (src/ekran/metinler.ts →
+// VAKIT_ADLARI); kopya site sözlüğünden (src/i18n/ui.ts) ayrışırsa bozuk-veri ekranı sitedekinden farklı ad yazardı.
+test('güvenli varsayılan vakit adları site sözlüğüyle aynıdır (TR ve FR, Cuma dâhil)', () => {
+  for (const dil of ['tr', 'fr']) {
+    const sozluk = ui[dil];
+    const beklenen = { cuma: sozluk['namaz.cumaKisa'], cumaUzun: sozluk['namaz.cuma'] };
+    for (const v of SIRA) beklenen[v] = sozluk[`namaz.${v}`];
+    assert.deepEqual(VAKIT_ADLARI[dil], beklenen, dil);
+    for (const ad of Object.values(VAKIT_ADLARI[dil])) assert.ok(typeof ad === 'string' && ad.length > 0, `${dil}: boş ad`);
   }
 });

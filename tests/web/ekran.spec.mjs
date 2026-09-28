@@ -69,23 +69,40 @@ test('saat pilsiz kutuda 1970e dönmüşse vakit yerine uyarı gösterilir', asy
 });
 
 /* Sayfa verisi (#ekran-veri) bozuk ya da hiç yoksa (ör. önbellekteki eski iskelet ile yeni paket) açılış çökmez:
-   saat ve Diyanet vakitleri yine çalışır. */
+   saat ve Diyanet vakitleri yine çalışır. Vakit adları ekranın kendi güvenli varsayılanından gelir
+   (src/ekran/metinler.ts → VAKIT_ADLARI): geri sayım "undefined vaktine 30 dk" yazmaz. */
+const sayfaVerisiDegistir = (degistir) => async (route) => {
+  const yanit = await route.fetch();
+  await route.fulfill({ response: yanit, body: degistir(await yanit.text()) });
+};
 for (const [durum, degistir] of [
   ['bozuk', (html) => html.replace(/(<script[^>]*id="ekran-veri"[^>]*>)[\s\S]*?(<\/script>)/, '$1{bozuk$2')],
   ['eksik', (html) => html.replace(/<script[^>]*id="ekran-veri"[^>]*>[\s\S]*?<\/script>/, '')],
 ]) {
-  test(`sayfa verisi ${durum} olsa da ekran açılır: saat ve vakitler çalışır`, async ({ page }) => {
-    await page.route('**/ekran/', async (route) => {
-      const yanit = await route.fetch();
-      await route.fulfill({ response: yanit, body: degistir(await yanit.text()) });
-    });
+  test(`sayfa verisi ${durum} olsa da ekran açılır: saat, vakitler ve iki dilli geri sayım çalışır`, async ({ page }) => {
+    await page.route('**/ekran/', sayfaVerisiDegistir(degistir));
     await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
     await page.goto('/ekran/');
     await expect(page.locator('[data-alan="saat"]')).toHaveText(/^\d\d:\d\d:\d\d$/);
     await expect(page.locator('.vakit')).toHaveCount(6);
     await expect(page.locator('.vakit[data-vakit="ogle"] .deger')).toHaveText(ornek.ogle);
+    await expect(page.locator('.vakit[data-vakit="ogle"] .ad b')).toHaveText('Öğle');
+    await expect(page.locator('.vakit[data-vakit="ogle"] .ad i')).toHaveText('Dhuhr');
+    await expect(page.locator('.geri-sayim b')).toHaveText('Öğle vaktine 30 dk');
+    await expect(page.locator('.geri-sayim .fr')).toHaveText('Dhuhr dans 30 min');
   });
 }
+
+// Sayfa verisi geçerli ama vakit adlarından biri eksikse (elle bozulmuş iskelet) de ekranda "undefined" yazmaz.
+test('sayfa verisinde vakit adları eksikse geri sayım "undefined" yazmaz', async ({ page }) => {
+  await page.route('**/ekran/', sayfaVerisiDegistir((html) => html.replace(/(<script[^>]*id="ekran-veri"[^>]*>)([\s\S]*?)(<\/script>)/, (_, ac, json, kapa) => ac + JSON.stringify({ ...JSON.parse(json), vakit: { tr: {}, fr: {} } }) + kapa)));
+  await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await expect(page.locator('.geri-sayim b')).toContainText('vaktine 30 dk');
+  await expect(page.locator('.geri-sayim .fr')).toContainText('dans 30 min');
+  await expect(page.locator('[data-alan="vakitler"]')).not.toContainText('undefined');
+});
 
 test.describe('yatay sinyalde döndürme', () => {
   test.use({ viewport: { width: 1920, height: 1080 } });
