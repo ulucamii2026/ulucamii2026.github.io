@@ -21,7 +21,29 @@ sürümde **yalnız ön kapaklar** değişti (TR ve FR kapak tasarımı eşleşt
 giderildi); diğer sayfalar aynı. Kimlikler `…-20260923` → `…-20260928`; eski 25 parça silindi, yeni 25
 parça yazıldı, her kitap yeni bağımsız anahtar aldı. Betikler `.codex/kitap-yenile-20260928.py` ve
 `.codex/kitap-yayin-20260928.py` (23 Eylül betiklerinden yalnız tarih sabitleri değişti); eski anahtar
-dosyası `.codex/hoca-kitap-anahtarlar-eski-20260923.json` olarak yedeklendi (Git dışı).
+dosyası `.codex/hoca-kitap-anahtarlar-eski-20260923.json` olarak yedeklendi (Git dışı). Yayın ve canlı
+doğrulamadan sonra kullanıcı kararı bize bıraktı («bütün yetki ve karar senin»); 23 Eylül'deki «eskileri at
+gitsin» ilkesiyle bu yedek ve 23 Eylül'e ait yardımcı/çıktı dosyaları silindi. Eski parçalar artık hiçbir
+anahtarla çözülemez.
+
+## Depo boyutu kararı (28 Eylül 2026)
+
+Her yenileme depoya ≈350–380 MB ekler (şifreli parçalar sıkıştırılamaz); 28 Eylül sonrası GitHub depo boyutu
+≈1,46 GiB. **Geçmiş yeniden yazılmaz.** Gerekçeler: (1) eski parçalar anahtarsız şifreli veridir, gizlilik
+riski taşımaz; (2) yayın iş akışları `actions/checkout` varsayılanıyla yalnız son commit'i indirir, derleme
+süresi geçmişten etkilenmez; yayımlanan site (`dist`) ≈757 MB ile Pages'in 1 GB sınırının altındadır;
+(3) aynı depoda eşzamanlı çalışan başka oturumlar/çalışma ağaçları vardır, zorla gönderim onların dallarını
+bozar; (4) GitHub'da zorla gönderim tek başına eski nesneleri silmez, Destek bileti gerekir (hutbe temizliği
+deneyimi). Depo GitHub'ın önerdiği 5 GB üst sınırının altında.
+
+**Sonraki yenilemede** parçalar bu depodan çıkarılır. Release dosyaları seçenek değildir: 28 Eylül'de
+denendi, `release-assets.githubusercontent.com` yanıtı `Access-Control-Allow-Origin` başlığı göndermiyor,
+`fetch` ile parça indiren hoca ekranı çalışmaz. Uygun yol, aynı hesapta yalnız şifreli parçaları taşıyan
+ayrı bir depo + GitHub Pages proje sitesidir (özel alan adıyla `ulucamii.be/<depo>/…` altında aynı kökenden
+sunulur); her yenilemede o depo tek commit'e indirilip zorla gönderilir, ana depo büyümez.
+`src/data/hoca-kitaplari.json` içindeki `yol` alanları yeni öneke çevrilir; betik ve testler yolu JSON'dan
+okuduğu için başka kod değişikliği gerekmez (yine de `hoca-kitaplari.spec.mjs` ve canlı `--canli` denetimi
+yeni adresle koşulur).
 
 ## Erişim ve dosyalar
 
