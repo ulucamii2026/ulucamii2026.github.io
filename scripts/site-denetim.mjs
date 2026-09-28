@@ -34,8 +34,9 @@ const sayfalar = [];
 })(KOK);
 
 const yol = (dosya) => '/' + relative(KOK, dosya).split(sep).join('/').replace(/index\.html$/, '');
-/** Site sayfasi olmayanlar: panel (noindex, kendi iskeleti), gomulu kayit uygulamasi ve
-    arama motoru dogrulama dosyasi. Bunlarda canonical/h1/hreflang beklenmez. */
+/** Site sayfasi olmayanlar: panel (noindex, kendi iskeleti), cami ekrani (noindex, kendi
+    iskeleti), gomulu kayit uygulamasi ve arama motoru dogrulama dosyasi. Bunlarda
+    canonical/h1/hreflang beklenmez. */
 const uygulamaSayfasi = (u) => u.startsWith('/admin') || u.startsWith('/kayit') || u.startsWith('/ekran') || /^\/google[0-9a-f]+\.html$/.test(u);
 /* Site dilleri ve hreflang kodları — src/i18n/ui.ts → diller ve utils.ts → hreflangKodu ile eş tutulur. */
 const SITE_DILLERI = ['tr', 'fr', 'en', 'nl', 'de'];
@@ -196,8 +197,15 @@ for (const d of SITE_DILLERI.filter((x) => x !== 'tr')) {
   else {
     for (const ad of ['vakitler.json', 'akis.json', 'icerik.json', 'ekran.js', 'ekran.css', 'sw.js', 'fonts/work-sans-latin.woff2', 'fonts/amiri-arabic.woff2'])
       if (!existsSync(join(dizin, ad))) ekle('kritik', 'cami ekranı dosyası eksik', '/ekran/' + ad);
-    if (!/<meta name="robots" content="noindex/.test(readFileSync(join(dizin, 'index.html'), 'utf8')))
-      ekle('yuksek', 'cami ekranı arama motorlarına açık', '/ekran/ noindex değil');
+    /* Önek kontrolü ("noindex" ile başlıyor mu) nofollow'un düşmesini yakalamazdı; plan
+       (EKRAN-FAZ1-UYGULAMA-PLANI.md, "Genel kısıtlar") ikisini BİRDEN ve robots.txt'de
+       ayrıca bir Disallow satırı ister — arama motoru koruması tek noktaya bağlı kalmasın. */
+    const robotsMeta = (readFileSync(join(dizin, 'index.html'), 'utf8').match(/<meta name="robots" content="([^"]*)"/) || [])[1] || '';
+    if (!/\bnoindex\b/.test(robotsMeta) || !/\bnofollow\b/.test(robotsMeta))
+      ekle('yuksek', 'cami ekranı arama motorlarına açık', `/ekran/ robots meta: "${robotsMeta || 'yok'}"`);
+    const robotsTxt = existsSync(join(KOK, 'robots.txt')) ? readFileSync(join(KOK, 'robots.txt'), 'utf8') : '';
+    if (!/^Disallow:\s*\/ekran\/\s*$/m.test(robotsTxt))
+      ekle('yuksek', "cami ekranı robots.txt'de engelli değil", robotsTxt ? '/ekran/' : 'robots.txt yok');
     if (existsSync(join(dizin, 'vakitler.json'))) {
       const v = JSON.parse(readFileSync(join(dizin, 'vakitler.json'), 'utf8'));
       if (v.kaynakTuru !== 'diyanet') ekle('kritik', 'cami ekranı vakitleri Diyanet değil', String(v.kaynakTuru));
