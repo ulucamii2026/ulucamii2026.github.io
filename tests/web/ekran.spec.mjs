@@ -313,6 +313,10 @@ test('yeni duyuru en geç 3 dakika + bir slayt sonra ekrana gelir; tur sonu bekl
   await page.goto('/ekran/');
   const baslik = page.locator('[data-alan="slayt"] .slayt-duyuru .baslik').first();
   await expect(baslik).toHaveText('Duyuru 1');
+  // Sahte saat burada durdurulur: bundan sonra yalnız runFor ile ilerler. Durdurulmasaydı yoklama beklenirken ve
+  // expect penceresinde gerçek zamanla akmaya devam ederdi; eski tur (yeniden kurma olmasa bile) Duyuru 1'den
+  // 200 sn sonra kendiliğinden biter ve yük altındaki bir makinede gerileme yakalanmadan geçebilirdi.
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 500));
   // İmam yeni bir duyuru yayımladı: yeni derleme.
   govde = { ...AKIS([DUYURU({ id: 'mevlid', tr: { baslik: 'Mevlid programı', metin: 'Perşembe akşamı yatsıdan sonra.' }, fr: { baslik: 'Programme du Mawlid', metin: 'Jeudi soir après la prière de la nuit.' } })]), derleme: 'derleme-2' };
   // Eski 10 dakikalık aralıkta akis.json bu 3 dakikada hiç yeniden istenmez: bekleme zaman aşımıyla düşer.
