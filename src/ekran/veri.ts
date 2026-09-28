@@ -61,3 +61,15 @@ export async function tazele(v: EkranVerisi, zamanAsimiMs = 30_000): Promise<voi
 export function sonrakiTazelemeMs(v: EkranVerisi): number {
   return v.vakit === null || v.akis === null || v.icerik === null ? 60_000 : 10 * 60_000;
 }
+
+/** Duyuru akışı ayrıca 3 dakikada bir yoklanır (src/ekran/main.ts → akisDongusu). Faz 1 çıkış ölçütü: CMS'te
+ *  işaretlenen duyuru ≤ 15 dk'da ekranda — yayın ~3 dk + yoklama ≤ 3 dk + ekrandaki slaytın kalanı ≤ 30 sn.
+ *  Vakit (~60 KB) ve içerik akışı 10 dakikada kalır: SW her başarılı yanıtı önbelleğe yeniden yazar, büyük
+ *  akışı 3 dakikada bir yazmak kutunun flaş belleğini boşuna yıpratır. akis.json ~200 B'tır. */
+export const AKIS_ARALIGI_MS = 3 * 60_000;
+
+/** Yalnız duyuru akışını tazeler; hatalı ya da geçersiz yanıt son sağlam akışı silmez (tazele ile aynı kural). */
+export async function akisTazele(v: EkranVerisi, zamanAsimiMs = 30_000): Promise<void> {
+  const akis = await getir('/ekran/akis.json', akisGecerli, zamanAsimiMs);
+  if (akis) v.akis = akis;
+}

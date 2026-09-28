@@ -2,7 +2,8 @@
  * Cami ekranı istemcisi — /ekran/ekran.js (27 Eylül 2026).
  * scripts/ekran-derle.mjs bu dosyayı eski Android TV WebView'lerine (Chromium 70) uygun pakete çevirir.
  * Saat ve takvim Brüksel'e göredir, cihazın saat diliminden bağımsızdır (src/lib/namaz.ts → TZ).
- * Veri: /ekran/vakitler.json, /ekran/akis.json, /ekran/icerik.json (10 dakikada bir tazelenir).
+ * Veri: /ekran/vakitler.json, /ekran/akis.json, /ekran/icerik.json (10 dakikada bir tazelenir; duyuru akışı
+ * ayrıca 3 dakikada bir yoklanır — src/ekran/veri.ts → AKIS_ARALIGI_MS).
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
@@ -13,7 +14,7 @@ import { olcekKur } from './olcek.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, sigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
-import { tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
+import { akisTazele, AKIS_ARALIGI_MS, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 
 interface SayfaVerisi {
   cami: { tr: string; fr: string };
@@ -106,8 +107,21 @@ async function veriDongusu(): Promise<void> {
   }
 }
 
+/* Duyuru akışı 3 dakikada bir ayrıca yoklanır (üç akışın tam tazelemesi yukarıda 10 dakikada bir sürer):
+   yeni duyuru en geç ~3 dk + bir slayt sonra ekranda. Ayrı ve bağımsız bir döngüdür — duvar saatine değil
+   setTimeout gecikmesine dayanır, kutunun saati geri atlasa da durmaz. Yeni derlemeli akışı slayt döngüsü
+   kendisi fark eder (sonrakiSlayt → turDerlemesi); burada yalnız veri tazelenir. Sonraki koşu finally'de. */
+async function akisDongusu(): Promise<void> {
+  try {
+    await akisTazele(veri);
+  } finally {
+    setTimeout(() => { void akisDongusu(); }, AKIS_ARALIGI_MS);
+  }
+}
+
 /* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, günün hadisi (src/lib/ekran/secim.ts).
-   Tur bitince liste yeni veriyle yeniden kurulur; süre metin uzunluğundan (ekran.yaml → slayt).
+   Tur bitince ya da yeni derlemeli bir duyuru akışı gelince liste yeni veriyle yeniden kurulur; süre metin
+   uzunluğundan (ekran.yaml → slayt).
    Sayfa aylarca yeniden yüklenmeden açık kalır: burada çıkan tek bir istisna (ör. `referans` alanı eksik
    bir CMS kaydı) turu asla sonsuza dek durdurmasın diye hiçbir zaman çağırana fırlatılmaz; her koşulda
    (başarı ya da hata) bir sonraki slayt zamanlanır. */
@@ -115,14 +129,19 @@ const VARSAYILAN_SLAYT: SlaytAyari = { tabanSn: 8, karakterSn: 0.05, enAzSn: 10,
 let tur: Slayt[] = [];
 let sira = 0;
 let slaytBasladi = false;
+/** Geçerli turun kurulduğu duyuru akışının derleme damgası. Yeni derlemeli bir akış geldiyse (akisDongusu)
+ *  tur, sonuna kadar beklenmeden SONRAKİ slaytta yeniden kurulur; ekrandaki slayt süresini normal doldurmuştur. */
+let turDerlemesi: string | undefined;
 function sonrakiSlayt(): void {
   let sureMs = 15_000;
   try {
     const kok = alan('slayt');
     if (!kok) return;
-    if (sira >= tur.length) {
+    const derleme = veri.akis ? veri.akis.derleme : undefined;
+    if (sira >= tur.length || derleme !== turDerlemesi) {
       tur = slaytListesi({ duyurular: veri.akis?.duyurular ?? [], ayetler: veri.icerik?.ayetler ?? [], hadisler: veri.icerik?.hadisler ?? [] }, ekranId, bugunTarih(new Date()));
       sira = 0;
+      turDerlemesi = derleme;
     }
     const s = tur[sira++];
     if (!s) {
@@ -190,4 +209,5 @@ try {
 
 saniyelik();
 void veriDongusu();
+setTimeout(() => { void akisDongusu(); }, AKIS_ARALIGI_MS); // ilk tam tazeleme duyuru akışını zaten getirir
 void havaDongusu();

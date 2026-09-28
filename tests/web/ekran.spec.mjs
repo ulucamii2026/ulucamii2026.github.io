@@ -170,6 +170,29 @@ test('akış bozulursa ekran son sağlam içerikle dönmeye devam eder', async (
   await expect(page.locator('.vakit')).toHaveCount(6);
 });
 
+// Faz 1 çıkış ölçütü (≤ 15 dk): duyuru akışı 3 dakikada bir yoklanır; yeni derlemeli akış gelince ekrandaki slayt
+// normal biter, SONRAKİ slayt turu yeni duyurularla yeniden kurar. Eski tur bilerek uzun (20 duyuru × 10 sn =
+// 200 sn): yeni duyuru 3 dk + bir slaytta ancak tur sonu beklenmeden yeniden kurulursa görünür. Yeni akışta tek
+// duyuru var; yeniden kurulan tur hep onu gösterir, yani sonuç slayt evresine (fazına) bağlı değildir.
+test('yeni duyuru en geç 3 dakika + bir slayt sonra ekrana gelir; tur sonu beklenmez', async ({ page }) => {
+  const eskiDuyurular = Array.from({ length: 20 }, (_, i) => DUYURU({ id: 'd' + (i + 1), tr: { baslik: 'Duyuru ' + (i + 1), metin: 'Metin.' }, fr: undefined }));
+  let govde = { ...AKIS(eskiDuyurular), derleme: 'derleme-1' };
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: govde }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: { derleme: '', eksik: [], ayetler: [], hadisler: [] } }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const baslik = page.locator('[data-alan="slayt"] .slayt-duyuru .baslik').first();
+  await expect(baslik).toHaveText('Duyuru 1');
+  // İmam yeni bir duyuru yayımladı: yeni derleme.
+  govde = { ...AKIS([DUYURU({ id: 'mevlid', tr: { baslik: 'Mevlid programı', metin: 'Perşembe akşamı yatsıdan sonra.' }, fr: { baslik: 'Programme du Mawlid', metin: 'Jeudi soir après la prière de la nuit.' } })]), derleme: 'derleme-2' };
+  // Eski 10 dakikalık aralıkta akis.json bu 3 dakikada hiç yeniden istenmez: bekleme zaman aşımıyla düşer.
+  const yoklama = page.waitForResponse((y) => y.url().endsWith('/ekran/akis.json'), { timeout: 15_000 });
+  await page.clock.runFor(3 * 60_000);
+  await yoklama;
+  await page.clock.runFor(10_000); // ekrandaki slayt normal biter (SABIT_10SN); sonraki slayt turu yeniden kurar
+  await expect(baslik).toHaveText('Mevlid programı');
+});
+
 // secim.ts'in "her döngü istisnadan sağ çıkar" kuralı (global-constraints.md) burada slayt turuna uygulanır:
 // icerik.json'daki günün ayeti kaydı elle düzenlenmiş gibi `referans` alanı OLMADAN geliyor. slaytListesi
 // (secim.ts) bu alana dokunmadığı için tur kurulurken patlamaz; ancak slaytCiz onu koşulsuz okur

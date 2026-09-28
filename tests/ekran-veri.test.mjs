@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { tazele, vakitGecerli, akisGecerli, icerikGecerli, sonrakiTazelemeMs } from '../src/ekran/veri.ts';
+import { tazele, akisTazele, vakitGecerli, akisGecerli, icerikGecerli, sonrakiTazelemeMs, AKIS_ARALIGI_MS } from '../src/ekran/veri.ts';
 
 const VAKIT = { kaynakTuru: 'diyanet', ilce: '11890', gunler: [{ tarih: '2026-09-27' }] };
 const AKIS = { duyurular: [], ayar: { slayt: { tabanSn: 8 } } };
@@ -65,4 +65,37 @@ test('sonrakiTazelemeMs: herhangi bir akış eksikse hızlı yeniden dener, heps
   assert.equal(sonrakiTazelemeMs({ vakit: null, akis: null, icerik: null }), 60_000);
   assert.equal(sonrakiTazelemeMs({ vakit: VAKIT, akis: AKIS, icerik: ICERIK }), 10 * 60_000);
   assert.equal(sonrakiTazelemeMs({ vakit: VAKIT, akis: AKIS, icerik: null }), 60_000);
+});
+
+// Faz 1 çıkış ölçütü: CMS'te işaretlenen duyuru ≤ 15 dk'da ekranda. Yayın ~3 dk + yoklama aralığı + ekrandaki
+// slaytın kalanı (≤ 30 sn): duyuru akışı 3 dakikada bir yoklanır. Vakit (~60 KB) ve içerik akışı 10 dakikada
+// kalır — SW her yanıtı önbelleğe yeniden yazar, büyük akışı sık yazmak kutunun flaş belleğini yıpratır.
+test('duyuru akışı 3 dakikada bir yoklanır; vakit ve içerik akışı 10 dakikada kalır', () => {
+  assert.equal(AKIS_ARALIGI_MS, 3 * 60_000);
+  assert.ok(AKIS_ARALIGI_MS + 30_000 + 3 * 60_000 <= 15 * 60_000, 'yayın + yoklama + en uzun slayt 15 dakikayı aşmamalı');
+  assert.equal(sonrakiTazelemeMs({ vakit: VAKIT, akis: AKIS, icerik: ICERIK }), 10 * 60_000);
+});
+
+test('akisTazele yalnız akis.json ister; bozuk yanıt son sağlam duyuru akışını silmez', async () => {
+  const istenen = [];
+  const eski = globalThis.fetch;
+  let bozuk = false;
+  globalThis.fetch = async (yol) => {
+    istenen.push(yol);
+    return bozuk ? new Response('sunucu hatası', { status: 500 }) : Response.json({ ...AKIS, derleme: 'yeni' });
+  };
+  try {
+    const v = { vakit: VAKIT, akis: AKIS, icerik: ICERIK };
+    await akisTazele(v);
+    assert.deepEqual(istenen, ['/ekran/akis.json']);
+    assert.equal(v.akis.derleme, 'yeni');
+    assert.equal(v.vakit, VAKIT);
+    assert.equal(v.icerik, ICERIK);
+    bozuk = true;
+    const onceki = v.akis;
+    await akisTazele(v);
+    assert.equal(v.akis, onceki);
+  } finally {
+    globalThis.fetch = eski;
+  }
 });
