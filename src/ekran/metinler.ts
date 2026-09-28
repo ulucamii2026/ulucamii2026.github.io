@@ -8,6 +8,7 @@ export const METIN = {
   gunesUzun: { tr: 'Güneş', fr: 'Lever du soleil' }, // geri sayımda: satırdaki kısa «Lever» tek başına anlaşılmıyor
   vakitYok: { tr: 'Namaz vakitleri güncellenemedi', fr: 'Horaires de prière indisponibles' },
   saatYok: { tr: 'Saat doğrulanıyor', fr: 'Vérification de l’heure…' },
+  yarin: { tr: 'Yarın', fr: 'Demain' }, // yatay blokta yarının imsakının etiketi (yatsıdan sonra sıradaki vakit)
   hosgeldiniz: { tr: 'Hoş geldiniz', fr: 'Bienvenue' },
 } as const;
 

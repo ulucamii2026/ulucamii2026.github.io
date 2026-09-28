@@ -19,8 +19,12 @@ function uyari(kok: HTMLElement, m: { tr: string; fr: string }): void {
  *  (src/components/NamazVakitleri.tsx): boşsa Cuma günü (Brüksel) öğle satırı "Cuma" olur ve geri sayım Cuma'ya
  *  göre konuşur; doluysa öğle satırı, vurgusu ve geri sayımı öğle olarak kalır, geri sayımın altında ayrı bir
  *  "Cuma namazı SS:DD" satırı (TR + FR alt alta) çıkar. Diğer günlerde ek satır yoktur. Bu saat cemaatin
- *  toplanma saatidir; ekran onu yalnız yazar, hiçbir vakit hesaplamaz ya da türetmez. */
-export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: VakitAdlari, saatGecerli: boolean, cumaSaati = ''): void {
+ *  toplanma saatidir; ekran onu yalnız yazar, hiçbir vakit hesaplamaz ya da türetmez.
+ *
+ *  `yatay`: yatay düzende (#ekran[data-duzen=yatay]) sıradaki vakit satırı büyük bir blok olur ve geri sayımı kendi
+ *  içinde taşır (dikeyde geri sayım satırların altında ayrı durur). Yatsıdan sonra sıradaki vakit yarının imsakıdır:
+ *  dikey düzen onu vurgulamaz, yatay blok yarının imsak saatini «Yarın · Demain» etiketiyle gösterir. */
+export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: VakitAdlari, saatGecerli: boolean, cumaSaati = '', yatay = false): void {
   kok.textContent = '';
   const cumaSatiri = saatGecerli && !!v && v.cuma && cumaSaati !== '';
   kok.classList.toggle('cumali', cumaSatiri); // ek satır için vakit alanı biraz uzar (ekran.css)
@@ -33,7 +37,8 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
   const adi = (dil: 'tr' | 'fr', vakit: Vakit, uzun = false): string =>
     uzun && vakit === 'gunes' ? METIN.gunesUzun[dil]
       : cumaOgle && vakit === 'ogle' ? sozluk(dil, uzun ? 'cumaUzun' : 'cuma') : sozluk(dil, vakit);
-  const vurgu = v.siradaki && !v.siradaki.yarinMi ? v.siradaki.vakit : null;
+  const vurgu = v.siradaki && (yatay || !v.siradaki.yarinMi) ? v.siradaki.vakit : null;
+  const yarinSaat = yatay && v.siradaki && v.siradaki.yarinMi ? v.siradaki.saat : null; // yarının imsakı (yatsıdan sonra)
   for (const vakit of SIRA) {
     const satir = el('div', vakit === vurgu ? 'vakit siradaki' : 'vakit');
     satir.setAttribute('data-vakit', vakit);
@@ -43,7 +48,17 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
     fr.setAttribute('lang', 'fr');
     adKutusu.appendChild(fr);
     satir.appendChild(adKutusu);
-    satir.appendChild(el('span', 'deger', v.gun[vakit]));
+    // Yatsıdan sonraki vurgulu imsak satırı yarının imsakını gösterir; bugünün imsak saati o satırda yanıltırdı.
+    const yarinSatiri = yarinSaat !== null && vakit === vurgu;
+    if (yarinSatiri) {
+      const yarin = el('small', 'yarin'); // « · » ayırıcısı ekran.css'te (.hicri::before gibi)
+      yarin.appendChild(el('span', '', METIN.yarin.tr));
+      const yarinFr = el('span', 'fr', METIN.yarin.fr);
+      yarinFr.setAttribute('lang', 'fr');
+      yarin.appendChild(yarinFr);
+      adKutusu.appendChild(yarin);
+    }
+    satir.appendChild(el('span', 'deger', yarinSatiri && yarinSaat !== null ? yarinSaat : v.gun[vakit]));
     kok.appendChild(satir);
   }
   const sayim = el('div', 'geri-sayim');
@@ -54,7 +69,10 @@ export function vakitleriCiz(kok: HTMLElement, v: VakitGorunumu | null, ad: Vaki
     fr.setAttribute('lang', 'fr');
     sayim.appendChild(fr);
   }
-  kok.appendChild(sayim);
+  // Yatayda geri sayım vurgulu satırın içine girer (.deger'den sonra); vurgulu satır yoksa (veri boşluğu)
+  // ya da dikeyde satırların altında kalır. Her durumda tek .geri-sayim vardır.
+  const blok = yatay ? kok.querySelector('.vakit.siradaki') : null;
+  (blok || kok).appendChild(sayim);
   if (cumaSatiri) {
     const cuma = el('div', 'cuma-saati');
     cuma.appendChild(el('b', '', `${sozluk('tr', 'cumaUzun')} ${cumaSaati}`));

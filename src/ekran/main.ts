@@ -94,7 +94,7 @@ function dakikalik(simdi: Date): void {
     const kok = alan('vakitler');
     if (kok && (veri.vakit || ilkTazelemeBitti)) {
       const cumaliydi = kok.classList.contains('cumali');
-      vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli, sayfa.cumaSaati || '');
+      vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli, sayfa.cumaSaati || '', ekran.getAttribute('data-duzen') === 'yatay');
       // Cuma satırı açılıp kapanınca (Perşembe→Cuma gece yarısı ve ertesi gün) vakit alanı 10u uzar/kısalır, slayt
       // alanı tersine değişir: ekrandaki slayt yeni alana hemen yeniden sığdırılır, yoksa altı sonraki slayta dek
       // (≤ 30 sn) kırpılırdı. sigdir yalnız slayt çizilirken ve görsel/yazı tipi yüklenince çalışıyordu.

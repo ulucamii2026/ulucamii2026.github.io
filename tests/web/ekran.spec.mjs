@@ -177,10 +177,24 @@ test.describe('yatay düzen: tuval, 1920×1080 pencere', () => {
     await page.clock.install({ time: t });
     await page.goto('/ekran/');
     await expect(page.locator('[data-alan="tarih-tr"]')).toContainText(ayAdi(t, 'tr-TR'));
+    // İlk veri tazelemesi bitmeden tarihi silmek testi yanlış nedenle geçirirdi: tazeleme tarihi kendisi yeniden yazar.
+    await expect(page.locator('.vakit')).toHaveCount(6);
     // Dakika değişmediği sürece tarihi yalnız bu geri çağrı (dakikalik) yeniden yazabilir.
     await page.locator('[data-alan="tarih-tr"]').evaluate((e) => { e.textContent = ''; });
     await page.setViewportSize({ width: 1080, height: 1920 });
     await expect(page.locator('[data-alan="tarih-tr"]')).toContainText(ayAdi(t, 'tr-TR'));
+  });
+
+  test('yeniden boyutlanınca main.ts’teki geri çağrı slaytı yeniden sığdırır (sigdir)', async ({ page }) => {
+    await page.clock.install({ time: an(ornek, '12:00') });
+    await page.goto('/ekran/');
+    const slayt = page.locator('[data-alan="slayt"]');
+    await expect(slayt).not.toBeEmpty(); // ilk slayt çizildi
+    await page.evaluate(() => document.fonts.ready.then(() => undefined)); // geç gelen yazı tipi sigdir'i sonradan tetiklemesin
+    // sigdir'in basamakları 1, 0,9, 0,81… hiçbir zaman 0,5 vermez; bu değeri yalnız geri çağrının sigdir'i silebilir.
+    await slayt.evaluate((e) => e.style.setProperty('--olcek', '0.5'));
+    await page.setViewportSize({ width: 1080, height: 1920 });
+    await expect.poll(() => slayt.evaluate((e) => e.style.getPropertyValue('--olcek'))).not.toBe('0.5');
   });
 });
 
@@ -230,6 +244,84 @@ test.describe('yatay düzen: tuval, 961×541 pencere (Polaroid TV)', () => {
     expect(kutu.height).toBeCloseTo(541, 3);
     expect(await birimOku(page)).toBe('5.41px');
   });
+});
+
+/* Yatay düzende sıradaki vakit satırı büyük blok olur ve geri sayımı kendi içinde taşır; yatsıdan sonra blok yarının
+   imsakını gösterir. Burada yalnız DOM ve metin denetlenir (görünüm ekran.css'te). Yatsıdan sonraki durum için sonraki
+   kaydı takvimde ertesi gün olan ve imsakı yarınkinden farklı bir gün seçilir; gece yarısına taşmaması için yatsı 23:00'ten önce olmalı. */
+const ertesiGun = (g) => new Date(new Date(g.tarih + 'T12:00:00Z').getTime() + 86_400_000).toISOString().slice(0, 10);
+const yatsiGunu = kaynak.gunler.find((g, i, t) => !cumaMi(g) && t[i + 1] && t[i + 1].tarih === ertesiGun(g) && t[i + 1].imsak !== g.imsak && g.yatsi < '23:00');
+
+test.describe('yatay düzen: sıradaki vakit bloğu', () => {
+  test.use({ viewport: { width: 1920, height: 1080 } });
+
+  test('geri sayım sıradaki vakit satırının içindedir; vakit alanında ayrı geri sayım kalmaz', async ({ page }) => {
+    await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+    await page.goto('/ekran/');
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', 'ogle');
+    await expect(page.locator('.vakit.siradaki .geri-sayim b')).toHaveText('Öğle vaktine 30 dk');
+    await expect(page.locator('.vakit.siradaki .geri-sayim .fr')).toHaveText('Dhuhr dans 30 min');
+    await expect(page.locator('.geri-sayim')).toHaveCount(1);
+    await expect(page.locator('.vakitler > .geri-sayim')).toHaveCount(0);
+  });
+
+  test('yatsıdan sonra sıradaki blok yarının imsakıdır: saat, «Yarın · Demain» etiketi ve geri sayım', async ({ page }) => {
+    expect(yatsiGunu, 'veride uygun gün bulunamadı').toBeTruthy();
+    const yarin = kaynak.gunler[kaynak.gunler.indexOf(yatsiGunu) + 1];
+    await page.clock.install({ time: an(yatsiGunu, yatsiGunu.yatsi, 30) });
+    await page.goto('/ekran/');
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    const blok = page.locator('.vakit.siradaki');
+    await expect(blok).toHaveAttribute('data-vakit', 'imsak');
+    await expect(blok.locator('.deger')).toHaveText(yarin.imsak);
+    await expect(blok.locator('.yarin span').first()).toHaveText('Yarın');
+    await expect(blok.locator('.yarin .fr')).toHaveText('Demain');
+    await expect(blok.locator('.yarin .fr')).toHaveAttribute('lang', 'fr');
+    await expect(blok.locator('.geri-sayim b')).toContainText(/^İmsak vaktine/);
+    await expect(page.locator('.geri-sayim')).toHaveCount(1);
+    await expect(page.locator('.vakitler > .geri-sayim')).toHaveCount(0);
+  });
+
+  test('gün içinde «Yarın» etiketi çıkmaz', async ({ page }) => {
+    await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+    await page.goto('/ekran/');
+    await expect(page.locator('.vakit.siradaki')).toHaveCount(1);
+    await expect(page.locator('.yarin')).toHaveCount(0);
+  });
+
+  test('veri boşluğunda (yarının kaydı eksik) yatsıdan sonra blok ve etiket çıkmaz, geri sayım vakit alanında kalır', async ({ page }) => {
+    await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: vakitAkisi([ornek]) }));
+    await page.clock.install({ time: an(ornek, ornek.yatsi, 30) });
+    await page.goto('/ekran/');
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    await expect(page.locator('.vakit.siradaki')).toHaveCount(0);
+    await expect(page.locator('.yarin')).toHaveCount(0);
+    await expect(page.locator('.geri-sayim')).toHaveCount(1);
+    await expect(page.locator('.vakitler > .geri-sayim')).toHaveCount(1);
+  });
+
+  test('yatsıdan sonra pencere dikeye dönünce blok kalkar, geri sayım vakit alanına iner; yataya dönünce geri gelir', async ({ page }) => {
+    await page.clock.install({ time: an(yatsiGunu, yatsiGunu.yatsi, 30) });
+    await page.goto('/ekran/');
+    await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', 'imsak');
+    await page.setViewportSize({ width: 1080, height: 1920 });
+    await expect(page.locator('.vakit.siradaki')).toHaveCount(0);
+    await expect(page.locator('.vakitler > .geri-sayim b')).toContainText(/^İmsak vaktine/);
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', 'imsak');
+    await expect(page.locator('.vakitler > .geri-sayim')).toHaveCount(0);
+  });
+});
+
+test('dikey düzende yatsıdan sonra vurgu ve «Yarın» etiketi çıkmaz, geri sayım vakit alanında kalır (yarının imsakı)', async ({ page }) => {
+  await page.clock.install({ time: an(yatsiGunu, yatsiGunu.yatsi, 30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'dikey');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await expect(page.locator('.vakit.siradaki')).toHaveCount(0);
+  await expect(page.locator('.yarin')).toHaveCount(0);
+  await expect(page.locator('.vakitler > .geri-sayim b')).toContainText(/^İmsak vaktine/);
 });
 
 test('sıradaki vakit vurgulanır, geri sayım iki dilde yazılır', async ({ page }) => {
