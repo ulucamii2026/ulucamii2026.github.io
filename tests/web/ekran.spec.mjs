@@ -89,6 +89,41 @@ test('Cuma günü öğle satırı ve geri sayım Cuma olarak yazılır', async (
   await expect(page.locator('.geri-sayim .fr')).toHaveText('Prière du vendredi dans 1 h 30');
 });
 
+/* Site ile aynı kural (src/components/NamazVakitleri.tsx): site.yaml → cumaSaati doluysa öğle hücresi öğle kalır,
+   Cuma saati ayrıca yazılır. Sayfa verisine (#ekran-veri) derlemeyi değiştirmeden bir Cuma saati enjekte edilir. */
+const cumaSaatiEkle = (saat) => async (route) => {
+  const yanit = await route.fetch();
+  const html = (await yanit.text()).replace(/(<script[^>]*id="ekran-veri"[^>]*>)([\s\S]*?)(<\/script>)/, (_, ac, json, kapa) => ac + JSON.stringify({ ...JSON.parse(json), cumaSaati: saat }) + kapa);
+  await route.fulfill({ response: yanit, body: html });
+};
+
+test('sitede Cuma saati girilmişse Cuma günü öğle satırı öğle kalır, geri sayımın altında Cuma namazı saati yazar', async ({ page }) => {
+  const cuma = kaynak.gunler.find(cumaMi);
+  test.skip(!cuma, 'veride Cuma yok');
+  await page.route('**/ekran/', cumaSaatiEkle('13:30'));
+  await page.clock.install({ time: an(cuma, cuma.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit[data-vakit="ogle"] .ad b')).toHaveText('Öğle');
+  await expect(page.locator('.vakit[data-vakit="ogle"] .ad i')).toHaveText('Dhuhr');
+  await expect(page.locator('.vakit.siradaki')).toHaveAttribute('data-vakit', 'ogle');
+  await expect(page.locator('.geri-sayim b')).toHaveText('Öğle vaktine 30 dk');
+  await expect(page.locator('.geri-sayim .fr')).toHaveText('Dhuhr dans 30 min');
+  await expect(page.locator('.cuma-saati b')).toHaveText('Cuma namazı 13:30');
+  await expect(page.locator('.cuma-saati .fr')).toHaveText('Prière du vendredi 13:30');
+  // Ek satır vakit alanından taşmaz.
+  expect(await page.locator('[data-alan="vakitler"]').evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
+  if (process.env.EKRAN_GORSEL) await page.screenshot({ path: 'test-results/ekran-gorsel/cuma-saati.png', animations: 'disabled' });
+});
+
+test('Cuma saati girilmiş olsa da Cuma dışındaki günlerde ek satır çıkmaz', async ({ page }) => {
+  await page.route('**/ekran/', cumaSaatiEkle('13:30'));
+  await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await expect(page.locator('.vakit[data-vakit="ogle"] .ad b')).toHaveText('Öğle');
+  await expect(page.locator('.cuma-saati')).toHaveCount(0);
+});
+
 test('tema güneşten akşama açık, akşam vaktinden sonra koyu', async ({ page }) => {
   await page.clock.install({ time: an(ornek, ornek.aksam, -1) });
   await page.goto('/ekran/');

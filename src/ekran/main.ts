@@ -20,6 +20,8 @@ interface SayfaVerisi {
   cami: { tr: string; fr: string };
   vakit: Record<'tr' | 'fr', Record<string, string>>;
   gps: { enlem: number; boylam: number };
+  /** Sitedeki sabit Cuma namazı saati (SS:DD) ya da boş; src/pages/ekran/index.astro doğrular. */
+  cumaSaati?: string;
 }
 
 const sayfa = JSON.parse(document.getElementById('ekran-veri')?.textContent || '{}') as SayfaVerisi;
@@ -61,7 +63,7 @@ function dakikalik(simdi: Date): void {
     yaz('hicri-fr', gun ? hicriCevir(gun.hicri, 'fr') : '');
     const gorunum = gecerli && veri.vakit ? vakitGorunumu(veri.vakit.gunler, simdi) : null;
     const kok = alan('vakitler');
-    if (kok && (veri.vakit || ilkTazelemeBitti)) vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli);
+    if (kok && (veri.vakit || ilkTazelemeBitti)) vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli, sayfa.cumaSaati || '');
     ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
     havaCiz();
   } catch (hata) {

@@ -18,10 +18,20 @@ const vakitAdlari = (dil: 'tr' | 'fr'): Record<string, string> => {
   for (const v of SIRA) adlar[v] = sozluk[`namaz.${v}`];
   return adlar;
 };
+/* Sitedeki sabit Cuma namazı saati (İçerik Yönetimi → Site Ayarları → "Cuma namazı saati"; site.yaml → cumaSaati).
+   Ekran siteyle aynı kuralı izler (src/components/NamazVakitleri.tsx): boşsa Cuma günü öğle satırı Cuma olur ve
+   Diyanet öğle vaktini gösterir; doluysa öğle satırı öğle kalır, Cuma saati ayrı satırda yazar. Bu, cemaatin
+   toplanma saatidir, hesaplanmış bir vakit değildir. Yalnız SS:DD biçimindeyse kullanılır. */
+const cumaSaatiHam = (ayar.cumaSaati ?? '').trim();
+const cumaSaati = /^\d{2}:\d{2}$/.test(cumaSaatiHam) ? cumaSaatiHam : '';
+if (cumaSaatiHam && !cumaSaati) {
+  console.warn(`[ekran] UYARI: site.yaml → cumaSaati "${cumaSaatiHam}" SS:DD biçiminde değil; ekran Cuma günü öğle satırını Cuma olarak gösterir, site ise bu değeri yazar.`);
+}
 const sayfaVerisi = {
   cami: { tr: kimlik.kurumlar.cami.ad.tr, fr: kimlik.kurumlar.cami.ad.fr },
   vakit: { tr: vakitAdlari('tr'), fr: vakitAdlari('fr') },
   gps: { enlem: ayar.gps.enlem, boylam: ayar.gps.boylam },
+  cumaSaati,
 };
 ---
 <!doctype html>

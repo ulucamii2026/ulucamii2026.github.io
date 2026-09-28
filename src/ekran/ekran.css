@@ -61,6 +61,12 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .geri-sayim { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 calc(var(--u) * 5); }
 .geri-sayim b { font-size: calc(var(--u) * 3.8); }
 .geri-sayim .fr { font-size: calc(var(--u) * 3); }
+/* Sitede sabit Cuma saati girilmişse Cuma günü geri sayımın altında "Cuma namazı SS:DD" (TR + FR alt alta):
+   vakit alanı 10u uzar, slayt alanı (flex: 1) o kadar kısalır; slayt metni sigdir ile yine sığdırılır. */
+.vakitler.cumali { height: calc(var(--u) * 66); }
+.cuma-saati { display: flex; flex-direction: column; justify-content: center; padding: 0 calc(var(--u) * 5) calc(var(--u) * 2.5); color: var(--ana); }
+.cuma-saati b { font-size: calc(var(--u) * 3.4); }
+.cuma-saati .fr { font-size: calc(var(--u) * 2.8); }
 .vakit-yok { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: calc(var(--u) * 5); color: var(--ana); }
 .vakit-yok b { font-size: calc(var(--u) * 5); }
 .vakit-yok .fr { font-size: calc(var(--u) * 3.8); margin-top: calc(var(--u) * 1.5); }
