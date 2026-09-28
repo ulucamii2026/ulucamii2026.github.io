@@ -83,7 +83,7 @@ export function olcekKur(tuval: HTMLElement, don: 0 | 90 | 270, tercih: Duzen | 
   uygula();
   window.addEventListener('resize', () => {
     uygula();
-    // Sayfa aylarca açık kalır: geri çağrıdaki bir hata sonraki yeniden boyutlanmaları da bozmasın.
+    // Sayfa aylarca açık kalır: geri çağrıdaki bir hata sessizce yutulmasın, konsolda izi kalsın.
     if (degisince) { try { degisince(); } catch (hata) { console.error(hata); } }
   });
 }

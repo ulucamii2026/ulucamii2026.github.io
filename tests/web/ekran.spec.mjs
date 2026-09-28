@@ -960,7 +960,8 @@ for (const [genislik, yukseklik] of [[1920, 1080], [1280, 720], [961, 541]]) {
 
 const cumaGunu = kaynak.gunler.find(cumaMi);
 const dakika = (hm) => Number(hm.slice(0, 2)) * 60 + Number(hm.slice(3, 5));
-// Yatsıdan ertesi günün imsakına en uzun gece: geri sayımın en uzun metni («İmsak vaktine 9 sa 59 dk» gibi).
+// Yatsıdan ertesi günün imsakına en uzun gece: en uzun TR geri sayımlarından biri («İmsak vaktine 9 sa 59 dk» gibi).
+// En uzun FR metni Cuma sabahıdır («Prière du vendredi dans 5 h 59»); son incelemede 961×541'de tek satır ölçüldü.
 const enUzunGece = kaynak.gunler
   .map((g, i, t) => (t[i + 1] && t[i + 1].tarih === ertesiGun(g) ? { g, dk: 1440 - dakika(g.yatsi) + dakika(t[i + 1].imsak) } : null))
   .filter(Boolean)

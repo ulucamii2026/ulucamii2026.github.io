@@ -89,10 +89,12 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .ekran[data-duzen='yatay'] .cami-adi .fr { font-size: calc(var(--u) * 2.4); line-height: 1.1; margin-top: calc(var(--u) * .2); }
 .ekran[data-duzen='yatay'] .zaman { height: calc(var(--u) * 20); }
 /* overflow: Work Sans'ın içerik alanı (~1,17 em) 1'lik satır yüksekliğini aşar ve 20u'luk .zaman'dan ~1,7u taşmış
-   sayılırdı; rakam mürekkebi (~0,7 em) satırın içinde kalır, kırpılan yalnız görünmeyen içerik alanıdır. */
-.ekran[data-duzen='yatay'] .saat { font-size: calc(var(--u) * 20); overflow: hidden; }
-/* Taban .ekran.saat-yok .saat ile aynı özgüllükteki yukarıdaki kural uyarıyı 20u'ya büyütürdü (~5 satır). */
-.ekran[data-duzen='yatay'].saat-yok .saat { font-size: calc(var(--u) * 5); line-height: 1.15; white-space: normal; }
+   sayılırdı; rakam mürekkebi (~0,7 em) satırın içinde kalır, kırpılan yalnız görünmeyen içerik alanıdır.
+   flex-shrink: 0 — overflow esnek öğenin min-width'ini 0 yapar; saat daralıp saniyeleri sessizce kırpmasın,
+   taşma olursa .zaman'ın genişlik testine düşsün. */
+.ekran[data-duzen='yatay'] .saat { font-size: calc(var(--u) * 20); overflow: hidden; flex-shrink: 0; }
+/* Taban .ekran.saat-yok .saat ile aynı özgüllükteki yukarıdaki kural uyarıyı 20u'ya büyütürdü (~5 satır). flex-shrink: 1 — uyarı metni satıra bölünerek sığsın. */
+.ekran[data-duzen='yatay'].saat-yok .saat { font-size: calc(var(--u) * 5); line-height: 1.15; white-space: normal; flex-shrink: 1; }
 /* "Open-Meteo" sıcaklığın altına iner: saatin yanında en uzun değerde (−12 °C) de pay kalsın. */
 .ekran[data-duzen='yatay'] .hava { display: grid; grid-template-columns: auto auto; grid-template-areas: 'simge derece' 'simge kaynak'; align-items: center; line-height: 1.1; }
 .ekran[data-duzen='yatay'] .hava svg { grid-area: simge; width: calc(var(--u) * 6); height: calc(var(--u) * 6); margin-right: calc(var(--u) * 1.5); }
