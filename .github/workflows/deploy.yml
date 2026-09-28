@@ -35,6 +35,10 @@ jobs:
         with:
           node-version: 24
           package-manager: npm@latest
+      # Cami ekranı (28 Eyl 2026): ekran.js sitenin ortak modüllerini (src/lib/namaz.ts, src/i18n/hicri.ts) de paketler;
+      # oraya giren tek bir yeni JS API'si Chromium 70'li kutularda ekranı boş bırakır. Paket taraması bozuksa yayın durur.
+      - name: Cami ekranı eski tarayıcı kapısı
+        run: npm run test:ekran
       # Kritik kapı: namaz vakti kaynağı Diyanet değilse (site-denetim.mjs:171)
       # betik hata koduyla çıkar ve bu adım build'i düşürür.
       - name: Site denetimi (yalnız kritik)

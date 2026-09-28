@@ -4,17 +4,16 @@
  * önbellekte tutulur. Sayfa ve JSON'lar AĞ ÖNCE (taze veri), diğerleri ÖNBELLEK ÖNCE gelir. Her derleme
  * yeni bir sürüm damgası taşır; yeni SW eski önbelleği siler, sayfa bir kez yenilenir (main.ts).
  */
+/* Önbelleğe alınacak dosyaların TEK listesi (esbuild JSON'u pakete gömer). Site denetimi (scripts/site-denetim.mjs)
+   aynı dosyayı okur ve her yolun dist/ altında gerçekten üretildiğini `kritik` olarak denetler: tek bir eksik dosya
+   (ör. yeniden adlandırılmış bir logo) cache.addAll'ı reddettirir, bundan sonraki hiçbir SW sürümü kurulamaz. */
+import KABUK from './kabuk.json';
+
 declare const __EKRAN_SURUM__: string;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sw: any = self;
 const ONBELLEK = 'ekran-' + __EKRAN_SURUM__;
-const KABUK = [
-  '/ekran/', '/ekran/ekran.css', '/ekran/ekran.js',
-  '/ekran/fonts/work-sans-latin.woff2', '/ekran/fonts/work-sans-latin-ext.woff2', '/ekran/fonts/amiri-arabic.woff2',
-  '/media/logo/ulu-camii-logo.svg', '/media/logo/ulu-camii-logo-beyaz.svg',
-  '/ekran/vakitler.json', '/ekran/akis.json', '/ekran/icerik.json',
-];
 
 /* self/ExtendableEvent/FetchEvent için DOM tip tanımları (bu proje "webworker" lib'ini değil "dom" lib'ini
    kullanıyor, ikisi aynı anda olamaz) yok — olay parametreleri ihtiyaç duyulan iki üyeyle kendi arayüzümüzle

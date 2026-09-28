@@ -1,4 +1,5 @@
 /** Namaz vakti yardımcıları — istemci ve sunucu tarafında ortak (Brüksel saati, DST güvenli) */
+// Cami ekranının Chromium 70 paketine (public/ekran/ekran.js) girer: daha yeni bir JS API'si kullanılmaz, `npm run test:ekran` denetler.
 import type { Dil } from '../i18n/ui';
 
 export interface Gun { tarih: string; hicri: string; imsak: string; gunes: string; ogle: string; ikindi: string; aksam: string; yatsi: string }

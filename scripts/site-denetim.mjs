@@ -195,8 +195,18 @@ for (const d of SITE_DILLERI.filter((x) => x !== 'tr')) {
   const dizin = join(KOK, 'ekran');
   if (!existsSync(join(dizin, 'index.html'))) ekle('kritik', 'cami ekranı sayfası üretilmemiş', '/ekran/');
   else {
-    for (const ad of ['vakitler.json', 'akis.json', 'icerik.json', 'ekran.js', 'ekran.css', 'sw.js', 'fonts/work-sans-latin.woff2', 'fonts/amiri-arabic.woff2'])
-      if (!existsSync(join(dizin, ad))) ekle('kritik', 'cami ekranı dosyası eksik', '/ekran/' + ad);
+    /* Service worker'ın önbelleğe aldığı her dosya (src/ekran/kabuk.json, sw.ts ile TEK liste) gerçekten
+       üretilmiş olmalı: biri eksikse cache.addAll reddeder, yeni SW hiç kurulamaz — kutular eski pakette donar,
+       yeni kutu internetsiz hiç açılamaz, yayın ise yeşil kalır. /ekran/ → dist/ekran/index.html, gerisi dist + yol. */
+    let kabuk = null;
+    try { kabuk = JSON.parse(readFileSync(new URL('../src/ekran/kabuk.json', import.meta.url), 'utf8')); } catch { /* aşağıda kritik */ }
+    if (!Array.isArray(kabuk) || !kabuk.length) ekle('kritik', 'cami ekranı önbellek listesi okunamadı', 'src/ekran/kabuk.json');
+    else for (const u of kabuk) {
+      const dosya = u === '/ekran/' ? join(dizin, 'index.html') : join(KOK, ...String(u).replace(/^\//, '').split('/'));
+      if (!existsSync(dosya)) ekle('kritik', 'cami ekranı önbellek dosyası eksik', u);
+    }
+    // Service worker'ın kendisi önbellek listesinde yer almaz (kendini önbelleğe almaz); ayrıca aranır.
+    if (!existsSync(join(dizin, 'sw.js'))) ekle('kritik', 'cami ekranı dosyası eksik', '/ekran/sw.js');
     /* Önek kontrolü ("noindex" ile başlıyor mu) nofollow'un düşmesini yakalamazdı; plan
        (EKRAN-FAZ1-UYGULAMA-PLANI.md, "Genel kısıtlar") ikisini BİRDEN ve robots.txt'de
        ayrıca bir Disallow satırı ister — arama motoru koruması tek noktaya bağlı kalmasın. */
