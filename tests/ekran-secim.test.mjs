@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku } from '../src/lib/ekran/secim.ts';
+import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
 import { bugunTarih, durumHesapla } from '../src/lib/namaz.ts';
 import { readFileSync } from 'node:fs';
 
@@ -190,4 +190,10 @@ test('ekran ve döndürme parametresi güvenli okunur', () => {
   assert.equal(donmeOku('90'), 90);
   assert.equal(donmeOku('270'), 270);
   assert.equal(donmeOku('45'), 0);
+});
+
+test('düzen parametresi yalnız tam "yatay" ya da "dikey" ise zorlar; gerisi otomatik (null)', () => {
+  assert.equal(duzenOku('yatay'), 'yatay');
+  assert.equal(duzenOku('dikey'), 'dikey');
+  for (const bozuk of [null, '', 'YATAY', ' yatay', 'abc', '<script>']) assert.equal(duzenOku(bozuk), null, `otomatik olmalıydı: ${JSON.stringify(bozuk)}`);
 });

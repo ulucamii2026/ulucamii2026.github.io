@@ -117,3 +117,10 @@ export const ekranIdOku = (deger: string | null): EkranId =>
   (EKRANLAR as readonly string[]).indexOf(deger || '') >= 0 ? (deger as EkranId) : 'ana';
 
 export const donmeOku = (deger: string | null): 0 | 90 | 270 => (deger === '90' ? 90 : deger === '270' ? 270 : 0);
+
+/** Tuval düzeni: dikey 9:16 ya da yatay 16:9. */
+export type Duzen = 'dikey' | 'yatay';
+
+/** `?duzen=yatay|dikey` düzeni zorlar; tam eşleşmeyen her değer (yok, büyük harf, boşluk, saçma) otomatik seçim demektir —
+ *  yanlış yazılmış bir adres ekranı bozmasın, alan oranından seçilsin. */
+export const duzenOku = (deger: string | null): Duzen | null => (deger === 'yatay' || deger === 'dikey' ? deger : null);
