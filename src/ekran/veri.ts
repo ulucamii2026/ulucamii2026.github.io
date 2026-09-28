@@ -68,6 +68,15 @@ export function sonrakiTazelemeMs(v: EkranVerisi): number {
  *  akışı 3 dakikada bir yazmak kutunun flaş belleğini boşuna yıpratır. akis.json ~200 B'tır. */
 export const AKIS_ARALIGI_MS = 3 * 60_000;
 
+/** Slayt turunun yeniden kurulup kurulmayacağına karar veren kararlı anahtar (src/ekran/main.ts → sonrakiSlayt):
+ *  duyuru listesinin kendisi — kimlik, TR/FR metin, görsel, gösterim aralığı, hedef ekranlar. `derleme` BİLEREK
+ *  dışarıda: her yayında değişir (src/pages/ekran/akis.json.ts → derleme anı; günde 2–4 yayın) ve her yayın turu
+ *  baştan başlatırdı. Ekran ayarı (slayt süresi) da dışarıda; süre her slaytta akıştan yeniden okunur. Liste aynı
+ *  kurucudan (src/lib/ekran/akis.ts) aynı alan sırasıyla gelir, JSON metni kararlıdır. Akış yoksa undefined. */
+export function duyuruAnahtari(a: AkisGovdesi | null): string | undefined {
+  return a ? JSON.stringify(a.duyurular) : undefined;
+}
+
 /** Yalnız duyuru akışını tazeler; hatalı ya da geçersiz yanıt son sağlam akışı silmez (tazele ile aynı kural). */
 export async function akisTazele(v: EkranVerisi, zamanAsimiMs = 30_000): Promise<void> {
   const akis = await getir('/ekran/akis.json', akisGecerli, zamanAsimiMs);

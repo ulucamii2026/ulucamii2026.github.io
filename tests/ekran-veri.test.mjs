@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { tazele, akisTazele, vakitGecerli, akisGecerli, icerikGecerli, sonrakiTazelemeMs, AKIS_ARALIGI_MS } from '../src/ekran/veri.ts';
+import { tazele, akisTazele, vakitGecerli, akisGecerli, icerikGecerli, sonrakiTazelemeMs, AKIS_ARALIGI_MS, duyuruAnahtari } from '../src/ekran/veri.ts';
 import { VAKIT_ADLARI } from '../src/ekran/metinler.ts';
 import { ui } from '../src/i18n/ui.ts';
 import { SIRA } from '../src/lib/namaz.ts';
@@ -113,4 +113,29 @@ test('güvenli varsayılan vakit adları site sözlüğüyle aynıdır (TR ve FR
     assert.deepEqual(VAKIT_ADLARI[dil], beklenen, dil);
     for (const ad of Object.values(VAKIT_ADLARI[dil])) assert.ok(typeof ad === 'string' && ad.length > 0, `${dil}: boş ad`);
   }
+});
+
+// Slayt turu, duyuru içeriği değişince yeniden kurulur (src/ekran/main.ts → sonrakiSlayt). `derleme` her yayında
+// değişir (src/pages/ekran/akis.json.ts → derleme anı; günde 2–4 yayın): anahtara girseydi her yayın turu baştan
+// başlatırdı ve uzun bir turun sonundaki ayet ile hadis hiç gelmeyebilirdi.
+test('duyuru anahtarı: yalnız derleme damgası değişirse aynı; kimlik, metin, tarih, hedef ya da liste değişirse farklı', () => {
+  const D = { id: 'kermes', tur: 'duyuru', tr: { baslik: 'Hayır çarşısı', metin: 'Pazar günü.' }, fr: { baslik: 'Kermesse', metin: 'Dimanche.' }, baslangic: '2026-09-28', son: '2026-10-05', hedef: [] };
+  const akis = (duyurular, derleme = '2026-09-28T08:00:00.000Z') => ({ derleme, ayar: AKIS.ayar, duyurular });
+  const anahtar = duyuruAnahtari(akis([D]));
+  assert.equal(typeof anahtar, 'string');
+  assert.equal(duyuruAnahtari(akis([D], '2026-09-28T23:11:42.000Z')), anahtar, 'yalnız derleme değişti');
+  assert.equal(duyuruAnahtari({ ...akis([D]), ayar: { ...AKIS.ayar, slayt: { tabanSn: 12 } } }), anahtar, 'slayt süresi turu baştan başlatmaz');
+  const degisenler = {
+    kimlik: { ...D, id: 'kermes-2026' },
+    'TR metin': { ...D, tr: { ...D.tr, metin: 'Cumartesi günü.' } },
+    'FR başlık': { ...D, fr: { ...D.fr, baslik: 'Grande kermesse' } },
+    başlangıç: { ...D, baslangic: '2026-09-29' },
+    bitiş: { ...D, son: '2026-10-06' },
+    hedef: { ...D, hedef: ['giris'] },
+    görsel: { ...D, gorsel: '/media/duyurular/kermes.webp' },
+  };
+  for (const [ne, d] of Object.entries(degisenler)) assert.notEqual(duyuruAnahtari(akis([d])), anahtar, ne);
+  assert.notEqual(duyuruAnahtari(akis([D, { ...D, id: 'mevlid' }])), anahtar, 'duyuru eklendi');
+  assert.notEqual(duyuruAnahtari(akis([])), anahtar, 'duyuru kalktı');
+  assert.equal(duyuruAnahtari(null), undefined, 'akış hiç gelmediyse');
 });

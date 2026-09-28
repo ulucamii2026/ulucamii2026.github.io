@@ -10,6 +10,8 @@ import { ekranDuyurulari } from '../../lib/ekran/akis.ts';
 export const GET: APIRoute = async () => {
   const ayar = (await getEntry('ekranAyar', 'ekran'))!.data;
   const govde = {
+    // Bilgi amaçlı (her yayında değişir). Ekran slayt turunu buna değil duyuru içeriğine göre yeniden kurar
+    // (src/ekran/veri.ts → duyuruAnahtari): duyuru değişmeyen bir yayın turu baştan başlatmaz.
     derleme: new Date().toISOString(),
     ayar,
     duyurular: ekranDuyurulari(await getCollection('duyurular'), bugunBrussels(), ayar.duyuruVarsayilanGun),

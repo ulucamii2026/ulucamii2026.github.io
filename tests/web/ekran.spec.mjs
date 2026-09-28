@@ -300,8 +300,8 @@ test('akış bozulursa ekran son sağlam içerikle dönmeye devam eder', async (
   await expect(page.locator('.vakit')).toHaveCount(6);
 });
 
-// Faz 1 çıkış ölçütü (≤ 15 dk): duyuru akışı 3 dakikada bir yoklanır; yeni derlemeli akış gelince ekrandaki slayt
-// normal biter, SONRAKİ slayt turu yeni duyurularla yeniden kurar. Eski tur bilerek uzun (20 duyuru × 10 sn =
+// Faz 1 çıkış ölçütü (≤ 15 dk): duyuru akışı 3 dakikada bir yoklanır; duyuruları değişen akış gelince ekrandaki
+// slayt normal biter, SONRAKİ slayt turu yeni duyurularla yeniden kurar. Eski tur bilerek uzun (20 duyuru × 10 sn =
 // 200 sn): yeni duyuru 3 dk + bir slaytta ancak tur sonu beklenmeden yeniden kurulursa görünür. Yeni akışta tek
 // duyuru var; yeniden kurulan tur hep onu gösterir, yani sonuç slayt evresine (fazına) bağlı değildir.
 test('yeni duyuru en geç 3 dakika + bir slayt sonra ekrana gelir; tur sonu beklenmez', async ({ page }) => {
@@ -325,6 +325,29 @@ test('yeni duyuru en geç 3 dakika + bir slayt sonra ekrana gelir; tur sonu bekl
   await yoklama;
   await page.clock.runFor(10_000); // ekrandaki slayt normal biter (SABIT_10SN); sonraki slayt turu yeniden kurar
   await expect(baslik).toHaveText('Mevlid programı');
+});
+
+// `derleme` her yayında değişir (src/pages/ekran/akis.json.ts → derleme anı; günde 2–4 yayın). Duyurular aynı kaldıysa
+// yeni derlemeli akış turu baştan başlatmamalı: tur yalnız duyuru içeriği değişince yeniden kurulur
+// (src/ekran/veri.ts → duyuruAnahtari). Aynı 20 duyuruluk tur (200 sn) 3 dk + bir slayt sonra 20. duyurudadır;
+// tur baştan başlasaydı yine "Duyuru 1" görünürdü.
+test('duyurular aynıysa yalnız derleme damgası değişen akış slayt turunu baştan başlatmaz', async ({ page }) => {
+  const duyurular = Array.from({ length: 20 }, (_, i) => DUYURU({ id: 'd' + (i + 1), tr: { baslik: 'Duyuru ' + (i + 1), metin: 'Metin.' }, fr: undefined }));
+  let govde = { ...AKIS(duyurular), derleme: 'derleme-1' };
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: govde }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: { derleme: '', eksik: [], ayetler: [], hadisler: [] } }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const baslik = page.locator('[data-alan="slayt"] .slayt-duyuru .baslik').first();
+  await expect(baslik).toHaveText('Duyuru 1');
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 500));
+  // Yeni yayın (ör. başka bir sayfa düzeltildi) ama duyurular aynı: yalnız derleme damgası yeni.
+  govde = { ...AKIS(duyurular), derleme: 'derleme-2' };
+  const yoklama = page.waitForResponse((y) => y.url().endsWith('/ekran/akis.json'), { timeout: 15_000 });
+  await page.clock.runFor(3 * 60_000);
+  await yoklama;
+  await page.clock.runFor(10_000);
+  await expect(baslik).toHaveText('Duyuru 20');
 });
 
 // secim.ts'in "her döngü istisnadan sağ çıkar" kuralı (global-constraints.md) burada slayt turuna uygulanır:
