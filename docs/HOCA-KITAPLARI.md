@@ -15,9 +15,17 @@ site kesintisiz) → Pages yayını → `--canli` (dört kitap + eski parçalar�
 Firestore'dan silindiği için çözülemez; 23 Eylül 22:20'de yerel eski anahtar yedeği de kullanıcının
 isteğiyle silindi.
 
+**28 Eylül 2026 yenileme.** Kullanıcı aynı teslim klasörünün güncel sürümünü verdi («bu kitapları
+hoca portalındaki kitaplar güncellenecek, bunlar güncel»). Klasördeki `BASKI_NOTLARI.md`'ye göre bu
+sürümde **yalnız ön kapaklar** değişti (TR ve FR kapak tasarımı eşleştirildi, üst-alt beyaz şeritler
+giderildi); diğer sayfalar aynı. Kimlikler `…-20260923` → `…-20260928`; eski 25 parça silindi, yeni 25
+parça yazıldı, her kitap yeni bağımsız anahtar aldı. Betikler `.codex/kitap-yenile-20260928.py` ve
+`.codex/kitap-yayin-20260928.py` (23 Eylül betiklerinden yalnız tarih sabitleri değişti); eski anahtar
+dosyası `.codex/hoca-kitap-anahtarlar-eski-20260923.json` olarak yedeklendi (Git dışı).
+
 ## Erişim ve dosyalar
 
-- Düz PDF'ler herkese açık Git deposuna veya Release'e konmaz. Yayınlanan 21 `.bin` parçası
+- Düz PDF'ler herkese açık Git deposuna veya Release'e konmaz. Yayınlanan 25 `.bin` parçası
   AES-256-GCM ile şifrelidir; açık PDF içeriği taşımaz.
 - Her kitap bağımsız 32 bayt anahtar, her parça bağımsız 12 bayt rastgele IV kullanır.
   Parça düzeni: IV + şifreli içerik + GCM etiketi. AAD: `<kitap-id>:<sıfırdan-parça-no>`.
@@ -50,10 +58,12 @@ isteğiyle silindi.
 
 | Kitap | Sürüm | Kimlik | Sayfa | Bayt | Parça |
 |---|---|---|---:|---:|---:|
-| Camiye Gidiyorum 1 | Fransızca Belçika | `cg1-fr-20260923` | 228 | 97003740 | 6 |
-| Camiye Gidiyorum 1 | Türkçe vektörel | `cg1-tr-20260923` | 228 | 87384744 | 6 |
-| Camiye Gidiyorum 2 | Fransızca Belçika | `cg2-fr-20260923` | 270 | 69277461 | 5 |
-| Camiye Gidiyorum 2 | Türkçe vektörel | `cg2-tr-20260923` | 270 | 119001909 | 8 |
+| Camiye Gidiyorum 1 | Fransızca Belçika | `cg1-fr-20260928` | 228 | 99477220 | 6 |
+| Camiye Gidiyorum 1 | Türkçe vektörel | `cg1-tr-20260928` | 228 | 88648802 | 6 |
+| Camiye Gidiyorum 2 | Fransızca Belçika | `cg2-fr-20260928` | 270 | 72302208 | 5 |
+| Camiye Gidiyorum 2 | Türkçe vektörel | `cg2-tr-20260928` | 270 | 120541855 | 8 |
 
+Önceki sürüm (23 Eylül 2026, kaldırıldı): FR1 228 s. / 97003740 B, TR1 228 s. / 87384744 B,
+FR2 270 s. / 69277461 B, TR2 270 s. / 119001909 B.
 Önceki sürüm (21 Eylül 2026, kaldırıldı): FR1 228 s. / 119508776 B, TR1 227 s. / 47574147 B,
 FR2 270 s. / 94836992 B, TR2 270 s. / 63422630 B.
