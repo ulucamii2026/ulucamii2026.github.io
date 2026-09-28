@@ -317,7 +317,7 @@ collections:
                   - { name: bic, label: BIC, widget: string }
                   - { name: banka, label: Banka adı, widget: string }
                   - { name: hesapAdi, label: Hesap adı (bankadaki kayıt), widget: string }
-              - { name: cumaSaati, label: Cuma namazı saati (boş bırakılabilir), widget: string, required: false }
+              - { name: cumaSaati, label: Cuma namazı saati (boş bırakılabilir), hint: 'SS:DD biçiminde, ör. 13:30. Boş bırakılırsa Cuma günü o günün Diyanet öğle vakti gösterilir.', widget: string, required: false, pattern: ['^$|^([01][0-9]|2[0-3]):[0-5][0-9]$', 'SS:DD biçiminde yazın (ör. 13:30)'] }
               - name: heroMesajlar
                 label: Ana sayfa dönen mesajlar
                 label_singular: Mesaj
