@@ -30,6 +30,9 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .ekran.saat-yok .saat { font-size: calc(var(--u) * 5); color: var(--ana); white-space: normal; }
 .takvim { font-size: calc(var(--u) * 3.3); line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .takvim.fr { font-size: calc(var(--u) * 2.8); }
+/* Miladi ile hicrî tarih arasındaki ayıraç; hicrî kısım boşsa (veri boşluğu, saat doğrulanıyor) ayıraçla birlikte gizlenir. */
+.hicri::before { content: ' · '; }
+.hicri:empty { display: none; }
 .hava { display: flex; align-items: center; font-weight: 700; font-size: calc(var(--u) * 5); }
 .hava svg { width: calc(var(--u) * 7); height: calc(var(--u) * 7); margin-right: calc(var(--u) * 1.5); }
 .hava small { font-weight: 400; font-size: calc(var(--u) * 1.8); opacity: .6; margin-left: calc(var(--u) * 1.5); }
@@ -51,7 +54,7 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 
 /* Alt: vakitler ve geri sayım */
 .vakitler { height: calc(var(--u) * 56); border-top: calc(var(--u) * .7) solid var(--ana); display: flex; flex-direction: column; }
-.vakit { display: flex; align-items: center; justify-content: space-between; height: calc(var(--u) * 7.4); padding: 0 calc(var(--u) * 5); border-bottom: 1px solid var(--cizgi); }
+.vakit { display: flex; align-items: center; justify-content: space-between; height: calc(var(--u) * 7.4); padding: 0 calc(var(--u) * 5); border-bottom: calc(var(--u) * .1) solid var(--cizgi); }
 .ekran[data-tema='koyu'] .vakit { border-bottom-color: var(--metin); }
 .vakit .ad b { font-weight: 700; font-size: calc(var(--u) * 4.6); }
 .vakit .ad i { font-style: normal; font-size: calc(var(--u) * 3.1); opacity: .7; margin-left: calc(var(--u) * 2); }

@@ -30,8 +30,22 @@ test('biçimi ya da sırası bozuk gün ve mükerrer tarih yayımlanmaz, hesapla
   assert.ok(!s.gunler.some((x) => s.atlanan.includes(x.tarih)));
 });
 
-test('yediden az geçerli gün kalırsa derleme durur', () => {
-  assert.throws(() => ekranVakitleri(veri(gunler('2026-09-26', 6)), '2026-09-27'), /yalnız 6/);
+// Son inceleme M1: veri EKSİKLİĞİ (yanlış veri değil) bütün sitenin yayınını durdurmaz — sitenin kendi kapısıyla
+// aynı karar (src/lib/icerik.ts). Uyarı yazılır; kapsamı site denetimi ölçer, ekran son sağlam veriyle döner.
+test('yediden az geçerli gün kalırsa derleme durmaz, uyarı yazılır', (t) => {
+  const uyari = t.mock.method(console, 'warn', () => {});
+  const s = ekranVakitleri(veri(gunler('2026-09-26', 6)), '2026-09-27');
+  assert.equal(s.gunler.length, 6);
+  assert.equal(uyari.mock.callCount(), 1);
+  assert.match(String(uyari.mock.calls[0].arguments[0]), /yalnız 6/);
+});
+
+test('tarihi metin olmayan kayıt sessizce düşmez, atlanan listesine girer', () => {
+  const g = gunler('2026-09-26', 10);
+  const s = ekranVakitleri(veri([...g, { ...gun('2026-10-06'), tarih: 20261006 }, { ...gun('2026-10-07'), tarih: undefined }]), '2026-09-27');
+  assert.equal(s.gunler.length, 10);
+  assert.equal(s.atlanan.length, 2);
+  assert.ok(s.atlanan.some((a) => a.includes('20261006')), s.atlanan.join(', '));
 });
 
 test('gunGecerliMi saat biçimini ve vakit sırasını denetler', () => {

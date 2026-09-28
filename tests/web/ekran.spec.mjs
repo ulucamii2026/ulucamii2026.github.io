@@ -39,6 +39,8 @@ test('kimlik, saat, miladi ve hicrî tarih Brüksel saatine göre yazılır', as
   await expect(page.locator('[data-alan="tarih-tr"]')).toContainText(ayAdi(t, 'tr-TR'));
   await expect(page.locator('[data-alan="tarih-fr"]')).toContainText(ayAdi(t, 'fr-BE'));
   await expect(page.locator('[data-alan="hicri-tr"]')).toHaveText(ornek.hicri);
+  // Miladi ile hicrî tarih arasındaki "·" ayıracı CSS'ten gelir (hicrî kısım boşsa asılı kalmasın diye).
+  expect(await page.locator('[data-alan="hicri-tr"]').evaluate((e) => getComputedStyle(e, '::before').content)).toBe('" · "');
 });
 
 test('gece yarısı ve yaz saatinin bitişi sayfa yenilenmeden işlenir', async ({ page }) => {
@@ -56,7 +58,34 @@ test('saat pilsiz kutuda 1970e dönmüşse vakit yerine uyarı gösterilir', asy
   await page.clock.install({ time: new Date(0) });
   await page.goto('/ekran/');
   await expect(page.locator('[data-alan="saat"]')).toContainText('Saat doğrulanıyor');
+  // Vakit alanı da "saat doğrulanıyor" durumunda: hiçbir günün vakti, vurgu ya da geri sayım gösterilmez.
+  await expect(page.locator('.vakit-yok b')).toHaveText('Saat doğrulanıyor');
+  await expect(page.locator('.vakit-yok .fr')).toHaveText('Vérification de l’heure…');
+  await expect(page.locator('.vakit')).toHaveCount(0);
+  await expect(page.locator('.geri-sayim')).toHaveCount(0);
+  // Tarih ve hicrî tarih boş: aradaki "·" ayıracı tek başına asılı kalmaz.
+  await expect(page.locator('.takvim').first()).toHaveText('');
+  await expect(page.locator('.takvim.fr')).toHaveText('');
 });
+
+/* Sayfa verisi (#ekran-veri) bozuk ya da hiç yoksa (ör. önbellekteki eski iskelet ile yeni paket) açılış çökmez:
+   saat ve Diyanet vakitleri yine çalışır. */
+for (const [durum, degistir] of [
+  ['bozuk', (html) => html.replace(/(<script[^>]*id="ekran-veri"[^>]*>)[\s\S]*?(<\/script>)/, '$1{bozuk$2')],
+  ['eksik', (html) => html.replace(/<script[^>]*id="ekran-veri"[^>]*>[\s\S]*?<\/script>/, '')],
+]) {
+  test(`sayfa verisi ${durum} olsa da ekran açılır: saat ve vakitler çalışır`, async ({ page }) => {
+    await page.route('**/ekran/', async (route) => {
+      const yanit = await route.fetch();
+      await route.fulfill({ response: yanit, body: degistir(await yanit.text()) });
+    });
+    await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+    await page.goto('/ekran/');
+    await expect(page.locator('[data-alan="saat"]')).toHaveText(/^\d\d:\d\d:\d\d$/);
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    await expect(page.locator('.vakit[data-vakit="ogle"] .deger')).toHaveText(ornek.ogle);
+  });
+}
 
 test.describe('yatay sinyalde döndürme', () => {
   test.use({ viewport: { width: 1920, height: 1080 } });
@@ -139,6 +168,9 @@ test('bugünün Diyanet kaydı yoksa vakit yerine uyarı çıkar, geri sayım ya
   await expect(page.locator('.vakit-yok b')).toHaveText('Namaz vakitleri güncellenemedi');
   await expect(page.locator('.vakit')).toHaveCount(0);
   await expect(page.locator('.geri-sayim')).toHaveCount(0);
+  // Veri boşluğu günü hicrî tarih yok: miladi tarihten sonra asılı bir "·" kalmaz.
+  await expect(page.locator('[data-alan="tarih-tr"]')).not.toBeEmpty();
+  await expect(page.locator('.takvim').first()).not.toContainText('·');
 });
 
 test('bugünün kaydı var ama sıradaki vakit yok (yarının kaydı eksik)', async ({ page }) => {
@@ -256,6 +288,36 @@ test('slayt çiziminde istisna çıkarsa tur donmaz; sonraki turda geçerli slay
   // (sureMs, slaytSuresi(...) atamasına hiç ulaşmadan istisna fırlattı) — döngü yine de devam eder.
   await page.clock.runFor(15_000);
   await expect(slayt.locator('.slayt-hadis p.fr')).toHaveText('Sourire à ton frère est pour toi une aumône.');
+});
+
+// Son inceleme M2: bozuk bir `ayar.slayt` (ör. önbellekteki eski paket + yeni şemalı akış) süreyi NaN yapar;
+// setTimeout(…, NaN) 0 ms demektir ve slaytlar durmadan yeniden çizilirdi. Süre korunur (en az 1 sn, yoksa 15 sn).
+// Gözlem gerçek zamanla yapılır (sahte saat ilerletilmez): 0 ms döngüsü sahte saati hiç ilerletmeden döner.
+test('bozuk slayt ayarı slaytı 0 ms döngüsüne sokmaz', async ({ page }) => {
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: { ...AKIS([DUYURU()]), ayar: { slayt: {}, gece: { kapanmaDk: 60, acilmaDk: 30 }, duyuruVarsayilanGun: 30 } } }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect(page.locator('.slayt-duyuru')).toBeVisible();
+  await page.evaluate(() => {
+    window.__slaytDegisimi = 0;
+    new MutationObserver((kayitlar) => { window.__slaytDegisimi += kayitlar.length; }).observe(document.querySelector('[data-alan="slayt"]'), { childList: true });
+  });
+  await page.waitForTimeout(1_000);
+  expect(await page.evaluate(() => window.__slaytDegisimi)).toBe(0);
+  await expect(page.locator('.slayt-duyuru')).toBeVisible();
+});
+
+test('duyuru görseli yüklenemezse gizlenir (kırık görsel simgesi kalmaz), metin yerinde kalır', async ({ page }) => {
+  await page.route('**/media/duyurular/olmayan-kapak.webp', (r) => r.fulfill({ status: 404, body: '' }));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ gorsel: '/media/duyurular/olmayan-kapak.webp' })]) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const img = page.locator('.slayt-duyuru img');
+  await expect(img).toHaveCount(1);
+  await expect(img).toHaveCSS('display', 'none');
+  await expect(page.locator('.slayt-duyuru .baslik').first()).toHaveText('Hayır çarşısı');
 });
 
 test.describe('internetsiz açılış', () => {
@@ -380,7 +442,9 @@ test('dış hava sıcaklığı, simgesi ve kaynak ibaresi üst bantta görünür
   await page.clock.install({ time: an(ornek, '12:00') });
   await page.goto('/ekran/');
   await expect(page.locator('[data-alan="hava"]')).toBeVisible();
-  await expect(page.locator('[data-alan="hava"] span')).toHaveText('19°C');
+  // Sayı ile birim arasında dar bölünmez boşluk (U+202F, Fransızca ve SI yazımı); toHaveText boşlukları
+  // sadeleştirdiği için ham metin karşılaştırılır.
+  expect(await page.locator('[data-alan="hava"] span').evaluate((e) => e.textContent)).toBe('19\u202F°C');
   await expect(page.locator('[data-alan="hava"] small')).toHaveText('Open-Meteo');
   await expect(page.locator('[data-alan="hava"] svg path').first()).toBeAttached();
 });
@@ -395,6 +459,9 @@ test('3 saatten eski dış hava üst bantta gizlenir', async ({ page, context })
   // döngüleri saatlerce süren gerçek 1 sn'lik adımlar yerine doğrudan hedef ana sıçrar.
   await page.clock.fastForward(3 * 3_600_000 + 60_000); // 3 saatten biraz fazlası
   await expect(page.locator('[data-alan="hava"]')).toBeHidden();
+  // Gizlenen kutuda bayat simge ve sıcaklık da kalmaz.
+  await expect(page.locator('[data-alan="hava"] svg')).toHaveCount(0);
+  await expect(page.locator('[data-alan="hava"]')).toBeEmpty();
 });
 
 test('Open-Meteo ilk denemede yanıt vermezse 30 dakika sonra yeniden denenir', async ({ page, context }) => {
@@ -407,7 +474,20 @@ test('Open-Meteo ilk denemede yanıt vermezse 30 dakika sonra yeniden denenir', 
   await expect(page.locator('[data-alan="hava"]')).toBeHidden();
   await context.unroute('https://api.open-meteo.com/**'); // kaldırılınca beforeEach'in mock'u yine yanıtlar
   await page.clock.fastForward(30 * 60_000);
-  await expect(page.locator('[data-alan="hava"] span')).toHaveText('19°C');
+  await expect(page.locator('[data-alan="hava"] span')).toHaveText('19\u202F°C');
+});
+
+// Son inceleme M8: depolama baskısında Chrome kökeni (SW + önbellek) silebilir; internetsiz açılış biterdi.
+// Kalıcı depolama açılışta bir kez istenir; istek reddedilse de açılış etkilenmez.
+test('kalıcı depolama açılışta bir kez istenir; reddedilirse açılış etkilenmez', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__kaliciIstek = 0;
+    if (navigator.storage) navigator.storage.persist = () => { window.__kaliciIstek += 1; return Promise.reject(new Error('test: reddedildi')); };
+  });
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  expect(await page.evaluate(() => window.__kaliciIstek)).toBe(1);
 });
 
 test('görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {

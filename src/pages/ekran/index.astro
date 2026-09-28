@@ -56,8 +56,9 @@ const sayfaVerisi = {
             <div class="saat" data-alan="saat"><span data-alan="saat-sd">--:--</span><small data-alan="saat-sn"></small></div>
             <div class="hava" data-alan="hava" hidden></div>
           </div>
-          <div class="takvim"><span data-alan="tarih-tr"></span> · <span data-alan="hicri-tr"></span></div>
-          <div class="takvim fr" lang="fr"><span data-alan="tarih-fr"></span> · <span data-alan="hicri-fr"></span></div>
+          {/* "·" ayıracı CSS'ten gelir (.hicri::before): hicrî tarih boşken (veri boşluğu, saat doğrulanıyor) asılı kalmaz */}
+          <div class="takvim"><span data-alan="tarih-tr"></span><span class="hicri" data-alan="hicri-tr"></span></div>
+          <div class="takvim fr" lang="fr"><span data-alan="tarih-fr"></span><span class="hicri" data-alan="hicri-fr"></span></div>
         </header>
         <section class="slayt-alani" data-alan="slayt"></section>
         <section class="vakitler" data-alan="vakitler"></section>

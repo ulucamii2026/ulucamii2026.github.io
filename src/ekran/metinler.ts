@@ -5,6 +5,6 @@ export const METIN = {
   duyuru: { tr: 'Duyuru', fr: 'Annonce' },
   vaktine: { tr: 'vaktine', fr: 'dans' },
   vakitYok: { tr: 'Namaz vakitleri güncellenemedi', fr: 'Horaires de prière indisponibles' },
-  saatYok: { tr: 'Saat doğrulanıyor', fr: 'Heure en vérification' },
+  saatYok: { tr: 'Saat doğrulanıyor', fr: 'Vérification de l’heure…' },
   hosgeldiniz: { tr: 'Hoş geldiniz', fr: 'Bienvenue' },
 } as const;

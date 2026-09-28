@@ -26,6 +26,15 @@ const YASAK_JS = [
   /AbortSignal\.(timeout|any)/, // Chrome 103 / 116
   /\.(toSorted|toReversed|toSpliced)\(/, // Chrome 110
   /(Object|Map)\.groupBy/, // Chrome 117
+  /\.(union|intersection|difference|symmetricDifference)\(/, // Chrome 122 (Set yöntemleri)
+  /\.(values|keys|entries)\(\)\.(map|filter|take|drop|flatMap|reduce|toArray|forEach|some|every|find)\(/, // Chrome 122 (yineleyici yardımcıları)
+  /Iterator\.from/, // Chrome 122
+  /Array\.fromAsync/, // Chrome 121
+  /URL\.canParse/, // Chrome 120
+  /Response\.json\(/, // Chrome 105 (statik)
+  /crypto\.randomUUID/, // Chrome 92
+  /fractionalSecondDigits/, // Chrome 84 (Intl seçeneği)
+  /dayPeriod/, // Chrome 92 (Intl seçeneği)
 ];
 const YASAK_CSS = [
   /oklch\(/, /color-mix\(/, /\bclamp\(/, /(^|[^-\w])min\(/, /(^|[^-\w])max\(/, /:has\(/, /@layer/, /@container/, /\d(cqw|cqh|cqi|cqb|dvh|svh|lvh|dvw|svw|lvw)\b/, /(^|[;{\s])inset\s*:/, /aspect-ratio/, /(^|[;{\s])(row-|column-)?gap\s*:/, /&/,
@@ -40,7 +49,24 @@ const YASAK_CSS = [
   /(^|[;{\s])(margin|padding|inset|border)-(inline|block)\s*:/, // Chrome 87 (mantıksal kısaltmalar)
   /(^|[^-\w])(hwb|lab|lch|oklab|color)\(/, // Chrome 101–111
   /@media[^{]*[<>]/, // Chrome 104 (aralık sözdizimi)
+  /:not\([^)]*,/, // Chrome 88 (:not içinde seçici listesi)
+  /\dr?lh\b/, // Chrome 109 / 111 (lh, rlh birimleri)
+  /@scope/, // Chrome 118
+  /@starting-style/, // Chrome 117
 ];
+
+/* Kalıpların kendisi de sınanır: yazım hatalı bir kalıp hiçbir şeyi yakalamaz ve tarama sessizce boşa çıkardı.
+   Her örnek, yasaklı listede en az bir kalıba takılmalı. */
+test('yasaklı kalıplar örnek kodu gerçekten yakalar', () => {
+  const jsOrnekleri = ['a.union(b)', 's.symmetricDifference(t)', 'm.values().map(f)', 'Iterator.from(x)', 'Array.fromAsync(x)', 'URL.canParse(u)', 'Response.json(v)', 'crypto.randomUUID()', '{fractionalSecondDigits:2}', '{dayPeriod:"short"}'];
+  for (const o of jsOrnekleri) assert.ok(YASAK_JS.some((r) => r.test(o)), `JS kalıbı yakalamadı: ${o}`);
+  const cssOrnekleri = ['a:not(.b, .c){}', '.a{margin-top:1lh}', '.a{height:2rlh}', '@scope (.a){}', '@starting-style{.a{opacity:0}}'];
+  for (const o of cssOrnekleri) assert.ok(YASAK_CSS.some((r) => r.test(o)), `CSS kalıbı yakalamadı: ${o}`);
+  // Chromium 70'te olan biçimler yakalanmamalı (yanlış alarm yok).
+  for (const o of ['a:not(.b){}', '.a{line-height:1.3}', 'yanit.json()', 'Object.entries(x).map(f)']) {
+    assert.ok(!YASAK_CSS.concat(YASAK_JS).some((r) => r.test(o)), `yanlış alarm: ${o}`);
+  }
+});
 
 for (const dosya of ['public/ekran/ekran.js', 'public/ekran/sw.js']) {
   test(`${dosya} Chromium 70 dışı sözdizimi ya da API içermez`, () => {
@@ -57,4 +83,12 @@ test('ekran.css yalnız Chromium 70 CSS özelliklerini kullanır; renk kimlik do
 
 test('fontlar pakete kopyalanır', () => {
   for (const f of ['work-sans-latin.woff2', 'work-sans-latin-ext.woff2', 'amiri-arabic.woff2']) assert.ok(existsSync(kok + 'public/ekran/fonts/' + f), f);
+});
+
+/* Derlenmiş sayfa (dist/) yalnız `npm run build` sonrasında vardır; yayın hattında bu test derlemeden sonra koşar.
+   Sayfa yalnız /ekran/ekran.js'i klasik betik olarak yükler. Astro'nun eklediği modül betikleri (adacık, görünüm
+   geçişi…) Vite ile yeni tarayıcı hedefine derlenir: esbuild'in chrome70 indirmesinden de bu taramadan da geçmez. */
+const SAYFA = kok + 'dist/ekran/index.html';
+test('dist/ekran/index.html modül betiği içermez', { skip: !existsSync(SAYFA) && 'dist/ekran/index.html yok — önce `npm run build`; denetim atlandı' }, () => {
+  assert.doesNotMatch(readFileSync(SAYFA, 'utf8'), /<script\b[^>]*\btype\s*=\s*["']?module/i);
 });

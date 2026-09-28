@@ -2,8 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku } from '../src/lib/ekran/secim.ts';
 import { bugunTarih } from '../src/lib/namaz.ts';
+import { readFileSync } from 'node:fs';
 
 process.env.TZ = 'America/New_York';
+const DIYANET = JSON.parse(readFileSync(new URL('../src/data/namaz-vakitleri.json', import.meta.url), 'utf8'));
+/** Kayıt veride yoksa (ör. yıl verisi henüz gelmemiş) testin kendi asgari kaydı kullanılır. */
+const kayit = (tarih, yedek) => DIYANET.gunler.find((g) => g.tarih === tarih) || { tarih, hicri: '', ...yedek };
 
 const AYAR = { tabanSn: 8, karakterSn: 0.05, enAzSn: 10, enCokSn: 30 };
 const gun = (tarih, ek = {}) => ({ tarih, hicri: '16 Rebiulahir 1448', imsak: '05:43', gunes: '07:26', ogle: '13:34', ikindi: '16:47', aksam: '19:35', yatsi: '21:04', ...ek });
@@ -95,6 +99,30 @@ test('Cuma ve "bugün" her zaman Brüksel saatiyle belirlenir (cihaz saat dilimi
   assert.equal(v1.cuma, true);
   const v2 = vakitGorunumu([gun('2026-10-03')], new Date('2026-10-02T22:30:00Z'));
   assert.equal(v2.cuma, false);
+});
+
+/* Geri sayım yaz saati geçişini aşar: kalan dakika duvar saati farkı değil, gerçek süredir. Beklenen değer
+   açık UTC ofsetleriyle (CEST +02:00, CET +01:00) hesaplanır, brukselTarih'e dayanmaz. */
+test('geri sayım kış saatine geçişi aşar: 24 Ekim 2026 22:00 (CEST) → 25 Ekim imsakı (CET)', () => {
+  const bugun = kayit('2026-10-24', { imsak: '06:26', gunes: '08:08', ogle: '13:28', ikindi: '16:05', aksam: '18:38', yatsi: '20:07' });
+  const yarin = kayit('2026-10-25', { imsak: '05:28', gunes: '07:10', ogle: '12:28', ikindi: '15:03', aksam: '17:36', yatsi: '19:05' });
+  const simdi = new Date('2026-10-24T22:00:00+02:00');
+  const v = vakitGorunumu([bugun, yarin], simdi);
+  const beklenen = (Date.parse(`2026-10-25T${yarin.imsak}:00+01:00`) - simdi.getTime()) / 60_000;
+  assert.deepEqual([v.siradaki.vakit, v.siradaki.yarinMi, v.siradaki.saat], ['imsak', true, yarin.imsak]);
+  assert.equal(v.siradaki.kalanDk, beklenen);
+  assert.equal(beklenen, 60 + (24 * 60 - 22 * 60) + Number(yarin.imsak.slice(0, 2)) * 60 + Number(yarin.imsak.slice(3))); // duvar saati farkı + 1 sa
+});
+
+test('geri sayım yaz saatine geçişi aşar: 27 Mart 2027 22:00 (CET) → 28 Mart imsakı (CEST)', () => {
+  const bugun = kayit('2027-03-27', { imsak: '04:35', gunes: '06:20', ogle: '12:49', ikindi: '16:15', aksam: '19:08', yatsi: '20:40' });
+  const yarin = kayit('2027-03-28', { imsak: '05:33', gunes: '07:18', ogle: '13:49', ikindi: '17:16', aksam: '20:10', yatsi: '21:41' });
+  const simdi = new Date('2027-03-27T22:00:00+01:00');
+  const v = vakitGorunumu([bugun, yarin], simdi);
+  const beklenen = (Date.parse(`2027-03-28T${yarin.imsak}:00+02:00`) - simdi.getTime()) / 60_000;
+  assert.deepEqual([v.siradaki.vakit, v.siradaki.yarinMi, v.siradaki.saat], ['imsak', true, yarin.imsak]);
+  assert.equal(v.siradaki.kalanDk, beklenen);
+  assert.equal(beklenen, -60 + (24 * 60 - 22 * 60) + Number(yarin.imsak.slice(0, 2)) * 60 + Number(yarin.imsak.slice(3))); // duvar saati farkı − 1 sa
 });
 
 test('vakit sınırında: bir saniye önce o vakit 1 dakika kalanla, tam anında bir sonraki vakit gösterilir', () => {

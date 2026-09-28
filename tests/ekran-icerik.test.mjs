@@ -51,3 +51,24 @@ test('mükerrer kimlik ikinci kez alınmaz ve raporlanır', () => {
   assert.equal(s.hadisler.length, 1);
   assert.deepEqual(s.eksik, ['a-94-5 (mükerrer)', 'h1 (mükerrer)']);
 });
+
+test('mükerrer kimlik her türün kendi içinde aranır: ayet ile hadisin aynı kimliği çakışma sayılmaz', () => {
+  const s = ekranIcerigi([ayet({ id: 'ortak' })], [hadis({ id: 'ortak' }), hadis({ id: 'site-tebessum' })], [siteHadisi]);
+  assert.deepEqual(s.ayetler.map((a) => a.id), ['ortak']);
+  assert.deepEqual(s.hadisler.map((h) => h.id), ['site-tebessum', 'ortak', 'site-tebessum']);
+  assert.deepEqual(s.eksik, []);
+});
+
+test('ayet aralığının sonu başından önceyse kayıt yayımlanmaz, eksikte işaretlenir', () => {
+  const s = ekranIcerigi([ayet({ id: 'ters', ayet: [7, 5] }), ayet()], [], []);
+  assert.deepEqual(s.ayetler.map((a) => a.id), ['a-94-5']);
+  assert.deepEqual(s.eksik, ['ters (ayet aralığı bozuk)']);
+});
+
+test('boş (null) ya da nesne olmayan öğe derlemeyi düşürmez, eksikte işaretlenir', () => {
+  const s = ekranIcerigi([null, 'metin', ayet()], [7, null, hadis()], []);
+  assert.deepEqual(s.ayetler.map((a) => a.id), ['a-94-5']);
+  assert.deepEqual(s.hadisler.map((h) => h.id), ['h-1']);
+  assert.equal(s.eksik.length, 4);
+  assert.ok(s.eksik.every((e) => e.includes('geçersiz kayıt')), s.eksik.join(', '));
+});

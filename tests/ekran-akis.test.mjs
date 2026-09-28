@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ekranDuyurulari } from '../src/lib/ekran/akis.ts';
+import { readFileSync } from 'node:fs';
+import { parse } from 'yaml';
+import { ekranDuyurulari, EKRANLAR } from '../src/lib/ekran/akis.ts';
 
 const d = (id, data) => ({ id, data: { baslik: 'Başlık ' + id, tarih: new Date('2026-09-20'), taslak: false, ekranHedef: [], ...data } });
 
@@ -40,4 +42,20 @@ test('hedef ekranlar ve kapak görseli akışa taşınır; FR yoksa yalnız TR',
   assert.deepEqual(x.hedef, ['kadin']);
   assert.equal(x.gorsel, '/media/duyurular/a.webp');
   assert.equal(x.fr, undefined);
+});
+
+// Ekran kimlikleri iki yerde yazılı: kodda (EKRANLAR, şema ve ?ekran= parametresi) ve CMS formunda (config.yml →
+// ekranHedef seçenekleri). Biri değişip öteki unutulursa CMS'in yazdığı hedef şemadan geçmez ya da hiçbir ekrana
+// düşmez; bu test iki listeyi eşit tutar.
+test("CMS formundaki ekran seçenekleri EKRANLAR ile aynı", () => {
+  const config = parse(readFileSync(new URL('../public/admin/icerik/config.yml', import.meta.url), 'utf8'));
+  const bulunan = [];
+  (function tara(x) {
+    if (Array.isArray(x)) { for (const o of x) tara(o); return; }
+    if (!x || typeof x !== 'object') return;
+    if (x.name === 'ekranHedef' && Array.isArray(x.options)) bulunan.push(x.options.map((o) => (typeof o === 'object' ? o.value : o)));
+    for (const k of Object.keys(x)) tara(x[k]);
+  })(config);
+  assert.ok(bulunan.length > 0, 'config.yml içinde ekranHedef alanı bulunamadı');
+  for (const secenekler of bulunan) assert.deepEqual(secenekler, [...EKRANLAR]);
 });

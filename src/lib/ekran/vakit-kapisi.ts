@@ -55,17 +55,26 @@ export function ekranVakitleri(veri: VakitKaynagi, bugun: string): EkranVakitler
     throw new Error(`EKRAN VAKİTLERİ REDDEDİLDİ: ilçe "${veri.ilce}" (beklenen: "${DIYANET_ILCE}", M.FAMENNE). Build durduruldu.`);
   }
   const dun = oncekiGun(bugun);
-  const aday = veri.gunler.filter((g) => typeof g.tarih === 'string' && g.tarih >= dun);
+  const atlanan = new Set<string>();
+  const aday: Gun[] = [];
+  for (const kayit of veri.gunler as unknown[]) {
+    // Tarihi metin olmayan (ya da hiç nesne olmayan) kayıt sessizce düşmez: günü bilinemez, raporlanır.
+    const tarih = kayit && typeof kayit === 'object' ? (kayit as { tarih?: unknown }).tarih : kayit;
+    if (!kayit || typeof kayit !== 'object' || typeof tarih !== 'string') atlanan.add('geçersiz tarih: ' + String(tarih));
+    else if (tarih >= dun) aday.push(kayit as Gun);
+  }
   const sayi = new Map<string, number>();
   for (const g of aday) sayi.set(g.tarih, (sayi.get(g.tarih) ?? 0) + 1);
-  const atlanan = new Set<string>();
   const gunler: Gun[] = [];
   for (const g of [...aday].sort((a, b) => a.tarih.localeCompare(b.tarih))) {
     if ((sayi.get(g.tarih) ?? 0) > 1 || !gunGecerliMi(g)) { atlanan.add(g.tarih); continue; }
     gunler.push({ tarih: g.tarih, hicri: g.hicri, imsak: g.imsak, gunes: g.gunes, ogle: g.ogle, ikindi: g.ikindi, aksam: g.aksam, yatsi: g.yatsi });
   }
+  // Veri EKSİKLİĞİ (yanlış veri değil) bütün sitenin yayınını durdurmaz — sitenin kendi kapısıyla aynı karar
+  // (src/lib/icerik.ts). Ekran son sağlam veriyle döner, veri bitince "Namaz vakitleri güncellenemedi" der;
+  // kesintisiz kapsamı site denetimi ölçer (scripts/site-denetim.mjs).
   if (gunler.length < 7) {
-    throw new Error(`EKRAN VAKİTLERİ REDDEDİLDİ: dünden itibaren yalnız ${gunler.length} geçerli gün var. Build durduruldu.`);
+    console.warn(`[ekran] UYARI: vakit akışında dünden itibaren yalnız ${gunler.length} geçerli Diyanet günü var; ekran veri bitince "Namaz vakitleri güncellenemedi" der.`);
   }
   return { kaynak: veri.kaynak, kaynakTuru: 'diyanet', ilce: veri.ilce, ilceAdi: veri.ilceAdi, guncelleme: veri.guncelleme, gunler, atlanan: [...atlanan].sort() };
 }

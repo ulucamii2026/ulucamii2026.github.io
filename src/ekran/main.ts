@@ -19,12 +19,34 @@ import { akisTazele, AKIS_ARALIGI_MS, tazele, sonrakiTazelemeMs, type EkranVeris
 interface SayfaVerisi {
   cami: { tr: string; fr: string };
   vakit: Record<'tr' | 'fr', Record<string, string>>;
-  gps: { enlem: number; boylam: number };
+  /** Hava için caminin konumu (site.yaml → gps); sayfa verisi bozuksa yoktur ve hava hiç gösterilmez. */
+  gps?: { enlem: number; boylam: number };
   /** Sitedeki sabit Cuma namazı saati (SS:DD) ya da boş; src/pages/ekran/index.astro doğrular. */
   cumaSaati?: string;
 }
 
-const sayfa = JSON.parse(document.getElementById('ekran-veri')?.textContent || '{}') as SayfaVerisi;
+/** Sayfa verisi (#ekran-veri) eksik ya da bozuksa (ör. önbellekteki eski iskelet ile yeni paket) açılış çökmez,
+ *  güvenli varsayılanlar kullanılır: cami ve vakit adları boş kalır, saat ve Diyanet vakitleri yine çalışır;
+ *  konum yoksa hava gösterilmez (uydurma bir konumun havası yerine hiç). */
+function sayfaVerisiOku(): SayfaVerisi {
+  const bos: SayfaVerisi = { cami: { tr: '', fr: '' }, vakit: { tr: {}, fr: {} }, cumaSaati: '' };
+  try {
+    const x = JSON.parse(document.getElementById('ekran-veri')?.textContent || 'null') as Partial<SayfaVerisi> | null;
+    if (!x || typeof x !== 'object') return bos;
+    const metin = (s: unknown): string => (typeof s === 'string' ? s : '');
+    return {
+      cami: x.cami ? { tr: metin(x.cami.tr), fr: metin(x.cami.fr) } : bos.cami,
+      vakit: x.vakit && x.vakit.tr && x.vakit.fr ? x.vakit : bos.vakit,
+      gps: x.gps && typeof x.gps.enlem === 'number' && typeof x.gps.boylam === 'number' ? x.gps : undefined,
+      cumaSaati: typeof x.cumaSaati === 'string' && /^\d{2}:\d{2}$/.test(x.cumaSaati) ? x.cumaSaati : '',
+    };
+  } catch (hata) {
+    console.error(hata);
+    return bos;
+  }
+}
+
+const sayfa = sayfaVerisiOku();
 const parametre = new URLSearchParams(location.search);
 const ekran = document.getElementById('ekran') as HTMLElement;
 const ekranId = ekranIdOku(parametre.get('ekran'));
@@ -39,13 +61,14 @@ const TARIH_FR = new Intl.DateTimeFormat('fr-BE', { timeZone: TZ, weekday: 'long
 const iki = (n: number): string => (n < 10 ? '0' : '') + n;
 
 let hava: HavaDurumu | null = null;
-/** Üst bantta dış hava; 3 saatten eskiyse gizlenir. SVG ve sayı sabit/sayısal olduğu için innerHTML güvenli. */
+/** Üst bantta dış hava; 3 saatten eskiyse gizlenir ve içi boşaltılır (bayat simge/sıcaklık DOM'da kalmaz). SVG ve
+ *  sayı sabit/sayısal olduğu için innerHTML güvenli. Sayı ile birim arasında dar bölünmez boşluk (U+202F). */
 function havaCiz(): void {
   const kutu = alan('hava');
   const h = hava;
   if (!kutu) return;
-  if (!havaTazeMi(h, Date.now())) { kutu.hidden = true; return; }
-  kutu.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SIMGE_YOLLARI[havaSimgesi(h.kod)]}</svg><span>${h.sicaklik}°C</span><small>Open-Meteo</small>`;
+  if (!havaTazeMi(h, Date.now())) { kutu.hidden = true; kutu.innerHTML = ''; return; }
+  kutu.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SIMGE_YOLLARI[havaSimgesi(h.kod)]}</svg><span>${h.sicaklik}\u202F°C</span><small>Open-Meteo</small>`;
   kutu.hidden = false;
 }
 
@@ -153,6 +176,9 @@ function sonrakiSlayt(): void {
     slaytCiz(kok, s);
     sigdir(kok);
     sureMs = slaytSuresi(s.karakter, veri.akis?.ayar.slayt ?? VARSAYILAN_SLAYT) * 1000;
+    // Bozuk bir `ayar.slayt` (ör. önbellekteki eski paket + yeni şemalı akış) NaN ya da 0 verir; setTimeout(…, NaN)
+    // 0 ms demektir ve slaytlar durmadan yeniden çizilirdi.
+    if (!(sureMs >= 1000)) sureMs = 15_000;
   } catch (hata) {
     console.error(hata);
   } finally {
@@ -165,9 +191,12 @@ async function havaDongusu(): Promise<void> {
   const denetim = new AbortController();
   const zamanlayici = setTimeout(() => denetim.abort(), 30_000);
   try {
-    const yanit = await fetch(havaAdresi(sayfa.gps.enlem, sayfa.gps.boylam), { cache: 'no-cache', signal: denetim.signal });
-    const h = yanit.ok ? havaCoz(await yanit.json(), Date.now()) : null;
-    if (h) hava = h;
+    const gps = sayfa.gps;
+    if (gps) {
+      const yanit = await fetch(havaAdresi(gps.enlem, gps.boylam), { cache: 'no-cache', signal: denetim.signal });
+      const h = yanit.ok ? havaCoz(await yanit.json(), Date.now()) : null;
+      if (h) hava = h;
+    }
   } catch {
     /* ağ yok ya da 30 sn'de yanıt gelmedi: son değer 3 saat daha gösterilir */
   } finally {
@@ -182,6 +211,10 @@ async function havaDongusu(): Promise<void> {
    çalışır: bu blokta çıkan senkron bir istisna (sandbox'lı/opak bir kiosk kabuğunda SW API'si) saati ve
    veri döngüsünü hiç başlatmadan ekranı boş bırakmasın diye tamamı try/catch içinde. */
 try {
+  // Depolama baskısında Chrome kökeni (SW ve önbellekleri) topluca silebilir; kutu bir sonraki internetsiz
+  // açılışta Chrome'un hata sayfasını gösterirdi. Kalıcı depolama açılışta bir kez istenir (Chrome 55+);
+  // tarayıcı reddederse ya da desteklemezse hiçbir şey değişmez.
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch((hata) => console.error(hata));
   if ('serviceWorker' in navigator) {
     // `denetciVardi` SABİT değil: kutunun İLK kurulumunda henüz denetleyici yoktur (false), ama SONRAKİ
     // her sürüm güncellemesinde bu artık true olmalı — yoksa güncelleme hiç yenilenmez, sayfa aylarca

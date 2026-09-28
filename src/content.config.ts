@@ -233,8 +233,8 @@ const ekranAyar = defineCollection({
     slayt: z.object({
       tabanSn: z.number().min(0).max(60),
       karakterSn: z.number().min(0).max(1),
-      enAzSn: z.number().min(3).max(120),
-      enCokSn: z.number().min(3).max(300),
+      enAzSn: z.number().int().min(3).max(120),
+      enCokSn: z.number().int().min(3).max(300),
     }),
     gece: z.object({ kapanmaDk: z.number().int().min(0).max(240), acilmaDk: z.number().int().min(0).max(240) }),
     duyuruVarsayilanGun: z.number().int().min(1).max(365).default(30),

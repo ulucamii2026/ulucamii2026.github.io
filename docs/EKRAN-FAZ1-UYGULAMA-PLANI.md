@@ -597,10 +597,10 @@ test('mükerrer kimlik ikinci kez alınmaz ve raporlanır', () => {
  *
  * Yalnız imamın onayladığı kayıtlar (durum: "imam-onayli") yayına girer; eksik alanlı ya da mükerrer
  * kimlikli kayıt atlanır ve `eksik` listesinde raporlanır. Metinler resmî Diyanet yayınlarından alınır;
- * D:\ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal Diyanet çizgisindeki
- * basılı çeviriden gelir (hangisi olacağına imam karar verir: TDV/Hamidullah ya da DİB/Chiadmi); yazılı
- * izin gelene kadar `fr` boş kalır ve ekran AR + TR gösterir. Sitedeki 10 ahlâk hadisi
- * (src/lib/hadis-verisi.ts) zaten yayında olduğu için başlangıç havuzudur.
+ * D:\ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal DİB / Mohammed Chiadmi
+ * «Le Noble Coran» (2022) çevirisidir; cami Diyanet'e bağlı olduğu için Diyanet yayınları için ayrıca izin
+ * istenmez. `fr` ile `kaynakFr` birlikte dolu değilse FR yayımlanmaz, ekran AR + TR gösterir. Sitedeki 10 ahlâk
+ * hadisi (src/lib/hadis-verisi.ts) zaten yayında olduğu için başlangıç havuzudur.
  */
 import type { HadisOgesi } from '../hadis-verisi.ts';
 

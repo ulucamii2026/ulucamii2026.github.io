@@ -29,6 +29,9 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
       const img = document.createElement('img');
       img.alt = '';
       img.addEventListener('load', () => sigdir(kok));
+      // Görsel yüklenemezse (ör. yeniden adlandırılmış medya dosyası) kırık görsel simgesi her turda bütün
+      // ekranlarda görünmesin: gizlenir ve metin kalan alana yeniden sığdırılır.
+      img.addEventListener('error', () => { img.hidden = true; sigdir(kok); });
       img.src = d.gorsel;
       kart.appendChild(img);
     }
