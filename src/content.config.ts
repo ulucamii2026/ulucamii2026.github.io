@@ -3,6 +3,7 @@ import { glob, file } from 'astro/loaders';
 import { parse as yamlParse } from 'yaml';
 import { EKRANLAR } from './lib/ekran/akis.ts';
 import { BUTCE } from './lib/ekran/butce.ts';
+import { TUR_HEDEF_SN } from './lib/ekran/secim.ts';
 
 /** Sveltia boş bırakılan isteğe bağlı alanı "" (ya da null) yazabilir; ekran alanlarında bu "yok" demektir. */
 const bosIseYok = (v: unknown) => (v === '' || v === null ? undefined : v);
@@ -240,7 +241,7 @@ const ekranAyar = defineCollection({
     }),
     gece: z.object({ kapanmaDk: z.number().int().min(0).max(240), acilmaDk: z.number().int().min(0).max(240) }),
     duyuruVarsayilanGun: z.number().int().min(1).max(365).default(30),
-    turHedefSn: z.number().int().min(30).max(900).default(150),
+    turHedefSn: z.number().int().min(30).max(900).default(TUR_HEDEF_SN),
   }),
 });
 

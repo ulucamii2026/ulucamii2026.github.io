@@ -49,9 +49,9 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .levha { flex: none; width: 100%; margin: auto 0; }
 .levha p { overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; }
 /* Arapça yüz rolü: Kur'an metni (data-yuz="kuran") 'Ekran Kuran', öteki 'Ekran Metin'; --lh-* ve --k-* yazi-tipleri.json'dan gelir. */
-.levha .ar { font-family: 'Ekran Metin', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1) * var(--k-metin, 1)); line-height: var(--lh-metin, 1.75); }
-.levha .ar[data-yuz='kuran'] { font-family: 'Ekran Kuran', 'Ekran Metin', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1) * var(--k-kuran, 1)); line-height: var(--lh-kuran, 1.75); }
-.slayt-esma .levha .ar { line-height: var(--lh-metin, 1.75); }
+.levha .ar { font-family: 'Ekran Metin', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1) * var(--k-metin)); line-height: var(--lh-metin); }
+.levha .ar[data-yuz='kuran'] { font-family: 'Ekran Kuran', 'Ekran Metin', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1) * var(--k-kuran)); line-height: var(--lh-kuran); }
+.slayt-esma .levha .ar { line-height: var(--lh-metin); }
 .levha .okunus { font-size: calc(var(--u) * var(--f-okunus) * var(--olcek, 1)); line-height: 1.2; font-weight: 600; }
 .levha .susleme { display: block; width: calc(var(--u) * var(--f-susleme) * 10 * var(--olcek, 1)); height: calc(var(--u) * var(--f-susleme) * var(--olcek, 1)); margin: calc(var(--u) * 1.4 * var(--olcek, 1)) auto; }
 .susleme .yildiz { fill: var(--ana); }

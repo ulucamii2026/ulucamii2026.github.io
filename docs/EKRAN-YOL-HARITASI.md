@@ -176,22 +176,23 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 - **Çıkış ölçütü**: 7 gün vakit farkı sıfır (LED + Diyanet sayfası örneklemesi), 7 gece doğru kapan/aç, fiş çek-tak testi geçti.
 
 **Faz 3 — A: sağ alt panel (levha) ve duyurular**
-- Tamamlandı; bu dal. Ayet, hadis, dua, Esmâ ve duyuru ortalı levhada gösterilir; Arapça kaligrafik ve ortalıdır, metin kısa ise büyür, uzun ise okunur tabana kadar küçülür.
+- Tamamlandı (Eylül 2026). Ayet, hadis, dua, Esmâ ve duyuru ortalı levhada gösterilir; Arapça kaligrafik ve ortalıdır, metin kısa ise büyür, uzun ise okunur tabana kadar küçülür.
 - Karakter bütçeleri `src/lib/ekran/butce.ts`'tedir; sığmayan içerik yayına girmez. Ölçüler `src/lib/ekran/olcu.ts`'tedir.
 - **Çıkış ölçütü**: bütçe sınırındaki metinler her tuvalde (yatay 961×541, dikey Cuma satırlı, döndürülmüş) okunur tabanın altına inmeden sığıyor.
 
 **Faz 4 — B: uzaktan yönetim çekirdeği**
-- Faz 4'ün editör formu (Apps Script formu, PIN'ler, kaldırma düğmesi, imama bilgi e-postası, tek sayfalık TR editör rehberi) ve Faz 5 (uzaktan işletim: nabız, arıza e-postası, ekran görüntüsü, yeniden başlatma, sessiz APK güncellemesi) buraya katılır.
-- **Çıkış ölçütü**: her editör telefondan bir test duyurusu yayımladı ve kaldırdı; fiş çekilince e-posta geliyor; uzaktan görüntü alınıyor; bozuk sha256 reddediliyor.
+- Platform hesabı, Firebase, ekranların sunucuya bağlanması, uzaktan komut ve güncelleme, imamın Android uygulaması v1 (cihaz listesi ve durumu, duyuru, ayarlar) ve 5–10 cihazlık test filosu.
+- Eski Faz 4'ün editör formu (Apps Script formu, PIN'ler, kaldırma düğmesi, imama bilgi e-postası, tek sayfalık TR editör rehberi), Faz 5 (uzaktan işletim: nabız, arıza e-postası, ekran görüntüsü, yeniden başlatma, sessiz APK güncellemesi) ve Faz 6 (üç ekran, giriş ve kadınlar bölümü dahil; LED panonun sökülmesi) buraya katılır; üç ekran test filosuyla birlikte ele alınır.
+- **Çıkış ölçütü**: her editör telefondan bir test duyurusu yayımladı ve kaldırdı; fiş çekilince e-posta geliyor; uzaktan görüntü alınıyor; bozuk sha256 reddediliyor; her ekrana hedefli test duyurusu yalnız kendi ekranında görünüyor; 14 gün müdahalesiz çalışma; bir sayfalık işletim kılavuzu.
 
 **Faz 5 — C: vakit girişinde ses**
-- Vakit girişinde kuş sesi ya da kısa ton. Kayıttan ezan yok; gerekçe Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu (DİYK) fetvasıdır.
+- Vakit girişinde kuş sesi ya da kısa, yumuşak bir ton; imam telefondan denetler (vakit vakit açar/kapatır, ses düzeyi). Kayıttan ezan yok; gerekçe Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu (DİYK) fetvasıdır. B'nin ayar ve komut kanalına bağlıdır.
 
 **Faz 6 — D: çok camili yapı**
-- Üç ekran (giriş ve kadınlar bölümü dahil) ve LED panonun sökülmesi: her ekrana hedefli test duyurusu yalnız kendi ekranında görünmeli; 14 gün müdahalesiz çalışma; bir sayfalık işletim kılavuzu.
+- Davet akışı, her caminin Diyanet ilçe kodu, sabit değerlerin ayara dönüşmesi ve ikinci pilot cami. B ve C'ye bağlıdır.
 
 **Faz 3'ün kalanı**
-- Vefat, kandil geri sayımı, bağış QR (EPC/SEPA), Ramazan modu ve sükûnet, A'dan sonra ayrı küçük işlerdir. **Ramazan modu Ramazan 2027'den önce hazır olmalı**; başlangıç tarihi `diyanet-dini-gunler.json` dosyasından alınır.
+- Vefat, kandil geri sayımı, bağış QR (EPC/SEPA), Ramazan modu, sükûnet, piksel kaydırma, eski veri göstergesi ve haftalık program, A'dan sonra ayrı küçük işlerdir. **Ramazan modu Ramazan 2027'den önce hazır olmalı**; başlangıç tarihi `diyanet-dini-gunler.json` dosyasından alınır.
 - **Çıkış ölçütü**: zaman yolculuğu testleri yeşil.
 
 **Paralel içerik hattı (hemen başlar)**
@@ -199,7 +200,7 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
   - TR meal kuran.diyanet.gov.tr'deki resmî metinden alınır.
   - FR meal: DİB'in Chiadmi çevirisi («Le Noble Coran», 2022, ISBN 978-625-435-299-7); imam kararı 27 Eylül 2026. Cami Diyanet'e bağlı; Diyanet yayınları ekranda ve sitede kaynak belirtilerek kullanılır, ayrıca izin yazışması gerekmez.
   - FR hadis: DİB'in Fransızca "40 Hadis" kitapçıkları (dijital.diyanet.gov.tr; Arapça + Fransızca + kaynak) kullanılır.
-  - FR hadis için Diyanet'in Fransızca hadis yayını aranır; bulunamazsa imam onaylı "Traduction : Mosquée Ulu Camii".
+  - Hadis, hadisten alınan dua ve Esmâ çevirilerinin altına «Traduction : …» kaynak satırı yazılmaz (28 Eylül 2026 kararı); kaynak satırı yalnız resmî yayının künyesini taşır.
   - Yerel ihtisas arşivi **yalnız seçim ve doğrulama** için kullanılır; telif kuralı gereği metin oradan kopyalanmaz.
 - **İ1 — Setler.** ekrana sığma sınırı src/lib/ekran/butce.ts'tedir (ayet/hadis/dua: iki profil, Esmâ ayrı); sığmayan kayıt yayına girmez. Bağlamından koparılmamış.
   - 365 günlük ayet + 365 günlük hadis

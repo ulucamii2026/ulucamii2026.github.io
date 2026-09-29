@@ -1184,6 +1184,20 @@ test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
     await yatayDenetle(page);
   });
 
+  test('turun SON slaytı sığmazsa «Hoş geldiniz» çıkmaz; tur sınırında sonraki turun ilk slaytı gelir', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([DUYURU()], SABIT_60SN), icerik: UZUN_HADIS });
+    const slayt = page.locator('[data-alan="slayt"]');
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    // Tur: [duyuru, uzun hadis]. Hadis sığmaz; her tur sınırında yeni tur kurulup duyuru yeniden gösterilir.
+    for (let i = 0; i < 4; i++) {
+      await page.clock.runFor(61_000);
+      await expect(page.locator('.slayt.bos'), 'tur ' + i).toHaveCount(0);
+      await expect(page.locator('.slayt-duyuru')).toBeVisible();
+    }
+    expect(Number(await slayt.getAttribute('data-atlanan')), 'sığmayan hadis atlandı').toBeGreaterThanOrEqual(1);
+    await yatayDenetle(page);
+  });
+
   for (const oran of [16 / 9, 0.707]) {
     test(`görselli duyuru (oran ${oran.toFixed(3)}): afiş solda panel boyunca, genişlik = min(yükseklik × oran, %45); yazı sağda; taşma yok`, async ({ page }) => {
       await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
@@ -1480,7 +1494,8 @@ test('yazı tipi yükleme istisnası sınırlıdır: yazı tipi hazırlık bekle
   await expect(slayt.locator('.slayt-hadis')).toBeVisible(); // ilk 10 sn içinde gösterilir
   await page.clock.runFor(61_000); // tur yeniden kurulur; 10 sn geçti → atlanır
   await expect(slayt).toHaveAttribute('data-sigdi', 'bos');
-  await expect(slayt).toHaveAttribute('data-atlanan', '1');
+  // Tek slaytlık turda hadis iki kez denenir (tur + yeniden kurulan tur): her atlama olayı sayılır.
+  await expect(slayt).toHaveAttribute('data-atlanan', '2');
 });
 
 test('iki dilli duyurunun metni 90 karakteri aşarsa TR ve FR ayrı slaytlarda gösterilir', async ({ page }) => {

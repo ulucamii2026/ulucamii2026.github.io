@@ -60,3 +60,29 @@ test('kuran yüzü taslaklardaki özel Kur\u2019an işaretlerini taşır', () =>
   const yok = gerekli.filter((cp) => !yuz.hasGlyphForCodePoint(cp)).map((cp) => kn(String.fromCodePoint(cp)));
   assert.deepEqual(yok, []);
 });
+
+// Yüz aileleri ve sayısal değerler tek kaynaktan (yazi-tipleri.json) gelir; kodda kopya kalırsa burada yakalanır.
+test("Arapça yüz aileleri main.ts ve ekran.css'te yazi-tipleri.json'daki aile ile aynı", () => {
+  const main = readFileSync(kok('src/ekran/main.ts'), 'utf8');
+  const css = readFileSync(kok('src/ekran/ekran.css'), 'utf8');
+  const kodda = /ARAPCA_YUZLER = \[([^\]]*)\]/.exec(main)[1].split(',').map((x) => x.trim().replace(/^'|'$/g, ''));
+  assert.deepEqual(kodda.sort(), [yuzler.kuran.aile, yuzler.metin.aile].sort());
+  const cssAileleri = new Set([...css.matchAll(/font-family: ([^;]*);/g)].flatMap((m) => [...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1])).filter((a) => /^Ekran /.test(a)));
+  assert.deepEqual([...cssAileleri].sort(), [yuzler.kuran.aile, yuzler.metin.aile].sort());
+});
+
+test("derleme CSS'i --lh-kuran, --lh-metin, --k-kuran, --k-metin değişkenlerini üretir; ekran.css sayısal yedek taşımaz", () => {
+  const derle = readFileSync(kok('scripts/ekran-derle.mjs'), 'utf8');
+  for (const [d, alan] of [['--lh-kuran', 'kuran.satirYuksekligi'], ['--lh-metin', 'metin.satirYuksekligi'], ['--k-kuran', 'kuran.boyutKatsayisi'], ['--k-metin', 'metin.boyutKatsayisi']]) {
+    assert.ok(derle.includes(d + ':${YUZLER.' + alan + '}'), d + " derleme betiğinde yazi-tipleri.json'dan üretilmeli");
+  }
+  const css = readFileSync(kok('src/ekran/ekran.css'), 'utf8');
+  assert.doesNotMatch(css, /var\(--(lh|k)-(kuran|metin),/, "sayı yalnız yazi-tipleri.json'da yaşar");
+  // Üretilmiş dosya varsa (build sonrası) değişkenler değerleriyle orada olmalı.
+  const uretilen = new URL('../public/ekran/ekran.css', import.meta.url);
+  if (existsSync(uretilen)) {
+    const u = readFileSync(uretilen, 'utf8');
+    assert.ok(u.includes(`--lh-kuran:${yuzler.kuran.satirYuksekligi}`) && u.includes(`--lh-metin:${yuzler.metin.satirYuksekligi}`));
+    assert.ok(u.includes(`--k-kuran:${yuzler.kuran.boyutKatsayisi}`) && u.includes(`--k-metin:${yuzler.metin.boyutKatsayisi}`));
+  }
+});

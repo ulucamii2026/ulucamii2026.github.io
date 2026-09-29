@@ -204,38 +204,50 @@ let turNo = 0;
 let turAnahtari: string | undefined;
 /** Tabanda da sığmadığı için atlanan slayt sayısı (teşhis; slayt alanında data-atlanan). */
 let atlanan = 0;
+/** Turu (yeniden) kurar: bitmiş bir turdan sonra turNo artar, sira başa döner. */
+function turKur(kok: HTMLElement): void {
+  if (sira >= tur.length && tur.length > 0) turNo++;
+  const ayar = veri.akis?.ayar;
+  const icerik = veri.icerik;
+  tur = slaytListesi(
+    { duyurular: veri.akis?.duyurular ?? [], ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
+    ekranId, bugunTarih(new Date()), turNo,
+    { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
+  );
+  sira = 0;
+  turAnahtari = duyuruAnahtari(veri.akis);
+  kok.setAttribute('data-atlanan', String(atlanan));
+}
 function sonrakiSlayt(): void {
   let sureMs = 15_000;
   try {
     const kok = alan('slayt');
     if (!kok) return;
-    const anahtar = duyuruAnahtari(veri.akis);
-    if (sira >= tur.length || anahtar !== turAnahtari) {
-      if (sira >= tur.length && tur.length > 0) turNo++;
-      const ayar = veri.akis?.ayar;
-      const icerik = veri.icerik;
-      tur = slaytListesi(
-        { duyurular: veri.akis?.duyurular ?? [], ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
-        ekranId, bugunTarih(new Date()), turNo,
-        { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
-      );
-      sira = 0;
-      turAnahtari = anahtar;
-      kok.setAttribute('data-atlanan', String(atlanan));
-    }
-    // Okunur taban kuralı: tabanda da sığmayan slayt atlanır. Turun kalanında sığan kalmadıysa sakin slayt gösterilir;
-    // bir sonraki çağrıda tur yeniden kurulur, döngü donmaz. İstisna: yazı tipleri hâlâ yükleniyorsa ölçüm yedek
-    // yazı tipiyle yapılmıştır ve yanıltıcı olabilir; slayt atlanmaz, gösterilir (ölçüldüğü gibi) ve yazı tipleri
-    // gelince levhaSigdir yeniden sığdırır (o zaman gerçekten sığmıyorsa sonraki turda atlanır). İstisna sınırlıdır:
-    // yazı tipleri hazırlık beklemesinden sonra YAZI_TIPI_TOLERANSI_MS'den uzun yükleniyorsa slayt normal atlanır.
-    let s: Slayt | undefined;
-    while (sira < tur.length) {
-      const aday = tur[sira++];
-      slaytCiz(kok, aday);
-      if (levhaSigdir(kok).sigdi || (document.fonts && document.fonts.status === 'loading' && performance.now() - arapcaHazirAni < YAZI_TIPI_TOLERANSI_MS)) { s = aday; break; }
-      atlanan++;
-      kok.setAttribute('data-atlanan', String(atlanan));
-      console.warn('[ekran] slayt ekrana sığmadı, atlandı: ' + aday.tur + ' ' + aday.oge.id);
+    if (sira >= tur.length || duyuruAnahtari(veri.akis) !== turAnahtari) turKur(kok);
+    // Okunur taban kuralı: tabanda da sığmayan slayt atlanır. Turun kalanında sığan kalmadıysa (ama bu çağrıda en az
+    // bir slayt atlandıysa) tur bir kez yeniden kurulur ve seçim bir kez daha yapılır; «Hoş geldiniz» yalnız yeni turda
+    // da sığan slayt yoksa (yani tüm slaytlar atlanmışsa) çizilir. Çağrı başına en çok bir yeniden kurma: döngü donmaz.
+    // İstisna: yazı tipleri hâlâ yükleniyorsa ölçüm yedek yazı tipiyle yapılmıştır ve yanıltıcı olabilir; slayt
+    // atlanmaz, gösterilir (ölçüldüğü gibi) ve yazı tipleri gelince levhaSigdir yeniden sığdırır (o zaman gerçekten
+    // sığmıyorsa sonraki turda atlanır). İstisna sınırlıdır: yazı tipleri hazırlık beklemesinden sonra
+    // YAZI_TIPI_TOLERANSI_MS'den uzun yükleniyorsa slayt normal atlanır.
+    let atlananCagri = 0;
+    const sec = (): Slayt | undefined => {
+      while (sira < tur.length) {
+        const aday = tur[sira++];
+        slaytCiz(kok, aday);
+        if (levhaSigdir(kok).sigdi || (document.fonts && document.fonts.status === 'loading' && performance.now() - arapcaHazirAni < YAZI_TIPI_TOLERANSI_MS)) return aday;
+        atlanan++;
+        atlananCagri++;
+        kok.setAttribute('data-atlanan', String(atlanan));
+        console.warn('[ekran] slayt ekrana sığmadı, atlandı: ' + aday.tur + ' ' + aday.oge.id);
+      }
+      return undefined;
+    };
+    let s = sec();
+    if (!s && atlananCagri > 0) {
+      turKur(kok);
+      s = sec();
     }
     if (!s) {
       bosCiz(kok, sayfa.cami);

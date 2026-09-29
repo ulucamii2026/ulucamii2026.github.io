@@ -3,7 +3,7 @@
  * Levha tek ölçekle (--olcek = s, s ∈ [1, enCok]) büyür/küçülür; her öğenin boyu taban × s'dir, oranlar sabittir.
  * Tek kaynak: src/ekran/slaytlar.ts bu değerleri slayt köküne --f-* değişkenleri olarak yazar, CSS
  * calc(var(--u) * var(--f-…) * var(--olcek, 1)) ile kullanır; bütçe kalibrasyonu
- * da bu tabanlarla ölçer. Tabanlar 40" TV'de ~2,4 m okuma mesafesine göre seçildi; yazı tipi numunesinde onaylandı.
+ * da bu tabanlarla ölçer. Tabanlar başlangıç değerleridir; T1 yazı tipi numunesinde sunuldu ve TV üzerinde denetimle doğrulanır.
  *
  * Sayılar başlangıç değerleridir; T1 numunesinde onaya sunuldu, T7 kalibrasyonunda kesinleşir.
  * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu

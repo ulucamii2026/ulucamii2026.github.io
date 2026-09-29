@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { OLCU, olcuDegiskenleri, UST_BASLIK } from '../src/lib/ekran/olcu.ts';
 import { BUTCE, maneviButce, duyuruParcalari, duyuruDilleri, duyuruAsimlari, uzunluk } from '../src/lib/ekran/butce.ts';
+import { TUR_HEDEF_SN } from '../src/lib/ekran/secim.ts';
 import { AHLAK_HADISLERI } from '../src/lib/hadis-verisi.ts';
 
 const harf = (n, c = 'a') => c.repeat(n);
@@ -44,7 +45,7 @@ test('manevi bütçe: profil A ya da B\'ye uyan geçer, ikisini de aşan aşım�
   const r = maneviButce('hadis', { ar: harf(A.ar + 1), tr: harf(B.tr + 1), kaynak: 'k' });
   assert.equal(r.uygun, false);
   assert.ok(r.asim.length > 0 && /^(AR|TR|FR|KAYNAK) \d+\/\d+$/.test(r.asim[0]), r.asim.join());
-  // Rapor, kısaltmanın en az olduğu profile göre: TR 200 → B'nin sınırı (130), A'nınki (88) değil.
+  // Rapor, kısaltmanın en az olduğu profile göre: TR 200 → B'nin sınırı (BUTCE.manevi[1].tr), A'nınki (BUTCE.manevi[0].tr) değil.
   const tr200test = maneviButce('hadis', { ar: 'a', tr: harf(200), kaynak: 'k' });
   assert.deepEqual(tr200test.asim, [`TR 200/${BUTCE.manevi[1].tr}`]);
 });
@@ -106,6 +107,15 @@ test('CMS sınırları bütçeyle aynı: ekranMetni 180, ekranBasligi 60', () =>
   const sema = readFileSync(new URL('../src/content.config.ts', import.meta.url), 'utf8');
   assert.match(sema, /ekranBasligi: z\.string\(\)\.max\(BUTCE\.duyuru\.baslik\)/);
   assert.match(sema, /ekranMetni: z\.string\(\)\.max\(BUTCE\.duyuru\.ikiSlaytMetin\)/);
+  // turHedefSn: tek kaynak secim.ts; şema onu içe aktarır, CMS varsayılanı ve ayar dosyası aynı aralıkta kalır.
+  assert.match(sema, /turHedefSn: z\.number\(\)[^\n]*\.default\(TUR_HEDEF_SN\)/);
+  assert.doesNotMatch(sema, /default\(150\)/);
+  const cmsVarsayilan = Number(/name: turHedefSn[^\n]*min: (\d+), max: (\d+), default: (\d+)/.exec(yml)?.[3]);
+  assert.equal(cmsVarsayilan, TUR_HEDEF_SN, 'config.yml turHedefSn varsayılanı = TUR_HEDEF_SN');
+  const [, enAz, enCok] = /name: turHedefSn[^\n]*min: (\d+), max: (\d+)/.exec(yml).map(Number);
+  const ayarYaml = readFileSync(new URL('../src/content/ayarlar/ekran.yaml', import.meta.url), 'utf8');
+  const ayarDegeri = Number(/^\s*turHedefSn:\s*(\d+)/m.exec(ayarYaml)?.[1]);
+  assert.ok(ayarDegeri >= enAz && ayarDegeri <= enCok, 'ekran.yaml turHedefSn CMS aralığında');
 });
 
 test('duyuru: FR metni TR’den uzunsa eşik FR’ye göre (91–180 → ayrı slaytlar), TR kısa olsa da', () => {
