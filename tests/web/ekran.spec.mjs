@@ -451,7 +451,7 @@ const levhaOlc = (page, slaytlar) => page.evaluate((liste) => {
     const arSatiri = kok.querySelector('.levha .ar');
     const afisKutusu = kok.querySelector('.afis');
     const govdeKutusu = kok.querySelector('.afisli');
-    return { id: s.oge.id, tur: s.tur, afisGenislik: afisKutusu ? afisKutusu.offsetWidth : 0, afisOran: afisKutusu ? parseFloat(afisKutusu.getAttribute('data-oran')) : 0, govdeH: govdeKutusu ? govdeKutusu.clientHeight : 0, govdeW: govdeKutusu ? govdeKutusu.clientWidth : 0, yuz: arSatiri ? arSatiri.getAttribute('data-yuz') : null, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth };
+    return { id: s.oge.id, tur: s.tur, afisGenislik: afisKutusu ? afisKutusu.offsetWidth : 0, afisOran: afisKutusu ? parseFloat(afisKutusu.getAttribute('data-oran')) : 0, govdeH: govdeKutusu ? govdeKutusu.clientHeight : 0, govdeW: govdeKutusu ? govdeKutusu.clientWidth : 0, yuz: arSatiri ? arSatiri.getAttribute('data-yuz') : null, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth, icTasmaY: kok.firstElementChild.scrollHeight - kok.firstElementChild.clientHeight };
   });
 }, slaytlar);
 
@@ -464,6 +464,7 @@ function tabanDenetle(o) {
   }
   expect(o.olcek, `${o.id} ölçek ≥ 1`).toBeGreaterThanOrEqual(1);
   expect(o.tasmaY, `${o.id} dikey taşma`).toBeLessThanOrEqual(1);
+  expect(o.icTasmaY, `${o.id} slayt alanının iç kenar boşluğuna taşma`).toBeLessThanOrEqual(1);
   expect(o.tasmaX, `${o.id} yatay taşma`).toBeLessThanOrEqual(1);
 }
 
@@ -585,7 +586,9 @@ test('Perşembe→Cuma gece yarısı Cuma satırı açılınca ekrandaki slayt y
     const v = document.querySelector('[data-alan="vakitler"]');
     const s = document.querySelector('[data-alan="slayt"]');
     v.classList.add('cumali');
-    const t = s.scrollHeight - s.clientHeight;
+    // Slayt alanı ve içindeki slayt (levhaTasiyor ile aynı): alanın kaydırma boyu kendi alt boşluğuna taşanı saymaz.
+    const k = s.firstElementChild;
+    const t = Math.max(s.scrollHeight - s.clientHeight, k.scrollHeight - k.clientHeight);
     v.classList.remove('cumali');
     return t;
   });
@@ -595,6 +598,7 @@ test('Perşembe→Cuma gece yarısı Cuma satırı açılınca ekrandaki slayt y
   await expect(page.locator('.cuma-saati b')).toHaveText('Cuma namazı 13:30');
   await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // aynı slayt, sıradaki slayt değil
   expect(await slayt.evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
+  expect(await slayt.evaluate((e) => e.firstElementChild.scrollHeight - e.firstElementChild.clientHeight)).toBeLessThanOrEqual(1);
 });
 
 test('akış bozulursa ekran son sağlam içerikle dönmeye devam eder', async ({ page }) => {
@@ -1306,6 +1310,51 @@ test.describe('levha (A): ortalı, iki yönlü sığdırma, 1280×720', () => {
     expect(o.alt, 'taban ölçekte levhanın altında boşluk kalır').toBeGreaterThan(5 * o.u);
     expect(Math.abs(o.ust - o.alt), 'levha dikeyde ortalı (üst başlığın 1,5u alt boşluğu payı)').toBeLessThanOrEqual(2 * o.u + 1);
   });
+
+  /* TV'de görülen iki kusur (29 Eylül 2026), yayındaki onaylı kayıtlarla: (1) iki satırlık kaynak slayt alanının alt
+     kenar boşluğuna taşıyordu — ölçüm yalnız slayt alanının kaydırma boyuna bakıyor, alt boşluğa taşan içeriği
+     görmüyordu; (2) Kur'an yüzünde durak işaretleri (ۙۖ) satır kutusunun üstüne çıkıp üst başlığa değiyordu. */
+  const DUA_UZUN_KAYNAK = { id: 'd-23-26', ar: 'قَالَ رَبِّ انْصُرْنٖي بِمَا كَذَّبُونِ', tr: 'Nûh, “Rabbim! Bunların beni yalancılıkla suçlamalarına karşı bana yardım et!” dedi.', kaynak: "Mü'minûn, 23/26 · Al-Mou’minoun, 23:26 — Kur’an Yolu Meali", kuran: true };
+  const AYET_DURAK_ISARETLI = { id: 'a-91-9', referans: { tr: 'Şems, 91/9-10', fr: 'Ach-Chams, 91:9-10' }, ar: 'قَدْ اَفْلَحَ مَنْ زَكّٰيهَاۙۖ وَقَدْ خَابَ مَنْ دَسّٰيهَاؕ', tr: 'Nefsini arındıran elbette kurtuluşa ermiştir. Onu kötülüklere boğan da ziyan etmiştir.', kaynakTr: 'Kur’an Yolu Meali' };
+
+  test('levha slayt alanının iç kenar boşluğuna taşmaz: iki satırlık kaynaklı Kur’an duası', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([], SABIT_60SN), icerik: { derleme: '', eksik: [], ayetler: [], hadisler: [], dualar: [DUA_UZUN_KAYNAK] } });
+    const slayt = page.locator('[data-alan="slayt"]');
+    await expect(slayt.locator('.slayt-dua')).toBeVisible();
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+    const o = await slayt.evaluate((e) => {
+      const kart = e.querySelector('.slayt');
+      const son = e.querySelector('.levha').lastElementChild.getBoundingClientRect();
+      return { ic: kart.scrollHeight - kart.clientHeight, bosluk: kart.getBoundingClientRect().bottom - son.bottom };
+    });
+    expect(o.ic, 'slayt içeriği slayt kutusundan taşmaz').toBeLessThanOrEqual(1);
+    expect(o.bosluk, 'son satır slayt kutusunun içinde biter').toBeGreaterThanOrEqual(-1);
+  });
+
+  test('Kur’an satırındaki durak işaretleri üst başlığa değmez (Şems 91/9-10)', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([], SABIT_60SN), icerik: { derleme: '', eksik: [], ayetler: [AYET_DURAK_ISARETLI], hadisler: [] } });
+    const slayt = page.locator('[data-alan="slayt"]');
+    await expect(slayt.locator('.slayt-ayet')).toBeVisible();
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+    // Mürekkebin üst ucu: satır kutusunun üstü + (satır yüksekliği − yazı tipi yüksekliği)/2 + yazı tipi yükselişi
+    // − glif yükselişi (canvas measureText, aynı yazı tipi). İlk satır: .ar kutusunun üstü + üst dolgu.
+    const o = await slayt.evaluate((e) => {
+      const ar = e.querySelector('.levha .ar');
+      const cs = getComputedStyle(ar);
+      const tuval = document.createElement('canvas').getContext('2d');
+      tuval.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      const m = tuval.measureText(ar.textContent);
+      const lh = parseFloat(cs.lineHeight);
+      const satirUstu = ar.getBoundingClientRect().top + parseFloat(cs.paddingTop);
+      const murekkepUstu = satirUstu + m.fontBoundingBoxAscent + (lh - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2 - m.actualBoundingBoxAscent;
+      const u = parseFloat(getComputedStyle(document.getElementById('ekran')).getPropertyValue('--u'));
+      return { aralik: murekkepUstu - e.querySelector('.ust-baslik').getBoundingClientRect().bottom, u, yuz: ar.getAttribute('data-yuz') };
+    });
+    expect(o.yuz).toBe('kuran');
+    expect(o.aralik, `durak işareti ile üst başlık arasında en az 1u boşluk (ölçülen ${(o.aralik / o.u).toFixed(2)}u)`).toBeGreaterThanOrEqual(o.u);
+  });
 });
 
 /* Taban kapısı: bütçe sınırındaki metin her tuvalde okunur tabanın altına inmeden sığmalı. Üç sahne: en dar yatay
@@ -1554,7 +1603,11 @@ test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
   };
   const siteAr = AHLAK_HADISLERI.map((h) => ({ ar: h.arapca, tr: h.metin.tr, fr: h.metin.fr }));
   const H = { ar: kalip('hadis.ar', 'ar', 'hadisler', siteAr, K_AR), tr: kalip('hadis.tr', 'tr', 'hadisler', siteAr, K_TR), fr: kalip('hadis.fr', 'fr', 'hadisler', siteAr, K_FR) };
-  const Ay = { ar: kalip('ayet.ar', 'ar', 'ayetler', [], K_AR), tr: kalip('ayet.tr', 'tr', 'ayetler', [], K_TR), fr: kalip('ayet.fr', 'fr', 'ayetler', siteAr, K_FR) };
+  // Ayetler bugün FR'siz yayımlanır (Le Noble Coran dijitalde yok): depoda FR'li ayet yoksa ayet profili FR'siz ölçülür.
+  // Ayetlere FR eklendiğinde bu dal kendiliğinden FR'li ölçer; o gün kalibrasyon yeniden çalıştırılmalıdır.
+  const ayetFrVar = oku('ayetler').some((x) => x && x.fr);
+  if (!ayetFrVar) kaynaklar['ayet.fr'] = 'yok (ayetler FR’siz yayımlanır)';
+  const Ay = { ar: kalip('ayet.ar', 'ar', 'ayetler', [], K_AR), tr: kalip('ayet.tr', 'tr', 'ayetler', [], K_TR), fr: ayetFrVar ? kalip('ayet.fr', 'fr', 'ayetler', siteAr, K_FR) : '' };
   const E = { ar: kalip('esma.ar', 'ar', 'esma', siteAr, 'الرَّحِيمُ '), okunus: kalip('esma.okunus', 'okunus', 'esma', [], 'er-Rahîm '), tr: kalip('esma.tr', 'tr', 'esma', siteAr, K_TR), fr: kalip('esma.fr', 'fr', 'esma', siteAr, K_FR) };
   kaynaklar.kaynak = 'sentetik (ayraçsız en kötü hâl)';
   const REF = { tr: 'Âl-i İmrân, 3/190-191', fr: 'Al-Imran, 3:190-191' };
@@ -1563,7 +1616,7 @@ test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
     profiller.push({ ad: 'manevi-' + p.ad, tur: 'hadis', b: { ar: p.ar, tr: p.tr, fr: p.fr },
       yap: (n) => ({ id: 'k', ar: kes(H.ar, n.ar), tr: kes(H.tr, n.tr), fr: kes(H.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, p.kaynak) }) });
     profiller.push({ ad: 'manevi-' + p.ad, tur: 'ayet', b: { ar: p.ar, tr: p.tr, fr: p.fr },
-      yap: (n) => ({ id: 'k', referans: REF, ar: kes(Ay.ar, n.ar), tr: kes(Ay.tr, n.tr), fr: kes(Ay.fr, n.fr), kaynakTr: kes('Kur’an Yolu Meali (DİB) ', p.kaynak - (REF.tr.length + REF.fr.length + 6)), kaynakFr: 'x' }) });
+      yap: (n) => ({ id: 'k', referans: REF, ar: kes(Ay.ar, n.ar), tr: kes(Ay.tr, n.tr), fr: Ay.fr ? kes(Ay.fr, n.fr) : undefined, kaynakTr: kes('Kur’an Yolu Meali (DİB) ', p.kaynak - (REF.tr.length + REF.fr.length + 6)), kaynakFr: 'x' }) });
   }
   profiller.push({ ad: 'esma', tur: 'esma', b: { ar: BUTCE.esma.ar, okunus: BUTCE.esma.okunus, tr: BUTCE.esma.tr, fr: BUTCE.esma.fr },
     yap: (n) => ({ id: 'k', sira: 1, ar: kes(E.ar, n.ar), okunus: kes(E.okunus, n.okunus), tr: kes(E.tr, n.tr), fr: kes(E.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, BUTCE.esma.kaynak) }) });

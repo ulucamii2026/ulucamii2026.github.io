@@ -165,6 +165,36 @@ export function bosCiz(kok: HTMLElement, cami: { tr: string; fr: string }): void
 const tasiyor = (kok: HTMLElement): boolean =>
   kok.scrollHeight > kok.clientHeight + 1 || kok.scrollWidth > kok.clientWidth + 1;
 
+/** Slayt alanı VE içindeki slayt: slayt alanının kaydırma boyu kendi alt kenar boşluğuna taşan içeriği saymaz (slayt
+ *  %100 yüksekliktedir, taşan torunlar alanın dolgusuna düşer); slaytın kendi taşması ayrıca ölçülür. */
+const levhaTasiyor = (kok: HTMLElement): boolean => {
+  const kart = kok.firstElementChild as HTMLElement | null;
+  return tasiyor(kok) || (!!kart && tasiyor(kart));
+};
+
+/** Kur'an yüzünde durak işaretleri (ۙ ۖ ۚ …) harekenin de üstüne yığılır ve satır kutusundan çıkıp üst başlığa
+ *  değebilir. Satırın mürekkep yükselişi canvas ile ölçülür, kutudan taşan kısım üst dolgu olarak (em: ölçekle
+ *  birlikte büyür) verilir. Ölçüm yoksa (Chromium < 77: actualBoundingBoxAscent yok) CSS'teki sabit pay kalır. */
+let tuval: CanvasRenderingContext2D | null | undefined;
+function kuranUstPayi(kok: HTMLElement): void {
+  const satirlar = kok.querySelectorAll<HTMLElement>('.levha .ar[data-yuz="kuran"]');
+  if (!satirlar.length) return;
+  if (tuval === undefined) tuval = document.createElement('canvas').getContext('2d');
+  if (!tuval) return;
+  for (let i = 0; i < satirlar.length; i++) {
+    const p = satirlar[i];
+    p.style.paddingTop = '';
+    const cs = getComputedStyle(p);
+    tuval.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+    const m = tuval.measureText(p.textContent || '');
+    if (typeof m.actualBoundingBoxAscent !== 'number' || typeof m.fontBoundingBoxAscent !== 'number') return;
+    const boy = parseFloat(cs.fontSize);
+    const satirUstu = m.fontBoundingBoxAscent + (parseFloat(cs.lineHeight) - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2;
+    const tasma = (m.actualBoundingBoxAscent - satirUstu) / boy;
+    p.style.paddingTop = Math.max(0, Math.ceil(tasma * 100) / 100) + 'em';
+  }
+}
+
 /** Yazı tipi yükleme beklemesi en çok bir tane kurulur (levhaSigdir sık çağrılır; beklemeler birikmesin). Beklenen
  *  yükleme bitince bayrak inip sığdırma yeni yüklemelere göre yeniden kurulabilir. */
 let yazitipiBekleniyor = false;
@@ -177,13 +207,14 @@ export function levhaSigdir(kok: HTMLElement): OlcekSonucu {
   const kart = kok.firstElementChild;
   const tur = kart ? (kart.getAttribute('data-tur') as LevhaTuru | null) : null;
   afisBoyutla(kok);
+  kuranUstPayi(kok);
   const yaz = (s: number): void => kok.style.setProperty('--olcek', s.toFixed(3));
   let sonuc: OlcekSonucu;
   if (!tur || !OLCU[tur]) {
     yaz(1);
-    sonuc = { olcek: 1, sigdi: !tasiyor(kok), olcumSayisi: 1 };
+    sonuc = { olcek: 1, sigdi: !levhaTasiyor(kok), olcumSayisi: 1 };
   } else {
-    sonuc = olcekBul((s) => { yaz(s); return !tasiyor(kok); }, 1, OLCU[tur].enCok);
+    sonuc = olcekBul((s) => { yaz(s); return !levhaTasiyor(kok); }, 1, OLCU[tur].enCok);
     yaz(sonuc.olcek);
   }
   kok.setAttribute('data-olcek', sonuc.olcek.toFixed(3));
