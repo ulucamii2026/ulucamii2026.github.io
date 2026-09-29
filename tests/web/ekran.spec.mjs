@@ -489,7 +489,8 @@ const ESMA_DENEME = { id: 'esma-deneme', sira: 2, ar: 'الرَّحِيمُ', ok
 const ICERIK_TAM = { ...ICERIK, dualar: [DUA_KURAN], esmalar: [ESMA_DENEME] };
 
 /* Derlemenin yayımladığı gerçek kayıtlar (onaylı ve bütçeye uyan; sitedeki hadisler dahil). Taban kapısında her biri
-   de ölçülür. Dosya henüz yoksa (dualar, esma: T4'te doğar) boş sayılır; T4 öncesi ekranIcerigi fazla argümanı yok sayar. */
+   de ölçülür. Dosya okunamazsa boş sayılır. Dualar ve Esmâ (dualar.json, esma.json) T4'ten beri vardır; içerik gelince taban kapısı
+   onları da ölçer. */
 const gercekSlaytlar = () => {
   const oku = (ad) => { try { return JSON.parse(readFileSync(resolve(process.cwd(), `src/data/ekran/${ad}.json`), 'utf8')); } catch { return []; } };
   const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('esma'));
@@ -1367,17 +1368,23 @@ test('manevi blok ayet → hadis → dua → Esmâ; Kur’an metni Kur’an yüz
   await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
 });
 
-test('tur hedef süreyi aşınca manevi blok turlara bölünür: ikinci tur kalan öğeden başlar', async ({ page }) => {
-  const akis = AKIS([]);
-  akis.ayar.turHedefSn = 30; // 4 manevi × 10 sn = 40 sn > 30 → turda 3 slayt
+test('tur hedef süreyi aşınca manevi blok turlara bölünür: duyuru her turda kalır, ikinci tur kalan öğeden başlar', async ({ page }) => {
+  const akis = AKIS([DUYURU()]);
+  // Her slayt 10 sn. Duyuru 10 + manevi 4 × 10 = 50 sn > 40 → turda 3 manevi: tur 0 = du, ayet, hadis, dua (0–40 sn);
+  // tur 1 = du, Esmâ, ayet, hadis. Bölünmeseydi tur du, ayet, hadis, dua, Esmâ olurdu ve 40. sn'de Esmâ görünürdü.
+  akis.ayar.turHedefSn = 40;
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
   await page.clock.install({ time: an(ornek, '12:00') });
   await page.goto('/ekran/');
   const slayt = page.locator('[data-alan="slayt"]');
-  await expect(slayt.locator('.slayt-ayet')).toBeVisible(); // tur 0: ayet, hadis, dua
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // 0 sn
   await page.clock.runFor(30_500);
-  await expect(slayt.locator('.slayt-esma')).toBeVisible(); // tur 1: Esmâ, ayet, hadis
+  await expect(slayt.locator('.slayt-dua')).toBeVisible(); // 30 sn: turun son slaytı
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // 40 sn: ikinci tur duyuruyla başlar (bölünmemişte Esmâ)
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-esma')).toBeVisible(); // 50 sn: ikinci turda Esmâ öne geçti
   await page.clock.runFor(10_000);
   await expect(slayt.locator('.slayt-ayet')).toBeVisible();
 });

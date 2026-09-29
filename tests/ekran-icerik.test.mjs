@@ -117,8 +117,8 @@ test('bütçeyi aşan kayıt her türde yayımlanmaz; eksikte kısaltma miktarı
 
 test('Fransızca metinlere Fransız yazım kuralı uygulanır (noktalama öncesi bölünmez boşluk)', () => {
   const s = ekranIcerigi([], [hadis({ fr: 'Qui est le meilleur ? Celui qui aide.' })], [], [], [esma({ fr: 'Le Clément : il pardonne.' })]);
-  assert.equal(s.hadisler[0].fr, 'Qui est le meilleur ? Celui qui aide.');
-  assert.equal(s.esmalar[0].fr, 'Le Clément : il pardonne.');
+  assert.equal(s.hadisler[0].fr, 'Qui est le meilleur\u202F? Celui qui aide.');
+  assert.equal(s.esmalar[0].fr, 'Le Clément\u00A0: il pardonne.');
 });
 
 // İçerik kapısı: onaylı bir kayıt ekrana sığmıyorsa derleme onu sessizce düşürür. Bu test düşürmeden önce durdurur.
