@@ -4,6 +4,16 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 29 Eylül 2026 — cami ekranı: sağ alt levha, duyurular ve onaylı manevi içerik (A alt projesi)
+
+- Zaman: 29 Eylül 2026 10:55–11:10 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «bütün karar ve yetki sende, full otonom ilerle» talimatı (plan ve spec: ekran A alt projesi); dinî içerik kullanıcının onay sayfasında 204 kaydı tek tek onaylamasıyla (`durum: imam-onayli`, `onayTarihi: 2026-09-29`) yayına girdi.
+- Kapsam (kod, `b2ab968`…`4b3582e`): sağ alt panelde tek ölçekli, ortalı «levha» — iki yönlü sığdırma araması, karakter bütçeleri (kalibre edildi), sığmayan slaydı atlama ve tur sonunda yeniden kurma; günün ayeti, hadisi, duası ve Esmâ-i Hüsnâ levhaları; duyurularda ekran başlığı, 90/180 karakter kuralı (TR ve FR ayrı slayt), afişli duyuruda sağ sütun sınırı; Kur'an için Scheherazade New, Arapça metin için Noto Naskh Arabic (OFL, `/ekran/fonts/`), glif kapsama kapısı; yol haritası `docs/EKRAN-YOL-HARITASI.md`.
+- Kapsam (içerik, `4642560`): `src/data/ekran/` — 40 ayet (Diyanet mushafı + Kur'an Yolu Meali; Fransızca yok), 25 hadis (DİB «Hadislerle İslam»; Fransızca DİB «40 Hadis» kitapçıkları), 40 dua (Kur'an ve hadis duaları), 99 Esmâ-i Hüsnâ. Hadis duaları ile Esmâ'nın Fransızcası resmî karşılık olmadığı için hazırlanmış çeviridir ve onaylandı.
+- Deploy: kod <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36545784188> — **success** (10:57:22); içerik <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36546394016> — **success** (11:04:03).
+- Testler (her iki push öncesi): `npm run check` 0 hata / 0 uyarı; `npm run dogrula` çıkış 0 (`test:ekran` 147 geçti / 0 kaldı); Playwright `tests/web/ekran.spec.mjs` masaüstü 88 geçti / 3 atlandı (koşullu). İlk push'ta derlenen `icerik.json` yalnız sitedeki 10 onaylı hadisi taşıdı (taslak sızmadı). Onaylı içerikle bütçe kalibrasyonu: tüm profillerde f ≥ 1,058, bütçeler değişmedi.
+- Canlı doğrulama: `/ekran/` 200; `/ekran/akis.json` `ayar.turHedefSn` var; `/ekran/icerik.json` ayet 40 · hadis 35 · dua 40 · Esmâ 99 · eksik 0.
+- Açık sınırlar: TV üzerinde görsel denetim ayrı yapılacak; ayetlerin Fransızcası basılı meâlden sonra eklenebilir.
+
 ## 24 Eylül 2026 (3) — kod yorumlarındaki kişi adı kaldırıldı
 
 - Zaman: 24 Eylül 2026 23:15–23:27 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «tamam devam et» onayı (bir önceki kaydın «açık sınırlar» bulgusu).
