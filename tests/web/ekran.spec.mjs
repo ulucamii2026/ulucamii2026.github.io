@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { brukselTarih } from '../../src/lib/namaz.ts';
 import { hicriCevir } from '../../src/i18n/hicri.ts';
 import { build } from 'esbuild';
-import { OLCU } from '../../src/lib/ekran/olcu.ts';
+import { OLCU, AFIS_EN_COK } from '../../src/lib/ekran/olcu.ts';
 import { BUTCE } from '../../src/lib/ekran/butce.ts';
 import { ekranIcerigi } from '../../src/lib/ekran/icerik.ts';
 import { AHLAK_HADISLERI } from '../../src/lib/hadis-verisi.ts';
@@ -449,7 +449,9 @@ const levhaOlc = (page, slaytlar) => page.evaluate((liste) => {
     const r = window.__levha.levhaSigdir(kok);
     const paragraflar = Array.prototype.map.call(kok.querySelectorAll('.levha p'), (p) => ({ sinif: p.className, px: parseFloat(getComputedStyle(p).fontSize) }));
     const arSatiri = kok.querySelector('.levha .ar');
-    return { id: s.oge.id, tur: s.tur, yuz: arSatiri ? arSatiri.getAttribute('data-yuz') : null, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth };
+    const afisKutusu = kok.querySelector('.afis');
+    const govdeKutusu = kok.querySelector('.afisli');
+    return { id: s.oge.id, tur: s.tur, afisGenislik: afisKutusu ? afisKutusu.offsetWidth : 0, afisOran: afisKutusu ? parseFloat(afisKutusu.getAttribute('data-oran')) : 0, govdeH: govdeKutusu ? govdeKutusu.clientHeight : 0, govdeW: govdeKutusu ? govdeKutusu.clientWidth : 0, yuz: arSatiri ? arSatiri.getAttribute('data-yuz') : null, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth };
   });
 }, slaytlar);
 
@@ -492,8 +494,11 @@ const sinirAfis = (oran, ad) => ({
   tur: 'duyuru', karakter: 0, parca: { yerlesim: 'afis-sol', metinli: true },
   oge: DUYURU({ id: 'sinir-afis-' + ad, gorsel: '/media/duyurular/test-afis.svg', gorselOran: oran, tr: { baslik: kes(K_TR, BD.afisBaslik), metin: kes(K_TR, BD.afisMetin) }, fr: { baslik: kes(K_FR, BD.afisBaslik), metin: kes(K_FR, BD.afisMetin) } }),
 });
-/** Afişli ama metin sütuna sığmıyor: afiş slaytı yalnız başlıkla, metin ayrı levhada. */
-const sinirAfisBasligi = { tur: 'duyuru', karakter: 0, parca: { yerlesim: 'afis-sol', metinli: false }, oge: sinirAfis(16 / 9, 'baslik').oge };
+/** Afişli ama metin sütuna sığmıyor (ya da başlık > 30): afiş slaytı yalnız başlıkla; en kötü hâl, iki dilde 60 karakterlik başlık, 16:9 afişin yanındaki dar sütunda. */
+const sinirAfisBasligi = {
+  tur: 'duyuru', karakter: 0, parca: { yerlesim: 'afis-sol', metinli: false },
+  oge: DUYURU({ id: 'sinir-afis-baslik', gorsel: '/media/duyurular/test-afis.svg', gorselOran: 16 / 9, tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.afisMetin + 1) }, fr: { baslik: kes(K_FR, BD.baslik), metin: kes(K_FR, BD.afisMetin + 1) } }),
+};
 const SINIR_ICERIK = { derleme: '', eksik: [], ayetler: [], hadisler: [sinirHadis(BUTCE.manevi[1]).oge] };
 const TEK_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [ICERIK.hadisler[0]] };
 
@@ -1176,22 +1181,25 @@ test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
     await yatayDenetle(page);
   });
 
-  test('görselli duyuru: afiş solda panel boyunca, yazı sağda; afiş panelin %45’ini aşmaz; taşma yok', async ({ page }) => {
-    await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
-    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([DUYURU({ gorsel: '/media/duyurular/test-afis.svg', gorselOran: 16 / 9 })], SABIT_60SN) });
-    const kart = page.locator('.slayt-duyuru');
-    await expect(kart).toHaveAttribute('data-yerlesim', 'afis-sol');
-    await expect.poll(() => kart.locator('.afis img').evaluate((e) => e.complete && e.naturalWidth > 0)).toBe(true);
-    const o = await kart.evaluate((e) => {
-      const r = (s) => { const b = e.querySelector(s).getBoundingClientRect(); return { left: b.left, right: b.right, width: b.width, height: b.height }; };
-      return { afis: r('.afis'), govde: r('.afisli'), levha: r('.afisli .levha') };
+  for (const oran of [16 / 9, 0.707]) {
+    test(`görselli duyuru (oran ${oran.toFixed(3)}): afiş solda panel boyunca, genişlik = min(yükseklik × oran, %45); yazı sağda; taşma yok`, async ({ page }) => {
+      await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
+      await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([DUYURU({ gorsel: '/media/duyurular/test-afis.svg', gorselOran: oran })], SABIT_60SN) });
+      const kart = page.locator('.slayt-duyuru');
+      await expect(kart).toHaveAttribute('data-yerlesim', 'afis-sol');
+      await expect.poll(() => kart.locator('.afis img').evaluate((e) => e.complete && e.naturalWidth > 0)).toBe(true);
+      const o = await kart.evaluate((e) => {
+        const r = (s) => { const b = e.querySelector(s).getBoundingClientRect(); return { left: b.left, right: b.right, width: b.width, height: b.height }; };
+        return { afis: r('.afis'), govde: r('.afisli'), levha: r('.afisli .levha') };
+      });
+      expect(o.afis.width, 'afiş en çok %45').toBeLessThanOrEqual(o.govde.width * AFIS_EN_COK + 1);
+      expect(Math.abs(o.afis.width - Math.min(o.govde.height * oran, o.govde.width * AFIS_EN_COK)), 'genişlik = min(yükseklik × oran, %45)').toBeLessThanOrEqual(1);
+      expect(Math.abs(o.afis.height - o.govde.height), 'afiş panel boyunca').toBeLessThanOrEqual(1);
+      expect(o.levha.left, 'yazı afişin sağında').toBeGreaterThanOrEqual(o.afis.right);
+      await expect(page.locator('[data-alan="slayt"]')).toHaveAttribute('data-sigdi', 'evet');
+      await yatayDenetle(page);
     });
-    expect(o.afis.width, 'afiş en çok %45').toBeLessThanOrEqual(o.govde.width * 0.45 + 1);
-    expect(Math.abs(o.afis.height - o.govde.height), 'afiş panel boyunca').toBeLessThanOrEqual(1);
-    expect(o.levha.left, 'yazı afişin sağında').toBeGreaterThanOrEqual(o.afis.right);
-    await expect(page.locator('[data-alan="slayt"]')).toHaveAttribute('data-sigdi', 'evet');
-    await yatayDenetle(page);
-  });
+  }
 
   test('saat 1970e dönmüşse uyarı 5u yazıyla üst banda sığar', async ({ page }) => {
     await page.clock.install({ time: new Date(0) });
@@ -1318,6 +1326,10 @@ for (const sahne of TABAN_SAHNELERI) {
     for (const o of sonuclar) {
       expect(o.sigdi, `${o.id} sığmalı`).toBe(true);
       tabanDenetle(o);
+      if (o.id.indexOf('sinir-afis-') === 0) {
+        expect(o.afisGenislik, `${o.id} afiş kutusu boyutlanmış`).toBeGreaterThan(0);
+        expect(Math.abs(o.afisGenislik - Math.min(o.govdeH * o.afisOran, o.govdeW * AFIS_EN_COK)), `${o.id} afiş genişliği = min(yükseklik × oran, %45)`).toBeLessThanOrEqual(1);
+      }
       if (o.id.indexOf('sinir-dua-') === 0) expect(o.yuz, `${o.id} Kur'an yüzü`).toBe('kuran');
     }
   });

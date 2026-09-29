@@ -100,6 +100,12 @@ test('CMS sınırları bütçeyle aynı: ekranMetni 180, ekranBasligi 60', () =>
   const yml = readFileSync(new URL('../public/admin/icerik/config.yml', import.meta.url), 'utf8');
   assert.match(yml, new RegExp(`name: ekranMetni[^\\n]*\\{0,${D.ikiSlaytMetin}\\}`));
   assert.match(yml, new RegExp(`name: ekranBasligi[^\\n]*\\{0,${D.baslik}\\}`));
+  // Hata iletisi de CMS'te görünür: iki alanda da aynı açıklama.
+  for (const ad of ['ekranBasligi', 'ekranMetni']) assert.match(yml, new RegExp(`name: ${ad}[^\\n]*Bu metin ekrana sığmaz, kısaltın`));
+  // Astro şeması sınırları BUTCE'den alır (üçüncü bir kopya yok).
+  const sema = readFileSync(new URL('../src/content.config.ts', import.meta.url), 'utf8');
+  assert.match(sema, /ekranBasligi: z\.string\(\)\.max\(BUTCE\.duyuru\.baslik\)/);
+  assert.match(sema, /ekranMetni: z\.string\(\)\.max\(BUTCE\.duyuru\.ikiSlaytMetin\)/);
 });
 
 test('duyuru: FR metni TR’den uzunsa eşik FR’ye göre (91–180 → ayrı slaytlar), TR kısa olsa da', () => {

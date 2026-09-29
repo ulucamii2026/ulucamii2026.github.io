@@ -2,6 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { parse as yamlParse } from 'yaml';
 import { EKRANLAR } from './lib/ekran/akis.ts';
+import { BUTCE } from './lib/ekran/butce.ts';
 
 /** Sveltia boş bırakılan isteğe bağlı alanı "" (ya da null) yazabilir; ekran alanlarında bu "yok" demektir. */
 const bosIseYok = (v: unknown) => (v === '' || v === null ? undefined : v);
@@ -33,8 +34,8 @@ const duyurular = defineCollection({
     ekranBaslangic: z.preprocess(bosIseYok, z.coerce.date().optional()),
     ekranSon: z.preprocess(bosIseYok, z.coerce.date().optional()),
     ekranHedef: z.array(z.enum(EKRANLAR)).default([]),
-    ekranBasligi: z.string().max(60).optional(),
-    ekranMetni: z.string().max(180).optional(),
+    ekranBasligi: z.string().max(BUTCE.duyuru.baslik).optional(),
+    ekranMetni: z.string().max(BUTCE.duyuru.ikiSlaytMetin).optional(),
     taslak: z.boolean().default(false),
   }),
 });

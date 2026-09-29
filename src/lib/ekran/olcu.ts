@@ -37,9 +37,6 @@ export const OLCU: Record<LevhaTuru, LevhaOlcusu> = {
 export const UST_BASLIK = 2.6;
 
 /** Slayt köküne yazılacak CSS değişkenleri (ad, değer). */
-/** Afişli duyuruda görsel oranı (genişlik ÷ yükseklik) bilinmiyorsa: A serisi dikey afiş (1 : √2). */
-export const AFIS_ORANI = 0.707;
-
 export function olcuDegiskenleri(tur: LevhaTuru): Array<[string, string]> {
   const o = OLCU[tur];
   return [
@@ -53,3 +50,8 @@ export function olcuDegiskenleri(tur: LevhaTuru): Array<[string, string]> {
     ['--f-susleme', String(o.susleme)],
   ];
 }
+
+/** Afişli duyuruda görsel oranı (genişlik ÷ yükseklik) bilinmiyorsa: A serisi dikey afiş (1 : √2). */
+export const AFIS_ORANI = 0.707;
+/** Afiş kutusunun en geniş hâli: panel genişliğinin oranı (yazı sütununa en az %55 kalır). */
+export const AFIS_EN_COK = 0.45;

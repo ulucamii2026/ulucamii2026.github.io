@@ -4,7 +4,7 @@
 import type { Slayt } from '../lib/ekran/secim.ts';
 import type { EkranDuyuru } from '../lib/ekran/akis.ts';
 import { duyuruDilleri } from '../lib/ekran/butce.ts';
-import { AFIS_ORANI, OLCU, olcuDegiskenleri, UST_BASLIK, type LevhaTuru } from '../lib/ekran/olcu.ts';
+import { AFIS_EN_COK, AFIS_ORANI, OLCU, olcuDegiskenleri, UST_BASLIK, type LevhaTuru } from '../lib/ekran/olcu.ts';
 import { olcekBul, type OlcekSonucu } from '../lib/ekran/sigdirma.ts';
 import { ayetKaynagi } from '../lib/ekran/kaynak.ts';
 import { el } from './gorunum.ts';
@@ -84,14 +84,14 @@ function afisli(kok: HTMLElement, kart: HTMLElement, levha: HTMLElement, d: Ekra
   return govde;
 }
 
-/** Afiş kutusu: yükseklik gövde boyunca, genişlik = yükseklik × oran, en çok gövdenin %45'i. CSS aspect-ratio ve
+/** Afiş kutusu: yükseklik gövde boyunca, genişlik = yükseklik × oran, en çok gövdenin AFIS_EN_COK oranı (olcu.ts, %45). CSS aspect-ratio ve
  *  min() Chromium 70'te yok; genişlik px olarak yazılır. Ölçekten bağımsızdır: gövdenin boyu levhayla değişmez. */
 function afisBoyutla(kok: HTMLElement): void {
   const kutu = kok.querySelector('.afis') as HTMLElement | null;
   if (!kutu || kutu.hidden || !kutu.parentElement) return;
   const govde = kutu.parentElement;
   const oran = parseFloat(kutu.getAttribute('data-oran') || '') || AFIS_ORANI;
-  kutu.style.width = Math.round(Math.min(govde.clientHeight * oran, govde.clientWidth * 0.45)) + 'px';
+  kutu.style.width = Math.round(Math.min(govde.clientHeight * oran, govde.clientWidth * AFIS_EN_COK)) + 'px';
 }
 
 export function slaytCiz(kok: HTMLElement, s: Slayt): void {
