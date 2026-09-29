@@ -12,7 +12,7 @@ import { alan, yaz } from './gorunum.ts';
 import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
 import { vakitleriCiz } from './vakitler.ts';
-import { bosCiz, sigdir, slaytCiz } from './slaytlar.ts';
+import { bosCiz, levhaSigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
 import { akisTazele, AKIS_ARALIGI_MS, duyuruAnahtari, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 
@@ -55,8 +55,29 @@ const ekranId = ekranIdOku(parametre.get('ekran'));
 olcekKur(ekran, donmeOku(parametre.get('don')), duzenOku(parametre.get('duzen')), () => {
   dakikalik(new Date());
   const slayt = alan('slayt');
-  if (slayt) sigdir(slayt);
+  if (slayt && typeof ResizeObserver !== 'function') levhaSigdir(slayt); // ResizeObserver varken tek tetikçi odur
 });
+/* Slayt alanının boyutu değişince (pencere, döndürme, Cuma satırı) levha yeniden sığdırılır. ResizeObserver
+   Chromium 64+; yoksa olcekKur geri çağrısı ve Cuma satırı denetimi yedektir (yalnız o zaman çalışır: tek tetikçi).
+   Sığdırma yalnız --olcek'i değiştirir, alanın kendi boyutunu değil (flex: 1 / ızgara satırı): gözlemci kendini
+   yeniden tetiklemez. */
+try {
+  const slaytAlani = alan('slayt');
+  if (slaytAlani && typeof ResizeObserver === 'function') new ResizeObserver(() => { levhaSigdir(slaytAlani); }).observe(slaytAlani);
+} catch (hata) {
+  console.error(hata);
+}
+
+/** İlk slayttan önce Arapça yüzler yüklenir (en çok 3 sn): ilk levha yedek yazı tipiyle ölçülüp sonra taşmasın.
+ *  Yüklenemese de açılış sürer (levhaSigdir yazı tipi gelince yeniden sığdırır). */
+const ARAPCA_YUZLER = ['Amiri'];
+function arapcaYukle(): Promise<void> {
+  const fonts = document.fonts;
+  if (!fonts || typeof fonts.load !== 'function') return Promise.resolve();
+  const yukle = Promise.all(ARAPCA_YUZLER.map((y) => fonts.load('32px "' + y + '"', 'بسم'))).then(() => undefined, () => undefined);
+  return Promise.race([yukle, new Promise<void>((r) => { setTimeout(r, 3000); })]);
+}
+
 yaz('cami-tr', sayfa.cami.tr);
 yaz('cami-fr', sayfa.cami.fr);
 
@@ -97,9 +118,9 @@ function dakikalik(simdi: Date): void {
       vakitleriCiz(kok, gorunum, sayfa.vakit, gecerli, sayfa.cumaSaati || '', ekran.getAttribute('data-duzen') === 'yatay');
       // Cuma satırı açılıp kapanınca (Perşembe→Cuma gece yarısı ve ertesi gün) vakit alanı 10u uzar/kısalır, slayt
       // alanı tersine değişir: ekrandaki slayt yeni alana hemen yeniden sığdırılır, yoksa altı sonraki slayta dek
-      // (≤ 30 sn) kırpılırdı. sigdir yalnız slayt çizilirken ve görsel/yazı tipi yüklenince çalışıyordu.
+      // (≤ 30 sn) kırpılırdı. ResizeObserver yoksa (eski WebView) yedek olarak levhaSigdir burada çağrılır.
       const slayt = alan('slayt');
-      if (slayt && kok.classList.contains('cumali') !== cumaliydi) sigdir(slayt);
+      if (slayt && typeof ResizeObserver !== 'function' && kok.classList.contains('cumali') !== cumaliydi) levhaSigdir(slayt);
     }
     ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
     havaCiz();
@@ -139,6 +160,7 @@ async function veriDongusu(): Promise<void> {
     dakikalik(new Date());
     if (!slaytBasladi) {
       slaytBasladi = true;
+      await arapcaYukle();
       sonrakiSlayt();
     }
   } finally {
@@ -172,6 +194,8 @@ let slaytBasladi = false;
  *  geldiyse (akisDongusu) tur, sonuna kadar beklenmeden SONRAKİ slaytta yeniden kurulur; ekrandaki slayt süresini
  *  normal doldurmuştur. Yalnız derleme damgası değişen akış (her yayın) turu baştan başlatmaz. */
 let turAnahtari: string | undefined;
+/** Tabanda da sığmadığı için atlanan slayt sayısı (teşhis; slayt alanında data-atlanan). */
+let atlanan = 0;
 function sonrakiSlayt(): void {
   let sureMs = 15_000;
   try {
@@ -182,14 +206,25 @@ function sonrakiSlayt(): void {
       tur = slaytListesi({ duyurular: veri.akis?.duyurular ?? [], ayetler: veri.icerik?.ayetler ?? [], hadisler: veri.icerik?.hadisler ?? [] }, ekranId, bugunTarih(new Date()));
       sira = 0;
       turAnahtari = anahtar;
+      kok.setAttribute('data-atlanan', String(atlanan));
     }
-    const s = tur[sira++];
+    // Okunur taban kuralı: tabanda da sığmayan slayt atlanır. Turun kalanında sığan kalmadıysa sakin slayt gösterilir;
+    // bir sonraki çağrıda tur yeniden kurulur, döngü donmaz. İstisna: yazı tipleri hâlâ yükleniyorsa ölçüm yedek
+    // yazı tipiyle yapılmıştır ve yanıltıcı olabilir; slayt atlanmaz, gösterilir (ölçüldüğü gibi) ve yazı tipleri
+    // gelince levhaSigdir yeniden sığdırır (o zaman gerçekten sığmıyorsa sonraki turda atlanır).
+    let s: Slayt | undefined;
+    while (sira < tur.length) {
+      const aday = tur[sira++];
+      slaytCiz(kok, aday);
+      if (levhaSigdir(kok).sigdi || (document.fonts && document.fonts.status === 'loading')) { s = aday; break; }
+      atlanan++;
+      kok.setAttribute('data-atlanan', String(atlanan));
+      console.warn('[ekran] slayt ekrana sığmadı, atlandı: ' + aday.tur + ' ' + aday.oge.id);
+    }
     if (!s) {
       bosCiz(kok, sayfa.cami);
       return;
     }
-    slaytCiz(kok, s);
-    sigdir(kok);
     sureMs = slaytSuresi(s.karakter, veri.akis?.ayar.slayt ?? VARSAYILAN_SLAYT) * 1000;
     // Bozuk bir `ayar.slayt` (ör. önbellekteki eski paket + yeni şemalı akış) NaN ya da 0 verir; setTimeout(…, NaN)
     // 0 ms demektir ve slaytlar durmadan yeniden çizilirdi.

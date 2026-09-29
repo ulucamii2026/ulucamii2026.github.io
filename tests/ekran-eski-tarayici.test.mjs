@@ -45,7 +45,7 @@ const YASAK_CSS = [
   /backdrop-filter/, // Chrome 76
   /@property/, // Chrome 85
   /content-visibility/, // Chrome 85
-  /text-wrap\s*:/, // Chrome 114
+  /text-wrap\s*:(?!\s*balance\b)/, // Chrome 114. Yalnız balance serbest: satır SAYISINI değiştirmez (levha ölçümü bozulmaz), eski WebView yok sayar
   /(^|[;{\s])(margin|padding|inset|border)-(inline|block)\s*:/, // Chrome 87 (mantıksal kısaltmalar)
   /(^|[^-\w])(hwb|lab|lch|oklab|color)\(/, // Chrome 101–111
   /@media[^{]*[<>]/, // Chrome 104 (aralık sözdizimi)
@@ -60,10 +60,10 @@ const YASAK_CSS = [
 test('yasaklı kalıplar örnek kodu gerçekten yakalar', () => {
   const jsOrnekleri = ['a.union(b)', 's.symmetricDifference(t)', 'm.values().map(f)', 'Iterator.from(x)', 'Array.fromAsync(x)', 'URL.canParse(u)', 'Response.json(v)', 'crypto.randomUUID()', '{fractionalSecondDigits:2}', '{dayPeriod:"short"}'];
   for (const o of jsOrnekleri) assert.ok(YASAK_JS.some((r) => r.test(o)), `JS kalıbı yakalamadı: ${o}`);
-  const cssOrnekleri = ['a:not(.b, .c){}', '.a{margin-top:1lh}', '.a{height:2rlh}', '@scope (.a){}', '@starting-style{.a{opacity:0}}'];
+  const cssOrnekleri = ['a:not(.b, .c){}', '.a{margin-top:1lh}', '.a{height:2rlh}', '@scope (.a){}', '@starting-style{.a{opacity:0}}', '.a{text-wrap:pretty}', '.a{text-wrap: wrap}'];
   for (const o of cssOrnekleri) assert.ok(YASAK_CSS.some((r) => r.test(o)), `CSS kalıbı yakalamadı: ${o}`);
   // Chromium 70'te olan biçimler yakalanmamalı (yanlış alarm yok).
-  for (const o of ['a:not(.b){}', '.a{line-height:1.3}', 'yanit.json()', 'Object.entries(x).map(f)']) {
+  for (const o of ['a:not(.b){}', '.a{line-height:1.3}', 'yanit.json()', 'Object.entries(x).map(f)', '.a{text-wrap:balance}', '.a{text-wrap: balance}']) {
     assert.ok(!YASAK_CSS.concat(YASAK_JS).some((r) => r.test(o)), `yanlış alarm: ${o}`);
   }
 });

@@ -3,6 +3,11 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { brukselTarih } from '../../src/lib/namaz.ts';
 import { hicriCevir } from '../../src/i18n/hicri.ts';
+import { build } from 'esbuild';
+import { OLCU } from '../../src/lib/ekran/olcu.ts';
+import { BUTCE } from '../../src/lib/ekran/butce.ts';
+import { ekranIcerigi } from '../../src/lib/ekran/icerik.ts';
+import { AHLAK_HADISLERI } from '../../src/lib/hadis-verisi.ts';
 
 /* Cami ekranı (/ekran/, docs/EKRAN-FAZ1-UYGULAMA-PLANI.md). Tuval dikey 1080×1920; kutu yatay sinyal
    verdiğinde ?don=90. Saat page.clock ile kurulur. Testler bilerek New York saat diliminde koşar:
@@ -186,13 +191,13 @@ test.describe('yatay düzen: tuval, 1920×1080 pencere', () => {
     await expect(page.locator('[data-alan="tarih-tr"]')).toContainText(ayAdi(t, 'tr-TR'));
   });
 
-  test('yeniden boyutlanınca main.ts’teki geri çağrı slaytı yeniden sığdırır (sigdir)', async ({ page }) => {
+  test('yeniden boyutlanınca slayt yeniden sığdırılır (levhaSigdir)', async ({ page }) => {
     await page.clock.install({ time: an(ornek, '12:00') });
     await page.goto('/ekran/');
     const slayt = page.locator('[data-alan="slayt"]');
     await expect(slayt).not.toBeEmpty(); // ilk slayt çizildi
-    await page.evaluate(() => document.fonts.ready.then(() => undefined)); // geç gelen yazı tipi sigdir'i sonradan tetiklemesin
-    // sigdir'in basamakları 1, 0,9, 0,81… hiçbir zaman 0,5 vermez; bu değeri yalnız geri çağrının sigdir'i silebilir.
+    await page.evaluate(() => document.fonts.ready.then(() => undefined)); // geç gelen yazı tipi levhaSigdir'i sonradan tetiklemesin
+    // levhaSigdir ölçeği 1'in altına indirmez; 0,5 değerini yalnız yeniden sığdırma silebilir.
     await slayt.evaluate((e) => e.style.setProperty('--olcek', '0.5'));
     await page.setViewportSize({ width: 1080, height: 1920 });
     await expect.poll(() => slayt.evaluate((e) => e.style.getPropertyValue('--olcek'))).not.toBe('0.5');
@@ -425,6 +430,66 @@ const ICERIK = { derleme: '', eksik: [],
   ayetler: [{ id: 'a1', referans: { tr: 'İnşirah, 94/5-6', fr: 'Ach-Charh, 94:5-6' }, ar: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', tr: 'Demek ki zorlukla beraber bir kolaylık vardır.', kaynakTr: 'Kur’an Yolu Meali (DİB)' }],
   hadisler: [{ id: 'h1', ar: 'تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ', tr: 'Mümin kardeşine tebessüm etmen senin için bir sadakadır.', fr: 'Sourire à ton frère est pour toi une aumône.', kaynak: 'Tirmizî, Birr, 36' }] };
 
+/* Levha ölçer (tests/web/yardimci/levha-olcer.ts): çiziciyi sayfada doğrudan çağırır; üretim paketine girmez. */
+let levhaOlcerKodu = null;
+async function levhaOlcerYukle(page) {
+  if (!levhaOlcerKodu) {
+    const r = await build({ entryPoints: [resolve(process.cwd(), 'tests/web/yardimci/levha-olcer.ts')], bundle: true, write: false, format: 'iife', target: ['chrome70'], logLevel: 'silent' });
+    levhaOlcerKodu = r.outputFiles[0].text;
+  }
+  await page.addScriptTag({ content: levhaOlcerKodu });
+}
+
+/** Her slaytı çizer ve sığdırır; ölçek, sığma, taşma ve her paragrafın hesaplanan yazı boyu (px). */
+const levhaOlc = (page, slaytlar) => page.evaluate((liste) => {
+  const kok = document.querySelector('[data-alan="slayt"]');
+  const u = parseFloat(getComputedStyle(document.getElementById('ekran')).getPropertyValue('--u'));
+  return liste.map((s) => {
+    window.__levha.slaytCiz(kok, s);
+    const r = window.__levha.levhaSigdir(kok);
+    const paragraflar = Array.prototype.map.call(kok.querySelectorAll('.levha p'), (p) => ({ sinif: p.className, px: parseFloat(getComputedStyle(p).fontSize) }));
+    return { id: s.oge.id, tur: s.tur, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth };
+  });
+}, slaytlar);
+
+/** Paragraf sınıfı → olcu.ts alanı. */
+const TABAN_ALANI = { ar: 'ar', okunus: 'okunus', tr: 'tr', fr: 'fr', kaynak: 'kaynak', baslik: 'baslikTr', 'baslik fr': 'baslikFr' };
+function tabanDenetle(o) {
+  for (const p of o.paragraflar) {
+    const taban = OLCU[o.tur][TABAN_ALANI[p.sinif]] * o.u;
+    expect(p.px, `${o.id} .${p.sinif}: ${p.px.toFixed(1)} px ≥ taban ${taban.toFixed(1)} px`).toBeGreaterThanOrEqual(taban - 0.5);
+  }
+  expect(o.olcek, `${o.id} ölçek ≥ 1`).toBeGreaterThanOrEqual(1);
+  expect(o.tasmaY, `${o.id} dikey taşma`).toBeLessThanOrEqual(1);
+  expect(o.tasmaX, `${o.id} yatay taşma`).toBeLessThanOrEqual(1);
+}
+
+/* Bütçe sınırında SENTETİK metinler (src/lib/ekran/butce.ts): gerçek bir ayet ya da hadis değildir; uzunluk ve harf
+   genişliği gerçekçi cümlelerden kesilir. */
+const kes = (kalip, n) => kalip.repeat(Math.ceil(n / kalip.length) + 1).slice(0, n).trim().padEnd(n, '.');
+const K_AR = 'إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ ';
+const K_TR = 'Müminler ancak kardeştir; öyleyse kardeşlerinizin arasını düzeltin. ';
+const K_FR = 'Les croyants ne sont que des frères ; établissez donc la concorde entre vos frères. ';
+const K_KAYNAK = 'Buhârî, Edeb, 69; Müslim, Birr ve Sıla, 105; ';
+const sinirHadis = (p) => ({ tur: 'hadis', karakter: 0, oge: { id: 'sinir-' + p.ad, ar: kes(K_AR, p.ar), tr: kes(K_TR, p.tr), fr: kes(K_FR, p.fr), kaynak: kes(K_KAYNAK, p.kaynak) } });
+const BD = BUTCE.duyuru;
+const sinirDuyuru = { tur: 'duyuru', karakter: 0, oge: DUYURU({ id: 'sinir-duyuru', tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.tekSlaytMetin) }, fr: { baslik: kes(K_FR, BD.baslik), metin: kes(K_FR, BD.tekSlaytMetin) } }) };
+const SINIR_ICERIK = { derleme: '', eksik: [], ayetler: [], hadisler: [sinirHadis(BUTCE.manevi[1]).oge] };
+const TEK_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [ICERIK.hadisler[0]] };
+
+/* Derlemenin yayımladığı gerçek kayıtlar (onaylı ve bütçeye uyan; sitedeki hadisler dahil). Taban kapısında her biri
+   de ölçülür. Dosya henüz yoksa (dualar, esma: T4'te doğar) boş sayılır; T4 öncesi ekranIcerigi fazla argümanı yok sayar. */
+const gercekSlaytlar = () => {
+  const oku = (ad) => { try { return JSON.parse(readFileSync(resolve(process.cwd(), `src/data/ekran/${ad}.json`), 'utf8')); } catch { return []; } };
+  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('esma'));
+  return [].concat(
+    s.ayetler.map((oge) => ({ tur: 'ayet', karakter: 0, oge })),
+    s.hadisler.map((oge) => ({ tur: 'hadis', karakter: 0, oge })),
+    (s.dualar || []).map((oge) => ({ tur: 'dua', karakter: 0, oge })),
+    (s.esmalar || []).map((oge) => ({ tur: 'esma', karakter: 0, oge })),
+  );
+};
+
 test('slayt turu duyuru → günün ayeti → günün hadisi; TR ve FR alt alta', async ({ page }) => {
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU()]) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
@@ -449,28 +514,28 @@ test('başka ekrana hedeflenmiş duyuru bu ekranda gösterilmez', async ({ page 
   await expect(page.locator('.slayt-duyuru')).toHaveCount(0);
 });
 
-test('uzun duyuru metni slayt alanından taşmaz', async ({ page }) => {
-  const uzun = 'Cemaatimizin dikkatine: '.repeat(7).slice(0, 160);
-  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ tr: { baslik: 'Yıllık genel kurul toplantısı ve yönetim kurulu seçimi hakkında', metin: uzun }, fr: { baslik: 'Assemblée générale annuelle et élection du conseil d’administration', metin: uzun } })]) }));
+test('bütçe sınırındaki duyuru (başlık 60, metin 90, iki dil) dikey ekranda taşmadan sığar', async ({ page }) => {
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([sinirDuyuru.oge]) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
   await page.clock.install({ time: an(ornek, '12:00') });
   await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
   await expect(page.locator('.slayt-duyuru')).toBeVisible();
-  expect(await page.locator('[data-alan="slayt"]').evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
+  await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+  expect(await slayt.evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
 });
 
 // Sitede Cuma saati girilmişse Perşembe→Cuma gece yarısı vakit alanı Cuma satırı için 10u uzar, slayt alanı o kadar
 // kısalır (ekran.css → .vakitler.cumali). Ekrandaki slayt yeni alana hemen yeniden sığdırılmalı; yoksa altı sonraki
-// slayta dek (≤ 30 sn) kırpılırdı. Slayt bilerek uzun (TR ve FR metin 280'er karakter, bugünkü en uzun duyuru özeti
-// kadar) ve 60 sn'lik: gece yarısı ekranda hâlâ aynı slayt vardır. Sahte saat slayt görününce durdurulur; gece yarısı
-// makine yüküne değil runFor'a bağlı gelir.
+// slayta dek (≤ 30 sn) kırpılırdı. Slayt bütçe sınırındaki iki dilli duyurudur (başlık 60, metin 90): Perşembe alanını
+// büyütülmüş ölçekle doldurur, Cuma'nın 10u kısalmış alanına aynı ölçekle sığmaz; 60 sn'liktir, gece yarısı ekranda
+// hâlâ aynı slayt vardır. Sahte saat slayt görününce durdurulur; gece yarısı makine yüküne değil runFor'a bağlı gelir.
 test('Perşembe→Cuma gece yarısı Cuma satırı açılınca ekrandaki slayt yeni alana yeniden sığdırılır', async ({ page }) => {
   const cuma = kaynak.gunler.find(cumaMi);
   test.skip(!cuma, 'veride Cuma yok');
   const geceYarisi = an(cuma, '00:00').getTime();
-  const uzun = 'Cemaatimizin dikkatine: '.repeat(12).slice(0, 280);
   await page.route('**/ekran/', cumaSaatiEkle('13:30'));
-  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ tr: { baslik: 'Yıllık genel kurul toplantısı ve yönetim kurulu seçimi hakkında', metin: uzun }, fr: { baslik: 'Assemblée générale annuelle et élection du conseil d’administration', metin: uzun } })], { tabanSn: 60, karakterSn: 0, enAzSn: 60, enCokSn: 60 }) }));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([sinirDuyuru.oge], { tabanSn: 60, karakterSn: 0, enAzSn: 60, enCokSn: 60 }) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
   await page.clock.install({ time: new Date(geceYarisi - 20_000) });
   await page.goto('/ekran/');
@@ -966,14 +1031,14 @@ const enUzunGece = kaynak.gunler
   .map((g, i, t) => (t[i + 1] && t[i + 1].tarih === ertesiGun(g) ? { g, dk: 1440 - dakika(g.yatsi) + dakika(t[i + 1].imsak) } : null))
   .filter(Boolean)
   .reduce((a, b) => (b.dk > a.dk ? b : a), { g: null, dk: -1 });
+// Bütçe DIŞI sentetik fikstür (Arapça 210, TR 260, FR 350): ekran bu slaytı sığdıramaz ve atlar (Review Focus 4).
 const UZUN_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [{ id: 'uzun', kaynak: 'Buhârî, Bed’ü’l-vahy, 1; Müslim, İmâre, 155',
   // Sentetik uzunluk fikstürü (Arapça ~210, TR ~260, FR ~350 karakter): gerçek bir hadis metni değildir.
   ar: 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى '.repeat(5).slice(0, 210),
   tr: 'Ameller ancak niyetlere göre değerlendirilir ve herkese ancak niyet ettiği şey vardır. '.repeat(4).slice(0, 260),
   fr: 'Les actes ne valent que par les intentions, et chacun n’obtient que ce qu’il a eu l’intention de faire. '.repeat(4).slice(0, 350) }] };
 const AFIS_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 16 9"><rect width="16" height="9" fill="#8a8a8a"/></svg>';
-const UZUN_DUYURU_METNI = 'Cemaatimizin dikkatine: '.repeat(7).slice(0, 160);
-const UZUN_DUYURU = DUYURU({ tr: { baslik: 'Yıllık genel kurul toplantısı ve yönetim kurulu seçimi hakkında', metin: UZUN_DUYURU_METNI }, fr: { baslik: 'Assemblée générale annuelle et élection du conseil d’administration', metin: UZUN_DUYURU_METNI } });
+const UZUN_DUYURU = sinirDuyuru.oge;
 
 test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
   test.use({ viewport: { width: 961, height: 541 } });
@@ -1061,15 +1126,25 @@ test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
     await yatayDenetle(page);
   });
 
-  test('uzun duyuru slayt alanından taşmaz', async ({ page }) => {
+  test('bütçe sınırındaki duyuru slayt alanından taşmaz', async ({ page }) => {
     await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([UZUN_DUYURU], SABIT_60SN) });
     await expect(page.locator('.slayt-duyuru')).toBeVisible();
+    await expect(page.locator('[data-alan="slayt"]')).toHaveAttribute('data-sigdi', 'evet');
     await yatayDenetle(page);
   });
 
-  test('uzun hadis (Arapça ~210, TR ~260, FR ~350 karakter) slayt alanından taşmaz', async ({ page }) => {
+  test('hiçbir slayt sığmazsa atlanır, «Hoş geldiniz» görünür, tur donmaz', async ({ page }) => {
     await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([], SABIT_60SN), icerik: UZUN_HADIS });
-    await expect(page.locator('.slayt-hadis .kaynak')).toBeVisible();
+    const slayt = page.locator('[data-alan="slayt"]');
+    // İlk slayt yazı tipleri yüklenirken gösterilmiş olabilir (yalnız o durumda atlanmaz); yazı tipleri oturduktan sonra
+    // 60 sn'lik slayt süresi dolunca tur yeniden kurulur ve sığmayan slayt artık atlanır.
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    await page.clock.runFor(61_000);
+    await expect(page.locator('.slayt.bos')).toBeVisible();
+    const once = Number(await slayt.getAttribute('data-atlanan'));
+    expect(once).toBeGreaterThanOrEqual(1);
+    await page.clock.runFor(16_000);
+    await expect.poll(async () => Number(await slayt.getAttribute('data-atlanan'))).toBeGreaterThan(once);
     await yatayDenetle(page);
   });
 
@@ -1114,17 +1189,20 @@ test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
 test('yatay A+ görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async ({ page }) => {
   test.skip(!process.env.EKRAN_GORSEL, 'görüntü üretimi isteğe bağlı');
   let cumaSaati = null;
-  let hadisModu = false;
+  let akisModu = 'duyuru';
+  let icerikModu = 'normal';
   await page.route('**/ekran/', (route) => (cumaSaati === null ? route.fallback() : cumaSaatiEkle(cumaSaati)(route)));
-  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: hadisModu ? AKIS([], SABIT_60SN) : AKIS([DUYURU()], SABIT_60SN) }));
-  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: hadisModu ? UZUN_HADIS : ICERIK }));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akisModu === 'duyuru' ? AKIS([DUYURU()], SABIT_60SN) : AKIS([], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: icerikModu === 'sinir' ? SINIR_ICERIK : icerikModu === 'tek' ? TEK_HADIS : ICERIK }));
   const sahneler = [
     ['yatay-duzen-acik', [1920, 1080], an(ornek, ornek.ogle, -30), 'ogle'],
     ['yatay-duzen-koyu', [1920, 1080], an(ornek, ornek.aksam, 30), 'yatsi'],
     ['yatay-duzen-961x541', [961, 541], an(ornek, ornek.ogle, -30), 'ogle'],
     ['yatay-duzen-cuma', [961, 541], cumaGunu ? an(cumaGunu, cumaGunu.ogle, -30) : null, 'ogle', () => { cumaSaati = '13:30'; }],
-    ['yatay-duzen-uzun-hadis', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { cumaSaati = null; hadisModu = true; }],
-    ['yatay-duzen-yarin-imsak', [961, 541], an(yatsiGunu, yatsiGunu.yatsi, 30), 'imsak', () => { hadisModu = false; }],
+    ['levha-kisa-ayet', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { cumaSaati = null; akisModu = 'bos'; }],
+    ['levha-kisa-hadis-koyu', [1280, 720], an(ornek, ornek.aksam, 30), 'yatsi', () => { icerikModu = 'tek'; }],
+    ['levha-sinir-hadis', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { icerikModu = 'sinir'; }],
+    ['yatay-duzen-yarin-imsak', [961, 541], an(yatsiGunu, yatsiGunu.yatsi, 30), 'imsak', () => { akisModu = 'duyuru'; icerikModu = 'normal'; }],
     ['yatay-duzen-1970', [961, 541], new Date(0), null],
   ];
   let kurulu = false;
@@ -1139,4 +1217,122 @@ test('yatay A+ görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async (
     await page.evaluate(() => document.fonts.ready.then(() => undefined));
     await page.screenshot({ path: `test-results/ekran-gorsel/${ad}.png`, animations: 'disabled' });
   }
+});
+
+test.describe('levha (A): ortalı, iki yönlü sığdırma, 1280×720', () => {
+  test.use({ viewport: { width: 1280, height: 720 } });
+
+  test('kısa hadis levhayı doldurur: ölçek büyür, Arapça ortalı; levha dikeyde ortalı', async ({ page }) => {
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([], SABIT_60SN), icerik: TEK_HADIS });
+    const slayt = page.locator('[data-alan="slayt"]');
+    await expect(slayt.locator('.slayt-hadis')).toBeVisible();
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+    expect(Number(await slayt.getAttribute('data-olcek')), 'kısa metin büyür').toBeGreaterThanOrEqual(1.3);
+    expect(await slayt.locator('.levha .ar').evaluate((e) => getComputedStyle(e).textAlign)).toBe('center');
+    await yatayDenetle(page);
+    // Dikey ortalama taban ölçekte (1) ölçülür: büyütülmüş levha alanı doldurur ve boşluk kalmaz. Değer elle yazılır;
+    // alanın boyu değişmediği için sığdırma bunu ölçüm bitene dek geri almaz.
+    const o = await slayt.evaluate((e) => {
+      e.style.setProperty('--olcek', '1');
+      const kart = e.querySelector('.slayt').getBoundingClientRect();
+      const baslik = e.querySelector('.ust-baslik').getBoundingClientRect();
+      const levha = e.querySelector('.levha').getBoundingClientRect();
+      return { ust: levha.top - baslik.bottom, alt: kart.bottom - levha.bottom, u: parseFloat(getComputedStyle(document.getElementById('ekran')).getPropertyValue('--u')) };
+    });
+    expect(o.alt, 'taban ölçekte levhanın altında boşluk kalır').toBeGreaterThan(5 * o.u);
+    expect(Math.abs(o.ust - o.alt), 'levha dikeyde ortalı (üst başlığın 1,5u alt boşluğu payı)').toBeLessThanOrEqual(2 * o.u + 1);
+  });
+});
+
+/* Taban kapısı: bütçe sınırındaki metin her tuvalde okunur tabanın altına inmeden sığmalı. Üç sahne: en dar yatay
+   (Polaroid TV), Cuma satırıyla dikey (slayt alanı 10u kısalır) ve döndürülmüş tuval (?don=90: ölçüm döndürmeye
+   kanmamalı — Review Focus 2). Slaytlar levha ölçerle sayfada doğrudan çizilir; sahte saat durdurulur. */
+const TABAN_SAHNELERI = [
+  ['yatay 961×541', { width: 961, height: 541 }, '/ekran/', 'yatay', false],
+  ['dikey 1080×1920, Cuma satırıyla', { width: 1080, height: 1920 }, '/ekran/', 'dikey', true],
+  ['döndürülmüş ?don=90 (1920×1080 pencere, dikey tuval)', { width: 1920, height: 1080 }, '/ekran/?don=90', 'dikey', false],
+];
+/** Sahneyi açar, saati durdurur ve levha ölçeri yükler (taban kapısı ve T7'deki kalibrasyon ortak kullanır). */
+async function tabanSahnesiAc(page, [, viewport, adres, duzen, cumali]) {
+  await page.setViewportSize(viewport);
+  if (cumali) await page.route('**/ekran/', cumaSaatiEkle('13:30'));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: TEK_HADIS }));
+  await page.clock.install({ time: cumali ? an(cumaGunu, '12:00') : an(ornek, '12:00') });
+  await page.goto(adres);
+  await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', duzen);
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  if (cumali) await expect(page.locator('[data-alan="vakitler"]')).toHaveClass(/cumali/);
+  await expect(page.locator('[data-alan="slayt"] .slayt-hadis')).toBeVisible();
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1_000));
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  await levhaOlcerYukle(page);
+}
+
+for (const sahne of TABAN_SAHNELERI) {
+  test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis (profil A ve B) ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
+    test.skip(sahne[4] && !cumaGunu, 'veride Cuma yok');
+    await tabanSahnesiAc(page, sahne);
+    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDuyuru].concat(gercekSlaytlar()));
+    for (const o of sonuclar) {
+      expect(o.sigdi, `${o.id} sığmalı`).toBe(true);
+      tabanDenetle(o);
+    }
+  });
+}
+
+/* Arapça yazı tipi dosyası (bugün amiri-arabic.woff2; T6'dan sonra arapca-*.woff2): Work Sans dışındaki her yazı tipi. */
+const ARAPCA_YAZI_TIPI = (u) => u.pathname.indexOf('/ekran/fonts/') === 0 && u.pathname.indexOf('work-sans') < 0;
+
+test('geç gelen Arapça yazı tipi: ilk levha yedek yazı tipiyle çizilir, yazı tipi gelince yeniden sığdırılır', async ({ page }) => {
+  let birak;
+  const bekleyen = new Promise((r) => { birak = r; });
+  await page.route(ARAPCA_YAZI_TIPI, async (route) => { await bekleyen; await route.continue(); });
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: TEK_HADIS }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/', { waitUntil: 'commit' }); // bekleyen yazı tipi 'load' olayını da geciktirir
+  await expect(page.locator('.vakit')).toHaveCount(6); // veri geldi; yazı tipi beklemesi (en çok 3 sn) başladı
+  await page.clock.runFor(3_100);
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-hadis')).toBeVisible();
+  // Kanıt: yeniden sığdırma olmazsa bu değer kalırdı (levhaSigdir ölçeği 1'in altına indirmez).
+  await slayt.evaluate((e) => { e.style.setProperty('--olcek', '0.5'); e.setAttribute('data-olcek', '0.500'); });
+  birak();
+  await expect.poll(() => slayt.getAttribute('data-olcek')).not.toBe('0.500');
+  expect(Number(await slayt.getAttribute('data-olcek'))).toBeGreaterThanOrEqual(1);
+  expect(await slayt.evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
+});
+
+test('boşluksuz uzun dize (duyuru metninde web adresi) satırı kırar, yatay taşma olmaz', async ({ page }) => {
+  // Son parça 64 harf, içinde hiç kırılma fırsatı yok (tire, boşluk yok); ölçek 1'de bir satıra ~50 harf sığar.
+  const adres = 'ulucamii.be/duyurular/' + 'yillikgenelkurul'.repeat(4);
+  await page.setViewportSize({ width: 961, height: 541 });
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ tr: { baslik: 'Genel kurul', metin: adres }, fr: undefined })], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible();
+  await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+  expect(await slayt.evaluate((e) => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(1);
+});
+
+test('yazı tipleri yüklenirken sığmayan slayt atlanmaz (ölçüm yedek yazı tipiyle), yazı tipi gelince yeniden sığdırılır', async ({ page }) => {
+  let birak;
+  const bekleyen = new Promise((r) => { birak = r; });
+  await page.setViewportSize({ width: 961, height: 541 });
+  await page.route(ARAPCA_YAZI_TIPI, async (route) => { await bekleyen; await route.continue(); });
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: UZUN_HADIS }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/', { waitUntil: 'commit' });
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await page.clock.runFor(3_100);
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-hadis')).toBeVisible(); // atlanıp «Hoş geldiniz»e düşmedi
+  await expect(slayt).toHaveAttribute('data-atlanan', '0');
+  birak();
+  await expect.poll(() => slayt.getAttribute('data-sigdi')).toBe('hayir'); // yazı tipi gelince yeniden ölçüldü
 });
