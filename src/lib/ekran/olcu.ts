@@ -2,11 +2,11 @@
  * Ekran levhasının okunur tabanları (u = tuval kısa kenarının %1'i) ve en büyük ölçekleri (A alt projesi).
  * Levha tek ölçekle (--olcek = s, s ∈ [1, enCok]) büyür/küçülür; her öğenin boyu taban × s'dir, oranlar sabittir.
  * Tek kaynak: src/ekran/slaytlar.ts bu değerleri slayt köküne --f-* değişkenleri olarak yazar, CSS
- * calc(var(--u) * var(--f-…) * var(--olcek, 1)) ile kullanır; bütçe kalibrasyonu (tests/web/ekran-kalibre.spec.mjs)
+ * calc(var(--u) * var(--f-…) * var(--olcek, 1)) ile kullanır; bütçe kalibrasyonu
  * da bu tabanlarla ölçer. Tabanlar 40" TV'de ~2,4 m okuma mesafesine göre seçildi; yazı tipi numunesinde onaylandı.
  *
  * Sayılar başlangıç değerleridir; T1 numunesinde onaya sunuldu, T7 kalibrasyonunda kesinleşir.
- * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran-kalibre.spec.mjs -g kalibrasyonu
+ * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu
  */
 export type LevhaTuru = 'ayet' | 'hadis' | 'dua' | 'esma' | 'duyuru';
 
@@ -32,6 +32,9 @@ export const OLCU: Record<LevhaTuru, LevhaOlcusu> = {
   esma: { ar: 8, okunus: 4.2, tr: 3.4, fr: 2.9, kaynak: 2.3, baslikTr: 0, baslikFr: 0, susleme: 2.2, enCok: 1.6 },
   duyuru: { ar: 0, okunus: 0, tr: 3.4, fr: 2.9, kaynak: 0, baslikTr: 4.4, baslikFr: 3.8, susleme: 2.2, enCok: 1.7 },
 };
+
+/** Üst başlık taban boyu: sabit, ölçekle büyümez. */
+export const UST_BASLIK = 2.6;
 
 /** Slayt köküne yazılacak CSS değişkenleri (ad, değer). */
 export function olcuDegiskenleri(tur: LevhaTuru): Array<[string, string]> {

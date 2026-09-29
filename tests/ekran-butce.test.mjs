@@ -1,13 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { OLCU, olcuDegiskenleri } from '../src/lib/ekran/olcu.ts';
+import { OLCU, olcuDegiskenleri, UST_BASLIK } from '../src/lib/ekran/olcu.ts';
 import { BUTCE, maneviButce, duyuruParcalari, uzunluk } from '../src/lib/ekran/butce.ts';
 import { AHLAK_HADISLERI } from '../src/lib/hadis-verisi.ts';
 
 const harf = (n, c = 'a') => c.repeat(n);
 
 test('ölçüler: her türün tabanı pozitif, enCok ≥ 1; üst başlık ölçeklenmez (OLCU dışında)', () => {
+  // Üst başlık sabittir ve ölçekle büyümez
+  assert.equal(UST_BASLIK, 2.6);
+  for (const tur of Object.keys(OLCU)) {
+    const vars = olcuDegiskenleri(tur);
+    const varNames = vars.map(([ad]) => ad);
+    assert.ok(!varNames.includes('--f-ust'), `${tur} olcuDegiskenleri'nde --f-ust olmamalı`);
+  }
+  // OLCU doğruluğu
   for (const [tur, o] of Object.entries(OLCU)) {
     assert.ok(o.enCok >= 1, tur + ' enCok');
     assert.ok(o.tr > 0 && o.fr > 0, tur + ' tr/fr tabanı');

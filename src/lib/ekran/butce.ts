@@ -4,7 +4,7 @@
  * duyuru bölme (secim.ts), node kapısı (tests/ekran-butce.test.mjs) ve CMS sınırları (config.yml) buradan beslenir.
  *
  * Sayılar başlangıç değerleridir; T1 numunesinde onaya sunuldu, T7 kalibrasyonunda kesinleşir.
- * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran-kalibre.spec.mjs -g kalibrasyonu
+ * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu
  *
  * Karakter = metin.trim().length (UTF-16 birimi; CMS pattern'i de böyle sayar). Arapçada harekeler de sayılır.
  */
