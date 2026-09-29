@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { brukselTarih } from '../../src/lib/namaz.ts';
 import { hicriCevir } from '../../src/i18n/hicri.ts';
@@ -499,6 +499,9 @@ const sinirAfisBasligi = {
   tur: 'duyuru', karakter: 0, parca: { yerlesim: 'afis-sol', metinli: false },
   oge: DUYURU({ id: 'sinir-afis-baslik', gorsel: '/media/duyurular/test-afis.svg', gorselOran: 16 / 9, tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.afisMetin + 1) }, fr: { baslik: kes(K_FR, BD.baslik), metin: kes(K_FR, BD.afisMetin + 1) } }),
 };
+/** Kaynak satırı, ayraçsız 70 karakter (« · », « — », «; » yok): tek `span.bolunmez` nowrap olur, kırılamaz; en kötü hâl. */
+const K_KAYNAK_AYRACSIZ = 'Buhârî Edeb Bâbü rahmeti’n-nâsi ve’l-behâim ';
+const sinirKaynakBolunmez = { tur: 'hadis', karakter: 0, oge: { id: 'sinir-kaynak-ayracsiz', ar: kes(K_AR, BUTCE.manevi[0].ar), tr: kes(K_TR, BUTCE.manevi[0].tr), fr: kes(K_FR, BUTCE.manevi[0].fr), kaynak: kes(K_KAYNAK_AYRACSIZ, BUTCE.manevi[0].kaynak) } };
 const SINIR_ICERIK = { derleme: '', eksik: [], ayetler: [], hadisler: [sinirHadis(BUTCE.manevi[1]).oge] };
 const TEK_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [ICERIK.hadisler[0]] };
 
@@ -1321,7 +1324,7 @@ for (const sahne of TABAN_SAHNELERI) {
   test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis ve Kur’an duası (profil A ve B), Esmâ ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
     test.skip(sahne[4] && !cumaGunu, 'veride Cuma yok');
     await tabanSahnesiAc(page, sahne);
-    const duyurular = [sinirDuyuru, sinirDuyuruTek, sinirAfis(16 / 9, 'genis'), sinirAfis(0.707, 'dikey'), sinirAfisBasligi].concat(sinirDuyuruIki);
+    const duyurular = [sinirKaynakBolunmez, sinirDuyuru, sinirDuyuruTek, sinirAfis(16 / 9, 'genis'), sinirAfis(0.707, 'dikey'), sinirAfisBasligi].concat(sinirDuyuruIki);
     const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDua(BUTCE.manevi[0]), sinirDua(BUTCE.manevi[1]), sinirEsma].concat(duyurular, gercekSlaytlar()));
     for (const o of sonuclar) {
       expect(o.sigdi, `${o.id} sığmalı`).toBe(true);
@@ -1509,4 +1512,81 @@ test('afişli duyurunun metni sağ sütuna sığmazsa afiş slaytından sonra me
   await page.clock.runFor(10_500);
   await expect(kart).toHaveAttribute('data-yerlesim', 'levha');
   await expect(kart.locator('p.fr').last()).toHaveText('Dimanche après-midi dans la cour de la mosquée.');
+});
+
+/* Bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1; src/lib/ekran/butce.ts). Her profilin alanları birlikte ölçeklenir
+   (uzunluk = f × bütçe; kaynak satırı sabit, ayraçsız en kötü hâl) ve ölçek 1'de sığan en büyük f ikiye bölerek bulunur.
+   En dar iki tuvalde (yatay 961×541, dikey Cuma satırlı) ölçülür, küçüğü alınır. Manevi profiller iki türle ölçülür:
+   ayet (Kur'an yüzü, satır aralığı 1,95) ve hadis (metin yüzü, 1,75); küçük f alınır. Deneme metinleri gerçek Diyanet
+   cümlelerinden kesilir; sıra: imam onaylı kayıtlar → taslak kayıtlar (src/data/ekran) → sitedeki hadisler
+   (hadis-verisi.ts) → sentetik K_* (son çare). Öneri = ⌊0,95 × f × bütçe⌋ → test-results/ekran-kalibre.json.
+   Duyuru sınırları (60/90/180/30/44) karardır, hesaplanmaz: f < 1 ise test düşer ve durum karar sahibine sorulur. */
+test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
+  test.skip(!process.env.EKRAN_KALIBRE, 'kalibrasyon isteğe bağlı');
+  test.setTimeout(900_000);
+  const oku = (ad) => { try { return JSON.parse(readFileSync(resolve(process.cwd(), `src/data/ekran/${ad}.json`), 'utf8')); } catch { return []; } };
+  const kaynaklar = {};
+  /** Alan için metin kalıbı: onaylı → taslak → yedek liste (sitedeki hadisler) → sentetik. Hangi kaynağın seçildiği kaydedilir. */
+  const kalip = (ad, alan, dosya, yedekListe, sentetik) => {
+    const liste = oku(dosya);
+    const dene = [['imam-onayli', liste.filter((x) => x && x.durum === 'imam-onayli')], ['taslak', liste.filter((x) => x && x.durum === 'taslak')], ['hadis-verisi', yedekListe]];
+    for (const [kaynak, l] of dene) {
+      const metin = l.map((x) => x[alan]).filter(Boolean).join(' ');
+      if (metin) { kaynaklar[ad] = kaynak; return metin + ' '; }
+    }
+    kaynaklar[ad] = 'sentetik';
+    return sentetik;
+  };
+  const siteAr = AHLAK_HADISLERI.map((h) => ({ ar: h.arapca, tr: h.metin.tr, fr: h.metin.fr }));
+  const H = { ar: kalip('hadis.ar', 'ar', 'hadisler', siteAr, K_AR), tr: kalip('hadis.tr', 'tr', 'hadisler', siteAr, K_TR), fr: kalip('hadis.fr', 'fr', 'hadisler', siteAr, K_FR) };
+  const Ay = { ar: kalip('ayet.ar', 'ar', 'ayetler', [], K_AR), tr: kalip('ayet.tr', 'tr', 'ayetler', [], K_TR), fr: kalip('ayet.fr', 'fr', 'ayetler', siteAr, K_FR) };
+  const E = { ar: kalip('esma.ar', 'ar', 'esma', siteAr, 'الرَّحِيمُ '), okunus: kalip('esma.okunus', 'okunus', 'esma', [], 'er-Rahîm '), tr: kalip('esma.tr', 'tr', 'esma', siteAr, K_TR), fr: kalip('esma.fr', 'fr', 'esma', siteAr, K_FR) };
+  kaynaklar.kaynak = 'sentetik (ayraçsız en kötü hâl)';
+  const REF = { tr: 'Âl-i İmrân, 3/190-191', fr: 'Al-Imran, 3:190-191' };
+  const profiller = [];
+  for (const p of BUTCE.manevi) {
+    profiller.push({ ad: 'manevi-' + p.ad, tur: 'hadis', b: { ar: p.ar, tr: p.tr, fr: p.fr },
+      yap: (n) => ({ id: 'k', ar: kes(H.ar, n.ar), tr: kes(H.tr, n.tr), fr: kes(H.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, p.kaynak) }) });
+    profiller.push({ ad: 'manevi-' + p.ad, tur: 'ayet', b: { ar: p.ar, tr: p.tr, fr: p.fr },
+      yap: (n) => ({ id: 'k', referans: REF, ar: kes(Ay.ar, n.ar), tr: kes(Ay.tr, n.tr), fr: kes(Ay.fr, n.fr), kaynakTr: kes('Kur’an Yolu Meali (DİB) ', p.kaynak - (REF.tr.length + REF.fr.length + 6)), kaynakFr: 'x' }) });
+  }
+  profiller.push({ ad: 'esma', tur: 'esma', b: { ar: BUTCE.esma.ar, okunus: BUTCE.esma.okunus, tr: BUTCE.esma.tr, fr: BUTCE.esma.fr },
+    yap: (n) => ({ id: 'k', sira: 1, ar: kes(E.ar, n.ar), okunus: kes(E.okunus, n.okunus), tr: kes(E.tr, n.tr), fr: kes(E.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, BUTCE.esma.kaynak) }) });
+  profiller.push({ ad: 'duyuru-iki-dil', tur: 'duyuru', karar: true, b: { baslik: BD.baslik, metin: BD.tekSlaytMetin },
+    yap: (n) => DUYURU({ tr: { baslik: kes(K_TR, n.baslik), metin: kes(K_TR, n.metin) }, fr: { baslik: kes(K_FR, n.baslik), metin: kes(K_FR, n.metin) } }) });
+  profiller.push({ ad: 'duyuru-tek-dil', tur: 'duyuru', karar: true, parca: { yerlesim: 'levha', diller: ['tr'] }, b: { baslik: BD.baslik, metin: BD.ikiSlaytMetin },
+    yap: (n) => DUYURU({ tr: { baslik: kes(K_TR, n.baslik), metin: kes(K_TR, n.metin) }, fr: undefined }) });
+  profiller.push({ ad: 'duyuru-afis', tur: 'duyuru', karar: true, parca: { yerlesim: 'afis-sol', metinli: true }, b: { baslik: BD.afisBaslik, metin: BD.afisMetin },
+    yap: (n) => DUYURU({ gorsel: '/media/duyurular/test-afis.svg', gorselOran: 16 / 9, tr: { baslik: kes(K_TR, n.baslik), metin: kes(K_TR, n.metin) }, fr: { baslik: kes(K_FR, n.baslik), metin: kes(K_FR, n.metin) } }) });
+  const sigar = async (sayfa, p, f) => {
+    const n = {};
+    for (const [k, v] of Object.entries(p.b)) n[k] = Math.max(1, Math.round(f * v));
+    const [o] = await levhaOlc(sayfa, [{ tur: p.tur, karakter: 0, parca: p.parca, oge: p.yap(n) }]);
+    return o.sigdi && o.tasmaY <= 1 && o.tasmaX <= 1;
+  };
+  const enBuyukF = async (sayfa, p) => {
+    let lo = 0.3;
+    let hi = 2.5;
+    if (!(await sigar(sayfa, p, lo))) return 0;
+    if (await sigar(sayfa, p, hi)) return hi;
+    for (let i = 0; i < 12; i++) { const m = (lo + hi) / 2; if (await sigar(sayfa, p, m)) lo = m; else hi = m; }
+    return lo;
+  };
+  const f = {};
+  // Sahne başına yeni sayfa: sahte saat bir sayfada bir kez kurulur. Bağlamın ağ yalıtımı yeni sayfaya da geçer.
+  for (const sahne of TABAN_SAHNELERI.slice(0, 2)) {
+    if (sahne[4] && !cumaGunu) continue;
+    const sayfa = await page.context().newPage();
+    await tabanSahnesiAc(sayfa, sahne);
+    for (const p of profiller) { const k = p.ad + '|' + p.tur; f[k] = Math.min(f[k] ?? Infinity, await enBuyukF(sayfa, p)); }
+    await sayfa.close();
+  }
+  const sonuc = profiller.map((p) => {
+    const fp = f[p.ad + '|' + p.tur];
+    return { profil: p.ad, tur: p.tur, f: Number(fp.toFixed(3)), bugun: p.b, oneri: Object.fromEntries(Object.entries(p.b).map(([k, v]) => [k, Math.floor(0.95 * fp * v)])) };
+  });
+  mkdirSync('test-results', { recursive: true });
+  writeFileSync('test-results/ekran-kalibre.json', JSON.stringify({ metinKaynaklari: kaynaklar, sonuc }, null, 2));
+  console.log(JSON.stringify({ metinKaynaklari: kaynaklar, sonuc }, null, 2));
+  for (const p of profiller.filter((x) => x.karar)) expect.soft(f[p.ad + '|' + p.tur], `${p.ad}: karar sınırı ekrana sığmalı`).toBeGreaterThanOrEqual(1);
 });

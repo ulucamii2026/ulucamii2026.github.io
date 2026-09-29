@@ -175,24 +175,24 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 - Pilot ekran LED panonun yanına asılır, **7 gün paralel** çalışır.
 - **Çıkış ölçütü**: 7 gün vakit farkı sıfır (LED + Diyanet sayfası örneklemesi), 7 gece doğru kapan/aç, fiş çek-tak testi geçti.
 
-**Faz 3 — Bütün slaytlar ve modlar**
-- Vakit girdi + ses; sükûnet; vefat; etkinlik afişleri; haftalık program; bağış QR (EPC/SEPA); kandil geri sayımı; dua/Esmâ; piksel kaydırma; eski veri göstergesi.
-- **Ramazan modu Ramazan 2027'den önce hazır olmalı.** Başlangıç tarihi `diyanet-dini-gunler.json` dosyasından alınır.
+**Faz 3 — A: sağ alt panel (levha) ve duyurular**
+- Tamamlandı; bu dal. Ayet, hadis, dua, Esmâ ve duyuru ortalı levhada gösterilir; Arapça kaligrafik ve ortalıdır, metin kısa ise büyür, uzun ise okunur tabana kadar küçülür.
+- Karakter bütçeleri `src/lib/ekran/butce.ts`'tedir; sığmayan içerik yayına girmez. Ölçüler `src/lib/ekran/olcu.ts`'tedir.
+- **Çıkış ölçütü**: bütçe sınırındaki metinler her tuvalde (yatay 961×541, dikey Cuma satırlı, döndürülmüş) okunur tabanın altına inmeden sığıyor.
+
+**Faz 4 — B: uzaktan yönetim çekirdeği**
+- Faz 4'ün editör formu (Apps Script formu, PIN'ler, kaldırma düğmesi, imama bilgi e-postası, tek sayfalık TR editör rehberi) ve Faz 5 (uzaktan işletim: nabız, arıza e-postası, ekran görüntüsü, yeniden başlatma, sessiz APK güncellemesi) buraya katılır.
+- **Çıkış ölçütü**: her editör telefondan bir test duyurusu yayımladı ve kaldırdı; fiş çekilince e-posta geliyor; uzaktan görüntü alınıyor; bozuk sha256 reddediliyor.
+
+**Faz 5 — C: vakit girişinde ses**
+- Vakit girişinde kuş sesi ya da kısa ton. Kayıttan ezan yok; gerekçe Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu (DİYK) fetvasıdır.
+
+**Faz 6 — D: çok camili yapı**
+- Üç ekran (giriş ve kadınlar bölümü dahil) ve LED panonun sökülmesi: her ekrana hedefli test duyurusu yalnız kendi ekranında görünmeli; 14 gün müdahalesiz çalışma; bir sayfalık işletim kılavuzu.
+
+**Faz 3'ün kalanı**
+- Vefat, kandil geri sayımı, bağış QR (EPC/SEPA), Ramazan modu ve sükûnet, A'dan sonra ayrı küçük işlerdir. **Ramazan modu Ramazan 2027'den önce hazır olmalı**; başlangıç tarihi `diyanet-dini-gunler.json` dosyasından alınır.
 - **Çıkış ölçütü**: zaman yolculuğu testleri yeşil.
-
-**Faz 4 — Editör formu**
-- Apps Script formu, PIN'ler, kaldırma düğmesi, imama bilgi e-postası.
-- Tek sayfalık, vektör çizimli TR editör rehberi (PDF); 3 kişiye kısa tanıtım.
-- **Çıkış ölçütü**: her editör telefondan bir test duyurusu yayımladı ve kaldırdı.
-
-**Faz 5 — Uzaktan işletim**
-- Nabız → Sheet → arıza e-postası (gece penceresi hariç, 45 dakika sessizlikte).
-- Ekran görüntüsü → Drive; yeniden başlatma; sessiz APK güncellemesi (`pilot` / `hepsi` kanalları).
-- **Çıkış ölçütü**: fiş çekilince e-posta geliyor; uzaktan görüntü alınıyor; bozuk sha256 reddediliyor.
-
-**Faz 6 — Üç ekran + LED'in sökülmesi**
-- Giriş ve kadınlar bölümü ekranları asılır. Her ekrana hedefli test duyurusu yalnız kendi ekranında görünmeli.
-- 14 gün müdahalesiz çalışma. Bir sayfalık işletim kılavuzu yazılır (2027 devri için). LED pano sökülür.
 
 **Paralel içerik hattı (hemen başlar)**
 - **İ0 — Kaynak ve izin.**
@@ -201,7 +201,7 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
   - FR hadis: DİB'in Fransızca "40 Hadis" kitapçıkları (dijital.diyanet.gov.tr; Arapça + Fransızca + kaynak) kullanılır.
   - FR hadis için Diyanet'in Fransızca hadis yayını aranır; bulunamazsa imam onaylı "Traduction : Mosquée Ulu Camii".
   - Yerel ihtisas arşivi **yalnız seçim ve doğrulama** için kullanılır; telif kuralı gereği metin oradan kopyalanmaz.
-- **İ1 — Setler.** TR ≤ 280 karakter, bağlamından koparılmamış.
+- **İ1 — Setler.** ekrana sığma sınırı src/lib/ekran/butce.ts'tedir (ayet/hadis/dua: iki profil, Esmâ ayrı); sığmayan kayıt yayına girmez. Bağlamından koparılmamış.
   - 365 günlük ayet + 365 günlük hadis
   - 52 Cuma seti, her kandil için 3 metin, 30 Ramazan metni
   - 99 Esmâ, yaklaşık 60 dua

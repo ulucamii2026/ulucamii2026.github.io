@@ -3,7 +3,9 @@
  * (taban boylar, src/lib/ekran/olcu.ts), %5 payla ölçülen sınırlar. Tek kaynak: içerik doğrulaması (icerik.ts),
  * duyuru bölme (secim.ts), node kapısı (tests/ekran-butce.test.mjs) ve CMS sınırları (config.yml) buradan beslenir.
  *
- * Sayılar başlangıç değerleridir; T1 numunesinde onaya sunuldu, T7 kalibrasyonunda kesinleşir.
+ * Kalibrasyon: 2026-09-29, yatay 961×541 ve dikey Cuma satırlı tuvalde. Manevi profiller ayet (Kur'an yüzü) ve hadis
+ * (metin yüzü) türleriyle ölçüldü, küçük olanı alındı; öneri = ⌊0,95 × f × bütçe⌋. Esmâ sayıları ölçümde aynı kaldı.
+ * Kaynak satırı sınırı 70 kalır (ayraçsız en kötü hâl de sığar). Duyuru sınırları imam kararıdır, hesaplanmaz.
  * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu
  *
  * Karakter = metin.trim().length (UTF-16 birimi; CMS pattern'i de böyle sayar). Arapçada harekeler de sayılır.
@@ -13,8 +15,8 @@ import type { EkranDuyuru } from './akis.ts';
 export const BUTCE = {
   /** Ayet, hadis, dua: bir kayıt profillerden herhangi birine uyarsa geçer. A: 2+2+2 satır, B: 1+3+3 satır. */
   manevi: [
-    { ad: 'A', ar: 140, tr: 88, fr: 100, kaynak: 70 },
-    { ad: 'B', ar: 70, tr: 130, fr: 150, kaynak: 70 },
+    { ad: 'A', ar: 145, tr: 91, fr: 104, kaynak: 70 },
+    { ad: 'B', ar: 71, tr: 133, fr: 153, kaynak: 70 },
   ],
   esma: { ar: 40, okunus: 30, tr: 80, fr: 90, kaynak: 70 },
   duyuru: {
