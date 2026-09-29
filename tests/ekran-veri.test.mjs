@@ -139,3 +139,10 @@ test('duyuru anahtarı: yalnız derleme damgası değişirse aynı; kimlik, meti
   assert.notEqual(duyuruAnahtari(akis([])), anahtar, 'duyuru kalktı');
   assert.equal(duyuruAnahtari(null), undefined, 'akış hiç gelmediyse');
 });
+
+test('önbellekteki eski içerik akışı (dualar ve esmalar alanı yok) geçerlidir; alanlar varsa dizi olmalı', () => {
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [] }), true);
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: [], esmalar: [] }), true);
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: 'bozuk' }), false);
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], esmalar: {} }), false);
+});

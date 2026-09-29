@@ -448,7 +448,8 @@ const levhaOlc = (page, slaytlar) => page.evaluate((liste) => {
     window.__levha.slaytCiz(kok, s);
     const r = window.__levha.levhaSigdir(kok);
     const paragraflar = Array.prototype.map.call(kok.querySelectorAll('.levha p'), (p) => ({ sinif: p.className, px: parseFloat(getComputedStyle(p).fontSize) }));
-    return { id: s.oge.id, tur: s.tur, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth };
+    const arSatiri = kok.querySelector('.levha .ar');
+    return { id: s.oge.id, tur: s.tur, yuz: arSatiri ? arSatiri.getAttribute('data-yuz') : null, olcek: r.olcek, sigdi: r.sigdi, u, paragraflar, tasmaY: kok.scrollHeight - kok.clientHeight, tasmaX: kok.scrollWidth - kok.clientWidth };
   });
 }, slaytlar);
 
@@ -474,8 +475,18 @@ const K_KAYNAK = 'Buhârî, Edeb, 69; Müslim, Birr ve Sıla, 105; ';
 const sinirHadis = (p) => ({ tur: 'hadis', karakter: 0, oge: { id: 'sinir-' + p.ad, ar: kes(K_AR, p.ar), tr: kes(K_TR, p.tr), fr: kes(K_FR, p.fr), kaynak: kes(K_KAYNAK, p.kaynak) } });
 const BD = BUTCE.duyuru;
 const sinirDuyuru = { tur: 'duyuru', karakter: 0, oge: DUYURU({ id: 'sinir-duyuru', tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.tekSlaytMetin) }, fr: { baslik: kes(K_FR, BD.baslik), metin: kes(K_FR, BD.tekSlaytMetin) } }) };
+/** Kur'an duası, bütçe sınırında (profil A ya da B); Arapçası Kur'an yüzüyle çizilmelidir. */
+const sinirDua = (p) => ({ tur: 'dua', karakter: 0, oge: { id: 'sinir-dua-' + p.ad, kuran: true, ar: kes(K_AR, p.ar), tr: kes(K_TR, p.tr), fr: kes(K_FR, p.fr), kaynak: kes(K_KAYNAK, p.kaynak) } });
+/** Esmâ, bütçe sınırında: AR 40, okunuş 30, TR 80, FR 90 (esma tabanında). */
+const sinirEsma = { tur: 'esma', karakter: 0, oge: { id: 'sinir-esma', sira: 99, ar: kes(K_AR, BUTCE.esma.ar), okunus: kes('er-Rahmân er-Rahîm ', BUTCE.esma.okunus), tr: kes(K_TR, BUTCE.esma.tr), fr: kes(K_FR, BUTCE.esma.fr), kaynak: kes(K_KAYNAK, BUTCE.esma.kaynak) } };
 const SINIR_ICERIK = { derleme: '', eksik: [], ayetler: [], hadisler: [sinirHadis(BUTCE.manevi[1]).oge] };
 const TEK_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [ICERIK.hadisler[0]] };
+
+/* Dua ve Esmâ fikstürleri. Dua gerçek bir Kur'an duasıdır (Tâhâ 20/114; Kur'an Yolu meali). Esmâ kaydı deneme
+   fikstürüdür: anlam ve kaynak metni yayından alınmamıştır. */
+const DUA_KURAN = { id: 'd1', ar: 'رَبِّ زِدْنِي عِلْمًا', tr: 'Rabbim! İlmimi artır.', kaynak: 'Tâhâ, 20/114 · Tâ-Hâ, 20:114 — Kur’an Yolu Meali', kuran: true };
+const ESMA_DENEME = { id: 'esma-deneme', sira: 2, ar: 'الرَّحِيمُ', okunus: 'er-Rahîm', tr: 'Deneme anlamı', fr: 'Sens d’essai', kaynak: 'Deneme kaynağı' };
+const ICERIK_TAM = { ...ICERIK, dualar: [DUA_KURAN], esmalar: [ESMA_DENEME] };
 
 /* Derlemenin yayımladığı gerçek kayıtlar (onaylı ve bütçeye uyan; sitedeki hadisler dahil). Taban kapısında her biri
    de ölçülür. Dosya henüz yoksa (dualar, esma: T4'te doğar) boş sayılır; T4 öncesi ekranIcerigi fazla argümanı yok sayar. */
@@ -1271,13 +1282,14 @@ async function tabanSahnesiAc(page, [, viewport, adres, duzen, cumali]) {
 }
 
 for (const sahne of TABAN_SAHNELERI) {
-  test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis (profil A ve B) ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
+  test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis ve Kur’an duası (profil A ve B), Esmâ ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
     test.skip(sahne[4] && !cumaGunu, 'veride Cuma yok');
     await tabanSahnesiAc(page, sahne);
-    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDuyuru].concat(gercekSlaytlar()));
+    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDua(BUTCE.manevi[0]), sinirDua(BUTCE.manevi[1]), sinirEsma, sinirDuyuru].concat(gercekSlaytlar()));
     for (const o of sonuclar) {
       expect(o.sigdi, `${o.id} sığmalı`).toBe(true);
       tabanDenetle(o);
+      if (o.id.indexOf('sinir-dua-') === 0) expect(o.yuz, `${o.id} Kur'an yüzü`).toBe('kuran');
     }
   });
 }
@@ -1335,4 +1347,88 @@ test('yazı tipleri yüklenirken sığmayan slayt atlanmaz (ölçüm yedek yazı
   await expect(slayt).toHaveAttribute('data-atlanan', '0');
   birak();
   await expect.poll(() => slayt.getAttribute('data-sigdi')).toBe('hayir'); // yazı tipi gelince yeniden ölçüldü
+});
+
+test('manevi blok ayet → hadis → dua → Esmâ; Kur’an metni Kur’an yüzüyle; Esmâ’da okunuş ve sıra', async ({ page }) => {
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([]) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-ayet .ar')).toHaveAttribute('data-yuz', 'kuran');
+  await page.clock.runFor(10_500);
+  await expect(slayt.locator('.slayt-hadis .ar')).not.toHaveAttribute('data-yuz', 'kuran');
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-dua .ar')).toHaveAttribute('data-yuz', 'kuran');
+  await expect(slayt.locator('.slayt-dua .kaynak')).toHaveText('Tâhâ, 20/114 · Tâ-Hâ, 20:114 — Kur’an Yolu Meali');
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-esma .okunus')).toHaveText('er-Rahîm');
+  await expect(slayt.locator('.slayt-esma .ust-baslik .sira')).toHaveText('2/99');
+  await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+});
+
+test('tur hedef süreyi aşınca manevi blok turlara bölünür: ikinci tur kalan öğeden başlar', async ({ page }) => {
+  const akis = AKIS([]);
+  akis.ayar.turHedefSn = 30; // 4 manevi × 10 sn = 40 sn > 30 → turda 3 slayt
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-ayet')).toBeVisible(); // tur 0: ayet, hadis, dua
+  await page.clock.runFor(30_500);
+  await expect(slayt.locator('.slayt-esma')).toBeVisible(); // tur 1: Esmâ, ayet, hadis
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-ayet')).toBeVisible();
+});
+
+// Review Focus 3: kutunun önbelleğinde A öncesi icerik.json (dualar ve esmalar yok) ile yeni paket bir arada çalışır.
+test('önbellekteki eski içerik akışı (dualar ve esmalar alanı yok) turu bozmaz; sayfa hatası yok', async ({ page }) => {
+  const hatalar = [];
+  page.on('pageerror', (e) => hatalar.push(String(e)));
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([]) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-ayet')).toBeVisible();
+  await page.clock.runFor(10_500);
+  await expect(slayt.locator('.slayt-hadis')).toBeVisible();
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-ayet')).toBeVisible(); // tur başa döndü
+  expect(hatalar).toEqual([]);
+});
+
+test('kaynak satırı başvurunun ortasından bölünmez: «94/5-6» gibi her parça tek satırda kalır', async ({ page }) => {
+  await tabanSahnesiAc(page, TABAN_SAHNELERI[0]);
+  const ayet = { tur: 'ayet', karakter: 0, oge: { id: 'a-kaynak', referans: { tr: 'İnşirah, 94/5-6', fr: 'Ach-Charh, 94:5-6' }, ar: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', tr: 'Demek ki zorlukla beraber bir kolaylık vardır.', kaynakTr: 'Kur’an Yolu Meali (DİB)' } };
+  const sonuc = await page.evaluate((s) => {
+    const kok = document.querySelector('[data-alan="slayt"]');
+    window.__levha.slaytCiz(kok, s);
+    kok.querySelector('.levha').style.width = '18%'; // dar levha: kaynak satırı zorla birkaç satıra kırılır
+    const p = kok.querySelector('.levha .kaynak');
+    const parcalar = Array.prototype.map.call(p.querySelectorAll('.bolunmez'), (b) => ({ metin: b.textContent, dikdortgen: b.getClientRects().length }));
+    const satir = parseFloat(getComputedStyle(p).lineHeight);
+    return { parcalar, satirSayisi: Math.round(p.getBoundingClientRect().height / satir), metin: p.textContent };
+  }, ayet);
+  expect(sonuc.metin).toBe('İnşirah, 94/5-6 · Ach-Charh, 94:5-6 — Kur’an Yolu Meali (DİB)'); // ölçülen dize ile aynı
+  expect(sonuc.satirSayisi).toBeGreaterThan(1); // kırılma gerçekten oldu
+  expect(sonuc.parcalar.map((x) => x.metin)).toEqual(['İnşirah, 94/5-6', 'Ach-Charh, 94:5-6', 'Kur’an Yolu Meali (DİB)']);
+  for (const x of sonuc.parcalar) expect(x.dikdortgen, `«${x.metin}» tek satırda`).toBe(1);
+});
+
+test('yazı tipi yükleme istisnası sınırlıdır: yazı tipi hazırlık beklemesinden sonra da yüklenmiyorsa sığmayan slayt atlanır', async ({ page }) => {
+  await page.setViewportSize({ width: 961, height: 541 });
+  await page.route(ARAPCA_YAZI_TIPI, () => new Promise(() => undefined)); // yazı tipi hiç gelmez
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([], SABIT_60SN) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: UZUN_HADIS }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/', { waitUntil: 'commit' });
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await page.clock.runFor(3_100);
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-hadis')).toBeVisible(); // ilk 10 sn içinde gösterilir
+  await page.clock.runFor(61_000); // tur yeniden kurulur; 10 sn geçti → atlanır
+  await expect(slayt).toHaveAttribute('data-sigdi', 'bos');
+  await expect(slayt).toHaveAttribute('data-atlanan', '1');
 });

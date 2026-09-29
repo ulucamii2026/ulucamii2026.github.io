@@ -197,3 +197,54 @@ test('düzen parametresi yalnız tam "yatay" ya da "dikey" ise zorlar; gerisi ot
   assert.equal(duzenOku('dikey'), 'dikey');
   for (const bozuk of [null, '', 'YATAY', ' yatay', 'abc', '<script>']) assert.equal(duzenOku(bozuk), null, `otomatik olmalıydı: ${JSON.stringify(bozuk)}`);
 });
+
+test('eski içerik akışıyla (dualar ve esmalar yok) tur yine ayet ve hadisle kurulur', () => {
+  const s = slaytListesi({
+    duyurular: [],
+    ayetler: [{ id: 'a1', referans: { tr: 'r', fr: 'r' }, ar: 'ا', tr: 'meal', kaynakTr: 'DİB' }],
+    hadisler: [{ id: 'h1', ar: 'ا', tr: 'hadis', kaynak: 'k' }],
+  }, 'ana', '2026-09-27');
+  assert.deepEqual(s.map((x) => x.tur + ':' + x.oge.id), ['ayet:a1', 'hadis:h1']);
+});
+
+const AYET = { id: 'a1', referans: { tr: 'r', fr: 'r' }, ar: 'ا', tr: 'meal', kaynakTr: 'DİB' };
+const HADIS = { id: 'h1', ar: 'ا', tr: 'hadis', kaynak: 'k' };
+const DUA = { id: 'd1', ar: 'ا', tr: 'dua', kaynak: 'k', kuran: false };
+const ESMA = (sira) => ({ id: 'e' + sira, sira, ar: 'ا', okunus: 'o', tr: 'anlam', kaynak: 'k' });
+const DU = (id) => ({ id, tur: 'duyuru', tr: { baslik: 'b', metin: 'm' }, baslangic: '2026-09-01', son: '2026-10-30', hedef: [] });
+const ON_SN = { tabanSn: 10, karakterSn: 0, enAzSn: 10, enCokSn: 10 };
+
+test('tur: duyurular, ardından manevi blok ayet → hadis → dua → Esmâ', () => {
+  const s = slaytListesi({ duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], esmalar: [ESMA(1)] }, 'ana', '2026-09-27');
+  assert.deepEqual(s.map((x) => x.tur + ':' + x.oge.id), ['duyuru:du', 'ayet:a1', 'hadis:h1', 'dua:d1', 'esma:e1']);
+});
+
+test('günün Esmâ’sı sıralı listeden günle döner: ertesi gün sıradaki isim', () => {
+  const esmalar = [ESMA(1), ESMA(2), ESMA(3)];
+  const gunun = (t) => slaytListesi({ duyurular: [], ayetler: [], hadisler: [], esmalar }, 'ana', t)[0].oge.sira;
+  assert.equal(gunun('2026-09-28'), (gunun('2026-09-27') % 3) + 1);
+});
+
+test('tur hedef süreyi aşarsa manevi blok turlara dilimlenir; her tur sıradakilerden başlar, duyuru her turda kalır', () => {
+  const girdi = { duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], esmalar: [ESMA(1)] };
+  // Duyuru 10 sn; manevi 4 × 10 sn = 40 sn, hedefin kalanı 30 sn → turda 3 manevi slayt.
+  const kimlik = (turNo) => slaytListesi(girdi, 'ana', '2026-09-27', turNo, { turHedefSn: 40, slayt: ON_SN }).map((x) => x.oge.id);
+  assert.deepEqual(kimlik(0), ['du', 'a1', 'h1', 'd1']);
+  assert.deepEqual(kimlik(1), ['du', 'e1', 'a1', 'h1']);
+  assert.deepEqual(kimlik(2), ['du', 'd1', 'e1', 'a1']);
+});
+
+test('tur hedefe sığıyorsa, ayar yoksa ya da bozuksa manevi blok bütün gösterilir', () => {
+  const girdi = { duyurular: [], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], esmalar: [ESMA(1)] };
+  const adet = (tur) => slaytListesi(girdi, 'ana', '2026-09-27', 5, tur).length;
+  assert.equal(adet({ turHedefSn: 150, slayt: ON_SN }), 4);
+  assert.equal(adet(undefined), 4);
+  assert.equal(adet({ turHedefSn: NaN, slayt: ON_SN }), 4);
+  assert.equal(adet({ turHedefSn: 150, slayt: { ...ON_SN, tabanSn: NaN } }), 4);
+});
+
+test('duyurular hedefi tek başına dolduruyorsa her tur yine en az bir manevi slayt gösterir', () => {
+  const girdi = { duyurular: [DU('x'), DU('y'), DU('z')], ayetler: [AYET], hadisler: [HADIS] };
+  const s = slaytListesi(girdi, 'ana', '2026-09-27', 0, { turHedefSn: 20, slayt: ON_SN });
+  assert.deepEqual(s.map((x) => x.tur), ['duyuru', 'duyuru', 'duyuru', 'ayet']);
+});

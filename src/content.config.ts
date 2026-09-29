@@ -238,6 +238,7 @@ const ekranAyar = defineCollection({
     }),
     gece: z.object({ kapanmaDk: z.number().int().min(0).max(240), acilmaDk: z.number().int().min(0).max(240) }),
     duyuruVarsayilanGun: z.number().int().min(1).max(365).default(30),
+    turHedefSn: z.number().int().min(30).max(900).default(150),
   }),
 });
 

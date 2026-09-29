@@ -7,7 +7,7 @@
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
-import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
+import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, TUR_HEDEF_SN, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
 import { alan, yaz } from './gorunum.ts';
 import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
@@ -71,6 +71,10 @@ try {
 /** İlk slayttan önce Arapça yüzler yüklenir (en çok 3 sn): ilk levha yedek yazı tipiyle ölçülüp sonra taşmasın.
  *  Yüklenemese de açılış sürer (levhaSigdir yazı tipi gelince yeniden sığdırır). */
 const ARAPCA_YUZLER = ['Amiri'];
+/** arapcaYukle() bittiği an (performance.now; saat atlamalarından etkilenmez). Sığmayan slaytı «yazı tipleri
+ *  yükleniyor» diye gösterme istisnası (sonrakiSlayt) bu andan en çok YAZI_TIPI_TOLERANSI_MS sürer. */
+let arapcaHazirAni = 0;
+const YAZI_TIPI_TOLERANSI_MS = 10_000;
 function arapcaYukle(): Promise<void> {
   const fonts = document.fonts;
   if (!fonts || typeof fonts.load !== 'function') return Promise.resolve();
@@ -161,6 +165,7 @@ async function veriDongusu(): Promise<void> {
     if (!slaytBasladi) {
       slaytBasladi = true;
       await arapcaYukle();
+      arapcaHazirAni = performance.now();
       sonrakiSlayt();
     }
   } finally {
@@ -180,7 +185,7 @@ async function akisDongusu(): Promise<void> {
   }
 }
 
-/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, günün hadisi (src/lib/ekran/secim.ts).
+/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, hadisi, duası ve Esmâ'sı (tur uzarsa dilimlenir; src/lib/ekran/secim.ts).
    Tur bitince ya da duyuruları değişmiş bir akış gelince liste yeni veriyle yeniden kurulur; süre metin
    uzunluğundan (ekran.yaml → slayt).
    Sayfa aylarca yeniden yüklenmeden açık kalır: burada çıkan tek bir istisna (ör. `referans` alanı eksik
@@ -190,6 +195,9 @@ const VARSAYILAN_SLAYT: SlaytAyari = { tabanSn: 8, karakterSn: 0.05, enAzSn: 10,
 let tur: Slayt[] = [];
 let sira = 0;
 let slaytBasladi = false;
+/** Kaçıncı tur (manevi blok dilimlemesi; secim.ts → slaytListesi). Tur sonuna gelince artar; yeni duyuru akışı
+ *  yüzünden erken kurulan tur sayılmaz. */
+let turNo = 0;
 /** Geçerli turun kurulduğu duyuru listesinin anahtarı (veri.ts → duyuruAnahtari). Duyuruları değişmiş bir akış
  *  geldiyse (akisDongusu) tur, sonuna kadar beklenmeden SONRAKİ slaytta yeniden kurulur; ekrandaki slayt süresini
  *  normal doldurmuştur. Yalnız derleme damgası değişen akış (her yayın) turu baştan başlatmaz. */
@@ -203,7 +211,14 @@ function sonrakiSlayt(): void {
     if (!kok) return;
     const anahtar = duyuruAnahtari(veri.akis);
     if (sira >= tur.length || anahtar !== turAnahtari) {
-      tur = slaytListesi({ duyurular: veri.akis?.duyurular ?? [], ayetler: veri.icerik?.ayetler ?? [], hadisler: veri.icerik?.hadisler ?? [] }, ekranId, bugunTarih(new Date()));
+      if (sira >= tur.length && tur.length > 0) turNo++;
+      const ayar = veri.akis?.ayar;
+      const icerik = veri.icerik;
+      tur = slaytListesi(
+        { duyurular: veri.akis?.duyurular ?? [], ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
+        ekranId, bugunTarih(new Date()), turNo,
+        { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
+      );
       sira = 0;
       turAnahtari = anahtar;
       kok.setAttribute('data-atlanan', String(atlanan));
@@ -211,12 +226,13 @@ function sonrakiSlayt(): void {
     // Okunur taban kuralı: tabanda da sığmayan slayt atlanır. Turun kalanında sığan kalmadıysa sakin slayt gösterilir;
     // bir sonraki çağrıda tur yeniden kurulur, döngü donmaz. İstisna: yazı tipleri hâlâ yükleniyorsa ölçüm yedek
     // yazı tipiyle yapılmıştır ve yanıltıcı olabilir; slayt atlanmaz, gösterilir (ölçüldüğü gibi) ve yazı tipleri
-    // gelince levhaSigdir yeniden sığdırır (o zaman gerçekten sığmıyorsa sonraki turda atlanır).
+    // gelince levhaSigdir yeniden sığdırır (o zaman gerçekten sığmıyorsa sonraki turda atlanır). İstisna sınırlıdır:
+    // yazı tipleri hazırlık beklemesinden sonra YAZI_TIPI_TOLERANSI_MS'den uzun yükleniyorsa slayt normal atlanır.
     let s: Slayt | undefined;
     while (sira < tur.length) {
       const aday = tur[sira++];
       slaytCiz(kok, aday);
-      if (levhaSigdir(kok).sigdi || (document.fonts && document.fonts.status === 'loading')) { s = aday; break; }
+      if (levhaSigdir(kok).sigdi || (document.fonts && document.fonts.status === 'loading' && performance.now() - arapcaHazirAni < YAZI_TIPI_TOLERANSI_MS)) { s = aday; break; }
       atlanan++;
       kok.setAttribute('data-atlanan', String(atlanan));
       console.warn('[ekran] slayt ekrana sığmadı, atlandı: ' + aday.tur + ' ' + aday.oge.id);

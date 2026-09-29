@@ -9,10 +9,12 @@ import type { SlaytAyari } from '../lib/ekran/secim.ts';
 
 export interface AkisGovdesi {
   derleme: string;
-  ayar: { slayt: SlaytAyari; gece: { kapanmaDk: number; acilmaDk: number }; duyuruVarsayilanGun: number };
+  /** turHedefSn A'dan önceki akışta yoktur (önbellekteki eski akış): main.ts → TUR_HEDEF_SN. */
+  ayar: { slayt: SlaytAyari; gece: { kapanmaDk: number; acilmaDk: number }; duyuruVarsayilanGun: number; turHedefSn?: number };
   duyurular: EkranDuyuru[];
 }
-export type IcerikGovdesi = EkranIcerik & { derleme: string };
+/** Önbellekteki eski icerik.json'da (A öncesi) `dualar` ve `esmalar` yoktur; ikisi isteğe bağlı okunur. */
+export type IcerikGovdesi = Omit<EkranIcerik, 'dualar' | 'esmalar'> & Partial<Pick<EkranIcerik, 'dualar' | 'esmalar'>> & { derleme: string };
 export interface EkranVerisi { vakit: EkranVakitleri | null; akis: AkisGovdesi | null; icerik: IcerikGovdesi | null }
 
 const nesne = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null;
@@ -23,8 +25,10 @@ export function vakitGecerli(x: unknown): x is EkranVakitleri {
 export function akisGecerli(x: unknown): x is AkisGovdesi {
   return nesne(x) && Array.isArray(x.duyurular) && nesne(x.ayar) && nesne(x.ayar.slayt);
 }
+/** `dualar` ve `esmalar` yoksa (eski akış) geçerli; varsa dizi olmalı: bozuk alan turu çökertmesin. */
+const diziYaDaYok = (x: unknown): boolean => x === undefined || Array.isArray(x);
 export function icerikGecerli(x: unknown): x is IcerikGovdesi {
-  return nesne(x) && Array.isArray(x.ayetler) && Array.isArray(x.hadisler);
+  return nesne(x) && Array.isArray(x.ayetler) && Array.isArray(x.hadisler) && diziYaDaYok(x.dualar) && diziYaDaYok(x.esmalar);
 }
 
 /* Zaman aşımı AbortController ile kurulur (Chrome 66+); AbortSignal.timeout Chrome 103 ister ve

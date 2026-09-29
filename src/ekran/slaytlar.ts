@@ -1,18 +1,41 @@
-/** Sağ alt panel (slayt alanı): duyuru, günün ayeti ve günün hadisi ortalı bir «levha» olarak çizilir (A alt projesi).
+/** Sağ alt panel (slayt alanı): duyuru, günün ayeti, hadisi, duası ve Esmâ'sı ortalı bir «levha» olarak çizilir (A alt projesi).
  *  Levha tek ölçekle (--olcek) büyür/küçülür; öğe boyları src/lib/ekran/olcu.ts'teki tabanlar × ölçek. Ölçek okunur
  *  tabanın (1) altına inmez: tabanda da sığmayan slaytı çağıran (main.ts → sonrakiSlayt) atlar. */
 import type { Slayt } from '../lib/ekran/secim.ts';
 import { OLCU, olcuDegiskenleri, UST_BASLIK, type LevhaTuru } from '../lib/ekran/olcu.ts';
 import { olcekBul, type OlcekSonucu } from '../lib/ekran/sigdirma.ts';
+import { ayetKaynagi } from '../lib/ekran/kaynak.ts';
 import { el } from './gorunum.ts';
 import { METIN } from './metinler.ts';
 import { SUSLEME_SVG } from './susleme.ts';
 
-function paragraf(kok: HTMLElement, sinif: string, metin: string | undefined, dil?: 'fr' | 'ar'): void {
-  if (!metin) return;
+function paragraf(kok: HTMLElement, sinif: string, metin: string | undefined, dil?: 'fr' | 'ar'): HTMLElement | null {
+  if (!metin) return null;
   const p = el('p', sinif, metin);
   if (dil) p.setAttribute('lang', dil);
   if (dil === 'ar') p.setAttribute('dir', 'rtl');
+  kok.appendChild(p);
+  return p;
+}
+
+/** Arapça satır. Kur'an metni (ayet, Kur'an duası) `data-yuz="kuran"` taşır; Kur'an yazı tipi buna bağlanır. */
+function arapca(levha: HTMLElement, metin: string, kuran: boolean): void {
+  const p = paragraf(levha, 'ar', metin, 'ar');
+  if (p && kuran) p.setAttribute('data-yuz', 'kuran');
+}
+
+/** Kaynak satırı: ayraçlardan (« · », « — », «; ») bölünen her parça `span.bolunmez` içindedir; satır yalnız ayraçta
+ *  kırılır, «94/5-6» gibi bir başvuru ortasından bölünmez. Ayraçlar düz metin olarak parçaların arasında kalır.
+ *  Ölçülen dize (kaynak.ts → ayetKaynagi) ile ekrandaki metin aynıdır; yalnız işaretleme farklıdır. */
+function kaynakCiz(kok: HTMLElement, metin: string): void {
+  if (!metin) return;
+  const p = el('p', 'kaynak');
+  const parcalar = metin.split(/( · | — |; )/);
+  for (let i = 0; i < parcalar.length; i++) {
+    if (!parcalar[i]) continue;
+    if (i % 2 === 1) p.appendChild(document.createTextNode(parcalar[i]));
+    else p.appendChild(el('span', 'bolunmez', parcalar[i]));
+  }
   kok.appendChild(p);
 }
 
@@ -35,7 +58,7 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
   kart.setAttribute('data-yerlesim', 'levha');
   for (const [ad, deger] of olcuDegiskenleri(s.tur)) kart.style.setProperty(ad, deger);
   kart.style.setProperty('--f-ust', String(UST_BASLIK)); // üst başlık sabit boy: ölçekle büyümez
-  ustBaslik(kart, METIN[s.tur]);
+  ustBaslik(kart, METIN[s.tur], s.tur === 'esma' ? s.oge.sira + '/99' : undefined);
   const levha = el('div', 'levha');
   if (s.tur === 'duyuru') {
     const d = s.oge;
@@ -55,18 +78,34 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
     if (d.fr) { paragraf(levha, 'baslik fr', d.fr.baslik, 'fr'); paragraf(levha, 'fr', d.fr.metin, 'fr'); }
   } else if (s.tur === 'ayet') {
     const a = s.oge;
-    paragraf(levha, 'ar', a.ar, 'ar');
+    arapca(levha, a.ar, true);
     susleme(levha);
     paragraf(levha, 'tr', a.tr);
     paragraf(levha, 'fr', a.fr, 'fr');
-    paragraf(levha, 'kaynak', `${a.referans.tr} · ${a.referans.fr} — ${a.kaynakTr}${a.fr && a.kaynakFr ? ' · ' + a.kaynakFr : ''}`);
-  } else {
+    kaynakCiz(levha, ayetKaynagi(a));
+  } else if (s.tur === 'hadis') {
     const h = s.oge;
-    paragraf(levha, 'ar', h.ar, 'ar');
+    arapca(levha, h.ar, false);
     susleme(levha);
     paragraf(levha, 'tr', h.tr);
     paragraf(levha, 'fr', h.fr, 'fr');
-    paragraf(levha, 'kaynak', h.kaynak);
+    kaynakCiz(levha, h.kaynak);
+  } else if (s.tur === 'dua') {
+    const d = s.oge;
+    arapca(levha, d.ar, d.kuran);
+    susleme(levha);
+    paragraf(levha, 'tr', d.tr);
+    paragraf(levha, 'fr', d.fr, 'fr');
+    kaynakCiz(levha, d.kaynak);
+  } else {
+    // Esmâ: isim çok büyük (OLCU.esma.ar), altında okunuş, süsleme, anlam.
+    const e = s.oge;
+    arapca(levha, e.ar, false);
+    paragraf(levha, 'okunus', e.okunus);
+    susleme(levha);
+    paragraf(levha, 'tr', e.tr);
+    paragraf(levha, 'fr', e.fr, 'fr');
+    kaynakCiz(levha, e.kaynak);
   }
   kart.appendChild(levha);
   kok.appendChild(kart);

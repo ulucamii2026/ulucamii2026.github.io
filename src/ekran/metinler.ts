@@ -3,6 +3,8 @@
 export const METIN = {
   ayet: { tr: 'Günün Ayeti', fr: 'Verset du jour' },
   hadis: { tr: 'Günün Hadisi', fr: 'Hadith du jour' },
+  dua: { tr: 'Günün Duası', fr: 'Invocation du jour' },
+  esma: { tr: 'Esmâ-i Hüsnâ', fr: 'Les beaux noms d’Allah' }, // TR yazımı TDV İslâm Ansiklopedisi'ne göre
   duyuru: { tr: 'Duyuru', fr: 'Annonce' },
   vaktine: { tr: 'vaktine', fr: 'dans' },
   gunesUzun: { tr: 'Güneş', fr: 'Lever du soleil' }, // geri sayımda: satırdaki kısa «Lever» tek başına anlaşılmıyor

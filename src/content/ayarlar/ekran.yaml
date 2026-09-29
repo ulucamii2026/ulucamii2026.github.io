@@ -1,5 +1,6 @@
 # Cami ekranı ayarları — İçerik Yönetimi → Site Ayarları → Cami ekranı (27 Eylül 2026).
 # Slayt süresi = tabanSn + karakterSn × karakter sayısı; enAzSn ile enCokSn arasında tutulur.
+# Tur: bir tur turHedefSn saniyeyi aşarsa ayet, hadis, dua ve Esmâ turlara bölünür; duyurular her turda gösterilir.
 # Gece: ekran yatsıdan kapanmaDk sonra kapanır, imsaktan acilmaDk önce açılır (kutudaki uygulama uygular, Faz 2).
 ekran:
   slayt:
@@ -11,3 +12,4 @@ ekran:
     kapanmaDk: 60
     acilmaDk: 30
   duyuruVarsayilanGun: 30
+  turHedefSn: 150

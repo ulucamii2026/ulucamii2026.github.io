@@ -44,7 +44,7 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
    (margin: auto 0 — taşarsa yalnız aşağı akar, scrollHeight tam ölçer; Chromium 70'te `safe center` yok). Boylar
    src/lib/ekran/olcu.ts tabanları (--f-*, slaytCiz yazar) × tek ölçek (--olcek, levhaSigdir yazar). */
 .slayt { height: 100%; display: flex; flex-direction: column; text-align: center; }
-.ust-baslik { flex: none; font-size: calc(var(--u) * var(--f-ust, 2.6)); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ana); margin-bottom: calc(var(--u) * 1.5); }
+.ust-baslik { flex: none; font-size: calc(var(--u) * var(--f-ust)); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ana); margin-bottom: calc(var(--u) * 1.5); }
 .ust-baslik .sira { margin-left: calc(var(--u) * 1.5); opacity: .75; }
 .levha { flex: none; width: 100%; margin: auto 0; }
 .levha p { overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; }
@@ -57,6 +57,7 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .levha .baslik.fr { font-size: calc(var(--u) * var(--f-baslik-fr) * var(--olcek, 1)); }
 .levha .tr { font-size: calc(var(--u) * var(--f-tr) * var(--olcek, 1)); line-height: 1.3; font-weight: 500; }
 .levha p.fr { font-size: calc(var(--u) * var(--f-fr) * var(--olcek, 1)); line-height: 1.3; margin-top: calc(var(--u) * .8 * var(--olcek, 1)); }
+.levha .kaynak .bolunmez { white-space: nowrap; }
 .levha .kaynak { font-size: calc(var(--u) * var(--f-kaynak) * var(--olcek, 1)); line-height: 1.25; opacity: .7; margin-top: calc(var(--u) * 1.4 * var(--olcek, 1)); }
 .levha img { display: block; max-width: 100%; max-height: calc(var(--u) * 30); margin: 0 auto calc(var(--u) * 2); object-fit: contain; }
 .slayt.bos { align-items: center; justify-content: center; }

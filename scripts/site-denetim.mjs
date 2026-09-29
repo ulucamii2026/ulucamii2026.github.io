@@ -233,7 +233,11 @@ for (const d of SITE_DILLERI.filter((x) => x !== 'tr')) {
     if (existsSync(join(dizin, 'icerik.json'))) {
       const i = JSON.parse(readFileSync(join(dizin, 'icerik.json'), 'utf8'));
       if (!(i.hadisler || []).length) ekle('orta', 'cami ekranında hadis yok', 'icerik.json boş');
-      if ((i.eksik || []).length) ekle('orta', 'cami ekranı içeriğinde eksik/mükerrer kayıt', i.eksik.join(', '));
+      const eksik = i.eksik || [];
+      const sigmayan = eksik.filter((e) => e.indexOf('ekrana sığmaz') >= 0);
+      const obur = eksik.filter((e) => e.indexOf('ekrana sığmaz') < 0);
+      if (sigmayan.length) ekle('yuksek', 'cami ekranına sığmayan içerik yayımlanmadı (kısaltılmalı)', sigmayan.join(', '));
+      if (obur.length) ekle('orta', 'cami ekranı içeriğinde eksik/mükerrer kayıt', obur.join(', '));
     }
   }
 }

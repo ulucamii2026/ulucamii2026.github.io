@@ -5,7 +5,7 @@
  */
 import { brukselTarih, bugunTarih, durumHesapla, haftaGunu, TZ, type Gun, type Vakit } from '../namaz.ts';
 import { EKRANLAR, type EkranDuyuru, type EkranId } from './akis.ts';
-import type { EkranAyet, EkranHadis } from './icerik.ts';
+import type { EkranAyet, EkranDua, EkranEsma, EkranHadis } from './icerik.ts';
 
 export interface SlaytAyari { tabanSn: number; karakterSn: number; enAzSn: number; enCokSn: number }
 
@@ -88,7 +88,22 @@ export function vakitGorunumu(gunler: Gun[], simdi: Date): VakitGorunumu | null 
 export type Slayt =
   | { tur: 'duyuru'; oge: EkranDuyuru; karakter: number }
   | { tur: 'ayet'; oge: EkranAyet; karakter: number }
-  | { tur: 'hadis'; oge: EkranHadis; karakter: number };
+  | { tur: 'hadis'; oge: EkranHadis; karakter: number }
+  | { tur: 'dua'; oge: EkranDua; karakter: number }
+  | { tur: 'esma'; oge: EkranEsma; karakter: number };
+
+/** Slayt turunun girdisi. `dualar` ve `esmalar` önbellekteki eski icerik.json'da (A öncesi) yoktur: boş sayılır. */
+export interface SlaytGirdisi {
+  duyurular: EkranDuyuru[];
+  ayetler: EkranAyet[];
+  hadisler: EkranHadis[];
+  dualar?: EkranDua[];
+  esmalar?: EkranEsma[];
+}
+
+/** Bir turun hedef süresi, sn (ekran.yaml → turHedefSn). Akışta yoksa (önbellekteki eski akış) bu kullanılır. */
+export const TUR_HEDEF_SN = 150;
+export interface TurAyari { turHedefSn: number; slayt: SlaytAyari }
 
 const uz = (...parcalar: (string | undefined)[]): number => {
   let t = 0;
@@ -96,9 +111,30 @@ const uz = (...parcalar: (string | undefined)[]): number => {
   return t;
 };
 
-/** Bir tur: bu ekrana özel duyurular, ortak duyurular, günün ayeti, günün hadisi. Boş kategori atlanır.
- *  Okuma süresi en uzun dildeki metne göre hesaplanır (izleyici tek dil okur). */
-export function slaytListesi(girdi: { duyurular: EkranDuyuru[]; ayetler: EkranAyet[]; hadisler: EkranHadis[] }, ekran: EkranId, bugun: string): Slayt[] {
+/** Tur hedef süreyi aşarsa manevi blok turlara bölünür: her tur sıradaki `adet` öğeyi gösterir (sarmal; `turNo` ile
+ *  kayar), duyurular her turda kalır. adet = duyurulardan kalan süreye sığan manevi slayt sayısı; en az 1, en çok
+ *  n − 1. Ayar yoksa ya da bozuksa (NaN) blok bütün gösterilir. */
+function maneviDilimi(manevi: Slayt[], duyurular: Slayt[], turNo: number, tur?: TurAyari): Slayt[] {
+  const n = manevi.length;
+  if (!tur || n < 2) return manevi;
+  const sure = (s: Slayt): number => slaytSuresi(s.karakter, tur.slayt);
+  let duyuruSn = 0;
+  for (const s of duyurular) duyuruSn += sure(s);
+  let maneviSn = 0;
+  for (const s of manevi) maneviSn += sure(s);
+  if (!(duyuruSn + maneviSn > tur.turHedefSn)) return manevi;
+  const sigan = Math.floor((tur.turHedefSn - duyuruSn) / (maneviSn / n));
+  const adet = sigan >= 1 ? Math.min(sigan, n - 1) : 1;
+  const bas = (((turNo * adet) % n) + n) % n;
+  const dilim: Slayt[] = [];
+  for (let i = 0; i < adet; i++) dilim.push(manevi[(bas + i) % n]);
+  return dilim;
+}
+
+/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi blok (günün ayeti, hadisi, duası, Esmâ'sı).
+ *  Boş kategori atlanır. Okuma süresi en uzun dildeki metne göre hesaplanır (izleyici tek dil okur). `tur` verilirse
+ *  manevi blok turun hedef süresine göre dilimlenir. */
+export function slaytListesi(girdi: SlaytGirdisi, ekran: EkranId, bugun: string, turNo = 0, tur?: TurAyari): Slayt[] {
   const gecerli = girdi.duyurular.filter((d) => aktifMi(d, bugun) && hedefUygunMu(d.hedef, ekran));
   const sirali = gecerli.filter((d) => d.hedef.length > 0).concat(gecerli.filter((d) => d.hedef.length === 0));
   const liste: Slayt[] = sirali.map((d) => ({
@@ -106,11 +142,16 @@ export function slaytListesi(girdi: { duyurular: EkranDuyuru[]; ayetler: EkranAy
     oge: d,
     karakter: Math.max(uz(d.tr?.baslik, d.tr?.metin), uz(d.fr?.baslik, d.fr?.metin)),
   }));
+  const manevi: Slayt[] = [];
   const ayet = gununOgesi(girdi.ayetler, bugun);
-  if (ayet) liste.push({ tur: 'ayet', oge: ayet, karakter: Math.max(uz(ayet.ar), uz(ayet.tr), uz(ayet.fr)) });
+  if (ayet) manevi.push({ tur: 'ayet', oge: ayet, karakter: Math.max(uz(ayet.ar), uz(ayet.tr), uz(ayet.fr)) });
   const hadis = gununOgesi(girdi.hadisler, bugun);
-  if (hadis) liste.push({ tur: 'hadis', oge: hadis, karakter: Math.max(uz(hadis.ar), uz(hadis.tr), uz(hadis.fr)) });
-  return liste;
+  if (hadis) manevi.push({ tur: 'hadis', oge: hadis, karakter: Math.max(uz(hadis.ar), uz(hadis.tr), uz(hadis.fr)) });
+  const dua = gununOgesi(girdi.dualar || [], bugun);
+  if (dua) manevi.push({ tur: 'dua', oge: dua, karakter: Math.max(uz(dua.ar), uz(dua.tr), uz(dua.fr)) });
+  const esma = gununOgesi(girdi.esmalar || [], bugun);
+  if (esma) manevi.push({ tur: 'esma', oge: esma, karakter: Math.max(uz(esma.ar, esma.okunus), uz(esma.tr), uz(esma.fr)) });
+  return liste.concat(maneviDilimi(manevi, liste, turNo, tur));
 }
 
 export const ekranIdOku = (deger: string | null): EkranId =>

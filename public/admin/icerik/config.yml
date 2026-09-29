@@ -448,6 +448,7 @@ collections:
                   - { name: kapanmaDk, label: "Yatsıdan kaç dakika sonra kapansın", widget: number, value_type: int, min: 0, max: 240 }
                   - { name: acilmaDk, label: "İmsaktan kaç dakika önce açılsın", widget: number, value_type: int, min: 0, max: 240 }
               - { name: duyuruVarsayilanGun, label: "Son günü girilmemiş duyuru kaç gün gösterilsin", widget: number, value_type: int, min: 1, max: 365 }
+              - { name: turHedefSn, label: "Bir turun hedef süresi (sn)", widget: number, value_type: int, min: 30, max: 900, default: 150, hint: "Duyurular her turda gösterilir; ayet, hadis, dua ve Esmâ bu süreyi aşarsa turlara bölünür." }
 
   - name: kurulAyar
     label: Yönetim Kurulu
