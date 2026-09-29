@@ -1,1 +1,508 @@
-[]
+[
+  {
+    "id": "d-1-5",
+    "ar": "اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعٖينُۜ",
+    "tr": "(Rabbimiz!) Ancak sana kulluk eder ve yalnız senden yardım dileriz.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 1,
+      "ayet": [
+        5
+      ],
+      "sureAdi": {
+        "tr": "Fâtiha",
+        "fr": "Al-Fatiha"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-1-6",
+    "ar": "اِهْدِنَا الصِّرَاطَ الْمُسْتَقٖيمَۙ",
+    "tr": "Bizi dosdoğru yola ilet;",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 1,
+      "ayet": [
+        6
+      ],
+      "sureAdi": {
+        "tr": "Fâtiha",
+        "fr": "Al-Fatiha"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-10-86",
+    "ar": "وَنَجِّنَا بِرَحْمَتِكَ مِنَ الْقَوْمِ الْكَافِرٖينَ",
+    "tr": "Merhametinle bizi o inkârcılar güruhundan kurtar.”",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 10,
+      "ayet": [
+        86
+      ],
+      "sureAdi": {
+        "tr": "Yûnus",
+        "fr": "Younous"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-20-25",
+    "ar": "قَالَ رَبِّ اشْرَحْ لٖي صَدْرٖيۙ وَيَسِّرْ لٖٓي اَمْرٖيۙ",
+    "tr": "Mûsâ “Rabbim!” dedi, “Gönlüme ferahlık ver. İşimi bana kolaylaştır.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 20,
+      "ayet": [
+        25,
+        26
+      ],
+      "sureAdi": {
+        "tr": "Tâhâ",
+        "fr": "Ta-Ha"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-20-27",
+    "ar": "وَاحْلُلْ عُقْدَةً مِنْ لِسَانٖيۙ يَفْقَهُوا قَوْلٖيۖ",
+    "tr": "Dilimden düğümü çöz, Ki sözümü iyi anlasınlar.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 20,
+      "ayet": [
+        27,
+        28
+      ],
+      "sureAdi": {
+        "tr": "Tâhâ",
+        "fr": "Ta-Ha"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-23-26",
+    "ar": "قَالَ رَبِّ انْصُرْنٖي بِمَا كَذَّبُونِ",
+    "tr": "Nûh, “Rabbim! Bunların beni yalancılıkla suçlamalarına karşı bana yardım et!” dedi.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 23,
+      "ayet": [
+        26
+      ],
+      "sureAdi": {
+        "tr": "Mü'minûn",
+        "fr": "Al-Mou’minoun"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-23-94",
+    "ar": "رَبِّ فَلَا تَجْعَلْنٖي فِي الْقَوْمِ الظَّالِمٖينَ",
+    "tr": "Bu durumda beni zalimler topluluğunun içinde bulundurma rabbim!”",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 23,
+      "ayet": [
+        94
+      ],
+      "sureAdi": {
+        "tr": "Mü'minûn",
+        "fr": "Al-Mou’minoun"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-23-97",
+    "ar": "وَقُلْ رَبِّ اَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطٖينِۙ",
+    "tr": "Ve de ki: “Rabbim! Şeytanların gizli kışkırtmalarından sana sığınırım.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 23,
+      "ayet": [
+        97
+      ],
+      "sureAdi": {
+        "tr": "Mü'minûn",
+        "fr": "Al-Mou’minoun"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-23-98",
+    "ar": "وَاَعُوذُ بِكَ رَبِّ اَنْ يَحْضُرُونِ",
+    "tr": "Onların yanımda bulunmalarından da sana sığınırım rabbim!”",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 23,
+      "ayet": [
+        98
+      ],
+      "sureAdi": {
+        "tr": "Mü'minûn",
+        "fr": "Al-Mou’minoun"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-23-118",
+    "ar": "وَقُلْ رَبِّ اغْفِرْ وَارْحَمْ وَاَنْتَ خَيْرُ الرَّاحِمٖينَ",
+    "tr": "(Resulüm!) De ki: “Bağışla ve acı rabbim! Sen merhametlilerin üstünüsün.”",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 23,
+      "ayet": [
+        118
+      ],
+      "sureAdi": {
+        "tr": "Mü'minûn",
+        "fr": "Al-Mou’minoun"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-26-83",
+    "ar": "رَبِّ هَبْ لٖي حُكْماً وَاَلْحِقْنٖي بِالصَّالِحٖينَۙ",
+    "tr": "Rabbim! Bana hikmet ver ve beni iyiler arasına kat.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 26,
+      "ayet": [
+        83
+      ],
+      "sureAdi": {
+        "tr": "Şuarâ",
+        "fr": "Ach-Chou‘ara’"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-26-84",
+    "ar": "وَاجْعَلْ لٖي لِسَانَ صِدْقٍ فِي الْاٰخِرٖينَۙ",
+    "tr": "Arkadan gelecekler içinde iyilikle anılmayı bana nasip eyle!",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 26,
+      "ayet": [
+        84
+      ],
+      "sureAdi": {
+        "tr": "Şuarâ",
+        "fr": "Ach-Chou‘ara’"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-26-85",
+    "ar": "وَاجْعَلْنٖي مِنْ وَرَثَةِ جَنَّةِ النَّعٖيمِۙ",
+    "tr": "Beni, naîm cennetine girenlerden eyle!",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 26,
+      "ayet": [
+        85
+      ],
+      "sureAdi": {
+        "tr": "Şuarâ",
+        "fr": "Ach-Chou‘ara’"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-26-169",
+    "ar": "رَبِّ نَجِّنٖي وَاَهْلٖي مِمَّا يَعْمَلُونَ",
+    "tr": "“Rabbim! Beni ve ailemi, bunların yapmakta olduklarının vebalinden kurtar” diye dua etti.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 26,
+      "ayet": [
+        169
+      ],
+      "sureAdi": {
+        "tr": "Şuarâ",
+        "fr": "Ach-Chou‘ara’"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-28-22",
+    "ar": "وَلَمَّا تَوَجَّهَ تِلْقَٓاءَ مَدْيَنَ قَالَ عَسٰى رَبّٖٓي اَنْ يَهْدِيَنٖي سَوَٓاءَ السَّبٖيلِ",
+    "tr": "Mûsâ Medyen’e doğru yöneldiğinde, “Umarım rabbim bana doğru yolu buldurur” dedi.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 28,
+      "ayet": [
+        22
+      ],
+      "sureAdi": {
+        "tr": "Kasas",
+        "fr": "Al-Qasas"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-29-30",
+    "ar": "قَالَ رَبِّ انْصُرْنٖي عَلَى الْقَوْمِ الْمُفْسِدٖينَࣖ",
+    "tr": "Lût, “Şu ahlâkı bozan topluluğa karşı bana yardım et rabbim!” diye dua etti.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 29,
+      "ayet": [
+        30
+      ],
+      "sureAdi": {
+        "tr": "Ankebût",
+        "fr": "Al-‘Ankabout"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-37-182",
+    "ar": "وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمٖينَ",
+    "tr": "Ve âlemlerin rabbi olan Allah’a hamdolsun.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 37,
+      "ayet": [
+        182
+      ],
+      "sureAdi": {
+        "tr": "Sâffât",
+        "fr": "As-Saffat"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-54-10",
+    "ar": "فَدَعَا رَبَّهُٓ اَنّٖي مَغْلُوبٌ فَانْتَصِرْ",
+    "tr": "Bunun üzerine Nûh, “Artık yenik düştüm; yardımını esirgeme!” diye rabbine yalvardı.",
+    "kaynakTr": "Kur’an Yolu Meali",
+    "ayet": {
+      "sure": 54,
+      "ayet": [
+        10
+      ],
+      "sureAdi": {
+        "tr": "Kamer",
+        "fr": "Al-Qamar"
+      }
+    },
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-vitr-32",
+    "ar": "اللَّهُمَّ! إِنِّى أَعُوذُ بِكَ مِنَ الشِّقَاقِ وَالنِّفَاقِ وَسُوءِ الْأَخْلاَقِ.",
+    "tr": "Allah’ım! Bozgunculuktan, münafıklıktan ve kötü ahlâktan sana sığınırım.",
+    "fr": "Ô Allah, je cherche refuge auprès de Toi contre la discorde, l’hypocrisie et les mauvaises mœurs.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Vitr, 32",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-muslim-zikir-59",
+    "ar": "اللَّهُمَّ بِاسْمِكَ أَحْيَا وَبِاسْمِكَ أَمُوتُ.",
+    "tr": "Allah’ım! Senin isminle yaşar, senin isminle ölürüm.",
+    "fr": "Ô Allah, c’est en Ton nom que je vis et que je meurs.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Müslim, Zikir, 59",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ibn-mace-edeb-55-a",
+    "ar": "الْحَمْدُ لِلَّهِ الَّذِى بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ.",
+    "tr": "Hamdolsun Allah’a ki yararlı şeyler O’nun nimetiyle tamamlanır.",
+    "fr": "Louange à Allah, par la grâce de qui s’accomplissent les bonnes choses.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "İbn Mâce, Edeb, 55",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ibn-mace-edeb-55-b",
+    "ar": "الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ.",
+    "tr": "Her hâlükârda Allah’a hamdolsun.",
+    "fr": "Louange à Allah en toute circonstance.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "İbn Mâce, Edeb, 55",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-tirmizi-salat-39",
+    "ar": "اللَّهُمَّ أَرْشِدِ الْأَئِمَّةَ وَاغْفِرْ لِلْمُؤَذِّنِينَ.",
+    "tr": "Allah’ım! İmamlara (kefil oldukları konuda) muvaffakiyet ver, müezzinleri de (olası taksirlerinden dolayı) bağışla!",
+    "fr": "Ô Allah, guide les imams et pardonne aux muezzins.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Tirmizî, Salât, 39",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-tirmizi-kader-7",
+    "ar": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِى عَلَى دِينِكَ.",
+    "tr": "Ey kalpleri (hâlden hâle) değiştiren (Allah’ım)! Kalbimi dinin üzere sabit kıl.",
+    "fr": "Ô Toi qui retournes les cœurs, affermis mon cœur dans Ta religion.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Tirmizî, Kader, 7",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-muslim-zikir-72",
+    "ar": "اللَّهُمَّ إِنِّى أَسْأَلُكَ الْهُدَى وَالتُّقَى، وَالْعَفَافَ وَالْغِنَى.",
+    "tr": "Allah’ım, senden hidayet, takva, iffet ve gönül zenginliği istiyorum.",
+    "fr": "Ô Allah, je Te demande la bonne direction, la piété, la chasteté et la richesse du cœur.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Müslim, Zikir, 72",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-edeb-102",
+    "ar": "بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ.",
+    "tr": "Allah’ın adıyla. Allah’a tevekkül ettim. Güç ve kuvvet sadece Allah’tandır.",
+    "fr": "Au nom d’Allah ; je place ma confiance en Allah ; il n’y a de force ni de puissance qu’en Allah.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Edeb, 102-103",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ibn-hanbel-1-153",
+    "ar": "اللَّهُمَّ بَارِكْ لِأُمَّتِي فِي بُكُورِهَا.",
+    "tr": "Allah’ım! Ümmetim için (günün) erken vakitlerini bereketli kıl!",
+    "fr": "Ô Allah, bénis pour ma communauté les premières heures du jour.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "İbn Hanbel, I, 153",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-tirmizi-deavat-81",
+    "ar": "لاَ إِلَهَ إِلاَّ أَنْتَ سُبْحَانَكَ إِنِّى كُنْتُ مِنَ الظَّالِمِينَ.",
+    "tr": "Senden başka hiçbir ilâh yoktur. Seni bütün eksikliklerden uzak tutarım. Ben gerçekten (kendine) zulmedenlerden oldum.",
+    "fr": "Il n’y a de divinité que Toi, gloire à Toi ! J’ai été du nombre des injustes.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Tirmizî, Deavât, 81",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-etime-52",
+    "ar": "الْحَمْدُ لِلَّهِ الَّذِى أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ.",
+    "tr": "Bizi yediren, bizi içiren ve bizi Müslüman yapan Allah’a hamdolsun.",
+    "fr": "Louange à Allah qui nous a nourris, nous a abreuvés et a fait de nous des musulmans.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Et’ıme, 52",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-vitr-26",
+    "ar": "اللَّهُمَّ! أَعِنِّى عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ.",
+    "tr": "Allah’ım, seni zikretmek, sana şükretmek ve sana güzelce ibadet etmek için bana yardım et!",
+    "fr": "Ô Allah, aide-moi à T’évoquer, à Te remercier et à bien T’adorer.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Vitr, 26",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ibn-hanbel-1-403",
+    "ar": "اَللَّهُمَّ أَحْسَنْتَ خَلْقِي فَأَحْسِنْ خُلُقِي.",
+    "tr": "Allah’ım! Benim yaratılışımı güzel kıldığın gibi ahlâkımı da güzelleştir.",
+    "fr": "Ô Allah, de même que Tu as embelli ma création, embellis aussi mon caractère.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "İbn Hanbel, I, 403",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-esribe-21-a",
+    "ar": "اللَّهُمَّ! بَارِكْ لَنَا فِيهِ وَأَطْعِمْنَا خَيْرًا مِنْهُ.",
+    "tr": "Allah’ım, bu yemeği bize bereketli kıl ve bize ondan daha iyisini yedir!",
+    "fr": "Ô Allah, bénis-nous dans ce repas et nourris-nous de meilleur encore.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Eşribe, 21",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-esribe-21-b",
+    "ar": "اللَّهُمَّ! بَارِكْ لَنَا فِيهِ وَزِدْنَا مِنْهُ",
+    "tr": "Allah’ım, bunu bize bereketli kıl ve bize bundan daha fazlasını ver!",
+    "fr": "Ô Allah, bénis-le pour nous et donne-nous-en davantage.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Eşribe, 21",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-cenaiz-8",
+    "ar": "أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ",
+    "tr": "Büyük arşın Rabbi Yüce Allah’tan sana şifa vermesini dilerim.",
+    "fr": "Je demande à Allah l’Immense, Seigneur du Trône immense, de te guérir.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Ebû Dâvûd, Cenâiz, 8",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-tirmizi-deavat-70",
+    "ar": "اللَّهُمَّ أَلْهِمْنِي رُشْدِي، وَأَعِذْنِي مِنْ شَرِّ نَفْسِي",
+    "tr": "Allah’ım, bana doğru yolda olmayı ilham et ve beni nefsimin şerrinden koru.",
+    "fr": "Ô Allah, inspire-moi la droiture et protège-moi du mal de mon âme.",
+    "kaynakTr": "40 Hadiste Doğruluk",
+    "hadis": "Tirmizî, Deavât, 70",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-tirmizi-deavat-89",
+    "ar": "اَللّٰهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+    "tr": "Allah’ım sen affedicisin, cömertsin, affetmeyi seversin, beni de affet.",
+    "fr": "Ô Allah, Tu es Celui qui pardonne, le Généreux ; Tu aimes le pardon, alors pardonne-moi.",
+    "kaynakTr": "Peygamberimizin Dilinden Dualar",
+    "hadis": "Tirmizî, Deavât, 89",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ebu-davud-savm-22",
+    "ar": "اَللّٰهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
+    "tr": "Allah’ım! Senin rızân için oruç tuttum. Senin rızkınla orucumu açıyorum.",
+    "fr": "Ô Allah, c’est pour Toi que j’ai jeûné et c’est avec Ta subsistance que je romps mon jeûne.",
+    "kaynakTr": "Peygamberimizin Dilinden Dualar",
+    "hadis": "Ebû Dâvûd, Savm, 22",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-taberani-evsat-4-189",
+    "ar": "اَللَّهُمَّ بَارِكْ لَنَا فِي رَجَبٍ، وَشَعْبَانَ، وَبَلِّغْنَا رَمَضَانَ.",
+    "tr": "Allah’ım! Receb ve Şâban aylarını hakkımızda mübarek eyle, bizi Ramazan ayına ulaştır!",
+    "fr": "Ô Allah, bénis pour nous les mois de Rajab et de Cha‘ban, et fais-nous atteindre le Ramadan.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Taberânî, el-Mu’cemü’l-evsat, IV, 189",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-ibn-mace-menasik-4",
+    "ar": "اللَّهُمَّ حِجَّةٌ لاَ رِيَاءَ فِيهَا وَلاَ سُمْعَةَ.",
+    "tr": "Allah’ım! riyasız ve gösterişsiz bir hac eyle.",
+    "fr": "Ô Allah, fais que ce soit un pèlerinage sans ostentation ni recherche de renommée.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "İbn Mâce, Menâsik, 4",
+    "durum": "taslak"
+  },
+  {
+    "id": "d-h-tirmizi-etime-47",
+    "ar": "بِسْمِ اللَّهِ فِى أَوَّلِهِ وَآخِرِهِ.",
+    "tr": "Başında da sonunda da Allah’ın adıyla",
+    "fr": "Au nom d’Allah, au début et à la fin.",
+    "kaynakTr": "Hadislerle İslam",
+    "hadis": "Tirmizî, Et’ıme, 47",
+    "durum": "taslak"
+  }
+]

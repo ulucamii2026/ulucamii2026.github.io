@@ -1,1 +1,992 @@
-[]
+[
+  {
+    "id": "esma-001",
+    "sira": 1,
+    "ar": "اللَّهُ",
+    "okunus": "Allah",
+    "tr": "O vardır. O’ndan başka da ilâh yoktur.",
+    "fr": "Dieu, en dehors de qui il n’est point de divinité",
+    "kaynakTr": "Hadislerle İslam",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-002",
+    "sira": 2,
+    "ar": "الرَّحْمَنُ",
+    "okunus": "er-Rahmân",
+    "tr": "Esirgeyen",
+    "fr": "Le Tout-Miséricordieux",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-003",
+    "sira": 3,
+    "ar": "الرَّحِيمُ",
+    "okunus": "er-Rahîm",
+    "tr": "Bağışlayan",
+    "fr": "Le Très-Miséricordieux",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-004",
+    "sira": 4,
+    "ar": "الْمَلِكُ",
+    "okunus": "el-Melik",
+    "tr": "Buyrukları tutulan",
+    "fr": "Le Souverain",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-005",
+    "sira": 5,
+    "ar": "الْقُدُّوسُ",
+    "okunus": "el-Kuddûs",
+    "tr": "Noksanlıklardan arınmış",
+    "fr": "Le Saint, exempt de toute imperfection",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-006",
+    "sira": 6,
+    "ar": "السَّلاَمُ",
+    "okunus": "es-Selâm",
+    "tr": "Yaratıklarını selâmette kılan",
+    "fr": "La Paix, Celui qui accorde le salut à Ses créatures",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-007",
+    "sira": 7,
+    "ar": "الْمُؤْمِنُ",
+    "okunus": "el-Mü’min",
+    "tr": "İnananları güvenlikte kılan",
+    "fr": "Celui qui donne la sécurité aux croyants",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-008",
+    "sira": 8,
+    "ar": "الْمُهَيْمِنُ",
+    "okunus": "el-Müheymin",
+    "tr": "Hükmü altına alan",
+    "fr": "Celui qui domine et veille sur toute chose",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-009",
+    "sira": 9,
+    "ar": "الْعَزِيزُ",
+    "okunus": "el-Azîz",
+    "tr": "Ulu, galip",
+    "fr": "Le Tout-Puissant, l’Invincible",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-010",
+    "sira": 10,
+    "ar": "الْجَبَّارُ",
+    "okunus": "el-Cebbâr",
+    "tr": "Dilediğini zorla yaptırma gücüne sahip olan",
+    "fr": "Celui qui impose Sa volonté",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-011",
+    "sira": 11,
+    "ar": "الْمُتَكَبِّرُ",
+    "okunus": "el-Mütekebbir",
+    "tr": "Yegâne büyük",
+    "fr": "Le Seul à posséder la grandeur",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-012",
+    "sira": 12,
+    "ar": "الْخَالِقُ",
+    "okunus": "el-Hâlık",
+    "tr": "Yaratıcı",
+    "fr": "Le Créateur",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-013",
+    "sira": 13,
+    "ar": "الْبَارِئُ",
+    "okunus": "el-Bâri",
+    "tr": "Eksiksiz yaratan",
+    "fr": "Celui qui crée à la perfection",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-014",
+    "sira": 14,
+    "ar": "الْمُصَوِّرُ",
+    "okunus": "el-Musavvir",
+    "tr": "Her şeye şekil veren",
+    "fr": "Celui qui donne forme à toute chose",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-015",
+    "sira": 15,
+    "ar": "الْغَفَّارُ",
+    "okunus": "el-Gaffâr",
+    "tr": "Günahları örtücü, mağfireti bol",
+    "fr": "Celui qui couvre les péchés et pardonne abondamment",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-016",
+    "sira": 16,
+    "ar": "الْقَهَّارُ",
+    "okunus": "el-Kahhâr",
+    "tr": "İsyankârları kahreden",
+    "fr": "Celui qui soumet les rebelles",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-017",
+    "sira": 17,
+    "ar": "الْوَهَّابُ",
+    "okunus": "el-Vehhâb",
+    "tr": "Karşılıksız veren",
+    "fr": "Celui qui donne sans contrepartie",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-018",
+    "sira": 18,
+    "ar": "الرَّزَّاقُ",
+    "okunus": "er-Rezzâk",
+    "tr": "Rızıklandıran",
+    "fr": "Le Pourvoyeur",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-019",
+    "sira": 19,
+    "ar": "الْفَتَّاحُ",
+    "okunus": "el-Fettâh",
+    "tr": "Hayır kapılarını açan",
+    "fr": "Celui qui ouvre les portes du bien",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-020",
+    "sira": 20,
+    "ar": "الْعَلِيمُ",
+    "okunus": "el-Alîm",
+    "tr": "Her şeyi bilen",
+    "fr": "L’Omniscient",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-021",
+    "sira": 21,
+    "ar": "الْقَابِضُ",
+    "okunus": "el-Kâbıd",
+    "tr": "Ruhları kabzeden, can alan",
+    "fr": "Celui qui reprend les âmes",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-022",
+    "sira": 22,
+    "ar": "الْبَاسِطُ",
+    "okunus": "el-Bâsıt",
+    "tr": "Rızkı genişleten, ömürleri uzatan",
+    "fr": "Celui qui étend la subsistance",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-023",
+    "sira": 23,
+    "ar": "الْخَافِضُ",
+    "okunus": "el-Hâfıd",
+    "tr": "Kâfirleri alçaltan",
+    "fr": "Celui qui abaisse les mécréants",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-024",
+    "sira": 24,
+    "ar": "الرَّافِعُ",
+    "okunus": "er-Râfi’",
+    "tr": "Müminleri yükselten",
+    "fr": "Celui qui élève les croyants",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-025",
+    "sira": 25,
+    "ar": "الْمُعِزُّ",
+    "okunus": "el-Muizz",
+    "tr": "Yücelten, aziz kılan",
+    "fr": "Celui qui honore et élève",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-026",
+    "sira": 26,
+    "ar": "الْمُذِلُّ",
+    "okunus": "el-Müzill",
+    "tr": "Değersiz kılan",
+    "fr": "Celui qui humilie",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-027",
+    "sira": 27,
+    "ar": "السَّمِيعُ",
+    "okunus": "es-Semî’",
+    "tr": "İşiten",
+    "fr": "Celui qui entend tout",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-028",
+    "sira": 28,
+    "ar": "الْبَصِيرُ",
+    "okunus": "el-Basîr",
+    "tr": "Gören",
+    "fr": "Celui qui voit tout",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-029",
+    "sira": 29,
+    "ar": "الْحَكَمُ",
+    "okunus": "el-Hakem",
+    "tr": "Hükmedici, iyiyi kötüden ayırt edici",
+    "fr": "Le Juge, qui sépare le bien du mal",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-030",
+    "sira": 30,
+    "ar": "الْعَدْلُ",
+    "okunus": "el-Adl",
+    "tr": "Adaletli",
+    "fr": "Le Juste",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-031",
+    "sira": 31,
+    "ar": "اللَّطِيفُ",
+    "okunus": "el-Latîf",
+    "tr": "Kullarına lutfeden",
+    "fr": "Le Bienveillant envers Ses serviteurs",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-032",
+    "sira": 32,
+    "ar": "الْخَبِيرُ",
+    "okunus": "el-Habîr",
+    "tr": "Her şeyden haberdar",
+    "fr": "Le Parfaitement Informé",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-033",
+    "sira": 33,
+    "ar": "الْحَلِيمُ",
+    "okunus": "el-Halîm",
+    "tr": "Yumuşaklık sahibi",
+    "fr": "Le Longanime, plein de douceur",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-034",
+    "sira": 34,
+    "ar": "الْعَظِيمُ",
+    "okunus": "el-Azîm",
+    "tr": "Azametli olan",
+    "fr": "L’Immense en majesté",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-035",
+    "sira": 35,
+    "ar": "الْغَفُورُ",
+    "okunus": "el-Gafûr",
+    "tr": "Çok affedici",
+    "fr": "Celui qui pardonne beaucoup",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-036",
+    "sira": 36,
+    "ar": "الشَّكُورُ",
+    "okunus": "eş-Şekûr",
+    "tr": "Az amele bile çok sevap veren",
+    "fr": "Celui qui récompense largement le moindre bien",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-037",
+    "sira": 37,
+    "ar": "الْعَلِيُّ",
+    "okunus": "el-Alî",
+    "tr": "Yüce, yüceltici",
+    "fr": "Le Très-Haut",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-038",
+    "sira": 38,
+    "ar": "الْكَبِيرُ",
+    "okunus": "el-Kebîr",
+    "tr": "Büyük",
+    "fr": "Le Grand",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-039",
+    "sira": 39,
+    "ar": "الْحَفِيظُ",
+    "okunus": "el-Hafîz",
+    "tr": "Koruyucu",
+    "fr": "Le Protecteur",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-040",
+    "sira": 40,
+    "ar": "الْمُقِيتُ",
+    "okunus": "el-Mukît",
+    "tr": "Rızıkları yaratandır.",
+    "fr": "Celui qui crée les subsistances",
+    "kaynakTr": "Hadislerle İslam",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-041",
+    "sira": 41,
+    "ar": "الْحَسِيبُ",
+    "okunus": "el-Hasîb",
+    "tr": "Hesaba çeken",
+    "fr": "Celui qui demande des comptes",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-042",
+    "sira": 42,
+    "ar": "الْجَلِيلُ",
+    "okunus": "el-Celîl",
+    "tr": "Yücelik sıfatları bulunan",
+    "fr": "Le Majestueux",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-043",
+    "sira": 43,
+    "ar": "الْكَرِيمُ",
+    "okunus": "el-Kerîm",
+    "tr": "Çok cömert",
+    "fr": "Le Très-Généreux",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-044",
+    "sira": 44,
+    "ar": "الرَّقِيبُ",
+    "okunus": "er-Rakîb",
+    "tr": "Gözeten",
+    "fr": "Celui qui veille sur tout",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-045",
+    "sira": 45,
+    "ar": "الْمُجِيبُ",
+    "okunus": "el-Mücîb",
+    "tr": "Duaları kabul eden",
+    "fr": "Celui qui exauce les prières",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-046",
+    "sira": 46,
+    "ar": "الْوَاسِعُ",
+    "okunus": "el-Vâsi’",
+    "tr": "İlmi ve rahmeti geniş",
+    "fr": "Celui dont la science et la miséricorde sont vastes",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-047",
+    "sira": 47,
+    "ar": "الْحَكِيمُ",
+    "okunus": "el-Hakîm",
+    "tr": "Hikmet sahibi",
+    "fr": "Le Sage",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-048",
+    "sira": 48,
+    "ar": "الْوَدُودُ",
+    "okunus": "el-Vedûd",
+    "tr": "Müminleri seven",
+    "fr": "Celui qui aime les croyants",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-049",
+    "sira": 49,
+    "ar": "الْمَجِيدُ",
+    "okunus": "el-Mecîd",
+    "tr": "Şerefi yüksek",
+    "fr": "Le Glorieux",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-050",
+    "sira": 50,
+    "ar": "الْبَاعِثُ",
+    "okunus": "el-Bâis",
+    "tr": "Öldükten sonra dirilten ve peygamber gönderen",
+    "fr": "Celui qui ressuscite les morts et envoie les prophètes",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-051",
+    "sira": 51,
+    "ar": "الشَّهِيدُ",
+    "okunus": "eş-Şehîd",
+    "tr": "Her şeye şahit olan",
+    "fr": "Le Témoin de toute chose",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-052",
+    "sira": 52,
+    "ar": "الْحَقُّ",
+    "okunus": "el-Hakk",
+    "tr": "Hakkın kendisi",
+    "fr": "La Vérité",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-053",
+    "sira": 53,
+    "ar": "الْوَكِيلُ",
+    "okunus": "el-Vekîl",
+    "tr": "Kulların işlerini yerine getiren",
+    "fr": "Celui qui prend en charge les affaires de Ses serviteurs",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-054",
+    "sira": 54,
+    "ar": "الْقَوِيُّ",
+    "okunus": "el-Kavî",
+    "tr": "Güçlü, kuvvetli",
+    "fr": "Le Fort",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-055",
+    "sira": 55,
+    "ar": "الْمَتِينُ",
+    "okunus": "el-Metîn",
+    "tr": "Güçlü, kudretli",
+    "fr": "L’Inébranlable",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-056",
+    "sira": 56,
+    "ar": "الْوَلِيُّ",
+    "okunus": "el-Velî",
+    "tr": "Müminlere dost ve yardımcı",
+    "fr": "L’Ami et le Soutien des croyants",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-057",
+    "sira": 57,
+    "ar": "الْحَمِيدُ",
+    "okunus": "el-Hamîd",
+    "tr": "Övgüye lâyık",
+    "fr": "Le Digne de louange",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-058",
+    "sira": 58,
+    "ar": "الْمُحْصِى",
+    "okunus": "el-Muhsî",
+    "tr": "Her şeyi sayan, bilen",
+    "fr": "Celui qui dénombre et connaît toute chose",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-059",
+    "sira": 59,
+    "ar": "الْمُبْدِئُ",
+    "okunus": "el-Mübdi",
+    "tr": "Her şeyi yokluktan çıkaran",
+    "fr": "Celui qui crée à partir du néant",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-060",
+    "sira": 60,
+    "ar": "الْمُعِيدُ",
+    "okunus": "el-Muîd",
+    "tr": "Öldürüp yeniden dirilten",
+    "fr": "Celui qui fait mourir puis ressuscite",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-061",
+    "sira": 61,
+    "ar": "الْمُحْيِى",
+    "okunus": "el-Muhyî",
+    "tr": "Hayat veren, dirilten",
+    "fr": "Celui qui donne la vie",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-062",
+    "sira": 62,
+    "ar": "الْمُمِيتُ",
+    "okunus": "el-Mümît",
+    "tr": "Öldüren",
+    "fr": "Celui qui donne la mort",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-063",
+    "sira": 63,
+    "ar": "الْحَيُّ",
+    "okunus": "el-Hayy",
+    "tr": "Diri",
+    "fr": "Le Vivant",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-064",
+    "sira": 64,
+    "ar": "الْقَيُّومُ",
+    "okunus": "el-Kayyûm",
+    "tr": "Her şeyi ayakta tutan",
+    "fr": "Celui qui fait subsister toute chose",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-065",
+    "sira": 65,
+    "ar": "الْوَاجِدُ",
+    "okunus": "el-Vâcid",
+    "tr": "İstediğini istediği anda bulan",
+    "fr": "Celui qui trouve ce qu’Il veut, quand Il le veut",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-066",
+    "sira": 66,
+    "ar": "الْمَاجِدُ",
+    "okunus": "el-Mâcid",
+    "tr": "Şanı yüce ve keremi çok",
+    "fr": "Celui dont la gloire est haute et la générosité immense",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-067",
+    "sira": 67,
+    "ar": "الْوَاحِدُ",
+    "okunus": "el-Vâhid",
+    "tr": "Bir ve tektir.",
+    "fr": "L’Un, l’Unique",
+    "kaynakTr": "Hadislerle İslam",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-068",
+    "sira": 68,
+    "ar": "الصَّمَدُ",
+    "okunus": "es-Samed",
+    "tr": "Muhtaç olmayan",
+    "fr": "Celui qui n’a besoin de rien",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-069",
+    "sira": 69,
+    "ar": "الْقَادِرُ",
+    "okunus": "el-Kâdir",
+    "tr": "Kudret sahibi",
+    "fr": "Le Puissant",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-070",
+    "sira": 70,
+    "ar": "الْمُقْتَدِرُ",
+    "okunus": "el-Muktedir",
+    "tr": "Her şeye gücü yeten",
+    "fr": "Le Tout-Puissant sur toute chose",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-071",
+    "sira": 71,
+    "ar": "الْمُقَدِّمُ",
+    "okunus": "el-Mukaddim",
+    "tr": "İstediğini öne alan",
+    "fr": "Celui qui fait avancer qui Il veut",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-072",
+    "sira": 72,
+    "ar": "الْمُؤَخِّرُ",
+    "okunus": "el-Muahhir",
+    "tr": "Geri bırakan",
+    "fr": "Celui qui fait reculer",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-073",
+    "sira": 73,
+    "ar": "الأَوَّلُ",
+    "okunus": "el-Evvel",
+    "tr": "Başlangıcı olmayan",
+    "fr": "Le Premier, sans commencement",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-074",
+    "sira": 74,
+    "ar": "الْآخِرُ",
+    "okunus": "el-Âhir",
+    "tr": "Sonu olmayan",
+    "fr": "Le Dernier, sans fin",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-075",
+    "sira": 75,
+    "ar": "الظَّاهِرُ",
+    "okunus": "ez-Zâhir",
+    "tr": "Varlığı açık olan",
+    "fr": "L’Apparent, dont l’existence est manifeste",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-076",
+    "sira": 76,
+    "ar": "الْبَاطِنُ",
+    "okunus": "el-Bâtın",
+    "tr": "Zât ve mahiyeti gizli olan",
+    "fr": "Le Caché, dont l’essence échappe à la perception",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-077",
+    "sira": 77,
+    "ar": "الْوَالِى",
+    "okunus": "el-Vâlî",
+    "tr": "Bütün kâinatı sevk ve idare eder.",
+    "fr": "Celui qui gouverne tout l’univers",
+    "kaynakTr": "Hadislerle İslam",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-078",
+    "sira": 78,
+    "ar": "الْمُتَعَالِى",
+    "okunus": "el-Müteâlî",
+    "tr": "Noksanlıklardan yüce",
+    "fr": "L’Exalté au-dessus de toute imperfection",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-079",
+    "sira": 79,
+    "ar": "الْبَرُّ",
+    "okunus": "el-Berr",
+    "tr": "İyiliği çok",
+    "fr": "Le Bienfaisant",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-080",
+    "sira": 80,
+    "ar": "التَّوَّابُ",
+    "okunus": "et-Tevvâb",
+    "tr": "Tövbeleri kabul edici",
+    "fr": "Celui qui accepte le repentir",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-081",
+    "sira": 81,
+    "ar": "الْمُنْتَقِمُ",
+    "okunus": "el-Müntekım",
+    "tr": "Âsilerden intikam alan",
+    "fr": "Celui qui châtie les rebelles",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-082",
+    "sira": 82,
+    "ar": "الْعَفُوُّ",
+    "okunus": "el-Afüv",
+    "tr": "Affedici",
+    "fr": "L’Indulgent, qui efface les fautes",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-083",
+    "sira": 83,
+    "ar": "الرَّءُوفُ",
+    "okunus": "er-Raûf",
+    "tr": "Şefkati çok",
+    "fr": "Le Très-Compatissant",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-084",
+    "sira": 84,
+    "ar": "مَالِكُ الْمُلْكِ",
+    "okunus": "Mâlikü’l-mülk",
+    "tr": "Mülkün gerçek sahibi",
+    "fr": "Le véritable Maître de la royauté",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-085",
+    "sira": 85,
+    "ar": "ذُو الْجَلاَلِ وَالْإِكْرَامِ",
+    "okunus": "Zü’l-celâli ve’l-ikrâm",
+    "tr": "Ululuk ve ikram sahibi",
+    "fr": "Le Détenteur de la majesté et de la générosité",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-086",
+    "sira": 86,
+    "ar": "الْمُقْسِطُ",
+    "okunus": "el-Muksit",
+    "tr": "Adaletle hükmeder.",
+    "fr": "Celui qui juge avec équité",
+    "kaynakTr": "Hadislerle İslam",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-087",
+    "sira": 87,
+    "ar": "الْجَامِعُ",
+    "okunus": "el-Câmi’",
+    "tr": "Birbirine zıt şeyleri bir araya getirebilen",
+    "fr": "Celui qui réunit même les contraires",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-088",
+    "sira": 88,
+    "ar": "الْغَنِيُّ",
+    "okunus": "el-Ganî",
+    "tr": "Zengin, kimseye muhtaç olmayan",
+    "fr": "Le Riche, qui n’a besoin de personne",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-089",
+    "sira": 89,
+    "ar": "الْمُغْنِى",
+    "okunus": "el-Muğnî",
+    "tr": "Dilediğini muhtaç olmaktan kurtaran",
+    "fr": "Celui qui délivre du besoin",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-090",
+    "sira": 90,
+    "ar": "الْمَانِعُ",
+    "okunus": "el-Mâni’",
+    "tr": "İstediği şeylere engel olan",
+    "fr": "Celui qui empêche ce qu’Il veut",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-091",
+    "sira": 91,
+    "ar": "الضَّارُّ",
+    "okunus": "ed-Dârr",
+    "tr": "Dilediğini zarara sokan",
+    "fr": "Celui qui éprouve par le mal qui Il veut",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-092",
+    "sira": 92,
+    "ar": "النَّافِعُ",
+    "okunus": "en-Nâfi’",
+    "tr": "Dilediğine fayda veren",
+    "fr": "Celui qui accorde le bienfait à qui Il veut",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-093",
+    "sira": 93,
+    "ar": "النُّورُ",
+    "okunus": "en-Nûr",
+    "tr": "Aydınlatan",
+    "fr": "La Lumière",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-094",
+    "sira": 94,
+    "ar": "الْهَادِى",
+    "okunus": "el-Hâdî",
+    "tr": "Hidayete erdiren",
+    "fr": "Le Guide, qui mène à la bonne voie",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-095",
+    "sira": 95,
+    "ar": "الْبَدِيعُ",
+    "okunus": "el-Bedî’",
+    "tr": "Çok güzel yaratan",
+    "fr": "Celui qui crée de façon admirable",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-096",
+    "sira": 96,
+    "ar": "الْبَاقِى",
+    "okunus": "el-Bâkî",
+    "tr": "Varlığı sürekli olan",
+    "fr": "Le Permanent, dont l’existence ne cesse jamais",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-097",
+    "sira": 97,
+    "ar": "الْوَارِثُ",
+    "okunus": "el-Vâris",
+    "tr": "Her şeyin asıl sahibidir.",
+    "fr": "L’Héritier, véritable Possesseur de toute chose",
+    "kaynakTr": "Hadislerle İslam",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-098",
+    "sira": 98,
+    "ar": "الرَّشِيدُ",
+    "okunus": "er-Reşîd",
+    "tr": "Yol gösterici",
+    "fr": "Celui qui indique la voie droite",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  },
+  {
+    "id": "esma-099",
+    "sira": 99,
+    "ar": "الصَّبُورُ",
+    "okunus": "es-Sabûr",
+    "tr": "Çok sabırlı",
+    "fr": "Le Très-Patient",
+    "kaynakTr": "Diyanet İlmihali",
+    "durum": "taslak"
+  }
+]
