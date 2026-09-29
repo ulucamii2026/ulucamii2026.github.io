@@ -14,7 +14,8 @@
         "fr": "Al-Fatiha"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-1-6",
@@ -31,7 +32,8 @@
         "fr": "Al-Fatiha"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-10-86",
@@ -48,7 +50,8 @@
         "fr": "Younous"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-20-25",
@@ -66,7 +69,8 @@
         "fr": "Ta-Ha"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-20-27",
@@ -84,7 +88,8 @@
         "fr": "Ta-Ha"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-23-26",
@@ -101,7 +106,8 @@
         "fr": "Al-Mou’minoun"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-23-94",
@@ -118,7 +124,8 @@
         "fr": "Al-Mou’minoun"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-23-97",
@@ -135,7 +142,8 @@
         "fr": "Al-Mou’minoun"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-23-98",
@@ -152,7 +160,8 @@
         "fr": "Al-Mou’minoun"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-23-118",
@@ -169,7 +178,8 @@
         "fr": "Al-Mou’minoun"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-26-83",
@@ -186,7 +196,8 @@
         "fr": "Ach-Chou‘ara’"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-26-84",
@@ -203,7 +214,8 @@
         "fr": "Ach-Chou‘ara’"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-26-85",
@@ -220,7 +232,8 @@
         "fr": "Ach-Chou‘ara’"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-26-169",
@@ -237,7 +250,8 @@
         "fr": "Ach-Chou‘ara’"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-28-22",
@@ -254,7 +268,8 @@
         "fr": "Al-Qasas"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-29-30",
@@ -271,7 +286,8 @@
         "fr": "Al-‘Ankabout"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-37-182",
@@ -288,7 +304,8 @@
         "fr": "As-Saffat"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-54-10",
@@ -305,7 +322,8 @@
         "fr": "Al-Qamar"
       }
     },
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-vitr-32",
@@ -314,7 +332,8 @@
     "fr": "Ô Allah, je cherche refuge auprès de Toi contre la discorde, l’hypocrisie et les mauvaises mœurs.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Vitr, 32",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-muslim-zikir-59",
@@ -323,7 +342,8 @@
     "fr": "Ô Allah, c’est en Ton nom que je vis et que je meurs.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Müslim, Zikir, 59",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ibn-mace-edeb-55-a",
@@ -332,7 +352,8 @@
     "fr": "Louange à Allah, par la grâce de qui s’accomplissent les bonnes choses.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "İbn Mâce, Edeb, 55",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ibn-mace-edeb-55-b",
@@ -341,7 +362,8 @@
     "fr": "Louange à Allah en toute circonstance.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "İbn Mâce, Edeb, 55",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-tirmizi-salat-39",
@@ -350,7 +372,8 @@
     "fr": "Ô Allah, guide les imams et pardonne aux muezzins.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Tirmizî, Salât, 39",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-tirmizi-kader-7",
@@ -359,7 +382,8 @@
     "fr": "Ô Toi qui retournes les cœurs, affermis mon cœur dans Ta religion.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Tirmizî, Kader, 7",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-muslim-zikir-72",
@@ -368,7 +392,8 @@
     "fr": "Ô Allah, je Te demande la bonne direction, la piété, la chasteté et la richesse du cœur.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Müslim, Zikir, 72",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-edeb-102",
@@ -377,7 +402,8 @@
     "fr": "Au nom d’Allah ; je place ma confiance en Allah ; il n’y a de force ni de puissance qu’en Allah.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Edeb, 102-103",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ibn-hanbel-1-153",
@@ -386,7 +412,8 @@
     "fr": "Ô Allah, bénis pour ma communauté les premières heures du jour.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "İbn Hanbel, I, 153",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-tirmizi-deavat-81",
@@ -395,7 +422,8 @@
     "fr": "Il n’y a de divinité que Toi, gloire à Toi ! J’ai été du nombre des injustes.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Tirmizî, Deavât, 81",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-etime-52",
@@ -404,7 +432,8 @@
     "fr": "Louange à Allah qui nous a nourris, nous a abreuvés et a fait de nous des musulmans.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Et’ıme, 52",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-vitr-26",
@@ -413,7 +442,8 @@
     "fr": "Ô Allah, aide-moi à T’évoquer, à Te remercier et à bien T’adorer.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Vitr, 26",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ibn-hanbel-1-403",
@@ -422,7 +452,8 @@
     "fr": "Ô Allah, de même que Tu as embelli ma création, embellis aussi mon caractère.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "İbn Hanbel, I, 403",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-esribe-21-a",
@@ -431,7 +462,8 @@
     "fr": "Ô Allah, bénis-nous dans ce repas et nourris-nous de meilleur encore.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Eşribe, 21",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-esribe-21-b",
@@ -440,7 +472,8 @@
     "fr": "Ô Allah, bénis-le pour nous et donne-nous-en davantage.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Eşribe, 21",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-cenaiz-8",
@@ -449,7 +482,8 @@
     "fr": "Je demande à Allah l’Immense, Seigneur du Trône immense, de te guérir.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Ebû Dâvûd, Cenâiz, 8",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-tirmizi-deavat-70",
@@ -458,7 +492,8 @@
     "fr": "Ô Allah, inspire-moi la droiture et protège-moi du mal de mon âme.",
     "kaynakTr": "40 Hadiste Doğruluk",
     "hadis": "Tirmizî, Deavât, 70",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-tirmizi-deavat-89",
@@ -467,7 +502,8 @@
     "fr": "Ô Allah, Tu es Celui qui pardonne, le Généreux ; Tu aimes le pardon, alors pardonne-moi.",
     "kaynakTr": "Peygamberimizin Dilinden Dualar",
     "hadis": "Tirmizî, Deavât, 89",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ebu-davud-savm-22",
@@ -476,7 +512,8 @@
     "fr": "Ô Allah, c’est pour Toi que j’ai jeûné et c’est avec Ta subsistance que je romps mon jeûne.",
     "kaynakTr": "Peygamberimizin Dilinden Dualar",
     "hadis": "Ebû Dâvûd, Savm, 22",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-taberani-evsat-4-189",
@@ -485,7 +522,8 @@
     "fr": "Ô Allah, bénis pour nous les mois de Rajab et de Cha‘ban, et fais-nous atteindre le Ramadan.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Taberânî, el-Mu’cemü’l-evsat, IV, 189",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-ibn-mace-menasik-4",
@@ -494,7 +532,8 @@
     "fr": "Ô Allah, fais que ce soit un pèlerinage sans ostentation ni recherche de renommée.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "İbn Mâce, Menâsik, 4",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   },
   {
     "id": "d-h-tirmizi-etime-47",
@@ -503,6 +542,7 @@
     "fr": "Au nom d’Allah, au début et à la fin.",
     "kaynakTr": "Hadislerle İslam",
     "hadis": "Tirmizî, Et’ıme, 47",
-    "durum": "taslak"
+    "durum": "imam-onayli",
+    "onayTarihi": "2026-09-29"
   }
 ]
