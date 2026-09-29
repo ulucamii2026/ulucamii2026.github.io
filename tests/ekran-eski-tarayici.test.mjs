@@ -85,7 +85,7 @@ test('ekran.css yalnız Chromium 70 CSS özelliklerini kullanır; renk kimlik do
 });
 
 test('fontlar pakete kopyalanır', () => {
-  for (const f of ['work-sans-latin.woff2', 'work-sans-latin-ext.woff2', 'amiri-arabic.woff2']) assert.ok(existsSync(kok + 'public/ekran/fonts/' + f), f);
+  for (const f of ['work-sans-latin.woff2', 'work-sans-latin-ext.woff2', 'arapca-kuran.woff2', 'arapca-metin.woff2']) assert.ok(existsSync(kok + 'public/ekran/fonts/' + f), f);
 });
 
 /* Derlenmiş sayfa (dist/) yalnız `npm run build` sonrasında vardır; yayın hattında bu test derlemeden sonra koşar.

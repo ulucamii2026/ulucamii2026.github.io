@@ -1,0 +1,4 @@
+{
+  "kuran": { "aile": "Ekran Kuran", "dosya": "arapca-kuran.woff2", "kaynak": "node_modules/@fontsource/scheherazade-new/files/scheherazade-new-arabic-400-normal.woff2", "satirYuksekligi": 1.95, "boyutKatsayisi": 1, "lisans": "OFL-1.1" },
+  "metin": { "aile": "Ekran Metin", "dosya": "arapca-metin.woff2", "kaynak": "node_modules/@fontsource/noto-naskh-arabic/files/noto-naskh-arabic-arabic-400-normal.woff2", "satirYuksekligi": 1.75, "boyutKatsayisi": 1, "lisans": "OFL-1.1" }
+}

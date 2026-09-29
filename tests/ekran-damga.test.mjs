@@ -25,7 +25,7 @@ test('damga yol ve içerikten gelir: sıra bağımsız, aynı dosyalar aynı dam
 test('ağ önce veri akışları damgaya girmez; iskelet, paket, CSS, fontlar ve logolar girer', () => {
   const girmeyen = KABUK.filter((u) => !damgayaGirer(u));
   assert.deepEqual(girmeyen.sort(), ['/ekran/akis.json', '/ekran/icerik.json', '/ekran/vakitler.json']);
-  for (const u of ['/ekran/', '/ekran/ekran.js', '/ekran/ekran.css', '/ekran/fonts/amiri-arabic.woff2', '/media/logo/ulu-camii-logo.svg']) {
+  for (const u of ['/ekran/', '/ekran/ekran.js', '/ekran/ekran.css', '/ekran/fonts/arapca-kuran.woff2', '/ekran/fonts/arapca-metin.woff2', '/media/logo/ulu-camii-logo.svg']) {
     assert.ok(KABUK.includes(u) && damgayaGirer(u), u);
   }
   assert.equal(kabukDosyasi('kok', '/ekran/'), join('kok', 'ekran', 'index.html'));

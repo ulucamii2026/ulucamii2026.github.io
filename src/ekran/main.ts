@@ -70,7 +70,7 @@ try {
 
 /** İlk slayttan önce Arapça yüzler yüklenir (en çok 3 sn): ilk levha yedek yazı tipiyle ölçülüp sonra taşmasın.
  *  Yüklenemese de açılış sürer (levhaSigdir yazı tipi gelince yeniden sığdırır). */
-const ARAPCA_YUZLER = ['Amiri'];
+const ARAPCA_YUZLER = ['Ekran Kuran', 'Ekran Metin'];
 /** arapcaYukle() bittiği an (performance.now; saat atlamalarından etkilenmez). Sığmayan slaytı «yazı tipleri
  *  yükleniyor» diye gösterme istisnası (sonrakiSlayt) bu andan en çok YAZI_TIPI_TOLERANSI_MS sürer. */
 let arapcaHazirAni = 0;

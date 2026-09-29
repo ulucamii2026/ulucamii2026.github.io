@@ -2,11 +2,11 @@
    (src/data/kurumsal-kimlik.json) ekler: --ana --siyah --beyaz --zemin --yuzey --metin --ikincil --cizgi.
    ESKİ WEBVIEW UYUMU (Chromium 70): yeni renk fonksiyonları, clamp/min/max, has seçicisi, layer ve
    container kuralları, kapsayıcı/dinamik görüntü birimleri, inset, aspect-ratio, gap ve iç içe kural
-   KULLANILMAZ — tests/ekran-eski-tarayici.test.mjs denetler. Bütün ölçüler --u'ya bağlıdır. */
+   KULLANILMAZ — tests/ekran-eski-tarayici.test.mjs denetler. Bütün ölçüler --u'ya bağlıdır.
+   Arapça yüzleri (Ekran Kuran, Ekran Metin) scripts/ekran-derle.mjs ekler. */
 
 @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/work-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/work-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-@font-face { font-family: 'Amiri'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/amiri-arabic.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; overflow: hidden; background: var(--siyah); }
@@ -48,8 +48,10 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .ust-baslik .sira { margin-left: calc(var(--u) * 1.5); opacity: .75; }
 .levha { flex: none; width: 100%; margin: auto 0; }
 .levha p { overflow-wrap: break-word; word-wrap: break-word; text-wrap: balance; }
-.levha .ar { font-family: 'Amiri', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1)); line-height: 1.75; }
-.slayt-esma .levha .ar { line-height: 1.6; }
+/* Arapça yüz rolü: Kur'an metni (data-yuz="kuran") 'Ekran Kuran', öteki 'Ekran Metin'; --lh-* ve --k-* yazi-tipleri.json'dan gelir. */
+.levha .ar { font-family: 'Ekran Metin', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1) * var(--k-metin, 1)); line-height: var(--lh-metin, 1.75); }
+.levha .ar[data-yuz='kuran'] { font-family: 'Ekran Kuran', 'Ekran Metin', 'Traditional Arabic', serif; font-size: calc(var(--u) * var(--f-ar) * var(--olcek, 1) * var(--k-kuran, 1)); line-height: var(--lh-kuran, 1.75); }
+.slayt-esma .levha .ar { line-height: var(--lh-metin, 1.75); }
 .levha .okunus { font-size: calc(var(--u) * var(--f-okunus) * var(--olcek, 1)); line-height: 1.2; font-weight: 600; }
 .levha .susleme { display: block; width: calc(var(--u) * var(--f-susleme) * 10 * var(--olcek, 1)); height: calc(var(--u) * var(--f-susleme) * var(--olcek, 1)); margin: calc(var(--u) * 1.4 * var(--olcek, 1)) auto; }
 .susleme .yildiz { fill: var(--ana); }
