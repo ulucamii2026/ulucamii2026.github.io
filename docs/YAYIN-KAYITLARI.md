@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 29 Eylül 2026 (2) — cami ekranı levhası: iç kenar boşluğu ve Kur'an satırında durak işareti payı
+
+- Zaman: 29 Eylül 2026 ≈ 11:40–12:25 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «iki küçük görünüm sorununu düzelt» talimatı (aynı günkü TV denetiminde görülen iki kusur).
+- Kapsam: `src/ekran/slaytlar.ts` — sığdırma, slayt alanının yanında içindeki slaytın taşmasını da ölçer (alanın kaydırma boyu kendi alt boşluğuna taşanı görmüyordu; 214 gerçek slaytın 172'si alt kenara dayanıyordu); Kur'an yüzünde durak işaretlerinin satır kutusundan taşan mürekkep yükselişi canvas ile ölçülüp üst dolgu (em) olarak verilir. `src/ekran/ekran.css` — ölçüm yapılamayan tarayıcı için `.3em` sabit pay. `tests/web/ekran.spec.mjs` — iki yeni test (iki satırlık kaynaklı Kur'an duası; Şems 91/9-10), taban kapısı ve Cuma testi iç taşmayı da denetler; kalibrasyon, ayetler FR'siz yayımlandığı sürece ayet profilini FR'siz ölçer.
+- İçerik commit'i `e38d665`. Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/36549867509> — **success**.
+- Testler: `npm run check` 0 hata / 0 uyarı; `npm run dogrula` çıkış 0 (`test:ekran` 147 / 0); Playwright `tests/web/ekran.spec.mjs` masaüstü 90 geçti / 3 atlandı. Onaylı 214 slayt 1280×720 yatayda: sığmayan 0, iç taşma 0, en küçük ölçek 1,070. Kalibrasyon: tüm profillerde f ≥ 1,058, bütçeler değişmedi.
+- Canlı doğrulama: `/ekran/` 200; canlı `ekran.js` yeni ölçümü taşıyor; Polaroid TV YENILE sonrası düzeltilmiş levhayı gösteriyor.
+- Açık sınırlar: ayetlere FR meâli eklenirse kalibrasyon yeniden çalıştırılmalı (ayet profili o zaman FR'li ölçülür).
+
 ## 29 Eylül 2026 — cami ekranı: sağ alt levha, duyurular ve onaylı manevi içerik (A alt projesi)
 
 - Zaman: 29 Eylül 2026 10:55–11:10 (Europe/Brussels). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «bütün karar ve yetki sende, full otonom ilerle» talimatı (plan ve spec: ekran A alt projesi); dinî içerik kullanıcının onay sayfasında 204 kaydı tek tek onaylamasıyla (`durum: imam-onayli`, `onayTarihi: 2026-09-29`) yayına girdi.
