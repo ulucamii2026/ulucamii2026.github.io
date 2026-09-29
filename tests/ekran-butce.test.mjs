@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { OLCU, olcuDegiskenleri, UST_BASLIK } from '../src/lib/ekran/olcu.ts';
-import { BUTCE, maneviButce, duyuruParcalari, uzunluk } from '../src/lib/ekran/butce.ts';
+import { BUTCE, maneviButce, duyuruParcalari, duyuruDilleri, duyuruAsimlari, uzunluk } from '../src/lib/ekran/butce.ts';
 import { AHLAK_HADISLERI } from '../src/lib/hadis-verisi.ts';
 
 const harf = (n, c = 'a') => c.repeat(n);
@@ -96,9 +96,32 @@ test('duyuru: afişli ama metinsiz (yalnız başlık) → tek afiş slaytı', ()
   assert.deepEqual(duyuruParcalari({ gorsel: '/a.png', tr: m('Kermes', '') }), [{ yerlesim: 'afis-sol', metinli: true }]);
 });
 
-// T5 CMS alanlarını ekleyince `skip` seçeneğini kaldırır.
-test('CMS sınırları bütçeyle aynı: ekranMetni 180, ekranBasligi 60', { skip: 'T5 CMS alanlarını ekleyince açılır' }, () => {
+test('CMS sınırları bütçeyle aynı: ekranMetni 180, ekranBasligi 60', () => {
   const yml = readFileSync(new URL('../public/admin/icerik/config.yml', import.meta.url), 'utf8');
   assert.match(yml, new RegExp(`name: ekranMetni[^\\n]*\\{0,${D.ikiSlaytMetin}\\}`));
   assert.match(yml, new RegExp(`name: ekranBasligi[^\\n]*\\{0,${D.baslik}\\}`));
+});
+
+test('duyuru: FR metni TR’den uzunsa eşik FR’ye göre (91–180 → ayrı slaytlar), TR kısa olsa da', () => {
+  assert.deepEqual(duyuruParcalari({ tr: m('b', harf(20)), fr: m('b', harf(D.tekSlaytMetin + 30)) }), [
+    { yerlesim: 'levha', diller: ['tr'] }, { yerlesim: 'levha', diller: ['fr'] }]);
+});
+
+test('duyuru: başlık yalnız FR’de 60’ı aşarsa sığmaz; aşım FR olarak raporlanır', () => {
+  const d = { tr: m('kısa', 'x'), fr: m(harf(D.baslik + 7), 'x') };
+  assert.deepEqual(duyuruParcalari(d), []);
+  assert.deepEqual(duyuruAsimlari(d), [`FR başlık ${D.baslik + 7}/${D.baslik}`]);
+});
+
+test('duyuru: afişli, 91–180 karakter metin → afiş + TR ile FR ayrı iki metin slaytı (hiçbir şey düşmez)', () => {
+  assert.deepEqual(duyuruParcalari({ gorsel: '/a.png', tr: m('b', harf(100)), fr: m('b', harf(120)) }), [
+    { yerlesim: 'afis-sol', metinli: false }, { yerlesim: 'levha', diller: ['tr'] }, { yerlesim: 'levha', diller: ['fr'] }]);
+});
+
+test('duyuruDilleri tek kaynak: yalnız dolu diller, TR önce; duyuruAsimlari sığan duyuruda boş, aşanda dil ve sınırla', () => {
+  assert.deepEqual(duyuruDilleri({ fr: m('b', 'x') }), ['fr']);
+  assert.deepEqual(duyuruDilleri({ tr: m('b', 'x'), fr: m('b', 'x') }), ['tr', 'fr']);
+  assert.deepEqual(duyuruDilleri({}), []);
+  assert.deepEqual(duyuruAsimlari({ tr: m('b', harf(D.ikiSlaytMetin)) }), []);
+  assert.deepEqual(duyuruAsimlari({ tr: m(harf(67), 'x'), fr: m('b', harf(212)) }), ['TR başlık 67/60', 'FR metin 212/180']);
 });

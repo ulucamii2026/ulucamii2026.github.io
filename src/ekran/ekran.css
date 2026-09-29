@@ -59,7 +59,12 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .levha p.fr { font-size: calc(var(--u) * var(--f-fr) * var(--olcek, 1)); line-height: 1.3; margin-top: calc(var(--u) * .8 * var(--olcek, 1)); }
 .levha .kaynak .bolunmez { white-space: nowrap; }
 .levha .kaynak { font-size: calc(var(--u) * var(--f-kaynak) * var(--olcek, 1)); line-height: 1.25; opacity: .7; margin-top: calc(var(--u) * 1.4 * var(--olcek, 1)); }
-.levha img { display: block; max-width: 100%; max-height: calc(var(--u) * 30); margin: 0 auto calc(var(--u) * 2); object-fit: contain; }
+/* Afişli duyuru (data-yerlesim='afis-sol'): solda afiş panel boyunca, sağda başlık ve (sığarsa) metin. Afiş kutusunun
+   genişliğini slaytlar.ts → afisBoyutla yazar (yükseklik × görsel oranı, en çok %45; aspect-ratio Chromium 70'te yok). */
+.afisli { flex: 1; min-height: 0; display: flex; flex-direction: row; }
+.afis { flex: none; height: 100%; margin-right: calc(var(--u) * 3); }
+.afis img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.afisli .levha { flex: 1; min-width: 0; width: auto; }
 .slayt.bos { align-items: center; justify-content: center; }
 .slayt.bos b { font-size: calc(var(--u) * 7); color: var(--ana); }
 .slayt.bos p.fr { font-size: calc(var(--u) * 3.6); margin-top: calc(var(--u) * 1.5); }
@@ -117,8 +122,6 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .ekran[data-duzen='yatay'] .takvim.fr { font-size: calc(var(--u) * 2.9); }
 
 .ekran[data-duzen='yatay'] .slayt-alani { grid-area: slayt; min-height: 0; padding: calc(var(--u) * 3.5) calc(var(--u) * 4); }
-/* Görsel levhaSigdir ile küçülmez; taban 30u sınırı yatayda metni kırpardı. */
-.ekran[data-duzen='yatay'] .levha img { max-height: calc(var(--u) * 20); }
 
 /* Sol sütun: .vakitler (ve Cuma'daki .cumali) yüksekliği ızgara satırından gelir. */
 .ekran[data-duzen='yatay'] .vakitler { grid-area: vakit; height: auto; min-height: 0; border-top: 0; border-right: calc(var(--u) * .7) solid var(--ana); padding: calc(var(--u) * 2) 0; }

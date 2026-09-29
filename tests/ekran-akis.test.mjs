@@ -5,6 +5,8 @@ import { parse } from 'yaml';
 import { ekranDuyurulari, EKRANLAR } from '../src/lib/ekran/akis.ts';
 import { gorselSurumu, publicDosyasi } from '../src/lib/ekran/gorsel-surumu.ts';
 import { createHash } from 'node:crypto';
+import sharp from 'sharp';
+import { gorselOrani } from '../src/lib/ekran/gorsel-orani.ts';
 
 const d = (id, data) => ({ id, data: { baslik: 'Başlık ' + id, tarih: new Date('2026-09-20'), taslak: false, ekranHedef: [], ...data } });
 
@@ -86,4 +88,33 @@ test('gerçek dosya public/ altından okunur; public dışına çıkan yol okunm
   const v = createHash('sha256').update(logo).digest('hex').slice(0, 8);
   assert.equal(gorselSurumu('/media/logo/ulu-camii-logo.svg', publicDosyasi), '/media/logo/ulu-camii-logo.svg?v=' + v);
   assert.equal(publicDosyasi('/../package.json'), null);
+});
+
+test('ekran başlığı sitedeki başlıktan önce gelir; boş ya da yalnız boşluksa sitedeki başlık', () => {
+  const s = ekranDuyurulari([
+    d('tr/a', { ekranda: true, baslik: 'Çok uzun site başlığı', ekranBasligi: 'Kısa başlık', ozet: 'Özet' }),
+    d('tr/b', { ekranda: true, ekranBasligi: '  ', ozet: 'Özet' }),
+  ], '2026-09-27', 30);
+  assert.deepEqual(s.map((x) => x.tr.baslik).sort(), ['Başlık tr/b', 'Kısa başlık']);
+});
+
+test('ekrana sığmayan duyuru akışa girmez; kimliği ve aşımı raporlanır; ekran başlığı onu kurtarır', () => {
+  const dusen = [];
+  const s = ekranDuyurulari([
+    d('tr/uzun', { ekranda: true, ozet: 'a'.repeat(181) }),
+    d('tr/uzun-baslik', { ekranda: true, baslik: 'b'.repeat(61), ozet: 'kısa' }),
+    d('tr/kurtarilmis', { ekranda: true, baslik: 'b'.repeat(61), ekranBasligi: 'Kısa', ozet: 'kısa' }),
+  ], '2026-09-27', 30, dusen);
+  assert.deepEqual(s.map((x) => x.id), ['kurtarilmis']);
+  assert.deepEqual(dusen, ['uzun (ekrana sığmaz: TR metin 181/180)', 'uzun-baslik (ekrana sığmaz: TR başlık 61/60)']);
+});
+
+test('görsel oranı derlemede okunur: dikey afiş, EXIF ile döndürülmüş fotoğraf; dış adres, olmayan ya da bozuk dosya undefined', async () => {
+  const png = await sharp({ create: { width: 700, height: 1000, channels: 3, background: '#888888' } }).png().toBuffer();
+  assert.equal(await gorselOrani('/media/a.png', () => png), 0.7);
+  const jpg = await sharp({ create: { width: 1000, height: 700, channels: 3, background: '#888888' } }).jpeg().withMetadata({ orientation: 6 }).toBuffer();
+  assert.equal(await gorselOrani('/media/b.jpg', () => jpg), 0.7);
+  assert.equal(await gorselOrani('https://ornek.org/a.png', () => png), undefined);
+  assert.equal(await gorselOrani('/media/yok.png', () => null), undefined);
+  assert.equal(await gorselOrani('/media/bozuk.png', () => new Uint8Array([1, 2, 3])), undefined);
 });

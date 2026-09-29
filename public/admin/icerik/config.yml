@@ -88,7 +88,8 @@ collections:
       - { name: ekranBaslangic, label: "Ekranda ilk gün (boşsa duyuru tarihi)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate }
       - { name: ekranSon, label: "Ekranda son gün (boşsa Cami ekranı ayarlarındaki varsayılan gün sayısı)", widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, required: false, i18n: duplicate, hint: "Bu gün dâhil gösterilir, sonra ekrandan kendiliğinden kalkar." }
       - { name: ekranHedef, label: "Hangi ekranlar (boşsa hepsi)", widget: select, multiple: true, required: false, default: [], i18n: duplicate, options: [{ label: "Ana ekran (LED panonun yeri)", value: ana }, { label: "Giriş / çay ocağı", value: giris }, { label: "Kadınlar bölümü", value: kadin }] }
-      - { name: ekranMetni, label: "Ekran metni (boşsa özet)", widget: text, required: false, i18n: true, hint: "En fazla 160 karakter; ekranda başlığın altında görünür.", pattern: ["^[\\s\\S]{0,160}$", "En fazla 160 karakter"] }
+      - { name: ekranBasligi, label: "Ekran başlığı (boşsa duyuru başlığı)", widget: string, required: false, i18n: true, hint: "En fazla 60 karakter. Duyuru başlığı 60 karakteri aşıyorsa buraya kısa bir başlık yazın; yazılmazsa duyuru ekrana çıkmaz.", pattern: ["^.{0,60}$", "Bu metin ekrana sığmaz, kısaltın (en fazla 60 karakter)."] }
+      - { name: ekranMetni, label: "Ekran metni (boşsa özet)", widget: text, required: false, i18n: true, hint: "En fazla 180 karakter. 90 karakteri aşarsa Türkçe ve Fransızca ekranda ayrı iki slaytta gösterilir. Özet 180 karakteri aşıyorsa buraya kısa bir metin yazın; yazılmazsa duyuru ekrana çıkmaz.", pattern: ["^[\\s\\S]{0,180}$", "Bu metin ekrana sığmaz, kısaltın (en fazla 180 karakter)."] }
       - { name: taslak, label: Taslak (sitede gösterme), widget: boolean, default: false, i18n: duplicate }
       - { name: body, label: Metin, widget: markdown, i18n: true }
 

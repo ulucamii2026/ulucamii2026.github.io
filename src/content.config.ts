@@ -33,7 +33,8 @@ const duyurular = defineCollection({
     ekranBaslangic: z.preprocess(bosIseYok, z.coerce.date().optional()),
     ekranSon: z.preprocess(bosIseYok, z.coerce.date().optional()),
     ekranHedef: z.array(z.enum(EKRANLAR)).default([]),
-    ekranMetni: z.string().max(160).optional(),
+    ekranBasligi: z.string().max(60).optional(),
+    ekranMetni: z.string().max(180).optional(),
     taslak: z.boolean().default(false),
   }),
 });

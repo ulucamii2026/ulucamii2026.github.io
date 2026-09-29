@@ -2,7 +2,9 @@
  *  Levha tek ölçekle (--olcek) büyür/küçülür; öğe boyları src/lib/ekran/olcu.ts'teki tabanlar × ölçek. Ölçek okunur
  *  tabanın (1) altına inmez: tabanda da sığmayan slaytı çağıran (main.ts → sonrakiSlayt) atlar. */
 import type { Slayt } from '../lib/ekran/secim.ts';
-import { OLCU, olcuDegiskenleri, UST_BASLIK, type LevhaTuru } from '../lib/ekran/olcu.ts';
+import type { EkranDuyuru } from '../lib/ekran/akis.ts';
+import { duyuruDilleri } from '../lib/ekran/butce.ts';
+import { AFIS_ORANI, OLCU, olcuDegiskenleri, UST_BASLIK, type LevhaTuru } from '../lib/ekran/olcu.ts';
 import { olcekBul, type OlcekSonucu } from '../lib/ekran/sigdirma.ts';
 import { ayetKaynagi } from '../lib/ekran/kaynak.ts';
 import { el } from './gorunum.ts';
@@ -51,6 +53,47 @@ function ustBaslik(kok: HTMLElement, m: { tr: string; fr: string }, ek?: string)
 /** Sabit süsleme SVG'si (src/ekran/susleme.ts); CMS metni değildir. */
 const susleme = (levha: HTMLElement): void => levha.insertAdjacentHTML('beforeend', SUSLEME_SVG);
 
+/** Duyurunun başlıkları ve (metinli ise) metinleri; iki dil arasında süsleme. */
+function duyuruYazisi(levha: HTMLElement, d: EkranDuyuru, diller: Array<'tr' | 'fr'>, metinli: boolean): void {
+  diller.forEach((dil, i) => {
+    const m = d[dil];
+    if (!m) return;
+    if (i > 0) susleme(levha);
+    const fr = dil === 'fr' ? 'fr' : undefined;
+    paragraf(levha, fr ? 'baslik fr' : 'baslik', m.baslik, fr);
+    if (metinli) paragraf(levha, dil, m.metin, fr);
+  });
+}
+
+/** Afişli duyurunun gövdesi: solda afiş kutusu, sağda levha; kutunun genişliğini afisBoyutla yazar. Görsel
+ *  yüklenemezse (ör. yeniden adlandırılmış medya dosyası) kırık görsel simgesi her turda bütün ekranlarda görünmesin:
+ *  kutu gizlenir, slayt yazı levhasına döner ve yeniden sığdırılır. */
+function afisli(kok: HTMLElement, kart: HTMLElement, levha: HTMLElement, d: EkranDuyuru): HTMLElement {
+  kart.setAttribute('data-yerlesim', 'afis-sol');
+  const govde = el('div', 'afisli');
+  const kutu = el('div', 'afis');
+  kutu.setAttribute('data-oran', String(d.gorselOran && d.gorselOran > 0 ? d.gorselOran : AFIS_ORANI));
+  const img = document.createElement('img');
+  img.alt = '';
+  img.addEventListener('load', () => { levhaSigdir(kok); });
+  img.addEventListener('error', () => { kutu.hidden = true; kart.setAttribute('data-yerlesim', 'levha'); levhaSigdir(kok); });
+  img.src = d.gorsel as string;
+  kutu.appendChild(img);
+  govde.appendChild(kutu);
+  govde.appendChild(levha);
+  return govde;
+}
+
+/** Afiş kutusu: yükseklik gövde boyunca, genişlik = yükseklik × oran, en çok gövdenin %45'i. CSS aspect-ratio ve
+ *  min() Chromium 70'te yok; genişlik px olarak yazılır. Ölçekten bağımsızdır: gövdenin boyu levhayla değişmez. */
+function afisBoyutla(kok: HTMLElement): void {
+  const kutu = kok.querySelector('.afis') as HTMLElement | null;
+  if (!kutu || kutu.hidden || !kutu.parentElement) return;
+  const govde = kutu.parentElement;
+  const oran = parseFloat(kutu.getAttribute('data-oran') || '') || AFIS_ORANI;
+  kutu.style.width = Math.round(Math.min(govde.clientHeight * oran, govde.clientWidth * 0.45)) + 'px';
+}
+
 export function slaytCiz(kok: HTMLElement, s: Slayt): void {
   kok.textContent = '';
   const kart = el('article', 'slayt slayt-' + s.tur);
@@ -60,22 +103,16 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
   kart.style.setProperty('--f-ust', String(UST_BASLIK)); // üst başlık sabit boy: ölçekle büyümez
   ustBaslik(kart, METIN[s.tur], s.tur === 'esma' ? s.oge.sira + '/99' : undefined);
   const levha = el('div', 'levha');
+  let icerik: HTMLElement = levha;
   if (s.tur === 'duyuru') {
     const d = s.oge;
-    if (d.gorsel) {
-      kart.setAttribute('data-yerlesim', 'kucuk-gorsel');
-      const img = document.createElement('img');
-      img.alt = '';
-      img.addEventListener('load', () => { levhaSigdir(kok); });
-      // Görsel yüklenemezse (ör. yeniden adlandırılmış medya dosyası) kırık görsel simgesi her turda bütün
-      // ekranlarda görünmesin: gizlenir, slayt yazı levhasına döner ve yeniden sığdırılır.
-      img.addEventListener('error', () => { img.hidden = true; kart.setAttribute('data-yerlesim', 'levha'); levhaSigdir(kok); });
-      img.src = d.gorsel;
-      levha.appendChild(img);
+    const p = s.parca || { yerlesim: 'levha' as const, diller: duyuruDilleri(d) };
+    if (p.yerlesim === 'afis-sol' && d.gorsel) {
+      icerik = afisli(kok, kart, levha, d);
+      duyuruYazisi(levha, d, duyuruDilleri(d), p.metinli);
+    } else {
+      duyuruYazisi(levha, d, p.yerlesim === 'levha' ? p.diller : duyuruDilleri(d), true);
     }
-    if (d.tr) { paragraf(levha, 'baslik', d.tr.baslik); paragraf(levha, 'tr', d.tr.metin); }
-    if (d.tr && d.fr) susleme(levha);
-    if (d.fr) { paragraf(levha, 'baslik fr', d.fr.baslik, 'fr'); paragraf(levha, 'fr', d.fr.metin, 'fr'); }
   } else if (s.tur === 'ayet') {
     const a = s.oge;
     arapca(levha, a.ar, true);
@@ -107,7 +144,7 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
     paragraf(levha, 'fr', e.fr, 'fr');
     kaynakCiz(levha, e.kaynak);
   }
-  kart.appendChild(levha);
+  kart.appendChild(icerik);
   kok.appendChild(kart);
 }
 
@@ -139,6 +176,7 @@ let yazitipiBekleniyor = false;
 export function levhaSigdir(kok: HTMLElement): OlcekSonucu {
   const kart = kok.firstElementChild;
   const tur = kart ? (kart.getAttribute('data-tur') as LevhaTuru | null) : null;
+  afisBoyutla(kok);
   const yaz = (s: number): void => kok.style.setProperty('--olcek', s.toFixed(3));
   let sonuc: OlcekSonucu;
   if (!tur || !OLCU[tur]) {

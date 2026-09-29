@@ -239,6 +239,10 @@ for (const d of SITE_DILLERI.filter((x) => x !== 'tr')) {
       if (sigmayan.length) ekle('yuksek', 'cami ekranına sığmayan içerik yayımlanmadı (kısaltılmalı)', sigmayan.join(', '));
       if (obur.length) ekle('orta', 'cami ekranı içeriğinde eksik/mükerrer kayıt', obur.join(', '));
     }
+    if (existsSync(join(dizin, 'akis.json'))) {
+      const a = JSON.parse(readFileSync(join(dizin, 'akis.json'), 'utf8'));
+      if ((a.sigmayan || []).length) ekle('yuksek', 'cami ekranına sığmayan duyuru yayımlanmadı (CMS’te ekran başlığı ya da metni kısaltılmalı)', a.sigmayan.join(', '));
+    }
   }
 }
 

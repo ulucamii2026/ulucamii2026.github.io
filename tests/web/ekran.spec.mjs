@@ -479,6 +479,21 @@ const sinirDuyuru = { tur: 'duyuru', karakter: 0, oge: DUYURU({ id: 'sinir-duyur
 const sinirDua = (p) => ({ tur: 'dua', karakter: 0, oge: { id: 'sinir-dua-' + p.ad, kuran: true, ar: kes(K_AR, p.ar), tr: kes(K_TR, p.tr), fr: kes(K_FR, p.fr), kaynak: kes(K_KAYNAK, p.kaynak) } });
 /** Esmâ, bütçe sınırında: AR 40, okunuş 30, TR 80, FR 90 (esma tabanında). */
 const sinirEsma = { tur: 'esma', karakter: 0, oge: { id: 'sinir-esma', sira: 99, ar: kes(K_AR, BUTCE.esma.ar), okunus: kes('er-Rahmân er-Rahîm ', BUTCE.esma.okunus), tr: kes(K_TR, BUTCE.esma.tr), fr: kes(K_FR, BUTCE.esma.fr), kaynak: kes(K_KAYNAK, BUTCE.esma.kaynak) } };
+/** Tek dilli duyuru, sınırda: başlık 60, metin 180 (tek levha). */
+const sinirDuyuruTek = { tur: 'duyuru', karakter: 0, parca: { yerlesim: 'levha', diller: ['tr'] }, oge: DUYURU({ id: 'sinir-duyuru-tek', tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.ikiSlaytMetin) }, fr: undefined }) };
+/** İki dilli, her dilin metni 180: TR ve FR ayrı iki slayt (91–180 kuralı); iki parça da sınırda ölçülür. */
+const sinirDuyuruIki = [['tr', K_TR], ['fr', K_FR]].map(([dil, kalip]) => ({
+  tur: 'duyuru', karakter: 0, parca: { yerlesim: 'levha', diller: [dil] },
+  oge: DUYURU({ id: 'sinir-duyuru-' + dil, tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.ikiSlaytMetin) }, fr: { baslik: kes(K_FR, BD.baslik), metin: kes(K_FR, BD.ikiSlaytMetin) } }),
+}));
+/** Afişli duyuru, sağ sütun sınırında: başlık 30, metin 44, iki dil. Görsel oranı 16:9 (afiş %45 sınırına dayanır,
+ *  yazı sütunu en dar) ve dikey afiş (0,707). */
+const sinirAfis = (oran, ad) => ({
+  tur: 'duyuru', karakter: 0, parca: { yerlesim: 'afis-sol', metinli: true },
+  oge: DUYURU({ id: 'sinir-afis-' + ad, gorsel: '/media/duyurular/test-afis.svg', gorselOran: oran, tr: { baslik: kes(K_TR, BD.afisBaslik), metin: kes(K_TR, BD.afisMetin) }, fr: { baslik: kes(K_FR, BD.afisBaslik), metin: kes(K_FR, BD.afisMetin) } }),
+});
+/** Afişli ama metin sütuna sığmıyor: afiş slaytı yalnız başlıkla, metin ayrı levhada. */
+const sinirAfisBasligi = { tur: 'duyuru', karakter: 0, parca: { yerlesim: 'afis-sol', metinli: false }, oge: sinirAfis(16 / 9, 'baslik').oge };
 const SINIR_ICERIK = { derleme: '', eksik: [], ayetler: [], hadisler: [sinirHadis(BUTCE.manevi[1]).oge] };
 const TEK_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [ICERIK.hadisler[0]] };
 
@@ -685,16 +700,17 @@ test('bozuk slayt ayarı slaytı 0 ms döngüsüne sokmaz', async ({ page }) => 
   await expect(page.locator('.slayt-duyuru')).toBeVisible();
 });
 
-test('duyuru görseli yüklenemezse gizlenir (kırık görsel simgesi kalmaz), metin yerinde kalır', async ({ page }) => {
+test('duyuru görseli yüklenemezse afiş gizlenir (kırık görsel simgesi kalmaz), slayt yazı levhasına döner', async ({ page }) => {
   await page.route('**/media/duyurular/olmayan-kapak.webp', (r) => r.fulfill({ status: 404, body: '' }));
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ gorsel: '/media/duyurular/olmayan-kapak.webp' })]) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
   await page.clock.install({ time: an(ornek, '12:00') });
   await page.goto('/ekran/');
-  const img = page.locator('.slayt-duyuru img');
-  await expect(img).toHaveCount(1);
-  await expect(img).toHaveCSS('display', 'none');
-  await expect(page.locator('.slayt-duyuru .baslik').first()).toHaveText('Hayır çarşısı');
+  const kart = page.locator('.slayt-duyuru');
+  await expect(kart.locator('.afis img')).toHaveCount(1);
+  await expect(kart.locator('.afis')).toBeHidden();
+  await expect(kart).toHaveAttribute('data-yerlesim', 'levha');
+  await expect(kart.locator('.baslik').first()).toHaveText('Hayır çarşısı');
 });
 
 test.describe('internetsiz açılış', () => {
@@ -1160,14 +1176,21 @@ test.describe('yatay A+ yerleşimi: 961×541 (Polaroid TV, en dar)', () => {
     await yatayDenetle(page);
   });
 
-  test('görselli duyuru slayt alanından taşmaz; görsel en çok 20u yüksekliğinde', async ({ page }) => {
+  test('görselli duyuru: afiş solda panel boyunca, yazı sağda; afiş panelin %45’ini aşmaz; taşma yok', async ({ page }) => {
     await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
-    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([DUYURU({ gorsel: '/media/duyurular/test-afis.svg' })], SABIT_60SN) });
-    const img = page.locator('.slayt-duyuru img');
-    await expect.poll(() => img.evaluate((e) => e.complete && e.naturalWidth > 0)).toBe(true);
-    await expect.poll(() => page.locator('[data-alan="slayt"]').evaluate((e) => e.scrollHeight - e.clientHeight)).toBeLessThanOrEqual(1);
-    const o = await yatayDenetle(page);
-    expect((await img.boundingBox()).height).toBeLessThanOrEqual(20 * o.u + 1);
+    await yatayAc(page, an(ornek, ornek.ogle, -30), { siradaki: 'ogle', akis: AKIS([DUYURU({ gorsel: '/media/duyurular/test-afis.svg', gorselOran: 16 / 9 })], SABIT_60SN) });
+    const kart = page.locator('.slayt-duyuru');
+    await expect(kart).toHaveAttribute('data-yerlesim', 'afis-sol');
+    await expect.poll(() => kart.locator('.afis img').evaluate((e) => e.complete && e.naturalWidth > 0)).toBe(true);
+    const o = await kart.evaluate((e) => {
+      const r = (s) => { const b = e.querySelector(s).getBoundingClientRect(); return { left: b.left, right: b.right, width: b.width, height: b.height }; };
+      return { afis: r('.afis'), govde: r('.afisli'), levha: r('.afisli .levha') };
+    });
+    expect(o.afis.width, 'afiş en çok %45').toBeLessThanOrEqual(o.govde.width * 0.45 + 1);
+    expect(Math.abs(o.afis.height - o.govde.height), 'afiş panel boyunca').toBeLessThanOrEqual(1);
+    expect(o.levha.left, 'yazı afişin sağında').toBeGreaterThanOrEqual(o.afis.right);
+    await expect(page.locator('[data-alan="slayt"]')).toHaveAttribute('data-sigdi', 'evet');
+    await yatayDenetle(page);
   });
 
   test('saat 1970e dönmüşse uyarı 5u yazıyla üst banda sığar', async ({ page }) => {
@@ -1204,7 +1227,9 @@ test('yatay A+ görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async (
   let akisModu = 'duyuru';
   let icerikModu = 'normal';
   await page.route('**/ekran/', (route) => (cumaSaati === null ? route.fallback() : cumaSaatiEkle(cumaSaati)(route)));
-  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akisModu === 'duyuru' ? AKIS([DUYURU()], SABIT_60SN) : AKIS([], SABIT_60SN) }));
+  await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
+  const AFISLI = DUYURU({ gorsel: '/media/duyurular/test-afis.svg', gorselOran: 16 / 9, tr: { baslik: 'Kermes', metin: 'Pazar 14.00, cami bahçesi.' }, fr: { baslik: 'Kermesse', metin: 'Dimanche 14 h, cour de la mosquée.' } });
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akisModu === 'duyuru' ? AKIS([DUYURU()], SABIT_60SN) : akisModu === 'afis' ? AKIS([AFISLI], SABIT_60SN) : AKIS([], SABIT_60SN) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: icerikModu === 'sinir' ? SINIR_ICERIK : icerikModu === 'tek' ? TEK_HADIS : ICERIK }));
   const sahneler = [
     ['yatay-duzen-acik', [1920, 1080], an(ornek, ornek.ogle, -30), 'ogle'],
@@ -1214,6 +1239,7 @@ test('yatay A+ görsel kontrol görüntüleri (yalnız EKRAN_GORSEL=1)', async (
     ['levha-kisa-ayet', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { cumaSaati = null; akisModu = 'bos'; }],
     ['levha-kisa-hadis-koyu', [1280, 720], an(ornek, ornek.aksam, 30), 'yatsi', () => { icerikModu = 'tek'; }],
     ['levha-sinir-hadis', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { icerikModu = 'sinir'; }],
+    ['levha-duyuru-afis', [961, 541], an(ornek, ornek.ogle, -30), 'ogle', () => { akisModu = 'afis'; icerikModu = 'normal'; }],
     ['yatay-duzen-yarin-imsak', [961, 541], an(yatsiGunu, yatsiGunu.yatsi, 30), 'imsak', () => { akisModu = 'duyuru'; icerikModu = 'normal'; }],
     ['yatay-duzen-1970', [961, 541], new Date(0), null],
   ];
@@ -1269,6 +1295,7 @@ const TABAN_SAHNELERI = [
 async function tabanSahnesiAc(page, [, viewport, adres, duzen, cumali]) {
   await page.setViewportSize(viewport);
   if (cumali) await page.route('**/ekran/', cumaSaatiEkle('13:30'));
+  await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([], SABIT_60SN) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: TEK_HADIS }));
   await page.clock.install({ time: cumali ? an(cumaGunu, '12:00') : an(ornek, '12:00') });
@@ -1286,7 +1313,8 @@ for (const sahne of TABAN_SAHNELERI) {
   test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis ve Kur’an duası (profil A ve B), Esmâ ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
     test.skip(sahne[4] && !cumaGunu, 'veride Cuma yok');
     await tabanSahnesiAc(page, sahne);
-    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDua(BUTCE.manevi[0]), sinirDua(BUTCE.manevi[1]), sinirEsma, sinirDuyuru].concat(gercekSlaytlar()));
+    const duyurular = [sinirDuyuru, sinirDuyuruTek, sinirAfis(16 / 9, 'genis'), sinirAfis(0.707, 'dikey'), sinirAfisBasligi].concat(sinirDuyuruIki);
+    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDua(BUTCE.manevi[0]), sinirDua(BUTCE.manevi[1]), sinirEsma].concat(duyurular, gercekSlaytlar()));
     for (const o of sonuclar) {
       expect(o.sigdi, `${o.id} sığmalı`).toBe(true);
       tabanDenetle(o);
@@ -1438,4 +1466,35 @@ test('yazı tipi yükleme istisnası sınırlıdır: yazı tipi hazırlık bekle
   await page.clock.runFor(61_000); // tur yeniden kurulur; 10 sn geçti → atlanır
   await expect(slayt).toHaveAttribute('data-sigdi', 'bos');
   await expect(slayt).toHaveAttribute('data-atlanan', '1');
+});
+
+test('iki dilli duyurunun metni 90 karakteri aşarsa TR ve FR ayrı slaytlarda gösterilir', async ({ page }) => {
+  const tr = kes(K_TR, 120);
+  const fr = kes(K_FR, 120);
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ tr: { baslik: 'Genel kurul', metin: tr }, fr: { baslik: 'Assemblée générale', metin: fr } })]) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const kart = page.locator('[data-alan="slayt"] .slayt-duyuru');
+  await expect(kart.locator('p.tr')).toHaveText(tr);
+  await expect(kart.locator('p.fr')).toHaveCount(0);
+  await page.clock.runFor(10_500);
+  await expect(kart.locator('.baslik.fr')).toHaveText('Assemblée générale');
+  await expect(kart.locator('p.tr')).toHaveCount(0);
+});
+
+test('afişli duyurunun metni sağ sütuna sığmazsa afiş slaytından sonra metin levhası gelir (içerik düşmez)', async ({ page }) => {
+  await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
+  // DUYURU()'nun FR metni 47 karakter: afiş sütununun 44 sınırını aşar.
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([DUYURU({ gorsel: '/media/duyurular/test-afis.svg', gorselOran: 0.707 })]) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const kart = page.locator('[data-alan="slayt"] .slayt-duyuru');
+  await expect(kart).toHaveAttribute('data-yerlesim', 'afis-sol');
+  await expect(kart.locator('.baslik').first()).toHaveText('Hayır çarşısı');
+  await expect(kart.locator('p.tr')).toHaveCount(0);
+  await page.clock.runFor(10_500);
+  await expect(kart).toHaveAttribute('data-yerlesim', 'levha');
+  await expect(kart.locator('p.fr').last()).toHaveText('Dimanche après-midi dans la cour de la mosquée.');
 });

@@ -248,3 +248,18 @@ test('duyurular hedefi tek başına dolduruyorsa her tur yine en az bir manevi s
   const s = slaytListesi(girdi, 'ana', '2026-09-27', 0, { turHedefSn: 20, slayt: ON_SN });
   assert.deepEqual(s.map((x) => x.tur), ['duyuru', 'duyuru', 'duyuru', 'ayet']);
 });
+
+test('duyuru parçaları: 90’ı aşan iki dilli metin ayrı iki slayt; afişli uzun metin afiş + levha; sığmayan düşer', () => {
+  const du = (id, ek) => ({ id, tur: 'duyuru', baslangic: '2026-09-01', son: '2026-10-30', hedef: [], ...ek });
+  const s = slaytListesi({ duyurular: [
+    du('iki', { tr: { baslik: 'b', metin: 'a'.repeat(100) }, fr: { baslik: 'b', metin: 'c'.repeat(120) } }),
+    du('afis', { gorsel: '/a.png', tr: { baslik: 'b', metin: 'a'.repeat(50) } }),
+    du('uzun', { tr: { baslik: 'b', metin: 'a'.repeat(181) } }),
+  ], ayetler: [], hadisler: [] }, 'ana', '2026-09-27');
+  assert.deepEqual(s.map((x) => x.oge.id + ':' + JSON.stringify(x.parca)), [
+    'iki:{"yerlesim":"levha","diller":["tr"]}', 'iki:{"yerlesim":"levha","diller":["fr"]}',
+    'afis:{"yerlesim":"afis-sol","metinli":false}', 'afis:{"yerlesim":"levha","diller":["tr"]}',
+  ]);
+  // Süre, o slaytta okunan metinden: afiş slaytında yalnız başlık.
+  assert.deepEqual(s.map((x) => x.karakter), [101, 121, 1, 51]);
+});

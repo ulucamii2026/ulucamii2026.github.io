@@ -68,12 +68,18 @@ export type DuyuruParcasi =
   | { yerlesim: 'levha'; diller: Array<'tr' | 'fr'> }
   | { yerlesim: 'afis-sol'; metinli: boolean };
 
-/** Duyurunun ekrandaki slaytları. Sığmayan (başlık > 60 ya da dil metni > 180) duyuru için boş liste. */
-export function duyuruParcalari(d: Pick<EkranDuyuru, 'tr' | 'fr' | 'gorsel'>): DuyuruParcasi[] {
-  const D = BUTCE.duyuru;
+/** Duyurunun dolu dilleri (TR önce). Tek kaynak: parçalama, aşım raporu, slayt listesi ve çizici hep bunu kullanır. */
+export function duyuruDilleri(d: Pick<EkranDuyuru, 'tr' | 'fr'>): Array<'tr' | 'fr'> {
   const diller: Array<'tr' | 'fr'> = [];
   if (d.tr) diller.push('tr');
   if (d.fr) diller.push('fr');
+  return diller;
+}
+
+/** Duyurunun ekrandaki slaytları. Sığmayan (başlık > 60 ya da dil metni > 180) duyuru için boş liste. */
+export function duyuruParcalari(d: Pick<EkranDuyuru, 'tr' | 'fr' | 'gorsel'>): DuyuruParcasi[] {
+  const D = BUTCE.duyuru;
+  const diller = duyuruDilleri(d);
   if (!diller.length) return [];
   const metinUz = diller.map((l) => uzunluk((l === 'tr' ? d.tr : d.fr)!.metin));
   const baslikUz = diller.map((l) => uzunluk((l === 'tr' ? d.tr : d.fr)!.baslik));
@@ -92,4 +98,19 @@ export function duyuruParcalari(d: Pick<EkranDuyuru, 'tr' | 'fr' | 'gorsel'>): D
     return liste.concat(metinLevhalari());
   }
   return metinLevhalari();
+}
+
+/** Sığmayan duyurunun aşımları («TR başlık 67/60», «FR metin 212/180»); sığıyorsa boş. Derleme uyarısı ve site
+ *  denetimi için (src/lib/ekran/akis.ts → ekranDuyurulari). */
+export function duyuruAsimlari(d: Pick<EkranDuyuru, 'tr' | 'fr'>): string[] {
+  const D = BUTCE.duyuru;
+  const liste: string[] = [];
+  for (const dil of duyuruDilleri(d)) {
+    const m = d[dil]!;
+    const b = uzunluk(m.baslik);
+    const t = uzunluk(m.metin);
+    if (b > D.baslik) liste.push(`${dil.toUpperCase()} başlık ${b}/${D.baslik}`);
+    if (t > D.ikiSlaytMetin) liste.push(`${dil.toUpperCase()} metin ${t}/${D.ikiSlaytMetin}`);
+  }
+  return liste;
 }

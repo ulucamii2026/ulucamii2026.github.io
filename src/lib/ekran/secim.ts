@@ -5,6 +5,7 @@
  */
 import { brukselTarih, bugunTarih, durumHesapla, haftaGunu, TZ, type Gun, type Vakit } from '../namaz.ts';
 import { EKRANLAR, type EkranDuyuru, type EkranId } from './akis.ts';
+import { duyuruDilleri, duyuruParcalari, type DuyuruParcasi } from './butce.ts';
 import type { EkranAyet, EkranDua, EkranEsma, EkranHadis } from './icerik.ts';
 
 export interface SlaytAyari { tabanSn: number; karakterSn: number; enAzSn: number; enCokSn: number }
@@ -86,7 +87,8 @@ export function vakitGorunumu(gunler: Gun[], simdi: Date): VakitGorunumu | null 
 }
 
 export type Slayt =
-  | { tur: 'duyuru'; oge: EkranDuyuru; karakter: number }
+  /** `parca` duyurunun bu slayttaki bölümü (src/lib/ekran/butce.ts → duyuruParcalari); yoksa bütün diller tek levha. */
+  | { tur: 'duyuru'; oge: EkranDuyuru; parca?: DuyuruParcasi; karakter: number }
   | { tur: 'ayet'; oge: EkranAyet; karakter: number }
   | { tur: 'hadis'; oge: EkranHadis; karakter: number }
   | { tur: 'dua'; oge: EkranDua; karakter: number }
@@ -111,6 +113,18 @@ const uz = (...parcalar: (string | undefined)[]): number => {
   return t;
 };
 
+/** Duyuru slaytında okunan metnin uzunluğu (en uzun dil): afiş slaytı metinsizse yalnız başlıklar. */
+function duyuruKarakteri(d: EkranDuyuru, p: DuyuruParcasi): number {
+  const diller = p.yerlesim === 'levha' ? p.diller : duyuruDilleri(d);
+  const metinli = p.yerlesim === 'levha' || p.metinli;
+  let enCok = 0;
+  for (const dil of diller) {
+    const m = d[dil];
+    if (m) enCok = Math.max(enCok, metinli ? uz(m.baslik, m.metin) : uz(m.baslik));
+  }
+  return enCok;
+}
+
 /** Tur hedef süreyi aşarsa manevi blok turlara bölünür: her tur sıradaki `adet` öğeyi gösterir (sarmal; `turNo` ile
  *  kayar), duyurular her turda kalır. adet = duyurulardan kalan süreye sığan manevi slayt sayısı; en az 1, en çok
  *  n − 1. Ayar yoksa ya da bozuksa (NaN) blok bütün gösterilir. */
@@ -131,17 +145,17 @@ function maneviDilimi(manevi: Slayt[], duyurular: Slayt[], turNo: number, tur?: 
   return dilim;
 }
 
-/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi blok (günün ayeti, hadisi, duası, Esmâ'sı).
+/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi blok (günün ayeti, hadisi, duası, Esmâ'sı). Duyuru, ekrana sığma kuralına göre bir ya da iki slayt olur
+ *  (TR ve FR ayrı; afiş ve ardından metin).
  *  Boş kategori atlanır. Okuma süresi en uzun dildeki metne göre hesaplanır (izleyici tek dil okur). `tur` verilirse
  *  manevi blok turun hedef süresine göre dilimlenir. */
 export function slaytListesi(girdi: SlaytGirdisi, ekran: EkranId, bugun: string, turNo = 0, tur?: TurAyari): Slayt[] {
   const gecerli = girdi.duyurular.filter((d) => aktifMi(d, bugun) && hedefUygunMu(d.hedef, ekran));
   const sirali = gecerli.filter((d) => d.hedef.length > 0).concat(gecerli.filter((d) => d.hedef.length === 0));
-  const liste: Slayt[] = sirali.map((d) => ({
-    tur: 'duyuru' as const,
-    oge: d,
-    karakter: Math.max(uz(d.tr?.baslik, d.tr?.metin), uz(d.fr?.baslik, d.fr?.metin)),
-  }));
+  const liste: Slayt[] = [];
+  for (const d of sirali) {
+    for (const parca of duyuruParcalari(d)) liste.push({ tur: 'duyuru', oge: d, parca, karakter: duyuruKarakteri(d, parca) });
+  }
   const manevi: Slayt[] = [];
   const ayet = gununOgesi(girdi.ayetler, bugun);
   if (ayet) manevi.push({ tur: 'ayet', oge: ayet, karakter: Math.max(uz(ayet.ar), uz(ayet.tr), uz(ayet.fr)) });
