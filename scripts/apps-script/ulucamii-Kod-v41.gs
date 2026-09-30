@@ -1,3 +1,6 @@
+/* v41 — 30 Eyl 2026: silinen ihtida başvurusunun numarası (referansMaxBul) sonraki başvuruya yeniden verilir. Çöpteki aynı adlı
+   görsel ve paket iş dosyası artık okunmaz (ihtidaGorselleriOku, ihtidaPaketIsDosyasi); test-temizle bir ihtida satırını silerken
+   aynı ref'in görsellerini, iş dosyasını, son paket PDF'ini ve kuyruk özelliğini de kaldırır (ihtidaRefIzleriniCopeAt). Başka davranış değişmedi. */
 /* v40 — 23 Eyl 2026: herkese açık kayıt ve ihtida POST uçlarına sunucu tarafı hacim sınırı (AYAR_BASVURU_SINIRI): tür başına
    10 dakikada 10 yeni kayıt ("cok-sik"), günde kayıt 60 / ihtida 20 ("gunluk-sinir"), aynı e-posta günde 3 ("eposta-gunluk-sinir");
    sayım defterdeki gerçek satırlardan, kilit içinde ve tekrar denetiminden SONRA — aynı gonderimAnahtari ile yinelenen istek
@@ -86,7 +89,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 40;
+var SURUM = 41;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -1988,9 +1991,11 @@ function ihtidaGorselleriOku(klasor, ref, okunamayanlar) {
     var ad = ref + tanim.sonEk;
     sonuc[tanim.anahtar] = "";
     try {
-      var it = klasor.getFilesByName(ad);
-      if (!it.hasNext()) continue;                             // dosya yok: olağan
-      var blob = it.next().getBlob();
+      // 29 Eyl 2026: silinen denemenin numarası yeni başvuruya yeniden verilebilir; çöpteki eski görsel okunmaz.
+      var it = klasor.getFilesByName(ad), dosya = null;
+      while (it.hasNext()) { var aday = it.next(); if (aday.getName() === ad && !aday.isTrashed()) { dosya = aday; break; } }
+      if (!dosya) continue;                                    // dosya yok: olağan
+      var blob = dosya.getBlob();
       var bayt = blob.getBytes();
       if (!bayt || !bayt.length) { okunamayanlar.push({ dosya: ad, neden: "bos" }); continue; }
       if (bayt.length > 4 * 1024 * 1024) {
@@ -2723,6 +2728,7 @@ function testTemizleSayfa(sayfa, klasor, adAlanlari) {
     if (!/^(UC|IH|ST)-\d{4}-\d{4}$/.test(kayitRef)) continue; // v38: seviye defteri de temizlenir
     // Klasör verilmediyse (seviye defteri) hiçbir Drive işlemi yapılmaz: yalnız satır silinir.
     if (klasor && /^UC-\d{4}-\d{4}$/.test(kayitRef)) { kayitGorselleriniCopeAt(klasor, kayitRef); kayitImzaCopeAt(klasor, kayitRef); }
+    if (klasor && /^IH-\d{4}-\d{4}$/.test(kayitRef) && typeof ihtidaRefIzleriniCopeAt === "function") ihtidaRefIzleriniCopeAt(klasor, kayitRef);
     if (klasor && iPdf >= 0) {
       var id = driveIdCikar(String(satir[iPdf] || ""));
       if (id) {

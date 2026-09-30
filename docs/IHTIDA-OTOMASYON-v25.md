@@ -71,6 +71,17 @@ Resmî teknik kaynaklar: [Apps Script V8 çalışma ortamı](https://developers.
 
 Özel yerel kanıtlar Git'e alınmaz: `.codex/cikti/ihtida-canli/` içinde arşiv ve üç gelen PDF, teslim olayları, form başarı ekranı ve yalnız sentetik başvuruyu gösteren admin ekranı vardır. Gerçek cihaz/Safari testleri bu yayına dahil değildir. Son nüsha onayı ve kesinti senaryoları yerel gerçek PDF/VM ve tarayıcı testlerinde sınandı; canlı deneme ön başvuru akışını kapsadı.
 
+## Deneme başvurusunu silme ve numaranın yeniden verilmesi — 29 Eylül 2026
+
+- Numara `referansMaxBul` ile defterdeki en büyük numara + 1 olarak üretilir. En son satırlar silinirse aynı `IH-YYYY-NNNN` sonraki gerçek başvuruya yeniden verilir.
+- Bir başvurunun izleri şunlardır: defter satırı; İhtida klasöründe `<ref> - <Ad>.pdf`, dört görsel (`vesikalik`, `kimlik-on`, `kimlik-arka`, `imza`), `<ref> - paket-islem.json`, `<ref> - Ihtida Belge Paketi - rN.pdf`; Script Property `IHTIDA_PAKET_IS_<ref>`; varsa iç defter meta kaydı. Satır tek başına silinirse yeni başvuru eski «tamam» işini ve deneme görsellerini devralabilir.
+- 29 Eylül 2026'da IH-2026-0006 ve IH-2026-0007 (Rıdvan'ın deneme başvuruları) bu izlerin tamamıyla kaldırıldı. Canlıda tek başvuruyu silen bir uç olmadığı için editöre geçici bir fonksiyon eklendi: önce kuru çalıştırıldı, sonra gerçek silme yapıldı ve fonksiyon geri kaldırıldı. Editör kaynağı işlem öncesiyle birebir aynı kaldı; `/exec` dağıtımı değişmedi. Dosyalar `silindi-deneme-2026-09-29 ` önekiyle yeniden adlandırılıp çöpe atıldı. Defter 7 → 5 satır; `ihtida-paket-durum` iki ref için `null`; iç defter yeniden üretildi. Araç ve adımlar: `~/.claude/skills/ulucamii-site/scripts/ihtida-basvuru-sil/` (depo dışı, `OKUBENI.md`).
+- Aynı iş sırasında bulunan hata düzeltildi ve **30 Eylül 2026 ≈07:32'de Apps Script v41 olarak canlıya alındı** (`ulucamii-Kod-v41.gs`, dağıtım `D:/tmp/gas/dagit_v41.py`):
+  - `ihtidaGorselleriOku` ve `ihtidaPaketIsDosyasi` çöpteki aynı adlı dosyayı okuyabiliyordu. `getFilesByName` çöptekileri de döndürür.
+  - `test-temizle` bir ihtida satırını silerken görselleri, iş dosyasını, paket PDF'ini ve kuyruk özelliğini bırakıyordu. Artık `ihtidaRefIzleriniCopeAt` bunları kaldırıyor.
+  - Testler: `tests/ihtida-paket-akis.test.mjs` içindeki iki yeni test (eski kodla kırmızı). Canlı ihtida ucuna deneme başvurusu gönderilmedi; davranış yalnız yerel sahte Drive/Sheets testleriyle sınandı.
+- E-posta kopyaları (info@, imam@ ve başvuranın kutusu) bu temizlikle silinmez.
+
 ## Bundan sonraki kullanım
 
 Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, admin panelinde açılır ve üç alıcıya gönderilir. Tören sonrasında **Başvurular → İhtida → Son nüshayı onayla ve gönder** ile gerçek tarih, adres ve şahitler kontrol edilir. Bu son onay yeni ortak PDF nüshasını üretip arşivler ve aynı üç adrese gönderir. Müşavirin ıslak imzası basılı belgede tamamlanır.

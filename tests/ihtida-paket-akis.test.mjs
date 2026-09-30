@@ -9,7 +9,7 @@ import sharp from 'sharp';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 execFileSync(process.execPath, ['scripts/ihtida-gas-derle.mjs'], { stdio: 'pipe' });
-const source = readFileSync('.codex/cikti/gas/ulucamii-v40.gs', 'utf8');
+const source = readFileSync('.codex/cikti/gas/ulucamii-v41.gs', 'utf8');
 const png = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="220"><rect width="180" height="220" fill="#e0e6ee"/><circle cx="90" cy="72" r="35" fill="#596478"/><text x="35" y="170" font-size="30">TEST</text></svg>')).png().toBuffer();
 const image = 'data:image/png;base64,' + png.toString('base64');
 const k = { 'Referans': 'IH-2099-9999', 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belgique', 'E-posta': 'deniz@example.test', 'Zaman damgası': '09.09.2026', 'Form dili': 'fr', 'Kimlik belgesi türü': 'kimlik', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-09-09', 'İmza aktarım izni': 'Evet', 'Cinsiyet': 'kadin', 'Doğum tarihi': '1990-05-20', 'Doğum yeri': 'Namur', 'Uyruk': 'Belçika', 'Anne adı': 'Anne', 'Baba adı': 'Baba', 'Medeni hali': 'bekar', 'Öğrenim durumu': 'lisans', 'Mesleği': 'Öğretmen', 'Önceki din/mezhep': 'hristiyan-katolik', 'Telefon': '+32470000000', 'İhtida sebebi': 'Kendi araştırmam sonucunda.' };
@@ -22,8 +22,8 @@ function ortam() {
     return { getBytes: () => [...b], getDataAsString: () => b.toString('utf8'), getContentType: () => type, getName: () => name };
   };
   const createFile = b => {
-    const id = 'file-test-identifier-' + ++seq;
-    const f = { getId: () => id, getName: () => b.getName(), getUrl: () => 'https://drive.google.com/file/d/' + id + '/view', getBlob: () => b, isTrashed: () => false, getMimeType: () => b.getContentType(), getParents: () => iterator([{ getId: () => 'test-ihtida-folder' }]), setContent: text => { b = blob(text, 'application/json', b.getName()); } };
+    const id = 'file-test-identifier-' + ++seq; let cop = false;
+    const f = { getId: () => id, getName: () => b.getName(), getUrl: () => 'https://drive.google.com/file/d/' + id + '/view', getBlob: () => b, isTrashed: () => cop, setTrashed: v => { cop = v; }, getMimeType: () => b.getContentType(), getParents: () => iterator([{ getId: () => 'test-ihtida-folder' }]), setContent: text => { b = blob(text, 'application/json', b.getName()); } };
     files.set(id, f); return f;
   };
   const iterator = items => ({ hasNext: () => items.length > 0, next: () => items.shift() });
@@ -39,6 +39,7 @@ function ortam() {
   ctx.ihtidaKlasorGetir = () => ({ getId: () => 'test-ihtida-folder', createFile, getFilesByName: name => iterator([...files.values()].filter(f => f.getName() === name)) });
   ctx.ihtidaPaketKayit = () => ({ kayit: { ...k } });
   ctx.ihtidaPaketHucre = (ref, name, value) => cells.set(name, value);
+  ctx.gercekGorselleriOku = ctx.ihtidaGorselleriOku;
   ctx.ihtidaGorselleriOku = () => ({ vesikalik: image, kimlikOn: image, kimlikArka: image, imza: image });
   ctx.UrlFetchApp = { fetch: (url, options) => {
     if (options.method === 'post') {
@@ -240,4 +241,38 @@ test('Son nüsha onayı idempotenttir; arşiv değiştirilirse e-posta durur', a
   files.get(is.pdfId).getBlob = () => ({ getBytes: () => [1, 2, 3] });
   await ctx.ihtidaPaketIsle(k.Referans);
   assert.equal(ctx.ihtidaPaketIsiOku(k.Referans).durum, 'hata'); assert.equal(sent.length, 3);
+});
+
+// 29 Eyl 2026: silinen deneme başvurusunun numarası (referansMaxBul) sonraki gerçek başvuruya yeniden verilir.
+test('Yeniden verilen numarada çöpteki eski iş dosyası ve görseller yeni başvuruyu gölgelemez', () => {
+  const { ctx } = ortam(), klasor = ctx.ihtidaKlasorGetir(), ref = 'IH-2099-0006';
+  const eskiIs = klasor.createFile(ctx.Utilities.newBlob(JSON.stringify({ ref, durum: 'tamam', alicilar: [] }), 'application/json', ref + ' - paket-islem.json'));
+  const eskiGorsel = klasor.createFile(ctx.Utilities.newBlob('ESKI-DENEME', 'image/jpeg', ref + ' - vesikalik.jpg'));
+  eskiIs.setTrashed(true); eskiGorsel.setTrashed(true);
+  assert.equal(ctx.ihtidaPaketIsiOku(ref), null, 'çöpteki iş dosyası okunmamalı');
+  assert.equal(ctx.gercekGorselleriOku(klasor, ref, []).vesikalik, '', 'çöpteki görsel okunmamalı');
+  assert.equal(ctx.ihtidaPaketKuyrugaAl(ref).durum, 'sirada');
+  assert.equal(ctx.ihtidaPaketIsiOku(ref).durum, 'sirada', 'yeni iş dosyası çöpteki eskinin arkasında kaybolmamalı');
+  klasor.createFile(ctx.Utilities.newBlob('YENI-BASVURU', 'image/jpeg', ref + ' - vesikalik.jpg'));
+  const g = ctx.gercekGorselleriOku(klasor, ref, []);
+  assert.equal(Buffer.from(g.vesikalik.split(',')[1], 'base64').toString(), 'YENI-BASVURU');
+});
+
+test('Test temizliği ihtida satırıyla birlikte aynı numaranın iş dosyasını, paket PDF’ini, görsellerini ve kuyruğunu kaldırır', () => {
+  const { ctx, files, props } = ortam(), klasor = ctx.ihtidaKlasorGetir(), yeni = (ad, tur = 'image/jpeg') => klasor.createFile(ctx.Utilities.newBlob('x', tur, ad));
+  const hedef = 'IH-2099-0007', diger = 'IH-2099-0005';
+  for (const ref of [hedef, diger]) for (const son of [' - vesikalik.jpg', ' - kimlik-on.jpg', ' - kimlik-arka.jpg', ' - imza.png']) yeni(ref + son);
+  const paket = yeni(hedef + ' - Ihtida Belge Paketi - r1.pdf', 'application/pdf'), benzer = yeni('IH-2099-00071 - vesikalik.jpg');
+  ctx.ihtidaPaketIsiYaz({ ref: hedef, durum: 'teslim-takibi', pdfId: paket.getId(), alicilar: [] });
+  ctx.ihtidaPaketIsiYaz({ ref: diger, durum: 'tamam', alicilar: [] });
+  const rows = [[new Date(), diger, 'Deniz Örnek', ''], [new Date(), hedef, 'Deniz TESTOGLU', '']], baslik = ['Zaman damgası', 'Referans', 'Adı Soyadı', 'PDF bağlantısı'];
+  const sheet = { getLastRow: () => rows.length + 1, getLastColumn: () => baslik.length, deleteRow: n => rows.splice(n - 2, 1),
+    getRange: (r, c, nr) => ({ getValues: () => r === 1 ? [baslik] : rows.slice(r - 2, r - 2 + nr) }) };
+  assert.equal(ctx.testTemizleSayfa(sheet, klasor, ['Adı Soyadı']), 1);
+  assert.deepEqual(rows.map(r => r[1]), [diger]);
+  const cop = [...files.values()].filter(f => f.isTrashed()).map(f => f.getName()).sort();
+  assert.deepEqual(cop, [hedef + ' - Ihtida Belge Paketi - r1.pdf', hedef + ' - imza.png', hedef + ' - kimlik-arka.jpg', hedef + ' - kimlik-on.jpg', hedef + ' - paket-islem.json', hedef + ' - vesikalik.jpg']);
+  assert.equal(benzer.isTrashed(), false);
+  assert.equal(props.has('IHTIDA_PAKET_IS_' + hedef), false);
+  assert.equal(props.has('IHTIDA_PAKET_IS_' + diger), true);
 });

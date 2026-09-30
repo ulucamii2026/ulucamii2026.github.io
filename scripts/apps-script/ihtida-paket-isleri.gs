@@ -20,11 +20,30 @@ function ihtidaPaketHucre(ref, baslik, deger) {
 }
 function ihtidaPaketIsDosyasi(ref) {
   if (!/^IH-\d{4}-\d{4}$/.test(ref)) throw new Error("ref-gecersiz");
-  var it = ihtidaKlasorGetir().getFilesByName(ref + " - paket-islem.json");
-  if (!it.hasNext()) return null;
-  var f = it.next();
-  if (f.isTrashed()) return null;
-  return f;
+  // 29 Eyl 2026: numara silinen denemeden sonra yeniden verilebilir; çöpteki eski iş dosyası yenisini gölgelemez.
+  var ad = ref + " - paket-islem.json", it = ihtidaKlasorGetir().getFilesByName(ad);
+  while (it.hasNext()) { var f = it.next(); if (f.getName() === ad && !f.isTrashed()) return f; }
+  return null;
+}
+/** 29 Eyl 2026: test temizliği bir ihtida satırını silince numara sonraki başvuruya yeniden verilir (referansMaxBul).
+ *  Bu yüzden aynı ref'in iş dosyası, son paket PDF'i, görselleri ve kuyruk özelliği de kalkar; yoksa yeni başvuru
+ *  eski «tamam» işini ve deneme görsellerini devralır. Yalnız ada birebir eşleşen dosyalar çöpe gider. */
+function ihtidaRefIzleriniCopeAt(klasor, ref) {
+  if (!/^IH-\d{4}-\d{4}$/.test(ref)) throw new Error("ref-gecersiz");
+  var silinen = 0, is = null;
+  try { is = ihtidaPaketIsiOku(ref); } catch (_) { is = null; }
+  if (is && is.pdfId) {
+    try {
+      var pdf = DriveApp.getFileById(is.pdfId);
+      if (/^IH-\d{4}-\d{4} - Ihtida Belge Paketi - r\d+\.pdf$/.test(pdf.getName()) && pdf.getName().indexOf(ref + " - ") === 0 && !pdf.isTrashed()) { pdf.setTrashed(true); silinen++; }
+    } catch (_) { /* paket PDF'i yoksa satır temizliği sürer */ }
+  }
+  IHTIDA_GORSEL_ADLARI.map(function (t) { return ref + t.sonEk; }).concat([ref + " - paket-islem.json"]).forEach(function (ad) {
+    var it = klasor.getFilesByName(ad);
+    while (it.hasNext()) { var f = it.next(); if (f.getName() === ad && !f.isTrashed()) { f.setTrashed(true); silinen++; } }
+  });
+  PropertiesService.getScriptProperties().deleteProperty(IHTIDA_PAKET_ON_EK + ref);
+  return silinen;
 }
 function ihtidaPaketIsiOku(ref) {
   var f = ihtidaPaketIsDosyasi(ref);
