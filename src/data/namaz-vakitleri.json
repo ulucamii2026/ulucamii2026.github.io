@@ -4,18 +4,8 @@
  "kaynakUc": "https://namazvakitleri.diyanet.gov.tr/tr-TR/11890/mfamenne-namaz-vakitleri",
  "ilce": "11890",
  "ilceAdi": "M.FAMENNE",
- "guncelleme": "2026-09-29T09:03:43.819Z",
+ "guncelleme": "2026-09-30T09:00:57.648Z",
  "gunler": [
-  {
-   "tarih": "2026-09-28",
-   "hicri": "17 Rebiulahir 1448",
-   "imsak": "05:45",
-   "gunes": "07:27",
-   "ogle": "13:35",
-   "ikindi": "16:46",
-   "aksam": "19:32",
-   "yatsi": "21:01"
-  },
   {
    "tarih": "2026-09-29",
    "hicri": "18 Rebiulahir 1448",
@@ -325,6 +315,16 @@
    "ikindi": "14:57",
    "aksam": "17:29",
    "yatsi": "18:59"
+  },
+  {
+   "tarih": "2026-10-30",
+   "hicri": "19 Cemaziyelevvel 1448",
+   "imsak": "05:35",
+   "gunes": "07:18",
+   "ogle": "12:27",
+   "ikindi": "14:56",
+   "aksam": "17:27",
+   "yatsi": "18:57"
   },
   {
    "tarih": "2027-01-01",
