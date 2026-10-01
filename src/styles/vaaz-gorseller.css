@@ -11,6 +11,38 @@
   height: auto;
   margin: 0 0 1rem;
 }
+.vaaz-govde .vaaz-illustrasyon {
+  padding: 0;
+  border: 0;
+  margin: 3rem 0;
+}
+.vaaz-govde .vaaz-illustrasyon:first-child { margin-top: 0; }
+.vaaz-govde .vaaz-illustrasyon img {
+  background: var(--color-krem);
+  border-radius: var(--radius-kose);
+  margin-bottom: 1.25rem;
+}
+.vaaz-govde .vaaz-illustrasyon figcaption {
+  padding-block-end: 1.25rem;
+  border-block-end: 1px solid var(--cizgi);
+  max-width: 65ch;
+}
+.vaaz-govde .vaaz-illustrasyon figcaption strong {
+  font-size: 1.4rem;
+  line-height: 1.35;
+  margin-bottom: .5rem;
+  text-wrap: balance;
+}
+.vaaz-govde .vaaz-temsil {
+  display: block;
+  margin-top: .75rem;
+  font-size: .875rem;
+  line-height: 1.6;
+  color: var(--metin-2);
+}
+.vaaz-govde .vaaz-sema:not(.vaaz-illustrasyon) {
+  padding: 2rem 0 2.5rem;
+}
 .vaaz-govde .vaaz-gorsel figcaption {
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -28,11 +60,13 @@
 .vaaz-govde figure.vaaz-gorsel p.vaaz-sema-merkez {
   width: fit-content;
   margin: 1.5rem auto 0;
-  padding: .75rem 1.5rem;
+  padding: 2rem 2.25rem 1.1rem;
   border: 1px solid var(--vurgu-2);
+  border-radius: 5rem 5rem .25rem .25rem;
+  background: color-mix(in oklab, var(--vurgu-2) 7%, var(--zemin));
   color: var(--vurgu-2);
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
 }
@@ -102,6 +136,46 @@
   padding: 0;
 }
 .vaaz-govde .vaaz-nesiller li { margin: 0; }
+.vaaz-govde .vaaz-nesiller li,
+.vaaz-govde .vaaz-hayat > div {
+  border-block-start: 2px solid var(--cizgi-etkilesim);
+  padding-top: .85rem;
+}
+.vaaz-govde .vaaz-soz-yolu {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+}
+.vaaz-govde .vaaz-soz-yolu li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem 0;
+  border-block-end: 1px solid var(--cizgi);
+}
+.vaaz-govde .vaaz-soz-yolu li:last-child { grid-column: 1 / -1; }
+.vaaz-govde .vaaz-soz-yolu span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 2.5rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--vurgu-2);
+  border-radius: 50%;
+  color: var(--vurgu-2);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.vaaz-govde .vaaz-soz-yolu strong {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
 .vaaz-govde .vaaz-uygulama table {
   width: 100%;
   margin: 1.5rem 0 0;
@@ -116,7 +190,7 @@
 .vaaz-govde .vaaz-uygulama caption {
   text-align: left;
   padding-bottom: .75rem;
-  font-size: .95rem;
+  font-size: 1rem;
   color: var(--metin-2);
 }
 .vaaz-govde .vaaz-uygulama th,
@@ -137,6 +211,12 @@
   background: var(--zemin-2);
   color: var(--vurgu-2);
   font-weight: 700;
+}
+.vaaz-govde .vaaz-uygulama thead th:nth-child(1) { width: 30%; }
+.vaaz-govde .vaaz-uygulama thead th:nth-child(2) { width: 44%; }
+.vaaz-govde .vaaz-uygulama thead th:nth-child(3) { width: 26%; }
+.vaaz-govde .vaaz-uygulama tbody tr:nth-child(even) {
+  background: color-mix(in oklab, var(--vurgu-2) 3%, var(--zemin));
 }
 .vaaz-govde .vaaz-uygulama th:first-child { padding-inline-start: 0; }
 .vaaz-govde .vaaz-uygulama thead th:first-child { padding-inline-start: .75rem; }
@@ -160,6 +240,11 @@
 }
 @media (max-width: 640px) {
   .vaaz-govde .vaaz-gorsel { margin: 2rem 0; padding: 1.25rem 0; }
+  .vaaz-govde .vaaz-illustrasyon { padding: 0; margin: 2.5rem 0; }
+  .vaaz-govde .vaaz-illustrasyon:first-child { margin-top: 0; }
+  .vaaz-govde .vaaz-illustrasyon figcaption strong { font-size: 1.25rem; }
+  .vaaz-govde .vaaz-soz-yolu { grid-template-columns: 1fr; }
+  .vaaz-govde .vaaz-soz-yolu li:last-child { grid-column: auto; }
   .vaaz-govde .vaaz-sema-kollar,
   .vaaz-govde .vaaz-nesiller,
   .vaaz-govde .vaaz-hayat { grid-template-columns: 1fr; gap: 1.25rem; }
