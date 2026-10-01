@@ -748,4 +748,3 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - Canlı 18 mevcut WebP + 2 güncel belge HTTP200 ve SHA-256 eşleşti. Word `e563071ee5f5855dc7254842bd369cc65e784c90f11c3164076dcad96706d4fc`; PDF `662ce5c61d636dcf5d52ec6022d26610112d33204606a678ca8bcb9cca8706b6`. Canlı indirmeler: [Word](https://ulucamii.be/vaazlar/gurbette-cami.docx), [PDF](https://ulucamii.be/vaazlar/gurbette-cami.pdf).
 - Üretici/kanıt: `D:/hutbeler ve vaazlar/kaynak-gurbette-cami-20261002/mukemmellestirme-v3/`: editoryal önce/sonra, belge/yer imi/metin eşliği, sayfa renderleri, yerel/canlı tarayıcı kayıtları ve ekranları, tam kalite logu ve deploy sonucu. Eski v1/v2 üreticileri son düzeni geri alabilir; güncel üreticiler v3'tedir.
 - Sınır: dijital belge/Chromium ve mobil emülasyon kontrolü yapıldı; fiziksel baskı, fiziksel telefon ve Safari denenmedi. Gönderi/e-posta/mesaj gönderilmedi. Kayıt commit'i `[skip ci]` ile bu içerik dağıtımına bağlanır.
-
