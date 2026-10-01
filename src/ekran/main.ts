@@ -14,7 +14,8 @@ import { olcekKur } from './olcek.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, levhaSigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
-import { akisTazele, AKIS_ARALIGI_MS, duyuruAnahtari, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
+import { akisTazele, AKIS_ARALIGI_MS, birlesikDuyurular, duyuruAnahtari, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
+import { kabukKur, type KabukDurumu } from './kabuk.ts';
 
 interface SayfaVerisi {
   cami: { tr: string; fr: string };
@@ -86,6 +87,8 @@ yaz('cami-tr', sayfa.cami.tr);
 yaz('cami-fr', sayfa.cami.fr);
 
 const veri: EkranVerisi = { vakit: null, akis: null, icerik: null };
+/** Kabuktan itilen duyurular (src/ekran/kabuk.ts, window.UluKabukAl). Kabuk yoksa hiç dolmaz: sayfa bugünkü gibi çalışır. */
+const kabuk: KabukDurumu = { rev: -1, duyurular: [] };
 let ilkTazelemeBitti = false;
 const TARIH_TR = new Intl.DateTimeFormat('tr-TR', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const TARIH_FR = new Intl.DateTimeFormat('fr-BE', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -202,6 +205,8 @@ let turNo = 0;
  *  geldiyse (akisDongusu) tur, sonuna kadar beklenmeden SONRAKİ slaytta yeniden kurulur; ekrandaki slayt süresini
  *  normal doldurmuştur. Yalnız derleme damgası değişen akış (her yayın) turu baştan başlatmaz. */
 let turAnahtari: string | undefined;
+/** Sıradaki slayt zamanlayıcısı (sonrakiSlayt → finally): kabuk yeni liste ittiğinde iptal edilip hemen yeniden kurulur. */
+let slaytZamanlayici: ReturnType<typeof setTimeout> | undefined;
 /** Tabanda da sığmadığı için atlanan slayt sayısı (teşhis; slayt alanında data-atlanan). */
 let atlanan = 0;
 /** Turu (yeniden) kurar: bitmiş bir turdan sonra turNo artar, sira başa döner. */
@@ -210,12 +215,12 @@ function turKur(kok: HTMLElement): void {
   const ayar = veri.akis?.ayar;
   const icerik = veri.icerik;
   tur = slaytListesi(
-    { duyurular: veri.akis?.duyurular ?? [], ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
+    { duyurular: birlesikDuyurular(veri.akis, kabuk.duyurular), ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
     ekranId, bugunTarih(new Date()), turNo,
     { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
   );
   sira = 0;
-  turAnahtari = duyuruAnahtari(veri.akis);
+  turAnahtari = duyuruAnahtari(veri.akis, kabuk.duyurular);
   kok.setAttribute('data-atlanan', String(atlanan));
 }
 function sonrakiSlayt(): void {
@@ -223,7 +228,7 @@ function sonrakiSlayt(): void {
   try {
     const kok = alan('slayt');
     if (!kok) return;
-    if (sira >= tur.length || duyuruAnahtari(veri.akis) !== turAnahtari) turKur(kok);
+    if (sira >= tur.length || duyuruAnahtari(veri.akis, kabuk.duyurular) !== turAnahtari) turKur(kok);
     // Okunur taban kuralı: tabanda da sığmayan slayt atlanır. Turun kalanında sığan kalmadıysa (ama bu çağrıda en az
     // bir slayt atlandıysa) tur bir kez yeniden kurulur ve seçim bir kez daha yapılır; «Hoş geldiniz» yalnız yeni turda
     // da sığan slayt yoksa (yani tüm slaytlar atlanmışsa) çizilir. Çağrı başına en çok bir yeniden kurma: döngü donmaz.
@@ -260,7 +265,7 @@ function sonrakiSlayt(): void {
   } catch (hata) {
     console.error(hata);
   } finally {
-    setTimeout(sonrakiSlayt, sureMs);
+    slaytZamanlayici = setTimeout(sonrakiSlayt, sureMs);
   }
 }
 
@@ -319,6 +324,21 @@ try {
 } catch (hata) {
   console.error(hata);
 }
+
+/* Kabuk yeni bir duyuru listesi ittiğinde ekrandaki slaytın bitmesi beklenmez (slayt 10–30 sn sürer; imam duyurusu
+   «birkaç saniyede» görünmeli): 1,5 sn'lik sönümlemeyle (art arda değişiklikler tek yeniden kurma) sıradaki slayt hemen
+   çizilir ve tur yeni listeyle kurulur. Duyuru içeriği değişmediyse (yalnız rev arttı) slayt kesilmez. İlk slayt henüz
+   başlamadıysa yapılacak bir şey yok: turKur kabuk listesini zaten kullanır. */
+let kabukBekleme: ReturnType<typeof setTimeout> | undefined;
+kabukKur(window, kabuk, () => {
+  if (kabukBekleme !== undefined) clearTimeout(kabukBekleme);
+  kabukBekleme = setTimeout(() => {
+    kabukBekleme = undefined;
+    if (!slaytBasladi || duyuruAnahtari(veri.akis, kabuk.duyurular) === turAnahtari) return;
+    if (slaytZamanlayici !== undefined) clearTimeout(slaytZamanlayici);
+    sonrakiSlayt();
+  }, 1500);
+});
 
 saniyelik();
 void veriDongusu();

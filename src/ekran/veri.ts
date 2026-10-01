@@ -77,8 +77,18 @@ export const AKIS_ARALIGI_MS = 3 * 60_000;
  *  dışarıda: her yayında değişir (src/pages/ekran/akis.json.ts → derleme anı; günde 2–4 yayın) ve her yayın turu
  *  baştan başlatırdı. Ekran ayarı (slayt süresi) da dışarıda; süre her slaytta akıştan yeniden okunur. Liste aynı
  *  kurucudan (src/lib/ekran/akis.ts) aynı alan sırasıyla gelir, JSON metni kararlıdır. Akış yoksa undefined. */
-export function duyuruAnahtari(a: AkisGovdesi | null): string | undefined {
-  return a ? JSON.stringify(a.duyurular) : undefined;
+/** Kabuktan itilen duyurular (src/ekran/kabuk.ts) anahtara girer; `rev` girmez:
+ *  aynı içerikli yeni yük turu baştan başlatmaz. */
+export function duyuruAnahtari(a: AkisGovdesi | null, kabuk: readonly EkranDuyuru[] = []): string | undefined {
+  const akis = a ? JSON.stringify(a.duyurular) : undefined;
+  if (kabuk.length === 0) return akis;
+  return (akis === undefined ? '' : akis) + '|kabuk|' + JSON.stringify(kabuk);
+}
+
+/** Tur için duyuru listesi: kabuktan (Firestore) itilenler önce, akis.json duyuruları sonra. Kimlikler `fs:` önekli
+ *  olduğundan çakışmaz; hedef ve tarih süzmesi slaytListesi'nindir. */
+export function birlesikDuyurular(a: AkisGovdesi | null, kabuk: readonly EkranDuyuru[]): EkranDuyuru[] {
+  return kabuk.concat(a ? a.duyurular : []);
 }
 
 /** Yalnız duyuru akışını tazeler; hatalı ya da geçersiz yanıt son sağlam akışı silmez (tazele ile aynı kural). */

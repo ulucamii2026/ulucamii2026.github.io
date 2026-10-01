@@ -1658,3 +1658,91 @@ test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
   console.log(JSON.stringify({ metinKaynaklari: kaynaklar, sonuc }, null, 2));
   for (const p of profiller.filter((x) => x.karar)) expect.soft(f[p.ad + '|' + p.tur], `${p.ad}: karar sınırı ekrana sığmalı`).toBeGreaterThanOrEqual(1);
 });
+
+/* ---- Kabuk köprüsü (Android kabuğu → sayfa, B1): window.UluKabukAl; src/ekran/kabuk.ts ---- */
+const KABUK_DUYURU = (ek = {}) => ({ id: 'imam-1', tur: 'duyuru', tr: { baslik: 'Kabuk duyurusu', metin: 'Firestore’dan geldi.' }, fr: { baslik: 'Annonce', metin: 'Reçue du boîtier.' }, baslangic: '2000-01-01', son: '2099-12-31', hedef: [], ...ek });
+const kabukIt = (page, rev, duyurular) => page.evaluate(([r, d]) => window.UluKabukAl(JSON.stringify({ rev: r, duyurular: d })), [rev, duyurular]);
+
+async function kabukSayfasi(page, akisDuyurulari = []) {
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS(akisDuyurulari) }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect(page.locator('[data-alan="slayt"] .slayt').first()).toBeVisible();
+  expect(await page.evaluate(() => typeof window.UluKabukAl)).toBe('function');
+}
+
+test('kabuktan itilen duyuru, ekrandaki slaytın bitmesi beklenmeden saniyeler içinde görünür', async ({ page }) => {
+  await kabukSayfasi(page);
+  await expect(page.locator('[data-alan="slayt"] .slayt-duyuru')).toHaveCount(0);
+  await kabukIt(page, 1, [KABUK_DUYURU()]);
+  await page.clock.runFor(2_000);
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-duyuru .baslik').first()).toHaveText('Kabuk duyurusu');
+  await expect(slayt.locator('.slayt-duyuru p.fr').last()).toHaveText('Reçue du boîtier.');
+});
+
+test('eski ya da eşit rev yok sayılır, yeni rev listeyi değiştirir, boş liste duyuruyu kaldırır', async ({ page }) => {
+  await kabukSayfasi(page);
+  const slayt = page.locator('[data-alan="slayt"]');
+  const baslik = slayt.locator('.slayt-duyuru .baslik').first();
+  await kabukIt(page, 5, [KABUK_DUYURU()]);
+  await page.clock.runFor(2_000);
+  await expect(baslik).toHaveText('Kabuk duyurusu');
+  await kabukIt(page, 4, [KABUK_DUYURU({ id: 'eski', tr: { baslik: 'Eski liste', metin: 'x.' }, fr: undefined })]);
+  await kabukIt(page, 5, [KABUK_DUYURU({ id: 'ayni', tr: { baslik: 'Eşit rev', metin: 'x.' }, fr: undefined })]);
+  await page.clock.runFor(2_000);
+  await expect(baslik).toHaveText('Kabuk duyurusu');
+  await kabukIt(page, 6, [KABUK_DUYURU({ id: 'yeni', tr: { baslik: 'Yeni liste', metin: 'y.' }, fr: undefined })]);
+  await page.clock.runFor(2_000);
+  await expect(baslik).toHaveText('Yeni liste');
+  await kabukIt(page, 7, []);
+  await page.clock.runFor(2_000);
+  await expect(slayt.locator('.slayt-duyuru')).toHaveCount(0);
+});
+
+test('bozuk ya da düşmanca yük ekranı bozmaz; metin HTML olarak yorumlanmaz', async ({ page }) => {
+  const hatalar = [];
+  page.on('pageerror', (e) => hatalar.push(e.message));
+  await kabukSayfasi(page);
+  const slayt = page.locator('[data-alan="slayt"]');
+  for (const bozuk of ['{bozuk', 'null', '[]', '{"rev":"1","duyurular":[]}', '{"rev":-1,"duyurular":[]}', '{"rev":1.5,"duyurular":[]}', '{"rev":1,"duyurular":{}}']) {
+    await page.evaluate((y) => window.UluKabukAl(y), bozuk);
+  }
+  await page.evaluate(() => { window.UluKabukAl(undefined); window.UluKabukAl({ rev: 1, duyurular: 5 }); });
+  await page.clock.runFor(2_000);
+  await expect(slayt.locator('.slayt-duyuru')).toHaveCount(0);
+  const kotu = '<img src=x onerror="window.__sizdi=1"> "q" \\ \u2028 😀';
+  await kabukIt(page, 2, [KABUK_DUYURU({ tr: { baslik: kotu, metin: kotu }, fr: undefined })]);
+  await page.clock.runFor(2_000);
+  await expect(slayt.locator('.slayt-duyuru .baslik').first()).toContainText('<img src=x onerror');
+  expect(await page.evaluate(() => window.__sizdi)).toBeUndefined();
+  await expect(slayt.locator('img[src="x"]')).toHaveCount(0);
+  expect(hatalar).toEqual([]);
+});
+
+test('kabuk duyuruları akış duyurularından önce gelir; başka ekrana hedeflenmiş olan bu ekranda görünmez', async ({ page }) => {
+  await kabukSayfasi(page, [DUYURU({ id: 'akis-1', tr: { baslik: 'Akış duyurusu', metin: 'a.' }, fr: undefined })]);
+  const slayt = page.locator('[data-alan="slayt"]');
+  const baslik = slayt.locator('.slayt-duyuru .baslik').first();
+  await expect(baslik).toHaveText('Akış duyurusu');
+  await kabukIt(page, 1, [KABUK_DUYURU({ id: 'giris-1', hedef: ['giris'], tr: { baslik: 'Giriş ekranı', metin: 'g.' }, fr: undefined }), KABUK_DUYURU()]);
+  await page.clock.runFor(2_000);
+  await expect(baslik).toHaveText('Kabuk duyurusu');
+  await page.clock.runFor(10_000);
+  await expect(baslik).toHaveText('Akış duyurusu');
+  await expect(slayt.getByText('Giriş ekranı')).toHaveCount(0);
+});
+
+test('içeriği değişmeyen yeni rev ekrandaki slaytı kesmez', async ({ page }) => {
+  await kabukSayfasi(page);
+  const slayt = page.locator('[data-alan="slayt"]');
+  await kabukIt(page, 1, [KABUK_DUYURU()]);
+  await page.clock.runFor(2_000);
+  await expect(slayt.locator('.slayt-duyuru .baslik').first()).toHaveText('Kabuk duyurusu');
+  await kabukIt(page, 2, [KABUK_DUYURU()]);   // aynı içerik, yeni rev
+  await page.clock.runFor(3_000);             // sönümleme (1,5 sn) doldu; duyuru slaytı hâlâ ekranda (10 sn'nin ~5 sn'si)
+  await expect(slayt.locator('.slayt-duyuru .baslik').first()).toHaveText('Kabuk duyurusu');
+  await page.clock.runFor(7_000);             // slayt normal süresinde biter, sıradaki (manevi) slayt gelir
+  await expect(slayt.locator('.slayt-duyuru')).toHaveCount(0);
+});

@@ -141,3 +141,12 @@ test('duyuruDilleri tek kaynak: yalnız dolu diller, TR önce; duyuruAsimlari s�
   assert.deepEqual(duyuruAsimlari({ tr: m('b', harf(D.ikiSlaytMetin)) }), []);
   assert.deepEqual(duyuruAsimlari({ tr: m(harf(67), 'x'), fr: m('b', harf(212)) }), ['TR başlık 67/60', 'FR metin 212/180']);
 });
+
+test('/ekran/butce.json duyuru sınırlarını butce.ts ile birebir yayımlar (tek bütçe kaynağı)', async () => {
+  const { GET } = await import('../src/pages/ekran/butce.json.ts');
+  const yanit = await GET({});
+  assert.match(yanit.headers.get('Content-Type'), /^application\/json/);
+  const govde = await yanit.json();
+  assert.deepEqual(govde.duyuru, BUTCE.duyuru);
+  assert.deepEqual(govde.ekranlar, ['ana', 'giris', 'kadin']);
+});
