@@ -21,6 +21,14 @@ test.beforeEach(async ({ context }) => {
   await context.route('**/*', (route) => (new URL(route.request().url()).origin === 'http://127.0.0.1:4401'
     ? route.continue() : route.abort('blockedbyclient')));
   await context.routeWebSocket(/.*/, (socket) => socket.close());
+  // Canlı akış geriye uyumluluğu yalnız testte açılır; yayımlanan HTML örnek modundadır.
+  // Sahte uç route ile karşılanır; hiçbir test gerçek servise ulaşmaz.
+  await context.route('**/envanter/', async (route) => {
+    const response = await route.fetch();
+    const html = (await response.text()).replace('data-onizleme="true"', 'data-onizleme="false"')
+      .replace(/data-uc(?:="")?(?=[ >])/g, 'data-uc="https://example.test/macros/envanter"');
+    await route.fulfill({ response, body: html });
+  });
 });
 
 /** GET → sağlık (ya da ağ hatası); POST → gövdeyi yakalar. */

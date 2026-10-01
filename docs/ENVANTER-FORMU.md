@@ -1,5 +1,29 @@
 # Saha envanteri formu — işletme notu
 
+## Güncel karar — 1 Ekim 2026: örnek ön yüz
+
+Sahibin son açık isteğiyle `/envanter/` **örnek önizlemedir**. Bütün mevcut bölümler,
+adlı/kodlu bildirimler, aday önerileri ve izin doğrulamaları incelenebilir. «Kurgusal
+örnekle doldur» düğmesi yalnız uydurma adlar ve `.test` adresleri kullanır; izinleri
+kendiliğinden işaretlemez. Sonuç numarası `EV-ORNEK-0001` gerçek başvuru değildir.
+
+Sayfada servis ucu boş; sağlık GET'i ve gönderim POST'u yok. Önizleme seçeneği ortak
+çekirdekte taslak okumayı, yazmayı ve silmeyi kapatır; mevcut başka form taslaklarını
+değiştirmez. Yenilemede örnek alanlar kaybolur. URL parametresi gerçek modu açamaz.
+`ENVANTER_AYAR.acik=0`: sunucu da gerçek kayıt kabul etmez. Diğer formlar ve GAS v42
+kodu değiştirilmedi. Gerçek ön yüz/arka uç ancak yeni kurumsal onay sonrasında birlikte
+açılır; veri sorumlusu ile yeni kapanış/silme tarihleri o aşamada teyit edilir.
+
+Önceki açılış ve 22 Ekim/21 Kasım tarihleri aşağıda **geçmiş işlem kaydıdır**; örnek
+sayfa bu tarihleri aktif kayıt takvimi olarak göstermez. Önceden kurulmuş takvim
+hatırlatmaları, önceki pilotun kapanış/silme denetimini hatırlatır; yeni açılış onayı değildir.
+
+Tarayıcı testleri: `envanter-ornek.spec.mjs` yayımlanacak örneği ağ/depo/izin açısından
+denetler. `envanter.spec.mjs` gerçek akışın uyumluluğunu yalnız testte HTML'yi sahte
+servis ucuna yönlendirerek denetler; bu test değişikliği canlıda gerçek modu açmaz.
+
+## Önceki canlı pilot — tarihçe
+
 Adres: https://ulucamii.be/envanter/ . İlk yayın 1 Ekim 2026’da kapalı yapıldı;
 aynı gün sahibin açık açılış ve karar yetkisiyle bağlantıya sahip herkesin
 oturum açmadan doldurmasına açıldı. Kurumsal duyuru ayrı bir işlemdir.

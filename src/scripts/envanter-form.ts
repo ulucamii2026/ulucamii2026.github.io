@@ -304,6 +304,7 @@ function ekDogrula(v: Veriler, form: HTMLFormElement, metin: BetikMetni): Array<
 /* ---------- giriş ---------- */
 
 function formuKur(kok: HTMLElement, durum: EnvanterDurumu) {
+  const onizleme = kok.dataset.onizleme === 'true';
   const sablon = kok.querySelector<HTMLTemplateElement>('template[data-envanter-sablon]');
   const yer = kok.querySelector<HTMLElement>('[data-form-yeri]');
   if (!sablon || !yer) throw new Error('envanter-sablon-yok');
@@ -321,12 +322,60 @@ function formuKur(kok: HTMLElement, durum: EnvanterDurumu) {
   camiSecimleriniKur(form, camiler, metin);
   const kisiler = kisiYoneticisi(kok, form, metin);
   const cekirdek = formuBaslat(form, {
+    onizleme,
     govde: (v) => govdeKur(form, v),
     ozet: (v, f) => ozetKur(v, f, metin),
     ekDogrula: (v, f) => ekDogrula(v, f, metin),
   });
   formAdimlariniBaslat(form, cekirdek.dogrulaBolum);
   kisiler.guncelle();
+  if (onizleme) {
+    form.querySelector('[data-ornek-doldur]')?.addEventListener('click', () => {
+      form.reset();
+      const yaz = (ad: string, deger: string | boolean) => {
+        const alan = form.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(`[name="${ad}"]${typeof deger === 'string' ? ':not([type=radio])' : ''}`);
+        const radio = form.querySelector<HTMLInputElement>(`input[type=radio][name="${ad}"][value="${String(deger)}"]`);
+        if (radio) { radio.checked = true; radio.dispatchEvent(new Event('change', { bubbles: true })); }
+        else if (alan) {
+          if (typeof deger === 'boolean' && alan instanceof HTMLInputElement) alan.checked = deger;
+          else alan.value = String(deger);
+          alan.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      };
+      const ornek: Record<string, string | boolean> = {
+        'gorevli.ad': 'Örnek Görevli TESTOGLU', 'gorevli.bolge': 'Namur', 'gorevli.cami': 'ulucamii-marche',
+        'gorevli.statu': 'baokk', 'gorevli.eposta': 'gorevli@example.test', 'gorevli.diller.tr': true, 'gorevli.diller.fr': true,
+        'sayilar.ihtida.2026.kadin': '2', 'sayilar.ihtida.2026.erkek': '1', 'sayilar.belge.aldi': '2',
+        'sayilar.belge.istiyor': '1', 'sayilar.yas.18-alti': '1', 'sayilar.yas.26-40': '2',
+        'sayilar.dil.fr': '2', 'sayilar.dil.nl': '1', 'durum.egitimIsteyen': '2', 'durum.kardesAileIsteyen': '1',
+        'faaliyet.dersSohbet': true, 'faaliyet.bulusmaIftar': true, 'faaliyet.materyal': 'Kurgusal örnek: beş dilde başlangıç kitapçığı.',
+        'gonullu.kadin': '1', 'gonullu.erkek': '1', 'gonullu.kardesAile': '1',
+        'aday.a.var': 'evet', 'aday.a.ad': 'Kurgusal Üye Adayı', 'aday.a.eposta': 'aday@example.test',
+        'aday.a.neden': 'Kurgusal örnek: kardeş aile ve eğitim çalışmalarına katkı.',
+        'aday.b.secim': 'baskasi', 'aday.b.ad': 'Kurgusal Bölge Adayı', 'aday.b.cami': 'Örnek cami',
+        'aday.c.cami': 'ulucamii-marche', 'aday.c.gerekce': 'Kurgusal örnek: eğitim ve gönüllü desteği.',
+        'aday.d.irtibat': 'evet', 'belge.var': 'evet', 'belge.adet': '2', 'belge.iletilebilir': 'evet',
+        'gorus': 'Bu bilgiler yalnız ön yüzü incelemek için oluşturulmuş kurgusal örneklerdir.',
+      };
+      Object.entries(ornek).forEach(([ad, deger]) => yaz(ad, deger));
+      for (const gizli of [false, true]) {
+        form.querySelector<HTMLButtonElement>('[data-kisi-ekle]')?.click();
+        const satir = Array.from(form.querySelectorAll<HTMLElement>('[data-kisi]')).at(-1);
+        if (!satir) continue;
+        const k = `kisiler.${satir.dataset.kisi}`;
+        yaz(`${k}.gizli`, gizli);
+        if (gizli) yaz(`${k}.kod`, 'M-DEMO-01');
+        else { yaz(`${k}.ad`, 'Kurgusal Kişi'); yaz(`${k}.eposta`, 'kisi@example.test'); }
+        yaz(`${k}.cinsiyet`, gizli ? 'kadin' : 'erkek'); yaz(`${k}.dil`, 'fr');
+        yaz(`${k}.ihtidaYili`, '2026'); yaz(`${k}.belge`, 'aldi');
+      }
+      const duyuru = form.querySelector<HTMLElement>('[data-ornek-duyuru]');
+      if (duyuru) duyuru.textContent = 'Kurgusal örnek dolduruldu. İzin kutuları otomatik işaretlenmez; örnek gönderim için onları ayrıca işaretleyiniz.';
+      const tumu = form.querySelector<HTMLButtonElement>('[data-adim-tumu]');
+      if (tumu?.getAttribute('aria-pressed') !== 'true') tumu?.click();
+      form.querySelector<HTMLElement>('#env-ad')?.focus({ preventScroll: true });
+    });
+  }
 }
 
 export function envanterSayfasiniBaslat() {
@@ -339,7 +388,10 @@ export function envanterSayfasiniBaslat() {
     if (yukleniyor) yukleniyor.hidden = true;
     if (kapali) kapali.hidden = false;
   };
-  void durumAl(kok.dataset.uc || '').then((durum) => {
+  const durum = kok.dataset.onizleme === 'true'
+    ? Promise.resolve({ acik: true, veriSorumlusu: 'Ulu Camii Derneği (örnek senaryo)', kapanis: null })
+    : durumAl(kok.dataset.uc || '');
+  void durum.then((durum) => {
     if (!durum.acik) { kapaliGoster(); return; }
     try {
       formuKur(kok, durum);

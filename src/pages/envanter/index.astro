@@ -2,8 +2,8 @@
 /**
  * Mühtedi Hizmetleri Envanteri — /envanter/ (1 Ekim 2026). Yalnız Türkçe, listelenmemiş sayfa:
  * noindex (site haritasına girmez, kanonik yok), hreflang yok (tekDil), başlık menüsünde bağlantısı yok.
- * Bağlantıyı T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği din görevlilerinin WhatsApp grubunda
- * paylaşır; o zamana kadar form kapalıdır (Script Property ENVANTER_AYAR).
+ * 01.10.2026 son talimatı: karar beklenmeden örnek ön yüz yayımlanır; gerçek kayıt onay sonrasıdır.
+ * Bu sayfa servis ucu taşımaz, sağlık/gönderim isteği yapmaz; bütün bölümler önizlenebilir.
  * Sayfada telefon numarası basılmaz (telefonsuz): tek iletişim yolu WhatsApp bağlantısıdır.
  * Form: src/components/formlar/EnvanterFormu.astro · davranış: src/scripts/envanter-form.ts
  */
@@ -29,12 +29,17 @@ const site = await siteAyarlari();
 
   <section class="kapsayici ihtida-basvuru-govde py-7 sm:py-10" style="max-width: 52rem">
     <div class="ucf-giris" data-form-ust>
+      <aside class="ucf-mesaj" data-tur="bilgi" aria-label="Örnek form bilgilendirmesi" data-ornek-bilgi>
+        <h2 class="text-xl">Örnek form · Önizleme</h2>
+        <p>Karar için sunulan formun bütün bölümleri burada incelenebilir ve kurgusal bilgilerle denenebilir. Bu gösterim, kurumsal onay verilmiş olduğu anlamına gelmez.</p>
+        <p><strong>Gerçek kayıt alınmaz.</strong> Bilgiler sunucuya gönderilmez veya tarayıcıda saklanmaz. Tam çalışan kayıt sistemi, onaydan sonra arka uçla birlikte devreye alınacaktır.</p>
+      </aside>
       {m.giris.paragraflar.map((p) => <p>{p}</p>)}
       <ul class="env-noktalar">{m.giris.noktalar.map((n) => <li>{n}</li>)}</ul>
       <p class="env-iletisim">{m.giris.iletisim} <WhatsappBaglanti site={site} /></p>
       <p class="yardim">{m.giris.sahip}</p>
     </div>
 
-    <EnvanterFormu uc={site.servisler.basvuru} site={site} />
+    <EnvanterFormu uc="" site={site} onizleme />
   </section>
 </Base>

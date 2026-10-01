@@ -1,6 +1,7 @@
 ---
 /** Mühtedi Hizmetleri Envanteri — form gövdesi (1 Ekim 2026; yalnız Türkçe, /envanter/).
-    Form bir <template> içindedir: sayfa açılınca betik Apps Script sağlık yanıtına bakar ve form YALNIZ
+    Önizleme modunda uç boş bırakılır; form her zaman açılır, hiçbir veri saklanmaz/gönderilmez.
+    Gerçek modda form bir <template> içindedir: betik Apps Script sağlık yanıtına bakar ve form YALNIZ
     `envanter.acik === true` (ve sürüm ≥ 42) iken DOM'a konur. Kapalıyken form hiç oluşmaz; yerel bir
     «gönder» bile alanları adres çubuğuna taşıyamaz ve hiçbir POST yapılmaz.
     Adlı bildirim satırlarını betik kurar (en çok 40); satır ve aday alanları taslağa yazılmaz (form-cekirdek.ts
@@ -20,8 +21,9 @@ import bolgeHaritasi from '../../data/envanter-bolgeleri.json';
 import katalog from '../../../public/data/belcika-camileri.json';
 import '../../styles/ihtida-adimlari.css';
 
-interface Props { uc: string; site: unknown }
-const { uc, site } = Astro.props;
+interface Props { uc: string; site: unknown; onizleme?: boolean }
+const { uc, site, onizleme = false } = Astro.props;
+const formUcu = onizleme ? '' : uc;
 const o = formMetinleri('tr').ortak;
 const S = m.secenek;
 const buYil = new Date().getFullYear();
@@ -95,7 +97,7 @@ const ozetSatirlari = [
   { anahtar: 'aday', etiket: m.ozet.aday, hedef: '#b-aday' },
 ];
 ---
-<div class="env" data-envanter data-uc={uc}>
+<div class="env" data-envanter data-onizleme={String(onizleme)} data-uc={formUcu}>
   <script is:inline type="application/json" data-camiler set:html={camiJson} />
   <script is:inline type="application/json" data-metin-envanter set:html={betikJson} />
 
@@ -108,7 +110,7 @@ const ozetSatirlari = [
   <div data-form-yeri></div>
 
   <template data-envanter-sablon>
-    <form class="ucf env-form mt-8" data-form="envanter" data-form-surumu={FORM_SURUMU} data-onay-surumu={ONAY_SURUMU} data-dil="tr" data-uc={uc}
+    <form class="ucf env-form mt-8" data-form="envanter" data-form-surumu={FORM_SURUMU} data-onay-surumu={ONAY_SURUMU} data-dil="tr" data-uc={formUcu}
           data-asgari-servis-surumu={ASGARI_SERVIS_SURUMU} data-asgari-servis-bayrak="envanter.acik" data-taslak="ulucamii:envanter:v1" data-taslak-gun="21" novalidate>
       <script is:inline type="application/json" data-metin set:html={metinJson} />
 
@@ -120,8 +122,9 @@ const ozetSatirlari = [
 
       <div class="ucf-taslak" data-taslak-not hidden>
         <span data-taslak-metin>{o.taslakGeriYuklendi}</span>
-        <button type="button" data-taslak-sil>{o.taslakSil}</button>
+        {!onizleme && <button type="button" data-taslak-sil>{o.taslakSil}</button>}
       </div>
+      {onizleme && <div class="ucf-giris mb-6"><p>Yalnız kurgusal bilgilerle deneyiniz. Bu örnekte hiçbir alan kaydedilmez.</p><div class="eylemler"><button type="button" class="dugme dugme-ikincil" data-ornek-doldur>Kurgusal örnekle doldur</button><button type="button" class="dugme dugme-ikincil" data-taslak-sil>Örneği temizle</button></div><p class="yardim" data-ornek-duyuru role="status"></p></div>}
       <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
 
       <FormAdimlar metin={m.adimlar} gruplar={adimGruplari} />
@@ -525,9 +528,9 @@ const ozetSatirlari = [
           ))}
         </dl>
         <div class="ucf-gonder">
-          <button type="submit" class="dugme dugme-birincil">{m.ozet.gonder}</button>
+          <button type="submit" class="dugme dugme-birincil">{onizleme ? 'Örnek gönderimi dene' : m.ozet.gonder}</button>
           <p class="son-not">{m.ozet.sonNot}</p>
-          <p class="son-not">{m.ozet.taslakNot}</p>
+          <p class="son-not">{onizleme ? 'Örnek gönderim yalnız sonucu gösterir. Bilgiler sunucuya gönderilmez ve tarayıcıda taslak olarak saklanmaz.' : m.ozet.taslakNot}</p>
         </div>
       </section>
 
@@ -630,9 +633,9 @@ const ozetSatirlari = [
   </template>
 
   <section class="ucf-basari env-basari mt-8" data-basari hidden aria-live="polite">
-    <h2>{m.basari.baslik}</h2>
-    <p>{m.basari.metin}</p>
-    <div><div class="ref-etiket">{m.basari.referans}</div><div class="ref" data-ref>—</div></div>
+    <h2>{onizleme ? 'Örnek gönderim tamamlandı' : m.basari.baslik}</h2>
+    <p>{onizleme ? 'Formun doğrulama ve sonuç ekranını gördünüz. Gerçek bir kayıt oluşturulmadı; hiçbir bilgi gönderilmedi veya saklanmadı. Gerçek başvurular, kurumsal onaydan sonra arka uçla birlikte devreye alınacaktır.' : m.basari.metin}</p>
+    <div><div class="ref-etiket">{onizleme ? 'Kurgusal örnek numarası' : m.basari.referans}</div><div class="ref" data-ref>—</div></div>
     <p>{m.basari.ihtidaNot} <a href={yol('tr', 'ihtidaBasvuru')}>{m.basari.ihtidaBaglanti}</a></p>
     <p>{m.giris.iletisim} <WhatsappBaglanti site={site} /></p>
     <div class="eylemler"><a class="dugme dugme-ikincil" href="/envanter/">{m.basari.yeniForm}</a></div>
