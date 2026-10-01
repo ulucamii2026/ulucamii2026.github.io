@@ -2,7 +2,7 @@
 baslik: Politique de confidentialité
 altBaslik: Comment vos données personnelles sont traitées sur ce site.
 aciklama: Comment les données personnelles sont traitées sur le site d’Ulu Camii Marche-en-Famenne et dans le portail des parents de l’école coranique, conformément au RGPD.
-guncelleme: 2026-09-21
+guncelleme: 2026-10-01
 ---
 
 <p class="bilgi"><strong>En bref :</strong> ce site n’utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n’est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l’initiative (p. ex. inscription au cours de Coran, envoi d’un e-mail).</p>
@@ -73,6 +73,22 @@ Les adultes (18 ans et plus) peuvent remplir le test de niveau de notre site afi
 - **Brouillon dans votre navigateur :** avant l’envoi, vos réponses sont gardées comme brouillon uniquement dans le navigateur de votre appareil (14 jours au maximum) et ne nous parviennent pas. Vous pouvez le supprimer à tout moment avec le bouton « Supprimer le brouillon » ; il est effacé automatiquement à l’envoi du test. Les cases de consentement ne sont jamais enregistrées dans le brouillon.
 - **Durée de conservation :** **24 mois** au maximum ; à l’échéance, l’enregistrement est supprimé automatiquement du registre. Le rapport présent dans la boîte e-mail de l’imam est supprimé manuellement à la même échéance.
 - **Retrait du consentement et suppression :** vous pouvez retirer votre consentement à tout moment. Il suffit d’écrire à imam@ulucamii.be ; votre enregistrement est supprimé du registre et de la boîte e-mail de l’imam. Le résumé qui vous a déjà été envoyé reste dans votre propre boîte.
+
+<span id="saha-envanteri"></span>
+
+## Inventaire de terrain (services aux nouveaux musulmans)
+
+La Coordination belge des nouveaux musulmans (Belçika Mühtedi Koordinatörlüğü), rattachée au Bureau du Conseiller aux affaires sociales de l’Ambassade de Türkiye à Bruxelles (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği), utilise un formulaire d’inventaire en ligne, limité dans le temps et destiné aux seuls imams et agents religieux des mosquées, pour planifier l’accompagnement des converti(e)s à l’islam. Ce site ne fait qu’héberger le formulaire, qui n’est ouvert que pendant la période annoncée aux agents religieux.
+
+- **Données collectées :** nom et prénom de l’agent religieux qui remplit le formulaire, sa région, sa mosquée, son statut, son téléphone ou son e-mail et les langues qu’il parle ; des **chiffres** sur les nouveaux musulmans / nouvelles musulmanes en lien avec la mosquée (année de conversion à l’islam et sexe, attestation de conversion, tranche d’âge, langue préférée, situation et besoins, bénévoles) et sur les activités menées ; des propositions de candidats et des remarques (facultatif). Dans le **signalement nominatif** facultatif : nom et prénom, sexe, année de naissance (facultatif), téléphone ou e-mail, langue préférée, année de conversion et situation de l’attestation de conversion de la personne ; pour une personne exposée à des pressions familiales, **seul un code ou un pseudonyme** est enregistré, jamais le nom. Pour une personne proposée comme membre de la commission : nom et prénom, coordonnées et une courte justification.
+- **Données non collectées :** adresse, numéro d’identité, photos et fichiers ; aucun document ne peut être téléversé.
+- **Finalité et base juridique :** planifier les services aux converti(e)s et les travaux de la future Commission belge d’accompagnement des nouveaux musulmans. Le fait qu’une personne se soit convertie à l’islam est une donnée sensible relative aux convictions religieuses : le signalement nominatif n’est possible qu’avec le **consentement explicite** de cette personne (RGPD, art. 9, § 2, a) ; l’agent religieux confirme ce consentement pour chaque ligne et aucune ligne sans consentement n’est acceptée. Lors du premier contact, le coordinateur informe la personne et vérifie son consentement ; à défaut de confirmation, l’enregistrement est supprimé.
+- **Qui y a accès :** uniquement le coordinateur belge des nouveaux musulmans. Seuls des **chiffres globaux** sont communiqués à la commission et au Bureau du Conseiller aux affaires sociales ; aucune liste de personnes n’est transmise ni publiée.
+- **Lieu de conservation :** un tableau non public du compte de l’association sur l’infrastructure de Google (Google Ireland Ltd.). Ce formulaire n’envoie aucun e-mail.
+- **Durée de conservation :** les signalements nominatifs sont supprimés du tableau en ligne **au plus tard 30 jours** après la clôture du formulaire ; les données des agents religieux et les chiffres y sont conservés **6 mois au maximum**.
+- **Responsable du traitement :** il est désigné nommément dans la partie « Information » du formulaire.
+- **Droits :** la personne signalée peut accéder à ses données, en demander la rectification ou l’effacement et retirer son consentement à tout moment. Les demandes sont adressées au responsable du traitement désigné dans le formulaire ou au coordinateur (lien WhatsApp du formulaire).
+- **Brouillon dans le navigateur :** avant l’envoi, le formulaire est gardé en brouillon uniquement sur l’appareil de l’agent religieux ; les signalements nominatifs, les données des candidats et les cases de consentement n’y sont jamais enregistrés.
 
 ## Le registre des membres de l’association
 

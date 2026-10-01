@@ -29,6 +29,9 @@ interface Props {
   ogTuru?: 'website' | 'article';
   /** Sayfaya özel yapısal veri (Event/NewsArticle/BreadcrumbList…) — kurumJsonLd'nin yanına eklenir. */
   ekJsonLd?: object[];
+  /** 1 Eki 2026: sayfada hiçbir telefon numarası basılmaz (alt bilgideki cami hattı ve kurumsal JSON-LD
+      `telephone` alanı dahil). Yalnız /envanter/ kullanır: orada tek iletişim yolu WhatsApp bağlantısıdır. */
+  telefonsuz?: boolean;
 }
 const dil: Dil = Astro.props.dil ?? dilBul(Astro.url);
 const t = ceviri(dil);
@@ -37,7 +40,7 @@ const t = ceviri(dil);
    ana sayfanın cami fotoğrafıydı; bu yüzden yönetim kurulu gibi ilgisiz sayfaların
    önizlemesinde de o fotoğraf çıkıyordu. */
 const ogKart = `/media/og/ulu-camii-${dil}.png`;
-const { baslik, aciklama = t('site.slogan'), kapak = ogKart, kapakAlt, kapakGenislik = 1200, kapakYukseklik = 630, kapakTipi = 'image/webp', noindex = false, dilHatirla = true, ogTuru = 'website', ekJsonLd = [] } = Astro.props;
+const { baslik, aciklama = t('site.slogan'), kapak = ogKart, kapakAlt, kapakGenislik = 1200, kapakYukseklik = 630, kapakTipi = 'image/webp', noindex = false, dilHatirla = true, ogTuru = 'website', ekJsonLd = [], telefonsuz = false } = Astro.props;
 /** Yalnız ana sayfada masaüstü hero görselini erkenden bildir (LCP); afis/1600px görsel büyük olduğu için mobil kırpmasını değil bunu hedefler. */
 const anaSayfaMi = Astro.url.pathname === `/${dil}/`;
 const tamBaslik = baslik === t('site.ad') ? baslik : `${baslik} — ${t('site.ad')}`;
@@ -67,7 +70,7 @@ const kurumJsonLd = {
     { '@type': 'PropertyValue', name: 'BCE/KBO', value: a.kbo, description: "Banque-Carrefour des Entreprises (Belgique) — numéro d'entreprise" },
   ],
   address: { '@type': 'PostalAddress', streetAddress: a.adres.sokak, postalCode: a.adres.posta, addressLocality: a.adres.sehir, addressCountry: 'BE' },
-  telephone: a.telefon.cami,
+  telephone: telefonsuz ? undefined : a.telefon.cami,
   email: a.eposta,
   sameAs: [
     `https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=${kboSade}`,
@@ -197,7 +200,7 @@ const yapisalVeri = {
     <main id="icerik" class="flex-1">
       <slot />
     </main>
-    <Footer dil={dil} />
+    <Footer dil={dil} telefonsuz={telefonsuz} />
     <Lightbox dil={dil} />
     <!-- Menü/tema, lightbox ve bölüm-reveal mantığı: tek harici dosya, tarayıcı önbelleğe alır
          (400 sayfada birebir aynı inline betiği tekrarlamamak için, performans denetimi Eylül 2026). -->

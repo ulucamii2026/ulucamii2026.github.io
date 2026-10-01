@@ -466,3 +466,60 @@
 @media (prefers-reduced-motion: reduce) {
   .ucf[data-form="kayit"] *, .ucf[data-form="kayit"] *::before, .k-basari * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Mühtedi Hizmetleri Envanteri — /envanter/ (1 Eki 2026; EnvanterFormu.astro) =====
+   Mobil öncelikli: sayı alanları dar ızgarada, adlı bildirim satırları tek sütun; geniş ekranda iki sütun. */
+.env { display: grid; gap: 1.25rem; min-width: 0; }
+.env-noktalar { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; color: var(--metin-2); line-height: 1.55; }
+.env-iletisim { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .6rem; }
+.env-ust-alt { margin: .75rem 0 0; max-width: 60ch; color: var(--metin-2); line-height: 1.55; }
+.env-durum { display: grid; gap: .75rem; }
+.env-durum[hidden], .env-durum-metin[hidden], .env-kapali[hidden] { display: none; }
+.env-durum-metin { margin: 0; color: var(--metin-2); font-size: .95rem; }
+.env-durum .ucf-mesaj[data-tur="hata"] { background: rgb(163 74 48 / 0.1); border: 1.5px solid var(--color-kiremit); color: var(--color-kiremit-koyu); }
+.env-kosul { display: grid; gap: 1.4rem 1.5rem; min-width: 0; }
+.env-kosul[hidden] { display: none; }
+.env-alt-kutu { padding: 1rem; border: 1.5px dashed var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); }
+.env-bilgi { display: grid; gap: 0; margin: 0 0 1rem; border: 1px solid var(--cizgi); border-radius: calc(var(--radius-kose) * 0.6); overflow: hidden; background: var(--zemin); }
+.env-bilgi > div { display: grid; gap: .2rem; padding: .75rem .95rem; border-top: 1px solid var(--cizgi); }
+.env-bilgi > div:first-child { border-top: 0; }
+.env-bilgi dt { font-weight: 700; font-size: .9rem; color: var(--metin); }
+.env-bilgi dd { margin: 0; font-size: .93rem; line-height: 1.55; color: var(--metin-2); overflow-wrap: anywhere; }
+.env-bilgi [data-veri-sorumlusu] { color: var(--metin); font-weight: 600; white-space: pre-line; }
+.env-son-gun { margin: 0 0 .5rem; font-weight: 600; }
+.env-son-gun[hidden] { display: none; }
+.env-gizlilik { margin: 0 0 1.1rem; }
+.env-gizlilik a { color: var(--vurgu-2); text-decoration: underline; text-underline-offset: 2px; }
+.env-grup { margin: 0 0 1.4rem; padding: 0; border: 0; min-width: 0; }
+.env-grup:last-child { margin-bottom: 0; }
+.env-grup > legend { padding: 0; margin-bottom: .75rem; font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--metin); }
+.env-sayilar { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.75rem), 1fr)); align-items: end; }
+.env-sayilar-genis { grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); }
+.env-sayi input { font-variant-numeric: tabular-nums; max-width: 9rem; }
+.env-sayi > label { font-weight: 500; font-size: .9rem; }
+.env-matris { display: grid; gap: .6rem; max-width: 32rem; }
+.env-matris-satir { display: grid; grid-template-columns: minmax(5.5rem, 8rem) repeat(2, minmax(0, 1fr)); gap: .5rem .9rem; align-items: end;
+  padding-bottom: .6rem; border-bottom: 1px solid var(--cizgi); }
+.env-matris-satir:last-child { border-bottom: 0; padding-bottom: 0; }
+.env-matris-yil { align-self: center; padding-top: 1.4rem; font-family: var(--font-mono); font-size: .9rem; font-weight: 600; color: var(--metin); }
+.env-gizli-not { margin: 0 0 1rem; }
+.env-gizli-not p { margin: 0; line-height: 1.5; }
+.env-kisiler { display: grid; gap: 1.1rem; }
+.env-kisiler:empty { display: none; }
+.env-kisi { margin: 0; padding: 1rem; min-width: 0; border: 1.5px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); }
+@media (min-width: 640px) { .env-kisi { padding: 1.25rem 1.4rem; } }
+.env-kisi > legend { padding: 0 .4rem; font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--metin); }
+.env-kisi:has([data-kisi-gizli]:checked) { border-color: var(--color-ochre, var(--vurgu)); }
+.env-kisi-kaldir { display: flex; justify-content: flex-end; }
+.env-kisi-kaldir .dugme { min-height: 2.75rem; }
+.env-kisi-bos { margin: .25rem 0 0; }
+.env-kisi-bos[hidden] { display: none; }
+.env-kisi-eylem { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 1rem; }
+.env-kisi-eylem .dugme { min-height: 3rem; }
+.env-kisi-eylem .dugme:disabled { opacity: .55; cursor: not-allowed; }
+.env-kisi-sayac { font-family: var(--font-mono); font-size: .85rem; color: var(--metin-2); font-variant-numeric: tabular-nums; }
+.env-basari .eylemler .dugme { min-height: 3rem; }
+@media (max-width: 420px) {
+  .env-matris-satir { grid-template-columns: minmax(4.5rem, 5.5rem) repeat(2, minmax(0, 1fr)); gap: .45rem .6rem; }
+  .env-sayi input { max-width: none; }
+}

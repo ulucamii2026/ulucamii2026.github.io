@@ -9,7 +9,7 @@
  *  DOM sözleşmesi (Astro bileşenleri bunu üretir):
  *   <form data-form="kayit|ihtida" data-dil data-uc data-sir data-taslak novalidate>
  *     [data-alan]  → kapsayıcı; içinde name'li alan, .yardim ve .hata (aria-live)
- *     data-tur="eposta|telefon|tarih|metin"  data-esle="<başka alan adı>"  data-yas-min/max
+ *     data-tur="eposta|telefon|tarih|metin|sayi"  data-esle="<başka alan adı>"  data-yas-min/max  data-asgari/azami (sayi)
  *     [data-kosul="<alan>=<değer>"] → koşullu blok (gizliyken içindeki alanlar disabled)
  *     [data-kaydir] + [data-kaydir-kilit] → sonuna kadar kaydırılmadan işaretlenemeyen kutu
  *     [data-ozet] içindeki [data-ozet-alan="anahtar"] [data-ozet-deger]
@@ -180,6 +180,11 @@ export function alanDogrula(form: HTMLFormElement, alan: Alan, veriler: Veriler,
   if (maks > 0 && v.length > maks) return doldur(m.hata.uzun, { max: maks });
   if (tur === 'eposta' && !epostaGecerli(v)) return m.hata.eposta;
   if (tur === 'telefon' && !telefonNormalle(v)) return m.hata.telefon;
+  if (tur === 'sayi') {
+    // Tam sayı (rakam); sınırlar data-asgari / data-azami (varsayılan 0–999). Özel metin data-hata-metni ile verilir.
+    const asgari = Number(alan.dataset.asgari ?? 0), azami = Number(alan.dataset.azami ?? 999);
+    if (!/^\d+$/.test(v) || Number(v) < asgari || Number(v) > azami) return alan.dataset.hataMetni || doldur(m.hata.sayi ?? m.hata.zorunlu, { asgari, azami });
+  }
   if (tur === 'tarih') {
     const yas = yasHesapla(v);
     if (yas === null) return m.hata.tarih;
@@ -282,7 +287,10 @@ function taslakOku(anahtar: string, gun = 30): Taslak | null {
 }
 
 function hassasAlan(ad: string): boolean {
-  return ad.startsWith('onay.') || ad === 'saglik.not' || ad.startsWith('gorsel.') || ad === 'kimlik.on' || ad === 'kimlik.arka';
+  return ad.startsWith('onay.') || ad === 'saglik.not' || ad.startsWith('gorsel.') || ad === 'kimlik.on' || ad === 'kimlik.arka'
+    // 1 Eki 2026 — envanter formu: başkasına ait kişisel veri (adlı bildirim satırları, komisyon adayı,
+    // aday gösterilen personelin adı) bu cihazın taslağına hiç yazılmaz.
+    || ad.startsWith('kisiler.') || ad.startsWith('aday.a.') || ad === 'aday.b.ad';
 }
 
 function taslakYaz(anahtar: string, form: HTMLFormElement, gonderimAnahtari: string): boolean {
@@ -556,7 +564,8 @@ export function formuBaslat(form: HTMLFormElement, sec: FormSecenekleri) {
           const saglik = await fetch(form.dataset.uc || '', { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: saglikDenetleyici.signal });
           const durum = await saglik.json();
           const bayrak = form.dataset.asgariServisBayrak;
-          if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true) || (!!bayrak && durum[bayrak] !== true)) {
+          // Bayrak noktalı yol olabilir (envanter: «envanter.acik»); düz adlar eskisi gibi okunur.
+          if (!saglik.ok || !durum.ok || Number(durum.surum || 0) < asgariSurum || (form.dataset.form === 'ihtida' && durum.ihtidaPaketHazir !== true) || (!!bayrak && deger(durum, bayrak) !== true)) {
             mesajGoster(m.hata.servisHazirDegil);
             return;
           }

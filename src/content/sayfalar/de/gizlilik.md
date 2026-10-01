@@ -2,7 +2,7 @@
 baslik: Datenschutzerklärung
 altBaslik: Informationen darüber, wie personenbezogene Daten auf dieser Website verarbeitet werden.
 aciklama: DSGVO-konforme Informationen dazu, wie personenbezogene Daten auf der Website der Ulu Camii Marche-en-Famenne und im Elternportal der Koranschule verarbeitet werden.
-guncelleme: 2026-09-21
+guncelleme: 2026-10-01
 ---
 
 *Im Zweifel gelten die türkische und die französische Fassung.*
@@ -75,6 +75,22 @@ Erwachsene (ab 18 Jahren) können den Einstufungstest auf unserer Website ausfü
 - **Entwurf in Ihrem Browser:** Vor dem Absenden werden Ihre Antworten ausschließlich im Browser Ihres eigenen Geräts als Entwurf gespeichert (höchstens 14 Tage) und erreichen uns nicht. Mit der Schaltfläche „Entwurf löschen“ können Sie ihn jederzeit entfernen; beim Absenden des Tests wird der Entwurf automatisch gelöscht. Die Einwilligungsfelder werden nicht in den Entwurf geschrieben.
 - **Speicherdauer:** höchstens **24 Monate**; nach Ablauf der Frist wird der Eintrag automatisch aus dem Register gelöscht. Der Bericht im E-Mail-Postfach des Imams wird nach derselben Frist von Hand gelöscht.
 - **Widerruf der Einwilligung und Löschung:** Sie können Ihre Einwilligung jederzeit widerrufen. Es genügt, an imam@ulucamii.be zu schreiben; Ihr Eintrag wird aus dem Register und aus dem E-Mail-Postfach des Imams gelöscht. Die Ihnen bereits zugesandte Zusammenfassung verbleibt in Ihrem eigenen Postfach.
+
+<span id="saha-envanteri"></span>
+
+## Bestandsaufnahme vor Ort (Dienste für neue Muslime)
+
+Die Belgische Koordination für neue Muslime (Belçika Mühtedi Koordinatörlüğü), angesiedelt beim Büro des Beraters für soziale Angelegenheiten der Botschaft der Republik Türkiye in Brüssel (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği), nutzt ein befristetes Online-Erhebungsformular, das sich ausschließlich an Imame und religiöse Bedienstete der Moscheen richtet, um die Begleitung von Konvertitinnen und Konvertiten zum Islam zu planen. Diese Website stellt das Formular lediglich bereit; es ist nur in dem Zeitraum geöffnet, der den religiösen Bediensteten angekündigt wird.
+
+- **Erhobene Daten:** Name, Region, Moschee, Status, Telefonnummer oder E-Mail-Adresse und gesprochene Sprachen der bzw. des religiösen Bediensteten, die bzw. der das Formular ausfüllt; **Zahlen** zu den neuen Muslimen, die mit der Moschee in Verbindung stehen (Jahr der Konversion und Geschlecht, Konversionsbescheinigung, Altersgruppe, bevorzugte Sprache, Lage und Bedarf, Ehrenamtliche) und zu den Angeboten der Moschee; freiwillige Kandidatenvorschläge und Anmerkungen. Bei der freiwilligen **namentlichen Meldung**: Name, Geschlecht, Geburtsjahr (freiwillig), Telefonnummer oder E-Mail-Adresse, bevorzugte Sprache, Jahr der Konversion und Stand der Konversionsbescheinigung der Konvertitin bzw. des Konvertiten; bei einer Person, der familiärer Druck droht, wird **nur ein Code oder Pseudonym** gespeichert, nie der Name. Für eine als Kommissionsmitglied vorgeschlagene Person: Name, Kontaktdaten und eine kurze Begründung.
+- **Nicht erhobene Daten:** Anschrift, Ausweisnummer, Fotos und Dateien; es können keine Dokumente hochgeladen werden.
+- **Zweck und Rechtsgrundlage:** Planung der Dienste für Konvertitinnen und Konvertiten sowie der Arbeit der geplanten Belgischen Unterstützungskommission für neue Muslime. Dass jemand zum Islam konvertiert ist, gehört zu den besonderen Kategorien personenbezogener Daten (religiöse Überzeugung): Eine namentliche Meldung ist nur mit der **ausdrücklichen Einwilligung** dieser Person möglich (DSGVO Art. 9 Abs. 2 lit. a); die bzw. der religiöse Bedienstete bestätigt die Einwilligung für jede Zeile gesondert, Zeilen ohne Einwilligung werden abgelehnt. Beim ersten Kontakt informiert der Koordinator die Person und vergewissert sich ihrer Einwilligung; wird sie nicht bestätigt, wird der Eintrag gelöscht.
+- **Wer Zugriff hat:** ausschließlich der belgische Koordinator für neue Muslime. Der Kommission und dem Büro des Beraters für soziale Angelegenheiten werden nur **Gesamtzahlen** übermittelt; eine Personenliste wird weder weitergegeben noch veröffentlicht.
+- **Speicherort:** eine nicht öffentliche Tabelle im Konto des Vereins auf der Infrastruktur von Google (Google Ireland Ltd.). Dieses Formular versendet keine E-Mails.
+- **Speicherdauer:** Namentliche Meldungen werden **spätestens 30 Tage** nach Schließung des Formulars aus der Online-Tabelle gelöscht; die Angaben der religiösen Bediensteten und die Zahlen werden dort **höchstens 6 Monate** aufbewahrt.
+- **Verantwortlicher:** wird im Informationsteil des Formulars namentlich genannt.
+- **Rechte:** Die gemeldete Person kann jederzeit Auskunft über ihre Daten verlangen, deren Berichtigung oder Löschung beantragen und ihre Einwilligung widerrufen. Anfragen richten sich an den im Formular genannten Verantwortlichen oder an den Koordinator (WhatsApp-Link im Formular).
+- **Entwurf im Browser:** Vor dem Absenden wird das Formular nur auf dem eigenen Gerät der bzw. des religiösen Bediensteten als Entwurf gespeichert; namentliche Meldungen, Kandidatenangaben und Einwilligungsfelder werden darin nie gespeichert.
 
 ## Das Mitgliederregister des Vereins
 

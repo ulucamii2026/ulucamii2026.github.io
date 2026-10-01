@@ -5,8 +5,8 @@ import WhatsappBaglanti from './WhatsappBaglanti.astro';
 import Goruntulenme from './Goruntulenme.astro';
 import type { Dil } from '../i18n/ui';
 import istatistik from '../data/istatistik.json';
-interface Props { dil: Dil }
-const { dil } = Astro.props;
+interface Props { dil: Dil; /** Cami hattı basılmaz (Base → telefonsuz; yalnız /envanter/). */ telefonsuz?: boolean }
+const { dil, telefonsuz = false } = Astro.props;
 const t = ceviri(dil);
 const site = (await getEntry('ayarlar', 'site'))!.data;
 const yil = new Date().getFullYear();
@@ -68,7 +68,7 @@ const siteLinkleri: { h: string; ad: string; dis?: boolean }[] = [
       <p class="etiket etiket-vurgu mb-2">{t('footer.iletisim')}</p>
       <p>{adresSatir} · <a href={haritaUrl} rel="noopener" target="_blank">{t('genel.harita')}</a></p>
       <p class="mt-1.5"><span class="etiket">{t('footer.dingorevlisi')}</span> {site.whatsapp && <WhatsappBaglanti site={site} />}{site.epostaDinGorevlisi && <><br /><a href={`mailto:${site.epostaDinGorevlisi}`}>{site.epostaDinGorevlisi}</a></>}</p>
-      <p class="mt-1.5"><span class="etiket">{t('footer.cami')}</span> <a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a>{site.eposta && <><br /><a href={`mailto:${site.eposta}`}>{site.eposta}</a></>}</p>
+      <p class="mt-1.5"><span class="etiket">{t('footer.cami')}</span> {!telefonsuz && <a href={tel(site.telefon.cami)} class="mono">{site.telefon.cami}</a>}{site.eposta && <>{!telefonsuz && <br />}<a href={`mailto:${site.eposta}`}>{site.eposta}</a></>}</p>
     </address>
     <nav class="text-sm leading-6" aria-label={t('footer.yasal')}>
       <p class="etiket etiket-vurgu mb-2">{t('footer.baglantilar')}</p>

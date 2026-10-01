@@ -35,7 +35,7 @@ function veliPortalKayitlari(satirlar, ayar) {
     var s = guncel[ref].satir, ep = veliPortalMetin(s["Veli e-posta"]).toLowerCase();
     ep = veliPortalMetin((ayar.epostaDuzelt || {})[ep] || ep).toLowerCase();
     if (!/^[^\s@/\\]+@[^\s@/\\]+\.[^\s@/\\]+$/.test(ep) || ep.length > 254) { sayi++; return; }
-    // v33 soyad kuralı portalda da geçerli: büyük harf yereli tek kaynaktan (soyadBuyuk, ulucamii-Kod-v41.gs).
+    // v33 soyad kuralı portalda da geçerli: büyük harf yereli tek kaynaktan (soyadBuyuk, ulucamii-Kod-v42.gs).
     // Defter okuması «Form dili» sütununu getirmediği için dil="" geçilir; yerel seçimi iletişim diline ve soyadın harflerine kalır.
     var iletisimDili = veliPortalMetin(s["İletişim dili"]).toLowerCase();
     kayitlar.push({ ref: ref, kayitRef: guncel[ref].ref, ad: veliPortalAd(s["Öğrenci adı"]), soyad: soyadBuyuk(s["Öğrenci soyadı"], "", iletisimDili), veliAd: veliPortalAd(s["Veli adı soyadı"]), eposta: ep, iletisimDili: iletisimDili });
@@ -171,6 +171,10 @@ function veliMailListesiZamanli() {
     var kod = /^portal-[a-z0-9-]+$/.test(String(e.message)) ? String(e.message) : "portal-baglanti-hatasi";
     PropertiesService.getScriptProperties().setProperty("VELI_PORTAL_SONUC", JSON.stringify({ ok: false, zaman: new Date().toISOString(), hata: kod }));
     console.error(kod); throw new Error(kod);
+  }
+  finally {
+    // v42: envanter saklama temizliği (envanter-isleri.gs) portal işinin sonucundan bağımsız koşar; 6 saatte bir kez.
+    try { if (typeof envanterZamanliTemizlik === "function") envanterZamanliTemizlik(); } catch (h) { console.error(h); }
   }
 }
 function veliMailListesiSina() { ScriptApp.requireAllScopes(ScriptApp.AuthMode.FULL); var s = veliMailListesiIsle(true); console.log(JSON.stringify(s)); return s; }

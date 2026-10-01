@@ -1,0 +1,645 @@
+---
+/** Mühtedi Hizmetleri Envanteri — form gövdesi (1 Ekim 2026; yalnız Türkçe, /envanter/).
+    Form bir <template> içindedir: sayfa açılınca betik Apps Script sağlık yanıtına bakar ve form YALNIZ
+    `envanter.acik === true` (ve sürüm ≥ 42) iken DOM'a konur. Kapalıyken form hiç oluşmaz; yerel bir
+    «gönder» bile alanları adres çubuğuna taşıyamaz ve hiçbir POST yapılmaz.
+    Adlı bildirim satırlarını betik kurar (en çok 40); satır ve aday alanları taslağa yazılmaz (form-cekirdek.ts
+    → hassasAlan). Sözleşme ve sunucu: src/lib/envanter/, scripts/apps-script/envanter-isleri.gs.
+    Davranış: src/scripts/envanter-form.ts */
+import FormAdimlar from './FormAdimlar.astro';
+import WhatsappBaglanti from '../WhatsappBaglanti.astro';
+import { yol } from '../../i18n/utils';
+import { formMetinleri } from '../../i18n/formlar';
+import { envanterMetin as m } from '../../i18n/formlar/envanter-tr';
+import {
+  camiTablosu, camiEtiketi, BOLGELER, STATULER, GOREVLI_DILLERI, IHTIDA_YILLARI, CINSIYETLER, BELGE_DURUMLARI,
+  YAS_GRUPLARI, TERCIH_DILLERI, DURUM_ALANLARI, FAALIYETLER, EVET_HAYIR, BELGE_VAR, IRTIBAT_ISTEGI, ADAY_B_SECIMLERI,
+  SINIR, AZAMI_KISI, AZAMI_SAYI, LISTEDE_YOK, FORM_SURUMU, ONAY_SURUMU, ASGARI_SERVIS_SURUMU,
+} from '../../lib/envanter/sozlesme';
+import bolgeHaritasi from '../../data/envanter-bolgeleri.json';
+import katalog from '../../../public/data/belcika-camileri.json';
+import '../../styles/ihtida-adimlari.css';
+
+interface Props { uc: string; site: unknown }
+const { uc, site } = Astro.props;
+const o = formMetinleri('tr').ortak;
+const S = m.secenek;
+const buYil = new Date().getFullYear();
+
+/** Yalnız katalog kimliği, görünen ad ve bölge istemciye gider (adres, posta kodu gitmez). */
+const camiler = camiTablosu(bolgeHaritasi as Record<string, string>, katalog)
+  .map((c) => ({ id: c.id, ad: camiEtiketi(c), bolge: c.bolge }));
+const camiJson = JSON.stringify(camiler).replace(/</g, '\\u003c');
+
+const metinJson = JSON.stringify({
+  hata: {
+    ...o.hata,
+    ...m.hata,
+    servisHazirDegil: m.sunucu.kapali,
+    sayi: m.sayi.hata,
+    'sunucu:kapali': m.sunucu.kapali,
+    'sunucu:onay-eksik': m.sunucu.onayEksik,
+    'sunucu:surum-gecersiz': m.sunucu.surumGecersiz,
+    'sunucu:gorevli-eksik': m.sunucu.gorevliEksik,
+    'sunucu:cami-gecersiz': m.sunucu.camiGecersiz,
+    'sunucu:kisi-sayisi': m.sunucu.kisiSayisi,
+    'sunucu:kisi-izin-eksik': m.sunucu.kisiIzin,
+    'sunucu:kisi-gecersiz': m.sunucu.kisiGecersiz,
+    'sunucu:sayi-gecersiz': m.sunucu.sayiGecersiz,
+    'sunucu:aday-gecersiz': m.sunucu.adayGecersiz,
+    'sunucu:aday-izin-eksik': m.sunucu.adayIzin,
+    'sunucu:alan-gecersiz': m.sunucu.alanGecersiz,
+    'sunucu:cok-sik': m.sunucu.cokSik,
+    'sunucu:gunluk-sinir': m.sunucu.gunlukSinir,
+    'sunucu:cok-buyuk': m.sunucu.cokBuyuk,
+  },
+  basari: { gonderiliyor: o.gonderiliyor },
+  taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi,
+  evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
+});
+
+/** Betiğin ihtiyaç duyduğu metinler (envanter-form.ts → BetikMetni). */
+const betikJson = JSON.stringify({
+  kisi: m.kisiler, azamiKisi: AZAMI_KISI, iletisimEnAz: m.hata.iletisimEnAz,
+  camiOnce: m.gorevli.camiOnce, secin: S.secin, listedeYok: m.gorevli.camiListedeYok, listedeYokDeger: LISTEDE_YOK,
+  pilotYok: m.aday.cSecme, kisiSayisi: m.ozet.kisiSayisi, sonGun: m.durum.sonGun, asgariServis: ASGARI_SERVIS_SURUMU,
+}).replace(/</g, '\\u003c');
+
+/** Adım motoru için bölüm kümeleri; sıra `m.adimlar.adimlar` ile birebir aynıdır. */
+const adimGruplari = [
+  ['b-bilgi'], ['b-gorevli'], ['b-sayilar'], ['b-kisiler'], ['b-durum', 'b-faaliyet', 'b-gonullu'], ['b-aday'],
+  ['b-belge', 'b-gorus', 'b-ozet'],
+];
+
+type SayiAlani = { ad: string; id: string; etiket: string };
+const ihtidaSatirlari = IHTIDA_YILLARI.map((y) => ({
+  yil: S.ihtidaYili[y],
+  hucreler: CINSIYETLER.map((c) => ({ ad: `sayilar.ihtida.${y}.${c}`, id: `env-s-ihtida-${y}-${c}`, etiket: S.cinsiyet[c] })),
+}));
+const sayiGruplari: { baslik: string; alanlar: SayiAlani[] }[] = [
+  { baslik: m.sayilar.belgeBaslik, alanlar: BELGE_DURUMLARI.map((b) => ({ ad: `sayilar.belge.${b}`, id: `env-s-belge-${b}`, etiket: S.belgeSayisi[b] })) },
+  { baslik: m.sayilar.yasBaslik, alanlar: YAS_GRUPLARI.map((y) => ({ ad: `sayilar.yas.${y}`, id: `env-s-yas-${y}`, etiket: S.yas[y] })) },
+  { baslik: m.sayilar.dilBaslik, alanlar: TERCIH_DILLERI.map((d) => ({ ad: `sayilar.dil.${d}`, id: `env-s-dil-${d}`, etiket: S.tercihDili[d] })) },
+];
+const durumAlanlari: SayiAlani[] = DURUM_ALANLARI.map((d) => ({ ad: `durum.${d}`, id: `env-d-${d}`, etiket: S.durum[d] }));
+const gonulluAlanlari: SayiAlani[] = [
+  { ad: 'gonullu.kadin', id: 'env-g-kadin', etiket: m.gonullu.kadin },
+  { ad: 'gonullu.erkek', id: 'env-g-erkek', etiket: m.gonullu.erkek },
+];
+
+const ozetSatirlari = [
+  { anahtar: 'gorevli', etiket: m.ozet.gorevli, hedef: '#b-gorevli' },
+  { anahtar: 'cami', etiket: m.ozet.cami, hedef: '#b-gorevli' },
+  { anahtar: 'toplam', etiket: m.ozet.toplam, hedef: '#b-sayilar' },
+  { anahtar: 'kisi', etiket: m.ozet.kisi, hedef: '#b-kisiler' },
+  { anahtar: 'aday', etiket: m.ozet.aday, hedef: '#b-aday' },
+];
+---
+<div class="env" data-envanter data-uc={uc}>
+  <script is:inline type="application/json" data-camiler set:html={camiJson} />
+  <script is:inline type="application/json" data-metin-envanter set:html={betikJson} />
+
+  <div class="env-durum" data-form-ust>
+    <p class="env-durum-metin" data-durum-yukleniyor role="status">{m.durum.yukleniyor}</p>
+    <p class="ucf-mesaj env-kapali" data-tur="bilgi" data-durum-kapali role="status" hidden>{m.durum.kapali}</p>
+    <noscript><p class="ucf-mesaj" data-tur="hata">{m.durum.noscript}</p></noscript>
+  </div>
+
+  <div data-form-yeri></div>
+
+  <template data-envanter-sablon>
+    <form class="ucf env-form mt-8" data-form="envanter" data-form-surumu={FORM_SURUMU} data-onay-surumu={ONAY_SURUMU} data-dil="tr" data-uc={uc}
+          data-asgari-servis-surumu={ASGARI_SERVIS_SURUMU} data-asgari-servis-bayrak="envanter.acik" data-taslak="ulucamii:envanter:v1" data-taslak-gun="21" novalidate>
+      <script is:inline type="application/json" data-metin set:html={metinJson} />
+
+      <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
+      <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+        <label for="env-web">Web sitenizi bırakmayın</label>
+        <input type="text" id="env-web" name="web" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="ucf-taslak" data-taslak-not hidden>
+        <span data-taslak-metin>{o.taslakGeriYuklendi}</span>
+        <button type="button" data-taslak-sil>{o.taslakSil}</button>
+      </div>
+      <div class="ucf-mesaj" data-mesaj data-tur="hata" role="alert" hidden></div>
+
+      <FormAdimlar metin={m.adimlar} gruplar={adimGruplari} />
+
+      <!-- 1. Bilgilendirme ve onay -->
+      <section class="ucf-bolum" id="b-bilgi" aria-labelledby="h-bilgi">
+        <h2 id="h-bilgi">{m.bilgi.baslik}</h2>
+        <dl class="env-bilgi">
+          {m.bilgi.maddeler.map((x) => <div><dt>{x.baslik}</dt><dd>{x.metin}</dd></div>)}
+          <div><dt>{m.bilgi.veriSorumlusu}</dt><dd data-veri-sorumlusu></dd></div>
+        </dl>
+        <p class="yardim env-son-gun" data-son-gun hidden></p>
+        <p class="yardim env-gizlilik"><a href={`${yol('tr', 'gizlilik')}#saha-envanteri`} target="_blank" rel="noopener">{m.bilgi.gizlilikBaglanti}<span aria-hidden="true"> ↗</span></a></p>
+        <div class="ucf-izgara env-onaylar">
+          <div data-alan class="tam">
+            <div class="onay-kutu">
+              <input id="env-onay-bilgi" type="checkbox" name="onay.bilgilendirme" required data-hata-metni={m.bilgi.onayHata} />
+              <label for="env-onay-bilgi">{m.bilgi.onayBilgi}</label>
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan class="tam">
+            <div class="onay-kutu">
+              <input id="env-onay-izin" type="checkbox" name="onay.izin" required data-hata-metni={m.bilgi.onayHata} />
+              <label for="env-onay-izin">{m.bilgi.onayIzin}</label>
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Görevli ve cami -->
+      <section class="ucf-bolum" id="b-gorevli" aria-labelledby="h-gorevli">
+        <h2 id="h-gorevli">{m.gorevli.baslik}</h2>
+        <p class="bolum-not"><span class="zorunlu">*</span> {o.zorunluIsaret}</p>
+        <div class="ucf-izgara">
+          <div data-alan class="tam">
+            <label for="env-ad">{m.gorevli.ad} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <input id="env-ad" name="gorevli.ad" type="text" required maxlength={SINIR.ad} autocomplete="name" autocapitalize="words" />
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan>
+            <label for="env-bolge">{m.gorevli.bolge} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <select id="env-bolge" name="gorevli.bolge" required data-bolge-secimi>
+              <option value="">{S.secin}</option>
+              {BOLGELER.map((b) => <option value={b}>{b}</option>)}
+            </select>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan>
+            <label for="env-cami">{m.gorevli.cami} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <select id="env-cami" name="gorevli.cami" required data-cami-secimi="gorevli">
+              <option value="">{m.gorevli.camiOnce}</option>
+            </select>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div class="tam env-kosul" data-kosul={`gorevli.cami=${LISTEDE_YOK}`} hidden>
+            <div data-alan>
+              <label for="env-cami-serbest">{m.gorevli.camiSerbest} <span class="zorunlu" aria-hidden="true">*</span></label>
+              <input id="env-cami-serbest" name="gorevli.camiSerbest" type="text" required maxlength={SINIR.camiSerbest} autocomplete="off" />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+          </div>
+          <p class="yardim tam">{m.gorevli.camiYardim}</p>
+          <div data-alan>
+            <label for="env-statu">{m.gorevli.statu} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <select id="env-statu" name="gorevli.statu" required>
+              <option value="">{S.secin}</option>
+              {STATULER.map((s) => <option value={s}>{S.statu[s]}</option>)}
+            </select>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div class="env-kosul" data-kosul="gorevli.statu=diger" hidden>
+            <div data-alan>
+              <label for="env-statu-aciklama">{m.gorevli.statuAciklama} <span class="istege">({o.istegeBagli})</span></label>
+              <input id="env-statu-aciklama" name="gorevli.statuAciklama" type="text" maxlength={SINIR.statuAciklama} autocomplete="off" />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+          </div>
+          <div data-alan>
+            <label for="env-telefon">{m.gorevli.telefon}</label>
+            <input id="env-telefon" name="gorevli.telefon" type="tel" data-tur="telefon" maxlength={SINIR.telefon} autocomplete="tel" inputmode="tel" />
+            <p class="yardim">{m.gorevli.iletisimYardim}</p>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan>
+            <label for="env-eposta">{m.gorevli.eposta}</label>
+            <input id="env-eposta" name="gorevli.eposta" type="email" data-tur="eposta" maxlength={SINIR.eposta} autocomplete="email" inputmode="email" />
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <fieldset data-alan class="tam">
+            <legend>{m.gorevli.diller} <span class="istege">({o.istegeBagli})</span></legend>
+            <div class="secenekler">
+              {GOREVLI_DILLERI.map((d) => (
+                <span class="secenek">
+                  <input type="checkbox" id={`env-dil-${d}`} name={`gorevli.diller.${d}`} />
+                  <label for={`env-dil-${d}`}>{S.gorevliDili[d]}</label>
+                </span>
+              ))}
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </fieldset>
+          <div class="env-kosul" data-kosul="gorevli.diller.diger=true" hidden>
+            <div data-alan>
+              <label for="env-diger-dil">{m.gorevli.digerDil} <span class="istege">({o.istegeBagli})</span></label>
+              <input id="env-diger-dil" name="gorevli.digerDil" type="text" maxlength={SINIR.digerDil} autocomplete="off" />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Sayılar -->
+      <section class="ucf-bolum" id="b-sayilar" aria-labelledby="h-sayilar">
+        <h2 id="h-sayilar">{m.sayilar.baslik}</h2>
+        <p class="bolum-not">{m.sayilar.not}</p>
+        <fieldset class="env-grup">
+          <legend>{m.sayilar.ihtidaBaslik}</legend>
+          <div class="env-matris">
+            {ihtidaSatirlari.map((satir) => (
+              <div class="env-matris-satir">
+                <span class="env-matris-yil" aria-hidden="true">{satir.yil}</span>
+                {satir.hucreler.map((h) => (
+                  <div data-alan class="env-sayi">
+                    <label for={h.id}><span class="sr-only">{satir.yil}, </span>{h.etiket}</label>
+                    <input id={h.id} name={h.ad} type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-tur="sayi" data-azami={AZAMI_SAYI} />
+                    <p class="hata" aria-live="polite" hidden></p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </fieldset>
+        {sayiGruplari.map((grup) => (
+          <fieldset class="env-grup">
+            <legend>{grup.baslik}</legend>
+            <div class="env-sayilar">
+              {grup.alanlar.map((a) => (
+                <div data-alan class="env-sayi">
+                  <label for={a.id}>{a.etiket}</label>
+                  <input id={a.id} name={a.ad} type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-tur="sayi" data-azami={AZAMI_SAYI} />
+                  <p class="hata" aria-live="polite" hidden></p>
+                </div>
+              ))}
+            </div>
+          </fieldset>
+        ))}
+      </section>
+
+      <!-- 4. Adlı bildirim (isteğe bağlı) — satırları betik kurar -->
+      <section class="ucf-bolum" id="b-kisiler" aria-labelledby="h-kisiler">
+        <h2 id="h-kisiler">{m.kisiler.baslik}</h2>
+        <p class="bolum-not">{m.kisiler.not}</p>
+        <div class="ucf-not env-gizli-not">
+          <span class="simge" aria-hidden="true">🔒</span>
+          <p>{m.kisiler.gizliNotGenel}</p>
+        </div>
+        <div class="env-kisiler" data-kisiler></div>
+        <p class="yardim env-kisi-bos" data-kisi-bos>{m.kisiler.bos}</p>
+        <div class="env-kisi-eylem">
+          <button type="button" class="dugme dugme-ikincil" data-kisi-ekle>+ {m.kisiler.ekle}</button>
+          <span class="env-kisi-sayac" data-kisi-sayac></span>
+        </div>
+        <p class="yardim" data-kisi-azami hidden>{m.kisiler.azami.replace('{azami}', String(AZAMI_KISI))}</p>
+        <p class="sr-only" data-kisi-duyuru aria-live="polite"></p>
+      </section>
+
+      <!-- 5. Durum ve ihtiyaç -->
+      <section class="ucf-bolum" id="b-durum" aria-labelledby="h-durum">
+        <h2 id="h-durum">{m.durumBolum.baslik}</h2>
+        <p class="bolum-not">{m.durumBolum.not}</p>
+        <div class="env-sayilar env-sayilar-genis">
+          {durumAlanlari.map((a) => (
+            <div data-alan class="env-sayi">
+              <label for={a.id}>{a.etiket}</label>
+              <input id={a.id} name={a.ad} type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-tur="sayi" data-azami={AZAMI_SAYI} />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 6. Camide yapılanlar -->
+      <section class="ucf-bolum" id="b-faaliyet" aria-labelledby="h-faaliyet">
+        <h2 id="h-faaliyet">{m.faaliyet.baslik}</h2>
+        <div class="ucf-izgara">
+          <fieldset data-alan class="tam">
+            <legend>{m.faaliyet.soru} <span class="istege">({o.istegeBagli})</span></legend>
+            <div class="secenekler">
+              {FAALIYETLER.map((f) => (
+                <span class="secenek">
+                  <input type="checkbox" id={`env-f-${f}`} name={`faaliyet.${f}`} />
+                  <label for={`env-f-${f}`}>{S.faaliyet[f]}</label>
+                </span>
+              ))}
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </fieldset>
+          <div data-alan class="tam">
+            <label for="env-materyal">{m.faaliyet.materyal} <span class="istege">({o.istegeBagli})</span></label>
+            <textarea id="env-materyal" name="faaliyet.materyal" rows="4" maxlength={SINIR.uzunMetin} data-sayac></textarea>
+            <p class="sayac" data-sayac-metin aria-hidden="true"></p>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Gönüllüler -->
+      <section class="ucf-bolum" id="b-gonullu" aria-labelledby="h-gonullu">
+        <h2 id="h-gonullu">{m.gonullu.baslik}</h2>
+        <fieldset class="env-grup">
+          <legend>{m.gonullu.gonulluSayisi}</legend>
+          <div class="env-sayilar">
+            {gonulluAlanlari.map((a) => (
+              <div data-alan class="env-sayi">
+                <label for={a.id}>{a.etiket}</label>
+                <input id={a.id} name={a.ad} type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-tur="sayi" data-azami={AZAMI_SAYI} />
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+            ))}
+          </div>
+        </fieldset>
+        <div class="env-sayilar env-sayilar-genis">
+          <div data-alan class="env-sayi">
+            <label for="env-g-kardes">{m.gonullu.kardesAile}</label>
+            <input id="env-g-kardes" name="gonullu.kardesAile" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-tur="sayi" data-azami={AZAMI_SAYI} />
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Adaylar -->
+      <section class="ucf-bolum" id="b-aday" aria-labelledby="h-aday">
+        <h2 id="h-aday">{m.aday.baslik}</h2>
+        <div class="ucf-izgara">
+          <fieldset data-alan class="tam">
+            <legend>{m.aday.aSoru} <span class="istege">({o.istegeBagli})</span></legend>
+            <div class="secenekler">
+              {EVET_HAYIR.map((d) => (
+                <span class="secenek">
+                  <input type="radio" id={`env-aa-${d}`} name="aday.a.var" value={d} />
+                  <label for={`env-aa-${d}`}>{S.evetHayir[d]}</label>
+                </span>
+              ))}
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </fieldset>
+          <div class="tam env-kosul env-alt-kutu" data-kosul="aday.a.var=evet" hidden>
+            <div class="ucf-izgara">
+              <div data-alan class="tam">
+                <label for="env-aa-ad">{m.aday.aAd} <span class="zorunlu" aria-hidden="true">*</span></label>
+                <input id="env-aa-ad" name="aday.a.ad" type="text" required maxlength={SINIR.ad} autocomplete="off" autocapitalize="words" />
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+              <div data-alan>
+                <label for="env-aa-telefon">{m.aday.aTelefon}</label>
+                <input id="env-aa-telefon" name="aday.a.telefon" type="tel" data-tur="telefon" maxlength={SINIR.telefon} autocomplete="off" inputmode="tel" />
+                <p class="yardim">{m.hata.iletisimEnAz}</p>
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+              <div data-alan>
+                <label for="env-aa-eposta">{m.aday.aEposta}</label>
+                <input id="env-aa-eposta" name="aday.a.eposta" type="email" data-tur="eposta" maxlength={SINIR.eposta} autocomplete="off" inputmode="email" />
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+              <div data-alan class="tam">
+                <label for="env-aa-neden">{m.aday.aNeden} <span class="istege">({o.istegeBagli})</span></label>
+                <textarea id="env-aa-neden" name="aday.a.neden" rows="3" maxlength={SINIR.neden} data-sayac></textarea>
+                <p class="sayac" data-sayac-metin aria-hidden="true"></p>
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+              <div data-alan class="tam">
+                <div class="onay-kutu">
+                  <input id="env-aa-izin" type="checkbox" name="aday.a.izin" required data-hata-metni={m.kisiler.izinHata} />
+                  <label for="env-aa-izin">{m.aday.aIzin}</label>
+                </div>
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+            </div>
+          </div>
+
+          <fieldset data-alan class="tam">
+            <legend>{m.aday.bSoru} <span class="istege">({o.istegeBagli})</span></legend>
+            <p class="yardim">{m.aday.bNot}</p>
+            <div class="secenekler">
+              {ADAY_B_SECIMLERI.map((d) => (
+                <span class="secenek">
+                  <input type="radio" id={`env-ab-${d}`} name="aday.b.secim" value={d} />
+                  <label for={`env-ab-${d}`}>{S.adayB[d]}</label>
+                </span>
+              ))}
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </fieldset>
+          <div class="tam env-kosul env-alt-kutu" data-kosul="aday.b.secim=baskasi" hidden>
+            <div class="ucf-izgara">
+              <div data-alan>
+                <label for="env-ab-ad">{m.aday.bAd} <span class="zorunlu" aria-hidden="true">*</span></label>
+                <input id="env-ab-ad" name="aday.b.ad" type="text" required maxlength={SINIR.ad} autocomplete="off" autocapitalize="words" />
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+              <div data-alan>
+                <label for="env-ab-cami">{m.aday.bCami} <span class="istege">({o.istegeBagli})</span></label>
+                <input id="env-ab-cami" name="aday.b.cami" type="text" maxlength={SINIR.camiSerbest} autocomplete="off" />
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+            </div>
+          </div>
+
+          <div data-alan class="tam">
+            <label for="env-ac-cami">{m.aday.cSoru} <span class="istege">({o.istegeBagli})</span></label>
+            <select id="env-ac-cami" name="aday.c.cami" data-cami-secimi="pilot">
+              <option value="">{m.aday.cSecme}</option>
+            </select>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+          <div data-alan class="tam">
+            <label for="env-ac-gerekce">{m.aday.cGerekce} <span class="istege">({o.istegeBagli})</span></label>
+            <textarea id="env-ac-gerekce" name="aday.c.gerekce" rows="3" maxlength={SINIR.gerekce} data-sayac></textarea>
+            <p class="sayac" data-sayac-metin aria-hidden="true"></p>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+
+          <fieldset data-alan class="tam">
+            <legend>{m.aday.dSoru} <span class="istege">({o.istegeBagli})</span></legend>
+            <div class="secenekler">
+              {IRTIBAT_ISTEGI.map((d) => (
+                <span class="secenek">
+                  <input type="radio" id={`env-ad-${d}`} name="aday.d.irtibat" value={d} />
+                  <label for={`env-ad-${d}`}>{S.irtibat[d]}</label>
+                </span>
+              ))}
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <!-- 9. Belgeler -->
+      <section class="ucf-bolum" id="b-belge" aria-labelledby="h-belge">
+        <h2 id="h-belge">{m.belge.baslik}</h2>
+        <div class="ucf-izgara">
+          <fieldset data-alan class="tam">
+            <legend>{m.belge.soru} <span class="istege">({o.istegeBagli})</span></legend>
+            <div class="secenekler">
+              {BELGE_VAR.map((d) => (
+                <span class="secenek">
+                  <input type="radio" id={`env-b-${d}`} name="belge.var" value={d} />
+                  <label for={`env-b-${d}`}>{S.belgeVar[d]}</label>
+                </span>
+              ))}
+            </div>
+            <p class="hata" aria-live="polite" hidden></p>
+          </fieldset>
+          <div class="tam env-kosul env-alt-kutu" data-kosul="belge.var=evet" hidden>
+            <div class="ucf-izgara">
+              <div data-alan class="env-sayi">
+                <label for="env-b-adet">{m.belge.adet} <span class="istege">({o.istegeBagli})</span></label>
+                <input id="env-b-adet" name="belge.adet" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-tur="sayi" data-azami={AZAMI_SAYI} />
+                <p class="hata" aria-live="polite" hidden></p>
+              </div>
+              <fieldset data-alan class="tam">
+                <legend>{m.belge.iletim} <span class="istege">({o.istegeBagli})</span></legend>
+                <div class="secenekler">
+                  {EVET_HAYIR.map((d) => (
+                    <span class="secenek">
+                      <input type="radio" id={`env-bi-${d}`} name="belge.iletilebilir" value={d} />
+                      <label for={`env-bi-${d}`}>{S.evetHayir[d]}</label>
+                    </span>
+                  ))}
+                </div>
+                <p class="hata" aria-live="polite" hidden></p>
+              </fieldset>
+            </div>
+          </div>
+          <div class="tam ucf-not">
+            <span class="simge" aria-hidden="true">📎</span>
+            <p>{m.belge.not}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Görüş ve öneri -->
+      <section class="ucf-bolum" id="b-gorus" aria-labelledby="h-gorus">
+        <h2 id="h-gorus">{m.gorus.baslik}</h2>
+        <div data-alan>
+          <label for="env-gorus">{m.gorus.alan} <span class="istege">({o.istegeBagli})</span></label>
+          <textarea id="env-gorus" name="gorus" rows="5" maxlength={SINIR.uzunMetin} data-sayac></textarea>
+          <p class="sayac" data-sayac-metin aria-hidden="true"></p>
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+      </section>
+
+      <!-- Son kontrol ve gönderim -->
+      <section class="ucf-bolum" id="b-ozet" aria-labelledby="h-ozet">
+        <h2 id="h-ozet">{m.ozet.baslik}</h2>
+        <p class="bolum-not">{m.ozet.aciklama}</p>
+        <dl class="ozet-liste" data-ozet>
+          {ozetSatirlari.map(({ anahtar, etiket, hedef }) => (
+            <div data-ozet-alan={anahtar}><dt>{etiket}</dt><dd><span data-ozet-deger>{o.bosDeger}</span> <a href={hedef}>{o.ozetDuzenle}</a></dd></div>
+          ))}
+        </dl>
+        <div class="ucf-gonder">
+          <button type="submit" class="dugme dugme-birincil">{m.ozet.gonder}</button>
+          <p class="son-not">{m.ozet.sonNot}</p>
+          <p class="son-not">{m.ozet.taslakNot}</p>
+        </div>
+      </section>
+
+      <div class="ucf-adim-eylemler" data-adim-eylemler hidden>
+        <button type="button" class="dugme dugme-ikincil" data-adim-geri>{m.adimlar.geri}</button>
+        <button type="button" class="dugme dugme-birincil" data-adim-ileri>{m.adimlar.ileri}</button>
+      </div>
+    </form>
+  </template>
+
+  <!-- Adlı bildirim satırı: __N__ satırın kalıcı sıra numarasıyla değişir (ad/kimlik çakışmasın). -->
+  <template data-kisi-sablon>
+    <fieldset class="env-kisi" data-kisi="__N__">
+      <legend><span data-kisi-baslik></span></legend>
+      <div class="ucf-izgara">
+        <div data-alan class="tam">
+          <div class="onay-kutu env-gizli-kutu">
+            <input id="env-k__N__-gizli" type="checkbox" name="kisiler.__N__.gizli" data-kisi-gizli />
+            <label for="env-k__N__-gizli">{m.kisiler.gizli}</label>
+          </div>
+        </div>
+        <div class="tam env-kosul" data-kosul="kisiler.__N__.gizli=true" hidden>
+          <div data-alan>
+            <label for="env-k__N__-kod">{m.kisiler.kod} <span class="zorunlu" aria-hidden="true">*</span></label>
+            <input id="env-k__N__-kod" name="kisiler.__N__.kod" type="text" required maxlength={SINIR.kod} autocomplete="off" />
+            <p class="yardim">{m.kisiler.gizliNot}</p>
+            <p class="hata" aria-live="polite" hidden></p>
+          </div>
+        </div>
+        <div class="tam env-kosul" data-kosul="kisiler.__N__.gizli=false">
+          <div class="ucf-izgara">
+            <div data-alan class="tam">
+              <label for="env-k__N__-ad">{m.kisiler.ad} <span class="zorunlu" aria-hidden="true">*</span></label>
+              <input id="env-k__N__-ad" name="kisiler.__N__.ad" type="text" required maxlength={SINIR.ad} autocomplete="off" autocapitalize="words" data-kisi-ad />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+            <div data-alan>
+              <label for="env-k__N__-telefon">{m.kisiler.telefon}</label>
+              <input id="env-k__N__-telefon" name="kisiler.__N__.telefon" type="tel" data-tur="telefon" maxlength={SINIR.telefon} autocomplete="off" inputmode="tel" />
+              <p class="yardim">{m.hata.iletisimEnAz}</p>
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+            <div data-alan>
+              <label for="env-k__N__-eposta">{m.kisiler.eposta}</label>
+              <input id="env-k__N__-eposta" name="kisiler.__N__.eposta" type="email" data-tur="eposta" maxlength={SINIR.eposta} autocomplete="off" inputmode="email" />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+          </div>
+        </div>
+        <div data-alan>
+          <label for="env-k__N__-cinsiyet">{m.kisiler.cinsiyet} <span class="zorunlu" aria-hidden="true">*</span></label>
+          <select id="env-k__N__-cinsiyet" name="kisiler.__N__.cinsiyet" required>
+            <option value="">{S.secin}</option>
+            {CINSIYETLER.map((c) => <option value={c}>{S.cinsiyet[c]}</option>)}
+          </select>
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+        <div data-alan>
+          <label for="env-k__N__-dogum">{m.kisiler.dogumYili} <span class="istege">({o.istegeBagli})</span></label>
+          <input id="env-k__N__-dogum" name="kisiler.__N__.dogumYili" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off"
+                 data-tur="sayi" data-asgari="1900" data-azami={buYil} data-hata-metni={m.kisiler.dogumYiliHata.replace('{yil}', String(buYil))} data-kisi-dogum />
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+        <div data-alan>
+          <label for="env-k__N__-dil">{m.kisiler.dil} <span class="zorunlu" aria-hidden="true">*</span></label>
+          <select id="env-k__N__-dil" name="kisiler.__N__.dil" required>
+            <option value="">{S.secin}</option>
+            {TERCIH_DILLERI.map((d) => <option value={d}>{S.tercihDili[d]}</option>)}
+          </select>
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+        <div data-alan>
+          <label for="env-k__N__-yil">{m.kisiler.ihtidaYili} <span class="zorunlu" aria-hidden="true">*</span></label>
+          <select id="env-k__N__-yil" name="kisiler.__N__.ihtidaYili" required>
+            <option value="">{S.secin}</option>
+            {IHTIDA_YILLARI.map((y) => <option value={y}>{S.ihtidaYili[y]}</option>)}
+          </select>
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+        <div data-alan>
+          <label for="env-k__N__-belge">{m.kisiler.belge} <span class="zorunlu" aria-hidden="true">*</span></label>
+          <select id="env-k__N__-belge" name="kisiler.__N__.belge" required>
+            <option value="">{S.secin}</option>
+            {BELGE_DURUMLARI.map((b) => <option value={b}>{S.belgeKisi[b]}</option>)}
+          </select>
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+        <div data-alan class="tam">
+          <div class="onay-kutu">
+            <input id="env-k__N__-izin" type="checkbox" name="kisiler.__N__.izin" required data-hata-metni={m.kisiler.izinHata} />
+            <label for="env-k__N__-izin">{m.kisiler.izin}</label>
+          </div>
+          <p class="hata" aria-live="polite" hidden></p>
+        </div>
+        <div class="tam env-kisi-kaldir">
+          <button type="button" class="dugme dugme-ikincil" data-kisi-kaldir>{m.kisiler.kaldir}</button>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+
+  <section class="ucf-basari env-basari mt-8" data-basari hidden aria-live="polite">
+    <h2>{m.basari.baslik}</h2>
+    <p>{m.basari.metin}</p>
+    <div><div class="ref-etiket">{m.basari.referans}</div><div class="ref" data-ref>—</div></div>
+    <p>{m.basari.ihtidaNot} <a href={yol('tr', 'ihtidaBasvuru')}>{m.basari.ihtidaBaglanti}</a></p>
+    <p>{m.giris.iletisim} <WhatsappBaglanti site={site} /></p>
+    <div class="eylemler"><a class="dugme dugme-ikincil" href="/envanter/">{m.basari.yeniForm}</a></div>
+  </section>
+</div>
+
+<script>
+  import { envanterSayfasiniBaslat } from '../../scripts/envanter-form';
+  envanterSayfasiniBaslat();
+</script>
