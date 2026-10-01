@@ -1,0 +1,208 @@
+/* Vaaz gövdesinin öğretici görselleri; sitenin mevcut Kilim Kartografyası değişkenleri. */
+.vaaz-govde .vaaz-gorsel {
+  margin: 2.5rem 0;
+  padding: 1.5rem 0;
+  border-block: 1px solid var(--cizgi);
+  break-inside: avoid;
+}
+.vaaz-govde .vaaz-gorsel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1rem;
+}
+.vaaz-govde .vaaz-gorsel figcaption {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--metin-2);
+}
+.vaaz-govde .vaaz-gorsel figcaption strong {
+  display: block;
+  margin-bottom: .25rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--metin);
+}
+.vaaz-govde figure.vaaz-gorsel p.vaaz-sema-merkez {
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  padding: .75rem 1.5rem;
+  border: 1px solid var(--vurgu-2);
+  color: var(--vurgu-2);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.vaaz-govde .vaaz-sema-kollar {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding-top: 2rem;
+}
+.vaaz-govde .vaaz-sema-kollar::before {
+  position: absolute;
+  content: '';
+  top: 1rem;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: var(--cizgi-etkilesim);
+}
+.vaaz-govde .vaaz-sema-kollar::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 50%;
+  height: 1rem;
+  width: 1px;
+  background: var(--cizgi-etkilesim);
+}
+.vaaz-govde .vaaz-sema-kollar div {
+  position: relative;
+}
+.vaaz-govde .vaaz-sema-kollar div::before {
+  position: absolute;
+  content: '';
+  top: -1rem;
+  left: 50%;
+  height: .75rem;
+  width: 1px;
+  background: var(--cizgi-etkilesim);
+}
+.vaaz-govde .vaaz-gorsel dt,
+.vaaz-govde .vaaz-nesiller strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 700;
+  color: var(--vurgu-2);
+}
+.vaaz-govde .vaaz-gorsel dd,
+.vaaz-govde .vaaz-nesiller span {
+  display: block;
+  margin: .5rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--metin);
+}
+.vaaz-govde .vaaz-nesiller,
+.vaaz-govde .vaaz-hayat {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+.vaaz-govde .vaaz-nesiller li { margin: 0; }
+.vaaz-govde .vaaz-uygulama table {
+  width: 100%;
+  margin: 1.5rem 0 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.vaaz-govde .vaaz-uygulama caption {
+  text-align: left;
+  padding-bottom: .75rem;
+  font-size: .95rem;
+  color: var(--metin-2);
+}
+.vaaz-govde .vaaz-uygulama th,
+.vaaz-govde .vaaz-uygulama td {
+  padding: .9rem .75rem;
+  border-block-end: 1px solid var(--cizgi);
+  vertical-align: top;
+}
+.vaaz-govde figure.vaaz-uygulama th,
+.vaaz-govde figure.vaaz-uygulama td {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.vaaz-govde .vaaz-uygulama thead th {
+  background: var(--zemin-2);
+  color: var(--vurgu-2);
+  font-weight: 700;
+}
+.vaaz-govde .vaaz-uygulama th:first-child { padding-inline-start: 0; }
+.vaaz-govde .vaaz-uygulama thead th:first-child { padding-inline-start: .75rem; }
+.vaaz-govde .vaaz-kaynaklar {
+  margin-top: 2.5rem;
+  padding: 1.25rem 0;
+  border-block-start: 1px solid var(--cizgi);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.vaaz-govde .vaaz-kaynaklar summary {
+  cursor: pointer;
+  color: var(--vurgu-2);
+  font-weight: 700;
+  min-height: 44px;
+}
+.vaaz-govde .vaaz-kaynaklar summary:focus-visible {
+  outline: 2px solid var(--vurgu-2);
+  outline-offset: 4px;
+}
+@media (max-width: 640px) {
+  .vaaz-govde .vaaz-gorsel { margin: 2rem 0; padding: 1.25rem 0; }
+  .vaaz-govde .vaaz-sema-kollar,
+  .vaaz-govde .vaaz-nesiller,
+  .vaaz-govde .vaaz-hayat { grid-template-columns: 1fr; gap: 1.25rem; }
+  .vaaz-govde .vaaz-sema-kollar {
+    margin-top: 1.25rem;
+    padding-top: 0;
+    padding-inline-start: 1.25rem;
+    border-inline-start: 1px solid var(--cizgi-etkilesim);
+  }
+  .vaaz-govde .vaaz-sema-kollar::before,
+  .vaaz-govde .vaaz-sema-kollar::after,
+  .vaaz-govde .vaaz-sema-kollar div::before { display: none; }
+  .vaaz-govde figure.vaaz-gorsel p.vaaz-sema-merkez { margin-inline: 0; }
+  .vaaz-govde .vaaz-uygulama table { table-layout: auto; }
+  .vaaz-govde .vaaz-uygulama thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    clip-path: inset(50%);
+    overflow: hidden;
+  }
+  .vaaz-govde .vaaz-uygulama tr {
+    display: block;
+    padding: 1rem 0;
+    border-block-end: 1px solid var(--cizgi);
+  }
+  .vaaz-govde .vaaz-uygulama tbody th,
+  .vaaz-govde .vaaz-uygulama td {
+    display: block;
+    width: auto;
+    padding: .25rem 0;
+    border: 0;
+    font-weight: 400;
+  }
+  .vaaz-govde .vaaz-uygulama tbody th { font-weight: 700; }
+  .vaaz-govde .vaaz-uygulama td::before {
+    content: attr(data-label) ': ';
+    font-weight: 700;
+    color: var(--vurgu-2);
+  }
+}
+@media print {
+  .vaaz-govde .vaaz-gorsel { break-inside: auto; }
+  .vaaz-govde .vaaz-gorsel img { max-height: 60mm; object-fit: contain; }
+}
