@@ -1,8 +1,8 @@
 ---
 baslik: "Gurbette Cami: İmanımızın Yurdu, Birbirimizin Emaneti"
-ozet: "Avrupa’daki cemaat için caminin ibadet, ilim ve dayanışma rolü; ilk kuşağa vefa, gençlere ve hanımlara yer açma, yalnızlığı paylaşma ve yedi maddelik cami kardeşliği sözü. Özgün görseller, şemalar ve uygulama tablosuyla."
+ozet: "Gurbette cami; ibadeti, ilmi ve dayanışmayı aynı gönül bağında buluşturur. İlk kuşağa vefa, gençlere ve ailelere yer açma, yalnızlığı paylaşma ve komşuluğa uzanan yedi söz."
 kategori: toplum
-kelime: 3580
+kelime: 3330
 docx: "/vaazlar/gurbette-cami.docx"
 pdf: "/vaazlar/gurbette-cami.pdf"
 ---
@@ -12,7 +12,27 @@ pdf: "/vaazlar/gurbette-cami.pdf"
 <figcaption><strong>Aynı kıble, birbirine açılan gönüller.</strong> Gurbette cami, birbirimize emanet olduğumuz yerdir.<span class="vaaz-temsil">Görseller, günümüz Avrupa cami hayatını anlatan temsili sahnelerdir.</span></figcaption>
 </figure>
 
-## İFTİTAH: GURBETİN ORTASINDA BİR GÖNÜL YURDU
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#camiyi-imar">Camiyi imar</a></li>
+<li><a href="#nebevi-ornek">Peygamberimizin mescidinden ilham</a></li>
+<li><a href="#ilk-kusak">İlk kuşağa vefa</a></li>
+<li><a href="#gencler">Gençlere ve çocuklara yer açmak</a></li>
+<li><a href="#hanimlar-ve-aile">Hanımların ve ailelerin katılımı</a></li>
+<li><a href="#yalnizlik-ve-dayanisma">Yalnızlık ve dayanışma</a></li>
+<li><a href="#birlik-ve-emanet">Birlik ve emanet</a></li>
+<li><a href="#komsuluk">Komşumuza ulaşan ahlak</a></li>
+<li><a href="#cami-adabi">Cami adabı</a></li>
+<li><a href="#hizmete-vefa">Din görevlileri ve gönüllülere vefa</a></li>
+<li><a href="#yedi-soz">Hayata taşıyacağımız yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Gurbetin ortasında bir gönül yurdu</h2>
 
 <p class="vaaz-etiket">Dua</p>
 <p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
@@ -27,18 +47,15 @@ pdf: "/vaazlar/gurbette-cami.pdf"
 
 **Aziz cemaat! Gurbetin yükünü sabırla, bereketini şükürle taşıyan kıymetli kardeşlerim!**
 
-İçimizde sabahın erken saatlerinde işine yetişenler, yıllarca emek verip artık torunlarının elinden tutanlar, evinin ve ailesinin yükünü taşıyan hanımlar, burada doğup iki dilin arasında büyüyen gençler var. Memlekette bıraktığımız bir annenin sesi, uzaktaki bir mezarın hasreti, çocuklarımızın geleceğine dair bir kaygı hepimizin gönlünde ayrı bir yerde duruyor.
+İçimizde sabahın erken saatlerinde işine yetişenler, yıllarca emek verip şimdi torunlarının elinden tutanlar, evinin ve ailesinin yükünü paylaşanlar, burada doğup birden fazla dilin zenginliğiyle büyüyen gençler var. Kiminin gönlünde memleketteki bir annenin sesi, kimininkinde uzaktaki bir mezarın hasreti, kimininkinde çocuklarının geleceği duruyor. Hasreti taşıyan büyüklerimiz de burada kendine bir hayat kuran yeni nesillerimiz de bu cemaatin içinde yer bulsun.
 
 İşte bütün bu ayrı hikâyeler, bu kapıdan girince aynı kıbleye yöneliyor. Kimi yorgunluğunu, kimi yalnızlığını, kimi söyleyemediği derdini getiriyor. Secdede Rabbine sığınıyor; namazdan sonra bir selâmla insana kavuşuyor. **Gurbette cami, imanımızın yurdu; birbirimize emanet olduğumuz yerdir.**
 
 Camiler ve Din Görevlileri Haftası vesilesiyle bugün bu emaneti konuşacağız. Rabbimize yönelişimizin hayatımızı nasıl güzelleştireceğini; çocuklarımızın, hanımlarımızın, yaşlılarımızın ve komşularımızın bu güzellikten nasıl pay alacağını birlikte düşüneceğiz. Cuma çıkışında yanımızda taşıyacağımız bir kararımız olsun: Bir insanın gönlüne daha fazla yer açmak.
 
-
-
-
 ---
 
-## I. CAMİYİ İMAR: TAŞA EMEK, KALBE RAHMET
+<h2 class="vaaz-bolum-baslik" id="camiyi-imar" tabindex="-1">I. Camiyi imar: Taşa emek, kalbe rahmet</h2>
 
 <p class="vaaz-etiket">Âyet-i Kerîme</p>
 <p lang="ar" dir="rtl" class="ayet">وَأَنَّ الْمَسَاجِدَ لِلَّهِ فَلَا تَدْعُوا مَعَ اللَّهِ أَحَدًا</p>
@@ -60,7 +77,7 @@ Her birimiz bugün kendi payımızı düşünebiliriz. Camiye düzenli bir namaz
 
 ---
 
-## II. MESCİD-İ NEBEVÎ’DEN GURBETTEKİ CAMİMİZE
+<h2 class="vaaz-bolum-baslik" id="nebevi-ornek" tabindex="-1">II. Mescid-i Nebevî’den gurbetteki camimize</h2>
 
 **Aziz kardeşlerim! Caminin ruhunu, Peygamberimizin mescidinde öğreniriz.**
 
@@ -81,7 +98,6 @@ Ekranlarımıza düşen her dinî sözün kaynağını soralım. Bir görselde �
 
 Bir ders halkasına devam etmek için takvimimizde yer açalım. Çocuğumuzun öğrendiği kısa bir sûreyi evde birlikte tekrar edelim. Öğrendiklerimiz caminin kapısında kalmasın; soframızda konuşulsun, işimizde uygulansın, dilimizi ve kararlarımızı güzelleştirsin.
 
-
 <figure class="vaaz-gorsel vaaz-sema">
 <figcaption><strong>Caminin etrafında büyüyen hayat</strong> Bütün hizmetler, Allah’a kulluğumuzdan beslenir.</figcaption>
 <p class="vaaz-sema-merkez">İman ve ibadet</p>
@@ -95,7 +111,7 @@ Bir ders halkasına devam etmek için takvimimizde yer açalım. Çocuğumuzun �
 
 ---
 
-## III. İLK KUŞAĞIN EMEĞİ: BİZE BIRAKILAN EMANET
+<h2 class="vaaz-bolum-baslik" id="ilk-kusak" tabindex="-1">III. İlk kuşağın emeği: Bize bırakılan emanet</h2>
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
 <p lang="ar" dir="rtl" class="ayet">وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي الْمَسَاجِدِ</p>
@@ -116,7 +132,6 @@ Kalbi mescide bağlı olmak, Rabbine yönelişi hayatın akışında taşımakt�
 
 **Büyüklerimizin emeği, gençlerimizin ümidiyle buluşsun.** Geçmişten aldığımız hayrı yarına ulaştıracak bir hizmet seçelim. Bu hafta bir büyüğümüzü dinleyelim; bir gencimize de sözü ve sorumluluğu verelim. Camiye duyduğumuz sevgi, birbirimize gösterdiğimiz ilgide görünür olsun.
 
-
 <figure class="vaaz-gorsel vaaz-illustrasyon vaaz-sema">
 <img src="/media/vaazlar/gurbette-cami/nesiller-emaneti-v2-1600.webp" srcset="/media/vaazlar/gurbette-cami/nesiller-emaneti-v2-480.webp 480w, /media/vaazlar/gurbette-cami/nesiller-emaneti-v2-960.webp 960w, /media/vaazlar/gurbette-cami/nesiller-emaneti-v2-1600.webp 1600w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(100vw - 64px), 736px" width="1600" height="900" alt="Cami avlusunda büyükler, yetişkinler ve bir çocuk birlikte fidan dikerek kuşaklar arasındaki emaneti paylaşıyor." loading="lazy" decoding="async" />
 <figcaption><strong>Emanet, kuşaklar arasında paylaşılır</strong> Her kuşağın cami hayatına katacağı bir iyilik vardır.</figcaption>
@@ -129,14 +144,14 @@ Kalbi mescide bağlı olmak, Rabbine yönelişi hayatın akışında taşımakt�
 
 ---
 
-## IV. GENÇLERİMİZ: BU KAPIDA KENDİLERİNE YER BULSUN
+<h2 class="vaaz-bolum-baslik" id="gencler" tabindex="-1">IV. Gençlerimiz: Bu kapıda kendilerine yer bulsun</h2>
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الرِّفْقَ لَا يَكُونُ فِي شَيْءٍ إِلَّا زَانَهُ</p>
 
 *Yumuşaklık ve nezaket bulunduğu şeyi güzelleştirir.* (Müslim, 2594a; rivayetten bölüm)
 
-**Sevgili genç kardeşim! Sorunla, arayışınla ve öğrenme isteğinle bu cemaatin içindesin.**
+**Sevgili genç kardeşim! Sorularınla, arayışınla ve öğrenme isteğinle bu cemaatin içindesin.**
 
 Bazen bir genç caminin kapısına kadar gelir; nasıl karşılanacağını düşünür. Namazı eksik biliyor olabilir. Türkçesi zayıf olabilir. Bir süredir uzak kalmış, yeniden başlamak istiyor olabilir. O kapıda karşılaşacağı bir bakış, bir söz, bir selâm onun ilk adımını kolaylaştırabilir. **Bizim ilk sözümüz, hoş geldin olsun.**
 
@@ -156,7 +171,7 @@ Bugün bir çocuğun adını öğrenelim. Bir gence fikrini soralım. Camiye ilk
 
 ---
 
-## V. HANIMLAR VE AİLE: CAMİDE İLME, İBADETE YER AÇMAK
+<h2 class="vaaz-bolum-baslik" id="hanimlar-ve-aile" tabindex="-1">V. Hanımlar ve aile: Camide ilme, ibadete yer açmak</h2>
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
 <p lang="ar" dir="rtl" class="ayet">إِذَا اسْتَأْذَنَتْ أَحَدَكُمُ امْرَأَتُهُ إِلَى الْمَسْجِدِ فَلَا يَمْنَعْهَا</p>
@@ -185,7 +200,7 @@ Her ailenin şartı ve imkânı farklıdır. Hastası olanı, yalnız ebeveyni, 
 <figcaption><strong>Öğrenmeye açılan kapı, aileye de açılsın</strong>İlim imkânlarını ve evdeki sorumlulukları paylaşarak birbirimizin öğrenmesini kolaylaştıralım.</figcaption>
 </figure>
 
-## VI. GURBETTE YALNIZLIK: CEMAAT BİRBİRİNİN HÂLİNİ BİLİR
+<h2 class="vaaz-bolum-baslik" id="yalnizlik-ve-dayanisma" tabindex="-1">VI. Gurbette yalnızlık: Cemaat birbirinin hâlini bilir</h2>
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
 <p lang="ar" dir="rtl" class="ayet">مَثَلُ الْمُؤْمِنِينَ فِي تَوَادِّهِمْ وَتَرَاحُمِهِمْ وَتَعَاطُفِهِمْ مَثَلُ الْجَسَدِ إِذَا اشْتَكَى مِنْهُ عُضْوٌ تَدَاعَى لَهُ سَائِرُ الْجَسَدِ بِالسَّهَرِ وَالْحُمَّى</p>
@@ -203,7 +218,6 @@ Camimizin imkânları ölçüsünde bir ziyaret halkası, ulaşım desteği, der
 Ciddi bir sağlık, ruh sağlığı veya aile güvenliği meselesinde dinî rehberliğin yanında uygun uzman desteğine ulaşmayı da kolaylaştıralım. Bir kardeşimizi dinlemek, gerektiğinde doğru desteğe yönlendirmek ve yardımı sürdürmek birlikte yürüyebilir. Mağdurun güvenliği ve hakkı gözetilsin; derdi konuşabilmesi için ona güven verilsin.
 
 **Gurbette kardeşlik, ihtiyaç anında birbirimize ulaşabilmektir.** Bugün bir insanı arayalım. “Sana nasıl yardımcı olabilirim?” diyelim ve yapabileceğimiz şeyi yerine getirelim. Rabbimiz, duyduğumuz acıyı bir iyiliğe dönüştürmeyi bize nasip etsin.
-
 
 <figure class="vaaz-gorsel vaaz-illustrasyon">
 <img src="/media/vaazlar/gurbette-cami/yalnizliga-merhamet-v2-1600.webp" srcset="/media/vaazlar/gurbette-cami/yalnizliga-merhamet-v2-480.webp 480w, /media/vaazlar/gurbette-cami/yalnizliga-merhamet-v2-960.webp 960w, /media/vaazlar/gurbette-cami/yalnizliga-merhamet-v2-1600.webp 1600w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(100vw - 64px), 736px" width="1600" height="900" alt="Yaşlı bir bey, evindeki çay sofrasında kendisini ziyaret eden iki cemaat arkadaşıyla göz hizasında sohbet ediyor." loading="lazy" decoding="async" />
@@ -226,7 +240,7 @@ Ciddi bir sağlık, ruh sağlığı veya aile güvenliği meselesinde dinî rehb
 
 ---
 
-## VII. BİRLİK VE EMANET: CAMİNİN GÖNLÜ DARALMASIN
+<h2 class="vaaz-bolum-baslik" id="birlik-ve-emanet" tabindex="-1">VII. Birlik ve emanet: Caminin gönlü daralmasın</h2>
 
 <p class="vaaz-etiket">Âyet-i Kerîme</p>
 <p lang="ar" dir="rtl" class="ayet">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا</p>
@@ -250,7 +264,7 @@ Kırgınlıkları gidermeye gayret edelim. “Müminler kardeştir; kardeşlerin
 
 ---
 
-## VIII. CAMİDEN SOKAĞA: KOMŞUMUZA ULAŞAN AHLAK
+<h2 class="vaaz-bolum-baslik" id="komsuluk" tabindex="-1">VIII. Camiden sokağa: Komşumuza ulaşan ahlak</h2>
 
 <p class="vaaz-etiket">Âyet-i Kerîme</p>
 <p lang="ar" dir="rtl" class="ayet">إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ</p>
@@ -272,7 +286,6 @@ Gurbette köklerimizi korurken burada kurduğumuz hayatın sorumluluğunu da ta�
 
 **Camiye duyulan güven, cemaatin davranışlarıyla da büyür.** Komşularımızla tanışalım; gerektiğinde merak ettikleri soruları nezaketle cevaplayalım. Yanlışımız olduğunda düzeltelim. Camimizden çıkan bir insanın ardından “Sözüne güvenilir, elinden iyilik gelir” denmesi için gayret edelim.
 
-
 <figure class="vaaz-gorsel vaaz-illustrasyon vaaz-sema">
 <img src="/media/vaazlar/gurbette-cami/camiden-komsuluga-v2-1600.webp" srcset="/media/vaazlar/gurbette-cami/camiden-komsuluga-v2-480.webp 480w, /media/vaazlar/gurbette-cami/camiden-komsuluga-v2-960.webp 960w, /media/vaazlar/gurbette-cami/camiden-komsuluga-v2-1600.webp 1600w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(100vw - 64px), 736px" width="1600" height="900" alt="Bir kadın ve bir genç, Avrupa sokağında yaşlı komşularına market çantasını taşımada yardım ediyor." loading="lazy" decoding="async" />
 <figcaption><strong>Secdenin huzuru gündelik hayata taşınır</strong> Öğrendiğimiz ahlakı karşılaştığımız insanlara ulaştıralım.</figcaption>
@@ -285,7 +298,7 @@ Gurbette köklerimizi korurken burada kurduğumuz hayatın sorumluluğunu da ta�
 
 ---
 
-## IX. CAMİ ADABI: HUZURU BİRLİKTE KORUMAK
+<h2 class="vaaz-bolum-baslik" id="cami-adabi" tabindex="-1">IX. Cami adabı: Huzuru birlikte korumak</h2>
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
 <p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</p>
@@ -316,7 +329,7 @@ Cemaatin düzeni zamanla öğrenilir. İmamımızdan ihtiyaç duyduğumuz ibadet
 
 ---
 
-## X. DİN GÖREVLİLERİ VE GÖNÜLLÜLERE VEFA
+<h2 class="vaaz-bolum-baslik" id="hizmete-vefa" tabindex="-1">X. Din görevlileri ve gönüllülere vefa</h2>
 
 **Kıymetli kardeşlerim! Bu hizmetin ardındaki emekleri de hatırlayalım.**
 
@@ -343,7 +356,7 @@ Kardeşlerim! Bir hocanın verdiği ders, evde tekrar edilince güçlenir. Genci
 <figcaption><strong>Huzurun arkasında nice sessiz emek var</strong>Din görevlilerimizi ve gönüllülerimizi bir teşekkürle hatırlayalım; hizmetin bir ucundan biz de tutalım.</figcaption>
 </figure>
 
-## XI. CUMA’DAN SONRA: YEDİ MADDELİK CAMİ KARDEŞLİĞİ SÖZÜ
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Cuma’dan sonra: Yedi maddelik cami kardeşliği sözü</h2>
 
 **Aziz cemaat! Bugünkü sözümüz, yarın bir davranışa dönüşsün.**
 
@@ -351,13 +364,15 @@ Bir vaazdan gönlümüze dokunan cümleyle çıkmak güzeldir. O cümleye bir i�
 
 **CAMİ KARDEŞLİĞİ İÇİN YEDİ SÖZ**
 
-1. Namazla bağ kuracağım İmkânım ölçüsünde caminin ibadet hayatına düzenli katılacak, gelemediğimde de namazımı ve cemaatle gönül bağımı koruyacağım.
-2. Bir gence ve çocuğa yer açacağım Adını öğrenecek, selâm verecek, sorusunu dinleyecek; öğrenmesine ve bir hizmete katılmasına destek olacağım.
-3. Ailemin öğrenmesini kolaylaştıracağım Hanımların ve bütün aile fertlerinin ders ve ibadet imkânlarına erişmesi için sorumluluk paylaşacağım.
-4. Yalnız bir insanı arayacağım Bu hafta bir yaşlının, hastanın veya yeni gelenin hâlini soracak; yapabileceğim yardımı yerine getireceğim.
-5. Emaneti koruyacağım Ortak mala, bağışa ve kişisel bilgilere özen gösterecek; hizmette açıklık ve adalete katkı vereceğim.
-6. Komşumun huzurunu gözeteceğim Otoparkta, sokakta, işte ve evde başkasının hakkına saygı gösterecek; sözümde güvenilir olacağım.
-7. Hizmete ve barışa katkı vereceğim Bir gönüllü işe katılacak; teşekkür edecek; hakkı ve güvenliği gözeterek kırgınlığı gidermeye çalışacağım.
+<ol class="vaaz-sozler">
+<li><strong>Namazla bağ kuracağım.</strong> İmkânım ölçüsünde caminin ibadet hayatına düzenli katılacak, gelemediğimde de namazımı ve cemaatle gönül bağımı koruyacağım.</li>
+<li><strong>Bir gence ve çocuğa yer açacağım.</strong> Adını öğrenecek, selâm verecek, sorusunu dinleyecek; öğrenmesine ve bir hizmete katılmasına destek olacağım.</li>
+<li><strong>Ailemin öğrenmesini kolaylaştıracağım.</strong> Hanımların ve bütün aile fertlerinin ders ve ibadet imkânlarına erişmesi için sorumluluk paylaşacağım.</li>
+<li><strong>Yalnız bir insanı arayacağım.</strong> Bu hafta bir yaşlının, hastanın veya yeni gelenin hâlini soracak; yapabileceğim yardımı yerine getireceğim.</li>
+<li><strong>Emaneti koruyacağım.</strong> Ortak mala, bağışa ve kişisel bilgilere özen gösterecek; hizmette açıklık ve adalete katkı vereceğim.</li>
+<li><strong>Komşumun huzurunu gözeteceğim.</strong> Otoparkta, sokakta, işte ve evde başkasının hakkına saygı gösterecek; sözümde güvenilir olacağım.</li>
+<li><strong>Hizmete ve barışa katkı vereceğim.</strong> Bir gönüllü işe katılacak; teşekkür edecek; hakkı ve güvenliği gözeterek kırgınlığı gidermeye çalışacağım.</li>
+</ol>
 
 <figure class="vaaz-gorsel vaaz-yedi-soz">
 <figcaption><strong>Yedi sözden birini bugün hayata geçir</strong>Bir insan, bir zaman, bir hizmet seç.</figcaption>
@@ -374,13 +389,13 @@ Bir vaazdan gönlümüze dokunan cümleyle çıkmak güzeldir. O cümleye bir i�
 
 Şimdi zihnimizde bir isim olsun: Hâlini soracağımız insanın adı. Bir zaman olsun: Arayacağımız gün. Bir hizmet olsun: Sorumluluğunu üstlenebileceğimiz iş. Yapabileceğimiz bir şeyi niyet edip yerine getirelim. Arkadaşımızla veya ailemizle birbirimize hatırlatalım; hayrı birlikte sürdürmek kolaylaşsın.
 
-İlk geldiğimizde bizi karşılayan insanı hatırlayalım. Yeni gelen için biz de o insan olabiliriz. Yalnız kaldığımızda bir telefonun kıymetini hatırlayalım. Başkasının telefonunu arayan biz olabiliriz. Çocuğumuza gösterilmesini istediğimiz sabrı düşünelim. Başka bir çocuğa o sabrı gösteren biz olabiliriz.
+İlk geldiğimizde bizi karşılayan insanı hatırlayalım. Yeni gelen için biz de o insan olabiliriz. Yalnız kaldığımızda bir telefonun kıymetini hatırlayalım. O telefonu açıp bir kardeşimizin hâlini soran biz olabiliriz. Çocuğumuza gösterilmesini istediğimiz sabrı düşünelim. Başka bir çocuğa o sabrı gösteren biz olabiliriz.
 
 **Gurbette cami, birbirimize emanet olduğumuz yerdir.** Bu emaneti namazla, ilimle, dürüstlükle ve merhametle taşıyalım. Rabbimiz niyetimizi hâlis, adımımızı hayırlı, hizmetimizi devamlı kılsın. Şimdi bu niyetle hep birlikte duaya yönelelim.
 
 ---
 
-## GURBETTE KÜRSÜ HATİMİ VE CEMAAT NİYAZI
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Gurbette kürsü hatimi ve cemaat niyazı</h2>
 
 **Kıymetli kardeşlerim! Gönlümüzü Rabbimize açalım.**
 
@@ -426,3 +441,5 @@ Allah’ım! Duamızı kabul, hizmetimizi bereketli eyle. Bizi bağışla; son n
 <li>Hatim duası: <a href="https://quran.com/14/40">İbrâhim 14/40</a>; <a href="https://quran.com/25/74">Furkân 25/74</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>. Diğer niyazlar serbest dua lafzıdır.</li>
 </ul>
 </details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

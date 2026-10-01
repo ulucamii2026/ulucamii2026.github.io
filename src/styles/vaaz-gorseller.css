@@ -238,6 +238,69 @@
   outline: 2px solid var(--vurgu-2);
   outline-offset: 4px;
 }
+/* Bu vaazın uzun okuma akışı: betiksiz bölüm geçişi ve açık söz başlıkları. */
+.vaaz-govde .vaaz-icindekiler {
+  margin: 2rem 0;
+  border-block: 1px solid var(--cizgi);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  scroll-margin-top: 7rem;
+}
+.vaaz-govde .vaaz-icindekiler summary {
+  min-height: 44px;
+  padding-block: .7rem;
+  cursor: pointer;
+  color: var(--vurgu-2);
+  font-weight: 600;
+}
+.vaaz-govde .vaaz-icindekiler summary span {
+  display: inline-block;
+  margin-inline-start: .5rem;
+  color: var(--metin-2);
+  font-size: .85rem;
+  font-weight: 400;
+}
+.vaaz-govde .vaaz-icindekiler ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  list-style: none;
+  padding: 0 0 .75rem;
+  margin: 0;
+}
+.vaaz-govde .vaaz-icindekiler li { margin: 0; }
+.vaaz-govde .vaaz-icindekiler a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .45rem .25rem;
+  text-decoration: underline;
+  text-decoration-color: var(--cizgi-etkilesim);
+  text-underline-offset: .2em;
+}
+.vaaz-govde .vaaz-icindekiler a:hover {
+  text-decoration-color: currentColor;
+}
+.vaaz-govde .vaaz-icindekiler summary:focus-visible,
+.vaaz-govde .vaaz-icindekiler a:focus-visible,
+.vaaz-govde .vaaz-bolumlere-don a:focus-visible {
+  outline: 3px solid var(--vurgu-2);
+  outline-offset: 3px;
+}
+.vaaz-govde .vaaz-bolum-baslik { scroll-margin-top: 7rem; }
+.vaaz-govde .vaaz-sozler li { margin-block: 0 1rem; }
+.vaaz-govde .vaaz-sozler strong { display: block; }
+.vaaz-govde p.vaaz-bolumlere-don {
+  margin-top: 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+.vaaz-govde .vaaz-bolumlere-don a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 @media (max-width: 640px) {
   .vaaz-govde .vaaz-gorsel { margin: 2rem 0; padding: 1.25rem 0; }
   .vaaz-govde .vaaz-illustrasyon { padding: 0; margin: 2.5rem 0; }
@@ -245,6 +308,7 @@
   .vaaz-govde .vaaz-illustrasyon figcaption strong { font-size: 1.25rem; }
   .vaaz-govde .vaaz-soz-yolu { grid-template-columns: 1fr; }
   .vaaz-govde .vaaz-soz-yolu li:last-child { grid-column: auto; }
+  .vaaz-govde .vaaz-icindekiler ul { grid-template-columns: 1fr; }
   .vaaz-govde .vaaz-sema-kollar,
   .vaaz-govde .vaaz-nesiller,
   .vaaz-govde .vaaz-hayat { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -288,6 +352,8 @@
   }
 }
 @media print {
+  .vaaz-govde .vaaz-icindekiler,
+  .vaaz-govde .vaaz-bolumlere-don { display: none; }
   .vaaz-govde .vaaz-gorsel { break-inside: auto; }
   .vaaz-govde .vaaz-gorsel img { max-height: 60mm; object-fit: contain; }
 }
