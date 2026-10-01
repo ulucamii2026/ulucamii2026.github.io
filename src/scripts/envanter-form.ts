@@ -49,16 +49,22 @@ export function durumYorumla(httpOk: boolean, yanit: unknown): EnvanterDurumu {
 
 async function durumAl(uc: string): Promise<EnvanterDurumu> {
   if (!uc) return KAPALI;
-  const denetleyici = new AbortController();
-  const zaman = window.setTimeout(() => denetleyici.abort(), 20_000);
-  try {
-    const yanit = await fetch(uc, { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: denetleyici.signal });
-    return durumYorumla(yanit.ok, await yanit.json());
-  } catch {
-    return KAPALI;
-  } finally {
-    window.clearTimeout(zaman);
+  // Google'ın geçici ağ/zaman aşımı hatası, açık formu ilk istekte kapalı göstermesin.
+  // Gerçek kapalı/eski/geçersiz sağlık yanıtı hemen kapalı kalır; yalnız ağ hatası yeniden denenir.
+  for (let deneme = 0; deneme < 2; deneme++) {
+    const denetleyici = new AbortController();
+    const zaman = window.setTimeout(() => denetleyici.abort(), 20_000);
+    try {
+      const yanit = await fetch(uc, { mode: 'cors', redirect: 'follow', cache: 'no-store', signal: denetleyici.signal });
+      if ((yanit.status >= 500 || yanit.status === 429) && deneme === 0) continue;
+      return durumYorumla(yanit.ok, await yanit.json());
+    } catch {
+      if (deneme === 1) return KAPALI;
+    } finally {
+      window.clearTimeout(zaman);
+    }
   }
+  return KAPALI;
 }
 
 function tarihYaz(gun: string): string {

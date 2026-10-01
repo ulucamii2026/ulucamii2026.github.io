@@ -72,6 +72,33 @@ test('Kapalı, eski sürüm ya da erişilemeyen servis: form oluşmaz, kapalı i
   }
 });
 
+test('Geçici sağlık ağı hatası bir kez yeniden denenir; form açılır, POST yapılmaz', async ({ page }) => {
+  let istek = 0;
+  await page.route('**/macros/**', (route) => {
+    expect(route.request().method()).toBe('GET');
+    istek++;
+    return istek === 1 ? route.abort('failed') : route.fulfill({ json: SAGLIK_ACIK });
+  });
+  await page.goto('/envanter/');
+  await expect(page.locator('form[data-form="envanter"]')).toBeVisible();
+  await expect(page.locator('[data-veri-sorumlusu]')).toHaveText(VERI_SORUMLUSU);
+  expect(istek).toBe(2);
+});
+
+test('Geçici sağlık sunucusu hatası bir kez yeniden denenir; gerçek kapalı yanıt açılmaz', async ({ page }) => {
+  let istek = 0;
+  await page.route('**/macros/**', (route) => {
+    expect(route.request().method()).toBe('GET');
+    istek++;
+    return istek === 1 ? route.fulfill({ status: 503, body: 'Geçici hata' })
+      : route.fulfill({ json: { ...SAGLIK_ACIK, envanter: { acik: false, veriSorumlusu: null, kapanis: null } } });
+  });
+  await page.goto('/envanter/');
+  await expect(page.locator('[data-durum-kapali]')).toBeVisible();
+  await expect(page.locator('form[data-form="envanter"]')).toHaveCount(0);
+  expect(istek).toBe(2);
+});
+
 test('Açıkken: asgari geçerli form, iki adlı satır (biri gizli), biri kaldırılır; izin zorunlu; gövde şekli ve taslak', async ({ page }) => {
   const gas = await acikSayfa(page);
   await expect(page.locator('[data-veri-sorumlusu]')).toHaveText(VERI_SORUMLUSU);
