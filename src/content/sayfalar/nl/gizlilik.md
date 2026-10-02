@@ -2,7 +2,7 @@
 baslik: Privacybeleid
 altBaslik: Informatie over de manier waarop persoonsgegevens op deze website worden verwerkt.
 aciklama: AVG-conforme informatie over de verwerking van persoonsgegevens op de website van Ulu Camii Marche-en-Famenne en in het ouderportaal van de koranschool.
-guncelleme: 2026-09-21
+guncelleme: 2026-10-01
 ---
 
 *Bij twijfel gelden de Turkse en de Franse versie.*
@@ -75,6 +75,22 @@ Volwassenen (18 jaar en ouder) kunnen de niveautest op onze website invullen, zo
 - **Concept in uw browser:** voordat u de test verstuurt, worden uw antwoorden alleen als concept in de browser van uw eigen toestel bewaard (hoogstens 14 dagen) en bereiken ze ons niet. U kunt het op elk ogenblik verwijderen met de knop “Concept verwijderen”; bij het versturen van de test wordt het concept automatisch gewist. De toestemmingsvakjes worden nooit in het concept opgeslagen.
 - **Bewaartermijn:** hoogstens **24 maanden**; na het verstrijken van die termijn wordt de registratie automatisch uit het register gewist. Het rapport in de mailbox van de imam wordt op datzelfde ogenblik handmatig verwijderd.
 - **Toestemming intrekken en gegevenswissing:** u kunt uw toestemming op elk ogenblik intrekken. Een bericht aan imam@ulucamii.be volstaat; uw registratie wordt uit het register en uit de mailbox van de imam verwijderd. De samenvatting die u eerder werd toegestuurd, blijft in uw eigen mailbox.
+
+<span id="saha-envanteri"></span>
+
+## Veldinventaris (dienstverlening aan nieuwe moslims)
+
+De Belgische Coördinatie voor Nieuwe Moslims (Belçika Mühtedi Koordinatörlüğü), die deel uitmaakt van het Bureau van de Raadgever voor Sociale Zaken van de Ambassade van Türkiye in Brussel (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği), gebruikt een tijdelijk online inventarisformulier, uitsluitend bedoeld voor imams en religieuze functionarissen van de moskeeën, om de begeleiding van bekeerlingen tot de islam te plannen. Deze site host het formulier alleen; het is enkel open in de periode die aan de religieuze functionarissen wordt aangekondigd.
+
+- **Verzamelde gegevens:** naam, regio, moskee, statuut, telefoonnummer of e-mailadres en gesproken talen van de religieuze functionaris die het formulier invult; **aantallen** over de nieuwe moslims die met de moskee in contact staan (jaar van bekering en geslacht, bekeringsattest, leeftijdsgroep, voorkeurtaal, situatie en noden, vrijwilligers) en over de activiteiten van de moskee; facultatieve kandidaatvoorstellen en opmerkingen. In de facultatieve **melding op naam**: naam, geslacht, geboortejaar (facultatief), telefoonnummer of e-mailadres, voorkeurtaal, jaar van bekering en stand van het bekeringsattest van de persoon; voor iemand die familiale druk kan ondervinden wordt **alleen een code of schuilnaam** bewaard, nooit de naam. Voor iemand die als lid van de commissie wordt voorgesteld: naam, contactgegevens en een korte motivering.
+- **Niet verzamelde gegevens:** adres, identiteitsnummer, foto’s en bestanden; er kunnen geen documenten worden opgeladen.
+- **Doel en rechtsgrond:** de dienstverlening aan bekeerlingen en de werkzaamheden van de geplande Belgische Ondersteuningscommissie voor Nieuwe Moslims plannen. Dat iemand zich tot de islam heeft bekeerd, is een bijzonder persoonsgegeven over religieuze overtuiging: een melding op naam kan alleen met de **uitdrukkelijke toestemming** van die persoon (AVG art. 9, lid 2, a); de religieuze functionaris bevestigt die toestemming voor elke regel afzonderlijk, en regels zonder toestemming worden geweigerd. Bij het eerste contact informeert de coördinator de persoon en gaat hij de toestemming na; wordt die niet bevestigd, dan wordt de registratie gewist.
+- **Wie heeft toegang:** alleen de Belgische coördinator voor nieuwe moslims. Aan de commissie en het Bureau van de Raadgever voor Sociale Zaken worden enkel **totale aantallen** bezorgd; er wordt geen lijst van personen gedeeld of gepubliceerd.
+- **Bewaarplaats:** een niet-openbare spreadsheet in het account van de vereniging op de infrastructuur van Google (Google Ireland Ltd.). Dit formulier verstuurt geen e-mails.
+- **Bewaartermijn:** meldingen op naam worden **uiterlijk 30 dagen** na de sluiting van het formulier uit de online spreadsheet gewist; de gegevens van de religieuze functionarissen en de aantallen worden er **hoogstens 6 maanden** bewaard.
+- **Verwerkingsverantwoordelijke:** wordt met naam vermeld in het informatiegedeelte van het formulier.
+- **Rechten:** de gemelde persoon kan zijn of haar gegevens inzien, laten verbeteren of wissen en de toestemming op elk moment intrekken. Verzoeken gaan naar de verwerkingsverantwoordelijke die in het formulier wordt vermeld of naar de coördinator (WhatsApp-link op het formulier).
+- **Concept in de browser:** vóór het verzenden wordt het formulier alleen op het eigen toestel van de religieuze functionaris als concept bewaard; meldingen op naam, kandidaatgegevens en toestemmingsvakjes worden daarin nooit opgeslagen.
 
 ## Het ledenregister van de vereniging
 

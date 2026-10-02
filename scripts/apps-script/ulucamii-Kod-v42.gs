@@ -1,3 +1,8 @@
+/* v42 — 1 Eki 2026: din görevlileri için «Mühtedi Hizmetleri Envanteri» (tur:'envanter', envanter-isleri.gs + EnvanterVeri paketi).
+   Açık/kapalı YALNIZ Script Property ENVANTER_AYAR ile ({"acik":1,"veriSorumlusu":"…","kapanis":"YYYY-MM-DD","silme":"YYYY-MM-DD"});
+   kapalıyken POST "kapali" ile reddedilir, sağlık yanıtı envanter:{acik,veriSorumlusu,kapanis} taşır. Tablo ilk geçerli POST'ta
+   yaratılır (ENVANTER_TABLO_ID). Gövde sınırı envanter için 64 KiB; hacim sınırı AYAR_BASVURU_SINIRI.envanter; test temizliği
+   ?islem=envanter-test-temizle (panel anahtarı). Bu modül e-posta göndermez. Başka davranış değişmedi. */
 /* v41 — 30 Eyl 2026: silinen ihtida başvurusunun numarası (referansMaxBul) sonraki başvuruya yeniden verilir. Çöpteki aynı adlı
    görsel ve paket iş dosyası artık okunmaz (ihtidaGorselleriOku, ihtidaPaketIsDosyasi); test-temizle bir ihtida satırını silerken
    aynı ref'in görsellerini, iş dosyasını, son paket PDF'ini ve kuyruk özelliğini de kaldırır (ihtidaRefIzleriniCopeAt). Başka davranış değişmedi. */
@@ -89,7 +94,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 41;
+var SURUM = 42;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -102,7 +107,10 @@ var DIN_GOREVLISI_WHATSAPP = KIMLIK.dahili.kayitWhatsappE164.replace(/^\+/, "");
    ("eposta-gunluk-sinir"). Yalnız defterdeki GERÇEK satırlar sayılır; aynı gonderimAnahtari ile yinelenen istek sayılmaz. */
 var AYAR_BASVURU_SINIRI = {
   kayit: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 60, epostaGunlukSinir: 3 },
-  ihtida: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 20, epostaGunlukSinir: 3 }
+  ihtida: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 20, epostaGunlukSinir: 3 },
+  // v42: envanter formunda e-posta sayımı YOK — anahtar bilerek yazılmadı (0 yazılsaydı her gönderim engellenirdi).
+  // Sayım «Görevli» sekmesinden (1. sütun zaman), gönderim başına tek satır.
+  envanter: { pencereDakika: 10, pencereSinir: 30, gunlukSinir: 200 }
 };
 
 /* ===================================================================
@@ -132,6 +140,11 @@ function doGet(e) {
     if (e.parameter.islem === "kayit-duzelt") return kayitDuzeltIsle(e);
     if (e.parameter.islem === "ihtida-gorsel-sil") return ihtidaGorselSilIsle(e);
     if (e.parameter.islem === "seviye-detay") return seviyeDetayIsle(e); // v38: yan etkisiz, defter yaratmaz
+    // v42: yalnız görevli adında TESTOGLU olan envanter satırları; tablo yoksa yaratmaz, yinelenince aynı sonucu verir.
+    if (e.parameter.islem === "envanter-test-temizle") {
+      if (typeof envanterTestTemizleIsle !== "function") return json({ ok: false, hata: "envanter-hazir-degil" });
+      return envanterTestTemizleIsle(e);
+    }
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
   return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
@@ -141,6 +154,8 @@ function doGet(e) {
     ihtidaCamiSecimi: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.camiCoz === "function",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
+    // v42: envanter formu açık mı? Yalnız ENVANTER_AYAR'dan okunur; paket ya da modül yoksa her zaman kapalı.
+    envanter: (typeof envanterSaglik === "function" ? envanterSaglik() : { acik: false, veriSorumlusu: null, kapanis: null }),
     zaman: new Date().toISOString() });
 }
 
@@ -148,6 +163,7 @@ function doGet(e) {
    Diğer görselsiz işlemler 20 KiB'da kalır; ihtida sınırları değişmez. */
 var AZAMI_GOVDE_BAYT = 20 * 1024;
 var AZAMI_KAYIT_GOVDE_BAYT = 4 * 1024 * 1024;
+var AZAMI_ENVANTER_GOVDE_BAYT = 64 * 1024; // v42: yalnız tur:'envanter'
 
 function doPost(e) {
   // 13 Eyl 2026: Kayıt görsellerine sınırlı yer açar; diğer uçların sınırını korur.
@@ -165,9 +181,14 @@ function doPost(e) {
     // Bir UTF-16 birimi en çok 3 bayt tuttuğu için küçük gövdede Blob hiç kurulmaz.
     var govdeBuyuk = govde.length > AZAMI_GOVDE_BAYT || (govde.length * 3 > AZAMI_GOVDE_BAYT && Utilities.newBlob(govde).getBytes().length > AZAMI_GOVDE_BAYT);
     if (govdeBuyuk && ["kayit", "ihtida", "ihtida-paket-onay"].indexOf(v.tur) === -1) {
-      if (v.tur === "mufredat-yukle" && govde.length < 2 * 1024 * 1024) return mufredatYukleIsle(govde);
-      if (v.tur === "cevir" && govde.length < 96 * 1024) return cevirIsle(v); // v34: 20 metin × 1800 karakter
-      return json({ ok: false, hata: "cok-buyuk" });
+      // v42: envanter gövdesi (en çok 40 adlı satır + uzun metinler) 20 KiB'ı aşabilir; 64 KiB UTF-8 baytına kadar geçer.
+      // UTF-8 bayt sayısı UTF-16 birim sayısından hiç küçük olmadığı için uzunluğu sınırı aşan gövdede Blob kurulmaz.
+      var envanterSigar = v.tur === "envanter" && govde.length <= AZAMI_ENVANTER_GOVDE_BAYT && Utilities.newBlob(govde).getBytes().length <= AZAMI_ENVANTER_GOVDE_BAYT;
+      if (!envanterSigar) {
+        if (v.tur === "mufredat-yukle" && govde.length < 2 * 1024 * 1024) return mufredatYukleIsle(govde);
+        if (v.tur === "cevir" && govde.length < 96 * 1024) return cevirIsle(v); // v34: 20 metin × 1800 karakter
+        return json({ ok: false, hata: "cok-buyuk" });
+      }
     }
     if (v.tur === "cevir") return cevirIsle(v);
     if (v.tur === "ceviri-ayar") return ceviriAyarIsle(v); // v35: panel anahtarıyla çeviri ayarları
@@ -184,6 +205,10 @@ function doPost(e) {
       return seviyePostIsle(v);
     }
     if (v.tur === "seviye-sil") return seviyeSilIsle(v);
+    if (v.tur === "envanter") { // v42: modül ya da paket yoksa form kapalı sayılır
+      if (typeof EnvanterVeri === "undefined" || typeof envanterPostIsle !== "function") return json({ ok: false, hata: "kapali" });
+      return envanterPostIsle(v);
+    }
     if (v.tur === "kayit") return kayitPostIsleV2(v);
     return json({ ok: false, hata: "tur-gecersiz" });
   } catch (hata) {

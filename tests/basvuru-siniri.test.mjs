@@ -11,7 +11,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v41.gs']
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v42.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 
 const DAKIKA = 60 * 1000;
@@ -120,12 +120,14 @@ const defterOf = (h, tur) => tur === 'kayit' ? h.kayitDefteri : h.ihtidaDefteri;
 
 test('v40: sürüm, sağlık bayrağı ve sınır sayıları tek yapılandırmada', () => {
   const { c } = backend();
-  assert.equal(c.SURUM, 41);
+  assert.equal(c.SURUM, 42);
   c.ceviriMotoru = () => 'translate';
   assert.equal(c.doGet({}).basvuruSiniri, true);
   assert.deepEqual(JSON.parse(JSON.stringify(c.AYAR_BASVURU_SINIRI)), {
     kayit: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 60, epostaGunlukSinir: 3 },
     ihtida: { pencereDakika: 10, pencereSinir: 10, gunlukSinir: 20, epostaGunlukSinir: 3 },
+    // v42: envanter formu — e-posta sayımı bilerek yok (anahtar yazılmaz; 0 her gönderimi engellerdi).
+    envanter: { pencereDakika: 10, pencereSinir: 30, gunlukSinir: 200 },
   });
 });
 

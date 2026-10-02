@@ -2,7 +2,7 @@
 baslik: Privacy Policy
 altBaslik: Information on how personal data is handled on this website.
 aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the Qur’an school parents’ portal.
-guncelleme: 2026-09-21
+guncelleme: 2026-10-01
 ---
 
 <p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur’an course registration, sending an e-mail).</p>
@@ -73,6 +73,22 @@ Adults (aged 18 and over) can fill in the level assessment on our website so tha
 - **Draft in your browser:** before sending, your answers are kept as a draft only in your own device’s browser (14 days at most) and do not reach us. You can delete it at any time with the “Delete draft” button; it is removed automatically when the test is sent. Consent boxes are never written to the draft.
 - **Retention:** **24 months** at most; when the period ends, the record is deleted from the ledger automatically. The report in the imam’s mailbox is deleted manually at the same point.
 - **Withdrawing consent and deletion:** you can withdraw your consent at any time. Simply write to imam@ulucamii.be; your record is deleted from the ledger and from the imam’s mailbox. The summary already sent to you remains in your own inbox.
+
+<span id="saha-envanteri"></span>
+
+## Field Inventory (services for new Muslims)
+
+The Belgian Coordination for New Muslims (Belçika Mühtedi Koordinatörlüğü), part of the Office of the Counsellor for Social Affairs at the Embassy of Türkiye in Brussels (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği), uses a time-limited online inventory form, intended only for imams and religious officials of the mosques, to plan support for people who have converted to Islam. This site only hosts the form, which is open only during the period announced to religious officials.
+
+- **Data collected:** the name, region, mosque, status, phone or e-mail and spoken languages of the religious official completing the form; **figures** on the new Muslims connected with the mosque (year of conversion and sex, conversion certificate, age group, preferred language, situation and needs, volunteers) and on the mosque’s activities; optional candidate proposals and comments. In the optional **named report**: the person’s name, sex, year of birth (optional), phone or e-mail, preferred language, year of conversion and conversion certificate status; for a person at risk of family pressure, **only a code or pseudonym** is recorded, never the name. For a person proposed as a member of the commission: name, contact details and a short justification.
+- **Data not collected:** address, identity number, photos and files; no documents can be uploaded.
+- **Purpose and legal basis:** planning services for converts and the work of the planned Belgian Support Commission for New Muslims. The fact that someone has converted to Islam is special-category data concerning religious beliefs: a named report is only possible with that person’s **explicit consent** (GDPR Art. 9(2)(a)); the religious official confirms consent separately for each line, and lines without consent are rejected. At first contact the coordinator informs the person and confirms their consent; if it is not confirmed, the record is deleted.
+- **Who can see it:** only the Belgian Coordinator for New Muslims. Only **aggregate figures** are shared with the commission and the Office of the Counsellor for Social Affairs; no list of people is shared or published.
+- **Where it is stored:** a non-public spreadsheet in the association’s account on Google infrastructure (Google Ireland Ltd.). This form sends no e-mails.
+- **Retention:** named reports are deleted from the online spreadsheet **no later than 30 days** after the form closes; the religious officials’ details and the figures are kept there for **no more than 6 months**.
+- **Controller:** named in the information section of the form.
+- **Rights:** the person reported may access their data, ask for it to be corrected or erased and withdraw their consent at any time. Requests go to the controller named in the form or to the coordinator (WhatsApp link on the form).
+- **Draft in the browser:** before sending, the form is saved as a draft only on the religious official’s own device; named reports, candidate details and consent boxes are never saved in it.
 
 ## The Association’s Member Register
 

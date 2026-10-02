@@ -7,6 +7,7 @@
  * kullanır, satır ölçüsü ~80 karakterde kalır; 1024 px altında tek sütun (panel başlığın altına iner).
  */
 import { getCollection, render } from 'astro:content';
+import '../../../styles/vaaz-gorseller.css';
 import Base from '../../../layouts/Base.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
 import VaazDilUyarisi from '../../../components/VaazDilUyarisi.astro';
@@ -34,6 +35,14 @@ const dil = Astro.params.lang as Dil;
 const { entry, ilgili } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+/* Bu vaazın özgün açılış sahnesi, aynı içeriğin bağlantı önizlemesinde de kullanılır. */
+const vaazKapagi = entry.id === 'gurbette-cami' && dil === 'tr' ? {
+  kapak: '/media/vaazlar/gurbette-cami/gonul-yurdu-v2-1600.webp',
+  kapakAlt: 'Gurbette Cami — cami kapısında selâmla karşılanan bir aile; temsili illüstrasyon.',
+  kapakGenislik: 1600,
+  kapakYukseklik: 900,
+  kapakTipi: 'image/webp',
+} : {};
 
 type VaazMetni = {
   etiket: string; geri: string; indir: string; kelime: string; okuma: string;
@@ -69,11 +78,12 @@ const wa = `https://wa.me/?text=${encodeURIComponent(`${d.baslik} — ${kanonik}
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Article', headline: d.baslik, inLanguage: 'tr',
   ...(d.ozet ? { description: d.ozet } : {}), isAccessibleForFree: true,
+  ...(vaazKapagi.kapak ? { image: new URL(vaazKapagi.kapak, Astro.site).href } : {}),
   publisher: { '@type': 'Organization', name: 'Ulu Camii Marche-en-Famenne' },
 };
 const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 ---
-<Base baslik={dil === 'tr' ? d.baslik : m.etiket} aciklama={dil === 'tr' ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={dil !== 'tr'} ogTuru={dil === 'tr' ? 'article' : 'website'} ekJsonLd={dil === 'tr' ? [jsonLd] : []}>
+<Base baslik={dil === 'tr' ? d.baslik : m.etiket} aciklama={dil === 'tr' ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={dil !== 'tr'} ogTuru={dil === 'tr' ? 'article' : 'website'} ekJsonLd={dil === 'tr' ? [jsonLd] : []} {...vaazKapagi}>
   <article class="kapsayici py-8 sm:py-12">
     <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
     {dil !== 'tr' ? <>

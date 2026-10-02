@@ -92,3 +92,7 @@ Dayanak: [OpenAI çalışma önerileri](https://learn.chatgpt.com/guides/best-pr
 ## Kayıt belgeleri
 
 15 Eylül 2026: [Zorunlu veli imzası ve öğrenci kimliği](KAYIT-ZORUNLU-BELGELER.md). Çevrim içi kayıt bu iki belge olmadan tamamlanmaz; kimlik kayıt PDF’sine eklenir. Eski eksik kayıtlara imza üretilmez.
+
+## Saha envanteri
+
+İşletme ve açılış/kapanış: [Saha envanteri formu](ENVANTER-FORMU.md). Sayfa sağlık GET'inin geçici ağ hatası yeniden denemesi, özel cevap tablosu ve kalıcı silme sınırı burada kayıtlıdır.

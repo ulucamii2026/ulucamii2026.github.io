@@ -1,0 +1,45 @@
+---
+/**
+ * Mühtedi Hizmetleri Envanteri — /envanter/ (1 Ekim 2026). Yalnız Türkçe, listelenmemiş sayfa:
+ * noindex (site haritasına girmez, kanonik yok), hreflang yok (tekDil), başlık menüsünde bağlantısı yok.
+ * 01.10.2026 son talimatı: karar beklenmeden örnek ön yüz yayımlanır; gerçek kayıt onay sonrasıdır.
+ * Bu sayfa servis ucu taşımaz, sağlık/gönderim isteği yapmaz; bütün bölümler önizlenebilir.
+ * Sayfada telefon numarası basılmaz (telefonsuz): tek iletişim yolu WhatsApp bağlantısıdır.
+ * Form: src/components/formlar/EnvanterFormu.astro · davranış: src/scripts/envanter-form.ts
+ */
+import Base from '../../layouts/Base.astro';
+import EnvanterFormu from '../../components/formlar/EnvanterFormu.astro';
+import WhatsappBaglanti from '../../components/WhatsappBaglanti.astro';
+import { envanterMetin as m } from '../../i18n/formlar/envanter-tr';
+import { siteAyarlari } from '../../lib/icerik';
+import '../../styles/formlar.css';
+import '../../styles/ihtida-adimlari.css';
+
+const site = await siteAyarlari();
+---
+<Base baslik={m.sayfa.baslik} dil="tr" aciklama={m.sayfa.aciklama} noindex dilHatirla={false} tekDil telefonsuz>
+  <header class="ihtida-basvuru-ust border-b border-(--cizgi) bg-(--zemin-2)">
+    <div class="kapsayici ihtida-basvuru-baslik py-7 sm:py-10" style="max-width: 52rem">
+      <p class="etiket etiket-vurgu">{m.sayfa.etiket}</p>
+      <h1 class="text-3xl sm:text-4xl">{m.sayfa.baslik}</h1>
+      <p class="env-ust-alt">{m.sayfa.altBaslik}</p>
+    </div>
+    <div class="kilim-serit" aria-hidden="true"></div>
+  </header>
+
+  <section class="kapsayici ihtida-basvuru-govde py-7 sm:py-10" style="max-width: 52rem">
+    <div class="ucf-giris" data-form-ust>
+      <aside class="ucf-mesaj" data-tur="bilgi" aria-label="Örnek form bilgilendirmesi" data-ornek-bilgi>
+        <h2 class="text-xl">Örnek form · Önizleme</h2>
+        <p>Karar için sunulan formun bütün bölümleri burada incelenebilir ve kurgusal bilgilerle denenebilir. Bu gösterim, kurumsal onay verilmiş olduğu anlamına gelmez.</p>
+        <p><strong>Gerçek kayıt alınmaz.</strong> Bilgiler sunucuya gönderilmez veya tarayıcıda saklanmaz. Tam çalışan kayıt sistemi, onaydan sonra arka uçla birlikte devreye alınacaktır.</p>
+      </aside>
+      {m.giris.paragraflar.map((p) => <p>{p}</p>)}
+      <ul class="env-noktalar">{m.giris.noktalar.map((n) => <li>{n}</li>)}</ul>
+      <p class="env-iletisim">{m.giris.iletisim} <WhatsappBaglanti site={site} /></p>
+      <p class="yardim">{m.giris.sahip}</p>
+    </div>
+
+    <EnvanterFormu uc="" site={site} onizleme />
+  </section>
+</Base>

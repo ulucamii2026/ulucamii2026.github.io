@@ -2,7 +2,7 @@
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
 aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve Kur’an kursu veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-09-21
+guncelleme: 2026-10-01
 ---
 
 <p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
@@ -73,6 +73,22 @@ Yetişkinler (18 yaş ve üzeri), kendilerine özel eğitim planlanabilmesi içi
 - **Tarayıcınızdaki taslak:** testi göndermeden önce yanıtlarınız yalnız kendi cihazınızın tarayıcısında taslak olarak saklanır (en fazla 14 gün) ve bize ulaşmaz. «Taslağı sil» düğmesiyle dilediğiniz an silebilirsiniz; test gönderilince taslak kendiliğinden silinir. Onay kutuları taslağa yazılmaz.
 - **Saklama süresi:** en fazla **24 ay**; süre dolunca kayıt defterden kendiliğinden silinir. Din görevlisinin e-posta kutusundaki rapor aynı süre sonunda elle silinir.
 - **Rızayı geri alma ve silme:** rızanızı dilediğiniz an geri alabilirsiniz. imam@ulucamii.be adresine yazmanız yeterlidir; kaydınız defterden ve din görevlisinin e-posta kutusundan silinir. Daha önce size gönderilmiş özet e-postası sizin kutunuzda kalır.
+
+<span id="saha-envanteri"></span>
+
+## Saha envanteri (Mühtedi Hizmetleri Envanteri)
+
+Belçika Mühtedi Koordinatörlüğü (T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği bünyesinde), Belçika’daki camilerimizde Müslüman olan (ihtida eden) kardeşlerimize verilecek hizmetleri planlamak için yalnız cami din görevlilerine yönelik, süreli bir çevrim içi envanter formu kullanır. Form yalnız din görevlilerine duyurulan dönemde açıktır; bu site formu yalnız barındırır.
+
+- **Toplanan veriler:** formu dolduran din görevlisinin adı soyadı, bölgesi, camisi, statüsü, telefonu ya da e-postası ve konuştuğu diller; camiyle irtibatı olan mühtedilere ilişkin **sayılar** (ihtida yılı ve cinsiyet, ihtida belgesi durumu, yaş grubu, tercih edilen dil, durum ve ihtiyaçlar, gönüllüler) ve camide yapılan çalışmalar; isteğe bağlı aday önerileri ve görüşler. İsteğe bağlı **adlı bildirimde** mühtedinin adı soyadı, cinsiyeti, doğum yılı (isteğe bağlı), telefonu ya da e-postası, tercih ettiği dil, ihtida yılı ve ihtida belgesi durumu; ailevi baskı riski olan kişi için ad yerine **yalnız bir kod ya da takma ad** tutulur. Komisyon üyeliğine önerilen kişi için ad soyad, iletişim bilgisi ve kısa gerekçe.
+- **Toplanmayan veriler:** adres, kimlik numarası, fotoğraf ve dosya; forma belge yüklenemez.
+- **Amaç ve hukuki dayanak:** mühtedilere verilecek hizmetleri ve kurulması planlanan Belçika Mühtedi Destek Komisyonu’nun çalışmalarını planlamak. Bir kişinin Müslüman olduğu bilgisi dinî inanca ilişkin özel nitelikli veridir: adlı bildirim yalnız o kişinin **açık rızasıyla** yapılır (GDPR md. 9/2-a); din görevlisi izni her satır için ayrıca işaretler, izinsiz satır kabul edilmez. Koordinatör ilk temasta kişiyi bilgilendirir ve iznini teyit eder; izin teyit edilmezse kayıt silinir.
+- **Kim görür:** kayıtları yalnız Belçika Mühtedi Koordinatörü görür. Komisyona ve Müşavirliğe yalnız **toplam sayılar** sunulur; kişi listesi paylaşılmaz, hiçbir yerde yayımlanmaz.
+- **Saklama yeri:** Google (Google Ireland Ltd.) altyapısında, derneğin hesabındaki herkese kapalı bir tablo. Bu formdan e-posta gönderilmez.
+- **Saklama süresi:** adlı bildirimler form kapandıktan sonra **en geç 30 gün** içinde çevrim içi tablodan silinir; görevli bilgileri ve sayılar çevrim içi tabloda **en çok 6 ay** tutulur.
+- **Veri sorumlusu:** formun bilgilendirme bölümünde adıyla belirtilir.
+- **Haklar:** adı yazılan kişi bilgilerine erişme, bunların düzeltilmesini ve silinmesini isteme ve rızasını dilediği an geri alma hakkına sahiptir. Talepler formda belirtilen veri sorumlusuna ya da Koordinatöre (formdaki WhatsApp bağlantısı) iletilir.
+- **Tarayıcıdaki taslak:** form gönderilmeden önce yalnız din görevlisinin kendi cihazında taslak olarak saklanır; adlı bildirimler, aday bilgileri ve onay kutuları taslağa yazılmaz.
 
 ## Dernek Üye Defteri
 

@@ -81,6 +81,8 @@ Resmî teknik kaynaklar: [Apps Script V8 çalışma ortamı](https://developers.
   - `test-temizle` bir ihtida satırını silerken görselleri, iş dosyasını, paket PDF'ini ve kuyruk özelliğini bırakıyordu. Artık `ihtidaRefIzleriniCopeAt` bunları kaldırıyor.
   - Testler: `tests/ihtida-paket-akis.test.mjs` içindeki iki yeni test (eski kodla kırmızı). Canlı ihtida ucuna deneme başvurusu gönderilmedi; davranış yalnız yerel sahte Drive/Sheets testleriyle sınandı.
 - E-posta kopyaları (info@, imam@ ve başvuranın kutusu) bu temizlikle silinmez.
+- 30 Eylül 2026 ≈10:10'da, kullanıcının isteğiyle, 9 Eylül'den kalan iki otomasyon denemesi IH-2026-0004 («TEST OTOMASYON») ve IH-2026-0005 («TEST V27») aynı araçla, v41 üzerinde kaldırıldı: defter 5 → 3 satır, 14 dosya `silindi-deneme-2026-09-30 ` önekiyle çöpe; iç defter değişmedi (IH-2026-0001…0003). Defterde artık «TEST» adlı satır yok. En büyük numara IH-2026-0003 olduğundan **bir sonraki gerçek başvuru `IH-2026-0004` numarasını alır**; v41'in çöpteki aynı ref dosyalarını atlaması bu başvuruda canlı olarak ilk kez sınanır.
+- 1 Ekim 2026'daki salt okunur kontrol: canlı sürüm artık **42** (envanter yayını), ihtida 3 / kayıt 25 / seviye 3; iç defter güncel, IH-2026-0001…0003. IH-2026-0004 için paket yok; numarası yeniden kullanılan ilk gerçek başvurunun belge ve görselleri henüz gözlemlenmedi. Eski v41 paketini canlıya geri yükleme. Envanterin gerçek kayıt kabulü son kararla kapalıdır; `/envanter/` örnek önizlemedir ([işletme notu](ENVANTER-FORMU.md)).
 
 ## Bundan sonraki kullanım
 
