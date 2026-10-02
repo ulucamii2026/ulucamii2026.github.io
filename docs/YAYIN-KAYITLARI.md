@@ -4,6 +4,17 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 2 Ekim 2026 — 3–4 Ekim kurs materyalleri ve öğrenciye özel veli bilgilendirmesi
+
+- Zaman: 2026-10-02T20:17:48.337681+02:00, Europe/Brussels. Kullanıcının açık yayın ve ayrı öğrenci e-postası talimatı.
+- Kapsam: `src/data/ders-materyalleri.json`; iki günün plan, öğrenci/öğretici sunumları, PDF ve yeni hızlı başlangıç rehberleri. Eski oyun yönergeleri, siyer anlatımları ve 8 ses kaydı düzeltildi. Öğrenci/veli verisi Git’e alınmadı.
+- İçerik commit’i `e841a5c4e80fd6d834ced7d796108d56815244fd`; [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37044999440) **success**. Release `ders-2026-10-03` ve `ders-2026-10-04`, 14’er dosya. Yükleme → push → deploy → canlı doğrulama tamamlandı.
+- Canlı [TR](https://ulucamii.be/tr/ders-materyalleri/), [FR](https://ulucamii.be/fr/supports-de-cours/), [EN](https://ulucamii.be/en/lesson-materials/) 200. 28/28 indirme SHA-256 eşit; 24/24 yerel OneDrive eşit.
+- Kalite: `npm run dogrula:codex` bütün kapılar geçti; nihai metadata sonrası ek build/denetim geçti. Materyal denetimleri temiz; 12 PPTX/276 slayt COM taşma 0, 8 oyun tetikleri doğru, 138 ses hash’i eşit; PDF görsel inceleme yapıldı.
+- İletişim: 21 öğrenci için 21 ayrı mesaj (13 TR/8 FR); 21/21 kurum Bcc kopyası teyitli. Bu, alıcının okuma teyidi değildir.
+- Kaynak rapor: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-02-HAFTASONU.md`; teknik kanıtlar `D:/ulu-camii-kuran-kursu/scratchpad/haftasonu-2026-10-03-04/`. Kurs yayın indeksi ve DEVAM aynı oturumda güncellendi.
+- Sınırlar: fiziksel projeksiyon/hoparlör ve gerçek fare tıklaması denenmedi; COM zamanlama/yerleşim doğrulandı. Videolarda otomatik içerik incelemesi kullanıldı. OneDrive bulut eşitlemesi doğrulanmadı. Bu kayıt commit’i ayrı belge commit’idir; asıl içerik yayını yukarıdaki SHA/run’dır.
+
 ## 30 Eylül 2026 (2) — iki otomasyon deneme ihtida başvurusunun canlıdan silinmesi (IH-2026-0004, IH-2026-0005)
 
 - Zaman: 30 Eylül 2026 ≈10:07–10:13 (Europe/Brussels). Durum: **canlı veri temizliği tamamlandı ve doğrulandı**; site/GAS kodu yayını yok, `/exec` dağıtımı değişmedi (sürüm 41). Dayanak: kullanıcının «admin panelinde hâlâ iki test kaydı gözüküyor… yok et, test kaydı kalmasın» talimatı.
