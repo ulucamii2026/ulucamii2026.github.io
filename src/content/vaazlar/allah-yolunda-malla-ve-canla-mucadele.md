@@ -1,159 +1,457 @@
 ---
-baslik: "Allah Yolunda Malla ve Canla Mücadele"
-ozet: "İnsanların dünyada güven, huzur ve barış içinde yaşayabilmeleri için üç rehbere ihtiyaçları vardır: Akıl, ilâhî vahiy ve peygamber."
+baslik: "Allah Yolunda Gayret: Malımızla, Vaktimizle, Bütün Varlığımızla"
+ozet: "İmanımızı gündelik hayata taşıyan gayret: nefsimizi terbiye etmek, ilim öğrenmek, malımızı ve vaktimizi hayra ayırmak. Sahih örneklerle sabrı, hizmeti ve bir haftalık yedi somut adımı konuşuyoruz."
 kategori: toplum
-kelime: 2303
+kelime: 3758
 docx: "/vaazlar/allah-yolunda-malla-ve-canla-mucadele.docx"
 pdf: "/vaazlar/allah-yolunda-malla-ve-canla-mucadele.pdf"
+kapak: "/media/vaazlar/allah-yolunda-malla-ve-canla-mucadele/kapak-og.webp"
+kapakAlt: "Pencere ışığında bir masanın üzerinde kapalı kitap, sade saat ve kumaş yardım çantası."
 ---
-İnsanların dünyada güven, huzur ve barış içinde yaşayabilmeleri için üç rehbere ihtiyaçları vardır: Akıl, ilâhî vahiy ve peygamber.
 
-Yüce Allah, peygamberleri ve kutsal kitapları insanlara rehber olsun diye göndermiştir. Bu rehberden faydalanabilmek için aklın kullanılması, ilâhî vahyin ve peygamberin doğru anlaşılması gerekir.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/allah-yolunda-malla-ve-canla-mucadele/kapak.svg" width="1600" height="900" alt="Pencere ışığında bir masanın üzerinde kapalı kitap, sade saat ve kumaş yardım çantası." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Hayra ayrılan imkânlar</strong> Bir günün içindeki bilgi, kazanç ve zaman hayra dönüşebilir.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Akıl; doğru işlerde ve hakka uygun olarak kullanılmadığı; ilâhî vahiy ve peygamber doğru anlaşılmadığı zaman amaca ve hedefe ulaşılamaz; güven, huzur ve barış ortamı sağlanamaz.
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#iman-ve-gayret">İman ve gayret</a></li>
+<li><a href="#nefisle-mucadele">Nefisle mücadele</a></li>
+<li><a href="#ilimle-gayret">İlimle gayret</a></li>
+<li><a href="#sevilenden-paylasmak">Sevilenden paylaşmak</a></li>
+<li><a href="#infakin-inceligi">İnfakın inceliği</a></li>
+<li><a href="#vakit-ve-hizmet">Vakit ve hizmet</a></li>
+<li><a href="#sabir-ve-sebat">Sabır ve sebat</a></li>
+<li><a href="#gayrette-denge">Gayrette denge</a></li>
+<li><a href="#imkanimiz-kadar-katki">İmkânımız kadar katkı</a></li>
+<li><a href="#niyet-ve-yontem">Doğru niyet ve yöntem</a></li>
+<li><a href="#yedi-soz">Bir haftalık yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Bugünden Allah’a ayırdığımız pay</h2>
 
-<p lang="ar" dir="rtl" class="ayet">كِتَاب ٌ اَنْزَلْنَاهُ مُبَارَكٌ فَاتَّبِعُوهُ وَاتَّقُوا لَعَلَّكُمْ تُرْحَمُون َ وَهٰذَا</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-*"Bu (Kur'an) da bizim indirdiğimiz mübarek bir kitaptır. Ona uyun ve günahtan korunun ki size merhamet edilsin."* (En’am, 6/155) ayetinde beyan edildiği gibi, rahmet olsun diye gönderilen Kitap ve Peygamber'in, doğru anlaşılması gerekir nitekim Yüce Allah da Kur'an'ın anlaşılmasını istemektedir:
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-<p lang="ar" dir="rtl" class="ayet">اُنْظُرْ كَيْف َ نُصَرِّف ُ الآيات لَعَلَّهُمْ يَفْقَهُون</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-"Bak, anlasınlar diye ayetlerimizi nasıl açıklıyoruz!" (En’am, 6/65) mealindeki ayet ve benzeri birçok ayet bu gerçeği dile getirmektedir. Yüce Allah kâfir, müşrik ve münafıkları gerçekleri anlamadıkları için yermektedir. Bu itibarla dinimizi, onun ana kaynakları olan Kur'an ve Sünneti, dinî konu ve kavramları çok iyi anlamamız ve öğrenmemiz gerekmektedir.
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-Kur’an-ı Kerim’de,
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَّبِّ زِدْنِى عِلْمًا</p>
 
-<p lang="ar" dir="rtl" class="ayet">… وَجَاهِدُوا بِاَمْوَالِكُمْ وَاَنْفُسِكُمْ فٖي سَبٖيلِ اللّٰهِؕ…</p>
+*Rabbim! İlmimi artır.* (Tâhâ, 20/114; âyetten bölüm)
 
-“*Allah yolunda canınız ve malınız ile cihad edin*” (Tevbe, 9/41) buyrulmaktadır. Tıpkı namaz kılmak, oruç tutmak nasıl bizlere farz kılınmış ise, yeri geldiğinde can ile yeri geldiğinde de mal ile mücadele/mücahede etmek de bizlere farzdır.
+**Aziz cemaat! Kıymetli kardeşlerim!**
 
-Yeryüzünde şirki ve zulmü ortadan kaldırarak tevhid ve adaleti hâkim kılmak amacıyla gönderilen dinimiz, Müslümanları bu yüce gayenin gerçekleşmesi için görevlendirmiştir. Ayet-i kerimelerde de görüldüğü üzere, bu görevin yerine getirilmesi son derece önemlidir. Ancak tarihin çeşitli dönemlerinde ve günümüzde, bu gibi ayetlerin farklı yorumlanması ve yanlış anlaşılması neticesinde istenmeyen sonuçlar ortaya çıkmıştır. Ana gayesi, yeryüzünde terörü sona erdirip huzuru tesis etmek ve barışı getirmek olan İslam dini, ne yazık ki terör ile özdeşleştirilmeye çalışılmaktadır. Bu durumun sadece yanlış anlamalardan mı kaynaklandığı yoksa İslam’ı insanlara yanlış tanıtmak amacıyla planlı bir şekilde mi yapıldığı sorusu ise cevabını açıkça bulmaktadır.
+Akşam eve dönünce anahtarlarımızı masaya bırakırız. Gün boyunca açtığımız kapıları geride bırakırız. Fakat bir soru bizimle içeri girer: Bugün Rabbimizin hoşnutluğu için neye emek verdik? Belki yorgun birini dinledik. Belki nefsimize ağır gelen bir özrü diledik. Belki kazancımızdan küçük bir pay ayırdık. Allah’ın rızasını aramak, böyle somut tercihlerle hayatımıza yerleşir.
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّ الَّذٖينَ كَفَرُوا يُنْفِقُونَ اَمْوَالَهُمْ لِيَصُدُّوا عَنْ سَبٖيلِ اللّٰهِؕ فَسَيُنْفِقُونَهَا ثُمَّ تَكُونُ عَلَيْهِمْ حَسْرَةً ثُمَّ يُغْلَبُونَؕ وَالَّذٖينَ كَفَرُٓوا اِلٰى جَهَنَّمَ يُحْشَرُونَۙ</p>
+İçimizde çalışıp evine yetişenler, iş arayanlar, dersinin başına oturan gençler var. Bir yakınının bakımını üstlenenler, hastalıkla yaşayanlar, ibadet hayatına yeniden başlamak isteyenler var. Her birimizin elindeki imkân farklı. Bugün kendi imkânımızı tanıyıp onunla hayra yönelmenin yollarını konuşacağız.
 
-*“Hak dine inanmayanlar servetlerini, insanları Allah’ın yolundan engellemek için harcarlar, yine harcayacaklar, sonra bu onlara yürek acısı olacak, daha sonra da yenilecekler. İnkâra sapanlar sonunda cehenneme sevk edilecekler.”* (Enfal, 8/36)
+**Allah yolunda gayret, imanımızı malımızla, vaktimizle ve ahlâkımızla hayata taşımaktır.**
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ يَصُدُّونَ عَنْ سَبٖيلِ اللّٰهِ وَيَبْغُونَهَا عِوَجاًۚ وَهُمْ بِالْاٰخِرَةِ كَافِرُونَؕ</p>
+---
 
-*“Onlar (Zalimler), Allah yolundan alıkoyan ve onu eğip bükmek isteyenlerdir; onlar ahireti de inkâr edenlerdir.”* (A’raf 7/45)
+<h2 class="vaaz-bolum-baslik" id="iman-ve-gayret" tabindex="-1">I. İmanın hayatta görünen sadakati</h2>
 
-Bu ayetlerde geçen cihad/mücadele ifadeleri hangi anlamlarda kullanılmıştır, bunlara hep birlikte göz atalım;
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّمَا ٱلْمُؤْمِنُونَ ٱلَّذِينَ ءَامَنُوا۟ بِٱللَّهِ وَرَسُولِهِۦ ثُمَّ لَمْ يَرْتَابُوا۟ وَجَـٰهَدُوا۟ بِأَمْوَٰلِهِمْ وَأَنفُسِهِمْ فِى سَبِيلِ ٱللَّهِ ۚ أُو۟لَـٰٓئِكَ هُمُ ٱلصَّـٰدِقُونَ ۝١٥</p>
 
-Sözlükte; gayret etmek, bir işi yapabilmek için bütün imkânları kullanmak anlamına gelen "cihad" kavramı; Kur'an ve hadislerde ise, saldırı olduğunda Allah yolunda İslâm düşmanlarıyla savaşmak anlamını ifade ettiği gibi, dini öğrenmeyi, dinin emir ve yasaklarına uymayı, haram ve günahlara karşı nefis ile mücadele etmeyi, İslâm'ın bilinmesi, tanınması, yaşanması ve yücelmesi için çalışmayı da ifade eder. Dolayısıyla cihad kavramının geniş bir anlamı vardır. Ancak bu kavram, zihinlerde daha çok savaş (kıtal) kavramı ile özdeş hâle gelmiştir. Bu nedenle olmalı ki gerek İslâm dünyasında gerek batıda "cihad" kavramı genellikle savaş ve saldırı söz konusu edildiğinde gündeme gelmektedir. Daha ötesi batıda "İslâm", terör ile birlikte düşünülmektedir. Maalesef bazı ülkelerde bir kısım insanlar cihad adı altında terör yapabilmektedirler. Halbuki "cihad" kavramının terör ile asla ilgisi yoktur. Hatta cihad deyince ilk akla gelecek kavram, "İslâm'ı tebliğ ve toplumda kötülüklerle mücadele etme" olması gerekir.
+*Müminler ancak Allah’a ve resulüne iman eden, sonra şüpheye düşmeyen, Allah yolunda mallarıyla ve canlarıyla gayret gösteren kimselerdir. İşte doğru olanlar onlardır.* (Hucurât, 49/15)
 
-"Cihad" kavramı; Mekke döneminde İslâm'ın bilinmesi, tanınması, yücelmesi ve yaşanması için gösterilen çabayı ifade etmek için kullanılmıştır.
+Hucurât sûresinin bu bölümünde, iman iddiasıyla kalbe yerleşmiş bağlılık arasındaki ilişki anlatılır. Rabbimiz sözü, sadakatle buluşturur. İnandığımız hakikatin, tercihimize yön vermesini ister. Kur’an Yolu’nun açıkladığı üzere bu âyetleri okurken başkasının kalbi hakkında hüküm vermeye kalkışamayız. Onları kendi sorumluluğumuzu hatırlayarak dinleriz.
 
-<p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا النَّبِيُّ جَاهِدِ الْكُفَّارَ وَالْمُنَافِقٖينَ وَاغْلُظْ عَلَيْهِمْؕ وَمَأْوٰيهُمْ جَهَنَّمُؕ وَبِئْسَ الْمَصٖيرُ</p>
+Cihad kelimesi, gücünü ve imkânını ortaya koyarak çabalamayı anlatır. İslâmî kaynaklarda dinini öğrenme, yaşama, öğretme ve nefisle mücadele etme anlamlarını da taşır. Bu geniş çerçeveyi TDV İslâm Ansiklopedisi’nin Cihad maddesi açıklar. Bugün bizim üzerinde durduğumuz, Allah’a kulluğumuzu barış içinde, bilgiyle ve faydalı emekle yaşamaktır.
 
-"Ey peygamber! İnkârcılara ve münafıklara karşı cihad et, onlara sert davran; onların varacağı yer cehennemdir ve bu ne kötü bir sondur!" (Tevbe, 9/73) mealindeki ayette, Peygamberimiz'e (s.a.v) emredilen kâfir ve münafıklarla cihad, "kıtal" anlamında cihad değildir.
+Malla gayret, sahip olduğumuz nimetten hayra pay ayırmaktır. Canla gayretin gündelik hayatımızdaki karşılığını ise bedenimizle, dikkatimizle ve ömrümüzle sorumluluk üstlenerek arayabiliriz. Bir öğrencinin masasında açık duran kitap, yardım için ayrılan bir zarf, bir hastanın yanında geçirilen vakit bu soruyu bize yaklaştırır: Benim imkânım nerede iyiliğe dönüşüyor?
 
-Çünkü münafıklarla ve inkarcılarla fiili bir savaş yapılmamıştır. Dolayısıyla ayetteki cihad kavramı; münafıklarla hak uğrunda dil ile mücadele etmek, İslâm gerçeği ile ilgili delilleri anlatmak, inkarcı ve münafıkların fitne ve fesatlarına engel olmak anlamındadır.
+Allah yolunda oluşumuz, yaptığımız işin maksadını da yöntemini de ilgilendirir. Niyetimizi O’nun rızasına yöneltir, emeğimizi helâl ve faydalı işlere veririz. Bir insanın güvenini kazanırken doğruluktan ayrılmayız. Kendi inancımıza bağlılıkla birlikte, çevremizdeki insanların canına ve onuruna hürmet ederiz. Böylece iman, günlük hayatımızın içinde görünür olur.
 
-Mekke'de ve henüz fiili savaşa izin verilmeyen bir dönemde inen
+Bugün ayıracağımız bir saati, bu ölçüyle yeniden değerlendirelim. O saat bir çocuğun öğrenmesine, bir işin hakkıyla tamamlanmasına yahut kendi ibadetimizi düzeltmeye ayrılsın. Sadakat, bize emanet edilen imkânı yerinde kullanınca kök salar.
 
-<p lang="ar" dir="rtl" class="ayet">ثُمَّ اِنَّ رَبَّكَ لِلَّذٖينَ هَاجَرُوا مِنْ بَعْدِ مَا فُتِنُوا ثُمَّ جَاهَدُوا وَصَبَرُٓواۙ اِنَّ رَبَّكَ مِنْ بَعْدِهَا لَغَفُورٌ رَحٖيمٌ</p>
+Hesap gününe inanan kalp, bugünkü tercihine de özen gösterir. Kazancımızı ve ömrümüzü nasıl kullandığımızı Rabbimize arz edeceğimizi hatırlamak, bize emanet bilinci kazandırır.
 
-"Öte yandan, bilesin ki Rabbin, eziyetlerle sınandıktan sonra yurtlarından göçenlerin, ardından çabalarını sürdürüp sabır gösterenlerin yardımcısıdır; artık bu yapılanlardan sonra Rabbin elbette çok bağışlayıcı, çok merhametlidir." (Nahl, 16/110) mealindeki ayette geçen cihad kavramı ile Furkan suresinin,
+**İmanımıza sadakat, elimizdeki imkânı Allah’ın razı olacağı işe vermekle görünür.**
 
-<p lang="ar" dir="rtl" class="ayet">فَلَا تُطِعِ الْكَافِرٖينَ وَجَاهِدْهُمْ بِهٖ جِهَاداً كَبٖيراً</p>
+---
 
-"Öyleyse artık inkârcılara boyun eğme, bu Kur’an’la onlara karşı bütün gücünle mücadeleni sür." (Furkan, 25/52) anlamındaki ayette geçen "kâfirlere karşı büyük cihad", fiilen savaşmayı değil, onlara karşı Kur'ânî delillerle mücadele etmeyi ifade eder.
+<h2 class="vaaz-bolum-baslik" id="nefisle-mucadele" tabindex="-1">II. İlk emek: Kendi nefsimizi terbiye etmek</h2>
 
-Müfessir Kâdî Beydâvî'nin (ö, 691/1292) dediği gibi, gerçeği göremeyen ve aklını bu yönde kullanamayan kimselere karşı deliller ortaya koyarak mücadele etmek, düşmanlara karşı fiilen savaşmaktan daha büyüktür. (Beydâvî, IV/450.)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَن جَـٰهَدَ فَإِنَّمَا يُجَـٰهِدُ لِنَفْسِهِۦٓ ۚ إِنَّ ٱللَّهَ لَغَنِىٌّ عَنِ ٱلْعَـٰلَمِينَ ۝٦</p>
 
-Bu ayetler, cihadın İslâm’ın doğuşundan beri var olduğunun ve doğrudan savaş anlamına gelmediğinin delilidir. “Cihad” kavramı Kur’an’da akıllara ilk gelen mana olan “savaş” anlamında da kullanılmıştır.
+*Her kim elinden gelen çabayı gösterirse kendi iyiliği için çabalamış olur. Şüphesiz Allah’ın hiçbir kimsenin hiçbir şeyine ihtiyacı yoktur.* (Ankebût, 29/6)
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ اٰمَنُوا وَهَاجَرُوا وَجَاهَدُوا فٖي سَبٖيلِ اللّٰهِ بِاَمْوَالِهِمْ وَاَنْفُسِهِمْۙ اَعْظَمُ دَرَجَةً عِنْدَ اللّٰهِؕ وَاُو۬لٰٓئِكَ هُمُ الْفَٓائِزُونَ</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">الْمُجَاهِدُ مَنْ جَاهَدَ نَفْسَهُ</p>
 
-“İnanan, hicret eden, Allah yolunda mallarıyla ve canlarıyla cihad edenlerin Allah katındaki mertebeleri pek büyüktür. Muradına erecek olanlar da onlardır.” (Tevbe, 9/20.) mealindeki ayette sözü edilen cihad, fiili savaş anlamındadır.
+*Mücahid, nefsiyle mücadele edendir.* (Tirmizî, 1621; rivayetten bölüm; Tirmizî: hasen sahih)
 
-Bu anlamda mesela Peygamberimiz ve ashabı, Bedir ve Uhud’da müşriklerin saldırılarına karşı cihad etmiş ve vatanlarını korumuşlardır. Milletimiz Çanakkale ve Kurtuluş savaşlarında yurdumuza saldıran düşmanlara karşı büyük bir cihad etmiş ve vatanımızı düşman istilasından kurtarmıştır.
+Ankebût sûresi, çabamızın iyiliğinin bize döndüğünü bildirir. Efendimiz (s.a.s.) ise nefsimizle mücadelemizi açıkça adlandırır. Nefis terbiyesi, Allah’a itaatimizi zorlaştıran alışkanlıklarımız üzerinde çalışmaktır. Elimiz telefona uzandığında, dilimiz kırıcı bir söze hazırlandığında, kolay bir kazanç bizi dürüstlükten uzaklaştırdığında bu emek başlar.
 
-Rabbimiz başka bir ayetinde, bu ulvî vazifeye talip olan Müslümanın erişeceği mükafatı ve katındaki değeri ifade ederken şöyle buyurmuştur;
+Kendimize soralım: En çabuk nerede savruluyoruz? Övülme isteğinde mi, öfkede mi, ertelemede mi? Yalnız kaldığımızda da doğruyu seçebilmek için önce zayıf yerimizi tanımamız gerekir. Yunus Emre’nin şu iki mısraı, bilgiyi kendimize çevirmemizi hatırlatır:
 
-<p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا هَلْ اَدُلُّكُمْ عَلٰى تِجَارَةٍ تُنْجٖيكُمْ مِنْ عَذَابٍ اَلٖيمٍ</p>
+<blockquote class="vaaz-siir">
+<p>İlim ilim bilmektir<br>
+İlim kendin bilmektir</p>
+<footer>— Yunus Emre; TDV İslâm Ansiklopedisi, Ma‘rifet-i Nefs maddesinde aktarılan mısralar.</footer>
+</blockquote>
 
-<p lang="ar" dir="rtl" class="ayet">تُـؤْمِنُونَ بِاللّٰهِ وَرَسُولِهٖ وَتُجَاهِدُونَ فٖي سَبٖيلِ اللّٰهِ بِاَمْوَالِكُمْ وَاَنْفُسِكُمْ ذٰلِكُمْ خَيْرٌ لَكُمْ اِنْ كُنْتُمْ تَعْلَمُونَ</p>
+Akşam mutfakta kısa bir tartışma çıktığında, haklılığımızı anlatmadan önce sesimizi alçaltabiliriz. Hata yaptığımızı fark edince özrümüzü geciktirmeyebiliriz. Namazı erteleyen ekran alışkanlığımıza bir sınır koyabiliriz. Her bir tercih, nefsimize iyiliği yeniden öğretir. Bir yanlışın tekrarlanması hâlinde tövbemizi tazeler, o yanlışa götüren ortamı değiştiririz.
 
-<p lang="ar" dir="rtl" class="ayet">يَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَيُدْخِلْكُمْ جَنَّاتٍ تَجْرٖي مِنْ تَحْتِهَا الْاَنْهَارُ وَمَسَا كِنَ طَيِّبَةً فٖي جَنَّاتِ عَدْنٍ ذٰلِكَ الْفَوْزُ الْعَظٖيمُ</p>
+Kendi kusurumuzu görmek ağır gelebilir. Fakat onu düzeltme fırsatı da burada doğar. Bu hafta yalnız bir alışkanlığımızı seçelim; hangi anda zorlandığımızı ve hangi tedbirin yardımcı olduğunu akşam kendimize soralım.
 
-*“Ey iman edenler! Sizi, elem verici azaptan kurtaracak bir ticareti size göstereyim mi? Allah’a ve resulüne iman edersiniz, Allah yolunda mallarınızla ve canlarınızla cihad edersiniz. Bilirseniz bu sizin için daha hayırlıdır. O sizin günahlarınızı bağışlar, sizi altından ırmaklar akan cennetlere, adn cennetleri içindeki güzel köşklere koyar. İşte büyük kurtuluş budur.”* (Saf, 61/10-12.)
+**Nefsimizi tanımak, doğruyu seçmek için vereceğimiz emeğin başlangıcıdır.**
 
-Bu ayeti kerimelerde geçen “Allah yolunda mal ve can ile mücadele” Allah’ın sevgisine mazhar olan, kurtuluşa eren, özünde, sözünde ve davranışlarında dürüst olan sadık müminlerin niteliği olarak zikredilmiştir. Allah’ın övdüğü bu kimseler; sadece Allah yolunda fiilen savaşanlar değil, İslâm’ın bilinmesi, tanınması, yücelmesi ve hükümlerinin yaşanması için çaba gösteren her Müslümanı ifade eder. Kur’an’da Allah yolunda malları ve canlarıyla mücadele edenler övülmekte, onlara Allah’ın rahmeti, mağfireti, mükâfatı ve cenneti vaat edilmektedir. İmanları uğrunda hicret edenler ve bunlara yardım edenler, gerçek müminler olarak nitelendirilmektedir.
+---
 
-Zikredilen ayet-i kerimelerde de görüldüğü üzere, Rabbimiz mücadele emrini verirken önce malı, ardından canı zikretmiştir. Bu iki değer arasında bir hiyerarşi olduğunu söylemek isabetli olmayabilir. Ulema, burada malın önce, canın sonra zikredilmesi hakkında şu yorumu yapmıştır: Malından vazgeçemeyen, gerektiğinde onu feda edemeyen bir kimse, canından hiç vazgeçemez. Allahu âlem, bu sebepten dolayı ayetlerde önce mal, sonra can zikredilmiştir. Elbette her şeyin en doğrusunu Rabbimiz bilir.
+<h2 class="vaaz-bolum-baslik" id="ilimle-gayret" tabindex="-1">III. Kur’an’la gayret: Öğrenmek ve yaşamak</h2>
 
-İslam’ın hayat veren ilkelerini yeryüzünde yaymak, haksızlıkların sona ermesini sağlamak için yapılan cihâd, kimi zaman kalemle kimi zaman da kelâmla olur. Mümin, an gelir eliyle, gün olur malıyla, Allah'ın adını veya İslâm dininin tevhid akîdesini şanına uygun bir biçimde yüceltip yaymak için çalışır, çabalar. Doğruyu anlatmak, iyiye davet etmek, güzelliklere vesile olmak için gecesini gündüzüne katar. İnancı, varlığı, vatanı, bekası ve hürriyeti için silahlı mücadeleye girmesi ise, cihâdın en üst seviyesidir. Daha dün doğusuyla batısıyla, kuzeyiyle güneyiyle bu aziz vatanı korumak uğruna verdiğimiz mücadele, cihadın en canlı şahididir. Allah’ın yardımıyla muzaffer çıktığımız Çanakkale, varoluş destanının, iman, cesaret ve azmin adıdır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَلَا تُطِعِ ٱلْكَـٰفِرِينَ وَجَـٰهِدْهُم بِهِۦ جِهَادًا كَبِيرًا ۝٥٢</p>
 
-Yukarıda zikredilen ayet ve hadisleri birlikte değerlendirdiğimizde; cihadın üç kısma ayrıldığı görülmektedir.
+*Öyleyse inkârcılara boyun eğme; bu Kur’an’la onlara karşı bütün gücünle mücadeleni sürdür.* (Furkān, 25/52)
 
-İlk olarak sözle yapılan cihad kısmını ele alalım. Yukarıda belirttiğimiz Furkan Suresi’nin 52. ayeti bu cihad türünün kanıtı olarak gösterilebilir.
+**Sevgili gençler! Öğrenmeye yeniden başlayan kıymetli kardeşlerim!**
 
-<p lang="ar" dir="rtl" class="ayet">“فَلَا تُطِعِ الْكَافِرٖينَ وَجَاهِدْهُمْ بِهٖ جِهَاداً كَبٖيراً”</p>
+Mekke dönemine ait bu âyette Peygamberimize Kur’an ile mücadele etmesi emredilir. Burada hakikati açıklama ve vahyin rehberliğinde sebat etme vardır. Bu delil, gayretin bilgiyle ve sözle gerçekleşen yönünü önümüze açar. Biz de Kur’an’ın çağrısını öğrenerek, anladığımızı yaşayarak ve doğru biçimde anlatarak bu yolda emek veririz.
 
-"Öyleyse artık inkârcılara boyun eğme, bu Kur’an’la onlara karşı bütün gücünle mücadeleni sür." (Furkan, 25/52.) ayetinde geçen *“Kur’an ile mücadeleni sür”* hükmü sözle yapılan cihadın kanıtıdır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
 
-Aynı şekilde;
+*Sizin en hayırlınız, Kur’an’ı öğrenen ve öğretendir.* (Buhârî, 5027; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">“جاهِدُوا المُشرِكينَ بِأَموالِكُمْ وأَنْفُسِكُم وأَلسِنَتِكُم”</p>
+Masanın üzerinde açık duran mushaf, hayatımızda ayrılmış bir vakit bekler. Okuyuşumuzu ehil bir öğreticiyle düzeltelim. Okuduğumuz âyetin mealine ve açıklamasına bakalım. Ardından kendimize soralım: Bu bilgi bugün hangi davranışımı değiştirecek? Meselâ infakı öğrendiğimiz gün, paylaşmayı ertelediğimiz bir ihtiyaca dönelim.
 
-*“Müşriklere karşı ellerinizle, dillerinizle ve mallarınızla cihad ediniz!”* (Nesâî, “Cihâd”, 48) hadisi de bu cihad türüne kanıt niteliğindedir. Kur’an’ı ve Kur’an’da geçen hükümleri ögrenmek, öğretmek, İslam dininin yayılması ve büyümesi için İslam’ı herkese anlatmak sözle yapılan cihad çeşidine örnektir.
+Yeni Müslüman olmuş bir kardeşimizin sorusu, ilk defa duyduğumuz bir ayrıntıya dikkat çekebilir. Onu sabırla dinleyelim. Bilmediğimiz yerde birlikte güvenilir kaynağa başvuralım. Bir hocaya sormak için soruyu yazmak da öğrenmenin parçasıdır. Dürüstçe söylenen “Bunu araştırayım” cümlesi, ilme duyduğumuz saygıyı gösterir.
 
-İkinci cihad çeşidi ise kişinin kendi nefsine karşı yaptığı mücadeledir. Ankebut Suresi’nin 6. ayetinde,
+Bir dinî sözü paylaşmadan önce âyet mi, hadis mi, yorum mu olduğunu ayırt edelim. Ekrandaki birkaç satırın kaynağını açmak emek ister. O emeği verdiğimizde hem kendimizi hem bizi dinleyenleri gözetmiş oluruz. Haftada bir öğrenme saati belirleyelim; mümkünse öğrendiğimiz bir hususu ailemizle konuşalım. Bilgiye ayrılan vakit, güzel davranışa kapı açsın.
 
-<p lang="ar" dir="rtl" class="ayet">“وَمَنْ جَاهَدَ فَاِنَّمَا يُجَاهِدُ لِنَفْسِهٖؕ اِنَّ اللّٰهَ لَغَنِيٌّ عَنِ الْعَالَمٖينَ”</p>
+Genç kardeşim! Bir meseleyi anlamakta zorlanıyorsan sorunu sakince sorabilirsin. Duyduğun iki açıklama sana farklı geliyorsa, hangi delile dayandıklarını öğrenmeye çalış. Birlikte okuyacağın ehil bir öğretici bulmak, bu arayışını kolaylaştırır. Büyükler olarak bizim de çocuğumuzun sorusuna zaman ayırmamız gerekir. Soruyu dinlerken yüzümüz kitaptan kalksın; gözümüz karşımızdaki insana dönsün. O anda gösterdiğimiz dikkat, öğrenmenin güven içinde sürmesine yardım eder. Çocuğumuz, ilme verilen emeği sesimizin sabrında da görsün.
 
-“Her kim elinden gelen çabayı gösterirse yalnız kendi iyiliği için çabalamış̧ olur; çünkü Allah’ın, hiç̧ kimsenin hiçbir şeyine ihtiyacı yoktur” (Ankebut, 29/6) buyrulur. Bu ayet, nefisle mücadele etmenin ya da başka bir deyişle nefisle cihad etmenin kanıtıdır.
+**Kur’an’a ayırdığımız emek, okuyuşumuzla birlikte davranışımızı da güzelleştirsin.**
 
-Yine aynı şekilde;
+---
 
-<p lang="ar" dir="rtl" class="ayet">“المُجَاهِدُ مَنْ جَاهَدَ نَفْسَهُ”</p>
+<h2 class="vaaz-bolum-baslik" id="sevilenden-paylasmak" tabindex="-1">IV. Sevdiğimiz maldan açılan iyilik kapısı</h2>
 
-*“Mucahid nefsiyle cihad edendir.”* (Tirmizî, “Fedâ’ilu’l-cihâd”, 2) hadisi de bu cihad türünün kanıtıdır. Nefisle mücadele etmek; iman edip salih ameller işlemek ve kötü işlere götüren fiil, söz ve davranışlardan uzak durmak olarak tanımlanabilir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">لَن تَنَالُوا۟ ٱلْبِرَّ حَتَّىٰ تُنفِقُوا۟ مِمَّا تُحِبُّونَ ۚ وَمَا تُنفِقُوا۟ مِن شَىْءٍ فَإِنَّ ٱللَّهَ بِهِۦ عَلِيمٌ ۝٩٢</p>
 
-c) Üçüncü cihad çeşidi ise; mal ve can ile Allah yolunda yapılan cihaddır. Tevbe suresinin 41. ayetinde bu husus şöyle ifade edilmiştir;
+*Allah yolunda sevdiğiniz şeylerden harcamadıkça iyiliğe asla eremezsiniz. Ne harcarsanız Allah onu hakkıyla bilir.* (Âl-i İmrân, 3/92)
 
-<p lang="ar" dir="rtl" class="ayet">“اِنْفِرُوا خِفَافاً وَثِقَالاً وَجَاهِدُوا بِاَمْوَالِكُمْ وَاَنْفُسِكُمْ فٖي سَبٖيلِ اللّٰهِؕ ذٰلِكُمْ خَيْرٌ لَكُمْ اِنْ كُنْتُمْ تَعْلَمُونَ”</p>
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Hz. Ömer’in hayra ayırdığı arazi</p>
 
-“Kolay da olsa zor da olsa sefere çıkın ve mallarınızla canlarınızla Allah yolunda cihad edin. Bilirseniz, bu sizin kendi iyiliğinizedir” (Tevbe, 9/41) buyrulmuştur.
+Hz. Ömer, Hayber’de bir arazi edinmişti. O güne kadar böylesine değer verdiği bir mala sahip olmadığını söyleyerek Resûlullah’a (s.a.s.) danıştı. Efendimiz (s.a.s.), dilerse arazinin aslını koruyup ürününü sadaka olarak verebileceğini bildirdi.
 
-Aynı şekilde;
+Hz. Ömer de araziyi satılmamak, bağışlanmamak ve miras bırakılmamak şartıyla vakfetti. Gelirini yoksullara, yakınlara, kölelerin özgürleşmesine, Allah yoluna, yolculara ve misafirlere ayırdı. Değer verdiği malı, faydası devam edecek bir hayra dönüştürdü.
 
-<p lang="ar" dir="rtl" class="ayet">“مَنْ جهَّزَ غَازِيًا في سبيلِ اللَّهِ فَقَدْ غَزَا”</p>
+(Buhârî, 2737; sahih rivayetin anlam özeti.)
 
-*“Kim savaşa katılacak bir kimseyi savaş̧ araç̧ gereci ile donatırsa, o kimse bizzat Allah yolunda savaşmış̧ gibi olur”* (Müslim, İmâre, 135) hadisi de bunu desteklemektedir.
+Kardeşlerim! Bu kıssada toprağın kendisi korunur, ürünü ihtiyaç sahiplerine ulaşır. Hz. Ömer’in sevdiği mal, başkalarının sofrasına uzanan bir hayır vesilesi olur. Peygamberimizin rehberliği, verme arzusuna süreklilik kazandırır. Biz de bir iyiliği düşünürken bugün kimi sevindireceğini, yarın nasıl devam edeceğini birlikte sorabiliriz.
 
-Maldan vazgeçmek de her yiğidin harcı değildir. Hele candan vazgeçmek hiç kolay değildir. Beşikten mezara kadar Müslümanın hayat ölçülerini belirleyen dinimiz, dünya hayatının bir oyun ve eğlenceden ibaret olduğunu sıklıkla hatırlatır, buraya geliş gayemizi zihnimizin bir köşesinde hep diri tutmamızı bizden ister. Küçüklükten yetişkinliğine kadar ki hayatında Müslümanların zaferlerini dinleyen, onların gerektiğinde her türlü fedakarlığı yaptığını/yapması gerektiğini yürekten hisseden bir kul, sermaye sahibi olduğunda malından, gerektiğinde de canından geçebilecektir. Bu konuda hepimize ayrı ayrı sorumluluklar düşmektedir. Eğitimci olan kişilerin çocuklara aşılayabileceği en büyük şuur, hiç şüphesiz iman ve vatan şuurudur. Anne babaların çocuklarına dünya ve ahiret saadetini kazanmaları için yönlendirmeleri gerekmektedir. Televizyon programcıları ve içerik üreticiler bu hususu kendilerine bir vazife edinmeli, tepeden tırnağa bilinçli bir toplum inşa edebilmenin derdi ve gayreti içerisinde olmalıdır.
+Bizim sevdiğimiz mal bazen birikimimizdir, bazen kendimize ayırdığımız alışveriş bütçesi. Bir öğrenciye gerekli kitabı almak, zorlanan bir ailenin ihtiyacına destek olmak için buradan pay ayırabiliriz. Miktarı kendi imkânımıza göre belirleriz. Asıl sorumuz şudur: Verdiğim şeyin işe yaraması için yeterince düşündüm mü?
 
-Cihad denilince günümüzde duyarlı ve bilinçli müslümanların yapabileceği en büyük cihad, zalim ve katilleri destekleyen firmaların ürünlerini almayarak boykot etmektir. Yapabileceklerimizin en önemlisi, Müslüman kardeşlerimizi çocuk genç yaşlı demeden şehit eden katilleri destekleyenleri, onlara doğrudan ya da dolaylı olarak arka çıkanları boykot etmektir. Sakın ha market rafında olan şey için “nasıl olsa alınmış ve buraya kadar getirilmiş, ben alsam ne olacak” şeklinde düşünmeyelim. Unutmayalım ki herkes yapabilecek imkânı olduğu halde yapmadıklarından sorumlu tutulacaktır. Markete niçin getirildiğinden mesul değiliz, fakat bu ürünleri evimize alıp tüketmekten ötürü sorumlu olabiliriz.
+Evimizde paylaşacağımız bir eşya varsa temizliğine ve kullanılabilirliğine bakalım. Yardım edeceğimiz kişiye neye ihtiyacı olduğunu soralım. Kendisi için seçme hakkını koruyalım. Yardımın yerine ulaşmasını takip etmek de malımızla gösterdiğimiz gayretin bir parçasıdır. Cömertliğe dikkat ve özen eşlik etsin.
 
-Rabbimiz bir ayetinde şöyle buyurmaktadır:
+Bu hafta bütçemizde küçük bir yeri hayra ayırabiliriz. Tutarın yanında, kimin hangi ihtiyacına cevap vereceğini de belirleyelim. Sevdiğimiz bir imkân, bir başkasının hayatında ferahlık olsun.
 
-<p lang="ar" dir="rtl" class="ayet">“اِنَّ اللّٰهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتّٰى يُغَيِّرُوا مَا بِاَنْفُسِهِمْؕ وَاِذَٓا اَرَادَ اللّٰهُ بِقَوْمٍ سُٓوءاً فَلَا مَرَدَّ لَهُۚ وَمَا لَهُمْ مِنْ دُونِهٖ مِنْ وَالٍ”</p>
+Sevdiğimizden vermek, içimizdeki sahip olma arzusuyla da yüzleşmektir. Uzun zamandır istediğimiz bir alışverişi erteleyip bir ihtiyaca destek olduğumuzda bunu hissederiz. İçimizde beliren isteği inkâr etmeden, ona hangi değerin yön vereceğini seçeriz. Hz. Ömer’in değer verdiği arazi bize bu bakımdan yakındır. Hepimizin sevdiği bir nimeti vardır; hepimiz onunla hayır arasında bir bağ kurabiliriz. Akşam elimize aldığımız hesap defterinde, gönlümüzün verdiği kararın da yeri olsun.
 
-“Bir toplum kendisindekini değiştirmedikçe Allah onlarda bulunanı değiştirmez. Allah herhangi bir toplumun başına bir kötülük gelmesini diledi mi, artık onun geri çevrilmesi mümkün değildir. Onların Allah’tan başka yardımcıları da bulunmaz”. (Ra’d, 13/11.) Şanlı tarihimize baktığımız zaman biz Kur’an’ı Kerim'i ve Efendimiz’i rehber edindiğimiz zaman dünyanın en büyük devleti olmuşuz.
+**İnfak, sevdiğimiz nimeti Allah’ın rızasını arayarak yerinde paylaşmaktır.**
 
-Bu noktada şu ayet-i hatırlamakta fayda var.
+---
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ اشْتَرٰى مِنَ الْمُؤْمِنٖينَ اَنْفُسَهُمْ وَاَمْوَالَهُمْ بِاَنَّ لَهُمُ الْجَنَّةَؕ يُقَاتِلُونَ فٖي سَبٖيلِ اللّٰهِ فَيَقْتُلُونَ وَيُقْتَلُونَ وَعْداً عَلَيْهِ حَقاًّ فِي التَّوْرٰيةِ وَالْاِنْجٖيلِ وَالْقُرْاٰنِؕ وَمَنْ اَوْفٰى بِعَهْدِهٖ مِنَ اللّٰهِ فَاسْتَبْشِرُوا بِبَيْعِكُمُ الَّذٖي بَايَعْتُمْ بِهٖؕ وَذٰلِكَ هُوَ الْفَوْزُ الْعَظٖيمُ</p>
+<h2 class="vaaz-bolum-baslik" id="infakin-inceligi" tabindex="-1">V. Veren elin inceliği ve yakın sorumluluğumuz</h2>
 
-“Allah, kendi yolunda çarpışırken öldüren ve öldürülen müminlerin canlarını ve mallarını, karşılığında cennet vermek üzere satın almıştır. Bu, Allah’ın Tevrat’ta, İncil’de ve Kur’an’da yer almış gerçek bir vaadidir. Kim Allah’tan daha fazla sözüne bağlı olabilir! O halde yaptığınız bu alışverişten ötürü sevinin. İşte büyük bahtiyarlık da budur. “(Tevbe, 9/111)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُمْ فِى سَبِيلِ ٱللَّهِ ثُمَّ لَا يُتْبِعُونَ مَآ أَنفَقُوا۟ مَنًّا وَلَآ أَذًى ۙ لَّهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ ۝٢٦٢</p>
 
-İnsanların en faziletlisi cihad eden mümin, cihad da en faziletli amellerden biridir.
+*Mallarını Allah yolunda harcayan, ardından başa kakıp incitmeyenler için rablerinin katında özel karşılık vardır. Onlar için korku yoktur; onlar üzüntü de çekmeyeceklerdir.* (Bakara, 2/262)
 
-<p lang="ar" dir="rtl" class="ayet">“ عَيْنَانِ لا تَمَسُّهُمَا النّار؟ عَيْنٌ بَكَتْ مِنْ خَشْيَةِ اللّهِ، وَعَيْنٌ بَاتَتْ تَحْرُسُ في سَبِيلِ اللّهِ”</p>
+Bir zarfı uzatırken söylediğimiz söz, zarfın içindeki kadar önem taşır. Rabbimiz infakın ardından gelen davranışımıza da dikkat çeker. Verdiğimiz iyiliği korumamız gerekir. Yardımı hatırlatıp üstünlük kurmak yerine, kardeşimizin rahatça başını kaldırabileceği bir ilişki kurarız. Onuru korunmuş bir insanla yüz yüze geliriz.
 
-“İki göz vardır, onlara ateş değemez; Allah için ağlayan göz ile, Allah yolunda uyanık sabahlayan göz.” (Tirmizi, “Fedailu'l-Cihad”, 7)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-Sahabeden Ebu Said (r.a.)'in bildirdiğine göre
+*Resûlullah (s.a.s.), Allah yolunda, bir kölenin özgürlüğü için, yoksula ve aileye yapılan harcamaları saydı; bunlar içinde sevabı en büyük olanın aileye yapılan harcama olduğunu bildirdi.* (Müslim, 995; rivayetin anlam özeti)
 
-<p lang="ar" dir="rtl" class="ayet">“قِيلَ يَا رسولَ اللّهِ: أىُّ النَّاسِ أفْضَلُ؟ قال: مُؤمِنٌ مُجَاهِدٌ بِنَفْسِهِ وَمَالِهِ في سَبِيلِ اللّهِ.”</p>
+Aziz anneler ve babalar! Evin geçimini dürüstçe sağlamak için verdiğiniz emeği bu müjdeyle hatırlayın. Çocuğun okul çantası, ailenin sofrası, bakmakla yükümlü olduğumuz kişinin ihtiyacı sorumluluk alanımızdadır. Ailemize karşı görevlerimizi yerine getirip imkânımız ölçüsünde başkalarına da ulaşırız. Hayır için ayırdığımız bütçeyi evimizin gerçek ihtiyaçlarını bilerek düzenleriz.
 
-"Ey Allah'ın Elçisi! İnsanların en faziletlisi hangisidir" diye sorulması üzerine Hz. Peygamber (s.a.s.), "Malı ve canı ile Allah yolunda cihad eden mümindir" buyurmuştur. (Müslim, İmâre, 123)
+Yardım alan kişinin mahremiyeti de bize emanettir. Bir fotoğraf çekmeden, bir isim paylaşmadan önce bunun o insanda bırakacağı izi hesaba katalım. Güvenilir bir yardım çalışmasında bağışın nereye gittiğini öğrenmek mümkündür. Bunu yaparken ihtiyaç sahibinin özel hayatını koruyan yöntemleri tercih edelim.
 
-Sonuç olarak; ilk insandan beri var olan tevhid esasına dayalı hak din İslâm'ın temel amacı, yeryüzünün halifesi olan Âdemoğlunun; malının, canının, aklının, neslinin ve dininin korunmasıdır. Bunların korunabilmesi için insanların; sulh ve sükûn, güven ve huzur içinde yaşamaları gerekir. Bu amaçla bütün peygamberler insanları, dünya ve âhiret mutluluğunu sağlayacak ilâhî prensiplere davet etmişlerdir. Son Peygamber Hz. Muhammed (s.a.s.) ve ona indirilen Kur'an, insanlığın barış ve huzurunu amaçlamıştır. Savaş; ancak saldırı olduğu zaman barışın korunması, baskının ve zulmün önlenmesi, can ve mal güvenliğinin sağlanması amacına yönelik olarak meşru olur. Dolayısıyla Kur'an'da "cihad", "harp", "mücadele" ve "kıtal" gibi savaşı ifade eden kavramların, bu bağlamda değerlendirilip anlaşılması gerekir.
+Kazancımızı hesapladığımız akşam ailece birkaç dakika ayıralım. Zorunlu giderlerimizi ve yerine getireceğimiz sorumlulukları konuşalım. Gönüllü paylaşım için gücümüz yeten bir tutar belirleyelim. Evdeki çocuk da böylece paranın emekle kazanıldığını ve hayra ayrılabildiğini görsün. Verirken kullandığımız dili de bizden öğrensin.
 
-Hem savaş anlamını ifade eden kavramlar, hem de "kıtal" kavramının geçtiği ayetler, savaş ortamı ile ilgilidir. Ayetlerde "savaşın" şeklindeki emirlerin uygulanması ancak meşru bir savaş olması hâlinde söz konusudur. Bir anlamı da "barış" olan İslâm, savaşı değil barışı, kavgayı değil uzlaşmayı, kötülüğü değil iyiliği esas alır, barışın korunmasını ister. Herkesi Allah yoluna çağırır ama zorlamaz, davette baskıyı değil sadece tebliğ yöntemini tavsiye eder. Fitne, zulüm ve baskının ortadan kalkmasını, toplumlara adalet, güven, huzur, barış ve din özgürlüğünün yerleşmesini ister. Herkesi bu yönde çaba göstermeye çağırır.
+İhtiyacı kalmayan birinin kendi ayakları üzerinde durmasına sevinelim. Onun güçlenmesini desteklemek, iyiliğimizin güzel bir devamıdır. Yardımın ardından kurduğumuz ilişki de huzur versin.
 
-Bu vesileyle şu duaya hep birlikte âmin diyelim: Allah’ım! İstiklal ve istikbalimiz, birlik ve beraberliğimiz uğrunda mücadele eden kahraman ordumuzu muzaffer eyle! Huzurumuz ve değerlerimiz uğruna canlarını feda eden aziz şehitlerimize rahmet, gazilerimize şifalar ihsan eyle! Fitne, fesat ve bozgunculuk peşinde koşanlara, milletimize ve ümmet-i Muhammed’e hile ve tuzak kuranlara karşı bize feraset, basiret, kuvvet ve dirayet lütfeyle! Bizleri mücadeleyi gerçek anlamını kavrayan, senin yolunda mücahede ve mücadeleden kaçmayan samimi müminler eyle!
+**Hayra ayırdığımız mal, hem yakınlarımızın hakkını hem yardım ettiğimiz kişinin onurunu gözetsin.**
 
-Rabbimiz! Sana inandık, sana güvendik, sana tevekkül ettik. Bizleri sensiz, sahipsiz, inayetsiz bırakma!
+---
+
+<h2 class="vaaz-bolum-baslik" id="vakit-ve-hizmet" tabindex="-1">VI. Vaktimizi ve emeğimizi hayra ayırmak</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ، الصِّحَّةُ وَالْفَرَاغُ</p>
+
+*İki nimet vardır ki insanların çoğu onları değerlendirmekte aldanır: Sağlık ve boş vakit.* (Buhârî, 6412; rivayetten bölüm)
+
+Telefonumuzun takviminde randevular görünür. İş görüşmesi, okul toplantısı, alışveriş saati… Peki bir insanın yükünü hafifletmek için ayırdığımız vakit nerede? Hizmeti takvimimize yazdığımızda güzel niyetimiz somutlaşır. Yarım saat bile bir ihtiyaca cevap verebilir. Önemli olan, verdiğimiz sözü tutabileceğimiz bir zaman seçmektir.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">السَّاعِي عَلَى الأَرْمَلَةِ وَالْمِسْكِينِ كَالْمُجَاهِدِ فِي سَبِيلِ اللَّهِ</p>
+
+*Dulun ve yoksulun ihtiyaçları için çalışan kimse, Allah yolunda cihad eden kimse gibidir.* (Müslim, 2982; rivayetten bölüm)
+
+Bu nebevî müjde, yardım için harcanan emeğin değerini gösterir. Alışveriş çantasını taşımak, ihtiyaç sahibinin başvurusunu anlamasına yardım etmek, uygun bir hizmete ulaşmasını kolaylaştırmak… Her biri zaman ister. İnsan, başkasının meselesine dikkatini verdiğinde kendi rahatından da bir pay ayırır.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/allah-yolunda-malla-ve-canla-mucadele/vakit.svg" width="1600" height="900" alt="Yağmur sonrası bir kaldırımda yan yana duran iki şemsiye, bank ve bez çanta." loading="lazy" decoding="async">
+<figcaption><strong>Bir saatin iyiliği</strong> Vaktimizden ayırdığımız pay, bir insanın yükünü hafifletebilir.</figcaption>
+</figure>
+
+**Allah yolunda gayret, imanımızı malımızla, vaktimizle ve ahlâkımızla hayata taşımaktır.**
+
+Marche-en-Famenne’de yağmurlu bir sabah, yalnız yaşayan bir büyüğümüzün hastane randevusu olabilir. Yanında güveneceği birinin bulunması yolunu kolaylaştırır. Önce kendisine nasıl yardımcı olabileceğimizi sorarız. Randevu saatini ve dönüş imkânını birlikte netleştiririz. Böylece yardımımız, onun iradesine saygı duyan bir arkadaşlığa dönüşür.
+
+Hizmet edeceğimiz zamanın sınırını baştan söylemek, güveni güçlendirir. Bilgimizi aşan bir meselede ehil kişiye ulaşılmasını sağlayabiliriz. Bir işi başkasına devretmemiz gerektiğinde de haber veririz. Başladığımız iyiliğin yarım kalmaması için elimizden gelen tedbiri alırız.
+
+Bir başvuru için masaya oturduğumuzda, karşımızdaki insanın anlatmasını beklemek gerekebilir. Aynı soruyu birkaç kez sorabilir; bazı bilgileri paylaşmak istemeyebilir. O zaman sabırla dinler, izin verdiği ölçüde yardımcı oluruz. Vaktimizi vermenin içinde dikkatle hazır bulunmak da vardır. Elimizde telefonla başka konuşmaları takip ederken kaçırdığımız bir cümle, onun asıl ihtiyacı olabilir. Ayrılan yarım saati gerçekten o insana ayıralım. Hizmet, böyle bir özenle güven kazanır.
+
+**Vaktimizden ayırdığımız pay, bir insanın yükünü hafifleten güvenilir emeğe dönüşsün.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="sabir-ve-sebat" tabindex="-1">VII. Sabır: Başladığımız iyiliği sürdürmek</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ وَإِنَّ ٱللَّهَ لَمَعَ ٱلْمُحْسِنِينَ ۝٦٩</p>
+
+*Bizim uğrumuzda elinden gelen çabayı gösterenleri bize ulaşan yollara mutlaka yöneltiriz. Kuşkusuz Allah iyilik yapanların yanındadır.* (Ankebût, 29/69)
+
+Bu âyet, inançlarına bağlı kalmak için gayret eden müminlere ümit verir. Allah’ın rehberliğini dileyerek adım atarız. Sonuç hemen görünmediğinde de hayırlı çabanın değerini hatırlarız. Pencere önündeki filiz, bakımı tekrarlandıkça köklenir. Kalbimizde ve davranışımızda yerleşmesini istediğimiz iyilik de emek bekler.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَنْ يَتَصَبَّرْ يُصَبِّرْهُ اللَّهُ</p>
+
+*Kim sabırlı olmaya çalışırsa Allah ona sabır verir.* (Buhârî, 1469; rivayetten bölüm)
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Akşamın on dakikası</p>
+
+İşten dönen bir baba, yemek sonrasında çocuğuyla Kur’an çalışmak için masaya oturur. Çocuk aynı harfte yeniden zorlanır. Babanın da yorgunluğu vardır. Sesini yükseltmek üzereyken durur; hedefi küçültüp o akşam tek harfi sakince tekrar ederler. Ertesi çalışma saatini birlikte belirlerler.
+
+Bir haftanın sonunda bütün güçlükler çözülmese de masaya yeniden oturmayı öğrenirler. Sabır, o evde öğrenmenin devam edebilmesine yer açar.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/allah-yolunda-malla-ve-canla-mucadele/sebat.svg" width="1600" height="900" alt="Yağmur damlalı pencere önünde yeni filizlenmiş saksı ve küçük sulama kabı." loading="lazy" decoding="async">
+<figcaption><strong>Sabırla büyüyen</strong> İyilik, bakım gördükçe kök salar.</figcaption>
+</figure>
+
+Biz de zorlandığımız işte hedefimizi gücümüze göre düzenleyebiliriz. Yaptığımız plana ara verdiysek kaldığımız yeri bulup yeniden başlarız. Öğrenirken yöntem değiştirmek, yardım istemek ve dinlenmek ilerlememize katkı sağlar. Sabır, doğru yolda kalmak için gösterdiğimiz bilinçli emektir.
+
+Kardeşimizin gelişmesini beklerken ona zaman tanıyalım. Bir gencin sorularını tekrar dinleyelim. Yaşlı birinin yavaşlayan adımlarına eşlik edelim. Bize gösterilmesini arzuladığımız anlayışı, birlikte yürüdüğümüz insana sunalım.
+
+**Sabır, iyiliğe tekrar dönebilecek bir yol ve vakit ayırmaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="gayrette-denge" tabindex="-1">VIII. Gayretin ölçüsü: Her hak sahibine hakkı</h2>
+
+**Muhterem Müslümanlar! Hizmete gönül veren kardeşlerim!**
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Selmân’ın dostuna hatırlattığı haklar</p>
+
+Efendimiz (s.a.s.), Selmân ile Ebü’d-Derdâ’yı kardeş kılmıştı. Selmân onu ziyaret ettiğinde, Ebü’d-Derdâ’nın dünyaya ve ailesine ilgisinin azaldığını eşinden öğrendi. Birlikte yemek yediler. Gece Ebü’d-Derdâ namaza kalkmak istediğinde Selmân bir süre uyumasını söyledi; gecenin son kısmında beraber namaz kıldılar.
+
+Selmân, Rabbinin, nefsinin ve ailesinin onun üzerinde hakkı bulunduğunu hatırlattı; her hak sahibine hakkını vermesini söyledi. Olay Resûlullah’a (s.a.s.) anlatılınca Efendimiz Selmân’ı doğruladı.
+
+(Buhârî, 1968; sahih rivayetin anlam özeti.)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">صَدَقَ سَلْمَانُ</p>
+
+*Selmân doğru söylemiştir.* (Buhârî, 1968; rivayetten bölüm)
+
+Bu rivayette sofrayla gece ibadeti aynı evde buluşur. Selmân’ın öğüdü Peygamberimizin tasdikini alır. Böylece gayretimize bir ölçü yerleşir: Üstlendiğimiz hayırlı işi sürdürürken üzerimizdeki diğer hakları da gözetiriz. Dinlenmemiz, ailemizle ilgilenmemiz ve kulluğumuz, dikkatle düzenleyeceğimiz aynı hayatın parçalarıdır.
+
+Bir gönüllümüz hafta sonunun bütün saatlerini dışarıdaki hizmete ayırırken evindeki ihtiyacı fark etmeyebilir. Akşam sofraya oturup ailesini dinlemesi, görev paylaşımını yeniden kurmasına yardımcı olur. Bir işi başka bir gönüllüyle bölüşmek, hizmetin devamını da kolaylaştırır. Emaneti birlikte taşımayı öğreniriz.
+
+Hanımların evde ve dışarıda verdiği emeği görünür kılalım. Bakım işlerini paylaşalım. Gençlerin dinlenme ve öğrenme zamanını koruyalım. Yaşlılarımızdan güçlerini aşan görevler beklemek yerine yapabilecekleri katkıyı kendilerine soralım. Gönüllülük, karşılıklı anlayışla kök salar.
+
+Kendi programımıza da bu gözle bakalım. Hangi sorumluluğumuz bekliyor? Hangi işi paylaşabiliriz? Yorulduğumuzu uygun bir dille söylemek ve yardım kabul etmek, ertesi gün daha dikkatli hizmet etmemize imkân verir. Gayretimizin ömrü, gözettiğimiz haklarla uzar.
+
+Bir annenin yahut babanın dinlenebilmesi için bakım nöbetini devralmak da somut bir hizmettir. Evde hastasına bakan kişi, dışarıdaki gönüllü çalışmalara katılamadığı için kendi emeğini değersiz görmesin. Onun günü de bir insanın ihtiyacına cevap vererek geçer. Biz, o emeğe teşekkür edip destek sunabiliriz. Yakınının yanında bir süre kalmak, ona kendi işini görebileceği bir aralık açabilir.
+
+Kardeşimizin yükünü sorduğumuzda cevabı dikkatle dinleyelim. Yapabileceğimiz yardımı açıkça söyleyelim. Sorumluluk paylaşıldıkça sofraya daha huzurlu oturabilir, ibadetimize daha derli toplu yönelebiliriz. Selmân’ın hatırlattığı haklar, kendi evimizde de karşılığını bulsun.
+
+**Allah’a kulluk gayretimiz, üzerimizdeki hakları birlikte gözeterek olgunlaşır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="imkanimiz-kadar-katki" tabindex="-1">IX. Her imkândan iyiliğe bir yol</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَلْيَعْمَلْ بِالْمَعْرُوفِ، وَلْيُمْسِكْ عَنِ الشَّرِّ فَإِنَّهَا لَهُ صَدَقَةٌ</p>
+
+*İyilik yapsın, kötülükten uzak dursun; bu da onun için sadakadır.* (Buhârî, 1445; rivayetten bölüm)
+
+Bu hadiste sahâbîler, sadaka verecek mal bulamayan kişinin ne yapacağını sorarlar. Efendimiz (s.a.s.) çalışmayı ve ihtiyaç içindeki kişiye yardım etmeyi anlatır. İmkânın daha da daraldığı sorulduğunda ise iyilik yapmayı ve kötülükten uzak durmayı gösterir. Böylece hayra katılmanın farklı yollarını öğretir.
+
+Tekerlekli sandalyesinden ders dinleyen kardeşimizin dikkatini, dar bütçesini idare eden annemizin emeğini, iyi bir sözü öğrenen çocuğun sevincini hatırlayalım. Cemaatimizde herkesin katkısı aynı biçimde görünmez. Kiminin bilgisi, kiminin zamanı, kiminin sabırlı dinleyişi bir ihtiyaca karşılık gelir. Katılmanın yolunu birlikte bulabiliriz.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Gayreti hayata taşıyan üç alan</strong> Kendi imkânımıza uygun bir davranış seçelim.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Bir işi paylaş; yorgun aile ferdine dinlenme vakti aç.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Bildiğin bir konuyu isteyen arkadaşına sabırla açıkla.</dd></div>
+<div><dt>Çevremizde</dt><dd>Yardıma ihtiyacı olan kişiye nasıl destek istediğini sor.</dd></div>
+</dl>
+</figure>
+
+Bir öğrencimiz arkadaşına çözemediği soruyu açıklayabilir. Bir emeklimiz kendisine uygun saatlerde uzaktaki yalnız bir yakının hâlini sorabilir. Dışarı çıkmakta zorlanan bir kardeşimiz telefonla dinlediği kişiye destek olabilir. Bir çocuk ortak kullanılan kitapları özenle yerine koyabilir. Küçük katkının bir ihtiyacı karşılaması, ona anlam kazandırır.
+
+Başkalarının yaptıklarıyla kendimizi karşılaştırmak yerine bugün yapabileceğimiz işe bakalım. İmkânımız daraldığında katkımızın biçimi değişebilir. Yardım kabul ettiğimiz günler de olur. Birbirimize yer açtığımızda cemaat bağı güçlenir; kimse yalnızca verdiği parayla değerlendirilmez.
+
+Bir hizmeti düzenlerken görevi birlikte tasarlamak da önemlidir. İşitmekte zorlanan bir gönüllüye gerekli bilgiyi yazıyla verebiliriz. Uzun süre ayakta duramayan kardeşimiz için oturarak yapılacak bir iş hazırlayabiliriz. Çalışma saatleri değişen kişiye daha esnek bir görev sunabiliriz. Bunun için önce kendisini dinlemek gerekir. İnsan kendi kabiliyetini anlatabildiğinde, katkısının biçimini de daha iyi belirler.
+
+Bu kapıdan ilk defa giren bir genç, işe nereden başlayacağını bilemeyebilir. Ona yapılacak işi açıkça anlatıp ilk seferinde yanında bulunabiliriz. Sonra fikrini sorarız: Neyi kolaylaştırabiliriz? Böylece ortak hizmet, birbirimizden öğrendiğimiz bir alana dönüşür. Herkesin sesine yer açmak, hayra katılma imkânını genişletir.
+
+**İyiliğe katılmanın yolu, kendi imkânımızı tanıyıp onu özenle kullanmaktan geçer.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="niyet-ve-yontem" tabindex="-1">X. Gayretimizi hikmetle yönlendirmek</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ٱدْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِٱلْحِكْمَةِ وَٱلْمَوْعِظَةِ ٱلْحَسَنَةِ ۖ وَجَـٰدِلْهُم بِٱلَّتِى هِىَ أَحْسَنُ</p>
+
+*Rabbinin yoluna hikmetle ve güzel öğütle davet et; onlarla en güzel yöntemle tartış.* (Nahl, 16/125; âyetten bölüm)
+
+Rabbimiz, yoluna çağırırken nasıl davranacağımızı da öğretir. Hikmet, doğru sözü muhatabın hâlini gözeterek söylememize rehberlik eder. Güzel öğüt, insanın anlayabileceği ve düşünebileceği bir alan açar. En güzel yöntemle konuşmak, hakikati anlatırken edebimizi korumamızı ister.
+
+İş yerinin dinlenme odasında bir arkadaşımız inancımızla ilgili soru sorabilir. Hemen cevap yetiştirmek yerine neyi merak ettiğini dinleyelim. Bildiğimizi açıkça anlatalım; bilmediğimiz hususu araştırmak için vakit isteyelim. İnancımızı anlatırken karşımızdaki insanın haysiyetini gözetiriz. Dürüst sözümüzle gündelik davranışımız birbirini tamamlasın.
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Gayretimizi düzeltmek için</strong> İyi niyetimizi güvenilir davranışla buluşturan küçük düzeltmeler.</figcaption>
+<table aria-label="Gayretimizi düzeltmek için">
+<thead><tr><th scope="col">Zorlandığımız yer</th><th scope="col">Atacağımız adım</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Zorlandığımız yer">Hızlıca dinî içerik paylaşmak</th><td data-label="Atacağımız adım">Kaynağı aç; doğruluğunu öğrenince paylaş.</td></tr>
+<tr><th scope="row" data-label="Zorlandığımız yer">Bir anda çok iş üstlenmek</th><td data-label="Atacağımız adım">Tutabileceğin bir söz seç ve zamanını belirle.</td></tr>
+<tr><th scope="row" data-label="Zorlandığımız yer">Yardımı sürekli hatırlatmak</th><td data-label="Atacağımız adım">İhtiyaç sahibinin onurunu ve mahremiyetini gözet.</td></tr>
+<tr><th scope="row" data-label="Zorlandığımız yer">Sonucu hemen beklemek</th><td data-label="Atacağımız adım">Yöntemi değerlendir; gereken zamanı ve desteği sağla.</td></tr>
+</tbody></table>
+</figure>
+
+Bazen güzel bir işte adımızın duyulmasını bekleriz. O beklentiyi fark ettiğimizde niyetimizi yenileyebiliriz. Bir başkasının emeğine teşekkür etmek, görevi paylaşmak ve görünmeden bir ihtiyacı gidermek kalbimizi eğitir. Aynı işi daha dikkatli yapmanın yolunu ararız.
+
+Bu hafta bir konuşmamızı ve bir yardımımızı gözden geçirelim. Söylediğimiz söz muhatabın anlamasına yardımcı oldu mu? Yardımımız gerçekten ihtiyaca cevap verdi mi? Aldığımız cevaba göre yöntemimizi düzeltelim. Öğrenmeye açık kalmak, hayırlı gayretimizi de olgunlaştırır.
+
+Konuştuğumuz kişi hemen ikna olmayabilir. Ona söylediğimizi düşünmesi için zaman tanırız. Görüş ayrılığı içinde de dürüst ve saygılı davranabiliriz. Bizim sorumluluğumuz, doğru bilgiyi güzel bir dille ulaştırmak ve kendi davranışımızın hesabını vermektir. Sonucu Allah’a bırakırken elimizdeki işi özenle yapmaya devam ederiz.
+
+**Allah’ın rızasını aradığımız işte, sözümüz de yöntemimiz de güzel olsun.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Hayata taşıyacağımız yedi söz</h2>
+
+**Kıymetli kardeşlerim! Şimdi niyetimizi bir haftalık adıma dönüştürelim.**
+
+Eve vardığımızda telefonumuzdaki takvimi yahut küçük bir kâğıdı açalım. Bu sözleri imkânımıza uygun hâliyle planlayalım. Hastalık, bakım yükü veya maddî darlık varsa adımımızı buna göre küçültelim. Her sözün ne zaman ve nasıl hayata geçeceği belli olsun.
+
+**İMANIMIZI HAYATA TAŞIYAN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta zorlandığım bir alışkanlık için bir tedbir belirleyeceğim.</strong> Meselâ ertelediğim ibadet için ekranı bırakacağım saati yazacağım.</li>
+<li><strong>Bir âyeti açıklamasıyla okuyup öğrendiğim bir hususu uygulayacağım.</strong> Anlamadığım yeri güvenilir bir öğreticiye soracağım.</li>
+<li><strong>Ailemin ihtiyaçlarını gözeterek bir paylaşım yapacağım.</strong> Maddî imkânım darsa kullanılabilir bir eşya veya emeğimle katkı sunacağım.</li>
+<li><strong>Bir kişiye yardım için tutabileceğim bir zaman ayıracağım.</strong> Nasıl bir destek istediğini kendisine sorup saatini birlikte belirleyeceğim.</li>
+<li><strong>Bir aile ferdimin yükünü hafifletecek bir işi üstleneceğim.</strong> Yapacağım işi ve zamanı açıkça konuşup sözümü tutacağım.</li>
+<li><strong>Zorlandığım bir hayırlı işi bu hafta yeniden deneyeceğim.</strong> Hedefimi gücüme göre düzenleyip gerekiyorsa yardım isteyeceğim.</li>
+<li><strong>Hafta sonunda bu sözlere ayırdığım beş dakikada kendimi değerlendireceğim.</strong> Yaptığıma şükredip eksik kalan için yeni bir vakit belirleyeceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bu haftanın gayret yolu</strong>Nefsimizden başlayıp bilgiye, paylaşıma ve sabra uzanan yedi adım.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Bir alışkanlığını düzelt</strong></li>
+<li><span aria-hidden="true">2</span><strong>Öğren ve uygula</strong></li>
+<li><span aria-hidden="true">3</span><strong>İmkânından pay ayır</strong></li>
+<li><span aria-hidden="true">4</span><strong>Vaktini hayra ayır</strong></li>
+<li><span aria-hidden="true">5</span><strong>Bir yükü paylaş</strong></li>
+<li><span aria-hidden="true">6</span><strong>Sabırla yeniden başla</strong></li>
+<li><span aria-hidden="true">7</span><strong>Gayretini gözden geçir</strong></li>
+</ol>
+</figure>
+
+Sözümüzü somutlaştırırken küçük ayrıntılar yardımcı olur. Öğreneceğimiz âyeti bugünden seçelim. Yardım için arayacağımız kişinin uygun saatini öğrenelim. Ailede paylaşacağımız işi ilgili kişiyle konuşalım. Bir adımın hazırlığı belli olduğunda, onu erteleme ihtimalimiz azalır. Kâğıda yazdığımız niyet, günün içinde bize hatırlatıcı olsun.
+
+Hafta sonunda kendimizi değerlendirirken verdiğimiz sözün sonucuna bakalım. Ayırdığımız vakit gerçekten faydalı oldu mu? Öğrendiğimiz bilgi davranışımıza yansıdı mı? Yapamadığımız bir iş varsa sebebini dürüstçe anlayalım. Belki daha uygun bir saate, daha küçük bir hedefe yahut birinin desteğine ihtiyacımız vardır. Yeni kararımızı bunu hesaba katarak verelim.
+
+Birbirimize de bu yolda yardımcı olabiliriz. Ailece kararlaştırdığımız öğrenme vaktini hatırlatırken tatlı bir dil kullanalım. Bir arkadaşımızla üstlendiğimiz işte zamanında haberleşelim. Yapılan küçük bir iyiliğe teşekkür edelim. Her birimiz, yanımızdaki insanın gayretini sürdürmesini kolaylaştıran bir söz söyleyebiliriz. Kendi irademizle verdiğimiz karar, böyle bir destek içinde daha sağlam yerleşebilir.
+
+Vaazın başında akşam masaya bırakılan anahtarı hatırlamıştık. Aynı anahtar yine elimizde olacak. Bu defa günün ardından hatırlayacağımız bir iyilik de olsun. Rabbimizin hoşnutluğunu arayarak öğrendiğimiz, paylaştığımız veya sabrettiğimiz bir anı O’na şükrederek analım. Ertesi gün için yeni bir kapı aralayalım.
+
+Bu sözler hayata geçtiğinde Hucurât sûresindeki sadakat çağrısına kendi imkânımızla cevap aramış oluruz. Bir haftanın ardından daha dikkatli bir dil, yerini bulan bir yardım, devam eden bir öğrenme vakti kalabilir. Rabbimiz bu başlangıçları bereketlendirsin.
+
+**Allah yolunda gayret, imanımızı malımızla, vaktimizle ve ahlâkımızla hayata taşımaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Gayretimize ihlâs ve sebat</h2>
+
+**Aziz cemaat! Gönlümüzü Rabbimize açalım.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَّبِّ ٱغْفِرْ وَٱرْحَمْ وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ</p>
+
+*Rabbim! Bağışla ve merhamet et; sen merhamet edenlerin en hayırlısısın.* (Mü’minûn, 23/118; âyetten bölüm)
+
+Allah’ım! İmanımızı kalbimizde sağlamlaştır. Niyetimizi rızana yönelt; bize verdiğin imkânları hayırda kullanmayı nasip eyle. Kusurlarımızı görüp düzeltmeyi, nefsimizin yanlış isteklerine karşı sabırla çalışmayı bize öğret. Tövbemizi kabul eyle; yeniden başlamak için gönlümüze ümit ver.
+
+Rabbimiz! İlmimizi faydalı, sözümüzü doğru, emeğimizi bereketli eyle. Öğrendiğini yaşayan, bilmediğini öğrenmekten çekinmeyen kullarından olmayı nasip et. Çocuklarımıza ve gençlerimize hayırlı öğreticiler, güvenilir arkadaşlar ve açık bir zihin lütfeyle. Dinini öğrenmeye yeni başlayan kardeşlerimize kolaylık ver.
+
+Allah’ım! Ailelerimize huzur ver. Birbirimizin yorgunluğunu fark etmeyi, bakım yükünü paylaşmayı, verdiğimiz sözleri tutmayı nasip eyle. Helâl kazanç için çalışanların emeğini bereketlendir. İş arayanlara hayırlı kapılar aç. Darlık içindekilere ferahlık ver; bizleri incitmeden paylaşabilen kullarından eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette iyilik ver; bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Rabbimiz! Hastalarımıza şifa, onlara bakanlara güç ve sabır ver. Engelli kardeşlerimizin hayatını kolaylaştıracak imkânlar lütfeyle. Yalnızların gönlüne dostluk, yas tutanlara teselli ver. Vefat eden yakınlarımıza ve bütün müminlere rahmet eyle. Bizlere onları hayırla anmayı nasip et.
+
+Allah’ım! Hastane koridorunda haber bekleyenlere dayanma gücü ver. Evinde yalnız sofraya oturanlara hayırlı dostlar nasip eyle. Bir çocuğun defterine eğilen öğreticiye, yorgun yakınının yanında uyanık kalan aile ferdine kolaylık lütfet. Bize bu sessiz emekleri fark eden bir kalp ver. İyiliği sürdürürken birbirimizin elinden tutmayı nasip eyle.
+
+Allah’ım! Cemaatimizi iyilikte birbirine destek olan kullarından eyle. Yaşadığımız Belçika’ya, köklerimizin uzandığı memleketlere ve bütün yeryüzüne huzur ver. Komşularımızla güven içinde yaşamayı, insanların onurunu korumayı nasip eyle. Bizi faydalı hizmette sabırlı, emanete karşı dikkatli kıl. Duamızı kabul eyle. Âmin. Hamd, âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler belirtilmiştir. Kıssalar doğrulanmış rivayetlere dayanır; gündelik Avrupa sahneleri temsilîdir. Türkçe niyazlar serbest duadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/114">Tâhâ 20/114</a>.</li>
+<li>İman ve gayret: <a href="https://quran.com/49/15">Hucurât 49/15</a>.</li>
+<li>Nefisle mücadele: <a href="https://quran.com/29/6">Ankebût 29/6</a>; <a href="https://sunnah.com/tirmidhi:1621">Tirmizî 1621</a>.</li>
+<li>İlimle gayret: <a href="https://quran.com/25/52">Furkān 25/52</a>; <a href="https://sunnah.com/bukhari:5027">Buhârî 5027</a>.</li>
+<li>Sevilenden paylaşmak: <a href="https://quran.com/3/92">Âl-i İmrân 3/92</a>.</li>
+<li>İnfakın inceliği: <a href="https://quran.com/2/262">Bakara 2/262</a>; <a href="https://sunnah.com/muslim:995">Müslim 995</a>.</li>
+<li>Vakit ve hizmet: <a href="https://sunnah.com/bukhari:6412">Buhârî 6412</a>; <a href="https://sunnah.com/muslim:2982">Müslim 2982</a>.</li>
+<li>Sabır ve sebat: <a href="https://quran.com/29/69">Ankebût 29/69</a>; <a href="https://sunnah.com/bukhari:1469">Buhârî 1469</a>.</li>
+<li>Gayrette denge: <a href="https://sunnah.com/bukhari:1968">Buhârî 1968</a>.</li>
+<li>İmkânımız kadar katkı: <a href="https://sunnah.com/bukhari:1445">Buhârî 1445</a>.</li>
+<li>Doğru niyet ve yöntem: <a href="https://quran.com/16/125">Nahl 16/125</a>.</li>
+<li>Hatim duası: <a href="https://quran.com/23/118">Mü’minûn 23/118</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>Kavramın kapsamı: <a href="https://islamansiklopedisi.org.tr/cihad">TDV İslâm Ansiklopedisi — Cihad</a>.</li>
+<li>Klasik ses: <a href="https://islamansiklopedisi.org.tr/marifet-i-nefs">TDV İslâm Ansiklopedisi — Ma‘rifet-i Nefs</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>
