@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-10-02",
+  "guncelleme": "2026-10-03",
   "depo": "ulucamii2026/ulucamii2026.github.io",
   "donem": "2026-2027",
   "gunler": [
@@ -898,7 +898,7 @@
       "etiket": "ders-2026-10-03",
       "plan": {
         "dosya": "Ders-Plani-2026-10-03.pdf",
-        "boyut": 623309,
+        "boyut": 619993,
         "sayfa": 18,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Ders-Plani-2026-10-03.pdf"
       },
@@ -908,19 +908,19 @@
           "saat": "11:00-11:40",
           "alan": "Kur'an-ı Kerim",
           "kod": "kuran",
-          "konu": "Sonda Yazılış",
-          "konuFr": "Forme finale",
+          "konu": "Sonda yazılış",
+          "konuFr": "La forme finale",
           "baslik": {
             "tr": "Kur'an-ı Kerim",
             "fr": "Le Saint Coran"
           },
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 3911529,
-          "slayt": 17,
+          "boyut": 3031384,
+          "slayt": 25,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
             "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
-            "boyut": 692114,
+            "boyut": 520410,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-1-Kuran-i-Kerim.pdf"
           }
         },
@@ -936,12 +936,12 @@
             "fr": "Je crois en Allah"
           },
           "dosya": "Sunum-2-Itikat-Allaha-Iman-Ediyorum.pptx",
-          "boyut": 5899611,
+          "boyut": 5458408,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-2-Itikat-Allaha-Iman-Ediyorum.pptx",
           "pdf": {
             "dosya": "Sunum-2-Itikat-Allaha-Iman-Ediyorum.pdf",
-            "boyut": 825762,
+            "boyut": 707738,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-2-Itikat-Allaha-Iman-Ediyorum.pdf"
           }
         },
@@ -957,12 +957,12 @@
             "fr": "J'apprends à faire la prière"
           },
           "dosya": "Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pptx",
-          "boyut": 6050723,
+          "boyut": 5449293,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pptx",
           "pdf": {
             "dosya": "Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pdf",
-            "boyut": 851636,
+            "boyut": 738594,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-03/Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pdf"
           }
         }
@@ -970,7 +970,7 @@
       "ekler": [
         {
           "dosya": "Derse-Hizli-Baslangic.pdf",
-          "boyut": 160684,
+          "boyut": 160823,
           "tur": "pdf",
           "baslik": {
             "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
@@ -980,7 +980,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 127962,
+          "boyut": 159913,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
@@ -990,7 +990,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
-          "boyut": 2213737,
+          "boyut": 2875226,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 1. ders (PDF)",
@@ -1000,7 +1000,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-2-Itikat-Allaha-Iman-Ediyorum.pptx",
-          "boyut": 164877,
+          "boyut": 163857,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
@@ -1010,7 +1010,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-2-Itikat-Allaha-Iman-Ediyorum.pdf",
-          "boyut": 3204753,
+          "boyut": 3173701,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 2. ders (PDF)",
@@ -1020,7 +1020,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pptx",
-          "boyut": 165224,
+          "boyut": 164119,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
@@ -1030,7 +1030,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-3-Ibadet-Namaz-Kilmayi-Ogreniyorum.pdf",
-          "boyut": 3267332,
+          "boyut": 3240630,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 3. ders (PDF)",
@@ -1047,7 +1047,7 @@
       "etiket": "ders-2026-10-04",
       "plan": {
         "dosya": "Ders-Plani-2026-10-04.pdf",
-        "boyut": 564759,
+        "boyut": 564238,
         "sayfa": 15,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Ders-Plani-2026-10-04.pdf"
       },
@@ -1057,19 +1057,19 @@
           "saat": "11:00-11:40",
           "alan": "Kur'an-ı Kerim",
           "kod": "kuran",
-          "konu": "Bitişen Harfler",
+          "konu": "Bitişen harfler",
           "konuFr": "Les lettres qui se lient",
           "baslik": {
             "tr": "Kur'an-ı Kerim",
             "fr": "Le Saint Coran"
           },
           "dosya": "Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 3554648,
-          "slayt": 17,
+          "boyut": 3566559,
+          "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
             "dosya": "Sunum-1-Kuran-i-Kerim.pdf",
-            "boyut": 686839,
+            "boyut": 536870,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-1-Kuran-i-Kerim.pdf"
           }
         },
@@ -1085,12 +1085,12 @@
             "fr": "Notre Prophète annonce l'islam"
           },
           "dosya": "Sunum-2-Siyer-Islami-Anlatiyor.pptx",
-          "boyut": 5845008,
+          "boyut": 5480306,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-2-Siyer-Islami-Anlatiyor.pptx",
           "pdf": {
             "dosya": "Sunum-2-Siyer-Islami-Anlatiyor.pdf",
-            "boyut": 907187,
+            "boyut": 830280,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-2-Siyer-Islami-Anlatiyor.pdf"
           }
         },
@@ -1106,12 +1106,12 @@
             "fr": "Ma religion veut que je corrige mon erreur"
           },
           "dosya": "Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pptx",
-          "boyut": 5248860,
+          "boyut": 4944329,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pptx",
           "pdf": {
             "dosya": "Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pdf",
-            "boyut": 858686,
+            "boyut": 785019,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-04/Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pdf"
           }
         }
@@ -1119,7 +1119,7 @@
       "ekler": [
         {
           "dosya": "Derse-Hizli-Baslangic.pdf",
-          "boyut": 161807,
+          "boyut": 159762,
           "tur": "pdf",
           "baslik": {
             "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
@@ -1129,7 +1129,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 129543,
+          "boyut": 159844,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
@@ -1139,7 +1139,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
-          "boyut": 2329470,
+          "boyut": 2711149,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 1. ders (PDF)",
@@ -1149,7 +1149,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-2-Siyer-Islami-Anlatiyor.pptx",
-          "boyut": 166179,
+          "boyut": 165270,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
@@ -1159,7 +1159,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-2-Siyer-Islami-Anlatiyor.pdf",
-          "boyut": 3292347,
+          "boyut": 3279297,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 2. ders (PDF)",
@@ -1169,7 +1169,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pptx",
-          "boyut": 168315,
+          "boyut": 167272,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
@@ -1179,7 +1179,7 @@
         },
         {
           "dosya": "Ogretici-Sunum-3-Ahlak-Hatami-Duzeltmemi-Ister.pdf",
-          "boyut": 3421486,
+          "boyut": 3404910,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 3. ders (PDF)",
