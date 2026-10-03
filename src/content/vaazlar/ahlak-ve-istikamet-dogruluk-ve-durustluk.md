@@ -231,6 +231,7 @@ Tezgâhın üstüyle altı arasındaki fark, satıcının bildiği fakat alıcı
 Marche-en-Famenne’de evindeki bir sandalyeyi satacak kardeşimiz, döşemedeki aşınmayı fark ediyor. Fotoğrafı yalnız sağlam taraftan çekmek yerine kusuru da gösteriyor. Alıcı gelmeden durumu öğreniyor; fiyatı ve kararını buna göre belirliyor. Satış gerçekleşse de gerçekleşmese de karşı tarafın seçim hakkı korunuyor.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَإِنْ صَدَقَا وَبَيَّنَا بُورِكَ لَهُمَا فِي بَيْعِهِمَا، وَإِنْ كَتَمَا وَكَذَبَا مُحِقَتْ بَرَكَةُ بَيْعِهِمَا</p>
 
 *Alıcı ve satıcı doğru söyler, gerekli açıklamayı yaparlarsa alışverişleri bereketlendirilir. Gizler ve yalan söylerlerse alışverişlerinin bereketi silinir.* (Buhârî, 2079; rivayetten bölüm)
 

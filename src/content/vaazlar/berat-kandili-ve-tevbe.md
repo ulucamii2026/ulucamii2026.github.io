@@ -1,251 +1,455 @@
 ---
-baslik: "Berat Kandili ve Tevbe"
-ozet: "Cenâb-ı Allah, zamanlar içinde bazı mukaddes zamanlar yaratmıştır. İçinde bulunduğumuz Üç aylar olarak isimlendirilen kıymetli zaman diliminde de Rabbimizin rahmet…"
+baslik: "Berat Gecesi: Rivayetin Ölçüsü, Şâban’ın Sünneti"
+ozet: "Berat gecesine dair rivayetleri kaynaklarıyla tanıyalım. Peygamberimizin Şâban orucundan ve gece ibadetinden hareketle, ailemizle sürdürebileceğimiz bir kulluk yolu kuralım."
 kategori: kandil
-kelime: 3791
+kelime: 3660
 docx: "/vaazlar/berat-kandili-ve-tevbe.docx"
 pdf: "/vaazlar/berat-kandili-ve-tevbe.pdf"
+kapak: "/media/vaazlar/berat-kandili-ve-tevbe/kapak-og.webp"
+kapakAlt: "Yıldızlı gökyüzü altında sade bir caminin yazısız mihrap kemeri ve boş seccade sıraları."
 ---
-<p lang="ar" dir="rtl" class="ayet">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 
-### Giriş
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/berat-kandili-ve-tevbe/kapak.svg" width="1600" height="900" alt="Yıldızlı gökyüzü altında sade bir caminin yazısız mihrap kemeri ve boş seccade sıraları." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Şâban gecesinde sükûnet</strong> Gecenin dinginliği, kulluğa ayrılan vakti hatırlatır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Cenâb-ı Allah, zamanlar içinde bazı mukaddes zamanlar yaratmıştır. İçinde bulunduğumuz Üç aylar olarak isimlendirilen kıymetli zaman diliminde de Rabbimizin rahmet ve mağfiretinin bol bol tecelli ettiği mübarek geceleri teker teker idrak ediyoruz.
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#beratin-anlami">Berat ve ümit</a></li>
+<li><a href="#kuranin-rehberligi">Kur’an’ın gösterdiği bağlam</a></li>
+<li><a href="#rivayetlerin-olcusu">Rivayetlerin sıhhat ölçüsü</a></li>
+<li><a href="#saban-orucu">Şâban’da nebevî oruç</a></li>
+<li><a href="#ibadette-olcu">İbadette güç ve denge</a></li>
+<li><a href="#gecenin-duasi">Gece ve dua</a></li>
+<li><a href="#tilavet-ve-salavat">Tilâvet ve salavat</a></li>
+<li><a href="#gurbet-gecesi">Evde ve vardiyada ihya</a></li>
+<li><a href="#samimiyet-ve-sunnet">Samimiyet ve sağlam ölçü</a></li>
+<li><a href="#devam-eden-ibadet">Geceden gündüze devam</a></li>
+<li><a href="#yedi-soz">Bu hafta yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat niyazı</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Ümidimize bilgi eşlik etsin</h2>
 
-Yüce Yaratanımızın bizler için sunmuş olduğu mübarek bir geceye, günahların bolca bağışlandığı, hatalar ve kusurlar için bağışlanma dileyenler için affın sağanak bir şekilde yağdığı yeni bir fırsat gecesine Beraat gecesine kavuşacağız. Rabbimize şükrediyoruz. Sevgili Peygamberimize O’nun Ehli Beytine ve Ashabına salat ve selam ediyoruz. Bu gecelerde Cenab-ı Hakk’ın kullarına maddî ikramları olduğu gibi manevî ihsanları da vardır. Bu ihsana eren kimseler, büyük bir mazhariyete nail olurlar.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Rabbimizin lütuf ve ihsanının bol bol aktığı, gönüllere nur kattığı bir geceyi yaşayacağız. Üç ayların tam ortasında bulunan Şaban ayının on beşinci gecesi, kültürümüzde Berat gecesi olarak adlandırılır.
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Bu gece üç ayların ikincisi olan Şabanın 15. gecesi. Bu gece Beraat gecesi. Bu gece kurtuluş gecesi. Bu gece mağfiret gecesi. Bu gece af dileyenlerin günahı ne kadar çok olursa olsun, İsterse binlerce koyunun üzerlerinde bulunan tüyler kadar bile olsa affedildiği gece. Bu gece Rızık isteyenler için rızkın bolca verildiği gece. Bu gece dua etmek isteyenler için duaların ret olunmadığı bir gece. Bu gece dertleri olanlar için dertlerine şifa gecesi. Bu gece gönüllerin gecesi.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-Ülkemizin zorlu günler geçirdiği bu günlerde Berat Kandili, birlik, beraberlik ve dayanışma içinde aynı safta toplanıp Ülkemiz, Milletimiz ve tüm Ümmet-i Muhammed için duada bulunma vaktidir.
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-## BERAT NEDİR?
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَّبِّ زِدْنِى عِلْمًا</p>
 
-Berat, Arapça berâe-berâet kelimesinin Türkçeleşmiş şeklidir. Berâet, “iki şey arasında ilişki olmaması; kişinin bir yükümlülükten kurtulması veya yükümlülüğünün bulunmaması” anlamına gelir. Şâban’ın 15. gecesinde Müslümanların Allah’ın affı ve bağışlaması ile günah yükünden kurtulacağı umularak bu geceye Berat gecesi denmiştir
+*Rabbim! İlmimi artır.* (Tâhâ, 20/114; âyetten bölüm)
 
-Yollardaki işaretler gibi hayatımızda da önemli dönüm noktaları vardır. Bunlar, belirli günler, kandiller ve bayramlardır. İşte bu gece de ömrümüzde önemli bir dönüm noktasıdır. Çünkü Cenâb-ı Hak; kullarının ibadetlerini kat kat mükâfatlandırmak, dua ve isteklerini kabul etmek, tövbelerini kabul ederek, günahlarının bağışlanmasına imkân ve fırsat vermek üzere bazı zamanları daha faziletli kılmıştır.
+**Aziz cemaat! Rahmetini umarak Rabbine yönelen kıymetli kardeşlerim!**
 
-Kandiller ve benzeri geceler; iman, ibadet ve düşünce hayatımız bakımından kendimizi yenilememiz, geçmişimizi muhasebe etmemiz, geleceğimizi planlama ve ümitlerimizi tazelememiz için büyük bir fırsattır. Böyle geceleri ve günleri ihya etmek müstehab ve güzel adetlerimizdendir. İmanımızın kemaline, dünya ve ahiret saadetine vesiledir. Bu gece münasebetiyle, içimizdeki manevi duyguların sesine kulak vererek günahlarımıza tövbe etmeli, tüm Müslümanlar ve insanlık için Allah (cc)’a dua ve niyazda bulunmalıyız. Yüce Mevla’mız, bu gecede ilahi rahmetini bol bol indirmekte, rızık ve şifa kapılarını sonuna kadar açarak, bizleri sonsuz ikramlarına davet etmektedir.
+Bir kandil akşamında caminin halısına oturduğumuzda yanımızda günün yorgunluğu da bulunur. Kimimiz iş kıyafetini yeni değiştirmiştir. Kimimiz çocuğunun çantasını hazırlayıp gelmiştir. Evinde kalan bir büyüğümüz ise aynı vakitte ellerini duaya açar. Ayrı yerlerde olsak da hepimizin gönlünde bir dilek vardır: Rabbimize yaklaşmak.
 
-## Kur’ân ve Berat Gecesi
+Berat denince büyüklerimizin duasını, geceye yayılan Kur’an sesini hatırlarız. Bu hatıraları sağlam bilgiyle besleyelim. Gecenin adı bize ne söylüyor? Peygamber Efendimiz (s.a.s.) Şâban ayını nasıl geçiriyordu? Biz bu geceyi hangi ibadetlerle değerlendirebiliriz? Öğrendiğimiz her cevap, önümüzde yürünebilir bir yol açsın.
 
-Kur’ân-ı Kerim, berat gecesinde Levh-i Mahfuz’dan alınmış ve bir bütün hâlinde dünya göğüne indirilmeye başlanmıştır. Bu gecenin mübarek oluşunun önemli sebeplerinden biri de budur. Allah (c.c.) Duhan Suresi 1-7. ayetlerde şöyle buyurmaktadır:
+Bugün bir rivayetin güvenilirliğini öğrenirken gönlümüzdeki ümidi de koruyacağız. Sünnetin gösterdiği ibadet ölçüsünü ailemizin, işimizin ve sağlığımızın şartlarıyla buluşturacağız. Rabbimizden doğru bilgiyi samimi bir gayrete dönüştürme kuvveti isteyelim. Bu geceden yanımıza açık bir niyet alalım.
 
-<p class="vaaz-etiket">Âyet-i Kerîme</p>
+**Berat’ı sağlam bilgiyle anlayalım, Şâban’ı sünnetle yaşayalım, geceyi samimiyetle ihya edelim.**
 
-<p lang="ar" dir="rtl" class="ayet">حٰمٓۜ ﴿1﴾ وَالْكِتَابِ الْمُب۪ينِۙ ﴿2﴾ اِنَّٓا اَنْزَلْنَاهُ ف۪ي لَيْلَةٍ مُبَارَكَةٍ اِنَّا كُنَّا مُنْذِر۪ينَ ﴿3﴾ ف۪يهَا يُفْرَقُ كُلُّ اَمْرٍ حَك۪يمٍۜ ﴿4﴾ اَمْرًا مِنْ عِنْدِنَاۜ اِنَّا كُنَّا مُرْسِل۪ينَۚ ﴿5﴾ رَحْمَةً مِنْ رَبِّكَۜ اِنَّهُ هُوَ السَّميعُ الْعَليمُۙ ﴿6﴾ رَبِّ السَّمٰوَاتِ وَالْاَرْضِ وَمَا بَيْنَهُمَاۢ اِنْ كُنْتُمْ مُوقِنِينَ ﴿7﴾</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/berat-kandili-ve-tevbe/kapak.svg" width="1600" height="900" alt="Yıldızlı gökyüzü altında sade bir caminin yazısız mihrap kemeri ve boş seccade sıraları." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Şâban gecesinde sükûnet</strong> Gecenin dinginliği, kulluğa ayrılan vakti hatırlatır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-*“Hâ Mîm. Apaçık olan Kitab’a andolsun ki, biz onu mübârek bir gecede indirdik. Şüphesiz biz insanları uyarmaktayız. Katımızdan bir emirle her hikmetli iş o gecede ayırt edilir. Eğer kesin olarak inanıyorsanız, Rabbinden; göklerin, yerin ve bu ikisi arasındakilerin Rabbinden bir rahmet olarak biz peygamberler göndermekteyiz. O hakkıyla işitendir, hakkıyla bilendir.”* (Duhân, 44/1-7)
+---
 
-Kur’ân inmeden önce insanoğlunun efkârını dalâlet, kalbini küfür bulutları kaplamıştı, insan Rabbini bırakmış, taşlara, ağaçlara ve putlara tapmaya başlamıştı. İnsan denilen tabiri caizse insanlığını unutmuştu. Cinayet ve rezaletler, sayılamayacak kadar çok, yazılamayacak kadar bayağı idi.
+<h2 class="vaaz-bolum-baslik" id="beratin-anlami" tabindex="-1">I. Berat: Affı uman bir gönülle</h2>
 
-İşte bu durumda olan yeryüzüne, Kur’ân-ı Kerim’in inmesinin birinci kademesi, Şâbân-ı Şerifin 15. gecesine tesadüf ettiğinden bu gece müstesna bir değer taşımaktadır. Bu gece hürmetine, birçok günahlar bağışlandığı için, Berat Gecesi adını almıştır.
+**Muhterem Müslümanlar! Bir geceye verdiğimiz isim, o geceye nasıl yöneldiğimizi de anlatır.**
 
-## Bu Gecenin Beş Hususiyeti
-
-Peygamberimizin (a.s.) hadislerinde bu gecenin önemine vurgu yapılmıştır. Bu gecede beş büyük haslet vardır:
-
-BİRİNCİSİ: Hikmetli her iş bu gece tefrik ve vazife sahiplerine tevzi olunur. Levh-i Mahfuz’daki İlâhî takdirler arasından o sene içinde cereyan edecek, hadise ve olayların icrasına bu geceden itibaren başlanır ve Kadir Gecesinde tamamlanır.
-
-Erzakla ilgili nüsha, Mikâil aleyhisselâma, harb, zelzele ve diğer felâketlerle ilgili nüsha, Cebrail aleyhisselâma; kulların işleriyle ilgili nüsha, Hazret-i Azrail’e verilir.
-
-İKİNCİSİ: Bu gece yapılan ibadetin fazileti pek büyüktür. Hz. Âişe (r.a.) şöyle naklediyor: Bir gün Hz. Peygamber yanıma girdi, elbisesini çıkardı. Biraz durduktan sonra tekrar giyindi. Ortaklarımdan birinin yanına gidecek diye beni bir kıskançlık aldı. O, dışarı çıkınca ben de peşine takıldım. Bakiü’l-Garkad denilen kabristana vardı. Mü’minlere ve şehitlere duâlar etti. Kendi yaptığımdan kendim utandım ve “Anam babam sana feda olsun. Sen Rabbinin rızası peşinde, bense dünya peşindeyim”, diyerek geri döndüm. Biraz sonra Resûlullah da içeri girdi. Benim sık sık nefes alışımın sebebini sordu. Kendisine olup bitenleri anlattım. Buyurdular ki: “Allah’ın Resûlü sana haksızlık edecek diye mi korkuyorsun?”. Resûl-i Ekrem elbisesini çıkardıktan sonra “Bu gece ibadet yapmama müsaade eder misin?” dedi, ben de: “Anam babam sana feda olsun, evet, cevabını verdim.” Namaz kılmaya başladı. Bir ara secdede o kadar çok kaldı ki, endişelendim ve yoklarken elim ayağına dokunmuş olacak ki kımıldadı. Ben de hayatta olduğuna kanaat getirerek sevindim. Secdede şöyle dua ediyordu: “Ya Allah, azabından afvine sığınıyorum, gadabından rızana iltica ediyorum. Senden sana sığınıyorum. Hiçbir senayı, senin nefsine karşı olan senana denk saymıyorum”. Sabah olunca durumu kendisine haber verdim. “Bunları hem öğren hem de başkalarına öğret. Bunları bana Cebrail öğretti” buyurdu.
-
-ÜÇÜNCÜSÜ: Cenâb-ı Hak bu gecede Benî Kelb kabilesinin koyunlarının tüyleri sayısınca ümmet-i Muhammed’e rahmet eder.
-
-Hz. Âişe validemiz Peygamberimizi tanıtırken şöyle buyurmuştur:
-
-<p class="vaaz-etiket">Hadîs-i Şerîf</p>
-
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ، قَالَتْ فَقَدْتُ النَّبِيَّ ـ صلى الله عليه وسلم ـ ذَاتَ لَيْلَةٍ فَخَرَجْتُ أَطْلُبُهُ فَإِذَا هُوَ بِالْبَقِيعِ رَافِعٌ رَأْسَهُ إِلَى السَّمَاءِ فَقَالَ ‏"‏ يَا عَائِشَةُ أَكُنْتِ تَخَافِينَ أَنْ يَحِيفَ اللَّهُ عَلَيْكِ وَرَسُولُهُ ‏"‏ ‏.‏ قَالَتْ قَدْ قُلْتُ وَمَا بِي ذَلِكَ وَلَكِنِّي ظَنَنْتُ أَنَّكَ أَتَيْتَ بَعْضَ نِسَائِكَ ‏.‏ فَقَالَ ‏"‏ إِنَّ اللَّهَ تَعَالَى يَنْزِلُ لَيْلَةَ النِّصْفِ مِنْ شَعْبَانَ إِلَى السَّمَاءِ الدُّنْيَا فَيَغْفِرُ لأَكْثَرَ مِنْ عَدَدِ شَعَرِ غَنَمِ كَلْبٍ ‏"</p>
-
-"Bu gece (Şaban’ın 15. gecesi) Peygamber (s.a.s.)’i dışarı çıkıp aramaya başlamıştım ki (O’nu) Baki’ Kabristanı’nda başını göğe kaldırmış hâlde buldum. Buyurdu ki: “Ey Aişe, Allah ve Resûlü’nün sana haksızlık etmesinden mi korktun? dedim. Hz. Aişe validemiz “Diğer hanımlarından birinin yanına gittiğini zannettim” dedi. *Peygamberimiz buyurdu ki Allah Teâlâ Şabanın 15. gecesinde (bu gecede) dünya semasına iner, Ben-i Kelb kabilesinin koyunlarının tüyleri sayısınca insanları bağışlar."* (İbn Mâce, İkâmetü’s-Salât, 191)
-
-DÖRDÜNCÜSÜ: Mağfiretin husulüdür. Peygamber Efendimiz buyuruyor ki:
-
-<p class="vaaz-etiket">Hadîs-i Kudsî</p>
-
-<p lang="ar" dir="rtl" class="ayet">يا ابنَ آدمَ إنَّكَ ما دعوتَني ورجوتَني غفرتُ لكَ عَلَى مَا كَانَ فيكَ ولا أُبالي. يا ابنَ آدمَ لوْ بَلَغَتْ ذُنُوبُكَ عَنَانَ السَّمَاءِ ثُمَّ استغفرتَني غفرتُ لكَ ولا أُبالي. يا ابنَ آدمَ إنَّكَ لوْ أتيتني بِقُرابِ الأَرْضِ خَطَايا ثُمَّ لَقِيتَني لا تُشرِكُ بي شيئاً لأتيتُكَ بِقُرابِهَا مَغفِرةً".</p>
-
-Enes b. Malik (r.a.) Resûlullah (s.a.s.) şöyle buyururken dinledim dedi: “Allah Teâlâ şöyle buyurdu:
-
-Ey Âdemoğlu! Sen bana dua ettiğin ve benden affını umduğun sürece, işlediğin günahlar ne kadar çok olursa olsun, onların büyüklüğüne bakmadan seni bağışlarım.
-
-Ey Âdemoğlu! Günahların gökyüzünü kaplayacak kadar çok olsa, sonra da benden affını dilesen, seni affederim.
-
-Ey Âdemoğlu! Sen yeryüzünü dolduracak kadar günahla karşıma gelsen; fakat bana hiçbir şeyi ortak koşmamış olsan, şüphesiz ben de seni yeryüzü dolusu bağışla karşılarım.” (Tirmizî, Daavât, 98; Ahmed İbni Hanbel, Müsned, V/172)
-
-Bu gecenin bereketinden istifade edemeyecek olanları da Peygamberimiz (a.s.) şöyle anlatıyor.
-
-<p class="vaaz-etiket">Hadîs-i Şerîf</p>
-
-<p lang="ar" dir="rtl" class="ayet">عَنْ رَسُولِ اللَّهِ ـ صلى الله عليه وسلم ـ قَالَ ‏"‏ إِنَّ اللَّهَ لَيَطَّلِع فِي لَيْلَةِ النِّصْفِ مِنْ شَعْبَانَ فَيَغْفِرُ لِجَمِيعِ خَلْقِهِ إِلاَّ لِمُشْرِكٍ أَوْ مُشَاحِنٍ ‏"</p>
-
-Peygamber’den (s.a.s.) gelen bir rivayette ise *“Allah Taala (c.c.), Şa’ban ayının onbeşinci gecesi (kullarına rahmetle) nazar eder. Müşrikle, müşahin (kindar bencil) bu aftan yararlanamazlar.”* (İbn Mâce, İkâmetü’s-Salât, 191, Hadis No: 1390)
-
-Merhum Elmalılı Muhammed Hamdi Yazır’ın Hak Dini Kur’an Dili isimli tefsirinde belirtildiğine göre “anne ve babasını incitenler, büyücüler, başkalarına kin besleyenler ve içki düşkünleri bu gecenin faziletinden yararlanamazlar” (Elmalılı, Hak Dini Kur’an Dili, VI/4293).
-
-<p class="vaaz-etiket">Hadîs-i Şerîf</p>
-
-<p lang="ar" dir="rtl" class="ayet">خمس ليال لا ترد فيهن الدعوة: أول ليلة من رجب، وليلة النصف من شعبان، وليلة الجمعة، وليلة الفطر، وليلة النحر</p>
-
-Başka bir hadiste ise *"Beş gece vardır ki onlarda yapılan dualar geriye çevrilmez. Bunlar Recebin ilk (cuma) gecesi, Şabanın ortasında bulunan gece, Cuma gecesi, Ramazan Bayramı ve Kurban Bayramı geceleridir.”* (Suyûtî, el-Câmiu’s-Sağîr, No: 3952)
-
-BEŞİNCİSİ: Bu gece Peygamber Efendimiz’e şefaat selâhiyetinin tamamı verildi. Şöyle ki: Peygamber Efendimiz Şaban ayının on üçüncü gecesi, ümmetine şefaat edebilmek için Allah Teâlâ’ya niyazda bulundu. Kendisine, ümmetinin üçte birine şefaat etme selâhiyeti verildi. Ümmetine son derece düşkün bulunan Resûlullah, daha fazla kimseye şefaat edebilme arzusu ile yanıp tutuşmaktaydı. On dördüncü geceyi de ibadetle ihya ve Cenab-ı Hakk’a şefaat dileğini tekrar etti. Ümmetinin üçte ikisine şefaat selâhiyeti verildi. Âlemlere rahmet olarak gönderilen Efendimiz, on beşinci geceyi de ibadetle geçirdi ve Mevlâ’ya salahiyetinin genişletilmesi için duada bulundu. Bunun üzerine ümmetinin tamamına şefaat selâhiyeti verildi.
-
-## Kıblenin Tahvili
-
-Bu geceye değer kazandıran hususlardan biri de kıblenin Kudüs istikâmetinden, Mescid-i Haram tarafına çevrilmiş olmasıdır.
-
-İslamiyet’in başlangıcında namazlar Kudüs’e Beytülmakdis’e karşı eda edilmekte idi. Resûlullah, ceddi Hazret-i İbrahim’in kıblesi bulunan Kâbe’ye yönelerek namaz kılmak için arzu taşıyor ve vahye intizar ediyordu. Bu hâl, hicreti takiben on altı ayı aşkın bir zaman böyle devam etti.
-
-Hicretin ikinci senesi, Şaban ayının on beşinci günü Efendimiz, Benî Seleme yurduna varmıştı. Onların mescidinde öğle namazının farzını kıldırırken kıblenin değiştirilmesiyle ilgili şu âyet-i kerime geldi:
+Berat, yükümlülükten kurtulma anlamı taşıyan bir kelimedir. Şâban ayının on beşinci gecesine bu ad, Allah’ın affıyla günah yükünden kurtulma ümidiyle verilmiştir. Takvimde işaretlenen gece, on dördüncü günü on beşinci güne bağlayan gecedir. İsmindeki ümit, bizi Rabbimizin rahmetine yöneltir. (TDV İslâm Ansiklopedisi, “Berat Gecesi”.)
 
 <p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِذَا سَأَلَكَ عِبَادِى عَنِّى فَإِنِّى قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا۟ لِى وَلْيُؤْمِنُوا۟ بِى لَعَلَّهُمْ يَرْشُدُونَ ۝١٨٦</p>
 
-<p lang="ar" dir="rtl" class="ayet">قَدْ نَرَى تَقَلُّبَ وَجْهِكَ فِى السَّمَآءِ فَلَنُوَلِّيَنَّكَ قِبْلَةً تَرْضَىٰهَا فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ وَحَيْثُ مَا كُنْتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ وَاِنَّ الَّذِينَ اُوتُوا الْكِتَابَ لَيَعْلَمُونَ اَنَّهُ الْحَقُّ مِنْ رَبِّهِمْ وَمَا اللهُ بِغَافِلٍ عَمَّا يَعْمَلُونَ</p>
+*Kullarım sana beni sorduklarında bilsinler ki şüphesiz ben yakınım; bana dua ettiğinde dua edenin dileğine karşılık veririm. Şu halde benim davetime gelsinler ve bana iman etsinler ki doğru yolu bulabilsinler.* (Bakara, 2/186)
 
-*“Ey peygamber! Biz, senin yüzünün göğe doğru çevrilip durduğu-nu, Allah ve Cibril’den haber beklediğini görüyoruz. Merak etme, elbette seni, hoşlanacağın bir kıbleye döndüreceğiz. Bundan böyle, yüzünü Mescid-i Haram tarafına çevir. Nerede olursanız yüzlerinizi o yöne çevirin. Aslında kitap verilenler, kıble değişikliğinin Rableri tarafından bildirilen bir gerçek (hak) olduğunu çok iyi bilirler. Allah onların yaptıklarından habersiz değildir ki.”* (Bakara, 2/144)
+Bu âyet oruç hükümlerinin arasında yer alır. Ramazan yaklaşırken bize Rabbimizin yakınlığını hatırlatır. Dua eden kul, derdini Allah’a açar. Aynı âyetin devamında Allah’ın çağrısına uyma ve iman etme daveti vardır. Ellerimiz duaya kalkarken hayatımız da bu çağrıya açılsın.
 
-Peygamber Efendimiz, namaz içinde yönünü kıbleye, Kâ’be-i Muazzama tarafına çevirdi ve namazın geri kalan iki rek’atini Mescid-i Haram’a doğru kıldı. Bu mescide Mescîdü’l-Kıbleteyn adı verildi.
-
-## Ramazan’ın Müjdecisi
-
-*Ramazan’ın müjdecisi… Şaban ayının on beşinci gecesi… Berat… Berat… Borçtan, hastalıktan, suç ve cezadan beraat etme, kurtulma… günahlardan arınma, temize çıkma, ilâhî af ve rahmete nâil olma…*
-
-Hz. Peygamber şöyle buyurur:
+Hastane koridorunda bekleyen bir insanın duası bazen birkaç kelimedir. Türkçeyi yeni öğrenen bir kardeşimizin duası başka bir dilde yükselir. Yaşlı bir annemiz bildiği kısa cümleyi tekrar eder. Rabbimize içimizi açarken kelimelerimizi süsleme telaşını bırakalım. Muhtaç olduğumuzu bilerek ve kabulünü umarak isteyelim.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكْثِرُوا الدُّعَاءَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">إِذَا كَانَتْ لَيْلَةُ النِّصْفِ مِنْ شَعْبَانَ فَقُومُوا لَيْلَهَا وَصُومُوا يَوْمَهَا . فَإِنَّ اللَّهَ يَنْزِلُ فِيهَا لِغُرُوبِ الشَّمْسِ إِلَى سَمَاءِ الدُّنْيَا فَيَقُولُ أَلاَ مِنْ مُسْتَغْفِرٍ فَأَغْفِرَ لَهُ أَلاَ مُسْتَرْزِقٌ فَأَرْزُقَهُ أَلاَ مُبْتَلًى فَأُعَافِيَهُ أَلاَ كَذَا أَلاَ كَذَا حَتَّى يَطْلُعَ الْفَجْرُ</p>
+*Kulun Rabbine en yakın olduğu hâl, secde hâlidir. Öyleyse duayı çoğaltın.* (Müslim, 482; rivayetten bölüm; sahih)
 
-*“Şaban ayının 15. gecesini ibadetle geçirin, gündüzünde de oruç tutun. Çünkü Yüce Allah, bu gece dünya semasına rahmetiyle tecelli eder ve ‘Yok mu tövbe eden, tövbesini kabul edeyim? Yok mu rızık isteyen, rızık vereyim? Yok mu şifa isteyen, şifa vereyim... Yok mu başka isteği olan ona da istediğini vereyim?”* (İbn Mâce, İkâmetü’s-Salât, 191)
+Secdede alnımız yere varırken kalbimiz Rabbimize yönelir. Bu yakınlık çağrısı, namazımızdaki kulluk şuurunu derinleştirir. Bildiğimiz dua lafızlarını anlamıyla öğrenelim; namazın adabını da ehline soralım.
 
-Allah Resûlü (s.a.s.), Şaban ayının yarısına denk gelen bu gecede Allah (c.c.) ’a çok ibadet edilmesini, gündüzünde ise oruç tutulmasını tavsiye etmiş ve o gece güneş batınca Allah Teâlâ’nın dünyaya rahmetiyle tecelli ederek fecre kadar, "Bağışlanmak dileyen yok mu, onu bağışlayayım! Rızık isteyen yok mu, ona rızık vereyim! Belaya düçar olan yok mu, ona afiyet vereyim! " Buyurduğunu bizlere müjdelemiştir.
+Berat ümidi, bize verilmiş kesin bir kurtuluş belgesi değildir. Affı isteyen insan, Rabbine yönelmeye devam eder. Eksiklerini gördüğünde tövbe eder; öğrenmesi gerekeni öğrenir. İbadete uzak kalmış bir kardeşimiz de bugünden başlayabilir. Cemaat olarak onun ilk adımını kolaylaştıralım. Her samimi başlangıcın yanında yer bulunsun.
 
-Peygamber Efendimiz (a.s.), Allah (c.c.)’ın rahmetinin ne kadar geniş olduğunu anlatmak için Hz. Aişe (r.a.) ’ye:
+Bu akşam takvime bakarken kendi imkânımızı da görelim. On dakika ayırabilen, o vakti dikkatle değerlendirsin. Daha geniş vakti bulunan, ibadetini sükûnetle sürdürsün. Ortak yönelişimiz Rabbimize olsun. **Berat’ın adındaki ümidi, Allah’a içten bir yönelişe dönüştürelim.**
 
-“Şaban ayının yarısına denk gelen bu gece Allah dünya semasına iner ( rahmetiyle tecelli eder ) ve Kelb kabilesinin koyunlarının kıllarından daha çok sayıda günahkârı bağışlar. ” *buyurmuştu.* (Tirmizî, Savm, 39; İbn Mâce, İkâmetü’s-Salât, 191)
+---
 
-*“Allah Teâlâ, şabanın on beşinci gecesi (Beraat gecesi) tecelli eder ve ana-babaya asi olanlarla, Allah’a ortak koşanlar dışında bütün kullarını bağışlar.”* (İbn Mâce, İkâmetü’s-Salât, 191, Hadis No: 1390; Tirmizî, Savm, 38)
+<h2 class="vaaz-bolum-baslik" id="kuranin-rehberligi" tabindex="-1">II. Mübarek geceyi Kur’an’la anlamak</h2>
 
-Dünyada beratımızı almadan ahiretteki beraatımıza ulaşamayacağız. Dünyada yaşarken beratımızı gerçekleştirecek amellerimizi hayatımıza aktarmadan ahirette beraatımızı alıp cennete ulaşamayacağız. İman etmeden cennete giremeyeceğiz. Birbirimizi sevmeden iman etmiş olamayacağız. Birbirimizi sevmek için ise birbirimize selam vermemiz gerekiyor. O zaman kim olduğuna bakmadan Müslüman kardeşimize sadece Müslüman olduğu için değer verelim. Ona selam verelim, ilişkimizi kesmeyelim. İlişkimizi kesmek isteyenlere fırsat vermeyelim. Beraatını elde etmek isteyen Müslümanlar Efendimizi dinleyelim. Alemlere rahmet olarak gönderilen Peygamberimiz şöyle buyuruyor.
+Bir kitabı açtığımızda okuduğumuz satırın bağlamına dikkat ederiz. Öncesine, sonrasına ve anlattığı bütüne bakarız. Allah’ın kitabını anlamaya çalışırken de âyetleri birlikte dinleriz. Berat hakkında konuşurken bu özen, hem inancımıza hem Kur’an’a duyduğumuz saygının gereğidir.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّآ أَنزَلْنَـٰهُ فِى لَيْلَةِ ٱلْقَدْرِ ۝١</p>
+
+*Biz onu, Kur’an’ı, Kadir gecesinde indirdik.* (Kadr, 97/1)
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">شَهْرُ رَمَضَانَ ٱلَّذِىٓ أُنزِلَ فِيهِ ٱلْقُرْءَانُ هُدًى لِّلنَّاسِ وَبَيِّنَـٰتٍ مِّنَ ٱلْهُدَىٰ وَٱلْفُرْقَانِ</p>
+
+*İnsanlara rehber olan, doğruyu eğriden ayırma ve doğru yolu bulma konusunda açıklamalar getiren Kur’an, ramazan ayında indirilmiştir.* (Bakara, 2/185; âyetten bölüm)
+
+Duhân sûresinin üçüncü âyetinde Kur’an’ın mübarek bir gecede indirildiği bildirilir. Âlimlerin çoğunluğu, burada Kadir gecesinin kastedildiğini açıklamıştır. Az önce okuduğumuz iki âyet bu açıklamanın dayanağıdır. Berat gecesini benimseyen bir yorum da aktarılmıştır; çoğunluğun görüşü Kadir gecesidir. (Kur’an Yolu, Duhân 44/1–3; TDV İslâm Ansiklopedisi, “Berat Gecesi”.)
+
+Bu sebeple Kur’an’ın Berat gecesinde indirildiğini kesin bilgi diye söyleyemeyiz. Kaynakların verdiği bilgiyi sınırlarıyla aktarmak, kalbimizdeki sevgiyi olgunlaştırır. Her geceyi kendi deliliyle tanırız. Kur’an’ın rehberliği hayatımıza böyle yerleşir.
+
+Bir genç, evde duyduğu sözle okuduğu âyet arasında fark görünce bize sorabilir. Mushafı birlikte açalım. Soruyu sonuna kadar dinleyelim. Bildiğimizin dayanağını gösterelim; öğrendiğimiz düzeltmeyi de açıklayalım. Böyle bir konuşmada çocuğumuz, dinî bilginin özenle taşındığını görür. Güven, açıklıkla büyür.
+
+Bu gecede Kur’an okumak için elimizde güçlü bir davet vardır: Rabbimizin kitabıyla bağ kurmak. Okuduğumuz bir âyetin anlamına eğilelim. O âyetin bizi hangi davranışa çağırdığını konuşalım. Sayfalar çevrildikçe anlayışımız da derinleşsin. **Kur’an’ı, âyetlerin birbirini aydınlatan rehberliğiyle okuyalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="rivayetlerin-olcusu" tabindex="-1">III. Rivayeti kaynağı ve derecesiyle taşımak</h2>
+
+**Kıymetli kardeşlerim! Peygamber sevgisi, onun adına söylediğimiz söze özen ister.**
+
+Telefonumuza kandil mesajları gelir. Birinde çok büyük sevaplar, diğerinde bütün sıkıntıları çözeceği söylenen bir ibadet yazılıdır. “Hadis” başlığını görünce şu soruyu soralım: Hangi kaynakta, hangi güvenilirlik derecesiyle aktarılıyor? Bir rivayetin kitapta bulunmasıyla sahih olması ayrı bilgilerdir. İkisini birlikte öğreniriz.
+
+Zayıf, sahih veya hasen rivayet için aranan şartlardan en az birini taşımayan naklin adıdır. Nakil zincirindeki bir kopukluk da buna sebep olabilir. Mevzu terimi ise uydurulmuş rivayeti bildirir. Bu ayrıntılar, duyduğumuz her sözü kendi değeriyle tartmamıza yardım eder. (TDV İslâm Ansiklopedisi, “Zayıf”.)
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Üç rivayet, üç açık kayıt</strong> Aşağıdaki hükümler belirtilen rivayet ve değerlendirmeye aittir.</figcaption>
+<table aria-label="Üç rivayet, üç açık kayıt">
+<thead><tr><th scope="col">Rivayet</th><th scope="col">Kaynak ve sıhhat kaydı</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Rivayet">Kelb kabilesinin koyunları sayısınca bağışlanma</th><td data-label="Kaynak ve sıhhat kaydı">Tirmizî 739: Tirmizî, Buhârî’den senedin zayıf olduğu değerlendirmesini aktarır.</td></tr>
+<tr><th scope="row" data-label="Rivayet">On beşinci geceye ve gündüzüne özel ibadet emri</th><td data-label="Kaynak ve sıhhat kaydı">İbn Mâce 1388: Darussalam değerlendirmesi mevzu, yani uydurmadır; delil olarak kullanılmaz.</td></tr>
+<tr><th scope="row" data-label="Rivayet">Şirk koşan ve kin besleyen hariç bağışlanma</th><td data-label="Kaynak ve sıhhat kaydı">İbn Mâce 1390: Bu senet, Darussalam değerlendirmesinde zayıftır.</td></tr>
+</tbody></table>
+</figure>
+
+Tirmizî, ilk rivayette nakil zincirindeki iki kopukluğu belirtir. Böylece hadis kitabının içinde ilmî tenkidi de görürüz. İbn Mâce’deki rivayetlerin derecelerini söylerken ise burada belirtilen değerlendirmeyi esas alıyoruz. Her rivayeti kendi nakil yolu ve sıhhat kaydıyla tanıyoruz.
+
+Tevhidi korumak ve gönülde kini büyütmemek, müminin daima gözettiği sorumluluklardır. Buradaki asıl dersimiz, dinî bir sözü sağlamlığıyla birlikte nakletmektir. Kaynağı araştıran bir gencin yanında oturup metni birlikte açabiliriz. Onun dikkati, hepimizin daha doğru öğrenmesine vesile olur.
+
+Bir büyüğümüzden duyduğumuz sözün zayıf olduğunu öğrendiğimizde, büyüğümüze olan hürmetimiz sürer. Kendisine yeni öğrendiğimiz bilgiyi incelikle anlatırız. Bize aktardığı hayır arzusunu, doğrulanmış bir dua veya hadisle devam ettiririz. Böylece hem muhabbeti hem ilmî emaneti koruruz.
+
+Hadis numarası elimize geçtiğinde kitabı, metni ve değerlendirmeyi yan yana okuyalım. Aynı konuyu anlatan iki rivayetin sözleri farklı olabilir. Her birinin hükmünü doğru öğrenmek için ehil açıklamaya başvuralım. Ekrandaki kısa bir paylaşımda bu ayrıntılar kaybolabilir; biz kaynağa dönerek onları yeniden görürüz.
+
+Bir rivayeti önce yanlış aktarmışsak doğru bilgisini aynı insanlarla paylaşabiliriz. Bu davranış, öğrettiğimiz söze duyulan güveni artırır. Çocuklarımız da bizden, öğrenmenin ömür boyu sürdüğünü görür. İlmin edebi böylece evimizde yaşar.
+
+**Peygamberimize duyduğumuz sevgi, rivayeti doğru aktarma sorumluluğumuzu büyütsün.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="saban-orucu" tabindex="-1">IV. Şâban’da Peygamberimizin oruç örnekliği</h2>
+
+Sahur vaktinde ocaktaki suyun sesi duyulur. Ev halkı henüz uykudadır. Oruç tutmaya hazırlanan bir kardeşimiz niyetini tazeler. Şâban ayını değerlendirirken önümüzde, Peygamber Efendimizin (s.a.s.) güvenilir rivayetlerle bildiğimiz oruç örnekliği vardır. Bu örnek, ayın geneline yayılır.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَمَا رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم اسْتَكْمَلَ صِيَامَ شَهْرٍ إِلاَّ رَمَضَانَ، وَمَا رَأَيْتُهُ أَكْثَرَ صِيَامًا مِنْهُ فِي شَعْبَانَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">لا تَدْخُلُوا الجَنَّةَ حَتَّى تُؤْمِنُوا وَلا تُؤمِنوا حَتى تحَابُّوا ، أَوَلا أدُلُّكُمْ عَلَى شَئٍ إذا فَعَلْتُمُوهُ تَحاَبَبْتُم ؟ أفْشُوا السَّلام بَيْنَكُم</p>
+*Hz. Âişe şöyle anlatır: Resûlullah’ın ramazan dışında bir ayın tamamını oruçlu geçirdiğini görmedim. Şâban ayındaki kadar çok oruç tuttuğu başka bir ay da görmedim.* (Buhârî, 1969; rivayetten bölüm; sahih)
 
-*“Siz, iman etmedikçe cennete giremezsiniz; birbirinizi sevmedikçe de iman etmiş olamazsınız. Yaptığınız zaman birbirinizi seveceğiniz bir şey söyleyeyim mi? Aranızda selâmı yayınız.”* (Riyâzü’s-Sâlihîn, Hadis No: 849)
-
-## BERAATIMIZI ALMAK İÇİN NE YAPMALIYIZ?
-
-*   BERAATINI ALMAK İSTEYEN MÜMİNLER! HATALI DURUMLARIMIZI HEMEN DÜZELTELİM
-
-Bu dünyadan ayrıldıktan sonra bir daha dönüş yok. Ne kadar ah etsek de ne kadar üzülsek de ve ne kadar pişman olsak da bu hayata veda ettikten sonra dönüşümüz yoktur. Bu sebeple Beraat gecesinde gerçek beraatımızı gerçekleştirmek için ahiret hayatını –hayatımızın hiçbir zamanında unutmayacağımız gibi- bu gecede unutmayalım. Küçük hesapların peşine, geçici dünyanın aldatıcı sevgilerine takılmayalım. Sevgili Peygamberimizin bir hadis-i şerifini sizlerle paylaşmak isterim.
+Bu anlatımda hem gayret hem ölçü bulunur. Şâban’da çok oruç tutan Efendimiz, ramazanı bütün ay tutulan farz oruçla karşılar. Biz de sağlığımızı ve sorumluluklarımızı gözeterek bu sünnetten pay alırız. Nâfile oruç için şartlarımıza uygun günler seçer, niyetimizi Allah’ın rızasına yöneltiriz.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">ذَلِكَ شَهْرٌ يَغْفُلُ النَّاسُ عَنْهُ بَيْنَ رَجَبٍ وَرَمَضَانَ وَهُوَ شَهْرٌ تُرْفَعُ فِيهِ الأَعْمَالُ إِلَى رَبِّ الْعَالَمِينَ فَأُحِبُّ أَنْ يُرْفَعَ عَمَلِي وَأَنَا صَائِمٌ</p>
 
-<p lang="ar" dir="rtl" class="ayet">الكَيِّس مَنْ دَانَ نَفْسَهُ ، وَعَمِلَ لِما بَعْدَ الْموْتِ ، وَالْعَاجِزُ مَنْ أَتْبَعَ نَفْسَه هَواهَا ، وتمَنَّى عَلَى اللَّهِ الأماني</p>
+*Üsâme b. Zeyd, Şâban’da niçin çok oruç tuttuğunu sorunca Efendimiz şöyle cevap verir: Bu, Receb ile Ramazan arasında insanların ihmal ettiği aydır. Bu ayda ameller âlemlerin Rabbine arz edilir. Ben de amelimin oruçluyken arz edilmesini severim.* (Nesâî, 2357; rivayetten bölüm; Darussalam: hasen)
 
-*“Akıllı kişi, nefsine hâkim olan ve ölüm sonrası için çalışandır. Âciz kişi de nefsini duygularına tâbi kılan ve Allah’tan dileklerde bulunup duran (bunu yeterli gören)dır”* (Tirmizî, Sıfatü’l-Kıyâme, 25)
+Efendimizin bu cevabı, dikkatimizin dağıldığı vakitlere de kulluk şuuru taşır. Şâban’daki ibadet gayretimizi ayın günlerine yayarız. İşe giderken, sahuru hazırlarken, iftarı beklerken niyetimizi hatırlarız. Açlığımıza Rabbimizin rızasını istemek eşlik eder. Şâban, ramazana uzanan ibadet alışkanlığımızı besler.
 
-*   HAYAT, DÜNYALIK MENFAATLER, MALLAR VE MAKAMLAR BİZİ ALDATMASIN
+Oruç tutabilen kardeşimiz buna şükretsin; hastalık veya başka bir mazeret yaşayan da dua ve öğrenmeye vakit ayırsın. Herkesin durumu farklıdır. Özel durumlarımızı ehline danışarak yürüyelim. **Şâban’ın sünnetini, ayın geneline yayılan ölçülü bir oruç gayretiyle yaşayalım.**
 
-Ömür çok kısa. Göz açıp kapanıncaya kadar geçmektedir. Hayat her an sona erebilmektedir. Geçen sene beraber olduğumuz, kendisiyle muhabbet edip gülüp eğlendiğimiz nice insanlar aramızdan ayrıldı. Bizlerde bir gün sevdiklerimizden, bu dünyadan ayrılıp gideceğiz. Hiçbir insan dünya hayatında baki değildir. Ölümle bitecek olan bu kısa dünya hayatında yapmış olduğumuz şeyler ahiret yaşantımızı belirleyecektir. İşte bu gecelerin önemi ölüm akla geldikçe bir kat daha artmaktadır. Çünkü bu geceler fırsat gecesidir. Günahlarımız için nasuh tövbesi edebilirsek ve bir daha yaptığımız hatalara dönmez isek, Rabbimizin rızası doğrultusunda yaşar isek Rabbimizin bizlere nice müjdeleri vardır. Allah-u Teala bir ayette şöyle buyurmaktadır.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/berat-kandili-ve-tevbe/sahur.svg" width="1600" height="900" alt="Şafak öncesinde küçük bir ocakta ısınan su, yanında sade ekmek ve bir bardak." loading="lazy" decoding="async">
+<figcaption><strong>Sahurun sessiz hazırlığı</strong> Şâban orucu, nebevî örneği gündelik hayatımıza taşır.</figcaption>
+</figure>
 
-<p class="vaaz-etiket">Âyet-i Kerîme</p>
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَسَارِعُواْ إِلَى مَغْفِرَةٍ مِّن رَّبِّكُمْ وَجَنَّةٍ عَرْضُهَا السَّمَاوَاتُ وَالأَرْضُ أُعِدَّتْ لِلْمُتَّقِينَ الَّذِينَ يُنفِقُونَ فِي السَّرَّاء وَالضَّرَّاء وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ وَاللّهُ يُحِبُّ الْمُحْسِنِينَ وَالَّذِينَ إِذَا فَعَلُواْ فَاحِشَةً أَوْ ظَلَمُواْ أَنْفُسَهُمْ ذَكَرُواْ اللّهَ فَاسْتَغْفَرُواْ لِذُنُوبِهِمْ وَمَن يَغْفِرُ الذُّنُوبَ إِلاَّ اللّهُ وَلَمْ يُصِرُّواْ عَلَى مَا فَعَلُواْ وَهُمْ يَعْلَمُونَ</p>
+<h2 class="vaaz-bolum-baslik" id="ibadette-olcu" tabindex="-1">V. İki direk arasındaki ip: İbadette ölçü</h2>
 
-*“Rabbinizin bağışına, genişliği gökler ile yer arası kadar olan ve Allah’a karşı gelmekten sakınanlar için hazırlanmış bulunan cennete koşun. Onlar, bollukta ve darlıkta Allah yolunda harcayanlar, öfkelerini yenenler ve insanları affedenlerdir. Allah, iyi davrananları sever. Yine onlar, çirkin bir iş yaptıkları yahut kendilerine zulmettikleri zaman, Allah’ı hatırlayıp hemen günahlarının bağışlanmasını isteyenler -ki Allah’tan başka günahları kim bağışlar- ve bile bile işlediklerinde (günahta) ısrar etmeyenlerdir.”* (Âl-i İmrân, 3/133-135)
+Gecenin ilerleyen saatlerinde beden yorulur. Göz kapakları ağırlaşır, okuduğumuz kelimeleri takip etmek güçleşir. İbadet sevgimizle bedenimizin hâlini birlikte gözetmeyi Efendimizden öğreniriz. Bu konuda sahih bir rivayet, gözümüzün önüne sade ve unutulmaz bir görüntü getirir.
 
-*   KANDİL GECELERİ GÜNAHLARLA KARARMIŞ GÖNÜLLERİMİZE RAHMET KANDİLLERİNİN YANDIĞI GECELERDİR
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Çözülmesi istenen ip</p>
 
-Kandil geceleri İlahi ışığın hayatımızı aydınlattığı gecelerdir. Kandil geceleri günahlarımızdan arınmamız vesilesi ile manen ışıldadığımız gecelerdir. Kandil geceleri dualarımızın çokça makbul olması vesilesi ile hayatımıza yeni bir güneşin doğduğu gecelerdir. Bu gecelerden haberdar olalım. Bu gecelerin feyiz ve bereketinden azami şekilde istifade etmeye çalışalım. Paslanan kalplerimizi bu gecelerin hürmetine aydınlatmaya çalışalım. İlahi rahmetin kapanmadığı kapılardan içeri girelim. En Sevgilinin hürmetine Rabbimizin sevdiği kullar olmaya gayret edelim. Razı olunan ve razı olduğumuz bir hayatı yaşamak elimizdedir. Dünya ve ahiret huzuru bizi beklemektedir. Yeter ki unutmayalım. Yeter ki uyumayalım. Manevi uykudan kalkalım. Kalplerimizin gözünü açalım. Yüzümüzü Rabbimize, O’nun dinine, O’nun kitabına ve O’nun Peygamberine dönelim. Hiç beklenmediğimiz anda yardımlar gelecektir. Sıkıntılarımız anında hafifleyecektir. Maddi ve manevi hastalıklarımız şifa bulacaktır. Dünyamız ve ahretimiz pür nur olacaktır.
+Enes b. Mâlik anlatır: Peygamber Efendimiz (s.a.s.) mescide girdiğinde iki direk arasına gerilmiş bir ip gördü. İpin ne olduğunu sordu. Zeyneb’in yorulduğunda ona tutunduğu söylendi. Efendimiz ipin çözülmesini istedi; kişinin dinç olduğu sürece namaz kılmasını, yorulduğunda oturmasını öğütledi.
 
-Bu gecelere has ibadetler ihdas etmek doğru değildir. Ancak bu gecelerin feyiz ve bereketinden istifade etme yolları da elbette gözetilmelidir. Öncelikle şu hususu vurgulamak isterim. Şaban ayı Peygamberimizin ayıdır. Bu ayda ve özellikle bu gecede Sevgililer Sevgilisine salat ve selam getirelim. Yüce Rabbimizi bir ayette şöyle buyurmaktadır.
-
-<p class="vaaz-etiket">Âyet-i Kerîme</p>
-
-<p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا</p>
-
-*“Şüphesiz Allah ve melekleri Peygamber’e salât ediyorlar. Ey iman edenler! Siz de ona salât edin, selam edin.”* (Ahzâb, 33/56)
-
-*   İstiğfar ve tövbede bulunmadan Beraatımızı alamayız
-
-Bu gecede Tövbe ve istiğfarda bulunalım. Çünkü bu gecede Rabbimizin Efendimizin diliyle bizlere müjdesi var. Bu müjdeden yararlanmak için günahlarımıza, isyanlarımıza ve hatalarımıza tövbe edelim, bağışlanma dileyelim. Çünkü Yüce Allah tövbe edenin tövbesini kabul etmektedir. Hud sûresi 3. ayette şöyle buyruluyor.
-
-<p class="vaaz-etiket">Âyet-i Kerîme</p>
-
-<p lang="ar" dir="rtl" class="ayet">وَأَنِ اسْتَغْفِرُواْ رَبَّكُمْ ثُمَّ تُوبُواْ إِلَيْهِ يُمَتِّعْكُم مَّتَاعاً حَسَناً إِلَى أَجَلٍ مُّسَمًّى وَيُؤْتِ كُلَّ ذِي فَضْلٍ فَضْلَهُ وَإِن تَوَلَّوْاْ فَإِنِّيَ أَخَافُ عَلَيْكُمْ عَذَابَ يَوْمٍ كَبِيرٍ</p>
-
-*“Rabbinizden bağışlanma dileyin, sonra da O’na tövbe edin ki sizi belirlenmiş bir süreye (ömrünüzün sonuna) kadar güzel bir şekilde yararlandırsın ve her fazilet sahibine faziletinin karşılığını versin. Eğer yüz çevirirseniz, ben sizin adınıza büyük bir günün azabından korkuyorum"* (Hûd, 11/3)
-
-*   BERAT GECESİ KUR’AN-I KERİM’İN DÜNYA SEMASINA TOPTAN İNDİRİLDİĞİ GECEDİR
-
-Bu gecede Kuran-ı Kerimi bizler de gönlümüze indirmeliyiz. O’nun manevi feyzinden istifade etmeliyiz. Okumalı, anlamalı ve hayatımıza aktarmalıyız. Sadece kendimiz için değil okuduklarımızdan hasıl olan sevabı ise geçmişlerimize göndermeyi de ihmal etmemeliyiz. Çünkü Kur’an-ı Kerime yaşayanlar kadar ölmüş olanların da ihtiyaçları vardır.
-
-Eğer kendimiz gibi neslimizin de beraatını alıp cennet ehlinden olmasını arzu ediyorsak hep birlikte Kurana yönelmeli, Kitabımızı hayat tarzı haline getirmeliyiz. Haftaya pazartesi günü Yaz Kuran Kurslarımıza kayıtlarımız başlıyor. Karnelerini alan çocuklarımızı Kuran okumak, din bilgilerini tazelemek için camilere yönlendirelim. Kurslarımız sizi bekliyor. Kuranın feyiz ve bereketinden çocuklarımızı da nasiplendirelim.
-
-*   Duayı bu gece dilimizden eksik etmeyelim
-
-Duamız olmazsa değerimiz olmaz bizim. Furkan sûresi 77. ayette bu husus şöyle ifade edilmektedir.
-
-<p class="vaaz-etiket">Âyet-i Kerîme</p>
-
-<p lang="ar" dir="rtl" class="ayet">قُلْ مَا يَعْبَأُ بِكُمْ رَبِّي لَوْلَا دُعَاؤُكُمْ فَقَدْ كَذَّبْتُمْ فَسَوْفَ يَكُونُ لِزَاماً</p>
-
-*(Ey Muhammed!) De ki: “Duanız olmasa Rabbim size ne diye değer versin! Siz yalanladınız. Öyle ise azap yakanızı bırakmayacak.”* (Furkan, 25/77)
-
-Efendimiz bu gecede dua edenin duasının kabul olacağını müjdelemektedir. Bu gecede dua etmek de yapacağımız ibadetlerden olmalıdır. Dua ibadettir. Yapıldığı anda ibadet yapılmış sevabı alınmasının yanı sıra kişinin istekleri Yaratan tarafından kendisine verilir. Dua Allah’ı Rab olarak bilmektir. Çünkü el açan el açılandan acizdir. Dua acizliğin ifadesidir. İsteyen istediği şeyin acizidir. İnsan olarak ihtiyaç duyup da istemeyeceğimiz ne vardır ki. İnsan olarak muhtaç olmadığımız ne var ki bu dünyada. Bu sebeple asıl istenmesi gerekenden Allah’ımızdan bu gece çokça isteyelim. Günahı istemeyelim, yanlışa meyletmeyelim. Güzel olanı, kendimize, sevdiklerimize ve bütün insanlara hayır getirecek şeyleri isteyelim. Sadece kendimiz için değil, ailemiz, milletimiz, bütün Müslüman kardeşlerimiz ve insanlık için isteyelim.
-
-Zikir kışa dönmüş kalplerimizi bahara çevirir. Zikir ölmüş ruhlara hayat verir. Allah’ı zikretmek insanın bitmek tükenmez bilmeyen isteklerini bitirir. Zikir bir avuç topraktan başka doymayacak olan nefsimizi doyurur. Zikir ruhu teskin eder. Zikir kemal yolunun anahtarıdır. Zikir arifliğe doğru yol almaktır… Bu gecede zikir bizlere güzellikler katacaktır. Tatmin olmayan kalbimizi tatmin edecektir. Bu gecede Rabbimizi zikretmeyi unutmayalım.
-
-*   GÜN PAYLAŞMA GÜNÜDÜR. GÜN KİMSESİZLERİN KİMSESİ OLMA GÜNÜDÜR
-
-Sevinç tek taraflı değildir. Mutluluk tek başına kişiye gerçek güzelliği getirmemektedir. Paylaşmak asıldır. Bir ekmek paylaşıldığı zaman tatlıdır. Bir sevgi paylaşıldığı zaman artar. Bu gece mutluluğumuzu paylaşalım. Bu gece maddiyatımızı paylaşalım. Bizde olanları olmayanla ulaştıralım. Huzur evlerinde bizleri bekleyenler var. Hastanelerde bizleri hasretle bekleyenler var. Çocuk esirgeme kurumlarında başının okşanmasını bekleyen yetimlerimiz, kimsesizlerimiz var. Yapmış olduğu bir hata yüzünden cezaevlerinde, ıslahhanelerde olanlarımız var. Onlara gidelim. Sevgimizi, muhabbetimizi uzatalım. Bu dünyada Sevgiden mahrum olan hiçbir kimse kalmasın bu gece. Onları Allah’ı hatırlatalım. Yardım edenlerin en hayırlısının ve en güzelinin Allah olduğunu unutmayalım unutturmayalım. Başımıza hiçbir şey gelmez demeyelim. Başına sıkıntı gelmişlere el uzatalım gönül açalım. Merhamet edelim ki merhamete nail olalım. Kimsesizlerin kimsesi olmanın gerekliliğini Efendimizden dinleyelim.
+(Buhârî, 1150; sahih rivayetin anlam özeti.)
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لِيُصَلِّ أَحَدُكُمْ نَشَاطَهُ، فَإِذَا فَتَرَ فَلْيَقْعُدْ</p>
 
-<p lang="ar" dir="rtl" class="ayet">اَلْمُسْلِمُ أَخُــو الْمُسْلِمِ لاَ يَظْلِمُهُ ولاَ يُسْلِمُهُ، ومَنْ كَانَ فِي حاَجَةِ أَخِيهِ كانَ اللَّهُ فِي حاَجَتِهِ، وَمَنْ فَرَّجَ عنْ مُسلمٍ كُرْبةً فَرَّجَ اللَّهُ عَنْهُ بِهاَ كُرْبةً مِنْ كُرَبِ يَوْمِ القِياَمَةِ، وَمَنْ سَتَرَ مُسْلِماً سَتَرَهُ اللَّهُ يَوْمَ الْقِياَمَةِ</p>
+*Sizden biri dinç olduğu sürece namaz kılsın; yorulduğunda otursun.* (Buhârî, 1150; rivayetten bölüm; sahih)
 
-*“Müslüman Müslümanın kardeşidir. Ona zulmetmez, onu düşmana teslim etmez. Din kardeşinin ihtiyacını karşılayanın, Allah da ihtiyacını karşılar. Müslümandan bir sıkıntıyı giderenin Allah da kıyamet günündeki sıkıntılarından birini giderir. Bir Müslümanın ayıbını örtenin, Allah da kıyamet gününde ayıplarını örter.”* (Buhârî, Mezâlim, 3)
+İp çözülürken ibadetin önünden bir güçlük kaldırılıyor. Peygamberimizin rehberliği, ibadet arzusuna yaşanabilir bir yol gösteriyor. Biz de geceyi ihya ederken gücümüzü dikkate alırız. Uykumuz bastırdığında dinlenir, ibadete daha açık bir zihinle döneriz. Sabah namazını gözeterek gecemizi düzenleriz.
 
-Allah merhametlidir merhamet edeni sever. Herkese merhamet edelim. Allah affedicidir affedenleri sever. Affedelim. Küslüğü bir kenara bırakalım artık. Allah şükredenlerin maddi ve maneviyatını çoğaltır, bize iyilik de bulunanlara teşekkür edelim. Allah kusurları bağışlar, hatalarımız için insanlardan özür dileyelim.
+Hz. Âişe’nin Şâban orucunu anlattığı bir başka sahih rivayette şu ölçü de yer alır:
 
-Namaz dinin direğidir. Direklerimizden bazıları eksik kalmış olabilir. Bu gecede dinimizin direği olan namazı çoğaltalım. Geçmişte kılamadıklarımızı kılmaya çalışalım. Kötülükten arınmanın yolu namaz iledir. Bu geceden istifade etmek namaz iledir. Hayatı anlamlandırmanın en temel yolu namaz iledir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">خُذُوا مِنَ الْعَمَلِ مَا تُطِيقُونَ</p>
 
-## BU GECEYE MAHSUS İBADETLER VAR MIDIR?
+*Gücünüzün yettiği amelleri üstlenin.* (Buhârî, 1970; rivayetten bölüm; sahih)
 
-Hz. Peygamber’in Şâban ayına ve özellikle bu ayın on beşinci gecesine ayrı bir önem vererek onu ihya ettiğine dair diğer rivayetleri göz önüne alan bazı âlimler bu geceyi namaz kılarak, Kur’an okuyarak ve dua ederek geçirmenin sevaba vesile olacağını, bu geceye mahsus olmak üzere belli bazı ibadet ve kutlama şekilleri ihdas edip âdet haline getirmenin ise dinde yeri bulunmadığını söylemişlerdir.
+Bu çağrı, kendimize uygun ibadeti seçme sorumluluğu verir. Bir kişi daha uzun okuyabilir, diğeri daha kısa bir vakte sahip olabilir. Kendi imkânımızı tanıyarak sürdüreceğimiz amele karar verelim.
 
-Aslında biz, zamanın bizzat kendi varlığından kaynaklanan bir değeri olmadığını bilmekteyiz. Allah Resulünün bu bağlamda haber verdiği özel zaman dilimlerini hikmet boyutu çerçeve-sinde değerlendirerek, insanlar için günahlarının affına vesile kılınmış ilahi lütuf zamanları olarak görmek yerinde olacaktır.
+Ertesi gün erken saatte otobüs kullanacak bir babanın, hastasına bakacak bir annenin, sınava girecek bir gencin sorumluluğu vardır. Akşamın programını buna göre kurmak, kulluk bilincinin hayata yansımasıdır. İbadet edebilmek için birbirimizin yükünü paylaşalım. Evde bir işi üstlenen kişi, eşine sükûnetle namaz kılacağı vakti açabilir.
 
-Allah (c.c.)’ın her gün ve gecesi, mukadder olduğu, bir gün ve gecenin diğerinden farklı yaratılışta olmadığı halde, bazı gün ve gecelerin diğerinden ayrılışının hikmet ve maslahatı da buradadır. Yeknesak bir hayat tarzı içinde devam eden gecelerde bir ayrılık, farklılık duyacak, kendini kontrol edip, hayatına çeki düzen verecektir ki, diğer gün ve gecelerde farklı bir zamanı, hikmetine uygun şekilde yaşamış olsun.
+Bu rivayet bize başkasının hâlini gözetmeyi de öğretir. Camide sandalyesinde oturan büyüğümüzü, kısa süre kalabilen aileyi, erkenden ayrılan çalışanı anlayışla karşılayalım. İbadet gayretinin büyüklüğünü insanın görünür hareketlerinden bütünüyle ölçemeyiz. Rabbimiz kullarının şartlarını bilir.
 
-Gecenin ihyasının nasıl olacağını soranlar, iç alemlerine dalmalı, tefekkür etmeli, geçmişini bir bir hayalinde canlandırıp, mukayeseler yapmalıdır. Ömür çok kısa… Göz açıp kapanıncaya kadar geçmektedir. Hayat her an sona erebilmektedir. Geçen sene beraber olduğumuz, kendisiyle muhabbet edip gülüp eğlendiğimiz nice insanlar aramızdan ayrıldı. Bizlerde bir gün sevdiklerimizden, bu dünyadan ayrılıp gideceğiz. Hiçbir insan dünya hayatında baki değildir. Ölümle bitecek olan bu kısa dünya hayatında yapmış olduğumuz şeyler ahiret yaşantımızı belirleyecektir. İşte bu gecelerin önemi ölüm akla geldikçe bir kat daha artmaktadır. Çünkü bu geceler fırsat gecesidir. Bu gecede tövbe ve istiğfarda bulunalım. Çünkü Rabbimizin bizlere müjdesi var. Bu müjdeden yararlanmak için günahlarımıza, isyanlarımıza ve hatalarımıza tövbe edelim, bağışlanma dileyelim. Çünkü Allah (c.c.) tövbe edenin tövbesini kabul etmektedir. Nitekim Cenab-ı Hak ayeti kerimede şöyle buyurmaktadır.
+Gece için bir ibadet düzeni hazırlarken dinleneceğimiz vakti de düşünelim. Ev halkına huzur veren bir ses ve davranış taşıyalım. Efendimizin gösterdiği ölçü, gayretimizi korur. **İbadetimizi gücümüzü gözeterek sürdürelim; farz namazlarımızı merkeze alalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="gecenin-duasi" tabindex="-1">VI. Gecenin sessizliğinde Rabbimize yönelmek</h2>
+
+**Aziz cemaat! Gecenin sessizliği, gönlümüzde biriken sözleri Rabbimize açmak için güzel bir imkândır.**
+
+Efendimiz, her gecenin son üçte birine dair sahih rivayette Allah’ın kullarını dua etmeye, istemeye ve bağışlanma dilemeye çağırdığını bildirir. Bu çağrı gece ibadetimizin sağlam dayanaklarındandır. (Buhârî, 1145.) Uyanabildiğimizde, evin sessiz bir köşesinde bu daveti hatırlayalım.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ</p>
+
+*Bana dua eden yok mu, duasına karşılık vereyim? Benden isteyen yok mu, ona vereyim?* (Buhârî, 1145; rivayetten bölüm; sahih)
+
+Dua ederken korkumuzla ümidimizi birlikte taşırız. Yanlışımızı kabul eder, Allah’ın merhametine sığınırız. Sıkıntımızı açıkça söyler, hayırlısını isteriz. Duadan sonra bize düşen sorumluluğu yerine getirecek kuvveti de Rabbimizden dileriz. Kalbimiz bu yönelişle toparlanır.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ وَأَعُوذُ بِكَ مِنْكَ</p>
+
+*Allah’ım! Gazabından rızana, cezalandırmandan affına sığınırım. Senden sana sığınırım.* (Müslim, 486; rivayetten bölüm; sahih)
+
+Hz. Âişe bu duayı, gece Efendimizi arayıp onu secde hâlinde bulduğu rivayette aktarır. Sahih metinde bu gecenin Berat olduğu belirtilmez. Biz duayı nebevî bir sığınış olarak öğreniriz. Namazımızın ardından anlamını hatırlayarak Rabbimize yalvarabiliriz. Kulluğun özü, O’na muhtaç olduğumuzu bilmektir.
+
+**Berat’ı sağlam bilgiyle anlayalım, Şâban’ı sünnetle yaşayalım, geceyi samimiyetle ihya edelim.**
+
+Karanlıkta yanımızda bir ışık bulunduğunda yolumuzu daha rahat görürüz. Doğru bilgi de ibadetimize böyle eşlik eder. Ellerimizi kaldırırken kalbimizdeki bir ihtiyacı açıkça söyleyelim. **Geceye ayırdığımız vakti, Rabbimize içten bir duayla dolduralım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="tilavet-ve-salavat" tabindex="-1">VII. Tilâvet ve salavatla geceyi değerlendirmek</h2>
+
+Mushafın sayfasını çevirdiğimizde kısa bir hışırtı duyarız. Şimdi gündüzün telaşını yavaşlatalım; okuduğumuz kelimelere kulak verelim. Geceyi Kur’an’la değerlendirmek, tilâvete dikkat ve anlamını öğrenmeye gayret ister. Rabbimiz gece ibadetini anlatan sûrede şöyle buyurur:
 
 <p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا</p>
 
-<p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا عَسَى رَبُّكُمْ أَن يُكَفِّرَ عَنكُمْ سَيِّئَاتِكُمْ وَيُدْخِلْكُمْ جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ يَوْمَ لَا يُخْزِي اللَّهُ النَّبِيَّ وَالَّذِينَ آمَنُوا مَعَهُ نُورُهُمْ يَسْعَى بَيْنَ أَيْدِيهِمْ وَبِأَيْمَانِهِمْ يَقُولُونَ رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</p>
+*Kur’an’ı tane tane, hakkını vererek oku.* (Müzzemmil, 73/4; âyetten bölüm)
 
-*“Ey iman edenler! Allah (c.c.)’a içtenlikle tövbe edin. Umulur ki, Rabbiniz sizin kötülük-lerinizi örter, peygamberi (s.a.s.) ve onunla birlikte iman edenleri utandırmayacağı günde Allah (c.c.) sizi, içlerinden ırmaklar akan cennetlere sokar. Onların nurları önlerinden ve sağlarından aydınlatır, gider. “Ey Rabbimiz! Nurumuzu bizim için tamamla, bizi bağışla; çünkü senin her şeye hakkıyla gücün yeter” derler.”* (Tahrim, 66/8)
+Az bildiğimiz bir sûreyi düzgün okumaya çalışabiliriz. Arapça okuyuşunu yeni öğrenen kardeşimiz bir öğreticiden destek alabilir. Meali dinlemek, açıklamasını sormak ve öğrendiğini tekrar etmek için de vakit ayırabiliriz. Her birimizin öğrenme yolu açıktır. Birlikte okurken birbirimizin hızını gözetelim.
 
-✦ ✦ ✦
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱللَّهَ وَمَلَـٰٓئِكَتَهُۥ يُصَلُّونَ عَلَى ٱلنَّبِىِّ ۚ يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ صَلُّوا۟ عَلَيْهِ وَسَلِّمُوا۟ تَسْلِيمًا ۝٥٦</p>
 
-### Sonuç
+*Allah ve melekleri peygambere salât ediyorlar; ey iman edenler, siz de ona salât ve selâm okuyun.* (Ahzâb, 33/56)
 
-Bu mübarek geceler bizlere bir şeyler kazandırmalı, yeni kararlar ve fikirlere sahip olmamıza vesile olmalı. Eğer geceye girişimizle çıkışımız bir olmuşsa, yani ondan evvelki halimizle, sonraki halimiz aynı ise geceyi hakkıyla ihya edememişizdir.
+Peygamberimize salavat getirirken onu bize öğrettiği ibadetle hatırlayalım. Şâban’daki oruç gayretini, gece duasındaki sığınışını, yorulana gösterdiği ölçüyü düşünelim. Salavatımızın ardından bir sünnetini öğrenmek için kaynak açalım. Sevgimiz böylece tanımaya ve örnek almaya dönüşsün.
 
-Bu gecede nefsimizin ve hayatımızın muhasebesini yapalım.
+Evde çocuklarla kısa bir okuma vakti kurulabilir. Çocuk bildiği sûreyi okur, büyüklerimiz duasını paylaşır. Türkçeyi güçlükle takip eden gencimize anlamı anlayacağı dille açıklanır. Herkes bir cümleyi anlayarak ayrılırsa o buluşmanın izi kalır. Namazda okuduğumuz sözleri tanımak, dikkatimizi de besler.
 
-Her gün artan günah yükünden kurtulmak için Allah’ın bizlere bahşettiği Berat gecesi lütfundan istifade edelim ve tövbe edelim.
+Tilâvet ve salavat için Kur’an ve sünnetin genel ibadet davetine dayanırız. Bu gece için seçtiğimiz okuma miktarı, kendi düzenimizi kurmaya yardımcı olur. Okuyuşa adabımız eşlik etsin. **Geceyi tilâvetle aydınlatalım, salavatla Peygamberimizin örnekliğine bağlanalım.**
 
-Uyanık bir kalple Allah’a dua ve niyazda bulunalım.
+---
 
-<p class="vaaz-etiket">Duâ</p>
+<h2 class="vaaz-bolum-baslik" id="gurbet-gecesi" tabindex="-1">VIII. Gurbette aynı geceye farklı vakitler ayırmak</h2>
 
-*Yüce Rabbim ramazan ayının müjdecisi Beraat kandilimizi mübarek eylesin. Günahlarımızın affına vesile eylesin. Habibinin şefaatine bizi nail eylesin. Sevdiklerimizle beraber nice mübarek geceleri, manen en üst seviyede yaşamayı bizlere nasip eylesin.*
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">تَتَجَافَىٰ جُنُوبُهُمْ عَنِ ٱلْمَضَاجِعِ يَدْعُونَ رَبَّهُمْ خَوْفًا وَطَمَعًا وَمِمَّا رَزَقْنَـٰهُمْ يُنفِقُونَ ۝١٦</p>
 
-✦
+*Yataklarından kalkıp korku ve ümitle rablerine dua ederler; kendilerine verdiğimiz rızıktan da harcarlar.* (Secde, 32/16)
+
+Âyette Rabbine yönelen insanın hem duası hem paylaşması anlatılır. Gece ibadeti, gündelik hayatın içindeki sorumluluklarımızla buluşur. Belçika’da aynı kandil akşamını farklı şartlarda yaşarız. Kimimiz camide, kimimiz evde, kimimiz işinin gerektirdiği bir nöbettedir. Herkes kendi imkânını dürüstçe değerlendirsin.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Perondan eve uzanan niyet</p>
+
+Marche-en-Famenne çevresinde gece vardiyasından dönen bir çalışan, istasyonda son bağlantısını bekler. Evde eşinin de yorulduğunu bilir. Birlikte kısa bir okuma vakti ayırmak için haberleşirler. Namazlarını vakitlerinde gözetir, dinlenmeyi de planlarlar. Okula hazırlanacak çocuklarının birkaç dakikalık duasına kulak verirler. Evdeki ibadet, birbirine ayrılan dikkatle huzur bulur.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Şartımıza uygun bir ihya adımı</strong> İbadet düzenimizi hayatın gerçek şartlarıyla birlikte kuralım.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Aile fertleri birbirine dua ve öğrenme vakti açsın.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Namaz vakitlerini gözetelim; dinlenme ve görevlerimizi planlayalım.</dd></div>
+<div><dt>Cemaatte</dt><dd>Ulaşımı zor olana destek, evde kalana uygun bir iletişim imkânı sunalım.</dd></div>
+</dl>
+</figure>
+
+Aziz anneler ve babalar! Çocuğumuz bu geceyi evde nasıl bir sesle hatırlayacak? Sakin bir okuyuş, anlayabildiği bir dua ve kendisini dinleyen bir büyük, güzel bir hatıra bırakır. Hanımların da erkeklerin de ibadete vakit ayırabilmesi için evdeki işleri paylaşalım. Yaşlı ve engelli kardeşlerimizin ihtiyacını kendilerine soralım.
+
+Yeni Müslüman olmuş bir komşumuz, kandilin ne olduğunu öğrenmek isteyebilir. Açıklamayı sade tutalım; bildiğimiz bir duanın anlamını paylaşalım. Camiden ayrılırken çevredeki evlerin sessizliğini gözetelim. İbadetimizin huzuru, mahallemize de ulaşsın. **Herkesin şartını gözeten bir ihya, evlerimize ve çevremize merhamet taşır.**
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/berat-kandili-ve-tevbe/vardiya.svg" width="1600" height="900" alt="Gece vardiyasının ardından sakin bir tren peronunda arkadan görülen tek bir yolcu." loading="lazy" decoding="async">
+<figcaption><strong>Aynı gece, farklı sorumluluklar</strong> İbadete ayırdığımız vakit, hayatımızdaki emanetlerle birlikte düzenlenir.</figcaption>
+</figure>
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="samimiyet-ve-sunnet" tabindex="-1">IX. Samimiyeti sünnetin ölçüsüyle korumak</h2>
+
+Bir mescidin mihrabına baktığımızda yönümüzü buluruz. İbadet hayatımızda da yönümüzü Kur’an ve sünnet belirler. İyi niyetimiz, doğru öğrenmeyle güçlenir. Bu gece hangi ibadeti seçeceğimizi konuşurken başlangıç noktamız kulluğun açık esasları olsun.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَآ أُمِرُوٓا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ وَيُقِيمُوا۟ ٱلصَّلَوٰةَ وَيُؤْتُوا۟ ٱلزَّكَوٰةَ ۚ وَذَٰلِكَ دِينُ ٱلْقَيِّمَةِ ۝٥</p>
+
+*Onlara, Allah’a kulluk etmeleri, hanîfler olarak O’na yürekten inanıp boyun eğmeleri, namaz kılmaları ve zekât vermeleri emredilmişti. Doğru din de işte budur.* (Beyyine, 98/5)
+
+<blockquote class="vaaz-alinti">
+<p>Yolumuz Kitap ve Sünnet’le kayıtlıdır</p>
+<footer>— Cüneyd-i Bağdâdî; TDV İslâm Ansiklopedisi, “Cüneyd-i Bağdâdî”.</footer>
+</blockquote>
+
+Bu kısa sözde irfanın yönünü görürüz. Kalbin coşkusuna vahyin rehberliği eşlik eder. Gönülden ibadet etmek isteyen insan, ibadetinin nasıl öğretildiğini de öğrenir. Böylece duyduğu her yeni tarifi dikkatle değerlendirir; güvenilir bilgiye dayanarak hareket eder.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Geceyi değerlendirmenin sağlam zemini</p>
+
+Önce farz namazlarımızı gözetiriz. Gücümüz ölçüsünde nâfile namaz kılar, Kur’an okur, dua ederiz. Berat’a mahsus yüz rek‘at namaz gibi, belirli rek‘at ve sûre sayılarını sünnet diye belirleyen tariflerin sahih bir dayanağı bulunmamaktadır.
+
+(TDV İslâm Ansiklopedisi, “Berat Gecesi”; Irâkī, Nevevî ve Ali el-Kārî’den aktarılan değerlendirmeler.)
+
+Bir programda kaç dakika okuyacağımızı veya ne kadar kalacağımızı belirlemek, zamanı düzenlememize yardımcı olabilir. Kendimiz için hazırladığımız bu düzenle dinen belirlenmiş bir ibadet şeklini birbirinden ayırırız. Komşumuzun farklı tercihini de aynı özenle dinleriz. Mazereti olanın veya evinde ibadet edenin gönlünü gözetiriz.
+
+Bir mesajı paylaşmadan önce kaynağını açmak birkaç dakikamızı alır. Gerekirse ehil bir kimseye sorarız. Cevabı öğrendiğimizde ailemize açık ve sakin bir dille aktarırız. Böylece hayra çağıran sözümüz güven kazanır. **Samimiyetimizi sağlam bilgiyle besleyelim; ibadetimizi sünnetin ölçüsünde tutalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="devam-eden-ibadet" tabindex="-1">X. Geceden sonraki güne kalan ibadet</h2>
+
+**Sevgili gençler ve kıymetli büyüklerimiz! Gece öğrendiğimiz güzelliği ertesi gün de taşıyalım.**
+
+Sabah ayakkabımızı giyerken, okul çantasını kaldırırken, iş yerinin ışığını açarken hayat yeniden hızlanır. Gecenin sükûneti geride kalabilir. O vakitte seçtiğimiz küçük bir ibadet, günün içinde bize yeniden yön verebilir. Efendimiz devam eden amelin değerini şöyle bildirir:
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ تَعَالَى أَدْوَمُهَا وَإِنْ قَلَّ</p>
+
+*Allah Teâlâ’ya en sevimli ameller, az da olsa devamlı olanlardır.* (Müslim, 783b; rivayetten bölüm; sahih)
+
+Bu hadisi nakleden Hz. Âişe’nin de yaptığı bir amele devam ettiği aynı rivayette anlatılır. Öğrenilen söz, yaşayışta karşılık bulur. Biz de bu gecede seçtiğimiz bir ameli sürdürebileceğimiz yere yerleştirelim. Namazdan sonra kısa bir meal okuması, akşamın belirli vaktinde dua veya düzenli bir ilim dersi olabilir.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَٱقْرَءُوا۟ مَا تَيَسَّرَ مِنَ ٱلْقُرْءَانِ</p>
+
+*Artık Kur’an’dan kolayınıza geleni okuyun.* (Müzzemmil, 73/20; âyetten bölüm)
+
+Bu âyetin devamında hastalardan ve rızık aramak için yolculuk edenlerden söz edilir. Rabbimizin hayatın farklı şartlarını gözeten hitabını duyuyoruz. Kısa bir okuma vaktini düzenli korumak, bu kolaylıktan yararlanarak ibadete devam etmenin yollarından biridir.
+
+Şâban orucu için de kendi durumumuza uygun bir düzen kurabiliriz. Sağlığı elveren, ayın içinde nâfile oruca yer açar. Ramazana yaklaşırken oruçla ilgili özel durumunu ehline danışır. Mezheplerin Şâban’ın ikinci yarısına ilişkin farklı değerlendirmeleri vardır; herkes takip ettiği ilmihal ölçüsünü öğrenerek ilerler. (TDV İslâm Ansiklopedisi, “Şâban”.)
+
+İlk gün çok uzun bir program hazırlamak kolaydır. Onu bir hafta sonra sürdürebilmek daha dikkatli bir seçim ister. Kendimize şu soruyu soralım: Evimdeki ve işimdeki sorumluluklarla birlikte hangi ibadeti düzenli yapabilirim? Cevabımızı somutlaştıralım. Bir vakit seçelim; o vakti mümkün olduğunca koruyalım.
+
+Bir gün aksadığında ertesi gün yeniden başlayabiliriz. Öğrendiğimiz sûreyi tekrar açar, dua için yeniden otururuz. Ailemizden birine birbirimize hatırlatmayı teklif edebiliriz. Çocuğumuzla kurduğumuz kısa okuma alışkanlığı, onun sorularını dinleme imkânı da verir. Gayretimiz zamanla hayatımıza yerleşir.
+
+Geceyi değerlendirirken içimizde doğan hayır isteğini, ulaşabileceğimiz bir işte sürdürelim. Bir hastanın ihtiyacına destek olmak da âyette dua ile birlikte anılan paylaşmayı hayatımıza taşır. Yardımımızda kişinin onurunu gözetelim. İbadete ayırdığımız vakit, çevremize karşı dikkatimizi artırsın. **Berat’ta canlanan ibadet gayretimiz, ertesi gün de yaşayabilsin.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta hayata taşıyacağımız yedi söz</h2>
+
+**Aziz cemaat! Şimdi dinlediklerimizi küçük ve açık kararlara dönüştürelim.**
+
+Telefonumuzun notlarına veya bir kâğıda yapabileceğimiz adımları yazabiliriz. Kendimize uygun zamanı seçelim. Ailemizle konuşurken herkesin şartını dinleyelim. Buradaki sözler, bu hafta başlayabileceğimiz bir gayrete yardımcı olsun. Hayrın devamı için birbirimize destek verelim.
+
+**BİLGİDEN İBADETE YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bir Berat rivayetinin kaynağını bu hafta açacağım.</strong> Sözün hangi kitapta bulunduğunu ve güvenilirlik kaydını birlikte okuyacağım.</li>
+<li><strong>Şâban orucuna dair bir sahih hadis öğreneceğim.</strong> Hz. Âişe’nin anlatımını okuyup oruç tutma imkânıma göre uygulanabilir bir gün belirleyeceğim.</li>
+<li><strong>Bir akşamın ibadet ve dinlenme vaktini planlayacağım.</strong> Sabah namazını ve ertesi günkü sorumluluklarımı gözeten bir düzen kuracağım.</li>
+<li><strong>Kısa bir Kur’an bölümünün anlamını okuyacağım.</strong> Okuduğum âyetin çağrısını anlayamadığım yerde güvenilir bir açıklamaya başvuracağım.</li>
+<li><strong>Nebevî bir duayı anlamıyla öğreneceğim.</strong> Müslim 486’daki sığınış duasını okuyup dua vaktimde anlamını hatırlayacağım.</li>
+<li><strong>Evde bir kişinin ibadet vaktini kolaylaştıracağım.</strong> Yapabildiğim bir işi üstlenerek yakınıma sakin bir okuma veya dua imkânı sunacağım.</li>
+<li><strong>Seçtiğim küçük bir ameli hafta boyunca sürdüreceğim.</strong> Her gün ayırabileceğim kısa bir vakitte okuyacak, dinleyecek veya dua edeceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bir haftada atılabilecek adımlar</strong>Şartına uygun vakti seç; niyetini somut bir işe dönüştür.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Kaynağını aç ve oku</strong></li>
+<li><span aria-hidden="true">2</span><strong>Şâban sünnetini öğren</strong></li>
+<li><span aria-hidden="true">3</span><strong>Vaktini ölçüyle düzenle</strong></li>
+<li><span aria-hidden="true">4</span><strong>Anlamına da vakit ayır</strong></li>
+<li><span aria-hidden="true">5</span><strong>Duayı anlamıyla öğren</strong></li>
+<li><span aria-hidden="true">6</span><strong>Birine vakit aç</strong></li>
+<li><span aria-hidden="true">7</span><strong>Küçük ameli sürdür</strong></li>
+</ol>
+</figure>
+
+Sözümüzün gerçekleşeceği anı gözümüzde canlandıralım. Kaynağı açacağımız kitap evde hangi rafta? Okuyacağımız vakitte telefonumuz nerede duracak? Yakınımızın ibadetine yer açmak için hangi işi üstlenebiliriz? Bu sorular niyetimizi gündelik hayatın içine yerleştirir. Yapacağımız iş belirginleştikçe ona başlamamız kolaylaşır.
+
+Tek başına yaşayan kardeşimiz de bir ders arkadaşına veya güvendiği yakınına ulaşabilir. Okumakta zorlanan büyüğümüz, metnin sesli okunmasını isteyebilir. Bir genç, ailede dinlenen duanın anlamını araştırıp açıklayabilir. Herkes sahip olduğu imkânla bu gayrete katılır. Yardımı ihtiyaca göre paylaşır, birbirimizin öğrenmesini kolaylaştırırız.
+
+Haftanın sonunda seçtiğimiz adıma yeniden bakalım. Hangi vakit bize uygun geldi? Nerede desteğe ihtiyaç duyduk? Uygun bulduğumuz düzeni sürdürelim; zorlandığımız yerde daha küçük bir adımla devam edelim. Kendimize verdiğimiz söz, Rabbimize yönelişimizi besleyen bir alışkanlığa dönüşsün.
+
+Bu sözleri kendimizi ve başkasını yargılamak için kullanmayalım. Niyetimizin hayata geçmesine yardım eden bir hatırlatma olarak taşıyalım. Yorulana destek, öğrenene arkadaş olalım. Evimizde açılan mushafın, paylaşılan işin ve sakin bir duanın bereketini birlikte arayalım.
+
+Rabbimiz gayretimizi kabul buyursun. Öğrendiğimiz bilgiyi faydalı, ibadetimizi samimi, birbirimize davranışımızı merhametli kılsın. Şimdi bu niyetle ellerimizi duaya açalım. **Berat’ı sağlam bilgiyle anlayalım, Şâban’ı sünnetle yaşayalım, geceyi samimiyetle ihya edelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Gecemize huzur, gayretimize devam</h2>
+
+**Kıymetli kardeşlerim! Rabbimizin rahmetini umarak birlikte dua edelim.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ إِنَّنَآ ءَامَنَّا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Biz gerçekten iman ettik; günahlarımızı bağışla, bizi ateş azabından koru.* (Âl-i İmrân, 3/16; âyetten bölüm)
+
+Allah’ım! Bize doğruyu öğrenme gayreti, öğrendiğimizle amel etme kuvveti ver. Dilimizi senin dinin hakkında ölçüsüz konuşmaktan koru. Peygamberimizin sünnetini tanımayı ve sevmeyi nasip eyle. Şâban günlerimizi hayırla değerlendirmeyi, ramazana iman ve ibadet şuuruyla ulaşmayı lütfeyle.
+
+Rabbimiz! Bu gece camide bulunan, evinde sana yönelen, işinin başında sorumluluğunu taşıyan kardeşlerimize rahmet eyle. Ailelerimize huzur, çocuklarımıza güven ver. Gençlerimize sorularını sorabilecekleri hayırlı rehberler nasip eyle. Yeni Müslüman olmuş kardeşlerimizin öğrenmesini kolaylaştır. Büyüklerimize sağlık, engelli kardeşlerimize ihtiyaçlarını karşılayacak imkânlar ihsan eyle.
+
+Allah’ım! Hastalarımıza şifa, onlara bakanlara sabır ve kuvvet ver. Yalnız yaşayanlara hayırlı dostlar, geçim sıkıntısı çekenlere helâl rızık nasip eyle. Uzakta bulunan ailelerimizi hayırla buluştur. Vefat eden müminlere rahmet eyle; anne babalarımızı, hocalarımızı ve bize iyiliği dokunanları mağfiretinle kuşat.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik ver, âhirette de iyilik ver; bizi ateş azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Rabbimiz! Yaşadığımız Belçika’ya ve bütün beldelere huzur ver. Komşularımıza esenlik, insanlara adalet ve merhamet nasip eyle. Zulme uğrayanların yardımcısı ol; bize onlara ulaşacak hayırlı yollar aç. Ortak hayatımızda güvenilir, sözünde duran ve iyiliğe koşan kullarından eyle.
+
+Allah’ım! Önümüzde duran seccadeyi samimi bir yönelişe, açtığımız kitabı faydalı ilme vesile eyle. Gecenin ardından gayretimiz sürsün. Farzlarımızı özenle yerine getirmeyi, gücümüz yettiğince hayırda devam etmeyi nasip eyle. Yanlışımızdan dönmeyi ve affını umarak sana yaklaşmayı bize kolaylaştır. **İbadetimizde samimiyeti ve sünnetin ölçüsünü bize nasip eyle.**
+
+Âmin. Hamd, âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler Kur’an Yolu esas alınarak anlam merkezli verilmiştir; kısaltılan âyet ve hadisler belirtilmiştir. Rivayetlerin sıhhat kayıtları kendi kaynaklarıyla sınırlıdır. Gündelik gurbet sahneleri temsilîdir; tarihî kıssanın kaynağı ayrıca gösterilmiştir.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/114">Tâhâ 20/114</a>.</li>
+<li>Berat ve ümit: <a href="https://quran.com/2/186">Bakara 2/186</a>; <a href="https://sunnah.com/muslim:482">Müslim 482</a>.</li>
+<li>Kur’an’ın gösterdiği bağlam: <a href="https://quran.com/97/1">Kadr 97/1</a>; <a href="https://quran.com/2/185">Bakara 2/185</a>.</li>
+<li>Şâban’da nebevî oruç: <a href="https://sunnah.com/bukhari:1969">Buhârî 1969</a>; <a href="https://sunnah.com/nasai:2357">Nesâî 2357</a>.</li>
+<li>İbadette güç ve denge: <a href="https://sunnah.com/bukhari:1150">Buhârî 1150</a>; <a href="https://sunnah.com/bukhari:1970">Buhârî 1970</a>.</li>
+<li>Gece ve dua: <a href="https://sunnah.com/bukhari:1145">Buhârî 1145</a>; <a href="https://sunnah.com/muslim:486">Müslim 486</a>.</li>
+<li>Tilâvet ve salavat: <a href="https://quran.com/73/4">Müzzemmil 73/4</a>; <a href="https://quran.com/33/56">Ahzâb 33/56</a>.</li>
+<li>Evde ve vardiyada ihya: <a href="https://quran.com/32/16">Secde 32/16</a>.</li>
+<li>Samimiyet ve sağlam ölçü: <a href="https://quran.com/98/5">Beyyine 98/5</a>.</li>
+<li>Geceden gündüze devam: <a href="https://sunnah.com/muslim:783b">Müslim 783b</a>; <a href="https://quran.com/73/20">Müzzemmil 73/20</a>.</li>
+<li>Hatim ve cemaat niyazı: <a href="https://quran.com/3/16">Âl-i İmrân 3/16</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>Berat ve tefsir çerçevesi: <a href="https://islamansiklopedisi.org.tr/berat-gecesi">TDV İslâm Ansiklopedisi — Berat Gecesi</a>.</li>
+<li>Şâban orucu: <a href="https://islamansiklopedisi.org.tr/saban">TDV İslâm Ansiklopedisi — Şâban</a>.</li>
+<li>Gecenin takvimdeki yeri: <a href="https://islamansiklopedisi.org.tr/kandil--gece">TDV İslâm Ansiklopedisi — Kandil</a>.</li>
+<li>Hadis usulü: <a href="https://islamansiklopedisi.org.tr/zayif">TDV İslâm Ansiklopedisi — Zayıf</a>.</li>
+<li>Klasik irfan: <a href="https://islamansiklopedisi.org.tr/cuneyd-i-bagdadi">TDV İslâm Ansiklopedisi — Cüneyd-i Bağdâdî</a>.</li>
+<li>Rivayet tenkidi: <a href="https://sunnah.com/tirmidhi:739">Tirmizî 739 — müellifin senet değerlendirmesi</a>.</li>
+<li>Rivayet tenkidi: <a href="https://sunnah.com/ibnmajah:1388">İbn Mâce 1388 — Darussalam: mevzu</a>.</li>
+<li>Rivayet tenkidi: <a href="https://sunnah.com/ibnmajah:1390">İbn Mâce 1390 — Darussalam: zayıf</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

@@ -2,7 +2,7 @@
 baslik: "Adab ve Erkânıyla Cuma Namazı: Davete İcabet, Cemaate Hürmet"
 ozet: "Cumanın davetini kalbimizle duyalım; namazın hükümlerini, temizliğin inceliğini ve hutbe adabını birlikte öğrenelim. Avrupa’da işten eve uzanan hayatımıza yedi somut söz taşıyalım."
 kategori: ibadet
-kelime: 3887
+kelime: 3792
 docx: "/vaazlar/adab-ve-erkaniyla-cuma-namazi.docx"
 pdf: "/vaazlar/adab-ve-erkaniyla-cuma-namazi.pdf"
 kapak: "/media/vaazlar/adab-ve-erkaniyla-cuma-namazi/kapak-og.webp"
@@ -104,6 +104,7 @@ Yolcuya cuma farz değildir. Hastalığı ağırlaştıracak katılım, zarar g�
 Kadınlara cuma farz değildir. Katılıp geçerli cuma namazı kıldıklarında o günün öğlesini ayrıca kılmazlar. Aynı hüküm, cumaya katılan yolcu ve diğer mazeret sahipleri için de geçerlidir. Cumaya katılmayan kimse öğle namazını eda eder. Çocukları ise ibadetin düzenine sevgiyle alıştırırız.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لَيَنْتَهِيَنَّ أَقْوَامٌ عَنْ وَدْعِهِمُ الْجُمُعَاتِ أَوْ لَيَخْتِمَنَّ اللَّهُ عَلَى قُلُوبِهِمْ ثُمَّ لَيَكُونُنَّ مِنَ الْغَافِلِينَ</p>
 
 *Bazı kimseler cuma namazlarını terk etmekten vazgeçsinler; yoksa Allah kalplerini mühürler de gafillerden olurlar.* (Müslim, 865; rivayetten bölüm)
 
@@ -316,15 +317,14 @@ Akşam yaklaşırken evin penceresine sakin bir ışık düşer. Haftanın tela�
 
 *Cuma günü bana çokça salât getirin; çünkü salâtlarınız bana arz edilir.* (Ebû Dâvûd, 1047; rivayetten bölüm)
 
-Salavatı günün uygun vakitlerinde okuyabiliriz. Bir yolculukta, evde kısa bir molada, akşam ailemizle otururken bu bağı tazeleyelim. Çocuğumuz salavatın anlamını sorduğunda, Peygamberimiz için Allah’tan rahmet ve yücelik dilediğimizi açıklayalım. Söylediğini anlaması, sevgisini besler.
+Salavatı günün uygun vakitlerinde okuyabiliriz. Bir yolculukta, evde kısa bir molada, akşam ailemizle otururken bu bağı tazeleyelim.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فِيهِ سَاعَةٌ لاَ يُوَافِقُهَا عَبْدٌ مُسْلِمٌ، وَهْوَ قَائِمٌ يُصَلِّي، يَسْأَلُ اللَّهَ تَعَالَى شَيْئًا إِلاَّ أَعْطَاهُ إِيَّاهُ</p>
 
 *Cuma gününde öyle bir vakit vardır ki namaz ve dua hâlindeki Müslüman kul Allah’tan bir şey dilerse Allah ona verir. Resûlullah (s.a.s.), bu vaktin kısa olduğunu eliyle işaret etmiştir.* (Buhârî, 935)
 
-Bu müjdeyle günün içine dua durakları yerleştirelim. Yalnız kendi ihtiyacımızı saymakla kalmayıp komşumuzu, hastamızı ve yalnız kalanları da analım. Kimseye söyleyemediği bir yük taşıyan kardeşimiz, Rabbine içini açsın. Dua eden insan, derdini bilen Rabbine yönelir.
-
-Bir büyüğümüzün duasını isteyelim; gencimizin duasına da âmin diyelim. Evde küçük bir çocuk ellerini açtığında sözünü sabırla dinleyelim. Aile içinde yaşanan bu sakin an, ibadetin sıcaklığını duyurur. Cumanın hatırası bir çocuğun zihninde o sesle kalabilir.
+Bu müjdeyle günün içine dua durakları yerleştirelim. Yalnız kendi ihtiyacımızı saymakla kalmayıp komşumuzu, hastamızı ve yalnız kalanları da analım. Dua eden insan, derdini bilen Rabbine yönelir.
 
 Hutbe sırasında dinleme adabını koruruz. Hanefî ilmihalinde Peygamberimizin adı anıldığında salavatın içinden getirilmesi öğütlenir. Günün diğer vakitlerinde ise salavat ve duaya gönlümüzce zaman ayırırız. Her ibadeti kendi adabıyla güzelleştiririz.
 
@@ -352,14 +352,13 @@ Yan yana duran iki çift ayakkabının sahipleri birbirine kırgın olabilir. Ay
 Bu çağrıyı cami kapısında uygulayabiliriz. Yeni gelenin adını soralım; başka dilde konuşana sabırla kulak verelim. Hanımların ibadet ve dinleme imkânını özenle gözetelim. Çocuklara önceden adabı anlatalım; zorlandıklarında aileleriyle birlikte çözüm arayalım. Birlikte öğrenmeye yer açılsın.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">الصَّلَوَاتُ الْخَمْسُ وَالْجُمُعَةُ إِلَى الْجُمُعَةِ وَرَمَضَانُ إِلَى رَمَضَانَ مُكَفِّرَاتٌ مَا بَيْنَهُنَّ إِذَا اجْتَنَبَ الْكَبَائِرَ</p>
 
 *Büyük günahlardan kaçınıldığında beş vakit namaz, bir cumadan diğer cumaya ve bir ramazandan diğer ramazana kadar aradaki günahlara kefaret olur.* (Müslim, 233c)
 
 Bu müjde bizi tövbeye ve davranışımızı düzeltmeye çağırır. Üzerimizde insan hakkı varsa hakkı sahibine ulaştırmaya çalışırız. Kırdığımız gönül için özür diler, tekrarlanan hatamız için tedbir alırız. Her cuma yeniden yönelme fırsatımız vardır. Ümidimizi diri tutalım.
 
 Namaz çıkışında yalnız duran bir büyüğümüzün yanına oturalım. Hastalığı sebebiyle gelemeyenin hâlini soralım. Yeni Müslüman olan kardeşimizin namazdan sonra soracak birini bulmasını sağlayalım. Cemaati tanıdık yüzlerin çevresinden genişletmek, hepimizin küçük katkısıyla mümkün olur.
-
-Sosyal medyada paylaştığımız cuma mesajını bir davranışla tamamlayalım. Ulaşımı zor birine yardım etmek veya küs olduğumuz kişiye nezaketle yaklaşmak elimizdedir. Bu hafta hangi kapıyı çalabileceğimizi belirleyelim. Safta omuz omuza duran bedenlerimizin yanında gönüllerimiz de yakınlaşsın.
 
 <figure class="vaaz-gorsel vaaz-illustrasyon">
 <img src="/media/vaazlar/adab-ve-erkaniyla-cuma-namazi/ortak-yol.svg" width="1600" height="900" alt="Açık tutulan bir yaya yolu, bisiklet parkı ve küçük cami avlusundaki ahşap oturma yeri." loading="lazy" decoding="async">

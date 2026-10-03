@@ -84,6 +84,7 @@ Tîn sûresi insanın güzel yaratılışını hatırlatır; devamında iman ve 
 Bu kısa tarif, edebi bir alışkanlık olarak hatırlatıyor. İnsan her karşılaşmada biraz daha incelik öğrenebilir. Yaşlı birinin yanında adımını yavaşlatmak, kendisine yol gösterene teşekkür etmek, ödünç aldığı kitabı temiz tutmak… Kalbin terbiyesi elde, seste ve adımda görünür. Kimse görmediğinde de aynı özeni sürdürürüz.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَا شَيْءٌ أَثْقَلُ فِي مِيزَانِ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ مِنْ خُلُقٍ حَسَنٍ وَإِنَّ اللَّهَ لَيَبْغَضُ الْفَاحِشَ الْبَذِيءَ</p>
 
 *Kıyamet günü müminin mizanında güzel ahlâktan daha ağır bir şey yoktur. Allah, çirkin sözlü ve hayâsız kimseye buğzeder.* (Tirmizî, 2002; Tirmizî: hasen-sahih)
 

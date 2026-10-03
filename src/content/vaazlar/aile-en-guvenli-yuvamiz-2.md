@@ -295,6 +295,7 @@ Ekran sınırını konuştuğumuz akşam, kendi alışkanlığımızı da açık
 <h2 class="vaaz-bolum-baslik" id="mahremiyet" tabindex="-1">VIII. Mahremiyeti koruyup yardımın yolunu açık tutmak</h2>
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ مِنْ أَشَرِّ النَّاسِ عِنْدَ اللَّهِ مَنْزِلَةً يَوْمَ الْقِيَامَةِ الرَّجُلَ يُفْضِي إِلَى امْرَأَتِهِ وَتُفْضِي إِلَيْهِ ثُمَّ يَنْشُرُ سِرَّهَا</p>
 
 *Eşiyle birbirine yakınlık gösterdikten sonra onun sırrını yayan erkek, kıyamet günü Allah katında konumu en kötü kimselerdendir.* (Müslim, 1437a)
 

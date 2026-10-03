@@ -196,6 +196,7 @@ Elbise insanın bedenine temas eder; eşlik de insanın kırılgan tarafına dok
 Rivayetin devamında, namaz vakti gelince namaza çıktığı bildirilir. Aynı hayatın içinde ailesine hizmet eden ve Rabbine yönelen bir Peygamber görüyoruz. Onun izini sürmek isteyen insan, evdeki işlerin karşısında da kendine bir görev bulur. Bir kap su taşımak, sofrayı toplamak, eşinin işini kolaylaştırmak bu anlayışla kıymet kazanır.
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">خَيْرُكُمْ خَيْرُكُمْ لأَهْلِهِ وَأَنَا خَيْرُكُمْ لأَهْلِي</p>
 
 *Sizin en hayırlınız, ailesine karşı en hayırlı olanınızdır. Ben de aileme karşı sizin en hayırlınızım.* (Tirmizî, 3895; rivayetten bölüm)
 

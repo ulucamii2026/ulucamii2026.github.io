@@ -1,171 +1,495 @@
 ---
-baslik: "Dinin Direği Namaz"
-ozet: "İbadet, bizi yaratan ve birçok lütufta bulunan Allah’a bir teşekkürdür. İnsan, iyiliklerini gördüğü kimselere karşı daima kendisini borçlu hisseder ve her vesile…"
+baslik: "Dinin Direği Namaz: Günün Akışında Beş Vakit"
+ozet: "Namazın vaktini korumak, yoğun bir günün içinde Rabbimize yönelmektir. Avrupa’da iş ve okul hayatında hazırlık, cemaatle güçlenen bağlılık ve aksayan namaza yeniden dönüş üzerine bir davet."
 kategori: ibadet
-kelime: 2789
+kelime: 3923
 docx: "/vaazlar/dinin-diregi-namaz.docx"
 pdf: "/vaazlar/dinin-diregi-namaz.pdf"
+kapak: "/media/vaazlar/dinin-diregi-namaz/kapak-og.webp"
+kapakAlt: "Şafaktan geceye uzanan beş ışık alanı içinde sade bir seccade, okul çantası ve iş ayakkabıları."
 ---
-İbadet, bizi yaratan ve birçok lütufta bulunan Allah’a bir teşekkürdür. İnsan, iyiliklerini gördüğü kimselere karşı daima kendisini borçlu hisseder ve her vesile ile bu borcunu –gördüğü iyiliklere karşılık vermek suretiyle- ödemek ister ve bundan da haz duyar. Hâlbuki insanın bu konuda en çok minnet duyması gereken, hiç şüphe yok ki, Allah’tır. Çünkü insan, O yüce yaratıcının sayısız nimetlerine erişmiş olarak dünyaya gelmiştir. Allah onu en güzel surette yaratmış ve evrende olan her şeyi onun emrine vermiştir. Yeri ve gökleri ve bunlarda olan her şeyi insana hizmet için var etmiştir. Kur’an, bu gerçeğe şöyle işaret eder:
 
-<p lang="ar" dir="rtl" class="ayet">اَللّٰهُ الَّذٖي خَلَقَ السَّمٰوَاتِ وَالْاَرْضَ وَاَنْزَلَ مِنَ السَّمَٓاءِ مَٓاءً فَاَخْرَجَ بِهٖ مِنَ الثَّمَرَاتِ رِزْقاً لَكُمْۚ وَسَخَّرَ لَكُمُ الْفُلْكَ لِتَجْرِيَ فِي الْبَحْرِ بِاَمْرِهٖۚ وَسَخَّرَ لَكُمُ الْاَنْهَارَۚ ﴿٣٢﴾ وَسَخَّرَ لَكُمُ الشَّمْسَ وَالْقَمَرَ دَٓائِبَيْنِۚ وَسَخَّرَ لَكُمُ الَّيْلَ وَالنَّهَارَۚ ﴿٣٣﴾ وَاٰتٰيكُمْ مِنْ كُلِّ مَا سَاَلْتُمُوهُؕ وَاِنْ تَعُدُّوا نِعْمَتَ اللّٰهِ لَا تُحْصُوهَاؕ اِنَّ الْاِنْسَانَ لَظَلُومٌ كَفَّارٌࣖ ﴿٣٤﴾</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/dinin-diregi-namaz/kapak.svg" width="1600" height="900" alt="Şafaktan geceye uzanan beş ışık alanı içinde sade bir seccade, okul çantası ve iş ayakkabıları." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Günün akışında beş vakit</strong> Değişen ışık, gün boyunca koruduğumuz kulluk bağını hatırlatır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-*“(O öyle lütufkâr) Allah’tır ki, gökleri ve yeri yarattı, gökten suyu indirip onunla rızık olarak size türlü meyveler çıkardı; izniyle denizde yüzüp gitmeleri için gemileri emrinize verdi; nehirleri de sizin (yararlanmanız) için akıttı. Düzenli seyreden güneşi ve ayı size faydalı kıldı; geceyi ve gündüzü de istifadenize verdi. O size istediğiniz her şeyden verdi. Allah’ın nimetini sayacak olsanız sayamazsınız. Doğrusu insan çok zalim ve nankördür.”* (İbrâhim 14/32-34)
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#namazin-yeri">Namazın dindeki yeri</a></li>
+<li><a href="#vaktinde-namaz">Vaktin emanet oluşu</a></li>
+<li><a href="#gunun-duzeni">Günü namazla düzenlemek</a></li>
+<li><a href="#iste-namaz">İş hayatında namaz</a></li>
+<li><a href="#okulda-namaz">Gençlerle vakti korumak</a></li>
+<li><a href="#cemaat">Cemaatin desteği</a></li>
+<li><a href="#kolayliklar">Mazeret ve kolaylık</a></li>
+<li><a href="#telafi">Telâfi ve dönüş</a></li>
+<li><a href="#devamlilik">Bugünün namazı</a></li>
+<li><a href="#gunluk-muhasebe">Yanlışları düzeltmek</a></li>
+<li><a href="#yedi-soz">Hayata taşınan yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Günümüzün içinde Rabbimize yer açmak</h2>
 
-Allah’ın kendisine bu kadar nimet verdiği insan, O’na hamd etmek ve şükretmek durumundadır. İşte buna ibadet diyoruz. Evet, hiçbir şeye muhtaç olmayan Allah’ın, insanların ibadetine de ihtiyacı yoktur. Aksine buna muhtaç olan insandır. Çünkü ibadetler her şeyden önce insan hayatını disiplin altına alır. İnsanın belli zamanlarda yerine getirmekle yükümlü olduğu ibadetler, insanı başıboşluktan ve sorumsuzluktan kurtarır. Her işinde Allah’ın gözetim ve denetimini gönlünde duymasını sağlar. Sorumluluk duygusu böylece gelişen insanın toplum içindeki davranışları ve olaylar karşısındaki tavırları ölçülü olur. Diğer taraftan ibadetler, insanın ruhi ve manevi terbiyesine de hizmet eder. Başkalarına karşı kötü duygu ve düşüncelerden arınmasını sağlar. Başkalarıyla olan ilişkilerinde haksızlıklardan sakınmasına yardımcı olurlar. Bunun yanında ibadet, Allah’ın kullar üzerindeki hakkıdır. Muaz b. Cebel (ra)’ın rivayetinde, Peygamberimiz (as) şöyle buyuruyor:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">فقالَ: يا مُعاذُ، هلْ تَدْرِي حَقَّ اللَّهِ على عِبادِهِ، وما حَقُّ العِبادِ على اللَّهِ؟، قُلتُ: اللَّهُ ورَسولُهُ أعْلَمُ، قالَ: فإنَّ حَقَّ اللَّهِ على العِبادِ أنْ يَعْبُدُوهُ ولا يُشْرِكُوا به شيئًا، وحَقَّ العِبادِ على اللَّهِ أنْ لا يُعَذِّبَ مَن لا يُشْرِكُ به شيئًا</p>
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-*Peygamberimiz (as) bana: “Ey Muaz, Allah’ın kulları üzerindeki hakkı nedir bilir misin?” diye sordu. Ben: “Allah ve Rasülü daha iyi bilir.” dedim. Peygamberimiz (as): O’na ibadet etmeleri ve kendisine hiçbir şeyi ortak koşmamalarıdır.” buyurdu. Sonra: “Ey Muaz, kulların Allah üzerindeki hakkı nedir?” buyurdu. Ben: “Allah ve Rasûlü daha iyi bilir.” dedim. Peygamberimiz (as): “O’na ibadet edip, hiçbir şeyi ortak koşmadıkları takdirde, onlara azap etmemesidir.” buyurdu. (İbn Hanbel, 5/239)*
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-İbadet, Allah’ın insanlar üzerindeki hakkı olduğu içindir ki, Allah’tan başkasına-kim olursa olsun-ibadet edilmez. Allah’tan başkasına ibadet etmek veya Allah’a yapılan ibadete başkasını ortak kılmak, en büyük günah sayılmış, bundan tevbe etmedikçe Allah’ın bu günahı bağışlamayacağı Kur’an’da bildirilmiştir. İbadetle, erginlik çağına gelmiş, aklı başında Müslüman olan kadın ve erkekler yükümlüdür. Bu yükümlülük ölünceye kadar devam eder. Kur’an bu durumu şöyle ifade eder:
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-### وَاعْبُدْ رَبَّكَ حَتّٰى يَأْتِيَكَ الْيَقٖينُ
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-***“Sana ölüm gelinceye kadar Rabbine ibadet et.” (el-Hicr 15/99)***
+*Mûsâ, “Rabbim! Gönlüme ferahlık ver. İşimi kolaylaştır. Dilimdeki düğümü çöz ki sözümü anlasınlar” dedi.* (Tâhâ, 20/25–28)
 
-Yüce Allah, insanı boş yere yaratmadığı gibi başıboş da bırakmamış, onu "ibadet" ile sorumlu tutmuştur. Rabbimiz bu hususta şöyle buyurmaktadır:
+**Aziz cemaat! Günün yükünü taşıyan kıymetli kardeşlerim!**
 
-<p lang="ar" dir="rtl" class="ayet">وَمَا خَلَقْتُ الْجِنَّ وَالْاِنْسَ اِلَّا لِيَعْبُدُونِ</p>
+Sabah henüz sokak lambaları yanarken evden çıkanlarımız var. Kimi okul servisine yetişiyor; kimi çocuğunun çantasını hazırlıyor. Bir başkası gece çalışmış, başını yastığa koymaya hazırlanıyor. Saatlerimiz farklı işliyor. Hepimiz aynı Rabbin kullarıyız.
 
-*“Ben cinleri ve insanları ancak bana "ibadet" etsinler diye yarattım”* (ez-Zâriyât 51/56) anlamındaki ayet, bu durumu ifade etmektedir.
+Gün boyunca pek çok çağrı duyuyoruz. Telefon çalıyor, ders başlıyor, müşteri bekliyor. Namaz vakti geldiğinde ise bizi yaratan Rabbimize yöneliyoruz. O’na günümüzün yorgunluğunu ve şükrünü getiriyoruz. Bugün bu yönelişi nasıl koruyacağımızı konuşacağız.
 
-## Namaz Her Hal ve Şartta Kılınmalıdır
+**Namazı vaktinde kılmak, günümüzü Rabbimize verdiğimiz sözle düzenlemektir.**
 
-Hiçbir şey; iş, ticaret, görev, meşgale ve mazeret mümini namazdan alıkoyamaz:
+Namazına titizlik gösterenimiz de yeniden başlamak isteyenimiz de bu davetin içinde. Bugün kalbimizde bir karar yeşersin: Önümüzdeki namaz için yer ve zaman hazırlamak. Rabbimiz niyetimize yardım etsin.
 
-<p lang="ar" dir="rtl" class="ayet">رِجَالٌ لَّا تُلْهِيهِمْ تِجَارَةٌ وَلَا بَيْعٌ عَن ذِكْرِ اللَّهِ وَإِقَامِ الصَّلَاةِ وَإِيتَاءالزَّكَاةِ يَخَافُونَ يَوْماً تَتَقَلَّبُ فِيهِ الْقُلُوبُ وَالْأَبْصَارُ</p>
+**Günün ilk hazırlığına, Rabbimize yönelme niyetini de katalım.**
 
-*“Onlar ne ticaret ne de alış-verişin kendilerini Allah’ı anmaktan, namaz kılmaktan ve zekât vermekten alıkoyamadığı insanlardır. Onlar, kalplerin ve gözlerin allak bullak olduğu bir günden korkarlar.” (en-Nûr 24/37)*
+---
 
-Namazın yerine getirilmesi için dinimiz her türlü kolaylığı sağlamıştır:
+<h2 class="vaaz-bolum-baslik" id="namazin-yeri" tabindex="-1">I. Hayatı taşıyan direk</h2>
 
-Su bulamayanlar, teyemmüm ederek:
+Bir evin tavanını taşıyan direk gözümüzün önündedir; ona dayanarak yaşadığımızı her gün düşünmeyebiliriz. Namazın hayatımızdaki yeri de böylesine temeldir. Günün değişen işleri arasında Allah’a kulluğumuzu tekrar tekrar ayağa kaldırır.
 
-<p lang="ar" dir="rtl" class="ayet">فَلَمْ تَجِدُواْ مَاء فَتَيَمَّمُواْ صَعِيداً طَيِّباًفَامْسَحُواْ بِوُجُوهِكُمْ وَأَيْدِيكُم مِّنْهُ</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">رَأْسُ الأَمْرِ الإِسْلاَمُ وَعَمُودُهُ الصَّلاَةُ</p>
 
-*“Su bulamamışsanız temiz toprakla teyemmüm edin de yüzünüzü ve (dirseklere kadar) ellerinizi onunla meshedin.” (el-Mâide 5/6)*
+*İşin başı İslâm, direği namazdır.* (Tirmizî, 2616; rivayetten bölüm; Tirmizî: hasen-sahih)
 
-Bir tehlikeden korkanlar yaya veya binit üzerinde:
+Efendimiz (s.a.s.), namazı İslâm’ın üzerine kurulduğu beş esastan biri olarak da sayar. Kelime-i şehâdetin ardından namazı anar. İnandığımız hakikat, günün belirli vakitlerinde bedenimizle ve dilimizle yerine getirdiğimiz bir sorumluluğa dönüşür. (Buhârî, 8; anlam özeti.)
 
-<p lang="ar" dir="rtl" class="ayet">فَإنْ خِفْتُمْ فَرِجَالاً أَوْ رُكْبَاناً فَإِذَا أَمِنتُمْ فَاذْكُرُواْ اللّهَ كَمَا عَلَّمَكُم مَّا لَمْ تَكُونُواْ تَعْلَمُونَ:</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَأَقِمِ ٱلصَّلَوٰةَ لِذِكْرِىٓ</p>
 
-*“Eğer (herhangi bir şeyden) korkarsanız (namazlarınızı) yürüyerek yahut binmiş olarak (kılın).Güvene kavuştuğunuz zaman, siz bilmezken Allah’ın size öğrettiği şekilde O’nu anın (namaz kılın).” (el-Bakara 2/239)*
+*Beni anmak için namaz kıl.* (Tâhâ, 20/14; âyetten bölüm)
 
-Savaş halinde olanlar, nasıl güçleri yetiyorsa o şekilde:
+Rabbimiz bu emri Hz. Mûsâ’ya hitabında bildirir. Namazın merkezinde Allah’ı anmak vardır. Seccadeye yönelen insan kendisine verilen ömrün sahibini hatırlar. Kazandığımız ekmeğe, taşıdığımız nefese ve yeniden başlayan güne şükrederiz. Şükrümüz vakit ayıran bir bağlılığa dönüşür.
 
-<p lang="ar" dir="rtl" class="ayet">وَإِذَا كُنتَ فِيهِمْ فَأَقَمْتَ لَهُمُ الصَّلاَةَ فَلْتَقُمْ طَآئِفَةٌمِّنْهُم مَّعَكَ وَلْيَأْخُذُواْ أَسْلِحَتَهُمْ فَإِذَا سَجَدُواْ فَلْيَكُونُواْمِن وَرَآئِكُمْ وَلْتَأْتِ طَآئِفَةٌ أُخْرَى لَمْ يُصَلُّواْفَلْيُصَلُّواْ مَعَكَ وَلْيَأْخُذُواْ حِذْرَهُمْ وَأَسْلِحَتَهُمْ وَدَّ الَّذِينَ كَفَرُواْ لَوْ تَغْفُلُونَ عَنْ أَسْلِحَتِكُمْ وَأَمْتِعَتِكُمْ فَيَمِيلُونَ عَلَيْكُم مَّيْلَةً وَاحِدَةً وَلاَ جُنَاحَ عَلَيْكُمْ إِن كَانَ بِكُمْ أَذًى مِّن مَّطَرٍ أَوْ كُنتُم مَّرْضَى أَن تَضَعُواْ أَسْلِحَتَكُمْ وَخُذُواْ حِذْرَكُمْ إِنَّ اللّهَ أَعَدَّ لِلْكَافِرِينَ عَذَاباً مُّهِيناً</p>
+Farz namazın sorumluluğu, aklı başında ve ergenliğe ulaşmış Müslüman kadın ve erkeği kuşatır; dinimizin tanıdığı muafiyetler ve kolaylıklar da bu çerçevenin parçasıdır. Her birimiz kendi durumumuza ait bilgiyi öğreniriz. Böylece kulluğumuzu sağlam bir bilgiyle yerine getiririz.
 
-*“Sen de içlerinde bulunup onlara namaz kıldırdığın zaman, onlardan bir kısmı seninle namaza dursunlar, silahlarını (yanlarına) alsınlar, böylece (namazı kılıp) secde ettiklerinde (diğerleri) arkanızda olsunlar. Sonra henüz namazını kılmamış olan (bu) diğer gurup gelip seninle namazlarını kılsınlar ve onlar da ihtiyat tedbirlerini ve silahlarını alsınlar. O kâfirler arzu ederler ki siz silahlarınızdan ve eşyanızdan gafil olsanız da üstünüze birden baskın yapsalar. Eğer size yağmurdan bir eziyet olur yahut hasta bulunursanız silahlarınızı bırakmanızda size günah yoktur. Yine de tedbirinizi alın. Şüphesiz Allah, kâfirler için alçaltıcı bir azap hazırlamıştır.” (en-Nisâ 4/102)*
+Namaza yeni alışan kardeşimiz, öğrenmeye bugünkü imkânıyla başlasın. Bilmediği kıraati öğrensin, vaktini sorsun, güvendiği birinden destek alsın. Cemaat olarak onun gayretini selâmla karşılayalım. Yan yana öğrenmek, yolu yakınlaştırır.
 
-Ayakta durmaya güçleri yetmeyen hasta ve özürlüler oturarak, buna da güçleri yetmeyenler, yatarak namazlarını kılabilirler:
+Efendimiz (s.a.s.), kulun kıyamet günü amellerinden ilk hesaba çekileceğinin namazı olduğunu bildirir. Bu haber, bugün bize verilen fırsatın kıymetini hatırlatır. Henüz vakit varken sorumluluğumuza yönelebiliriz. (Tirmizî, 413; anlam özeti; Tirmizî’nin değerlendirmesi: hasen-garîb.)
 
-<p lang="ar" dir="rtl" class="ayet">الَّذِينَ يَذْكُرُونَ اللّهَ قِيَاماً وَقُعُوداًوَعَلَىَ جُنُوبِهِمْ</p>
+Önümüze serilen seccadeye bu bilinçle yaklaşalım. Allah’a bağlılığımızı ertelediğimizde hayatımızın merkezindeki bir görevi geciktirmiş oluruz. Şimdi hazırlanmak, kendi yarınımıza yaptığımız bir iyiliktir.
 
-*“Onlar, ayakta dururken, otururken, yanları üzerine yatarken (her vakit) Allah'ı anarlar.” (Âl-i İmrân 3/191)*
+**Namaz, inandığımız kulluğu her gün ayakta tutar.**
 
-İman kalbine yerleşmiş ve gerçek mümin niteliğini kazanmış bir Müslüman’a, namaz kılmak ağır ve zor gelmez:
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَاسْتَعِينُواْ بِالصَّبْرِ وَالصَّلاَةِ وَإِنَّهَا لَكَبِيرَةٌ إِلاَّ عَلَى الْخَاشِعِينَ</p>
+<h2 class="vaaz-bolum-baslik" id="vaktinde-namaz" tabindex="-1">II. Vakit, ibadetin bir parçasıdır</h2>
 
-*“Sabır ve namaz ile Allah’tan yardım isteyin. Şüphesiz o (sabır ve namaz), Allah’a saygıdan kalbi ürperenler dışında herkese zor ve ağır gelen bir görevdir.” (el-Bakara 2/45)*
+**Muhterem Müslümanlar!**
 
-Mümin, namazlarına müdavimdir:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَـٰبًا مَّوْقُوتًا</p>
 
-<p lang="ar" dir="rtl" class="ayet">إِلَّا الْمُصَلِّينَ-الَّذِينَ هُمْ عَلَى صَلَاتِهِمْ دَائِمُونَ</p>
+*Şüphe yok ki namaz, müminler üzerine vakitleri belli olarak yazılmış bir ödevdir.* (Nisâ, 4/103; âyetten bölüm)
 
-*“Ancak şunlar öyle değildir: Namaz kılanlar ki, onlar namazlarında devamlıdırlar (ihmal göstermezler;).”*
+Bu âyet, tehlike hâlindeki namazın ardından güvene kavuşan müminlere hitap eder. Şartlar değişirken namazla bağımızın korunmasını ister. Vakit, ibadetin yerine getirildiği belirlenmiş zaman dilimidir. Günümüzü düzenlerken bu ölçüyü de hesaba katarız.
 
-(el-Meâric 70/22-23)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">الصَّلاَةُ عَلَى وَقْتِهَا</p>
 
-Namazlarını zevkle ve isteyerek kılar. Yüce Allah, Kur’ân’da, namazı üşene üşene kılmayı:
+*Vaktinde kılınan namaz.* (Buhârî, 527; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّ الْمُنَافِقٖينَ يُخَادِعُونَ اللّٰهَ وَهُوَ خَادِعُهُمْۚ وَاِذَا قَامُٓوا اِلَى الصَّلٰوةِ قَامُوا كُسَالٰىۙ يُرَٓاؤُ۫نَ النَّاسَ وَلَا يَذْكُرُونَ اللّٰهَ اِلَّا قَلٖيلاًؗ</p>
+Abdullah b. Mes‘ûd, Allah’ın en çok sevdiği ameli sorduğunda Efendimiz (s.a.s.) önce bu cevabı verir. Ardından anne babaya iyiliği anar. Vaktinde namaz, sevdiklerimize karşı sorumluluklarımızla aynı hayatın içinde yer bulur.
 
-*“Şüphesiz münafıklar Allah’a oyun etmeye kalkışıyorlar; hâlbuki Allah onların oyunlarını başlarına çevirmektedir. Onlar namaza kalktıkları zaman üşenerek kalkarlar, insanlara gösteriş yaparlar, Allah’ı da pek az hatıra getirirler.” (En-Nisa 4/142)*
+İstasyon peronundaki saate bakarken trenin ne zaman kalkacağını hesaplarız. Namaz için de vaktin ne zaman girip çıkacağını öğreniriz. Bulunduğumuz şehrin güvenilir takvimini takip eder, yolculukta konum değişikliğini hesaba katarız. Mevsimler değiştikçe günlük düzenimizi gözden geçiririz.
 
-Ve terk etmeyi münafıkların:
+Vaktinde kılmak, namazı kendi vakit aralığında eda etmektir. Vaktin girmesiyle camide cemaatin başlaması farklı saatler olabilir. Camideki toplu namaz saatini beklerken gerçek vakit sınırını biliriz. Bir işimizi araya alacaksak namazı tamamlayacak süreyi güvenle ayırırız.
 
-<p lang="ar" dir="rtl" class="ayet">وَمَا مَنَعَهُمْ أَن تُقْبَلَ مِنْهُمْ نَفَقَاتُهُمْ إِلاَّ أَنَّهُمْ كَفَرُواْ بِاللّهِ وَبِرَسُولِهِ وَلاَ يَأْتُونَ الصَّلاَةَ إِلاَّ وَهُمْ كُسَالَى وَلاَ يُنفِقُونَ إِلاَّ وَهُمْ كَارِهُونَ</p>
+İnsan sevdiği buluşmayı hatırlamak için tedbir alır. Takvimimizde namazın yerini belirlemek de bağlılığımızın görünür bir adımıdır. Ekrandaki hatırlatmayı davranışa dönüştüren, bizim irademizdir. Vakit geldiğinde hazırlığımız karşılığını bulsun.
 
-*“Onların harcamalarının kabul edilmesini engelleyen, onların Allah ve Resulünü inkâr etmeleri, namaza ancak üşenerek gelmeleri ve istemeyerek harcamalarından başka bir şey değildir.” (et-Tevbe 9/54)*
+Çocuklarımızın okul saatini bir kez öğrenip bütün yılı ona göre düzenleyebiliriz. Namaz vakitleri ise yıl boyunca değişir. Dün yeterli olan bir mola, haftalar sonra yeniden değerlendirmeyi gerektirebilir. Bu yüzden takvime düzenli bakmak, ibadete gösterdiğimiz dikkatin parçasıdır.
 
-Ve kâfirlerin niteliği olarak zikretmiştir:
+Telefondaki uygulamanın bulunduğumuz şehri doğru gösterdiğini kontrol edelim. Takvimler arasında anlayamadığımız fark varsa güvenilir bir açıklama isteyelim. Böylece hazırlığımız, doğru bilgiye dayanır.
 
-### قَالُوا لَمْ نَكُ مِنَ الْمُصَلِّينَ:
+**Namazın vaktini öğrenmek, onu korumanın ilk adımıdır.**
 
-***“Onlar şöyle cevap verirler: Biz namaz kılanlardan değildik.” (El-Müddessir 74/43)***
+---
 
-İnsanın yaratılış gayesi olan "ibadet" görevini yerine getirebilmesi için, iman edip Allah'ın emir ve yasaklarına uyması, isyan etmemesi ve salih ameller işlemesi gerekir. Kişinin imandan sonra, en başta gelen "ibadet" görevi namazdır. Yüce Allah, ilk insan ve ilk peygamber Âdem (a.s.)'den itibaren bütün insanları "namaz" ibadeti ile sorumlu tutmuş ve bütün peygamberler, kavimlerine "namaz" kılmalarını emretmiştir. Yüce Rabbimiz ve sevgili Peygamberimiz namaz üzerinde ısrarla durmuş, namazlarını kılanlara mükâfat, kılmayanlara ise ceza olduğunu bildirerek, beş vakit namazın kılınmasını ısrarla teşvik etmiş ve terkinden sakındırmışlardır. Nitekim Rabbimiz şöyle buyurmaktadır:
+<h2 class="vaaz-bolum-baslik" id="gunun-duzeni" tabindex="-1">III. Beş vakit için küçük hazırlıklar</h2>
 
-<p lang="ar" dir="rtl" class="ayet">حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلٰوةِ الْوُسْطٰى وَقُومُوا لِلّٰهِ قَانِتٖينَ</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">حَـٰفِظُوا۟ عَلَى ٱلصَّلَوَٰتِ وَٱلصَّلَوٰةِ ٱلْوُسْطَىٰ وَقُومُوا۟ لِلَّهِ قَـٰنِتِينَ ۝٢٣٨</p>
 
-*“Namazları ve orta namazı aksatmadan kılın, huşû içinde Allah’ın huzurunda durun.”* (el-Bakara 2/238)
+*Namazları ve orta namazı aksatmadan kılın, huşû içinde Allah’ın huzurunda durun.* (Bakara, 2/238)
 
-Hz. Peygamber (a.s) namazın İslam’ın şartlarından biri olduğunu şu hadisiyle ifade etmiştir:
+Günün ortasında işler birikebilir. Okul çıkışında trafik ağırlaşır; akşam eve misafir gelir. Âyetin namazları koruma çağrısını, bu değişen şartlar içinde duyarız. Koruduğumuz bir değer için önceden hazırlık yaparız. Namazın hazırlığı da gün başlamadan düşünülebilir.
 
-<p lang="ar" dir="rtl" class="ayet">بُنِيَ الإسْلامُ على خَمْسٍ: شَهادَةِ أنْ لا إلَهَ إلّا اللَّهُ وأنَّ مُحَمَّدًا رَسولُ اللَّهِ، وإقامِ الصَّلاةِ، وإيتاءِ الزَّكاةِ، والحَجِّ، وصَوْمِ رَمَضانَ</p>
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Vakti koruyan hazırlık</strong> Saatler yerel takvimden öğrenilir; aşağıdaki adımlar günlük düzen içindir.</figcaption>
+<table aria-label="Vakti koruyan hazırlık">
+<thead><tr><th scope="col">Günün eşiği</th><th scope="col">Somut hazırlık</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Günün eşiği">Gece yatarken</th><td data-label="Somut hazırlık">Sabah vaktini kontrol et; uyanma tedbirini al.</td></tr>
+<tr><th scope="row" data-label="Günün eşiği">Evden çıkarken</th><td data-label="Somut hazırlık">Bugün dışarıda geçecek namaz vakitlerini belirle.</td></tr>
+<tr><th scope="row" data-label="Günün eşiği">Mola öncesinde</th><td data-label="Somut hazırlık">Uygun mekânı ve namaza yetecek süreyi hazırla.</td></tr>
+<tr><th scope="row" data-label="Günün eşiği">Akşam dönüşünde</th><td data-label="Somut hazırlık">Yemek ve ziyaret programında kalan vakitleri gözet.</td></tr>
+</tbody></table>
+</figure>
 
-*“İslam beş şey üzerine bina olunmuştur: Allah’tan başka ilah olmadığına ve Muhammed’in (a.s) Allah’ın peygamberi olduğuna şehadet etmek, namaz kılmak, zekât vermek, haccetmek ve ramazan orucunu tutmak”* (Buhârî, “Îmân” 1, 2)
+Sabah namazının vakti fecr-i sâdıkla başlar ve güneşin doğuşuyla sona erer. Takvimdeki güneş saati bu bakımdan önemlidir. Sabahı korumak için bir önceki geceden uyku düzenimizi hazırlayalım. Yatağın başındaki telefon, bizi uzun süre oyaladığında sabahki kararımız zorlaşır.
 
-Beş vakit namaz, Peygamberimiz (as)’e peygamberlik geldikten 1,5 yıl sonra Mirac’da farz olmuştur. Namaz, erginlik çağına gelen ve aklı başında olan her kadın ve erkek Müslüman’a farzdır. Erginlik çağına girmemiş olan çocuklara namaz farz değilse de yedi yaşından itibaren namaza başlatılmaları, alışkanlık kazanmaları açısından faydalı olur. Zira Peygamberimiz (as) şöyle buyurur:
+Öğleyle ikindiyi planlarken işe gidiş ve dönüş saatlerini birlikte değerlendirelim. Kısa kış günlerinde aynı yolculuk farklı bir hazırlık gerektirebilir. Yazın geç saatlere kalan yatsı için de ailece birbirimize destek olalım. Takvim değiştikçe alışkanlığımızı yenileyelim.
 
-### مروا أولادَكم بالصَّلاةِ وهم أولاد سبعٍ
+Günün her ayrıntısını denetleyemeyiz; fakat bildiğimiz engeller için önceden adım atabiliriz. Bir alarm kurmak, çantada gerekeni bulundurmak, uygun yeri öğrenmek küçük işlerdir. Bir araya geldiklerinde namazın sürekliliğini desteklerler.
 
-***“Çocuklarınıza yedi yaşına geldiklerinde namaz kılmalarını emredin”* (Ebu Davud, Salat, 417)**
+Bu akşam eve giderken yarının ilk namazını düşünerek bir hazırlık yapalım. Bunu ailede konuşmak isteyenlere de sakin bir zaman ayıralım. Herkesin ihtiyacını duyalım. (Vakit bilgisi: TDV İslâm Ansiklopedisi, “Vakit”.)
 
-Böylece çocuklar, ergenlik çağına gelip namaz kendilerine farz olunca, namaza karşı yabancılık çekmemiş olurlar. Namaz, Allah’a karşı yapılması gereken kulluk görevlerinin en önemlisidir. Çünkü Allah, imandan sonra namazdan daha üstün bir ibadeti emretmemiştir. Namaz, Kur’an’ın pek çok yerinde, çeşitli vesilelerle zikredilmektedir. Namaz, kalp, söz ve bedenle yapılan ibadetleri bir araya toplamış bulunmaktadır. Namazın insan için pek çok yararları vardır. Çünkü Allah, bizlere yararı olmayan bir şeyi emretmemiştir. Zira Allah hiçbir şeye muhtaç değildir. İhtiyacı olan bizleriz, yapılmasını emrettiği her şeyde bizler için pek çok yararlar vardır. Namazın yararları şu şekilde sıralanabilir:
+Hazırladığımız programda yalnız namaza başlayacağımız anı hesaplamayalım. Gerekli hazırlıkla birlikte namazı sükûnetle tamamlayacak süreyi de ayıralım. Daralan vakitte aceleye sürüklenmek yerine, daha önce kullanabileceğimiz imkânı değerlendirelim.
 
-1-) NAMAZ, ALLAH’I HATIRLATIR: İnsan başkasına el avuç açmadan, muhtaç olmadan yaşamak için çalışmak zorundadır. Kendisini çalışmaya veren kimse ise çoğu zaman ölümü ve ölüm ötesindeki hesabı unutur. Bu yüzden her an günah işleyebilir ve günah işlemeyi adet haline getirebilir. Bunun en güzel örneği, kumarbazlarla zevk ve eğlenceye düşkün olanlardır. Bunlar kumar oynamaktan, içki içmekten, zevk ve eğlenceden başka bir şey düşünmezler. Ne ölümü ne ahireti ne de ahiretteki hesabı düşünürler. Hiç ölmeyeceklerini ve dünyanın sona ermeyeceğini zannederler. Derken ölüm gelip çatar ve bunları hazırlıksız olarak yakalar. Pişman olurlar ama bu pişmanlıkları bir fayda sağlamaz. İşte ***“Beni anmak için namazı dosdoğru kıl.” (Tâhâ 20/35)*** âyeti namazın bu hikmetine işaret etmektedir. Hiç şüphe yok ki namaz, Allah’ı anmak için kılınır. Bu yalnız namazın değil, diğer ibadetlerin de esasını teşkil eder. Daha doğrusu hangi suret ve biçimde olursa olsun, Allah’ı anmak gerçek bir ibadettir. Kur’an şöyle buyurur:
+Yola çıkmadan önce gideceğimiz yere varış saatini kontrol edebiliriz. Uzun bir alışveriş veya ziyaret öncesinde de aynı dikkati gösterebiliriz. Yanımızdakilere planımızı önceden söylemek, birlikte hareket etmeyi kolaylaştırır. Namazımızın yeri, yol hazırlığımızın içinde belli olsun.
 
-<p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا اذْكُرُوا اللّٰهَ ذِكْراً كَثٖيراًۙ - وَسَبِّحُوهُ بُكْرَةً وَاَصٖيلاً</p>
+**Beş vakti koruyan düzen, bugünden alınan küçük tedbirlerle kurulur.**
 
-“Ey Müminler, Allah’ı çokça anın, O’nu sabah akşam tesbih edin.” (el-Ahzâb 33/41,42)
+---
 
-Allah’ı anmanın en büyük ibadet olduğunu Peygamberimiz (as) şu hadisiyle ifade eder:
+<h2 class="vaaz-bolum-baslik" id="iste-namaz" tabindex="-1">IV. Emeğin arasında korunan namaz</h2>
 
-<p lang="ar" dir="rtl" class="ayet">ألا أُنبِّئُكم بخَيرِ أعمالِكم، وأزكاها عندَ مَليكِكم، وأَرْفعِها في دَرَجاتِكم، وخَيرٍ لكم مِن إنفاقِ الذهَبِ والوَرِقِ، وخَيرٍ لكم مِن أنْ تلقَوْا عدُوَّكم، فتضرِبوا أعناقَهم؟ قالوا: بلى. قال: ذِكْرُ اللهِ تعالى</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">رِجَالٌ لَّا تُلْهِيهِمْ تِجَـٰرَةٌ وَلَا بَيْعٌ عَن ذِكْرِ ٱللَّهِ وَإِقَامِ ٱلصَّلَوٰةِ وَإِيتَآءِ ٱلزَّكَوٰةِ</p>
 
-Peygamberimiz (as), Ashabına: “Ben size yaptıklarınızın en iyisini, Allah katında en çok razı olunan, derecelerinizi en çok yükselten, altın ve gümüşü (Allah yolunda) vermekten daha hayırlı olan ve düşmanlarınızla karşılaşıp ta sizin onların boyunlarını vurmanızdan ve onların sizi şehit etmelerinden daha faziletli bir işi haber vereyim mi?” buyurdu. Ashab: “Bu hangi iştir?” dedi. Peygamberimiz (as): “Allah’ı anmaktır.” buyurdular. (İbn Mace, Edep, 53)
+*Onları ne ticaret ne de alışveriş Allah’ı anmaktan, namaz kılmaktan ve zekât vermekten alıkoyar.* (Nûr, 24/37; âyetten bölüm)
 
-Görülüyor ki; bütün ibadetlerden maksat, Allah’ı anmaktır. Allah’ı anmanın en güzel şekli de namazdır. Diğer taraftan insana Allah’ı unutturacak şeylere karşı en çok koruyucu bir siper de yine namazdır. Çünkü belli aralıklarla Allah’ı hatırlayan kimse kötü duygular taşıyamaz. Başkalarına hile ve haksızlık düşünemez. Bir gün yaptığı her şeyin hesabını Allah’a vereceğini düşünerek ölçülü hareket eder. Böylece namaz insan ruhu üzerinde daha etkili, nefsin heva ve hevesine yönelmesine daha çok engel ve her işte dürüstlüğe daha çok özendiricidir. Kur’an şöyle buyurur:
+Âyetin övdüğü insanlar, ticaretin ve alışverişin içindedir. Kazanç ararken Allah’a bağlılıklarını korurlar. Bu dengeyi kendi işimizde arayalım. Tezgâhta, büroda veya hizmet verdiğimiz yerde hem işimizi doğru yapalım hem namazımızın vaktini gözetelim.
 
-<p lang="ar" dir="rtl" class="ayet">اُتْلُ مَٓا اُو۫حِيَ اِلَيْكَ مِنَ الْكِتَابِ وَاَقِمِ الصَّلٰوةَؕ اِنَّ الصَّلٰوةَ تَنْهٰى عَنِ الْفَحْشَٓاءِ وَالْمُنْكَرِؕ وَلَذِكْرُ اللّٰهِ اَكْبَرُؕ وَاللّٰهُ يَعْلَمُ مَا تَصْنَعُونَ</p>
+<p class="vaaz-etiket">Gurbetten Bir Tablo — İlk iş gününden önce</p>
 
-“Muhakkak ki namaz, hayâsızlıktan ve kötülükten alıkoyar.” (el-Ankebût 29/45)
+Marche-en-Famenne’de yeni bir işe başlayacak kardeşimizi düşünelim. İş ayakkabıları hazırdır; ertesi günün otobüs saatini öğrenmiştir. Namaz vakitlerine de bakar. Öğle arasının hangi vakte denk geldiğini anlamaya çalışır.
 
-Hiç şüphe yok ki namazdaki belli hareketler; oturup kalkmak, alnı yere koymak, tekbir ve tehlil getirmek, namazın amacını yerine getirmeye yetmez. Bunlar namaz için gerekli olmakla birlikte, gerçek namazın bunlardan ibaret olduğu söylenemez. Gerçek namaz, ruhu önce Allah’a karşı boyun eğme, yüce yaratıcının huzurunda benliğini silme, sonra da Hak ile ilgilenmeye engel her türlü endişe ve kuşkudan sıyrılmadır. Bunun için Kur’an okuyarak, dua ederek, tekbir ve tehlil getirerek dilini, diğer organlarını meşgul etmek, namaz kılana gereklidir. Bütün bunlarla birlikte kâinatı yaratan ve yöneten yüce yaratıcının huzurunda bulunduğunu aklından çıkarmamasıdır. Bunun içindir ki, namaz kılan, namaz esnasında kimseyle konuşmayacağı gibi, namazın rükün ve adabı dışında namaza aykırı herhangi bir harekette de bulunmayacaktır.
+Sorumlu kişiyle sakin bir görüşmede mola düzenini ve kullanabileceği uygun alanı sorar. İhtiyacını kısa ve açık cümlelerle anlatır. Bir arkadaşının desteği gerekiyorsa önceden konuşur; dönüş saatine özen gösterir. Çantasındaki seccadenin yanında, yerine getireceği bir söz de taşır.
 
-2-) NAMAZ DİNİN DİREĞİDİR: İslâm dinini bir binaya benzetecek olursak, namaz da bu binayı ayakta tutan direk demek olur. Binanın ayakta durması direklerle mümkün olduğu gibi dini ayakta tutan da namaz olmuş olur. Bu bakımdan namaz, din binasının en önemli unsurlarından birini oluşturur. Bu unsurun yokluğu bina için büyük bir eksiklik olduğunda şüphe yoktur. Bunun içindir ki, Peygamberimiz (as)’in yaptığı son tavsiyelerinden biri namaz olmuştur.
+Her iş yerinin şartları farklıdır. Çözüm ararken iş güvenliğini, görev paylaşımını ve başkasının emeğini gözetiriz. İbadet ihtiyacımızı anlaşılır biçimde ifade etmek, birlikte çalıştığımız insanların bizi tanımasını kolaylaştırır. Söylediğimiz saatte dönmek de bu güveni besler.
 
-3-) NAMAZ ERİŞİLEN NİMETLERE KARŞI ALLAH’A BİR ŞÜKÜRDÜR: İnsan, Allah’ın en değerli yaratığıdır. Allah insanı en güzel surette yaratmıştır. Ona, iyiyi kötüden, doğruyu yanlıştan, faydalı olanı zararlı olandan ayırt edecek aklı vermiştir. Evreni ve evrende olan her şeyi insan için var etmiş ve onun hizmetine vermiştir. Allah’ın verdiği sayılamayacak nimetlere karşılık insan, Allah’a şükretmek durumundadır. Bu teşekkür, dille olabileceği gibi en güzel olanı ibadetle olandır. İbadetlerin en mükemmeli ise namazdır. Peygamberimiz (as) farz namazlardan başka nafile namazlar da kılardı. Çoğu kere geceleri kalkar, nafile olarak namaz kılardı. Kendisine: “Ey Allah’ın Rasülü, geçmiş ve gelecek günahlarınızı Allah bağışladığı halde namaz için bu kadar yorulmanızın sebebi nedir?” diye sorulduğunda, Peygamberimiz (as): “Allah’a şükredici bir kul olmayayım mı?” cevabını verirdi. Bu cevap, namazın hikmetini en güzel bir şekilde açıklamaktadır. Eğer insan, Allah’ın verdiği nimetlere O’na ibadet ederek şükredecek olursa Allah, verdiği nimetleri arttıracağını vaat etmektedir:
+Bir güçlükle karşılaşan kardeşimiz, namazı vaktinde kılabilmek için mümkün düzenlemeleri araştırsın. Mola saatinin uygunlaştırılması, görev devri veya uygun bir yerin belirlenmesi çözüm olabilir. Sonuç alınamadığında durumu ayrıntılarıyla ehil bir din görevlisine anlatsın. Genel bir cümle, her çalışma şartını açıklamaya yetmeyebilir.
 
-### لَئِنْ كَفَرْتُمْ اِنَّ عَذَابٖي لَشَدٖيدٌ
+İşveren olanımız da çalışanının makul ihtiyacını dikkatle dinlesin. Evde bakım emeği veren birinin namazı için çocukla ilgilenmek de benzer bir kolaylıktır. Başkasına vakit açmak, kendi programımızda küçük bir sorumluluk üstlenmemizi isteyebilir. O sorumluluğu paylaşalım.
 
-***“Eğer şükrederseniz, elbette (nimetlerimi) arttıracağım.” (İbrâhim 14/7)***
+Birlikte çalıştığımız kişi dinimizi ayrıntısıyla bilmiyor olabilir. İhtiyacımızı anlatırken onun anlayabileceği sade kelimeler seçelim. Verdiğimiz sözü uygulayalım; kullanılan alanı düzenli bırakalım. Her gün gösterilen bu özen, karşılıklı anlayış için elverişli bir zemin hazırlar.
 
-Esasen nankörlük kötü bir huydur, eriştiği nimetlerin kadrini bilmeyen ve o nimetleri kendisine verene saygı duymayan kimseyi Allah ta sevmez, insanlar da sevmezler. Bu kimse bu çirkin huyu sebebiyle daha çok nimetlerden mahrum kalır. İşte namaz, insanın böyle çirkin bir huydan arınmasına yardımcı olur.
+Bir kardeşimizin çözüm bulmasına yardımcı olurken kendi tecrübemizi paylaşabiliriz. Son kararı verirken onun çalışma şartlarını dinleyelim. İhtiyacı doğru anlamak, doğru yardıma başlamaktır.
 
-4- NAMAZ, VAKTİN KIYMETİNİ ÖĞRETİR: Namaz için belirli vakitler vardır. Namazlar bu vakitlerde kılınır. Peygamberimiz (as), namazın vaktinde kılınmasına büyük önem verirdi. Bir yolculukta Ashap yorulmuş, bir yerde konaklayıp dinlenmek istemişlerdi. Peygamberimiz (SAV) yolculuk şartlarında bile namazı düşünmüş ve: “Korkarım uyuya kalıp namazı kaçırırsınız.” buyurmuştu. Peygamberimiz (as)’in müezzini Bilal-i Habeşi: “Ben sizi uyandırırım.” deyince, bu güvence üzerine hep beraber istirahata çekilmişlerdi. Hz. Bilal (ra) ta uyuya kalmış, uyandıklarında güneşin doğduğunu ve sabah namazı vaktini kaçırdıklarını görmüşler ve üzülmüşlerdi. Peygamberimiz (as), kendilerini uyaracağını söyleyen Hz. Bilal (ra)’a: “Bilal, verdiğin söz ne oldu?” buyurmuş ve ona üzüntülerini bildirmişti. Peygamberimiz (as)’in hiç kimseye beddua etme âdeti yoktu. Çünkü O, âlemlere rahmet olarak gönderilmişti. Ancak, Hendek savaşında ikindi namazını vaktinde eda etme imkânı bulamadığı için kendisine bu fırsatı vermeyen düşmanlarına beddua etmiş:
+**Namaz için önceden konuşmak, işteki güveni ve ibadetteki düzeni birlikte güçlendirir.**
 
-<p lang="ar" dir="rtl" class="ayet">مَلَأَ اللَّهُ عليهم بُيُوتَهُمْ وقُبُورَهُمْ نارًا، كما شَغَلُونا عن صَلاةِ الوُسْطى حتّى غابَتِ الشَّمْسُ</p>
+---
 
-“Güneş batıncaya kadar, bizi ikindi namazını vaktinde kılmaktan alıkoydular. Allah, onların kabirlerini ateşle doldursun.” buyurmuş, namazın vaktinde kılınmasının önemine dikkatlerimizi çekmişti. (Dârimî, Salât, 28)
+<h2 class="vaaz-bolum-baslik" id="okulda-namaz" tabindex="-1">V. Okul çantasındaki sorumluluk</h2>
 
-5-) NAMAZ, İNSANLARIN EŞİT OLDUKLARINI HATIRLATIR: İnsanlar eşit haklara sahip olarak doğarlar. Sosyal ve ekonomik durumları farklı olsa da Allah katında aralarında hiçbir fark yoktur. Ancak görevlerini yapanlarla yapmayanlar elbette eşit değillerdir. Suçlu ile suçsuzun eşit olacağını kimse söyleyemez. Namaz; zengini fakiri, amiri memuru ve her seviyedeki insanı camide yan yana getirir ve insan olarak Allah katında eşit olduklarını, aralarında insan olmak bakımından bir fark olmadığını öğretir.
+**Sevgili gençler! Sorularınızla bu sohbetin içindesiniz.**
 
-6-) NAMAZ MÜ’MİNİN MİRACIDIR: Bilindiği üzere Mi’rac, Peygamberimiz (as)’in, hiçbir peygambere nasip olmayan yüce makamlara yükselmesi ve Allah’ın yüce katına kabul buyrulmasıdır. Bu kabulde Peygamberimiz (as), Allah’a hamd ile sözüne başlamış, sözle, bedenle ve malla yapılan ibadetlerin hepsinin Allah’a mahsus olduğunu ifade etmiştir. Allah Peygamberimiz (as)’in bu hamdine karşılık vermiş: “Selam sana ey Peygamber, Allah’ın rahmet ve bereketi üzerine olsun.” buyurmuştur. Bunun üzerine Peygamberimiz (as),Allah’ın rahmetinin yalnız kendisi için değil, bütün peygamberlerle, meleklere ve Allah’ın iyi kullarına da ulaşması için: “Allah’ın selamı bize ve Allah’ın iyi kulları üzerine olsun.” diyerek Allah’ın rahmetini genelleştirmiştir. Buna şahit olan melekler de: “Eşhedü en la ilahe illallah ve eşhedü enne Muhammeden abdühü ve rasülühü.” diyerek, Allah’tan başka ilah olmadığına Hz. Muhammed (as)’in O’nun kulu ve peygamberi olduğuna tanıklık etmişlerdir.
+Ders zili, sınav takvimi, spor antrenmanı… Gününüzün önemli bir kısmını başkalarının belirlediği saatlerle geçiriyorsunuz. Namaza yer açmak bazen bilgi, bazen konuşma cesareti, bazen de bir yetişkinin desteğini gerektiriyor. Bu ihtiyaçları birlikte ele alabiliriz.
 
-İşte mümin namazda her iki rekât başında oturduğunda, sanki Mirac ederek Allah’ın yüce katına kabul edilmiş gibi teşehhüt okuyor. Böylece namaz müminin miracı olmuş oluyor. Bu duyguyla kılınan namaz adet insanın dünyayla irtibatını keserek, onu yüce makamlara yükseltir.
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Evlerine bilgiyle dönen gençler</p>
 
-7-) NAMAZ SAĞLIĞI OLUMLU ŞEKİLDE ETKİLER: İslam dini temizliğe büyük önem vermiş, namazın sahih olabilmesi için beden, elbise ve namaz kılınacak yerin temiz olmasını şart koşmuştur. Namaz kılacak kimsenin abdest alması gereklidir, farzdır. Abdest almak ise günde birkaç defa temizlenmek demektir. Temizlik ise sağlıktır, pek çok hastalıkların sağlık kurallarına uymamaktan meydana geldiği, sağlık kurallarından birinin de temizlik olduğu bilinmektedir.
+Mâlik b. Huveyris, yaşları birbirine yakın gençlerle Resûlullah’ın (s.a.s.) yanında yirmi gün ve gece kaldıklarını anlatır. Efendimiz onların ailelerini özlediğini fark edince geride kimleri bıraktıklarını sorar. Sonra ailelerine dönmelerini, onlarla kalmalarını ve öğrendiklerini öğretmelerini söyler. Namaz vakti geldiğinde içlerinden birinin ezan okumasını da öğütler.
 
-8-) KIYAMET GÜNÜ İLK SORU NAMAZDANDIR: İnsanlar öldükten sonra dirilecekler ve Allah’ın huzurunda dünyada yaptıklarının hesabını vereceklerdir. O gün ibadetlerden ilk sorgulama namazdan olacaktır. Peygamberimiz (as) şöyle buyurur:
+(Buhârî, 631; sahih rivayetin ilgili bölümünün anlam özeti.)
 
-<p lang="ar" dir="rtl" class="ayet">إن أولَ ما يحاسبُ به العبدُ بصلاتِه، فإن صَلَحت فقد أفلح وأنجح، وإن فسدتْ فقد خاب</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَصَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي</p>
 
-“Kulun kıyamet gününde, hesabı ilk önce sorulacak ameli namazdır. Eğer namazı dürüst çıkarsa kurtulmuş ve kazanmıştır. Eğer namazı düzgün çıkmazsa kaybetmiştir.” (Tirmizî, Mevâkît 188)
+*Beni nasıl namaz kılarken gördüyseniz siz de öyle namaz kılın.* (Buhârî, 631; rivayetten bölüm)
 
-Hesap gününde insanın, ilk önce namazdan sorguya çekilmesi, namazın ibadetler arasındaki önemini açıkça ortaya koymaktadır. Esasen günde beş defa insanın Allah’ın huzuruna çıkmasına vesile olan bir ibadetle hiçbir şeyin mukayese edilemeyeceği açıktır.
+Bu gençler öğrenmiş, özlemleri dinlenmiş ve sorumluluk almışlardı. Bugün de gencimizin ihtiyacını dinleyelim. Hangi vakit okulda olduğunu, hangi aralığın uygun olabileceğini birlikte belirleyelim. Gerektiğinde ailesiyle okulun ilgili görevlisi arasında saygılı bir görüşme hazırlayalım.
 
-Rabbimiz bizlere, Peygamber Efendimiz (s.a.s.) öğrettiği bir şekilde namazı ikame etmeyi, namazın; zihnimizden yanlış düşünceleri çıkarmaya, kalbimizi kötü duygulardan arındırmaya ve hassas bir vicdan eğitimine vesile olmasını, namazın ruhuyla dirilmeyi, namazla yücelmeyi, namazdaki hali hayatımızın her alanına yansıtmayı nasip etsin. Âmin
+Öğrenci kardeşimiz, kullanabileceği uygun yeri ve mola düzenini okuluyla konuşarak öğrensin. Namazın vaktini kontrol etsin; hazırlığını buna göre yapsın. Sorun çıktığında güvendiği bir yetişkine başvursun. Öğrenmek, yardım istemeyi de içerir.
+
+Aziz anneler ve babalar! Çocuğumuzun yaşına uygun desteği verelim. Ergenlik öncesindeki namaz eğitimi, alışmayı ve sevgiyi büyütsün; ergenlikle gelen sorumluluğu da açıkça öğretelim. Genç yeni Müslüman olmuşsa hangi kelimeyi anlamadığını rahatça sorabilsin. Cevabımız onun anlayacağı dilde olsun.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/dinin-diregi-namaz/okul-arasi.svg" width="1600" height="900" alt="Sonbaharda bir okul bahçesindeki boş bankta kapalı çanta ve yanında katlı bir seccade." loading="lazy" decoding="async">
+<figcaption><strong>Derslerin arasında korunan vakit</strong> Önceden öğrenilen saat ve uygun mekân, öğrencinin hazırlığını kolaylaştırır.</figcaption>
+</figure>
+
+Okul bahçesindeki bankta oturan bir gencin aklında şu soru belirebilir: İhtiyacımı söylerken nasıl bir cümle kuracağım? Evde bu görüşmeye birlikte hazırlanabiliriz. Ne zaman namaz kılacağını, ne kadar süreye ihtiyaç duyduğunu ve hangi yeri soracağını açıklığa kavuşturalım. Bildiğimiz şey, konuşmamızı kolaylaştırır.
+
+Sınav haftasında veya okul gezisinde günlük düzen değişebilir. Genç kardeşimiz program belli olduğunda namaz vakitlerini de kontrol etsin. Arkadaşıyla birbirine hatırlatmak isterse bunu karşılıklı rızayla yapsın. Başkasının yanında mahcup etmeden, kendi gayretini de sürdürerek örnek olsun. Birlikte öğrenilen sorumluluk, güvenle taşınır.
+
+**Gençlerin namazını desteklemek, sorularını dinleyip çözümü birlikte hazırlamaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="cemaat" tabindex="-1">VI. Aynı vakitte aynı safta</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">صَلاَةُ الْجَمَاعَةِ تَفْضُلُ صَلاَةَ الْفَذِّ بِسَبْعٍ وَعِشْرِينَ دَرَجَةً</p>
+
+*Cemaatle kılınan namaz, tek başına kılınan namazdan yirmi yedi derece üstündür.* (Buhârî, 645)
+
+Mescidin halısında yan yana duran ayaklara bakalım. Farklı işlerden, dillerden ve yaşlardan insanlar aynı imama uyar. Kimimiz çalışma önlüğünü yeni çıkarmışızdır; kimimiz bastonumuzu kenara bırakmışızdır. Burada birbirimize Allah’ın kulları olarak yakın dururuz.
+
+Cemaat, namaza devam etmemize somut destek verir. Birlikte belirlediğimiz saat, evden çıkma kararımızı kolaylaştırır. Namazdan sonraki kısa selâm, yalnızlığımızı hafifletebilir. Yanımızdaki kişinin düzenli gayreti bize de cesaret verir. Aynı safta olmak, birbirimizin iyiliğine ilgi duymayı öğretir.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Cemaatin hükmünü doğru duymak</p>
+
+Hanefî ilmihal geleneğinde erkeklerin beş vakit farz namazı cemaatle kılması kuvvetle vurgulanmış, müekked sünnet olarak açıklanmıştır; vâcip diyen fakihler de vardır. Kadınların cemaate katılması teşvik edilebilir; onlar cemaatle kılmakla yükümlü tutulmaz. Hastalık ve benzeri meşru mazeretler gözetilir.
+
+(TDV İslâm Ansiklopedisi, “Cemaat”; İlmihal, I, cemaatle namaz bahsi.)
+
+Camiye gelebilenimiz bu imkâna düzenli bir yer ayırsın. Birlikte gitmek isteyen arkadaşına haber versin. Ulaşımda desteğe ihtiyaç duyan büyüğümüze yardım teklif edelim. Hanımların ve engelli kardeşlerimizin ibadet yerine erişimini kolaylaştıracak ihtiyaçları dinleyelim.
+
+Namaz vakti çıkacaksa camiye ulaşmayı bekleyerek namazımızı kaçırmayız; bulunduğumuz yerde usulüne uygun biçimde kılarız. Cemaatin bereketini ararken vaktin sorumluluğunu da koruruz. İmkânımız olduğunda camideki yerimizi yeniden alırız.
+
+**Namazı vaktinde kılmak, günümüzü Rabbimize verdiğimiz sözle düzenlemektir.**
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/dinin-diregi-namaz/saf.svg" width="1600" height="900" alt="İnsan bulunmayan sade bir mescitte mihrap kemerine yönelen halı çizgileri ve kenarda bir sandalye." loading="lazy" decoding="async">
+<figcaption><strong>Aynı vakitte, aynı safta</strong> Cemaat, birlikte ibadet etme irademize gündelik bir düzen kazandırır.</figcaption>
+</figure>
+
+Bir büyüğümüzün yürüyüşü yavaşlamışsa yola biraz erken çıkabiliriz. Uygun bir namazda ona eşlik edelim; dönüşünü de birlikte planlayalım. Cemaate gelişini kolaylaştıran bu küçük düzenleme, onun haftasına sevinç katabilir. Yardımın şeklini kendisine sorarak belirleyelim.
+
+Yeni gelen kardeşimiz, toplu namazın saatini veya hangi bölümün kullanılacağını bilmiyor olabilir. Onu karşılayan bir selâmın ardından kısa bir açıklama yapalım. Öğrenmek istediği bir usul varsa namazdan sonra sakin bir zamanda anlatalım. Cemaatin içinde yer bulmak, ibadete devam etme cesaretini artırabilir.
+
+Safımızda aynı kişiyi görmeye alışırız. Bir süredir göremediğimizde, uygun bir zamanda hâlini sorabiliriz. Hastalık veya ulaşım güçlüğü varsa yapabileceğimiz destek ortaya çıkar. Bağımız böylece namaz sonrasında da sürer.
+
+**Cemaatin safını, birbirimizin namazını kolaylaştırarak güçlendirelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="kolayliklar" tabindex="-1">VII. Gücümüze göre, bilgiyle ibadet</h2>
+
+**Kıymetli kardeşlerim! Rabbimize yönelişimizde güçlük çekenleri de duyalım.**
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">صَلِّ قَائِمًا، فَإِنْ لَمْ تَسْتَطِعْ فَقَاعِدًا، فَإِنْ لَمْ تَسْتَطِعْ فَعَلَى جَنْبٍ</p>
+
+*Ayakta kıl; gücün yetmezse oturarak, buna da gücün yetmezse yanın üzerinde kıl.* (Buhârî, 1117; rivayetten bölüm)
+
+İmrân b. Husayn, rahatsızlığı sebebiyle namazını sorduğunda Efendimiz (s.a.s.) ona böyle yol gösterir. Hastane yatağının yanında duran sandalye, bazen bir ibadetin kolaylığına vesile olur. Hasta kardeşimiz, gücü ölçüsünde nasıl kılacağını öğrenir; yakını da ihtiyacına saygıyla destek olur.
+
+Oturarak namaz kılan kardeşimize yapabileceğimiz bir yardım varsa nezaketle soralım. Hareket güçlüğü yaşayan kişi, kendisine uygun namaz şeklini ehil birinden öğrensin. Kulluk, dinin öğrettiği kolaylığı yerinde kullanmayı da içerir.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Vakit ve ruhsat birlikte gözetilir</p>
+
+Hanefî mezhebinde her namaz kendi vaktinde kılınır; gerçek cem, hacdaki Arafat ve Müzdelife uygulamalarına mahsustur. Diğer mezheplerde yolculuk ve bazı mazeretlerle cem için ruhsatlar vardır. Sürekli ve ciddi bir güçlükte, şartlar ehil bir din görevlisiyle değerlendirilir. Hayız ve lohusalık dönemlerindeki kadınlar namazdan ve bu namazların kazâsından muaftır.
+
+(TDV İslâm Ansiklopedisi, “Cem‘”; İlmihal, I, namazın kazâsı ve özel durumlar bahisleri.)
+
+Bu bilgiler, mazereti olan kardeşimizi anlamamıza yardım etsin. Acil bir müdahalede insan hayatını korumakla görevli olanın şartları, olağan bir iş gününden farklı olabilir. Durumu kendi ayrıntılarıyla ele almak gerekir. Önceden danışılabilen konuları da son ana bırakmadan öğrenelim.
+
+Hastanın namazına yardımcı olurken önce neye ihtiyaç duyduğunu soralım. Eşyasını yaklaştırmak, bulunduğu yeri düzenlemek veya doğru bilgiye ulaşmasını sağlamak elimizden gelebilir. Onun adına karar vermeden, yapabildiği ibadeti kendi iradesiyle yerine getirmesine yardım edelim.
+
+Bakım sorumluluğu taşıyan kişi de kendi namazını korumak için desteğe ihtiyaç duyabilir. Aile içinde kısa bir görev paylaşımı yapabiliriz. Hastanın güvenliği korunurken bakım verenin ibadetine de yer açılır. Evdeki ve hastanedeki şartları bilen insanların birlikte düşünmesi, uygulanabilir bir çözümü yakınlaştırır.
+
+**Kolaylığı doğru öğrenmek, ibadetin sorumluluğunu güvenle taşımamıza yardım eder.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="telafi" tabindex="-1">VIII. Kaçırılan namazdan sonra yeniden ayağa kalkmak</h2>
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Yolculukta kaçırılan sabah</p>
+
+Bir gece yolculuğunda sahâbîler dinlenmek ister. Resûlullah (s.a.s.), uyuyup namazı kaçırmalarından endişe eder. Bilâl onları uyandırmayı üstlenir; bineğine yaslanır, fakat o da uykuya yenilir. Uyandıklarında güneş doğmaya başlamıştır.
+
+Efendimiz Bilâl’e verdiği sözü hatırlatır. Bilâl böyle bir uykunun kendisini daha önce yakalamadığını söyler. Resûlullah, ruhları alan ve geri verenin Allah olduğunu bildirir. Bilâl’e ezan okumasını söyler; abdest alır. Güneş yükselip parlayınca namazı kılar.
+
+(Buhârî, 595; sahih rivayetin anlam özeti.)
+
+Bu yolculuğun sonunu da hatırlayalım: Namaz yerine getirildi. Yorgunluk içinde yaşanan aksama, kulluğa dönüşle karşılandı. Biz de kaçırdığımız namazın ardından ne yapacağımızı öğrenerek yeniden ayağa kalkarız.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنْ نَسِيَ صَلاَةً فَلْيُصَلِّ إِذَا ذَكَرَهَا</p>
+
+*Kim bir namazı unutursa hatırladığı zaman onu kılsın.* (Buhârî, 597; rivayetten bölüm)
+
+Uyku veya unutma sebebiyle kaçan namaz, uyanınca yahut hatırlanınca telâfi edilir. Hanefî uygulamada güneşin doğuşu gibi namaz kılınmayan kerâhet vakitleri gözetilir. Rivayette de güneşin yükselmesinden sonra namaz kılındığı anlatılır. Bu ölçüyü imamımızdan öğrenelim.
+
+Namazı bile bile vaktinden sonraya bırakmak günahtır; Hanefî mezhebinde tövbe ile birlikte kazâ da gerekir. Geçmiş namaz borcu olan kardeşimiz, bugünün namazlarını koruyarak uygulanabilir bir kazâ düzeni öğrensin. Borcunun miktarı ve sıralaması konusunda ehline danışsın. Pişmanlığı, düzenli bir gayrete dönüşsün.
+
+Alarmı duymadığımız bir sabahın ardından akşamki hazırlığımızı gözden geçirebiliriz. Gerekirse bir yakınımızdan uyandırmasını isteyebiliriz. Destek istemek, sorumluluğumuza sahip çıkmanın bir yoludur. Yeniden başlayan gayrete birbirimizle omuz verelim.
+
+Geçmişte çok namaz kaçırmış olmak insanı ürkütebilir. Bu kaygıyı ehil birine açıp nereden başlayacağını öğrenmek mümkündür. Kişinin durumuna uygun, sürdürebileceği bir düzen hazırlanır. Günlük gayretin takip edilmesi, belirsizliği azaltır.
+
+Bir arkadaşımız bizden yardım istediğinde sözü güvenle dinleyelim. Ona eşlik edeceğimiz bir görüşme veya hatırlatacağımız bir vakit belirleyebiliriz. Kendi geçmişimizi de Allah’ın rahmetine arz ederek namazımıza sahip çıkalım. Dönüş yolunda yalnız bırakılmamak insana güç verir.
+
+**Kaçan namazı telâfi edelim; önümüzdeki namaza kararlılıkla yönelelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="devamlilik" tabindex="-1">IX. Devamlılık, bugünün hakkını vermektir</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِلَّا ٱلْمُصَلِّينَ ۝٢٢ ٱلَّذِينَ هُمْ عَلَىٰ صَلَاتِهِمْ دَآئِمُونَ ۝٢٣</p>
+
+*Ancak namaz kılanlar başka; onlar namazlarına devam ederler.* (Meâric, 70/22–23)
+
+Meâric sûresinde bu âyetler, insanın sıkıntıda daralan ve nimete kavuşunca bencilleşebilen hâlinin ardından gelir. Sonraki âyetlerde paylaşma ve hesap bilinci de anılır. Namazın sürekliliği, böyle bir sorumluluk hayatının içinde yer alır.
+
+Kış sabahı kaldırıma ince bir kırağı düşer; birkaç ay sonra aynı yol aydınlık ve sıcaktır. Mevsimler değişirken namazla bağımız devam etsin. Yoğun günlerimizde de daha rahat zamanlarımızda da onu koruyacak yolu arayalım. Her yeni gün, bugünün sorumluluğunu getirir.
+
+<blockquote class="vaaz-alinti">
+<p>“kulun içinde bulunduğu hal”</p>
+<footer>— Ebû Ali ed-Dekkāk’ın vakit tarifi; Kuşeyrî’den naklen TDV İslâm Ansiklopedisi, “Vakit” (tasavvuf).</footer>
+</blockquote>
+
+Bu kısa tarif, yaşadığımız anın içindeki durumumuza dikkat çeker. Bugün neredeyiz; hangi imkâna, hangi ihtiyaca sahibiz? Dün daha rahat veya daha zor olabiliriz. Bugünkü namazımız için elimizdeki imkânı kullanırız. Vaktimizi tanımak, sorumluluğumuzu somutlaştırır.
+
+Bir kardeşimiz uzun zamandır namaza ara vermiş olabilir. Gönlünde dönüş arzusu doğduğunda ona öğrenebileceği bir yol gösterelim. Önündeki vaktin namazını kılmasına destek olalım. Beş vakti koruma niyetini birlikte güçlendirelim; eksik bilgisini tamamlamasına yardımcı olalım.
+
+Evde namaz hatırlatması yaparken sesimizi ve zamanımızı seçelim. Yorgun bir eşe yardım etmek, çocuğun sorusuna sabırla cevap vermek, bir büyüğün takvimini kolay okuyacağı yere koymak mümkündür. İyi bir düzen, evdeki insanların yükünü tanıyarak kurulur.
+
+Hafta sonunda kendimize sakin bir muhasebe zamanı ayıralım. Hangi vakti korumakta zorlandığımızı belirleyelim. Engel ulaşım mı, unutkanlık mı, önceden konuşulmamış bir ihtiyaç mı? Bulduğumuz sebebe uygun bir tedbir seçelim. Kararımız, gelecek günün hazırlığı olsun.
+
+Örneğin ailede yeni bir bebeğin doğması, evin bütün saatlerini değiştirebilir. Anne ve babanın dinlenmesiyle ibadete ayırdığı süre yeniden düzenlenir. Yakınları da kısa bir destekle bu yükü paylaşabilir. Namaza devam etmek, hayatın yeni şartlarını görüp onlara uygun hazırlığı yenilemeyi ister.
+
+Benzer biçimde emeklilikte veya okuldan işe geçişte alışılmış saatler değişir. Eski düzenimizin tuttuğu yeri yeni bir düzenle doldurabiliriz. Önce hangi vaktin daha çok zorlandığını belirleyelim. Sonra o vakte ait tek bir somut engeli çözelim. Çözümü birkaç gün deneyip işe yarayıp yaramadığına bakalım.
+
+**Devamlılık, her günün namazına o günün şartlarında sahip çıkmaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="gunluk-muhasebe" tabindex="-1">X. Akşam olunca kendimize soralım</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَأَقِمِ ٱلصَّلَوٰةَ طَرَفَىِ ٱلنَّهَارِ وَزُلَفًا مِّنَ ٱلَّيْلِ ۚ إِنَّ ٱلْحَسَنَـٰتِ يُذْهِبْنَ ٱلسَّيِّـَٔاتِ ۚ ذَٰلِكَ ذِكْرَىٰ لِلذَّٰكِرِينَ ۝١١٤</p>
+
+*Gündüzün iki tarafında, gecenin de gündüze yakın saatlerinde namaz kılın. Şüphesiz ki iyilikler kötülükleri yok eder. İşte bu, öğüt almak isteyenler için bir hatırlatmadır.* (Hûd, 11/114)
+
+Akşam göğü kararırken günün telaşı yavaşlar. Bu âyetin hatırlatmasıyla kendimize dönelim. Bugün namazımız için nasıl yer açtık? Vaktini bildik mi, hazırlığımızı yaptık mı, aksayan bir yerde ne öğrendik? Muhasebemiz, yarına taşınacak bir iyiliği doğursun.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Üç yerde üç düzeltme</strong> Sık karşılaşılan ertelemelere uygulanabilir cevaplar.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Ekranı kapatma saatini belirle; sabah için uyanma tedbirini al.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Namazı eve dönüşe ertelemeden, vaktine uygun mola ve mekânı araştır.</dd></div>
+<div><dt>Cemaat yolunda</dt><dd>Camiye ulaşma süresini hesapla; vakit çıkacaksa bulunduğun yerde kıl.</dd></div>
+</dl>
+</figure>
+
+Bir namaz kaçtığında bütün günü bırakma düşüncesi gelebilir. O anda önümüzdeki namazı korumaya yöneliriz; kaçanı da öğrendiğimiz usulle telâfi ederiz. Böylece tek bir aksamanın diğer vakitlere yayılmasını önlemiş oluruz. Yeniden düzen kurmak mümkündür.
+
+Namazın iyiliğe çağrısını günlük ilişkilerimize taşıyalım. İş arkadaşımıza verdiğimiz sözü tutalım. Geciktiğimiz bir görev varsa haber verelim. Evde incittiğimiz birinin gönlünü alalım. İbadetin ahlâkımıza etkisi, böyle somut adımlarla güçlenir.
+
+Âyetin bağışlanma ümidi bizi tövbeye ve iyiliğe çağırır. Büyük günah için tövbe, kul hakkı için hakkı sahibine verme sorumluluğu vardır. Namazla yenilenen niyetimiz, bu sorumlulukları da yerine getirmeye yardım etsin.
+
+Takvimimizde koruduğumuz vakitler, ömrümüzde de iz bırakır. Bir hafta sonra bütün hayatımız değişmiş olmayabilir. Fakat sabah hazırlığımız güçlenmiş, bir görüşme yapılmış, bir namazımız cemaatle buluşmuş olabilir. Bugünkü kararımız böyle bir başlangıca dönüşsün.
+
+Bu muhasebeyi evde bir yarışa çevirmeden konuşabiliriz. Herkes ihtiyacını söyleyebilsin. Kimin erken uyuması, kimin ulaşım desteği alması, kimin bilgi sorması gerektiği ortaya çıksın. Birbirimize ayırdığımız dikkat, ertesi günün namazını kolaylaştırsın.
+
+**Günün muhasebesi, yarının namazına hazırlanırken meyvesini verir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta yerine getireceğimiz yedi söz</h2>
+
+**Aziz cemaat! Dinlediğimiz söz, günümüzde bir karşılık bulsun.**
+
+Şimdi bu haftanın takvimini gözümüzün önüne getirelim. Namazlarımızı korumak için hangi hazırlığı yapabiliriz? Bu yedi söz, her birimizin şartlarına göre uygulayabileceği adımlardır. İbadet sorumluluğumuzu öğrenerek, imkânımızı kullanarak ve birbirimize destek vererek ilerleyelim.
+
+**BEŞ VAKTİ KORUMAK İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta yerel namaz vakitlerini her gün kontrol edeceğim.</strong> Takvimde vaktin giriş ve çıkışını öğrenecek, cemaat saatini ayrıca belirleyeceğim.</li>
+<li><strong>Bu akşam sabah namazı için uyanma tedbiri alacağım.</strong> Uyku düzenimi gözden geçirecek, alarm veya yakınımın desteğiyle hazırlık yapacağım.</li>
+<li><strong>Bu hafta dışarıda kılacağım namaz için uygun yeri öğreneceğim.</strong> İş, okul veya yolculuk programıma göre gerekli görüşmeyi önceden yapacağım.</li>
+<li><strong>Bu hafta bir namazı cemaatle kılmak için somut plan yapacağım.</strong> Sağlığım ve imkânım elverirse camiye katılacak, engelim varsa uygun bir destek arayacağım.</li>
+<li><strong>Bu hafta bir yakınımın namaz için ihtiyaç duyduğu desteği soracağım.</strong> Ulaşım, çocuk bakımı veya vakit hatırlatmasında yapabileceğim yardımı üstleneceğim.</li>
+<li><strong>Bu hafta namazımla ilgili bilmediğim bir hükmü soracağım.</strong> Vakit, hastalık veya kazâ konusundaki sorumu ehil bir din görevlisine ileteceğim.</li>
+<li><strong>Hafta sonunda namaz düzenimi gözden geçireceğim.</strong> Zorlandığım vakti belirleyip gelecek hafta için uygulanabilir bir tedbir seçeceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Niyetten günlük düzene</strong>Her söz, bu hafta yapılabilecek ve takip edilebilecek bir adımdır.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Vakti doğru öğren</strong></li>
+<li><span aria-hidden="true">2</span><strong>Sabaha bugün hazırlan</strong></li>
+<li><span aria-hidden="true">3</span><strong>Uygun yeri öğren</strong></li>
+<li><span aria-hidden="true">4</span><strong>Cemaat için hazırlan</strong></li>
+<li><span aria-hidden="true">5</span><strong>Bir yakınına destek ol</strong></li>
+<li><span aria-hidden="true">6</span><strong>Bilmediğini ehline sor</strong></li>
+<li><span aria-hidden="true">7</span><strong>Düzenini gözden geçir</strong></li>
+</ol>
+</figure>
+
+Bu kararlarımızı isteyen yakınımızla paylaşalım. Birbirimize sorduğumuz hâl hatırın içinde ibadete destek de bulunsun. Namaza dönüş yolunda olan kardeşimizin gayretini fark edelim. Allah’ın yardımıyla bugün atılan adım, yarın sürdürülen bir düzene dönüşebilir.
+
+Önümüzde boş bir kâğıt ve kalem varmış gibi, seçtiğimiz hazırlığın zamanını belirleyelim. Kiminle görüşeceğiz; hangi gün konuşacağız? Bu ayrıntıyı netleştirmek, niyetimizi uygulanabilir kılar. Namaz için ayrılan hazırlık, günün diğer işleri arasında görünür bir yer kazanır.
+
+Evden çıkmakta zorlanan kardeşimiz de bu sözlerin içinde kendine uygun bir adım bulabilir. Takvimini kontrol eder, bilmediğini telefonla sorar, kendisine yardımcı olabilecek yakınıyla konuşur. Okuyan gencimiz, çalışanımız ve emeklimiz kendi şartlarına göre aynı sorumluluğa yönelir.
+
+Bir haftanın sonunda sonucumuzu ve hazırlığımızı birlikte değerlendirelim. Konuşmayı düşündüğümüz kişiyle görüştük mü? Uygun alanı öğrendik mi? Bir güçlük sürdüyse onu açıkça tarif edebiliyor muyuz? Böylece sonraki günlere daha iyi hazırlanırız.
+
+Kararlarımızda birbirimizi desteklerken mahremiyeti koruyalım. Bir kardeşimizin anlattığı eksikliği başkalarına taşımayalım. Onun istediği yardımı, verebileceğimiz ölçüde üstlenelim. Bazen bir telefon, bazen birlikte yürünecek kısa bir yol namazın devamlılığına hizmet eder.
+
+**Namazı vaktinde kılmak, günümüzü Rabbimize verdiğimiz sözle düzenlemektir.**
+
+**Bu haftanın takvimine, namazı koruyacak somut bir hazırlık yazalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Vaktimizi kullukla bereketlendir</h2>
+
+**Kıymetli kardeşlerim! Niyetimizi ve ihtiyacımızı Rabbimize arz edelim.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَامَنَّا بِمَآ أَنزَلْتَ وَٱتَّبَعْنَا ٱلرَّسُولَ فَٱكْتُبْنَا مَعَ ٱلشَّـٰهِدِينَ ۝٥٣</p>
+
+*Rabbimiz! İndirdiğine inandık ve peygambere tâbi olduk; artık bizi şahitlerle beraber yaz.* (Âl-i İmrân, 3/53)
+
+Allah’ım! Bize verdiğin ömrü rızana uygun yaşamayı nasip eyle. Namazlarımızı vaktinde ve usulünce kılmaya yardım eyle. Yorgunluğumuzda kuvvet, dağınıklığımızda toparlanma, kararımızda sebat ver. Bizi sana yönelişini her gün yenileyen kullarından eyle.
+
+Rabbimiz! Evlerimize namazın huzurunu ihsan eyle. Anne babalarımıza, eşlerimize ve çocuklarımıza merhametle davranmayı öğret. Gençlerimize öğrenme azmi, sorularına doğru cevaplar ve hayırlı arkadaşlar nasip eyle. İslâm’ı yeni tanıyan kardeşlerimizin yollarını kolaylaştır.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette iyilik ver; bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Allah’ım! Hastalarımıza şifa, engelli kardeşlerimize kolaylık, onlara emek verenlere sabır ihsan eyle. İşinde ve okulunda ibadetini korumaya çalışanlara hayırlı imkânlar aç. Cemaatimize birbirinin ihtiyacını duyan bir gönül ver. Yalnızların yanında olmayı bize nasip eyle.
+
+Rabbimiz! Vefat eden müminlere rahmet eyle. Yakınlarını kaybedenlere teselli ver. Yaşadığımız ülkeye, komşularımıza ve bütün insanlığa esenlik ihsan eyle. Bizi bulunduğumuz yerde sözünü tutan, emeğe saygı gösteren, barışa ve iyiliğe katkı veren kullarından eyle.
+
+Allah’ım! Geçmiş kusurlarımızı bağışla. Namaza yeniden başlayanların ümidini güçlendir. Bugünkü niyetimizi yarınki gayretimizle tamamlamayı lütfeyle. Son nefesimizi imanla vermeyi nasip eyle.
+
+Rabbimiz! Sabahın sessizliğinde sana yönelenlerin namazını kabul eyle. Günün ortasında işine ara verip huzuruna duranları, akşam ailesiyle ibadetini koruyanları hayırla destekle. Vaktini öğrenmeye çalışan gencimize anlayış, hastasına yardım eden yakınına kuvvet ver. Kendi namazımızı korurken başkasına da kolaylık gösteren bir cemaat olmayı bize lütfeyle.
+
+Âmin. Hamd, âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Âyet mealleri anlam esaslıdır; kısaltılan âyet ve hadisler belirtilmiştir. Hadis lafızları yerel derlemeyle karşılaştırılmıştır. Gündelik gurbet sahneleri temsilîdir. Fıkhî çerçevede Hanefî ilmihal ölçüleri esas alınmış, ilgili görüş farklılıkları kısaca anılmıştır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Namazın dindeki yeri: <a href="https://sunnah.com/tirmidhi:2616">Tirmizî 2616</a>; <a href="https://quran.com/20/14">Tâhâ 20/14</a>.</li>
+<li>Vaktin emanet oluşu: <a href="https://quran.com/4/103">Nisâ 4/103</a>; <a href="https://sunnah.com/bukhari:527">Buhârî 527</a>.</li>
+<li>Günü namazla düzenlemek: <a href="https://quran.com/2/238">Bakara 2/238</a>.</li>
+<li>İş hayatında namaz: <a href="https://quran.com/24/37">Nûr 24/37</a>.</li>
+<li>Gençlerle vakti korumak: <a href="https://sunnah.com/bukhari:631">Buhârî 631</a>.</li>
+<li>Cemaatin desteği: <a href="https://sunnah.com/bukhari:645">Buhârî 645</a>.</li>
+<li>Mazeret ve kolaylık: <a href="https://sunnah.com/bukhari:1117">Buhârî 1117</a>.</li>
+<li>Telâfi ve dönüş: <a href="https://sunnah.com/bukhari:597">Buhârî 597</a>.</li>
+<li>Bugünün namazı: <a href="https://quran.com/70/22-23">Meâric 70/22–23</a>.</li>
+<li>Yanlışları düzeltmek: <a href="https://quran.com/11/114">Hûd 11/114</a>.</li>
+<li>Hatim ve cemaat duası: <a href="https://quran.com/3/53">Âl-i İmrân 3/53</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>İlmî çerçeve: <a href="https://islamansiklopedisi.org.tr/namaz">TDV İslâm Ansiklopedisi — Namaz</a>.</li>
+<li>Vakit bilgisi: <a href="https://islamansiklopedisi.org.tr/vakit">TDV İslâm Ansiklopedisi — Vakit</a>.</li>
+<li>Fıkhî ölçü: <a href="https://islamansiklopedisi.org.tr/cem--namaz">TDV İslâm Ansiklopedisi — Cem‘</a>.</li>
+<li>Cemaat: <a href="https://islamansiklopedisi.org.tr/cemaat--namaz">TDV İslâm Ansiklopedisi — Cemaat</a>.</li>
+<li>Klasik kavram: <a href="https://islamansiklopedisi.org.tr/vakit--tasavvuf">TDV İslâm Ansiklopedisi — Vakit (tasavvuf)</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

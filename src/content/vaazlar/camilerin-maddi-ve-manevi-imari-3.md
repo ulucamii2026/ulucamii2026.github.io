@@ -1,179 +1,476 @@
 ---
-baslik: "Camilerin Maddi ve Manevi İmarı (3)"
-ozet: "Bizleri yoktan var eden, varlığından haberdar eden, sevgisini gönlümüze nakşeden sayamayacağımız kadar nimetler ihsan eden yüce Rabbimize sonsuz hamd-ü senalar…"
+baslik: "Cami ve Yeni Nesiller: Şefkatle Karşılamak, İlimle Yetiştirmek"
+ozet: "Çocukların ilk cami hatırasından gençlerin sorularına, hanımların ilim hayatından komşularla tanışmaya uzanan bir davet. Suffe’nin eğitim mirasıyla yeni nesillere yer açmak için yedi somut söz."
 kategori: ibadet
-kelime: 3002
+kelime: 3761
 docx: "/vaazlar/camilerin-maddi-ve-manevi-imari-3.docx"
 pdf: "/vaazlar/camilerin-maddi-ve-manevi-imari-3.pdf"
+kapak: "/media/vaazlar/camilerin-maddi-ve-manevi-imari-3/kapak-og.webp"
+kapakAlt: "Mihrap kemeri görünen sade bir cami içinde farklı boylarda rahleler ve yazısız kapalı kitaplar."
 ---
-Bizleri yoktan var eden, varlığından haberdar eden, sevgisini gönlümüze nakşeden sayamayacağımız kadar nimetler ihsan eden yüce Rabbimize sonsuz hamd-ü senalar olsun.
 
-<p lang="ar" dir="rtl" class="ayet">مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ فِى الْجَنَّةِ مِثْلَهُ</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari-3/kapak.svg" width="1600" height="900" alt="Mihrap kemeri görünen sade bir cami içinde farklı boylarda rahleler ve yazısız kapalı kitaplar." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Yan yana büyüyen izler</strong> Caminin eğitim hayatında her yaşa yer vardır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-“Her kim Allah için bir mescit bina ederse, Allah ona cennette bu mescidin benzeri (bir köşk) bina eder.” (Müslim, Zühd ve rekâik, 44) buyuran Sevgili Peygamberimiz Hz. Muhammed Mustafa (s.a.s.) Efendimize, onun âli ve ashabına, tabi olanlara salat ve selam olsun.
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">İlk hatıra ve dua</a></li>
+<li><a href="#vahiy-ve-egitim">Vahiy ve eğitim</a></li>
+<li><a href="#suffe">Suffe’nin eğitim mirası</a></li>
+<li><a href="#cocuk-ve-sefkat">Çocuk ve şefkat</a></li>
+<li><a href="#genclige-guven">Gençlik ve sorumluluk</a></li>
+<li><a href="#hanimlarin-katilimi">Hanımların camideki yeri</a></li>
+<li><a href="#soruyu-dinlemek">Soruyu dinlemek</a></li>
+<li><a href="#ailede-ogrenme">Evde devam eden ders</a></li>
+<li><a href="#komsuyla-tanisma">Komşularla tanışmak</a></li>
+<li><a href="#incitmeden-ogretmek">Edep ve güzel söz</a></li>
+<li><a href="#birlikte-surdurmek">İlmi hayata taşımak</a></li>
+<li><a href="#yedi-soz">Yedi somut söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat niyazı</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: İlk hatıraya düşen ışık</h2>
 
-İslam’ın sembolü ve mührü olan camilerimiz Kabe’nin birer şubesidir. Camiler hem bedenlerimizi hem de ruhlarımı bir araya getiren, amir-memur, yoksul-zengin, genç-yaşlı, rengi, dili ne olursa olsun herkesi bünyesinde toplanan mekânlardır. Cami, “toplayan, bir araya getiren” anlamında Arapça cem’ kökünden türemiştir. ‘Mescit’, tevazu ile eğilmek anlamındaki secde etmek kelimesinden türeyen ve ‘secde edilen yer’ mânasını ifade eden bir isimdir. Cami, Allah’a kulluk amacıyla insanları bünyesinde toplayan mekândır. Camiler, Allah’ın adı anılan, sabah akşam tesbih edilip namaz kılınan, Allah’a ibadet edilen mekânlardır. Rabbimiz buyuruyor ki:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">ف۪ي بُيُوتٍ اَذِنَ اللّٰهُ اَنْ تُرْفَعَ وَيُذْكَرَ ف۪يهَا اسْمُهُۙ يُسَبِّحُ لَهُ ف۪يهَا بِالْغُدُوِّ وَالْاٰصَالِۙ</p>
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-“Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.” (Nur, 24/36) Allah’ın zikredildiği, tespih edildiği bu yerler camilerdir. Peygamber Efendimiz (s.a.s.) de:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">أَحَبُّ الْبِلاَدِ إِلَى اللَّهِ مَسَاجِدُهَا</p>
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-“Allah’a en sevimli yerler mescidlerdir.” (Müslim, Mesâcid, 288) buyurmuştu. Rabbimiz:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">سُبْحَـٰنَكَ لَا عِلْمَ لَنَآ إِلَّا مَا عَلَّمْتَنَآ ۖ إِنَّكَ أَنتَ ٱلْعَلِيمُ ٱلْحَكِيمُ</p>
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ فَعَسٰٓى اُو۬لٰٓئِكَ اَنْ يَكُونُوا مِنَ الْمُهْتَد۪ينَ</p>
+*Seni tenzih ederiz! Bize öğrettiğinden başka bilgimiz yoktur. Her şeyi bilen ve hikmet sahibi olan sensin.* (Bakara, 2/32; âyetten bölüm)
 
-“Allah’ın mescidlerini ancak Allah’a ve âhiret gününe inanan, namazını kılan, zekâtını veren ve yalnız Allah’tan korkup çekinen kimseler imar edebilirler. İşte bunların doğru yolu bulanlardan olmaları umulur.” (Tevbe, 9/18) buyurdu. Ayetin tefsiri olarak hadisi şerifte Peygamber Efendimiz (s.a.s.) buyurdu ki:
+**Aziz cemaat! Kıymetli anneler, babalar ve sevgili gençler!**
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى سَعِيدٍ قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم إِذَا رَأَيْتُمُ الرَّجُلَ يَتَعَاهَدُ الْمَسْجِدَ فَاشْهَدُوا لَهُ بِالإِيمَانِ فَإِنَّ اللَّهَ تَعَالَى يَقُولُ (إِنَّمَا يَعْمُرُ مَسَاجِدَ اللَّهِ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الآخِرِ وَأَقَامَ الصَّلاَةَ وَآتَى الزَّكَاةَ...)</p>
+İlk cami hatıranızda ne var? Halının deseni mi, yanınızda duran büyüğünüzün eli mi, adınızı soran bir yüz mü? Bir çocuk, caminin bütün kelimelerini henüz anlayamayabilir. Fakat kendisine nasıl davranıldığını fark eder. Bugün bizimle aynı çatı altında duran çocuklar da kendi hatıralarını biriktiriyor.
 
-Ebû Saîd (el-Hudrî)’den rivayet edildiğine göre, Resûlullah (s.a.s.) şöyle buyurdu: “Bir kişinin mescide devam ettiğini görürseniz onun imanına şahit olun! Çünkü Allah Teâlâ şöyle buyurur: ‘Allah’ın mescitlerini, ancak Allah’a ve âhiret gününe inanan, namazı dosdoğru kılan, zekâtı veren ve Allah’tan başkasından korkmayan kimseler yapar/yaşatır...’” (Tirmizî, Îmân, 8; İbn Mâce, Mesâcid, 19)
+Belçika’da okul çantasını bırakıp derse gelen yavrumuzun yanında bir genç sorusuna cevap arıyor. Bir hanım ibadetini daha iyi öğrenmek istiyor. Mahalleden bir komşu, burada ne yaptığımızı merak ediyor. Bu insanların her biri için ayırdığımız vakit, camimizin geleceğine de dokunuyor.
 
-Camileri/mescidleri imar etmek, maddî anlamdaki imar yani inşa, onarım ve bakım anlamında olduğu gibi manevi yönden ayakta tutma, caminin canlı ve aktif olması, cemaatle namaz kılınması, ilim ve irfan meclisi olması olarak da anlaşılmalıdır. Bu ayetin anlaşılması için Hz. Peygamber (s.a.s.) Efendimiz dönemindeki mescidlerin konum ve işlevini anlamamız gerekmektedir.
+**Caminin yarını, bugün içinde yetişen gönüllerde filizlenir.**
 
-## Asrı Saadette Mescid
+Bugün ilmi nasıl öğreteceğimizi, soruyu nasıl dinleyeceğimizi ve yeni gelene nasıl yer açacağımızı konuşacağız. Çocuğu olan da olmayan da bu hayra katılabilir. Bir dersin anlaşılır olması, bir gencin cesaret bulması, bir hanımın sesinin duyulması hepimizin davranışıyla ilgilidir.
 
-Darul Erkam: İslam’ın ilk yıllarında Mekke’de Müslümanların rahat bir şekilde toplandıkları, ibadet ettikleri bir yeri yoktu. Kâbe, hemen yanı başlarında olmasına rağmen, putlarla dolu ve müşriklerin kontrolünde idi. Mekke’de Müslümanlar, Erkam b. Ebul-Erkam (ra.)'ın evinde gizlice toplanmaktaydılar. 17-18 yaş civarında müslüman olan Erkam (r.a.), Resul-i Ekrem (s.a.s.)’e ilk iman eden gençlerdendi. Erkam b. Ebü’l-Erkam, gönlünü İslam’a açtığı gibi Safa tepesinin eteğindeki evini de Resulüllah’ın hizmetine vermiş, o dönemde onun evi Daru’l-İslam yani İslam’ın evi, İslam’ın merkezi, kalbi olmuştu. Bu evde Resul-i Ekrem (s.a.s.) ashâb-ı kirâma dinî bilgiler öğretirken bir yandan da ilâhî gerçeği arayan insanları İslâm’a davet ediyor, onlara Kur’ân-ı Kerîm okuyor ve onlarla birlikte namaz kılıyordu. Hz. Hamza, Hz. Ömer pek çok kişi orada müslüman oldu. İslam tarihinde Daru’l-Erkam olarak anılan bu ev, Mekke yıllarında tebliğin merkezi, ilim ve irfan meclisi olmuştu.
+**Bir çocuğun cami hatırasına güven veren bir ses olalım.**
 
-Mescidi Nebi: Çile, sıkıntılarla geçen on üç yılın ardından müslümanlar Medine’ye hicret ettiler. Allah Resulü (s.a.s.) ve Hz. Ebu Bekir ile birlikte Medine’ye hicret etmişti. Hicret yolculuğunun sonuna doğru, Medine’ye yaklaşıldığında Peygamber Efendimiz (s.a.s.) Kuba köyüne ulaşmıştı. Bir müddet konakladığı bu yerde Mescid-i Kuba’yı yaptırdı.Daha sonra Medine’ye teşrif eden Allah Resulü (s.a.s.)’in ilk işi bu yeni Müslüman yurdunda yapılacak olan mescidin yerini tayin etmek olmuştu. Devesi Kasvâ’yı serbest bıraktı ve onun üzerine çöktüğü, hurma serip kurutulan düzlük bir alanı mescit yapımı için uygun buldu. Neccâroğulları’ndan Sehl ve Süheyl adlarındaki iki yetimden satın alınan arsaya Mescid-i Nebevî’yi yaptırdı. (Buhârî, Menâkıbü’l-Ensâr, 45) Mescidin arka kısmında fakir sahabelerin barınması için Suffe adıyla bir yer ayrılmış, doğu duvarı boyunca Hz. Peygamber ve ailesine ait odalar inşa edilmiştir.
+---
 
-Hz. Peygamber döneminde Mescid-i Nebevi, çok geniş ve farklı görevlerin icra edildiği bir mekândı. Asrısaadette Mescid-i Nebevi hem vahyin dünyaya açılan penceresi hem de idari, askeri, sosyal işlerin görüşülüp karara bağlandığı, elçilerin kabul edilip diplomatik görüşmelerin yapıldığı bir yerdi. Sevgili Peygamberimiz namazları cemaatle Mescidinde eda ederdi. Namaz öncesi veya sonrası sohbetler, eğitim ve öğretim Mescid-i Nebevi’de olurdu. Ticaret, ziraat gibi işlerinin dışında sahabenin uğradığı, aynı zamanda ilim halkasının oluştuğu yerdi Mescid-i Nebevi.
+<h2 class="vaaz-bolum-baslik" id="vahiy-ve-egitim" tabindex="-1">I. Vahyin ışığında yetişen insan</h2>
 
-O dönemde mescitler hayatın merkezi ve kalbi idi.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">هُوَ ٱلَّذِى بَعَثَ فِى ٱلْأُمِّيِّـۧنَ رَسُولًا مِّنْهُمْ يَتْلُوا۟ عَلَيْهِمْ ءَايَـٰتِهِۦ وَيُزَكِّيهِمْ وَيُعَلِّمُهُمُ ٱلْكِتَـٰبَ وَٱلْحِكْمَةَ وَإِن كَانُوا۟ مِن قَبْلُ لَفِى ضَلَـٰلٍ مُّبِينٍ ۝٢</p>
 
-## Camileri İnşa Etme, Bakım, Onarım ve Temizliği:
+*Ümmîlere kendi içlerinden, onlara âyetlerini okuyacak, onları arındıracak, onlara kitabı ve hikmeti öğretecek bir elçi gönderen O’dur. Oysa onlar daha önce apaçık bir sapkınlık içindeydiler.* (Cuma, 62/2)
 
-İstiklal Marşımızda:
+Cuma sûresi, Peygamber Efendimizin (s.a.s.) görevini anlatırken vahyin okunmasını, arınmayı ve öğretimi birlikte anıyor. Bu âyet, camideki eğitimimize de yön verir. Kur’an’ın sesini duyar, anlamını öğrenir ve hayatımızı onun rehberliğinde düzeltiriz. Rahlenin başında başlayan gayret, insanın ahlâkında karşılık bulur.
 
-Ruhumun senden, ilahi, şudur ancak emeli:
+Bir çocuk kısa bir sûreyi ezberlediğinde seviniriz. Sonra onun ne söylediğini anlayabilmesi için yaşına uygun bir açıklama yaparız. Allah’ın verdiği nimetleri fark etmesine yardım ederiz. Namazda kime yöneldiğini konuşuruz. Böylece öğrenme, ezberlenen kelimelerle birlikte bir kulluk bilinci kazandırır.
 
-Değmesin mabedimin göğsüne namahrem eli.
+Camide öğrenilen sözün ilk imtihanı bazen ders çıkışındaki koridordur. Arkadaşını beklemek, sıraya saygı göstermek, düşen kalemi sahibine uzatmak… Öğretmen bu küçük davranışı fark edip teşekkür ettiğinde çocuk, anlatılan iyiliğin nasıl yaşandığını da görür. İlmin izi böyle belirginleşir.
 
-Bu ezanlar-ki şahadetleri dinin temeli,
+Kendi öğrenmemizi de canlı tutalım. Çocuğumuza dinini öğreten hocayla konuşalım; hangi konunun işlendiğini soralım. Evde anlamını bilmediğimiz bir kelimeyi birlikte araştırabiliriz. Cevabını bulamadığımız soruyu not edip ehline götürürüz. Büyüklerin de öğrenmesi, çocuklara cesaret verir.
 
-Ebedi yurdumun üstünde benim inlemeli.
+Dersin başarısını yalnız bitirilen sayfalardan ölçersek sessiz kalan öğrenciyi gözden kaçırabiliriz. Her çocuğun anlayışını yoklayan kısa bir sohbet, öğretmene yol gösterir. Yeni öğrenenin küçük ilerleyişini görünür kılalım. Yanlışını düzeltirken doğru yaptığı kısmı da söyleyelim. Bir sonraki adımı birlikte belirleyelim.
 
-Cami, şehrin ruhu, manevi çekim merkezidir. Camilerin ihtiyacını gidermek, inşa ve imar etmek aynı zamanda amel defterini kapatmayan sadaka-ı cariye, salih bir ameldir. İbadet, tespih, Kur’an’ın tilavet edildiği camileri inşa edenlerin amel defteri kapanmayacaktır. Hadisi şerifte buyruldu ki:
+Camimizin eğitiminde kız ve erkek çocukların gayretini aynı özenle takip edelim. Öğrenmeye geç başlayan yetişkine de sabırla yer verelim. Rabbimizin kitabına yöneliş, her yaşta yeni bir başlangıca vesile olabilir. Bugün bildiğimize bir doğru bilgi, davranışımıza bir iyilik ekleyelim.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ: إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلاَّ مِنْ ثَلاَثَةٍ: إِلاَّ مِنْ صَدَقَةٍ جَارِيَةٍ أَوْ عِلْمٍ يُنْتَفَعُ بِهِ أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ</p>
+**Kur’an’ı öğrenirken, onun öğrettiği insan olmayı da isteyelim.**
 
-Ebû Hüreyre’den rivayet edildiğine göre, Resulullah (s.a.s.) şöyle buyurmuştur: “İnsan ölünce üç şey dışında ameli kesilir: Sadaka-i câriye (faydası kesintisiz sürüp giden sadaka), faydalanılan ilim ve kendisine dua eden hayırlı evlat.” (Müslim, Vasiyyet, 14) Camiler, Kur’an kursları sadaka-ı cariyedir.
+---
 
-<p lang="ar" dir="rtl" class="ayet">مَنْ بَنَى مَسْجِداً لِيُذْكَرَ اللّهُ فيهِ بَنَى اللّهُ لَهُ بَيْتاً في الْجَنَّةِ</p>
+<h2 class="vaaz-bolum-baslik" id="suffe" tabindex="-1">II. Suffe: Öğrenenin ihtiyacını görmek</h2>
 
-Resulullah (s.a.s.) buyurdular ki: “Kim içerisinde Allah (ın adı) zikredilsin diye bir mescid bina ederse, Allah da ona cennette bir ev bina eder.” (Nesâî, Mesacid, 1)
+**Muhterem Müslümanlar! İlim meclisinin insana nasıl yer açtığını hatırlayalım.**
 
-Peygamber Efendimizin (s.a.s.) döneminde Mescid-i Nebevi düzenli olarak temizlenirdi. Ümmi Mihcen adında bir kadın, Mescid-i Nebi’yi temizlerdi. Bu kadın bir gün vefat eder, fakat öldüğünü Peygamberimiz Efendimize bildirilmeden defnedilir. Peygamberimiz kadını göremeyince: “Kadına ne oldu?” diye sordu. Sahabe, öldü cevabını verir. Bunun üzerine Peygamberimiz: “Bana ölümünü haber vermeli değil miydiniz?” buyurdu. Sonra da kabrinin başına varıp ona dua etti. (Buhârî, Salât, 74) Başka bir rivayette: “Ben onu cennette mescitten çer-çöp toplarken gördüm.” (Taberani, el-Mu’cemu’l-kebir, XI, 238) buyurmuştu Allah Resulü (s.a.v.) Efendimiz. Resulullah yanında bu sahabi hanımı değerli kılan, Mescid-i Nebi’ye olan ilgisi ve yaptığı hizmetidir.
+Mescid-i Nebevî’nin yanındaki gölgelik, Medine’de evi ve kalacak yakını bulunmayan sahâbîlere barınak oldu. Suffe adıyla tanıdığımız bu yer, zamanla bir eğitim merkezine dönüştü. Peygamber Efendimiz (s.a.s.) buradaki insanlarla ilgileniyor; onlar da dinlediklerini öğrenip başkalarına aktarıyordu. Barınma ihtiyacıyla ilim gayreti aynı hayatın içinde karşılanıyordu.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ قَالَتْ أَمَرَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِبِنَاءِ الْمَسَاجِدِ فِى الدُّورِ وَأَنْ تُنَظَّفَ وَتُطَيَّبَ</p>
+TDV İslâm Ansiklopedisi’nin Suffe maddesi, Ubâde b. Sâmit’in Kur’an ve yazı öğretmekle görevlendirildiğini aktarır. Suffe ehli soru soruyor, vahyin anlaşılmasına katkıda bulunuyordu. Burada kalanlar zamanla değişiyordu. Bu mirasın bize taşıdığı esas, öğrenen insanı ihtiyacıyla birlikte görmektir.
 
-Hz. Aişe’nin (r.a.) bildirdiğine göre, “Allah Resulü (s.a.v.) mahallelerde mescitler inşa edilmesini, buraların temiz tutulmasını ve güzel kokularla kokulandırılmasını emretmiştir.” (Ebû Dâvûd, Salât, 13; Tirmizî, Cum’a, 64) buyurdu.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ</p>
 
-<p lang="ar" dir="rtl" class="ayet">عن أنسٍ رَضِيَ اللّهُ عَنه قال قَالَ رَسُولُ اللّهِ صلى الله عليه وسلم عُرِضَتْ عَلَيَّ أُجُورُ أُمَّتِي، حَتّى اَلْقَذَاةُ يُخْرِجُهَا الرَّجُلُ مِنَ الْمَسْجِدِ</p>
+*Allah kimin hakkında hayır dilerse onu dinde anlayış sahibi kılar.* (Buhârî, 71; rivayetten bölüm)
 
-“Ümmetimin ücreti bana arz edilip gösterildi. Öyle ki mescitten çıkarılıp atılan bir çerçöpün sevabını bile gördüm…” (Ebu Davud, Salat 16; Tirmizî, Fezailu'l-Kur'an 19)
+Bugünün cami dersliğinde de insanın hâlini tanımaya ihtiyacımız var. Harfleri ayırt etmekte zorlanan yetişkine daha okunaklı bir sayfa sunabiliriz. Türkçesi sınırlı öğrenciye bildiği dilde kısa bir açıklama yapabiliriz. İşitme güçlüğü yaşayan kişiye uygun bir oturma yeri ayırabiliriz. Öğretim, muhatabına ulaştığında meyve verir.
 
-## Camilerin Manevi İmarı Cemaatle Namaz
+Raflarda duran kitaplar, açıldıkları vakit öğrenmeye hizmet eder. Her dersin sonunda bir soruya vakit ayıralım. Anlamayan kişiye yeniden açıklayalım. Birbirinden farklı hızlarda öğrenenleri yarıştırmadan, her birinin ilerleyişini izleyelim. Öğrencinin kendini rahatça ifade edebilmesi için dersin içinde güven kurulmalıdır.
 
-Tarih boyunca camiler inşa etmek, ihtiyaç dâhilinde bakım ve onarımını yapmak bizim medeniyetimizin olmazsa olmazlarındandır. Aynı zamanda bu şekilde bir yaşam tarzı sünnettir. Zira Hz. Peygamber (s.a.s.) Efendimiz, Medine-i Münevvere’yi cami merkezli bir yapı ile inşa etmişti. Camiler ibadet ve eğitim maksadı ile inşa edilir. Camilerin manevi yönden mamur edilmesi beş vakit namazda cemaatin olması ve camide icra edilen vaaz ve irşat ile olacaktır. Allah Resulü (s.a.s.) cemaatle namaza son derece önem vermiştir. Peygamber Efendimiz (s.a.v.)’in vefatından önce son günlerinde hastalandığında, namaz kıldırmaya takati kalmadığında Hz. Ebu Bekir’e haber gönderip namaz kıldırmasını istemiş, iyi olduğu vakitlerde ise Hz. Ebu Bekir’e uyarak namaz kılmıştı. Cemaatle namazla ilgili olarak Peygamber Efendimiz (s.a.v.) buyurdular ki:
+Suffe’yi anmak bize geçmişin güzelliğiyle birlikte bugünün işini de hatırlatsın. Camiye ulaşmakta zorlanan bir öğrencinin ailesiyle konuşmak, ders saatini işten çıkanlara uygun düzenlemek bu işin parçasıdır. İlim gayretinin önündeki küçük bir engeli kaldırmak, bazen uzun bir öğütten daha etkili olur.
 
-<p lang="ar" dir="rtl" class="ayet">عن أبي هريرةَ رضيَ الله عنهُ قال: قالَ رسولُ الله: صَلاةُ الرَّجُلِ في جَمَاعَةٍ تُضعَّفُ عَلى صَلاتِهِ في بَيْتِهِ وَفي سُوقِهِ خَمْساً وَعِشْرِينَ ضِعْفاً، وَذلِكَ أَنَّة إذَا تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ، ثُمَّ خَرَجَ إلى الْمَسْجِدِ، لا يُخْرِجُه إلاَّ الصَّلاةُ، لَمْ يَخْطُ خَطْوَةً إلاَّ رُفِعَتْ لَه بهَا دَرَجَةٌ، وَحُطَّتْ عَنْهُ بِهَا خَطِيئَةٌ، فَإذا صَلَّى لَمْ تَزَلِ المَلائِكَة تُصَلِّي عَلَيْهِ مَا دَامَ في مُصَلاَّه، ما لم يُحْدِثْ تقولُ اللَّهُمَّ صَلِّ عَلَيْهِ، اللَّهُمَّ ارحَمْهُ. وَلاَ يَزَالُ في صَلاةٍ مَا انْتَظَرَ الصَّلاةَ</p>
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Bir dersin dört payı</strong> Suffe’nin eğitim mirasından hareketle bugünkü dersimizi gözden geçirelim.</figcaption>
+<p class="vaaz-sema-merkez">Anlayarak öğrenmek</p>
+<dl class="vaaz-sema-kollar">
+<div><dt>Dinlemek</dt><dd>Öğreticinin anlattığı konuyu dikkatle takip etmek; anlaşılmayan kelimeyi işaretlemek.</dd></div>
+<div><dt>Sormak</dt><dd>Merakı saklamadan dile getirmek; cevabın hangi kaynağa dayandığını öğrenmek.</dd></div>
+<div><dt>Tekrar etmek</dt><dd>Öğrenileni kısa aralıklarla yeniden okumak; doğru anlayıp anlamadığını hocaya sormak.</dd></div>
+<div><dt>Paylaşmak</dt><dd>İyice öğrenilen bilgiyi, sınırını bilerek ve doğruluğunu koruyarak başkasına aktarmak.</dd></div>
+</dl>
+</figure>
 
-Ebû Hüreyre (r.a)’den rivayet edildiğine göre, Resulullah (s.a.v) şöyle buyurdu: “Bir kimsenin cemaatle kıldığı namazın sevabı, evinde ve çarşı pazarda kıldığı namazdan yirmi beş kat daha fazladır. O kimse abdestini güzelce alıp, sonra sadece namaz kılmak maksadıyla mescide giderse attığı her adım sebebiyle bir derece yükseltilir, bir hatası da silinir. Namazını kıldıktan sonra abdestini bozmadan namaz kıldığı yerde kaldığı müddetçe, melekler ona: Allah’ım! Ona rahmetinle muamele et, ona acı! diyerek dua etmeye devam ederler. O kimse namazı beklediği sürece namazda imiş gibidir.” Buhârî, Ezan 30; Müslim, Mesâcid 272)
+Suffe’de dinlenen bilginin başka insanlara ulaşması, bu mirasın önemli bir yönüdür. Biz de bir dersi bitirirken neyi öğrendiğimizi kendi cümlemizle söyleyelim. Anlatırken takıldığımız yer, yeniden çalışacağımız yeri gösterir. Hocanın düzeltmesine açık olalım. Öğrenileni sağlamlaştırarak paylaşmak, ilme gösterdiğimiz hürmettir.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ صَلاَةُ الْجَمَاعَةِ تَفْضُلُ صَلاَةَ الْفَذِّ بِسَبْعٍ وَعِشْرِينَ دَرَجَةً</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari-3/ogrenme-halkasi.svg" width="1600" height="900" alt="Cami dersliğinde daire biçiminde yerleştirilmiş minderler, boş kâğıtlar ve renkli kalemler." loading="lazy" decoding="async">
+<figcaption><strong>Bir soruya ayrılan yer</strong> Dinlenen bir soru, öğrenmeye cesaret verir.</figcaption>
+</figure>
 
-Abdullah b. Ömer’in rivayet ettiğine göre, Resulullah (s.a.v.) şöyle buyurdu: “Cemaatle kılınan namaz, tek başına kılınan namazdan yirmi yedi kat daha faziletlidir.” (Buhârî, Ezân, 30; Müslim, Mesâcid ve mevziu’s-salât, 249)
+**Suffe’nin mirasını, öğrenmek isteyene zaman ve imkân ayırarak yaşatalım.**
 
-Namazları camide cemaat ile eda etmenin, insanların birbiri ile tanışma, toplum içerisinde ilişkilerin gelişmesi, bireyin sosyalleşmesi, kaynaşma, yardımlaşma, paylaşma gibi pek çok faydası vardır. Bunun dışında cemaatle namazı eda etmenin manevi olarak da pek çok fazileti hadisi şeriflerde ifade edilmiştir:
+---
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ حِينَ يَخْرُجُ الرَّجُلُ مِنْ بَيْتِهِ إِلَى مَسْجِدِهِ فَرِجْلٌ تُكْتَبُ حَسَنَةً وَرِجْلٌ تَمْحُو سَيِّئَة</p>
+<h2 class="vaaz-bolum-baslik" id="cocuk-ve-sefkat" tabindex="-1">III. Küçük bir çocuğa ayrılan yer</h2>
 
-Ebû Hüreyre’nin bildirdiğine göre, Hz. Peygamber (s.a.s.) şöyle buyurdu: “Bir kimse camiye gitme niyetiyle evinden çıktığında, attığı her adımdan dolayı kendisine bir sevap yazılır ve bir günah silinir.” (Nesâî, Mesâcid, 14; İbn Hanbel, II, 320) Bir diğer hadisi şerifte dereceleri yükselten, günahları silen ameller şu şekilde açıklanmıştır:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَإِذَا سَجَدَ وَضَعَهَا، وَإِذَا قَامَ حَمَلَهَا</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ أَلاَ أَدُلُّكُمْ عَلَى مَا يَرْفَعُ بِهِ الدَّرَجَاتِ وَ يَمْحُو بِهِ الْخَطَايَا وَكَثْرَةُ الْخُطَا إِلَى الْمَسَاجِدِ وَانْتِظَارُ الصَّلاَةِ بَعْدَ الصَّلاَةِ إِسْبَاغُ الْوُضُوءِ عَلَى الْمَكَارِهِ</p>
+*Secde ettiğinde onu yere bırakır, ayağa kalktığında kucağına alırdı.* (Buhârî, 516; rivayetten bölüm)
 
-“Yapıldığında Allah’ın dereceleri yükselteceği ve hataları sileceği hasletleri size göstereyim mi? Camilere gidiş gelişlerde atılan çokça adım, bir namazdan sonra diğer namazı beklemek, zorluklara rağmen güzelce abdest almak.” (İbn Hanbel, II, 301) Peygamber Efendimiz (s.a.s.) sıkıntı ve meşakkatlere rağmen abdesti eksiksiz ve adabına uygun almanın, mescitlere devam etmenin ve bu yolda çokça yürümenin, bir namazdan sonra diğerini beklemenin, manevî dereceleri yükseltip hataları sileceğine vesile olacağını ifade etmiştir. Başka bir hadisi şerifte cemaatle namaz kılan kişinin Cenab-ı Hakkın sevgisine mazhar olacağı müjdesi verilmiştir:
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Namazda gözetilen bir yavru</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ مَا تَوَطَّنَ رَجُلٌ مُسْلِمٌ الْمَسَاجِدَ لِلصَّلاَةِ وَالذِّكْرِ إِلاَّ تَبَشْبَشَ اللَّهُ لَهُ كَمَا يَتَبَشْبَشُ أَهْلُ الْغَائِبِ بِغَائِبِهِمْ إِذَا قَدِمَ عَلَيْهِمْ</p>
+Ebû Katâde’nin anlattığına göre Resûlullah (s.a.s.), kızı Hz. Zeyneb’in çocuğu Ümâme’yi taşıyarak namaz kılardı. Secdeye giderken onu yere bırakır, ayağa kalkınca yeniden alırdı. Rivayet, ibadetin içinde küçük bir çocuğa gösterilen özeni önümüze koyar.
 
-Ebû Hüreyre’den gelen rivayete göre, Hz. Peygamber (s.a.s.) şöyle demiştir: “Müslüman bir kimse namaz ve zikir (Allah’ı anma) için mescitleri kendine vatan edindiğinde, Allah onun bu durumuna, ailesinin gurbetten dönen kişiye sevindiği gibi sevinir.” (İbn Mâce, Mesâcid, 19)
+(Buhârî, 516; sahih rivayetin anlam özeti.)
 
-Herkesin birbirinden kaçtığı kıyamet gününde dünyada yaptıkları ameller nedeni ile rahat edecek, Allah Teâlâ’nın özel lütuflarına nail olacak insanlar vardır. Bu kişiler hadis-i şerifte şöyle anlatılmaktadır:
+Kardeşlerim! Bu sahnede çocuğun varlığı görülüyor, ihtiyacı gözetiliyor. Efendimizin şefkatinden kendi davranışımıza bir ölçü alalım. Camide bir yavruyu fark ettiğimizde yüzümüz yumuşasın. Ona adını soralım. Yanındaki yetişkinin rehberliğini destekleyelim. Öğreneceği davranışı sakin ve açık biçimde gösterelim.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِى ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ الإِمَامُ الْعَادِلُ وَشَابٌّ نَشَأَ بِعِبَادَةِ اللَّهِ وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِى الْمَسَاجِدِ</p>
+Bir baba küçük oğluyla namaza hazırlanıyor. Çocuk, halıdaki çizgiler üzerinden atlamak istiyor. Baba eğilip birlikte nerede duracaklarını gösteriyor; namazdan sonra konuşacaklarını söylüyor. Yakındaki cemaat de onlara biraz yer açıyor. Sükûnet, çocuğun yapabileceği şey açıklanarak öğretiliyor. Sabır burada görünür bir davranışa dönüşüyor.
 
-“Yedi sınıf insan, Allah’ın (Arşı’nın) gölgesinden başka hiçbir gölgenin bulunmayacağı kıyamet gününde onun gölgesinde gölgelenecektir. Adaletli yönetici, Allah’a kulluk üzere yetişen genç, kalbi mescidlere bağlı olan kimse…” (Müslim, Zekât, 91)
+Aileler çocuklarının yaşını, yorgunluğunu ve dikkat süresini gözetebilir. Kısa bir ziyaretle başlayıp süreyi yavaş yavaş artırabilir. Namazın öncesinde nasıl hareket edeceklerini birlikte konuşabilir. Çocuk zorlandığında yanında durmak, gerektiğinde kısa bir ara vermek hem ona hem cemaate yardımcı olur.
 
-Resul-i Ekrem (s.a.s.) Efendimizin müezzinlerinde âma sahabi Abdullah b. Ümmü Mektum cemaate gelmeme hususunda izin istemişti:
+Öğretirken güvenliği ve ibadetin huzurunu da koruruz. Koşarak başkasına çarpmak üzere olan çocuğu durdurur, tehlikeyi kısaca anlatırız. Ardından yapabileceği uygun davranışı gösteririz. Bir yanlışın bütün kişiliğine yapışmasına izin vermeden yeniden denemesine fırsat tanırız. Çocuk adabı böyle öğrenir.
 
-<p lang="ar" dir="rtl" class="ayet">وعن عبدِ الله - وَقِيلَ: عَمْرو بْنِ قَيْسٍ المَعْرُوفِ بِابْنِ أُمِّ مَكْتُومٍ المُؤَذِّنِ رضيَ الله عَنْهُ أَنهُ قالَ: يا رسُولَ الله إنَّ المَدِينَةَ كَثِيرَةُ الهَوَامِّ والسِّبَاعِ. فقالَ رسُولُ الله: تَسْمَعُ حَيَّ على الصَّلاةِ، حَيَّ عَلى الفَلاحِ، فَحَيَّهلاً.</p>
+Ebeveynler de yorulabilir. Yardıma ihtiyaç duyduklarında birbirlerine anlayış göstersinler. Cemaatin tecrübeli büyükleri, ailenin rızasıyla destek olabilir. Küçük bir tebessüm, anne babanın omzundaki gerginliği hafifletebilir. Birlikte ibadete alışmak, birlikte sabretmeyi de gerektirir.
 
-Kendisine Amr İbni Kays da denilen meşhur müezzin Abdullah İbn Ümmü Mektûm, ‘Yâ Resûlellah! Kuşkusuz, Medine’nin zehirli haşereleri ve yırtıcı hayvanları çoktur, dedi. Resûlullah (s.a.s), “Hayye ‘ale’s–salâh, hayye ‘ale’l–felâh’ı işitiyor musun? Öyleyse mescide gel” buyurdu. (Ebû Dâvûd, Salât 46; Nesâî, İmâmet 50)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَنَّهُ مَرَّ عَلَى صِبْيَانٍ فَسَلَّمَ عَلَيْهِمْ وَقَالَ كَانَ النَّبِيُّ صلى الله عليه وسلم يَفْعَلُهُ</p>
 
-## Camilerin Manevi İmarı Eğitim
+*Enes b. Mâlik çocukların yanından geçerken onlara selâm verdi ve Peygamberimizin de böyle yaptığını söyledi.* (Buhârî, 6247; rivayetten bölüm)
 
-Cami sadece ibadet edilen yer değildir. Cami, dini bilgilerle birlikte; güzel ahlakın, insan, vatan, bayrak sevgisinin, merhametin, şefkatin, saygının, değerlerin öğrenildiği yerdir.
+Çocuklara selâm vermek, onlarla ilişki kurmanın sade bir yoludur. Cevap vermeleri için bekleyelim; çekindiklerinde zaman tanıyalım. Büyüğünden gördüğü bu davranışı çocuk da kendinden küçüğüne taşıyabilir.
 
-Medine’de Peygamber Efendimiz döneminde eğitim-öğretim faaliyetinin merkezi Mescidü’n-Nebî’dir. Okuma yazma öğretiminin ilk başladığı ve aralıksız sürdürüldüğü yer mescid olmuştur. Hz. Peygamber, bazı sahâbîleri mescidde eğitim-öğretim faaliyetlerini icra etmekle görevlendirmiştir. Meşhur sahâbî Ubâde İbn Sâmit’in Mescidi Nebevi’de hem Kur’an hem okuma yazma öğretmekle görevlendirildiğini görüyoruz. Fakat Mescidü’n-Nebî’nin bir öğretim merkezi oluşunun en büyük delili Ashâb-ı Suffe’dir. Ashab-ı Suffe, Mescid-i Nebevi’nin içerisinde suffe denilen gölgelik kısımda kalan sahabilerdi. Zaman zaman sayılarının 400’e ulaştığı bu sahabiler, ilimle meşgul olurdu. Ashâb-ı Suffe’nin eğitim ve öğretim işleriyle bizzat Resûl-i Ekrem (s.a.s.) ilgilenmişti.
+**Çocuğa cami adabını, camide sevildiğini hissettirerek öğretelim.**
 
-Peygamberimiz, haftanın belirli bir gününü sahabenin sorularını cevaplandırmaya ve onların bilgilerini geliştirmeye ayırmıştı. Bunu da mescidde ifa ediyordu. Hatta ashabın hanımları erkeklerin bu hâline imrenerek, Peygamberimizden kendilerini de bu ilmî faaliyetten mahrum bırakmamasını istemişler, bunun üzerine onlara da bir gün ayıran Peygamber Efendimiz, bu öğretimi de mescidde devam ettirmiştir. Sonraki dönemlerde meşhur mezhep imamlarının da bulunduğu sayısız âlim, cami ve mescidlerdeki ders halkalarında yetişmiş, kendi talebelerini buralarda yetiştirmişlerdir. (Komisyon, Cami Yazıları, DİB, Ankara 2012, 13-15)
+---
 
-Bir defasında Resûlullah (s.a.s.), mescidde halka olmuş iki gruba rastlar ve şöyle buyurur:
+<h2 class="vaaz-bolum-baslik" id="genclige-guven" tabindex="-1">IV. Gençliğe güvenen bir cemaat</h2>
 
-<p lang="ar" dir="rtl" class="ayet">كِلاَهُمَا عَلَى خَيْرٍ وَأَحَدُهُمَا أَفْضَلُ مِنْ صَاحِبِهِ ، أَمَّا هَؤُلاَءِ فَيَدْعُونَ اللَّهَ وَيُرَغِّبُونَ إِلَيْهِ فَإِنْ شَاءَ أَعْطَاهُمْ وَإِنْ شَاءَ مَنَعَهُمْ ، وَأَمَّا هَؤُلاَءِ فَيَتَعَلَّمُونَ الْفِقْهَ وَالْعِلْمَ وَيُعَلِّمُونَ الْجَاهِلَ فَهُمْ أَفْضَلُ ، وَإِنَّمَا بُعِثْتُ مُعَلِّماً » قَالَ : ثُمَّ جَلَسَ فِيهِمْ</p>
+**Sevgili gençler! İmanınızla ve gayretinizle bu cemaatin bugünü içindesiniz.**
 
-“İkisi de hayır üzeredir. Ama biri, diğerinden daha üstündür. Bir kısmı Allah’a dua ediyor ve ondan bir şey istiyorlar. Allah onlara ister verir, isterse vermez. Diğerleri ise, dini anlamaya ve ilim öğrenmeye çalışıyorlar ve bilmeyene öğretiyorlar. Bunlar daha üstündür.” dedikten sonra “Şüphe yok ki, ben de sadece bir öğretici olarak gönderildim.” diyerek ilim öğrenenlerin yanlarına oturmuştur.” (Dârimî, Mukaddime, 32)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّهُمْ فِتْيَةٌ ءَامَنُوا۟ بِرَبِّهِمْ وَزِدْنَـٰهُمْ هُدًى</p>
 
-## Cami ve Cemaat Adabı:
+*Hakikaten onlar rablerine inanmış gençlerdi; biz de onların doğru yolda yürüyüşlerine katkıda bulunduk.* (Kehf, 18/13; âyetten bölüm)
 
-Camide bulunmanın ve cemaatle namazı eda etmenin adabı vardır:
+Kehf sûresindeki bu söz, imanlarını koruyan gençleri anlatır. Kur’an onları inançlarıyla ve Allah’ın rehberliğiyle hatırlatır. Biz de gençlere bakarken taşıdıkları imkânı görelim. Okulda karşılaştıkları soruyu, kalabalık içinde korudukları değeri, doğruyu bulmak için gösterdikleri çabayı dinleyelim.
 
-a) Camiye gelirken koşmadan gelinmeli, camiye sağ ayakla ve abdestli girilmeli, girerken Peygamber Efendimize salavat-ı şerife getirilmelidir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">ارْجِعُوا إِلَى أَهْلِيكُمْ فَعَلِّمُوهُمْ</p>
 
-b) Camiye gelirken beden ve elbise temizliğine dikkat edilmelidir. Güzelce abdest alındıktan sonra, namazın şartlarından olan setr-i avrete uygun kıyafet giyilmelidir. Peygamber Efendimiz döneminde bir cuma günü bazı sahibiler hurmalıklarında çalıştıktan sonra toz toprak içinde ve terlemiş bir şekilde mescide geldiklerinde Resulullah (s.a.v.) onlara, “Keşke yıkansaydınız!” buyurmuştu. (Buhârî, Büyû’, 15; Buhârî, Cum’a, 15) Camiye gelirken aşırıya kaçmamak ve başkasını rahatsız edici olmamak şartıyla güzel koku sürülebilir. Camiye gelmeden önce kokusu hoş olmayan yiyeceklerden sakınılmalıdır. Camide hiç kimseye rahatsızlık verilmemeli, Kur’an-ı Kerim tilaveti, tespih, zikir ile meşgul olurken ses yükseltilmemelidir.
+*Ailelerinize dönün ve onlara öğretin.* (Buhârî, 6008; rivayetten bölüm)
 
-c) Camiye girildiğinde vaaz ediliyor veya Kur’an-ı Kerim okunuyor ise sükûnetle dinlenilmelidir. Ayrıca Cuma veya bayram günlerinde hutbe okunurken konuşmak, başka şeylerle ilgilenmek, cep telefonuyla meşgul olmak ibadetin özünden uzaklaşmaya ve sevabından mahrum kalmaya sebep olacağından bu davranışlardan sakınılmalıdır.
+Mâlik b. Huveyris, yaşıt gençlerle Peygamber Efendimizin (s.a.s.) yanında yirmi gece kaldıklarını anlatır. Efendimiz ailelerini özlediklerini fark eder; geride kimi bıraktıklarını sorar. Ardından evlerine dönüp öğrendiklerini öğretmelerini ister. Gençlerin duygularını gözeten bu ilgi, onlara sorumluluk da verir. İkisi aynı terbiyenin içinde buluşur.
 
-d) Cami içerisinde cep telefonları kapatılmalı veya sessiz konuma alınmalıdır.
+Cami dersinden çıkan gence öğrendiğini paylaşabileceği bir imkân hazırlayabiliriz. Hocanın rehberliğinde küçüklerin tekrarına yardım edebilir. Anladığı bir kavramı arkadaşına kendi diliyle açıklayabilir. Bir buluşmanın düzenlenmesinde fikri sorulabilir. Sorumluluğu açıkça belirleyip yanında tecrübeli bir insan bulunduralım.
 
-e) Mescide girildiğinde ezan okunmamış ve mekruh vakit değil ise, iki rekât Tehıyyetü`l-Mescid namazı kılınması sünnettir.
+Sınav takvimiyle camideki program çakıştığında gençle konuşalım. Uygun bir zaman bulunabilir; kısa bir görev de anlamlı olabilir. Katkısını takip edelim ve verdiği emeğe teşekkür edelim. Güven, söz verdiğimiz desteği zamanında sunduğumuzda güçlenir.
 
-f) Camiye temiz elbiseler ile gelinmelidir.
+Genç kardeşim, sen de öğrenmek istediğin konuyu söyle. Yapabileceğin işe dürüstçe talip ol. Yardıma ihtiyaç duyduğunda bunu paylaş. Camiye kazandıracağın fikir, senden küçük birinin yolunu kolaylaştırabilir. Bugünkü gayretin, ardınca gelecekler için bir başlangıç olabilir.
 
-g) Önce ilk saf tamamlanmalı, sonra ikinci saf tamamlanmalıdır. Ebû Mes’ud anlatıyor: “Resulullah (s.a.v.) namazda omuzlarımıza dokunur ve şöyle buyurdu: ‘Düzgün durun, karışık durmayın ki kalpleriniz de karmakarışık olmasın!’” (Müslim, Salât, 122)
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari-3/okuldan-camiye.svg" width="1600" height="900" alt="Sonbahar yapraklı bir okul avlusunda sırt çantalarıyla arkadan görülen iki genç silueti." loading="lazy" decoding="async">
+<figcaption><strong>Okuldan taşınan merak</strong> Gençlerin soruları, caminin eğitim hayatında karşılık bulsun.</figcaption>
+</figure>
 
-h) Camiden çıkarken önce sol ayak dışarı atılmalıdır.
+**Gençlerin gönlünü dinleyelim, emeklerine yer açalım.**
 
-## Cami ve Din Görevlisi
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَمَنْ اَحْسَنُ قَوْلاً مِمَّنْ دَعَٓا اِلَى اللّٰهِ وَعَمِلَ صَالِحاً وَقَالَ اِنَّنٖي مِنَ الْمُسْلِمٖينَ</p>
+<h2 class="vaaz-bolum-baslik" id="hanimlarin-katilimi" tabindex="-1">V. Hanımların ilim ve ibadet hayatı</h2>
 
-“Allah'a çağıran, salih amel işleyen ve "Kuşkusuz ben müslümanlardanım" diyenden daha güzel sözlü kimdir?” (Fussilet, 41/33) Allah’a çağıran, Allah’ın dinine, tevhide davet eden kişidir. Davetçinin bir diğer özelliği de güzel işler, salih ameller yapmasıdır. Peygamberler, dinin tebliğcileridir. Hem tevhide davet ederler hem de Allah’tan aldıkları emirleri eksiksiz insanlara ulaştırırlar. Peygamberlerden sonra bu sorumluluğu omuzlarına alan, din hizmetine kendini adanmış ömürlerin olması gerekir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا اسْتَأْذَنَتْ أَحَدَكُمُ امْرَأَتُهُ إِلَى الْمَسْجِدِ فَلاَ يَمْنَعْهَا</p>
 
-<p lang="ar" dir="rtl" class="ayet">وَلْتَكُنْ مِنْكُمْ اُمَّةٌ يَدْعُونَ اِلَى الْخَيْرِ وَيَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنْكَرِؕ وَاُو۬لٰٓئِكَ هُمُ الْمُفْلِحُونَ</p>
+*Eşiniz mescide gitmek için izin istediğinde onu engellemeyin.* (Müslim, 442a)
 
-“Sizden, hayra çağıran, iyiliği emreden ve kötülükten men eden bir topluluk bulunsun. İşte kurtuluşa erenler onlardır.” (Ali İmran, 3/104) Yüce Allah müslümanların içinde onlara önderlik edecek, birlik ve beraberliklerini sağlayacak, onlara iyiliği emredecek, onları kötülükten sakındıracak, insanları İslâm’a çağıracak bir sosyal kontrol mekanizmasının bulunmasını istemektedir. Müfessirler müslümanların böyle bir kurumu oluşturmalarının farz-ı kifâye olduğunu belirtmişlerdir. Bu görev yerine getirilmediği takdirde, görevin özelliğine göre o topluluğu meydana getiren yükümlülük çağındaki bütün müslümanlar bu ihmalden dolayı sorumlu olurlar (Elmalılı, II, 1155). Hayra anahtar, şerre kilit, iyilikte önder ve yarışan, kötülükten sakınan ve sakındıran kişilerin olması o toplumun ayakta durması için son derece önemlidir. (Kur'an Yolu Tefsiri, 1/645-649)
+**Kıymetli kardeşlerim! Hanımlarımızın öğrenme arzusunu kendi seslerinden duyalım.**
 
-<p lang="ar" dir="rtl" class="ayet">اُدْعُ اِلٰى سَبٖيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ وَجَادِلْهُمْ بِالَّتٖي هِيَ اَحْسَنُؕ اِنَّ رَبَّكَ هُوَ اَعْلَمُ بِمَنْ ضَلَّ عَنْ سَبٖيلِهٖ وَهُوَ اَعْلَمُ بِالْمُهْتَدٖينَ</p>
+Bir camide ders başlıyor. Ön tarafta sözler açıkça duyulurken hanımlara ayrılan yerde ses kesiliyor. Kitabını açmış bir hanım, hangi satırın okunduğunu anlamaya çalışıyor. Böyle bir durumda öğretimi tamamlayan iş, sesin ulaşıp ulaşmadığını kontrol etmektir. İmkânın gerçek karşılığı, o imkândan yararlanabilmektir.
 
-“(Ey Muhammed!) Rabbinin yoluna, hikmetle, güzel öğütle çağır ve onlarla en güzel şekilde mücadele et. Şüphesiz senin Rabbin kendi yolundan sapanları en iyi bilendir. O, doğru yolda olanları da en iyi bilendir.” Nahl, 16/125) Ayet davet hususunda yöntemi ortaya koymaktadır.
+Peygamber Efendimizin (s.a.s.) bu buyruğu, hanımların mescitle bağını gözetmemizi ister. Ders saatlerini onların ihtiyaçlarını sorarak belirleyelim. Kullanılan alanın aydınlığını, ulaşımını ve sesini birlikte değerlendirelim. Sorularını iletebildikleri, cevap alabildikleri düzenli bir yol oluşturalım. Görüşlerini dinleyerek yapılan düzenleme daha isabetli olur.
 
-Allah Resulü (s.a.s.) Efendimiz insanların hidayeti, İslam’ın insanlara ulaşması için var gücüyle gayret etmişti. Mekke’de on üç yıl inanmayanlarla, Medine’de on yıl münafık, Yahudi ve diğer İslam karşıtı güçlerle mücadele etmişti. Kendini taşlayanlara, ordular tertip edip üzerine yürüyenlere hidayete ermeleri için dua etmişti. Şair, kahin dediler, getirdiğini yalanladılar. “Ne istersen söyle verelim. İstersen seni kralımız yapalım. Mallarımızı birleştirelim en zenginimiz sen ol. Hasta isen tedavi ettirelim. Yeter ki davandan vazgeç.” dediler. Allah Resulü (s.a.s.) güneşi sağ elime, ayı da sol elime verseniz yine de davamdan vazgeçmem.” buyurdular. Müşriklerin inkarı karşısında son derece üzüldüler. Rabbimiz bu durumu ayet-i kerimede şöyle buyurmuştur:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَقَالَتْ عَائِشَةُ نِعْمَ النِّسَاءُ نِسَاءُ الأَنْصَارِ لَمْ يَكُنْ يَمْنَعُهُنَّ الْحَيَاءُ أَنْ يَتَفَقَّهْنَ فِي الدِّينِ</p>
 
-<p lang="ar" dir="rtl" class="ayet">لَعَلَّكَ بَاخِعٌ نَفْسَكَ اَلَّا يَكُونُوا مُؤْمِنٖينَ</p>
+*Hz. Âişe şöyle dedi: “Ensar hanımları ne iyi hanımlardır! Hayâları, dini anlayarak öğrenmelerine engel olmadı.”* (Müslim, 332c; rivayetten bölüm)
 
-“Ey Muhammed! Mümin olmuyorlar diye adeta kendini helak edeceksin!” (Şuara, 26/3) Dinin yayılması için adeta kendini parçalarcasına dert edinen, inanmadıkları için üzülen bir Peygamberimiz var bizim. Allah Resulü’nden bize sünnettir Hak yolunun davetçisi olmak. Etrafını aydınlatan bir kandil misali cehalet ve dalalet karanlığına meydan okumak.
+Bu değerlendirme, ibadet temizliğiyle ilgili sorular bağlamında aktarılır. Öğrenmeye duyulan bu ciddiyeti hürmetle hatırlayalım. Hanımların ibadet bilgisine ulaşması, kendi kulluk hayatları için başlı başına kıymetlidir. Soruyu rahatça iletebilmek, doğru cevaba ulaşmanın ilk adımıdır.
 
-“Alimler peygamberlerin varisleridir. Peygamberler altın ve gümüşü miras olarak bırakmazlar, onlar sadece ilmi miras bırakmışlardır. İşte o mirasa konan kimse de bol nasib ve kısmet almış olur.” (Ebu Davud, İlim, 1; Tirmizi, İlim, 19)
+Evdeki sorumlulukları paylaşmak da bu katılımın parçasıdır. Bir eş, ders saatinde çocukla ilgilenebilir. Yakındaki bir aile ulaşım için destek verebilir. Çocuğuyla katılacak anneye uygun imkân bulunabilir. Gelemeyen kişi için dersin notları ulaştırılabilir. Her ailenin şartını dinleyerek yapılabilir bir çözüm arayalım.
 
-## Sonuç
+Hanımların bilgi ve tecrübesi eğitim hayatımızı zenginleştirir. Ehliyet sahibi hanımlar ders verebilir, program hazırlayabilir, genç kızların sorularına rehberlik edebilir. Bir konunun nasıl anlatılacağına ilişkin tekliflerini doğrudan soralım. Verilen görevin vakti ve sorumluluğu açık olsun; emekleri görülsün.
 
-Cennete giden yollar, mescitlerden geçiyor.
+Camide ibadet düzenini, mahremiyeti ve karşılıklı saygıyı gözeterek bu imkânları geliştirebiliriz. Din görevlisiyle ve katılımcılarla konuşup uygulanabilir adımlar belirleyelim. **Caminin yarını, bugün içinde yetişen gönüllerde filizlenir.**
 
-Mevlâ hep kullarını, secdelerde seçiyor
+**Hanımların camide ilimden yararlanmasını ve ilme katkısını kolaylaştıralım.**
 
-Camiler, beş vakit namaz kılındıktan kapısı açılmayan veya sadece Cuma günleri hatırlanan mekanlar olmamalıdır. Camiler, Allah’ın en çok sevdiği, rahmetin indiği, huzur ve bereket yerleridir. Manen rahatladığımız, huzur bulduğumuz, sükunete kavuştuğumuz, rahmete gark olduğumuz, Rabbimize daha çok yakın olduğumuz yerdir camiler. Camilerin inşa etmek ihtiyaçlarının gidermek, temiz tutmak biz müminlerin görevlerindendir. Camilerin manevi imarı, camilerin cemaatle dolması, ilim halkalarının oluşması, cami merkezli bir toplum inşa edilmesi ile olacaktır.
+---
 
-Camilerimizi inşa eden, cemaat olan, görev alanlardan ahirete irtihal edenlere Rabbimiz af ve mağfiret, hayatta olanlar sağlık ve afiyet diliyoruz. Rabbimiz gönüllerimizi mescide asılı olanlardan eylesin.
+<h2 class="vaaz-bolum-baslik" id="soruyu-dinlemek" tabindex="-1">VI. Soruya açılan bir ilim meclisi</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ٱدْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِٱلْحِكْمَةِ وَٱلْمَوْعِظَةِ ٱلْحَسَنَةِ ۖ وَجَـٰدِلْهُم بِٱلَّتِى هِىَ أَحْسَنُ</p>
+
+*Rabbinin yoluna hikmetle ve güzel öğütle davet et; onlarla en güzel yöntemle tartış.* (Nahl, 16/125; âyetten bölüm)
+
+Okul çıkışında tramvay bekleyen bir gencin telefonuna din hakkında kısa bir video düşüyor. Eve vardığında aklında bir soru var. Bunu camide sorabilmesi için karşısında sabırla dinleyen birini bulması gerekir. İlk cevabımız bazen birkaç sakin kelime olabilir: Seni dinliyorum; hangi kısmı anlamakta zorlandın?
+
+Nahl sûresinin öğrettiği hikmet, muhatabın durumunu gözeterek doğru sözü yerinde söylemektir. Bir gencin kullandığı kelime sert gelebilir; asıl merakını anlamaya çalışalım. Bazen sorunun altında arkadaşının alayı, bazen bir yanlış bilgi, bazen kendi yaşadığı bir kırgınlık bulunur. Dinlemek, cevabın yolunu açar.
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Bir soruya dört adım</strong> Ders halkasında birlikte uygulayabileceğimiz bir dinleme yolu.</figcaption>
+<table aria-label="Bir soruya dört adım">
+<thead><tr><th scope="col">Adım</th><th scope="col">Uygulama</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Adım">Dinle</th><td data-label="Uygulama">Sözünü bitirmesine fırsat ver; neyi sorduğunu kendi cümlenle teyit et.</td></tr>
+<tr><th scope="row" data-label="Adım">Ayır</th><td data-label="Uygulama">Dinî bilgiyle kişisel tecrübeyi ayır; cevabı doğru kaynaktan araştır.</td></tr>
+<tr><th scope="row" data-label="Adım">Açıkla</th><td data-label="Uygulama">Anlayacağı kelimelerle konuş; bilmediğin hususu ehline götür.</td></tr>
+<tr><th scope="row" data-label="Adım">Dön</th><td data-label="Uygulama">Birlikte belirlediğiniz zamanda cevabı paylaş; yeni sorusunu dinle.</td></tr>
+</tbody></table>
+</figure>
+
+Bilmiyorum diyebilmek, öğreticinin dürüstlüğünü gösterir. Araştırıp döneceğim dediğimizde zamanı belirleyelim ve sözümüzü tutalım. Sorunun cevabını bulmak kadar, soran kişinin unutulmadığını hissetmesi de değerlidir. Kaynağı birlikte açmak, ona nasıl araştıracağını öğretir.
+
+Çekinerek soran için yazılı soru imkânı hazırlayabiliriz. Özel bir meselesini paylaşan kişinin mahremiyetini koruruz. Kendi bilgimizi aşan konuda ehil birine yönlendiririz. Gencin konuştuğu dili bilen güvenilir bir öğreticiden yardım almak da anlaşılmayı kolaylaştırır. Aynı hakikati muhatabın anlayabildiği sözle ulaştıralım.
+
+**Bir soruyu sabırla karşılamak, öğrenmeye açılan yolu genişletir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="ailede-ogrenme" tabindex="-1">VII. Cami dersinden evdeki sohbete</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِذْ قَالَ لُقْمَـٰنُ لِٱبْنِهِۦ وَهُوَ يَعِظُهُۥ يَـٰبُنَىَّ لَا تُشْرِكْ بِٱللَّهِ ۖ إِنَّ ٱلشِّرْكَ لَظُلْمٌ عَظِيمٌ ۝١٣</p>
+
+*Lokmân oğluna öğüt verirken şöyle demişti: “Yavrucuğum! Allah’a ortak koşma; çünkü ortak koşmak büyük bir zulümdür.”* (Lokmân, 31/13)
+
+**Aziz anneler ve babalar! Öğrettiğimiz hakikatle sesimizin şefkati birlikte yürüsün.**
+
+Lokmân’ın öğüdünün merkezinde Allah’ın birliği vardır. Oğluna “Yavrucuğum” diye seslenir. İnancın en temel hakikatini, yakınlık bildiren bir hitapla öğretir. Biz de dinimizi anlatırken çocuğumuzla kurduğumuz bağı gözetelim. Ciddiyetimizle sevgimiz aynı cümlede buluşabilsin.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Servis durağından eve taşınan soru</p>
+
+Marche-en-Famenne’de ders sonrası otobüs durağında bekleyen bir kızımız, öğrendiği bir kelimeyi babasına soruyor. Baba kelimenin Fransızca karşılığını hemen bulamıyor. Evde birlikte anlamına bakmayı öneriyor. Kızının defterine soruyu yazıyorlar; hocaya danışacakları yeri işaretliyorlar. Yol boyunca başlayan sohbet, evde kısa bir öğrenme vaktine dönüşüyor.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Öğrenmenin üç durağı</strong> Dersin devamı için uzun saatler kadar küçük ve düzenli buluşmalar da değerlidir.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Camide</dt><dd>Derste bir soruyu ve öğrenilen bir bilgiyi deftere yazalım.</dd></div>
+<div><dt>Evde</dt><dd>On dakika ayırıp anlamını konuşalım; büyükler de öğrendiğini paylaşsın.</dd></div>
+<div><dt>Günlük hayatta</dt><dd>Öğrenilen bir iyiliği okulda veya aile içinde uygulayalım.</dd></div>
+</dl>
+</figure>
+
+Çocuğumuzun defterini yalnız hatasını bulmak için açmayalım. Gayretini fark etmek, zorlandığı yeri birlikte görmek için de yanında oturalım. Her gün aynı uzunlukta vakit ayıramayabiliriz. Düzenli kısa bir buluşma, sürdürülebilir bir başlangıç olur. Anne babanın iş saatine göre bu vakit birlikte seçilebilir.
+
+Ailesinde dinî destek bulamayan gencin de güvenilir bir öğrenme çevresine ihtiyacı vardır. Cami öğreticileri uygun bir rehberlik imkânı sunabilir. Yeni Müslüman olmuş yetişkin de ilk bilgilerini adım adım öğrenebilir. Soruyu küçümsemeden, kişinin bulunduğu yerden başlayalım. Her öğrenen kendi yolunda ilerler.
+
+**Camide başlayan dersi, evdeki ilgi ve günlük hayattaki davranışla tamamlayalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="komsuyla-tanisma" tabindex="-1">VIII. Komşunun merakına yer açmak</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلنَّاسُ إِنَّا خَلَقْنَـٰكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَـٰكُمْ شُعُوبًا وَقَبَآئِلَ لِتَعَارَفُوٓا۟</p>
+
+*Ey insanlar! Şüphesiz sizi bir erkek ile bir dişiden yarattık, tanışasınız diye sizi kavim ve kabilelere ayırdık.* (Hucurât, 49/13; âyetten bölüm)
+
+Âyet bütün insanlara seslenir; farklı topluluklar hâlinde oluşumuzu tanışmayla ilişkilendirir. Devamında Allah katındaki değerin takvâ ile olduğunu bildirir. Bu ölçü, dilimiz ve kökenimiz üzerinden üstünlük taslamamızı önler. Mahallemizde karşılaştığımız insanla saygılı bir tanışmaya yöneltir.
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Mescitte sorulan açık sorular</p>
+
+Enes b. Mâlik’in anlattığına göre Dımâm b. Sa‘lebe, Peygamber Efendimiz (s.a.s.) mescitte sahâbîleriyle otururken geldi. Sorularını ısrarla soracağını belirtti. Efendimiz kendisine dilediğini sormasını söyledi. Dımâm peygamberlik, namaz, oruç ve zekât hakkında sordu; cevaplarını aldı ve getirilen hakikate iman ettiğini bildirdi.
+
+(Buhârî, 63; sahih rivayetin ilgili kısmının özeti.)
+
+Bu karşılaşmada merakını açıkça söyleyen bir insan ve onu cevaplayan bir Peygamber görüyoruz. Biz de camimizi tanımak isteyen komşunun sorusuna vakit ayırabiliriz. Ziyaret saatini ibadet düzenine uygun belirler, camideki davranış ölçülerini önceden açıklarız. Karşılıklı anlayış, ne yapacağımızı bilerek buluştuğumuzda kolaylaşır.
+
+Okul avlusunda çocuğunun arkadaşının annesiyle konuşan bir hanım, camideki derslerden söz edebilir. İlgilenen komşusuna uygun bir tanışma programını haber verebilir. Hristiyan, Yahudi veya herhangi bir inanca bağlı olmayan komşumuzun sorusunu saygıyla dinleyelim. Bildiğimizi dürüstçe anlatalım; tercihine ve zamanına hürmet edelim.
+
+Gençlerimiz bu buluşmada anlayacakları dilde konuşan misafirlere yardımcı olabilir. Önceden hazırlanmış kısa bir anlatımı hocayla gözden geçirebilirler. Kız ve erkek gençlerin katkılarıyla ibadetin anlamı, derslerin amacı, camideki günlük hayat tanıtılabilir. Gencin bilgisi de anlatırken derinleşir.
+
+Tanışmanın devamı bazen sokakta verilen selâmdır. İsmini öğrendiğimiz komşuya yeniden hâl hatır sormak, ilk buluşmanın samimiyetini sürdürür. Caminin içinde anlattığımız güzel ahlâk, dışarıdaki davranışımızla tamamlanır.
+
+**Komşunun merakını hürmetle karşılayalım, tanışmaya zaman ayıralım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="incitmeden-ogretmek" tabindex="-1">IX. Edebi incitmeden öğretmek</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَقُل لِّعِبَادِى يَقُولُوا۟ ٱلَّتِى هِىَ أَحْسَنُ ۚ إِنَّ ٱلشَّيْطَـٰنَ يَنزَغُ بَيْنَهُمْ ۚ إِنَّ ٱلشَّيْطَـٰنَ كَانَ لِلْإِنسَـٰنِ عَدُوًّا مُّبِينًا ۝٥٣</p>
+
+*Kullarıma söyle, sözün en güzelini söylesinler; yoksa şeytan aralarına girer. Kuşkusuz şeytan insanların apaçık düşmanıdır.* (İsrâ, 17/53)
+
+Caminin huzurunu korumak hepimizin sorumluluğudur. Halıda yürüyüşümüzden konuşma sesimize kadar davranışımız başkasını etkiler. Bu adabı öğretirken kullandığımız söz de aynı sorumluluğun içindedir. İsrâ sûresi bizi sözün en güzeline yöneltir. Doğruyu söylerken insanın gönlünü de gözetelim.
+
+<blockquote class="vaaz-alinti">
+<p>nefsin çirkin davranışlardan rahatsız olup onları terketmesi</p>
+<footer>— Râgıb el-İsfahânî’nin hayâ tarifi; el-Müfredât, “ḥyy”; TDV İslâm Ansiklopedisi, Hayâ maddesindeki aktarım.</footer>
+</blockquote>
+
+Bu tarif, edebin insanın içinde kök salmasını hatırlatır. Çocuğa davranışın nedenini anlattığımızda kendi davranışını değerlendirmesine yardım ederiz. Yanındakinin namazda olduğunu fark eder, sesini onun huzuru için alçaltır. Böylece kural, karşısındaki insanı gözeten bir anlayışa dönüşebilir.
+
+Cemaatten biri bir gencin telefonuyla ilgilendiğini görüyor. Önce uygun bir zamanı bekleyebilir; sonra ibadetin ve dersin dikkat istediğini sakin bir sesle anlatabilir. Hepimizin aynı ölçüye uyması da gerekir. Büyüğün kendi telefonunu sessize alması, sözünün tesirini artırır. Örnek olmak, öğüdün yükünü hafifletir.
+
+Bazen iyi niyetle başladığımız uyarıda sesimiz yükselir. Ardından yanına gidip üslubumuz için özür dileyebiliriz. Uygun davranışı yeniden açıklayıp ilişkiyi onarırız. Özür, yetişkinin de kendini düzeltebildiğini gösterir. Çocuğun veya gencin yeniden selâm verebileceği bir yakınlık kalsın.
+
+Özel ihtiyaçları bulunan çocukların davranışlarını anlamak için ailesini dinleyelim. Gürültüye hassasiyet, dikkat güçlüğü veya hareket ihtiyacı farklı destekler gerektirebilir. Aileyle birlikte daha sakin bir yer ve uygun süre belirlenebilir. İhtiyacı kişiden öğrenmek, acele hükmün önüne geçer.
+
+Yeni gelen yetişkinin de aynı nezakete ihtiyacı vardır. Bildiğimiz bir âdeti herkesin bildiğini varsaymayalım. Ayakkabının konacağı yeri göstermek, dersin başlayacağı saati söylemek, nereye oturabileceğini anlatmak küçük yardımlardır. Kendi rahatlığımızı başkasına da sağlayalım.
+
+**Adabı öğretirken, öğrettiğimiz edebi kendi sözümüzde gösterelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="birlikte-surdurmek" tabindex="-1">X. Öğrenilen iyiliği birlikte sürdürmek</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَنْ أَحْسَنُ قَوْلًا مِّمَّن دَعَآ إِلَى ٱللَّهِ وَعَمِلَ صَـٰلِحًا وَقَالَ إِنَّنِى مِنَ ٱلْمُسْلِمِينَ ۝٣٣</p>
+
+*Allah’a çağıran, dine ve dünyaya yararlı iş yapan ve “Ben Müslümanlardanım” diyenden daha güzel sözlü kim vardır?* (Fussılet, 41/33)
+
+Fussılet sûresi, Allah’a çağırmayı yararlı işle birlikte anar. Camide öğrettiğimiz iyiliğin hayatımızda da görünmesini isteriz. Bir öğrenci, hocasının verdiği sözü tuttuğunu gördüğünde sözün ağırlığını öğrenir. Gençlerin fikrini sorup sonra o fikre cevap verdiğimizde, dinlemenin neye benzediğini göstermiş oluruz.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">يَسِّرُوا وَلاَ تُعَسِّرُوا، وَسَكِّنُوا وَلاَ تُنَفِّرُوا</p>
+
+*Kolaylaştırın, zorlaştırmayın; huzur verin, nefret ettirmeyin.* (Buhârî, 6125)
+
+Efendimizin bu ölçüsünü dersin düzenine taşıyalım. Başlangıç seviyesindeki kişiye yapabileceği bir çalışma verelim. Neyi başardığını gösterip sonraki adımı açıklayalım. Haftalık programda yalnız konu başlığı değil, öğrencinin ihtiyacına ayrılmış vakit de bulunsun. Öğrenme yolunun görülebilmesi, devam etmeyi kolaylaştırır.
+
+Dersliğin duvarında asılı bir takvim düşünelim. Bir çocuk o hafta öğrendiği sûreyi işaretliyor; bir genç cevap aradığı sorunun yanına kaynak ekliyor. Öğretici gelecek buluşmanın konusunu yazıyor. Böyle bir takip, eksikleri fark etmeye ve emeğin sonucunu görmeye yardım edebilir. Küçük adımlar görünür hâle gelir.
+
+Aile, öğretici ve öğrenci zaman zaman birlikte konuşsun. Neler anlaşıldı, hangi konuda yardıma ihtiyaç var, hangi saat daha uygun? Karar verirken işi yapacak kişinin görüşünü de alalım. Programı sürdürenlerin imkânını gözetmek, hizmetin devamını güçlendirir. Dinlenmeye ve hazırlanmaya ayrılan vakit de eğitime hizmet eder.
+
+Din görevlisinin gayretine cemaatin desteği eşlik etsin. Ehil gönüllüler tekrar çalışmalarına, uygun kişiler karşılamaya yardım edebilir. Görevler açıkça belirlensin; öğrenenin mahremiyeti korunsun. Herkes üstlendiği işi bilsin ve yardım isteyebileceği kişiyi tanısın. Böylece yeni gelen de yerini kolayca bulur.
+
+Bir çocuğun sesi, bir gencin sorusu, bir hanımın tecrübesi bu ortak öğrenmeye katkı verir. Her buluşmanın ardından küçük bir değerlendirme yapalım. Daha iyi neyi yapabileceğimizi konuşalım. Sonra bir adımı gerçekten uygulayalım.
+
+**İyiliği sürdüren eğitim, insanı dinler ve verdiği sözü yerine getirir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta için yedi somut söz</h2>
+
+**Aziz cemaat! Dinlediğimiz söz, takvimimizde küçük bir yer bulsun.**
+
+Cami çıkışında yanımızda bir karar taşıyalım. Önümüzdeki yedi gün, bu kararın ilk denemesi olsun. Aşağıdaki sözleri kendi imkânımıza göre somutlaştıralım. Anne baba olmasak da bir öğrencinin, bir komşunun veya öğrenmeye yeni başlayan bir yetişkinin işini kolaylaştırabiliriz.
+
+**YENİ NESİLLER İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir çocuğu adıyla selâmlayacağım.</strong> Ailesinin yanında gösterdiğim ilgiyle camide fark edildiğini hissettireceğim.</li>
+<li><strong>Bir gencin sorusunu bölmeden dinleyeceğim.</strong> Cevabı bilmiyorsam onunla birlikte güvenilir bir kaynağa başvuracağım.</li>
+<li><strong>Bir hanımın derse katılımını kolaylaştıracağım.</strong> İhtiyacını sorup ulaşım, çocuk bakımı veya ders notuna erişimde yapabileceğim desteği belirleyeceğim.</li>
+<li><strong>Bir öğrenme buluşmasına on dakika ayıracağım.</strong> Ailemle veya bir arkadaşımla camide öğrendiğimiz bir bilginin anlamını konuşacağım.</li>
+<li><strong>Bir komşumla tanışma sohbeti yapacağım.</strong> Vaktini gözeterek hâlini soracak, camiyle ilgili merakı varsa dinleyeceğim.</li>
+<li><strong>Kullandığım bir uyarı cümlesini düzelteceğim.</strong> Kırıcı sözü bırakıp uygun davranışı sakin ve açık biçimde anlatacağım.</li>
+<li><strong>Bir eğitim buluşması için somut destek sunacağım.</strong> Hocaya ihtiyacı sorup imkânıma uygun küçük bir görevi ne zaman yapacağımı söyleyeceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Niyetten davranışa</strong> Bir isim, bir zaman ve yapılabilir bir adım belirleyelim.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Çocuğu adıyla selâmla</strong></li>
+<li><span aria-hidden="true">2</span><strong>Gencin sorusunu dinle</strong></li>
+<li><span aria-hidden="true">3</span><strong>Katılım için destek ol</strong></li>
+<li><span aria-hidden="true">4</span><strong>Birlikte öğrenmeye vakit ayır</strong></li>
+<li><span aria-hidden="true">5</span><strong>Komşunla tanışmaya başla</strong></li>
+<li><span aria-hidden="true">6</span><strong>Sözünü güzelleştir</strong></li>
+<li><span aria-hidden="true">7</span><strong>Öğrenmeye destek ver</strong></li>
+</ol>
+</figure>
+
+Telefonumuzdaki takvime bir vakit yazabiliriz. Dersin ardından hocaya kısa bir teklifte bulunabiliriz. Uzakta olan, bir telefon görüşmesiyle de öğrenmeye eşlik edebilir. Yapabileceğimiz adımı seçip başlayalım; sonra nasıl geçtiğine bakalım. Bir davranışın tekrarı, güzel bir alışkanlığın başlangıcı olabilir.
+
+Bu akşam bir kâğıdın kenarına başlayacağımız işi yazalım. Kiminle, ne zaman ve nasıl yapacağımız belli olsun. Bir gencin sorusuna cevap arayacaksak görüşeceğimiz hocayı belirleyelim. Bir hanımın derse ulaşmasına yardım edeceksek önce hangi desteği istediğini soralım. İhtiyacı sahibinden öğrenmek, verdiğimiz sözün doğru yere ulaşmasını sağlar.
+
+Haftanın sonunda kendimize kısa bir hesap verelim: Niyet ettiğim işi yaptım mı; karşımdaki insana faydası oldu mu? Başlayamadıysak engeli belirleyip daha küçük bir adım seçelim. Yaptıysak sürdürmenin yolunu konuşalım. Bu değerlendirmeyi çocuklarla da paylaşabiliriz. Onlar, büyüklerinin sözünü ciddiye aldığını ve kendi davranışını gözden geçirdiğini görsün.
+
+Camiye gelişte bir selâmı, ders sırasında bir soruyu, eve dönüşte kısa bir sohbeti hatırlayalım. Günün akışı içinde bunlara yer bulabiliriz. Büyüklerimizin birikimiyle gençlerimizin merakı yan yana geldiğinde öğrenme karşılıklı olur. Birbirimizin gayretini fark edip teşekkür edelim; iyiliğin devamına böyle destek verelim.
+
+Yavrularımız büyüdüğünde bu camiyi hangi sesle hatırlasın? Kendilerini dinleyen, yanlışlarını düzelten ve yeniden denemelerine yardım eden insanların sesiyle hatırlasınlar. Bu hatırada her birimizin payı olabilir. Bugün gösterdiğimiz ilgi, yarın onların başka birine göstereceği ilgiye örnek olsun.
+
+**Caminin yarını, bugün içinde yetişen gönüllerde filizlenir.**
+
+**Bu hafta bir insanın öğrenmesini kolaylaştıran somut bir adım atalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Nesillerimize hayırlı bir yol</h2>
+
+**Kıymetli kardeşlerim! Rabbimize yönelip nesillerimiz için dua edelim.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ</p>
+
+*Rabbim! Bana tarafından temiz bir nesil ihsan eyle! Kuşkusuz sen duayı işitmektesin.* (Âl-i İmrân, 3/38; âyetten bölüm)
+
+Allah’ım! Camilerimizde açılan küçük elleri rahmetinle karşıla. Yavrularımıza seni tanımayı, sana güvenmeyi ve ibadetin huzurunu nasip eyle. Bize onların sorularını sabırla dinlemeyi öğret. Öğrendikleri her doğru bilgiyi hayatlarında iyiliğe dönüştürmeyi lütfeyle.
+
+Rabbimiz! Gençlerimizin kalplerine iman sebatı, zihinlerine açıklık ver. Okulda, işte ve arkadaş çevresinde doğru olanı seçmelerine yardım eyle. Yalnızlık çekenlere hayırlı dostlar nasip eyle. Kendini ifade etmekte zorlananların sözünü duyacak anlayışlı insanlar karşılarına çıkar.
+
+Allah’ım! Hanımlarımızın ve erkeklerimizin ilim gayretini bereketlendir. Ailelerimize birbirinin yükünü paylaşma feraseti ver. Anne babalara şefkat, öğreticilere sabır, öğrencilere güzel anlayış ihsan eyle. Yeni Müslüman olan kardeşlerimizin adımlarını kolaylaştır. Öğrenmeye yeniden başlayan büyüklerimize güç ve gönül ferahlığı ver.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا ظَلَمْنَآ أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ ٱلْخَـٰسِرِينَ</p>
+
+*Rabbimiz! Kendimize zulmettik. Bizi bağışlamaz ve bize merhamet etmezsen mutlaka ziyana uğrayanlardan oluruz.* (A‘râf, 7/23; âyetten bölüm)
+
+Rabbimiz! Bilmeden incittiğimiz gönülleri onarmayı bize nasip eyle. Hatalarımızı kabul edip düzeltme cesareti ver. Dilimizi kırıcı sözden, kalbimizi kibirden koru. Camiye gelen herkese hakkıyla hürmet eden bir cemaat olmayı lütfeyle.
+
+Allah’ım! Hastalarımıza şifa, bakım verenlere kuvvet, yas tutanlara teselli ver. Âhirete göçen annelerimize, babalarımıza, hocalarımıza ve bütün müminlere rahmet eyle. Bizleri geride bırakılan hayrı sürdürenlerden kıl.
+
+Rabbimiz! Yaşadığımız Belçika’ya ve bütün beldelere huzur ver. Komşularımızla güven içinde yaşamayı, birbirimize yararlı olmayı nasip eyle. Dünyanın her yerindeki çocukları zulümden ve korkudan koru. Duamızı kabul eyle. **Bizi yeni nesillere şefkatle yol açan kullarından eyle.**
+
+Âmin. Hamd âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler belirtilmiştir. Gündelik Avrupa sahneleri temsilîdir. Tarihî anlatılar kaynaklarında bulunan ayrıntılarla sınırlandırılmıştır. Hadis numaraları erişilebilir yaygın numaralandırmaya göredir.</p>
+<ul>
+<li>İlk hatıra ve dua: <a href="https://quran.com/2/32">Bakara 2/32</a>.</li>
+<li>Vahiy ve eğitim: <a href="https://quran.com/62/2">Cuma 62/2</a>.</li>
+<li>Suffe’nin eğitim mirası: <a href="https://sunnah.com/bukhari:71">Buhârî 71</a>.</li>
+<li>Çocuk ve şefkat: <a href="https://sunnah.com/bukhari:516">Buhârî 516</a>; <a href="https://sunnah.com/bukhari:6247">Buhârî 6247</a>.</li>
+<li>Gençlik ve sorumluluk: <a href="https://quran.com/18/13">Kehf 18/13</a>; <a href="https://sunnah.com/bukhari:6008">Buhârî 6008</a>.</li>
+<li>Hanımların camideki yeri: <a href="https://sunnah.com/muslim:442a">Müslim 442a</a>; <a href="https://sunnah.com/muslim:332c">Müslim 332c</a>.</li>
+<li>Soruyu dinlemek: <a href="https://quran.com/16/125">Nahl 16/125</a>.</li>
+<li>Evde devam eden ders: <a href="https://quran.com/31/13">Lokmân 31/13</a>.</li>
+<li>Komşularla tanışmak: <a href="https://quran.com/49/13">Hucurât 49/13</a>.</li>
+<li>Edep ve güzel söz: <a href="https://quran.com/17/53">İsrâ 17/53</a>.</li>
+<li>İlmi hayata taşımak: <a href="https://quran.com/41/33">Fussılet 41/33</a>; <a href="https://sunnah.com/bukhari:6125">Buhârî 6125</a>.</li>
+<li>Hatim ve cemaat niyazı: <a href="https://quran.com/3/38">Âl-i İmrân 3/38</a>; <a href="https://quran.com/7/23">A‘râf 7/23</a>.</li>
+<li>Eğitim tarihi: <a href="https://islamansiklopedisi.org.tr/suffe">TDV İslâm Ansiklopedisi — Suffe</a>.</li>
+<li>Edep ve öğrenme: <a href="https://islamansiklopedisi.org.tr/haya">TDV İslâm Ansiklopedisi — Hayâ</a>.</li>
+<li>Hanımların öğrenme talebi: <a href="https://sunnah.com/bukhari:101">Buhârî, 101</a>.</li>
+<li>Hanımların ilim gayreti: <a href="https://sunnah.com/muslim:332c">Müslim, 332c</a>.</li>
+<li>Mescitte sorulan sorular: <a href="https://sunnah.com/bukhari:63">Buhârî, 63</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

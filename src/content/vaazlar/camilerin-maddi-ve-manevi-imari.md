@@ -1,162 +1,481 @@
 ---
-baslik: "Camilerin Maddi ve Manevi İmarı"
-ozet: "Kâbe’nin birer şubesi olan camilerimiz İslam’ın sembolü ve mührüdür. Cami, “toplayan, bir araya getiren” anlamında Arapça cem’ kökünden türemiştir. Mescid ise…"
+baslik: "Camiyi Namazla Yaşatmak: Seherden Yatsıya Gönül Bağı"
+ozet: "Caminin manevî imarı, namaza ayırdığımız vakitte ve cemaate bağlı gönlümüzde başlar. Tevbe sûresinden sabah ve yatsı saflarına uzanan bir davet ve bir haftada atılacak yedi adım."
 kategori: ibadet
-kelime: 2509
+kelime: 3896
 docx: "/vaazlar/camilerin-maddi-ve-manevi-imari.docx"
 pdf: "/vaazlar/camilerin-maddi-ve-manevi-imari.pdf"
+kapak: "/media/vaazlar/camilerin-maddi-ve-manevi-imari/kapak-og.webp"
+kapakAlt: "Şafak mavisinin aydınlattığı sade bir mescitte, halı üzerinde arkadan görülen üç kişinin namaza hazırlığı."
 ---
-Kâbe’nin birer şubesi olan camilerimiz İslam’ın sembolü ve mührüdür. Cami, *“toplayan, bir araya getiren”* anlamında Arapça cem’ kökünden türemiştir. Mescid ise Arapça’da “eğilmek, tevazu ile alnı yere koymak” manasına gelen sücut kökünden “secde edilen yer” anlamındadır. Cami, Allah’a kulluk amacıyla insanların buluştuğu, amir-memur, yoksul-zengin, genç-yaşlı, toplumun her kesimini bünyesinde toplayan özel mekânlardır. Rabbimiz şöyle buyuruyor:
 
-<p lang="ar" dir="rtl" class="ayet">فِي بُيُوتٍ اَذِنَ اللّٰهُ اَنْ تُرْفَعَ وَيُذْكَرَ فِيهَا اسْمُهُۙ يُسَبِّحُ لَهُ فِيهَا بِالْغُدُوِّ وَالْاٰصَالِۙ</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari/kapak.svg" width="1600" height="900" alt="Şafak mavisinin aydınlattığı sade bir mescitte, halı üzerinde arkadan görülen üç kişinin namaza hazırlığı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Seherde aynı kıbleye</strong> Günün ilk aydınlığında namaz için bir araya gelen gönüller.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-*“Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.”* (Nur, 24/36) Allah’ın zikredildiği, tespih edildiği bu yerler camilerdir. Peygamber Efendimiz şöyle buyurdu:
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#imarin-temeli">İmarın Kur’an’daki temeli</a></li>
+<li><a href="#hayatin-icinde">İşten ibadete yöneliş</a></li>
+<li><a href="#cemaatin-degeri">Cemaatin değeri ve hükmü</a></li>
+<li><a href="#kalbin-bagi">Mescide bağlı gönül</a></li>
+<li><a href="#sabah-namazi">Sabahın daveti</a></li>
+<li><a href="#yatsi-namazi">Yatsıdan sabaha uzanan bağ</a></li>
+<li><a href="#adimlarin-kiymeti">Cemaate yönelen adımlar</a></li>
+<li><a href="#husu">Namazın içinde bulunmak</a></li>
+<li><a href="#safin-duzeni">Birlikte ibadetin adabı</a></li>
+<li><a href="#vakit-ve-mazeret">Vakti ve bağı korumak</a></li>
+<li><a href="#yedi-soz">Bir haftalık yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat niyazı</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Günün içinde Rabbimize yer açmak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">أَحَبُّ الْبِلاَدِ إِلَى اللَّهِ مَسَاجِدُهَا</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari/kapak.svg" width="1600" height="900" alt="Şafak mavisinin aydınlattığı sade bir mescitte, halı üzerinde arkadan görülen üç kişinin namaza hazırlığı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Seherde aynı kıbleye</strong> Günün ilk aydınlığında namaz için bir araya gelen gönüller.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-*“Allah’a en sevimli yerler mescidlerdir/camilerdir.”* (Müslim, Mesâcid, 288) Camiler, ibadet, zikir, takva gibi kulluğun tam manada gerçekleştiği yerlerdir. Camide bulunan bir mümin pek çok kötülükten uzak dururken, Rabbine ise daha çok yaklaşmanın yollarını arar.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-## Camilerin İnşası, Bakımı, Onarımı ve Temizliği
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Rabbimiz:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ فَعَسٰٓى اُو۬لٰٓئِكَ اَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ</p>
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-*“Allah’ın mescidlerini ancak Allah’a ve âhiret gününe inanan, namazını kılan, zekâtını veren ve yalnız Allah’tan korkup çekinen kimseler imar edebilirler. İşte bunların doğru yolu bulanlardan olmaları umulur.”* (Tevbe, 9/18) buyurmuştur.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-Camileri/mescidleri imar etmek, maddî anlamda imar yani inşa, onarım, bakım, temizlik anlamında olduğu gibi manevi yönden de caminin canlı ve aktif olması, ilim ve irfan meclisi olması, içerisinde cemaatle namaz kılınması gibi de anlaşılmalıdır. Bu ayetin daha iyi anlaşılması için Hz. Peygamber dönemindeki mescitlerin konumunun ve işlevinin iyi anlaşılması gerekmektedir.
+*Mûsâ şöyle dedi: Rabbim! Gönlüme ferahlık ver. İşimi bana kolaylaştır. Dilimin düğümünü çöz ki sözümü iyi anlasınlar.* (Tâhâ, 20/25–28)
 
-### Dar’ül Erkam
+**Aziz cemaat! Kıymetli kardeşlerim!**
 
-İslam’ın ilk yıllarında Mekke’de Müslümanların rahat bir şekilde toplandıkları, ibadet ettikleri bir yer yoktu. Kâbe, putlarla dolu ve müşriklerin kontrolünde idi. 17-18 yaş civarında Müslüman olan Erkam b. Ebü’l-Erkam, Resul-i Ekrem’e ilk iman eden gençlerdendi. Erkam , gönlünü İslam’a açtığı gibi Safa tepesinin eteğindeki evini de Resulüllah’ın hizmetine vermiş, o dönemde onun evi Darülislam yani İslam’ın evi, İslam’ın merkezi, kalbi olmuştu. Müslümanlar, Erkam’ın evinde gizlice toplanıyorlardı. Bu evde Resul-i Ekrem bir yandan ashâb-ı kirâma dinî bilgileri öğretirken diğer taraftan ilâhî gerçeği arayan insanları İslâm’a davet ediyor, onlara Kur’an-ı Kerîm okuyor ve onlarla birlikte namaz kılıyordu. Hz. Hamza, Hz. Ömer gibi pek çok kişi orada Müslüman oldu. İslam tarihinde Darülerkam olarak anılan bu ev, Mekke yıllarında tebliğin merkezi, ilim ve irfan meclisi görevlerini ifa etti.
+Günün ilk telaşı henüz başlamamışken halının üzerinde bir saf oluşur. Birazdan herkes kendi işine dağılacaktır. Şimdi ise aynı kıbleye dönüp aynı tekbiri bekleriz. Hayatımızdaki nice farklılık, kulluğumuzun ortaklığında buluşur. Böyle bir sabah camiye vaktimizden ve gönlümüzden bir pay getirmiş oluruz.
 
-### Mescid-i Nebi
+Bir camiyi yaşatan nedir? Duvarına verilen emek kıymetlidir; o duvarların arasında Allah’a yönelen insanın namazı da öyledir. Bugün manevî imarı konuşacağız. İşimizin, yolumuzun ve dinlenmemizin arasında namazı nasıl koruduğumuza bakacağız. **Camiyi namazımızla yaşatır, gönlümüzü cemaate bağlarız.**
 
-Çile ve sıkıntılarla geçen on üç yılın ardından Müslümanlar Medine’ye hicret ettiler. Allah Resulü de , Hz. Ebu Bekir ile birlikte Medine’ye hicret etmişti. Hicret esnasında Peygamber Efendimiz Kuba köyüne ulaştığında bir müddet konaklamış ve orada Kuba Mescidini yaptırmıştı. Kuba Mescidi, Rabbimizin, ***“Daha ilk günden takva temeli üzerine kurulan mescid…”*** (Tevbe, 9/108) buyurmak suretiyle övdüğü mesciddir.
+İçimizde her gün gelenler, yeniden başlamaya niyet edenler, hastalık veya ağır sorumluluk sebebiyle gelemeyenler var. Bu davetin içinde hepimizin yeri bulunsun. Rabbimizden, bildiğimiz bir hakikati yaşayacağımız bir karara dönüştürmeyi isteyelim.
 
-Kuba’dan sonra Medine’ye teşrif eden Allah Resulü’nün ilk işi bu yeni Müslüman yurdunda yapılacak olan mescidin yerini tayin etmek olmuştu. Devesi Kasvâ’yı serbest bıraktı ve onun üzerine çöktüğü, hurma serilip kurutulan düzlük bir alanı mescit yapımı için uygun buldu. Neccâroğulları’ndan Sehl ve Süheyl adlarındaki iki yetimden satın alınan arsaya, Mescid-i Nebi’yi yaptırdı. (Buhârî, Menâkıbü’l-Ensâr, 45)
+**Bugünkü buluşmamız, yarının namazına hazırlanışımızı güzelleştirsin.**
 
-Hz. Peygamber döneminde Mescid-i Nebi, çok aktif aynı zamanda farklı görevlerin icra edildiği bir mekândı. Asr-ı saadette Mescid-i Nebi hem vahyin dünyaya açılan penceresi hem de idari, askeri, sosyal işlerin görüşülüp karara bağlandığı, elçilerin kabul edilip diplomatik görüşmelerin yapıldığı bir yerdi. Allah Resulü namazlarını cemaatle Mescid-i Nebi’de eda ederdi. Namaz öncesi veya sonrası sohbet yapılırken, eğitim ve öğretim yine Mescid-i Nebi’de olurdu. Mescid-i Nebi ticaret ve ziraat gibi işlerin dışında sahabenin uğradığı, aynı zamanda ilim halkasının oluştuğu yerdi. Asr-ı saadette mescit, hayatın merkezi ve kalbi idi.
+---
 
-Cami, şehrin ruhu ve manevi çekim merkezidir. Camilerin ihtiyacını gidermek, inşa ve imar etmek aynı zamanda amel defterini kapatmayan sadaka-ı cariye, salih bir ameldir. Hadis-i şerifte şöyle buyrulmuştur:
+<h2 class="vaaz-bolum-baslik" id="imarin-temeli" tabindex="-1">I. İmarın temeli: İmanla yönelen insan</h2>
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّ مِمَّا يَلْحَقُ الْمُؤْمِنَ مِنْ عَمَلِهِ وَحَسَنَاتِهِ بَعْدَ مَوْتِهِ : عِلْمًا عَلَّمَهُ وَنَشَرَهُ ، وَوَلَدًا صَالِحًا تَرَكَهُ ، وَمُصْحَفًا وَرَّثَهُ ، أَوْ مَسْجِدًا بَنَاهُ ، أَوْ بَيْتًا لابْنِ السَّبِيلِ بَنَاهُ ، أَوْ نَهْرًا أَجْرَاهُ ، أَوْ صَدَقَةً أَخْرَجَهَا مِنْ مَالِهِ فِي صِحَّتِهِ وَحَيَاتِهِ ، يَلْحَقُهُ مِنْ بَعْدِ مَوْتِهِ</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّمَا يَعْمُرُ مَسَـٰجِدَ ٱللَّهِ مَنْ ءَامَنَ بِٱللَّهِ وَٱلْيَوْمِ ٱلْـَٔاخِرِ وَأَقَامَ ٱلصَّلَوٰةَ وَءَاتَى ٱلزَّكَوٰةَ وَلَمْ يَخْشَ إِلَّا ٱللَّهَ ۖ فَعَسَىٰٓ أُو۟لَـٰٓئِكَ أَن يَكُونُوا۟ مِنَ ٱلْمُهْتَدِينَ ۝١٨</p>
 
-*“Mümin kişi vefat ettikten sonra sevabı kendisine ulaşan iyiliklerinden bir kısmı şunlardır: Öğrettiği ve yaydığı ilim, geride bıraktığı iyi bir evlat, miras bıraktığı Mushaf, yaptırdığı mescit, yolcuların barınması için inşa ettiği misafirhane, akıttığı su, sağlığı yerinde iken malından çıkarıp verdiği sadakadır. Bunlardan hangisini yapmış ise öldükten sonra onun sevabı kendisine ulaşır.”* (İbn Mâce, Mukaddime, 20)
+*Allah’ın mescitlerini ancak Allah’a ve âhiret gününe inanan, namazını kılan, zekâtını veren ve yalnız Allah’tan korkup çekinen kimseler imar edebilirler. İşte bunların doğru yolu bulanlardan olmaları umulur.* (Tevbe, 9/18)
 
-Allah Resulü Medine’de Mescid-i Nebi’nin inşa edilmesinde bizzat kendisi çalışmış ve cami inşa edenler hakkında da şu müjdeyi vermiştir:
+Kur’an-ı Kerîm, mescidin imarını anlatırken insanın imanına ve ibadetine bakmamızı istiyor. Bu âyetin bağlamında, Kâbe’ye verilen hizmet ile Allah’a iman arasındaki ilişki ele alınır. Hizmeti değerli kılan temel, tevhid ve Allah’ın rızasını aramaktır. Kur’an Yolu tefsiri imarın, mescidi kullukla canlı tutmayı da kapsadığını açıklar.
 
-<p lang="ar" dir="rtl" class="ayet">مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ فِى الْجَنَّةِ مِثْلَهُ</p>
+Halıya ilk defa alnını koyan bir insanın samimiyetini düşünelim. Kendisini yaratan Rabbine yönelmiştir. Söylediği tekbir, hayatındaki en büyük otoritenin kim olduğunu hatırlatır. Namaz, imanının güne yayılan cevabıdır. Mescidin manevî imarı burada başlar.
 
-*“Her kim Allah için bir mescit bina ederse, Allah ona cennette bu mescidin benzeri (bir köşk) bina eder."* (Müslim, Zühd, 44)
+Âyette namazla beraber zekâtın anılması da dikkatimizi çeksin. Rabbine yönelen insan, malındaki sorumluluğu da gözetir. Allah’ın huzurunda duruşumuz, hayatımızın diğer görevlerini hatırlatır. Bu sebeple camiye gelirken niyetimizi tazeleyelim: Beni Rabbim görsün, Rabbim kabul buyursun.
 
-Peygamber Efendimizin döneminde Mescid-i Nebi düzenli olarak temizlenirdi. Ümmi Mihcen adında siyahi bir kadın, Mescid-i Nebi’nin temizliğini gönüllü yapardı. Bu kadın vefat ettiğinde, ashab-ı kiram vefatını Peygamber Efendimize bildirmeden defnetmişlerdi. Resul-i Ekrem kadını göremeyince: ***“Kadına ne oldu?”*** diye sormuş, sahabe vefat ettiğini bildirmişti. Bunun üzerine Peygamber Efendimiz : ***“Bana vefat ettiğini haber vermeli değil miydiniz?”*** buyurmuştu. Sonrasında mescidine emek veren bu hanımın kabrine giderek onun için bizzat cenaze namazı kılmıştı. (Buhârî, Salât, 74; Müslim, Cenâiz, 71) Resulullah , Ümmü Mihcen’in Mescid-i Nebi’ye olan hizmetinden ve emeğinden dolayı ona ayrı bir değer vermişti.
+Âyetin sonunda bir ümit vardır: Doğru yolu bulanlardan olmayı ummak. Biz de ibadetimize güvenip kendimizi kusursuz görmeyiz; Rabbimizin kabulünü dileriz. Dün aksattığımızı bugün düzeltmek, niyetimizi yeniden yoklamak ve namazımıza sahip çıkmak elimizdedir. Her vakit yeni bir yöneliştir.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ قَالَتْ أَمَرَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِبِنَاءِ الْمَسَاجِدِ فِى الدُّورِ وَأَنْ تُنَظَّفَ وَتُطَيَّبَ</p>
+Âhirete iman da bu yönelişe derinlik katar. İnsanların takdirinden önce Rabbimize vereceğimiz hesabı hatırlarız. Kimsenin fark etmediği bir vakitte mescide gelişimiz, gösterişten uzak bir bağlılığın imkânıdır. İçimizden geçenleri bilen Rabbimize samimiyetle yöneliriz. Kimi zaman safın tamamı birkaç kişidir. Yine de orada kılınan namaza kendi vaktimizi ve dikkatimizi veririz.
 
-Hz. Aişe’nin bildirdiğine göre, “***Allah Resulü mahallelerde mescitler inşa edilmesini, buraların temiz tutulmasını ve güzel kokularla kokulandırılmasını emretmiştir.”*** (Ebu Davud, Salât, 13; Tirmizî, Cuma, 64)
+Âyeti kendi gönlümüze tutulmuş bir ayna gibi okuyalım. İnandığımız âhiret, bugünkü tercihimizde nasıl yer buluyor? Namazımız için ayırdığımız dikkat ne durumda? Böyle sormak, imar çağrısını uzakta bir görev olmaktan çıkarıp bugünümüzün meselesi hâline getirir.
 
-<p lang="ar" dir="rtl" class="ayet">عن أنسٍ رَضِيَ اللّهُ عَنه قال قَالَ رَسُولُ اللّهِ صلى الله عليه وسلم عُرِضَتْ عَلَيَّ أُجُورُ أُمَّتِي، حَتّى اَلْقَذَاةُ يُخْرِجُهَا الرَّجُلُ مِنَ الْمَسْجِدِ</p>
+Bu hafta caminin hayatına katacağımız en yakın katkıyı seçelim. Şartlarımız elveriyorsa bir vakti cemaatle kılmak üzere günümüzü düzenleyelim. O vakte hazırlık, manevî imarın kendi hayatımızdaki karşılığı olsun.
 
-Enes anlatıyor, Resulullah buyurdular ki: ***“Ümmetimin sevapları bana arz edilip gösterildi. Öyle ki mescidden çıkarılıp atılan bir çer-çöpün sevabını bile gördüm…”*** (Ebu Davud, Salat, 16; Tirmizî, Fezailu'l-Kur'an, 19)
+**Caminin manevî imarı, imanımızın namazda görünür olmasıyla başlar.**
 
-Hz. Peygamber , mescitlerin hizmetini gören, ihtiyaçlarını karşılayan kimseleri takdir etmiş, ashâbını bu yönde teşvik etmiştir. Nitekim ilk dönemlerde çok korunaklı olmayan Mescid-i Nebî’nin gece yağan yağmurla ıslanan zeminini kapatmak üzere, eteğine topladığı çakılları yerlere döşeyen zâta, *“Bu (yaptığın) ne kadar güzel!”* diyerek memnuniyetini ifade etmiştir. (Ebu Davud, Salât, 15; Hadislerle İslam, 2/296)
+---
 
-Tarih boyunca camiler inşa etmek, ihtiyaç dâhilinde bakım ve onarımını yapmak, temizliğine özen göstermek bizim medeniyetimizin en temel özelliklerindendir. Aynı zamanda bu şekilde bir yaşam tarzı sünneti seniyyeye uygun bir yaşam modelidir.
+<h2 class="vaaz-bolum-baslik" id="hayatin-icinde" tabindex="-1">II. Hayatın içinde Allah’ı hatırlamak</h2>
 
-### İstiklal Marşı
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فِى بُيُوتٍ أَذِنَ ٱللَّهُ أَن تُرْفَعَ وَيُذْكَرَ فِيهَا ٱسْمُهُۥ يُسَبِّحُ لَهُۥ فِيهَا بِٱلْغُدُوِّ وَٱلْـَٔاصَالِ ۝٣٦</p>
 
-Ruhumun senden ilahi şudur ancak emeli,
+*Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.* (Nûr, 24/36)
 
-Değmesin mabedimin göğsüne namahrem eli.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">رِجَالٌ لَّا تُلْهِيهِمْ تِجَـٰرَةٌ وَلَا بَيْعٌ عَن ذِكْرِ ٱللَّهِ وَإِقَامِ ٱلصَّلَوٰةِ وَإِيتَآءِ ٱلزَّكَوٰةِ</p>
 
-Bu ezanlar ki şahadetleri dinin temeli,
+*Öyle kişiler vardır ki ticaret ve alışveriş onları Allah’ı anmaktan, namazı gereğince kılmaktan ve zekât vermekten alıkoymaz.* (Nûr, 24/37; âyetten bölüm)
 
-Ebedî yurdumun üstünde benim inlemeli
+Rabbimiz, işin ve alışverişin içinde kendisini hatırlayan kullarını övüyor. Eller çalışırken gönül kulluk şuurunu taşır. Namaz için ayrılan vakit de bu şuurun hayata yerleşmesidir. Kazancımızı helâlinden arar, Rabbimizin davetini günümüzün akışında gözetiriz.
 
-## Camilerin Manevi İmarı
+**Muhterem Müslümanlar!**
 
-### Cemaatle Namaz
+Namur’da iş önlüğünü çıkarıp saatine bakan bir çalışanı gözümüzün önüne getirelim. Akşamın işleri henüz bitmemiştir. Cemaate yetişebileceği zamanı önceden belirlediğinde hazırlığı kolaylaşır. Servis saatini, yolculuğunu ve evde kendisini bekleyenleri hesaba katar. Namazına verdiği önem, takviminde yer bulur.
 
-Hz. Peygamber , Medine-i Münevvere’yi cami merkezli bir yapı ile inşa etmişti. Asr-ı saadetten günümüze camiler, ibadet ve eğitim maksadı ile inşa edilmiştir. Camilerin manevi yönden mamur edilmesi beş vakit namazda cemaatin olması ve camide icra edilen vaaz ve İrşad ile olacaktır. Allah Resulü cemaatle namaza son derece önem vermiştir. Peygamber Efendimiz vefatından önceki son günlerinde hastalanıp, namaz kıldırmaya takati kalmadığında Hz. Ebu Bekir’e haber gönderip namaz kıldırmasını istemiş; iyi olduğu vakitlerde ise Hz. Ebu Bekir’e uyarak namaz kılmıştı. Cemaatle namazla ilgili olarak Peygamber Efendimiz şöyle buyurdular:
+Kur’an Yolu, bu âyetin kadınları da kapsadığını belirtir. İşte çalışan hanımın da evinde sorumluluk taşıyanın da Allah’ı anışı kıymetlidir. Her birimiz kendi günümüzün nerede dağıldığını biliriz. Bazen işin kendisinden çok, bitmeyen ekran dolaşmaları vaktimizi tüketir.
 
-<p lang="ar" dir="rtl" class="ayet">عن أبي هريرةَ رضيَ الله عنهُ قال: قالَ رسولُ الله صلى الله عليه وسلم : صَلاةُ الرَّجُلِ في جَمَاعَةٍ تُضعَّفُ عَلى صَلاتِهِ في بَيْتِهِ وَفي سُوقِهِ خَمْساً وَعِشْرِينَ ضِعْفاً، وَذلِكَ أَنَّة إذَا تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ، ثُمَّ خَرَجَ إلى الْمَسْجِدِ، لا يُخْرِجُه إلاَّ الصَّلاةُ، لَمْ يَخْطُ خَطْوَةً إلاَّ رُفِعَتْ لَه بهَا دَرَجَةٌ، وَحُطَّتْ عَنْهُ بِهَا خَطِيئَةٌ، فَإذا صَلَّى لَمْ تَزَلِ الْمَلائِكَة تُصَلِّي عَلَيْهِ مَا دَامَ في مُصَلاَّه، ما لم يُحْدِثْ تقولُ اللَّهُمَّ صَلِّ عَلَيْهِ، اللَّهُمَّ ارحَمْهُ. وَلاَ يَزَالُ في صَلاةٍ مَا انْتَظَرَ الصَّلاةَ</p>
+Bugün son bir haftamıza bakalım. Bir namaza hazırlanmayı kolaylaştıracak hangi alışkanlığı değiştirebiliriz? Çantamızı erken toplamak, bir işi vaktinde bitirmek yahut gereksiz bir oyalanmayı bırakmak başlangıç olabilir. Küçük bir düzen, samimi niyetimize yol açar.
 
-Ebû Hüreyre (r.a.)'den rivayet edildiğine göre, Resûlullah şöyle buyurdu: ***“Bir kimsenin cemaatle kıldığı namazın sevabı, evinde ve çarşı pazarda kıldığı namazdan yirmi beş kat daha fazladır. O kimse abdestini güzelce alıp, sonra sadece namaz kılmak maksadıyla mescide giderse attığı her adım sebebiyle bir derece yükseltilir, bir hatası da silinir. Namazını kıldıktan sonra abdestini bozmadan namaz kıldığı yerde kaldığı müddetçe, melekler ona: ‘Allah’ım! Ona rahmetinle muamele et, ona acı!’ diyerek dua etmeye devam ederler. O kimse namazı beklediği sürece namazda imiş gibidir. ”*** (Buhârî, Ezân 30; Müslim, Mesâcid 272)
+**Namaza verdiğimiz değer, günümüzü nasıl düzenlediğimizde görünür.**
 
-Camiye ibadet için giden mümin, Allah’ın ziyaretçisi ve misafiri durumundadır. Hane sahibi, evine gelen misafirlerine ikramda bulunduğu gibi camiye giden müminlere de Yüce Allah büyük mükâfatlar verecektir.
+---
 
-Başka bir hadis-i şerifte cemaatle namaz kılan kişinin Cenab-ı Hakkın sevgisine mazhar olacağı müjdesi verilmiştir:
+<h2 class="vaaz-bolum-baslik" id="cemaatin-degeri" tabindex="-1">III. Cemaat: Aynı tekbirde buluşmak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ مَا تَوَطَّنَ رَجُلٌ مُسْلِمٌ الْمَسَاجِدَ لِلصَّلاَةِ وَالذِّكْرِ إِلاَّ تَبَشْبَشَ اللَّهُ لَهُ كَمَا يَتَبَشْبَشُ أَهْلُ الْغَائِبِ بِغَائِبِهِمْ إِذَا قَدِمَ عَلَيْهِمْ</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">صَلاَةُ الرَّجُلِ فِي الْجَمَاعَةِ تُضَعَّفُ عَلَى صَلاَتِهِ فِي بَيْتِهِ وَفِي سُوقِهِ خَمْسًا وَعِشْرِينَ ضِعْفًا</p>
 
-Ebû Hüreyre’den gelen rivayete göre, Hz. Peygamber şöyle buyurmuştur: *“Müslüman bir kimse namaz ve zikir (Allah’ı anma) için mescitleri kendine vatan edindiğinde, Allah onun bu durumuna, ailesinin gurbetten dönen kişiye sevindiği gibi sevinir.”* (İbn Mâce, Mesâcid, 19)
+*Kişinin cemaatle kıldığı namaz, evinde ve çarşısında kıldığı namaza göre yirmi beş kat sevapla karşılık bulur.* (Buhârî, 647; rivayetten bölüm)
 
-Cemaatle birlikte ibadet etmek, toplumdaki bireylerin birbirleriyle tanışmasını, kaynaşmasını ve ilişkilerinin güçlenmesini sağlar. Bununla birlikte insanlar arasında yardımlaşma ve paylaşma duyguları gelişir.
+Peygamber Efendimiz (s.a.s.) bu müjdeyle bizi beraber ibadete çağırıyor. Aynı rivayetin devamında, güzelce abdest alıp sırf namaz için mescide yönelenin adımları anlatılır. Her adım bir derece yükselmeye ve bir hatanın silinmesine vesile olur. Hazırlığın ve yolun da bir kıymeti vardır.
 
-Herkesin birbirinden kaçacağı kıyamet gününde, dünyada yaptıkları ameller nedeniyle rahat edecek, Allah Teâlâ’nın özel lütuflarına nail olacak yedi sınıf insan vardır. Konumuzla ilgili bölüm hadis-i şerifte şu şekilde zikredilmektedir:
+Rivayetin sonunda namazı bekleyen insanın, bu bekleyişi boyunca namazda sayıldığı da bildirilir. Kamete kalan birkaç dakikayı değerli bulalım. Sürekli bir yere yetişmeye alışan gönlümüz burada sükûneti öğrensin. Oturup namazı beklerken ekranımıza uzanan elimizi bir an durduralım. Hazırlığımız tamam, niyetimiz namaz olsun. Bekleyişimiz de ibadetimizin çevresinde büyüyen bir hayra dönüşsün.
 
-<p lang="ar" dir="rtl" class="ayet">سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِى ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ:... وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِى الْمَسَاجِدِ</p>
+<p class="vaaz-etiket">Fıkhî Ölçü — Hanefî ilmihal ölçüsü</p>
 
-*“Yedi sınıf insan, Allah’ın (Arşı’nın) gölgesinden başka hiçbir gölgenin bulunmayacağı kıyamet gününde onun gölgesinde gölgelenecektir. “... Kalbi mescidlere bağlı olan kimse…”* (Müslim, Zekât, 91) Kıyamet günü arş-ı âlânın gölgesinde gölgelenecek yedi sınıftan birisi de kalbi mescide bağlı olan yani namazlarını devamlı camide kılan kişilerdir.
+Beş vakit farz namazı cemaatle kılmak, mazereti bulunmayan erkekler için Hanefî mezhebinde müekked sünnet kabul edilir; vâcip diyen âlimler de vardır. Meşru mazeretler gözetilir. Bu hüküm, cuma namazının kendine mahsus şartlarından ayrı ele alınır.
 
-### Camilerin Manevi İmarı: Eğitim
+(TDV İslâm Ansiklopedisi, Cemaat (Namaz), VII, 288–289.)
 
-Cami sadece ibadet edilen yer değildir. Cami, dini bilgilerle birlikte; güzel ahlakın, insan, vatan ve bayrak sevgisinin, merhametin, şefkatin, saygının, değerlerin öğrenildiği yerdir.
+Cemaatin bereketini fark etmek için halı üzerinde yan yana duruşumuza bakalım. İş yerinde birimiz yönetir, birimiz çalışır; burada hepimiz Rabbimizin kuluyuz. İmam tekbir alınca birlikte yöneliriz. Kendi acelemize bir ölçü gelir. Başkasının varlığını gözeterek ibadet etmeyi öğreniriz.
 
-Asr-ı saadette Medine’de eğitim-öğretim faaliyetinin merkezi Mescid-i Nebî idi. Hz. Peygamber , bazı sahâbîleri mescidde eğitim-öğretim faaliyetlerini icra etmekle görevlendirmiştir. Ubâde b. Sâmit Mescid-i Nebi’de hem Kur’an hem okuma yazma öğretmekteydi. Mescid-i Nebî’nin bir öğretim merkezi oluşunun en büyük delili ashâb-ı suffe’dir. Ashab-ı suffe, Mescid-i Nebi’nin içerisinde suffe denilen gölgelik kısımda kalan sahabilerdi. Zaman zaman sayılarının 400’e ulaştığı bu sahabiler, ilimle meşgul olurdu. Ashâb-ı suffenin eğitim ve öğretim işleriyle bizzat Resûl-i Ekrem ilgilenmişti.
+Tek başına kıldığımız namazın şartlarını yerine getirdiğimizde farz borcumuzu öderiz. Cemaat ise bu ibadete güçlü bir beraberlik kazandırır. Elverişli vaktimiz varsa bu nimetten pay alalım. Arkadaşımızı davet ederken onun durumunu dinleyelim; beraberce uygun bir vakit bulalım.
 
-Peygamber Efendimiz , haftanın belirli bir gününü sahabenin sorularını cevaplandırmaya ve onların bilgilerini geliştirmeye ayırmıştı. Bunu da mescitte ifa ediyordu. Hatta ashabın hanımları erkeklerin bu hâline imrenerek, Peygamberimizden kendilerini de bu ilmî faaliyetten mahrum bırakmamasını istemişler, bunun üzerine onlara da bir gün ayıran Peygamber Efendimiz , bu öğretimi de mescitte devam ettirmiştir. Sonraki dönemlerde meşhur mezhep imamlarının da bulunduğu sayısız âlim, cami ve mescitlerdeki ders halkalarında yetişmiş, kendi talebelerini buralarda yetiştirmişlerdir. (Komisyon, Cami Yazıları, DİB, Ankara 2012, s. 13-15)
+Kalabalık günlerin heyecanını hafta içine taşıyalım. Az kişinin bulunduğu bir vakitte de aynı kıbleye dönülür, aynı kulluk yaşanır. Safın ucundaki yerimizi almak, caminin ibadet hayatına doğrudan katılmaktır. Bir namazlık kararı, sürdürebileceğimiz bir düzene çevirelim.
 
-### Cami ve Cemaat Adabı
+Sevap müjdesini duyarken kendi niyetimize bakalım. Yanımızdaki insanın ne kadar sevap kazandığını ölçmeye çalışmak yerine kendi ibadetimize özen gösterelim. Kabulünü Allah’tan dileriz. Bu tevazu, cemaat içinde kendimizi üstün görmeden beraber ibadet edebilmemizi sağlar.
 
-Camide bulunmanın ve cemaatle namazı eda etmenin adabı vardır:
+**Cemaatle namaz, kulluğumuzu aynı tekbirin etrafında buluşturur.**
 
-*   Camiye giderken vakarlı olunmalı, koşmadan gelinmeli, sağ ayakla ve abdestli girilmeli, girerken Peygamber Efendimize salavat-ı şerife getirilmelidir.
-*   Camiye gelirken beden ve elbise temizliğine dikkat edilmelidir. Rabbimiz:
+---
 
-<p lang="ar" dir="rtl" class="ayet">يَا بَنٖٓي اٰدَمَ خُذُوا زٖينَتَكُمْ عِنْدَ كُلِّ مَسْجِدٍ</p>
+<h2 class="vaaz-bolum-baslik" id="kalbin-bagi" tabindex="-1">IV. Kalbin mescitte kalan bağı</h2>
 
-***“ Ey Âdemoğulları! Her namaz kılacağınızda güzelce giyinin…”*** (Araf, 7/31) buyurmuştur.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي الْمَسَاجِدِ</p>
 
-Güzelce abdest alındıktan sonra, namazın şartlarından olan setr-i avrete uygun kıyafet giyilmelidir. Peygamber Efendimiz döneminde bir cuma günü bazı sahabiler hurmalıklarında çalıştıktan sonra toz toprak içinde ve terlemiş bir şekilde mescide geldiklerinde Resûlullah onlara, ***“Keşke yıkansaydınız!”*** buyurmuştu. (Buhârî, Büyû’, 15) Camiye gelirken aşırıya kaçmamak ve başkasını rahatsız edici olmamak şartıyla güzel koku sürülebilir. Camiye gelmeden önce soğan, sarımsak gibi kokusu hoş olmayan yiyeceklerden sakınılmalıdır.
+*Kalbi mescitlere bağlı olan kişi.* (Buhârî, 660; rivayetten bölüm)
 
-*   Camiye girildiğinde vaaz ediliyor veya Kur’an-ı Kerim okunuyor ise sükûnetle dinlenmelidir. Ayrıca Cuma veya bayram günlerinde hutbe okunurken konuşmak, başka şeylerle ilgilenmek, cep telefonuyla meşgul olmak ibadetin özünden uzaklaşmaya ve sevabından mahrum kalmaya sebep olacağından bu davranışlardan sakınılmalıdır. Unutmayalım ki hutbe, namazın bir parçasıdır. Hutbeyi namazdaymış gibi dinlemek gerekir. Hutbe esnasında ilgi ve alakamızı sadece hatibe ve hutbeye verelim. Peygamber Efendimiz , bir müminin hutbe esnasında göstermesi gereken duyarlılığı şöyle ifade etmiştir: *“Cuma günü imam hutbe okurken konuşan arkadaşına: ‘Sus!’ bile desen hatalı bir iş yapmış olursun.”* (Buhârî, Cuma, 36)
+Bu kısa ifade, Efendimizin (s.a.s.) Allah’ın kıyamet günü gölgesinde barındıracağı yedi grubu anlattığı hadisin içindedir. Kalbin mescide bağlılığı büyük bir müjdeyle anılır. Mescitteki namazın hatırası, insan dışarı çıktığında da gönlünde yaşamaya devam eder.
 
-<p lang="ar" dir="rtl" class="ayet">قَدْ اَفْلَحَ الْمُؤْمِنُونَۙ اَلَّذٖينَ هُمْ فٖي صَلَاتِهِمْ خَاشِعُونَۙ</p>
+**Kıymetli kardeşlerim!**
 
-*“Müminler kesinlikle kurtuluşa ermiştir. Onlar, namazlarında derin bir saygı hali yaşarlar.”* (Müminun, 23/1-2) Sessiz ve sakin durmak, tevazu göstermek, boyun eğmek gibi anlamları olan *“huşû*” kavramı, insanın Cenab-ı Hakk’ın huzurunda tevazu ve teslimiyet içerisinde bulunmasını, kalben ve bedenen O’na hürmet ve itaat ederek boyun eğmesini ifade etmektedir. Huşû insanın Allah’a imanının ve O’na eşsiz bağlılığının yalnızca kalp ile değil aynı zamanda saygı, edep ve vakar dolu bir duruş sergileyerek de ifade edilmesidir.
+Kalbimiz pek çok şeyin vaktini tutar. Tren saatini, beklediğimiz görüşmeyi, sevdiğimiz birinin dönüşünü hatırlarız. Mescitle bağımız kuvvetlendikçe yaklaşan namaz da zihnimizde yer edinir. İşimizi bitirirken sonraki vakti gözetiriz. Bir davete hazırlanan insan gibi hazırlanırız.
 
-Namazın manevi temeli olan huşûnun gerçekleşmesinde önemli rolü bulunan tadil-i erkâna riayet edilmesi gerekir. Namazın kıyam, rükû ve secde gibi rükünlerini yerli yerinde, acele etmeden ve sükûnet içinde yerine getirmeye *tadil-i erkân* denir. Peygamber Efendimiz , ***“Rükû ve secdeleri tam yapın.”*** (Buhârî, “Eymân”, 3) Bir diğer hadisinde de, “*Hırsızın en kötüsü namazından çalandır.”* buyurmuştur. *“Kişi namazından nasıl çalar?”* diye sorulunca Allah Resulü , *“Rükû ve secdesini tam yapmayarak.”* cevabını vermiştir. (el-Muvaṭṭaʾ, Ḳasru’s-Salat, 72; Abdullah Kahraman, Tadili Erkan, DİA, 39/366)
+Bu bağlılık, insanı gündelik sorumluluklarını güzellikle yerine getirmeye çağırır. Namaza gidip döndüğümüzde işimizin başına güvenilir bir çalışan olarak geçelim. Evde bizi bekleyenin yükünü paylaşalım. Kalbimizde taşıdığımız yöneliş, çevremize karşı davranışımızda bir incelik bıraksın.
 
-*   Cami içerisinde cep telefonları kapatılmalı veya sessiz konuma alınmalıdır.
-*   Camiye girildiğinde ezan okunmamış ve mekruh vakit değil ise iki rekât Tahiyyetü'l-Mescid namazı kılınması sünnettir.
-*   Cami içerisinde tek başına namaz kılarken ya da Kur’an-ı Kerim okurken yanındakini rahatsız edecek şekilde yüksek sesle okunmamalıdır. Resûl-i Ekrem , kendisi itikâfta bulunduğu sırada bazı kişilerin yüksek sesle Kur’an okuduklarını işitince:
+Camiyle bağımız zayıflamış olabilir. Yeniden başlamak için önümüzde yakın bir vakit duruyor. Bütün eksiklerimizi bir günde tamamlamaya çalışırken yorulmak yerine, bugün atabileceğimiz sağlam adımı belirleyelim. Namazın kılınışında unuttuğumuz bir hususu hocamıza soralım. Öğrenmek için geçen zamanın kıymeti var.
 
-<p lang="ar" dir="rtl" class="ayet">أَلاَ إِنَّ كُلَّكُمْ مُنَاجٍ رَبَّهُ فَلاَ يُؤْذِيَنَّ بَعْضُكُمْ بَعْضًا ، وَلاَ يَرْفَعْ بَعْضُكُمْ عَلَى بَعْضٍ فِى الْقِرَاءَةِ</p>
+Sevgili genç kardeşim! Bazı günler namaza büyük bir istekle, bazı günler kendimizi toparlayarak geliriz. Kalbimizi yetiştiren şeylerden biri, o hazırlığı yine yapmaktır. Arkadaşlarımızın programına nasıl zaman ayırıyorsak cemaat saatini de ciddiye alalım. İmkânımız olduğunda arkadaşımızla aynı vakitte buluşalım. Böylece birbirimizi hatırlatan iki insan oluruz. Gönül bağı, günlük kararlarımızın içinde kök salar.
 
-“*Dikkat edin! Hepiniz Rabbinize münacat ediyorsunuz. Birbirinizi rahatsız etmeyin! Kıraatte -ya da namazda- biriniz sesini diğerinden daha fazla yükseltmesin!”* (Ebû Dâvûd, Tatavvu’, 25) buyurarak onları ikaz etmiştir.
+Bu bağlılığın sessiz bir ölçüsü daha var: Camide aradığımız huzuru başkasına da sunabilmek. Yanımıza duran yabancı bir yüz, aynı Rabbe yönelmiş bir kardeşimizdir. Dilini bilmesek de saftaki yerini kolaylaştırabiliriz. Mescidi severken o mescitte ibadet eden insanların huzurunu da sevmeyi öğreniriz. Namaz buluşması, kendimizi aşan bir beraberliğe dönüşür.
 
-*   Camide saf tutarken öncelikle ön saflar doldurulmalıdır, sonra ikincisi, sonra diğerleri. Ön safta boş yer varken caminin gerisinde imama uyulması uygun değildir. Cemaatle namazın ilk ve en önemli şartı saf tutmaktır. Hz. Peygamber , safları düzgün tutmanın, namazı güzelleştiren hatta onu tamamlayan ve mükemmelleştiren bir unsur olduğunu ifade etmiştir.
+Birbirimizin bu bağını kuvvetlendiren insanlar olalım. Aynı safta uzun süredir görmediğimiz kardeşimize hâlini sorarken sevindiğimizi hissettirelim. Mazeretini anlatmaya zorlamadan dinleyelim. Bazen kişinin yeniden gelişi için aradığı cesaret, onu gördüğümüze sevinen bir selâmdadır.
 
+Akşam eve dönerken montumuzu astığımız gibi günün düşüncelerini de yerli yerine koyalım. Hangi namazı huzurla kıldık? Bir sonraki vakte nasıl hazırlanacağız? Bu iki soru, gönlümüzün mescitle konuşmasını sürdürebilir. Bağ, hatırladıkça ve emek verdikçe kuvvetlenir.
+
+Mescitten ayrılışımız da bu bağın bir parçası olsun. İçeride verdiğimiz selâmın sükûnetiyle çıkalım. Bir sonraki gelişimizi özlemek, bugünkü buluşmanın kıymetini fark etmekle başlar. Günün akışında o kıymeti hatırlatan küçük bir işaret, namaz vaktine kurduğumuz sade bir hatırlatma olabilir.
+
+**Mescide bağlı gönül, bir sonraki namaza da yer açar.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="sabah-namazi" tabindex="-1">V. Sabah namazı: Güne kullukla başlamak</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَقُرْءَانَ ٱلْفَجْرِ ۖ إِنَّ قُرْءَانَ ٱلْفَجْرِ كَانَ مَشْهُودًا</p>
+
+*Bir de sabah namazını kıl; çünkü sabah namazı şahitlidir.* (İsrâ, 17/78; âyetten bölüm)
+
+Şafakta sokakların sesi henüz azdır. Evlerde ışıklar birer birer yanarken bir mümin abdestine hazırlanır. Günün henüz harcanmamış vaktini Rabbine sunar. Âyetin sabah namazına ayrıca dikkat çekişi, bu başlangıcın kıymetini gönlümüze yerleştirir.
+
+Peygamberimiz (s.a.s.), gece ve gündüz meleklerinin sabah ve ikindi namazlarında bir araya geldiklerini bildirir. (Buhârî, 555.) Etrafımız sakin görünürken ibadetimizin böyle bir şahitliği vardır. Rabbimiz bizi her hâlimizle bilir; biz de O’nun huzurunda bulunduğumuzu hatırlarız. Sabahın değeri, bir günü verimli geçirme beklentisinden çok daha derindir. Güne kulluğumuzun farkında olarak başlarız.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَوْ يَعْلَمُونَ مَا فِي الْعَتَمَةِ وَالصُّبْحِ لأَتَوْهُمَا وَلَوْ حَبْوًا</p>
+
+*İnsanlar yatsı ve sabah namazındaki fazileti bilselerdi, emekleyerek de olsa bu iki namaza gelirlerdi.* (Buhârî, 615; rivayetten bölüm)
+
+Efendimizin (s.a.s.) bu güçlü teşvikini, imkânımızı iyilik için kullanma daveti olarak dinleyelim. Sabah hazırlığı çoğu zaman akşamdan başlar. Uyku saatimizi düzenlemek, alarmı kurmak, gereksiz ekran meşguliyetini bitirmek bu hazırlığın parçalarıdır. Uyanmaya niyet ederken uyanmayı kolaylaştıracak tedbiri de alalım.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Sabah için akşamdan verilen karar</p>
+
+Marche-en-Famenne’de vardiyasına gidecek bir kardeşimiz, ertesi günün namaz ve yol saatlerini akşamdan kontrol etsin. Cemaate katılabileceği sabahı belirlesin. Bir arkadaşından, önceden anlaşarak, uyandığında haber vermesini istesin. Seherde gelen kısa hatırlatma, birlikte alınmış kararın desteği olsun.
+
+Yol ve hava şartlarını gözeterek güvenli hareket edelim. Başlangıç için seçtiğimiz sabahı aile düzenimizle de konuşalım. Uyandırırken sesimizi yumuşatalım; evdekilere namazın huzurunu hissettirelim. Gün, birbirimizin kalbini koruyarak açılsın.
+
+Sabah namazından sonra işe giderken biraz önce dinlediğimiz kıraati hatırlayalım. O okuyuş, günün ilk sesleri arasında yer alsın. Güne namazla başlamanın kıymetini, o gün karşılaştığımız insanlara gösterdiğimiz özenle de taşıyalım. Secdeden kalkmış olmanın sorumluluğu bizimle yürüsün.
+
+**Sabahın safına hazırlanmak, akşamın vaktine sahip çıkmakla kolaylaşır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yatsi-namazi" tabindex="-1">VI. Yatsı: Günü cemaatle tamamlamak</h2>
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari/iki-vakit.svg" width="1600" height="900" alt="Bir tarafında şafak, diğer tarafında yıldızlı gece görülen ufuk altında, yazısız halı deseninin sürekliliği." loading="lazy" decoding="async">
+<figcaption><strong>Günün iki ucunda namaz</strong> Akşamın hazırlığı sabahın buluşmasını kolaylaştırır.</figcaption>
+</figure>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنْ صَلَّى الْعِشَاءَ فِي جَمَاعَةٍ فَكَأَنَّمَا قَامَ نِصْفَ اللَّيْلِ</p>
+
+*Yatsıyı cemaatle kılan, gecenin yarısını namazla geçirmiş gibidir.* (Müslim, 656a; rivayetten bölüm)
+
+Gün bitince yorgunluk omuzlarımıza çöker. Ayakkabımızı çıkarıp dinlenmek isteriz. Tam bu sırada yatsı namazına ayrılmış bir hazırlık, bizi yeniden toparlar. Efendimizin (s.a.s.) müjdesi, kısa görünen bir ibadet vaktinin Allah katındaki büyük karşılığını hatırlatır.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَنْ صَلَّى الْعِشَاءَ وَالْفَجْرَ فِي جَمَاعَةٍ كَانَ لَهُ كَقِيَامِ لَيْلَةٍ</p>
+
+*Yatsı ile sabah namazını cemaatle kılan kimse, bir geceyi namazla geçirmiş gibi sevap kazanır.* (Tirmizî, 221; rivayetten bölüm; Tirmizî: hasen)
+
+Bu iki müjdeyi birlikte duyunca gönlümüz genişler. Yatsıyı ve sabahı cemaatle kılmaya gayret etmek, günün iki ucunda kulluğumuzu diri tutar. Bu, sevap bakımından bir benzetmedir; her namazın kendi vakti ve sorumluluğu vardır. Büyük müjde bizi öteki vakitlere de özen göstermeye yöneltsin.
+
+**Camiyi namazımızla yaşatır, gönlümüzü cemaate bağlarız.** Akşam programımızda namaza yer açtığımızda bu cümle hayatımıza dokunur. Yemek, dinlenme ve aileyle birlikte olma ihtiyacını gözeterek hazırlanalım. Camiye gelişimizin evdeki sorumluluklarla uyumunu konuşalım; birbirimize kolaylık sağlayalım.
+
+Avrupa’da mevsimler değiştikçe sabah ve yatsı saatleri de değişir. Camimizin güvendiği yerel takvimi ve cemaat saatini kontrol edelim. Geçen ayın alışkanlığıyla hareket etmek yerine güncel vakti öğrenelim. Namazı konuşurken hayatın gerçek saatlerini hesaba katalım.
+
+Yatsıdan sonra evimize dönerken günün muhasebesine de bir kapı açılır. Bugün bir namazı gereğince kılabildiğimiz için şükrederiz. Bir kusurumuzu fark etmişsek af diler, düzeltmeye niyet ederiz. Sürdürdüğümüz telaşı yatağımıza kadar taşımak yerine günü Rabbimize yönelerek tamamlarız. Namaz, bize dinlenmeye hazırlanırken de kulluğumuzu hatırlatır. Gecenin sükûnetinde bu hatırlayışa biraz zaman ayıralım.
+
+**Yatsıya gösterdiğimiz özen, sabaha uzanan kulluk bağını kuvvetlendirsin.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="adimlarin-kiymeti" tabindex="-1">VII. Benî Selime: Yürüyüşün kaybolmayan izi</h2>
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Mescide yaklaşmak isteyenler</p>
+
+Mescidin çevresinde boş yerler açılınca Benî Selime mensupları oraya taşınmak istediler. Haber Peygamber Efendimize (s.a.s.) ulaşınca kendilerine bu niyetlerini sordu. Onlar da taşınmayı düşündüklerini söylediler. Efendimiz, bulundukları yerde kalmalarını ve adımlarının yazıldığını bildirdi; bunu tekrar ederek vurguladı.
+
+(Müslim, 665a; sahih rivayetin anlam özeti.)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">دِيَارَكُمْ تُكْتَبْ آثَارُكُمْ</p>
+
+*Yerinizde kalın; adımlarınız yazılır.* (Müslim, 665a; rivayetten bölüm)
+
+Rivayette mescide daha yakın olmak isteyen bir topluluk görüyoruz. Efendimiz (s.a.s.), bulundukları yerden gelişlerinin de karşılık bulduğunu hatırlatıyor. Yürüdükleri mesafe, ibadete yönelen gayretlerinin bir parçasıdır. Allah için gösterilen emek kaybolmaz.
+
+Bir kaldırımın sonbahar yaprakları arasında camiye doğru yürürken bu dersi hatırlayabiliriz. Yorulmuş bacaklarla atılan adımın, otobüs durağında sabırla geçirilen vaktin ardında bir niyet vardır. İbadete varmak isteriz. Niyetimizin farkına varmak, alışılmış bir yolculuğu yeniden anlamlı kılar.
+
+Bu kıssa, bize mevcut şartlarımız içinde gösterdiğimiz gayretin kıymetini öğretir; sevap aramak için kendimize yapay güçlükler üretmemiz gerekmez. Güvenli ulaşım imkânından yararlanırız. Yürüyebilen yürür, araca ihtiyaç duyan araca biner. Esas olan, Rabbimizin davetine samimiyetle yönelmektir.
+
+**Aziz kardeşlerim!**
+
+İmkânımızı hesaba katarken niyetimizin gücünü de unutmayalım. “Yol biraz uzun” dediğimizde gerçekten neye ihtiyaç duyduğumuzu belirleyelim. Bir yol arkadaşına mı, daha erken hazırlanmaya mı, uygun bir cemaat saatini öğrenmeye mi? Çözebileceğimiz engeli küçük parçalara ayıralım. Her birine uygulanabilir bir cevap bulalım.
+
+Camiye gelirken aceleyle harcanan dakikaları, önceden hazırlanarak sakin bir yürüyüşe çevirebiliriz. Yol boyunca zihnimizde taşıdığımız telaşı azaltalım. Varacağımız yerin ve duracağımız huzurun farkına varalım. Namaza doğru gidişimizin kendisi, kalbimizi namaza hazırlasın.
+
+Benî Selime’nin kıssasından bize kalan, yürüyüşe verilen bu değerdir. Uzağımızı yakına çeviren bazen mesafenin kısalması, bazen niyetimizin kuvvetlenmesidir. Biz kendi şartlarımızda atabileceğimiz adımı atalım. Rabbimizin lütfundan ümitli olalım.
+
+Aynı yolu defalarca yürüdüğümüzde çevremizdeki ayrıntılara alışırız. Fakat namaza gelişimizi alışkanlığın içinde fark ederek sürdürebiliriz. Yola çıkmadan önce niyetimizi bir an hatırlamak bunun başlangıcıdır. Çantamızda günün işleri, aklımızda yarının soruları bulunabilir. Bütün bunlarla beraber Rabbimize yöneliriz. Yoldaki gayretimizi kıymetli kılan, varmak istediğimiz bu huzurdur.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari/adimlar.svg" width="1600" height="900" alt="Sonbahar yaprakları arasından ufka uzanan yürüyüş yolunda, arkadan görülen iki küçük insan silueti." loading="lazy" decoding="async">
+<figcaption><strong>Yola verilen kıymet</strong> Cemaate yönelen samimi gayretin her adımı kıymetlidir.</figcaption>
+</figure>
+
+**Allah’a yönelen samimi gayretin hiçbir adımını küçük görmeyelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="husu" tabindex="-1">VIII. Huşû: Safa getirdiğimiz gönül</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet"> قَدْ أَفْلَحَ ٱلْمُؤْمِنُونَ ۝١ ٱلَّذِينَ هُمْ فِى صَلَاتِهِمْ خَـٰشِعُونَ ۝٢</p>
+
+*Müminler kesinlikle kurtuluşa ermiştir; onlar namazlarında derin bir saygı hâli yaşarlar.* (Mü’minûn, 23/1–2)
+
+Safa geldik, ayaklarımız yerini buldu. Şimdi kalbimizi de namaza hazırlayalım. Telefonun titreşimi susarken günün konuşmaları zihnimizde sürebilir. Huzurda bulunduğumuzu hatırlamak, okunanı dinlemek ve bildiğimiz duaların anlamına yönelmek bize yardımcı olur. Dikkat dağıldığında onu sabırla namaza çevirelim.
+
+<blockquote class="vaaz-alinti">
+<p>bir karşılık beklemeden Allah için tam bir ihlâsla namaz kılmak</p>
+<footer>— Ebû Bekir el-Vâsıtî’nin huşû tarifi; TDV İslâm Ansiklopedisi, Huşû; Aynî, V, 280’den naklen.</footer>
+</blockquote>
+
+Bu tarif, ibadetin samimiyetine bakmamızı sağlar. Namazda Rabbimizin rızasını ararız. Başkalarının gözündeki yerimizden uzaklaşıp kulluğumuza döneriz. Huşû, Allah’ın huzurunda saygıyla bulunmanın kalbimize ve duruşumuza yansımasıdır. Gönülden gelen bir terbiyedir.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Ta‘dîl-i erkânı korumak</p>
+
+Hanefî mezhebinde tercih edilen görüşe göre ta‘dîl-i erkân vâciptir. Rükû ve secdeleri, rükûdan doğrulmayı ve iki secde arasındaki oturuşu acele etmeden tamamlarız. Bedenimiz her duruşta sükûna erer. Bilmediğimiz uygulamayı hocamızdan öğreniriz.
+
+(TDV İslâm Ansiklopedisi, Ta‘dîl-i Erkân, XXXIX, 366.)
+
+Bütün bunlar için namazın öncesinden küçük bir zaman ayıralım. Abdestimizi son dakikaya sıkıştırmayalım. Camiye geldiğimizde birkaç nefes boyunca telaşımızı yatıştıralım. Kıyamda dururken niçin burada olduğumuzu hatırlayalım. Bu hazırlık, dilimizdeki okuyuşla gönlümüzdeki yönelişin buluşmasına hizmet eder.
+
+Namazımızdaki dikkati geliştirmek öğrenmeyle sürer. Bu hafta sık okuduğumuz bir duanın anlamını güvenilir bir kaynaktan okuyalım. Anlamını bildiğimiz cümleye namazda yeniden kulak verelim. Bir kelimenin mânası, yıllardır söylediğimiz duayı kalbimizde daha belirgin kılabilir.
+
+Huşû konusunda kendimize karşı sabırlı olalım. Âlimler, kalp huzurunun terbiye ile geliştiğini ve insanın dikkatini her an aynı seviyede koruyamayabildiğini belirtir. (TDV İslâm Ansiklopedisi, Huşû.) Zihnimize bir işin gelmesiyle namazımızı hemen değersiz saymayalım. Fark ettiğimiz anda yönelişimizi tazeleriz. Nasıl okuyuşumuzu öğrenerek düzeltiyorsak dikkatimizi de emek vererek geliştiririz. Ümit, gayretimizin yanında dursun.
+
+Rükûdan doğrulduğumuz anı fark ederek başlayabiliriz. Bedenimiz doğrulsun, sonra bir sonraki harekete geçelim. İki secde arasındaki oturuşun da namazın içinde bir yeri olduğunu hissedelim. Aceleyle birbirine karışan hareketleri ayırdıkça ibadetimizi daha bilinçli yerine getiririz. Namazı öğrenirken sadece kaç rekât kıldığımızı sormakla kalmayıp nasıl kıldığımıza da bakalım. Sorularımızı utanmadan hocamıza götürelim; doğru uygulamayı görerek öğrenelim.
+
+**Safa bedenimizi, namaza gönlümüzü de getirelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="safin-duzeni" tabindex="-1">IX. Safın düzeni, cemaatin sükûneti</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 <p lang="ar" dir="rtl" class="ayet">سَوُّوا صُفُوفَكُمْ فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلاَةِ</p>
 
-*“Saflarınızı düz tutunuz. Zira safların düz olması namazın tamam olmasını sağlayan hususlardan biridir.”* (Müslim, Salât, 124)
+*Saflarınızı düzgün tutun; çünkü safın düzgünlüğü namazın tamam olmasındandır.* (Müslim, 433)
 
-<p lang="ar" dir="rtl" class="ayet">لَوْ يَعْلَمُ النَّاسُ مَا فِي النِّدَاءِ وَالصَّفِّ الأَوَّلِ، ثُمَّ لَمْ يَجِدُوا إِلاَّ أَنْ يَسْتَهِمُوا عَلَيْهِ لاَسْتَهَمُوا، وَلَوْ يَعْلَمُونَ مَا فِي التَّهْجِيرِ لاَسْتَبَقُوا إِلَيْهِ، وَلَوْ يَعْلَمُونَ مَا فِي الْعَتَمَةِ وَالصُّبْحِ لأَتَوْهُمَا وَلَوْ حَبْوًا ‏</p>
+Halının çizgileri önümüzde uzanır. Kimi bastonuyla yerini arar, kimi ilk defa bu cemaatte namaza durur. İmamın yönlendirmesiyle saftaki boşluğu kapatırız. Yanımızdakinin rahatını gözetiriz. Safı düzeltirken kullandığımız söz de aynı düzenin bir parçası olur.
 
-***“İnsanlar ezandaki ve birinci saftaki (sevabı) bilselerdi, ezan okumak ve birinci safta yer almak için aralarında kura çekmekten başka bir yol bulamazlar ve (sonunda) kura çekerlerdi. Namazı ilk vakitte kılmanın sevabını bilselerdi, bunun için yarışırlardı. Yatsı namazı ile sabah namazındaki fazileti bilselerdi, emekleyerek de olsa bu iki namazı cemaatle kılmaya gelirlerdi.”*** (Buhârî, Ezan 9; Müslim, Salât 129)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا سَمِعْتُمُ الإِقَامَةَ فَامْشُوا إِلَى الصَّلاَةِ، وَعَلَيْكُمْ بِالسَّكِينَةِ وَالْوَقَارِ وَلاَ تُسْرِعُوا، فَمَا أَدْرَكْتُمْ فَصَلُّوا وَمَا فَاتَكُمْ فَأَتِمُّوا</p>
 
-*   Cemaatle namaz kılarken imamın arkasına, varsa cemaate namaz kıldırabilecek kadar bilgisi olan birisi durmalıdır. Resûlullah , imamın arkasına öncelikle ilim sahibi ve akil kimselerin sıralanmasını istemiştir. (Müslim, Salât, 123)
-*   Kapı ağzı, merdiven önü, en arka kısım gibi insanların mecburen geçeceği yerlerde namaza durmamak gerekir ki insanlar bilmeden namaz kılanın önünden geçmesinler.
-*   Camiden çıkarken önce sol ayak dışarı atılmalıdır.
+*Kameti duyunca namaza sükûnet ve vakar içinde yürüyün; acele etmeyin. Yetiştiğinizi kılın, kaçırdığınızı tamamlayın.* (Buhârî, 636)
 
-## Sonuç
+Demek ki ibadete yetişme gayretinin de bir adabı var. Camiye girerken nefes nefese koşmak yerine önceden hazırlanmayı seçelim. Geç kaldığımızda sükûneti koruyalım. İmama uymak ve eksik rekâtları tamamlamakla ilgili bilgimizi ihtiyaç duyduğumuzda hocamızla gözden geçirelim.
 
-Cennete giden yollar, mescitlerden geçiyor
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Bir namazın üç hazırlığı</strong> Cemaatin sükûnetine küçük ve uygulanabilir katkılar.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Yola çıkarken</dt><dd>Vakti kontrol et; abdest ve ulaşım için yeterli zaman ayır.</dd></div>
+<div><dt>Safa geçerken</dt><dd>Telefonu sessize al; boşluğu nezaketle kapat, geçişi açık tut.</dd></div>
+<div><dt>Namazı bitirince</dt><dd>Çevrende namazı sürenleri gözet; konuşmak için uygun yere geç.</dd></div>
+</dl>
+</figure>
 
-Mevlâ hep kullarını, secdelerde seçiyor
+Saf düzeni namazın güzelliğini ve tamamlığını korur; onu tek başına namazın geçerlilik şartı diye sunmayız. Uygulamayı öğretirken ilmî ölçüyü ve kardeşimizin haysiyetini beraber gözetelim. Özellikle yeni öğrenen birine kısa, anlaşılır ve sakin bir açıklama yapalım. İbadet bilgisi güven içinde öğrenilsin.
 
-Camiler, beş vakit namaz kılındıktan sonra kapısı açılmayan veya sadece Cuma günleri hatırlanan mekânlar olmamalıdır. Camiler, Allah’ın en çok sevdiği, rahmetin indiği, huzur ve bereket yerleridir. Manen rahatladığımız, huzur bulduğumuz, sükûnete kavuştuğumuz, rahmete gark olduğumuz, Rabbimize daha çok yakın olduğumuz yerdir camiler. Camileri inşa etmek, ihtiyaçlarını gidermek, temiz tutmak biz müminlerin görevlerindendir. Camilerin manevi imarı camilerin cemaatle dolması, ilim halkalarının oluşması, cami merkezli bir toplum inşa edilmesi ile olacaktır.
+Kendi rahatımız kadar yanımızdakinin dikkatini de düşünelim. Namazdan sonra konuşmaya başladığımızda onun duası sürebilir. Sesimizi ölçülü tutmak, cemaate verdiğimiz emeğin sessiz bir biçimidir. Böylece herkes kendi okuyuşunu duyabilir, Rabbine huzurla yönelebilir.
 
-Bu vesileyle, camilerimizi inşa edenlerden, camilerimizde cemaat olanlardan ve görev yapanlardan hayatta olanlara sağlık ve afiyet; ahirete irtihal edenlere de Rabbimizden af ve mağfiret diliyoruz. Rabbimiz bizleri gönülleri mescide bağlı olanlardan eylesin.
+**Saflarımızı düzeltirken sözümüzü ve davranışımızı da güzelleştirelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="vakit-ve-mazeret" tabindex="-1">X. İmkânı kullanmak, mazereti gözetmek</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَـٰبًا مَّوْقُوتًا</p>
+
+*Şüphesiz namaz, müminlere belirli vakitlerde yerine getirmeleri için farz kılınmıştır.* (Nisâ, 4/103; âyetten bölüm)
+
+Hastane koridorunda bekleyen bir refakatçiyle işinden erken çıkabilen birinin günü aynı ilerlemez. Rabbimize kulluk ederken içinde bulunduğumuz şartları dürüstçe değerlendiririz. Cemaate katılma imkânını arar, namazın vaktini koruruz. Camiye yetişemediğimiz bir günde bulunduğumuz yerde namaza hazırlanırız.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا مَرِضَ الْعَبْدُ أَوْ سَافَرَ، كُتِبَ لَهُ مِثْلُ مَا كَانَ يَعْمَلُ مُقِيمًا صَحِيحًا</p>
+
+*Kul hastalandığında yahut yolculuğa çıktığında, sağlıklı ve yerleşik olduğu zaman yaptığı amellerin benzeri kendisine yazılır.* (Buhârî, 2996)
+
+Bu müjde, sürdürdüğü hayra hastalık veya yolculuk yüzünden ara veren gönle tesellidir. Cemaate eskisi gibi gelemeyen bir büyüğümüz, yürüyemediği günlerde de Rabbimizin lütfundan ümitli olsun. Biz de onun hâlini soralım. İmkânını dinleyip ihtiyaç duyduğu kolaylığı sağlayalım.
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Engeli tanı, uygun adımı seç</strong> Aşağıdaki adımlar kişisel bir haftalık plan hazırlamak içindir.</figcaption>
+<table aria-label="Engeli tanı, uygun adımı seç">
+<thead><tr><th scope="col">Durum</th><th scope="col">Bu hafta atılacak adım</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Durum">Vardiyalı çalışma</th><td data-label="Bu hafta atılacak adım">Namaz vakitleriyle çalışma saatlerini karşılaştır; uygun cemaat vaktini belirle.</td></tr>
+<tr><th scope="row" data-label="Durum">Ulaşım güçlüğü</th><td data-label="Bu hafta atılacak adım">Güvenli gidiş ve dönüş için bir yakınınla önceden konuş.</td></tr>
+<tr><th scope="row" data-label="Durum">Hastalık veya bakım görevi</th><td data-label="Bu hafta atılacak adım">Namazı şartlarına uygun kıl; ihtiyaç duyduğun uygulamayı hocana sor.</td></tr>
+<tr><th scope="row" data-label="Durum">Plansız oyalanma</th><td data-label="Bu hafta atılacak adım">Bir ekran alışkanlığını kısalt; hazırlık için zaman aç.</td></tr>
+</tbody></table>
+</figure>
+
+Hanımların, gençlerin, yeni Müslüman olanların ve engelli kardeşlerimizin ibadet gayretine saygıyla yaklaşalım. Herkesi kendi şartları içinde destekleyelim. Elimizdeki imkânı kullanırken başkasının görünmeyen yükü hakkında hüküm vermeyelim. Davetimizin sesi yumuşak, yardımımız somut olsun.
+
+Önümüzdeki günlerin takvimini açıp uygulanabilir bir hazırlık belirleyelim. Plan aksarsa sebebini dürüstçe gözden geçirelim. Sonraki vakitte yeniden toparlanmak mümkündür. Namazın vakti, hayatımızın dağılan parçalarını bir araya getiren düzenimiz olsun.
+
+**İmkânımızı ibadete çevirelim, birbirimizin mazeretini merhametle gözetelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta namazımız için yedi söz</h2>
+
+**Aziz cemaat! Duyduğumuz müjdeye hayatımızdan bir cevap verelim.**
+
+Bugün eve dönerken yanımızda bir karar taşıyalım. Takvimimizdeki boşluğu bulup bir namazın hazırlığına ayıralım. Aşağıdaki sözleri kendi şartlarımız içinde uygulayalım; ihtiyacımız olan desteği de açıkça konuşalım. Gayretimizi haftanın sonunda dürüstçe değerlendirelim.
+
+**NAMAZI VE CEMAAT BAĞINI KORUYAN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bugün haftalık namaz planımı yazacağım.</strong> Yerel vakitleri ve cemaat saatlerini kendi iş, okul ve bakım sorumluluklarımla birlikte kontrol edeceğim.</li>
+<li><strong>Bu hafta bir cemaat vakti belirleyeceğim.</strong> Katılma imkânım varsa hazırlanacağım; mazeretim varsa namazımı bulunduğum yerde vaktinde kılacağım.</li>
+<li><strong>Bir akşam sabah namazına hazırlık yapacağım.</strong> Gereksiz ekran süremi bitirip uyku ve uyanma düzenim için gerekli tedbiri alacağım.</li>
+<li><strong>Bir gün yatsı için işlerimi önceden düzenleyeceğim.</strong> Aile sorumluluklarımı da gözeterek namaza ayıracağım zamanı belirleyeceğim.</li>
+<li><strong>Bu hafta okuduğum bir duanın anlamını öğreneceğim.</strong> Güvenilir kaynaktan öğrendiğim anlamı namazda hatırlamaya çalışacağım.</li>
+<li><strong>Bir kardeşimle namaza hazırlık desteğini konuşacağım.</strong> İkimizin ihtiyacına göre hatırlatma veya güvenli ulaşım konusunda anlaşacağım.</li>
+<li><strong>Hafta sonunda planımı gözden geçireceğim.</strong> Yapabildiğim için şükredecek, aksayan noktanın sebebini belirleyip sonraki hafta için tedbir alacağım.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bugün bir adımla başla</strong>Her sözü kendi haftanın somut bir zamanına yerleştir.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Haftanı namazla düzenle</strong></li>
+<li><span aria-hidden="true">2</span><strong>Bir vakit belirle</strong></li>
+<li><span aria-hidden="true">3</span><strong>Sabaha akşamdan hazırlan</strong></li>
+<li><span aria-hidden="true">4</span><strong>Yatsıya yer aç</strong></li>
+<li><span aria-hidden="true">5</span><strong>Duanın anlamını öğren</strong></li>
+<li><span aria-hidden="true">6</span><strong>Birbirine destek ol</strong></li>
+<li><span aria-hidden="true">7</span><strong>Gayretini gözden geçir</strong></li>
+</ol>
+</figure>
+
+Bu sözleri yaşarken birbirimize yarışın telaşını değil, devam etmenin cesaretini verelim. Bugün bir sayfaya yazdığımız hazırlık, yarın halının üzerinde yerini bulsun. Yakınımızla konuştuğumuz destek gerçekten yerine gelsin. İbadetimizin etrafında kurduğumuz düzen, hayatımıza huzur taşısın.
+
+Şimdi seçtiğimiz vakti zihnimizde somutlaştıralım. Hangi gün katılabileceğiz? Evden çıkmadan önce neyi tamamlamamız gerekiyor? Ulaşım için kimle konuşacağız? Bu sorulara vereceğimiz cevap, niyetimizi uygulanabilir kılar. Planı bir kâğıda yazıp görebileceğimiz yere koyalım. Bir haftanın sonunda o kâğıda dönmek, kendi gayretimize dürüstçe bakmamızı sağlar. Yapabildiğimiz adımı şükürle karşılayalım.
+
+Bir hazırlık aksadığında sebebini belirlemek yeni bir imkân açar. Yolculuk süresini az hesaplamış olabiliriz; alarmı duyamamış yahut bir bakım sorumluluğunu öngörememiş olabiliriz. Her birinin tedbiri farklıdır. Kendi hayatımızı tanıyarak daha gerçekçi bir düzen kurarız. Arkadaşımızla verdiğimiz sözü konuşurken de bunu gözetelim. Birbirimize karşı açık ve anlayışlı olalım. İyiliği sürdürmek için ihtiyacımız olan yardımı istemekten çekinmeyelim.
+
+Meselâ bir yatsı için ulaşımı ayarladık, fakat dönüşteki aile sorumluluğunu unuttuk. Bir sonraki hafta gidişle beraber dönüşü de konuşabiliriz. Yahut duanın anlamını öğrenmeye niyet ettik, gününü belirlemedik. Şimdi evde uygun bir on dakikayı seçebiliriz. Kararımıza zaman ve hazırlık eklediğimizde onu takip etmek kolaylaşır. Büyük sözlerden önce yerine getirilmiş küçük bir adımın sevincini yaşayalım.
+
+Sabahın ilk ışığını ve yatsının ardından eve dönüşümüzü hatırlayalım. İki vaktin arasında geçen bütün gün, Rabbimizin bize verdiği bir ömür parçasıdır. Bu parçayı namazla anlamlandıralım. Kabulünü O’ndan dileyelim. **Camiyi namazımızla yaşatır, gönlümüzü cemaate bağlarız.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Namazımızı ve gönlümüzü diri tut</h2>
+
+**Kıymetli kardeşlerim! Şimdi gönlümüzü Rabbimize açalım.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَامَنَّا فَٱغْفِرْ لَنَا وَٱرْحَمْنَا وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ</p>
+
+*Rabbimiz! Sana iman ettik; bizi bağışla, bize merhamet et. Sen merhamet edenlerin en hayırlısısın.* (Mü’minûn, 23/109; âyetten bölüm)
+
+Allah’ım! Bize verdiğin iman nimeti için sana hamdederiz. Namaza hazırlanırken niyetimizi arıt. Kıyamımızı saygıyla, secdemizi samimiyetle güzelleştir. Kalplerimize mescit sevgisi yerleştir. Cemaatle buluştuğumuz her vakti, sana yaklaşmamıza vesile eyle.
+
+Rabbimiz! Sabahın aydınlığına uyanan evlerimize bereket ver. Yatsının ardından dinlenmeye çekilirken gönlümüze huzur indir. Yorgun çalışanlara kuvvet, iş arayanlara hayırlı rızık, ailesinin yükünü taşıyanlara kolaylık ihsan eyle. Sorumluluklarımızı ibadetimizle birlikte korumayı bize nasip et.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ أَتْمِمْ لَنَا نُورَنَا وَٱغْفِرْ لَنَآ ۖ إِنَّكَ عَلَىٰ كُلِّ شَىْءٍ قَدِيرٌ</p>
+
+*Rabbimiz! Nurumuzu tamamla ve bizi bağışla. Şüphesiz sen her şeye kadirsin.* (Tahrîm, 66/8; âyetten bölüm)
+
+Allah’ım! Çocuklarımızı ve gençlerimizi namazın huzuruyla tanıştır. Hanımlarımızın ve erkeklerimizin gayretlerini kabul eyle. Yeni Müslüman olan kardeşlerimize öğrenme kolaylığı, yeniden başlayanlara sebat ver. Birbirimize iyi örnek olmayı ve destek vermeyi bizlere öğret.
+
+Rabbimiz! Hastalarımıza şifa, engelli kardeşlerimize kolaylık, yakınlarına bakanlara sabır ver. Evinde yahut hastane odasında sana yönelenleri rahmetinle kuşat. Vefat eden anne babalarımızı, yakınlarımızı ve cemaat kardeşlerimizi bağışla. Onları hayırla anmayı bizlere nasip eyle.
+
+Allah’ım! Yaşadığımız ülkeye ve bütün beldelere esenlik ver. Farklı inançlardan komşularımızla adalet ve huzur içinde yaşamayı nasip eyle. Zulme uğrayanları koru. Camilerimizde namazı yaşatan bütün hizmet sahiplerinden razı ol. Bizi rızana uygun bir hayatın ardından imanla huzuruna kabul eyle.
+
+Rabbimiz! Aramızdaki kırgınlıkları hakkı gözeterek gidermeyi nasip et. Cemaatimize huzur, hocalarımıza ilim ve sabır ver. Namaz için yan yana gelen bizleri güzel ahlakta da birbirine destek eyle. Dilimizi incitmekten, kalbimizi kibirden koru. Kabulünü dileyerek başladığımız bu gayreti ömrümüz boyunca sürdürebilmeyi bize lütfeyle.
+
+**Rabbimiz, namazımızı ve sana yönelen gönlümüzü diri tut.**
+
+Âmin. Hamd âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler Kur’an Yolu esas alınarak anlam yönünden aktarılmıştır. Kısaltılan âyet ve hadisler belirtilmiştir. Gündelik hayat sahneleri temsilîdir. Fıkıhta Hanefî ilmihal çizgisi esas alınmış; kaynak ve tashih ayrıntıları RAPOR.md dosyasında gösterilmiştir.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>İmarın Kur’an’daki temeli: <a href="https://quran.com/9/18">Tevbe 9/18</a>.</li>
+<li>İşten ibadete yöneliş: <a href="https://quran.com/24/36">Nûr 24/36</a>; <a href="https://quran.com/24/37">Nûr 24/37</a>.</li>
+<li>Cemaatin değeri ve hükmü: <a href="https://sunnah.com/bukhari:647">Buhârî 647</a>.</li>
+<li>Mescide bağlı gönül: <a href="https://sunnah.com/bukhari:660">Buhârî 660</a>.</li>
+<li>Sabahın daveti: <a href="https://quran.com/17/78">İsrâ 17/78</a>; <a href="https://sunnah.com/bukhari:615">Buhârî 615</a>.</li>
+<li>Yatsıdan sabaha uzanan bağ: <a href="https://sunnah.com/muslim:656a">Müslim 656a</a>; <a href="https://sunnah.com/tirmidhi:221">Tirmizî 221</a>.</li>
+<li>Cemaate yönelen adımlar: <a href="https://sunnah.com/muslim:665a">Müslim 665a</a>.</li>
+<li>Namazın içinde bulunmak: <a href="https://quran.com/23/1-2">Mü’minûn 23/1–2</a>.</li>
+<li>Birlikte ibadetin adabı: <a href="https://sunnah.com/muslim:433">Müslim 433</a>; <a href="https://sunnah.com/bukhari:636">Buhârî 636</a>.</li>
+<li>Vakti ve bağı korumak: <a href="https://quran.com/4/103">Nisâ 4/103</a>; <a href="https://sunnah.com/bukhari:2996">Buhârî 2996</a>.</li>
+<li>Hatim ve cemaat niyazı: <a href="https://quran.com/23/109">Mü’minûn 23/109</a>; <a href="https://quran.com/66/8">Tahrîm 66/8</a>.</li>
+<li>Fıkhî çerçeve: <a href="https://islamansiklopedisi.org.tr/cemaat--namaz">TDV İslâm Ansiklopedisi — Cemaat (Namaz)</a>.</li>
+<li>İbadetin gönül boyutu: <a href="https://islamansiklopedisi.org.tr/husu">TDV İslâm Ansiklopedisi — Huşû</a>.</li>
+<li>Namazın edası: <a href="https://islamansiklopedisi.org.tr/tadil-i-erkan">TDV İslâm Ansiklopedisi — Ta‘dîl-i Erkân</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

@@ -1,165 +1,464 @@
 ---
-baslik: "Camilerin Maddi ve Manevi İmarı (2)"
-ozet: "İslam’ın sembolü ve mührü olan camilerimiz Kâbe’nin birer şubesidir. Cami, “toplayan, bir araya getiren” anlamında Arapça cem’ kökünden türemiştir. Mescid ise…"
+baslik: "Camiye Emek, Emanete Sadakat: Birlikte Yaşattığımız Hayır"
+ozet: "Caminin çatısından temizliğine, bağışından hesabına kadar her hizmet bir emanettir. Gönüllü emeği, şeffaf yönetimi ve sadaka-i câriyeyi birlikte yaşatmak için yedi somut adım."
 kategori: ibadet
-kelime: 2536
+kelime: 3795
 docx: "/vaazlar/camilerin-maddi-ve-manevi-imari-2.docx"
 pdf: "/vaazlar/camilerin-maddi-ve-manevi-imari-2.pdf"
+kapak: "/media/vaazlar/camilerin-maddi-ve-manevi-imari-2/kapak-og.webp"
+kapakAlt: "Yazısız bir mihrap kemeri önünde onarım ve temizlik araçları bulunan sade cami içi."
 ---
-## Giriş
 
-İslam’ın sembolü ve mührü olan camilerimiz Kâbe’nin birer şubesidir. Cami, *“toplayan, bir araya getiren”* anlamında Arapça cem’ kökünden türemiştir. Mescid ise Arapça’da “eğilmek, tevazu ile alnı yere koymak” manasına gelen sücûd kökünden “secde edilen yer” anlamındadır. Cami, Allah’a kulluk amacıyla insanların buluştuğu, amir-memur, yoksul-zengin, genç-yaşlı, toplumun her kesimini bünyesinde toplayan özel mekânlardır. Rabbimiz şöyle buyuruyor:
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari-2/kapak.svg" width="1600" height="900" alt="Yazısız bir mihrap kemeri önünde onarım ve temizlik araçları bulunan sade cami içi." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Huzurun ardındaki emek</strong> Bakımı yapılan bir ibadet mekânı, ortak emeğin sessiz izlerini taşır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">فِي بُيُوتٍ اَذِنَ اللّٰهُ اَنْ تُرْفَعَ وَيُذْكَرَ فِيهَا اسْمُهُۙ يُسَبِّحُ لَهُ فِيهَا بِالْغُدُوِّ وَالْاٰصَالِۙ</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#imarin-niyeti">İmarın niyeti</a></li>
+<li><a href="#bagisin-olcusu">Bağışın ölçüsü</a></li>
+<li><a href="#sessiz-emege-vefa">Sessiz emeğe vefa</a></li>
+<li><a href="#temizligin-devami">Temizliğin devamı</a></li>
+<li><a href="#acik-hesap">Açık hesap</a></li>
+<li><a href="#birlikte-karar">Birlikte karar</a></li>
+<li><a href="#paylasilan-emek">Paylaşılan emek</a></li>
+<li><a href="#ihtiyaca-gore">İhtiyaca göre harcama</a></li>
+<li><a href="#hizmetin-ic-yuzu">Hizmetin iç yüzü</a></li>
+<li><a href="#devam-eden-hayir">Devam eden hayır</a></li>
+<li><a href="#yedi-soz">Yedi somut söz</a></li>
+<li><a href="#hatim-duasi">Dua ve niyaz</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Bu huzurun ardında kimin emeği var?</h2>
 
-*“Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.”* (Nur, 24/36) Allah’ın zikredildiği, tespih edildiği bu yerler camilerdir. Peygamber Efendimiz (s.a.s.) şöyle buyurdu:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">أَحَبُّ الْبِلاَدِ إِلَى اللَّهِ مَسَاجِدُهَا</p>
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-*“Allah’a en sevimli yerler mescidlerdir.”* (Müslim, Mesâcid, 288) Camiler, ibadet, zikir, takva gibi kulluğun tam manada gerçekleştiği yerlerdir. Camide bulunan bir mümin pek çok kötülükten uzak, Rabbine daha çok yakındır.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-## Camilerin İnşası, Bakımı, Onarımı ve Temizliği
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashâbına salât ve selâm olsun.* (serbest dua lafzı)
 
-Rabbimiz:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّمَا يَعْمُرُ مَسَاجِدَ اللّٰهِ مَنْ اٰمَنَ بِاللّٰهِ وَالْيَوْمِ الْاٰخِرِ وَاَقَامَ الصَّلٰوةَ وَاٰتَى الزَّكٰوةَ وَلَمْ يَخْشَ اِلَّا اللّٰهَ فَعَسٰٓى اُو۬لٰٓئِكَ اَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ</p>
+*Mûsâ, “Rabbim! Gönlüme ferahlık ver. İşimi bana kolaylaştır. Dilimdeki düğümü çöz ki sözümü anlasınlar” dedi.* (Tâhâ, 20/25–28)
 
-*“Allah’ın mescidlerini ancak Allah’a ve âhiret gününe inanan, namazını kılan, zekâtını veren ve yalnız Allah’tan korkup çekinen kimseler imar edebilirler. İşte bunların doğru yolu bulanlardan olmaları umulur.”* (Tevbe, 9/18) buyurdu.
+**Aziz cemaat, kıymetli kardeşlerim!**
 
-Camileri/mescidleri imar etmek, maddî anlamda imar yani inşa, onarım, bakım, temizlik anlamında olduğu gibi manevi yönden de caminin canlı, aktif olması, cemaatle namaz kılınması, ilim ve irfan meclisi olması olarak anlaşılmalıdır. Bu ayetin daha iyi anlaşılması için Hz. Peygamber (s.a.s.) dönemindeki mescidlerin konumunun ve işlevinin iyi anlaşılması gerekmektedir.
+Kış sabahında halıya bastığımızda caminin sıcaklığını hissederiz. Musluğu açınca su akar; ışık yanar, oturacağımız yer temizdir. Bu huzurun ardında birinin ayırdığı para, birinin tuttuğu hesap, birinin yorulan elleri vardır. Çoğu zaman o elleri görmeden namazımıza dururuz.
 
-Darülerkam: İslam’ın ilk yıllarında Mekke’de Müslümanların rahat bir şekilde toplandıkları, ibadet ettikleri bir yer yoktu. Kâbe, putlarla dolu ve müşriklerin kontrolünde idi. 17-18 yaş civarında Müslüman olan Erkam b. Ebü’l-Erkam (r.a.), Resul-i Ekrem’e (s.a.s.) ilk iman eden gençlerdendi. Erkam (r.a.), gönlünü İslam’a açtığı gibi Safa tepesinin eteğindeki evini de Resulüllah’ın (s.a.s.) hizmetine vermiş, o dönemde onun evi Darülislam yani İslam’ın evi, İslam’ın merkezi, kalbi olmuştu. Müslümanlar, Erkam’ın (r.a.) evinde gizlice toplanıyorlardı. Bu evde Resul-i Ekrem (s.a.s.) bir yandan ashâb-ı kirâma dinî bilgileri öğretirken diğer taraftan ilâhî gerçeği arayan insanları İslâm’a davet ediyor, onlara Kur’an-ı Kerîm okuyor ve onlarla birlikte namaz kılıyordu. Hz. Hamza, Hz. Ömer gibi pek çok kişi orada Müslüman oldu. İslam tarihinde Darülerkam olarak anılan bu ev, Mekke yıllarında tebliğin merkezi, ilim ve irfan meclisi görevlerini ifa etti.
+Bugün, hazır bulduğumuz bu imkânın bize yüklediği sorumluluğu konuşacağız. Çatıyı ayakta tutan bağışı, temizliği sürdüren gayreti ve cemaatin güvenini koruyan dürüstlüğü birlikte ele alacağız. İçimizde para verebilen de var, yalnızca kısa bir vakit ayırabilen de. Rabbimizin rızasına uzanan hizmette hepimize uygun bir pay bulunabilir.
 
-Mescid-i Nebi: Çile, sıkıntılarla geçen on üç yılın ardından Müslümanlar Medine’ye hicret ettiler. Allah Resulü de (s.a.s.), Hz. Ebu Bekir (r.a.) ile birlikte Medine’ye hicret etmişti. Hicret esnasında Peygamber Efendimiz (s.a.s.) Kuba köyüne ulaştığında bir müddet konaklamış ve orada Kuba Mescidi’ni yaptırmıştı. Kuba Mescidi, Rabbimizin, ***“Daha ilk günden takva temeli üzerine kurulan mescid…”*** (Tevbe, 9/108) buyurmak suretiyle övdüğü mesciddir.
+**Camiye verdiğimiz her emek, Allah için koruduğumuz bir emanettir.**
 
-Kuba’dan sonra Medine’ye teşrif eden Allah Resulü’nün (s.a.s.) ilk işi bu yeni Müslüman yurdunda yapılacak olan mescidin yerini tayin etmek olmuştu. Devesi Kasvâ’yı serbest bıraktı ve onun üzerine çöktüğü, hurma serilip kurutulan düzlük bir alanı mescit yapımı için uygun buldu. Neccâroğulları’ndan Sehl ve Süheyl adlarındaki iki yetimden satın alınan arsaya, Mescid-i Nebi’yi yaptırdı. (Buhârî, Menâkıbü’l-Ensâr, 45)
+---
 
-Hz. Peygamber (s.a.s.) döneminde Mescid-i Nebi, çok aktif aynı zamanda farklı görevlerin icra edildiği bir mekândı. Asr-ı saadette Mescid-i Nebi hem vahyin dünyaya açılan penceresi hem de idari, askeri, sosyal işlerin görüşülüp karara bağlandığı, elçilerin kabul edilip diplomatik görüşmelerin yapıldığı bir yerdi. Allah Resulü (s.a.s.) namazlarını cemaatle Mescid-i Nebi’de eda ederdi. Namaz öncesi veya sonrası sohbet yapılırken, eğitim ve öğretim yine Mescid-i Nebi’de olurdu. Ticaret, ziraat gibi işlerinin dışında sahabenin uğradığı, aynı zamanda ilim halkasının oluştuğu yer Mescid-i Nebi idi. Asr-ı saadette mescit, hayatın merkezi ve kalbi idi.
+<h2 class="vaaz-bolum-baslik" id="imarin-niyeti" tabindex="-1">I. Binayı yükseltirken niyeti korumak</h2>
 
-İstiklal Marşımızda:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فِى بُيُوتٍ أَذِنَ ٱللَّهُ أَن تُرْفَعَ وَيُذْكَرَ فِيهَا ٱسْمُهُۥ يُسَبِّحُ لَهُۥ فِيهَا بِٱلْغُدُوِّ وَٱلْـَٔاصَالِ ۝٣٦</p>
 
-Ruhumun senden ilahi şudur ancak emeli,
+*Allah’ın yapılmasına ve içinde isminin anılmasına izin verdiği evlerde, akşam sabah Allah’ı tenzih ederek anarlar.* (Nûr, 24/36)
 
-Değmesin mabedimin göğsüne namahrem eli.
+Nûr sûresinin bu âyeti, yapılan binanın gayesini de önümüze koyar: Orada Allah’ın adı anılacaktır. Duvar, çatı ve halı bu gayeye hizmet eder. Kırılan bir camı değiştirdiğimizde, soğukta üşüyen insanın ibadetini kolaylaştırırız. Islanan tavana zamanında baktığımızda, nice secdenin huzuruna katkı veririz.
 
-Bu ezanlar ki şahadetleri dinin temeli,
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ فِي الْجَنَّةِ مِثْلَهُ</p>
 
-Ebedî yurdumun üstünde benim inlemeli
+*Kim Allah için bir mescit yaparsa Allah da ona cennette onun benzerini yapar.* (Müslim, 533b)
 
-Cami, şehrin ruhu ve manevi çekim merkezidir. Camilerin ihtiyacını gidermek, inşa ve imar etmek aynı zamanda amel defterini kapatmayan sadaka-ı cariye, salih bir ameldir. Hadisi şerifte şöyle buyrulmuştur:
+Peygamber Efendimiz (s.a.s.) bu müjdeyi “Allah için” kaydıyla verir. Elimiz taş kaldırırken kalbimiz de niyetini yoklasın. Eserin büyüklüğünden önce hizmetin kime sunulduğunu hatırlayalım. İnsanların dua ederek yararlandığı sade bir mekân, bize hayrın gösterişsiz güzelliğini anlatır.
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّ مِمَّا يَلْحَقُ الْمُؤْمِنَ مِنْ عَمَلِهِ وَحَسَنَاتِهِ بَعْدَ مَوْتِهِ : عِلْمًا عَلَّمَهُ وَنَشَرَهُ ، وَوَلَدًا صَالِحًا تَرَكَهُ ، وَمُصْحَفًا وَرَّثَهُ ، أَوْ مَسْجِدًا بَنَاهُ ، أَوْ بَيْتًا لابْنِ السَّبِيلِ بَنَاهُ ، أَوْ نَهْرًا أَجْرَاهُ ، أَوْ صَدَقَةً أَخْرَجَهَا مِنْ مَالِهِ فِي صِحَّتِهِ وَحَيَاتِهِ ، يَلْحَقُهُ مِنْ بَعْدِ مَوْتِهِ</p>
+İmar, binanın teslim edildiği gün biten bir iş değildir. Açılıştan sonra ödenen faturalar, yapılan küçük onarımlar ve düzenli bakım o ilk gayreti sürdürür. Yeni bir şey yaptırmanın heyecanını, mevcut olanı koruma sabrıyla tamamlayalım. Yıllar önce verilen bir bağışın emanetini bugün bir çatlakla ilgilenerek taşıyabiliriz.
 
-*“Mümin kişi vefat ettikten sonra sevabı kendisine ulaşan iyiliklerinden bir kısmı şunlardır: Öğrettiği ve yaydığı ilim, geride bıraktığı iyi bir evlat, miras bıraktığı Mushaf, yaptırdığı mescit, yolcuların barınması için inşa ettiği misafirhane, akıttığı su, sağlığı yerinde iken malından çıkarıp verdiği sadakadır. Bunlardan hangisini yapmış ise öldükten sonra onun sevabı kendisine ulaşır.”* (İbn Mâce, Mukaddime, 20)
+Bir ihtiyacı fark ettiğimizde görevliye haber verelim. İşin ehli olan kardeşimiz çözüm teklif etsin; yapılacak işi ve masrafını birlikte değerlendirelim. Böylece iyi niyetimiz sağlam bir hizmete dönüşür. Caminin taşına gösterdiğimiz özen, burada huzur arayan insana ulaşır.
 
-Allah Resulü (s.a.s.) Medine’de Mescid-i Nebi’nin inşa edilmesinde bizzat kendisi çalışmış ve cami inşa edenler hakkında da şu müjdeyi vermiştir:
+İlk yapılan işin sevincini bakım günlerinde de yaşayalım. Kaplaması yıpranan bir basamakla ilgilenmek, ibadet edecek insana gösterilen hürmettir. İhtiyaçları düzenli izleyen bir cemaat, binasını daha uzun süre faydalı tutar. Böylece ilk bağışın hayrı yeni emeklerle korunur.
 
-<p lang="ar" dir="rtl" class="ayet">مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ فِى الْجَنَّةِ مِثْلَهُ</p>
+**Camiyi Allah için yapar, kullarına huzur versin diye özenle koruruz.**
 
-*“Her kim Allah için bir mescit bina ederse, Allah ona cennette bu mescidin benzeri (bir köşk) bina eder."* (Müslim, Zühd, 44)
+---
 
-Peygamber Efendimizin (s.a.s.) döneminde Mescid-i Nebi düzenli olarak temizlenirdi. Ümmi Mihcen adında siyahi bir kadın, Mescid-i Nebi’nin temizliğini gönüllü yapardı. Bu kadın vefat ettiğinde, ashâb-ı kiram vefatını Peygamber Efendimize (s.a.s.) bildirmeden defnetmişlerdi. Resul-i Ekrem (s.a.s.) kadını göremeyince: ***“Kadına ne oldu?”*** diye sormuş, sahabe vefat ettiğini bildirmişti. Bunun üzerine Peygamber Efendimiz (s.a.s.): ***“Bana vefat ettiğini haber vermeli değil miydiniz?”*** buyurmuştu. Sonrasında mescidine emek veren bu hizmetçi hanımın kabrine giderek onun için bizzat cenaze namazı kılmıştı. (Buhârî, Salât, 74; Müslim, Cenâiz, 71) Resulullah (s.a.s.), Ümmü Mihcen’in Mescid-i Nebi’ye olan hizmetinden ve emeğinden dolayı ona ayrı değer vermişti.
+<h2 class="vaaz-bolum-baslik" id="bagisin-olcusu" tabindex="-1">II. Bağış: Helâl kazançtan ortak hayra</h2>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ قَالَتْ أَمَرَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِبِنَاءِ الْمَسَاجِدِ فِى الدُّورِ وَأَنْ تُنَظَّفَ وَتُطَيَّبَ</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ءَامِنُوا۟ بِٱللَّهِ وَرَسُولِهِۦ وَأَنفِقُوا۟ مِمَّا جَعَلَكُم مُّسْتَخْلَفِينَ فِيهِ ۖ فَٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَأَنفَقُوا۟ لَهُمْ أَجْرٌ كَبِيرٌ ۝٧</p>
 
-Hz. Âişe’nin (r.a.) bildirdiğine göre, “***Allah Resulü (s.a.s.) mahallelerde mescitler inşa edilmesini, buraların temiz tutulmasını ve güzel kokularla kokulandırılmasını emretmiştir.”*** (Ebu Davud, Salât, 13; Tirmizî, Cuma, 64)
+*Allah’a ve resulüne iman edin; O’nun size emanet olarak verdiklerinden, başkaları için de harcayın. İçinizden iman edip böyle harcamada bulunanlara büyük mükâfat vardır.* (Hadîd, 57/7)
 
-<p lang="ar" dir="rtl" class="ayet">عن أنسٍ رَضِيَ اللّهُ عَنه قال قَالَ رَسُولُ اللّهِ صلى الله عليه وسلم عُرِضَتْ عَلَيَّ أُجُورُ أُمَّتِي، حَتّى اَلْقَذَاةُ يُخْرِجُهَا الرَّجُلُ مِنَ الْمَسْجِدِ</p>
+**Muhterem Müslümanlar!**
 
-Enes (r.a.) anlatıyor, Resulullah (s.a.s.) buyurdular ki: ***“Ümmetimin sevapları bana arz edilip gösterildi. Öyle ki mescidden çıkarılıp atılan bir çer-çöpün sevabını bile gördüm…”*** (Ebu Davud, Salat, 16; Tirmizî, Fezailu'l-Kur'an, 19)
+Maaşını alan bir çalışanı düşünelim. Kira, alışveriş ve ailesinin ihtiyaçları önünde duruyor. O hesabın içinden cami hizmetine de gücü ölçüsünde bir pay ayırıyor. Hadîd sûresi, elindeki imkâna Allah’ın emaneti olarak bakmasını öğretiyor. Kazancının bir kısmı ortak iyiliğe ulaştığında, verdiği para başkalarının huzuruna dönüşüyor.
 
-Hz. Peygamber (s.a.s), mescitlerin hizmetini gören, ihtiyaçlarını karşılayan kimseleri takdir etmiş, ashâbını bu yönde teşvik etmiştir. Nitekim ilk dönemlerde çok korunaklı olmayan Mescid-i Nebî’nin gece yağan yağmurla ıslanan zeminini kapatmak üzere, eteğine topladığı çakılları yerlere döşeyen zâta, *“Bu (yaptığın) ne kadar güzel!”* diyerek memnuniyetini ifade etmiştir. (Ebu Davud, Salât, 15; Hadislerle İslam, 2/296)
+Derneğe düzenli destek, bakım işlerinin önceden planlanmasını kolaylaştırır. Katkımızın miktarını ailemizin geçimini ve borçlarımızı gözeterek belirleyelim. Veremediğimiz dönemde durumumuzu mahcubiyet duymadan anlatabilelim. Cemaat olarak birbirimizin görünmeyen yüklerini hesaba katalım. Dar gelirli kardeşimizin samimi duasını ve emeğini de hürmetle karşılayalım.
 
-Tarih boyunca camiler inşa etmek, ihtiyaç dâhilinde bakım ve onarımını yapmak, temizliğine özen göstermek bizim medeniyetimizin olmazsa olmazlarındandır. Aynı zamanda bu şekilde bir yaşam tarzı sünneti seniyyeye uygun bir yaşam modelidir.
+<p class="vaaz-etiket">Fıkhî Ölçü — Cami bağışı ile zekâtın yerini ayıralım</p>
 
-## Camilerin Manevi İmarı
+Hanefî ilmihal ölçüsünde ve fakihlerin çoğunluğuna göre cami yapımı ve onarımı için zekât verilmez. Buraya gönüllü bağışlarımızla destek oluruz. Zekâtı hak sahibi kişilere ulaştırma hizmeti ile bina giderlerini ayrı izleriz; özel durumlarda ehil bir hocaya danışırız.
 
-### Cemaatle Namaz
+(Zekât İlmihali, “Kendilerine Zekât Verilmeyenler — Bina Yapımı”; Kâsânî, Bedâiʿ, II, 45’e atıf yapan yerel arşiv bölümü.)
 
-Hz. Peygamber (s.a.s.), Medine-i Münevvere’yi cami merkezli bir yapı ile inşa etmişti. Asr-ı saadetten günümüze camiler ibadet ve eğitim maksadı ile inşa edilmiştir. Camilerin manevi yönden mamur edilmesi beş vakit namazda cemaatin olması ve camide icra edilen vaaz ve irşad ile olacaktır. Allah Resulü (s.a.s.) cemaatle namaza son derece önem vermiştir. Peygamber Efendimiz (s.a.s.) vefatından önceki son günlerinde hastalanıp, namaz kıldırmaya takati kalmadığında Hz. Ebu Bekir’e (r.a.) haber gönderip namaz kıldırmasını istemiş; iyi olduğu vakitlerde ise Hz. Ebu Bekir’e (r.a.) uyarak namaz kılmıştı. Cemaatle namazla ilgili olarak Peygamber Efendimiz (s.a.s.) şöyle buyurdular:
+Bir bağış toplarken hangi ihtiyacı karşılayacağını anlaşılır biçimde açıklayalım. Çatı onarımı için verilen parayı o amaçla kayda alalım. İhtiyaç değişirse bağışın şartını ve verenin iradesini gözeterek çözüm arayalım. Böylece paranın izini de gönüldeki güveni de koruruz.
 
-<p lang="ar" dir="rtl" class="ayet">عن أبي هريرةَ رضيَ الله عنهُ قال: قالَ رسولُ الله صلى الله عليه وسلم : صَلاةُ الرَّجُلِ في جَمَاعَةٍ تُضعَّفُ عَلى صَلاتِهِ في بَيْتِهِ وَفي سُوقِهِ خَمْساً وَعِشْرِينَ ضِعْفاً، وَذلِكَ أَنَّة إذَا تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ، ثُمَّ خَرَجَ إلى الْمَسْجِدِ، لا يُخْرِجُه إلاَّ الصَّلاةُ، لَمْ يَخْطُ خَطْوَةً إلاَّ رُفِعَتْ لَه بهَا دَرَجَةٌ، وَحُطَّتْ عَنْهُ بِهَا خَطِيئَةٌ، فَإذا صَلَّى لَمْ تَزَلِ المَلائِكَة تُصَلِّي عَلَيْهِ مَا دَامَ في مُصَلاَّه، ما لم يُحْدِثْ تقولُ اللَّهُمَّ صَلِّ عَلَيْهِ، اللَّهُمَّ ارحَمْهُ. وَلاَ يَزَالُ في صَلاةٍ مَا انْتَظَرَ الصَّلاةَ</p>
+Küçük katkıları küçümsemeyen bir cemaat olalım. Her ay karşılanabilen bir temizlik ihtiyacı, ertelenmiş büyük bir vaatten daha çok işe yarayabilir. İyiliğin sürdürülebilmesi için samimiyetimize gerçekçi bir hesap eşlik etsin.
 
-Ebû Hüreyre (r.a)’den rivayet edildiğine göre, Resûlullah (s.a.s) şöyle buyurdu: ***“Bir kimsenin cemaatle kıldığı namazın sevabı, evinde ve çarşı pazarda kıldığı namazdan yirmi beş kat daha fazladır. O kimse abdestini güzelce alıp, sonra sadece namaz kılmak maksadıyla mescide giderse attığı her adım sebebiyle bir derece yükseltilir, bir hatası da silinir. Namazını kıldıktan sonra abdestini bozmadan namaz kıldığı yerde kaldığı müddetçe, melekler ona: Allah’ım! Ona rahmetinle muamele et, ona acı! diyerek dua etmeye devam ederler. O kimse namazı beklediği sürece namazda imiş gibidir. ”*** (Buhârî, Ezân 30; Müslim, Mesâcid 272)
+Bağış veren kardeşimiz, desteğinin yerine ulaştığını öğrenebilsin. İş bittiğinde kısa bir açıklama yapalım: İhtiyaç nasıl karşılandı, hangi gider oluştu, geriye ne kaldı? Bu bilgiyi paylaşmak, sonraki katkının da bilinçle yapılmasını sağlar. Birlikte yaptığımız hayrın neticesini birlikte görelim.
 
-Camiye ibadet için giden mümin, Allah’ın ziyaretçisi ve misafiri durumundadır. Ev sahibi, evine gelen misafirlerine ikramda bulunduğu gibi camiye giden müminlere de Yüce Allah büyük mükâfatlar verecektir.
+**Bağışın bereketi, hâlis niyetle doğru ihtiyaca ulaşmasındadır.**
 
-Başka bir hadisi şerifte cemaatle namaz kılan kişinin Cenab-ı Hakkın sevgisine mazhar olacağı müjdesi verilmiştir:
+---
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ مَا تَوَطَّنَ رَجُلٌ مُسْلِمٌ الْمَسَاجِدَ لِلصَّلاَةِ وَالذِّكْرِ إِلاَّ تَبَشْبَشَ اللَّهُ لَهُ كَمَا يَتَبَشْبَشُ أَهْلُ الْغَائِبِ بِغَائِبِهِمْ إِذَا قَدِمَ عَلَيْهِمْ</p>
+<h2 class="vaaz-bolum-baslik" id="sessiz-emege-vefa" tabindex="-1">III. Bir süpürgenin ardından gösterilen vefa</h2>
 
-Ebû Hüreyre’den gelen rivayete göre, Hz. Peygamber (s.a.s.) şöyle buyurmuştur: “Müslüman bir kimse namaz ve zikir (Allah’ı anma) için mescitleri kendine vatan edindiğinde, Allah onun bu durumuna, ailesinin gurbetten dönen kişiye sevindiği gibi sevinir.” (İbn Mâce, Mesâcid, 19)
+**Kıymetli kardeşlerim!**
 
-Cemaatle birlikte ibadet etmek, toplumdaki bireylerin birbirleriyle tanışmasını, kaynaşmasını ve ilişkilerin güçlenmesini sağlar. Bununla birlikte insanlar arasında yardımlaşma ve paylaşma duyguları gelişir.
+Bir süpürgenin sesi çoğu zaman sohbetin dışında kalır. Yerler temizlenir, insanlar gelir; işi yapan kişi kalabalığın içinde kaybolur. Peygamber Efendimizin (s.a.s.) mescidinde yaşanan şu olay, bakışımızı görünmeyen emeğe çevirir.
 
-Herkesin birbirinden kaçacağı kıyamet gününde, dünyada yaptıkları ameller nedeniyle rahat edecek, Allah Teâlâ’nın özel lütuflarına nail olacak yedi sınıf insan vardır. Konumuzla ilgili bölüm hadis-i şerifte şu şekilde zikredilmektedir:
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Mescidi temizleyen kişi</p>
 
-<p lang="ar" dir="rtl" class="ayet">سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِى ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ:... وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِى الْمَسَاجِدِ</p>
+Ebû Hüreyre’nin aktardığına göre mescidi temizleyen bir kişi vardı. Vefatından sonra Resûlullah (s.a.s.) onu göremeyince sordu. Vefat ettiğini öğrendiğinde kendisine haber verilmesini beklediğini ifade etti. Kabrinin gösterilmesini istedi; oraya giderek cenaze namazını kıldı.
 
-*“Yedi sınıf insan, Allah’ın (Arşı’nın) gölgesinden başka hiçbir gölgenin bulunmayacağı kıyamet gününde onun gölgesinde gölgelenecektir. “... Kalbi mescidlere bağlı olan kimse…”* (Müslim, Zekât, 91) Kıyamet günü arş-ı âlânın gölgesinde gölgelenecek yedi sınıftan birisi de, kalbi mescide bağlı olan yani namazlarını devamlı camide kılan kişilerdir.
+(Müslim, 956; sahih rivayetin özeti. Aktarımda “siyah bir kadın veya bir genç” tereddüdü bulunur; kişinin adı verilmez.)
 
-### Camilerin Manevi İmarı: Eğitim
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَفَلاَ كُنْتُمْ آذَنْتُمُونِي</p>
 
-Cami sadece ibadet edilen yer değildir. Cami, dini bilgilerle birlikte; güzel ahlakın, insan, vatan, bayrak sevgisinin, merhametin, şefkatin, saygının, değerlerin öğrenildiği yerdir.
+*Bana haber verseydiniz ya!* (Müslim, 956; rivayetten bölüm)
 
-Asr-ı asadette Medine’de eğitim-öğretim faaliyetinin merkezi Mescid-i Nebî idi. Hz. Peygamber (s.a.s), bazı sahâbîleri mescidde eğitim-öğretim faaliyetlerini icra etmekle görevlendirmiştir. Ubâde b. Sâmit (r.a.) Mescidi Nebi’de hem Kur’an hem okuma yazma öğretmekteydi. Mescid-i Nebî’nin bir öğretim merkezi oluşunun en büyük delili Ashâb-ı Suffe’dir. Ashab-ı Suffe, Mescid-i Nebi’nin içerisinde suffe denilen gölgelik kısımda kalan sahabilerdi. Zaman zaman sayılarının 400’e ulaştığı bu sahabiler, ilimle meşgul olurdu. Ashâb-ı Suffe’nin eğitim ve öğretim işleriyle bizzat Resûl-i Ekrem (s.a.s.) ilgilenmişti.
+Bu soruda, bir insanı fark eden peygamber şefkatini duyarız. Efendimiz onun yokluğunu görmüş, hâlini sormuş, kabrine kadar gitmiştir. Mescidin temizliğiyle meşgul olan kişinin hayatı ve vefatı onun ilgisinin içindedir. Biz de temiz bir halının ardında bir insan bulunduğunu hatırlayalım.
 
-Peygamber Efendimiz (s.a.s.), haftanın belirli bir gününü sahabenin sorularını cevaplandırmaya ve onların bilgilerini geliştirmeye ayırmıştı. Bunu da mescitte ifa ediyordu. Hatta ashabın hanımları erkeklerin bu hâline imrenerek, Peygamberimizden (s.a.s.) kendilerini de bu ilmî faaliyetten mahrum bırakmamasını istemişler, bunun üzerine onlara da bir gün ayıran Peygamber Efendimiz (s.a.s.), bu öğretimi de mescitte devam ettirmiştir. Sonraki dönemlerde meşhur mezhep imamlarının da bulunduğu sayısız âlim, cami ve mescitlerdeki ders halkalarında yetişmiş, kendi talebelerini buralarda yetiştirmişlerdir. (Komisyon, Cami Yazıları, DİB, Ankara 2012, s. 13-15)
+Vefa, o kişiye teşekkür ederken başlar; yorulduğunda işini paylaşarak büyür. Kimin hangi gün geldiğini, malzemeye ihtiyacı olup olmadığını, dinlenebildiğini soralım. İşten sonra herkes ayrılırken son sandalyeyi kaldıran kardeşimizin yanında birkaç dakika kalalım. Emeği görmek, yükü fark etmeyi gerektirir.
 
-### Cami ve Cemaat Adabı:
+Kadın veya erkek, genç veya yaşlı; hizmet eden herkesin adı saygıyla anılsın. Bir görevi yıllardır aynı kişi yapıyor olabilir. Bu, onun her zaman müsait olduğu anlamına gelmez. Konuşarak yardım teklif edelim; kabul ettiği ölçüde yanında duralım. Hâlini sormak için hastalanmasını beklemeyelim.
 
-Camide bulunmanın ve cemaatle namazı eda etmenin adabı vardır:
+Temizliği üstlenen kardeşimize vereceğimiz en güzel karşılıklardan biri de mekânı özenle kullanmaktır. Ardımızda bıraktığımız düzen, ona duyduğumuz hürmetin sessiz ifadesidir.
 
-a) Camiye giderken vakarlı olunmalı, koşmadan gelinmeli, sağ ayakla ve abdestli girilmeli, girerken Peygamber Efendimize (s.a.s.) salavat-ı şerife getirilmelidir.
+Bazen teşekkürümüz, “Allah razı olsun” dedikten sonra attığımız adımda tamamlanır. Malzemeyi yerine koyar, dolan kovayı boşaltmaya yardım ederiz. Ertesi hafta kimin geleceğini birlikte konuşuruz. Hizmet sahibinin yüzünde beliren rahatlık, paylaşmanın neye yaradığını gösterir.
 
-b) Camiye gelirken beden ve elbise temizliğine dikkat edilmelidir. Rabbimiz:
+Kıssadan kendimize bir ölçü alalım: İnsanları, yaptığı işin görünürlüğüyle değerlendirmeyelim. Toplantıda konuşanın da sonunda yeri süpürenin de sözünü dinleyelim. Görünmeyen emeğe hürmet, ortak kararlarımızda da kendine yer bulsun. Böyle bir cemaatte hizmet eden kişi, ihtiyacını çekinmeden söyleyebilir.
 
-<p lang="ar" dir="rtl" class="ayet">يَا بَنٖٓي اٰدَمَ خُذُوا زٖينَتَكُمْ عِنْدَ كُلِّ مَسْجِدٍ</p>
+**Hizmeti seven cemaat, hizmet eden insanı da görür ve gözetir.**
 
-***“ Ey Âdemoğulları! Her namaz kılacağınızda güzelce giyinin…”*** (Araf, 7/31) buyurmuştur.
+---
 
-Güzelce abdest alındıktan sonra, namazın şartlarından olan setr-i avrete uygun kıyafet giyilmelidir. Peygamber Efendimiz (s.a.s.) döneminde bir cuma günü bazı sahabiler hurmalıklarında çalıştıktan sonra toz toprak içinde ve terlemiş bir şekilde mescide geldiklerinde Resûlullah (s.a.s.) onlara, ***“Keşke yıkansaydınız!”*** buyurmuştu. (Buhârî, Büyû’, 15) Camiye gelirken aşırıya kaçmamak ve başkasını rahatsız edici olmamak şartıyla güzel koku sürülebilir. Camiye gelmeden önce soğan, sarımsak gibi kokusu hoş olmayan yiyeceklerden sakınılmalıdır.
+<h2 class="vaaz-bolum-baslik" id="temizligin-devami" tabindex="-1">IV. Temizlik: Sonraki insanı düşünmek</h2>
 
-c) Camiye girildiğinde vaaz ediliyor veya Kur’an-ı Kerim okunuyor ise sükûnetle dinlenmelidir. Ayrıca Cuma veya bayram günlerinde hutbe okunurken konuşmak, başka şeylerle ilgilenmek, cep telefonuyla meşgul olmak ibadetin özünden uzaklaşmaya ve sevabından mahrum kalmaya sebep olacağından bu davranışlardan sakınılmalıdır. Unutmayalım ki hutbe, namazın bir parçasıdır. Hutbe esnasında ilgi ve alakamızı sadece hatibe ve hutbeye verelim. Peygamber Efendimiz (s.a.s), bir müminin hutbe esnasında göstermesi gereken duyarlılığı şöyle ifade etmiştir: *“Cuma günü imam hutbe okurken konuşan arkadaşına: ‘Sus!’ bile desen hatalı bir iş yapmış olursun.”* (Buhârî, Cuma, 36)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَمَرَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِبِنَاءِ الْمَسَاجِدِ فِي الدُّورِ وَأَنْ تُنَظَّفَ وَتُطَيَّبَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">قَدْ اَفْلَحَ الْمُؤْمِنُونَۙ اَلَّذٖينَ هُمْ فٖي صَلَاتِهِمْ خَاشِعُونَۙ</p>
+*Hz. Âişe, Resûlullah’ın (s.a.s.) mahallelerde mescitler yapılmasını, onların temiz tutulmasını ve güzel kokulandırılmasını emrettiğini bildirir.* (Ebû Dâvûd, 455)
 
-*“Müminler kesinlikle kurtuluşa ermiştir. Onlar, namazlarında derin bir saygı hali yaşarlar.”* (Müminun, 23/1-2) Sessiz ve sakin durmak, tevazu göstermek, boyun eğmek gibi anlamları olan *“huşû*” kavramı, insanın Cenab-ı Hakk’ın huzurunda tevazu ve teslimiyet içerisinde bulunmasını, kalben ve bedenen O’na hürmet ve itaat ederek boyun eğmesini ifade etmektedir. Huşû insanın Allah’a imanının ve O’na eşsiz bağlılığının yalnızca kalp ile değil aynı zamanda saygı, edep ve vakar dolu bir duruş sergileyerek de ifade edilmesidir.
+Abdesthanedeki ıslak zeminden geçen yaşlı bir kardeşimizin adımlarını izleyelim. Birimizin fark edip kurulattığı su, onun daha rahat yürümesini sağlar. Temizliğin insan hayatına değdiği yer burasıdır. Yaptığımız işin değeri, o mekânı bizden sonra kullanacak kişiye gösterdiğimiz özenle belirginleşir.
 
-Namazın manevi temeli olan huşûun gerçekleşmesinde önemli rolü bulunan ta’dîl-i erkâna riayet edilmesi gerekir. Namazın kıyam, rükû ve secde gibi rükünlerini yerli yerinde, acele etmeden ve sükûnet içinde yerine getirmeye *ta’dil-i erkân* denir. Peygamber Efendimiz (s.a.s.), ***“Rükû ve secdeleri tam yapın.”*** (Buhârî, “Eymân”, 3) Bir diğer hadisinde de “*Hırsızın en kötüsü namazından çalandır.”* buyurmuştur. *“Kişi namazından nasıl çalar?”* diye sorulunca Allah Resulü (s.a.s.), *“Rükû ve secdesini tam yapmayarak.”* cevabını vermiştir. (el-Muvaṭṭaʾ, Ḳasru’s-Salat, 72; Abdullah Kahraman, Tadili Erkan, DİA, 39/366)
+Caminin bakımını bir düzen içinde yürütelim. Hangi bölüm ne zaman temizlenecek, eksilen malzemeyi kim bildirecek, işin tamamlandığı nasıl anlaşılacak? Bunları birlikte belirleyebiliriz. Gönüllü olarak üstlendiğimiz işi zamanında yapalım; gelemeyeceksek önceden haber verelim. Haber vermek de hizmetin bir parçasıdır.
 
-d) Cami içerisinde cep telefonları kapatılmalı veya sessiz konuma alınmalıdır.
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Temizliği üç adımda sürdürelim</strong> Kullandığımız yeri sonraki kişiye özenle bırakalım.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Kullanırken</dt><dd>Suyu ihtiyacımız kadar açalım; ortak eşyayı yerinde ve dikkatle kullanalım.</dd></div>
+<div><dt>Ayrılırken</dt><dd>Kâğıdı, bardağı ve kişisel eşyamızı toplayalım; geçişi açık bırakalım.</dd></div>
+<div><dt>Eksik görünce</dt><dd>Arızayı veya temizlik ihtiyacını sorumlu kişiye bildirelim; gücümüz yeten işi üstlenelim.</dd></div>
+</dl>
+</figure>
 
-e) Camiye girildiğinde ezan okunmamış ve mekruh vakit değil ise iki rekât Tahıyyetü`l-Mescid namazı kılınması sünnettir.
+Temizlik malzemelerinin düzenli ve uygun yerde saklanmasına özen gösterelim. Bakım gerektiren cihazları ehil ellere bırakalım. Mekânın ferahlığını, havalandırmasını ve kullananların hassasiyetlerini birlikte gözetelim. Güzel koku uygularken de başkalarının rahatlığını esas alalım.
 
-f) Cami içerisinde tek başına namaz kılarken ya da Kur’an-ı Kerim okurken yanındakini rahatsız edecek şekilde yüksek sesle okunmamalıdır. Resûl-i Ekrem (s.a.s.), kendisi itikâfta bulunduğu sırada bazı kişilerin yüksek sesle Kur’an okuduklarını işitince:
+Bu özeni evdeki alışkanlıklarımıza bağlayabiliriz. Çocuğumuz bardağını toplarken bizim de ortak alanda aynı şeyi yaptığımızı görsün. Dinini yeni öğrenen kardeşimize malzemenin yerini nezaketle gösterelim. Bir eksik gördüğümüzde elimizin yetiştiği bir çözüm arayalım. Temizlik, birlikte öğrendiğimiz bir sorumluluk olsun.
 
-<p lang="ar" dir="rtl" class="ayet">أَلاَ إِنَّ كُلَّكُمْ مُنَاجٍ رَبَّهُ فَلاَ يُؤْذِيَنَّ بَعْضُكُمْ بَعْضًا، وَلاَ يَرْفَعْ بَعْضُكُمْ عَلَى بَعْضٍ فِى الْقِرَاءَةِ</p>
+İş tamamlandığında malzemeyi kullanan kişi bir sonrakine hazır bıraksın. Boşalan şişeyi haber versin; eksilen bezi veya bozulan aracı ilgili kişiye bildirsin. Böylece gelen gönüllü, işe neyle başlayacağını aramakla vakit kaybetmez. Düzen, onun ayırdığı zamana gösterdiğimiz hürmettir.
 
-“*Dikkat edin! Hepiniz Rabbinize münacat ediyorsunuz. Birbirinizi rahatsız etmeyin! Kıraatte -ya da namazda- biriniz sesini diğerinden daha fazla yükseltmesin!”* (Ebû Dâvûd, Tatavvu’, 25) buyurarak onları ikaz etmiştir.
+Temizliğin ardından yapılan kısa bir kontrol, unutulmuş bir ayrıntıyı fark etmemizi sağlar. Kontrolü de birlikte öğrenebiliriz. Herkesin aynı özeni göstermesi, hizmetin tek kişinin dikkatine bağlı kalmadan sürmesine yardım eder.
 
-h) Camide saf tutarken öncelikle ön saflar doldurulmalıdır, sonra ikincisi, sonra diğerleri. Ön safta boş yer varken caminin gerisinde imama uyulması uygun değildir. Cemaatle namazın ilk ve en önemli şartı saf tutmaktır. Hz. Peygamber (s.a.s.), safları düzgün tutmanın, namazı güzelleştiren hatta onu tamamlayan ve mükemmelleştiren bir unsur olduğunu ifade etmiştir.
+**Temiz bıraktığımız her yer, bizden sonra gelecek insana bir ikramdır.**
 
-<p lang="ar" dir="rtl" class="ayet">سَوُّوا صُفُوفَكُمْ فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلاَةِ</p>
+---
 
-*“Saflarınızı düz tutunuz. Zira safların düz olması namazın tamam olmasını sağlayan hususlardan biridir.”* (Müslim, Salât, 124)
+<h2 class="vaaz-bolum-baslik" id="acik-hesap" tabindex="-1">V. Kasa ve kayıt: Güveni koruyan açıklık</h2>
 
-<p lang="ar" dir="rtl" class="ayet">لَوْ يعْلمُ النَّاسُ مَا في النِّداءِ والصَّفِّ الأَولِ ثُمَّ لَمْ يَجِدُوا إِلاَّ أَنْ يسْتَهِموا علَيهِ لاسْتهموا علَيْهِ، ولوْ يعْلَمُونَ مَا فِي التَّهْجِير لاسْتبَقوا إَليْهِ، ولَوْ يعْلَمُون مَا فِي العَتَمَةِ والصُّبْحِ لأتوهمُا ولَوْ حبوًا</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ هُمْ لِأَمَـٰنَـٰتِهِمْ وَعَهْدِهِمْ رَٰعُونَ ۝٨</p>
 
-*“İnsanlar ezandaki ve birinci saftaki (sevabı) bilselerdi, ezan okumak ve birinci safta yer almak için aralarında kura çekmekten başka bir yol bulamaz ve (sonunda) kura çekerlerdi. Namazı ilk vakitte kılmanın sevabını bilselerdi, bunun için yarışırlardı. Yatsı namazı ile sabah namazındaki fazileti bilselerdi, emekleyerek de olsa bu iki namazı cemaatle kılmaya gelirlerdi.”* (Buhârî, Ezân 9; Müslim, Salât 129)
+*Yine o müminler emanetlerine ve ahidlerine sadakat gösterirler.* (Mü’minûn, 23/8)
 
-ı) Cemaatle namaz kılarken imamın arkasına, varsa cemaate namaz kıldırabilecek kadar bilgisi olan birisi durmalıdır. Resûlullah (s.a.s.), imamın arkasına öncelikle ilim sahibi ve âkil kimselerin sıralanmasını istemiştir. (Müslim, Salât, 123)
+Bağış zarfı açıldığında içinden yalnızca para çıkmaz. O paranın ardında bir işçinin mesaisi, bir emeklinin hesabı, bir ailenin niyeti vardır. Mü’minûn sûresinin çizdiği ahlâk, bize teslim edilen şeyi bu ciddiyetle korumaya çağırır. Hesaptaki rakamların ardındaki insanı unutmayalım.
 
-i) Kapı ağzı, merdiven önü, en arka kısım gibi insanların mecburen geçeceği yerlerde namaza durmamak gerekir ki insanlar bilmeden namaz kılanın önünden geçmesinler.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">الْخَازِنُ الْمُسْلِمُ الأَمِينُ الَّذِي يُنْفِذُ … مَا أُمِرَ بِهِ كَامِلاً مُوَفَّرًا طَيِّبٌ بِهِ نَفْسُهُ، فَيَدْفَعُهُ إِلَى الَّذِي أُمِرَ لَهُ بِهِ، أَحَدُ الْمُتَصَدِّقَيْنِ</p>
 
-j) Camiden çıkarken önce sol ayak dışarı atılmalıdır.
+*Peygamber Efendimiz (s.a.s.), kendisine emredilen yardımı tam olarak, gönül hoşluğuyla belirtilen kişiye ulaştıran güvenilir Müslüman hazinedarı sadaka verenlerden biri sayar.* (Buhârî, 1438; rivayetten bölüm; anlam özeti)
 
-## Sonuç
+Bu müjde, hayra aracılık edenin emeğini de değerli kılar. Hesabı tutan, makbuzu düzenleyen ve bağışı yerine ulaştıran kardeşimiz hizmetin içindedir. İşi doğru yapmak için harcadığı dikkat, cemaatin güvenini taşır. Ona gerekli zamanı, bilgiyi ve desteği sağlayalım.
 
-Cennete giden yollar, mescitlerden geçiyor
+Dernek gelir ve giderlerini düzenli kayda alsın; belgeleri saklasın; cemaate anlaşılır bir hesap sunsun. Toplanan tutar, yapılan harcama ve kalan miktar birlikte görülsün. Birden fazla kişinin kontrol ettiği açık bir usul, hem bağışçıyı hem sorumluluk üstlenen gönüllüyü korur. Bu yöntemleri emanet ilkesini hayata geçirmek için geliştiririz.
 
-Mevlâ hep kullarını, secdelerde seçiyor
+Hesap soran kişi sözünü saygıyla söylesin; hesap veren kişi de soruyu dikkatle dinlesin. Eksik bir belge fark edilirse tamamlayalım. Bir yanlış yapılmışsa düzeltip sonucunu açıklayalım. Dürüstçe yapılan bir düzeltme, güvenin yeniden kurulmasına yardım eder.
 
-Camiler, beş vakit namaz kılındıktan sonra kapısı açılmayan veya sadece Cuma günleri hatırlanan mekânlar olmamalıdır. Camiler, Allah’ın en çok sevdiği, rahmetin indiği, huzur ve bereket yerleridir. Manen rahatladığımız, huzur bulduğumuz, sükûnete kavuştuğumuz, rahmete gark olduğumuz, Rabbimize daha çok yakın olduğumuz yerdir camiler. Camileri inşa etmek, ihtiyaçlarını gidermek, temiz tutmak biz müminlerin görevlerindendir. Camilerin manevi imarı camilerin cemaatle dolması, ilim halkalarının oluşması, cami merkezli bir toplum inşa edilmesi ile olacaktır.
+Ortak para ile kişisel harcamaları ayrı tutalım. Yardım alanların özel bilgilerini korurken toplam gelir ve gideri açıklayabiliriz. Açık hesap ile mahremiyet birlikte yürür. İsimleri yaymadan, emanete ne olduğunu anlaşılır biçimde göstermek mümkündür.
 
-Bu vesileyle, camilerimizi inşa edenlerden, camilerimizde cemaat olanlardan ve görev yapanlardan hayatta olanlara sağlık ve afiyet; ahirete irtihal edenlere de Rabbimizden af ve mağfiret diliyoruz. Rabbimiz bizleri gönülleri mescide bağlı olanlardan eylesin.
+Bağışı teslim alan ile harcamayı yapan kişi, bilgiyi zamanında kayda geçirsin. İş yoğunlaştığında hatırlamayı kolaylaştıran şey, tutulmuş belgedir. Gönüllü arkadaşımıza güvenirken onun işini de kolaylaştıralım. Düzenli kayıt, dürüst insanın emeğini görünür ve anlaşılır kılar.
+
+**Emanete sadakat, bağışı yerine ulaştırmak ve hesabını açıklıkla vermektir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="birlikte-karar" tabindex="-1">VI. İstişare: Aynı hizmeti birlikte taşımak</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ ٱسْتَجَابُوا۟ لِرَبِّهِمْ وَأَقَامُوا۟ ٱلصَّلَوٰةَ وَأَمْرُهُمْ شُورَىٰ بَيْنَهُمْ وَمِمَّا رَزَقْنَـٰهُمْ يُنفِقُونَ ۝٣٨</p>
+
+*Rablerinin çağrısına karşılık verir, namazı kılarlar; işleri aralarında danışma iledir; kendilerine verdiğimiz rızıktan da harcarlar.* (Şûrâ, 42/38)
+
+**Camimizin hizmetini üstlenen aziz kardeşlerim!**
+
+Önümüzde bir onarım teklifi, yanında geçmiş ayın giderleri duruyor. Herkes aynı ihtiyacı farklı bir yerinden görüyor. İstişare, bu bilgileri ortak hizmet için buluşturur. Âyetin iman hayatı içinde övdüğü danışma ahlâkını, camimizin kararlarına da taşıyalım.
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Bir ihtiyacı karara dönüştürürken</strong> Bu sorular, ortak sorumluluğumuzu somutlaştırır.</figcaption>
+<table aria-label="Bir ihtiyacı karara dönüştürürken">
+<thead><tr><th scope="col">Adım</th><th scope="col">Soracağımız soru</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Adım">İhtiyacı dinle</th><td data-label="Soracağımız soru">Mekânı kullananlar neye ihtiyaç duyuyor?</td></tr>
+<tr><th scope="row" data-label="Adım">İşi değerlendir</th><td data-label="Soracağımız soru">İşin ehli ne öneriyor; yaklaşık gider ne?</td></tr>
+<tr><th scope="row" data-label="Adım">Görevi belirle</th><td data-label="Soracağımız soru">Kim, hangi sürede, hangi yetkiyle yapacak?</td></tr>
+<tr><th scope="row" data-label="Adım">Sonucu paylaş</th><td data-label="Soracağımız soru">İş tamamlandı mı; ne harcandı, ne kaldı?</td></tr>
+</tbody></table>
+</figure>
+
+Karardan etkilenenlerin tecrübesini dinleyelim. Merdiveni zor çıkan büyüğümüzün, temizlik yapan gönüllünün, farklı bölümleri kullanan hanımların söyleyeceği şeyler vardır. Bir gencin teknik bilgisi işimizi kolaylaştırabilir. Görevi bilgi, güvenilirlik ve ayırabileceği zamanla birlikte değerlendirelim.
+
+Farklı bir teklif geldiğinde önce gerekçesini anlayalım. Konuşulanları kısa bir karar notuna geçirmek, herkesin aynı sorumluluğu bilmesini sağlar. Bir görev devredilirken anahtarla birlikte kayıtlar ve devam eden işler de devredilsin. Yeni gelen kişi nereden başlayacağını bilsin.
+
+İstişareye katılan cemaat de sorumluluk alsın. Uygulanabilir öneri getirelim; imkânımız varsa teklif ettiğimiz işin bir bölümünü üstlenelim. Böylece konuştuğumuz masadan yapılacak iş belli olarak kalkarız. Kararımızın meyvesi caminin günlük hayatında görünür.
+
+Karar verirken işi en çok kullanan kişinin gözlemi bize yol gösterebilir. Uygulamadan sonra yeniden soralım: Sorun çözüldü mü, bir eksik kaldı mı? İstişare, sonucu dinlediğimizde tamamlanır. Cemaatin tecrübesi sonraki kararı daha isabetli kılar.
+
+**Camiye verdiğimiz her emek, Allah için koruduğumuz bir emanettir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="paylasilan-emek" tabindex="-1">VII. Gönüllülük: Herkesin yapabileceği bir iş</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَتُعِينُ الرَّجُلَ فِي دَابَّتِهِ فَتَحْمِلُهُ عَلَيْهَا أَوْ تَرْفَعُ لَهُ عَلَيْهَا مَتَاعَهُ صَدَقَةٌ … وَتُمِيطُ الأَذَى عَنِ الطَّرِيقِ صَدَقَةٌ</p>
+
+*Bir kimseye bineğine binmesinde veya eşyasını yüklemesinde yardım etmen sadakadır. Yoldan eziyet veren bir şeyi kaldırman da sadakadır.* (Müslim, 1009; rivayetten bölüm)
+
+Efendimiz (s.a.s.) sadakanın hayatın içine yayılan örneklerini öğretir. Bir insana yardım etmek, güzel söz söylemek, yoldaki eziyeti kaldırmak bu rivayette yan yana gelir. Cami hizmetine de bu geniş iyilik anlayışıyla bakabiliriz. Elimizden gelen faydalı iş, samimi niyetle bir hayra dönüşebilir.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Vardiya çıkışında paylaşılan görev</p>
+
+Marche-en-Famenne’de bir cumartesi sabahı. Gece vardiyasından çıkan bir kardeşimiz, caminin hizmet odasında hâlâ toparlanacak malzeme olduğunu görüyor. O gün dinlenmeye ihtiyacı var. Gönüllü arkadaşına haber veriyor; işi uygun bir zamanda paylaşmak üzere anlaşıyorlar. Bir başkası ağır kutuları kaldırıyor, oturarak çalışabilen bir büyüğümüz temiz bezleri katlıyor. İş bölüşülünce herkes katkısının yerini buluyor.
+
+Bir hizmete söz verirken zamanımızı gerçekçi hesaplayalım. Ailemizin ihtiyacını, işimizi ve sağlığımızı gözetelim. Düzenli yarım saat ayırabilen kişi, ne yapacağını bildiğinde rahatça katkı verir. Görevin sınırını ve kime haber vereceğini baştan öğrenmesi, hizmetin sürmesini kolaylaştırır.
+
+Gönüllüler için dinlenme ve görev değişimi imkânı oluşturalım. Her işin yanında öğrenmek isteyen birine yer açabiliriz. Bilgisayar bilen hesap dökümüne, dil bilen bir yazının anlaşılmasına, elinden onarım gelen bakım hazırlığına yardımcı olabilir. Evinden çıkamayan kardeşimiz de yapabildiği bir düzenleme işini üstlenebilir.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/camilerin-maddi-ve-manevi-imari-2/ortak-emek.svg" width="1600" height="900" alt="Cami hizmet odasında yan yana duran temizlik arabası, tamir çantası ve boş raflar." loading="lazy" decoding="async">
+<figcaption><strong>Bir işin ucundan tutmak</strong> Paylaşılan görev, hizmetin devamını ve gönüllünün dinlenmesini sağlar.</figcaption>
+</figure>
+
+Hizmet sırasında yeni gelen kişiye malzemenin yerini gösterelim. Hatasını sakinlikle düzeltelim; tamamladığı işe teşekkür edelim. İşi öğretmeye ayırdığımız vakit, yarın yükün daha adaletli paylaşılmasını sağlar. Gönüllü arkadaşımız camiden ayrılırken hem faydalı olduğunu hem saygı gördüğünü hissetsin.
+
+Gönüllüye teklifimiz açık olsun: Yapılacak iş, gereken süre ve buluşma yeri belli olsun. Kişi kabul ettiğinde nasıl destek bulacağını da bilsin. Böyle bir davete cevap vermek kolaylaşır. Hizmete ilk kez katılan kardeşimiz, tamamladığı işten sonra yeniden gelmek için cesaret kazanır.
+
+**Paylaşılan emek hizmeti sürdürür, gözetilen gönül hizmete kuvvet verir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="ihtiyaca-gore" tabindex="-1">VIII. Harcamada ölçü: Önce gerçek ihtiyaç</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ إِذَآ أَنفَقُوا۟ لَمْ يُسْرِفُوا۟ وَلَمْ يَقْتُرُوا۟ وَكَانَ بَيْنَ ذَٰلِكَ قَوَامًا ۝٦٧</p>
+
+*Yine o iyi kullar, harcama yaptıkları zaman ne saçıp savururlar ne de cimrilik ederler; harcamaları bu ikisi arasında mâkul bir dengeye göre olur.* (Furkān, 25/67)
+
+Tavandaki küçük bir leke, yaklaşan bakım ihtiyacını haber verebilir. Biz yalnızca yeni bir süslemeye bakarken o iz büyüyebilir. Furkân sûresi, harcamada dengeyi Rahmân’ın kullarının vasıfları arasında sayar. Bu ölçü bize ortak bütçeyi gerçek ihtiyaçlara göre kullanmayı da düşündürür.
+
+Önce binanın sağlamlığına, temizliğine ve kullanımına bakalım. Bir sızıntının giderilmesi, aydınlatmanın çalışması, geçişin rahatlığı günlük hizmeti doğrudan etkiler. Mevcut olanı korumak için gereken gideri zamanında ayıralım. Sonra imkânımız ölçüsünde güzelleştirelim. Güzel bir cami, bakımı ihmal edilmeyen bir camidir.
+
+Ucuz görünen her teklifin toplam giderini birlikte değerlendirelim. Kullanım ömrü, bakım ihtiyacı ve işin niteliği karara dâhil olsun. Bir cihazın gerektiğinde onarılabilmesi, ileride yeniden alınmasından daha uygun olabilir. Ehil kişilerin açıklamasını dinleyerek karar verelim. İsabetli harcama, dikkatle sorulmuş sorulardan doğar.
+
+Çalışır durumdaki eşyayı değiştirmeden önce ihtiyacı konuşalım. Bağış olarak eşya getirmek isteyen kişi de derneğe danışsın. Kullanılamayacak bir dolap, dar bir hizmet odasında yeni bir yük oluşturabilir. Hayrımızın faydalı olması için önce soralım; uygun malzemeyi uygun zamanda ulaştıralım.
+
+Suya, ısıya ve elektriğe gösterdiğimiz günlük özen de bütçeyi korur. Son çıkan görevli, belirlenmiş kapanış düzenini takip edebilir. Küçük bir arızanın erkenden bildirilmesi büyük bir masrafı önleyebilir. Bu dikkat, cemaate emanet edilen paranın hizmette kalmasına yardım eder.
+
+Camiye harcarken gönlümüz geniş, hesabımız dikkatli olsun. İmkân varken gereken bakımı ertelemeyelim. Her yıl kullanılan mekânın hâlini gözden geçirip öncelikleri yenileyelim. Kâğıttaki bütçe ile binanın gerçek ihtiyacı birbirine yaklaşsın.
+
+İhtiyaç listesini hazırlarken farklı bölümlere de bakalım. Herkesin kullandığı alan aynı ölçüde bakımlı mı? Sesi az duyulan bir ihtiyaç gözden kaçmış olabilir. Yerinde bakmak ve kullanıcıyı dinlemek, bütçenin daha adaletli dağılmasına yardım eder.
+
+Bir işi tamamladığımızda beklenen faydayı sağlayıp sağlamadığını gözden geçirelim. Yapılan harcamadan öğrenmek de emanete hizmettir. Sonraki kararda bu tecrübeyi kullanalım; emek ve para gerçekten işe yarasın.
+
+**Ölçülü harcama, bugünkü ihtiyacı karşılarken yarının emanetini de korur.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hizmetin-ic-yuzu" tabindex="-1">IX. İhlâs: Hayrın içinde gönlü korumak</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تُبْطِلُوا۟ صَدَقَـٰتِكُم بِٱلْمَنِّ وَٱلْأَذَىٰ</p>
+
+*Ey iman edenler! Sadakalarınızı başa kakarak ve inciterek boşa çıkarmayın.* (Bakara, 2/264; âyetten bölüm)
+
+Bir duvarın boyası yenilendiğinde izi hemen görünür. O işin içimizde bıraktığı iz ise daha sessizdir. “Ben yaptım” duygusu büyüyebilir; teşekkür beklemek kalbimizi yorabilir. Bakara sûresindeki uyarı, hayır işledikten sonra da niyetimizi korumaya çağırır. İyiliğin ardından söylenen söz de önemlidir.
+
+<blockquote class="vaaz-alinti">
+<p>“İnsanların hatırı için ameli terketmek riya, onları memnun etmek için amel etmek şirk, bu iki durumdan kurtulmak ihlâstır.”</p>
+<footer>— Fudayl b. İyâz’a nispet edilen söz; et-Taʿrîfât, “el-İḫlâṣ” maddesinden naklen TDV İslâm Ansiklopedisi, “İhlâs”.</footer>
+</blockquote>
+
+Bu söz bizi insanların beğenisinden önce Rabbimizin rızasını aramaya yöneltir. İyiliğe devam edelim; kalbimizin karşılık beklediği yeri fark edelim. Bir teşekkür gönlümüzü sevindirebilir. Hizmetimizi ayakta tutan asıl niyet, Allah’ın kabulünü ummak olsun.
+
+Bağışımızın ardından ortak mekânda kendimize ayrıcalık istemeyelim. Çok para verenin de az verenin de insan olarak hürmeti korunur. Fikirlerimizi ihtiyacın gerekçesiyle savunalım. Caminin bir eşyasına katkı vermiş olmak, orayı kullananların gönlü üzerinde hak sahibi yapmaz. Verdiğimiz hayrı serbest bırakalım.
+
+Öte yandan açık bir hizmet raporu, niyeti korumaya özen göstererek hazırlanabilir. Gelir ve gideri açıklamak emanet sorumluluğudur. Kişileri öne çıkarmadan tamamlanan işi ve kalan ihtiyacı paylaşabiliriz. Bağışçının özel tercihlerini gözetirken cemaatin bilgi almasını da sağlayalım.
+
+Bir anlaşmazlık olduğunda önce meseleyi doğrudan ilgili kişiyle konuşalım. Belgesini görelim, sözünü dinleyelim, çözümü takip edelim. Eksik bilgiyle dolaşıma giren bir mesaj gönülleri yorabilir. Dilimiz hizmeti onarsın. Özür gerektiğinde özür dileyebilmek de niyet terbiyesinin içindedir.
+
+En sessiz vaktimizde kendimize soralım: Kimse adımı anmasa bu hayra yine devam eder miyim? Cevabımızı güzelleştirmek için bugün küçük bir işi Allah için üstlenelim.
+
+Bir hizmet arkadaşımızın adı anıldığında onun adına sevinebilelim. Bizim payımızı Rabbimizin bildiğini hatırlayalım. Ortak işin başarıya ulaşması, kendi ismimizin öne çıkmasından daha büyük bir sevinç olsun. Bu sevinci öğrenmek, gönüllü hizmeti kırgınlıklardan korur.
+
+Bazen de yaptığımız iş istediğimiz gibi sonuçlanmaz. O zaman niyetimizi tazeleyip usulümüzü düzeltelim. Bizi uyaran kardeşimizin sözündeki faydayı arayalım. İhlâs, öğrenmeye açık bir kalple de beslenir. Hayrımızı geliştirecek doğru bilgiyi, kimden gelirse gelsin dinleyelim.
+
+**Hayırlı işimiz, ardından gelen sözümüzle ve hâlis niyetimizle tamamlansın.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="devam-eden-hayir" tabindex="-1">X. Sadaka-i câriye: Bizden sonra da süren fayda</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلاَّ مِنْ ثَلاَثَةٍ إِلاَّ مِنْ صَدَقَةٍ جَارِيَةٍ أَوْ عِلْمٍ يُنْتَفَعُ بِهِ أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ</p>
+
+*İnsan öldüğünde, devam eden sadaka, yararlanılan ilim ve kendisine dua eden hayırlı evlât dışında ameli kesilir.* (Müslim, 1631)
+
+**Aziz anneler ve babalar, sevgili gençler!**
+
+Yıllar önce döşenen taşların üzerinden bugün başka ayaklar geçiyor. O taşı koyan ellerin bir kısmı artık aramızda olmayabilir. Peygamberimizin müjdesi, ömrümüzün sınırlı zamanını aşan bir hayır ümidini kalbimize bırakır. Faydasını sürdüren bir hizmet, insanın ardından da iyiliğe vesile olur.
+
+Sadaka-i câriye, faydası devam eden hayırdır. Caminin kalıcı bir ihtiyacına katkı verirken bu sevabı umarız. Yapılanı koruyan bakım da hayrın kullanılmaya devam etmesine hizmet eder. Sevabın kabulünü Rabbimizden diler, elimizdeki imkânın gerçekten faydalı olmasına çalışırız.
+
+Bir mekânı açmak kadar, onu işler halde bırakmak için de emek gerekir. Kullanım bilgisi kaybolan bir cihaz, anahtarı bulunamayan bir dolap hizmeti aksatabilir. Eşyayı ve kayıtları düzenli teslim etmek, bizden sonra görevi alacak kişiye kolaylık sağlar. Kendi bildiğimizi paylaşarak hayrın devamına yardım ederiz.
+
+Bugün bir görevi birlikte yaptığımız insan, yarın o hizmeti sürdürebilir. Öğretirken sabırlı olalım. Yapılan onarımın bilgisini, gereken bakımın zamanını ve kalan ihtiyacı açıkça bırakalım. Biz ayrıldığımızda işin devam edebilmesi, emaneti iyi taşıdığımızın somut bir işaretidir.
+
+Vefat eden hizmet sahiplerini dua ile analım. Hatıralarına hürmetimizi, bıraktıkları imkânı koruyarak gösterelim. Yeni bir ihtiyaç ortaya çıktığında o hayrı daha faydalı hale getirmenin yolunu arayalım. Yaşayan gönüllülerimize de şimdiden teşekkür edelim; duamızı ve desteğimizi esirgemeyelim.
+
+Bir bakım defterinin son satırına, gelecek görevlinin işini kolaylaştıracak bilgiyi yazdığımızı düşünün. O kişi bizi tanımadan bu kayıttan yararlanabilir. Adımızı bilmediği halde düzgün işleyen bir hizmeti devralır. Bıraktığımız düzen, hayrın devamına böyle katılır.
+
+Kalıcı hayır için ihtiyaç sahibinin istifadesini takip edelim. Kullanılmayan bir imkânın sebebini araştırabilir, bakımını veya kullanım biçimini gözden geçirebiliriz. Eşyanın varlığıyla faydasını birlikte gözetelim. Böylece sadece geçmiş emeğimizi hatırlamakla kalmayız; bugünkü insanın ihtiyacına da ulaşırız.
+
+**Ardımızda bırakacağımız en güzel iz, faydası sürsün diye koruduğumuz hayırdır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta için yedi emanet sözü</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُۥ ۝٧</p>
+
+*Kim zerre miktarı hayır yapmışsa onu, yani karşılığını görür.* (Zilzâl, 99/7)
+
+Cebimizdeki anahtar, takvimimizdeki boş saat, elimizdeki küçük imkân bir iyiliğin başlangıcı olabilir. Bugün duyduğumuz sözü bu hafta yapabileceğimiz bir işe bağlayalım. Her birimiz gücüne uygun bir adımla başlayabilir.
+
+**EMANETİ HAYATIMIZA TAŞIYAN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta caminin bir ihtiyacını soracağım.</strong> Varsaydığım ihtiyacı değil, sorumluların açıkladığı ihtiyacı esas alacağım.</li>
+<li><strong>Bütçeme uygun desteği belirleyeceğim.</strong> Para ayıramıyorsam yapabileceğim bir hizmet için vakit önereceğim.</li>
+<li><strong>Bir ortak alanı düzenli bırakacağım.</strong> Camiye gidemiyorsam evde paylaştığım alanda aynı özeni göstereceğim.</li>
+<li><strong>Bir gönüllüye teşekkür edip yükünü soracağım.</strong> Yapabileceğim bir kısmını üstlenmek için onunla zaman belirleyeceğim.</li>
+<li><strong>Derneğin gelir ve gider açıklamasını okuyacağım.</strong> Açıklama bulamazsam nereden bilgi alabileceğimi saygıyla soracağım.</li>
+<li><strong>Üstlendiğim bir işi zamanında tamamlayacağım.</strong> Aksama ihtimalinde ilgili kişiye önceden haber vereceğim.</li>
+<li><strong>Bir hizmetin devamı için bilgi paylaşacağım.</strong> Bildiğim bir işi öğrenmek isteyen kişiye göstereceğim veya öğrenmek için yardım isteyeceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bir adım seç, zamanını belirle</strong>İmkânına uygun katkını bu hafta somutlaştır.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Gerçek ihtiyacı sor</strong></li>
+<li><span aria-hidden="true">2</span><strong>Katkını imkânına uydur</strong></li>
+<li><span aria-hidden="true">3</span><strong>Kullandığın yeri düzenle</strong></li>
+<li><span aria-hidden="true">4</span><strong>Gönüllünün yükünü paylaş</strong></li>
+<li><span aria-hidden="true">5</span><strong>Hesabı ilgiyle takip et</strong></li>
+<li><span aria-hidden="true">6</span><strong>Sözüne zaman ayır</strong></li>
+<li><span aria-hidden="true">7</span><strong>Bilgiyi paylaşmayı başlat</strong></li>
+</ol>
+</figure>
+
+Telefonumuzun takvimine seçtiğimiz işi yazalım. Yapınca nasıl devam edebileceğimize bakalım. Birbirimize verdiğimiz destek, caminin bakımında ve cemaatin güveninde görünür olsun.
+
+Yedi sözün her biri bir hafta içinde başlayabileceğimiz bir iştir. İçlerinden seçtiğimiz adımın kime fayda sağlayacağını belirleyelim. Bir telefon görüşmesiyle ihtiyacı öğrenebilir, ardından ayıracağımız zamanı kararlaştırabiliriz. İş tamamlandığında ilgili kişiye haber vermek, sorumluluğun yerini bulduğunu gösterir.
+
+Evinde hasta bakan bir kardeşimizin ayırabileceği vakit sınırlı olabilir. O, gönüllü arkadaşını telefonla arayıp teşekkür edebilir. Camiye rahatça gelebilen kişi ise düzenleme işinden bir bölüm üstlenebilir. Hepimiz katkımızı kendi imkânımızla ölçelim. Bir başkasının yaptığını örnek alabilir, kendi adımımızı gücümüze göre belirleyebiliriz.
+
+Hafta sonunda kendimize sakin bir hesap soralım: Neye söz vermiştim, neyi yapabildim? Tamamladığımız iş için şükredelim. Aksayan bir görev varsa haber verip yeni bir zaman belirleyelim. Böylece niyetimiz unutulmuş bir düşünce olarak kalmaz; günlük hayatımızda takip ettiğimiz bir sorumluluğa dönüşür.
+
+**Camiye verdiğimiz her emek, Allah için koruduğumuz bir emanettir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Emeğimizi kabul eyle</h2>
+
+**Kıymetli kardeşlerim, gönlümüzü Rabbimize açalım.**
+
+Kâbe’nin temellerini yükselten Hz. İbrâhim ile Hz. İsmâil’in kabul duasına biz de katılalım. Ellerimizin emeğini ve kalbimizin niyetini Rabbimize arz edelim.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ</p>
+
+*Rabbimiz! Bizden kabul buyur. Şüphesiz sen işitensin, bilensin.* (Bakara, 2/127; âyetten bölüm)
+
+Allah’ım! Camilerimizin yapımına ve bakımına emek verenleri hayırla mükâfatlandır. Temizliğine koşanlara kuvvet, hesabını tutanlara doğruluk, sorumluluk üstlenenlere adalet ihsan eyle. Elimize bırakılan emaneti korumayı bize nasip eyle. Niyetimizi riyadan, dilimizi incitmekten muhafaza buyur.
+
+Rabbimiz! Ailelerimize huzur, çocuklarımıza ve gençlerimize imanla güzelleşen bir ömür ver. Hanımlarımıza, büyüklerimize, engelli kardeşlerimize hayatı kolaylaştıracak imkânlar lütfeyle. Yeni Müslüman olanlara hayırlı dostlar, yeniden başlamak isteyenlere cesaret ihsan eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette iyilik ver. Bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Allah’ım! Hastalarımıza şifa, darda kalanlara ferahlık, borçlulara helâl ödeme imkânı ver. Yorgun gönüllülerimize dinlenme, iş arayanlara hayırlı kapılar nasip eyle. Vefat eden annelerimize, babalarımıza ve bu camilere hizmet etmiş bütün kardeşlerimize rahmet eyle.
+
+Yaşadığımız beldelere esenlik, komşularımıza huzur ihsan eyle. Ortak hayatımızı dürüstlük ve merhametle güzelleştirmeyi bize öğret. Zulme uğrayanlara yardım eyle; bizi hakkı koruyan, ihtiyacı gören kullarından eyle. Hayrımızı bizden sonra da fayda verecek şekilde sürdürmeyi nasip buyur.
+
+Rabbimiz! Hayır için bir araya gelen kalplerimizi birbirine ısındır. Eksiklerimizi görüp tamamlamayı, yorulanın yanında durmayı, emaneti ehline teslim etmeyi bize nasip eyle. Camilerimizi temizliğiyle ferahlık veren, hizmetiyle güven duyulan mekânlar eyle.
+
+**Rabbimiz, emeğimizi kabul, emanetimize sadakatimizi daim eyle.**
+
+Âmin. Hamd, âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler belirtilmiştir. Gündelik Avrupa sahneleri temsilîdir. Hadis lafızları yerel derlemeyle karşılaştırılmıştır. Yönetim önerileri, dinî ilkelerin günümüz cami hizmetine uygulanmasıdır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>İmarın niyeti: <a href="https://quran.com/24/36">Nûr 24/36</a>; <a href="https://sunnah.com/muslim:533b">Müslim 533b</a>.</li>
+<li>Bağışın ölçüsü: <a href="https://quran.com/57/7">Hadîd 57/7</a>.</li>
+<li>Sessiz emeğe vefa: <a href="https://sunnah.com/muslim:956">Müslim 956</a>.</li>
+<li>Temizliğin devamı: <a href="https://sunnah.com/abudawud:455">Ebû Dâvûd 455</a>.</li>
+<li>Açık hesap: <a href="https://quran.com/23/8">Mü’minûn 23/8</a>; <a href="https://sunnah.com/bukhari:1438">Buhârî 1438</a>.</li>
+<li>Birlikte karar: <a href="https://quran.com/42/38">Şûrâ 42/38</a>.</li>
+<li>Paylaşılan emek: <a href="https://sunnah.com/muslim:1009">Müslim 1009</a>.</li>
+<li>İhtiyaca göre harcama: <a href="https://quran.com/25/67">Furkān 25/67</a>.</li>
+<li>Hizmetin iç yüzü: <a href="https://quran.com/2/264">Bakara 2/264</a>.</li>
+<li>Devam eden hayır: <a href="https://sunnah.com/muslim:1631">Müslim 1631</a>.</li>
+<li>Yedi somut söz: <a href="https://quran.com/99/7">Zilzâl 99/7</a>.</li>
+<li>Dua ve niyaz: <a href="https://quran.com/2/127">Bakara 2/127</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>Emanet ahlâkı: <a href="https://islamansiklopedisi.org.tr/emanet">TDV İslâm Ansiklopedisi — Emanet</a>.</li>
+<li>Niyet terbiyesi: <a href="https://islamansiklopedisi.org.tr/ihlas">TDV İslâm Ansiklopedisi — İhlâs</a>.</li>
+<li>Kalıcı hayır: <a href="https://islamansiklopedisi.org.tr/sadaka">TDV İslâm Ansiklopedisi — Sadaka</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

@@ -2,7 +2,7 @@
 baslik: "Sıla-i Rahim: Uzakta da Akraba Kalabilmek"
 ozet: "Ülkeler arasındaki mesafeyi düzenli ilgiyle aşmak, ziyaretin yükünü paylaşmak ve miras anlaşmazlıklarında hakkı korumak: Akrabalık bağlarını yaşatmak için yedi somut söz."
 kategori: aile
-kelime: 3893
+kelime: 3873
 docx: "/vaazlar/akrabalik-iliskileri.docx"
 pdf: "/vaazlar/akrabalik-iliskileri.pdf"
 kapak: "/media/vaazlar/akrabalik-iliskileri/kapak-og.webp"
@@ -221,10 +221,11 @@ Ziyaretten dönerken geride nasıl bir hâl bıraktığımızı yoklayalım. Ev 
 *Sana ne harcayacaklarını soruyorlar. De ki: Harcayacağınız mal, ana baba, yakınlar, öksüzler, yoksullar ve yolcular için olmalıdır. Hayır olarak ne yaparsanız muhakkak ki Allah onu bilir.* (Bakara, 2/215)
 
 <p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">الصَّدَقَةُ عَلَى الْمِسْكِينِ صَدَقَةٌ وَهِيَ عَلَى ذِي الرَّحِمِ ثِنْتَانِ صَدَقَةٌ وَصِلَةٌ</p>
 
 *Yoksula verilen sadaka bir sadakadır; akrabaya verilende ise iki sevap vardır: Sadaka ve akrabalık bağını gözetme.* (Tirmizî, 658; rivayetten bölüm; Tirmizî: hasen)
 
-Bir akrabamızın mutfak masasında ödenmeyi bekleyen faturalar birikmiş olabilir. Derdini herkese anlatmaya çekiniyor olabilir. İhtiyacını özel olarak soralım. Yardımın miktarını gücümüze göre belirleyelim; sürdürmeyeceğimiz bir sözü vermeden önce hesabımızı yapalım. İmkânımız sınırlıysa bir işini takip ederek veya zaman ayırarak da yanında durabiliriz.
+Bir akrabamızın mutfak masasında ödenmeyi bekleyen faturalar birikmiş olabilir. İhtiyacını özel olarak soralım. Yardımın miktarını gücümüze göre belirleyelim; sürdürmeyeceğimiz bir sözü vermeden önce hesabımızı yapalım. İmkânımız sınırlıysa bir işini takip ederek veya zaman ayırarak da yanında durabiliriz.
 
 <p class="vaaz-etiket">Fıkhî Ölçü — Zekât ile diğer yardımların ayrımı</p>
 
@@ -232,11 +233,9 @@ Anne babaya, dede ve nineye, çocuk ve torunlara yapılan destek kendi malımız
 
 (İlmihal, I, Zekât bölümü, s. 491; “Ana, Baba, Eş ve Çocuklar”.)
 
-Verdiğimiz paranın hediye mi, borç mu olduğunu baştan açıklayalım. Borçsa miktarını ve ödeme şartlarını karşılıklı belirleyelim. Yardım ettiğimiz insanın özel bilgilerini ancak kendisinin izniyle ve gerektiği kadar paylaşalım. Kendi kararını vermesine saygı göstererek ihtiyacına destek olalım. İyiliğin yanında insanın onuru da korunsun.
+Verdiğimiz paranın hediye mi, borç mu olduğunu baştan açıklayalım. Borçsa miktarını ve ödeme şartlarını karşılıklı belirleyelim. Yardım ettiğimiz insanın özel bilgilerini ancak kendisinin izniyle ve gerektiği kadar paylaşalım. İyiliğin yanında insanın onuru da korunsun.
 
 **Sıla-i rahim, mesafeyi ilgiyle aşmak ve yakınlarımızın hakkını adaletle korumaktır.**
-
-**Yardımımız, yakınımızın hem ihtiyacına hem onuruna ulaşsın.**
 
 ---
 
