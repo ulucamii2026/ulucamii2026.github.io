@@ -4,6 +4,16 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 3 Ekim 2026 (4) — vaaz revizyonu 4. parti: 12 vaaz + 6 vaazda hadis Arapçası
+
+- Zaman: 3 Ekim 2026 ≈ 09:38 (push) – 09:42 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Yöntem 1. parti kaydıyla aynı. Codex modeli 08:49'dan beri kullanıcı kararıyla `gpt-6.1-sol`, efor high, Fast (`service_tier="priority"`); bu partinin metinleri çoğunlukla `gpt-6-astra`/xhigh ile yazıldı (`durustluk-en-buyuk-fazilettir` son turunu yeni modelle tamamladı), çizimlerin 10'u yeni modelle yapıldı.
+- Kapsam (yeni, 12): `anne-ve-baba-hakki`, `bakara-suresi-177-ayet-baglaminda-iyilik-nedir`, `batil-inanc-ve-hurafelerden-sakinma`, `berat-kandili-ve-tevbe`, `camilerin-maddi-ve-manevi-imari`, `camilerin-maddi-ve-manevi-imari-2`, `camilerin-maddi-ve-manevi-imari-3`, `cennete-giden-yollar-salih-ameller`, `cocuklarimizi-severek-ve-egiterek-buyutelim`, `dil-kultur-ve-kimlik`, `dinin-diregi-namaz`, `durustluk-en-buyuk-fazilettir`. Her biri 13 bölüm, 14 sayfalık Word/PDF, 2–3 SVG çizim + paylaşım kartı.
+- Kapsam (düzeltme, 6): daha önce yayımlanan vaazlarda doğrudan alıntı yapılan 8 hadisin boş kalan Arapça lafzı yerel hadis derlemesinden birebir eklendi (`dogrula.py` artık Arapçasız hadisi uyarı olarak gösteriyor): `adab-i-muaseret-gorgu-kurallari` (Tirmizî 2002), `adab-ve-erkaniyla-cuma-namazi` (Müslim 865, Buhârî 935, Müslim 233c; 14 sayfaya sığması için s.11–12'den iki paragraf ve iki cümle çıkarıldı), `ahlak-ve-istikamet-dogruluk-ve-durustluk` (Buhârî 2079), `aile-en-guvenli-yuvamiz-2` (Müslim 1437a), `aile-insanin-dunyadaki-cenneti` (Tirmizî 3895), `akrabalik-iliskileri` (Tirmizî 658; s.8'den iki cümle ve tekrar eden kapanış cümlesi çıkarıldı). Anlam özeti verilen rivayetler Arapçasız kaldı (doğrudan alıntı değil).
+- İçerik commit'i `d963bdb` (push `53dfa90..d963bdb`). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37106967156> — **success** (09:40:43).
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1902 sayfa; Playwright `tests/web/vaazlar.spec.mjs` 6/6; `dist`'te din görevlisi telefonu 0.
+- Canlı doğrulama: 18 sayfa 200, her birinde 13 bölüm başlığı, og `kapak-og.webp`, din görevlisi telefonu 0; 36 indirme SHA-256 yerel kopyayla eşit; 68 medya dosyası 200 ve içerik eşit; cuma sayfasında eklenen Arapça lafız canlıda görünüyor. Ayrıntı: `D:/vaaz-revizyon/rapor/canli-parti4.txt`.
+- Açık sınırlar: toplam 33/146 vaaz yenilendi; kalanlar sonraki partilerde.
+
 ## 3 Ekim 2026 (3) — vaaz revizyonu 3. parti: 6 vaaz
 
 - Zaman: 3 Ekim 2026 ≈ 08:45 (kullanıcının «3. partiyi yayınla» talimatı) – 09:05 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Yöntem 1. parti kaydıyla aynı; bu altı vaaz `gpt-6-astra`/xhigh ile yazıldı ve çizildi (Codex modeli 08:49'da kullanıcı kararıyla `gpt-6.1-sol`, high, Fast katmanına geçti; bu partiye etkisi yok).
