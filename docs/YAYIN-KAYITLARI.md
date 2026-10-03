@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 3 Ekim 2026 (3) — vaaz revizyonu 3. parti: 6 vaaz
+
+- Zaman: 3 Ekim 2026 ≈ 08:45 (kullanıcının «3. partiyi yayınla» talimatı) – 09:05 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Yöntem 1. parti kaydıyla aynı; bu altı vaaz `gpt-6-astra`/xhigh ile yazıldı ve çizildi (Codex modeli 08:49'da kullanıcı kararıyla `gpt-6.1-sol`, high, Fast katmanına geçti; bu partiye etkisi yok).
+- Kapsam: `aile-en-guvenli-yuvamiz` («Evimiz Bir Sığınak Olsun: Canı ve Gönlü Korumak»), `aileyi-ayakta-tutan-degerler` («Zor Günlerde Aile: Sabır, Şükür ve Geçim Ahlakı»), `akrabalik-iliskileri` («Sıla-i Rahim: Uzakta da Akraba Kalabilmek»), `allah-in-rizasi-anne-babanin-rizasindadir` («Anne Baba Rızası: İyilikte İtaat, İnançta Sadakat»), `allah-yolunda-malla-ve-canla-mucadele` («Allah Yolunda Gayret: Malımızla, Vaktimizle, Bütün Varlığımızla»), `anne-baba-cennetin-iki-kapisi` («Anne Babamız Yaşlanırken: Bakımda Sabır, Ayrılıkta Vefa»). Kardeş vaazlarla ortak kıssa/hadisler hedefli yeniden yazımla ayrıştırıldı (Ebû Talha → akrabalık; Hz. Ömer'in Hayber vakfı → Allah yolunda; Esmâ hadisi → anne baba rızası; aile vaazında Ebû Dâvûd 4843, Arapçası sunnah.com'dan doğrulanarak eklendi). Her biri 13 bölüm, 14 sayfalık Word/PDF, 3 SVG çizim + paylaşım kartı.
+- İçerik commit'i `b8bad67` (push `1f48aee..b8bad67`; push öncesi `git fetch`, deponun otomatik bakımı (repack) bitene kadar beklediği için sonlandırıldı, push bakım kapalı yapıldı). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37104874657> — **success** (09:02:55).
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1902 sayfa; Playwright `tests/web/vaazlar.spec.mjs` 6/6; `dist`'te din görevlisi telefonu 0.
+- Canlı doğrulama: 6 sayfa 200, her birinde 13 bölüm başlığı, og `kapak-og.webp`, din görevlisi telefonu 0; 12 indirme SHA-256 yerel kopyayla eşit; 24 medya dosyası 200 ve içerik eşit. Ayrıntı: `D:/vaaz-revizyon/rapor/canli-parti3.txt`.
+- Açık sınırlar: toplam 21/146 vaaz yayında; kalanlar sonraki partilerde.
+
 ## 3 Ekim 2026 (2) — vaaz revizyonu 2. parti: 4 vaaz
 
 - Zaman: 3 Ekim 2026 ≈ 05:45 (push) – 05:48 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Dayanak ve yöntem: aşağıdaki 1. parti kaydıyla aynı (Codex yazar/çizer, Claude editör; `D:/vaaz-revizyon/`).
