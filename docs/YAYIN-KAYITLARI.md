@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 3 Ekim 2026 (2) — vaaz revizyonu 2. parti: 4 vaaz
+
+- Zaman: 3 Ekim 2026 ≈ 05:45 (push) – 05:48 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Dayanak ve yöntem: aşağıdaki 1. parti kaydıyla aynı (Codex yazar/çizer, Claude editör; `D:/vaaz-revizyon/`).
+- Kapsam: `ahirete-iman` («Âhiretin Durakları: Son Nefesten Ebedî Hayata»), `aile-en-guvenli-yuvamiz-2` («Ailede Sözün Emaneti: Dinlemek, Danışmak, Anlaşmak»), `aile-insanin-dunyadaki-cenneti` («Nikâhın Emaneti: Eş Olmak, Sevmek ve Vefa Göstermek»), `aile-toplumun-temeli` («Aileden Topluma: Nesilleri Birlikte Gözetmek»). Aile kümesi vaazları ortak delil denetiminden sonra ayrı açılara yeniden yazıldı. Her biri 13 bölüm, 14 sayfalık Word/PDF, 3 SVG çizim + paylaşım kartı. Şablon değişikliği yok.
+- İçerik commit'i `7be2904` (push `fefd490..7be2904`). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37094212732> — **success** (05:46:56).
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1902 sayfa; Playwright `tests/web/vaazlar.spec.mjs` 6/6; `dist`'te din görevlisi telefonu 0.
+- Canlı doğrulama: 4 sayfa 200, her birinde 13 bölüm başlığı, og `kapak-og.webp`, din görevlisi telefonu 0; 8 indirme SHA-256 yerel kopyayla eşit; 16 medya dosyası 200 ve içerik eşit. Ayrıntı: `D:/vaaz-revizyon/rapor/canli-parti2.txt`.
+- Açık sınırlar: 05:38'de Claude Code, makinede bellek kritik düzeye düştüğü için yazım ve çizim kuyruklarını durdurdu; kuyruklar kullanıcı onayıyla daha düşük eşzamanlılıkla yeniden başlatılacak. Kalan vaazlar sonraki partilerde.
+
 ## 3 Ekim 2026 — vaaz revizyonu 1. parti: 11 vaaz v4 standardında yenilendi
 
 - Zaman: 3 Ekim 2026 ≈ 05:20 (push) – 05:24 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «web sitemizde yayınladığımız bütün vaazları codex cli kullanarak revize et … kontrol ve yetki sende … full otonom ilerle» hedefi ve «son haftalarda yayınlanan vaazlardan daha da kaliteli» isteği; bu oturum yayın oturumu olarak yürütülüyor.
