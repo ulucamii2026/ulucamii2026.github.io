@@ -1,217 +1,479 @@
 ---
-baslik: "Ahiret İnancı"
-ozet: "Dünya hayatı için ilk, ölümden sonraki hayat için ise ahiret-son hayat denilmiştir. Her ikisi arasında sıkı bir ilişki vardır. Ahiret dünya hayatını takip eden, ama…"
+baslik: "Âhiret İnancı: Bugünün Hakkı, Ebediyetin Ümidi"
+ozet: "Ölümün ötesindeki hayata inanmak, bugünü nasıl değiştirir? Diriliş ümidiyle kul hakkını, aileyi ve emeği gözetmek; muhasebeyi tövbeye ve yedi somut adıma dönüştürmek."
 kategori: iman
-kelime: 2808
+kelime: 3844
 docx: "/vaazlar/ahiret-inanci.docx"
 pdf: "/vaazlar/ahiret-inanci.pdf"
+kapak: "/media/vaazlar/ahiret-inanci/kapak-og.webp"
+kapakAlt: "Krem renkli sade bir kapıdan, yağmur sonrası aydınlanan taş yola düşen sabah ışığı."
 ---
-## Ahiret Nedir?
 
-Dünya hayatı için ilk, ölümden sonraki hayat için ise ahiret-son hayat denilmiştir. Her ikisi arasında sıkı bir ilişki vardır. Ahiret dünya hayatını takip eden, ama ölümsüz bir hayatın adıdır. Ahiret hayatının iyi veya kötü temelleri dünyada iken atılır.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/ahiret-inanci/kapak.svg" width="1600" height="900" alt="Krem renkli sade bir kapıdan, yağmur sonrası aydınlanan taş yola düşen sabah ışığı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Bugünün ışığı, yarının ümidi</strong> Açık bir kapı, yürünecek yolu ve bugünkü sorumluluğumuzu hatırlatır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">زَعَمَ الَّذِينَ كَفَرُوا أَن لَّن يُبْعَثُوا قُلْ بَلَى وَرَبِّي لَتُبْعَثُنَّ ثُمَّ لَتُنَبَّؤُنَّ بِمَا عَمِلْتُمْ وَذَلِكَ عَلَى اللَّهِ يَسِيرٌ:</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#dirilis">Diriliş ve iman</a></li>
+<li><a href="#guzel-amel">Ömrün hakkını vermek</a></li>
+<li><a href="#adalet">Zerre ve adalet</a></li>
+<li><a href="#kul-hakki">Kul hakkı ve telâfi</a></li>
+<li><a href="#rahmet">Rahmete güvenmek</a></li>
+<li><a href="#gurbet">İş ve komşuluk</a></li>
+<li><a href="#aile">Aile ve kalbiselim</a></li>
+<li><a href="#genclik">Ekran ve muhasebe</a></li>
+<li><a href="#vefa">Ölüm ve kalıcı iyilik</a></li>
+<li><a href="#tovbe">Tövbe ve ebedî ümit</a></li>
+<li><a href="#yedi-soz">Hayata taşıyacağımız yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat niyazı</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Bugün elimizde duran emanet</h2>
 
-“İnkâr edenler, öldükten sonra tekrar dirilmeyeceklerini ileri sürerler. De ki: “Hayır! (Zannettiğiniz gibi değil.) Rabbime and olsun ki, siz, mutlaka diriltileceksiniz, sonra yaptıklarınız size haber verilecektir. Bu ise Allah’a göre kolaydır.” (Tegabün Suresi - 7.)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُواْ آمِنُواْ بِاللّهِ وَرَسُولِهِ وَالْكِتَابِ الَّذِي نَزَّلَ عَلَى رَسُولِهِ وَالْكِتَابِ الَّذِيَ أَنزَلَ مِن قَبْلُ وَمَن يَكْفُرْبِاللّهِ وَمَلاَئِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الآخِرِ فَقَدْ ضَلَّ ضَلاَلاً بَعِيداً:</p>
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-“Ey iman edenler! Allah’a, Peygamber’ine, peygamberine indirdiği kitaba ve daha önce indirdiği kitaba iman edin. Kim Allah’ı, meleklerini, kitaplarını, peygamberlerini ve ahiret gününü inkâr ederse, derin bir sapıklığa düşmüş olur.” (Nisa Suresi - 136.)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-## Ölümün Yaratılış Amacı
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-Allah, hayatı ve ölümü belirli bir amaçla yaratmış, insanlara doğruyu ve yanlışı öğreten hak kitaplar indirerek bu amacı onlara bildirmiştir.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-<p lang="ar" dir="rtl" class="ayet">الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا وَهُوَ الْعَزِيزُ الْغَفُورُ</p>
+*Mûsâ, “Rabbim! Gönlüme ferahlık ver. İşimi kolaylaştır. Dilimdeki düğümü çöz ki sözümü anlasınlar” dedi.* (Tâhâ, 20/25–28)
 
-O ki, hanginizin daha güzel davranacağını sınamak için ölümü ve hayatı yaratmıştır. O, mutlak galiptir, çok bağışlayıcıdır. (Mülk, 67/2)
+**Aziz cemaat! Ömrünün her çağında Rabbine yönelen kıymetli kardeşlerim!**
 
-Bu amacın özü insanın her şeyden önce kendisini yaratan Rabbini gereği gibi tanıyıp takdir edebilmesi, O’nun emirlerini ve koymuş olduğu yasakları titizlikle koruması, dünya hayatının geçici ve sahte bir süsten ibaret olduğunu fark edebilmesi, hayatını ahireti hedef alarak düzenlemesidir.
+Akşam sofrasında boş kalan bir sandalye, bazen bize uzun bir konuşmadan fazlasını söyler. Bir yakınımızı hatırlarız. Onun sesi, eli, bize öğrettiği dua gönlümüzde canlanır. Sonra kendi günümüze bakarız: Bugün kime iyilik ettik, kimin yükünü hafiflettik?
 
-Hayatını, ahireti esas alarak düzenleyen bir insan aslında dünyada da olabilecek en güzel, rahat ve huzurlu hayatı sürdürecektir. Çünkü kendi yaradılışına en uygun olan hayat tarzı Kur’an’da bildirilmiştir. Kişi Kur’an’a tam olarak uymakla, bir anlamda dünyayı cennet benzeri bir mekân haline getirmiş olacaktır.
+Âhirete iman, kayıplarımızın ve emeklerimizin karşısına Allah’ın vaadini koyar. Rabbimiz bizi bilir; önümüzde O’na dönüş vardır. Bu inanç, kalbimize ümit verirken elimizdeki hayatı da kıymetli kılar. **Âhirete iman, bugünün hakkını vererek Allah’a kavuşmaya hazırlanmaktır.**
 
-Allah (c.c) Kur'an-ı Kerim’de, âhirete iman konusunun çerçevesini çizdiği gibi konunun detaylarını da belirlemiş, safhalarını, merhalelerini en ayrıntılı bir şekilde izah etmiştir. Allah Resûlü de âhirete imanı inanılması zorunlu esaslardan birisi olarak öğretmiştir. Cebrail’in (as), “İman nedir?” sorusuna şu cevabı vermiştir:
+Bugün dirilişi, hesabı ve rahmeti birlikte konuşacağız. Fabrikadaki emeğimizin, evdeki sözümüzün, telefondaki tercihimizin bu inançla bağını arayacağız. Her birimiz bu kapıdan, yapabileceği bir iyiliğin kararını alarak çıksın.
 
-<p lang="ar" dir="rtl" class="ayet">حَدَّثَنَا وَكِيعٌ حَدَّثَنَا كَهْمَسٌ عَنِ ابْنِ بُرَيْدَةَ عَنْ يَحْيَى بْنِ يَعْمَرَ عَنِ ابْنِ عُمَرَأَنَّ جِبْرِيلَ عَلَيْهِ السَّلَام قَالَ لِلنَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مَا الْإِيمَانُ قَالَ أَنْ تُؤْمِنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَبِالْقَدَرِ خَيْرِهِ وَشَرِّهِ فَقَالَ لَهُ جِبْرِيلُ عَلَيْهِ السَّلَام صَدَقْتَ قَالَ فَتَعَجَّبْنَا مِنْهُ يَسْأَلُهُ وَيُصَدِّقُهُ قَالَ فَقَالَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ذَاكَ جِبْرِيلُ أَتَاكُمْ يُعَلِّمُكُمْ مَعَالِمَ دِينِكُمْ</p>
+**Bugün bize verilen ömür, iyiliğe başlayabileceğimiz bir imkândır.**
 
-“İman; Allah’a, meleklerine, kitaplarına, peygamberlerine, âhiret gününe hayır ve şerriyle kadere inanmaktır.” (İbn Hanbel, I, 28; Buhârî, Îmân, 37,)
+---
 
-Kısaca âhirete iman, mümin olmanın temel şartlarından birisidir. Kur’an-ı Kerim’de müttakî kullardan bahsedilirken,
+<h2 class="vaaz-bolum-baslik" id="dirilis" tabindex="-1">I. Diriliş: Rabbimizin vaadine güvenmek</h2>
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذ۪ينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُق۪يمُونَ الصَّلٰوةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَۙ ﴿3﴾ وَالَّذ۪ينَ يُؤْمِنُونَ بِمَٓا اُنْزِلَ اِلَيْكَ وَمَٓا اُنْزِلَ مِنْ قَبْلِكَۚ وَبِالْاٰخِرَةِ هُمْ يُوقِنُونَۜ</p>
+Toprağa düşen tohumu avucunda tutan çocuk sorar: Bu küçücük şey nasıl büyüyecek? Yaratılışa dikkatle bakmak, bizi kudret sahibi Rabbimize yöneltir. Âhirete dair kesin haberimizi ise O’nun vahyinden alırız.
 
-“Onlar gayba inanırlar, namazı dosdoğru kılarlar, kendilerine verdiğimiz mallardan Allah yolunda harcarlar. Yine onlar, sana indirilene ve senden önce indirilene iman ederler; âhiret gününe de kesinlikle inanırlar.” (Bakara, 2/3-4.) buyrularak âhirete iman, takva sahibi mümin olabilmenin özelliklerinden sayılmaktadır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">زَعَمَ ٱلَّذِينَ كَفَرُوٓا۟ أَن لَّن يُبْعَثُوا۟ ۚ قُلْ بَلَىٰ وَرَبِّى لَتُبْعَثُنَّ ثُمَّ لَتُنَبَّؤُنَّ بِمَا عَمِلْتُمْ ۚ وَذَٰلِكَ عَلَى ٱللَّهِ يَسِيرٌ ۝٧</p>
 
-Ayrıca müminlerden bahsedilirken de,
+*İnkâr edenler asla diriltilmeyeceklerini ileri sürdüler. De ki: Hayır! Rabbime andolsun, mutlaka diriltileceksiniz; sonra yaptıklarınız size bildirilecektir. Bu, Allah için kolaydır.* (Tegābün, 64/7)
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذ۪ينَ يُق۪يمُونَ الصَّلٰوةَ وَيُؤْتُونَ الزَّكٰوةَ وَهُمْ بِالْاٰخِرَةِ هُمْ يُوقِنُونَۜ</p>
+Âhiret, dünya hayatından sonraki ebedî hayattır. Ölümün ardından berzah, yeniden diriliş ve hesap vardır. Cennet ve cehennem, Allah’ın bildirdiği gerçeklerdir. İnsan Rabbiyle buluşacak; dünyada seçtiği yolun karşılığını görecektir. Bu inanç, hayatımızın bütününe yön verir.
 
-“Onlar, namazı dosdoğru kılan, zekâtı veren kimselerdir. Onlar âhirete de kesin olarak inanırlar.” (Lokmân, 31/4.) buyrularak âhirete iman vurgusu yapılmaktadır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَنْ تُؤْمِنَ بِاللَّهِ وَمَلاَئِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الآخِرِ وَتُؤْمِنَ بِالْقَدَرِ خَيْرِهِ وَشَرِّهِ</p>
 
-Ahirete iman ile Allah’a iman arasında doğrudan ve son derece güçlü bir bağ bulunmaktadır. Kişinin ahireti inkâr etmesi onu var eden ve varlığı konusunda da insanlığı bilgilendiren Allah’ı da inkâr etmesi anlamına gelir.
+*İman; Allah’a, meleklerine, kitaplarına, peygamberlerine, âhiret gününe ve hayrıyla şerriyle kadere inanmaktır.* (Müslim, 8a; Cibrîl hadisinden bölüm)
 
-İslâm akaidinin temel esaslarından biri olan âhirete iman, mutlak adaletin tecelli edeceğine imanın da bir gereğidir.
+Efendimiz (s.a.s.) âhireti imanın esasları arasında öğretiyor. Namazda yöneldiğimiz Rab, sonunda huzuruna döneceğimiz Rabbimizdir. O’na bağlılığımız, bugünkü davranışımızla yarınki hesabımız arasına bir köprü kurar. Ölümden sonraki hayatı konuşurken önümüzde yaşayan insanı da görürüz.
 
-Çünkü Peygamber Efendimizin ifadesiyle;
+Çocuğumuz ölüm hakkında soru sorduğunda onu dikkatle dinleyelim. Bildiğimiz kadarını, yaşına uygun ve güven veren sözlerle anlatalım. Bilmediğimiz ayrıntıyı güvenilir kaynaklardan öğrenelim. Gayba dair bilgimiz Kur’an ve sahih sünnetin rehberliğinde ilerlesin. Ekrandaki ürkütücü bir anlatı yerine, Rabbimizin vaadini birlikte okuyalım.
 
-<p lang="ar" dir="rtl" class="ayet">أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ « لَتُؤَدَّنَّ الْحُقُوقُ إِلَى أَهْلِهَا حَتَّى يُقَادَ لِلشَّاةِ الْجَلْحَاءِ مِنَ الشَّاةِ الْقَرْنَاءِ »</p>
+Berzah, ölümle yeniden diriliş arasındaki dönemdir. Âhiret inancı, insanın yeniden diriltilmesini ve Allah’ın huzurunda toplanmasını kapsar. Haber verilen bu gerçeklere inanır, ayrıntılarda vahyin rehberliğini izleriz.
 
-“Kıyamet gününde tüm haklar sahiplerine verilecektir. Hatta boynuzsuz koyunun boynuzlu koyundan hakkı alınacaktır.” (Tirmizî, Sıfatü’l-kıyâme, 2.)
+**Bizi yaratan Rabbimiz yeniden diriltecek; hayatımız O’nun huzurunda anlamını bulacaktır.**
 
-İnsanda adalet duygusu fıtrîdir. Dünyanın hiçbir yerinde tarihin hiçbir döneminde adaletin sürekli olarak tecelli edip, hâkim olduğunu söylemek mümkün değildir. Hayatı boyunca birçok haksızlığa muhatap olan insan, hakkını tam olarak alabileceği bir zamanın özlemini çeker, hasretini duyar. İyi ile kötünün, zalim ile mazlumun, haklı ile haksızın tam olarak ayrılacağı bir günün, zamanın gelmesini ister.
+---
 
-Dünya hayatında zorluklarla, zorbalıklarla, haksızlıklarla ve sıkıntılarla mücadele ettiği hâlde insanın bunları her zaman ortadan kaldıramadığı, acıların ve ıstırapların pençesinde kıvrandığı bilinen bir gerçektir. Böylesine bir gerçekliğin şekillendirdiği dünya hayatında iyilik ve kötülüklerin karşılığının tam manasıyla görüleceği, bunu engelleyecek hiçbir perdenin olmayacağı sonsuz bir yaşamın varlığına inanmak, insan için büyük bir ümit kaynağıdır. Yüce Allah’ın yoktan var ettiği, kendi ruhundan üflediği, yeryüzünde halife kıldığı ve tüm meleklerden ona secde etmelerini istediği insanın yok olmayıp Ona dönmesi, insanın yaratılmasındaki hikmetin gereğidir. Yaratılışındaki bu hikmeti unutmayan, insan olma şuurunu yitirmeyen bir kişinin, ruhunu âdil bir yargılama ve eksiksiz bir karşılık göreceği duygusundan başka hiçbir şey tam mânâsıyla tatmin edemez.
+<h2 class="vaaz-bolum-baslik" id="guzel-amel" tabindex="-1">II. Ömrün değeri: Daha güzel amel</h2>
 
-Yaratılış gayesini unutmayan, âhiret hayatının varlığına ve ilâhî adalete inanan mümin bu ulvî duygunun benliğinde oluşturduğu heyecanla hayatına yön verir ve salih amellere yönelir. Buna karşılık Allah’ın takdir edeceği mükâfat, bir kudsî hadiste şu şekilde ifade edilir:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ٱلَّذِى خَلَقَ ٱلْمَوْتَ وَٱلْحَيَوٰةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْغَفُورُ ۝٢</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ « قَالَ اللَّهُ عَزَّ وَجَلَّ أَعْدَدْتُ لِعِبَادِىَ الصَّالِحِينَ مَا لاَ عَيْنٌ رَأَتْ وَلاَ أُذُنٌ سَمِعَتْ وَلاَ خَطَرَ عَلَى قَلْبِ بَشَرٍ</p>
+*Hanginizin daha güzel işler yapacağını sınamak için ölümü ve hayatı yaratan O’dur. O, mutlak güç sahibidir, çok bağışlayıcıdır.* (Mülk, 67/2)
 
-“Ben, salih kullarıma hiçbir gözün görmediği, hiçbir kulağın işitmediği ve hiç kimsenin hayal bile edemeyeceği nimetler hazırladım.” (Müslim, Cennet, 2.)
+Sabah alarmı çalar. Gün, yapılacak işlerle önümüze açılır. Âyet, bu koşuşturmanın ortasında bize bir ölçü verir: Daha güzel amel. Bir işin değerini niyetimiz, doğruluğu ve yapılışındaki özen birlikte belirler. Yalnız ne kadar yetiştirdiğimize değil, nasıl davrandığımıza da bakalım.
 
-Öte yandan insanlar dünya hayatında sağlık, servet, zekâ, kabiliyet ve hayat standartları açısından eşit değildir. Kimi açlık ve yoksulluk içerisinde kendisine takdir edilen hayatı yaşarken, kimi zevk ve safa içerisinde bir hayat sürebilmektedir. Kimisi sağlıklı bir yaşam sürerken diğeri bin bir hastalığın pençesinde boğuşabilmekte veya doğuştan ya da sonradan meydana gelen sebeplerden dolayı engelli olarak hayatını idame ettirmektedir. Dünya hayatında farklı sıkıntılar çeken insanların ilâhî adaleti göreceği ikinci bir hayat olmalıdır. Bu düşünce âhiret fikrini ve âhirete imanı besleyen etkenlerden birisidir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">كُنْ فِي الدُّنْيَا كَأَنَّكَ غَرِيبٌ، أَوْ عَابِرُ سَبِيلٍ</p>
 
-Kâinattaki her şeyin emrine verildiği insan, elbette diğer insanlara ve Yaratan’ına karşı sorumluluklar taşımaktadır. Âhirete iman insanın bu sorumluluk duygusu ve şuuru içerisinde hareket etmesini ve ebedî hayatta mutlu olabilmek için çalışmasını gerektirmektedir. Âhirete iman eden kişi, dünya hayatını bu şuur düzleminde sürdürmekte, sonsuz mutluluğun kapısını aralamanın gayretini göstermektedir. Allah Resûlü, inanan insanın dünyada takınması gereken bu tavrı şu tanımlama ile ortaya koymaktadır:
+*Dünyada bir yabancı yahut bir yolcu gibi ol.* (Buhârî, 6416; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ « الْكَيِّسُ مَنْ دَانَ نَفْسَهُ وَعَمِلَ لِمَا بَعْدَ الْمَوْتِ وَالْعَاجِزُ مَنْ أَتْبَعَ نَفْسَهُ هَوَاهَا وَتَمَنَّى عَلَى اللَّهِ »</p>
+Yolcu, yanına ne alacağını seçer; kendisine emanet edileni korur. Biz de çalışır, aile kurar, yaşadığımız çevreyi güzelleştiririz. Yolculuk bilinci, bu işleri ebedî hedefimizle buluşturur. Belçika’da doğan gencimiz de yıllar önce buraya gelen büyüğümüz de aynı dünya yolculuğundadır. Yaşadığımız yere karşı sorumluluğumuz sürer.
 
-“Akıllı kişi kendisini hesaba çeken ve ölümden sonrası için çalışandır. Âciz kişi ise arzularına uyup bir de Allah'tan (bağışlanma) umandır” (Tirmizî, Sıfatü’l-kıyâme, 25)
+<blockquote class="vaaz-alinti">
+<p>Sağlığından hastalığın için, hayatından ölümün için azık al.</p>
+<footer>— Abdullah b. Ömer’in sözü; Buhârî, 6416’nın son bölümü, anlam aktarımı.</footer>
+</blockquote>
 
-Çünkü
+Bu öğüt, elimizdeki imkânı zamanında değerlendirmeye çağırır. Sağlığımız yerindeyken bir hastaya destek olabiliriz. Öğrenme fırsatımız varken namazımızı ve dinimizin temel bilgilerini geliştirebiliriz. Sonra yaparım dediğimiz bir iyiliği bugün başlatabiliriz. Vaktin kıymeti, böyle bir tercihte görünür.
 
-<p lang="ar" dir="rtl" class="ayet">. عَنِ النَّبِىِّ صلى الله عليه وسلم قَالَ « لاَ تَزُولُ قَدَمَا ابْنِ آدَمَ يَوْمَ الْقِيَامَةِ مِنْ عِنْدِ رَبِّهِ حَتَّى يُسْأَلَ عَنْ خَمْسٍ عَنْ عُمْرِهِ</p>
+Hastalıkla veya engelle yaşayan kardeşimizin imkânı farklıdır. Onun duası, sabrı, paylaşabildiği bilgi ve sevgisi kıymetlidir. Birbirimizin şartını gözetelim. Güzel ameli yalnız bedenen güçlü olanların yapabildiği işlerle ölçmeyelim; herkesin katkısına yer açalım.
 
-<p lang="ar" dir="rtl" class="ayet">فِيمَا أَفْنَاهُ وَعَنْ شَبَابِهِ فِيمَا أَبْلاَهُ وَمَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَ أَنْفَقَهُ وَمَاذَا عَمِلَ فِيمَا عَلِمَ » .</p>
+Bir yolcu konakladığı yeri temiz bırakır. Biz de bu dünyadan geçerken evimize, sokağımıza ve ortak hayatımıza iyilik katmayı görev bilelim.
 
-“İnsanoğlu kıyamet günü beş şeyden; ömrünü nerede ve nasıl tükettiğinden, gençliğini nerede ve nasıl geçirdiğinden, malını nerden kazanıp nerede harcadığından, öğrendiği bilgilerle yaşayıp yaşamadığından hesaba çekilmedikçe hiçbir tarafa hareket edemeyecek, yerinden kımıldayamayacaktır.” (Tirmizî, Sıfatü’l-kıyâme, 1)
+Akşam olunca günümüzden bir davranış seçelim. Hangi niyetle yaptık, kimi etkiledi, daha güzelini nasıl yapabiliriz? Bu sorular, ömrümüzü özenle kullanmaya yardım eder. **Âhirete hazırlık, bugünkü imkânımızı güzel amele çevirmekle başlar.**
 
-Allah Resûlü'ne
+---
 
-<p lang="ar" dir="rtl" class="ayet">, قَالَ فَأَىُّ الْمُؤْمِنِينَ أَكْيَسُ قَالَ : « أَكْثَرُهُمْ لِلْمَوْتِ ذِكْرًا وَأَحْسَنُهُمْ لِمَا بَعْدَهُ اسْتِعْدَادًا أُولَئِكَ الأَكْيَاسُ</p>
+<h2 class="vaaz-bolum-baslik" id="adalet" tabindex="-1">III. Adalet: Hiçbir iyilik kaybolmaz</h2>
 
-Müminlerin en akıllısı (şuurlusu) kimdir? diye sorulduğunda o, “Ölümü en çok hatırlayan ve ölümden sonraki hayatı için en güzel şekilde hazırlanan kimsedir.” (İbn Mâce, Zühd, 31) diye cevap vermiştir. Âhirete imanı içtenlikle benimseyen mümin, “yaptığı hiçbir iyiliğin mükâfatsız kalmayacağını hem dünyada hem de âhirette karşılığının tam olarak verileceğini” bilir. Diğer taraftan âhirete inanan kişi, ebedî hayatta kendisinin tek yoldaşının ameli yani dünyada yapıp ettikleri olduğunu idrak eder. Çünkü Allah Resûlü,
+**Muhterem Müslümanlar! Hakkı gecikenlerin ümidi de Rabbimizin adaletindedir.**
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم « يَتْبَعُ الْمَيِّتَ ثَلاَثَةٌ أَهْلُهُ وَمَالُهُ وَعَمَلُهُ فَيَرْجِعُ اثْنَانِ أَهْلُهُ وَمَالُهُ وَيَبْقَى وَاحِدٌ عَمَلُهُ » .</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُۥ ۝٧ وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُۥ ۝٨</p>
 
-“Ölü ile beraber kabre kadar üç şey gider: Ailesi, malı ve amelleri. Bunlardan ikisi yani ailesi ve malı geri döner üçüncüsü olan ameli kendisiyle baş başa kalır.” (Nesâî, Cenâiz, 52.) buyurmaktadır.
+*Kim zerre miktarı hayır yapmışsa onun karşılığını görür. Kim zerre miktarı kötülük yapmışsa onun karşılığını görür.* (Zilzâl, 99/7–8)
 
-Ümmetinin âhirette yoldaşsız ve rehbersiz kalıp mutluluğu tadamayacak olma ihtimalini Allah Resûlü düşünmüş, bir kabrin kenarında oturmuş, gözyaşı dökmüş ve arkadaşlarına, “Kardeşlerim! Ölüm için hazırlık yapın.” buyurmuştur.
+Bir işçinin elinde ödenmemiş ücretini gösteren kâğıt durur. Emeğini anlatır; sesini duyurmakta zorlanır. Âhirete iman, bu insana hakkının Allah katında kaybolmayacağını hatırlatır. Bize de yanında durma sorumluluğu yükler. Haksızlığın giderilmesi için bugün elimizden geleni yaparız.
 
-Dünyada âhiretin ebedî mutluluğunu ve sonsuz nimetlerini düşünerek Yaratan’ının gösterdiği doğrultuda hareket eden mümin, hiç şüphesiz âhirette cennetle mükâfatlandırılacaktır. Bu minvalde Allah Resûlü
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لَتُؤَدُّنَّ الْحُقُوقَ إِلَى أَهْلِهَا يَوْمَ الْقِيَامَةِ حَتَّى يُقَادَ لِلشَّاةِ الْجَلْحَاءِ مِنَ الشَّاةِ الْقَرْنَاءِ</p>
 
-<p lang="ar" dir="rtl" class="ayet">, سَمِعَ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَقُولُ مَنْ مَاتَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ قِيلَ لَهُ ادْخُلْ الْجَنَّةَ مِنْ أَيِّ أَبْوَابِ الْجَنَّةِ الثَّمَانِيَةِ شِئْتَ</p>
+*Kıyamet günü haklar mutlaka sahiplerine verilecektir; boynuzsuz koyunun hakkı bile boynuzlu koyundan alınacaktır.* (Müslim, 2582)
 
-“Allah'a ve âhiret gününe iman ederek ölen kimseye, "Cennetin sekiz kapısının hangisinden dilersen gir." denilir.” (İbn Hanbel, I, 17.) müjdesini vermektedir. Ayrıca Allah Resûlü, Allah'a, âhiret gününe, cennete, cehenneme, öldükten sonra dirilmeye ve hesap gününe iman ettiği hâlde ölen kişinin de cennete gireceğini haber vermiştir. Allah Teâlâ da,
+Efendimiz (s.a.s.) adaletin kuşatıcılığını böylesine çarpıcı bir örnekle anlatıyor. Gücü az olanın hakkı da haktır. Bir insanın dili, inancı veya toplumdaki yeri, ona karşı dürüst davranma yükümlülüğümüzü azaltmaz. Komşumuzun ve birlikte çalıştığımız kişinin hakkını kendi hakkımız gibi ciddiye alalım.
 
-<p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الَّذ۪ينَ اٰمَنُٓوا اٰمِنُوا بِاللّٰهِ وَرَسُولِه۪ وَالْكِتَابِ الَّذ۪ي نَزَّلَ عَلٰى رَسُولِه۪ وَالْكِتَابِ الَّذ۪ٓي اَنْزَلَ مِنْ قَبْلُۜ وَمَنْ يَكْفُرْ بِاللّٰهِ وَمَلٰٓئِكَتِه۪ وَكُتُبِه۪ وَرُسُلِه۪ وَالْيَوْمِ الْاٰخِرِ فَقَدْ ضَلَّ ضَلَالًا بَع۪يدًا</p>
+Hakkını arayan kişiyi sabır sözüyle yalnız bırakmayalım. Talebini anlatmasına destek olalım; gerekli başvuruya ulaşmasını kolaylaştıralım. Bizden doğan bir zarar varsa giderelim. Allah’ın adaletine güvenmek, kendi elimizdeki haksızlığı düzeltmek için güçlü bir sebeptir.
 
-“Ey iman edenler! Allah'a, peygamberine, peygamberine indirdiği kitaba ve daha önce indirdiği kitaba iman edin. Kim Allah'ı, meleklerini, kitaplarını, peygamberlerini ve âhiret gününü inkâr ederse, derin bir sapkınlığa düşmüş olur.” (Nisâ, 4/136.) buyurarak âhirete inanmamayı sapkınlık olarak nitelendirmiş,
+Zerre ölçüsü iyiliğimizi de büyütür. Kimsenin görmediği bir temizlik, incinmiş birine söylenen onarıcı söz, sessizce yapılan yardım değerlidir. Bir teşekkür duyamadığımızda emeğimizi boşa gitmiş saymayalım. Rabbimiz bilir. Küçük bir iyiliği, küçüklüğünden dolayı ertelemeyelim.
 
-<p lang="ar" dir="rtl" class="ayet">وَاَنَّ الَّذ۪ينَ لَا يُؤْمِنُونَ بِالْاٰخِرَةِ اَعْتَدْنَا لَهُمْ عَذَابًا اَل۪يمًا۟</p>
+**Allah’ın adaletini bekleyen kalp, bugün başkasının hakkını koruyan ele dönüşsün.**
 
-âhirete inanmayanlar için elemli bir azap hazırladığını (İsrâ, 17/10.) beyan etmiştir.
+---
 
-## Ahirete İman Etmenin Kişi ve Topluma Faydaları
+<h2 class="vaaz-bolum-baslik" id="kul-hakki" tabindex="-1">IV. Hesap: İbadetimiz insanın hakkını korusun</h2>
 
-Âhirete iman etmek insan hayatına anlam katar, yön verir, değer kazandırır. Bu inanç, insana bütün davranışlarını yüce bir gaye için yaptığı bilincini aşılar. Ebedî hayatı hesaba katarak hareket eden insan, kötülüklerden uzak durur. Dünya hayatını iyilik, dürüstlük, yardımseverlik, yalnızca Yaratıcıya kulluk gibi salih ameller üzerine inşa eder.
+Telefon ekranında bir insanı küçük düşüren mesaj belirir. Parmak paylaşma işaretine yaklaşır. İşte âhiret bilinci, o kısa anda da bize seslenir: Bu sözün bir sahibi, inciteceği bir gönül var. Onun huzurunda ve Rabbimin katında nasıl hesap vereceğim?
 
-Âhirete inanan insan, dünya hayatında ölçülü, tutarlı hareket eder. Kin, haset, düşmanlık, nefret gibi duygularını törpüler. Affetme, bağışlama, hoş görme duygularını geliştirir. Kendisi, ailesi, çevresi ve toplumu ile barışık yaşar. Belâ ve musibetler karşısında sabırlı ve fedakârca davranabilir. Huzuru ve mutluluğu servet, şöhret, kudret, şehvet gibi fâni yani geçici tatminlerde değil Allah’a imanda, imanı çerçevesinde yaşamada arar. Onun rızasını kazanabileceği işleri yapmaya çalışır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَتَدْرُونَ مَا الْمُفْلِسُ</p>
 
-Âhirete iman bilinciyle hareket eden ve bu bilinç doğrultusunda yaşayan bireyler; erdemli, ahlâklı olmayı, hak hukuka riayet etmeyi, başkalarına saygı göstermeyi, kısaca yaratılanı Yaratan’dan ötürü sevmeyi şiar edinirler. Bu his ve şuura sahip olan fertlerden müteşekkil olan toplum da huzurlu bir toplum olur.
+*Müflisin kim olduğunu biliyor musunuz?* (Müslim, 2581; rivayetin açılış sorusu)
 
-## Müslümanın Ahirete Bakışı
+Sahâbe, malı ve parası olmayan kişiyi söyler. Efendimiz (s.a.s.) ise namaz, oruç ve zekâtla gelen; fakat insanlara hakaret etmiş, iftira atmış, mallarını yemiş birini anlatır. Kan dökmüş ve insanları dövmüştür. Hak sahiplerine onun sevaplarından verilir. Sevapları yetmeyince onların günahlarından yüklenir ve cehenneme atılır. Bu, aynı hadisin devamındaki ağır uyarıdır.
 
-Rasulullah (sav) bu konuda bizim için en iyi örnektir. Bu konuyla alakalı olarak şöyle buyurmaktır:
+Bu uyarıyı duyunca ibadetimize daha dikkatle sarılırız. Secdede Allah’a yönelen kalbimiz, ayağa kalkınca da insanın onurunu gözetir. Evde sertleşen dilimizi yumuşatırız. İşte emeği koruruz. Haksızlığımızı fark ettiğimiz yerde telâfiye başlarız. Hesap bilinci bize bugünden bir çıkış yolu gösterir.
 
-<p lang="ar" dir="rtl" class="ayet">فَقَالَ رَسُولُ اللَّهِ (صعلم) اللَّهُمَّ لَا عَيْشَ إِلَّا عَيْشُ الْآخِرَهْ</p>
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Muhasebeden telâfiye</strong> Bir yanlışı fark ettiğimizde ona uygun bir düzeltme seçelim.</figcaption>
+<table aria-label="Muhasebeden telâfiye">
+<thead><tr><th scope="col">Fark ettiğim</th><th scope="col">Bugünkü adımım</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Fark ettiğim">Bende kalan başkasına ait eşya</th><td data-label="Bugünkü adımım">Sahibine ulaşıp geri vermek.</td></tr>
+<tr><th scope="row" data-label="Fark ettiğim">Haksız bir suçlama</th><td data-label="Bugünkü adımım">Yaydığım yerde yanlış bilgiyi düzeltmek.</td></tr>
+<tr><th scope="row" data-label="Fark ettiğim">Kırıcı bir söz</th><td data-label="Bugünkü adımım">Mazeret sıralamadan özür dilemek.</td></tr>
+<tr><th scope="row" data-label="Fark ettiğim">Vadesi gelen bir borç</th><td data-label="Bugünkü adımım">Ödemek; zorlanıyorsam alacaklıyla açıkça görüşmek.</td></tr>
+</tbody></table>
+</figure>
 
-Allah’ım hayat ancak ahiret hayatıdır. (Müslim, Cihad, 4773)
+Özür dilerken karşı tarafı hemen affetmeye zorlamayalım. Hakkını istemesine saygı duyalım. Gasp edilen malın iadesi gibi somut sorumlulukları yerine getirelim. Karmaşık bir hak meselesinde güvenilir dinî rehberliğe başvuralım. Mahremiyeti ve zarar görenin güvenliğini gözeterek çözüm arayalım.
 
-Yüce Allah Kur’an-ı Kerim’de şöyle buyuruyor:
+Sadaka vermek istediğimiz bir günde, elimizde başkasına ait para bulunduğunu fark edebiliriz. Önce sahibinin hakkını teslim etmek için harekete geçelim. Kendi malımızdan yapacağımız hayrı da sürdürürüz. İyilik arayışımız, üzerimizdeki borca karşı dikkatimizi artırır.
 
-<p lang="ar" dir="rtl" class="ayet">وَمَا هَذِهِ الْحَيَاةُ الدُّنْيَا إِلَّا لَهْوٌ وَلَعِبٌ وَإِنَّ الدَّارَ الْآخِرَةَ لَهِيَ الْحَيَوَانُ لَوْ كَانُوا يَعْلَمُونَ</p>
+Bir tartışmada haklı olduğumuz bir konu bulunabilir; yine de kullandığımız kırıcı sözün sorumluluğu bize aittir. Kendi payımıza düşeni kabul etmek, anlaşmazlığın çözümünü kolaylaştırır. Yüz yüze görüşmek güvenli ve uygun olduğunda karşıdakini dinleyelim. Uygun olmadığında güvenilir bir aracının desteğini arayalım. Telâfinin yolu, yeni bir incinmeye yol açmadan hakkı gözetmekten geçsin.
 
-Bu dünya hayatı sadece bir eğlenceden, bir oyundan ibarettir. Ahiret yurduna (oradaki hayata) gelince, işte asıl yaşama odur. Keşke bilmiş olsalardı! (Ankebut, 29/64)
+Bir hakkı öderken karşımızdakinin de kaygısı hafifler. Bizim için küçük görünen bir gecikme, onun evindeki ihtiyacı büyütmüş olabilir. Hakkın insan hayatındaki yerini fark edelim.
 
-<p lang="ar" dir="rtl" class="ayet">وَقِيلَ لِلَّذِينَ اتَّقَوْاْ مَاذَا أَنزَلَ رَبُّكُمْ قَالُواْ خَيْرًا لِّلَّذِينَ أَحْسَنُواْ فِي هَذِهِ الدُّنْيَا حَسَنَةٌ وَلَدَارُ الآخِرَةِ خَيْرٌ وَلَنِعْمَ دَارُ الْمُتَّقِينَ</p>
+Akşam kapımızı kapatırken açıkta bıraktığımız bir hakkı hatırlayabiliriz. Ertesi gün için bir telâfi adımı belirleyelim. **Hesabı hatırlamanın meyvesi, hakkı sahibine vermeye başlamaktır.**
 
-(Kötülüklerden) sakınanlara: Rabbiniz ne indirdi? Denildiğinde, "Hayır (indirdi)" derler. Bu dünyada güzel davrananlara, güzel mükâfat vardır. Ahiret yurdu ise daha hayırlıdır. Takvâ sahiplerinin yurdu gerçekten güzeldir! (Nahl, 16/30)
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَى</p>
+<h2 class="vaaz-bolum-baslik" id="rahmet" tabindex="-1">V. Rahmet: Bizi ümitsizlikten kaldıran haber</h2>
 
-Gerçekten senin için ahiret dünyadan daha hayırlıdır. (Duha, 93/4)
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Bir annenin şefkati</p>
 
-İnsan, sorumluluk taşıyan bir varlıktır. Bu, onun temel özelliklerinden birisidir. Allah'ın emirlerine uymak ve yasaklarından sakınmakla yükümlü olan insan, mutlaka bir gün O'nun huzurunda, dünyada yaptıklarından sorgulanacaktır. Çünkü o, tesadüfen dünyaya gelmiş değil, Allah'ın takdir ve yaratması ile var olmuştur. Hem de Allah Teâlâ, kâinatta olan her şeyi onun hizmetine vermiştir. Kur'an-ı Kerim'de:
+Resûlullah’a (s.a.s.) bir grup esir getirilmişti. İçlerinde bir kadın, bulduğu küçük çocuğu kucağına alıp göğsüne bastırıyor ve emziriyordu. Efendimiz (s.a.s.), onun çocuğunu ateşe atıp atmayacağını sordu. Sahâbe, buna engel olabildiği sürece çocuğunu ateşe atmayacağını söyledi. Bunun üzerine Allah’ın kullarına merhametini anlattı.
 
-<p lang="ar" dir="rtl" class="ayet">أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ</p>
+(Buhârî, 5999; olayın özeti.)
 
-Sizi sadece boş yere yarattığımızı ve sizin gerçekten huzurumuza geri getirilmeyeceğinizi mi sandınız. (Mü'minûn, 23/115) Buyurulmuş ve insanın bir gün hesaba çekileceği bildirilmiştir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُ أَرْحَمُ بِعِبَادِهِ مِنْ هَذِهِ بِوَلَدِهَا</p>
 
-Öldükten sonra dirilip Allah'ın huzuruna getirileceğimiz bu güne "Hesap Günü" diyoruz. Bugün, insanın en dehşetli günlerinden bir gündür. Peygamberler bile bugünün dehşetinden Allah'a sığınmışlardır. İşte bu peygamberlerden biri, İbrahim aleyhi's-selâm'dır. Bakın O, Allah Teâlâ'ya nasıl dua ediyor:
+*Allah, kullarına bu kadının çocuğuna olan merhametinden daha merhametlidir.* (Buhârî, 5999; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">وَلَا تُخْزِنِي يَوْمَ يُبْعَثُونَ (87) يَوْمَ لَا يَنْفَعُ مَالٌ وَلَا بَنُونَ (88) إِلَّا مَنْ أَتَى اللَّهَ بِقَلْبٍ سَلِيمٍ</p>
+Kucakta korunmaya alınan çocuğun görüntüsü kalbimize dokunur. Peygamberimiz (s.a.s.), göz önündeki şefkatten hareketle Rabbimizin merhametini öğretiyor. Hesabı konuşurken bu haberi de kalbimizde taşıyalım. Allah’a dönüşümüzü, O’nun rahmetine sığınarak hazırlayalım.
 
-(Ey Rabbim) İnsanların dirilecekleri (ve huzuruna gelip hesap verecekleri) gün, beni utandırma. O gün ne mal fayda verir, ne evlat. Ancak Allah'a temiz bir kalb ile gelenler başka. (Şuarâ, 26/87-89.)
+Bazen insan geçmişine bakar, ağır bir pişmanlık duyar. Kaybettiği yılları, incittiği kişileri hatırlar. O anda önünde hâlâ bir iyilik imkânı vardır. Tövbe edebilir, hakkı ödeyebilir, öğrenmeye başlayabilir. Merhamet haberi, bu adımı atabilmesi için ona cesaret verir.
 
-Hz. İbrahim bu duası ile bize örnek oluyor, yol gösteriyor. Zaten onun yaptığı bu duanın Kur'an-ı Kerim'de yer almasının hikmeti de budur. Ayet-i Kerime'de şu hususlara dikkatimiz çekiliyor. Ey insanlar, Öleceksiniz fakat sonradan dirilip Allah'ın huzurunda hesap vereceksiniz. Bunu hatırınızdan çıkarmayın, hazırlıklı olun, İbrahim aleyhis selâm bir peygamber olduğu, hatta Allah'ın dostu olma şerefi ile şereflendiği halde hesap gününü unutmuyor ve o gün mahcup duruma düşmemesini Allah Teâlâ'dan niyaz ediyor. Bu peygamberi örnek alın; Allah'a yönelin, yalvarın ve o gün hesabınızın kolay geçmesini Allah'tan dileyin. Kimseye güvenmeyin, Allah'ın rızasını kazanmaya çalışın. O, razı olmadıkça kimsenin size bir iyilik yapamayacağını unutmayın. Çünkü Allah izin vermedikçe hiç kimsenin bir başkasına şefaat etmesi de söz konusu değildir. O halde yapacağınız şey, Allah'ın rızasını kazanmaktır. Bu da ancak O'nun emirlerine itaat etmek ve yasaklarından sakınmakla olur.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-O gün mal ve evladın fayda vermeyeceği bir gündür. Nitekim başka bir Ayet-i Kerime'de şöyle buyurulmaktadır:
+*Efendimiz (s.a.s.), kimseyi amelinin tek başına cennete sokamayacağını bildirdi. Kendisi için de Rabbimizin rahmetine muhtaç olduğunu söyledi.* (Müslim, 2816c; rivayetin anlam özeti)
 
-<p lang="ar" dir="rtl" class="ayet">يَاأَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمْ وَاخْشَوْا يَوْمًا لَا يَجْزِي وَالِدٌ عَنْ وَلَدِهِ وَلَا مَوْلُودٌ هُوَ جَازٍ عَنْ وَالِدِهِ شَيْئًا إِنَّ وَعْدَ اللَّهِ حَقٌّ فَلَا تَغُرَّنَّكُمُ الْحَيَاةُ الدُّنْيَا وَلَا يَغُرَّنَّكُمْ بِاللَّهِ الْغَرُورُ</p>
+İbadetimizi ve güzel işlerimizi samimiyetle sürdürür, kabulünü Allah’tan dileriz. Yaptığımız iyilikle gururlanıp insanlara tepeden bakmayız. Başkasının kusuruyla uğraşırken kendi eksiklerimizi unutmayız. Rahmete muhtaç olduğumuzu bilmek, kalbimize tevazu kazandırır.
 
-Ey insanlar! Rabbinize karşı gelmekten sakının. Ne babanın evlâdı, ne evladın babası namına bir şey ödeyemeyeceği günden (kıyamet gününden) çekinin. Bilin ki, Allah'ın verdiği söz gerçektir. Sakın dünya hayatı sizi aldatmasın ve şeytan Allah'ın affına güvendirerek sizi yanıltmasın. (Lokman, 31/33)
+Camiye yeni gelen kardeşimize bir yer gösterelim. Uzun aradan sonra başlayan kişiye öğrenme arkadaşı olalım. İslâm’ı yeni tanıyanın sorularını sabırla dinleyelim. İnsanın yeniden doğrulmasına yardım eden bir söz, bu rahmet dersini hayatımıza taşır.
 
-Ahiret günü, hesap günü düşünmesi bile insana dehşet veren, herkesin kendisi ile meşgul olacağı, başkası ile ilgilenmeye ayıracak zamanı olmayacak bir gündür. Nitekim Kur'an-ı Kerim'de şöyle buyurulmuştur:
+Ümit ile sorumluluk kalbimizde birlikte yer bulsun. Yavrusunu göğsüne bastıran annenin şefkati bizi nasıl güvene çağırıyorsa, bu hadis de Rabbimize yönelmeye çağırır. Yanlışımızı itiraf edebilmek için rahmete güvenelim. Attığımız adımın kabulünü dua ile isteyelim.
 
-<p lang="ar" dir="rtl" class="ayet">يَوْمَ يَفِرُّ الْمَرْءُ مِنْ أَخِيهِ (34) وَأُمِّهِ وَأَبِيهِ (35) وَصَاحِبَتِهِ وَبَنِيهِ (36) لِكُلِّ امْرِئٍ مِنْهُمْ يَوْمَئِذٍ شَأْنٌ يُغْنِيهِ</p>
+Bir kardeşimizin yeniden namaza başladığını gördüğümüzde yanında duralım. Öğrenmek istediği konuyu birlikte çalışalım. Geçmişini konuşmak yerine bugünkü gayretine destek verelim. Bu desteği görmüş bir insan, yarın başka birinin elinden tutabilir.
 
-O gün kişi kardeşinden, annesinden babasından, eşinden ve çocuklarından kaçar. O gün herkesin kendine yetip artacak bir derdi vardır. (Abese, 80/34-37)
+Merhameti tanıyan gönül, merhamet göstermeyi de öğrenir. Yeni başlayan kardeşimizin yanında sabırla durmak, öğrendiğimiz bu güzel habere kendi davranışımızla karşılık vermektir.
 
-İnsan dünyada bu yakınlarından birisi ile karşılaşsa sevinir ve onları sevgi ile kucaklar. Ama o gün, değil başkalarından, en yakınlarından bile kaçacaktır. Bir kısmı kendi derdi ile meşgul olduğu için kaçacak, bir kısmı da sorguya çekilirim endişesiyle kaçacaktır. Çünkü kardeş, "Sen bana dünyada yardım etmedin"; anne-baba, "Sen bize iyilikte kusur ettin"; eşi, "Sen bana haram yedirdin", çocuklar, "Sen bize dinimizi öğreterek bizi uyarmadın" deyip yakasına sarılırlar diye onlardan kaçacaktır.
+**Rabbimizin rahmetine güvenelim; bu güvenle tövbeye ve iyiliğe yönelelim.**
 
-Ebû Hureyre (r.a.) anlatıyor:
+---
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِي هُرَيْرَةَ، قَالَ: لَمَّا أُنْزِلَتْ هَذِهِ الْآيَةُ {وَأَنْذِرْ عَشِيرَتَكَ الْأَقْرَبِينَ} [الشعراء: 214]، دَعَا رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ قُرَيْشًا، فَاجْتَمَعُوا فَعَمَّ وَخَصَّ، فَقَالَ: «يَا بَنِي كَعْبِ بْنِ لُؤَيٍّ، أَنْقِذُوا أَنْفُسَكُمْ مِنَ النَّارِ، يَا بَنِي مُرَّةَ بنِ كَعْبٍ، أَنْقِذُوا أَنْفُسَكُمْ مِنَ النَّارِ، يَا بَنِي عَبْدِ شَمْسٍ، أَنْقِذُوا أَنْفُسَكُمْ مِنَ النَّارِ، يَا بَنِي عَبْدِ مَنَافٍ، أَنْقِذُوا أَنْفُسَكُمْ مِنَ النَّارِ، يَا بَنِي هَاشِمٍ، أَنْقِذُوا أَنْفُسَكُمْ مِنَ النَّارِ، يَا بَنِي عَبْدِ الْمُطَّلِبِ، أَنْقِذُوا أَنْفُسَكُمْ مِنَ النَّارِ، يَا فَاطِمَةُ، أَنْقِذِي نَفْسَكِ مِنَ النَّارِ، فَإِنِّي لَا أَمْلِكُ لَكُمْ مِنَ اللهِ شَيْئًا، غَيْرَ أَنَّ لَكُمْ رَحِمًا سَأَبُلُّهَا بِبَلَالِهَا»,</p>
+<h2 class="vaaz-bolum-baslik" id="gurbet" tabindex="-1">VI. Gurbette hayat: Emanet her yerde emanettir</h2>
 
-Allah Teâlâ:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱتَّقُوا۟ يَوْمًا تُرْجَعُونَ فِيهِ إِلَى ٱللَّهِ ۖ ثُمَّ تُوَفَّىٰ كُلُّ نَفْسٍ مَّا كَسَبَتْ وَهُمْ لَا يُظْلَمُونَ ۝٢٨١</p>
 
-<p lang="ar" dir="rtl" class="ayet">وَأَنْذِرْ عَشِيرَتَكَ الْأَقْرَبِينَ</p>
+*Bir günden sakının ki, onda Allah’a döndürüleceksiniz; sonra herkese hak ettiği tam olarak verilecek ve onlara haksızlık edilmeyecektir.* (Bakara, 2/281)
 
-Ey Muhammed! En yakın akrabanı uyar. (Şuarâ, 26/214.) Âyet-i Kerimesini indirdiği zaman, Peygamberimiz akrabalarını çağırarak Safâ tepesinde onlara yaptığı bir konuşmada şöyle buyurdu:
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Vardiya biterken</p>
 
-Ey Kureyş topluluğu! Kendinizi Allah'tan satın alın (Allah'ın azabından koruyun) yoksa ben Allah'ın azabından hiçbir şeyi sizden menedemem.
+Liège’de akşam vardiyasının son dakikaları. Çalışan bir kardeşimiz, iş arkadaşının dolap önünde unuttuğu cüzdanı görür. Cüzdanı güvenle sahibine ulaştırır. Aralarında farklı inançlar vardır; o anda koruduğu şey karşısındaki insanın emanetidir. Eve götürdüğü kazanca, gönül rahatlığı eşlik eder.
 
-Ey Abdi Menaf oğulları! Allah'ın azabından hiçbir şeyi sizden uzaklaştıramam.
+Âhirete imanımız, iş yerinin kapısında bizimle birlikte içeri girer. Çalıştığımız saati doğru bildirir, üstlendiğimiz işi özenle tamamlarız. İşveren olduğumuzda ücret ve güvenli çalışma sorumluluğumuzu gözetiriz. İnsanların bize güvenmesi, imanımızın gündelik hayattaki güzel bir karşılığı olsun.
 
-Ey Abdülmuttalip oğlu Abbas, Senden de Allah'ın azabından hiçbir şeyi menedemem.
+**Âhirete iman, bugünün hakkını vererek Allah’a kavuşmaya hazırlanmaktır.** Başkasının malını kullanırken izin almak, ortak gideri dürüstçe paylaşmak, beyan ettiğimiz bilgiyi doğru vermek bu hazırlığın içindedir. Kamunun imkânlarında da başkalarının payı vardır. Bir kolaylıktan yararlanırken gerçekten hakkımız olup olmadığını gözetelim.
 
-Ey Peygamberin halası Safiyye! Benim, Allah'ın azabından kurtarmak için sana hiçbir yararım olmaz.
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>İnancımızın günlük karşılığı</strong> Aynı sorumluluk, hayatımızın farklı yerlerinde görünür.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Emeği paylaşmak; harcama ve borçta açık olmak.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Emaneti korumak; emeğin ve başarının sahibini gözetmek.</dd></div>
+<div><dt>Mahallede</dt><dd>Komşunun huzuruna, ortak alanlara ve sıraya saygı göstermek.</dd></div>
+</dl>
+</figure>
 
-Ey Muhammed (s.a.s.)'in kızı Fatıma! Malımdan ne dilersen iste, vereyim fakat Allah'ın azabından hiçbir şeyi senden men edemem. (Buhârî, Vesâyâ, 11; Müslim, İman, 89.)
+Apartmanın sessiz koridorunda geç saatte yürürken sesimizi kısabiliriz. Aracımızı birinin geçişini kapatmadan bırakabiliriz. Hristiyan veya Yahudi komşumuzun da başka bir inancı benimseyenin de hakkı korunur. Aynı sokağı paylaşmanın bize yüklediği sorumluluğu ciddiye alalım.
 
-Peygamberimiz, insanların dünya ve ahiret efendisi olduğu halde, "Kıyamet günü ne olacağım, nasıl hesap vereceğim" derdi.
+Cüzdanı sahibine uzatan el, görünmeyen bir yerde de dürüstlüğü seçmiştir. Allah’ın bizi bildiğine iman etmek, insanın içinde böyle bir dikkat yetiştirir.
 
-Kıyamet günü Allah'ın huzurunda vereceğimiz hesap ile ilgili ne yapmalıyız ki, o gün hesabımız kolay geçsin?
+Kazancımızın bereketini ararken, o kazanca ulaşma biçimimizi de dürüstçe gözden geçirelim.
 
-Evet, yapacağımız şeyi peygamberimiz bize şöyle hatırlatıyor:
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/ahiret-inanci/emanet.svg" width="1600" height="900" alt="Ahşap tezgâhta unutulmuş kapalı bir cüzdanı diğer ele uzatan iki el." loading="lazy" decoding="async">
+<figcaption><strong>Küçük bir hakkı sahibine vermek</strong> Gündelik bir tercihte, âhiret bilincinin izi görünür.</figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">" حَاسِبُوا أَنْفُسَكُمْ قَبْلَ أَنْ تُحَاسَبُوا،</p>
+Böylece âhiret, konuşmalarımızda uzak bir başlık olarak kalmaz. Elimizin değdiği eşyanın ve ilişki kurduğumuz insanın hakkını hatırlatır. **Allah’ın huzuruna hazırlanırken yaşadığımız yerde güvenilir insanlar olalım.**
 
-Hesaba çekilmeden önce kendinizi hesaba çekiniz. (Tirmizî, Kıyâme, 25.)
+---
 
-İşte ahiret inancı, insanın, duygu, düşünce ve davranışları üzerinde böyle olumlu etkiler yapar. Ne mutlu o hesap gününe hazırlananlara. Yine ne mutlu o günü hiç unutmayanlara.
+<h2 class="vaaz-bolum-baslik" id="aile" tabindex="-1">VII. Aile: Rabbimize temiz bir kalple varmak</h2>
 
-## Sonuç
+**Aziz anneler ve babalar! Sevdiklerimize bırakacağımız en değerli izlerden biri, güzel kulluğumuzdur.**
 
-Kısaca söylemek gerekirse; ahiretle ilgili olarak ortaya koyduğumuz bu bilgilerin tamamı, duyularla elde edilen bilgilerden değil, ancak ayet ve hadislerden elde edilebilen bilgilerdendir. Bu iki kaynağın dışında hiçbir kaynaktan, ahiretle ilgili bilgi edinmek mümkün değildir. Bu dünya hayatı geçicidir. İnsanlar imtihan için yaratılmıştır. Herkesin davranışlarının adaletli bir şekilde karşılığını görmesi için, hiçbir yan etkinin bulunmayacağı, adil bir mahkemenin ve adalet ortamının gerçekleşmesi kaçınılmazdır. Aksi takdirde, yeryüzündeki haksızlıklar ve zulümler, yapanın yanı kâr kalır. Böyle bir durum akla aykırıdır. İşte bu sebeple, herkesin yaptıklarının hesabını vereceği bir ikinci hayat zorunludur. Bütün semavî dinlerin temel ilkeleri arasında, öldükten sonra dirilme ve ebedi olan ikinci bir hayatın varlığı inancı yer almaktadır. Ahiret inancı, insanı boşluktan ve ümitsizlikten kurtarır, ilâhî adaletin gerçekleşecek olması, azmi ve gayreti arttırır. Ölüm bir yok oluş değil, asıl ve sonsuz hayatın bir başlangıcıdır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَا تُخْزِنِى يَوْمَ يُبْعَثُونَ ۝٨٧ يَوْمَ لَا يَنفَعُ مَالٌ وَلَا بَنُونَ ۝٨٨ إِلَّا مَنْ أَتَى ٱللَّهَ بِقَلْبٍ سَلِيمٍ ۝٨٩</p>
 
-Ahiret inancı, İslam inancının en önemli ilkelerinden biridir. Kur’an’ın ifadesiyle:
+*İnsanların diriltileceği gün beni mahcup etme. O gün mal da evlât da fayda vermez; Allah’a temiz bir kalple gelenler başka.* (Şuarâ, 26/87–89)
 
-<p lang="ar" dir="rtl" class="ayet">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْراًيَرَهُ:وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرّاً يَرَهُ:</p>
+Mutfak masasının çevresinde ailece oturuyoruz. Birimiz günün yorgunluğunu, birimiz okulda duyduğu sözü taşıyor. Temiz kalp arayışımız işte burada da sınanır. Sevdiklerimizi dikkatle dinlemek, öfkemizi yönetmek, hakkını teslim etmek kalbimizin yönünü davranışımıza taşır.
 
-Zerre kadar hayır yapan mükâfatını görecek, zerre kadar kötülük yapan da cezasını görecektir. (Zilzal Suresi 99/7–8.)
+Âyet, malın ve evlâdın tek başına kurtuluş güvencesi olmadığını hatırlatır. Ailemiz Allah’ın emanetidir; biz de kendi kulluğumuzdan sorumluyuz. Soyumuzla övünmenin yerine örnekliğimizi geliştirelim. Çocuğumuz bizim namazımızı görsün; aynı zamanda haksız çıktığımızda özür dileyebildiğimize şahit olsun.
 
-Kur'an-ı Kerim'in en son nazil olduğu, Abdullah İbn Abbas (r.a.) tarafından rivayet edilen Âyet-i Kerime'de Allah Teâlâ şöyle buyuruyor:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-<p lang="ar" dir="rtl" class="ayet">وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ ثُمَّ تُوَفَّى كُلُّ نَفْسٍ مَا كَسَبَتْ وَهُمْ لَا يُظْلَمُونَ</p>
+*Efendimiz (s.a.s.), yakınlarını uyarırken kızı Fâtıma’ya malından istediğini isteyebileceğini söyledi. Fâtıma’yı Allah’ın azabından koruma gücüne sahip olmadığını da bildirdi.* (Buhârî, 2753; rivayetin ilgili bölümünün anlamı)
 
-Öyle bir günden korkunuz ki, o gün Allah'a döndürüleceksiniz. Sonra da herkese kazancı tamamı ile ödenecek ve hiç kimse haksızlığa uğramayacaktır. (Bakara, 2/281.)
+Bu nebevî öğüt, aile sevgimizi sorumlulukla derinleştirir. Birbirimize dua eder, iyiliğe destek oluruz. Eşlerimizin ibadet ve öğrenme zamanını gözetiriz. Ev işlerini paylaşarak yorulan kişiye nefes aldırırız. Hanımların da erkeklerin de ilme ulaşmasını birlikte kolaylaştırırız.
+
+Çocuk dinî bir soru sorunca hemen susmasını istemeyelim. Anladığı dilde, sabırla cevaplayalım. Türkçe anlatmakta zorlandığı düşüncesini başka bir dille ifade etmesine imkân verelim. Sorusunu ciddiye almak, imanını öğrenirken bize güvenmesini sağlar.
+
+Kalbiselim, Allah’a imanla yönelen, şirkten ve kalbi bozan kötülüklerden arınmış kalptir. Bu yönelişi korumak için ailece dua edelim. Sofrada yalnız başarıları konuşmayalım; o gün kime yardımcı olduğumuzu da paylaşalım. Çocuklarımız iyiliğin evimizde nasıl değer bulduğunu görsün.
+
+Bir aile ferdimizin içini açabildiği ilk kişi olalım. Sorununu anlatırken sözünü kesmeden bekleyelim. Birlikte çözüm aramak, sevgimizin sorumluluğunu taşımanın sade bir yoludur.
+
+Ailesi yanında olmayan, tek başına çocuk büyüten veya sevdiğini kaybetmiş kardeşimiz de cemaatimizin içindedir. Soframızda ve ilgimizde ona yer açalım. Kalbiselim arayışı, yalnızlığı fark eden bir merhametle güzelleşsin. **Ailemize sevgimiz, kendi kulluğumuza özen ve birbirimize iyi davranış olarak yansısın.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="genclik" tabindex="-1">VIII. Gençlik: Sözün ve vaktin hesabı</h2>
+
+**Sevgili gençler! Sorularınız, gayretiniz ve iyiliğe katkınız bu cemaat için değerlidir.**
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ وَلْتَنظُرْ نَفْسٌ مَّا قَدَّمَتْ لِغَدٍ ۖ وَٱتَّقُوا۟ ٱللَّهَ ۚ إِنَّ ٱللَّهَ خَبِيرٌۢ بِمَا تَعْمَلُونَ ۝١٨</p>
+
+*Ey iman edenler! Allah’a itaatsizlikten sakının. Herkes yarın için ne hazırladığına baksın. Allah’a itaatsizlikten sakının; şüphesiz Allah yaptıklarınızdan tamamen haberdardır.* (Haşr, 59/18)
+
+Gece odada yalnız telefonun ışığı yanıyor. Bir sınıf arkadaşının görüntüsü gruba düşüyor; altında alay eden yorumlar var. O anda bir gencimiz, kişinin onurunu koruyan bir tercihte bulunabilir. Görüntüyü yaymaz, inciten konuşmaya katılmaz; gerekiyorsa güvenilir bir yetişkinden destek ister. Böyle bir duruş cesaret ister.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
+
+*Allah’a ve âhiret gününe inanan kimse hayır söylesin yahut sussun.* (Buhârî, 6018; rivayetten bölüm)
+
+Bu ölçü, yaşımız ne olursa olsun hepimizi muhatap alır. Mesajı paylaşmadan önce kaynağına bakalım. Doğru bile olsa birinin mahremiyetini açığa çıkaracaksa duralım. Haksız bir ithamı yaydıysak aynı çevrede düzeltelim. Ekranın öbür tarafında, sözü kalbine alan bir insan var.
+
+Vaktimizi de yarın sorumlu tutulacağımız bir emanet olarak görelim. Namazımız, öğrenmemiz ve dinlenmemiz için günlük hayatımızda yer açalım. Bir sınava dürüstçe hazırlanmak, arkadaşına anlamadığı dersi anlatmak, bir büyüğüne teknolojiyi öğretmek güzel bir başlangıçtır. Gençliğin enerjisi hayra dönüşsün.
+
+Akşam birkaç dakika kendimize soralım: Bugün hangi iyiliğe vesile oldum? Düzeltmem gereken davranışım neydi? Yarın atacağım küçük adım hangisi? Cevabı başkasına göstermek zorunda değiliz. Dürüstçe bakıp uygulanabilir bir karar almak yeterli bir başlangıçtır.
+
+Arkadaşımıza ulaşan bir yardım mesajı da aynı ekrandan çıkabilir. Ulaşımı zorlanan birinin ders notunu paylaşmak veya yalnız kalan kişiye hâlini sormak mümkündür. Kullandığımız araç, seçtiğimiz hayra hizmet etsin.
+
+Akşam ekranı kapattığımızda gönlümüzde taşıyacağımız bir iyilik de bulunsun.
+
+Büyüklerimiz de bu muhasebeye katılsın. Gençlerden beklediğimiz nezaketi aile grubundaki mesajlarımızda biz de gösterelim. **Yarına hazırlık, bugün kullandığımız sözde ve ayırdığımız vakitte başlar.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="vefa" tabindex="-1">IX. Vefa: Bizimle kalan, bizden sonra süren</h2>
+
+Cenaze dönüşü evin kapısı açılır. Kalabalık yavaş yavaş dağılır; kaybı yaşayan insan, sessizliğin içinde kalır. Âhirete iman, o insana dua ve diriliş ümidi taşır. Bizim görevimiz de acısına eşlik etmek, hayatını sürdürürken yanında bulunmaktır.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">يَتْبَعُهُ أَهْلُهُ وَمَالُهُ وَعَمَلُهُ، فَيَرْجِعُ أَهْلُهُ وَمَالُهُ، وَيَبْقَى عَمَلُهُ</p>
+
+*Öleni ailesi, malı ve ameli takip eder. Ailesi ve malı geri döner; ameli onunla kalır.* (Buhârî, 6514; rivayetten bölüm)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*Oğlu İbrâhim’in vefatı sırasında Efendimiz (s.a.s.) gözyaşı döktü. Gözün yaşardığını, kalbin hüzünlendiğini, fakat yalnız Rabbimizin razı olacağı sözü söyleyeceğimizi bildirdi.* (Buhârî, 1303; rivayetin anlam özeti)
+
+Bu hadis, ölümün eşiğinde hangi azığın bizimle kaldığını öğretir. Biriktirdiğimiz eşyaya gösterdiğimiz özeni davranışımıza da gösterelim. Hayatımıza eşlik edecek güzel işler seçelim. Ödenmiş bir hak, öğretilmiş faydalı bilgi, sürdürülen bir yardım bu dikkatin somut karşılığı olabilir.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*İnsan öldüğünde ameli kesilir; ancak devam eden sadaka, yararlanılan ilim ve kendisine dua eden hayırlı evlât sebebiyle gelen ecir sürer.* (Müslim, 1631; anlam aktarımı)
+
+Kalıcı hayır için herkes imkânına göre bir yol bulabilir. Yararlı bir eğitim çalışmasına destek olabilir, bildiğini sabırla öğretebilir, ortak bir ihtiyacın giderilmesine katkı verebilir. Çocuğumuza öğrettiğimiz dua ve iyilik alışkanlığı da değerlidir. Evlâdı olmayan kişi için de sadaka ve faydalı bilgi kapısı açıktır.
+
+Uzakta vefat eden büyüklerimizi rahmetle analım. Onların bize öğrettiği güzel bir davranışı yaşatalım. Bir hastanın kapısını çalarken, elindeki ağır çantayı taşırken, yalnız birini ararken aldığımız iyiliği başkasına ulaştırmış oluruz. Hatıra, davranışımızda canlanır.
+
+Yas yaşayan kardeşimize ulaşmak için uzun cümleler gerekmez. Hâlini sormak, dinlemek ve ihtiyacına uygun destek sunmak kıymetlidir. İlk günlerin ardından da ilgimizi sürdürelim. Gözyaşını aceleyle susturmadan, birlikte dua ederek yanında kalalım.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/ahiret-inanci/vefa.svg" width="1600" height="900" alt="Bir bankın yanında sulanmış genç fidan, küçük sulama kabı ve yazısız kapalı kitap." loading="lazy" decoding="async">
+<figcaption><strong>Arkamızda yeşeren iyilik</strong> Paylaşılan bilgi ve sürdürülen hayır, ömrün ardından da iz bırakır.</figcaption>
+</figure>
+
+Bir yakınımızın ardından bıraktığı faydalı işi sürdürebiliriz. Yarım kalan bir eğitim desteğini, imkânımızı ve ihtiyacı gözeterek devam ettirebiliriz. Hayırda süreklilik için gücümüze uygun sorumluluk alalım. Yorgun düşen gönüllünün yerini paylaşmak da bu vefanın içindedir.
+
+Bir ziyaret için önceden haber vermek, yemek hazırlamak veya günlük bir işi üstlenmek acıyı taşıyana nefes aldırır. Desteğimiz, onun ihtiyacına ve isteğine uygun olsun.
+
+**Âhiret yolculuğuna güzel amel hazırlayalım; geride kalanlara da vefayla sahip çıkalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="tovbe" tabindex="-1">X. Tövbe: Bugün yeniden başlayabiliriz</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">۞ قُلْ يَـٰعِبَادِىَ ٱلَّذِينَ أَسْرَفُوا۟ عَلَىٰٓ أَنفُسِهِمْ لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّنُوبَ جَمِيعًا ۚ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيمُ ۝٥٣</p>
+
+*De ki: Ey kendi aleyhlerine günahta haddi aşan kullarım! Allah’ın rahmetinden ümit kesmeyin. Allah dilerse bütün günahları bağışlar. Şüphesiz O çok bağışlayıcı, çok merhametlidir.* (Zümer, 39/53)
+
+Kapının yanında uzun süredir kullanılmayan bir seccade duruyor. Bir kardeşimiz onu açıyor ve yeniden namaza yöneliyor. Geçmişinin yükünü hissediyor; fakat Rabbine dönebileceğini de biliyor. Tövbe, bu yönelişi hayatın içine taşımaktır. Bugün atılan adım kıymetlidir.
+
+Tövbede yaptığımız yanlışı bırakır, pişmanlık duyar, ona dönmemeye karar veririz. Başkasının hakkı varsa onu giderme sorumluluğunu üstleniriz. Gazzâlî’nin tövbe anlayışında da hatadan dönmek, insanın kendisini yeniden düzeltmesinin merkezindedir. Bu çerçeve, ümidimizi davranışa dönüştürür. (TDV İslâm Ansiklopedisi, “Tövbe”.)
+
+Günahı küçümsemekle kendimizden ümit kesmek arasında doğru yolu bulalım. Yanlışı ciddiye alıp Allah’a yöneliriz. Önümüzdeki namazı gözetir, telâfi edebileceğimiz hakkı belirleriz. Gerektiğinde bilgisine güvendiğimiz bir hocadan yardım isteriz. Yol, küçük ve samimi bir başlangıçla açılabilir.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَعْدَدْتُ لِعِبَادِيَ الصَّالِحِينَ مَا لاَ عَيْنٌ رَأَتْ وَلاَ أُذُنٌ سَمِعَتْ وَلاَ خَطَرَ عَلَى قَلْبِ بَشَرٍ</p>
+
+*Allah Teâlâ buyurur: Salih kullarım için hiçbir gözün görmediği, hiçbir kulağın işitmediği, hiçbir insanın hatırına gelmeyen nimetler hazırladım.* (Müslim, 2824a; kudsî hadisten bölüm)
+
+Cennet ümidi, yorulduğumuzda kalbimize kuvvet verir. Dünyada her emeğin karşılığını hemen göremeyebiliriz. Hastalık, yoksulluk veya ayrılık yaşadığımızda imanımızla Rabbimize sığınır; yardım ve dayanışma yollarını ararız. Ömrümüzün değerini bugünkü rahatlığımızla ölçmeyiz. Rabbimizin vaadi ufkumuzu genişletir.
+
+Bu akşam düzeltmeye başlayabileceğimiz bir işi seçelim. Bir borcu görüşmek, kırdığımız gönle özür ulaştırmak, ibadetimizi düzene koymak olabilir. **Tövbenin kapısına ümitle gelelim; samimiyetimizi bugünkü davranışımızla gösterelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Yedi söz: Bugünden başlayacak hazırlık</h2>
+
+**Kıymetli kardeşlerim! Şimdi duyduğumuzu bir haftalık hayatımıza taşıyalım.**
+
+Evin anahtarını elimize aldığımızda bugün verdiğimiz kararı hatırlayalım. Bu yedi söz, kendi şartımıza göre uygulayabileceğimiz küçük adımlardır. Her birinin zamanını belirleyelim. İmkânımızı aşan yerde yardım isteyelim; yapabildiğimiz iyiliği samimiyetle sürdürelim.
+
+**ÂHİRET BİLİNCİYLE YEDİ SOMUT SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta her akşam birkaç dakika kendimi değerlendireceğim.</strong> Günümdeki bir iyiliği ve düzeltmem gereken bir davranışı belirleyeceğim.</li>
+<li><strong>Bu hafta namaz vakitlerimi günlük planımda belirleyeceğim.</strong> İş, okul veya ev düzenimde namazımı gözetmek için gereken hazırlığı yapacağım.</li>
+<li><strong>Bu hafta üzerimdeki bir hakkı telâfi etmek için adım atacağım.</strong> Bende kalan emaneti iade edecek veya ödeyemediğim borcun sahibine durumumu açıkça bildireceğim.</li>
+<li><strong>Bu hafta ailemden birini bölmeden dinleyeceğim.</strong> Yanımda değilse uygun bir vakitte arayacak, ihtiyacına göre yapabileceğim desteği sunacağım.</li>
+<li><strong>Bu hafta paylaşacağım her haberin kaynağını kontrol edeceğim.</strong> Doğrulayamadığımı yaymayacak, insanların onurunu ve mahremiyetini koruyacağım.</li>
+<li><strong>Bu hafta yalnız veya yaslı bir kişinin hâlini soracağım.</strong> Görüşmeye uygun vaktini öğrenip ihtiyacını dinleyecek, yapabileceğim yardımı yerine getireceğim.</li>
+<li><strong>Bu hafta faydası sürecek bir iyiliğe katkı vereceğim.</strong> Gücüm ölçüsünde yararlı bir bilgi öğretecek veya devam eden bir hayra destek olacağım.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bu hafta iyiliğe yedi adım</strong>Bir zamanı belirle, adımını at, hafta sonunda kendine dürüstçe bak.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Gününe dürüstçe bak</strong></li>
+<li><span aria-hidden="true">2</span><strong>Namazına vakit ayır</strong></li>
+<li><span aria-hidden="true">3</span><strong>Bir hakkı telâfi et</strong></li>
+<li><span aria-hidden="true">4</span><strong>Sevdiğini dikkatle dinle</strong></li>
+<li><span aria-hidden="true">5</span><strong>Paylaşmadan önce doğrula</strong></li>
+<li><span aria-hidden="true">6</span><strong>Bir insanı yalnız bırakma</strong></li>
+<li><span aria-hidden="true">7</span><strong>Kalıcı hayra katkı ver</strong></li>
+</ol>
+</figure>
+
+Haftanın sonunda bu sözlere yeniden bakalım. Gerçekleştirdiğimiz için şükredelim; eksik kalan için yeni bir zaman belirleyelim. Birlikte yaşadığımız kişiden nazikçe hatırlatmasını isteyebiliriz. Küçük bir iyiliği sürdürmek, kararımızı hayatımıza yerleştirir.
+
+Şimdi bir sözümüzün karşısına belirli bir vakit koyalım. Akşam yemeğinden sonra arayacağımız bir büyüğümüz olabilir. Ertesi gün iade edeceğimiz bir eşya olabilir. Niyetimizle davranışımız arasına küçük, açık bir adım yerleştirelim. Böylece güzel kararımız, günlük telaşın içinde hatırlanacak bir yere kavuşur.
+
+Kendimizi değerlendirirken ölçümüz insanların alkışı olmasın. Rabbimizin rızasını arayalım. Bir borcu ödediğimizi herkesin bilmesi gerekmez; hak sahibinin hakkına kavuşması yeterlidir. Paylaştığımız bilginin faydasını görmek, iyiliği sürdürmemize yardım eder. Görmediğimiz yerde de samimiyetimizi koruyalım.
+
+Bu sözleri ailece konuşabiliriz. Bir çocuğun yapacağı iyilikle yaşlı bir büyüğümüzün katkısı farklı olabilir. Herkes gücü ölçüsünde katılsın. Evden çıkamayan bir kardeşimizin telefonu, uzaktaki bir insanın yalnızlığını hafifletebilir. Okula giden gencimizin dürüstlüğü, arkadaşına cesaret verebilir. Hepimizin hayra açılan bir kapısı vardır.
+
+Her sözün ardında bugün dinlediğimiz bir hakikat var. Zerre kadar iyilik kaybolmuyor; insanın hakkı hesaba konu oluyor. Rahmet ümidi de yeniden başlamaya çağırıyor. Kendimizi değerlendirirken bu hakikatleri hatırlayalım. Gördüğümüz kusuru belirli bir davranışa çevirelim: Düzeltilecek bir bilgi, yapılacak bir ödeme, öğrenilecek bir dua. Böylece muhasebemiz bizi harekete geçirir.
+
+Bugün bu camiden çıkarken yolumuz yine evimize, işimize ve komşularımıza uzanacak. Rabbimize kavuşma hazırlığımız o yol boyunca devam edecek. **Âhirete iman, bugünün hakkını vererek Allah’a kavuşmaya hazırlanmaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Dünyada iyilik, âhirette iyilik</h2>
+
+**Aziz cemaat! Ellerimizi açıp Rabbimizin rahmetine sığınalım.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette de iyilik ver. Bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Allah’ım! Bize verdiğin ömrü rızana uygun yaşamayı nasip eyle. İmanımızı kuvvetlendir, ibadetlerimizi kabul buyur. Yanlışımızı görüp düzeltmeye cesaret ver. Üzerimizdeki hakları ödemeyi, emanetleri korumayı ve incittiğimiz gönülleri onarmayı bize kolaylaştır.
+
+Rabbimiz! Evlerimize huzur ver. Eşlerimize karşı adaletli, çocuklarımıza karşı şefkatli olmayı nasip eyle. Gençlerimizin sorularına doğru bilgiyle ve güzel davranışla karşılık verebilmeyi lütfeyle. Bize öğrenme aşkı, sözümüze doğruluk, emeğimize bereket ihsan eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ ۝٤١</p>
+
+*Rabbimiz! Hesabın görüleceği gün beni, annemi babamı ve müminleri bağışla.* (İbrâhîm, 14/41)
+
+Allah’ım! Âhirete göçen mümin kardeşlerimize rahmet eyle. Onları affınla ve ikramınla karşıla. Yakınını kaybedenlerin gönlüne sabır ver. Uzakta kalan mezarların hasretini taşıyanlara teselli ihsan eyle. Bizleri hayırlı hatıraları güzel davranışlarla sürdürenlerden eyle.
+
+Rabbimiz! Hastane koridorunda haber bekleyene ferahlık, hastalarımıza şifa, onlara emek verenlere güç ver. Yaşlılarımızı yalnız bırakmamayı, engelli kardeşlerimizin ihtiyaçlarını gözetmeyi bize nasip eyle. Dar geçinenlere helâl rızık, borçlulara ödeme kolaylığı, haksızlığa uğrayanlara yardım ihsan eyle.
+
+Allah’ım! Bu cemaatin arasındaki muhabbeti artır. İslâm’ı yeni öğrenen kardeşlerimize hayırlı dostlar nasip eyle. Yaşadığımız beldelere esenlik, komşularımıza huzur ver. Bizi bu topraklarda dürüstlüğü ve merhametiyle güven veren kullarından eyle. Zulüm ve savaş altında yaşayan bütün mazlumlara yardım eyle.
+
+Rabbimiz! Başkalarının kusurunu sayarken kendi eksiğini unutanlardan olmaktan bizi koru. Bize özür dilemenin tevazuunu, affetmenin gönül genişliğini ve hak arayanı dinlemenin adaletini ver. Gücümüzü zayıfı korumaya, bilgimizi faydalı hizmete, vaktimizi hayırlı işe ayırmayı nasip eyle.
+
+Allah’ım! Kendimize istediğimiz huzuru komşumuza da istemeyi öğret. Bizi ihtiyaç karşısında duyarlı, emanete karşı titiz, verdiği sözü yerine getiren kullarından eyle.
+
+Rabbimiz! Son nefesimizi imanla vermeyi, huzuruna bağışlanmış olarak varmayı nasip eyle. Hesabımızı kolaylaştır, bizi cennetinle mükâfatlandır. **Bugünkü iyiliğimizi ebedî rahmetine vesile eyle.** Âmin. Hamd âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyetlerin bağlamı Kur’an Yolu ile gözetilmiştir. Âyet ve hadislerden alınan bölümler belirtilmiştir. Gündelik Avrupa sahneleri temsilîdir. Kıssa sahih rivayete dayanır; diğer niyazlar serbest duadır. Kaynak ve tashih ayrıntıları RAPOR.md dosyasındadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Diriliş ve iman: <a href="https://quran.com/64/7">Tegābün 64/7</a>; <a href="https://sunnah.com/muslim:8a">Müslim 8a</a>.</li>
+<li>Ömrün hakkını vermek: <a href="https://quran.com/67/2">Mülk 67/2</a>; <a href="https://sunnah.com/bukhari:6416">Buhârî 6416</a>.</li>
+<li>Zerre ve adalet: <a href="https://quran.com/99/7-8">Zilzâl 99/7–8</a>; <a href="https://sunnah.com/muslim:2582">Müslim 2582</a>.</li>
+<li>Kul hakkı ve telâfi: <a href="https://sunnah.com/muslim:2581">Müslim 2581</a>.</li>
+<li>Rahmete güvenmek: <a href="https://sunnah.com/bukhari:5999">Buhârî 5999</a>; <a href="https://sunnah.com/muslim:2816c">Müslim 2816c</a>.</li>
+<li>İş ve komşuluk: <a href="https://quran.com/2/281">Bakara 2/281</a>.</li>
+<li>Aile ve kalbiselim: <a href="https://quran.com/26/87-89">Şuarâ 26/87–89</a>; <a href="https://sunnah.com/bukhari:2753">Buhârî 2753</a>.</li>
+<li>Ekran ve muhasebe: <a href="https://quran.com/59/18">Haşr 59/18</a>; <a href="https://sunnah.com/bukhari:6018">Buhârî 6018</a>.</li>
+<li>Ölüm ve kalıcı iyilik: <a href="https://sunnah.com/bukhari:6514">Buhârî 6514</a>; <a href="https://sunnah.com/bukhari:1303">Buhârî 1303</a>; <a href="https://sunnah.com/muslim:1631">Müslim 1631</a>.</li>
+<li>Tövbe ve ebedî ümit: <a href="https://quran.com/39/53">Zümer 39/53</a>; <a href="https://sunnah.com/muslim:2824a">Müslim 2824a</a>.</li>
+<li>Hatim ve cemaat niyazı: <a href="https://quran.com/2/201">Bakara 2/201</a>; <a href="https://quran.com/14/41">İbrâhîm 14/41</a>.</li>
+<li>İlmî çerçeve: <a href="https://islamansiklopedisi.org.tr/ahiret">TDV İslâm Ansiklopedisi — Âhiret</a>.</li>
+<li>Tövbe ve telâfi: <a href="https://islamansiklopedisi.org.tr/tovbe">TDV İslâm Ansiklopedisi — Tövbe</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

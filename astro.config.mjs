@@ -19,6 +19,12 @@ export default defineConfig({
     '/en/announcements/egitim-yardimi-kampanyasi-2026/': '/en/announcements/egitim-kampanyasi-2026/',
     '/nl/mededelingen/egitim-yardimi-kampanyasi-2026/': '/nl/mededelingen/egitim-kampanyasi-2026/',
     '/de/mitteilungen/egitim-yardimi-kampanyasi-2026/': '/de/mitteilungen/egitim-kampanyasi-2026/',
+    // 3 Ekim 2026 vaaz revizyonu: İngilizce makine çevirisi vaaz, aynı konudaki Türkçe yeni vaazla değiştirildi.
+    '/tr/vaaz/the-month-of-ramadan-and-the-qur-an/': '/tr/vaaz/ramazan-ayi-ve-kur-an/',
+    '/fr/vaaz/the-month-of-ramadan-and-the-qur-an/': '/fr/vaaz/ramazan-ayi-ve-kur-an/',
+    '/en/vaaz/the-month-of-ramadan-and-the-qur-an/': '/en/vaaz/ramazan-ayi-ve-kur-an/',
+    '/nl/vaaz/the-month-of-ramadan-and-the-qur-an/': '/nl/vaaz/ramazan-ayi-ve-kur-an/',
+    '/de/vaaz/the-month-of-ramadan-and-the-qur-an/': '/de/vaaz/ramazan-ayi-ve-kur-an/',
   },
   integrations: [
     preact({ compat: false }),

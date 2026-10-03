@@ -1,223 +1,494 @@
 ---
-baslik: "Ahiret Yolcusuna Son Görevlerimiz"
-ozet: "Ebediyet arzusunda olan insan, ömrünün sonu anlamına gelen ölümden korkar, kendisinin ya da sevdiklerinin bir gün öleceği düşüncesinden olabildiğince uzaklaşmak…"
+baslik: "Âhiret Yolcusuna Son Görevlerimiz: Hürmetle Uğurlamak, Merhametle Kalmak"
+ozet: "Hastanın başucundan cenaze namazına, defin duasından yaslı aileye desteğe uzanan bir vefa rehberi. Son görevlerimizi sahih kaynaklar, fıkhî ölçüler ve gurbette dayanışmayla hatırlayalım."
 kategori: ibadet
-kelime: 2448
+kelime: 3679
 docx: "/vaazlar/ahiret-yolcusuna-son-gorevlerimiz.docx"
 pdf: "/vaazlar/ahiret-yolcusuna-son-gorevlerimiz.pdf"
+kapak: "/media/vaazlar/ahiret-yolcusuna-son-gorevlerimiz/kapak-og.webp"
+kapakAlt: "Sade bir avlu kapısının önünde yan yana duran iki boş sandalye ve yola düşen yumuşak ışık."
 ---
-Ebediyet arzusunda olan insan, ömrünün sonu anlamına gelen ölümden korkar, kendisinin ya da sevdiklerinin bir gün öleceği düşüncesinden olabildiğince uzaklaşmak ister. Fakat İslâm inancında ölüm, dünya hayatının sonu olmakla beraber eşsiz güzelliklerle dolu, yepyeni, ebedî bir hayatın başlangıcı demektir. Şairin de dediği gibi:
 
-“Ölüm güzel şey budur perde ardından haber,
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/ahiret-yolcusuna-son-gorevlerimiz/kapak.svg" width="1600" height="900" alt="Sade bir avlu kapısının önünde yan yana duran iki boş sandalye ve yola düşen yumuşak ışık." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Hürmetle uğurlamak</strong> Dua, vefa ve geride kalanlara merhamet.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Hiç güzel olmasaydı ölür müydü Peygamber.”
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#olum-ve-hayat">Hayat ve emanet</a></li>
+<li><a href="#hasta-basinda">Hastaya güzel söz</a></li>
+<li><a href="#yas-ve-sabir">Gözyaşı ve sabır</a></li>
+<li><a href="#yikama-ve-kefen">Bedenin mahremiyeti</a></li>
+<li><a href="#cenaze-namazi">Dört tekbirle dua</a></li>
+<li><a href="#defin-ve-dua">Defin ve sebat</a></li>
+<li><a href="#taziye-ve-destek">Taziye ve sofra</a></li>
+<li><a href="#borc-ve-emanet">Hakları gözetmek</a></li>
+<li><a href="#gurbette-cenaze">Uzakta da kardeşiz</a></li>
+<li><a href="#hayir-ve-olcu">Ölçülü ve sürekli hayır</a></li>
+<li><a href="#yedi-soz">Hayata taşınan yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Acının yanında yerimiz olsun</h2>
 
-N. F. Kısakürek
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Bu nedenle Müslüman, dünyayı zaten geçici bir hayat kabul eder ve ömrünü ahiret yurdunda kazananlardan olacak şekilde geçirme gayretinde olur.
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Ahiret yolcusuna son görevimiz onun bizim üzerimizdeki bir hakkıdır. Nitekim Hz. Peygamber’in (s.a.v) bildirdiği üzere mümin kardeşinin cenazesine katılmak inananların birbirlerine karşı görevleri arasında yer alır.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-## İnsan Her Zaman Değerlidir
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-Dinimize göre ölüm bir son kabul edilmediği ve yeni bir hayatın başlangıcı sayıldığı için insana hayattayken layık görülen saygının ölümden sonra da gösterilmesi istenir. Bu sebeple bir müslümanın cenazesinin yıkanması, kefenlenmesi, namaz kılarken kendisine dua edilmesi ve özenle kabre defnedilmesi diğer müslümanlar için farz-ı kifayedir.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-## Ölüm Döşeğindeki Kişiye Başlıca Sorumluluklarımız
+*Mûsâ dedi ki: Rabbim! Gönlüme ferahlık ver. İşimi kolaylaştır. Dilimden düğümü çöz ki sözümü anlasınlar.* (Tâhâ, 20/25–28)
 
-Ziyaret etmek: Hastanın, yakınları, dostları, komşuları, yoksa diğer müslümanlar tarafından ziyaret edilmesi dinî bir vecibedir.
+**Aziz cemaat! Acısını içine saklayan, bir yakınının hasretini taşıyan kıymetli kardeşlerim!**
 
-Güzel sözlerle teselli etmek: Henüz şuuru açık ve rahat konuşabiliyorsa Allah’tan şifa dilenir ve moralini yükseltici sözler söylenir.
+Bazen telefonun bir kez çalması bütün günün rengini değiştirir. Evde bir sandalye boş kalır. Sabah işe uğurladığımız insanı artık kapıda karşılayamayız. Böyle bir anda içimizden aynı soru yükselir: Şimdi ne yapacağız? Dinimiz bu soruya hem dua hem sorumluluk öğreterek cevap verir.
 
-<p lang="ar" dir="rtl" class="ayet">عن أُمِّ سَلَمة رضيَ الله عنها قالت: قالَ رَسُولُ الله صلى الله عليه وسلم: إذَا حَضرْتُمُ المَرِيضَ، أَوِ المَيّتَ، فَقُولُوا خَيْراً، فَإنَّ المَلائِكَةَ يُؤَمِّنُونَ عَلَى مَا تَقُولُونَ</p>
+Bugün hastanın başucundan mezarlığın kapısına, oradan yaslı bir ailenin evine uzanan görevlerimizi konuşacağız. İçimizde anne babasını uzaklarda toprağa verenler var. Eşini, çocuğunu veya arkadaşını kaybedenler var. Rabbimiz her birinin gönlüne ferahlık versin. Sözümüz o gönüllere incelikle ulaşsın.
 
-Ümmü Seleme (r.a)’dan rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu: *“Hasta veya ölünün başında bulunduğunuz zaman güzel sözler söyleyiniz. Zira melekler sizin dualarınıza âmin derler”.* ( Müslim, Cenâiz, 6)
+Bir cenaze bize birbirimize ne kadar muhtaç olduğumuzu hatırlatır. O gün kimin arandığı, kimin sessizce gelip bir işi üstlendiği hafızalarda kalır. Öğreneceğimiz her hükmü bu vefanın içine yerleştirelim. **Son görevimiz, gideni hürmetle uğurlamak ve kalanı merhametle gözetmektir.**
 
-Tövbeye Teşvik Etmek, Kelime-i Şehadet veya Kelime-i Tevhid Telkin Etmek:
+---
 
-Rahatça konuşamayacak kadar hastalığı ağırlaşan kişiye kelime-i şehadet telkin edilir. Fakat bunlar sıkça okunmaz ve hayatla ölüm arasında gidip gelen, o sırada büyük bir sıkıntı içinde bulunan hastaya “Sen de söyle!” diyerek ısrar edilmez. Bu telkinin amacı bu âlemden imanlı göç etmesini sağlamaktır.
+<h2 class="vaaz-bolum-baslik" id="olum-ve-hayat" tabindex="-1">I. Ölümü hatırlamak, hayatı hakkıyla yaşamak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">عن معاذٍ رضي اللَّه عنه قالَ : قال رسُولُ اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم : منْ كَانَ آخِرَ كلاَمِهِ لا إِلهَ إِلاَّ اللَّه دَخَلَ الجنَّةَ</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">كُلُّ نَفْسٍ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ ٱلْقِيَـٰمَةِ</p>
 
-Mu’âz’dan (r.a) rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu: ***“Kimin son sözü, “Allah’tan başka ilah yoktur” cümlesi olursa, o kişi cennete girer.”***(Ebû Dâvûd, Cenâiz,20)
+*Herkes ölümü tadacaktır; yaptıklarınızın karşılığı size eksiksiz olarak ancak kıyamet gününde verilecektir.* (Âl-i İmrân, 3/185; âyetten bölüm)
 
-Vefat etmek üzere olan kişinin yanında Yasin veya Ra’d süresilerini okumak müstehap kabul edilmiştir.
+Bir evin duvarındaki takvim her sabah bir gün daha eksilir. Biz çalışırken, çocuklarımız büyürken, yarın için plan yaparken ömür ilerler. Kur’an ölüm gerçeğini hesaba çekileceğimiz günle birlikte hatırlatır. Böylece bugün elimizde bulunan zamanı kıymetlendirir. İyiliğin vaktini bugüne çağırır.
 
-## Ölenin Ardından Bazı Sorumluluklarımız
+Âhirete iman, insanı Rabbine karşı sorumluluğuyla yüzleştirir. Aynı zamanda rahmet kapısını gösterir. Biz Allah’ın bağışlamasını umar, hatalarımız için tövbe ederiz. Hakkını incittiğimiz insana ulaşırız. Başladığımız bir iyiliği tamamlamak için gayret gösteririz. Ölüme hazırlık, hayatta olanın elini tutarak başlar.
 
-Gözlerini kapatmak ve çenesini bir bez ile bağlamak: Bir kimse ölünce önce gözleri kapatılır ve başının üzerinden dolaştırılan bir bez parçası ile çenesi bağlanır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِذَا مَرِضَ فَعُدْهُ وَإِذَا مَاتَ فَاتَّبِعْهُ</p>
 
-<p lang="ar" dir="rtl" class="ayet">عن أُمِّ سَلَمَة رضيَ الله عنها قالت: دَخَلَ رسُولُ الله صلى الله عليه وسلم عَلى أبي سَلَمَةَ وَقَدْ شَق بَصَرُهُ، فَأَغْمَضَه، ثُمَ قالَ: إنَّ الرُّوحَ إذا قُبِضَ، تَبِعَهُ الْبَصَرُ</p>
+*Müslüman kardeşin hastalandığında onu ziyaret et; öldüğünde cenazesine katıl.* (Müslim, 2162b; rivayetten bölüm)
 
-Ümmü Seleme (r.a)’dan rivayet edildiğine göre şöyle dedi: Resûlullah (s.a.v), (vefat etmiş olan) Ebû Seleme’nin yanına girdi. Gözleri açık kalmıştı, onları kapattı. Sonra şöyle buyurdu: *“Ruh çıkınca gözler onu izler.”* (Müslim, Cenâiz,7)
+Bu öğüt, kardeşliğin insanın en güçsüz zamanında devam ettiğini gösterir. Sağlığında aynı sofraya oturduğumuz insan hastalandığında ziyaretimizi bekler. Öldüğünde ise artık bizim duamıza ve hizmetimize emanettir. Cenazesine katılan kimse, bir hakkı yerine getirdiğini bilerek yürür. Adımlarına bu niyet yön verir.
 
-Ölünün üzerini bir örtü ile örtmek
+Cenazeyi yıkamak, kefenlemek, namazını kılmak ve defnetmek Müslümanlar için farz-ı kifâyedir. Yeterli kimse yerine getirince diğerlerinden sorumluluk kalkar. Görev sahipsiz bırakıldığında, onu yerine getirebilecek durumda olanlar sorumlu olur. Bu sebeple cemaat içinde işin ehli insanların yetişmesine destek verelim. Hizmetin hazırlanmasını da sahiplenelim. (İlmihal, I, Cenaze Namazı.)
 
-Kolları ve ayalarını yanlara uzatmak,
+Yalnız yaşayan bir büyüğümüzün kapısını çalmak, bu sorumluluğun bugünkü adımı olabilir. Camiden uzak kalmış bir kardeşimizin hâlini sormak da öyledir. Kimin hangi yükü taşıdığını ancak yakınlık kurunca öğreniriz. Bugün vereceğimiz bir selâm, yarın ihtiyaç anında açılacak kapıyı hazırlasın.
 
-Ölünün bulunduğu yerde değilde başka bir odada istenirse Kur’an okumak
+Evimizde ölüm konuşulduğunda çocuklarımızın sorularına da yer açalım. Kaybettiğimiz yakınımızı anarken onunla paylaştığımız güzel bir hatırayı anlatabiliriz. Ardından birlikte dua ederiz. Böylece çocuk, hüznün konuşulabildiğini ve sevginin iyilikle sürdürülebildiğini bizim yanımızda öğrenir.
 
-Yakınlarını, ölen kimse ile hak ve borç ilişkisi bulunan kimseleri haberdar etmek
+**Ölümü hatırlayan gönül, bugünün hakkını daha büyük bir özenle verir.**
 
-Ölüm haberini duyan cenaze yakınları ve dostları ayet ve hadislerde tavsiye edildiği üzere
+---
 
-اِنَّا لِلّٰهِ وَاِنَّٓا اِلَيْهِ رَاجِعُون (Şüphesiz biz Allah’a aidiz ve hepimiz O’na döneceğiz)(Bakara,2/156) diyerek Allah’a yönelmeli ve O’na isyan etmeden bu olayı sabırla karşılamalıdır.
+<h2 class="vaaz-bolum-baslik" id="hasta-basinda" tabindex="-1">II. Hastanın başucunda merhametli bir dil</h2>
 
-<p lang="ar" dir="rtl" class="ayet">وعنها قالت: سمعتُ رسولَ الله صلى الله عليه وسلم يقول: مَا مِنْ عَبْدٍ تُصِيبُهُ مُصِيبَةٌ، فيقولُ: إنَّا لله وَإنَّا إلَيْهِ رَاجِعُونَ: اللَّهُمَّ أؤجرني في مُصِيبَتي، وَاخْلُف لي خَيْراً مِنْهَا، إلاّ أَجَرَهُ الله تَعَالى في مُصِيبَتِهِ وَأَخْلَفَ له خَيْراً مِنْهَا</p>
+**Kıymetli kardeşlerim! Hastanın yanında sözümüz de ziyaretimiz de şifa duası taşısın.**
 
-Yine Ümmü Seleme (r.a)’dan rivayet edildiğine göre şöyle dedi: Resûlullah (s.a.v)’i şöyle buyururken dinledim: *“Herhangi bir kul sıkıntıya düşer de “Biz Allah’tan geldik, Allah’a döneceğiz. Allah’ım, başıma gelen musibetin ecrini ver ve bana bundan daha hayırlısını lutfet” diye dua ederse, Allah Teâlâ onu uğradığı sıkıntıdan dolayı mükâfatlandırır ve ona kaybettiğinden daha hayırlısını verir. ”* (Müslim, Cenâiz, 4)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا حَضَرْتُمُ الْمَرِيضَ أَوِ الْمَيِّتَ فَقُولُوا خَيْرًا فَإِنَّ الْمَلاَئِكَةَ يُؤَمِّنُونَ عَلَى مَا تَقُولُونَ</p>
 
-Ölünün ardından yüksek sesle olmamak kaydıyla ağlamakta sakınca yoktur.
+*Hasta veya ölünün yanında bulunduğunuzda hayır söyleyin; melekler söylediklerinize âmin derler.* (Müslim, 919; rivayetten bölüm)
 
-İbni Ömer (r.a)’dan rivayet edildiğine göre Resûlullah (s.a.v), yanında Abdurrahman İbn Avf, Sa’d İbn Ebû Vakkâs ve Abdullah İbn Mes’ûd (*Allah onlardan razı olsun*) bulunduğu halde Sa’d İbn Ubâde’yi ziyaret etti. Durumunu görünce Resûlullah (s.a.v) ağladı. Onun ağladığını gören sahâbîler de ağlamaya başladılar. Bunun üzerine Hz. Peygamber (s.a.v): *“Bilmez misiniz, gerçekten Allah, gözyaşı ve kalbin elemi sebebiyle kişiye azap etmez. Fakat – dilini işâret ederek– bunun yüzünden azap eder veya bağışlar”* buyurdu (Buhârî, Cenâiz,44)
+Hastane koridorunda bekleyen bir aile için sakin bir ses büyük bir destektir. Odaya girmeden hastanın ziyaret isteğini ve uygun zamanı öğrenelim. Yanında kalacağımız süreyi hâline göre ayarlayalım. Onun dinlenmesine fırsat verelim. Güzel söz bazen kısa bir duadır; bazen sorusunu dikkatle dinlemektir.
 
-## Cenazenin Yıkanması
+Allah’tan şifa dilerken tedavisine ve bakımına destek olalım. Hastanın yanında hastalığının sonu hakkında kesin tahminler yürütmek yerine ihtiyacını soralım. Su isteyip istemediğini bakım görevlisinin yönlendirmesiyle öğrenebiliriz. Yakınının biraz dinlenebilmesi için refakati paylaşabiliriz. Hastanın ne anlatacağına kendisi karar versin.
 
-Ölüyü yıkamak ona gusül aldırmak demektir ve bunu bilen herkes cenaze yıkayabilir. Ancak cenaze yıkamayı bilen bir akrabası veya onun görevlendireceği biri veya dini vecibelerini yerine getirmede titiz bir kimsenin yıkaması daha uygundur. Ölen kişi bir kimsenin kendisini yıkamasını vasiyet etmişse zorunlu olmamakla birlikte bu vasiyetin yerine getirilmesi uygun olur.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لَقِّنُوا مَوْتَاكُمْ لاَ إِلَهَ إِلاَّ اللَّهُ</p>
 
-### Cenazenin Nasıl Yıkanır
+*Ölmek üzere olanlarınıza lâ ilâhe illallah sözünü telkin edin.* (Müslim, 916a; ölüm döşeğindeki kişiye telkin)
 
-Cenaze kapalı bir mekânda teneşir üzerine ayakları kıbleye doğru gelecek şekilde sırt üstü yatırılır.
+Telkin, hastanın sevdiği birinin yanında kelime-i tevhidi incelikle söylemesidir. Onu tekrar etmeye zorlamadan hatırlatırız. Söylediğinde ısrarı bırakır, huzurunu gözetiriz. Konuşamayan hastanın imanını konuşma gücüyle ölçmeyiz. Rabbimiz kalplerde olanı bilir. (TDV İslâm Ansiklopedisi, Telkin.)
 
-Göbeğinden diz altına kadar bir örtü ile örtülür.
+Bir borcunu veya emanetini anlatmak isterse güvendiği kişiye ulaşmasına yardımcı olalım. Mahrem konuşmasını odadaki herkesin önünde sürdürmek zorunda bırakmayalım. Hastanın sesi kısılmış olabilir; kararlarına gösterdiğimiz saygı aynı titizlikle sürsün. Çocuklarıyla görüşmek istiyorsa ailenin ve bakım ekibinin yardımıyla uygun imkânı hazırlayalım.
 
-Teneşirin çevresine güzel kokular sıkılır.
+Uzakta bulunan yakınıyla görüşmesine yardımcı olmak da kıymetli bir hizmettir. Ekranı tutmak, işitmesine yardımcı olmak, görüşme yorucu hâle geldiğinde dinlenmesine fırsat vermek… Her küçük işte onun isteğini gözetelim. Merhamet, hastanın bize emanet ettiği sınırları da korur.
 
-Yıkama için niyet edilir ve besmele ile başlanır.
+**Hastanın başucunda en kıymetli hizmetimiz, huzurunu koruyan bir yakınlıktır.**
 
-Yıkama süresince sık sık غفرانك يا رحمن denilir.
+---
 
-Ele sarılan bez ile cenazenin edep yerleri yıkanır.
+<h2 class="vaaz-bolum-baslik" id="yas-ve-sabir" tabindex="-1">III. Gözyaşına yer, dile sabır</h2>
 
-Temyiz çağına gelmiş cenazeye namaz abdesti aldırılır; cenaze küçükse aldırılmaz.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ٱلَّذِينَ إِذَآ أَصَـٰبَتْهُم مُّصِيبَةٌ قَالُوٓا۟ إِنَّا لِلَّهِ وَإِنَّآ إِلَيْهِ رَٰجِعُونَ ۝١٥٦</p>
 
-Cenazenin bütün bedeni sabun vb. maddelerle iki defa yıkanır.
+*Onlar, başlarına bir musibet geldiğinde: Biz Allah’a aidiz ve O’na döneceğiz, derler.* (Bakara, 2/156)
 
-Hafifçe kaldırılarak karnı sıvazlanır ve vücudundan bir şey çıkarsa temizlenir.
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Efendimizin gözyaşı</p>
 
-Cenaze güzel koku ilave edilmiş su ile üçüncü defa yıkanır.
+Peygamber Efendimiz (s.a.s.), oğlu İbrâhim son nefeslerini verirken gözyaşı döktü. Abdurrahman b. Avf bu hâli sorunca, gözyaşının merhametten olduğunu bildirdi. Ardından kalbin hüznünü ve Allah’ın razı olduğu sözü birlikte anarak bize yasın edebini öğretti.
 
-Her bir yıkamada cenaze sol tarafına çevrilerek sağ tarafı, sağ tarafına çevrilerek sol tarafı yıkanır.
+(Buhârî, 1303; sahih rivayetin özeti.)
 
-Cenaze kurulanır ve kefenlenir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ الْعَيْنَ تَدْمَعُ، وَالْقَلْبَ يَحْزَنُ، وَلاَ نَقُولُ إِلاَّ مَا يَرْضَى رَبُّنَا</p>
 
-### Ölüyü Yıkama İşini Üstlenen Kimse Şu İki Hususa Dikkat Etmelidir:
+*Göz yaşarır, kalp hüzünlenir. Biz ancak Rabbimizin razı olacağı sözü söyleriz.* (Buhârî, 1303; rivayetten bölüm)
 
-1) Ölünün halini gizlemeli ve gördüğü hoş olmayan şeyleri anlatmamalıdır.
+Elinde mendille oturan bir anneden hemen toparlanmasını beklemeyelim. Sabır, acının ortasında Allah’a bağlı kalmaktır; ağlamak sabra aykırı değildir. Yakınını özleyen insan konuşmak istediğinde dinleyelim. Sessiz kalmak istediğinde yanında sükûnetle oturalım. Tesellinin de bir dinleme vakti vardır.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَلِيٍّ قَالَ: قَالَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) :“مَنْ غَسَّلَ مَيِّتًا وَكَفَّنَهُ وَحَنَّطَهُ وَحَمَلَهُ وَصَلَّى عَلَيْهِ وَلَمْ يُفْشِ عَلَيْهِ مَا رَأَى خَرَجَ مِنْ خَطِيئَتِهِ مِثْلَ يَوْمِ وَلَدَتْهُ أُمُّهُ.”</p>
+Vefat haberi aileye ulaşırken mahremiyetini gözetelim. Haberin yakınlarına uygun biçimde verilmesini bekleyelim. Bir telefon ekranındaki acele paylaşım, henüz haberi almamış bir evlâdı incitebilir. Ailenin iznini ve duyurunun doğruluğunu önemseyelim. Paylaşımımızı, ailenin duyurulmasını istediği bilgilerle sınırlayalım.
 
-Hz. Ali’nin (r.a.) naklettiğine göre, Resûlullah (s.a.v) şöyle buyurmuştur: ***“Kim bir ölüyü yıkar, onu kefenler, (kefenine) güzel koku sürer, (cenazesini) taşır, cenaze namazını kılar ve ölünün üzerinde gördüğü (olumsuz şeyleri) yaymazsa anasından doğduğu gibi günahlarından arınmış olur.”*** ( İbn Mâce, Cenâiz, 8)
+Resûlullah (s.a.s.), Ebû Seleme vefat ettiğinde gözlerini kapattı; onun bağışlanması ve geride kalan ailesi için dua etti. Böylece kayıp anında hem ölene hürmeti hem yaşayanlara ilgiyi gösterdi. Biz de gerekli işlemleri ehline bırakırken merhum için rahmet, yakınları için dayanma gücü dileyelim. (Müslim, 920a.)
 
-2) Ölüyü yıkamakla sadece Allah’ın rızasını aramalıdır. Herhangi bir karşılık, bir teşekkür ve dünya işlerinden herhangi bir şey beklememelidir.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي وَأَخْلِفْ لِي خَيْرًا مِنْهَا</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى أُمَامَةَ الْبَاهِلِيِّ قَالَ:…فَقَالَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) “ إِنَّ اللَّهَ لاَ يَقْبَلُ مِنَ الْعَمَلِ إِلاَّ مَا كَانَ لَهُ خَالِصًا وَابْتُغِيَ بِهِ وَجْهُهُ.”</p>
+*Allah’ım! Musibetim karşısında bana ecir ver ve bana onun ardından daha hayırlısını ihsan et.* (Müslim, 918a; rivayetten dua bölümü)
 
-Ebû Ümâme el-Bâhilî"nin naklettiğine göre Resûlullah (s.a.v) şöyle buyurmuştur: ***…“Allah, ancak samimiyetle sadece kendisi için ve rızası gözetilerek yapılan ameli kabul eder.”*** (Nesâî, Cihâd, 24)
+**Sabır, gözyaşının içinde Rabbimize tutunabilmektir.**
 
-## Kefenlemek
+---
 
-Ölen müslümanı bedeni örtecek şekilde kefenlemek farzdır. Erkeğin üç (Kamis, izâr, lifafe), kadının beş (Kamis, izâr, lifafe,baş örtüsü, göğüs örtüsü) parçadan oluşan kefen ile kefenlenmesi sünnettir.
+<h2 class="vaaz-bolum-baslik" id="yikama-ve-kefen" tabindex="-1">IV. Yıkama ve kefen: İnsanın hürmeti sürer</h2>
 
-Kefen, cenazenin yıkanıp kurulanmasında sonra sarıldığı bez olup bir yönüyle ölünün bedenini örtme görevi görür, bir yönüyle de insanın bu dünyadan bir şey götüremeyeceğini, doğduğu gibi sade bir şekilde gideceğinin temsil eder. Bunun için kefen yakasız, dikişsiz ve nakışsız sade bir bezden ibarettir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَقَدْ كَرَّمْنَا بَنِىٓ ءَادَمَ</p>
 
-## Cenaze Namazını Kılmak
+*Andolsun biz Âdemoğluna şan, şeref ve nimetler verdik.* (İsrâ, 17/70; âyetten bölüm)
 
-Cenaze namazı Allah’a ibadet, ölüye de dua niyetiyle kılınması farz-ı kifaye olan bir namazdır.
+Beyaz bir örtünün başında durduğumuzda, vaktiyle o ellerin tuttuğu ekmeği, o ayakların yürüdüğü yolları hatırlarız. Cenazenin bedeni de saygı ister. İnsan haysiyetini bildiren âyet bize geniş bir ahlak ufku açar. Cenaze hizmetindeki dikkatimiz, bu hürmetin görünür hâlidir.
 
-Maddî ve mânevî kirlerinden arınarak tertemiz, bembeyaz bir örtüyle bezenen cenaze musallaya getirilir, artık namaz için hazırdır. إِذَا صَلَّيْتُمْ عَلَى الْمَيِّتِ فَأَخْلِصُوا لَهُ الدُّعَاءَ *“Cenaze namazı kıldığınız zaman ölen kimseye samimiyetle dua edin.”*(Ebû Dâvûd, Cenâiz, 54) buyuran Allah Resûlü (s.a.v), ölen her mümin için namaz kılınmasını istemiştir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">كَسْرُ عَظْمِ الْمَيِّتِ كَكَسْرِهِ حَيًّا</p>
 
-Bu namazı kılmak suretiyle Müslümanlar, günahlarının affedilmesi, hatalarının giderilmesi, varacağı yerde cehennem azabından korunmuş bir şekilde selâmetle ve ikramla karşılanması için Yüce Rabbe niyaz ederek mümin kardeşlerini son yolculuğuna uğurlarlar.
+*Ölünün kemiğini kırmak, hayattayken kırmak gibidir.* (Ebû Dâvûd, 3207; sahih)
 
-<p lang="ar" dir="rtl" class="ayet">وعنه، أنَّ رسولَ الله صلى الله عليه وسلم قال: مَنِ اتَّبَعَ جِنَازَةَ مُسْلِمٍ إيمَاناً وَاحْتِسَاباً، وَكَانَ مَعَهُ حَتَّى يُصَلَّى عَلَيها وَيُفْرَغَ مِنْ دَفْنِها، فَإنَّهُ يَرْجِعُ مِنَ الأَجْرِ بِقِيرَاطَيْنِ كُلُّ قِيرَاطٍ مِثْلُ أُحُدٍ، وَمَنْ صلَّى عَلَيْهَا، ثم رَجَعَ قَبْلَ أَنْ تُدْفَنَ، فَإنَّهُ يرجعُ بِقِيرَاطٍ.</p>
+<p class="vaaz-etiket">Fıkhî Ölçü — Hizmetin ehliyeti ve mahremiyeti</p>
 
-Ebû Hüreyre (r.a)’den rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu: *“Kim, sevâbına inanarak, karşılığını sadece Allah’tan bekleyerek bir müslüman cenazesi ile birlikte gider ve namazı kılınıp gömülünceye kadar beklerse, her biri Uhud dağı kadar olan iki kîrât sevapla döner. Kim de cenaze namazını kılar, defnolunmadan önce ayrılırsa bir kîrât sevapla döner. ”* (Buhârî, İmân,35)
+Cenazeyi usulünü bilen güvenilir kişiler, kapalı bir yerde yıkar. Mahrem yerleri örtülür; beden incitilmeden temizlenir. Esas olarak erkek cenazeyi erkekler, kadın cenazeyi kadınlar yıkar. Eşler, küçük çocuklar ve zaruret durumlarının ayrıntıları için ehil kişiye başvurulur.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائشةَ رَضِيَ الله عَنها قَالَتْ: قالَ رسولُ الله صلى الله عليه وسلم: مَا مِنْ مَيِّتٍ يُصَلِّي عَليهِ أمَّةٌ مِنَ المُسْلِمِينَ يَبْلُغُونَ مائَةً كُلُّهُم يَشْفَعُونَ له إلا شُفِّعُوا فِيهِ.</p>
+(İlmihal, I, Cenazenin Yıkanması; TDV İslâm Ansiklopedisi, Cenaze.)
 
-Hz. Âişe (r.a)’dan rivayet edildiğine göre Resûlullah (s.a.v) şöyle buyurdu: ***“Herhangi bir ölüye, sayıları yüzü bulan bir cemaat namaz kılar ve hepsi de ona şefaatçi olursa, onların bu duaları kabul olunur. ”*** (Müslim, Cenâiz,58)
+Görevli, gördüklerini emanet bilir. Yüzün rengi veya bedendeki bir değişiklik üzerinden kişinin âhireti hakkında hüküm vermez. Yıkama yerinde telefonla görüntü almak yerine mahremiyeti korur. Ailenin merakını da ölçülü bilgiyle karşılar. Cenaze hizmeti, insanın kendisini savunamadığı bir anda onun onurunu gözetmektir.
 
-<p lang="ar" dir="rtl" class="ayet">عنِ ابن عباسٍ رضيَ الله عنهما قال: سَمِعْتُ رَسُولَ الله صلى الله عليه وسلم يَقُولُ: مَا مِنْ رَجُلٍ مُسْلِمٍ يَمُوتُ، فَيَقُومُ عَلى جِنَازَتِهِ أَرْبَعُونَ رَجُلاً لاَ يُشْرِكُونَ بِاللّه شَيْئاً إلاَّ شَفَّعَهُمُ الله فِيهِ.</p>
+Hanefî ilmihal geleneğinde sünnete uygun kefen erkek için üç, kadın için beş parçadır. Zaruret hâlinde bütün bedeni örten kumaş yeterli olur. Beyaz ve sade bir kefen tercih edilir. Bu sadelik bize eşitliğimizi hatırlatır. Önemli olan, bedeni usulünce ve özenle örtmektir. (İlmihal, I, Cenazenin Kefenlenmesi.)
 
-İbn Abbas (r.a)’dan rivayet edildiğine göre Resûlullah (s.a.v)’i şöyle buyururken dinledim dedi: ***“Bir müslüman ölür de cenaze namazını Allah’a şirk koşmamış kırk kişi kılarsa, Allah onların cenaze hakkındaki dualarını kabul eder. ”*** (Ebû Dâvûd, Cenâiz,41)
+Hizmeti üstlenen kadın ve erkek görevlilerin emeğini takdir edelim. Gerekli malzemenin hazır tutulması ve yeni gönüllülerin eğitim alması için destek olalım. Yaslı aile, kime başvuracağını önceden bilsin. Özellikle yalnız yaşayan kardeşlerimizin hizmete ulaşmasını cemaat olarak takip edelim. Kimse tanıdığı az olduğu için sahipsiz kalmasın.
 
-### Cenaze Namazının Kılınışı
+Cenazeyi yıkayan kişinin bilmediği bir durumla karşılaştığında yardım istemesi de ehliyetin parçasıdır. Bedenin zarar görme ihtimali bulunan özel hâllerde uygulanacak hüküm ayrıca öğrenilir. Aileye bu süreç anlaşılır bir dille açıklansın. Güven, yapılan işe gösterilen dikkat ve verilen doğru bilgiyle büyür.
 
-Cenaze kıble tarafına, cemaatin önüne, başı imamın sağ tarafına gelecek şekilde konulur.
+**Cenazenin mahremiyetini korumak, insanın hürmetini son ana kadar taşımaktır.**
 
-İmam cenazenin göğsünün hizasına durur.
+---
 
-Cenazenin kadın, erkek, kız ya da erkek çocuğu olduğu belirtilerek niyet edilir.
+<h2 class="vaaz-bolum-baslik" id="cenaze-namazi" tabindex="-1">V. Cenaze namazı: Aynı safta samimi dua</h2>
 
-Eller kulak hizasına kadar kaldırılarak ilk tekbir olan başlama tekbiri imam tarafından sesli, cemeaat tarafından sessiz bir şekilde alınır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا صَلَّيْتُمْ عَلَى الْمَيِّتِ فَأَخْلِصُوا لَهُ الدُّعَاءَ</p>
 
-Sessizce, “ve celle senaük” ifadesi ile beraber “Sübhaneke” duası okunur.
+*Cenaze namazı kıldığınızda ölen kimse için samimiyetle dua edin.* (Ebû Dâvûd, 3199; hasen)
 
-Eller kaldırılmadan ikinci tekbir alınır.
+**Muhterem Müslümanlar! Musallânın önünde kardeşimiz için rahmet isteyen bir saf oluruz.**
 
-Sessizce “Allahümme salli” ve “Allhümme bârik” duaları okunur.
+O safta hayatın farklı yollarından gelmiş insanlar yan yana durur. Bir komşu, iş arkadaşı veya yıllardır görüşülmeyen dost aynı duaya katılır. Cenaze namazı Allah’a ibadet, vefat eden Müslümana duadır. Abdestli olarak kıbleye yönelir, imamla birlikte niyet ederiz. Namaz ayakta, rükû ve secde olmadan kılınır.
 
-Eller kaldırılmadan üçüncü tekbir alınır.
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Hanefî uygulamasında dört tekbir</strong> Dualar içten okunur; ilk tekbirde kaldırılan eller sonraki tekbirlerde kaldırılmaz.</figcaption>
+<table aria-label="Hanefî uygulamasında dört tekbir">
+<thead><tr><th scope="col">Sıra</th><th scope="col">Ne yaparız?</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Sıra">Birinci tekbir</th><td data-label="Ne yaparız?">Elleri bağlar, “ve celle senâüke” ilâvesiyle Sübhâneke’yi okuruz.</td></tr>
+<tr><th scope="row" data-label="Sıra">İkinci tekbir</th><td data-label="Ne yaparız?">Allahümme salli ve Allahümme bârik dualarını okuruz.</td></tr>
+<tr><th scope="row" data-label="Sıra">Üçüncü tekbir</th><td data-label="Ne yaparız?">Cenaze duasını okur, ölene ve müminlere bağışlanma dileriz.</td></tr>
+<tr><th scope="row" data-label="Sıra">Dördüncü tekbir</th><td data-label="Ne yaparız?">Ardından sağa ve sola selâm veririz.</td></tr>
+</tbody></table>
+</figure>
 
-Cenaze duası okunur, bilmeyenler Fâtiha suresini dua niyetiyle okuyabilir.
+Cenaze duasını bilmeyen uygun başka bir dua okuyabilir; Fâtiha’yı dua niyetiyle okuyabilir. Meşru mezhep farklılıkları bulunduğu için yanımızdaki kişinin farklı uygulamasını saygıyla karşılarız. Namazdan önce bilmediğimizi imama sormak, safımızdaki huzuru güçlendirir. (İlmihal, I, Cenaze Namazının Kılınışı.)
 
-Eller kaldırılmadan dördüncü tekbir alınır.
+Kadınlar da cenaze namazına katılabilir. Namazı öğrenmek isteyen gencimize ve yeni Müslüman kardeşimize önceden yardımcı olalım. Kırk ve yüz kişinin duasına ilişkin sahih rivayetler, cemaatin duasına teşviktir; geçerlilik için sayı şartı değildir. Az kişiyle uğurlanan kardeşimizi de aynı samimiyetle dua ederek uğurlarız. (Müslim, 947, 948; İlmihal, I.)
 
-Önce sağa, sonra sola selam verilir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنِ اتَّبَعَ جَنَازَةَ مُسْلِمٍ إِيمَانًا وَاحْتِسَابًا، وَكَانَ مَعَهُ حَتَّى يُصَلَّى عَلَيْهَا، وَيَفْرُغَ مِنْ دَفْنِهَا، فَإِنَّهُ يَرْجِعُ مِنَ الأَجْرِ بِقِيرَاطَيْنِ</p>
 
-## Cenazeyi Taşımak ve Defnetmek
+*Bir Müslümanın cenazesine imanla ve sevabını Allah’tan bekleyerek katılıp namazı kılınana ve defni bitene kadar kalan kişi iki kırât ecirle döner.* (Buhârî, 47; rivayetten bölüm)
 
-Cenaze namazı kılınmış bir ölünün kabre kadar taşınması müslümanlar üzerine farz-ı kifayedir. Cenazeyi bekletmeden defnetmek ise müstehaptır.
+Efendimiz aynı rivayette her kırâtın Uhud dağı gibi olduğunu bildirir. Bu büyük müjde, samimiyetle atılan adımın değerini gösterir. Cenazeye katılırken niyetimizi tazeleyelim; gönlümüzü dua için hazır edelim.
 
-Ölen kimse, sevdiklerinin omuzlarında, sevgi ve saygı hisleriyle kabrine taşınır. Omuzlar üzerinde son yolculuğuna uğurlanan mümin, yeni bir hayata başlamadan önce kalacağı mekâna, kabre getirilir.
+**Musallâdaki saflarımızı birleştiren, kardeşimiz için dilediğimiz rahmettir.**
 
-<p lang="ar" dir="rtl" class="ayet">عن أبي هُرَيْرَةَ رَضِيَ الله عَنْهُ، عَنِ النَّبِيِّ صلى الله عليه وسلم قال: أَسْرِعُوا بِالجِنَازَةِ، فَإنْ تَكُ صَالِحَةً، فَخَيْرٌ تُقَدِّمُونَهَا إلَيْهِ، وَإنْ تَكُ سِوَى ذلِكَ، فَشَرٌّ تَضعُونَهُ عَنْ رِقَابِكُم.</p>
+---
 
-Ebû Hüreyre (r.a)’den rivayet edildiğine göre Hz. Peygamber (s.a.v) şöyle buyurdu: *“Cenâzeyi süratli taşıyın. Eğer o iyi bir kişi ise, bu onun için bir hayırdır; onu bir an evvel kabirdeki hayır ve sevabına kavuşturmuş olursunuz. Yok eğer iyi bir kişi değilse, bu da bir şerdir; onu çabucak omuzlarınızdan atmış olursunuz*.” (Buhârî, Cenâiz,52)
+<h2 class="vaaz-bolum-baslik" id="defin-ve-dua" tabindex="-1">VI. Kabir başında vakar ve dua</h2>
 
-<p lang="ar" dir="rtl" class="ayet">عن أبي سعيدٍ الخُدْرِيِّ رضي الله عنه قَالَ: كَانَ النَّبِيُّ صلى الله عليه وسلم يَقُولُ: إذا وُضِعَتِ الجِنَازَةُ، فَاحْتَمَلَهَا الرِّجَالُ عَلى أَعْنَاقِهِمْ، فَإنْ كَانَتْ صَالِحَةً، قَالَتْ: قَدِّمُوني، وَإنْ كَانَتْ غَيْرَ صَالِحَةٍ، قَالَتْ لأَهْلِهَا: يَا وَيْلَهَا أَيْنَ تَذْهَبُونَ بِهَا؟ يَسْمَعُ صَوْتَهَا كُلُّ شَيْءٍ إلاَّ الإنْسانَ، وَلَوْ سَمعَ الإنْسَانُ لَصَعِقَ.</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اسْتَغْفِرُوا لأَخِيكُمْ وَسَلُوا لَهُ التَّثْبِيتَ فَإِنَّهُ الآنَ يُسْأَلُ</p>
 
-Ebû Sa’îd el–Hudrî (r.a)’den rivayet edildiğine göre Hz. Peygamber (s.a.v) şöyle buyurdu: *“Ölü tabuta konup da erkekler onu omuzlarına aldıkları zaman, eğer o iyi bir kişi ise; “beni bir an önce yerime ulaştırınız!” der; eğer iyi biri değilse, “eyvah, beni bu tabut ile nereye götürüyorsunuz?” diye feryat eder. Ölünün bu seslenişini insanlardan başka her yaratık işitir. Şayet insan bu sözleri işitecek olsaydı, düşüp bayılırdı. ”* (Buhârî, Cenâiz,51)
+*Kardeşiniz için bağışlanma isteyin ve onun için sebat dileyin; çünkü o şimdi sorgulanmaktadır.* (Ebû Dâvûd, 3221; rivayetten bölüm; sahih)
 
-Cenaze taşınırken vakar içinde takip edilmeli, gerekmedikçe konuşulmamalıdır. Cenazenin taşınmasına ve defnedilmesine katılanlar bir gün kendi hayatlarının da sona ereceğini, Allah’a karşı kulluk görevlerinde ne kadar kusurlu olduklarını düşünmeli ve bu vesile ile iyi bir kul olma niyet ve azimlerini pekiştirmelidir.
+Toprağa son kürek atıldığında kalabalığın sesi yavaşlar. Biraz önce ellerimizle yaptığımız hizmeti şimdi duamızla sürdürürüz. Efendimiz (s.a.s.) defin bittikten sonra bir müddet kabir başında durur, kardeşimiz için mağfiret ve sebat istememizi öğretirdi. Rabbimizden onun hesabını kolaylaştırmasını dileriz.
 
-## Defin Sonrası Dua ve Telkin
+Cenazeyi gereksiz yere bekletmeden hazırlamak ve defnetmek esastır. Peygamberimiz cenazenin taşınmasında acele edilmesini öğütlemiştir. Bunu vakar içinde, güvenliği ve gerekli işlemleri gözeterek uygularız. Resmî işlemler, ölümün tespiti veya nakil hazırlığı için gereken süreyi aileye baskı sebebi yapmayız. (Buhârî, 1315; TDV İslâm Ansiklopedisi, Cenaze.)
 
-Cenaze defnedildikten sonra cemaatin mezarlıktan ayrılmayıp kabrin başında Kur’an okuyup dua etmeleri müstehap kabul edilmiştir. Hz. Peygamber (s.a.v) cenazenin defin işlemi bittikten sonra hemen dönmeyip bir müddet kabrin başında beklemiş ve cemaate dönerek ***“Kardeşiniz için Allah Teâlâ’dan mağfiret isteyiniz ve kendisine sükûnet vermesini dileyiniz. O şimdi sorguya çekilmektedir”*** (Ebû Dâvûd, Cenaiz, 69) buyurmuştur.
+Defin yerinin hazırlanması ve cenazenin kabre yerleştirilmesi ehil kişilerce yürütülsün. Mezarlık yolunda yardıma ihtiyaç duyan büyüğümüze kol verelim. Tekerlekli sandalye kullanan kardeşimizin ulaşımını önceden düşünelim. İbadete katılma arzusu, küçük bir düzenlemeyle kolaylaşabilir. **Son görevimiz, gideni hürmetle uğurlamak ve kalanı merhametle gözetmektir.**
 
-Kabrin başında önce Yâsin, Mülk, Vâkıa, İhlas, Felak ve Nâs sûreleri devamında Fâtiha ile Bakara sûresinin ilk beş âyetinin okunması tavsiye edilmiştir. Bu sureler okunduktan sonra sevabı cenazenin ve diğer müminlerin ruhlarına hediye edilir; ölünün bağışlanması için Allah’a dua edilir.
+<p class="vaaz-etiket">Fıkhî Ölçü — Definden sonraki telkinin yeri</p>
 
-Telkin yapılması caizdir. Telkin, kabrin toprakla doldurulmasından, Kur’an-ı Kerim okunup dua edilmesinden sonra bir kişinin kabrin başında kalıp ölüye iman esaslarını yüksek sesle söyleyerek hatırlatmasıdır.
+Defin sonrasındaki dua sahih rivayetle sabittir. Ölüye iman esaslarını hatırlatma anlamındaki telkin ise ihtilâflıdır. Hanefî gelenekte yaygın görüş bunu mubah kabul eder; Şâfiî âlimler arasında müstehap görenler vardır. Aileyi bir uygulamaya zorlamadan, görüş ayrılığını nezaketle karşılarız.
 
-## Taziye, Sadaka, Yemek ve Öleni Hayırla Anmak
+(TDV İslâm Ansiklopedisi, Telkin; Ebû Dâvûd, 3221.)
 
-Ölünün yakınlarına mümkün olduğu kadar teselli edici ve rahatlatıcı cümleler söylenmesi, onların üzüntülerinin paylaşılmasına taziye denir. Hz. Peygamber (s.a.v) birçok defa taziyede bulunmuş ve ashabını taziye konusunda teşvik etmiştir.
+Kur’an okuyup sevabını bağışlama konusunda ilmihal geleneğinde cevaz vardır. Belirli sûreleri belli sırayla okumayı herkesin yerine getirmesi gereken bir görev gibi sunmayalım. Kabir başındaki birlikteliğimiz dua ve hürmetle sürsün. Dönüş yolunda ise ailenin evine kimin eşlik edeceğini konuşalım.
 
-Ölünün velisi defnin ertesi gününden başlayarak yedinci gününe kadar imkânı ölçüsünde fakirlere sadaka vermeye gayret etmeli ve sevabını ölüye bağışlamalıdır. Bu bir sünnettir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">۞ مِنْهَا خَلَقْنَـٰكُمْ وَفِيهَا نُعِيدُكُمْ وَمِنْهَا نُخْرِجُكُمْ تَارَةً أُخْرَىٰ ۝٥٥</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ رَضيَ الله عَنْهَا، أَنَّ رَجُلاً قال للنَّبِيِّ صلى الله عليه وسلم: إنَّ أُمِّي افْتلُتتْ نَفْسُها وأُرَاهَا لَو تَكَلَّمَتْ، تَصَدَّقَتْ، فَهَل لَها أَجْرٌ إن تَصَدَّقْتُ عَنْهَا؟ قال: نَعَمْ</p>
+*Sizi topraktan yarattık; yine oraya döndüreceğiz ve bir kez daha oradan çıkaracağız.* (Tâhâ, 20/55)
 
-Hz. Âişe (r.a)’dan rivayet edildiğine göre, Peygamber (s.a.v)’e bir adam; Annem ansızın öldü. Öyle sanıyorum ki, şayet konuşabilseydi, sadaka verilmesini vasiyyet ederdi. Şimdi ben onun adına sadaka versem, sevabı ona ulaşır mı? diye sordu. Nebî (s.a.v) de: *“Evet”* buyurdu. (Buhârî, Cenâiz, 95)
+Kur’an toprağa dönüşü yeniden dirilişle birlikte hatırlatır. Bir avuç toprağın başında geleceğimizi düşünürken Rabbimizin kudretine güveniriz. Bugün yaptığımız duanın ardından, kendi hayatımızda düzeltmemiz gereken bir davranışa karar verelim.
 
-Cenaze sahiplerinin ölünün ardından belirli günlerde yemek vermeleri konusunda herhangi bir sünnet bulunmamaktadır.
+**Kabir başındaki duamız, eve dönen aileye göstereceğimiz ilgiyle devam etsin.**
 
-Çoğu yöremizde bu yemek verme âdeti cenaze sahipleri için büyük sıkıntılara sebep olmakta ve yanlış şekilde dinî bir görev gibi algılanmaktadır. Cenaze sahipleri gerek üzüntüleri gerekse gelenlerle ilgilenmeleri sebebiyle yemek hazırlamada zorluk çekeceklerinden, bazı yörelerimizde görüldüğü üzere ilk üç gün boyunca komşuların yemek hazırlayıp getirmeleri güzel bir adettir. Nitekim Peygamber Efendimiz (s.a.v), Mute Harbi’nde Ca’fer b. Ebû Tâlib’in şehit olduğu haberi gelince, *“Ca’fer ailesi için yemek hazırlayın, çünkü başlarına kendilerini meşgul edecek bir hâl geldi.”* (Tirmizî, Cenâiz, 21) buyurarak bu yönde tavsiyede bulunmuştur.
+---
 
-### Ölen Kişiyi Hayırla Anmak
+<h2 class="vaaz-bolum-baslik" id="taziye-ve-destek" tabindex="-1">VII. Taziye: Yaslı evin yükünü hafifletmek</h2>
 
-Hz. Peygamber (s.a.v) ***“Ölülerinizin güzel işlerini yâdedin, kötü taraflarını dile getirmeyin”*** (Tirmizî, Cenâiz, 34) diyerek ölenlerin hayırla anılmasını, iyi taraflarının ön plana çıkarılmasını tavsiye etmiştir. İyiliği ile tanınan kişide görülen güzel hasletleri anlatmak ise hem rahmete vesile hem de başkalarına iyi örnek olması düşüncesiyle müstehap sayılmıştır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَتَعَاوَنُوا۟ عَلَى ٱلْبِرِّ وَٱلتَّقْوَىٰ</p>
 
-<p lang="ar" dir="rtl" class="ayet">عن أنسٍ رضي الله عنه قال: مَرُّوا بجِنَازَةٍ، فَأَثْنَوا عَلَيْهَا خَيْراً، فقال النبيُّ صلى الله عليه وسلم: وَجَبَتْ. ثم مَرُّوا بِأُخْرَى، فَأَثْنَوْا عَليها شَرًّا، فَقَالَ النَّبِيُّ صلى الله عليه وسلم: وَجَبَتْ، فَقَالَ عُمَر بنُ الخَطَّابِ رَضِيَ الله عَنْهُ: ما وجَبَتْ؟ قَالَ: هَذا أَثْنَيْتُمْ عَلَيْهِ خَيراً، فَوَجَبَتْ لَهُ الجَنَّةُ، وهذا أَثنَيتُم عليه شَرًّا، فَوَجَبَتْ لَهُ النَّارُ، أَنتُم شُهَداءُ الله في الأرضِ.</p>
+*İyilik ve takvâ hususunda yardımlaşın.* (Mâide, 5/2; âyetten bölüm)
 
-Enes (r.a) şöyle dedi: Hz. Peygamber (s.a.v), bazı sahâbîler ile birlikte bulunurlarken onların yanından bir cenaze geçti. Ashâptan bazıları o cenazeyi hayırla anı. Bunun üzerine Nebî (s.a.v): “***Kesinleşti***” buyurdu. Sonra bir cenaze daha geçti. Orada bulunanlar onu da kötülükle andılar. Resûl–i Ekrem (s.a.v) yine: “***Kesinleşti***” buyurdu. Bunun üzerine Ömer İbnu’l–Hattâb (r.a.): Ne kesinleşti Ya Resûlallah? diye sordu. Peygamber (s.a.v) da şöyle buyurdu: “*Şu önce geçen cenazeyi hayırla andınız; bu sebeple onun cennete girmesi kesinleşti. Bu berikini kötülükle andınız; onun da cehenneme girmesi kesinleşti. Çünkü siz (mü’minler), yeryüzünde Allah’ın şahitlerisiniz. ”* (Buhârî, Cenâiz,86)
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Ca‘fer ailesi için hazırlanan yemek</p>
 
-## Cenaze İle İlgili Bidatler
+Ca‘fer b. Ebû Tâlib’in ölüm haberi geldiğinde Peygamber Efendimiz (s.a.s.), geride kalan ailesinin ihtiyacını gözetti. Yakınlarına yemek ulaştırılmasını isteyerek taziyenin gündelik yükü paylaşan yönünü gösterdi.
 
-Öldüğü gün yahut daha sonra yemek yapılmasını, ziyafet verilmesini, ruhuna Kur’an okuyan yahut onun için tesbih ve tehlil getiren kimselere belli miktarda bir paranın verilmesini vasiyet etmek.
+(Tirmizî, 998; Tirmizî’nin kendi değerlendirmesiyle hasen.)
 
-Iskat-ı salât yapmak. Cenazenin defninden sonra yapılan devir ve ıskat işlemleri ölenin günahlarının bağışlanmasına vesile olabilir temennisiyle sonradan ihdas edilmiştir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اصْنَعُوا لأَهْلِ جَعْفَرٍ طَعَامًا فَإِنَّهُ قَدْ جَاءَهُمْ مَا يَشْغَلُهُمْ</p>
 
-Kabrin üzerinde namaz kılmak, üzerine mescit inşa etmek, buralarda mum yakmak ve bez bağlamak da bidattir.
+*Ca‘fer ailesi için yemek hazırlayın; çünkü başlarına kendilerini meşgul eden bir hâl geldi.* (Tirmizî, 998; hasen)
 
-Ölünün ardından; yedisi, kırkı veya elli ikisi gibi belli gün ve gecelerde mevlid veya hatim gibi merasimler tertib etmek.
+O evin mutfağında ocak soğuk kalabilir. Gelen telefonlar, yetiştirilecek işler ve çocukların ihtiyaçları birbirine karışabilir. Kapıyı çalan komşunun getirdiği bir tencere yemek, Kur’an’ın yardımlaşma çağrısını görünür kılar. Taziye, acı içindeki aileye nefes alacak bir aralık açmaktır.
 
-Ölünün ardından feryâd ü figān ederek ağlamak.
+Ziyareti ailenin uygun vaktinde yapalım. “Allah rahmet eylesin, size sabır versin” diyerek yanlarında olduğumuzu hissettirelim. Uzun konuşmalarla yorgunluklarını artırmak yerine ihtiyaçlarını dinleyelim. Ailenin misafirlere yemek yetiştirmesini beklemeyelim. Bu sofranın hizmetini yakınlar ve komşular paylaşsın.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Taziyeyi gündelik desteğe çevirelim</strong> Ailenin isteğini öğrenerek bir işi üstlenebiliriz.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Yemek veya alışveriş desteğini, uygun gün ve kişi sayısını sorarak ulaştıralım.</dd></div>
+<div><dt>Okulda ve işte</dt><dd>Ailenin izniyle haber verilmesine ve çocuğun günlük düzenine yardımcı olalım.</dd></div>
+<div><dt>Sonraki haftalarda</dt><dd>Yeniden arayalım; bir randevuya eşlik etmeyi veya ev işini paylaşmayı teklif edelim.</dd></div>
+</dl>
+</figure>
+
+Yaslı bir çocuk aynı soruyu tekrar tekrar sorabilir. Bildiğimiz gerçeği yaşına uygun, sade sözlerle anlatalım; merakını sabırla dinleyelim. Bir yetişkin de kendisine söylenenleri ilk anda hatırlamakta zorlanabilir. Yapacağımız yardımı açıkça konuşalım ve verdiğimiz sözü tutalım. İlgimizin devam edeceğine güvenebilsin.
+
+Yardımı sürdürebilmek için birkaç kişi aramızda görev paylaşabiliriz. Aynı gün üst üste gelen yemekler yerine ihtiyaca uygun bir sıra belirleyelim. Aileye hangi gün ne getireceğimizi bildirelim. Vereceğimiz desteğin zamanı belli olsun; yaslı insan bizi ağırlamak için hazırlık yapmak zorunda kalmasın.
+
+**Taziyenin bereketi, aileye taşıdığımız kolaylıkta görünür.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="borc-ve-emanet" tabindex="-1">VIII. Borçlar ve emanetler: Vefanın hesap veren yüzü</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا۟ ٱلْأَمَـٰنَـٰتِ إِلَىٰٓ أَهْلِهَا</p>
+
+*Allah size, emanetleri mutlaka ehline vermenizi emreder.* (Nisâ, 4/58; âyetten bölüm)
+
+Bir çekmeceden çıkan borç notu, emanet bırakılmış bir anahtar, ortaklığa ait bir dosya… Vefatın ardından bunlar da bizim sorumluluk alanımıza girer. Merhumun adını hayırla anarken geride kalan hak ilişkilerini titizlikle ele alırız. Emaneti korumak bazen bir belgeyi bulup sahibine ulaştırmak kadar somuttur.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*Borçlu bir kişinin cenazesi getirildiğinde Ebû Katâde onun borcunu üstlendi; bunun üzerine Peygamberimiz cenaze namazını kıldırdı.* (Buhârî, 2289; sahih rivayetteki olayın ilgili kısmının özeti)
+
+Bu olay borcun ciddiyetini öğretir. Cenaze namazını kılarken de hak sahiplerinin hakkını gözetmeye devam ederiz. Dinî usulde makul teçhiz ve defin giderleri, borçlar ve geçerli vasiyetler gözetilerek mirasın paylaşımına geçilir. Belgeler ehil kişilere gösterilsin. Avrupa’da farklı hukuk düzenleriyle ilgili işlemlerde de uzman desteği alınsın. (TDV İslâm Ansiklopedisi, Cenaze; İlmihal, I.)
+
+Musallâda helâllik istemek güzel bir barışma çağrısı olabilir; fakat bir alacağı kendiliğinden ortadan kaldırmaz. Hak sahibi özgür iradesiyle bağışlar veya alacağını talep eder. Acılı bir anda kalabalığın önünde kimseyi cevap vermeye zorlamayalım. Hakkın takibi, merhuma vefanın da parçasıdır.
+
+Mirası henüz paylaşılmamış bir evde yemek, bağış ve tören harcamaları konuşulurken bütün hak sahipleri gözetilsin. Çocuğun payı ve itirazını dile getirmekte zorlanan kişinin hakkı özellikle korunsun. Hayır yapmak isteyen, kendi malından ve imkânından versin. Aile içinde açık konuşmak, ileride büyüyebilecek kırgınlıkları önler.
+
+Bu öğüdü kendi hayatımıza da çevirelim. Borcumuzu, alacağımızı ve emanet aldığımız eşyayı anlaşılır biçimde kaydedelim. Gerektiğinde hangi güvenilir kişinin bu kayıtlara ulaşabileceğini belirleyelim. Bugün düzenleyeceğimiz bir dosya, yarın sevdiklerimizin yükünü hafifletebilir. İyilik bazen düzenli tutulmuş küçük bir kayıttır.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِن كَانَ ذُو عُسْرَةٍ فَنَظِرَةٌ إِلَىٰ مَيْسَرَةٍ</p>
+
+*Eğer eli darda olan birisi borçlu ise eli genişleyene kadar beklemek gerekir.* (Bakara, 2/280; âyetten bölüm)
+
+Bu genel ölçü, hakkımızı ararken merhameti korumayı öğretir. Bağışlamaya karar veren kişi bunu gönüllüce yapar. Yaslı aileyle görüşürken açık kayıt, uygun zaman ve yumuşak bir dil kullanalım.
+
+**Geride temiz bir hesap bırakmak, sevdiklerimize gösterdiğimiz vefadır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="gurbette-cenaze" tabindex="-1">IX. Gurbette cenaze: Hiç kimse kimsesiz kalmasın</h2>
+
+**Sevgili gençler! Dil bilginiz, dikkatiniz ve zamanınız bir ailenin yükünü hafifletebilir.**
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا۟ بَيْنَ أَخَوَيْكُمْ ۚ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُرْحَمُونَ ۝١٠</p>
+
+*Müminler ancak kardeştirler; öyleyse iki kardeşinizin arasını düzeltin. Allah’a itaatsizlikten sakının ki rahmetine mazhar olasınız.* (Hucurât, 49/10)
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Hastane koridorundaki dosya</p>
+
+Liège’de bir hastane koridorunda genç bir kadın, babasının vefatından sonra elindeki dosyaya bakıyor. Annesi Türkçe konuşuyor; görüşmeler başka bir dilde ilerliyor. Yanlarına gelen bir cemaat mensubu, kiminle görüşmeleri gerektiğini öğrenmelerine yardımcı oluyor. Bir başkası evdeki çocuğu okuldan almayı teklif ediyor. Küçük işler paylaşıldıkça aile nefes alıyor.
+
+Herkesin yakınları aynı şehirde yaşamıyor. Kimi kardeşimizin akrabası başka bir ülkede, kiminin ise arayacak kimsesi çok az. Yeni Müslüman olmuş bir insanın ailesi cenaze ibadetlerimizi tanımayabilir. Böyle bir aileye sakin açıklamalarla eşlik edelim. Merhumun inancına uygun hizmeti saygıyla anlatalım; yakınlarının acısını dinleyelim.
+
+Defin veya memlekete nakil konuşulurken ailenin imkânlarını ve meşru tercihlerini gözetelim. İlgili kurumlarla görüşen bir irtibat kişisi belirlemek karışıklığı azaltır. Gerekli belgeleri yetkili birimlerden öğrenelim. Burada veya başka yerde defnedilme tercihinden insanın imanına değer biçmeyelim. Hangi şehirde olursa olsun hürmet ve dua bizim görevimizdir.
+
+<blockquote class="vaaz-siir">
+<p>Gelin tanış olalım<br>
+İşi kolay kılalım<br>
+Sevelim sevilelim<br>
+Dünya kimseye kalmaz.</p>
+<footer>— Yunus Emre; Anadolu’nun Gönül Dili Yunus Emre, “Yunus’a Mektup” bölümünde aktarılan dörtlük.</footer>
+</blockquote>
+
+Bu sözlerin cenaze günündeki karşılığı, işi gerçekten kolaylaştırmaktır. Başsağlığı dileyen farklı inançtaki komşumuza teşekkür edelim. Anlamadığı bir uygulamayı nezaketle açıklayalım. Kadın ve erkek gönüllüler birlikte sorumluluk alsın. Yardımı organize ederken ailenin özel bilgilerini yalnız gerekli kişilerle paylaşalım.
+
+Ayrıca ailedeki farklı görüşlerin sükûnetle konuşulmasına yardımcı olalım. Kardeşlerin birbirini dinlemesi için zaman ayıralım. Kur’an’ın arayı düzeltme çağrısı burada da yolumuzu aydınlatır. Kayıp günündeki ortak acımız, birbirimizi daha dikkatle dinlememize vesile olsun.
+
+**Gurbette kardeşlik, zor günde ulaşılabilir bir insan olmaktır.**
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/ahiret-yolcusuna-son-gorevlerimiz/dayanisma.svg" width="1600" height="900" alt="Bir kapı eşiğinde kapalı yemek kabını birbirine uzatan iki çift el." loading="lazy" decoding="async">
+<figcaption><strong>Bir yükü paylaşmak</strong> Yaslı bir eve ulaşan küçük destek, kardeşliğin görünür hâlidir.</figcaption>
+</figure>
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hayir-ve-olcu" tabindex="-1">X. Hayır sürsün, merasim yük olmasın</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُۥ ۝٧</p>
+
+*Kim zerre miktarı hayır yapmışsa onun karşılığını görür.* (Zilzâl, 99/7)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*Bir kişi, ansızın vefat eden annesi adına sadaka verirse ona sevap ulaşıp ulaşmayacağını sordu. Peygamberimiz: Evet, buyurdu.* (Buhârî, 1388; anlam aktarımı)
+
+Bir öğrencinin masasındaki kitap, ihtiyaç sahibine ulaşan bir yiyecek, herkesin yararlandığı bir hizmet… İyilik için önümüzde açık kapılar var. Sadakamızı kendi imkânımız ölçüsünde verelim; sevabını vefat eden yakınımıza bağışlayalım. Sadakamızı ihtiyacın bulunduğu zamanda verebiliriz. Âyet küçük iyiliğin bile değerini hatırlatır.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلاَّ مِنْ ثَلاَثَةٍ إِلاَّ مِنْ صَدَقَةٍ جَارِيَةٍ أَوْ عِلْمٍ يُنْتَفَعُ بِهِ أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ</p>
+
+*İnsan öldüğünde ameli kesilir; ancak devam eden sadaka, yararlanılan ilim ve kendisine dua eden hayırlı evlât bunun dışındadır.* (Müslim, 1631)
+
+Sevdiğimiz insanın hatırasını sürdürecek bir iyilik seçebiliriz. Aile içinde onun öğrettiği güzel davranışı çocuklarımıza anlatabiliriz. Bir bilgiye, bir öğrenciye veya kalıcı bir hizmete destek olabiliriz. Gönlümüzdeki özlem böylece duaya ve faydaya dönüşür. Az da olsa devam eden katkımıza sahip çıkalım.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Merasimin ve bağışın ölçüsü</p>
+
+Yedinci, kırkıncı veya elli ikinci günü dinen zorunlu bir merasime çevirmeyelim. Dua ve sadakayı ailenin imkânıyla sürdürelim. Iskat ve devir konusunda sonraki dönem âlimlerinin değerlendirmeleri farklıdır; bunlar ibadet borçlarının kesin biçimde silindiği güvencesi olarak sunulamaz. Orucun fidyesi gibi özel hükümler, şartlarıyla ayrıca öğrenilir.
+
+(İlmihal, I, Iskat ve Devir; TDV İslâm Ansiklopedisi, Cenaze.)
+
+Öleni hayırla anarken doğruluktan ayrılmayalım. Peygamberimiz ölülere sövmeyi yasaklar. Merhumun güzel taraflarını anabilir, gerçek bir hak meselesini de usulünce çözebiliriz. Dedikodu yerine dua, gösteriş yerine fayda bırakalım. Hatırasına duyduğumuz sevgi, yaşayanlara iyilik olsun. (Buhârî, 1393.)
+
+**Sevdiğimizin ardından bıraktığımız en güzel iz, samimi dua ve faydalı iyiliktir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta tutacağımız yedi söz</h2>
+
+**Aziz anneler ve babalar, sevgili gençler! Bugün öğrendiğimizi bu hafta bir davranışa dönüştürelim.**
+
+Caminin kapısından çıkarken elimizde bir iş listesi olsun. Her birimiz imkânına uygun adımı seçebilir. Evinden çıkmakta zorlanan da bir telefonla, bir duayla, güvenilir bir bilgiyle katkı verebilir. Küçük bir sözün tutulması, büyük bir niyetin ilk meyvesidir.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ وَلْتَنظُرْ نَفْسٌ مَّا قَدَّمَتْ لِغَدٍ</p>
+
+*Ey iman edenler! Allah’a itaatsizlikten sakının. Herkes yarın için ne hazırladığına baksın!* (Haşr, 59/18; âyetten bölüm)
+
+**BİR HAFTALIK VEFA SÖZLEŞMEMİZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir hasta veya yalnız büyüğümüzün hâlini soracağım.</strong> Ziyaret için uygun zamanını öğrenecek, mümkün olmazsa telefonla ulaşacağım.</li>
+<li><strong>Bu hafta cenaze namazının dört tekbirini öğreneceğim.</strong> Bildiklerimi güvenilir bir hocayla kontrol edip duamı tekrar edeceğim.</li>
+<li><strong>Bu hafta ailemle güvenilir cenaze hizmeti irtibatını belirleyeceğim.</strong> İhtiyaç anında ulaşılacak kişiyi birlikte öğrenip kaydedeceğiz.</li>
+<li><strong>Bu hafta borç ve emanet kayıtlarımı gözden geçireceğim.</strong> Eksik bilgiyi tamamlayıp hak sahibine ulaştırmam gerekeni belirleyeceğim.</li>
+<li><strong>Bu hafta kayıp yaşamış birine somut destek önereceğim.</strong> Uygun bulduğu bir işi, imkânım ölçüsünde üstlenmeyi teklif edeceğim.</li>
+<li><strong>Bu hafta vefat eden yakınlarım için dua edeceğim.</strong> İmkânım varsa kendi malımdan bir sadaka verip sevabını bağışlayacağım.</li>
+<li><strong>Bu hafta ailemle cenaze haberlerinde mahremiyeti konuşacağım.</strong> Yakınların izni ve doğrulanmış bilgiyle hareket etme ölçüsünü paylaşacağım.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Merhametin yedi adımı</strong>Her adım bir ihtiyaca cevap olsun.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Bir hâl sor</strong></li>
+<li><span aria-hidden="true">2</span><strong>Namazı öğren</strong></li>
+<li><span aria-hidden="true">3</span><strong>İrtibatı belirle</strong></li>
+<li><span aria-hidden="true">4</span><strong>Hakkı kayda geçir</strong></li>
+<li><span aria-hidden="true">5</span><strong>Bir yükü paylaş</strong></li>
+<li><span aria-hidden="true">6</span><strong>Duayı hayra bağla</strong></li>
+<li><span aria-hidden="true">7</span><strong>Mahremiyeti koru</strong></li>
+</ol>
+</figure>
+
+Bu sözleri evde ailemizle paylaşalım. Akşam sofrasında birini seçip hangi gün yerine getireceğimizi konuşalım. Bir büyüğümüz duayı öğretebilir, bir gencimiz irtibatı kaydedebilir, bir başkamız ziyaret zamanını belirleyebilir. Görevleri kabiliyetimize göre paylaşınca birbirimizin katkısını da görürüz. Herkesin emeği bu vefada yer bulur.
+
+Arayacağımız kişinin adını bugün not edelim. Telefon açtığımızda öncelikle konuşmaya uygun olup olmadığını soralım. Yardım teklifimizi açık söyleyelim: Alışverişini yapmak, bir görüşmeye eşlik etmek veya belirlediği bir işi üstlenmek. Cevabını dikkatle dinleyelim. Bazen ihtiyacı, bizim düşündüğümüzden farklı olabilir.
+
+Sözleşmemize yeniden baktığımızda yaptığımız iyiliği gösterişe dönüştürmeden şükredelim. Ulaşamadığımız kişi için uygun başka bir zaman belirleyelim. Yardım alanın mahremiyetini koruyalım. Birlikte öğrendiğimiz cenaze duasını da ara sıra tekrar edelim. Hazırlığımız, zor gün geldiğinde hem bize hem yanımızdaki insana sükûnet versin.
+
+Bir hafta sonra kendimize dönüp bakalım: Hangi sözü tuttuk, kimin işini kolaylaştırdık? Eksik kalanı tamamlamak için yeniden adım atalım. Cenaze gününde göstermek istediğimiz vefayı, insanlar hayattayken de gösterelim. **Son görevimiz, gideni hürmetle uğurlamak ve kalanı merhametle gözetmektir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Rahmetine emanetiz</h2>
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ ۝٤١</p>
+
+*Rabbimiz! Hesap kurulacağı gün beni, annemi, babamı ve müminleri bağışla.* (İbrâhîm, 14/41)
+
+Allah’ım! Rahmetine sığınıyoruz. Ömrümüze bereket, işlerimize doğruluk ver. Kalbimizde taşıdığımız kayıpları sen biliyorsun. Kapısında durup içeri girmeye kıyamadığımız odaları, sesini duymayı özlediğimiz sevdiklerimizi sen biliyorsun. Gönlümüze sabır, dilimize hayırlı söz ver.
+
+Rabbimiz! Vefat eden mümin kardeşlerimizi bağışla. Kabirlerini nurlandır, hesaplarını kolaylaştır. Hayatta bıraktıkları güzel işlerin bereketini sürdür. Anne babasına, eşine, evlâdına hasret çeken kullarına dayanma gücü ver. Cenaze hizmetine emek verenleri hayırla mükâfatlandır.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا ٱغْفِرْ لَنَا وَلِإِخْوَٰنِنَا ٱلَّذِينَ سَبَقُونَا بِٱلْإِيمَـٰنِ وَلَا تَجْعَلْ فِى قُلُوبِنَا غِلًّا لِّلَّذِينَ ءَامَنُوا۟ رَبَّنَآ إِنَّكَ رَءُوفٌ رَّحِيمٌ</p>
+
+*Rabbimiz! Bizi ve bizden önce iman etmiş kardeşlerimizi bağışla. Kalplerimizde müminlere karşı kin bırakma. Rabbimiz! Sen çok şefkatli, çok merhametlisin.* (Haşr, 59/10; âyetten bölüm)
+
+Allah’ım! Hastalarımıza şifa, onları gözetenlere kuvvet ver. Yalnız yaşayan büyüklerimize hayırlı dostlar nasip eyle. Çocuklarımıza güven, gençlerimize iman ve istikamet ihsan eyle. Ailelerimize huzur ver; birbirimizin derdini duyabilmeyi öğret. Aramızdaki kırgınlıkları adalet ve merhametle gidermeyi nasip eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette de iyilik ver; bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Rabbimiz! Yaşadığımız beldelere huzur ver. Komşularımızla güven ve iyilik içinde yaşamayı nasip eyle. Dilini bilmediği bir yerde derdini anlatmaya çalışanlara yardımcılar gönder. Bizleri de o yardımın vesilesi kıl. Emanetleri sahibine ulaştırmayı, kul hakkından arınmayı, ömrümüzü hayırla tamamlamayı lütfeyle.
+
+Allah’ım! Bizi imanla yaşat, imanla huzuruna kabul eyle. Duamızı kabul, sonumuzu hayır eyle. Peygamber Efendimiz’e salât ve selâm olsun. Âmin. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; kısaltılan âyet ve hadisler belirtilmiştir. Gündelik gurbet sahneleri temsilîdir. Fıkhî anlatım Hanefî ilmihal geleneğini esas alır; meşru farklılıklar gözetilir. Ayrıntılı kaynak ve tashihler eşlik eden rapordadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Hayat ve emanet: <a href="https://quran.com/3/185">Âl-i İmrân 3/185</a>; <a href="https://sunnah.com/muslim:2162b">Müslim 2162b</a>.</li>
+<li>Hastaya güzel söz: <a href="https://sunnah.com/muslim:919">Müslim 919</a>; <a href="https://sunnah.com/muslim:916a">Müslim 916a</a>.</li>
+<li>Gözyaşı ve sabır: <a href="https://quran.com/2/156">Bakara 2/156</a>; <a href="https://sunnah.com/bukhari:1303">Buhârî 1303</a>; <a href="https://sunnah.com/muslim:918a">Müslim 918a</a>.</li>
+<li>Bedenin mahremiyeti: <a href="https://quran.com/17/70">İsrâ 17/70</a>; <a href="https://sunnah.com/abudawud:3207">Ebû Dâvûd 3207</a>.</li>
+<li>Dört tekbirle dua: <a href="https://sunnah.com/abudawud:3199">Ebû Dâvûd 3199</a>; <a href="https://sunnah.com/bukhari:47">Buhârî 47</a>.</li>
+<li>Defin ve sebat: <a href="https://sunnah.com/abudawud:3221">Ebû Dâvûd 3221</a>; <a href="https://quran.com/20/55">Tâhâ 20/55</a>.</li>
+<li>Taziye ve sofra: <a href="https://quran.com/5/2">Mâide 5/2</a>; <a href="https://sunnah.com/tirmidhi:998">Tirmizî 998</a>.</li>
+<li>Hakları gözetmek: <a href="https://quran.com/4/58">Nisâ 4/58</a>; <a href="https://sunnah.com/bukhari:2289">Buhârî 2289</a>; <a href="https://quran.com/2/280">Bakara 2/280</a>.</li>
+<li>Uzakta da kardeşiz: <a href="https://quran.com/49/10">Hucurât 49/10</a>.</li>
+<li>Ölçülü ve sürekli hayır: <a href="https://quran.com/99/7">Zilzâl 99/7</a>; <a href="https://sunnah.com/bukhari:1388">Buhârî 1388</a>; <a href="https://sunnah.com/muslim:1631">Müslim 1631</a>.</li>
+<li>Hayata taşınan yedi söz: <a href="https://quran.com/59/18">Haşr 59/18</a>.</li>
+<li>Hatim ve cemaat duası: <a href="https://quran.com/14/41">İbrâhîm 14/41</a>; <a href="https://quran.com/59/10">Haşr 59/10</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>İlmî çerçeve: <a href="https://islamansiklopedisi.org.tr/cenaze">TDV İslâm Ansiklopedisi — Cenaze</a>.</li>
+<li>Fıkhî ayrım: <a href="https://islamansiklopedisi.org.tr/telkin--cenaze">TDV İslâm Ansiklopedisi — Telkin</a>.</li>
+<li>Taziye adabı: <a href="https://islamansiklopedisi.org.tr/taziye">TDV İslâm Ansiklopedisi — Tâziye</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

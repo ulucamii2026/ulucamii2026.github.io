@@ -36,7 +36,13 @@ const { entry, ilgili } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 /* Bu vaazın özgün açılış sahnesi, aynı içeriğin bağlantı önizlemesinde de kullanılır. */
-const vaazKapagi = entry.id === 'gurbette-cami' && dil === 'tr' ? {
+const vaazKapagi = d.kapak && dil === 'tr' ? {
+  kapak: d.kapak,
+  kapakAlt: d.kapakAlt ?? `${d.baslik} — temsilî illüstrasyon.`,
+  kapakGenislik: 1200,
+  kapakYukseklik: 630,
+  kapakTipi: 'image/webp',
+} : entry.id === 'gurbette-cami' && dil === 'tr' ? {
   kapak: '/media/vaazlar/gurbette-cami/gonul-yurdu-v2-1600.webp',
   kapakAlt: 'Gurbette Cami — cami kapısında selâmla karşılanan bir aile; temsili illüstrasyon.',
   kapakGenislik: 1600,

@@ -1,217 +1,493 @@
 ---
-baslik: "Abdest ve Gusül"
-ozet: "İslam dininde temizlik hem bazı ibadetlerin şartı hem de sağlıklı bir ömür sürmenin gereğidir. Kişinin bedenini, elbisesini, evini, çevresini temiz tutması…"
+baslik: "Abdest ve Gusül: Suyun Emaneti, Huzura Hazırlık"
+ozet: "Abdest ve guslün ölçülerini sünnetin rehberliğinde öğrenelim; vesveseyi aşalım, hastalıkta kolaylığı tanıyalım. Evde, okulda ve işte suyun emanetini koruyarak namaza hazırlanalım."
 kategori: ibadet
-kelime: 3112
+kelime: 3811
 docx: "/vaazlar/abdest-ve-gusul.docx"
 pdf: "/vaazlar/abdest-ve-gusul.pdf"
+kapak: "/media/vaazlar/abdest-ve-gusul/kapak-og.webp"
+kapakAlt: "Sade bir abdest musluğu, katlanmış havlu ve ışık alan açık bir kapı."
 ---
-İslam dininde temizlik hem bazı ibadetlerin şartı hem de sağlıklı bir ömür sürmenin gereğidir. Kişinin bedenini, elbisesini, evini, çevresini temiz tutması gerekmektedir. Hadis ve fıkıh kitaplarımız önce temizlik bölümüyle başlar.
 
-Hz. Peygamber (s.a.v.) Hira mağarasında vahiy meleğinin sesini işitip kendisini de görünce korkusundan titremeye başlamış, hemen ailesine gelerek “Beni örtün, beni örtün!” demiş; onlar da üzerine bir örtü örtmüşler ve serin su serpmişlerdi. Bunun ardından, يَٓا اَيُّهَا الْمُدَّثِّرُ “Ey örtüsüne bürünen!” hitabıyla başlayan Müddessir sûresinin ilk beş âyeti inmiştir. (Buhârî, Tefsîr, 74/1-5)
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/abdest-ve-gusul/kapak.svg" width="1600" height="900" alt="Sade bir abdest musluğu, katlanmış havlu ve ışık alan açık bir kapı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Huzura hazırlanan bir sabah</strong> Suyun emanetini gözeterek namaza hazırlanmak.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">يَٓا اَيُّهَا الْمُدَّثِّرُۙ قُمْ فَاَنْذِرْۙ وَرَبَّكَ فَكَبِّرْۙ وَثِيَابَكَ فَطَهِّرْ وَالرُّجْزَ فَاهْجُرْۙ</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#taharet">Temizliğin üç boyutu</a></li>
+<li><a href="#abdestin-farzlari">Abdestin dört farzı</a></li>
+<li><a href="#sunnetin-rehberligi">Peygamberimizin abdestini öğrenmek</a></li>
+<li><a href="#bagislanma-umidi">Bağışlanma ve sorumluluk</a></li>
+<li><a href="#abdest-ve-vesvese">Abdest ve vesvese</a></li>
+<li><a href="#gusul-ne-zaman">Gusül ne zaman gerekir</a></li>
+<li><a href="#gusul-nasil">Gusül nasıl alınır</a></li>
+<li><a href="#hastalik-ve-teyemmum">Hastalık ve teyemmüm</a></li>
+<li><a href="#suyun-emaneti">Suyu ve ortak alanı korumak</a></li>
+<li><a href="#ailede-ogrenmek">Sorulara güvenle yer açmak</a></li>
+<li><a href="#yedi-soz">Bir haftalık yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat niyazı</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Bir avuç suyla başlayan yöneliş</h2>
 
-“Ey örtüsüne bürünen! Kalk ve uyar! Sadece rabbinin büyüklüğünü dile getir. Elbiseni tertemiz tut.” (Müddessir, 74/1-5)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-4. Ayette “Elbiseni temiz tut” emri ise Hz. Peygamber’in (s.a.v.) maddî olarak elbisesini necâset vb. pisliklerden temiz tutması, mânevî olarak da güzel ahlâkla bağdaşmayan davranışlardan ve günahlardan nefsini arındırması anlamında yorumlanmıştır. (Zemahşerî, IV, 180-181) Buradaki temizlik maddî mânada alındığında “elbise” bir örnek olup genel olarak beden temizliğinin, kezâ ev bark, mâbed vb. özel veya ortak alanların temizliğinin de bu buyruğun kapsamına girdiğinde kuşku yoktur. 5. âyette “Her türlü pislikten uzak dur” ayeti de dış temizlikten sonra inanç ve ahlâk temizliğini, iç arınmayı vurgulamaktadır. (Bkz. Komisyon, Kur'an Yolu Tefsiri, V, 494-495)
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Bugün dinimizin temel taşlarından biri olan, ibadetlerimizin anahtarı ve müminin manevi zırhı olan “Taharet” yani temizlik konusunu, özelde ise Abdest ve Gusül meselelerini hasbihal edeceğiz. Yüce Rabbimiz bizleri huzuruna kabul buyururken tertemiz olmamızı murâd etmiştir. İslam, sadece ruhun değil, bedenin ve çevrenin de pak olmasını emreden eşsiz bir dindir.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-Abdest, Arapça’da “güzellik ve temizlik” mânasına gelen vudû’ (وضوء) kelimesiyle ifade edilir. Türkçe’de kullanılan abdest kelimesi Farsça âb (su) ve dest (el) kelimelerinden oluşan ve “el suyu” mânasına gelen birleşik bir kelimedir. Fıkıhta, abdeste tahâret-i suğrâ (küçük temizlik), gusle de tahâret-i kübrâ (büyük temizlik) denir. Abdest almayı gerektiren hallere hades-i asgar (küçük kirlilik), gusül yapmayı gerektiren hallere de hades-i ekber (büyük kirlilik) adı verilir.
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-Gusül ise sözlükte “yıkamak, temizlemek” mânasında masdar ve “yıkanma” anlamında kullanılır. Terim olarak cünüplük, hayız ve nifas gibi hükmî kirlilikten temizlenme niyetiyle bütün vücudu su ile yıkamayı ifade eder. Türkçede “boy abdesti” ve bazı bölgelerde halk arasında “büyük abdest” olarak bilinir.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-Temizliği maddi ve manevi olmak üzere iki kısma ayırabiliriz:
+*Mûsâ şöyle dedi: Rabbim! Gönlüme ferahlık ver. İşimi kolaylaştır. Dilimden düğümü çöz ki sözümü iyi anlasınlar.* (Tâhâ, 20/25–28)
 
-1. Maddi Temizlik (Necasetten Taharet):
+**Aziz cemaat! Rabbimizin huzuruna yönelen kıymetli kardeşlerim!**
 
-Bu, vücutta, elbisede veya namaz kılınacak mekânda bulunan ve ibadete engel olan gözle görülür pisliklerden arınmaktır. Kan, idrar veya alkol gibi maddelerin suyla yıkanarak veya silinerek temizlenmesini kapsar. İslam hukukuna göre, bu tür kirler fiziksel varlıkları nedeniyle “pis” kabul edilir ve giderilmedikleri sürece namaz gibi ibadetler geçerli sayılmaz.
+Sabah henüz evin ışıkları yanmışken musluğu açıyoruz. Yüzümüze değen su uykumuzu dağıtıyor. Birazdan işe gideceğiz, çocuğumuzu okula bırakacağız, belki hastanede bir yakınımızı bekleyeceğiz. Önce namaz için duruyoruz. Hayatın telaşı içinde bu hazırlık, kime kul olduğumuzu hatırlatıyor.
 
-2. Manevi Temizlik (Hadesten Taharet):
+**Abdest ve gusül, bedenimizi temizlerken bizi Rabbimizin huzuruna hazırlar.** Bugün yıllardır yaptığımız bir ibadete yeniden dikkatle bakacağız. Yeni öğrenen kardeşimiz de çocukluğundan beri abdest alan büyüğümüz de aynı rahmetin muhatabıdır. Bildiğimizi sağlamlaştırabilir, eksik öğrendiğimizi tamamlayabiliriz.
 
-Bu temizlik, vücutta gözle görülür bir kir olmasa bile, kişinin ibadet edebilmesi için girmesi gereken hükmî durumu ifade eder. Abdestsizlik, cünüplük veya hayız gibi haller “hades” olarak adlandırılır. Bu durumdan kurtulmak için niyet ederek abdest almak veya gusül (boy abdesti) yapmak gerekir. Burada amaç sadece fiziksel kirlerden arınmak değil, ruhu ve bedeni ibadete hazırlayan manevi bir eşiği geçmektir.
+İçimizde suya kolayca ulaşanlar var; eğilmekte zorlanan, bir kolunu kullanamayan, abdestinin doğruluğu konusunda kaygılananlar da var. Her birimizin sorusu bu sohbette yer bulsun. Maksadımız, namaza güvenle hazırlanmak ve öğrenmenin sevincini paylaşmaktır.
 
-Kısaca ifade etmek gerekirse maddi temizlik görünen kirlere, manevi temizlik ise hükmî engellere odaklanır. Biri sabun ve suyla yapılan hijyenik bir temizliğe benzerken, diğeri niyet ve belirli ritüellerle gerçekleşen bir “hâl” değişimidir.
+**İbadete hazırlığımız, doğru bilgiyle ve Allah’ın rahmetine güvenerek başlasın.**
 
-Kur’an-ı Kerîm’de Allah Teâlâ bizlere şöyle hitâp ediyor:
+---
 
-يَآاَيُّهَا الَّذِينَ اَمَنُوا اِذَا قُمْتُمْ اِلَى الصَّلوَةِ فَاغْسِلُوا وُجُوهَكُمْ وَاَيْدِيَكُمْ اِلَى الْمَرَافِقِ وَامْسَحُوا بِرُؤُسِكُمْ وَاَرْجُلَكُمْ اِلَى الْكَعْبَيْنِ وَاِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُوا وَاِنْ كُنْتُمْ مَرْضَى اَوْ عَلَى سَفَرٍ اَوْ جَاءَ اَحَدٌ مِنْكُمْ مِنَ الْغَائِطِ اَوْ لاَمَسْتُمُ النِّسَاءَ فَلَمْ تَجِدُوا مَاءً فَتَيَمَّمُوا صَعِيدًا طَيِّبًا فَامْسَحُوا بِوُجُوهِكُمْ وَاَيْدِيَكُمْ مِنْهُ مَا يُرِيدُ اللهُ لِيَجْعَلَ عَلَيْكُمْ مِنْ حَرَجٍ وَلَكِنْ يُرِيدُ لِيُطَهِّرَكُمْ وَلِيُتِمَّ نِعْمَتَهُ عَلَيْكُمْ لَعَلَّكُمْ تَشْكُرُونَ “Ey iman edenler! Namaz kılmaya kalkacağınız zaman yüzlerinizi, dirseklere kadar ellerinizi yıkayın; başlarınızı meshedin, ayaklarınızı da topuk kemiklerine kadar (yıkayın). Eğer cünüp olursanız temizlenin. Şayet hasta veya yolculuk halinde bulunursanız veya içinizden biri ayak yolundan gelirse yahut kadınlarla cinsel ilişkide bulunursa, bu hallerde su bulamadığınız takdirde temiz bir toprağa yönelin (teyemmüm edin), yüzünüzü ve ellerinizi onunla meshedin. Allah size herhangi bir güçlük çıkarmak istemez, fakat O sizi tertemiz kılmak ve üzerinizdeki nimetini tamamlamak ister ki şükredesiniz.” (Maide, 5/6)
+<h2 class="vaaz-bolum-baslik" id="taharet" tabindex="-1">I. Tahâret: Beden, ibadet ve gönül</h2>
 
-Okuduğumuz ayeti kerimede de ifade edildiği üzere abdestin farzları, ibadet niyetiyle yüzü ve dirseklere kadar kolları yıkamak, başı mesh etmek, ayakları topuklara kadar yıkamaktır. Gusül (boy abdesti)’nin farzı ağız ve burun içi dâhil olmak üzere- bütün vücudun temiz su ile yıkanmasıdır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَثِيَابَكَ فَطَهِّرْ ۝٤ وَٱلرُّجْزَ فَٱهْجُرْ ۝٥</p>
 
-Teyemmüm ise, büyük (cünüplük hâli) veya küçük kirliliği (abdestsizlik hâli) gidermek niyetiyle ellerin içini toprak cinsinden temiz bir şeye vurup önce yüze sürmek, sonra tekrar vurup her elin içiyle karşı kolu mesh etmektir.
+*Elbiseni tertemiz tut. Her türlü pislikten uzak dur.* (Müddessir, 74/4–5)
 
-Yüce dinimizin ortaya koyduğu genel anlamdaki temizlik anlayışı ile ibadet anlamındaki temizlik anlayışı birbirini tamamlamaktadır. İbadet için gerekli olan temizlik aynı zamanda fertlerin günlük hayatlarındaki temizlik eğitimi niteliğini taşımaktadır.
+Askıdan temiz gömleğimizi alırken bu çağrıyı hatırlayalım. Müddessir sûresinin ilk âyetleri, Peygamber Efendimizi (s.a.s.) tebliğe hazırlarken temizliği de emreder. Tefsirlerde elbisenin temizliğiyle birlikte davranışların ve kalbin arınması üzerinde durulur. Rabbimizin huzuruna hazırlık, hayatımızın tamamına dokunur.
 
-Abdestin hakkının verilerek alınması konusunda oldukça titiz davranan Resûl-i Ekrem (s.a.v), Lakît b. Sabre isimli sahâbînin: “Ey Allah’ın Resûlü, bana abdest hakkında bilgi verir misin?” sorusu üzerine şöyle buyurmuştur:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">الطُّهُورُ شَطْرُ الإِيمَانِ</p>
 
-<p lang="ar" dir="rtl" class="ayet">أَسْبِغِ الْوُضُوءَ وَخَلِّلْ بَيْنَ الأَصَابِعِ وَبَالِغْ فِى الاِسْتِنْشَاقِ إِلاَّ أَنْ تَكُونَ صَائِمًا</p>
+*Temizlik imanın yarısıdır.* (Müslim, 223; rivayetten bölüm)
 
-“Abdest organlarını güzel bir şekilde, özenerek yıka. Parmaklarının arasına suyu geçir. Oruçlu değilsen ağız ve buruna su verirken içine iyice çek.” (Tirmizî, Savm, 69)
+Bu nebevî söz temizliğin dinimizdeki büyük yerini gösterir. Onu anlamak için üç alanı birbirinden ayırarak düşünmek faydalıdır. Bedenimizdeki bir lekeyi gidermek, namaz için abdest almak ve incittiğimiz birinden özür dilemek birbirini tamamlayan sorumluluklardır. Her birinin kendine özgü bir yolu vardır.
 
-Allah Resûlü’nün (s.a.v) abdest konusundaki bu hassasiyetine şahit olan Abdullah b. Amr, bir yolculuk esnasında namazı yetiştirmek için acele ederek ve mesh edercesine az su kullanarak abdest aldıkları sırada, Hz. Peygamber’in (s.a.v) kendilerini gördüğünü ve ses tonunu yükselterek onlara,
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Üç alanda temizlik</strong> Her ihtiyaca uygun bir hazırlık.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Maddî temizlik</dt><dd>Beden, elbise ve namaz yerindeki necâseti usulünce gidermek.</dd></div>
+<div><dt>İbadet temizliği</dt><dd>Hades hâlinden abdest, gusül veya şartları oluştuğunda teyemmümle çıkmak.</dd></div>
+<div><dt>Ahlâk temizliği</dt><dd>Günaha tövbe etmek, hakkı sahibine vermek, davranışı düzeltmek.</dd></div>
+</dl>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">وَيْلٌ لِلأَعْقَابِ مِنَ النَّارِ أَسْبِغُوا الْوُضُوءَ</p>
+Hades, belli ibadetlere hazırlanmayı gerektiren hükmî hâlin adıdır. Bu kavramı kişinin değeriyle karıştırmayalım. Âdet gören bir hanım, ihtilâm olan bir genç veya abdesti bozulan bir yaşlı, insanlık onurunu ve Allah’a dua etme imkânını korur. Hükmü öğrenmek, kişiyi rahatlatır.
 
-“Vay o topuklara ki ateşten ne çekecek onlar! (Hiçbir yeri kuru bırakmadan) abdestinizi güzelce alın!” demişti. (Buhârî, İlim, 30)
+Evde çocuğumuza el yıkamayı öğretirken suyu tanıtırız; abdesti öğretirken kulluğu da tanıtırız. Elbiseyi temiz tutarken dilimizin nezaketini de gözetiriz. İbadetin şekliyle ahlâkını birlikte büyütürüz. Temiz bir seccadenin üzerinde, insanlara karşı dürüst bir kalple durmayı dileriz.
 
-Resûlullah (s.a.v), uzuvlarını üçer kere yıkamak suretiyle abdest aldıktan sonra,
+Bedenimizin bakımıyla ilgilenmek, namaz için hazırladığımız yeri temiz tutmak gündelik emek ister. Ailede bu emeği paylaşalım. Banyoyu kullanan temiz bıraksın, çocuk kendi havlusunu yerine assın. Temizlik, evin bütün fertlerinin benimsediği bir sorumluluk olsun.
 
-<p lang="ar" dir="rtl" class="ayet">هَذَا وُضُوئِى وَوُضُوءُ الْمُرْسَلِينَ مِنْ قَبْلِى</p>
+**Bedenin temizliğini ibadetin ölçüsüyle, ibadeti güzel ahlâkla tamamlayalım.**
 
-“İşte bu benim ve benden önceki peygamberlerin abdestidir.” (İbn Mâce, Tahâret, 47) dediğine dair rivayetler bulunmaktadır. Böylece, abdestin önceki peygamberler ve ümmetleri tarafından da bilindiği ortaya çıkmaktadır.
+---
 
-Yüce Rabbimiz, bizleri yoktan var edip sayısız nimetlerle donatırken, bu hayat yolculuğunda tertemiz bir fıtrat üzerine yaşayıp, huzuruna yine o paklıkla dönmemizi murat etmiştir. İslam dini, sadece kalplerin ıslahı için değil, aynı zamanda bedenin, çevrenin ve ruhun her türlü kirden arındırılması için gönderilmiş bir “temizlik” dinidir.
+<h2 class="vaaz-bolum-baslik" id="abdestin-farzlari" tabindex="-1">II. Abdestin farzları: Dört sağlam adım</h2>
 
-İbadet ile temizlik arasındaki bağ, etle tırnak gibidir; biri olmadan diğerinin kemale ermesi mümkün değildir. Dinimizce “Dinin direği” olarak nitelendirilen namazın, daha başlangıcında “Hadesten Taharet” ve “Necasetten Taharet” gibi şartların koşulmuş olması tesadüf değildir. Bu şartlar bizlere şunu fısıldar: “Ey mümin! Mevla’nın huzuruna, o en mukaddes divana durmadan evvel, üzerinde ne maddi bir leke ne de manevi bir kirlilik bırakmalısın.”
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِذَا قُمْتُمْ إِلَى ٱلصَّلَوٰةِ فَٱغْسِلُوا۟ وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى ٱلْمَرَافِقِ وَٱمْسَحُوا۟ بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى ٱلْكَعْبَيْنِ</p>
 
-Abdest, sadece bir suyun tene değmesi değil; sanki o su damlalarıyla birlikte işlenen küçük günahların da dökülüp gitmesi, ruhun ibadete hazırlanmasıdır. Abdestli bir mümin, manevi bir zırh kuşanmış gibidir; bedeni temizlediği gibi, kalbi de huzur-u ilahiye hazırlamıştır.
+*Ey iman edenler! Namaz kılmaya kalkacağınız zaman yüzlerinizi, dirseklere kadar ellerinizi yıkayın; başlarınızı meshedin, ayaklarınızı da topuk kemiklerine kadar yıkayın.* (Mâide, 5/6; âyetten bölüm)
 
-İbadetlerimizin sıhhati ve kabulü, gösterdiğimiz bu titizliğe bağlıdır. Gusül abdestiyle bütün bedenini hükmî kirlilikten arındıran bir müslüman, aslında kendisine emanet edilen bu bedeni bir mabed gibi aziz bildiğini ilan eder. Sadece beden temizliği de yetmez; secdemizi yaptığımız seccadenin, alnımızı koyduğumuz toprağın ve üzerimizdeki elbisenin de tertemiz olması emredilmiştir.
+**Muhterem Müslümanlar! İbadetin ölçüsünü bilmek gönle güven verir.**
 
-Rabbimiz, camilere giderken temiz kıyafetlerle cemaate dahil olmamızı emreden dinimiz; temizliği sosyal bir nezaket ve kul hakkına riayet olarak da görmüştür.
+Lavabonun önünde kollarımızı sıvarken hangi hareketin farz, hangisinin sünnet olduğunu bilelim. Burada Hanefî mezhebinin ilmihal ölçüsünü izliyoruz. Meşru mezheplerin bazı ayrıntılarda farklı hükümleri vardır. Meselâ niyet Hanefîlerde sünnet, Şâfiîlerde farzdır. Birbirimizin ibadetine saygıyla yaklaşalım.
 
-Biliniz ki dışın temizliği içe, için temizliği ise ruha sirayet eder. Elini haramdan, dilini yalandan, kalbini hasetten ve kibirden arındıramayan bir kimsenin dış temizliği eksik kalmış sayılır. Gerçek arınma; bedendeki kiri su ile, kalpteki kiri ise tövbe ve zikir ile yıkamaktır. Temizlik bir külfet değil, bir nimettir; ibadetin tadına varmak için aşılması gereken ilk kapıdır.
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Hanefîlere göre dört farz</strong> Su yıkanacak yere ulaşır; mesh ıslak elle yapılır.</figcaption>
+<table aria-label="Hanefîlere göre dört farz">
+<thead><tr><th scope="col">Farz</th><th scope="col">Uygulama</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Farz">Yüzü yıkamak</th><td data-label="Uygulama">Alındaki saç bitiminden çenenin alt sınırına, iki kulak arasındaki yüzü yıkamak.</td></tr>
+<tr><th scope="row" data-label="Farz">Kolları yıkamak</th><td data-label="Uygulama">Her iki kolu dirseklerle birlikte yıkamak.</td></tr>
+<tr><th scope="row" data-label="Farz">Başı meshetmek</th><td data-label="Uygulama">Başın en az dörtte birini ıslak elle meshetmek.</td></tr>
+<tr><th scope="row" data-label="Farz">Ayakları yıkamak</th><td data-label="Uygulama">Her iki ayağı topuk ve ayak bileği kemikleriyle birlikte yıkamak.</td></tr>
+</tbody></table>
+</figure>
 
-Peygamber Efendimiz (s.a.v) bir hadis-i şeriflerinde şöyle buyurmaktadır:
+Yıkanması gereken yerin tamamına suyun bir defa ulaşması farzı yerine getirir. Üçer defa yıkama sünnettir. Başı meshetmek, ıslak eli başa sürmektir; başın tamamını bir defa meshetmek sünnet uygulamadır. Bu ayrımı bilmek acelede de geniş vakitte de bize yol gösterir.
 
-<p lang="ar" dir="rtl" class="ayet">اَلطُّهُورُ شَطْرُ الْا۪يمَانِ</p>
+Suyun deriye ulaşmasını önleyen, kolayca giderilebilen tabakaları temizleriz. Dar yüzüğün altına suyu ulaştırırız. Meslekten kaynaklanan ve çıkarılması güç kalıntılarla tedavi için kullanılan malzemelerin hükümlerini durumumuza göre öğreniriz. Ellerimizi yaralayacak bir kazıma yerine güvenilir bilgiye başvururuz.
 
-“Temizlik imanın yarısıdır.” (Müslim, Tahâret, 1)
+Abdestimiz devam ediyorsa onunla birden fazla namaz kılabiliriz. Her namaz için yeniden abdest almak güzel bir alışkanlıktır; zorunluluk, abdestimiz bozulduğunda doğar. Farzları öğrenen insan, yaptığı ibadeti tanıyarak Rabbine yönelir.
 
-Buradaki “yarısı” ifadesi, ibadetlerin kabul şartının temizliğe bağlı olduğunu gösterir. Namaz kılmak için, Kabe’yi tavaf etmek için veya Mushaf’a dokunmak için temizlik şarttır. Maddi kirlerden arınmayan bir beden, manevi huzura tam anlamıyla eremez.
+**Farzı doğru yapalım, sünneti sevgiyle tamamlayalım.**
 
-Yine Efendimiz (s.a.v) başka bir hadisi şeriflerinde şöyle buyurmaktadır:
+---
 
-<p lang="ar" dir="rtl" class="ayet">اذا تَوَضَّأَ العبدُ المُسلِم أَوِ المؤْمِنُ فَغَسل وجهَهُ خَرجَ مِنْ وَجهِهِ كلُّ خطِيئَة نَظَر إِلَيْهَا بِعيْنيْهِ مع الماءِ أَوْ معَ آخرِ قَطْرِ الماءِ ، فَإِذا غَسل يديهِ ، خَرج مِنْ يديهِ كُلُّ خَطيئَةٍ كانَ بطَشَتْهَا يداهُ مَعَ المَاءِ أَوْ مع آخِر قَطْرِ الماءِ ، فَإِذا غَسلَ رِجَليْهِ ، خَرَجَتْ كُلُّ خَطِيئَةٍ مَشَتها رِجلاه مع الماءِ أَوْ مَع آخرِ قَطرِ الماءِ ، حتى يخرُجَ نَقِيًّا مِن الذُّنُوبِ</p>
+<h2 class="vaaz-bolum-baslik" id="sunnetin-rehberligi" tabindex="-1">III. Sünnetin rehberliğinde abdest</h2>
 
-“Bir Müslüman (veya mümin) abdest aldığı zaman, yüzünü yıkarken gözleriyle işlediği günahlar abdest suyu (veya suyun son damlası) ile dökülür gider. Ellerini yıkadığında elleri ile işlediği günahlar abdest suyu (veya suyun son damlası) ile dökülür (öyle ki kişi bütün günahlardan arınır ve tertemiz olur). Ayaklarını yıkadığında da ayaklarıyla işlediği günahları abdest suyu (veaz suyun son damlaları) ile akıp gider. Nihayet o müslüman günahlarından tamamıyla arınmış olur.” (Müslim, “Tahâret”, 32; Tirmizî, “Tahâret”, 2)
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Bir su kabının başında öğrenilen ibadet</p>
 
-Burada bizler aslında abdestin bir de iç yüzü olan günahları temizleme özelliğini de anlamış oluyoruz. Biz abdest alırken sadece tozdan, kirden arınmış olmayız; o suyla beraber günahlarımızın da döküldüğünü peygamberimiz bizlere bildiriyor.
+Humrân, Hz. Osman’ın su istediğini ve ellerini üç defa yıkadığını anlatır. Ardından ağzını ve burnunu temizler; yüzünü ve dirseklere kadar kollarını üçer defa yıkar. Başını mesheder, ayaklarını da bilek kemiklerine kadar üçer defa yıkar. Sonra Resûlullah’ın (s.a.s.) bu şekilde abdest alıp gönlünü vererek iki rekât namaz kılan kişiye bağışlanma müjdelediğini aktarır.
 
-Abdestli gezmenin ve her daim abdestli dolaşmanın bizler içinde bir diğer manevi boyutu ise müminin kalkanı olmasıdır. Peygamberimiz (s.a.v) ümmetini mahşer yerinde nasıl tanıyacağını soran sahabilere şöyle cevap vermiştir:
+(Buhârî, 159; sahih rivayetin özeti.)
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّ أُمَّتِي يُدْعَوْنَ يَوْمَ الْقِيَامَةِ غُرًّا مُحَجَّلِينَ مِنْ آثَارِ الْوُضُوءِ</p>
+Sahâbe bize, ellerinin hareketiyle de öğretir. Biz de bir çocuğun veya yeni Müslüman olmuş kardeşimizin yanında abdesti yavaşça gösterebiliriz. Önce kendimiz yapar, sonra anlamadığı yeri sorarız. İbadetin bilgisi, sabırlı bir insanın yanında daha kolay yerleşir.
 
-“Şüphesiz benim ümmetim, kıyamet gününde abdest izlerinden dolayı yüzleri nurlu, elleri ve ayakları bembeyaz parlar bir halde çağrılacaklardır.” (Buhârî, Vudû, 3)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَسْبِغِ الْوُضُوءَ وَخَلِّلْ بَيْنَ الأَصَابِعِ وَبَالِغْ فِي الاِسْتِنْشَاقِ إِلاَّ أَنْ تَكُونَ صَائِمًا</p>
 
-İslam fıkhında temizlik (tahâret), sadece bir hazırlık değil, bizatihi bir ibadettir. Gelin şimdi, ibadetlerimizin anahtarı olan bu iki büyük temizliğin fıkhî inceliklerine, mezhep imamlarımızın da içtihatları ışığında daha yakından bakalım.
+*Abdesti güzelce tamamla, parmaklarının arasına suyu geçir. Oruçlu olmadığın zaman burnuna suyu iyice çek.* (Tirmizî, 788; Tirmizî: hasen sahih; rivayetten bölüm)
 
-### Abdestin Çeşitleri
+Niyet edip besmeleyle başlayalım. Ellerimizi bileklere kadar yıkayalım. Ağzımıza ve burnumuza su verelim; oruçluyken suyu boğaza kaçırmamak için dikkatli olalım. Yüzümüzü, ardından sağ ve sol kolumuzu dirseklerle yıkayalım. Başımızı ve kulaklarımızı meshedelim. Sonra sağ ve sol ayağımızı, parmak aralarını gözeterek yıkayalım.
 
-1. Farz Olan Abdest: Abdesti olmayan kimsenin, namaz kılmak, tilavet secdesi yapmak ve Kur’an-ı Kerim’i tutmak için abdest alması farzdır.
+Su parmaklarımızın arasından geçerken acelemizi de yavaşlatalım. Efendimizin yolculukta kuru kalan topuklar hakkında yaptığı ciddi uyarı, yıkanacak yerleri tamamlamanın önemini hatırlatır. Bu uyarıyı Buhârî’nin 60 numaralı rivayetinde okuyoruz. Özenimiz, suyun gerekli yere ulaşmasıyla anlaşılır.
 
-2. Vacip Olan Abdest: Abdesti olmayan kimsenin Kâbe’yi tavaf etmek için abdest alması vacibdir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-3. Mendub Olan Abdest: Daima abdestli bulunmak, her namaz vakti için abdest almak, abdestli olarak uyumak, abdesti varken tekrar abdest almak mendubdur.
+*Güzelce abdest aldıktan sonra Allah’ın birliğine ve Muhammed’in O’nun kulu ve elçisi olduğuna şehâdet getiren kişiye cennetin sekiz kapısının açılacağı müjdelenir.* (Müslim, 234a; rivayetin ilgili kısmının anlamı)
 
-### Abdestin Farzları ve Sünnetleri:
+Dudaklarımızdaki şehâdet, kalbimizdeki yönelişi tazelesin. Abdestten namaza geçerken telefonu kenara koyup birkaç an toparlanalım. Hangi huzura çıktığımızı hatırlayalım.
 
-Hanefîlere göre abdestin farzları, Kur’ân-ı Kerîm’de (el-Mâide, 5/6) ifade edildiği üzere; yüzü yıkamak, kolları dirseklerle birlikte yıkamak, başı mesh etmek, ayakları topuklarla birlikte yıkamaktır. (Mevsılî, el-İhtiyâr, 1/7)
+Yıllar önce bize abdest öğreten eli hatırlayabiliriz. Şimdi o emeği bir başkasına ulaştıralım. Bir yetişkin öğrenmek istediğinde yanında mahcup olmadan tekrar yapabileceği sabırlı bir arkadaş bulsun.
 
-Allah Resûlü (s.a.v) abdeste; Allah’ın adıyla başlamayı (Ebû Dâvûd, Tahâret, 48), abdest alırken ağza su vermeyi (Ebû Dâvûd, Tahâret, 55), her iki burun deliğine su çekip temizlemeyi (Müslim, Tahâret, 21), abdest uzuvlarını yıkarken ovmayı (Ebû Dâvûd, Tahâret, 58), bizzat uygulayarak ashabına öğretmiştir. Hz. Peygamber, (s.a.v) abdest alırken uzuvların kuru bir yer kalmayacak şekilde yıkanmasına dikkat eder, suyun sakal aralarına ulaşmasını sağlar, (Tirmizî, Tahâret, 29) ellerini yıkarken eğer parmağında yüzük varsa onu hareket ettirir (İbn Mâce, Tahâret, 54) ve parmaklarının arasını hilâllerdi. (İbn Mâce, Tahâret, 54)
+**Sünnete bağlılık, ibadeti dikkatle öğrenmek ve sükûnetle uygulamaktır.**
 
-Abdestin sünnetleri arasında zikredilen tüm bu uygulamalar, usulüne uygun ve lâyıkıyla alınan bir abdestin özellikleri arasındadır.
+---
 
-Farzları, Sünnetleri ve Adabına Riâyet Edilerek Abdest Şöyle Alınır:
+<h2 class="vaaz-bolum-baslik" id="bagislanma-umidi" tabindex="-1">IV. Suyla birlikte tazelenen ümit</h2>
 
-Niyet edilir ve besmele çekilir. Önce eller bileklere kadar ve parmak araları da hilallenerek/ovuşturularak üç defa yıkanır. Abdest azalarında suyun temasına engel maddeler varsa imkân ölçüsünde temizlenir. Parmaktaki yüzük oynatılır. Sağ el ile üç defa ağza su verilerek ağız temizliği sağlanır. Aynı şekilde üç defa burna su verilerek burun temizlenir. Ardından yüz üç kere yıkanır. Sonra dirsekle birlikte sağ kol üç defa ve aynı şekilde sol kol üç defa yıkanır. Sağ el ıslatılarak avuç ve parmakların içiyle başın dörtte biri veya tamamı bir defa mesh edilir. Eller tekrar ıslatılarak başparmakla kulağın dışı, şehadet parmağı veya serçe parmakla içi mesh edildikten sonra her iki elin arkasıyla boyun mesh edilir. Önce sağ, sonra sol ayak, parmak uçlarından başlanarak topuk ve aşık kemikleri de dâhil olmak üzere yıkanır. Suyun parmak aralarına ulaşmasına özen gösterilir. (Buhârî, Vudû’, 22-24 [157-159]; Müslim, Tahâret, 3-6 [226-227]; Kâsânî, Bedâ’i, 1/23-25; İbn Cüzey, el-Kavânîn, 19-21)
+**Kıymetli kardeşlerim! Bir damla su bize yeniden başlamayı hatırlatabilir.**
 
-Hz. Peygamber (s.a.v), abdest aldıktan sonra yapılmasını hoş karşıladığı bazı hareketleri de bildirmiştir. söz gelimi güzel bir şekilde abdest aldıktan sonra,
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَغَسَلَ وَجْهَهُ خَرَجَ مِنْ وَجْهِهِ كُلُّ خَطِيئَةٍ نَظَرَ إِلَيْهَا بِعَيْنَيْهِ مَعَ الْمَاءِ - أَوْ مَعَ آخِرِ قَطْرِ الْمَاءِ -</p>
 
-<p lang="ar" dir="rtl" class="ayet">أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ اللَّهُمَّ اجْعَلْنِى مِنَ التَّوَّابِينَ وَاجْعَلْنِى مِنَ الْمُتَطَهِّرِينَ فُتِحَتْ لَهُ ثَمَانِيَةُ أَبْوَابِ الْجَنَّةِ يَدْخُلُ مِنْ أَيِّهَا شَاءَ</p>
+*Müslüman kul abdest alıp yüzünü yıkadığında, gözleriyle işlediği günahlar suyla yahut suyun son damlasıyla yüzünden çıkar.* (Müslim, 244; rivayetten bölüm)
 
-“Şehâdet ederim ki, tek olan, hiçbir ortağı bulunmayan Allah’tan başka hiçbir ilâh yoktur ve şehâdet ederim ki, Muhammed O’nun kulu ve elçisidir. Allah’ım beni tövbe edenlerden ve temizlenenlerden eyle!” (Tirmizî, Tahâret, 41) denilmesinin cennete girmeye vesile olacağını haber vermiştir.
+Hadisin devamında ellerin ve ayakların işlediği günahların da abdestle döküldüğü anlatılır. Yüzümüzden süzülen damlalarda rahmet umarız. Geçmişteki kusurları sebebiyle namaza yaklaşmakta zorlanan kardeşimiz bu müjdeyi duysun. Rabbine yönelmek için bugün bir adım atabilir.
 
-Bu yüzden abdest aldığı sırada insanın Rabbine tam bir teslimiyetle dua etmesi, özellikle her bir azayı yıkarken onunla ilgili duada bulunması, abdest vesilesiyle huzura ermek ve hakiki bir temizlik için önemlidir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-### Abdesti Bozan Şeyler
+*Büyük günahlardan kaçınıldığı sürece beş vakit namaz ve bir cumadan diğer cumaya kadar kılınan namazlar, aralarındaki günahlara kefâret olur.* (Müslim, 233a; rivayetin anlamı)
 
-Abdestli olan kimsede aşağıdaki hâllerden biri meydana gelirse abdesti bozulmuş olur:
+Bağışlanma müjdelerini birlikte okuruz. Âlimlerin açıkladığı üzere bu kefâret, küçük günahlar çerçevesinde anlaşılır. Büyük günah için samimi tövbeye yöneliriz. Kul hakkı varsa sahibine hakkını verir, verdiğimiz zararı gidermeye çalışırız. Abdestin ardından temiz bir başlangıca uygun kararlar alırız.
 
-1. Ön ve arkadan sidik ve pislik gelmesi ve arkadan yel çıkması.
+Telefon ekranında birinin kusurunu yaydıysak paylaşımı kaldırıp zararı düzeltelim. İş arkadaşımıza haksızlık ettiysek konuşmak için vakit ayıralım. Evde kırıcı davrandıysak özür dileyelim. Yıkanan ellerimizle aynı kötülüğe uzanmamak için gayret edelim. Rahmet ümidi bize hareket gücü versin.
 
-2. Vücudun herhangi bir yerinden kan ve irin akması. Kan, ister kendiliğinden ister sıkılarak çıksın abdesti bozar. Ağızdan gelen kan tükürüğe eşit veya daha fazla ise abdesti bozar. Tükürükten az ise bozmaz. Bu, tükürüğün renginden anlaşılır. Yara ve çıbandan akan irin ve sarı su da abdesti bozar. Bir hastalıktan dolayı göz, kulak vb. gelen akıntı da abdesti bozar.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-3. Ağız dolusu kusmak. Ağız dolusu su, yemek, safra ve kan pıhtısı kusmak abdesti bozduğu gibi aynı bulantı sebebiyle parça parça gelen kusuntunun toplamı ağız dolusu miktarı olursa yine abdesti bozar.
+*Ümmetim kıyamet gününde abdest izlerinden dolayı yüzleri, elleri ve ayakları nurlu olarak çağrılacaktır.* (Buhârî, 136; rivayetten bölüm; anlam aktarımı)
 
-4. Yatarak, yaslanarak veya bir şeye dayanarak uyumak.
+İşten yorgun döndüğümüzde aldığımız abdestin, kimse görmeden kıldığımız namazın Rabbimiz katındaki değerini umarız. Bazen bir insanın bütün gününü değiştiren şey, yeniden doğrulabileceğini bilmesidir. Bu ümidi birbirimize de taşıyalım. Namaza dönen insanı sıcak bir selâmla karşılayalım.
 
-5. Bayılmak, sarhoş olmak.
+Ona ilk gününde bütün eksiklerini birden saymak yerine, sorduğu konuyu anlaşılır biçimde anlatalım. Yanında duracak bir arkadaş olalım. Bir sonraki namaza hazırlanırken kendisini cemaatin içinde güvende hissetsin.
 
-6. Namazda gülmek. Yanındaki kimse işitecek derecede sesli gülerse hem abdesti hem de namazı bozulmuş olur. Kendi duyacağı kadar gülerse sadece namaz bozulur. Tebessüm etmek yani gülümsemek abdesti ve namazı bozmaz.
+**Abdestin müjdesi, tövbemize cesaret ve davranışımıza istikamet versin.**
 
-### Gusül Abdesti
+---
 
-Kur’an-ı Kerim’de cünüplükten temizlenmenin yolunun gusül olduğu belirtilmiş, bu temizlik yapılmadan namaza yaklaşılmaması ifade edilmiştir:
+<h2 class="vaaz-bolum-baslik" id="abdest-ve-vesvese" tabindex="-1">V. Abdesti korumak, şüpheyi büyütmemek</h2>
 
-<p lang="ar" dir="rtl" class="ayet">وَلَا جُنُبًا اِلَّا عَابِرٖى سَبٖيلٍ حَتّٰى تَغْتَسِلُواۜ … يَٓا اَيُّهَا الَّذٖينَ اٰمَنُوا لَا تَقْرَبُوا الصَّلٰوةَ</p>
+Musluğu kapattık, havluyu astık; derken zihnimize bir soru geldi: Acaba abdestim bozuldu mu? Burada hükmü bilmek, tekrar tekrar yıkanmaktan daha faydalıdır. Hanefî uygulamasında idrar, dışkı ve yel çıkması abdesti bozar. Kan veya irin, çıktığı yerden akıp çevresine yayılırsa abdest yenilenir.
 
-“Ey iman edenler! …cünüp iken de -yolcu olan müstesna- gusül edinceye kadar namaza yaklaşmayın. ...” (Nisâ, 4/43)
+Ağız dolusu kusmak, bayılmak ve kontrolü kaldıran uyku da abdesti bozan başlıca hâllerdendir. Uyuklama ile derin uyku arasındaki farkı gözetiriz. Rükû ve secdeli namazda yanındakinin duyacağı kahkaha, Hanefîlerde abdesti de bozar. Tebessümün hükmü farklıdır. Bu ayrıntıları bir ilmihalden öğrenmek, kulaktan dolma ölçülerin önüne geçer.
 
-Yine Maide Suresi 6. Ayette Allah Teâla cünüp olunduğunda gusül alınması (yıkanılması) gerektiğini emretmiştir:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لاَ يَنْفَتِلْ ـ أَوْ لاَ يَنْصَرِفْ ـ حَتَّى يَسْمَعَ صَوْتًا أَوْ يَجِدَ رِيحًا</p>
 
-<p lang="ar" dir="rtl" class="ayet">وَاِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُواۜ</p>
+*Namazda abdestinin bozulduğunu zanneden kimse hakkında Efendimiz, ses işitmedikçe veya koku duymadıkça namazdan ayrılmamasını söyledi.* (Buhârî, 137; rivayetten bölüm)
 
-“…Eğer cünüp olursanız temizlenin...” (Maide,5/6)
+Buradaki ölçü, bozulmanın kesinleşmesidir. Ses ve koku kesinliğin örnekleridir; yel çıktığını başka şekilde kesin bilen kişi de abdestini yeniler. Ortada yalnız ihtimal varsa mevcut abdest geçerliliğini korur. İlmihal geleneğinin öğrettiği güven budur.
 
-### Gusül Abdesti Nasıl Alınır?
+<blockquote class="vaaz-alinti">
+<p>Şek ile yakīn zâil olmaz</p>
+<footer>— Mecelle, madde 4; TDV İslâm Ansiklopedisi, “Yakīn”.</footer>
+</blockquote>
 
-Önce Besmele okunarak “Niyet ettim gusül abdesti almaya” diye niyet edilir. Eller bileklere kadar yıkandıktan sonra bedenin herhangi bir yerinde pislik varsa onlar temizlenir, sonra avret yerleri yıkanır.
+Yani kesin olarak bildiğimiz bir durumu, sırf şüphe karşısında esas almaya devam ederiz. Abdest aldığımızı biliyorsak belirsiz bir his geldiğinde mevcut abdestimize güveniriz. Bu ilke, ibadetimizi sağlam bir bilgiye dayandırır. Musluğu yeniden açma isteği geldiğinde öğrendiğimiz ölçüyü hatırlarız.
 
-Bundan sonra namaz abdesti gibi abdest alınır. Abdest bitince evvela başa, sonra sağ omuza, sonra sol omuza, daha sonra da vücudun diğer taraflarına üçer defa su dökülerek vücut yıkanır. Her döküşte su bedenin her tarafına ulaştırılarak ovuşturulur. İğne ucu kadar kuru bir yer kalmamak üzere vücudun her tarafı üç defa iyice yıkanır. Yıkanırken suyun, saçların diplerine, sakal, bıyık ve kaşların altına, göbek boşluğuna, kulakların iç kısmına ve küpe deliklerine ulaştırılması sağlanır. Parmaklarda sık olan yüzükler yerinden oynatılarak altları yıkanır. Vücuda yapışmış olan ve suyun bedene ulaşmasına engel olan şeyler giderilir. Dişlerin arasında kalan yemek ve ekmek kırıntıları temizlenir. Gusül yaparken dua okunmaz, edep yerleri örtülü değilse kıbleye dönülmez ve gereksiz yere konuşulmaz.
+<p class="vaaz-etiket">Fıkhî Ölçü — İki durum, iki açık karar</p>
 
-Resûlullah (s.a.v), gusletme imkânı olduğu hâlde bunun geciktirilmesini hoş karşılamazdı. (Ebû Dâvûd, Teraccül, 8, Ebû Dâvûd, Teraccül, 8) Zira gusül, kişiyi hem maddî olarak bütün vücudunu yıkaması sayesinde bedensel kirlerden kurtarır hem de manevî olarak ruhuna sirayet eden günahlardan arındırır.
+Abdest aldığını kesin bilen, bozulduğundan yalnız şüphe ediyorsa abdestli kabul edilir. Abdesti bozulduğunu kesin bilen, sonra abdest alıp almadığından şüphe ediyorsa namaz için abdest alır. Kararımızı son kesin bilgimize göre veririz. Tırnak kesmek, saç tıraşı olmak ve ağlamak da tek başına abdesti bozmaz.
 
-Cünüp olan kişinin necis olarak değerlendirilmesi ise yanlıştır. Hükmî kirlilik olarak isimlendirilen bu durum, sadece belirli ibadetlerin yerine getirilmesini engelleyen bir eksikliktir. Resûlullah (s.a.v) döneminde insanlar arasında, cünüp olan bir kişinin hem manevî hem de maddî açıdan necis olduğu, dolayısıyla gusletmediği sürece uyumasının, bir şey yiyip içmesinin, diğer insanlarla görüşüp konuşmasının günah olacağı yönünde bazı inanışlar mevcuttu. İşte Resûlullah (s.a.v), bu inanışların yanlış olduğuna işaretle ashâbını, cünüp iken avret mahallerini yıkayıp abdest alarak uyuyabilecekleri, (Buhârî, Gusül, 27) yine aynı şekilde sadece abdest alarak (Tirmizî, Cum'a, 78) ya da ellerini yıkayarak bir şey yiyip içebilecekleri (Nesâî, Tahâret, 165) yönündeki telkinleriyle rahatlatıyordu. Allah Resûlü (s.a.v), hem cünüplüğün hem de hayız ve nifasın, bâliğ olmuş her insanın fıtrî yapısı gereği daima yüz yüze gelebileceği manevî birer kirlilik hâli olduğunu ashâbına öğretmiştir.
+(İlmihal, I, s. 199–200; Buhârî, 137; Mecelle, madde 4.)
 
-Resûlullah (s.a.v), guslettikten sonra namaz kılacağı zaman abdesti bozulmadıkça yeniden abdest almaz, namazını gusül abdesti ile kılardı. (İbn Mâce, Tahâret, 96; Tirmizî, Tahâret, 79) Cuma günleri gusül abdesti alıp güzel koku sürünmeyi tavsiye ederdi. (İbn Mâce, İkâmetü’s-salavât, 83)
+Aynı lavaboda farklı mezhepten bir arkadaşımız da abdest alabilir. Kanamanın veya ten temasının hükmünde farklı uygulamalar görmemiz mümkündür. Kendi öğrendiğimiz ölçüyü uygulayıp arkadaşımızın dayandığı meşru görüşe saygı gösteririz. Merak ettiğimizi sakin bir dille sorarız; birlikte öğrenmenin kapısı açık kalır.
 
-### Gusül Yapmayı Gerektiren Hâller
+Vesvese sebebiyle banyoda uzun süre kalan kardeşimize sabırla destek olalım. Guslü ve abdesti usulünce tamamladıktan sonra günlük hayatına devam etmesini kolaylaştıralım. Kaygı hayatını belirgin biçimde zorluyorsa güvenilir dinî rehberlikle birlikte uygun uzman desteğine ulaşmasına yardımcı olalım.
 
-Gusül yapmayı gerektiren hâller şunlardır:
+**Abdestimizi kesin bilgiyle koruyalım, vesvesenin peşinden tekrar tekrar dönmeyelim.**
 
-1. Dokunmak, bakmak, düşünmek ve ihtilam olmak (rüyada cinsel ilişkide bulunmak) suretiyle şehvetle (cinsel arzu ile) gelen meninin dışarı çıkması ve ergenlik çağında olan erkek ve kadının cinsel ilişkide bulunması hâllerinde cünüplük meydana gelir ve yıkanmak farz olur.
+---
 
-İhtilam olan veya cinsel ilişkide bulunan kimse, idrar yapmadan veya epeyce yürümeden yahut da uyumadan yıkanıp da sonra kendisinden meninin kalanı çıkarsa tekrar gusül yapması gerekir.
+<h2 class="vaaz-bolum-baslik" id="gusul-ne-zaman" tabindex="-1">VI. Gusül: Mahremiyeti koruyarak öğrenmek</h2>
 
-Bir kimse, uykudan uyanınca ihtilam olduğunu (yani, rüyada cinsel ilişkide bulunduğunu) hatırlar ve üzerinde de yaşlık görürse kendisine gusül lazım gelir. Uykudan uyanınca ihtilam olduğunu hatırlamayan fakat üzerinde yaşlık gören kimsenin de gusül yapması lazımdır. İhtilam olduğu hâlde bir yaşlık yoksa yani dışarıya meni çıkmamışsa yıkanması gerekmez.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِن كُنتُمْ جُنُبًا فَٱطَّهَّرُوا۟</p>
 
-2. Hayız akıntısı kesilince.
+*Eğer cünüp olursanız temizlenin.* (Mâide, 5/6; âyetten bölüm)
 
-Yani kadınların âdet hâli (aybaşı) sona erince,
+**Sevgili gençler! Bedenimizi ve ibadetimizi tanımak, öğrenme hakkımızdır.**
 
-3. Nifas kanı kesilince. Yani çocuk doğuran kadının lohusalık hâli bitince, gusül yapmaları farz olur.
+Banyo kapısının arkasında insan bazen kimseye soramadığı bir soruyla baş başa kalır. Gusül, bütün bedeni usulünce yıkayarak belirli ibadetlere hazırlanmadır. Türkçede boy abdesti deriz. Bu bilgiyi mahremiyeti koruyan, anlaşılır bir dille öğrenelim; birbirimize güvenli bir soru imkânı sunalım.
 
-### Cünüb Olan Kimsenin Yapması Haram Olan Şeyler
+Cinsel ilişki, meni gelmese de kadın ve erkek için guslü gerektirir. Şehvetle meni gelmesi de gusül sebebidir. Uykudan kalkınca meni izi bulunduğunda gusül gerekir; yalnız rüya görüp böyle bir iz bulunmadığında gerekmez. Her ıslaklığı aynı saymak yerine, karşılaştığımız durumu ehline özel olarak sorarız.
 
-1. Namaz kılmak.
+Âdet ve lohusalık hâlleri sona erince de gusledilir. Düzensiz kanama ve hastalık akıntıları kendi hükümleriyle değerlendirilir. Bu konularda bir hanımın sorusunu dinlemek, gerektiğinde ehil bir kadın hocaya ulaşmasını kolaylaştırmak cemaatin inceliğidir. İbadet bilgisi güven içinde öğrenilsin.
 
-2. Kur’an okumak.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ الْمُؤْمِنَ لاَ يَنْجُسُ</p>
 
-Cünüb olan kimse Kur’an okuyamaz. Ancak dua niyetiyle dua ayetlerini okuyabilir. Şükretmek maksadıyla “Elhamdülillah” diyebilir. Yemekte veya başka bir şeye başlarken “Besmele” söyleyebilir. Kelime-i Tevhid’i okuyabilir. Cünüb olan kimse, ellerini ve ağzını yıkadıktan sonra yiyip içebilir. Ellerini ve ağzını yıkamadan yiyip içmesi mekruhtur.
+*Mümin necis olmaz.* (Buhârî, 283; rivayetten bölüm)
 
-3. Kur’an’a el sürmek.
+Ebû Hüreyre, cünüp olduğu için Efendimizin yanından ayrılıp yıkanmıştı. Sebebini öğrenen Peygamberimiz bu sözle onu rahatlattı. Hükmî hâli öğrenirken insanın kendisini değersiz hissetmesine yol açmayalım. Âdet de ihtilâm da insan hayatının tabiî gerçeklerindendir.
 
-Cünüp olan kimse, Kur’an-ı Kerim’e el süremediği gibi, ayet yazılı bir kâğıdı tutamaz. Fakat Kur’an’dan ayrı bir kap veya kılıf ile Kur’an’a dokunabilir. Cünüp kişinin, elini sürmeden Kur’an’a bakmasında bir sakınca yoktur.
+Bu hâlleri aile içinde konuşurken sesimizin tonuna da dikkat edelim. Yeni doğum yapan bir annenin dinlenmeye, bir gencin açık bir cevaba ihtiyacı olabilir. Yardım ederken neyi paylaşmak istediğini kendisine bırakalım. Öğrenmek için herkes kendi mahremiyetini anlatmak zorunda kalmasın.
 
-4. Camiye girmek.
+**Abdest ve gusül, bedenimizi temizlerken bizi Rabbimizin huzuruna hazırlar.** Gusül gerektiren hâlde namaz için bu hazırlığı tamamlarız. Yıkanmayı namazı vaktinde kılmaya imkân bırakacak şekilde planlarız. Hayatın olağan işlerini sürdürebilir, Allah’ı anabilir ve dua edebiliriz. Her soruyu utandırmadan cevaplamak, bu bilgiyi gönüllere yerleştirir.
 
-Zorunlu bir durum olmadıkça cünüp kimse camiye giremez. Düşman, yırtıcı hayvan ve soğuktan korunmak veya başka yerde bulunmadığı hâlde camide olan sudan almak gibi, zorunlu durumlarda camiye girebilir. Ancak camiye girmek için teyemmüm yapılması uygun olur.
+**Mahrem bilgiyi edeple öğrenelim, insanın onurunu özenle koruyalım.**
 
-5. Kâbe’yi tavaf etmek.
+---
 
-Cünüp olan kimse Kâbe’yi tavaf edemez. Tavaf edebilmek için gusül yapmış olması ve abdestli bulunması gerekir.
+<h2 class="vaaz-bolum-baslik" id="gusul-nasil" tabindex="-1">VII. Guslün uygulanışı: Yeterli ve özenli</h2>
 
-## Sonuç
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">ثُمَّ يُفِيضُ الْمَاءَ عَلَى جِلْدِهِ كُلِّهِ</p>
 
-Temizlenenleri seven Cenâb-ı Hakk’ın (Bakara, 2/222) huzuruna çıkmadan önce kul, dıştan içe doğru bir temizlik yapar. Şartlara göre kimi zaman abdest kimi zaman gusül bazen de teyemmümle, yalnız bedenini değil, ruhunu, nefsini ve gönlünü arındırır, bu şekilde huzur-ı âlî’ye varmaya lâyık hâle gelir. Abdest suyunun paklığında veya temizleyici olan toprağın saflığında manevî bir iklime doğru ilk adımını atar. İçtenlikle arınmaya niyet eden insan, yıkadığı her bir uzuvla sadece görünen kirlerden değil, günahlarından da kurtulur. Yalnız ibadetlerin değil, hakkı verildiğinde cennetin de anahtarı olabilecek bu arınmayla (Tirmizî, Tahâret, 1; İbn Hanbel, III, 341) kişi, dış dünyanın stresinden kendisini soyutlayarak huzura kavuşur. Mümin, Resûl-i Ekrem’in (s.a.v) gösterdiği hassasiyetle ve hissettiği samimiyetle abdestini aldığında, şüphesiz temizliğin verdiği gönül rahatlığını tadacak ve ibadetin tadına varabilecektir. Abdesti Peygamber Efendimizin (s.a.v) ve ashâbının abdestine ne kadar benzerse, hayatının da onlarınki gibi berraklaşması mümkün olabilecektir. Her zaman abdestli bulunmaya özen gösteren mümin, abdestin serinliğini, safiyetini, şuurunu ve huzurunu iliklerinde hissederek her anlamda temizlenecektir. Zira “Abdeste ancak mümin kimse müdavim olur.” (Muvatta’, Tahâret, 6) buyuran Allah Resûlü (s.a.v), hayatın her anını abdest temizliğinde yaşama şuuruna ancak inananların sahip olabileceğini bildirmiştir.
+*Ardından suyu bütün bedenine dökerdi.* (Buhârî, 248; rivayetten bölüm)
 
-Vaazımızı Rasulullah’ın (s.a.v), manevî kirlilikten kurtulmak için guslünü tamamladıktan sonra yaptığı dua ile tamamlıyoruz:
+Hz. Âişe’nin anlattığı bu rivayette Efendimiz önce ellerini yıkar, namaz abdesti gibi abdest alır. Parmaklarıyla saç diplerine su ulaştırır, başına üç avuç su döker ve bütün bedenini yıkar. Duşun altında biz de bu düzeni hatırlayabiliriz. Öğrendiğimiz hareketler birbiri ardınca yerini bulur.
 
-<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ طَهِّرْنِى مِنَ الذُّنُوبِ كَمَا يُطَهَّرُ الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ</p>
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Hanefîlere göre guslün üç farzı</strong> Temiz suyun gereken yerlere ulaşması esastır.</figcaption>
+<table aria-label="Hanefîlere göre guslün üç farzı">
+<thead><tr><th scope="col">Farz</th><th scope="col">Dikkat edilecek yer</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Farz">Ağzı yıkamak</th><td data-label="Dikkat edilecek yer">Ağza su alıp içini çalkalamak.</td></tr>
+<tr><th scope="row" data-label="Farz">Burnu yıkamak</th><td data-label="Dikkat edilecek yer">Burun içine su ulaştırıp temizlemek.</td></tr>
+<tr><th scope="row" data-label="Farz">Bütün bedeni yıkamak</th><td data-label="Dikkat edilecek yer">Saç dipleri ve bedenin kıvrımları dâhil suyu her yere ulaştırmak.</td></tr>
+</tbody></table>
+</figure>
 
-“Allah’ım! Beyaz elbisenin kirden arınması gibi beni de günahlardan arındır.” (Nesâî, Gusül ve teyemmüm, 4)
+Niyet ve besmeleyle başlayıp ellerimizi, ardından gerekli beden temizliğini yaparız. Namaz abdesti gibi abdest alırız. Başımızı, sonra sağ ve sol tarafımızı yıkayarak bütün bedene su ulaştırırız. Kulakların dış kıvrımları, göbek çevresi ve parmak araları gibi gözden kaçabilecek yerlere dikkat ederiz.
 
-Cenab-ı Hak, bizleri abdestin nuruyla parlayan, ibadetlerini tertemiz bir beden ve pak bir kalp ile eda eden kullarından eylesin. Maddi ve manevi her türlü kirden bizleri muhafaza buyursun.
+Farzın gerçekleşmesi için gerekli yerlerin bir defa tam yıkanması yeterlidir. Üçer yıkama sünnettir. Olağan biçimde su ulaştırıp yıkadığımız yeri tamamlanmış kabul ederiz. Özenli temizliğimizi bu ölçüyle bitirir, günlük hayatımıza güvenle döneriz.
+
+Örgülü saçın diplerine su ulaşıyorsa Hanefî uygulamasında örgüyü çözmeden gusledilebilir. Sağlam diş dolgusu ve kaplama varken de gusül geçerlidir. Sargı ve yara gibi tedavi durumlarında ise ilgili ruhsat öğrenilir. Kolayca çıkarılabilen, suyu engelleyen tabakalar giderilir; güçlük doğuran özel durumlar ayrıca sorulur.
+
+Bu şartları sağlayan bir duşla gusül yerine gelir. Gusül sırasında veya sonrasında abdesti bozan başka bir durum olmadıysa bu gusülle namaz kılabiliriz. Havuz ve ortak duş alanlarında mahremiyetimizi korur, başkalarının mahremiyetine de saygı gösteririz. Temizliğimizi tamamlayıp gönül rahatlığıyla hazırlanırız.
+
+Gusle başlarken niyet de Hanefîlerde sünnettir. Şâfiî mezhebinde ise niyet farzdır; ağız ve burnu yıkama sünnet hükmündedir. Böylece bir arkadaşımızın bildiği ayrıntının neden farklı olabildiğini anlarız. Mezhep farkını öğrenmek, aynı kıbleye yöneldiğimiz insanlara karşı anlayışımızı artırır.
+
+Abdest ve gusül için kullandığımız yer herkesin rahat edeceği biçimde düzenlenebilir. Temiz havluyu erişilebilir bir yere asalım, gerekli eşyayı önceden hazırlayalım. Yardıma ihtiyaç duyan yakınımızın ne istediğini soralım; mahremiyetini gözeterek destek verelim. Hazırlığımız ona da kolaylık olsun.
+
+**Gusülde suyu gereken yere ulaştıralım; ölçüyü bilerek ibadete geçelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hastalik-ve-teyemmum" tabindex="-1">VIII. Hastalıkta da kulluğun yolu açıktır</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">مَا يُرِيدُ ٱللَّهُ لِيَجْعَلَ عَلَيْكُم مِّنْ حَرَجٍ وَلَـٰكِن يُرِيدُ لِيُطَهِّرَكُمْ وَلِيُتِمَّ نِعْمَتَهُۥ عَلَيْكُمْ لَعَلَّكُمْ تَشْكُرُونَ</p>
+
+*Allah size herhangi bir güçlük çıkarmak istemez; fakat sizi tertemiz kılmak ve üzerinizdeki nimetini tamamlamak ister ki şükredesiniz.* (Mâide, 5/6; âyetten bölüm)
+
+Hastane odasında bir kol sargıdayken, yatağın yanındaki sürahiye bakıp nasıl abdest alacağını soran bir kardeşimiz olabilir. Bu âyet ona da seslenir. Abdest ve guslü emreden Rabbimiz, aynı âyette teyemmüm yolunu da bildirir. Kulluğumuz, gücümüzün yettiği doğru uygulamayla sürer.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Teyemmümün yeri ve yapılışı</p>
+
+Su bulunamadığında veya suyun kullanılması geçerli bir sebeple mümkün olmadığında teyemmüm yapılır. Suyu kullanmanın hastalığı ağırlaştırması da bu çerçevede değerlendirilir. Hanefî uygulamasında niyet edilir; eller temiz toprak veya yer cinsinden uygun bir maddeye sürülüp yüz meshedilir. İkinci defa eller sürülerek kollar dirseklerle birlikte meshedilir. Suyu kullanmaya engel mazeret kalkınca suyla temizliğe dönülür.
+
+(İlmihal, I, s. 208–210; TDV İslâm Ansiklopedisi, “Teyemmüm”.)
+
+Yarayı yıkamak zarar veriyorsa sargı üzerine mesh gibi kolaylıklar vardır. Mesh de zarar veriyorsa ilgili hüküm buna göre öğrenilir. Sağlıkla ilgili zararı hekimle, uygulanacak temizlik hükmünü ehil bir hocayla değerlendirmek mümkündür. Hastamızın yatağına bilgi ve yardım birlikte ulaşsın.
+
+Sürekli idrar kaçırma gibi bir rahatsızlıkta özür hükümleri öğrenilir. Hanefîlerde başlangıç ölçüsü, bir namaz vakti boyunca abdest alıp namaz kılacak kadar kesintisiz bir aralığın bulunmamasıdır. Özrün sürmesi için sonraki her vakitte en az bir defa görülmesi yeterlidir; tam bir vakit kesilince özür sona erer.
+
+Özür şartlarını taşıyan kimse her namaz vakti için abdest alır. O vakitte, özrü dışındaki bir sebeple abdesti bozulmadıkça ibadetini yapar. Bu ölçü kişiye göre açıklanmalıdır. Bakım verenler temiz malzemeyi hazırlayabilir, ihtiyaç duyduğu yardımı rızasıyla sunabilir. Soru sormasına zaman ayıralım.
+
+Ziyarete gittiğimizde yalnız ilacını ve yemeğini sormakla yetinmeyelim. İbadet için ihtiyaç duyduğu bir kolaylığı da öğrenelim. Elini uzatabileceği bir havlu, ulaşabildiği bir lavabo veya anlayabildiği kısa bir açıklama, onun kendi başına yapabildiği işleri çoğaltabilir.
+
+**Hastalığın yükünü, doğru bilgi ve dinimizin tanıdığı kolaylıkla hafifletelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="suyun-emaneti" tabindex="-1">IX. Avrupa’da günlük hayat ve suyun emaneti</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَكُلُوا۟ وَٱشْرَبُوا۟ وَلَا تُسْرِفُوٓا۟ ۚ إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْرِفِينَ</p>
+
+*Yiyin için fakat israf etmeyin. Çünkü Allah israf edenleri sevmez.* (A‘râf, 7/31; âyetten bölüm)
+
+Âyet, güzel giyinme ve yeme içme bağlamında israftan sakındırır. Bu ölçüyü abdestte de nebevî uygulamayla birlikte görürüz. Musluktan akan su, elimizdeki bir nimettir. Kullanırken ihtiyacımızı karşılar, başkalarının payını da gözetiriz.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*Enes’in anlattığına göre Peygamberimiz bir müd suyla abdest alır; bir sâ‘ ile beş müd arasındaki suyla guslederdi.* (Buhârî, 201; rivayetin anlamı)
+
+Bu rivayet bize ölçülü kullanım örneği verir. Kullanılan eski hacim ölçülerini herkes için zorunlu bir litre sınırına çevirmeyiz. Gaye, gereken yeri iyice yıkarken suyu boşa akıtmamaktır. Musluğu ihtiyacımız kadar açmak, bu sünnet bilincini günlük hayatımıza taşır.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Vardiya arasındaki hazırlık</p>
+
+Liège’de öğle molasına çıkan bir çalışan, namaz için iş yerinin ortak lavabosuna yönelir. Uygun vakti ve yeri önceden konuşmuştur. Suyu ölçülü açar; işini bitirince lavaboyu temiz, zemini kuru bırakır. Ardından gelen mesai arkadaşına da rahat kullanılacak bir yer kalır. İbadete hazırlık, ortak hayatın nezaketiyle buluşur.
+
+Okulda bir genç namaz için imkân ararken öğretmeniyle veya okulun ilgili görevlisiyle saygıyla konuşabilir. Cami, nasıl soracağını öğrenmesine destek olabilir. Yolculukta mola yerini ve namaz vaktini önceden planlamak da hazırlığın parçasıdır. Vakit daralınca telaşa düşmek yerine imkânlarımızı önceden tanırız.
+
+Evde boşa akan musluğu kapatmak, camide fark ettiğimiz sızıntıyı bildirmek elimizdedir. Abdesthanede kaygan bir zemini kurulamak, bastonuyla yürüyen büyüğümüzün yolunu güvenli kılar. Tekerlekli sandalye kullanan kardeşimizin lavaboya ulaşacağı alanı açık tutalım. Ortak mekânda başkasına bıraktığımız rahatlık da bir iyiliktir.
+
+Komşumuz bu hazırlığı merak edip sorduğunda, namazdan önce belirli yerlerimizi yıkadığımızı sade bir dille anlatabiliriz. Sözü, onun anlayacağı yerden kurarız. Gördüğü temizlikle işittiği açıklama birbirini tamamlasın. İnancımızı yaşarken çevremizle kurduğumuz saygılı ilişki, karşılıklı anlayışı büyütsün.
+
+Camide küçük çocuğa musluğu nasıl açacağını gösterelim. Suyun sesini dinlesin, elini yıkasın, sonra musluğu kendi kapatsın. Öğrenirken yanında duran yetişkin, suyun emanet olduğunu davranışıyla anlatsın. Çocuk, temizliği hem evinde hem camide aynı özenle tanısın.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/abdest-ve-gusul/su-emaneti.svg" width="1600" height="900" alt="Kuru zeminli ortak lavabo, kapalı musluk ve yanındaki küçük havlu." loading="lazy" decoding="async">
+<figcaption><strong>Bizden sonra gelenin hakkı</strong> Ortak lavaboyu temiz, zemini kuru, musluğu kapalı bırakalım.</figcaption>
+</figure>
+
+**Suyu ölçülü kullanalım, ortak alanı bizden sonrakine temiz bırakalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="ailede-ogrenmek" tabindex="-1">X. Ailede öğrenmek, hayatta güzelleşmek</h2>
+
+**Aziz anneler ve babalar! Çocuklarımızın sorularına sakin bir yer açalım.**
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*Ümmü Süleym, bir kadının ihtilâm olduğunda gusletmesi gerekip gerekmediğini sordu. Peygamberimiz, meni gördüğünde gusül gerektiğini bildirdi.* (Buhârî, 130; sahih rivayetin ilgili kısmının özeti)
+
+Bu sahâbî hanım, bilmeye ihtiyaç duyduğu konuyu edep içinde soruyor. Efendimiz de soruya cevap veriyor. Bizim evimizde de ergenliğe yaklaşan çocuk, bedenindeki değişiklikleri güven duyduğu bir yetişkinle konuşabilsin. Bilgiyi zamanında ve yaşına uygun şekilde verelim. O sorunun arkasında bir öğrenme ihtiyacı vardır.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱللَّهَ يُحِبُّ ٱلتَّوَّٰبِينَ وَيُحِبُّ ٱلْمُتَطَهِّرِينَ</p>
+
+*Allah çok tövbe edenleri sever ve içi dışı temiz olanları sever.* (Bakara, 2/222; âyetten bölüm)
+
+Bu âyetin âdet hâline ilişkin hükümlerle aynı bağlamda gelmesi anlamlıdır. Konuşulması gereken bilgi, Allah’ın sevgi ve arınma çağrısıyla birlikte verilir. Bir genç kızın veya delikanlının mahrem sorusu aile sohbetinde alay konusu yapılmasın. Dilerse güvendiği bir hocaya özel olarak ulaşabilsin.
+
+Masanın üstünde açık bir ilmihal, yanında sıcak bir çay… Bu hafta evimizde kısa bir öğrenme vakti ayırabiliriz. Çocuğumuzla abdestin sırasını tekrar edelim. Türkçeyi daha az anlayan gence bildiği dilde açıklama bulalım. Yeni Müslüman olmuş kardeşimize de aynı sabrı gösterelim. Anladığını kendi cümlesiyle anlatmasına fırsat verelim.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱلصَّلَوٰةَ تَنْهَىٰ عَنِ ٱلْفَحْشَآءِ وَٱلْمُنكَرِ</p>
+
+*Kuşkusuz namaz hayâsızlıktan ve kötülükten meneder.* (Ankebût, 29/45; âyetten bölüm)
+
+Abdest bizi bu namaza hazırlar. Namazın çağrısı da davranışlarımızı güzelleştirir. Abdesthanede öğrendiğimiz özen sofrada, işte ve sokakta sürsün. Temizlediğimiz ellerimiz hakkı gözetsin; yüzümüzden dökülen su, kırdığımız gönlü hatırlatsın. Öğrenme, evimizin sesine merhamet katsın.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/abdest-ve-gusul/ogrenme.svg" width="1600" height="900" alt="Aydınlık bir masada yazısız açık kitap, iki sandalye ve katlanmış seccade." loading="lazy" decoding="async">
+<figcaption><strong>Öğrenmeye ayrılan vakit</strong> Bir soruya sabırla açılan yer, ibadete güven kazandırır.</figcaption>
+</figure>
+
+**İbadeti sevdiren öğretim, doğru bilgiyi sabır ve mahremiyetle buluşturur.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta hayata taşıyacağımız yedi söz</h2>
+
+**Aziz cemaat! Öğrendiğimiz ölçüye küçük ve kararlı bir adım eşlik etsin.**
+
+Eve döndüğümüzde havlunun yanına bırakacağımız küçük bir not, bugünkü niyetimizi hatırlatabilir. Aşağıdaki sözleri bir haftalık uygulamaya dönüştürelim. Kendi şartımıza uygun olanı seçip başlayalım; hafta sonunda ne öğrendiğimizi ve neyi değiştirdiğimizi gözden geçirelim.
+
+**HUZURLU HAZIRLIK İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta abdestin dört farzını tekrar edeceğim.</strong> Bir ilmihalden okuyacak, yaptığım hareketlerle karşılaştırıp eksik bildiğim yeri soracağım.</li>
+<li><strong>Guslün üç farzını güvenilir kaynaktan gözden geçireceğim.</strong> Ağız, burun ve bütün bedeni yıkama ölçüsünü öğrenip mahrem sorumu ehline özel olarak yönelteceğim.</li>
+<li><strong>Bu hafta abdest alırken suyu ihtiyacım kadar açacağım.</strong> Gereken yerleri tam yıkayıp musluğu işim bittiği anda kapatacağım.</li>
+<li><strong>Sırf şüphe yüzünden tamamladığım abdesti tekrarlamayacağım.</strong> Öğrendiğim kesinlik ölçüsünü uygulayacak, zorlanırsam güvenilir destek isteyeceğim.</li>
+<li><strong>Bir yakınımla on dakikalık öğrenme vakti ayıracağım.</strong> Aileden veya çevremden bir kişiyle abdest bilgisini sabırla tekrar edeceğim.</li>
+<li><strong>Bir hasta veya yaşlının ibadet ihtiyacını soracağım.</strong> İsterse temiz malzemeye, uygun alana veya ehil bir rehbere ulaşmasına yardım edeceğim.</li>
+<li><strong>Bu hafta bir kırgınlığı gidermek için adım atacağım.</strong> İncittiğim kişiden özür dileyecek, üzerimde hakkı varsa ödemek için somut bir yol belirleyeceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bugün bir adım seç</strong>Bilgiyi somut davranışa dönüştür.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Dört farzı öğren</strong></li>
+<li><span aria-hidden="true">2</span><strong>Guslün ölçüsünü öğren</strong></li>
+<li><span aria-hidden="true">3</span><strong>Suyu ölçülü kullan</strong></li>
+<li><span aria-hidden="true">4</span><strong>Kesin bilgiye dayan</strong></li>
+<li><span aria-hidden="true">5</span><strong>Öğrenmeye vakit ayır</strong></li>
+<li><span aria-hidden="true">6</span><strong>Bir ihtiyacı sor</strong></li>
+<li><span aria-hidden="true">7</span><strong>Bir hakkı gözet</strong></li>
+</ol>
+</figure>
+
+Bu adımların kimi bir musluğun başında, kimi kısa bir konuşmada başlar. Yardım alarak ibadet eden kardeşimiz de kendi imkânıyla bu iyiliğe katılır. Bir bilgiyi öğrenmesi veya ihtiyacını söylemesi kıymetlidir. Birbirimize verdiğimiz desteği hafta boyunca sürdürelim.
+
+İlk sözümüz için kitabı hangi akşam açacağımızı belirleyelim. Kitabı olmayan, hocasından uygun bir bölüm isteyebilir. Okumakta zorlanan, bir yakınıyla dinleyerek çalışabilir. Çocuklarımız dört farzı kendi cümleleriyle anlatsın; biz de onları dikkatle dinleyelim. Birlikte geçirdiğimiz bu kısa vakit, ibadet bilgisini ailemizin ortak hafızasına yerleştirsin.
+
+Yardım edeceğimiz kişiye önce ihtiyacını soralım. Kendi yapabildiği işi onun adına üstlenmek yerine, istediği desteği sunalım. Su kullanmayı azaltma sözümüzü de ilk abdestte uygulayalım. Musluğun açıklığını ayarlayıp her uzvu tam yıkayalım. Sonunda lavabonun çevresine bakalım; arkamızda temiz bir alan bıraktığımızdan emin olalım.
+
+Haftanın sonunda kendimize sakin bir vakit ayıralım. Hangi bilgiyi daha iyi öğrendik, kimin işini kolaylaştırdık, hangi hakkı yerine getirdik? Başardığımız küçük işi sürdürmek için bir sonraki adımı seçelim. Aile içinde bunu paylaşırken herkes kendi gayretini anlatsın. Birbirimizi dinleyip iyiliğin devamına destek olalım.
+
+Bir sonraki namazımız bugünkü niyetimizin ilk buluşması olsun. Suya uzanan elimizle birlikte kalbimiz de yönelsin. Efendimizin öğrettiği ölçü bize rehber olsun. Rabbimize, öğrettiğini yaşamaya gayret eden kullar olarak dua edelim.
+
+**Abdest ve gusül, bedenimizi temizlerken bizi Rabbimizin huzuruna hazırlar.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Temiz bir yöneliş, huzurlu bir hayat</h2>
+
+**Kıymetli kardeşlerim! Ellerimizi ve gönüllerimizi Rabbimize açalım.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ ۝٤٠</p>
+
+*Rabbim! Beni ve soyumdan gelecekleri namazı devamlı kılanlardan eyle. Rabbimiz! Duamı kabul et.* (İbrâhîm, 14/40)
+
+Allah’ım! Bize ibadetimizi doğru öğrenmeyi ve ihlâsla yerine getirmeyi nasip eyle. Abdest için uzandığımız suyu bereketli, secdeye vardığımız kalbi huzurlu eyle. Nimetini ölçülü kullanan, emanetini koruyan kullarından olmayı bize lütfeyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ طَهِّرْنِي مِنَ الذُّنُوبِ كَمَا يُطَهَّرُ الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ</p>
+
+*Allah’ım! Beyaz elbisenin kirden arındırılması gibi beni de günahlardan arındır.* (Nesâî, 403; rivayetten bölüm)
+
+Rabbimiz! Hatalarımıza tövbe ediyoruz. Bize hakkı sahibine vermeyi, kırdığımız gönlü onarmayı nasip eyle. Ailelerimize güven ve merhamet ver. Gençlerimizin sorularını hayırlı bilgiyle buluştur. Çocuklarımıza ibadet sevgisi, yeni Müslüman olmuş kardeşlerimize hayırlı dostlar ihsan eyle.
+
+Allah’ım! Hastane odasında şifa bekleyenlere, evinde bakım görenlere, yaşlı ve engelli kardeşlerimize kolaylık ver. Kaygıyla yorulan gönüllere ferahlık lütfeyle. Onlara hizmet edenlere sabır ve kuvvet ihsan eyle. Vefat eden yakınlarımıza ve bütün müminlere rahmetinle muamele eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette iyilik ver; bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Rabbimiz! Yaşadığımız bu beldelere huzur, komşularımıza esenlik ver. Savaş ve yoksullukla sınananlara yardım eyle. Cemaatimizi ilimde, ibadette ve iyilikte buluştur. Niyetimizi hâlis, gayretimizi devamlı eyle. Son nefesimizi imanla vermeyi nasip eyle.
+
+Âmin. Hamd, âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; kısaltılan âyet ve hadisler belirtilmiştir. Gündelik hayat sahneleri temsilîdir. Fıkıhta Hanefî ilmihal çizgisi esas alınmıştır. Kaynak ve tashih ayrıntıları eşlik eden rapordadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Temizliğin üç boyutu: <a href="https://quran.com/74/4-5">Müddessir 74/4–5</a>; <a href="https://sunnah.com/muslim:223">Müslim 223</a>.</li>
+<li>Abdestin dört farzı: <a href="https://quran.com/5/6">Mâide 5/6</a>.</li>
+<li>Peygamberimizin abdestini öğrenmek: <a href="https://sunnah.com/tirmidhi:788">Tirmizî 788</a>; <a href="https://sunnah.com/muslim:234a">Müslim 234a</a>.</li>
+<li>Bağışlanma ve sorumluluk: <a href="https://sunnah.com/muslim:244">Müslim 244</a>; <a href="https://sunnah.com/muslim:233a">Müslim 233a</a>; <a href="https://sunnah.com/bukhari:136">Buhârî 136</a>.</li>
+<li>Abdest ve vesvese: <a href="https://sunnah.com/bukhari:137">Buhârî 137</a>.</li>
+<li>Gusül ne zaman gerekir: <a href="https://quran.com/5/6">Mâide 5/6</a>; <a href="https://sunnah.com/bukhari:283">Buhârî 283</a>.</li>
+<li>Gusül nasıl alınır: <a href="https://sunnah.com/bukhari:248">Buhârî 248</a>.</li>
+<li>Hastalık ve teyemmüm: <a href="https://quran.com/5/6">Mâide 5/6</a>.</li>
+<li>Suyu ve ortak alanı korumak: <a href="https://quran.com/7/31">A‘râf 7/31</a>; <a href="https://sunnah.com/bukhari:201">Buhârî 201</a>.</li>
+<li>Sorulara güvenle yer açmak: <a href="https://sunnah.com/bukhari:130">Buhârî 130</a>; <a href="https://quran.com/2/222">Bakara 2/222</a>; <a href="https://quran.com/29/45">Ankebût 29/45</a>.</li>
+<li>Hatim ve cemaat niyazı: <a href="https://quran.com/14/40">İbrâhîm 14/40</a>; <a href="https://sunnah.com/nasai:403">Nesâî 403</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>Fıkhî çerçeve: <a href="https://islamansiklopedisi.org.tr/abdest">TDV İslâm Ansiklopedisi — Abdest</a>.</li>
+<li>Fıkhî çerçeve: <a href="https://islamansiklopedisi.org.tr/gusul">TDV İslâm Ansiklopedisi — Gusül</a>.</li>
+<li>Ruhsat: <a href="https://islamansiklopedisi.org.tr/teyemmum">TDV İslâm Ansiklopedisi — Teyemmüm</a>.</li>
+<li>Klasik fıkıh ilkesi: <a href="https://islamansiklopedisi.org.tr/yakin">TDV İslâm Ansiklopedisi — Yakīn; Mecelle, madde 4</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

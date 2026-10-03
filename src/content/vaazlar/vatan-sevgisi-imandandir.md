@@ -1,118 +1,480 @@
 ---
-baslik: "Vatan Sevgisi İmandandır"
-ozet: "Allah Resûlü (s.a.s); “Allah’ım! Bizlere Mekke’yi sevdirdiğin gibi, ondan daha da fazla Medine’yi sevdir! Allah’ım, ölçü ve tartımızı bizim için bereketli kıl!…"
+baslik: "Vatan Sevgisi: Köklerimize Vefa, Yaşadığımız Yere Sorumluluk"
+ozet: "Memleket hasretini Peygamberimizin Mekke ve Medine sevgisiyle anlamak; köklerimize vefayı, gençlerin aidiyetini ve yaşadığımız yere karşı sorumluluğu yedi somut adımda buluşturmak."
 kategori: toplum
-kelime: 1708
+kelime: 3955
 docx: "/vaazlar/vatan-sevgisi-imandandir.docx"
 pdf: "/vaazlar/vatan-sevgisi-imandandir.pdf"
+kapak: "/media/vaazlar/vatan-sevgisi-imandandir/kapak-og.webp"
+kapakAlt: "Sade bir pencere önündeki eski yol çantası ve filizlenen saksı; dışarıda aydınlık, hayalî bir Avrupa sokağı."
 ---
-<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ حَبِّبْ إِلَيْنَا الْمَدِينَةَ كَحُبِّنَا مَكَّةَ أَوْ أَشَدَّ ، اللَّهُمَّ بَارِكْ لَنَا فِى صَاعِنَا ، وَفِى مُدِّنَا ، وَصَحِّحْهَا لَنَا وَانْقُلْ حُمَّاهَا إِلَى الْجُحْفَةِ</p>
 
-Allah Resûlü (s.a.s); “*Allah’ım! Bizlere Mekke’yi sevdirdiğin gibi, ondan daha da fazla* Medine’yi sevdir! Allah’ım, ölçü ve tartımızı bizim için bereketli kıl! (Medine’nin) havasını bizler için sağlıklı kıl...” diye dua etti. (Buhârî, Fedâilü’l-Medîne, 12)
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/vatan-sevgisi-imandandir/kapak.svg" width="1600" height="900" alt="Sade bir pencere önündeki eski yol çantası ve filizlenen saksı; dışarıda aydınlık, hayalî bir Avrupa sokağı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Hatıradan sorumluluğa</strong> Bir yeri sevmek, oradaki hayata özen göstermeye çağırır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Bu haftaki vaazımızda, gölgesinde huzurla yaşadığımız, ezanlarımızın yankılandığı, şanlı al bayrağımızın dalgalandığı vatanımızın önemini ve İslam dininin vatan sevgisine verdiği ulvi değerin ne kadar kıymetli bir durum olduğunu anlamaya ve anlatmaya çalışacağız.
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#sevginin-olcusu">Sevginin dinî ölçüsü</a></li>
+<li><a href="#yurt-ve-guven">Yurt ve güven</a></li>
+<li><a href="#mekke-ve-medine">Peygamberimizin yurt sevgisi</a></li>
+<li><a href="#hasretten-duaya">Hasretten duaya</a></li>
+<li><a href="#nesiller-ve-aidiyet">Nesiller ve aidiyet</a></li>
+<li><a href="#soz-ve-emanet">Söz ve emanet</a></li>
+<li><a href="#emek-ve-imar">Emek ve imar</a></li>
+<li><a href="#ribat-ve-vefa">Ribat ve vefa</a></li>
+<li><a href="#sevgi-ve-adalet">Sevgi ve adalet</a></li>
+<li><a href="#dil-ve-bilgi">Dil ve bilgi ahlakı</a></li>
+<li><a href="#yedi-soz">Yedi somut söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve niyaz</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Gönlümüzdeki memleket</h2>
 
-## Vatan Nedir ve Müslüman İçin Ne Anlam Taşır?
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Vatan; sadece üzerinde yaşadığımız, sınırları çizilmiş bir toprak parçası değildir. Vatan; dinimizi, namusumuzu, bayrağımızı, ezanımızı, neslimizi ve hürriyetimizi koruduğumuz mukaddes bir yuvadır. Vatanı olmayanın; özgürce ibadet edebileceği bir mabedi, huzurla sığınabileceği bir ocağı da olamaz.
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Gönül dünyamızda ve kültürümüzde kökleşmiş olan "Vatan sevgisi imandandır" kelam-ı kibarı, bir Müslümanın doğup büyüdüğü, havasını soluduğu, dini değerlerini özgürce yaşayabildiği topraklara karşı duyduğu derin sevgi ve aidiyet hissinin, onun imanıyla ve irfanıyla doğrudan bağlantılı olduğunu özetler.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-Tarihî ve edebî kaynaklarda insanlar için vatanın önemine, vatan sevgisi ve hasretine dair literatüre geniş yer verilmiştir. Bu türde eser yazan ilk müelliflerden Câhiz, *el-Ḥanîn ile’l-evṭân* başlıklı risâlesinde (*Resâʾil*, II, 379-412) vatan sevgisiyle vatan hasretinin insanda doğuştan gelen köklü bir duygu olduğunu söyler. Bu sebeple, ***“Vatanında sıkıntı çekmen gurbette bolluk içinde yaşamadan daha iyidir”*** denilmiştir. Câhiz, insanların vatanlarını rızıklarından daha çok önemsediklerini belirtir. Kurak, verimsiz bir ülkede yaşayanlar daha zengin ülkelere gitseler yine de vatanlarını özlerler. Vatan sevgisinin doğuştan geldiği yönündeki fikrini desteklemek amacıyla bazı âyetlerden örnekler veren Câhiz’e göre, ***“Eğer onlara, ‘Kendinizi öldürün’ yahut ‘Yurtlarınızdan çıkın’ diye emretmiş olsaydık içlerinden ancak çok az kısmı bunu yapardı”*** meâlindeki ayette (Nisâ 4/66) can sevgisiyle vatan sevgisi eşit tutulmuştur. Yine Câhiz’e göre vatan sevgisini ortaya koyan en güçlü delil Hz. Yusuf’un (a.s.), cenazesinin ataları Hz. Yakup (a.s.), Hz. İshak (a.s.) ve Hz. İbrahim’in (a.s.) ülkesine taşınmasını vasiyet etmesidir. Ülkelerin mâmur hale gelmesini sağlayan vatan sevgisidir. Nitekim Hz. Ömer’in (r.a.), “Allah ülkeleri vatan sevgisi sayesinde mâmur etti” dediği rivayet edilir. Bütün fâtihler vatanlarını özler, hiçbir yeri doğdukları topraklara tercih etmezler. Câhiz ’in, *Menâḳıbü Feżâʾilü’t-Türk* başlıklı risâlesinde de belirttiği üzere *vatan duygusu bütün insanlara şamil ve her bölgede etkilidir, ancak bu duygu Türkler de her milletten daha güçlü ve köklüdür*. (TDV İA, Çağrıcı, “Vatan”)
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashâbına salât ve selâm olsun.* (serbest dua lafzı)
 
-Tarihçi ve edebiyatçı İbn Münkız’ın *Kitâbü’l-Menâzil ve’d-diyâr* adlı eserinde vatanla ilgili manzum ve mensur literatüre ayrı bir bölüm ayrılmıştır (II, 3-32). Burada kaydedildiğine göre dünya saltanatını terk edip zühd ve riyâzete yönelen İbrahim b. Edhem, ***“Dünyaya sırt çevirdiğimden beri hiçbir şey bana vatan hasretinden daha ağır gelmedi”*** demiştir (TDV İA, Çağrıcı, “Vatan”)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-## Kur'an-ı Kerim'de Vatan ve Yurt Sevgisi
+*Mûsâ şöyle dedi: Rabbim! Gönlüme ferahlık ver. İşimi kolaylaştır. Dilimden düğümü çöz ki sözümü anlasınlar.* (Tâhâ, 20/25–28)
 
-Yüce Rabbimiz Kur’an-ı Kerim’de, insanın vatanından ve yuvasından uzaklaştırılmasını çok ağır bir imtihan ve haksızlık olarak nitelendirmiştir. Ayet-i kerimede şöyle buyrulmaktadır:
+**Aziz cemaat! Memleket hatırasını ve gurbetin emeğini yüreğinde taşıyan kardeşlerim!**
 
-<p lang="ar" dir="rtl" class="ayet">اُذِنَ لِلَّذٖينَ يُقَاتَلُونَ بِاَنَّهُمْ ظُلِمُواؕ وَاِنَّ اللّٰهَ عَلٰى نَصْرِهِمْ لَقَدٖيرٌۙ</p>
+Vatan deyince içimizde hangi kapı açılıyor? Çocukluğumuzun sokağı mı, annemizin sesi mi, bayram sabahı mı? Belçika’da doğmuş bir gencimiz için okul yolu ve arkadaşları da bu duygunun içindedir. Aynı sofrada oturur, memleket denince farklı yerleri hatırlayabiliriz. Birbirimizin hatırasına kulak verelim.
 
-"Saldırıya uğrayanlara zulme maruz kaldıkları için savaş izni verildi. Allah onları muzaffer kılmaya elbette kadirdir." (Hac,22/39)
+Bazımız uzaktaki bir mezarı ziyaret etmeyi özler. Bazımız burada yetişen çocuğunun geleceğini düşünür. Bazımız ise yeni bir ülkede güvenli bir hayat kurmaya çalışır. Rabbimizin huzuruna bütün bu duygularla geliriz. Bugün sevgimizin bizi hangi güzel davranışa çağırdığını birlikte arayacağız.
 
-Yine Mekke’den Medine’ye hicret etmek zorunda kalan Müslümanların durumunu anlatan şu ayet, yurt sevgisinin kutsallığını gözler önüne serer:
+**Vatan sevgisi, köklerimize vefa ve yaşadığımız yere karşı sorumlulukla olgunlaşır.**
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ اُخْرِجُوا مِنْ دِيَارِهِمْ بِغَيْرِ حَقٍّ اِلَّٓا اَنْ يَقُولُوا رَبُّنَا اللّٰهُؕ</p>
+---
 
-"Onlar sırf “Rabbimiz Allah’tır” dediklerinden dolayı haksız yere yurtlarından çıkarılmış kimselerdir." (Hac,22/40)
+<h2 class="vaaz-bolum-baslik" id="sevginin-olcusu" tabindex="-1">I. Sevginin ölçüsü: İman ve takvâ</h2>
 
-Ayetlerin Mekke’den Habeşistan’a göç etmek zorunda kalan Müslümanlar hakkında indiğine dair rivayetler ışığında bunların Mekke’de inmiş olabileceğini düşünen müfessirler de vardır. Onlara göre burada, müminlerin zulüm ve baskı altında bulunduklarının tescil edilip hicrete izin verildiğinin bildirilmesi ve Allah’ın müslümanlara nasip edeceği zaferin yakın olduğu ima edilerek onlara moral verilmesi amaçlanmıştır (Şevkânî, III, 514-516; Derveze, VII, 104-105). 39 ve 40. âyetler birlikte değerlendirildiğinde, inanç özgürlüğünü ve dinin icaplarını yaşama serbestisini sağlama hedefinin, savunma hazırlıklarını haklı kılan sebeplerin başında geldiği söylenebilir. (Kur'an Yolu Tefsiri Cilt: 3 Sayfa: 736-738)
+Kıymetli kardeşlerim! Dilimizde yer etmiş bir söz vardır: “Vatan sevgisi imandandır.” Bu sözü işittiğimizde çoğumuzun aklına vefa gelir. Fakat onu Peygamber Efendimiz’in (s.a.s.) hadisi diye nakletmek doğru değildir. Sahih hadis olarak sabit değildir; meşhur bir söz olarak bilinmelidir. TDV İslâm Ansiklopedisi’nin “Vatan” maddesi de bu nispetin sıhhat sorununa dikkat çeker.
 
-## Peygamber Efendimiz’in (s.a.s) Vatan Sevgisi
+Bir sözü düzeltmek, onunla anlatılmak istenen güzel duyguyu küçümsemek değildir. Sevgimizi güvenilir bilgiyle besleriz. Peygamberimizin söylemediği bir sözü ona mal etmeye ihtiyaç duymadan memleketimize bağlılığımızı anlatabiliriz. Mekke’ye sevgisi, Medine için duası ve adalet öğüdü bize yeterli bir yol gösterir.
 
-Memleket sevgisi, Yüce Allah’ın insanların kalbine koyduğu fıtrî bir duygudur. Zira her insan doğduğu, dünyaya gözlerini açtığı, yetiştiği, hayatının pek çok hatırasını yaşadığı, tarih ve kültürünün şekillendiği, akraba ve atalarının yaşadığı yere karşı ayrı bir sevgi ve ilgi duyar. Oradan uzaklaştığı zaman özlemle kavuşmayı arzu eder. Nitekim Allah Resûlü (s.a.s.) de doğup büyüdüğü Mekke’ye karşı ayrı bir sevgi beslemiş ve bu sevgisini Mekke’nin fethi sırasında şu şekilde dile getirmiştir:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَجَعَلْنَـٰكُمْ شُعُوبًا وَقَبَآئِلَ لِتَعَارَفُوٓا۟ ۚ إِنَّ أَكْرَمَكُمْ عِندَ ٱللَّهِ أَتْقَىٰكُمْ</p>
 
-<p lang="ar" dir="rtl" class="ayet">وَاللَّهِ إِنَّكِ لَخَيْرُ أَرْضِ اللَّهِ وَأَحَبُّ أَرْضِ اللَّهِ إِلَى اللَّهِ وَلَوْلاَ أَنِّى أُخْرِجْتُ مِنْكِ مَا خَرَجْتُ</p>
+*Tanışasınız diye sizi kavim ve kabilelere ayırdık. Allah katında en değerli olanınız, O’na itaatsizlikten en fazla sakınanınızdır.* (Hucurât, 49/13; âyetten bölüm)
 
-“(Ey Mekke!) Vallahi sen Allah’ın en hayırlı ve Allah’a en sevimli olan beldesisin. Senden çıkarılmış olmasaydım seni asla terk etmezdim." (Tirmizî, Menâkıb, 68)
+Âyet, farklı topluluklara mensup oluşumuzu tanışmaya açıyor; değerin ölçüsünü ise takvâda gösteriyor. Ailemizi, dilimizi ve memleketimizi sevebiliriz. Bu bağlar kimseyi Allah katında kendiliğinden üstün kılmaz. Allah’a karşı sorumluluk, bize benzeyenlere de benzemeyenlere de davranışımızı güzelleştirir.
 
-Allah Resûlü ve Müslümanlar, Mekke’den zorla çıkartılıp Medine’ye geldiklerinde, karşılaştıkları sıkıntılara rağmen çok geçmeden buraya alışmışlardı. “Allah’ım, Mekke’ye verdiğin bereketin iki katını Medine‘ye ver.” (Buhârî, Fedâilü’l-Medîne, 9) diye dua eden Sevgili Peygamberimiz (s.a.s), Mekke gibi Medine’yi de çok sevmişti.
+Vatan, insanın doğduğu ve yerleşip yaşadığı yeri anlatır; bu anlam çerçevesi “Vatan” maddesinde de açıklanır. Bazen bir yere çocukluk hatıralarıyla, bazen yıllarca verdiğimiz emekle bağlanırız. Bu bağın biçimi herkes için aynı olmayabilir. Özlemini yüksek sesle anlatamayanı vefasız, başka bir yerde yuva kuranı köksüz saymayalım.
 
-Bu sevgisini ashabından Enes b. Mâlik (r.a) şöyle nakletmektedir: “Peygamber (s.a.s) bir seferden döndüğü zaman Medine’nin yüksek duvarlarını görünce devesini (süratle koşması için) salıverirdi. Eğer deveden başka bir hayvan üzerine binmişse Medine ‘ye olan sevgisinden dolayı binitini harekete geçirirdi.” (Buhârî, Fedâilü’l-Medîne, 9)
+Öyleyse bir kardeşimizin imanını memleketini ne kadar övdüğüyle ölçmeyelim. Onun hakkı gözetmesine, doğruluğuna ve merhametine destek olalım. Çocuklarımıza kendi kültürümüzü öğretirken başka dilleri küçümsemeyelim. Tanışma çağrısını evimizdeki konuşma dilinden başlayarak hayata taşıyalım.
 
-Allah Resûlü (s.a.s), Tebük Seferi’nden dönerken de aynı şekilde acele davranmış ve Medine ‘ye yaklaşınca, “İşte bu Tâbe’dir (iyilik ve güzellik şehridir). Bu da Uhud’dur, öyle bir dağdır ki o bizi sever biz de onu severiz.” diyerek Medine‘ye olan sevgisini dile getirmişti. (Müslim, Hac, 503) (Hadislerle İslâm, Cilt 7, Sayfa 363)
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Sevgiyi olgunlaştıran dört sorumluluk</strong> Memleket bağı, bu davranışlarla hayatımızda karşılık bulsun.</figcaption>
+<p class="vaaz-sema-merkez">Vatan sevgisi</p>
+<dl class="vaaz-sema-kollar">
+<div><dt>Hatıra</dt><dd>Aile geçmişini öğren; geçmişin emeğine teşekkür et.</dd></div>
+<div><dt>Yakınlık</dt><dd>Uzakta kalanın hâlini sor; yalnızlığına ortak ol.</dd></div>
+<div><dt>Adalet</dt><dd>Kökeni ne olursa olsun hak sahibinin hakkını gözet.</dd></div>
+<div><dt>Hizmet</dt><dd>Yaşadığın yerde üstlendiğin işi özenle tamamla.</dd></div>
+</dl>
+</figure>
 
-Peygamberimiz (s.a.s.) Medine-i Münevvere ’ye yerleştikten sonra da ora için dua etmiş, Medine’yi de vatan edinerek canından çok sevmiştir. Hatta bir seferden dönerken Medine’nin evlerini görünce heyecanlanır, devesini hızlandırırdı. (Buhârî, Fezâilü’l-Medîne, 10)
+Sevgimizi böyle düşündüğümüzde herkesin katılabileceği bir yol açılır. Hatırası olan onu paylaşır; imkânı olan hizmet eder; bilgisi olan öğretir. Mütevazı bir katkıyı da değerli görelim. Sevgiyi birbirimizi yarıştırmak için değil, hayırda desteklemek için konuşalım.
 
-İnsanın yurt olarak benimsediği toprakları bırakıp yeni diyarlarda yaşamaya alışması kuşkusuz kolay değildi. Medine’ye hicret eden Müslümanlar da bir süreliğine bile olsa oraya alışmakta zorlanmışlardı. Muhacirlere, Medine’nin havası iyi gelmemiş ve bazıları hastalanmıştı. Hastalananlar arasında Hz. Ebû Bekir (r.a.) ile Allah Resûlü’nün (s.a.s.) müezzini Bilâl-i Habeşî (r.a.) de vardı. Hz. Ebû Bekir’in (r.a.) sevgili kızı Hz. Âişe (r.a.), onları ziyaret ederek durumlarını sormak istedi. Yanlarına geldiğinde Hz. Âişe (r.a.), en az hastalıkları kadar memleket hasretinin de onlara acı verdiğini gördü. Nitekim babası Hz. Ebû Bekir (r.a.) sıtma nöbeti sırasında memleketine olan sevgi ve özlemini bir beyitle şöyle dile getiriyordu:
+**Sevgimizi takvâ güzelleştirir; kökenimiz bize başkasını küçümseme hakkı vermez.**
 
-“Her insan ailesiyle güne başlar, bakın,
-Hâlbuki ölüm ona ayakkabısının bağcığından daha yakın!”
+---
 
-Sıtma nöbeti geçtiğinde, Bilâl-i Habeşî’nin (r.a.) dudaklarından da sıla hasretini ifade eden şu beyitler dökülüyordu:
+<h2 class="vaaz-bolum-baslik" id="yurt-ve-guven" tabindex="-1">II. Yurt nimeti: Güven içinde yaşayabilmek</h2>
 
-“Ah ne olur!
-Bir gece bile olsa Mekke’de bulunsam,
-Sümbüller ve yavşanlarla bezeli bir dere kenarında uykuya dalsam.
-Bir gün Mecenne pınarına varıp suya kansam,
-Şâme ve Tafîl dağlarına doya doya baksam.” (Hadislerle İslâm, Cilt 7, Sayfa 361)
+**Muhterem Müslümanlar! Bir yurdun kıymeti, oradaki insanın huzurunda görünür.**
 
-## Vatanı Korumak ve Nöbet Tutmak: "Ribat"
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">أُذِنَ لِلَّذِينَ يُقَـٰتَلُونَ بِأَنَّهُمْ ظُلِمُوا۟ ۚ وَإِنَّ ٱللَّهَ عَلَىٰ نَصْرِهِمْ لَقَدِيرٌ ۝٣٩</p>
 
-Vatan, havasıyla, suyuyla, toprağıyla benimsenen, insanın ait olduğunu hissettiği toprak parçası olarak tanımlansa da yalnız bu maddî öğelerden ibaret değildir. İnsanın bir yurdu vatan olarak benimsemesi için maddî ve mânevî unsurlar birlikte düşünülmelidir. İnsanın kimliğinin bir parçası olan vatanı, aynı zamanda kuşandığı değerlerin de kaynağıdır. Ortak yaşanan din, dil ve gelenek öğeleri ile herhangi bir toprak parçası özdeşleşir; böylece üzerinde yaşayan insanlar da o vatanın milleti olur. Birlikte paylaşılan geçmiş ve aynı ideallerin planlandığı bir gelecekle vatan ve millet unsurları meydana gelir. (Hadislerle İslâm Cilt 7 Sayfa 363)
+*Saldırıya uğrayanlara zulme mâruz kaldıkları için savaş izni verildi. Allah onları muzaffer kılmaya elbette kadirdir.* (Hac, 22/39)
 
-İslam anlayışında vatan sadece sevilmekle kalmaz; can pahasına korunur, imar edilir ve gelecek nesillere güvenle devredilir. Vatan savunması ve sınır boylarında nöbet tutmak (ribat), ibadet hükmündedir. Milli şairimiz Mehmet Akif Ersoy’unda İstiklal Marşında da söylediği gibi:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ٱلَّذِينَ أُخْرِجُوا۟ مِن دِيَـٰرِهِم بِغَيْرِ حَقٍّ إِلَّآ أَن يَقُولُوا۟ رَبُّنَا ٱللَّهُ</p>
 
-Kim bu cennet vatanın uğruna olmaz ki fedâ?
-Şühedâ fışkıracak, toprağı sıksan şühedâ!
-Cânı, cânânı, bütün varımı alsın da Hudâ,
-Etmesin tek vatanımdan beni dünyâda cüdâ.
+*Onlar, sırf “Rabbimiz Allah’tır” dedikleri için haksız yere yurtlarından çıkarılmış kimselerdir.* (Hac, 22/40; âyetten bölüm)
 
-Sevgili Peygamberimiz (s.a.v.) bir hadis-i şeriflerinde şöyle müjdelemektedir:
+Bu âyetler, baskı gören ve yurdundan çıkarılan müminlerin durumunu anlatır. İzin, uğradıkları zulümle birlikte zikredilir. Buradan her öfkemizi haklı çıkaran bir kavga çağrısı üretemeyiz. Kur’an Yolu’nun açıklaması, bu bağlamda inanç özgürlüğüne ve ibadet edebilme imkânına dikkat çeker.
 
-<p lang="ar" dir="rtl" class="ayet">عَيْنَانِ لَا تَمَسُّهُمَا النَّارُ: عَيْنٌ بَكَتْ مِنْ خَشْيَةِ اللَّهِ، وَعَيْنٌ بَاتَتْ تَحْرُسُ فِي سَبِيلِ اللَّهِ</p>
+Hac sûresinin kırkıncı âyetinin devamında manastırlar, kiliseler, havralar ve mescitler birlikte anılır. Başkasının ibadet yerinin güvenliğini de önemseyelim. Hristiyan veya Yahudi komşumuzun mâbedine zarar verilmesine kayıtsız kalmayalım. Kendi ibadet huzurumuz için istediğimiz güveni, ortak hayatımızda da gözetelim.
 
-***"İki göz vardır ki onlara cehennem ateşi dokunmaz: Biri Allah korkusundan gözyaşı döken göz, diğeri ise Allah yolunda (vatan ve millet nöbetinde) geceleyin bekçilik eden göz."*** (Tirmizî, Fezâilü'l-Cihâd, 12)
+Bir ev düşünelim: Çocuk gece korkmadan uyuyor; büyükler rızkını arıyor; aile ibadetini yerine getiriyor. Yurt sevgisinin gündelik hayattaki karşılığı biraz da budur. Kapımızı güvenle kapatabilmenin, okuldan dönen çocuğumuzu karşılayabilmenin şükrünü, bu huzuru başkaları için de koruyarak eda edelim.
 
-İslâm dini, insanların hak, menfaat ve değerlerini paylaşarak yaşadıkları bir yer olan vatanı ve memleketini sevmeyi, korumayı teşvik etmiş ve onu savunmayı yüce bir görev saymıştır. Vatanı korumak adına kuvvet hazırlanmasını ve savaşa hazırlıklı olunmasını emretmiştir. Bu bağlamda, Allah Resûlü (s.a.s) vatan uğruna nöbet tutmanın faziletini şu şekilde dile getirmiştir:
+İnsan, ayrılmak zorunda kaldığı yurdunu özlerken en çok neye ihtiyaç duyar? Ona hemen geri dönüp dönemeyeceğini sormak yerine ihtiyacını dinleyelim. Hiç kimsenin değeri sahip olduğu pasaporta, eve veya toprağa bağlı değildir. Yurt nimetini bilen kalp, yuvasını kaybedenin barınma ve güven ihtiyacına da duyarlı olur.
 
-<p lang="ar" dir="rtl" class="ayet">رِبَاطُ يَوْمٍ وَلَيْلَةٍ خَيْرٌ مِنْ صِيَامِ شَهْرٍ وَقِيَامِهِ وَإِنْ مَاتَ جَرَى عَلَيْهِ عَمَلُهُ الَّذِى كَانَ يَعْمَلُهُ وَأُجْرِىَ عَلَيْهِ رِزْقُهُ وَأَمِنَ الْفَتَّانَ</p>
+Güvenin gündelik sorumluluğu bize de düşer. Mahallemizde korku yaşayan birinin derdini önemseyelim. Yardım istediğinde onu dinleyip uygun desteğe ulaşmasına eşlik edelim. Çocuğumuza başkasının evine, ibadetine ve mahremiyetine saygıyı öğretelim. Böylece yurt sevgimiz, başkalarının da kendini güvende hissetmesine katkı versin.
 
-“Bir gün ve bir gece nöbet tutmak, bir ay oruç tutup geceleri namaz kılmaktan daha hayırlıdır. Şayet (kişi nöbette) ölürse yapmakta olduğu işin sevabı devam eder, rızkı da devam eder ve kabirdeki sorgu meleklerine karşı güven içinde olur.” (Müslim, İmâre, 163) Vatan müdafaasından maksat, sadece sahip olunan toprakları korumak değil, o topraklar üzerinde yaşayan insanların dinini, canını, malını, ırz ve namusunu korumak ve onları hürriyet ve huzur içinde yaşatmaktır. (Hadislerle İslâm Cilt 7 Sayfa 363)
+Evinden uzakta olanın hatıralarını anlatıp anlatmama tercihine saygı gösterelim. Onu tanımak için acısının ayrıntılarını öğrenmemiz gerekmez; samimi bir selâm da yakınlığın başlangıcı olabilir.
 
-## Günümüzde Vatan Sevgisini Nasıl Göstermeliyiz?
+**Yurdun şükrü, insanın canını, onurunu ve ibadet huzurunu korumaktır.**
 
-Vatan sevgisi sadece cephede askerlik yapmakla sınırlı değildir. Günümüzde vatanımızı sevmenin ve ona sahip çıkmanın somut yolları şunlardır:
+---
 
-İşini En İyi Şekilde Yapmak: Memur, işçi, esnaf, çiftçi veya öğrenci olsun; herkes görevini ahlakla ve liyakatle yerine getirmelidir.
+<h2 class="vaaz-bolum-baslik" id="mekke-ve-medine" tabindex="-1">III. Mekke ve Medine: Genişleyen sevgi</h2>
 
-Birlik ve Beraberliği Korumak: Bizi birbirimize düşürmek isteyen nifak tohumlarına karşı uyanık olmalı, kardeşlik hukukumuza sahip çıkmalıyız.
+Peygamber Efendimiz’in (s.a.s.) hayatında memleket sevgisinin sıcaklığını görürüz. Abdullah b. Adî b. Hamrâ, onun Mekke’de Hazvere denilen yerde durup şu sözleri söylediğini nakleder:
 
-Vatan Malını ve Kaynaklarını Korumak: Kamu malına zarar vermemek, israftan kaçınmak ve devletimizin imkânlarını yetim malı titizliğiyle korumak vatan sevgisinin bir gereğidir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَاللَّهِ إِنَّكِ لَخَيْرُ أَرْضِ اللَّهِ وَأَحَبُّ أَرْضِ اللَّهِ إِلَى اللَّهِ وَلَوْلاَ أَنِّي أُخْرِجْتُ مِنْكِ مَا خَرَجْتُ</p>
 
-Şehit ve Gazilerimize Vefa Göstermek: Bu toprakları bize vatan kılan aziz şehitlerimizi rahmetle anmak, onların ailelerine ve gazilerimize hürmet göstermek boynumuzun borcudur.
+*Vallahi sen Allah’ın en hayırlı toprağı ve Allah’a en sevimli olan toprağısın. Senden çıkarılmış olmasaydım ayrılmazdım.* (Tirmizî, 3925; rivayetten bölüm; Tirmizî: hasen sahih garîb)
 
-İstiklal şairimiz Mehmet Âkif Ersoy’un şu dizeleri, Müslümanın vatan şuurunu ne güzel özetler:
+Bu sözde sevilen bir yerden ayrılmanın ağırlığı vardır. Mekke’ye duyulan muhabbet, hicretle silinmemiştir. Bununla birlikte Peygamberimizin hayatında Medine’ye de güçlü bir sevgi doğmuştur. Eski hatıralara bağlı kalırken yeni bir yerde iyilik ve yakınlık kurmak mümkündür.
 
-"Bastığın yerleri 'toprak!' diyerek geçme, tanı:
-Düşün altındaki binlerce kefensiz yatanı.
-Sen şehit oğlusun, incitme, yazıktır, atanı:
-Verme, dünyaları alsan da, bu cennet vatanı."
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">كَانَ إِذَا قَدِمَ مِنْ سَفَرٍ، فَنَظَرَ إِلَى جُدُرَاتِ الْمَدِينَةِ أَوْضَعَ رَاحِلَتَهُ، وَإِنْ كَانَ عَلَى دَابَّةٍ، حَرَّكَهَا مِنْ حُبِّهَا</p>
 
-## Sonuç
+*Enes b. Mâlik, Peygamberimizin yolculuktan dönüşte Medine’nin duvarlarını görünce, şehre sevgisinden dolayı bineğini hızlandırdığını anlatır.* (Buhârî, 1886; rivayetten bölüm; anlam esaslı aktarım)
 
-İnsanın üzerinde yaşadığı, anılarını yaşattığı, kendisinden bir parça olarak gördüğü vatanını sevmesi, ondan ayrı kaldığı zaman özlemesi son derece doğal bir durumdur. Bu ortak duyguları besleyen insanların bir araya gelerek geçmiş ve geleceğe dair ortak ideallerde buluşmaları, ortak değerleri paylaşmaları ile herhangi bir toprak parçası vatan olma özelliğini kazanır. Aynı vatan üzerinde yaşayan ve millet olma şuurunu taşıyan insanlar için o toprak parçası maddî ve mânevî değerleri içinde barındırmaktadır. Bu yüzdendir ki vatanı sevmek, korumak, savunmak kutsal bir görev olarak görülmüştür. Vatanın vatan olma özelliğini devam ettirebilmesi de ancak onu vatan yapan unsurların bilinmesi, korunması ve yeni nesillere aktarılması ile mümkün olacaktır. (Hadislerle İslâm Cilt 7 Sayfa 365)
+Dönüş sevincini tanırız. Uzun bir yolculuktan sonra evimize yaklaşınca içimiz ferahlar. Bu rivayet, Peygamberimizin yurt sevgisini gündelik hayatın içinden görmemize imkân verir. Bir şehre bağlanmak, orada paylaşılan hayatla da büyür.
 
-Cenâb-ı Hak; bizleri vatanının, bayrağının, ezanının ve bağımsızlığının kadrini bilen kullarından eylesin. Şanlı ordumuzu, güvenlik güçlerimizi her türlü görünür görünmez kazadan, beladan ve düşman şerrinden muhafaza eylesin. Devletimize dirlik, milletimize birlik nasip eylesin.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-Vatan uğruna canlarını feda eden bütün aziz şehitlerimize gani gani rahmet, gazilerimize hayırlı ve sağlıklı ömürler ihsan eylesin.
+*Resûlullah (s.a.s.), Tebük dönüşünde Medine’ye yaklaşınca burayı Tâbe diye anmış, Uhud için de kendilerini seven ve kendilerinin sevdiği bir dağ olduğunu söylemiştir.* (Müslim, 1392; rivayetten anlam aktarımı)
+
+Mekke ve Medine’nin dinimizde özel faziletleri vardır. Bu rivayetlerdeki özel hükümleri herhangi bir ülkeye aktarmayız. Onların ışığında sevgimizin başka güzel bağlara da açık olabileceğini düşünürüz. Doğduğumuz yere vefa gösterirken yaşadığımız yerdeki insanları tanımak, emek vermek ve dua etmek gönlümüzü genişletir.
+
+**Eski yurdumuza vefa gösterirken yeni yurdumuzda da sevgi ve iyilik büyütebiliriz.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hasretten-duaya" tabindex="-1">IV. Hasreti dinlemek, sevgiyi dua ile büyütmek</h2>
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Hz. Âişe’nin hasta ziyareti</p>
+
+Medine’ye hicretin ardından Hz. Ebû Bekir ile Bilâl hastalanır. Hz. Âişe onları ziyaret edip hâllerini sorar. Babası, ölümün insana yakınlığını anlatan bir beyit söyler. Bilâl ise Mekke çevresindeki vadiyi, suları ve dağları özlemle anar. Hz. Âişe duyduklarını Resûlullah’a (s.a.s.) aktarır. Peygamberimiz Medine’nin sevilmesi, sağlık ve bereket için dua eder.
+
+(Buhârî, 3926; sahih rivayetin özeti.)
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ حَبِّبْ إِلَيْنَا الْمَدِينَةَ كَحُبِّنَا مَكَّةَ أَوْ أَشَدَّ</p>
+
+*Allah’ım! Medine’yi bize Mekke’yi sevdiğimiz gibi, hatta daha çok sevdir.* (Buhârî, 3926; rivayetten bölüm)
+
+Kardeşlerim! Bu sahnede ziyaret var, dinlemek var, dua var. Bir insanın hasreti anlatılırken onu hemen susturmak gerekmiyor. Hz. Âişe’nin ziyaretini düşünerek biz de bir büyüğümüzün hâlini sorabiliriz. Onun tekrar anlattığı hatıranın içinde, bugün duyulmayı bekleyen bir ihtiyaç bulunabilir.
+
+Hicret eden sahâbenin yaşadıklarıyla bugünkü göç tecrübelerini bütünüyle aynı saymayız. Fakat hasretin inceliğini bu sahih anlatıyla daha iyi hissedebiliriz. Yeni bir çevreye alışamayanın imanını sorgulamayalım. Ona zaman, arkadaşlık ve anlayış sunalım. Gurbette geçirilen her yıl, bütün özlemlerin sona erdiği anlamına gelmez.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اجْعَلْ بِالْمَدِينَةِ ضِعْفَىْ مَا جَعَلْتَ بِمَكَّةَ مِنَ الْبَرَكَةِ</p>
+
+*Allah’ım! Medine’deki bereketi, Mekke’ye verdiğin bereketin iki katı kıl.* (Buhârî, 1885; rivayetin dua cümlesi)
+
+Biz de kendi sözlerimizle yaşadığımız yerin hayrını isteyelim. Mahallemizde güven, evlerimizde huzur, işimizde helâl bereket için dua edelim. Hasret bizi yalnızlığa kapatıyorsa güvendiğimiz bir insanla konuşalım. Birlikte edilen dua ve düzenli bir hâl hatır sorma, aramızdaki bağı beslesin.
+
+Hasta ziyaretindeki inceliği bugüne taşıyalım. Hâlini sorduğumuz kişinin cevabını acele etmeden dinleyelim. Bir büyüğümüz için memleket hasreti, uzaktaki kardeşinin sesini duyma isteği olabilir. Görüşmelerini kolaylaştırmayı teklif edebiliriz. Onun adına karar vermeden neyin iyi geleceğini kendisinden öğrenelim. Hasretin konuşulabildiği bir evde birbirimizin ihtiyacını daha yakından tanırız.
+
+Ziyaretin ardından ilgimizi sürdürelim. Bir sonraki görüşme için uygun zamanı soralım. Büyüğümüzün sevdiği hatırayı çocuklarımızla paylaşmasına, kendisi de isterse, fırsat verelim. Böylece hasreti dinlemek, nesiller arasında canlı bir yakınlığa dönüşsün; hatırasını taşıyan insan kendini aramızda değerli hissetsin.
+
+**Hasreti küçümsemeden dinleyelim; yaşadığımız yer için dua ve emek verelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="nesiller-ve-aidiyet" tabindex="-1">V. Gurbette aidiyet: Kökler ve yeni nesiller</h2>
+
+**Aziz anneler ve babalar! Sevgili gençler! Birbirimizin memleket duygusunu dinleyelim.**
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">لَّا يَنْهَىٰكُمُ ٱللَّهُ عَنِ ٱلَّذِينَ لَمْ يُقَـٰتِلُوكُمْ فِى ٱلدِّينِ وَلَمْ يُخْرِجُوكُم مِّن دِيَـٰرِكُمْ أَن تَبَرُّوهُمْ وَتُقْسِطُوٓا۟ إِلَيْهِمْ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُقْسِطِينَ ۝٨</p>
+
+*Allah, din yüzünden sizinle savaşmayan ve sizi yurtlarınızdan çıkarmayanlara iyilik yapmanızı ve adaletle davranmanızı yasaklamaz. Allah adaletli davrananları sever.* (Mümtehine, 60/8)
+
+Kur’an Yolu, bu âyetin açıklamasında farklı din ve kökenlerden insanlarla iyilik ve adalet ilişkisine dikkat çeker. Belçika’daki hayatımızı bu ölçüyle düşünelim. Köklerimizi korurken komşularımızla güven kurabiliriz. Kimliğimizi tanıtabilir, başkasını da sabırla dinleyebiliriz.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — İki hatıranın buluştuğu sofra</p>
+
+Aynı sofrada iki ayrı memleket hatırası buluşabilir. Anne memleketteki bayramları anlatırken Belçika’da doğmuş kızı, burada kendini evinde hissettiğini söylesin. Anne bunu bir reddediş gibi duymak yerine kızının neleri sevdiğini sorsun. Genç de annesinin hangi insanları özlediğini dinlesin. Birlikte hem uzaktaki büyüğü aramaya hem mahalledeki gönüllü çalışmaya katılmaya karar versinler.
+
+Çocuğumuza ailemizin dilini ve hatıralarını sevdirirken onun yaşadığı çevreyi de tanıyalım. Arkadaşlarının adını öğrenelim; okulda neler yaşadığını soralım. Fransızca veya başka bir dille kendini daha rahat anlatıyorsa sabırla dinleyelim. Türkçe yeterliliğini imanının yahut bize sevgisinin ölçüsü yapmayalım.
+
+Yeni Müslüman olmuş bir kardeşimizin aile geçmişi farklı olabilir. Ona bir milletin kültürünü benimsemeyi Müslümanlığın şartı gibi sunmayalım. Dinini öğrenirken kendi yakınlarıyla iyilik ilişkisini sürdürmesine destek olalım. Cemaatin içinde yer bulmak için herkesin aynı memleketi özlemesi gerekmez.
+
+Bir aile albümüne birlikte bakmayı teklif edelim. Büyükler, fotoğraftaki insanın emeğini ve kendilerine öğrettiği iyiliği anlatsın. Gençler de bugün kendilerine destek olan öğretmeni veya arkadaşını anlatsın. Böylece hatıra paylaşımı karşılıklı olsun. Aile geçmişini öğrenirken bugünün güzel bağlarına da şükredelim; farklı tecrübelerimizi birbirimize emanet edelim.
+
+Sevgili genç kardeşim! Dinini öğrenirken soru sormaktan çekinme. Memleketine bağlılığını da kendi güzel davranışlarınla ifade edebilirsin. Ailenin hatırasını dinle; bugün kurduğun hayatı da onlara sabırla anlat.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/vatan-sevgisi-imandandir/nesiller.svg" width="1600" height="900" alt="Üstten görülen bir masada yaşlı ve genç eller, boş bir defter, iki çay fincanı ve küçük bir pencere bitkisi." loading="lazy" decoding="async">
+<figcaption><strong>Aynı sofrada farklı hatıralar</strong> Büyüğün hatırasına ve gencin yaşadığı yere gönlümüzde yer açalım.</figcaption>
+</figure>
+
+**Köklerimizi sevdirirken çocuklarımızın yaşadığı yere duyduğu bağı da anlayalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="soz-ve-emanet" tabindex="-1">VI. Ahde vefa: Ortak hayatın emanetleri</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ أَوْفُوا۟ بِٱلْعُقُودِ</p>
+
+*Ey iman edenler! Sözleşmeleri yerine getirin.* (Mâide, 5/1; âyetten bölüm)
+
+Bir yerde yaşamak, o yerin insanlarıyla sorumluluklar paylaşmaktır. Çalışma hayatında, kiraladığımız evde, okulda ve ortak hizmetlerde verdiğimiz sözleri gözetelim. Karşımızdaki kişinin inancı, sözümüze sadakatimizin ölçüsünü değiştirmesin. Allah’a karşı dürüstlük sorumluluğumuz, ülke sınırında sona ermez.
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا۟ ٱلْأَمَـٰنَـٰتِ إِلَىٰٓ أَهْلِهَا</p>
+
+*Allah size emanetleri mutlaka ehline vermenizi emreder.* (Nisâ, 4/58; âyetten bölüm)
+
+Hastanedeki eşya, okulun kitabı, sokaktaki aydınlatma ve parkın bankı ortak hayatımızın emanetleridir. Bunların her birinden başka insanlar da yararlanır. Ortak bir imkânı hoyratça kullanmak, tanımadığımız insanların hayatına da dokunur. Evimizdeki eşyaya gösterdiğimiz özeni ortak kullanımda da gösterelim.
+
+Bir başvuruda bilgi verirken doğruyu yazalım. Hak ettiğimiz desteği istemekten utanmayalım; hak kazanmak için gerçeği değiştirmeyelim. Anlamadığımız bir formu bilen kişiye soralım. Hatalı beyanımızı fark ettiğimizde düzeltme yolunu öğrenelim. Bir imzanın altına yalnız adımızı değil, verdiğimiz sözün sorumluluğunu da koyarız.
+
+**Vatan sevgisi, köklerimize vefa ve yaşadığımız yere karşı sorumlulukla olgunlaşır.**
+
+İşveren çalışanına adil davranmalı; çalışan da üstlendiği işi özenle yapmalıdır. Kendi hakkımızı isterken başkasının emeğini görünmez kılmayalım. Bir haksızlıkla karşılaşırsak hakkımızı uygun yollarla arayalım. Yanlışı deliliyle düzeltmeye çalışmak, yaşadığımız yere karşı sorumluluğumuzun içindedir.
+
+Bir işi üstlenirken gücümüzü dürüstçe değerlendirelim. Yerine getiremeyeceğimiz sözü sırf o anı kurtarmak için vermeyelim. Beklenmedik bir engel çıktığında ilgili kişiye zamanında haber verelim; çözümü birlikte arayalım. Böyle davranmak, onun vaktine ve planına saygıdır. Güvenilirlik, zorlandığımız anlarda da açık ve doğru konuşmayı gerektirir.
+
+Bu hafta verdiğimiz bir sözü hatırlayalım. Süresi gelen iş, geri vereceğimiz eşya, cevap bekleyen insan bizden hangi adımı bekliyor? Güven çoğu zaman böyle küçük görünen işlerin vaktinde yapılmasıyla güçlenir. Sevdiğimiz yurdun iyiliği için elimizin altındaki emanetten başlayabiliriz.
+
+Çocuğumuz, bizim sözümüzde durduğumuzu görsün. Yanlış hesaplandığını fark ettiğimiz bir tutarı bildirelim. Bize fazla verilen şeyi sessizce sahiplenmeyelim. Emanete sadakat, fark edilmediğimiz anda da anlamını korusun.
+
+**Yaşadığımız yere vefamız, doğru beyanımızda ve koruduğumuz ortak hakta görünsün.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="emek-ve-imar" tabindex="-1">VII. İmar: Yaşadığımız yere fayda bırakmak</h2>
+
+Bir yeri severken onun yarınını da düşünürüz. Çocuğun soluyacağı hava, yaşlının oturacağı bank, komşunun geçeceği kaldırım bu yarının içindedir. Vatan sevgisini günlük emeğimizde gösterebiliriz. Bir işin sonunda orada yaşayan insanlara ne fayda bıraktığımızı soralım.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَا مِنْ مُسْلِمٍ يَغْرِسُ غَرْسًا، أَوْ يَزْرَعُ زَرْعًا، فَيَأْكُلُ مِنْهُ طَيْرٌ أَوْ إِنْسَانٌ أَوْ بَهِيمَةٌ، إِلاَّ كَانَ لَهُ بِهِ صَدَقَةٌ</p>
+
+*Bir Müslüman ağaç diker veya ekin eker de ondan bir kuş, insan yahut hayvan yerse, bu onun için sadaka olur.* (Buhârî, 2320; rivayetin hadis cümlesi)
+
+Peygamberimizin müjdesinde fayda, insanlara ve diğer canlılara uzanıyor. Emeğimizin sonucunu her zaman görmeyebiliriz. Yine de iyi bir iz bırakabiliriz. Bir fidanı büyütmek, ortak bahçeyi korumak ve suyu israf etmemek için imkânımız ölçüsünde sorumluluk alalım.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Sevgiyi üç alanda görünür kılmak</strong> Bunlar, imar sorumluluğunu gündelik hayata taşıyan uygulama örnekleridir.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Eşyayı ve suyu özenle kullan; tamir edilebileni değerlendirmek için bir adım at.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Üstlendiğin işi düzgün tamamla; ortak kullanılan araçları temiz ve sağlam bırak.</dd></div>
+<div><dt>Mahallede</dt><dd>İmkânına uygun bir gönüllü işe katıl; yaya yolunu ve erişimi açık tut.</dd></div>
+</dl>
+</figure>
+
+Hizmetin tek biçimi bedenen çalışmak değildir. Hareketi kısıtlı bir kardeşimiz bilgisiyle, önerisiyle veya bir telefonla katkı verebilir. Çocuğuna bakan bir anne yahut hasta yakınıyla ilgilenen biri, elinden gelmeyen bir işe katılamadığı için mahcup edilmesin. Gücümüzün yettiği hayrı birbirimizle paylaşalım.
+
+Çocuklarımızla bir iş yaptığımızda sebebini de anlatalım. Bu parkta bizden sonra başkalarının oynayacağını, bu kitabı başkasının okuyacağını hatırlatalım. Böylece memleket sevgisi, koruduğumuz eşyanın ve paylaştığımız faydanın içinde öğrenilsin. Bizden sonra gelecekleri düşünmek, bugünkü tercihlerimize özen kazandırsın.
+
+Memleketteki bir ihtiyaca destek gönderirken de bu özeni sürdürelim. Yardımın gerçek ihtiyaca ulaşmasını araştıralım; verdiğimiz desteğin nasıl kullanıldığını saygıyla soralım. Yakınımızdan gelen her talebi yerine getiremeyebiliriz. Yapabileceğimizi açıkça söyleyelim. Gösteriş için gücümüzü aşan yükler altına girmek yerine, faydası belli ve sürdürebileceğimiz bir katkıya yönelelim.
+
+Yaşadığımız mahalledeki bir çalışmaya katılmadan önce neye ihtiyaç olduğunu öğrenelim. Düzeni sağlayan kişiyi dinleyelim; aldığımız görevi tamamlayalım. Hizmetin sonunda ortak eşyayı yerine bırakalım. Başladığımız iyiliğin devamını düşünmek, sevdiğimiz yere karşı özenimizin bir parçasıdır.
+
+Bu işlerde hanımların ve gençlerin önerilerini de dinleyelim. Bir ihtiyacı her zaman aynı kişi fark etmez. Söze ve sorumluluğa yer açarak ortak emeği birlikte geliştirelim.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/vatan-sevgisi-imandandir/imar.svg" width="1600" height="900" alt="Hayalî bir mahalle bahçesinde küçük bir fidanı sulayan eller, açık bir yaya yolu ve sade bir bank." loading="lazy" decoding="async">
+<figcaption><strong>Sevginin topraktaki izi</strong> Yaşadığımız yere bırakılan fayda, bizden sonrakilere de ulaşır.</figcaption>
+</figure>
+
+**Sevdiğimiz yere bıraktığımız fayda, bizden sonrakilerin hayatına da dokunsun.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="ribat-ve-vefa" tabindex="-1">VIII. Ribat: Huzuru korumanın sorumluluğu</h2>
+
+**Aziz cemaat! Güven içinde yaşayabilmenin ardındaki fedakârlığı unutmayalım.**
+
+Vatan sevgisini konuşurken ribat kavramını da doğru anlayalım. Bu kavram, burada Allah yolunda sınırda nöbet tutmayı anlatır. TDV İslâm Ansiklopedisi’nin “Ribât” maddesi, kelimenin bu tarihî anlamını açıklar. Canı, yurdu ve güvenliği koruma sorumluluğunun nebevî öğütte özel bir yeri vardır.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">رِبَاطُ يَوْمٍ وَلَيْلَةٍ خَيْرٌ مِنْ صِيَامِ شَهْرٍ وَقِيَامِهِ وَإِنْ مَاتَ جَرَى عَلَيْهِ عَمَلُهُ الَّذِي كَانَ يَعْمَلُهُ وَأُجْرِيَ عَلَيْهِ رِزْقُهُ وَأَمِنَ الْفَتَّانَ</p>
+
+*Bir gün ve bir gece nöbet tutmak, bir ay oruç tutup gecelerini namazla geçirmekten daha hayırlıdır. Nöbette ölürse yapageldiği amelin sevabı ve rızkı devam eder; kabir imtihanından emin olur.* (Müslim, 1913a; rivayetin hadis cümlesi)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">عَيْنَانِ لاَ تَمَسُّهُمَا النَّارُ عَيْنٌ بَكَتْ مِنْ خَشْيَةِ اللَّهِ وَعَيْنٌ بَاتَتْ تَحْرُسُ فِي سَبِيلِ اللَّهِ</p>
+
+*Cehennem ateşi iki göze dokunmaz: Allah korkusuyla ağlayan göze ve Allah yolunda gece nöbet tutan göze.* (Tirmizî, 1639; rivayetin hadis cümlesi; Tirmizî: hasen)
+
+Bu müjdelerdeki Allah yolunda olma kaydını koruyalım. Her çatışmayı, her öfkeyi yahut her siyasî amacı bu kapsamda gösteremeyiz. Hac sûresinde okuduğumuz zulme karşı savunma bağlamını ve adalet ölçüsünü hatırlayalım. İnsanın güvenliğini savunurken masumların hakkını çiğnemek sevgimizi yaralar.
+
+Gündelik işlerimizi güzel yapmak ve komşumuza yardım etmek de kıymetlidir. Ancak bu işlere ribat hadisinin özel sevabını kendiliğimizden vaat etmeyelim. Her hayrı kendi delili ve ölçüsüyle anlatalım. Hem hizmete teşvik edelim hem Resûlullah’ın (s.a.s.) sözünü bağlamı içinde koruyalım.
+
+Yurdunu ve insanlarını korurken can veren şehitlerimizi rahmetle, gazilerimizi vefayla analım. Geride kalanların ihtiyacını da gözetelim. Acılı bir aileyi dinlemek, yalnız kalmış bir yakına ulaşmak ve mahremiyetini koruyarak destek sunmak vefayı davranışa dönüştürür. Hatırlayışımız yeni düşmanlıklar üretmesin; huzurun değerini anlamamıza yardımcı olsun.
+
+**Huzuru koruyan fedakârlığa vefa, adaleti koruyarak ve acıyı paylaşarak gösterilir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="sevgi-ve-adalet" tabindex="-1">IX. Yakınımızın yanında, adaletin izinde</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَا يَجْرِمَنَّكُمْ شَنَـَٔانُ قَوْمٍ عَلَىٰٓ أَلَّا تَعْدِلُوا۟ ۚ ٱعْدِلُوا۟ هُوَ أَقْرَبُ لِلتَّقْوَىٰ</p>
+
+*Herhangi bir topluluğa duyduğunuz kin, sizi adaletsiz davranmaya itmesin. Adaletli olun; bu, takvâya daha uygundur.* (Mâide, 5/8; âyetten bölüm)
+
+Memleketimizi, ailemizi veya yakınlarımızı severiz. Onların sıkıntısıyla ilgilenmemiz güzeldir. Fakat sevgi, yanlışlarını gizlemeye dönüştüğünde zarar büyür. Bir insanı gerçekten önemsiyorsak onun haksızlığını da nezaketle durdurmaya çalışırız. Adalet duygumuz, karşımızdaki kişinin bize yakınlığına göre değişmesin.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+
+*Peygamberimiz, kardeşe zalimken de mazlumken de yardım etmeyi öğütler. Zalim olana nasıl yardım edileceği sorulunca, onu zulümden alıkoymayı gösterir.* (Buhârî, 2444; rivayetin tamamının anlam özeti)
+
+Bu öğüt, yakınlarımızla dayanışmamıza bir yön verir. Örneğin bir anlaşmazlıkta iki tarafı dinleyelim. Hemşehrimiz olduğu için birine peşinen hak vermeyelim. İş yerinde haksızlığa uğrayan başka milletten bir çalışanın da yanında duralım. Yakınımızın yanlışını düzeltmesine yardımcı olmak ona karşı vefamızın bir parçasıdır.
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Sevgimizi sınayan üç durum</strong> Sevdiğimiz insanın yanında dururken her durumda aynı adalet ölçüsünü koruyalım.</figcaption>
+<table aria-label="Sevgimizi sınayan üç durum">
+<thead><tr><th scope="col">Karşılaştığımız durum</th><th scope="col">Adaletli adım</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Karşılaştığımız durum">Yakınımız birini incitmiş</th><td data-label="Adaletli adım">Zararı durdurmasına, özür dilemesine ve hakkı gidermesine yardım edelim.</td></tr>
+<tr><th scope="row" data-label="Karşılaştığımız durum">Bir yabancı hakkında suçlama var</th><td data-label="Adaletli adım">Delil arayalım; kişiye ait iddiayı bütün topluluğa yüklemeyelim.</td></tr>
+<tr><th scope="row" data-label="Karşılaştığımız durum">Kendi hakkımız çiğnenmiş</th><td data-label="Adaletli adım">Hakkımızı ararken hakaret, iftira ve toplu suçlamadan sakınalım.</td></tr>
+</tbody></table>
+</figure>
+
+Gençlerimiz bazen kökenleri veya inançları yüzünden incitici sözlerle karşılaşabilir. Böyle bir durumu anlatan genci dikkatle dinleyelim. Yalnız olmadığını hissettirelim; okulun veya ilgili kurumun uygun destek yollarına ulaşmasına yardım edelim. Onun acısını küçümsemeden öfkesini bütün bir topluma yöneltmemesine de destek olalım.
+
+Haksızlığa uğramış kişiden hemen susmasını veya barışmasını istemeyelim. Önce zarar durmalı, hakkı ve güvenliği gözetilmelidir. Sonra telafi için gereken adımları birlikte düşünelim. Affetmeye teşvik ederken hakkını aradığı için kimseyi suçlamayalım. Adaletli bir yakınlık, incinen insanın sözünü duyabilmeyi de gerektirir.
+
+Araya girdiğimizde kendi bilgilerimizin sınırını bilelim. Bilmediğimiz hususta hüküm vermeyelim; gerektiğinde ehil birinden destek isteyelim. Barışa hizmet eden sözümüz, tarafların hakkını ve onurunu birlikte gözetsin.
+
+**Sevdiğimiz insana en sağlam yardım, onunla birlikte adaletin yolunda kalmaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="dil-ve-bilgi" tabindex="-1">X. Dilimizdeki sevgi, ekranımızdaki sorumluluk</h2>
+
+**Sevgili gençler! Kıymetli büyüklerimiz! Paylaştığımız söze birlikte dikkat edelim.**
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا بِجَهَـٰلَةٍ فَتُصْبِحُوا۟ عَلَىٰ مَا فَعَلْتُمْ نَـٰدِمِينَ ۝٦</p>
+
+*Ey iman edenler! Bilmeden birilerine zarar verip de sonra yaptığınıza pişman olmamanız için, yoldan çıkmışın biri size bir haber getirdiğinde doğruluğunu araştırın.* (Hucurât, 49/6)
+
+Memleketimizle ilgili bir haber bizi hemen etkileyebilir. Sevinmek, üzülmek yahut öfkelenmek mümkündür. Yine de paylaşmadan önce kaynağına ve tarihine bakalım. Bir görüntünün nerede çekildiğini bilmiyorsak kesin konuşmayalım. Bir kişiye ait davranışı, onunla aynı milletten olan herkese yüklemeyelim.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Aile grubuna düşen görüntü</p>
+
+Telefon ekranına düşen bir görüntü, aile grubunun gündemini bir anda değiştirebilir. Aile grubuna başka bir milleti suçlayan kısa bir video gelsin. Bir kardeşimiz, görüntünün kaynağı bilinmediği için paylaşmayı bekletsin. Sonra yanlış bilgi olduğunu öğrensin. Daha önce göndermişse aynı gruba açık bir düzeltme yazsın. Böylece sevgisiyle harekete geçen kalbini, doğruluğun ölçüsüyle korusun.
+
+Dinî sözlerde de aynı özeni gösterelim. Bir görselin üzerine “hadis” yazılması yeterli değildir. Başta hatırladığımız meşhur sözün nispetini düzeltmek, bunun için iyi bir başlangıçtır. Kaynağını bilmediğimiz bir sözü Resûlullah’ın (s.a.s.) ağzından paylaşmayalım. Bilmediğimizi söylemek, dinî emanete sadakattir.
+
+Sohbetlerimizde başka bir yanlışı da fark edebiliriz: Kendi geçmişimizi överken bir çocuğun bugününü değersizleştirmek. “Bizim zamanımızda” diye başlayan her cümle bir suçlamaya dönüşmesin. Tecrübemizi örnekle anlatalım; gencin de tecrübesini soralım. Bir memleketteki güzelliği anlatmak için başka memlekette yaşayanları aşağılamak gerekmez.
+
+Yanlışımızı fark edersek ümitsizliğe kapılmayalım. Yanlış bilgiyi düzeltelim, incittiğimiz insandan özür dileyelim, varsa zararını giderelim. Tövbemiz davranışımıza yön versin. Bugün düzeltebildiğimiz bir söz, yarın bir çocuğun daha adil konuşmasına örnek olabilir. İyiliğe dönüş kapısını birbirimize açık tutalım.
+
+Aile grubunda düzeltme yapan gence de kulak verelim. Yaşı küçük diye bilgisini değersiz görmeyelim; gösterdiği kaynağı birlikte inceleyelim. Genç kardeşimiz de doğrusunu anlatırken büyüğünü alaya almasın. Doğruluğu birlikte aradığımız bir konuşmada hem bilgi hem aramızdaki hürmet korunur. Paylaşımımıza gösterdiğimiz özen, muhatabımıza gösterdiğimiz nezaketle tamamlanır.
+
+Güzel bir haberi aktarırken de aynı titizliği gösterelim. Sevinmek istediğimiz için araştırmayı bırakmayalım. Doğruluk yalnız hoşumuza gitmeyen iddialarda aradığımız bir şart olmasın; bütün sözlerimizin ölçüsü olsun.
+
+**Memleket sevgimizi, doğruluğunu araştırdığımız haberle ve incitmeyen sözle koruyalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta hayata taşıyacağımız yedi söz</h2>
+
+**Kıymetli kardeşlerim! Sevgimize bu hafta yapılabilecek bir iş eşlik etsin.**
+
+Hepimizin zamanı, sağlığı ve imkânı farklıdır. Şu yedi sözden hangisini kendi şartlarımızda yerine getirebiliriz? Yerine getirebileceğimiz her söz için bir gün ve bir adım belirleyelim. Yardım gerektiren işi güvendiğimiz biriyle paylaşabiliriz. Küçük başlayan bir gayret, devam ettikçe hem bize hem çevremize fayda verir.
+
+**VEFA VE SORUMLULUK İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir aile büyüğümü veya yakınımı arayacağım.</strong> Hatırasını ve bugünkü ihtiyacını dinleyerek uzaktaki bağımıza vakit ayıracağım.</li>
+<li><strong>Bir gençle veya farklı kuşaktan biriyle yaşadığı yeri konuşacağım.</strong> Nerede kendini evinde hissettiğini yargılamadan dinleyeceğim.</li>
+<li><strong>Üstlendiğim bir sözü bu hafta yerine getireceğim.</strong> Geciken bir iş, geri verilecek eşya veya bekleyen cevap için somut zaman belirleyeceğim.</li>
+<li><strong>Ortak kullanılan bir imkânı korumak için adım atacağım.</strong> Gücüm yetiyorsa bir alanı düzenleyecek, yetmiyorsa gördüğüm arızayı ilgili kişiye bildireceğim.</li>
+<li><strong>Bir komşuma veya yeni gelmiş birine yardım teklif edeceğim.</strong> İhtiyacını kendisinden soracak, rızasını ve mahremiyetini gözeterek yapabileceğim desteği sunacağım.</li>
+<li><strong>Paylaşmayı düşündüğüm bir haberin kaynağını ve tarihini kontrol edeceğim.</strong> Doğrulayamadığım haberi göndermeyecek, önceki yanlış paylaşımımı varsa düzelteceğim.</li>
+<li><strong>Bu hafta memleketim ve yaşadığım yer için dua edeceğim.</strong> Duamda aileleri, gençleri, hastaları, vefat edenleri ve yuvasından ayrılmak zorunda kalanları anacağım.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Sevgiden davranışa yedi adım</strong>Bir hafta içinde, imkânına göre uygulanacak kısa hatırlatmalar.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Bir yakınını ara</strong></li>
+<li><span aria-hidden="true">2</span><strong>Aidiyetini sabırla dinle</strong></li>
+<li><span aria-hidden="true">3</span><strong>Sözünü yerine getir</strong></li>
+<li><span aria-hidden="true">4</span><strong>Ortak emaneti koru</strong></li>
+<li><span aria-hidden="true">5</span><strong>İhtiyacı sor, destek ol</strong></li>
+<li><span aria-hidden="true">6</span><strong>Paylaşmadan önce doğrula</strong></li>
+<li><span aria-hidden="true">7</span><strong>Yurtlara esenlik dile</strong></li>
+</ol>
+</figure>
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Bir sözün takvime girmesi</p>
+
+Yoğun bir çalışma haftasında sevdiklerimize ayıracağımız vakit, takvimde küçük bir yer bulabilir. Vardiyalı çalışan bir kardeşimiz, bu hafta yaşlı bir yakınının hâlini sormaya niyet etsin. Uzun bir ziyaret yapamayacağını bilsin. Önce uygun bir saat öğrenip telefonla arasın; konuşmayı aceleye getirmesin. Yakını bir ihtiyacını söylediğinde yapabileceği yardımı açıkça belirlesin. Gerekiyorsa güvendiği birinden destek istesin. Böylece iyi niyet, zamanı ve sorumluluğu belli bir davranışa dönüşsün. Aynı ölçüyü kendi imkânımıza göre uygulayabiliriz.
+
+Seçtiğimiz işin ardından kendimize birkaç soru soralım. Aradıktan sonra neye ihtiyaç olduğunu öğrendik? Verdiğimiz söz yerine geldi mi? Kontrol ettiğimiz haber doğru çıktı mı? Bu sorularla kendimizi yoklayalım. Eksik kaldığımız yerde yeniden başlayalım; birbirimize nazikçe hatırlatalım.
+
+Bu adımları evimizde konuşurken çocuklarımızın önerilerine de yer verelim. Yardım edeceğimiz insanın mahremiyetini koruyalım; yaptığımız iyiliği başkasını mahcup edecek biçimde anlatmayalım. Ailemiz aynı işe farklı katkılar sunabilir. Birimiz uygun zamanı öğrenir, birimiz ulaşımı kolaylaştırır, birimiz de devamını takip eder. Sorumluluğu paylaşınca verilen sözün arkasında birlikte durabiliriz.
+
+Uzakta özlediğimiz bir evle bugün yaşadığımız sokağı aynı duada buluşturabiliriz. Hatıralarımıza vefa gösterirken çocuklarımızın yarınını da gözetelim. Şimdi bu niyetle Rabbimize yönelelim. **Vatan sevgisi, köklerimize vefa ve yaşadığımız yere karşı sorumlulukla olgunlaşır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Yurtlarımıza huzur, kalplerimize vefa</h2>
+
+**Aziz cemaat! Ellerimizle birlikte niyetlerimizi de Rabbimize açalım.**
+
+Hz. İbrâhim’in Mekke için ettiği güven duasını okuyalım; ardından kendi yurtlarımızın esenliğini de Rabbimizden dileyelim.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ ٱجْعَلْ هَـٰذَا ٱلْبَلَدَ ءَامِنًا</p>
+
+*Rabbim! Bu şehri güvenli kıl.* (İbrâhîm, 14/35; âyetten bölüm)
+
+Allah’ım! Bizi imanla yaşatan, sevmeyi ve merhameti öğreten sensin. Memleketimize ve burada kurduğumuz hayata hayır ver. Türkiye’de, Belçika’da ve dünyanın her yerinde yuvalara huzur, beldelere güven ihsan eyle. İnancını yaşamak için sıkıntı çekenleri ferahlığa çıkar. Zulme uğrayanların yardımcısı ol; bizi adaletle davranan kullarından eyle.
+
+Rabbimiz! Büyüklerimizin hasretini hafiflet. Uzakta kalan yakınlarımızın gönlüne ferahlık ver. Evlerimizde eşleri birbirine karşı şefkatli kıl. Annelerimize, babalarımıza ve çocuklarına tek başına emek verenlere kuvvet ver. Aile içinde birbirimizi dinlemeyi, yükümüzü paylaşmayı ve kırdığımız gönlü onarmayı bize nasip eyle.
+
+Allah’ım! Çocuklarımızı ve gençlerimizi imanla, ilimle ve güzel ahlakla yetiştir. Köklerini tanırken yaşadıkları yere iyilik katmayı onlara sevdir. Sorularına hayırlı rehberler nasip eyle. Dinini yeni öğrenen ve yeniden ibadete başlamak isteyen kardeşlerimizin yolunu kolaylaştır. Cemaatimizi herkese merhametle yaklaşan bir topluluk eyle.
+
+Rabbimiz! Hastalarımıza şifa, engelli kardeşlerimize kolaylık, yalnızlara hayırlı dostlar ihsan eyle. Şehitlerimize, geçmişlerimize ve bütün müminlere rahmet eyle. Gazilerimize sağlık ve huzur ver. Acılı aileleri teselliye kavuştur. Evini kaybedenlere güvenli bir yuva nasip eyle; onlara yardım edebilmeyi bizlere lütfeyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette de iyilik ver; bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Allah’ım! Kazancımızı helâl, sözümüzü doğru, niyetimizi hâlis kıl. Komşularımızla aramıza güven yerleştir. Yanlışımızı görüp düzeltmeyi, ortak hakka sahip çıkmayı ve emaneti ehline vermeyi bize nasip eyle. Dualarımızı kabul buyur.
+
+Rabbimiz! Gönlümüzde başkasını küçümseyen kibir bırakma. Bize verilen nimetlere şükretmeyi, darlıkta sabretmeyi ve her durumda hakkı gözetmeyi nasip eyle. Son nefesimizi imanla vermeyi lütfeyle.
+
+**Rabbimiz, sevgimizi vefaya, duamızı iyiliğe, ömrümüzü rızana uygun hizmete dönüştür.**
+
+Âmin. Hamd, âlemlerin Rabbi Allah’a mahsustur. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve rivayetlerden alınan bölümler belirtilmiştir. Tarihî kıssa sahih rivayete dayanır. Avrupa’daki gündelik sahneler temsilîdir. Diğer niyazlar serbest duadır; ayrıntılı kaynak denetimi eşlik eden rapordadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Sevginin dinî ölçüsü: <a href="https://quran.com/49/13">Hucurât 49/13</a>.</li>
+<li>Yurt ve güven: <a href="https://quran.com/22/39">Hac 22/39</a>; <a href="https://quran.com/22/40">Hac 22/40</a>.</li>
+<li>Peygamberimizin yurt sevgisi: <a href="https://sunnah.com/tirmidhi:3925">Tirmizî 3925</a>; <a href="https://sunnah.com/bukhari:1886">Buhârî 1886</a>; <a href="https://sunnah.com/muslim:1392">Müslim 1392</a>.</li>
+<li>Hasretten duaya: <a href="https://sunnah.com/bukhari:3926">Buhârî 3926</a>; <a href="https://sunnah.com/bukhari:1885">Buhârî 1885</a>.</li>
+<li>Nesiller ve aidiyet: <a href="https://quran.com/60/8">Mümtehine 60/8</a>.</li>
+<li>Söz ve emanet: <a href="https://quran.com/5/1">Mâide 5/1</a>; <a href="https://quran.com/4/58">Nisâ 4/58</a>.</li>
+<li>Emek ve imar: <a href="https://sunnah.com/bukhari:2320">Buhârî 2320</a>.</li>
+<li>Ribat ve vefa: <a href="https://sunnah.com/muslim:1913a">Müslim 1913a</a>; <a href="https://sunnah.com/tirmidhi:1639">Tirmizî 1639</a>.</li>
+<li>Sevgi ve adalet: <a href="https://quran.com/5/8">Mâide 5/8</a>; <a href="https://sunnah.com/bukhari:2444">Buhârî 2444</a>.</li>
+<li>Dil ve bilgi ahlakı: <a href="https://quran.com/49/6">Hucurât 49/6</a>.</li>
+<li>Hatim ve niyaz: <a href="https://quran.com/14/35">İbrâhîm 14/35</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>Kavram ve hadis tashihi: <a href="https://islamansiklopedisi.org.tr/vatan">TDV İslâm Ansiklopedisi — Vatan</a>.</li>
+<li>Tarihî kavram: <a href="https://islamansiklopedisi.org.tr/ribat">TDV İslâm Ansiklopedisi — Ribât</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

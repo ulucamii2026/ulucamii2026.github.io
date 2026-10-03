@@ -226,6 +226,9 @@ const vaazlar = defineCollection({
     pdf: z.string().optional(),
     siraNo: z.number().optional(),
     taslak: z.boolean().default(false),
+    /** Bağlantı önizlemesi (og:image) — vaazın kapak çiziminden üretilmiş 1200×630 WebP; çizimin aslı SVG'dir. */
+    kapak: z.string().optional(),
+    kapakAlt: z.string().optional(),
   }),
 });
 

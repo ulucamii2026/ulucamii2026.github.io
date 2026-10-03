@@ -301,6 +301,43 @@
   align-items: center;
   min-height: 44px;
 }
+/* Vaaz revizyonu v4 (3 Eki 2026): doğrulanmış şiir ve alıntı blokları. */
+.vaaz-govde .vaaz-siir,
+.vaaz-govde .vaaz-alinti {
+  margin: 2rem auto;
+  padding: 1.25rem 1.5rem;
+  max-width: 34rem;
+  border-inline-start: 3px solid var(--vurgu);
+  background: var(--zemin-2);
+  border-radius: 0 var(--radius-kose) var(--radius-kose) 0;
+  break-inside: avoid;
+}
+.vaaz-govde .vaaz-siir p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.9;
+  color: var(--metin);
+}
+.vaaz-govde .vaaz-alinti p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--metin);
+}
+.vaaz-govde .vaaz-siir footer,
+.vaaz-govde .vaaz-alinti footer {
+  margin-top: .75rem;
+  font-family: var(--font-sans);
+  font-size: .9rem;
+  color: var(--metin-2);
+}
+.vaaz-govde .vaaz-illustrasyon img[src$=".svg"] {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
 @media (max-width: 640px) {
   .vaaz-govde .vaaz-gorsel { margin: 2rem 0; padding: 1.25rem 0; }
   .vaaz-govde .vaaz-illustrasyon { padding: 0; margin: 2.5rem 0; }

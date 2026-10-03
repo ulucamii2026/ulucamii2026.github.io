@@ -1,205 +1,448 @@
 ---
-baslik: "Affetmek ve Öfkeyi Yutmak (2)"
-ozet: "Enes b. Malik anlatıyor: Allah Resûlü (s.a.s.) ile birlikte oturuyorduk. “Şimdi yanınıza cennetlik bir adam geliyor!” dedi. Sahâbîler, ensardan bir zâtın geldiğini…"
+baslik: "Kinsiz Bir Gönül: Helalleşmek ve Af Dilemek"
+ozet: "Kalpteki kini azaltmak, incittiğimiz kişiden af dilemek ve hakkını teslim etmek üzerine bir vaaz. Gurbette uzayan küslüklere selâm, dua ve adaletle yaklaşan yedi somut söz."
 kategori: ahlak
-kelime: 3223
+kelime: 3793
 docx: "/vaazlar/affetmek-ve-ofkeyi-yutmak-2.docx"
 pdf: "/vaazlar/affetmek-ve-ofkeyi-yutmak-2.pdf"
+kapak: "/media/vaazlar/affetmek-ve-ofkeyi-yutmak-2/kapak-og.webp"
+kapakAlt: "Krem keten üzerinde ilmekleri gevşemiş iki renkli yün iplik ve yandan gelen sabah ışığı."
 ---
-## Giriş
 
-Enes b. Malik anlatıyor: Allah Resûlü (s.a.s.) ile birlikte oturuyorduk. “Şimdi yanınıza cennetlik bir adam geliyor!” dedi. Sahâbîler, ensardan bir zâtın geldiğini gördüler. Sakalından, aldığı abdestin suyu damlayan, terliklerini eline almış bir sahâbî idi bu. Başka bir gün, ashâbı ile otururken Hz. Peygamber (s.a.s.) yine aynı şeyi söyledi: “Şimdi yanınıza cennetlik bir adam geliyor!” Gelen, yine aynı şahıstı. Üçüncü gün de aynı olay tekrar etti. Hz. Peygamber (s.a.s.) o günkü sohbetini bitirip meclisten ayrılınca sahâbîler de dağılmaya başladı. Genç sahâbîlerden Abdullah b. Amr, Hz. Peygamber’in (s.a.s.) cennetlik olduğunu söylediği zâtın peşine düştü. Onu cennetlik yapan şeyi öğrenmek istiyordu. Fakat soruyu doğrudan, bu şekilde de soramazdı. Aklına bir çare geldi. Gidip o zâta, “Babamla tartıştık. Üç gün eve gitmeyeceğime yemin ettim. Eğer uygun görürsen bu süre geçene kadar seninle kalabilir miyim?” dedi. Cennetlik sahâbî, Abdullah b. Amr’ın bu teklifini kabul etti.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/affetmek-ve-ofkeyi-yutmak-2/kapak.svg" width="1600" height="900" alt="Krem keten üzerinde ilmekleri gevşemiş iki renkli yün iplik ve yandan gelen sabah ışığı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Gevşeyen düğüm</strong> Bir özür, yıllardır sıkılan düğümün çözülmesine başlangıç olabilir.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Üçüncü gün sonunda Abdullah, bu süre boyunca o Medineli Müslüman’ın gece namazına kalktığını görmediğini, sabah namazına kadar uyuduğunu, sadece yatağında sağa sola dönerken Allah’ı zikrettiğini ve tekbir getirdiğini fark etti. O günleri anlatırken de şöyle dedi: “Gerçi konuşmaları esnasında sadece güzel şeyler söylediğini işittim. Üç gece geçince yaptığı ibadetleri neredeyse küçümseyecektim. Bunun üzerine ona dedim ki: "Aslında ben babamla tartışmadım. Ancak Hz. Peygamber (s.a.s.) üç kere, “cennetlik bir adam geliyor” dedi, üçünde de sen çıktın geldin. Ben de senin yanında kalıp ne yaptığını görmek ve aynısını yapmak istedim. Ancak görüyorum ki sen çok da fazla bir şey yapmıyorsun. Seni, Hz. Peygamber’in (s.a.s.) söylediği bu dereceye ulaştıran nedir?" "Sadece gördüklerin." dedi sakince ensarlı adam. Bu cevap üzerine yanından ayrıldım. Fakat çok uzaklaşmadan beni geri çağırdı ve şöyle dedi: "Ancak bir şey daha var. Ben kalbimde hiçbir Müslüman’a karşı kin, nefret ve samimiyetsizlik bulundurmam ve Allah’ın kendisine ihsanda bulunduklarından dolayı hiç kimseye haset etmem."”
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve iç muhasebe</a></li>
+<li><a href="#selim-kalp">Selîm kalbin yolu</a></li>
+<li><a href="#gece-muhasebesi">Gönlün gece muhasebesi</a></li>
+<li><a href="#bugun-helallesmek">Ertelenmeyen kul hakkı</a></li>
+<li><a href="#muflis-hadisi">Müflis hadisinin aynası</a></li>
+<li><a href="#ozur-ve-telafi">Özürden telâfiye</a></li>
+<li><a href="#ilk-selam">Küslükte ilk selâm</a></li>
+<li><a href="#giyabinda-dua">Birbirimiz için dua</a></li>
+<li><a href="#barisa-emek">Barışa verilen emek</a></li>
+<li><a href="#sozu-barisa-yoneltmek">Sözü barışa yöneltmek</a></li>
+<li><a href="#adalet-ve-guven">Adalet ve güven</a></li>
+<li><a href="#yedi-soz">Helalleşmeye açılan yedi söz</a></li>
+<li><a href="#hatim-duasi">Arınmış gönüller için niyaz</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Söylenmeyi bekleyen bir özür</h2>
 
-Bunun üzerine Abdullah b. Amr,“İşte seni yücelten bu! Bizim yapamadığımız da bu! dedi. (İbn Hanbel, III, 166; Hadislerle, 3/571)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-İnsan irade sahibi, konuşan, düşünüp tedbir alan, hikmetle hareket eden mükerrem bir varlıktır. Aynı zamanda Allah Teâlâ insanın fıtratına doğru ve yanlışı, iyilik ve kötülüğü, günah ve sevabı bilme, tanıma, ayırt etme, birini veya diğerini seçip yapma gücü ve özgürlüğü vermiştir. Bu manada insan, çift kutuplu bir varlıktır. İnsanın zaaflarının anlatıldığı Mearic suresinde Rabbimiz şöyle buyurmaktadır:
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-<p lang="ar" dir="rtl" class="ayet">وَاِذَا مَسَّهُ الْخَيْرُ مَنُوعاًۙ اِذَا مَسَّهُ الشَّرُّ جَزُوعاًۙ اِنَّ الْاِنْسَانَ خُلِقَ هَلُوعاًۙ</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-“Gerçekten insan pek tahammülsüz bir tabiatta yaratılmıştır. (19) Başına bir fenalık geldi mi sızlanır durur. (20) Ama ona bir nimet nasip olursa kendisinden başkasını yararlandırmaz. (21)” (Mearic, 70/19-21) Tahammülsüzlük, acelecilik, sabırsızlık, sızlanma, bencillik gibi vasıflar insanın eksik yönleridir. İnsan hem kendisinde hem de başkalarında bu yönlerinin olduğunu unutmamalı, sıkıntılara sabrederek, kötülüklere sebep olanları affederek yüce bir ahlaka sahip olmalıdır.
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashâbına salât ve selâm olsun.* (serbest dua lafzı)
 
-Sözlükte “yok etmek, silip süpürmek; fazlalık, artık” gibi mânalara gelen afv, bir ahlâk ve hukuk terimi olarak genellikle, “kötülük ve haksızlık edeni, suç veya günah işleyeni bağışlama, cezalandırmaktan vazgeçme” anlamlarında kullanılmaktadır. İslâm ahlâkçıları affetmeyi Müslümanlar arasında riayet edilmesi gereken bir din kardeşliği görevi ve hakkı olarak düşünmüşlerdir. (Mustafa Çağrıcı, Af, DİA, 1/394)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-<p lang="ar" dir="rtl" class="ayet">وَجَزٰٓؤُ۬ا سَيِّئَةٍ سَيِّئَةٌ مِثْلُهَاۚ فَمَنْ عَفَا وَاَصْلَحَ فَاَجْرُهُ عَلَى اللّٰهِؕ اِنَّهُ لَا يُحِبُّ الظَّالِمٖينَ</p>
+*Mûsâ, “Rabbim! Gönlüme ferahlık ver. İşimi bana kolaylaştır. Dilimdeki düğümü çöz ki sözümü anlasınlar” dedi.* (Tâhâ, 20/25–28)
 
-“Bir kötülüğün karşılığı ona denk bir kötülüktür; ama kim bağışlar, düzeltme yolunu tutarsa onun mükâfatını Allah verir. Hiç şüphe yok ki O, haksızlık edenleri sevmez.” (Şura, 42/40) Ayeti kerimede kişiye yapılan şahsi bir kötülüğe karşılık verirken sınırın aşılmasının ve haksızlık edilmesinin Allah’ın hoşnut olmadığı bir davranış olduğu hatırlatılmaktadır. Şayet cezalandırma yoluna gidilecekse, bu kötülüğe denk bir karşılık olmalıdır. Bağışlamanın ve düşmanlık halini düzelmenin ise Allah katındaki mükâfatı daha büyüktür. Kişinin kendisine yapılan kabalığı misliyle ödetmek yerine affetmesi, yüksek bir kişilik ve karakterin tezahürüdür.
+**Aziz cemaat! Gönlünde yarım kalmış bir konuşma taşıyan kıymetli kardeşlerim!**
 
-Ayetin işaret ettiği bu anlama bugün bizler ne kadarda muhtacız. Sokakta, trafikte, ailede, komşuluk ve akrabalık ilişkilerinde küçük bir hataya sabredilmemekte; kin, nefret, intikam ve öfke ile hemen kat kat şiddetiyle karşılık verilerek istenmeyen hadiselere sebep olunmaktadır. Hâlbuki affedip, müsamaha gösterilse hem halk hem de Hak katında güzel bir netice kazanılmış olunacaktır.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/affetmek-ve-ofkeyi-yutmak-2/kapak.svg" width="1600" height="900" alt="Krem keten üzerinde ilmekleri gevşemiş iki renkli yün iplik ve yandan gelen sabah ışığı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Gevşeyen düğüm</strong> Bir özür, yıllardır sıkılan düğümün çözülmesine başlangıç olabilir.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Resûlullah’ın nasıl bir ahlâka sahip olduğu sorulduğunda Hz. Âişe (r.a.) şöyle demişti:
+Gece lambasını söndürmeden önce aklımıza bir isim geliyor. Telefon rehberinde hâlâ duruyor; sesini uzun zamandır duymadığımız bir kardeşimizin adı. Aramızda ülkeler var. Fakat aramayı ertelememizin sebebi mesafeden çok, söylenmeyi bekleyen bir söz: Seni incittim, özür dilerim.
 
-<p lang="ar" dir="rtl" class="ayet">لَمْ يَكُنْ فَاحِشًا وَلاَ مُتَفَحِّشًا وَلاَ صَخَّابًا فِى الأَسْوَاقِ وَلاَ يَجْزِى بِالسَّيِّئَةِ السَّيِّئَةَ وَلَكِنْ يَعْفُو وَيَصْفَحُ</p>
+Bugün kendi payımıza düşene bakacağız. Kalbimizde büyüttüğümüz kini nasıl azaltabiliriz? Bir insanın hakkını nasıl teslim ederiz? Kırgın iki kişiye nasıl yardımcı oluruz? Rabbimizin huzurunda bu sorulara samimiyetle yer açalım. İçimizdeki dönüş, dilimizde ve elimizde karşılık bulsun.
 
-“O, kötü sözlü ve çirkin ağızlı değildi, çarşı pazarda bağırıp çağırmaz, kötülüğe kötülükle karşılık vermezdi; bilakis bağışlar ve hoşgörürdü.” (Tirmizi, Birr, 69)
+**Gönlümüzde kin biriktirmeyelim; incittiğimiz insana dönüp hakkını teslim edelim.**
 
-Hz. Peygamber’in ahlakının her yönü güzeldi elbette. Ancak Hz. Aişe annemiz bu hadiste Resul-i Ekrem’in (s.a.s.) güzel ahlakından bağışlayan, affeden ve hoşgören yönlerini öne çıkarmıştır. Bizler de ümmeti olarak onun ahlakını örnek almalıyız.
+**Af dilemeye niyet eden gönül, onarım için ilk adımı atmıştır.**
 
-## Allah’ın Affetmesi
+---
 
-Allah “Afüv” ismiyle kusurları siler, “Ğafûr” ismiyle günahları affeder, “Settâr” ismiyle hataları örter. İnsanoğlunun başına gelen bütün musibetler kendi yaptıkları yüzünden olsa da, Rabbimiz pek çoğunu affeder. Çünkü O’nun bağışlaması bol, mağfireti sonsuzdur. (Hadislerle İslam, 3/321)
+<h2 class="vaaz-bolum-baslik" id="selim-kalp" tabindex="-1">I. Rabbimize hangi kalple döneceğiz?</h2>
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّ اللّٰهَ كَانَ عَفُواًّ غَفُوراً</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَوْمَ لَا يَنفَعُ مَالٌ وَلَا بَنُونَ ۝٨٨ إِلَّا مَنْ أَتَى ٱللَّهَ بِقَلْبٍ سَلِيمٍ ۝٨٩</p>
 
-“Şüphesiz Allah çok affedici ve bağışlayıcıdır.” (Nisa, 4/43) Hadisi Kutsi de Rabbimiz,
+*O gün mal da çocuklar da fayda vermez. Ancak Allah’a temiz bir kalple gelenler kurtuluşa erer.* (Şuarâ, 26/88–89)
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّ رَحْمَتِى سَبَقَتْ غَضَبِى</p>
+Bu âyetler, Hz. İbrâhim’in duasında yer alır. O, diriliş gününde mahcup olmamayı Rabbinden ister. Dünyada biriktirdiklerimizin ötesinde, Allah’a nasıl bir kalple varacağımızı düşünürüz. Tapu dosyaları kapanır, banka hesapları geride kalır. Bizi asıl meşgul etmesi gereken, o imkânlarla ne yaptığımızdır.
 
-“Rahmetim gazabımı geçmiştir.” buyurmuştur. (Buhârî, Tevhîd, 22)Allah-u Teala’nın ahlakı ile ahlaklanmalı, O’nun güzel sıfatları bizde tecelli etmelidir.
+<blockquote class="vaaz-alinti">
+<p>Cehaletten ve kötü huylardan arınmış kalptir</p>
+<footer>— Fahreddin er-Râzî’nin benimsediği selîm kalp tarifi; Mefâtîhu’l-gayb, XXIV, 151’den naklen Kur’an Yolu, Şuarâ 26/83–89 tefsiri.</footer>
+</blockquote>
 
-## Hz. Peypeygamber’in (s.a.s.) Affediciliği
+Selîm kalbin temelinde Allah’a samimi iman vardır. Bu iman, iç dünyamızı ve davranışlarımızı temizlemeye çağırır. Namazda Rabbimize yönelen gönül, namazdan sonra kardeşinin iyiliğine de sevinmeyi öğrenir. Dilimizdeki duanın hayattaki izi böyle görünür. Kalbin güzelliği davranışa ulaşır.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَائِشَةَ قَالَت:ْ مَا انْتَقَمَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) لِنَفْسِهِ فِى شَيْءٍ يُؤْتَى إِلَيْهِ حَتَّى تُنْتَهَكَ مِنْ حُرُمَاتِ اللَّهِ فَيَنْتَقِمَ لِلَّهِ</p>
+Bir başarı haberi duyduğumuzda içimizden neler geçiyor? Yeğenimiz okulunu bitirmiş, iş arkadaşımız emeğinin karşılığını almış. İçimiz daralıyorsa bunu fark edebiliriz. Rabbim, ona verdiğin nimeti bereketlendir, bana da hayırlısını nasip et, diyebiliriz. Ardından içten bir tebrik göndeririz. Gönül terbiyesi bazen birkaç kelimelik bu mesajla başlar.
 
-Hz. Âişe anlatıyor: “Allah Resûlü (s.a.s.), kendisine yapılan bir şeyden dolayı şahsî olarak kimseyi cezalandırmamıştır; ancak, Allah’ın yasaklarının çiğnenmesi durumunda Allah için ceza vermiştir.” (Buhârî, Hudûd, 42)
+Kendi hayatımızın eksiklerini görürken başkasının sevincine yer açalım. Yeni Müslüman olmuş kardeşimizin öğrendiği kısa bir dua, yaşlı bir annemizin güçlükle attığı adım da kıymetlidir. İnsanların hayrını çoğaltma isteği, kalbimizin ufkunu genişletir. Herkesin yükünü ve imkânını aynı teraziyle ölçmektense dikkatle dinleyelim.
 
-Affetmek toplumsal çöküntüye sebep olacak kötü davranışları görmezden gelmek manasında değildir. Fark edildiğinde nahoş davranışların yaygınlaşmanın önüne geçilmesi ve diğer insanların da etkilenmemesi için bir yaptırım uygulanmalıdır. Açıkça fuhuş işleyen birisinin; hırsızlığı alışkanlık haline getiren, mahremiyeti ayaklar altına alan ve insanların emniyetini tehlikeye atan hırsızın hoş görülmesi söz konusu olamaz. Aynı şekilde mü’minler arasında ahlâksızlığın yayılmasını isteyerek insanlara iftira atarak, onlar hakkında kötü söz söyleyerek dille bozgunculuk yapanların da hoş görülmesi/affedilmesi doğru değildir. Böylesi durumları hoş görmek, Allah’ın hukukunu hafife almak demektir. Tavsiye edilen affetme, şahsi eziyetlere maruz kalma durumunda gösterilen tavırdır. (Mahmut Öztürk, Öfke Kontrolünde Allah ve Ahiret İnancının Etkisi (Habil Kabil Örneği), Diyanet İlmî Dergi, 58 (2022): 55)
+Bu akşam yastığa başımızı koyduğumuzda kendimize küçük bir soru soralım: Bugün kimin iyiliğine sevindim? Cevabımızı yarın bir davranışla büyütebiliriz. Bir teşekkür, bir tebrik veya sessiz bir yardım, gönlümüzün hangi yöne yürüdüğünü gösterir. Kalbimizi böyle yoklayalım.
 
-### Taiflileri Affetmesi
+Haset ile gıptayı da ayıralım. Gıptada, başkasındaki nimetin benzerini hayırlı yoldan isteriz. Hasette ise onun o nimetten mahrum kalmasını dileriz. Kardeşimizin başarısını gördüğümüzde kendi gayretimizi artırabiliriz. Onun sevincini eksiltmeden çalışmak mümkündür. Allah’ın bize verdiği imkânı böyle değerlendirelim.
 
-Bir defasında Hz. Âişe (r.a.), Allah Resûlü’ne (s.a.s.) başındaki miğferin kırıldığı, yüzünün kanlara bulandığı ve dişinin kırıldığı Uhud gününden daha sıkıntılı bir gününün olup olmadığını sormuş, Peygamberimiz de Tâif dönüşünde yaşadıklarının hayatının en ıstıraplı ve unutulmaz anları olduğunu söylemişti. Tâifliler, kendilerini İslâm’a davet için gittiğinde Allah Resûlü (s.a.s.) ile alay etmiş ve ona hakarette bulunmuşlar, hatta geçip gideceği yolun iki yanına oturarak attıkları taşlarla onu yaralamışlardı. Ellerinden kurtulduğu zaman mübarek ayaklarından kanlar akıyordu. Bir ağacın dibinde biraz dinlendikten sonra ellerini göğe kaldırarak hâlini Yüce Allah’a arz etti. Bu sırada gökte bir bulutun içinde Cebrail’i gördü. Cebrail (as), Allah’ın onun duasını işittiğini, onlar hakkında ne dilerse yapması için dağlar meleğini gönderdiğini söyledi. Dağlar meleği ise Hz. Peygamber’e (s.a.s.) selâm verdikten sonra (Ebû Kubeys ile Kuaykıân adlı) iki büyük dağı zalimlerin başına geçirebileceğini bildirdi. Buna mukabil Hz. Peygamber(s.a.s.):
+**Selîm kalbe giden yol, imanımızı başkasına iyilik isteyen davranışlarla beslemektir.**
 
-<p lang="ar" dir="rtl" class="ayet">أَرْجُو أَنْ يُخْرِجَ اللَّهُ مِنْ أَصْلاَبِهِمْ مَنْ يَعْبُدُ اللَّهَ وَحْدَهُ لاَ يُشْرِكُ بِهِ شَيْئًا</p>
+---
 
-“Hayır. Bilakis ben Allah’ın onların soyundan sadece kendisine kulluk edecek bir nesil çıkarmasını ümit ederim.” dedi. ( Buhârî, Bed’ü’l-halk, 7) Sonrasında Taifliler için af diledi.
+<h2 class="vaaz-bolum-baslik" id="gece-muhasebesi" tabindex="-1">II. Geceye kin taşımamak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ اغْفِرْ لِقَوْمِى فَإِنَّهُمْ لاَ يَعْلَمُونَ</p>
+**Muhterem Müslümanlar! Kimsenin görmediği iç dünyamız da özen ister.**
 
-“Allah’ım! Kavmimi bağışla, çünkü onlar bilmiyorlar.” (Buhârî, Enbiyâ, 54) O gün Resûl-i Ekrem’in(s.a.s.) onları bağışlaması 12 yıl gibi kısa bir süre içinde meyvesini verecek, Tâifliler Medine’ye bir heyet gönderip kendi istekleriyle İslâm Dini’ni kabul ettiklerini bildireceklerdi. (Hadislerle İslam, 3/320-321)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-### Mekkelileri Affetmesi
+*Enes b. Mâlik’ten, bir ensarlının üç ayrı günde cennetlik olarak müjdelendiği rivayet edilir. Onunla kalan Abdullah b. Amr, hâlini anlamaya çalışır. Anlatının sonunda bu kişi, Müslümanlara karşı içinde kötülük taşımadığını ve kimseye verilen nimeti kıskanmadığını söyler.* (Ahmed b. Hanbel, el-Müsned, 12697; III, 166; anlam özeti; sıhhati ihtilâflı rivayet)
 
-Mekke Müşrikleri, Peygamberimize hakarette bulunmuş, alay etmiş hatta ölümle tehdit etmiş, yoluna dikenler sermiş, namaz kılarken üzerine pislikler atmışlardı. Mekke’den hicret edeli sekiz yıl olmuş, kendisine karşı yapılan bütün haksızlıkların intikamını alabileceği fırsat, Mekke’nin fethedildiği gündü. Artık onlardan geçmişin hesabını sormasına ve intikam almasına hiçbir engel yoktu. Allah Resulü (s.a.s.) Mekkelilere şöyle seslendi:
+Bu rivayetin sıhhati hakkında farklı değerlendirmeler vardır. Şuayb el-Arnaût isnadını sahih kabul eder; Elbânî zayıf sayar. Buradaki gönül terbiyesini, sahih bir hadisle birlikte düşünelim. Peygamber Efendimiz (s.a.s.) bize şöyle seslenir:
 
-<p lang="ar" dir="rtl" class="ayet">مَا تَرَوْنَ أَنِّى صَانِعٌ بِكُمْ؟</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لاَ تَبَاغَضُوا، وَلاَ تَحَاسَدُوا، وَلاَ تَدَابَرُوا، وَكُونُوا عِبَادَ اللَّهِ إِخْوَانًا</p>
 
-“Ey Kureyşliler, şimdi benden size nasıl davranacağımı bekliyorsunuz?” Mekkeliler başlarını önlerine eğerek cevap verdiler: “Senden iyilik bekliyoruz. Çünkü sen asil bir kardeş ve asil bir kardeş oğlusun.” Resûl-i Ekrem (s.a.s.), “O hâlde tıpkı Yusuf Peygamber gibi ben de,
+*Birbirinize kin beslemeyin, haset etmeyin, sırt çevirmeyin. Ey Allah’ın kulları, kardeş olun.* (Buhârî, 6076; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ لَا تَثْر۪يبَ عَلَيْكُمُ الْيَوْمَۜ يَغْفِرُ اللّٰهُ لَكُمْۘ وَهُوَ اَرْحَمُ الرَّاحِم۪ينَ</p>
+Yatağa girdiğimizde günün bir konuşmasını tekrar tekrar hatırlayabiliriz. Bazen zihnimizde aynı kişiye yeniden cevap veririz. O sırada kendimize dönelim: Yarın düzeltebileceğim ne var? Elimizden geleni belirleyip gerisini Rabbimize arz edelim. Kalbimizde kötülük dileğini beslemek yerine iyiye yönelmeyi seçelim.
 
-"Bugün size kınama yok. Allah sizi bağışlasın. O, merhametlilerin en merhametlisidir." diyorum.” dedi (Yusuf, 12/92) ve ekledi:
+Canımızı acıtan hatıranın iyileşmesi zaman alabilir. Üzüntümüz sürerken de intikam isteğini davranışımıza taşımamayı öğrenebiliriz. Başkasının nimetine içten sevinmekte zorlanıyorsak güzel bir söz söylemekle başlayalım. Bu gece Rabbimizden yardım isteyelim; yarınki karşılaşmaya biraz daha temiz bir niyet götürelim.
 
-<p lang="ar" dir="rtl" class="ayet">اِذْهَبُوا فَأَنْتُمُ الطُّلَقَاءُ</p>
+Gazzâlî’nin haset terbiyesine dair açıklamalarında bilgiyle davranış birlikte ele alınır. İnsan, içindeki eğilimi tanır ve onun tersine iyi bir davranışa yönelir. Kıskandığı kişinin başarısını takdir etmek böyle bir başlangıç olabilir. İçimizdeki daralmayı fark ettiğimizde hemen onun peşinden gitmek zorunda kalmayız. Bir tercih alanımız vardır. O alanı iyilikle genişletebiliriz. (TDV İslâm Ansiklopedisi, “Haset”.)
 
-“Haydi gidin, hepiniz serbestsiniz.” (Beyhakî, es-Sünenü’l-kübrâ, 9/195)
+İş yerinde bir arkadaşımıza teşekkür edilirken biz de onun emeğini anabiliriz. Eve dönünce bu haberi küçümseyerek anlatmak yerine kendi emeğimize odaklanırız. Gece lambasının altında günümüzü yoklarken bunu da hatırlayalım: Bugün içimde beliren bir çekememezliği hangi iyilikle karşıladım? Küçük bir dürüst cevap, ertesi günün niyetini aydınlatır.
 
-Bu soylu davranış karşısında kalpleri kin, nefret ve düşmanlık duygularından arınan Mekkeliler İslâm’a girmekte tereddüt etmediler.
+**Gece muhasebemiz, yarının gönlünü ve davranışını temizlemeye hizmet etsin.**
 
-Allah Resûlü (s.a.s.), kendisini bir kuyunun dibinde ölüme terk eden kardeşlerini bağışlayan asil peygamber Hz. Yusuf gibi kendisine ve müminlere yıllarca eziyet eden Mekkelilere af kapısını açarak kötülüğe iyilikle karşılık vermişti. Nefret sevgiye, küfür de imana dönüşünce dost düşman farkı silinip gitmişti. (Hadislerle İslam, 3/319-320)
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُۜ اِدْفَعْ بِالَّت۪ي هِيَ اَحْسَنُ فَاِذَا الَّذ۪ي بَيْنَكَ وَبَيْنَهُ عَدَاوَةٌ كَاَنَّهُ وَلِيٌّ حَم۪يمٌ</p>
+<h2 class="vaaz-bolum-baslik" id="bugun-helallesmek" tabindex="-1">III. Helalleşmenin vakti bugün</h2>
 
-“İyilikle kötülük bir olmaz. Kötülüğü en güzel bir şekilde sav. Bir de bakarsın ki, seninle arasında düşmanlık bulunan kimse sanki sıcak bir dost oluvermiştir.” (Fussilet, 41/34)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَنْ كَانَتْ لَهُ مَظْلَمَةٌ لأَحَدٍ مِنْ عِرْضِهِ أَوْ شَىْءٍ فَلْيَتَحَلَّلْهُ مِنْهُ الْيَوْمَ، قَبْلَ أَنْ لاَ يَكُونَ دِينَارٌ وَلاَ دِرْهَمٌ</p>
 
-### Gavres’i Bağışlaması
+*Kimin bir kimseye şerefi veya başka bir şeyi konusunda haksızlığı varsa, dinar ve dirhemin bulunmayacağı gün gelmeden bugün onunla helalleşsin.* (Buhârî, 2449; rivayetten bölüm)
 
-Hz. Peygamber (s.a.s.) Gatafân kabilesinin bazı kollarına karşı düzenlediği Zâtu’r-Rikâ’ Seferi’nin dönüşünde ashabından biraz uzaklaşarak elbisesini kurutmak istedi ve kılıcını bir ağacın dalına asarak ağacın gölgesine uzandı. Bunu gören Gatafânlılar Hz. Peygamber’i (s.a.s.) öldürmek için iyi bir fırsat çıktığını düşünerek reisleri ve en cesurları olan Gavres’i bu fırsatı değerlendirmeye teşvik ettiler. Kimseye görünmeden Hz. Peygamber’in yanına kadar gelen Gavres ağaçta asılı kılıcı (bazı rivayetlere göre beraberinde götürdüğü keskin bir kılıcı) kınından çıkararak Hz. Peygamber’in başucuna dikildi ve:
+Efendimiz (s.a.s.), devamında altın ve gümüşün işe yaramayacağı hesap gününü hatırlatır. Hadisteki bugün kelimesini kendimize söyleyelim. Bir gün mutlaka ararım derken haftalar geçiyor. Çekmecede duran borç kâğıdı sararıyor. Hakkını bekleyen insanın ihtiyacı ise devam ediyor. Bugün hâlâ bir şey yapabiliriz.
 
-- “Ey Muhammed! Şimdi seni benden kim kurtarabilir?” diye sordu. Hz. Peygamber’in:
+Helalleşmeye kendi sorumluluğumuzu açıkça kabul ederek başlayalım. Birinin parasını geciktirdiysek miktarı netleştirelim. Emanetini aldıysak geri verelim. İtibarını zedeleyen bir söz söylediysek o sözü düzeltelim. Af istemek, hak sahibinin gönüllü rızasını aramaktır; bu rızaya baskıyla ulaşılmaz.
 
-- “Allah kurtarır” demesi üzerine kılıç elinden düştü. Bu defa kılıcı Hz. Peygamber alarak ona, “Şimdi seni benden kim kurtarabilir?” diye sorunca Gavres’den, “Hiç kimse” cevabını aldı. Ancak Hz. Peygamber ona dokunmadı.
+Hac yolculuğunda, bayramlaşırken veya cenaze başında helâllik sözünü sık duyarız. O sözü hayatımızın içine taşıyalım. Borcunu bildiğimiz kişiye ayrıntıyı saklayan genel bir mesaj göndermek yerine, ödeyeceğimiz hakkı konuşalım. Özrün samimiyeti, muhatabımıza tanıdığımız açıklıkta belli olur. Hakkını bilerek karar versin.
 
-Gavres’in bu olay üzerine hemen orada veya bir daha Hz. Peygamber’in aleyhinde bulunmayacağına dair söz verdikten ve kabilesine döndükden sonra müslüman olduğu nakledilir. (Buhârî, Meğâzî, 32; Abdullah Aydınlı, Dü’sur b. Haris, DİA, 10/51; Hadislerle İslam, 3/322).
+<p class="vaaz-etiket">Fıkhî Ölçü — Hakkın sahibine ulaşması</p>
 
-### Vahşi’yi Affetmesi
+Kul hakkına ilişkin tövbede hakkın iadesi veya hak sahibinin gönüllü olarak bağışlaması gözetilir. Mevcut mal aynen, mümkün olmazsa uygun karşılığıyla ödenir. İmkânı dar olan kişi dürüstçe durumunu açıklar ve gücü yetince ödemeye yönelir. Karmaşık miras ve alacak meselelerinde somut kayıtlarla ehil desteğe başvurulur.
 
-Vahşi, Uhud savaşında Peygamber Efendimiz’in (s.a.s.) amcası Hz. Hamza’yı şehit etmiş, ciğerini söküp ve Hind’e götürmüştü. Vahşi, Mekke’nin fethinden sonra Tâif’e kaçtı. Zira kendisi, Hz. Peygamber’e ve Müslümanlara karşı düşmanlıklarıyla tanınan on kadar kişiyle birlikte umumi affın dışında bırakılmıştı. Vahşî, Tâifliler’in Medine’ye heyet göndermeye karar vermesinin ardından Dımaşk’a, Yemen’e veya başka bir yere gitmeyi düşündü. Bu arada kendisine Hz. Muhammed’in (s.a.s.) İslâm’a girenleri affettiği bildirilince Medine’ye gitmeye karar verdi. Sakif heyetiyle birlikte yahut yalnız olarak Medine’ye giden Vahşî, Mescid-i Nebevî’de Resûl-i Ekrem’in huzurunda müslüman oldu. Bu sırada Vahşî’den amcasını nasıl şehid ettiğini anlatmasını isteyen Resûlullah, onu dinlerken büyük bir teessüre kapıldı. Bununla birlikte Vahşî’yi cezalandırmadı. Sadece amcasının katledilişini hatırlamak istemediğinden gözüne görünmemesini istedi. (Mustafa Sabri Küçükaşçı, Vahşi b. Harb, DİA, 42/450-451)
+(TDV İslâm Ansiklopedisi, “Tövbe”, kul hakkı ve telâfi açıklamaları; Buhârî 2449.)
 
-## Sahabenin Affediciliği
+Bir telefon görüşmesi her şeyi çözmeyebilir; fakat çözümün zamanını belirleyebilir. Hesaplarımızı birlikte gözden geçirelim, diyebiliriz. Eldeki belgeyi paylaşmak, kararlaştırılan ödemeyi zamanında yapmak, yıllarca beklemiş bir meseleyi ilerletir. Bugünün küçük fakat dürüst adımı, belirsiz yarınlardan değerlidir.
 
-### Hz. Ebu Bekir’in Affediciliği
+Hakkını beklettiğimiz kişi vefat etmişse, malî hak konusunda mirasçılarına ulaşma sorumluluğumuz devam eder. Elimizdeki bilgileri düzenleyip ehil birine danışabiliriz. Sadece üzüntümüzü anlatmakla kalmayıp yapılacak işi öğrenelim. Böyle bir hesapla karşılaştığımızda meseleyi tek başımıza tahminlerle çözmeye çalışmadan doğru bilgiye ulaşalım. Tövbemizin gerektirdiği telâfiye emek verelim.
 
-<p lang="ar" dir="rtl" class="ayet">وَلَا يَأْتَلِ اُو۬لُوا الْفَضْلِ مِنْكُمْ وَالسَّعَةِ اَنْ يُؤْتُٓوا اُو۬لِي الْقُرْبٰى وَالْمَسَاكٖينَ وَالْمُهَاجِرٖينَ فٖي سَبٖيلِ اللّٰهِࣕ وَلْيَعْفُوا وَلْيَصْفَحُواؕ اَلَا تُحِبُّونَ اَنْ يَغْفِرَ اللّٰهُ لَكُمْؕ وَاللّٰهُ غَفُورٌ رَحٖيمٌ</p>
+Hayatta olan hak sahibine ulaşabildiğimizde ise konuşmanın vaktini onunla belirleyelim. Gün boyu çalışan bir kardeşimiz uzun bir görüşmeye hemen hazır olmayabilir. Uygun zamanını sormak, getireceğimiz belgeleri önceden bildirmek ve verdiğimiz randevuya uymak saygının parçasıdır. Gönül almak, muhatabımızın zamanına gösterdiğimiz bu özenle de başlar.
 
-“İçinizden yardım sever ve zengin olanlar akrabaya, yoksullara ve Allah yolunda hicret edenlere artık bir şey vermeyeceğiz diye yemin etmesinler. Bağışlasınlar, hoş görsünler; Allah’ın sizi bağışlamasını arzu etmez misiniz? Allah çok bağışlayıcıdır, çok esirgeyicidir.” (Nur, 24/22)
+**Helâllik isteğimiz, hak sahibine ulaşan somut bir telâfiyle güçlensin.**
 
-Müreysî’ Gazvesi’nden sonra meydana gelen İfk Hadisesi’nde Hz. Aişe’ye iftira atılmış, olayın yayılmasında Hz. Ebû Bekir’in halasının oğlu Mistah’ın da adı karışmış, akrabalık ilişkisi ve fakirliği sebebiyle kendisini koruyan Hz. Ebû Bekir de artık Mistah’a yardımda bulunmayacağına dair yemin etmişti. Bu âyet nâzil olunca da, “Vallahi Allah’ın beni bağışlamasını arzu ederim, bunu her şeye tercih ederim” diyerek yeminini bozdu, Mistah’ı affetti ve yardıma devam kararı aldı. (Kur’an Yolu Tefsiri Tefsiri, 4/ 63)
+---
 
-### Hz. Ömer’in Affediciliği
+<h2 class="vaaz-bolum-baslik" id="muflis-hadisi" tabindex="-1">IV. İbadetimizle birlikte insan hakkını korumak</h2>
 
-İbn Abbas (ra.) şöyle bir olay naklediyor: Uyeyne İbn Hısn bir ara Medine’ye gelmiş, kardeşi oğlu Hurr İbn Kays’e konuk olmuştu. İbn Kays ise Hz. Ömer’in yakınında olanlardandı. Hz. Ömer’in meclisinde genç, yaşlı bir takım kurra ve fakihler bulunurdu. Halife önemli kamu işlerini bunlarla görüşür ve tartışırdı. Uyeyne kardeşinin oğlu İbn Kays’e: “Ey kardeşim oğlu, Halife’nin yanında yüksek mevkiin var. Benim için bir izin alsan da ziyaret etsem, dedi. O da izin aldı. Uyeyne huzura girdiğinde, halifeye hitaben:
+**Kıymetli kardeşlerim! Hesabımıza bakarken insanlarla aramızdaki hakları da hatırlayalım.**
 
-- Ey Ömer, bize ne bol dünyalık verirsin ne de aramızda adâletle hükmedersin, dedi. Hz. Ömer, kendisine bu şekilde hitap edilmesinden öfkelenerek Uyeyne’nin üzerine yürüdü. Bu sırada, kardeşi oğlu İbn Kays araya girerek: “Ey müminlerin emiri, Allah Teâlâ Peygamberine:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَتَدْرُونَ مَا الْمُفْلِسُ</p>
 
-<p lang="ar" dir="rtl" class="ayet">خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ وَاَعْرِضْ عَنِ الْجَاهِلٖينَ</p>
+*Müflisin kim olduğunu biliyor musunuz?* (Müslim, 2581; rivayetten bölüm)
 
-“Sen af yolunu tut, iyiliği emret, cahillerden yüz çevir.” buyurdu. (Araf, 7/199) Uyeyne de o cahillerdendir, dedi. İbn Abbas diyor ki: İbn Kays bu âyet-i okuyunca o heybetli halife olduğu yerde çakılmış gibi irkildi, vallahi bir adım ileri gitmedi. Esasen Hz. Ömer, Allah Kitabının yüce katında durmak yani susmak âdeti idi. (Buhârî, Tefsiru’l-Kur’an, A’râf, 5.)
+Peygamber Efendimiz (s.a.s.) bu soruyu sorduğunda sahâbe, malı ve parası kalmayan kişiyi düşündü. Efendimiz, namazı, orucu ve zekâtıyla gelen; fakat insanlara sövmüş, iftira etmiş, mallarını yemiş, kan dökmüş ve vurmuş kişiyi anlattı. Onun iyilikleri hak sahiplerine verilir. İyilikleri borcunu karşılamadan tükenirse onların günahları kendisine yüklenir ve ateşe atılır. Hadisin uyarısı budur.
 
-Taberî’nin kaydettiği bir rivayete göre bu âyet geldiğinde Resûlullah’ın bir sorusu üzerine Cebrâil, “Rabbin sana kötülük edene senin iyilik etmeni, sana vermeyene senin vermeni ve senden uzak kalıp ilgileri koparanlarla senin dostluk ve akrabalık ilişkini sürdürmeni emrediyor” diyerek âyete örnekleme yoluyla açıklama getirmiştir. Aynı müfessirin de belirttiği gibi her ne kadar yüce Allah bu âyette peygamberine hitap etmişse de esasında bütün kullarını eğitmeyi amaçlamıştır. (Kur’an Yolu Tefsiri, 2/648-650)
+Bu öğüt, henüz hayattayken bize yönümüzü düzeltme fırsatı veriyor. Namazımızda istediğimiz doğruluğu, insanlarla hesabımıza taşıyalım. Bir yanda seccademiz, öte yanda geri vermeyi geciktirdiğimiz emanet duruyorsa ikisini birlikte düşünelim. İbadetimizin terbiyesi elimizdeki emanete ulaşsın. Bugün onu sahibine götürebiliriz.
 
-## Affetme ile İnsan Psikolojisi Arasındaki İlişki
+Telefonumuzdaki banka uygulamasını açtığımızda alacak ve borçlarımızı görebiliriz. İnsanlarla aramızdaki hesap için de biraz vakit ayıralım. İş arkadaşımıza haksız yere yüklediğimiz kusur, kardeşimizin payından tuttuğumuz para, çocuğumuza herkesin içinde söylediğimiz kırıcı söz hatırlanmayı bekliyor olabilir. Her birinde onarımın yolu farklıdır. Önce kendi payımıza dürüstçe bakalım.
 
-Yaşanan kırgınlıkları affedememe pek çok kişiyi rahatsız eden bir durumdur. Bağışlamak, haksızlığa uğrayan kişinin öfke ve kırgınlık gibi olumsuz duygu ve düşüncelerinden sıyrılmasıdır. Bu duygu ve düşüncelerden zihni uzaklaştırmak hem fiziksel hem de ruhsal sağlık açıdan gereklidir. Bağışlamak kişinin saygı ve değerinin artmasına, manevi olgunluk kazanmasına, kaygı ve depresyonun azalmasına yardımcı olmaktadır.
+Miras konusunda anlaşmazlık varsa belgeleri bir araya getirmekle başlayalım. Kimin ne istediğini, hangi hakkın tartışıldığını açıkça öğrenelim. Gönül almakla birlikte hakların hesabını da tamamlayalım. Bir annenin hatırı, kardeşlerin meseleyi adaletle çözmesine vesile olsun. Meseleyi sessizce taşıyan kardeşimizi de dinleyelim.
 
-Bir kişinin kendine suç işleyen kişiyi affetmemesi beden ve zihin sağlığı açısında zararlı görülmektedir. Bağışlamamanın oluşturduğu stres, vücutta zararlı maddeler salgılanmasına sebep olmaktadır. Bağışlamamanın bedene verdiği zararlar arasında tansiyon yükselmesi, kalp hastalıları, bağışıklık sisteminin zayıflaması, nörolojik bozukluklar sıralanabilir. Diğer taraftan affetmek üzüntünün ortadan kalkması, stresin azalması gibi olumlu ruhsal iyileşmelere neden olmaktadır. Bir diğer yönüyle kin güden, nefret besleyen insanlar yalnızlaşmakta, arkadaşlık ve dostluk ilişkileri zayıf olmaktadır. Bağışlayan kişiler hem sosyal hayatta hem de aile hayatlarında daha başarılı ilişkiler yürütmektedirler. (Hayati Hökelekli, Psikoloji, Din ve Eğitim Yönüyle İnsani Değerler, DEM Yay., s. 303-306)
+Bu hadis bize umutsuzlukla oturmayı değil, sorumlulukla kalkmayı öğretir. Özür için söyleyeceğimiz ilk cümleyi hazırlayabiliriz. Ödenebilir bir borcu ödeyebilir, hatalı bir ithamı geri alabiliriz. Allah’a yönelen kul, dönüşünün meyvesini başkasının hayatında da görünür kılar. Böylece ibadetle ahlâk birbirini besler.
 
-## Öfkeyi Yutmak
+Bir iş yerinde hata yaptığımızda kusuru orada bulunmayan arkadaşımıza yüklediğimizi fark edebiliriz. Ertesi gün aynı ekip toplandığında açıklama yapma fırsatı doğar. O işte sorumluluk bana aitti, diyebiliriz. Bu cümleyi söylemek zor gelir; fakat arkadaşımızın haksız yere taşıdığı yükü azaltır. İnsanın onuruna verilen zarar, bazen böyle açık bir düzeltme bekler.
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ يُنْفِقُونَ فِي السَّرَّٓاءِ وَالضَّرَّٓاءِ وَالْكَاظِمٖينَ الْغَيْظَ وَالْعَافٖينَ عَنِ النَّاسِؕ وَاللّٰهُ يُحِبُّ الْمُحْسِنٖينَۚ</p>
+Evde de benzer bir hesabımız vardır. Çocuğumuzu dinlemeden suçladıysak yanına oturup anlattıklarını yeniden dinleyelim. Özrümüzü duyabileceği sakin bir zaman seçelim. Bizi affetmesi için acele ettirmektense onu anladığımızı davranışımızla gösterelim. İnsan hakkına dikkat, en yakınımızdaki küçük gönle verdiğimiz değerle birlikte büyüsün.
 
-“Onlar (takva sahipleri) bollukta da darlıkta da Allah yolunda harcarlar, öfkelerini yenerler, insanları affederler. Allah işini güzel yapanları sever.” (Ali İmran, 3/134)
+**Âhirete hazırlığımız, bugün gözettiğimiz insan hakkıyla derinleşir.**
 
-Yüce Allah, bir önceki ayette kullarını takva sahipleri için hazırlanmış olan cenneti kazanmak maksadıyla yarışmaya çağırınca, takva sahiplerinin kimler olduğu ve hangi nitelikleri taşıdıkları merak konusu olmuş; bu sebeple bu âyetlerde takva sahiplerinin nitelikleri anlatılmıştır. Bunlar:
+---
 
-a) Bollukta ve darlıkta Allah yolunda infak ederler, yani mallarını iyilik yolunda harcarlar. Her iki durum da onların davranışlarını değiştirmez: Bolluk, kendilerini bencilleştirip aldatmadığı gibi darlık da onlara Allah yolunda harcamayı unutturmaz.
+<h2 class="vaaz-bolum-baslik" id="ozur-ve-telafi" tabindex="-1">V. Özrün doğruluğu telâfide görünür</h2>
 
-b) Öfkelerini yenerler, insanların kusurlarını bağışlarlar. “Öfke” diye çevirdiğimiz gayz kelimesi terim olarak “hoşlanılmadık bir şeye karşı insanın duyduğu heyecan” anlamına gelir. Gazabın aslı olduğu kabul edilir. Gazap intikam iradesini doğurduğu ve gayri ihtiyarî olarak yüzde ve diğer azalarda belirtileri görüldüğü halde gayz sadece kalpte olan bir duygudur (Âlûsî, IV, 58). Âyetin tasvirine göre insanlardaki takva duygusu bu konularda da etkili olmakta ve olaylar karşısında öfkeyi yenmelerini ve insanları bağışlamalarını sağlamaktadır. Nitekim âyette geçen kâzım (çoğulu kâzımîn) kelimesi “öfkesini yenen, gücü yettiği halde, zarar gördüğü kimselere karşı intikama kalkışmayan, sabreden” anlamlarına gelmektedir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet"> يَسْـَٔلُونَكَ عَنِ ٱلْأَنفَالِ ۖ قُلِ ٱلْأَنفَالُ لِلَّهِ وَٱلرَّسُولِ ۖ فَٱتَّقُوا۟ ٱللَّهَ وَأَصْلِحُوا۟ ذَاتَ بَيْنِكُمْ ۖ وَأَطِيعُوا۟ ٱللَّهَ وَرَسُولَهُۥٓ إِن كُنتُم مُّؤْمِنِينَ ۝١</p>
 
-Şahsî meselelerde öfkeyi yenmek Allah’ın emri olup beğenilen ve övülen bir davranış olmakla birlikte kamuyu ilgilendiren meselelerde toplum düzeninin bozulmasına ve kötülüklerin yayılmasına yol açabilecek durumlar karşısında gevşeklik göstermemek gerekir. (Kur’an Yolu Tefsiri, 1/ 671-674)
+*Sana ganimetleri soruyorlar. De ki: Ganimetler Allah’a ve resulüne aittir. O halde Allah’a karşı gelmekten sakının ve aranızı düzeltin. Eğer mümin iseniz Allah’a ve resulüne itaat edin.* (Enfâl, 8/1)
 
-İman edip rablerine güvenenlerin anlatıldığı Şura suresinde Rabbimiz:
+Enfâl sûresinin başında ganimet meselesi konuşulurken müminlere aralarını düzeltmeleri emredilir. Paylaşılan bir malın çevresinde ilişki de sınanır. Bu ölçü, bizim para ve emanet anlaşmazlıklarımızı düşünmemize yardım eder. Defterdeki rakamı düzeltirken muhatabımızı nasıl incittiğimizi de anlayalım. İlişkinin emeği burada başlar.
 
-<p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ يَجْتَنِبُونَ كَـبَٓائِرَ الْاِثْمِ وَالْفَوَاحِشَ وَاِذَا مَا غَضِبُوا هُمْ يَغْفِرُونَۚ</p>
+Özür dilerken sesimizin alçaklığı kadar cümlemizin açıklığı da önemlidir. Sana herkesin yanında haksızlık ettim, diyebiliriz. Sonra durup onu dinleyelim. Anlatılan acıyı hemen kendi mazeretimizle örtmeyelim. Muhatabımızın sözünü tamamlayabilmesi, bazen uzun zamandır beklediği ilk saygı işaretidir.
 
-“ Onlar büyük günahlardan ve hayâsızlıklardan kaçınırlar, öfkelendiklerinde dahi bağışlarlar.” (Şura, 42/37)
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Özrü davranışa çeviren dört adım</strong> Her adımda kendi sorumluluğumuza odaklanalım.</figcaption>
+<table aria-label="Özrü davranışa çeviren dört adım">
+<thead><tr><th scope="col">Adım</th><th scope="col">Uygulama</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Adım">Açıkça kabul et</th><td data-label="Uygulama">Yaptığın haksızlığı muhatabını suçlamadan adlandır.</td></tr>
+<tr><th scope="row" data-label="Adım">Dinlemeye yer aç</th><td data-label="Uygulama">Sözünü tamamlamasına izin ver; etkisini anlamaya çalış.</td></tr>
+<tr><th scope="row" data-label="Adım">Telâfiyi belirle</th><td data-label="Uygulama">İade, düzeltme veya ödeme için somut bir adım söyle.</td></tr>
+<tr><th scope="row" data-label="Adım">Sözü yerine getir</th><td data-label="Uygulama">Kararlaştırdığın işi zamanında yap; sonucu haber ver.</td></tr>
+</tbody></table>
+</figure>
 
-Abdullah İbni Mübârek’e, güzel ahlâkı bir cümle ile anlat, demişlerdi. O da güzel ahlâkın öfkelenmemekten ibaret olduğunu söylemiştir. Affedebilmek için kişi önce öfkesini kontrol edebilmeyi öğrenmelidir.
+Bir baba çocuğunun kırılan oyuncağını eline aldığında, kendi sert sözünü de hatırlayabilir. Çocuğa karşı özür dilemek, ailede sorumluluğun nasıl alındığını öğretir. Aynı özeni eşimize, annemize, çalışma arkadaşımıza gösterelim. Büyüklüğümüz, hatamızı açıkça kabul edebildiğimizde de görünür.
 
-<p lang="ar" dir="rtl" class="ayet">وعنْ أَبِي هُريْرَةَ رَضيَ اللَّهُ عنهُ أَنَّ رَجُلاً قَالَ للنَّبِيِّ صَلّى اللهُ عَلَيْهِ وسَلَّم : أوْصِني ، قَالَ : لا تَغضَبْ » فَردَّدَ مِراراً قَالَ ، لا تَغْضَبْ</p>
+Karşımızdaki kişi zamana ihtiyaç duyuyorsa bunu saygıyla karşılayalım. Affedilme talebimizi tekrar tekrar hatırlatmak yerine üstlendiğimiz telâfiyi tamamlayalım. Güven, verilen sözün ardından gelen davranışlarla büyür. Bu hafta yerine getirebileceğimiz küçük bir taahhüt seçelim. Yapabildiğimiz şeyi söyleyelim ve söylediğimizi yapalım.
 
-Ebû Hüreyre r.a.’den rivayet edildiğine göre bir adam Hz. Peygamber (s.a.s)’e: Bana öğüt ver, dedi. O da: “Kızma!” buyurdu. O zât isteğini birkaç defa tekrarladı. Resûl-i Ekrem de her defasında “Kızma!” buyurdu. (Buhârî, Edeb 76; Tirmizî, Birr, 73)
+Özrün ardından yeni alışkanlığımızı da konuşabiliriz. Aile içinde para harcarken birbirimize haber vermeyi, bir anlaşmazlığı çocukların yanında tartışmak yerine uygun vakitte ele almayı kararlaştırabiliriz. Böylece incinmenin tekrarlandığı yeri fark etmiş oluruz. Bir hafta sonra sözümüzü hatırlayıp kendimizi yoklayalım. Neyi uyguladık, nerede zorlandık? Samimiyetimiz, bu sorulara verdiğimiz dürüst cevaplarla gelişir. Küçük bir değişikliği sürdürmek güvene emek vermektir.
 
-Bütün güzelliklere ulaşabilmenin, bütün kötülüklerden uzak kalabilmenin kökünde sinirlerine hakim olup, öfkelenmemek vardır.
+**Samimi özür, karşı tarafın cevap hakkını ve bizim telâfi sorumluluğumuzu korur.**
 
-<p lang="ar" dir="rtl" class="ayet">لَيس الشَّديدُ بِالصُّرعَةِ ، إِنَّما الشديدُ الذي يَملِكُ نفسهُ عِند الغضبِ</p>
+---
 
-“Yiğit dediğin, güreşte rakibini yenen kimse değildir; asıl yiğit kızdığı zaman öfkesini yenen adamdır.” (Buhârî, Edeb 76; Müslim, Birr 107, 108) Resul-i Ekrem (s.a.s.) bu hadislerinde, öfke kontrolünün ne kadar da önemli olduğunu ifade etmişlerdir.
+<h2 class="vaaz-bolum-baslik" id="ilk-selam" tabindex="-1">VI. İlk selâmı bekleyen yıllar</h2>
 
-Öfke insanda var olan tabii duygulardandır. Öfke halinde insan kendini kaybeder, davranışlarını ve tepkilerini kontrol edemez. Tabiatı gereği öfkelenen insanın, öfkesine mağlup olmaması erdemdir. Öfkelenen kişiye sakinleşmesi için bazı tavsiyeler:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لاَ يَحِلُّ لِرَجُلٍ أَنْ يَهْجُرَ أَخَاهُ فَوْقَ ثَلاَثِ لَيَالٍ، يَلْتَقِيَانِ فَيُعْرِضُ هَذَا وَيُعْرِضُ هَذَا، وَخَيْرُهُمَا الَّذِي يَبْدَأُ بِالسَّلاَمِ</p>
 
-Öfke yangınını abdest almak suretiyle söndürmek gerekir. Abdest almak için mekân değiştirmek zorunda kalarak, öfke mahallinden uzaklaşmış olacak. Diğer taraftan abdest ile sinirler gevşeyecek, vücutta biriken olumsuz enerjinin atılmasına katkı sağlanacaktır.
+*Bir kimsenin kardeşine üç geceden fazla küs kalması helâl olmaz. Karşılaşırlar; biri bir yana, diğeri öte yana döner. İkisinin hayırlısı, selâmı önce verendir.* (Buhârî, 6077; rivayetten bölüm)
 
-Öfke anında ayakta olanın oturması, geçmezse uzanıp yatması gibi sakinleştirici fiziki tedbirler alması hadislerde tavsiye edilmiştir.
+Kişisel kırgınlıklarımızı yıllara taşırken bu nebevî çağrıyı duyalım. İlk selâmı vermek, konuşmanın yeniden mümkün olmasına hizmet eder. Beklemek bazen alışkanlığa dönüşür. Sonra tartışmanın ayrıntısını bile unutup aynı sessizliği sürdürürüz. O sessizliği bir iyilik sözüyle aralayabiliriz.
 
-Allah-u Teala hatırlanmalı, istiaze de bulunmalı, Peygamber Efendimize salatü selam getirilmelidir. Yine meselenin ahiret boyutu düşünülerek yaptıklarının hesabının verileceğini kişi hatırlamalıdır.
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Tren camındaki yansıma</p>
 
-Sabır ve teenni/ağırbaşlılıkla ile hareket edilmeli, aceleci olunmamalıdır. Bir anlık öfkenin sonuçları bazen çok ağır olabilmektedir. Hayatlar kararmakta, insanların gelecekleri etkilenmektedir.
+Brüksel’den hareket eden bir trende bir ablayı düşünün. Elindeki telefonun ışığı cama yansıyor. Kardeşi Almanya’da yaşıyor. Memleketteki bir miras konuşmasından sonra yıllardır birbirlerini aramıyorlar. Aile grubunda çocukların fotoğrafları dolaşıyor; iki kardeşin isimleri aynı ekranda, sesleri birbirinden uzakta.
 
-Affedebilen kişi öfkesini kontrol edebilir. İnsan akıllı ve irade sahibidir. Aklı ve iradesi ile hareket eden kişi öfkesini kontrol edebilirken, öfkesine mağlup olan kişi ise akıl ve iradesini devre dışı bırakmıştır. İnsan kendini tanımalı, duygularını kontrol ederek, sabır, merhamet, hoşgörü, bağışlama gibi güzel hasletleri geliştirilmelidir
+Abla bayram tebrikini yazarken eski tartışmayı yeniden açmak üzere duraksıyor. Sonra kısa bir selâm gönderiyor: Bayramın mübarek olsun. Uzun zamandır konuşamadık. Benim de seni incittiğim sözler oldu. Uygun olduğunda seni dinlemek isterim.
 
-2012 yılında gerçekleştirilen bir araştırmada, ibadetlere katılım (dindarlık) arttıkça sürekli öfkenin, öfkeyi içe atmanın ve öfkeyi sözlü ve fiziksel saldırganlık şeklinde dışarı yansıtmanın azaldığı, öfke kontrolünün ise arttığı yönünde istatistiksel olarak anlamlı verilere ulaşılmıştır. Sonuç olarak dindarlığın öfke kontrolünde önemli etkisi olduğu görülmüştür. (Öztürk, 50)
+Miras meselesinin çözümü için ayrıca vakit ve yardım gerekecek. Şimdi bir görüşme imkânı doğuyor. İki kardeş, çocuklarının yalnızca fotoğraflarda birbirini tanıdığı yılları düşünmeye başlıyor.
 
-Öfke ve sonrasında meydana gelecek olanlar tamda şeytanın istediği şeylerdir. Şeytan, insanın içinde kin ve öfke duygularını alevlendirir, intikam arzularını tahrik eder, günah ve isyan eğilimlerini güçlendirir; sonuçta kişiyi Kur’an’ın öğütlediği üstün ahlâktan uzaklaştırmak ister. İşte âyet bu büyük ve tehlikeli engeli aşmanın en güvenli çaresini göstermektedir: Allah’a sığınıp O’nun yardım ve desteğini istemek... Müfessirler, Allah’a sığınma buyruğunun aynı zamanda şeytana boyun eğmeme iradesini ve çabasını da içerdiğini ifade ederler. (Kur’an Yolu Tefsiri, 4/710-711)
+**Gönlümüzde kin biriktirmeyelim; incittiğimiz insana dönüp hakkını teslim edelim.**
 
-<p lang="ar" dir="rtl" class="ayet">وَاِمَّا يَنْزَغَنَّكَ مِنَ الشَّيْطَانِ نَزْغٌ فَاسْتَعِذْ بِاللّٰهِۜ اِنَّهُ هُوَ السَّم۪يعُ الْعَل۪يمُ</p>
+Bu adımı atmak için bayramı beklememiz de gerekmiyor. Güvenli bir iletişim mümkünse bugün selâm verebiliriz. Cevabı kendi istediğimiz hızda gelmese de nezaketimizi koruyalım. Bazen ilk adımın değeri, karşılığını hemen almakla ölçülmez.
 
-“Eğer şeytandan sana bir fitleme gelirse hemen Allah’a sığın! Allah işitendir, bilendir.” (Fussilet, 41/36) İnsan öfkesine hâkim olduğu zaman, kendisini kızıp bağırmaya teşvik eden şeytanı yenmiş olur.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/affetmek-ve-ofkeyi-yutmak-2/ilk-selam.svg" width="1600" height="900" alt="İsimsiz bir trenin geniş camında gece manzarası; altta iki küçük yol çantası." loading="lazy" decoding="async">
+<figcaption><strong>Mesafeyi aşan ilk ses</strong> Ülkeler ayrı olsa da bir selâm, yeniden konuşmanın başlangıcı olabilir.</figcaption>
+</figure>
 
-## Sonuç
+Yılların küslüğünü çocuklara miras bırakmadan önce duralım. Amcasını aramak isteyen bir gencin önüne kendi eski kırgınlığımızı koymayalım. Büyüklerin ihtilâfını çözmek büyüklerin sorumluluğundadır. Gençlerimizi taraf seçmeye zorlamadan, onların akrabalık bağlarına özen gösterelim. Aile içinde yeniden konuşabilen bir kişi, başkaları için de cesaret vesilesi olabilir.
 
-Haksızlık, kötülük, eziyet doğal olarak kine, nefrete, intikam duygularına sebep olur. Bu duyguların peşinden gidildiğinde toplumsal huzursuzluk ve çatışma kaçınılmazdır. Bu durumda yapılması gereken en uygun ve erdemli davranış öfkeyi kontrol edip affetmektir. Affetmek, öfkeyi kontrol etmek takva sahibi müminlerin özelliklerindendir.
+**Küslüğü büyüten bekleyişi, güvenli bir ilk selâmla kısaltalım.**
 
-Kötülük edenin hatasını anlayıp özür dilemesi bir erdem, insanca, Müslümanca bir davranıştır. Özrü kabul etmek, kin, nefret beslemeyerek affetmek ise daha ulvi bir erdemdir.
+---
 
-Resûl-i Ekrem gönül hoşluğuyla affedebilmenin sırrını Enes b. Malik’e şöyle açıklamıştır:
+<h2 class="vaaz-bolum-baslik" id="giyabinda-dua" tabindex="-1">VII. Adını hayırla andığımız insan</h2>
 
-<p lang="ar" dir="rtl" class="ayet">يَا بُنَىَّ إِنْ قَدَرْتَ أَنْ تُصْبِحَ وَتُمْسِىَ لَيْسَ فِى قَلْبِكَ غِشٌّ لأَحَدٍ فَافْعَلْ». ثُمَّ قَالَ لِى «يَا بُنَىَّ وَذَلِكَ مِنْ سُنَّتِى وَمَنْ أَحْيَا سُنَّتِى فَقَدْ أَحَبَّنِى. وَمَنْ أَحَبَّنِى كَانَ مَعِى فِى الْجَنَّةِ</p>
+**Aziz anneler ve babalar! Sevgili gençler! Duamızda birbirimize yer açalım.**
 
-“Evlâdım! Eğer kalbinde kimseye karşı hile olmadan sabaha ve akşama erişmeyi başarabilirsen bunu yap. İşte bu benim sünnetimdir. Kim benim sünnetimi yaşatırsa beni sevmiş olur, kim de beni severse cennette benimle birlikte olur.” (Tirmizî, İlim, 16) Resûl-i Ekrem böylece affetme erdemine götüren biricik yolu tarif etmiş oluyordu. Zira kalbinde kin ve intikam duyguları bulundurmamayı kendine ilke edinen birisi için bağışlamak hiç de zor olmasa gerektir. Çünkü düşmanlık ve intikamın olmadığı yerde sevgi ve kardeşlik egemen olacak, zamanla yıpranabilecek ilişkiler de af ile yeniden tamir edilecektir. (Hadislerle İslam, 3/323)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱسْتَغْفِرْ لِذَنۢبِكَ وَلِلْمُؤْمِنِينَ وَٱلْمُؤْمِنَـٰتِ</p>
 
-Sohbetimi şu hadisi şerif ile bitiriyorum:
+*Kendi günahın için, erkek kadın müminler için Allah’tan af dile.* (Muhammed, 47/19; âyetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى هُرَيْرَةَ، عَنْ رَسُولِ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وسَلَّمْ) قَالَ: “…وَمَا زَادَ اللَّهُ عَبْدًا بِعَفْوٍ إِلاَّ عِزًّا…”</p>
+Rabbimiz, Peygamber Efendimiz’e (s.a.s.) mümin erkekler ve kadınlar için istiğfarı emrediyor. Böylece dua, yalnız kendi ihtiyacımızın çevresinde kalmıyor. Kalbimizde başkasının bağışlanmasına da yer açılıyor. Cemaatte yanımızda duran insanı, uzaktaki kardeşimizi, aramızın kırgın olduğu kişiyi Rabbimize arz ediyoruz.
 
-Ebû Hüreyre’nin rivayet ettiğine göre, Resûlullah (s.a.s.) şöyle buyurmuştur: “…Allah, affeden bir kulunun ancak şerefini artırır…” (Müslim, Birr, 69)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَا مِنْ عَبْدٍ مُسْلِمٍ يَدْعُو لأَخِيهِ بِظَهْرِ الْغَيْبِ إِلاَّ قَالَ الْمَلَكُ وَلَكَ بِمِثْلٍ</p>
+
+*Bir Müslüman, kardeşi için gıyabında dua ettiğinde melek, aynı iyilik senin için de olsun, der.* (Müslim, 2732a; rivayetten bölüm)
+
+Seccademizi toplarken aklımıza bizi kıran biri gelebilir. Rabbim, ikimize de doğruyu göster; beni de onu da haksızlıktan uzaklaştır, diyebiliriz. Bu dua, dilimize yeni bir yön verir. O kişinin zarar vermekten vazgeçmesini, sorumluluğunu anlamasını ve iyiliğe dönmesini isteriz. Kendi kusurumuzu da duanın dışında bırakmayız.
+
+İlk gün bunu söylemek güç geliyorsa kısa başlayalım: Rabbim, kalbimi temizle. Sonra insanın iyiliğini isteyecek kadar genişlemeyi dileyelim. Acımızı Allah’a anlatabilir, hakkımızın korunmasını da isteyebiliriz. Dua ile hak arama aynı hayatın içinde yer bulur. Rabbimiz gönlümüzün hâlini bilir.
+
+Çocuklarımız bizi yalnız tartışırken duymasın; başkaları için hayır dilerken de işitsin. Ailede hasta olanın adını birlikte anabiliriz. Dilini yeni öğrendiğimiz komşumuza huzur, okul arkadaşımıza başarı dileyebiliriz. Mümin kardeşlerimiz için istiğfar ederken bütün komşularımızın esenliği ve doğruya yönelmesi için de dua edelim.
+
+**Bir insanın iyiliği için dua etmek, gönlümüzde ona ayrılan yeri temizler.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="barisa-emek" tabindex="-1">VIII. Araları düzeltmek için yola çıkmak</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا۟ بَيْنَ أَخَوَيْكُمْ ۚ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُرْحَمُونَ ۝١٠</p>
+
+*Müminler ancak kardeştirler; öyleyse iki kardeşinizin arasını düzeltin. Allah’a itaatsizlikten sakının ki rahmetine erişesiniz.* (Hucurât, 49/10)
+
+Kardeşlik, bir anlaşmazlık çıktığında bize de sorumluluk yükler. Bazen iki kişiyi de tanırız; ikisinin acısını farklı zamanlarda dinleriz. Böyle bir yerde sözümüz barışı kolaylaştırabilir. Taşıdığımız her cümleyi tartalım. Bir insanın bize güvenerek açtığı derdi, yeni bir tartışmanın malzemesi yapmadan koruyalım.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اذْهَبُوا بِنَا نُصْلِحُ بَيْنَهُمْ</p>
+
+*Haydi gidelim, aralarını düzeltelim.* (Buhârî, 2693; rivayetten bölüm)
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Kubâ’dan gelen haber</p>
+
+Sehl b. Sa‘d’ın naklettiğine göre Kubâ halkı arasında kavga çıkmış, birbirlerine taş atacak noktaya gelmişlerdi. Durum Resûlullah’a (s.a.s.) haber verildi. Efendimiz, aralarını düzeltmek üzere gitmeyi teklif etti. Rivayet, barış için harekete geçen bir peygamberin örnekliğini önümüze koyar.
+
+(Buhârî 2693; sahih rivayetin özeti.)
+
+Yere düşen taşın sesi, kavganın geldiği yeri anlatır. Efendimiz’in çağrısı ise bize orada üstlenilecek görevi gösterir. Haberi duyup seyretmekle yetinmeyen bir merhamet görüyoruz. Biz de bir anlaşmazlıkta yapabileceğimiz yararlı işi arayalım. Bazen doğru kişiden yardım istemek bile önemli bir adımdır.
+
+Bir aile büyüğü arabulucu olacaksa önce tarafların onu dinlemek isteyip istemediğini öğrenebilir. Her birine eşit söz hakkı tanır. Üzerinde anlaşılan küçük bir konuyu belirleyip oradan başlar. Konuşmanın nerede ve ne kadar süreceği önceden kararlaştırılabilir. Hazırlık, gerilimi azaltmaya yardımcı olur.
+
+Arayı bulurken her şeyi bildiğimiz duygusundan uzak duralım. Yaşananları dikkatle anlamak için zamana ihtiyaç vardır. İki tarafın bize farklı şeyler anlatması sabrımızı sınayabilir. Acele hüküm yerine açık sorular soralım. Hakların hesabı özel bilgi gerektiriyorsa ehil birine ulaşmalarına yardımcı olalım.
+
+**Kardeşlik, bozulan ilişkiyi adaletle onarmak için emek vermeyi gerektirir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="sozu-barisa-yoneltmek" tabindex="-1">IX. Konuşmamız kimi birbirine yaklaştırıyor?</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">۞ لَّا خَيْرَ فِى كَثِيرٍ مِّن نَّجْوَىٰهُمْ إِلَّا مَنْ أَمَرَ بِصَدَقَةٍ أَوْ مَعْرُوفٍ أَوْ إِصْلَـٰحٍۭ بَيْنَ ٱلنَّاسِ ۚ وَمَن يَفْعَلْ ذَٰلِكَ ٱبْتِغَآءَ مَرْضَاتِ ٱللَّهِ فَسَوْفَ نُؤْتِيهِ أَجْرًا عَظِيمًا ۝١١٤</p>
+
+*Onların fısıldaşmalarının birçoğunda hayır yoktur. Ancak sadakayı, iyilik yapmayı veya insanların arasını düzeltmeyi isteyenler müstesnadır. Kim bunları Allah’ın rızasını arayarak yaparsa ona büyük bir karşılık vereceğiz.* (Nisâ, 4/114)
+
+Âyet, gizli konuşmalar içinde hayra yönelen sözlere dikkat çekiyor. İnsanları uzlaştırmak için verilen emeğe büyük bir karşılık vadediliyor. Bir konuşmanın kıymetini kaç kişi tarafından duyulduğuyla ölçmeyelim. İki insanın birbirini yeniden dinlemesine yardım eden sessiz bir gayret de Allah katında değerlidir.
+
+WhatsApp grubunda yeni bir bildirim sesi duyuluyor. Bir aile meselesinin ekran görüntüsü gönderilmiş. Cevaplar hızla çoğalırken konuşmaya katılmadan önce durabiliriz. Bu ayrıntının herkesçe bilinmesi gerekiyor mu? Hakkında konuşulan kişi kendisini anlatabiliyor mu? Bizim yazacağımız cümle hangi yararı sağlayacak? Sözümüzün yönünü böyle seçelim.
+
+Kendi gönderdiğimiz bir mesajda haksız itham varsa, düzeltmeyi o mesajın ulaştığı kişilere ulaştıralım. Şu sözü yeterince bilmeden söyledim, geri alıyorum, diyebiliriz. Hakkında konuştuğumuz kişinin itibarını onarmaya çalışalım. Mahrem ayrıntıları tekrar dolaşıma sokmadan da açık bir düzeltme yapılabilir. Cesaret bazen yanlışımızı görünür biçimde düzeltmektir.
+
+Özel bir konuşmada duyduğumuz kırıcı sözü öbür tarafa taşımak yerine, sahibini doğrudan ve nezaketle konuşmaya teşvik edebiliriz. Yardımımızı kabul ederlerse uygun bir görüşmeye aracılık ederiz. Dinlerken tuttuğumuz notları, bize emanet edilen mahremiyetin parçası sayalım. Güven, sözü saklamayı da bilmektir.
+
+Barışın ardından adımız anılmasa da yapılan iyilik yerini bulur. Aile grubunda yeniden olağan bir hâl hatır sorulması, çocukların büyüklerini çekinmeden araması bize yeter. Kimseyi minnet altında bırakmadan geri çekilelim. Âyetin gösterdiği niyeti koruyalım: Allah’ın rızası için insanlara yararlı olmak.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/affetmek-ve-ofkeyi-yutmak-2/onarilan-kase.svg" width="1600" height="900" alt="Kumaş zemin üzerinde çatlağı onarılmış sade bir seramik kâse ve yanındaki küçük fırça." loading="lazy" decoding="async">
+<figcaption><strong>Onarıma ayrılan emek</strong> İyi niyet, telâfiye ayrılan zaman ve emekle görünür olur.</figcaption>
+</figure>
+
+**Sözümüz, kırgınlığı dolaştırmak yerine onarımın yolunu açsın.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="adalet-ve-guven" tabindex="-1">X. Güveni gözeten barış kalıcı olur</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَأَصْلِحُوا۟ بَيْنَهُمَا بِٱلْعَدْلِ وَأَقْسِطُوٓا۟ ۖ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُقْسِطِينَ</p>
+
+*Aralarını adaletle düzeltin ve hakkı gözetin. Allah adaletli davrananları sever.* (Hucurât, 49/9; âyetten bölüm)
+
+Bu âyet, çatışan mümin topluluklar arasında haksızlığın durdurulmasını ve adaletle barış sağlanmasını ister. Buradan ilişkilerimiz için de açık bir ölçü öğreniriz: Barışa çalışırken hakkı gözetiriz. Birinin yaşadığı zararı dikkatle dinlemek bu emeğin başlangıcıdır. Konuşmanın sonunda kimin daha sessiz kaldığına da bakalım.
+
+Süren şiddet, tehdit veya istismarda önce güvenliği sağlarız. Zarar gören kişiyi yeniden yakınlığa zorlamayız; uygun destek ve yetkili mercilere başvurma hakkını gözetiriz. Af ve görüşme konusunda kişinin iradesine saygı duyarız. Güvenin yeniden kurulması, zararın durmasına ve sorumluluğun alınmasına bağlıdır.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Hayatın üç yerinde onarım</strong> Kardeşliğe ve adalete uygun bir davranışı bulunduğumuz yerde seçelim.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Ailede</dt><dd>Miras veya para konuşmasında herkesin hakkını ve sözünü görünür kılalım.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Yanlışımızı aynı kişilere açıklayıp zedelenen itibarı onarmaya çalışalım.</dd></div>
+<div><dt>Cemaatte</dt><dd>Kırgınların rızasını alarak güvenilir ve ehil desteğe ulaşmalarını kolaylaştıralım.</dd></div>
+</dl>
+</figure>
+
+Bir okul koridorunda yan yana bekleyen iki veli, eski bir anlaşmazlık yüzünden gözlerini kaçırıyor olabilir. Çocuklarının adını duyunca aynı anda ayağa kalkarlar. O sırada kısa bir selâm, konuşmaya başlangıç olabilir. Sonraki görüşmede çocukların ihtiyacını merkeze alabilirler. Yetişkinlerin sorumluluğu, çocuklara huzurlu bir alan bırakmaktır.
+
+Uzlaşma tek görüşmede tamamlanmayabilir. Bazen önce yalnızca ödeme tarihi, emanetin teslimi veya iletişim biçimi üzerinde anlaşılır. Bu küçük anlaşmayı yerine getirmek, sonrakine zemin hazırlar. Gönlümüzden kini azaltmaya çalışırken hayatımızda ölçüyü koruyabiliriz. Sabırla atılan güvenli adım da bir iyiliktir.
+
+Barış için seçtiğimiz görüşme biçimi herkesin imkânına uygun olsun. İşitmekte zorlanan büyüğümüze anlaşılır biçimde konuşalım. Dil desteğine ihtiyaç duyan kardeşimizin rızasıyla güvenilir birinden yardım alalım. Hareket etmekte güçlük çeken birini ulaşamayacağı yere çağırmak yerine erişebileceği bir çözüm bulalım. Böylece herkes kendi sözünü söyleyebilsin. Dinlemek, bazen önce bu şartları hazırlamaktır. İnsan, sözünün duyulabildiği yerde kendisini daha rahat anlatır.
+
+**Araları düzeltirken güvenliği, gönüllü iradeyi ve herkesin hakkını birlikte koruyalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bir hafta için gönül ve hak sözümüz</h2>
+
+**Aziz cemaat! Şimdi bu öğütlerden kendi hayatımıza bir yol çıkaralım.**
+
+Cebimizdeki küçük bir not kâğıdına bu hafta başlayacağımız işi yazalım. Yapabildiğimiz bir adımı tamamlayıp sonrakine geçebiliriz. Kırdığımız insanın cevabını yönetmeye çalışmadan kendi davranışımıza yön verelim. Yedi sözümüz bize hem iç dünyamızı hem ilişkilerimizi hatırlatsın.
+
+**BU HAFTA VERECEĞİM YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir gece, kalbimde büyüttüğüm kırgınlığı duamda Allah’a açacağım.</strong> Yarın düzeltebileceğim kendi davranışımı belirleyip kaydedeceğim.</li>
+<li><strong>İncittiğimi bildiğim bir kişiden, güvenli ve uygun bir yolla açıkça özür dileyeceğim.</strong> Kendi hatamı adlandıracak ve cevap vermesi için ona alan bırakacağım.</li>
+<li><strong>Beklettiğim bir hak veya emanet için bu hafta somut telâfi adımı atacağım.</strong> İade edeceğim veya hak sahibiyle uygulanabilir bir ödeme zamanı konuşacağım.</li>
+<li><strong>Küslük yaşadığım birine, güvenli iletişim mümkünse ilk selâmı ben vereceğim.</strong> Kısa bir hâl hatır soracak, cevabının zamanına saygı göstereceğim.</li>
+<li><strong>Beni inciten bir kişinin iyiliği ve doğruya dönmesi için dua edeceğim.</strong> Aynı duada kendi kusurum için de bağışlanma isteyeceğim.</li>
+<li><strong>Bu hafta mesajlarımı gözden geçirip varsa haksız bir ithamımı düzelteceğim.</strong> Düzeltmeyi önceki sözümün ulaştığı kişilere ulaştıracağım.</li>
+<li><strong>Araları açık iki kişiye, uygun ve güvenliyse bir kez yardım teklif edeceğim.</strong> Uygun bir durum yoksa barış için güvenilir destek imkânlarını öğreneceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Gönülden davranışa yedi adım</strong>Her sözün karşılığını hafta sonunda kendi davranışında ara.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Gönlünü duaya aç</strong></li>
+<li><span aria-hidden="true">2</span><strong>Özrünü açıkça dile</strong></li>
+<li><span aria-hidden="true">3</span><strong>Bekleyen hakkı teslim et</strong></li>
+<li><span aria-hidden="true">4</span><strong>İlk selâmı sen ver</strong></li>
+<li><span aria-hidden="true">5</span><strong>Onun için hayır dile</strong></li>
+<li><span aria-hidden="true">6</span><strong>Yanlış sözünü düzelt</strong></li>
+<li><span aria-hidden="true">7</span><strong>Barışa yardım teklif et</strong></li>
+</ol>
+</figure>
+
+Bir sözümüz gerçekleştiğinde Rabbimize şükredelim. Yarım kalan adımı tamamlamak için yeniden vakit ayıralım. Gönül terbiyesi, tekrar dönebildiğimiz bu samimi gayretle devam eder. Telefonumuzda bir isim, elimizde bir emanet, duamızda bir kardeş bekliyor olabilir. Bugünün imkânını değerlendirelim.
+
+Bu kararları kendi gücümüze göre uygulayalım. Telefonla konuşmakta zorlananımız kısa bir mektup yazabilir. Yazmakta zorlananımız, mahremiyetini koruyacak güvenilir birinin yardımını isteyebilir. Maddî imkânı sınırlı olanımız ödeme gücünü dürüstçe açıklayabilir. Yapabileceğimizin ölçüsünü bilmek, sözümüzü tutmamıza yardım eder. Önemli olan, bugün üstlenebildiğimiz sorumluluğu ciddiyetle taşımaktır. Kendi adımımızı seçtikten sonra ona takvimimizde yer ayıralım. Niyet ettiğimiz görüşme, günlük telaşın içinde yeniden ertelenmeden yapılsın.
+
+Hafta sonunda o küçük notu yeniden elimize alalım. Verdiğim sözü tuttum mu? Konuşurken karşımdakini dinledim mi? Başkasının hakkını koruyan hangi işi tamamladım? Cevaplarımızı kimseye sergilememiz gerekmez. Rabbimizin bildiği samimi bir gayret bize yeter. Eksik kalan yerde kendimizi tanır, yeniden başlarız. Böylece helalleşme, özel günlerde söylenen bir temenniden günlük hayatımızdaki sorumluluğa dönüşür. Bir sonraki görüşmeye daha dikkatli hazırlanır, duamıza daha açık bir gönülle dururuz.
+
+**Gönlümüzde kin biriktirmeyelim; incittiğimiz insana dönüp hakkını teslim edelim.**
+
+**Bu haftanın kazancı, yerine getirdiğimiz bir hak ve iyiliğe yönelttiğimiz bir gönül olsun.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Bize temiz bir gönül nasip eyle</h2>
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ ٱلْوَهَّابُ ۝٨</p>
+
+*Rabbimiz! Bizi doğru yola eriştirdikten sonra kalplerimizi saptırma; bize katından rahmet bağışla. Şüphesiz lütfu bol olan sensin.* (Âl-i İmrân, 3/8)
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا ٱغْفِرْ لَنَا وَلِإِخْوَٰنِنَا ٱلَّذِينَ سَبَقُونَا بِٱلْإِيمَـٰنِ وَلَا تَجْعَلْ فِى قُلُوبِنَا غِلًّا لِّلَّذِينَ ءَامَنُوا۟ رَبَّنَآ إِنَّكَ رَءُوفٌ رَّحِيمٌ</p>
+
+*Rabbimiz! Bizi ve bizden önce iman etmiş kardeşlerimizi bağışla. Kalplerimizde iman edenlere karşı kin bırakma. Rabbimiz! Sen çok şefkatli, çok merhametlisin.* (Haşr, 59/10; âyetten bölüm)
+
+Allah’ım! Sana eksiklerimizi bilerek yöneliyoruz. Söylemekte zorlandığımız özrü samimiyetle dile getirmeyi nasip eyle. Hakkını beklettiğimiz insanlara haklarını ulaştırmayı kolaylaştır. Kendi yanlışımızı görürken cesaret, başkasının derdini dinlerken incelik ver. Bize selîm bir kalp lütfeyle.
+
+Rabbimiz! Ayrı ülkelerde yaşayan ailelerimizin gönüllerini hayırda birleştir. Uzayan küslüklerimizi adaletle onarmayı nasip eyle. Annelerimize ve babalarımıza huzur, çocuklarımıza güven ver. Gençlerimizi güzel dostluklarla destekle. Yeni Müslüman olan kardeşlerimize kendilerini yakın hissedecekleri bir cemaat nasip eyle.
+
+Allah’ım! Hastalarımıza şifa, engellerle yaşayan kardeşlerimize kolaylık ihsan eyle. Yalnızlık çekenleri hayırlı insanlarla buluştur. Haksızlığa uğrayanları koru; zarar verenleri kötülükten vazgeçir. Araları düzeltmek için çalışanlara hikmet ve sabır ver. Vefat eden mümin kardeşlerimize rahmet eyle.
+
+Rabbimiz! Yaşadığımız memlekette komşularımızla birlikte güven ve huzur içinde yaşamayı nasip eyle. Farklı dilleri konuşurken birbirimizin acısını anlayabilelim. Gecemize taşıdığımız yükleri hafiflet; sabahımıza iyilik niyeti ver. Duamızı dürüst bir davranışla tamamlamayı bizlere kolaylaştır.
+
+Âmin. **Rabbimiz, bizi temiz gönülle ve gözetilmiş haklarla huzuruna varanlardan eyle. El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; kısaltılan âyet ve hadisler belirtilmiştir. Gündelik Avrupa sahneleri temsilîdir. Sıhhati ihtilâflı rivayetin değerlendirmesi ayrıca açıklanmıştır. Türkçe niyazlar serbest duadır.</p>
+<ul>
+<li>Giriş ve iç muhasebe: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Selîm kalbin yolu: <a href="https://quran.com/26/88-89">Şuarâ 26/88–89</a>.</li>
+<li>Gönlün gece muhasebesi: Ahmed b. Hanbel el-Müsned 12697; <a href="https://sunnah.com/bukhari:6076">Buhârî 6076</a>.</li>
+<li>Ertelenmeyen kul hakkı: <a href="https://sunnah.com/bukhari:2449">Buhârî 2449</a>.</li>
+<li>Müflis hadisinin aynası: <a href="https://sunnah.com/muslim:2581">Müslim 2581</a>.</li>
+<li>Özürden telâfiye: <a href="https://quran.com/8/1">Enfâl 8/1</a>.</li>
+<li>Küslükte ilk selâm: <a href="https://sunnah.com/bukhari:6077">Buhârî 6077</a>.</li>
+<li>Birbirimiz için dua: <a href="https://quran.com/47/19">Muhammed 47/19</a>; <a href="https://sunnah.com/muslim:2732a">Müslim 2732a</a>.</li>
+<li>Barışa verilen emek: <a href="https://quran.com/49/10">Hucurât 49/10</a>; <a href="https://sunnah.com/bukhari:2693">Buhârî 2693</a>.</li>
+<li>Sözü barışa yöneltmek: <a href="https://quran.com/4/114">Nisâ 4/114</a>.</li>
+<li>Adalet ve güven: <a href="https://quran.com/49/9">Hucurât 49/9</a>.</li>
+<li>Arınmış gönüller için niyaz: <a href="https://quran.com/3/8">Âl-i İmrân 3/8</a>; <a href="https://quran.com/59/10">Haşr 59/10</a>.</li>
+<li>Kalp terbiyesi: <a href="https://islamansiklopedisi.org.tr/kalb--kalp">TDV İslâm Ansiklopedisi — Kalp</a>.</li>
+<li>Ahlâk çerçevesi: <a href="https://islamansiklopedisi.org.tr/haset">TDV İslâm Ansiklopedisi — Haset</a>.</li>
+<li>Hak ve telâfi: <a href="https://islamansiklopedisi.org.tr/tovbe">TDV İslâm Ansiklopedisi — Tövbe</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>
