@@ -4,6 +4,18 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 3 Ekim 2026 — vaaz revizyonu 1. parti: 11 vaaz v4 standardında yenilendi
+
+- Zaman: 3 Ekim 2026 ≈ 05:20 (push) – 05:24 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «web sitemizde yayınladığımız bütün vaazları codex cli kullanarak revize et … kontrol ve yetki sende … full otonom ilerle» hedefi ve «son haftalarda yayınlanan vaazlardan daha da kaliteli» isteği; bu oturum yayın oturumu olarak yürütülüyor.
+- Yöntem: metinleri Codex CLI (`gpt-6-astra`, xhigh) yazdı ve çizdi; Claude editör olarak her vaazı okudu, kardeş vaazlarla delil/kıssa çakışmasını denetledi, gerekirse hedefli yeniden yazım yaptırdı ve onayladı. Bağlayıcı ölçü `D:/vaaz-revizyon/STANDART.md` (v4, §2a hitabet), otomatik kapı `araclar/dogrula.py`; Word 14 sayfa Word COM ile ölçüldü. Üretim hattı ve editör notları depo dışında: `D:/vaaz-revizyon/` (`rapor/inceleme.md`, `rapor/NOTLAR.md`).
+- Kapsam (11 vaaz; her biri web metni 13 bölüm, 14 sayfalık Word/PDF, 2–3 özgün SVG çizim ve kapaktan üretilmiş 1200×630 WebP paylaşım kartı): `kadere-iman-ve-tevekkul`, `vatan-sevgisi-imandandir`, `abdest-ve-gusul`, `adab-i-muaseret-gorgu-kurallari`, `adab-ve-erkaniyla-cuma-namazi`, `ahiret-inanci`, `ahiret-yolcusuna-son-gorevlerimiz`, `affetmek-ve-ofkeyi-yutmak`, `affetmek-ve-ofkeyi-yutmak-2`, `ahlak-ve-istikamet-dogruluk-ve-durustluk`, `ramazan-ayi-ve-kur-an` (yeni).
+- Kaldırılan: `the-month-of-ramadan-and-the-qur-an` (İngilizce makine çevirisi vaaz; `.md`, `.docx`, `.pdf`). Beş dildeki eski adres `astro.config.mjs` yönlendirmesiyle `/…/vaaz/ramazan-ayi-ve-kur-an/`'a gider.
+- Şablon: `src/content.config.ts` (vaazlar şemasına isteğe bağlı `kapak`, `kapakAlt`), `src/pages/[lang]/vaaz/[slug].astro` (Türkçe sayfanın og görseli kapak kartı), `src/styles/vaaz-gorseller.css` (şiir, alıntı, SVG oranı). Uygulama tablolarında başlık yalnız figcaption'da görünür; tabloya `aria-label` verilir (çift başlık giderildi).
+- İçerik commit'i `3fa26323f461f2546b2d91afb34eabf66a5a565e` (82 dosya; push `c591e08..3fa2632`). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37092881202> — build + deploy **success** (05:22:37).
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1902 sayfa; Playwright `tests/web/vaazlar.spec.mjs` 6/6; geçici erişilebilirlik denetimi (commit edilmedi, silindi) 3 vaaz × 2 görünüm: 13 bölüm başlığı, bütün SVG'ler 200/`image/svg+xml`, axe WCAG 2.1 AA ihlali 0, yatay taşma 0, JS hatası 0; `dist`'te din görevlisi telefonu 0.
+- Canlı doğrulama: 11 sayfa 200, her birinde 13 bölüm başlığı, og görseli `kapak-og.webp`, din görevlisi telefonu 0; 22 indirme (docx+pdf) SHA-256 yerel kopyayla eşit; 39 medya dosyası 200 ve içerik eşit; beş dildeki eski Ramazan adresi 200 + meta refresh doğru hedefe; eski PDF 404; `/tr/vaazlar/` listesinde yeni vaaz var, eskisi yok. Ayrıntı: `D:/vaaz-revizyon/rapor/canli-parti1.txt`.
+- Açık sınırlar: kalan ≈135 vaaz partiler hâlinde aynı hatla yenilenecek; her parti ayrı kayıtla. Fransızca/İngilizce sayfalar Türkçe vaaza dil uyarısıyla bağlanır (çeviri yok). Hadis numaraları Codex tarafından `D:/ihtisas` arşivi ve sunnah.com ile doğrulandı, editör örneklem denetimi yaptı; her atıf tek tek insan gözüyle sınanmadı.
+
 ## 2 Ekim 2026 — 3–4 Ekim kurs materyalleri ve öğrenciye özel veli bilgilendirmesi
 
 - Zaman: 2026-10-02T20:17:48.337681+02:00, Europe/Brussels. Kullanıcının açık yayın ve ayrı öğrenci e-postası talimatı.
