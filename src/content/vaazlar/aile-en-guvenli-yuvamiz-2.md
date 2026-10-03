@@ -1,325 +1,471 @@
 ---
-baslik: "Aile: En Güvenli Yuvamız (2)"
-ozet: "Bugün ki vaazımızda toplumun inşasında önemli bir fonksiyon icra eden, toplumun çekirdeğini oluşturan, bir milletin geleceğinin inşa edildiği, toplumlarda kültürel…"
+baslik: "Ailede Sözün Emaneti: Dinlemek, Danışmak, Anlaşmak"
+ozet: "Aynı evde birbirimizi nasıl duyarız? Kur’an ve sünnet ışığında dinlemek, birlikte karar vermek, öfkeyi yönetmek, sofrada ekranı bırakmak ve zamanında yardım istemek üzerine yedi somut adım."
 kategori: aile
-kelime: 3979
+kelime: 3943
 docx: "/vaazlar/aile-en-guvenli-yuvamiz-2.docx"
 pdf: "/vaazlar/aile-en-guvenli-yuvamiz-2.pdf"
+kapak: "/media/vaazlar/aile-en-guvenli-yuvamiz-2/kapak-og.webp"
+kapakAlt: "Yağmurlu bir akşamda, ahşap masa çevresinde birbirine dönük sandalyeler ve çay fincanları."
 ---
-<p lang="ar" dir="rtl" class="ayet">أعوذ بالله من الشيطان الرجيم</p>
 
-<p lang="ar" dir="rtl" class="ayet">بسم الله الرحمن الرحيم</p>
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/aile-en-guvenli-yuvamiz-2/kapak.svg" width="1600" height="900" alt="Yağmurlu bir akşamda, ahşap masa çevresinde birbirine dönük sandalyeler ve çay fincanları." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Sözümüze yer açan sofra</strong> Dinlemek için ayrılan vakit, aileye verilen kıymeti görünür kılar.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">الحمد لله رب العالمين والصلاة والسلام على رسولنا محمد وعلى آله وصحبه أجمعين.</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#guzel-soz">Güzel sözün ölçüsü</a></li>
+<li><a href="#dinlemek">Birbirimizi gerçekten duymak</a></li>
+<li><a href="#istisare">Ailece karar vermek</a></li>
+<li><a href="#ofke">Öfkeye sınır koymak</a></li>
+<li><a href="#incitmeyen-dil">İncitmeden meseleyi konuşmak</a></li>
+<li><a href="#farklilik">Farklılık içinde anlaşmak</a></li>
+<li><a href="#ekranlar">Sofra ve ekranlar</a></li>
+<li><a href="#mahremiyet">Mahremiyet ve yardım hakkı</a></li>
+<li><a href="#ozur">Kırgınlığı onarmak</a></li>
+<li><a href="#destek">Zamanında destek almak</a></li>
+<li><a href="#yedi-soz">Hayata taşınacak yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Evimizde sesimiz birbirimize ulaşsın</h2>
 
-Muhterem Mü’minler
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Bugün ki vaazımızda toplumun inşasında önemli bir fonksiyon icra eden, toplumun çekirdeğini oluşturan, bir milletin geleceğinin inşa edildiği, toplumlarda kültürel kimliğin, insani değerlerin ve tarihi sürekliliğin koruyucusu ve aktarıcısı olan aile kurumunu oluşturan bireylerin hak ve sorumluluklarından bahsedeceğiz.
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Aile, kutsal bir çatıdır. Allah’ın tesis ettiği ve devamını istediği bir yuva… Dağılmasından arşın titrediği bir birliktelik.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-İslam toplumunda kadın-erkek ilişkilerinde temel değerleri İslâm’ın iki ana kaynağı Kur’ân-ı Kerim ve Hz. Peygamber’in Sünneti belirlemiş, toplumlar bu değerlere bağlı olarak kültürlerini oluşturmuşlardır.
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-İslam evlilik hayatına başlayan kadın ve erkeğin her birine hem hak hem sorumluluk yüklemiştir. Hak ve sorumlulukların doğru tespiti önemlidir. Çünkü evli çiftlerden birinin sadece haklarından söz edip sorumluluklarını yok saymak ya da hiç gündeme getirmeme mutlu bir ailenin idamesinde birçok problemler ortaya çıkarmaktadır.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ ٱشْرَحْ لِى صَدْرِى</p>
 
-Yüce Allah kâinatta her şeyi erkekli ve dişili olarak çift yaratmıştır. Konuyla ilgili ayeti-i kerimede:
+*Rabbim! Gönlüme ferahlık ver.* (Tâhâ, 20/25; âyetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">وَمِنْ كُلِّ شَىْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ</p>
+**Aziz cemaat!**
 
-“Düşünüp ibret alasınız diye her şeyden (erkekli-dişili) iki eş yarattık.” buyrulmaktadır. (Zariyat, 51/49)
+Akşam anahtarı kapıda dönüyor. İşten gelenin omzunda günün yorgunluğu, evde bekleyenin dilinde anlatmak istediği bir mesele var. Çocuk okul çantasını bırakıyor. Hepimiz aynı odadayız. Acaba birbirimize söyleyeceklerimiz için gönlümüzde de yer açabiliyor muyuz?
 
-İnsan da aynı kanun gereği çift olarak erkekli ve dişili yaratılmıştır. İlk insan ve ilk peygamber Adem (a.s.)ı, topraktan yaratan Cenab-ı Hak ondan da eşi Havva validemizi yaratmıştır. Bu konuda da Kur’an-ı Kerimde:
+Bazen evde çok konuşulur, fakat kimse duyulduğunu hissedemez. Bir söz yarıda kesilir. Bir cevap, sorudan önce hazırlanır. Sofradaki tabakların sesi arasında küçük bir yakınma kaybolur. Sonra birbirimizi sevdiğimiz hâlde neden anlaşamadığımızı sorarız.
 
-<p lang="ar" dir="rtl" class="ayet">…هُوَ الَّذى خَلَقَكُمْ مِنْ نَفْسٍ وَاحِدَةٍ وَجَعَلَ مِنْهَا زَوْجَهَا لِيَسْكُنَ اِلَيْهَا</p>
+Bugün kendi dilimize ve kulağımıza bakacağız. Eşimizin sözünü nasıl dinlediğimizi, bir kararı nasıl aldığımızı, öfkemiz yükselince ne yaptığımızı konuşacağız. Her birimiz bu çağrının muhatabıyız. Evli olanımız da yalnız yaşayanımız da aile bağlarında bir sözü güzelleştirebilir.
 
-“Allah sizi bir tek nefisten yaratan ve kendisi ile huzur bulsun diye eşini de ondan var edendir” buyurulmaktadır. (A’raf, 7/189)
+**Ailede gönül bağı, birbirimizi dinleyip sözümüzün sorumluluğunu almakla güçlenir.**
 
-İnsan neslinin devamını ve meşru bir şekilde çoğalmasını sağlamak için nikah yoluyla evlenme emredilmiş; fıtrata ve ahlaka aykırı; nesle, nefse ve sosyal hayata zararlı olan zina ve fuhuş haram kılınmıştır. Ana babaya, velilere evlenme çağına giren bekarların evlendirilmelerini emreden Yüce Allah Kur’an-ı Kerimde şöyle buyurmaktadır:
+Hz. Mûsâ’nın duasıyla başladık. Gönlümüz ferahlasın ki karşımızdakinin derdini taşıyabilelim. Bugün öğreneceğimiz ölçüleri önce kendimize uygulayalım. Eve götüreceğimiz ilk hediye, acele etmeden dinleyeceğimiz birkaç dakika olsun.
 
-<p lang="ar" dir="rtl" class="ayet">وَاَنْكِحُوا الْاَيَامى مِنْكُمْ وَالصَّالِحينَ مِنْ عِبَادِكُمْ وَاِمَائِكُمْ اِنْ يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللّهُ مِنْ فَضْلِه وَاللّهُ وَاسِعٌ عَليمٌ</p>
+**Birbirimize ayırdığımız dikkat, güzel sözün ilk adımıdır.**
 
-“Sizden bekar olanları, kölelerinizden ve cariyelerinizden durumu uygun olanları evlendirin. Eğer bunlar yoksul iseler, Allah onları lütfuyla zenginleştirir. Allah lütfu geniş olandır her şeyi bilendir.” (Nur, 24/32) Konuyla ilgili bir başka ayette ise :
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِي ذَلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+<h2 class="vaaz-bolum-baslik" id="guzel-soz" tabindex="-1">I. Sözün en güzelini evde söylemek</h2>
 
-“Kendileriyle huzur bulasınız diye size kendi (cinsi)nizden eşler yaratması ve aranıza bir sevgi ve merhamet vermesi de O’nun (varlığının ve kudretinin) delillerindendir.” (Rum, 30/21) buyurarak evliliğin gerekliliğine ve toplumsal huzurun teminindeki rolüne dikkat çekmiştir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَقُل لِّعِبَادِى يَقُولُوا۟ ٱلَّتِى هِىَ أَحْسَنُ ۚ إِنَّ ٱلشَّيْطَـٰنَ يَنزَغُ بَيْنَهُمْ ۚ إِنَّ ٱلشَّيْطَـٰنَ كَانَ لِلْإِنسَـٰنِ عَدُوًّا مُّبِينًا ۝٥٣</p>
 
-Kıymetli kardeşlerim!
+*Kullarıma söyle, sözün en güzelini söylesinler; yoksa şeytan aralarına girer. Kuşkusuz şeytan insanların apaçık düşmanıdır.* (İsrâ, 17/53)
 
-Aralarındaki sevgiyi hiçbir menfaat gözetmeden yaşatan insanların, Allah’ın lütfu ile birbirlerine bağlandıklarını görmekteyiz.
+Rabbimiz bu çağrıyı bütün kullarına yöneltiyor. Öyleyse evin kapısından girdiğimizde de bu ölçü bizimle olsun. Dışarıda özenle seçtiğimiz kelimeleri, bizi en yakından tanıyanlara da sunalım. Yakınlık, nezaketimizi çoğaltsın.
 
-Kadın ve erkek birbirinin hasmı değil, aksine birbirinin eksikliğini tamamlayan bir bütünün yarısını temsil ederler. Bu sebeple gerek Hz. Peygamber (s.a.v.) Vedâ Hutbesinde eşlerin hem hak hem sorumluluklarından söz etmiş ve şöyle buyurmuştur:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
 
-<p lang="ar" dir="rtl" class="ayet">عن عَمْرو بنِ الأَحْوَصِ الجُشميِّ رضي اللَّه عنه أَنَّهُ سمِعَ النبي صَلّى اللهُ عَلَيْهِ وسَلَّم في حَجِّةِ الْوَداع يقُولُ بعد أَنْ حَمِدَ اللَّه تعالى ، وَأَثنَى علَيْهِ وذكَّر ووعظَ ، ثُمَّ قال: « أَلا واسْتَوْصوا بِالنِّساءِ خَيْراً ، فَإِنَّمَا هُنَّ عَوانٍ عَنْدَكُمْ لَيْس تمْلكُونَ مِنْهُنَّ شَيْئاً غيْرَ ذلِكَ إِلاَّ أَنْ يأْتِينَ بِفَاحشةٍ مُبيِّنةٍ ، فإِنْ فَعَلْنَ فَاهْجُروهُنَّ في المضَاجعِ ، واضْربُوهنَّ ضَرْباً غيْر مُبرِّحٍ ، فإِنْ أَطعنَكُمْ فَلا تبْغُوا عَلَيْهِنَّ سبيلا ، أَلا إِنَّ لَكُمْ عَلَى نِسائِكُمْ حَقًّا ، ولِنِسائِكُمْ عَلَيْكُمْ حقًّا، فَحَقُّكُمْ عَلَيْهنَّ أَن لا يُوطِئْنَ فُرُشكمْ منْ تَكْرهونَ ، وَلا يأْذَنَّ في بُيُوتكمْ لِمن تكْرهونَ ، أَلا وحقُّهُنَّ عَلَيْكُمْ أَن تُحْسنُوا إِليْهنَّ في كِسْوتِهِنَّ وَطعامهنَّ».</p>
+*Allah’a ve âhiret gününe inanan, hayır söylesin yahut sussun.* (Buhârî, 6018; rivayetten bölüm)
 
-Amr İbni Ahvas el–Cüşemî radıyallahu anh, Vedâ haccı’nda Peygamber aleyhisselâm’ı dinlediğini, Allah’a hamd ü senâ edip halka öğüt verdikten sonra Resûlullah’ın şöyle buyurduğunu söylemektedir:
+Peygamber Efendimiz (s.a.s.) konuşmayı âhiret sorumluluğuyla birlikte hatırlatıyor. Bir cümle söylemeden önce kendimize soralım: Doğru mu? Şimdi söylemem faydalı mı? Muhatabımın onurunu koruyor mu? Bu sorular, özellikle haklı olduğumuzu düşündüğümüz anlarda yolumuzu aydınlatsın.
 
-“Ashâbım! Kadınlara iyi davranmanızı tavsiye ediyorum. Vasiyetimi tutunuz. Zira onlar sizin idarenize ve himâyenize verilmişlerdir.
+Mutfakta kırılan bir bardağın sesi duyulsun. Önce “Bir yerin kesildi mi?” diye sorabiliriz. Ardından temizliği ve dikkati konuşuruz. Olay aynı olaydır; ilk cümlemiz, konuşmanın yönünü değiştirir. Hatanın düzeltilmesiyle insanın değerini ayrı tutmayı böyle öğreniriz.
 
-Kesin olarak bildiğiniz bir ahlâksızlık yapmadıkları takdirde, onlar üzerinde zorbalık kurmaya hakkınız yoktur. Eğer ahlâk dışı bir hareket yaparlarsa, onları yataklarında yalnız bırakın. Bir yerlerini incitmeyecek şekilde tedip edin. Şayet size itaat ederlerse, artık onlara zarar verecek bir şey yapmayın.
+Hayır söylemek bazen açıkça bir rahatsızlığı dile getirmeyi gerektirir: “Bu söz beni incitti; bunu sakin biçimde konuşmak istiyorum.” Susmak gerektiğinde ise gönül kıracak cevabı tutar, meseleyi konuşabileceğimiz zamanı belirtiriz. Günlerce yüz çevirmek, kırgınlığı çözmez.
 
-Şunu bilin ki, sizin kadınlar üzerinde haklarınız olduğu gibi onların da sizin üzerinizde hakları vardır.
+Küçük teşekkürleri çoğaltalım. “Beklediğin için sağ ol.” “Yorulduğunu görüyorum.” “Söylediğini yeniden düşünmek istiyorum.” Bu sözler evimizde duyulsun. Dilimizin hayrı, yalnız büyük öğütlerde değil, sıradan bir akşamın içinde de görünür olsun.
 
-Sizin onlar üzerindeki haklarınız, yatağınızı yabancılardan korumaları, istemediğiniz kimseleri evinize almamalarıdır. ” Tirmizî, Radâ 11 (III, 467); İbni Mâce, Nikâh, 3 (I, 594)
+**Sözümüzün doğruluğuyla birlikte, insana nasıl ulaştığından da sorumluyuz.**
 
-Evlilik birliğinin devamı için karı kocanın birbirine sevgi, saygı ve hoşgörü ile davranması, iyi geçinmeleri, birbirinin şerefini zedeleyecek ve değerini düşürecek davranışlardan sakınmaları ve cinsel ihtiyaçlarını yerine getirmeleri her iki tarafın müşterek hak ve vecibeleri arasında yer alır. Çocukların bakım ve terbiyesi de ortak görevlerdendir.
+---
 
-Bunun dışında karı kocanın evlilik birliğinden doğan ve hukukî niteliği ön plana çıkan bazı hak ve sorumlulukları söz konusudur ve bir taraf için hak olan diğer taraf için sorumluluk niteliği taşımaktadır.
+<h2 class="vaaz-bolum-baslik" id="dinlemek" tabindex="-1">II. Dinlemek: Cevaptan önce insana yer açmak</h2>
 
-## Eşlerin Birbirlerine Karşı Olan Hak ve Sorumlulukları
+**Kıymetli kardeşlerim!**
 
-Muhterem Mü’minler!
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet"> قَدْ سَمِعَ ٱللَّهُ قَوْلَ ٱلَّتِى تُجَـٰدِلُكَ فِى زَوْجِهَا وَتَشْتَكِىٓ إِلَى ٱللَّهِ وَٱللَّهُ يَسْمَعُ تَحَاوُرَكُمَآ ۚ إِنَّ ٱللَّهَ سَمِيعٌۢ بَصِيرٌ ۝١</p>
 
-Bir kısım hak ve sorumluluklar vardır ki hem kadın hem erkek için ortaktır. Bunları şu şekilde özetleyebiliriz
+*Kocası hakkında seninle tartışan ve Allah’a yakınan kadının sözünü Allah işitmiştir. Allah sizin karşılıklı konuşmanızı işitiyordu. Çünkü Allah her şeyi işitmekte ve görmektedir.* (Mücâdele, 58/1)
 
-1- Eşlerden her biri diğerine karşı davranışlarında empati ile hareket etmelidir
+Mücâdele sûresi, evliliğiyle ilgili derdini Resûlullah’a (s.a.s.) anlatan Havle bint Sa‘lebe’nin sözüyle açılıyor. Âyetin bağlamında, kadını mağdur eden zıhâr uygulaması vardır. Kur’an Yolu tefsiri burada güçsüz bırakılanın sesini duyurmasına ve hakkının korunmasına dikkat çeker. Yakınımızın derdini Allah’ın rızasını gözeterek dinlemek de kulluğumuzun bir parçası olsun.
 
-Aile hayatının huzurlu şekilde devam etmesi için eşlerden her biri kendisini diğerinin yerine koymalı, kendisine yapıldığında hoşuna gitmeyecek davranışı eşine yapmamalıdır.
+Dinlerken elimizdeki işi bir an durdurabiliriz. Çay bardağını masaya bırakıp yüzümüzü konuşana dönebiliriz. Sözünü bitirdiğinde duyduğumuzu kendi cümlemizle söyleyelim: “Bugün bütün yükün üzerinde kaldığını söylüyorsun; doğru mu anladım?” Yanlış anladıysak düzeltmesine fırsat verelim.
 
-2- Sevgi, saygı ve merhamet
+Birinin duygusunu anlamak, bütün yorumlarına katılmamız demek değildir. Önce ne yaşadığını öğrenir, sonra kendi kanaatimizi söyleriz. “Böyle hissetmene ne sebep oldu?” sorusu, peşin bir hükümden daha çok kapı açar. Anlaşmazlığın düğümü bazen anlatılmamış bir ihtiyaçtır.
 
-Muhabbet ailenin mayası ve gıdasıdır. Sevgi aile bireylerini birbirine bağlayan en güçlü bağdır. Muhabbetin azaldığı ve hoyratça yıpratıldığı hallerde, aile sarsılmaya başlar. Aile kurumu baştan sona, yani ilk adımdan son nefese kadar karşılıklı sevgi, saygı, sadakat, fedakârlık, feragat ve yeri gelince karşısındakini kendine tercih olan isar (kendisi muhtaç olduğu halde nefsinden feragat edip bir başkasını tercih etme) denilen yüce ahlakı zorunlu kılan temel bir müessesedir. Bu vasıflarla donanmış bir aileyi Allah’ın izniyle hiçbir problem sarsamaz.
+Belçika’da iş dönüşü zihnimiz hâlâ vardiyada kalabilir. Bunu açıkça söyleyelim: “Seni dikkatle dinlemek istiyorum. Üzerimi değiştirince oturalım.” Sonra verdiğimiz sözü tutalım. Dinlemek için zaman istemekle, konuşmayı durmadan ertelemek arasındaki farkı davranışımız gösterir.
 
-Halbuki modern telakkilerle yetişen insan; egoist, pragmatist ve haz düşkünü olma yönünde hızla ilerlemekte ve andığımız erdemlerden uzak bir terbiye ile yetişmektedir. Bu yetişme tarzının tabii bir neticesi olarak, eşler arasında insani bir davranış olan karşılıklı güven, saygı ve sevgi duyguları zamanla zayıflarken bu sonuç ailelerin dağılmalarına sebep olmaktadır.
+İşitmekte zorlanan büyüğümüzün yüzüne dönelim. Konuşması yavaş olanın cümlesini tamamlamaya kalkışmayalım. Derdini yazıyla daha rahat anlatan yakınımıza o imkânı verelim. Herkes aynı hızda konuşamaz. Herkesin sözü kıymetlidir.
 
-3- Eşler Birbirini İbadete ve Hayra Teşvik Etmeli
+Bir genç “Beni anlamıyorsunuz” dediğinde hemen savunmaya geçmeyelim. Hangi anlarda böyle hissettiğini sormakla başlayalım. Dinlediğimiz insanın anlatacaklarını önceden bildiğimizi sanmak yerine, bugün bize ne söylemek istediğini merak edelim.
 
-İbadet ve hayır işlerini eşlerin birlikte yapmaları aile içerisinde mutluluğu artırır. Bunun için eşlerden her birinin, ibadet ve taatini önce kendisinin yapması, sonra da buna eşini teşvik etmesi güzel olur.
+Dinlemenin sonunda hemen çözüm sunmak yerine “Benden nasıl bir yardım bekliyorsun?” diye sorabiliriz. Yakınımız yalnızca anlaşılmak, bir işi paylaşmak veya birlikte karar vermek isteyebilir. Beklentisini öğrenince yardımımız da yerine ulaşır. Konuşmaya ayırdığımız vakit dolduğunda ise yarım kalan meseleyi unutmayalım. Sonraki görüşmede hatırlayıp sormak, o sözün bizim için kıymet taşıdığını gösterir.
 
-Peygamberimiz (s.a.v) kendisi böyle yapmış, ümmetini de buna teşvik etmiştir.
+**Dinlemek, yakınımıza kendi sözünü tamamlayabileceği bir yer vermektir.**
 
-<p lang="ar" dir="rtl" class="ayet">وعن عائشة رَضِىَ اللّهُ عَنْها قالت: ]كَانَ رَسولُ اللّهِ # يَجْتَهِدُ في رَمَضَانَ مَالاَ يَجْتَهِدُ في غَيْرِهِ، وَفي الْعَشْرِ الاوَاخِرِ أشَدَّ، وَكَانَ يُحْيى لَيْلَهُ وَيُوقِظُ أهْلَهُ وَيَشُدُّ مِئْزَرَهُ[. أخرجه الخمسة. « شَدُّ المِئْزَرِ» كناية عن اجتناب النساء أو عن الجِدْ واجتهاد في العمل .</p>
+---
 
-Hz. Âişe (r. anhâ) anlatıyor: "Resûlullah (a.s) Ramazan ayında, diğer aylarda görülmeyen bir gayrete girerdi. Ramazanın son on gününde ise çok daha şiddetli bir gayrete geçerdi. Son on günde geceyi ihya eder, ailesini de (gecenin ihyası için) uyandırırdı, izarını da bağlardı." (Buhârî, Fadlu Leyleti'l-Kadir 5, Müslim, İ'tikâf 8, (1175
+<h2 class="vaaz-bolum-baslik" id="istisare" tabindex="-1">III. İstişare: Kararı birlikte olgunlaştırmak</h2>
 
-4- Eve ve çocuklara karşı her ikisinin de sorumlulukları vardır
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَأَمْرُهُمْ شُورَىٰ بَيْنَهُمْ</p>
 
-Nitekim Peygamberimiz kişilerin sorumluluklarını hatırlatan hadisi şeriflerinde şöyle buyurmuştur:
+*Onların işleri aralarında danışma iledir.* (Şûrâ, 42/38; âyetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">كُلُّكُمْ رَاعٍ وَكُلُّكُمْ مَسْئُولٌ عَنْ رَعِيَّتِهِ، فَالامَامُ رَاعٍ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ، وَالرَّجُلُ رَاعٍ في أهْلِهِ، وَهُوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ، وَالمَرْأةُ في بَيْتِ زَوْجِهَا رَاعِيَةٌ، وَهِىَ مَسْئُولَةٌ عَنْ رَعِيَّتِهَا، وَالخَادِمُ في مَالِ سَيِّدِهِ رَاعٍ، وَهُوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ.</p>
+Rabbimiz, müminlerin güzel vasıfları arasında işlerini danışarak yürütmelerini de anıyor. Bu ortak hayat ölçüsünü evimize taşıyalım. Karar vermeden önce meseleyi bilen ve sonucunu yaşayacak kişiyi dinleyelim. Bir insanın derdini duyurabilmesinin değerini, Mücâdele sûresindeki âyetin inişinde de görüyoruz.
 
-“Hepiniz çobansınız ve hepiniz sürünüzden mes'ulsünüz. İmam çobandır ve sürüsünden mes'ûldür. Erkek ailesinin çobanıdır ve sürüsünden mes'uldür. Kadın, kocasının evinde çobandır, o da sürüsünden mes'ûldür. Hizmetçi, efendisinin malından sorumludur ve sürüsünden mes'ûldür.” (Buhari, Ahkam 1; Müslim, İmaret 20
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Havle’nin duyulan sözü</p>
 
-Hadisi şerifte yalnız erkek değil kadınında sorumluluklarından bahseder. Çocukların sağlık ve eğitiminden her ikisi de sorumludurlar.
+Havle bint Sa‘lebe’nin eşi Evs b. Sâmit, öfkeyle zıhâr sözü söylemişti. Bu söz, dönemin âdetinde evlilik bağını koparıyor ve kadını mağdur bırakıyordu. Havle, çözüm aramak için Resûlullah’a (s.a.s.) başvurdu. Ailesinin durumunu anlattı, Allah’a yalvardı. Mücâdele sûresinin ilk dört âyeti bu başvuru üzerine indi. Allah, onun sözünü işittiğini bildirdi; zıhârın çirkin ve asılsız bir söz olduğunu açıkladı. Evliliğe dönüş için kefâret hükmü getirildi. Bir kadının derdini anlatması, ailesinin meselesinin vahyin ışığında çözüme kavuşmasına vesile oldu.
 
-Ebeveyler, kendi anne babalarına hürmette kusur etmeyerek çocuklarına iyi bir evlat olmayı, karı-koca olarak birbirlerine karşı ma’ruf ölçülerde davranışlar sergileyerek huzurlu bir evliliği, çocuklarıyla İslami değerlerin de öğretildiği iyi bir iletişim kurarak onlara iyi bir anne baba olmanın ilkelerini öğretmiş olurlar.
+(Kur’an Yolu, Mücâdele 58/1–4 tefsiri; TDV İslâm Ansiklopedisi, “Havle bint Sa‘lebe”.)
 
-5- Eşler her biri diğerinin akrabalarına karşı saygı ve hürmette kusur etmemelidir
+Havle’nin başvurusu bize, konuşanın sözüne ve hakkına yer açmayı öğretiyor. Allah’ın işittiğini bildirdiği bir yakınmayı biz de önemseyelim. Dinlemeyi kulluk bilinciyle yapalım. Aile kararlarında eşimizin fikrini önceden soralım; duyduğumuz söz kararımızı değiştirebilsin.
 
-Kendi ailesine karşı sevgi ve saygı bekleyen eş, önce kendisi bu saygı ve sevgiyi eşinin ailesine karşı göstermesi; saygı ve hürmette kusur etmemesi gerekir. Çünkü sevgi de nefret de karşılıklı oluşan bir duygudur.
+Masanın üstünde bir okul mektubu, yanında iş çizelgesi duruyor. Çocuğun toplantısına kimin katılacağı konuşulacak. Önce iki tarafın imkânını öğrenelim. Sonra uygun yolu seçelim. Konuşmanın sonunda kimin hangi işi yapacağı belli olsun; birkaç gün sonra yeniden değerlendirelim.
 
-6- İffetli olmak
+Çocuğun yaşına uygun konularda onun fikrini de alabiliriz. Yaşlı bir yakınımızın bakımını konuşurken kendisini de dinleyelim. İstişarede bilgisi az olanın sorusuna sabır, çekingen olanın sözüne zaman verelim. Ortak hayat, birbirimizin bilgisiyle daha iyi düzenlenir.
 
-İslam, Müslümanları zinadan korumaya çalışır. Müslüman erkekler ve kadınlar, namuslarını korumak, avret yerlerini örtmek ve başkasının avretine bakmaktan sakınmakla sorumlu tutulmuştur.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/aile-en-guvenli-yuvamiz-2/ortak-karar.svg" width="1600" height="900" alt="Bir masanın iki yanından uzanan eller, boş bir kâğıt ve yan yana duran iki kalem." loading="lazy" decoding="async">
+<figcaption><strong>Karardan önce birbirimizi duyalım</strong> Aynı meseleyi birlikte ele almak, ortak sorumluluğun başlangıcıdır.</figcaption>
+</figure>
 
-Yüce Allah Kur’an-ı Kerimde
+İstişarede yalnız sonucu değil, o sonucun kime nasıl bir yük getireceğini de konuşalım. Misafir davet etmek istiyorsak hazırlığı yapacak kişinin zamanını soralım. Bir yolculuk planlıyorsak bakıma ihtiyaç duyan yakınımızın şartını hesaba katalım. Sessiz kalan kişinin kabul ettiğini hemen varsaymayalım. Sözünü çekinmeden söyleyebileceği bir ortam hazırlayalım.
 
-<p lang="ar" dir="rtl" class="ayet">قُلْ لِلْمُؤْمِن۪ينَ يَغُضُّوا مِنْ اَبْصَارِهِمْ وَيَحْفَظُوا فُرُوجَهُمْۜ ذٰلِكَ اَزْكٰى لَهُمْۜ اِنَّ اللّٰهَ خَب۪يرٌ بِمَا يَصْنَعُونَ ﴿٣٠﴾</p>
+Kararımız uygulamada aksarsa yeniden konuşabiliriz. “Geçen gün böyle anlaşmıştık, fakat bu kısmı zor geldi” demek için birbirimize kapı açık bırakalım. İşi paylaşırken verilen sözleri kısa bir notla hatırlamak da faydalı olabilir. Böylece aynı unutkanlık yüzünden birbirimizi yeniden suçlamak yerine, düzenimizi nasıl iyileştireceğimizi ararız. İstişarenin değeri, sonraki davranışlarımızda görünür.
 
-<p lang="ar" dir="rtl" class="ayet">وَقُلْ لِلْمُؤْمِنَاتِ يَغْضُضْنَ مِنْ اَبْصَارِهِنَّ وَيَحْفَظْنَ فُرُوجَهُنَّ وَلَا يُبْد۪ينَ ز۪ينَتَهُنَّ اِلَّا مَا ظَهَرَ مِنْهَا وَلْيَضْرِبْنَ بِخُمُرِهِنَّ عَلٰى جُيُوبِهِنَّۖ</p>
+**İstişare, karardan önce söze yer açmak ve duyduğumuzu ciddiye almaktır.**
 
-Mümin erkeklere söyle, gözlerini haramdan sakınsınlar ve iffetlerini korusunlar. Bu onlar için daha arındırıcıdır. Allah onların bütün yaptıklarından haberdardır. (Nur, 24/30)
+---
 
-Mümin kadınlara da söyle, gözlerini haramdan sakınsınlar ve iffetlerini korusunlar. Dışarıda kalanlardan başka ziynetlerini göstermesinler. Başörtülerini yakalarının üzerinden bağlasınlar. (Nur, 24/31) buyurarak kadın ve erkek ayrımını yapmadan Müslüman erkekler ve kadınların iffetlerini muhafaza etmesini emretmiştir.
+<h2 class="vaaz-bolum-baslik" id="ofke" tabindex="-1">IV. Öfke yükselirken irademiz ayakta kalsın</h2>
 
-7- Cinsel Olarak Birbirlerinden Faydalanma Hakları ve Aile Mahremiyetini Koruma Görevleri
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَا تَسْتَوِى ٱلْحَسَنَةُ وَلَا ٱلسَّيِّئَةُ ۚ ٱدْفَعْ بِٱلَّتِى هِىَ أَحْسَنُ</p>
 
-Kadın ve erkekte var olan cinsel arzular fıtridir ve bunu gidermenin tek meşru yolu nikâhtır. Meşru evlilikte eşlerin birbirlerinden faydalanma hakları vardır; erkeğin kadından ilişki talep etmeye hakkı olduğu gibi, kadının da erkekten ilişki talep etme hakkı vardır.
+*İyilikle kötülük bir olmaz. Sen kötülüğü en güzel olan davranışla sav.* (Fussılet, 41/34; âyetten bölüm)
 
-Eşler birbirleri yanında en az dışarıda oldukları kadar temiz ve bakımlı olmalıdırlar.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ فِيكَ لَخَصْلَتَيْنِ يُحِبُّهُمَا اللَّهُ الْحِلْمُ وَالأَنَاةُ</p>
 
-Aile, mahrem bir kurumdur. Eşlerden her birinin mahremiyetin korunmasına özen göstermesi gerekir. Karı-koca, asla evlerinin sırlarını ifşa etmemelidir. Sırrın ifşasını Peygamberimiz (a.s.), Allah katında (sorumluluğu) en büyük olan emanet olarak niteleyerek:
+*Sende Allah’ın sevdiği iki özellik vardır: Hilim ve teenni.* (Müslim, 18a; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَبْدِ الرَّحْمَنِ بْنِ سَعْدٍ قَالَ: سَمِعْتُ أَبَا سَعِيدٍ الْخُدْرِيَّ يَقُولُ: قَالَ رَسُولُ اللَّهِ (صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمْ) : "إِنَّ مِنْ أَعْظَمِ الْأَمَانَةِ عِنْدَ اللَّهِ يَوْمَ الْقِيَامَةِ، الرَّجُلَ يُفْضِى إِلَى امْرَأَتِهِ وَتُفْضِى إِلَيْهِ، ثُمَّ يَنْشُرُ سِرَّهَا".</p>
+Aziz kardeşlerim! Koridorda yükselen bir ses, bütün evin havasını değiştirebilir. Rabbimiz, kötülüğü en güzel davranışla savmayı öğütlüyor. Efendimiz (s.a.s.), bu hadiste hilim ve teenniyi övüyor. Hilim, öfke karşısında ölçüyü korumak; teenni, acele etmeden düşünüp davranmaktır. Cevap vermeden önce durduğumuz o an, sözümüzün yönünü değiştirebilir.
 
-Abdurrahman b. Sa’d, Ebû Saîd el-Hudrî’den şunları işittiğini naklediyor: “Resûlullah (s.a.v.) şöyle buyurmuştur: "Kişinin eşiyle birlikte olduktan sonra onun sırrını ifşa etmesi, kıyamet gününde Allah katında (sorumluluğu) en büyük olan emanetlerdendir." ”(Müslim, Nikâh, 124; Ebû Dâvûd, Edeb, 32) buyurur.
+<blockquote class="vaaz-alinti">
+<p>öfke duygusunun coşkusundan nefsi koruma</p>
+<footer>— Râgıb el-İsfahânî’nin hilim tarifi; el-Müfredât ve ez-Zerîa’ya atıfla aktaran TDV İslâm Ansiklopedisi, “Hilim”.</footer>
+</blockquote>
 
-Yüce rabbimiz Kur’an-ı Kerimde ; هنَّ لِبَاسٌ لَكُمْ وَاَنْتُمْ لِبَاسٌ لَهُنَّ “Kadınlar sizin için elbise, siz de onlar için elbisesiniz” (Bakara, 2/187) buyurur. Yani elbise nasıl insanları örter, sarar sarmalar, ayıplarını örterse siz de birbirinizin ihtiyaçlarını karşılar, kusurlarını örtersiniz buyurmaktadır.
+Bu ölçüyü küçük bir davranışa çevirelim. Sesimizin yükseldiğini fark ettiğimizde konuşmaya ara vermeyi teklif edelim. “Şu an öfkeliyim. Seni incitmek istemiyorum. Bu akşam sakinleşince yeniden konuşalım.” diyelim. Karşılıklı belirlediğimiz vakitte meseleyi yeniden ele alalım.
 
-8- İyi Geçim İçin Gayret Etmek
+Ara verdiğimizde kapıyı çarpıp korkutmayalım; peş peşe suçlayıcı mesajlar göndermeyelim. Bedenimizi ve sesimizi sakinleştirecek bir mesafe koyalım. Allah’a sığınalım. Geri döndüğümüzde bir tek meseleyi konuşalım. Eski defterlerin tamamını aynı masaya taşımak, o günün sorununu görünmez kılar.
 
-Sabır, tahammül ve iyi niyet esas alınarak karşılıklı kusur ve aksaklıkların üstesinden gelmeye çalışılmalıdır.
+Öfke sırasında tehdit, eşya kırma veya fiziksel zarar varsa öncelik güvenliğe geçer. Zarar görenin korunması ve uygun yardıma ulaşması gerekir. Hilmi önce kendi elimize ve dilimize öğütleyelim. Gücümüz, yakınımızın bizden korkmasına yol açmasın.
 
-Kur’an-ı Kerimde Yüce Allah
+Kendimizi tutabildiğimiz bir anı küçümsemeyelim. O gün yutulan bir kırıcı söz, evde yeni bir alışkanlığın başlangıcı olabilir. Rabbimizden yardım dileyip bu iradeyi çalıştıralım.
 
-<p lang="ar" dir="rtl" class="ayet">وَعَاشِرُوهُنَّ بِالْمَعْرُوفِۚ فَاِنْ كَرِهْتُمُوهُنَّ فَعَسٰٓى اَنْ تَكْرَهُوا شَيْـٔاً وَيَجْعَلَ اللّٰهُ ف۪يهِ خَيْراً كَث۪يراً</p>
+**Öfke geldiğinde ilk sorumluluğumuz, zarar vermeden durabilmektir.**
 
-Onlarla iyi geçinin. Eğer onlardan hoşlanmazsanız, Allah’ın hakkınızda çok hayırlı kılacağı bir şeyden de hoşlanmamış olabilirsiniz. (Nisa, 4/19) buyurarak erkeklerin eşlerine yumuşak, hoşgörülü ve sabırlı davranmasını, insanın hoşlanmadığı bir şeyinde hakkında hayırlı olabileceğini belirtmiştir.
+---
 
-9- Eşler Birbirine Emanet Olarak Verildikleri Şuuru ile Sabırlı Davranmaları gerekir
+<h2 class="vaaz-bolum-baslik" id="incitmeyen-dil" tabindex="-1">V. Yaralayan hükümden anlaşılır isteğe</h2>
 
-HZ. Peygamber’in Vedâ Hutbesinde “Ey insanlar! … siz kadınları Allah’ın emaneti olarak aldınız” buyruğu hatırdan çıkarılmamalı ve emanet sahibine karşı sorumluluk bilinci ile hareket edilmelidir. Eşler birbiriyle iyi geçinmek ve bu hususta fedakâr olmalıdırlar.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَا تَلْمِزُوٓا۟ أَنفُسَكُمْ وَلَا تَنَابَزُوا۟ بِٱلْأَلْقَـٰبِ</p>
 
-Hz. Peygamber (s.a.v.) bir hadisi şeriflerinde “Bir mü’min erkek, bir mü’min kadına buğz etmesin. Çünkü onun bir huyunu beğenmezse başka bir huyunu beğenir.” (Müslim, “Radâ”, 61) buyurarak arzu edilmeyen bir huy sebebiyle hemen kadını boşama yolunun tercih edilmemesi, bilakis onun güzel ve olumlu yönlerinin dikkate alınmasını öğütlemiştir.
+*Biriniz diğerinizi aşağılamayın, birbirinize kötü ad takmayın.* (Hucurât, 49/11; âyetten bölüm)
 
-10- Sadakat, güven, vefa ve dürüstlük
+Bir okul karnesi masaya konuyor. Tek bir düşük not, çocuğun bütün kişiliğinin adı hâline gelmesin. Aynı şekilde unutulmuş bir iş, eşimizin bütün emeğini silmesin. Rabbimizin aşağılama yasağını en yakınımızla konuşurken de hatırlayalım.
 
-Evlilik kurumunun devamında eşler arası güven ve sadakat önemlidir. İletişimsizlik veya sahte davranışlar eşler arasındaki güvensizliğin belirtileridir. Karşılıklı güveni sarsacağı için yalandan sakınmak gerekir. Yalanın beyazı olmaz, yalan kirlidir.
+İnciten genellemeler yerine gördüğümüz olayı anlatalım. “Sen zaten böylesin” dediğimizde kişiyi yargılarız. “Dün beklediğim haber gelmeyince kaygılandım” dediğimizde konuşabileceğimiz bir mesele açarız. Ardından neye ihtiyaç duyduğumuzu açıkça söyleyelim.
 
-11- Çok küçük sıradan işlerde bile istişareye önem verilmelidir
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Sözümüzü nasıl değiştirebiliriz?</strong> Bu cümleler, aşağılama yerine olay ve ihtiyaç üzerinde konuşma örnekleridir.</figcaption>
+<table aria-label="Sözümüzü nasıl değiştirebiliriz?">
+<thead><tr><th scope="col">Yaralayan ifade</th><th scope="col">Konuşmayı açan ifade</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Yaralayan ifade">Sen hiç dinlemezsin.</th><td data-label="Konuşmayı açan ifade">Sözümü bitirince senin düşünceni de duymak istiyorum.</td></tr>
+<tr><th scope="row" data-label="Yaralayan ifade">Senden zaten iş çıkmaz.</th><td data-label="Konuşmayı açan ifade">Bu iş bugün kaldı; nasıl tamamlayacağımızı konuşalım.</td></tr>
+<tr><th scope="row" data-label="Yaralayan ifade">Hep senin yüzünden.</th><td data-label="Konuşmayı açan ifade">Bu kararda benim de payım var; şimdi ne yapabiliriz?</td></tr>
+<tr><th scope="row" data-label="Yaralayan ifade">Sus, sen anlamazsın.</th><td data-label="Konuşmayı açan ifade">Farklı düşünüyoruz; gerekçeni anlatır mısın?</td></tr>
+</tbody></table>
+</figure>
 
-Bilindiği gibi istişare, bütün kurumsal yapıların işleyişinin ana dinamiğidir. Hz. Peygamber şûra ilkesini hayatı boyunca birçok konuda hassasiyetle uygulamıştır. Ailesinde de aynı duyarlı tutumu göstermiştir. Peygamberler dünyanın en akıllı ve zeki insanları arasından seçilir ki peygamberlere ait sıfatlardan “fetânet” bunu ifade eder. Buna rağmen Hz. Peygamber yapılacak pek çok işte eşleriyle istişare ederdi
+Güzel bir cümle, samimi bir dinlemeyle tamamlanır. Sakin kelimeleri alaycı bir sesle söylediğimizde yine incitebiliriz. Yüzümüz, sesimiz ve davranışımız sözümüze eşlik etsin. Muhatabımız konuşurken gözlerimizi devirmek de araya bir duvar örer.
 
-## Evlilik birliğinden doğan ve hukukî niteliği ön plana çıkan bazı hak ve sorumluluklar
+Yanlış bir davranışı açıkça konuşalım. Sınır koyarken “Bu evde birbirimize hakaret etmeden konuşacağız” diyebiliriz. Bu sınırı koyan da aynı ölçüye uysun. Anne baba, çocuk, eş veya kardeş olmamız, sözümüzün hesabını ortadan kaldırmaz.
 
-### Kocanın Karısına Karşı Görevleri
+Bu hafta dilimize yerleşmiş bir genellemeyi yakalayalım. Onun yerine belirli bir olay ve yerine getirilebilir bir istek söyleyelim. Bir konuşmada anlaşmayı kolaylaştırmak bile kıymetli bir başlangıçtır.
 
-Hadisi şerifte peygamberimiz şöyle buyurur;
+Aile içinde bazen “Şaka yaptım” diyerek söylediğimiz sözü hafifletmek isteriz. Muhatabımız incindiğini söylüyorsa orada durup onu dinleyelim. Boyunu, konuşmasını veya becerisini alay konusu yapmadan da neşeyi paylaşabiliriz. Gülüşümüz, sofradaki herkesin katılabildiği bir gülüş olsun.
 
-<p lang="ar" dir="rtl" class="ayet">وَعَنْ حكيم بن معاوية عن أبيه رَضِىَ اللّهُ عَنْهُ قَالَ: قُلْتُ يَا رَسُولَ للّهِ: مَا حَقُّ زَوْجَةِ أَحَدِنَا عَلَيْهِ: قَالَ: أَنْ تُطْعِمُهَا إِذَا طُعِمْت،َ وَأنْ تَكْسُوَهَا إِذَا اكْتَسَيْتَ، وَلا تَضْرِبِ الْوَجْهَ، وَلا َ تُقَبِّحْ، وَلا َتَهْجُرْ إلا فِي الْبَيْتِ.</p>
+Bir isteği de muhatabımızın yerine getirebileceği açıklıkta söyleyelim. “Beni biraz düşün” yerine “Bugün şu işi paylaşabilir miyiz?” diyebiliriz. Cevabı dinledikten sonra imkânları konuşalım. Böylece karşımızdakinin aklımızdan geçenleri tahmin etmesini beklemek yerine, ortak bir işin nasıl yapılacağını belirleriz.
 
-(3304)- Hakîm İbnu Muâviye babası Muâviye (r.a)'den anlatıyor: "Ey Allah’ın Resûlü! dedim, bizden her biri üzerinde, zevcesinin hakkı nedir?" "Kendin yiyince ona da yedirmen, giydiğin zaman ona da giydirmen, yüzüne vurmaman, ayıplamaman, evin içi hariç onu terk etmemen." (Ebu Dâvud, Nikâh 42, (2142, 2143, 2144)
+**Yanlışı konuşurken insanın değerini koruyalım; ihtiyacımızı açıkça anlatalım.**
 
-1- Koca eşine mehrini cömertçe vermelidir.
+---
 
-Evlenme sırasında erkeğin kadına ödediği veya ödeyeceğini taahhüt ettiği para veya mal (MEHİR) kadının hakkıdır.
+<h2 class="vaaz-bolum-baslik" id="farklilik" tabindex="-1">VI. Farklı düşünürken bağı korumak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">وَآتُواْ النَّسَاء صَدُقَاتِهِنَّ نِحْلَةً فَإِن طِبْنَ لَكُمْ عَن شَيْءٍ مِّنْهُ نَفْسًا فَكُلُوهُ هَنِيئًا مَّرِيئًا</p>
+**Aziz anneler ve babalar, sevgili gençler!**
 
-“Kadınlara mehirlerini gönül rızası ile (cömertçe) verin; eğer gönül hoşluğu ile o mehrin bir kısmını size bağışlarlarsa onu da afiyetle yeyin. (Nisa, 4/4)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">خَيْرُكُمْ خَيْرُكُمْ لأَهْلِهِ وَأَنَا خَيْرُكُمْ لأَهْلِي</p>
 
-2- Nafaka: erkeğin tüm aile fertlerine karşı önemli görevi helalinden nafakalarını sağlamaktır. Nafaka kişinin bakmakla yükümlü olduğu kimselerin yiyecek, giyecek ve konut giderlerini karşılamak demektir. Nikah işlemi tamamlanınca, kadının nafakası normal ölçüler içinde kocaya aittir. Kur'an-ı Kerim'de şöyle buyurulmuştur:
+*Sizin en hayırlınız ailesine en hayırlı olanınızdır. Ben de aileme karşı sizin en hayırlınızım.* (Tirmizî, 3895; rivayetten bölüm; sahih)
 
-<p lang="ar" dir="rtl" class="ayet">وَعَلَى الْمَوْلُودِ لَهُ رِزْقُهُنَّ وَكِسْوَتُهُنَّ بِالْمَعْرُوفِ</p>
+Peygamber Efendimiz (s.a.s.), hayırlı oluşumuzun ölçüsünü ailemize davranışımızda da aramamızı öğretiyor. Farklı düşündüğümüz anda bu ölçüyü hatırlayalım. Yakınımızın sözünü sabırla dinleyelim. Tartışırken onun emeğini de hatırlamak, meseleyi hakkaniyetle ele almamıza yardım eder.
 
-“Annelerin beslenmesi ve giyimi, uygun bir şekilde çocuk babasına aittir.” (Bakara, 2/233)
+Gurbette farklılık bazen iki kelimenin arasına girer. Genç okulda duyduğu bir sözü Fransızca anlatır; dedesi Türkçe karşılığını arar. Genç, anlaşılmak isterken büyük, kendisinden uzaklaşıldığını hissedebilir. Bilmediğimiz kelimeyi sormak ve yeniden açıklamak için sabır gösterelim. Aynı evde tercümeye de ihtiyaç olabilir.
 
-Koca, karısının nafakasını temin etmek, giyecek, yiyecek ve barınma gibi temel ihtiyaçlarını karşılamak zorundadır. Kuşkusuz bunların tespitinde, adamın maddi durumu ve toplumun geleneği esas alınır.
+**Ailede gönül bağı, birbirimizi dinleyip sözümüzün sorumluluğunu almakla güçlenir.**
 
-### Kadının Kocasına Karşı Görevleri
+Bir anne için geç kalmak tehlike ihtimalidir; bir genç için arkadaşlarından ayrılmanın güçlüğüdür. Önce iki kaygıyı da duyalım. Ardından haberleşme biçimini ve dönüş saatini konuşalım. Sözleştiğimiz ölçü anlaşılır olsun. Yapamadığımızda mazeretimizin yanında kendi sorumluluğumuzu da söyleyelim.
 
-1- İtaat: İtaat, kadının kocasına karşı yerine getirmek zorunda olduğu ilk yükümlülüklerden birisidir.
+Her meselede aynı tercihi paylaşamayabiliriz. Bir görüş ayrılığını kişinin sevgisizliğine veya imanına hükmetmeye çevirmeyelim. Dinî bir soruda bilmediğimiz noktayı güvenilir kaynaktan araştıralım. Aile büyüğümüzün tecrübesini saygıyla dinlerken, gençlerin gördüğü yeni şartları da öğrenelim.
 
-“Erkeklerin kadınlar üzerindeki hakları gibi kadınların da erkekler üzerinde belli hakları vardır. Ancak erkekler, kadınlara göre bir derece üstünlüğe sahiptirler. Allah azizdir, hakimdir.” (Bakara 2/228)
+Yeni Müslüman olmuş bir yakınımız, ailesine ibadetini anlatacak kelimeleri arayabilir. Sözünü hazırlamasına yardımcı olalım. Dil, işitme veya konuşma güçlüğü yaşayan bir aile ferdimiz için iletişimi kolaylaştıralım. Herkesin sohbete katılabileceği bir yol arayalım.
 
-Kadın, kocasına itaat etmek, meşru isteklerine karşılık vermek zorundadır. Ayrıca rızası olmadan, evin dışına çıkmak, malını saçıp savurmak, ev işlerini ihmal etmek gibi evlilik hayatını karşılıklı nefrete ve sonuçta da ayrılığa doğru götüren olumsuzluklardan kaçınmalıdır.
+Olumlu huyları görmek, süren bir zararı sineye çekmek anlamına gelmez. İyiliği takdir ederken inciten davranışın değişmesini isteyebiliriz. Hem hakkı açıkça söyleyelim hem muhatabımızı tek bir kusurla tanımlamaktan sakınalım.
 
-Günümüzde bazı anlayışlar, aileyi sınırsız özgürlüğünün önüne konulmuş bir engel olarak görmektedir.
+Sesimizin ve kelimelerimizin taşıdığı anlamı da birbirimize soralım. “Sözünden bunu anladım; sen bunu mu kastettin?” cümlesi, yanlış anlama ihtimalini görmemize yardım eder. Acele yazılmış kısa bir mesajı okumakla, aynı sözü yüz yüze duymak farklı olabilir. Kırıldığımız cümleyi hemen bütün aileye anlatmadan önce, güvenle konuşabiliyorsak sahibinden açıklamasını isteyelim.
 
-Sabitelere sırt çevirerek yeni yeni roller ve modeller üretme çabası günümüz kadınını şöyle bir noktaya getirmiştir: Kocasına değil patronuna güvenen, bir başka ifade ile koca merkezli değil, patron merkezli bir kadın tipi ortaya çıkmış ve bu tip, kocasından başka herkese karşı itaatkâr ancak kocasına karşı ise isyankâr bir davranış tarzı geliştirmiştir ki budur ailelerin dağılmasındaki en önemli etkenlerden birisi olarak karşımıza çıkmaktadır
+Büyüklerimiz bazen kaygılarını nasihat biçiminde söyler; gençlerimiz bazen ihtiyaçlarını itirazla anlatır. Biz sözün altında hangi meselenin durduğunu öğrenmeye çalışalım. Ulaşım mı zor geliyor, vakit mi yetmiyor, anlaşılmamak mı incitiyor? Sebebi öğrenince üzerinde konuşacağımız konu belirginleşir. Aile sofrasında birbirimize tanıdığımız bu açıklama hakkını, uzaktaki yakınlarımızla telefon görüşmesinde de sürdürelim.
 
-2- Onuru korumak: Kadının en önemli görevlerinden biri kocasının onurunu korumaktır. Onun adını lekelememektir. Bir kadın kocasının hoşlanmadığı şeylerden kaçınmalıdır. Açık – saçık dolaşmak, kocasının sırlarını ifşa etmek, adamın bilinmesini istemediği şeyleri (yoksulluk vb.) sağda solda anlatmak gibi kötü huyları terk etmelidir.
+**Farklılığımızı konuşabilir, birbirimizin onurunu aynı anda koruyabiliriz.**
 
-3- Kocasının kazancını, malını muhafaza etmek ve israftan sakınmak
+---
 
-### Anne Babanın Çocuklara Karşı Sorumlulukları
+<h2 class="vaaz-bolum-baslik" id="ekranlar" tabindex="-1">VII. Sofrada ekranı bırakıp insana dönmek</h2>
 
-Anne ve babaya Allah’ın birer hediyesi olan çocuklar aile bahçesinin gülleridir. Onları sevgi ile yetiştirip topluma yararlı bir kimse olarak hazırlamak, anne-babanın başta gelen görevleri arasındadır. Bunun için dinimiz, geleceğin teminatı olan çocuklarla ilgili olarak aileye büyük sorumluluklar yüklemiştir. Kur'an-ı Kerim'de şöyle buyuruluyor:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ الرِّفْقَ لاَ يَكُونُ فِي شَىْءٍ إِلاَّ زَانَهُ</p>
 
-<p lang="ar" dir="rtl" class="ayet">يَا اَيُّهَا الَّذينَ امَنُوا قُوا اَنْفُسَكُمْ وَاَهْليكُمْ نَارًا وَقُودُهَا النَّاسُ وَالْحِجَارَةُ</p>
+*Yumuşaklık ve nezaket, bulunduğu şeyi güzelleştirir.* (Müslim, 2594a; rivayetten bölüm)
 
-“Ey inananlar! Kendinizi ve ailenizi yakıtı insanlar ve taşlar olan ateşten koruyun.” (Tahrim, 66/6)
+Sofrada çorbanın buharı yükselirken gözümüz ekrana takılabiliyor. Yanımızdaki insan gününü anlatıyor; biz arada başımızı sallıyoruz. Hadisteki rıfkı bugün dikkatimize de taşıyalım. Muhatabımıza vakit ayırmak, sözünü telaşla geçiştirmeden dinlemek için bir fırsattır.
 
-Hz. Ömer: “Ey Allah’ın Resûlü! Kendimizi koruruz fakat ailemizi nasıl koruyabiliriz? diye sordu. Peygamberimiz: “Allah’ın sizi yasakladığı şeylerden onları sakındırırsınız ve Allah’ın size emrettiği şeyleri onlara emredersiniz. İşte bu, onları korumak demektir” buyurdu. (Alûsî, Ruhu 'l-Maânî, Beyrut, c. 28, s. 156)
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Marche’da akşam sofrası</p>
 
-Kıymetli Kardeşlerim!
+Marche’da bir akşam, vardiyadan dönen baba, evdeki işlerini yeni bitiren anne ve okuldan gelen genç aynı sofraya oturuyor. Gencin ekrana baktığını gören baba uyaracakken kendi telefonunun da elinde olduğunu fark ediyor. Telefonunu rafa bırakıyor: “Ben de bırakayım; bugün seni en çok ne meşgul etti?” Genç önce kısa cevap veriyor. Anne acele etmiyor. Bir süre sonra okulda yaşadığı güçlüğü anlatmaya başlıyor.
 
-Anne babanın çocuğuna karşı önemli vazifelerden bir tanesi ona güzel anlam içeren alay konusu olmayan bir isim koymasıdır. Hz Peygamber (s.a.v) hadisi şeriflerinde
+Ailece uygulanabilir bir vakit belirleyelim. Bir öğünün bir bölümünü konuşmaya ayırabiliriz. Kuralı önce yetişkinler üstlensin. İş için acil haber bekleyen bunu önceden açıklasın. Engeli sebebiyle cihazı iletişim aracı olarak kullanan yakınımızın ihtiyacını gözetelim. Maksadımız birbirimize ulaşmak olsun.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِى الدَّرْدَاءِ قَالَ قَالَ رَسُولُ الله صَلَّى الله عَلَيه وسَلم : إِنَّكُمْ تُدْعَوْنَ يَوْمَ الْقِيَامَةِ بِأَسْمَائِكُمْ وَأَسْمَاءِ آبَائِكُمْ فَأَحْسِنُوا أَسْمَاءَكُمْ</p>
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Dikkatimizi paylaşmanın üç yeri</strong> Aynı nezaketi farklı anlarda sürdürebiliriz.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Sofrada</dt><dd>Kısa bir süre bildirimleri kapatıp herkesin sözünü dinleyelim.</dd></div>
+<div><dt>Eve dönüşte</dt><dd>İlk selâmdan sonra ekran yerine yakınımızın hâline bakalım.</dd></div>
+<div><dt>Uzakta yaşarken</dt><dd>Görüşmek için zaman belirleyip konuşmayı başka işlerle bölmeyelim.</dd></div>
+</dl>
+</figure>
 
-Ebu'd-Derdâ radıyallahu anh'dan rivayet edildiğine göre, Rasûlullah sallallahu aleyhi ve sellem
+Birlikte yemek yiyemediğimiz günlerde küçük bir başka imkân bulalım. Otobüs durağına yürürken veya çay içerken konuşabiliriz. Sürenin kısalığına takılmadan dikkatimizi verelim. Anlatmak istemeyeni zorlamadan, hazır olduğunda dinleyeceğimizi hissettirelim.
 
-“Kendi isimleriniz ve babalarınızın isimleri ile çağrılacaksınız. O halde isminiz güzel olsun” buyurarak isim konusunda ailelerini sorumluluğuna dikkat çekmiştir.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/aile-en-guvenli-yuvamiz-2/ekransiz-sofra.svg" width="1600" height="900" alt="Yemek masasından uzaktaki rafta ekranı kapalı telefonlar; önde ekmek ve çorba kâseleri." loading="lazy" decoding="async">
+<figcaption><strong>Sofrada birbirimize dönecek vakit</strong> Telefonu kenara bırakıp yanımızdaki insanın sözünü tamamlamasını bekleyelim.</figcaption>
+</figure>
 
-Çocukların inançlı, sağlıklı, manevî değerlerine bağlı, vatan ve millet sevgisi ile dolu olarak yetiştirilmesinde birinci derecede ailenin sonra da toplumun rehberliği önemlidir.
+Sofradaki konuşmayı her gün bir sorguya çevirmeden merakla sürdürelim. Yalnız notları, işleri ve eksikleri sormak yerine günün sevincine de yer açalım. Yetişkinler de kendi gününden uygun bir şey anlatsın. Herkesin aynı anda konuşması gerekmez; sessizce dinleyen de o sohbetin içindedir.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ رَسُولِ اللَّهِ )صلعم( قَالَ أَكْرِمُوا أَوْلَادَكُمْ وَأَحْسِنُوا أَدَبَهُمْ</p>
+Ekran sınırını konuştuğumuz akşam, kendi alışkanlığımızı da açıkça değerlendirelim. Uyarıyı yalnız gençlere yöneltmeyelim. Bir gün düzen bozulduysa ertesi gün yeniden deneyebiliriz. Önemli olan ortak kararımıza dönmek ve birbirimizin hatırlatmasını saygıyla karşılamaktır. Kurduğumuz küçük düzen, birlikte vakit geçirme niyetimizi desteklesin.
 
-Peygamberimiz: “Çocuklarınıza hoş muamelede bulunun ve onları güzel terbiye edin.” buyurmuştur. (İbn Mace, Edeb, 3)
+**Ekrana ara verdiğimiz vakti, birbirimizi tanımaya ayıralım.**
 
-Bir başka hadisi şerif de şöyledir:
+---
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ النَّبِيُّ )صلعم( مُرُوا الصَّبِيَّ بِالصَّلَاةِ إِذَا بَلَغَ سَبْعَ سِنِينَ</p>
+<h2 class="vaaz-bolum-baslik" id="mahremiyet" tabindex="-1">VIII. Mahremiyeti koruyup yardımın yolunu açık tutmak</h2>
 
-“Çocuklarınıza yedi yaşına geldiklerinde namaz kılmalarını emredin.” (Ebu Davud, Salat, 417) buyurarak dini yaşantı noktasın anne babanın çocuk üzerinedeki sorumluluğunu ifade etmiştir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
 
-Çocuklar genelde anne-babayı örnek alırlar. Onların söz ve davranışlarından etkilenirler. Bunun için anne-baba çocuklarının dürüst, ahlâklı ve faziletli yetişmeleri için onlara örnek olmaları gerekir.
+*Eşiyle birbirine yakınlık gösterdikten sonra onun sırrını yayan erkek, kıyamet günü Allah katında konumu en kötü kimselerdendir.* (Müslim, 1437a)
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَبْدِ اللَّهِ بْنِ عَامِرٍ أَنَّهُ قَالَ أَنْ دَعَتْنِي أُمِّي يَوْمًا وَرَسُولُ اللَّهِ)صلعم( قَاعِدٌ فِي بَيْتِنَا فَقَالَتْ هَا تَعَالَ أُعْطِيكَ فَقَالَ لَهَا رَسُولُ اللَّهِ)صلعم( وَمَا أَرَدْتِ تُعْطِيهِ قَالَتْ أُعْطِيهِ تَمْرًا فَقَالَ لَهَا رَسُولُ اللَّهِ )صلعم( أَمَا إِنَّكِ لَوْ لَمْ تُعْطِهِ شَيْئًا كُتِبَتْ عَلَيْكِ كِذْبَةٌ</p>
+Bu hadis, eşlerin cinsel mahremiyetini açığa vurmanın ağırlığını bildirir. Buradan aldığımız edebi diğer özel konuşmalarımızda da gözetelim. Yakınımızın bize güvenerek anlattığını arkadaş meclisinin konusu yapmayalım. Emanet, ekranın öbür tarafında da emanettir.
 
-Abdullah b. Amr (r.a.) anlatıyor: “Ben küçüktüm, Peygamberimizin evimizde bulunduğu bir günde, annem beni: “Gel sana bir şey vereceğim” diye çağırdı. Peygamberimiz anneme: “Çocuğa ne vermek istedin?” diye sordu. Annem: “Hurma vereceğim.” dedi. Bunun üzerine Peygamberimiz: “Eğer (çocuğu aldatıp ona) bir şey vermeyeydin, sana bir yalan günahı yazılırdı.” buyurdu. (Ebu Davud, Edep, 88, 4339)
+Telefonumuzda bir aile tartışmasının mesajları duruyor olabilir. Bunları öfkeyle gruba göndermeden duralım. Genişleyen dinleyici halkası, çözümü güçleştirebilir. Hakkımızı anlatırken gerçeğe bağlı kalalım; meseleyi çözebilecek kişiye, ihtiyaç kadar bilgi verelim.
 
-Anne-babaya çocuklarını eğitmek, güzel terbiye etmek ve yetiştirmek için büyük fedakarlık düşmektedir. Bu aynı zamanda onların dini görevlerindendir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">۞ لَّا يُحِبُّ ٱللَّهُ ٱلْجَهْرَ بِٱلسُّوٓءِ مِنَ ٱلْقَوْلِ إِلَّا مَن ظُلِمَ ۚ وَكَانَ ٱللَّهُ سَمِيعًا عَلِيمًا ۝١٤٨</p>
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ لَأَنْ يُؤَدِّبَ الرَّجُلُ وَلَدَهُ خَيْرٌ مِنْ أَنْ يَتَصَدَّقَ بِصَاعٍ</p>
+*Allah kötü sözün açığa vurulmasını sevmez; ancak haksızlığa uğrayan başka. Allah her şeyi işitmekte ve bilmektedir.* (Nisâ, 4/148)
 
-Peygamberimiz şöyle buyuruyor: “Hiçbir baba çocuğuna güzel terbiyeden daha üstün bir bağışta bulunmuş olamaz.” (Tirmizi, Birr, 33/1874)
+Rabbimiz haksızlığa uğrayanın durumunu açıkça ayırıyor. Kur’an Yolu tefsiri de onun uğradığı kötülüğü ilgililere duyurma hakkını belirtir. Mahremiyeti korumak, yardım isteyenin ağzını kapatmak değildir. Şiddet, tehdit veya başka bir zarar yaşayan kişi bunu anlatabilir ve korunma isteyebilir.
 
-### Çocukların Anne Babalarına Karşı Sorumlulukları
+Bize böyle bir dert anlatıldığında sakin biçimde dinleyelim. Hemen karşı tarafa haber uçurmak yerine anlatanın güvenliğini gözetelim. Dedikoduya çevirmeden, ehil desteğe erişmesine yardımcı olalım. Gerekli bir müracaatta ne yaşandığını doğru ve açık anlatmasını kolaylaştıralım.
 
-Kıymetli Kardeşleri!
+Bir yakınımız yalnızca eşinden şikâyet etmek için konuştuğunda da ateşe odun taşımayalım. “Bunu onunla nasıl konuşabilirsin?” diye sorabiliriz. Fakat korku ve zarar anlatılıyorsa güvenli desteğin yolunu arayalım. Dinleyen kişinin sözü de büyük bir sorumluluk taşır.
 
-Yaratıklar içinde insana en çok yakın olan ve insan üzerinde en çok hakkı bulunan, anne ve babadır. Çünkü Allah Teâlâ, onları insanın var olması için sebep kılmıştır. Bunun içindir ki, Allah Teâlâ kendisine ibadetten sonra ikinci derecede anne ve babaya iyilik yapılmasını emretmiştir:
+Bir yakınımızla ilgili bilgiyi paylaşmamız istendiğinde, bunun hangi ihtiyaca hizmet edeceğini soralım. Merak ile yardım arasındaki farkı gözetelim. Güvenliği sağlamak veya bir hakkı aramak için gerekli bilgiyi ehline ulaştıralım. İlgisi olmayan ayrıntıları yaymadan da doğru kişiden destek almak mümkündür.
 
-<p lang="ar" dir="rtl" class="ayet">وَقَضَى رَبُّكَ أَلاَّ تَعْبُدُواْ إِلاَّ إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا إِمَّا يَبْلُغَنَّ عِندَكَ الْكِبَرَ أَحَدُهُمَا أَوْ كِلاَهُمَا فَلاَ تَقُل لَّهُمَا أُفٍّ وَلاَ تَنْهَرْهُمَا وَقُللَّهُمَا قَوْلاً كَرِيمًا .وَاخْفِضْ لَهُمَا جَنَاحَ الذُّلِّ مِنَ الرَّحْمَةِ وَقُل رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا</p>
+**Özel hayatı koruyalım; haksızlığa uğrayanın yardım isteme hakkını da koruyalım.**
 
-Rabbin, sadece kendisine kulluk etmenizi, ana-babanıza da iyi davranmanızı kesin bir şekilde emretti. Onlardan biri veya her ikisi senin yanında yaşlanırsa, kendilerine “of!” bile deme; onları azarlama; ikisine de güzel söz söyle. Onları esirgeyerek alçakgönüllülükle üzerlerine kanat ger ve: “Rabbim! Küçüklüğümde onlar beni nasıl yetiştirmişlerse, şimdi de sen onlara (öyle) rahmet et!” diyerek dua et. (İsra, 17/23-24)
+---
 
-Bir başka ayeti kerimede Cenâb-ı Allah şöyle buyuruyor:
+<h2 class="vaaz-bolum-baslik" id="ozur" tabindex="-1">IX. Özür: Sözü davranışla doğrulamak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">وَوَصَّيْنَا الْاِنْسَانَ بِوَالِدَيْهِۚ حَمَلَتْهُ اُمُّهُ وَهْناً عَلٰى وَهْنٍ وَفِصَالُهُ ف۪ي عَامَيْنِ اَنِ اشْكُرْ ل۪ي وَلِوَالِدَيْكَ ۜ اِلَيَّ الْمَص۪يرُ ﴿١٤﴾</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ الْمُفْلِسَ مِنْ أُمَّتِي يَأْتِي يَوْمَ الْقِيَامَةِ بِصَلاَةٍ وَصِيَامٍ وَزَكَاةٍ وَيَأْتِي قَدْ شَتَمَ هَذَا وَقَذَفَ هَذَا … فَيُعْطَى هَذَا مِنْ حَسَنَاتِهِ وَهَذَا مِنْ حَسَنَاتِهِ</p>
 
-Biz insana anne babasıyla ilgili öğütler verdik. Annesi, güçten kuvvetten düşerek onu karnında taşımıştır; çocuğun sütten kesilmesi iki yıl içinde olur. Bunun için (ey insan), hem bana hem anne babana minnet duymalısın; sonunda dönüş yalnız banadır. (Lokman, 31/14)
+*Ümmetimin müflisi kıyamet günü namaz, oruç ve zekâtla gelir; fakat şuna sövmüş, buna iftira etmiştir… İyiliklerinden buna da verilir, ötekine de verilir.* (Müslim, 2581; rivayetten bölümler)
 
-<p lang="ar" dir="rtl" class="ayet">وَاِنْ جَاهَدَاكَ عَلٰٓى اَنْ تُشْرِكَ ب۪ي مَا لَيْسَ لَكَ بِه۪ عِلْمٌ فَلَا تُطِعْهُمَا وَصَاحِبْهُمَا فِي الدُّنْيَا مَعْرُوفاًۘ وَاتَّبِعْ سَب۪يلَ مَنْ اَنَابَ اِلَيَّۚ ثُمَّ اِلَيَّ مَرْجِعُكُمْ فَاُنَبِّئُكُمْ بِمَا كُنْتُمْ تَعْمَلُونَ ﴿١٥﴾</p>
+Kırılmış bir cümlenin ardından evin içine sessizlik çökebilir. Çay soğur, herkes başka bir odaya çekilir. O sessizlikte kendi payımıza bakacak cesareti bulalım. Efendimiz (s.a.s.), sövmenin ve iftiranın insan hakkı doğurduğunu hatırlatıyor. Bu hesabı düşünerek, dilimizle verdiğimiz zararı bugün gidermeye başlayalım.
 
-Eğer anne baban, hakkında bilgin olmayan bir şeyi bana ortak koşman için seni zorlarlarsa bu durumda onlara uyma ama yine de onlara dünyada iyi davran; yüzünü ve özünü bana çevirenlerin yolunu izle. Sonunda dönüşünüz yalnız banadır. O zaman yapıp ettiklerinizin sonucunu size bildireceğim. (Lokman, 31/15)
+Özrü belirli bir davranış için dileyelim: “Sözünü kestim ve sesimi yükselttim. Yanlış yaptım.” Sonra karşımızdakinin ne yaşadığını dinleyelim. “Ama sen de…” diye başlayan bir cümleyle sorumluluğumuzu geri almayalım. Kendi yanlışımızı sahiplenmek, onarmanın başlangıcıdır.
 
-Bu ayet ashaptan Sa’d b. Ebi Vakkâs hakkında nazil olmuştur. Hz. Sa’d olayı şöyle anlatmaktadır: “Ben anneme hürmet ve itaat eden bir çocuktum, Müslüman olunca annem bana: Sa’d! bu yaptığın nedir? Ya sen bu yeni dinini bırakırsın, yahut da ben yemem içmem ve sonunda ölürüm. Sen de benim yüzümden; “anasının katili!” diye ayıplanırsın, dedi. Ben; “Anneciğim böyle yapma. İyi bil ki, ben bu dini bırakmam!” dedim. Ve iki gün iki gece bekledim. Kadın ne yedi, ne içti. Bunun üzerine:” Vallahi anne, iyi bil ki, senin yüz canın olsa da bunlar birer birer çıksa, ben bu dinimi yine bırakmam. Artık ister ye, ister yeme” dedim. Bu azmimi görünce annem bu direnmesinden vazgeçti. Bunun üzerine yukarıdaki ayet-i kerîme nazil oldu. (Tecrîd-i Sarîh Tercümesi, XII, 121 ) .
+Ardından neyi değiştireceğimizi söyleyelim. “Konuşurken telefonumu bırakacağım.” “Yetişemeyeceksem haber vereceğim.” “Öfkelenince ara isteyeceğim.” Verdiğimiz söz küçük ve uygulanabilir olsun. Aynı incitici davranış tekrar ediyorsa onu değiştirecek yardım ve tedbir arayalım.
 
-Kıymetli kardeşlerim bu ayeti kerimede şu hususa dikkatinizi çekmek isterim. Anne babanın çocuğundan isteyecegi en ağır istek imanı konuda Allah’a şirk koşmaktır. Yüce Allah ayeti kerimede böyle bir durumda onlara itaat edilmeyeceğini belirtirken yinede onlara iyi davranmamızı emrediyor.
+Çocuğumuza bağırdıysak onun anlayacağı dille özür dileyebiliriz. Büyüklüğümüz, yanlışımızı kabul ettiğimizde güzel bir örneğe dönüşür. Çocuk, hatadan sonra sorumluluk almayı bizden görsün. Bir ailede özür duyabilmek, herkesin kendi davranışını gözden geçirmesine imkân verir.
 
-Bugün anne babasına karşı farklı gerekçelerle itaatsizlik edip onlardan ilgisini esirgeyen evlatların ileri sürmüş oldukları mazeretlerin, evlatlık vazifelerini yapmama noktasında geçerli bir mazeret olamayacağını bizlere göstermektedir.
+Özür dilediğimiz kişi hemen rahatlamayabilir. Ona düşünmesi için zaman tanıyalım. “Hadi artık unut” diye acele ettirmek yerine değişikliği sürdürmeye bakalım. Maddî bir zarar verdiysek gidermek için adım atalım. Başkasının yanında incittiysek, onurunu nasıl onarabileceğimizi de kendisine soralım.
 
-Anne ve babaya iyilik etmek, hizmet etmek ve gönüllerini almak-Allah’a ibadetten sonra- başka hiçbir davranışla elde edilemeyecek bir sevaptır.
+Biz incinmişsek ihtiyacımızı açıkça söyleyebiliriz: “Özrünü duydum; bu davranışın tekrarlanmamasını istiyorum.” Barışma yolunda hak ve güven birlikte gözetilsin. Bağışlamayı değerli kılan, insanın gönüllü oluşudur. Kimseyi yaşadığı acıyı örtmeye zorlamayalım.
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ سَأَلْتُ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ أَيُّ الْعَمَلِ أَحَبُّ إِلَى اللَّهِ قَالَ الصَّلَاةُ عَلَى وَقْتِهَا قَالَ ثُمَّ أَيٌّ قَالَ بِرُّ الْوَالِدَيْنِ قَالَ ثُمَّ أَيٌّ قَالَ الْجِهَادُ فِي سَبِيلِ اللَّهِ</p>
+Bugün zihnimizde bir konuşma canlandıysa onu sürekli ertelemeyelim. Sakin bir zaman seçip kendi cümlemizle başlayalım. Samimi bir özür ve ardından gelen tutarlılık, kırgınlığın onarılmasına kapı açabilir.
 
-Abdullah b. Mesûd (r.a.) anlatıyor. Peygamberimize:- Allah’ın en sevdiği amel hangisidir? Diye sordum. Peygamberimiz:- Vaktinde kılınan namaz, buyurdu.- Sonra hangisi? Dedim: Peygamberimiz:- Anneye-babaya iyilik etmek, buyurdu. Ben:- Sonra hangisi? Dedim, Peygamberimiz:- Allah yolunda savaştır, buyurdu. (Buhârî, Edep, 1; Müslim, İman, 36)
+Onarma çabamızın muhatabımızda nasıl karşılandığını da soralım. “Yapmaya söz verdiğim şey sana yardımcı oldu mu?” diyebiliriz. Bazen bizim yeterli gördüğümüz değişiklik, karşı tarafın ihtiyacını tam karşılamaz. Bunu duyduğumuzda hemen alınmadan yeniden dinleyelim. Ortak bir çözüm, konuşmanın devam etmesiyle olgunlaşır.
 
-Bir başka hadisi şerifte;
+Helâllik isterken dinî sözleri karşımızdakini sıkıştırmak için kullanmayalım. Kendi hesabımızı hatırlayıp samimiyetle adım atalım. Bir borcumuz veya yerine getirmediğimiz somut bir yükümlülüğümüz varsa önce onu açıkça kabul edelim. Ne yapacağımızı ve ne zaman yapabileceğimizi dürüstçe söyleyelim. Güven, büyük vaatlerden çok yerine getirilen küçük sözlerle yeniden kurulabilir.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِي هُرَيْرَةَ عَنْ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ رَغِمَ أَنْفُ ثُمَّ رَغِمَ أَنْفُ ثُمَّ رَغِمَ أَنْفُ قِيلَ مَنْ يَا رَسُولَ اللَّهِ قَالَ مَنْ أَدْرَكَ أَبَوَيْهِ عِنْدَ الْكِبَرِ أَحَدَهُمَا أَوْ كِلَيْهِمَا فَلَمْ يَدْخُلْ الْجَنَّةَ</p>
+**Özrümüz, düzelttiğimiz davranış kadar güven verir.**
 
-Peygamberimiz (s.a.s.) çok öfkeli bir şekilde üç defa, “Burnu yere sürtülsün ” dediğinde Ashab-ı Kiram;“Kimdir o? Ey Allah’ın Resulü! ” diye sorunca; “Ana-babası veya bunlardan birisi yanında ihtiyarladığı hâlde, Cennet’e giremeyip Cehennem’i boylayan kimse” diye buyurmuştur. (Müslim, Birr, 9).
+---
 
-Hz. Peygamber (s.a.s.) çocukların ebeveynlerine karşı sorumluluklarının ne kadar büyük olduğunu şöyle dile getirmektedir:
+<h2 class="vaaz-bolum-baslik" id="destek" tabindex="-1">X. Düğüm büyümeden ehil yardım aramak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَبِي هُرَيْرَةَ قَالَ قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ لَا يَجْزِي وَلَدٌ وَالِدًا إِلَّا أَنْ يَجِدَهُ مَمْلُوكًا فَيَشْتَرِيَهُ فَيُعْتِقَهُ</p>
+**Muhterem Müslümanlar!**
 
-“Çocuk, hiç bir iyilikle babanın hakkını ödeyemez. Ancak onu köle olmuş bir vaziyette bulur da satın alarak hürriyetine kavuşturursa hakkını öder.” (Müslim, İtk 25)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا۟ بَيْنَ أَخَوَيْكُمْ ۚ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُرْحَمُونَ ۝١٠</p>
 
-Çocuklar her zaman ana-babasının hayır dualarını almaya çalışmalıdır.
+*Müminler ancak kardeştirler, öyleyse iki kardeşinizin arasını düzeltin, Allah’a itaatsizlikten sakının ki rahmetine mazhar olasınız.* (Hucurât, 49/10)
 
-<p lang="ar" dir="rtl" class="ayet">ثَلاَثُ دَعَوَاتٍ يُسْتَجَابُ لَهُنَّ لاَ شَكَّ فِيهِنَّ: دَعْوَةُ الْمَظْلُومِ، وَدَعْوَةُ الْمُسَافِرِ ، وَدَعْوَةُ الْوَالِدِ لِوَلَدِهِ</p>
+Kur’an, iman kardeşliğini arayı düzeltme sorumluluğuyla birlikte anıyor. Kur’an Yolu tefsiri bu sorumluluğu, anlaşmazlıkları adaletle çözmek ve haklının yanında durmakla açıklıyor. Aile içindeki anlaşmazlıklarda da bu ahlâkı gözetelim. Çözemediğimiz düğüm için, hakkı koruyarak yardımcı olabilecek ehil birine başvuralım.
 
-“Üç dua var bunların kabul olacağında şüphe yoktur: Mazlumun (Haksızlığa uğramış olan kimsenin) duası, misafirin duası ve anne-babanın çocuklarına olan duasıdır” buyurmuşlardır. (Tirmizî, Birr, 7; İbn Mâce, Dua, 11)
+Haftalarca aynı tartışmaya döndüğümüzde, konuşma girişimleri sürekli hakarete dönüştüğünde veya biri korktuğunda desteği geciktirmeyelim. Ehil, adaletli ve mahremiyete özen gösteren bir kişiye başvuralım. Dinî sorumuzu güvenilir bir hocaya, aile içi iletişim güçlüğümüzü uygun bir uzmana anlatabiliriz.
 
-Veysel Karanî Hazretleri, ihtiyâr, âmâ ve hasta annesine hizmeti sebebiyle, her ne kadar Peygamber (s.a.v.) Efendimiz’i göremediyse de O’nun eşsiz lutuf ve ihsânlarına nail olmuştur.
+Destek alacağımız kişinin iki tarafı da dinleyebilmesi gerekir. Akrabalık, meselenin bütününü bildiğimiz anlamına gelmez. “Bizimki haklıdır” peşin hükmünü bırakalım. Yaşanan davranışı ve etkisini anlamaya çalışalım. Herkesin aynı ölçüde suçlu olduğunu varsaymadan hakkı gözetelim.
 
-Bununla birlikte anne bedduâsından da son derece sakınmalıdır. Onların bedduâsını alan evlâdın, dünyâda iki yakası bir araya gelmeyeceği gibi, ahirette de ebedî hüsrâna uğrayacağında şüphe yoktur.
+Bir randevu kâğıdı buzdolabının üzerine asılabilir. O küçük kâğıt, yardımın artık niyetten adıma geçtiğini gösterir. Belçika’da dili yeterince bilmeyen bir yakınımız, destek görüşmesinde yetişkin ve güvenilir dil yardımı isteyebilir. Çocukları anne babanın mahrem anlaşmazlığının tercümanı veya hakemi yapmayalım.
 
-Abdullah b. EbîEvfa (r.a.) anlatıyor: “Peygamberimizin huzurunda bulunduğumuz sırada birisi gelerek:
+Tehdit ya da şiddet varsa önce güvenli yere ulaşmak ve uygun yardım hizmetlerine başvurmak gerekir. Böyle bir durumda kişiyi birlikte görüşmeye veya hemen barışmaya zorlamayalım. Dinî rehberliğin yanında ihtiyaç duyulan uzman ve koruma desteğinin yolu açık kalsın.
 
-–Ey Allah’ın Rasûlü, ölüm döşeğinde can çekişen bir genç var, kendisine‘Lâ ilâhe illallah’ de denildiği halde bunu bir türlü söyleyemiyor, dedi (ve Peygamberimizden yardım istedi) Peygamberimiz sordu:
+Yardım isteyen yakınımıza “Bunu niçin daha önce söylemedin?” diye yüklenmek yerine, bugün hangi adımı atabileceğini soralım. Gerekirse ilk görüşmeye ulaşmasını kolaylaştıralım. İnsan bazen bir telefon açacak cesarete ihtiyaç duyar.
 
-–Namaz kılar mıydı? Adam: –Evet kılardı, dedi.
+**Düğüm büyümeden yardım aramak, ailemize karşı sorumluluğumuzun bir parçasıdır.**
 
-Bunun üzerine Peygamberimiz kalktı, biz de onunla kalktık Peygamberimiz gencin yanına girdi ve ona: – ‘Lâ ilâhe illallah’ de buyurdu.
+---
 
-Genç: –Söyleyemiyorum, dedi. Peygamberimiz: –Niçin söyleyemiyorsun ?diye sordu, Peygamberimize gelen adam: –Annesine itaatsiz idi, dedi. Peygamberimiz: –Annesi sağ mı? diye sordu, orada olanlar: –Evet, sağdır, dediler. Peygamberimiz: –Çağırın, gelsin, buyurdu. Onlar da kadını çağırdılar, kadın geldi. Peygamberimiz kadına: –Şurada büyük bir ateş hazırlansa da sana: ‘Oğluna şefaat edersen, onu bu ateşte yakmayız, şefaat etmezsen bu ateşte yakarız’ deseler ne yaparsın? diye sordu. Kadın: –Onun şefaatçisi ben olurum, dedi. Bunun üzerine Peygamberimiz: –O halde bu oğlundan razı olduğuna ve hakkını helâ1 ettiğine Allah Teâlâ'yı ve beni şahit göster, buyurdu.
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta dilimize ve kulağımıza vereceğimiz yedi söz</h2>
 
-Kadın: –Allah'ım, yüce zatını ve Peygamberini şahit tutuyorum, oğlumdan razı oldum, dedi. Bunun üzerine Peygamberimiz gence dönerek: –‘Lâ ilâhe illallahü vahdehu lâ şerike leh ve eşhedü enne Muhammeden abdühu ve Rasûlüh’ de, buyurdu. Hasta genç hemen şehadet getirince, Peygamberimiz: –Allah'a hamd olsun ki, benim vasıtam ile bu genci cehennem ateşinden kurtardı, buyurdu. (Mecmau’z-Zevâid ve Menbeu’l-Fevâid, Beyrut,1967, c.8, s.148. (Hadisi Taberânî ve muhtasar olarak Ahmed b. Hanbel rivayet etmişlerdir.))
+**Aziz cemaat!**
 
-Çocuklar ana-babalarına karşı daima saygılı olmalı, onlara karşı tatlı dilli, güler yüzlü olmalı, hakkında kötü konuşmamalı, onlara saygılı davranmalı, vasiyetlerini yerine getirmeli, dostlarına ikramda bulunmalı, her işte onların rızasını almaya çalışmalıdır. Onların hizmetlerini kendi hizmetinden önce görmelidir. Öldüklerinde de onları rahmetle anmak, onlar için hayır dua etmek, hayır yapmak, vasiyetlerini mümkün mertebe yerine getirmek gerekir. Ana baba İslâmî emirleri yerine getirmede ve yasaklardan kaçınmada titizlik göstermiyorlarsa ve hatta kâfir iseler bu onların ana-baba olmalarından doğan haklarını ortadan kaldırmaz. Dolayısıyla onlara Allah’a isyan teşkil etmeyen hususlarda itaat etmek ve her zaman iyi davranmak gerekir.
+Şimdi bu öğütleri evimizin eşiğinden içeri taşıyalım. Her birimiz gücüne ve şartlarına uygun bir adımla başlayabilir. Bir kâğıda seçtiğimiz işi ve yapacağımız zamanı yazalım. Yalnız yaşayanımız, uzaktaki bir yakınıyla görüşmesinde aynı adımları uygulayabilir. Değişimi başlatmak için önce kendi davranışımıza bakalım.
 
-Üzerimizde bu kadar çok emek ve hakları olan anne ve babalarımızı sevmek ve onların sevgisini başka şeylerle değişmemek en önemli ahlakî görevlerimiz arasındadır. Bu görev, hayatta iken onlara karşı hürmet, şefkat ve merhamet göstermekle kendilerini hoşnut etmeye çalışmakla yerine getirilir.
+**AİLE İLETİŞİMİ İÇİN YEDİ SÖZ**
 
-Gerçek anne-baba sevgisi, “annemi, babamı seviyorum” demekten ibaret olmadığı gibi, sadece anneler-babalar gününde hatırlamakla da olmaz. Onlara karşı maddî-manevî her türlü görevin her zaman yerine getirilerek bu sevginin ispat edilebileceğini unutmamamız gerekir.
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir yakınımı sözünü kesmeden dinleyeceğim.</strong> Uygun bir vakit ayırıp anladığımı kendi cümlemle ona soracağım.</li>
+<li><strong>Ortak bir karar öncesinde ilgili aile ferdine fikrini soracağım.</strong> Kararı açıklamadan önce ihtiyacını dinleyip önerisini değerlendireceğim.</li>
+<li><strong>Öfke anında kullanacağım mola cümlesini hazırlayacağım.</strong> Sakinleşme ihtiyacımı söyleyip konuşmaya döneceğim vakti belirleyeceğim.</li>
+<li><strong>Dilime yerleşmiş bir incitici genellemeyi değiştireceğim.</strong> Kişiyi yargılamak yerine olayı ve ihtiyacımı açıkça anlatacağım.</li>
+<li><strong>Bir öğünde veya görüşmede ekranı kenara bırakacağım.</strong> Gerekli iletişim ve erişim ihtiyaçlarını gözetip dikkatimi yakınıma vereceğim.</li>
+<li><strong>Fark ettiğim bir yanlışım için özür dileyip düzeltme adımı atacağım.</strong> Neyi değiştireceğimi söyleyecek ve davranışımla göstereceğim.</li>
+<li><strong>Gerektiğinde başvurabileceğim ehil bir destek yolunu öğreneceğim.</strong> Bu hafta güvenilir bir başvuru imkânını belirleyip ihtiyaç varsa görüşme isteyeceğim.</li>
+</ol>
 
-Vaazımı Kur’an-ı Kerimde Rahman’ın has kullarının yapmış olduğu şu duayla bitirmek istiyorum:
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bugün bir adımı seç</strong>Bir kişiyi, uygun bir zamanı ve yapacağın davranışı belirle.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Sözünü bitirmesini bekle</strong></li>
+<li><span aria-hidden="true">2</span><strong>Karardan önce danış</strong></li>
+<li><span aria-hidden="true">3</span><strong>Dur ve vakit belirle</strong></li>
+<li><span aria-hidden="true">4</span><strong>İhtiyacını açıkça söyle</strong></li>
+<li><span aria-hidden="true">5</span><strong>Dikkatini insana ver</strong></li>
+<li><span aria-hidden="true">6</span><strong>Özrünü davranışla doğrula</strong></li>
+<li><span aria-hidden="true">7</span><strong>Destek yolunu öğren</strong></li>
+</ol>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">وَالَّذ۪ينَ يَقُولُونَ رَبَّـنَا هَبْ لَنَا مِنْ اَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ اَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّق۪ينَ اِمَاماً</p>
+Akşam eve döndüğümüzde ilk konuşmanın nasıl başladığına dikkat edelim. Seçtiğimiz bir davranışı sürdürmeye çalışalım; zorlandığımızda yeniden başlayalım. Haftanın sonunda kendimize soralım: Kimi daha iyi dinledim, hangi sözümü değiştirdim? Samimi gayretimizi dua ile besleyelim.
 
-Onlar, “Ey rabbimiz!” derler, “Bize mutluluk getirecek eşler ve çocuklar bahşet; bizi günahtan sakınanlara öncü yap!” (Furkan, 74)
+Bu sözleri evde konuşurken bir başkasının eksiklerini saymakla başlamayalım. “Ben dinlerken acele ettiğimi fark ettim” diyebiliriz. Yakınımıza bizi hangi anda dinlemeye daha hazır bulduğunu soralım. İlk adımın zamanını birlikte belirleyelim. Uygun olmayan bir saatte ısrar etmek yerine, ikimizin de dikkat verebileceği bir fırsat arayalım.
+
+Bir sözümüzü yerine getirdiğimizde karşılığında hemen aynı davranışı beklemeyelim. Kendi sorumluluğumuzu düzenli biçimde taşıyalım. Bunun yanında ihtiyacımızı söylemeye de devam edelim. Meselâ dinlediğimiz kişiden, sözümüzü bitirene kadar beklemesini isteyebiliriz. Aile içindeki güzel değişim, karşılıklı konuşulup sürdürülen küçük alışkanlıklarla gelişsin.
+
+Bu yedi adımı başkasına karşı bir denetim listesi yapmadan, kendi nefsimizi yoklamak için kullanalım. Bir görüşmenin ardından “Bugün sözünü tamamlamasına fırsat verdim mi?” diye soralım. Veremediysek sonraki konuşmada bunu düzeltelim. Gücümüzü aşan bir sorunda destek aramayı da verdiğimiz sözü tutmanın bir parçası sayalım.
+
+Aynı evde yaşamayanlarımız, uzaktaki yakınıyla konuşacağı bir vakit belirleyebilir. Konuşmak için güvenli şart bulamayanımız ise önce yardım yolunu öğrenebilir. Hastalık veya bakım sorumluluğu yüzünden vakti dar olanımız kısa bir görüşmeyle başlayabilir. Her birimizin atacağı adım kendi şartına uygun olsun; niyetimiz somut bir davranışa dönüşsün.
+
+**Ailede gönül bağı, birbirimizi dinleyip sözümüzün sorumluluğunu almakla güçlenir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Sözümüze doğruluk, gönlümüze genişlik</h2>
+
+**Kıymetli kardeşlerim! Gönlümüzü Rabbimize açalım.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ ٱلْوَهَّابُ ۝٨</p>
+
+*Rabbimiz! Bizi doğru yola eriştirdikten sonra kalplerimizi saptırma, bize tarafından bir rahmet bağışla. Hiç kuşku yok, lütfu bol olan yalnız sensin.* (Âl-i İmrân, 3/8)
+
+Allah’ım! Dilimize doğruluk, gönlümüze genişlik ver. Yakınımız konuşurken onu dinlemeyi, öfkelendiğimizde kendimizi tutmayı nasip eyle. Kalbimizde taşıdığımız iyiliği sözümüze ve davranışımıza ulaştır. Yanlışımızı görüp düzeltme cesareti ihsan eyle.
+
+Rabbimiz! Evlerimizde yenen ekmeği güzel sözle bereketlendir. Aynı sofrada birbirine uzak düşen gönüllere hayırlı yakınlık ver. Eşlerimize, çocuklarımıza ve büyüklerimize adaletle davranmayı öğret. Kırdığımız gönülleri onarmayı, ihlâl ettiğimiz hakları sahiplerine ulaştırmayı nasip eyle.
+
+Allah’ım! Gençlerimize kendilerini anlatabilecekleri güvenli kapılar aç. Ailesinden uzakta olanlara hayırlı dostlar ver. Yalnız ebeveynlere, engelli kardeşlerimize ve yakınlarına kuvvet ihsan eyle. İmana yeni adım atanların yollarını kolaylaştır. Yardım isteyenleri anlayışlı, ehil insanlarla buluştur.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik, âhirette iyilik ver; bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Rabbimiz! Hastalarımıza şifa, hastane kapısında bekleyenlere sabır ver. Vefat eden anne babalarımıza, yakınlarımıza ve bütün müminlere rahmet eyle. Yas tutanları teselli et. Zarar görenleri koru, korku içindeki kardeşlerimize güvenli çıkış yolları nasip eyle.
+
+Allah’ım! Cemaatimizin kardeşliğini kuvvetlendir. Yaşadığımız beldelere esenlik, komşularımıza huzur ver. Farklı dilleri konuşan insanlarla iyilik ve adalet içinde yaşamayı nasip eyle. Kapısını çaldığımız eve nezaket, girdiğimiz meclise hayır taşıyalım.
+
+Rabbimiz! Duamızı kabul eyle. Öğrendiğimiz bir güzelliği bugün hayata geçirmeyi ve onu sabırla sürdürmeyi bize lütfeyle. Son nefesimizi imanla vermeyi nasip eyle. Âmin. Velhamdü lillâhi Rabbi’l-âlemîn. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler belirtilmiştir. Gündelik hayat sahneleri temsilîdir. Uygulama önerileri nasların ahlâkî rehberliğinden hareketle hazırlanmıştır; belirli süreler dinî bir hüküm değildir.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25">Tâhâ 20/25</a>.</li>
+<li>Güzel sözün ölçüsü: <a href="https://quran.com/17/53">İsrâ 17/53</a>; <a href="https://sunnah.com/bukhari:6018">Buhârî 6018</a>.</li>
+<li>Birbirimizi gerçekten duymak: <a href="https://quran.com/58/1">Mücâdele 58/1</a>.</li>
+<li>Ailece karar vermek: <a href="https://quran.com/42/38">Şûrâ 42/38</a>.</li>
+<li>Öfkeye sınır koymak: <a href="https://quran.com/41/34">Fussılet 41/34</a>; <a href="https://sunnah.com/muslim:18a">Müslim 18a</a>.</li>
+<li>İncitmeden meseleyi konuşmak: <a href="https://quran.com/49/11">Hucurât 49/11</a>.</li>
+<li>Farklılık içinde anlaşmak: <a href="https://sunnah.com/tirmidhi:3895">Tirmizî 3895</a>.</li>
+<li>Sofra ve ekranlar: <a href="https://sunnah.com/muslim:2594a">Müslim 2594a</a>.</li>
+<li>Mahremiyet ve yardım hakkı: <a href="https://sunnah.com/muslim:1437a">Müslim 1437a</a>; <a href="https://quran.com/4/148">Nisâ 4/148</a>.</li>
+<li>Kırgınlığı onarmak: <a href="https://sunnah.com/muslim:2581">Müslim 2581</a>.</li>
+<li>Zamanında destek almak: <a href="https://quran.com/49/10">Hucurât 49/10</a>.</li>
+<li>Hatim ve cemaat duası: <a href="https://quran.com/3/8">Âl-i İmrân 3/8</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>İstişare: <a href="https://islamansiklopedisi.org.tr/sura">TDV İslâm Ansiklopedisi — Şûra</a>.</li>
+<li>Dinlenen bir kadının sözü: <a href="https://islamansiklopedisi.org.tr/havle-bint-salebe">TDV İslâm Ansiklopedisi — Havle bint Sa‘lebe</a>.</li>
+<li>Hilim ve klasik alıntı: <a href="https://islamansiklopedisi.org.tr/hilim">TDV İslâm Ansiklopedisi — Hilim</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>
