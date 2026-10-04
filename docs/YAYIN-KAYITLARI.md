@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 5 Ekim 2026 — /kitap/ gizli kitap paylaşım sayfası
+
+- Zaman: 5 Ekim 2026 ≈ 00:21 (push) – 00:24 (deploy) – 00:35 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: kullanıcının 4 Ekim gece isteği. Hoca portalındaki dört «Camiye Gidiyorum» PDF'i Müşavirlikten Vahi Bey bağlantıya tıklayarak, yazıdaki karekodla da (2026/23 sayılı yazının Ek-4'ü) indirebilmeli. Erişim yolu olarak kullanıcı «gizli paylaşım bağlantısı» seçeneğini seçti; portal hesabı açılmadı.
+- Kapsam: `src/pages/kitap/index.astro` (yeni; noindex, tekDil), `src/scripts/kitap-paylasim.ts` (yeni), `src/data/kitap-paylasim.json` (yeni; AES-GCM sarmalı, açık anahtar yok), `src/scripts/hoca-kitaplari.ts` (isteğe bağlı ekran metni parametresi; hoca ekranının metni değişmedi), `tests/kitap-paylasim.test.mjs` + `package.json` `test:ogrenme`, `tests/web/kitap-paylasim.spec.mjs`, `docs/HOCA-KITAPLARI.md`, `docs/PROJE-HAFIZASI.md`.
+- İçerik commit'i `2129ed8` (push `492612b..2129ed8`; ayrı çalışma ağacından, ana ağaçtaki başka oturumun commit'lenmemiş işlerine dokunulmadı). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37239685170> — **success** (00:24:03).
+- Yerel doğrulama:
+  - `npm run check` 0 hata / 0 uyarı; `npm run build` ve `npm run denetim` temiz (yalnız önceden var olan iki «orta» bulgu); `dist/sitemap-0.xml`'de `/kitap/` 0.
+  - `npm run test:ogrenme` 13/13 (3 yeni test); `kitap-paylasim.spec` 4/4 ve `hoca-kitaplari.spec` 2/2 (masaüstü + mobil); tam `npm run test:web` 805 geçti, 0 başarısız, 101 atlandı.
+  - `dogrula` zincirinde `test:ihtida`'nın iki testi düştü: `py` başlatıcısı bu makinede pymupdf'siz bir yorumlayıcıya (`D:pp\Ihtisas2027\Python\…`) bağlı. Pymupdf'li Python314'e geçici yönlendirmeyle `test:ihtida` dahil zincirin atlanan 12 alt testi geçti. Ortam sorunu; bu değişiklikle ilgisi yok.
+  - Gerçek paylaşım anahtarıyla dört kitap yerelde çözüldü; SHA-256 değerleri kaynak klasördeki `SHA256.txt` ile birebir.
+- Canlı doğrulama:
+  - `/kitap/` 200, `noindex, nofollow`; site haritasında yok; 25/25 şifreli parça erişilebilir (206).
+  - Anahtarsız açılış «yok», yanlış anahtar «paylasim-anahtar» durumunu gösterdi; gerçek bağlantıyla 4 düğme çıktı.
+  - FR2 (`cg2-fr-20260928`) Chromium'da indirildi (7 sn); SHA-256 `SHA256.txt` ile eşit. Betik Git dışı `.codex/kitap-paylasim-canli.mjs`; tarayıcı kapatıldı, indirilen dosya silindi.
+- Açık sınırlar:
+  - Bağlantıya ya da karekodun fotoğrafına sahip olan herkes indirebilir.
+  - `--kapat` sayfayı kapatır, ama sarmal Git geçmişinde kalır; gerçek iptal kitap anahtarı yenilemesiyle olur.
+  - Diğer üç kitap canlıda tarayıcıyla indirilmedi; parçaları canlıda erişilebilir ve aynı sarmalla yerelde birebir çözüldü.
+  - Tam bağlantı ve paylaşım anahtarı yalnız Git dışı `.codex/kitap-paylasim-anahtar.json` içindedir.
+
 ## 3 Ekim 2026 (4) — vaaz revizyonu 4. parti: 12 vaaz + 6 vaazda hadis Arapçası
 
 - Zaman: 3 Ekim 2026 ≈ 09:38 (push) – 09:42 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.** Yöntem 1. parti kaydıyla aynı. Codex modeli 08:49'dan beri kullanıcı kararıyla `gpt-6.1-sol`, efor high, Fast (`service_tier="priority"`); bu partinin metinleri çoğunlukla `gpt-6-astra`/xhigh ile yazıldı (`durustluk-en-buyuk-fazilettir` son turunu yeni modelle tamamladı), çizimlerin 10'u yeni modelle yapıldı.
