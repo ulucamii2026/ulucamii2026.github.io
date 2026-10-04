@@ -1,0 +1,52 @@
+---
+/**
+ * Gizli kitap paylaşım sayfası — /kitap/ (4 Ekim 2026). Yalnız Türkçe, listelenmemiş: noindex (site haritasına
+ * girmez), hreflang yok (tekDil), menüde bağlantısı yok. Hoca ekranındaki şifreli «Camiye Gidiyorum» kitaplarını
+ * hoca hesabı olmayan muhataba (ilk kullanım: Müşavirlik, 2026/23 sayılı yazının Ek-4'ü) bağlantıyla indirtir.
+ * Paylaşım anahtarı adresin `#` kısmındadır; sayfa onu hiçbir yere göndermez ve saklamaz.
+ * Davranış: src/scripts/kitap-paylasim.ts · veri: src/data/kitap-paylasim.json · işletme: docs/HOCA-KITAPLARI.md
+ */
+import Base from '../../layouts/Base.astro';
+import veri from '../../data/kitap-paylasim.json';
+---
+<Base baslik="Camiye Gidiyorum — ders kitapları" dil="tr" aciklama="Camiye Gidiyorum 1–2 ders kitaplarının PDF sürümleri." noindex dilHatirla={false} tekDil>
+  <header class="border-b border-(--cizgi) bg-(--zemin-2)">
+    <div class="kapsayici py-7 sm:py-10" style="max-width: 46rem">
+      <p class="etiket etiket-vurgu">Kur’an kursu · Ders kitapları</p>
+      <h1 class="text-3xl sm:text-4xl">Camiye Gidiyorum 1–2</h1>
+      <p class="kp-alt">DİTİB yayını «Camiye Gidiyorum» 1 ve 2 ders kitaplarının Türkçe ve Fransızca (Belçika) sürümleri, Marche-en-Famenne Ulu Camii Kur’an Kursu’nda kullanılmak üzere A4 baskıya hazırlanmıştır.</p>
+    </div>
+    <div class="kilim-serit" aria-hidden="true"></div>
+  </header>
+
+  <section class="kapsayici kitap-paylasim py-7 sm:py-10" style="max-width: 46rem">
+    <p class="kp-uyari">Dosyalar büyüktür (69–115 MB). Bağlantıyı e-posta uygulamasının içinde değil, tarayıcıda açın; mümkünse bilgisayar kullanın.</p>
+    <div data-kitap-paylasim>
+      <p class="not">Yükleniyor…</p>
+      <noscript><p class="not">Bu sayfa JavaScript gerektirir.</p></noscript>
+    </div>
+  </section>
+
+  <script is:inline type="application/json" id="kitap-paylasim-veri" set:html={JSON.stringify(veri)} />
+  <script>
+    import { kitapPaylasim } from '../../scripts/kitap-paylasim';
+    const kok = document.querySelector<HTMLElement>('[data-kitap-paylasim]');
+    const veri = JSON.parse(document.getElementById('kitap-paylasim-veri')?.textContent || '{}');
+    if (kok) kitapPaylasim(kok, veri);
+  </script>
+</Base>
+
+<style is:global>
+  .kp-alt { margin: 0.75rem 0 0; color: var(--metin-2); max-width: 40rem; }
+  .kitap-paylasim .kp-uyari { margin: 0 0 1.25rem; font-size: 0.95rem; color: var(--metin-2); }
+  .kitap-paylasim .not { margin: 0 0 1rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); }
+  .kitap-paylasim .bolum { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 1.25rem 1.4rem; box-shadow: var(--shadow-kart); }
+  .kitap-paylasim .bolum h2 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin: 0 0 0.75rem; }
+  .kitap-paylasim .liste { list-style: none; margin: 0.75rem 0; padding: 0; }
+  .kitap-paylasim .liste li { padding: 0.6rem 0; border-top: 1px solid var(--cizgi); display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; }
+  .kitap-paylasim .liste li:first-child { border-top: 0; }
+  .kitap-paylasim .liste li .buyu { flex: 1 1 12rem; }
+  .kitap-paylasim .kucuk { font-size: 0.85rem; color: var(--metin-2); margin: 0; }
+  .kitap-paylasim .kucuk-dugme { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.42rem 0.75rem; border-radius: var(--radius-kose); border: 1px solid var(--cizgi-etkilesim); background: transparent; color: var(--metin-2); cursor: pointer; min-height: 34px; }
+  .kitap-paylasim .kucuk-dugme:hover { color: var(--metin); border-color: var(--metin-2); }
+</style>
