@@ -13,7 +13,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - Yerel doğrulama:
   - `npm run check` 0 hata / 0 uyarı; `npm run build` ve `npm run denetim` temiz (yalnız önceden var olan iki «orta» bulgu); `dist/sitemap-0.xml`'de `/kitap/` 0.
   - `npm run test:ogrenme` 13/13 (3 yeni test); `kitap-paylasim.spec` 4/4 ve `hoca-kitaplari.spec` 2/2 (masaüstü + mobil); tam `npm run test:web` 805 geçti, 0 başarısız, 101 atlandı.
-  - `dogrula` zincirinde `test:ihtida`'nın iki testi düştü: `py` başlatıcısı bu makinede pymupdf'siz bir yorumlayıcıya (`D:pp\Ihtisas2027\Python\…`) bağlı. Pymupdf'li Python314'e geçici yönlendirmeyle `test:ihtida` dahil zincirin atlanan 12 alt testi geçti. Ortam sorunu; bu değişiklikle ilgisi yok.
+  - `dogrula` zincirinde `test:ihtida`'nın iki testi düştü: `py` başlatıcısı bu makinede pymupdf'siz bir yorumlayıcıya (`D:/app/Ihtisas2027/Python/…`) bağlı. Pymupdf'li Python314'e geçici yönlendirmeyle `test:ihtida` dahil zincirin atlanan 12 alt testi geçti. Ortam sorunu; bu değişiklikle ilgisi yok.
   - Gerçek paylaşım anahtarıyla dört kitap yerelde çözüldü; SHA-256 değerleri kaynak klasördeki `SHA256.txt` ile birebir.
 - Canlı doğrulama:
   - `/kitap/` 200, `noindex, nofollow`; site haritasında yok; 25/25 şifreli parça erişilebilir (206).
