@@ -17,6 +17,7 @@ import { bosCiz, levhaSigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
 import { akisTazele, AKIS_ARALIGI_MS, birlesikDuyurular, duyuruAnahtari, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 import { kabukKur, type KabukDurumu } from './kabuk.ts';
+import { renderKur } from './render.ts';
 
 interface SayfaVerisi {
   cami: { tr: string; fr: string };
@@ -52,6 +53,10 @@ function sayfaVerisiOku(): SayfaVerisi {
 const sayfa = sayfaVerisiOku();
 const parametre = new URLSearchParams(location.search);
 const ekran = document.getElementById('ekran') as HTMLElement;
+const render = renderKur(window);
+let dakikaSaglikli = false;
+let slaytSaglikli = true;
+let slaytGozlemSonu = performance.now() + 60_000;
 const ekranId = ekranIdOku(parametre.get('ekran'));
 const dokunmatik = dokunmatikKipiOku(parametre.get('kip'));
 // Düzen pencere boyutuyla değişebilir (ör. döndürülmüş pencere): vakit bloğu yeniden çizilir, slayt sığdırılır; geri çağrı açılışta çalışmaz (durum henüz kurulmadı).
@@ -135,7 +140,9 @@ function dakikalik(simdi: Date): void {
     }
     ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
     havaCiz();
+    dakikaSaglikli = true;
   } catch (hata) {
+    dakikaSaglikli = false;
     console.error(hata);
   }
 }
@@ -159,6 +166,8 @@ function saniyelik(): void {
       sonDakika = dakika;
       dakikalik(simdi);
     }
+    // A live timer alone is not proof: count only after clock/date/prayer DOM work and required nodes exist.
+    if (dakikaSaglikli && slaytSaglikli && performance.now() <= slaytGozlemSonu && document.contains(ekran) && alan('saat-sd') && alan('saat-sn') && alan('vakitler') && alan('slayt')) render.ilerle();
   } finally {
     setTimeout(saniyelik, 1000 - (Date.now() % 1000) + 15);
   }
@@ -251,6 +260,7 @@ function turKur(kok: HTMLElement): void {
 }
 function sonrakiSlayt(): void {
   let sureMs = 15_000;
+  let cizildi = false;
   try {
     const kok = alan('slayt');
     if (!kok) return;
@@ -282,15 +292,19 @@ function sonrakiSlayt(): void {
     }
     if (!s) {
       bosCiz(kok, sayfa.cami);
+      cizildi = true;
       return;
     }
     sureMs = slaytSuresi(s.karakter, veri.akis?.ayar.slayt ?? VARSAYILAN_SLAYT) * 1000;
     // Bozuk bir `ayar.slayt` (ör. önbellekteki eski paket + yeni şemalı akış) NaN ya da 0 verir; setTimeout(…, NaN)
     // 0 ms demektir ve slaytlar durmadan yeniden çizilirdi.
     if (!(sureMs >= 1000)) sureMs = 15_000;
+    cizildi = true;
   } catch (hata) {
     console.error(hata);
   } finally {
+    slaytSaglikli = cizildi;
+    if (cizildi) slaytGozlemSonu = performance.now() + sureMs + 30_000;
     sonSureMs = sureMs;
     slaytZamanla();
   }

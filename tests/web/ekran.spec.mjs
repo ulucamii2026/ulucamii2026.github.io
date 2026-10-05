@@ -52,6 +52,21 @@ test('kimlik, saat, miladi ve hicrî tarih Brüksel saatine göre yazılır', as
   expect(await page.locator('[data-alan="hicri-tr"]').evaluate((e) => getComputedStyle(e, '::before').content)).toBe('" · "');
 });
 
+test('renderer sayacı gerçek saat döngüsüyle ilerler, kritik DOM yokken durur', async ({ page }) => {
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  await expect.poll(() => page.evaluate(() => window.UluRenderDurumu?.().sayac)).toBeGreaterThan(0);
+  const ilk = await page.evaluate(() => window.UluRenderDurumu());
+  await page.clock.runFor(3_000);
+  const ikinci = await page.evaluate(() => window.UluRenderDurumu());
+  expect(ikinci.sayac).toBeGreaterThan(ilk.sayac);
+  expect(Object.keys(ikinci)).toEqual(['v', 'sayfa', 'sayac']);
+  await page.locator('[data-alan="saat-sn"]').evaluate((e) => e.removeAttribute('data-alan'));
+  const durdu = await page.evaluate(() => window.UluRenderDurumu().sayac);
+  await page.clock.runFor(5_000);
+  expect(await page.evaluate(() => window.UluRenderDurumu().sayac)).toBe(durdu);
+});
+
 test('gece yarısı ve yaz saatinin bitişi sayfa yenilenmeden işlenir', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-24T23:59:50+02:00') });
   await page.goto('/ekran/');
