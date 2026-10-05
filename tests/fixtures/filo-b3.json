@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "devices": [
+    {"uid": "fixture_ana", "ekranId": "ana", "nesil": "fixture_gen_ana"},
+    {"uid": "fixture_giris", "ekranId": "giris", "nesil": "fixture_gen_giris"},
+    {"uid": "fixture_kadin", "ekranId": "kadin", "nesil": "fixture_gen_kadin"}
+  ],
+  "announcements": [
+    {"id": "fixture_common", "durum": "yayinda", "tur": "duyuru", "baslangic": "2026-10-01", "son": "2026-10-31", "hedef": [], "tr": {"baslik": "Fixture common", "metin": "Local fixture only"}},
+    {"id": "fixture_ana_only", "durum": "yayinda", "tur": "duyuru", "baslangic": "2026-10-01", "son": "2026-10-31", "hedef": ["ana"], "tr": {"baslik": "Fixture ana", "metin": "Local fixture only"}},
+    {"id": "fixture_giris_only", "durum": "yayinda", "tur": "duyuru", "baslangic": "2026-10-01", "son": "2026-10-31", "hedef": ["giris"], "tr": {"baslik": "Fixture giris", "metin": "Local fixture only"}},
+    {"id": "fixture_kadin_only", "durum": "yayinda", "tur": "duyuru", "baslangic": "2026-10-01", "son": "2026-10-31", "hedef": ["kadin"], "tr": {"baslik": "Fixture kadin", "metin": "Local fixture only"}},
+    {"id": "fixture_draft", "durum": "taslak", "tur": "duyuru", "baslangic": "2026-10-01", "son": "2026-10-31", "hedef": [], "tr": {"baslik": "Fixture draft", "metin": "Must not enter published snapshots"}}
+  ]
+}

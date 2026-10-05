@@ -3,9 +3,47 @@ import assert from 'node:assert/strict';
 import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
 import { bugunTarih, durumHesapla } from '../src/lib/namaz.ts';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 process.env.TZ = 'America/New_York';
 const DIYANET = JSON.parse(readFileSync(new URL('../src/data/namaz-vakitleri.json', import.meta.url), 'utf8'));
+const FILO_BYTES=readFileSync(new URL('./fixtures/filo-b3.json',import.meta.url));
+const FILO=JSON.parse(FILO_BYTES);
+const FILO_SDK=process.env.CAMIPANO_FILO_KANIT ? JSON.parse(readFileSync(process.env.CAMIPANO_FILO_KANIT,'utf8')) : null;
+if(FILO_SDK) {
+  assert.equal(FILO_SDK.schema,1);
+  assert.equal(FILO_SDK.fixtureSha256,createHash('sha256').update(FILO_BYTES).digest('hex'));
+  assert.deepEqual(FILO_SDK.devices.map(d=>[d.uid,d.ekranId]),FILO.devices.map(d=>[d.uid,d.ekranId]));
+  assert.ok(FILO_SDK.devices.every(d=>d.source==='server'));
+}
+const filoGirdisi=d=>({duyurular:FILO_SDK ? FILO_SDK.devices.find(x=>x.uid===d.uid).announcements :
+  FILO.announcements.filter(x=>x.durum==='yayinda'),ayetler:[],hadisler:[],dualar:[],esmalar:[]});
+const filoIds=(girdi,ekran,tarih='2026-10-05')=>slaytListesi(girdi,ekran,tarih).map(x=>x.oge.id);
+
+test('three distinct fleet identities show common announcement on all and targeted announcement on exactly one',()=>{
+  assert.equal(new Set(FILO.devices.map(d=>d.uid)).size,3);
+  const output=FILO.devices.map(d=>filoIds(filoGirdisi(d),d.ekranId));
+  for(let i=0;i<output.length;i++)assert.deepEqual(output[i],[`fixture_${FILO.devices[i].ekranId}_only`,'fixture_common']);
+  assert.equal(output.filter(ids=>ids.includes('fixture_common')).length,3);
+  for(const d of FILO.devices)assert.equal(output.filter(ids=>ids.includes(`fixture_${d.ekranId}_only`)).length,1);
+  assert.equal(output.filter(ids=>ids.includes('fixture_draft')).length,0);
+});
+
+test('same published snapshot is reprojected on explicit target change without retaining another display slide',()=>{
+  const shared=filoGirdisi(FILO.devices[0]);const before=JSON.stringify(shared);
+  for(const d of [...FILO.devices].reverse())assert.deepEqual(filoIds(shared,d.ekranId),[`fixture_${d.ekranId}_only`,'fixture_common']);
+  assert.deepEqual(filoIds(shared,'ana'),['fixture_ana_only','fixture_common']);
+  assert.equal(JSON.stringify(shared),before);
+});
+
+test('cached fleet announcements expire at next local calendar date instead of persisting yesterday slides',()=>{
+  for(const d of FILO.devices) {
+    const input=filoGirdisi(d);
+    assert.equal(filoIds(input,d.ekranId,'2026-10-31').length,2);
+    assert.deepEqual(filoIds(input,d.ekranId,'2026-11-01'),[]);
+    assert.deepEqual(filoIds(input,d.ekranId,'2026-09-30'),[]);
+  }
+});
 /** Kayıt veride yoksa (ör. yıl verisi henüz gelmemiş) testin kendi asgari kaydı kullanılır. */
 const kayit = (tarih, yedek) => DIYANET.gunler.find((g) => g.tarih === tarih) || { tarih, hicri: '', ...yedek };
 
