@@ -151,3 +151,68 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .ekran[data-duzen='yatay'] .cuma-saati .fr::before { content: ' · '; }
 .ekran[data-duzen='yatay'] .vakit-yok b { font-size: calc(var(--u) * 6); line-height: 1.15; }
 .ekran[data-duzen='yatay'] .vakit-yok .fr { font-size: calc(var(--u) * 4.5); line-height: 1.15; }
+
+/* Açık kişisel kip: aynı kimlik, yazı yüzleri, OLCU ve çizici. Ekran boyu yazıyı küçültmez;
+   içerik doğal yüksekliğiyle kaydırılır. TV seçicileri/pikselleri bu kipten etkilenmez. */
+.sahne[data-kip='dokunmatik'] { overflow-y: auto; overflow-x: hidden; }
+.ekran[data-kip='dokunmatik'] { position: relative; width: 100%; min-height: 100%; overflow: visible; }
+.ekran[data-kip='dokunmatik'] .ust { height: auto; flex: none; padding: 24px 20px 20px; border-bottom-width: 2px; overflow: visible; }
+.ekran[data-kip='dokunmatik'] .kimlik { height: auto; }
+.ekran[data-kip='dokunmatik'] .logo { width: 48px; height: 48px; flex: none; margin-right: 12px; }
+.ekran[data-kip='dokunmatik'] .cami-adi { min-width: 0; overflow-wrap: break-word; }
+.ekran[data-kip='dokunmatik'] .cami-adi span:first-child { font-size: 1.25rem; line-height: 1.2; }
+.ekran[data-kip='dokunmatik'] .cami-adi .fr { font-size: 1rem; margin-top: 4px; }
+.ekran[data-kip='dokunmatik'] .zaman { height: auto; min-height: 88px; flex-wrap: wrap; margin-top: 12px; }
+.ekran[data-kip='dokunmatik'] .saat { font-size: var(--saat-boy); }
+.ekran[data-kip='dokunmatik'].saat-yok .saat { font-size: 1.5rem; }
+.ekran[data-kip='dokunmatik'] .hava { font-size: 1.25rem; margin: 8px 0; flex-wrap: wrap; max-width: 100%; }
+.ekran[data-kip='dokunmatik'] .hava svg { width: 32px; height: 32px; margin-right: 8px; }
+.ekran[data-kip='dokunmatik'] .hava small { font-size: 1rem; margin-left: 8px; opacity: 1; }
+.ekran[data-kip='dokunmatik'] .takvim { font-size: 1rem; white-space: normal; overflow: visible; }
+.ekran[data-kip='dokunmatik'] .takvim.fr { margin-top: 4px; }
+.ekran[data-kip='dokunmatik'] .fr { opacity: 1; }
+.dokunmatik-araclar { display: flex; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--ana); }
+.dokunmatik-araclar button { flex: 1 1 130px; min-width: 48px; min-height: 48px; margin: 6px; padding: 10px 12px; border: 1px solid var(--ana); border-radius: 4px; font: inherit; font-size: 1rem; line-height: 1.35; color: inherit; background: transparent; cursor: pointer; overflow-wrap: break-word; word-wrap: break-word; }
+.dokunmatik-araclar button span { display: block; font-size: 1rem; }
+.dokunmatik-araclar button[aria-pressed='true'], .dokunmatik-araclar button:active { color: var(--beyaz); background: var(--ana); }
+.dokunmatik-araclar button:focus { outline: 3px solid currentColor; outline-offset: 2px; }
+.ekran[data-kip='dokunmatik'] .vakitler { height: auto; flex: none; border-top: 0; padding: 12px 0 20px; }
+.ekran[data-kip='dokunmatik'] .vakit { height: auto; min-height: 64px; flex: none; padding: 12px 20px; }
+.ekran[data-kip='dokunmatik'] .vakit .ad { min-width: 0; padding-right: 12px; overflow-wrap: break-word; }
+.ekran[data-kip='dokunmatik'] .vakit .ad b { font-size: calc(var(--u) * 3.4); }
+.ekran[data-kip='dokunmatik'] .vakit .ad i { font-size: calc(var(--u) * 2.9); display: block; margin-left: 0; }
+.ekran[data-kip='dokunmatik'] .vakit .deger { font-size: calc(var(--u) * 4.4); flex: none; }
+.ekran[data-kip='dokunmatik'] .geri-sayim { flex: none; padding: 16px 20px 0; }
+.ekran[data-kip='dokunmatik'] .geri-sayim b { font-size: calc(var(--u) * 3.4); }
+.ekran[data-kip='dokunmatik'] .geri-sayim .fr { font-size: calc(var(--u) * 2.9); }
+.ekran[data-kip='dokunmatik'] .cuma-saati { height: auto; white-space: normal; padding: 16px 20px 0; }
+.ekran[data-kip='dokunmatik'] .cuma-saati b, .ekran[data-kip='dokunmatik'] .cuma-saati .fr { font-size: calc(var(--u) * 2.9); }
+.ekran[data-kip='dokunmatik'] .vakit-yok { padding: 20px; }
+.ekran[data-kip='dokunmatik'] .vakit-yok b, .ekran[data-kip='dokunmatik'] .vakit-yok .fr { max-width: 100%; overflow-wrap: break-word; }
+.ekran[data-kip='dokunmatik'] .vakit-yok b { font-size: calc(var(--u) * 3.4); }
+.ekran[data-kip='dokunmatik'] .vakit-yok .fr { font-size: calc(var(--u) * 2.9); }
+.ekran[data-kip='dokunmatik'] .slayt-alani { flex: none; height: auto; overflow: visible; padding: 28px 20px 36px; }
+.ekran[data-kip='dokunmatik'] .slayt { height: auto; min-height: 0; }
+.ekran[data-kip='dokunmatik'] .levha { margin: 12px 0 0; }
+.ekran[data-kip='dokunmatik'] .ust-baslik { letter-spacing: .04em; color: inherit; }
+.ekran[data-kip='dokunmatik'] .kaynak .bolunmez { white-space: normal; }
+.ekran[data-kip='dokunmatik'] .susleme { max-width: 100%; }
+.ekran[data-kip='dokunmatik'] .afisli { display: block; flex: none; min-height: 0; }
+.ekran[data-kip='dokunmatik'] .afis { height: auto; margin: 0 auto 24px; max-width: 420px; }
+.ekran[data-kip='dokunmatik'] .afis img { display: block; width: 100%; height: auto; }
+.ekran[data-kip='dokunmatik'] .bos b { font-size: calc(var(--u) * 4.4); }
+.ekran[data-kip='dokunmatik'] .bos .fr { font-size: calc(var(--u) * 2.9); }
+/* Gerçek pencere ölçüleri; model veya yön varsayılmaz. */
+.ekran[data-kip='dokunmatik'][data-pencere='medium'] .vakitler { display: grid; grid-template-columns: 1fr 1fr; }
+.ekran[data-kip='dokunmatik'][data-pencere='medium'] .geri-sayim,
+.ekran[data-kip='dokunmatik'][data-pencere='medium'] .cuma-saati,
+.ekran[data-kip='dokunmatik'][data-pencere='medium'] .vakit-yok { grid-column: 1 / -1; }
+.ekran[data-kip='dokunmatik'][data-pencere='expanded'] { display: grid; grid-template-columns: 35% 65%; grid-template-rows: auto auto 1fr; grid-template-areas: 'ust ust' 'arac arac' 'vakit slayt'; align-items: start; }
+.ekran[data-kip='dokunmatik'][data-pencere='expanded'] .ust { grid-area: ust; }
+.ekran[data-kip='dokunmatik'][data-pencere='expanded'] .dokunmatik-araclar { grid-area: arac; }
+.ekran[data-kip='dokunmatik'][data-pencere='expanded'] .vakitler { grid-area: vakit; }
+.ekran[data-kip='dokunmatik'][data-pencere='expanded'] .slayt-alani { grid-area: slayt; min-width: 0; }
+.ekran[data-kip='dokunmatik'][data-kisa='evet'] .ust { padding-top: 16px; }
+.ekran[data-kip='dokunmatik'][data-buyuk='evet'] .vakitler { display: flex; }
+.ekran[data-kip='dokunmatik'][data-buyuk='evet'][data-pencere='expanded'] { display: flex; }
+@media (prefers-reduced-motion: reduce) { .ekran[data-kip='dokunmatik'] { transition: none; } }

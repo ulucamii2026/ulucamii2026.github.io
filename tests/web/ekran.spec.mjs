@@ -457,6 +457,129 @@ const levhaOlc = (page, slaytlar) => page.evaluate((liste) => {
 
 /** Paragraf sınıfı → olcu.ts alanı. */
 const TABAN_ALANI = { ar: 'ar', okunus: 'okunus', tr: 'tr', fr: 'fr', kaynak: 'kaynak', baslik: 'baslikTr', 'baslik fr': 'baslikFr' };
+
+async function dokunmatikAc(page, boyut = { width: 390, height: 844 }, hedef = 'ana') {
+  await page.setViewportSize(boyut);
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([
+    DUYURU({ id: 'dokun-1', tr: { baslik: 'Birinci duyuru', metin: 'Okunacak birinci metin.' }, hedef: [hedef] }),
+    DUYURU({ id: 'dokun-2', tr: { baslik: 'İkinci duyuru', metin: 'Okunacak ikinci metin.' }, hedef: [hedef] }),
+    DUYURU({ id: 'baska', tr: { baslik: 'Başka ekran', metin: 'Bu hedefte görünmez.' }, hedef: ['giris'] }),
+  ]) }));
+  await page.goto('/ekran/?ekran=' + hedef + '&kip=dokunmatik&don=90&duzen=yatay');
+  await expect(page.locator('.slayt-duyuru .baslik').first()).toHaveText('Birinci duyuru');
+  await page.evaluate(() => document.fonts.ready);
+}
+
+async function dokunmatikTasmaDenetle(page) {
+  const sonuc = await page.evaluate(() => {
+    const kok = document.getElementById('ekran');
+    const sahne = kok.parentElement;
+    const slayt = kok.querySelector('[data-alan="slayt"]');
+    const kart = slayt.firstElementChild;
+    return { tasmaX: sahne.scrollWidth - sahne.clientWidth, sigdi: slayt.getAttribute('data-sigdi'),
+      kartTasma: kart.scrollHeight - kart.clientHeight,
+      paragraflar: Array.from(slayt.querySelectorAll('.levha p'), (e) => ({ px: parseFloat(getComputedStyle(e).fontSize), genis: e.scrollWidth - e.clientWidth })),
+      dugmeler: Array.from(kok.querySelectorAll('button'), (e) => ({ w: e.offsetWidth, h: e.offsetHeight })) };
+  });
+  expect(sonuc.tasmaX).toBeLessThanOrEqual(1);
+  expect(sonuc.kartTasma).toBeLessThanOrEqual(1);
+  expect(sonuc.sigdi).toBe('evet');
+  for (const p of sonuc.paragraflar) { expect(p.px).toBeGreaterThanOrEqual(16); expect(p.genis).toBeLessThanOrEqual(1); }
+  for (const d of sonuc.dugmeler) { expect(d.w).toBeGreaterThanOrEqual(48); expect(d.h).toBeGreaterThanOrEqual(48); }
+}
+
+for (const [w, sinif] of [[320, 'compact'], [390, 'compact'], [600, 'medium'], [839, 'medium'], [840, 'expanded'], [1200, 'expanded']]) {
+  test('dokunmatik: ' + w + ' px, ' + sinif + ', ortak levha ve 48 px hedefler', async ({ page }) => {
+    const hatalar = [];
+    page.on('pageerror', (e) => hatalar.push(e.message));
+    await dokunmatikAc(page, { width: w, height: 900 });
+    await expect(page.locator('#ekran')).toHaveAttribute('data-pencere', sinif);
+    await expect(page.locator('#ekran')).toHaveAttribute('data-duzen', 'dikey');
+    await expect(page.locator('[data-alan="cami-tr"]')).toHaveText('Marche-en-Famenne Ulu Camii');
+    await expect(page.locator('.vakit')).toHaveCount(6);
+    await levhaOlcerYukle(page);
+    // Yayın paketindeki daha önce onaylanmış metin; yeni dinî içerik üretilmez.
+    const onayli = JSON.parse(readFileSync(resolve('dist/ekran/icerik.json'), 'utf8'));
+    const a = onayli.ayetler.reduce((x, y) => y.ar.length > x.ar.length ? y : x);
+    const olcum = await levhaOlc(page, [{ tur: 'ayet', karakter: 0, oge: a }]);
+    expect(olcum[0].yuz).toBe('kuran');
+    expect(olcum[0].olcek).toBe(1);
+    expect(olcum[0].sigdi).toBe(true);
+    await dokunmatikTasmaDenetle(page);
+    // Aynı çizicide uzun, dinî olmayan iki dilli duyuru da kaydırılarak okunur.
+    await levhaOlc(page, [{ tur: 'duyuru', karakter: 0, oge: DUYURU({ tr: { baslik: 'Uzun duyuru başlığı', metin: 'Bu metin okunabilir kalmalıdır. '.repeat(18) }, fr: { baslik: 'Une annonce avec un titre long', metin: 'Cette annonce doit rester lisible dans une fenêtre étroite. '.repeat(18) } }) }]);
+    await dokunmatikTasmaDenetle(page);
+    const sira = await page.locator('#ekran').evaluate((e) => Array.from(e.children, (x) => x.className));
+    expect(sira.indexOf('vakitler')).toBeLessThan(sira.indexOf('slayt-alani'));
+    if (process.env.EKRAN_DOKUN_GORSEL_DIZIN && [390, 840, 1200].includes(w)) {
+      mkdirSync(process.env.EKRAN_DOKUN_GORSEL_DIZIN, { recursive: true });
+      await page.screenshot({ path: resolve(process.env.EKRAN_DOKUN_GORSEL_DIZIN, 'dokun-' + w + '.png') });
+      await page.locator('.sahne').evaluate((e) => { e.scrollTop = e.querySelector('.slayt-alani').offsetTop; });
+      await page.screenshot({ path: resolve(process.env.EKRAN_DOKUN_GORSEL_DIZIN, 'levha-' + w + '.png') });
+    }
+    expect(hatalar).toEqual([]);
+  });
+}
+
+test('dokunmatik: manuel okuma, klavye, hedef filtresi, büyük yazı ve yön değişimi', async ({ page }) => {
+  await dokunmatikAc(page, { width: 900, height: 1000 }, 'kadin');
+  await page.clock.runFor(40_000);
+  await expect(page.locator('.baslik').first()).toHaveText('Birinci duyuru');
+  await page.getByRole('button', { name: 'Sonraki' }).focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.baslik').first()).toHaveText('İkinci duyuru');
+  await page.getByRole('button', { name: 'Büyük yazı' }).click();
+  await expect(page.getByRole('button', { name: 'Büyük yazı' })).toHaveAttribute('aria-pressed', 'true');
+  const yazi = await page.locator('.levha .tr').evaluate((e) => parseFloat(getComputedStyle(e).fontSize));
+  await page.setViewportSize({ width: 390, height: 230 });
+  await expect(page.locator('#ekran')).toHaveAttribute('data-kisa', 'evet');
+  await expect(page.locator('#ekran')).toHaveAttribute('data-pencere', 'compact');
+  expect(await page.locator('.levha .tr').evaluate((e) => parseFloat(getComputedStyle(e).fontSize))).toBe(yazi);
+  await dokunmatikTasmaDenetle(page);
+  await page.getByRole('button', { name: 'Otomatik geçiş' }).click();
+  await page.clock.runFor(12_000);
+  await expect(page.locator('.slayt-duyuru')).toHaveCount(0); // Sıradaki onaylı manevi blok.
+  await page.getByRole('button', { name: 'Otomatik geçiş' }).click();
+  const once = await page.locator('.slayt-alani').textContent();
+  await page.clock.runFor(40_000);
+  expect(await page.locator('.slayt-alani').textContent()).toBe(once);
+  expect(await page.locator('.slayt-alani').textContent()).not.toContain('Başka ekran');
+});
+
+test('dokunmatik: 200 yüzde temel yazı, kısa pencere ve afiş doğal yüksekliği', async ({ page }) => {
+  await dokunmatikAc(page, { width: 320, height: 240 });
+  await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
+  await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+  await page.setViewportSize({ width: 321, height: 240 });
+  await levhaOlcerYukle(page);
+  await levhaOlc(page, [sinirAfis(16 / 9, 'dokun')]);
+  await page.waitForFunction(() => document.querySelector('.afis img')?.complete);
+  const afis = await page.locator('.afis img').boundingBox();
+  expect(afis.width / afis.height).toBeCloseTo(16 / 9, 1);
+  await dokunmatikTasmaDenetle(page);
+  expect(await page.locator('.levha .tr').evaluate((e) => parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThan(40);
+});
+
+test('dokunmatik: Diyanet günü eksikse kişisel kip de vakit hesaplamaz', async ({ page }) => {
+  await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: vakitAkisi([]) }));
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/?kip=dokunmatik');
+  await expect(page.locator('.vakit-yok b')).toHaveText('Namaz vakitleri güncellenemedi');
+  await expect(page.locator('.vakit')).toHaveCount(0);
+  await expect(page.locator('.geri-sayim')).toHaveCount(0);
+  await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+  await page.setViewportSize({ width: 320, height: 240 });
+  expect(await page.locator('.sahne').evaluate((e) => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(1);
+});
+
+test('küçük TV penceresi kişisel kip açmaz; varsayılan TV araçları gizlidir', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/ekran/?kip=telefon');
+  await expect(page.locator('#ekran')).not.toHaveAttribute('data-kip', 'dokunmatik');
+  await expect(page.locator('.dokunmatik-araclar')).toBeHidden();
+});
 function tabanDenetle(o) {
   for (const p of o.paragraflar) {
     const taban = OLCU[o.tur][TABAN_ALANI[p.sinif]] * o.u;

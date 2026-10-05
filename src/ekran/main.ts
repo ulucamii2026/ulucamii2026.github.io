@@ -11,6 +11,7 @@ import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListes
 import { alan, yaz } from './gorunum.ts';
 import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
+import { dokunmatikKipiOku, dokunmatikKur } from './dokunmatik.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, levhaSigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
@@ -52,19 +53,22 @@ const sayfa = sayfaVerisiOku();
 const parametre = new URLSearchParams(location.search);
 const ekran = document.getElementById('ekran') as HTMLElement;
 const ekranId = ekranIdOku(parametre.get('ekran'));
+const dokunmatik = dokunmatikKipiOku(parametre.get('kip'));
 // Düzen pencere boyutuyla değişebilir (ör. döndürülmüş pencere): vakit bloğu yeniden çizilir, slayt sığdırılır; geri çağrı açılışta çalışmaz (durum henüz kurulmadı).
-olcekKur(ekran, donmeOku(parametre.get('don')), duzenOku(parametre.get('duzen')), () => {
+const yenidenOlc = (): void => {
   dakikalik(new Date());
   const slayt = alan('slayt');
-  if (slayt && typeof ResizeObserver !== 'function') levhaSigdir(slayt); // ResizeObserver varken tek tetikçi odur
-});
+  if (slayt && (dokunmatik || typeof ResizeObserver !== 'function')) levhaSigdir(slayt);
+};
+if (dokunmatik) dokunmatikKur(ekran, yenidenOlc);
+else olcekKur(ekran, donmeOku(parametre.get('don')), duzenOku(parametre.get('duzen')), yenidenOlc);
 /* Slayt alanının boyutu değişince (pencere, döndürme, Cuma satırı) levha yeniden sığdırılır. ResizeObserver
    Chromium 64+; yoksa olcekKur geri çağrısı ve Cuma satırı denetimi yedektir (yalnız o zaman çalışır: tek tetikçi).
    Sığdırma yalnız --olcek'i değiştirir, alanın kendi boyutunu değil (flex: 1 / ızgara satırı): gözlemci kendini
    yeniden tetiklemez. */
 try {
   const slaytAlani = alan('slayt');
-  if (slaytAlani && typeof ResizeObserver === 'function') new ResizeObserver(() => { levhaSigdir(slaytAlani); }).observe(slaytAlani);
+  if (!dokunmatik && slaytAlani && typeof ResizeObserver === 'function') new ResizeObserver(() => { levhaSigdir(slaytAlani); }).observe(slaytAlani);
 } catch (hata) {
   console.error(hata);
 }
@@ -207,6 +211,28 @@ let turNo = 0;
 let turAnahtari: string | undefined;
 /** Sıradaki slayt zamanlayıcısı (sonrakiSlayt → finally): kabuk yeni liste ittiğinde iptal edilip hemen yeniden kurulur. */
 let slaytZamanlayici: ReturnType<typeof setTimeout> | undefined;
+let otomatikGecis = !dokunmatik;
+let sonSureMs = 15_000;
+const zamanlayiciIptal = (): void => {
+  if (slaytZamanlayici !== undefined) clearTimeout(slaytZamanlayici);
+  slaytZamanlayici = undefined;
+};
+function slaytZamanla(): void {
+  zamanlayiciIptal();
+  if (otomatikGecis && (!dokunmatik || !document.hidden)) slaytZamanlayici = setTimeout(sonrakiSlayt, sonSureMs);
+}
+if (dokunmatik) {
+  ekran.querySelector('[data-dokun="sonraki"]')?.addEventListener('click', () => {
+    if (slaytBasladi) { zamanlayiciIptal(); sonrakiSlayt(); }
+  });
+  const otomatik = ekran.querySelector('[data-dokun="otomatik"]');
+  otomatik?.addEventListener('click', () => {
+    otomatikGecis = !otomatikGecis;
+    otomatik.setAttribute('aria-pressed', String(otomatikGecis));
+    if (slaytBasladi) slaytZamanla();
+  });
+  document.addEventListener('visibilitychange', () => { if (slaytBasladi) slaytZamanla(); });
+}
 /** Tabanda da sığmadığı için atlanan slayt sayısı (teşhis; slayt alanında data-atlanan). */
 let atlanan = 0;
 /** Turu (yeniden) kurar: bitmiş bir turdan sonra turNo artar, sira başa döner. */
@@ -265,7 +291,8 @@ function sonrakiSlayt(): void {
   } catch (hata) {
     console.error(hata);
   } finally {
-    slaytZamanlayici = setTimeout(sonrakiSlayt, sureMs);
+    sonSureMs = sureMs;
+    slaytZamanla();
   }
 }
 

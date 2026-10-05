@@ -1,6 +1,25 @@
 import test, { afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { YATAY_ESIGI, duzenSec, olcekKur, tuvalGeometrisi } from '../src/ekran/olcek.ts';
+import { dokunmatikKipiOku, dokunmatikOlcu } from '../src/ekran/dokunmatik.ts';
+
+test('dokunmatik kip yalnız açık seçimle açılır; küçük pencere veya bozuk değer yetmez', () => {
+  assert.equal(dokunmatikKipiOku('dokunmatik'), true);
+  for (const x of [null, '', 'telefon', 'tv', 'Dokunmatik', 'dokunmatik ']) assert.equal(dokunmatikKipiOku(x), false);
+});
+
+test('dokunmatik eşikler gerçek pencere genişliğini izler; klavye yazıyı küçültmez', () => {
+  for (const [w, sinif] of [[320, 'compact'], [599.9, 'compact'], [600, 'medium'], [839.9, 'medium'], [840, 'expanded'], [1440, 'expanded']]) {
+    const uzun = dokunmatikOlcu(w, 900, false);
+    const kisa = dokunmatikOlcu(w, 220, false);
+    assert.equal(uzun.sinif, sinif);
+    assert.equal(kisa.sinif, sinif);
+    assert.equal(kisa.kisa, true);
+    assert.equal(uzun.kisa, false);
+    assert.equal(kisa.u, uzun.u);
+    assert.ok(dokunmatikOlcu(w, 220, true).u > kisa.u);
+  }
+});
 
 /* Kayan noktalı ölçüler bire bir tutmayabilir (961 × 9/16 × 16/9 gibi); dönüşüm dizgisi ise harfi harfine eşleşmeli. */
 const yakin = (a, b, tol = 1e-9) => Math.abs(a - b) < tol;

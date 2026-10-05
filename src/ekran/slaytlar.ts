@@ -89,6 +89,10 @@ function afisli(kok: HTMLElement, kart: HTMLElement, levha: HTMLElement, d: Ekra
 function afisBoyutla(kok: HTMLElement): void {
   const kutu = kok.querySelector('.afis') as HTMLElement | null;
   if (!kutu || kutu.hidden || !kutu.parentElement) return;
+  if (kok.closest('[data-kip="dokunmatik"]')) {
+    kutu.style.width = '100%'; // Aynı afiş, doğal yükseklik ve tek sütun; metin görselin altında.
+    return;
+  }
   const govde = kutu.parentElement;
   const oran = parseFloat(kutu.getAttribute('data-oran') || '') || AFIS_ORANI;
   kutu.style.width = Math.round(Math.min(govde.clientHeight * oran, govde.clientWidth * AFIS_EN_COK)) + 'px';
@@ -214,7 +218,10 @@ export function levhaSigdir(kok: HTMLElement): OlcekSonucu {
     yaz(1);
     sonuc = { olcek: 1, sigdi: !levhaTasiyor(kok), olcumSayisi: 1 };
   } else {
-    sonuc = olcekBul((s) => { yaz(s); return !levhaTasiyor(kok); }, 1, OLCU[tur].enCok);
+    // Kişisel okuma görünümünde alan doğal boylanır. Ortak tabanlar ve gerçek taşma denetimi korunur;
+    // sınırsız doğal yüksekliğin her levhayı TV'nin en büyük ölçeğine büyütmesi önlenir.
+    const enCok = kok.closest('[data-kip="dokunmatik"]') ? 1 : OLCU[tur].enCok;
+    sonuc = olcekBul((s) => { yaz(s); return !levhaTasiyor(kok); }, 1, enCok);
     yaz(sonuc.olcek);
   }
   kok.setAttribute('data-olcek', sonuc.olcek.toFixed(3));
