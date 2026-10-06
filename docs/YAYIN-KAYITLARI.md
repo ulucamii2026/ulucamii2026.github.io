@@ -831,3 +831,12 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - Kaynak/kanıt: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-03-SUNUM-YENILEME.md`; `scratchpad/haftasonu-yenileme-2026-10-03/` altındaki kalite, oyun gösterisi, son dosya, ses, OneDrive ve canlı doğrulama kayıtları. İzole site kopyası `D:/tmp/ulucamii-kurs-20261003-04`; ilgisiz ana çalışma değişiklikleri korundu.
 - Sınırlar: fiziksel sınıf projeksiyonu/hoparlörü, OneDrive bulut eşitlemesi ve haricî video oynatma bu gösteri testinin kapsamı dışında. Önceki 21 veli e-postası tekrar gönderilmedi; kişisel veri yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
 
+## 2026-10-06T19:56:19+02:00 — Cami ekranı B3: dokunmatik okuma kipi ve render ilerleme protokolü (Europe/Brussels, CEST / UTC+02:00)
+
+- Yetki: kullanıcının 6 Ekim 2026 akşamı verdiği «B3 aşamalarını tamamla; bütün yetki ve karar sende» talimatı. Kapsam yalnız `/ekran/` paketi; site sayfaları, içerik ve namaz vakti verisi değişmedi.
+- Değişiklik: telefon/tablet için açık, uyarlanır dokunmatik okuma kipi; filo hedeflemesinin SDK anlık görüntülerinden doğrulanması (test); başarılı DOM döngülerinden render ilerleme bildirimi (`UluRenderDurumu`, Android kabuğu bunu güncelleme sağlık kanıtı olarak okur). Üç commit `42f183d`, `ca84434`, `25d78ed`; içerik commit'i `25d78ed33793c907c51df64a376175b808e32d51`. 13 dosya, +447/−8. Release 0, yeni indirilebilir dosya 0.
+- [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37507074219) **success** (17:53:45Z–17:56:19Z); dağıtılan SHA içerik commit'iyle eşleşti. Dernek kimliği ulucamii2026.
+- Kalite: `test:ekran` 168/168; `check` 0 hata/0 uyarı; `build` çıkış 0; Playwright 816 geçti/112 atlandı, çıkış 0. `dogrula` içindeki ihtida adımı ilk koşuda yerel Python başlatıcısının yanlış ortamı göstermesi yüzünden düştü (kodla ilgisiz); doğru Python paket yoluyla kalan 12/12 adım yeniden koşuldu ve geçti.
+- Canlı: [ekran](https://ulucamii.be/ekran/) HTTP200; canlı `ekran.js` render protokolünü içeriyor; `/ekran/vakitler.json` `kaynakTuru=diyanet`, ilçe 11890, 397 gün (2026-10-05…2027-12-31). Yenileme gönderilen üç saha ekranı 18:00–18:02Z arasında `renderer=ilerliyor` bildirdi.
+- Sınırlar: dokunmatik kipin fiziksel tablette uzun süreli kullanımı ve 14 günlük dayanıklılık ölçümü ayrı B3 adımlarıdır. Kişisel veri, telefon numarası veya anahtar yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
+
