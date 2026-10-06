@@ -537,6 +537,20 @@ for (const [w, sinif] of [[320, 'compact'], [390, 'compact'], [600, 'medium'], [
   });
 }
 
+test('dokunmatik: elle okuma kipinde bekleyen slayt renderer sayacını durdurmaz', async ({ page }) => {
+  await dokunmatikAc(page, { width: 900, height: 1000 }, 'kadin');
+  const ilk = await page.evaluate(() => window.UluRenderDurumu().sayac);
+  // Kabuk ilerleme görmezse renderer'ı donmuş sayar; slayt süresi + 30 sn çok aşılır, geçiş yine yoktur.
+  await page.clock.runFor(4 * 60_000);
+  await expect(page.locator('.baslik').first()).toHaveText('Birinci duyuru');
+  const orta = await page.evaluate(() => window.UluRenderDurumu().sayac);
+  expect(orta - ilk).toBeGreaterThanOrEqual(200);
+  // Otomatik geçiş açılınca sınır yeniden konur ve sayaç geçişlerle birlikte sürer.
+  await page.getByRole('button', { name: 'Otomatik geçiş' }).click();
+  await page.clock.runFor(2 * 60_000);
+  expect(await page.evaluate(() => window.UluRenderDurumu().sayac) - orta).toBeGreaterThanOrEqual(100);
+});
+
 test('dokunmatik: manuel okuma, klavye, hedef filtresi, büyük yazı ve yön değişimi', async ({ page }) => {
   await dokunmatikAc(page, { width: 900, height: 1000 }, 'kadin');
   await page.clock.runFor(40_000);

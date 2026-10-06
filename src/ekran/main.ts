@@ -226,9 +226,17 @@ const zamanlayiciIptal = (): void => {
   if (slaytZamanlayici !== undefined) clearTimeout(slaytZamanlayici);
   slaytZamanlayici = undefined;
 };
+/* Gözlem sınırı yalnız bir geçiş beklendiğinde konur: elle okuma kipinde ya da gizli sayfada slayt döngüsü bilerek
+   bekler, takılmış sayılmaz (yoksa renderer sayacı süre + 30 sn sonra durur ve kabuk sağlıklı sayfayı donmuş sanar).
+   Çizim hatası slaytSaglikli ile, ana iş parçacığının durması saniyelik ile yine yakalanır. */
 function slaytZamanla(): void {
   zamanlayiciIptal();
-  if (otomatikGecis && (!dokunmatik || !document.hidden)) slaytZamanlayici = setTimeout(sonrakiSlayt, sonSureMs);
+  if (otomatikGecis && (!dokunmatik || !document.hidden)) {
+    slaytZamanlayici = setTimeout(sonrakiSlayt, sonSureMs);
+    slaytGozlemSonu = performance.now() + sonSureMs + 30_000;
+  } else {
+    slaytGozlemSonu = Infinity;
+  }
 }
 if (dokunmatik) {
   ekran.querySelector('[data-dokun="sonraki"]')?.addEventListener('click', () => {
@@ -304,7 +312,6 @@ function sonrakiSlayt(): void {
     console.error(hata);
   } finally {
     slaytSaglikli = cizildi;
-    if (cizildi) slaytGozlemSonu = performance.now() + sureMs + 30_000;
     sonSureMs = sureMs;
     slaytZamanla();
   }
