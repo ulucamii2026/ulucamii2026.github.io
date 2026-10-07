@@ -4,6 +4,19 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 7 Ekim 2026 (2) — ses seviyesi regülasyonu + eski oyun düğmesi onarımı (12 gün, geriye dönük)
+
+- Zaman: 7 Ekim 2026 09:31–09:35 (Release yüklemesi) – 09:40 (push) – 09:43:04 (deploy) – 09:47 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: kullanıcının 7 Ekim açık talimatı («ses dosyalarının ses seviyelerinde de regülasyon yap … geriye dönük düzeltme yap paylaşılan materyallerde … bütün yetki ve karar sende»); yayın bu yüzden üretim oturumundan yapıldı.
+- Kapsam: yalnız `src/data/ders-materyalleri.json` (45 dosya boyutu). Yayımlanmış 12 günün (5 Eylül – 11 Ekim) 36 öğrenci sunumu: her gömülü ses −16 LUFS çalma yüksekliğine getirildi (Diyanet hafız kaydı yalnız kazanç aldı), PowerPoint çalma düzeyi her seste %80. Önce hafız sesi anlatımdan 9–13 dB kısık duyuluyordu. Ayrıca 20, 26, 27 Eylül'de 10 oyun slaytının «Cevabı göster» düğmesi onarıldı ve bu 9 sunumun PDF'i yenilendi.
+- İçerik commit'i `09a094a` (push `a6cb39d..09a094a`; ayrı çalışma ağacı `D:/tmp/ulucamii-ses-seviye-20261007`, ana ağaçtaki başka oturumun commit'lenmemiş işlerine dokunulmadı). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37588764422> — **success** (build + deploy).
+- Release'ler: `ders-2026-09-05` … `ders-2026-10-11` (12 etiket), 45 dosya yeniden yüklendi (36 pptx + 9 PDF), 93 dosya değişmediği için atlandı; toplam 138 dosya.
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1903 sayfa; `npm run denetim` çıkış 0 (yalnız önceden var olan iki «orta» bulgu). `dist`'te din görevlisi numarası 0 dosya.
+- Canlı doğrulama: [TR](https://ulucamii.be/tr/ders-materyalleri/), [FR](https://ulucamii.be/fr/supports-de-cours/), [EN](https://ulucamii.be/en/lesson-materials/) 200; her sayfada 12 gün, 138 bağlantı, din görevlisi numarası yok. 138/138 Release dosyasının GitHub `digest` değeri yerel SHA-256 ile eşit; 138/138 bağlantı 200 ve boyut eşit; 30/30 dosya (20, 26, 27 Eylül + 10, 11 Ekim sunumları ve PDF'leri) canlıdan indirildi, SHA-256 eşit. OneDrive 84/84 yerel eşit.
+- Yayın öncesi kapılar: `oyun-denetle.py` 89 gömülü oyun geçti; onarılan 9 sunumda `sunum-denetle.py` 0 bulgu, COM yerleşim 9/9 temiz, `denetim.py` öncesiyle birebir; yeni PDF'lerde kişisel veri taraması 0 bulgu.
+- Kaynak rapor: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-07-SES-SEVIYESI.md`. Kurs yayın indeksi ve DEVAM aynı oturumda güncellendi.
+- Sınırlar: sitenin kendi ses kütüphanesi (`public/media/ses`, 1596 dosya) da dengesiz (âyet medyan −19,3, sûre −21,2, elifbâ −14,1 LUFS) ama Diyanet kaynağına sha256 ile bağlı ve CI testli olduğu için bu yayında dokunulmadı; öneri: oynatıcıda dosya başına kazanç (WebAudio `GainNode`). Fiziksel sınıf cihazı ve gömülü YouTube sesi denetlenmedi. Bu kayıt commit'i ayrı belge commit'idir; asıl içerik yayını yukarıdaki SHA/run'dır.
+
 ## 7 Ekim 2026 — 10–11 Ekim kurs materyalleri (ezber dersi + kalıcı ezber köşesi)
 
 - Zaman: 7 Ekim 2026 07:13 (Release) – 07:17 (push) – 07:19:51 (deploy) – 07:20 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
