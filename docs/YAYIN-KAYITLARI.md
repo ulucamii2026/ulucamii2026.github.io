@@ -4,6 +4,20 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 7 Ekim 2026 (4) — 17–19 Ekim kurs materyalleri (19 Ekim sonbahar tatili ilâve Pazartesi dahil)
+
+- Zaman: 7 Ekim 2026 13:35:43–13:36:20 (Release yüklemesi) – 13:36:37 (push) – 13:39:16 (deploy) – 13:47 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: kullanıcının 7 Ekim talimatı («bütün yetki ve onay sende, full otonom ilerle»); üretim ve yayın aynı oturum zincirinden yapıldı.
+- Kapsam: yalnız `src/data/ders-materyalleri.json` (12 → 15 gün; başka satır değişmedi). 17 Ekim Lâmelif + Fâtiha 5–7 ezber, İtikat tekrar, İbadet «Dua ve şükür»; 18 Ekim Hemze + Fâtiha pekiştirme, Siyer «Peygamberler», Ahlak «Dostluk ve kardeşlik»; 19 Ekim Üstün + tekrar köşesi, İtikat «Melekler ve kader», İbadet tekrar. Her gün: Word planı PDF'i, 3 öğrenci + 3 öğretici sunumu (pptx + PDF), hızlı başlangıç eki.
+- Release `ders-2026-10-17` (14 dosya, 27,7 MB), `ders-2026-10-18` (14 dosya, 30,7 MB), `ders-2026-10-19` (14 dosya, 26,4 MB), `site-materyal-yayinla.py` ile dernek hesabından; indirme adları tarihli (`2026-10-17-Sunum-1-Kuran-i-Kerim.pptx`). Önce `--yukleme-yok` ile JSON yazıldı ve derlendi, sonra tam çalıştırma (JSON değişmedi) ve hemen push.
+- İçerik commit'i `ed099ee` (push `94da5dc..ed099ee`; ayrı çalışma ağacı `D:/tmp/ulucamii-kurs-20261017-19`, ana ağaçtaki başka oturumun commit'lenmemiş işlerine dokunulmadı). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37615243188> — **success** (build + deploy).
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1903 sayfa; `npm run denetim` çıkış 0 (yalnız önceden var olan iki «orta» bulgu). `dist`'te TR/FR/EN sayfada üç günün kartı birer kez, 14'er tarihli bağlantı; din görevlisi numarası metin olarak 0 dosya (yalnız izinli `wa.me` bağlantısı ve WhatsApp düğmesinin `data-whatsapp` özniteliği).
+  ⚠️ `npx astro build` tek başına başarısız olur (`ekran-sw-damgasi` kancası `/ekran/ekran.css`'i bulamaz); `npm run build` önce `scripts/ekran-derle.mjs` çalıştırır — yayın öncesi derlemede `npm run build` kullanılmalı.
+- Canlı doğrulama: [TR](https://ulucamii.be/tr/ders-materyalleri/#g-2026-10-17), [FR](https://ulucamii.be/fr/supports-de-cours/), [EN](https://ulucamii.be/en/lesson-materials/) 200; her sayfada `g-2026-10-17`, `g-2026-10-18`, `g-2026-10-19` birer kez ve 14'er bağlantı. 42/42 canlı indirme SHA-256 yerel arşivle eşit; 42/42 Release `digest` eşit; 36/36 yerel OneDrive eşit.
+- Yayın öncesi kapılar: öğrenci sunumlarında `sunum-denetle.py` 0 bulgu; `denetim.py --sert` 17 ve 19 TEMİZ, 18 İHLAL 0 · UYARI 1 (bilinen 17,5 pt FR satırı); COM yerleşim 18/18 temiz; 90 gömülü oyun geçti; kişisel veri taraması (PPTX metni, sunucu notları, PDF'ler) telefon/e-posta/hoca adı/öğrenci tam adı 0.
+- Kaynak rapor: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-17-19.md`. Kurs yayın indeksi ve DEVAM aynı oturumda güncellendi.
+- Sınırlar: fiziksel projeksiyon/hoparlör ve gerçek fare tıklamasıyla gösteri denenmedi (COM tetik/yerleşim doğrulandı); OneDrive bulut eşitlemesi doğrulanmadı. Bu kayıt commit'i ayrı belge commit'idir; asıl içerik yayını yukarıdaki SHA/run'dır.
+
 ## 7 Ekim 2026 (3) — indirme adları tarihle başlıyor (12 gün, 138 dosya)
 
 - Zaman: 7 Ekim 2026 10:14:09–10:16:16 (Release eklerinin yeniden adlandırılması) – 10:16:19 (push) – 10:18:59 (deploy) – 10:19:26 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
