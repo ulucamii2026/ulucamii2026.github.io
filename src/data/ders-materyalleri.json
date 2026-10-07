@@ -1486,6 +1486,453 @@
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-11/2026-10-11-Ogretici-Sunum-3-Ahlak-Bayramlasiyoruz.pdf"
         }
       ]
+    },
+    {
+      "tarih": "2026-10-17",
+      "hafta": 7,
+      "gun": "Cumartesi",
+      "etiket": "ders-2026-10-17",
+      "plan": {
+        "dosya": "2026-10-17-Ders-Plani.pdf",
+        "boyut": 705022,
+        "sayfa": 23,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ders-Plani.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Lâmelif",
+          "konuFr": "Le lam-alif",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "2026-10-17-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 6128720,
+          "slayt": 21,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "2026-10-17-Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 293190,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "İtikat",
+          "kod": "itikat",
+          "konu": "İtikat",
+          "konuFr": "Croyance",
+          "baslik": {
+            "tr": "Tekrar ve Değerlendirme 1",
+            "fr": "Révision et évaluation 1"
+          },
+          "dosya": "2026-10-17-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pptx",
+          "boyut": 5211218,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pptx",
+          "pdf": {
+            "dosya": "2026-10-17-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pdf",
+            "boyut": 862403,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "İbadet",
+          "kod": "ibadet",
+          "konu": "İbadet",
+          "konuFr": "Adoration",
+          "baslik": {
+            "tr": "Allah'a Dua Ediyorum ve Şükrediyorum",
+            "fr": "J'invoque Allah et je le remercie"
+          },
+          "dosya": "2026-10-17-Sunum-3-Ibadet-Dua-ve-Sukur.pptx",
+          "boyut": 5378006,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Sunum-3-Ibadet-Dua-ve-Sukur.pptx",
+          "pdf": {
+            "dosya": "2026-10-17-Sunum-3-Ibadet-Dua-ve-Sukur.pdf",
+            "boyut": 866210,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Sunum-3-Ibadet-Dua-ve-Sukur.pdf"
+          }
+        }
+      ],
+      "ekler": [
+        {
+          "dosya": "2026-10-17-Derse-Hizli-Baslangic.pdf",
+          "boyut": 164373,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
+            "fr": "Bien commencer le cours · livres et pages"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Derse-Hizli-Baslangic.pdf"
+        },
+        {
+          "dosya": "2026-10-17-Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 147168,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 1 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ogretici-Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "dosya": "2026-10-17-Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
+          "boyut": 2723886,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PDF)",
+            "fr": "Guide enseignant · cours 1 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ogretici-Sunum-1-Kuran-i-Kerim.pdf"
+        },
+        {
+          "dosya": "2026-10-17-Ogretici-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pptx",
+          "boyut": 166596,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 2 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ogretici-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pptx"
+        },
+        {
+          "dosya": "2026-10-17-Ogretici-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pdf",
+          "boyut": 3105014,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PDF)",
+            "fr": "Guide enseignant · cours 2 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ogretici-Sunum-2-Itikat-Tekrar-Degerlendirme-1.pdf"
+        },
+        {
+          "dosya": "2026-10-17-Ogretici-Sunum-3-Ibadet-Dua-ve-Sukur.pptx",
+          "boyut": 167661,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 3 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ogretici-Sunum-3-Ibadet-Dua-ve-Sukur.pptx"
+        },
+        {
+          "dosya": "2026-10-17-Ogretici-Sunum-3-Ibadet-Dua-ve-Sukur.pdf",
+          "boyut": 3220939,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PDF)",
+            "fr": "Guide enseignant · cours 3 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-17/2026-10-17-Ogretici-Sunum-3-Ibadet-Dua-ve-Sukur.pdf"
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-18",
+      "hafta": 7,
+      "gun": "Pazar",
+      "etiket": "ders-2026-10-18",
+      "plan": {
+        "dosya": "2026-10-18-Ders-Plani.pdf",
+        "boyut": 694401,
+        "sayfa": 23,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ders-Plani.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Hemze",
+          "konuFr": "La hamza",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "2026-10-18-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 5732763,
+          "slayt": 22,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "2026-10-18-Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 289728,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "Siyer",
+          "kod": "siyer",
+          "konu": "Siyer",
+          "konuFr": "Vie du Prophète",
+          "baslik": {
+            "tr": "Allah'ın Elçileri: Peygamberler",
+            "fr": "Les messagers d'Allah : les prophètes"
+          },
+          "dosya": "2026-10-18-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pptx",
+          "boyut": 6460850,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pptx",
+          "pdf": {
+            "dosya": "2026-10-18-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pdf",
+            "boyut": 1141043,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "Ahlak",
+          "kod": "ahlak",
+          "konu": "Ahlak",
+          "konuFr": "Morale",
+          "baslik": {
+            "tr": "Dinim, Dostluk ve Kardeşlik İçinde Olmamı İster",
+            "fr": "Ma religion veut que je sois dans l'amitié et la fraternité"
+          },
+          "dosya": "2026-10-18-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pptx",
+          "boyut": 6205111,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pptx",
+          "pdf": {
+            "dosya": "2026-10-18-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pdf",
+            "boyut": 997882,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pdf"
+          }
+        }
+      ],
+      "ekler": [
+        {
+          "dosya": "2026-10-18-Derse-Hizli-Baslangic.pdf",
+          "boyut": 167055,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
+            "fr": "Bien commencer le cours · livres et pages"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Derse-Hizli-Baslangic.pdf"
+        },
+        {
+          "dosya": "2026-10-18-Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 153419,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 1 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ogretici-Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "dosya": "2026-10-18-Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
+          "boyut": 3003420,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PDF)",
+            "fr": "Guide enseignant · cours 1 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ogretici-Sunum-1-Kuran-i-Kerim.pdf"
+        },
+        {
+          "dosya": "2026-10-18-Ogretici-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pptx",
+          "boyut": 170760,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 2 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ogretici-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pptx"
+        },
+        {
+          "dosya": "2026-10-18-Ogretici-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pdf",
+          "boyut": 3498905,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PDF)",
+            "fr": "Guide enseignant · cours 2 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ogretici-Sunum-2-Siyer-Allahin-Elcileri-Peygamberler.pdf"
+        },
+        {
+          "dosya": "2026-10-18-Ogretici-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pptx",
+          "boyut": 170919,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 3 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ogretici-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pptx"
+        },
+        {
+          "dosya": "2026-10-18-Ogretici-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pdf",
+          "boyut": 3533158,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PDF)",
+            "fr": "Guide enseignant · cours 3 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-18/2026-10-18-Ogretici-Sunum-3-Ahlak-Dostluk-ve-Kardeslik.pdf"
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-19",
+      "hafta": 7,
+      "gun": "Pazartesi",
+      "etiket": "ders-2026-10-19",
+      "plan": {
+        "dosya": "2026-10-19-Ders-Plani.pdf",
+        "boyut": 707446,
+        "sayfa": 23,
+        "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ders-Plani.pdf"
+      },
+      "sunumlar": [
+        {
+          "no": 1,
+          "saat": "11:00-11:40",
+          "alan": "Kur'an-ı Kerim",
+          "kod": "kuran",
+          "konu": "Üstün",
+          "konuFr": "La fatha",
+          "baslik": {
+            "tr": "Kur'an-ı Kerim",
+            "fr": "Le Saint Coran"
+          },
+          "dosya": "2026-10-19-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 5575266,
+          "slayt": 24,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Sunum-1-Kuran-i-Kerim.pptx",
+          "pdf": {
+            "dosya": "2026-10-19-Sunum-1-Kuran-i-Kerim.pdf",
+            "boyut": 305630,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Sunum-1-Kuran-i-Kerim.pdf"
+          }
+        },
+        {
+          "no": 2,
+          "saat": "12:00-12:40",
+          "alan": "İtikat",
+          "kod": "itikat",
+          "konu": "İtikat",
+          "konuFr": "Croyance",
+          "baslik": {
+            "tr": "Meleklere ve Kadere İman Ediyorum",
+            "fr": "Je crois aux anges et à la prédestination"
+          },
+          "dosya": "2026-10-19-Sunum-2-Itikat-Melekler-ve-Kader.pptx",
+          "boyut": 5184061,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Sunum-2-Itikat-Melekler-ve-Kader.pptx",
+          "pdf": {
+            "dosya": "2026-10-19-Sunum-2-Itikat-Melekler-ve-Kader.pdf",
+            "boyut": 546015,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Sunum-2-Itikat-Melekler-ve-Kader.pdf"
+          }
+        },
+        {
+          "no": 3,
+          "saat": "13:00-13:40",
+          "alan": "İbadet",
+          "kod": "ibadet",
+          "konu": "İbadet",
+          "konuFr": "Adoration",
+          "baslik": {
+            "tr": "Tekrar ve Değerlendirme 1",
+            "fr": "Révision et évaluation 1"
+          },
+          "dosya": "2026-10-19-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pptx",
+          "boyut": 4687414,
+          "slayt": 26,
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pptx",
+          "pdf": {
+            "dosya": "2026-10-19-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pdf",
+            "boyut": 644804,
+            "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pdf"
+          }
+        }
+      ],
+      "ekler": [
+        {
+          "dosya": "2026-10-19-Derse-Hizli-Baslangic.pdf",
+          "boyut": 165301,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Derse hızlı başlangıç · kitap ve sayfa rehberi",
+            "fr": "Bien commencer le cours · livres et pages"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Derse-Hizli-Baslangic.pdf"
+        },
+        {
+          "dosya": "2026-10-19-Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
+          "boyut": 160132,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 1 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ogretici-Sunum-1-Kuran-i-Kerim.pptx"
+        },
+        {
+          "dosya": "2026-10-19-Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
+          "boyut": 3063485,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 1. ders (PDF)",
+            "fr": "Guide enseignant · cours 1 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ogretici-Sunum-1-Kuran-i-Kerim.pdf"
+        },
+        {
+          "dosya": "2026-10-19-Ogretici-Sunum-2-Itikat-Melekler-ve-Kader.pptx",
+          "boyut": 167226,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 2 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ogretici-Sunum-2-Itikat-Melekler-ve-Kader.pptx"
+        },
+        {
+          "dosya": "2026-10-19-Ogretici-Sunum-2-Itikat-Melekler-ve-Kader.pdf",
+          "boyut": 3203930,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 2. ders (PDF)",
+            "fr": "Guide enseignant · cours 2 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ogretici-Sunum-2-Itikat-Melekler-ve-Kader.pdf"
+        },
+        {
+          "dosya": "2026-10-19-Ogretici-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pptx",
+          "boyut": 167052,
+          "tur": "pptx",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
+            "fr": "Guide enseignant · cours 3 (PowerPoint)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ogretici-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pptx"
+        },
+        {
+          "dosya": "2026-10-19-Ogretici-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pdf",
+          "boyut": 3181929,
+          "tur": "pdf",
+          "baslik": {
+            "tr": "Öğretici rehberi · 3. ders (PDF)",
+            "fr": "Guide enseignant · cours 3 (PDF)"
+          },
+          "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-10-19/2026-10-19-Ogretici-Sunum-3-Ibadet-Tekrar-Degerlendirme-1.pdf"
+        }
+      ]
     }
   ]
 }
