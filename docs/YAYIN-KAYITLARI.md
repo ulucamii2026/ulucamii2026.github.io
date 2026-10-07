@@ -4,6 +4,19 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 7 Ekim 2026 (3) — indirme adları tarihle başlıyor (12 gün, 138 dosya)
+
+- Zaman: 7 Ekim 2026 10:14:09–10:16:16 (Release eklerinin yeniden adlandırılması) – 10:16:19 (push) – 10:18:59 (deploy) – 10:19:26 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: kullanıcının 7 Ekim isteği («dosyaların isminde hâlâ tarih yer almıyor … kullanıcı web sitemize girip dosyaları tek tek indirdiğinde indirilen dosyalar arasında herhangi bir karmaşa olmasın»).
+- Kapsam: yalnız `src/data/ders-materyalleri.json` — 138 `dosya` + 138 `url` satırı, başka alan değişmedi. İndirme adı artık `YYYY-AA-GG-<ad>`: `2026-10-10-Sunum-1-Kuran-i-Kerim.pptx`, `2026-10-10-Ders-Plani.pdf` (eski `Ders-Plani-2026-10-10.pdf`; tarih ikinci kez yazılmaz), `2026-10-10-Ogretici-Sunum-1-….pdf`, `2026-10-10-Derse-Hizli-Baslangic.pdf`. Sayfa bileşenleri yalnız `url` kullandığı için kod değişmedi.
+- Yöntem: kurs projesindeki `scripts/site-materyal-yayinla.py` artık yayın adını `yayin_adi()` ile üretir. Sürümde eski tarihsiz adla duran dosyanın GitHub `digest` değeri yereldekiyle aynıysa `PATCH releases/assets/{id}` ile yerinde yeniden adlandırılır (yükleme yok), farklıysa silinip tarihli adla yüklenir. Bu yayında 138 dosya yeniden adlandırıldı, 0 yükleme, 0 silme. Atlama ölçütü artık ad + SHA-256 (eskiden ad + boyut + yükleme tarihi).
+- Sıra (kırık bağlantı süresini kısaltmak için): önce `--yukleme-yok` ile JSON yazıldı ve derlendi, commit'lendi; sonra tam çalıştırma ve hemen push. Eski adlı bağlantılar 10:14:09 ile 10:18:59 arasında (en çok ≈ 5 dk) 404 verdi.
+- İçerik commit'i `b7144cb` (push `cd47d10..b7144cb`; ayrı çalışma ağacı `D:/tmp/ulucamii-tarihli-ad-20261007`, ana ağaçtaki başka oturumun commit'lenmemiş işlerine dokunulmadı). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37592663743> — **success** (build + deploy).
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1903 sayfa; `npm run denetim` çıkış 0 (yalnız önceden var olan iki «orta» bulgu). `dist`'te 138 farklı Release bağlantısı, tarihsiz 0; din görevlisi numarası 0 dosya. JSON dışında kaynakta (`src`, `docs`, `public`, `scripts`) eski adla doğrudan bağlantı yok.
+- Canlı doğrulama: [TR](https://ulucamii.be/tr/ders-materyalleri/), [FR](https://ulucamii.be/fr/supports-de-cours/), [EN](https://ulucamii.be/en/lesson-materials/) 200; her sayfada 138 bağlantı, hepsi tarihli, din görevlisi numarası yok. 12 sürümde yalnız beklenen 138 tarihli ad var (fazla 0, eksik 0, tarihsiz 0); 138/138 `digest` yerel SHA-256 ile eşit; 138/138 bağlantı HEAD 200, boyut eşit ve `Content-Disposition: attachment; filename=<tarihli ad>` (tarayıcının kaydedeceği ad tarihli).
+- Kaynak rapor: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-07-TARIHLI-DOSYA-ADLARI.md`. Kurs yayın indeksi ve DEVAM aynı oturumda güncellendi.
+- Sınırlar: eski tarihsiz adlarla dışarıda paylaşılmış doğrudan dosya bağlantıları artık 404 verir (veli e-postaları dosyaya değil materyal sayfasına bağlandığı için etkilenmez). Arşiv (`dersler/`) ve OneDrive adları değişmedi. Bu kayıt commit'i ayrı belge commit'idir; asıl içerik yayını yukarıdaki SHA/run'dır.
+
 ## 7 Ekim 2026 (2) — ses seviyesi regülasyonu + eski oyun düğmesi onarımı (12 gün, geriye dönük)
 
 - Zaman: 7 Ekim 2026 09:31–09:35 (Release yüklemesi) – 09:40 (push) – 09:43:04 (deploy) – 09:47 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
