@@ -4,6 +4,20 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 7 Ekim 2026 — 10–11 Ekim kurs materyalleri (ezber dersi + kalıcı ezber köşesi)
+
+- Zaman: 7 Ekim 2026 07:13 (Release) – 07:17 (push) – 07:19:51 (deploy) – 07:20 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: kullanıcının 7 Ekim sabahı açık yayın talimatı («bu materyalleri web sitesinde yayımla… bütün yetki ve karar sende»); bu yüzden yayın üretim oturumunda yapıldı.
+- Kapsam: yalnız `src/data/ders-materyalleri.json` (12 gün). 10 Ekim Kur'an dersi baştan sona ezber dersi (Kilim 1. şerit + Fâtiha 1–4); 11 Ekim'den itibaren her Kur'an dersinin son 8–10 dakikası ezber köşesi. Her gün: Word planı (docx + PDF), 3 öğrenci + 3 öğretici sunumu (pptx + PDF), hızlı başlangıç eki.
+- İçerik commit'i `dec8ad6a7c3d4f13d2bcbb9d3d2dd6431cc5b1ec` (push `4a47ea3..dec8ad6`; ayrı çalışma ağacı `D:/tmp/ulucamii-kurs-20261010-11`, ana ağaçtaki başka oturumun commit'lenmemiş işlerine dokunulmadı). Deploy: <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37575545217> — **success** (build + deploy).
+- Release `ders-2026-10-10` (14 dosya, 31,3 MB) ve `ders-2026-10-11` (14 dosya, 27,4 MB), `site-materyal-yayinla.py` ile dernek hesabından.
+- Yerel doğrulama: `npm run check` 0 hata / 0 uyarı; `npm run build` 1903 sayfa; `npm run denetim` çıkış 0 (yalnız önceden var olan iki «orta» bulgu). `dist`'te TR/FR/EN sayfada iki günün kartı ve 14'er bağlantı; din görevlisi numarası 0 dosya.
+- Canlı doğrulama: [TR](https://ulucamii.be/tr/ders-materyalleri/#g-2026-10-10), [FR](https://ulucamii.be/fr/supports-de-cours/), [EN](https://ulucamii.be/en/lesson-materials/) 200; her sayfada `g-2026-10-10` ve `g-2026-10-11` birer kez, 14'er bağlantı; 10 Ekim kartı «Ezber dersi · İlk şerit ve Fâtiha». 28/28 indirme SHA-256 yerel dosyayla eşit; 24/24 yerel OneDrive eşit.
+- Yayın öncesi kişisel veri taraması (PDF + PPTX metni, sunucu notları dahil): telefon, e-posta ve hoca adı bulgusu yok; ad kalıbı eşleşmeleri yalnız sıradan bir Türkçe sözcükteydi, kişisel veri değil.
+- Karar: yıllık plan değişmediği için sitedeki yıllık plan gün kartı 10 Ekim'i hâlâ «Bitişmeyen Harfler» gösterir; plan elle düzenlenmez, materyal sayfası gerçek konuyu gösterir (kurs kuralı: harf konusu 11 Ekim tekrar dersine katıldı).
+- Kaynak rapor: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-10-11-EZBER.md`. Kurs yayın indeksi ve DEVAM aynı oturumda güncellendi.
+- Sınırlar: fiziksel projeksiyon/hoparlör ve gerçek fare tıklamasıyla gösteri denenmedi (COM tetik/yerleşim doğrulandı); 11 Ekim Ahlak «Kâbe'nin Yolları» ilahisi baştan sona insan tarafından dinlenmedi; OneDrive bulut eşitlemesi doğrulanmadı. Bu kayıt commit'i ayrı belge commit'idir; asıl içerik yayını yukarıdaki SHA/run'dır.
+
 ## 5 Ekim 2026 — /kitap/ gizli kitap paylaşım sayfası
 
 - Zaman: 5 Ekim 2026 ≈ 00:21 (push) – 00:24 (deploy) – 00:35 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
