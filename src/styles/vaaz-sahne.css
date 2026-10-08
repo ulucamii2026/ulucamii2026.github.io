@@ -281,24 +281,6 @@ div.vaaz-govde p.vz-baris {
 }
 div.vaaz-govde p.vz-baris svg { flex: none; width: 1.2rem; height: 1.2rem; }
 
-/* ——— Güvenlik kutusu ——— */
-div.vaaz-govde aside.vz-guvenlik {
-  margin: 2rem 0; padding: 1.2rem 1.3rem 1.25rem; border-radius: var(--vz-yuvarlak);
-  border: 1px solid color-mix(in oklab, var(--vz-yesil) 45%, transparent); border-inline-start: 5px solid var(--vz-yesil);
-  background: color-mix(in oklab, var(--vz-yesil) 9%, var(--zemin));
-}
-div.vaaz-govde aside.vz-guvenlik p.vz-kutu-tur { margin: 0; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vz-yesil); }
-div.vaaz-govde aside.vz-guvenlik p.vz-kutu-baslik { margin: .1rem 0 .5rem; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; color: var(--metin); }
-div.vaaz-govde aside.vz-guvenlik p { margin: 0 0 .6rem; font-size: 1rem; }
-div.vaaz-govde ul.vz-hatlar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin: .4rem 0 0; padding: 0; list-style: none; }
-div.vaaz-govde ul.vz-hatlar > li {
-  display: grid; gap: .05rem; margin: 0; padding: .55rem .75rem; border-radius: 10px; background: var(--zemin); border: 1px solid var(--cizgi);
-  font-family: var(--font-sans); font-size: .8rem; line-height: 1.4; color: var(--metin-2);
-}
-div.vaaz-govde ul.vz-hatlar a { font-family: var(--font-sans); font-weight: 700; font-size: 1.15rem; letter-spacing: .02em; color: var(--metin); text-decoration: none; }
-div.vaaz-govde ul.vz-hatlar a:hover { color: var(--vz-yesil); text-decoration: underline; }
-div.vaaz-govde ul.vz-hatlar > li.vz-acil a { color: var(--vz-ayet); }
-
 /* ——— Hikâye kartları ——— */
 div.vaaz-govde aside.vz-hikaye {
   position: relative; margin: 2.2rem 0; padding: 1.35rem 1.4rem 1.2rem; border-radius: var(--vz-yuvarlak);
@@ -393,8 +375,7 @@ div.vaaz-govde details.vz-kaynaklar strong { color: var(--metin); }
   div.vaaz-govde ol.vz-ozet-liste,
   div.vaaz-govde ol.vz-harita-liste,
   div.vaaz-govde dl.vz-kavram-liste,
-  div.vaaz-govde ol.vz-adimlar,
-  div.vaaz-govde ul.vz-hatlar { grid-template-columns: minmax(0, 1fr); }
+  div.vaaz-govde ol.vz-adimlar { grid-template-columns: minmax(0, 1fr); }
   div.vaaz-govde ol.vz-adimlar > li:last-child:nth-child(odd) { grid-column: auto; }
   div.vaaz-govde header.vz-bolum { margin-top: 2.75rem; }
   div.vaaz-govde figure.vz-bolum-sahne { border-radius: 10px; }
