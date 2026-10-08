@@ -1,0 +1,442 @@
+/* Vaaz sahnesi bileşenleri (vz-*) — «Affetmek ve Öfkeyi Kontrol Etmek» vaazıyla gelen bağımsız yapı (8 Eki 2026).
+   Geçen haftaların vaaz-gorseller.css sınıflarından ayrıdır; markdown içine düz HTML olarak yazılır, JavaScript gerektirmez.
+   Seçiciler sayfanın kapsamlı kurallarını (.vaaz-govde[data-astro-cid] p → 0,2,1) yenebilmek için div.vaaz-govde önekiyle başlar (0,2,2+). */
+
+div.vaaz-govde {
+  --vz-ayet: var(--vurgu);
+  --vz-hadis: var(--vurgu-2);
+  --vz-dua: #8a5a12;
+  --vz-yesil: #5d6c4c;
+  --vz-kart: var(--zemin-2);
+  --vz-kart-2: var(--zemin-3);
+  --vz-golge: 0 14px 34px -22px rgb(36 32 28 / .45);
+  --vz-yuvarlak: 14px;
+  --vz-ortu: rgb(20 16 12 / .82);
+  --vz-dolgu-metin: #fff;   /* vurgu renkli dolgunun üstündeki yazı; koyu temada vurgular açıldığı için koyulaşır */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) div.vaaz-govde {
+    --vz-dua: #e9c98a;
+    --vz-yesil: #a4b58c;
+    --vz-golge: 0 14px 34px -22px rgb(0 0 0 / .8);
+    --vz-dolgu-metin: #1d2424;
+  }
+}
+:root[data-theme="dark"] div.vaaz-govde {
+  --vz-dua: #e9c98a;
+  --vz-yesil: #a4b58c;
+  --vz-golge: 0 14px 34px -22px rgb(0 0 0 / .8);
+  --vz-dolgu-metin: #1d2424;
+}
+
+/* ——— Ortak parçalar ——— */
+div.vaaz-govde p.vz-ust-etiket {
+  display: flex; justify-content: space-between; align-items: baseline; gap: .75rem;
+  margin: 0 0 .9rem; font-family: var(--font-mono); font-size: .7rem; line-height: 1.4;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--metin-2);
+}
+div.vaaz-govde p.vz-ust-etiket span { color: var(--vurgu-2); letter-spacing: .08em; }
+div.vaaz-govde p.vz-not { margin: .75rem 0 0; font-family: var(--font-sans); font-size: .8rem; line-height: 1.5; color: var(--metin-2); }
+div.vaaz-govde p.vz-hitap {
+  margin: 1.6rem 0 1.1rem; font-style: italic; font-weight: 600; font-size: 1.14rem; line-height: 1.5;
+  color: var(--vz-ayet); text-wrap: balance;
+}
+div.vaaz-govde p.vz-hitap strong { color: inherit; }
+div.vaaz-govde img.vz-resim { display: block; width: 100%; height: auto; }
+
+/* ——— Açılış sahnesi ——— */
+div.vaaz-govde figure.vz-acilis {
+  position: relative; margin: 0 0 2.25rem; overflow: hidden;
+  border-radius: var(--vz-yuvarlak); background: var(--vz-kart-2); box-shadow: var(--vz-golge);
+}
+div.vaaz-govde figure.vz-acilis figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 5rem 1.6rem 1.35rem;
+  background: linear-gradient(to top, rgb(20 16 12 / .88), rgb(20 16 12 / .5) 58%, transparent);
+}
+div.vaaz-govde figure.vz-acilis p.vz-acilis-soz {
+  margin: 0; max-width: 30rem; font-family: var(--font-serif); font-style: italic; font-weight: 500;
+  font-size: clamp(1.3rem, 2.8vw, 1.7rem); line-height: 1.28; color: #fdfbf7; text-wrap: balance;
+}
+div.vaaz-govde figure.vz-acilis span.vz-temsil {
+  display: block; margin-top: .55rem; font-family: var(--font-sans); font-size: .76rem; letter-spacing: .02em; color: rgb(253 251 247 / .86);
+}
+
+/* ——— Dört ana fikir ——— */
+div.vaaz-govde section.vz-ozet {
+  margin: 0 0 2.25rem; padding: 1.25rem 1.35rem 1.35rem;
+  border: 1px solid var(--cizgi); border-radius: var(--vz-yuvarlak); background: var(--vz-kart);
+}
+div.vaaz-govde ol.vz-ozet-liste {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem;
+  margin: 0; padding: 0; list-style: none; counter-reset: vz-ozet;
+}
+div.vaaz-govde ol.vz-ozet-liste > li {
+  counter-increment: vz-ozet; position: relative; margin: 0; padding-inline-start: 2.6rem;
+  font-family: var(--font-sans); font-size: .92rem; line-height: 1.5; color: var(--metin-2);
+}
+div.vaaz-govde ol.vz-ozet-liste > li::before {
+  content: counter(vz-ozet); position: absolute; inset-inline-start: 0; top: .05rem;
+  display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+  background: var(--vz-ayet); color: var(--vz-dolgu-metin); font-family: var(--font-serif); font-weight: 700; font-size: .95rem;
+}
+div.vaaz-govde ol.vz-ozet-liste strong { display: block; font-family: var(--font-serif); font-size: 1.04rem; color: var(--metin); margin-bottom: .1rem; }
+
+/* ——— Yolculuk haritası (bölümler) ——— */
+div.vaaz-govde nav.vz-harita { margin: 0 0 2.75rem; scroll-margin-top: 7rem; }
+div.vaaz-govde ol.vz-harita-liste {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem;
+  margin: 0; padding: 0; list-style: none;
+}
+div.vaaz-govde ol.vz-harita-liste > li { margin: 0; }
+div.vaaz-govde nav.vz-harita a {
+  display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: .85rem;
+  min-height: 4rem; padding: .4rem .7rem .4rem .4rem; border: 1px solid var(--cizgi); border-radius: 10px;
+  background: var(--zemin); color: var(--metin); text-decoration: none;
+  transition: border-color var(--motion-standard, .18s), transform var(--motion-standard, .18s), box-shadow var(--motion-standard, .18s);
+}
+div.vaaz-govde nav.vz-harita a:hover { border-color: var(--vz-ayet); transform: translateY(-1px); box-shadow: var(--vz-golge); }
+div.vaaz-govde nav.vz-harita a:focus-visible { outline: 3px solid var(--focus-ring, var(--vurgu-2)); outline-offset: 2px; }
+div.vaaz-govde nav.vz-harita img { width: 6.5rem; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px; }
+div.vaaz-govde nav.vz-harita span.vz-harita-no {
+  display: block; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--vurgu-2);
+}
+div.vaaz-govde nav.vz-harita span.vz-harita-ad { display: block; font-family: var(--font-serif); font-size: .98rem; line-height: 1.25; text-wrap: balance; }
+
+/* ——— Bölüm açılışı ——— */
+div.vaaz-govde header.vz-bolum { margin: 3.5rem 0 1.25rem; }
+div.vaaz-govde header.vz-bolum:first-of-type { margin-top: 2rem; }
+div.vaaz-govde figure.vz-bolum-sahne {
+  position: relative; margin: 0 0 1.1rem; overflow: hidden; border-radius: var(--vz-yuvarlak);
+  background: var(--vz-kart-2); box-shadow: var(--vz-golge);
+}
+div.vaaz-govde figure.vz-bolum-sahne figcaption {
+  position: absolute; inset-inline-end: .75rem; bottom: .75rem; max-width: calc(100% - 1.5rem);
+  padding: .3rem .65rem; border-radius: 999px; background: var(--vz-ortu); color: #fdfbf7;
+  font-family: var(--font-sans); font-size: .74rem; line-height: 1.35; letter-spacing: .02em;
+}
+div.vaaz-govde header.vz-bolum h2 {
+  display: flex; align-items: baseline; gap: .7rem; margin: 0; padding: 0;
+  font-size: clamp(1.4rem, 3.2vw, 1.75rem); line-height: 1.2; color: var(--metin);
+}
+div.vaaz-govde header.vz-bolum h2 span.vz-no {
+  flex: none; display: inline-grid; place-items: center; min-width: 2.4rem; height: 2.4rem; padding: 0 .45rem;
+  border-radius: 999px; background: var(--vz-ayet); color: var(--vz-dolgu-metin);
+  font-family: var(--font-serif); font-size: 1.02rem; font-weight: 700; letter-spacing: .02em; transform: translateY(-.15rem);
+}
+div.vaaz-govde header.vz-bolum p.vz-bolum-oz {
+  margin: .55rem 0 0; font-family: var(--font-sans); font-size: .95rem; line-height: 1.5; color: var(--metin-2);
+}
+div.vaaz-govde h3.vz-ara-baslik {
+  margin: 2.4rem 0 .8rem; font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.3;
+  text-transform: none; letter-spacing: -.005em; color: var(--vz-ayet);
+}
+
+/* ——— Âyet, hadis ve dua kartları ——— */
+div.vaaz-govde figure.vz-nass {
+  --vz-renk: var(--vz-ayet);
+  position: relative; margin: 2.2rem 0; padding: 1.6rem 1.5rem 1.25rem;
+  border: 1px solid var(--cizgi); border-top: 3px solid var(--vz-renk); border-radius: var(--vz-yuvarlak);
+  background: var(--vz-kart); text-align: center;
+}
+div.vaaz-govde figure.vz-nass.vz-hadis { --vz-renk: var(--vz-hadis); }
+div.vaaz-govde figure.vz-nass.vz-dua { --vz-renk: var(--vz-dua); }
+div.vaaz-govde figure.vz-nass::before {
+  content: ""; position: absolute; top: -.85rem; left: 50%; width: 1.5rem; height: 1.5rem; translate: -50% 0;
+  background: var(--vz-renk);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5l2.9 4.6 5.3-1.2-1.2 5.3 4.6 2.9-4.6 2.9 1.2 5.3-5.3-1.2L12 22.5l-2.9-4.6-5.3 1.2 1.2-5.3-4.6-2.9 4.6-2.9-1.2-5.3 5.3 1.2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5l2.9 4.6 5.3-1.2-1.2 5.3 4.6 2.9-4.6 2.9 1.2 5.3-5.3-1.2L12 22.5l-2.9-4.6-5.3 1.2 1.2-5.3-4.6-2.9 4.6-2.9-1.2-5.3 5.3 1.2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+div.vaaz-govde figure.vz-nass figcaption.vz-nass-bas { margin: 0 0 .9rem; display: grid; gap: .15rem; }
+div.vaaz-govde figure.vz-nass span.vz-nass-tur {
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--vz-renk);
+}
+div.vaaz-govde figure.vz-nass span.vz-nass-konu { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 600; color: var(--metin); }
+div.vaaz-govde figure.vz-nass p.vz-arapca:lang(ar) {
+  margin: 0 0 .35rem; font-family: var(--font-arabic, Amiri), Amiri, serif; font-size: 1.7rem; line-height: 2.05;
+  text-align: center; direction: rtl; color: var(--metin);
+}
+div.vaaz-govde figure.vz-nass p.vz-meal {
+  margin: .85rem auto 0; max-width: 36rem; font-style: italic; font-size: 1.04rem; line-height: 1.65; color: var(--metin);
+}
+div.vaaz-govde figure.vz-nass p.vz-kaynak {
+  display: inline-block; margin: .85rem 0 0; padding: .2rem .7rem; border-radius: 999px;
+  background: var(--zemin); border: 1px solid var(--cizgi);
+  font-family: var(--font-sans); font-size: .78rem; line-height: 1.45; letter-spacing: .01em; color: var(--metin-2);
+}
+
+/* ——— Dört anahtar kavram ——— */
+div.vaaz-govde figure.vz-kavramlar { margin: 2rem 0; }
+div.vaaz-govde figure.vz-kavramlar figcaption, div.vaaz-govde figure.vz-sema figcaption {
+  margin: 0 0 1rem; font-family: var(--font-sans); font-size: .92rem; line-height: 1.5; color: var(--metin-2);
+}
+div.vaaz-govde figure.vz-kavramlar figcaption strong, div.vaaz-govde figure.vz-sema figcaption strong {
+  display: block; font-family: var(--font-serif); font-size: 1.15rem; color: var(--metin); margin-bottom: .15rem;
+}
+div.vaaz-govde dl.vz-kavram-liste { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 0; }
+div.vaaz-govde dl.vz-kavram-liste > div {
+  padding: 1rem 1.1rem; border: 1px solid var(--cizgi); border-radius: 12px; background: var(--vz-kart);
+}
+div.vaaz-govde dl.vz-kavram-liste dt { display: flex; justify-content: space-between; align-items: center; gap: .75rem; font-family: var(--font-serif); font-weight: 700; font-size: 1.12rem; color: var(--vz-ayet); }
+div.vaaz-govde dl.vz-kavram-liste dt span:lang(ar) { font-family: var(--font-arabic, Amiri), Amiri, serif; font-weight: 400; font-size: 1.45rem; line-height: 1.4; color: var(--metin); }
+div.vaaz-govde dl.vz-kavram-liste dd { margin: .35rem 0 0; font-family: var(--font-sans); font-size: .92rem; line-height: 1.5; color: var(--metin-2); }
+
+/* ——— Şemalar: basamaklar, mesafe, üç gün, denge ——— */
+div.vaaz-govde figure.vz-sema {
+  margin: 2.2rem 0; padding: 1.35rem 1.35rem 1.5rem; border: 1px solid var(--cizgi); border-radius: var(--vz-yuvarlak); background: var(--zemin);
+}
+div.vaaz-govde ol.vz-basamak {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: .6rem;
+  margin: 0; padding: 0; list-style: none;
+}
+div.vaaz-govde ol.vz-basamak > li {
+  display: grid; align-content: start; gap: .2rem; margin: 0; padding: .9rem .9rem 1rem; border-radius: 12px 12px 4px 4px;
+  font-family: var(--font-sans); font-size: .86rem; line-height: 1.45; color: var(--metin-2);
+  background: color-mix(in oklab, var(--vz-ayet) 6%, var(--zemin));
+  border: 1px solid color-mix(in oklab, var(--vz-ayet) 30%, transparent);
+}
+div.vaaz-govde ol.vz-basamak > li:nth-child(1) { min-height: 8.5rem; }
+div.vaaz-govde ol.vz-basamak > li:nth-child(2) { min-height: 10.75rem; background: color-mix(in oklab, var(--vz-ayet) 11%, var(--zemin)); }
+div.vaaz-govde ol.vz-basamak > li:nth-child(3) { min-height: 13rem; background: color-mix(in oklab, var(--vz-ayet) 16%, var(--zemin)); }
+div.vaaz-govde ol.vz-basamak span.vz-basamak-no {
+  display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; margin-bottom: .35rem;
+  background: var(--vz-ayet); color: var(--vz-dolgu-metin); font-family: var(--font-serif); font-weight: 700; font-size: .9rem;
+}
+div.vaaz-govde ol.vz-basamak strong { font-family: var(--font-serif); font-size: 1.08rem; color: var(--metin); }
+div.vaaz-govde ol.vz-basamak em { font-size: .8rem; color: var(--metin-2); font-style: italic; font-weight: 600; }
+div.vaaz-govde figure.vz-sema p.vz-sema-alt {
+  margin: .9rem 0 0; text-align: center; font-family: var(--font-serif); font-style: italic; color: var(--vz-yesil); font-size: 1.05rem;
+}
+
+div.vaaz-govde p.vz-mesafe-eksen {
+  display: flex; justify-content: space-between; gap: 1rem; margin: 0 0 .9rem; padding-top: .55rem;
+  border-top: 2px solid var(--cizgi); font-family: var(--font-sans); font-size: .76rem; font-style: italic; line-height: 1.4;
+}
+div.vaaz-govde p.vz-mesafe-eksen span:first-child { color: var(--vz-ayet); }
+div.vaaz-govde p.vz-mesafe-eksen span:last-child { color: var(--vz-yesil); text-align: end; }
+div.vaaz-govde ol.vz-mesafe {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; margin: 0; padding: 0; list-style: none; text-align: center;
+}
+div.vaaz-govde ol.vz-mesafe > li { margin: 0; display: grid; justify-items: center; gap: .15rem; font-family: var(--font-sans); font-size: .8rem; line-height: 1.35; color: var(--metin-2); }
+div.vaaz-govde ol.vz-mesafe span.vz-kalpler { display: flex; justify-content: center; gap: var(--vz-ara, 1rem); height: 2.4rem; align-items: center; margin-bottom: .3rem; color: var(--vz-kalp, var(--vz-ayet)); }
+div.vaaz-govde ol.vz-mesafe svg { width: 1.6rem; height: 1.6rem; }
+div.vaaz-govde ol.vz-mesafe > li:nth-child(1) { --vz-ara: 3.1rem; --vz-kalp: var(--vz-ayet); }
+div.vaaz-govde ol.vz-mesafe > li:nth-child(2) { --vz-ara: 1.9rem; --vz-kalp: var(--vz-dua); }
+div.vaaz-govde ol.vz-mesafe > li:nth-child(3) { --vz-ara: .8rem; --vz-kalp: var(--vz-yesil); }
+div.vaaz-govde ol.vz-mesafe > li:nth-child(4) { --vz-ara: 0rem; --vz-kalp: var(--vz-hadis); }
+div.vaaz-govde ol.vz-mesafe > li:nth-child(4) svg + svg { margin-inline-start: -.55rem; }
+div.vaaz-govde ol.vz-mesafe strong { font-family: var(--font-serif); font-size: 1.02rem; color: var(--metin); }
+
+div.vaaz-govde ol.vz-uc-gun { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: vz-gun; }
+div.vaaz-govde ol.vz-uc-gun > li {
+  position: relative; margin: 0; padding: 2.4rem .9rem 0; text-align: center;
+  font-family: var(--font-sans); font-size: .86rem; line-height: 1.45; color: var(--metin-2);
+}
+div.vaaz-govde ol.vz-uc-gun > li::before { content: ""; position: absolute; top: .9rem; left: 0; right: 0; height: 2px; background: var(--cizgi-etkilesim); }
+div.vaaz-govde ol.vz-uc-gun > li:first-child::before { left: 50%; }
+div.vaaz-govde ol.vz-uc-gun > li:last-child::before { right: 50%; }
+div.vaaz-govde ol.vz-uc-gun > li::after {
+  content: ""; position: absolute; top: .45rem; left: 50%; width: 1rem; height: 1rem; translate: -50% 0;
+  border-radius: 50%; background: var(--zemin); border: 3px solid var(--vz-dua);
+}
+div.vaaz-govde ol.vz-uc-gun > li:last-child::after { background: var(--vz-yesil); border-color: var(--vz-yesil); width: 1.2rem; height: 1.2rem; top: .35rem; }
+div.vaaz-govde ol.vz-uc-gun span.vz-gun { display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vurgu-2); }
+div.vaaz-govde ol.vz-uc-gun strong { display: block; font-family: var(--font-serif); font-size: 1.04rem; color: var(--metin); margin: .1rem 0 .15rem; }
+
+div.vaaz-govde div.vz-denge { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 1rem; align-items: start; }
+div.vaaz-govde div.vz-kefe { padding: 1rem 1.1rem; border-radius: 12px; background: var(--vz-kart); border: 1px solid var(--cizgi); }
+div.vaaz-govde div.vz-kefe p.vz-kefe-ad { margin: 0 0 .45rem; font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem; color: var(--vurgu-2); }
+div.vaaz-govde div.vz-kefe + div.vz-terazi + div.vz-kefe p.vz-kefe-ad { color: var(--vz-yesil); }
+div.vaaz-govde div.vz-kefe ul { margin: 0; padding-inline-start: 1.1rem; list-style: disc; font-family: var(--font-sans); font-size: .88rem; line-height: 1.5; color: var(--metin-2); }
+div.vaaz-govde div.vz-kefe ul > li { margin: .25rem 0; }
+div.vaaz-govde div.vz-terazi { align-self: center; color: var(--vz-dua); }
+div.vaaz-govde div.vz-terazi svg { width: 2.6rem; height: 2.6rem; }
+
+/* ——— Öfke anında beş adım ——— */
+div.vaaz-govde ol.vz-adimlar {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem;
+  margin: 1.6rem 0 1rem; padding: 0; list-style: none; counter-reset: vz-adim;
+}
+div.vaaz-govde ol.vz-adimlar > li {
+  counter-increment: vz-adim; position: relative; margin: 0; padding: 1.05rem 1.1rem 1.1rem;
+  border: 1px solid var(--cizgi); border-radius: 12px; background: var(--vz-kart);
+  font-size: .97rem; line-height: 1.6;
+}
+div.vaaz-govde ol.vz-adimlar > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+div.vaaz-govde ol.vz-adimlar div.vz-adim-bas { display: flex; align-items: center; gap: .7rem; margin-bottom: .45rem; }
+div.vaaz-govde ol.vz-adimlar span.vz-adim-ikon {
+  position: relative; flex: none; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  background: var(--vz-hadis); color: var(--vz-dolgu-metin);
+}
+div.vaaz-govde ol.vz-adimlar span.vz-adim-ikon svg { width: 1.3rem; height: 1.3rem; }
+div.vaaz-govde ol.vz-adimlar span.vz-adim-ikon::after {
+  content: counter(vz-adim); position: absolute; right: -.3rem; top: -.3rem; display: grid; place-items: center;
+  width: 1.15rem; height: 1.15rem; border-radius: 50%; background: var(--vz-ayet); color: var(--vz-dolgu-metin);
+  font-family: var(--font-sans); font-size: .68rem; font-weight: 700; box-shadow: 0 0 0 2px var(--vz-kart);
+}
+div.vaaz-govde ol.vz-adimlar strong.vz-adim-ad { font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.25; }
+div.vaaz-govde ol.vz-adimlar p { margin: 0; }
+div.vaaz-govde p.vz-baris {
+  display: flex; align-items: center; gap: .6rem; margin: 0 0 2rem; padding: .7rem 1rem; border-radius: 999px;
+  background: var(--vz-ayet); color: var(--vz-dolgu-metin); font-family: var(--font-sans); font-weight: 600; font-size: .9rem; line-height: 1.4;
+}
+div.vaaz-govde p.vz-baris svg { flex: none; width: 1.2rem; height: 1.2rem; }
+
+/* ——— Güvenlik kutusu ——— */
+div.vaaz-govde aside.vz-guvenlik {
+  margin: 2rem 0; padding: 1.2rem 1.3rem 1.25rem; border-radius: var(--vz-yuvarlak);
+  border: 1px solid color-mix(in oklab, var(--vz-yesil) 45%, transparent); border-inline-start: 5px solid var(--vz-yesil);
+  background: color-mix(in oklab, var(--vz-yesil) 9%, var(--zemin));
+}
+div.vaaz-govde aside.vz-guvenlik p.vz-kutu-tur { margin: 0; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vz-yesil); }
+div.vaaz-govde aside.vz-guvenlik p.vz-kutu-baslik { margin: .1rem 0 .5rem; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; color: var(--metin); }
+div.vaaz-govde aside.vz-guvenlik p { margin: 0 0 .6rem; font-size: 1rem; }
+div.vaaz-govde ul.vz-hatlar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin: .4rem 0 0; padding: 0; list-style: none; }
+div.vaaz-govde ul.vz-hatlar > li {
+  display: grid; gap: .05rem; margin: 0; padding: .55rem .75rem; border-radius: 10px; background: var(--zemin); border: 1px solid var(--cizgi);
+  font-family: var(--font-sans); font-size: .8rem; line-height: 1.4; color: var(--metin-2);
+}
+div.vaaz-govde ul.vz-hatlar a { font-family: var(--font-sans); font-weight: 700; font-size: 1.15rem; letter-spacing: .02em; color: var(--metin); text-decoration: none; }
+div.vaaz-govde ul.vz-hatlar a:hover { color: var(--vz-yesil); text-decoration: underline; }
+div.vaaz-govde ul.vz-hatlar > li.vz-acil a { color: var(--vz-ayet); }
+
+/* ——— Hikâye kartları ——— */
+div.vaaz-govde aside.vz-hikaye {
+  position: relative; margin: 2.2rem 0; padding: 1.35rem 1.4rem 1.2rem; border-radius: var(--vz-yuvarlak);
+  background: var(--vz-kart); border: 1px dashed var(--cizgi-etkilesim);
+}
+div.vaaz-govde aside.vz-hikaye p.vz-kutu-tur { margin: 0; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vz-dua); }
+div.vaaz-govde aside.vz-hikaye p.vz-kutu-baslik { margin: .1rem 0 .6rem; font-family: var(--font-serif); font-size: 1.22rem; font-weight: 700; color: var(--metin); }
+div.vaaz-govde aside.vz-hikaye p { font-size: 1.02rem; }
+div.vaaz-govde aside.vz-hikaye p:last-child { margin-bottom: 0; }
+div.vaaz-govde aside.vz-hikaye img.vz-resim { margin: -.25rem 0 1rem; border-radius: 10px; }
+
+/* ——— Gurbet hayatından durumlar ——— */
+div.vaaz-govde div.vz-durum {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1.25rem; align-items: start; margin: 1.75rem 0;
+}
+div.vaaz-govde div.vz-durum.vz-ters { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+div.vaaz-govde div.vz-durum.vz-ters figure { order: 2; }
+div.vaaz-govde div.vz-durum figure { margin: 0; overflow: hidden; border-radius: 12px; box-shadow: var(--vz-golge); background: var(--vz-kart-2); }
+div.vaaz-govde div.vz-durum.vz-gorselsiz { grid-template-columns: auto minmax(0, 1fr); gap: 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: var(--vz-kart); }
+div.vaaz-govde div.vz-durum span.vz-durum-ikon { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--vz-yesil); color: var(--vz-dolgu-metin); }
+div.vaaz-govde div.vz-durum span.vz-durum-ikon svg { width: 1.35rem; height: 1.35rem; }
+div.vaaz-govde div.vz-durum p.vz-durum-ad {
+  margin: 0 0 .35rem; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vurgu-2);
+}
+div.vaaz-govde div.vz-durum p { margin: 0 0 .7rem; font-size: 1.02rem; line-height: 1.7; }
+div.vaaz-govde div.vz-durum p:last-child { margin-bottom: 0; }
+
+/* ——— Yedi söz kartı ——— */
+div.vaaz-govde figure.vz-sozler {
+  position: relative; margin: 2.4rem 0; padding: 1.6rem 1.5rem 1.4rem; border-radius: 6px;
+  background: #fffdf8; color: #24201c; box-shadow: 0 1px 0 rgb(74 55 40 / .08), 0 18px 40px -24px rgb(36 32 28 / .55);
+  border: 1px solid rgb(74 55 40 / .14);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 2.05rem, rgb(31 95 139 / .07) 2.05rem calc(2.05rem + 1px));
+}
+div.vaaz-govde figure.vz-sozler::before, div.vaaz-govde figure.vz-sozler::after {
+  content: ""; position: absolute; top: -.7rem; width: 5.5rem; height: 1.5rem; background: rgb(201 138 46 / .35); border-radius: 2px;
+}
+div.vaaz-govde figure.vz-sozler::before { left: 1.4rem; rotate: -4deg; }
+div.vaaz-govde figure.vz-sozler::after { right: 1.4rem; rotate: 3deg; }
+div.vaaz-govde figure.vz-sozler figcaption { margin: 0 0 1.1rem; text-align: center; }
+div.vaaz-govde figure.vz-sozler figcaption span { display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: #8f3420; }
+div.vaaz-govde figure.vz-sozler figcaption strong { display: block; margin-top: .2rem; font-family: var(--font-serif); font-size: 1.45rem; color: #24201c; }
+div.vaaz-govde ol.vz-soz-liste { margin: 0; padding: 0; list-style: none; counter-reset: vz-soz; }
+div.vaaz-govde ol.vz-soz-liste > li {
+  counter-increment: vz-soz; position: relative; margin: 0 0 .85rem; padding-inline-start: 2.7rem;
+  font-size: 1rem; line-height: 1.6; color: #3d342c;
+}
+div.vaaz-govde ol.vz-soz-liste > li::before {
+  content: counter(vz-soz); position: absolute; inset-inline-start: 0; top: .05rem; display: grid; place-items: center;
+  width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 2px solid #b5452b; color: #b5452b;
+  font-family: var(--font-serif); font-weight: 700; font-size: .95rem;
+}
+div.vaaz-govde ol.vz-soz-liste strong { color: #24201c; }
+div.vaaz-govde figure.vz-sozler p.vz-sozler-alt { margin: 1rem 0 0; text-align: center; font-family: var(--font-sans); font-size: .82rem; color: #635850; }
+div.vaaz-govde figure.vz-sozler p.vz-sozler-alt a { color: #1f5f8b; }
+
+/* ——— Dua ve kaynaklar ——— */
+div.vaaz-govde div.vz-dua-metni {
+  margin: 1.8rem 0; padding: 1.4rem 1.5rem; border-radius: var(--vz-yuvarlak); text-align: center;
+  background: color-mix(in oklab, var(--vz-dua) 8%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--vz-dua) 30%, transparent);
+}
+div.vaaz-govde div.vz-dua-metni p { margin: 0 0 .9rem; font-size: 1.05rem; line-height: 1.75; }
+div.vaaz-govde div.vz-dua-metni p:last-child { margin-bottom: 0; }
+div.vaaz-govde div.vz-dua-metni p.vz-amin { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--vz-dua); }
+
+div.vaaz-govde details.vz-kaynaklar {
+  margin: 3rem 0 1.5rem; padding: 1rem 1.2rem; border: 1px solid var(--cizgi); border-radius: 12px; background: var(--vz-kart);
+}
+div.vaaz-govde details.vz-kaynaklar summary {
+  cursor: pointer; min-height: 2.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; list-style: none;
+  font-family: var(--font-sans); font-weight: 700; font-size: .95rem; color: var(--metin);
+}
+/* display:flex tarayıcının açılır üçgenini siler; yerine açık/kapalı durumunu gösteren ok */
+div.vaaz-govde details.vz-kaynaklar summary::-webkit-details-marker { display: none; }
+div.vaaz-govde details.vz-kaynaklar summary::after {
+  content: ""; flex: none; width: .55rem; height: .55rem; margin-inline-end: .2rem;
+  border-right: 2px solid var(--vurgu-2); border-bottom: 2px solid var(--vurgu-2);
+  transform: translateY(-25%) rotate(45deg); transition: transform .2s ease;
+}
+div.vaaz-govde details.vz-kaynaklar[open] summary::after { transform: translateY(25%) rotate(-135deg); }
+div.vaaz-govde details.vz-kaynaklar summary:focus-visible { outline: 3px solid var(--focus-ring, var(--vurgu-2)); outline-offset: 3px; border-radius: 6px; }
+div.vaaz-govde details.vz-kaynaklar p, div.vaaz-govde details.vz-kaynaklar li { font-family: var(--font-sans); font-size: .86rem; line-height: 1.6; color: var(--metin-2); }
+div.vaaz-govde details.vz-kaynaklar ul { margin: .4rem 0 0; }
+div.vaaz-govde details.vz-kaynaklar strong { color: var(--metin); }
+
+/* ——— Dar ekranlar ——— */
+@media (max-width: 640px) {
+  div.vaaz-govde figure.vz-acilis { border-radius: 10px; }
+  div.vaaz-govde figure.vz-acilis figcaption { position: static; padding: 1rem 1.1rem 1.1rem; background: var(--vz-kart); }
+  div.vaaz-govde figure.vz-acilis p.vz-acilis-soz { color: var(--metin); font-size: 1.2rem; }
+  div.vaaz-govde figure.vz-acilis span.vz-temsil { color: var(--metin-2); }
+  div.vaaz-govde ol.vz-ozet-liste,
+  div.vaaz-govde ol.vz-harita-liste,
+  div.vaaz-govde dl.vz-kavram-liste,
+  div.vaaz-govde ol.vz-adimlar,
+  div.vaaz-govde ul.vz-hatlar { grid-template-columns: minmax(0, 1fr); }
+  div.vaaz-govde ol.vz-adimlar > li:last-child:nth-child(odd) { grid-column: auto; }
+  div.vaaz-govde header.vz-bolum { margin-top: 2.75rem; }
+  div.vaaz-govde figure.vz-bolum-sahne { border-radius: 10px; }
+  div.vaaz-govde figure.vz-nass { padding: 1.45rem 1rem 1.1rem; }
+  div.vaaz-govde figure.vz-nass p.vz-arapca:lang(ar) { font-size: 1.45rem; line-height: 2; }
+  div.vaaz-govde ol.vz-basamak { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+  div.vaaz-govde ol.vz-basamak > li { min-height: 0 !important; border-radius: 10px; }
+  div.vaaz-govde ol.vz-basamak > li:nth-child(2) { margin-inline-start: 1rem; }
+  div.vaaz-govde ol.vz-basamak > li:nth-child(3) { margin-inline-start: 2rem; }
+  div.vaaz-govde ol.vz-mesafe { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.1rem; }
+  div.vaaz-govde ol.vz-uc-gun { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  div.vaaz-govde ol.vz-uc-gun > li { padding: 0 0 0 2.2rem; text-align: start; }
+  div.vaaz-govde ol.vz-uc-gun > li::before { top: 0; bottom: -.9rem; left: .55rem; right: auto; width: 2px; height: auto; }
+  div.vaaz-govde ol.vz-uc-gun > li:first-child::before { left: .55rem; top: .5rem; }
+  div.vaaz-govde ol.vz-uc-gun > li:last-child::before { display: none; }
+  div.vaaz-govde ol.vz-uc-gun > li::after { left: .6rem; top: .2rem; }
+  div.vaaz-govde ol.vz-uc-gun > li:last-child::after { top: .1rem; }
+  div.vaaz-govde div.vz-denge { grid-template-columns: minmax(0, 1fr); }
+  div.vaaz-govde div.vz-terazi { justify-self: center; }
+  div.vaaz-govde div.vz-durum,
+  div.vaaz-govde div.vz-durum.vz-ters { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  div.vaaz-govde div.vz-durum.vz-ters figure { order: 0; }
+  div.vaaz-govde div.vz-durum.vz-gorselsiz { grid-template-columns: auto minmax(0, 1fr); }
+  div.vaaz-govde figure.vz-sozler { padding: 1.5rem 1.05rem 1.2rem; }
+}
+@media (max-width: 380px) {
+  div.vaaz-govde nav.vz-harita a { grid-template-columns: 5rem minmax(0, 1fr); }
+  div.vaaz-govde nav.vz-harita img { width: 5rem; }
+  div.vaaz-govde ol.vz-mesafe { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  div.vaaz-govde nav.vz-harita a { transition: none; }
+  div.vaaz-govde nav.vz-harita a:hover { transform: none; }
+  div.vaaz-govde details.vz-kaynaklar summary::after { transition: none; }
+}
+
+@media print {
+  div.vaaz-govde nav.vz-harita, div.vaaz-govde figure.vz-bolum-sahne, div.vaaz-govde section.vz-ozet { display: none; }
+  div.vaaz-govde figure.vz-acilis img, div.vaaz-govde div.vz-durum img, div.vaaz-govde aside.vz-hikaye img { max-height: 55mm; object-fit: cover; }
+  div.vaaz-govde figure.vz-acilis figcaption { position: static; background: none; }
+  div.vaaz-govde figure.vz-acilis p.vz-acilis-soz, div.vaaz-govde figure.vz-acilis span.vz-temsil { color: #24201c; }
+  div.vaaz-govde figure.vz-nass, div.vaaz-govde figure.vz-sozler, div.vaaz-govde figure.vz-sema, div.vaaz-govde aside { break-inside: avoid; box-shadow: none; }
+  div.vaaz-govde p.vz-baris { background: none; color: #24201c; border: 1px solid #999; }
+}
