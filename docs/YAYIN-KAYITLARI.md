@@ -4,6 +4,41 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 (2) — 14 Ekim «Camide Buluşan Kalpler» duyurusu + kurs günlüğü tazeleme
+
+- Zaman: 9 Ekim 2026 08:12 (push) – 08:12:51–08:15:48 (deploy) – 08:16 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının 9 Ekim «bekleyen işler» seçimi (kurs günlüğünü tazele,
+  14 Ekim duyurusu «her iki tasarımı da kullan», küçük düzeltmeler); seçim yayın izni olarak verildi.
+- Kapsam:
+  - Duyuru `src/content/duyurular/{tr,fr}/camide-bulusan-kalpler-2026.md` ve etkinlik
+    `src/content/etkinlikler/{tr,fr}/camide-bulusan-kalpler-2026.md`: 14 Ekim 2026 Çarşamba 14.00–16.00, Esma AVCI
+    Hoca Hanım, «Cami ve Sosyal Hayat»; o gün sabah programı ile genç kızlar atölyesi tek programda birleşir. Âl-i İmrân
+    3/103 meâli kuran.diyanet.gov.tr'den birebir (TR); FR metinde yalnız Arapça + künye (resmî DİB FR meâli yok).
+    İletişimde yalnız cami hattı ve info@.
+  - İki afiş tasarımı `public/media/etkinlikler/camide-bulusan-kalpler-2026/` (kaynak PNG'ler depo dışında,
+    `docs/afisler/2026-10-14-camide-bulusan-kalpler/`): `afis.webp` 411406 B
+    `95375190d1688ea78901ebfef0f9f4e91c36ea618a640e1e2b1864153d4c86f4`, `afis-thumb.webp` 58994 B
+    `6ee6697eed7f0c7d994bb7669e8d08db69df72343aefc8bbdfdc19042be13408`, `afis-alternatif.webp` 188850 B
+    `bb4f57192e5ef0ba123316fad72a0996320ebba16600a953490bb55383bad64a`, `afis-alternatif-thumb.webp` 31930 B
+    `c0a72a5d1b5b3daf08230bf41b1484e20ce1f5a646d672348b4486cbb5909dea`.
+  - Ana sayfa şeridi (`site.yaml → heroMesajlar`, 5 dil, 9–14 Ekim); irşat müfredatı 14 Ekim haftası notu (TR/FR).
+  - Kurs günlüğü `src/data/ders-ilerleme.json` (üretim 2026-10-09 07:37 +02:00; Firestore salt okunur, betiğin kişisel
+    veri kapısı temiz): 27 ders «işlendi», 3 ders «bekliyor» (4 Ekim — hoca defterinde o güne kayıt yok).
+  - Test ortamı: `tests/ihtida-defteri-belge.test.mjs` ve `scripts/ihtida-defteri-word-sablon.mjs` `py` yerine
+    `ULUCAMII_PYTHON` (varsayılan `python`); `py` başlatıcısı bu makinede pymupdf'siz başka bir Python'a gidiyordu.
+- İçerik commit'i `acc6e3aeee9625be49b8aa4431295e50eb66d4b4` (13 dosya). Release 0.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37892371440) **success**;
+  dağıtılan SHA içerik commit'iyle eşleşti. Dernek kimliği ulucamii2026.
+- Kalite: `npm run dogrula:codex` 10/10 geçti (Playwright 817 geçti/113 atlandı; eğitim 46 geçti/2 atlandı; `check`
+  0 hata). İrşat notundan sonra yeniden derleme (1918 sayfa), `npm run denetim` çıkış 0 (önceki taban çizgisi
+  değişmedi), hedefli Playwright 62/62. 390/1280 px açık/koyu ekran görüntüleri: taşma 0, kırık görsel 0, JS hatası 0.
+- Canlı (19/19): duyuru ve etkinlik sayfaları TR/FR/EN/NL/DE HTTP 200 ve iki afiş; dört WebP HTTP 200 ve SHA-256 yerel
+  dosyalarla eşit; `/tr/` ve `/fr/` şeridi; `/tr/irsat-programi/` ve `/fr/programme-femmes-et-jeunes-filles/` notu;
+  `/tr/kurs-gunlugu/` İşlendi 27 / bekliyor 3. Hiçbir sayfada din görevlisi telefonu yok.
+- Sınırlar: şerit 14 Ekim'den sonra deploy.yml'nin günlük derlemesiyle kendiliğinden kalkar (süzgeç derleme zamanında). Kurs günlüğü her
+  hafta sonu yeniden üretilmeli (sıradaki: 11 Ekim derslerinden ve 4 Ekim defterleri girildikten sonra). Kişisel veri
+  yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 9 Ekim 2026 — «Affetmek ve Öfkeyi Kontrol Etmek»: FR/EN/NL/DE çevirileri ve beş dilde sunumlar
 
 - Zaman: 9 Ekim 2026 08:03:16 (GitHub sürümü) – 08:05:02 (push) – 08:08:15 (deploy) – 08:10:43 (canlı doğrulama),
