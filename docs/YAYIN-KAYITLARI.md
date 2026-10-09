@@ -4,6 +4,31 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 (4) — güvenlik güncellemeleri + vaaz testinin yeni çeviri düzenine uyarlanması
+
+- Zaman: 9 Ekim 2026 08:54 (push) – 08:54:39–08:56:47 (deploy) – 08:58 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının 9 Ekim «Güvenlik güncellemeleri» seçimi (yayın izni dahil).
+- Kapsam:
+  - `npm audit fix` (`--force` yok): sharp 0.35.4→0.35.5, undici 8.10.0→8.11.2, devalue 5.9.1→5.9.4, source-map-js
+    1.2.1→1.2.2, smol-toml 1.8.0→1.9.0, http-cache-semantics 4.2.0→4.3.0, fast-uri 3.1.6→3.1.8; firebase 12.18.0→12.19.0.
+  - `package.json → overrides` `@grpc/grpc-js` `^1.14.6` (1.9.16→1.14.6). firebase 12 ve 13 hâlâ `~1.9.0` istiyor;
+    npm'in önerisi firebase 9.14'e inmekti (kullanılmadı). grpc-js yalnız Node tarafında (kural testleri) çalışır,
+    tarayıcı paketine girmez.
+  - `tests/web/vaazlar.spec.mjs`: `d9653b4` (başka oturum) ile çevrilen vaazlar listede kendi bölümüne, sunumlar derneğin
+    GitHub sürümüne geçmişti; test eski davranışı beklediği için 6 test düşüyordu (kod doğru, test eskiydi). İndirme
+    denetimi GitHub sürümü bağlantılarını kabul ediyor; FR/EN liste, uyarı metni ve çeviri kartları yeni düzene göre;
+    çevrilen vaazın kendi dilinde tam metinle açıldığı da denetleniyor.
+- Commit'ler `cfa2629` (bağımlılıklar) ve `3f6466822c8c32840fb38a5dc3fb43709b5d61e7` (test; dağıtılan SHA). Release 0.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37896029964) **success**.
+- Kalite: `npm audit` (dev dahil) **0 açık** (önce 10: 9 yüksek, 1 orta). Bağımlılıklarla tam `npm run dogrula:codex`:
+  9/10 aşama geçti, `test:web` 811 geçti / 113 atlandı / 6 düştü — düşenlerin hepsi yukarıdaki vaaz testi; düzeltmeden
+  sonra güncel tabanda (`9dffd90` üstü) derleme 1918 sayfa ve `vaazlar.spec.mjs` 6/6 geçti. `test:kurallar` (grpc-js'in
+  Node'da çalıştığı yol, emülatör) geçti.
+- Canlı: `/tr/`, `/fr/`, `/tr/veli-portali/`, `/tr/portal/`, `/hoca/`, `/tr/kurs-gunlugu/` HTTP 200, konsol hatası 0,
+  sayfa hatası 0, başarısız istek 0 — güncelleme öncesi ölçümle birebir aynı.
+- Sınırlar: gerçek veli/hoca girişiyle Firestore okuma-yazma bu turda denenmedi (kural testleri emülatörde geçti).
+  Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 9 Ekim 2026 (3) — «Affetmek ve Öfkeyi Kontrol Etmek»: Word yazım işaretlemesi + çeviri sayfalarında kırık vurgu
 
 - Zaman: 9 Ekim 2026 08:51 (push) – 08:51:39–08:53:54 (deploy, Pages `37895759791` success) – 08:55 (canlı
@@ -71,6 +96,12 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - Canlı (19/19): duyuru ve etkinlik sayfaları TR/FR/EN/NL/DE HTTP 200 ve iki afiş; dört WebP HTTP 200 ve SHA-256 yerel
   dosyalarla eşit; `/tr/` ve `/fr/` şeridi; `/tr/irsat-programi/` ve `/fr/programme-femmes-et-jeunes-filles/` notu;
   `/tr/kurs-gunlugu/` İşlendi 27 / bekliyor 3. Hiçbir sayfada din görevlisi telefonu yok.
+- Sosyal medya (kullanıcının 9 Ekim ek isteği): Facebook «Mosquée Ulu Camii» profilinde TR+FR gönderi, iki afiş
+  (1080×1350), kitle Public — [gönderi](https://www.facebook.com/permalink.php?story_fbid=pfbid035gMxZUv4YfztBQrg2BFGWAho7hiz5SqhqLVtJZ9DuackFjTv4m2ikcNYp95hB9BHl&id=61591465715992);
+  iki 24 saatlik durum (1080×1920, Public, görüntüleyicide iki kare doğrulandı). İlk denemede Facebook düzenleyicisi
+  adla biten satırlarda etiket önerisini kabul edip «Mosquée Ulu Camii» ve din görevlisinin kişisel profilini etiketledi;
+  o gönderi birkaç dakika içinde çöpe taşındı, metin düzeltilip yeniden paylaşıldı (`cami-facebook` becerisine metin
+  kapısı eklendi). Metin, görseller ve kanıt: `D:/app/marche-cami-sitesi/camide-bulusan-kalpler-2026/`.
 - Sınırlar: şerit 14 Ekim'den sonra deploy.yml'nin günlük derlemesiyle kendiliğinden kalkar (süzgeç derleme zamanında). Kurs günlüğü her
   hafta sonu yeniden üretilmeli (sıradaki: 11 Ekim derslerinden ve 4 Ekim defterleri girildikten sonra). Kişisel veri
   yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
