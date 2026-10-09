@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+// pymupdf'li yorumlayıcı: ULUCAMII_PYTHON ile seçilir; `py` başlatıcısı bu makinede başka projenin Python'una gidebiliyor.
+const PYTHON = process.env.ULUCAMII_PYTHON ?? 'python';
 import * as pdfLib from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { pdfUret, docxUret } from '../public/admin/ihtida-defteri.js';
@@ -18,7 +20,7 @@ test('Matbu PDF 50 yatay kayıt sayfası ve ayrı bekleyen ekini içerir; Word g
   assert.equal(pdf.getPageCount(), 53);
   for (const p of pdf.getPages()) assert.ok(p.getWidth() > p.getHeight());
   writeFileSync(out + '/defter.pdf', bytes); writeFileSync(out + '/defter.docx', docxUret(model));
-  const result = execFileSync('py', ['-X', 'utf8', '-c', `
+  const result = execFileSync(PYTHON, ['-X', 'utf8', '-c', `
 from zipfile import ZipFile
 import xml.etree.ElementTree as E
 import pymupdf as F
@@ -48,7 +50,7 @@ test('Uzun işlem notu PDF ve Word kayıt ekinde eksiksiz korunur', async () => 
   mkdirSync(out, { recursive: true });
   writeFileSync(out + '/uzun.pdf', await pdfUret(uzun, kaynak, pdfLib, fontkit));
   writeFileSync(out + '/uzun.docx', docxUret(uzun));
-  assert.match(execFileSync('py', ['-X', 'utf8', '-c', `
+  assert.match(execFileSync(PYTHON, ['-X', 'utf8', '-c', `
 import pymupdf as F
 from zipfile import ZipFile
 d=F.open('${out}/uzun.pdf'); t=''.join(p.get_text() for p in d)

@@ -40,6 +40,15 @@ site:
   # üst üste görünüyordu. Şerit yalnız GÜNCEL haberleri taşır.
   heroMesajlar:
     - metin:
+        tr: "14 Ekim Çarşamba 14.00–16.00: «Camide Buluşan Kalpler» — Esma AVCI Hoca Hanım’ın hanımlar ve genç kızlar vaaz programı; o gün sabah programı yok."
+        fr: "Mercredi 14 octobre, 14h00–16h00 : « Des cœurs qui se retrouvent à la mosquée », séance de Mme Esma AVCI pour les femmes et les jeunes filles ; pas de séance le matin."
+        en: "Wednesday 14 October, 14:00–16:00: “Hearts meeting at the mosque”, Mrs Esma AVCI’s session for women and girls; no morning session that day."
+        nl: "Woensdag 14 oktober, 14.00–16.00 uur: „Harten die elkaar vinden in de moskee”, bijeenkomst van mevrouw Esma AVCI voor vrouwen en meisjes; die dag geen ochtendsessie."
+        de: "Mittwoch, 14. Oktober, 14:00–16:00 Uhr: „Herzen, die sich in der Moschee begegnen“, Vortrag von Frau Esma AVCI für Frauen und Mädchen; an diesem Tag keine Vormittagssitzung."
+      sayfa: duyurular
+      baslangic: "2026-10-09"
+      son: "2026-10-14"
+    - metin:
         tr: "Diyanet yurt dışı sözleşmeli din görevlisi sınavına başvurular açık — son gün 25 Eylül 2026, 17.00 (TSİ)."
         fr: "Concours Diyanet : candidatures ouvertes — clôture le 25 septembre 2026 à 17h00 (heure de Turquie)."
         en: "Diyanet exam for religious officials abroad: applications open until 25 September 2026, 17:00 (Türkiye time)."

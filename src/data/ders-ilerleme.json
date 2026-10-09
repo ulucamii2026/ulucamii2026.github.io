@@ -1,5 +1,5 @@
 {
- "uretim": "2026-09-15T11:37:42+02:00",
+ "uretim": "2026-10-09T07:37:34+02:00",
  "kaynak": "Hoca portalı ders defteri + haftalık sınıf notları (sınıf düzeyi özet; kişisel veri yok)",
  "dersler": {
   "2026-09-05_1": {
@@ -49,6 +49,66 @@
   "2026-09-13_3": {
    "durum": "islendi",
    "kaynak": "defter"
+  },
+  "2026-09-19_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-19_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-19_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-20_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-20_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-20_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-26_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-26_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-26_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-27_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-27_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-09-27_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-10-03_1": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-10-03_2": {
+   "durum": "islendi",
+   "kaynak": "defter"
+  },
+  "2026-10-03_3": {
+   "durum": "islendi",
+   "kaynak": "defter"
   }
  },
  "haftalar": {
@@ -77,12 +137,23 @@
   "2026-09-19": {
    "hafta": 3,
    "ezber": {
-    "tr": "Elifbâ harfleri (adı ve şekli): bu hafta Lâm grubu — Lâm, Mîm, Nûn, Vâv, He, Ye. Bu altı harfle Arap alfabesinin 28 harfi tamamlanıyor; çocuğunuz harfi görünce adını söyleyebilmeli. Günde 5–10 dakika kartla ya da defterden tekrar yeterlidir.\nİtikat dersinde İhlâs sûresi ve Allah'ın Semî', Basîr, Alîm, Rahîm, Vedûd isimleri işlenecek; sûreyi evde birlikte dinlemeniz derse güzel bir hazırlık olur.",
+    "tr": "Elifbâ harfleri (adı ve şekli): bu hafta Lâm grubu — Lâm, Mîm, Nûn, Vâv, He, Ye. Bu altı harfle Arap alfabesinin 28 harfi tamamlanıyor; çocuğunuz harfi görünce adını söyleyebilmeli. Günde 5–10 dakika Elifbâ kitabından veya defterden tekrar yeterlidir.\nİtikat dersinde İhlâs sûresi ve Allah'ın Semî', Basîr, Alîm, Rahîm, Vedûd isimleri işlenecek; sûreyi evde birlikte dinlemeniz derse güzel bir hazırlık olur.",
     "fr": "Lettres de l'Elifbâ (nom et forme) : cette semaine, le groupe Lâm — Lâm, Mîm, Nûn, Wâw, Hâ, Yâ. Avec ces six lettres, les 28 lettres de l'alphabet arabe sont complètes ; votre enfant doit pouvoir nommer chaque lettre en la voyant. 5 à 10 minutes de révision par jour suffisent.\nLe cours de foi abordera la sourate al-Ihlâs et les noms divins Samî‘, Basîr, ‘Alîm, Rahîm, Wadûd ; écouter la sourate ensemble à la maison prépare bien le cours."
    },
    "odev": {
     "tr": "Evde tekrar (14–18 Eylül):\n• Elifbâ: Şîn ve Ayn grubu harflerini her gün kısa kısa tekrar edin; çocuğunuz harfi görünce adını söyleyebilmeli.\n• Camiye Gidiyorum 1: «Kutsal kitabımız Kur'an'dır» (s. 31–36) ve «Abdest alıyorum, temizleniyorum» (s. 55–58) sayfalarını birlikte okuyun; abdestin adımlarını evde birlikte uygulayın.\n• «Hz. Muhammed (s.a.s.) büyüyor» (s. 71–76) ve «Sevincimi paylaşıyorum» (s. 43–47) bölümlerini kısaca hatırlayın.\nHafta sonu derslerine hazırlık (19–20 Eylül): Lâm grubu harfleri (Lâm, Mîm, Nûn, Vâv, He, Ye) — bu altı harfle 28 harfin tamamı tamamlanıyor — ve pazar günü bütün harflerin tekrarı; «Yaratıcımız Allah'tır» (s. 49–54), «Abdest alıyorum, temizleniyorum» (s. 55–58), «Hz. Muhammed'in (s.a.s.) gençliği» (s. 107–112), «Ailemi seviyorum» (s. 59–63). Kitap, defter ve kalemi unutmayın; ders 11.00'de başlar.",
     "fr": "Révision à la maison (14–18 septembre) :\n• Elifbâ : revoyez chaque jour brièvement les lettres des groupes Şîn et Ayn ; votre enfant doit pouvoir nommer chaque lettre en la voyant.\n• Camiye Gidiyorum 1 : relisez ensemble « Notre Livre saint est le Coran » (p. 31–36) et « Je fais mes ablutions, je me purifie » (p. 55–58) ; refaites les gestes des ablutions à la maison.\n• Revoyez brièvement « Le Prophète Muhammad (s.a.s.) grandit » (p. 71–76) et « Je partage ma joie » (p. 43–47).\nPréparation des cours du week-end (19–20 septembre) : les lettres du groupe Lâm (Lâm, Mîm, Nûn, Vâv, He, Ye) — avec ces six lettres, les 28 lettres de l'alphabet sont complètes — puis, le dimanche, la révision de toutes les lettres ; « Notre Créateur est Allah » (p. 49–54), « Je fais mes ablutions, je me purifie » (p. 55–58), « La jeunesse du Prophète Muhammad (s.a.s.) » (p. 107–112), « J'aime ma famille » (p. 59–63). N'oubliez pas le manuel, le cahier et le crayon ; le cours commence à 11h00."
+   }
+  },
+  "2026-09-26": {
+   "hafta": 4,
+   "ezber": {
+    "tr": "Elifbâ: Harflerin kelime başındaki ve ortasındaki yazılış şekilleri. Çocuğunuz aynı harfin yalın hâliyle başta/ortada yazılışını eşleştirebilmeli; defterden günde 5–10 dakika yazma çalışması yeterlidir.\nİtikat dersinde imanın altı şartı (Allah'a, meleklere, kitaplara, peygamberlere, ahirete ve kadere iman) sırasıyla ezberlenecek; evde birlikte tekrar etmeniz derse güzel bir hazırlık olur. Sınıfta «Durmaz Yanar Vücudum Allah» ilahisi birlikte söylenecektir.",
+    "fr": "Elifbâ : l'écriture des lettres en début et au milieu du mot. Votre enfant doit pouvoir associer la forme isolée d'une lettre à sa forme initiale et médiane ; 5 à 10 minutes d'écriture par jour suffisent.\nEn cours de foi, les six piliers de la foi (croire en Allah, aux anges, aux Livres, aux prophètes, à l'au-delà et au destin) seront mémorisés dans l'ordre ; les revoir ensemble à la maison prépare bien le cours. En classe, l'hymne « Durmaz Yanar Vücudum Allah » sera chanté tous ensemble."
+   },
+   "odev": {
+    "tr": "Evde tekrar (21–25 Eylül):\n• Elifbâ: Bu hafta 28 harfin tamamı tamamlandı. Harfleri her gün 5–10 dakika karışık sırayla tekrar edin; çocuğunuz harfi görünce adını söyleyebilmeli.\n• Camiye Gidiyorum 1: «Yaratıcımız Allah'tır» (s. 49–54) ve «Abdest alıyorum, temizleniyorum» (s. 55–58) bölümlerini birlikte okuyun; abdestin adımlarını evde uygulayın.\n• «Hz. Muhammed'in (s.a.s.) gençliği» (s. 107–112) ve «Ailemi seviyorum» (s. 59–63) bölümlerini kısaca hatırlayın.\nHafta sonu derslerine hazırlık (26–27 Eylül): Cumartesi harflerin kelime başındaki yazılışı, pazar ise kelime ortasındaki yazılışı işlenecek; artık harfleri tanımaktan yazmaya geçiyoruz. Ayrıca «İman ağacımız» (s. 85–90), «Kur'an öğrenmek ve okumak ibadettir» (s. 65–70), «Hz. Muhammed (s.a.s.) peygamber oluyor» (s. 181–186) ve «Birlikte kutluyoruz» (s. 77–83) bölümlerine kısaca bakabilirsiniz. Kitap, defter ve kalemi unutmayın; ders 11.00'de başlar.",
+    "fr": "Révision à la maison (21–25 septembre) :\n• Elifbâ : cette semaine, les 28 lettres ont été complétées. Révisez-les 5 à 10 minutes par jour, dans le désordre ; votre enfant doit pouvoir nommer chaque lettre en la voyant.\n• Camiye Gidiyorum 1 : relisez ensemble « Notre Créateur est Allah » (p. 49–54) et « Je fais mes ablutions, je me purifie » (p. 55–58) ; refaites les gestes des ablutions à la maison.\n• Revoyez brièvement « La jeunesse du Prophète Muhammad (s.a.s.) » (p. 107–112) et « J'aime ma famille » (p. 59–63).\nPréparation des cours du week-end (26–27 septembre) : samedi, l'écriture des lettres en début de mot ; dimanche, leur écriture au milieu du mot — nous passons donc de la reconnaissance à l'écriture. Vous pouvez aussi parcourir « L'arbre de notre foi » (p. 85–90), « Apprendre et lire le Coran est une adoration » (p. 65–70), « Le Prophète Muhammad (s.a.s.) reçoit la révélation » (p. 181–186) et « Nous célébrons ensemble » (p. 77–83). N'oubliez pas le manuel, le cahier et le crayon ; le cours commence à 11h00."
    }
   }
  }
