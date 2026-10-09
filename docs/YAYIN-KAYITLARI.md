@@ -4,6 +4,42 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 (3) — «Affetmek ve Öfkeyi Kontrol Etmek»: Word yazım işaretlemesi + çeviri sayfalarında kırık vurgu
+
+- Zaman: 9 Ekim 2026 08:51 (push) – 08:51:39–08:53:54 (deploy, Pages `37895759791` success) – 08:55 (canlı
+  doğrulama), Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının 9 Ekim isteği
+  («word dosyalarındaki hata denetimleri için gerekli işaretlemeleri yap … her bir metinin denetimi yazıldığı dilde
+  yapılsın»). Kırık vurgu bu iş sırasında bulundu; dünkü yayından kalmaydı.
+- İçerik commit'i `9dffd90`.
+- Kapsam:
+  - Beş dilin Word ve PDF'i yeniden üretildi (`public/vaazlar/` ve `public/vaazlar/<dil>/`).
+    - python-docx şablonunun `proofState clean` bayrağı kaldırıldı; Word belgeyi açınca gerçekten denetliyor.
+    - Sözlükte olmayan doğru kelimeler (özel ad, okunuş, şapkalı yazım, eser adı) noProof yapıldı, dil etiketleri kaldı.
+      Türkçede bunlar 108 kelime.
+    - Tanınmayan harekeli kelime içeren 3 Arapça satır ar-SA etiketiyle istisna oldu.
+    - Word COM tam denetiminde beş dilde görünür yazım işareti 0; pozitif kontrol geçti.
+    - Metin, dil etiketleri, satır kırılımları, yer imleri ve künye eskisiyle aynı.
+  - FR, EN ve NL çeviri sayfalarında 8 meal paragrafında yıldızlar düz metin görünüyordu (ör. «Prophète* Muhammad*»).
+    - Neden: noProof italik run'ı bölüyordu, dönüştürücü her parçayı ayrı `*…*` içine alıyordu.
+    - Düzeltme: dönüştürücü aynı biçimli bitişik parçaları birleştiriyor.
+    - TR ve DE sayfaları değişmedi. Sunumlar (GitHub sürümü) değişmedi.
+- Doğrulama:
+  - `npm run build` sonucu 1918 sayfa.
+  - Derlenen ve canlı beş sayfada: yıldız 0, ⟨⟩ 0, lang doğru, HTTP 200.
+  - 10 indirme dosyasının SHA-256 özeti yerel teslimle aynı.
+- Dosyalar (SHA-256):
+    - `vaazlar/affetmek-ve-ofkeyi-kontrol-etmek.docx` 386109 B `92d447a64f63d3cfc9cebbf6c62744ef0da9b6456fd543ac493bb6024ce78d21`
+    - `vaazlar/affetmek-ve-ofkeyi-kontrol-etmek.pdf` 4888933 B `e39154cbbb1ad06d7fc3181d6020d72a8bd6eef527a332500fb3bac7bef744b5`
+    - `vaazlar/fr/pardonner-et-maitriser-sa-colere.docx` 402936 B `af32d819154587165f8aa9c62215ea0129f4180bab11da6ad68e05702eb1cf5a`
+    - `vaazlar/fr/pardonner-et-maitriser-sa-colere.pdf` 4789981 B `c4237626e1949dde1f05787e392f0d5d4510f8bf7b27372879c1c32938e32af6`
+    - `vaazlar/en/forgiveness-and-mastering-anger.docx` 403685 B `720d69f767d215701ffdaca489bde3e0f532f67de6052ae23fc9973947bea986`
+    - `vaazlar/en/forgiveness-and-mastering-anger.pdf` 4983225 B `ec681010582820644e0b7aef09d27918520fd7648b3b3a6d15713e33fdd33884`
+    - `vaazlar/nl/vergeven-en-woede-beheersen.docx` 399074 B `aa1a36d361c3e6fb0840c81d1995277b186b74a60761af4b985cc9c2998e9935`
+    - `vaazlar/nl/vergeven-en-woede-beheersen.pdf` 4986329 B `e1b91069969e5ead00d83fbbe5b1977dde149bcc7f9b46bffef4722e9bc8b1c0`
+    - `vaazlar/de/vergeben-und-den-zorn-beherrschen.docx` 389917 B `c1653b3be802e55ac956b8c11768c05d8190ff51a1751ae3b6bf182f5fa37cfc`
+    - `vaazlar/de/vergeben-und-den-zorn-beherrschen.pdf` 4997741 B `da6dca2c7dd9c367687284ca43b1c02e2d67b476b2baeae909346d2bb8c7872a`
+- Kaynak ve rapor: `D:/hutbeler ve vaazlar/kaynak-affetmek-20261009/YAYIN-VE-KALITE.md` → «Yazım denetimi işaretlemesi».
+
 ## 9 Ekim 2026 (2) — 14 Ekim «Camide Buluşan Kalpler» duyurusu + kurs günlüğü tazeleme
 
 - Zaman: 9 Ekim 2026 08:12 (push) – 08:12:51–08:15:48 (deploy) – 08:16 (canlı doğrulama), Europe/Brussels (CEST).
