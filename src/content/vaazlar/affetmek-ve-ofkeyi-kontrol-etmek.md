@@ -2,9 +2,11 @@
 baslik: "Affetmek ve Öfkeyi Kontrol Etmek: Kalpler Arasındaki Mesafeyi Kapatmak"
 ozet: "Öfke kalpler arasına mesafe koyar; af o mesafeyi kapatır. Rabbimizin affı, Peygamberimizin ve sahâbenin örneği, affın ölçüsü, öfke anında nebevî reçete ve gurbette yedi söz."
 kategori: ahlak
-kelime: 3260
+kelime: 3250
 docx: "/vaazlar/affetmek-ve-ofkeyi-kontrol-etmek.docx"
 pdf: "/vaazlar/affetmek-ve-ofkeyi-kontrol-etmek.pdf"
+pptx: "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-affetmek-ve-ofkeyi-kontrol-etmek/affetmek-ve-ofkeyi-kontrol-etmek-sunum.pptx"
+sunumPdf: "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-affetmek-ve-ofkeyi-kontrol-etmek/affetmek-ve-ofkeyi-kontrol-etmek-sunum.pdf"
 kapak: "/media/vaazlar/affetmek-ve-ofkeyi-kontrol-etmek/kapak-og.webp"
 kapakAlt: "Bir caminin avlusunda, aralarında kırgınlık olan iki komşu tokalaşıp helâlleşiyor; temsilî illüstrasyon."
 ---

@@ -16,6 +16,12 @@ const { dil } = Astro.props as { dil: Dil };
 
 const hepsi = (await getCollection('vaazlar')).filter((v) => !v.data.taslak);
 hepsi.sort((a, b) => (a.data.siraNo ?? 0) - (b.data.siraNo ?? 0) || a.data.baslik.localeCompare(b.data.baslik, 'tr'));
+/* Bu dile çevrilmiş vaazlar (9 Eki 2026): src/content/vaaz-cevirileri/<dil>/<slug>.md — kimlik «<dil>/<slug>». */
+const cevrilenler = dil === 'tr' ? [] : (await getCollection('vaazCevirileri'))
+  .filter((c) => !c.data.taslak && c.id.startsWith(`${dil}/`))
+  .map((c) => ({ c, asil: hepsi.find((v) => v.id === c.id.slice(dil.length + 1)) }))
+  .filter((x) => x.asil);
+const CEVRILEN_BASLIK: Record<Dil, string> = { tr: '', fr: 'Sermons traduits en français', en: 'Sermons translated into English', nl: 'In het Nederlands vertaalde preken', de: 'Ins Deutsche übersetzte Predigten' };
 
 type VaazMetni = {
   etiket: string; baslik: string; alt: string; giris: string;
@@ -87,7 +93,29 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelKodu[dil]).format(n)
 <Base baslik={m.baslik} aciklama={m.alt} dil={dil}>
   <div class="kapsayici py-8 sm:py-12">
     <SayfaBasligi etiket={m.etiket} baslik={m.baslik} altBaslik={m.alt} />
-    {dil !== 'tr' ? <VaazDilUyarisi dil={dil} /> : <>
+    {dil !== 'tr' ? <>
+      {cevrilenler.length > 0 && (
+        <section class="vz-cevrilen" aria-labelledby="vz-cevrilen-baslik">
+          <h2 id="vz-cevrilen-baslik" class="vz-cevrilen-baslik">{CEVRILEN_BASLIK[dil]}</h2>
+          <ul class="vz-izgara" role="list">
+            {cevrilenler.map(({ c, asil }) => (
+              <li class="vz-oge">
+                <a href={`${yol(dil, 'anasayfa')}vaaz/${asil!.id}/`} class="vz-kart">
+                  <span class="vz-kat">{katAd[asil!.data.kategori]?.[dil] ?? asil!.data.kategori}</span>
+                  <h3 class="vz-baslik">{c.data.baslik}</h3>
+                  {c.data.ozet && <p class="vz-ozet">{c.data.ozet}</p>}
+                  <span class="vz-meta">
+                    {okumaDk(c.data.kelime) && `${okumaDk(c.data.kelime)} ${m.okuma}`}
+                    {okunma(asil!.id) > 0 && <span class="vz-okunma">{sayiBicim(okunma(asil!.id))} {okunmaAd}</span>}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <VaazDilUyarisi dil={dil} cevrilenVar={cevrilenler.length > 0} />
+    </> : <>
     <div class="vz-not" role="note" aria-label={notEtiket}>
       <svg class="vz-not-ikon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.6C10.4 5.2 8.4 4.5 6 4.5c-1 0-2 .1-3 .4v13.7c1-.3 2-.4 3-.4 2.4 0 4.4.7 6 2.1 1.6-1.4 3.6-2.1 6-2.1 1 0 2 .1 3 .4V4.9c-1-.3-2-.4-3-.4-2.4 0-4.4.7-6 2.1Z"/><path d="M12 6.6v13.7"/></svg>
       <div class="vz-not-metin">
@@ -145,6 +173,8 @@ const sayiBicim = (n: number) => new Intl.NumberFormat(yerelKodu[dil]).format(n)
   /* Okunma rozeti: kartın alt meta satırında, okuma süresinden nokta ile ayrılır. */
   .vz-okunma::before { content: ' · '; }
   .vz-bos { padding: 2.5rem 0; text-align: center; color: var(--metin-2); }
+  .vz-cevrilen { margin: 1.75rem 0 0.5rem; }
+  .vz-cevrilen-baslik { font-family: var(--font-serif, Lora), serif; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.3; margin: 0 0 1rem; }
   @media (max-width: 640px) {
     .vz-not { grid-template-columns: 1fr; margin: 1.25rem 0 1.5rem; padding: 0.9rem 1rem 0.95rem; }
     .vz-not-ikon { display: none; }

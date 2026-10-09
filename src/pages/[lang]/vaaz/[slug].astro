@@ -1,6 +1,9 @@
 ---
 /**
  * Vaaz detay — uzun soluklu okuma sayfası (Read modu). İçerik anonim ve Türkçe; Word/PDF indirilebilir.
+ * Çeviriler (9 Eki 2026): src/content/vaaz-cevirileri/<dil>/<slug>.md varsa o dilde tam metin yayımlanır
+ * (indekslenir, inLanguage o dil); yoksa sayfa Türkçe uyarısını gösterir ve noindex kalır. Sunum (PowerPoint
+ * ve sunum PDF'i) GitHub Releases'te durur; ön maddedeki pptx/sunumPdf adresleriyle indirilir.
  * Ayrı «/vaaz/<slug>» yolu bilinçli: statik segment dinamik [sayfa]'dan önceliklidir, [slug].astro'ya
  * dokunmadan çakışmasız çalışır. Liste yolu ise yerelleştirilmiş (yollar.vaazlar → vaazlar/sermons).
  * Düzen (7 Eyl 2026): masaüstünde okuma sütunu + sağda yapışkan indirme paneli — sayfa site genişliğini
@@ -13,7 +16,7 @@ import Base from '../../../layouts/Base.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
 import VaazDilUyarisi from '../../../components/VaazDilUyarisi.astro';
 import istatistik from '../../../data/istatistik.json';
-import { yol, dilListesi } from '../../../i18n/utils';
+import { yol, dilListesi, yerelKodu, hreflangKodu } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
 import { katAd } from '../../../i18n/vaaz-kategori';
 
@@ -28,16 +31,33 @@ export async function getStaticPaths() {
     const sirali = i < 0 ? ayni : [...ayni.slice(i), ...ayni.slice(0, i)];
     return sirali.slice(0, 3);
   };
-  const out: { params: { lang: Dil; slug: string }; props: { entry: Vaaz; ilgili: Vaaz[] } }[] = [];
-  for (const lang of dilListesi) for (const v of vaazlar) out.push({ params: { lang, slug: v.id }, props: { entry: v, ilgili: oneri(v) } });
+  const ceviriler = (await getCollection('vaazCevirileri')).filter((c) => !c.data.taslak);
+  type Ceviri = (typeof ceviriler)[number];
+  type Ilgili = { id: string; baslik: string; kategori: string; kelime?: number };
+  const ceviriBul = (d: Dil, id: string) => (d === 'tr' ? undefined : ceviriler.find((c) => c.id === `${d}/${id}`));
+  const out: { params: { lang: Dil; slug: string }; props: { entry: Vaaz; ceviri?: Ceviri; diller: Dil[]; ilgili: Ilgili[] } }[] = [];
+  for (const lang of dilListesi) for (const v of vaazlar) {
+    /* Önerilen vaazlar: Türkçede hepsi; çeviri sayfasında yalnız o dilde de okunabilenler (çevrilmiş başlıkla). */
+    const ilgili: Ilgili[] = [];
+    for (const k of oneri(v)) {
+      const c = ceviriBul(lang, k.id);
+      if (lang === 'tr' || c) ilgili.push({ id: k.id, baslik: (c ?? k).data.baslik, kategori: k.data.kategori, kelime: (c ?? k).data.kelime });
+    }
+    const diller = dilListesi.filter((d) => d === 'tr' || ceviriBul(d, v.id));
+    out.push({ params: { lang, slug: v.id }, props: { entry: v, ceviri: ceviriBul(lang, v.id), diller, ilgili } });
+  }
   return out;
 }
 const dil = Astro.params.lang as Dil;
-const { entry, ilgili } = Astro.props;
-const { Content } = await render(entry);
-const d = entry.data;
+const { entry, ceviri, diller, ilgili } = Astro.props;
+/** Bu dilde okunacak tam metin var mı (Türkçe asıl ya da çeviri)? */
+const tamMetin = dil === 'tr' || !!ceviri;
+const kaynak = ceviri ?? entry;
+const { Content } = await render(kaynak);
+const d = { ...entry.data, ...kaynak.data };
+const DIL_ADI: Record<Dil, string> = { tr: 'Türkçe', fr: 'Français', en: 'English', nl: 'Nederlands', de: 'Deutsch' };
 /* Bu vaazın özgün açılış sahnesi, aynı içeriğin bağlantı önizlemesinde de kullanılır. */
-const vaazKapagi = d.kapak && dil === 'tr' ? {
+const vaazKapagi = d.kapak && tamMetin ? {
   kapak: d.kapak,
   kapakAlt: d.kapakAlt ?? `${d.baslik} — temsilî illüstrasyon.`,
   kapakGenislik: 1200,
@@ -55,18 +75,25 @@ type VaazMetni = {
   etiket: string; geri: string; indir: string; kelime: string; okuma: string;
   trNot: string | null; paylas: string; ilgili: string;
   pdfNot: string; wordNot: string; serbest: string;
+  sunumNot: string; sunumPdfAd: string; sunumPdfNot: string;
+  ceviriNot: string; asli: string; digerDiller: string;
 };
 const METIN: Record<Dil, VaazMetni> = {
   tr: { etiket: 'Vaaz', geri: 'Tüm vaazlar', indir: 'İndir', kelime: 'kelime', okuma: 'dk okuma', trNot: null, paylas: "WhatsApp'ta paylaş", ilgili: 'Bunları da okuyabilirsiniz',
-        pdfNot: 'Orijinal belge', wordNot: 'Düzenlenebilir', serbest: 'Anonim metin — okuyabilir, indirebilir, serbestçe kullanabilirsiniz.' },
+        pdfNot: 'Orijinal belge', wordNot: 'Düzenlenebilir', serbest: 'Anonim metin — okuyabilir, indirebilir, serbestçe kullanabilirsiniz.',
+        sunumNot: 'Sunum dosyası', sunumPdfAd: 'Sunum PDF', sunumPdfNot: 'Slaytlar, PDF olarak', ceviriNot: '', asli: '', digerDiller: 'Diğer dillerde' },
   fr: { etiket: 'Sermon', geri: 'Tous les sermons', indir: 'Télécharger', kelime: 'mots', okuma: 'min de lecture', trNot: 'Ce sermon est publié en turc.', paylas: 'Partager sur WhatsApp', ilgili: 'À lire également',
-        pdfNot: 'Document original', wordNot: 'Modifiable', serbest: 'Texte anonyme — à lire, télécharger et utiliser librement.' },
+        pdfNot: 'Version imprimable', wordNot: 'Modifiable', serbest: 'Texte anonyme — à lire, télécharger et utiliser librement.',
+        sunumNot: 'Diaporama', sunumPdfAd: 'Diaporama PDF', sunumPdfNot: 'Diapositives en PDF', ceviriNot: 'Traduction de l’original turc.', asli: 'Lire l’original en turc', digerDiller: 'Dans d’autres langues' },
   en: { etiket: 'Sermon', geri: 'All sermons', indir: 'Download', kelime: 'words', okuma: 'min read', trNot: 'This sermon is published in Turkish.', paylas: 'Share on WhatsApp', ilgili: 'You may also read',
-        pdfNot: 'Original document', wordNot: 'Editable', serbest: 'Anonymous text — read, download and use freely.' },
+        pdfNot: 'Print version', wordNot: 'Editable', serbest: 'Anonymous text — read, download and use freely.',
+        sunumNot: 'Slide deck', sunumPdfAd: 'Slides PDF', sunumPdfNot: 'Slides as PDF', ceviriNot: 'Translated from the Turkish original.', asli: 'Read the Turkish original', digerDiller: 'In other languages' },
   nl: { etiket: 'Preek', geri: 'Alle preken', indir: 'Downloaden', kelime: 'woorden', okuma: 'min. leestijd', trNot: 'Deze preek wordt in het Turks gepubliceerd.', paylas: 'Delen via WhatsApp', ilgili: 'Ook interessant om te lezen',
-        pdfNot: 'Origineel document', wordNot: 'Bewerkbaar', serbest: 'Anonieme tekst — vrij te lezen, te downloaden en te gebruiken.' },
+        pdfNot: 'Afdrukversie', wordNot: 'Bewerkbaar', serbest: 'Anonieme tekst — vrij te lezen, te downloaden en te gebruiken.',
+        sunumNot: 'Presentatie', sunumPdfAd: 'Presentatie-pdf', sunumPdfNot: 'Dia’s als pdf', ceviriNot: 'Vertaald uit het Turkse origineel.', asli: 'Het Turkse origineel lezen', digerDiller: 'In andere talen' },
   de: { etiket: 'Predigt', geri: 'Alle Predigten', indir: 'Herunterladen', kelime: 'Wörter', okuma: 'Min. Lesezeit', trNot: 'Diese Predigt wird auf Türkisch veröffentlicht.', paylas: 'Über WhatsApp teilen', ilgili: 'Das können Sie auch lesen',
-        pdfNot: 'Originaldokument', wordNot: 'Bearbeitbar', serbest: 'Anonymer Text — frei zu lesen, herunterzuladen und zu verwenden.' },
+        pdfNot: 'Druckfassung', wordNot: 'Bearbeitbar', serbest: 'Anonymer Text — frei zu lesen, herunterzuladen und zu verwenden.',
+        sunumNot: 'Präsentation', sunumPdfAd: 'Folien-PDF', sunumPdfNot: 'Folien als PDF', ceviriNot: 'Übersetzung des türkischen Originals.', asli: 'Das türkische Original lesen', digerDiller: 'In anderen Sprachen' },
 };
 const m = METIN[dil];
 
@@ -79,21 +106,22 @@ const okumaDk = d.kelime ? Math.max(1, Math.round(d.kelime / 180)) : null;
 const sayacYollar = (istatistik as { yollar: Record<string, number> }).yollar ?? {};
 const buYol = `/${dil}/vaaz/${entry.id}`;
 const goruntulenmeTohum = sayacYollar[buYol] ?? sayacYollar[`${buYol}/`] ?? 0;
-const kat = d.kategori ? (katAd[d.kategori]?.[dil] ?? d.kategori) : null;
+const kat = entry.data.kategori ? (katAd[entry.data.kategori]?.[dil] ?? entry.data.kategori) : null;
 const kanonik = new URL(Astro.url.pathname, Astro.site).toString();
 const wa = `https://wa.me/?text=${encodeURIComponent(`${d.baslik} — ${kanonik}`)}`;
 const jsonLd = {
-  '@context': 'https://schema.org', '@type': 'Article', headline: d.baslik, inLanguage: 'tr',
+  '@context': 'https://schema.org', '@type': 'Article', headline: d.baslik, inLanguage: hreflangKodu(dil),
   ...(d.ozet ? { description: d.ozet } : {}), isAccessibleForFree: true,
+  ...(ceviri ? { translationOfWork: { '@type': 'Article', url: new URL(`/tr/vaaz/${entry.id}/`, Astro.site).href } } : {}),
   ...(vaazKapagi.kapak ? { image: new URL(vaazKapagi.kapak, Astro.site).href } : {}),
   publisher: { '@type': 'Organization', name: 'Ulu Camii Marche-en-Famenne' },
 };
 const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 ---
-<Base baslik={dil === 'tr' ? d.baslik : m.etiket} aciklama={dil === 'tr' ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={dil !== 'tr'} ogTuru={dil === 'tr' ? 'article' : 'website'} ekJsonLd={dil === 'tr' ? [jsonLd] : []} {...vaazKapagi}>
+<Base baslik={tamMetin ? d.baslik : m.etiket} aciklama={tamMetin ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={!tamMetin} ogTuru={tamMetin ? 'article' : 'website'} ekJsonLd={tamMetin ? [jsonLd] : []} {...vaazKapagi}>
   <article class="kapsayici py-8 sm:py-12">
     <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
-    {dil !== 'tr' ? <>
+    {!tamMetin ? <>
       <h1>{m.etiket}</h1>
       <VaazDilUyarisi dil={dil} slug={entry.id} />
     </> : <>
@@ -105,10 +133,10 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
         <p class="vaaz-meta">
           {kat && <span class="vaaz-kat">{kat}</span>}
           {okumaDk && <span>{okumaDk} {m.okuma}</span>}
-          {d.kelime && <span>{d.kelime.toLocaleString('tr-TR')} {m.kelime}</span>}
+          {d.kelime && <span>{d.kelime.toLocaleString(yerelKodu[dil])} {m.kelime}</span>}
           <Goruntulenme dil={dil} baslangic={goruntulenmeTohum} />
         </p>
-        {m.trNot && <p class="vaaz-not">{m.trNot}</p>}
+        {ceviri && <p class="vaaz-not">{m.ceviriNot} <a href={`/tr/vaaz/${entry.id}/`} hreflang="tr" lang="tr">{m.asli} →</a></p>}
       </header>
 
       <aside class="vaaz-yan" aria-label={m.indir}>
@@ -117,22 +145,46 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
             <p class="yan-baslik">{m.indir}</p>
             <div class="vaaz-indir">
               {d.pdf && (
-                <a href={d.pdf} class="indir-dugme" download>
+                <a href={d.pdf} class="indir-dugme" data-tur="pdf" download>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={indirIkon} />
                   <span class="indir-ad">PDF</span>
                   <small>{m.pdfNot}</small>
                 </a>
               )}
               {d.docx && (
-                <a href={d.docx} class="indir-dugme" download>
+                <a href={d.docx} class="indir-dugme" data-tur="word" download>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={indirIkon} />
                   <span class="indir-ad">Word</span>
                   <small>{m.wordNot}</small>
                 </a>
               )}
+              {d.pptx && (
+                <a href={d.pptx} class="indir-dugme" data-tur="powerpoint" download>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={indirIkon} />
+                  <span class="indir-ad">PowerPoint</span>
+                  <small>{m.sunumNot}</small>
+                </a>
+              )}
+              {d.sunumPdf && (
+                <a href={d.sunumPdf} class="indir-dugme" data-tur="sunum-pdf" download>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={indirIkon} />
+                  <span class="indir-ad">{m.sunumPdfAd}</span>
+                  <small>{m.sunumPdfNot}</small>
+                </a>
+              )}
             </div>
             <p class="yan-not">{m.serbest}</p>
           </div>
+        )}
+        {diller.length > 1 && (
+          <nav class="yan-kutu yan-diller" aria-label={m.digerDiller}>
+            <p class="yan-baslik">{m.digerDiller}</p>
+            <ul role="list">
+              {diller.filter((x) => x !== dil).map((x) => (
+                <li><a href={`/${x}/vaaz/${entry.id}/`} hreflang={hreflangKodu(x)} lang={hreflangKodu(x)}>{DIL_ADI[x]}</a></li>
+              ))}
+            </ul>
+          </nav>
         )}
         <a href={wa} target="_blank" rel="noopener" class="baglanti-dugme yan-paylas">{m.paylas}</a>
       </aside>
@@ -148,9 +200,9 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
             {ilgili.map((v) => (
               <li>
                 <a href={`${yol(dil, 'anasayfa')}vaaz/${v.id}/`}>
-                  <span class="ilgili-kat">{katAd[v.data.kategori]?.[dil] ?? v.data.kategori}</span>
-                  <span class="ilgili-baslik">{v.data.baslik}</span>
-                  {v.data.kelime && <span class="ilgili-sure">{Math.max(1, Math.round(v.data.kelime / 180))} {m.okuma}</span>}
+                  <span class="ilgili-kat">{katAd[v.kategori as keyof typeof katAd]?.[dil] ?? v.kategori}</span>
+                  <span class="ilgili-baslik">{v.baslik}</span>
+                  {v.kelime && <span class="ilgili-sure">{Math.max(1, Math.round(v.kelime / 180))} {m.okuma}</span>}
                 </a>
               </li>
             ))}
@@ -209,6 +261,10 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
   .indir-dugme:hover { border-color: var(--vurgu); color: var(--vurgu); transform: translateY(-1px); box-shadow: 0 6px 18px -12px color-mix(in oklab, var(--vurgu) 50%, transparent); }
   .yan-not { margin: 0.8rem 0 0; font-size: 0.8rem; line-height: 1.5; color: var(--metin-2); text-wrap: pretty; }
   .yan-paylas { display: none; }
+  .yan-diller { margin-top: 0.75rem; }
+  .yan-diller ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .yan-diller a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.85rem; border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin); font-size: 0.88rem; font-weight: 600; text-decoration: none; }
+  .yan-diller a:hover { border-color: var(--vurgu); color: var(--vurgu); }
 
   @media (min-width: 1024px) {
     .vaaz-yerlesim { grid-template-columns: minmax(0, 46rem) 17rem; justify-content: space-between; column-gap: clamp(2.5rem, 5vw, 5rem); grid-template-areas: "bas yan" "govde yan" "ilgili yan" "alt yan"; }
@@ -254,7 +310,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
   document.querySelectorAll<HTMLAnchorElement>('.vaaz-indir a[download]').forEach((a) => {
     a.addEventListener('click', () => {
       const sayac = (window as any).goatcounter;
-      const tur = a.querySelector('.indir-ad')?.textContent?.trim().toLowerCase() || 'dosya';
+      const tur = a.dataset.tur || a.querySelector('.indir-ad')?.textContent?.trim().toLowerCase() || 'dosya';
       if (sayac && typeof sayac.count === 'function') {
         sayac.count({ path: `indir-${tur}${location.pathname}`, title: document.title, event: true });
       }

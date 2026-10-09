@@ -224,9 +224,30 @@ const vaazlar = defineCollection({
     kelime: z.number().optional(),
     docx: z.string().optional(),
     pdf: z.string().optional(),
+    /** Vaazın sunumu (9 Eki 2026): büyük dosyalar GitHub Releases'te durur, burada tam adres yazılır. */
+    pptx: z.string().optional(),
+    sunumPdf: z.string().optional(),
     siraNo: z.number().optional(),
     taslak: z.boolean().default(false),
     /** Bağlantı önizlemesi (og:image) — vaazın kapak çiziminden üretilmiş 1200×630 WebP; çizimin aslı SVG'dir. */
+    kapak: z.string().optional(),
+    kapakAlt: z.string().optional(),
+  }),
+});
+
+/** Vaaz çevirileri (9 Eki 2026) — src/content/vaaz-cevirileri/<dil>/<türkçe-slug>.md. Kimlik «fr/<slug>»;
+ *  çevirisi olan vaaz /<dil>/vaaz/<slug>/ adresinde tam metin olarak yayımlanır, olmayanlarda Türkçe uyarısı kalır. */
+const vaazCevirileri = defineCollection({
+  loader: glob({ pattern: '*/*.md', base: './src/content/vaaz-cevirileri' }),
+  schema: z.object({
+    baslik: z.string(),
+    ozet: z.string().optional(),
+    kelime: z.number().optional(),
+    docx: z.string().optional(),
+    pdf: z.string().optional(),
+    pptx: z.string().optional(),
+    sunumPdf: z.string().optional(),
+    taslak: z.boolean().default(false),
     kapak: z.string().optional(),
     kapakAlt: z.string().optional(),
   }),
@@ -248,5 +269,5 @@ const ekranAyar = defineCollection({
   }),
 });
 
-export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller, vaazlar, ekranAyar };
+export const collections = { duyurular, etkinlikler, sayfalar, ayarlar, galeri, vefat, afisler, kurul, materyaller, vaazlar, vaazCevirileri, ekranAyar };
 export { dil };
