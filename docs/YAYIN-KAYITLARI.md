@@ -4,6 +4,55 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 — «Affetmek ve Öfkeyi Kontrol Etmek»: FR/EN/NL/DE çevirileri ve beş dilde sunumlar
+
+- Zaman: 9 Ekim 2026 08:03:16 (GitHub sürümü) – 08:05:02 (push) – 08:08:15 (deploy) – 08:10:43 (canlı doğrulama),
+  Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: kullanıcının 8–9 Ekim talepleri: «bu vaazı diğer dört dilde de aynı şekilde yayımla … word, pdf,
+  powerpoint vs hepsi aynı şekilde anılan dillerde de olsun» ve «hepsini sunumları vs yayımla sitemizde».
+- Kapsam:
+  - Yeni tam metin sayfaları: [FR](https://ulucamii.be/fr/vaaz/affetmek-ve-ofkeyi-kontrol-etmek/),
+    [EN](https://ulucamii.be/en/vaaz/affetmek-ve-ofkeyi-kontrol-etmek/),
+    [NL](https://ulucamii.be/nl/vaaz/affetmek-ve-ofkeyi-kontrol-etmek/),
+    [DE](https://ulucamii.be/de/vaaz/affetmek-ve-ofkeyi-kontrol-etmek/). Bu sayfalarda önceki «yalnız Türkçe» notu
+    yerine çeviri gösteriliyor.
+  - Sayfalar indekslenir. `html lang` fr-BE / en / nl-BE / de-BE; kanonik adres kendi dilinde; JSON-LD `inLanguage` ve
+    `translationOfWork` var.
+  - Her dilde Word, PDF, PowerPoint ve sunum PDF'i indirme düğmeleri ve «Diğer dillerde» kutusu var. Çeviri notu Türkçe
+    asıl metne bağlantı veriyor.
+  - Türkçe sayfaya da PowerPoint ve sunum PDF düğmeleri eklendi; vaaz gövdesi aynı kaldı (kelime 3.260 → 3.250 sayım
+    düzeltmesi).
+  - Vaazlar listelerinde (`/fr/sermons/` vb.) çevrilen vaazlar bölümü var.
+- Kod (7 dosya + 4 içerik):
+  - `src/content.config.ts`: `vaazlar` şemasına `pptx` ve `sunumPdf` eklendi; yeni koleksiyon `vaazCevirileri`
+    (`src/content/vaaz-cevirileri/<dil>/<slug>.md`).
+  - `src/pages/[lang]/vaaz/[slug].astro`, `src/components/VaazDilUyarisi.astro`, `src/sayfalar/Vaazlar.astro` güncellendi.
+  - Word/PDF dosyaları `public/vaazlar/{fr,en,nl,de}/` altında. Sunumlar sitede değil, GitHub sürümünde.
+- GitHub sürümü
+  [`vaaz-affetmek-ve-ofkeyi-kontrol-etmek`](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/tag/vaaz-affetmek-ve-ofkeyi-kontrol-etmek):
+  - 10 dosya: 5 dil × (PPTX + PDF), 62 slayt, yazı tipleri gömülü.
+  - Dosya adları `<dosya>-sunum|diaporama|slides|presentatie|folien.{pptx,pdf}`.
+  - GitHub `digest` değerleri yerel SHA-256 ile aynı.
+  - ⚠️ `gh release create --latest=false` yeni sürümün «Latest» olmasını engellemedi. İşaret `gh release edit
+    ders-2026-10-19 --latest` ile ders materyallerine geri verildi (`releases/latest` → `ders-2026-10-19`).
+- İçerik commit'i `d9653b4` (push `43f3d98..d9653b4`; ayrı çalışma ağacı `D:/tmp/ulucamii-vaaz-ceviri-20261009`, dal
+  `vaaz/affetmek-ceviri-20261009`; ana ağaçtaki başka oturumların commit'lenmemiş işlerine dokunulmadı). Deploy:
+  <https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37891697566> — **success** (build + deploy).
+- Yerel doğrulama:
+  - `astro check` 0 hata / 0 uyarı; `npm run build` 1908 sayfa.
+  - `npm run denetim` çıkış 0 (yalnız önceden var olan bulgular; yeni sayfalarda bulgu yok); `npm run design:check`
+    geçti.
+- Sayfa denetimi (`web_kontrol.mjs`, yerel ve canlı aynı sonuç):
+  - 22 görünüm (TR 6, her çeviri 4) taşmasız; axe 0 ihlal.
+  - Her dilde 26 görsel, 21 nass, 7 söz, 5 adım; ⟨⟩ işareti 0; yasak ad 0; `tel:` 0.
+  - Dil bağlantıları 4/4.
+  - 71 dosya ve 10 sunum özeti eşleşiyor.
+  - `/fr/vaaz/gurbette-cami/` hâlâ «yalnız Türkçe» notunu gösteriyor ve noindex (doğru).
+- Kaynak ve kanıt: `D:/hutbeler ve vaazlar/kaynak-affetmek-20261009/` (`ceviri/` hattı, `YAYIN-VE-KALITE.md` →
+  «Çeviriler»). Teslim klasörü `D:/hutbeler ve vaazlar/Affetmek ve Öfkeyi Kontrol Etmek - Çeviriler/`.
+- Sınırlar: Çeviriler Claude alt ajanlarıyla yapıldı ve otomatik kapılarla denetlendi; anadili konuşan bir hocanın
+  okuması önerilir. Sosyal ağ önizlemesi gerçek paylaşımla denenmedi. Bu kayıt commit'i ayrı bir belge commit'idir.
+
 ## 8 Ekim 2026 (2) — «Affetmek ve Öfkeyi Kontrol Etmek»: gece sahnesi yenilendi, danışma hatları çıkarıldı
 
 - Zaman: 8 Ekim 2026 22:03 (commit + push) – 22:06:43 (deploy) – 22:07:47 (canlı doğrulama), Europe/Brussels. **Yayımlandı ve canlı doğrulandı.**
