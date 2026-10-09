@@ -116,5 +116,8 @@
     "svgo": "4.1.0",
     "typescript": "^6.0.3",
     "yaml": "^2.9.0"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "^1.14.6"
   }
 }
