@@ -1,209 +1,478 @@
 ---
-baslik: "Güven Toplumu"
-ozet: "Güven; inanmak ve emin olmaktır, endişelerden sıyrılmak ve korkuları bir kenara bırakmaktır. İslâm’da iman ile güven arasında çok güçlü bir ilişki mevcuttur. İman…"
+baslik: "Emanetin Hakkı: Ehliyet ve Sadakatle Kurulan Güven Toplumu"
+ozet: "Güven, emanetin korunmasıyla büyür. Görevi ehline vermek, anlaşmalara bağlı kalmak ve zedelenen güveni onarmak için Kur’an ve sünnetten ölçüler; Avrupa’daki hayatımıza taşınacak yedi somut söz."
 kategori: ahlak
-kelime: 2857
+kelime: 4033
 docx: "/vaazlar/guven-toplumu.docx"
 pdf: "/vaazlar/guven-toplumu.pdf"
+kapak: "/media/vaazlar/guven-toplumu/kapak-og.webp"
+kapakAlt: "Bir atölye rafında temizlenmiş aletler, kapalı bir saklama kutusu ve düzenle sarılmış kablo."
 ---
-Güven; inanmak ve emin olmaktır, endişelerden sıyrılmak ve korkuları bir kenara bırakmaktır. İslâm’da iman ile güven arasında çok güçlü bir ilişki mevcuttur. İman eden kimse anlamına gelen “mümin”; güvenilir insan anlamına gelen “emin”; güven, güvence ve güvenlik anlamına gelen “emniyet”; can ve mal güvencesi anlamına gelen “eman” kavramları aynı kökten beslenmektedir. Bu kökün bağlandığı nokta ise Yüce Yaratıcı’ nın mahlûkata sağladığı sonsuz güvendir. (Prof Dr. M. Görmez, *Hz. Peygamber ve Güven Toplumu*, Ankara: DİB, 2017)
 
-İslâm’a göre, güvenin yegâne kaynağı Cenab-ı Hak’tır. Yüce Rabbimizin isimlerinden biri olan “el-Mümin”, “huzur, esenlik ve güven veren” demektir. Dolayısıyla Allah’a iman eden bir mümin, kendisinin de bir parçası olduğu varlık âleminin Yüce Allah’ın himayesi, koruması ve garantisi altında olduğuna inanır. Mümin; Yüce Allah’ın kudretine teslim olan, zihnini ve yüreğini en sağlam, bâki, değişmez mesnede yaslayan, böylelikle huzura kavuşan kimsedir. (Görmez, a.g.e.)
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/guven-toplumu/kapak.svg" width="1600" height="900" alt="Bir atölye rafında temizlenmiş aletler, kapalı bir saklama kutusu ve düzenle sarılmış kablo." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Emaneti özenle taşımak</strong> Başkasının hakkına gösterilen özen, güveni ayakta tutar.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-İbrahim (a.s), halkına Allah’ın yüceliğini anlattıktan sonra kendisini cezalandırmakla tehdit eden müşriklere can alıcı soruyu sorar:
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#iman-ve-guven">İman ve güven</a></li>
+<li><a href="#emanetin-alanlari">Emanetin alanları</a></li>
+<li><a href="#hiyanet-ve-nifak">Hıyanet ve nifak</a></li>
+<li><a href="#gorev-ve-ehliyet">Görev ve ehliyet</a></li>
+<li><a href="#ebu-zerin-emaneti">Yeterlilik ve sorumluluk</a></li>
+<li><a href="#anlasmalara-sadakat">Anlaşmalara sadakat</a></li>
+<li><a href="#herkes-icin-guven">Herkes için güven</a></li>
+<li><a href="#ailede-emanet">Ailede emanet</a></li>
+<li><a href="#ortak-emanet">Ortak emanet</a></li>
+<li><a href="#guveni-onarmak">Güveni onarmak</a></li>
+<li><a href="#yedi-soz">Hayata taşıyacağımız sözler</a></li>
+<li><a href="#hatim-duasi">Hatim duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Elimizdeki emanetten başlayalım</h2>
 
-<p lang="ar" dir="rtl" class="ayet">وَكَيْفَ اَخَافُ مَٓا اَشْرَكْتُمْ وَلَا تَخَافُونَ اَنَّكُمْ اَشْرَكْتُمْ بِاللّٰهِ مَا لَمْ يُنَزِّلْ بِهٖ عَلَيْكُمْ سُلْطَاناًؕ فَاَيُّ الْفَرٖيقَيْنِ اَحَقُّ بِالْاَمْنِۚ اِنْ كُنْتُمْ تَعْلَمُونَۘ</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-“***Siz, Allah’ın size haklarında hiçbir hüküm indirmediği şeyleri O’na ortak koşmaktan korkmazken, ben sizin ortak koştuğunuz şeylerden nasıl korkarım? Şimdi biliyorsanız (söyleyin), iki gruptan hangisi güvende olmaya daha lâyıktır?***” (En’âm, 6/81)
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-Cevap yine Allah’tandır ve Kur’an’ın en net ifadeleri arasında yer almıştır:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">اَلَّذٖينَ اٰمَنُوا وَلَمْ يَلْبِسُٓوا اٖيمَانَهُمْ بِظُلْمٍ اُو۬لٰٓئِكَ لَهُمُ الْاَمْنُ وَهُمْ مُهْتَدُونَࣖ</p>
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-“***İnanıp da imanlarına herhangi bir haksızlık bulaştırmayanlar var ya, işte güven onlarındır ve onlar doğru yolu bulanlardır.”*** (En’âm, 6/82)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-O, kendisine inananlara en büyük güven ve destek kaynağıdır. Mümin bilir ki; O’na güvenmek insan için en güçlü dayanaktır. Bu sebeple O’ndan başka hiçbir varlığa sonsuz güvenilmez, güvenilmemelidir. Kur’an’da birçok ayette Rabbimiz müminlere bu gerçeği hatırlatmıştır. Örneğin; Furkan Suresinin 58. ayetinde:
+*Mûsâ, “Rabbim! Gönlüme ferahlık ver. İşimi kolaylaştır. Dilimdeki tutukluğu çöz ki sözümü anlasınlar” dedi.* (Tâhâ, 20/25–28)
 
-<p lang="ar" dir="rtl" class="ayet">وَتَوَكَّلْ عَلَى الْحَيِّ الَّذٖي لَا يَمُوتُ وَسَبِّـحْ بِحَمْدِهٖؕ</p>
+**Aziz cemaat! Hayatın yükünü birbirine güvenerek taşıyan kıymetli kardeşlerim!**
 
-***“Asla ölmeyecek olan O diri varlığa (Allah’a) dayanıp güven ve O’na hamt ederek yüceliğini dile getir”*** (Furkan, 25/58) buyrulmuştur. Dünya hayatında üstesinden gelemeyeceği birçok problemle karşılaşan insan; kendisine güvenenleri hiçbir zaman yalnız bırakmayan bir yaratıcıya dayanıp güvenmeli ki bütün bu problemler karşısında hayat neşesini, yaşama hevesini kaybetmesin ve yolun sonunda beklentileri boşa çıkmasın.
+Avucumuza bırakılan küçük bir anahtar bazen bir evin bütün huzurunu taşır. Sahibi yolculuğa çıkmıştır. Çiçeklerini sulamamızı, posta kutusuna bakmamızı istemiştir. Anahtar küçüktür; bize duyulan güven büyüktür. O evin eşyasına ve mahremiyetine gösterdiğimiz özen, kalbimizdeki imanın hayata uzanan tarafını anlatır.
 
-## Doğruluk ve Güvenilir Olmak: Peygamberlerin Vasfı
+İçimizde iş yerinde bir makineye, evde bir çocuğun bakımına, camide bir hizmete emek verenler var. Hastane randevusunda büyüğüne eşlik eden genç de bir emanet taşıyor. Her birimizin elinde başkasının hayatına değen bir sorumluluk bulunuyor. Bugün önce kendi elimizdekine bakalım.
 
-İnsanlığa bir önder ve rehber olarak gönderilen peygamberlerde bulunması gerekli beş özellikten birisi; sıdk yani doğruluk ve dürüstlük, diğeri de emanet yani güvenilir olmaktır. Hiç şüphe yok ki bunlar tesadüfî değildir, vurguladıkları bir husus bulunmaktadır.
+**Güven toplumu, emaneti koruyan ve işini ehliyetle yapan insanlarla kurulur.** Rabbimizin huzuruna bu niyetle geldik. Namazda yöneldiğimiz kıble, günlük işimizde de sorumluluğumuza yön versin.
 
-Kur’an-ı Kerim’ de; Hz. Nûh, Hz. Hûd, Hz. Salih, Hz. Lût ve Hz. Şuayb’ın (a.s) kıssaları anlatılırken ve bu peygamberler gönderildikleri toplumlara kendilerini tanıtırken güvenilirlik vasıfları ön plana çıkmıştır:
+Bugün emaneti nasıl koruyacağımızı, bir görevi kime vereceğimizi ve anlaşmalarımızı nasıl sürdüreceğimizi konuşacağız. Geçmişte bir güveni zedelemiş olsak da şimdi onu onarmaya başlayabiliriz. Rabbimizin rahmetine sığınarak küçük bir adım atalım. Yanımızdaki insan, bize bir iş bıraktığında gönlü rahat etsin.
 
-<p lang="ar" dir="rtl" class="ayet">اِنّٖي لَكُمْ رَسُولٌ اَمٖينٌۙ</p>
+**Bugünkü muhasebemiz, elimizdeki emaneti sahibine nasıl ulaştıracağımızla başlasın.**
 
-*“Bakınız ben, size gönderilmiş güvenilir bir elçiyim*” (Şuara, 26/107, 125, 143, 162, 178)
+---
 
-Çünkü peygamber, yeni bir din getiriyor ve insanları o dine davet ediyor. Peygamberlerin getirmiş oldukları dini kabul etmek demek, kendi inançlarını ve o inançların bir gereği olan adet ve geleneklerini terk etmek demektir. Bu ise kolay değildir. Bunun için onları bu inançlarından vazgeçirmeye çalışan peygamberlerin dürüstlüğüne ve güvenilir olduklarına inanmaları gerekir. İşte bunun için peygamberler kendilerinin dürüst ve güvenilir kimseler olduklarını hatırlatıyorlardı. Bu sadece sözden ibaret değildi. Yaşayışlarıyla da bunu ispat ediyorlardı. (L. Şentürk, *Örnek Vaazlar, Güvenilir Olmak* )
+<h2 class="vaaz-bolum-baslik" id="iman-ve-guven" tabindex="-1">I. İmanın hayattaki izi: Bize güvenilebilir mi?</h2>
 
-## Kur’an’da Müminlerin Öne Çıkan Özelliği: Güvenilir Olmak
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ هُمْ لِأَمَـٰنَـٰتِهِمْ وَعَهْدِهِمْ رَٰعُونَ ۝٨</p>
 
-Kerim kitabımız müminlerin sahip olması gereken özellikleri çeşitli vesilelerle dile getirir. Bu özelliklere baktığımızda emanet, güvenilir olmak ve doğruluk ön plana çıkmaktadır:
+*Yine o müminler emanetlerine ve ahidlerine sadakat gösterirler.* (Mü’minûn, 23/8)
 
-<p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ هُمْ لِاَمَانَاتِهِمْ وَعَهْدِهِمْ رَاعُونَࣕ ﴾</p>
+Kur’an-ı Kerîm, Mü’minûn sûresinin başında kurtuluşa eren müminleri anlatır. Namazlarının ardından emanetlerine ve ahidlerine bağlılıklarını da anar. Böylece secdeyle insan hakkını aynı kulluk hayatında buluşturur. Seccademizi topladıktan sonra aldığımız sorumluluklar da Rabbimizin huzurunda taşıdığımız sorumluluklardır.
 
-“***Onlar ki emanetlerine ve verdikleri söze riayet ederler.***” (Meâric, 70/32-33)
+Güven, bir insanın yanında sürekli tetikte durma ihtiyacının azalmasıdır. Çocuğumuzu bıraktığımız kişi onu gözetir. Bir işi teslim ettiğimiz kişi sonucu bildirir. Eşyamızı alan kişi geri getirir. Böyle bir çevrede insan, başka işine ve ihtiyacına huzurla yönelebilir. Her güvenilir davranış, başkasının omzundan bir yük indirir.
 
-Kur’an’ın bütününe bu zaviyeden baktığımızda nasıl bir insan yetiştirmeyi hedeflediği anlaşılır. Doğruluk, emanet ve adalet gibi ahlaki değerleri kuşanan, fenalıklardan uzaklaşan ve kulluk görevlerini ihmal etmeyen bir mümin. Ve bu bireylerin oluşturduğu, birbirleriyle barışık ve kaynaşmış bir toplum.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَالْمُؤْمِنُ مَنْ أَمِنَهُ النَّاسُ عَلَى دِمَائِهِمْ وَأَمْوَالِهِمْ</p>
 
-## En Güzel Örnek: Muhammedü’l-Emin
+*Mümin, insanların canları ve malları konusunda kendisinden emin olduğu kimsedir.* (Tirmizî, 2627; rivayetten bölüm)
 
-Allah Teâlâ, Kur’an-ı Kerim’de Hz. Peygamber’in (s.a.s) örnek alınmasını emretmiştir. Bir insanda bulunabilecek en mükemmel özellikler, Allah Rasûlü'nde (s.a.s) toplanmıştır. İlgili ayet-i kerime de;
+Efendimiz (s.a.s.), imanın insanlarla ilişkimizde görünmesini istiyor. Hadisteki “insanlar” ifadesini duyalım. İş arkadaşımızın, farklı inançtaki komşumuzun, camiyi henüz tanımayan bir gencin hakkına da aynı özenle yaklaşalım. Bize yakın olanın da uzakta duran insanın da canı ve malı korunmaya lâyıktır.
 
-<p lang="ar" dir="rtl" class="ayet">لَقَدْ كَانَ لَكُمْ فٖي رَسُولِ اللّٰهِ اُسْوَةٌ حَسَنَةٌ لِمَنْ كَانَ يَرْجُوا اللّٰهَ وَالْيَوْمَ الْاٰخِرَ وَذَكَرَ اللّٰهَ كَثٖيراًؕ</p>
+Bir okul bahçesinde çantasını arkadaşına bırakan çocuğu hatırlayalım. Çantasını geri aldığında içindeki eşyaların yerinde olması, ona bir ilişkiyi öğretir. Biz yetişkinler de her gün birbirimize böyle görünmez çantalar bırakıyoruz. Vaktimizi, emeğimizi, bazen en kırılgan derdimizi emanet ediyoruz.
 
-*“Ant olsun ki Allah Resûlü’nde sizin için; Allah’a ve ahiret gününe kavuşmayı uman, Allah’ı çokça zikreden kimseler için güzel bir örnek vardır.”* (Ahzâb, 33/21) buyurulmuştur.
+Güvenin birikmesi için herkesin büyük işler yapması gerekmez. Aldığını yerine koymak, verdiği görevi takip etmek, gecikecekse haber vermek mümkündür. Evimizdeki ve çevremizdeki huzura buradan katkı sunabiliriz. İbadetimizin bereketini, yanımızdaki insanın rahatlayan gönlünde de arayalım.
 
-İnsandaki güven duygusu ile güzel ahlâk arasındaki bağlantının en güzel ve somut örneği Hz. Peygamber’ in (s.a.s) henüz peygamber olmadan önce Muhammedü’l-Emin lakabıyla anılmasıdır. Resûl-i Ekrem (s.a.s), hayatının her döneminde sadece müminlerin değil, düşmanlarının da kendisinden emin olduğu yüce bir şahsiyettir. Hz. Peygamber (s.a.s), her şeyden önce güvenilir bir insan, güvenilir bir baba, güvenilir bir eş, güvenilir bir arkadaş, güvenilir bir dosttur. Akrabaya, komşuya, ticarette muhatap olduğu insanlara, idaresi altındaki müslümanlara güven veren, özü sözü bir, sadık insandır. Hâkimliği, komutanlığı, imamlığı, risaleti güven üzerine kuruludur. Kur’an-ı Kerim’i ona getiren vahiy meleği nasıl “el-Rûhu’l Emin” ise (Şuara 26/193), Mekke-Kâbe nasıl “el-Beledü’l Emin” ise (Tin 95/3), Resûl-i Ekrem de (s.a.s) öylece dosdoğru, öylece emindir. (Görmez, a.g.e.)
+Güvenilir oluşumuz bize söylenen güzel bir sıfattan ibaret kalmasın. İnsanların ihtiyacında sınansın. Yorulduğumuz gün de teslim aldığımız işi hatırlayalım. Yapamadığımızı sakince açıklayalım. Başkasına bıraktığımız yükü fark ederek yardım isteyelim. Böylece samimiyetimiz, imkânımızın azaldığı zamanlarda da karşı tarafın hakkını gözeten bir davranışa dönüşür.
 
-İş yerine girdiğinde iş arkadaşlarının, evine girdiğinde eşinin ve çocuklarının, topluma girdiğinde orada bulunan insanında kalbinde güven, huzur ve neşe uyandıran müminlere ne mutlu. Onlar hiç şüphesiz Emin Peygamber’in (s.a.s) getirdiği değerleri anlamış müminlerdir.
+**İmanımızın hayattaki izlerinden biri, insanların bize gönül rahatlığıyla güvenebilmesidir.**
 
-## Ey Kureyş! Bana İnanır mısınız?
+---
 
-İslâm nuru, Mekke topraklarını aydınlatmaya başlayalı üç yıl olmuştu. Bu esnada sayıları az da olsa müminler, gizliden gizliye Allah’a kulluk ediyor ve ibadetlerini yerine getirmeye çalışıyorlardı. Risâlet dördüncü yılına girerken Allah, elçisinden daveti daha da genişletmesini, yakın akrabalarını uyarmasını istedi.
+<h2 class="vaaz-bolum-baslik" id="emanetin-alanlari" tabindex="-1">II. Emanet: Eşyanın ötesinde bir sorumluluk</h2>
 
-Resûlullah (s.a.s), önce en yakın akrabalarını yani Abdülmuttalib oğullarını İslâm’a davet etti. Sonra da Safâ tepesindeki yüksekçe bir yere çıkıp olanca sesiyle, “Yâ Sabâhâh! Yâ Sabâhâh!” diye haykırdı. Araplar bu kelimelerin ne anlama geldiğini çok iyi bilirlerdi. Düşman saldırısının an meselesi olduğunun haykırışlarıydı bunlar. Hz. Muhammed’in (s.a.s) bu çağrısını işitenler gelip karşısına dizildiler. Gidemeyenler de olup bitenleri öğrenmek için adamlarını gönderdiler. Resûlullah (s.a.s),
+**Kıymetli kardeşlerim! Emaneti, hayatımızdaki bütün sorumluluklarla birlikte okuyalım.**
 
-<p lang="ar" dir="rtl" class="ayet">أَرَأَيْتَكُمْ لَوْ أَخْبَرْتُكُمْ أَنَّ خَيْلاً بِالْوَادِى تُرِيدُ أَنْ تُغِيرَ عَلَيْكُمْ، أَكُنْتُمْ مُصَدِّقِىَّ</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تَخُونُوا۟ ٱللَّهَ وَٱلرَّسُولَ وَتَخُونُوٓا۟ أَمَـٰنَـٰتِكُمْ وَأَنتُمْ تَعْلَمُونَ ۝٢٧</p>
 
-“Ben size, "Şu vadinin arkasında size saldırmak isteyen süvari birlikleri var." desem bana inanır mısınız?” diye sordu. Hep bir ağızdan,
+*Ey iman edenler! Allah ve resulüne karşı hainlik etmeyin, size bırakılan emanetlere de bile bile hıyanet etmeyin.* (Enfâl, 8/27)
 
-<p lang="ar" dir="rtl" class="ayet">نَعَمْ ، مَا جَرَّبْنَا عَلَيْكَ إِلاَّ صِدْقًا</p>
+Emanet deyince aklımıza korumamız için verilen para veya eşya gelir. İslâm ahlâkında bu kavram daha geniştir. Bir görevin gereğini yapmak, bir insanın özel bilgisini korumak, üstlendiğimiz bakım sorumluluğunu yerine getirmek de bu çerçevededir. Bize bırakılan şeyin üzerinde başkasının hakkı vardır. (TDV İslâm Ansiklopedisi, Emanet.)
 
-“***Evet, inanırız... Biz senin bugüne kadar yalan söylediğini hiç görmedik***.” diye karşılık verdiler. “O zaman,” dedi Hz. Peygamber (s.a.s),
+Atölyedeki dolaptan bir alet takımı alırız. Sahibinin izni onu hangi işte kullanacağımızı belirler. İşi bitirince temizleyip yerine bırakırız. Aynı özen, bir aileye ait dosyayı tercüme ederken de gerekir. Dosyadaki bilgiyi yalnız o iş için öğrenmişizdir. O bilgiye ulaşmamız, onu istediğimiz yerde anlatma yetkisi vermez.
 
-<p lang="ar" dir="rtl" class="ayet">فَإِنِّى نَذِيرٌ لَكُمْ عَذَابٍ شَدِيدٍ</p>
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Emaneti korumanın dört adımı</strong> Her adım, başkasının hakkını gözetmeye hizmet eder.</figcaption>
+<p class="vaaz-sema-merkez">Hak sahibine sadakat</p>
+<dl class="vaaz-sema-kollar">
+<div><dt>Kabul</dt><dd>Neyi, hangi amaçla üstlendiğini öğren.</dd></div>
+<div><dt>Koruma</dt><dd>Eşyaya ve bilgiye uygun tedbiri al.</dd></div>
+<div><dt>Kullanım</dt><dd>Verilen iznin sınırına bağlı kal.</dd></div>
+<div><dt>Teslim</dt><dd>Sahibine zamanında ve açıkça geri ver.</dd></div>
+</dl>
+</figure>
 
-“Ben sizi şiddetli bir azaba karşı uyarıyorum…” Bu, belki de kalabalığın hiç beklemediği bir şeydi, bocaladılar. Resûlullah’a (s.a.s) önce amcası Ebû Leheb karşı çıktı, sonra da diğerleri.(Müslim, Îmân, 355)
+Bu dört adım, iyi niyetimizi uygulanabilir hâle getirir. Görevi kabul ederken ayrıntıyı sormak bazen çekingenlik doğurabilir. “Bana güvenmiyor musun?” diye düşünmek yerine, “Bu hakkı nasıl daha iyi koruruz?” diyebiliriz. Açık konuşulan sınırlar, iki tarafın gönlünü rahatlatır.
 
-Bu bir insanın hayatında en büyük kırılma anlarından birisidir. Güvenilirliğinin, doğruluğunun test edildiği an… 43 yıllık dolu dolu bir hayat yaşadığı; çocukluğunu, gençliğini, arkadaşlığını, ticaretini, çalışmasını, evliliğini çok iyi bilen insanların karşısına geçip “bana inanır mısınız” diye sormak. 43 yıl yaşadığı toplumda bıraktığı bir iz, ortaya koyduğu bir şahsiyet var, o da “O asla yalan söylemez, güvenilir bir insandır”.
+Emanetin sahibi de karşısındaki insanın imkânını gözetir. Çok kıymetli bir eşyanın özel korunma ihtiyacını söyler. Bir işi verirken gerekli bilgiyi ulaştırır. Çocuğunun bakımını paylaşırken ihtiyaçlarını açıklar. Güven, hak sahibinin açıklığıyla emanetçinin özenini buluşturur.
 
-Safa tepesindeki bu sesleniş ve davet kıyamete kadar şüphesiz devam edecek. Her mümin kendini Safa tepesindeki Hz. Peygamber’in (s.a.s) yerine koyup, hayatında var olan insanları karşısına alıp; kendi doğruluğunu, güvenilirliğini sorgulamak zorundadır. Babamıza ve annemize bizim “nasıl bir evlat olduğumuz”, eşimize “nasıl bir eş olduğumuz”, çocuklarımıza “nasıl bir baba olduğumuz”, arkadaşlarımıza “işimiz, alışverişimiz, dostluğumuz” sorulduğunda gelecek cevap imanımızın kalitesini, ibadetlerimizin ahlakımıza etkisini ortaya koyacaktır.
+Şimdi elimizde bize ait olmayan bir eşya, görev veya bilgi var mı, hatırlayalım. Sahibinin bizden ne beklediğini yeniden öğrenelim. Gereken tedbiri bugün alabiliriz. Emanetin ağırlığı, onu fark ettiğimizde daha bilinçli taşınır.
 
-## Toplumda Güven
+Görevi devrederken yeni sorumluya yalnız anahtarı uzatmayalım. Bekleyen işi ve teslim şartını da anlatalım. Emanet, el değiştirirken de korunmalıdır.
 
-Güven, toplumsal hayatın temelidir. Bugün başta ülkemiz olmak üzere tüm dünyada güven krizi yaşanıyor. Güven toplumunu inşa etmemiz gerekirken güvenlik toplumuna dönüşüyoruz. Güven toplumunu inşa ederken acaba bir şeyleri gözden mi kaçırdık? Evlerimize akıllı sensörler yerleştirirken, şifrelerimizi kırılamaz zorlukta seçerken, ev ve sokaklarımızı kameralarla donatırken; gönül evimizi imanla sağlama almayı, kalplerimize emanet ve dürüstlük kilitleri takmayı, dilimize doğruluk sensörü koymayı ihmal ediyoruz. Gönül evimizi sağlam bir imanla güvene almadan bu tedbirler eksik kalacaktır. Güven toplumunun ilk adımı kalplere imanı yerleştirmektir.
+**Emaneti korumak, bize bırakılan şeyle birlikte sahibinin hakkını da korumaktır.**
 
-Allahu Teâla Kur’an’ı Kerim’de müminlerin özelliklerinden bahsederken;
+---
 
-<p lang="ar" dir="rtl" class="ayet">وَالَّذٖينَ هُمْ لِاَمَانَاتِهِمْ وَعَهْدِهِمْ رَاعُونَۙ</p>
+<h2 class="vaaz-bolum-baslik" id="hiyanet-ve-nifak" tabindex="-1">III. Hıyanet uyarısı: Önce kendi davranışımıza bakalım</h2>
 
-*“Yine o müminler emanetlerine ve ahidlerine sadakat gösterirler”* (Müminun, 23/8) buyurarak güvenilirlik vasfını ön plana çıkarmıştır. Allah Resûlü (s.a.s) de yaptığı bir tanımda, müminin diğer insanlarla olan ilişkisindeki güven unsurunu öne çıkarmıştır;
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَرْبَعٌ مَنْ كُنَّ فِيهِ كَانَ مُنَافِقًا خَالِصًا، وَمَنْ كَانَتْ فِيهِ خَصْلَةٌ مِنْهُنَّ كَانَتْ فِيهِ خَصْلَةٌ مِنَ النِّفَاقِ حَتَّى يَدَعَهَا إِذَا اؤْتُمِنَ خَانَ وَإِذَا حَدَّثَ كَذَبَ وَإِذَا عَاهَدَ غَدَرَ، وَإِذَا خَاصَمَ فَجَرَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ وَالْمُؤْمِنُ مَنْ أَمِنَهُ النَّاسُ عَلَى دِمَائِهِمْ وَأَمْوَالِهِمْ</p>
+*Dört özellik kimde bulunursa o, tam bir münafık olur. Bunlardan biri kimde varsa, onu bırakıncaya kadar kendisinde bir nifak özelliği bulunur: Kendisine emanet edilince hıyanet eder; konuşunca yalan söyler; anlaşma yapınca bozar; anlaşmazlığa düşünce haktan sapar.* (Buhârî, 34)
 
-“Müslüman, diğer Müslümanların elinden ve dilinden güvende olduğu kimsedir. Mümin de insanların canları ve mallarının güvende olduğu kişidir.” (Tirmizî, Îmân, 12)
+Hadisin sert uyarısı, bizi davranışımızla yüzleştiriyor. Âlimler bu rivayetteki nifakı amelî nifak olarak açıklamıştır. İnançtaki nifakla, müminin davranışında ortaya çıkabilen nifak özelliğini ayırmışlardır. Bu ayrım, hatanın ağırlığını görerek onu düzeltmemize yardım eder. (TDV İslâm Ansiklopedisi, Münafık; İbn Hacer’in açıklaması.)
 
-Anlıyoruz ki gönül evimizi ve imanımızı sağlama almadan, güvenliğini sağlamadan; ne evlerimizin ne şehirlerimizin güvenliğini temin edemeyiz. O halde güven toplumunu oluşturmanın ilk adımı gönüllerde sağlam bir imanı inşa etmektir.
+Bir insana münafık damgası vurmak yerine kendi davranışımızı bu ölçüyle inceleyelim. Elimizdeki bağış zarfından izinsiz para kullandık mı? Bize güvenilerek verilen yetkiyi kişisel çıkarımıza çevirdik mi? Aramız bozulunca üzerinde anlaştığımız hakkı geri mi çektik? Sorunun cevabını önce kendi vicdanımızda arayalım.
 
-## Güven Duygusu Ailede Başlar
+Hadiste “onu bırakıncaya kadar” deniliyor. Bu ifade, dönüş için bir yol gösterir. Hıyaneti bırakabiliriz. Elimizdekini geri verebiliriz. Zararın giderilmesi için dürüstçe çalışabiliriz. Tövbenin ciddiyeti, davranışımızın değişmesiyle görünür olur.
 
-Başkalarına güvenmeye ya da kimseye güvenemez hâle gelmeye ailede karar veririz. Tıpkı güvenilen bir kimse olmanın ya da güvenilmez bir karakter geliştirmenin ipuçlarını ailede topladığımız gibi… Güveni almayı da vermeyi de ailede öğreniyoruz. O halde bilhassa çocukların özgüveni için ailede merhamete, adalete, sevgiye ve şefkate yatırım yapmak, en az onların geleceği için bir kenara para biriktirmek kadar önemlidir. (Prof. Dr. H. Martı, *Hz. Peygamber ve Güven Toplumu*, Ankara: DİB, 2017)
+Gece kapatılan dükkânın kasasını düşünelim. Hesabında eksik olduğunu fark eden kişi, herkes ayrıldıktan sonra da o hakkı gözetir. Kimse görmese bile Allah’ın gördüğünü bilir. Ertesi gün hesabı açıklayabilmek için bugünden doğru bir adım atar. İçindeki mahcubiyeti, hakkı yerine getirme gayretine dönüştürür.
 
-Peygamberimiz’in (s.a.s) de belirttiği gibi,
+Yanlışını kabul eden insana düzeltme imkânı tanıyalım. Hak sahibi de zararının giderilmesini ve güvenliğinin korunmasını isteyebilir. Böylece merhamet, sorumluluğumuzu tamamlayan bir kuvvet olur. Her birimiz bugün bir kusurumuzu bırakmaya niyet edelim.
 
-<p lang="ar" dir="rtl" class="ayet">مَا نَحَلَ وَالِدٌ وَلَدًا مِنْ نَحْلٍ أَفْضَلَ مِنْ أَدَبٍ حَسَنٍ</p>
+İnsanların bize duyduğu güveni kendimiz için bir ayrıcalığa çevirmeyelim. Uzun süredir hizmet etmiş olmak, yeni bir hakkı gözetme sorumluluğumuzu azaltmaz. Her yeni emanet, yeniden özen ister. Bize yapılan bir uyarıyı dinleyebildiğimizde kendi hatamızı daha erken görebiliriz. Bu açıklık, gönlümüzü ve hizmetimizi korur.
 
-“*Hiçbir baba, çocuğuna güzel ahlâktan, edep ve erdemden daha kıymetli bir miras bırakmamıştır*.” (Tirmizî, Birr, 33)
+**Nifak uyarısını başkasına yöneltmeden önce, kendi emanet ahlâkımızı düzeltelim.**
 
-Güvenli bir ailede hem yetişkinler hem de çocuklar kendilerini rahat ifade edebilir; diğerlerinin sınırlarını ihlal etmeden konuşmayı, tartışmayı, çözüm bulmayı başarabilir. Ailedeki herkes sıkıntılarını gizlemek yerine paylaşmayı, mutluluklarına ailesini de ortak etmeyi ister. O halde korkuyu ve şiddeti, yalanı ve hileyi ailemizden uzak tutmak lazımdır. (Martı, *a.g.e*.)
+---
 
-Biz biliyoruz ki,
+<h2 class="vaaz-bolum-baslik" id="gorev-ve-ehliyet" tabindex="-1">IV. Görevi ehline vermek: Yakınlığın ötesinde ölçü</h2>
 
-<p lang="ar" dir="rtl" class="ayet">فَاتَّقُوا اللَّهَ فِي النِّسَاءِ فَإِنَّكُمْ أَخَذْتُمُوهُنَّ بِأَمَانِ اللَّهِ وَاسْتَحْلَلْتُمْ فُرُوجَهُنَّ بِكَلِمَةِ اللَّهِ</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ ٱللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا۟ ٱلْأَمَـٰنَـٰتِ إِلَىٰٓ أَهْلِهَا وَإِذَا حَكَمْتُم بَيْنَ ٱلنَّاسِ أَن تَحْكُمُوا۟ بِٱلْعَدْلِ</p>
 
-*“Kadınlar hakkında Allah’tan korkun. Çünkü siz onları Allah’ın emaneti olarak aldınız ve Allah’ın adını anarak (nikâh kıyıp) onları kendinize helâl kıldınız.”* (Müslim, Hac, 147) buyurarak, kadınla erkek arasında “emanet” ilişkisi kuran Sevgili Peygamberimiz (s.a.s), aile de güveni hatırlatmaktadır.
+*Allah size, emanetleri mutlaka ehline vermenizi ve insanlar arasında hükmettiğiniz zaman adaletle hükmetmenizi emreder.* (Nisâ, 4/58; âyetten bölüm)
 
-Erkek ve kadın arasındaki adaletin ve itidalin sağlanması güven hususunda son derece önemlidir. Peygamberimiz’in (s.a.s):
+Bu âyet emanetle adaleti yan yana getiriyor. Emanet eşyayı sahibine teslim etmeyi kapsar; üstlenilecek görevi uygun insana vermeyi de gerektirir. Görev dağıtırken yakınlığımızdan önce işin ihtiyacını değerlendirelim. Hakkın korunması, ehliyetin gözetilmesiyle kolaylaşır. (TDV İslâm Ansiklopedisi, Emanet.)
 
-<p lang="ar" dir="rtl" class="ayet">أَلا إِنَّ لَكُمْ عَلَى نِسَائِكُمْ حَقًّا، وَلِنِسَائِكُمْ عَلَيْكُمْ حَقًّا</p>
+Bir tamir sırasında elektrik panosunun önünde durduğumuzu düşünelim. Yardım etmeye gönüllü insan çok olabilir. Fakat bu işi bilen, güvenliği gözeten birine ihtiyaç vardır. Gönüllülüğün değeri büyüktür; bilgiyi ve yeterliliği aramak o değeri tamamlar. Her insanın yapabileceği uygun bir katkı bulunur.
 
-“*Dikkat edin! Sizin hanımlarınız üzerinde hakkınız olduğu gibi, hanımlarınızın da sizin üzerinizde hakkı vardır.”*( Tirmizî, Radâ, 11) uyarısı da buna yöneliktir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِذَا وُسِّدَ الأَمْرُ إِلَى غَيْرِ أَهْلِهِ فَانْتَظِرِ السَّاعَةَ</p>
 
-Yuvamızda inşa edeceğimiz güven temelli bir iletişim süreci ve ilişki ortamı çocuklarımızı tehlikeli sanal ortamlardan, arkadaşlıklardan koruyacaktır. Çocuklarımızın sorunlarını, problemlerini rahatlıkla anlatabilecekleri bir iletişim süreci oluşturmak, onları dışarıdan gelecek her türlü tehdit ve tacize karşı koruyacaktır. Eşlerin arasında sağlıklı bir iletişimin olması ise karı-koca arasındaki sevgi ve saygıyı artıracağı gibi güven problemi doğuracak iletişim hatalarının da önüne geçecektir.
+*İş ehli olmayana verildiğinde kıyameti bekle.* (Buhârî, 59; rivayetten bölüm)
 
-## Emanet Bilinciyle Yaşamak
+Efendimiz (s.a.s.), emaneti zayi etmenin nasıl olacağını soran kişiye bu cevabı verir. Görevin yanlış kişiye bırakılması, yalnız bir seçim hatası olarak kalmaz. O işten yararlanacak insanların hakkını da etkiler. Bu yüzden işi dağıtanın da emanetten payına düşen bir sorumluluğu vardır.
 
-Rasulullah (s.a.s) Veda Haccı'nda yaptığı vasiyet niteliğindeki konuşmasında, müminleri birbirlerine emanet etmiş, mukaddes belde ve haram aylara duydukları saygı gibi birbirlerinin hak ve hukukuna da hürmet göstermeleri gerektiğini şöyle vurgulamıştır:
+Cemaat hizmetinde hesabı tutacak kişi, kaydı düzenleyebilmeli ve sorulara cevap verebilmelidir. Çocuklarla ilgilenecek kişi, öğrenme ihtiyaçlarını ve güvenliğini gözetebilmelidir. Bir büyüğümüzün işini tercüme edecek genç, metni anlayacak dil bilgisine sahip olmalıdır. Gerektiğinde ehil birinden yardım isteriz.
 
-<p lang="ar" dir="rtl" class="ayet">إِنِّى لاَ أَدْرِى لَعَلِّى لاَ أَلْقَاكُمْ بَعْدَ هَذَا أَلاَ وَإِنَّ دِمَاءَكُمْ وَأَمْوَالَكُمْ وَأَعْرَاضَكُمْ عَلَيْكُمْ حَرَامٌ كَحُرْمَةِ يَوْمِكُمْ هَذَا في شهْركم هذا فِى بَلَدِكُمْ هَذَا</p>
+Gençlerin yeteneğini, hanımların bilgisini, büyüklerimizin tecrübesini tanıyalım. Engelli bir kardeşimizin yapabileceği işi, kendi önyargımızla daraltmayalım. Yeni Müslüman olmuş bir insanın meslek ve hayat birikimine de yer açalım. İşi tarif edip uygun kişiyi seçelim; öğrenmesi gereken konuda destek verelim.
 
-“***Ey insanlar! Sözümü iyi dinleyiniz. Bilmiyorum, belki bu seneden sonra sizinle burada ebedi olarak bir daha buluşamayacağım. Ey İnsanlar bu günleriniz nasıl mukaddes bir gün ise, bu aylarınız nasıl mukaddes bir ay ise, bu şehriniz nasıl mübarek bir şehir ise; canlarınız, mallarınız, ırzlarınız da öyle mukaddestir, her türlü saldırıdan emindir***.“ (Tecrid Tercemesi, 1/63, Hadis No: 61)
+Görevi kabul eden de kendi sınırını dürüstçe söylesin. Vakti yetmeyecekse başka bir düzen teklif etsin. Bilmiyorsa öğrenmeye zaman istesin. Böyle bir açıklık, hizmeti daha sağlam kurar. **Emanetin hakkı, görevi yapabilecek insana uygun imkânı sağlamaktır.**
 
-Bu ifadeler müminlerin mallarını, canlarını, iffetlerini ilahi bir güvence altına alan önemli mesajlardır. Bu mesajlar çağları aşıp mümin gönüllerde yerini bulduğunda toplumda güven ve huzur filizlenecektir.
+---
 
-## Ben Değil Biz Diyebilmek!
+<h2 class="vaaz-bolum-baslik" id="ebu-zerin-emaneti" tabindex="-1">V. Ebû Zer’e öğüt: Her iyilik aynı görevi gerektirmez</h2>
 
-Allah Resûlü’nün (s.a.s) toplumsal güveni inşa ederken müminleri bir ailenin fertleri gibi dayanışmaya teşvik etmesini göz ardı etmemek gerekir. Bu uygulama yeryüzünde örneği olmayan bir icraattır. Allah Resûlü (s.a.s), müminler topluluğunu birbirlerini destekleyen bir yapının elemanlarına benzetmiş ve şöyle buyurmuştur:
+**Sevgili gençler! Kabiliyetinizi tanımak ve geliştirmek, emaneti güzel taşımaya hazırlıktır.**
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّ الْمُؤْمِنَ لِلْمُؤْمِنِ كَالْبُنْيَانِ يَشُدُّ بَعْضُهُ بَعْضًا</p>
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَتْ إِحْدَىٰهُمَا يَـٰٓأَبَتِ ٱسْتَـْٔجِرْهُ ۖ إِنَّ خَيْرَ مَنِ ٱسْتَـْٔجَرْتَ ٱلْقَوِىُّ ٱلْأَمِينُ ۝٢٦</p>
 
-“Müminin mümine göre konumu, parçaları (bölümleri) birbirini destekleyen bir bina gibidir.” (Buhârî, Salât, 88) Toplumda güvenin tesis edilmesi, bireylerin ihlas ve samimiyetle birbirlerine karşı görevlerini yerine getirmeleri ve güven vermeleriyle mümkündür. Böylelikle toplum bir arada ve ayakta durur.
+*O iki kızdan biri, “Babacığım, onu ücretle tut. Çünkü ücretle istihdam edeceğin en iyi kimse, güçlü ve güvenilir olandır” dedi.* (Kasas, 28/26)
 
-Bunun yanında Allah Resûlü (s.a.s) toplumu oluşturan bireyleri bir vücudun organlarına benzetmiştir;
+Bu söz, Hz. Mûsâ’nın Medyen’de iki kadının hayvanlarını sulamasının ardından söylenir. Kur’an’ın anlattığı sahnede iş görebilme gücüyle güvenilirlik birlikte anılır. Biz de bir görevin ihtiyacına uygun yeterlilik ararız. Güç, o işte gerekli bilgi ve beceriyi de düşündürür. Güvenilirlik ise bu imkânı hakkıyla kullanmaya yöneltir.
 
-<p lang="ar" dir="rtl" class="ayet">“مَثَلُ الْمُؤْمِنِينَ فِى تَوَادِّهِمْ وَتَرَاحُمِهِمْ وَتَعَاطُفِهِمْ، مَثَلُ الْجَسَدِ، إِذَا اشْتَكَى مِنْهُ عُضْوٌ، تَدَاعَى لَهُ سَائِرُ الْجَسَدِ بِالسَّهَرِ وَالْحُمَّى.”</p>
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Bir sahâbîye sevgiyle gösterilen sınır</p>
 
-*“Müminler, birbirlerini sevmede, birbirlerine merhamet ve şefkat göstermede, tıpkı bir organı rahatsızlandığında diğer organları da uykusuzluk ve yüksek ateşle bu acıyı paylaşan bir bedene benzer.”* (Müslim, Birr, 66)
+Ebû Zer (r.a.), Resûlullah’tan kendisine bir görev vermesini ister. Efendimiz (s.a.s.), elini onun omzuna koyar. Bu görev için zayıf olduğunu söyler ve görevin bir emanet olduğunu hatırlatır. Onu hakkıyla üstlenip gereğini yapanlar dışında, böyle bir sorumluluğun kıyamet günü pişmanlık getireceğini bildirir.
 
-Güven toplumunun inşasında Hz. Peygamber’in (s.a.s) bu hadisi oldukça dikkat çekicidir. Bir el yaralandığında diğer el onun yarasını şefkatle sarar, bir yerimiz ağrıdığında ayak o ağrıyı gidermek için koşturur, gözümüze bir şey kaçsa elimiz merhametle onu çıkarır. Toplum da kendi içerisinde bu birlik ve dayanışmayı sağladığında toplumsal güveni tesis etmiş demektir.
+(Müslim, 1825; sahih rivayetin anlam özeti.)
 
-Enes b. Mâlik’in (r.a) Resûlü Ekrem’den (s.a.s) naklettiği bir hadiste ise toplumda güveni tesis etmede önemli bir ahlâkî ilke ile iman arasında doğrudan bir ilişki kurulur:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِنَّهَا أَمَانَةٌ</p>
 
-<p lang="ar" dir="rtl" class="ayet">لا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ</p>
+*Bu görev bir emanettir.* (Müslim, 1825; rivayetten bölüm)
 
-“Hiçbiriniz kendisi için istediğini mümin kardeşi için de istemedikçe (kamil manada) iman etmiş olmaz.” (Buhârî, Îmân, 7) Bu ilke insanların hayatına yerleştiğinde fertler birbirine güven perspektifinden bakacak, güven duyacak ve güven verecektir.
+Omza konan el ile söylenen ciddi söz birlikte dursun gözümüzün önünde. Efendimiz, sahâbîsine hem yakınlık gösteriyor hem görev için gerekli ölçüyü koruyor. Sevdiğimiz insanın iyiliğini istemek, onu taşıyamayacağı bir sorumluluğa yöneltmekten sakınmayı da içerir.
 
-## Doğruluk: Güven Duygusunun Kaynağı
+Bir gencimiz ilk kez yardım hesabını üstlenecekse yanında tecrübeli biri bulunsun. Küçük bir görevle başlayıp kaydı nasıl tutacağını öğrensin. İşi öğrendiğinde sorumluluğu büyüyebilir. Büyüklerimiz ona alan açarken öğrenme sürecine eşlik etsin. Emanet, hazırlıkla daha güvenli taşınır.
 
-Toplumda fertler arasında güven bağlarının oluşması için niyet-söz ve davranışta doğruluk üzere hareket edilmelidir. Müminin kalbi, imanın ve doğruluğun merkezi olmalıdır.
+Bazen en güzel katkımız başka bir görevde ortaya çıkar. Yönetim yerine ulaşım desteği, ders anlatmak yerine hazırlık hizmeti üstlenebiliriz. Değerimiz unvana bağlı olmadan korunur. Rabbimizin rızasını, hakkıyla yapabileceğimiz hizmette arayalım.
 
-Bir hadiste Sevgili Peygamberimiz (s.a.s), bizi dünyada cennet huzuru içinde yaşatacak ahirette ise hakiki cennete ulaştıracak salih amellerden çok önemli altı tanesini sayıyor:
+**İnsana değer vermek, ona uygun sorumluluğu sevgiyle ve ölçüyle vermektir.**
 
-<p lang="ar" dir="rtl" class="ayet">اضْمَنُوا لِي سِتًّا مِنْ أَنْفُسِكُمْ، أَضْمَنْ لَكُمْ الْجَنَّةَ، اصْدُقُوا إِذَا حَدَّثْتُمْ، وَأَوْفُوا إِذَا وَعَدْتُمْ، وَأَدُّوا إِذَا اؤْتُمِنْتُمْ، وَاحْفَظُوا فُرُوجَكُمْ، وَغُضُّوا أَبْصَارَكُمْ، وَكُفُّوا أَيْدِيَكُمْ</p>
+---
 
-Ubâde b. Sâmit’ten (r.a) nakledildiğine göre, Hz. Peygamber (s.a.s) şöyle buyurmuştur: “Siz bana kendinizden altı şeyi garanti edin, ben de size cenneti garanti edeyim: Konuştuğunuzda doğru söyleyin. Söz verdiğiniz zaman onu yerine getirin. Size bir şey emanet edildiğinde onu sahibine verin. Namusunuzu koruyun. (Harama) bakmaktan sakının. Elinizi (kötü işlerden) çekin.” (İbn Hanbel, V, 323) Görüyoruz ki bu altı özellikten dört tanesi doğruluk, ahde vefa, emin ve güvenilir olmak ile ilgilidir.
+<h2 class="vaaz-bolum-baslik" id="anlasmalara-sadakat" tabindex="-1">VI. Anlaşmalarımız: Başkasının yarını bize bağlıdır</h2>
 
-Güven duygusunun temeli olan doğruluğu esas alan bir kişi bu değer üzerinde durduğu müddetçe razı olunan bir mümin olacak ve mükâfat olarak cennete girecektir. Nitekim Resûlullah (s.a.s) da doğruluğun iyi bir kul olmaya, iyi kulluğun da kişiyi sonsuz güvenliğin ve emniyetin olduğu cennete götüreceğinden hareketle müminleri şu ifadelerle söz, niyet ve davranışlarda doğruluğa teşvik etmiştir:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَأَوْفُوا۟ بِعَهْدِ ٱللَّهِ إِذَا عَـٰهَدتُّمْ</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَلَيْكُمْ بِالصِّدْقِ فَإِنَّ الصِّدْقَ يَهْدِى إِلَى الْبِرِّ وَإِنَّ الْبِرَّ يَهْدِى إِلَى الْجَنَّةِ وَمَا يَزَالُ الرَّجُلُ يَصْدُقُ وَيَتَحَرَّى الصِّدْقَ حَتَّى يُكْتَبَ عِنْدَ اللَّهِ صِدِّيقًا وَإِيَّاكُمْ وَالْكَذِبَ فَإِنَّ الْكَذِبَ يَهْدِى إِلَى الْفُجُورِ وَإِنَّ الْفُجُورَ يَهْدِى إِلَى النَّارِ وَمَا يَزَالُ الرَّجُلُ يَكْذِبُ وَيَتَحَرَّى الْكَذِبَ حَتَّى يُكْتَبَ عِنْدَ اللَّهِ كَذَّابًا</p>
+*Antlaşma yaptığınız zaman Allah’a verdiğiniz sözü yerine getirin.* (Nahl, 16/91; âyetten bölüm)
 
-“Doğruluktan ayrılmayın. Çünkü doğruluk (insanı) iyiliğe, iyilik de cennete götürür. Kişi devamlı doğru söyler ve doğruluktan ayrılmazsa Allah katında "doğru/sıddîk" olarak tescillenir. Yalandan sakının! Çünkü yalan (insanı) kötülüğe, kötülük de cehenneme götürür. Kişi devamlı yalan söyler, yalan peşinde koşarsa Allah katında "yalancı/kezzâb" olarak tescillenir.” (Müslim, Birr, 105)
+Bir anlaşma, karşı tarafın hayatında bir beklenti kurar. O insan bizim yapacağımız işe göre zamanını ayırır, başka bir imkândan vazgeçer. Bu yüzden anlaşmamıza bağlılık, yalnız kendi düzenimizi ilgilendirmez. Başkasının yarınını da gözetir. Nahl sûresindeki âyet, yeminlerle pekiştirilen ahidlerin korunmasını hatırlatır.
 
-## Toplumsal Güveni Sarsan İki Şey: Yalan Söylemek ve Sözünde Durmamak
+Kiraladığımız mekânın teslim şartlarını baştan öğrenelim. Ortak yaptığımız işte herkesin ne üstleneceğini açıklayalım. Bir gönüllü hizmeti kabul ettiğimizde hangi gün, hangi işi yapacağımız belli olsun. Açık anlaşma, hakların daha kolay korunmasına yardım eder. Sonradan çıkacak tereddütleri azaltır.
 
-Hz. Peygamber’in (s.a.s) hadislerinde en çok sakındırdığı şeylerin başında yalan söylemek gelir. Mümin olmak ile yalan söylemenin bir araya gelemeyecek iki özellik olduğuna vurgu yapar. Çünkü yalan toplumsal fesadın ana nedenlerinden biri olduğu kadar fertler arası güven duygusunu da ortadan kaldıran çirkin bir alışkanlıktır. Söylediğiniz yalan daha önce söylediğiniz doğrulara da şüphe düşürür ve bundan sonra söyleyeceğiniz sözlere de olan güveni sarsar. Sağlam bir imana sahip olan mümin böylesi kötü bir yola asla yönelmez.
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Namur’da hastane yolculuğu</p>
 
-Hz. Peygamber (s.a.s) “Mümin yalan söyler mi?” sorusuna şu cevabı vermiştir:
+Namur’a gidecek bir büyüğümüz, randevusuna eşlik edecek gençle saat belirliyor. Genç takvimine yazıyor; büyüğümüz de başka bir ulaşım aramayı bırakıyor. Yolculuk sabahı gencin işi uzadığında, büyüğümüzü zamanında arayıp güvenilir bir alternatif ayarlıyor. Randevu kâğıdı elde bekleyen insan, haber geldiğinde yeniden plan yapabiliyor. Sorumluluk, engel çıktığında da onun ihtiyacını gözeterek sürüyor.
 
-<p lang="ar" dir="rtl" class="ayet">لَا يُؤْمِنُ بِاللهِ وَلَا بِالْيَوْمِ الْآخِرِ مَنْ إِذَا حَدَّثَ كَذَبَ</p>
+Genç, hastanenin adresini ve yola çıkış saatini önceden kontrol ediyor. Büyüğümüz gözlüğünü, randevu kâğıdını ve ilaç listesini çantasına koyuyor. Değişiklikte, onun kabul ettiği yakınıyla görüşüp yeni saati büyüğümüze teyit ettiriyor. Kapıda bekleyen insan, kimin geleceğini ve ne zaman çıkacaklarını biliyor. Sözümüzü bu hazırlıklarla koruyoruz.
 
-“Konuştuğu zaman yalan söyleyen kimse, Allah’a ve âhiret gününe (tam mânâsıyla) inanmamıştır.” (Müttakî el-Hindî, Kenzü’l-ummâl, III, 874)
+Elimizde olmayan bir sebeple üstlendiğimiz işi yapamayabiliriz. Böyle bir durumda erken haber vermek, karşı tarafın hakkını koruyan ilk adımdır. Ardından onun rızasıyla yeni zaman veya uygun çözüm belirleriz. Hastalıkla, beklenmedik bir zorunlulukla karşılaşanı da anlayışla dinleyelim.
 
-Güven duygusu zail olduğu zaman insanların birbirlerine itimadı kalmaz ve ahlaki değerler çok hızlı bir şekilde erozyona uğrar. Peygamberimiz (s.a.s) müslümanın güvenirliliğini ortadan kaldıran dört kötü huya dikkatimizi çekiyor ve şöyle buyuruyor:
+Anlaşmayı değiştirirken iki tarafın da neyi kabul ettiğini açıkça konuşalım. Diğerinin susmasını hemen rıza saymak yerine soralım. Yeni düzeni kısa bir kayıtla teyit edebiliriz. Böylece iyi niyetimiz anlaşılır, sorumluluğumuz izlenebilir olur.
 
-<p lang="ar" dir="rtl" class="ayet">‏ أَرْبَعٌ مَنْ كُنَّ فِيهِ كَانَ مُنَافِقًا خَالِصًا، وَمَنْ كَانَتْ فِيهِ خَصْلَةٌ مِنْهُنَّ كَانَتْ فِيهِ خَصْلَةٌ مِنَ النِّفَاقِ حَتَّى يَدَعَهَا إِذَا اؤْتُمِنَ خَانَ وَإِذَا حَدَّثَ كَذَبَ وَإِذَا عَاهَدَ غَدَرَ، وَإِذَا خَاصَمَ فَجَرَ ‏</p>
+Emanet ahlâkı bizi hazırlığa çağırır. Yapabileceğimiz işi kabul etmek, gerektiğinde yardım istemek, değişikliği vaktinde bildirmek elimizdedir. **Güven toplumu, emaneti koruyan ve işini ehliyetle yapan insanlarla kurulur.** Bu bağlılığı takvimimizdeki bir görevi eksiksiz tamamlayarak görünür kılalım.
 
-“*Dört haslet vardır ki, bunlar kimde bulunursa, o kimse saf münafık olur. Kimde de bu hasletlerden birisi bulunursa, onu bırakıncaya kadar kendisinde nifaktan bir haslet var demektir: Konuştuğunda yalan söyler. Söz verdiğinde sözünde durmaz. Vaat ettiğinde vaadinden döner. Tartıştığında haksızlık eder.*” (Buhari, İman,24)
+**Anlaşmaya sadakat, bize güvenerek plan yapan insanın hayatını gözetmektir.**
 
-Hz. Peygamber (s.a.s) yalan söylemeyi, verilen sözde durmamayı ve emanete hıyanet edip insanların güvenini boşa çıkarmayı münafıklığın göstergelerinden saymıştır. İdeal bir İslam toplumu özlemini dile getirirken kullandığı ölçüt “*bir kadının Allah’tan başka hiç kimseden korku duymadan (tek başına ve güven içinde) Hîre’den* (Irak'ta Kufe'de bulunan antik bir şehir) ***kalkıp gelerek Kâbe’yi tavaf edebilmesi***” dir. (Buhârî, *Menâkıb*, 25)
+---
 
-## Sonuç
+<h2 class="vaaz-bolum-baslik" id="herkes-icin-guven" tabindex="-1">VII. Farklı inançlar arasında güven: Necran’dan bir ders</h2>
 
-Kur’an ve sünnetin hedeflediği güven toplumunu oluşturmak için önce gönüllerimizi imanla inşa etmeliyiz. Aile karı-koca arasında güven ve adalet temeli üzerinde kurulmalı, eşler ve çocuklar sorunlarını rahatça paylaşabildikleri ve çözebildikleri sağlıklı bir iletişim süreci oluşturmalıdır. Toplumda bireyler arsında ki ilişkiler doğruluk ve güven üzerine kurmalı. Her mümin bir başkasının malını, canını, iffetini Mekke-Kabe gibi kutsal görebilmeli, bir vücut gibi birbirinin derdini ve sıkıntısını hissederek deva olmaya çalışmalıdır. Toplumsal güveni sarsacak yalan ve sözünde durmamak gibi kötü davranışlardan uzak durmalıdır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">هَذَا أَمِينُ هَذِهِ الأُمَّةِ</p>
 
-Maalesef İslam Coğrafyası tarihin en zorlu süreçlerinden geçiyor. Gün geçtikçe Kur’an’ın ve Hz. Peygamber’in (s.a.s) bize getirdiği doğruluk, emanet, ahde vefa gibi değerlerden uzaklaşıyoruz. Tarih boyunca emniyet ve güven yurdu olan topraklardan feryatlar ve ateşler yükseliyor. Yüzyıllarca ilim, hikmet ve medeniyetin beşiği olan coğrafya; savaşların, gözyaşının coğrafyası oldu. İslam ülkeleri barışın, huzurun, güvenliğin yeri olmaktan çıktı. Milyonlarca insan evini, yurdunu, ailesini kaybetti. Neden bu hale geldiğimizi düşünmek zorundayız. Bugün Emin Peygamberin ümmeti olarak;
+*Bu, bu ümmetin eminidir.* (Buhârî, 4380; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">اِنَّمَا الْمُؤْمِنُونَ اِخْوَةٌ</p>
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — İstenilen vasıf: Güvenilir bir insan</p>
 
-*“Müminler ancak kardeştirler…”*(Hucurat, 49/10) ayetinin manasını kavramalı, kardeşliği ailemizden başlayarak toplum içerisinde yeniden tesis etmeli ve;
+Necran’dan gelen iki temsilci, Resûlullah’tan kendileriyle birlikte güvenilir birini göndermesini ister. Efendimiz (s.a.s.), gerçekten güvenilir birini göndereceğini bildirir. Sahâbîler bu görev için dikkat kesilir. Resûlullah, Ebû Ubeyde b. Cerrâh’ı çağırır ve onun bu ümmetin emini olduğunu söyler.
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّ اللَّهَ لاَ يَنْظُرُ إِلَى صُوَرِكُمْ وَأَمْوَالِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ وَأَعْمَالِكُمْ</p>
+(Buhârî, 4380; sahih rivayetin ilgili bölümünün anlam özeti.)
 
-“***Allah sizin suretlerinize ve mallarınıza bakmaz, ancak kalplerinize ve amellerinize bakar.”*** (Müslim, Birr, 34) hadisi gereğince; niyet, söz ve davranışlarımızda doğruluğu ve güvenilirliği esas almalıyız.
+Burada farklı bir dinî çevreden gelen insanların bir Müslümana güvenme talebini duyuyoruz. Efendimiz (s.a.s.), bu talebi ciddiyetle karşılıyor. Güvenilirliği bilinen bir sahâbîyi seçiyor. Temsil görevi, muhatabın hakkını gözeten bir insana bırakılıyor. Bizim için de ortak hayata uzanan bir ölçü vardır.
 
-Güven duygusunun kaynağı olan Rabbimiz bizlere; emanet bilinciyle yaşamayı, hayatımız boyunca karşılaşacağımız her bir insana karşı güven verebilmeyi, güven içerisinde yaşayıp ahirette de Allah’ın güvencesinde olan müminlerden olmayı nasip eylesin.
+Belçika’da aynı apartmanı, çalışma alanını ve okul çevresini farklı inançlardan insanlarla paylaşıyoruz. Emanetin sahibinin kimliğine bakmadan onun hakkını koruyalım. Hıristiyan komşumuzun bıraktığı paket, Yahudi iş arkadaşımızın eşyası, herhangi bir inancı benimsemeyen bir kişinin dosyası bize teslim edilmiş olabilir. Her birinde güvenin hakkını yerine getirelim.
+
+Bir trenin bagaj rafında yan yana duran çantalar gibi, günlük hayatımız da birbirine yakın durur. Yol arkadaşımız yerinden kalkınca çantasına göz kulak olmamızı isteyebilir. Kısa bir karşılaşmada bile güven vermek mümkündür. Kimsenin yalnızlığını veya dil bilmemesini kendi çıkarımıza çevirmeyelim.
+
+Yeni Müslüman olmuş bir kardeşimiz, cemaatin düzenini henüz öğrenirken bir yardım işine katılabilir. Ona görevi açıklayalım; sorusunu dinleyelim. Görevlerin paylaşımında eski tanışıklıkların dışına çıkabilmek, yeni gelenin de katkısını görünür kılar. Güvenilirlik, birlikte öğrenilen ve uygulanan bir ahlâk olsun.
+
+Komşumuzun bize güvenmesini, yalnız kimliğimize yönelen bir övgü olarak görmeyelim. O güven, korunması gereken somut bir haktır. Yanlış yaptığımızda sorumluluğu üstlenelim; gerekli düzeltmeyi yapalım. İyi ilişkiyi sürdüren şey, aynı özeni her karşılaşmada gösterebilmektir.
+
+Bir ortak işte, insanı anlamak için onunla aynı dili rahatça konuşmamız gerekebilir. Söyleneni anlamadıysak tekrar isteyelim. Yardım için aldığımız belgeyi izinsiz çoğaltmayalım. Başkasına danışmamız gerekiyorsa neyi paylaşacağımızı sahibine açıklayalım. İş tamamlandığında belgeyi geri verelim. Bize bırakılan dosyanın bir kopyası cihazımızda kaldıysa onun korunmasını ve gereksiz kopyanın kaldırılmasını da gözetelim.
+
+Böyle bir özenin tesiri, büyük sözler söylemeden insanın hayatına ulaşır. Bir iş arkadaşımız, teslim ettiği eşyanın peşinden koşmak zorunda kalmaz. Bir komşumuz, yardım istediğinde ne olacağını bilir. Bir kardeşimiz, dilini bilmediği bir işlemde kendisini daha rahat ifade eder. Güvenilir davranışımız her birine nefes alacak bir alan açar.
+
+**Emanetin sahibinin inancı değişse de bizim sadakat ölçümüz değişmesin.**
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/guven-toplumu/ortak-yol.svg" width="1600" height="900" alt="Avrupa’daki bir trenin bagaj rafında yan yana duran farklı renkli çantalar." loading="lazy" decoding="async">
+<figcaption><strong>Ortak yolda güven</strong> Günlük karşılaşmalarımızda da emanete sadakat gösteririz.</figcaption>
+</figure>
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="ailede-emanet" tabindex="-1">VIII. Evde güven: İnsanın onuru da emanettir</h2>
+
+**Aziz anneler ve babalar! Evimizdeki güveni birlikte taşıyalım.**
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَاتَّقُوا اللَّهَ فِي النِّسَاءِ فَإِنَّكُمْ أَخَذْتُمُوهُنَّ بِأَمَانِ اللَّهِ</p>
+
+*Kadınlar hakkında Allah’tan korkun. Çünkü onları Allah’ın emanetiyle aldınız.* (Müslim, 1218a; rivayetten bölüm)
+
+Efendimiz (s.a.s.), Vedâ haccında eşlerin hakkını hatırlatırken Allah’ın emanetiyle kurulan ilişkiyi anıyor. Bu ifade, eşimizin onuruna ve hakkına özen göstermemizi ister. Evlilikte emanet bilinci, bir insanın mülkü olduğu düşüncesinden uzaklaşarak onunla adalet ve saygı içinde yaşamaya çağırır.
+
+Evdeki güven, kişinin ihtiyacını çekinmeden anlatabilmesine alan açar. Bir çocuk kırılan oyuncağını elinde tutup bize gelir. Önce ne olduğunu dinleyelim. Eşyayı nasıl koruyacağını öğretirken kendisini de koruyalım. Hatasını anlatabilen çocuk, doğruyu öğrenmek için bize yaklaşabilir.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Evde emaneti görünür kılalım</strong> Aynı sorumluluk, aile hayatında farklı görevlerle karşımıza çıkar.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Eşler arasında</dt><dd>Ortak kararları ve üstlenilen işleri açıkça konuşalım.</dd></div>
+<div><dt>Çocukla ilişkide</dt><dd>İhtiyacını dinleyelim; güvenliğini ve onurunu gözetelim.</dd></div>
+<div><dt>Büyüklerimizle</dt><dd>Yardımı onların rızası ve tercihleriyle sürdürelim.</dd></div>
+</dl>
+</figure>
+
+Eşimiz hastaneye gidecekse çocuk bakımını kimin üstleneceğini önceden belirleyelim. İş bölümü açık olduğunda herkes ihtiyacını daha rahat karşılar. Birimizin yorgunluğunu diğeri fark etsin. Üstlendiğimiz işin takibini de üstlenelim; yükün sürekli aynı kişiye dönmesini önleyelim.
+
+Yaşlı bir yakınımız hesabında yardım istiyorsa kararlarını kendisine anlatalım. Okuma veya işitme güçlüğünü, onun adına sınırsız karar alma izni saymayalım. Gerekli desteği rızasıyla düzenleyelim. İnsanın kendi hayatındaki söz hakkını korumak, bakımın içindeki emanettir.
+
+Bir çocuk veya yetişkin zarar gördüğünü anlatıyorsa güvenliğini önceleyelim. Sakinlikle dinleyip uygun destek ve yetkili yardım imkânına ulaşmasını kolaylaştıralım. Aile mahremiyetini koruma gayreti, mağdurun korunmasıyla birlikte yürüsün. Yardım isteyebilmek için ona ulaşılabilir olalım.
+
+Evimizde bir kişinin özel eşyasını kullanırken de aynı dikkati sürdürelim. Çocuğumuzun defterini, eşimizin çantasını, büyüğümüzün belgesini elimize aldığımızda kullanım sınırını gözetelim. Yardım etmek için verdiği izin, başka işlere kendiliğinden uzanmaz. Ailede yakınlık, birbirimizin hakkını daha dikkatle korumaya vesile olsun.
+
+Bakım görevini devralırken yapılacak işi öğrenelim. Büyüğümüz randevusuna kiminle gidecek, çocuk ders çıkışında kim tarafından karşılanacak, evde bekleyen kişi nasıl haberdar edilecek? Bu ayrıntıları konuşmak, günlük hayatı rahatlatır. Unuttuğumuz bir görev olduğunda gecikmeden açıklayıp telafi edelim. Sakin ve açık bir düzen, ailedeki her insanın ihtiyacını görünür kılar.
+
+**Evde emanete sadakat, her insanın hakkını ve güvenliğini özenle gözetmektir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="ortak-emanet" tabindex="-1">IX. Ortak kaynaklar: Hesabı açık bir iyilik</h2>
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Görevle gelen hediye</p>
+
+Ebû Humeyd es-Sâidî anlatıyor: Efendimiz (s.a.s.), İbnü’l-Utbiyye’yi zekât toplamakla görevlendirmişti. Görevli dönüşünde, “Bu sizin, bu da bana hediye edildi” dedi. Peygamberimiz minbere çıktı; Allah’a hamd ve senâ ettikten sonra, görevlinin böyle bir ayrım yapmasını sorguladı. Hediyenin kendisine hangi sebeple geldiğini düşünmeye çağırdı.
+
+(Buhârî, 7174; sahih rivayetin ilgili kısmının anlam özeti.)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَهَلاَّ جَلَسَ فِي بَيْتِ أَبِيهِ وَأُمِّهِ فَيَنْظُرُ أَيُهْدَى لَهُ أَمْ لاَ</p>
+
+*Babasının ve annesinin evinde otursaydı da kendisine hediye verilip verilmeyeceğini görseydi ya!* (Buhârî, 7174; rivayetten bölüm)
+
+Dernek kasası, bağış kutusu ve ortak hesap, bize bırakılan emanettir. Gönüllü görevimiz sırasında gelen bir “hediye”yi de bu ölçüyle değerlendirelim: Bu görevimiz olmasa yine gelir miydi? Kişisel malımızla ortak kaynağın sınırını açık tutalım. Camideki yardım zarfının hangi amaçla verildiğini öğrenip bağışı o amaca ulaştıralım. Değişiklik gerekiyorsa bağışın şartını gözeterek izin ve açıklama sağlayalım.
+
+Raflarda bekleyen erzak paketlerini gözümüzün önüne getirelim. Her paketin arkasında bir emek vardır; önünde de ihtiyacını karşılamayı bekleyen bir insan. Teslimde bir paketin unutulması veya kaydın karışması birinin hayatına değebilir. Düzenli kayıt, böyle bir hakkı korumaya yardım eder.
+
+Geliri ve gideri anlaşılır biçimde kaydedelim. Teslimi uygun şekilde teyit edelim. Görev değiştiğinde hesabı ve belgeleri yeni sorumluya devredelim. Yardım alanın özel bilgilerini korurken ortak kaynağın nasıl kullanıldığını açıklayabiliriz. Şeffaflıkla mahremiyetin her ikisi de yerini bulsun.
+
+Hesap sorana sakinlikle cevap vermek, hizmetin güvenini büyütür. Soruyu hemen kişisel itham olarak algılamak yerine belgeyi birlikte inceleyelim. Hata varsa düzeltelim. Böyle bir düzen, gönüllü çalışanı da hak sahibini de korur. İyilik, insanların sorularına açık kalabilsin.
+
+Güvenilir emanetçi, görevinden ayrıldığında arkasında anlaşılır bir iz bırakır. Hizmet onun yokluğunda da devam eder. Yeni gelen kişi neyi, nasıl yapacağını öğrenebilir. Teslim edilen tutarı ve henüz tamamlanmamış işi birlikte kontrol edelim. Yetkisi değişen insanın erişimini de yeni göreve göre düzenleyelim. Böylece hizmetin sürmesi, tek bir kişinin hafızasına veya sürekli hazır bulunmasına bağlı kalmaz.
+
+**Ortak iyiliğin bereketi, emaneti eksiksiz ulaştıran ve hesabını açıklayan ellerle korunur.**
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/guven-toplumu/emanet-hizmeti.svg" width="1600" height="900" alt="Bir depoda düzenli erzak paketleri, denge terazisi ve boş kayıt fişleri." loading="lazy" decoding="async">
+<figcaption><strong>İyiliği eksiksiz ulaştırmak</strong> Ortak emanet, düzenli takip ve özenle sahibine ulaşır.</figcaption>
+</figure>
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="guveni-onarmak" tabindex="-1">X. Zedelenen güveni onarmak: İadeden sürekliliğe</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَٱتَّقُوا۟ ٱللَّهَ مَا ٱسْتَطَعْتُمْ</p>
+
+*Gücünüz yettiğince Allah’a saygısızlıktan sakının.* (Tegābün, 64/16; âyetten bölüm)
+
+Güveni zedeleyen bir davranışımız olduysa ilk adım bugün yapabileceğimiz düzeltmedir. Tegābün sûresindeki çağrı, bütün imkânımızla Allah’a karşı sorumluluğumuzu gözetmeye yöneltir. Ertelemek yerine elimizdeki hakkı sahibine ulaştırmaya başlayalım. Rabbimizin rahmetini umarak sorumluluğumuzu yerine getirelim.
+
+<blockquote class="vaaz-alinti">
+<p>Müminlerden başkası Allah’tan korkmaz, münafıklardan başkası da kendini emniyette hissetmez</p>
+<footer>— Hasan-ı Basrî’den nakil; TDV İslâm Ansiklopedisi, Münafık, 1. bölüm; Buhârî, Îmân, 36’ya atıf.</footer>
+</blockquote>
+
+Hasan-ı Basrî’nin bu sözü, davranışını hesaba katmadan kendini kusursuz görme rahatlığına karşı bir uyarıdır. Rabbimizin merhametine güvenerek kendi kusurumuzu fark edelim. Bize duyulan güveni, “Bana kimse bir şey soramaz” duygusuna dönüştürmekten sakınalım. Muhasebe, yeniden doğrulmaya yardım etsin.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Zarar ve sorumluluk ölçüsü</p>
+
+Korunmak üzere bırakılan eşya, sahibinin izni çerçevesinde muhafaza edilir ve istendiğinde iade edilir. Emanetçinin kusuru veya sınırı aşmasıyla oluşan zarar tazmin sorumluluğu doğurur. Kusuru bulunmadan meydana gelen kayıp ise her durumda aynı hükme bağlanmaz. Somut ihtilafta olayın şartları ehil birine anlatılarak hak belirlenir.
+
+(TDV İslâm Ansiklopedisi, Vedîa; Vedîanın Şartları ve Hükmü, Vedîada Tasarruf, Vedîanın Tazmini.)
+
+Korunması için bize bırakılan bisikletin çizilen kadrosu elimizde duruyor. Sahibine durumu açıkça anlatabilir, sorumluluğumuzu belirleyip giderebiliriz. Düzeltmenin ardından aynı özeni sürdürmek gerekir. Yeniden güvenmek için zamana ihtiyaç duyan insanın sınırına saygı gösterelim. Bundan sonraki teslimlerde şartları baştan konuşalım. Koruma tedbirini güçlendirelim. Hakkını teslim ettiğimiz insan, davranışımızdaki değişikliği zaman içinde görebilsin. Onarım sabırlı bir gayret ister.
+
+### Onarımın somut adımları
+
+- **Açıkça bildir:** Neyin aksadığını hak sahibine doğru anlat.
+- **Hakkı yerine getir:** İade ve zarar giderme sorumluluğunu belirleyip uygula.
+- **Takibi sürdür:** Yeni düzeni zaman içinde tutarlı davranışla koru.
+
+**Güvenin onarımı, hakkı sahibine vermekle başlar ve tutarlı davranışla sürer.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Yedi söz: Güven bugün bizimle başlasın</h2>
+
+**Muhterem Müslümanlar! Dinlediğimiz ölçüler, bu hafta bir davranışımıza yön versin.**
+
+Çıkarken ayakkabılarımızı giyip günlük işlerimize döneceğiz. Emanet ahlâkının asıl uygulaması orada başlayacak. Birimiz bakım sorumluluğunu paylaşacak; birimiz teslim tarihini hatırlayacak. Herkes imkânına uygun bir adım seçsin. Şu yedi sözden bize düşeni bugün takvimimize yazalım.
+
+**EMANET AHLÂKI İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta elimdeki bir emaneti sahibine teslim edeceğim.</strong> Eşya veya belgeyi uygun biçimde iade ederek bekleyen hakkı yerine getireceğim.</li>
+<li><strong>Üstlendiğim bir görevin sınırlarını bu hafta açıklığa kavuşturacağım.</strong> Ne yapacağımı ve ne zaman tamamlayacağımı ilgili kişiyle konuşacağım.</li>
+<li><strong>Bilmediğim bir iş için ehil birinden yardım isteyeceğim.</strong> Öğrenme ihtiyacımı söyleyerek görevin güvenle yapılmasına katkı vereceğim.</li>
+<li><strong>Aksayabilecek bir anlaşmam için bekletmeden haber vereceğim.</strong> Karşı tarafın rızasıyla uygulanabilir bir çözüm belirleyeceğim.</li>
+<li><strong>Ailemde paylaştığım bir sorumluluğu bu hafta eksiksiz yerine getireceğim.</strong> Bakım veya günlük işte üzerime aldığım görevi kendim takip edeceğim.</li>
+<li><strong>Yürüttüğüm ortak işin kaydını bu hafta gözden geçireceğim.</strong> Eksik bilgiyi tamamlayarak hesabın ve devrin anlaşılır olmasını sağlayacağım.</li>
+<li><strong>Zedelediğim bir güven için bu hafta düzeltme adımı atacağım.</strong> Hak sahibiyle uygun yoldan görüşüp iade veya zararın giderilmesini başlatacağım.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bu hafta güvene katkımız</strong>Uygun adımı seçelim; gününü belirleyip yerine getirelim.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Emaneti sahibine ulaştır</strong></li>
+<li><span aria-hidden="true">2</span><strong>Görevini açıkça belirle</strong></li>
+<li><span aria-hidden="true">3</span><strong>Ehline danış, öğren</strong></li>
+<li><span aria-hidden="true">4</span><strong>Vaktinde haber ver</strong></li>
+<li><span aria-hidden="true">5</span><strong>Payına düşeni tamamla</strong></li>
+<li><span aria-hidden="true">6</span><strong>Kaydı açık tut</strong></li>
+<li><span aria-hidden="true">7</span><strong>Hakkı yerine getir</strong></li>
+</ol>
+</figure>
+
+Bu sözleri ailemizle veya birlikte çalıştığımız insanla konuşabiliriz. İmkânımız sınırlıysa yapabileceğimiz küçük bir işi seçelim. Elimizde ortak kaynak bulunmuyorsa, bir grup çalışmasının görev kaydını açıklığa kavuşturalım. Önemli olan, seçtiğimiz adımın gerçekten bir hakkı korumasıdır.
+
+Seçtiğimiz sözün yanına bir gün ve bir saat yazalım. Emaneti teslim edeceksek sahibine haber verelim. Bir kaydı düzelteceksek gereken belgeyi hazırlayalım. Yardım isteyeceksek kime danışacağımızı belirleyelim. Böylece gönlümüzdeki karar, yapılacak işe dönüşür. Adımı attığımızda sonucu ilgili insana bildirelim; onun da bekleyişi sona ersin.
+
+Bir hafta sonra ailemizle bu gayreti değerlendirebiliriz. Çocuklarımız da yaşlarına uygun bir sorumluluğa katılabilir. Kütüphaneden aldığı kitabı vaktinde geri veren çocuk, emaneti uygulayarak öğrenir. Bir büyüğümüz de telefonla yapabileceği bir takibi üstlenebilir. İyiliği imkânımız ölçüsünde paylaşalım. Emanet ahlâkı, her kuşağın katkısıyla günlük hayatımıza yerleşsin.
+
+Sözümüzün takibini yaparken her şeyi tek başımıza taşımaya çalışmayalım. Bir arkadaşımızla hatırlatıcı bir düzen kurabiliriz. Yapabileceğimiz yardımın sınırını baştan söyleyebiliriz. Aynı gün birden çok görev üstlendiysek önceliğini konuşabiliriz. Emaneti güzel taşımak, kendi vaktimizi de dürüstçe planlamayı ister.
+
+Yapılan iyiliği anlatırken hak sahibinin mahremiyetini gözetelim. Bir emaneti yerine getirmek için alkışa ihtiyaç duymayalım. İşi tamamladığımızı bilmesi gereken kişiye bildirelim. Allah’ın rızasını umarak hizmeti sürdürelim. Sessizce koruduğumuz bir hak, hayatımızdaki sadakatin kıymetli bir işareti olabilir.
+
+Akşam olduğunda kendimize sakin bir soru soralım: Bugün bana güvenen birinin işini kolaylaştırdım mı? Cevabımız eksikse yarın düzeltelim. Gayretimizi sürdürelim. Başkasının gönül rahatlığı, bize verilmiş güzel bir hizmet fırsatıdır.
+
+**Güven toplumu, emaneti koruyan ve işini ehliyetle yapan insanlarla kurulur.** Duamız bu gayretin kuvveti olsun. **Güvene verdiğimiz sözü, bu hafta yerine getirdiğimiz bir işle doğrulayalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Sadakati kalbimize ve işimize yerleştir</h2>
+
+**Kıymetli kardeşlerim! Emaneti güzel taşıyabilmek için Rabbimize yönelelim.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًا وَتَوَفَّنَا مُسْلِمِينَ</p>
+
+*Ey Rabbimiz! Bize sabırlar ver ve Müslüman olarak canımızı al!* (A‘râf, 7/126; âyetten bölüm)
+
+Allah’ım! Emaneti korumayı kalbimize sevdir. Bizi insanların gönül rahatlığıyla güvenebildiği kullarından eyle. Üstlendiğimiz sorumluluğu hakkıyla yerine getirecek bilgi, güç ve sabır ver. Bilmediğimizi öğrenmeyi, yetmediğimiz yerde yardım istemeyi bize kolaylaştır.
+
+Rabbimiz! Ailelerimize huzur ihsan eyle. Eşlerimizin hakkını gözetmeyi, çocuklarımızın güvenliğini korumayı, büyüklerimizin rızasını ve onurunu gözetmeyi nasip eyle. Yalnız kalanların yanında hayırlı insanlar var eyle. Yeni Müslüman olan kardeşlerimizin adımlarını kolaylaştır.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ</p>
+
+*Rabbimiz! Günahlarımızı bağışla, kötülüklerimizi ört ve canımızı iyilerle beraber al.* (Âl-i İmrân, 3/193; âyetten bölüm)
+
+Allah’ım! Gençlerimize ilim, basiret ve hayırlı hizmet imkânları ver. Cemaatimizin ortak emanetlerini koruyanlara kolaylık ihsan eyle. Hatalarımızı fark edip düzeltmeyi, üzerimizdeki hakları sahibine ulaştırmayı bize nasip eyle. Zarar görenlerin hakkını ve güvenliğini korumamıza yardım eyle.
+
+Rabbimiz! Hastalarımıza şifa, onların bakımını üstlenenlere kuvvet ver. Hastane koridorunda bekleyenlere gönül ferahlığı ihsan eyle. Engelli kardeşlerimize ihtiyaçlarına uygun imkânlar lütfeyle. Vefat edenlerimize rahmet eyle. Yaşadığımız Belçika’ya ve bütün beldelere huzur ver. Komşularımızla güven ve adalet içinde yaşamayı, mazlumlara yardım etmeyi bize nasip eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada iyilik ve âhirette iyilik ver. Bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Allah’ım! Niyetimizi hâlis, işimizi bereketli eyle. Gönüllerimizi sadakatle birleştir. **Emaneti gözeten bir hayatı imanla tamamlamayı bize nasip eyle.** Âmin. Velhamdü lillâhi Rabbi’l-âlemîn. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler belirtilmiştir. Hadis lafızları yerel derlemeden doğrulanmıştır. Gündelik Avrupa sahneleri temsilîdir. İlmî çerçeve ve tashihler RAPOR.md dosyasındadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>İman ve güven: <a href="https://quran.com/23/8">Mü’minûn 23/8</a>; <a href="https://sunnah.com/tirmidhi:2627">Tirmizî 2627</a>.</li>
+<li>Emanetin alanları: <a href="https://quran.com/8/27">Enfâl 8/27</a>.</li>
+<li>Hıyanet ve nifak: <a href="https://sunnah.com/bukhari:34">Buhârî 34</a>.</li>
+<li>Görev ve ehliyet: <a href="https://quran.com/4/58">Nisâ 4/58</a>; <a href="https://sunnah.com/bukhari:59">Buhârî 59</a>.</li>
+<li>Yeterlilik ve sorumluluk: <a href="https://quran.com/28/26">Kasas 28/26</a>; <a href="https://sunnah.com/muslim:1825">Müslim 1825</a>.</li>
+<li>Anlaşmalara sadakat: <a href="https://quran.com/16/91">Nahl 16/91</a>.</li>
+<li>Herkes için güven: <a href="https://sunnah.com/bukhari:4380">Buhârî 4380</a>.</li>
+<li>Ailede emanet: <a href="https://sunnah.com/muslim:1218a">Müslim 1218a</a>.</li>
+<li>Ortak emanet: <a href="https://sunnah.com/bukhari:7174">Buhârî 7174</a>.</li>
+<li>Güveni onarmak: <a href="https://quran.com/64/16">Tegābün 64/16</a>.</li>
+<li>Hatim duası: <a href="https://quran.com/7/126">A‘râf 7/126</a>; <a href="https://quran.com/3/193">Âl-i İmrân 3/193</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>.</li>
+<li>İlmî çerçeve: <a href="https://islamansiklopedisi.org.tr/emanet">TDV İslâm Ansiklopedisi — Emanet</a>.</li>
+<li>Kavram ve yorum: <a href="https://islamansiklopedisi.org.tr/munafik">TDV İslâm Ansiklopedisi — Münafık</a>.</li>
+<li>Fıkıh ölçüsü: <a href="https://islamansiklopedisi.org.tr/vedia">TDV İslâm Ansiklopedisi — Vedîa</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

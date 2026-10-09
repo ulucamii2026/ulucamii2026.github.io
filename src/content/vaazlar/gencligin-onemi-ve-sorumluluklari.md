@@ -1,178 +1,462 @@
 ---
-baslik: "Gençliğin Önemi ve Sorumlulukları"
-ozet: "Sevgili Gençler, Allah’ın selamı rahmeti bereketi hepinizin üzerine olsun! Bugün burada sizlerle bir araya geldik. Bu etkinlikte, gençlerimizin İslam'a olan…"
-kategori: siyer
-kelime: 3738
+baslik: "Gençliğin Sorumlulukları: İlimden Mesleğe, Yuvadan Hizmete"
+ozet: "Ashâb-ı Kehf’in imanından ilhamla gençliğin sorumlulukları: güvenilir bilgi, ehil bir meslek, aile hayatına hazırlık ve topluma hizmet. Gençlerle büyükleri buluşturan yedi somut adım."
+kategori: toplum
+kelime: 3951
+docx: "/vaazlar/gencligin-onemi-ve-sorumluluklari.docx"
 pdf: "/vaazlar/gencligin-onemi-ve-sorumluluklari.pdf"
+kapak: "/media/vaazlar/gencligin-onemi-ve-sorumluluklari/kapak-og.webp"
+kapakAlt: "Bir okul avlusunda kitap, iş eldiveni ve yardım kolisinin çevresinde arkadan görülen genç siluetleri."
 ---
-Sevgili Gençler, Allah’ın selamı rahmeti bereketi hepinizin üzerine olsun! Bugün burada sizlerle bir araya geldik. Bu etkinlikte, gençlerimizin İslam'a olan bağlılığını artırmak ve sorumluluklarını anlamalarına yardımcı olmak için bir araya geldik. Biliyorum ki, genç olmak zorlu bir dönemdir. İçinde bulunduğunuz bu dönemde, birçok değişim yaşayacaksınız ve kendinizi keşfetmeye çalışacaksınız. Ancak, İslam dininin size sunduğu değerleri ve öğretileri anlayarak, kendinizi daha iyi bir insan olarak yetiştirebilirsiniz. Gençliğinizin kıymetini bilmelisiniz. Sizler, geleceğimizin teminatısınız ve İslam dininin yayılmasında büyük bir rol oynayacaksınız. Bu nedenle, İslam'a olan bağlılığınızı güçlendirmelisiniz. İslam, bizlere doğru yolu gösteren ve hayatımızda bize rehberlik eden bir din olarak öğretilir. Bu yüzden, İslam dinine olan bağlılığınızı artırmak için Kur'an-ı Kerim'i okumalı, namaz kılmalı, oruç tutmalı ve zekât vermeliyiz. Ayrıca, gençliğinizin sorumluluklarını da anlamalısınız. İslam dinine olan bağlılığınız, sadece kişisel bir sorumluluk değildir. Aynı zamanda, toplumunuzda ve dünyada yaşayan diğer Müslümanlar için de bir sorumluluktur. İslam'a olan bağlılığınızı artırmak, sizleri daha güçlü, daha dayanıklı ve daha yardımsever bir insan yapacaktır. Gençler, sizlerin hayatınızda İslam'ın ne kadar önemli olduğunu anlamak ve ona bağlılığınızı artırmak için bu etkinliği düzenledik. İslam, sadece dini bir inanç değil, aynı zamanda bir yaşam tarzıdır. İslam, bizlere insanlarla nasıl ilişki kurulacağı, toplumda nasıl yer alınacağı, doğruyu ve yanlışı nasıl ayırt edeceğimizi öğretir. İslam, bizi iyilik yapmaya, hoşgörülü ve saygılı olmaya teşvik eder. Bu nedenle, gençlerimiz olarak, İslam'ın öğretilerini anlamalı ve onları hayatımızda uygulamalıyız. İslam'a olan bağlılığımızı güçlendirerek hem kendimizi hem de etrafımızdaki insanları daha iyi bir hale getirebiliriz. Ayrıca, İslam dininin bizlere verdiği değerleri ve öğretileri anlamak için, kendimizi eğitmemiz gerektiğini unutmamalıyız. Kur'an-ı Kerim, İslam dininin temel kaynağıdır ve İslam dininin öğretilerini anlamak için onu okumalıyız. Ayrıca, Peygamber Efendimiz'in hayatını ve öğretilerini öğrenmek de önemlidir. İslam dininin önemli bir parçası da birlik ve beraberliktir. İslam, birbirimize saygı duymayı ve yardımlaşmayı öğretir. Bu nedenle, bizler de birbirimize destek olmalı ve birlikte hareket etmeliyiz. Gençler, İslam dinine olan bağlılığınız, sadece bugün için değil, geleceğiniz için de önemlidir. İslam dininin öğretilerini anlayarak, kendinizi ve çevrenizi daha iyi bir hale getirebilirsiniz. İslam'a olan bağlılığınızı artırmak, sizi daha güçlü, daha dayanıklı ve daha hoşgörülü bir insan yapacaktır. Bugün burada, sizlerle bir araya gelerek vaktimizin önemini ve vaktimizi iyi ve güzel işlerde harcamamızın önemini konuşacağız. Vakit, hayatımızın en önemli kaynaklarından biridir. Zamanımızın nasıl kullanıldığı, hayatımızın kalitesini etkiler. Bu nedenle, zamanımızı iyi ve güzel işlerde harcamalıyız. Allah'ın bize bahşettiği bu hayatın değerini anlamalı ve hayatımızı anlamlı kılmak için vaktimizi iyi kullanmalıyız. İyilik yapmak, sevdiklerimizle vakit geçirmek, öğrenmek, kendimizi geliştirmek ve Allah'ın emirlerini yerine getirmek için vakit ayırmalıyız. Ayrıca, zamanımızı harcarken seçici olmalıyız. Zamanımızı, boş yere harcayacak aktivitelerden kaçınmalı ve onun yerine hayatımızı geliştirecek işlere yönelmeliyiz. İslam dininde de vakit kaybetmekten kaçınmamız gerektiği öğretilir. Hayatımızda birçok fırsat sunulduğunda, bizler de bu fırsatları en iyi şekilde değerlendirmeliyiz. İyilik yapmak, topluma faydalı olmak ve Allah'ın hoşnutluğunu kazanmak için zamanımızı iyi kullanmalıyız. Bugün burada, zararlı alışkanlıklardan korunmanın önemini konuşacağız. Bu alışkanlıklar, bizim hayatımızı olumsuz etkiler ve bizi hem fiziksel hem de psikolojik olarak zararlı hale getirebilir. Zararlı alışkanlıkların birçok çeşidi vardır. Bunlar arasında sigara, alkol, uyuşturucu, kumar ve internet bağımlılığı yer alır. Bu alışkanlıklar, hayatımızı olumsuz etkiler ve bizi geleceğimizden mahrum bırakabilir. Sigara içmek, özellikle de düzenli olarak içmek, sağlık açısından son derece zararlıdır. Sigara, akciğer kanseri, kalp rahatsızlıkları ve diğer birçok hastalığa neden olabilir. Aynı şekilde, alkol ve uyuşturucu kullanımı da fiziksel ve zihinsel sağlık açısından ciddi zararlara neden olabilir. Kumar oynamak, diğer alışkanlıklardan farklıdır ancak yine de zararlıdır. Kumar bağımlılığı, maddi sıkıntılara neden olabilir ve sosyal hayatımızı etkileyebilir. İnternet bağımlılığı da sosyal ve akademik yaşamımızı olumsuz etkileyebilir. Bu zararlı alışkanlıklardan korunmak için, bilinçli bir şekilde hareket etmeliyiz. Kendimizi bu tür alışkanlıklardan korumak için doğru kararlar vermemiz gerekiyor. Bunun için öncelikle bilinçli olmalıyız. Bu zararlı alışkanlıkların sağlığımıza ve yaşamımıza neden olabileceği zararları anlamalıyız. Ayrıca, sosyal çevremizi de dikkatle seçmeliyiz. İyi arkadaşlar edinmek, bizim hayatımızı olumlu yönde etkileyebilir ve bu tür alışkanlıklardan uzak durmamıza yardımcı olabilir. Kendimize güvenmeli ve olumlu bir tutum sergilemeliyiz. Bu etkinlikte sizlerle bir araya gelmemiz, İslam dininin birbirimize olan bağlarımızı güçlendirdiğini ve bir arada yaşamayı nasıl öğrettiğini gösterir. Bu etkinliğe katıldığınız için teşekkür ederim ve İslam dinine olan bağlılığınızın artmasına yardımcı olacağına inanıyorum. Sohbetimizin devam eden kısmında ayet ve hadislerle devam etmek istiyorum. Ayrıca Sahabi efendilerimizin hayatından örneklere bakacağız. Gençlik ile ilgili ayet ve hadisler
 
-## Gençlik Nimetinin Kıymetini Bilmek
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/gencligin-onemi-ve-sorumluluklari/kapak.svg" width="1600" height="900" alt="Bir okul avlusunda kitap, iş eldiveni ve yardım kolisinin çevresinde arkadan görülen genç siluetleri." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Bir hayatın hazırlığı</strong> Öğrenilen bilgi, emekle ve hizmetle hayata karışır.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">ِثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنْ النَّعِيم</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#imanla-yon">İmanla yön bulmak</a></li>
+<li><a href="#ilim">Öğrenmek ve yaşamak</a></li>
+<li><a href="#musab">İlimden hizmete</a></li>
+<li><a href="#meslek">Ehil bir meslek</a></li>
+<li><a href="#vakit">Vakti düzenlemek</a></li>
+<li><a href="#evlilik">Yuvaya hazırlanmak</a></li>
+<li><a href="#hizmet">Fayda veren hizmet</a></li>
+<li><a href="#guven">Gençlere güvenmek</a></li>
+<li><a href="#gurbet">Gurbette yol arkadaşlığı</a></li>
+<li><a href="#yeniden">Yeniden başlama cesareti</a></li>
+<li><a href="#yedi-soz">Hayata taşınan yedi söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve cemaat niyazı</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Geleceğin eşiğinde</h2>
 
-Sonra o gün nimetlerden mutlaka sorulacaksınız. (Tekasür, 102/8)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Resulullah buyurdu ki:
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-<p lang="ar" dir="rtl" class="ayet">ِنِعْمَتَان ُمَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ اَلص ِحَّةُ وَالْفَرَاغ</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-İki nimet vardır ki insanlardan çoğu bu konuda aldanmıştır: «Sağlık ve boş zaman»
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashâbına salât ve selâm olsun.* (serbest dua lafzı)
 
-Resulullah buyurdu ki:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا</p>
 
-<p lang="ar" dir="rtl" class="ayet">َاِغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ: شَبَابَكَ قَبْلَ هَرَمِكَ وَصِحَّتَكَ قَبْلَ سَقَمِكَ وَغِنَاءَكَ قَبْل َفَقْرِك َوَفَرَاغَكَ قَبْلَ شُغْلِكَ وَحَيَاتَكَ قَبْلَ مَوْتِك</p>
+*Rabbimiz! Bize katından rahmet ver ve içinde bulunduğumuz durumda bize doğru yolu göster.* (Kehf, 18/10; âyetten bölüm)
 
-Beş şey gelmeden, beş şeyi ganimet bil:
+**Aziz cemaat! Sevgili gençler ve onların yolunu dua ile gözeten kıymetli büyüklerimiz!**
 
-*   Yaşlılıktan önce gençliği,
-*   Hastalıktan önce sağlığı,
-*   Fakirlikten önce zenginliği,
-*   Meşguliyetten önce boş vakti
-*   Ölümden önce hayatı.
+Okul çıkışında omzunda çanta taşıyan bir gencin içinde kaç soru vardır? Hangi bölümü seçeceğim? Bir meslek edinebilecek miyim? İnancımı hayatıma nasıl taşıyacağım? Bir gün aile kurarsam o yuvaya ne vereceğim? Bu sorular, bir hayatın hazırlığıdır. Gencin cevaba ihtiyacı kadar, kendisini dinleyen bir insana da ihtiyacı vardır.
 
-Resulullah buyurdu ki:
+İçimizde üniversiteye hazırlanan, meslek eğitimi alan, işe başlayan ve yeniden bir yol arayan kardeşlerimiz var. Genç kızlarımızın da delikanlılarımızın da kabiliyetleri kıymetlidir. Engeli bulunan veya eğitimine ara vermiş bir gencimiz, bu hitabın içindedir. Her birinin yolu kendi imkânlarıyla açılır. Cemaat olarak o yolun yanında durabiliriz.
 
-<p lang="ar" dir="rtl" class="ayet">َِلَ تَزُولُ قَدَمُ ابْنِ آدَمَ يَوْمَ الْقِيَامَةِ مِنْ عِنْد ْرَب ِهِ حَتَّى يُسْأَلَ عَنْ خَمْسٍ، عَن عُمُرِهِ فِيمَ أَفْنَاهُ، وَعَنْ شَبَابِهِ فِيمَ أَبَْلَهُ، وَمَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَ أَنْفَقَهُ، وَمَاذَا َعَمِلَ فِيمَا عَلِم</p>
+Bugün gençliğin sorumluluğunu konuşurken Allah’ın verdiği imkânlara şükredeceğiz. Şükrümüzü öğrenmeye, çalışmaya ve paylaşmaya taşıyacağız. **Gençliğin bereketi, imanla öğrenmek, ehliyetle çalışmak ve insanlara fayda vermektir.**
 
-“Kıyamet gününde insan şu hususlarda sorgulanmadan, hesap meydanından ayrılamaz:
+Genç kardeşim! Şimdi bütün geleceğini çözmen gerekmiyor. Önündeki ilk doğru adımı seçebilirsin. Büyüklerimiz de gençlerin bugünkü sorularını ciddiye alsın. Onlara zaman, rehberlik ve görev sunalım. Namazdan sonra evimize dönerken bir gencin hayatına nasıl destek olabileceğimizi konuşalım.
 
-*   Ömrünü nerede tükettiğinden,
-*   Gençliğini nerede ve ne şekilde yıprattığından,
-*   Malını nereden kazandığından,
-*   Malını nerelere harcadığından
-*   Bildikleriyle amel edip etmediğinden.”
+**Geleceğe hazırlık, bugün atılan dürüst bir adımla başlar.**
 
-## Gençlik Döneminin Önemi
+---
 
-Gençlik dönemi; insan hayatının en önemli, en kritik ve en sorunlu dönemidir. Çünkü genç insan geleceğini bu dönemde kazanır, Eğitimini bu dönemde alır, işine ve mesleğine bu dönemde sahip olur. Kimliğini ve kişiliğini bu dönemde elde eder, İyi veya kötü alışkanlıkları, faydalı veya zararlı bilgileri bu dönemde edinir, yuvasını bu dönemde kurar. Temizlik, disiplinli ve düzenli çalışma, büyüklere saygı, hoşgörü, sabır ve yardımlaşma, Peygamber ve Allah sevgisi gibi güzel erdemler bu dönemde kazanılır ve sonraki dönemlere taşınır.
+<h2 class="vaaz-bolum-baslik" id="imanla-yon" tabindex="-1">I. Ashâb-ı Kehf: İmanla yön bulmak</h2>
 
-## Gençlikte Günahlardan Kaçınmak
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">نَّحْنُ نَقُصُّ عَلَيْكَ نَبَأَهُم بِٱلْحَقِّ ۚ إِنَّهُمْ فِتْيَةٌ ءَامَنُوا۟ بِرَبِّهِمْ وَزِدْنَـٰهُمْ هُدًى ۝١٣</p>
 
-Resulullah buyurdu ki:
+*Biz sana onların başından geçenleri gerçeğe uygun olarak anlatıyoruz. Hakikaten onlar Rablerine inanmış gençlerdi; biz de onların doğru yolda yürüyüşlerine katkıda bulunduk.* (Kehf, 18/13)
 
-<p lang="ar" dir="rtl" class="ayet">ِحُفَّتِ الْجَن ة ُ بِالْمَكارِهِ وَحُفَّتِ النَّارُ بِالشَّهَوَات</p>
+Kur’an-ı Kerîm gençleri imanlarıyla anıyor. Bize onların Rablerine yönelişini gösteriyor. Bir gencin değeri, elindeki imkânı hangi amaçla kullandığında görünür. Önünde duran ders kitabı da öğrendiği meslek de bu yönelişin içinde anlam kazanabilir. İman, yolumuzu belirleyen bir istikamettir.
 
-“Cennet zorluk ve meşakkatlerle, cehennem ise nefsani ve şehevi arzularla kuşatılmıştır”
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Mağarada korunan iman</p>
 
-Resulullah buyurdu ki:
+Ashâb-ı Kehf, Allah’ın birliğine inanan gençlerdi. İnançlarını dile getirdiler. Kavimlerinin baskısından korunmak için bir mağaraya sığındılar ve Rablerinden rahmetle doğru yöneliş istediler. Allah onları uzun bir uykudan sonra uyandırdı. Kıssa, Allah’ın vaadinin ve yeniden dirilişin hak olduğunu da gösterir.
 
-<p lang="ar" dir="rtl" class="ayet">ْيَا مَعْشَرَ الشَّبَابِ مَنِ اسْتَطَاعَ مِنْكُمُ الْبَاءَةَ فَل ِيَتَزَوَّجْ فَإِنَّهُ أَغَضُّ لِلْبَصَر ٌوَأَحْصَنُ لِلْفَرْجِ وَمَنْ لَمْ يَسْتَطِعْ فَعَلَيْهِ بِالصَّوْمِ فَإِنَّهُ لَهُ وِجَاء</p>
+Kur’an’ın anlattığı bu gençler, bize inancını sahiplenmenin ve Allah’a güvenmenin örneğini bırakır. Ayrıntılardan önce bu iman üzerinde duralım.
 
-“Ey gençler! Sizden evliliğe gücü yetenler evlensin. Çünkü evlilik gözü harama bakmaktan korur, kişiyi zinadan alıkoyar. Evlenmeye gücü yetmeyen kimseye oruç tutmasını tavsiye ederim. Çünkü orucun şehveti kıran bir gücü özelliği vardır.
+(Kehf, 18/9–26; Kur’an Yolu, Kehf 18/9–10 ve 18/13–16 tefsiri. Olayın özeti.)
 
-## Gençlik ve Kötü Alışkanlıklar
+Mağaranın taş duvarları içinde yükselen dua bize yakın gelir. Karar vermekte zorlandığımızda biz de Rabbimizin rahmetine muhtacız. Bir arkadaş grubu yanlış bir işe çağırdığında, doğru bildiğimizi sakinlikle söyleyebiliriz. Bir sınavda kopya fırsatı belirdiğinde, kendi emeğimize güvenebiliriz. İmanın kuvveti böyle seçimlerde hayatımıza ulaşır.
 
-Sevgili Gençler,
+Bu kıssadan aldığımız cesareti okulda, işte ve toplum içinde iyilik yapmaya taşıyalım. Farklı inançlardan insanlarla adalet ve karşılıklı saygı içinde yaşayalım. İnancımızı korurken ortak hayatın sorumluluğunu üstlenelim. Gençliğin sorusu şudur: Bugün Allah’ın razı olacağı hangi tercihi yapabilirim?
 
-Birçok genç, sigara, alkol veya uyuşturucu gibi zararlı maddelere ilgi duyuyor ve bu tür alışkanlıkların ne kadar zararlı olduğunu ilk başlarda anlamıyorlar. Bilimsel araştırmalar, 23-25 yaşına kadar bu tür alışkanlıklara başlamamanın riski önemli ölçüde azalttığını gösteriyor. Maalesef %37 gibi yüksek bir oran, gençlerin bu dönemde bu alışkanlıklara başladığını gösteriyor. Uyuşturucu tüccarları da maalesef gençleri hedef alıyor ve onları bu tür zararlı alışkanlıklara yönlendiriyorlar. Ancak sizler bu tuzaklara düşmeyin. Kendinizi ve geleceğinizi düşünün. Sağlıklı bir yaşam sürmek için zararlı alışkanlıklardan uzak durun.
+Gençler bir arada doğruyu destekleyebilir. Sınıfta aynı sınava hazırlanan iki arkadaş, birbirinin eksiğini tamamlayabilir. Arkadaşımızın hakkını korumak için konuşabiliriz. Zorlandığında yanına oturup kendisini dinleyebiliriz. Ashâb-ı Kehf’in birlikte Rablerine yönelişi, bize iyi bir arkadaşlığın da kıymetini hatırlatır. Yolumuzda doğruya çağıran dostlara yer açalım.
 
-## Gençliği İbadet ile Geçirmek
+**İmanla yön bulan genç, seçimini başkasının baskısına bırakmaz.**
 
-Peygamberimiz, gençlik döneminde Rabbine ibadet eden ve haramlardan uzak duran gençleri övmüştür.
+---
 
-Resulullah buyurdu ki:
+<h2 class="vaaz-bolum-baslik" id="ilim" tabindex="-1">II. İlim: Öğrenmek ve öğrendiğini yaşamak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">ُسَبْعَةٌ يُظِلُّهُمُ َّللاَُّ فِي ظِل ِهِ يَوْمَ َلَ ظِلَّ إَِلَّ ظِلُّهُ: اَْلِْمَام الْعَادِلُ، وَشَاب ،ِنَشَأَ فِي عِبَادَةِ رَب ِه ،ِوَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي الْمَسَاجِد ،ِوَرَجَُلَنِ تَحَابَّا فِي َّللاَِّ اِجْتَمَعَا عَلَيْهِ وَتَفَرَّقَا عَلَيْه ٍوَرَجُلٌ طَلَبَتْهُ اِمْرَأَةٌ ذَاتُ مَنْصِبٍ وَجَمَال ََّفَقَالَ إِن ِي أَخَافُ َّللا َوَرَجُلٌ تَص ََّدَّقَ أَخْفَى حَتَّى َلَ تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ، وَرَجُلٌ ذَكَرَ َّللا ُخَالِيًا فَفَاضَتْ عَيْنَاه</p>
+**Sevgili gençler! Önünüzdeki kitabın ilk sayfası, yeni bir imkânın başlangıcı olabilir.**
 
-"Allah, yedi sınıf insanı hiçbir gölgenin bulunmadığı kıyamet gününde (arşının) gölgesinde gölgelendirecektir. Bunlar:
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet"> ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ ۝١</p>
 
-*   Adil yöneticiler,
-*   Rabbine ibadet ile yetişen gençler,
-*   Kalbi mescitlere bağlı olanlar,
-*   Allah için birbirlerini seven, Allah için bir araya gelen ve Allah için ayrılan kimseler,
-*   Asil ve güzel bir kadın kendisini arzu ettiği halde 'ben Allah'tan korkarım' diyerek iltifat etmeyen kimseler,
-*   Sağ elinin verdiğini sol eli bilmeyecek kadar gizli sadaka verenler,
-*   Tenha yerlerde Allah'ı anıp gözyaşı dökebilenler.
+*Yaratan Rabbinin adıyla oku!* (Alak, 96/1)
 
-Resulullah buyurdu ki:
+Bu hitap, ilk vahyin Allah’a yönelten çağrısıdır. Kur’an’ı okuyalım, anlamını öğrenelim ve hayatımıza rehber edinelim. Namazımızı doğru kılacak bilgiyi edinelim. Helâl ile haramı, üstlendiğimiz işin hakkını ve insanlarla ilişkimizin ölçüsünü öğrenelim. Bilmediğimiz bir konuda güvenilir bir hocaya soru sormak, öğrenme yolunda sağlam bir adımdır.
 
-<p lang="ar" dir="rtl" class="ayet">ُإِنَّ هللاَ لَيَعْجَبُ مِنَ الشَّاب ِ لَيْسَتْ لَه</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
 
-Allah, gençliğini Allah'a itaatle (arzularının peşinden gitmeyen, haramlardan kaçınan) geçiren genci beğenir, sever”
+*Sizin en hayırlınız, Kur’an’ı öğrenen ve öğretendir.* (Buhârî, 5027; rivayetten bölüm)
 
-## İlk Müslüman Olan Genç Sahabeler
+Efendimiz (s.a.s.) öğrenmeyle öğretmeyi birlikte anıyor. Bir harfi doğru öğrenen kardeşimiz, o öğrenmenin sevincini başkasıyla paylaşabilir. Kendi bilgimizin sınırını da bilelim. Öğretmeye hazırlanırken ehil birinin kontrolünü isteyelim. Kaynağını bilmediğimiz bir sözü dinî hüküm diye yaymak yerine araştırıp soralım. Bu dikkat, ilme duyduğumuz saygıdır.
 
-Mekke’nin nüfuzlu ve refah içinde yaşayan ailelerine mensup gençler, İslam’a; yaşlılar, köleler, fakirler, kimsesiz ve zayıf kimselerin duydukları sempati ve ilgiden daha fazlasını göstermişlerdir. İslam’ı yayma konusunda Hz. Peygamber’e asıl destek ve yardımcı olanlar bu idealist gençlerdir. Nitekim ilk Müslümanlardan birkaç kişi, elli yaş civarında, birkaç kişi otuz beş yaşın üzerinde, geri kalan çoğunluk ise otuz yaşın altında bulunuyordu. Mesela genç yaşta İslam’ı kabul edenlerden Hz. Ali 10, Zeyd bin Harise 15, Abdullah bin Mes’ud ve Zübeyr bin Avvam 16, Talha bin Ubeydullah, Abdurrahman bin Avf, Erkam bin Ebi’l-Erkam ve Sa’d bin Ebi Vakkas 17, Mus’ab bin Umeyr 18-20, Abdullah bin Ömer 13, Cafer bin Ebi Talib 22, Osman bin Huveyris, Osman bin Affan, Ebû Ubeyde ve Hz. Ömer 25-31 arası. Bunların dışında genç yaşta İslam’ı kabul eden pek çok şahıs mevcuttur. Hz. Ali bin Ebi Talib- İslam'ın dördüncü halifesi ve Peygamber Efendimizin kuzeni ve damadıdır. İslam'ı genç yaşta kabul eden ilk kişiler arasındadır. Peygamber Efendimizin yanında yetişerek İslami ilimlerde büyük bir bilgi birikimine sahip olmuştur. Zeyd bin Harise: Peygamber arkadaşlarından biriydi ve aslen Yemen'in Kelb kabilesindendi. Genç bir çocukken kaçırıldı ve köle olarak satıldı, sahibi olan Hâkim tarafından Peygamberin eşi Hatice'ye hediye olarak verildi. Hatice de onu evlatlık olarak hazreti peygambere verdi. Zeyd, peygamberimizin sadık bir arkadaşıydı ve Uhud Savaşı ve Hendek Savaşı gibi birçok savaşa katıldı. İslam'ı kabul eden ilk insanlardan biriydi. Zeyd, hazreti peygamberin kuzeni Zeynab bint Cahş ile de dahil olmak üzere birkaç kez evlendi ve bu evlilikleri çalkantılı geçti. Boşandıktan sonra, Muhammed Zeynab'ı evlendi. Zeyd, Mu'tah Savaşı'nda öldü ve oğlu Usame, Muhammed'in yakın bir arkadaşı oldu. Abdullah bin Mes’ud: İslam'ı kabul eden ilk on kişiden biridir. Kâbe'de Kur'an okuyan ilk sahabi olarak da bilinir ve İslami ilimlerin kuruluşunda da öncü rol oynamıştır. Ahlak ve yaşayış bakımından Peygamberimize benzerliği ile tanınır. Yeni Müslümanların eğitiminde de görev almıştır. Peygamberimizin zamanındaki savaşlarda yer almış ve liderlik yetenekleri sebebiyle övülmüştür. Ayrıca mütevazı kişiliği ve başkalarına hizmet etme azmiyle tanınır. Zübeyr bin Avvam: İslam'ı kabul eden ilk sahabeler arasındadır ve Peygamber Efendimizin yakın arkadaşlarından biridir. Talha bin Ubeydullah: İslam'ı kabul eden ilk sahabeler arasındadır ve Peygamber Efendimizin yakın arkadaşlarından biridir. Abdurrahman bin Avf: İslam'ın ilk dönemlerinde yaşayan ve ilk Müslümanlardan biri olan sahabidir. Ticaretle uğraşan ve güzel ahlaklı biri olarak tanınan Abdurrahman, Hz. Peygamber ile birlikte savaşlara katılmış ve ensardan Sa'd b. Rebî' ile kardeşlik bağı kurmuştur. Halifeler Ebû Bekir, Ömer ve Osman dönemlerinde müsteşarlık ve hac emirliği görevlerinde bulunmuştur. Ayrıca büyük bir servet kazanmasına rağmen cömertliğiyle tanınmıştır. Abdurrahman, Hadis rivayeti konusunda titiz davranmış ve "orta derecede fetva veren sahâbîler"den biri olarak kabul edilmiştir. Medine'de vefat etmiş ve mezarı Siirt Pervari yöresindeki Yukarı Balcılar köyünde olduğuna inanılmaktadır. Erkam b. Ebü'l-Erkam, Mekke'nin zengin ailelerinden Benî Mahzûm'a mensup olan ilk Müslüman sahibidir. Hz. Peygamber'e sadakatle bağlanarak evini onun emrine verdi ve bu ev İslâm'ın merkezi haline geldi. Bedir, Uhud, Hendek gibi önemli gazvelere katıldı ve vahiy kâtipliği yaptı. Erkam, Medine'de vefat etti ve Ahmed b. Hanbel'in el-Müsned ‘inde bir hadisi bulunmaktadır. Sa'd bin Ebi Vakkas: Hz. Muhammed'in arkadaşlarından Sa'd b. Abi Vakkas, 592 yılında Mekke'de doğdu. Hz. Muhammed tarafından cennetle müjdelenen on sahabeden biriydi. Sa'd, güçlü ve cesur bir savaşçıydı ve İslam'ın erken dönemindeki çoğu savaşa katıldı. Halife Ömer döneminde önemli bir askeri komutandı. Sa'd, dürüstlüğü, cesareti ve İslam'a olan bağlılığıyla tanınıyordu. 271 adet hadis nakletti ve bunlardan bazıları en sahih hadis koleksiyonlarına dahil edildi. Akik Vadisi'nde 55/675 veya 54/678 yılında vefat etti. Mus'ab bin Umeyr: zengin bir ailenin çocuğu olarak doğdu ve ilk müminlerden biriydi. Ailesi İslam'a şiddetle karşı çıktığı için onu hapsettiler, ancak dininden vazgeçiremediler. Hz. Peygamber tarafından Medine'ye İslam'ı tebliğ etmek için gönderildi ve İslam tarihinde ilk muallim olarak kabul edildi. Mus'ab, etkili bir konuşmacı olarak tanınmıştı ve Üseyd b. Hudayr ve Sa‘d b. Muâz gibi tanınmış şahsiyetlerin ihtida etmesini sağladı. Uhud Gazvesi'nde sancaktarı olarak görev yaparken şehit düştü. Sahâbîler, onu daima anmışlardır ve Mus‘abü’l-hayr diye de anılmıştır. Abdullah bin Ömer: İslam'ı kabul eden ilk sahabeler arasındadır ve Peygamber Efendimizin yakın arkadaşlarından biridir. İslam'ın ilk savaşlarından birinde savaşmıştır ve İslami ilimlerde büyük bir bilgi birikimine sahiptir. Cafer bin Ebi Talib: Peygamber Efendimizin yakın akrabasıdır ve İslam 'ı kabul eden ilk sahabeler arasındadır. Mekke'den Medine'ye göç eden Müslümanların öncüleri arasında yer almıştır ve İslam'ın yayılmasında büyük rol oynamıştır. Osman bin Huveyris: İslam'ı kabul eden ilk sahabeler arasındadır ve Peygamber Efendimizin yakın arkadaşlarından biridir. İslam'ın ilk savaşlarından birinde savaşmıştır. Osman bin Affan: İslam'ın üçüncü halifesi ve Peygamber Efendimizin damadıdır. İslam'ı genç yaşta kabul eden önemli sahabeler arasındadır. Ebû Ubeyde: İslam'ı kabul eden ilk sahabeler arasındadır ve Peygamber Efendimizin yakın arkadaşlarından biridir. İslam'ın ilk savaşlarından birinde savaşmıştır ve İslam'ın yayılmasında büyük rol oynamıştır. Hz. Ömer bin Hattab: İslam'ın ikinci halifesi ve Peygamber Efendimizin yakın arkadaşlarından biridir. İslam'ı genç yaşta kabul eden önemli sahabeler arasındadır. İslami ilimlerde büyük bir bilgi birikimine sahiptir ve İslam devletinin kuruluşunda büyük rol oynamıştır. Bu sahabeler, İslam'ın ilk dönemlerinde büyük zorluklarla karşılaşmış ve İslam'ın yayılmasında büyük rol oynamışlardır. Peygamber Efendimiz'in yanında yetişmiş ve İslami ilimlerde büyük bir bilgi birikimine sahip olmuşlardır. İslam'ın yayılmasına öncülük etmiş ve İslam devletinin kurulmasında önemli görevler üstlenmişlerdir.
+<blockquote class="vaaz-alinti">
+<p>“İlmi dini yaşamak için, tıbbı bedenleri tedavi etmek için, nahvi de lisanı güçlendirmek için öğrenin”</p>
+<footer>— Hasan-ı Basrî; TDV İslâm Ansiklopedisi, Hasan-ı Basrî, Tahsin Görgün’ün ilim ve amel bölümü; İbnü’l-Cevzî’den nakil, s. 28.</footer>
+</blockquote>
 
-## İlk Müslüman Gençlerin İslam’a Hizmetleri
+Bu sözde nahiv, dil bilgisi demektir. Öğrenmenin insan hayatına ulaşan bir gayesi vardır. Hastanede insanı anlamak, atölyede sağlam iş yapmak, sınıfta bir çocuğa doğru anlatmak bilgi ister. Dinimizi öğrenirken mesleğimizin bilgisini de ciddiye alalım. Genç kızlarımızın ve delikanlılarımızın eğitimine birlikte destek verelim.
 
-Peygamberliğinin ilk yıllarında Hz. Peygamber’in Erkam’ın evindeki (Daru’l-Erkam) faaliyetlerinin önemli bir merhale teşkil ettiği görülmektedir. Bu ev, tebliğ faaliyeti için son derece elverişli idi. Kâbe haremine dahildi. Safa tepesinin eteğinde bulunuyordu. Hac ve umre maksadıyla dışarıdan gelenlerle dikkati çekmeden burada temas kurma imkânı vardı. Ayrıca Mekkeli Müslümanlar da Erkam’ın evine kolayca gelip gidebiliyorlardı. Hz. Peygamber burada bir yandan sahabeye dini bilgiler öğretiyor, diğer yandan İslam’a davet görevini yerine getiriyordu. Kur’an okunuyor, namaz kılınıyordu. Bu evdeki faaliyetler sonucu birçok kimse İslam’a girmiştir. Hz. Ömer burada Müslüman olanların sonuncusudur. Hz. Ali’nin kazandığı kahramanlıklarını 20 ilâ 30 yaşları arasında gerçekleştirmiştir. Gençlerin, Mekke döneminde İslam’ın Arap yarımadasının dışında tanınmasında da önemli faaliyetleri olmuştur. 25 yaşlarında iken Habeşistan’a hicret eden Cafer bin Ebi Talip’in, İslam’ı savunmak üzere Habeşistan hükümdarının, Hristiyan din adamlarının ve saray erkanının huzurunda yaptığı konuşma, edebi yönden ve muhteva açısından tarih kitaplarımızı süslemektedir. Dârü’l-Erkam’da iken Müslüman olan Mus’ab bin Umeyr, I. Akabe biatından sonra Hz. Peygamber tarafından Medine’ye öğretmen olarak gönderildi. O sırada 25 yaşlarında bir genç olan Mus’ab bin Umeyr ’in faaliyetleri sonucunda pek çok Medineli Müslüman oldu. Hepsinden önemlisi Üseyd bin Hudayr ve Sa’d bin Muaz gibi iki nüfuzlu kabile reisinin İslam’a girişini sağladı. Hz. Peygamber tarafından komşu hükümdar, emir ve Arap kabilelerine gönderilen mektupların çoğu genç yaştaki Zeyd bin Sabit’in kaleminden çıkmıştır. Keza komşu ülkelerden gelen mektupları tercüme etmek ve cevap yazmak için Hz. Peygamber’in emriyle İbranice ve Süryanice öğrenmiştir. İyi bir miras bölüştürücüsü olduğu için savaşlarda ele geçen ganimetlerin taksimine memur edilmiştir. Vahiy katipleri arasında yer almıştır. Hz. Peygamber vefat ettiğinde daha yaşı 21 civarında idi. Hz. Ebû Bekir döneminde Kur’an-ı Kerim’i cem ’eden komisyonun başkanı idi. Hz. Peygamber vahiy katiplerini genellikle gençler arasından seçmiştir. Gençlerin fetva vermesine müsaade etmiştir. Gençlerden öğretmenler tayin etmiştir. Gençleri çoğu yaşlı sahabilerden oluşan ordulara komutan tayin etmiştir. Çoğu savaşlarda sancağı bizzat kendisi gençlere vermiştir. Mesela Tebük seferinde sancağı Zeyd bin Sabit’e, Bedir’de Hz. Ali’ye, vermiştir. 18 yaşlarında olan Üsame bin Zeyd’i Suriye’ye gönderdiği orduya komutan tayin etmiştir.
+Her gün okumaya küçük bir vakit ayıralım. Defterin kenarına bir soru yazalım; cevabını ehline götürelim. Öğrendiğimiz bir şeyi uygulayalım. Bugün bilgiye açtığımız zaman, yarın insanlara vereceğimiz faydanın hazırlığı olsun.
 
-## Gençlerin Eğitimi
+**Bilginin bereketi, hayatımızı ve hizmetimizi güzelleştirmesinde görünür.**
 
-Resulullah buyurdu ki:
+---
 
-<p lang="ar" dir="rtl" class="ayet">ْأَكْرِمُوا أَوَْلَدَكُمْ، وَأَحْسِنُوا أَدَبَهُم</p>
+<h2 class="vaaz-bolum-baslik" id="musab" tabindex="-1">III. Mus‘ab: Öğrenilen ilmi hizmete taşımak</h2>
 
-Çocuklarınıza güzel davranıp iyilikte ve ikramda bulununuz, onları en güzel şekilde terbiye ediniz.
+Bir şehre öğretmen olarak gitmek, yanında insanların sorularına cevap verecek bir hazırlık taşımaktır. Mus‘ab b. Umeyr’in hayatında bu hazırlığın karşılığını görürüz. Peygamber Efendimiz (s.a.s.), gençlerin öğrenmesini önemseyerek onlara güvenmiş ve görev vermiştir. Bu güven, bize de gençlerle nasıl çalışacağımızı öğretir.
 
-## Gençliğimizi Tehdit Eden Unsurlar
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Medine’ye gönderilen öğretmen</p>
 
-### Özenti
+Mus‘ab b. Umeyr, ilk Müslümanlardandı. Ailesinin baskısına rağmen imanını korudu. Birinci Akabe Biatı’nın ardından, Medinelilerin isteği üzerine Resûlullah (s.a.s.) onu İslâm’ı anlatmak üzere Medine’ye gönderdi. Es‘ad b. Zürâre’nin evinde kaldı ve onun desteğiyle çalıştı.
 
-Günümüz gençliği için özenti duygusu, tüm hayat anlayışlarından uzaklaşarak büyük bir tehdit unsuru haline gelmiştir. Birçok gencimiz, futbolculardan, sanatçılardan, artistlerden ve şarkıcılardan özenerek hayat tarzlarını ve düşüncelerini taklit etmektedirler. Ancak, bizim kendi değerlerimize bağlı kalıp teknoloji, sanat, edebiyat, siyaset, sanayi ve diğer alanlarda da öncü olmamız mümkündür. Unutmayalım ki moda adı altında yapılanlar, batılılaşma hastalığının bir örneğidir.
+Kur’an bilgisi ve Peygamberimizin tebliğ tarzını kavraması, görevine hazırlık olmuştu. Üseyd b. Hudayr ve Sa‘d b. Muâz gibi kişilerin Müslüman olmasına vesile oldu. Bilgisini, insanların kendisine ihtiyaç duyduğu yerde kullandı.
 
-### Din ve Ahlak Eğitiminin Yetersizliği
+(Hüseyin Algül, Mus‘ab b. Umeyr, TDV İslâm Ansiklopedisi, c. 31, s. 226–227. Maddenin ilgili kısmının özeti.)
 
-Din ve ahlak, bizleri hem bu dünyada hem de Ahirette mutlu ve huzurlu bir hayata bağlayan, toplumu bir arada ve birbirine güvenle bağlayan en önemli değerlerimizdir. İslam dini, barış ve adaleti her şeyin üstünde tutarak, her türlü haksızlığa ve zulme karşı çıkar. Bu nedenle, toplumumuzda ve insanlık için faydalı bireylerin yetişmesi için gençlerimizin din ve ahlak eğitimine büyük önem vermemiz gerekmektedir.
+Mus‘ab’ın örneğinde ilimle görev birbirine bağlanır. Önce öğreniyor, sonra öğrendiğini ulaştırıyor. Bir büyüğünün desteğiyle yeni bir çevrede çalışıyor. Camimizde genç bir kardeşimize ders yardımcılığı verirken bu ölçüyü koruyabiliriz. Önce ona işi anlatalım. Hazırlığına yardım edelim. İlk uygulamada yanında duralım. Zamanla kendi sorumluluğunu üstlenmesini sağlayalım.
 
-### Zararlı Alışkanlıklar
+Yeni Müslüman olmuş bir kardeşimize bildiğimiz bir duayı açıklamak, bir çocuğun okuyuşunu hocasının verdiği ölçüyle tekrar ettirmek mümkündür. Dil bilen gencimiz, ders duyurusunu anlaşılır biçimde aktarmaya yardım edebilir. Her görev, kişinin bilgisi ve imkânıyla uyumlu olsun. Bilgimizin yetmediği soruyu ehline ulaştıralım. Güven böyle büyür.
 
-Zararlı alışkanlıklar, insanlar tarafından genç yaşta edinilir ve hayatlarını olumlu ya da olumsuz yönde etkileyebilir. Bu nedenle, gençlerimize faydalı alışkanlıklar kazandırmalı, zararlı alışkanlıklardan korumalı ve bu konuda bilinçlendirmeliyiz. Zararlı alışkanlıkların gençleri olumsuz etkilediğini söyleyebiliriz ve bu alışkanlıkları aşağıdaki başlıklar altında toplayabiliriz:
+Büyüklerimiz! Bir gencin yalnızca eksiklerini saymak yerine, hazırlanabileceği bir hizmet seçelim. Genç kardeşim! Sen de aldığın görevin hakkını öğren. Hazırlanmış bir defter ve tutulmuş bir söz, niyetimizin ciddiyetini gösterir.
 
-#### İçki ve kumar
+Mus‘ab’ın Medine’de Es‘ad b. Zürâre’nin desteğini bulması üzerinde de duralım. Yeni bir çevreye gelen insanın etrafını tanımasına yardım eden biri vardır. Biz de şehrimize yeni gelen bir öğrenciyi dersle ve hizmetle tanıştırabiliriz. Hangi bilgiyi aradığını soralım. Kendi dilinde anlayabileceği bir kaynağa ulaşmasına yardım edelim. İlk buluşmaya birlikte gidelim. O da zamanla yeni gelene rehberlik edebilsin.
 
-<p lang="ar" dir="rtl" class="ayet">ِيَا أَيُّهَا الَّذِينَ آمَنُواْ إِنَّمَا الْخَمْرُ وَالْمَيْسِرُ وَاألَنصَابُ وَاألَزَْلَمُ رِجْسٌ مِ نْ عَمَل َالشَّيْطَانِ فَاجْتَنِبُوهُ لَعَلَّكُمْ تُفْلِحُون</p>
+Bir dersin ardından sandalyeleri toplarken gençle büyüğü konuşmaya başlayabilir. Genç, anlamadığı bir kelimeyi sorar; büyüğü açıklar. Ertesi hafta genç o kelimeyi doğru kullanır. Öğrenme böyle küçük temaslarla devam eder. Ders yardımcısının hazırladığı kartlar, bir çocuğun tekrarını kolaylaştırabilir. Her görevden sonra ne öğrendiğimizi konuşmak, hizmeti bir eğitim imkânına dönüştürür.
 
-Ey mü’minler! Şarap, kumar, dikili taşlar (putlar), fal ve şans okları birer şeytan işi pisliktir. Bunlardan uzak durunuz ki, kurtuluş eresiniz. (Maide, 5/90)
+Bilgiyi taşımaya niyet eden kardeşim! Anlatacağın konuyu önceden oku. Muhatabının sorusunu sonuna kadar dinle. Cevabı birlikte bulmak için hocandan yardım iste. Bir kişiye doğru ulaşan bilgi, başka bir öğrenme isteğine vesile olabilir. Bugün gösterdiğin bu özen, yarın üstleneceğin daha geniş bir sorumluluğa hazırlık olsun.
 
-<p lang="ar" dir="rtl" class="ayet">ِإِنَّمَا يُرِيدُ الشَّيْطَانُ أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاء فِي الْخَمْر ِوَالْمَيْسِر َوَيَصُدَّكُمْ عَن ذِكْرِ َّللا ِ وَعَنِ الصََّلَةِ فَهَلْ أَنتُم مُّنتَهُون</p>
+Ders bittiğinde kitapları yerine koyarken bir sonraki buluşmanın hazırlığını da paylaşalım. Kimin tekrar istediğini soralım. Böylece verdiğimiz emek, öğrenmenin devamına hizmet etsin.
 
-Şeytan içkide ve kumarda ancak aranıza düşmanlık ve kin sokmak; sizi Allah'ı anmaktan ve namazdan alıkoymak ister. Artık vazgeçtiniz değil mi? (Maide, 5/91)
+**Öğrendiğimiz ilmi, ehliyetimiz ölçüsünde başkasının yolunu açmak için kullanalım.**
 
-İslam dini, içki ve kumar gibi alışkanlıkları yasaklamıştır. Bu alışkanlıklar hem kişinin kendisine hem de çevresine büyük zararlar verir. İçki ve kumar, suçları arttırır ve hayatları mahveder.
+---
 
-#### Uyuşturucu ve sigara
+<h2 class="vaaz-bolum-baslik" id="meslek" tabindex="-1">IV. Meslek: Beceriye güvenilirlik katmak</h2>
 
-Uyuşturucu ve sigara gibi alışkanlıklar da gençlerimizi olumsuz yönde etkiler. Uyuşturucu, insanları aileden, toplumdan ve çevresinden kopararak yalnızlığa ve bunalıma sürükler. Sigara ise sağlık problemlerine neden olur ve ölümcül hastalıklara sebep olabilir. Bu nedenlerle, gençlerimizi zararlı alışkanlıklardan korumalı ve onlara faydalı alışkanlıklar kazandırmalıyız. Böylece sağlıklı ve mutlu bir hayat sürmelerine yardımcı olabiliriz.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَتْ إِحْدَىٰهُمَا يَـٰٓأَبَتِ ٱسْتَـْٔجِرْهُ ۖ إِنَّ خَيْرَ مَنِ ٱسْتَـْٔجَرْتَ ٱلْقَوِىُّ ٱلْأَمِينُ ۝٢٦</p>
 
-#### Şeytan, Nefis, Heva ve Hevese Uyma
+*Kadınlardan biri, “Babacığım, onu ücretle çalıştır. Ücretle çalıştıracağın en iyi kişi, güçlü ve güvenilir olandır” dedi.* (Kasas, 28/26)
 
-Hayatımızı şekillendirecek ve yönlendirecek emir ve yasakları, Rabbimiz bizlere bildirmiştir. Peygamber efendimiz de bunları hayatında tatbik ederek hem örnek olmuş hem de açıklamıştır. Gençlerimizi kendi heva ve arzularına göre değil peygamberimizin ahlak ve sünnetiyle yetiştirmeliyiz. Onu model şahsiyet almaları sağlanmalıdır.
+Bu söz, Hz. Mûsâ’nın Medyen’de iki kadının hayvanlarını sulamasından sonra söylenir. Onlardan biri, babasına onun çalıştırılmasını önerir. İş için güçle güvenilirliğin beraber anılması dikkatimizi çeker. Bugün mesleğe hazırlanırken biz de gereken beceriyi ve dürüstlüğü birlikte geliştirelim. Ölçü aletini kullanmayı öğrenen el, emanete de alışsın.
 
-<p lang="ar" dir="rtl" class="ayet">ًأَرَأَيْتَ مَنِ اتَّخَذَ إِلَهَهُ هَوَاهُ أَفَأَنتَ تَكُونُ عَلَيْهِ وَكِيَل</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَا أَكَلَ أَحَدٌ طَعَامًا قَطُّ خَيْرًا مِنْ أَنْ يَأْكُلَ مِنْ عَمَلِ يَدِهِ</p>
 
-Kendi nefsinin arzusunu kendisine ilah edineni gördün mü? Ona sen mi vekil olacaksın? (Furkan, 25/43)
+*Hiç kimse, kendi elinin emeğiyle kazandığından daha hayırlı bir yiyecek yememiştir.* (Buhârî, 2072; rivayetten bölüm)
 
-Bu ilahi hitaba uyarak gençlerin de İslam’a uymayan kendi arzu ve isteklerinin peşine düşerek nefislerini ilah edinmeleri önlenmelidir.
+Efendimiz (s.a.s.) aynı rivayette Hz. Dâvûd’un da elinin emeğiyle geçindiğini bildirir. Emeğin onurunu hatırlayalım. İnsanlara fayda veren helâl bir meslekte yetişmek kıymetlidir. Sağlık çalışanının dikkati, teknisyenin ölçüsü ve öğretmenin hazırlığı insanların hayatına dokunur. Üniversite eğitimi de meslek eğitimi de uygun bir kabiliyetin gelişmesine yol açabilir.
 
-### Zararlı Görsel ve Yazılı Medya
+Meslek seçiminde gencin ilgisini dinleyelim. Bir okul danışmanıyla görüşelim; eğitim yolunu ve işin gerçek şartlarını öğrenelim. Başkasının çocuğuyla yapılan kıyas yerine, gencimizin güçlü olduğu alanı araştıralım. Staj yeri bulan bir büyüğümüz, ilk görüşmeye hazırlıkta destek olabilir. Genç kızlarımızın da eğitim ve meslek imkânlarını aynı ciddiyetle gözetelim.
 
-Gençleri şiddete, mafyaya, fuhşa, ahlaksızlığa, inançsızlığa kişiliksizliğe içkiye yönlendiren medya da en büyük tehlikelerden biridir. Her türlü ahlaksızlığı normal gibi yayınlayan medya gençleri günaha ve sapkınlığa itmektedir. Gençlerimiz zararlı yayınlardan uzak tutulmalı, faydalı yayınlara ya da çeşitli sportif etkinliklere katılmaları sağlanmalıdır. Özellikle televizyon gençler için birçok zararlar içermektedir. Günümüzde interneti de hesaba katarsak, doğru kullanılmadığı takdirde tehlikesi önemli boyutlara ulaşmaktadır. Mutlaka gençlerimizi internet ve televizyon karşısında başıboş bırakmamalıyız.
+İşe başlayan genç kardeşim! Bilmediğin işi sor; güvenlik talimatını öğren. Eksik yaptığın kısmı saklamak yerine haber ver. Bir makinenin başında dikkat göstermek, başkasının canını ve emeğini korur. Sözünü zamanında tutman da kazancının bereketine hizmet eder. İş arayan kardeşimizin yanında ise başvuru desteği ve yeni eğitim imkânlarıyla duralım.
 
-### Kitap Okuma Alışkanlığının Yetersizliği
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/gencligin-onemi-ve-sorumluluklari/ehliyet.svg" width="1600" height="900" alt="Bir atölyede yazısız ölçü aletiyle ahşap parçayı kontrol eden iki çift el." loading="lazy" decoding="async">
+<figcaption><strong>Ustanın yanında ilk adım</strong> Meslek, bilgiyi dikkatli ve güvenilir bir emeğe dönüştürür.</figcaption>
+</figure>
 
-Kitap okumanın ne kadar ehemmiyetli olduğunu anlamak ve anlatmak ancak okuyan insanların anlayabileceği bir şeydir. Nitekim bir düşünür “Dünyayı yöneten, kalem, mürekkep ve kâğıttır” diyor, haksızda değil. (James Howell) Kitaplar sayesinde bilgiler tecrübeler sonraki nesillere aktarılır. Dünyadaki bilgilere ulaşmanın en kolay yolu okumaktır. Okuma oranı ne kadar artarsa toplumumuzda kültür ve medeniyet o oranda gelişir. Bunun için gençlerimize ne yapıp edip okuma alışkanlığı kazandırmamız gerekmektedir. Çünkü gençler geleceğimizin teminatıdır. Zaten Rabbimiz şöyle buyurmuyor mu?
+**İyi bir meslek sahibi olmak, işin bilgisini ve insanın hakkını birlikte gözetmektir.**
 
-<p lang="ar" dir="rtl" class="ayet">َاِقْرَأْ بِاسْمِ رَبِ كَ الَّذِي خَلَق</p>
+---
 
-Yaratan Rabbinin adıyla oku! (Alak, 96/1)
+<h2 class="vaaz-bolum-baslik" id="vakit" tabindex="-1">V. Vakit: İbadetle emeğe yer açmak</h2>
 
-Aziz Müslümanlar! İşte günümüz gençliğinin karşılaştığı problemler bunlar. Ancak İslam terbiyesiyle yetişen gençler, Hz. Peygamber'in liderliğinde farklı bir yaklaşım sergiliyorlardı. Mekke'nin nüfuzlu ve refah içinde yaşayan ailelerine mensup gençler, İslam'a ilgi göstererek, yaşlılar, köleler, fakirler, kimsesizler ve zayıfların duyduğu sempatiyi aştılar. İdealist gençler, İslam'ı yaymak için Hz. Peygamber'e en büyük destek ve yardımı sağladılar.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ، الصِّحَّةُ وَالْفَرَاغُ</p>
 
-## Gençliğin Önemi
+*İki nimet vardır ki insanların çoğu onları değerlendirmekte aldanır: sağlık ve boş vakit.* (Buhârî, 6412; rivayetten bölüm)
 
-Bugünün gençleri için, Ashab-ı Kehf hikayesi önemli bir örnek teşkil etmektedir. Onların tevhid mücadelesi, tüm zorluklara rağmen direnç göstermeleri diğer gençler için her zaman bir ilham kaynağı olmuştur. Hz. Ebu Hureyre anlatıyor: "Resulullah şöyle buyurdu: "Allah'ın rızasını gözeterek gençliğini ibadetle geçiren kişi, Kıyamet gününde Allah'ın gölgesinde gölgelenir." Peygamber Efendimiz büyüklerine saygılı gençler hakkında şöyle buyurmuştur: Enes İbni Mâlik’den rivayet edildiğine göre, Peygamber şöyle buyurdu: "Allah Teâlâ, yaşından ötürü bir ihtiyara saygı gösteren gence, yaşlılığında hizmet edecek kimseler lütfeder." (Tirmizî, Birr, 75) Gençlerimize Mus'ab b. Umeyr'i de hatırlatmamız gerekir. O zengin genç sahabi iman ettikten sonra bütün malını Allah yolunda harcadığı için ölümünden sonra kefen parası bile kalmamıştır. İşte örnek bir genç... Yüce Peygamberimiz en hayırlı gençlerle ilgili bir hadislerinde şöyle buyurur: "Gençlerinizin en hayırlısı ihtiyarlarınıza benzeyendir. İhtiyarlarınızın en şerlisi, gençlerinize benzeyendir." (Feyzü'l Kadîr, 15:776) Elbette buradaki "benzemek"ten kasıt, kılık-kıyafet-te birbirlerini taklit etmek veya saçların ağarması, dökülmesi, yüzlerin kırışması değildir. Nitekim bir Allah dostu, bu hadisi izah ederken, şunları söyler: " En hayırlı genç odur ki, ihtiyar gibi ölümü düşünüp ahiretine çalışarak, gençlik hevesatına esir olmayıp gaflette boğulmayandır. Ve ihtiyarlarınızın en kötüsü odur ki, gaflette ve hevesat-ı nefsaniyeye tâbi olup çocukçasına davranarak gençlere benzemek ister." Gençlerin dünyanın faniliğini kavrayıp, ebedi hayatları için çalışmalarında, ölümü düşünmelerinin büyük etkisi vardır. Bir gün mutlaka öleceğini düşünüp o şuur ile çalışmayan, kendisine ahireti kazanmak için verilen ömür sermayesini boş yere harcar. Gelip geçici lezzetlere dalıp, dünyayı bir oyun ve eğlence alanı zanneder. Peygamberimiz, "Lezzetleri tahrip edip acılaştıran ölümü çok zikrediniz" (Tirmizi, Zühd: 2) buyurarak, bizi bu gafletten kurtarmak ister. Nitekim Abdullah ibn Ömer'in anlattığı şu hadise ne kadar ibretlidir: Ensardan bir adam gelerek Peygamberimize şöyle sordu: "Ya Resulallah, müminlerin hangisi daha akıllı, daha şuurludur?" "Ölümü en çok hatırlayanı ve ölümden sonrası için en güzel şekilde hazırlananı. İşte onlar en akıllı, en şuurlu olanlarıdırlar." (Ibn-i Mâce, Zühd: 31) Yine Abdullah ibni Ömer şunları anlatır: Resul-i Ekrem vücudumun bir yanından tutarak şöyle buyurdu: "Dünyada sanki bir garîb (gurbette olan yabancı), hatta yoldan geçen bir yolcu imişsin gibi ol ve kendini kabir halkından (biri) say." Daha sonra İbni Ömer sözüne şöyle devam eder: “Sabaha çıktığın zaman kendine akşamın sözünü etme, akşama çıktığın zaman da kendine sabahın sözünü etme. Hastalığından önce sıhhatinden, ölümünden önce hayatından (istifade edip tedbir) al. Çünkü sen, ey Abdullah! Yarın adının (mutlu mu, bedbaht mı) ne olacağını bilemezsin.” (Tirmizi, Zühd: 25) Gerçekten de dünya hayatının fâniliğini bundan daha güzel anlatan bir söz olamaz. Çünkü, insanın elinde bulunan "ömür" ve sahip olduğu zaman, sadece bir andır. Hiç kimse, bir sene, bir ay, bir gün, hatta bir saat sonrasına kadar yaşayacağını garanti edemez. O halde bulunduğu ânı en güzel bir şekilde değerlendirmeli, Allah'a hakkıyla kul olmalıdır. Bununla birlikte, dünyanın fâniliğini anlamak ve zevklerini terk etmek demek, kendisini Allah'ın nimetlerinden mahrum etmek değildir. Bu hususu şu hadis çok güzel ifade eder: " Dünya zevkinin terki, helal bir şeyden kendini mahrum etmek veya malı elden çıkarmakla değildir. Fakat dünya sevgisinin terki, elinde bulunanların Allah'ın katında bulunanlardan daha güven verici olması ve bir musibete uğradığın zaman o musibet sende bırakılmış olsaydı sevabı için ona daha istekli olmandır." Gençlerin dünyaya dalmamaları için sadece ölümü düşünmeleri yeterli değildir. Aynı zamanda ölümden sonrasını da tefekkür etmek gerekir. Kabir hayatını, Kıyameti, Haşir Meydanını, muhasebe ve muhakeme­yi, Mizanı, Sıratı ve Cehennemi de iyice düşünmek lazımdır ki, buraların azabından kurtulmak için Allah'a sığınalım ve zamanımızı Allah'ın istediği tarzda geçirelim.
+Telefon ekranı söndüğünde bazen bir saat geçmiş olur. O saat içinde dinlenmiş miyiz, bir şey öğrenmiş miyiz, yoksa vakit elimizden sessizce akmış mı? Gençliğin sorumluluğu bu soruyu dürüstçe sormayı da içerir. Dinlenmeye, dostluğa ve spora yer açalım. Namazı, dersimizi ve verdiğimiz sözü gözeten bir düzen kuralım.
 
-## Büyüklere Düşen Görevler
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَإِذَا قُضِيَتِ ٱلصَّلَوٰةُ فَٱنتَشِرُوا۟ فِى ٱلْأَرْضِ وَٱبْتَغُوا۟ مِن فَضْلِ ٱللَّهِ وَٱذْكُرُوا۟ ٱللَّهَ كَثِيرًا لَّعَلَّكُمْ تُفْلِحُونَ ۝١٠</p>
 
-*   Gençlere öncelikle sağlam bir İslam bilinci ve ahlakı verelim ki inanç boşluğuna ve ahlaksızlığa düşmesin.
-*   Onları sevdiğimizi, arkadaş gibi yanlarında olduğumuzu her fırsatta hissettirelim.
-*   Kötü arkadaş ve çevrelerden uzaklaştıralım.
-*   Zararlı ideoloji ve fikirleri tanımalarında yardımcı olalım.
-*   İçki, kumar, uyuşturucu, sigara, fuhşiyat gibi kötü alışkanlıklardan koruyalım.
-*   Okuldaki eğitimiyle dersleriyle, ihtiyaçlarıyla yakından ilgilenelim.
-*   Ülke ve milletimize faydalı bir meslek edinmesine yardımcı olalım.
-*   Gençliğe önem verelim, eğilelim çünkü onlar bizim geleceğimizdir.
-*   Onlara okuma alışkanlığı kazandırılmalıdır.
+*Namaz kılınınca yeryüzüne dağılın ve Allah’ın lütfundan nasibinizi arayın. Allah’ı çok anın ki kurtuluşa eresiniz.* (Cuma, 62/10)
+
+Âyet, cuma çağrısında alışverişi bırakmayı bildiren âyetin ardından gelir. Namazdan sonra çalışmaya dönmekle Allah’ı anmak aynı hayat içinde buluşur. Genç kardeşim! Ders programına namazı da yaz. İş saatlerini ve dinlenmeyi bilerek planla. İbadet, yönünü diri tutsun; çalışman insanlara karşı sorumluluğunu yerine getirsin. **Gençliğin bereketi, imanla öğrenmek, ehliyetle çalışmak ve insanlara fayda vermektir.**
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Haftalık planda dört durak</strong> Şartımıza göre süreyi belirleyelim; küçük adımı görünür hale getirelim.</figcaption>
+<table aria-label="Haftalık planda dört durak">
+<thead><tr><th scope="col">Alan</th><th scope="col">Somut adım</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Alan">İlim</th><td data-label="Somut adım">Bir okuma zamanı ve cevap aranacak bir soru belirle.</td></tr>
+<tr><th scope="row" data-label="Alan">Meslek</th><td data-label="Somut adım">Bir danışmanla görüş veya eksik bir beceriyi çalış.</td></tr>
+<tr><th scope="row" data-label="Alan">İbadet</th><td data-label="Somut adım">Namaz vakitlerini günlük programa yerleştir.</td></tr>
+<tr><th scope="row" data-label="Alan">Hizmet</th><td data-label="Somut adım">Yapabileceğin bir görevin zamanını ve sınırını seç.</td></tr>
+</tbody></table>
+</figure>
+
+Planımızı bir yarışa çevirmeden takip edelim. Hastalığı veya ailede bakım görevi bulunan gencimizin imkânı daha sınırlı olabilir. Onun yaptığı küçük bir iş de kıymetlidir. Aksayan günün ardından programı yeniden düzenleyelim. Bir ders kaçtıysa telafi zamanını koyalım. Takvimde açılan o küçük boşluk, sorumluluğun hayata yerleştiği yer olsun.
+
+**Vaktimizi korumak, önceliklerimize bugün yer açmaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="evlilik" tabindex="-1">VI. Evlilik: Ortak hayatın yükünü taşımaya hazırlanmak</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَمِنْ ءَايَـٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَـَٔايَـٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ ۝٢١</p>
+
+*Onlara ısınıp kaynaşasınız diye size kendi türünüzden eşler yaratıp aranıza sevgi ve şefkat duyguları yerleştirmesi de O’nun kanıtlarındandır. Doğrusu bunda iyi düşünen kimseler için dersler vardır.* (Rûm, 30/21)
+
+Bir evin anahtarını taşımak, o evde bir başkasının huzurunu da gözetmektir. Âyet, evliliğin ufkuna sevgi ve şefkati yerleştiriyor. Gençlerimizi aileye hazırlarken bu ufku konuşalım. Dinlemeyi, öfke anında sakinleşmeyi ve ortak karar almayı öğrenelim. Kazancın hesabı kadar, evde birbirimize ayıracağımız zamanı da düşünelim.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">يَا مَعْشَرَ الشَّبَابِ مَنِ اسْتَطَاعَ الْبَاءَةَ فَلْيَتَزَوَّجْ</p>
+
+*Ey gençler! Evliliğe gücü yeten evlensin.* (Buhârî, 5066; rivayetten bölüm)
+
+Efendimiz (s.a.s.) devamında evliliğin korunmaya yardımcı olduğunu, gücü yetmeyenin ise oruç tutmasını öğütler. Bu davette imkânı gözeten bir ölçü vardır. Gençlere rehberlik ederken geçim şartlarını ve sorumluluk taşıma hazırlığını konuşalım. Evlilik kararının karşılıklı rıza ile oluşmasına özen gösterelim. Aile büyükleri, görüşlerini gençleri dinleyerek paylaşsın.
+
+Yuvaya hazırlanmak, gündelik bir işi üstlenmekle başlayabilir. Yemek hazırlamayı, bütçe yapmayı veya evin temizliğini paylaşmayı öğrenebiliriz. Bunları genç kızlarımızla delikanlılarımıza birlikte öğretelim. Hastalıkta eşin yanında durmak, çalışırken yükünü anlamak ve farklı bir fikri sabırla dinlemek, ortak hayatın ihtiyaçlarıdır. Evdeki işlerin ve bakım sorumluluğunun nasıl paylaşılacağını önceden konuşalım.
+
+Evlenmek isteyen kardeşimize uygun rehberliğe ulaşmasında yardımcı olalım. Bekâr kardeşimiz de ilmiyle, mesleğiyle ve hizmetiyle cemaatimizin kıymetli bir ferdidir. Hepimiz birbirimizin şartını saygıyla dinleyelim. Bugünkü sorumluluklarımızı iyi taşımak, gelecekteki ortak hayata da hazırlık olur. Sevgi, gösterilen emekle derinleşir.
+
+**Yuvaya hazırlık, bir insanın hayatını merhametle paylaşmaya hazırlanmakla başlar.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hizmet" tabindex="-1">VII. Hizmet: Kabiliyetin başkasına ulaşması</h2>
+
+**Muhterem Müslümanlar! Gençlerin kabiliyeti, bir ihtiyaca ulaştığında ortak hayatımız güçlenir.**
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱرْكَعُوا۟ وَٱسْجُدُوا۟ وَٱعْبُدُوا۟ رَبَّكُمْ وَٱفْعَلُوا۟ ٱلْخَيْرَ لَعَلَّكُمْ تُفْلِحُونَ ۩ ۝٧٧</p>
+
+*Ey iman edenler! Rükû edin, secdeye kapanın, Rabbinize ibadet edin, dünya ve âhiret için faydalı işler yapın ki kurtuluşa eresiniz.* (Hac, 22/77)
+
+Rükû ve secdeyle başlayan çağrı, hayırlı işe uzanıyor. Namazımızın ardından taşıyacağımız bir sorumluluk vardır. Bir hastanenin koridorunda randevusunu arayan insanın sorusunu duyabiliriz. Dil bilen bir genç, onun izin verdiği ölçüde yön bulmasına yardım edebilir. Bilmediği tıbbî açıklamayı ise ehline bırakır. Yardımın değeri, gerçek ihtiyacı dikkatle görmesindedir.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَتُعِينُ الرَّجُلَ فِي دَابَّتِهِ فَتَحْمِلُهُ عَلَيْهَا أَوْ تَرْفَعُ لَهُ عَلَيْهَا مَتَاعَهُ صَدَقَةٌ</p>
+
+*Bir kimseye bineğine binmesi veya eşyasını yüklemesi için yardım etmen sadakadır.* (Müslim, 1009; rivayetten bölüm)
+
+Efendimiz (s.a.s.) günlük yardımı sadaka olarak anıyor. Hizmet için elimize büyük bir servet geçmesini beklemeyelim. Yapabileceğimiz işe bakalım. Bir dersin hazırlığını paylaşmak, gıda yardımını düzenlemek veya ulaşımda zorlanan kişiye destek olmak mümkündür. Yardım edeceğimiz insana ihtiyacını ve tercihlerini soralım. Onun onurunu ve mahremiyetini gözetelim.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Kabiliyet nerede hizmete dönüşür?</strong> Herkes imkânına uygun bir katkı seçebilir.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Bir gündelik işi düzenli üstlen; bakım verenin yükünü paylaş.</dd></div>
+<div><dt>Okulda ve işte</dt><dd>Öğrendiğin bir beceriyi izin ve ehliyet sınırları içinde aktar.</dd></div>
+<div><dt>Camide ve mahallede</dt><dd>Açık bir görev al; ihtiyaç sahibinin bilgisini ve görüntüsünü koru.</dd></div>
+</dl>
+</figure>
+
+Görevi başlatırken ne yapacağımızı, ne zaman bitireceğimizi ve kime danışacağımızı bilelim. Ekip içinde haber vererek çalışalım. Sağlığı veya ulaşımı sınırlı kardeşimiz, uzaktan hazırlıkla da katkıda bulunabilir. Hizmet, hepimizin imkânına açılan bir kapı olsun.
+
+**Kabiliyetimizin şükrü, bir insanın yükünü hafifletmeye çalışmaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="guven" tabindex="-1">VIII. Üsâme: Güven verilen genç sorumluluk alır</h2>
+
+**Aziz anneler ve babalar! Tecrübemizi gençlerin adım atmasına yardımcı olacak şekilde paylaşalım.**
+
+Caminin hizmet odasında bir dosya el değiştirir. Onunla birlikte bilgi ve sorumluluk da devredilebilir. Gencin görev almasını istiyorsak işi anlatmaya ve takibine vakit ayırmamız gerekir. Peygamber Efendimizin (s.a.s.) gençlere verdiği görevlerde, cemaatimiz için kıymetli bir rehberlik vardır.
+
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Üsâme’ye verilen görev</p>
+
+Resûlullah (s.a.s.) bir birlik gönderdi ve başına Üsâme b. Zeyd’i tayin etti. Bazı kişiler onun kumandanlığına itiraz etti. Efendimiz, babasının kumandanlığına da daha önce itiraz edildiğini hatırlattı; babasının bu göreve layık olduğunu ve Üsâme’ye duyduğu sevgiyi bildirdi.
+
+Rivayet, Üsâme’nin görevlendirilmesini ve Peygamberimizin itirazlar karşısındaki desteğini birlikte aktarır. Bir gence görev vermekle, o görevde arkasında durmanın beraberliğini görürüz.
+
+(Buhârî, 3730; sahih rivayetin özeti.)
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَإِنَّ هَذَا لَمِنْ أَحَبِّ النَّاسِ إِلَىَّ بَعْدَهُ</p>
+
+*Üsâme de babasından sonra benim en çok sevdiğim kimselerdendir.* (Buhârî, 3730; rivayetten bölüm)
+
+Bu örneği bugünün işlerine taşıyalım. Bir gencimize ders malzemelerinin düzenini emanet edebiliriz. Görevin sınırını birlikte belirleyelim. Nasıl yaptığını soralım; eksik gördüğümüzde incitmeden gösterelim. İyi yaptığı işi de açıkça takdir edelim. Sorumluluk, böyle bir rehberlikle öğrenilir. Genç de işi savsaklamadan, gerektiğinde yardım isteyerek karşılık versin.
+
+Genç kızlarımızın fikirlerini ve hizmet tekliflerini de dinleyelim. Toplantıya çağırdığımız gence konuşma zamanı verelim. Yeni Müslüman olan veya Türkçeyi daha az bilen kardeşimiz için açıklamalar hazırlayalım. Tecrübeliyle yeni başlayan arasında düzenli bir buluşma kuralım. Emaneti taşıyabilmesi için gerekli hazırlığı paylaşalım.
+
+Görev sonunda birlikte değerlendirelim: Ne öğrendik, hangi kısım zorladı, sıradaki adım ne olsun? Bir dosyanın teslimi, iki kuşağın birbirini tanımasına vesile olabilir. Güven, verilen sözü izlemekle sağlamlaşır.
+
+Gencin önerisi bizim alıştığımız usulden farklı olabilir. Önce gerekçesini soralım. Uygun bulduğumuz kısmı küçük bir görevde deneyelim. Tecrübemizle eksik kalan yönü tamamlayalım. Genç de önceki kuşağın neden öyle çalıştığını merak etsin. Birbirini dinleyen iki kuşak, işin bilgisini birlikte çoğaltır. El değiştiren dosyanın yanında, o işi yapan insanların emeğini de tanıyalım. Böylece görev devri bir gönül bağına dönüşür.
+
+**Gençlere duyduğumuz güveni, hazırlık, görev ve rehberlikle görünür kılalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="gurbet" tabindex="-1">IX. Avrupa’da yol arayan gencin yanında</h2>
+
+Marche-en-Famenne’den kalkan trenin camında sabah ışığı geziniyor. Bir genç, çantasında staj başvurusunu taşıyor. Evdeki ümitlerle okulda duyduğu tavsiyeler arasında bir yol arıyor. Böyle bir yolculukta büyüklerimizin tecrübesi ve gençlerimizin dil bilgisi birbirine destek olabilir. Yaşadığımız topluma fayda verecek hazırlığı beraber yapalım.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Başvurunun yanındaki destek</p>
+
+Bir genç kızımız meslek eğitimi için staj yeri arıyor. Başvuru dosyasını hazırlamış, fakat görüşmede kendini nasıl anlatacağını düşünüyor. Camide tanıdığı bir hanım, dosyasını birlikte okumayı teklif ediyor. Başka bir büyüğümüz, tanıdığı bir iş yerine başvuru yolunu soruyor.
+
+Genç, görüşmeye kendi gidiyor ve sorularını kendisi soruyor. Ertesi gün görüştüğü kişiye teşekkür ediyor; gerekiyorsa dosyasını düzeltiyor. Cemaatin yardımı, onun kendi sorumluluğunu taşımasını kolaylaştırıyor. Sonuç gecikse de yanında konuşabileceği bir insan bulunuyor.
+
+Bu desteğin çevremizde kurulabilecek yolları var. Mesleğini anlatabilecek gönüllüler belirleyelim. Okuldan mesleğe geçişte sorusu olan gençleri dinleyelim. Ulaşım ve eğitim imkânlarını araştırmalarına yardımcı olalım. Başvurularında kendi emeğini ve doğru bilgiyi kullansınlar. İş yerlerinin şartlarını ve yaşadığımız ülkenin kurallarını güvenilir kaynaklardan öğrensinler.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Gence açılan dört destek</strong> Gencin kararını güçlendiren destekleri birlikte kurabiliriz.</figcaption>
+<p class="vaaz-sema-merkez">Sorumluluğunu taşıyan genç</p>
+<dl class="vaaz-sema-kollar">
+<div><dt>Dinlemek</dt><dd>İlgisini, kaygısını ve ihtiyacını kendisinden öğren.</dd></div>
+<div><dt>Bilgi</dt><dd>Eğitim ve meslek yolunu yetkili danışmanla araştır.</dd></div>
+<div><dt>Uygulama</dt><dd>Görüşme hazırlığı veya uygun bir hizmet görevi sun.</dd></div>
+<div><dt>Takip</dt><dd>Sonucu sor; yeni adımını belirlemesine yardım et.</dd></div>
+</dl>
+</figure>
+
+İş yeri tanıyan herkes bir yön gösterebilir. Öğrenci olan kardeşimiz bir eğitim yolunu açıklayabilir. Emekli büyüğümüz görüşmeye hazırlanmak için zaman ayırabilir. Uygun imkân bulana kadar desteği sürdürelim. Perondaki o genç, kendi yürüyüşünde yalnız bırakılmasın.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/gencligin-onemi-ve-sorumluluklari/yol.svg" width="1600" height="900" alt="Soyut bir tren peronunda arkadan görülen genç ve yetişkin siluetleri, yanlarında yazısız bir dosya." loading="lazy" decoding="async">
+<figcaption><strong>Yanında yürüyen biri</strong> Rehberlik, gencin kendi adımını atmasına yardım eder.</figcaption>
+</figure>
+
+Başvuru sonucu olumsuzsa gencin yanında yeni bir araştırma yapabiliriz. Hangi beceriyi geliştirmesi gerekiyor? Başka bir eğitim yolu var mı? Bu soruları onunla konuşalım. Uygun bir kişiye ulaşmış olmak bile yeni bir imkân açabilir. Gencin izniyle yardım isteyelim; özel bilgilerini kendisiyle birlikte gözetelim. Bir görüşmenin sonucu, onun bütün değerini belirlemez.
+
+Gençler de aldıkları desteğe karşılık versin. Görüşmenin sonucunu haber versin; verilen bir randevuya hazırlansın. Danışmanın sorduğu soruya dikkatle cevap verelim. Fransızca veya Felemenkçe bilen bir gencin, Türkçe konuşan büyüğüne mesleğini anlatması da bu bağın içindedir. Hepimiz birbirimizden bir şey öğrenebiliriz. Ortak hayatımız bu alışverişle zenginleşsin.
+
+**Rehberlik, gencin yerine karar vermeden kendi adımını güçlendirmektir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yeniden" tabindex="-1">X. Aksayan yerde yeniden başlamak</h2>
+
+Bir başvurunun cevabı gelmez. Bir sınav beklediğimiz gibi geçmez. Verdiğimiz bir sözü de bazen tutamayız. Böyle günlerde defteri kapatıp bütün yolu bırakmak kolay gelir. Oysa sorumluluk, eksik kalan yerde ne yapacağımızı aramakla da gelişir. Hata yapılan yeri açıkça görmek, düzeltmenin başlangıcıdır.
+
+Genç kardeşim! Öğrenmekte zorlandığın konuyu öğretmenine götür. Meslek seçimin sana uygun görünmüyorsa danışmanınla yeniden konuş. Namazında aksama varsa bugün yeniden başla; öğrenmen gereken kısmı sor. Bir hizmette geciktiysen ekibine haber ver ve telafi teklif et. Kendi adımını, kendi şartların içinde değerlendir. Herkesin yürüyüşü aynı hızda ilerlemez.
+
+Başkasının hazırladığı ödevi kendininmiş gibi sunmak öğrenmeyi zedeler. Hazır bir metinle karşılaştığımızda onu anlamak ve kendi emeğimizi katmak için çalışalım. Bir meslekte de bilmediğimiz işi biliyormuş gibi üstlenmek insanları riske sokar. Eksik becerimizi belirleyip eğitim isteyelim. Dürüstçe söylenen bir eksik, güvenilir bir hazırlığa dönüşebilir.
+
+Bazen de gencin yükü ağırdır. Ailede hastalık, yalnızlık veya geçim güçlüğü vardır. Sesi kısılmış bir kardeşimizi dinleyelim. Gerekli destek için ehil kişilere ulaşmasını kolaylaştıralım. İnancını öğrenmek isteyenin sorusunu sabırla karşılayalım. Güvenilir bir hocayla birlikte araştırmaya vakit ayıralım. Konuşulabilen soru, öğrenmenin kapısını açar.
+
+Büyüklerimiz için de bir düzeltme yolu var. Genci sürekli başkasıyla kıyasladıysak bu dili değiştirelim. Yerine onun ilerlediği alanı konuşalım. Görev vermeden başarı beklediysek küçük bir görev ve rehberlik sunalım. Sözünü yarıda kestiysek bu kez sonuna kadar dinleyelim. Yeniden kurulan ilişki, bir gencin yeniden başlamasına yardımcı olabilir.
+
+Ashâb-ı Kehf’in duasını bu hazırlığın yanında tutalım: Rabbimizden rahmet ve doğru yöneliş isteyelim. Geleceğin belirsizliği içinde, bugün yapabileceğimiz işi seçelim. Telefonumuza bir hatırlatma koyalım, başvuruyu tamamlayalım veya ders için zaman ayıralım. Bir adımın ardından ötekine hazırlanabiliriz. Allah’ın rahmetine güvenerek sorumluluğumuzu taşıyalım.
+
+Düzeltmeyi kolaylaştırmak için işi küçük parçalara ayıralım. Bir bölümün tamamını anlamadıysak önce bir sayfasını okuyalım. Başvuruyu bitiremediysek eksik evrakın adını yazalım. Görev geciktiyse bitirebileceğimiz yeni zamanı bildirelim. Büyük bir yük, böyle adımlarla taşınabilir hale gelir. Bir yakınımıza ne yapacağımızı söylemek de kararımızı takip etmemize yardımcı olur.
+
+Yeniden başlayan kardeşimizin ilk gayretini fark edelim. Derse geri geldiğinde yerini gösterelim. İş aramaya devam ettiğinde hangi desteğe ihtiyaç duyduğunu soralım. Genç de yaptığı küçük ilerlemeyi görsün. Defterde çözülen bir soru veya gönderilen bir başvuru, devam etmek için cesaret verebilir. Şükürle ilerleyelim.
+
+**Aksayan adımı düzeltmek, yolun sorumluluğunu yeniden üstlenmektir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta vereceğimiz yedi söz</h2>
+
+**Kıymetli kardeşlerim! Dinlediğimiz sözü, bu hafta yapacağımız bir işe bağlayalım.**
+
+Gençler kendi adımını seçsin; büyüklerimiz bir gencin adımına destek olsun. Yedi sözü önümüze koyalım. Takvimde hangi güne yerleştireceğimizi ve kiminle paylaşacağımızı belirleyelim. İmkânımıza uygun bir söz verelim; yerine getirdiğimizde Rabbimize şükredelim.
+
+**GENÇLİK SORUMLULUĞU İÇİN YEDİ ADIM**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir Kur’an dersine veya güvenilir bir okuma çalışmasına zaman ayıracağım.</strong> Katılmak için hazırlık yapacak, imkânım varsa bir gencin katılımına da destek olacağım.</li>
+<li><strong>Bu hafta öğrenmek istediğim bir soruyu yazıp ehline soracağım.</strong> Cevabı anlayarak öğrenmek için gerektiğinde açıklama isteyeceğim.</li>
+<li><strong>Bu hafta bir eğitim veya meslek adımı için görüşme yapacağım.</strong> Kendi yolumu araştıracağım veya bir gence başvuru hazırlığında yardımcı olacağım.</li>
+<li><strong>Bu hafta namaz, ders ve dinlenme için günlük programımı gözden geçireceğim.</strong> En çok aksayan vakte uygulanabilir bir düzen koyacağım.</li>
+<li><strong>Bu hafta evimizde bir işi düzenli üstleneceğim.</strong> Yükü paylaşmayı öğrenerek aile hayatındaki sorumluluğumu geliştireceğim.</li>
+<li><strong>Bu hafta imkânıma uygun bir hizmet görevini tamamlayacağım.</strong> İhtiyacı sorup görevimin zamanını ve sınırını belirleyeceğim.</li>
+<li><strong>Bu hafta başka bir kuşaktan biriyle eğitim, meslek veya hizmet üzerine konuşacağım.</strong> Birbirimizi dinleyip gelecek adımda nasıl destek olacağımızı belirleyeceğiz.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bu haftanın yolu</strong>Bir adım seç, vaktini belirle ve sonucu takip et.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Öğrenmeye vakit ayır</strong></li>
+<li><span aria-hidden="true">2</span><strong>Sorunu ehline sor</strong></li>
+<li><span aria-hidden="true">3</span><strong>Meslek adımını belirle</strong></li>
+<li><span aria-hidden="true">4</span><strong>Gününü yeniden düzenle</strong></li>
+<li><span aria-hidden="true">5</span><strong>Evde yükü paylaş</strong></li>
+<li><span aria-hidden="true">6</span><strong>Bir hizmeti tamamla</strong></li>
+<li><span aria-hidden="true">7</span><strong>Kuşaklar arasında bağ kur</strong></li>
+</ol>
+</figure>
+
+Bu sözleri seçerken kendi imkânımızı dürüstçe tartalım. Ders saatine yetişemeyen kardeşimiz, evde okuyacağı zamanı belirleyebilir. Evden çıkmakta zorlanan kardeşimiz, bir hizmetin hazırlığını yapabilir. Bir gence yol gösterecek bilgisi olmayan büyüğümüz ise onu dinleyebilir ve uygun bir kişiye ulaştırabilir. Herkes kendi payını bulsun. İyiliğin başladığı yer, kişinin yapabileceği işi sahiplenmesidir.
+
+Yedi günün sonunda kısa bir değerlendirme yapalım. Hangi sözü tuttuk? Nerede zorlandık? Bir arkadaşımız veya ailemizden biriyle bunu konuşalım. Tamamlanan işe şükredelim. Eksik kalan işin yeni zamanını belirleyelim. İlim, meslek ve hizmet böyle bir takiple hayatımızda yer tutar. Dinlediğimiz öğüt, uyguladığımız bir alışkanlığa dönüşsün.
+
+Genç kardeşim, büyüklerinden birine seçtiğin adımı anlat. Büyüklerimiz de yardım edecekleri işi açıkça söylesin. Birlikte ders yoluna çıkmak, görüşmeye hazırlanmak veya bir hizmeti bitirmek için zaman belirleyelim. Akşam eve döndüğümüzde bu niyetimizi ailemizle paylaşabiliriz. Böylece camide duyduğumuz söz, evimizin gündemine girer; yarının hazırlığı bugünden başlar.
+
+Cebimizdeki küçük takvim, bugün duyduğumuz çağrının yeri olabilir. Bir tarih koyalım; vereceğimiz sözü hatırlayalım. Gençlerimizin hazırlığına büyüklerimizin duası ve desteği katılsın. **Gençliğin bereketi, imanla öğrenmek, ehliyetle çalışmak ve insanlara fayda vermektir.**
+
+**Bugün seçtiğimiz bir iyiliği, bu hafta tamamlayacağımız bir söze dönüştürelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Hayırlı bir hayat için niyaz</h2>
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا</p>
+
+*Rabbimiz! Bize katından rahmet ver ve içinde bulunduğumuz durumda bize doğru yolu göster.* (Kehf, 18/10; âyetten bölüm)
+
+Allahım! Gençlerimizin önünü hayra aç. İmanlarını kuvvetlendir. Öğrenme isteklerini artır. Doğru bilgiye ulaşmayı, öğrendiklerini yaşamayı ve insanlara fayda vermeyi nasip et. Sınıfta açtıkları kitap, atölyede tuttukları alet ve hizmet için uzattıkları el hayra vesile olsun.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada da iyilik ver, âhirette de iyilik ver. Bizi ateş azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Rabbimiz! Eğitimini sürdürenlere kolaylık, iş arayanlara hayırlı ve helâl bir kazanç yolu ver. Çalışanlara dikkat ve dürüstlük nasip et. İmkânı sınırlı kardeşlerimize destek olacak gönüller aç. Aile kurmaya hazırlananlara basiret, eşlerimize sevgi ve merhamet ver. Evlerimizde yükü paylaşmayı ve birbirimizi dinlemeyi bize öğret.
+
+Allahım! Hastalarımıza şifa, bakım verenlere güç, yalnızlara dostluk ihsan et. Engeli bulunan kardeşlerimizin ilme ve hizmete ulaşmasını kolaylaştır. Yeni Müslüman olmuş kardeşlerimizin adımlarını sağlamlaştır. Çocuklarımıza güven içinde büyüyecekleri bir çevre nasip et. Büyüklerimize sağlık, huzur ve hayırlı ömür ver.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ إِنَّنَآ ءَامَنَّا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Biz gerçekten iman ettik. Günahlarımızı bağışla, bizi ateş azabından koru.* (Âl-i İmrân, 3/16; âyetten bölüm)
+
+Rabbimiz! Cemaatimizi iyilikte buluştur. Yaşadığımız ülkede huzuru, adaleti ve karşılıklı güveni artır. Komşularımıza, öğretmenlerimize ve birlikte çalıştığımız insanlara karşı hakkı gözeten kullar olmayı nasip et. Dünyanın her yerinde acı çekenlere yardım eyle. Vefat eden müminlere rahmet et; bizlere imanla hayırlı bir son nasip eyle.
+
+**Rabbimizin rahmetine güvenerek sorumluluklarımızı hayırla taşıyalım.**
+
+Âmin. Peygamber Efendimize (s.a.s.) salât ve selâm olsun. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler künyede belirtilir. Gündelik gurbet sahneleri temsilîdir. Tarihî anlatılar kaynaklarının bildirdiği sınırlar içinde aktarılmıştır. Türkçe niyazlar serbest duadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/18/10">Kehf 18/10</a>.</li>
+<li>İmanla yön bulmak: <a href="https://quran.com/18/13">Kehf 18/13</a>.</li>
+<li>Öğrenmek ve yaşamak: <a href="https://quran.com/96/1">Alak 96/1</a>; <a href="https://sunnah.com/bukhari:5027">Buhârî 5027</a>.</li>
+<li>Ehil bir meslek: <a href="https://quran.com/28/26">Kasas 28/26</a>; <a href="https://sunnah.com/bukhari:2072">Buhârî 2072</a>.</li>
+<li>Vakti düzenlemek: <a href="https://sunnah.com/bukhari:6412">Buhârî 6412</a>; <a href="https://quran.com/62/10">Cuma 62/10</a>.</li>
+<li>Yuvaya hazırlanmak: <a href="https://quran.com/30/21">Rûm 30/21</a>; <a href="https://sunnah.com/bukhari:5066">Buhârî 5066</a>.</li>
+<li>Fayda veren hizmet: <a href="https://quran.com/22/77">Hac 22/77</a>; <a href="https://sunnah.com/muslim:1009">Müslim 1009</a>.</li>
+<li>Gençlere güvenmek: <a href="https://sunnah.com/bukhari:3730">Buhârî 3730</a>.</li>
+<li>Hatim ve cemaat niyazı: <a href="https://quran.com/18/10">Kehf 18/10</a>; <a href="https://quran.com/2/201">Bakara 2/201</a>; <a href="https://quran.com/3/16">Âl-i İmrân 3/16</a>.</li>
+<li>Âyet anlamı: <a href="https://quran.com/tr/kehf/10">Kur’an-ı Kerîm — Kehf sûresi, 10. âyet</a>.</li>
+<li>Meslek ölçüsü: <a href="https://quran.com/tr/kasas/26">Kur’an-ı Kerîm — Kasas sûresi, 26. âyet</a>.</li>
+<li>İbadet ve emek: <a href="https://quran.com/tr/cuma/10">Kur’an-ı Kerîm — Cuma sûresi, 10. âyet</a>.</li>
+<li>Sahâbe örneği: <a href="https://islamansiklopedisi.org.tr/musab-b-umeyr">TDV İslâm Ansiklopedisi — Mus‘ab b. Umeyr</a>.</li>
+<li>Klasik söz: <a href="https://islamansiklopedisi.org.tr/hasan-i-basri">TDV İslâm Ansiklopedisi — Hasan-ı Basrî, ilim ve amel</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

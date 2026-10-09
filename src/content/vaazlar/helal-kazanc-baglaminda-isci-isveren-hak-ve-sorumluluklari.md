@@ -1,239 +1,461 @@
 ---
-baslik: "Helal Kazanç Bağlamında İşçi İşveren Hak ve Sorumlulukları"
-ozet: "Peygamberimiz Hz. Muhammed (s.a.s.)'e, ailesine ve ashabına binlerce salat-ü selam olsun."
+baslik: "Emeğin Hakkı: İşçi ve İşveren İçin Adalet, Güven ve Sorumluluk"
+ozet: "Emeğin hakkını zamanında vermek, açık sözleşme yapmak ve dürüst çalışmak: Avrupa’da işçi ve işverenin karşılıklı sorumlulukları, kayıt dışı istihdam ve hayata taşınacak yedi söz."
 kategori: toplum
-kelime: 3329
+kelime: 3878
 docx: "/vaazlar/helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari.docx"
 pdf: "/vaazlar/helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari.pdf"
+kapak: "/media/vaazlar/helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari/kapak-og.webp"
+kapakAlt: "Bir atölye tezgâhında iş eldivenleri, koruyucu gözlük ve üzerine yazı bulunmayan ücret zarfı."
 ---
-Muhterem Müslümanlar!
 
-Bizleri yoktan var eden, Yüce Rabbimize sonsuz hamd-ü senalar olsun.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari/kapak.svg" width="1600" height="900" alt="Bir atölye tezgâhında iş eldivenleri, koruyucu gözlük ve üzerine yazı bulunmayan ücret zarfı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Aynı tezgâhta karşılıklı güven</strong> Emeğin karşılığı, adalet ve güvenle teslim edilir.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Peygamberimiz Hz. Muhammed (s.a.s.)'e, ailesine ve ashabına binlerce salat-ü selam olsun.
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#guc-ve-guven">Ehliyet ve güven</a></li>
+<li><a href="#hak-ve-ikram">Adalet ve ihsan</a></li>
+<li><a href="#acik-sozlesme">Sözleşmenin açıklığı</a></li>
+<li><a href="#ucretin-vakti">Zamanında ücret</a></li>
+<li><a href="#hizmetin-karsiligi">Peygamberimizin uygulaması</a></li>
+<li><a href="#durust-calisma">İşçinin sorumluluğu</a></li>
+<li><a href="#kayit-disi-is">Doğru beyan ve güvence</a></li>
+<li><a href="#insanca-calisma">Güvenlik ve merhamet</a></li>
+<li><a href="#hak-aramak">Uyuşmazlıkta adalet</a></li>
+<li><a href="#hatayi-onarmak">Düzeltme ve başlangıç</a></li>
+<li><a href="#yedi-soz">Yedi somut söz</a></li>
+<li><a href="#hatim-duasi">Hatim ve niyaz</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: İş elbisesinden seccadeye</h2>
 
-Hz. Allah bizleri kendisine kul, Habib'ine ümmet eylesin. Son nefesimiz dâhil imanda daim ve kaim eylesin. Rızasına uygun ameller işlemeyi cümlemize nasip eylesin.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari/kapak.svg" width="1600" height="900" alt="Bir atölye tezgâhında iş eldivenleri, koruyucu gözlük ve üzerine yazı bulunmayan ücret zarfı." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Aynı tezgâhta karşılıklı güven</strong> Emeğin karşılığı, adalet ve güvenle teslim edilir.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-Muhterem Müslümanlar!
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Hazreti Allah insanı diğer canlılara göre farklı yeteneklere ve üstün meziyetlere sahip olarak yaratmıştır. Bu meziyetlerin başında akıl ve irade gelir. İnsan hür iradesiyle bu kabiliyetlerini iyi ya da kötü şekilde değerlendirme yetkisine sahiptir. Bunu da ancak çalışma yoluyla sağlayacağı açıktır. Yüce Allah insanı, yaptığı her türlü iş ve eylemlerinden sorumlu tutarak hesaba çekeceğini de özellikle bildirmektedir. Hazreti Allah,
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-<p lang="ar" dir="rtl" class="ayet">وَلَتُسْأَلُنَّ عَمَّا كُنتُمْ تَعْمَلُونَ</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-"Yaptıklarınızdan mutlaka sorumlu tutulacaksınız" (Nahl,16/93) buyurarak hesap gününü hatırlatmıştır.
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashâbına salât ve selâm olsun.* (serbest dua lafzı)
 
-<p lang="ar" dir="rtl" class="ayet">وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَى وَأَنَّ سَعْيَهُ سَوْفَ يُرَى</p>
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-Bilsin ki insan için kendi çalışmasından başka bir şey yoktur. Ve çalışması da ileride görülecektir. (Necm, 39-40.)
+*Mûsâ, “Rabbim! Gönlüme ferahlık ver. İşimi bana kolaylaştır. Dilimden düğümü çöz ki sözümü iyi anlasınlar” dedi.* (Tâhâ, 20/25–28)
 
-Allah'ın her kuluna kabiliyet ve çalışmasına göre bir takım nimet ve imkânlar vereceği, başkalarının ellerindekine göz dikerek onların hasretini çekerek ömür geçirmek yerine, elleriyle kazandıklarının değerini bilmeleri (Nisa, 32.), ahiret hayatı için çalışırken dünyadan da nasibin unutulmaması
+**Aziz cemaat! Alın teriyle evine ekmek götüren, başkasına iş imkânı açan kıymetli kardeşlerim!**
 
-<p lang="ar" dir="rtl" class="ayet">وَابْتَغِ فِيمَا آتَاكَ اللَّهُ الدَّارَ الْآخِرَةَ وَلَا تَنَسَ نَصِيبَكَ مِنَ الدُّنْيَا وَأَحْسِن كَمَا أَحْسَنَ اللَّهُ إِلَيْكَ</p>
+Vardiya biter. İş elbisesinin cebinde bir anahtar, telefonda beklenen ücretin haberi vardır. Birimiz fabrikadan, birimiz bakım hizmetinden, birimiz bilgisayar başından geliriz. Aynı safta işçi de işveren de durur. Rabbimizin huzurunda her birimiz kuluz. Bugün bu saftaki eşitliğin iş yerindeki davranışımıza nasıl yansıyacağını konuşacağız.
 
-Allah'ın sana verdiğinden (O'nun yolunda harcayarak) ahiret yurdunu iste; ama dünyadan da nasibini unutma. Allah sana ihsan ettiği gibi, sen de (insanlara) iyilik et. (Kasas, 77.) çalışmanın daima İslam Dini'nin istediği meşru yolda olması gerektiği (Bakara,114.) vurgulanmış, belirtilmiştir (İsra, 18-19; Enbiya, 94; Dehr, 22.)
+Çalışma hayatının derdi evdeki sofraya kadar gelir. Zamanında yatan ücret, bir annenin market hesabını rahatlatır. Güvenle tamamlanan iş, küçük bir işletmenin yarınını korur. İş arayan gencimiz, emekli büyüğümüz ve çalışamayan kardeşimiz de bu konuşmanın içindedir. Herkesin onuru kıymetlidir.
 
-Hz. Peygamber öncelikle her konuda olduğu gibi bu konuda da dolu dolu bir hayat sürmüştür. Daima çalışmış ve zamanını en iyi ve verimli şekilde planlamıştır. Aralarında yaşadığı, eğitim-öğretim ve gelişmeleri ile yakından ilgilendiği sahabilere: "İki günü birbirine eşit olan ziyandadır, aldanmıştır." (Keşfü'I-Hafa, 11,323.) buyururken O, her türlü başarı, gelişme ve ilerlemenin zamanı en iyi, en planlı bir şekilde kullanmanın gereğini ifade etmiştir.
+**Helâl kazanç, emeği dürüstçe sunmak ve emeğin hakkını adaletle vermektir.**
 
-## Genel Olarak Çalışma ve İşçi İşveren İlişkisi
+Birbirimize hangi işi, hangi ücreti ve hangi şartları vaat ettiğimizi hatırlayalım. Verdiğimiz sözü, dinlenme hakkını ve doğru beyanı birlikte ele alalım. İbadette aradığımız huzur, başkasının hakkını teslim ettiğimiz davranışlarda da kök salsın.
 
-İslam, başarının sırrını çalışmak olarak açıklar. Başarıyı yakalamak için de yukarıda sayılan meziyet ve yeteneklerin atıl olarak bırakılmayıp, harekete geçirilmesini ister. Nitekim Kur'an; "Bilsin ki insan için kendi çalışmasından başka bir şey yoktur" (Necm, 39) ihtarında bulunur.
+**İş yerinde verdiğimiz söz, seccadede taşıdığımız sorumluluğun içindedir.**
 
-Her toplumda bir üretenler, bir de tüketenler sınıfı vardır. İnsanın yaratılış amacı sadece dünyasını mamur etmek değildir. Hem dünyadaki asıl ihtiyaçlarını en mükemmel şekliyle karşılamak için çalışacak, hem de ahirete ait kemalatın elde edilmesi için son derece gayret gösterecektir. Bu, İslam'ın dünyada huzur ahirette ebedi saadet parolasıdır.
+---
 
-<p lang="ar" dir="rtl" class="ayet">وِمِنْهُم مَّن يَقُولُ رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</p>
+<h2 class="vaaz-bolum-baslik" id="guc-ve-guven" tabindex="-1">I. Emeğin değeri: Güç ve güven birlikte</h2>
 
-"Ey Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver" (Bakara, 201) ayetinde verilen mesaj da budur.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَتْ إِحْدَىٰهُمَا يَـٰٓأَبَتِ ٱسْتَـْٔجِرْهُ ۖ إِنَّ خَيْرَ مَنِ ٱسْتَـْٔجَرْتَ ٱلْقَوِىُّ ٱلْأَمِينُ ۝٢٦</p>
 
-## İnsanlar Arasında Ekonomik Farklılık
+*Kızlardan biri, “Babacığım, onu ücretle tut. Çünkü ücretle istihdam edeceğin en iyi kimse, güçlü ve güvenilir olandır” dedi.* (Kasas, 28/26)
 
-Kur'an ekonomik hayatın temelinde, insanlar arasındaki ekonomik farklılığın bulunduğunu haber verir.
+Kasas sûresinde Hz. Mûsâ, Medyen’de hayvanlarını sulamakta zorlanan iki kadına yardım eder. Kadınlardan biri babasına bu teklifi sunar. Âyette iki vasıf yan yanadır: İşe yetecek güç ve insana güven verecek ahlak. Kur’an’ın bu sahnesi, işe alırken ve çalışırken kendimize soracağımız iki soruyu aydınlatır.
 
-<p lang="ar" dir="rtl" class="ayet">أَهُمْ يَقْسِمُونَ رَحْمَةَ رَبِّكَ نَحْنُ قَسَمْنَا بَيْنَهُم مَّعِيشَتَهُمْ فِي الْحَيَاةِ الدُّنْيَا وَرَفَعْنَا بَعْضَهُمْ فَوْقَ بَعْضٍ دَرَجَاتٍ لِيَتَّخِذَ بَعْضُهُم بَعْضًا سُخْرِيًّا وَرَحْمَتُ رَبِّكَ خَيْرٌ مِّمَّايَجْمَعُونَ</p>
+“Bu işi yapabilecek bilgi ve becerim var mı? Bana emanet edilene sadık kalıyor muyum?” Güç, her meslekte aynı görünmez. Bakım çalışanında dikkat, muhasebecide hesap bilgisi, ustada el becerisi önemlidir. Bedensel engeli olan bir kardeşimizin kabiliyetini görerek uygun çalışma imkânı hazırlamak da ehliyete değer vermektir.
 
-"Rabbinin rahmetini onlar mı paylaştırıyorlar? Dünya hayatında onların geçimliklerini aralarında biz paylaştırdık. Birbirlerine iş gördürmeleri için kimini ötekine derecelerle üstün kıldık. Rabbinin rahmeti onların biriktirdikleri şeylerden daha hayırlıdır." (Zuhruf, 43/32.)
+Tezgâhın üzerinde duran ölçü aleti ustanın maharetini gösterir. Doğru kaydedilen sonuç ise güvenilirliğini gösterir. İyi çalışmak için ikisine de ihtiyacımız var. Bilmediğimiz işi biliyormuş gibi üstlenmek yerine öğrenme ihtiyacımızı açıkça söyleyelim. Bir gencin ilk işinde soracağı soru, bazen pahalı bir hatayı önler.
 
-Herkes bilmeli ki:
+İşveren de çalışan seçerken yakınlığın önüne ehliyeti koysun. Akrabamıza yardım etmek isterken hazırlıksız olduğu bir görevle onu zorlamayalım. Eğitim verelim, sorumluluğu açıklayalım, öğrenmesine vakit tanıyalım. Dilini yeni öğrenen bir çalışana güvenlik talimatını anlayabileceği şekilde anlatmak da bu hazırlığın parçasıdır.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ رَسُولِ اللَّهِ - صلى الله عليه وسلم - قَالَ « مَا أَكَلَ أَحَدٌ طَعَامًا قَطُّ خَيْرًا مِنْ أَنْ يَأْكُلَ مِنْ عَمَلِ يَدِهِ ، وَإِنَّ نَبِىَّ اللَّهِ دَاوُدَ - عَلَيْهِ السَّلاَمُ - كَانَ يَأْكُلُ مِنْ عَمَلِ يَدِهِ</p>
+Çalışanın değerini yalnız hızla ölçersek titizliği gözden kaçırabiliriz. Yorulan insanın dikkati azalabilir. Sağlam iş, uygun şartlar içinde gelişir. Hepimiz kendi payımıza düşeni tamamlayalım: Çalışan becerisini geliştirsin; yönetici o becerinin güvenle kullanılacağı ortamı hazırlasın. Emanet böyle korunur.
 
-"Hiç kimse elinin emeğinden daha hayırlı bir yemek yememiştir. Allah'ın nebisi Davud (a.s.) da kendi elinin emeğinden yerdi." (Buhari,Sahih, Büyü,15.)
+Sevgili gençler! İlk işte öğrenmek için eğildiğimiz tezgâhın başında bazen çekiniriz. “Bunu tekrar anlatır mısınız?” demek cesaret ister. Ustamız soruya vakit ayırınca hem işi hem sorumluluğu öğretmiş olur. Genç de dikkatle dinlesin; öğrendiği usulü uygulasın. Bugün aldığımız eğitim, yarın başkasına vereceğimiz güvenin başlangıcıdır.
 
-Bunun yanında hemen hemen tüm peygamberler bir meslekle meşgul olmuşlardır. Hz. İdris terziydi, Hz. İsa marangozdu, Hz. Musa çobandı, Hz. Davud demirci olup ilk defa zırh yapan kişiydi. Hz. Peygamber de yıllarca tüccarlık yapmıştır.
+Bir işi yapabildiğimizi gösterirken çalışma arkadaşımızın sınırını da gözetelim. Aynı hızda yürüyemeyen, aynı yükü kaldıramayan insan başka bir görevde başarılı olabilir. Doğru görev dağılımı, ekipte herkesin katkısını görünür kılar. İşin ihtiyacını insanın kabiliyetiyle buluşturalım.
 
-Şüphesiz çalışma denilince hem bedeni, hem fikri çalışma akla gelecektir. İnsanlık, çalışmanın bu iki türü arasında bir tercih yapma şansına sahip değildir. Kur'an aklı kullanma, düşünme konusunda insana ciddi anlamda öğütler yöneltmekte, aklını kullanmayanların geleceğinin iyi olmadığını önemle vurgulamaktadır.
+**İşe ehliyet, insana güven kazandıran ahlakla tamamlanır.**
 
-## Çalışmak ama Helalinden
+---
 
-İslam, insana çalışmayı emredip te onu hırsları, kaprisleri, bencilliği ile baş başa bırakmamış, onun bu olumsuzluklarını törpüleyecek kuralları da koymuştur. Bu kuralları helal kazanç formülü ile ifade etmek mümkündür. Helal kazanç için birinci şart, emeğin meşru biçimde harcanmasıdır. Dinin yasakladığı iş alanlarında rızık aramak meşru değildir. Bu sebeple faiz, kumar, hırsızlık, gasp ve benzeri yollarla mal edinme yasaklanmıştır. Kullanımı yasak olan malların üretiminde çalışmak ta haramdır.
+<h2 class="vaaz-bolum-baslik" id="hak-ve-ikram" tabindex="-1">II. Adalet önce gelir: Hak ve ikram</h2>
 
-## Alın Teriyle Yapılan Bir İbadet: Emek
+**Muhterem Müslümanlar! Bir iş yerinin bereketini, orada korunan insan hakkıyla birlikte değerlendirelim.**
 
-Allah'ın bize yüklemiş olduğu her türlü dünya ve ahiret işinin, O'nun emri olduğu için yine O'nun rızasına uygun olarak yapılmasının daima nafile birer ibadet olduğu bilinen bir husustur.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">۞ إِنَّ ٱللَّهَ يَأْمُرُ بِٱلْعَدْلِ وَٱلْإِحْسَـٰنِ وَإِيتَآئِ ذِى ٱلْقُرْبَىٰ وَيَنْهَىٰ عَنِ ٱلْفَحْشَآءِ وَٱلْمُنكَرِ وَٱلْبَغْىِ ۚ يَعِظُكُمْ لَعَلَّكُمْ تَذَكَّرُونَ ۝٩٠</p>
 
-İslam dini, başkalarının hak ve hukuklarını gözeterek ve haramlardan da sakınmak kaydı ile her türlü geliri meşru kazanç saymıştır.
+*Muhakkak ki Allah adaleti, ihsanı, akrabaya karşı cömert olmayı emreder; hayâsızlığı, kötülüğü ve zorbalığı yasaklar. İşte Allah, aklınızı başınıza alasınız diye size böyle öğüt veriyor.* (Nahl, 16/90)
 
-Kazanç ve mülk edinmenin vasıta ve yollarından birisi de elemeği ile kazançtır. İslam hukukunda emek, en makbul ve muteber kazanç vasıtası olarak değerlendirilmiştir.
+İşverenin çalışanına ikram ettiği sıcak çorba güzeldir. Fakat o sofraya oturan insanın hak ettiği ücreti de tam verilmelidir. Âyetin adalet ve ihsan çağrısını iş hayatına taşıyalım. Adaletle hakkı teslim ederiz; ihsanla ilişkimize daha fazla iyilik katarız. Zorunlu ödeme ile gönüllü ikramı yerli yerinde tutarız.
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ أَنَسِ بْنِ مَالِكٍ أَنَّ رَجُلاً مِنَ الأَنْصَارِ جَاءَ إِلَى النَّبِىِّ -صلى الله عليه وسلم- يَسْأَلُهُ فَقَالَ « لَكَ فِى بَيْتِكَ شَىْءٌ ». قَالَ بَلَى حِلْسٌ نَلْبَسُ بَعْضَهُ وَنَبْسُطُ بَعْضَهُ وَقَدَحٌ نَشْرَبُ فِيهِ الْمَاءَ. قَالَ « ائْتِنِى بِهِمَا ». قَالَ فَأَتَاهُ بِهِمَا فَأَخَذَهُمَا رَسُولُ اللَّهِ -صلى الله عليه وسلم- بِيَدِهِ ثُمَّ قَالَ « مَنْ يَشْتَرِى هَذَيْنِ ». فَقَالَ رَجُلٌ أَنَا آخُذُهُمَا بِدِرْهَمٍ. قَالَ « مَنْ يَزِيدُ عَلَى دِرْهَمٍ ». مَرَّتَيْنِ أَوْ ثَلاَثًا قَالَ رَجُلٌ أَنَا آخُذُهُمَا بِدِرْهَمَيْنِ. فَأَعْطَاهُمَا إِيَّاهُ وَأَخَذَ الدِّرْهَمَيْنِ فَأَعْطَاهُمَا الأَنْصَارِىَّ وَقَالَ « اشْتَرِ بِأَحَدِهِمَا طَعَامًا فَانْبِذْهُ إِلَى أَهْلِكَ وَاشْتَرِ بِالآخَرِ قَدُومًا فَأْتِنِى بِهِ ». فَفَعَلَ فَأَخَذَهُ رَسُولُ اللَّهِ -صلى الله عليه وسلم- فَشَدَّ فِيهِ عُودًا بِيَدِهِ وَقَالَ « اذْهَبْ فَاحْتَطِبْ وَلاَ أَرَاكَ خَمْسَةَ عَشَرَ يَوْمًا ». فَجَعَلَ يَحْتَطِبُ وَيَبِيعُ فَجَاءَ وَقَدْ أَصَابَ عَشْرَةَ دَرَاهِمَ فَقَالَ « اشْتَرِ بِبَعْضِهَا طَعَامًا وَبِبَعْضِهَا ثَوْبًا ». ثُمَّ قَالَ « هَذَا خَيْرٌ لَكَ مِنْ أَنْ تَجِىءَ وَالْمَسْأَلَةُ نُكْتَةٌ فِى وَجْهِكَ يَوْمَ الْقِيَامَةِ إِنَّ الْمَسْأَلَةَ لاَ تَصْلُحُ إِلاَّ لِذِى فَقْرٍ مُدْقِعٍ أَوْ لِذِى غُرْمٍ مُفْظِعٍ أَوْ دَمٍ مُوجِعٍ</p>
+Ücret ve üzerinde anlaşılan haklar borçtur. Hastalanan çalışanın hâlini sormak, zor bir gününde kolaylık göstermek, emeğine teşekkür etmek ayrıca güzeldir. İşçinin ihtiyacı karşısında kendimizi iyilik yapan üstün bir kişi gibi görmeyelim. Onun çalışması da işletmemize değer katmaktadır. İlişkimiz karşılıklı sorumluluk taşır.
 
-"Ensar'dan biri Peygambere gelip kendisinden dilendi. Peygamber efendimiz o kişiye: “Evinde bir şey yok mudur? Diye sordu. Adam: “Evet bir hasır ve bir de su kabımız vardır. dedi. Resulullah: “Git onları bana getir.” Dedi. Onları getirince iki dirheme satmış. Dirhemleri de adama vererek dedi ki: “Bir dirhemle çocuklarına yiyecek al, diğer dirhemle de bir balta satın al ve bana getir.” Adam baltayı getirince peygamber baltaya bir sap taktıktan sonra adama: “Al götür onunla odun kes sat, geçimini sağla, seni on beş güne kadar görmeyeyim.” buyurdu.
+Aynı ekipte Müslüman, Hristiyan veya hiçbir dine bağlı olmayan insanlar bulunabilir. Hakkın ölçüsü kimliğe göre değişmez. Çalışanımızın memleketi, dili veya camiye gelip gelmemesi ücretini ve onurunu azaltmaz. Kadın çalışanı küçümseyen bir söz, insanı incitir; emeğinin hakkını koruyacak saygılı bir dil kuralım.
 
-Adam da gidip odunculuk yapmaya başladı ve peygamberin yanına on dirhem kazanmış olarak döndü. Peygamber efendimiz adama “Bu senin için, yüzünde dilencilik lekesi olduğu halde yanımıza gelmekten daha iyidir." (İbn Mace, Ticaret, 282) buyurdu.
+İşçi de adaleti kendi davranışında gözetir. İşverene ait aracı izinsiz kullanırken, bir arkadaşının yaptığı işi kendisi yapmış gibi gösterirken bu ölçüyü hatırlasın. Sorumluluğunu dürüstçe üstlenen kişinin sözü güven verir. Güven, ekipte herkesin işini kolaylaştırır.
 
-Emek, insanın bedenen veya zihnen ya da her ikisini kullanarak bir hedefe yönelik gayeli faaliyeti ve işleridir. Halk arasında, "el emeği, göz nuru, alın teri" diye tabir edilir. Toplumun her kesiminde icra edilen tüm faaliyetleri kapsar.
+İş yerinde sevgi ile açık kurallar birlikte bulunsun. “Biz burada aile gibiyiz” denildiğinde izin, ücret ve görevler yine belli olsun. Samimiyet, insanın hakkını rahatça sorabilmesini sağlasın. Sözünü dinlediğimiz çalışanın gönlü de yaptığı iş de güçlenir.
 
-Hz. Peygamber her fırsatta çalışma ve kazanmayı teşvik etmiştir:
+**İkramın güzelliği, hakkın eksiksiz teslim edildiği yerde büyür.**
 
-<p lang="ar" dir="rtl" class="ayet">عَنِ النَّبِىِّ -صلى الله عليه وسلم- قَالَ « التَّاجِرُ الصَّدُوقُ الأَمِينُ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ</p>
+---
 
-"Doğru ve kendine güvenilir tüccar, yarın kıyamet günü peygamberler, sıddıklar ve şehitlerle haşrolunacaktır." (Tirmizi, Buyu, 1252)
+<h2 class="vaaz-bolum-baslik" id="acik-sozlesme" tabindex="-1">III. Açık sözleşme: Başlamadan anlaşmak</h2>
 
-Hz. Peygamber bu hadisleri ile de dünya-ahiret dengesinin kurulmasını temine çalışmaktadır. Resûlullah, durmadan çalışmaya, kazanmaya ilerlemeye teşvik etmekle kalmamış, bilakis helal kazanç elde etmek için çalışmak her Müslümana farzdır" buyurarak kendisine inananları ve bağlananları daima çalışmakla yükümlü kılmış ve çalışmayı ibadet kabul etmiştir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ أَوْفُوا۟ بِٱلْعُقُودِ</p>
 
-## İşçinin Görev ve Hakları
+*Ey iman edenler! Sözleşmeleri yerine getirin.* (Mâide, 5/1; âyetten bölüm)
 
-Bütün bunların ışığında İslam'ın, işçi için belirlenen temel görevleri şöyle sıralamak mümkündür: Eğer aksi zikredilmemişse işini kendisi yapacaktır. (Mecelle, *mad.* 571.) Belirlenen süre (mesai) içinde sürekli çalışacaktır. (Mecelle, *mad.* 425.) İşini sağlam ve güzel yapacaktır. Çünkü, "Kul bir iş yaptığı zaman, Allah kulun, işini iyi ve sağlam yapmasını sever." (Keşfü'l-Hafa, ll. 245-246) Kendisine emanet edilen malları, malzemeyi ve araçları iyi kullanacaktır. En iyi işçi güvenilir olandır.(*Kasas,* 26.)
+Yeni bir işe başlarken önümüzde birkaç sayfa kâğıt durur. Bazen acelemiz, bazen dili yeterince bilmeyişimiz bizi hızlıca imza atmaya yöneltir. O kâğıtlardaki şartlar, sonraki aylarımızı etkileyebilir. İşin ne olduğunu ve karşılığını anlayarak anlaşalım. İşveren de çalışanın sorusunu sabırla cevaplasın.
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ النَّبِىَّ - صلى الله عليه وسلم - الْخَازِنُ الأَمِينُ الَّذِى يُؤَدِّى مَا أُمِرَ بِهِ طَيِّبَةً نَفْسُهُ أَحَدُ الْمُتَصَدِّقَيْنِ</p>
+<p class="vaaz-etiket">Fıkhî Ölçü — İş ve ücret bilinir olsun</p>
 
-Gönül hoşluğu ile görevini yerine getiren görevli Allah rızası için sadaka veren kimsenin mükâfatını alır. (Buhari, Sahih, İcare, 1)
+İş akdinde yapılacak işin ve ücretin belirli, bilinir ve meşru olması temel ölçüdür. Süreye bağlı çalışma ile belli bir işi tamamlamaya bağlı çalışma farklı sonuçlar doğurabilir. İşin süresi ve ücretin miktarı açıklığa kavuştuğunda taraflar belirsizlikten ve mağduriyetten korunur.
 
-İşini yapan, sorumluluklarını yerine getiren işçinin en temel hakkı ücrettir. Kur'an, herkese kazandığının tam olarak ödeneceğini genel bir prensip olarak şöyle tespit eder:
+(İlmihal, II, Çalışma Hayatı, İş Akdi, s. 333–335; TDV İslâm Ansiklopedisi, İcâre.)
 
-<p lang="ar" dir="rtl" class="ayet">وَلِكُلٍّ دَرَجَاتٌ مِّمَّا عَمِلُوا وَلِيُوَفِّيَهُمْ أَعْمَالَهُمْ وَهُمْ لَا يُظْلَمُونَ</p>
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>İşe başlamadan dört açıklık</strong> Konuştuğumuz şartları anlaşılır bir kayda geçirelim.</figcaption>
+<table aria-label="İşe başlamadan dört açıklık">
+<thead><tr><th scope="col">Konu</th><th scope="col">Açıklığa kavuşturulacak soru</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Konu">İş</th><td data-label="Açıklığa kavuşturulacak soru">Görevim ve sorumluluğum nedir?</td></tr>
+<tr><th scope="row" data-label="Konu">Ücret</th><td data-label="Açıklığa kavuşturulacak soru">Tutar, kesintiler ve ödeme günü belli mi?</td></tr>
+<tr><th scope="row" data-label="Konu">Zaman</th><td data-label="Açıklığa kavuşturulacak soru">Çalışma süresi, molalar ve ek mesai nasıl düzenleniyor?</td></tr>
+<tr><th scope="row" data-label="Konu">Güvence</th><td data-label="Açıklığa kavuşturulacak soru">Çalışma bildirimi ve güvenlik tedbirleri nasıl sağlanıyor?</td></tr>
+</tbody></table>
+</figure>
 
-Herkese işlediklerinin karşılığı tam olarak ödenir, Onlara zulmedilmez. (Ahkaf, 19)
+“Sen başla, parayı sonra konuşuruz” sözü yerine baştan açıklık getirelim. Karşılıklı güvenin yanına yazılı kayıt eklemek, unutulan bir ayrıntıyı hatırlatır. Ücret bordrosunu anlamayan çalışan, bilen birinden yardım alsın. Bilgiler paylaşılırken mahremiyet korunsun.
 
-## İşverenin Görevleri
+Öğrencinin kısa süreli işi de evde verilen ücretli bakım hizmeti de aynı özeni hak eder. Yakınlarımız arasında yapılan anlaşmaları da açıklığa kavuşturalım. Ücretin net mi brüt mü konuşulduğunu soralım. Günlük çalışmada ve uzun sözleşmede ödeme şartlarını birbirine karıştırmayalım.
 
-### a-İşveren işçisinin hamisidir
+Sözleşmenin şartı değişecekse bunu önceden konuşalım. Yeni görevin yükünü ve karşılığını belirleyelim. Her iki taraf, neyi kabul ettiğini bilsin. Anlaşılır bir söz, yarınki kırgınlığı bugünden önleyebilir.
 
-Dinin, kişiler arası ilişkilerin temeline yerleştirdiği kul hakkı düşüncesi, işçi işveren ilişkilerinde de en önde tutulması gereken ilk prensiptir. Allah katında hem işçi, hem işveren kul olma noktasında birleşirler. Bu sebeple her iki taraf da, birbirinin hakkını üzerine geçirmeme konusunda duyarlı olmak zorunda bulunduğunu, aksi yönde bir davranışın onu zalim durumuna düşüreceğini hatırından çıkarmaz. Bilir ki
+**Açık anlaşma, emeği de işletmeyi de korur.**
 
-<p lang="ar" dir="rtl" class="ayet">وَمَا لِلظَّالِمِينَ مِن نَّصِيرٍ</p>
+---
 
-"Zalimlerin hiç bir yardımcısı yoktur." (Hac, 71.)
+<h2 class="vaaz-bolum-baslik" id="ucretin-vakti" tabindex="-1">IV. Ücretin vakti: Alın terinin hakkı</h2>
 
-İşveren sermayeyi elinde bulundurduğu için güçlü taraftır. Bu sebeple, işçi-işveren ilişkilerinde ilk akla gelen şey işçinin korunmaya muhtaç bir konumda olduğu düşüncesidir. Bundan dolayı da işçi hakları her zaman gündemdedir. Karşılıklı hak ve görevler açısından taraflar arasında bir fark yoktur.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَعْطُوا الأَجِيرَ أَجْرَهُ قَبْلَ أَنْ يَجِفَّ عَرَقُهُ</p>
 
-İslam, sermaye sahibine her fırsatta bir emanetçi olduğunu, malının gerçek sahibinin Allah olduğunu, o mallarda fakirlerin de hakkı bulunduğunu hatırlatır. Burada amaç, maddi gücün insan ruhuna sindireceği tahakküm ve zorbalık temayüllerini törpülemek, kendisinin de ölümlü olduğu bilincini diri tutmaktır.
+*İşçiye ücretini, teri kurumadan verin.* (İbn Mâce, 2443; Sunnah.com’da Darussalam değerlendirmesi: sahih)
 
-İslam, sermayeyi, sahibi eliyle topluma yönelik hale getirdiği gibi, sermaye sahibini, işvereni de, işçi ile ilişkileri açısından, patrondan çok bir baba, bir koruyucu konumuna getirmeyi hedefler. Bu tutumu, onun ahlaki bir davranışı haline getirmeye çalışır. İşçi-işveren ilişkilerinin, kul-Allah ilişkilerine de yansıdığını vurgular ve kulun Allah katında değerini artırdığını ifade eder.
+Bir çalışanın telefonu ödeme gününde tekrar tekrar aydınlanır. Banka hesabına bakar; kira için ayıracağı tutarı hesaplar. Ücret, onun yaptığı işin karşılığıdır. Efendimizin bu özlü öğüdü, emeğin hakkını geciktirmeden teslim etmeye çağırır. Günlük işte ve aylık işte kararlaştırılan ödeme vaktine sadık kalalım.
 
-Hz. Peygamber'in bize yansıttığı şu tablo bu konuda oldukça dikkat çekici bir örnektir:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَرَجُلٌ اسْتَأْجَرَ أَجِيرًا فَاسْتَوْفَى مِنْهُ وَلَمْ يُعْطِهِ أَجْرَهُ</p>
 
-Üç arkadaş yolculukları sırasında yağmura tutulurlar ve bir mağaraya sığınırlar. Derken yuvarlanan bir kaya gelir mağaranın ağzını kapatır. İçinde bulundukları durumu aralarında görüştüler ve içlerinden birisi; "Bizi bu durumdan Allah'tan başka kimse kurtaramaz. Herbirimiz yapmış olduğumuz iyi bir işi anarak Allah'a yalvaralım, belki kurtuluruz", dedi.
+*Bir işçi tutup ondan işi tam olarak aldığı hâlde ücretini vermeyen kimse, Allah Teâlâ’nın kıyamet gününde hasmı olacağını bildirdiği kişiler arasındadır.* (Buhârî, 2270; rivayetten bölüm)
 
-Herbirisi söylendiği şekilde dualarını yaptılar. Herbirinin duasından sonra taş biraz aralandı. Nihayet üçüncüsü: "Allah'ım! (biliyorsun ki) ben bir keresinde ücretle bazı işçiler çalıştırdım. Ücretlerini verdim. Ancak biri ücretini almadan gitti. Ben de onun ücretini (ticaret yaparak) çoğalttım. Öyle ki ücreti bir servete dönüştü. Bir zaman sonra o işçi geldi ve bana, 'Ey Allah'ın kulu, ücretimi ver' dedi.
+Bu kudsî hadiste sözü bildirilen Allah Teâlâ’dır. İşçinin hakkını yiyen, karşısında yalnız güçsüz bir çalışan bulduğunu sanmasın. Rabbimizin adaleti o hakkı kuşatır. Bu uyarıyı kendi hesabımızı düzeltmek için dinleyelim. Hak teslim edildiğinde bir evde endişe hafifler.
 
-Ben de ona, 'şu gördüğün deve, koyun, sığır ve (onlara bakan) köleler hep senin ücretinden meydana gelmiş bir servettir' dedim. Adam, 'Ey Allah'ın kulu, benimle alay etme! dedi. Ben de ona, 'Hayır, seninle alay etmiyorum, (malını al, götür)' dedim. Derken o bunların hepsini sürüp götürdü. Bunlardan bir şey bırakmadı'. Ey Rabbim! Bunu senin rızanı isteyerek yaptıysam şu kaya parçasıyla bunaldığımız şu darlıktan bizi kurtarır" diye dua etti. Kaya tamamen açıldı. Yürüyüp gittiler. (Buhari, İcare, 2)
+İşveren ödeme planını, çalışanının alacağını gözeterek kursun. Ek mesaiyi saklamadan kaydetsin. İşten ayrılanın kalan alacağını da zamanında sonuçlandırsın. Çalışanla yaşanan bir kırgınlık, ücret üzerinde keyfî tasarrufa dönüşmesin. İhtilaf varsa usulünce ele alınsın.
 
-İslam işverenden, işçinin patronu değil; babası ve koruyucusu olmasını istiyor. Bu ilkelerin uygulanması, iş dünyasının iki kesimi arasındaki kutuplaşmaları en aza indirecek, çalışma barışının daha kolay sağlanmasına yardım edecektir.
+İşletme gerçekten zor durumdaysa dürüstçe konuşmak, çözüm aramanın ilk adımıdır. Borcun tutarı ve önerilen ödeme planı açıkça ortaya konulsun. Çalışanın rızası baskı altında alınmasın; yetkili danışmanlıkla hakları gözetilsin. Zorluğu birlikte konuşurken geçim yükünün kimde olduğunu da görelim.
 
-### b- Emeğin karşılığını geciktirmeden verir
+Ödeme günü geldiğinde işçinin yeniden yeniden kapımızı çalmasına ihtiyaç bırakmayalım. “Bu ay ne zaman yatırılır?” sorusunun cevabı baştan bilinsin. Çalışan da ödemenin kaydını kontrol etsin; yanlışlığı vakit geçirmeden bildirsin. Fazla yatırılmış bir tutar gördüğümüzde doğruyu söylemek de aynı ahlakın içindedir. Hesabın temizliği, iki tarafın dürüstlüğüyle korunur.
 
-Genellikle emekçilerin geçim kaynağı ücret gelirleri olduğundan bu amacın gerçekleşmesi büyük önem arz etmektedir. Ücret, işçi tarafından hak edilişinden itibaren işverenin üzerinde emanet mal niteliğini taşır. Bu nedenle meşru bir mazeret bulunmadığı sürece, işverenin, ücreti zamanında ödememesi, ya da eksik ödemesi emanete tecavüz olarak değerlendirilmiştir. Böyle davrananların kıyamet gününde Allah'ın hasmı olacakları vurgulanmıştır. Nitekim bir hadis-i kudside, işçi hakkının kendi hakkı gibi olduğunu bildiren Allah, işçinin hakkını ödemeyenler için,
+**Emeğin karşılığını, üzerinde anlaşılan vakitte tam ödeyelim.**
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ثَلاَثَةٌ أَنَا خَصْمُهُمْ يَوْمَ الْقِيَامَةِ وَمَنْ كُنْتُ خَصْمَهُ خَصَمْتُهُ يَوْمَ الْقِيَامَةِ رَجُلٌ أَعْطَى بِى ثُمَّ غَدَرَ وَرَجُلٌ بَاعَ حُرًّا فَأَكَلَ ثَمَنَهُ وَرَجُلٌ اسْتَأْجَرَ أَجِيرًا فَاسْتَوْفَى مِنْهُ وَلَمْ يُوفِهِ أَجْرَهُ</p>
+---
 
-Hz. Peygamber (s.a.v.) şöyle buyurmaktadır: "Üç kişi vardır ki kıyamet günü ben onların düşmanı olacağım. Bir şey verip hilede bulunan, hür bir kişiyi satarak değerini yiyen, bir işçi tutup ücretini ödemeyen kimseler. (İbn Mace, Ruhun, 4)
+<h2 class="vaaz-bolum-baslik" id="hizmetin-karsiligi" tabindex="-1">V. Nebevî örnek: Hizmetin karşılığını vermek</h2>
 
-"Onların hasmı bizzat benim.' buyurmuştur. Yine Hz. Peygamber
+**Kıymetli kardeşlerim! Efendimiz (s.a.s.), emeğin hakkını kendi davranışıyla da öğretti.**
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ رَسُولُ اللَّهِ -صلى الله عليه وسلم- « أَعْطُوا الأَجِيرَ أَجْرَهُ قَبْلَ أَنْ يَجِفَّ عَرَقُهُ.</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">احْتَجَمَ النَّبِيُّ صلى الله عليه وسلم، وَأَعْطَى الْحَجَّامَ أَجْرَهُ</p>
 
-'İşçinin hakkını alnının teri kurumadan veriniz.' derken de aynı noktaya işaret etmiştir. (İbn Mace, Ruhun, 4)
+*Peygamberimiz hacamat yaptırdı ve hacamatı yapan kişiye ücretini verdi.* (Buhârî, 2278; İbn Abbas’ın rivayeti)
 
-## Ramazanda İşçi İşveren İlişkisi:
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Kısa bir rivayetin açık dersi</p>
 
-Ramazanda cömert davranmak, iyilik yapmak, çok hayır işlemek
+İbn Abbas, Efendimizin (s.a.s.) kendisine hacamat uygulayan kişinin ücretini verdiğini aktarır. Hizmeti alan Peygamberimizdir; ücreti alan, bu işi yapan insandır. İbn Abbas’ın hafızasında bu ödeme de yer bulur. Peygamberimizin kendi hayatından gelen bu sade uygulama, başkasının emeğini gözetmenin açık bir örneğidir.
 
-<p lang="ar" dir="rtl" class="ayet">وعن ابنِ عباسٍ ، رضِيَ اللهُ عَنْهُمَا ، قالَ : كَانَ رَسُولُ اللهِ ، صَلَّى اللهُ عَلَيْهِ وَسَلَّم ، أَجْوَدَ النَّاسِ ، وَكَانَ أَجْوَدُ مَا يَكُونُ في رَمَضَانَ حِينَ يَلْقَاهُ جِبْرِيلُ ، وَكَانَ جِبْرِيلُ يَلْقَاهُ في كُلِّ لَيْلَةٍ مِنْ رَمَضَانَ فَيُدَارِسُهُ القُرْآنَ ، فَلَرَسُولُ اللهِ ، صَلَّى اللهُ عَلَيْهِ وَسَلَّم ، حِينَ يَلْقَاهُ جِبْرِيلُ أَجْوَدُ بِالخَيْرِ مِنَ الرِّيحِ المُرْسَلَةِ »متفقٌ عليه .</p>
+(Buhârî, 2278; sahih rivayetin anlam özeti.)
 
-İbni Abbâs radıyallahu anhümâ şöyle dedi:
+Bu kısa haberi, bugün kullandığımız hizmetlerin yanına koyabiliriz. Tamir çantasını toplayan usta, vardiyasını bitiren temizlik çalışanı, dersini tamamlayan ücretli öğretmen emek vermiştir. Yapılan anlaşmaya uygun karşılığı teslim etmek bizim sorumluluğumuzdur. İşin küçük görülmesi, o emeğin sahibini küçültmez.
 
-Resûlullah sallallahu aleyhi ve sellem insanların en cömerti idi. Onun en cömert olduğu anlar da ramazanda Cebrâil'in, kendisi ile buluştuğu zamanlardı. Cebrâil aleyhisselâm, ramazanın her gecesinde Hz. Peygamber ile buluşur, (karşılıklı) Kur'an okurlardı. Bundan dolayı Resûlullah sallallahu aleyhi ve sellem Cebrâil ile buluştuğunda, esmek için engel tanımayan bereketli rüzgârdan daha cömert davranırdı." (Buhârî, Bedü'l-vahy 5, 6, Savm 7, Menâkıb 23, Bed'ul-halk 6, Fezâilü'l-Kur'ân 7, Edeb 39; Müslim, Fezâil 48, 50. Ayrıca bk. Tirmizî, Cihâd 15; Nesâî, Sıyâm 2; İbni Mâce, Cihâd 9)
+Cami derneğimiz de ücretle gördürdüğü işlerde aynı hassasiyeti taşısın. Onarım, temizlik veya başka bir hizmet için baştan anlaşalım. Ödemeyi yetkili kişi takip etsin. Gönüllü katkı ile ücretli işi açıkça ayıralım. Bir insan hayra katkıda bulunduğunda bunu kendi hür tercihiyle yapsın.
 
-Mevsiminde veya zamanında yapılan iş, iyilik ve ibadetin değeri iki sebepten dolayı büyüktür. Birincisi, yapılanın iyilik ve ibadet olması; ikincisi, "tam zamanında" yapılmış olmasıdır.
+Çalışanı sık sık çağırıp her defasında “Bunu da aradan çıkarıver” diyebiliriz. Küçük talepler üst üste gelince büyük bir yük doğar. Yeni işin süresini ve karşılığını yeniden konuşalım. Teşekkürümüz, emeğin değerini kabul eden davranışımızla birlikte olsun.
 
-Kısaca bir daha belirtecek olursak Resûl-i Ekrem Efendimiz'in ramazan ayında artan cömertliğinin iki ana sebebi olduğu anlaşılmaktadır. Birisi, Cebrâil *aleyhisselâm* ile karşılaşmak. İkincisi Cebrâil *aleyhisselâm* ile Kur'an mukâbele etmek, yani karşılıklı Kur'an okumak... Bu hadiste dikkatlerimize sunulan Efendimiz'in fiilî sünneti, ramazanda nasıl hareket etmemiz gerektiği konusuna tam bir açıklık getirmektedir.
+Çalışan da kararlaştırdığı hizmeti özenle tamamlasın. Bir eksik kaldığında açıkça bildirsin; çözüm için geri dönsün. Böylece tarafların birbirine güveni artar. İhtiyaç duyduğumuzda yeniden çağırabileceğimiz bir insanın varlığı, mahallemizdeki hayatı kolaylaştırır.
 
-Resûlullah sallallahu aleyhi ve sellem insanların en cömerdi idi. Efendimiz'in cömertliği ramazan ayında bir kat daha artardı.
+Bir evin bakımını yapan kişi, kimsenin görmediği saatlerde çalışabilir. Bir ofisin temizliği, sabah geldiğimizde çoktan bitmiş olabilir. Görünmeyen bu işler günlük hayatımızı taşır. Ödeme yaparken yalnız karşımızdaki kişinin sesini duyduğu anı beklemeyelim; anlaşmamızın gereğini kendimiz takip edelim. Emeğe vefa, hesabın doğru kapatıldığı yerde somutlaşır.
 
-İşverenin işçilere şefkatli yumuşak davranması, Kendilerine kötü davranmaktan ve ihtiyaçlarını ihmâl etmekten sakınması.
+Ücretli bir hizmette bütçemiz yetmiyorsa iş başlamadan bunu konuşabiliriz. Daha küçük bir işte anlaşabilir veya uygun zamanı bekleyebiliriz. İşi tamamlatıp sonra kendi imkânımıza göre bedel belirlemek, çalışanı zor durumda bırakır. Önceden söylenen açık söz, iki tarafı da rahatlatır.
 
-<p lang="ar" dir="rtl" class="ayet">وَاخْفِضْ جَنَاحَكَ لِمَنِ اتَّبَعَكَ مِنَ الْمُؤْمِنِينَ</p>
+**Başkasından aldığımız hizmetin hakkını, kendi elimizle teslim edelim.**
 
-"Sana uyan mü'minlere alçak gönüllü davran!" (Şuarâ sûresi, 26/215)
+---
 
-Allah Teâlâ müslüman kullarını Resûl-i Ekrem'ine emanet etmekte, sonra da onlara alçak gönüllü davranmasını, yardıma ve korunmaya muhtaç olanların elinden tutmasını tenbih etmektedir.
+<h2 class="vaaz-bolum-baslik" id="durust-calisma" tabindex="-1">VI. Dürüst çalışma: Görünmeyen yerde de emanet</h2>
 
-Bu sadece Resûl-i Ekrem *sallallahu aleyhi ve sellem* Efendimiz'e değil, onun şahsında bütün mü'minlere yapılmış bir tavsiyedir. Zira Yüce Rabbimiz mü'minleri birbirine kardeş yapmış, sonra da onlara birbirinin derdiyle ilgilenmeyi, birbirinin yarasına merhem olmayı ve kardeşlerinin sıkıntılarını gidermeyi emretmiştir. Şu halde mü'minler kardeş olduklarını hiçbir zaman unutmayacak, birbirlerine asla kaba davranmayacaklardır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِۦ عِلْمٌ ۚ إِنَّ ٱلسَّمْعَ وَٱلْبَصَرَ وَٱلْفُؤَادَ كُلُّ أُو۟لَـٰٓئِكَ كَانَ عَنْهُ مَسْـُٔولًا ۝٣٦</p>
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّ اللّهَ يَأْمُرُ بِالْعَدْلِ وَالإِحْسَانِ وَإِيتَاء ذِي الْقُرْبَى وَيَنْهَى عَنِ الْفَحْشَاء وَالْمُنكَرِ وَالْبَغْيِ يَعِظُكُمْ لَعَلَّكُمْ تَذَكَّرُونَ</p>
+*Hakkında bilgin olmayan şeyin ardına düşme! Çünkü kulak, göz ve gönül, bunların hepsi ondan sorumludur.* (İsrâ, 17/36)
 
-"Allah Teâlâ adaleti, iyiliği, akrabaya yardım etmeyi kesinlikle emreder; çirkinliğin her türlüsünü, kötülüğü ve her nevi haksızlığı yasaklar. Size düşünüp yapmanız için böyle öğüt verir." (Nahl sûresi, 16/90)
+Bir iş ekranındaki kutucuğu işaretlediğimizde “Kontrol ettim” demiş oluruz. İmzamız, görmediğimiz bir işi yapılmış gösterirse başkalarının kararını da yanıltır. Âyet, bilmediğimizin peşinden gitmemeyi ve sorumluluğumuzu hatırlatır. İşin başında da kaydını tutarken de doğruyu söyleyelim. Gerçek bilgi, güvenli kararın temelidir.
 
-Bu âyet-i kerîmede üç şey emredilmekte, üç şey de yasaklanmaktadır.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَحَدُ الْمُتَصَدِّقَيْنِ</p>
 
-Allah Teâlâ kullarına öncelikle adaleti, yani hakkı korumayı, haklının tarafında yer almayı, haksızlıktan kaçınmayı emretmektedir. Yöneticilerin dikkat etmesi gereken ilk esas budur.
+*Kendisine emredilen yardımı tam olarak, gönül hoşluğuyla doğru kişiye ulaştıran güvenilir Müslüman görevli, sadaka verenlerden biri sayılır.* (Buhârî, 1438; rivayetten bölüm)
 
-Âyette emredilen ikinci husus ihsan, yani iyilik yapmaktır. İhsan, bir hadîs-i şerîfte belirtildiği üzere, kendisi için istediğini diğer kardeşleri için de istemektir. Aslında ihsan denince hatıra, yaptığını güzel yapmak gelir. İhsanı ibadet açısından ele alan Peygamber Efendimiz onu, "Allah'ı görüyormuş gibi ibadet etmek" diye açıklamıştır. İnsan namaz kılarken Allah'ın huzurunda olduğunu düşünürse, ibadetini en güzel şekilde yapmış olur. Yöneticiler de, idare ettiklerine iyilik yapacaklar, onlara en güzel şekilde davranacaklardır.
+Bu rivayette özellikle sadakayı ulaştıran güvenilir görevli anlatılır. Her ücretli işi aynı hükümle adlandırmadan, emaneti eksiksiz yerine getirmenin kıymetini öğreniriz. Bize bırakılan alet, müşteri bilgisi veya çalışma kaydı özen ister. Görevimizi, başkasının gözünü üzerimizde hissetmediğimiz zaman da dürüstçe yapalım.
 
-Âyette emredilen üçüncü husus, akrabaların ihtiyaçlarını temin etmek, sıkıntılarını gidermek ve kendilerine ikramda bulunmaktır. Peygamber Efendimiz sevabı en çabuk alınan iyiliğin, akrabayı gözetmek olduğunu söylemektedir (İbni Mâce, Zühd 23).
+Mesai içinde görevimizi takip edelim. Gecikince haber verelim; tamamlanamayan işi bildirelim. İş arkadaşımızın başarısını kendimize mal etmek yerine emeğini teslim edelim. Hata yaptığımızda hemen açıklamak, zararın büyümesini önleyebilir. Açık konuşan insanın hatası düzeltilebilir.
 
-Âyet-i kerîmede yasaklanan ilk şey her türlü çirkinliktir. Özellikle de zina türünden edepsizliklerdir.
+İşveren de dürüstlüğü destekleyen ortam kursun. Eksik bildiren çalışanı herkesin önünde aşağılamak, sonraki hatanın saklanmasına yol açabilir. Çözüm için dinleyelim. Kasıt ve ihmal varsa bunları deliliyle, adil usulle değerlendirelim. Her zararı otomatik olarak çalışanın ücretinden düşürmek yerine sorumluluğu araştırıp hakkı gözetelim.
 
-İkinci yasak, dinin ve âdetlerin hoş görmediği kötülüklerdir. İnsanın hakkı olmayan bir şeyi elde etmeye kalkması, dolayısıyla başkasının haklarına tecâvüz etmesi gibi herkes tarafından yadırganan hareketleri Allah Teâlâ yasaklamaktadır.
+Molalar, izinler ve sağlık ihtiyacı anlaşmanın içinde korunsun. Çalışanı kesintisiz bir makine gibi görmeden, görevini yapabileceği şartları hazırlayalım. Çalışan da verilen imkânı yerinde kullansın. **Helâl kazanç, emeği dürüstçe sunmak ve emeğin hakkını adaletle vermektir.**
 
-Üçüncü yasak ise başkasının hakkına tecâvüz etmektir. İlâhî gazabı en fazla tahrik eden kötülük budur. Bunun içindir ki Resûl-i Ekrem *sallallahu aleyhi ve sellem*, âhiretteki cezası saklı bulunmakla beraber, Allah Teâlâ'nın dünyadaki cezasını çabucak vereceği iki günahtan birinin başkasının hakkına tecâvüz, diğerinin ise akrabalarla ilgiyi kesmek olduğunu söylemiştir (Ebû Dâvûd, Edeb 43). Bütün müslümanları ilgilendiren bu emir, yöneticileri de idaresi altındakilerin hakkını çiğnemekten özellikle sakındırmaktadır.
+**Dürüst emek, yapılan işin kaydında da görünür olsun.**
 
-<p lang="ar" dir="rtl" class="ayet">وعن ابن عمر رضي اللَّه عنهما قال : سمِعتُ رسولَ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم يقول : « كُلُّكُم راعٍ ، وكُلُّكُمْ مسؤولٌ عنْ رعِيتِهِ : الإمامُ راعٍ ومَسْؤُولٌ عَنْ رعِيَّتِهِ ، والرَّجُلُ رَاعٍ في أهلِهِ وَمسؤولٌ عنْ رَعِيَّتِهِ ، وَالمَرأَةُ راعيةٌ في بيتِ زَوجها وَمسؤولةًّ عَنْ رعِيَّتِها ، والخَادِمُ رَاعٍ في مال سَيِّدِهِ وَمَسؤُولٌ عَنْ رَعِيتِهِ ، وكُلُّكُم راع ومسؤُولٌ عَنْ رعِيَّتِهِ » متفقٌ عليه .</p>
+---
 
-İbni Ömer radıyallahu anhümâ Resûlullah sallallahu aleyhi ve sellem'i şöyle buyururken dinledim, dedi:
+<h2 class="vaaz-bolum-baslik" id="kayit-disi-is" tabindex="-1">VII. Kayıt dışı iş: Bugünkü para, yarınki güvence</h2>
 
-“Hepiniz çobansınız; hepiniz güttüğünüz sürüden sorumlusunuz. Devlet reisi de bir çobandır ve sürüsünden sorumludur. Erkek, ailesinin çobanıdır ve sürüsünden sorumludur. Kadın, kocasının evinin çobanıdır ve sürüsünden sorumludur. Hizmetkâr, efendisinin malının çobanıdır; o da sürüsünden sorumludur. Netice itibariyle hepiniz çobansınız ve güttüğünüz sürüden sorumlusunuz.” (Buhârî, Cum'a 11, İstikrâz 20, İtk 17, 19, Vesâyâ 9, Nikâh 81, 90, Ahkâm 1; Müslim, İmâret 20. Ayrıca bk. Ebû Dâvûd, İmâret 1, 13; Tirmizî, Cihâd 27)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَأَوْفُوا۟ بِٱلْعَهْدِ ۖ إِنَّ ٱلْعَهْدَ كَانَ مَسْـُٔولًا</p>
 
-Her insan üstlendiği işinden hem Allah'a hem de insanlara karşı sorumludur. Yöneticiler yönettiklerine karşı anlayışlı ve merhametli olmalı, müşkillerini çözmeye, ihtiyaçlarını gidermeye çalışmalıdır.
+*Ahde vefa gösterin; çünkü ahid sorumluluk doğurur.* (İsrâ, 17/34; âyetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">وعن عائشة رضي الله عنها قالت : سمعت رسول الله صَلّى اللهُ عَلَيْهِ وسَلَّم يقول في بيتي هذا : « اللهم من وَلي من أمر أُمتي شيئاً فشق عليهم فاشقق عليه ، ومن وَلِيَ من أمر أمتي شيئاً فرفق بهم فارفق به » رواه مسلم .</p>
+<p class="vaaz-etiket">Gurbetten Bir Tablo — İlk iş teklifinin karşısında</p>
 
-Âişe radıyallahu anhâ şöyle dedi: Benim şu evimde, Resûlullah sallallahu aleyhi ve sellem'in şöyle buyurduğunu işittim: “Allahım! Ümmetimin yönetimini üstlenip de onlara zorluk çıkaran kimseye sen de zorluk çıkar. Ümmetimin yönetimini üstlenip de onlara yumuşak davrananlara sen de yumuşaklık göster.” (Müslim, İmâre 19. Ayrıca bk. Ahmed İbni Hanbel, *Müsned*, VI, 93, 258)
+Liège’de meslek eğitimini tamamlayan bir genç, yeni iş teklifini ailesiyle konuşuyor. Kaydı yapılmadan çalışması isteniyor. Elden verilecek para o gün için cazip görünüyor. Otobüs kartı hâlâ elindeyken birkaç soru aklına geliyor: Çalıştığı saatleri nasıl gösterecek? Bir anlaşmazlıkta alacağını nasıl takip edecek? İş kazasında hangi güvencelere başvuracak? Genç, yetkili danışmana ulaşsın; işe başlamadan çalışma bildirimi ve haklarını açıklığa kavuştursun.
 
-<p lang="ar" dir="rtl" class="ayet">وعن عائِذ بن عمروٍ رضي اللَّه عنه أَنَّهُ دَخَلَ على عُبيدِ اللَّهِ ابن زِيادٍ ، فقال له : أَيْ بُنَيَّ ، إني سَمِعتُ رسول اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم يقول: « إنَّ شَرَّ الرِّعاءِ الحُطَمةُ » فإيَّاكَ أن تَكُونَ مِنْهُم، متفقٌ عليه .</p>
+Bu sorular, iş bulmanın sevincini daha sağlam bir zemine taşır. Kayıt dışı istihdam, çalışanın haklarını takip etmesini ve güvencelere erişmesini zorlaştırabilir. İşveren, ücret hesabını yaparken kayıt ve yükümlülükleri de gözetmelidir. Bir insanın ihtiyacını, onu belirsizlik içinde çalıştırmanın fırsatı hâline getirmeyelim.
 
-Âiz İbni Amr radıyallahu anh'den rivayet edildiğine göre, kendisi Ubeydullah İbni Ziyâd'ın yanına girmiş ve ona şunları söylemiştir:
+Ahde vefa çağrısını, yaşadığımız ülkedeki meşru yükümlülüklere karşı sorumluluğumuzla birlikte dinleyelim. Çalışmayı gizlemek, gerçeğe aykırı belge düzenlemek veya yalan beyanla hak edilmemiş yardım almak kamu hakkına zarar verir. Hastanenin ışığı, okulun sırası ve ortak hizmetlerin imkânı hepimizin hayatına dokunur. Ortak hakkı koruyalım.
 
-Oğlum! Ben Resûlullah sallallahu aleyhi ve sellem'i "Yöneticilerin en kötüsü insafsız ve katı kalpli olanlardır" buyururken dinledim. Sakın sen o yöneticilerden olma!
+Geçim baskısı yaşayan kardeşimizi dinleyelim. Dil, oturum veya iş arama güçlüğü varsa onu güvenilir hukuki ve sosyal danışmanlığa ulaştıralım. Tehdit altında çalışan kişinin güvenliğini gözetelim. İşten ayrılması gereken bir durumda geçimini ve destek imkânlarını birlikte planlayalım. Zorluğu anlatabilmesi için ona güven verelim.
 
-<p lang="ar" dir="rtl" class="ayet">وعن أبي مريمَ الأَزدِيِّ رضي اللَّه عنه ، أَنه قَالَ لمعَاوِيةَ رضي اللَّه عنه : سَمِعتُ رسولِ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم يقول : « من ولاَّهُ اللَّه شَيئاً مِن أُمورِ المُسلِمينَ فَاحَتجَبَ دُونَ حَاجتهِمِ وخَلَّتِهم وفَقرِهم ، احتَجَب اللَّه دُونَ حَاجَتِه وخَلَّتِهِ وفَقرِهِ يومَ القِيامةِ » فَجعَل مُعَاوِيةُ رجُلا على حَوَائجِ الناسِ . رواه أبو داودَ ، والترمذي .</p>
+İşverenimiz de muhasebe ve istihdam işlemlerini yetkili uzmanla gözden geçirsin. Yanlış kaydı düzeltmek için sorumluluk üstlensin. Çalışan, gelirini ve çalışma durumunu doğru bildirsin. İnsan hakkını ve ortak güveni birlikte gözeten bir düzen kuralım.
 
-Ebû Meryem el-Ezdî radıyallahu anh'den rivayet edildiğine göre, kendisi Muâviye radıyallahu anh'a şöyle dedi: Ben Resûlullah sallallahu aleyhi ve sellem'i şöyle buyururken dinledim: “Allah Teâlâ bir kimseyi müslümanların başına idareci yapar, o da halkın işlerinin bitirilmesine, ihtiyaç ve sıkıntılarının giderilmesine engel olmaya kalkarsa, kıyamet gününde Allah Teâlâ da onun işlerinin bitirilmesine, ihtiyaç ve sıkıntılarının giderilmesine engel olur.” Bunun üzerine Muâviye, halkın ihtiyaçlarını tesbit etmek için bir adamını görevlendirdi. (Ebû Dâvûd, İmâre 13; Tirmizî, Ahkâm 6)
+Elden yapılan ödeme ile kayıt dışı çalışma arasındaki farkı da doğru kuralım. Ödemenin şekli ayrı, çalışmanın gerektiği gibi bildirilmesi ayrıdır. Asıl sorumluluğumuz işin, ücretin ve gerekli bildirimlerin gerçeğe uygun olmasıdır. Konuyu yalnız paranın hangi yolla verildiğine indirgemeden şartların tamamını ehline soralım.
 
-<p lang="ar" dir="rtl" class="ayet">وعَنْ عِيَاضِ بن حِمار رضي اللَّهُ عَنْهْ قالَ : سمِعْت رَسُول اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم يقولُ : «أَهْلُ الجَنَّةِ ثَلاثَةٌ : ذُو سُلْطانٍ مُقْسِطٌ مُوَفَّقٌ ، ورَجُلٌ رَحِيمٌ رَقيقٌ القَلْبِ لِكُلِّ ذِى قُرْبَى وَمُسْلِمٍ ، وعَفِيفٌ مُتَعَفِّفٌ ذُو عِيالٍ » رواهُ مسلم .</p>
+Bir çalışan kayıt dışı işte mağdur olmuşsa ona “Zaten kabul etmişsin” diyerek sırt çevirmeyelim. Fiilen verdiği emeğin hakkını öğrenmesine destek olalım. Güvenli başvuru imkânını araştırırken özel bilgilerini koruyalım. Düzeltmenin yolu, insanın derdini söyleyebildiği yerde açılır.
 
-İyâz İbni Himâr radıyallahu anh Resûlullah sallallahu aleyhi ve sellem'i şöyle buyururken dinledim, dedi:
+**Bugünkü kazancımız, çalışanın güvencesini ve kamu hakkını korusun.**
 
-“Cennetlikler üç gruptur. Bunlar:
+---
 
-Âdil ve başarılı devlet başkanı,
+<h2 class="vaaz-bolum-baslik" id="insanca-calisma" tabindex="-1">VIII. İnsanca çalışma: Yükü ve onuru gözetmek</h2>
 
-Yakınlarına ve müslümanlara karşı merhametli ve yufka yürekli olan kişi,
+**İşveren kardeşlerim, ekip yönetenler ve ustalar! Verdiğimiz görevin yükünü de görelim.**
 
-Ailesi kalabalık olduğu halde haram kazançtan sakınıp kimseden bir şey istemeyen adamdır.” (Müslim, Cennet 63)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَلاَ تُكَلِّفُوهُمْ مَا يَغْلِبُهُمْ فَإِنْ كَلَّفْتُمُوهُمْ فَأَعِينُوهُمْ</p>
 
-İşveren ramazanda mümkünse işçilerin iş saatini geceye kaydırabilir. Gündüzleri oruç tutan işçilere güçlerinin yetmeyeceği işler ve yükler vermemelidir. Ramazanda işçilere yüklenen ağır iş yükünün işçilerin oruç tutmamasına veya sağlık açısından zarar görmelerine sebep olacağının bilincinde olunmalıdır.
+*Onlara güçlerini aşan işler yüklemeyin; böyle bir iş yüklerseniz kendilerine yardım edin.* (Müslim, 1661a; rivayetten bölüm)
 
-Hazreti Allah
+Bu rivayet, dönemin kölelik düzeninde kişinin elinin altındaki insanlara karşı sorumluluğunu anlatır. Bugünkü iş ilişkisine taşırken insanı koruyan ahlaki çağrısını esas alırız. Çalışan, hür iradesi ve hakları bulunan bir insandır. Güvenli çalışma şartı, dinlenme ve saygı onun hayatında somut karşılık bulsun.
 
-<p lang="ar" dir="rtl" class="ayet">وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ</p>
+Bir inşaatta baret rafta duruyorsa, koruması gereken baş korunmamış olabilir. Bir bakım çalışanı tek başına taşıyamayacağı yükle karşılaşıyorsa destek gerekir. İş güvenliği için gereken donanımı sağlayalım; kullanmayı öğretelim; tehlike bildirimini ciddiye alalım. Çalışan da tedbirlere uysun. Eve sağ salim dönmek, herkesin ortak dileğidir.
 
-"İyilik ve (Allah'ın yasaklarından) sakınma üzerinde yardımlaşın, günah ve düşmanlık üzerine yardımlaşmayın" buyuruyor.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَمَنْ وَلِيَ مِنْ أَمْرِ أُمَّتِي شَيْئًا فَرَفَقَ بِهِمْ فَارْفُقْ بِهِ</p>
 
-Hazreti Peygamberde şöyle buyuruyor.
+*Ümmetimin bir işini üstlenip onlara yumuşaklıkla davranana sen de yumuşaklıkla davran, Allah’ım!* (Müslim, 1828a; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">وعن عبد الله بن عمرو قال: قال رسول الله صلى الله عليه وسلم: "الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ، ارْحَمُوا مَنْ فِي الأَرْضِ يَرْحَمْكُمْ مَنْ فِي السَّمَاءِ، الرَّحِمُ شُجْنَةٌ مِنَ الرَّحْمَنِ، فَمَنْ وَصَلَهَا وَصَلَهُ اللَّهُ وَمَنْ قَطَعَهَا قَطَعَهُ اللَّهُ."</p>
+Efendimizin yönetimde merhamet için yaptığı bu duadan ders alalım. Talimatımız açık, düzeltmemiz saygılı olsun. Yeni başlayan bir çalışanı öğrenme imkânıyla destekleyelim. Ayrımcı söz ve aşağılamayla karşılaşan kişinin şikâyeti güvenle dinlensin. Görev verirken sağlık durumunu ve makul ihtiyaçları gözetelim.
 
-Abdullah b. Amr (r.a.)'den rivâyete göre, şöyle demiştir: Resûlullah (s.a.v.) şöyle buyurdu: "Merhametlilere Rahman olan Allah merhamet eder. Siz yeryüzündekilere acıyın ki göktekiler de size acısın Rahm; Rahman isminden bir damardır; Her kim bağları koparmaz ilgiyi kesmezse Allah'ta onu rahmetine ulaştırır. Her kim de bağları koparırsa Allah'ta o kimseden rahmetini keser." (Müslim, Birr ve Sıla: 23; Tirmizi, Birr,16.)
+Ramazanda iş düzeni konuşulurken güvenlik ve ibadet ihtiyacı birlikte değerlendirilsin. Molaların ve vardiyanın uygun biçimde planlanması kolaylık sağlayabilir. Çalışanı tehlikeye düşürecek bir yorgunluğa zorlamadan çözüm arayalım. İşçi de görevini ve ihtiyaçlarını zamanında konuşsun. Yardımlaşma, iki tarafın açık sözüyle gelişir.
 
-Ramazanda işçilerine kolaylık sağlayan işveren, onlara gösterdiği kolaylık miktarınca işçilerin tuttuğu oruçtan sevap ve ecir kazanacağının bilincinde olmalıdır.
+İzin isteyen çalışanın sözü duyulsun. Bir çocuğun bakım ihtiyacı, bir sağlık randevusu veya bir aile yükü çalışma düzeninde konuşulabilir. Şartları adil biçimde değerlendirip mümkün olan kolaylığı sağlayalım. İş arkadaşları da görev paylaşımında birbirine destek olsun. Dinlenmiş bir insanın işe dönüşü, ekip için de bir kazançtır.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari/guvenli-vardiya.svg" width="1600" height="900" alt="Akşam ışığında düzenli bir iş güvenliği rafında baretler, reflektörlü yelek ve eldivenler." loading="lazy" decoding="async">
+<figcaption><strong>Eve sağ salim dönmek</strong> İşi tamamlayan düzen, insanı da korusun.</figcaption>
+</figure>
+
+**İşin tamamlanması kadar, insanın korunması da sorumluluğumuzdur.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hak-aramak" tabindex="-1">IX. Hak aramak: Delil, adalet ve güvenli yol</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُونُوا۟ قَوَّٰمِينَ بِٱلْقِسْطِ شُهَدَآءَ لِلَّهِ وَلَوْ عَلَىٰٓ أَنفُسِكُمْ أَوِ ٱلْوَٰلِدَيْنِ وَٱلْأَقْرَبِينَ</p>
+
+*Ey iman edenler! Kendinizin veya anne babanızın ve akrabanızın aleyhine bile olsa adaleti ayakta tutun, Allah için şahitlik eden kimseler olun.* (Nisâ, 4/135; âyetten bölüm)
+
+Ücret bordrosundaki saatler çalıştığımız süreyle uyuşmuyorsa kayıtları kontrol edip açıklama isteyelim. Hangi dönem, hangi iş, hangi tutar? Doğru belge sözü somutlaştırır. Hak arayanı böyle dinleyelim.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّكُمْ تَخْتَصِمُونَ إِلَىَّ، وَلَعَلَّ بَعْضَكُمْ أَلْحَنُ بِحُجَّتِهِ مِنْ بَعْضٍ، فَمَنْ قَضَيْتُ لَهُ بِحَقِّ أَخِيهِ شَيْئًا بِقَوْلِهِ، فَإِنَّمَا أَقْطَعُ لَهُ قِطْعَةً مِنَ النَّارِ فَلاَ يَأْخُذْهَا</p>
+
+*Siz davalaşmak üzere bana geliyorsunuz. Belki biriniz delilini diğerinden daha güzel anlatır. Kimin sözüne dayanarak kardeşinin hakkından bir şeyin ona verilmesine hükmedersem, ona ancak ateşten bir parça ayırmış olurum. Onu almasın.* (Buhârî, 2680; rivayetten bölüm)
+
+Ümmü Seleme annemizin aktardığı uyarıyı iş uyuşmazlığında da hatırlayalım. Güzel konuşmak, eksik belgeler veya karşı tarafın güçsüzlüğü lehimize karar getirebilir. Bu karar başkasının hakkını bize helâl kılmaz. İşçiyi de işvereni de haksız talebinden vazgeçirelim. Alabilecek durumda olsak bile bize ait olmayanı almayalım.
+
+Çözülemeyen anlaşmazlıkta yetkili danışmana, çalışan temsilcisine veya uygun resmî başvuru yoluna ulaşalım. Kayıtları koruyup yerel usulleri ehline soralım. Özel bilgileri koruyalım; gerektiğinde güvenilir tercüme desteği sağlayalım.
+
+Mağdurun hak aramasına saygı gösterelim; uzlaşmak için alacağından vazgeçmesi yönünde baskı kurmayalım. Uzlaşmanın şartları açık, kabulü serbest olsun. Tehdit veya güvenlik riskinde uygun destek alınsın.
+
+İşveren de haksız iddiada aynı usule başvurabilir; sözleşmesini, ödemesini ve yapılan işi ortaya koyar. Öfkenin yükseldiği masada bile hakikat konuşulabilsin.
+
+**Adalet, hakkımızı delille aramak ve bize ait olmayanı alabilecek durumdayken de almamaktır.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatayi-onarmak" tabindex="-1">X. Hatayı onarmak: Hesabı temiz, yolu açık tutmak</h2>
+
+Atölyede ertesi günün iş listesi hazırlanır. Bugünden kalan bir eksik, listenin en üstüne yazılır. Kendi sorumluluğumuzdaki yanlışları da böyle görünür kılabiliriz. Eksik ödeme yaptıysak hesabını çıkaralım. Hatalı bilgi verdiysek doğruyu bildirelim. İşte zarar doğurduysak çözüm için gerekli kişiye başvuralım. Dürüst bir başlangıç, açık bir adımla gelir.
+
+<blockquote class="vaaz-alinti">
+<p>Örfen mâruf olan şey şart kılınmış gibidir.</p>
+<footer>— Mecelle, madde 43; Hayreddin Karaman, TDV İslâm Ansiklopedisi, Âdet, birinci bölüm.</footer>
+</blockquote>
+
+Bu eski hukuk kaidesi, yerleşmiş ve geçerli uygulamaların anlaşmayı anlamadaki önemini gösterir. İş ilişkisinde meşru örfü de hesaba katarız. Dinlenme, işin yürütülüşü ve görev paylaşımı konuşulurken tarafların bildiği uygulamalar açıklık kazansın. Haksız bir alışkanlık ise düzeltme ister. Mevcut hukuk ve sözleşme şartları da birlikte gözetilir.
+
+<p class="vaaz-etiket">Fıkhî Ölçü — Hazır bulunan çalışanın hakkı</p>
+
+Süreye bağlı iş akdinde çalışmaya hazır olduğu hâlde işverenden kaynaklanan sebeple işe başlayamayan işçi ücrete hak kazanır. İş akdinin geçersiz olması da fiilen görülen emeğin karşılığını kendiliğinden ortadan kaldırmaz; ecr-i misl değerlendirmesi gündeme gelir. Somut olay, sözleşme ve yürürlükteki kurallarla ehline danışılarak ele alınır.
+
+(İlmihal, II, Çalışma Hayatı, İşçinin Hak ve Borçları, s. 337; Dînî Kavramlar Sözlüğü, Ecîr, s. 132.)
+
+“İş çıkmadı” dediğimiz gün işçi sözleşmesine uygun biçimde hazır beklemiş olabilir. Hesabı yaparken bunu görelim. İşçi de müsait olduğu süreyi doğru kaydetsin. Her iki tarafın sözü gerçekle örtüşsün.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Hayata taşınacak üç küçük adım</strong> Sorumluluğumuzun bulunduğu yerde başlayalım.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>İş yerinde</dt><dd>Bir ödeme veya mesai kaydını kontrol edip varsa yanlışı düzeltiyoruz.</dd></div>
+<div><dt>Evde</dt><dd>İlk işine başlayacak gencimizle sözleşme sorularını konuşuyoruz.</dd></div>
+<div><dt>Cemaatte</dt><dd>Danışmanlığa ihtiyaç duyan kardeşimizin güvenilir desteğe ulaşmasını kolaylaştırıyoruz.</dd></div>
+</dl>
+</figure>
+
+Rabbimizden bağışlanma dilerken hak sahibine karşı borcumuzu da giderelim. Geçmişteki eksikliği fark eden insan için bugün bir imkân vardır. Doğru hesap, açık söz ve yerine getirilen ödeme bu imkânı hayra çevirir.
+
+Eksik bir ödeme fark ettiğimizde önce miktarı belirleyelim; hangi döneme ait olduğunu kayda geçirelim. Sonra hak sahibiyle görüşüp ödemeyi sonuçlandıralım. Muhasebedeki düzeltme gerekiyorsa onu da takip edelim. “Bir ara hallederiz” sözü yerine, yapılacak iş ve zamanı belli olsun. Böylece özür, insanın hayatına değen bir onarıma dönüşür.
+
+Çalışanın yaptığı bir hata araştırılırken de aynı açıklık gerekir. Hasarın sebebi, verilen talimat ve sağlanan araçlar birlikte incelensin. İşverenin sorumluluğu ile çalışanın kasıt veya kusuru ayırt edilsin. Bir makinenin eskimiş parçasını, yeni başlayan gencin üzerine bırakmadan adil değerlendirme yapalım. İnsaflı bir hesap, gelecekteki güveni de korur.
+
+**Hatayı fark ettiğimiz gün, hakkı yerine koymaya başlayalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Bu hafta için yedi emek sözü</h2>
+
+**Aziz anneler ve babalar, sevgili gençler! Bugünkü öğüdü bu haftanın bir işine dönüştürelim.**
+
+Telefonumuza bir hatırlatma yazabiliriz. İş listemizin yanına küçük bir not koyabiliriz. Çalışan, işveren, iş arayan veya emekli olabiliriz. Hepimizin kendi şartlarında yapabileceği bir iyilik vardır. Aşağıdaki sözlerden sorumluluğumuza uyanı seçelim; bir gün belirleyip uygulayalım.
+
+**EMEĞİN HAKKI İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir iş anlaşmasının şartlarını gözden geçireceğim.</strong> Kendi sözleşmemi veya izin alarak bir yakınımın sözleşmesini inceleyip anlaşılmayan noktayı soracağım.</li>
+<li><strong>Bu hafta bir ücret hesabını kontrol edeceğim.</strong> Ödediğim veya aldığım ücrette ve ek mesai kaydında eksik varsa düzeltilmesini takip edeceğim.</li>
+<li><strong>Bu hafta üstlendiğim bir işi özenle tamamlayacağım.</strong> Ücretli veya gönüllü görevimde kalan eksiği ve gerekirse yardım ihtiyacımı bildireceğim.</li>
+<li><strong>Bu hafta çalışma bildirimi hakkında bir belirsizliği açıklığa kavuşturacağım.</strong> Kendi durumumda veya yardım isteyen bir yakınım için yetkili danışmandan doğru bilgi alacağım.</li>
+<li><strong>Bu hafta bir güvenlik ihtiyacını dile getireceğim.</strong> İşimde, evimde veya ortak hizmette gördüğüm bir riski sorumlu kişiye bildireceğim.</li>
+<li><strong>Bu hafta bir emek sahibine saygımı göstereceğim.</strong> Yorulan birinin hâlini soracak, yapabileceğim bir kolaylığı teklif edeceğim.</li>
+<li><strong>Bu hafta bir hak meselesinde adil davranacağım.</strong> Kendimden başlayan bir yanlışı giderecek veya yardım isteyenin güvenilir desteğe ulaşmasını sağlayacağım.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bir sözü bugün başlat</strong>Kendi sorumluluğuna uygun adımı seç; bu hafta sonucunu kontrol et.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Şartları açıkça sor</strong></li>
+<li><span aria-hidden="true">2</span><strong>Ücret hesabını kontrol et</strong></li>
+<li><span aria-hidden="true">3</span><strong>Görevini özenle tamamla</strong></li>
+<li><span aria-hidden="true">4</span><strong>Doğru bilgiyi al</strong></li>
+<li><span aria-hidden="true">5</span><strong>Güvenlik ihtiyacını bildir</strong></li>
+<li><span aria-hidden="true">6</span><strong>Yorulanın yükünü paylaş</strong></li>
+<li><span aria-hidden="true">7</span><strong>Hakkın yerine gelmesini sağla</strong></li>
+</ol>
+</figure>
+
+Bu sözlerin hepsini aynı günde yerine getirmeye çalışırken yorulabiliriz. Birinden başlayalım. Mesela pazartesi günü bordromuzu anlamak için zaman ayıralım. Salı günü yetkili kişiye sorumuzu iletelim. Hafta sonunda ne öğrendiğimizi ve hangi eksiğin düzeldiğini kontrol edelim. Söz, takip edildiğinde davranışa yerleşir.
+
+İşveren olanımız bir çalışanın sorusuna vakit ayırabilir. İş arayanımız teklifin şartlarını yazabilir. Emekli büyüğümüz ilk işine başlayan torununu dinleyebilir. Ücretli çalışmayan kardeşimiz de üstlendiği gönüllü görevi tamamlayabilir. Hayrın başlayacağı yer, elimizin altında bulunan sorumluluktur.
+
+Birbirimizin hesabını topluluk önünde sorgulamadan, kendi sözümüzün takipçisi olalım. Aile içinde hatırlatırken de nezaketi koruyalım. Küçük bir düzeltme, bir gencin zihninde çalışma ahlakına dair sağlam bir hatıra bırakabilir. Çocuklarımız emeğe nasıl davrandığımızı görerek öğrenir.
+
+Birbirimize verdiğimiz bu sözleri takip edelim. Gencimizin ilk işinde yanında duralım; büyüğümüzün tecrübesini dinleyelim. Sağlığı sebebiyle çalışamayan kardeşimizi de onuruyla gözetelim. Her insanın katkısı ve ihtiyacı farklıdır. Aynı cemaatte birbirimize yer açabiliriz.
+
+**Helâl kazanç, emeği dürüstçe sunmak ve emeğin hakkını adaletle vermektir.**
+
+İş yerinde bu ölçüyle davranalım; ailemizde bu örneği gösterelim. Şimdi haklarımızı koruyacak iradeyi ve yanlışlarımızı düzeltecek cesareti Rabbimizden isteyelim.
+
+**Bu hafta, bir emek sahibinin hakkını koruyan somut bir adım atalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Emeğimize adalet, evlerimize huzur</h2>
+
+**Kıymetli kardeşlerim! Niyetimizi ve sorumluluğumuzu Rabbimize arz edelim.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْـَٔاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ</p>
+
+*Rabbimiz! Bize dünyada da iyilik ver, âhirette de iyilik ver. Bizi ateşin azabından koru.* (Bakara, 2/201; âyetten bölüm)
+
+Allah’ım! Kazancımıza helâl, işimize doğruluk nasip eyle. Çalışanlarımıza güvenli iş, adil ücret ve huzurlu bir hayat ihsan eyle. İş arayan kardeşlerimize hayırlı imkânlar aç. İşverenlerimize hakkı koruyan bir vicdan, verdiği sözü yerine getiren bir irade ver. Daralan işletmelerimize meşru çıkış yolları lütfeyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا ٱغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِىٓ أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا</p>
+
+*Rabbimiz! Günahlarımızdan ve işimizdeki aşırılıklardan ötürü bizi bağışla, sebatımızı arttır.* (Âl-i İmrân, 3/147; âyetten bölüm)
+
+Rabbimiz! Başkasının hakkını çiğnemekten bizi koru. Üzerimizde kalan hakları sahiplerine ulaştırmayı kolaylaştır. Eksiğimizi kabul edecek cesaret, verdiğimiz zararı giderecek gayret ihsan eyle. Gücümüzü adaletle kullanmayı, zayıfın sesini duymayı ve doğruda sebat etmeyi bize nasip eyle.
+
+Allah’ım! Ailelerimize huzur ver. Annelerimizin ve babalarımızın emeğini hayırla karşıla. Gençlerimizi güvenilir insanlarla buluştur; ilk işlerinde onları koru. Çocuklarımıza dürüstlüğün sevincini öğretmeyi bize nasip eyle. Yeni Müslüman olan kardeşlerimize destek olacak dostlar, yalnız yaşayanlara gönül yakınlığı ihsan eyle.
+
+Rabbimiz! Hastalarımıza şifa, engelli kardeşlerimize erişilebilir imkânlar, yorulan bedenlere dinlenme lütfeyle. Bakım verenlere sabır ve yardım ihsan eyle. İş kazasına uğrayanların acısını hafiflet. Yakınlarını kaybedenlere dayanma gücü ver. Âhirete göçen ana babalarımıza, emek sahiplerine ve bütün müminlere rahmet eyle.
+
+Allah’ım! Yaşadığımız beldelere güven ve huzur ver. Komşularımızı, okul ve iş arkadaşlarımızı hayırla kuşat. Ortak hakları koruyan insanlar olmayı bize nasip eyle. Camilerimizde öğrendiğimiz adaleti çalışma hayatımıza taşıyalım. Sözümüzde sadık, işimizde güvenilir, ilişkilerimizde merhametli olalım.
+
+Âmin. Peygamber Efendimiz’e (s.a.s.) salât ve selâm olsun. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler anlam esaslıdır; âyet ve hadislerden alınan bölümler belirtilmiştir. Arapça âyetler mushaf verisinden, hadisler doğrulanmış yerel derlemeden gelir. Gündelik gurbet sahneleri temsilîdir. Fıkhî çerçeve ilmihal ve TDV İslâm Ansiklopedisi kaynaklarına dayanır; somut hukuki meselelerde yerel uzman görüşü alınır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Ehliyet ve güven: <a href="https://quran.com/28/26">Kasas 28/26</a>.</li>
+<li>Adalet ve ihsan: <a href="https://quran.com/16/90">Nahl 16/90</a>.</li>
+<li>Sözleşmenin açıklığı: <a href="https://quran.com/5/1">Mâide 5/1</a>.</li>
+<li>Zamanında ücret: <a href="https://sunnah.com/ibnmajah:2443">İbn Mâce 2443</a>; <a href="https://sunnah.com/bukhari:2270">Buhârî 2270</a>.</li>
+<li>Peygamberimizin uygulaması: <a href="https://sunnah.com/bukhari:2278">Buhârî 2278</a>.</li>
+<li>İşçinin sorumluluğu: <a href="https://quran.com/17/36">İsrâ 17/36</a>; <a href="https://sunnah.com/bukhari:1438">Buhârî 1438</a>.</li>
+<li>Doğru beyan ve güvence: <a href="https://quran.com/17/34">İsrâ 17/34</a>.</li>
+<li>Güvenlik ve merhamet: <a href="https://sunnah.com/muslim:1661a">Müslim 1661a</a>; <a href="https://sunnah.com/muslim:1828a">Müslim 1828a</a>.</li>
+<li>Uyuşmazlıkta adalet: <a href="https://quran.com/4/135">Nisâ 4/135</a>; <a href="https://sunnah.com/bukhari:2680">Buhârî 2680</a>.</li>
+<li>Hatim ve niyaz: <a href="https://quran.com/2/201">Bakara 2/201</a>; <a href="https://quran.com/3/147">Âl-i İmrân 3/147</a>.</li>
+<li>İş akdi: <a href="https://islamansiklopedisi.org.tr/icare">TDV İslâm Ansiklopedisi — İcâre</a>.</li>
+<li>Örf ve hukuk: <a href="https://islamansiklopedisi.org.tr/adet#1">TDV İslâm Ansiklopedisi — Âdet, birinci bölüm</a>.</li>
+<li>Hadis değerlendirmesi: <a href="https://sunnah.com/ibnmajah:2443">İbn Mâce 2443 — ücretin geciktirilmemesi</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

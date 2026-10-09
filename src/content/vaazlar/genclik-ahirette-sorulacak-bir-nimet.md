@@ -1,198 +1,468 @@
 ---
-baslik: "Gençlik: Ahirette Sorulacak Bir Nimet"
-ozet: "Doğumla başlayıp ölümle sonlanan insan hayatının en önemli dönemlerinden bir tanesi gençliktir. Gençlik, insan hayatının dönüm noktası olan, hayatî kararların…"
-kategori: siyer
-kelime: 2908
+baslik: "Gençlik Emaneti: Zamanımız ve Bedenimiz İçin Vereceğimiz Cevap"
+ozet: "Gençlik, zaman ve beden bize verilmiş emanetlerdir. Nimetlerin hesabını hatırlayıp bugünün fırsatını hayra açalım; bilgiyi davranışa, niyeti bu hafta atacağımız yedi somut adıma taşıyalım."
+kategori: ahlak
+kelime: 3887
 docx: "/vaazlar/genclik-ahirette-sorulacak-bir-nimet.docx"
 pdf: "/vaazlar/genclik-ahirette-sorulacak-bir-nimet.pdf"
+kapak: "/media/vaazlar/genclik-ahirette-sorulacak-bir-nimet/kapak-og.webp"
+kapakAlt: "Şafakta bir atletizm pistinin başlangıcında duran sade spor ayakkabısı, kitap ve su matarası."
 ---
-## Giriş
 
-Doğumla başlayıp ölümle sonlanan insan hayatının en önemli dönemlerinden bir tanesi gençliktir. Gençlik, insan hayatının dönüm noktası olan, hayatî kararların alındığı, sorumlulukların yüklenildiği, bereketli, diğer taraftan farklı duyguların yaşandığı bir geçiş dönemidir. İnsana verilen en güzel nimetlerden bir tanesi olan gençliğin değeri, pek çok insan tarafından bilinmez. Allah Resulü (s.a.s.) şu hadis-i şerifte insanların ihmal ettiği, kıymet vermediği beş hususa dikkat çekmişti:
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/genclik-ahirette-sorulacak-bir-nimet/kapak.svg" width="1600" height="900" alt="Şafakta bir atletizm pistinin başlangıcında duran sade spor ayakkabısı, kitap ve su matarası." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Elde bulunan fırsat</strong> Gençliğin imkânı, bugünün hayrına yönelsin.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">اغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ : شَبَابَكَ قَبْلَ هَرَمِكَ ، وَصِحَّتَكَ قَبْلَ سَقَمِكَ ، وَغِنَاكَ قَبْلَ فَقْرِكَ ، وَفَرَاغَكَ قَبْلَ شُغْلِكَ ، وَحَيَاتَكَ قَبْلَ مَوْتِكَ</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#nimetin-sorusu">Nimet ve şükür</a></li>
+<li><a href="#bes-soru">Beş soru</a></li>
+<li><a href="#bes-seyden-once">Fırsatın kıymeti</a></li>
+<li><a href="#zamanin-bereketi">Zamanı değerlendirmek</a></li>
+<li><a href="#bedenin-hakki">Bedenin emaneti</a></li>
+<li><a href="#gencligin-yonu">İman ve irade</a></li>
+<li><a href="#bilginin-emaneti">Bilgiyi yaşamak</a></li>
+<li><a href="#malin-iki-sorusu">Kazanç ve harcama</a></li>
+<li><a href="#dikkatimizi-korumak">Günlük hayat ve ekran</a></li>
+<li><a href="#yeniden-baslamak">Başlangıç ve destek</a></li>
+<li><a href="#yedi-soz">Yedi somut söz</a></li>
+<li><a href="#hatim-duasi">Hatim duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Avucumuzdaki bugünün kıymeti</h2>
 
-“Beş şey gelmeden önce beş şeyi ganimet/kıymet bil:
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-1-İhtiyarlığından önce gençliğini,
+*Hamd âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-2- Hastalanmadan önce sıhhatini,
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-3- Fakirliğinden önce zenginliğini,
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-4- Meşgul zamanlarından önce boş vakitlerini,
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ رَبِّ ٱشْرَحْ لِى صَدْرِى ۝٢٥ وَيَسِّرْ لِىٓ أَمْرِى ۝٢٦ وَٱحْلُلْ عُقْدَةً مِّن لِّسَانِى ۝٢٧ يَفْقَهُوا۟ قَوْلِى ۝٢٨</p>
 
-5- Ölümünden önce hayatını!” (Buhârî, Rikak, 3; Tirmizî, Zühd, 25)
+*Mûsâ şöyle dedi: Rabbim! Gönlüme ferahlık ver. İşimi bana kolaylaştır. Dilimdeki düğümü çöz ki sözümü iyi anlasınlar.* (Tâhâ, 20/25–28)
 
-Bir diğer hadis-i şerifte herkesin kendi başının derdine düştüğü, kişinin annesinden, babasından, kardeşinden, eşinden, çocuklarından kaçtığı mahşer gününde Allah Teâlâ’nın özel lütfuna mazhar olacak yedi sınıf insan sayılır:
+**Aziz cemaat! Sevgili gençler, kıymetli anneler ve babalar!**
 
-<p lang="ar" dir="rtl" class="ayet">سَبْعَةٌ يُظِلُّهُمْ اللَّهُ فِي ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ إِمَامٌ عَادِلٌ وَشَابٌّ نَشَأَ فِي عِبَادَةِ رَبِّهِ</p>
+Bir okul çantasının fermuarı kapanırken yeni bir gün açılır. Defterin boş sayfası, henüz yazılmamış bir fırsattır. İçimizde geleceğine hazırlanırken yorulan gençler var. Gençliğini çocuklarının geçimi için vermiş büyüklerimiz var. Aynı safta, aynı Rabbin huzurundayız.
 
-“Yedi sınıf insan vardır ki, Allah Teâlâ onları kendi gölgesinden başka gölge olmayan günde, gölgesi altında gölgelendirecektir:
+Genç kardeşimizin imkânı, yaşlı kardeşimizin tecrübesi bu sohbetin içindedir. Allah’ın verdiği hayatı birlikte güzelleştirebiliriz.
 
-1.Adil yönetici
+**Gençlik bize emanet; zamanı ve bedeni hayra vermek, bu emanete şükürdür.**
 
-2. Rabbine ibadet içerisinde yetişen genç…” (Buhari, Ezan, 36, Zekat, 36; Tirmizi, Zühd, 53)
+Kendimize soralım: Bugün aldığım nefes, kimin hayatına iyilik taşıdı? Vaktinde kılınan bir namaz, dürüstçe yapılan bir ödev olabilir. Emanetin hakkı, böyle yakın yerlerde başlar.
 
-Gençlik, anlam arayışının yaşandığı bir dönemdir. Bu dönemde “Niçin varım?”, “Nereden geldim, nereye gidiyorum?”, “Hayatın anlamı nedir?” gibi sorular sorulur. Hadis-i şerifte bu soruların cevabına işaret de vardır. İmtihan için yaratılan insanın, bu dünyadan sonraki durağı ahirettir. Sonsuz ahiret hayatında yeniden diriliş sonrası, hesap öncesi insan, dehşet ve büyük bir kaygı içerisinde olacaktır. İşte o gün, dünya hayatında iman, ibadet, adalet, takva, samimiyet içerisinde yaşayanlar bu endişeden uzak olacak ve bir takım özel lütuflara mazhar olacaktır. Bu özelliklere sahip yedi grubun içerisinde Rabbine ibadet içerisinde yetişen genç de vardır. Sağlıklı ve huzurlu bir gençlik dönemi, insanı en güzel şekilde yaratan, yeryüzünde halife kılan, yaratılmışların en gözdesi olarak değer veren Allah’ı tanıyıp, O’na kullukla mümkün olacaktır. Gerçek manada Rabbine kullukla özgürleşemeyen insan, dünyanın, hazların, makamların, maddiyatın boyunduruğu altında kalacaktır. İnsan bedeninin en güçlü olduğu gençlik döneminde ruhun da güçlü olması namaz, oruç, dua gibi manevi gıdalarla beslenmekle sağlanacaktır.
+**Bugünün küçük iyiliği, ömrümüzün kıymetli bir parçasıdır.**
 
-Nebî (s.a.s.), iffetini koruyan, Allah karşısındaki sorumluluğunun bilincinde ve istikamet üzere olan gençleri, ilâhî azabın karşısındaki engellerden biri olarak tanıtmış ve “...Huşû duyan gençler, (namaz kılarak) rükû eden yaşlılar, emzikli bebekler ve otlayan hayvanlar olmasaydı mutlaka başınıza azap yağardı.” buyurmuştur. (Ebû Ya’lâ, Müsned, XI, 287; Hadislerle İslam, VI, 396)
+---
 
-## Kur’an-ı Kerim’de Gençler
+<h2 class="vaaz-bolum-baslik" id="nimetin-sorusu" tabindex="-1">I. Nimetin sorusu: Bana verilenle ne yaptım?</h2>
 
-Hz. İbrahim, Kur’ân-ı Kerîm’de en çok bahsedilen ve ülü’l-azm peygamberlerden biridir. Bulunduğu toplum ve babası, putlara tapmaktadır. Kralları Nemrud ise tevhid inancının karşısındaki otoriteyi simgeleyen kişidir. Kur’an-ı Kerim’de Hz. İbrahim gençlik döneminde çeşitli sorular sorarak ve temsiller getirerek putperestlerle yaptığı mücadele farklı surelerde anlatılmaktadır. (Enbiya, 21/51-70; Enam, 6/ 76-79) Hz. İbrahim, Hak yolunda mücadele ve çekilen sıkıntıları göğüsleme hususunda bütün gençlere örnektir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ ٱلنَّعِيمِ ۝٨</p>
 
-Rabbimiz, Yusuf suresinde Hz. Yusuf’u iffetli bir genç olarak örnek göstermektedir. Hz. Yusuf, haram karşısında duygularına hâkim olup,
+*Nihayet o gün nimetlerden elbette sorguya çekileceksiniz.* (Tekâsür, 102/8)
 
-<p lang="ar" dir="rtl" class="ayet">قَالَ مَعَاذَ اللّٰهِ</p>
+Muhterem Müslümanlar! Musluğu açınca akan suyu, rahatça attığımız adımı, sabah yeniden uyanmayı çoğu zaman fark etmeyiz. Nimet, bazen elimizde taşıdığımız ekmektir; bazen o ekmeği kazanabilecek gücümüzdür. Gençlik de Allah Teâlâ’nın bize bağışladığı imkânlar arasındadır.
 
-“Hâşâ, Allah’a sığınırım!” (Yusuf, 12/23) demiş, böylece Rabbimiz Yusuf (a.s.)’ı çirkin bir fiil karşısında bir gencin nasıl olması gerektiği konusunda örnek göstermiştir.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet"> أَلْهَىٰكُمُ ٱلتَّكَاثُرُ ۝١ حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ ۝٢</p>
 
-Kur’an’da ismiyle anılan tek kadın olma özelliğine sahip Hz. Meryem, iffeti ve Allah’a itaati ile öne çıkmış genç bir hanımdır.
+*Çoklukla övünme yarışı sizi kabirlere varıncaya kadar oyaladı.* (Tekâsür, 102/1–2)
 
-Ashâb-ı Kehf kıssasının anlatıldığı Kehf suresinde zaman ve mekân belirtilmeksizin örnek gençlerden bahsedilmektedir. Surenin 9 ile 26. ayetleri arasında putperest bir kavmin içinde Allah’ın varlığına ve birliğine inanan birkaç genç, inançlarını açıkça dile getirip putperestliğe karşı çıkmış, taşlanarak öldürülmekten veya zorla din değiştirmekten kurtulmak için mağaraya sığınmışlardır. (İsmet Ersöz, Ashab-ı Kehf, DİA, 3/465-467) Kur’an-ı Kerim’de bu gençler şöyle anlatılmaktadır:
+Tekâsür sûresi, çoklukla övünme yarışının insanı oyalamasını hatırlatır. Ardından nimetlerin hesabını bildirir. Böylece bakışımızı sahip olduklarımızın sayısından, onları nasıl kullandığımıza çevirir. “Kaç kişi bizi tanıyor?” sorusunun yanına, “Kaç insanın hakkını gözetiyoruz?” sorusunu koyar.
 
-<p lang="ar" dir="rtl" class="ayet">نَحْنُ نَقُصُّ عَلَيْكَ نَبَاَهُمْ بِالْحَقِّؕ اِنَّهُمْ فِتْيَةٌ اٰمَنُوا بِرَبِّهِمْ وَزِدْنَاهُمْ هُدًى</p>
+Gençlikte hızla öğrenebilir, yeni bir beceri kazanabilir, uzun bir yola hazırlanabiliriz. Bu imkânların her biri şükre çağırır. Şükür dilde hamd ile başlar; davranışta nimeti doğru kullanarak görünür olur. Öğrenme imkânımıza çalışarak, bedenimize bakım göstererek, vaktimize hayır kazandırarak şükrederiz.
 
-“Biz sana onların başından geçenleri gerçeğe uygun olarak anlatıyoruz. Hakikaten onlar Rablerine inanmış gençlerdi; biz de onların doğru yolda yürüyüşlerine katkıda bulunduk.” (Kehf, 18/13)
+Emanet sözü bize iki şeyi birlikte öğretir. Allah’ın lütfuyla seviniriz; bu lütfun sorumluluğunu taşırız. Kendimize acımasızca yüklenmek yerine, elimizdeki gücü dürüstçe tanırız. Birimizin gününde ders, diğerimizin gününde bakım sorumluluğu ağır basabilir. İyilik, herkesin kendi imkânı içinde filizlenir.
 
-<p lang="ar" dir="rtl" class="ayet">وَرَبَطْنَا عَلٰى قُلُوبِهِمْ اِذْ قَامُوا فَقَالُوا رَبُّنَا رَبُّ السَّمٰوَاتِ وَالْاَرْضِ لَنْ نَدْعُوَ۬ا مِنْ دُونِهٖٓ اِلٰهاً لَقَدْ قُلْـنَٓا اِذاً شَطَطاً</p>
+Engelli bir gencimizin bilgisayarda hazırladığı erişilebilir bir ders notu, koşabilen arkadaşının yaptığı hizmet kadar kıymetli olabilir. Evinden çıkamayan büyüğümüzün dinlediği ve cesaret verdiği bir çocuk, o ilgiyi yıllarca taşıyabilir. Nimeti tanırken insanın görünmeyen emeğine de yer açalım.
 
-“(Haksızların karşısında) ayağa kalkıp şöyle derken onların yüreklerini güçlendirdik: “Bizim Rabbimiz, göklerin ve yerin Rabbidir; O’ndan başkasına asla tanrı deyip yakarmayız. Yoksa kesinlikle yanlış bir şey dillendirmiş oluruz.” (Kehf, 18/14) Kur’an-ı Kerim’de bu gençler imanları, imanları üzerine sebatları, haksızlık karşısında mücadeleleri ile övülmektedir.
+Bu akşam sahip olduğumuz üç imkânı fark edelim. Ardından bunlardan birini yarın kimin yararına kullanacağımızı belirleyelim. Bir dil bilgisi, bir saat vakit, paylaşılabilecek bir kitap… Elimizdeki nimetin küçük görünmesi bizi durdurmasın. Şükür, nimeti hayra açar.
 
-## Hz. Peypeygamber ve Gençler
+Gençliğe sermaye dediğimizde, onu yalnız para kazandıran bir güç gibi ölçmeyelim. Bir gencin kardeşine vakit ayırması da bu sermayenin hayra verilmesidir. Elindeki imkânı başka insanların güvenine çevirmek, ömür için değerli bir kazançtır. Yaşımız ilerledikçe gençlere imkân hazırlama sorumluluğumuz da artar. Kitaba, eğitime ve dinlenmeye ulaşmalarını kolaylaştıralım. Aynı okulda okuyan iki gencin evdeki şartları farklı olabilir. Birinin sessiz çalışma odası, diğerinin ilgilenmesi gereken küçük kardeşi vardır. Nimeti değerlendirme çağrımız, bu farkları anlayan merhametle söylensin. Kendi gücümüzü tanırken birbirimizin yükünü de görelim.
 
-Hz. Peygamber (s.a.s.)’in hayatının her alanı örnek olduğu gibi, gençlik dönemi de örnek ve modeldir. Peygamber Efendimiz yirmi yaşlarında iken Mekke’de haksızlığa uğrayan insanlara yardım etmek amacıyla Hilfü’l-Fudûl denilen antlaşmaya iştirak etmişti. Yine Peygamber Efendimiz (s.a.s.) gençlik yıllarında ticaretle meşgul olmuş, dürüstlüğü ve güvenilirliği sebebiyle Mekkeliler ona Muhammedü’l-Emin demişlerdi.
+**Nimete şükür, bize verileni iyiliğe dönüştürmekle tamamlanır.**
 
-Resul-i Ekrem (s.a.s.) kırk yaşında ilk vahyi aldıktan sonra, kadın erkek, genç yaşlı, hür köle, zengin fakir Mekke’nin her kesiminden bu dine gönlünü açanlar olmuştu. Özellikle bir grup vardı ki, onlar son dinin lokomotifi, İslam kültür ve medeniyetinin inşasında öncü olmuşlardı. Allah Resulü (s.a.s)’e ilk iman edenler yaşları on ile yirmi beş arasında değişen, Resulüllah’ın yıldızlara benzettiği gençlerdi. Bu gençlerden Hz. Ali 10, Abdullah b. Ömer 13, Zeyd b. Hârise 15, Abdullah b. Mes’ud, Zübeyr b. Avvam 16, Talha b. Ubeydullah, Abdurrahman b. Avf, Erkam b. Ebi’l-Erkam ve Sa’d b. Ebî Vakkas 17, Musab b. Umeyr 18-20, Câfer b. Ebî Tâlib 22, Osman b. Affan, Ebû Ubeyde b. Cerrah ve Hz. Ömer 25-31 yaşları arasında idi. Bunların dışında genç yaşta İslam’ı kabul eden pek çok kişi olmuştu. (İbrahim Sarıçam, Hz. Muhammed ve Evrensel Mesajı, DİB, s. 340)
+---
 
-### Hz. Peygamber (s.a.s.)’in genç sahabilerle iletişim örnekleri:
+<h2 class="vaaz-bolum-baslik" id="bes-soru" tabindex="-1">II. Beş sorunun önünde: Ömür, bilgi, mal ve beden</h2>
 
-### a. Hz. Peygamber (s.a.s.) Genç Sahabileri Yetiştirdi
+**Kıymetli kardeşlerim! Hesabın soruları, bugünün kararlarını aydınlatsın.**
 
-Peygamber Efendimiz (s.a.s.) ilk günlerden itibaren gençlere ayrı bir önem vermiş, pazarda, çarşıda, seferde, her yerde sahabesine rehberlik etmişti. Nebi (s.a.s.) Mekke döneminde Erkam’ın evinde, Medine’de Suffe’de ashabını yetiştirmişti. Suffe, Mescidi Nebi ile eş zamanlı inşa edilmişti. Medine’de evleri ve kalabilecek yakınları olmayan yoksul, bekâr, kimsesiz, fakir sahâbîler orada kalıyordu. Çeşitli zamanlarda kalanların toplam sayısının 400’e ulaştığı ifade edilmektedir. Resûl-i Ekrem (s.a.s.) kendisine getirilen sadakaların tamamını Suffe ehline gönderir, hediyeleri ise onlarla paylaşırdı. (İbn Hanbel, II, 515; Buhârî, Riḳaḳ, 17) Ashâb-ı Suffe’den gücü kuvveti yerinde olanlar gündüzleri çalışır, geceleri de Kur’an tilâveti ve ilimle meşgul olurdu. (Müslim, İmâre, 147; İbn Hanbel, III, 270) Ashâb-ı Suffe’nin eğitimi ile bizzat ilgilenen Resûl-i Ekrem (s.a.s.), Suffe’de dersler vermişti. Ayrıca onlara yazı yazmayı ve Kur’an okumayı öğretmek üzere Ubâde b. Sâmit gibi hocalar tayin etmişti. (Mustafa Baktır, Suffe, DİA, 37, 469-470)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">لاَ تَزُولُ قَدَمَا عَبْدٍ يَوْمَ الْقِيَامَةِ حَتَّى يُسْأَلَ عَنْ عُمْرِهِ فِيمَا أَفْنَاهُ وَعَنْ عِلْمِهِ فِيمَا فَعَلَ وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَا أَنْفَقَهُ وَعَنْ جِسْمِهِ فِيمَا أَبْلاَهُ</p>
 
-### b. Allah Resulü (s.a.s.) Gençlerle İstişare Ederdi
+*Kul, kıyamet günü ömrünü nerede tükettiği, bilgisiyle ne yaptığı, malını nereden kazanıp nereye harcadığı ve bedenini nerede yıprattığı sorulmadan yerinden ayrılamaz.* (Tirmizî, 2417; Tirmizî’nin değerlendirmesi: hasen-sahih)
 
-Bedir Gazvesi’nde Ensar’ın Hazrec kolunun sancaktarlığını otuz üç yaşında olan Hubâb b. Münzir yapmıştı. Hz. Peygamber (s.a.s.) İslâm ordusunu, düşmana en uzak olan kuyunun çevresine yerleştirmişti. Hubab, bu kararı uygun görmediğinden Hz. Peygamber (s.a.s.)’e bu kararının ilâhî bir işarete dayanıp dayanmadığını sormuş, vahiyle ilgili olmadığını öğrenince de düşmanı susuz bırakmak için onlara en yakın su kuyusunun yanına yerleşilerek diğer kuyuların kapatılmasını teklif etmiş, Resûl-i Ekrem de onun bu görüşünü uygun bulmuştu. ( M. Yaşar Kandemir, Hubab b. Münzir, DİA, 18/ 264)
+Ebû Berze’nin rivayetinde bilgiyle ne yapıldığı, malın nereden kazanılıp nereye harcandığı ve bedenin nerede yıpratıldığı sorulur. Kazanma ile harcama ayrı ele alınınca önümüzde beş soru belirir. Bunları evimizde açık duran bir defterin beş satırı gibi okuyabiliriz.
 
-Uhud savaşında Mekkelilerin 3000 kişilik ordu ile hareket ettiğini öğrenince Resul-i Ekrem (s.a.s.), düşmana nasıl karşılık verecekleri konusunda sahabe ile istişare etti. Gördüğü bir rüya üzerine Medine’de kalınmasını, kadınların ve çocukların kalelere yerleştirilerek savunma savaşı yapılmasını tercih ettiğini belirtti. Özellikle Bedir Gazvesi’ne katılamayan gençler ve Hz. Hamza, Sa‘d b. Ubâde, Nu’mân b. Mâlik düşmanla şehir dışında savaşılmasında ısrar ettiler. Hz. Peygamber (s.a.s.) yenilgiye uğramalarından endişe duyduğunu bildirmesine rağmen çoğunluğun görüşüne uyarak karar verdi. (, , Uhud Gazvesi, DİA, 42/ 54-57)
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Bugün cevap hazırlayacağımız beş soru</strong> Tirmizî 2417’nin anlamından hareketle günlük muhasebe.</figcaption>
+<table aria-label="Bugün cevap hazırlayacağımız beş soru">
+<thead><tr><th scope="col">Emanet</th><th scope="col">Kendime soracağım soru</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Emanet">Ömür</th><td data-label="Kendime soracağım soru">Vaktimi hangi yararlı işe verdim?</td></tr>
+<tr><th scope="row" data-label="Emanet">Bilgi</th><td data-label="Kendime soracağım soru">Öğrendiğim hangi doğruyu uyguladım?</td></tr>
+<tr><th scope="row" data-label="Emanet">Kazanç</th><td data-label="Kendime soracağım soru">Gelirimde dürüstlüğü nasıl korudum?</td></tr>
+<tr><th scope="row" data-label="Emanet">Harcama</th><td data-label="Kendime soracağım soru">Param hangi ihtiyaca ve iyiliğe gitti?</td></tr>
+<tr><th scope="row" data-label="Emanet">Beden</th><td data-label="Kendime soracağım soru">Gücümü neye verdim, sağlığımı nasıl gözettim?</td></tr>
+</tbody></table>
+</figure>
 
-Uhud savaşı öncesi Allah Resulü (s.a.s.), gençleri dinlemiş, onların kararları doğrultusunda karar almış, fakat olumsuz olaylar yaşandığında da gençleri suçlamamıştır.
+Gençliği ayrıca anan İbn Mes‘ûd rivayeti Tirmizî 2416’da nakledilir: Ömür, gençlik, kazanç, harcama ve bilginin uygulanması sayılır. Tirmizî bu rivayetin senedindeki zayıflığı belirtir. Burada hesap öğretisini onun hasen-sahih değerlendirdiği Ebû Berze rivayetiyle temellendiriyor; gençliği ömür ve beden emanetinin içinde ele alıyoruz.
 
-### c. Allah Resulü (s.a.s.) Hataları En Güzel Şekilde Düzeltmişti
+Hesap bilinci bize dağınık bir korku yerine açık bir sorumluluk kazandırır. Ödevimizi başkasına yaptırdığımızda bilgi emanetine, çalışmadığımız saati çalışılmış gösterdiğimizde kazanç emanetine bakarız. Bir yanlışı fark ettiğimizde düzeltme yolu da görünür olur. Defterin satırlarını bugünden temizleyebiliriz.
 
-Peygamber Efendimiz (s.a.s.) gençleri dinlemiş, onların kendisi ile rahat iletişim kurabilmeleri imkânını sağlamıştı. Yanlış istekleri olduğunda bile incitmeden, kırmadan doğruyu bulmalarına yardımcı olmuştu. Bir defasında genç bir sahabi gelmiş, günah işlemek için izin istemişti. Diğer sahâbîler böyle bir isteğe kızmışlar, ancak Resulüllah (s.a.s.), isteğinin yanlış olduğunu empati yoluyla anlatmış, kalben, zihnen ikna etmiş, onu vazgeçirmiş ve sonunda ona dua etmişti.
+Akşam kendimize bu sorulardan yalnız birini soralım. Cevabımız zayıfsa ertesi gün için küçük bir düzeltme seçelim. Muhasebe, yeni bir hayrın başlangıcı olsun.
 
-Yeni Müslüman olmuş ancak namazla ilgili bilgileri eksik olan Muaviye b. el-Hakem es-Sülemî, Rasûlullah (s.a.s.) ile birlikte namaz kılarken cemaatten bir adam aksırır. Namazda iken Muaviye, “Yerhamukallah” der. Bunun üzerine cemaat ona ters ters bakar. Muaviye b. el-Hakem: “Hay anamı kaybetseydim (ya da hay anam bensiz kalsaydı), bu haliniz ne, bana bakıp duruyorsunuz" der. Diğer sahâbîler, bu sefer elleriyle uyluklarına vurmaya başlarlar. Kendisini susturmak istediklerini anlayınca, susar. Muaviye b. el-Hakem bundan sonrasını şöyle anlatır: Resûlullah (s.a.s.) Efendimiz, namazı kıldıktan sonra beni çağırdı-babam anam ona feda olsun- ne ondan önce, ne ondan sonra daha güzel öğreten bir öğretmen görmedim. Allah'a yemin ederim ki beni ne azarladı, ne dövdü, ne de ağır söz söyledi. Sadece: “*Bu ibadetin adı namazdır. Namaz kılarken konuşulmaz, dünya kelamı edilmez. Çünkü namaz tekbir, tesbih ve Kur’an okumaktan ibarettir.*” buyurdu. (Müslim, Mesacid, 33)
+Bu soruların her biri bir diğerine bağlanır. Bilgimizi sağlam bir işte kullandığımızda kazancımızın dürüstlüğünü de gözetiriz. Harcama ölçüsünü koruduğumuzda gereksiz işler için bedenimizi tüketme baskısı azalabilir. Vaktimizi planladığımızda ibadete ve yakınlarımıza yer açarız. Böylece ömrü parçalara ayırmak yerine bütün davranışlarımızda aynı sorumluluğu taşırız. Bugün bir emaneti koruyan kararımız, diğer emanete de yardım edebilir. Muhasebeyi bu bütünlük içinde yapalım.
 
-### d. Allah Resulü (s.a.s.) Gençlerin Problemlerini Çözerdi
+**Âhirette sorulacak emanete, bugün verdiğimiz kararlarla sahip çıkarız.**
 
-İkinci Akabe Biatı’nda yetmiş kişilik heyetin en küçük üyesi 15 yaşındaki Cabir b. Abdullah idi. Uhud gazvesinde babası şehid olmuş, yedi veya dokuz kız kardeşin bakımı da kendisine kalmıştı. Hz. Peygamber (s.a.s.) bir defasında onu devesinin arkasına bindirmiş, başka bir zaman da hastalandığında ziyaretine gitmişti. Cabir’in babası şehit olduğunda üzüldüğünü görünce, onun Allah Teâlâ’nın iltifatına nâil olduğunu haber vererek kendisini teselli etmişti.
+---
 
-Cabir b. Abdullah evlendikten sonra, Zâtürrika Gazvesi’ne Hz. Peygamber’le (s.a.s.) birlikte katıldı. Bu gazveden dönerken Peygamber Efendimiz (s.a.s) Câbir’le sohbet etti ve onun maddî sıkıntı içinde olduğunu öğrendi. Allah Resulü (s.a.s.) Câbir’den devesini kendisine satmasını istedi. Uzun bir pazarlıktan sonra ve Medine’ye varınca teslim etmek şartıyla deveyi satın aldı. Gazve dönüşü Câbir deveyi teslim etmek üzere götürünce, Resûlullah (s.a.v) ona olan borcunu ödedi ve deveyi de kendisine hediye etti. (, Cabir b. Abdullah, DİA, 6/530-532)
+<h2 class="vaaz-bolum-baslik" id="bes-seyden-once" tabindex="-1">III. Beş şeyden önce beş şey: Ertelemeye bir sınır</h2>
 
-### e. Hz. Peygamber (s.a.s.) Gençlere İltifat Ederdi
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ : شَبَابَكَ قَبْلَ هِرَمِكَ ، وَصِحَّتَكَ قَبْلَ سَقَمِكَ ، وَغِنَاءَكَ قَبْلَ فَقْرِكَ</p>
 
-Allah Resulü (s.a.s) genç arkadaşlarına değer verir, onları taltif ederdi. Muaz b. Cebel için, “Muâz ne iyi adam!” buyurmuştu. Ashabına “Kıyamet gününde onun âlimlerin önünde yürüyeceğini” (Buhârî, Feżâʾilü’l-Ḳurʾân, 8; Müslim, Feżâʾilü’s-saḥâbe, 119) buyurmuş; “Ey Muaz! Seni çok seviyorum” (Ebu Davud, Vitr, 26) diye iltifat etmişti.Zeyd b. Sabit için Allah Resulü, “Ümmetim içinde ferâizi (Miras ilmini) en iyi bilen Zeyd’dir.” (Tirmizî, Menâḳıb, 32) buyurmuştu.
+*Beş şeyden önce beş şeyin kıymetini bil: Yaşlılığından önce gençliğinin, hastalığından önce sağlığının, yoksulluğundan önce maddî imkânının.* (Hâkim, el-Müstedrek, 7914; rivayetten bölüm; Hâkim’in değerlendirmesi: Buhârî ve Müslim’in şartına göre sahih)
 
-Abdullah b. Ömer için, “Abdullah ne iyi insan, bir de gece namazı kılsa!” (Buhârî, Feżâʾilü aṣḥâbi’n-Nebî, 19) buyurmuş, onu gece ibadet etmeye teşvik etmişti.
+Hâkim’in naklettiği öğüt, gençliğimizle birlikte sağlığımızın, maddî imkânımızın, boş vaktimizin ve hayatımızın kıymetini hatırlatır. Sabah otobüsünü kaçırınca bir sonrakini bekleyebiliriz. Ömrümüzün kaçırılmış bir sabahını ise aynı şekilde geri getiremeyiz. Bu yüzden iyilik için kusursuz bir gün beklemeyelim.
 
-### f. Hz. Peygamber (s.a.s.) Gençlere Sevgi, Şefkat Ve Merhametle Yaklaşırdı
+### Elimizdeki fırsata bugünkü karşılık
 
-Hz. Ali (ra.), Hz. Peygamber (s.a.s.) ’i şöyle anlatmaktadır: “Resûlullah daima güler yüzlü, güzel huyluydu, çok merhametli, affediciydi, sert ve katı kalpli değildi, yanındakilere karşı nazik davranan bir insandı. Kaba ve sert konuşmaz, kötü davranmaz, bağırıp çağırmaz, kimseyi ayıplamaz aşırı bir şekilde de övmezdi…” (Tirmizî, Şemail-i Şerife I-II, çev. H. Nakşibendî, Hilal Yay. Ankara, ty., 355)
+- **Yaşlılıktan önce gençlik:** Öğrenme ve hizmet için bir becerimizi geliştirelim.
+- **Hastalıktan önce sağlık:** Gücümüzü hayra verelim; bedenimizi özenle koruyalım.
+- **Yoksulluktan önce imkân:** İhtiyaçları gözetelim; paylaşmaya bugünden bir pay ayıralım.
+- **Meşguliyetten önce boş vakit:** Serbest bir zaman dilimini namaza, öğrenmeye veya yardıma ayıralım.
+- **Ölümden önce hayat:** Tövbeyi, özrü ve gerekli düzeltmeyi bugünden başlatalım.
 
-Genç sahâbîlerden Cerîr b. Abdullah, “Müslüman olduğum günden beri Resûlullah (s.a.s), beni hiç kapıdan çevirmedi. Beni her gördüğünde mutlaka gülümserdi.” demişti. (Tirmizî, Menâkıb, 41)
+“Biraz rahatlayınca başlayacağım” sözü bazen haftaları birbirine bağlar. Okul bitince, iş bulununca, ev kurulunca… Hayatın her döneminde yeni bir iş çıkar. Bir iyiliğe başlayacak vakti, kendi günümüzün içinde ararız. Bugün on dakika ayırabildiğimiz öğrenme, yarın başka bir başlangıca güç verebilir.
 
-### g. Peygamber Efendimiz (s.a.s.) Genç Sahabilere Görevler Verirdi
+Öğüt, imkânlar azalınca insanın değerinin azalacağını söylemez. Yaşlılıkta tecrübe, hastalıkta sabır ve dua, darlıkta samimi dayanışma yine hayra açılır. Şimdi güçlü olanımız, gücünü daha sonra zorlanacağı işleri yapmakta değerlendirsin. Şimdi zorlananımız, yanında destek bulsun.
 
-Sevgili Peygamberimiz (s.a.s.) çevresindeki gençleri iyi tanımış, liyakatli ve ehliyetli gençlere hâkimlik, valilik, ordu komutanlığı, vahiy kâtipliği gibi üst düzey ve önemli görevler vermişti. Böylece onların özgüven ve tecrübe kazanmalarına destek olmuştu. Genç sahabiler de aldıkları bu görevleri hakkıyla îfa etmişlerdi.
+Bir gencimizin ilk kazancıyla aldığı kitabı düşünün. Rafın köşesinde duran o kitap, öğrenmeye verilmiş bir sözdür. Sayfaları açıldıkça imkân hayra dönüşür. Hepimizin elinde böyle açılmayı bekleyen bir fırsat vardır. Bugün onun adını koyalım ve ilk adımı atalım.
 
-Peygamber Efendimiz (s.a.s.), Mekke’nin fethedildiği gün Müslüman olan yirmi yaşındaki Attab b. Esid’i Mekke’ye vali olarak atamıştı. On sekiz yaşında Müslüman olan Medineli Muaz b. Cebel, Hz. Peygamber (s.a.v)’in vahiy kâtipliği ve hazinedarlık görevlerini yapmış, Yemen’e elçi, zekât memuru ve kadı sıfatıyla gönderilmişti.
+Meşguliyet gelmeden önce vakti değerlendirmek, bekleyen insanın vaktini de gözetmeyi öğretir. Bize bir soru soran kardeşimizi sürekli sonraya bırakıyorsak, onun ihtiyacını yeniden fark edelim. Yarın için söz verdiğimiz yardımı bugün takvimimize yazalım. Uygun olduğumuz süreyi açıkça söyleyelim. Böylece kendi boş vaktimiz başkasının kolaylığına dönüşür. Maddî imkân da benzer şekilde kullanılabilir. Büyük bir servet beklemeden bir öğrencinin kitap ihtiyacına küçük bir katkı sağlayabiliriz. Öğütteki fırsat, bazen elimizdeki para; bazen verebildiğimiz yarım saattir. Her ikisi de Allah’ın lütfudur.
 
-Nebi (s.a.s) Yahudilerle yazışmalarında yardımcı olması için, 11-12 yaşlarında iken Müslüman olan Zeyd b. Sabit’ten İbranice öğrenmesini istemişti. Zeyd b. Sabit, Farsça, Rumca, Kıptîce ve Habeşçe dillerini öğrenmiş, vahiy kâtipliği yapmış, Hz. Peygamber hayattayken Kur’an’ın tamamını ezberlemişti. Resul-i Ekrem (s.a.s.), 632 yılı Mayıs ayında Suriye bölgesine gönderilmek üzere hazırlanan ordunun komutanlığına 18 yaşında olan Üsâme b. Zeyd’i getirmişti.
+**İyiliğin başlangıcı, elimizde bulunan fırsatın içindedir.**
 
-Hz. Ali genç yaşta Yemen’e kadı olarak görevlendirildiği zaman, genç ve tecrübesiz oluşunu gerekçe göstererek ilk başta çekingen davranmıştı. Bunun üzerine Allah Resûlü (s.a.s.), mübarek elini onun göğsüne vurmuş ve “Allah’ım, bunun kalbine hidayet ver ve diline sebat ver!” buyurarak duasıyla onu cesaretlendirmiş ve ona bir davada nasıl hüküm vermesi gerektiğini anlatmıştı. Hz. Ali, “Bundan sonra iki kişi arasında hüküm verme konusunda hiç tereddüt etmedim.” demişti. (İbn Mâce, Ahkâm, 1; Hadislerle İslam, VI, 394)
+---
 
-Peygamber Efendimizin gençlere değer vermesi, onları kazanmada takip ettiği metotla ilgili olarak Taif kuşatmasından Cirane’ye dönerken yaşanan şu olay son derece anlamlıdır:
+<h2 class="vaaz-bolum-baslik" id="zamanin-bereketi" tabindex="-1">IV. Zamanın bereketi: Dolu takvim, doğru yön</h2>
 
-Yolda namaz vakti gelince müezzin ezan okumaya başlamıştı. Resûlullah (s.a.v)’a karşı büyük bir kin ve düşmanlık besleyen Ebû Mahzûre ile Kureyşli on genç ezan sesini işitince bir yere gizlendiler ve alaylı bir şekilde müezzini taklit ederek yüksek sesle ezan okudular. İçlerinden birinin güzel sesli olduğunu fark eden Hz. Peygamber (s.a.v) onları yanına çağırttı ve kendilerine birer birer ezan okuttu. En son okuyan Ebû Mahzûre’nin sesini çok beğenerek ona ezanı öğretti; daha sonra namaz vakti gelince elini başına koyup alnını okşadı ve ezan okumasını istedi. Ebû Mahzûre bu emri isteksiz bir şekilde yerine getirdikten sonra Hz. Peygamber (s.a.v) ona bir miktar gümüş para verdi ve kendisine dua etti. Gönlü İslâmiyet’e ısınan Ebû Mahzûre orada müslüman oldu ve Hz. Peygamber (s.a.v)’den kendisini Mekke’deki Harem-i Şerif’e müezzin yapmasını istedi. Bu arzusunu kabul eden Hz. Peygamber (s.a.v), Mekke Valisi Attâb b. Esîd’e gitmesini ve yeni görevini ona bildirmesini söyledi. Ebû Mahzûre, Resûl-i Ekrem (s.a.v)’in Mekke’den ayrılmasına kadar Kâbe’de Bilâl-i Habeşî ile birlikte ezan okudu. Resûlullâh (s.a.v)’ın okşadığı alnına düşen saçları hiç kestirmedi. Vefatına kadar Mekke’de müezzinliğe devam etti. (Murat Sarıcık, Ebû Mahzûre, DİA, 10/179-180)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet"> وَٱلْعَصْرِ ۝١ إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ ۝٢ إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ ۝٣</p>
 
-<p lang="ar" dir="rtl" class="ayet">ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ</p>
+*Asra yemin ederim ki insan gerçekten ziyandadır. Ancak iman edip dünya ve âhiret için yararlı işler yapanlar, birbirlerine hakkı ve sabrı tavsiye edenler başkadır.* (Asr, 103/1–3)
 
-“Nihayet o gün (dünyada yararlandığınız) nimetlerden elbette ve elbette hesaba çekileceksiniz.”(Tekasür, 101/8) ayeti ile Rabbimiz ahirette mutlaka hesabın olacağını, insana sahip olduğu bütün nimetlerden sorulacağını hatırlatır. Her nimet bir imtihan vesilesidir.
+Takvimde boş yer kalmayabilir; yine de günün sonunda gönlümüzde bir eksiklik duyabiliriz. Çünkü vaktin kıymeti, yapılan işlerin sayısından daha derin bir ölçü ister. Asr sûresi zamanı imanla, yararlı işle, hakla ve sabırla buluşturur. Günümüzü bu istikamette değerlendirmeye çağırır.
 
-Peygamber Efendimiz (s.a.s.) insana sorulacak soruları haber verir:
+<blockquote class="vaaz-alinti">
+<p>Bu sûre Kur’an’ın bütün ilimlerini kucaklıyor.</p>
+<footer>— İmam Şâfiî’den naklen; TDV İslâm Ansiklopedisi, “Asr Sûresi”, III, 502; aynı nakil Kur’an Yolu, Asr 103/1–3 tefsirinde.</footer>
+</blockquote>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ ، عَنِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ، أَنَّهُ قَالَ : لَا تَزُولُ قَدَمُ ابْنِ آدَمَ يَوْمَ الْقِيَامَةِ مِنْ عِنْدِ رَبِّهِ عَزَّ وَجَلَّ ، حَتَّى يُسْاَلَ عَنْ خَمْسٍ :</p>
+Bu kısa nakil, sûrenin öğüdünü dikkatle dinlememizi ister. İman kalbimize bir yön verir. Yararlı iş, bu yönün hayatta görünmesidir. Hakkı tavsiye ederken doğrulukta birbirimize destek oluruz. Sabrı tavsiye ederken de zorlukta birbirimizi yalnız bırakmayız. Vaktimizin bereketi, bu bağlarla büyür.
 
-“İnsanoğlu kıyamet günü beş şeyden hesaba çekilmedikçe hiçbir tarafa hareket etmeyecektir;
+Okulda anlamadığımız bir konuyu yeniden çalışmak sabır ister. İşte eksik yapılan bir görevi tamamlamak dürüstlük ister. Evde çocuğun sorusuna dikkatle kulak vermek vakit ister. Bunların her biri, doğru niyet ve güzel davranışla ömrümüzün hayırlı parçası olabilir. Gündelik hayatımız bu kadar yakındır.
 
-1- Ömrünü ne ile geçirdiğinden, عَنْ عُمْرِهِ فِيمَا أَفْنَاهُ
+Dinlenmek, bedenimizi ve dikkatimizi yeniden toparlayarak sorumluluklarımızı yerine getirmemize yardım eder. Günün bir kısmını dinlenmeye ayıralım; geriye kalan vakitte neye yöneldiğimizi bilelim. Alışkanlıkla açtığımız bir uygulamada geçen saatle, bilinçle seçilen bir dinlenmenin farkını görelim.
 
-Hayat Allah’ın bir lütfu ve ihsanıdır. Hayat bir yol, ömür ise yolculuktur. Ömür bir sermayedir, bunu kazanca, kâra çevirmek gerekir. Her insana her gün eşit bir şekilde 24 saatlik bir zaman dilimi verilir. Kimileri bu zaman dilimini sermaye yapıp, değerlendirir. Kimileri de çarçur eder.
+Yarın için üç ayrı vakit belirleyebiliriz: Bir ibadetin vakti, bir sorumluluğun vakti, bir dinlenmenin vakti. Planımızı ailemizin ihtiyaçlarına ve gücümüze göre kuralım. Akşam da başkasının gününü kolaylaştıran bir davranışımızı hatırlayalım. Takvimimizde insanın hakkına yer bulunsun.
 
-2- Gençliğini ne ile yıprattığından, وَعَنْ شَبَابِهِ فِيمَا أَبْلَاهُ
+Hakkı ve sabrı birbirimize tavsiye ederken sesimizin tonu da öğüdün bir parçasıdır. Bir arkadaşımıza namazı hatırlatabilir, zorlandığı düzeni onunla konuşabiliriz. Dersini anlamayan gence bildiğimizi yeniden anlatabiliriz. Bir iş arayışında yorulan kardeşimizin çabasına eşlik edebiliriz. Böylece zamanımızdan ayırdığımız pay, onun ümidini ve gayretini destekler. Sûrenin çağrısı bizi bu beraberliğe taşır.
 
-Ömür içerisinde gençlik devresi gücün, kuvvetin, vücut zindeliğinin en yüksek olduğu bir dönemdir. İnsan gücünün, kuvvetinin, zindeliğinin hep devam edeceğini zanneder. Ancak gençlik dönemi çok hızlı geçer. Bu yüzden Allah Resulü gençliğe dikkat çekmiştir.
+**Vakit, iman ve hayırla buluşunca bereket kazanır.**
 
-### Hikaye:
+---
 
-Genç, iki büklüm halde yere eğilerek yürüyen yaşlı bir adama:
+<h2 class="vaaz-bolum-baslik" id="bedenin-hakki" tabindex="-1">V. Bedenin hakkı: Güçlü kalmak, dengeli yaşamak</h2>
 
-“Baba, neden eğilmiş, yere bakar halde yürüyorsun?” diye sorar.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">فَإِنَّ لِجَسَدِكَ عَلَيْكَ حَقًّا، وَإِنَّ لِعَيْنِكَ عَلَيْكَ حَقًّا، وَإِنَّ لِزَوْجِكَ عَلَيْكَ حَقًّا، وَإِنَّ لِزَوْرِكَ عَلَيْكَ حَقًّا</p>
 
-Yaşlı adam: “Evlat, gençliğimi kaybettim onu arıyorum.” cevabını verir.
+*Bedeninin, gözünün, eşinin ve misafirinin senin üzerinde hakkı vardır.* (Buhârî, 1975; rivayetten bölüm)
 
-Gençlik de geri getirilemeyen bir nimettir. Şairin beytinde ifade ettiği gibi:
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — Gücünü korumayı öğrenen sahâbî</p>
 
-<p lang="ar" dir="rtl" class="ayet">فيَا لَيتَ الشّباَبَ يَعُودُ يَوْماً</p>
+Abdullah b. Amr gündüzleri oruç tutuyor, geceleri ibadet ediyordu. Efendimiz (s.a.s.) bunu öğrenince ona bazı günler oruç tutmasını, bazı günler tutmamasını; gecenin bir kısmında ibadet edip bir kısmında uyumasını öğütledi. Bedeninin, gözünün, eşinin ve misafirinin hakkını hatırlattı. Abdullah kendisini güçlü hissettiğini söyledi. Yaşı ilerlediğinde ise Peygamberimizin verdiği kolaylığı kabul etmiş olmayı arzuladığını anlattı.
 
-<p lang="ar" dir="rtl" class="ayet">فَأُخْبِرَهُ بِمَا فَعَلَ المَشِيبُ</p>
+(Buhârî, 1975; sahih rivayetin ilgili kısmının anlam özeti.)
 
-Keşke gençlik bir gün geri gelse de
+Kardeşlerim! Burada gençlik gücünü nasıl kullanacağımızı öğreniyoruz. Özenle saklanan bir alet yıllarca işe yarar. Bedenimiz de ilgimizi ister. Efendimizin öğüdünde ibadet ile uyku, kişisel gayret ile başkasının hakkı aynı hayatın içinde yer buluyor. Ölçü, gücümüzün hayra devam edebilmesidir.
 
-İhtiyarlığın yaptığını ona haber versem
+Gençliğimizi değerlendirirken sürekli yorgun düşmeyi başarı saymayalım. Dersin ve işin yanında uykuya zaman ayırmak, ailemize karşı daha dikkatli olmamıza da yardım eder. Bedenimizi hor kullanmadan çalışalım. Bir işin hakkını verebilmek için bazen dinlenmemiz gerekir. Bu ihtiyacımızı dürüstçe kabul edelim.
 
-Gençlikte günler kısa yıllar uzun, yaşlılıkta ise yıllar kısa günler uzundur.
+Sağlık imkânı olanımız onu korumaya özen göstersin. Hastalık veya engelle yaşayan kardeşimiz ise yapabildiği hayrın kıymetini bilsin. Yardıma ihtiyaç duyduğumuzda güvenilir bir yakınımıza ve ilgili uzmana başvuralım. Cemaat olarak da yorgunluk taşıyan insana görev paylaşımıyla destek verelim.
 
-3- Malını nereden kazandığından, وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ
+Evde bakım yükünü çoğu zaman aynı kişinin taşıdığı bir aile olabilir. Onun dinlenmesini sağlamak, bizim beden emanetini gözetmemizin bir parçasıdır. Bu hafta bir görevi üstlenelim. Bir anneye, babaya veya eşe kesintisiz bir dinlenme vakti kazandırmak, hayra verilmiş gençlik gücüdür.
 
-Mesleğin dinen yasak işlerden olmaması, kazancın helal olması gerekmektedir. Gençlik döneminde birey geleceğe dair kararlar alırken Peygamber Efendimiz (s.a.s.)’in bu uyarısını unutmamalıdır.
+Bedenin nerede yıpratıldığı sorusu, gücümüzün hangi amaçla harcandığını da düşündürür. Emeğini ailesinin geçimine veren bir insanın yorgunluğunda sorumluluk vardır. Başkasını incitmek için harcanan kuvvette ise düzeltilmesi gereken bir tercih vardır. İki durumda da görünürde yorulan bir beden bulunur; yönleri farklıdır. Gençliğin güçlü ellerini onarmaya, taşımaya ve destek olmaya verelim. Spor yaparken de arkadaşımızın güvenliğini gözetelim. Gücümüzün yanında ölçümüz, yarışımızın yanında ahlâkımız bulunsun. Eve döndüğümüzde ardımızda kırılmış bir gönül yerine korunmuş bir güven bırakalım.
 
-4- Nereye harcadığından, وَفِيمَا أَنْفَقَهُ
+**Bedenin hakkını koruyan denge, hayra devam etmenin zeminidir.**
 
-Kişi “mal, para benim, istediğim şekilde harcarım” diyemez. Harcamalar da israfa düşülmeden, İslam’ın yasakladığı alanlardan sakınarak yapılmalıdır.
+---
 
-5- Öğrendiği bilgileri yaşayıp yaşamadığından وَمَا عَمِلَ فِيمَا عَلِمَ
+<h2 class="vaaz-bolum-baslik" id="gencligin-yonu" tabindex="-1">VI. Gençliğin yönü: İmanla büyüyen bir irade</h2>
 
-İnsan öğrendiği bilgileri yaşayıp yaşamadığından hesaba çekilecektir. Salt ilim, bilgi insanın kurtulması için yetmeyecektir. Bilginin yaşanması, öğrenilip hayata geçirilmesi, yaşantıda da samimi olunması gerekmektedir. (Tirmizi, Sıfatü’l-Kıyame, 1)
+**Sevgili gençler! Sorularınız ve hayır arayışınız bu cemaatin içinde yer bulsun.**
 
-Bu hadis bize, gençlik yıllarının iyi değerlendirilmesi, ömrün zayi edilmemesi, mal kazanma ve harcama yolunda yanlış yol ve üsluba girilmemesi, öğrenilen bilginin yaşanılması gerektiğini hatırlatıyor.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">يَـٰيَحْيَىٰ خُذِ ٱلْكِتَـٰبَ بِقُوَّةٍ ۖ وَءَاتَيْنَـٰهُ ٱلْحُكْمَ صَبِيًّا ۝١٢</p>
 
-## İstanbul’un Fethi
+*“Ey Yahyâ! Kitaba var gücünle sarıl!” dedik ve ona henüz çocukken hikmeti verdik.* (Meryem, 19/12)
 
-Peygamber Efendimiz (s.a.s.) şöyle buyurmuştu:
+Hz. Yahyâ’ya henüz çocukken hikmet verilmesi, erken yaşta başlayan öğrenme ve sorumluluğu önümüze koyar. Kendisine Tevrat’ı anlayıp onunla yaşaması emredilmiştir. Biz de Kur’an’ı öğrenmeye ve öğrendiğimizi davranışa taşımaya gençliğimizde başlayabiliriz. Okulun koridorunda, meslek seçiminin başında, arkadaş grubunun içinde kendimize sorarız: Bu kararım, inandığım değerlerle nasıl buluşacak?
 
-<p lang="ar" dir="rtl" class="ayet">لَتُفْتَحَنَّ الْقُسْطَنْطِينِيَّةُ وَلَنِعْمَ الأَمِيرُ اَمِيرُهَاوَلَنِعْمَ الْجَيْشُ ذَلِكَ الْجَيْشُ</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">احْفَظِ اللَّهَ يَحْفَظْكَ</p>
 
-“İstanbul mutlaka fethedilecektir. Onu fetheden komutan ne güzel komutan, fetheden ordu ne güzel ordudur.” (İbn Hanbel, IV, 335) Bu müjdeye nail olmak için Sevgili Peygamberimiz(s.a.v)'i evinde altı ay misafir eden Ebû Eyyûb el-Ensârî İstanbul seferine katılmış, İstanbul surları önünde şehit olmuştu. Bu kutlu işaret tarih boyunca pek çok sefere vesile olmuş, zafer 21 yaşındaki genç padişah II. Mehmed’e nasip olmuştu. Büyük hazırlıklar yapılmış, gerekli bütün tedbirler alınmış, gemiler karadan yürütülmüştü. Sefer, Akşemseddin, Molla Gürânî, Molla Hüsrev gibi tanınmış âlimler tarafından mânevî bakımdan desteklenmişti. Uzun bir kuşatmadan sonra 29 Mayıs 1453 günü İstanbul fethedilmiş, Peygamber Efendimiz (s.a.s.)’in müjdesine nail olunmuştu.
+*Allah’ın emir ve yasaklarını gözet ki Allah da seni korusun.* (Tirmizî, 2516; rivayetten bölüm; Tirmizî’nin değerlendirmesi: hasen-sahih)
 
-İstanbul’un fethi, Peygamber Efendimiz (s.a.s.)’in müjdesine nail olmak, Allah’ın ismini yüceltmek, İslam’ın önündeki engelleri kaldırmak gibi ulvi sevdalar için yapılmıştı. Fatih Sultan Mehmet’in İstanbul’u fethettiğinde 21 yaşında olması, gençlerimiz için özgüven ve ümit kaynağıdır. Zira yıkılmaz kabul edilen surlar yıkılmış, bir gecede karadan yürütülen gemilerle Haliç’in zincirleri aşılmıştı. Arif Nihat Asya bu duyguları yazdığı şiirinde ne güzel ifade etmiştir:
+İbn Abbas, Efendimizin kendisine genç yaşta bu öğüdü verdiğini anlatır. Allah’ı gözetmek, O’nun gösterdiği sınırları kararlarımızda korumaktır. Sınavda dürüst olmak, arkadaşımızın mahremiyetini saklamak, ibadetimize dikkat etmek bu bağlılığın gündelik karşılıklarıdır. Rabbimize güvenen kalp, doğru adım için cesaret bulur.
 
-Delikanlım, işaret aldığın gün atandan
-Yürüyeceksin... Millet yürüyecek arkandan!
-Sana selam getirdim Ulubatlı Hasan'dan....
+Hz. Yûsuf’un “Allah’a sığınırım” sözü de irademize bir yön verir. Yûsuf 12/23’te, kötülüğe çağrı karşısında Rabbine sığındığını okuruz. Biz de zorlandığımız anda ortamdan uzaklaşabilir, güvenilir bir insanla konuşabilir ve dua edebiliriz. Korunmak için atılacak bir adım vardır.
 
-Sen ki burçlara bayrak olacak kumaştasın;
- Fatih'in İstanbul'u fethettiği yaştasın!..
+Genç kardeşim! Başkalarının bütün beklentilerini bir anda karşılamaya çalışırken yorulabilirsin. Rabbine yönelişin kendi içindeki iyilik arzusunu da güçlendirsin. Bir yanlıştan dönmek, bir soruyu öğrenmek, yeniden namaza başlamak hayatının içinde mümkün olsun. Yanında yürüyebilecek bir büyüğüne veya arkadaşına ulaş.
 
-## Sonuç
+**Gençlik bize emanet; zamanı ve bedeni hayra vermek, bu emanete şükürdür.**
 
-Gençlik, hayatın baharı, duyguların coştuğu bir dönemdir. Bu dönemde duygu ve davranışlar dini hassasiyetle, edep ve hayâ gibi ahlaki değerlerle kontrol edilmelidir.
+**İman, gençliğin gücünü doğru tercihe yöneltir.**
 
-İnsanın en çok sevdiklerinden dahi kaçtığı, amelini saklayamayacağı, yapılan amel göklerde, yerde, bir kayanın kovuğunda bile olsa çıkarılıp getirileceği, ellerin konuşup, ayakların şahitlik edeceği ‘Haydi kitabını oku!’ denileceği hesap gününde, insan bütün nimetlerden hesaba çekilecektir. Hesaba çekileceği nimetler arasında gençlik de vardır. Geçen zamanın geri getirilemeyeceği hakikattir.
+---
 
-Sohbetimizi Hz. Peygamber (s.a.s.)’in genç sahabe Abdullah b. Abbas’a yaptığı şu nasihatle bitirelim: “Delikanlı! Sana bazı şeyler öğreteceğim. Allah’ı gözet ki Allah da seni gözetsin. Allah’ı gözet ki Allah’ı daima yanında bulasın. Bir şey istediğinde Allah’tan iste! Yardıma muhtaç olduğunda Allah’tan yardım dile! Şunu bil ki bütün insanlar sana fayda vermek için toplansa Allah’ın takdiri dışında sana faydalı olamazlar. Ayrıca bütün insanlar sana zarar vermek için toplansa Allah’ın takdiri dışında sana hiçbir şeyde zarar veremez. Zira kalemler kaldırılmış, sayfalar kurumuştur.” (İbn Hanbel, Müsned, I, 293; Hadislerle İslam, VI, 396)
+<h2 class="vaaz-bolum-baslik" id="bilginin-emaneti" tabindex="-1">VII. Bilginin emaneti: Ekrandan davranışa</h2>
 
-Rabbimiz, gençliğimizi Rabbimize kulluk bilinciyle geçirenlerden olabilmeyi, gölgesinden başka gölge olmayan günde, gölgesi altında gölgelenenlerden olabilmeyi nasip eylesin.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِۦ عِلْمٌ ۚ إِنَّ ٱلسَّمْعَ وَٱلْبَصَرَ وَٱلْفُؤَادَ كُلُّ أُو۟لَـٰٓئِكَ كَانَ عَنْهُ مَسْـُٔولًا ۝٣٦</p>
+
+*Hakkında bilgin olmayan şeyin ardına düşme! Çünkü kulak, göz ve gönül, bunların hepsi ondan sorumludur.* (İsrâ, 17/36)
+
+Telefonumuzun ekranında bir video açılır. Ardından başka bir ses, başka bir iddia gelir. Çok şey duymuş olabiliriz; fakat neyi öğrendiğimizi ve nasıl uygulayacağımızı ayrıca sormalıyız. İsrâ sûresinin öğüdü kulağımızı, gözümüzü ve gönlümüzü sorumlulukla buluşturur. Dikkatimiz de emanettir.
+
+Hesap rivayetinde bilginin ardından, onunla ne yapıldığı sorulur. Doğruluğun kıymetini bilip ödevde hile yapmak, bilgimizle davranışımız arasında bir mesafe bırakır. Namazın önemini öğrenince onu günümüzün içine yerleştirmek için gayret ederiz. Bilgiyi hayata taşıyan gayret, öğrendiğimizin hakkını vermektir.
+
+Bir mesaj grubunda arkadaşımız hakkında bir iddia dolaştığında paylaşmadan duralım. Kaynağını ve doğruluğunu araştıralım. Başkasının itibarını kolayca zedeleyen bir söz, bizim de sorumluluğumuz olur. Bilmediğimizi söylemek cesaret ister. Bazen emanet, bir cümleyi göndermemekte korunur.
+
+Dinî bir bilgi öğrenirken güvenilir kaynağı ve konunun bağlamını soralım. Her kısa video, uzun bir meselenin bütün ayrıntılarını taşıyamaz. Anlamadığımız noktayı ehline danışalım. Böylece gençliğin öğrenme isteği, sabırla derinleşir. Bilgimiz arttıkça kendimizi düzeltmeye daha açık olalım.
+
+Bir dil öğrenen gencimiz, yaşlı komşusunun randevu yazısını anlamasına yardımcı olabilir. Meslek eğitimi alan kardeşimiz, öğrendiği beceriyi sağlam bir işte kullanabilir. Kur’an okumayı öğrenen çocuğumuz, o öğrenmenin sevinciyle ailesine bir sûre okuyabilir. Bilgi, paylaşılırken hayra dönüşür.
+
+Bu hafta öğrendiğimiz bir doğruyu seçelim. Onu hangi davranışta uygulayacağımızı yazalım. Sabır hakkında okuduysak bir konuşmada söz kesmeden dinleyelim. Emanet hakkında öğrendiysek aldığımız kitabı geri verelim. Bilgiye, görünür bir karşılık kazandıralım.
+
+Öğrenmenin bir hakkı da dikkatle dinlemektir. Öğretmenimizin anlattığı bir konuya ve ailemizin verdiği bir öğüde vakit ayıralım. Anlamadığımız yeri soralım. Başkasının düşüncesini doğru anlamak için önce sözünü tamamlamasına izin verelim. Bu alışkanlık, dinî bir meseleyi araştırırken de bize yardım eder. Bilgiye aceleyle hükmetmek yerine, anlamak için gerekli emeği verelim. Doğru öğrenilmiş bir konu, ileride başkasına vereceğimiz desteği de sağlamlaştırır.
+
+**Öğrendiğimizin hakkını, onu yaşayarak veririz.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="malin-iki-sorusu" tabindex="-1">VIII. İlk kazançtan ilk harcamaya: Malın iki sorusu</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱبْتَغِ فِيمَآ ءَاتَىٰكَ ٱللَّهُ ٱلدَّارَ ٱلْـَٔاخِرَةَ ۖ وَلَا تَنسَ نَصِيبَكَ مِنَ ٱلدُّنْيَا ۖ وَأَحْسِن كَمَآ أَحْسَنَ ٱللَّهُ إِلَيْكَ</p>
+
+*Allah’ın sana verdiğiyle âhiret yurdunu kazanmaya çalış; dünyadan nasibini de unutma. Allah sana iyilik yaptığı gibi sen de iyilik yap.* (Kasas, 28/77; âyetten bölüm)
+
+Bu öğüt, Kasas sûresinde servetiyle taşkınlık eden Kārûn’a yöneltilen sözlerin içindedir. Sahip olduğumuz imkânı âhiret iyiliğine çevirmeyi öğretir. İlk maaşını alan bir gencin cebindeki para da bu sorumlulukla buluşur. Kazanmak emek ister; güzel kullanmak da dikkat ister.
+
+Hesap rivayeti mal için iki ayrı soru açar. Önce nereden kazandığımız, ardından nereye harcadığımız sorulur. Öğrenci işinde çalışma saatini doğru bildirmek, müşteriye verilen sözü tutmak, bir başkasının emeğini kendi başarımız gibi sunmamak kazançtaki dürüstlüğün örnekleridir. Paranın azlığı, bu dikkati küçültmez.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَا أَنْفَقَهُ</p>
+
+*Malını nereden kazandığı ve nereye harcadığı sorulur.* (Tirmizî, 2417; rivayetten bölüm; Tirmizî’nin değerlendirmesi: hasen-sahih)
+
+Genç kardeşimiz bir meslek seçerken kabiliyetini ve geçim ihtiyacını birlikte gözetir. Yapacağı işin ahlâkî sorumluluğunu da öğrenir. Tereddüt ettiği somut bir işi ehline danışabilir. Anne ve babalar olarak bu arayışta onu dinleyelim. Helâl kazanca hazırlanmasına bilgiyle ve sabırla destek olalım.
+
+Harcamada ise ihtiyacımızı, yükümlülüğümüzü ve paylaşma imkânımızı ayıralım. Ekranda görülen her ürünü hemen almak yerine kısa bir duraklama yapabiliriz. Biriktirmek istediğimiz meblağı ve karşılamak zorunda olduğumuz ihtiyacı düşünelim. Bir reklâmın verdiği acele, kararımızın sahibi olmasın.
+
+Harcama ölçümüz aile içinde açıkça konuşulsun. Gençlerimizin bütçe öğrenmesi, onlara güvenerek küçük sorumluluklar vermekle kolaylaşır. Bir ayın yol parasını, kitap ihtiyacını ve paylaşma payını birlikte planlayabiliriz. Maddî darlık yaşayan gencimizi ise başkasının imkânıyla kıyaslamayalım. Yanında mahremiyetini koruyan bir dayanışma bulunsun.
+
+Bugün son yaptığımız alışverişe bakalım. Neyi karşıladı, kimi etkiledi, gerçekten gerekli miydi? Cevabımızı bir sonraki harcamaya taşıyalım. Helâl kazandığımız imkânın hayır yolunda kullanılmasına gönlümüz de eşlik etsin. Böylece el emeğimizin kıymetini koruruz.
+
+**Malın emanetini, kazanırken dürüstlükle ve harcarken ölçüyle koruruz.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="dikkatimizi-korumak" tabindex="-1">IX. Avrupa’da bir gün: Dikkatimizi geri kazanmak</h2>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ، الصِّحَّةُ وَالْفَرَاغُ</p>
+
+*İki nimet vardır ki insanların çoğu bunların kıymetini bilmekte aldanır: Sağlık ve boş vakit.* (Buhârî, 6412)
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Marche-en-Famenne’de okuldan sonraki saat</p>
+
+Marche-en-Famenne’de okuldan çıkan bir genç, otobüsü beklerken telefonunu açıyor. Eve varınca da görüntüler birbirini izliyor. Çantasındaki ödev aynı yerde duruyor. Akşam ailesiyle konuşacak zamanı daralıyor. Ertesi gün küçük bir karar alıyor: Eve gelince telefonu belirlediği yere bırakıp önce sorumluluğunu tamamlayacak. Sonra dinlenmesine ve arkadaşına zaman ayıracak.
+
+Bu küçük kararın içinde dikkatimizi geri almak vardır. Ekranlarımız haberleşmemize, öğrenmemize ve uzaktaki yakınımızı görmemize yardım eder. Kullanacağımız amacı ve süreyi biz belirleyince bu imkân hayra hizmet eder. Elimizdeki cihazın yanında, kendi seçtiğimiz bir duraklama da bulunsun.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Emanetin üç gündelik yeri</strong> Süreyi ve davranışı kendi şartlarımıza göre belirleyelim.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Bir öğünde ekranı bırakıp birbirimizi dikkatle dinleyelim.</dd></div>
+<div><dt>İşte ve okulda</dt><dd>Bir görev sırasında gereksiz bildirimleri kapatalım.</dd></div>
+<div><dt>Cemaat içinde</dt><dd>Bir becerimizi küçük ve belirli bir hizmete ayıralım.</dd></div>
+</dl>
+</figure>
+
+İşten yorgun gelen yetişkinin de saatleri ekranda kaybolabilir. Gençlerimize öğüt verirken kendi davranışımızı onlarla birlikte düzenleyelim. Evde ortak bir konuşma vakti seçelim. Söz isteyen çocuğun cümlesini duyalım. Yeni Müslüman bir kardeşimizin öğrenme sorusuna vakit ayıralım. Dikkatin paylaşılması, insanı görünür kılar.
+
+Bir akşamın sonunda kimseye ulaşamamışsak ertesi güne küçük bir bağ koyalım. Yanımızdaki insana birkaç dakika bütün dikkatimizi vermek, uzaktaki saatlerden daha yakın bir iyilik olabilir. Günümüzün içine böyle bir buluşma yerleştirelim.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/genclik-ahirette-sorulacak-bir-nimet/okul-sonrasi.svg" width="1600" height="900" alt="Sonbahar yapraklarıyla çevrili bir otobüs durağında kapalı telefon, okul çantası ve kitap." loading="lazy" decoding="async">
+<figcaption><strong>Dikkati seçmek</strong> Okuldan sonraki saat, sorumluluğa ve dinlenmeye yer açsın.</figcaption>
+</figure>
+
+Günü planlarken elimizdeki bütün vakitlerin serbest olmadığını hatırlayalım. Ulaşım, ev işleri ve bakım sorumluluğu saatlerimizi doldurabilir. Seçebildiğimiz küçük bir zaman dilimine odaklanalım. Otobüste kısa bir tekrar, evde belirli bir konuşma vakti, hafta sonunda tamamlanabilecek bir hizmet seçebiliriz. Planımızı kendi şartlarımıza göre kurduğumuzda ona devam etmemiz kolaylaşır. Bir aksama olduğunda da sebebini anlayıp sonraki günü yeniden düzenleyelim.
+
+**Dikkatimizi seçerek kullandığımızda vakti ve ilişkilerimizi birlikte koruruz.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yeniden-baslamak" tabindex="-1">X. Yeniden başlamak: Küçük, düzenli ve birlikte</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا ۝٦</p>
+
+*Evet, zorlukla beraber bir kolaylık vardır.* (İnşirâh, 94/6)
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">فَإِذَا فَرَغْتَ فَٱنصَبْ ۝٧ وَإِلَىٰ رَبِّكَ فَٱرْغَب ۝٨</p>
+
+*O halde önemli bir işi bitirince diğerine koyul. Ve yalnız Rabbine yönel.* (İnşirâh, 94/7–8)
+
+İnşirâh sûresi, zorluğun yanında kolaylığı hatırlattıktan sonra hayırlı gayrete ve Rabbimize yönelişe çağırır. Kur’an Yolu bu öğüdü, ibadetle birlikte yararlı dünya işlerinin de hakkını vermek şeklinde açıklar. Günümüzde bir işi tamamladığımızda sıradaki hayra bilinçle yöneliriz. Yol devam eder.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَدْوَمُهَا وَإِنْ قَلَّ</p>
+
+*Allah’ın en çok sevdiği amel, az da olsa devamlı olandır.* (Buhârî, 6465; rivayetten bölüm)
+
+Önümüzde açık bir defter, yanında bir kalem dursun. İlk satıra bütün hayatımızı değiştirecek büyük bir program yazmak yerine sürdürebileceğimiz bir adım yazalım. Farz namazlarımızı günün içine yerleştirmek için bir düzen kuralım. Buna kısa bir öğrenme ve yapabildiğimiz bir hizmet ekleyelim. Devam için gücümüzü tanıyalım.
+
+Geçmişte vaktini çok kaybettiğini hisseden kardeşim! Bugün fark ettiğin yanlış, bugün başlatacağın düzeltmenin konusu olabilir. Gerekli özrü dilemek, verilen zararı gidermek ve Rabbimize tövbeyle dönmek için harekete geçelim. Önümüzdeki günün tamamını bilemesek de şu anın bir iyiliğini seçebiliriz.
+
+Anne ve babalar olarak gençlerimizin başlangıcına destek verelim. “Sen zaten yapamazsın” demek yerine hangi yardımın işine yarayacağını soralım. Birlikte çalışabileceği sakin bir yer, dinlenebileceği vakit, fikrini söyleyebileceği bir konuşma sağlayalım. Genç kızlarımızın ve delikanlılarımızın hizmette söz sahibi olmasına alan açalım.
+
+Bir gencin görevi aksadığında önce neye zorlandığını dinleyelim. Sonra görevi birlikte düzenleyelim. Yaşlı bir kardeşimizin tecrübesi, yeni başlayan bir insanın heyecanına eşlik edebilir. Bazen bir haftalık iyi başlangıcı koruyan şey, hatırlatan bir arkadaş ve zamanında verilen destektir.
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/genclik-ahirette-sorulacak-bir-nimet/devam-yolu.svg" width="1600" height="900" alt="Bir orman yolunda peş peşe görülen ayak izleri ve sabah ışığında ilerleyen yol." loading="lazy" decoding="async">
+<figcaption><strong>Küçük adımın devamı</strong> Hayra ayrılan vakit, düzenli adımlarla büyüsün.</figcaption>
+</figure>
+
+**Devam edebildiğimiz hayır, destekle kök salar.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Hayata taşıyacağımız yedi söz</h2>
+
+**Aziz cemaat! Öğüdümüz, birlikte atacağımız bir adıma dönüşsün.**
+
+Cami çıkışında cebimizde anahtarımız, zihnimizde işlerimiz olacak. Bu sohbetten de yanımızda bir karar taşıyalım. Yedi sözün her biri, konuştuğumuz emanete günlük hayatta karşılık vermenin bir yoludur. Gücümüzü ve sorumluluklarımızı gözeterek başlayalım.
+
+**GENÇLİK VE ÖMÜR EMANETİ İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta bir günümün nasıl geçtiğini yazacağım.</strong> Vaktimin dağıldığı yeri görüp bir düzeltme seçeceğim.</li>
+<li><strong>Yarınki namazlarım için günlük planımda yer ayıracağım.</strong> Çalışma ve ders düzenimi ibadetimi gözeterek kuracağım.</li>
+<li><strong>Üç akşam bir görev sırasında gereksiz bildirimleri kapatacağım.</strong> Dikkatimi seçtiğim işe vermeyi deneyeceğim.</li>
+<li><strong>Bu hafta bedenimin dinlenme ihtiyacı için belirli bir vakit ayıracağım.</strong> İmkânıma göre görev paylaşımı isteyip dengemi gözeteceğim.</li>
+<li><strong>Bu hafta bir gelirimi veya harcamamı dürüstlük ve ihtiyaç açısından inceleyeceğim.</strong> Gereken düzeltmeyi yapıp sonraki kararıma taşıyacağım.</li>
+<li><strong>Öğrendiğim bir doğruyu bu hafta bir davranışta uygulayacağım.</strong> Bilgimi, tamamlayabileceğim küçük bir iyilikle buluşturacağım.</li>
+<li><strong>Bu hafta gücüme uygun bir yardımı tamamlayacağım.</strong> Bir yakınımın yükünü paylaşacak veya bir öğrenme arkadaşına destek vereceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bu haftanın emanet yolu</strong> Bir adım seç, vaktini belirle, hafta sonunda gözden geçir.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Gününü gözden geçir</strong></li>
+<li><span aria-hidden="true">2</span><strong>Namaza yer ayır</strong></li>
+<li><span aria-hidden="true">3</span><strong>Dikkatini işine ver</strong></li>
+<li><span aria-hidden="true">4</span><strong>Bedeninin hakkını gözet</strong></li>
+<li><span aria-hidden="true">5</span><strong>Kazancını ve harcamanı incele</strong></li>
+<li><span aria-hidden="true">6</span><strong>Bilgini hayata taşı</strong></li>
+<li><span aria-hidden="true">7</span><strong>Bir yükü paylaş</strong></li>
+</ol>
+</figure>
+
+Hepimiz aynı işi aynı şekilde yapamayabiliriz. Hastalıkla yaşayan bir kardeşimiz kısa bir telefon görüşmesiyle destek verir. Genç bir öğrenci ders notunu paylaşır. Yakınının bakımını üstlenen kişi ise dinlenme için yakınından yardım ister. Bu sözler, herkesin kendi imkânı içinde hayra başlamasına hizmet etsin.
+
+Hafta sonunda kendimize sakin bir değerlendirme vakti verelim. Hangi adım tamamlandı, hangisinde desteğe ihtiyaç duyduk? Tamamladığımız hayır için hamdedelim; eksik kalanın yolunu yeniden düzenleyelim. Bir arkadaşımızla sözleştiysek birbirimizi incitmeden hatırlatalım. Kararımız, alışkanlığa dönüşecek kadar gerçekçi olsun.
+
+Sözümüzü yalnız zihnimizde tutmak yerine görebileceğimiz bir yere yazabiliriz. Defterin kenarında bir cümle, takvimde belirlenmiş bir saat başlangıcımızı hatırlatır. Bir yakınımıza anlatmak da destek bulmamıza yardım eder. Bu destek karşılıklı olsun. Büyüklerimiz gençlere zaman yönetimini öğretirken gençlerimiz de onların işlerini kolaylaştırabilir. Birimizin eksik bıraktığını diğerimiz tamamlar. Böylece gençlik gücüyle tecrübe, aynı iyiliğe hizmet eder. Çocuklarımızın yapabildiği küçük yardıma da teşekkür edelim. Hayra katıldığını hisseden çocuk, sorumluluk almaya daha istekli olabilir. Evin içinde birlikte tamamlanan bir görev, bu sözlerin ilk karşılığı olsun.
+
+Seçtiğimiz adımın vaktini şimdi belirleyelim. Sabah mı, akşam mı, hafta sonu mu? Başlangıç için gerekli desteği de düşünelim. Vakti belli bir kararın ardından ilk hareketimizi yapalım. İyiliğin devamına böyle bir zemin hazırlayabiliriz.
+
+**Gençlik bize emanet; zamanı ve bedeni hayra vermek, bu emanete şükürdür.**
+
+**Bugün seçtiğimiz bir iyilik, yarına taşıdığımız emanettir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Ömrümüze şükür, gençliğimize istikamet</h2>
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًا وَتَوَفَّنَا مُسْلِمِينَ</p>
+
+*Ey Rabbimiz! Bize sabırlar ver ve Müslüman olarak canımızı al!* (A‘râf, 7/126; âyetten bölüm)
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ أَوْزِعْنِىٓ أَنْ أَشْكُرَ نِعْمَتَكَ ٱلَّتِىٓ أَنْعَمْتَ عَلَىَّ وَعَلَىٰ وَٰلِدَىَّ وَأَنْ أَعْمَلَ صَـٰلِحًا تَرْضَىٰهُ وَأَصْلِحْ لِى فِى ذُرِّيَّتِىٓ ۖ إِنِّى تُبْتُ إِلَيْكَ وَإِنِّى مِنَ ٱلْمُسْلِمِينَ</p>
+
+*Rabbim! Bana ve anne babama lutfettiğin nimete şükretmeye, razı olacağın işleri yapmaya beni muvaffak kıl. Benden gelecek nesli hayırlı eyle. Dönüp kapına başvurdum ve ben şüphesiz sana boyun eğenlerdenim!* (Ahkāf, 46/15; âyetten bölüm)
+
+Allah’ım! Bize verdiğin ömrü rızana uygun değerlendirmeyi nasip eyle. Gençliğimizin gücünü hayra yönelt. Vaktimizi korumaya, bedenimizin hakkını gözetmeye, bilgimizi doğru davranışa taşımaya yardım eyle. Kazancımızı helâl, harcamamızı ölçülü kıl.
+
+Allah’ım! Gençlerimize doğruyu arama cesareti ve iyilikte devam gücü ver. Anne ve babalara dinleyen bir gönül, öğretmenlere ve büyüklere sabır ihsan eyle. Ailelerimizi sevgiyle güçlendir. Yeni Müslüman olan kardeşlerimize öğrenme kolaylığı ve dostluk nasip eyle.
+
+Rabbimiz! Hastalarımıza şifa, engelli kardeşlerimize ihtiyaç duydukları destek, bakımla meşgul olanlara yardım ihsan eyle. Yalnız hissedene bir dost, geçim darlığı çekene helâl bir kolaylık ver. Dinlenmeye muhtaç olana yükünü paylaşan insanlar nasip eyle.
+
+Allah’ım! Vefat eden yakınlarımıza rahmet eyle. Yaşadığımız beldede barışı ve güveni çoğalt. Farklı inançlardan komşularımızla adalet ve iyilik içinde yaşamayı nasip eyle. Cemaatimizin emeğini kabul buyur; birbirimize verdiğimiz desteği bereketlendir.
+
+Rabbimiz! Şu anı hayra açabilmeyi, yarına temiz bir niyetle hazırlanmayı nasip eyle. Yanlışlarımızdan dönmeyi, ihmal ettiğimiz hakları yerine getirmeyi kolaylaştır. Emanetini taşıdığımız hayatımızı rızanla güzelleştir.
+
+**Ömrümüzü şükürle, gençliğimizi istikametle bereketlendir Allah’ım.**
+
+Âmin. Peygamber Efendimiz’e salât ve selâm olsun. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler Kur’an Yolu’nun anlam çizgisindedir; kısaltılan âyet ve hadisler belirtilmiştir. Gündelik Avrupa sahneleri temsilîdir. Derleme içi hadis lafızları yerel metinlerle karşılaştırılmıştır; Hâkim rivayeti açılan kaynaktan alınmıştır. Sıhhat değerlendirmeleri kaynak raporundadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/20/25-28">Tâhâ 20/25–28</a>.</li>
+<li>Nimet ve şükür: <a href="https://quran.com/102/8">Tekâsür 102/8</a>; <a href="https://quran.com/102/1-2">Tekâsür 102/1–2</a>.</li>
+<li>Beş soru: <a href="https://sunnah.com/tirmidhi:2417">Tirmizî 2417</a>.</li>
+<li>Fırsatın kıymeti: Hâkim el-Müstedrek 7914.</li>
+<li>Zamanı değerlendirmek: <a href="https://quran.com/103/1-3">Asr 103/1–3</a>.</li>
+<li>Bedenin emaneti: <a href="https://sunnah.com/bukhari:1975">Buhârî 1975</a>.</li>
+<li>İman ve irade: <a href="https://quran.com/19/12">Meryem 19/12</a>; <a href="https://sunnah.com/tirmidhi:2516">Tirmizî 2516</a>.</li>
+<li>Bilgiyi yaşamak: <a href="https://quran.com/17/36">İsrâ 17/36</a>.</li>
+<li>Kazanç ve harcama: <a href="https://quran.com/28/77">Kasas 28/77</a>; <a href="https://sunnah.com/tirmidhi:2417">Tirmizî 2417</a>.</li>
+<li>Günlük hayat ve ekran: <a href="https://sunnah.com/bukhari:6412">Buhârî 6412</a>.</li>
+<li>Başlangıç ve destek: <a href="https://quran.com/94/6">İnşirâh 94/6</a>; <a href="https://quran.com/94/7-8">İnşirâh 94/7–8</a>; <a href="https://sunnah.com/bukhari:6465">Buhârî 6465</a>.</li>
+<li>Hatim duası: <a href="https://quran.com/7/126">A‘râf 7/126</a>; <a href="https://quran.com/46/15">Ahkāf 46/15</a>.</li>
+<li>İlmî çerçeve: <a href="https://islamansiklopedisi.org.tr/asr-suresi">TDV İslâm Ansiklopedisi — Asr Sûresi</a>.</li>
+<li>Rivayet denetimi: <a href="https://sunnah.com/tirmidhi:2416">Tirmizî 2416 — gençliği ayrıca anan rivayet ve zayıflık açıklaması</a>.</li>
+<li>Rivayet denetimi: <a href="https://sunnah.com/tirmidhi:2417">Tirmizî 2417 — Ebû Berze rivayeti ve değerlendirme farkı</a>.</li>
+<li>Fırsat öğüdü: <a href="https://sunnah.com/hakim/42">Hâkim, Kitâbü’r-Rikāk — bu yayında 7914</a>.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>

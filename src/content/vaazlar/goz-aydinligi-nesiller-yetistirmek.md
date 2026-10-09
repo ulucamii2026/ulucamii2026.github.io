@@ -1,183 +1,423 @@
 ---
-baslik: "Göz Aydınlığı Nesiller Yetiştirmek"
-ozet: "\"Onlar: \"Rabbimiz! Bize eşlerimizden ve çocuklarımızdan gözümüzün aydınlığı olacak insanlar ihsan et ve bizi, Allah'a karşı gelmekten sakınanlara önder yap\" derler…"
+baslik: "Göz Aydınlığı Nesiller: Avrupa’da İmanla ve Kur’an’la Büyümek"
+ozet: "Furkân sûresindeki göz aydınlığı duasından hareketle Avrupa’da iman kimliği, Kur’an eğitimi, hayırlı örnekler ve evlat için dua. Nesillerin öğrenme yolculuğuna eşlik edecek yedi somut söz."
 kategori: aile
-kelime: 2884
+kelime: 3845
 docx: "/vaazlar/goz-aydinligi-nesiller-yetistirmek.docx"
 pdf: "/vaazlar/goz-aydinligi-nesiller-yetistirmek.pdf"
+kapak: "/media/vaazlar/goz-aydinligi-nesiller-yetistirmek/kapak-og.webp"
+kapakAlt: "Soyut bir ders köşesinde yazısız açık kitaplar, okul çantası ve yıldızlı gökyüzü."
 ---
-<p lang="ar" dir="rtl" class="ayet">وَالَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا ﴿٧٤﴾أُوْلَئِكَ يُجْزَوْنَ الْغُرْفَةَ بِمَا صَبَرُوا وَيُلَقَّوْنَ فِيهَا تَحِيَّةً وَسَلَامًا ﴿٧٥﴾</p>
 
-"Onlar: "Rabbimiz! Bize eşlerimizden ve çocuklarımızdan gözümüzün aydınlığı olacak insanlar ihsan et ve bizi, Allah'a karşı gelmekten sakınanlara önder yap" derler. İşte onlara, sabretmelerine karşılık cennetin en yüksek makamı verilecek, orada hürmet ve selamla karşılanacaklardır." (Furkan, 25/74-75)
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/goz-aydinligi-nesiller-yetistirmek/kapak.svg" width="1600" height="900" alt="Soyut bir ders köşesinde yazısız açık kitaplar, okul çantası ve yıldızlı gökyüzü." loading="eager" fetchpriority="high" decoding="async">
+<figcaption><strong>Öğrenmenin ufku</strong> İman bilgisi, nesillerin öğrenme yolculuğuna eşlik eder.<span class="vaaz-temsil">Çizimler, vaazın anlamını görselleştiren temsilî illüstrasyonlardır.</span></figcaption>
+</figure>
 
-<p lang="ar" dir="rtl" class="ayet">أَنَّ أَبَا هُرَيْرَةَ - رضى الله عنه - قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم مَا مِنْ مَوْلُودٍ إِلاَّ يُولَدُ عَلَى الْفِطْرَةِ ، فَأَبَوَاهُ يُهَوِّدَانِهِ أَوْ يُنَصِّرَانِهِ أَوْ يُمَجِّسَانِهِ</p>
+<nav class="vaaz-icindekiler" id="vaaz-bolumleri" aria-label="Vaazın bölümleri">
+<details>
+<summary>Vaazın bölümleri <span>13 bölüm</span></summary>
+<ul>
+<li><a href="#iftitah">Giriş ve dua</a></li>
+<li><a href="#goz-aydinligi">Göz aydınlığı duası</a></li>
+<li><a href="#iman-mirasi">İman mirasını taşımak</a></li>
+<li><a href="#fitrat">Fıtratı gözetmek</a></li>
+<li><a href="#tevhid-ogudu">Allah’a güvenmek</a></li>
+<li><a href="#ilim-duasi">Nebevi ilim duası</a></li>
+<li><a href="#kuran-kursu">Kur’an kursuna devam</a></li>
+<li><a href="#anlayarak-ogrenmek">Anlayarak öğrenmek</a></li>
+<li><a href="#rol-modeller">İmanını yaşayan örnekler</a></li>
+<li><a href="#sureklilik">Öğrenme bağını sürdürmek</a></li>
+<li><a href="#dua-ve-umit">Evlat için dua</a></li>
+<li><a href="#yedi-soz">Yedi somut söz</a></li>
+<li><a href="#hatim-duasi">Hatim duası</a></li>
+</ul>
+</details>
+</nav>
+<h2 class="vaaz-bolum-baslik" id="iftitah" tabindex="-1">İftitah: Evladımızın yarınına bakarken</h2>
 
-Ebû Hüreyre’nin naklettiğine göre, Resûlullah (sav) şöyle buyurmuştur: *“Her doğan fıtrat üzere doğar. Sonra anne babası onu Yahudi, Hıristiyan ya da Mecusi yapar.”* (B4775 Buhârî, Tefsîr (Kasas), 2; M6755 Müslim, Kader, 22)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
 
-Toplum, kişilerin içinde doğup büyüdüğü, her türlü eğitim ve kazanımlarını oradan elde ettiği, aile dediğimiz sosyal topluluklardan oluşur. Aile, kişilerin içerisinde huzur bulduğu ve neslin devamının orada sağlandığı sağlıklı bir ortamdır. Aile şeklen küçük ise de konumu itibariyle büyük bir sosyal topluluktur. Aile hayatının en güzel tarafı çocuklardır. Bu sebeple aile hayatının en önemli fonksiyonlarından biride, o ailede yetişen çocukların davranışlarının ahlaken en güzel noktaya getirilmesidir. Çocuklar insanlara Allah tarafından verilen bir emanettir. Bu emanet, ailenin sorumluluklarını tam anlamıyla yerine getirmesi neticesinde dünya ve ahiret mutluluğunun vesilesi olabileceği gibi, gerekli sorumlulukların yerine getirilmemesi neticesinde de dünya ve ahiret sıkıntısı olabilmektedir.
+*Hamd, âlemlerin Rabbi Allah’a mahsustur.* (Hamd: Fâtiha, 1/2)
 
-### Çocuklar Allah’ın İhsanı ve İmtihan Vesilemizdir.
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِينَ</p>
 
-<p lang="ar" dir="rtl" class="ayet">إِنَّمَا أَمْوَالُكُمْ وَأَوْلَادُكُمْ فِتْنَةٌ وَاللَّهُ عِندَهُ أَجْرٌ عَظِيمٌ ﴿١٥﴾</p>
+*Peygamberimiz Muhammed’e, ailesine ve bütün ashabına salât ve selâm olsun.* (serbest dua lafzı)
 
-Mallarınız ve çocuklarınız ancak birer imtihandır; Allah katında ise büyük bir mükâfat vardır. (64/Tegâbun-15)
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ</p>
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ حُذَيْفَةَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم فِتْنَةُ الرَّجُلِ فِى أَهْلِهِ وَمَالِهِ وَنَفْسِهِ وَوَلَدِهِ وَجَارِهِ يُكَفِّرُهَا الصِّيَامُ وَالصَّلاَةُ وَالصَّدَقَةُ وَالأَمْرُ بِالْمَعْرُوفِ وَالنَّهْىُ عَنِ الْمُنْكَرِ.</p>
+*Rabbim! Bana tarafından temiz bir nesil ihsan eyle! Kuşkusuz sen duayı işitmektesin.* (Âl-i İmrân, 3/38; âyetten bölüm)
 
-Huzeyfe’den nakledildiğine göre Peygamber Efendimiz (sav) şöyle buyuruyor: "Kişinin ailesi, malı, nefsi, çocuğu ve komşusu ile imtihanı var ya; oruç, namaz, sadaka ve iyiliği emredip kötülükten sakındırma işte bu imtihan için kefaret olur." (B525 Buhârî, Mevâkîtu’s-salât, 4; M7268 Müslim, Fiten ve eşrâtü’s-sâa, 26)
+**Aziz cemaat! Evlatlarının yarınını gönlünde taşıyan kıymetli kardeşlerim!**
 
-Dünya hayatında Rabbimizin bize verdiği en büyük nimetlerden biri çocuklarımızdır. Öyle bir lütuftur ki; biz öldükten sonra bize hayır dua eden evlatlarımız vesilesiyle amel defterimiz kapanmaz sevap ve mükâfata nail oluruz.
+Okul çantasını hazırlarken bir çocuğun yarınını da düşünürüz. Dersleri iyi olsun, güzel bir meslek edinsin, güven içinde yaşasın isteriz. Bu isteklerimize kalbimizden yükselen başka bir dua eşlik eder: Rabbini tanısın, imanıyla huzur bulsun, iyiliğin yolunu seçsin.
 
-<p lang="ar" dir="rtl" class="ayet">وعن أبي هُرَيْرَةَ رَضيَ اللَّه عَنْهُ أنَّ رسُول اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم قال : « إذا مَاتَ الإنسَانُ انقطَعَ عمَلُهُ إلاَّ مِنْ ثَلاثٍ : صَدقَةٍ جاريَةٍ ، أوْ عِلم يُنْتَفَعُ بِهِ ، أَوْ وَلَدٍ صَالحٍ يَدعُو له » رواه مس</p>
+Avrupa’da çocuklarımız farklı dillerin ve inançların arasında büyüyor. Önlerinde kitaplar, arkadaşlar, ekranlar ve sayısız soru var. Biz bugün onların iman yolculuğuna nasıl eşlik edeceğimizi konuşacağız. Anne babaların yanında büyükanne ve dedelerin, gençlerin, öğreticilerin ve bütün cemaatin bu yolculukta bir payı var.
 
-Ebû Hüreyre radıyallahu anh’den rivayet edildiğine göre Resûlullah sallallahu aleyhi ve sellem şöyle buyurdu:“İnsan ölünce, üç ameli dışında bütün amellerinin sevabı kesilir: Sadaka-i câriye, kendisinden istifade edilen ilim, arkasından dua eden hayırlı evlât.” ( Müslim, Vasiyyet 14.)
+Bir çocuğa ayırdığımız vakit, bir gence sunduğumuz rehberlik, bir öğrencinin ulaşımına verdiğimiz destek yarına uzanır. Her birimiz bu emanete bir iyilik katabiliriz. **Göz aydınlığı nesiller, imanla kök salan, Kur’an’la yetişen ve duayla gözetilen nesillerdir.**
 
-Dünyaya geldiklerinde yaşadığımız sevincin, büyürlerken yaşadığımız mutlulukların yerini hiç bir şey tutmaz. Çocuklarımız öyle bir nimettir ki;
+---
 
-<p lang="ar" dir="rtl" class="ayet">عَنْ عَامِرِ بْنِ سَعْدِ بْنِ أَبِى وَقَّاصٍ عَنْ أَبِيهِ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم… وَإِنَّكَ لَنْ تُنْفِقَ نَفَقَةً تَبْتَغِي بِهَا وَجْهَ اللَّهِ إِلاَّ أُجِرْتَ بِهَا ، حَتَّى مَا تَجْعَلُ فِي فِي امْرَأَتِكَ.</p>
+<h2 class="vaaz-bolum-baslik" id="goz-aydinligi" tabindex="-1">I. Göz aydınlığı: Gönlümüzü ferahlatan iman</h2>
 
-*“…Allah rızasını umarak ailen için yaptığın her harcamadan muhakkak ecir alırsın, eşinin ağzına koyduğun bir lokmadan bile!”*.(Buhâri, Zekât 18; Müslim, Zekât 38, 95, 97; Ebû Dâvûd, Zekât 46)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا ۝٧٤</p>
 
-### Her Çocuk Fıtrat üzere Doğar
+*Onlar, “Ey Rabbimiz!” derler, “Bize mutluluk getirecek eşler ve çocuklar bahşet; bizi günahtan sakınanlara öncü yap!”* (Furkān, 25/74)
 
-Birçok eğitimcinin“Altı yaşa kadar çocuğun karakteri nasılsa, ondan sonraki yaşantısında fazla ekleme yapılmayıp, aynı izlerin devam ettiğini” söylemeleri önemlidir. (Çevikoğlu Nurten age., İSAV2, sf. 170) Çocuklar gelecekte hayatlarına yön verecek ahlaki değerleri aile içinde anne babasından öğrenir. Rasulullah (sav) hadisinde çocuğun iyi veya kötü yetişmesinde ailenin fonksiyonunu şöyle ifade etmektedir:
+Bir babanın elinde çocuğunun karnesi var. Güzel notları görünce yüzü aydınlanıyor. Aynı çocuk, arkadaşının kaybolan kalemini bulup sahibine götürdüğünde de o yüz aydınlansın. Rabbine yönelip ilk duasını ettiğinde de gönlümüz sevinsin. Başarıya duyduğumuz sevinç, imanın ve güzel ahlâkın sevincine kavuşsun.
 
-<p lang="ar" dir="rtl" class="ayet">أَنَّ أَبَا هُرَيْرَةَ - رضى الله عنه - قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم مَا مِنْ مَوْلُودٍ إِلاَّ يُولَدُ عَلَى الْفِطْرَةِ ، فَأَبَوَاهُ يُهَوِّدَانِهِ أَوْ يُنَصِّرَانِهِ أَوْ يُهَوِّدَانِهِ</p>
+Furkân sûresinde bu dua, Rahmân’ın kullarını anlatan bölümün içindedir. Kur’an Yolu tefsiri, burada inancı ve yaşayışıyla iyi, erdemli eşlerin ve çocukların istendiğini açıklar. Kurrata a‘yun, gözün aydınlığı, insanın gönlünü ferahlatan mutluluktur. Böyle bir mutluluk, evladımızda kulluğun ve iyiliğin filizlendiğini görmekle derinleşir.
 
-“Her çocuk fıtrat üzerine doğar, onu anne ve babası Yahudileştirir veya Hıristiyanlaştırır veya Mecusileştirir.” (Müslim, Kader 22, (2658). Irk, renk ve cinsiyet farkı olmaksızın her çocuğun iyiyi kabullenmeye ve güzeli benimsemeye meyilli bir tabiatta yaratıldığını açıkça ifade eden bu sözler, aynı zamanda onun eğitilmeye ne kadar hazır bir yapıda olduğuna da dikkat çekmektedir.
+Duanın sonunda kendimiz için de bir hedef vardır: Takvâ sahiplerine öncü olmak. Çocuğumuzun iyi olmasını isterken biz de iyilikte örnek olmayı diliyoruz. Evladından doğruluk bekleyen bir yetişkin, kendi sözünü tartar. Ondan ibadet bekleyen, kendi seccadesine yönelir. Duamız önce bizi harekete geçirir.
 
-Sorumluluğumuzu Yüce Rabbimiz bizlere şöyle hatırlatmaktadır:
+Kızımızın ve oğlumuzun kabiliyeti, öğrenme hızı, hayat şartları farklı olabilir. Hastalıkla veya engelle yaşayan bir yavrunun gayreti de göz aydınlığımızdır. Bir harfi sabırla öğrenmesi, bir insana içtenlikle selâm vermesi, Rabbine sevgiyle yönelmesi kıymetlidir. Her çocuk için erişebileceği bir öğrenme yolu arayalım.
 
-<p lang="ar" dir="rtl" class="ayet">يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا وَقُودُهَا النَّاسُ وَالْحِجَارَةُ</p>
+Takvâda öncülük için ettiğimiz dua, evladımızın önünde taşıdığımız sorumluluğu büyütür. Bir namaz vaktini gözettiğimizde, yanlış kazancı geri çevirdiğimizde, ihtiyaç sahibine yardım ettiğimizde ona bir yol gösteririz. Çocuk bu davranışın gerekçesini de duysun. “Rabbimin rızasını gözetiyorum” diyelim. Böylece dinî hayatın içinde bilgiyle davranış birbirine bağlanır. O da kendi iyiliğinin niyetini kurmayı öğrenir. Göz aydınlığı duası, ailemizin ortak yönelişi olur.
 
-"Ey inananlar! Kendinizi ve ailenizi, yakıtı insanlar ve taşlar olan ateşten koruyun..." (Tahrîm, 66/ 6)
+Bu duayı ederken eşimizi de anıyoruz. Nesil için kurduğumuz hayrı evde birlikte taşıyalım. Çocuğumuzun öğrenme sevincini paylaşalım; onun attığı adımı görelim. **Evladımız için dilediğimiz iyiliğe, kendi örnekliğimizle başlayalım.**
 
-Hz. Ömer (r.a.): "Yâ Rasûlallah! Nefislerimizi koruruz fakat ailemizi nasıl koruyabiliriz?" demişti. Allah Rasûlü (s.a.s.) Efendimiz şöyle buyurdu: "Allah'ın sizi nehyettiği şeylerden onları nehyeder ve Allah'ın size emrettiği şeyleri onlara emrederseniz. Bu şekilde onları korumuş olursunuz." (Hakk Dini Kur'an Dili, c; 6 sh: 5112)
+---
 
-<p lang="ar" dir="rtl" class="ayet">أَنَّ عَبْدَ اللَّهِ بْنَ عُمَرَ يَقُولُ سَمِعْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَقُولُ كُلُّكُمْ رَاعٍ ، وَكُلُّكُمْ مَسْئُولٌ عَنْ رَعِيَّتِهِ ، الإِمَامُ رَاعٍ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ ، وَالرَّجُلُ رَاعٍ فِى أَهْلِهِ وَهْوَ مَسْئُولٌ عَنْ رَعِيَّتِهِ ، وَالْمَرْأَةُ رَاعِيَةٌ فِى بَيْتِ زَوْجِهَا وَمَسْئُولَةٌ عَنْ رَعِيَّتِهَا... وَكُلُّكُمْ رَاعٍ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ</p>
+<h2 class="vaaz-bolum-baslik" id="iman-mirasi" tabindex="-1">II. Nesillerin mirası: Kime kulluk edeceğiz?</h2>
 
-İbnu Ömer (r. anhümâ) anlatıyor: "Rasûlullah (a.s) buyurdular ki: “Hepiniz yöneticisiniz ve hepiniz yönettiklerinizden sorumlusunuz. Devlet başkanı yöneticidir ve yönettiklerinden sorumludur. Erkek, eşi ve çocuklarının yöneticisidir ve onlardan sorumludur. Kadın, eşinin evinde yöneticidir ve yönettiğinden sorumludur. Hizmetçi/işçi işverenin (uhdesine verdiği) malının/işinin yöneticisidir ve yönettiğinden sorumludur." [Buhârî, Ahkâm 1, Cum'a 11, İstikrâz 20, Itk 17, 19, Vesâya 9, Nikâh 81, 90; Müslim, İmâret 20, (1829); Tirmizî, Cihâd 27, 1705]
+**Aziz anneler ve babalar! Çocuklarımızın geleceğinde imanına da yer açalım.**
 
-Emanet olduğuna göre, anne ve baba çocukları üstünde istedikleri gibi tasarrufta bulunma hakkına da sahip değillerdir. Onu doyururken, okuturken, ödüllendirirken, cezalandırırken, kısacası yoğururken Yüce Allah’ın rızasına uygun olan şekli seçmek zorundadırlar. Zira gün gelecek, emanetin sahibi ona nasıl davrandıklarını, neler verdiklerini ya da neleri esirgediklerini soracaktır.
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">قَالَ لِبَنِيهِ مَا تَعْبُدُونَ مِنۢ بَعْدِى</p>
 
-<p lang="ar" dir="rtl" class="ayet">أَنَّ عَبْدَ اللَّهِ بْنَ عُمَرَ يَقُولُ سَمِعْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَقُولُ كُلُّكُمْ رَاعٍ ، وَكُلُّكُمْ مَسْئُولٌ عَنْ رَعِيَّتِهِ ، الإِمَامُ رَاعٍ وَمَسْئُولٌ عَنْ رَعِيَّتِهِ ، وَالرَّجُلُ رَاعٍ فِى أَهْلِهِ</p>
+*Oğullarına, “Benden sonra kime kulluk edeceksiniz?” demişti.* (Bakara, 2/133; âyetten bölüm)
 
-Başka bir hadisinde Rasulullah(sav)"Çocuğun ismini ve terbiyesini güzel yapmak, ana ve babanın çocuğuna karşı olan görevlerindendir." (Fethu'l-Kebîr, c. 2, sh: 74) buyurmaktadır.
+Kur’an, Hz. Ya‘kūb’un son nefesi yaklaşırken evlatlarına yönelttiği soruyu bildirir. Oğulları tek ilâha kulluk edeceklerini, O’na teslim olduklarını söyler. Bu konuşmada nesiller arasında taşınan bir iman mirası görürüz. Bugün çocuklarımız için hazırladığımız geleceği düşünürken bu sorunun ufku bize de yol göstersin.
 
-Anne babalık vazifesi, sadece çocuğun karnını doyurup sırtını giydirmekle bitmemektedir. Bunun çok daha ötesine geçmekte, yavrunun terbiyesi gibi yuvanın sınırlarını aşarak tüm toplumu etkileyen bir alana ulaşmaktadır. Çocuk terbiyesi ise hassasiyet isteyen uzun bir süreçtir. Belki de Kur’an’da çocuğun *“imtihan vesilesi”* olarak adlandırılması, (Enfâl, 8/28; Mü’minûn, 23/55-56) bu sürecin oyalayıcı ve meşakkatli oluşuna da işaret etmektedir.
+Bir evde mezuniyet fotoğrafları duvara asılır. O duvarın önünden geçen gencin kalbinde Allah’a bağlılık da büyüsün. Meslek kazanmak için gösterdiğimiz özen, iman bilgisini öğrenmek için ayırdığımız vakitle buluşsun. Takviminde okul, spor ve dinlenme olan bir çocuğun Kur’an öğrenmeye de düzenli zamanı olsun.
 
-### HZ. Peygamber’in Enes’i Yetiştirmesi
+İman mirasını gündelik hayatımızda taşıyabiliriz. Yaratılanları seyrederken Allah’ın kudretini konuşuruz. Bir nimete kavuşunca şükrederiz. Hata yaptığımızda tövbeyi öğretiriz. Ölümü konuşurken âhireti ve Rabbimizin rahmetini anlatırız. Çocuğun bildiği kelimelerden başlayarak iman esaslarını açık, doğru ve yaşına uygun biçimde öğretebiliriz.
 
-<p lang="ar" dir="rtl" class="ayet">حَدَّثَنَا أَنَسٌ قَالَ خَدَمْتُ النَّبِىَّ صلى الله عليه وسلم عَشْرَ سِنِينَ ، فَمَا قَالَ لِى أُفٍّ . وَلاَ لِمَ صَنَعْتَ وَلاَ أَلاَّ صَنَعْتَ</p>
+Avrupa’da doğmuş bir gencimiz Müslümanlığını burada yaşadığı hayatın içinde tanısın. Okulda çalışkanlığı, arkadaşlığında güvenilirliği, ibadetinde samimiyeti beraber gelişsin. Aile köklerini tanısın; yaşadığı şehrin iyiliğine de katkı sunsun. Hristiyan ve Yahudi komşularımızla, farklı inançlardan arkadaşlarımızla saygılı ilişkiler kurmayı öğrensin.
 
-Enes b. Mâlik diyor ki: “Hz. Peygamber’e on yıl hizmet ettim. Bana bir kez bile *‘Öf!’, ‘Niçin böyle yaptın?’* ve *‘Şöyle yapsaydın ya!’* demedi.” (B6038 Buhârî, Edeb, 39; B2768 Buhârî, Vesâyâ, 25)
+Türkçeyi az bilen bir çocuk için anlayacağı dilde açıklama hazırlayalım. Kendi dinini yeni öğrenen yetişkin de bu halkaya katılabilsin. Ortak kelimelerimiz Allah’a iman, kulluk ve güzel ahlâk olsun. Çocuğumuza bir kavramı açıklayıp onun kendi cümlesiyle anlatmasını isteyelim. Anlayarak taşınan miras gönülde yer bulur.
 
-Annesinin elinden tutarak Peygamberimizin huzuruna gelen on yaşındaki Enes, (6379 Buhârî, Deavât, 47; M6375 Müslim, Fedâilü’s-sahâbe, 142) bedenini Resûlullah’ın hizmetine verirken, aslında ruhunu da onun terbiyesine emanet etmiş oluyordu. Hz. Peygamber, sadece Enes’in mescide ya da hâne-i saadete gelerek gününü paylaşmasıyla yetinmez, kendisi de Enesçiğin ailesini ziyaret etmekten hoşlanırdı. Orada yemek yer, öğle uykusuna yatar ve ev halkına cemaatle namaz kıldırırdı. (B380 Buhârî, Salât, 20; D2490 Ebû Dâvûd, Cihâd, 9) Bu sevgi ve samimiyet ile şekillenmişti Enes’in ahlâkı. Tıpkı her çocuğun, anne babasının avuçlarında yoğrulup şekillendiği gibi…
+Çocuklarımızın imanını bilinçli bir öğrenmeyle geliştirelim. Kendi inancını öğrenen genç, Müslüman olduğunu neden söylediğini de açıklayabilsin. Allah’ın birliğini, peygamberlere imanı ve âhireti tanısın. İslâm’ın bütün insanlara ulaşan çağrısını öğrensin. Aynı kıbleye yönelen farklı dillerden Müslümanlarla tanışsın. Kur’an’ın çağrısını birlikte dinlesinler. Böylece aileden aldığı miras, ümmetle kurduğu bilinçli bağa açılır. Birbirlerinin öğrenme gayretine de destek versinler.
 
-Küçük Enes, kendisini oyunun mutluluğuna kaptırdığı bir anda omzuna dokunan elin sıcaklığı ile irkildi. Ürkek bir hareketle başını çevirdi. Sevgili Peygamberimiz her zamanki gibi gülümseyen çehresi ile karşısında duruyordu. Utandı küçük Hizmetçi. Peygamberinin kendisinden istediği işi yapmamakta direnerek, “Vallâhi gitmem.” dediğini, sonra da gönlü olunca yola koyulduğunu hatırladı. Oysa iş bekleyedursun, o çoktan karşısına çıkan çocuklarla oynamaya dalmıştı bile. Görevini unuttuğu için kendine kızdı. Ama Allah’ın Resûlü ona kızmamıştı. Yumuşak bir sesle, "Enesçik! Hadi sana dediğim işi yapmaya gidiver!" buyurmuştu. Derhâl yürümeye başladı Enes. Bir yandan da affedilmenin verdiği heyecan ve azimle, “Hemen gidiyorum yâ Resûlallah” diyordu. (Müslim, Fedâil, 54; Ebû Dâvûd, Edeb, 1)
+Bu hafta evimizde iman hakkında kısa bir konuşma başlatalım. Önce çocuğumuzun bildiğini dinleyelim; sonra birlikte öğrenelim. **Yarına bırakacağımız en kıymetli miraslardan biri, Allah’a bilinçli bağlılıktır.**
 
-### Eğitim ve Terbiyenin Temeli Sevgidir
+---
 
-<p lang="ar" dir="rtl" class="ayet">حَدَّثَنَا أَنَسٌ قَالَ خَدَمْتُ النَّبِىَّ صلى الله عليه وسلم عَشْرَ سِنِينَ ، فَمَا قَالَ لِى أُفٍّ . وَلاَ لِمَ صَنَعْتَ وَلاَ أَلاَّ صَنَعْتَ</p>
+<h2 class="vaaz-bolum-baslik" id="fitrat" tabindex="-1">III. Fıtrat: Öğrenmeye açık bir kalp</h2>
 
-Enes b. Mâlik diyor ki: “Hz. Peygamber’e on yıl hizmet ettim. Bana bir kez bile *‘Öf!’, ‘Niçin böyle yaptın?’* ve *‘Şöyle yapsaydın ya!’* demedi.” ( Buhârî, Edeb, 39; Buhârî, Vesâyâ, 25)
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">مَا مِنْ مَوْلُودٍ إِلاَّ يُولَدُ عَلَى الْفِطْرَةِ، فَأَبَوَاهُ يُهَوِّدَانِهِ أَوْ يُنَصِّرَانِهِ أَوْ يُمَجِّسَانِهِ</p>
 
-Hz. Peygamberimiz her fırsatta çocukları öper, onları kucağına alır ve onlara sevgi sözleri söylerdi. Ebû Hureyre (r.a) bizlere şöyle bir hadiseyi aktarmaktadır.
+*Her doğan fıtrat üzere doğar. Sonra anne babası onu Yahudi, Hristiyan veya Mecûsî yapar.* (Buhârî, 1358; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">أَنَّ أَبَا هُرَيْرَةَ - رضى الله عنه - قَالَ قَبَّلَ رَسُولُ اللَّهِ صلى الله عليه وسلم الْحَسَنَ بْنَ عَلِىٍّ وَعِنْدَهُ الأَقْرَعُ بْنُ حَابِسٍ التَّمِيمِىُّ جَالِسًا . فَقَالَ الأَقْرَعُ إِنَّ لِى عَشَرَةً مِنَ الْوَلَدِ مَا قَبَّلْتُ مِنْهُمْ أَحَدًا . فَنَظَرَ إِلَيْهِ رَسُولُ اللَّهِ صلى الله عليه وسلم ثُمَّ قَالَ مَنْ لاَ يَرْحَمُ لاَ يُرْحَمُ</p>
+Efendimiz (s.a.s.) bu hadisle aile ortamının dinî yöneliş üzerindeki etkisini hatırlatır. Fıtratın açıklamasında âlimler farklı yorumlar yapmıştır. Hak dini kabul etmeye yatkın temiz yaratılış bunlardan biridir. Bu açıklama bize çocuğun kalbine ümitle yaklaşmayı ve onun yetiştiği ortamı özenle hazırlamayı öğretir. (TDV İslâm Ansiklopedisi, “Fıtrat”.)
 
-Akra’ b. Hâbis, Resûlullah’ın (sav) torununu öptüğünü görünce, “Benim on çocuğum var ama hiçbirini öpmüş değilim.” demiş, bunun üzerine Allah Resûlü (sav) ona bakmış ve şöyle buyurmuştu: *“Merhamet etmeyene merhamet edilmez!”* (Buhârî, Edeb, 18; Müslim, Fedâil, 65)
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱللَّهُ أَخْرَجَكُم مِّنۢ بُطُونِ أُمَّهَـٰتِكُمْ لَا تَعْلَمُونَ شَيْـًٔا وَجَعَلَ لَكُمُ ٱلسَّمْعَ وَٱلْأَبْصَـٰرَ وَٱلْأَفْـِٔدَةَ ۙ لَعَلَّكُمْ تَشْكُرُونَ ۝٧٨</p>
 
-Eğitim gibi kutsal bir uğraşının ilk basamağı, çocuğun varlığını tanımak, ona insan olmakla doğuştan hak ettiği saygıyı göstermektir. Muhatabına değer vermeyen ve onun kişiliğine saygı duymayan bir eğitimcinin başarılı olması imkânsızdır. Hz. Peygamber’in çocuklarla iletişiminde, “onları adam yerine koymak” şeklinde özetleyebileceğimiz bir itina derhâl göze çarpmaktadır. Fikirleri değer gören, duyguları dinlenen ve ihtiyaçları dikkate alınan bir çocuğun, anne babası ile sağlıklı bir ilişki geliştirebileceği, dolayısıyla terbiyesi için harcanan gayrete olumlu tepkiler vereceği açıktır. Bu bağlamda Sevgili Peygamberimizin çocuklara selâm vermesi, (Müslim, Selâm, 14) hatırlarını sorması (Buhârî, Edeb, 81) ve tercihlerini öğrenmek istemesi, (Tirmizî, Ahkâm, 21) onları muhatap kabul etmesi anlamına gelmektedir.
+*Sizler hiçbir şey bilmez bir durumdayken Allah sizi analarınızın karnından dışarı çıkardı; şükredesiniz diye size kulaklar, gözler, kalpler verdi.* (Nahl, 16/78)
 
-Enes b. Malik bu hususta bizlere şunları aktarmıştır. “Peygamber (sav) bizim aramıza karışırdı ve güler yüzle biz çocuklara latife ederdi”( Buhari Edep, 81)
+Beşiğin yanında yükselen bir dua, evde duyulan Kur’an sesi, bir nimete edilen şükür çocuğun dünyasına ulaşır. Büyüdükçe duyduklarını sorar, gördüklerini anlamlandırır. Biz onun merakını doğru bilgiyle karşılayalım. Bir sorunun cevabını bilmiyorsak öğrenip dönelim. Öğrenme yolunda ona refakat edelim.
 
-### Çocuk Terbiyesinde Kur’an’dan Bir Örnek Lokman (as)
+Fıtrat hadisindeki din isimleri, dinî yetişmenin aileyle bağını gösterir. Buradan aldığımız ders, kendi öğretme sorumluluğumuza özen göstermektir. Çocuklarımız farklı inançtaki insanların onurunu da gözeterek büyüsün. Kendi imanını tanıyan bir genç, başkasına saygılı davranmayı da öğrenebilir.
 
-Kuran’ ı Kerim de Rabbimiz Lokman (as)’ın oğluna verdiği öğütlerde ilk olarak tevhidi öğütlediğinin görürüz:
+Kur’an’dan bir kelime öğrenen çocuğun yanına oturalım. Yaşını, dikkatini ve ihtiyaçlarını gözetelim; yapabildiği adımı destekleyelim. **Çocuğun temiz yaratılışını doğru bilgiyle ve yaşayarak gösterdiğimiz imanla gözetelim.**
 
-<p lang="ar" dir="rtl" class="ayet">وَإِذْ قَالَ لُقْمَانُ لِابْنِهِ وَهُوَ يَعِظُهُ يَا بُنَيَّ لَا تُشْرِكْ بِاللَّهِ إِنَّ الشِّرْكَ لَظُلْمٌ عَظِيمٌ ﴿١٣﴾</p>
+---
 
-"Lokman, oğluna öğüt vererek: Yavrucuğum! Allah'a ortak koşma! Doğrusu şirk, büyük bir zulümdür, demişti.( Lokman suresi 31/13)
+<h2 class="vaaz-bolum-baslik" id="tevhid-ogudu" tabindex="-1">IV. Bir gence verilen öğüt: Allah’a dayanmak</h2>
 
-<p lang="ar" dir="rtl" class="ayet">يَا بُنَيَّ إِنَّهَا إِن تَكُ مِثْقَالَ حَبَّةٍ مِّنْ خَرْدَلٍ فَتَكُن فِي صَخْرَةٍ أَوْ فِي السَّمَاوَاتِ أَوْ فِي الْأَرْضِ يَأْتِ بِهَا اللَّهُ إِنَّ اللَّهَ لَطِيفٌ خَبِيرٌ ﴿١٦﴾</p>
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">يَا غُلاَمُ إِنِّي أُعَلِّمُكَ كَلِمَاتٍ احْفَظِ اللَّهَ يَحْفَظْكَ احْفَظِ اللَّهَ تَجِدْهُ تُجَاهَكَ إِذَا سَأَلْتَ فَاسْأَلِ اللَّهَ وَإِذَا اسْتَعَنْتَ فَاسْتَعِنْ بِاللَّهِ</p>
 
-“(Lokman, öğütlerine devamla şöyle demişti:) Yavrucuğum! Yaptığın iş (iyilik ve kötülük), bir hardal tanesi ağırlığında bile olsa ve bu bir kayanın içinde veya göklerde yahut yerin derinliklerinde bulunsa, yine de Allah onu (senin karşına) getirir. Doğrusu Allah, en ince işleri görüp bilmektedir ve her şeyden haberdardır.”( Lokman suresi 31/16)
+*Yavrucuğum! Sana bazı sözler öğreteceğim. Allah’ın buyruklarını gözet ki Allah da seni gözetip korusun. Allah’ın buyruklarını gözet, O’nu önünde bulursun. İstediğinde Allah’tan iste; yardım dilediğinde Allah’tan yardım dile.* (Tirmizî, 2516; rivayetten bölüm)
 
-<p lang="ar" dir="rtl" class="ayet">يَا بُنَيَّ أَقِمِ الصَّلَاةَ وَأْمُرْ بِالْمَعْرُوفِ وَانْهَ عَنِ الْمُنكَرِ وَاصْبِرْ عَلَى مَا أَصَابَكَ إِنَّ ذَلِكَ مِنْ عَزْمِ الْأُمُورِ ﴿١٧﴾</p>
+**Sevgili gençler! Rabbimize bağlılığımız, hayatımızın her yerine ışık tutsun.**
 
-“Yavrucuğum! Namazı kıl, iyiliği emret, kötülükten vazgeçirmeye çalış, başına gelenlere sabret. Doğrusu bunlar azmedilmeye değer işlerdir.”(Lokman suresi 31/17)
+İbn Abbas, bir gün Resûlullah’ın (s.a.s.) arkasında bulunduğunu anlatır. Efendimiz ona doğrudan seslenir ve Allah’a bağlılığı öğretir. Rivayetin devamında istemeyi ve yardım dilemeyi Allah’a yöneltir. Tirmizî bu hadisi hasen-sahih olarak değerlendirir. Kısa bir hitabın içine büyük bir iman dersi sığar.
 
-Lokman ( as) oğlunun kalbine ilk önce Allah sevgisini ve inancını yerleştirmiştir. Hayatında yapacağı her davranışı düşünerek yapması gerektiğini- Allah’ın her an onu her yerde görüp gözettiğini ve buna göre hayatını yaşaması gerektiğini öğretmiştir. Bu duygu insan hayatında müthiş bir otokontrol mekanizmasıdır. 17. Ayette Lokman (as) evladına namazı kılmasını, iyilik yaptığı gibi bunu etrafına da yaymasını – kötülük yapmadığı gibi etrafında var olan kötülüklere mani olmasını tavsiye etmiştir. Lokman(as) Rabbimizin bize evladını eğiten bir baba olarak verdiği güzel bir örnektir.
+Bir tramvay durağında sınav sonucunu bekleyen gencin telefonuna mesajlar geliyor. Kimi ümit veriyor, kimi kaygısını artırıyor. O anda Rabbine yönelip dua edebilir. Sonra dersini çalışır, öğretmeninden yardım ister, ihtiyacı olan desteğe başvurur. Allah’a güveni, yapabileceği işe kuvvet verir.
 
-### Rasulullah(sav) Çocuklara İlk Ezberlettiği Ayet
+Bu öğüdü çocuklarımızın anlayacağı örneklerle açalım. Allah’ın buyruklarını gözetmek, namazı öğrenmek, helâle dikkat etmek, emaneti korumaktır. “Allah beni görüyor” bilgisi, yalnızlıkta da iyiliği seçmeye çağırır. Bir arkadaş grubunda yanlış bir davranışa katılmamak için bu bağlılıktan güç alabiliriz.
 
-Rasulüllah (sav) çocuklara ilk olarak Allah’ın yüceliğini ifade eden, tevhide vurgu yapan ayetler öğretmiş ve öğretilmesini tavsiye etmiştir. Çocuklarımıza yaşına uygun olarak Allah’ı ve O’na karşı görevlerimizi anlatmalıyız.
+Hadisteki korunmayı, dünya hayatındaki bütün sıkıntılardan uzak kalma garantisi gibi sunmayalım. Mümin de hastalanır, üzülür, zorlanır. Biz Allah’ın yardımını dileyerek sorumluluğumuzu yerine getiririz. Dua eden bir kalp, sıkıntı içinde de Rabbine sığınır. Çocuğumuza hem gayreti hem bu sığınışı öğretelim.
 
-Abdu’l-Muttalip ailesinden bir çocuk güzelce konuşmaya başlayınca Rasûlullah sallallâhu aleyhi ve sellem ona yedi kere şu ayeti okutur, öğretirdi:
+Gencimize ayırdığımız konuşmanın bir hedefi olsun. Bugün kısa bir öğüdü öğrenelim; yarın onu hangi davranışta uygulayacağını soralım. Büyük bir konuşma yerine, anlaşılmış bir cümle ve takip edilmiş bir adım seçebiliriz. Kendi gençliğinde bu desteği bulamamış bir kardeşimiz de bugün bir gence eşlik edebilir.
 
-<p lang="ar" dir="rtl" class="ayet">وَقُلِ الْحَمْدُ لِلَّهِ الَّذِي لَمْ يَتَّخِذْ وَلَدًا وَلَمْ يَكُنْ لَهُ شَرِيكٌ فِي الْمُلْكِ وَلَمْ يَكُنْ لَهُ وَلِيٌّ مِنَ الذُّلِّ وَكَبِّرْهُ تَكْبِيرًا</p>
+Öğütteki “Allah’tan yardım dile” çağrısını günlük duamızda yaşatalım. Bir sorunu çözmek için öğretmenine giden genç, çözüm bulabilmesi için Rabbinden de yardım ister. Hastalanan, tedaviye başvurur ve şifa diler. Allah’a yönelişi bu çabaların içinde taşımasını öğretelim. Başarısında şükretmeyi, güçlüğünde yardım dilemeyi öğrensin. Evde beraber ettiğimiz bir dua, ona kendi sözleriyle yakarma cesareti verebilir. İçinden geçenleri Rabbine arz etsin. Ardından yapabileceği adımı seçsin.
 
-“De ki: Hamd, hiçbir çocuk edinmeyen, hâkimiyette ortağı olmayan, âcizlikten dolayı bir yardımcıya ihtiyacı bulunmayan Allah’a mahsustur. Sen O’nu tekbir ile yücelt.” (İsrâ Suresi, 111)
+Yavrumuz, zor bir kararın önünde kendi duasını kurabilsin. Biz de yanında güvenilir bir rehber olarak duralım. **İman eğitimi, gencin Allah’a bağlılığını kendi kararlarında taşımasına yardım etsin.**
 
-Peygamber Efendimizin(sav) Abdullah İbn. Abbas’a nasihatı:
+---
 
-Abdullah İbni Abbas -radıyallâhu anh-ümâ’dan nakledildiğine göre şöyle demiştir:
+<h2 class="vaaz-bolum-baslik" id="ilim-duasi" tabindex="-1">V. Bir su hazırlığı, bir ilim duası</h2>
 
-Bir gün Hz. Peygamber’in terkisinde bulunuyordum. Bana: “Yavrucuğum, sana bazı kaideler öğreteyim” dedi ve şöyle buyurdu:
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">اللَّهُمَّ فَقِّهْهُ فِي الدِّينِ</p>
 
-“Allah’ın buyruklarını gözet ki, Allah da seni gözetip korusun. Allah’ın (rızâsını) her işte önde tut, Allah’ı önünde bulursun. Bir şey isteyeceksen Allah’tan iste. Yardım dileyeceksen, Allah’tan dile! Ve bil ki, bütün bir ümmet toplanıp sana fayda temin etmeye çalışsalar, ancak Allah’ın senin için takdir ettiği faydayı temin edebilirler. Yine eğer bütün ümmet, sana zarar vermeye kalksalar, ancak Allah’ın senin hakkında takdir ettiği zararı verebilirler. Çünkü artık kaderi yazan kalem yazmaz olmuş, yazıları değişmeyecek şekilde kesinleşmiştir. (Bundan sonra takdirde herhangi bir değişiklik söz konusu değildir.)” (Tirmizî, Kıyâmet 59)
+*Allah’ım! Onu dinde derin anlayış sahibi kıl.* (Buhârî, 143; rivayetten bölüm)
 
-Peygamber Efendimiz Çocuklara Hoşgörülü Ve Sabırlı Davranırdı:
+<p class="vaaz-etiket">İbret ve Tarihten Tablo — İbn Abbas’ın hatırladığı dua</p>
 
-Peygamber Efendimiz sadece kendisi çocuklara karşı hoşgörülü ve sabırlı davranmakla kalmamış, çevresindekileri de bu konuda uyarmıştır. Söz gelimi bir gün kucağına aldığı torunu Hasan, üzerine idrarını kaçırınca kızan ve çocuğa vuran Ümmü’l-Fadl’a, "Allah seni ıslah etsin! Oğlumun canını acıttın!" diyerek tepki göstermiştir. (HM27416 İbn Hanbel, VI, 340)
+İbn Abbas anlatır: Peygamber Efendimiz (s.a.s.) ihtiyaç gidermek üzere girdiğinde onun için abdest suyu hazırlar. Efendimiz, suyu kimin hazırladığını sorar. Kendisine haber verilince İbn Abbas için dinde anlayış sahibi olması duasını eder.
 
-Yine küçük bir kız iken babası ile Hz. Peygamber’i ziyarete gelen Ümmü Hâlid, onun mübarek sırtındaki peygamberlik mührüne dokununca babası tarafından azarlanmış ama Rahmet Peygamberi, "Bırak onu (dokunsun)." buyurmuştur. (B5993 Buhârî, Edeb, 17)
+(Buhârî, 143; sahih rivayetin anlam özeti.)
 
-### Hz. Peygamber Çocuğun Yanlışını Eğitim Fırsatı Olarak Görürdü
+Bu kısa rivayette hazırlanan suyu ve ardından gelen duayı görürüz. Genç bir insanın hizmeti fark edilir. Ona dinini anlayabilmesi için dua edilir. Bizim evimizde de bir çocuk kitabını hazırladığında, bir genç dersine gayret ettiğinde, onun emeğini görebiliriz. Ardından güzel bir dua söyleyebiliriz.
 
-Çocuğun yaptığı yanlışları eğitimi için fırsat olarak değerlendirmek ve kuru kuruya cezalandırmak yerine, bir daha aynı hatayı işlemesini engelleyecek şekilde doğruyu öğretmek de Peygamber yöntemidir.
+“Allah sana hayırlı anlayış versin” diyelim. Çocuğumuz için yalnız sınav başarısı dilediğimiz anlara, dinini kavrama duasını da ekleyelim. Böylece neye kıymet verdiğimizi ona duyururuz. Dua ederken onun anlayışını geliştirecek kitap, ders ve güvenilir öğretici için de emek verelim.
 
-Bir defasında hurma ağaçlarını taşlayan bir çocuğu yakalayanlar, cezalandırması için yaka paça Sevgili Peygamberimizin huzuruna getirmişler, ama Peygamberimiz onu azarlamak yerine, "Evladım, ağaçları niye taşlıyorsun?" diye sormuştur. Karnının aç olduğunu öğrendiğinde, "Hurma ağaçlarını taşlama da altlarına dökülenleri ye." buyurarak ona doğruyu öğretmiş, hatta başını okşadıktan sonra, "Allah’ım, bu yavrunun karnını doyur." diye dua etmiştir. (Ebû Dâvûd, Cihâd, 85; Tirmizî, Büyû’, 54)
+Bir büyüğün duası gencin işitebileceği kadar yakın olsun. Torunuyla aynı şehirde yaşamayan dedemiz, telefonda öğrendiği sûreyi dinleyebilir. Ninemiz bir kelimenin anlamını sorabilir. Çocuğun sorusunu birlikte hocasına götürebilirler. Uzaklık içinde de öğrenmeye eşlik etmenin bir yolu bulunur.
 
-Bir başka seferinde, yemek yerken tabağın içinde elini rasgele dolaştıran Ömer b. Ebû Seleme’nin bu yanlış hareketine müdahale eden Allah Resûlü, doğrusunu öğretmeyi de ihmal etmemiş, "Yavrum, Besmele çek, sağ elinle ve önünden ye." buyurmuştur. (Buhârî, Et’ıme, 2; Müslim, Eşribe, 108)
+Dinde anlayış, okunan sözün çağrısını kavramayı gerektirir. Fâtiha’yı öğrenen çocuk kime hamdettiğini, kimden yardım istediğini de öğrensin. Kulluk dilini anladıkça namazıyla daha bilinçli bir bağ kurması için ona imkân hazırlayalım. Önce bir anlamı doğru öğretelim; sonra yeni bir anlam ekleyelim.
 
-### Hz. Peygamber Çocuklara Yaşayarak Öğretirdi
+İbn Abbas için edilen duanın hedefi dinde anlayıştır. Biz de çocuğumuzun öğrenmesinde anlama payını gözetelim. Namazın hareketlerini öğrenirken kulluk niyetini konuşalım. Duanın sözlerini öğrenirken kimden ne istediğini açıklayalım. Bir ibadetin bilgisini ehil bir öğreticiden alması için yanında olalım. Böylece yapacağı davranışın anlamını da tanır. Ezberindeki cümle, kalbinde bilinçli bir yönelişe dönüşsün. Öğrenilen bilgi tekrar sorulduğunda, açıklamayı kendi kelimeleriyle kurabilsin.
 
-Çocuk duyduğunu ve okuduğunu değil gördüğünü benimsemekte, özellikle anne babasını model alarak kendi davranışlarına yön vermektedir. Bu bağlamda, *“Allah’tan sakının, çocuklarınız arasında adil olun!”* (Müslim, Hibe, 13; Buhârî, Hibe, 13) emrine uyarak evinde adaleti gözeten bir babanın evlatları, adaleti, yaşayarak öğrenecektir.
+Bu kıssadan alacağımız ölçüyü evimize taşıyalım: Yapılan hayrı fark etmek, anlayış için dua etmek, öğrenme imkânını hazırlamak. Bir çocuğun küçük hizmetinde yarının sorumluluğunu görelim. **Evladımızın ilmi için ettiğimiz duaya, öğrenmesini kolaylaştıran emeğimiz eşlik etsin.**
 
-“Gel, sana bir şey vereceğim!” diye çocuğunu çağıran Abdullah b. Âmir’in annesine, gerçekten bir şey verip vermeyeceğini soran Peygamberimiz, hurma vereceğini duyunca, *“Aman dikkat et! Eğer ona bir şey vermemiş olsaydın, senin için bir yalan olarak yazılacaktı.”* (Ebû Dâvûd, Edeb, 80) buyurmuştur. Çünkü eğer anne babası doğru sözlü olursa çocuk da dürüstlüğü öğrenecek, aksi takdirde yalan üzerine kurulu bir hayatı normal karşılayacaktır.
+---
 
-### Hz. Peygamber Çocukları Sosyal Hayata Dahil Etmiştir ve İbadet Eğitimi Vermiştir:
+<h2 class="vaaz-bolum-baslik" id="kuran-kursu" tabindex="-1">VI. Kur’an kursu: Her adımın kıymeti</h2>
 
-Çocuğa güzel örnek olmak ahlâkî gelişimi için şart olduğu gibi sosyal hayata alışması ve ibadet hayatını benimsemesi açısından da büyük önem taşır. Sevgili Peygamberimizin çocukları sosyal hayattan dışlamamasının en bariz göstergesi, onların Medine mescidine gelmelerine engel olmamasıdır. Çünkü mescid o günün sadece ibadetgâhı ve medresesi değil hayatın kalbinin attığı ve hukuktan edebiyata her türlü sosyal hâdisenin cereyan ettiği merkezidir.
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/goz-aydinligi-nesiller-yetistirmek/ders-halkasi.svg" width="1600" height="900" alt="Cami ders alanında arkadan görülen farklı yaşlardaki üç öğrenci ve yazısız kitapları." loading="lazy" decoding="async">
+<figcaption><strong>Birlikte öğrenilen harf</strong> Her öğrencinin gayretine uygun bir öğrenme imkânı hazırlayalım.</figcaption>
+</figure>
 
-Peygamber mescidinde vakit namazlarında bile bir saf oluşturacak kadar çok çocuk bulunması, (Ebû Dâvûd, Salât, 96) Allah Resûlü’nün hayatın akışıyla çocukları ne denli sık buluşturduğunu göstermektedir.
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَالَّذِي يَقْرَأُ الْقُرْآنَ وَيَتَتَعْتَعُ فِيهِ وَهُوَ عَلَيْهِ شَاقٌّ لَهُ أَجْرَانِ</p>
 
-Omzunda bazen kız, bazen de erkek torunları ile namaz kılan (Ebû Dâvûd, Salât, 164, 165; Nesâî, Tatbîk, 82) hatta bu şekilde cemaate namaz kıldıran (Müslim, Mesâcid, 43) ve cuma hutbesi veren (Tirmizî, Menâkıb, 30; Nesâî, Cum’a, 30) Hz. Peygamber, elbette çocukların namazla büyümesini arzulamaktadır.
+*Kur’an’ı okuyup onda zorlanan, okuyuşu kendisine güç gelen kimse için iki ecir vardır.* (Müslim, 798a; rivayetten bölüm)
 
-Sadece mescidde değil evlerde de namaz kılarken çocukların namaza katılmasını sağlayan Peygamber Efendimiz, (Buhârî, Ezân, 164) açık alanda namaz kılınırken safların arasında dolaşan çocuklara aldırmamıştır. (Buhârî, Ezân, 161; Müslim, Salât, 254)
+Kur’an dersinde bir çocuk aynı harfi birkaç kez deniyor. Sesi duraklıyor; sonra yeniden başlıyor. Bu gayreti Efendimizin müjdesiyle karşılayalım. Güzel okuyuş için çalışalım; zorlanana da sabırla yol gösterelim. Dersin eşiğinde çekinerek duran yetişkinimiz de bu müjdeyi işitsin. Öğrenmeye yeniden başlayabiliriz.
 
-Onları ibadet edilen ortamdan uzaklaştırmamış, aksine nasıl namaz kılacaklarını bizzat öğretmiştir. Söz gelimi Enes’e, *“Yavrucuğum namazda yüzünü sağa sola çevirip bakma.”* (Tirmizî, Cum’a, 60) demiştir. Cemaate katıldığında yanlışlıkla imamın soluna duran amcasının küçük oğlu Abdullah b. Abbâs’ı tutup sağ tarafına geçirdikten sonra başını okşamıştır. (Ebû Dâvûd, Tatavvu’, 26; Müslim, Salâtü’l-müsâfirîn, 182)
+Avrupa’da Kur’an kursuna devam için zaman ve emek ayırıyoruz. Hafta sonu yolculuğu, iş saatleri, okul ödevleri birbirine denk gelebiliyor. Çocuğumuzun dinlenmesini de gözeten sürdürülebilir bir program hazırlayalım. Derse devamı birlikte planlayalım; ulaşım ihtiyacını güvenilir bir düzenle paylaşalım. Hocasından hangi konuda tekrar gerektiğini öğrenelim.
 
-Peygamberimiz, çevresindeki çocukları her fırsatta namaz konusunda teşvik ve kontrol etmiştir. Bir gece eşi Meymûne annemizin odasına girdiğinde, geceyi orada geçireceği anlaşılan Abdullah b. Abbâs’ı görünce, "Çocuk namaz kıldı mı?" diye sormuş, aynı zamanda Abdullah’ın da teyzesi olan Meymûne annemizden onun namazını kıldığını öğrenmeden içi rahat etmemiştir. (Ebû Dâvûd, Tatavvu’, 26)
+Kızlarımızın ve oğullarımızın öğrenme imkânını aynı özenle koruyalım. İşitmekte, görmekte veya dikkatini sürdürmekte güçlük çeken öğrenci için uygun materyal ve yöntem arayalım. Yeni Müslüman olmuş bir aile, ilk dersin eşiğinde yalnız kalmasın. Anladığı dilde bilgi ve ulaşabileceği bir öğretici bulsun.
 
-Çocuklara dinî bir terbiye vermede Peygamberimizin özellikle namaz üzerinde ısrarla durduğu görülmektedir. İbadet sevgisinin erkenden yerleşmesi ve geç olmadan alışkanlık hâlini alması için, *“Sağını solundan ayırabilen yaşa geldiği zaman (çocuğa) namaz kılmasını emredin.”* buyuran Peygamberimiz, (Ebû Dâvûd, Salât, 26) ilerleyen yaşlarda çocuğun namaz kılması için ısrarcı olunması gerektiğini de vurgulamıştır. (Ebû Dâvûd, Salât, 26; Tirmizî, Salât, 182)
+<blockquote class="vaaz-alinti">
+<p>bilgi, gereğince uygulanmadıkça, sahibine fayda vermez</p>
+<footer>— Gazzâlî, Eyyühe’l-Veled’den naklen; Salih Aybey, “Gazzâlî’nin Eyyühe’l-Veled Adlı Eserinin İçerik ve Yönteminin Pedagojik Açıdan İncelenmesi”, 2020, s. 390, dipnot 25.</footer>
+</blockquote>
 
-Tıpkı namazda olduğu gibi oruç tutma konusunda da çocukların küçük yaştan itibaren eğitilmelerini isteyen Peygamberimizin zamanında, anneler küçüklerin oruçla barışık olmaları için onlara yünden oyuncaklar yaparak açlıklarını unutturmaya çalışmışlardır. (Buhârî, Savm, 47; Müslim, Sıyâm, 136) İbadetle iç içe büyümeleri gereken çocukların hac gibi bir izdihama katılmalarına bile müsamaha gösteren Allah’ın Resûlü, kucağındaki bir çocuğu kaldırarak, “Buna da hac var mı?” diye soran anneye, "Evet. (Onunla birlikte haccettiğin için) sana da ayrıca ecir var." (Müslim, Hac, 409; Tirmizî, Hac, 83) buyurmuştur.
+Gazzâlî’nin bu sözü öğrenmenin hayata yönelişini hatırlatır. Derste bir sûreyi okuyuşuyla öğrenen çocuk, anlamından da bir iyilik çıkarsın. Fâtiha’daki yardım dileğini duasına taşısın. Öğreticimizle öğrenme hedefini konuşalım; kursun kazandırdığı bilgi evde tekrar bulsun. Bir akşam on dakikamızı birlikte çalışmaya ayırabiliriz.
 
-### Birkaç Tavsiye:
+Kursa yeni başlayan bir aile önce öğreticiyle görüşsün. Çocuğunun neyi bildiğini, hangi dili daha rahat anladığını, neye ihtiyaç duyduğunu anlatsın. İlk hedef birlikte belirlensin. Harf öğrenenle okuyuşunu geliştirenin adımı farklıdır. Düzenli görüşmelerde ilerlemeyi ve zorlanılan noktayı konuşalım. Çocuğumuzun sözünü de duyalım. Kendisi hangi bölümde yardım istiyor? Dersin yükü hayat şartlarına uygun mu? Dinlenmeye vakit kalıyor mu? Bu sorularla ona ulaşan bir öğrenme düzeni kuralım.
 
-Önce kendi yaşantımızda yanlış olan şeyleri düzeltelim. Yaşam tarzımızı değiştirelim. Evimizi eğitim yuvasına çevirelim. Çocuklarımıza okuma alışkanlığı kazandıralım.
+Ders dönüşünde yalnız kaç sayfa okuduğunu sormayalım. “Bugün ne öğrendin, neyi tekrar edelim?” diye soralım. Kitabı birlikte açalım. **Göz aydınlığı nesiller, imanla kök salan, Kur’an’la yetişen ve duayla gözetilen nesillerdir.**
 
-Yaşlarına uygun olmayan TV yayınlarından uzak tutalım, sihir, büyü, sigara, içki, ahlaksızlık, yalan söyleme, anne babayı kandırma, başkalarına zarar verme, öldürme sahneleri içeren çizgi film ve filmleri asla izletmeyelim.
+---
 
-İyi arkadaşlar edinmesine yardımcı olalım.
+<h2 class="vaaz-bolum-baslik" id="anlayarak-ogrenmek" tabindex="-1">VII. Harften anlama, anlamdan hayata</h2>
 
-Şartsız sevgi: Çocuğu eğitmek için sevmeme gibi yollarla tehdit etmek ve sindirmek; çocuğun tümden kendisinin sevilmeye değmez, değersiz biri olduğuna dair şuuraltı geliştirmesine sebep olur. Çocuğun sevgiyle büyüdüğü unutulmamalıdır
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">وَٱلَّذِينَ إِذَا ذُكِّرُوا۟ بِـَٔايَـٰتِ رَبِّهِمْ لَمْ يَخِرُّوا۟ عَلَيْهَا صُمًّا وَعُمْيَانًا ۝٧٣</p>
 
-Şefkat ve nezaket: Ne ekersen onu biçersin. Şefkat ve nezaketle yetiştirilen çocuk bu özelliklere sahip olmakla beraber ileride kibar ve sevimli biri olur.
+*Kendilerine Rablerinin âyetleri hatırlatıldığında o âyetler karşısında körler ve sağırlar gibi bilinçsizce davranmazlar.* (Furkān, 25/73)
 
-Çocuğu ciddiye almak: Çocukların benlik bilinci 4-5 yaşına kadar oluşur. Bu yüzde ciddiye alınmamak, adam yerine konulmamak onları da üzer
+Rahmân’ın kullarının duasından hemen önce bu özellik anılır. Âyetleri işitmek, üzerinde düşünmeye ve çağrısını duymaya açılır. Biz çocuklarımızın Kur’an okuyuşunu geliştirirken anlamla bağlarını da gözetelim. Okuduğu sûre, onun gündelik sorularına ışık tutabilsin. Harfi doğru okuma gayretiyle anlamı doğru öğrenme gayreti birlikte yürüsün.
 
-Eşit ve adil davranmak: Kız erkek ayırımı yapmak biri birinden üstün tutmak doğru değildir.
+Açık bir kitabın yanında küçük bir not kâğıdı dursun. Bugün öğrenilen anlamı kendi sözlerimizle yazalım. Sonra bir uygulama seçelim. Çocuk “Allah’a şükretmek” ifadesini öğrendiyse sahip olduğu bir nimeti saysın. “Yalnız sana kulluk ederiz” sözünü öğrendiyse namazda kime yöneldiğini anlatsın.
+
+<figure class="vaaz-gorsel vaaz-uygulama">
+<figcaption><strong>Bir dersin evdeki karşılığı</strong> Bunlar yaşa ve ihtiyaca göre uyarlanabilecek öğretim adımlarıdır.</figcaption>
+<table aria-label="Bir dersin evdeki karşılığı">
+<thead><tr><th scope="col">Öğrenme adımı</th><th scope="col">Evdeki karşılığı</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Öğrenme adımı">Doğru oku</th><td data-label="Evdeki karşılığı">Hocanın gösterdiği kısa bölümü birlikte tekrar et.</td></tr>
+<tr><th scope="row" data-label="Öğrenme adımı">Anlamını öğren</th><td data-label="Evdeki karşılığı">Güvenilir meal ve açıklamadan bir anlam seç.</td></tr>
+<tr><th scope="row" data-label="Öğrenme adımı">Sorunu dile getir</th><td data-label="Evdeki karşılığı">Anlaşılmayan yeri not edip hocana sor.</td></tr>
+<tr><th scope="row" data-label="Öğrenme adımı">Hayata taşı</th><td data-label="Evdeki karşılığı">Öğrendiğin anlamla ilgili bir iyilik yap.</td></tr>
+</tbody></table>
+</figure>
+
+Meal okurken anlamı güvenilir açıklamalarla öğrenelim. Çocuğun sorduğu her soruya o anda cevap yetiştirmemiz gerekmez. Soruyu not alıp ehline danışabiliriz. Âyetin hangi bağlamda söylediğini öğrenmek, yanlış çıkarımları önlemeye yardım eder. Evdeki sohbeti bir araştırma ve öğrenme alışkanlığına dönüştürelim.
+
+Bazen bir yanlışın düzeltilmesi de önemli bir öğrenme anıdır. Çocuk bir âyetin anlamını karıştırdıysa birlikte kitabı açalım. Doğru açıklamayı okuyup farkı konuşalım. “Böyle öğrenmişim; şimdi düzeltiyorum” diyebilsin. Biz de kendi bildiğimizde bir yanlış çıkarsa aynı edebi gösterelim. Hatasını düzelten yetişkin, doğru bilgiye bağlılığını çocuğuna gösterir. Böyle bir evde soru sormak, birlikte öğrenmeye açılan bir imkân olur. Kur’an sohbetine bu açıklığı kazandıralım.
+
+Öğrendiklerini kendi cümlesiyle anlatan yavrumuzu dikkatle dinleyelim. Eksiğini incitmeden düzeltelim. Bir kelimenin anlaşılması, bir sayfanın hızla geçilmesinden daha fazla emek isteyebilir. O emeğe yer açalım. **Kur’an’ı doğru okumaya çalışırken, ne söylediğini anlamaya ve çağrısını yaşamaya da çalışalım.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="rol-modeller" tabindex="-1">VIII. Gencin yanında duran örnek insanlar</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">قُلْ هَـٰذِهِۦ سَبِيلِىٓ أَدْعُوٓا۟ إِلَى ٱللَّهِ ۚ عَلَىٰ بَصِيرَةٍ أَنَا۠ وَمَنِ ٱتَّبَعَنِى</p>
+
+*De ki: “İşte bu benim yolumdur. Ben ve bana uyanlar, ne yaptığımızı bilerek Allah’a çağırıyoruz.”* (Yûsuf, 12/108; âyetten bölüm)
+
+Sevgili kardeşlerim! Bir genç, yanında dinini bilen ve hayatında taşıyan bir insan görsün. Sabah servisine binen bir çalışan, okul kütüphanesinde ders hazırlayan bir öğrenci, hastanede hastasına özen gösteren bir görevli olabilir bu insan. İbadetini korurken işini de iyi yapan bir Müslümanı yakından tanısın.
+
+Âyet, davetin basîretle yapılmasını bildirir. Bilgi ve bilinç, rehberliğimizin temelinde bulunsun. Gençlere yol gösteren kişi kendi bilgisini geliştirsin; sorulanı araştırsın; sözünün sorumluluğunu taşısın. Bir cevabı bulmak için güvenilir bir kaynağa başvurması, gence öğrenme edebi de öğretir.
+
+Çocuğumuzun ekranında sevdiği kişiler var. Kimi bilgisiyle, kimi görünüşüyle, kimi konuşmasıyla dikkat çekiyor. Biz onun ilgisini dinleyelim. Beğendiği kişinin hangi davranışını örnek aldığını soralım. Kaynağı belli dinî bilgiyi birlikte bulalım. Güvenilir bir hocayla yüz yüze konuşma imkânı hazırlayalım.
+
+Cemaatimizde gençlerin erişebileceği hayırlı örnekler çoğalsın. Üniversitedeki bir ablamız, liseli bir kızımızla öğrenme tecrübesini paylaşabilir. Mesleğinde emek veren bir abimiz, bir gencin sorularını cevaplayabilir. Görüşmeler açık, güvenli ve ailelerin bilgisi içinde yürüsün. Rehberlik, gencin mahremiyetini ve kararlarını gözeten bir sorumlulukla yapılsın.
+
+Gencin sorumluluk almasına da imkân tanıyalım. Ders materyalini hazırlasın, küçüklerin tekrarına hocanın gözetiminde yardım etsin, bir etkinliğin düzenine katkı versin. Böylece öğrenirken iyiliğe de katılır. Kabiliyetini kullandığı bir hizmet, cemaatle bağını güçlendirebilir. Ona verdiğimiz işi açıklayalım ve tamamladığında emeğine teşekkür edelim.
+
+Gencimiz, çevresinde farklı mesleklerden Müslümanları tanısın. Bir araştırmacının dikkatli çalışmasını, bir ustanın işini sağlam yapmasını, bir öğrencinin dürüst gayretini görsün. Kendi kabiliyetini nerede hayra çevirebileceğini konuşsun. Örnek insanı tanırken her söylediğinin kaynağını araştırmayı da öğrensin. İnsanlara duyduğu sevgi, doğruyu öğrenme sorumluluğuyla birlikte büyüsün. Böylece bir kişiye duyduğu hayranlık içinde kendi muhakemesini korur. Güzel örnekten aldığı cesaretle kendi öğrenme yolunu yürür.
+
+Örnek olmanın ölçüsü kendi hayatımızda başlar. Bir yanlışımızı fark ettiğimizde düzeltelim; bilmediğimizi söylediğimizde öğrenmeye devam edelim. Genç, doğruluğu bu samimiyette de görsün. **İmanını bilen ve yaşayan bir yetişkin, gencin yolunda güvenilir bir refakatçi olsun.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="sureklilik" tabindex="-1">IX. Dersin ardından: Kur’an’la bağı sürdürmek</h2>
+
+<figure class="vaaz-gorsel vaaz-illustrasyon">
+<img src="/media/vaazlar/goz-aydinligi-nesiller-yetistirmek/yol-ve-ders.svg" width="1600" height="900" alt="Sonbahar okul bahçesindeki bir bank üzerinde spor çantası ve kapalı yazısız kitap." loading="lazy" decoding="async">
+<figcaption><strong>Günün içinde öğrenme vakti</strong> Okul, spor ve dinlenmenin arasında Kur’an için düzenli vakit ayıralım.</figcaption>
+</figure>
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">أَفَلاَ يَغْدُو أَحَدُكُمْ إِلَى الْمَسْجِدِ فَيَعْلَمَ أَوْ يَقْرَأَ آيَتَيْنِ مِنْ كِتَابِ اللَّهِ عَزَّ وَجَلَّ خَيْرٌ لَهُ مِنْ نَاقَتَيْنِ وَثَلاَثٌ خَيْرٌ لَهُ مِنْ ثَلاَثٍ</p>
+
+*İçinizden biri sabah mescide gidip Allah Teâlâ’nın kitabından iki âyet öğrenmez veya okumaz mı? Bu, onun için iki dişi deveden daha hayırlıdır. Üç âyet de üç dişi deveden daha hayırlıdır.* (Müslim, 803; rivayetten bölüm)
+
+Ukbe b. Âmir, Suffa’da bulundukları sırada Efendimizin (s.a.s.) bu müjdeyi verdiğini anlatır. Mescitte öğrenilen iki âyetin kıymetine dikkat çekiyor. Bu öğrenme sevgisini evimize taşıyalım. Kurs dönemi bitince ailece her gün iki âyet okuyup öğrenmeye vakit ayıralım. Anlamını konuşalım, öğrendiğimizi tekrar edelim. Ailenin şartlarına uygun bir zaman belirleyelim; o zamanı birlikte koruyalım.
+
+<p class="vaaz-etiket">Gurbetten Bir Tablo — Liège’de spor çantasının yanında</p>
+
+Liège’de antrenmandan dönen bir genç, spor çantasını bırakıyor. Ertesi gün Kur’an dersinde okuyacağı kısa bölüm aklına geliyor. Annesiyle çalışma saatini konuşuyorlar. Arkadaşı da aynı bölümü tekrar edecek. Birbirlerine hazır olduklarını haber veriyor, sonra derste hocanın okuyuşunu dinliyorlar. Sporun ve okulun arasında Kur’an için ayırdıkları vakit görünür hâle geliyor.
+
+Arkadaşlık, öğrenmeye destek veren bir bağ olsun. İki genç derse beraber gelebilir, birbirine tekrar saatini hatırlatabilir. Sorusunu paylaşabilir, hocasına birlikte götürebilir. Bunu başkasının kusurunu gözetmeden, kendi gayretlerine destek vererek yapsınlar. Bir arkadaşın güzel daveti ilk adımı kolaylaştırabilir.
+
+<figure class="vaaz-gorsel vaaz-sema">
+<figcaption><strong>Dersle bağ kurduğumuz üç yer</strong> İmkânımıza uygun, düzenli bir öğrenme adımı seçelim.</figcaption>
+<dl class="vaaz-hayat">
+<div><dt>Evde</dt><dd>Kısa okuyuşu birlikte tekrar et; anlamından bir cümle konuş.</dd></div>
+<div><dt>Yolda</dt><dd>Ders saatini planla; ulaşımı güvenli biçimde düzenle.</dd></div>
+<div><dt>Kursta</dt><dd>Sorunu açıkça sor; hocanın verdiği hedefi not et.</dd></div>
+</dl>
+</figure>
+
+Bazen vardiya, hastalık veya ulaşım güçlüğü devamı aksatır. Aileyi suçlamak yerine yeni bir imkân arayalım. Hocamızla uygun tekrar biçimini konuşalım. Uzaktan destek gerekiyorsa güvenilir ve erişilebilir bir yol belirleyelim. Öğrencinin yapabildiği adımı koruyarak devam edelim.
+
+Bir hafta sonra belirlediğimiz tekrarın nasıl gittiğini soralım. Kolaylaşan bölümü fark edelim; zorlanılan yeri hocamızla yeniden çalışalım. Öğrenme düzenimiz ihtiyaca göre gelişsin.
+
+Kurs dönemi bitince kitap evde ulaşılabilir bir yerde dursun. Öğrenilen sûre, namazda ve tekrar vaktinde yaşasın. **Kur’an’la kurduğumuz bağı, düzenli tekrar ve hayırlı arkadaşlıkla sürdürelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="dua-ve-umit" tabindex="-1">X. Evlat için dua: Gayretin içindeki ümit</h2>
+
+<p class="vaaz-etiket">Âyet-i Kerîme</p>
+<p lang="ar" dir="rtl" class="ayet">إِنَّمَآ أَمْوَٰلُكُمْ وَأَوْلَـٰدُكُمْ فِتْنَةٌ ۚ وَٱللَّهُ عِندَهُۥٓ أَجْرٌ عَظِيمٌ ۝١٥</p>
+
+*Mallarınız ve çocuklarınız ancak birer imtihandır; Allah katında ise büyük bir mükâfat vardır.* (Tegābün, 64/15)
+
+Yavrumuz büyüdükçe soruları ve tercihleri de değişir. Biz onu gözetirken kendi sabrımız, bilgimiz ve davranışımızla da sınanırız. Çocuklarımız için ettiğimiz dua, bizim de Rabbimize yönelişimizdir. Kur’an eğitimi için hazırladığımız imkânları gözden geçirelim; kendi örnekliğimizi geliştirelim. Elimizden geleni yapıp Allah’tan yardım dileyelim.
+
+<p class="vaaz-etiket">Hadîs-i Şerîf</p>
+<p lang="ar" dir="rtl" class="ayet">وَلاَ تَدْعُوا عَلَى أَوْلاَدِكُمْ</p>
+
+*Çocuklarınızın aleyhine dua etmeyin.* (Müslim, 3005; rivayetten bölüm)
+
+Bir akşam evde ders kitabı kapalı kalabilir. Beklediğimiz cevap gelmeyebilir. O anda dilimizi hayır duasına çevirelim. “Allah sana hayırlı anlayış versin; beraber bir yol bulalım” diyebiliriz. Efendimizin uyarısını hatırlayarak bedduadan uzak duralım. Yavrumuzun iyiliğini istediğimiz dilimizde de duyulsun.
+
+İman yolunda zorlanan bir gencimiz varsa bağımızı ve ümidimizi koruyalım. Sorularını güvenilir bir hocaya ulaştıralım. İhtiyacına göre uygun destek arayalım. Kendi hatamız varsa onu düzeltelim. Çocuğunun her tercihi karşısında kendini suçlayan anne babaya da şefkatle yaklaşalım. Biz gayretimizi taşırız; hidayeti Rabbimizden isteriz.
+
+Yetişkin bir evladımız başka bir şehirde çalışıyor olabilir. Duamız mesafeyi aşar. Hâlini sorarken öğrenme ihtiyacını da dinleyebiliriz. Bir kitabı beraber okuyabilir, bir dersin bağlantısını paylaşabiliriz. Kendi aile hayatında dinini öğrenmeye devam etmesi için ona destek olalım. İman yolculuğunda refakatimiz yeni bir biçim bulsun.
+
+Çocuğu olmayan kardeşimiz de nesiller için dua edebilir; bir öğrencinin eğitimine katkı sunabilir. Torununu uzakta gören büyüğümüz onun adını duasında anabilir. Kaybettiği evladının acısını taşıyan kalbe Rabbimizin rahmetini dileyelim. **Evladımızı gayretimizle gözetelim, duamızda hayırla analım ve Rabbimizin rahmetinden ümit kesmeyelim.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="yedi-soz" tabindex="-1">XI. Hayata taşıyacağımız yedi söz</h2>
+
+**Muhterem Müslümanlar! Duamıza bir adım, öğrendiğimize bir davranış ekleyelim.**
+
+Şimdi takvimimizde bir zaman, gönlümüzde bir insan olsun. Açacağımız kitap, soracağımız soru ve destek vereceğimiz öğrenci belli olsun. Bu yedi sözden şartlarımıza uygun adımları seçelim. Evladımız varsa onunla konuşalım; yoksa yakınımızdaki bir öğrenme halkasına katkımızı düşünelim.
+
+**GÖZ AYDINLIĞI NESİLLER İÇİN YEDİ SÖZ**
+
+<ol class="vaaz-sozler">
+<li><strong>Bu hafta her gün evlatlarımız için hayır duası edeceğim.</strong> Kendi ailemdeki çocuklarla birlikte cemaatin bütün gençlerini de duamda anacağım.</li>
+<li><strong>Bir gencimizin imanla ilgili sorusunu dinleyeceğim.</strong> Bilmediğim noktayı not edip güvenilir bir öğreticiyle birlikte araştıracağım.</li>
+<li><strong>Kur’an öğrenmek için bu hafta bir ders zamanı belirleyeceğim.</strong> Çocuğumla, yakınımla veya kendim için uygun programa ulaşarak ilk adımı atacağım.</li>
+<li><strong>Öğrendiğim kısa bir bölümü üç gün tekrar edeceğim.</strong> Yaşıma ve imkânıma uygun bölümü seçip okuyuşumu ehil birine kontrol ettireceğim.</li>
+<li><strong>Bir sûrenin anlamından bir cümle öğreneceğim.</strong> Güvenilir açıklamadan öğrendiğim anlamı bir yakınımla konuşup bir davranışıma taşıyacağım.</li>
+<li><strong>Bir öğrencinin öğrenmesini kolaylaştıracağım.</strong> İhtiyacını sorup kitap, ulaşım veya tekrar desteğinden yapabileceğim birini sunacağım.</li>
+<li><strong>Bu hafta imanımdan doğan bir iyiliği sürdüreceğim.</strong> Evde veya okulda seçtiğim somut davranışı hafta sonunda yeniden değerlendireceğim.</li>
+</ol>
+
+<figure class="vaaz-gorsel vaaz-yedi-soz">
+<figcaption><strong>Bu hafta bir adımla başla</strong>Bir zaman belirle, adımını at, hafta sonunda gözden geçir.</figcaption>
+<ol class="vaaz-soz-yolu">
+<li><span aria-hidden="true">1</span><strong>Evlatlar için dua et</strong></li>
+<li><span aria-hidden="true">2</span><strong>Bir soruyu dinle</strong></li>
+<li><span aria-hidden="true">3</span><strong>Ders zamanını belirle</strong></li>
+<li><span aria-hidden="true">4</span><strong>Kısa bölümü tekrar et</strong></li>
+<li><span aria-hidden="true">5</span><strong>Bir anlamı öğren</strong></li>
+<li><span aria-hidden="true">6</span><strong>Öğrenmeye destek ol</strong></li>
+<li><span aria-hidden="true">7</span><strong>İyiliğini gözden geçir</strong></li>
+</ol>
+</figure>
+
+Bir defterin kenarına seçtiğimiz adımı yazabiliriz. Hafta sonunda neyi yapabildiğimizi konuşalım. Aksayan yerde şartlarımıza uygun bir düzen kuralım. Bir harfin doğru okunması, bir sorunun güvenle sorulması, bir anlamın yaşanması bize yeni bir başlangıç sunsun. Her küçük gayrete aynı özenle yaklaşalım.
+
+Bu sözleri uygularken çocuğumuzun katılımına da yer açalım. Tekrar saatini onunla konuşalım. Hangi anlamı merak ettiğini soralım. Beraber belirlediğimiz küçük bir hedefi tamamladığında gayretini fark edelim. Büyüklerin kendi öğrenme hedefi de olsun. Böylece çocuk, dersin yalnız kendisine verilen bir görev olduğunu düşünmez. Aynı evde herkesin ilme ihtiyacı bulunduğunu görür.
+
+Bir haftanın sonunda defterimize geri dönelim. Duada kimi andık? Hangi soruyu ehline ulaştırdık? Bir öğrencinin hangi ihtiyacını kolaylaştırdık? Bu soruları birbirimizi yargılamadan konuşalım. Atamadığımız adımın sebebini öğrenelim. Ulaşım zorluğu varsa çözümü birlikte arayalım; vakit yetmediyse daha kısa bir hedef seçelim. Emeğimiz sürdürülebilir bir düzene kavuşsun. Bugün öğrenen yavrumuz, yarın başka bir çocuğa destek olsun. İyilik nesiller arasında böylece taşınsın.
+
+Evladımız için arzuladığımız geleceğe bugün bir katkı verelim. Rabbimiz emeğimizi bereketlendirsin; öğrenme halkalarımızı devamlı kılsın. Şimdi bu niyetimizi birlikte duaya taşıyalım. **Göz aydınlığı nesiller, imanla kök salan, Kur’an’la yetişen ve duayla gözetilen nesillerdir.**
+
+---
+
+<h2 class="vaaz-bolum-baslik" id="hatim-duasi" tabindex="-1">Hatim duası: Nesillerimizi Rabbimize emanet ederken</h2>
+
+**Kıymetli kardeşlerim! Bütün nesillerimiz için Rabbimize yönelelim.**
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</p>
+
+*Rabbimiz! Bize mutluluk getirecek eşler ve çocuklar bahşet; bizi günahtan sakınanlara öncü yap!* (Furkān, 25/74; âyetten bölüm)
+
+Allah’ım! Evlatlarımıza iman sevgisi, doğru bilgi ve hayırlı arkadaşlar ihsan eyle. Kur’an öğrenen çocuklarımızın gayretini bereketlendir. Gençlerimize sorularını güvenle sorabilecekleri, ilimle cevap bulabilecekleri imkânlar ver. Bizi onlara doğru örnek olan kullarından eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">وَأَصْلِحْ لِى فِى ذُرِّيَّتِىٓ ۖ إِنِّى تُبْتُ إِلَيْكَ وَإِنِّى مِنَ ٱلْمُسْلِمِينَ</p>
+
+*Rabbim! Benden gelecek nesli hayırlı eyle. Dönüp kapına başvurdum ve ben şüphesiz sana boyun eğenlerdenim!* (Ahkāf, 46/15; âyetten bölüm)
+
+Rabbimiz! Anne babalarımıza sabır, öğreticilerimize hikmet, büyüklerimize huzur ihsan eyle. Yeni Müslüman kardeşlerimizin öğrenmesini kolaylaştır. Engelli kardeşlerimize uygun imkânlar, hastalarımıza şifa ver. Evladını kaybedenlere teselli lütfeyle. Vefat edenlerimize rahmet eyle; nesillerimize bıraktıkları hayrı yaşatmayı nasip eyle.
+
+<p class="vaaz-etiket">Dua</p>
+<p lang="ar" dir="rtl" class="ayet">رَبِّ لَا تَذَرْنِى فَرْدًا وَأَنتَ خَيْرُ ٱلْوَٰرِثِينَ</p>
+
+*Rabbim! Geride kalanların en hayırlısı sensin, yine de sen beni yalnız (çocuksuz) bırakma!* (Enbiyâ, 21/89; âyetten bölüm)
+
+Allah’ım! Evlat bekleyenlerin gönlünü ferahlat; yalnız kalanlara hayırlı dostlar ver. Cemaatimizi öğrenmede ve iyilikte birbirine destek eyle. Yaşadığımız ülkeye ve komşularımıza esenlik ver. Çocuklarımızı burada imanıyla huzur bulan, insanlara hayrı dokunan kullarından eyle. Zulme uğrayanların yardımcısı ol.
+
+Rabbimiz! Niyetimizi hâlis, emeğimizi hayırlı kıl. Bizleri bağışla, dualarımızı kabul eyle. Âmin. Velhamdü lillâhi Rabbi’l-âlemîn. **El-Fâtiha.**
+
+---
+
+<details class="vaaz-kaynaklar">
+<summary>Âyet, hadis ve ilmî kaynaklar</summary>
+<p>Mealler Kur’an Yolu anlamı esas alınarak kürsü için sadeleştirilmiştir. Kısaltılan âyet ve hadisler belirtilmiştir. Gündelik hayat sahneleri temsilîdir; öğretim tabloları metindeki çağrıların uygulama özetidir. Diğer niyazlar serbest duadır.</p>
+<ul>
+<li>Giriş ve dua: <a href="https://quran.com/3/38">Âl-i İmrân 3/38</a>.</li>
+<li>Göz aydınlığı duası: <a href="https://quran.com/25/74">Furkān 25/74</a>.</li>
+<li>İman mirasını taşımak: <a href="https://quran.com/2/133">Bakara 2/133</a>.</li>
+<li>Fıtratı gözetmek: <a href="https://sunnah.com/bukhari:1358">Buhârî 1358</a>; <a href="https://quran.com/16/78">Nahl 16/78</a>.</li>
+<li>Allah’a güvenmek: <a href="https://sunnah.com/tirmidhi:2516">Tirmizî 2516</a>.</li>
+<li>Nebevi ilim duası: <a href="https://sunnah.com/bukhari:143">Buhârî 143</a>.</li>
+<li>Kur’an kursuna devam: <a href="https://sunnah.com/muslim:798a">Müslim 798a</a>.</li>
+<li>Anlayarak öğrenmek: <a href="https://quran.com/25/73">Furkān 25/73</a>.</li>
+<li>İmanını yaşayan örnekler: <a href="https://quran.com/12/108">Yûsuf 12/108</a>.</li>
+<li>Öğrenme bağını sürdürmek: <a href="https://sunnah.com/muslim:803">Müslim 803</a>.</li>
+<li>Evlat için dua: <a href="https://quran.com/64/15">Tegābün 64/15</a>; <a href="https://sunnah.com/muslim:3005">Müslim 3005</a>.</li>
+<li>Hatim duası: <a href="https://quran.com/25/74">Furkān 25/74</a>; <a href="https://quran.com/46/15">Ahkāf 46/15</a>; <a href="https://quran.com/21/89">Enbiyâ 21/89</a>.</li>
+<li>Tefsir çerçevesi: Kur’an Yolu — Furkân 25/74–76, yerel arşiv #215526.</li>
+<li>Kavram: <a href="https://islamansiklopedisi.org.tr/fitrat">TDV İslâm Ansiklopedisi — Fıtrat</a>.</li>
+<li>Eğitim çerçevesi: <a href="https://islamansiklopedisi.org.tr/cocuk">TDV İslâm Ansiklopedisi — Çocuk</a>.</li>
+<li>Klasik söz: Gazzâlî’nin Eyyühe’l-Veled adlı eserine ilişkin akademik inceleme, yerel arşiv #154758.</li>
+</ul>
+</details>
+
+<p class="vaaz-bolumlere-don"><a href="#vaaz-bolumleri">Vaazın bölümlerine dön</a></p>
