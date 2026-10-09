@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 (7) — duyuru: 9 Ekim cuma vaazı «Affetmek ve Öfkeyi Kontrol Etmek»
+
+- Zaman: 9 Ekim 2026 13:26:02 (push) – 13:28:19 (deploy) – 13:29 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «son vaazı duyurulara ekle lütfen, bugünün vaazını» isteği.
+- Kapsam: `src/content/duyurular/{tr,fr}/cuma-vaazi-affetmek-ve-ofkeyi-kontrol-etmek.md` (EN/NL/DE sayfaları FR
+  duyuruyu gösterir). İçerik: vaazın açılış cümlesi ve dört ana fikri (vaaz ve çevirilerinden birebir), tam metin
+  bağlantısı, Word/PDF ve sunum (PowerPoint/PDF) indirmeleri, beş dildeki vaaz sayfalarına bağlantı. Kapak vaazın
+  açılış çizimi `helallesme-1600.webp` / küçük `helallesme-480.webp`. Vitrin otomatik (öne çıkarma yok; 14 Ekim
+  duyurusu öncelikli kalır), cami ekranına konmadı. Yeni dinî metin eklenmedi.
+- İçerik commit'i `1edb78c` (push `4e1e282..1edb78c`). Release 0.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37923693197) **success**.
+- Kalite: tam `npm run dogrula:codex` **10/10** (derleme 1923 sayfa; web 817 geçti / 113 atlandı; eğitim ekranı 70
+  geçti / 2 atlandı; `check` 0 hata). Önizlemede TR 390 px açık, FR 1280 px koyu, EN 390 px: yatay taşma 0, sayfa içi
+  kırık bağlantı 0; tek konsol kaydı GoatCounter sayacının henüz ziyaret almamış sayfa için verdiği 404 (her yeni
+  sayfada olağan; localhost sayılmaz). Duyurudaki bütün bağlantılar (vaaz sayfaları, indirmeler, Release sunumları)
+  canlıda 200.
+- Canlı: `/tr/duyurular/…`, `/fr/annonces/…`, `/en/announcements/…`, `/nl/mededelingen/…`, `/de/mitteilungen/…` 200,
+  başlıklar doğru, din görevlisi telefonu 0; duyuru `/tr/duyurular/`, `/fr/annonces/` listelerinde ve `/tr/` ana
+  sayfada görünüyor.
+- Sınırlar: Facebook paylaşımı yapılmadı (istenmedi). Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 9 Ekim 2026 (6) — vaaz revizyonu 5. parti (13 vaaz) + vaaz PDF'lerinde emoji yazı tipi küçültmesi
 
 - Zaman: 9 Ekim 2026 12:43:30 (push) – 12:45:50 (deploy) – 12:47 (canlı doğrulama), Europe/Brussels (CEST).
