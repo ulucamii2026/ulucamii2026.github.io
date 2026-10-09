@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
+import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, SAAT_GERI_TOLERANS_MS, sunucuSaatiCoz, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
 import { bugunTarih, durumHesapla } from '../src/lib/namaz.ts';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -99,6 +99,55 @@ test('tema güneşten akşama açık, sonra koyu (kış saatine geçilen gün d�
 test('pilsiz kutuda saat 1970e dönerse güvenilmez sayılır', () => {
   assert.equal(saatGecerliMi(new Date(0)), false);
   assert.equal(saatGecerliMi(new Date('2026-09-27T12:00:00Z')), true);
+});
+
+const SUNUCU_MS = Date.parse('2026-10-09T11:09:00Z');
+
+test('saat geri toleransı 10 dakikadır', () => {
+  assert.equal(SAAT_GERI_TOLERANS_MS, 10 * 60_000);
+});
+
+test('saat sunucu işaretinden tam 10 dakika geride ise geçerli, 1 ms daha geride ise geçersiz', () => {
+  assert.equal(saatGecerliMi(new Date(SUNUCU_MS - SAAT_GERI_TOLERANS_MS), SUNUCU_MS), true);
+  assert.equal(saatGecerliMi(new Date(SUNUCU_MS - SAAT_GERI_TOLERANS_MS - 1), SUNUCU_MS), false);
+});
+
+test('saat sunucu işaretinin ilerisindeyse ya da aynıysa geçerli', () => {
+  assert.equal(saatGecerliMi(new Date(SUNUCU_MS), SUNUCU_MS), true);
+  assert.equal(saatGecerliMi(new Date(SUNUCU_MS + 3_600_000), SUNUCU_MS), true);
+});
+
+test('sunucu işareti 0 ya da verilmemişse eski davranış korunur', () => {
+  const eski = new Date('2026-09-28T22:23:00Z');
+  assert.equal(saatGecerliMi(eski), true);
+  assert.equal(saatGecerliMi(eski, 0), true);
+  assert.equal(saatGecerliMi(new Date(0), 0), false);
+});
+
+test('Polaroid olayı: 28 Eylül saati, 9 Ekim sunucu işaretine göre geçersiz', () => {
+  assert.equal(saatGecerliMi(new Date('2026-09-28T22:23:00Z'), SUNUCU_MS), false);
+});
+
+test('1 Eylül 2026 sınırından eski saat sunucu işaretiyle de geçersiz kalır', () => {
+  assert.equal(saatGecerliMi(new Date('2026-08-31T23:59:59Z'), Date.parse('2026-08-31T23:59:59Z')), false);
+  assert.equal(saatGecerliMi(new Date(0), SUNUCU_MS), false);
+});
+
+test('sunucuSaatiCoz: geçerli HTTP Date başlığını milisaniyeye çevirir', () => {
+  assert.equal(sunucuSaatiCoz('Fri, 09 Oct 2026 16:49:41 GMT'), Date.UTC(2026, 9, 9, 16, 49, 41));
+});
+
+test('sunucuSaatiCoz: bozuk, boş ve null başlık null verir', () => {
+  assert.equal(sunucuSaatiCoz('dün akşam'), null);
+  assert.equal(sunucuSaatiCoz(''), null);
+  assert.equal(sunucuSaatiCoz('   '), null);
+  assert.equal(sunucuSaatiCoz(null), null);
+});
+
+test('sunucuSaatiCoz: 1 Eylül 2026 öncesi tarih null verir', () => {
+  assert.equal(sunucuSaatiCoz('Thu, 01 Jan 1970 00:00:00 GMT'), null);
+  assert.equal(sunucuSaatiCoz('Sat, 26 Jul 2025 13:22:00 GMT'), null);
+  assert.equal(sunucuSaatiCoz('Tue, 01 Sep 2026 00:00:00 GMT'), Date.UTC(2026, 8, 1));
 });
 
 test('Brüksel saati: gece yarısı 00; yaz saati biterken 02:30 iki kez yaşanır', () => {

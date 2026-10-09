@@ -146,3 +146,156 @@ test('önbellekteki eski içerik akışı (dualar ve esmalar alanı yok) geçerl
   assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: 'bozuk' }), false);
   assert.equal(icerikGecerli({ ayetler: [], hadisler: [], esmalar: {} }), false);
 });
+
+// ---- Sunucu saati yüksek su işareti (W7): cihaz saati geriye giderse ekran saate güvenmez ----
+// Modül durumu (işaret) testler arası sızmasın diye her test modülü taze bir sorgu dizesiyle yeniden yükler.
+let tazeSayac = 0;
+const tazeVeri = () => import('../src/ekran/veri.ts?w7=' + (++tazeSayac));
+const DATE_A = 'Fri, 09 Oct 2026 11:00:00 GMT';
+const MS_A = Date.UTC(2026, 9, 9, 11, 0, 0);
+const DATE_B = 'Fri, 09 Oct 2026 11:05:00 GMT';
+const MS_B = Date.UTC(2026, 9, 9, 11, 5, 0);
+
+/** localStorage yerine sahte depo koyar (yok = undefined), işi bitince özgün tanımı geri verir. */
+async function depoyla(depo, is) {
+  const onceki = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  Object.defineProperty(globalThis, 'localStorage', { value: depo, configurable: true, writable: true });
+  try { return await is(); } finally {
+    if (onceki) Object.defineProperty(globalThis, 'localStorage', onceki); else delete globalThis.localStorage;
+  }
+}
+function sahteDepo(ilk = {}) {
+  const veri = new Map(Object.entries(ilk));
+  const yazimlar = [];
+  return { yazimlar, veri, getItem: (k) => (veri.has(k) ? veri.get(k) : null), setItem: (k, v) => { yazimlar.push([k, v]); veri.set(k, String(v)); } };
+}
+async function fetchIle(yanit, is) {
+  const eski = globalThis.fetch;
+  globalThis.fetch = async () => yanit();
+  try { return await is(); } finally { globalThis.fetch = eski; }
+}
+const VAKIT_YANIT = (date) => () => new Response(JSON.stringify(VAKIT), { status: 200, headers: date ? { Date: date } : {} });
+
+test('sunucu saati: geçerli gövdeli yanıtın Date başlığı işareti yükseltir', async () => {
+  await depoyla(sahteDepo(), async () => {
+    const m = await tazeVeri();
+    assert.equal(m.sonSunucuSaati(), 0);
+    await fetchIle(VAKIT_YANIT(DATE_A), () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), MS_A);
+  });
+});
+
+test('sunucu saati: gövde doğrulamadan geçmezse (captive portal) daha yeni Date işareti oynatmaz', async () => {
+  await depoyla(sahteDepo(), async () => {
+    const m = await tazeVeri();
+    await fetchIle(() => new Response(JSON.stringify({ kaynakTuru: 'aladhan' }), { status: 200, headers: { Date: DATE_B } }),
+      () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), 0);
+    await fetchIle(() => new Response('<html>giriş yapın</html>', { status: 200, headers: { Date: DATE_B } }),
+      () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), 0);
+  });
+});
+
+test('sunucu saati: !ok yanıt işareti oynatmaz', async () => {
+  await depoyla(sahteDepo(), async () => {
+    const m = await tazeVeri();
+    await fetchIle(() => new Response(JSON.stringify(VAKIT), { status: 500, headers: { Date: DATE_B } }),
+      () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), 0);
+  });
+});
+
+test('sunucu saati: Date başlığı olmayan ya da bozuk yanıt işareti oynatmaz', async () => {
+  await depoyla(sahteDepo(), async () => {
+    const m = await tazeVeri();
+    await fetchIle(VAKIT_YANIT(null), () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    await fetchIle(VAKIT_YANIT('dün akşam'), () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), 0);
+  });
+});
+
+test('sunucu saati: eski Date işareti asla düşürmez', async () => {
+  await depoyla(sahteDepo(), async () => {
+    const m = await tazeVeri();
+    await fetchIle(VAKIT_YANIT(DATE_B), () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), MS_B);
+    await fetchIle(VAKIT_YANIT(DATE_A), () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), MS_B);
+    m.sunucuSaatiniKaydet(MS_A);
+    m.sunucuSaatiniKaydet(null);
+    m.sunucuSaatiniKaydet(NaN);
+    m.sunucuSaatiniKaydet(Infinity);
+    assert.equal(m.sonSunucuSaati(), MS_B, 'null, NaN ve Infinity işareti değiştirmez');
+  });
+});
+
+test('sunucu saati: akisTazele de geçerli yanıttan işareti yükseltir', async () => {
+  await depoyla(sahteDepo(), async () => {
+    const m = await tazeVeri();
+    await fetchIle(() => new Response(JSON.stringify(AKIS), { status: 200, headers: { Date: DATE_A } }),
+      () => m.akisTazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), MS_A);
+  });
+});
+
+test('sunucu saati: depoya yalnız en az 60 sn büyüyünce yazılır', async () => {
+  const depo = sahteDepo();
+  await depoyla(depo, async () => {
+    const m = await tazeVeri();
+    m.sunucuSaatiniKaydet(MS_A);
+    assert.equal(depo.yazimlar.length, 1);
+    assert.deepEqual(depo.yazimlar[0], ['ekran.sonSunucuSaati', String(MS_A)]);
+    m.sunucuSaatiniKaydet(MS_A + 59_999);
+    assert.equal(depo.yazimlar.length, 1, '60 sn altı büyüme yazılmaz');
+    assert.equal(m.sonSunucuSaati(), MS_A + 59_999, 'bellekteki işaret yine de yükselir');
+    m.sunucuSaatiniKaydet(MS_A + 60_000);
+    assert.equal(depo.yazimlar.length, 2, 'tam 60 sn büyüme yazılır');
+    assert.deepEqual(depo.yazimlar[1], ['ekran.sonSunucuSaati', String(MS_A + 60_000)]);
+  });
+});
+
+test('sunucu saati: ilk değer depodan okunur; bozuk değer 0 sayılır', async () => {
+  await depoyla(sahteDepo({ 'ekran.sonSunucuSaati': String(MS_B) }), async () => {
+    const m = await tazeVeri();
+    assert.equal(m.sonSunucuSaati(), MS_B);
+  });
+  for (const bozuk of ['', 'abc', 'NaN', 'Infinity', '-5']) {
+    await depoyla(sahteDepo({ 'ekran.sonSunucuSaati': bozuk }), async () => {
+      const m = await tazeVeri();
+      assert.equal(m.sonSunucuSaati(), 0, 'bozuk değer: ' + JSON.stringify(bozuk));
+    });
+  }
+});
+
+test('sunucu saati: depodan okunan değer üstüne yazım eşiği hesaplanır', async () => {
+  const depo = sahteDepo({ 'ekran.sonSunucuSaati': String(MS_A) });
+  await depoyla(depo, async () => {
+    const m = await tazeVeri();
+    m.sunucuSaatiniKaydet(MS_A + 30_000);
+    assert.equal(depo.yazimlar.length, 0);
+    m.sunucuSaatiniKaydet(MS_A + 60_000);
+    assert.equal(depo.yazimlar.length, 1);
+  });
+});
+
+test('sunucu saati: localStorage yoksa bellekte çalışmaya devam eder', async () => {
+  await depoyla(undefined, async () => {
+    const m = await tazeVeri();
+    assert.equal(m.sonSunucuSaati(), 0);
+    m.sunucuSaatiniKaydet(MS_A);
+    assert.equal(m.sonSunucuSaati(), MS_A);
+  });
+});
+
+test('sunucu saati: localStorage okurken ve yazarken fırlatırsa yine bellekte çalışır', async () => {
+  const atan = { getItem() { throw new Error('depo kapalı'); }, setItem() { throw new Error('kota'); } };
+  await depoyla(atan, async () => {
+    const m = await tazeVeri();
+    assert.equal(m.sonSunucuSaati(), 0);
+    m.sunucuSaatiniKaydet(MS_A);
+    assert.equal(m.sonSunucuSaati(), MS_A);
+    await fetchIle(VAKIT_YANIT(DATE_B), () => m.tazele({ vakit: null, akis: null, icerik: null }));
+    assert.equal(m.sonSunucuSaati(), MS_B);
+  });
+});

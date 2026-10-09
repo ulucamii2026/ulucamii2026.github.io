@@ -30,10 +30,25 @@ test.beforeEach(async ({ context }) => {
   // Ağ yalıtımı (depodaki öteki web testleriyle aynı): 4401 dışındaki HTTP ve WebSocket kesilir.
   // Open-Meteo'nun anahtarsız API'si burada sabit bir yanıtla taklit edilir (18.6°C → yuvarlanınca 19°C,
   // kod 61 → yağmur simgesi); testler bunu ezmek isterse sonradan eklenen route öncelik kazanır.
-  await context.route('**/*', (route) => {
+  // route.fetch() isteği Node tarafında yapar ve context.setOffline'ı tanımaz (9 Ekim 2026'da denendi): çevrimdışıyken
+  // akışlar eskisi gibi route.continue ile tarayıcıya bırakılır ki «internetsiz açılış» testlerinde gerçekten düşsün.
+  let cevrimdisi = false;
+  const setOffline = context.setOffline.bind(context);
+  context.setOffline = async (durum) => { cevrimdisi = durum; return setOffline(durum); };
+  await context.route('**/*', async (route) => {
     const u = new URL(route.request().url());
     if (u.hostname === 'api.open-meteo.com') return route.fulfill({ json: { current: { temperature_2m: 18.6, weather_code: 61 } } });
-    return u.origin === 'http://127.0.0.1:4401' || u.origin === 'http://localhost:4401' ? route.continue() : route.abort('blockedbyclient');
+    if (u.origin !== 'http://127.0.0.1:4401' && u.origin !== 'http://localhost:4401') return route.abort('blockedbyclient');
+    // Saat page.clock ile kurulur: önizleme sunucusunun gerçek Date başlığı geçmişe kurulmuş test saatini «geri kaymış
+    // saat» sayardı (src/lib/ekran/secim.ts → saatGecerliMi). Akışlarda Date başlığı ayıklanır; o kuralı sınayan
+    // testler başlığı kendileri verir. Yönlendirme açıkken HTTP önbelleği zaten kapalıdır.
+    if (!cevrimdisi && /^\/ekran\/[^/]+\.json$/.test(u.pathname)) {
+      const yanit = await route.fetch();
+      const basliklar = yanit.headers();
+      delete basliklar.date;
+      return route.fulfill({ response: yanit, headers: basliklar });
+    }
+    return route.continue();
   });
   await context.routeWebSocket(/.*/, (socket) => socket.close());
   await context.route(VAKIT_AKISI, (route) => route.fulfill({ json: vakitAkisi() }));
@@ -90,6 +105,44 @@ test('saat pilsiz kutuda 1970e dönmüşse vakit yerine uyarı gösterilir', asy
   // Tarih ve hicrî tarih boş: aradaki "·" ayıracı tek başına asılı kalmaz.
   await expect(page.locator('.takvim').first()).toHaveText('');
   await expect(page.locator('.takvim.fr')).toHaveText('');
+});
+
+/* Pilsiz TV soğuk açılışta yakın geçmişten bir saatle başlayabilir (9 Ekim 2026: 2026-09-28T22:23Z). Alt sınırı geçen
+   bu saat, ekranın daha önce gördüğü sunucu zamanının (localStorage, HTTP Date) 10 dk'dan fazla gerisindeyse güvenilmez. */
+test('saat daha önce görülen sunucu zamanının gerisine düşmüşse vakit yerine uyarı gösterilir', async ({ page }) => {
+  const t = an(ornek, '12:00');
+  await page.addInitScript((ms) => localStorage.setItem('ekran.sonSunucuSaati', String(ms)), t.getTime() + 11 * 60_000);
+  await page.clock.install({ time: t });
+  await page.goto('/ekran/');
+  await expect(page.locator('[data-alan="saat"]')).toContainText('Saat doğrulanıyor');
+  await expect(page.locator('.vakit-yok b')).toHaveText('Saat doğrulanıyor');
+  await expect(page.locator('.vakit')).toHaveCount(0);
+  await expect(page.locator('.takvim').first()).toHaveText('');
+  // Saat düzelince (ağ saati) sayfa yenilenmeden vakitler geri gelir.
+  await page.clock.setSystemTime(new Date(t.getTime() + 11 * 60_000));
+  await page.clock.runFor(2_000);
+  await expect(page.locator('[data-alan="saat"]')).toHaveText(/^12:11:\d\d$/);
+  await expect(page.locator('.vakit')).toHaveCount(6);
+});
+
+test('akış yanıtının Date başlığı işareti yükseltir; bozuk gövdeninki yükseltmez', async ({ page }) => {
+  const t = an(ornek, '12:00');
+  const ileri = new Date(t.getTime() + 60 * 60_000).toUTCString();
+  let bozuk = true;
+  await page.route('**/ekran/akis.json', async (r) => {
+    const yanit = await r.fetch();
+    const basliklar = { ...yanit.headers(), date: ileri };
+    return bozuk ? r.fulfill({ status: 200, headers: basliklar, contentType: 'text/html', body: '<html>portal</html>' }) : r.fulfill({ response: yanit, headers: basliklar });
+  });
+  await page.clock.install({ time: t });
+  await page.goto('/ekran/');
+  await expect(page.locator('[data-alan="saat"]')).toHaveText(/^12:00:\d\d$/);
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  expect(await page.evaluate(() => localStorage.getItem('ekran.sonSunucuSaati'))).toBeNull();
+  bozuk = false;
+  await page.reload();
+  await expect(page.locator('[data-alan="saat"]')).toContainText('Saat doğrulanıyor');
+  expect(Number(await page.evaluate(() => localStorage.getItem('ekran.sonSunucuSaati')))).toBe(Date.parse(ileri));
 });
 
 /* Sayfa verisi (#ekran-veri) bozuk ya da hiç yoksa (ör. önbellekteki eski iskelet ile yeni paket) açılış çökmez:

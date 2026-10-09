@@ -15,7 +15,7 @@ import { dokunmatikKipiOku, dokunmatikKur } from './dokunmatik.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, levhaSigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
-import { akisTazele, AKIS_ARALIGI_MS, birlesikDuyurular, duyuruAnahtari, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
+import { akisTazele, AKIS_ARALIGI_MS, birlesikDuyurular, duyuruAnahtari, sonSunucuSaati, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
 import { kabukKur, type KabukDurumu } from './kabuk.ts';
 import { renderKur } from './render.ts';
 
@@ -120,7 +120,7 @@ function havaCiz(): void {
  *  hiçbir zaman çağırana fırlatılmaz. */
 function dakikalik(simdi: Date): void {
   try {
-    const gecerli = saatGecerliMi(simdi);
+    const gecerli = saatGecerliMi(simdi, sonSunucuSaati());
     yaz('tarih-tr', gecerli ? TARIH_TR.format(simdi) : '');
     yaz('tarih-fr', gecerli ? TARIH_FR.format(simdi) : '');
     const bugun = bugunTarih(simdi);
@@ -151,7 +151,7 @@ let sonDakika = -1;
 function saniyelik(): void {
   try {
     const simdi = new Date();
-    if (saatGecerliMi(simdi)) {
+    if (saatGecerliMi(simdi, sonSunucuSaati())) {
       const s = brukselSaat(simdi);
       yaz('saat-sd', iki(s.sa) + ':' + iki(s.dk));
       yaz('saat-sn', ':' + iki(s.sn));
