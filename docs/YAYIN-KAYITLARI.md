@@ -4,6 +4,41 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 (6) — vaaz revizyonu 5. parti (13 vaaz) + vaaz PDF'lerinde emoji yazı tipi küçültmesi
+
+- Zaman: 9 Ekim 2026 12:43:30 (push) – 12:45:50 (deploy) – 12:47 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının 9 Ekim «bütün yetki ve karar sende … işleri tamamla»
+  talimatı; 3 Ekim'den beri onaylı ve çizili bekleyen 13 vaaz ile Pages 1 GB sınırı riski.
+- Kapsam (5. parti, 13): `edebin-guzellikleri`, `gencligin-onemi-ve-sorumluluklari`,
+  `genclik-ahirette-sorulacak-bir-nimet`, `goz-aydinligi-nesiller-yetistirmek`, `gunahlardan-arinma-berat-gecesi`,
+  `guven-toplumu`, `haset-giybet-ve-iftira`, `helal-haram-bilinci`,
+  `helal-kazanc-baglaminda-isci-isveren-hak-ve-sorumluluklari`, `hicret-hadisesi-ve-alinmasi-gereken-mesajlar`,
+  `hicretin-onemi-ve-gunumuze-mesajlari`, `hz-peygamber-in-dogumu`, `ibadet-kul-olma-bilinci`. Her biri 13 bölüm,
+  14 sayfalık Word/PDF (yer imli, yazar «Kürsü İmam-Hatibi»), 2–3 SVG çizim + paylaşım kartı. Yöntem 3 Ekim parti
+  kayıtlarıyla aynı (`D:/vaaz-revizyon/`). Yayın öncesi ek denetim: PDF ve web metninde «Diyanet», kişi adı ve din
+  görevlisi telefonu 0.
+- Kapsam (PDF boyutu): Word, bölüm etiketlerindeki emojiler için Segoe UI Emoji'yi alt kümesiz (~8 MB) gömüyordu;
+  yenilenen her vaaz PDF'i ~4,7 MB'tı. 41 PDF'te (başka oturumun 9 Ekim affetmek PDF'leri ve FR/EN/NL/DE çevirileri
+  dahil) yazı tipi kullanılan gliflere indirildi: dosya başına 4,71–5,00 → 0,71–1,00 MB, toplam 163,9 MB kazanç. Araç
+  `~/.claude/skills/vaaz-mukemmel/scripts/pdf_emoji_kucult.py` (glif kimlikleri korunur), her dosyada bütün sayfaları
+  önce/sonra çizip piksel piksel karşılaştırdı, ayrıca metin, yer imi, sayfa sayısı ve üst veriyi de denetledi:
+  41/41 aynı; örneklerde PDFium ile ikinci çizim de birebir aynıydı. Vaaz hattı (`D:/vaaz-revizyon/araclar/olc.py`)
+  yeni PDF'leri kendiliğinden küçültüyor. 5. partinin PDF'leri 0,73–0,78 MB.
+- Yeni koruma: `tests/vaaz-pdf-boyut.test.mjs` (`npm run test:vaaz-pdf`, `dogrula` zincirinin sonunda) 2 MB'ı aşan
+  vaaz PDF'inde düşer ve küçültme komutunu gösterir. Önce kırmızı olduğu doğrulandı (42 dosya), sonra yeşil.
+- Commit'ler `fc68bc9` (5. parti, 89 dosya) ve `b0d52fda20b1212b5b2034f89df714e922ea03ed` (küçültme + test; dağıtılan
+  SHA), push `d31cabd..b0d52fd`. Release 0.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37919348821) **success**.
+  Pages paketi 851.927.141 → **692.432.645 bayt** (önceki dağıtım 37898169662 ile karşılaştırma; sınır 1 GB).
+- Kalite: tam `npm run dogrula:codex` **10/10** (derleme 1918 sayfa; web 817 geçti / 113 atlandı; eğitim ekranı 70
+  geçti / 2 atlandı; `check` 0 hata). `dist`'te din görevlisi telefonu 0.
+- Canlı: `python D:/vaaz-revizyon/araclar/canli_kontrol.py` — 13 sayfa 200, her birinde 13 bölüm başlığı, og
+  `kapak-og.webp`, telefon 0; 26 indirme (docx/pdf) SHA-256 yerelle eşit; 50 medya dosyası 200 ve eşit. Ayrıntı
+  `D:/vaaz-revizyon/rapor/canli-parti5.txt`. Küçültülen 41 PDF'in canlı kopyası SHA-256 ile yerelle eşit (toplam 32,1 MB).
+- Sınırlar: toplam 46/146 vaaz yenilendi. Codex yazım kuyruğu bilinçli olarak yeniden başlatılmadı
+  (`D:/vaaz-revizyon/rapor/DUR` duruyor; ~96 vaaz, iade 1, kesik 2, çizim bekleyen 1); yeniden başlatma adımları
+  `D:/vaaz-revizyon/DEVAM.md`. Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 9 Ekim 2026 (5) — egitim.ulucamii.be Faz 2: dinle–tekrarla çalışma sayfaları
 
 - Zaman: 9 Ekim 2026 09:15 (push) – 09:19:12 (Hosting canlı kanal) – 09:19:35 (canlı denetim), Europe/Brussels
