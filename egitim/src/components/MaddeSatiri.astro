@@ -9,6 +9,7 @@ import type { KatalogOgesi } from '@ortak/lib/ezber/katalog';
 import type { MotifAdi } from '@ortak/lib/ezber/motifler';
 import { metin, tarihYaz } from '../i18n/metinler';
 import { ANA_SITE } from '../lib/kimlik';
+import { calismaMetinleri } from '../i18n/calisma';
 import Ikon from './Ikon.astro';
 
 interface Props { oge: KatalogOgesi; motif: MotifAdi; dil: Dil; hedef?: string }
@@ -21,7 +22,7 @@ const sesler = (oge.ses?.tam ? [oge.ses.tam] : [...(oge.ses?.parcalar ?? [])]).m
   <div class="madde-ic">
     <span class="rozet-karo" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><use href={`#mt-${motif}`} /></svg></span>
     <span>
-      <span class="ad">{ad}</span>
+      {sesler.length > 0 ? <a class="ad" href={`/${dil}/calis/${oge.id}/`} aria-label={`${calismaMetinleri(dil).ac}: ${ad}`}>{ad}</a> : <span class="ad">{ad}</span>}
       <span class="ust-bilgi"><span>{m.tur[oge.tur]}</span>{hedef && <span>{m.sinifHedefi(tarihYaz(hedef, dil))}</span>}</span>
     </span>
   </div>

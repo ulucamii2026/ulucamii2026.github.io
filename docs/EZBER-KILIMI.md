@@ -1,7 +1,9 @@
 # Ezber Kilimi
 
-Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a ve 1b tamam (27 Eylül 2026): seviye listesi
-v3 kesin (81 madde); durum makinesi, veri modeli, kurallar ve geçiş betiği emülatörde yeşil; Faz 1c sürüyor**. Ana plan:
+Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a–1f tamam ve 27 Eylül 2026'da yayımlandı**
+(yayın sırası ve kanıtları aşağıda). 2 Ekim 2026: canlı eğitim sitesi 33/33 denetimden geçti;
+**Faz 2'nin dinle–tekrarla bölümü yerelde geliştirildi, henüz yayımlanmadı**.
+Güncel kapsam ve kalan işler: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Ana plan:
 [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md); Faz 1a planı:
 [2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md); Faz 1b planı:
 [2026-09-27-ezber-kilimi-faz-1b-durum.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1b-durum.md); platform:

@@ -2,7 +2,7 @@
 /**
  * Ezber Kilimi girişi (Faz 1f, 27 Eylül 2026): başlık + çini pano, dört basamak, şeritler (ses varsa «Dinle»), örnek
  * kilim ve kaynaklar. Beş dil (tr, fr, en, nl, de). Onaylı taslak: egitim/docs/taslaklar/giris.html; görünüm
- * egitim/DESIGN.md. Madde sayfaları Faz 2'dir; «Fâtiha ile başla» şimdilik listedeki Fâtiha'ya götürür.
+ * egitim/DESIGN.md. «Fâtiha ile başla» Faz 2'nin dinle-tekrarla sayfasına götürür.
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
@@ -33,7 +33,7 @@ const n = KATALOG.ogeler.length;
         <h1 id="baslik">{KILIM_METINLERI.baslik[dil]}</h1>
         <p class="vaat">{m.vaat(n)}</p>
         <div class="eylem">
-          <a class="dugme birincil" href="#m-s-fatiha">{m.baslaDugme} <Ikon ad="ok" /></a>
+          <a class="dugme birincil" href={`/${dil}/calis/s-fatiha/`}>{m.baslaDugme} <Ikon ad="ok" /></a>
           <a class="dugme ikincil" href="#seritler">{m.seritleriGez}</a>
         </div>
       </div>

@@ -70,7 +70,9 @@ test('Hosting: önbellek — HTML her açılışta doğrulanır, özetli dosyala
 
 const dist = (yol) => new URL(`egitim/dist/${yol}`, KOK);
 const derlendi = existsSync(dist('index.html'));
-const SAYFALAR = ['index.html', '404.html', ...DILLER.map((d) => `${d}/index.html`)];
+const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length);
+const dilYollari = DILLER.flatMap((d) => [`${d}/`, ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
+const SAYFALAR = ['index.html', '404.html', ...dilYollari.map((y) => `${y}index.html`)];
 
 test('Derlenmiş sayfalarda satır içi betik, stil ve olay özniteliği yok (CSP)', { skip: !derlendi && 'önce npm run egitim:build' }, () => {
   for (const sayfa of SAYFALAR) {
@@ -92,7 +94,7 @@ test('Site haritası: beş dil sayfası ve hreflang; kök yönlendirme ve 404 yo
   assert.match(readFileSync(dist('sitemap-index.xml'), 'utf8'), /<loc>https:\/\/egitim\.ulucamii\.be\/sitemap-0\.xml<\/loc>/);
   const harita = readFileSync(dist('sitemap-0.xml'), 'utf8');
   const adresler = [...harita.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
-  assert.deepEqual(adresler, DILLER.map((d) => `${SITE}/${d}/`).sort());
+  assert.deepEqual(adresler, dilYollari.map((y) => `${SITE}/${y}`).sort());
   for (const url of harita.split('<url>').slice(1)) {
     const diller = [...url.matchAll(/hreflang="([^"]+)"/g)].map(([, h]) => h);
     assert.deepEqual(diller, ['tr', 'fr-BE', 'en', 'nl-BE', 'de-BE', 'x-default']);

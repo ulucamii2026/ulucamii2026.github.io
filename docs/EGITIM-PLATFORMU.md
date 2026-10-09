@@ -11,6 +11,11 @@ Auth alanı ayrıca onaylanır (Faz 3). İskelet ve açık kalemler:
 Ana plan §3.1 ve §4: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md).
 İlk bölüm: [Ezber Kilimi](EZBER-KILIMI.md).
 
+**2 Ekim 2026 güncellemesi:** canlı sürüm salt okunur denetimde 33/33 geçti (19.07 Europe/Brussels).
+Canlıda beş giriş sayfası, 81 madde ve 27 sesli madde var. Sonraki aşama olan 27 madde × beş dil
+dinle–tekrarla sayfaları yerelde hazırlandı; yayın yapılmadı. Güncel uygulama ve doğrulama:
+[Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Aşağıdaki 27 Eylül tarihli sayfa/test sayıları o yayının kanıtıdır.
+
 ## Kararlar
 
 | Konu | Karar |

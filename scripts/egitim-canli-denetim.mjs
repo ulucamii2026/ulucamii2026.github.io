@@ -6,8 +6,8 @@
  *  Denetler (27 Eylül 2026):
  *  - başlıklar: firebase.json'daki güvenlik başlıkları birebir, Hosting'in eklediği HSTS; önbellek (HTML no-cache,
  *    _astro bir yıl, yazı tipi bir hafta);
- *  - adresler: /tr → /tr/ (301), bilinmeyen adres 404 + beş dilli yol gösterici, robots.txt, site haritası (5 adres),
- *    simgeler, beş paylaşım kartı;
+ *  - adresler: /tr → /tr/ (301), bilinmeyen adres 404 + beş dilli yol gösterici, robots.txt, site haritası,
+ *    simgeler, beş paylaşım kartı; Faz 2'de site haritası sesli maddelerin beş dildeki çalışma sayfalarını da içerir;
  *  - tarayıcı: beş dilde sayfa CSP ihlali ve konsol hatası olmadan açılır, kök adres fr-BE tarayıcıyı /fr/'ye gönderir,
  *    bir çal düğmesi gerçek sesi ulucamii.be'den alır (200/206) ve çalmaya başlar.
  *  Hiçbir şey yazmaz, giriş yapmaz. Çıkış kodu: 0 hepsi geçti · 1 en az biri düştü.
@@ -22,6 +22,8 @@ if (!girdi) {
 }
 const KOK = new URL(girdi).origin;
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
+const katalog = JSON.parse(readFileSync(new URL('../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
+const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length);
 const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf8'));
 const egitim = [firebase.hosting].flat().find((h) => h?.public === 'egitim/dist');
 const GUVENLIK = egitim.headers.find((k) => k.source === '**').headers;
@@ -53,8 +55,10 @@ kontrol('kök / 200, dil listesi', kok.status === 200 && (await kok.text()).incl
 const robots = await getir('/robots.txt');
 kontrol('robots.txt site haritasını gösterir', robots.status === 200 && (await robots.text()).includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
 const harita = await getir('/sitemap-0.xml');
-const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].length;
-kontrol('site haritası 5 adres', harita.status === 200 && locs === 5, `${harita.status}, ${locs} adres`);
+const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
+const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`,
+  ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();
+kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
 for (const [yol, tur] of [['/favicon.ico', /icon/], ['/favicon.svg', /svg/], ['/apple-touch-icon.png', /png/],
   ...DILLER.map((d) => [`/og/ezber-kilimi-${d}.png`, /png/])]) {
   const y = await getir(yol, { method: 'HEAD' });
@@ -97,6 +101,23 @@ try {
   kontrol('çal düğmesi: hata yok, çalıyor', !durum && (caliyor !== null || !mp3), `durum «${durum ?? ''}», çalıyor ${caliyor !== null}, mp3 ${mp3 || 'desteklenmiyor'}`);
   if (caliyor !== null) await dugme.click();
   kontrol('ses sırasında CSP ihlali 0', (await s.evaluate(() => window.__ihlaller)).length === 0);
+  // Faz 2: çalışma sayfası ve aynı maddeyi koruyan dil geçişleri; yeni çalarda gerçek ses.
+  hatalar.length = 0;
+  const calismaYaniti = await s.goto(`${KOK}/tr/calis/s-fatiha/`);
+  if (calismaYaniti?.status() === 200 && await s.locator('[data-calisma]').count()) {
+    const dilYollari = await s.locator('.diller a').evaluateAll((a) => a.map((x) => x.pathname));
+    kontrol('çalışma: dil değişimi maddeyi korur', JSON.stringify(dilYollari) === JSON.stringify(DILLER.map((d) => `/${d}/calis/s-fatiha/`)));
+    const yanitBekle = s.waitForResponse((r) => r.url().startsWith('https://ulucamii.be/media/ses/'), { timeout: 20_000 }).catch(() => null);
+    await s.locator('[data-hiz]').selectOption('0.75');
+    await s.locator('[data-oynat]').click();
+    const sesYanit = await yanitBekle;
+    await s.waitForTimeout(1500);
+    kontrol('çalışma: gerçek ses 200/206 ve hata yok', sesYanit && [200, 206].includes(sesYanit.status()) &&
+      (await s.locator('[data-oynat]').textContent()) === 'Duraklat' && hatalar.length === 0,
+      sesYanit ? `${sesYanit.status()} ${sesYanit.url()}` : 'istek yok');
+    await s.locator('[data-durdur]').click();
+    kontrol('çalışma: CSP ihlali 0', (await s.evaluate(() => window.__ihlaller)).length === 0);
+  } else kontrol('çalışma sayfası HTTP 200', false, calismaYaniti?.status() ?? 'yanıt yok');
   await baglam.close();
   // Kök yönlendirme: kayıtlı dil yok, tarayıcı fr-BE → /fr/.
   const fr = await tarayici.newContext({ locale: 'fr-BE' });

@@ -1,0 +1,65 @@
+---
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { KATALOG, sinifHedefleri, type KatalogOgesi } from '@ortak/lib/ezber/katalog';
+import { SERIT_MOTIFI } from '@ortak/lib/ezber/kilim';
+import plan from '@ortak/data/yillik-plan-2026-2027.json';
+import Taban from '../../../layouts/Taban.astro';
+import { ANA_SITE } from '../../../lib/kimlik';
+import { metin, tarihYaz } from '../../../i18n/metinler';
+import { calismaMetinleri } from '../../../i18n/calisma';
+import '../../../styles/calisma.css';
+
+export function getStaticPaths() {
+  return dilListesi.flatMap((dil) => KATALOG.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length)
+    .map((oge) => ({ params: { dil, id: oge.id }, props: { oge } })));
+}
+interface Props { oge: KatalogOgesi }
+const { oge } = Astro.props;
+const dil = Astro.params.dil as Dil;
+const m = metin(dil);
+const c = calismaMetinleri(dil);
+const parcalar = oge.ses?.parcalar?.length ? oge.ses.parcalar : [oge.ses!.tam!];
+const hedef = sinifHedefleri(plan)[oge.id];
+const seviye = KATALOG.seviyeler.find((s) => s.kimlik === oge.seviye)!;
+---
+<Taban dil={dil} baslik={`${oge.ad[dil]} · ${c.baslik}`} aciklama={c.giris} yol={`calis/${oge.id}`}>
+  <section class="calisma icerik" aria-labelledby="calisma-baslik">
+    <a class="calisma-geri" href={`/${dil}/#m-${oge.id}`}>{c.geri}</a>
+    <div class="calisma-bas">
+      <span class="calisma-motif" aria-hidden="true"><svg viewBox="0 0 120 120"><use href={`#mt-${SERIT_MOTIFI[oge.seviye]}`} /></svg></span>
+      <div><h1 id="calisma-baslik">{oge.ad[dil]}</h1><p>{seviye.ad[dil]}{hedef && ` · ${m.sinifHedefi(tarihYaz(hedef, dil))}`}</p></div>
+    </div>
+    <div class="calisma-duzen">
+      <div class="calisma-calar" data-calisma data-baslat={c.baslat} data-duraklat={c.duraklat} data-surdur={c.surdur}
+        data-hazir={c.hazir} data-bitti={c.bitti} data-bekliyor={c.bekliyor} data-hata={c.hata} data-parca={c.parca}>
+        <h2>{c.baslik}</h2><p>{c.giris}</p>
+        <fieldset data-ayarlar disabled>
+          <legend class="gorunmez">{c.baslik}</legend>
+          <label class="calisma-bolum">{c.bolum}<select data-bolum>
+            {parcalar.length > 1 && <option value="all">{c.tumu}</option>}
+            {parcalar.map((s, i) => <option value={String(i)} data-adres={`${ANA_SITE}${s}`}>{c.parca} {i + 1}</option>)}
+          </select></label>
+          <label>{c.tekrar}<select data-tekrar><option value="1">{c.bir}</option><option value="3" selected>{c.uc}</option></select></label>
+          <label>{c.hiz}<select data-hiz><option value="1">{c.normal}</option><option value="0.75">{c.yavas}</option></select></label>
+          <label class="calisma-bekle"><input type="checkbox" data-bekle checked />{c.bekle}</label>
+        </fieldset>
+        <div class="calisma-dugmeler"><button class="dugme birincil" type="button" data-oynat disabled>{c.baslat}</button>
+          <button class="dugme ikincil" type="button" data-durdur disabled>{c.durdur}</button></div>
+        <p class="calisma-durum" role="status" aria-live="polite" aria-atomic="true" data-durum>{c.hazir}</p>
+        <noscript><p>{c.js}</p><a href={`${ANA_SITE}${parcalar[0]}`}>{m.dinleEtiketi(oge.ad[dil])}</a></noscript>
+      </div>
+      <aside class="calisma-kaynak" aria-labelledby="kaynak-baslik">
+        <h2 id="kaynak-baslik">{c.kaynak}</h2><p>{c.kaynakAciklama}</p>
+        {parcalar.length === 1 && <p>{c.parcasiz}</p>}
+        {oge.id === 'd-ezan' && <p>{c.ezan}</p>}
+        <a href={oge.tur === 'sure' || oge.id === 'd-euzu-besmele' ? 'https://kuran.diyanet.gov.tr/' : 'https://namaz.diyanet.gov.tr/'}>{m.diyanetAdi}</a>
+        <p class="calisma-ilke">{c.ilerleme}</p>
+      </aside>
+    </div>
+  </section>
+</Taban>
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/calisma';
+</script>

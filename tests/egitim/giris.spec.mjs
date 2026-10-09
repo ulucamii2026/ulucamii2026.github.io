@@ -141,13 +141,13 @@ for (const dil of DILLER) {
     await expect(page).toHaveURL(new RegExp(`#${hedef}$`));
     await expect(page.locator(`li#${hedef}`)).toBeInViewport();
     expect(await page.locator(`li#${hedef}`).evaluate((li) => li.closest('details').open)).toBe(true);
-    // «Fâtiha ile başla» Fâtiha maddesine götürür.
-    await page.locator('.giris a.dugme.birincil').click();
-    await expect(page).toHaveURL(/#m-s-fatiha$/);
-    await expect(page.locator('li#m-s-fatiha')).toBeInViewport();
     // Kuşak, panodan çıkınca özete döner.
     await page.locator('main h1').focus();
     await expect(page.locator('[data-kusak] .kusak-ek')).toContainText('·');
+    // «Fâtiha ile başla» dinleme çalışmasını açar.
+    await page.locator('.giris a.dugme.birincil').click();
+    await expect(page).toHaveURL(new RegExp(`/${dil}/calis/s-fatiha/$`));
+    await expect(page.locator('[data-calisma]')).toBeVisible();
   });
 
   test(`${dil}: açık/koyu temada erişilebilir, taşma yok`, async ({ page }) => {

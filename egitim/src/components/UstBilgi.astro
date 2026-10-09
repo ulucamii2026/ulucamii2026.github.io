@@ -8,8 +8,8 @@ import { ANA_SITE, kursTamAdi } from '../lib/kimlik';
 import Bordur from './Bordur.astro';
 import Ikon from './Ikon.astro';
 
-interface Props { dil: Dil; sayfa?: 'giris' | 'diger' }
-const { dil, sayfa = 'giris' } = Astro.props;
+interface Props { dil: Dil; sayfa?: 'giris' | 'diger'; yol?: string }
+const { dil, sayfa = 'giris', yol = '' } = Astro.props;
 const m = metin(dil);
 ---
 <header class="ust">
@@ -20,7 +20,7 @@ const m = metin(dil);
       <a href={`${ANA_SITE}/${dil}/`}>ulucamii.be <Ikon ad="dis" /></a>
       <div class="diller" role="group" aria-label={m.dilGrubu}>
         {dilListesi.map((d) => (
-          <a href={`/${d}/`} lang={d} hreflang={d} aria-current={d === dil ? 'true' : undefined}>{d.toUpperCase()}</a>
+          <a href={`/${d}/${yol ? `${yol}/` : ''}`} lang={d} hreflang={d} aria-current={d === dil ? 'true' : undefined}>{d.toUpperCase()}</a>
         ))}
       </div>
     </nav>

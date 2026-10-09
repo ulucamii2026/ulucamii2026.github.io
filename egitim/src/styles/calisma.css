@@ -1,0 +1,33 @@
+/* Dinleme çalışması: mevcut Çini Panosu yüzeyleri, yerel yazı tipi ve derzler. */
+.calisma { padding-block: 2rem 4rem; }
+.calisma-geri { display: inline-block; padding-block: .6rem; }
+.calisma-bas { display: flex; align-items: center; gap: 1.4rem; margin-block: 1.5rem 2.5rem; }
+.calisma-bas h1 { font-size: clamp(2.2rem, 1.6rem + 3.6vw, 4.25rem); font-weight: 800; letter-spacing: -.025em; }
+.calisma-bas p { margin-top: .8rem; color: var(--kontur-2); }
+.calisma-motif { flex: 0 0 6rem; padding: .5rem; border: 1px solid var(--derz-koyu); background: var(--karo); color: var(--yesil-bag); }
+.calisma-motif svg { fill: var(--motif); stroke: var(--kontur); stroke-width: 1; stroke-linejoin: round; }
+.calisma-duzen { display: grid; grid-template-columns: minmax(0, 2fr) minmax(15rem, 1fr); border-top: 1px solid var(--derz-koyu); }
+.calisma-calar { padding: 2rem; background: var(--karo); }
+.calisma h2 { font-size: 1.65rem; margin-bottom: 1rem; }
+.calisma-calar > p { max-width: 40em; }
+.calisma fieldset { border: 0; padding: 0; margin: 1.8rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; min-width: 0; }
+.calisma label { display: flex; flex-direction: column; gap: .45rem; font-weight: 650; min-width: 0; }
+.calisma select { width: 100%; min-height: 3rem; padding: .5rem; font: inherit; color: var(--kontur); background: var(--astar); border: 1px solid var(--derz-koyu); border-radius: var(--r); }
+.calisma-bolum, .calisma-bekle { grid-column: 1 / -1; }
+.calisma label.calisma-bekle { flex-direction: row; align-items: center; gap: .75rem; font-weight: 400; min-height: 2.75rem; }
+.calisma input[type="checkbox"] { flex-shrink: 0; width: 1.3rem; height: 1.3rem; accent-color: var(--yesil); }
+.calisma-dugmeler { display: flex; flex-wrap: wrap; gap: .75rem; }
+.calisma button:disabled { opacity: .55; cursor: default; }
+.calisma-durum { margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--derz); min-height: 4rem; }
+.calisma-kaynak { border-left: 1px solid var(--derz-koyu); padding: 2rem; }
+.calisma-kaynak p { margin-bottom: 1rem; }
+.calisma-kaynak .calisma-ilke { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--derz-koyu); color: var(--kontur-2); }
+.calisma-kaynak a { overflow-wrap: anywhere; }
+@media (max-width: 52rem) {
+  .calisma-duzen { grid-template-columns: 1fr; }
+  .calisma-kaynak { border-left: 0; border-top: 1px solid var(--derz-koyu); }
+  .calisma-calar, .calisma-kaynak { padding: 1.4rem 1rem; }
+  .calisma-bas { gap: .8rem; align-items: flex-start; }
+  .calisma-motif { flex-basis: 3.5rem; }
+}
+@media (max-width: 26rem) { .calisma fieldset { grid-template-columns: 1fr; } }

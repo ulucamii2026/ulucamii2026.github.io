@@ -62,7 +62,7 @@ const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
   <body>
     <MotifSembolleri />
     <a class="gorunmez" href="#ana">{m.icerigeGec}</a>
-    <UstBilgi dil={dil} sayfa={yol === '' ? 'giris' : 'diger'} />
+    <UstBilgi dil={dil} sayfa={yol === '' ? 'giris' : 'diger'} yol={yol} />
     <main id="ana">
       <slot />
     </main>
