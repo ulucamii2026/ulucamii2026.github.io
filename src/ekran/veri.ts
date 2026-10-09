@@ -5,7 +5,7 @@
 import type { EkranVakitleri } from '../lib/ekran/vakit-kapisi.ts';
 import type { EkranDuyuru } from '../lib/ekran/akis.ts';
 import type { EkranIcerik } from '../lib/ekran/icerik.ts';
-import type { SlaytAyari } from '../lib/ekran/secim.ts';
+import { sunucuSaatiCoz, type SlaytAyari } from '../lib/ekran/secim.ts';
 
 export interface AkisGovdesi {
   derleme: string;
@@ -31,6 +31,44 @@ export function icerikGecerli(x: unknown): x is IcerikGovdesi {
   return nesne(x) && Array.isArray(x.ayetler) && Array.isArray(x.hadisler) && diziYaDaYok(x.dualar) && diziYaDaYok(x.esmalar);
 }
 
+/* Sunucu saati yüksek su işareti: ekranın gördüğü en yeni sunucu zamanı (HTTP Date). Cihaz saati bundan 10 dakikadan
+   fazla geride kalırsa sayfa saate güvenmez (src/lib/ekran/secim.ts → saatGecerliMi). localStorage'da saklanır ki
+   elektrik kesilip internet gelmeden açılan kutu da son bilinen zamanı bilsin. Depo yoksa ya da fırlatırsa bellekte
+   çalışmaya devam eder. */
+const DEPO_ANAHTARI = 'ekran.sonSunucuSaati';
+/** Flaş yıpranması: depoya yalnız kayıtlı değer en az bu kadar büyüyünce yazılır. */
+const DEPO_YAZIM_ESIGI_MS = 60_000;
+
+function depodanOku(): number {
+  try {
+    const ham = localStorage.getItem(DEPO_ANAHTARI);
+    const ms = ham === null ? 0 : Number(ham);
+    return isFinite(ms) && ms > 0 ? ms : 0;
+  } catch {
+    return 0;
+  }
+}
+
+let sonSunucuMs = depodanOku();
+let depodakiMs = sonSunucuMs;
+
+export function sonSunucuSaati(): number {
+  return sonSunucuMs;
+}
+
+/** İşareti yalnız yükseltir, asla düşürmez; null, NaN ve Infinity yok sayılır. */
+export function sunucuSaatiniKaydet(ms: number | null): void {
+  if (ms === null || typeof ms !== 'number' || !isFinite(ms) || ms <= sonSunucuMs) return;
+  sonSunucuMs = ms;
+  if (ms - depodakiMs < DEPO_YAZIM_ESIGI_MS) return;
+  try {
+    localStorage.setItem(DEPO_ANAHTARI, String(ms));
+    depodakiMs = ms;
+  } catch {
+    /* depo yok, dolu ya da kapalı: bellekteki işaret yeter */
+  }
+}
+
 /* Zaman aşımı AbortController ile kurulur (Chrome 66+); AbortSignal.timeout Chrome 103 ister ve
    eski WebView'de yoktur. Tek zamanlayıcı hem fetch()'i hem yanit.json()'ı kapsar (abort, yanıt
    gövdesinin okunmasını da reddeder) ve finally'de temizlenir — sızıntı bırakmaz. */
@@ -41,7 +79,11 @@ async function getir<T>(yol: string, gecerli: (x: unknown) => x is T, zamanAsimi
     const yanit = await fetch(yol, { cache: 'no-cache', signal: denetleyici.signal });
     if (!yanit.ok) return null;
     const govde: unknown = await yanit.json();
-    return gecerli(govde) ? govde : null;
+    if (!gecerli(govde)) return null;
+    // Yalnız doğrulanmış gövdeden sonra: captive portal ya da ara katman sayfası işareti oynatamaz. SW'nin sunduğu
+    // bayat önbellek yanıtı eski Date taşır; işaret hiç düşmediği için zararsızdır.
+    sunucuSaatiniKaydet(sunucuSaatiCoz(yanit.headers.get('Date')));
+    return govde;
   } catch {
     return null;
   } finally {

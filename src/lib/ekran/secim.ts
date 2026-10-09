@@ -43,9 +43,27 @@ export function temaSec(gun: Gun | undefined, simdi: Date): 'acik' | 'koyu' {
   return t >= brukselTarih(gun.tarih, gun.gunes).getTime() && t < brukselTarih(gun.tarih, gun.aksam).getTime() ? 'acik' : 'koyu';
 }
 
-/** Kutularda saat pili yok: elektrik kesilip internet de yoksa saat 1970'e dönebilir. Bu andan eskiyse saate güvenilmez. */
+/** Kutularda saat pili yok: elektrik kesilip internet de yoksa saat 1970'e (ya da yayından önceki bir ana) dönebilir.
+ *  Saate iki kuralla güvenilir:
+ *  1) `EN_ERKEN_GECERLI`'den eskiyse güvenilmez (pilsiz kutu, 1970/2025 gibi bariz bayat saat).
+ *  2) Ekranın daha önce GÖRDÜĞÜ en yeni sunucu zamanından (`sonSunucuMs`, HTTP Date başlığı) `SAAT_GERI_TOLERANS_MS`'den
+ *     fazla geride kalırsa güvenilmez: saat geriye gitmiş demektir. 9 Ekim 2026'da pilsiz bir TV 2026-09-28T22:23Z
+ *     saatiyle açıldı; 1. kuralı geçtiği için ağ saati düzeltene dek yanlış saat ve tarihi geçerliymiş gibi gösterdi.
+ *  `sonSunucuMs` 0 ya da verilmemişse yalnız 1. kural işler. */
 export const EN_ERKEN_GECERLI = Date.parse('2026-09-01T00:00:00Z');
-export const saatGecerliMi = (simdi: Date): boolean => simdi.getTime() >= EN_ERKEN_GECERLI;
+export const SAAT_GERI_TOLERANS_MS = 10 * 60_000;
+export const saatGecerliMi = (simdi: Date, sonSunucuMs = 0): boolean => {
+  const t = simdi.getTime();
+  return t >= EN_ERKEN_GECERLI && (sonSunucuMs <= 0 || t >= sonSunucuMs - SAAT_GERI_TOLERANS_MS);
+};
+
+/** HTTP `Date` başlığını (RFC 7231 IMF-fixdate, ör. `Fri, 09 Oct 2026 16:49:41 GMT`) milisaniyeye çevirir.
+ *  Boş, bozuk ya da `EN_ERKEN_GECERLI`'den eski başlık null döner: bayat bir sunucu/ara katman işareti yükseltemez. */
+export function sunucuSaatiCoz(baslik: string | null): number | null {
+  if (!baslik) return null;
+  const ms = Date.parse(baslik);
+  return isFinite(ms) && ms >= EN_ERKEN_GECERLI ? ms : null;
+}
 
 const SAAT_PARCALARI = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
 
