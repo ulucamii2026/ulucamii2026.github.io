@@ -2,7 +2,7 @@
 
 Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a–1f tamam ve 27 Eylül 2026'da yayımlandı**
 (yayın sırası ve kanıtları aşağıda). 2 Ekim 2026: canlı eğitim sitesi 33/33 denetimden geçti;
-**Faz 2'nin dinle–tekrarla bölümü yerelde geliştirildi, henüz yayımlanmadı**.
+**Faz 2'nin dinle–tekrarla bölümü 9 Ekim 2026'da yayımlandı** (135 çalışma sayfası; duyuru yok).
 Güncel kapsam ve kalan işler: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Ana plan:
 [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md); Faz 1a planı:
 [2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md); Faz 1b planı:

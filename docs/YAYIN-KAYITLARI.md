@@ -4,6 +4,32 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 9 Ekim 2026 (5) — egitim.ulucamii.be Faz 2: dinle–tekrarla çalışma sayfaları
+
+- Zaman: 9 Ekim 2026 09:15 (push) – 09:19:12 (Hosting canlı kanal) – 09:19:35 (canlı denetim), Europe/Brussels
+  (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının 9 Ekim «Eğitim Faz 2 yayını» seçimi.
+- Kapsam: 2 Ekim'de başka bir oturumda yerelde geliştirilen Faz 2 dinleme çalışması (ana ağaçta commit'lenmemiş
+  duruyordu) temiz çalışma ağacına birebir taşındı (16 dosya, `cmp` ile aynı): 27 sesli madde × 5 dil = 135 çalışma
+  sayfası (`egitim/src/pages/[dil]/calis/[id].astro`), çalar `egitim/src/scripts/calisma.ts` (1/3 tekrar, 0,75×/1× hız,
+  bölüm seçimi, tekrar arası, duraklat/devam/başa dön), `i18n/calisma.ts`, `styles/calisma.css`, giriş düğmesi, dil
+  seçici, kanonik/hreflang, site haritası; testler ve `scripts/egitim-canli-denetim.mjs`; belgeler
+  `docs/EGITIM-FAZ2-DINLEME.md`, `docs/EGITIM-PLATFORMU.md`, `docs/EZBER-KILIMI.md`. Yeni dinî metin veya ses yok;
+  sesler `ulucamii.be/media/ses/` altındaki doğrulanmış Diyanet kayıtları.
+- İçerik commit'i `1fecd5b` (16 dosya, +558/−19). Ana site Pages dağıtımı
+  [37898169662](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/37898169662) **success** (ana sitede
+  yalnız belge/test değişti). Eğitim: `npm run egitim:yayinla` (derleme 142 HTML, `test:egitim` 15/15 birim + 70 ekran
+  geçti / 2 bilinçli atlama) → Firebase Hosting `ulucamii-egitim` (proje ulucamii-portal, dernek kimliği
+  ulucamii2026@gmail.com), 167 dosya, canlı kanal 09:19:12.
+- Kalite: güncel tabanda tam `npm run dogrula:codex` **10/10** (web 817 geçti / 113 atlandı; eğitim ekranı 70 geçti /
+  2 atlandı; `check` 0 hata; `git diff --check` temiz).
+- Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **36/36** (2026-10-09T07:19:35Z): beş dil CSP ihlali 0 /
+  konsol hatası 0, site haritası 140 adres (135 çalışma sayfası), ikonlar ve OG kartları, giriş çaları ve çalışma çaları
+  gerçek ses 206, dil değişimi maddeyi koruyor, `fr-BE` kök yönlendirmesi. Elle: `/tr/calis/s-fatiha/` (390 px açık)
+  ve `/fr/calis/s-fatiha/` (1280 px koyu) HTTP 200, taşma yok, konsol hatası 0.
+- Sınırlar: duyuru yapılmadı (karar: Faz 2'nin metin/okunuş/oyun içerikleri tamamlanınca). 54 maddenin sesi henüz yok;
+  hesapsız ilerleme ve oyunlar sonraki işlerdir. Gerçek telefonda uzun dinleme denenmedi. Bu kayıt için belge
+  commit'i içerik yayını değildir.
+
 ## 9 Ekim 2026 (4) — güvenlik güncellemeleri + vaaz testinin yeni çeviri düzenine uyarlanması
 
 - Zaman: 9 Ekim 2026 08:54 (push) – 08:54:39–08:56:47 (deploy) – 08:58 (canlı doğrulama), Europe/Brussels (CEST).

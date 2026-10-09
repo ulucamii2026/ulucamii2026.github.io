@@ -13,7 +13,8 @@ Ana plan §3.1 ve §4: [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2
 
 **2 Ekim 2026 güncellemesi:** canlı sürüm salt okunur denetimde 33/33 geçti (19.07 Europe/Brussels).
 Canlıda beş giriş sayfası, 81 madde ve 27 sesli madde var. Sonraki aşama olan 27 madde × beş dil
-dinle–tekrarla sayfaları yerelde hazırlandı; yayın yapılmadı. Güncel uygulama ve doğrulama:
+dinle–tekrarla sayfaları yerelde hazırlandı ve **9 Ekim 2026 09:19'da yayımlandı** (canlı denetim 36/36, site haritası
+140 adres; kayıt `docs/YAYIN-KAYITLARI.md` «9 Ekim 2026 (5)»; duyuru yok). Güncel uygulama ve doğrulama:
 [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Aşağıdaki 27 Eylül tarihli sayfa/test sayıları o yayının kanıtıdır.
 
 ## Kararlar
