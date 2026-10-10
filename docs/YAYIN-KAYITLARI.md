@@ -4,6 +4,52 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 10 Ekim 2026 — kayıt defteri (v2) geri bağlandı + Apps Script v43 + hoca ekranı içe aktarma
+
+- Zaman: onarım 08:18:29–08:21:33, v43 dağıtımı 08:57:32–08:58:55, bağımsız canlı doğrulama 09:01; push 11:02,
+  Pages 11:02:54–11:05:06, canlı doğrulama 11:07 — Europe/Brussels (CEST). **GAS v43 ve site yayımlandı, ikisi de
+  canlı doğrulandı.** Dayanak: kullanıcının «Kayıt defteri arızasının düzeltilmesine onay veriyorum» onayı ve ardından
+  «bütün karar ve yetki sende, ne yapman gerekiyorsa yap» talimatı (10 Ekim).
+- Bulgu: `?islem=sayim` kayitV2 için 0 döndürüyordu; 3 Ekim'de 23 süzülmüş satır vardı. Teşhis (geçici editör
+  fonksiyonu, kuru): `TABLO2_ID`, 4 Ekim 2026 13:35:32Z'de yaratılmış boş bir «Kur'an Kursu Kayıt Defteri 2026-2027
+  (v2)» kopyasını gösteriyordu. v42 `kayitV2SayfaGetir` tek bir geçici `openById` hatasını yutup yeni tablo yaratmıştı.
+  Asıl defter silinmemişti: aynı klasörde, çöpte değil, 25 satır, son değişiklik 20 Eylül (UC-2026-0023). Boş kopyaya
+  hiçbir satır yazılmamıştı. Bu sürede yeni kayıt gelmediği için numara çakışması ya da veri karışması olmadı.
+- Onarım (geçici editör fonksiyonu, kilit altında, parmak izi korumalı; araç
+  `~/.claude/skills/ulucamii-site/scripts/kayit-defteri-onar/`): `TABLO2_ID` asıl deftere geri bağlandı. Boş kopya
+  «silindi-bos-kopya-2026-10-10 » önekiyle tek dosya olarak çöpe atıldı (30 gün geri alınabilir). Geçici kod kaldırıldı;
+  editör kaynağının işlem öncesi yedekle birebir aynı olduğu yeniden okunarak doğrulandı. Web App dağıtımı onarımda
+  değişmedi.
+- v43 (kalıcı düzeltme): `kimlikliTabloAc` kimliği kayıtlı defteri üç kez dener, sonra `defter-acilamadi` hatası verir.
+  Dört alıcıda geçerli: `kayitV2SayfaGetir`, `ihtidaV2SayfaGetir`, `seviyeSayfaGetir`, `envanterTabloGetir`. Yeni tablo
+  yalnız kimlik hiç kayıtlı değilken yaratılır.
+  Değişen yollar: `scripts/apps-script/ulucamii-Kod-v43.gs` (`git mv` v42→v43), `envanter-isleri.gs`,
+  `seviye-testi-isleri.gs`, `README.md`, `scripts/ihtida-gas-derle.mjs`, `scripts/pdf-onizleme.mjs`, `package.json`
+  (`test:kayit`), 12 test dosyasında v42→v43 ve yeni `tests/defter-acilis.test.mjs` (11 sınama).
+  İçerik commit'i `2c4b06a` (push `401cf97..2c4b06a`; v43 ile hoca ekranı düzeltmesi aynı commit'te). Release 0.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/38040003960) **success**.
+- Hoca ekranı «Kayıt defterinden yenile» (`src/scripts/hoca-ekrani.ts`, yeni `src/lib/defter-eposta.ts`): veli e-postası
+  `defterVeliEpostasi` ile eşlenir. `epostaDuzelt`'teki `@`'siz işaret ve boş hücre veli/aile bağı kurmaz; önceden işaret
+  veli diye yazılır, boş hücre `""` veli eklerdi. Adres düzeni Apps Script eşitlemesiyle aynı. Test
+  `tests/defter-eposta.test.mjs` (7). Canlı paket `/_astro/index.astro_astro_type_script_index_0_lang.Ct8d5uac.js`:
+  yardımcı ve koşullu `veliler` yazımı mevcut, içe aktarma döngüsü yardımcıyı çağırıyor. Düğme canlı veriye karşı
+  çalıştırılmadı (Firestore'a yazar; gerek yok).
+- Paket `.codex/cikti/gas/ulucamii-v43.gs`: metin 8.702.207 bayt, SHA-256 (metin) `0f80f17ae2863a59…`. Canlı v42 editör
+  kaynağıyla farkı yalnız bu düzeltmenin 27 satırı. Dağıtım `GAS_HEADLESS=1 python D:/tmp/gas/dagit_v43.py`: önce `--kuru`;
+  mevcut dağıtımda «Nouvelle version»; yeniden açılan kod paketle birebir aynı; sağlık ilk denemede `surum:43`.
+- Kalite: `npm run dogrula:codex` iki kez çıkış 0 — v43 sonrası ve hoca ekranı sonrası, ikincisi 10/10 (web 817 geçti /
+  113 atlandı; eğitim 70 geçti / 2 atlandı); `test:kayit` 34,
+  `test:ihtida` 35, `test:envanter` 18, `test:veli-eposta` 58, `test:kimlik` 31 geçti; `test:duzelt`, `test:seviye`,
+  `test:gas-ceviri` 0 hata. Geçici fonksiyonun yerel sahte sınaması (`gecici-sina.mjs`) geçti.
+- Canlı (09:01): sağlık `surum:43` ve bütün bayraklar doğru (envanter `acik:false`); `sayim` kayitV2 25 / kayitV1 7 /
+  ihtidaV2 3; `liste` kayıt 25, ihtida 3, seviye 4; eşitleme 06:30Z ve 07:00Z koşuları 0 yazma. Geri dönen adres
+  yeniden eklenmedi (ilgili öğrencinin veli listesi boş, aile belgesi yok; bkz. `docs/VELI-MAIL-LISTESI-OTOMASYONU.md`).
+  Kurs kopyası `kayitlar_cek.py` ile tazelendi: 21 öğrenci, 14 aile, 23 kayıt satırı.
+- Sınırlar: 4–10 Ekim arasında panelden yapılan bir «durum» değişikliği varsa boş kopyaya bağlı olduğu için bulunamamış
+  olabilir; böyle bir değişiklik kaydı yok. v43'te panel bakım uçları (`eski-tasi`, arşiv yenileme) açılamayan defterde
+  JSON yerine GAS hata sayfası döndürür; bu bilinçli olarak güvenli taraf. Kişisel veri, anahtar ve Drive kimliği bu
+  kayda yazılmadı.
+
 ## 9 Ekim 2026 (7) — duyuru: 9 Ekim cuma vaazı «Affetmek ve Öfkeyi Kontrol Etmek»
 
 - Zaman: 9 Ekim 2026 13:26:02 (push) – 13:28:19 (deploy) – 13:29 (canlı doğrulama), Europe/Brussels (CEST).
