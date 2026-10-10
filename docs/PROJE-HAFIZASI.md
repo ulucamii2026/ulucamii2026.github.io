@@ -65,6 +65,14 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
   dağıtımda canlı kaynağı koru; yerel derlemeyi doğrulamadan üstüne yazma.
 - Apps Script'in protokol sürümü, dağıtım sürümü ve GitHub Pages yayını ayrıdır.
   Yerel değişiklik veya geçen test, canlıya yayınlandığını göstermez.
+- Kimliği Script Properties'te kayıtlı bir defter açılamazsa yeni tablo yaratılmaz,
+  istek hata verir (v43, `kimlikliTabloAc`). 4 Ekim 2026'da tek bir geçici
+  `openById` hatası boş bir kayıt defteri kopyası yarattırmış, defter altı gün boş
+  görünmüştü. «Sayım 0» ya da boş liste görülürse önce `TABLO2_ID`'nin gösterdiği
+  dosyaya bakılır (kayıt: [yayın kaydı 10 Ekim 2026](YAYIN-KAYITLARI.md)).
+- Kayıt defterindeki geri dönen veli adresi `epostaDuzelt` içinde `@`'siz işaretle
+  tutulur; eşitleme, `portal-yonetim.py` ve hoca ekranı bunu «adres yok» sayar
+  ([ayrıntı](VELI-MAIL-LISTESI-OTOMASYONU.md)).
 
 ## Tarihli kanıtın yeri
 

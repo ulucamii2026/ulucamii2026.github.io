@@ -101,7 +101,7 @@ function seviyeSayfaGetir() {
   var p = PropertiesService.getScriptProperties();
   var id = p.getProperty("SEVIYE_TABLO_ID");
   var ss = null;
-  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (e) { ss = null; } }
+  if (id) ss = kimlikliTabloAc(id, "SEVIYE_TABLO_ID"); // v43: açılamazsa hata — yeni tablo YARATILMAZ
   if (!ss) {
     ss = SpreadsheetApp.create(AYAR_SEVIYE.tabloAdi);
     var dosya = DriveApp.getFileById(ss.getId());

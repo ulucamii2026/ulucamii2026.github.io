@@ -22,7 +22,7 @@ const paket = buildSync({
 }).outputFiles[0].text;
 
 const kaynak = [
-  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v42.gs'),
+  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v43.gs'),
   gs('veli-mail-listesi.gs'), gs('envanter-isleri.gs'), paket,
 ].join('\n;\n');
 
@@ -213,7 +213,7 @@ test('Sağlık: ENVANTER_AYAR yoksa, bozuksa, acik 0 ise, veri sorumlusu boşsa 
   const acik = durum(JSON.stringify({ acik: 1, veriSorumlusu: ' Veri Sorumlusu ', kapanis: '2099-12-31', silme: '2100-01-30' }));
   assert.deepEqual(acik, { acik: true, veriSorumlusu: 'Veri Sorumlusu', kapanis: '2099-12-31' }, 'silme tarihi dışarı verilmez');
   const saglik = ortam().get({});
-  assert.equal(saglik.surum, 42);
+  assert.equal(saglik.surum, 43);
 });
 
 test('Kapalıyken POST "kapali"; tablo yaratılmaz, satır yazılmaz', () => {
@@ -477,7 +477,7 @@ test('Paket ya da modül yoksa: sağlık kapalı, POST "kapali" (eski v42 önces
     PropertiesService: { getScriptProperties: () => ({ getProperty: k => (k === 'ENVANTER_AYAR' ? ACIK : null), setProperty() {} }) },
     Utilities: { formatDate: sahteFormatDate, newBlob: s => ({ getBytes: () => Buffer.from(String(s), 'utf8') }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v42.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v43.gs')].join('\n;\n'), ctx);
   ctx.ceviriMotoru = () => 'yok';
   const saglik = JSON.parse(ctx.doGet({}).getContent());
   assert.deepEqual(saglik.envanter, { acik: false, veriSorumlusu: null, kapanis: null });

@@ -6,6 +6,7 @@ import { ogrenmeDeposu } from '../lib/ogrenme-bulut';
 import type { Tekrar } from '../lib/ogrenme-ilerleme';
 import { hocaBulteni } from './hoca-bulten';
 import { portalVeliBagi } from '../lib/portal-idare';
+import { defterVeliEpostasi } from '../lib/defter-eposta';
 import { mazeretKuraliniUygula, MAZERET_KURALI, defterEksikleri, katalogGunleri, type YoklamaGunu, type DefterEksikleri } from '../lib/ders-defteri';
 import { ezberDurumuOku, katalogSirasi, kontrolSirasi, type OgeDurumu } from '../lib/ezber/durum';
 import { ezberBul } from '../lib/ezber/katalog';
@@ -822,7 +823,7 @@ export async function hocaEkrani(): Promise<void> {
     const ayar = await fs.getDoc(fs.doc(db, 'ayarlar', 'portal'));
     const anahtar = (ayar.data() as { gasAnahtari?: string } | undefined)?.gasAnahtari;
     const atlanan = new Set<string>(((ayar.data() as { atlanan?: string[] } | undefined)?.atlanan) || []); // ayarlar/portal.atlanan: mükerrer/deneme kayıtlar (portal-yonetim.py ile aynı)
-    const epostaDuzelt = ((ayar.data() as { epostaDuzelt?: Record<string, string> } | undefined)?.epostaDuzelt) || {}; // defterde yanlış yazılmış veli e-postaları → doğrusu
+    const epostaDuzelt = ((ayar.data() as { epostaDuzelt?: Record<string, string> } | undefined)?.epostaDuzelt) || {}; // defterde yanlış yazılmış veli e-postaları → doğrusu; '@'siz değer (ör. «gecersiz-geri-donuyor») = adres geri dönüyor, bağ kurulmaz (10 Eki 2026)
     if (!anahtar) { ustMesaj('ayarlar/portal.gasAnahtari yok.', 'hata'); return; }
     const j = await (await fetch(`${GAS}?islem=liste&anahtar=${encodeURIComponent(anahtar)}`)).json() as { ok?: boolean; kayitlar?: { basliklar: string[]; satirlar: string[][] } };
     if (!j.ok || !j.kayitlar) { ustMesaj('Kayıt defteri okunamadı.', 'hata'); return; }
@@ -837,11 +838,11 @@ export async function hocaEkrani(): Promise<void> {
     }
     const b = fs.writeBatch(db); const simdi = new Date().toISOString(); let yeni = 0;
     for (const k of Object.keys(guncel).sort()) {
-      const s = guncel[k]; const epHam = al(s, 'Veli e-posta').toLowerCase(); const ep = epostaDuzelt[epHam] || epHam; const dil = (al(s, 'İletişim dili') || al(s, 'Form dili') || 'tr').toLowerCase();
+      const s = guncel[k]; const ep = defterVeliEpostasi(al(s, 'Veli e-posta'), epostaDuzelt); const dil = (al(s, 'İletişim dili') || al(s, 'Form dili') || 'tr').toLowerCase();
       if (!S.ogrenciler.some((o) => o.ref === k)) yeni++;
       const mevcut = S.ogrenciler.find((o) => o.ref === k);
       const adAlanlari = mevcut && (mevcut as { adSabit?: boolean }).adSabit ? {} : { ad: trBaslik(al(s, 'Öğrenci adı')), soyad: trBuyuk(al(s, 'Öğrenci soyadı')) }; // adSabit: ad/soyad portalda düzeltildi, defterden ezilmez
-      b.set(fs.doc(db, 'ogrenciler', k), { ...adAlanlari, veliler: fs.arrayUnion(ep), dil, kayitRef: al(s, 'Referans'), guncelleme: simdi, ...(mevcut ? {} : { durum: 'aktif', grup: '' }) }, { merge: true });
+      b.set(fs.doc(db, 'ogrenciler', k), { ...adAlanlari, ...(ep ? { veliler: fs.arrayUnion(ep) } : {}), dil, kayitRef: al(s, 'Referans'), guncelleme: simdi, ...(mevcut ? {} : { durum: 'aktif', grup: '' }) }, { merge: true });
       const iletisimDili = al(s, 'İletişim dili').toLowerCase();
       if (ep) b.set(fs.doc(db, 'aileler', ep), { ogrenciler: fs.arrayUnion(k), dil, ...(['tr', 'fr'].includes(iletisimDili) ? { iletisimDili, iletisimDiliKaynagi: 'kayit-formu' } : {}), adSoyad: trBaslik(al(s, 'Veli adı soyadı')), guncelleme: simdi }, { merge: true });
     }

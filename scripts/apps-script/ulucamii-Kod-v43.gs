@@ -1,3 +1,7 @@
+/* v43 — 10 Eki 2026: kimliği Script Properties'te kayıtlı bir defter (TABLO2_ID, IHTIDA_TABLO2_ID, SEVIYE_TABLO_ID,
+   ENVANTER_TABLO_ID) açılamazsa artık YENİ TABLO YARATILMAZ (kimlikliTabloAc: üç deneme, sonra "defter-acilamadi" hatası).
+   4 Eki 2026'da tek bir geçici openById hatası boş bir kopya yaratıp TABLO2_ID'yi ona çevirmişti; kayıt defteri altı gün boş
+   göründü. Tablo yalnız kimlik hiç kayıtlı değilken yaratılır. Başka davranış değişmedi. */
 /* v42 — 1 Eki 2026: din görevlileri için «Mühtedi Hizmetleri Envanteri» (tur:'envanter', envanter-isleri.gs + EnvanterVeri paketi).
    Açık/kapalı YALNIZ Script Property ENVANTER_AYAR ile ({"acik":1,"veriSorumlusu":"…","kapanis":"YYYY-MM-DD","silme":"YYYY-MM-DD"});
    kapalıyken POST "kapali" ile reddedilir, sağlık yanıtı envanter:{acik,veriSorumlusu,kapanis} taşır. Tablo ilk geçerli POST'ta
@@ -94,7 +98,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 42;
+var SURUM = 43;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -1181,12 +1185,25 @@ function v1SayfaBulTablo(idPropAdi, tabloAdi) {
   return null;
 }
 
+/** v43 (10 Eki 2026): kimliği kayıtlı defteri açar; açılamazsa YENİ TABLO YARATMAK yerine hata fırlatır. 4 Eki 2026'da tek bir
+    geçici openById hatası kayitV2SayfaGetir'e boş bir kopya yaratıp TABLO2_ID'yi ona çevirtti; defter altı gün boş göründü ve
+    yeni kayıt mevcut bir UC numarasını alabilirdi. Geçici hatalar için üç deneme; sonra istek başarısız olur, defter bölünmez. */
+function kimlikliTabloAc(id, ozellikAdi) {
+  var son = null;
+  for (var deneme = 1; deneme <= 3; deneme++) {
+    try { return SpreadsheetApp.openById(id); } catch (e) { son = e; }
+    if (deneme < 3) Utilities.sleep(1000 * deneme);
+  }
+  console.error("defter açılamadı (" + ozellikAdi + "): " + son);
+  throw new Error("defter-acilamadi: " + ozellikAdi);
+}
+
 function kayitV2SayfaGetir() {
   // 13 Eyl 2026: Kimlik başlığını mevcut sona-ekleme kalıbıyla açar; eski satırlar boş kalır.
   var p = PropertiesService.getScriptProperties();
   var id = p.getProperty("TABLO2_ID");
   var ss = null;
-  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (e) { ss = null; } }
+  if (id) ss = kimlikliTabloAc(id, "TABLO2_ID"); // v43: açılamazsa hata — yeni tablo YARATILMAZ
   if (!ss) {
     ss = SpreadsheetApp.create(AYAR2.tabloAdi);
     var dosya = DriveApp.getFileById(ss.getId());
@@ -1720,7 +1737,7 @@ function ihtidaV2SayfaGetir() {
   var p = PropertiesService.getScriptProperties();
   var id = p.getProperty("IHTIDA_TABLO2_ID");
   var ss = null;
-  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (e) { ss = null; } }
+  if (id) ss = kimlikliTabloAc(id, "IHTIDA_TABLO2_ID"); // v43: açılamazsa hata — yeni tablo YARATILMAZ
   if (!ss) {
     ss = SpreadsheetApp.create(AYAR2_IHTIDA.tabloAdi);
     var dosya = DriveApp.getFileById(ss.getId());

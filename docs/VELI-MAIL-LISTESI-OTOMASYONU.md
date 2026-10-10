@@ -58,3 +58,30 @@ Teknik dayanaklar: [Firestore REST yetkilendirmesi](https://firebase.google.com/
 - Canlı sağlık uç noktası `veliMailListesiOtomatik: true` dönüyor.
 - Cuma bilgilendirmesi daha sonra aynı zamanlayıcının sonuna eklendi. Liste
   aktarımı başarısızsa o çalışmada cuma gönderimine geçilmez.
+
+## Geri dönen veli adresini listeden çıkarma (10 Ekim 2026)
+
+Defterdeki adres «550 böyle bir hesap yok» ile geri dönüyorsa ve doğrusu henüz
+bilinmiyorsa:
+
+1. `ayarlar/portal.epostaDuzelt[<geri dönen adres>]` alanına `@` içermeyen bir
+   işaret yazılır (`gecersiz-geri-donuyor`). Eşitleme bu satırı geçersiz adres
+   sayıp atlar. **Boş değer (`""`) kullanılmaz:** `veliPortalKayitlari` boş eşlemeyi
+   yok sayar (`[ep] || ep`) ve adres geri gelir. Bu durum yerel olarak sınandı.
+2. Öğrenci belgesinin `veliler` dizisinden adres çıkarılır. Hoca ekranındaki
+   «kaldır» düğmesiyle aynı işlemdir, `iletisimKisileri` korunur. Aile belgesi
+   `aileler/<adres>` önce yerel yedeğe alınır, sonra silinir. Cuma e-postası ve
+   gönderim betikleri bu belgeyi alıcı olarak okur.
+3. Öğrenciyi `atlanan` listesine **almayın.** Kurs projesindeki `kayitlar_cek.py`
+   o öğrencinin defter satırını eler ve «defterde karşılığı olmayan aktif öğrenci»
+   diyerek durur.
+4. Doğru adres geldiğinde yalnız işaretin yerine doğru adres yazılır. Sonraki
+   eşitleme öğrenciye yeni veliyi ve yeni aile belgesini kendisi ekler.
+
+`portal-yonetim.py ice-aktar` ve toplu gönderim öncesi denetim de `@` içermeyen
+eşlemeyi «adres yok» sayar. Hoca ekranındaki «Kayıt defterinden yenile» düğmesi
+(`hoca-ekrani.ts → iceAktar`) 10 Ekim 2026'dan beri aynı kuralı
+`src/lib/defter-eposta.ts → defterVeliEpostasi` ile uygular: işaret ya da boş hücre
+için öğrenci güncellenir ama veli/aile bağı kurulmaz. Önceden düğme işareti veli
+diye yazar, boş hücreye de `""` veli eklerdi. Adres düzeni Apps Script eşitlemesiyle
+aynıdır. Test: `tests/defter-eposta.test.mjs`.

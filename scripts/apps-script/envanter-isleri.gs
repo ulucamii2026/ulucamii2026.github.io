@@ -72,7 +72,7 @@ function envanterTabloGetir() {
   var p = PropertiesService.getScriptProperties();
   var id = p.getProperty("ENVANTER_TABLO_ID");
   var ss = null;
-  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (e) { ss = null; } }
+  if (id) ss = kimlikliTabloAc(id, "ENVANTER_TABLO_ID"); // v43: açılamazsa hata — yeni tablo YARATILMAZ
   if (!ss) {
     ss = SpreadsheetApp.create(AYAR_ENVANTER.tabloAdi);
     var dosya = DriveApp.getFileById(ss.getId());
