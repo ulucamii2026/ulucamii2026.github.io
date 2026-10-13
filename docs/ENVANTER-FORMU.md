@@ -1,3 +1,5 @@
+> **13 Ekim 2026:** Form site dışına taşındı → `D:\app\saha-envanter-formu` (Firebase `ulucamii-envanter`). Sitedeki `/envanter/` sayfası, web testleri ve gizlilik bildirimindeki «saha envanteri» bölümü kaldırıldı. Apps Script envanter modülü ve `src/lib/envanter` geçici olarak duruyor (kapalı, `ENVANTER_AYAR.acik=0`); ayrıca temizlenecek. Aşağıdaki notlar tarihsel kayıttır.
+
 # Saha envanteri formu — işletme notu
 
 ## Güncel karar — 1 Ekim 2026: örnek ön yüz

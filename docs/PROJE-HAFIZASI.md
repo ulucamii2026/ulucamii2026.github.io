@@ -104,4 +104,4 @@ Dayanak: [OpenAI çalışma önerileri](https://learn.chatgpt.com/guides/best-pr
 
 ## Saha envanteri
 
-İşletme ve açılış/kapanış: [Saha envanteri formu](ENVANTER-FORMU.md). Sayfa sağlık GET'inin geçici ağ hatası yeniden denemesi, özel cevap tablosu ve kalıcı silme sınırı burada kayıtlıdır.
+13 Ekim 2026: form site dışına taşındı (`D:\app\saha-envanter-formu`, Firebase `ulucamii-envanter`); sitedeki `/envanter/` sayfası, web testleri ve gizlilik bölümü kaldırıldı, Apps Script envanter modülü geçici olarak duruyor. Tarihsel notlar: [Saha envanteri formu](ENVANTER-FORMU.md).
