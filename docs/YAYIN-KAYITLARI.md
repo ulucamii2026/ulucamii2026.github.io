@@ -4,6 +4,32 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 13 Ekim 2026 (gece) — eski `/envanter/` sayfası ve gizlilik bölümü kaldırıldı
+
+- Zaman: push 21:27, [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/38455028384)
+  21:27:54–21:30:15 **success**, canlı doğrulama 21:33 — Europe/Brussels (CEST). Dağıtılan SHA içerik commit'iyle eşleşti;
+  dernek kimliği ulucamii2026 (`scripts/gh-cami.ps1`). **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının 13 Ekim akşamı kararı — eski `ulucamii.be/envanter` yeni form paylaşılmadan önce bu işle birlikte
+  kalkar, site yayını onaylı. Saha envanteri formu site dışına taşındı: `D:\app\saha-envanter-formu`, Firebase
+  `ulucamii-envanter` (kayıtları o projenin `BENIOKU.md`'sinde).
+- İçerik commit'i `65e12c044b986f84a0b1bfee2f0ad179f2fe48fe` (15 dosya, +14/−1553): `src/pages/envanter/index.astro`,
+  `src/components/formlar/EnvanterFormu.astro`, `src/scripts/envanter-form.ts`, `tests/web/envanter.spec.mjs`,
+  `tests/web/envanter-ornek.spec.mjs` silindi; `src/styles/formlar.css` envanter bloğu; beş dilde `gizlilik.md`
+  «saha envanteri» bölümü (güncelleme tarihi 2026-10-13); yalnız bu sayfanın kullandığı `telefonsuz` seçeneği
+  `Base.astro` ve `Footer.astro`'dan çıktı (cami hattı ve JSON-LD `telephone` öteki sayfalarda eskisi gibi);
+  `docs/ENVANTER-FORMU.md` ve `docs/PROJE-HAFIZASI.md` taşınma notu. Release 0, yeni indirilebilir dosya 0.
+- Kalite (yerel, tarih düzeltmesinden önce): `npm run dogrula:codex` — design:check, astro check (0 hata, 414 dosya), dogrula
+  (build, site-denetim, birim; `test:envanter` 18/18), egitim, kurallar, veli-eposta, oto-kaydet, öğrenme kapıları geçti;
+  test:web 797 geçti / 2 başarısız / 113 atlandı. İki başarısız test envanterle ilgisiz `tests/web/egitim-diller.spec.mjs:55`
+  (makine yükünde 365 isteklik döngüde 30 sn zaman aşımı); tek başına yeniden koşuda 26/26 geçti. Derlemede `dist/envanter` yok.
+- Canlı: `/envanter/` ve `/tr/envanter/` HTTP404; `/tr/gizlilik/`, `/fr/confidentialite/`, `/en/privacy/`, `/nl/privacy/`,
+  `/de/datenschutz/` HTTP200, «saha-envanteri» çapası 0, «Son güncelleme: 13 Ekim 2026» (dillerine göre), JSON-LD
+  `telephone` yerinde.
+- Bilerek kalanlar (ayrı temizlik işi): Apps Script envanter modülü (kapalı), `src/lib/envanter/*`,
+  `src/i18n/formlar/envanter-tr.ts` (`src/lib/envanter/sozlesme.ts` içe aktarıyor), `test:envanter`; `form-cekirdek.ts`'deki
+  envanter sayfasından kalma ölü dallar. Başka oturumların çalışma dosyalarına dokunulmadı. Kişisel veri, telefon numarası
+  ya da anahtar yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 10 Ekim 2026 — kayıt defteri (v2) geri bağlandı + Apps Script v43 + hoca ekranı içe aktarma
 
 - Zaman: onarım 08:18:29–08:21:33, v43 dağıtımı 08:57:32–08:58:55, bağımsız canlı doğrulama 09:01; push 11:02,
