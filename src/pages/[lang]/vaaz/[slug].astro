@@ -16,7 +16,7 @@ import Base from '../../../layouts/Base.astro';
 import Goruntulenme from '../../../components/Goruntulenme.astro';
 import VaazDilUyarisi from '../../../components/VaazDilUyarisi.astro';
 import istatistik from '../../../data/istatistik.json';
-import { yol, dilListesi, yerelKodu, hreflangKodu } from '../../../i18n/utils';
+import { yol, dilListesi, yerelKodu, hreflangKodu, tarihBicimle, ceviri as arayuzCeviri } from '../../../i18n/utils';
 import type { Dil } from '../../../i18n/ui';
 import { katAd } from '../../../i18n/vaaz-kategori';
 
@@ -27,7 +27,10 @@ export async function getStaticPaths() {
   /** Aynı kategoriden üç öneri: listede kendinden SONRAKİLER önce (her sayfada farklı üçlü), eksik kalırsa başa dönülür. */
   const oneri = (v: Vaaz): Vaaz[] => {
     const ayni = vaazlar.filter((k) => k.data.kategori === v.data.kategori && k.id !== v.id);
-    const i = ayni.findIndex((k) => (k.data.siraNo ?? 0) > (v.data.siraNo ?? 0));
+    /* Dönüş noktası, sıralı listedeki KONUMDAN hesaplanır: siraNo çoğu vaazda tanımsız (hepsi 0) olduğundan
+       eskiden findIndex hep -1 dönüyor, her sayfa aynı ilk üç vaazı öneriyordu (15 Eki 2026 denetimi). */
+    const bu = vaazlar.findIndex((k) => k.id === v.id);
+    const i = ayni.findIndex((k) => vaazlar.findIndex((x) => x.id === k.id) > bu);
     const sirali = i < 0 ? ayni : [...ayni.slice(i), ...ayni.slice(0, i)];
     return sirali.slice(0, 3);
   };
@@ -109,16 +112,33 @@ const goruntulenmeTohum = sayacYollar[buYol] ?? sayacYollar[`${buYol}/`] ?? 0;
 const kat = entry.data.kategori ? (katAd[entry.data.kategori]?.[dil] ?? entry.data.kategori) : null;
 const kanonik = new URL(Astro.url.pathname, Astro.site).toString();
 const wa = `https://wa.me/?text=${encodeURIComponent(`${d.baslik} — ${kanonik}`)}`;
+/* Vaaz tarihi (ön maddedeki isteğe bağlı «tarih»): başlık satırında yerelleştirilmiş, JSON-LD'de salt-tarih (YYYY-MM-DD). */
+const tarihIso: string | undefined = d.tarih ? (d.tarih as Date).toISOString().slice(0, 10) : undefined;
+/* Yapısal veri: yazar ve yayıncı, Base.astro'daki kurum düğümüne (@id) başvurur — duyuru şablonuyla aynı desen. */
+const ui = arayuzCeviri(dil);
+const kurumId = new URL('/#kurum', Astro.site).toString();
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Article', headline: d.baslik, inLanguage: hreflangKodu(dil),
   ...(d.ozet ? { description: d.ozet } : {}), isAccessibleForFree: true,
+  ...(tarihIso ? { datePublished: tarihIso } : {}),
   ...(ceviri ? { translationOfWork: { '@type': 'Article', url: new URL(`/tr/vaaz/${entry.id}/`, Astro.site).href } } : {}),
   ...(vaazKapagi.kapak ? { image: new URL(vaazKapagi.kapak, Astro.site).href } : {}),
-  publisher: { '@type': 'Organization', name: 'Ulu Camii Marche-en-Famenne' },
+  author: { '@id': kurumId },
+  publisher: { '@id': kurumId },
+  mainEntityOfPage: kanonik,
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: ui('nav.anasayfa'), item: new URL(yol(dil, 'anasayfa'), Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: ui('nav.vaazlar'), item: new URL(yol(dil, 'vaazlar'), Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: d.baslik, item: kanonik },
+  ],
 };
 const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
 ---
-<Base baslik={tamMetin ? d.baslik : m.etiket} aciklama={tamMetin ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={!tamMetin} ogTuru={tamMetin ? 'article' : 'website'} ekJsonLd={tamMetin ? [jsonLd] : []} {...vaazKapagi}>
+<Base baslik={tamMetin ? d.baslik : m.etiket} aciklama={tamMetin ? d.ozet : m.trNot ?? undefined} dil={dil} noindex={!tamMetin} ogTuru={tamMetin ? 'article' : 'website'} ekJsonLd={tamMetin ? [jsonLd, breadcrumbJsonLd] : []} {...vaazKapagi}>
   <article class="kapsayici py-8 sm:py-12">
     <a href={yol(dil, 'vaazlar')} class="geri-bag">← {m.geri}</a>
     {!tamMetin ? <>
@@ -132,6 +152,7 @@ const indirIkon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/>';
         {d.ozet && <p class="vaaz-ozet">{d.ozet}</p>}
         <p class="vaaz-meta">
           {kat && <span class="vaaz-kat">{kat}</span>}
+          {tarihIso && <span><time datetime={tarihIso}>{tarihBicimle(d.tarih as Date, dil)}</time></span>}
           {okumaDk && <span>{okumaDk} {m.okuma}</span>}
           {d.kelime && <span>{d.kelime.toLocaleString(yerelKodu[dil])} {m.kelime}</span>}
           <Goruntulenme dil={dil} baslangic={goruntulenmeTohum} />

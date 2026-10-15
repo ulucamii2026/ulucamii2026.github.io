@@ -6,6 +6,8 @@ kelime: 2538
 docx: "/vaazlar/kamil-muminin-ozellikleri.docx"
 pdf: "/vaazlar/kamil-muminin-ozellikleri.pdf"
 ---
+Bu konuyu daha geniş ele alan 16 Ekim 2026 tarihli vaazımız: [Kâmil Müminin Özellikleri: İmanın Kökü Kalpte, Meyvesi Hayatta](/tr/vaaz/kamil-muminin-ozellikleri-imanin-meyvesi/)
+
 Yüce Allah kullarını dünyaya imtihan için göndermiş, imtihan etmek için gönderdiği dünyada başıboş bırakmamış ve peygamberler aracılığıyla onlara yol göstermiştir. Bu yüzden ilk insan, aynı zamanda ilk peygamberdir. Hz. Adem’den Hz. Muhammed’e kadar gönderilen bütün peygamberler insanlarla Allah arasında elçilik görevini yapmışlar ve Allah’ın insanlara bildirilmesini emrettiği hükümleri onlara bildirmişler ve bu hükümleri pratiğe yansıtan model şahsiyetler olmuşlardır. Hz. Muhammed bir mümin için hemen her yönüyle örnek teşkil etmektedir. Özellikle O’nun ahlakı Kur'ân-ı Kerim’de övülmüş ve örnek şahsiyet olduğu beyan edilmiştir
 
 <p lang="ar" dir="rtl" class="ayet">ٍوَاِنَّكَ لَعَلى خُلُقٍ عَظيم</p>

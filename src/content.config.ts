@@ -228,6 +228,8 @@ const vaazlar = defineCollection({
     pptx: z.string().optional(),
     sunumPdf: z.string().optional(),
     siraNo: z.number().optional(),
+    /** Vaazın okunduğu cuma (15 Eki 2026): isteğe bağlı; varsa başlık satırında yerelleştirilmiş tarih ve JSON-LD datePublished. */
+    tarih: z.coerce.date().optional(),
     taslak: z.boolean().default(false),
     /** Bağlantı önizlemesi (og:image) — vaazın kapak çiziminden üretilmiş 1200×630 WebP; çizimin aslı SVG'dir. */
     kapak: z.string().optional(),
@@ -247,6 +249,8 @@ const vaazCevirileri = defineCollection({
     pdf: z.string().optional(),
     pptx: z.string().optional(),
     sunumPdf: z.string().optional(),
+    /** Asıl vaazın tarihi (Türkçe ön maddeyle aynı); çeviride yoksa asıl vaazınki kullanılır. */
+    tarih: z.coerce.date().optional(),
     taslak: z.boolean().default(false),
     kapak: z.string().optional(),
     kapakAlt: z.string().optional(),

@@ -245,7 +245,7 @@
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.5;
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 1.5rem;   /* + html scroll-padding-top (yapışkan üst bilgi, 5rem) */
 }
 .vaaz-govde .vaaz-icindekiler summary {
   min-height: 44px;
@@ -288,7 +288,7 @@
   outline: 3px solid var(--vurgu-2);
   outline-offset: 3px;
 }
-.vaaz-govde .vaaz-bolum-baslik { scroll-margin-top: 7rem; }
+.vaaz-govde .vaaz-bolum-baslik { scroll-margin-top: 1.5rem; }
 .vaaz-govde .vaaz-sozler li { margin-block: 0 1rem; }
 .vaaz-govde .vaaz-sozler strong { display: block; }
 .vaaz-govde p.vaaz-bolumlere-don {

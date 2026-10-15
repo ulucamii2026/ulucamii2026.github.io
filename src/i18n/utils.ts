@@ -87,6 +87,16 @@ export function tarihBicimle(tarih: Date | string, dil: Dil, secenek: Intl.DateT
   return new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'Europe/Brussels', ...secenek }).format(d);
 }
 
+/** <meta description> / og:description: `sinir` karakteri aşan metni SÖZCÜK SINIRINDA keser (sözcüğün ortasında değil),
+    sondaki boşluk/virgül/noktalama/açık tırnak ve ayraçları atar, «…» ekler (toplam ≤ `sinir`). Kısa metne dokunmaz. */
+export function metaKisalt(metin: string, sinir = 155): string {
+  if (metin.length <= sinir) return metin;
+  const ham = metin.slice(0, sinir - 1);                 // «…» tek karakter
+  const sozcukTam = /\s/.test(metin.charAt(sinir - 1));    // kesim noktasından sonraki karakter boşluksa son sözcük eksiksiz
+  const kesik = sozcukTam ? ham : ham.replace(/\s+\S*$/u, '');
+  return kesik.replace(/[\s,;:.!?\-–—·/(\[«“„‘]+$/u, '') + '…';
+}
+
 /** hreflang öznitelik değeri */
 export const hreflangKodu = (d: Dil): string => (d === 'tr' || d === 'en' ? d : yerelKodu[d]);
 

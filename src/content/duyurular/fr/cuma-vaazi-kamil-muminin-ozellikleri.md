@@ -20,7 +20,7 @@ Le texte intégral de notre prédication du vendredi 16 octobre 2026 est en lign
 - **La foi a ses racines dans le cœur et ses fruits dans la vie.** Le croyant accompli est le même à la mosquée et au marché.
 - **La prière ne s’achève pas dans la prosternation.** La prière accomplie avec khushû‘ se prolonge dans la parole, la conduite et la droiture.
 - **La langue, le regard et le cœur sont des dépôts confiés.** Dis du bien ou tais-toi ; tiens-toi à l’écart de la médisance et du mauvais soupçon.
-- **La mesure de la foi, c’est le beau caractère.** Un croyant qui inspire confiance, maîtrise sa colère, patiente et tient parole.
+- **La perfection de la foi se mesure au beau caractère.** Un croyant qui inspire confiance, maîtrise sa colère, patiente et tient parole.
 
 **[Lire la prédication en français →](/fr/vaaz/kamil-muminin-ozellikleri-imanin-meyvesi/)**
 

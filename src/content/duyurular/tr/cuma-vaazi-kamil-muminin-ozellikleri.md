@@ -20,7 +20,7 @@ taslak: false
 - **İmanın kökü kalpte, meyvesi hayattadır.** Kâmil mümin camide de çarşıda da aynı insandır.
 - **Namaz secdede bitmez.** Huşûyla kılınan namaz söze, davranışa ve istikamete taşınır.
 - **Dil, göz ve gönül emanettir.** Ya hayır söyle ya sus; gıybetten ve kötü zandan uzak dur.
-- **İmanın ölçüsü güzel ahlâktır.** Güven veren, öfkesini yenen, sabreden ve sözünde duran mümin.
+- **İmanın kemâli güzel ahlâkla ölçülür.** Güven veren, öfkesini yenen, sabreden ve sözünde duran mümin.
 
 **[Vaazın tam metnini okuyun →](/tr/vaaz/kamil-muminin-ozellikleri-imanin-meyvesi/)**
 

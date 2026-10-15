@@ -82,7 +82,7 @@ div.vaaz-govde ol.vz-ozet-liste > li::before {
 div.vaaz-govde ol.vz-ozet-liste strong { display: block; font-family: var(--font-serif); font-size: 1.04rem; color: var(--metin); margin-bottom: .1rem; }
 
 /* ——— Yolculuk haritası (bölümler) ——— */
-div.vaaz-govde nav.vz-harita { margin: 0 0 2.75rem; scroll-margin-top: 7rem; }
+div.vaaz-govde nav.vz-harita { margin: 0 0 2.75rem; scroll-margin-top: 1.5rem; }
 div.vaaz-govde ol.vz-harita-liste {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem;
   margin: 0; padding: 0; list-style: none;
@@ -103,7 +103,11 @@ div.vaaz-govde nav.vz-harita span.vz-harita-no {
 div.vaaz-govde nav.vz-harita span.vz-harita-ad { display: block; font-family: var(--font-serif); font-size: .98rem; line-height: 1.25; text-wrap: balance; }
 
 /* ——— Bölüm açılışı ——— */
-div.vaaz-govde header.vz-bolum { margin: 3.5rem 0 1.25rem; }
+/* Yapışkan üst bilgi (≈79 px) yalnız vaaz sayfalarında scroll-padding ile telafi edilir: bağlantıyla gelinen bölüm ya da
+   klavyeyle odaklanan öğe üst bilginin altında kalmaz. Diğer sayfalar kendi scroll-margin-top değerleriyle çalışır. */
+html:has(div.vaaz-govde) { scroll-padding-top: 5rem; }
+/* Bölüm bağlantı kimliği <header class="vz-bolum"> üzerindedir; üst boşluk yukarıdaki scroll-padding-top'a (5rem) eklenir. */
+div.vaaz-govde header.vz-bolum { margin: 3.5rem 0 1.25rem; scroll-margin-top: 1.5rem; }
 div.vaaz-govde header.vz-bolum:first-of-type { margin-top: 2rem; }
 div.vaaz-govde figure.vz-bolum-sahne {
   position: relative; margin: 0 0 1.1rem; overflow: hidden; border-radius: var(--vz-yuvarlak);
@@ -335,7 +339,8 @@ div.vaaz-govde ol.vz-soz-liste > li::before {
 }
 div.vaaz-govde ol.vz-soz-liste strong { color: #24201c; }
 div.vaaz-govde figure.vz-sozler p.vz-sozler-alt { margin: 1rem 0 0; text-align: center; font-family: var(--font-sans); font-size: .82rem; color: #635850; }
-div.vaaz-govde figure.vz-sozler p.vz-sozler-alt a { color: #1f5f8b; }
+/* «Yazdırılabilir hâli» bağlantısı: dokunma hedefi ≥ 44 px; negatif dikey boşluk satır yüksekliğini eskisi gibi tutar (görünüm değişmez). */
+div.vaaz-govde figure.vz-sozler p.vz-sozler-alt a { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block: -.65rem; padding-inline: .5rem; color: #1f5f8b; }
 
 /* ——— Dua ve kaynaklar ——— */
 div.vaaz-govde div.vz-dua-metni {
@@ -578,9 +583,12 @@ div.vaaz-govde ol.vz-dallar strong { display: block; margin-bottom: .2rem; font-
   div.vaaz-govde ol.vz-emanet,
   div.vaaz-govde ol.vz-dallar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   div.vaaz-govde p.vz-cerceve-bant strong { font-size: 1rem; }
-  div.vaaz-govde ol.vz-uclu { --vz-bosluk: 1.4rem; }
-  div.vaaz-govde ol.vz-uclu > li { padding: .8rem .4rem .85rem; font-size: .8rem; }
-  div.vaaz-govde ol.vz-uclu > li strong { font-size: 1.02rem; }
+  /* İnanç = söz = davranış: dar ekranda üç kart alt alta, tam genişlikte; «=» işareti kartların arasındaki boşlukta.
+     (Yan yana üç kart 320–390 px'te «Verhalten», «Gedrag» gibi sözcükleri ortadan bölüyordu.) */
+  div.vaaz-govde ol.vz-uclu { --vz-bosluk: 1.9rem; flex-direction: column; align-items: stretch; }
+  div.vaaz-govde ol.vz-uclu > li { flex: 0 0 auto; max-width: none; padding: .8rem .75rem .85rem; font-size: .88rem; overflow-wrap: normal; hyphens: manual; }
+  div.vaaz-govde ol.vz-uclu > li strong { font-size: 1.1rem; }
+  div.vaaz-govde ol.vz-uclu > li + li::before { top: calc(var(--vz-bosluk) / -2); left: 50%; translate: -50% -50%; }
   div.vaaz-govde ol.vz-zincir { grid-template-columns: minmax(0, 1fr); }
   div.vaaz-govde ol.vz-zincir > li + li::before { top: -1.9rem; left: 50%; translate: -50% 0; rotate: 90deg; }
   div.vaaz-govde div.vz-mizan { flex-direction: column; align-items: center; gap: .7rem; }

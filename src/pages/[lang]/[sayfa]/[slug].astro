@@ -6,7 +6,7 @@ import Goruntulenme from '../../../components/Goruntulenme.astro';
 import istatistik from '../../../data/istatistik.json';
 import { yollar, type Dil } from '../../../i18n/ui';
 import { ceviri, yol, tarihBicimle, hreflangKodu, dilListesi } from '../../../i18n/utils';
-import { duyurular, etkinlikler, siteAyarlari } from '../../../lib/icerik';
+import { duyurular, etkinlikler, siteAyarlari, icerikDili } from '../../../lib/icerik';
 import { etkinlikIcsUret, saatAyristir, brukselYerelSaatiUtcyeCevir } from '../../../lib/ics';
 
 export async function getStaticPaths() {
@@ -59,6 +59,9 @@ const ICERIK_NOTU: Record<Dil, { duyuru: string; etkinlik: string }> = {
   },
 };
 const icerikNotu = ICERIK_NOTU[dil][tur === 'duyuru' ? 'duyuru' : 'etkinlik'];
+/* Fransızca metne düşen sayfalarda (en, nl, de) içerik bloğu ve başlık lang="fr-BE" ile işaretlenir: ekran okuyucu ve
+   yazım denetimi metni sayfa dilinde (hreflang=en…) okumaya çalışmasın. TR ve FR'de öznitelik basılmaz. */
+const icerikLang: string | undefined = icerikDili(dil) !== dil ? hreflangKodu(icerikDili(dil)) : undefined;
 /* İngilizce sayfada <meta name="description">/og:description Fransızca özete düşüyordu (icerikDili
    fallback'i) — hreflang="en" içerik diliyle çelişiyordu. Arama sonucu/paylaşım kartı artık önce
    bu notu, ardından mevcut özeti gösteriyor (25 Ağustos 2026 denetim turu 4, seo-yapisal#1). */
@@ -158,7 +161,7 @@ const icsHref = tur === 'etkinlik'
   : undefined;
 ---
 <Base baslik={d.baslik} dil={dil} aciklama={metaAciklama} kapak={kapak} ogTuru="article" ekJsonLd={ekJsonLd}>
-  <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet}>
+  <SayfaBasligi etiket={etiket} baslik={d.baslik} altBaslik={d.ozet} icerikDil={icerikLang}>
     <p class="etiket mt-4">
       <time datetime={tarih.toISOString()}>{tarihBicimle(tarih, dil)}</time>
       {tur === 'etkinlik' && d.bitis && d.bitis.getTime() !== d.baslangic.getTime() && <span> – {tarihBicimle(d.bitis, dil)}</span>}
@@ -175,7 +178,7 @@ const icsHref = tur === 'etkinlik'
   <article class="kapsayici py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
     {/* Mobilde tek sütuna inince görsel metnin en altında kalıyordu — kimse oraya kadar
         inmiyor. Dar ekranda üste alındı, geniş ekranda sağdaki sütunda kalıyor. */}
-    <div class="duz-yazi order-2 lg:order-1 min-w-0"><Content /></div>
+    <div class="duz-yazi order-2 lg:order-1 min-w-0" lang={icerikLang}><Content /></div>
     {kapak && (
       <div class="order-1 lg:order-2">
         <a href={kapak} data-lightbox={grup} data-caption={d.kapakAlt ?? d.baslik} class="gorsel-cerceve block">
