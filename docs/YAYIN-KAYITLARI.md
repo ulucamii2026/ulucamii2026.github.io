@@ -4,6 +4,37 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 15 Ekim 2026 (akşam) — vaaz: «Kâmil Müminin Özellikleri» inceleme turu (metin, çeviri, şablon düzeltmeleri)
+
+- Zaman: 15 Ekim 2026 19:14 (push) – 19:17 (deploy) – 19:25 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «detaylı incele, alt ajanlar kullan, kusurlar varsa bul
+  düzelt, yeniden yayınla, geliştirebilirsen de iyileştir» isteği.
+- İnceleme: 8 bağımsız alt ajan (TR metin, FR, EN, NL, DE, Word/PDF, sunum, canlı web); kritik bulgu yok, kabul edilen
+  maddeler kaynak klasörde `_duzeltme/KARARLAR.md`.
+- Vaaz metni (5 dil, Word/PDF/sunum/web): Ehl-i sünnet ifadesi «imanın aslına dâhil değildir»; Muâz hadisi «dilini
+  tutarak» ve soru kalıbı; ekran cümlesi (bilerek bakılan / doğrulanmadan paylaşılan); mealler Kur’an Yolu ile
+  birleştirildi, 3/8 «katından»; mizan hadisi kaynağıyla (Tirmizî, Birr 62); abdest rivayeti zayıf diye işaretlendi;
+  müflis cümlesi bölündü; slayt 25 etiketleri bilinçli eyleme çevrildi. Çevirilerde terim, tipografi ve anlam
+  düzeltmeleri (NL hadis cümlesindeki çift olumsuzluk dahil).
+- Üretici: PDF katalog dili (`/Lang` tr-TR, fr-BE, en-GB, nl-BE, de-DE), yer imlerinde bölünmez boşluk yok, tablo
+  ilk sütunu sola, DOCX/PPTX belge tarihleri, slayt 19/37/50/56 «temsilî sahne» notu, slayt 67 adres bağlantısı,
+  bölüm açılışlarında (çeviri dalı) uzun başlık iki satıra sığdırılıyor.
+- Site: vaaz şemasına isteğe bağlı `tarih` (başlık satırı + JSON-LD `datePublished`), yazar/yayıncı `#kurum` düğümü,
+  `BreadcrumbList`, `mainEntityOfPage`; bölüm çapası `header.vz-bolum` üzerinde ve yalnız vaaz sayfalarında
+  `scroll-padding-top`; dar ekranda «inanç = söz = davranış» kartları alt alta; «ilgili vaazlar» dönüşü sıra konumundan;
+  meta açıklaması sözcük sınırında; en/nl/de duyurularda Fransızca içerik `lang="fr-BE"`; TR/FR duyuruda 4. ana fikir.
+  9 Ekim vaazı (5 dil): kalp şekilleri sekiz köşeli yıldızla değişti, `tarih: 2026-10-09`. Eski
+  `kamil-muminin-ozellikleri` vaazına yeni vaazın bağlantısı.
+- İçerik commit'i `0968522` (push `e06fbf2..0968522`, 31 dosya).
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/38775710153) **success**.
+  Release `vaaz-kamil-muminin-ozellikleri-imanin-meyvesi`: 10 dosya `--clobber` ile yenilendi (boyutlar yerel
+  dosyalarla eşit); Latest `ders-2026-10-19` kaldı.
+- Kalite: `npm run check` 0 hata; `npm run build` 1932 sayfa; `npm run test:vaaz-pdf` geçti. Çeviri denetimi 4 dil 1006
+  kayıt HATA 0; Word 5 dil 14 sayfa, yazım 0; sunum 5 dil 67 slayt, taşma 0, çakışma kapısı 0; site kopyaları
+  teslimlerle SHA-256 eşit. `web_kontrol.mjs` yerel ve canlı: 22 görünüm, axe 0, 75 dosya, 10 sunum (canlı).
+- Üretim: alt ajanlar (Opus: TR metin/kod ve site; Haiku: çeviri ve üretim), denetim ve dışa dönük adımlar Claude.
+  Paylaşım mesajı değişmedi (bağlantılar aynı).
+
 ## 15 Ekim 2026 — vaaz: «Kâmil Müminin Özellikleri» (16 Ekim 2026 Cuma vaazı) beş dilde + duyuru
 
 - Zaman: 15 Ekim 2026 16:32:08 (push) – 16:34:22 (deploy) – 16:37 (canlı doğrulama), Europe/Brussels (CEST).
