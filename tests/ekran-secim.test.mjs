@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, SAAT_GERI_TOLERANS_MS, sunucuSaatiCoz, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
+import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, SAAT_GERI_TOLERANS_MS, sunucuSaatiCoz, isaretGuncelle, turGunu, EN_GEC_GECERLI, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
 import { bugunTarih, durumHesapla } from '../src/lib/namaz.ts';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -223,7 +223,7 @@ test('vakit sınırında: bir saniye önce o vakit 1 dakika kalanla, tam anında
 });
 
 /* Sabah namazının son vakti güneştir: imsak ile güneş arasında ekran güneşe kalan süreyi gösterir
-   (Rıdvan'ın kararı, 28 Eylül 2026). Site (durumHesapla) güneşi sıradaki vakit saymamaya devam eder. */
+   (imamın kararı, 28 Eylül 2026). Site (durumHesapla) güneşi sıradaki vakit saymamaya devam eder. */
 test('imsak ile güneş arasında sıradaki vakit güneştir; güneş anında öğleye geçer, imsaktan önce imsak kalır', () => {
   const gunler = [gun('2026-09-27'), gun('2026-09-28')];
   const sabah = vakitGorunumu(gunler, new Date('2026-09-27T07:12:00+02:00'));
@@ -349,4 +349,49 @@ test('duyuru parçaları: 90’ı aşan iki dilli metin ayrı iki slayt; afişli
   ]);
   // Süre, o slaytta okunan metinden: afiş slaytında yalnız başlık.
   assert.deepEqual(s.map((x) => x.karakter), [101, 121, 1, 51]);
+});
+
+// Bozuk işaret sayfayı kilitlemesin diye sıfırlama yalnız taze sunucu zamanı cihaz saatiyle uyuşunca olur.
+test('isaretGuncelle: yükseltir, küçük geri adımı yoksayar', () => {
+  assert.equal(isaretGuncelle(SUNUCU_MS, SUNUCU_MS + 60_000, SUNUCU_MS + 60_000), SUNUCU_MS + 60_000);
+  assert.equal(isaretGuncelle(SUNUCU_MS, SUNUCU_MS - 60_000, SUNUCU_MS), SUNUCU_MS);
+});
+
+test('isaretGuncelle: cihaz uyuşunca bozuk işareti sıfırlar (devasa ve +6 saat)', () => {
+  const simdi = Date.parse('2026-10-09T12:00:00Z');
+  assert.equal(isaretGuncelle(9999999999999, simdi, simdi), simdi);
+  assert.equal(isaretGuncelle(simdi + 6 * 3_600_000, simdi, simdi), simdi);
+});
+
+test('isaretGuncelle: cihaz uyuşmazsa bayat önbellek işareti düşürmez (28 Eyl cihaz, 20 Eyl önbellek)', () => {
+  const cihaz = Date.parse('2026-09-28T22:23:00Z');
+  const onbellek = Date.parse('2026-09-20T12:00:00Z');
+  assert.equal(isaretGuncelle(SUNUCU_MS, onbellek, cihaz), SUNUCU_MS);
+});
+
+test('isaretGuncelle: null, NaN ve Infinity işareti değiştirmez', () => {
+  assert.equal(isaretGuncelle(SUNUCU_MS, null, SUNUCU_MS), SUNUCU_MS);
+  assert.equal(isaretGuncelle(SUNUCU_MS, NaN, SUNUCU_MS), SUNUCU_MS);
+  assert.equal(isaretGuncelle(SUNUCU_MS, Infinity, SUNUCU_MS), SUNUCU_MS);
+});
+
+test('turGunu: saat güvenilirse cihaz günü, değilse işaret günü, işaret yoksa cihaz günü', () => {
+  const guvenli = new Date('2026-10-09T12:00:00Z');
+  assert.equal(turGunu(guvenli, SUNUCU_MS), bugunTarih(guvenli));
+  // Günlerce çevrimdışı kalan doğru saat işaretten ileridedir: tur işaretin değil cihazın gününe kurulur.
+  const ileride = new Date('2026-10-12T08:00:00Z');
+  assert.equal(turGunu(ileride, SUNUCU_MS), '2026-10-12');
+  const geride = new Date('2026-09-28T22:23:00Z');
+  assert.equal(saatGecerliMi(geride, SUNUCU_MS), false);
+  assert.equal(turGunu(geride, SUNUCU_MS), bugunTarih(new Date(SUNUCU_MS)));
+  assert.equal(turGunu(geride, SUNUCU_MS), '2026-10-09');
+  const issiz = new Date(0);
+  assert.equal(turGunu(issiz, 0), bugunTarih(issiz));
+});
+
+test('sunucuSaatiCoz: 2100 ve sonrası null verir', () => {
+  assert.equal(EN_GEC_GECERLI, Date.parse('2100-01-01T00:00:00Z'));
+  assert.equal(sunucuSaatiCoz('Sat, 01 Jan 2100 00:00:00 GMT'), null);
+  assert.equal(sunucuSaatiCoz('Mon, 01 Jan 2101 00:00:00 GMT'), null);
+  assert.ok(sunucuSaatiCoz('Thu, 31 Dec 2099 23:59:59 GMT') !== null);
 });

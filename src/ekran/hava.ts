@@ -15,7 +15,10 @@ export function havaCoz(govde: unknown, alinan: number): HavaDurumu | null {
   return { sicaklik: Math.round(c.temperature_2m), kod: c.weather_code, alinan };
 }
 
-export const havaTazeMi = (h: HavaDurumu | null, simdi: number): h is HavaDurumu => !!h && simdi - h.alinan <= 3 * 3_600_000;
+/** Gelecekten gelen okuma saatin geriye gittiğini gösterir (küçük kayma payla tolere edilir); bayat yerine hiç gösterilir. */
+const HAVA_GELECEK_TOLERANS_MS = 10 * 60_000;
+
+export const havaTazeMi = (h: HavaDurumu | null, simdi: number): h is HavaDurumu => !!h && simdi - h.alinan <= 3 * 3_600_000 && simdi - h.alinan >= -HAVA_GELECEK_TOLERANS_MS;
 
 /** WMO kodu: 0 açık, 1–2 parçalı, 3 kapalı, 45/48 sis, 71–77 ve 85–86 kar, 95+ fırtına, kalanı yağış. */
 export function havaSimgesi(kod: number): HavaSimgesi {

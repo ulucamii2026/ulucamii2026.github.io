@@ -5,7 +5,7 @@
 import type { EkranVakitleri } from '../lib/ekran/vakit-kapisi.ts';
 import type { EkranDuyuru } from '../lib/ekran/akis.ts';
 import type { EkranIcerik } from '../lib/ekran/icerik.ts';
-import { sunucuSaatiCoz, type SlaytAyari } from '../lib/ekran/secim.ts';
+import { EN_ERKEN_GECERLI, EN_GEC_GECERLI, isaretGuncelle, sunucuSaatiCoz, type SlaytAyari } from '../lib/ekran/secim.ts';
 
 export interface AkisGovdesi {
   derleme: string;
@@ -33,7 +33,9 @@ export function icerikGecerli(x: unknown): x is IcerikGovdesi {
 
 /* Sunucu saati yüksek su işareti: ekranın gördüğü en yeni sunucu zamanı (HTTP Date). Cihaz saati bundan 10 dakikadan
    fazla geride kalırsa sayfa saate güvenmez (src/lib/ekran/secim.ts → saatGecerliMi). localStorage'da saklanır ki
-   elektrik kesilip internet gelmeden açılan kutu da son bilinen zamanı bilsin. Depo yoksa ya da fırlatırsa bellekte
+   elektrik kesilip internet gelmeden açılan kutu da son bilinen zamanı bilsin. İşaret genelde yalnız yükselir;
+   düşüş yalnız taze sunucu zamanı cihaz saatiyle uyuşup ikisi birden işaretten sapınca olur (secim.ts → isaretGuncelle),
+   yani bozuk olanın işaret olduğu anlaşılınca. Depo yoksa ya da fırlatırsa bellekte
    çalışmaya devam eder. */
 const DEPO_ANAHTARI = 'ekran.sonSunucuSaati';
 /** Flaş yıpranması: depoya yalnız kayıtlı değer en az bu kadar büyüyünce yazılır. */
@@ -43,7 +45,9 @@ function depodanOku(): number {
   try {
     const ham = localStorage.getItem(DEPO_ANAHTARI);
     const ms = ham === null ? 0 : Number(ham);
-    return isFinite(ms) && ms > 0 ? ms : 0;
+    // Bozuk ya da gelecekten kalma saklı değer (bit kayması, elle yazım, test artığı) sayfayı kilitlemesin diye
+    // aralık dışı her değer yok sayılır.
+    return Number.isInteger(ms) && ms >= EN_ERKEN_GECERLI && ms < EN_GEC_GECERLI ? ms : 0;
   } catch {
     return 0;
   }
@@ -56,14 +60,26 @@ export function sonSunucuSaati(): number {
   return sonSunucuMs;
 }
 
-/** İşareti yalnız yükseltir, asla düşürmez; null, NaN ve Infinity yok sayılır. */
-export function sunucuSaatiniKaydet(ms: number | null): void {
-  if (ms === null || typeof ms !== 'number' || !isFinite(ms) || ms <= sonSunucuMs) return;
-  sonSunucuMs = ms;
-  if (ms - depodakiMs < DEPO_YAZIM_ESIGI_MS) return;
+/** İşareti yükseltir ya da bozuk-işaret kanıtıyla sıfırlar (secim.ts → isaretGuncelle); null, NaN ve Infinity yok sayılır.
+ *  Sıfırlama depoya hemen yazılır (eşik farkı eksi yönde işlemezdi); yükseltmede flaş eşiği korunur. */
+export function sunucuSaatiniKaydet(ms: number | null, cihazMs = Date.now()): void {
+  const yeni = isaretGuncelle(sonSunucuMs, ms, cihazMs);
+  if (yeni === sonSunucuMs) return;
+  const dusuruldu = yeni < sonSunucuMs;
+  sonSunucuMs = yeni;
+  if (dusuruldu) {
+    try {
+      localStorage.setItem(DEPO_ANAHTARI, String(yeni));
+      depodakiMs = yeni;
+    } catch {
+      /* depo yok, dolu ya da kapalı: bellekteki işaret yeter */
+    }
+    return;
+  }
+  if (yeni - depodakiMs < DEPO_YAZIM_ESIGI_MS) return;
   try {
-    localStorage.setItem(DEPO_ANAHTARI, String(ms));
-    depodakiMs = ms;
+    localStorage.setItem(DEPO_ANAHTARI, String(yeni));
+    depodakiMs = yeni;
   } catch {
     /* depo yok, dolu ya da kapalı: bellekteki işaret yeter */
   }
@@ -81,7 +97,8 @@ async function getir<T>(yol: string, gecerli: (x: unknown) => x is T, zamanAsimi
     const govde: unknown = await yanit.json();
     if (!gecerli(govde)) return null;
     // Yalnız doğrulanmış gövdeden sonra: captive portal ya da ara katman sayfası işareti oynatamaz. SW'nin sunduğu
-    // bayat önbellek yanıtı eski Date taşır; işaret hiç düşmediği için zararsızdır.
+    // bayat önbellek yanıtı eski Date taşır; tek başına işareti düşürmez (düşüş yalnız taze sunucu zamanı cihaz
+    // saatiyle uyuşunca olur), bu yüzden zararsızdır.
     sunucuSaatiniKaydet(sunucuSaatiCoz(yanit.headers.get('Date')));
     return govde;
   } catch {

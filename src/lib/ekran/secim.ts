@@ -51,18 +51,39 @@ export function temaSec(gun: Gun | undefined, simdi: Date): 'acik' | 'koyu' {
  *     saatiyle açıldı; 1. kuralı geçtiği için ağ saati düzeltene dek yanlış saat ve tarihi geçerliymiş gibi gösterdi.
  *  `sonSunucuMs` 0 ya da verilmemişse yalnız 1. kural işler. */
 export const EN_ERKEN_GECERLI = Date.parse('2026-09-01T00:00:00Z');
+/** Saklı ya da başlıktaki işaretin üst sınırı: bu andaki ve ötesindeki değer bozuk sayılır, kilide sokmasın diye. */
+export const EN_GEC_GECERLI = Date.parse('2100-01-01T00:00:00Z');
 export const SAAT_GERI_TOLERANS_MS = 10 * 60_000;
 export const saatGecerliMi = (simdi: Date, sonSunucuMs = 0): boolean => {
   const t = simdi.getTime();
   return t >= EN_ERKEN_GECERLI && (sonSunucuMs <= 0 || t >= sonSunucuMs - SAAT_GERI_TOLERANS_MS);
 };
 
+/** İşaret güncelleme kuralı: tek başına gelen eski `Date` (SW bayat önbelleği) işareti düşürmez;
+ *  düşüş yalnız taze sunucu zamanı cihaz saatiyle uyuşup ikisi birden işaretten sapınca olur,
+ *  yani bozuk olanın işaret olduğu anlaşılınca. */
+export function isaretGuncelle(sonMs: number, sunucuMs: number | null, cihazMs: number): number {
+  if (sunucuMs === null || typeof sunucuMs !== 'number' || !isFinite(sunucuMs)) return sonMs;
+  if (sunucuMs > sonMs) return sunucuMs;
+  if (sunucuMs < sonMs - SAAT_GERI_TOLERANS_MS && Math.abs(cihazMs - sunucuMs) <= SAAT_GERI_TOLERANS_MS) return sunucuMs;
+  return sonMs;
+}
+
+/** Turun günü: saat güvenilirse cihaz günü, değilse son görülen sunucu günü (kilitte yanlış gün olmasın diye);
+ *  işaret de yoksa elde cihaz günü kalır. */
+export function turGunu(simdi: Date, sonSunucuMs: number): string {
+  if (saatGecerliMi(simdi, sonSunucuMs)) return bugunTarih(simdi);
+  if (sonSunucuMs > 0) return bugunTarih(new Date(sonSunucuMs));
+  return bugunTarih(simdi);
+}
+
 /** HTTP `Date` başlığını (RFC 7231 IMF-fixdate, ör. `Fri, 09 Oct 2026 16:49:41 GMT`) milisaniyeye çevirir.
- *  Boş, bozuk ya da `EN_ERKEN_GECERLI`'den eski başlık null döner: bayat bir sunucu/ara katman işareti yükseltemez. */
+ *  Boş, bozuk, `EN_ERKEN_GECERLI`'den eski ya da `EN_GEC_GECERLI`'ndeki ve ötesindeki başlık null döner:
+ *  bayat ya da gelecekten gelen bir sunucu/ara katman işareti yükseltemez. */
 export function sunucuSaatiCoz(baslik: string | null): number | null {
   if (!baslik) return null;
   const ms = Date.parse(baslik);
-  return isFinite(ms) && ms >= EN_ERKEN_GECERLI ? ms : null;
+  return isFinite(ms) && ms >= EN_ERKEN_GECERLI && ms < EN_GEC_GECERLI ? ms : null;
 }
 
 const SAAT_PARCALARI = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });

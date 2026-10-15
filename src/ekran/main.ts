@@ -7,7 +7,7 @@
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
-import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, TUR_HEDEF_SN, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
+import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, TUR_HEDEF_SN, turGunu, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
 import { alan, yaz } from './gorunum.ts';
 import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
@@ -104,13 +104,13 @@ const TARIH_FR = new Intl.DateTimeFormat('fr-BE', { timeZone: TZ, weekday: 'long
 const iki = (n: number): string => (n < 10 ? '0' : '') + n;
 
 let hava: HavaDurumu | null = null;
-/** Üst bantta dış hava; 3 saatten eskiyse gizlenir ve içi boşaltılır (bayat simge/sıcaklık DOM'da kalmaz). SVG ve
+/** Üst bantta dış hava; saat güvensizse ya da 3 saatten eskiyse gizlenir ve içi boşaltılır (bayat simge/sıcaklık DOM'da kalmaz). SVG ve
  *  sayı sabit/sayısal olduğu için innerHTML güvenli. Sayı ile birim arasında dar bölünmez boşluk (U+202F). */
-function havaCiz(): void {
+function havaCiz(gecerli: boolean): void {
   const kutu = alan('hava');
   const h = hava;
   if (!kutu) return;
-  if (!havaTazeMi(h, Date.now())) { kutu.hidden = true; kutu.innerHTML = ''; return; }
+  if (!gecerli || !havaTazeMi(h, Date.now())) { kutu.hidden = true; kutu.innerHTML = ''; return; }
   kutu.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SIMGE_YOLLARI[havaSimgesi(h.kod)]}</svg><span>${h.sicaklik}\u202F°C</span><small>Open-Meteo</small>`;
   kutu.hidden = false;
 }
@@ -139,7 +139,7 @@ function dakikalik(simdi: Date): void {
       if (slayt && typeof ResizeObserver !== 'function' && kok.classList.contains('cumali') !== cumaliydi) levhaSigdir(slayt);
     }
     ekran.setAttribute('data-tema', temaSec(gorunum ? gorunum.gun : undefined, simdi));
-    havaCiz();
+    havaCiz(gecerli);
     dakikaSaglikli = true;
   } catch (hata) {
     dakikaSaglikli = false;
@@ -259,7 +259,7 @@ function turKur(kok: HTMLElement): void {
   const icerik = veri.icerik;
   tur = slaytListesi(
     { duyurular: birlesikDuyurular(veri.akis, kabuk.duyurular), ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
-    ekranId, bugunTarih(new Date()), turNo,
+    ekranId, turGunu(new Date(), sonSunucuSaati()), turNo,
     { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
   );
   sira = 0;
@@ -332,7 +332,7 @@ async function havaDongusu(): Promise<void> {
     /* ağ yok ya da 30 sn'de yanıt gelmedi: son değer 3 saat daha gösterilir */
   } finally {
     clearTimeout(zamanlayici);
-    try { havaCiz(); } catch (hata) { console.error(hata); }
+    try { havaCiz(saatGecerliMi(new Date(), sonSunucuSaati())); } catch (hata) { console.error(hata); }
     setTimeout(() => { void havaDongusu(); }, 30 * 60_000);
   }
 }

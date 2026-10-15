@@ -299,3 +299,36 @@ test('sunucu saati: localStorage okurken ve yazarken fırlatırsa yine bellekte 
     assert.equal(m.sonSunucuSaati(), MS_B);
   });
 });
+
+// Bozuk ya da gelecekten kalma saklı değer (bit kayması, elle yazım, test artığı) sayfayı kilitlemesin diye yok sayılır.
+test('sunucu saati: aralık dışı saklı değer yok sayılır, geçerli değer korunur', async () => {
+  const eski = String(Date.parse('2026-08-31T23:59:59Z'));
+  for (const bozuk of ['9999999999999', '1e21', 'abc', eski, '1791547200000.5']) {
+    await depoyla(sahteDepo({ 'ekran.sonSunucuSaati': bozuk }), async () => {
+      const m = await tazeVeri();
+      assert.equal(m.sonSunucuSaati(), 0, 'bozuk değer: ' + bozuk);
+    });
+  }
+  await depoyla(sahteDepo({ 'ekran.sonSunucuSaati': String(MS_A) }), async () => {
+    const m = await tazeVeri();
+    assert.equal(m.sonSunucuSaati(), MS_A);
+  });
+});
+
+test('sunucu saati: sıfırlama depoya hemen yazılır, eşik altı yükseltme yazılmaz', async () => {
+  const depo = sahteDepo();
+  await depoyla(depo, async () => {
+    const m = await tazeVeri();
+    const TAZE = MS_B - 65 * 60_000;
+    m.sunucuSaatiniKaydet(MS_B, MS_B);
+    assert.equal(m.sonSunucuSaati(), MS_B);
+    assert.equal(depo.yazimlar.length, 1);
+    m.sunucuSaatiniKaydet(MS_B + 30_000, MS_B + 30_000);
+    assert.equal(m.sonSunucuSaati(), MS_B + 30_000);
+    assert.equal(depo.yazimlar.length, 1, 'eşik altı yükseltme yazılmaz');
+    m.sunucuSaatiniKaydet(TAZE, TAZE);
+    assert.equal(m.sonSunucuSaati(), TAZE, 'cihaz uyuşunca işaret sıfırlanır');
+    assert.equal(depo.yazimlar.length, 2, 'sıfırlama hemen yazılır');
+    assert.deepEqual(depo.yazimlar[1], ['ekran.sonSunucuSaati', String(TAZE)]);
+  });
+});

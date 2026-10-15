@@ -15,6 +15,14 @@ test('3 saatten eski hava gösterilmez', () => {
   assert.equal(havaTazeMi(null, 0), false);
 });
 
+// Saat geriye giderse gelecekten gelen okuma bayat sayılır; küçük kayma tolere edilir.
+test('gelecekten gelen hava okuması 10 dakikayı aşarsa bayat sayılır', () => {
+  const simdi = 1_000_000_000;
+  assert.equal(havaTazeMi({ sicaklik: 12, kod: 3, alinan: simdi + 11 * 24 * 3_600_000 }, simdi), false);
+  assert.equal(havaTazeMi({ sicaklik: 12, kod: 3, alinan: simdi + 5 * 60_000 }, simdi), true);
+  assert.equal(havaTazeMi({ sicaklik: 12, kod: 3, alinan: 0 }, 3 * 3_600_000 + 60_000), false);
+});
+
 test('WMO kodları simgeye eşlenir', () => {
   assert.deepEqual([0, 2, 3, 45, 61, 73, 86, 95].map(havaSimgesi), ['gunes', 'parcali', 'bulut', 'sis', 'yagmur', 'kar', 'kar', 'firtina']);
 });
