@@ -4,6 +4,34 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 15 Ekim 2026 — vaaz: «Kâmil Müminin Özellikleri» (16 Ekim 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 15 Ekim 2026 16:32:08 (push) – 16:34:22 (deploy) – 16:37 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «bu vaazı mükemmel hale getir … 5 dilde yayınla» ve
+  «web sitesinde yayınla, işleri bitir» istekleri (aynı oturumda yayın, açık istek).
+- Kapsam: TR sayfa `src/content/vaazlar/kamil-muminin-ozellikleri-imanin-meyvesi.md` (16 sahne çizimi × 4 boy +
+  `kapak-og.webp`, dört ana fikir, 11 duraklı vaaz haritası), FR/EN/NL/DE çevirileri
+  `src/content/vaaz-cevirileri/<dil>/kamil-muminin-ozellikleri-imanin-meyvesi.md`, beş dilde Word/PDF
+  (`public/vaazlar/…`; her PDF 14 sayfa, 14 yer imi), `src/styles/vaaz-sahne.css` eklentileri, TR/FR duyuru
+  `src/content/duyurular/{tr,fr}/cuma-vaazi-kamil-muminin-ozellikleri.md` (EN/NL/DE FR duyuruyu gösterir; kapak
+  `iman-agaci-1600.webp` / `iman-agaci-480.webp`; dört ana fikir vaazdan birebir). Vitrin otomatik, cami ekranına konmadı.
+- Release `vaaz-kamil-muminin-ozellikleri-imanin-meyvesi`: 10 dosya (5 dil × PowerPoint + sunum PDF, her sunum 67
+  slayt). Latest yapılmadı; `ders-2026-10-19` Latest kaldı.
+- İçerik commit'i `5a8fb27` (push `ea596e2..5a8fb27`, 83 dosya).
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/38752267057) **success**.
+- Kalite: `npm run check` 0 hata / 0 uyarı; `npm run build` 1932 sayfa; `npm run test:vaaz-pdf` geçti. Çeviri denetimi
+  fr/en/nl/de 1006 kayıt, HATA 0; sunumlarda taşma 0 ve yeni COM çakışma kapısı (`sunum/cakisma_denetle.py`) 0; Word
+  yazım hatası 0; Türkçe teslim dosyaları SHA-256 ile değişmedi. Yerel `web_kontrol.mjs`: 22 görünüm, axe 0, 75 dosya,
+  10 bağlantı.
+- Canlı: `web_kontrol.mjs https://ulucamii.be` (5 dil) 22 görünüm, axe 0, 75 indirme, 10 Release sunumu, 10 diğer
+  bağlantı geçti; 5 duyuru yolu (`/tr/duyurular/…`, `/fr/annonces/…`, `/en/announcements/…`, `/nl/mededelingen/…`,
+  `/de/mitteilungen/…`) 200; vaaz ve duyuru metninde din görevlisi telefonu 0.
+- Üretim: çeviri, sunum ve duyuru üretimi OpenCode işçileri (Muse Spark 1.3), denetim Claude; sunumlarda 3 düzeltme
+  turu (yerleşim; NL'de anlam kaybettiren kısaltmalar geri alındı). Kaynak
+  `D:/hutbeler ve vaazlar/kaynak-kamil-mumin-20261016/` (`_isci/RAPOR.md`, `YAYIN-VE-KALITE.md`).
+- Sınırlar: paylaşım mesajı hazır ama gönderilmedi; Facebook paylaşımı yapılmadı (istenmedi). Bu kayıt için belge
+  commit'i içerik yayını değildir.
+
 ## 13 Ekim 2026 (gece) — eski `/envanter/` sayfası ve gizlilik bölümü kaldırıldı
 
 - Zaman: push 21:27, [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/38455028384)
