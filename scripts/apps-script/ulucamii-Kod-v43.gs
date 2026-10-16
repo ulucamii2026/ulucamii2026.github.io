@@ -45,7 +45,7 @@
  * 8 EYLÜL 2026 — v23: İHTİDA formu artık görsel ve imza da topluyor (Rıdvan'ın kararı).
  *   Vesikalık fotoğraf, kimlik belgesinin ön/arka yüzü ve ekranda çizilen imza,
  *   İhtida Belgesi'nin (EK-9) düzenlenmesi ve resmî dosyanın oluşturulması içindir; belge ve
- *   ekleri hem camimizde hem T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği'nde saklanır.
+ *   ekleri hem camimizde hem Diyanet İşleri Başkanlığının Belçika'daki yetkili biriminde saklanır.
  *   Dosyalar İHTİDA klasörüne "<ref> - vesikalik.jpg | kimlik-on.jpg | kimlik-arka.jpg | imza.png"
  *   adlarıyla yazılır — DEFTERE YENİ SÜTUN EKLENMEZ. Panel bunları ?islem=belge ile geri okur,
  *   ?islem=ihtida-gorsel-sil&ref=… ile TEK BAŞVURUNUN görselleri tek tek silinir (toplu silme yok).
@@ -882,9 +882,9 @@ function pdfHtmlIhtida(veri, meta) {
     + "<p>" + kacis(beyanTr) + "<br>" + kacis(beyanFr) + "</p>"
     + '<div class="onay">Elektronik beyan / Déclaration électronique: <b>' + kacis(onay.beyan || "") + "</b> — " + kacis(zaman) + "</div>"
     + "<p>Belge görselleri açık rızayla başvuruda alınır. Şahitlik ve imzalar törende teyit edilir. "
-    + "Dosya Müşavirliğe gönderilir; imzalanan belge seçilen teslim yerine postalanır. / "
+    + "Dosya onay için Diyanet İşleri Başkanlığının yetkili birimine gönderilir; imzalanan belge seçilen teslim yerine postalanır. / "
     + "Les documents sont recueillis avec votre consentement. Les témoins et les signatures sont confirmés lors de la cérémonie. "
-    + "Après la signature du Conseiller, l’attestation est envoyée au lieu choisi.</p>"
+    + "Le dossier est transmis pour validation au service compétent de la Présidence des Affaires religieuses (Diyanet) ; une fois signée, l’attestation est envoyée au lieu choisi.</p>"
     + "</section>";
 
   var altBilgi = "<footer>Bu bir ön başvurudur; resmî İhtida Belgesi (EK-9) törenin ardından düzenlenir. "
@@ -2186,23 +2186,23 @@ function ihtidaKopyaGonderV2(blob, ref, adSoyad, eposta, dil) {
   var metinler = {
     tr: [adSoyad + " adına yaptığınız İhtida Belgesi ön başvurusu alınmıştır. Referans numaranız: " + ref,
       "Doldurduğunuz form bu e-postanın ekindedir; lütfen saklayınız.",
-      "Bu bir ön başvurudur. Resmî İhtida Belgesi (EK-9), camimizdeki törenin ardından T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği onayıyla düzenlenir.",
+      "Bu bir ön başvurudur. Resmî İhtida Belgesi (EK-9), camimizdeki törenin ardından Diyanet İşleri Başkanlığının yetkili biriminin onayıyla düzenlenir.",
       "Tören tarihini belirlemek için camimiz sizinle ayrıca iletişime geçecektir."],
     fr: ["Votre pré-demande d’attestation de conversion au nom de " + adSoyad + " a bien été reçue. Numéro de référence : " + ref,
       "Le formulaire complété se trouve en pièce jointe ; conservez-le.",
-      "Il s’agit d’une pré-demande. L’attestation officielle de conversion (EK-9) est délivrée après la cérémonie à la mosquée, avec la validation du Conseiller des Affaires sociales de l’Ambassade de Turquie à Bruxelles.",
+      "Il s’agit d’une pré-demande. L’attestation officielle de conversion (EK-9) est délivrée après la cérémonie à la mosquée, avec la validation du service compétent de la Présidence des Affaires religieuses (Diyanet).",
       "La mosquée vous recontactera pour fixer une date."],
     en: ["The preliminary conversion application for " + adSoyad + " has been received. Reference number: " + ref,
       "Your completed form is attached to this e-mail; please keep it.",
-      "This is a preliminary application. The official conversion certificate (EK-9) is issued after the ceremony at the mosque, with the approval of the Social Affairs Office of the Turkish Embassy in Brussels.",
+      "This is a preliminary application. The official conversion certificate (EK-9) is issued after the ceremony at the mosque, with the approval of the competent unit of the Presidency of Religious Affairs (Diyanet).",
       "The mosque will contact you to arrange the ceremony date."],
     nl: ["Uw voorlopige aanvraag voor een bekeringsattest op naam van " + adSoyad + " is goed ontvangen. Uw referentienummer: " + ref,
       "Het ingevulde formulier vindt u in bijlage; bewaar het zorgvuldig.",
-      "Dit is een voorlopige aanvraag. Het officiële bekeringsattest (EK-9) wordt na de plechtigheid in onze moskee afgeleverd, met de goedkeuring van de Attaché voor Sociale Zaken van de Turkse ambassade in Brussel.",
+      "Dit is een voorlopige aanvraag. Het officiële bekeringsattest (EK-9) wordt na de plechtigheid in onze moskee afgeleverd, met de goedkeuring van de bevoegde dienst van het Directoraat voor Godsdienstzaken (Diyanet).",
       "De moskee neemt contact met u op om een datum voor de plechtigheid vast te leggen."],
     de: ["Ihr Vorantrag auf eine Konversionsbescheinigung auf den Namen " + adSoyad + " ist bei uns eingegangen. Ihre Referenznummer: " + ref,
       "Das ausgefüllte Formular finden Sie im Anhang; bitte bewahren Sie es auf.",
-      "Dies ist ein Vorantrag. Die offizielle Konversionsbescheinigung (EK-9) wird nach der Zeremonie in unserer Moschee mit der Bestätigung des Attachés für Soziale Angelegenheiten der türkischen Botschaft in Brüssel ausgestellt.",
+      "Dies ist ein Vorantrag. Die offizielle Konversionsbescheinigung (EK-9) wird nach der Zeremonie in unserer Moschee mit der Genehmigung der zuständigen Stelle des Präsidiums für Religiöse Angelegenheiten (Diyanet) ausgestellt.",
       "Die Moschee wird sich mit Ihnen in Verbindung setzen, um einen Termin für die Zeremonie zu vereinbaren."]
   };
   var hitap = KIMLIK.yazisma.hitap[dil].resmi.replace(/\{adSoyad\}/g, adSoyad);

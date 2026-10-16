@@ -4,6 +4,26 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 16 Ekim 2026 (öğle) — ihtida sayfaları ve başvuru e-postası: onay adımının dili
+
+- Zaman: 16 Ekim 2026 13:24 (push) – 13:27 (Pages) – 13:36 (Apps Script) – 13:37 (canlı doğrulama), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.**
+- Site (beş dil): ihtida sayfası, başvuru formu metinleri ve gizlilik politikasının ihtida bölümü. Belgeyi onaylayan makam,
+  kişi adı anılmadan «Diyanet İşleri Başkanlığının yetkili birimi» olarak yazıldı (FR «service compétent de la Présidence
+  des Affaires religieuses (Diyanet)», EN «competent unit of the Presidency of Religious Affairs», NL «bevoegde dienst van het
+  Directoraat voor Godsdienstzaken», DE «zuständige Stelle des Präsidiums für Religiöse Angelegenheiten»). Kurumsal bağ
+  paragrafı: «Cemaatimiz din hizmetlerinde Vakfa başvurur.» Gizlilikteki seviye testi bölümüne dokunulmadı.
+- İçerik commit'i `bdc285a` (23 dosya). [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/38893599427)
+  **success**. Doğrulama: `npm run check` 0 hata; `npm run dogrula` 465/465, 1932 sayfa. Canlıda 19 sayfa tarandı: ihtida,
+  başvuru ve gizlilik sayfalarında eski makam adı 0, yeni ifade var.
+- Apps Script (aynı `SURUM = 43`, yeni dağıtım sürümü **58**): başvuru onay e-postası (beş dil) ve başvuru PDF'inin beyan
+  bloğu (TR/FR) aynı dile çekildi. Yeni paket canlı kaynakla karşılaştırıldı: fark yalnız bu 8 satır. Kuru okuma canlı kaynağın
+  10 Ekim dağıtımıyla birebir aynı olduğunu gösterdi; kaydedilen kod yeniden okundu ve paketle aynıydı; sağlık `surum: 43`.
+  `test:ihtida` 35/35, `test:gas-ceviri` 6/6. EK-9, EK-10 ve panel paketi (resmî dosya) değişmedi.
+- Dağıtım notu: `D:/tmp/ff-gsc-min` profili 14 Ekim'de Firefox 155 ile açılmıştı; Python Playwright 1.62'nin Firefox'u bu
+  profili açamıyor (180 sn zaman aşımı). Dağıtım `GAS_FIREFOX=<ms-playwright/firefox-1543/firefox/firefox.exe>` ile yapıldı
+  (`dagit_v43.py` bu değişkeni okuyor).
+
 ## 15 Ekim 2026 (akşam) — vaaz: «Kâmil Müminin Özellikleri» inceleme turu (metin, çeviri, şablon düzeltmeleri)
 
 - Zaman: 15 Ekim 2026 19:14 (push) – 19:17 (deploy) – 19:25 (canlı doğrulama), Europe/Brussels (CEST).
