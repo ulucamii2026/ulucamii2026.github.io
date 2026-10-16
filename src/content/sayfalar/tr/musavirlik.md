@@ -2,14 +2,14 @@
 baslik: "Brüksel Sosyal İşler Müşaviri Salih GÖR"
 altBaslik: "Görevi, özgeçmişi ve camimizin kurumsal bağı"
 aciklama: "Görevi, özgeçmişi ve camimizin kurumsal bağı"
-guncelleme: 2026-09-19
+guncelleme: 2026-10-16
 ---
 
 **Salih GÖR, T.C. Brüksel Büyükelçiliği Sosyal İşler Müşaviri olarak 20 Nisan 2026 tarihinde görevine başladı.** Ataması, 13 Şubat 2026 tarihli ve 2026/56 sayılı Cumhurbaşkanlığı Kararı ile yapıldı.
 
 ## Camimizin kurumsal bağı
 
-Marche-en-Famenne Ulu Camii, Belçika Diyanet Vakfı’na bağlı olarak hizmet verir. Müşavirlik ve Vakıf, cemaatimizin din hizmetleri ve kurumsal bilgilendirme bakımından başvurduğu yapılardır. Bu sayfa, müşavirimizi tanımak ve resmî hizmetlere doğru yerden ulaşmak için hazırlanmıştır.
+Marche-en-Famenne Ulu Camii, Belçika Diyanet Vakfı’na bağlı olarak hizmet verir. Cemaatimiz din hizmetlerinde Vakfa başvurur. Bu sayfa, müşavirimizi tanımak ve resmî hizmetlere doğru yerden ulaşmak için hazırlanmıştır.
 
 Camimizin yerel dernek yönetimini [Yönetim Kurulu](/tr/yonetim-kurulu/) sayfasında; hac, umre ve diğer hizmetleri [Diyanet Hizmetleri](/tr/diyanet-hizmetleri/) bölümünde bulabilirsiniz.
 

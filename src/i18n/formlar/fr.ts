@@ -220,9 +220,9 @@ export const fr: FormMetinleri = {
     sayfaBaslik: 'Formulaire de demande de conversion',
     sayfaAciklama: 'Formulaire de demande de conversion (devenir musulman) de la mosquée Marche-en-Famenne Ulu Camii : envoyez vos informations, notre imam vous contactera pour fixer une date pour la chahada et l’attestation de conversion.',
     ustEtiket: 'Conversion · Devenir musulman',
-    giris: "Ce formulaire sert à préparer votre entretien et votre attestation de conversion EK-9. Notre imam vous contactera pour organiser la cérémonie. Votre dossier sera transmis au service du Conseiller ; après sa signature, l’attestation sera envoyée par courrier à la mosquée choisie ou à votre domicile, selon votre choix. La demande est gratuite.",
+    giris: "Ce formulaire sert à préparer votre entretien et votre attestation de conversion EK-9. Notre imam vous contactera pour organiser la cérémonie. Votre dossier sera envoyé pour approbation ; une fois signée, l’attestation sera envoyée par courrier à la mosquée choisie ou à votre domicile, selon votre choix. La demande est gratuite.",
     paketBildirimi: 'Votre demande est enregistrée. Le dossier PDF comprenant l’EK-9, l’EK-10, la demande et la copie d’identité sera préparé et envoyé à {eposta}. La version finale sera établie après confirmation de la cérémonie et des témoins.',
-    kimlikNotu: 'Pour établir l’attestation de conversion (EK-9), il faut une photo d’identité, le recto et le verso de votre pièce d’identité et votre signature : vous les ajoutez à la section 5 et vous signez à l’écran. Vous ne devez pas recopier votre numéro de registre national. Toutes les informations et pièces de votre demande sont conservées à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles ; elles ne sont jamais publiées et ne sont vues que par les responsables habilités.',
+    kimlikNotu: 'Pour établir l’attestation de conversion (EK-9), il faut une photo d’identité, le recto et le verso de votre pièce d’identité et votre signature : vous les ajoutez à la section 5 et vous signez à l’écran. Vous ne devez pas recopier votre numéro de registre national. Toutes les informations et pièces de votre demande sont conservées à la fois par notre mosquée et par le service compétent de la Présidence des Affaires religieuses (Diyanet) en Belgique ; elles ne sont jamais publiées et ne sont vues que par les responsables habilités.',
     bolum: { kisi: 'Informations personnelles', durum: 'Situation', iletisim: 'Contact', ihtida: 'Conversion et cérémonie', belgeler: 'Documents et signature', riza: 'Consentement et déclaration', ozet: 'Récapitulatif et envoi' },
     kisi: {
       adSoyad: 'Vos nom et prénom', adSoyadYardim: 'Comme indiqué sur votre pièce d’identité ; ce nom figurera sur l’attestation.',
@@ -235,7 +235,7 @@ export const fr: FormMetinleri = {
       ogrenim: 'Niveau d’études', ogrenimYardim: 'Exemple : secondaire, bachelier, master', meslek: 'Profession',
     },
     iletisim: {"eposta": "E-mail", "telefon": "Téléphone", "adres": "Domicile : rue, numéro et boîte", "adresYardim": "Exemple : Rue du Test 12, boîte 3", "postaKodu": "Code postal", "sehir": "Ville / commune", "ulke": "Pays"},
-    teslimat: {"baslik": "Réception de l’attestation signée", "aciklama": "Où souhaitez-vous recevoir votre attestation après la signature du Conseiller ?", "cami": "Retrait à la mosquée ; envoyer l’attestation à la mosquée", "adres": "Envoi postal à mon domicile indiqué ci-dessus", "adresNotu": "L’enveloppe portera votre nom et votre adresse complète ci-dessus. Vérifiez que ce nom figure sur votre boîte aux lettres et que l’adresse est complète."},
+    teslimat: {"baslik": "Réception de l’attestation signée", "aciklama": "Où souhaitez-vous recevoir votre attestation une fois signée ?", "cami": "Retrait à la mosquée ; envoyer l’attestation à la mosquée", "adres": "Envoi postal à mon domicile indiqué ci-dessus", "adresNotu": "L’enveloppe portera votre nom et votre adresse complète ci-dessus. Vérifiez que ce nom figure sur votre boîte aux lettres et que l’adresse est complète."},
     ihtida: {
       oncekiDin: 'Religion / confession précédente', oncekiDinYardim: 'Exemple : catholique, protestant, sans religion…',
       sebep: 'Votre motivation pour choisir l’islam', sebepYardim: 'Facultatif ; quelques phrases suffisent.',
@@ -256,7 +256,7 @@ export const fr: FormMetinleri = {
       kimlikArka: 'Verso de la pièce d’identité', kimlikArkaYardim: 'Obligatoire pour une carte d’identité ; inutile pour un passeport.',
       sec: 'Choisir ou prendre une photo', degistir: 'Remplacer', kaldir: 'Retirer', onizleme: 'Aperçu de l’image envoyée',
       isleniyor: 'Préparation de l’image…', hazir: 'Prête · {boyut}',
-      imza: 'Votre signature', imzaYardim: "Avec votre autorisation, la signature tracée ici sera reportée sur l’attestation EK-9, le formulaire de consentement EK-10 que vous avez accepté et la demande d’attestation de conversion. Notre imam préparera ces documents pour les envoyer au service du Conseiller.",
+      imza: 'Votre signature', imzaYardim: "Avec votre autorisation, la signature tracée ici sera reportée sur l’attestation EK-9, le formulaire de consentement EK-10 que vous avez accepté et la demande d’attestation de conversion. Notre imam préparera ces documents et les enverra pour approbation.",
       imzaTemizle: 'Effacer la signature',
       imzaYok: 'Je ne peux pas signer à l’écran ; je signerai le document à la main le jour de la cérémonie.',
       imzaYokYardim: 'Cochez si vous n’avez pas d’écran tactile ou si le tracé vous est difficile : l’emplacement de la signature restera vide et vous signerez au stylo le jour de la cérémonie.',
@@ -272,7 +272,7 @@ export const fr: FormMetinleri = {
       ek10Baglanti: 'Ouvrir le texte EK-10 (PDF)',
       gizlilik: 'J’ai lu la déclaration de confidentialité.',
       fotoIzni: 'J’accepte d’apparaître sur les photos et vidéos prises pendant la cérémonie.',
-      gorselRiza: 'Je consens expressément au traitement de ma photo d’identité, du recto et du verso de ma pièce d’identité et de ma signature, aux fins d’établir l’attestation de conversion (EK-9) et de constituer le dossier officiel. Je sais que ces informations et pièces sont conservées à la fois par l’association Ulu Camii de Marche-en-Famenne et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles.',
+      gorselRiza: 'Je consens expressément au traitement de ma photo d’identité, du recto et du verso de ma pièce d’identité et de ma signature, aux fins d’établir l’attestation de conversion (EK-9) et de constituer le dossier officiel. Je sais que ces informations et pièces sont conservées à la fois par l’association Ulu Camii de Marche-en-Famenne et par le service compétent de la Présidence des Affaires religieuses (Diyanet) en Belgique.',
       gorselRizaYardim: 'Les images restent dans un dossier fermé de l’association, ne sont jamais publiées et ne sont vues que par les responsables habilités. Vous pouvez retirer votre consentement à tout moment.',
       fotoAciklama: 'Facultatif. Les images ne sont partagées qu’avec votre accord distinct ; répondre « non » n’a aucune incidence sur la demande.',
       beyanBaslik: 'Déclaration',
@@ -282,7 +282,7 @@ export const fr: FormMetinleri = {
     },
     ozet: { belgeler: 'Documents et signature', kisi: 'Nom et prénom', dogum: 'Naissance', uyruk: 'Nationalité', aile: 'Prénoms des parents', durum: 'État civil · études · profession', iletisim: 'Contact', din: 'Religion précédente', toren: 'Langue de la cérémonie · date souhaitée', sahitler: 'Témoins' },
     basari: {
-      sonrakiAdimlar: "Notre imam vous contactera pour l’entretien et la cérémonie. Après la signature du Conseiller, votre attestation sera envoyée au lieu choisi ; le délai vous sera communiqué séparément.",
+      sonrakiAdimlar: "Notre imam vous contactera pour l’entretien et la cérémonie. Une fois votre attestation signée, elle sera envoyée au lieu choisi ; le délai vous sera communiqué séparément.",
     },
   },
 };

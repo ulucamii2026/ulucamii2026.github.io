@@ -1,7 +1,7 @@
 /** Kayıt ve ihtida formlarının metin şeması — üç dil aynı anahtarları taşır (tr.ts / fr.ts / en.ts).
     30 Ağustos 2026: formlar kimlik numarası, kimlik kopyası, görsel veya imza toplamıyordu.
     8 EYLÜL 2026 — Rıdvan'ın kararıyla İHTİDA formu için bu geri alındı: vesikalık, kimlik belgesinin
-    ön/arka yüzü ve çizilen imza formda alınır (EK-9 ve Müşavirlik dosyası için). KAYIT formu (çocuk
+    ön/arka yüzü ve çizilen imza formda alınır (EK-9 ve resmî dosya için). KAYIT formu (çocuk
     kaydı) 13 Eylül 2026 v3'te yol seçmeli açık rızayla ön yüz ve isteğe bağlı arka yüz alır;
     aynı gün akşamı Rıdvan'ın kararıyla ihtidadaki gibi ekranda ÇİZİLEN İMZA da alınır (kayıt
     PDF'ine aynen basılır). Kimlik numarası, MRZ/OCR ve vesikalık hâlâ yoktur. */

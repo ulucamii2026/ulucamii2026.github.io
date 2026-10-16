@@ -221,9 +221,9 @@ export const nl: FormMetinleri = {
     sayfaBaslik: 'Aanvraagformulier bekering tot de islam',
     sayfaAciklama: 'Aanvraagformulier voor bekering tot de islam (moslim worden) van de moskee Marche-en-Famenne Ulu Camii: bezorg ons uw gegevens en onze imam neemt contact met u op om een dag af te spreken voor de geloofsgetuigenis (shahada) en het bekeringsattest.',
     ustEtiket: 'Bekering · Moslim worden',
-    giris: 'Dit formulier dient om uw gesprek en uw bekeringsattest EK-9 voor te bereiden. Onze imam neemt contact met u op om de plechtigheid te plannen. Uw dossier gaat naar de Raad voor Sociale Zaken; na zijn handtekening wordt het attest, naar uw keuze, naar de gekozen moskee of naar uw woonadres opgestuurd. De aanvraag is gratis.',
+    giris: 'Dit formulier dient om uw gesprek en uw bekeringsattest EK-9 voor te bereiden. Onze imam neemt contact met u op om de plechtigheid te plannen. Uw dossier wordt ter goedkeuring verstuurd; na ondertekening wordt het attest, naar uw keuze, naar de gekozen moskee of naar uw woonadres opgestuurd. De aanvraag is gratis.',
     paketBildirimi: 'Uw aanvraag is geregistreerd. Uw pdf-dossier met EK-9, EK-10, het verzoekschrift en de kopie van uw identiteitsbewijs wordt klaargemaakt en naar {eposta} gestuurd. Het definitieve exemplaar wordt opgemaakt nadat de plechtigheid en de getuigen bevestigd zijn.',
-    kimlikNotu: 'Om het bekeringsattest (EK-9) te kunnen opmaken, zijn een pasfoto, de voor- en achterkant van uw identiteitsbewijs en uw handtekening nodig; u laadt ze op in onderdeel 5 en tekent uw handtekening op het scherm. U hoeft uw rijksregisternummer niet apart in te vullen. Alle gegevens en documenten van uw aanvraag worden zowel in onze moskee als bij de Raad voor Sociale Zaken van de Turkse ambassade in Brussel bewaard; ze worden nooit gepubliceerd en alleen bevoegde medewerkers zien ze.',
+    kimlikNotu: 'Om het bekeringsattest (EK-9) te kunnen opmaken, zijn een pasfoto, de voor- en achterkant van uw identiteitsbewijs en uw handtekening nodig; u laadt ze op in onderdeel 5 en tekent uw handtekening op het scherm. U hoeft uw rijksregisternummer niet apart in te vullen. Alle gegevens en documenten van uw aanvraag worden zowel in onze moskee als bij de bevoegde dienst van het Presidium voor Godsdienstzaken (Diyanet) in België bewaard; ze worden nooit gepubliceerd en alleen bevoegde medewerkers zien ze.',
     bolum: { kisi: 'Persoonlijke gegevens', durum: 'Situatie', iletisim: 'Contactgegevens', ihtida: 'Bekering en plechtigheid', belgeler: 'Documenten en handtekening', riza: 'Toestemming en verklaring', ozet: 'Overzicht en verzending' },
     kisi: {
       adSoyad: 'Uw naam en voornaam', adSoyadYardim: 'Zoals op uw identiteitsbewijs; deze naam komt op het attest.',
@@ -236,7 +236,7 @@ export const nl: FormMetinleri = {
       ogrenim: 'Opleidingsniveau', ogrenimYardim: 'Voorbeeld: secundair onderwijs, bachelor, master', meslek: 'Beroep',
     },
     iletisim: {"eposta": "E-mail", "telefon": "Telefoon", "adres": "Woonadres: straat, nummer en bus", "adresYardim": "Voorbeeld: Rue du Test 12, bus 3", "postaKodu": "Postcode", "sehir": "Stad / gemeente", "ulke": "Land"},
-    teslimat: {"baslik": "Ontvangst van het ondertekende attest", "aciklama": "Waar wilt u uw attest ontvangen nadat de Raad voor Sociale Zaken het ondertekend heeft?", "cami": "Ik haal het af in de moskee die ik gekozen heb; stuur het attest daarheen", "adres": "Stuur het met de post naar mijn woonadres hierboven", "adresNotu": "Op de omslag komen uw naam en uw volledige adres hierboven. Controleer of die naam op uw brievenbus staat en of het adres volledig is."},
+    teslimat: {"baslik": "Ontvangst van het ondertekende attest", "aciklama": "Waar wilt u uw attest ontvangen nadat het is ondertekend?", "cami": "Ik haal het af in de moskee die ik gekozen heb; stuur het attest daarheen", "adres": "Stuur het met de post naar mijn woonadres hierboven", "adresNotu": "Op de omslag komen uw naam en uw volledige adres hierboven. Controleer of die naam op uw brievenbus staat en of het adres volledig is."},
     ihtida: {
       oncekiDin: 'Vorige godsdienst / strekking', oncekiDinYardim: 'Voorbeeld: katholiek, protestants, zonder godsdienst…',
       sebep: 'Uw beweegreden om voor de islam te kiezen', sebepYardim: 'Optioneel; enkele zinnen volstaan.',
@@ -257,7 +257,7 @@ export const nl: FormMetinleri = {
       kimlikArka: 'Achterkant van het identiteitsbewijs', kimlikArkaYardim: 'Verplicht bij een identiteitskaart; niet nodig bij een paspoort.',
       sec: 'Foto kiezen of nemen', degistir: 'Vervangen', kaldir: 'Verwijderen', onizleme: 'Voorbeeld van de opgeladen afbeelding',
       isleniyor: 'Afbeelding wordt klaargemaakt…', hazir: 'Klaar · {boyut}',
-      imza: 'Uw handtekening', imzaYardim: 'Met uw toestemming wordt de handtekening die u hier tekent, overgenomen op het EK-9-attest, op het formulier voor uitdrukkelijke toestemming EK-10 dat u aanvaard hebt, en op het verzoek om een bekeringsattest. Onze imam maakt deze documenten op en stuurt ze naar de Raad voor Sociale Zaken.',
+      imza: 'Uw handtekening', imzaYardim: 'Met uw toestemming wordt de handtekening die u hier tekent, overgenomen op het EK-9-attest, op het formulier voor uitdrukkelijke toestemming EK-10 dat u aanvaard hebt, en op het verzoek om een bekeringsattest. Onze imam maakt deze documenten op en stuurt ze ter goedkeuring door.',
       imzaTemizle: 'Handtekening wissen',
       imzaYok: 'Ik kan niet op het scherm tekenen; ik onderteken het document met de hand op de dag van de plechtigheid.',
       imzaYokYardim: 'Vink dit aan als u geen aanraakscherm hebt of als tekenen moeilijk gaat: het handtekeningvak blijft leeg en u ondertekent het met de pen op de dag zelf.',
@@ -274,7 +274,7 @@ export const nl: FormMetinleri = {
       gizlilik: 'Ik heb de privacyverklaring gelezen.',
       fotoIzni: 'Ik ga ermee akkoord te verschijnen op foto’s en video’s die tijdens de plechtigheid gemaakt worden.',
       fotoAciklama: 'Optioneel. Beelden worden alleen met uw afzonderlijke toestemming gedeeld; “nee” antwoorden heeft geen invloed op de aanvraag.',
-      gorselRiza: 'Ik geef mijn uitdrukkelijke toestemming om mijn pasfoto, de voor- en achterkant van mijn identiteitsbewijs en mijn handtekening te laten verwerken met het oog op het opmaken van het bekeringsattest (EK-9) en het samenstellen van het officiële dossier. Ik weet dat deze gegevens en documenten zowel bij de vereniging Marche-en-Famenne Ulu Camii als bij de Raad voor Sociale Zaken van de Turkse ambassade in Brussel bewaard worden.',
+      gorselRiza: 'Ik geef mijn uitdrukkelijke toestemming om mijn pasfoto, de voor- en achterkant van mijn identiteitsbewijs en mijn handtekening te laten verwerken met het oog op het opmaken van het bekeringsattest (EK-9) en het samenstellen van het officiële dossier. Ik weet dat deze gegevens en documenten zowel bij de vereniging Marche-en-Famenne Ulu Camii als bij de bevoegde dienst van het Presidium voor Godsdienstzaken (Diyanet) in België bewaard worden.',
       gorselRizaYardim: 'De afbeeldingen blijven in een afgesloten map van de vereniging, worden nooit gepubliceerd en worden alleen door bevoegde medewerkers bekeken. U kunt uw toestemming op elk moment intrekken.',
       beyanBaslik: 'Verklaring',
       beyanMetin: 'Uit eigen vrije wil wens ik de islam aan te nemen. Ik verzoek u met respect het bekeringsattest op mijn naam op te maken.',
@@ -283,7 +283,7 @@ export const nl: FormMetinleri = {
     },
     ozet: { kisi: 'Naam en voornaam', dogum: 'Geboorte', uyruk: 'Nationaliteit', aile: 'Voornamen van de ouders', durum: 'Burgerlijke staat · opleiding · beroep', iletisim: 'Contactgegevens', din: 'Vorige godsdienst', toren: 'Taal van de plechtigheid · gewenste datum', sahitler: 'Getuigen', belgeler: 'Documenten en handtekening' },
     basari: {
-      sonrakiAdimlar: 'Onze imam neemt contact met u op voor het gesprek en de plechtigheid. Na de handtekening van de Raad voor Sociale Zaken wordt uw attest naar de gekozen plaats opgestuurd; de termijn wordt u apart meegedeeld.',
+      sonrakiAdimlar: 'Onze imam neemt contact met u op voor het gesprek en de plechtigheid. Zodra uw attest is ondertekend, wordt het naar de gekozen plaats opgestuurd; de termijn wordt u apart meegedeeld.',
     },
   },
 };

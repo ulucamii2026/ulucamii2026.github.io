@@ -2,7 +2,7 @@
  *  yüzü ve ekranda çizilen imza.
  *
  *  Neden burada: EK-9 İhtida Belgesi bir vesikalık fotoğraf ile başvuranın imzasını taşır; belge ve
- *  ekleri hem camimizde hem T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği'nde saklanır.
+ *  ekleri hem camimizde hem Diyanet İşleri Başkanlığı’nın Belçika’daki yetkili biriminde saklanır.
  *  Kayıt v3 ön/arka yükleme kutularını, 13 Eyl 2026 akşamından beri de aynı imza bloğunu
  *  (imzaBlokuKur) kullanır; ihtidanın imza akışı değişmez.
  *

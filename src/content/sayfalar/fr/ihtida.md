@@ -24,7 +24,7 @@ Devenir musulman consiste à croire de cœur en l’unicité de Dieu (Allah) et 
 
 
 - **Y a-t-il une quelconque pression ?** Non. La décision vous appartient entièrement ; lors de la cérémonie, notre imam vous posera d’ailleurs expressément cette question devant témoins.
-- **Ma famille ou mon entourage sera-t-il informé ?** Non. Les informations que vous partagez restent confidentielles et ne sont communiquées qu’au nombre minimal de personnes habilitées (l’imam, le Conseiller des Affaires religieuses) — voir notre [Politique de confidentialité](/fr/confidentialite/).
+- **Ma famille ou mon entourage sera-t-il informé ?** Non. Les informations que vous partagez restent confidentielles et ne sont communiquées qu’au nombre minimal de personnes habilitées (l’imam et le responsable de la Diyanet qui valide l’attestation) — voir notre [Politique de confidentialité](/fr/confidentialite/).
 - **Dois-je venir seul(e) ?** La cérémonie nécessite la présence de **2 témoins** ; si vous n’en connaissez pas, nous pouvons vous aider à en trouver au sein de notre communauté.
 - **Dois-je apprendre quelque chose par cœur ?** Non. La profession de foi vous est enseignée sur place, syllabe par syllabe.
 
@@ -35,7 +35,7 @@ Devenir musulman consiste à croire de cœur en l’unicité de Dieu (Allah) et 
 3. **Le choix de la date.** Le jour et l’heure de la cérémonie sont fixés ensemble, selon vos disponibilités.
 4. **La cérémonie.** Dans la mosquée que vous avez choisie, devant deux témoins, vous prononcez la profession de foi (le déroulé détaillé se trouve ci-dessous).
 5. **Le dossier et les signatures.** Votre dossier est préparé avec l’EK-9, l’EK-10, la copie de votre pièce d’identité et votre requête ; les signatures qui vous concernent sont complétées.
-6. **Validation par le Conseiller et remise.** Le dossier est envoyé au Conseiller aux Affaires sociales de l’Ambassade de Turquie à Bruxelles. Après la signature manuscrite du Conseiller aux Affaires sociales Salih GÖR, l’attestation revient généralement par courrier à la mosquée que vous avez choisie et vous est remise en main propre ; si vous le souhaitez, un envoi direct à votre adresse peut aussi être demandé. Cette étape peut prendre plusieurs semaines.
+6. **Validation et remise.** Le dossier est envoyé pour validation au service compétent de la Présidence des Affaires religieuses (Diyanet). Après la signature manuscrite du responsable habilité, l’attestation revient généralement par courrier à la mosquée que vous avez choisie et vous est remise en main propre ; si vous le souhaitez, un envoi direct à votre adresse peut aussi être demandé. Cette étape peut prendre plusieurs semaines.
 7. **Ensuite.** L’accompagnement continue : parrainage, cours et ressources en français — nous ne vous laissons pas seul(e).
 
 ## Comment se déroule la cérémonie de conversion ?
@@ -59,14 +59,14 @@ Pour les candidats francophones, la cérémonie peut se dérouler entièrement e
 
 ## Qu’est-ce que l’attestation de conversion (EK-9) ?
 
-L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc/anglais), délivré par la Présidence des Affaires religieuses de Turquie (Diyanet İşleri Başkanlığı), qui atteste officiellement votre déclaration de conversion et les informations de la cérémonie. Elle porte votre signature, celle des **deux témoins** et celle du représentant de la Présidence des Affaires religieuses (Conseiller des Affaires sociales de l’Ambassade de Turquie à Bruxelles).
+L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc/anglais), délivré par la Présidence des Affaires religieuses de Turquie (Diyanet İşleri Başkanlığı), qui atteste officiellement votre déclaration de conversion et les informations de la cérémonie. Elle porte votre signature, celle des **deux témoins** et celle du représentant de la Présidence des Affaires religieuses.
 
 - **Elle est gratuite.** Aucun frais ne vous est demandé.
-- **Comment l’attestation est-elle remise ?** Une fois les signatures complétées, l’attestation est envoyée pour validation par le Conseiller. Après la signature manuscrite du Conseiller aux Affaires sociales Salih GÖR, elle revient généralement par courrier à la mosquée que vous avez choisie et vous est remise en main propre ; vous pouvez aussi demander un envoi direct à votre adresse.
+- **Comment l’attestation est-elle remise ?** Une fois les signatures complétées, l’attestation est envoyée pour validation. Après la signature manuscrite du responsable habilité, elle revient généralement par courrier à la mosquée que vous avez choisie et vous est remise en main propre ; vous pouvez aussi demander un envoi direct à votre adresse.
 - **Que contient-elle ?** Nom et prénom, sexe, date et lieu de naissance, noms des parents, nationalité, état civil, niveau d’études, profession, adresse et coordonnées, religion précédente, motif de la conversion, date de la conversion, numéro et date du document, photo d’identité, signatures des deux témoins et du responsable.
 - **À quoi sert-elle ?** Son usage confirmé et documenté est la demande de **visa pour le Hajj/Omra auprès des autorités saoudiennes**, qui exigent un « Certificate of Conversion ». Elle peut également être présentée pour d’autres démarches officielles ; chaque organisme ayant ses propres critères, nous vous recommandons de vérifier au préalable auprès de l’organisme concerné si vous avez un usage particulier en tête.
 
-> Le formulaire en ligne que vous remplissez sur ce site constitue une **pré-demande** de l’attestation officielle EK-9. La cérémonie peut se tenir dans la mosquée que vous avez choisie ; le document est établi après les signatures nécessaires et la validation du Conseiller.
+> Le formulaire en ligne que vous remplissez sur ce site constitue une **pré-demande** de l’attestation officielle EK-9. La cérémonie peut se tenir dans la mosquée que vous avez choisie ; le document est établi après les signatures nécessaires et la validation.
 
 ## Documents nécessaires
 
@@ -80,10 +80,10 @@ L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc
 
 - **Votre carte d’identité ou votre passeport** — vous présentez l’original à l’imam.
 - **2 témoins** — à défaut, la mosquée en fournit.
-- **Une requête écrite** — le dossier transmis au Conseiller comporte une demande signée d’attestation de conversion. Nous la préparons pour vous : elle est imprimée en deux langues à partir des informations du formulaire et de la signature que vous y avez tracée ; vous la lisez avant de la signer et vous pouvez aussi la rédiger de votre main.
+- **Une requête écrite** — le dossier envoyé pour validation comporte une demande signée d’attestation de conversion. Nous la préparons pour vous : elle est imprimée en deux langues à partir des informations du formulaire et de la signature que vous y avez tracée ; vous la lisez avant de la signer et vous pouvez aussi la rédiger de votre main.
 - **Le formulaire de consentement EK-10** — signé sur papier le jour même. Le texte intégral est disponible en turc, anglais, **français** et néerlandais via le lien ci-contre.
 
-**Au sujet de vos données personnelles :** la directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document. Nous réunissons ces pièces dès le formulaire, sans attendre le jour de la cérémonie, afin que votre dossier puisse être préparé à temps. **Toutes les informations et pièces relatives à votre demande sont conservées à la fois par notre mosquée et par le Conseiller aux Affaires sociales de l’Ambassade de Türkiye à Bruxelles** ; elles ne sont jamais publiées ni transmises à des tiers et ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu. Votre **numéro** de registre national ne vous est demandé à aucun moment. Le traitement de vos images et de votre signature fait l’objet d’un consentement explicite distinct dans le formulaire ; vous pouvez le retirer à tout moment.
+**Au sujet de vos données personnelles :** la directive du Diyanet relative aux conversions (article 44) prévoit qu’une photo d’identité et une copie de la pièce d’identité soient versées au **dossier officiel** pour permettre l’établissement du document. Nous réunissons ces pièces dès le formulaire, sans attendre le jour de la cérémonie, afin que votre dossier puisse être préparé à temps. **Toutes les informations et pièces relatives à votre demande sont conservées à la fois par notre mosquée et par le service compétent de la Présidence des Affaires religieuses (Diyanet) en Belgique** ; elles ne sont jamais publiées ni transmises à des tiers et ne sont accessibles qu’à un nombre minimal de personnes habilitées, dans la stricte mesure du service rendu. Votre **numéro** de registre national ne vous est demandé à aucun moment. Le traitement de vos images et de votre signature fait l’objet d’un consentement explicite distinct dans le formulaire ; vous pouvez le retirer à tout moment.
 
 ## Confidentialité et discrétion
 
@@ -141,7 +141,7 @@ Son usage confirmé est la demande de visa Hajj/Omra. Pour toute autre démarche
 La cérémonie nécessite 2 témoins ; si vous n’en connaissez pas, nous pouvons vous aider à en trouver au sein de notre communauté.
 
 **Combien de temps cela prend-il ?**
-Après la cérémonie et vos signatures, le dossier est envoyé pour validation par le Conseiller. Le retour de l’attestation portant la signature manuscrite peut prendre plusieurs semaines.
+Après la cérémonie et vos signatures, le dossier est envoyé pour validation. Le retour de l’attestation portant la signature manuscrite peut prendre plusieurs semaines.
 
 **La cérémonie peut-elle se dérouler en français ?**
 Oui. L’entretien comme la cérémonie peuvent se tenir en français ou en turc.

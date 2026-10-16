@@ -219,9 +219,9 @@ export const en: FormMetinleri = {
     sayfaBaslik: 'Conversion Application Form',
     sayfaAciklama: 'Marche-en-Famenne Ulu Camii conversion (becoming Muslim) application form: send your details and our imam will contact you to arrange a date for the shahada ceremony and the conversion certificate.',
     ustEtiket: 'Conversion · Becoming Muslim',
-    giris: "This form helps us prepare your meeting and EK-9 conversion certificate. Our imam will contact you to arrange the ceremony. Your file will be sent to the Counsellor’s office; after signature, the certificate will be posted to your selected mosque or your home, as you choose. The application is free.",
+    giris: "This form helps us prepare your meeting and EK-9 conversion certificate. Our imam will contact you to arrange the ceremony. Your file will be sent for approval; once signed, the certificate will be posted to your selected mosque or your home, as you choose. The application is free.",
     paketBildirimi: 'Your application has been saved. Your PDF packet containing EK-9, EK-10, the request letter and identity copy will be prepared and sent to {eposta}. The final copy is prepared after the ceremony and witnesses are confirmed.',
-    kimlikNotu: 'To issue the conversion certificate (EK-9), a passport photo, the front and back of your identity document and your signature are needed: you add them in section 5 and sign on screen. You do not have to type your national registry number. All information and documents relating to your application are kept both by our mosque and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels; they are never published and are seen only by authorised officials.',
+    kimlikNotu: 'To issue the conversion certificate (EK-9), a passport photo, the front and back of your identity document and your signature are needed: you add them in section 5 and sign on screen. You do not have to type your national registry number. All information and documents relating to your application are kept both by our mosque and by the competent unit of the Presidency of Religious Affairs (Diyanet) in Belgium; they are never published and are seen only by authorised officials.',
     bolum: { kisi: 'Personal information', durum: 'Status', iletisim: 'Contact', ihtida: 'Conversion and ceremony', belgeler: 'Documents and signature', riza: 'Consent and declaration', ozet: 'Summary and submission' },
     kisi: {
       adSoyad: 'Your full name', adSoyadYardim: 'As shown on your ID; this name will be printed on the certificate.',
@@ -234,7 +234,7 @@ export const en: FormMetinleri = {
       ogrenim: 'Level of education', ogrenimYardim: 'Example: secondary school, bachelor’s, master’s', meslek: 'Occupation',
     },
     iletisim: {"eposta": "E-mail", "telefon": "Phone", "adres": "Home address: street, house and flat number", "adresYardim": "Example: Rue du Test 12, flat 3", "postaKodu": "Postcode", "sehir": "City / municipality", "ulke": "Country"},
-    teslimat: {"baslik": "Receiving your signed certificate", "aciklama": "Where would you like to receive your certificate after the Counsellor signs it?", "cami": "Collect from the mosque; post the certificate to the mosque", "adres": "Post it to my home address above", "adresNotu": "The envelope will use your name and full address above. Check that your name appears on your letterbox and that the address is complete."},
+    teslimat: {"baslik": "Receiving your signed certificate", "aciklama": "Where would you like to receive your certificate once it has been signed?", "cami": "Collect from the mosque; post the certificate to the mosque", "adres": "Post it to my home address above", "adresNotu": "The envelope will use your name and full address above. Check that your name appears on your letterbox and that the address is complete."},
     ihtida: {
       oncekiDin: 'Previous religion / denomination', oncekiDinYardim: 'Example: Catholic, Protestant, no religion…',
       sebep: 'Your reason for choosing Islam', sebepYardim: 'Optional; a few sentences are enough.',
@@ -255,7 +255,7 @@ export const en: FormMetinleri = {
       kimlikArka: 'Back of the identity document', kimlikArkaYardim: 'Required for an identity card; not needed for a passport.',
       sec: 'Choose or take a photo', degistir: 'Replace', kaldir: 'Remove', onizleme: 'Preview of the image you uploaded',
       isleniyor: 'Preparing the image…', hazir: 'Ready · {boyut}',
-      imza: 'Your signature', imzaYardim: "With your permission, your signature drawn here will be placed on the EK-9 certificate, the EK-10 consent form you have accepted and your request for a conversion certificate. Our imam will prepare these documents for the Counsellor’s office.",
+      imza: 'Your signature', imzaYardim: "With your permission, your signature drawn here will be placed on the EK-9 certificate, the EK-10 consent form you have accepted and your request for a conversion certificate. Our imam will prepare these documents and send them for approval.",
       imzaTemizle: 'Clear the signature',
       imzaYok: 'I cannot sign on screen; I will sign the document by hand on the day of the ceremony.',
       imzaYokYardim: 'Tick this if you have no touch screen or find drawing difficult: the signature area is left blank and you sign it with a pen on the day.',
@@ -271,7 +271,7 @@ export const en: FormMetinleri = {
       ek10Baglanti: 'Open the EK-10 text (PDF)',
       gizlilik: 'I have read the privacy notice.',
       fotoIzni: 'I agree to appear in photos and videos taken during the ceremony.',
-      gorselRiza: 'I expressly consent to the processing of my passport photo, of the front and back of my identity document and of my signature, in order to issue the conversion certificate (EK-9) and to build the official file. I understand that this information and these documents are kept both by the Ulu Camii association of Marche-en-Famenne and by the Social Affairs Counsellor of the Embassy of Türkiye in Brussels.',
+      gorselRiza: 'I expressly consent to the processing of my passport photo, of the front and back of my identity document and of my signature, in order to issue the conversion certificate (EK-9) and to build the official file. I understand that this information and these documents are kept both by the Ulu Camii association of Marche-en-Famenne and by the competent unit of the Presidency of Religious Affairs (Diyanet) in Belgium.',
       gorselRizaYardim: 'The images stay in a closed folder of the association, are never published and are seen only by authorised officials. You may withdraw your consent at any time.',
       fotoAciklama: 'Optional. Images are shared only with your separate consent; answering “no” does not affect the application.',
       beyanBaslik: 'Declaration',
@@ -281,7 +281,7 @@ export const en: FormMetinleri = {
     },
     ozet: { belgeler: 'Documents and signature', kisi: 'Full name', dogum: 'Birth', uyruk: 'Nationality', aile: 'Parents’ first names', durum: 'Marital status · education · occupation', iletisim: 'Contact', din: 'Previous religion', toren: 'Ceremony language · preferred date', sahitler: 'Witnesses' },
     basari: {
-      sonrakiAdimlar: "Our imam will contact you about the meeting and ceremony. After the Counsellor signs your certificate, it will be posted to your chosen destination; you will be told the delivery times separately.",
+      sonrakiAdimlar: "Our imam will contact you about the meeting and ceremony. Once your certificate has been signed, it will be posted to your chosen destination; you will be told the delivery times separately.",
     },
   },
 };

@@ -221,9 +221,9 @@ export const de: FormMetinleri = {
     sayfaBaslik: 'Antragsformular für die Konversion zum Islam',
     sayfaAciklama: 'Antragsformular der Moschee Marche-en-Famenne Ulu Camii für die Konversion zum Islam (Muslim werden): Senden Sie uns Ihre Angaben, unser Imam meldet sich bei Ihnen, um einen Termin für das Glaubensbekenntnis (Schahada) und die Konversionsbescheinigung zu vereinbaren.',
     ustEtiket: 'Konversion · Muslim werden',
-    giris: 'Dieses Formular dient der Vorbereitung Ihres Gesprächs und Ihrer Konversionsbescheinigung EK-9. Unser Imam meldet sich bei Ihnen, um die Feier zu planen. Ihre Akte geht an den Botschaftsrat für Soziale Angelegenheiten; nach dessen Unterschrift wird die Bescheinigung je nach Ihrer Wahl an die gewählte Moschee oder an Ihre Wohnanschrift geschickt. Der Antrag ist kostenlos.',
+    giris: 'Dieses Formular dient der Vorbereitung Ihres Gesprächs und Ihrer Konversionsbescheinigung EK-9. Unser Imam meldet sich bei Ihnen, um die Feier zu planen. Ihre Akte wird zur Genehmigung weitergeleitet; nach der Unterschrift wird die Bescheinigung je nach Ihrer Wahl an die gewählte Moschee oder an Ihre Wohnanschrift geschickt. Der Antrag ist kostenlos.',
     paketBildirimi: 'Ihr Antrag ist gespeichert. Ihr PDF-Paket mit EK-9, EK-10, dem Antragsschreiben und der Ausweiskopie wird vorbereitet und an {eposta} gesendet. Die endgültige Fassung wird erstellt, nachdem Feier und Zeugen bestätigt sind.',
-    kimlikNotu: 'Damit die Konversionsbescheinigung (EK-9) ausgestellt werden kann, werden ein Passbild, die Vorder- und die Rückseite Ihres Ausweisdokuments und Ihre Unterschrift benötigt; Sie laden sie in Abschnitt 5 hoch und unterschreiben am Bildschirm. Ihre Nationalregisternummer müssen Sie nicht zusätzlich eintragen. Alle Angaben und Unterlagen zu Ihrem Antrag werden sowohl in unserer Moschee als auch beim Botschaftsrat für Soziale Angelegenheiten der türkischen Botschaft in Brüssel aufbewahrt; sie werden nie veröffentlicht und nur von befugten Mitarbeitenden eingesehen.',
+    kimlikNotu: 'Damit die Konversionsbescheinigung (EK-9) ausgestellt werden kann, werden ein Passbild, die Vorder- und die Rückseite Ihres Ausweisdokuments und Ihre Unterschrift benötigt; Sie laden sie in Abschnitt 5 hoch und unterschreiben am Bildschirm. Ihre Nationalregisternummer müssen Sie nicht zusätzlich eintragen. Alle Angaben und Unterlagen zu Ihrem Antrag werden sowohl in unserer Moschee als auch bei der zuständigen Stelle des Präsidiums für Religionsangelegenheiten (Diyanet) in Belgien aufbewahrt; sie werden nie veröffentlicht und nur von befugten Mitarbeitenden eingesehen.',
     bolum: { kisi: 'Persönliche Angaben', durum: 'Situation', iletisim: 'Kontakt', ihtida: 'Konversion und Feier', belgeler: 'Dokumente und Unterschrift', riza: 'Einwilligung und Erklärung', ozet: 'Übersicht und Absenden' },
     kisi: {
       adSoyad: 'Ihr Vor- und Nachname', adSoyadYardim: 'Wie in Ihrem Ausweisdokument; dieser Name wird auf die Bescheinigung gedruckt.',
@@ -236,7 +236,7 @@ export const de: FormMetinleri = {
       ogrenim: 'Bildungsabschluss', ogrenimYardim: 'Beispiel: Sekundarschule, Bachelor, Master', meslek: 'Beruf',
     },
     iletisim: {"eposta": "E-Mail", "telefon": "Telefon", "adres": "Wohnanschrift: Straße, Haus- und Wohnungsnummer", "adresYardim": "Beispiel: Rue du Test 12, boîte 3", "postaKodu": "Postleitzahl", "sehir": "Stadt / Gemeinde", "ulke": "Land"},
-    teslimat: {"baslik": "Zustellung der unterschriebenen Bescheinigung", "aciklama": "Wo möchten Sie Ihre Bescheinigung nach der Unterschrift des Botschaftsrats erhalten?", "cami": "Ich hole sie in der gewählten Moschee ab; bitte dorthin schicken", "adres": "Bitte per Post an meine oben genannte Wohnanschrift senden", "adresNotu": "Auf dem Umschlag stehen Ihr Name und Ihre vollständige Anschrift von oben. Prüfen Sie, ob dieser Name an Ihrem Briefkasten steht und die Anschrift vollständig ist."},
+    teslimat: {"baslik": "Zustellung der unterschriebenen Bescheinigung", "aciklama": "Wo möchten Sie Ihre Bescheinigung nach der Unterschrift erhalten?", "cami": "Ich hole sie in der gewählten Moschee ab; bitte dorthin schicken", "adres": "Bitte per Post an meine oben genannte Wohnanschrift senden", "adresNotu": "Auf dem Umschlag stehen Ihr Name und Ihre vollständige Anschrift von oben. Prüfen Sie, ob dieser Name an Ihrem Briefkasten steht und die Anschrift vollständig ist."},
     ihtida: {
       oncekiDin: 'Bisherige Religion / Konfession', oncekiDinYardim: 'Beispiel: katholisch, evangelisch, ohne Religion…',
       sebep: 'Ihr Beweggrund für den Islam', sebepYardim: 'Optional; einige Sätze genügen.',
@@ -257,7 +257,7 @@ export const de: FormMetinleri = {
       kimlikArka: 'Rückseite des Ausweisdokuments', kimlikArkaYardim: 'Bei einem Personalausweis Pflicht; beim Reisepass nicht nötig.',
       sec: 'Foto auswählen oder aufnehmen', degistir: 'Ersetzen', kaldir: 'Entfernen', onizleme: 'Vorschau des hochgeladenen Bildes',
       isleniyor: 'Bild wird vorbereitet…', hazir: 'Bereit · {boyut}',
-      imza: 'Ihre Unterschrift', imzaYardim: 'Mit Ihrer Erlaubnis wird die hier gezeichnete Unterschrift auf die EK-9-Bescheinigung, auf das von Ihnen angenommene Einwilligungsformular EK-10 und auf den Antrag auf die Konversionsbescheinigung übertragen. Unser Imam erstellt diese Unterlagen und sendet sie an den Botschaftsrat für Soziale Angelegenheiten.',
+      imza: 'Ihre Unterschrift', imzaYardim: 'Mit Ihrer Erlaubnis wird die hier gezeichnete Unterschrift auf die EK-9-Bescheinigung, auf das von Ihnen angenommene Einwilligungsformular EK-10 und auf den Antrag auf die Konversionsbescheinigung übertragen. Unser Imam erstellt diese Unterlagen und leitet sie zur Genehmigung weiter.',
       imzaTemizle: 'Unterschrift löschen',
       imzaYok: 'Ich kann am Bildschirm nicht unterschreiben; ich unterschreibe das Dokument am Tag der Feier von Hand.',
       imzaYokYardim: 'Kreuzen Sie dies an, wenn Sie keinen Touchscreen haben oder das Zeichnen Ihnen schwerfällt: Das Unterschriftenfeld bleibt leer und Sie unterschreiben am Tag der Feier mit dem Stift.',
@@ -274,7 +274,7 @@ export const de: FormMetinleri = {
       gizlilik: 'Ich habe die Datenschutzerklärung gelesen.',
       fotoIzni: 'Ich bin damit einverstanden, auf Fotos und Videos zu erscheinen, die während der Feier aufgenommen werden.',
       fotoAciklama: 'Optional. Aufnahmen werden nur mit Ihrer gesonderten Zustimmung geteilt; ein „Nein“ hat keinen Einfluss auf den Antrag.',
-      gorselRiza: 'Ich willige ausdrücklich ein, dass mein Passbild, die Vorder- und die Rückseite meines Ausweisdokuments und meine Unterschrift verarbeitet werden, um die Konversionsbescheinigung (EK-9) auszustellen und die amtliche Akte anzulegen. Mir ist bekannt, dass diese Angaben und Unterlagen sowohl beim Verein Marche-en-Famenne Ulu Camii als auch beim Botschaftsrat für Soziale Angelegenheiten der türkischen Botschaft in Brüssel aufbewahrt werden.',
+      gorselRiza: 'Ich willige ausdrücklich ein, dass mein Passbild, die Vorder- und die Rückseite meines Ausweisdokuments und meine Unterschrift verarbeitet werden, um die Konversionsbescheinigung (EK-9) auszustellen und die amtliche Akte anzulegen. Mir ist bekannt, dass diese Angaben und Unterlagen sowohl beim Verein Marche-en-Famenne Ulu Camii als auch bei der zuständigen Stelle des Präsidiums für Religionsangelegenheiten (Diyanet) in Belgien aufbewahrt werden.',
       gorselRizaYardim: 'Die Bilder bleiben in einem geschlossenen Ordner des Vereins, werden nie veröffentlicht und nur von befugten Mitarbeitenden eingesehen. Sie können Ihre Einwilligung jederzeit widerrufen.',
       beyanBaslik: 'Erklärung',
       beyanMetin: 'Aus eigenem freien Willen möchte ich die Religion des Islam annehmen. Ich bitte Sie höflich, mir eine Konversionsbescheinigung auszustellen.',
@@ -283,7 +283,7 @@ export const de: FormMetinleri = {
     },
     ozet: { kisi: 'Vor- und Nachname', dogum: 'Geburt', uyruk: 'Staatsangehörigkeit', aile: 'Vornamen der Eltern', durum: 'Familienstand · Bildung · Beruf', iletisim: 'Kontakt', din: 'Bisherige Religion', toren: 'Sprache der Feier · Wunschtermin', sahitler: 'Zeugen', belgeler: 'Dokumente und Unterschrift' },
     basari: {
-      sonrakiAdimlar: 'Unser Imam meldet sich bei Ihnen für das Gespräch und die Feier. Nach der Unterschrift des Botschaftsrats wird Ihre Bescheinigung an den gewählten Ort geschickt; die Dauer teilen wir Ihnen gesondert mit.',
+      sonrakiAdimlar: 'Unser Imam meldet sich bei Ihnen für das Gespräch und die Feier. Nach der Unterschrift wird Ihre Bescheinigung an den gewählten Ort geschickt; die Dauer teilen wir Ihnen gesondert mit.',
     },
   },
 };

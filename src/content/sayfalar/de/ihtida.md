@@ -24,7 +24,7 @@ Muslim wird man, indem man von Herzen daran glaubt, dass Gott (Allah) einer ist 
 
 
 - **Wird irgendein Druck ausgeübt?** Nein. Die Entscheidung liegt ganz bei Ihnen; bei der Zeremonie stellt Ihnen unser Imam diese Frage vor den Zeugen noch einmal ausdrücklich.
-- **Werden meine Familie oder mein Umfeld informiert?** Nein. Was Sie uns anvertrauen, bleibt vertraulich und wird nur an die kleinstmögliche Zahl befugter Personen weitergegeben (den Imam, den Botschaftsrat) — siehe unsere [Datenschutzerklärung](/de/datenschutz/).
+- **Werden meine Familie oder mein Umfeld informiert?** Nein. Was Sie uns anvertrauen, bleibt vertraulich und wird nur an die kleinstmögliche Zahl befugter Personen weitergegeben (den Imam und die zuständige Person der Diyanet, die die Bescheinigung genehmigt) — siehe unsere [Datenschutzerklärung](/de/datenschutz/).
 - **Muss ich allein kommen?** Bei der Zeremonie müssen **2 Zeugen** anwesend sein; kennen Sie niemanden, helfen wir Ihnen, in unserer Gemeinde Zeugen zu finden.
 - **Muss ich etwas auswendig lernen?** Nein. Das Glaubensbekenntnis wird Ihnen bei der Zeremonie Silbe für Silbe vorgesprochen.
 
@@ -35,7 +35,7 @@ Muslim wird man, indem man von Herzen daran glaubt, dass Gott (Allah) einer ist 
 3. **Die Festlegung des Termins.** Tag und Uhrzeit werden gemeinsam mit Ihnen nach Ihrer Verfügbarkeit festgelegt.
 4. **Die Konversionszeremonie.** In der Moschee Ihrer Wahl sprechen Sie vor zwei Zeugen das Glaubensbekenntnis (der genaue Ablauf steht weiter unten).
 5. **Die Unterlagen und die Unterschriften.** Ihre Akte wird mit der EK-9, der EK-10, einer Kopie Ihres Ausweises und einem schriftlichen Antrag vorbereitet; die Unterschriften, die Sie betreffen, werden geleistet.
-6. **Genehmigung durch den Botschaftsrat und Übergabe.** Die Akte geht an den Botschaftsrat für Soziale Angelegenheiten der türkischen Botschaft in Brüssel. Nach der handschriftlichen Unterschrift des Botschaftsrats für Soziale Angelegenheiten Salih GÖR kommt die Bescheinigung in der Regel per Post an die Moschee Ihrer Wahl zurück und wird Ihnen persönlich übergeben; auf Wunsch kann sie auch unmittelbar an Ihre Adresse geschickt werden. Dieser Schritt kann mehrere Wochen dauern.
+6. **Genehmigung und Übergabe.** Die Akte wird zur Genehmigung an die zuständige Stelle des Präsidiums für Religiöse Angelegenheiten (Diyanet) geschickt. Nach der handschriftlichen Unterschrift der zuständigen Person kommt die Bescheinigung in der Regel per Post an die Moschee Ihrer Wahl zurück und wird Ihnen persönlich übergeben; auf Wunsch kann sie auch unmittelbar an Ihre Adresse geschickt werden. Dieser Schritt kann mehrere Wochen dauern.
 7. **Danach.** Begleitung, Unterricht und französischsprachige Materialien gehen weiter — wir lassen Sie nicht allein.
 
 ## Wie läuft die Konversionszeremonie ab?
@@ -59,14 +59,14 @@ Für französischsprachige Interessierte kann die Zeremonie auch auf Französisc
 
 ## Was ist die Konversionsbescheinigung (EK-9)?
 
-Die **Konversionsbescheinigung (EK-9)** ist ein zweisprachiges Dokument (Türkisch/Englisch), das vom Präsidium für Religiöse Angelegenheiten der Türkei (Diyanet İşleri Başkanlığı) ausgestellt wird und Ihre Erklärung, in den Islam einzutreten, sowie die Angaben zur Zeremonie amtlich festhält. Sie trägt Ihre Unterschrift, die der **zwei Zeugen** und die des Vertreters des Präsidiums für Religiöse Angelegenheiten (des Botschaftsrats für Soziale Angelegenheiten der türkischen Botschaft in Brüssel).
+Die **Konversionsbescheinigung (EK-9)** ist ein zweisprachiges Dokument (Türkisch/Englisch), das vom Präsidium für Religiöse Angelegenheiten der Türkei (Diyanet İşleri Başkanlığı) ausgestellt wird und Ihre Erklärung, in den Islam einzutreten, sowie die Angaben zur Zeremonie amtlich festhält. Sie trägt Ihre Unterschrift, die der **zwei Zeugen** und die des zuständigen Vertreters des Präsidiums für Religiöse Angelegenheiten.
 
 - **Sie ist kostenlos.** Für das Verfahren wird von Ihnen keinerlei Gebühr verlangt.
-- **Wie wird sie übergeben?** Sobald die Unterschriften vollständig sind, geht die Bescheinigung zur Genehmigung an den Botschaftsrat. Nach der handschriftlichen Unterschrift des Botschaftsrats für Soziale Angelegenheiten Salih GÖR kommt sie in der Regel per Post an die Moschee Ihrer Wahl zurück und wird Ihnen persönlich übergeben; auf Wunsch kann sie auch unmittelbar an Ihre Adresse geschickt werden.
+- **Wie wird sie übergeben?** Sobald die Unterschriften vollständig sind, wird die Bescheinigung zur Genehmigung weitergeleitet. Nach der handschriftlichen Unterschrift der zuständigen Person kommt sie in der Regel per Post an die Moschee Ihrer Wahl zurück und wird Ihnen persönlich übergeben; auf Wunsch kann sie auch unmittelbar an Ihre Adresse geschickt werden.
 - **Was steht darin?** Vor- und Familienname, Geschlecht, Geburtsdatum und -ort, Namen der Eltern, Staatsangehörigkeit, Familienstand, Bildungsstand, Beruf, Adresse und Kontaktdaten, frühere Religion, Grund der Konversion, Datum der Konversion, Nummer und Datum des Dokuments, ein Passfoto sowie die Unterschriften der zwei Zeugen und der zuständigen Person.
 - **Wofür ist sie nützlich?** Bekannt ist, dass die Bescheinigung als das „Certificate of Conversion“ dient, das **die saudischen Behörden beim Visumantrag für Hadsch und Umra verlangen**. Sie kann auch bei anderen amtlichen Vorgängen vorgelegt werden; da jede Behörde eigene Kriterien anlegt, empfehlen wir Ihnen, bei einem besonderen Verwendungszweck vorab bei der betreffenden Stelle nachzufragen.
 
-> Das Onlineformular, das Sie auf dieser Website ausfüllen, ist ein **Vorantrag beziehungsweise ein Gesuch** für die amtliche EK-9. Die Zeremonie kann in der Moschee Ihrer Wahl stattfinden; das Dokument wird ausgestellt, sobald die nötigen Unterschriften und die Genehmigung des Botschaftsrats vorliegen.
+> Das Onlineformular, das Sie auf dieser Website ausfüllen, ist ein **Vorantrag beziehungsweise ein Gesuch** für die amtliche EK-9. Die Zeremonie kann in der Moschee Ihrer Wahl stattfinden; das Dokument wird ausgestellt, sobald die nötigen Unterschriften und die Genehmigung vorliegen.
 
 ## Erforderliche Unterlagen
 
@@ -80,10 +80,10 @@ Was Sie am Tag der Zeremonie mitbringen:
 
 - **Ihren Personalausweis oder Reisepass** — Sie zeigen dem Imam das Original.
 - **2 Zeugen** — haben Sie keine, stellt unsere Moschee sie.
-- **Einen schriftlichen Antrag** — die Akte, die an den Botschaftsrat geht, enthält einen unterschriebenen Antrag auf die Konversionsbescheinigung. Diesen bereiten wir für Sie vor: Er wird zweisprachig aus den Angaben Ihres Formulars und der dort gezeichneten Unterschrift gedruckt; Sie lesen ihn, bevor Sie unterschreiben, und können ihn auf Wunsch auch von Hand schreiben.
+- **Einen schriftlichen Antrag** — die Akte, die zur Genehmigung weitergeleitet wird, enthält einen unterschriebenen Antrag auf die Konversionsbescheinigung. Diesen bereiten wir für Sie vor: Er wird zweisprachig aus den Angaben Ihres Formulars und der dort gezeichneten Unterschrift gedruckt; Sie lesen ihn, bevor Sie unterschreiben, und können ihn auf Wunsch auch von Hand schreiben.
 - **Den EK-10-Text zur ausdrücklichen Einwilligung** — er wird am Tag der Zeremonie auf Papier unterschrieben. Der vollständige Text ist über den Link nebenan auf Türkisch, Englisch, **Französisch** und Niederländisch nachzulesen.
 
-**Zu Ihren personenbezogenen Daten:** Die Richtlinie des Präsidiums für Religiöse Angelegenheiten zur Konversion (Artikel 44) sieht vor, dass ein Passfoto und eine Kopie des Ausweises oder des Reisepasses in die **amtliche Akte** aufgenommen werden, damit das amtliche Dokument ausgestellt werden kann. Wir sammeln diese Unterlagen bereits mit dem Antragsformular und warten nicht bis zum Tag der Zeremonie; so ist Ihre Akte rechtzeitig fertig. **Sämtliche Angaben und Unterlagen zu Ihrem Antrag werden sowohl in unserer Moschee als auch beim Botschaftsrat für Soziale Angelegenheiten der türkischen Botschaft in Brüssel aufbewahrt**; sie werden nicht veröffentlicht, nicht an Dritte weitergegeben und sind nur einer möglichst kleinen Zahl befugter Personen zugänglich, und zwar nur in dem Maß, wie der Dienst es erfordert. Ihre Ausweis**nummer** wird zu keinem Zeitpunkt abgefragt. Für die Verarbeitung Ihrer Bilder und Ihrer Unterschrift wird im Formular gesondert Ihre ausdrückliche Einwilligung eingeholt; diese Einwilligung können Sie jederzeit widerrufen.
+**Zu Ihren personenbezogenen Daten:** Die Richtlinie des Präsidiums für Religiöse Angelegenheiten zur Konversion (Artikel 44) sieht vor, dass ein Passfoto und eine Kopie des Ausweises oder des Reisepasses in die **amtliche Akte** aufgenommen werden, damit das amtliche Dokument ausgestellt werden kann. Wir sammeln diese Unterlagen bereits mit dem Antragsformular und warten nicht bis zum Tag der Zeremonie; so ist Ihre Akte rechtzeitig fertig. **Sämtliche Angaben und Unterlagen zu Ihrem Antrag werden sowohl in unserer Moschee als auch bei der zuständigen Stelle des Präsidiums für Religiöse Angelegenheiten (Diyanet) in Belgien aufbewahrt**; sie werden nicht veröffentlicht, nicht an Dritte weitergegeben und sind nur einer möglichst kleinen Zahl befugter Personen zugänglich, und zwar nur in dem Maß, wie der Dienst es erfordert. Ihre Ausweis**nummer** wird zu keinem Zeitpunkt abgefragt. Für die Verarbeitung Ihrer Bilder und Ihrer Unterschrift wird im Formular gesondert Ihre ausdrückliche Einwilligung eingeholt; diese Einwilligung können Sie jederzeit widerrufen.
 
 ## Datenschutz und Diskretion
 
@@ -129,7 +129,7 @@ Die Dateien bleiben **auf dem eigenen Server des Diyanet**; wir bewahren keine K
 Nein. Eine Namensänderung ist völlig freiwillig; auf Wunsch wird Ihnen ein Name vorgeschlagen, und der amtliche Weg dafür wird Ihnen genannt.
 
 **Erfahren meine Familie oder mein Umfeld von diesem Schritt?**
-Nein. Ihre Angaben bleiben vertraulich und werden nur mit der kleinstmöglichen Zahl befugter Personen geteilt (dem Imam, dem Botschaftsrat). Ihre Geschichte wird nie ohne Ihre Erlaubnis weitergegeben.
+Nein. Ihre Angaben bleiben vertraulich und werden nur mit der kleinstmöglichen Zahl befugter Personen geteilt (dem Imam und der zuständigen Person der Diyanet, die die Bescheinigung genehmigt). Ihre Geschichte wird nie ohne Ihre Erlaubnis weitergegeben.
 
 **Kostet die Bescheinigung etwas?**
 Nein, das Verfahren ist vollständig kostenlos.
@@ -141,7 +141,7 @@ Der bekannte und bestätigte Verwendungszweck ist der Visumantrag für Hadsch un
 Bei der Zeremonie müssen 2 Zeugen anwesend sein; kennen Sie niemanden, helfen wir Ihnen, in unserer Gemeinde Zeugen zu finden.
 
 **Wie lange dauert das?**
-Sobald die Zeremonie stattgefunden hat und die Unterschriften, die Sie betreffen, geleistet sind, geht die Akte zur Genehmigung an den Botschaftsrat. Bis die handschriftlich unterzeichnete Bescheinigung per Post zurückkommt, kann es mehrere Wochen dauern.
+Sobald die Zeremonie stattgefunden hat und die Unterschriften, die Sie betreffen, geleistet sind, wird die Akte zur Genehmigung weitergeleitet. Bis die handschriftlich unterzeichnete Bescheinigung per Post zurückkommt, kann es mehrere Wochen dauern.
 
 **Kann die Zeremonie auf Französisch stattfinden?**
 Ja. Sowohl das Gespräch als auch die Zeremonie können auf Türkisch oder auf Französisch stattfinden.

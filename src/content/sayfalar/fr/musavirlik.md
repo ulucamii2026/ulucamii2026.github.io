@@ -2,14 +2,14 @@
 baslik: "Salih GÖR, conseiller aux affaires sociales à Bruxelles"
 altBaslik: "Parcours, fonction et liens institutionnels de notre mosquée"
 aciklama: "Parcours, fonction et liens institutionnels de notre mosquée"
-guncelleme: 2026-09-19
+guncelleme: 2026-10-16
 ---
 
 **Salih GÖR a pris ses fonctions de conseiller aux affaires sociales auprès de l’ambassade de Türkiye à Bruxelles le 20 avril 2026.** Sa nomination résulte de la décision présidentielle n° 2026/56 du 13 février 2026.
 
 ## Notre lien institutionnel
 
-La mosquée Ulu Camii de Marche-en-Famenne est affiliée à la Fondation Diyanet de Belgique. Le service du conseiller et la Fondation constituent des interlocuteurs institutionnels pour les services religieux et les informations destinées à notre communauté.
+La mosquée Ulu Camii de Marche-en-Famenne est affiliée à la Fondation Diyanet de Belgique. Pour les services religieux, notre communauté s’adresse à la Fondation.
 
 Retrouvez la gestion locale de notre association sur la page du [conseil d’administration](/fr/conseil-administration/) et les prestations de la Fondation dans [Services Diyanet](/fr/services-diyanet/).
 

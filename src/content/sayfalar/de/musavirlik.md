@@ -2,14 +2,14 @@
 baslik: "Salih GÖR, Botschaftsrat für Soziale Angelegenheiten in Brüssel"
 altBaslik: "Seine Aufgabe, sein Werdegang und die institutionelle Anbindung unserer Moschee"
 aciklama: "Seine Aufgabe, sein Werdegang und die institutionelle Anbindung unserer Moschee"
-guncelleme: 2026-09-19
+guncelleme: 2026-10-16
 ---
 
 **Salih GÖR trat am 20. April 2026 sein Amt als Botschaftsrat für Soziale Angelegenheiten an der Botschaft der Türkei in Brüssel an.** Seine Ernennung erfolgte durch den Präsidialbeschluss Nr. 2026/56 vom 13. Februar 2026.
 
 ## Die institutionelle Anbindung unserer Moschee
 
-Die Ulu-Camii-Moschee in Marche-en-Famenne wirkt unter der Belgischen Diyanet-Stiftung. Das Büro des Botschaftsrats und die Stiftung sind die Stellen, an die sich unsere Gemeinde für religiöse Dienste und institutionelle Auskünfte wendet. Diese Seite soll unseren Botschaftsrat vorstellen und den richtigen Weg zu den offiziellen Diensten zeigen.
+Die Ulu-Camii-Moschee in Marche-en-Famenne wirkt unter der Belgischen Diyanet-Stiftung. Für religiöse Dienste wendet sich unsere Gemeinde an die Stiftung. Diese Seite soll unseren Botschaftsrat vorstellen und den richtigen Weg zu den offiziellen Diensten zeigen.
 
 Den örtlichen Vereinsvorstand unserer Moschee finden Sie auf der Seite [Vorstand](/de/vorstand/); Hadsch, Umra und die übrigen Dienste stehen unter [Diyanet-Dienste](/de/diyanet-dienste/).
 

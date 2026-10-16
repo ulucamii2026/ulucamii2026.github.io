@@ -24,7 +24,7 @@ Moslim worden gebeurt door met heel uw hart te geloven dat God (Allah) één is 
 
 
 - **Is er enige druk?** Nee. De beslissing is volledig de uwe; tijdens de ceremonie stelt onze imam u die vraag nog eens uitdrukkelijk, in het bijzijn van de getuigen.
-- **Worden mijn familie en mijn omgeving op de hoogte gebracht?** Nee. Wat u deelt, blijft vertrouwelijk en wordt alleen doorgegeven aan het kleinst mogelijke aantal bevoegde personen (de imam, de Raadgever) — zie ons [Privacybeleid](/nl/privacy/).
+- **Worden mijn familie en mijn omgeving op de hoogte gebracht?** Nee. Wat u deelt, blijft vertrouwelijk en wordt alleen doorgegeven aan het kleinst mogelijke aantal bevoegde personen (de imam en de Diyanet-functionaris die het attest goedkeurt) — zie ons [Privacybeleid](/nl/privacy/).
 - **Moet ik alleen komen?** Bij de ceremonie moeten **2 getuigen** aanwezig zijn; kent u niemand, dan helpen wij u getuigen te vinden binnen onze gemeenschap.
 - **Moet ik iets uit het hoofd leren?** Nee. De geloofsgetuigenis wordt u tijdens de ceremonie lettergreep voor lettergreep voorgezegd.
 
@@ -35,7 +35,7 @@ Moslim worden gebeurt door met heel uw hart te geloven dat God (Allah) één is 
 3. **Het vastleggen van de dag.** Dag en uur worden samen met u afgesproken, volgens uw beschikbaarheid.
 4. **De bekeringsceremonie.** In de moskee van uw keuze spreekt u, voor twee getuigen, de geloofsgetuigenis uit (hieronder vindt u het verloop in detail).
 5. **Het dossier en de handtekeningen.** Uw dossier wordt samengesteld met de EK-9, de EK-10, een kopie van uw identiteitsbewijs en een schriftelijk verzoek; de handtekeningen die u betreffen, worden gezet.
-6. **Goedkeuring door de Raadgever en overhandiging.** Het dossier gaat naar de Raadgever voor Sociale Zaken van de Turkse ambassade in Brussel. Na de handgeschreven handtekening van Raadgever voor Sociale Zaken Salih GÖR komt het attest meestal per post terug naar de moskee van uw keuze en wordt het u persoonlijk overhandigd; op uw vraag kan het ook rechtstreeks naar uw adres worden gestuurd. Deze stap kan enkele weken duren.
+6. **Goedkeuring en overhandiging.** Het dossier gaat ter goedkeuring naar de bevoegde dienst van het Directoraat voor Godsdienstzaken (Diyanet). Na de handgeschreven handtekening van de bevoegde functionaris komt het attest meestal per post terug naar de moskee van uw keuze en wordt het u persoonlijk overhandigd; op uw vraag kan het ook rechtstreeks naar uw adres worden gestuurd. Deze stap kan enkele weken duren.
 7. **Daarna.** Begeleiding, lessen en Franstalige bronnen gaan verder — wij laten u niet alleen.
 
 ## Hoe verloopt de bekeringsceremonie?
@@ -59,14 +59,14 @@ Voor Franstalige kandidaten kan de ceremonie ook in het Frans verlopen; de geloo
 
 ## Wat is het bekeringsattest (EK-9)?
 
-Het **bekeringsattest (EK-9)** is een tweetalig document (Turks/Engels), opgesteld door het Directoraat voor Godsdienstzaken van Turkije (Diyanet İşleri Başkanlığı), dat uw verklaring van bekering en de gegevens van de ceremonie officieel vastlegt. Het draagt uw handtekening, die van de **twee getuigen** en die van de vertegenwoordiger van het Directoraat voor Godsdienstzaken (de Raadgever voor Sociale Zaken van de Turkse ambassade in Brussel).
+Het **bekeringsattest (EK-9)** is een tweetalig document (Turks/Engels), opgesteld door het Directoraat voor Godsdienstzaken van Turkije (Diyanet İşleri Başkanlığı), dat uw verklaring van bekering en de gegevens van de ceremonie officieel vastlegt. Het draagt uw handtekening, die van de **twee getuigen** en die van de bevoegde vertegenwoordiger van het Directoraat voor Godsdienstzaken.
 
 - **Het is gratis.** Voor deze procedure wordt u geen enkele kost aangerekend.
-- **Hoe wordt het bezorgd?** Zodra de handtekeningen volledig zijn, gaat het attest ter goedkeuring naar de Raadgever. Na de handgeschreven handtekening van Raadgever voor Sociale Zaken Salih GÖR komt het meestal per post terug naar de moskee van uw keuze en wordt het u persoonlijk overhandigd; u kunt ook vragen om het rechtstreeks naar uw adres te sturen.
+- **Hoe wordt het bezorgd?** Zodra de handtekeningen volledig zijn, wordt het attest ter goedkeuring verstuurd. Na de handgeschreven handtekening van de bevoegde functionaris komt het meestal per post terug naar de moskee van uw keuze en wordt het u persoonlijk overhandigd; u kunt ook vragen om het rechtstreeks naar uw adres te sturen.
 - **Wat staat erin?** Naam en voornaam, geslacht, geboortedatum en -plaats, namen van de ouders, nationaliteit, burgerlijke staat, opleidingsniveau, beroep, adres en contactgegevens, vorige godsdienst, reden van de bekering, datum van de bekering, nummer en datum van het document, een pasfoto en de handtekeningen van de twee getuigen en van de verantwoordelijke.
 - **Waarvoor dient het?** Het is bekend dat het attest wordt gebruikt als het “Certificate of Conversion” dat **de Saoedische autoriteiten vragen bij een visumaanvraag voor de hadj of de umra**. Het kan ook bij andere officiële stappen worden voorgelegd; omdat elke instelling haar eigen criteria hanteert, raden wij u aan vooraf bij de betrokken instelling na te vragen als u er een bijzonder gebruik voor in gedachten hebt.
 
-> Het onlineformulier dat u op deze site invult, geldt als **vooraanvraag of verzoekschrift** voor het officiële EK-9. De ceremonie kan plaatsvinden in de moskee van uw keuze; het document wordt opgemaakt zodra de nodige handtekeningen en de goedkeuring van de Raadgever rond zijn.
+> Het onlineformulier dat u op deze site invult, geldt als **vooraanvraag of verzoekschrift** voor het officiële EK-9. De ceremonie kan plaatsvinden in de moskee van uw keuze; het document wordt opgemaakt zodra de nodige handtekeningen en de goedkeuring rond zijn.
 
 ## Nodige documenten
 
@@ -80,10 +80,10 @@ Wat u op de dag van de ceremonie meebrengt:
 
 - **Uw identiteitskaart of paspoort** — u toont het origineel aan de imam.
 - **2 getuigen** — hebt u die niet, dan zorgt onze moskee ervoor.
-- **Een schriftelijk verzoek** — het dossier dat naar de Raadgever gaat, bevat een ondertekend verzoek om het bekeringsattest. Dat bereiden wij voor u voor: het wordt tweetalig afgedrukt met de gegevens die u in het formulier hebt opgegeven en met de handtekening die u daar hebt getekend; u leest het voordat u tekent en u mag het desgewenst ook met de hand schrijven.
+- **Een schriftelijk verzoek** — het dossier dat ter goedkeuring wordt verstuurd, bevat een ondertekend verzoek om het bekeringsattest. Dat bereiden wij voor u voor: het wordt tweetalig afgedrukt met de gegevens die u in het formulier hebt opgegeven en met de handtekening die u daar hebt getekend; u leest het voordat u tekent en u mag het desgewenst ook met de hand schrijven.
 - **De EK-10-tekst over uitdrukkelijke toestemming** — die wordt op de dag zelf op papier ondertekend. De volledige tekst kunt u in het Turks, het Engels, het **Frans** en het Nederlands lezen via de link hiernaast.
 
-**Over uw persoonsgegevens:** de richtlijn van het Directoraat voor Godsdienstzaken over bekeringen (artikel 44) bepaalt dat een pasfoto en een kopie van de identiteitskaart of het paspoort in het **officiële dossier** worden opgenomen, zodat het officiële document kan worden opgemaakt. Wij verzamelen die stukken al bij het aanvraagformulier, zonder de dag van de ceremonie af te wachten; zo is uw dossier tijdig klaar. **Alle informatie en documenten over uw aanvraag worden zowel in onze moskee als bij de Raadgever voor Sociale Zaken van de Turkse ambassade in Brussel bewaard**; ze worden niet gepubliceerd, niet aan derden doorgegeven en zijn alleen toegankelijk voor een minimaal aantal bevoegde personen, strikt voor zover de dienstverlening dat vereist. Uw identiteits**nummer** wordt in geen enkele fase gevraagd. Voor de verwerking van uw beelden en uw handtekening wordt in het formulier afzonderlijk uw uitdrukkelijke toestemming gevraagd; die toestemming kunt u op elk moment intrekken.
+**Over uw persoonsgegevens:** de richtlijn van het Directoraat voor Godsdienstzaken over bekeringen (artikel 44) bepaalt dat een pasfoto en een kopie van de identiteitskaart of het paspoort in het **officiële dossier** worden opgenomen, zodat het officiële document kan worden opgemaakt. Wij verzamelen die stukken al bij het aanvraagformulier, zonder de dag van de ceremonie af te wachten; zo is uw dossier tijdig klaar. **Alle informatie en documenten over uw aanvraag worden zowel in onze moskee als bij de bevoegde dienst van het Directoraat voor Godsdienstzaken (Diyanet) in België bewaard**; ze worden niet gepubliceerd, niet aan derden doorgegeven en zijn alleen toegankelijk voor een minimaal aantal bevoegde personen, strikt voor zover de dienstverlening dat vereist. Uw identiteits**nummer** wordt in geen enkele fase gevraagd. Voor de verwerking van uw beelden en uw handtekening wordt in het formulier afzonderlijk uw uitdrukkelijke toestemming gevraagd; die toestemming kunt u op elk moment intrekken.
 
 ## Privacy en discretie
 
@@ -129,7 +129,7 @@ De bestanden blijven **op de eigen server van het Diyanet** staan; wij bewaren e
 Nee. Een naamsverandering is volledig vrijwillig; als u het wenst, wordt u een naam voorgesteld en herinneren wij u aan de officiële aanvraagweg.
 
 **Komen mijn familie of mijn omgeving iets over deze stap te weten?**
-Nee. Uw gegevens blijven vertrouwelijk en worden alleen gedeeld met het kleinst mogelijke aantal bevoegde personen (de imam, de Raadgever). Uw verhaal wordt nooit zonder uw toestemming gedeeld.
+Nee. Uw gegevens blijven vertrouwelijk en worden alleen gedeeld met het kleinst mogelijke aantal bevoegde personen (de imam en de Diyanet-functionaris die het attest goedkeurt). Uw verhaal wordt nooit zonder uw toestemming gedeeld.
 
 **Moet ik voor het attest betalen?**
 Nee, de hele procedure is volledig gratis.
@@ -141,7 +141,7 @@ Het bekende en bevestigde gebruik is de visumaanvraag voor de hadj of de umra. H
 Bij de ceremonie moeten 2 getuigen aanwezig zijn; kent u niemand, dan helpen wij u getuigen te vinden binnen onze gemeenschap.
 
 **Hoe lang duurt het?**
-Zodra de ceremonie achter de rug is en de handtekeningen die u betreffen gezet zijn, gaat het dossier ter goedkeuring naar de Raadgever. Het kan enkele weken duren voor het handgeschreven ondertekende attest per post terugkomt.
+Zodra de ceremonie achter de rug is en de handtekeningen die u betreffen gezet zijn, wordt het dossier ter goedkeuring verstuurd. Het kan enkele weken duren voor het handgeschreven ondertekende attest per post terugkomt.
 
 **Kan de ceremonie in het Frans plaatsvinden?**
 Ja. Zowel het gesprek als de ceremonie kunnen in het Turks of in het Frans plaatsvinden.

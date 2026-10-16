@@ -2,14 +2,14 @@
 baslik: "Salih GÖR, raadgever voor sociale zaken in Brussel"
 altBaslik: "Zijn functie, zijn loopbaan en de institutionele band van onze moskee"
 aciklama: "Zijn functie, zijn loopbaan en de institutionele band van onze moskee"
-guncelleme: 2026-09-19
+guncelleme: 2026-10-16
 ---
 
 **Salih GÖR trad op 20 april 2026 in functie als raadgever voor sociale zaken bij de ambassade van Türkiye in Brussel.** Zijn benoeming gebeurde bij presidentieel besluit nr. 2026/56 van 13 februari 2026.
 
 ## De institutionele band van onze moskee
 
-De Ulu Camii-moskee in Marche-en-Famenne is werkzaam onder de Belgische Diyanetstichting. Het kantoor van de raadgever en de stichting zijn de instanties waarop onze gemeenschap een beroep doet voor religieuze dienstverlening en institutionele informatie. Deze pagina is opgesteld om onze raadgever te leren kennen en om de officiële diensten langs de juiste weg te bereiken.
+De Ulu Camii-moskee in Marche-en-Famenne is werkzaam onder de Belgische Diyanetstichting. Voor religieuze dienstverlening doet onze gemeenschap een beroep op de stichting. Deze pagina is opgesteld om onze raadgever te leren kennen en om de officiële diensten langs de juiste weg te bereiken.
 
 Het plaatselijke bestuur van onze vereniging vindt u op de pagina [Bestuur](/nl/bestuur/); de hadj, de umra en de overige diensten staan onder [Diyanet-diensten](/nl/diyanet-diensten/).
 

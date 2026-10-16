@@ -219,9 +219,9 @@ export const tr: FormMetinleri = {
     sayfaBaslik: 'İhtida Başvuru Formu',
     sayfaAciklama: 'Marche-en-Famenne Ulu Camii ihtida (Müslüman olma) başvuru formu: bilgilerinizi gönderin, din görevlimiz sizinle iletişime geçip kelime-i şehadet töreni ve ihtida belgesi için gün belirlesin.',
     ustEtiket: 'İhtida · Müslüman olmak',
-    giris: "Bu form, görüşme ve EK-9 ihtida belgenizin hazırlanması içindir. Din görevlimiz sizinle iletişime geçerek töreni planlar. Dosyanız Müşavirliğe gönderilir; Müşavirlik imzasından sonra belge tercihinize göre seçtiğiniz camiye veya ikamet adresinize postalanır. Başvuru ücretsizdir.",
+    giris: "Bu form, görüşme ve EK-9 ihtida belgenizin hazırlanması içindir. Din görevlimiz sizinle iletişime geçerek töreni planlar. Dosyanız onaya gönderilir; imzalandıktan sonra belge tercihinize göre seçtiğiniz camiye veya ikamet adresinize postalanır. Başvuru ücretsizdir.",
     paketBildirimi: 'Başvurunuz kaydedildi. EK-9, EK-10, dilekçe ve kimlik örneğini içeren PDF paketiniz hazırlanarak {eposta} adresine gönderilecek. Tören ve şahit teyidinden sonra son nüsha düzenlenir.',
-    kimlikNotu: 'İhtida Belgesi’nin (EK-9) düzenlenebilmesi için bir vesikalık fotoğraf, kimlik belgenizin ön ve arka yüzü ve imzanız gerekir; bunları formun 5. bölümünde yükler, imzanızı ekranda çizersiniz. Kimlik numaranızı ayrıca yazmanız gerekmez. Başvurunuza ilişkin her türlü bilgi ve belge hem camimizde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde saklanır; yayımlanmaz, yalnız yetkili görevliler görür.',
+    kimlikNotu: 'İhtida Belgesi’nin (EK-9) düzenlenebilmesi için bir vesikalık fotoğraf, kimlik belgenizin ön ve arka yüzü ve imzanız gerekir; bunları formun 5. bölümünde yükler, imzanızı ekranda çizersiniz. Kimlik numaranızı ayrıca yazmanız gerekmez. Başvurunuza ilişkin her türlü bilgi ve belge hem camimizde hem de Diyanet İşleri Başkanlığı’nın Belçika’daki yetkili biriminde saklanır; yayımlanmaz, yalnız yetkili görevliler görür.',
     bolum: { kisi: 'Kişisel bilgiler', durum: 'Durum', iletisim: 'İletişim', ihtida: 'İhtida ve tören', belgeler: 'Belgeler ve imza', riza: 'Rıza ve beyan', ozet: 'Özet ve gönderim' },
     kisi: {
       adSoyad: 'Adınız ve soyadınız', adSoyadYardim: 'Kimlik belgenizde yazdığı gibi; belgeye bu ad basılır.',
@@ -234,7 +234,7 @@ export const tr: FormMetinleri = {
       ogrenim: 'Öğrenim durumu', ogrenimYardim: 'Örnek: lise, lisans, yüksek lisans', meslek: 'Meslek',
     },
     iletisim: {"eposta": "E-posta", "telefon": "Telefon", "adres": "İkamet adresi: sokak, kapı ve daire numarası", "adresYardim": "Örnek: Rue du Test 12, boîte 3", "postaKodu": "Posta kodu", "sehir": "Şehir / belediye", "ulke": "Ülke"},
-    teslimat: {"baslik": "İmzalı belgenin teslimi", "aciklama": "Müşavirlik imzasından sonra belgenizi nereden almak istersiniz?", "cami": "Seçtiğim camiden teslim alacağım; belge oraya postalansın", "adres": "Yukarıdaki ikamet adresime postayla gönderilsin", "adresNotu": "Zarfta adınız ve yukarıdaki tam adresiniz kullanılacak. Posta kutunuzdaki adın aynı olduğunu ve adresinizin eksiksiz olduğunu kontrol edin."},
+    teslimat: {"baslik": "İmzalı belgenin teslimi", "aciklama": "Belgeniz imzalandıktan sonra nereden almak istersiniz?", "cami": "Seçtiğim camiden teslim alacağım; belge oraya postalansın", "adres": "Yukarıdaki ikamet adresime postayla gönderilsin", "adresNotu": "Zarfta adınız ve yukarıdaki tam adresiniz kullanılacak. Posta kutunuzdaki adın aynı olduğunu ve adresinizin eksiksiz olduğunu kontrol edin."},
     ihtida: {
       oncekiDin: 'Önceki dini / mezhebi', oncekiDinYardim: 'Örnek: Katolik, Protestan, dinsiz…',
       sebep: 'İslam’ı seçme sebebiniz', sebepYardim: 'İsteğe bağlı; birkaç cümle yeterlidir.',
@@ -255,7 +255,7 @@ export const tr: FormMetinleri = {
       kimlikArka: 'Kimlik belgesinin arka yüzü', kimlikArkaYardim: 'Kimlik kartı yüklüyorsanız zorunludur; pasaportta gerekmez.',
       sec: 'Fotoğraf seç veya çek', degistir: 'Değiştir', kaldir: 'Kaldır', onizleme: 'Yüklediğiniz görselin önizlemesi',
       isleniyor: 'Görsel hazırlanıyor…', hazir: 'Hazır · {boyut}',
-      imza: 'İmzanız', imzaYardim: "İzin vermeniz hâlinde formda çizdiğiniz imza, EK-9 ihtida belgesine, onayladığınız EK-10 açık rıza formuna ve ihtida belgesi talep dilekçesine aktarılır. Bu belgeleri din görevlimiz hazırlayıp Müşavirliğe gönderir.",
+      imza: 'İmzanız', imzaYardim: "İzin vermeniz hâlinde formda çizdiğiniz imza, EK-9 ihtida belgesine, onayladığınız EK-10 açık rıza formuna ve ihtida belgesi talep dilekçesine aktarılır. Bu belgeleri din görevlimiz hazırlayıp onaya gönderir.",
       imzaTemizle: 'İmzayı temizle',
       imzaYok: 'Ekranda imza atamıyorum; belgeyi tören günü elimle imzalayacağım.',
       imzaYokYardim: 'Dokunmatik ekranınız yoksa ya da imzayı çizmekte zorlanıyorsanız bunu işaretleyin; belge imza alanı boş basılır, tören günü kalemle imzalarsınız.',
@@ -272,7 +272,7 @@ export const tr: FormMetinleri = {
       gizlilik: 'Gizlilik bildirimini okudum.',
       fotoIzni: 'Tören sırasında çekilecek fotoğraf ve videolarda yer almayı kabul ediyorum.',
       fotoAciklama: 'İsteğe bağlı. Görüntüler ancak ayrıca onayınızla paylaşılır; “hayır” demeniz başvuruyu etkilemez.',
-      gorselRiza: 'Vesikalık fotoğrafımın, kimlik belgemin ön ve arka yüzünün ve imzamın; İhtida Belgesi’nin (EK-9) düzenlenmesi ve resmî dosyanın oluşturulması amacıyla işlenmesine açık rıza veriyorum. Bu bilgi ve belgelerin hem Marche-en-Famenne Ulu Camii derneğinde hem de T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği’nde saklanacağını biliyorum.',
+      gorselRiza: 'Vesikalık fotoğrafımın, kimlik belgemin ön ve arka yüzünün ve imzamın; İhtida Belgesi’nin (EK-9) düzenlenmesi ve resmî dosyanın oluşturulması amacıyla işlenmesine açık rıza veriyorum. Bu bilgi ve belgelerin hem Marche-en-Famenne Ulu Camii derneğinde hem de Diyanet İşleri Başkanlığı’nın Belçika’daki yetkili biriminde saklanacağını biliyorum.',
       gorselRizaYardim: 'Görseller derneğin herkese kapalı klasöründe tutulur, hiçbir zaman yayımlanmaz ve yalnız yetkili görevliler görür. Rızanızı istediğiniz zaman geri alabilirsiniz.',
       beyanBaslik: 'Beyan',
       beyanMetin: 'Kendi hür irademle İslam dinine girmek istiyorum. Şahsıma ihtida belgesi düzenlenmesi hususunda gereğini saygılarımla arz ederim.',
@@ -281,7 +281,7 @@ export const tr: FormMetinleri = {
     },
     ozet: { kisi: 'Ad soyad', dogum: 'Doğum', uyruk: 'Uyruk', aile: 'Anne / baba adı', durum: 'Medeni hâl · öğrenim · meslek', iletisim: 'İletişim', din: 'Önceki din', toren: 'Tören dili · tarih tercihi', sahitler: 'Şahitler', belgeler: 'Belgeler ve imza' },
     basari: {
-      sonrakiAdimlar: "Din görevlimiz görüşme ve tören için sizinle iletişime geçecek. Belgeniz Müşavirlik imzasından sonra seçtiğiniz teslim yerine postalanacak; teslim süresi ayrıca bildirilecek.",
+      sonrakiAdimlar: "Din görevlimiz görüşme ve tören için sizinle iletişime geçecek. Belgeniz imzalandıktan sonra seçtiğiniz teslim yerine postalanacak; teslim süresi ayrıca bildirilecek.",
     },
   },
 };

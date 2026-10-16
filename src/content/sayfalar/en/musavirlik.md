@@ -2,14 +2,14 @@
 baslik: "Salih GÖR, Social Affairs Counsellor in Brussels"
 altBaslik: "His role, background and our mosque’s institutional links"
 aciklama: "His role, background and our mosque’s institutional links"
-guncelleme: 2026-09-19
+guncelleme: 2026-10-16
 ---
 
 **Salih GÖR took office as Social Affairs Counsellor at the Embassy of Türkiye in Brussels on 20 April 2026.** He was appointed by Presidential Decision No. 2026/56 of 13 February 2026.
 
 ## Our institutional connection
 
-Ulu Camii in Marche-en-Famenne is affiliated with the Diyanet Foundation of Belgium. The counsellor’s office and the Foundation are institutional points of reference for religious services and community information.
+Ulu Camii in Marche-en-Famenne is affiliated with the Diyanet Foundation of Belgium. For religious services, our community turns to the Foundation.
 
 Our association’s local management is presented on the [Board page](/en/board/). Hajj, umrah and other Foundation services are listed under [Diyanet Services](/en/diyanet-services/).
 
