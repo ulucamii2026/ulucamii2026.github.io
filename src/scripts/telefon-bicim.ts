@@ -21,6 +21,10 @@ const KODLAR = Object.keys(KALIPLAR).sort((a, b) => b.length - a.length);
 
 /** Ham girdiden uluslararası rakam dizisi (başında + olmadan). Yerel Belçika yazımı +32'ye çevrilir. */
 export function telefonRakamlari(ham: string): string {
+  // Odakta yazılan «+32 » önerisinin ardına numara yeniden uluslararası yapıştırılır ya da yazılırsa («+32 +32 470…»)
+  // son «+» esas alınır. Yoksa «+3232 47 29 85» gibi kırpılmış yanlış numara geçerli sayılıp kaydediliyordu (17 Eki 2026).
+  const sonArti = ham.lastIndexOf('+');
+  if (sonArti > 0) ham = ham.slice(sonArti);
   const arti = ham.trim().startsWith('+');
   let r = ham.replace(/\D/g, '');
   if (!r) return '';
@@ -29,9 +33,14 @@ export function telefonRakamlari(ham: string): string {
     else if (r.startsWith('0')) r = '32' + r.slice(1);
     else if (!r.startsWith('32')) r = '32' + r;
   }
+  let kod = KODLAR.find(k => r.startsWith(k));
+  // «+32 0032 470…»: öneriden sonra yazılan uluslararası 00 ön eki asıl numarayı başlatır.
+  if (kod && r.startsWith('00', kod.length)) { r = r.slice(kod.length + 2); kod = KODLAR.find(k => r.startsWith(k)); }
   // «+32 0470…» yazımı: ülke kodundan sonraki ana hat sıfırı düşer.
-  const kod = KODLAR.find(k => r.startsWith(k));
   if (kod && r[kod.length] === '0') r = kod + r.slice(kod.length + 1);
+  // «+32 32 470…»: ulusal kısım beklenenden uzun ve yine aynı kodla başlıyorsa yinelenen kod düşer
+  // (Anvers «+32 3 2…» gibi doğru uzunluktaki numaralara dokunulmaz).
+  if (kod && r.length > kod.length + KALIPLAR[kod].uzunluk(r.slice(kod.length)) && r.startsWith(kod, kod.length)) r = r.slice(kod.length);
   const azami = kod ? kod.length + KALIPLAR[kod].uzunluk(r.slice(kod.length)) : 15;
   return r.slice(0, azami);
 }

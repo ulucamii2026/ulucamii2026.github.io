@@ -14,6 +14,18 @@ test('Aynı numaranın bütün yazımları tek biçime iner', () => {
   }
 });
 
+test('«+32 » önerisinin ardına yeniden yazılan ülke kodu numarayı bozmaz (17 Eki 2026 canlı bulgusu)', () => {
+  // Önceden «+32 +32 472 98 50 73» → «+32 3 247 29 85» olup sessizce kaydediliyordu.
+  for (const ham of ['+32 +32 472 98 50 73', '+32 +32472985073', '+32 0032 472 98 50 73', '+32 32 472 98 50 73', '+32 32472985073']) {
+    assert.equal(telefonBicimle(ham), '+32 472 98 50 73', ham);
+  }
+  assert.equal(telefonBicimle('+32 +33 6 12 34 56 78'), '+33 6 12 34 56 78');
+  assert.equal(telefonBicimle('+32 0033612345678'), '+33 6 12 34 56 78');
+  // Doğru uzunluktaki Anvers sabit hattı («03 2…») yinelenen kod sanılmaz.
+  assert.equal(telefonBicimle('+32 3 231 23 45'), '+32 3 231 23 45');
+  assert.equal(telefonBicimle('032312345'), '+32 3 231 23 45');
+});
+
 test('Harf ve işaretler atılır; fazla rakam kırpılır', () => {
   assert.equal(telefonBicimle('04a7b0-12x34y56zz789'), '+32 470 12 34 56');
   assert.equal(telefonRakamlari('+32 470 12 34 56 99'), '32470123456');

@@ -231,6 +231,14 @@ test('Adım adım tam akış: doğrulama, özet, gönderim sözleşmesi ve sonu�
   await expect(telefon).toHaveValue('+32 ');
   await telefon.pressSequentially('04a70-12b34 56xyz');
   await expect(telefon).toHaveValue('+32 470 12 34 56');
+  // 17 Eki 2026 canlı bulgusu: «+32 » önerisinin ardına numara yeniden «+32 …» diye yazılınca
+  // «+32 3 247 29 85» olup geçerli sayılıyordu; son ülke kodu esas alınmalı.
+  await telefon.fill('');
+  await telefon.blur();
+  await telefon.click();
+  await expect(telefon).toHaveValue('+32 ');
+  await telefon.pressSequentially('+32 472 98 50 73');
+  await expect(telefon).toHaveValue('+32 472 98 50 73');
   await telefon.fill('');
   await telefon.blur();
   await expect(telefon).toHaveValue('');
