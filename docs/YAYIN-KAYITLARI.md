@@ -4,6 +4,50 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 17 Ekim 2026 (sabah) — ihtida paketi: Mühtedi Koordinatörlüğü emsali, kimlik kırpma; telefon alanı düzeltmesi
+
+- Zaman: 17 Ekim 2026 08:09 (Apps Script) – 08:24 (push) – 08:26 (Pages) – 08:27–08:34 (canlı uçtan uca sınama) –
+  08:47 (telefon düzeltmesi push) – 08:49 (Pages) – 08:54–09:02 (test kaydı temizliği), Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «formun sonucunda elimize bu belgeleri ver… bütün yetki ve
+  karar sende… test et» isteği.
+- Kapsam: ihtida formunun otomatik paketi Koordinatörlükte elle mükemmelleştirilen belgelerle aynı düzene geçti. Sıra
+  EK-9 ×2, dilekçe ×2, EK-10 ×2, kimlik (7 s.). Dilekçe ve EK-10 Müşavirliğin Ekim 2026 formları; elle doldurulan her alan
+  Allura, mürekkep #1A3D9E. İmza vektör yol; kimlik sayfası gerçek boyutta. Formda kimlik yüzü kırpma penceresi (beş dil).
+  Ayrıntı: [IHTIDA-OTOMASYON-v25.md](IHTIDA-OTOMASYON-v25.md) «17 Ekim 2026».
+- Site commit'leri: `4fab46f` (41 dosya), [Pages](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39009771358)
+  **success**. `b13acdd` (telefon), [Pages](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39011147945)
+  **success**.
+- Apps Script (aynı `SURUM = 43`, dağıtım **Version 59 du 17 oct. 2026, 08:09**). İlk kayıt denemesi (08:02) editörde
+  «ParseError» ile reddedildi: `kalem.js` BigInt değişmezi (`0n`) içeriyordu. Kod kaydedilmedi, canlı etkilenmedi. SHA-512 ve
+  `random.seed` tohumlaması BigInt'siz yazıldı (Python ve Node crypto ile eşlik testi `tests/kalem.test.mjs`), derleyiciye
+  `supported: { bigint: false }` eklendi. İkinci denemede kuru okuma canlı kaynağın 16 Ekim dağıtımıyla birebir aynıydı.
+  Paket farkı yalnız amaçlanan satırlardı; kaydedilen kod yeniden okundu ve paketle aynıydı. Sağlık: `surum: 43`,
+  `ihtidaPaketHazir: true`, yeni `ihtidaKalemBelgeleri: true`.
+- Doğrulama: `npm run dogrula:codex` tamamı GEÇTİ (`check` 0 hata, 1932 sayfa, 803 tarayıcı testi, eğitim 70, kurallar).
+  Kalem ve telefon değişikliklerinden sonra: `test:ihtida` 45/45, ihtida + kırpma tarayıcı testleri 72/72, seviye + site +
+  ihtida 168/168, `test:seviye` 52/52. Mühtedi hattı `test-hat.py` SONUÇ: GEÇTİ.
+- Canlı uçtan uca: canlı forma sentetik «Deneme TESTOGLU» başvurusu gönderildi (üzerinde TEST yazan kurgusal kartlar,
+  başvuran adresi derneğin Gmail'i). IH-2026-0004 açıldı. Defterde EK-10 sürümü «2026-10» olarak okundu: Sheets'in tarihe
+  çevirme hatası canlıda kapandı. Kuyruk paketi kurdu (8 s.: 7 + sebep açıklama eki). Üç alıcıda da `teslim-edildi`
+  (info@, imam@, ulucamii2026@gmail.com). Sayfalar görsel incelendi:
+  - kalem yazısı, kurum çizikleri, vesikalık;
+  - ön başvuruda dilekçe imzasız ve tarihsiz;
+  - EK-10'da vektör imza;
+  - kırpılmış kartlar gerçek boyutta, numarasız.
+- Canlı sınamada bulunan mevcut hata düzeltildi (`b13acdd`). Telefon alanının «+32 » önerisinin ardına numara yeniden «+32…»
+  diye yazılınca/yapıştırılınca «+3232472985» kaydediliyordu; kayıt, ihtida ve seviye formlarında 21 Eylül 2026'dan beri.
+  Gerçek defterlerde bu kalıpta numara yok (25 kayıt, 3 ihtida, 4 seviye satırı tarandı; numara yazdırılmadı). Canlı formda
+  TR/FR'de yazma ve yapıştırma `+32 472 98 50 73` veriyor.
+- Temizlik: `test-temizle` IH-2026-0004'ün satırını ve Drive izlerini kaldırdı. Paket durumu `null`; defterlerde 3 ihtida,
+  25 kayıt, 4 seviye satırı. Sonraki gerçek başvuru yine IH-2026-0004 alır. Üç gelen kutusundaki deneme e-postaları
+  silinmedi. Temizlik isteği sunucuda ~4,5 dk kilit tuttu; o sırada liste isteği bekledi.
+- Açık sınırlar:
+  - Kayıtlı şahit imzaları raster kalır (mürekkebe boyanır).
+  - Kalem büyük harfli kelimeleri harf harf yazdığından PDF metin katmanında harf arasına boşluk düşebilir.
+  - Eve teslimde dilekçenin «dönüş» alanı sabit «Cami» etiketinin altındadır.
+  - Kalem yazısında ihtida sebebi tek satıra sığmazsa açıklama ekine gider.
+  - Gerçek cihaz/Safari'de kırpma penceresi denenmedi; tarayıcı testleri Chromium masaüstü + Pixel 7.
+
 ## 16 Ekim 2026 (öğle) — ihtida sayfaları ve başvuru e-postası: onay adımının dili
 
 - Zaman: 16 Ekim 2026 13:24 (push) – 13:27 (Pages) – 13:36 (Apps Script) – 13:37 (canlı doğrulama), Europe/Brussels (CEST).

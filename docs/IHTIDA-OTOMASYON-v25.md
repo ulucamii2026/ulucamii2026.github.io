@@ -97,6 +97,11 @@ Mühtedi Koordinatörlüğünde elle mükemmelleştirilen belgeler site formunun
 - **Kırpma penceresi.** Formda kimlik ön/arka seçilince `src/scripts/kimlik-kirp.ts` kartın kenarlarını tarayıcıda bulur (Otsu eşiği, en büyük bölge, PCA köşeleri, kenar doğrusu oturtma), perspektifi düzeltip 300 dpi karta çevirir (1011 × 638; pasaport 1476 × 1039). Dört köşe sürüklenebilir ve klavyeyle ayarlanır (oklar, Shift ×5); «Döndür», «Kırpmadan kullan», «Vazgeç» vardır. Belge türü değişince kırpılmış görsel yeni orana yeniden açılır. Görsel tarayıcıdan çıkmadan işlenir. Kırpılmamış fotoğraf PDF'de kart genişliğine sığdırılır.
 - **Sağlık.** GET cevabında `ihtidaKalemBelgeleri:true`, derlenmiş GAS paketinde Allura, Ekim 2026 EK-10 ve dilekçe şablonlarının bulunduğunu gösterir.
 - **Testler.** `tests/kimlik-kirp.test.mjs` (geometri), `tests/web/kimlik-kirp.spec.mjs` (pencere, klavye, axe, çıktı ölçüsü), `tests/ihtida-contract.test.mjs` ve `tests/ihtida-paket-akis.test.mjs` (7 sayfa, vektör yol, raster yok, mürekkep rengi, kimlik numarası yok). Kalem büyük harfli kelimeleri harf harf yazdığından metin katmanında harf arası boşluk düşebilir; testler karşılaştırmadan önce boşlukları atar.
+- **Apps Script sözdizimi.** Editör kayıtta BigInt değişmezini (`0n`) «ParseError» ile reddeder; `kalem.js` bu yüzden
+  BigInt kullanmaz, `ihtida-gas-derle.mjs` esbuild'e `supported: { bigint: false }` verir. `\p{L}/u`, `?.`, `??` ve sınıflar
+  canlıda çalışır.
+- **Canlı.** Apps Script Version 59 (17 Ekim 2026 08:09); site `4fab46f` + `b13acdd`. Canlı uçtan uca sınama ve temizlik:
+  [YAYIN-KAYITLARI](YAYIN-KAYITLARI.md) «17 Ekim 2026».
 - **Bilinen sınır.** Eve teslimde dilekçenin «dönüş» alanı başvuranın adı ve adresini formdaki sabit «Cami» etiketinin altında taşır.
 
 ## Bundan sonraki kullanım
