@@ -264,6 +264,7 @@ export const tr: FormMetinleri = {
       hataOkunamadi: 'Bu dosya okunamadı; başka bir fotoğraf deneyin.',
       hataImza: 'İmza alanı boş görünüyor. İmzanızı çizin ya da alttaki kutuyu işaretleyin.',
       hataEksik: '{ad} eksik: lütfen bir fotoğraf ekleyin.',
+      kirp: { baslik: 'Kartın köşelerini ayarlayın', yardim: 'Dört mavi noktayı kartın köşelerine sürükleyin. Belgeye yalnız kart basılır; arka plan kesilir.', yardimPasaport: 'Dört mavi noktayı pasaportun fotoğraflı bilgi sayfasının köşelerine sürükleyin.', uygula: 'Kırp ve kullan', ham: 'Kırpmadan kullan', vazgec: 'Vazgeç', dondur: 'Döndür', duzelt: 'Köşeleri düzelt', bulundu: 'Kartın kenarları bulundu; gerekirse köşeleri düzeltin.', bulunamadi: 'Kartın kenarları kendiliğinden bulunamadı; köşeleri elle yerleştirin.', onizleme: 'Sonuç', kirpildi: 'Kart kırpıldı · {boyut}', koseler: ['Sol üst köşe', 'Sağ üst köşe', 'Sağ alt köşe', 'Sol alt köşe'] },
     },
     riza: {
       acikRiza: 'Dinî inancıma ve İslam’a girme isteğime ilişkin bu bilgilerin, ihtida belgesinin düzenlenmesi ve törenin planlanması amacıyla Marche-en-Famenne Ulu Camii derneği ve Diyanet İşleri Başkanlığı’nın yetkili birimi tarafından işlenmesine açık rıza veriyorum (GDPR md. 9/2-a). Bu rızayı istediğim zaman geri alabilirim.',

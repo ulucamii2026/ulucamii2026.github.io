@@ -156,6 +156,7 @@ function doGet(e) {
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
     ihtidaCamiSecimi: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.camiCoz === "function",
+    ihtidaKalemBelgeleri: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.imzaVektorCoz === "function" && IHTIDA_EK10_SURUMLERI.indexOf("2026-10") !== -1,
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
     // v42: envanter formu açık mı? Yalnız ENVANTER_AYAR'dan okunur; paket ya da modül yoksa her zaman kapalı.
@@ -1092,6 +1093,12 @@ function ihtidaDogrulaV2(v) {
   if (v.belgeTuru === "pasaport" && g.kimlikArka) return h("kimlik-arka-fazla");
   if (!v.imzaYok && !gorselGecerli(g.imza, 1)) return h("imza-gecersiz");
   if (v.imzaYok && g.imza) return h("imza-fazla");
+  /* 17 Eki 2026: aynı imzanın vektör hâli (çizgiler) — belgelere piksel değil yol olarak çizilir. İsteğe bağlıdır;
+     varsa PNG imzayla birlikte gelir ve paketleyicinin çözücüsünden (IhtidaPdf.imzaVektorCoz) geçmek zorundadır. */
+  if (g.imzaVektor !== undefined && g.imzaVektor !== "") {
+    if (v.imzaYok || !g.imza) return h("imza-fazla");
+    if (!imzaVektorGecerli(g.imzaVektor)) return h("imza-vektor-gecersiz");
+  }
   if (onay.gorselRiza !== true) return h("onay-gorsel-riza-eksik");
 
   if (onay.acikRiza !== true) return h("onay-acik-riza-eksik");
@@ -1099,7 +1106,7 @@ function ihtidaDogrulaV2(v) {
   /* V27 tarayıcısı sürümü açıkça gönderir. V26 istemcisi yayındayken gelen
      sürümsüz gövde ise eski EK-10 sayılır; yeni rıza uydurulmaz. Böylece
      rollout sırası başvuruyu reddetmez, paketleyici de v1 şablonu seçer. */
-  var yeniEk10 = onay.ek10Surumu === "2026-09-09";
+  var yeniEk10 = IHTIDA_EK10_SURUMLERI.indexOf(onay.ek10Surumu) !== -1;
   if (onay.ek10Surumu !== undefined && !yeniEk10) return h("onay-ek10-surum-gecersiz");
   if (yeniEk10 && !v.imzaYok && onay.imzaAktarimIzni !== true) return h("onay-imza-aktarim-izni-eksik");
   if (yeniEk10 && v.imzaYok && onay.imzaAktarimIzni !== false) return h("onay-imza-aktarim-izni-gecersiz");
@@ -1827,8 +1834,19 @@ var IHTIDA_GORSEL_ADLARI = [
   { anahtar: "vesikalik", sonEk: " - vesikalik.jpg" },
   { anahtar: "kimlikOn", sonEk: " - kimlik-on.jpg" },
   { anahtar: "kimlikArka", sonEk: " - kimlik-arka.jpg" },
-  { anahtar: "imza", sonEk: " - imza.png" }
+  { anahtar: "imza", sonEk: " - imza.png" },
+  { anahtar: "imzaVektor", sonEk: " - imza-vektor.json", metin: true }   // 17 Eki 2026: aynı imzanın çizgileri
 ];
+
+/* Başvuranın onay verebileceği EK-10 metinleri. «2026-10»: Müşavirliğin Ekim 2026 açık rıza formu (dört dil, iki sayfa). */
+var IHTIDA_EK10_SURUMLERI = ["2026-09-09", "2026-10"];
+
+/** Vektör imza metni: boyut sınırı + paketleyicinin çözücüsü. Paket yoksa kabul edilmez (kapalı başarısızlık). */
+function imzaVektorGecerli(metin) {
+  if (typeof metin !== "string" || metin.length < 20 || metin.length > 120000) return false;
+  if (typeof IhtidaPdf === "undefined" || typeof IhtidaPdf.imzaVektorCoz !== "function") return false;
+  try { return !!IhtidaPdf.imzaVektorCoz(metin); } catch (_) { return false; }
+}
 
 /** Veri URL'i beklenen biçimde ve azami boyutta mı? Boş dize "yok" demektir (geçersiz sayılır). */
 function gorselGecerli(veri, azamiMb) {
@@ -1864,7 +1882,7 @@ function ihtidaGorselleriKaydet(klasor, ref, gorseller) {
     var veri = gorseller && gorseller[tanim.anahtar];
     if (!veri) continue;
     try {
-      var blob = veriUrlBlob(veri, ref + tanim.sonEk);
+      var blob = tanim.metin ? Utilities.newBlob(String(veri), "application/json", ref + tanim.sonEk) : veriUrlBlob(veri, ref + tanim.sonEk);
       if (blob) klasor.createFile(blob);
       else kaydedilemeyen.push(tanim.anahtar);
     } catch (hata) {
@@ -2044,6 +2062,7 @@ function ihtidaGorselleriOku(klasor, ref, okunamayanlar) {
         okunamayanlar.push({ dosya: ad, neden: "cok-buyuk", kb: Math.round(bayt.length / 1024) });
         continue;
       }
+      if (tanim.metin) { sonuc[tanim.anahtar] = blob.getDataAsString("UTF-8"); continue; }
       sonuc[tanim.anahtar] = "data:" + blob.getContentType() + ";base64," + Utilities.base64Encode(bayt);
     } catch (hata) {
       console.error("ihtida gorseli okunamadi (" + ad + "): " + hata);
@@ -2153,7 +2172,7 @@ function ihtidaPostIsleV2(v) {
         (v.teslimat && v.teslimat.yontem) || "", v.sahitSecimi || "", onay.ek10 ? "Evet" : "Hayır",
         b.adresSokak || "", b.postaKodu || "", b.sehir || "", b.ulke || "", v.belgeTuru || "", "", "Otomatik PDF hazırlanıyor", "Sırada",
         cami.id, cami.ad, cami.sehir, cami.postaKodu, cami.adres, cami.kurum || "",
-        onay.ek10Surumu, onay.imzaAktarimIzni ? "Evet" : "Hayır"
+        onay.ek10Surumu ? "'" + onay.ek10Surumu : "", onay.imzaAktarimIzni ? "Evet" : "Hayır"
       ]);
       SpreadsheetApp.flush();
       ihtidaPaketKuyrugaAl(ref);
@@ -2305,6 +2324,7 @@ function panelBelgeIsle(e) {
       gorseller: gorseller,
       vesikalik: gorseller.vesikalik,               // panel.js'in beklediği düz alanlar
       basvuranImza: gorseller.imza,
+      basvuranImzaVektor: gorseller.imzaVektor,
       okunamayanGorseller: okunamayanlar
     });
   } catch (hata) {

@@ -37,14 +37,14 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <label for="ek9-belge-adi">Belgeye yazılacak ad soyad (kimlikteki gibi)</label>
       <input id="ek9-belge-adi" name="adSoyad" type="text" maxlength="120" required autocomplete="off" />
       <label for="ek9-isim-yazisi">İlk sayfadaki isim</label>
-      <select id="ek9-isim-yazisi" name="isimYazisi"><option value="kaligrafik">Mavi kaligrafi · divit kalem görünümü</option><option value="sade">Sade siyah yazı</option></select>
+      <select id="ek9-isim-yazisi" name="isimYazisi"><option value="kaligrafik">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
       <label for="ek9-alan-yazisi">Diğer doldurulan alanlar</label>
-      <select id="ek9-alan-yazisi" name="alanYazisi"><option value="el-yazisi">Mavi el yazısı</option><option value="sade">Sade siyah yazı</option></select>
+      <select id="ek9-alan-yazisi" name="alanYazisi"><option value="el-yazisi">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
       <p>Şahit adlarını kontrol edin. Kayıtlı imza yalnız ilgili şahidin bu törene katıldığı ve imzasının kullanımını onayladığı teyit edilirse eklenir. Kutular boş kalırsa adlar basılır, imza alanları kalemle imzalamak için boş bırakılır.</p>
       <div data-sahitler></div>
       <label for="ek9-gercek-tarih">Gerçek ihtida tarihi (biliniyorsa)</label>
       <input id="ek9-gercek-tarih" name="tarih" type="date" />
-      <p class="not">Tören henüz yapılmadıysa boş bırakın. Tarih tercihi bu alana aktarılmaz. Belge numarası, belge tarihi, düzenleyen birim ve yetkili imzası Müşavirlik için boş bırakılır. T.C. kimlik numarası gerekiyorsa basılı belgede elle tamamlanır.</p>
+      <p class="not">Tören henüz yapılmadıysa boş bırakın. Tarih tercihi bu alana aktarılmaz. Belge numarası, belge tarihi ve yetkili imzası Müşavirlik için boş bırakılır; düzenleyen birim «T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği» olarak yazılır. T.C. kimlik numarası gerekiyorsa basılı belgede elle tamamlanır.</p>
       <p data-teslimat></p>
       <div class="ek9-eylemler"><button type="button" class="dugme" data-vazgec>Vazgeç</button><button type="submit" class="dugme birincil">PDF’yi hazırla</button></div>
     </form>`;
@@ -56,6 +56,11 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     belgeAdi.addEventListener('input', adiDogrula); adiDogrula();
     if (secenekler.paket) {
       pencere.querySelector('h2').textContent = 'İhtida belge paketini hazırlayın';
+      // Paketin bütün belgeleri mavi dolma kalemle yazılır (KALICI KURAL, 17 Eki 2026); yazı seçimi yalnız tek EK-9'da.
+      for (const ad of ['isimYazisi', 'alanYazisi']) {
+        const secim = form.elements.namedItem(ad);
+        secim.hidden = true; pencere.querySelector(`label[for="${secim.id}"]`).hidden = true;
+      }
       form.elements.namedItem('tarih').required = true;
       pencere.querySelector('label[for="ek9-gercek-tarih"]').textContent = 'Gerçek ihtida tarihi';
       form.elements.namedItem('tarih').nextElementSibling.textContent = 'Paket tören sonrasında hazırlanır. Gerçek ihtida tarihini yazın; tercih edilen tören tarihi kullanılmaz. Belge numarası, düzenleme tarihi ve Müşavir imzası yetkili makam için boş kalır.';

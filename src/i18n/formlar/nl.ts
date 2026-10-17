@@ -266,6 +266,7 @@ export const nl: FormMetinleri = {
       hataOkunamadi: 'Dit bestand kon niet gelezen worden; probeer een andere foto.',
       hataImza: 'Het handtekeningvak lijkt leeg. Teken uw handtekening of vink het vakje hieronder aan.',
       hataEksik: '{ad} ontbreekt: voeg een foto toe.',
+      kirp: { baslik: 'Stel de hoeken van de kaart in', yardim: 'Sleep de vier blauwe punten naar de hoeken van de kaart. Alleen de kaart wordt afgedrukt; de achtergrond wordt weggeknipt.', yardimPasaport: 'Sleep de vier blauwe punten naar de hoeken van de gegevenspagina van het paspoort, de pagina met de foto.', uygula: 'Bijsnijden en gebruiken', ham: 'Gebruiken zonder bijsnijden', vazgec: 'Annuleren', dondur: 'Draaien', duzelt: 'Hoeken aanpassen', bulundu: 'De randen van de kaart zijn gevonden; pas de hoeken zo nodig aan.', bulunamadi: 'De randen van de kaart zijn niet automatisch gevonden; plaats de hoeken met de hand.', onizleme: 'Resultaat', kirpildi: 'Kaart bijgesneden · {boyut}', koseler: ['Hoek linksboven', 'Hoek rechtsboven', 'Hoek rechtsonder', 'Hoek linksonder'] },
     },
     riza: {
       acikRiza: 'Ik geef mijn uitdrukkelijke toestemming (art. 9, lid 2, a AVG) om deze gegevens over mijn geloofsovertuiging en over mijn wens om moslim te worden te laten verwerken door de vereniging Marche-en-Famenne Ulu Camii en door de bevoegde dienst van het Presidium voor Godsdienstzaken (Diyanet), met het oog op het opmaken van het bekeringsattest en het plannen van de plechtigheid. Ik kan deze toestemming op elk moment intrekken.',

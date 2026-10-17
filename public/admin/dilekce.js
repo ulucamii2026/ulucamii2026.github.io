@@ -1,4 +1,62 @@
-/** Onaylı dilekçe: normalde tek A4; uzun alanlar kesilmeden devam sayfasına akar. */
+/** İhtida Belgesi Talep Dilekçesi.
+ * dilekceFormUret: Ekim 2026 formu (Müşavirliğin dört dilli şablonu, TR·EN / FR·NL); alanlar mavi dolma kalemle
+ * (kalem.js), imza aynı mürekkeple. Koordinatörlüğün dilekce-doldur.py aracıyla aynı alanlar ve boylar.
+ * dilekceUret: eski tek sayfalık dilekçe (yalnız eski kayıtların yeniden üretimi ve koordinatörlüğün eski hattı için).
+ */
+import { DILEKCE_2026_10 } from './belge-yerlesim.js';
+import { kalemKur, adBicimleri, KALEM_OZELLIKLERI } from './kalem.js';
+import { imzaHazirla, aktarimKutusu } from './imza-ciz.js';
+
+/** «21.10.1954» / «1954-10-21» → «21/10/1954» (formun biçimi). */
+export function formTarihi(t) {
+  const s = String(t || '').trim();
+  const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (iso) return `${iso[3]}/${iso[2]}/${iso[1]}`;
+  return s.replace(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/, (_, g, a, y) => `${g.padStart(2, '0')}/${a.padStart(2, '0')}/${y}`);
+}
+
+export async function dilekceFormUret(g) {
+  const d = g.veri || {};
+  const imzali = Boolean(g.imza || g.imzaVektor);
+  if (imzali && g.imzaAktarimIzni !== true) throw new Error('İmza aktarım izni olmadan imzalı dilekçe üretilemez.');
+  if (!g.kalemFontBytes) throw new Error('Kalem yazı tipi (Allura) eksik.');
+  const { PDFDocument } = g.pdfLib;
+  const belge = await PDFDocument.load(g.sablonBytes, { parseSpeed: Infinity });
+  if (belge.getPageCount() !== DILEKCE_2026_10.sayfalar.length) throw new Error('Dilekçe şablonu iki sayfa olmalıdır.');
+  belge.registerFontkit(g.fontkit);
+  const allura = await belge.embedFont(g.kalemFontBytes, { subset: false, features: KALEM_OZELLIKLERI });   // alt küme gömme bazı harfleri görünmez yapıyor (Caveat dersi)
+  const yedek = g.fontBytes ? await belge.embedFont(g.fontBytes, { subset: true }) : null;
+  const kalem = kalemKur(g.pdfLib, allura, yedek);
+  const imza = imzali ? await imzaHazirla(g.pdfLib, belge, { vektor: g.imzaVektor, gorsel: g.imza }) : null;
+
+  const cami = d.cami || { ad: 'Ulu Camii', adres: 'Thier des Corbeaux 14', postaKodu: '6900', sehir: 'Marche-en-Famenne' };
+  const camiAdresi = [cami.adres, [cami.postaKodu, cami.sehir].filter(Boolean).join(' ')].filter(Boolean).join(', ');
+  const { yazili, el } = adBicimleri(d.adSoyad);
+  const ev = d.teslimat?.yontem === 'adres';
+  const degerler = {
+    dogum_tarihi: formTarihi(d.dogumTarihi), dogum_yeri: d.dogumYeri || '', adres: d.adres || '',
+    eposta: d.eposta || '', telefon: d.telefon || '', cami: cami.ad || '', ihtida_tarihi: formTarihi(d.ihtidaTarihi),
+    cami_adresi: camiAdresi,
+    // Belge başvuranın evine gönderilecekse dönüş satırına onun adı ve adresi yazılır; aksi hâlde başvuru camisi.
+    donus_cami: ev ? yazili[0] : (cami.ad || ''), donus_adres: ev ? (d.adres || '') : camiAdresi,
+  };
+  const yerTarih = String(g.yerTarih || '').trim();
+  belge.getPages().forEach((sayfa, i) => {
+    const A = DILEKCE_2026_10.sayfalar[i].alanlar;
+    for (const [k, v] of Object.entries({ ...degerler, ad: yazili[i] })) if (String(v).trim()) kalem.alanaYaz(sayfa, A[k], String(v).trim());
+    if (imza) imza.ciz(sayfa, aktarimKutusu(imza.en, imza.boy, A.imza));
+    if (yerTarih) kalem.alanaYaz(sayfa, A.yer_tarih, yerTarih, 19);
+    if (el[i]) kalem.alanaYaz(sayfa, A.imza_ad, el[i], 19);
+  });
+  belge.setTitle(`İhtida Belgesi Talep Dilekçesi — ${d.ref || ''}${imza ? ' (imzalı)' : ''}`.trim());
+  belge.setSubject('İhtida Belgesi Talep Dilekçesi (Ekim 2026 formu); alanlar başvuru formundan, mavi dolma kalem el yazısıyla (Allura)'
+    + (imza ? '; imza, başvuranın formda çizdiği imzadır ve açık izniyle aktarıldı.' : '; imza alanı ıslak imza için boş.'));
+  belge.setAuthor('');
+  belge.setCreator('Marche-en-Famenne Ulu Camii');
+  return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
+}
+
+/** Onaylı dilekçe (eski): normalde tek A4; uzun alanlar kesilmeden devam sayfasına akar. */
 const A4 = { w: 595.28, h: 841.89 }, M = 43, CW = A4.w - 2 * M, ALT = 765;
 
 export async function dilekceUret(g) {

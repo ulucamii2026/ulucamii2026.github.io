@@ -13,7 +13,10 @@
  *   - Her kutunun gizli bir <input name="gorsel.*"> çapası vardır: değeri hep boştur, yalnızca
  *     çekirdeğin hata yazma/kaydırma düzeneği bir ada bağlanabilsin diye durur.
  *   - İmza atamayan için «imzaYok» kaçış kapısı: alan boş bırakılır, tören günü ıslak imza atılır.
+ *   - 17 Eki 2026: ihtida formunda kimlik yüzleri karta kırpılır ve dik açıya getirilir (kimlik-kirp.ts); paketteki
+ *     kimlik fotokopisi sayfası kartı gerçek boyutunda basar. Kişi kırpmadan da gönderebilir.
  */
+import { hazirla, kartGoruntusu, kirpmaPenceresi, type BelgeTuru, type Dortgen, type KirpMetinleri } from './kimlik-kirp';
 
 export interface BelgeMetinleri {
   isleniyor: string;
@@ -28,6 +31,8 @@ export interface BelgeMetinleri {
   kimlikArka: string;
   imza: string;
   onizleme: string;
+  /** Yalnız ihtida formu: kimlik yüzünü karta kırpma penceresinin metinleri. */
+  kirp?: KirpMetinleri;
 }
 
 export interface GorselPaketi {
@@ -35,6 +40,8 @@ export interface GorselPaketi {
   kimlikOn: string;
   kimlikArka: string;
   imza: string;
+  /** Aynı imzanın vektör hâli (JSON, public/admin/imza-ciz.js biçimi): belgelere yol olarak çizilir. */
+  imzaVektor: string;
 }
 
 export interface GorselYonetici {
@@ -52,7 +59,9 @@ const AZAMI_GIRIS_MB = 12;              // ham dosya sınırı
 const UZUN_KENAR = 1600;                // küçültme hedefi
 const HEDEF_BAYT = 900 * 1024;          // bunun altına inene kadar kalite düşürülür
 const IMZA_AZAMI_EN = 900;
-const IMZA_RENK = '#1d3f6e';            // mavi kalem — resmî belgelerdeki gibi
+const IMZA_RENK = '#1A3D9E';            // belge doldurma kaleminin mürekkebi (KALICI KURAL, 17 Eki 2026)
+const IMZA_KALINLIK = 2.4;
+const IMZA_VEKTOR_AZAMI = 100_000;      // karakter; sunucu sınırı 120 000
 
 function baytBicim(n: number): string {
   return n >= 1024 * 1024 ? `${(n / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`;
@@ -91,8 +100,8 @@ async function kaynakAc(dosya: File): Promise<CanvasImageSource & { width: numbe
 }
 
 /** En uzun kenarı UZUN_KENAR'a indirir, JPEG'e çevirir, hedef boyuta inene dek kaliteyi düşürür. */
-async function gorseliKucult(dosya: File): Promise<string> {
-  const kaynak = await kaynakAc(dosya);
+async function gorseliKucult(dosya: File | HTMLCanvasElement): Promise<string> {
+  const kaynak = dosya instanceof HTMLCanvasElement ? dosya : await kaynakAc(dosya);
   const gEn = kaynak.width, gBoy = kaynak.height;
   if (!gEn || !gBoy) throw new Error('okunamadi');
   let olcek = Math.min(1, UZUN_KENAR / Math.max(gEn, gBoy));
@@ -123,9 +132,11 @@ interface Kutu {
   veri: string;
   hataYaz(metin: string | null): void;
   temizle(): void;
+  /** Belge türü değişince kırpılmış kartı yeni orana göre yeniden açar. */
+  turDegisti?(): void;
 }
 
-function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelOnizleme = false): Kutu {
+function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelOnizleme = false, belgeTuru?: () => BelgeTuru): Kutu {
   const anahtar = (kap.dataset.gorsel || '') as keyof GorselPaketi;
   const dosyaGirdi = kap.querySelector<HTMLInputElement>('input[type=file]');
   let onizleme = kap.querySelector<HTMLImageElement>('[data-onizleme]');
@@ -145,6 +156,30 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelO
   const kutu: Kutu = { anahtar, veri: '', hataYaz, temizle: () => {} };
   let islem = 0;
   let onizlemeUrl = '';
+  // Kimlik yüzü: fotoğraf karta kırpılır. Çalışma kopyası ve köşeler yalnız bellekte durur (taslağa yazılmaz).
+  const kirpMetin = (anahtar === 'kimlikOn' || anahtar === 'kimlikArka') && belgeTuru ? m.kirp : undefined;
+  let kirpim: { hazir: ReturnType<typeof hazirla>; koseler: Dortgen | null } | null = null;
+  let duzelt: HTMLButtonElement | null = null;
+  if (kirpMetin) {
+    duzelt = document.createElement('button');
+    duzelt.type = 'button'; duzelt.className = 'dugme dugme-ikincil'; duzelt.hidden = true;
+    duzelt.textContent = kirpMetin.duzelt; duzelt.dataset.kirpDuzelt = '';
+    kap.querySelector('[data-kaldir]')?.before(duzelt);
+  }
+  const durumYaz = () => {
+    if (!durum) return;
+    const boyut = baytBicim(veriBoyutu(kutu.veri));
+    durum.textContent = !kutu.veri ? '' : kirpMetin && kirpim?.koseler ? doldur(kirpMetin.kirpildi, { boyut }) : doldur(m.hazir, { boyut });
+  };
+  /** Pencereyi açar ve kararı uygular; vazgeçilirse önceki görsel olduğu gibi kalır. */
+  const kirpUygula = async (hazir: ReturnType<typeof hazirla>, onceki: Dortgen | null, ham: () => Promise<string>) => {
+    const tur = belgeTuru!();
+    const karar = await kirpmaPenceresi(hazir, tur, kirpMetin!, onceki);
+    if (!karar) return false;
+    if (karar.tur === 'kirp') { kirpim = { hazir, koseler: karar.koseler }; kutu.veri = kartGoruntusu(hazir.calisma, karar.koseler, tur); }
+    else { kirpim = { hazir, koseler: null }; kutu.veri = await ham(); }
+    return true;
+  };
 
   const ciz = () => {
     const varMi = !!kutu.veri;
@@ -165,6 +200,7 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelO
     }
     if (bos) bos.hidden = varMi;
     if (kaldir) kaldir.hidden = !varMi;
+    if (duzelt) duzelt.hidden = !varMi || !kirpim;
     if (secEtiket) secEtiket.textContent = varMi ? (secEtiket.dataset.degistir || '') : (secEtiket.dataset.sec || '');
     kap.dataset.dolu = varMi ? '1' : '';
   };
@@ -184,10 +220,22 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelO
     if (durum) durum.textContent = m.isleniyor;
     kap.dataset.mesgul = '1';
     try {
-      const veri = await gorseliKucult(dosya);
-      if (sira !== islem) return;
-      kutu.veri = veri;
-      if (durum) durum.textContent = doldur(m.hazir, { boyut: baytBicim(veriBoyutu(kutu.veri)) });
+      if (kirpMetin) {
+        const kaynak = await kaynakAc(dosya);
+        if (sira !== islem) return;
+        const hazir = hazirla(kaynak, belgeTuru!());
+        const kapat = (kaynak as ImageBitmap).close;
+        if (typeof kapat === 'function') kapat.call(kaynak);
+        const oncekiVeri = kutu.veri, oncekiKirpim = kirpim;
+        const uygulandi = await kirpUygula(hazir, null, () => gorseliKucult(dosya));
+        if (sira !== islem) return;
+        if (!uygulandi) { kutu.veri = oncekiVeri; kirpim = oncekiKirpim; }
+      } else {
+        const veri = await gorseliKucult(dosya);
+        if (sira !== islem) return;
+        kutu.veri = veri;
+      }
+      durumYaz();
     } catch {
       if (sira !== islem) return;
       kutu.veri = '';
@@ -206,6 +254,7 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelO
   kutu.temizle = () => {
     ++islem;                                     // bekleyen çözümleme eski görseli geri getiremez
     kutu.veri = '';
+    kirpim = null;
     kap.dataset.mesgul = '';
     if (dosyaGirdi) dosyaGirdi.value = '';
     if (durum) durum.textContent = '';
@@ -218,6 +267,19 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelO
     degisti();
     dosyaGirdi?.focus();
   });
+
+  duzelt?.addEventListener('click', async () => {
+    if (!kirpim) return;
+    const { hazir, koseler } = kirpim;
+    const sira = ++islem;
+    if (await kirpUygula(hazir, koseler, () => gorseliKucult(hazir.tuval)) && sira === islem) { durumYaz(); ciz(); degisti(); }
+  });
+
+  if (kirpMetin) kutu.turDegisti = () => {
+    if (!kirpim?.koseler) return;
+    kutu.veri = kartGoruntusu(kirpim.hazir.calisma, kirpim.koseler, belgeTuru!());
+    durumYaz(); ciz();
+  };
 
   ciz();
   return kutu;
@@ -254,7 +316,7 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
     c.clearRect(0, 0, tuval.width, tuval.height);
     const olcek = oran * cizimOlcegi();
     c.setTransform(olcek, 0, 0, olcek, 0, 0);
-    c.lineWidth = 2.4; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.lineWidth = IMZA_KALINLIK; c.lineCap = 'round'; c.lineJoin = 'round';
     c.strokeStyle = IMZA_RENK; c.fillStyle = IMZA_RENK;
     cizgileriCiz(c);
   };
@@ -322,9 +384,8 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
   /** Tek dokunuşluk kazalar imza sayılmasın: en az bir gerçek çizgi aranır. */
   const bosMu = () => !cizgiler.some((cizgi) => cizgi.length > 3);
 
-  /** Saydam PNG; boş kenarlar kırpılır, kenarlara 6 px pay bırakılır. */
-  const png = (): string => {
-    if (bosMu()) return '';
+  /** Çizimin kutusu: boş kenarlar kırpılır, kenarlara 6 px pay bırakılır. */
+  const sinir = () => {
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
     for (const cizgi of cizgiler) {
       for (const p of cizgi) {
@@ -337,7 +398,13 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
     const pay = 6;
     x0 = Math.max(0, x0 - pay); y0 = Math.max(0, y0 - pay);
     x1 = Math.min(cizimEn, x1 + pay); y1 = Math.min(cizimBoy, y1 + pay);
-    const en = Math.max(8, x1 - x0), boy = Math.max(8, y1 - y0);
+    return { x0, y0, en: Math.max(8, x1 - x0), boy: Math.max(8, y1 - y0) };
+  };
+
+  /** Saydam PNG (eski sürümlerle uyum ve önizleme için). */
+  const png = (): string => {
+    if (bosMu()) return '';
+    const { x0, y0, en, boy } = sinir();
     const k = Math.min(2, IMZA_AZAMI_EN / en);
     const dis = document.createElement('canvas');
     dis.width = Math.round(en * k);
@@ -346,15 +413,33 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
     if (!dc) return '';
     dc.setTransform(k, 0, 0, k, 0, 0);
     dc.translate(-x0, -y0);
-    dc.lineWidth = 2.4; dc.lineCap = 'round'; dc.lineJoin = 'round';
+    dc.lineWidth = IMZA_KALINLIK; dc.lineCap = 'round'; dc.lineJoin = 'round';
     dc.strokeStyle = IMZA_RENK; dc.fillStyle = IMZA_RENK;
     cizgileriCiz(dc);
     return dis.toDataURL('image/png');
   };
 
+  /** Çizginin kendisi (JSON {v, w, h, k, d}): belgelere piksel değil yol olarak çizilir (public/admin/imza-ciz.js).
+   *  Çok uzun imzada noktalar seyreltilir; her çizginin ilk ve son noktası korunur. */
+  const vektor = (): string => {
+    if (bosMu()) return '';
+    const { x0, y0, en, boy } = sinir();
+    const s = (n: number) => String(Math.round(n * 10) / 10);
+    let d = '';
+    for (let adim = 1; adim <= 8; adim++) {
+      d = cizgiler.map((cizgi) => cizgi
+        .filter((_, i) => i % adim === 0 || i === cizgi.length - 1)
+        .map((p, i) => `${i ? 'L' : 'M'}${s(p.x - x0)} ${s(p.y - y0)}`).join('')).join('');
+      if (d.length <= IMZA_VEKTOR_AZAMI) break;
+    }
+    if (d.length > IMZA_VEKTOR_AZAMI) return '';
+    return JSON.stringify({ v: 1, w: Number(s(en)), h: Number(s(boy)), k: IMZA_KALINLIK, d });
+  };
+
   return {
     bosMu,
     png,
+    vektor,
     temizle: (bildir = true) => { cizgiler.length = 0; aktif = null; cizimEn = 0; cizimBoy = 0; yenidenCiz(); if (bildir) cizildi(); },
     kilit: (kapali: boolean) => {
       if (kapali) tuval.setAttribute('data-kapali', '1'); else tuval.removeAttribute('data-kapali');
@@ -368,6 +453,8 @@ function imzaKur(kap: HTMLElement, cizildi: () => void) {
 export interface ImzaBloku {
   /** Gönderim gövdesine konacak PNG veri URL'i; «imza atamıyorum» işaretliyse boş dize. */
   veri(): string;
+  /** Aynı imzanın vektör JSON'u; «imza atamıyorum» işaretliyse boş dize. */
+  vektor(): string;
   /** Hata koşulu: kaçış kutusu işaretli değilken tuval boş (ya da tuval kurulamadı). */
   eksikMi(): boolean;
   /** «Ekranda imza atamıyorum» işaretli mi? */
@@ -400,6 +487,7 @@ export function imzaBlokuKur(kap: HTMLElement | null, imzaYok: HTMLInputElement 
   durum();
   return {
     veri: () => (imzaYok?.checked ? '' : (imza?.png() || '')),
+    vektor: () => (imzaYok?.checked ? '' : (imza?.vektor() || '')),
     eksikMi: () => !imzaYok?.checked && (!imza || imza.bosMu()),
     kapaliMi: () => !!imzaYok?.checked,
     hataYaz,
@@ -415,18 +503,19 @@ export function gorselleriBaslat(form: HTMLFormElement, m: BelgeMetinleri): Gors
   if (!bolum) return null;
 
   const degisti = () => form.dispatchEvent(new Event('change', { bubbles: true }));
-  const kutular = Array.from(bolum.querySelectorAll<HTMLElement>('[data-gorsel]')).map((k) => kutuKur(k, m, degisti));
+  const belgeTuru = (): BelgeTuru => form.querySelector<HTMLInputElement>('input[name="belgeTuru"]:checked')?.value === 'pasaport' ? 'pasaport' : 'kimlik';
+  const kutular = Array.from(bolum.querySelectorAll<HTMLElement>('[data-gorsel]')).map((k) => kutuKur(k, m, degisti, false, belgeTuru));
   const bul = (a: keyof GorselPaketi) => kutular.find((k) => k.anahtar === a);
+  form.querySelectorAll<HTMLInputElement>('input[name="belgeTuru"]').forEach(r => r.addEventListener('change', () => bul('kimlikOn')?.turDegisti?.()));
 
   const imzaBlok = imzaBlokuKur(bolum.querySelector<HTMLElement>('[data-imza]'), form.querySelector<HTMLInputElement>('input[name="imzaYok"]'), degisti);
-
-  const belgeTuru = () => form.querySelector<HTMLInputElement>('input[name="belgeTuru"]:checked')?.value || 'kimlik';
 
   const paket = (): GorselPaketi => ({
     vesikalik: bul('vesikalik')?.veri || '',
     kimlikOn: bul('kimlikOn')?.veri || '',
     kimlikArka: belgeTuru() === 'kimlik' ? (bul('kimlikArka')?.veri || '') : '',
     imza: imzaBlok?.veri() || '',
+    imzaVektor: imzaBlok?.vektor() || '',
   });
 
   const dogrula = (): Array<[string, string]> => {

@@ -217,6 +217,53 @@
 .ucf-gorsel.alan-hatali .g-kutu { border-color: var(--form-hata-cizgi); background: var(--form-hata-zemin); }
 .ucf-gorsel[hidden] { display: none; }
 
+/* ---------- Kimlik kırpma penceresi (17 Ekim 2026, src/scripts/kimlik-kirp.ts) ----------
+   Kimlik yüzü karta kırpılır; köşe tutamaçları 44 px dokunma alanlıdır, klavyede ok tuşlarıyla kayar. */
+dialog.kimlik-kirp {
+  width: min(calc(100vw - 1rem), 56rem); max-width: none; max-height: calc(100dvh - 1rem); padding: 0;
+  border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin);
+  box-shadow: var(--shadow-kart);
+}
+dialog.kimlik-kirp::backdrop { background: rgb(0 0 0 / 0.55); }
+.kimlik-kirp .kk-ic { display: grid; gap: 0.6rem; padding: 1rem; }
+.kimlik-kirp h2 { margin: 0; font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.25; }
+.kimlik-kirp .kk-yardim { margin: 0; font-size: 0.9rem; color: var(--metin-2); }
+.kimlik-kirp .kk-durum { margin: 0; font-size: 0.85rem; font-weight: 600; }
+.kimlik-kirp .kk-alan { display: grid; justify-items: center; min-width: 0; }
+.kimlik-kirp .kk-sahne { position: relative; touch-action: none; }
+.kimlik-kirp .kk-resim { display: block; border-radius: 4px; background: #fff; }
+.kimlik-kirp .kk-cizgi { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.kimlik-kirp .kk-cizgi polygon { fill: rgb(26 61 158 / 0.12); stroke: #1a3d9e; stroke-width: 2; stroke-linejoin: round; }
+.kimlik-kirp .kk-kose {
+  /* Ortalama transform ile değil kenar boşluğuyla: global.css'teki button:active ölçeği ve azaltılmış hareketteki
+     «transform: none !important» tutamacı köşeden 22 px kaydırıyordu. */
+  position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0; border: 0; background: transparent;
+  cursor: grab; touch-action: none;
+}
+.kimlik-kirp .kk-kose::after {
+  content: ""; position: absolute; inset: 12px; border-radius: 50%; background: #1a3d9e;
+  border: 3px solid #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.4);
+}
+.kimlik-kirp .kk-kose:active { cursor: grabbing; }
+.kimlik-kirp .kk-kose:focus-visible { outline: none; }
+.kimlik-kirp .kk-kose:focus-visible::after { box-shadow: 0 0 0 3px var(--vurgu), 0 0 0 5px #fff; }
+.kimlik-kirp .kk-buyutec {
+  position: absolute; top: 8px; left: 8px; width: 120px; height: 120px; border-radius: 50%;
+  border: 3px solid #fff; box-shadow: 0 2px 10px rgb(0 0 0 / 0.45); pointer-events: none; background: #fff;
+}
+.kimlik-kirp .kk-buyutec.sagda { left: auto; right: 8px; }
+.kimlik-kirp .kk-buyutec[hidden] { display: none; }
+.kimlik-kirp .kk-alt { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 0.8rem; }
+.kimlik-kirp .kk-onizleme { display: grid; gap: 0.25rem; margin: 0; font-size: 0.8rem; color: var(--metin-2); }
+.kimlik-kirp .kk-onizleme canvas { width: 9rem; height: auto; border: 1px solid var(--cizgi); border-radius: 6px; background: #fff; }
+.kimlik-kirp .kk-eylem { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
+.kimlik-kirp .kk-eylem .dugme { min-height: 2.75rem; padding-inline: 1rem; font-size: 0.9rem; }
+@media (max-width: 40rem) {
+  dialog.kimlik-kirp { width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; }
+  .kimlik-kirp .kk-eylem { width: 100%; }
+  .kimlik-kirp .kk-eylem .dugme { flex: 1 1 9rem; }
+}
+
 .ucf-imza .imza-tuval {
   width: 100%; height: 11rem; touch-action: none; cursor: crosshair;
   border: 1.5px solid var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6);

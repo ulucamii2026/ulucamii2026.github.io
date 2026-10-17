@@ -203,6 +203,14 @@ export interface IhtidaMetinler {
     imza: string; imzaYardim: string; imzaTemizle: string;
     imzaYok: string; imzaYokYardim: string;
     hataTur: string; hataBoyut: string; hataOkunamadi: string; hataImza: string; hataEksik: string;
+    /** 17 Ekim 2026: kimlik yüzünü karta kırpma penceresi (src/scripts/kimlik-kirp.ts). */
+    kirp: {
+      baslik: string; yardim: string; yardimPasaport: string;
+      uygula: string; ham: string; vazgec: string; dondur: string; duzelt: string;
+      bulundu: string; bulunamadi: string; onizleme: string;
+      koseler: [string, string, string, string];
+      kirpildi: string;              // {boyut}
+    };
   };
   riza: {
     acikRiza: string; ek10: string; ek10Baglanti: string; gizlilik: string; fotoIzni: string; fotoAciklama: string;

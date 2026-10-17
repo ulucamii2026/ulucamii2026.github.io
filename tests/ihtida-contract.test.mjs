@@ -13,10 +13,13 @@ import { sahitOnerileri, sahitUnvani } from '../public/admin/ek9-hazirlik.js';
 import { ihtidaPaketiUret } from '../public/admin/ihtida-paket.js';
 import { dilekceUret } from '../public/admin/dilekce.js';
 import { camiCoz } from '../public/admin/cami-secimi.js';
+import { imzaVektorCoz } from '../public/admin/imza-ciz.js';
+import { ek10SurumuCoz } from '../public/admin/ek10.js';
+import { adBicimleri } from '../public/admin/kalem.js';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v43.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
-function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz }; return ctx; }
+function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
   basvuran: { adSoyad: 'Deniz Örnek', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr' },
@@ -90,6 +93,40 @@ test('Yeni EK-10 sürümü çizili imzanın aktarım iznini zorunlu kılar; sür
   assert.equal(c.ihtidaDogrulaV2(imzasiz).tamam, true);
   imzasiz.onay.imzaAktarimIzni = true;
   assert.equal(c.ihtidaDogrulaV2(imzasiz).kod, 'onay-imza-aktarim-izni-gecersiz');
+});
+
+test('Ekim 2026 EK-10 ve vektör imza sunucuda doğrulanır; sürüm deftere metin olarak yazılır', () => {
+  const c = backend();
+  const vektor = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40M60 66L170 70' });
+  const ekim = govde();
+  Object.assign(ekim, { imzaYok: false }); ekim.gorseller.imza = 'data:image/png;base64,' + 'A'.repeat(400);
+  ekim.onay.ek10Surumu = '2026-10'; ekim.onay.imzaAktarimIzni = true;
+  assert.equal(c.ihtidaDogrulaV2(ekim).tamam, true, 'vektörsüz (eski tarayıcı) gövde de geçer');
+  ekim.gorseller.imzaVektor = vektor;
+  assert.equal(c.ihtidaDogrulaV2(ekim).tamam, true);
+  for (const bozuk of ['{"v":1}', 'M0 0', JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M0 0L1 1<script>' }), 'x'.repeat(120001)]) {
+    const b = govde(); Object.assign(b, { imzaYok: false }); b.gorseller.imza = ekim.gorseller.imza;
+    b.onay.ek10Surumu = '2026-10'; b.onay.imzaAktarimIzni = true; b.gorseller.imzaVektor = bozuk;
+    assert.equal(c.ihtidaDogrulaV2(b).kod, 'imza-vektor-gecersiz', bozuk.slice(0, 30));
+  }
+  const imzasizVektor = govde(); imzasizVektor.onay.ek10Surumu = '2026-10'; imzasizVektor.gorseller.imzaVektor = vektor;
+  assert.equal(c.ihtidaDogrulaV2(imzasizVektor).kod, 'imza-fazla', 'imza atamıyorum diyen başvuruda vektör imza olamaz');
+  const paketsiz = backend(); delete paketsiz.IhtidaPdf.imzaVektorCoz;
+  assert.equal(paketsiz.ihtidaDogrulaV2(ekim).kod, 'imza-vektor-gecersiz', 'çözücü yoksa kapalı başarısızlık');
+  // Sheets «2026-10»u tarihe çevirmesin: hücreye kesme işaretiyle yazılır; tarihe dönmüş eski değerler de tanınır.
+  assert.match(source, /onay\.ek10Surumu \? "'" \+ onay\.ek10Surumu : ""/);
+  assert.equal(ek10SurumuCoz('2026-10'), '2026-10');
+  assert.equal(ek10SurumuCoz('01.10.2026'), '2026-10');
+  assert.equal(ek10SurumuCoz('09.09.2026 00:00'), '2026-09-09');
+  assert.equal(ek10SurumuCoz('2026-09-09'), '2026-09-09');
+  assert.equal(ek10SurumuCoz(''), 'v1');
+});
+
+test('Resmî ad biçimi: serbest yazılan ad soyadda soyad büyük harfe çevrilir, kişinin seçimi korunur', () => {
+  assert.deepEqual(adBicimleri('marco bellandi'), { yazili: ['Marco BELLANDI', 'BELLANDI Marco'], el: ['Marco Bellandi', 'Bellandi Marco'] });
+  assert.deepEqual(adBicimleri('Marco BELLANDI').yazili, ['Marco BELLANDI', 'BELLANDI Marco']);
+  assert.deepEqual(adBicimleri('Ayşe yılmaz').yazili, ['Ayşe YILMAZ', 'YILMAZ Ayşe']);
+  assert.deepEqual(adBicimleri('jean-luc McDonald').yazili, ['Jean-Luc MCDONALD', 'MCDONALD Jean-Luc']);
 });
 
 test('Ulu Camii başvurusunda aynı kişi iki şahit olarak kaydedilemez', () => {
@@ -220,101 +257,88 @@ test('EK-9 mavi el yazısında fontu tam gömer; sade seçenekte eski yazıya d�
   await assert.rejects(() => ek9Uret({ ...kaynak, veri: {}, cami: { id: 'namur-camii-namur' }, sahitler: [{ ad: 'Birinci Şahit' }, { ad: 'İkinci Şahit' }], yedekImzalar: [{ ad: 'Rıdvan KAYAHAN', imza: 'yerel' }] }), /yerel yedek şahit/);
 });
 
-test('Tam paket taşma yapmadan hazırlanır; başvuran imzası üç yere taşınır, eksik ek sessizce atlanmaz', async () => {
+test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör imza ve eksik ek denetimi', async () => {
   const oku = ad => readFileSync(new URL('../public/' + ad, import.meta.url));
   const png = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100"><path d="M20 70 Q70 5 120 60 T270 40" fill="none" stroke="black" stroke-width="4"/></svg>')).png().toBuffer();
   const resim = 'data:image/png;base64,' + png.toString('base64');
-  const g = { pdfLib, fontkit, sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), ek10SablonBytes: oku('belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'),
+  const kartJpg = async yuz => 'data:image/jpeg;base64,' + (await sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="638"><rect width="1011" height="638" fill="#eee6f2"/><text x="40" y="80" font-size="40">ÖRNEK ${yuz}</text></svg>`)).jpeg().toBuffer()).toString('base64');
+  const vektor = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40L180 52L224 58M60 66L170 70' });
+  const g = { pdfLib, fontkit, sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), ek10SablonBytes: oku('belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'),
+    dilekceSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'), kalemFontBytes: oku('fonts/Allura-Regular.ttf'),
     fontBytes: oku('fonts/Lora-Regular.ttf'), fontKalinBytes: oku('fonts/Lora-Bold.ttf'), fontKaligrafiBytes: oku('fonts/GreatVibes-Regular.ttf'), fontElYazisiBytes: oku('fonts/Caveat-Medium.ttf'),
-    veri: { ref: 'IH-2099-9999', adSoyad: 'Deniz Élodie Örnek', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', beyanTarihi: '09/09/2026', ihtidaTarihi: '08/09/2026', ihtidaSebebi: 'Kendi araştırmam sonucunda.', dil: 'fr', eposta: 'deniz@example.test' },
+    veri: { ref: 'IH-2099-9999', adSoyad: 'Deniz Élodie örnek', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', beyanTarihi: '09/09/2026', ihtidaTarihi: '08/09/2026', ihtidaSebebi: 'Kendi araştırmam sonucunda.', dil: 'fr', eposta: 'deniz@example.test', dogumTarihi: '20/05/1990' },
     sahitler: [{ ad: 'Birinci Örnek', imza: resim }, { ad: 'İkinci Örnek', imza: resim }],
-    foto: resim, kimlikOn: resim, kimlikArka: resim, belgeTuru: 'kimlik', basvuranImza: resim, ek10Onayi: true,
-    ek10Surumu: '2026-09-09', imzaAktarimIzni: true };
-  const imzali = await ihtidaPaketiUret(g), imzasiz = await ihtidaPaketiUret({ ...g, basvuranImza: '', imzasiz: true, ek10Onayi: false, imzaAktarimIzni: false });
-  const a = await pdfLib.PDFDocument.load(imzali), b = await pdfLib.PDFDocument.load(imzasiz);
-  assert.equal(a.getPageCount(), 6, 'Normal doldurulmuş paket tek sayfalık dilekçeyi korur');
-  assert.equal(b.getPageCount(), 6);
-  const gorselSayisi = (d, i) => d.getPage(i).node.Resources().lookup(pdfLib.PDFName.of('XObject'))?.keys().length || 0;
-  for (const i of [1, 3, 4]) assert.equal(gorselSayisi(a, i), gorselSayisi(b, i) + 1, (i + 1) + '. sayfada başvuran imzası');
-  assert.equal(gorselSayisi(a, 5), 2, 'Kimlik ön/arka aynı ek sayfada');
-  const imzalar = a.getPage(0).node.Resources().lookup(pdfLib.PDFName.of('XObject'), pdfLib.PDFDict).entries().map(([, ref]) => a.context.lookup(ref));
-  assert.equal(imzalar.filter(im => im.dict?.get(pdfLib.PDFName.of('Decode'))?.toString() === '[ 0.08 1 0.2 1 0.48 1 ]').length, 2, 'Şahit imzalarının siyah çizgileri maviye eşlenmeli');
+    foto: resim, kimlikOn: await kartJpg('RECTO'), kimlikArka: await kartJpg('VERSO'), belgeTuru: 'kimlik', basvuranImza: resim, basvuranImzaVektor: vektor, ek10Onayi: true,
+    ek10Surumu: '2026-10', imzaAktarimIzni: true };
+  const imzali = await ihtidaPaketiUret(g), imzasiz = await ihtidaPaketiUret({ ...g, basvuranImza: '', basvuranImzaVektor: '', imzasiz: true, ek10Onayi: false, imzaAktarimIzni: false });
+  const onBasvuru = await ihtidaPaketiUret({ ...g, onBasvuru: true, veri: { ...g.veri, ihtidaTarihi: '' } });
+  const out = new URL('../.codex/cikti/ihtida/', import.meta.url); mkdirSync(out, { recursive: true });
+  const yaz = (ad, b) => { const u = new URL(ad, out); writeFileSync(u, b); return u; };
+  const imzaliYol = yaz('tam-paket-imzali.pdf', imzali), onYol = yaz('tam-paket-on-basvuru.pdf', onBasvuru);
+  yaz('tam-paket-imzasiz.pdf', imzasiz);
+  const a = await pdfLib.PDFDocument.load(imzali), b = await pdfLib.PDFDocument.load(imzasiz), o = await pdfLib.PDFDocument.load(onBasvuru);
+  for (const d of [a, b, o]) assert.equal(d.getPageCount(), 7, 'EK-9 ×2, dilekçe ×2, EK-10 ×2, kimlik');
+  const metin = (yol, s) => pdfMetni(yol, ['-f', String(s), '-l', String(s)]);
+  assert.match(metin(imzaliYol, 1), /İHTİDA BELGESİ/);
+  assert.match(metin(imzaliYol, 3), /İhtida Belgesi Talep Dilekçesi/);
+  assert.match(metin(imzaliYol, 5), /Açık Rıza Metni/);
+  const kimlik = metin(imzaliYol, 7);
+  assert.match(kimlik, /PHOTOCOPIE DE LA CARTE D'IDENTITÉ/);
+  assert.match(kimlik, /ÖRNEK Deniz Élodie/, 'kimlik sayfasında SOYAD Ad');
+  assert.match(kimlik, /Naissance\s*:\s*20\.05\.1990/);
+  assert.match(kimlik, /RECTO[\s\S]*VERSO/);
+  const akis = (d, i) => {
+    const c = d.getPage(i).node.get(pdfLib.PDFName.of('Contents'));
+    const refler = c instanceof pdfLib.PDFArray ? c.asArray() : [c];
+    return refler.map(r => Buffer.from(pdfLib.decodePDFRawStream(d.context.lookup(r)).decode()).toString('latin1')).join('\n');
+  };
+  const rasterSayisi = (d, i) => {
+    const x = d.getPage(i).node.Resources().lookup(pdfLib.PDFName.of('XObject'));
+    return x ? x.keys().filter(k => d.context.lookup(x.get(k))?.dict?.get(pdfLib.PDFName.of('Subtype'))?.toString() === '/Image').length : 0;
+  };
+  // İmzalı son nüsha: vektör imza EK-9 arka yüzü, dilekçenin ve EK-10'un iki yüzü; hiçbirinde raster yok.
+  for (const i of [1, 2, 3, 4, 5]) {
+    assert.match(akis(a, i), /1 J/, (i + 1) + '. sayfada vektör imza');
+    assert.doesNotMatch(akis(b, i), /1 J/, (i + 1) + '. sayfa imzasız nüshada boş');
+    assert.equal(rasterSayisi(a, i), 0, (i + 1) + '. sayfada raster olmamalı');
+  }
+  for (const i of [2, 3]) assert.doesNotMatch(akis(o, i), /1 J/, 'ön başvuruda dilekçe imzasız (tören tarihi yok)');
+  for (const i of [4, 5]) assert.match(akis(o, i), /1 J/, 'ön başvuruda EK-10 rızası formda verildiği için imzalı');
+  assert.match(metin(onYol, 3), /ÖN BAŞVURU/);
+  assert.doesNotMatch(metin(onYol, 5), /ÖN BAŞVURU/);
+  assert.equal(rasterSayisi(a, 6), 2, 'Kimlik ön/arka aynı sayfada');
+  // Şahit imzaları (raster) kalem mürekkebine boyanır.
+  const xo = a.getPage(0).node.Resources().lookup(pdfLib.PDFName.of('XObject'), pdfLib.PDFDict);
+  const decode = xo.keys().map(k => a.context.lookup(xo.get(k))?.dict?.get(pdfLib.PDFName.of('Decode'))?.toString()).filter(Boolean);
+  assert.equal(decode.filter(d => d === '[ 0.1 0.1 0.24 0.24 0.62 0.62 ]').length, 2, 'Şahit imzaları #1A3D9E');
+  // Kalem: Allura tam gömülür (alt küme bazı harfleri görünmez yapıyordu).
+  for (const i of [1, 2, 4]) assert.match(akis(a, i), /2 Tr/, (i + 1) + '. sayfada kalem yazısı');
+  const ikinci = metin(imzaliYol, 2).replace(/[ \t]+/g, '');
+  assert.ok(ikinci.includes('DenizÉlodieÖRNEK'), 'EK-9 arka yüzde ad SOYAD');
+  assert.ok(ikinci.includes('SosyalİşlerMüşavirliği'), 'Düzenleyen birim Müşavirlik (eğik kelimeler metin katmanında bölünebilir)');
+  assert.ok(ikinci.includes('Bildirilmedi/Noncommuniqué'), 'Bildirilmeyen alan uydurulmaz');
+
   await assert.rejects(() => ihtidaPaketiUret({ ...g, ek10Onayi: false }), /rızası/);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, imzaAktarimIzni: false }), /aktarımı.*izni/i);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, kimlikArka: '' }), /yüzleri eksik/);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, foto: '' }), /Vesikalık/);
-  await assert.rejects(() => ihtidaPaketiUret({ ...g, basvuranImza: 'bozuk' }), /imzası okunamadı/);
+  await assert.rejects(() => ihtidaPaketiUret({ ...g, basvuranImza: 'bozuk', basvuranImzaVektor: '' }), /imzası okunamadı/);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, sahitler: [{ ad: 'Örnek Şahit', imza: 'bozuk' }] }), /şahidin imzası okunamadı/);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, belgeTuru: 'pasaport' }), /kimlik türünü kontrol/);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, okunamayanGorseller: ['kimlikArka'] }), /görselleri okunamadı/);
+  await assert.rejects(() => ihtidaPaketiUret({ ...g, kalemFontBytes: undefined }), /Allura/);
+  await assert.rejects(() => ihtidaPaketiUret({ ...g, kimlikOn: 'data:image/png;base64,AAAA' }), /okunamadı/);
   const namurCami = camiCoz({ id: 'namur-camii-namur', ad: 'oynanmis', sehir: 'oynanmis', postaKodu: '0', adres: 'oynanmis' });
   await assert.rejects(() => ihtidaPaketiUret({ ...g, cami: namurCami, sahitler: [{ ad: '' }, { ad: '' }], yedekImzalar: [{ ad: 'Rıdvan KAYAHAN', imza: resim }] }), /iki şahidin adı/);
   await assert.rejects(() => ihtidaPaketiUret({ ...g, cami: undefined, veri: { ...g.veri, cami: namurCami }, sahitler: [{ ad: '' }, { ad: '' }] }), /iki şahidin adı/, 'Cami yalnız veri altında taşınsa da paket aynı kanonik şahit kuralını uygular');
-  const namurPdf = await ihtidaPaketiUret({ ...g, cami: namurCami, sahitler: [{ ad: 'Namur Birinci Şahit' }, { ad: 'Namur İkinci Şahit' }], yedekImzalar: [] });
-  const namurOut = new URL('../.codex/cikti/ihtida/namur-paket.pdf', import.meta.url);
-  writeFileSync(namurOut, namurPdf);
-  const namurMetni = pdfMetni(namurOut);
-  assert.match(namurMetni, /Namur Camii/);
-  assert.match(namurMetni, /Rue Denis Georges Bayar 13, 5000, Namur/);
-  assert.match(namurMetni, /Posta dönüş camisi/);
-  assert.match(namurMetni, /Mosquée de retour postal de l’attestation/);
-  assert.match(namurMetni, /Namur, 09\.09\.2026/);
-  assert.doesNotMatch(namurMetni, /Marche-en-Famenne Ulu Camii’nde/);
-  const evePdf = await ihtidaPaketiUret({ ...g, cami: namurCami, veri: { ...g.veri, teslimat: { yontem: 'adres' } }, sahitler: [{ ad: 'Namur Birinci Şahit' }, { ad: 'Namur İkinci Şahit' }], yedekImzalar: [] });
-  const eveOut = new URL('../.codex/cikti/ihtida/namur-ev-teslim-paket.pdf', import.meta.url);
-  writeFileSync(eveOut, evePdf);
-  const eveMetni = pdfMetni(eveOut);
-  assert.match(eveMetni, /Posta dönüş adresi/);
-  assert.match(eveMetni, /Adresse de retour postal de l’attestation/);
-  assert.match(eveMetni, /Deniz Élodie Örnek/);
-  assert.match(eveMetni, /Rue du Test 12, 6900, Marche-en-Famenne, Belçika/);
-  const uzunManuelCami = camiCoz({
-    id: 'diger', ad: 'Uzun Adlı Resmî Başvuru ve Tören Camii Derneği Merkezi',
-    sehir: 'Çok Uzun Şehir Adı Bölgesi', postaKodu: '5000',
-    adres: 'Avenue de la Très Longue Adresse et des Bâtiments Communautaires 123 B, Bâtiment Principal, Entrée Arrière',
-  });
-  const uzunCamiPdf = await ihtidaPaketiUret({ ...g, cami: uzunManuelCami, sahitler: [{ ad: 'Birinci Uzun Cami Şahidi' }, { ad: 'İkinci Uzun Cami Şahidi' }], yedekImzalar: [] });
-  const uzunCamiDoc = await pdfLib.PDFDocument.load(uzunCamiPdf);
-  assert.equal(uzunCamiDoc.getPageCount(), 6, 'Normal katalog sınırındaki cami bilgisi tek sayfalık dilekçeyi korumalı');
-  const uzunCamiOut = new URL('../.codex/cikti/ihtida/uzun-manuel-cami-paket.pdf', import.meta.url);
-  writeFileSync(uzunCamiOut, uzunCamiPdf);
-  const uzunCamiMetni = pdfMetni(uzunCamiOut);
-  assert.match(uzunCamiMetni, /Uzun Adlı Resmî Başvuru ve Tören Camii Derneği Merkezi/);
-  assert.match(uzunCamiMetni, /Bâtiments Communautaires 123 B/);
-  const uzunluk = (metin, adet) => metin.repeat(Math.ceil(adet / metin.length)).slice(0, adet);
-  const sinirCami = camiCoz({
-    id: 'diger', ad: uzunluk('Belçika Türk Müslüman Toplumu Başvuru ve Tören Merkezi ', 120),
-    sehir: uzunluk('Brüksel Başkent Bölgesi Uzun Yerleşim Merkezi ', 80), postaKodu: '5000',
-    adres: 'Avenue de la Très Longue Adresse ' + uzunluk('X', 167),
-  });
-  const sinirVeri = {
-    ...g.veri,
-    adSoyad: uzunluk('Alexandra Marie Elisabeth de la Conversion Exemple ', 120),
-    dogumYeri: 'Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson', dogumTarihi: '01/01/1990',
-    uyruk: 'Belçika Krallığı vatandaşlığı ve uzun resmî uyruk açıklaması',
-    adres: 'Rue de la Résidence Très Longue 999, Appartement 1234, 5000 Namur, Belgique',
-    telefon: '+32 470 123 456', eposta: 'alexandra.exemple.tres.longue@example.test',
-  };
-  const sinirPdf = await dilekceUret({ pdfLib, fontkit, fontBytes: g.fontBytes, fontKalinBytes: g.fontKalinBytes, veri: { ...sinirVeri, cami: sinirCami, teslimat: { yontem: 'cami' } }, imza: resim, tarih: new Date('2026-09-09T12:00:00Z') });
-  const sinirOut = new URL('../.codex/cikti/ihtida/sinir-manuel-cami-dilekce.pdf', import.meta.url);
-  writeFileSync(sinirOut, sinirPdf);
-  const sinirBelge = await pdfLib.PDFDocument.load(sinirPdf);
-  assert.ok(sinirBelge.getPageCount() >= 2, 'Sınır bilgileri dilekçe devam sayfasına akmalı');
-  const sinirMetni = pdfMetni(sinirOut);
-  assert.match(sinirMetni, /Belçika Türk Müslüman Toplumu Başvuru ve Tören Merkezi/);
-  assert.match(sinirMetni, /Avenue de la\s+Très\s+Longue Adresse/);
-  assert.match(sinirMetni, /Alexandra Marie Elisabeth de la Conversion Exemple/);
-  const sinirKutu = pdfMetni(sinirOut, ['-bbox-layout']);
-  const koordinatlar = [...sinirKutu.matchAll(/<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)"/g)].map(([, sol, ust, sag, alt]) => [Number(sol), Number(ust), Number(sag), Number(alt)]);
-  assert.ok(koordinatlar.length > 100, 'PDF metin koordinatları okunmalı');
-  assert.ok(koordinatlar.every(([, ust,, alt]) => ust >= 20 && alt <= 822), 'Hiçbir metin alt veya üst sayfa sınırına taşmamalı');
-  /* Onaylı yeni dilekçe düzeni 43 pt kenar boşluğu kullanır. PDF metin
-     yükselişi nedeniyle 1 pt tolerans bırakılır; fiziksel sayfa sınırı ya
-     da dışarıya taşma yine kabul edilmez. */
-  assert.ok(koordinatlar.every(([sol,, sag]) => sol >= 42 && sag <= 554.28), 'Hiçbir metin sağ veya sol sayfa güvenli alanına taşmamalı');
+  const namurPdf = await ihtidaPaketiUret({ ...g, cami: namurCami, veri: { ...g.veri, teslimat: { yontem: 'adres' } }, sahitler: [{ ad: 'Namur Birinci Şahit' }, { ad: 'Namur İkinci Şahit' }], yedekImzalar: [] });
+  const namurYol = yaz('namur-ev-teslim-paket.pdf', namurPdf);
+  const namur = metin(namurYol, 3).replace(/[ \t]+/g, '');
+  assert.ok(namur.includes('NamurCamii'), 'dilekçede başvuru camisi');
+  assert.ok(namur.includes('RueDenisGeorgesBayar13,5000Namur'), 'cami adresi «adres, posta kodu şehir»');
+  assert.ok(namur.includes('Namur,08/09/2026'), 'yer ve tarih törenin yeri ve günü');
+  assert.ok(namur.includes('RueduTest12,6900,Marche-en-Famenne,Belçika'), 'eve teslimde dönüş adresi başvuranın adresi');
   const uzun = await ihtidaPaketiUret({ ...g, veri: { ...g.veri, ihtidaSebebi: 'Kendi araştırmam sonucunda karar verdim. '.repeat(12) } });
-  assert.equal((await pdfLib.PDFDocument.load(uzun)).getPageCount(), 7, 'Uzun gerekçe kesilmeden açıklama ekine taşınmalı');
-  const out = new URL('../.codex/cikti/ihtida/', import.meta.url); mkdirSync(out, { recursive: true });
-  writeFileSync(new URL('tam-paket-imzali.pdf', out), imzali); writeFileSync(new URL('tam-paket-imzasiz.pdf', out), imzasiz);
-  writeFileSync(new URL('tam-paket-uzun-aciklama.pdf', out), uzun);
+  assert.equal((await pdfLib.PDFDocument.load(uzun)).getPageCount(), 8, 'Uzun gerekçe kesilmeden açıklama ekine taşınmalı');
+  yaz('tam-paket-uzun-aciklama.pdf', uzun);
 });

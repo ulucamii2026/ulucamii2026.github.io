@@ -13,6 +13,8 @@
  */
 import { camiCoz } from './cami-secimi.js';
 import { sahitUnvani } from './ek9-hazirlik.js';
+import { kalemKur, adBicimleri, KALEM_OZELLIKLERI, MUREKKEP } from './kalem.js';
+import { imzaHazirla, aktarimKutusu, kutuyaSigdir } from './imza-ciz.js';
 
 // --- Şablon ölçüleri (pt, üstten) --------------------------------------------
 const S1 = {
@@ -57,6 +59,9 @@ export function sahitleriCoz(sahitler, yedekler) {
 const bosMu = (v) => v === undefined || v === null || String(v).trim() === '';
 
 export async function ek9Uret(girdi) {
+  // Kalem kipi (17.10.2026, KALICI KURAL): Allura verilmişse bütün el yazısı alanlar mavi dolma kalemle yazılır.
+  // Basılı doldurma (alanYazisi 'sade') yalnız açıkça istenirse eski yoldan çıkar.
+  if (girdi.kalemFontBytes && girdi.alanYazisi !== 'sade') return ek9KalemUret(girdi);
   const { PDFDocument, rgb } = girdi.pdfLib;
   const fontkit = girdi.fontkit;
 
@@ -312,5 +317,244 @@ export async function ek9Uret(girdi) {
   belge.setCreator('Marche-en-Famenne Ulu Camii — yönetim paneli');
   if (girdi.tarih) { belge.setCreationDate(girdi.tarih); belge.setModificationDate(girdi.tarih); }
 
+  return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
+}
+
+/* ---------------------------------------------------------------------------------------------------------------
+ * Kalem kipi: Mühtedi Koordinatörlüğünün ek9-tamamla.py aracıyla aynı yerleşim (KALICI KURAL «belge doldurma
+ * kalemi», 17.10.2026). Ön yüzde ad ve şahit adları kalemle, vesikalık büyük (80 pt) ve altın çerçevenin ÜSTÜNDE;
+ * arka yüzün bütün değerleri kalemle; başvuranın imzası beyanın altında, kalem mürekkebiyle. Ölçüler pt, ÜST kenardan.
+ * ------------------------------------------------------------------------------------------------------------- */
+const K = {
+  cerceve: { x0: 643.0, y0: 207.4, x1: 695.8, y1: 273.6 },      // şablonun foto çerçevesi
+  cerceveRenk: [0.545, 0.431, 0.106],
+  fotoBoy: 80.0,
+  imzaYeri: [686.0, 372.0, 794.0, 410.0],                       // s.2: beyanın altı, tarihin üstü
+  isim: [270.0, 588.0, 265.0],
+  sahit: [[155.0, 235.0], [603.0, 683.0]],
+  etiket: 424.0,
+  // Şahit adı tabanı (unvanlı, unvansız): solda −21 (metnin son satırına binmesin), sağda −25 (Y kuyruğu unvana değmesin).
+  sahitAd: [{ true: -21.0, false: -12.0 }, { true: -25.0, false: -12.0 }],
+  solSinir: 415.0, sagSinir: 795.0, altSatirX: 448.0,
+  tarih: [700.0, 780.0, 430.3], tarihOrtu: [722.0, 419.3, 806.0, 432.3],
+  ad: [740.0, 453.0, 110.0], adIkiSatir: [446.0, 461.0], adOrtu: [700.0, 435.0, 794.0, 465.0],
+  duzenleyenSatir: [-4.5, 10.0], yukari: 1.5, adresSatir: 24.0,
+  boy: 17.0, boySebep: 16.0, boyIsim: 27.0, boySahit: 14.0, boyDuzenleyen: 14.5,
+  siteMavi: '.08 .2 .48',                                        // şablondaki kurum çiziklerinin rengi
+};
+export const EK9_DUZENLEYEN = 'T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği';
+export const EK9_BOS_ALAN = 'Bildirilmedi / Non communiqué';
+const EK9_BOS_DOLAN = ['ogrenim', 'anneAdi', 'babaAdi', 'dogumYeri', 'medeniHali', 'meslek', 'oncekiDin', 'ihtidaSebebi', 'eposta', 'telefon', 'adres'];
+const OKUNUR_EN_KUCUK = 10.0;    // bundan küçük yazılacak değer ek açıklama sayfasına gider
+
+/** Şablondaki kurum çiziklerini (sitenin MAVİ'si) kalem mürekkebine boyar; büyük süsleme akışına dokunmaz. */
+function cizikleriBoya(pdfLib, belge, sayfa) {
+  const { PDFName, PDFArray, decodePDFRawStream, PDFRawStream } = pdfLib;
+  const icerik = sayfa.node.get(PDFName.of('Contents'));
+  const refler = icerik instanceof PDFArray ? icerik.asArray() : [icerik];
+  const murekkep = MUREKKEP.join(' ');
+  let sayac = 0;
+  for (const ref of refler) {
+    const akis = belge.context.lookup(ref);
+    if (!(akis instanceof PDFRawStream) || akis.contents.length > 4096) continue;
+    const ham = decodePDFRawStream(akis).decode();
+    let metin = '';
+    for (const b of ham) metin += String.fromCharCode(b);
+    if (!metin.includes(`${K.siteMavi} RG`) && !metin.includes(`${K.siteMavi} rg`)) continue;
+    const yeni = metin.split(`${K.siteMavi} RG`).join(`${murekkep} RG`).split(`${K.siteMavi} rg`).join(`${murekkep} rg`);
+    belge.context.assign(ref, belge.context.flateStream(Uint8Array.from(yeni, c => c.charCodeAt(0))));
+    sayac++;
+  }
+  return sayac;
+}
+
+async function gorselGomKalem(belge, veri) {
+  if (!veri) return null;
+  try {
+    if (typeof veri === 'string') {
+      return veri.startsWith('data:image/png') || veri.startsWith('iVBOR') ? await belge.embedPng(veri) : await belge.embedJpg(veri);
+    }
+    return veri[0] === 0x89 ? await belge.embedPng(veri) : await belge.embedJpg(veri);
+  } catch { return null; }
+}
+
+const vektorMu = imza => typeof imza === 'string' && imza.trim().startsWith('{');
+
+async function ek9KalemUret(girdi) {
+  const L = girdi.pdfLib;
+  const { PDFDocument, rgb, pushGraphicsState, popGraphicsState, rectangle, clip, endPath } = L;
+  const belge = await PDFDocument.load(girdi.sablonBytes, { parseSpeed: Infinity });
+  belge.registerFontkit(girdi.fontkit);
+  const allura = await belge.embedFont(girdi.kalemFontBytes, { subset: false, features: KALEM_OZELLIKLERI });   // alt küme gömme bazı harfleri görünmez yapıyor (Caveat dersi)
+  const resmi = await belge.embedFont(girdi.fontBytes, { subset: true });
+  const resmiKalin = await belge.embedFont(girdi.fontKalinBytes || girdi.fontBytes, { subset: true });
+  const kalem = kalemKur(L, allura, resmi);
+  const SIYAH = rgb(0.09, 0.09, 0.12);
+  const [s1, s2] = belge.getPages();
+  const v = girdi.veri || {};
+  const uyar = kod => girdi.uyar?.(kod);
+
+  const seciliCami = camiCoz(girdi.cami || v.cami);
+  if (!seciliCami) throw new Error('Başvuru camisi eksik veya geçersiz.');
+  if (seciliCami.id !== 'ulucamii-marche') {
+    const adlar = (Array.isArray(girdi.sahitler) ? girdi.sahitler : []).slice(0, 2).map(s => String(s?.ad || '').trim());
+    if (adlar.length !== 2 || !adlar[0] || !adlar[1]) throw new Error('Seçilen cami için iki şahidin adı zorunludur.');
+    if (adlar[0].localeCompare(adlar[1], 'tr', { sensitivity: 'accent' }) === 0) throw new Error('Seçilen cami için iki farklı şahit yazın.');
+    if ((girdi.yedekImzalar || []).some(s => s && (String(s.ad || '').trim() || s.imza))) throw new Error('Başka cami seçildiğinde yerel yedek şahit veya imza kullanılamaz.');
+  }
+
+  // ---- Ön yüz ------------------------------------------------------------------------------------------------
+  cizikleriBoya(L, belge, s1);
+  const foto = await gorselGomKalem(belge, girdi.foto);
+  if (foto) {
+    // Vesikalık 80 pt yüksekliğinde, çerçeveyi örterek; oranı uymayan fotoğraf kutuya kırpılır (yüz üstte kalır).
+    const oran = foto.width / foto.height, kutuOran = Math.min(0.86, Math.max(0.72, oran));
+    const h = K.fotoBoy, w = h * kutuOran, cx = (K.cerceve.x0 + K.cerceve.x1) / 2, ust = K.cerceve.y0 - 11.4;
+    const x0 = cx - w / 2, H1 = s1.getHeight();
+    let gw = w, gh = h, gx = x0, gy = ust;
+    if (oran > kutuOran) { gw = h * oran; gx = cx - gw / 2; }
+    else if (oran < kutuOran) { gh = w / oran; gy = ust - (gh - h) * 0.3; }
+    s1.pushOperators(pushGraphicsState(), rectangle(x0, H1 - ust - h, w, h), clip(), endPath());
+    s1.drawImage(foto, { x: gx, y: H1 - gy - gh, width: gw, height: gh });
+    s1.pushOperators(popGraphicsState());
+    s1.drawRectangle({ x: x0, y: H1 - ust - h, width: w, height: h, borderColor: rgb(...K.cerceveRenk), borderWidth: 0.9 });
+  } else if (girdi.foto) uyar('vesikalik-gomulemedi');
+
+  const { el } = adBicimleri(v.adSoyad);
+  const kaligrafiAd = String(girdi.kaligrafiAd || el[0] || '').trim();
+  if (kaligrafiAd) {
+    const b = kalem.ortaliYaz(s1, K.isim[0] + 2, K.isim[1] - 2, K.isim[2], kaligrafiAd, K.boyIsim);
+    if (b < 12) uyar('yazi-kucuk');
+  }
+
+  const sahitler = sahitleriCoz(girdi.sahitler || [], girdi.yedekImzalar || []);
+  for (let i = 0; i < 2; i++) {
+    const s = sahitler[i];
+    if (!s) continue;
+    const [a0, a1] = K.sahit[i];
+    if (s.imza) {
+      const im = await imzaHazirla(L, belge, vektorMu(s.imza) ? { vektor: s.imza } : { gorsel: s.imza }).catch(() => null);
+      if (!im) throw new Error(`${i + 1}. şahidin imzası okunamadı; belge hazırlanamadı.`);
+      im.ciz(s1, kutuyaSigdir(im.en, im.boy, [a0 - 13, K.etiket + 8, a1 + 13, K.etiket + 38], true));
+    }
+    if (s.ad) {
+      const unvan = sahitUnvani(s.ad, seciliCami.id);
+      const b = kalem.ortaliYaz(s1, a0 - 20, a1 + 20, K.etiket + K.sahitAd[i][Boolean(unvan)], s.ad, K.boySahit);
+      if (b < 9.5) uyar('yazi-kucuk');
+      if (unvan) {
+        const g = resmi.widthOfTextAtSize(unvan, 8);
+        s1.drawText(unvan, { x: (a0 + a1) / 2 - g / 2, y: s1.getHeight() - (K.etiket - 11), size: 8, font: resmi, color: SIYAH });
+      }
+    }
+  }
+
+  // Yetkili adı ve unvanı resmî siyah yazıyla; ıslak imza alanı yetkili makama boş kalır.
+  const ortali = (sayfa, metin, x0, x1, taban, boyut, font, renk) => {
+    const g = font.widthOfTextAtSize(metin, boyut);
+    sayfa.drawText(metin, { x: x0 + (x1 - x0 - g) / 2, y: sayfa.getHeight() - taban, size: boyut, font, color: renk });
+  };
+  const sigan = (metin, boyut, en, font) => Math.min(boyut, en / Math.max(1, font.widthOfTextAtSize(String(metin || ''), 1)));
+  const yetkiliAd = girdi.yetkiliAd ?? 'Salih GÖR';
+  const yetkiliUnvan = girdi.yetkiliUnvan ?? 'T.C. Brüksel Büyükelçiliği Sosyal İşler Müşaviri';
+  ortali(s1, yetkiliAd, 330, 525, 401, sigan(yetkiliAd, 12, 240, resmiKalin), resmiKalin, rgb(0, 0, 0));
+  ortali(s1, yetkiliUnvan, 330, 525, 415, sigan(yetkiliUnvan, 10, 255, resmi), resmi, rgb(0, 0, 0));
+
+  // ---- Arka yüz ----------------------------------------------------------------------------------------------
+  const deger = { ...v, duzenleyen: v.duzenleyen || EK9_DUZENLEYEN };
+  // Başvuranın bildirmediği alan boş kalmaz, «Bildirilmedi» yazılır; uydurma bilgi yazılmaz. Belge no/tarihi ve
+  // T.C. kimlik no resmî makamın alanlarıdır, hep boş kalır.
+  for (const a of EK9_BOS_DOLAN) if (!String(deger[a] ?? '').trim()) deger[a] = EK9_BOS_ALAN;
+  const ekSayfaya = (anahtar, metin) => {
+    if (!girdi.uzunAlan) { uyar('alan-kisaltildi'); return false; }
+    girdi.uzunAlan(anahtar, String(metin));
+    return true;
+  };
+  const dengeliIki = metin => {
+    const s = metin.split(/\s+/);
+    let enIyi = 1, enIyiEn = Infinity;
+    for (let i = 1; i < s.length; i++) {
+      const m = Math.max(kalem.en(s.slice(0, i).join(' '), 1), kalem.en(s.slice(i).join(' '), 1));
+      if (m < enIyiEn) { enIyiEn = m; enIyi = i; }
+    }
+    return [s.slice(0, enIyi).join(' '), s.slice(enIyi).join(' ')];
+  };
+
+  for (const [anahtar, [x, taban]] of Object.entries(S2_SOL)) {
+    const metin = String(deger[anahtar] ?? '').trim().replace(/\s+/g, ' ');
+    if (!metin) continue;
+    if (anahtar === 'duzenleyen') {
+      const xx = x + 7, en = K.solSinir - xx - 2;
+      const satirlar = kalem.en(metin, K.boyDuzenleyen) <= en || metin.split(' ').length < 2 ? [metin] : dengeliIki(metin);
+      const b = Math.min(K.boyDuzenleyen, en / Math.max(...satirlar.map(t => kalem.en(t, 1))));
+      if (satirlar.length === 1) kalem.yaz(s2, xx, taban - K.yukari, satirlar[0], b);
+      else satirlar.forEach((t, i) => kalem.yaz(s2, xx, taban + K.duzenleyenSatir[i], t, b));
+      continue;
+    }
+    const b = kalem.sigdir(metin, K.boy, K.solSinir - (x + 7) - 2);
+    if (b < 9.5) uyar('yazi-kucuk');
+    kalem.yaz(s2, x + 7, taban - K.yukari, metin, b);
+  }
+
+  const adresSatirlari = (metin, boy) => {
+    const [x0] = S2_SAG.adres;
+    const enler = [K.sagSinir - (x0 + 7) - 2, K.sagSinir - K.altSatirX - 2];
+    const virgul = (metin.match(/,/g) || []).length;
+    const parcalar = metin.split(',').map((p, i) => p.trim() + (i < virgul ? ',' : ''));
+    for (;;) {
+      const birim = parcalar.every(p => kalem.en(p, boy) <= enler[1]) ? parcalar : metin.split(/\s+/);
+      const satirlar = [];
+      let satir = '';
+      for (const k of birim) {
+        const aday = `${satir} ${k}`.trim();
+        if (satir && kalem.en(aday, boy) > enler[Math.min(satirlar.length, 1)]) { satirlar.push(satir); satir = k; }
+        else satir = aday;
+      }
+      satirlar.push(satir);
+      const sigdi = satirlar.length <= 3 && satirlar.every((t, i) => kalem.en(t, boy) <= enler[Math.min(i, 1)]);
+      if (sigdi || boy <= OKUNUR_EN_KUCUK) return { satirlar, boy, sigdi };
+      boy -= 0.5;
+    }
+  };
+  for (const [anahtar, [x, taban]] of Object.entries(S2_SAG)) {
+    const metin = String(deger[anahtar] ?? '').trim().replace(/\s+/g, ' ');
+    if (!metin) continue;
+    if (anahtar === 'adres') {
+      const { satirlar, boy, sigdi } = adresSatirlari(metin, K.boy);
+      if (!sigdi && ekSayfaya(anahtar, metin)) { kalem.yaz(s2, x + 7, taban - K.yukari, 'Ek sayfada / See supplement', 13); continue; }
+      satirlar.forEach((t, i) => kalem.yaz(s2, i === 0 ? x + 7 : K.altSatirX, taban - K.yukari + K.adresSatir * i, t, boy));
+      continue;
+    }
+    const en = K.sagSinir - (x + 7) - 2;
+    const b = kalem.sigdir(metin, anahtar === 'ihtidaSebebi' ? K.boySebep : K.boy, en, OKUNUR_EN_KUCUK);
+    if (kalem.en(metin, b) > en && ekSayfaya(anahtar, metin)) { kalem.yaz(s2, x + 7, taban - K.yukari, 'Ek sayfada / See supplement', 13); continue; }
+    kalem.yaz(s2, x + 7, taban - K.yukari, metin, b);
+  }
+
+  const H2 = s2.getHeight();
+  const ortu = ([x0, y0, x1, y1]) => s2.drawRectangle({ x: x0, y: H2 - y1, width: x1 - x0, height: y1 - y0, color: rgb(1, 1, 1) });
+  const beyanTarihi = String(v.beyanTarihi || '').trim();
+  if (beyanTarihi) { ortu(K.tarihOrtu); kalem.ortaliYaz(s2, K.tarih[0], K.tarih[1], K.tarih[2], beyanTarihi, K.boy); }
+  const imzaAdi = String(girdi.imzaAdi || v.adSoyad || '').trim().replace(/\s+/g, ' ');
+  if (imzaAdi) {
+    ortu(K.adOrtu);
+    const [orta, taban, en] = K.ad;
+    const b = kalem.sigdir(imzaAdi, K.boy, en, 6);
+    if (b >= 12 || imzaAdi.split(' ').length < 2) kalem.yaz(s2, orta - kalem.en(imzaAdi, b) / 2, taban, imzaAdi, b);
+    else {
+      const satirlar = dengeliIki(imzaAdi);
+      const b2 = Math.min(13.0, en / Math.max(...satirlar.map(t => kalem.en(t, 1))));
+      satirlar.forEach((t, i) => kalem.yaz(s2, orta - kalem.en(t, b2) / 2, K.adIkiSatir[i], t, b2));
+    }
+  }
+  if (girdi.basvuranImza || girdi.basvuranImzaVektor) {
+    const im = await imzaHazirla(L, belge, { vektor: girdi.basvuranImzaVektor, gorsel: girdi.basvuranImza }).catch(() => null);
+    if (!im) throw new Error('Başvuranın imzası okunamadı; imzalı EK-9 hazırlanamadı.');
+    im.ciz(s2, aktarimKutusu(im.en, im.boy, K.imzaYeri));
+  }
+
+  belge.setTitle(`İhtida Belgesi (EK-9) — ${v.adSoyad || ''}`.trim());
+  belge.setSubject('T.C. Cumhurbaşkanlığı Diyanet İşleri Başkanlığı — İhtida Belgesi. El yazısı alanlar mavi dolma kalem kaligrafisiyle (Allura).');
+  belge.setCreator('Marche-en-Famenne Ulu Camii — yönetim paneli');
+  if (girdi.tarih) { belge.setCreationDate(girdi.tarih); belge.setModificationDate(girdi.tarih); }
   return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
 }

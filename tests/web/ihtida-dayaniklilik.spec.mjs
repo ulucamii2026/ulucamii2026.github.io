@@ -21,6 +21,7 @@ async function doldur(page) {
   await page.locator('#i-belge-pasaport').check();
   for (const [id, key] of [['vesikalik', 'vesikalik'], ['kimlik-on', 'kimlikOn']]) {
     await page.locator(`#i-g-${id}`).setInputFiles(dosya(id + '.png'));
+    if (key === 'kimlikOn') await page.locator('dialog.kimlik-kirp [data-ham]').click();   // kırpmadan da gönderilebilir
     await expect(page.locator(`[data-gorsel="${key}"]`)).toHaveAttribute('data-dolu', '1');
   }
   await page.locator('#i-imza-yok').check();

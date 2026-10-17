@@ -6,7 +6,7 @@
 
 - Form, başvuranın posta adresini ayrı sokak/numara, posta kodu, şehir ve ülke alanlarıyla alır. Kimlik numarası alanı yoktur.
 - Başvuru kaydı tamamlanınca özel Drive klasöründe kalıcı bir paket işi oluşturulur. Dakikalık Apps Script tetikleyicisi PDF'yi üretir; form HTTP isteği PDF ve e-posta işlemlerini beklemez.
-- Tek dosya: EK-9 (2 sayfa), EK-10 (2 sayfa), dilekçe ve kimlik/pasaport örneği. Olağan paket 6 sayfadır; sığmayan uzun metinler açıklama ekine eklenir.
+- Tek dosya, Müşavirlik paketinin sırasıyla: EK-9 (2 sayfa), dilekçe (2 sayfa), EK-10 (2 sayfa), kimlik/pasaport örneği. Olağan paket 7 sayfadır (17 Ekim 2026'ya dek 6); sığmayan uzun metinler açıklama ekine eklenir. Ayrıntı: aşağıdaki «17 Ekim 2026» bölümü.
 - Başvuranın rızayla verdiği imza dört imza alanına taşınır. İmzasız başvuruda bu alanlar boş kalır. İmzasız metin imzalanmış gibi konuşmaz.
 - Ön başvuru nüshasında gerçek tören tarihi uydurulmaz; şahit adları önerilir, şahit imzaları kullanılmaz. EK-9'da ön başvuru ibaresi bulunur; dilekçe gerçekleşmiş tören beyanı içermez.
 - Yönetici, “Son nüshayı onayla ve gönder” ile gerçek ihtida tarihini, adresi ve şahitleri kontrol eder. Kayıtlı şahit imzaları ancak o belgedeki işaretli teyitlerden gelir. Gelecekteki tören tarihi reddedilir.
@@ -83,6 +83,21 @@ Resmî teknik kaynaklar: [Apps Script V8 çalışma ortamı](https://developers.
 - E-posta kopyaları (info@, imam@ ve başvuranın kutusu) bu temizlikle silinmez.
 - 30 Eylül 2026 ≈10:10'da, kullanıcının isteğiyle, 9 Eylül'den kalan iki otomasyon denemesi IH-2026-0004 («TEST OTOMASYON») ve IH-2026-0005 («TEST V27») aynı araçla, v41 üzerinde kaldırıldı: defter 5 → 3 satır, 14 dosya `silindi-deneme-2026-09-30 ` önekiyle çöpe; iç defter değişmedi (IH-2026-0001…0003). Defterde artık «TEST» adlı satır yok. En büyük numara IH-2026-0003 olduğundan **bir sonraki gerçek başvuru `IH-2026-0004` numarasını alır**; v41'in çöpteki aynı ref dosyalarını atlaması bu başvuruda canlı olarak ilk kez sınanır.
 - 1 Ekim 2026'daki salt okunur kontrol: canlı sürüm artık **42** (envanter yayını), ihtida 3 / kayıt 25 / seviye 3; iç defter güncel, IH-2026-0001…0003. IH-2026-0004 için paket yok; numarası yeniden kullanılan ilk gerçek başvurunun belge ve görselleri henüz gözlemlenmedi. Eski v41 paketini canlıya geri yükleme. Envanterin gerçek kayıt kabulü son kararla kapalıdır; `/envanter/` örnek önizlemedir ([işletme notu](ENVANTER-FORMU.md)).
+
+## Kalem yazısı, Ekim 2026 formları ve kimlik kırpma — 17 Ekim 2026
+
+Mühtedi Koordinatörlüğünde elle mükemmelleştirilen belgeler site formunun otomatik paketine taşındı.
+
+- **Belgeler.** EK-9 kalem yazısıyla; dilekçe Müşavirliğin Ekim 2026 formuyla (`public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf`, `dilekceFormUret`); EK-10 Ekim 2026 açık rıza formuyla (`ek10-acik-riza-metni-2026-10.pdf`). Formdaki EK-10 bağlantısı ve onay sürümü `2026-10` oldu.
+- **Kalem kuralı.** Elle doldurulan her alan Allura, mürekkep `#1A3D9E` (`public/admin/kalem.js`, Python `kalem.py` ile aynı kelime oynatması). Allura PDF'ye **tam** gömülür (`subset:false`): fontkit alt kümesi bazı harfleri görünmez yapıyor (Caveat dersi). Panelde «Sade siyah yazı» yalnız açık talimatla seçilir.
+- **Vektör imza.** Form, çizilen imzanın çizgilerini PNG'nin yanında JSON olarak da gönderir (`gorseller.imzaVektor`, `{v:1,w,h,k,d}`, yalnız M/L komutları, ≤100 000 karakter). Sunucu bunu paketleyicinin çözücüsünden geçirir (`imza-vektor-gecersiz`, PNG'siz ya da «imzasız» seçiliyken `imza-fazla`). Belgelerde imza yol olarak, yuvarlak uçlu ve mürekkep renginde çizilir; Drive'da `<ref> - imza-vektor.json` olarak saklanır ve silme/temizlik izlerine dahildir. Vektörü olmayan eski başvurular PNG imzayla sürer. Kayıtlı şahit imzaları raster kalır, mürekkebe boyanır.
+- **İmza aktarımı.** Eylül ve Ekim 2026 sürümlerinde başvuranın imzası yalnız `imzaAktarimIzni` ile EK-9, dilekçe ve EK-10'a taşınır; v1 başvurularında eski davranış (imzalıysa aktar) sürer. Ön başvuru dilekçesi tören tarihi olmadığı için imzasız ve tarihsizdir; son nüshada yer-tarih «<cami şehri>, <ihtida tarihi>» olur.
+- **Sheets tuzağı (mevcut hata, düzeltildi).** Defter `2026-09-09` sürüm metnini tarihe çeviriyordu; okunan değer «09.09.2026» olunca yeni başvurular v1 sanılıyordu. Yazarken başa `'` eklenir; okurken `ek10SurumuCoz()` «09.09.2026…» ve «01.10.2026…» biçimlerini de tanır (panel + GAS).
+- **Kimlik sayfası.** `public/admin/kimlik-sayfa.js`, Python `kimlik_sayfa.py` düzeni: başlık, «SOYAD Ad», doğum tarihi, ön ve arka yüz **gerçek boyutta** (kart 85,6 × 54 mm, pasaport bilgi sayfası 125 × 88 mm), yuvarlak köşe. Kimlik numarası yazılmaz, OCR/MRZ yoktur.
+- **Kırpma penceresi.** Formda kimlik ön/arka seçilince `src/scripts/kimlik-kirp.ts` kartın kenarlarını tarayıcıda bulur (Otsu eşiği, en büyük bölge, PCA köşeleri, kenar doğrusu oturtma), perspektifi düzeltip 300 dpi karta çevirir (1011 × 638; pasaport 1476 × 1039). Dört köşe sürüklenebilir ve klavyeyle ayarlanır (oklar, Shift ×5); «Döndür», «Kırpmadan kullan», «Vazgeç» vardır. Belge türü değişince kırpılmış görsel yeni orana yeniden açılır. Görsel tarayıcıdan çıkmadan işlenir. Kırpılmamış fotoğraf PDF'de kart genişliğine sığdırılır.
+- **Sağlık.** GET cevabında `ihtidaKalemBelgeleri:true`, derlenmiş GAS paketinde Allura, Ekim 2026 EK-10 ve dilekçe şablonlarının bulunduğunu gösterir.
+- **Testler.** `tests/kimlik-kirp.test.mjs` (geometri), `tests/web/kimlik-kirp.spec.mjs` (pencere, klavye, axe, çıktı ölçüsü), `tests/ihtida-contract.test.mjs` ve `tests/ihtida-paket-akis.test.mjs` (7 sayfa, vektör yol, raster yok, mürekkep rengi, kimlik numarası yok). Kalem büyük harfli kelimeleri harf harf yazdığından metin katmanında harf arası boşluk düşebilir; testler karşılaştırmadan önce boşlukları atar.
+- **Bilinen sınır.** Eve teslimde dilekçenin «dönüş» alanı başvuranın adı ve adresini formdaki sabit «Cami» etiketinin altında taşır.
 
 ## Bundan sonraki kullanım
 

@@ -1041,14 +1041,16 @@ async function ek9Hazirla() {
   }
   if (!ek9Kaynak) {
     const getirBaytlari = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
-    const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi] = await Promise.all([
+    const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon] = await Promise.all([
       getirBaytlari('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
       getirBaytlari('/fonts/Lora-Regular.ttf'),
       getirBaytlari('/fonts/Lora-Bold.ttf'),
       getirBaytlari('/fonts/GreatVibes-Regular.ttf'),
       getirBaytlari('/fonts/Caveat-Medium.ttf'),
+      getirBaytlari('/fonts/Allura-Regular.ttf'),                    // belge doldurma kalemi (KALICI KURAL, 17 Eki 2026)
+      getirBaytlari('/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'),
     ]);
-    ek9Kaynak = { sablon, font, fontKalin, fontKaligrafi, fontElYazisi };
+    ek9Kaynak = { sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon };
   }
 }
 
@@ -1098,22 +1100,11 @@ async function ek9Uretimi(dugme) {
     /* Vesikalik verildigi halde gomulemezse (WEBP/HEIC gibi bir bicim tarayicida da
        cozulemediyse) belge sessizce fotografsiz cikmasin. */
     const ek9Uyarilari = [];
-    const uret = paketMi ? (await import('/admin/ihtida-paket.js')).ihtidaPaketiUret : ek9Modul.uret;
-    let ek10SablonBytes;
-    const ek10Surumu = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
-    const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';
-    if (paketMi) {
-      const rizaSablonu = await fetch(ek10Surumu === '2026-09-09'
-        ? '/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'
-        : '/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf');
-      if (!rizaSablonu.ok) throw new Error('EK-10 şablonu alınamadı.');
-      ek10SablonBytes = new Uint8Array(await rizaSablonu.arrayBuffer());
-    }
-    const bytes = await uret({
+    const bytes = await ek9Modul.uret({
       uyar: (kod) => ek9Uyarilari.push(kod),
       pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
       sablonBytes: ek9Kaynak.sablon, fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
-      fontKaligrafiBytes: ek9Kaynak.fontKaligrafi, fontElYazisiBytes: ek9Kaynak.fontElYazisi,
+      fontKaligrafiBytes: ek9Kaynak.fontKaligrafi, fontElYazisiBytes: ek9Kaynak.fontElYazisi, kalemFontBytes: ek9Kaynak.kalem,
       isimYazisi: hazirlik.isimYazisi, alanYazisi: hazirlik.alanYazisi,
       cami: { id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'] || 'Ulu Camii', sehir: k['Cami şehri'] || 'Marche-en-Famenne', postaKodu: k['Cami posta kodu'] || '6900', adres: k['Cami adresi'] || 'Thier des Corbeaux 14', kurum: k['Cami kurumu'] || 'BDV' },
       veri: {
@@ -1145,15 +1136,11 @@ async function ek9Uretimi(dugme) {
       foto: vesikalik,
       sahitler: hazirlik.sahitler,
       yedekImzalar: [],
-      basvuranImza,
-      ek10SablonBytes, ek10Surumu, imzaAktarimIzni,
-      ek10Onayi: k['EK-10 rızası'] === 'Evet', imzasiz: !basvuranImza,
-      kimlikOn: j.gorseller?.kimlikOn || '', kimlikArka: j.gorseller?.kimlikArka || '',
-      belgeTuru: hazirlik.belgeTuru, okunamayanGorseller: j.okunamayanGorseller || [],
+      basvuranImza, basvuranImzaVektor: basvuranImza ? (j.basvuranImzaVektor || j.gorseller?.imzaVektor || '') : '',
       tarih: new Date(),
     });
 
-    const ad = paketMi ? `Ihtida Belge Paketi ${ref}${basvuranImza ? '' : ' - imza icin'}.pdf` : `EK-9 Ihtida Belgesi ${ref}.pdf`;
+    const ad = `EK-9 Ihtida Belgesi ${ref}.pdf`;
     const bag = document.createElement('a');
     bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
     bag.download = ad; bag.click();
@@ -1176,9 +1163,9 @@ async function ek9Uretimi(dugme) {
   }
 }
 
-/* Müşavirliğe gidecek C4 zarfın 1. belgesi: mühtedinin imzalı dilekçesi ("Zarf İçeriği ve
-   Gönderi Talimatı"). Başvuran imzasını formda çizdiği için dilekçe burada imzalı üretilir;
-   iki dilli (Türkçe + başvuranın form dili). Bkz. public/admin/dilekce.js */
+/* Müşavirliğe gidecek C4 zarfın dilekçesi: Ekim 2026 «İhtida Belgesi Talep Dilekçesi» formu (dört dil, iki sayfa),
+   alanlar mavi dolma kalemle. Dilekçe töreni ve tarihini beyan eder: tören tarihi yazılmazsa tarih, yer-tarih ve
+   imza boş kalır («imzaya hazır»). İmza ancak başvuranın aktarım izniyle konur. Bkz. public/admin/dilekce.js */
 let dilekceModul = null;
 async function dilekceUretimi(dugme) {
   const ref = dugme.dataset.dilekce;
@@ -1192,16 +1179,28 @@ async function dilekceUretimi(dugme) {
     const j = await gasIstek('belge', { ref });
     if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
     const k = j.kayit || {};
-    const imza = (j.gorseller && j.gorseller.imza) || j.basvuranImza || '';
-    if (!imza && !confirm('Bu başvuruda çizilmiş imza yok (başvuran «ekranda imza atamıyorum» demiş olabilir).\n\nDilekçe imza satırı boş üretilsin mi? Mühtedi kalemle imzalar.')) {
+    const { ek10SurumuCoz } = await import('/admin/ek10.js');
+    const surum = ek10SurumuCoz(k['EK-10 sürümü']);
+    const izin = surum === 'v1' || k['İmza aktarım izni'] === 'Evet';
+    const ham = (j.gorseller && j.gorseller.imza) || j.basvuranImza || '';
+    const girilen = prompt('Gerçek ihtida (tören) tarihi, gg/aa/yyyy.\n\nBoş bırakırsanız tören tarihi, yer-tarih ve imza boş kalır (imzaya hazır dilekçe).', '');
+    if (girilen === null) { dugme.textContent = eskiMetin; return; }
+    const torenTarihi = ek9Tarih(girilen.trim().replace(/[.-]/g, '/'));
+    if (torenTarihi && !/^\d{2}\/\d{2}\/\d{4}$/.test(torenTarihi)) throw new Error('Tarihi gg/aa/yyyy biçiminde yazın.');
+    const imza = torenTarihi && izin ? ham : '';
+    if (torenTarihi && !imza && !confirm('Bu başvuruda aktarılabilecek imza yok (başvuran «ekranda imza atamıyorum» demiş ya da izin vermemiş olabilir).\n\nDilekçe imza yeri boş üretilsin mi? Mühtedi kalemle imzalar.')) {
       dugme.textContent = eskiMetin;
       return;
     }
-    const bytes = await dilekceModul.dilekceUret({
+    const camiBilgisi = { id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'] || 'Ulu Camii', sehir: k['Cami şehri'] || 'Marche-en-Famenne', postaKodu: k['Cami posta kodu'] || '6900', adres: k['Cami adresi'] || 'Thier des Corbeaux 14', kurum: k['Cami kurumu'] || 'BDV' };
+    const bytes = await dilekceModul.dilekceFormUret({
       pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
-      fontBytes: ek9Kaynak.font, fontKalinBytes: ek9Kaynak.fontKalin,
+      fontBytes: ek9Kaynak.font, kalemFontBytes: ek9Kaynak.kalem, sablonBytes: ek9Kaynak.dilekceSablon,
+      yerTarih: torenTarihi ? `${camiBilgisi.sehir}, ${torenTarihi}` : '',
+      imzaAktarimIzni: Boolean(imza),
+      imzaVektor: imza ? (j.basvuranImzaVektor || j.gorseller?.imzaVektor || '') : '',
       veri: {
-        ref,
+        ref, ihtidaTarihi: torenTarihi,
         adSoyad: k['Adı Soyadı'] || '',
         dogumYeri: k['Doğum yeri'] || '',
         dogumTarihi: ek9Tarih(k['Doğum tarihi']),
@@ -1210,15 +1209,14 @@ async function dilekceUretimi(dugme) {
         telefon: telefonBicim(k['Telefon']),
         eposta: k['E-posta'] || '',
         dil: (k['Form dili'] || 'fr').trim().toLowerCase(),
-        cami: { id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'] || 'Ulu Camii', sehir: k['Cami şehri'] || 'Marche-en-Famenne', postaKodu: k['Cami posta kodu'] || '6900', adres: k['Cami adresi'] || 'Thier des Corbeaux 14', kurum: k['Cami kurumu'] || 'BDV' },
+        cami: camiBilgisi,
         teslimat: { yontem: k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami' },
       },
       imza,
-      tarih: new Date(),
     });
     const bag = document.createElement('a');
     bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
-    bag.download = `Dilekce ${ref}.pdf`;
+    bag.download = `Dilekce ${ref}${imza ? ' - imzali' : ' - imzaya hazir'}.pdf`;
     bag.click();
     setTimeout(() => URL.revokeObjectURL(bag.href), 20000);
     dugme.textContent = '✓ İndirildi';
@@ -1242,20 +1240,22 @@ async function ek10Uretimi(dugme) {
     if (!j.ok) throw new Error('Başvuru alınamadı.');
     const k = j.kayit || {};
     const onay = k['EK-10 rızası'] === 'Evet';
-    const surum = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
+    const { ek10Uret, ek10SurumuCoz } = await import('/admin/ek10.js');
+    const surum = ek10SurumuCoz(k['EK-10 sürümü']);
     const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';
-    const imza = onay && (surum !== '2026-09-09' || imzaAktarimIzni) ? (j.basvuranImza || j.gorseller?.imza || '') : '';
+    const imza = onay && (surum === 'v1' || imzaAktarimIzni) ? (j.basvuranImza || j.gorseller?.imza || '') : '';
     if (!imza && !confirm('Bu kayıtta EK-10 onayı veya başvuranın imzası bulunmuyor. İmza alanı boş hazırlansın mı? Mühtedi metni okuyup kâğıt üzerinde imzalayabilir.')) return;
-    const kaynak = await fetch(surum === '2026-09-09'
-      ? '/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'
-      : '/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf');
+    const kaynak = await fetch({
+      '2026-10': '/belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf',
+      '2026-09-09': '/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf',
+    }[surum] || '/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf');
     if (!kaynak.ok) throw new Error('EK-10 şablonu alınamadı.');
-    const { ek10Uret } = await import('/admin/ek10.js');
     const bytes = await ek10Uret({
-      pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit, fontBytes: ek9Kaynak.font,
-      sablonBytes: new Uint8Array(await kaynak.arrayBuffer()),
+      pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit, fontBytes: ek9Kaynak.font, kalemFontBytes: ek9Kaynak.kalem,
+      sablonBytes: new Uint8Array(await kaynak.arrayBuffer()), ref,
       adSoyad: k['Adı Soyadı'] || '', tarih: imza ? ek9Tarih(k['Zaman damgası']) : '', imza, onay,
-      surum, imzaAktarimIzni: surum === '2026-09-09' ? imzaAktarimIzni : undefined,
+      imzaVektor: imza ? (j.basvuranImzaVektor || j.gorseller?.imzaVektor || '') : '',
+      surum, imzaAktarimIzni: surum !== 'v1' ? imzaAktarimIzni : undefined,
     });
     const bag = document.createElement('a');
     bag.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));

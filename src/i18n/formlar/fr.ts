@@ -265,6 +265,7 @@ export const fr: FormMetinleri = {
       hataOkunamadi: 'Ce fichier n’a pas pu être lu ; essayez une autre photo.',
       hataImza: 'La zone de signature semble vide. Signez ou cochez la case en dessous.',
       hataEksik: '{ad} : image manquante. Veuillez en ajouter une.',
+      kirp: { baslik: 'Ajustez les coins de la carte', yardim: 'Faites glisser les quatre points bleus sur les coins de la carte. Seule la carte sera imprimée ; l’arrière-plan est retiré.', yardimPasaport: 'Faites glisser les quatre points bleus sur les coins de la page de données du passeport, celle avec la photo.', uygula: 'Recadrer et utiliser', ham: 'Utiliser sans recadrer', vazgec: 'Annuler', dondur: 'Pivoter', duzelt: 'Ajuster les coins', bulundu: 'Les bords de la carte ont été détectés ; ajustez les coins si nécessaire.', bulunamadi: 'Les bords de la carte n’ont pas été détectés ; placez les coins à la main.', onizleme: 'Résultat', kirpildi: 'Carte recadrée · {boyut}', koseler: ['Coin supérieur gauche', 'Coin supérieur droit', 'Coin inférieur droit', 'Coin inférieur gauche'] },
     },
     riza: {
       acikRiza: 'Je donne mon consentement explicite (art. 9.2.a RGPD) au traitement de ces informations relatives à ma conviction religieuse et à mon souhait d’embrasser l’islam, par l’association Marche-en-Famenne Ulu Camii et le service compétent de la Présidence des Affaires religieuses (Diyanet), aux fins d’établissement de l’attestation de conversion et d’organisation de la cérémonie. Je peux retirer ce consentement à tout moment.',

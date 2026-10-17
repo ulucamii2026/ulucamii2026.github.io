@@ -1,8 +1,15 @@
 /** EK-10 açık rıza metni.
- * 2026-09-09 sürümü iki sayfada dört dili taşır; ortak ad, tarih ve tek imza
- * yalnız ikinci sayfadadır. Önceki başvurular eski şablon ve koordinatlarla kalır.
+ * Ekim 2026 sürümü ('2026-10'): Müşavirliğin dört dilli formu (TR·EN / FR·NL), her yüzde tarih · ad · imza;
+ * alanlar mavi dolma kalemle (kalem.js), imza aynı mürekkeple. Başvuran hangi metne onay verdiyse o üretilir:
+ * 2026-09-09 sürümü iki sayfada dört dili taşır (ortak ad, tarih ve tek imza ikinci sayfada); daha önceki
+ * başvurular v1 şablonu ve koordinatlarıyla kalır.
  */
+import { EK10_2026_10 } from './belge-yerlesim.js';
+import { kalemKur, adBicimleri, KALEM_OZELLIKLERI } from './kalem.js';
+import { imzaHazirla, aktarimKutusu } from './imza-ciz.js';
+
 const YENI_SURUM = '2026-09-09';
+const EKIM_SURUMU = EK10_2026_10.surum;
 
 function imzayiOku(belge, imza) {
   if (!imza) return null;
@@ -75,8 +82,49 @@ async function eskiEk10Uret(g) {
   return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
 }
 
+/** Ekim 2026 formu: kalem.py/ek10-imzali-dijital.py ile aynı alanlar ve boylar (ad ve tarih 21 pt). */
+async function ekimEk10Uret(g) {
+  const imzali = Boolean(g.imza || g.imzaVektor);
+  if (imzali && g.onay !== true) throw new Error('EK-10 rızası kayıtta doğrulanmadan imza eklenemez.');
+  if (imzali && g.imzaAktarimIzni !== true) throw new Error('İmza aktarım izni olmadan imzalı EK-10 üretilemez.');
+  if (!g.kalemFontBytes) throw new Error('Kalem yazı tipi (Allura) eksik.');
+  const { PDFDocument } = g.pdfLib;
+  const belge = await PDFDocument.load(g.sablonBytes, { parseSpeed: Infinity });
+  if (belge.getPageCount() !== EK10_2026_10.sayfalar.length) throw new Error('EK-10 Ekim 2026 şablonu iki sayfa olmalıdır.');
+  belge.registerFontkit(g.fontkit);
+  const allura = await belge.embedFont(g.kalemFontBytes, { subset: false, features: KALEM_OZELLIKLERI });   // alt küme gömme bazı harfleri görünmez yapıyor (Caveat dersi)
+  const yedek = g.fontBytes ? await belge.embedFont(g.fontBytes, { subset: true }) : null;
+  const kalem = kalemKur(g.pdfLib, allura, yedek);
+  const imza = imzali ? await imzaHazirla(g.pdfLib, belge, { vektor: g.imzaVektor, gorsel: g.imza }) : null;
+  const adlar = adBicimleri(g.adSoyad).el;
+  const tarih = String(g.tarih || '').trim();
+  belge.getPages().forEach((sayfa, i) => {
+    const A = EK10_2026_10.sayfalar[i].alanlar;
+    if (imza) imza.ciz(sayfa, aktarimKutusu(imza.en, imza.boy, A.imza));
+    if (tarih) kalem.alanaYaz(sayfa, A.tarih, tarih, 21);
+    if (adlar[i]) kalem.alanaYaz(sayfa, A.ad, adlar[i], 21);
+  });
+  const durum = imza ? 'imzalı, dijital' : 'imzaya hazır';
+  belge.setTitle(`EK-10 Açık Rıza — ${g.ref || g.adSoyad || ''} (${durum})`);
+  belge.setSubject('EK-10 Açık Rıza Metni (Ekim 2026 formu, TR·EN / FR·NL). Ad ve tarih mavi dolma kalem el yazısıyla (Allura)'
+    + (imza ? '; imza, başvuranın formda çizdiği imzadır ve açık izniyle aktarıldı.' : '; imza alanı ıslak imza için boş.'));
+  belge.setAuthor('T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği');
+  belge.setCreator('Marche-en-Famenne Ulu Camii');
+  return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
+}
+
+/** Defterdeki «EK-10 sürümü» hücresi → sürüm. Google Sheets «2026-09-09» ve «2026-10» metnini tarihe çevirip
+ *  «09.09.2026» / «01.10.2026» olarak geri verebiliyor (17 Eki 2026'ya kadar metin işaretsiz yazıldı). */
+export function ek10SurumuCoz(deger) {
+  const s = String(deger ?? '').trim();        // panel listesi tarihi «dd.MM.yyyy HH:mm» olarak da verir
+  if (s === EKIM_SURUMU || s.startsWith('01.10.2026')) return EKIM_SURUMU;
+  if (s === YENI_SURUM || s.startsWith('09.09.2026')) return YENI_SURUM;
+  return 'v1';
+}
+
 export async function ek10Uret(g) {
+  if (g.surum === EKIM_SURUMU) return ekimEk10Uret(g);
   return g.surum === YENI_SURUM ? yeniEk10Uret(g) : eskiEk10Uret(g);
 }
 
-export { YENI_SURUM };
+export { YENI_SURUM, EKIM_SURUMU };

@@ -1,6 +1,8 @@
 import { ihtidaPaketiUret } from '../../public/admin/ihtida-paket.js';
 import { camiCoz } from '../../public/admin/cami-secimi.js';
 import { sahitOnerileri } from '../../public/admin/ek9-hazirlik.js';
+import { imzaVektorCoz } from '../../public/admin/imza-ciz.js';
+import { ek10SurumuCoz } from '../../public/admin/ek10.js';
 
 const ETIKET = {
   cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme' },
@@ -32,9 +34,12 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit) 
   const teslimatYontemi = k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami'; // Eski satırlar cami teslimi varsayılır.
   const sahitler = d.sahitler || sahitOnerileri({ ...k, 'Cami kimliği': cami.id }).map(ad => ({ ad }));
   const imza = gorseller.imza || '';
-  const ek10Surumu = k['EK-10 sürümü'] === '2026-09-09' ? '2026-09-09' : 'v1';
+  // Vektör imza yalnız aynı başvurunun PNG imzasıyla birlikte geçerlidir (ikisi aynı çizimden çıkar).
+  const imzaVektor = imza && imzaVektorCoz(gorseller.imzaVektor) ? gorseller.imzaVektor : '';
+  const ek10Surumu = ek10SurumuCoz(k['EK-10 sürümü']);
   const imzaAktarimIzni = k['İmza aktarım izni'] === 'Evet';
   const beyan = imza ? tarih(k['Zaman damgası']) : tarih(d.beyanTarihi || k['Zaman damgası']);
+  const ek10Sablonu = { '2026-10': kaynaklar.ek10EkimSablonBytes, '2026-09-09': kaynaklar.ek10SablonBytes, v1: kaynaklar.ek10V1SablonBytes }[ek10Surumu];
   return ihtidaPaketiUret({
     ...kaynaklar, pdfLib: gasPdfLib, fontkit, onBasvuru: !duzenleme,
     isimYazisi: d.isimYazisi || 'kaligrafik', alanYazisi: d.alanYazisi || 'el-yazisi',
@@ -48,13 +53,12 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit) 
       eposta: k['E-posta'], telefon: k['Telefon'], cami,
       teslimat: { yontem: teslimatYontemi },
     },
-    ek10SablonBytes: ek10Surumu === '2026-09-09' ? kaynaklar.ek10SablonBytes : kaynaklar.ek10V1SablonBytes,
-    ek10Surumu, imzaAktarimIzni,
-    foto: gorseller.vesikalik, basvuranImza: imza, imzasiz: !imza, ek10Onayi: k['EK-10 rızası'] === 'Evet',
+    ek10SablonBytes: ek10Sablonu, ek10Surumu, imzaAktarimIzni,
+    foto: gorseller.vesikalik, basvuranImza: imza, basvuranImzaVektor: imzaVektor, imzasiz: !imza, ek10Onayi: k['EK-10 rızası'] === 'Evet',
     belgeTuru: d.belgeTuru || k['Kimlik belgesi türü'], kimlikOn: gorseller.kimlikOn, kimlikArka: gorseller.kimlikArka,
     cami, sahitler,
     yedekImzalar: [],
   });
 }
 
-export { camiCoz };
+export { camiCoz, imzaVektorCoz };

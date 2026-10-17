@@ -264,6 +264,7 @@ export const en: FormMetinleri = {
       hataOkunamadi: 'This file could not be read; please try another photo.',
       hataImza: 'The signature area looks empty. Sign it, or tick the box below.',
       hataEksik: '{ad} is missing. Please add a photo.',
+      kirp: { baslik: 'Adjust the corners of the card', yardim: 'Drag the four blue dots onto the corners of the card. Only the card is printed; the background is cut away.', yardimPasaport: 'Drag the four blue dots onto the corners of the passport data page, the page with the photo.', uygula: 'Crop and use', ham: 'Use without cropping', vazgec: 'Cancel', dondur: 'Rotate', duzelt: 'Adjust corners', bulundu: 'The edges of the card were found; adjust the corners if needed.', bulunamadi: 'The edges of the card were not found automatically; place the corners by hand.', onizleme: 'Result', kirpildi: 'Card cropped · {boyut}', koseler: ['Top-left corner', 'Top-right corner', 'Bottom-right corner', 'Bottom-left corner'] },
     },
     riza: {
       acikRiza: 'I give my explicit consent (GDPR Art. 9(2)(a)) for this information about my religious belief and my wish to embrace Islam to be processed by the Marche-en-Famenne Ulu Camii association and the relevant department of the Presidency of Religious Affairs (Diyanet), for the purpose of issuing the conversion certificate and arranging the ceremony. I may withdraw this consent at any time.',

@@ -11,17 +11,23 @@ const assets = {
   sablonBytes: 'public/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf',
   ek10SablonBytes: 'public/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf',
   ek10V1SablonBytes: 'public/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf',
+  ek10EkimSablonBytes: 'public/belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf',
+  dilekceSablonBytes: 'public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf',
+  kalemFontBytes: 'public/fonts/Allura-Regular.ttf',
   fontBytes: 'public/fonts/Lora-Regular.ttf', fontKalinBytes: 'public/fonts/Lora-Bold.ttf',
   fontKaligrafiBytes: 'public/fonts/GreatVibes-Regular.ttf', fontElYazisiBytes: 'public/fonts/Caveat-Medium.ttf',
 };
 const encoded = {};
 for (const [name, path] of Object.entries(assets)) encoded[name] = (await readFile(new URL(path, root))).toString('base64');
-const built = await build({ entryPoints: [fileURLToPath(new URL('scripts/apps-script/ihtida-pdf-entry.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaPdf', target: 'es2020', minify: true });
-const defter = await build({ entryPoints: [fileURLToPath(new URL('public/admin/ihtida-defteri.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaDefteri', target: 'es2020', minify: true });
+// 17 Eki 2026: Apps Script kodu kaydederken BigInt değişmezini (0n) «ParseError» ile reddediyor; bu ayarla esbuild
+// değişmezi BigInt("…") çağrısına çevirir (uyarı verir). Kalem kodu zaten BigInt kullanmıyor (tests/kalem.test.mjs).
+const GAS_SOZDIZIMI = { bigint: false };
+const built = await build({ entryPoints: [fileURLToPath(new URL('scripts/apps-script/ihtida-pdf-entry.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaPdf', target: 'es2020', supported: GAS_SOZDIZIMI, minify: true });
+const defter = await build({ entryPoints: [fileURLToPath(new URL('public/admin/ihtida-defteri.js', root))], bundle: true, write: false, format: 'iife', globalName: 'IhtidaDefteri', target: 'es2020', supported: GAS_SOZDIZIMI, minify: true });
 // v38: seviye tespit testinin bankası, puanlaması ve metinleri sunucuya tek kaynaktan gider.
-const seviye = await build({ entryPoints: [fileURLToPath(new URL('src/lib/seviye-testi/gas-giris.ts', root))], bundle: true, write: false, format: 'iife', globalName: 'SeviyeTesti', target: 'es2020', minify: true });
+const seviye = await build({ entryPoints: [fileURLToPath(new URL('src/lib/seviye-testi/gas-giris.ts', root))], bundle: true, write: false, format: 'iife', globalName: 'SeviyeTesti', target: 'es2020', supported: GAS_SOZDIZIMI, minify: true });
 // v42: envanter sözleşmesi, doğrulaması, cami tablosu ve defter satırları sunucuya tek kaynaktan gider.
-const envanter = await build({ entryPoints: [fileURLToPath(new URL('src/lib/envanter/gas-giris.ts', root))], bundle: true, write: false, format: 'iife', globalName: 'EnvanterVeri', target: 'es2020', minify: true });
+const envanter = await build({ entryPoints: [fileURLToPath(new URL('src/lib/envanter/gas-giris.ts', root))], bundle: true, write: false, format: 'iife', globalName: 'EnvanterVeri', target: 'es2020', supported: GAS_SOZDIZIMI, minify: true });
 const parts = await Promise.all(['scripts/apps-script/kimlik-sabitler.gs', 'scripts/apps-script/ulucamii-Kod-v43.gs', 'scripts/apps-script/ihtida-paket-isleri.gs', 'scripts/apps-script/ihtida-defteri-isleri.gs', 'scripts/apps-script/veli-mail-listesi.gs', 'scripts/apps-script/veli-eposta-sablon.gs', 'scripts/apps-script/veli-cuma.gs', 'scripts/apps-script/seviye-testi-isleri.gs', 'scripts/apps-script/envanter-isleri.gs', 'public/vendor/pdf-lib.min.js', 'public/vendor/fontkit.umd.min.js'].map(oku));
 const output = new URL('.codex/cikti/gas/ulucamii-v43.gs', root);
 await mkdir(new URL('.', output), { recursive: true });

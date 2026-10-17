@@ -50,10 +50,10 @@ export function ihtidaFormuBaslat() {
         fotografIzni: v.fotografIzni === true,
         belgeTuru: v.belgeTuru ?? 'kimlik',
         imzaYok: v.imzaYok === true,
-        gorseller: gorseller?.paket() ?? { vesikalik: '', kimlikOn: '', kimlikArka: '', imza: '' },
+        gorseller: gorseller?.paket() ?? { vesikalik: '', kimlikOn: '', kimlikArka: '', imza: '', imzaVektor: '' },
         onay: {
           acikRiza: onay.acikRiza === true, ek10: onay.ek10 === true, gizlilik: onay.gizlilik === true,
-          ek10Surumu: '2026-09-09', imzaAktarimIzni: v.imzaYok !== true && onay.imzaAktarimIzni === true,
+          ek10Surumu: '2026-10', imzaAktarimIzni: v.imzaYok !== true && onay.imzaAktarimIzni === true,
           gorselRiza: onay.gorselRiza === true, beyan: onay.beyan,
         },
       };

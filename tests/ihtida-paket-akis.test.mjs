@@ -53,7 +53,7 @@ function ortam() {
   return { ctx, sent, files, cells, props };
 }
 
-test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı paketi üretir', async () => {
+test('GAS ortamı tarayıcı/Node/timer olmadan gerçek yedi sayfalık imzalı paketi üretir', async () => {
   const { ctx, sent, files, cells } = ortam();
   assert.equal(vm.runInContext('typeof setTimeout', ctx), 'undefined');
   assert.equal(vm.runInContext('typeof window', ctx), 'undefined');
@@ -63,7 +63,7 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı 
   await ctx.ihtidaPaketIsle(k.Referans);
   const is = ctx.ihtidaPaketIsiOku(k.Referans);
   assert.equal(is.durum, 'tamam', JSON.stringify(is));
-  assert.equal(is.sayfa, 6);
+  assert.equal(is.sayfa, 7, 'EK-9 ×2, dilekçe ×2, EK-10 ×2, kimlik');
   assert.deepEqual(sent.map(p => p.to[0].email), ['info@ulucamii.be', 'imam@ulucamii.be', 'deniz@example.test']);
   const bytes = Buffer.from(files.get(is.pdfId).getBlob().getBytes());
   for (const p of sent) {
@@ -72,11 +72,12 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek altı sayfalık imzalı 
   }
   assert.ok(cells.get('Tam paket PDF').includes(is.pdfId));
   assert.ok(cells.get('E-posta durumu').includes('Alıcı sunucusuna teslim edildi'));
-  assert.equal((await PDFDocument.load(bytes)).getPageCount(), 6);
+  assert.equal((await PDFDocument.load(bytes)).getPageCount(), 7);
   writeFileSync('.codex/cikti/ihtida/gas-otomatik-paket.pdf', bytes);
-  const metin = pdfMetni('.codex/cikti/ihtida/gas-otomatik-paket.pdf', ['-f', '1', '-l', '1']);
-  for (const text of ['Rıdvan KAYAHAN', 'Din Görevlisi', 'Ercan MOLA', 'Dernek Başkanı']) assert.ok(metin.includes(text), text);
-  assert.ok(metin.indexOf('Ercan MOLA') < metin.indexOf('Rıdvan KAYAHAN'), 'Otomatik EK-9 paketinde Ercan birinci, Rıdvan ikinci şahit olmalı');
+  // Kalem büyük harfli kelimeyi harf harf yazar; metin katmanında harf arasına boşluk düşebilir.
+  const metin = pdfMetni('.codex/cikti/ihtida/gas-otomatik-paket.pdf', ['-f', '1', '-l', '1']).replace(/[ \t]+/g, '');
+  for (const text of ['RıdvanKAYAHAN', 'DinGörevlisi', 'ErcanMOLA', 'DernekBaşkanı']) assert.ok(metin.includes(text), text);
+  assert.ok(metin.indexOf('ErcanMOLA') < metin.indexOf('RıdvanKAYAHAN'), 'Otomatik EK-9 paketinde Ercan birinci, Rıdvan ikinci şahit olmalı');
   assert.doesNotMatch(metin, /Yeliz/);
   await ctx.ihtidaPaketIsle(k.Referans);
   assert.equal(sent.length, 3, 'Kuyruk tekrar çalışsa da üç e-posta tekrarlanmaz');
@@ -101,9 +102,40 @@ test('Otomatik PDF boş ikinci şahidi tamamlarken ilk şahidi tekrarlamaz', asy
   const bytes = await ctx.IhtidaPdf.uret({ ...k, 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': '' }, ctx.ihtidaGorselleriOku(), null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit);
   const file = '.codex/cikti/ihtida/gas-sahit-tekrari.pdf';
   writeFileSync(file, Buffer.from(bytes));
-  const metin = pdfMetni(file, ['-f', '1', '-l', '1']);
-  assert.equal((metin.match(/Yeliz KAYAHAN/g) || []).length, 1);
-  assert.match(metin, /Ercan MOLA/);
+  const metin = pdfMetni(file, ['-f', '1', '-l', '1']).replace(/[ \t]+/g, '');
+  assert.equal((metin.match(/YelizKAYAHAN/g) || []).length, 1);
+  assert.match(metin, /ErcanMOLA/);
+});
+
+test('Ekim 2026 EK-10 ve vektör imza: tarihe dönmüş sürüm hücresi tanınır, imza yol olarak çizilir', async () => {
+  const { ctx } = ortam();
+  // Google Sheets «2026-10» metnini 1 Ekim 2026 tarihine çeviriyordu; okunan değer «01.10.2026» olur.
+  const kayit = { ...k, 'EK-10 sürümü': '01.10.2026' };
+  const imzaVektor = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40L180 52L224 58M60 66L170 70' });
+  const g = { ...ctx.ihtidaGorselleriOku(), imzaVektor };
+  const bytes = Buffer.from(await ctx.IhtidaPdf.uret(kayit, g, null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit));
+  const file = '.codex/cikti/ihtida/gas-ekim-2026-paket.pdf';
+  writeFileSync(file, bytes);
+  const doc = await PDFDocument.load(bytes);
+  assert.equal(doc.getPageCount(), 7);
+  const metin = (a, b) => pdfMetni(file, ['-f', String(a), '-l', String(b)]);
+  assert.match(metin(3, 3), /İhtida Belgesi Talep Dilekçesi/);
+  assert.match(metin(5, 5), /Açık Rıza Metni/);
+  assert.match(metin(7, 7), /PHOTOCOPIE DE LA CARTE D'IDENTITÉ/);
+  assert.doesNotMatch(metin(7, 7), /N° de carte|registre national|\d{2}\.\d{2}\.\d{2}-\d{3}\.\d{2}/, 'kimlik numarası yazılmaz');
+  const { PDFName, decodePDFRawStream, PDFArray } = await import('pdf-lib');
+  const akis = i => {
+    const c = doc.getPage(i).node.get(PDFName.of('Contents'));
+    const refler = c instanceof PDFArray ? c.asArray() : [c];
+    return refler.map(r => Buffer.from(decodePDFRawStream(doc.context.lookup(r)).decode()).toString('latin1')).join('\n');
+  };
+  const gorselVar = i => (doc.getPage(i).node.Resources().lookup(PDFName.of('XObject'))?.keys() || [])
+    .some(ad => doc.context.lookup(doc.getPage(i).node.Resources().lookup(PDFName.of('XObject')).get(ad))?.dict?.get(PDFName.of('Subtype'))?.toString() === '/Image');
+  // Ön başvuru: imza EK-9 arka yüzüne ve EK-10'un iki yüzüne yol olarak; dilekçe tören tarihi gelene dek imzasız.
+  for (const i of [1, 4, 5]) assert.match(akis(i), /1 J/, (i + 1) + '. sayfada vektör imza');
+  for (const i of [2, 3]) assert.doesNotMatch(akis(i), /1 J/, (i + 1) + '. sayfa (dilekçe) ön başvuruda imzasız');
+  for (const i of [1, 2, 3, 4, 5]) assert.equal(gorselVar(i), false, (i + 1) + '. sayfada raster olmamalı');
+  assert.match(akis(4), /0\.1 0\.24 0\.62 RG/, 'mürekkep #1A3D9E');
 });
 
 test('Eski kaydın EK-10 rızası yeni sürüme taşınmadan v1 şablonla korunur', async () => {
@@ -114,7 +146,7 @@ test('Eski kaydın EK-10 rızası yeni sürüme taşınmadan v1 şablonla korunu
   await ctx.ihtidaPaketIsle(eski.Referans);
   const is = ctx.ihtidaPaketIsiOku(eski.Referans);
   assert.equal(is.durum, 'tamam', JSON.stringify(is));
-  assert.equal(is.sayfa, 6);
+  assert.equal(is.sayfa, 7);
 });
 
 test('Büyük görselli başvuru 20 KB eski sınırına takılmaz; diğer formlar sınırsız büyümez', () => {
@@ -261,7 +293,7 @@ test('Yeniden verilen numarada çöpteki eski iş dosyası ve görseller yeni ba
 test('Test temizliği ihtida satırıyla birlikte aynı numaranın iş dosyasını, paket PDF’ini, görsellerini ve kuyruğunu kaldırır', () => {
   const { ctx, files, props } = ortam(), klasor = ctx.ihtidaKlasorGetir(), yeni = (ad, tur = 'image/jpeg') => klasor.createFile(ctx.Utilities.newBlob('x', tur, ad));
   const hedef = 'IH-2099-0007', diger = 'IH-2099-0005';
-  for (const ref of [hedef, diger]) for (const son of [' - vesikalik.jpg', ' - kimlik-on.jpg', ' - kimlik-arka.jpg', ' - imza.png']) yeni(ref + son);
+  for (const ref of [hedef, diger]) for (const son of [' - vesikalik.jpg', ' - kimlik-on.jpg', ' - kimlik-arka.jpg', ' - imza.png', ' - imza-vektor.json']) yeni(ref + son);
   const paket = yeni(hedef + ' - Ihtida Belge Paketi - r1.pdf', 'application/pdf'), benzer = yeni('IH-2099-00071 - vesikalik.jpg');
   ctx.ihtidaPaketIsiYaz({ ref: hedef, durum: 'teslim-takibi', pdfId: paket.getId(), alicilar: [] });
   ctx.ihtidaPaketIsiYaz({ ref: diger, durum: 'tamam', alicilar: [] });
@@ -271,7 +303,7 @@ test('Test temizliği ihtida satırıyla birlikte aynı numaranın iş dosyasın
   assert.equal(ctx.testTemizleSayfa(sheet, klasor, ['Adı Soyadı']), 1);
   assert.deepEqual(rows.map(r => r[1]), [diger]);
   const cop = [...files.values()].filter(f => f.isTrashed()).map(f => f.getName()).sort();
-  assert.deepEqual(cop, [hedef + ' - Ihtida Belge Paketi - r1.pdf', hedef + ' - imza.png', hedef + ' - kimlik-arka.jpg', hedef + ' - kimlik-on.jpg', hedef + ' - paket-islem.json', hedef + ' - vesikalik.jpg']);
+  assert.deepEqual(cop, [hedef + ' - Ihtida Belge Paketi - r1.pdf', hedef + ' - imza-vektor.json', hedef + ' - imza.png', hedef + ' - kimlik-arka.jpg', hedef + ' - kimlik-on.jpg', hedef + ' - paket-islem.json', hedef + ' - vesikalik.jpg']);
   assert.equal(benzer.isTrashed(), false);
   assert.equal(props.has('IHTIDA_PAKET_IS_' + hedef), false);
   assert.equal(props.has('IHTIDA_PAKET_IS_' + diger), true);

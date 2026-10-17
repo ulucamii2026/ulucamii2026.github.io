@@ -66,6 +66,8 @@ async function doldur(page) {
   await page.locator('#i-belge-pasaport').check();
   for (const id of ['vesikalik', 'kimlik-on']) {
     await page.locator(`#i-g-${id}`).setInputFiles({ name: 'ornek.png', mimeType: 'image/png', buffer: png });
+    // 17 Eki 2026: kimlik yüzü karta kırpma penceresinden geçer.
+    if (id === 'kimlik-on') await page.locator('dialog.kimlik-kirp [data-uygula]').click();
   }
   await expect(page.locator('[data-gorsel="kimlikOn"]')).toHaveAttribute('data-dolu', '1');
   await page.locator('input[name="imzaYok"]').check();
@@ -129,6 +131,9 @@ for (const [dil, yol] of Object.entries(yollar)) {
     expect(v.sahitSecimi).toBe(dil === 'tr' ? 'cami' : 'kendi');
     expect(v.sahitler).toEqual(dil === 'tr' ? [] : [{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
     expect(v.gorseller.vesikalik).toMatch(/^data:image\/(jpeg|png);base64,/);
+    expect(v.gorseller.kimlikOn).toMatch(/^data:image\/jpeg;base64,/);
+    expect(v.onay.ek10Surumu).toBe('2026-10');
+    expect(v.gorseller.imzaVektor).toBe('');
     expect(Object.keys(v.basvuran).some(k => /kimlik|national|registry|tcno|pasaport/i.test(k))).toBe(false);
   });
 }
@@ -250,16 +255,19 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async
     const ctx = canvas.getContext('2d'); ctx.strokeStyle = '#142d75'; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.moveTo(12, 55); ctx.quadraticCurveTo(100, 5, 224, 58); ctx.stroke();
     const resim = canvas.toDataURL('image/png');
+    // 17 Eki 2026: Ekim 2026 EK-10 ve dilekçe formları, mavi dolma kalem (Allura) ve formdaki çizgilerden vektör imza.
+    const imzaVektor = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40L180 52L224 58M60 66L170 70' });
     const paket = await ihtidaPaketiUret({ ...kaynak,
-      ek10SablonBytes: await getir('/belgeler/ihtida/ek10-kvkk-acik-riza-metni.pdf'), ek10Surumu: '2026-09-09', imzaAktarimIzni: true,
-      foto: resim, kimlikOn: resim, kimlikArka: resim, belgeTuru: 'kimlik', basvuranImza: resim, ek10Onayi: true });
+      kalemFontBytes: await getir('/fonts/Allura-Regular.ttf'), dilekceSablonBytes: await getir('/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'),
+      ek10SablonBytes: await getir('/belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'), ek10Surumu: '2026-10', imzaAktarimIzni: true,
+      foto: resim, kimlikOn: resim, kimlikArka: resim, belgeTuru: 'kimlik', basvuranImza: resim, basvuranImzaVektor: imzaVektor, ek10Onayi: true });
     const doc = await window.PDFLib.PDFDocument.load(bytes);
     const paketDoc = await window.PDFLib.PDFDocument.load(paket);
     const base64 = veri => { let binary = ''; for (const byte of veri) binary += String.fromCharCode(byte); return btoa(binary); };
     return { sayfa: doc.getPageCount(), pdf: base64(bytes), paket: base64(paket), paketSayfa: paketDoc.getPageCount() };
   });
   expect(sonuc.sayfa).toBe(2);
-  expect(sonuc.paketSayfa).toBe(6);
+  expect(sonuc.paketSayfa).toBe(7);   // EK-9 ×2, dilekçe ×2, EK-10 ×2, kimlik
   writeFileSync(info.outputPath('ek9-tarayici.pdf'), Buffer.from(sonuc.pdf, 'base64'));
   writeFileSync(info.outputPath('tam-paket-tarayici.pdf'), Buffer.from(sonuc.paket, 'base64'));
 });

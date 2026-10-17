@@ -160,6 +160,7 @@ test('Varsayılan sihirbaz, belgeler-imza-rıza ile eksiksiz başvuruyu tek akı
   await page.locator('#i-belge-pasaport').check();
   for (const id of ['vesikalik', 'kimlik-on']) {
     await page.locator(`#i-g-${id}`).setInputFiles({ name: `${id}.png`, mimeType: 'image/png', buffer: png });
+    if (id === 'kimlik-on') await page.locator('dialog.kimlik-kirp [data-uygula]').click();
     await expect(page.locator(`[data-gorsel="${id === 'kimlik-on' ? 'kimlikOn' : id}"]`)).toHaveAttribute('data-dolu', '1');
   }
   await imzaCiz(page);
@@ -198,6 +199,11 @@ test('Varsayılan sihirbaz, belgeler-imza-rıza ile eksiksiz başvuruyu tek akı
   expect(gonderilen).toHaveLength(1);
   expect(gonderilen[0].onay.imzaAktarimIzni).toBe(true);
   expect(gonderilen[0].gorseller.imza).toMatch(/^data:image\/png;base64,/);
+  // 17 Eki 2026: aynı imzanın çizgileri vektör olarak gider; belgelere yol olarak çizilir.
+  const vektor = JSON.parse(gonderilen[0].gorseller.imzaVektor);
+  expect(vektor.v).toBe(1);
+  expect(vektor.d).toMatch(/^M[\d.]+ [\d.]+L/);
+  expect(gonderilen[0].onay.ek10Surumu).toBe('2026-10');
 });
 
 test('Sihirbazdaki gizli adımlar yanlışlıkla form göndermez; gönderim tüm grupları doğrular', async ({ page }) => {
