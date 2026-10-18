@@ -4,6 +4,45 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 19 Ekim 2026 (gece) — duyuru: vakitmatik saatler için teşekkür (TR/FR) + Facebook
+
+- Zaman: 19 Ekim 2026 01:01:46 (commit/push) – 01:04:11 (deploy) – 01:05 (canlı doğrulama) – 01:07 (Facebook),
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: ASBL Genel Sekreteri Mehmet Sadık Gülkılık'ın
+  15 Ekim e-postasıyla gönderdiği derneğin teşekkür mesajı ve 18 Ekim'de WhatsApp'ta «Facebook ve web sayfamızda
+  yayınlayabilir miyiz» sorusu; kullanıcı planı onayladı ve «yayımla» dedi.
+- Kapsam: `src/content/duyurular/{tr,fr}/vakitmatik-saatler-tesekkur-2026.md` (EN/NL/DE sayfaları FR duyuruyu
+  gösterir). TR metin yalnız yazım/noktalama düzeltilerek, FR sadık çeviri; bağışçılar Rıdvan Kayahan, Ramazan Koç,
+  Mithat Şahbaz (kullanıcı kararıyla üç ad). İmzalar: «Marche-en-Famenne Ulu Camii Derneği» / «Association de la
+  Mosquée Ulu Camii de Marche-en-Famenne». E-postadaki telefonlar ve kişisel adres yayımlanmadı. `/ekran/` (noindex)
+  bağlantısı verilmedi; cami ekranına konmadı (kullanıcı kararı).
+- Görseller `public/media/duyurular/vakitmatik-tesekkur-2026/` (10 WebP): özgün kapaklar `kapak-{tr,fr}.webp` 1600×900
+  + `-k` 480×270 — temsilî harim sahnesi (mavi duvar, lambri, avize, halı bordürü) ve ekranın içinde canlı `/ekran/`
+  sayfasının gündüz görüntüsü; kurumsal logo vektör, lale ve sekiz köşeli yıldız motifi (kalp yok), Work Sans + Lora.
+  Galeri: harimdeki ekran (geniş ve yakın) ve lokaldeki ekran, kişi görünmeyen kareler, EXIF yok. Vitrin `goster`,
+  son gün 26 Ekim 2026; öne çıkarma yok.
+- İçerik commit'i `8192de6` (push `47d01d0..8192de6`), dernek kimliği. Release 0.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39174762446) **success**
+  (build + deploy).
+- Kalite: tam `npm run dogrula:codex` **10/10** (web 803 geçti / 113 atlandı; eğitim ekranı 70 geçti / 2 atlandı;
+  `check` 0 hata). Derlenmiş HTML'de din görevlisi telefonu 0 dosya. Önizlemede TR 390 px açık/koyu, FR 1280 px
+  açık/koyu, EN 390 px: yatay taşma 0, 4 görsel yüklü ve alt metinli; tek konsol kaydı GoatCounter'ın henüz ziyaret
+  almamış sayfa için verdiği 404 (olağan).
+- Canlı: `/tr/duyurular/…`, `/fr/annonces/…`, `/en/announcements/…`, `/nl/mededelingen/…`, `/de/mitteilungen/…` 200,
+  başlıklar doğru, `og:image` kapak, telefon 0; 10 görsel canlı/yerel SHA-256 birebir; duyuru `/tr/`, `/fr/` ana
+  sayfalarında ve `/tr/duyurular/`, `/fr/annonces/` listelerinde.
+- Facebook: «Mosquée Ulu Camii», kitle **Public**,
+  [gönderi](https://www.facebook.com/permalink.php?story_fbid=pfbid0bHNTB6LHK4cLpNZAZSdvP28MDsHXNJ69CEDsymruxHgeeR6UP2Qa1jfN2PuKUz77l&id=61591465715992):
+  TR+FR metin (düzenleyicide dosyayla kelime kelime aynı, 179 kelime), 1080×1350 teşekkür kartı + harim ve lokal
+  fotoğrafı. Kalıcı bağlantıda tam metin, satır sonları ve imzalar (etikete dönüşmeden), 3 görsel ve iki bağlantının
+  gerçek hedefi doğrulandı.
+- Bildirim: Mehmet Sadık Gülkılık'a kullanıcının talimatıyla WhatsApp'tan bağlantılar ve kısa özet gönderildi
+  (01:09, iletildi).
+- Kaynak ve kanıt arşivi: `D:/ulu-camii-dernek/vakitmatik-tesekkur/` — `kaynak/` (e-posta ekleri, Google
+  Fotoğraflar kareleri, ekran görüntüsü), `gorseller/` (`gorsel-uret.mjs`, HTML ve PNG çıktılar, kırpılmış
+  fotoğraflar), `facebook/` (metin ve görseller), `kanit/` (`dogrula-codex.log`, önizleme ve Facebook ekranları).
+- Sınırlar: fiziksel telefon/Safari denenmedi (Chromium emülasyonu). Bu kayıt için belge commit'i içerik yayını
+  değildir.
+
 ## 17 Ekim 2026 (sabah) — ihtida paketi: Mühtedi Koordinatörlüğü emsali, kimlik kırpma; telefon alanı düzeltmesi
 
 - Zaman: 17 Ekim 2026 08:09 (Apps Script) – 08:24 (push) – 08:26 (Pages) – 08:27–08:34 (canlı uçtan uca sınama) –
