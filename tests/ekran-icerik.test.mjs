@@ -140,12 +140,14 @@ test('bilgi kartı: FR başlık ile FR metin birlikte yayımlanır; biri eksikse
 });
 
 test('bütçeyi aşan kayıt her türde yayımlanmaz; eksikte kısaltma miktarıyla raporlanır', () => {
-  const uzun = 'a'.repeat(200);
   const sinir = Math.max(BUTCE.manevi[0].tr, BUTCE.manevi[1].tr);
+  // Uzunluk bütçelerden türer: kalibrasyon bir sınırı yükseltince «uzun» metin sessizce sığar hâle gelmesin.
+  const n = Math.max(sinir, BUTCE.sozArapcasiz.tr, BUTCE.bilgi.tr) + 10;
+  const uzun = 'a'.repeat(n);
   const s = ekranIcerigi([ayet({ id: 'a-uzun', tr: uzun })], [hadis({ id: 'h-uzun', tr: uzun })], [], [hadisDuasi({ id: 'd-uzun', tr: uzun })], [soz({ id: 's-uzun', tr: uzun }), bilgi({ id: 'b-uzun', tr: uzun }), { ...hadis({ id: 'kh-uzun', tr: uzun }), cesit: 'hadis', tema: 'emek' }]);
   assert.deepEqual([s.ayetler, s.hadisler, s.dualar, s.kartlar].map((l) => l.length), [0, 0, 0, 0]);
-  assert.deepEqual(s.eksik, [`a-uzun (ekrana sığmaz: TR 200/${sinir})`, `h-uzun (ekrana sığmaz: TR 200/${sinir})`, `d-uzun (ekrana sığmaz: TR 200/${sinir})`,
-    `s-uzun (ekrana sığmaz: TR 200/${BUTCE.sozArapcasiz.tr})`, `b-uzun (ekrana sığmaz: TR 200/${BUTCE.bilgi.tr})`, `kh-uzun (ekrana sığmaz: TR 200/${sinir})`]);
+  assert.deepEqual(s.eksik, [`a-uzun (ekrana sığmaz: TR ${n}/${sinir})`, `h-uzun (ekrana sığmaz: TR ${n}/${sinir})`, `d-uzun (ekrana sığmaz: TR ${n}/${sinir})`,
+    `s-uzun (ekrana sığmaz: TR ${n}/${BUTCE.sozArapcasiz.tr})`, `b-uzun (ekrana sığmaz: TR ${n}/${BUTCE.bilgi.tr})`, `kh-uzun (ekrana sığmaz: TR ${n}/${sinir})`]);
 });
 
 test('Fransızca metinlere Fransız yazım kuralı uygulanır (noktalama öncesi bölünmez boşluk)', () => {

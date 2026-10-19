@@ -5,7 +5,8 @@
  *
  * Kalibrasyon: 2026-09-29, yatay 961×541 ve dikey Cuma satırlı tuvalde. Manevi profiller ayet (Kur'an yüzü) ve hadis
  * (metin yüzü) türleriyle ölçüldü, küçük olanı alındı; öneri = ⌊0,95 × f × bütçe⌋. Tema kartının söz ve bilgi
- * profilleri 19 Ekim 2026'da aynı yolla eklendi (Esmâ profili panelden kalktığı için silindi).
+ * profilleri 19 Ekim 2026'da aynı yolla ölçüldü (söz C f = 1,423; bilgi f = 1,151; metin kalıbı kartlar.json taslakları);
+ * Esmâ profili panelden kalktığı için silindi.
  * Kaynak satırı sınırı 70 kalır (ayraçsız en kötü hâl de sığar). Duyuru sınırları imam kararıdır, hesaplanmaz.
  * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu
  *
@@ -21,9 +22,9 @@ export const BUTCE = {
   ],
   /** Arapçasız söz (atasözü, büyüklerin sözü): Arapça satırının yeri TR ve FR'ye kalır. Arapçalı söz manevi
    *  profillere (A, B) uyar; `ar: 0` Arapçalı metne hiç uymaz. */
-  sozArapcasiz: { ad: 'C', ar: 0, tr: 150, fr: 170, kaynak: 70 },
+  sozArapcasiz: { ad: 'C', ar: 0, tr: 202, fr: 229, kaynak: 70 },
   /** Bilgi kartı: TR başlık + metin, süsleme, FR başlık + metin, kaynak. */
-  bilgi: { baslikTr: 32, baslikFr: 36, tr: 135, fr: 155, kaynak: 60 },
+  bilgi: { baslikTr: 35, baslikFr: 39, tr: 147, fr: 169, kaynak: 60 },
   duyuru: {
     baslik: 60,
     /** İki dil aynı slaytta: her dilin metni en çok bu kadar. */
