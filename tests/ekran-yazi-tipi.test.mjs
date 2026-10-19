@@ -35,10 +35,12 @@ const kn = (ch) => 'U+' + ch.codePointAt(0).toString(16).toUpperCase().padStart(
 // Glif kapısı: yayımlanan her Arapça metnin her harfi ve işareti kendi rolünün yüzünde bulunmalı; yoksa ekranda
 // kutucuk ya da başka yazı tipinden karışık harf çıkar.
 test('glif kapısı: yayımlanan Arapça metinlerin her kod noktası seçilen yüzde var', () => {
-  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('esma'));
+  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('kartlar'));
+  // Tema kartı: ayet Kur'an yüzüyle, hadis ve Arapçalı söz metin yüzüyle yazılır (bilgi kartında Arapça yok).
+  const kart = (cesit) => s.kartlar.filter((k) => k.cesit === cesit && k.oge.ar).map((k) => [k.oge.id, k.oge.ar]);
   const metinler = {
-    kuran: s.ayetler.map((a) => [a.id, a.ar]).concat(s.dualar.filter((d) => d.kuran).map((d) => [d.id, d.ar])),
-    metin: s.hadisler.map((h) => [h.id, h.ar]).concat(s.dualar.filter((d) => !d.kuran).map((d) => [d.id, d.ar]), s.esmalar.map((e) => [e.id, e.ar])),
+    kuran: s.ayetler.map((a) => [a.id, a.ar]).concat(s.dualar.filter((d) => d.kuran).map((d) => [d.id, d.ar]), kart('ayet')),
+    metin: s.hadisler.map((h) => [h.id, h.ar]).concat(s.dualar.filter((d) => !d.kuran).map((d) => [d.id, d.ar]), kart('hadis'), kart('soz')),
   };
   const ARAPCA = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
   const eksikler = [];

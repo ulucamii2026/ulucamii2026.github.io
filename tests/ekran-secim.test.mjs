@@ -17,7 +17,7 @@ if(FILO_SDK) {
   assert.ok(FILO_SDK.devices.every(d=>d.source==='server'));
 }
 const filoGirdisi=d=>({duyurular:FILO_SDK ? FILO_SDK.devices.find(x=>x.uid===d.uid).announcements :
-  FILO.announcements.filter(x=>x.durum==='yayinda'),ayetler:[],hadisler:[],dualar:[],esmalar:[]});
+  FILO.announcements.filter(x=>x.durum==='yayinda'),ayetler:[],hadisler:[],dualar:[],kartlar:[]});
 const filoIds=(girdi,ekran,tarih='2026-10-05')=>slaytListesi(girdi,ekran,tarih).map(x=>x.oge.id);
 
 test('three distinct fleet identities show common announcement on all and targeted announcement on exactly one',()=>{
@@ -285,7 +285,7 @@ test('düzen parametresi yalnız tam "yatay" ya da "dikey" ise zorlar; gerisi ot
   for (const bozuk of [null, '', 'YATAY', ' yatay', 'abc', '<script>']) assert.equal(duzenOku(bozuk), null, `otomatik olmalıydı: ${JSON.stringify(bozuk)}`);
 });
 
-test('eski içerik akışıyla (dualar ve esmalar yok) tur yine ayet ve hadisle kurulur', () => {
+test('eski içerik akışıyla (dualar ve kartlar yok) tur yine ayet ve hadisle kurulur', () => {
   const s = slaytListesi({
     duyurular: [],
     ayetler: [{ id: 'a1', referans: { tr: 'r', fr: 'r' }, ar: 'ا', tr: 'meal', kaynakTr: 'DİB' }],
@@ -297,32 +297,44 @@ test('eski içerik akışıyla (dualar ve esmalar yok) tur yine ayet ve hadisle 
 const AYET = { id: 'a1', referans: { tr: 'r', fr: 'r' }, ar: 'ا', tr: 'meal', kaynakTr: 'DİB' };
 const HADIS = { id: 'h1', ar: 'ا', tr: 'hadis', kaynak: 'k' };
 const DUA = { id: 'd1', ar: 'ا', tr: 'dua', kaynak: 'k', kuran: false };
-const ESMA = (sira) => ({ id: 'e' + sira, sira, ar: 'ا', okunus: 'o', tr: 'anlam', kaynak: 'k' });
+const KART = (n, cesit = 'soz', tema = 'emek') => ({ cesit, tema, oge: cesit === 'bilgi' ? { id: 'k' + n, baslik: { tr: 'b', fr: 'b' }, tr: 'bilgi', fr: 'info', kaynak: 'k' } : { id: 'k' + n, tr: 'söz', kaynak: 'k' } });
 const DU = (id) => ({ id, tur: 'duyuru', tr: { baslik: 'b', metin: 'm' }, baslangic: '2026-09-01', son: '2026-10-30', hedef: [] });
 const ON_SN = { tabanSn: 10, karakterSn: 0, enAzSn: 10, enCokSn: 10 };
 
-test('tur: duyurular, ardından manevi blok ayet → hadis → dua → Esmâ', () => {
-  const s = slaytListesi({ duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], esmalar: [ESMA(1)] }, 'ana', '2026-09-27');
-  assert.deepEqual(s.map((x) => x.tur + ':' + x.oge.id), ['duyuru:du', 'ayet:a1', 'hadis:h1', 'dua:d1', 'esma:e1']);
+test('tur: duyurular, ardından manevi blok ayet → hadis → dua → tema kartı', () => {
+  const s = slaytListesi({ duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [KART(1)] }, 'ana', '2026-09-27');
+  assert.deepEqual(s.map((x) => x.tur + ':' + x.oge.id), ['duyuru:du', 'ayet:a1', 'hadis:h1', 'dua:d1', 'soz:k1']);
+  assert.equal(s[4].tema, 'emek');
+  assert.equal('tema' in s[1], false, 'günün ayeti temasızdır');
 });
 
-test('günün Esmâ’sı sıralı listeden günle döner: ertesi gün sıradaki isim', () => {
-  const esmalar = [ESMA(1), ESMA(2), ESMA(3)];
-  const gunun = (t) => slaytListesi({ duyurular: [], ayetler: [], hadisler: [], esmalar }, 'ana', t)[0].oge.sira;
-  assert.equal(gunun('2026-09-28'), (gunun('2026-09-27') % 3) + 1);
+test('günün tema kartı dosya sırasıyla günle döner: ertesi gün sıradaki kart', () => {
+  const kartlar = [KART(0), KART(1), KART(2)];
+  const gunun = (t) => Number(slaytListesi({ duyurular: [], ayetler: [], hadisler: [], kartlar }, 'ana', t)[0].oge.id.slice(1));
+  assert.equal(gunun('2026-09-28'), (gunun('2026-09-27') + 1) % 3);
+});
+
+test('tema kartının çeşidi slayt türü olur; tema slayta taşınır, okuma süresi en uzun dile göre', () => {
+  const ayetKarti = { cesit: 'ayet', tema: 'sabir', oge: AYET };
+  const hadisKarti = { cesit: 'hadis', tema: 'ilim', oge: HADIS };
+  const turu = (k) => { const [s] = slaytListesi({ duyurular: [], ayetler: [], hadisler: [], kartlar: [k] }, 'ana', '2026-09-27'); return s.tur + ':' + s.tema + ':' + s.karakter; };
+  assert.equal(turu(ayetKarti), 'ayet:sabir:4');
+  assert.equal(turu(hadisKarti), 'hadis:ilim:5');
+  assert.equal(turu(KART(1, 'bilgi', 'terbiye')), 'bilgi:terbiye:6'); // «b» + «bilgi»
+  assert.equal(turu(KART(1, 'soz', 'birlikte')), 'soz:birlikte:3');
 });
 
 test('tur hedef süreyi aşarsa manevi blok turlara dilimlenir; her tur sıradakilerden başlar, duyuru her turda kalır', () => {
-  const girdi = { duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], esmalar: [ESMA(1)] };
+  const girdi = { duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [KART(1)] };
   // Duyuru 10 sn; manevi 4 × 10 sn = 40 sn, hedefin kalanı 30 sn → turda 3 manevi slayt.
   const kimlik = (turNo) => slaytListesi(girdi, 'ana', '2026-09-27', turNo, { turHedefSn: 40, slayt: ON_SN }).map((x) => x.oge.id);
   assert.deepEqual(kimlik(0), ['du', 'a1', 'h1', 'd1']);
-  assert.deepEqual(kimlik(1), ['du', 'e1', 'a1', 'h1']);
-  assert.deepEqual(kimlik(2), ['du', 'd1', 'e1', 'a1']);
+  assert.deepEqual(kimlik(1), ['du', 'k1', 'a1', 'h1']);
+  assert.deepEqual(kimlik(2), ['du', 'd1', 'k1', 'a1']);
 });
 
 test('tur hedefe sığıyorsa, ayar yoksa ya da bozuksa manevi blok bütün gösterilir', () => {
-  const girdi = { duyurular: [], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], esmalar: [ESMA(1)] };
+  const girdi = { duyurular: [], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [KART(1)] };
   const adet = (tur) => slaytListesi(girdi, 'ana', '2026-09-27', 5, tur).length;
   assert.equal(adet({ turHedefSn: 150, slayt: ON_SN }), 4);
   assert.equal(adet(undefined), 4);

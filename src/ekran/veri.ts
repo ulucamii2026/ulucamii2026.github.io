@@ -13,8 +13,9 @@ export interface AkisGovdesi {
   ayar: { slayt: SlaytAyari; gece: { kapanmaDk: number; acilmaDk: number }; duyuruVarsayilanGun: number; turHedefSn?: number };
   duyurular: EkranDuyuru[];
 }
-/** Önbellekteki eski icerik.json'da (A öncesi) `dualar` ve `esmalar` yoktur; ikisi isteğe bağlı okunur. */
-export type IcerikGovdesi = Omit<EkranIcerik, 'dualar' | 'esmalar'> & Partial<Pick<EkranIcerik, 'dualar' | 'esmalar'>> & { derleme: string };
+/** Önbellekteki eski icerik.json'da `dualar` (A öncesi) ve `kartlar` (19 Ekim 2026 öncesi) yoktur; ikisi isteğe bağlı
+ *  okunur. Eski akıştaki `esmalar` alanı yok sayılır (Esmâ panelden kalktı). */
+export type IcerikGovdesi = Omit<EkranIcerik, 'dualar' | 'kartlar'> & Partial<Pick<EkranIcerik, 'dualar' | 'kartlar'>> & { derleme: string };
 export interface EkranVerisi { vakit: EkranVakitleri | null; akis: AkisGovdesi | null; icerik: IcerikGovdesi | null }
 
 const nesne = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null;
@@ -25,10 +26,10 @@ export function vakitGecerli(x: unknown): x is EkranVakitleri {
 export function akisGecerli(x: unknown): x is AkisGovdesi {
   return nesne(x) && Array.isArray(x.duyurular) && nesne(x.ayar) && nesne(x.ayar.slayt);
 }
-/** `dualar` ve `esmalar` yoksa (eski akış) geçerli; varsa dizi olmalı: bozuk alan turu çökertmesin. */
+/** `dualar` ve `kartlar` yoksa (eski akış) geçerli; varsa dizi olmalı: bozuk alan turu çökertmesin. */
 const diziYaDaYok = (x: unknown): boolean => x === undefined || Array.isArray(x);
 export function icerikGecerli(x: unknown): x is IcerikGovdesi {
-  return nesne(x) && Array.isArray(x.ayetler) && Array.isArray(x.hadisler) && diziYaDaYok(x.dualar) && diziYaDaYok(x.esmalar);
+  return nesne(x) && Array.isArray(x.ayetler) && Array.isArray(x.hadisler) && diziYaDaYok(x.dualar) && diziYaDaYok(x.kartlar);
 }
 
 /* Sunucu saati yüksek su işareti: ekranın gördüğü en yeni sunucu zamanı (HTTP Date). Cihaz saati bundan 10 dakikadan

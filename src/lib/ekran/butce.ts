@@ -4,7 +4,8 @@
  * duyuru bölme (secim.ts), node kapısı (tests/ekran-butce.test.mjs) ve CMS sınırları (config.yml) buradan beslenir.
  *
  * Kalibrasyon: 2026-09-29, yatay 961×541 ve dikey Cuma satırlı tuvalde. Manevi profiller ayet (Kur'an yüzü) ve hadis
- * (metin yüzü) türleriyle ölçüldü, küçük olanı alındı; öneri = ⌊0,95 × f × bütçe⌋. Esmâ sayıları ölçümde aynı kaldı.
+ * (metin yüzü) türleriyle ölçüldü, küçük olanı alındı; öneri = ⌊0,95 × f × bütçe⌋. Tema kartının söz ve bilgi
+ * profilleri 19 Ekim 2026'da aynı yolla eklendi (Esmâ profili panelden kalktığı için silindi).
  * Kaynak satırı sınırı 70 kalır (ayraçsız en kötü hâl de sığar). Duyuru sınırları imam kararıdır, hesaplanmaz.
  * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu
  *
@@ -18,7 +19,11 @@ export const BUTCE = {
     { ad: 'A', ar: 145, tr: 91, fr: 104, kaynak: 70 },
     { ad: 'B', ar: 71, tr: 133, fr: 153, kaynak: 70 },
   ],
-  esma: { ar: 40, okunus: 30, tr: 80, fr: 90, kaynak: 70 },
+  /** Arapçasız söz (atasözü, büyüklerin sözü): Arapça satırının yeri TR ve FR'ye kalır. Arapçalı söz manevi
+   *  profillere (A, B) uyar; `ar: 0` Arapçalı metne hiç uymaz. */
+  sozArapcasiz: { ad: 'C', ar: 0, tr: 150, fr: 170, kaynak: 70 },
+  /** Bilgi kartı: TR başlık + metin, süsleme, FR başlık + metin, kaynak. */
+  bilgi: { baslikTr: 32, baslikFr: 36, tr: 135, fr: 155, kaynak: 60 },
   duyuru: {
     baslik: 60,
     /** İki dil aynı slaytta: her dilin metni en çok bu kadar. */
@@ -33,10 +38,11 @@ export const BUTCE = {
 
 export const uzunluk = (s?: string): number => (s ? s.trim().length : 0);
 
-export interface ManeviMetin { ar: string; tr: string; fr?: string; kaynak: string; okunus?: string }
+export interface ManeviMetin { ar: string; tr: string; fr?: string; kaynak: string }
+export interface BilgiMetni { baslikTr: string; baslikFr?: string; tr: string; fr?: string; kaynak: string }
 export interface ButceSonucu { uygun: boolean; asim: string[] }
 
-type Sinir = { ar: number; tr: number; fr: number; kaynak: number; okunus?: number };
+type Sinir = { ar: number; tr: number; fr: number; kaynak: number };
 
 /** Bir profildeki aşımlar («TR 131/130») ve toplam fazla karakter. */
 function asimlar(m: ManeviMetin, s: Sinir): { liste: string[]; fazla: number } {
@@ -46,7 +52,6 @@ function asimlar(m: ManeviMetin, s: Sinir): { liste: string[]; fazla: number } {
     if (n > sinir) { liste.push(`${ad} ${n}/${sinir}`); fazla += n - sinir; }
   };
   bak('AR', uzunluk(m.ar), s.ar);
-  if (s.okunus !== undefined) bak('OKUNUŞ', uzunluk(m.okunus), s.okunus);
   bak('TR', uzunluk(m.tr), s.tr);
   bak('FR', uzunluk(m.fr), s.fr);
   bak('KAYNAK', uzunluk(m.kaynak), s.kaynak);
@@ -55,8 +60,8 @@ function asimlar(m: ManeviMetin, s: Sinir): { liste: string[]; fazla: number } {
 
 /** Kayıt bütçeye uyuyor mu; uymuyorsa kısaltmanın en az olduğu (toplam fazlası en küçük) profilin aşımları. Örnek:
  *  TR'si 200 karakterlik hadis için «TR 200/130» (profil B) döner, «TR 200/88» (profil A) değil. */
-export function maneviButce(tur: 'ayet' | 'hadis' | 'dua' | 'esma', m: ManeviMetin): ButceSonucu {
-  const profiller: Sinir[] = tur === 'esma' ? [BUTCE.esma] : BUTCE.manevi.slice();
+export function maneviButce(tur: 'ayet' | 'hadis' | 'dua' | 'soz', m: ManeviMetin): ButceSonucu {
+  const profiller: Sinir[] = tur === 'soz' ? [...BUTCE.manevi, BUTCE.sozArapcasiz] : BUTCE.manevi.slice();
   let enIyi: { liste: string[]; fazla: number } | null = null;
   for (const p of profiller) {
     const a = asimlar(m, p);
@@ -64,6 +69,19 @@ export function maneviButce(tur: 'ayet' | 'hadis' | 'dua' | 'esma', m: ManeviMet
     if (!enIyi || a.fazla < enIyi.fazla) enIyi = a;
   }
   return { uygun: false, asim: enIyi ? enIyi.liste : [] };
+}
+
+/** Bilgi kartı bütçesi: tek profil; aşımlar «TR başlık 40/32» biçiminde. */
+export function bilgiButce(m: BilgiMetni): ButceSonucu {
+  const B = BUTCE.bilgi;
+  const asim: string[] = [];
+  const bak = (ad: string, n: number, sinir: number): void => { if (n > sinir) asim.push(`${ad} ${n}/${sinir}`); };
+  bak('TR başlık', uzunluk(m.baslikTr), B.baslikTr);
+  bak('FR başlık', uzunluk(m.baslikFr), B.baslikFr);
+  bak('TR', uzunluk(m.tr), B.tr);
+  bak('FR', uzunluk(m.fr), B.fr);
+  bak('KAYNAK', uzunluk(m.kaynak), B.kaynak);
+  return { uygun: asim.length === 0, asim };
 }
 
 export type DuyuruParcasi =

@@ -84,10 +84,10 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 - **Akışlar** mevcut `src/pages/admin/durum.json.ts` kalıbıyla, derleme anında üretilir:
   - `vakitler.json`: `src/data/namaz-vakitleri.json` olduğu gibi yayımlanır. `kaynakTuru !== 'diyanet'` ise derleme düşer.
   - `akis.json`: duyuru, etkinlik, afiş, vefat, haftalık program, dinî günler, heroMesajlar, IBAN, ekran ayarları. Her öğede `hedef[]`, `baslangic` ve `son` alanları vardır; süre dolunca internet olmasa da kalkar.
-  - `icerik.json`: onaylı ayet, hadis, dua ve Esmâ setleri + 400 günlük deterministik takvim. Öncelik: kandil > Ramazan > Cuma > günlük.
+  - `icerik.json`: onaylı ayet, hadis, dua ve tema kartı setleri + 400 günlük deterministik takvim. Öncelik: kandil > Ramazan > Cuma > günlük.
   - `surum.json`: kabuk APK sürümü, adresi ve sha256 özeti.
 - **CMS**: `src/content.config.ts` ve `public/admin/icerik/config.yml` içine duyuru, etkinlik, afiş ve vefat için ortak bir `ekran` nesnesi eklenir: `goster`, `baslangic`, `son`, `hedef`, `kisaMetin{tr,fr}`. Yeni `src/content/ayarlar/ekran.yaml` dosyası süreleri, gece ofsetlerini, sükûneti, ses düzeyini ve temayı tutar.
-- **İçerik setleri**: `src/data/ekran/{ayetler,hadisler,dualar,esma}.json`. Her kayıtta `ar/tr/fr`, `tahric`, `kaynak`, `durum: taslak|imam-onayli` alanları bulunur. Yalnız `imam-onayli` kayıtlar yayına girer.
+- **İçerik setleri**: `src/data/ekran/{ayetler,hadisler,dualar,kartlar}.json`. Her kayıtta `ar/tr/fr`, `kaynak`, `durum: taslak|imam-onayli` alanları bulunur. Yalnız `imam-onayli` kayıtlar yayına girer. 19 Ekim 2026: Esmâ-i Hüsnâ panelden kalktı; yerine günlük **tema kartı** (`kartlar.json`: emek, disiplin, terbiye, ilim, birlikte yaşama, sabır temalarında âyet, hadis, bilgi kartı ya da güzel söz; üst başlık temanın adı) geldi.
 - **Yeniden kullanılacaklar**:
   - `src/lib/namaz.ts`: Brüksel saati, yaz saatine dayanıklı.
   - `src/components/SiradakiVakit.tsx`.

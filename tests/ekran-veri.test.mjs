@@ -140,11 +140,13 @@ test('duyuru anahtarı: yalnız derleme damgası değişirse aynı; kimlik, meti
   assert.equal(duyuruAnahtari(null), undefined, 'akış hiç gelmediyse');
 });
 
-test('önbellekteki eski içerik akışı (dualar ve esmalar alanı yok) geçerlidir; alanlar varsa dizi olmalı', () => {
+test('önbellekteki eski içerik akışı (dualar ve kartlar alanı yok) geçerlidir; alanlar varsa dizi olmalı', () => {
   assert.equal(icerikGecerli({ ayetler: [], hadisler: [] }), true);
-  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: [], esmalar: [] }), true);
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: [], kartlar: [] }), true);
   assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: 'bozuk' }), false);
-  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], esmalar: {} }), false);
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], kartlar: {} }), false);
+  // 19 Ekim 2026 öncesi akış Esmâ taşır: alan yok sayılır, bozuk olsa da akışı geçersiz kılmaz.
+  assert.equal(icerikGecerli({ ayetler: [], hadisler: [], dualar: [], esmalar: {} }), true);
 });
 
 // ---- Sunucu saati yüksek su işareti (W7): cihaz saati geriye giderse ekran saate güvenmez ----

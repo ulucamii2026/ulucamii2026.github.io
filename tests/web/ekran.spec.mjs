@@ -8,6 +8,7 @@ import { OLCU, AFIS_EN_COK } from '../../src/lib/ekran/olcu.ts';
 import { BUTCE } from '../../src/lib/ekran/butce.ts';
 import { ekranIcerigi } from '../../src/lib/ekran/icerik.ts';
 import { AHLAK_HADISLERI } from '../../src/lib/hadis-verisi.ts';
+import { TEMA_BASLIGI } from '../../src/ekran/metinler.ts';
 
 /* Cami ekranı (/ekran/, docs/EKRAN-FAZ1-UYGULAMA-PLANI.md). Tuval dikey 1080×1920; kutu yatay sinyal
    verdiğinde ?don=90. Saat page.clock ile kurulur. Testler bilerek New York saat diliminde koşar:
@@ -524,7 +525,7 @@ const levhaOlc = (page, slaytlar) => page.evaluate((liste) => {
 }, slaytlar);
 
 /** Paragraf sınıfı → olcu.ts alanı. */
-const TABAN_ALANI = { ar: 'ar', okunus: 'okunus', tr: 'tr', fr: 'fr', kaynak: 'kaynak', baslik: 'baslikTr', 'baslik fr': 'baslikFr' };
+const TABAN_ALANI = { ar: 'ar', tr: 'tr', fr: 'fr', kaynak: 'kaynak', baslik: 'baslikTr', 'baslik fr': 'baslikFr' };
 
 async function dokunmatikAc(page, boyut = { width: 390, height: 844 }, hedef = 'ana') {
   await page.setViewportSize(boyut);
@@ -685,8 +686,17 @@ const BD = BUTCE.duyuru;
 const sinirDuyuru = { tur: 'duyuru', karakter: 0, oge: DUYURU({ id: 'sinir-duyuru', tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.tekSlaytMetin) }, fr: { baslik: kes(K_FR, BD.baslik), metin: kes(K_FR, BD.tekSlaytMetin) } }) };
 /** Kur'an duası, bütçe sınırında (profil A ya da B); Arapçası Kur'an yüzüyle çizilmelidir. */
 const sinirDua = (p) => ({ tur: 'dua', karakter: 0, oge: { id: 'sinir-dua-' + p.ad, kuran: true, ar: kes(K_AR, p.ar), tr: kes(K_TR, p.tr), fr: kes(K_FR, p.fr), kaynak: kes(K_KAYNAK, p.kaynak) } });
-/** Esmâ, bütçe sınırında: AR 40, okunuş 30, TR 80, FR 90 (esma tabanında). */
-const sinirEsma = { tur: 'esma', karakter: 0, oge: { id: 'sinir-esma', sira: 99, ar: kes(K_AR, BUTCE.esma.ar), okunus: kes('er-Rahmân er-Rahîm ', BUTCE.esma.okunus), tr: kes(K_TR, BUTCE.esma.tr), fr: kes(K_FR, BUTCE.esma.fr), kaynak: kes(K_KAYNAK, BUTCE.esma.kaynak) } };
+/** Tema kartı sınır örnekleri (19 Ekim 2026). Üst başlık en uzun temanın adıdır: tema başlığı «Günün Hadisi»nden uzun
+ *  olabilir; tek satırda kaldığı ayrıca denetlenir. Arapçasız söz C profilinde, Arapçalı söz A ve B'de; bilgi kartı
+ *  kendi bütçesinde; tematik hadis A ve B'de (hadis bütçesi, tema başlığıyla). */
+const EN_UZUN_TEMA = Object.keys(TEMA_BASLIGI).reduce((a, b) => (TEMA_BASLIGI[b].tr.length + TEMA_BASLIGI[b].fr.length > TEMA_BASLIGI[a].tr.length + TEMA_BASLIGI[a].fr.length ? b : a));
+const SC = BUTCE.sozArapcasiz;
+const sinirSoz = { tur: 'soz', tema: EN_UZUN_TEMA, karakter: 0, oge: { id: 'sinir-soz-C', tr: kes(K_TR, SC.tr), fr: kes(K_FR, SC.fr), kaynak: kes(K_KAYNAK, SC.kaynak) } };
+const sinirSozAr = (p) => ({ tur: 'soz', tema: EN_UZUN_TEMA, karakter: 0, oge: { id: 'sinir-soz-' + p.ad, ar: kes(K_AR, p.ar), tr: kes(K_TR, p.tr), fr: kes(K_FR, p.fr), kaynak: kes(K_KAYNAK, p.kaynak) } });
+const sinirTemaHadis = (p) => ({ ...sinirHadis(p), tema: EN_UZUN_TEMA, oge: { ...sinirHadis(p).oge, id: 'sinir-tema-hadis-' + p.ad } });
+const BG = BUTCE.bilgi;
+const sinirBilgi = { tur: 'bilgi', tema: EN_UZUN_TEMA, karakter: 0, oge: { id: 'sinir-bilgi', baslik: { tr: kes(K_TR, BG.baslikTr), fr: kes(K_FR, BG.baslikFr) }, tr: kes(K_TR, BG.tr), fr: kes(K_FR, BG.fr), kaynak: kes(K_KAYNAK, BG.kaynak) } };
+const sinirTemaKartlari = () => [sinirSoz, sinirSozAr(BUTCE.manevi[0]), sinirSozAr(BUTCE.manevi[1]), sinirBilgi, sinirTemaHadis(BUTCE.manevi[0]), sinirTemaHadis(BUTCE.manevi[1])];
 /** Tek dilli duyuru, sınırda: başlık 60, metin 180 (tek levha). */
 const sinirDuyuruTek = { tur: 'duyuru', karakter: 0, parca: { yerlesim: 'levha', diller: ['tr'] }, oge: DUYURU({ id: 'sinir-duyuru-tek', tr: { baslik: kes(K_TR, BD.baslik), metin: kes(K_TR, BD.ikiSlaytMetin) }, fr: undefined }) };
 /** İki dilli, her dilin metni 180: TR ve FR ayrı iki slayt (91–180 kuralı); iki parça da sınırda ölçülür. */
@@ -711,23 +721,23 @@ const sinirKaynakBolunmez = { tur: 'hadis', karakter: 0, oge: { id: 'sinir-kayna
 const SINIR_ICERIK = { derleme: '', eksik: [], ayetler: [], hadisler: [sinirHadis(BUTCE.manevi[1]).oge] };
 const TEK_HADIS = { derleme: '', eksik: [], ayetler: [], hadisler: [ICERIK.hadisler[0]] };
 
-/* Dua ve Esmâ fikstürleri. Dua gerçek bir Kur'an duasıdır (Tâhâ 20/114; Kur'an Yolu meali). Esmâ kaydı deneme
-   fikstürüdür: anlam ve kaynak metni yayından alınmamıştır. */
+/* Dua ve tema kartı fikstürleri. Dua gerçek bir Kur'an duasıdır (Tâhâ 20/114; Kur'an Yolu meali); söz bir Türk
+   atasözüdür (FR karşılığı Fransız atasözü). */
 const DUA_KURAN = { id: 'd1', ar: 'رَبِّ زِدْنِي عِلْمًا', tr: 'Rabbim! İlmimi artır.', kaynak: 'Tâhâ, 20/114 · Tâ-Hâ, 20:114 — Kur’an Yolu Meali', kuran: true };
-const ESMA_DENEME = { id: 'esma-deneme', sira: 2, ar: 'الرَّحِيمُ', okunus: 'er-Rahîm', tr: 'Deneme anlamı', fr: 'Sens d’essai', kaynak: 'Deneme kaynağı' };
-const ICERIK_TAM = { ...ICERIK, dualar: [DUA_KURAN], esmalar: [ESMA_DENEME] };
+const SOZ_KARTI = { cesit: 'soz', tema: 'emek', oge: { id: 'k-s-deneme', tr: 'İşleyen demir ışıldar.', fr: 'C’est en forgeant qu’on devient forgeron.', kaynak: 'Atasözü' } };
+const ICERIK_TAM = { ...ICERIK, dualar: [DUA_KURAN], kartlar: [SOZ_KARTI] };
 
 /* Derlemenin yayımladığı gerçek kayıtlar (onaylı ve bütçeye uyan; sitedeki hadisler dahil). Taban kapısında her biri
-   de ölçülür. Dosya okunamazsa boş sayılır. Dualar ve Esmâ (dualar.json, esma.json) T4'ten beri vardır; içerik gelince taban kapısı
-   onları da ölçer. */
+   de ölçülür. Dosya okunamazsa boş sayılır. Dualar (dualar.json) T4'ten, tema kartları (kartlar.json) 19 Ekim 2026'dan beri
+   vardır; onaylı içerik geldikçe taban kapısı onları da ölçer. */
 const gercekSlaytlar = () => {
   const oku = (ad) => { try { return JSON.parse(readFileSync(resolve(process.cwd(), `src/data/ekran/${ad}.json`), 'utf8')); } catch { return []; } };
-  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('esma'));
+  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('kartlar'));
   return [].concat(
     s.ayetler.map((oge) => ({ tur: 'ayet', karakter: 0, oge })),
     s.hadisler.map((oge) => ({ tur: 'hadis', karakter: 0, oge })),
     (s.dualar || []).map((oge) => ({ tur: 'dua', karakter: 0, oge })),
-    (s.esmalar || []).map((oge) => ({ tur: 'esma', karakter: 0, oge })),
+    (s.kartlar || []).map((k) => ({ tur: k.cesit, tema: k.tema, karakter: 0, oge: k.oge })),
   );
 };
 
@@ -1589,11 +1599,11 @@ async function tabanSahnesiAc(page, [, viewport, adres, duzen, cumali]) {
 }
 
 for (const sahne of TABAN_SAHNELERI) {
-  test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis ve Kur’an duası (profil A ve B), Esmâ ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
+  test(`taban kapısı, ${sahne[0]}: bütçe sınırındaki hadis ve Kur’an duası (profil A ve B), tema kartları ve duyuru tabanın altına inmez, taşmaz`, async ({ page }) => {
     test.skip(sahne[4] && !cumaGunu, 'veride Cuma yok');
     await tabanSahnesiAc(page, sahne);
     const duyurular = [sinirKaynakBolunmez, sinirDuyuru, sinirDuyuruTek, sinirAfis(16 / 9, 'genis'), sinirAfis(0.707, 'dikey'), sinirAfisBasligi].concat(sinirDuyuruIki);
-    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDua(BUTCE.manevi[0]), sinirDua(BUTCE.manevi[1]), sinirEsma].concat(duyurular, gercekSlaytlar()));
+    const sonuclar = await levhaOlc(page, [sinirHadis(BUTCE.manevi[0]), sinirHadis(BUTCE.manevi[1]), sinirDua(BUTCE.manevi[0]), sinirDua(BUTCE.manevi[1])].concat(sinirTemaKartlari(), duyurular, gercekSlaytlar()));
     for (const o of sonuclar) {
       expect(o.sigdi, `${o.id} sığmalı`).toBe(true);
       tabanDenetle(o);
@@ -1661,7 +1671,7 @@ test('yazı tipleri yüklenirken sığmayan slayt atlanmaz (ölçüm yedek yazı
   await expect.poll(() => slayt.getAttribute('data-sigdi')).toBe('hayir'); // yazı tipi gelince yeniden ölçüldü
 });
 
-test('manevi blok ayet → hadis → dua → Esmâ; Kur’an metni Kur’an yüzüyle; Esmâ’da okunuş ve sıra', async ({ page }) => {
+test('manevi blok ayet → hadis → dua → tema kartı; Kur’an metni Kur’an yüzüyle; kartın başlığı temanın adı', async ({ page }) => {
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([]) }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
   await page.clock.install({ time: an(ornek, '12:00') });
@@ -1674,15 +1684,56 @@ test('manevi blok ayet → hadis → dua → Esmâ; Kur’an metni Kur’an yüz
   await expect(slayt.locator('.slayt-dua .ar')).toHaveAttribute('data-yuz', 'kuran');
   await expect(slayt.locator('.slayt-dua .kaynak')).toHaveText('Tâhâ, 20/114 · Tâ-Hâ, 20:114 — Kur’an Yolu Meali');
   await page.clock.runFor(10_000);
-  await expect(slayt.locator('.slayt-esma .okunus')).toHaveText('er-Rahîm');
-  await expect(slayt.locator('.slayt-esma .ust-baslik .sira')).toHaveText('2/99');
+  const kart = slayt.locator('.slayt-soz');
+  await expect(kart).toHaveAttribute('data-tema', 'emek');
+  await expect(kart.locator('.ust-baslik')).toHaveText('Emek ve Çalışma · Travail et effort');
+  await expect(kart.locator('.ar')).toHaveCount(0);
+  await expect(kart.locator('p.tr')).toHaveText('İşleyen demir ışıldar.');
+  await expect(kart.locator('.kaynak')).toHaveText('Atasözü');
   await expect(slayt).toHaveAttribute('data-sigdi', 'evet');
+  await expect(slayt.locator('.slayt-esma')).toHaveCount(0);
 });
+
+test('tema kartı çeşitleri: bilgi kartı iki dilli başlıkla, tematik ayet tema başlığıyla ve Kur’an yüzüyle çizilir', async ({ page }) => {
+  await tabanSahnesiAc(page, TABAN_SAHNELERI[0]);
+  const bilgi = { tur: 'bilgi', tema: 'ilim', karakter: 0, oge: { id: 'k-b-deneme', baslik: { tr: 'İlk emir: Oku!', fr: 'Premier ordre : Lis !' }, tr: 'İnen ilk âyetler okumayı ve öğrenmeyi emreder.', fr: 'Les premiers versets révélés ordonnent de lire et d’apprendre.', kaynak: 'Alak, 96/1-5' } };
+  const ayet = { tur: 'ayet', tema: 'emek', karakter: 0, oge: { ...ICERIK.ayetler[0], id: 'k-a-deneme' } };
+  const sonuc = await page.evaluate((liste) => liste.map((s) => {
+    const kok = document.querySelector('[data-alan="slayt"]');
+    window.__levha.slaytCiz(kok, s);
+    window.__levha.levhaSigdir(kok);
+    const k = kok.firstElementChild;
+    return { tur: k.getAttribute('data-tur'), tema: k.getAttribute('data-tema'), baslik: k.querySelector('.ust-baslik').textContent,
+      siniflar: Array.prototype.map.call(k.querySelectorAll('.levha > *'), (e) => e.className.baseVal !== undefined ? 'susleme' : e.className),
+      yuz: k.querySelector('.ar') ? k.querySelector('.ar').getAttribute('data-yuz') : null, sigdi: kok.getAttribute('data-sigdi') };
+  }), [bilgi, ayet]);
+  expect(sonuc[0]).toEqual({ tur: 'bilgi', tema: 'ilim', baslik: `${TEMA_BASLIGI.ilim.tr} · ${TEMA_BASLIGI.ilim.fr}`, siniflar: ['baslik', 'tr', 'susleme', 'baslik fr', 'fr', 'kaynak'], yuz: null, sigdi: 'evet' });
+  expect(sonuc[1].baslik).toBe(`${TEMA_BASLIGI.emek.tr} · ${TEMA_BASLIGI.emek.fr}`);
+  expect(sonuc[1].yuz).toBe('kuran');
+});
+
+/* Tema başlığı ölçeklenmez ve bütçeler tek satırlık üst başlıkla ölçülür: her tema adı en dar iki tuvalde tek satır olmalı. */
+for (const sahne of TABAN_SAHNELERI.slice(0, 2)) {
+  test(`tema başlıkları tek satır: ${sahne[0]}`, async ({ page }) => {
+    test.skip(sahne[4] && !cumaGunu, 'veride Cuma yok');
+    await tabanSahnesiAc(page, sahne);
+    const satirlar = await page.evaluate((temalar) => temalar.map((tema) => {
+      const kok = document.querySelector('[data-alan="slayt"]');
+      window.__levha.slaytCiz(kok, { tur: 'soz', tema, karakter: 0, oge: { id: 'b-' + tema, tr: 'Söz.', kaynak: 'k' } });
+      const b = kok.querySelector('.ust-baslik');
+      return [tema, Math.round(b.getBoundingClientRect().height / parseFloat(getComputedStyle(b).lineHeight === 'normal' ? getComputedStyle(b).fontSize : getComputedStyle(b).lineHeight) * 100) / 100, b.scrollWidth - b.clientWidth];
+    }), Object.keys(TEMA_BASLIGI));
+    for (const [tema, satir, tasma] of satirlar) {
+      expect(satir, `${tema}: tek satır`).toBeLessThan(1.5);
+      expect(tasma, `${tema}: yatay taşma yok`).toBeLessThanOrEqual(1);
+    }
+  });
+}
 
 test('tur hedef süreyi aşınca manevi blok turlara bölünür: duyuru her turda kalır, ikinci tur kalan öğeden başlar', async ({ page }) => {
   const akis = AKIS([DUYURU()]);
   // Her slayt 10 sn. Duyuru 10 + manevi 4 × 10 = 50 sn > 40 → turda 3 manevi: tur 0 = du, ayet, hadis, dua (0–40 sn);
-  // tur 1 = du, Esmâ, ayet, hadis. Bölünmeseydi tur du, ayet, hadis, dua, Esmâ olurdu ve 40. sn'de Esmâ görünürdü.
+  // tur 1 = du, tema kartı, ayet, hadis. Bölünmeseydi tur du, ayet, hadis, dua, kart olurdu ve 40. sn'de kart görünürdü.
   akis.ayar.turHedefSn = 40;
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
@@ -1693,19 +1744,20 @@ test('tur hedef süreyi aşınca manevi blok turlara bölünür: duyuru her turd
   await page.clock.runFor(30_500);
   await expect(slayt.locator('.slayt-dua')).toBeVisible(); // 30 sn: turun son slaytı
   await page.clock.runFor(10_000);
-  await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // 40 sn: ikinci tur duyuruyla başlar (bölünmemişte Esmâ)
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // 40 sn: ikinci tur duyuruyla başlar (bölünmemişte kart)
   await page.clock.runFor(10_000);
-  await expect(slayt.locator('.slayt-esma')).toBeVisible(); // 50 sn: ikinci turda Esmâ öne geçti
+  await expect(slayt.locator('.slayt-soz')).toBeVisible(); // 50 sn: ikinci turda tema kartı öne geçti
   await page.clock.runFor(10_000);
   await expect(slayt.locator('.slayt-ayet')).toBeVisible();
 });
 
-// Review Focus 3: kutunun önbelleğinde A öncesi icerik.json (dualar ve esmalar yok) ile yeni paket bir arada çalışır.
-test('önbellekteki eski içerik akışı (dualar ve esmalar alanı yok) turu bozmaz; sayfa hatası yok', async ({ page }) => {
+// Review Focus 3: kutunun önbelleğinde eski icerik.json (A öncesi: dualar yok; 19 Ekim 2026 öncesi: kartlar yok, Esmâ
+// var) ile yeni paket bir arada çalışır. Eski akıştaki Esmâ artık çizilmez.
+test('önbellekteki eski içerik akışı (dualar ve kartlar yok, Esmâ var) turu bozmaz; Esmâ çizilmez; sayfa hatası yok', async ({ page }) => {
   const hatalar = [];
   page.on('pageerror', (e) => hatalar.push(String(e)));
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: AKIS([]) }));
-  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: { ...ICERIK, esmalar: [{ id: 'esma-002', sira: 2, ar: 'الرَّحْمَنُ', okunus: 'er-Rahmân', tr: 'Esirgeyen', kaynak: 'k' }] } }));
   await page.clock.install({ time: an(ornek, '12:00') });
   await page.goto('/ekran/');
   const slayt = page.locator('[data-alan="slayt"]');
@@ -1813,7 +1865,19 @@ test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
   const ayetFrVar = oku('ayetler').some((x) => x && x.fr);
   if (!ayetFrVar) kaynaklar['ayet.fr'] = 'yok (ayetler FR’siz yayımlanır)';
   const Ay = { ar: kalip('ayet.ar', 'ar', 'ayetler', [], K_AR), tr: kalip('ayet.tr', 'tr', 'ayetler', [], K_TR), fr: ayetFrVar ? kalip('ayet.fr', 'fr', 'ayetler', siteAr, K_FR) : '' };
-  const E = { ar: kalip('esma.ar', 'ar', 'esma', siteAr, 'الرَّحِيمُ '), okunus: kalip('esma.okunus', 'okunus', 'esma', [], 'er-Rahîm '), tr: kalip('esma.tr', 'tr', 'esma', siteAr, K_TR), fr: kalip('esma.fr', 'fr', 'esma', siteAr, K_FR) };
+  /** Tema kartı metin kalıbı: kartlar.json'dan çeşide göre (onaylı → taslak → sentetik). */
+  const kartlar = oku('kartlar');
+  const kartKalip = (ad, cesit, al, sentetik) => {
+    for (const durum of ['imam-onayli', 'taslak']) {
+      const metin = kartlar.filter((x) => x && x.cesit === cesit && x.durum === durum).map(al).filter(Boolean).join(' ');
+      if (metin) { kaynaklar[ad] = durum; return metin + ' '; }
+    }
+    kaynaklar[ad] = 'sentetik';
+    return sentetik;
+  };
+  const Z = { tr: kartKalip('soz.tr', 'soz', (x) => x.tr, K_TR), fr: kartKalip('soz.fr', 'soz', (x) => x.fr, K_FR) };
+  const G = { baslikTr: kartKalip('bilgi.baslikTr', 'bilgi', (x) => x.baslik && x.baslik.tr, K_TR), baslikFr: kartKalip('bilgi.baslikFr', 'bilgi', (x) => x.baslik && x.baslik.fr, K_FR),
+    tr: kartKalip('bilgi.tr', 'bilgi', (x) => x.tr, K_TR), fr: kartKalip('bilgi.fr', 'bilgi', (x) => x.fr, K_FR) };
   kaynaklar.kaynak = 'sentetik (ayraçsız en kötü hâl)';
   const REF = { tr: 'Âl-i İmrân, 3/190-191', fr: 'Al-Imran, 3:190-191' };
   const profiller = [];
@@ -1823,8 +1887,10 @@ test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
     profiller.push({ ad: 'manevi-' + p.ad, tur: 'ayet', b: { ar: p.ar, tr: p.tr, fr: p.fr },
       yap: (n) => ({ id: 'k', referans: REF, ar: kes(Ay.ar, n.ar), tr: kes(Ay.tr, n.tr), fr: Ay.fr ? kes(Ay.fr, n.fr) : undefined, kaynakTr: kes('Kur’an Yolu Meali (DİB) ', p.kaynak - (REF.tr.length + REF.fr.length + 6)), kaynakFr: 'x' }) });
   }
-  profiller.push({ ad: 'esma', tur: 'esma', b: { ar: BUTCE.esma.ar, okunus: BUTCE.esma.okunus, tr: BUTCE.esma.tr, fr: BUTCE.esma.fr },
-    yap: (n) => ({ id: 'k', sira: 1, ar: kes(E.ar, n.ar), okunus: kes(E.okunus, n.okunus), tr: kes(E.tr, n.tr), fr: kes(E.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, BUTCE.esma.kaynak) }) });
+  profiller.push({ ad: 'soz-C', tur: 'soz', tema: EN_UZUN_TEMA, b: { tr: BUTCE.sozArapcasiz.tr, fr: BUTCE.sozArapcasiz.fr },
+    yap: (n) => ({ id: 'k', tr: kes(Z.tr, n.tr), fr: kes(Z.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, BUTCE.sozArapcasiz.kaynak) }) });
+  profiller.push({ ad: 'bilgi', tur: 'bilgi', tema: EN_UZUN_TEMA, b: { baslikTr: BG.baslikTr, baslikFr: BG.baslikFr, tr: BG.tr, fr: BG.fr },
+    yap: (n) => ({ id: 'k', baslik: { tr: kes(G.baslikTr, n.baslikTr), fr: kes(G.baslikFr, n.baslikFr) }, tr: kes(G.tr, n.tr), fr: kes(G.fr, n.fr), kaynak: kes(K_KAYNAK_AYRACSIZ, BG.kaynak) }) });
   profiller.push({ ad: 'duyuru-iki-dil', tur: 'duyuru', karar: true, b: { baslik: BD.baslik, metin: BD.tekSlaytMetin },
     yap: (n) => DUYURU({ tr: { baslik: kes(K_TR, n.baslik), metin: kes(K_TR, n.metin) }, fr: { baslik: kes(K_FR, n.baslik), metin: kes(K_FR, n.metin) } }) });
   profiller.push({ ad: 'duyuru-tek-dil', tur: 'duyuru', karar: true, parca: { yerlesim: 'levha', diller: ['tr'] }, b: { baslik: BD.baslik, metin: BD.ikiSlaytMetin },
@@ -1834,7 +1900,7 @@ test('bütçe kalibrasyonu (yalnız EKRAN_KALIBRE=1)', async ({ page }) => {
   const sigar = async (sayfa, p, f) => {
     const n = {};
     for (const [k, v] of Object.entries(p.b)) n[k] = Math.max(1, Math.round(f * v));
-    const [o] = await levhaOlc(sayfa, [{ tur: p.tur, karakter: 0, parca: p.parca, oge: p.yap(n) }]);
+    const [o] = await levhaOlc(sayfa, [{ tur: p.tur, tema: p.tema, karakter: 0, parca: p.parca, oge: p.yap(n) }]);
     return o.sigdi && o.tasmaY <= 1 && o.tasmaX <= 1;
   };
   const enBuyukF = async (sayfa, p) => {

@@ -1,10 +1,14 @@
+import type { TemaId } from '../lib/ekran/icerik.ts';
+
 /** Ekrana özgü iki dilli sabit metinler. Vakit adları site sözlüğünden gelir (src/i18n/ui.ts → sayfa verisi);
  *  sayfa verisi bozuksa aşağıdaki VAKIT_ADLARI kullanılır. */
 export const METIN = {
   ayet: { tr: 'Günün Ayeti', fr: 'Verset du jour' },
   hadis: { tr: 'Günün Hadisi', fr: 'Hadith du jour' },
   dua: { tr: 'Günün Duası', fr: 'Invocation du jour' },
-  esma: { tr: 'Esmâ-i Hüsnâ', fr: 'Les beaux noms d’Allah' }, // TR yazımı TDV İslâm Ansiklopedisi'ne göre
+  // Tema kartında üst başlık temanın adıdır (TEMA_BASLIGI); bu ikisi yalnız tanınmayan temada yedektir.
+  bilgi: { tr: 'Bilgi', fr: 'Le saviez-vous ?' },
+  soz: { tr: 'Güzel Söz', fr: 'Belle parole' },
   duyuru: { tr: 'Duyuru', fr: 'Annonce' },
   vaktine: { tr: 'vaktine', fr: 'dans' },
   gunesUzun: { tr: 'Güneş', fr: 'Lever du soleil' }, // geri sayımda: satırdaki kısa «Lever» tek başına anlaşılmıyor
@@ -13,6 +17,17 @@ export const METIN = {
   yarin: { tr: 'Yarın', fr: 'Demain' }, // yatay blokta yarının imsakının etiketi (yatsıdan sonra sıradaki vakit)
   hosgeldiniz: { tr: 'Hoş geldiniz', fr: 'Bienvenue' },
 } as const;
+
+/** Tema kartının üst başlığı (19 Ekim 2026): «Günün …» yerine kartın teması yazılır. En dar ekranda tek satıra
+ *  sığması Playwright'ta denetlenir (tests/web/ekran.spec.mjs). */
+export const TEMA_BASLIGI: Record<TemaId, { tr: string; fr: string }> = {
+  emek: { tr: 'Emek ve Çalışma', fr: 'Travail et effort' },
+  disiplin: { tr: 'Disiplin ve Sorumluluk', fr: 'Discipline et responsabilité' },
+  terbiye: { tr: 'Terbiye ve Edep', fr: 'Éducation et bonnes manières' },
+  ilim: { tr: 'İlim ve Öğrenme', fr: 'Savoir et apprentissage' },
+  birlikte: { tr: 'Birlikte Yaşama', fr: 'Vivre ensemble' },
+  sabir: { tr: 'Sabır ve Şükür', fr: 'Patience et gratitude' },
+};
 
 /** Sayfa verisi (#ekran-veri) eksik ya da bozuksa kullanılan vakit adları (src/ekran/main.ts → sayfaVerisiOku);
  *  yoksa geri sayım "undefined vaktine 30 dk" yazardı. Asıl kaynak site sözlüğüdür (src/i18n/ui.ts → namaz.*,

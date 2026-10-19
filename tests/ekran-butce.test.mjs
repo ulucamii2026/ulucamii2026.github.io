@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { OLCU, olcuDegiskenleri, UST_BASLIK } from '../src/lib/ekran/olcu.ts';
-import { BUTCE, maneviButce, duyuruParcalari, duyuruDilleri, duyuruAsimlari, uzunluk } from '../src/lib/ekran/butce.ts';
+import { BUTCE, bilgiButce, maneviButce, duyuruParcalari, duyuruDilleri, duyuruAsimlari, uzunluk } from '../src/lib/ekran/butce.ts';
 import { TUR_HEDEF_SN } from '../src/lib/ekran/secim.ts';
 import { AHLAK_HADISLERI } from '../src/lib/hadis-verisi.ts';
 
@@ -21,7 +21,8 @@ test('ölçüler: her türün tabanı pozitif, enCok ≥ 1; üst başlık ölçe
     assert.ok(o.enCok >= 1, tur + ' enCok');
     assert.ok(o.tr > 0 && o.fr > 0, tur + ' tr/fr tabanı');
   }
-  assert.equal(OLCU.esma.ar, 8);
+  assert.equal(OLCU.soz, OLCU.hadis, 'söz levhası hadis tabanlarıyla çizilir');
+  assert.ok(OLCU.bilgi.baslikTr > OLCU.bilgi.tr && OLCU.bilgi.baslikTr < OLCU.duyuru.baslikTr, 'bilgi başlığı metinden büyük, duyuru başlığından küçük');
   assert.equal(OLCU.ayet.enCok, 1.9);
 });
 
@@ -50,10 +51,23 @@ test('manevi bütçe: profil A ya da B\'ye uyan geçer, ikisini de aşan aşım�
   assert.deepEqual(tr200test.asim, [`TR 200/${BUTCE.manevi[1].tr}`]);
 });
 
-test('esma bütçesi: isim, okunuş, TR, FR ayrı sınırlar', () => {
-  const E = BUTCE.esma;
-  assert.equal(maneviButce('esma', { ar: harf(E.ar), okunus: harf(E.okunus), tr: harf(E.tr), fr: harf(E.fr), kaynak: 'k' }).uygun, true);
-  assert.equal(maneviButce('esma', { ar: harf(E.ar), okunus: harf(E.okunus + 1), tr: 't', kaynak: 'k' }).uygun, false);
+test('söz bütçesi: Arapçalı söz manevi profillere uyar; Arapçasız söz C profilinde daha uzun olabilir', () => {
+  const [A, B] = BUTCE.manevi;
+  const C = BUTCE.sozArapcasiz;
+  assert.ok(C.tr > B.tr && C.fr > B.fr, 'Arapça satırının yeri TR ve FR’ye kalır');
+  assert.equal(maneviButce('soz', { ar: '', tr: harf(C.tr), fr: harf(C.fr), kaynak: harf(C.kaynak) }).uygun, true);
+  assert.deepEqual(maneviButce('soz', { ar: '', tr: harf(C.tr + 1), fr: 'f', kaynak: 'k' }).asim, [`TR ${C.tr + 1}/${C.tr}`]);
+  assert.equal(maneviButce('soz', { ar: harf(A.ar), tr: harf(A.tr), fr: harf(A.fr), kaynak: 'k' }).uygun, true);
+  // Arapçalı sözde C geçersiz: TR'si B'yi aşan Arapçalı söz sığmaz (C'ye kaçamaz).
+  assert.equal(maneviButce('soz', { ar: 'ا', tr: harf(B.tr + 1), fr: 'f', kaynak: 'k' }).uygun, false);
+  // Hadis C profilini hiç kullanmaz.
+  assert.equal(maneviButce('hadis', { ar: '', tr: harf(B.tr + 1), fr: 'f', kaynak: 'k' }).uygun, false);
+});
+
+test('bilgi kartı bütçesi: başlık, metin ve kaynak ayrı sınırlar; aşım alan adıyla raporlanır', () => {
+  const G = BUTCE.bilgi;
+  assert.equal(bilgiButce({ baslikTr: harf(G.baslikTr), baslikFr: harf(G.baslikFr), tr: harf(G.tr), fr: harf(G.fr), kaynak: harf(G.kaynak) }).uygun, true);
+  assert.deepEqual(bilgiButce({ baslikTr: harf(G.baslikTr + 2), tr: 't', fr: harf(G.fr + 1), kaynak: 'k' }).asim, [`TR başlık ${G.baslikTr + 2}/${G.baslikTr}`, `FR ${G.fr + 1}/${G.fr}`]);
 });
 
 test('sitedeki 10 hadisin hepsi manevi bütçeye uyar (başlangıç havuzu yayından düşmez)', () => {

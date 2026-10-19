@@ -1,4 +1,5 @@
-/** Sağ alt panel (slayt alanı): duyuru, günün ayeti, hadisi, duası ve Esmâ'sı ortalı bir «levha» olarak çizilir (A alt projesi).
+/** Sağ alt panel (slayt alanı): duyuru, günün ayeti, hadisi, duası ve tema kartı ortalı bir «levha» olarak çizilir (A alt
+ *  projesi; tema kartı 19 Ekim 2026'da Esmâ'nın yerine geldi).
  *  Levha tek ölçekle (--olcek) büyür/küçülür; öğe boyları src/lib/ekran/olcu.ts'teki tabanlar × ölçek. Ölçek okunur
  *  tabanın (1) altına inmez: tabanda da sığmayan slaytı çağıran (main.ts → sonrakiSlayt) atlar. */
 import type { Slayt } from '../lib/ekran/secim.ts';
@@ -8,7 +9,7 @@ import { AFIS_EN_COK, AFIS_ORANI, OLCU, olcuDegiskenleri, UST_BASLIK, type Levha
 import { olcekBul, type OlcekSonucu } from '../lib/ekran/sigdirma.ts';
 import { ayetKaynagi } from '../lib/ekran/kaynak.ts';
 import { el } from './gorunum.ts';
-import { METIN } from './metinler.ts';
+import { METIN, TEMA_BASLIGI } from './metinler.ts';
 import { SUSLEME_SVG } from './susleme.ts';
 
 function paragraf(kok: HTMLElement, sinif: string, metin: string | undefined, dil?: 'fr' | 'ar'): HTMLElement | null {
@@ -41,12 +42,11 @@ function kaynakCiz(kok: HTMLElement, metin: string): void {
   kok.appendChild(p);
 }
 
-function ustBaslik(kok: HTMLElement, m: { tr: string; fr: string }, ek?: string): void {
+function ustBaslik(kok: HTMLElement, m: { tr: string; fr: string }): void {
   const b = el('div', 'ust-baslik', m.tr + ' · ');
   const fr = el('span', 'fr', m.fr);
   fr.setAttribute('lang', 'fr');
   b.appendChild(fr);
-  if (ek) b.appendChild(el('span', 'sira', ek));
   kok.appendChild(b);
 }
 
@@ -105,7 +105,10 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
   kart.setAttribute('data-yerlesim', 'levha');
   for (const [ad, deger] of olcuDegiskenleri(s.tur)) kart.style.setProperty(ad, deger);
   kart.style.setProperty('--f-ust', String(UST_BASLIK)); // üst başlık sabit boy: ölçekle büyümez
-  ustBaslik(kart, METIN[s.tur], s.tur === 'esma' ? s.oge.sira + '/99' : undefined);
+  // Tema kartında üst başlık temanın adıdır; önbellekteki akışta tanınmayan tema olursa türün başlığına düşer.
+  const tema = 'tema' in s && s.tema ? s.tema : undefined;
+  if (tema) kart.setAttribute('data-tema', tema);
+  ustBaslik(kart, (tema && TEMA_BASLIGI[tema]) || METIN[s.tur]);
   const levha = el('div', 'levha');
   let icerik: HTMLElement = levha;
   if (s.tur === 'duyuru') {
@@ -138,15 +141,30 @@ export function slaytCiz(kok: HTMLElement, s: Slayt): void {
     paragraf(levha, 'tr', d.tr);
     paragraf(levha, 'fr', d.fr, 'fr');
     kaynakCiz(levha, d.kaynak);
+  } else if (s.tur === 'bilgi') {
+    // Bilgi kartı: duyuru gibi iki dilli başlık + metin, diller arasında süsleme; altında kaynak.
+    const b = s.oge;
+    paragraf(levha, 'baslik', b.baslik.tr);
+    paragraf(levha, 'tr', b.tr);
+    if (b.fr && b.baslik.fr) {
+      susleme(levha);
+      paragraf(levha, 'baslik fr', b.baslik.fr, 'fr');
+      paragraf(levha, 'fr', b.fr, 'fr');
+    }
+    kaynakCiz(levha, b.kaynak);
   } else {
-    // Esmâ: isim çok büyük (OLCU.esma.ar), altında okunuş, süsleme, anlam.
-    const e = s.oge;
-    arapca(levha, e.ar, false);
-    paragraf(levha, 'okunus', e.okunus);
-    susleme(levha);
-    paragraf(levha, 'tr', e.tr);
-    paragraf(levha, 'fr', e.fr, 'fr');
-    kaynakCiz(levha, e.kaynak);
+    // Söz: Arapçası varsa hadis düzeni (metin yüzü); yoksa süsleme TR ile FR'nin arasına girer.
+    const z = s.oge;
+    if (z.ar) {
+      arapca(levha, z.ar, false);
+      susleme(levha);
+      paragraf(levha, 'tr', z.tr);
+    } else {
+      paragraf(levha, 'tr', z.tr);
+      susleme(levha);
+    }
+    paragraf(levha, 'fr', z.fr, 'fr');
+    kaynakCiz(levha, z.kaynak);
   }
   kart.appendChild(icerik);
   kok.appendChild(kart);

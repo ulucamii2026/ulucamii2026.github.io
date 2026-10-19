@@ -8,11 +8,11 @@
  *
  * Kalibrasyonu çalıştırmak için: EKRAN_KALIBRE=1 npx playwright test tests/web/ekran.spec.mjs -g kalibrasyonu
  */
-export type LevhaTuru = 'ayet' | 'hadis' | 'dua' | 'esma' | 'duyuru';
+/** Levha türü = slayt türü; tema kartı içeriğine göre ayet, hadis, bilgi ya da söz levhasıyla çizilir. */
+export type LevhaTuru = 'ayet' | 'hadis' | 'dua' | 'bilgi' | 'soz' | 'duyuru';
 
 export interface LevhaOlcusu {
   ar: number;
-  okunus: number;
   tr: number;
   fr: number;
   kaynak: number;
@@ -23,14 +23,17 @@ export interface LevhaOlcusu {
   enCok: number;
 }
 
-const MANEVI: LevhaOlcusu = { ar: 4.8, okunus: 0, tr: 3.4, fr: 2.9, kaynak: 2.3, baslikTr: 0, baslikFr: 0, susleme: 2.2, enCok: 1.9 };
+const MANEVI: LevhaOlcusu = { ar: 4.8, tr: 3.4, fr: 2.9, kaynak: 2.3, baslikTr: 0, baslikFr: 0, susleme: 2.2, enCok: 1.9 };
 
 export const OLCU: Record<LevhaTuru, LevhaOlcusu> = {
   ayet: MANEVI,
   hadis: MANEVI,
   dua: MANEVI,
-  esma: { ar: 8, okunus: 4.2, tr: 3.4, fr: 2.9, kaynak: 2.3, baslikTr: 0, baslikFr: 0, susleme: 2.2, enCok: 1.6 },
-  duyuru: { ar: 0, okunus: 0, tr: 3.4, fr: 2.9, kaynak: 0, baslikTr: 4.4, baslikFr: 3.8, susleme: 2.2, enCok: 1.7 },
+  /** Söz: Arapçası varsa ayet/hadis düzeni; yoksa TR, süsleme, FR. */
+  soz: MANEVI,
+  /** Bilgi kartı: duyuru gibi iki dilli başlık + metin; başlık duyurununkinden küçük, metni ezmesin. */
+  bilgi: { ar: 0, tr: 3.4, fr: 2.9, kaynak: 2.3, baslikTr: 3.8, baslikFr: 3.3, susleme: 2.2, enCok: 1.7 },
+  duyuru: { ar: 0, tr: 3.4, fr: 2.9, kaynak: 0, baslikTr: 4.4, baslikFr: 3.8, susleme: 2.2, enCok: 1.7 },
 };
 
 /** Üst başlık taban boyu: sabit, ölçekle büyümez. */
@@ -41,7 +44,6 @@ export function olcuDegiskenleri(tur: LevhaTuru): Array<[string, string]> {
   const o = OLCU[tur];
   return [
     ['--f-ar', String(o.ar)],
-    ['--f-okunus', String(o.okunus)],
     ['--f-tr', String(o.tr)],
     ['--f-fr', String(o.fr)],
     ['--f-kaynak', String(o.kaynak)],

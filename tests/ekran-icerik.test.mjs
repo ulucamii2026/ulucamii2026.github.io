@@ -11,7 +11,8 @@ const siteHadisi = { id: 'tebessum', arapca: 'تَبَسُّمُكَ فِي وَ
 
 const dua = (ek = {}) => ({ id: 'd-20-114', ar: 'رَبِّ زِدْنِي عِلْمًا', tr: 'Rabbim! İlmimi artır.', kaynakTr: 'Kur’an Yolu Meali', ayet: { sure: 20, ayet: [114], sureAdi: { tr: 'Tâhâ', fr: 'Tâ-Hâ' } }, durum: 'imam-onayli', ...ek });
 const hadisDuasi = (ek = {}) => ({ id: 'd-h-1', ar: 'ا', tr: 't', kaynakTr: 'DİB', hadis: 'Müslim, Zikir, 1', durum: 'imam-onayli', ...ek });
-const esma = (ek = {}) => ({ id: 'esma-001', sira: 1, ar: 'ا', okunus: 'o', tr: 't', kaynakTr: 'k', durum: 'imam-onayli', ...ek });
+const bilgi = (ek = {}) => ({ id: 'k-b-1', cesit: 'bilgi', tema: 'emek', baslik: { tr: 'Peygamberlerin meslekleri', fr: 'Les métiers des prophètes' }, tr: 'Her peygamber bir işle geçimini sağladı.', fr: 'Chaque prophète a gagné sa vie par un métier.', kaynak: 'Buhârî, İcâre, 2', durum: 'imam-onayli', ...ek });
+const soz = (ek = {}) => ({ id: 'k-s-1', cesit: 'soz', tema: 'emek', tr: 'İşleyen demir ışıldar.', fr: 'C’est en forgeant qu’on devient forgeron.', kaynak: 'Atasözü', durum: 'imam-onayli', ...ek });
 
 test('yalnız imam onaylı ve eksiksiz ayet yayına girer', () => {
   const s = ekranIcerigi([ayet(), ayet({ id: 'a-taslak', durum: 'taslak' }), ayet({ id: 'a-eksik', tr: '' })], [], []);
@@ -100,31 +101,64 @@ test('dua: ayet ile hadisten tam olarak biri dolu olmalı; ikisi de ya da hiçbi
   assert.deepEqual(s.eksik, ['iki (ayet/hadis kaynağı bozuk)', 'hic (ayet/hadis kaynağı bozuk)']);
 });
 
-test('Esmâ sıraya göre dizilir; sırası 1–99 dışında, mükerrer ya da alanı eksik kayıt yayımlanmaz', () => {
-  const s = ekranIcerigi([], [], [], [], [esma({ id: 'e3', sira: 3 }), esma({ id: 'e1', sira: 1 }), esma({ id: 'e0', sira: 0 }), esma({ id: 'e1b', sira: 1 }), esma({ id: 'e-eksik', okunus: '' })]);
-  assert.deepEqual(s.esmalar.map((e) => e.id), ['e1', 'e3']);
-  assert.deepEqual(s.esmalar[0], { id: 'e1', sira: 1, ar: 'ا', okunus: 'o', tr: 't', kaynak: 'k' });
-  assert.deepEqual(s.eksik, ['e0 (sıra 1–99 değil)', 'e1b (sıra mükerrer)', 'e-eksik']);
+test('tema kartları dosyadaki sırayla yayımlanır: ayet ve hadis kendi kurallarıyla, bilgi ve söz kendi alanlarıyla', () => {
+  const s = ekranIcerigi([], [], [], [], [
+    { ...ayet({ id: 'k-a-94-5' }), cesit: 'ayet', tema: 'sabir' },
+    soz(),
+    { ...hadis({ id: 'k-h-1' }), cesit: 'hadis', tema: 'ilim' },
+    bilgi(),
+    soz({ id: 'k-s-ar', ar: 'مَنْ جَدَّ وَجَدَ', tr: 'Çalışan bulur.', fr: undefined, kaynak: 'Arap atasözü', tema: 'emek' }),
+  ]);
+  assert.deepEqual(s.kartlar.map((k) => k.cesit + ':' + k.tema + ':' + k.oge.id), ['ayet:sabir:k-a-94-5', 'soz:emek:k-s-1', 'hadis:ilim:k-h-1', 'bilgi:emek:k-b-1', 'soz:emek:k-s-ar']);
+  assert.deepEqual(s.kartlar[0].oge.referans, { tr: 'İnşirah, 94/5-6', fr: 'Ach-Charh, 94:5-6' });
+  assert.deepEqual(s.kartlar[3].oge, { id: 'k-b-1', baslik: { tr: 'Peygamberlerin meslekleri', fr: 'Les métiers des prophètes' }, tr: 'Her peygamber bir işle geçimini sağladı.', fr: 'Chaque prophète a gagné sa vie par un métier.', kaynak: 'Buhârî, İcâre, 2' });
+  assert.deepEqual(s.kartlar[4].oge, { id: 'k-s-ar', ar: 'مَنْ جَدَّ وَجَدَ', tr: 'Çalışan bulur.', kaynak: 'Arap atasözü' });
+  assert.deepEqual(s.eksik, []);
+});
+
+test('tema kartı: taslak yayımlanmaz; bilinmeyen tema ya da çeşit, eksik alan, mükerrer kimlik raporlanır', () => {
+  const s = ekranIcerigi([], [], [], [], [
+    soz({ id: 'taslak', durum: 'taslak' }),
+    soz({ id: 'temasiz', tema: 'esma' }),
+    soz({ id: 'cesitsiz', cesit: 'esma' }),
+    soz({ id: 'kaynaksiz', kaynak: '' }),
+    bilgi({ id: 'basliksiz', baslik: { tr: '' } }),
+    { ...ayet({ id: 'k-a-ters', ayet: [7, 5] }), cesit: 'ayet', tema: 'emek' },
+    soz(), soz(), null,
+  ]);
+  assert.deepEqual(s.kartlar.map((k) => k.oge.id), ['k-s-1']);
+  assert.deepEqual(s.eksik, ['temasiz (tema bilinmiyor)', 'cesitsiz (kart çeşidi bilinmiyor)', 'kaynaksiz', 'basliksiz', 'k-a-ters (ayet aralığı bozuk)', 'k-s-1 (mükerrer)', 'geçersiz kayıt (kart): null']);
+});
+
+test('bilgi kartı: FR başlık ile FR metin birlikte yayımlanır; biri eksikse FR hiç çıkmaz ve işaretlenir', () => {
+  const s = ekranIcerigi([], [], [], [], [bilgi({ id: 'frsiz-baslik', baslik: { tr: 'Başlık' } }), bilgi({ id: 'tr-yalniz', baslik: { tr: 'Başlık' }, fr: undefined })]);
+  assert.deepEqual(s.kartlar.map((k) => k.oge), [
+    { id: 'frsiz-baslik', baslik: { tr: 'Başlık' }, tr: 'Her peygamber bir işle geçimini sağladı.', kaynak: 'Buhârî, İcâre, 2' },
+    { id: 'tr-yalniz', baslik: { tr: 'Başlık' }, tr: 'Her peygamber bir işle geçimini sağladı.', kaynak: 'Buhârî, İcâre, 2' },
+  ]);
+  assert.deepEqual(s.eksik, ['frsiz-baslik (FR başlık ya da metin eksik)']);
 });
 
 test('bütçeyi aşan kayıt her türde yayımlanmaz; eksikte kısaltma miktarıyla raporlanır', () => {
   const uzun = 'a'.repeat(200);
   const sinir = Math.max(BUTCE.manevi[0].tr, BUTCE.manevi[1].tr);
-  const s = ekranIcerigi([ayet({ id: 'a-uzun', tr: uzun })], [hadis({ id: 'h-uzun', tr: uzun })], [], [hadisDuasi({ id: 'd-uzun', tr: uzun })], [esma({ id: 'e-uzun', tr: uzun })]);
-  assert.deepEqual([s.ayetler, s.hadisler, s.dualar, s.esmalar].map((l) => l.length), [0, 0, 0, 0]);
-  assert.deepEqual(s.eksik, [`a-uzun (ekrana sığmaz: TR 200/${sinir})`, `h-uzun (ekrana sığmaz: TR 200/${sinir})`, `d-uzun (ekrana sığmaz: TR 200/${sinir})`, `e-uzun (ekrana sığmaz: TR 200/${BUTCE.esma.tr})`]);
+  const s = ekranIcerigi([ayet({ id: 'a-uzun', tr: uzun })], [hadis({ id: 'h-uzun', tr: uzun })], [], [hadisDuasi({ id: 'd-uzun', tr: uzun })], [soz({ id: 's-uzun', tr: uzun }), bilgi({ id: 'b-uzun', tr: uzun }), { ...hadis({ id: 'kh-uzun', tr: uzun }), cesit: 'hadis', tema: 'emek' }]);
+  assert.deepEqual([s.ayetler, s.hadisler, s.dualar, s.kartlar].map((l) => l.length), [0, 0, 0, 0]);
+  assert.deepEqual(s.eksik, [`a-uzun (ekrana sığmaz: TR 200/${sinir})`, `h-uzun (ekrana sığmaz: TR 200/${sinir})`, `d-uzun (ekrana sığmaz: TR 200/${sinir})`,
+    `s-uzun (ekrana sığmaz: TR 200/${BUTCE.sozArapcasiz.tr})`, `b-uzun (ekrana sığmaz: TR 200/${BUTCE.bilgi.tr})`, `kh-uzun (ekrana sığmaz: TR 200/${sinir})`]);
 });
 
 test('Fransızca metinlere Fransız yazım kuralı uygulanır (noktalama öncesi bölünmez boşluk)', () => {
-  const s = ekranIcerigi([], [hadis({ fr: 'Qui est le meilleur ? Celui qui aide.' })], [], [], [esma({ fr: 'Le Clément : il pardonne.' })]);
+  const s = ekranIcerigi([], [hadis({ fr: 'Qui est le meilleur ? Celui qui aide.' })], [], [], [soz({ fr: 'Le patient : il gagne.' }), bilgi({ baslik: { tr: 'B', fr: 'Le saviez-vous ?' } })]);
   assert.equal(s.hadisler[0].fr, 'Qui est le meilleur\u202F? Celui qui aide.');
-  assert.equal(s.esmalar[0].fr, 'Le Clément\u00A0: il pardonne.');
+  assert.equal(s.kartlar[0].oge.fr, 'Le patient\u00A0: il gagne.');
+  assert.equal(s.kartlar[1].oge.baslik.fr, 'Le saviez-vous\u202F?');
 });
 
 // İçerik kapısı: onaylı bir kayıt ekrana sığmıyorsa derleme onu sessizce düşürür. Bu test düşürmeden önce durdurur.
 test('onaylı her ekran kaydı ekrana sığar (veri dosyaları ve sitedeki hadisler)', () => {
   const oku = (ad) => JSON.parse(readFileSync(new URL(`../src/data/ekran/${ad}.json`, import.meta.url), 'utf8'));
-  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('esma'));
+  const s = ekranIcerigi(oku('ayetler'), oku('hadisler'), AHLAK_HADISLERI, oku('dualar'), oku('kartlar'));
   const sigmayan = s.eksik.filter((e) => e.indexOf('ekrana sığmaz') >= 0);
   assert.deepEqual(sigmayan, [], 'Bu metin ekrana sığmaz, kısaltın: ' + sigmayan.join('; '));
 });

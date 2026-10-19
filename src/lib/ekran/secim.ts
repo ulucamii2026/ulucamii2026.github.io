@@ -6,7 +6,7 @@
 import { brukselTarih, bugunTarih, durumHesapla, haftaGunu, TZ, type Gun, type Vakit } from '../namaz.ts';
 import { EKRANLAR, type EkranDuyuru, type EkranId } from './akis.ts';
 import { duyuruDilleri, duyuruParcalari, type DuyuruParcasi } from './butce.ts';
-import type { EkranAyet, EkranDua, EkranEsma, EkranHadis } from './icerik.ts';
+import type { EkranAyet, EkranBilgi, EkranDua, EkranHadis, EkranKart, EkranSoz, TemaId } from './icerik.ts';
 
 export interface SlaytAyari { tabanSn: number; karakterSn: number; enAzSn: number; enCokSn: number }
 
@@ -128,18 +128,21 @@ export function vakitGorunumu(gunler: Gun[], simdi: Date): VakitGorunumu | null 
 export type Slayt =
   /** `parca` duyurunun bu slayttaki bölümü (src/lib/ekran/butce.ts → duyuruParcalari); yoksa bütün diller tek levha. */
   | { tur: 'duyuru'; oge: EkranDuyuru; parca?: DuyuruParcasi; karakter: number }
-  | { tur: 'ayet'; oge: EkranAyet; karakter: number }
-  | { tur: 'hadis'; oge: EkranHadis; karakter: number }
+  /** `tema` doluysa slayt günün tema kartıdır: üst başlık «Günün Ayeti» yerine temanın adı olur. */
+  | { tur: 'ayet'; oge: EkranAyet; karakter: number; tema?: TemaId }
+  | { tur: 'hadis'; oge: EkranHadis; karakter: number; tema?: TemaId }
   | { tur: 'dua'; oge: EkranDua; karakter: number }
-  | { tur: 'esma'; oge: EkranEsma; karakter: number };
+  | { tur: 'bilgi'; oge: EkranBilgi; karakter: number; tema: TemaId }
+  | { tur: 'soz'; oge: EkranSoz; karakter: number; tema: TemaId };
 
-/** Slayt turunun girdisi. `dualar` ve `esmalar` önbellekteki eski icerik.json'da (A öncesi) yoktur: boş sayılır. */
+/** Slayt turunun girdisi. `dualar` önbellekteki A öncesi, `kartlar` 19 Ekim 2026 öncesi icerik.json'da yoktur: boş
+ *  sayılır (eski akıştaki `esmalar` alanı artık okunmaz). */
 export interface SlaytGirdisi {
   duyurular: EkranDuyuru[];
   ayetler: EkranAyet[];
   hadisler: EkranHadis[];
   dualar?: EkranDua[];
-  esmalar?: EkranEsma[];
+  kartlar?: EkranKart[];
 }
 
 /** Bir turun hedef süresi, sn (ekran.yaml → turHedefSn). Akışta yoksa (önbellekteki eski akış) bu kullanılır. */
@@ -184,7 +187,17 @@ function maneviDilimi(manevi: Slayt[], duyurular: Slayt[], turNo: number, tur?: 
   return dilim;
 }
 
-/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi blok (günün ayeti, hadisi, duası, Esmâ'sı). Duyuru, ekrana sığma kuralına göre bir ya da iki slayt olur
+/** Tema kartının slaytı: kartın çeşidi slayt türü olur, tema üst başlığa gider. */
+function kartSlayti(k: EkranKart): Slayt {
+  switch (k.cesit) {
+    case 'ayet': return { tur: 'ayet', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.ar), uz(k.oge.tr), uz(k.oge.fr)) };
+    case 'hadis': return { tur: 'hadis', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.ar), uz(k.oge.tr), uz(k.oge.fr)) };
+    case 'bilgi': return { tur: 'bilgi', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.baslik.tr, k.oge.tr), uz(k.oge.baslik.fr, k.oge.fr)) };
+    default: return { tur: 'soz', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.ar), uz(k.oge.tr), uz(k.oge.fr)) };
+  }
+}
+
+/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi blok (günün ayeti, hadisi, duası ve tema kartı). Duyuru, ekrana sığma kuralına göre bir ya da iki slayt olur
  *  (TR ve FR ayrı; afiş ve ardından metin).
  *  Boş kategori atlanır. Okuma süresi en uzun dildeki metne göre hesaplanır (izleyici tek dil okur). `tur` verilirse
  *  manevi blok turun hedef süresine göre dilimlenir. */
@@ -202,8 +215,8 @@ export function slaytListesi(girdi: SlaytGirdisi, ekran: EkranId, bugun: string,
   if (hadis) manevi.push({ tur: 'hadis', oge: hadis, karakter: Math.max(uz(hadis.ar), uz(hadis.tr), uz(hadis.fr)) });
   const dua = gununOgesi(girdi.dualar || [], bugun);
   if (dua) manevi.push({ tur: 'dua', oge: dua, karakter: Math.max(uz(dua.ar), uz(dua.tr), uz(dua.fr)) });
-  const esma = gununOgesi(girdi.esmalar || [], bugun);
-  if (esma) manevi.push({ tur: 'esma', oge: esma, karakter: Math.max(uz(esma.ar, esma.okunus), uz(esma.tr), uz(esma.fr)) });
+  const kart = gununOgesi(girdi.kartlar || [], bugun);
+  if (kart) manevi.push(kartSlayti(kart));
   return liste.concat(maneviDilimi(manevi, liste, turNo, tur));
 }
 

@@ -201,7 +201,7 @@ async function akisDongusu(): Promise<void> {
   }
 }
 
-/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, hadisi, duası ve Esmâ'sı (tur uzarsa dilimlenir; src/lib/ekran/secim.ts).
+/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, hadisi, duası ve tema kartı (tur uzarsa dilimlenir; src/lib/ekran/secim.ts).
    Tur bitince ya da duyuruları değişmiş bir akış gelince liste yeni veriyle yeniden kurulur; süre metin
    uzunluğundan (ekran.yaml → slayt).
    Sayfa aylarca yeniden yüklenmeden açık kalır: burada çıkan tek bir istisna (ör. `referans` alanı eksik
@@ -258,7 +258,7 @@ function turKur(kok: HTMLElement): void {
   const ayar = veri.akis?.ayar;
   const icerik = veri.icerik;
   tur = slaytListesi(
-    { duyurular: birlesikDuyurular(veri.akis, kabuk.duyurular), ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], esmalar: icerik?.esmalar ?? [] },
+    { duyurular: birlesikDuyurular(veri.akis, kabuk.duyurular), ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], kartlar: icerik?.kartlar ?? [] },
     ekranId, turGunu(new Date(), sonSunucuSaati()), turNo,
     { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
   );
