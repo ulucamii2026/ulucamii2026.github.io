@@ -17,6 +17,7 @@ export async function ihtidaPaketiUret(g) {
   for (const [ad, bytes] of [['Kalem yazı tipi (Allura)', g.kalemFontBytes], ['EK-9 şablonu', g.sablonBytes], ['EK-10 şablonu', g.ek10SablonBytes], ['Dilekçe şablonu', g.dilekceSablonBytes]]) {
     if (!bytes) throw new Error(ad + ' eksik; paket hazırlanamadı.');
   }
+  if (g.veri?.teslimat?.yontem === 'adres' && !g.dilekceAdresSablonBytes) throw new Error('Adrese teslim dilekçe şablonu eksik; paket hazırlanamadı.');
   const hamCami = g.cami || g.veri?.cami;
   const cami = camiCoz(hamCami);
   if (!cami) throw new Error('Başvuru camisi eksik veya geçersiz.');
@@ -69,7 +70,9 @@ export async function ihtidaPaketiUret(g) {
   const sonNusha = !g.onBasvuru && Boolean(String(v.ihtidaTarihi || '').trim());
   const dilekce = await dilekceFormUret({
     pdfLib: g.pdfLib, fontkit: g.fontkit, fontBytes: g.fontBytes, kalemFontBytes: g.kalemFontBytes, sablonBytes: g.dilekceSablonBytes,
-    veri: { ...v, ihtidaTarihi: sonNusha ? v.ihtidaTarihi : '' },
+    sablonAdresBytes: g.dilekceAdresSablonBytes,
+    // v.dilekce: başvuranın kendi beyanı (son nüsha ekranındaki EK-9 düzeltmeleri dilekçeye girmez).
+    veri: { ...v, ...(v.dilekce || {}), ihtidaTarihi: sonNusha ? v.ihtidaTarihi : '' },
     yerTarih: sonNusha ? `${cami.sehir || 'Marche-en-Famenne'}, ${v.ihtidaTarihi}` : '',
     imza: sonNusha && aktarim ? imza.basvuranImza : '', imzaVektor: sonNusha && aktarim ? imza.basvuranImzaVektor : '',
     imzaAktarimIzni: aktarim,

@@ -21,7 +21,10 @@ export async function dilekceFormUret(g) {
   if (imzali && g.imzaAktarimIzni !== true) throw new Error('İmza aktarım izni olmadan imzalı dilekçe üretilemez.');
   if (!g.kalemFontBytes) throw new Error('Kalem yazı tipi (Allura) eksik.');
   const { PDFDocument } = g.pdfLib;
-  const belge = await PDFDocument.load(g.sablonBytes, { parseSpeed: Infinity });
+  // 21 Eki 2026: belge başvuranın evine postalanacaksa formun «adrese teslim» baskısı kullanılır (dönüş bölümü
+  // «Belgenin gönderileceği adres · Alıcı · Adres»; alan yerleri aynı). Baskı verilmemişse eski davranış sürer.
+  const evTeslim = (g.veri || {}).teslimat?.yontem === 'adres';
+  const belge = await PDFDocument.load(evTeslim && g.sablonAdresBytes ? g.sablonAdresBytes : g.sablonBytes, { parseSpeed: Infinity });
   if (belge.getPageCount() !== DILEKCE_2026_10.sayfalar.length) throw new Error('Dilekçe şablonu iki sayfa olmalıdır.');
   belge.registerFontkit(g.fontkit);
   const allura = await belge.embedFont(g.kalemFontBytes, { subset: false, features: KALEM_OZELLIKLERI });   // alt küme gömme bazı harfleri görünmez yapıyor (Caveat dersi)
@@ -37,7 +40,8 @@ export async function dilekceFormUret(g) {
     dogum_tarihi: formTarihi(d.dogumTarihi), dogum_yeri: d.dogumYeri || '', adres: d.adres || '',
     eposta: d.eposta || '', telefon: d.telefon || '', cami: cami.ad || '', ihtida_tarihi: formTarihi(d.ihtidaTarihi),
     cami_adresi: camiAdresi,
-    // Belge başvuranın evine gönderilecekse dönüş satırına onun adı ve adresi yazılır; aksi hâlde başvuru camisi.
+    // Belge başvuranın evine gönderilecekse dönüş satırına («Alıcı · Adres») onun adı ve adresi yazılır; aksi hâlde
+    // başvuru camisi («Cami · Adres»).
     donus_cami: ev ? yazili[0] : (cami.ad || ''), donus_adres: ev ? (d.adres || '') : camiAdresi,
   };
   const yerTarih = String(g.yerTarih || '').trim();

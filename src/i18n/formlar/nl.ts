@@ -240,7 +240,7 @@ export const nl: FormMetinleri = {
     ihtida: {
       oncekiDin: 'Vorige godsdienst / strekking', oncekiDinYardim: 'Voorbeeld: katholiek, protestants, zonder godsdienst…',
       sebep: 'Uw beweegreden om voor de islam te kiezen', sebepYardim: 'Optioneel; enkele zinnen volstaan.',
-      yeniIsim: 'Moslimnaam die u wilt aannemen', yeniIsimYardim: 'Optioneel; u kunt hem ook samen met de imam kiezen.',
+      yeniIsim: 'Moslimnaam die u wilt aannemen', yeniIsimYardim: 'Optioneel; u kunt hem ook samen met de imam kiezen. Deze naam komt niet op het bekeringsattest, dat de naam op uw identiteitsbewijs vermeldt. Wilt u uw naam officieel wijzigen, dan dient u daarvoor afzonderlijk een aanvraag in bij de bevoegde instantie.',
       torenDili: 'Taal van de plechtigheid en van het gesprek', dilTr: 'Turks', dilFr: 'Frans', dilEn: 'Engels', dilAr: 'Arabisch',
       torenTarihi: 'Gewenste datum', torenTarihiYardim: 'Optioneel; voorbeeld: “een weekend” of “begin oktober”.',
       sahitler: 'Getuigen', sahitlerYardim: 'U mag een of twee getuigen opgeven. Hun aanwezigheid en hun handtekeningen worden tijdens de plechtigheid bevestigd; alleen een naam invullen geldt niet als handtekening.',

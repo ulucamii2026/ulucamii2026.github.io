@@ -157,6 +157,9 @@ function doGet(e) {
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
     ihtidaCamiSecimi: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.camiCoz === "function",
     ihtidaKalemBelgeleri: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.imzaVektorCoz === "function" && IHTIDA_EK10_SURUMLERI.indexOf("2026-10") !== -1,
+    // 21 Eki 2026: son nüshada düzeltilebilen EK-9 alanları + adrese teslim dilekçe şablonu.
+    ihtidaEk9Alanlari: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.ek9AlanlariGecerli === "function",
+    ihtidaAdresDilekcesi: typeof IHTIDA_PDF_KAYNAKLARI !== "undefined" && Boolean(IHTIDA_PDF_KAYNAKLARI.dilekceAdresSablonBytes),
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
     // v42: envanter formu açık mı? Yalnız ENVANTER_AYAR'dan okunur; paket ya da modül yoksa her zaman kapalı.

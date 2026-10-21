@@ -238,7 +238,7 @@ export const tr: FormMetinleri = {
     ihtida: {
       oncekiDin: 'Önceki dini / mezhebi', oncekiDinYardim: 'Örnek: Katolik, Protestan, dinsiz…',
       sebep: 'İslam’ı seçme sebebiniz', sebepYardim: 'İsteğe bağlı; birkaç cümle yeterlidir.',
-      yeniIsim: 'Almak istediğiniz Müslüman ismi', yeniIsimYardim: 'İsteğe bağlı; isterseniz din görevlisiyle birlikte seçebilirsiniz.',
+      yeniIsim: 'Almak istediğiniz Müslüman ismi', yeniIsimYardim: 'İsteğe bağlı; isterseniz din görevlisiyle birlikte seçebilirsiniz. Bu ad ihtida belgesine yazılmaz; belgeye kimliğinizdeki adınız basılır. Resmî adınızı değiştirmek isterseniz yetkili makama ayrıca başvurmanız gerekir.',
       torenDili: 'Tören ve görüşme dili', dilTr: 'Türkçe', dilFr: 'Fransızca', dilEn: 'İngilizce', dilAr: 'Arapça',
       torenTarihi: 'Tarih tercihiniz', torenTarihiYardim: 'İsteğe bağlı; örnek: “hafta sonu” veya “Ekim başı”.',
       sahitler: 'Şahitler', sahitlerYardim: "İsterseniz bir veya iki şahit adı bildirebilirsiniz. Şahitlik ve imzalar tören sırasında teyit edilir; yalnızca ad yazılması imza yerine geçmez.",

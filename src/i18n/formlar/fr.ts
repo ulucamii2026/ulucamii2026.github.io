@@ -239,7 +239,7 @@ export const fr: FormMetinleri = {
     ihtida: {
       oncekiDin: 'Religion / confession précédente', oncekiDinYardim: 'Exemple : catholique, protestant, sans religion…',
       sebep: 'Votre motivation pour choisir l’islam', sebepYardim: 'Facultatif ; quelques phrases suffisent.',
-      yeniIsim: 'Prénom musulman que vous souhaitez adopter', yeniIsimYardim: 'Facultatif ; vous pouvez aussi le choisir avec l’imam.',
+      yeniIsim: 'Prénom musulman que vous souhaitez adopter', yeniIsimYardim: 'Facultatif ; vous pouvez aussi le choisir avec l’imam. Ce prénom n’est pas inscrit sur l’attestation de conversion, qui porte le nom figurant sur votre pièce d’identité. Pour changer officiellement de prénom, une demande distincte auprès de l’autorité compétente est nécessaire.',
       torenDili: 'Langue de la cérémonie et de l’entretien', dilTr: 'Turc', dilFr: 'Français', dilEn: 'Anglais', dilAr: 'Arabe',
       torenTarihi: 'Date souhaitée', torenTarihiYardim: 'Facultatif ; exemple : « un week-end » ou « début octobre ».',
       sahitler: 'Témoins', sahitlerYardim: "Vous pouvez indiquer un ou deux témoins. Leur présence et leurs signatures seront confirmées lors de la cérémonie ; indiquer un nom ne vaut pas signature.",

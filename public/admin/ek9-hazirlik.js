@@ -1,4 +1,74 @@
 /** Belgeye imza basmadan önce her başvuru için yeniden alınan, yalnız bellekte kalan teyit. */
+
+/* 21 Eki 2026: EK-9 arka yüzünün başvuru kaydından gelen değerleri tek yerden kurulur; panel (tek EK-9, son nüsha
+   ekranı) ve sunucu paketi (ihtida-pdf-entry.js) aynı tabloyu kullanır. Kodlu seçimler Mühtedi Koordinatörlüğü
+   emsalindeki gibi «Türkçe / Fransızca» yazılır (M-2026-02/-06: «Erkek / Homme»); serbest metin başvuranın yazdığı
+   gibi kalır, yalnız ilk harfi büyür. Boş alan belgede «Bildirilmedi / Non communiqué» olur (ek9.js). */
+export const EK9_ALANLARI = ['dogumYeri', 'uyruk', 'anneAdi', 'babaAdi', 'medeniHali', 'ogrenim', 'meslek', 'oncekiDin'];
+const EK9_ALAN_AZAMI = 120;
+const EK9_KODLAR = {
+  cinsiyet: { erkek: 'Erkek / Homme', kadin: 'Kadın / Femme', 'kadın': 'Kadın / Femme' },
+  oncekiDin: {
+    'hristiyan-katolik': 'Hristiyanlık / Katolik', 'hristiyan-ortodoks': 'Hristiyanlık / Ortodoks',
+    'hristiyan-protestan': 'Hristiyanlık / Protestan', 'hristiyan-diger': 'Hristiyanlık',
+    musevi: 'Musevilik', budist: 'Budizm', hindu: 'Hinduizm',
+    ateist: 'Ateist', agnostik: 'Agnostik', dinsiz: 'Dinî bağı yok', yok: 'Dinî bağı yok',
+  },
+  ogrenim: {
+    ilkokul: 'İlkokul', ortaokul: 'Ortaokul', lise: 'Lise', onlisans: 'Ön lisans',
+    lisans: 'Lisans', yukseklisans: 'Yüksek lisans', doktora: 'Doktora', diger: 'Diğer',
+  },
+};
+// Medeni hâl Fransızcada cinsiyete göre çekilir; cinsiyet bilinmiyorsa iki biçim birlikte yazılır.
+const EK9_MEDENI = {
+  bekar: ['Bekâr / Célibataire', 'Bekâr / Célibataire', 'Bekâr / Célibataire'],
+  evli: ['Evli / Marié', 'Evli / Mariée', 'Evli / Marié(e)'],
+  bosanmis: ['Boşanmış / Divorcé', 'Boşanmış / Divorcée', 'Boşanmış / Divorcé(e)'],
+  dul: ['Dul / Veuf', 'Dul / Veuve', 'Dul / Veuf(ve)'],
+};
+const ek9Sade = deger => String(deger ?? '').trim().replace(/\s+/g, ' ');
+const ilkHarfBuyuk = d => d ? d.charAt(0).toLocaleUpperCase('tr') + d.slice(1) : '';
+
+export function ek9Etiket(tur, deger, cinsiyet) {
+  const d = ek9Sade(deger);
+  if (!d) return '';
+  const kod = d.toLocaleLowerCase('tr');
+  if (tur === 'medeniHali' && EK9_MEDENI[kod]) {
+    const c = ek9Sade(cinsiyet).toLocaleLowerCase('tr');
+    return EK9_MEDENI[kod][c === 'erkek' ? 0 : c === 'kadin' || c === 'kadın' ? 1 : 2];
+  }
+  return EK9_KODLAR[tur]?.[kod] || ilkHarfBuyuk(d);
+}
+
+/** Defter satırından EK-9 arka yüzünün kişisel değerleri. Anne ve baba adı yazıldığı gibi kalır. */
+export function ek9Degerleri(kayit) {
+  const k = kayit || {};
+  return {
+    cinsiyet: ek9Etiket('cinsiyet', k['Cinsiyet']),
+    dogumYeri: ek9Etiket('dogumYeri', k['Doğum yeri']),
+    uyruk: ek9Etiket('uyruk', k['Uyruk']),
+    anneAdi: ek9Sade(k['Anne adı']),
+    babaAdi: ek9Sade(k['Baba adı']),
+    medeniHali: ek9Etiket('medeniHali', k['Medeni hali'], k['Cinsiyet']),
+    ogrenim: ek9Etiket('ogrenim', k['Öğrenim durumu']),
+    meslek: ek9Etiket('meslek', k['Mesleği']),
+    oncekiDin: ek9Etiket('oncekiDin', k['Önceki din/mezhep']),
+  };
+}
+
+/** Son nüsha ekranında görevlinin düzelttiği değerler (yalnız EK9_ALANLARI). Boş değer «Bildirilmedi» demektir. */
+export function ek9AlanlariGecerli(alanlar) {
+  if (alanlar === undefined || alanlar === null) return true;
+  if (typeof alanlar !== 'object' || Array.isArray(alanlar)) return false;
+  return Object.entries(alanlar).every(([a, d]) => EK9_ALANLARI.includes(a) && typeof d === 'string' && ek9Sade(d).length <= EK9_ALAN_AZAMI);
+}
+export function ek9AlanlariUygula(degerler, alanlar) {
+  const sonuc = { ...degerler };
+  if (!alanlar || !ek9AlanlariGecerli(alanlar)) return sonuc;
+  for (const a of EK9_ALANLARI) if (typeof alanlar[a] === 'string') sonuc[a] = ek9Sade(alanlar[a]);
+  return sonuc;
+}
+
 export function sahitOnerileri(kayit) {
   const adlar = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
   if ((kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche') return adlar;
@@ -45,6 +115,9 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <label for="ek9-gercek-tarih">Gerçek ihtida tarihi (biliniyorsa)</label>
       <input id="ek9-gercek-tarih" name="tarih" type="date" />
       <p class="not">Tören henüz yapılmadıysa boş bırakın. Tarih tercihi bu alana aktarılmaz. Belge numarası, belge tarihi ve yetkili imzası Müşavirlik için boş bırakılır; düzenleyen birim «T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği» olarak yazılır. T.C. kimlik numarası gerekiyorsa basılı belgede elle tamamlanır.</p>
+      <fieldset data-ek9-alanlar><legend>EK-9 arka yüzündeki bilgiler</legend>
+        <p class="not">Başvuranın formda yazdıkları gelir. Kodlu seçimler emsal belgelerdeki gibi «Türkçe / Fransızca» yazılır; serbest yazılanları isterseniz aynı biçime getirin (ör. «İtalya / Italie», «Emekli / Retraité»). Boş bıraktığınız alana «Bildirilmedi / Non communiqué» yazılır. Bu düzeltmeler yalnız EK-9’a girer; dilekçe başvuranın kendi beyanı olarak kalır, başvuru kaydı değişmez.</p>
+      </fieldset>
       <p data-teslimat></p>
       <div class="ek9-eylemler"><button type="button" class="dugme" data-vazgec>Vazgeç</button><button type="submit" class="dugme birincil">PDF’yi hazırla</button></div>
     </form>`;
@@ -89,6 +162,21 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         pencere.querySelector('button[type="submit"]').textContent = 'Son nüshayı onayla ve gönder';
       }
     }
+    const ek9Basliklari = {
+      dogumYeri: 'Doğum yeri', uyruk: 'Uyruğu', anneAdi: 'Anne adı', babaAdi: 'Baba adı',
+      medeniHali: 'Medeni hâli', ogrenim: 'Öğrenimi', meslek: 'Mesleği', oncekiDin: 'Önceki dini / mezhebi',
+    };
+    const ek9Ilk = ek9Degerleri(kayit);
+    const ek9Girdiler = EK9_ALANLARI.map(alan => {
+      const kimlik = `ek9-alan-${alan}`;
+      const etiket = document.createElement('label');
+      etiket.htmlFor = kimlik; etiket.textContent = ek9Basliklari[alan];
+      const girdi = document.createElement('input');
+      Object.assign(girdi, { id: kimlik, type: 'text', maxLength: 120, autocomplete: 'off', value: ek9Ilk[alan] || '' });
+      girdi.dataset.ek9Alan = alan;
+      pencere.querySelector('[data-ek9-alanlar]').append(etiket, girdi);
+      return girdi;
+    });
     const teslim = kayit['Belge teslim yeri'];
     const camiAdres = [kayit['Cami adresi'], kayit['Cami posta kodu'], kayit['Cami şehri']].filter(Boolean).join(', ');
     const camiAdi = kayit['Başvuru camisi'] || 'Ulu Camii';
@@ -131,6 +219,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         ihtidaTarihi: form.elements.namedItem('tarih').value,
         isimYazisi: form.elements.namedItem('isimYazisi').value,
         alanYazisi: form.elements.namedItem('alanYazisi').value,
+        alanlar: Object.fromEntries(ek9Girdiler.map(g => [g.dataset.ek9Alan, g.value.trim().replace(/\s+/g, ' ')])),
       };
       if (secenekler.paket) Object.assign(sonuc, {
         adres: form.elements.namedItem('tamAdres').value.trim(),

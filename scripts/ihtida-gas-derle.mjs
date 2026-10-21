@@ -13,6 +13,7 @@ const assets = {
   ek10V1SablonBytes: 'public/belgeler/ihtida/ek10-kvkk-acik-riza-metni-v1.pdf',
   ek10EkimSablonBytes: 'public/belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf',
   dilekceSablonBytes: 'public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf',
+  dilekceAdresSablonBytes: 'public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf',   // 21 Eki 2026: adrese teslim
   kalemFontBytes: 'public/fonts/Allura-Regular.ttf',
   fontBytes: 'public/fonts/Lora-Regular.ttf', fontKalinBytes: 'public/fonts/Lora-Bold.ttf',
   fontKaligrafiBytes: 'public/fonts/GreatVibes-Regular.ttf', fontElYazisiBytes: 'public/fonts/Caveat-Medium.ttf',

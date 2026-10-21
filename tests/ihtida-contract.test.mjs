@@ -264,7 +264,8 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
   const kartJpg = async yuz => 'data:image/jpeg;base64,' + (await sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="638"><rect width="1011" height="638" fill="#eee6f2"/><text x="40" y="80" font-size="40">ÖRNEK ${yuz}</text></svg>`)).jpeg().toBuffer()).toString('base64');
   const vektor = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40L180 52L224 58M60 66L170 70' });
   const g = { pdfLib, fontkit, sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), ek10SablonBytes: oku('belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'),
-    dilekceSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'), kalemFontBytes: oku('fonts/Allura-Regular.ttf'),
+    dilekceSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'), dilekceAdresSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf'),
+    kalemFontBytes: oku('fonts/Allura-Regular.ttf'),
     fontBytes: oku('fonts/Lora-Regular.ttf'), fontKalinBytes: oku('fonts/Lora-Bold.ttf'), fontKaligrafiBytes: oku('fonts/GreatVibes-Regular.ttf'), fontElYazisiBytes: oku('fonts/Caveat-Medium.ttf'),
     veri: { ref: 'IH-2099-9999', adSoyad: 'Deniz Élodie örnek', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', beyanTarihi: '09/09/2026', ihtidaTarihi: '08/09/2026', ihtidaSebebi: 'Kendi araştırmam sonucunda.', dil: 'fr', eposta: 'deniz@example.test', dogumTarihi: '20/05/1990' },
     sahitler: [{ ad: 'Birinci Örnek', imza: resim }, { ad: 'İkinci Örnek', imza: resim }],
@@ -338,7 +339,61 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
   assert.ok(namur.includes('RueDenisGeorgesBayar13,5000Namur'), 'cami adresi «adres, posta kodu şehir»');
   assert.ok(namur.includes('Namur,08/09/2026'), 'yer ve tarih törenin yeri ve günü');
   assert.ok(namur.includes('RueduTest12,6900,Marche-en-Famenne,Belçika'), 'eve teslimde dönüş adresi başvuranın adresi');
+  // 21 Eki 2026: eve teslimde formun «adrese teslim» baskısı: dönüş bölümü «adres · Alıcı», «cami» değil.
+  // Bölüm başlıkları metin katmanında büyük harf ve harf aralıklı gelir (boşluklar atıldı).
+  assert.ok(namur.includes('BELGENİNGÖNDERİLECEĞİADRES·ADDRESSTOWHICH'), 'eve teslimde bölüm başlığı adres');
+  assert.ok(namur.includes('ALICI·RECIPIENT'), 'eve teslimde alıcı etiketi');
+  assert.ok(!namur.includes('GÖNDERİLECEĞİCAMİ'), 'eve teslimde «gönderileceği cami» başlığı kalmaz');
+  const namurArka = metin(namurYol, 4).replace(/[ 	]+/g, '');
+  assert.ok(namurArka.includes('ADRESSED’ENVOIDEL’ATTESTATION') && namurArka.includes('DESTINATAIRE·ONTVANGER'), 'FR/NL yüzü de adres baskısı');
+  const camiYol = yaz('cami-teslim-dilekce.pdf', imzali);
+  assert.ok(metin(camiYol, 3).replace(/[ 	]+/g, '').includes('BELGENİNGÖNDERİLECEĞİCAMİ'), 'camiden teslimde baskı değişmez');
+  await assert.rejects(() => ihtidaPaketiUret({ ...g, dilekceAdresSablonBytes: undefined, veri: { ...g.veri, teslimat: { yontem: 'adres' } } }), /Adrese teslim dilekçe şablonu/);
   const uzun = await ihtidaPaketiUret({ ...g, veri: { ...g.veri, ihtidaSebebi: 'Kendi araştırmam sonucunda karar verdim. '.repeat(12) } });
   assert.equal((await pdfLib.PDFDocument.load(uzun)).getPageCount(), 8, 'Uzun gerekçe kesilmeden açıklama ekine taşınmalı');
   yaz('tam-paket-uzun-aciklama.pdf', uzun);
+});
+
+test('EK-9 arka yüz değerleri tek tablodan gelir; son nüshada düzeltilen alanlar öne geçer (21 Eki 2026)', async () => {
+  const { ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli } = await import('../public/admin/ek9-hazirlik.js');
+  const { uret } = await import('../scripts/apps-script/ihtida-pdf-entry.js');
+  const k = { 'Cinsiyet': 'kadin', 'Medeni hali': 'evli', 'Doğum yeri': 'liège', 'Uyruk': 'belge', 'Mesleği': 'retraitée', 'Öğrenim durumu': 'lisans', 'Önceki din/mezhep': 'hristiyan-katolik', 'Anne adı': 'marie', 'Baba adı': '' };
+  const d = ek9Degerleri(k);
+  assert.deepEqual([d.cinsiyet, d.medeniHali, d.dogumYeri, d.uyruk, d.meslek, d.ogrenim, d.oncekiDin, d.anneAdi, d.babaAdi],
+    ['Kadın / Femme', 'Evli / Mariée', 'Liège', 'Belge', 'Retraitée', 'Lisans', 'Hristiyanlık / Katolik', 'marie', '']);
+  assert.equal(ek9Degerleri({ 'Cinsiyet': 'erkek', 'Medeni hali': 'dul' }).medeniHali, 'Dul / Veuf');
+  assert.equal(ek9Degerleri({ 'Medeni hali': 'bosanmis' }).medeniHali, 'Boşanmış / Divorcé(e)', 'cinsiyet bilinmiyorsa iki biçim');
+  assert.equal(ek9Degerleri({ 'Medeni hali': 'bekar', 'Cinsiyet': 'kadin' }).medeniHali, 'Bekâr / Célibataire');
+  const u = ek9AlanlariUygula(d, { dogumYeri: ' Belçika  / Belgique ', anneAdi: '' });
+  assert.equal(u.dogumYeri, 'Belçika / Belgique');
+  assert.equal(u.anneAdi, '', 'boş düzeltme «Bildirilmedi» olarak basılır');
+  assert.equal(u.meslek, 'Retraitée', 'dokunulmayan alan kayıttan gelir');
+  for (const yanlis of [[], 'metin', { cinsiyet: 'x' }, { meslek: 5 }, { meslek: 'a'.repeat(121) }]) assert.equal(ek9AlanlariGecerli(yanlis), false, JSON.stringify(yanlis));
+  assert.equal(ek9AlanlariGecerli(undefined), true);
+  assert.equal(ek9AlanlariGecerli({ meslek: '' }), true);
+
+  // Uçtan uca (sunucunun eşlemesi): düzeltilen değerler EK-9 arka yüzüne basılır.
+  const oku = ad => new Uint8Array(readFileSync(new URL('../public/' + ad, import.meta.url)));
+  const png = 'data:image/png;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400"><rect width="300" height="400" fill="#ccd"/></svg>')).png().toBuffer()).toString('base64');
+  const kart = 'data:image/jpeg;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="638"><rect width="1011" height="638" fill="#eee"/></svg>')).jpeg().toBuffer()).toString('base64');
+  const kaynaklar = {
+    sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), ek10EkimSablonBytes: oku('belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'),
+    dilekceSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'), dilekceAdresSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf'),
+    kalemFontBytes: oku('fonts/Allura-Regular.ttf'), fontBytes: oku('fonts/Lora-Regular.ttf'), fontKalinBytes: oku('fonts/Lora-Bold.ttf'),
+    fontKaligrafiBytes: oku('fonts/GreatVibes-Regular.ttf'), fontElYazisiBytes: oku('fonts/Caveat-Medium.ttf'),
+  };
+  const kayit = { ...k, 'Referans': 'IH-2099-0002', 'Zaman damgası': '2026-10-01T10:00:00', 'Form dili': 'fr', 'Adı Soyadı': 'Deniz ÖRNEK',
+    'Doğum tarihi': '1990-05-20', 'E-posta': 'deniz@example.test', 'Telefon': '+32 470 00 00 00', 'Adres': 'Rue du Test 12, 6900 Marche-en-Famenne, Belgique',
+    'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-10', 'İmza aktarım izni': 'Hayır', 'Kimlik belgesi türü': 'kimlik', 'Belge teslim yeri': 'cami' };
+  const duzenleme = { adSoyad: 'Deniz ÖRNEK', sahitler: [{ ad: 'Ercan MOLA', imza: '' }, { ad: 'Rıdvan KAYAHAN', imza: '' }], ihtidaTarihi: '2026-10-02',
+    adres: kayit['Adres'], ihtidaSebebi: '', beyanTarihi: '2026-10-01', belgeTuru: 'kimlik',
+    alanlar: { dogumYeri: 'Belçika / Belgique', meslek: 'Emekli / Retraitée', anneAdi: '' } };
+  const bytes = await uret(kayit, { vesikalik: png, kimlikOn: kart, kimlikArka: kart, imza: '', imzaVektor: '' }, duzenleme, kaynaklar, pdfLib, fontkit);
+  const out = new URL('../.codex/cikti/ihtida/', import.meta.url); mkdirSync(out, { recursive: true });
+  const yol = new URL('ek9-alanlar-duzeltilmis.pdf', out); writeFileSync(yol, bytes);
+  const arka = pdfMetni(yol, ['-f', '2', '-l', '2']).replace(/[ \t]+/g, '');
+  for (const beklenen of ['Belçika/Belgique', 'Emekli/Retraitée', 'Evli/Mariée', 'Hristiyanlık/Katolik', 'Bildirilmedi/Noncommuniqué']) assert.ok(arka.includes(beklenen), beklenen);
+  assert.ok(!arka.includes('Liège'), 'düzeltilen doğum yeri kaydın değerinin yerini alır');
+  const dilekce = pdfMetni(yol, ['-f', '3', '-l', '3']).replace(/[ \t]+/g, '');
+  assert.ok(dilekce.includes('Liège') && !dilekce.includes('Belçika/Belgique'), 'dilekçe başvuranın kendi beyanı kalır');
 });

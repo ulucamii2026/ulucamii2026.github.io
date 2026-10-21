@@ -240,7 +240,7 @@ export const de: FormMetinleri = {
     ihtida: {
       oncekiDin: 'Bisherige Religion / Konfession', oncekiDinYardim: 'Beispiel: katholisch, evangelisch, ohne Religion…',
       sebep: 'Ihr Beweggrund für den Islam', sebepYardim: 'Optional; einige Sätze genügen.',
-      yeniIsim: 'Muslimischer Name, den Sie annehmen möchten', yeniIsimYardim: 'Optional; Sie können ihn auch gemeinsam mit dem Imam wählen.',
+      yeniIsim: 'Muslimischer Name, den Sie annehmen möchten', yeniIsimYardim: 'Optional; Sie können ihn auch gemeinsam mit dem Imam wählen. Dieser Name wird nicht in die Konversionsbescheinigung eingetragen; sie trägt den Namen aus Ihrem Ausweisdokument. Wenn Sie Ihren Namen amtlich ändern möchten, müssen Sie dies gesondert bei der zuständigen Behörde beantragen.',
       torenDili: 'Sprache der Feier und des Gesprächs', dilTr: 'Türkisch', dilFr: 'Französisch', dilEn: 'Englisch', dilAr: 'Arabisch',
       torenTarihi: 'Gewünschter Termin', torenTarihiYardim: 'Optional; Beispiel: „ein Wochenende“ oder „Anfang Oktober“.',
       sahitler: 'Zeugen', sahitlerYardim: 'Sie können einen oder zwei Zeugen benennen. Ihre Anwesenheit und ihre Unterschriften werden bei der Feier bestätigt; ein Name allein ersetzt keine Unterschrift.',

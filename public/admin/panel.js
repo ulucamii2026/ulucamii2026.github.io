@@ -948,18 +948,12 @@ const EK9_ETIKET = {
     'musevi': 'Musevilik', 'budist': 'Budizm', 'hindu': 'Hinduizm',
     'ateist': 'Ateist', 'agnostik': 'Agnostik', 'dinsiz': 'Dinî bağı yok', 'yok': 'Dinî bağı yok',
   },
-  medeniHali: { bekar: 'Bekâr', evli: 'Evli', bosanmis: 'Boşanmış', dul: 'Dul' },
   ogrenim: {
     ilkokul: 'İlkokul', ortaokul: 'Ortaokul', lise: 'Lise', onlisans: 'Ön lisans',
     lisans: 'Lisans', yukseklisans: 'Yüksek lisans', doktora: 'Doktora', diger: 'Diğer',
   },
 };
-const ek9Etiket = (tur, deger) => {
-  const d = String(deger || '').trim();
-  if (!d) return '';
-  const s = EK9_ETIKET[tur] && EK9_ETIKET[tur][d.toLocaleLowerCase('tr')];
-  return s || (d.charAt(0).toLocaleUpperCase('tr') + d.slice(1));
-};
+// Bu tablo yalnız liste görünümü içindir; belgeye giden değerler ek9-hazirlik.js → ek9Degerleri (21 Eki 2026).
 /** "23.08.2026 20:01" / "1979-04-24" gibi değerleri belgedeki gg/aa/yyyy biçimine getirir. */
 const ek9Tarih = (deger) => {
   const d = tarihSadelestir(String(deger || '').trim());
@@ -1041,7 +1035,7 @@ async function ek9Hazirla() {
   }
   if (!ek9Kaynak) {
     const getirBaytlari = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
-    const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon] = await Promise.all([
+    const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon, dilekceAdresSablon] = await Promise.all([
       getirBaytlari('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
       getirBaytlari('/fonts/Lora-Regular.ttf'),
       getirBaytlari('/fonts/Lora-Bold.ttf'),
@@ -1049,8 +1043,9 @@ async function ek9Hazirla() {
       getirBaytlari('/fonts/Caveat-Medium.ttf'),
       getirBaytlari('/fonts/Allura-Regular.ttf'),                    // belge doldurma kalemi (KALICI KURAL, 17 Eki 2026)
       getirBaytlari('/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'),
+      getirBaytlari('/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf'),   // 21 Eki 2026: adrese teslim
     ]);
-    ek9Kaynak = { sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon };
+    ek9Kaynak = { sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon, dilekceAdresSablon };
   }
 }
 
@@ -1069,7 +1064,7 @@ async function ek9Uretimi(dugme) {
     if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
     const k = j.kayit || {};
 
-    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    const { ek9HazirlikAc, ek9Degerleri, ek9AlanlariUygula } = await import('/admin/ek9-hazirlik.js');
     const basvuranImza = j.basvuranImza || j.gorseller?.imza || '';
     const beyan = basvuranImza ? ek9Tarih(k['Zaman damgası']) : bugunTR();
     const isoTarih = beyan.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
@@ -1113,17 +1108,10 @@ async function ek9Uretimi(dugme) {
         belgeNo: '',                                   // Müşavirlik/Müftülük doldurur
         belgeTarihi: '',
         duzenleyen: '',
-        cinsiyet: ek9Etiket('cinsiyet', k['Cinsiyet']),
-        ogrenim: ek9Etiket('ogrenim', k['Öğrenim durumu']),
-        anneAdi: k['Anne adı'] || '',
-        babaAdi: k['Baba adı'] || '',
-        dogumYeri: k['Doğum yeri'] || '',
+        // 21 Eki 2026: değerler sunucu paketiyle aynı tablodan (ek9-hazirlik.js); ekranda düzeltilenler önce gelir.
+        ...ek9AlanlariUygula(ek9Degerleri(k), hazirlik.alanlar),
         dogumTarihi: ek9Tarih(k['Doğum tarihi']),
-        medeniHali: ek9Etiket('medeniHali', k['Medeni hali']),
-        meslek: k['Mesleği'] || '',
-        uyruk: k['Uyruk'] || '',
         tcKimlik: '',                                  // yalnız basılı belgede elle tamamlanır
-        oncekiDin: ek9Etiket('oncekiDin', k['Önceki din/mezhep']),
         ihtidaSebebi: hazirlik.ihtidaSebebi ?? k['İhtida sebebi'] ?? '',
         ihtidaTarihi: ek9Tarih(hazirlik.ihtidaTarihi),
         eposta: k['E-posta'] || '',
@@ -1196,6 +1184,7 @@ async function dilekceUretimi(dugme) {
     const bytes = await dilekceModul.dilekceFormUret({
       pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
       fontBytes: ek9Kaynak.font, kalemFontBytes: ek9Kaynak.kalem, sablonBytes: ek9Kaynak.dilekceSablon,
+      sablonAdresBytes: ek9Kaynak.dilekceAdresSablon,
       yerTarih: torenTarihi ? `${camiBilgisi.sehir}, ${torenTarihi}` : '',
       imzaAktarimIzni: Boolean(imza),
       imzaVektor: imza ? (j.basvuranImzaVektor || j.gorseller?.imzaVektor || '') : '',

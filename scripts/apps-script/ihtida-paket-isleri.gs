@@ -225,6 +225,8 @@ function ihtidaPaketOnayDogrula(d, camiId) {
   if (d.ihtidaTarihi > Utilities.formatDate(new Date(), "Europe/Brussels", "yyyy-MM-dd")) return false;
   if (!metinDolu(d.adSoyad) || !uzunlukTamam(d.adSoyad, 120) || !metinDolu(d.adres) || !uzunlukTamam(d.adres, 400) || !uzunlukTamam(d.ihtidaSebebi, 600)) return false;
   if (["kimlik", "pasaport"].indexOf(d.belgeTuru) < 0 || !Array.isArray(d.sahitler) || d.sahitler.length !== 2) return false;
+  // 21 Eki 2026: son nüsha ekranında düzeltilen EK-9 arka yüz değerleri (isteğe bağlı; yalnız bilinen alanlar, ≤120).
+  if (d.alanlar !== undefined && !IhtidaPdf.ek9AlanlariGecerli(d.alanlar)) return false;
   if (!d.sahitler.every(function (s) { return metinDolu(s.ad) && uzunlukTamam(s.ad, 120) && (!s.imza || gorselGecerli(s.imza, 1)); })) return false;
   return camiId === "ulucamii-marche" || String(d.sahitler[0].ad).trim().toLocaleLowerCase("tr") !== String(d.sahitler[1].ad).trim().toLocaleLowerCase("tr");
 }

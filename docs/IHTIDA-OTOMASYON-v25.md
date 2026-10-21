@@ -102,8 +102,47 @@ Mühtedi Koordinatörlüğünde elle mükemmelleştirilen belgeler site formunun
   canlıda çalışır.
 - **Canlı.** Apps Script Version 59 (17 Ekim 2026 08:09); site `4fab46f` + `b13acdd`. Canlı uçtan uca sınama ve temizlik:
   [YAYIN-KAYITLARI](YAYIN-KAYITLARI.md) «17 Ekim 2026».
-- **Bilinen sınır.** Eve teslimde dilekçenin «dönüş» alanı başvuranın adı ve adresini formdaki sabit «Cami» etiketinin altında taşır.
+- **Bilinen sınır (21 Ekim 2026'da kapandı).** Eve teslimde dilekçenin «dönüş» alanı başvuranın adı ve adresini formdaki sabit «Cami» etiketinin altında taşıyordu; aşağıya bakın.
+
+## Emsal denetimi: EK-9 değerleri, son nüshada düzeltme, adrese teslim dilekçe — 21 Ekim 2026
+
+Sitenin paketi, Mühtedi Koordinatörlüğünün elle mükemmelleştirdiği iki emsal dosyayla (M-2026-02, M-2026-06; kişi
+verisi depoya girmedi) kurgusal bir başvuruyla sayfa sayfa karşılaştırıldı. Yedi sayfanın düzeni, kalem yazısı, vektör
+imza ve kimlik sayfası aynıydı. Kalan dört fark kapatıldı:
+
+- **EK-9 değerleri tek tablodan.** Panel (tek EK-9) ve sunucu paketi (`ihtida-pdf-entry.js`) artık aynı
+  `ek9Degerleri()` işlevini kullanır (`public/admin/ek9-hazirlik.js`). Kodlu seçimler emsaldeki gibi «Türkçe / Fransızca»
+  yazılır. Medeni hâl de bu kurala girdi ve cinsiyete göre çekilir: «Evli / Marié», «Evli / Mariée»; cinsiyet bilinmiyorsa
+  «Evli / Marié(e)». Daha önce yalnız «Evli» yazılıyordu. Serbest metnin ilk harfi büyür, anne ve baba adı yazıldığı gibi kalır.
+- **Son nüsha ekranında EK-9 arka yüzü düzeltilebilir.**
+  - Düzeltilebilen sekiz alan: doğum yeri, uyruk, anne adı, baba adı, medeni hâl, öğrenim, meslek, önceki din.
+  - Alanlar başvurudaki değerlerle dolu gelir. Görevli bunları emsal biçimine getirebilir (ör. «İtalya / Italie»,
+    «Emekli / Retraité»). Boş bırakılan alana «Bildirilmedi / Non communiqué» yazılır.
+  - Değerler `hazirlik.alanlar` ile gider. Sunucu yalnız bu sekiz anahtarı ve en çok 120 karakteri kabul eder
+    (`ek9AlanlariGecerli`); başka bir değer gelirse onay `paket-onay-gecersiz` olur.
+  - Düzeltmeler yalnız EK-9'a girer. Dilekçe başvuranın kendi beyanı kalır (`veri.dilekce`, Koordinatörlüğün
+    `dilekceAlanlari` kuralı). Başvuru kaydı değişmez.
+- **Adrese teslim dilekçe.** Başvuran «ikamet adresime postalansın» seçtiyse dilekçe, formun adrese teslim baskısıyla üretilir:
+  - Şablon: `public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf`.
+  - Kaynak: Koordinatörlükteki `dilekce_uret.py --teslim adres` ve `metinler.json` «adrese_teslim».
+  - Dönüş bölümü «Belgenin gönderileceği adres · Alıcı · Adres» olur. Alan yerleri standart formla birebir aynıdır;
+    yerleşim dosyaları karşılaştırıldı.
+  - Şablon GAS paketine `dilekceAdresSablonBytes` olarak girer. Paket şablonsuz kalırsa durur.
+  - Sağlık cevabında `ihtidaEk9Alanlari` ve `ihtidaAdresDilekcesi` bayrakları bu iki değişikliği gösterir.
+- **Yeni isim.** Formdaki «Almak istediğiniz Müslüman ismi» yardımı beş dilde Genelge md. 44/12'yi hatırlatır. Bu ad EK-9'a
+  yazılmaz; resmî ad değişikliği için yetkili makama ayrıca başvurulur.
+- **Bilerek farklı kalanlar.**
+  - Kimlik sayfasının başlığında kart ve ulusal sicil numarası yoktur. Dernek için bağlayıcı numara yasağı sürer; numara
+    yalnız görüntünün kendisinde görünür.
+  - Kayıtlı şahit imzaları panelin şifreli paketinden gelir; paket şu anda imza taşımaz. Şahitler son nüshayı kalemle
+    imzalar. Rıdvan KAYAHAN ve Ercan MOLA imzalarının vektör olarak konması yalnız Koordinatörlüğün yerel hattında
+    (`/ihtida-belgesi`) ve kişi başına talimatla yapılır.
+- **Testler.** Toplam 29/29 geçti:
+  - `tests/ihtida-contract.test.mjs`: değer tablosu, düzeltme, sunucu eşlemesi, dilekçenin beyanı koruması, adres baskısının
+    iki yüzü, şablonsuz paketin reddi.
+  - `tests/ihtida-paket-akis.test.mjs`: GAS ortamında onay doğrulaması ve basılan değer.
+  - `tests/web/ihtida.spec.mjs`: son nüsha ekranındaki alanlar.
 
 ## Bundan sonraki kullanım
 
-Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, admin panelinde açılır ve üç alıcıya gönderilir. Tören sonrasında **Başvurular → İhtida → Son nüshayı onayla ve gönder** ile gerçek tarih, adres ve şahitler kontrol edilir. Bu son onay yeni ortak PDF nüshasını üretip arşivler ve aynı üç adrese gönderir. Müşavirin ıslak imzası basılı belgede tamamlanır.
+Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, admin panelinde açılır ve üç alıcıya gönderilir. Tören sonrasında **Başvurular → İhtida → Son nüshayı onayla ve gönder** ile gerçek tarih, adres, şahitler ve EK-9 arka yüzündeki bilgiler kontrol edilir. Bu son onay yeni ortak PDF nüshasını üretip arşivler ve aynı üç adrese gönderir. Müşavirin ıslak imzası basılı belgede tamamlanır.

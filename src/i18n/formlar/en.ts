@@ -238,7 +238,7 @@ export const en: FormMetinleri = {
     ihtida: {
       oncekiDin: 'Previous religion / denomination', oncekiDinYardim: 'Example: Catholic, Protestant, no religion…',
       sebep: 'Your reason for choosing Islam', sebepYardim: 'Optional; a few sentences are enough.',
-      yeniIsim: 'Muslim name you wish to take', yeniIsimYardim: 'Optional; you may also choose it together with the imam.',
+      yeniIsim: 'Muslim name you wish to take', yeniIsimYardim: 'Optional; you may also choose it together with the imam. This name is not written on the conversion certificate, which carries the name on your identity document. To change your name officially, you need to apply separately to the competent authority.',
       torenDili: 'Ceremony and interview language', dilTr: 'Turkish', dilFr: 'French', dilEn: 'English', dilAr: 'Arabic',
       torenTarihi: 'Preferred date', torenTarihiYardim: 'Optional; example: “a weekend” or “early October”.',
       sahitler: 'Witnesses', sahitlerYardim: "You may name one or two witnesses. Their attendance and signatures will be confirmed at the ceremony; entering a name does not count as a signature.",

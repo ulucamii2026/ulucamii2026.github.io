@@ -246,6 +246,25 @@ test('Admin uçları yetkisiz istekleri reddeder; gelecekteki tören onaylanamaz
   assert.equal(ctx.ihtidaPaketOnayDogrula({ ihtidaTarihi: '2099-01-01', beyanTarihi: '2026-09-09' }), false);
 });
 
+// 21 Eki 2026: son nüsha ekranında düzeltilen EK-9 arka yüz alanları sunucuda yalnız bilinen anahtar ve ≤120 karakterle geçer.
+test('Son nüsha onayı düzeltilen EK-9 alanlarını doğrular ve belgeye basar', async () => {
+  const { ctx, files } = ortam();
+  const temel = { adSoyad: k['Adı Soyadı'], adres: k.Adres, ihtidaTarihi: '2026-09-08', beyanTarihi: '2026-09-09', belgeTuru: 'kimlik', sahitler: [{ ad: 'Birinci Örnek' }, { ad: 'İkinci Örnek' }] };
+  assert.equal(ctx.ihtidaPaketOnayDogrula(temel), true, 'alanlar olmadan eski panel onayı geçer');
+  assert.equal(ctx.ihtidaPaketOnayDogrula({ ...temel, alanlar: { dogumYeri: 'Belçika / Belgique', anneAdi: '' } }), true);
+  for (const alanlar of [{ adSoyad: 'Başka Ad' }, { meslek: 'x'.repeat(121) }, { meslek: 7 }, ['dogumYeri'], 'metin'])
+    assert.equal(ctx.ihtidaPaketOnayDogrula({ ...temel, alanlar }), false, JSON.stringify(alanlar));
+  const v = { anahtar: 'test-panel-key', ref: k.Referans, hazirlik: { ...temel, alanlar: { dogumYeri: 'Belçika / Belgique', meslek: 'Emekli / Retraité' } }, islemAnahtari: 'approval-alanlar-2099' };
+  assert.equal(ctx.ihtidaPaketOnayIsle(v).ok, true);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  const is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.durum, 'tamam');
+  const yol = '.codex/cikti/ihtida/gas-son-nusha-alanlar.pdf';
+  writeFileSync(yol, Buffer.from(files.get(is.pdfId).getBlob().getBytes()));
+  const arka = pdfMetni(yol, ['-f', '2', '-l', '2']).replace(/[ 	]+/g, '');
+  assert.ok(arka.includes('Belçika/Belgique') && arka.includes('Emekli/Retraité'), 'düzeltilen değerler EK-9 arka yüzünde');
+});
+
 test('Satır kaydedilip kuyruk yarım kaldığında aynı form yeni başvuru oluşturmadan kuyruğu onarır', () => {
   const { ctx } = ortam();
   ctx.ihtidaDogrulaV2 = () => ({ tamam: true });

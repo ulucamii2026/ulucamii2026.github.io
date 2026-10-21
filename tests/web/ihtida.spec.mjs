@@ -178,7 +178,7 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
   await expect(page.locator('#ek9-gercek-tarih')).toHaveValue('');
   await page.getByRole('dialog', { name: 'EK-9 belgesini hazırlayın' }).screenshot({ path: info.outputPath('ek9-hazirlik.png') });
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Ercan MOLA', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi' });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Ercan MOLA', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' } });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'TEST_R', ercan: 'TEST_E', yeliz: 'TEST_Y' }).then(s => window.sonuc = s);
@@ -191,7 +191,7 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
   await page.locator('#ek9-sahit-1').fill('Başka Örnek Şahit');
   await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(1)).not.toBeChecked();
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Ercan MOLA', imza: 'TEST_E' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade' });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Ercan MOLA', imza: 'TEST_E' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' } });
 });
 
 test('Yerel şahit sırası Ercan Mola ve Rıdvan Kayahan olur; Yeliz imzası aktarılmaz', async ({ page, context }) => {
@@ -216,7 +216,7 @@ test('Tam paket ekranı adresi ve beyanı hazır getirir; tören tarihini kullan
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
     window.paketSonucu = undefined;
-    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', 'İhtida sebebi': 'Kendi araştırmam sonucunda.', 'Kimlik belgesi türü': 'pasaport', 'Belge teslim yeri': 'cami' }, {}, { paket: true, imzali: true, beyanTarihi: '2026-09-09' }).then(v => window.paketSonucu = v);
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', 'İhtida sebebi': 'Kendi araştırmam sonucunda.', 'Kimlik belgesi türü': 'pasaport', 'Belge teslim yeri': 'cami', 'Cinsiyet': 'kadin', 'Medeni hali': 'evli', 'Doğum yeri': 'liège', 'Mesleği': 'enseignante', 'Önceki din/mezhep': 'hristiyan-katolik' }, {}, { paket: true, imzali: true, beyanTarihi: '2026-09-09' }).then(v => window.paketSonucu = v);
   });
   const dialog = page.getByRole('dialog', { name: 'İhtida belge paketini hazırlayın' });
   await expect(page.locator('#ek9-tam-adres')).toHaveValue('Rue du Test 12, 6900, Marche-en-Famenne, Belçika');
@@ -224,6 +224,12 @@ test('Tam paket ekranı adresi ve beyanı hazır getirir; tören tarihini kullan
   await expect(page.locator('#ek9-beyan-tarihi')).toHaveValue('2026-09-09');
   await expect(page.locator('#ek9-beyan-tarihi')).toHaveAttribute('readonly', '');
   await expect(page.locator('#ek9-gercek-tarih')).toHaveValue('');
+  // 21 Eki 2026: EK-9 arka yüz değerleri emsaldeki biçimde hazır gelir ve bu belge için düzeltilebilir.
+  await expect(page.getByLabel('Medeni hâli')).toHaveValue('Evli / Mariée');
+  await expect(page.getByLabel('Doğum yeri')).toHaveValue('Liège');
+  await expect(page.getByLabel('Mesleği')).toHaveValue('Enseignante');
+  await expect(page.getByLabel('Önceki dini / mezhebi')).toHaveValue('Hristiyanlık / Katolik');
+  await page.getByLabel('Doğum yeri').fill('Belçika  / Belgique');
   await page.getByRole('button', { name: 'Tek PDF paketini hazırla' }).click();
   expect(await page.evaluate(() => window.paketSonucu)).toBeUndefined();
   await page.locator('#ek9-gercek-tarih').fill('2026-09-08');
@@ -235,6 +241,7 @@ test('Tam paket ekranı adresi ve beyanı hazır getirir; tören tarihini kullan
   await page.getByRole('button', { name: 'Tek PDF paketini hazırla' }).click();
   await expect.poll(() => page.evaluate(() => window.paketSonucu?.ihtidaTarihi)).toBe('2026-09-08');
   expect(await page.evaluate(() => window.paketSonucu.beyanTarihi)).toBe('2026-09-09');
+  expect(await page.evaluate(() => window.paketSonucu.alanlar)).toEqual({ dogumYeri: 'Belçika / Belgique', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: 'Evli / Mariée', ogrenim: '', meslek: 'Enseignante', oncekiDin: 'Hristiyanlık / Katolik' });
 });
 
 test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async ({ page }, info) => {
