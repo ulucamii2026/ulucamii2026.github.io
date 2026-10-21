@@ -142,6 +142,16 @@ imza ve kimlik sayfası aynıydı. Kalan dört fark kapatıldı:
     iki yüzü, şablonsuz paketin reddi.
   - `tests/ihtida-paket-akis.test.mjs`: GAS ortamında onay doğrulaması ve basılan değer.
   - `tests/web/ihtida.spec.mjs`: son nüsha ekranındaki alanlar.
+- **Canlı sınama (22 Ekim 2026, 00.05–00.15).** Kurgusal «TESTOGLU» başvurusu canlı Apps Script'e gönderildi: adrese
+  teslim, vektör imza, EK-10 2026-10. Akış:
+  - Ön başvuru paketi 7 sayfa geldi; SHA eşleşti. Dilekçede «Alıcı · Adres» bölümü, EK-9'da «Evli / Marié» vardı.
+  - Son nüsha onayı `hazirlik.alanlar` ile gönderildi. Paket yine 7 sayfa, SHA eşleşti.
+  - EK-9 arka yüzünde düzeltilen değerler basıldı: «Belçika / Belgique», «Emekli / Retraité», «Hristiyanlık / Katolik».
+    Boş bırakılan öğrenim «Bildirilmedi / Non communiqué» oldu.
+  - Dilekçe başvuranın beyanını korudu (doğum yeri «Liège»). İhtida tarihi ve imza paneli dolu.
+  - Alıcılar yalnız dernek kutularıydı: info@, imam@ ve altyapı adresi.
+  - Sonunda `test-temizle` 1 satır sildi. Defterde 3 ihtida satırı kaldı, paket izi de silindi.
+  - Tuzak: sunucu telefonu boşluksuz +E.164 ister; aksi hâlde `basvuran-telefon-gecersiz` döner.
 
 ## Bundan sonraki kullanım
 

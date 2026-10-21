@@ -4,6 +4,31 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 22 Ekim 2026 (gece) — ihtida paketi emsal denetimi: EK-9 değerleri, son nüshada düzeltme, adrese teslim dilekçe
+
+- Zaman: 22 Ekim 2026 00:02 (Apps Script dağıtımı), 00:05:36 (push), 00:07:58 (Pages), 00:05–00:15 (canlı sınama),
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: Mühtedi Koordinatörünün 21 Ekim isteği: «web
+  sitemizde ihtida başvurusu bu süreç için tamamen uygun olmalı yüzde yüz … bütün yetki ve karar sende».
+- Kapsam: medeni hâl iki dilli ve cinsiyete göre yazılıyor; son nüsha ekranında EK-9 arka yüzünün sekiz alanı
+  düzeltilebiliyor; eve teslimde dilekçe adrese teslim baskısıyla basılıyor
+  (`public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf`); yeni isim yardımı beş dilde. Ayrıntı:
+  [IHTIDA-OTOMASYON-v25.md](IHTIDA-OTOMASYON-v25.md) «Emsal denetimi … 21 Ekim 2026».
+- İçerik commit'i `981f5e9` (push `1649403..981f5e9`), dernek kimliği.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39683917135) **success**.
+- Apps Script v43 yeniden dağıtıldı (`dagit_v43.py`, `GAS_FIREFOX`). Önce kuru okuma yapıldı; canlı kaynak 17 Ekim'deki
+  yeniden okunan kopyayla aynıydı. Paket 9.650.448 bayt; yeniden okunan kod paketle birebir. Sağlık cevabı:
+  `surum 43`, `ihtidaEk9Alanlari: true`, `ihtidaAdresDilekcesi: true`.
+- Kalite:
+  - `test:ihtida` 29/29.
+  - Playwright ihtida, paket onayı, ihtida adımları ve dayanıklılık 74/74.
+  - `check` 0 hata; `test:ek9` ve `test:imza` geçti; derleme 1937 sayfa.
+- Canlı:
+  - `/fr/demande-de-conversion/` 200; yeni yardım metni yayında.
+  - Adres baskısı PDF'i 200 (149.268 bayt).
+  - Uçtan uca kurgusal TESTOGLU başvurusu: ön başvuru ve son nüsha 7'şer sayfa, SHA eşleşti, düzeltmeler basıldı.
+  - Alıcılar yalnız dernek kutularıydı. `test-temizle` 1 satır sildi; defterde 3 ihtida satırı kaldı.
+  - Deneme e-postaları kutularda duruyor (önceki teamül).
+
 ## 19 Ekim 2026 (gece) — duyuru: vakitmatik saatler için teşekkür (TR/FR) + Facebook
 
 - Zaman: 19 Ekim 2026 01:01:46 (commit/push) – 01:04:11 (deploy) – 01:05 (canlı doğrulama) – 01:07 (Facebook),
