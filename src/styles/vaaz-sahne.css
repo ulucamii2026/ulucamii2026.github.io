@@ -693,15 +693,18 @@ div.vaaz-govde ol.vz-gunluk > li { --vz-renk: var(--vz-hadis); position: relativ
 div.vaaz-govde ol.vz-gunluk > li:last-child { padding-bottom: 0; }
 div.vaaz-govde ol.vz-gunluk > li::before { content: ""; position: absolute; left: 1.45rem; top: 2.9rem; bottom: 0; width: 2px; margin-left: -1px; background: var(--cizgi-etkilesim); }
 div.vaaz-govde ol.vz-gunluk > li:last-child::before { display: none; }
-div.vaaz-govde ol.vz-gunluk > li:nth-child(2) { --vz-renk: var(--vz-yesil); }
-div.vaaz-govde ol.vz-gunluk > li:nth-child(3) { --vz-renk: var(--vz-dua); }
-div.vaaz-govde ol.vz-gunluk > li:nth-child(4) { --vz-renk: var(--vz-ayet); }
+div.vaaz-govde ol.vz-gunluk > li:nth-child(4n+2) { --vz-renk: var(--vz-yesil); }
+div.vaaz-govde ol.vz-gunluk > li:nth-child(4n+3) { --vz-renk: var(--vz-dua); }
+div.vaaz-govde ol.vz-gunluk > li:nth-child(4n+4) { --vz-renk: var(--vz-ayet); }
 div.vaaz-govde ol.vz-gunluk span.vz-gunluk-ikon { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 50%; background: var(--vz-renk); color: var(--vz-dolgu-metin); }
 div.vaaz-govde ol.vz-gunluk span.vz-gunluk-ikon svg { width: 1.5rem; height: 1.5rem; }
 div.vaaz-govde ol.vz-gunluk p { margin: 0; }
 div.vaaz-govde ol.vz-gunluk p.vz-gunluk-an { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vz-renk); }
+div.vaaz-govde ol.vz-gunluk p.vz-gunluk-ar:lang(ar) { margin: .3rem 0 .1rem; font-family: var(--font-arabic, Amiri), Amiri, serif; font-size: 1.4rem; line-height: 1.95; text-align: right; direction: rtl; color: var(--metin); }
 div.vaaz-govde ol.vz-gunluk p.vz-okunus { margin: .15rem 0 .2rem; font-family: var(--font-serif); font-style: italic; font-size: 1.06rem; line-height: 1.45; color: var(--metin); }
 div.vaaz-govde ol.vz-gunluk p.vz-anlam { font-family: var(--font-sans); font-size: .9rem; line-height: 1.5; color: var(--metin-2); }
+div.vaaz-govde figure.vz-sema p.vz-ek-pdf { margin: 1.1rem 0 0; text-align: center; font-family: var(--font-sans); font-size: .85rem; color: var(--metin-2); }
+div.vaaz-govde figure.vz-sema p.vz-ek-pdf a { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block: -.65rem; padding-inline: .5rem; color: var(--vz-ayet); }
 div.vaaz-govde ol.vz-gunluk p.vz-gunluk-kaynak { margin-top: .25rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .03em; color: var(--metin-2); }
 
 /* Duamızın halkaları: içten dışa genişleyen bantlar */

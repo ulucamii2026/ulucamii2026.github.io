@@ -22,6 +22,8 @@ taslak: false
 - **Hiçbir dua karşılıksız kalmaz.** Ya hemen verilir, ya âhirete saklanır, ya da onun yerine bir kötülük uzaklaştırılır.
 - **Duanın muhatabı yalnız Allah’tır.** Güzel isimleriyle O’na yönelir, kardeşlerimizi de gıyabında duamıza katarız.
 
+**Ekte uygulamaya dönük iki bölüm var:** adım adım örnek bir dua (hamd, salavat, af dileme, dilek ve kabul niyazı; her adımda Peygamberimizin ya da Kur’an’ın bir duası) ve günün her anı için yirmi altı günlük dua, Arapçası, okunuşu ve anlamıyla. [Örnek duaya git →](/tr/vaaz/dua-kullugun-ozu/#nasil-dua)
+
 **[Vaazın tam metnini okuyun →](/tr/vaaz/dua-kullugun-ozu/)**
 
 **İndir:** [Word](/vaazlar/dua-kullugun-ozu.docx) · [PDF](/vaazlar/dua-kullugun-ozu.pdf) · [Sunum (PowerPoint)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-dua-kullugun-ozu/dua-kullugun-ozu-sunum.pptx) · [Sunum (PDF)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-dua-kullugun-ozu/dua-kullugun-ozu-sunum.pdf)

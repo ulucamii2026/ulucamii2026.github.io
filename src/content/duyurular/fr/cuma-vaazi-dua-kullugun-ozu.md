@@ -22,6 +22,8 @@ Le texte intégral de notre prédication du vendredi 23 octobre 2026 est en lign
 - **Aucune invocation ne reste sans réponse.** Elle est exaucée aussitôt, gardée pour l’au-delà, ou bien un mal est écarté à sa place.
 - **L’invocation s’adresse à Allah seul.** Nous nous tournons vers Lui par Ses plus beaux noms et incluons nos frères et sœurs dans nos invocations, en leur absence.
 
+**En annexe, deux parties pratiques :** un exemple d’invocation pas à pas (louange, prière sur le Prophète, demande de pardon, demande, puis supplication d’acceptation ; à chaque étape une invocation du Prophète ou du Coran) et vingt-six invocations quotidiennes pour tous les moments de la journée, avec leur texte arabe, leur transcription et leur sens. [Voir l’exemple d’invocation →](/fr/vaaz/dua-kullugun-ozu/#nasil-dua)
+
 **[Lire la prédication en français →](/fr/vaaz/dua-kullugun-ozu/)**
 
 **Télécharger :** [Word](/vaazlar/fr/l-invocation-coeur-de-l-adoration.docx) · [PDF](/vaazlar/fr/l-invocation-coeur-de-l-adoration.pdf) · [Diaporama (PowerPoint)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-dua-kullugun-ozu/l-invocation-coeur-de-l-adoration-diaporama.pptx) · [Diaporama (PDF)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-dua-kullugun-ozu/l-invocation-coeur-de-l-adoration-diaporama.pdf)
