@@ -4,6 +4,29 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 22 Ekim 2026 (sabah) — cami ekranı: günlük tema kartı (Esmâ yerine) + cihaz saati güveni
+
+- Zaman: 22 Ekim 2026 09:16:45 (push), 09:17:41 (derleme), 09:18:45 (Pages), 09:19–09:25 (canlı doğrulama),
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: cami ekranı projesinin 22 Ekim yayın planı
+  (B3 gözlem dondurması 21 Ekim'de bitti), kullanıcının 11 Ekim'de 21 Ekim sonrası `main` birleştirmelerine verdiği
+  onay ve 22 Ekim «bütün yetki ve karar sende» yetkisi. Dinî içerik 19 Ekim'de imam onaylı (`durum: imam-onayli`).
+- Kapsam: (1) ekran saat güveni: geriye giden cihaz saatine güvenmeme, bozuk sunucu saati işaretinden kurtulma; tur
+  ve hava durumu saat güvenine bağlı (`src/ekran/hava.ts`, `main.ts`, `veri.ts`, `src/lib/ekran/secim.ts`).
+  (2) Esmâ-ül Hüsnâ slaytı kalktı, yerine günlük tema kartı: 314 kart (söz 191, bilgi 47, âyet 39, hadis 37;
+  `src/data/ekran/kartlar.json`), çizim `src/ekran/slaytlar.ts`, model ve denetim `src/lib/ekran/icerik.ts`,
+  kalibre karakter bütçeleri `src/lib/ekran/butce.ts`; `src/data/ekran/esma.json` silindi.
+- Commit'ler: `8e0e00d`, `774a763` (saat güveni), `7717cf0`, `1127763`, `febf544` (tema kartları); push
+  `35fe5c6..febf544`, dernek kimliği. Tek birleşim çakışması `src/ekran/main.ts` tur çağrısında: tema kartı listesi +
+  saat güvenli tur günü birlikte korundu.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39739391730) **success**.
+- Kalite (birleşik uç üstünde): `npm run test:ekran` 201 test, 198 geçti, 0 hata, 3 atlandı; `astro check` 0 hata /
+  0 uyarı; `npm run dogrula` çıkış 0 (derleme dahil); Playwright `tests/web/ekran.spec.mjs` 112 geçti, 0 hata (taban
+  kapısı bütün gerçek kartları en dar üç tuvalde ölçer).
+- Canlı: `https://ulucamii.be/ekran/icerik.json` → derleme 2026-10-22T07:17:41Z, `kartlar` 314, Esmâ alanı yok;
+  `/ekran/ekran.js`, `/ekran/ekran.css`, `/ekran/index.html` yerel doğrulanmış derlemeyle SHA-256 eşit.
+- Açık sınır: cami ekranları yeni sayfayı bir sonraki sayfa yenilemesinde alır; ekranda tema kartının görülmesi
+  cihaz tarafında ayrıca doğrulanır.
+
 ## 22 Ekim 2026 (sabah) — vaaz: «Dua: Kulluğun Özü» (23 Ekim 2026 Cuma vaazı) beş dilde + duyuru
 
 - Zaman: 22 Ekim 2026 08:21 (Release), 08:21:52 (push), 08:24:09 (Pages), 08:25–08:30 (canlı doğrulama),
