@@ -622,3 +622,157 @@ div.vaaz-govde ol.vz-dallar strong { display: block; margin-bottom: .2rem; font-
   div.vaaz-govde figure.vz-nass, div.vaaz-govde figure.vz-sozler, div.vaaz-govde figure.vz-sema, div.vaaz-govde figure.vz-ayna, div.vaaz-govde aside { break-inside: avoid; box-shadow: none; }
   div.vaaz-govde p.vz-baris { background: none; color: #24201c; border: 1px solid #999; }
 }
+
+/* ——— «Dua: Kulluğun Özü» (23 Eki 2026) ile gelen bileşenler ———
+   Aynı önek kuralı: div.vaaz-govde. Simgeler hilal, mihrap, Kâbe, kandil, kalkan, başak ve nesne çizgileridir; kalp ve insan figürü yoktur. */
+
+/* Simgeli kartlar: ibadetler, üç hâl, umutlu vakitler, üç karşılık, esmâ (3 ya da 4 sütun) */
+div.vaaz-govde ol.vz-kartlar { --vz-sutun: 3; display: grid; grid-template-columns: repeat(var(--vz-sutun), minmax(0, 1fr)); gap: .6rem; margin: 0; padding: 0; list-style: none; }
+div.vaaz-govde ol.vz-kartlar.vz-dort { --vz-sutun: 4; }
+div.vaaz-govde ol.vz-kartlar > li {
+  --vz-renk: var(--vz-hadis); display: grid; align-content: start; justify-items: center; gap: .2rem; margin: 0; padding: 1rem .8rem 1.05rem;
+  text-align: center; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--vz-renk) 42%, transparent);
+  background: color-mix(in oklab, var(--vz-renk) 7%, var(--zemin)); font-family: var(--font-sans); font-size: .86rem; line-height: 1.5; color: var(--metin-2);
+}
+div.vaaz-govde ol.vz-kartlar > li:nth-child(4n+2) { --vz-renk: var(--vz-yesil); }
+div.vaaz-govde ol.vz-kartlar > li:nth-child(4n+3) { --vz-renk: var(--vz-dua); }
+div.vaaz-govde ol.vz-kartlar > li:nth-child(4n+4) { --vz-renk: var(--vz-ayet); }
+div.vaaz-govde ol.vz-kartlar span.vz-kart-ikon { display: grid; place-items: center; width: 3rem; height: 3rem; margin: 0 auto .45rem; border-radius: 50%; background: var(--vz-renk); color: var(--vz-dolgu-metin); }
+div.vaaz-govde ol.vz-kartlar span.vz-kart-ikon svg { width: 1.65rem; height: 1.65rem; }
+div.vaaz-govde ol.vz-kartlar strong { display: block; font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.25; color: var(--metin); }
+div.vaaz-govde ol.vz-kartlar span.vz-kart-metin { display: block; }
+div.vaaz-govde ol.vz-kartlar em { display: block; margin-top: .3rem; font-family: var(--font-mono); font-size: .68rem; font-style: normal; letter-spacing: .03em; color: var(--vurgu-2); }
+/* Üç karşılık: kemerli kapı biçimi */
+div.vaaz-govde ol.vz-kartlar.vz-kemer > li { padding-top: 1.5rem; border-radius: 999px 999px 12px 12px / 5.5rem 5.5rem 12px 12px; }
+
+/* «De ki» kefesindeki âyet etiketi */
+div.vaaz-govde div.vz-kefe span.vz-kefe-kaynak { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .02em; color: var(--vurgu-2); white-space: nowrap; }
+
+/* Kulun itirafı, Rabbin isimleri */
+div.vaaz-govde ol.vz-itiraf { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+div.vaaz-govde ol.vz-itiraf > li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: .7rem; margin: 0; }
+div.vaaz-govde ol.vz-itiraf span.vz-ben {
+  justify-self: end; padding: .55rem 1rem; border-radius: 999px; text-align: end;
+  background: color-mix(in oklab, var(--vz-ayet) 9%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--vz-ayet) 35%, transparent);
+  font-family: var(--font-serif); font-style: italic; font-size: 1.02rem; color: var(--metin);
+}
+div.vaaz-govde ol.vz-itiraf span.vz-ayrac { color: var(--vz-dua); }
+div.vaaz-govde ol.vz-itiraf span.vz-ayrac svg { display: block; width: 1.5rem; height: 1.5rem; }
+div.vaaz-govde ol.vz-itiraf span.vz-sen {
+  justify-self: start; padding: .45rem 1rem .5rem; border-radius: 14px;
+  background: color-mix(in oklab, var(--vz-yesil) 10%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--vz-yesil) 40%, transparent);
+}
+div.vaaz-govde ol.vz-itiraf span.vz-sen strong { display: block; font-family: var(--font-serif); font-size: 1.04rem; color: var(--metin); }
+div.vaaz-govde ol.vz-itiraf span.vz-sen small { display: block; font-family: var(--font-sans); font-size: .78rem; line-height: 1.35; color: var(--metin-2); }
+
+/* Duada iki ses: kul yalvarır → Rabbi buyurur */
+div.vaaz-govde p.vz-iki-ses-bas {
+  display: grid; grid-template-columns: minmax(0, 5fr) 2rem minmax(0, 7fr); gap: .6rem; margin: 0 0 .5rem;
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+}
+div.vaaz-govde p.vz-iki-ses-bas span:first-child { color: var(--vz-ayet); text-align: center; }
+div.vaaz-govde p.vz-iki-ses-bas span:last-child { grid-column: 3; color: var(--vz-hadis); text-align: center; }
+div.vaaz-govde ol.vz-iki-ses { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+div.vaaz-govde ol.vz-iki-ses > li { display: grid; grid-template-columns: minmax(0, 5fr) 2rem minmax(0, 7fr); align-items: center; gap: .6rem; margin: 0; }
+div.vaaz-govde ol.vz-iki-ses p { margin: 0; padding: .65rem .9rem; font-family: var(--font-serif); font-size: .98rem; line-height: 1.4; color: var(--metin); text-align: center; }
+div.vaaz-govde ol.vz-iki-ses p.vz-kul {
+  font-style: italic; border-radius: 14px 14px 4px 14px;
+  background: color-mix(in oklab, var(--vz-ayet) 8%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--vz-ayet) 35%, transparent);
+}
+div.vaaz-govde ol.vz-iki-ses p.vz-rab {
+  border-radius: 14px 14px 14px 4px;
+  background: color-mix(in oklab, var(--vz-hadis) 8%, var(--zemin)); border: 1px solid color-mix(in oklab, var(--vz-hadis) 38%, transparent);
+}
+div.vaaz-govde ol.vz-iki-ses p.vz-rab span { display: block; margin-top: .2rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .03em; color: var(--metin-2); }
+div.vaaz-govde ol.vz-iki-ses span.vz-ses-ok { color: var(--vz-dua); }
+div.vaaz-govde ol.vz-iki-ses span.vz-ses-ok svg { display: block; width: 2rem; height: 2rem; }
+
+/* Bir günün duaları: dikey zaman çizgisi */
+div.vaaz-govde ol.vz-gunluk { display: grid; margin: 0; padding: 0; list-style: none; }
+div.vaaz-govde ol.vz-gunluk > li { --vz-renk: var(--vz-hadis); position: relative; display: grid; grid-template-columns: 2.9rem minmax(0, 1fr); gap: .95rem; margin: 0; padding: 0 0 1.15rem; }
+div.vaaz-govde ol.vz-gunluk > li:last-child { padding-bottom: 0; }
+div.vaaz-govde ol.vz-gunluk > li::before { content: ""; position: absolute; left: 1.45rem; top: 2.9rem; bottom: 0; width: 2px; margin-left: -1px; background: var(--cizgi-etkilesim); }
+div.vaaz-govde ol.vz-gunluk > li:last-child::before { display: none; }
+div.vaaz-govde ol.vz-gunluk > li:nth-child(2) { --vz-renk: var(--vz-yesil); }
+div.vaaz-govde ol.vz-gunluk > li:nth-child(3) { --vz-renk: var(--vz-dua); }
+div.vaaz-govde ol.vz-gunluk > li:nth-child(4) { --vz-renk: var(--vz-ayet); }
+div.vaaz-govde ol.vz-gunluk span.vz-gunluk-ikon { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 50%; background: var(--vz-renk); color: var(--vz-dolgu-metin); }
+div.vaaz-govde ol.vz-gunluk span.vz-gunluk-ikon svg { width: 1.5rem; height: 1.5rem; }
+div.vaaz-govde ol.vz-gunluk p { margin: 0; }
+div.vaaz-govde ol.vz-gunluk p.vz-gunluk-an { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vz-renk); }
+div.vaaz-govde ol.vz-gunluk p.vz-okunus { margin: .15rem 0 .2rem; font-family: var(--font-serif); font-style: italic; font-size: 1.06rem; line-height: 1.45; color: var(--metin); }
+div.vaaz-govde ol.vz-gunluk p.vz-anlam { font-family: var(--font-sans); font-size: .9rem; line-height: 1.5; color: var(--metin-2); }
+div.vaaz-govde ol.vz-gunluk p.vz-gunluk-kaynak { margin-top: .25rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .03em; color: var(--metin-2); }
+
+/* Duamızın halkaları: içten dışa genişleyen bantlar */
+div.vaaz-govde ol.vz-halka { display: grid; justify-items: center; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+div.vaaz-govde ol.vz-halka > li {
+  --vz-renk: var(--vz-dua); width: var(--vz-gen, 100%); display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: .1rem .6rem;
+  margin: 0; padding: .6rem 1.1rem; border-radius: 999px; text-align: center; box-sizing: border-box;
+  background: color-mix(in oklab, var(--vz-renk) 10%, var(--zemin)); border: 1.5px solid color-mix(in oklab, var(--vz-renk) 45%, transparent);
+  font-family: var(--font-sans); font-size: .86rem; line-height: 1.4; color: var(--metin-2);
+}
+div.vaaz-govde ol.vz-halka > li:nth-child(1) { --vz-gen: 44%; }
+div.vaaz-govde ol.vz-halka > li:nth-child(2) { --vz-gen: 58%; --vz-renk: var(--vz-ayet); }
+div.vaaz-govde ol.vz-halka > li:nth-child(3) { --vz-gen: 72%; --vz-renk: var(--vz-yesil); }
+div.vaaz-govde ol.vz-halka > li:nth-child(4) { --vz-gen: 86%; --vz-renk: var(--vz-hadis); }
+div.vaaz-govde ol.vz-halka > li:nth-child(5) { --vz-gen: 100%; --vz-renk: var(--vz-ayet); }
+div.vaaz-govde ol.vz-halka strong { font-family: var(--font-serif); font-size: 1.02rem; color: var(--metin); }
+
+/* Peygamberlerin dilinden dualar */
+div.vaaz-govde ol.vz-peygamber { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin: 0; padding: 0; list-style: none; }
+div.vaaz-govde ol.vz-peygamber > li { --vz-renk: var(--vz-hadis); margin: 0; padding: .95rem 1.1rem 1rem; border-radius: 12px; border-inline-start: 4px solid var(--vz-renk); background: var(--vz-kart); }
+div.vaaz-govde ol.vz-peygamber > li:nth-child(2) { --vz-renk: var(--vz-yesil); }
+div.vaaz-govde ol.vz-peygamber > li:nth-child(3) { --vz-renk: var(--vz-dua); }
+div.vaaz-govde ol.vz-peygamber > li:nth-child(4) { --vz-renk: var(--vz-ayet); }
+div.vaaz-govde ol.vz-peygamber > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+div.vaaz-govde ol.vz-peygamber p { margin: 0; }
+div.vaaz-govde ol.vz-peygamber p.vz-pey-ad { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem; color: var(--metin); }
+div.vaaz-govde ol.vz-peygamber span.vz-pey-hal { display: block; font-family: var(--font-mono); font-weight: 400; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--vz-renk); }
+div.vaaz-govde ol.vz-peygamber p.vz-pey-dua { margin: .45rem 0 .35rem; font-family: var(--font-serif); font-style: italic; font-size: 1rem; line-height: 1.5; color: var(--metin); }
+div.vaaz-govde ol.vz-peygamber p.vz-pey-ayet { font-family: var(--font-mono); font-size: .68rem; color: var(--metin-2); }
+
+/* Fıkhî ölçü kutusu */
+div.vaaz-govde aside.vz-olcu {
+  position: relative; margin: 2.2rem 0; padding: 1.25rem 1.35rem 1.2rem 4.4rem; border-radius: var(--vz-yuvarlak);
+  border: 1px solid color-mix(in oklab, var(--vz-ayet) 40%, transparent); background: color-mix(in oklab, var(--vz-ayet) 5%, var(--zemin));
+}
+div.vaaz-govde aside.vz-olcu span.vz-olcu-ikon {
+  position: absolute; left: 1.2rem; top: 1.25rem; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%;
+  background: var(--vz-ayet); color: var(--vz-dolgu-metin);
+}
+div.vaaz-govde aside.vz-olcu span.vz-olcu-ikon svg { width: 1.35rem; height: 1.35rem; }
+div.vaaz-govde aside.vz-olcu p.vz-kutu-tur { margin: 0; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--vz-ayet); }
+div.vaaz-govde aside.vz-olcu p.vz-kutu-baslik { margin: .1rem 0 .55rem; font-family: var(--font-serif); font-size: 1.18rem; font-weight: 700; color: var(--metin); }
+div.vaaz-govde aside.vz-olcu p { font-size: 1.02rem; }
+div.vaaz-govde aside.vz-olcu p:last-child { margin-bottom: 0; }
+
+@media (max-width: 640px) {
+  div.vaaz-govde ol.vz-kartlar, div.vaaz-govde ol.vz-kartlar.vz-dort { --vz-sutun: 2; }
+  div.vaaz-govde ol.vz-kartlar > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  div.vaaz-govde ol.vz-kartlar.vz-kemer > li { border-radius: 999px 999px 12px 12px / 4rem 4rem 12px 12px; }
+  div.vaaz-govde ol.vz-itiraf > li { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.25fr); gap: .45rem; }
+  div.vaaz-govde ol.vz-itiraf span.vz-ben { padding: .5rem .7rem; font-size: .95rem; }
+  div.vaaz-govde ol.vz-itiraf span.vz-sen { padding: .45rem .7rem; }
+  div.vaaz-govde p.vz-iki-ses-bas { display: none; }
+  div.vaaz-govde ol.vz-iki-ses { gap: .9rem; }
+  div.vaaz-govde ol.vz-iki-ses > li { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+  div.vaaz-govde ol.vz-iki-ses p.vz-kul { margin-inline-end: 2.5rem; }
+  div.vaaz-govde ol.vz-iki-ses p.vz-rab { margin-inline-start: 2.5rem; }
+  div.vaaz-govde ol.vz-iki-ses span.vz-ses-ok { justify-self: center; }
+  div.vaaz-govde ol.vz-iki-ses span.vz-ses-ok svg { width: 1.5rem; height: 1.5rem; rotate: 90deg; }
+  div.vaaz-govde ol.vz-halka > li { border-radius: 14px; }
+  div.vaaz-govde ol.vz-halka > li:nth-child(1) { --vz-gen: 70%; }
+  div.vaaz-govde ol.vz-halka > li:nth-child(2) { --vz-gen: 78%; }
+  div.vaaz-govde ol.vz-halka > li:nth-child(3) { --vz-gen: 86%; }
+  div.vaaz-govde ol.vz-halka > li:nth-child(4) { --vz-gen: 93%; }
+  div.vaaz-govde ol.vz-peygamber { grid-template-columns: minmax(0, 1fr); }
+  div.vaaz-govde aside.vz-olcu { padding: 1.15rem 1.05rem 1.1rem; }
+  div.vaaz-govde aside.vz-olcu span.vz-olcu-ikon { position: static; margin-bottom: .6rem; }
+}
+@media (max-width: 380px) {
+  div.vaaz-govde ol.vz-kartlar, div.vaaz-govde ol.vz-kartlar.vz-dort { --vz-sutun: 1; }
+  div.vaaz-govde ol.vz-itiraf > li { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: .25rem; }
+  div.vaaz-govde ol.vz-itiraf span.vz-ben, div.vaaz-govde ol.vz-itiraf span.vz-sen { justify-self: center; text-align: center; }
+  div.vaaz-govde ol.vz-itiraf span.vz-ayrac svg { width: 1.1rem; height: 1.1rem; }
+}
