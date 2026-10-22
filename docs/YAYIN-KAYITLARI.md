@@ -4,6 +4,34 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 22 Ekim 2026 (öğle) — vaaz «Dua: Kulluğun Özü»: «Nasıl dua edelim?» örnek dua eki + günlük dualar eki
+
+- Zaman: 22 Ekim 2026 13:01:19–13:01:59 (Release), 13:08:11 (push), 13:11:06 (Pages), 13:12–13:16 (canlı
+  doğrulama), Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: bir meslektaş hocanın 22 Ekim
+  tavsiyesi («duanın ne olduğunu güzel ortaya koymuşsun ama nasıl dua edileceğine dair örnek koymamışsın; hadislerden
+  de dua örnekleri koysan»), kullanıcının «ne gerekiyorsa yap» ve «yarım kalan işi kaldığı yerden devam ettir» istekleri.
+- Kapsam: sabahki yayından sonra hazırlanan iki ek ve düzeltmeler, beş dilde:
+  - yeni 15. sayfa / web bölümü `#nasil-dua` «Ek: Nasıl dua edelim? Adım adım örnek bir dua»: hamd (Fâtiha 1/2),
+    salavat (Buhârî 3370), af dileme (Ebû Dâvûd 1516), dilek (Müslim 2721), dünya ve âhiret (Buhârî 6389),
+    anne baba ve kabul (İbrâhîm 14/40–41); «Kendi dilimizle» örnek dua kutusu; yeni sahne `nasil-dua`;
+  - «Ek: Günlük dualar» (26 dua; Arapça, okunuş, anlam) 16–19. sayfalarda, web `#gunluk-dualar`, sahne `gece-dua`;
+    7. sayfa tablosu Arapçalı; `secde-dua` ve `yildizli-gece` sahneleri İslâmî görsel denetimiyle yenilendi;
+  - Word/PDF 19 sayfa (`public/vaazlar/…`, PDF 1,12–1,39 MB); TR/FR duyuruya «ekte iki bölüm» paragrafı;
+    `src/styles/vaaz-sahne.css` günlük dua Arapçası ve ek PDF bağlantısı.
+- Release `vaaz-dua-kullugun-ozu`: 10 sunum dosyası `--clobber` ile yenilendi (kartlarda Arapça), boyutlar yerel
+  dosyalarla eşit; Latest değiştirilmedi.
+- İçerik commit'i `a90e5f1` (push `4c1c761..a90e5f1`, 34 dosya), dernek kimliği.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39768323332) **success**.
+- Kalite: `npm run dogrula:codex` 10/10 aşama (derleme 1947 sayfa; `test:web` 808 geçti, 118 atlandı);
+  `npm run test:vaaz-pdf` geçti. Çeviri denetimi fr/en/nl/de 1360 kayıt, HATA 0; Word 5 dil 19 sayfa, yazım 0;
+  sunum 5 dil 68 slayt, taşma 0, `cakisma_denetle.py` 0; site kopyaları teslimlerle SHA-256 eşit (10 dosya);
+  yasaklı ifade taraması 28 dosyada 0; yerel `web_kontrol.mjs` 22 görünüm, axe 0, 95 dosya, 10 bağlantı. Gözle:
+  5 dilde 15. sayfa (TR/EN/FR/NL/DE), NL/DE 28. slayt, DE 7. sayfa, web bölümü masaüstü açık + mobil koyu + NL mobil.
+- Canlı: `web_kontrol.mjs https://ulucamii.be` (5 dil) 22 görünüm, axe 0, 95 indirme, 10 Release sunumu (SHA-256),
+  10 diğer bağlantı geçti; 5 vaaz ve 5 duyuru yolu 200; canlı TR PDF yerel teslimle SHA-256 eşit.
+- Sınırlar: tavsiyede bulunan hocaya bağlantı WhatsApp'tan ayrıca gönderildi; Facebook paylaşımı yapılmadı
+  (istenmedi). Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 22 Ekim 2026 (sabah) — cami ekranı: günlük tema kartı (Esmâ yerine) + cihaz saati güveni
 
 - Zaman: 22 Ekim 2026 09:16:45 (push), 09:17:41 (derleme), 09:18:45 (Pages), 09:19–09:25 (canlı doğrulama),
