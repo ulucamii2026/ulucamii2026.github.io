@@ -4,6 +4,34 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 22 Ekim 2026 (sabah) — vaaz: «Dua: Kulluğun Özü» (23 Ekim 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 22 Ekim 2026 08:21 (Release), 08:21:52 (push), 08:24:09 (Pages), 08:25–08:30 (canlı doğrulama),
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «geçen haftaki gibi … daha da
+  profesyonel», «bütün karar ve yetki sende, full otonom ilerle» ve «İşleri tamamla» istekleri (aynı oturumda yayın).
+- Kapsam: TR sayfa `src/content/vaazlar/dua-kullugun-ozu.md` (19 temsilî sahne × 4 boy + `kapak-og.webp`, dört ana
+  fikir, 12 duraklı vaaz haritası, 23 nass kartı, 15 şema, Peygamberlerin duaları tablosu, yedi söz), FR/EN/NL/DE
+  çevirileri `src/content/vaaz-cevirileri/<dil>/dua-kullugun-ozu.md`, beş dilde Word/PDF (`public/vaazlar/…`; 14 sayfa,
+  PDF'ler emoji yazı tipi küçültmesiyle 0,93–1,08 MB), `src/styles/vaaz-sahne.css` eklentileri, TR/FR duyuru
+  `src/content/duyurular/{tr,fr}/cuma-vaazi-dua-kullugun-ozu.md` (EN/NL/DE FR duyuruyu gösterir). Vitrin otomatik.
+- Release `vaaz-dua-kullugun-ozu`: 10 dosya (5 dil × PowerPoint + sunum PDF, 68 slayt), boyutlar yerel dosyalarla
+  eşit. Latest yapılmadı; `ders-2026-10-19` Latest kaldı.
+- İçerik commit'i `15c0206` (push `7b3f6bf..15c0206`, 95 dosya), dernek kimliği.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/39733472275) **success**.
+- Kalite: `npm run dogrula:codex` 10/10 aşama geçti (derleme 1947 sayfa); `npm run test:vaaz-pdf` geçti. Çeviri
+  denetimi fr/en/nl/de 1168 kayıt, HATA 0; Word 5 dil 14 sayfa, yazım 0; sunum 5 dil 68 slayt, taşma 0, yazım 0,
+  `cakisma_denetle.py` 0; site kopyaları teslimlerle SHA-256 eşit; yasaklı ifade taraması 29 dosyada 0. Yerel
+  `web_kontrol.mjs`: 22 görünüm, axe 0, 87 dosya, 10 bağlantı.
+- Canlı: `web_kontrol.mjs https://ulucamii.be` (5 dil) 22 görünüm, axe 0, 87 indirme, 10 Release sunumu, 10 diğer
+  bağlantı geçti; 5 duyuru yolu (`/tr/duyurular/…`, `/fr/annonces/…`, `/en/announcements/…`, `/nl/mededelingen/…`,
+  `/de/mitteilungen/…`) 200.
+- Üretim: çeviriler Claude alt ajanları (dil başına word/web/figür ve sunum), denetim, düzeltme ve dışa dönük adımlar
+  Claude. Üretici düzeltmeleri: FR'de taşan çip sırası bir kutuya eksi yükseklik verip PowerPoint dosyasını açılmaz
+  yapıyordu (kaydetmeden önce eksi ölçü denetimi eklendi); çeviri dalında 17. slayt sığdırma ölçümü ve 62. slayt ana
+  cümle kutusu. Kaynak `D:/hutbeler ve vaazlar/kaynak-dua-kullugun-ozu-20261023/` (`YAYIN-VE-KALITE.md`, `DEVAM.md`).
+- Sınırlar: paylaşım mesajları (düz ve WhatsApp biçimli) hazır ama gönderilmedi; Facebook paylaşımı yapılmadı
+  (istenmedi). Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 22 Ekim 2026 (gece) — ihtida paketi emsal denetimi: EK-9 değerleri, son nüshada düzeltme, adrese teslim dilekçe
 
 - Zaman: 22 Ekim 2026 00:02 (Apps Script dağıtımı), 00:05:36 (push), 00:07:58 (Pages), 00:05–00:15 (canlı sınama),
