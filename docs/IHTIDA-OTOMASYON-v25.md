@@ -7,8 +7,8 @@
 - Form, başvuranın posta adresini ayrı sokak/numara, posta kodu, şehir ve ülke alanlarıyla alır. Kimlik numarası alanı yoktur.
 - Başvuru kaydı tamamlanınca özel Drive klasöründe kalıcı bir paket işi oluşturulur. Dakikalık Apps Script tetikleyicisi PDF'yi üretir; form HTTP isteği PDF ve e-posta işlemlerini beklemez.
 - Tek dosya, Müşavirlik paketinin sırasıyla: EK-9 (2 sayfa), dilekçe (2 sayfa), EK-10 (2 sayfa), kimlik/pasaport örneği. Olağan paket 7 sayfadır (17 Ekim 2026'ya dek 6); sığmayan uzun metinler açıklama ekine eklenir. Ayrıntı: aşağıdaki «17 Ekim 2026» bölümü.
-- Başvuranın rızayla verdiği imza dört imza alanına taşınır. İmzasız başvuruda bu alanlar boş kalır. İmzasız metin imzalanmış gibi konuşmaz.
-- Ön başvuru nüshasında gerçek tören tarihi uydurulmaz; şahit adları önerilir, şahit imzaları kullanılmaz. EK-9'da ön başvuru ibaresi bulunur; dilekçe gerçekleşmiş tören beyanı içermez.
+- Başvuranın rızayla verdiği imza, **ön başvuruda da son nüshada da** aynı biçimde EK-9'un arka yüzüne, dilekçenin iki yüzüne ve EK-10'un iki yüzüne taşınır (23 Ekim 2026 kararı, aşağıdaki «Tek imza» bölümü). İmzasız başvuruda bu alanlar boş kalır. İmzasız metin imzalanmış gibi konuşmaz.
+- Ön başvuru nüshasında gerçek tören tarihi uydurulmaz (dilekçenin ihtida tarihi ve yer-tarih satırı boş kalır); şahit adları önerilir, şahit imzaları kullanılmaz. EK-9 ile dilekçenin altında ön başvuru ibaresi bulunur. Başvuranın kendi imzası bu nüshada da üç belgededir.
 - Yönetici, “Son nüshayı onayla ve gönder” ile gerçek ihtida tarihini, adresi ve şahitleri kontrol eder. Kayıtlı şahit imzaları ancak o belgedeki işaretli teyitlerden gelir. Gelecekteki tören tarihi reddedilir.
 - Salih GÖR ve resmî unvanı basılır; Müşavirin ıslak imza alanı boş kalır. Millî kimlik numarası, belge numarası ve resmî düzenleme alanları kullanıcı kararına göre boş kalır.
 
@@ -73,7 +73,7 @@ Resmî teknik kaynaklar: [Apps Script V8 çalışma ortamı](https://developers.
 
 ## Deneme başvurusunu silme ve numaranın yeniden verilmesi — 29 Eylül 2026
 
-- Numara `referansMaxBul` ile defterdeki en büyük numara + 1 olarak üretilir. En son satırlar silinirse aynı `IH-YYYY-NNNN` sonraki gerçek başvuruya yeniden verilir.
+- Numara `referansMaxBul` ile defterdeki en büyük numara + 1 olarak üretilirdi. En son satırlar silinirse aynı `IH-YYYY-NNNN` sonraki gerçek başvuruya yeniden verilirdi. **23 Ekim 2026'dan beri verilmez:** numara sayacı azalmaz (aşağıdaki «Azalmayan referans numarası» bölümü).
 - Bir başvurunun izleri şunlardır: defter satırı; İhtida klasöründe `<ref> - <Ad>.pdf`, dört görsel (`vesikalik`, `kimlik-on`, `kimlik-arka`, `imza`), `<ref> - paket-islem.json`, `<ref> - Ihtida Belge Paketi - rN.pdf`; Script Property `IHTIDA_PAKET_IS_<ref>`; varsa iç defter meta kaydı. Satır tek başına silinirse yeni başvuru eski «tamam» işini ve deneme görsellerini devralabilir.
 - 29 Eylül 2026'da IH-2026-0006 ve IH-2026-0007 (Rıdvan'ın deneme başvuruları) bu izlerin tamamıyla kaldırıldı. Canlıda tek başvuruyu silen bir uç olmadığı için editöre geçici bir fonksiyon eklendi: önce kuru çalıştırıldı, sonra gerçek silme yapıldı ve fonksiyon geri kaldırıldı. Editör kaynağı işlem öncesiyle birebir aynı kaldı; `/exec` dağıtımı değişmedi. Dosyalar `silindi-deneme-2026-09-29 ` önekiyle yeniden adlandırılıp çöpe atıldı. Defter 7 → 5 satır; `ihtida-paket-durum` iki ref için `null`; iç defter yeniden üretildi. Araç ve adımlar: `~/.claude/skills/ulucamii-site/scripts/ihtida-basvuru-sil/` (depo dışı, `OKUBENI.md`).
 - Aynı iş sırasında bulunan hata düzeltildi ve **30 Eylül 2026 ≈07:32'de Apps Script v41 olarak canlıya alındı** (`ulucamii-Kod-v41.gs`, dağıtım `D:/tmp/gas/dagit_v41.py`):
@@ -91,7 +91,7 @@ Mühtedi Koordinatörlüğünde elle mükemmelleştirilen belgeler site formunun
 - **Belgeler.** EK-9 kalem yazısıyla; dilekçe Müşavirliğin Ekim 2026 formuyla (`public/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf`, `dilekceFormUret`); EK-10 Ekim 2026 açık rıza formuyla (`ek10-acik-riza-metni-2026-10.pdf`). Formdaki EK-10 bağlantısı ve onay sürümü `2026-10` oldu.
 - **Kalem kuralı.** Elle doldurulan her alan Allura, mürekkep `#1A3D9E` (`public/admin/kalem.js`, Python `kalem.py` ile aynı kelime oynatması). Allura PDF'ye **tam** gömülür (`subset:false`): fontkit alt kümesi bazı harfleri görünmez yapıyor (Caveat dersi). Panelde «Sade siyah yazı» yalnız açık talimatla seçilir.
 - **Vektör imza.** Form, çizilen imzanın çizgilerini PNG'nin yanında JSON olarak da gönderir (`gorseller.imzaVektor`, `{v:1,w,h,k,d}`, yalnız M/L komutları, ≤100 000 karakter). Sunucu bunu paketleyicinin çözücüsünden geçirir (`imza-vektor-gecersiz`, PNG'siz ya da «imzasız» seçiliyken `imza-fazla`). Belgelerde imza yol olarak, yuvarlak uçlu ve mürekkep renginde çizilir; Drive'da `<ref> - imza-vektor.json` olarak saklanır ve silme/temizlik izlerine dahildir. Vektörü olmayan eski başvurular PNG imzayla sürer. Kayıtlı şahit imzaları raster kalır, mürekkebe boyanır.
-- **İmza aktarımı.** Eylül ve Ekim 2026 sürümlerinde başvuranın imzası yalnız `imzaAktarimIzni` ile EK-9, dilekçe ve EK-10'a taşınır; v1 başvurularında eski davranış (imzalıysa aktar) sürer. Ön başvuru dilekçesi tören tarihi olmadığı için imzasız ve tarihsizdir; son nüshada yer-tarih «<cami şehri>, <ihtida tarihi>» olur.
+- **İmza aktarımı.** Eylül ve Ekim 2026 sürümlerinde başvuranın imzası yalnız `imzaAktarimIzni` ile EK-9, dilekçe ve EK-10'a taşınır; v1 başvurularında eski davranış (imzalıysa aktar) sürer. Dilekçenin yer-tarih satırı ve ihtida tarihi ön başvuruda tören bilinmediği için boştur; son nüshada yer-tarih «<cami şehri>, <ihtida tarihi>» olur. İmza ise 23 Ekim 2026'dan beri ön başvuruda da dilekçededir (aşağıdaki «Tek imza» bölümü; önceki «ön başvuru dilekçesi imzasız» kuralı kalktı).
 - **Sheets tuzağı (mevcut hata, düzeltildi).** Defter `2026-09-09` sürüm metnini tarihe çeviriyordu; okunan değer «09.09.2026» olunca yeni başvurular v1 sanılıyordu. Yazarken başa `'` eklenir; okurken `ek10SurumuCoz()` «09.09.2026…» ve «01.10.2026…» biçimlerini de tanır (panel + GAS).
 - **Kimlik sayfası.** `public/admin/kimlik-sayfa.js`, Python `kimlik_sayfa.py` düzeni: başlık, «SOYAD Ad», doğum tarihi, ön ve arka yüz **gerçek boyutta** (kart 85,6 × 54 mm, pasaport bilgi sayfası 125 × 88 mm), yuvarlak köşe. Kimlik numarası yazılmaz, OCR/MRZ yoktur.
 - **Kırpma penceresi.** Formda kimlik ön/arka seçilince `src/scripts/kimlik-kirp.ts` kartın kenarlarını tarayıcıda bulur (Otsu eşiği, en büyük bölge, PCA köşeleri, kenar doğrusu oturtma), perspektifi düzeltip 300 dpi karta çevirir (1011 × 638; pasaport 1476 × 1039). Dört köşe sürüklenebilir ve klavyeyle ayarlanır (oklar, Shift ×5); «Döndür», «Kırpmadan kullan», «Vazgeç» vardır. Belge türü değişince kırpılmış görsel yeni orana yeniden açılır. Görsel tarayıcıdan çıkmadan işlenir. Kırpılmamış fotoğraf PDF'de kart genişliğine sığdırılır.
@@ -152,6 +152,31 @@ imza ve kimlik sayfası aynıydı. Kalan dört fark kapatıldı:
   - Alıcılar yalnız dernek kutularıydı: info@, imam@ ve altyapı adresi.
   - Sonunda `test-temizle` 1 satır sildi. Defterde 3 ihtida satırı kaldı, paket izi de silindi.
   - Tuzak: sunucu telefonu boşluksuz +E.164 ister; aksi hâlde `basvuran-telefon-gecersiz` döner.
+
+## Tek imza ve azalmayan referans numarası — 23 Ekim 2026
+
+Karar (Rıdvan KAYAHAN, 23 Ekim 2026): «bundan sonra tek bir imza hem belgeye hem dilekçeye hem de açık rıza metninin
+olduğu ek belgeye otomatik basılsın».
+
+- **Kural.** Başvuran ekranda imza attıysa (imza aktarım izni formda zaten vardır) aynı imza, PNG ve vektör olarak,
+  hem ön başvuru hem son nüsha paketinde üç belgeye basılır: EK-9 arka yüzü, dilekçe (2 yüz) ve EK-10 (2 yüz).
+  Eskiden ön başvuruda dilekçe imzasız çıkıyordu.
+- **Ön başvuruda boş kalanlar.** Dilekçenin yer-tarih satırı ve ihtida tarihi ön başvuruda boştur; tören günü son
+  nüshada dolar. İmza bu alanlara bağlı değildir.
+- **İmzasız başvuru.** Başvuran elle imzalayacaksa (`imzaYok` ya da aktarım izni yok) üç belgede de imza alanı boş kalır,
+  eskisi gibi.
+- **Kod.** `public/admin/ihtida-paket.js` dilekçeye imzayı `sonNusha` koşulundan çıkardı (`TEK_IMZA` bayrağı); admin
+  panelindeki tek başına «Dilekçe» düğmesi (`panel.js`) de tören tarihi boşken imzayı basar.
+- **Sağlık.** Apps Script sağlık cevabında `ihtidaTekImza` ve `referansSayaci` bayrakları yeni sürümü gösterir.
+- **Referans numarası artık azalmaz.** Kök neden: `referansMaxBul` yalnız defter satırlarına bakıyordu. `test-temizle`
+  TESTOGLU satırlarını silince IH-2026-0004 numarası gerçek bir başvurana yeniden verildi. Şimdi önek ve yıl başına
+  yüksek-su-işareti Script Properties'te (`REF_SON_<ÖNEK>_<YIL>`) tutulur; okuma ve yazma betik kilidi içindedir.
+  Sonraki numara = en çok defter numarası + 1 ile saklanan değer + 1'in büyüğü. IH, UC, ST ve EV öneklerinin hepsi bunu
+  kullanır. Özellik okunamaz ya da yazılamazsa başvuru düşmez, eski davranışa dönülür.
+- **Testler.** `tests/ihtida-contract.test.mjs` (ön başvuruda 1–5. sayfalar imzalı, imzasızda boş, yalnız PNG ile raster,
+  adrese teslimde imzalı), `tests/ihtida-paket-akis.test.mjs` (numara azalmaz, sayaç hatasında başvuru düşmez, sağlık
+  bayrakları), `tests/web/ihtida.spec.mjs` (tarayıcıda iki paket), `tests/web/panel-dilekce-imza.spec.mjs` (yeni; panel
+  «Dilekçe» düğmesi).
 
 ## Bundan sonraki kullanım
 

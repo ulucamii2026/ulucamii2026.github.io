@@ -12,6 +12,9 @@ import { camiCoz } from './cami-secimi.js';
 import { adBicimleri } from './kalem.js';
 import { kimlikSayfasiEkle } from './kimlik-sayfa.js';
 
+/** 23 Eki 2026: tek imza kuralı derlenmiş pakette varsa sağlık cevabı bunu gösterir (ihtidaTekImza). */
+export const TEK_IMZA = true;
+
 export async function ihtidaPaketiUret(g) {
   const { PDFDocument, rgb } = g.pdfLib;
   for (const [ad, bytes] of [['Kalem yazı tipi (Allura)', g.kalemFontBytes], ['EK-9 şablonu', g.sablonBytes], ['EK-10 şablonu', g.ek10SablonBytes], ['Dilekçe şablonu', g.dilekceSablonBytes]]) {
@@ -65,8 +68,12 @@ export async function ihtidaPaketiUret(g) {
   if (uyarilar.includes('vesikalik-gomulemedi')) throw new Error('Vesikalık fotoğraf okunamadı. JPEG veya PNG yükleyin.');
   if (uyarilar.includes('alan-kisaltildi') || uyarilar.includes('yazi-kucuk')) throw new Error('Bazı bilgiler EK-9 alanına okunur biçimde sığmıyor. Bilgileri kontrol ederek ayrı EK-9 oluşturun.');
 
-  // Dilekçe, töreni ve tarihini beyan eder: ön başvuruda ihtida tarihi, yer-tarih ve imza boş kalır («imzaya hazır»).
-  // Son nüshada imza, başvuranın açık izniyle aktarılır; yer ve tarih törenin yeri ve günüdür (Koordinatörlük emsali).
+  // Dilekçe, töreni ve tarihini beyan eder: ön başvuruda ihtida tarihi ve yer-tarih boş kalır (tören henüz bilinmiyor);
+  // son nüshada yer ve tarih törenin yeri ve günüdür (Koordinatörlük emsali).
+  // İMZA (Rıdvan'ın 23 Eki 2026 kararı: «bundan sonra tek bir imza hem belgeye hem dilekçeye hem de açık rıza
+  // metninin olduğu ek belgeye otomatik basılsın»): başvuran ekranda imza attıysa ve izin verdiyse (izin, imzalı
+  // gönderimde zorunludur) AYNI imza ön başvuruda da, son nüshada da EK-9'a, dilekçeye ve EK-10'a basılır.
+  // İmzasız başvuruda (elle imza) üçü de boş kalır.
   const sonNusha = !g.onBasvuru && Boolean(String(v.ihtidaTarihi || '').trim());
   const dilekce = await dilekceFormUret({
     pdfLib: g.pdfLib, fontkit: g.fontkit, fontBytes: g.fontBytes, kalemFontBytes: g.kalemFontBytes, sablonBytes: g.dilekceSablonBytes,
@@ -74,7 +81,7 @@ export async function ihtidaPaketiUret(g) {
     // v.dilekce: başvuranın kendi beyanı (son nüsha ekranındaki EK-9 düzeltmeleri dilekçeye girmez).
     veri: { ...v, ...(v.dilekce || {}), ihtidaTarihi: sonNusha ? v.ihtidaTarihi : '' },
     yerTarih: sonNusha ? `${cami.sehir || 'Marche-en-Famenne'}, ${v.ihtidaTarihi}` : '',
-    imza: sonNusha && aktarim ? imza.basvuranImza : '', imzaVektor: sonNusha && aktarim ? imza.basvuranImzaVektor : '',
+    imza: aktarim ? imza.basvuranImza : '', imzaVektor: aktarim ? imza.basvuranImzaVektor : '',
     imzaAktarimIzni: aktarim,
   });
   const ek10 = await ek10Uret({
@@ -141,7 +148,7 @@ export async function ihtidaPaketiUret(g) {
     for (const [ad, deger] of uzunAlanlar) { y -= 10; satirYaz(basliklar[ad] || ad, 11); satirYaz(deger); }
   }
   if (g.onBasvuru) {
-    // Ön başvuru damgası EK-9 ile imzaya hazır dilekçede; EK-10 rızası formda verildiği için geçerlidir.
+    // Ön başvuru damgası EK-9 ile dilekçede; EK-10 rızası formda verildiği için geçerlidir.
     const font = await paket.embedFont(g.fontBytes, { subset: true });
     for (const sayfa of paket.getPages().slice(0, ek9Sayfa + dilekceSayfa)) {
       const metin = 'ÖN BAŞVURU / PRÉ-DEMANDE / PRE-APPLICATION — Tören ve yetkili onayı bekleniyor';

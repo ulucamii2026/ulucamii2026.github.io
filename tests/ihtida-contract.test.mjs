@@ -303,8 +303,26 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
     assert.doesNotMatch(akis(b, i), /1 J/, (i + 1) + '. sayfa imzasız nüshada boş');
     assert.equal(rasterSayisi(a, i), 0, (i + 1) + '. sayfada raster olmamalı');
   }
-  for (const i of [2, 3]) assert.doesNotMatch(akis(o, i), /1 J/, 'ön başvuruda dilekçe imzasız (tören tarihi yok)');
-  for (const i of [4, 5]) assert.match(akis(o, i), /1 J/, 'ön başvuruda EK-10 rızası formda verildiği için imzalı');
+  // 23 Eki 2026 (Rıdvan: «tek bir imza hem belgeye hem dilekçeye hem de açık rıza metninin olduğu ek belgeye otomatik
+  // basılsın»): ön başvuruda da AYNI imza EK-9 arka yüzüne, dilekçenin iki yüzüne ve EK-10'un iki yüzüne basılır.
+  for (const i of [1, 2, 3, 4, 5]) assert.match(akis(o, i), /1 J/, (i + 1) + '. sayfada ön başvuruda da vektör imza');
+  for (const i of [1, 2, 3, 4, 5]) assert.equal(rasterSayisi(o, i), 0, (i + 1) + '. sayfada (ön başvuru) raster olmamalı');
+  // Tören henüz yok: ön başvuruda dilekçenin ihtida tarihi ve yer-tarih satırı boş kalır, son nüshada dolu gelir.
+  const dilekceMetni = (yol) => metin(yol, 3).replace(/[ 	]+/g, '');
+  assert.ok(!dilekceMetni(onYol).includes('08/09/2026'), 'ön başvuruda tören tarihi uydurulmaz');
+  assert.ok(dilekceMetni(imzaliYol).includes('08/09/2026'), 'son nüshada tören tarihi dilekçededir');
+  // Ekranda imza atmayan başvuran (elle imza): ön başvuruda da hiçbir belgeye imza basılmaz.
+  const onImzasiz = await ihtidaPaketiUret({ ...g, onBasvuru: true, veri: { ...g.veri, ihtidaTarihi: '' }, basvuranImza: '', basvuranImzaVektor: '', imzasiz: true, ek10Onayi: false, imzaAktarimIzni: false });
+  const oi = await pdfLib.PDFDocument.load(onImzasiz);
+  for (const i of [1, 2, 3, 4, 5]) assert.doesNotMatch(akis(oi, i), /1 J/, (i + 1) + '. sayfa imzasız ön başvuruda boş');
+  // Yalnız PNG imzalı eski başvuru (vektör yok): imza üç belgeye de PNG olarak, ön başvuruda da basılır.
+  const onPng = await ihtidaPaketiUret({ ...g, onBasvuru: true, veri: { ...g.veri, ihtidaTarihi: '' }, basvuranImzaVektor: '' });
+  const op = await pdfLib.PDFDocument.load(onPng);
+  for (const i of [1, 2, 3, 4, 5]) assert.ok(rasterSayisi(op, i) >= 1, (i + 1) + '. sayfada PNG imza (ön başvuru, vektörsüz)');
+  // Adrese teslim dilekçe baskısı da (ön başvuru) aynı imzayı taşır.
+  const onAdres = await ihtidaPaketiUret({ ...g, onBasvuru: true, veri: { ...g.veri, ihtidaTarihi: '', teslimat: { yontem: 'adres' } } });
+  const oa = await pdfLib.PDFDocument.load(onAdres);
+  for (const i of [2, 3]) assert.match(akis(oa, i), /1 J/, (i + 1) + '. sayfa (adrese teslim dilekçe, ön başvuru) imzalı');
   assert.match(metin(onYol, 3), /ÖN BAŞVURU/);
   assert.doesNotMatch(metin(onYol, 5), /ÖN BAŞVURU/);
   assert.equal(rasterSayisi(a, 6), 2, 'Kimlik ön/arka aynı sayfada');

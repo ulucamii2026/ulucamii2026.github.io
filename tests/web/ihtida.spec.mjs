@@ -268,13 +268,35 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async
       kalemFontBytes: await getir('/fonts/Allura-Regular.ttf'), dilekceSablonBytes: await getir('/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'),
       ek10SablonBytes: await getir('/belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'), ek10Surumu: '2026-10', imzaAktarimIzni: true,
       foto: resim, kimlikOn: resim, kimlikArka: resim, belgeTuru: 'kimlik', basvuranImza: resim, basvuranImzaVektor: imzaVektor, ek10Onayi: true });
+    // 23 Eki 2026 (tek imza kararı): ön başvuru nüshasında da AYNI imza EK-9 arka yüzüne, dilekçenin iki yüzüne ve EK-10'un iki yüzüne basılır.
+    const onPaket = await ihtidaPaketiUret({ ...kaynak, onBasvuru: true, veri: { ...kaynak.veri, ihtidaTarihi: '' },
+      kalemFontBytes: await getir('/fonts/Allura-Regular.ttf'), dilekceSablonBytes: await getir('/belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'),
+      ek10SablonBytes: await getir('/belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'), ek10Surumu: '2026-10', imzaAktarimIzni: true,
+      foto: resim, kimlikOn: resim, kimlikArka: resim, belgeTuru: 'kimlik', basvuranImza: resim, basvuranImzaVektor: imzaVektor, ek10Onayi: true });
     const doc = await window.PDFLib.PDFDocument.load(bytes);
     const paketDoc = await window.PDFLib.PDFDocument.load(paket);
+    const { PDFName, PDFArray, decodePDFRawStream } = window.PDFLib;
+    // Vektör imza yuvarlak uçlu çizgidir (`1 J`); kalem yazısı ve şablon bu işareti taşımaz.
+    const imzaSayfalari = async baytlar => {
+      const d = await window.PDFLib.PDFDocument.load(baytlar), sonuc = [];
+      d.getPages().forEach((sayfa, i) => {
+        const c = sayfa.node.get(PDFName.of('Contents'));
+        const akis = (c instanceof PDFArray ? c.asArray() : [c]).map(r => new TextDecoder('latin1').decode(decodePDFRawStream(d.context.lookup(r)).decode())).join('\n');
+        if (/(^| )1 J/m.test(akis)) sonuc.push(i);
+      });
+      return sonuc;
+    };
     const base64 = veri => { let binary = ''; for (const byte of veri) binary += String.fromCharCode(byte); return btoa(binary); };
-    return { sayfa: doc.getPageCount(), pdf: base64(bytes), paket: base64(paket), paketSayfa: paketDoc.getPageCount() };
+    return { sayfa: doc.getPageCount(), pdf: base64(bytes), paket: base64(paket), paketSayfa: paketDoc.getPageCount(),
+      sonNushaImza: await imzaSayfalari(paket), onBasvuruImza: await imzaSayfalari(onPaket), onBasvuruSayfa: (await window.PDFLib.PDFDocument.load(onPaket)).getPageCount() };
   });
   expect(sonuc.sayfa).toBe(2);
   expect(sonuc.paketSayfa).toBe(7);   // EK-9 ×2, dilekçe ×2, EK-10 ×2, kimlik
+  expect(sonuc.onBasvuruSayfa).toBe(7);
+  // Tek imza: EK-9 arka yüzü (2), dilekçe (3, 4) ve EK-10 (5, 6) — hem son nüshada hem ön başvuruda. (Son nüshanın EK-9 ön yüzünde
+  // ayrıca şahit imzaları vardır; başvuranın imzası yalnız bu beş sayfadadır.)
+  expect(sonuc.sonNushaImza).toEqual(expect.arrayContaining([1, 2, 3, 4, 5]));
+  expect(sonuc.onBasvuruImza).toEqual(expect.arrayContaining([1, 2, 3, 4, 5]));
   writeFileSync(info.outputPath('ek9-tarayici.pdf'), Buffer.from(sonuc.pdf, 'base64'));
   writeFileSync(info.outputPath('tam-paket-tarayici.pdf'), Buffer.from(sonuc.paket, 'base64'));
 });

@@ -1,4 +1,4 @@
-import { ihtidaPaketiUret } from '../../public/admin/ihtida-paket.js';
+import { ihtidaPaketiUret, TEK_IMZA } from '../../public/admin/ihtida-paket.js';
 import { camiCoz } from '../../public/admin/cami-secimi.js';
 import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli } from '../../public/admin/ek9-hazirlik.js';
 import { imzaVektorCoz } from '../../public/admin/imza-ciz.js';
@@ -58,3 +58,4 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit) 
 }
 
 export { camiCoz, imzaVektorCoz, ek9AlanlariGecerli };
+export const tekImza = TEK_IMZA;   // sağlık cevabı: ihtidaTekImza

@@ -160,6 +160,9 @@ function doGet(e) {
     // 21 Eki 2026: son nüshada düzeltilebilen EK-9 alanları + adrese teslim dilekçe şablonu.
     ihtidaEk9Alanlari: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.ek9AlanlariGecerli === "function",
     ihtidaAdresDilekcesi: typeof IHTIDA_PDF_KAYNAKLARI !== "undefined" && Boolean(IHTIDA_PDF_KAYNAKLARI.dilekceAdresSablonBytes),
+    // 23 Eki 2026: tek imza EK-9, dilekçe ve EK-10'a ön başvuruda da basılır; referans numaraları azalmaz (REF_SON_*).
+    ihtidaTekImza: typeof IhtidaPdf !== "undefined" && IhtidaPdf.tekImza === true,
+    referansSayaci: typeof referansMaxBul === "function" && typeof REFERANS_SON_EK === "string",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
     // v42: envanter formu açık mı? Yalnız ENVANTER_AYAR'dan okunur; paket ya da modül yoksa her zaman kapalı.
@@ -300,9 +303,19 @@ function satirBulGenel(sayfa, ref, refSutunu) {
   return 0;
 }
 
+var REFERANS_SON_EK = "REF_SON_"; // 23 Eki 2026: azalmayan numara sayacı özelliklerinin öneki (REF_SON_IH_2026)
 /** Bir grup sayfada (v1 + v2) "ÖNEK-YYYY-NNNN" biçimindeki en büyük NNNN'den bir sonrakini döndürür.
-    Referans her zaman 2. sütundadır (v1 ve v2 defterlerinin tümünde). */
-function referansMaxBul(sayfalar, onEk) {
+    Referans her zaman 2. sütundadır (v1 ve v2 defterlerinin tümünde).
+
+    23 Eki 2026 (AZALMAYAN SAYAÇ): Numara artık yalnız defterdeki satırlara bakmaz. Canlı denemeler (TESTOGLU) test-temizle
+    ile silinince aynı numara sonraki GERÇEK başvurana yeniden verilmişti (IH-2026-0004: üç eski deneme paketinin e-postası ve
+    PDF'i aynı referansı taşıyordu). Her önek+yıl için dağıtılan en büyük sıra numarası Script Property'de saklanır
+    (REF_SON_<ÖNEK>_<YIL>); sonraki numara = max(defter en büyüğü + 1, saklanan + 1) ve dağıtılırken saklanan güncellenir.
+    Dağıtılan numara bir daha ASLA verilmez (başvuru sonradan düşse, satır silinse de). ÇAĞIRAN SCRIPT KİLİDİ ALTINDA
+    OLMALIDIR (kayıt, ihtida, envanter, seviye çağıranlarının hepsi öyledir): okuma-yazma çifti kilitle atomiktir.
+    Özellik okunamaz/yazılamazsa eski davranış (yalnız defter) sürer; başvuru bunun yüzünden düşmez.
+    `yil` verilmezse (eski çağıran) özellik anahtarı yıldan bağımsız olur. */
+function referansMaxBul(sayfalar, onEk, yil) {
   var sira = 1;
   var desen = new RegExp("^" + onEk + "-\\d{4}-(\\d{4})");
   sayfalar.forEach(function (sayfa) {
@@ -313,6 +326,19 @@ function referansMaxBul(sayfalar, onEk) {
       if (e) sira = Math.max(sira, parseInt(e[1], 10) + 1);
     }
   });
+  var ozellikler = null, anahtar = REFERANS_SON_EK + onEk + "_" + (yil ? String(yil) : "");
+  try {
+    ozellikler = PropertiesService.getScriptProperties();
+    var kayitli = parseInt(ozellikler.getProperty(anahtar), 10);
+    if (kayitli > 0 && kayitli + 1 > sira) sira = kayitli + 1;
+  } catch (hata) {
+    ozellikler = null;
+    console.warn("referans-sayaci-okunamadi " + onEk);
+  }
+  if (ozellikler) {
+    try { ozellikler.setProperty(anahtar, String(sira)); }
+    catch (hata) { console.warn("referans-sayaci-yazilamadi " + onEk); }
+  }
   return sira;
 }
 
@@ -1326,7 +1352,7 @@ function kayitPostIsleV2(v) {
       if (sinirKodu) { console.warn("kayit: hacim siniri (" + sinirKodu + ")"); return json({ ok: false, hata: sinirKodu }); }
 
       var sayfaV1 = v1SayfaBulTablo("TABLO_ID", AYAR.tabloAdi);
-      ref = "UC-" + AYAR2.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "UC")).slice(-4);
+      ref = "UC-" + AYAR2.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "UC", AYAR2.yil)).slice(-4);
 
       var zamanDate = new Date();
       var meta = { ref: ref, zaman: Utilities.formatDate(zamanDate, "Europe/Brussels", "dd.MM.yyyy HH:mm"), dil: v.dil };
@@ -2153,7 +2179,7 @@ function ihtidaPostIsleV2(v) {
       if (sinirKodu) { console.warn("ihtida: hacim siniri (" + sinirKodu + ")"); return json({ ok: false, hata: sinirKodu }); }
 
       var sayfaV1 = v1SayfaBulTablo("IHTIDA_TABLO_ID", AYAR_IHTIDA.tabloAdi);
-      ref = "IH-" + AYAR2_IHTIDA.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "IH")).slice(-4);
+      ref = "IH-" + AYAR2_IHTIDA.yil + "-" + ("0000" + referansMaxBul([sayfaV1, sayfaV2], "IH", AYAR2_IHTIDA.yil)).slice(-4);
 
       var zamanDate = new Date();
       var meta = { ref: ref, zaman: Utilities.formatDate(zamanDate, "Europe/Brussels", "dd.MM.yyyy HH:mm"), dil: v.dil };

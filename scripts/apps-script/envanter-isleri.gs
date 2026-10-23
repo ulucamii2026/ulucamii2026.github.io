@@ -170,7 +170,7 @@ function envanterPostIsle(v) {
     if (!yanit) {
       envanterYetimleriSil(t.bildirim, anahtar);
       var ref = "EV-" + Utilities.formatDate(simdi, "Europe/Brussels", "yyyy") + "-" +
-        ("0000" + referansMaxBul([t.gorevli], "EV")).slice(-4);
+        ("0000" + referansMaxBul([t.gorevli], "EV", Utilities.formatDate(simdi, "Europe/Brussels", "yyyy"))).slice(-4);
       var baglam = { zaman: simdi, ref: ref, anahtar: anahtar };
       // Önce Bildirim, sonra Görevli: Görevli satırı gönderimin tamamlandığını gösterir (tekrar denetimi ona bakar).
       envanterSatirlariYaz(t.bildirim, EnvanterVeri.bildirimSatirlari(d.veri, baglam));

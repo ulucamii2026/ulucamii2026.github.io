@@ -1152,8 +1152,9 @@ async function ek9Uretimi(dugme) {
 }
 
 /* Müşavirliğe gidecek C4 zarfın dilekçesi: Ekim 2026 «İhtida Belgesi Talep Dilekçesi» formu (dört dil, iki sayfa),
-   alanlar mavi dolma kalemle. Dilekçe töreni ve tarihini beyan eder: tören tarihi yazılmazsa tarih, yer-tarih ve
-   imza boş kalır («imzaya hazır»). İmza ancak başvuranın aktarım izniyle konur. Bkz. public/admin/dilekce.js */
+   alanlar mavi dolma kalemle. Dilekçe töreni ve tarihini beyan eder: tören tarihi yazılmazsa tören tarihi ve yer-tarih
+   boş kalır (ön başvuru). İmza (23 Eki 2026 kararı: tek imza EK-9'a, dilekçeye ve EK-10'a otomatik basılır) tören
+   tarihine bağlı değildir; başvuranın aktarım izniyle her durumda konur. Bkz. public/admin/dilekce.js */
 let dilekceModul = null;
 async function dilekceUretimi(dugme) {
   const ref = dugme.dataset.dilekce;
@@ -1171,12 +1172,12 @@ async function dilekceUretimi(dugme) {
     const surum = ek10SurumuCoz(k['EK-10 sürümü']);
     const izin = surum === 'v1' || k['İmza aktarım izni'] === 'Evet';
     const ham = (j.gorseller && j.gorseller.imza) || j.basvuranImza || '';
-    const girilen = prompt('Gerçek ihtida (tören) tarihi, gg/aa/yyyy.\n\nBoş bırakırsanız tören tarihi, yer-tarih ve imza boş kalır (imzaya hazır dilekçe).', '');
+    const girilen = prompt('Gerçek ihtida (tören) tarihi, gg/aa/yyyy.\n\nBoş bırakırsanız tören tarihi ve yer-tarih boş kalır (ön başvuru dilekçesi); başvuranın imzası yine de basılır.', '');
     if (girilen === null) { dugme.textContent = eskiMetin; return; }
     const torenTarihi = ek9Tarih(girilen.trim().replace(/[.-]/g, '/'));
     if (torenTarihi && !/^\d{2}\/\d{2}\/\d{4}$/.test(torenTarihi)) throw new Error('Tarihi gg/aa/yyyy biçiminde yazın.');
-    const imza = torenTarihi && izin ? ham : '';
-    if (torenTarihi && !imza && !confirm('Bu başvuruda aktarılabilecek imza yok (başvuran «ekranda imza atamıyorum» demiş ya da izin vermemiş olabilir).\n\nDilekçe imza yeri boş üretilsin mi? Mühtedi kalemle imzalar.')) {
+    const imza = izin ? ham : '';
+    if (!imza && !confirm('Bu başvuruda aktarılabilecek imza yok (başvuran «ekranda imza atamıyorum» demiş ya da izin vermemiş olabilir).\n\nDilekçe imza yeri boş üretilsin mi? Mühtedi kalemle imzalar.')) {
       dugme.textContent = eskiMetin;
       return;
     }

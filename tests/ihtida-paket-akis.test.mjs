@@ -131,9 +131,8 @@ test('Ekim 2026 EK-10 ve vektör imza: tarihe dönmüş sürüm hücresi tanın�
   };
   const gorselVar = i => (doc.getPage(i).node.Resources().lookup(PDFName.of('XObject'))?.keys() || [])
     .some(ad => doc.context.lookup(doc.getPage(i).node.Resources().lookup(PDFName.of('XObject')).get(ad))?.dict?.get(PDFName.of('Subtype'))?.toString() === '/Image');
-  // Ön başvuru: imza EK-9 arka yüzüne ve EK-10'un iki yüzüne yol olarak; dilekçe tören tarihi gelene dek imzasız.
-  for (const i of [1, 4, 5]) assert.match(akis(i), /1 J/, (i + 1) + '. sayfada vektör imza');
-  for (const i of [2, 3]) assert.doesNotMatch(akis(i), /1 J/, (i + 1) + '. sayfa (dilekçe) ön başvuruda imzasız');
+  // Ön başvuru: tek imza (23 Eki 2026 kararı) EK-9 arka yüzüne, dilekçenin ve EK-10'un iki yüzüne yol olarak basılır.
+  for (const i of [1, 2, 3, 4, 5]) assert.match(akis(i), /1 J/, (i + 1) + '. sayfada vektör imza');
   for (const i of [1, 2, 3, 4, 5]) assert.equal(gorselVar(i), false, (i + 1) + '. sayfada raster olmamalı');
   assert.match(akis(4), /0\.1 0\.24 0\.62 RG/, 'mürekkep #1A3D9E');
 });
@@ -294,7 +293,8 @@ test('Son nüsha onayı idempotenttir; arşiv değiştirilirse e-posta durur', a
   assert.equal(ctx.ihtidaPaketIsiOku(k.Referans).durum, 'hata'); assert.equal(sent.length, 3);
 });
 
-// 29 Eyl 2026: silinen deneme başvurusunun numarası (referansMaxBul) sonraki gerçek başvuruya yeniden verilir.
+// 29 Eyl 2026: silinen deneme başvurusunun numarası sonraki gerçek başvuruya yeniden verilirdi; çöpteki eski dosyalar yenisini
+// gölgelemesin diye bu savunma kalır. 23 Eki 2026'dan beri numara yeniden verilmez (aşağıdaki «azalmayan sayaç» testi).
 test('Yeniden verilen numarada çöpteki eski iş dosyası ve görseller yeni başvuruyu gölgelemez', () => {
   const { ctx } = ortam(), klasor = ctx.ihtidaKlasorGetir(), ref = 'IH-2099-0006';
   const eskiIs = klasor.createFile(ctx.Utilities.newBlob(JSON.stringify({ ref, durum: 'tamam', alicilar: [] }), 'application/json', ref + ' - paket-islem.json'));
@@ -326,4 +326,49 @@ test('Test temizliği ihtida satırıyla birlikte aynı numaranın iş dosyasın
   assert.equal(benzer.isTrashed(), false);
   assert.equal(props.has('IHTIDA_PAKET_IS_' + hedef), false);
   assert.equal(props.has('IHTIDA_PAKET_IS_' + diger), true);
+});
+
+// 23 Eki 2026: IH-2026-0004 üç deneme paketinin e-postasında/PDF'inde zaten kullanılmıştı; test-temizle satırı silince aynı numara
+// ilk GERÇEK başvurana yeniden verildi. Sayaç artık defterden bağımsız olarak azalmaz (Script Property REF_SON_<ÖNEK>_<YIL>).
+function referansSayfasi(refler) {
+  const satirlar = refler;   // her eleman bir referans; sütun 2 referanstır
+  return { satirlar, getLastRow: () => satirlar.length + 1,
+    getRange: (r, c, nr) => ({ getValues: () => satirlar.slice(r - 2, r - 2 + nr).map(ref => [ref]) }) };
+}
+
+test('Referans numarası azalmaz: silinen son başvurunun numarası bir daha verilmez', () => {
+  const { ctx, props } = ortam();
+  const defter = referansSayfasi(['IH-2026-0001', 'IH-2026-0002', 'IH-2026-0003']);
+  assert.equal(ctx.referansMaxBul([defter], 'IH', '2026'), 4, 'defterdeki en büyükten sonraki');
+  assert.equal(props.get('REF_SON_IH_2026'), '4', 'dağıtılan numara kaydedilir');
+  // Deneme (TESTOGLU) 0004'ü aldı, sonra test-temizle satırı sildi: defter yine 0003'te kalır.
+  defter.satirlar.push('IH-2026-0004');
+  defter.satirlar.pop();
+  assert.equal(ctx.referansMaxBul([defter], 'IH', '2026'), 5, 'silinen 0004 yeniden verilmez');
+  assert.equal(ctx.referansMaxBul([referansSayfasi([])], 'IH', '2026'), 6, 'defter boşalsa da sayaç geri gitmez');
+  // Defterde saklanandan büyük bir numara varsa (elle eklenmiş satır) o esas alınır.
+  assert.equal(ctx.referansMaxBul([referansSayfasi(['IH-2026-0020'])], 'IH', '2026'), 21);
+  assert.equal(props.get('REF_SON_IH_2026'), '21');
+  // Önekler birbirinden, yıllar birbirinden bağımsız sayılır; başka önek bu sayaca dokunmaz.
+  assert.equal(ctx.referansMaxBul([referansSayfasi([])], 'UC', '2026'), 1);
+  assert.equal(ctx.referansMaxBul([referansSayfasi([])], 'ST', '2026'), 1);
+  assert.equal(ctx.referansMaxBul([referansSayfasi([])], 'IH', '2027'), 1);
+  assert.equal(props.get('REF_SON_IH_2026'), '21');
+  // v1 + v2 defterleri birlikte taranır; sayfa yoksa (null) atlanır.
+  assert.equal(ctx.referansMaxBul([null, referansSayfasi(['IH-2026-0040']), referansSayfasi(['IH-2026-0030'])], 'IH', '2026'), 41);
+});
+
+test('Sayaç özelliği okunamaz ya da yazılamazsa başvuru düşmez; defterdeki numaraya dönülür', () => {
+  const { ctx } = ortam();
+  ctx.PropertiesService = { getScriptProperties: () => { throw new Error('quota'); } };
+  assert.equal(ctx.referansMaxBul([referansSayfasi(['IH-2026-0007'])], 'IH', '2026'), 8);
+  ctx.PropertiesService = { getScriptProperties: () => ({ getProperty: () => '9', setProperty: () => { throw new Error('quota'); } }) };
+  assert.equal(ctx.referansMaxBul([referansSayfasi(['IH-2026-0007'])], 'IH', '2026'), 10);
+});
+
+test('Sağlık cevabı tek imza kuralını ve azalmayan sayacı bildirir', () => {
+  const { ctx } = ortam();
+  const saglik = ctx.doGet({ parameter: {} });
+  assert.equal(saglik.ihtidaTekImza, true);
+  assert.equal(saglik.referansSayaci, true);
 });

@@ -434,7 +434,7 @@ function seviyePostIsle(v) {
     if (!erken) {
       sonuc = SeviyeTesti.bankaPuanla({ cevaplar: v.cevaplar, atla: v.atla });
       ref = "ST-" + Utilities.formatDate(new Date(), "Europe/Brussels", "yyyy") + "-" +
-        ("0000" + referansMaxBul([sayfa], "ST")).slice(-4);
+        ("0000" + referansMaxBul([sayfa], "ST", Utilities.formatDate(new Date(), "Europe/Brussels", "yyyy"))).slice(-4);
       kayit = seviyeKayitKur(v, ref, new Date(), anahtar);
       satirEkle(sayfa, seviyeSatirKur(kayit, sonuc));
       SpreadsheetApp.flush();
