@@ -4,6 +4,42 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 23 Ekim 2026 — ihtida paketi: tek imza üç belgeye (ön başvuruda da) + azalmayan referans numarası + deneme kayıtlarının kökten temizliği
+
+- Zaman: commit ve push 09:04, Pages 09:07 (Run `39915496399`, build ve deploy başarılı), Apps Script yeni sürümü 08:56,
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan KAYAHAN'ın 23 Ekim 2026 kararı («bundan sonra
+  tek bir imza hem belgeye hem dilekçeye hem de açık rıza metninin olduğu ek belgeye otomatik basılsın») ve «bütün yetki ve
+  karar sende» yetkisi.
+- Kapsam:
+  - başvuranın tek imzası hem ön başvuru hem son nüsha paketinde EK-9 arka yüzüne, dilekçeye ve EK-10'a basılır; ön
+    başvuruda dilekçenin yer-tarih satırı ve ihtida tarihi boş kalır; imzasız başvuru eskisi gibidir; admin panelinde tek
+    başına «Dilekçe» düğmesi tören tarihi boşken de imzayı basar (`public/admin/ihtida-paket.js`, `public/admin/panel.js`,
+    `scripts/apps-script/ihtida-pdf-entry.js`);
+  - `referansMaxBul` Script Properties'te önek ve yıl başına yüksek-su-işareti (`REF_SON_<ÖNEK>_<YIL>`) tutar; IH, UC, ST ve
+    EV bunu kullanır. Kök neden: `test-temizle` bir deneme satırını silince IH-2026-0004 numarası gerçek bir başvurana
+    yeniden verilmişti (`scripts/apps-script/ulucamii-Kod-v43.gs`, `envanter-isleri.gs`, `seviye-testi-isleri.gs`);
+  - testler: `tests/ihtida-contract.test.mjs`, `tests/ihtida-paket-akis.test.mjs`, `tests/web/ihtida.spec.mjs`,
+    `tests/web/panel-dilekce-imza.spec.mjs` (yeni). Karar notu: `docs/IHTIDA-OTOMASYON-v25.md`.
+- Doğrulama:
+  - `npm run dogrula:codex` tümü geçti: tasarım ve kod denetimi, `dogrula`, `test:web` 814 geçti, eğitim sitesi derlemesi ve
+    `test:egitim` 70 geçti ve 2 atlandı, kurallar, veli e-postası, oto-kaydet ve öğrenme testleri;
+  - Apps Script Web App Version 61; sağlık cevabı `surum: 43`, `ihtidaTekImza: true`, `referansSayaci: true`;
+  - canlı kurgusal başvuru (ad sözcüğü TESTOGLU): ön başvuru paketi 7 sayfa, imza EK-9 arka yüzünde, dilekçenin iki yüzünde ve
+    EK-10'un iki yüzünde; yer-tarih ve ihtida tarihi boş. Son nüsha (r2) 7 sayfa, imza üç belgede, yer-tarih ve ihtida tarihi dolu;
+  - numara sayacı canlıda: deneme satırı silindikten sonra gelen ikinci başvuru silinen numarayı değil bir sonrakini aldı.
+    Sonraki gerçek başvuru IH-2026-0007 olacaktır.
+- Derneğin Google tarafında kurgusal kayıtların kökten temizliği (yalnız dernek hesabı; ad ve içerik doğrulandı, referans
+  numarasıyla silinmedi):
+  - defter satırı 6: v2 ihtida 4 (IH-2026-0001, IH-2026-0002 ve bu günkü iki canlı sınama), v1 ihtida 2; IH-2026-0003 ve
+    IH-2026-0004 gerçektir, dokunulmadı;
+  - Drive dosyası 50 kalıcı silindi: 3 geçici editör fonksiyonuyla (Drive REST, 204), 45 çöp kutusundan, 2 çöpte olmayan
+    deneme paketi. Çöpte yalnız iki gerçek öğe kaldı;
+  - Gmail (ulucamii2026) 32 konuşma kalıcı silindi: ihtida ve kurs kaydı deneme bildirimleri, TESTOGLU, DENEME, DOGRULAMA,
+    TEST KAYDI ve TEST V27 işaretli iletiler, Brevo ve DKIM/SPF denemeleri, «[DENEME · önizleme]» iletisi;
+  - Purelymail: yalnız bu günkü canlı sınamanın 4 iletisi (info@ ve imam@ kutuları).
+- Açık sınırlar: UC-2026-0001, UC-2026-0002 ve UC-2026-0003 (27 Ağustos, Rıdvan'ın kendi adıyla kayıtlar) ve Gmail'deki
+  iletileri deneme mi gerçek mi belirsiz olduğundan dokunulmadı.
+
 ## 22 Ekim 2026 (öğle) — vaaz «Dua: Kulluğun Özü»: «Nasıl dua edelim?» örnek dua eki + günlük dualar eki
 
 - Zaman: 22 Ekim 2026 13:01:19–13:01:59 (Release), 13:08:11 (push), 13:11:06 (Pages), 13:12–13:16 (canlı

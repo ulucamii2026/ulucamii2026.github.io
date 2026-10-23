@@ -177,6 +177,16 @@ olduğu ek belgeye otomatik basılsın».
   adrese teslimde imzalı), `tests/ihtida-paket-akis.test.mjs` (numara azalmaz, sayaç hatasında başvuru düşmez, sağlık
   bayrakları), `tests/web/ihtida.spec.mjs` (tarayıcıda iki paket), `tests/web/panel-dilekce-imza.spec.mjs` (yeni; panel
   «Dilekçe» düğmesi).
+- **Canlı (23 Ekim 2026).** Apps Script Web App Version 61 (08:56), sağlık cevabı `surum: 43`, `ihtidaTekImza: true`,
+  `referansSayaci: true`; site `f6fa595`, Pages 09:07'de tamamlandı.
+  - Kurgusal «TESTOGLU» başvurusu: ön başvuru paketi 7 sayfa geldi. EK-9 arka yüzü, dilekçenin iki yüzü ve EK-10'un iki
+    yüzünde başvuranın imzası vardı (sayfa render'ı ve içerik akışındaki yuvarlak uçlu çizgi ile doğrulandı). Dilekçenin
+    yer-tarih satırı ve ihtida tarihi boştu. Son nüsha (r2) onaylanınca aynı imza üç belgede kaldı; yer-tarih ve ihtida
+    tarihi doldu.
+  - Azalmayan sayaç: deneme satırı `test-temizle` ile silindikten sonra gelen ikinci kurgusal başvuru silinen numarayı
+    değil bir sonrakini aldı. Sonraki gerçek başvuru bu yüzden IH-2026-0007 olacaktır; aradaki iki numara deneme içindir.
+  - Aynı gün derneğin Google tarafındaki kurgusal kayıtlar kökten temizlendi; ayrıntı [YAYIN-KAYITLARI](YAYIN-KAYITLARI.md)
+    «23 Ekim 2026».
 
 ## Bundan sonraki kullanım
 
