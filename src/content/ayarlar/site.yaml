@@ -131,12 +131,16 @@ site:
     edevlet: https://www.turkiye.gov.tr
   cenaze:
     fonAd: Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu
-    fonAcil: "+32 486 245 005"
+    fonAcil: "+32 486 24 50 05"
     fonMesai: "+32 2 218 57 55"
-    fonEposta: info@diyanet.be
+    fonEposta: cenaze@diyanet.be
     fonWeb: https://www.diyanet.be/Cenaze-Nakil-Fonu
-    fonKayitWeb: https://diyanet.be/cenaze
+    fonKayitWeb: https://www.diyanet.be/cenaze
     fonAdres: Chaussée de Haecht 67, 1210 Bruxelles
+    fonFaks: "+32 2 223 01 52"
+    fonYonetmelik: https://www.diyanet.be/Portals/0/CENAZE%20FONU%20YONETMELIGI/sontr.pdf
+    fonCocukKayitWeb: https://www.diyanet.be/Cenaze-Nakil-Fonu/E%C5%9F-ve-%C3%87ocuk-Kayd%C4%B1
+    fonAdresDegisikligiWeb: https://www.diyanet.be/Cenaze-Nakil-Fonu/Adres-De%C4%9Fi%C5%9Fikli%C4%9Fi
     belediyeNufus: "+32 84 32 70 10"
     belediyeGenel: "+32 84 32 70 00"
     belediyeEposta: population@marche.be

@@ -106,6 +106,7 @@ const ayarlar = defineCollection({
     })).default([]),
     cenaze: z.object({
       fonAd: z.string(), fonAcil: z.string(), fonMesai: z.string(), fonEposta: z.string(), fonWeb: z.string().url(), fonKayitWeb: z.string().url().optional(), fonAdres: z.string(),
+      fonFaks: z.string().optional(), fonYonetmelik: z.string().url().optional(), fonCocukKayitWeb: z.string().url().optional(), fonAdresDegisikligiWeb: z.string().url().optional(),
       belediyeNufus: z.string(), belediyeGenel: z.string(), belediyeEposta: z.string(), belediyeGenelEposta: z.string().optional(),
       mezarlikAd: z.string(), mezarlikAdres: z.string(), saniportEposta: z.string().optional(),
     }).optional(),

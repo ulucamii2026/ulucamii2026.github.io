@@ -70,12 +70,12 @@ Voor de actuele lijst van kosten en documenten: [konsolosluk.gov.tr/Procedure/In
 
 Het **Fonds voor repatriëring, onderlinge hulp en solidariteit bij overlijden van de Belgische Diyanetstichting** (sinds 1982), waarbij onze moskee is aangesloten, neemt voor zijn leden de kosten van de lijkbezorging in België, de overbrenging naar Turkije en het heen-en-terugticket van twee begeleiders op zich; bij een begrafenis in België wordt een tussenkomst van maximaal 3.000 € toegekend.
 
-- **Noodnummer bij overlijden (24/7):** +32 486 245 005 · tijdens de kantooruren: +32 2 218 57 55 · info@diyanet.be
+- **Bij een overlijden:** +32 486 24 50 05 · tijdens de kantooruren op weekdagen (10.30–12.30 en 14.00–17.00 uur): +32 2 218 57 55 · cenaze@diyanet.be
 - **Belangrijk:** wordt zonder de toestemming van het fonds een andere begrafenisondernemer ingeschakeld, dan wordt geen enkele tussenkomst betaald.
-- **Aansluiting:** Turkse staatsburgers die minstens 1 jaar vast in België verblijven; de echtgenoot of echtgenote en de kinderen onder 18 jaar zijn mee gedekt; de dekking begint 60 dagen na de betaling (bij een ongeval geldt die voorwaarde niet). Bel het fonds voor het actuele jaarlijkse lidgeld en het aanvraagformulier, of raadpleeg [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu).
+- **Aansluiting:** moslims met de Turkse nationaliteit die in België verblijven; de burgerlijk gehuwde echtgeno(o)t(e) op hetzelfde adres en de kinderen onder 18 jaar zijn door hetzelfde dossier gedekt. Aansluiten gebeurt via het [online formulier](https://www.diyanet.be/cenaze) van het fonds; de dekking begint 60 volle dagen nadat het inschrijvingsgeld op de rekening van het fonds staat (niet bij een overlijden door een ongeval). Stappen en jaarlijks lidgeld: pagina [Uitvaartdiensten](/nl/uitvaartdiensten/#fon-kaydi).
 - **Vereiste documenten:** Belgische verblijfskaart, paspoort, originele Turkse identiteitskaart, medisch attest van overlijden.
 
-**Begrafenis in België:** de multiconfessionele begraafplaats van Marche-en-Famenne in Aye (Rue de Tavys, 6900 Aye) heeft een islamitisch perceel; dienst bevolking van de gemeente: +32 84 32 70 10. Alternatieven: Namen (Chaussée de Waterloo 438), Luik, Charleroi. Voor elke overbrenging naar het buitenland wordt de verplichte *laissez-passer mortuaire* afgeleverd door Saniport (FOD Volksgezondheid); de aanvraag gebeurt meestal via de begrafenisondernemer. Alle stappen en telefoonnummers: pagina [In memoriam](/nl/in-memoriam/).
+**Begrafenis in België:** de multiconfessionele begraafplaats van Marche-en-Famenne in Aye (Rue de Tavys, 6900 Aye) heeft een islamitisch perceel; dienst bevolking van de gemeente: +32 84 32 70 10. Alternatieven: Namen (Chaussée de Waterloo 438), Luik, Charleroi. Voor elke overbrenging naar het buitenland wordt de verplichte *laissez-passer mortuaire* afgeleverd door Saniport (FOD Volksgezondheid); de aanvraag gebeurt meestal via de begrafenisondernemer. Alle stappen en telefoonnummers: pagina [Uitvaartdiensten](/nl/uitvaartdiensten/).
 
 ## Overlijden en overbrenging naar Turkije
 

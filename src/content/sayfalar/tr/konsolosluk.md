@@ -70,12 +70,12 @@ Güncel harç ve belge listesi için: [konsolosluk.gov.tr/Procedure/Index](https
 
 Camimizin bağlı olduğu **Belçika Diyanet Vakfı Cenaze Nakil, Yardımlaşma ve Dayanışma Fonu** (1982'den beri), üyelerinin Belçika’daki teçhiz-tekfin masraflarını, Türkiye’ye nakli ve iki refakatçinin gidiş-dönüş biletini karşılar; Belçika’da defin tercih edilirse en fazla 3.000 € yardım yapar.
 
-- **Vefat anında acil hat (7/24):** +32 486 245 005 · mesai saatinde: +32 2 218 57 55 · info@diyanet.be
+- **Vefat hâlinde:** +32 486 24 50 05 · hafta içi mesai saatinde (10.30–12.30 ve 14.00–17.00): +32 2 218 57 55 · cenaze@diyanet.be
 - **Önemli:** Fonun onayı olmadan başka bir cenaze firmasına iş yaptırılırsa hiçbir yardım yapılmaz.
-- **Üyelik:** Belçika’da en az 1 yıl daimî oturumu olan T.C. vatandaşları; eş ve 18 yaş altı çocuklar kapsamdadır; üyelik ödemeden 60 gün sonra başlar (kaza hâlinde şart aranmaz). Güncel yıllık aidat ve başvuru formu için fonu arayınız ya da [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu) sayfasına bakınız.
+- **Üyelik:** Belçika’da oturumu olan Müslüman T.C. vatandaşları; birlikte yaşayan resmî nikâhlı eş ve 18 yaş altı çocuklar aynı dosyadan yararlanır. Kayıt fonun [çevrim içi formuyla](https://www.diyanet.be/cenaze) yapılır; üyelik, kayıt ücreti fon hesabına geçtikten 60 tam gün sonra başlar (kaza sonucu vefatta bu süre aranmaz). Kayıt adımları ve yıllık aidat: [Cenaze Hizmetleri](/tr/cenaze-hizmetleri/#fon-kaydi) sayfası.
 - **Gerekli belgeler:** Belçika oturum kartı, pasaport, nüfus cüzdanı aslı, doktor ölüm raporu.
 
-**Belçika’da defin:** Marche-en-Famenne’in Aye’deki çok dinli mezarlığında (Rue de Tavys, 6900 Aye) Müslüman parseli bulunmaktadır; belediye nüfus servisi +32 84 32 70 10. Alternatifler: Namur (Chaussée de Waterloo 438), Liège, Charleroi. Yurt dışına nakil için zorunlu *laissez-passer mortuaire* belgesini Saniport (SPF Santé publique) verir; başvuruyu genelde cenaze firması yapar. Tüm süreç ve aranacak numaralar: [Rahmetle Anıyoruz](/tr/rahmetle-aniyoruz/) sayfası.
+**Belçika’da defin:** Marche-en-Famenne’in Aye’deki çok dinli mezarlığında (Rue de Tavys, 6900 Aye) Müslüman parseli bulunmaktadır; belediye nüfus servisi +32 84 32 70 10. Alternatifler: Namur (Chaussée de Waterloo 438), Liège, Charleroi. Yurt dışına nakil için zorunlu *laissez-passer mortuaire* belgesini Saniport (SPF Santé publique) verir; başvuruyu genelde cenaze firması yapar. Tüm süreç ve aranacak numaralar: [Cenaze Hizmetleri](/tr/cenaze-hizmetleri/) sayfası.
 
 ## Cenaze ve Türkiye’ye nakil
 

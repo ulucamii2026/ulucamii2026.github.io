@@ -70,12 +70,12 @@ Für die aktuelle Gebühren- und Unterlagenliste: [konsolosluk.gov.tr/Procedure/
 
 Der **Fonds für Überführung, gegenseitige Hilfe und Solidarität im Todesfall der Belgischen Diyanet-Stiftung** (seit 1982), dem unsere Moschee angeschlossen ist, übernimmt für seine Mitglieder die Kosten der Totenversorgung in Belgien, die Überführung in die Türkei und die Hin- und Rückreisetickets für zwei Begleitpersonen; wird eine Bestattung in Belgien gewünscht, wird eine Beihilfe von höchstens 3.000 € gewährt.
 
-- **Notrufnummer im Todesfall (rund um die Uhr):** +32 486 245 005 · während der Bürozeiten: +32 2 218 57 55 · info@diyanet.be
+- **Im Todesfall:** +32 486 24 50 05 · werktags während der Bürozeiten (10.30–12.30 und 14.00–17.00 Uhr): +32 2 218 57 55 · cenaze@diyanet.be
 - **Wichtig:** Wird ohne Zustimmung des Fonds ein anderes Bestattungsunternehmen beauftragt, wird keinerlei Beihilfe gezahlt.
-- **Mitgliedschaft:** türkische Staatsangehörige mit mindestens einem Jahr ständigem Aufenthalt in Belgien; Ehepartner sowie Kinder unter 18 Jahren sind mitversichert; der Schutz beginnt 60 Tage nach der Zahlung (bei einem Unfall entfällt diese Bedingung). Für den aktuellen Jahresbeitrag und das Antragsformular rufen Sie den Fonds an oder sehen Sie auf der Seite [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu) nach.
+- **Mitgliedschaft:** muslimische türkische Staatsangehörige mit Wohnsitz in Belgien; der standesamtlich verheiratete Ehepartner im selben Haushalt und Kinder unter 18 Jahren sind über dieselbe Akte gedeckt. Der Beitritt erfolgt über das [Online-Formular](https://www.diyanet.be/cenaze) des Fonds; der Schutz beginnt 60 volle Tage nach Eingang der Aufnahmegebühr auf dem Konto des Fonds (bei Tod durch Unfall keine Wartezeit). Schritte und Jahresbeitrag: Seite [Bestattungsdienste](/de/bestattungsdienste/#fon-kaydi).
 - **Erforderliche Unterlagen:** belgische Aufenthaltskarte, Pass, türkischer Personalausweis im Original, ärztliche Todesbescheinigung.
 
-**Bestattung in Belgien:** Der multireligiöse Friedhof von Marche-en-Famenne in Aye (Rue de Tavys, 6900 Aye) verfügt über ein muslimisches Gräberfeld; Einwohnermeldeamt der Gemeinde: +32 84 32 70 10. Alternativen: Namur (Chaussée de Waterloo 438), Lüttich, Charleroi. Für jede Überführung ins Ausland stellt Saniport (FÖD Volksgesundheit) den vorgeschriebenen *laissez-passer mortuaire* aus; den Antrag stellt in der Regel das Bestattungsunternehmen. Alle Schritte und Rufnummern: Seite [In memoriam](/de/in-memoriam/).
+**Bestattung in Belgien:** Der multireligiöse Friedhof von Marche-en-Famenne in Aye (Rue de Tavys, 6900 Aye) verfügt über ein muslimisches Gräberfeld; Einwohnermeldeamt der Gemeinde: +32 84 32 70 10. Alternativen: Namur (Chaussée de Waterloo 438), Lüttich, Charleroi. Für jede Überführung ins Ausland stellt Saniport (FÖD Volksgesundheit) den vorgeschriebenen *laissez-passer mortuaire* aus; den Antrag stellt in der Regel das Bestattungsunternehmen. Alle Schritte und Rufnummern: Seite [Bestattungsdienste](/de/bestattungsdienste/).
 
 ## Todesfall und Überführung in die Türkei
 

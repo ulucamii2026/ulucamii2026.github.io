@@ -70,12 +70,12 @@ For the current fee and document list: [konsolosluk.gov.tr/Procedure/Index](http
 
 The **Diyanet Foundation of Belgium’s Funeral, Mutual Aid and Solidarity Fund**, to which our mosque is affiliated (since 1982), covers its members’ preparation costs in Belgium, transfer to Turkey, and the return airfare of two accompanying persons; if burial in Belgium is preferred, it provides assistance of up to €3,000.
 
-- **Emergency line at time of death (24/7):** +32 486 245 005 · office hours: +32 2 218 57 55 · info@diyanet.be
+- **In the event of a death:** +32 486 24 50 05 · weekday office hours (10:30–12:30 and 14:00–17:00): +32 2 218 57 55 · cenaze@diyanet.be
 - **Important:** if another funeral company is used without the fund’s approval, no assistance whatsoever will be provided.
-- **Membership:** open to Turkish citizens with at least 1 year of permanent residence in Belgium; spouses and children under 18 are covered; membership takes effect 60 days after payment (no waiting period applies in case of an accident). For the current annual dues and application form, call the fund or see [diyanet.be/Cenaze-Nakil-Fonu](https://www.diyanet.be/Cenaze-Nakil-Fonu).
+- **Membership:** open to Muslim Turkish citizens residing in Belgium; the spouse by civil marriage living in the same household and children under 18 are covered by the same file. Registration is done through the fund’s [online form](https://www.diyanet.be/cenaze); membership starts 60 full days after the registration fee reaches the fund’s account (no waiting period for accidental deaths). Steps and annual dues: see the [Funeral Services](/en/funeral-services/#fon-kaydi) page.
 - **Documents required:** Belgian residence card, passport, original identity document, doctor’s death report.
 
-**Burial in Belgium:** the multi-faith cemetery in Aye, Marche-en-Famenne (Rue de Tavys, 6900 Aye) has a Muslim section; the municipal population department can be reached at +32 84 32 70 10. Alternatives: Namur (Chaussée de Waterloo 438), Liège, Charleroi. For transfer abroad, the mandatory *laissez-passer mortuaire* document is issued by Saniport (SPF Santé publique); the application is usually made by the funeral company. For the full process and numbers to call: see the [In Loving Memory](/en/in-memoriam/) page.
+**Burial in Belgium:** the multi-faith cemetery in Aye, Marche-en-Famenne (Rue de Tavys, 6900 Aye) has a Muslim section; the municipal population department can be reached at +32 84 32 70 10. Alternatives: Namur (Chaussée de Waterloo 438), Liège, Charleroi. For transfer abroad, the mandatory *laissez-passer mortuaire* document is issued by Saniport (SPF Santé publique); the application is usually made by the funeral company. For the full process and numbers to call: see the [Funeral Services](/en/funeral-services/) page.
 
 ## Death and Transfer to Turkey
 
