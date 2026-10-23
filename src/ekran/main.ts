@@ -7,7 +7,7 @@
  */
 import { hicriCevir } from '../i18n/hicri.ts';
 import { bugunTarih, TZ } from '../lib/namaz.ts';
-import { brukselSaat, donmeOku, duzenOku, ekranIdOku, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, TUR_HEDEF_SN, turGunu, vakitGorunumu, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
+import { brukselSaat, donmeOku, duzenOku, ekranIdOku, imlecCoz, imlecYazisi, saatGecerliMi, slaytListesi, slaytSuresi, temaSec, TUR_HEDEF_SN, turGunu, vakitGorunumu, type ManeviImleci, type Slayt, type SlaytAyari } from '../lib/ekran/secim.ts';
 import { alan, yaz } from './gorunum.ts';
 import { METIN, VAKIT_ADLARI } from './metinler.ts';
 import { olcekKur } from './olcek.ts';
@@ -201,7 +201,8 @@ async function akisDongusu(): Promise<void> {
   }
 }
 
-/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, günün ayeti, hadisi, duası ve tema kartı (tur uzarsa dilimlenir; src/lib/ekran/secim.ts).
+/* Slayt turu: bu ekrana özel duyurular, ortak duyurular, ardından bütün ayet, hadis, dua ve tema kartlarının tek dizisinden
+   sıradaki öğeler (tur uzarsa dilimlenir, dizi imleçle turdan tura ilerler; src/lib/ekran/secim.ts).
    Tur bitince ya da duyuruları değişmiş bir akış gelince liste yeni veriyle yeniden kurulur; süre metin
    uzunluğundan (ekran.yaml → slayt).
    Sayfa aylarca yeniden yüklenmeden açık kalır: burada çıkan tek bir istisna (ör. `referans` alanı eksik
@@ -211,9 +212,40 @@ const VARSAYILAN_SLAYT: SlaytAyari = { tabanSn: 8, karakterSn: 0.05, enAzSn: 10,
 let tur: Slayt[] = [];
 let sira = 0;
 let slaytBasladi = false;
-/** Kaçıncı tur (manevi blok dilimlemesi; secim.ts → slaytListesi). Tur sonuna gelince artar; yeni duyuru akışı
- *  yüzünden erken kurulan tur sayılmaz. */
-let turNo = 0;
+/** Manevi dizideki imleç: son gösterilen ya da sığmadığı için atlanan öğe (secim.ts → ManeviImleci). Her yeni tur bunun
+ *  ardından başlar; yeni duyuru akışı yüzünden erken kurulan tur da kaldığı yerden sürer. Sayfa yeniden yüklense de
+ *  kaybolmasın diye localStorage'a yazılır (ekran başına ayrı anahtar). Depo yoksa ya da fırlatırsa imleç yalnız bellekte
+ *  kalır; yeniden yüklemede secim.ts → ManeviKonum.simdiMs'ten zamana bağlı bir başlangıç seçilir. */
+const IMLEC_ANAHTARI = 'ekran.maneviImleci.' + ekranId;
+/** Flaş yıpranması: depoya en çok dakikada bir yazılır (veri.ts → DEPO_YAZIM_ESIGI_MS gibi); sayfa kapanırken kalan yazılır. */
+const IMLEC_YAZIM_ARALIGI_MS = 60_000;
+function imlecOku(): ManeviImleci | null {
+  try {
+    return imlecCoz(localStorage.getItem(IMLEC_ANAHTARI));
+  } catch {
+    return null;
+  }
+}
+let imlec: ManeviImleci | null = imlecOku();
+let imlecYazilan = imlec ? imlecYazisi(imlec) : '';
+let imlecYazimAni = -IMLEC_YAZIM_ARALIGI_MS;
+function imlecYaz(zorla: boolean): void {
+  if (!imlec) return;
+  const yazi = imlecYazisi(imlec);
+  if (yazi === imlecYazilan || (!zorla && performance.now() - imlecYazimAni < IMLEC_YAZIM_ARALIGI_MS)) return;
+  try {
+    localStorage.setItem(IMLEC_ANAHTARI, yazi);
+    imlecYazilan = yazi;
+    imlecYazimAni = performance.now();
+  } catch {
+    /* depo yok, dolu ya da kapalı: imleç bellekte kalır */
+  }
+}
+try {
+  window.addEventListener('pagehide', () => { imlecYaz(true); });
+} catch (hata) {
+  console.error(hata);
+}
 /** Geçerli turun kurulduğu duyuru listesinin anahtarı (veri.ts → duyuruAnahtari). Duyuruları değişmiş bir akış
  *  geldiyse (akisDongusu) tur, sonuna kadar beklenmeden SONRAKİ slaytta yeniden kurulur; ekrandaki slayt süresini
  *  normal doldurmuştur. Yalnız derleme damgası değişen akış (her yayın) turu baştan başlatmaz. */
@@ -252,15 +284,15 @@ if (dokunmatik) {
 }
 /** Tabanda da sığmadığı için atlanan slayt sayısı (teşhis; slayt alanında data-atlanan). */
 let atlanan = 0;
-/** Turu (yeniden) kurar: bitmiş bir turdan sonra turNo artar, sira başa döner. */
+/** Turu (yeniden) kurar: manevi dizi imlecin ardından sürer, sira başa döner. */
 function turKur(kok: HTMLElement): void {
-  if (sira >= tur.length && tur.length > 0) turNo++;
   const ayar = veri.akis?.ayar;
   const icerik = veri.icerik;
   tur = slaytListesi(
     { duyurular: birlesikDuyurular(veri.akis, kabuk.duyurular), ayetler: icerik?.ayetler ?? [], hadisler: icerik?.hadisler ?? [], dualar: icerik?.dualar ?? [], kartlar: icerik?.kartlar ?? [] },
-    ekranId, turGunu(new Date(), sonSunucuSaati()), turNo,
+    ekranId, turGunu(new Date(), sonSunucuSaati()),
     { turHedefSn: ayar?.turHedefSn ?? TUR_HEDEF_SN, slayt: ayar?.slayt ?? VARSAYILAN_SLAYT },
+    { imlec, simdiMs: Date.now() },
   );
   sira = 0;
   turAnahtari = duyuruAnahtari(veri.akis, kabuk.duyurular);
@@ -284,6 +316,8 @@ function sonrakiSlayt(): void {
     const sec = (): Slayt | undefined => {
       while (sira < tur.length) {
         const aday = tur[sira++];
+        // Atlanan manevi slayt da geçilmiş sayılır: sığmayan öğe her turda başa dönüp turu tıkamasın.
+        if (aday.imlec) { imlec = aday.imlec; imlecYaz(false); }
         slaytCiz(kok, aday);
         if (levhaSigdir(kok).sigdi || (document.fonts && document.fonts.status === 'loading' && performance.now() - arapcaHazirAni < YAZI_TIPI_TOLERANSI_MS)) return aday;
         atlanan++;

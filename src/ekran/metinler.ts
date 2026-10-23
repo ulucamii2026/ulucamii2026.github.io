@@ -3,9 +3,10 @@ import type { TemaId } from '../lib/ekran/icerik.ts';
 /** Ekrana özgü iki dilli sabit metinler. Vakit adları site sözlüğünden gelir (src/i18n/ui.ts → sayfa verisi);
  *  sayfa verisi bozuksa aşağıdaki VAKIT_ADLARI kullanılır. */
 export const METIN = {
-  ayet: { tr: 'Günün Ayeti', fr: 'Verset du jour' },
-  hadis: { tr: 'Günün Hadisi', fr: 'Hadith du jour' },
-  dua: { tr: 'Günün Duası', fr: 'Invocation du jour' },
+  // Her gün bütün ayet, hadis ve dualar sırayla gösterilir (secim.ts → maneviSirasi): başlıkta «Günün …» yok.
+  ayet: { tr: 'Âyet-i Kerîme', fr: 'Verset du Coran' },
+  hadis: { tr: 'Hadîs-i Şerîf', fr: 'Hadith' },
+  dua: { tr: 'Dua', fr: 'Invocation' },
   // Tema kartında üst başlık temanın adıdır (TEMA_BASLIGI); bu ikisi yalnız tanınmayan temada yedektir.
   bilgi: { tr: 'Bilgi', fr: 'Le saviez-vous ?' },
   soz: { tr: 'Güzel Söz', fr: 'Belle parole' },
@@ -18,7 +19,7 @@ export const METIN = {
   hosgeldiniz: { tr: 'Hoş geldiniz', fr: 'Bienvenue' },
 } as const;
 
-/** Tema kartının üst başlığı (19 Ekim 2026): «Günün …» yerine kartın teması yazılır. En dar ekranda tek satıra
+/** Tema kartının üst başlığı (19 Ekim 2026): çeşit başlığı (METIN) yerine kartın teması yazılır. En dar ekranda tek satıra
  *  sığması Playwright'ta denetlenir (tests/web/ekran.spec.mjs). */
 export const TEMA_BASLIGI: Record<TemaId, { tr: string; fr: string }> = {
   emek: { tr: 'Emek ve Çalışma', fr: 'Travail et effort' },

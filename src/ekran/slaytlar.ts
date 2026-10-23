@@ -1,4 +1,4 @@
-/** Sağ alt panel (slayt alanı): duyuru, günün ayeti, hadisi, duası ve tema kartı ortalı bir «levha» olarak çizilir (A alt
+/** Sağ alt panel (slayt alanı): duyuru, ayet, hadis, dua ve tema kartı ortalı bir «levha» olarak çizilir (A alt
  *  projesi; tema kartı 19 Ekim 2026'da Esmâ'nın yerine geldi).
  *  Levha tek ölçekle (--olcek) büyür/küçülür; öğe boyları src/lib/ekran/olcu.ts'teki tabanlar × ölçek. Ölçek okunur
  *  tabanın (1) altına inmez: tabanda da sığmayan slaytı çağıran (main.ts → sonrakiSlayt) atlar. */

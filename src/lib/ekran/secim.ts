@@ -25,12 +25,6 @@ export const aktifMi = (o: { baslangic: string; son: string }, bugun: string): b
 /** Takvim gününün 1970'ten beri sırası; 12:00 UTC üzerinden hesaplandığı için yaz/kış saatinden etkilenmez. */
 export const gunNo = (tarih: string): number => Math.floor(Date.parse(tarih + 'T12:00:00Z') / 86_400_000);
 
-/** Listeden "günün öğesi": aynı gün hep aynı, ertesi gün sıradaki. */
-export function gununOgesi<T>(liste: readonly T[], tarih: string): T | undefined {
-  if (!liste.length) return undefined;
-  return liste[((gunNo(tarih) % liste.length) + liste.length) % liste.length];
-}
-
 /** Güneş vaktinden akşam vaktine kadar açık tema; geri kalan saatlerde koyu. Günün verisi yoksa (veri kesintisi)
  *  sabit Brüksel saat aralığına (07:00–19:00) göre açık/koyu seçilir — cami ekranı geceleri bembeyaz kalmasın
  *  diye; bu bir tema tercihidir, namaz vakti hesabı değildir. */
@@ -125,15 +119,23 @@ export function vakitGorunumu(gunler: Gun[], simdi: Date): VakitGorunumu | null 
   return { gun, siradaki, cuma: haftaGunu(simdi) === 5 };
 }
 
+/** Manevi dizideki öğenin kaynağı: ayet, hadis, dua ya da tema kartı (kartın çeşidi ne olursa olsun `kart`). Kimlikler
+ *  yalnız kendi listesinde tekildir (icerik.ts → mukerrerDenetcisi): ayet `a1` ile kart `a1` ayrı öğelerdir. */
+export type ManeviTur = 'ayet' | 'hadis' | 'dua' | 'kart';
+export const MANEVI_TURLERI: readonly ManeviTur[] = ['ayet', 'hadis', 'dua', 'kart'];
+/** Manevi dizide bir öğenin adresi. Ekranın imleci (son gösterilen ya da atlanan öğe) bununla saklanır. */
+export interface ManeviImleci { tur: ManeviTur; id: string }
+
 export type Slayt =
   /** `parca` duyurunun bu slayttaki bölümü (src/lib/ekran/butce.ts → duyuruParcalari); yoksa bütün diller tek levha. */
-  | { tur: 'duyuru'; oge: EkranDuyuru; parca?: DuyuruParcasi; karakter: number }
-  /** `tema` doluysa slayt günün tema kartıdır: üst başlık «Günün Ayeti» yerine temanın adı olur. */
-  | { tur: 'ayet'; oge: EkranAyet; karakter: number; tema?: TemaId }
-  | { tur: 'hadis'; oge: EkranHadis; karakter: number; tema?: TemaId }
-  | { tur: 'dua'; oge: EkranDua; karakter: number }
-  | { tur: 'bilgi'; oge: EkranBilgi; karakter: number; tema: TemaId }
-  | { tur: 'soz'; oge: EkranSoz; karakter: number; tema: TemaId };
+  | { tur: 'duyuru'; oge: EkranDuyuru; parca?: DuyuruParcasi; karakter: number; imlec?: undefined }
+  /** `tema` doluysa slayt bir tema kartıdır: üst başlık «Âyet-i Kerîme» yerine temanın adı olur. `imlec` manevi
+   *  slaytlarda (ayet, hadis, dua, tema kartı) dizideki yeridir; duyuruda yoktur. */
+  | { tur: 'ayet'; oge: EkranAyet; karakter: number; tema?: TemaId; imlec?: ManeviImleci }
+  | { tur: 'hadis'; oge: EkranHadis; karakter: number; tema?: TemaId; imlec?: ManeviImleci }
+  | { tur: 'dua'; oge: EkranDua; karakter: number; imlec?: ManeviImleci }
+  | { tur: 'bilgi'; oge: EkranBilgi; karakter: number; tema: TemaId; imlec?: ManeviImleci }
+  | { tur: 'soz'; oge: EkranSoz; karakter: number; tema: TemaId; imlec?: ManeviImleci };
 
 /** Slayt turunun girdisi. `dualar` önbellekteki A öncesi, `kartlar` 19 Ekim 2026 öncesi icerik.json'da yoktur: boş
  *  sayılır (eski akıştaki `esmalar` alanı artık okunmaz). */
@@ -167,10 +169,36 @@ function duyuruKarakteri(d: EkranDuyuru, p: DuyuruParcasi): number {
   return enCok;
 }
 
-/** Tur hedef süreyi aşarsa manevi blok turlara bölünür: her tur sıradaki `adet` öğeyi gösterir (sarmal; `turNo` ile
- *  kayar), duyurular her turda kalır. adet = duyurulardan kalan süreye sığan manevi slayt sayısı; en az 1, en çok
- *  n − 1. Ayar yoksa ya da bozuksa (NaN) blok bütün gösterilir. */
-function maneviDilimi(manevi: Slayt[], duyurular: Slayt[], turNo: number, tur?: TurAyari): Slayt[] {
+/** Ekranın manevi dizideki konumu (slaytListesi'ne dışarıdan verilir; depo okuma/yazma main.ts'tedir).
+ *  `imlec`: son gösterilen ya da sığmadığı için atlanan manevi öğe. Dizide varsa tur hemen ardındaki öğeden başlar.
+ *  Yoksa (depo yok/boş, öğe artık dizide değil) `simdiMs` yedek başlangıcı verir: ekran hiç kapanmasaydı bu anda
+ *  hangi turdaydı sayılır, yani yeniden yükleme her seferinde baştan başlamaz. Biri de yoksa 0. */
+export interface ManeviKonum { imlec?: ManeviImleci | null; simdiMs?: number }
+
+/** Depoda saklanan imleç metni (JSON); bozuk, boş ya da tanınmayan bir çeşit null verir. */
+export function imlecCoz(ham: string | null | undefined): ManeviImleci | null {
+  if (!ham) return null;
+  try {
+    const x = JSON.parse(ham) as { tur?: unknown; id?: unknown } | null;
+    if (x && typeof x === 'object' && typeof x.id === 'string' && x.id !== '' && MANEVI_TURLERI.indexOf(x.tur as ManeviTur) >= 0) return { tur: x.tur as ManeviTur, id: x.id };
+  } catch {
+    /* bozuk metin: imleç yok sayılır */
+  }
+  return null;
+}
+export const imlecYazisi = (i: ManeviImleci): string => JSON.stringify({ tur: i.tur, id: i.id });
+
+/** Yedek başlangıç: `turHedefSn`'lik turların epoch'tan beri sırası × tur başına öğe sayısı (mod n). */
+function yedekBaslangic(n: number, adet: number, turHedefSn: number, simdiMs: number | undefined): number {
+  if (typeof simdiMs !== 'number' || !isFinite(simdiMs) || !(turHedefSn > 0)) return 0;
+  const turSirasi = Math.floor(simdiMs / (turHedefSn * 1000));
+  return (((turSirasi * adet) % n) + n) % n;
+}
+
+/** Tur hedef süreyi aşarsa manevi dizi turlara bölünür: her tur imlecin ardındaki `adet` öğeyi gösterir (sarmal),
+ *  duyurular her turda kalır. adet = duyurulardan kalan süreye sığan manevi slayt sayısı; en az 1, en çok n − 1.
+ *  Ayar yoksa ya da bozuksa (NaN) ve dizi hedefe sığıyorsa dizi bütün (baştan) gösterilir. */
+function maneviDilimi(manevi: Slayt[], duyurular: Slayt[], konum?: ManeviKonum, tur?: TurAyari): Slayt[] {
   const n = manevi.length;
   if (!tur || n < 2) return manevi;
   const sure = (s: Slayt): number => slaytSuresi(s.karakter, tur.slayt);
@@ -181,43 +209,60 @@ function maneviDilimi(manevi: Slayt[], duyurular: Slayt[], turNo: number, tur?: 
   if (!(duyuruSn + maneviSn > tur.turHedefSn)) return manevi;
   const sigan = Math.floor((tur.turHedefSn - duyuruSn) / (maneviSn / n));
   const adet = sigan >= 1 ? Math.min(sigan, n - 1) : 1;
-  const bas = (((turNo * adet) % n) + n) % n;
+  let bas = -1;
+  const imlec = konum && konum.imlec;
+  if (imlec) {
+    for (let i = 0; i < n; i++) {
+      const m = manevi[i].imlec;
+      if (m && m.tur === imlec.tur && m.id === imlec.id) { bas = (i + 1) % n; break; }
+    }
+  }
+  if (bas < 0) bas = yedekBaslangic(n, adet, tur.turHedefSn, konum && konum.simdiMs);
   const dilim: Slayt[] = [];
   for (let i = 0; i < adet; i++) dilim.push(manevi[(bas + i) % n]);
   return dilim;
 }
 
+const enUzun = (o: { ar?: string; tr: string; fr?: string }): number => Math.max(uz(o.ar), uz(o.tr), uz(o.fr));
+
 /** Tema kartının slaytı: kartın çeşidi slayt türü olur, tema üst başlığa gider. */
 function kartSlayti(k: EkranKart): Slayt {
+  const imlec: ManeviImleci = { tur: 'kart', id: k.oge.id };
   switch (k.cesit) {
-    case 'ayet': return { tur: 'ayet', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.ar), uz(k.oge.tr), uz(k.oge.fr)) };
-    case 'hadis': return { tur: 'hadis', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.ar), uz(k.oge.tr), uz(k.oge.fr)) };
-    case 'bilgi': return { tur: 'bilgi', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.baslik.tr, k.oge.tr), uz(k.oge.baslik.fr, k.oge.fr)) };
-    default: return { tur: 'soz', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.ar), uz(k.oge.tr), uz(k.oge.fr)) };
+    case 'ayet': return { tur: 'ayet', oge: k.oge, tema: k.tema, karakter: enUzun(k.oge), imlec };
+    case 'hadis': return { tur: 'hadis', oge: k.oge, tema: k.tema, karakter: enUzun(k.oge), imlec };
+    case 'bilgi': return { tur: 'bilgi', oge: k.oge, tema: k.tema, karakter: Math.max(uz(k.oge.baslik.tr, k.oge.tr), uz(k.oge.baslik.fr, k.oge.fr)), imlec };
+    default: return { tur: 'soz', oge: k.oge, tema: k.tema, karakter: enUzun(k.oge), imlec };
   }
 }
 
-/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi blok (günün ayeti, hadisi, duası ve tema kartı). Duyuru, ekrana sığma kuralına göre bir ya da iki slayt olur
- *  (TR ve FR ayrı; afiş ve ardından metin).
- *  Boş kategori atlanır. Okuma süresi en uzun dildeki metne göre hesaplanır (izleyici tek dil okur). `tur` verilirse
- *  manevi blok turun hedef süresine göre dilimlenir. */
-export function slaytListesi(girdi: SlaytGirdisi, ekran: EkranId, bugun: string, turNo = 0, tur?: TurAyari): Slayt[] {
+/** Bütün manevi öğeler tek dizide: çeşitler arasında dönülür (ayet, hadis, dua, tema kartı, ayet, …); kısa liste
+ *  bitince dönüş kalan listelerle sürer. Her listenin kendi (kaynak) sırası korunur, dizi hep aynı girdiden aynı çıkar. */
+export function maneviSirasi(girdi: SlaytGirdisi): Slayt[] {
+  const ayetler = girdi.ayetler, hadisler = girdi.hadisler, dualar = girdi.dualar || [], kartlar = girdi.kartlar || [];
+  const dizi: Slayt[] = [];
+  const en = Math.max(ayetler.length, hadisler.length, dualar.length, kartlar.length);
+  for (let i = 0; i < en; i++) {
+    if (i < ayetler.length) dizi.push({ tur: 'ayet', oge: ayetler[i], karakter: enUzun(ayetler[i]), imlec: { tur: 'ayet', id: ayetler[i].id } });
+    if (i < hadisler.length) dizi.push({ tur: 'hadis', oge: hadisler[i], karakter: enUzun(hadisler[i]), imlec: { tur: 'hadis', id: hadisler[i].id } });
+    if (i < dualar.length) dizi.push({ tur: 'dua', oge: dualar[i], karakter: enUzun(dualar[i]), imlec: { tur: 'dua', id: dualar[i].id } });
+    if (i < kartlar.length) dizi.push(kartSlayti(kartlar[i]));
+  }
+  return dizi;
+}
+
+/** Bir tur: bu ekrana özel duyurular, ortak duyurular, ardından manevi diziden sıradaki öğeler (bütün ayet, hadis, dua
+ *  ve tema kartları; maneviSirasi). Duyuru, ekrana sığma kuralına göre bir ya da iki slayt olur (TR ve FR ayrı; afiş ve
+ *  ardından metin). Boş kategori atlanır. Okuma süresi en uzun dildeki metne göre hesaplanır (izleyici tek dil okur).
+ *  `tur` verilirse manevi dizi turun hedef süresine göre dilimlenir; dilim `konum.imlec`in ardından başlar. */
+export function slaytListesi(girdi: SlaytGirdisi, ekran: EkranId, bugun: string, tur?: TurAyari, konum?: ManeviKonum): Slayt[] {
   const gecerli = girdi.duyurular.filter((d) => aktifMi(d, bugun) && hedefUygunMu(d.hedef, ekran));
   const sirali = gecerli.filter((d) => d.hedef.length > 0).concat(gecerli.filter((d) => d.hedef.length === 0));
   const liste: Slayt[] = [];
   for (const d of sirali) {
     for (const parca of duyuruParcalari(d)) liste.push({ tur: 'duyuru', oge: d, parca, karakter: duyuruKarakteri(d, parca) });
   }
-  const manevi: Slayt[] = [];
-  const ayet = gununOgesi(girdi.ayetler, bugun);
-  if (ayet) manevi.push({ tur: 'ayet', oge: ayet, karakter: Math.max(uz(ayet.ar), uz(ayet.tr), uz(ayet.fr)) });
-  const hadis = gununOgesi(girdi.hadisler, bugun);
-  if (hadis) manevi.push({ tur: 'hadis', oge: hadis, karakter: Math.max(uz(hadis.ar), uz(hadis.tr), uz(hadis.fr)) });
-  const dua = gununOgesi(girdi.dualar || [], bugun);
-  if (dua) manevi.push({ tur: 'dua', oge: dua, karakter: Math.max(uz(dua.ar), uz(dua.tr), uz(dua.fr)) });
-  const kart = gununOgesi(girdi.kartlar || [], bugun);
-  if (kart) manevi.push(kartSlayti(kart));
-  return liste.concat(maneviDilimi(manevi, liste, turNo, tur));
+  return liste.concat(maneviDilimi(maneviSirasi(girdi), liste, konum, tur));
 }
 
 export const ekranIdOku = (deger: string | null): EkranId =>

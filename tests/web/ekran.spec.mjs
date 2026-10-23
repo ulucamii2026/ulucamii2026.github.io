@@ -1678,9 +1678,13 @@ test('manevi blok ayet → hadis → dua → tema kartı; Kur’an metni Kur’a
   await page.goto('/ekran/');
   const slayt = page.locator('[data-alan="slayt"]');
   await expect(slayt.locator('.slayt-ayet .ar')).toHaveAttribute('data-yuz', 'kuran');
+  // Üst başlıklar «Günün …» değil: her gün bütün öğeler sırayla gösterilir (23 Ekim 2026).
+  await expect(slayt.locator('.slayt-ayet .ust-baslik')).toHaveText('Âyet-i Kerîme · Verset du Coran');
   await page.clock.runFor(10_500);
   await expect(slayt.locator('.slayt-hadis .ar')).not.toHaveAttribute('data-yuz', 'kuran');
+  await expect(slayt.locator('.slayt-hadis .ust-baslik')).toHaveText('Hadîs-i Şerîf · Hadith');
   await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-dua .ust-baslik')).toHaveText('Dua · Invocation');
   await expect(slayt.locator('.slayt-dua .ar')).toHaveAttribute('data-yuz', 'kuran');
   await expect(slayt.locator('.slayt-dua .kaynak')).toHaveText('Tâhâ, 20/114 · Tâ-Hâ, 20:114 — Kur’an Yolu Meali');
   await page.clock.runFor(10_000);
@@ -1730,11 +1734,19 @@ for (const sahne of TABAN_SAHNELERI.slice(0, 2)) {
   });
 }
 
-test('tur hedef süreyi aşınca manevi blok turlara bölünür: duyuru her turda kalır, ikinci tur kalan öğeden başlar', async ({ page }) => {
+/* Manevi dizinin imleci (src/ekran/main.ts → IMLEC_ANAHTARI, ekran başına). Depo boşken tur, saate bağlı bir
+   noktadan başlar; sırası önemli testler imleci dizinin SON öğesine koyarak turu baştan başlatır. */
+const IMLEC_ANAHTARI = 'ekran.maneviImleci.ana';
+const imlecKoy = (page, imlec) => page.addInitScript(([anahtar, deger]) => { if (!localStorage.getItem(anahtar)) localStorage.setItem(anahtar, deger); }, [IMLEC_ANAHTARI, JSON.stringify(imlec)]);
+const imlecOku = (page) => page.evaluate((anahtar) => localStorage.getItem(anahtar), IMLEC_ANAHTARI);
+
+test('tur hedef süreyi aşınca manevi dizi turlara bölünür: duyuru her turda kalır, ikinci tur kalan öğeden başlar', async ({ page }) => {
   const akis = AKIS([DUYURU()]);
   // Her slayt 10 sn. Duyuru 10 + manevi 4 × 10 = 50 sn > 40 → turda 3 manevi: tur 0 = du, ayet, hadis, dua (0–40 sn);
   // tur 1 = du, tema kartı, ayet, hadis. Bölünmeseydi tur du, ayet, hadis, dua, kart olurdu ve 40. sn'de kart görünürdü.
+  // İmleç dizinin son öğesinde (tema kartı) olduğu için tur 0 baştan başlar.
   akis.ayar.turHedefSn = 40;
+  await imlecKoy(page, { tur: 'kart', id: SOZ_KARTI.oge.id });
   await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
   await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
   await page.clock.install({ time: an(ornek, '12:00') });
@@ -1749,6 +1761,57 @@ test('tur hedef süreyi aşınca manevi blok turlara bölünür: duyuru her turd
   await expect(slayt.locator('.slayt-soz')).toBeVisible(); // 50 sn: ikinci turda tema kartı öne geçti
   await page.clock.runFor(10_000);
   await expect(slayt.locator('.slayt-ayet')).toBeVisible();
+});
+
+test('sayfa yeniden yüklenince manevi dizi kaldığı yerden sürer: son gösterilen öğe localStorage’a yazılır', async ({ page }) => {
+  const akis = AKIS([DUYURU()]);
+  akis.ayar.turHedefSn = 40; // turda 3 manevi slayt (ilk testte hesabı var)
+  await imlecKoy(page, { tur: 'kart', id: SOZ_KARTI.oge.id });
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible(); // tur 0: du, ayet, hadis, dua
+  await page.clock.runFor(30_500);
+  await expect(slayt.locator('.slayt-dua')).toBeVisible();
+  await page.reload();
+  // Sayfa kapanırken (pagehide) son gösterilen öğe yazıldı; yeni sayfa duyuruyla başlar ve dizi onun ardından sürer.
+  await expect(slayt.locator('.slayt-duyuru')).toBeVisible();
+  expect(JSON.parse(await imlecOku(page))).toEqual({ tur: 'dua', id: 'd1' });
+  await page.clock.runFor(10_500);
+  await expect(slayt.locator('.slayt-soz')).toBeVisible(); // dua'nın ardından tema kartı: baştan (ayet) başlamadı
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-ayet')).toBeVisible(); // dizi sarıldı
+  await page.clock.runFor(10_000);
+  await expect(slayt.locator('.slayt-hadis')).toBeVisible();
+});
+
+test('depo kullanılamıyorsa (localStorage hata verir) ekran çalışır; imleç bellekte turdan tura ilerler', async ({ page }) => {
+  const hatalar = [];
+  page.on('pageerror', (e) => hatalar.push(String(e)));
+  await page.addInitScript(() => {
+    Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new DOMException('depo kapalı', 'SecurityError'); } });
+  });
+  const akis = AKIS([]);
+  akis.ayar.turHedefSn = 20; // turda 2 manevi slayt; dizi ayet, hadis, dua, tema kartı
+  await page.route('**/ekran/akis.json', (r) => r.fulfill({ json: akis }));
+  await page.route('**/ekran/icerik.json', (r) => r.fulfill({ json: ICERIK_TAM }));
+  await page.clock.install({ time: an(ornek, '12:00') });
+  await page.goto('/ekran/');
+  const slayt = page.locator('[data-alan="slayt"]');
+  await expect(slayt.locator('article.slayt')).toBeVisible();
+  // Başlangıç saate bağlıdır (depo yok); ardışık dört slayt dizinin bir dönüşü olmalı: iki tur birbirini sürer.
+  const sira = ['ayet', 'hadis', 'dua', 'soz'];
+  const gorulen = [];
+  for (let i = 0; i < 4; i++) {
+    gorulen.push(await slayt.locator('article.slayt').getAttribute('data-tur'));
+    await page.clock.runFor(10_500);
+  }
+  const bas = sira.indexOf(gorulen[0]);
+  expect(bas).toBeGreaterThanOrEqual(0);
+  expect(gorulen).toEqual([0, 1, 2, 3].map((k) => sira[(bas + k) % 4]));
+  expect(hatalar).toEqual([]);
 });
 
 // Review Focus 3: kutunun önbelleğinde eski icerik.json (A öncesi: dualar yok; 19 Ekim 2026 öncesi: kartlar yok, Esmâ

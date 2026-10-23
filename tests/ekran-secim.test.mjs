@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, gununOgesi, temaSec, saatGecerliMi, SAAT_GERI_TOLERANS_MS, sunucuSaatiCoz, isaretGuncelle, turGunu, EN_GEC_GECERLI, brukselSaat, vakitGorunumu, slaytListesi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
+import { slaytSuresi, hedefUygunMu, aktifMi, gunNo, temaSec, saatGecerliMi, SAAT_GERI_TOLERANS_MS, sunucuSaatiCoz, isaretGuncelle, turGunu, EN_GEC_GECERLI, brukselSaat, vakitGorunumu, slaytListesi, maneviSirasi, imlecCoz, imlecYazisi, ekranIdOku, donmeOku, duzenOku } from '../src/lib/ekran/secim.ts';
 import { bugunTarih, durumHesapla } from '../src/lib/namaz.ts';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -74,15 +74,9 @@ test('gösterim aralığının iki ucu dâhil', () => {
   assert.equal(aktifMi(o, '2026-09-26'), false);
 });
 
-test('günün öğesi aynı gün sabit, ertesi gün sıradaki; yaz saati geçişi sırayı bozmaz', () => {
-  const l = ['a', 'b', 'c'];
+test('takvim günü sırası ardışık günlerde 1 artar; yaz saati geçişi sırayı bozmaz', () => {
   assert.equal(gunNo('2026-10-26') - gunNo('2026-10-25'), 1);
   assert.equal(gunNo('2027-03-29') - gunNo('2027-03-28'), 1);
-  const bugun = gununOgesi(l, '2026-10-25');
-  const yarin = gununOgesi(l, '2026-10-26');
-  assert.equal(gununOgesi(l, '2026-10-25'), bugun);
-  assert.equal(l.indexOf(yarin), (l.indexOf(bugun) + 1) % 3);
-  assert.equal(gununOgesi([], '2026-10-25'), undefined);
 });
 
 test('tema güneşten akşama açık, sonra koyu (kış saatine geçilen gün dâhil)', () => {
@@ -301,17 +295,48 @@ const KART = (n, cesit = 'soz', tema = 'emek') => ({ cesit, tema, oge: cesit ===
 const DU = (id) => ({ id, tur: 'duyuru', tr: { baslik: 'b', metin: 'm' }, baslangic: '2026-09-01', son: '2026-10-30', hedef: [] });
 const ON_SN = { tabanSn: 10, karakterSn: 0, enAzSn: 10, enCokSn: 10 };
 
-test('tur: duyurular, ardından manevi blok ayet → hadis → dua → tema kartı', () => {
+test('tur: duyurular, ardından manevi dizi ayet → hadis → dua → tema kartı', () => {
   const s = slaytListesi({ duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [KART(1)] }, 'ana', '2026-09-27');
   assert.deepEqual(s.map((x) => x.tur + ':' + x.oge.id), ['duyuru:du', 'ayet:a1', 'hadis:h1', 'dua:d1', 'soz:k1']);
   assert.equal(s[4].tema, 'emek');
-  assert.equal('tema' in s[1], false, 'günün ayeti temasızdır');
+  assert.equal('tema' in s[1], false, 'sade ayet temasızdır');
 });
 
-test('günün tema kartı dosya sırasıyla günle döner: ertesi gün sıradaki kart', () => {
-  const kartlar = [KART(0), KART(1), KART(2)];
-  const gunun = (t) => Number(slaytListesi({ duyurular: [], ayetler: [], hadisler: [], kartlar }, 'ana', t)[0].oge.id.slice(1));
-  assert.equal(gunun('2026-09-28'), (gunun('2026-09-27') + 1) % 3);
+/* Manevi dizi (23 Ekim 2026): her gün bütün ayet, hadis, dua ve tema kartları sırayla; bir günün tek öğesi yok. */
+const AY = (n) => ({ ...AYET, id: 'a' + n });
+const HA = (n) => ({ ...HADIS, id: 'h' + n });
+const DUAL = (n) => ({ ...DUA, id: 'd' + n });
+const kimlikler = (s) => s.map((x) => x.oge.id);
+/** a0 h0 d0 k0 | a1 h1 k1 | a2 k2 | k3 — dualar ve hadisler erken biter, ayet daha sonra, kartlar en son. */
+const ESIT_OLMAYAN = { duyurular: [], ayetler: [AY(0), AY(1), AY(2)], hadisler: [HA(0), HA(1)], dualar: [DUAL(0)], kartlar: [KART(0), KART(1), KART(2), KART(3)] };
+const SIRA = ['a0', 'h0', 'd0', 'k0', 'a1', 'h1', 'k1', 'a2', 'k2', 'k3'];
+
+test('manevi dizi: çeşitler arasında döner; kısa liste bitince kalanlarla sürer; her listenin kendi sırası korunur', () => {
+  assert.deepEqual(kimlikler(maneviSirasi(ESIT_OLMAYAN)), SIRA);
+  // Bütün öğeler bir kez: gün başına bir ayet/hadis/dua/kart değil, listelerin tamamı.
+  assert.equal(maneviSirasi(ESIT_OLMAYAN).length, 3 + 2 + 1 + 4);
+  // Aynı girdi her zaman aynı diziyi verir (rastgelelik ve gün bağımlılığı yok).
+  assert.deepEqual(kimlikler(slaytListesi(ESIT_OLMAYAN, 'ana', '2026-09-27')), SIRA);
+  assert.deepEqual(kimlikler(slaytListesi(ESIT_OLMAYAN, 'ana', '2027-01-05')), SIRA);
+});
+
+test('manevi dizi: tek çeşitli girdi, eksik dualar/kartlar (eski akış) ve boş girdi', () => {
+  assert.deepEqual(kimlikler(maneviSirasi({ duyurular: [], ayetler: [AY(0), AY(1)], hadisler: [] })), ['a0', 'a1']);
+  assert.deepEqual(kimlikler(maneviSirasi({ duyurular: [], ayetler: [], hadisler: [], kartlar: [KART(5), KART(6)] })), ['k5', 'k6']);
+  assert.deepEqual(maneviSirasi({ duyurular: [], ayetler: [], hadisler: [] }), []);
+});
+
+test('manevi slaytın imleci çeşit + kimliktir; tema kartı çeşidi ne olursa olsun «kart» sayılır; duyurunun imleci yoktur', () => {
+  const s = slaytListesi({ duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [{ cesit: 'ayet', tema: 'sabir', oge: { ...AYET, id: 'ka' } }, KART(1)] }, 'ana', '2026-09-27');
+  assert.deepEqual(s.map((x) => x.imlec ? x.imlec.tur + ':' + x.imlec.id : '-'), ['-', 'ayet:a1', 'hadis:h1', 'dua:d1', 'kart:ka', 'kart:k1']);
+});
+
+test('kimlik çakışması: ayet a1 ile aynı kimlikli tema kartı ayrı öğelerdir, imleç çeşitle birlikte aranır', () => {
+  const girdi = { duyurular: [], ayetler: [AY(1), AY(2)], hadisler: [], kartlar: [{ cesit: 'soz', tema: 'emek', oge: { id: 'a1', tr: 'söz', kaynak: 'k' } }] };
+  assert.deepEqual(maneviSirasi(girdi).map((x) => (x.imlec.tur + ':' + x.imlec.id)), ['ayet:a1', 'kart:a1', 'ayet:a2']);
+  const tur = { turHedefSn: 25, slayt: ON_SN }; // 3 × 10 sn > 25 → tur başına 2 öğe (sigan 2, en çok n − 1)
+  assert.deepEqual(kimlikler(slaytListesi(girdi, 'ana', '2026-09-27', tur, { imlec: { tur: 'ayet', id: 'a1' } })), ['a1', 'a2']);
+  assert.deepEqual(kimlikler(slaytListesi(girdi, 'ana', '2026-09-27', tur, { imlec: { tur: 'kart', id: 'a1' } })), ['a2', 'a1']);
 });
 
 test('tema kartının çeşidi slayt türü olur; tema slayta taşınır, okuma süresi en uzun dile göre', () => {
@@ -324,28 +349,108 @@ test('tema kartının çeşidi slayt türü olur; tema slayta taşınır, okuma 
   assert.equal(turu(KART(1, 'soz', 'birlikte')), 'soz:birlikte:3');
 });
 
-test('tur hedef süreyi aşarsa manevi blok turlara dilimlenir; her tur sıradakilerden başlar, duyuru her turda kalır', () => {
-  const girdi = { duyurular: [DU('du')], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [KART(1)] };
-  // Duyuru 10 sn; manevi 4 × 10 sn = 40 sn, hedefin kalanı 30 sn → turda 3 manevi slayt.
-  const kimlik = (turNo) => slaytListesi(girdi, 'ana', '2026-09-27', turNo, { turHedefSn: 40, slayt: ON_SN }).map((x) => x.oge.id);
-  assert.deepEqual(kimlik(0), ['du', 'a1', 'h1', 'd1']);
-  assert.deepEqual(kimlik(1), ['du', 'k1', 'a1', 'h1']);
-  assert.deepEqual(kimlik(2), ['du', 'd1', 'k1', 'a1']);
+test('tur hedef süreyi aşarsa dizi turlara dilimlenir; her tur imlecin ardından başlar, duyuru her turda kalır', () => {
+  const girdi = { ...ESIT_OLMAYAN, duyurular: [DU('du')] };
+  // Duyuru 10 sn; manevi 10 × 10 sn = 100 sn, hedefin kalanı 30 sn → turda 3 manevi slayt.
+  const tur = { turHedefSn: 40, slayt: ON_SN };
+  const kim = (imlec) => kimlikler(slaytListesi(girdi, 'ana', '2026-09-27', tur, { imlec }));
+  assert.deepEqual(kim(null), ['du', 'a0', 'h0', 'd0'], 'imleç yoksa (ve an verilmediyse) baştan');
+  assert.deepEqual(kim({ tur: 'dua', id: 'd0' }), ['du', 'k0', 'a1', 'h1']);
+  assert.deepEqual(kim({ tur: 'hadis', id: 'h1' }), ['du', 'k1', 'a2', 'k2']);
 });
 
-test('tur hedefe sığıyorsa, ayar yoksa ya da bozuksa manevi blok bütün gösterilir', () => {
+test('imleç turdan tura ilerler: dizinin sonunda başa sarar ve her öğe tam bir kez gösterilir', () => {
+  const tur = { turHedefSn: 30, slayt: ON_SN }; // duyurusuz: turda 3 öğe
+  let imlec = null;
+  const turlar = [];
+  for (let i = 0; i < 4; i++) {
+    const s = slaytListesi(ESIT_OLMAYAN, 'ana', '2026-09-27', tur, { imlec });
+    turlar.push(kimlikler(s));
+    imlec = s[s.length - 1].imlec;
+  }
+  assert.deepEqual(turlar, [['a0', 'h0', 'd0'], ['k0', 'a1', 'h1'], ['k1', 'a2', 'k2'], ['k3', 'a0', 'h0']], '4. tur dizinin sonundan başa sarar');
+  assert.deepEqual([].concat(...turlar.slice(0, 3)).concat(turlar[3][0]), SIRA, 'ilk üç tur + dördüncünün ilk öğesi = dizinin tamamı, tekrarsız');
+});
+
+test('imleçteki öğe dizinin son öğesiyse sıradaki tur baştan başlar', () => {
+  const s = slaytListesi(ESIT_OLMAYAN, 'ana', '2026-09-27', { turHedefSn: 30, slayt: ON_SN }, { imlec: { tur: 'kart', id: 'k3' } });
+  assert.deepEqual(kimlikler(s), ['a0', 'h0', 'd0']);
+});
+
+test('sığmadığı için atlanan öğe de geçilmiş sayılır: imleç onda olsa bile tur onun ardından sürer', () => {
+  // main.ts sığmayan slaytın imlecini de ilerletir; slaytListesi imleçteki öğeyi bir daha göstermez.
+  const s = slaytListesi(ESIT_OLMAYAN, 'ana', '2026-09-27', { turHedefSn: 30, slayt: ON_SN }, { imlec: { tur: 'dua', id: 'd0' } });
+  assert.equal(kimlikler(s).indexOf('d0'), -1);
+  assert.deepEqual(kimlikler(s), ['k0', 'a1', 'h1']);
+});
+
+test('imleç yoksa ya da dizide değilse zamana bağlı deterministik başlangıç; yeniden yükleme her seferinde 0’dan başlamaz', () => {
+  const tur = { turHedefSn: 30, slayt: ON_SN }; // 10 öğe, turda 3
+  const kim = (konum) => kimlikler(slaytListesi(ESIT_OLMAYAN, 'ana', '2026-09-27', tur, konum));
+  const BIR_TUR = 30_000;
+  // Epoch'tan beri k. tur → başlangıç = (k × 3) mod 10.
+  assert.deepEqual(kim({ simdiMs: 7 * BIR_TUR + 5_000 }), [SIRA[(7 * 3) % 10], SIRA[(7 * 3 + 1) % 10], SIRA[(7 * 3 + 2) % 10]]);
+  assert.deepEqual(kim({ simdiMs: 8 * BIR_TUR }), [SIRA[(8 * 3) % 10], SIRA[(8 * 3 + 1) % 10], SIRA[(8 * 3 + 2) % 10]]);
+  // Aynı an aynı sonuç; ardışık turlar ardışık dilimler.
+  assert.deepEqual(kim({ simdiMs: 7 * BIR_TUR + 29_999 }), kim({ simdiMs: 7 * BIR_TUR }));
+  // Depodaki kimlik artık dizide yoksa (içerik kaldırıldı) ya da imleç null ise yedek devreye girer.
+  const yedek = kim({ simdiMs: 7 * BIR_TUR });
+  assert.deepEqual(kim({ imlec: { tur: 'ayet', id: 'yok-artik' }, simdiMs: 7 * BIR_TUR }), yedek);
+  assert.deepEqual(kim({ imlec: null, simdiMs: 7 * BIR_TUR }), yedek);
+  // Dizide bulunan imleç, yedek anı olsa bile ağır basar.
+  assert.deepEqual(kim({ imlec: { tur: 'dua', id: 'd0' }, simdiMs: 7 * BIR_TUR }), ['k0', 'a1', 'h1']);
+  // Bozuk an ya da an yoksa 0.
+  for (const bozuk of [undefined, NaN, Infinity]) assert.deepEqual(kim({ simdiMs: bozuk }), ['a0', 'h0', 'd0']);
+});
+
+test('tur hedefe sığıyorsa dizinin tamamı baştan gösterilir; imleç ve an yok sayılır, ayar yoksa ya da bozuksa da bütün gösterilir', () => {
   const girdi = { duyurular: [], ayetler: [AYET], hadisler: [HADIS], dualar: [DUA], kartlar: [KART(1)] };
-  const adet = (tur) => slaytListesi(girdi, 'ana', '2026-09-27', 5, tur).length;
-  assert.equal(adet({ turHedefSn: 150, slayt: ON_SN }), 4);
-  assert.equal(adet(undefined), 4);
-  assert.equal(adet({ turHedefSn: NaN, slayt: ON_SN }), 4);
-  assert.equal(adet({ turHedefSn: 150, slayt: { ...ON_SN, tabanSn: NaN } }), 4);
+  const konum = { imlec: { tur: 'dua', id: 'd1' }, simdiMs: 123_456_789 };
+  const sonuc = (tur) => kimlikler(slaytListesi(girdi, 'ana', '2026-09-27', tur, konum));
+  const TAMAMI = ['a1', 'h1', 'd1', 'k1'];
+  assert.deepEqual(sonuc({ turHedefSn: 150, slayt: ON_SN }), TAMAMI);
+  assert.deepEqual(sonuc(undefined), TAMAMI);
+  assert.deepEqual(sonuc({ turHedefSn: NaN, slayt: ON_SN }), TAMAMI);
+  assert.deepEqual(sonuc({ turHedefSn: 150, slayt: { ...ON_SN, tabanSn: NaN } }), TAMAMI);
+  // Tek öğeli dizi dilimlenmez.
+  assert.deepEqual(kimlikler(slaytListesi({ duyurular: [], ayetler: [AYET], hadisler: [] }, 'ana', '2026-09-27', { turHedefSn: 1, slayt: ON_SN }, konum)), ['a1']);
 });
 
 test('duyurular hedefi tek başına dolduruyorsa her tur yine en az bir manevi slayt gösterir', () => {
   const girdi = { duyurular: [DU('x'), DU('y'), DU('z')], ayetler: [AYET], hadisler: [HADIS] };
-  const s = slaytListesi(girdi, 'ana', '2026-09-27', 0, { turHedefSn: 20, slayt: ON_SN });
+  const s = slaytListesi(girdi, 'ana', '2026-09-27', { turHedefSn: 20, slayt: ON_SN });
   assert.deepEqual(s.map((x) => x.tur), ['duyuru', 'duyuru', 'duyuru', 'ayet']);
+});
+
+test('büyük havuz (~500 öğe): bir tur hedef süreye yakın kalır, ardışık turlar dizinin tamamını tekrarsız dolaşır', () => {
+  const kartlar = []; for (let i = 0; i < 314; i++) kartlar.push(KART(i, i % 4 === 0 ? 'bilgi' : 'soz'));
+  const girdi = { duyurular: [DU('du')], ayetler: Array.from({ length: 60 }, (_, i) => AY(i)), hadisler: Array.from({ length: 80 }, (_, i) => HA(i)), dualar: Array.from({ length: 40 }, (_, i) => DUAL(i)), kartlar };
+  const toplam = 60 + 80 + 40 + 314;
+  const tur = { turHedefSn: 150, slayt: ON_SN };
+  let imlec = null;
+  const gorulen = [];
+  let turSayisi = 0;
+  while (gorulen.length < toplam && turSayisi < 1000) {
+    const s = slaytListesi(girdi, 'ana', '2026-09-27', tur, { imlec });
+    assert.equal(s[0].oge.id, 'du');
+    assert.equal(s.length - 1, 14, 'duyuru 10 sn + 14 × 10 sn = hedef 150 sn');
+    for (const x of s.slice(1)) gorulen.push(x.imlec.tur + ':' + x.imlec.id);
+    imlec = s[s.length - 1].imlec;
+    turSayisi++;
+  }
+  const ilk = gorulen.slice(0, toplam);
+  assert.equal(new Set(ilk).size, toplam, 'bir dolaşımda hiçbir öğe iki kez gelmez');
+  assert.deepEqual(ilk, maneviSirasi(girdi).map((x) => x.imlec.tur + ':' + x.imlec.id), 'dolaşım dizinin sırasıdır');
+  assert.equal(turSayisi, Math.ceil(toplam / 14));
+});
+
+test('imleç metni: gidiş-dönüş; bozuk, boş ve tanınmayan çeşit null verir', () => {
+  const i = { tur: 'kart', id: 'k-s-017' };
+  assert.deepEqual(imlecCoz(imlecYazisi(i)), i);
+  for (const t of ['ayet', 'hadis', 'dua', 'kart']) assert.deepEqual(imlecCoz(imlecYazisi({ tur: t, id: 'x' })), { tur: t, id: 'x' });
+  for (const bozuk of [null, undefined, '', '   ', 'a1', '{', '[]', 'null', '{"tur":"ayet"}', '{"tur":"ayet","id":""}', '{"tur":"ayet","id":7}', '{"tur":"esma","id":"x"}', '{"tur":"__proto__","id":"x"}']) {
+    assert.equal(imlecCoz(bozuk), null, `null olmalıydı: ${JSON.stringify(bozuk)}`);
+  }
 });
 
 test('duyuru parçaları: 90’ı aşan iki dilli metin ayrı iki slayt; afişli uzun metin afiş + levha; sığmayan düşer', () => {
