@@ -1,3 +1,7 @@
+/* v43 (23 Eki 2026, Rıdvan KAYAHAN kararı): ihtida paketinde Ulu Camii Marche şahitleri «Rıdvan KAYAHAN» ve «Ercan MOLA»nın kayıtlı
+   vektör imzaları otomatik basılır. İmzalar YALNIZ dernek Google hesabındaki ihtida klasöründe (sahit-imzalari.json) durur — kodda,
+   depoda, public/ klasöründe ve bu paketin içinde değil; ?islem=sahit-imzalari (GET) ve tur:'sahit-imza-yukle' (POST) panel anahtarı ister.
+   Ön başvuruda arşiv ve dernek içi alıcılar şahit imzalı nüshayı alır; başvurana şahit imzasız ikinci PDF gider (ihtida-paket-isleri.gs). */
 /* v43 — 10 Eki 2026: kimliği Script Properties'te kayıtlı bir defter (TABLO2_ID, IHTIDA_TABLO2_ID, SEVIYE_TABLO_ID,
    ENVANTER_TABLO_ID) açılamazsa artık YENİ TABLO YARATILMAZ (kimlikliTabloAc: üç deneme, sonra "defter-acilamadi" hatası).
    4 Eki 2026'da tek bir geçici openById hatası boş bir kopya yaratıp TABLO2_ID'yi ona çevirmişti; kayıt defteri altı gün boş
@@ -127,6 +131,7 @@ function doGet(e) {
     if (e.parameter.islem === "veli-cuma-durum" || e.parameter.islem === "veli-cuma-onizleme") return veliCumaPanelIsle(e);
     if (e.parameter.islem === "veli-mail-listesi-durum") return veliMailListesiDurumIsle(e);
     if (e.parameter.islem === "ihtida-paket-durum") return ihtidaPaketDurumIsle(e);
+    if (e.parameter.islem === "sahit-imzalari") return ihtidaSahitImzalariGetIsle(e); // 23 Eki 2026: yerel tek EK-9 için yetkili panel isteği
     if (e.parameter.islem === "ihtida-defteri" || e.parameter.islem === "ihtida-defteri-dosya") return ihtidaDefteriGetIsle(e);
     if (e.parameter.islem === "liste") return panelListeIsle(e);
     if (e.parameter.islem === "belge") return panelBelgeIsle(e);
@@ -162,6 +167,9 @@ function doGet(e) {
     ihtidaAdresDilekcesi: typeof IHTIDA_PDF_KAYNAKLARI !== "undefined" && Boolean(IHTIDA_PDF_KAYNAKLARI.dilekceAdresSablonBytes),
     // 23 Eki 2026: tek imza EK-9, dilekçe ve EK-10'a ön başvuruda da basılır; referans numaraları azalmaz (REF_SON_*).
     ihtidaTekImza: typeof IhtidaPdf !== "undefined" && IhtidaPdf.tekImza === true,
+    // 23 Eki 2026: Rıdvan KAYAHAN ve Ercan MOLA şahit imzaları özel depodan (ihtida klasörü, sahit-imzalari.json) paketlere otomatik basılır;
+    // ön başvuruda başvurana ayrı, şahit imzasız nüsha gider. İmzalar kodda, public/ klasöründe ve bu paketin içinde YOKTUR.
+    ihtidaSahitImzasi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.sahitImzasi === true && typeof ihtidaSahitImzalariOku === "function",
     referansSayaci: typeof referansMaxBul === "function" && typeof REFERANS_SON_EK === "string",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
@@ -191,7 +199,7 @@ function doPost(e) {
     // 20 Eyl 2026: sınır gerçekten BAYT sayar (UTF-8); eskiden UTF-16 birimi sayıyordu, Türkçe gövdede ~35 KB geçiyordu.
     // Bir UTF-16 birimi en çok 3 bayt tuttuğu için küçük gövdede Blob hiç kurulmaz.
     var govdeBuyuk = govde.length > AZAMI_GOVDE_BAYT || (govde.length * 3 > AZAMI_GOVDE_BAYT && Utilities.newBlob(govde).getBytes().length > AZAMI_GOVDE_BAYT);
-    if (govdeBuyuk && ["kayit", "ihtida", "ihtida-paket-onay"].indexOf(v.tur) === -1) {
+    if (govdeBuyuk && ["kayit", "ihtida", "ihtida-paket-onay", "sahit-imza-yukle"].indexOf(v.tur) === -1) {
       // v42: envanter gövdesi (en çok 40 adlı satır + uzun metinler) 20 KiB'ı aşabilir; 64 KiB UTF-8 baytına kadar geçer.
       // UTF-8 bayt sayısı UTF-16 birim sayısından hiç küçük olmadığı için uzunluğu sınırı aşan gövdede Blob kurulmaz.
       var envanterSigar = v.tur === "envanter" && govde.length <= AZAMI_ENVANTER_GOVDE_BAYT && Utilities.newBlob(govde).getBytes().length <= AZAMI_ENVANTER_GOVDE_BAYT;
@@ -205,6 +213,7 @@ function doPost(e) {
     if (v.tur === "ceviri-ayar") return ceviriAyarIsle(v); // v35: panel anahtarıyla çeviri ayarları
     if (v.tur === "ozellik-bakim") return ozellikBakimIsle(v); // v36: veli-cuma özelliklerini katla, sayıyı 50'nin altında tut
     if (v.tur === "ihtida-paket-onay") return ihtidaPaketOnayIsle(v);
+    if (v.tur === "sahit-imza-yukle") return ihtidaSahitImzaYukleIsle(v); // 23 Eki 2026: panel anahtarıyla özel şahit imzası kaydı
     if (v.tur === "ihtida-paket-tekrar") return ihtidaPaketTekrarIsle(v);
     if (v.tur === "ihtida-defteri-guncelle") return ihtidaDefteriGuncelle(v);
     if (v.tur === "ihtida") {

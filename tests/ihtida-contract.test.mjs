@@ -415,3 +415,142 @@ test('EK-9 arka yüz değerleri tek tablodan gelir; son nüshada düzeltilen ala
   const dilekce = pdfMetni(yol, ['-f', '3', '-l', '3']).replace(/[ \t]+/g, '');
   assert.ok(dilekce.includes('Liège') && !dilekce.includes('Belçika/Belgique'), 'dilekçe başvuranın kendi beyanı kalır');
 });
+
+// ---- 23 Ekim 2026: kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) belgeye otomatik basılır ------------------------------
+// Gerçek imzalar depoda, testte, derlemede ve günlükte ASLA bulunmaz: bütün sınamalar SENTETİK şekillerle yapılır. Gerçekleri
+// yalnız dernek Google hesabındaki özel depodadır (ihtida klasörü, sahit-imzalari.json).
+const SAHTE_DOLGU = JSON.stringify({ v: 2, w: 300, h: 120, p: [{ d: 'M10 100L60 20L110 100L90 100L60 50L30 100Z M150 20L290 20L290 40L150 40Z', f: 1, e: 1 }] });
+const SAHTE_CIZGI = JSON.stringify({ v: 2, w: 240, h: 100, p: [{ d: 'M10 80C40 10 80 10 100 60L140 20L230 90', k: 3 }] });
+
+/** Sayfanın içerik akışı ve vektör imza kutuları: yol imzası «q s 0 0 -s x y cm q <mürekkep rengi>» ile başlar (şablonun kendi cm'leri ayrışır). */
+function sayfaAkisi(doc, i) {
+  const c = doc.getPage(i).node.get(pdfLib.PDFName.of('Contents'));
+  const refler = c instanceof pdfLib.PDFArray ? c.asArray() : [c];
+  return refler.map(r => Buffer.from(pdfLib.decodePDFRawStream(doc.context.lookup(r)).decode()).toString('latin1')).join('\n');
+}
+function imzaKutulari(doc, i, boyutlar) {
+  const H = doc.getPage(i).getHeight();
+  return [...sayfaAkisi(doc, i).matchAll(/q\s+(-?[\d.]+(?:e-?\d+)?) 0 0 -([\d.]+(?:e-?\d+)?) (-?[\d.]+) (-?[\d.]+) cm\s+q\s+0\.1 0\.24 0\.62 (?:rg|RG)/g)].map((m, j) => {
+    const s = Number(m[1]), x0 = Number(m[3]), y0 = H - Number(m[4]), [w, h] = boyutlar[j] || [1, 1];
+    return { x0, y0, x1: x0 + w * s, y1: y0 + h * s };
+  });
+}
+
+test('Şahit imzası kaydı (sürüm 2) doğrulanır; herkese açık formun vektör imzası bu biçimi kabul etmez', async () => {
+  const { sahitImzaCoz, imzaHazirla } = await import('../public/admin/imza-ciz.js');
+  const y = sahitImzaCoz(SAHTE_DOLGU);
+  assert.equal(y.yollar.length, 1); assert.equal(y.yollar[0].dolgu, true); assert.equal(y.yollar[0].evenodd, true);
+  assert.deepEqual(y.yollar[0].ops.map(o => o.c), ['M', 'L', 'L', 'L', 'L', 'L', 'Z', 'M', 'L', 'L', 'L', 'Z']);
+  const c = sahitImzaCoz(SAHTE_CIZGI);
+  assert.equal(c.yollar[0].dolgu, false); assert.equal(c.yollar[0].k, 3);
+  assert.deepEqual(c.yollar[0].ops.map(o => o.c), ['M', 'C', 'L', 'L']);
+  const gecersiz = (p, ust = {}) => JSON.stringify({ v: 2, w: 300, h: 120, p, ...ust });
+  const kotu = [
+    '', null, '{', JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22' }),          // sürüm 1
+    gecersiz([]),                                                                                              // yol yok
+    gecersiz([{ d: 'L10 10L20 20', f: 1 }]),                                                                   // M ile başlamıyor
+    gecersiz([{ d: 'M10 10L20', f: 1 }]),                                                                      // eksik sayı
+    gecersiz([{ d: 'M10 10C1 2 3 4 5L20 20', f: 1 }]),                                                         // C 6'nın katı değil
+    gecersiz([{ d: 'M10 10L20 20Z5', f: 1 }]),                                                                 // Z sayı almaz
+    gecersiz([{ d: 'M10 10L20 20' }]),                                                                         // çizgide kalınlık yok
+    gecersiz([{ d: 'M10 10L20 20', k: 0 }]),
+    gecersiz([{ d: 'M10 10 l20 20', f: 1 }]),                                                                  // göreli komut
+    gecersiz([{ d: 'M10 10L1e9 20', f: 1 }]),                                                                  // üstel sayı
+    gecersiz([{ d: 'M10 10L99999 20', f: 1 }]),                                                                // kutu dışı koordinat
+    gecersiz([{ d: 'M10 10L20 20', f: 1 }], { w: 0 }),
+    gecersiz([{ d: 'M10 10L20 20'.padEnd(150001, ' '), f: 1 }]),                                               // yol çok uzun
+  ];
+  for (const x of kotu) assert.equal(sahitImzaCoz(x), null, String(x).slice(0, 60));
+  // Çizim yalnız şahit kipinde: aynı kayıt şahit bayrağı olmadan imza sayılmaz (başvuranın kendi imzası v1'dir).
+  const belge = await pdfLib.PDFDocument.create();
+  assert.equal(imzaVektorCoz(SAHTE_DOLGU), null, 'sürüm 2 kaydı formun vektör çözücüsünden geçmez');
+  assert.equal(await imzaHazirla(pdfLib, belge, { vektor: SAHTE_DOLGU }), null);
+  assert.equal((await imzaHazirla(pdfLib, belge, { vektor: SAHTE_DOLGU, sahit: true })).tur, 'yol');
+});
+
+test('Kayıtlı şahit imzası yalnız Ulu Camii Marche içinde ve ad eşleşirse bağlanır; işaret kaldırılırsa bağlanmaz', async () => {
+  const { sahitImzalariniBagla, sahitImzaAnahtari } = await import('../public/admin/ek9-hazirlik.js');
+  assert.equal(sahitImzaAnahtari(' rıdvan  KAYAHAN '), 'ridvan');
+  assert.equal(sahitImzaAnahtari('ERCAN MOLA'), 'ercan');
+  assert.equal(sahitImzaAnahtari('Yeliz KAYAHAN'), '');
+  const imzalar = { ridvan: SAHTE_CIZGI, ercan: SAHTE_DOLGU };
+  let r = sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'ulucamii-marche', imzalar);
+  assert.deepEqual(r.uygulanan, ['ercan', 'ridvan']);
+  assert.equal(r.sahitler[0].imza, SAHTE_DOLGU); assert.equal(r.sahitler[1].imza, SAHTE_CIZGI);
+  r = sahitImzalariniBagla([{ ad: 'Ercan MOLA', imzaKullan: false }, { ad: 'Rıdvan KAYAHAN', imzaKullan: true }], 'ulucamii-marche', imzalar);
+  assert.deepEqual(r.uygulanan, ['ridvan'], 'görevli işareti kaldırdıysa o şahidin imzası basılmaz');
+  assert.equal(r.sahitler[0].imza, undefined);
+  r = sahitImzalariniBagla([{ ad: 'Yeliz KAYAHAN' }, { ad: 'Rıdvan KAYAHAN' }], 'ulucamii-marche', { ridvan: SAHTE_CIZGI });
+  assert.deepEqual(r.uygulanan, ['ridvan']);
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', { ridvan: SAHTE_CIZGI }).uygulanan, [], 'kayıtlı imza yoksa bağlanmaz');
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar).uygulanan, [], 'başka camide yerel imza kullanılmaz');
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'ercan mola' }], 'ulucamii-marche', imzalar).uygulanan, ['ercan'], 'aynı kişi iki kez imzalamaz');
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', undefined).uygulanan, []);
+  const eski = sahitImzalariniBagla([{ ad: 'Ercan MOLA', imza: 'data:eski-raster' }], 'ulucamii-marche', {});
+  assert.equal(eski.sahitler[0].imza, 'data:eski-raster', 'istemciden gelen eski biçim değişmez');
+});
+
+test('EK-9 ön yüzünde şahit imzaları iki yuvaya vektör olarak, kalem mürekkebiyle basılır; raster yoktur', async () => {
+  const oku = ad => readFileSync(new URL('../public/' + ad, import.meta.url));
+  const kaynak = { pdfLib, fontkit, sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), fontBytes: oku('fonts/Lora-Regular.ttf'),
+    fontKalinBytes: oku('fonts/Lora-Bold.ttf'), kalemFontBytes: oku('fonts/Allura-Regular.ttf'),
+    veri: { adSoyad: 'Deniz Örnek', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', beyanTarihi: '09/09/2026', dogumTarihi: '20/05/1990', cami: camiCoz({ id: 'ulucamii-marche' }) } };
+  const imzasiz = await pdfLib.PDFDocument.load(await ek9Uret({ ...kaynak, sahitler: [{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }] }));
+  assert.equal(imzaKutulari(imzasiz, 0, []).length, 0, 'imza verilmezse adlar basılır, yuva boş kalır');
+  const bytes = await ek9Uret({ ...kaynak, sahitler: [{ ad: 'Ercan MOLA', imza: SAHTE_DOLGU }, { ad: 'Rıdvan KAYAHAN', imza: SAHTE_CIZGI }] });
+  const doc = await pdfLib.PDFDocument.load(bytes);
+  const kutu = imzaKutulari(doc, 0, [[300, 120], [240, 100]]);
+  assert.equal(kutu.length, 2, 'iki vektör imza');
+  // Yuvalar: sol şahit x 155–235, sağ şahit x 603–683 (±13 pt), imza alanı etiketin (424) altı, 432–462 pt (üstten).
+  assert.ok(kutu[0].x0 >= 141.9 && kutu[0].x1 <= 248.1, 'ilk imza sol şahit yuvasında: ' + JSON.stringify(kutu[0]));
+  assert.ok(kutu[1].x0 >= 589.9 && kutu[1].x1 <= 696.1, 'ikinci imza sağ şahit yuvasında: ' + JSON.stringify(kutu[1]));
+  for (const k of kutu) assert.ok(k.y0 >= 431.9 && k.y1 <= 462.1, 'imza alanı sınırında: ' + JSON.stringify(k));
+  const akis = sayfaAkisi(doc, 0);
+  assert.match(akis, /f\*/, 'dolgulu kontur çift-tek kuralıyla doldurulur');
+  assert.match(akis, /0\.1 0\.24 0\.62 rg/, 'dolgu mürekkebi #1A3D9E');
+  assert.match(akis, /0\.1 0\.24 0\.62 RG/, 'çizgi mürekkebi #1A3D9E');
+  assert.match(akis, /1 J/, 'kalem çizgisi yuvarlak uçlu');
+  const x = doc.getPage(0).node.Resources().lookup(pdfLib.PDFName.of('XObject'));
+  const raster = x ? x.keys().filter(k => doc.context.lookup(x.get(k))?.dict?.get(pdfLib.PDFName.of('Subtype'))?.toString() === '/Image').length : 0;
+  assert.equal(raster, 0, 'şahit imzası görsel olarak gömülmez');
+  // Bozuk kayıt belgeyi düşürür (imzasız belge sessizce çıkmaz).
+  await assert.rejects(() => ek9Uret({ ...kaynak, sahitler: [{ ad: 'Ercan MOLA', imza: '{"v":2,"w":3}' }, { ad: 'Rıdvan KAYAHAN' }] }), /şahidin imzası okunamadı/);
+  // Sade siyah yazı kipinde de kayıtlı vektör imza çizilir.
+  const sade = await pdfLib.PDFDocument.load(await ek9Uret({ ...kaynak, kalemFontBytes: undefined, fontKaligrafiBytes: oku('fonts/GreatVibes-Regular.ttf'), fontElYazisiBytes: oku('fonts/Caveat-Medium.ttf'),
+    isimYazisi: 'sade', alanYazisi: 'sade', sahitler: [{ ad: 'Ercan MOLA', imza: SAHTE_DOLGU }, { ad: 'Rıdvan KAYAHAN', imza: SAHTE_CIZGI }] }));
+  assert.equal(imzaKutulari(sade, 0, [[300, 120], [240, 100]]).length, 2);
+});
+
+test('Sunucu eşlemesi: ön başvuruda varsayılan şahitler eşleşirse imza basılır; imza verilmezse (başvuran nüshası) basılmaz', async () => {
+  const { uret, sahitImzaPlani } = await import('../scripts/apps-script/ihtida-pdf-entry.js');
+  const oku = ad => new Uint8Array(readFileSync(new URL('../public/' + ad, import.meta.url)));
+  const png = 'data:image/png;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400"><rect width="300" height="400" fill="#ccd"/></svg>')).png().toBuffer()).toString('base64');
+  const kart = 'data:image/jpeg;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="638"><rect width="1011" height="638" fill="#eee"/></svg>')).jpeg().toBuffer()).toString('base64');
+  const kaynaklar = { sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), ek10EkimSablonBytes: oku('belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'),
+    dilekceSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'), dilekceAdresSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf'),
+    kalemFontBytes: oku('fonts/Allura-Regular.ttf'), fontBytes: oku('fonts/Lora-Regular.ttf'), fontKalinBytes: oku('fonts/Lora-Bold.ttf'),
+    fontKaligrafiBytes: oku('fonts/GreatVibes-Regular.ttf'), fontElYazisiBytes: oku('fonts/Caveat-Medium.ttf') };
+  const kayit = { 'Referans': 'IH-2099-0003', 'Zaman damgası': '2026-10-01T10:00:00', 'Form dili': 'fr', 'Adı Soyadı': 'Deniz ÖRNEK', 'Cinsiyet': 'kadin', 'Doğum tarihi': '1990-05-20',
+    'E-posta': 'deniz@example.test', 'Telefon': '+32470000000', 'Adres': 'Rue du Test 12, 6900 Marche-en-Famenne, Belgique', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-10',
+    'İmza aktarım izni': 'Hayır', 'Kimlik belgesi türü': 'kimlik', 'Belge teslim yeri': 'cami' };
+  const g = { vesikalik: png, kimlikOn: kart, kimlikArka: kart, imza: '', imzaVektor: '' };
+  const imzalar = { ercan: SAHTE_DOLGU, ridvan: SAHTE_CIZGI };
+  // Plan: şahit adı yoksa varsayılan «Ercan MOLA», «Rıdvan KAYAHAN» önerilir ve ikisinin imzası bağlanır.
+  assert.deepEqual(sahitImzaPlani(kayit, null, imzalar).uygulanan, ['ercan', 'ridvan']);
+  assert.deepEqual(sahitImzaPlani({ ...kayit, 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, null, imzalar).uygulanan, ['ercan']);
+  assert.deepEqual(sahitImzaPlani({ ...kayit, 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, null, imzalar).uygulanan, []);
+  assert.deepEqual(sahitImzaPlani(kayit, { sahitler: [{ ad: 'Ercan MOLA', imzaKullan: false }, { ad: 'Rıdvan KAYAHAN', imzaKullan: true }] }, imzalar).uygulanan, ['ridvan']);
+  const imzali = await pdfLib.PDFDocument.load(await uret(kayit, g, null, kaynaklar, pdfLib, fontkit, { sahitImzalari: imzalar }));
+  const imzasiz = await pdfLib.PDFDocument.load(await uret(kayit, g, null, kaynaklar, pdfLib, fontkit));
+  assert.equal(imzali.getPageCount(), 7); assert.equal(imzasiz.getPageCount(), 7);
+  assert.equal(imzaKutulari(imzali, 0, [[300, 120], [240, 100]]).length, 2, 'dernek içi nüsha: iki şahit imzası');
+  assert.equal(imzaKutulari(imzasiz, 0, []).length, 0, 'başvuran nüshası: şahit imzası yok');
+  // Başvuran nüshası ile iç nüsha yalnız şahit imzasıyla ayrışır: diğer sayfaların imza kutuları aynıdır.
+  for (const i of [1, 2, 3, 4, 5, 6]) assert.equal(imzaKutulari(imzali, i, []).length, imzaKutulari(imzasiz, i, []).length, (i + 1) + '. sayfa');
+  // Son nüsha: görevli işareti kaldırınca yalnız işaretli şahidin imzası basılır.
+  const duzenleme = { adSoyad: 'Deniz ÖRNEK', sahitler: [{ ad: 'Ercan MOLA', imza: '', imzaKullan: false }, { ad: 'Rıdvan KAYAHAN', imza: '', imzaKullan: true }], ihtidaTarihi: '2026-10-02',
+    adres: kayit['Adres'], ihtidaSebebi: '', beyanTarihi: '2026-10-01', belgeTuru: 'kimlik' };
+  const son = await pdfLib.PDFDocument.load(await uret(kayit, g, duzenleme, kaynaklar, pdfLib, fontkit, { sahitImzalari: imzalar }));
+  const kutu = imzaKutulari(son, 0, [[240, 100]]);
+  assert.equal(kutu.length, 1); assert.ok(kutu[0].x0 >= 589.9, 'yalnız sağdaki (Rıdvan KAYAHAN) yuvada');
+});

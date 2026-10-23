@@ -87,6 +87,24 @@ const imzaAnahtari = ad => {
   const isim = ad.trim().toLocaleLowerCase('tr').replace(/\s+/g, ' ');
   return isim === 'rıdvan kayahan' ? 'ridvan' : isim === 'ercan mola' ? 'ercan' : '';
 };
+export const sahitImzaAnahtari = ad => imzaAnahtari(String(ad || ''));
+
+/* 23 Eki 2026 (Rıdvan KAYAHAN: «benim imzam ve başkan Ercan MOLA imzası otomatik gelmedi, belgeye … otomatik gelecek
+   şekilde düzelt»): Ulu Camii Marche'de «Rıdvan KAYAHAN» ve «Ercan MOLA» adlı şahidin kayıtlı vektör imzası, görevli
+   işareti kaldırmadıkça (imzaKullan: false) belgeye kendiliğinden basılır. İmzaların kendisi herkese açık depoda DURMAZ:
+   dernek Google hesabındaki özel depodan sunucuda ya da panelin yetkili isteğiyle gelir (imzalar = {ridvan, ercan}).
+   Dönüş: {sahitler: imzası bağlanmış liste, uygulanan: ['ercan', 'ridvan']}. Başka camide hiçbir yerel imza bağlanmaz. */
+export function sahitImzalariniBagla(sahitler, camiId, imzalar) {
+  const uygulanan = [];
+  const liste = (Array.isArray(sahitler) ? sahitler : []).map(s => {
+    const anahtar = camiId === 'ulucamii-marche' ? imzaAnahtari(String(s?.ad || '')) : '';
+    const imza = anahtar && imzalar && typeof imzalar[anahtar] === 'string' ? imzalar[anahtar] : '';
+    if (!imza || s.imzaKullan === false || uygulanan.includes(anahtar)) return s;
+    uygulanan.push(anahtar);
+    return { ...s, imza };
+  });
+  return { sahitler: liste, uygulanan };
+}
 
 export function sahitUnvani(ad, camiId = 'ulucamii-marche') {
   if (camiId !== 'ulucamii-marche') return '';
@@ -110,7 +128,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <select id="ek9-isim-yazisi" name="isimYazisi"><option value="kaligrafik">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
       <label for="ek9-alan-yazisi">Diğer doldurulan alanlar</label>
       <select id="ek9-alan-yazisi" name="alanYazisi"><option value="el-yazisi">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
-      <p>Şahit adlarını kontrol edin. Kayıtlı imza yalnız ilgili şahidin bu törene katıldığı ve imzasının kullanımını onayladığı teyit edilirse eklenir. Kutular boş kalırsa adlar basılır, imza alanları kalemle imzalamak için boş bırakılır.</p>
+      <p>Şahit adlarını kontrol edin. «Ercan MOLA» ve «Rıdvan KAYAHAN» adlı şahitlerin kayıtlı imzası kendiliğinden eklenir (işaretli gelir). O kişi bu törende şahit değilse işareti kaldırın; imza alanı boş kalır ve kalemle imzalanır. Kayıtlı imzası olmayan şahidin adı basılır, imza alanı boş bırakılır.</p>
       <div data-sahitler></div>
       <label for="ek9-gercek-tarih">Gerçek ihtida tarihi (biliniyorsa)</label>
       <input id="ek9-gercek-tarih" name="tarih" type="date" />
@@ -185,23 +203,30 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       : teslim === 'cami' ? `Belge Müşavirlikten ${camiAdi}${camiAdres ? ` — ${camiAdres}` : ''} adresine postalanacak; başvuran camiden teslim alacak. EK-9 arka sayfasındaki adres, başvuranın resmî ikamet adresidir.`
       : 'Bu eski başvuruda teslim tercihi yok; göndermeden önce başvuranla teyit edin.';
     const digerCami = (kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche';
+    // Tek PDF paketinde (sunucuda hazırlanır) imzayı sunucu özel depodan kendisi bağlar: tarayıcıya imza gelmez, yalnız
+    // «kullanılsın mı» bilgisi gider. Yerel tek EK-9'da imzalar (yetkili istekle gelen) imzalar parametresindedir.
+    const sunucuImzasi = secenekler.sunucuImzasi ?? secenekler.paket === true;
     const alanlar = sahitOnerileri(kayit).map((ad, i) => {
       const kap = document.createElement('fieldset');
       kap.innerHTML = `<legend>${i + 1}. şahit</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
-        <p class="not" data-sahit-unvan></p><label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişinin şahitliğini ve kayıtlı imzasının bu belgeye eklenmesine onayını teyit ettim.</span></label><p class="not" data-imza-not></p>`;
+        <p class="not" data-sahit-unvan></p><label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişi törende şahitti; kayıtlı imzası belgeye eklensin (şahit değilse işareti kaldırın).</span></label><p class="not" data-imza-not></p>`;
       const isim = kap.querySelector('input[type=text]');
       const onay = kap.querySelector('input[type=checkbox]');
       isim.value = ad;
       const yenile = () => {
         isim.setCustomValidity(isim.value.trim() ? '' : 'Şahidin adını soyadını yazın.');
-        onay.checked = false;
         const unvan = kap.querySelector('[data-sahit-unvan]');
         unvan.textContent = sahitUnvani(isim.value, kayit['Cami kimliği']);
         unvan.hidden = !unvan.textContent;
-        onay.disabled = digerCami || !imzalar[imzaAnahtari(isim.value)];
-        kap.querySelector('[data-imza-not]').textContent = onay.disabled
-          ? (digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.' : 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.')
-          : 'Kayıtlı imza var; yalnız yukarıdaki teyitle eklenir.';
+        // Kayıtlı imza varsa işaretli gelir (varsayılan: eklenir); görevli şahit değilse işareti kaldırır.
+        const anahtar = imzaAnahtari(isim.value);
+        onay.disabled = digerCami || !anahtar || (!sunucuImzasi && !imzalar[anahtar]);
+        onay.checked = !onay.disabled;
+        kap.querySelector('[data-imza-not]').textContent = !onay.disabled
+          ? 'Kayıtlı imza var; belgeye otomatik eklenir. Şahit değilse işareti kaldırın.'
+          : digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.'
+          : anahtar && secenekler.imzaHata ? 'Kayıtlı imzalar şu anda alınamadı; şahit belgeyi kalemle imzalayacak. Sayfayı yenileyip yeniden deneyin.'
+          : 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.';
       };
       isim.addEventListener('input', yenile); yenile();
       pencere.querySelector('[data-sahitler]').append(kap);
@@ -213,9 +238,12 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       if (!form.reportValidity()) return;
       sonuc = {
         adSoyad: belgeAdi.value.trim(),
-        sahitler: alanlar.map(({ isim, onay }) => ({
-          ad: isim.value.trim(), imza: onay.checked && !onay.disabled ? imzalar[imzaAnahtari(isim.value)] || '' : '',
-        })),
+        sahitler: alanlar.map(({ isim, onay }) => {
+          const kullan = onay.checked && !onay.disabled;
+          return sunucuImzasi
+            ? { ad: isim.value.trim(), imza: '', imzaKullan: kullan }
+            : { ad: isim.value.trim(), imza: kullan ? imzalar[imzaAnahtari(isim.value)] || '' : '' };
+        }),
         ihtidaTarihi: form.elements.namedItem('tarih').value,
         isimYazisi: form.elements.namedItem('isimYazisi').value,
         alanYazisi: form.elements.namedItem('alanYazisi').value,

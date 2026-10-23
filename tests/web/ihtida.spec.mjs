@@ -163,7 +163,7 @@ test('Hata düzeltildikten sonra eski uyarı odağı yeni yazılan alandan çala
   await expect(page.locator('#i-ulke')).toHaveValue('Belçika');
 });
 
-test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async ({ page }, info) => {
+test('Panelde şahit adları korunur; kayıtlı imza işaretli gelir, işaret kaldırılırsa eklenmez', async ({ page }, info) => {
   await formSayfasiniAc(page, '/tr/');
   await page.addStyleTag({ url: '/admin/panel.css' });
   await page.evaluate(async () => {
@@ -186,12 +186,70 @@ test('Panelde şahit adları korunur; kayıtlı imza teyitsiz eklenmez', async (
   await page.getByLabel('Belgeye yazılacak ad soyad (kimlikteki gibi)').fill('Deniz Élodie Örnek');
   await page.getByLabel('İlk sayfadaki isim').selectOption('sade');
   await page.getByLabel('Diğer doldurulan alanlar').selectOption('sade');
-  await page.locator('.ek9-hazirlik input[type=checkbox]').nth(0).check();
-  await page.locator('.ek9-hazirlik input[type=checkbox]').nth(1).check();
+  // 23 Eki 2026 (Rıdvan KAYAHAN: «imzam ve başkan Ercan MOLA imzası otomatik gelsin»): kayıtlı imzası olan şahit işaretli gelir.
+  await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(0)).toBeChecked();
+  await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(1)).toBeChecked();
   await page.locator('#ek9-sahit-1').fill('Başka Örnek Şahit');
   await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(1)).not.toBeChecked();
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
   await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Ercan MOLA', imza: 'TEST_E' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' } });
+});
+
+test('Şahit imzası işaretli gelir; işaret kaldırılırsa imza gitmez; başka camide kutu kapalı', async ({ page }) => {
+  await formSayfasiniAc(page, '/tr/');
+  await page.addStyleTag({ url: '/admin/panel.css' });
+  const kutu = i => page.locator('.ek9-hazirlik input[type=checkbox]').nth(i);
+  // Yerel tek EK-9: imzalar yetkili istekle gelmiş (sentetik metin); iki şahit de işaretli, işaret kaldırılırsa imza gitmez.
+  await page.evaluate(async () => {
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    window.sonuc = undefined;
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'SENTETIK_R', ercan: 'SENTETIK_E' }).then(s => window.sonuc = s);
+  });
+  await expect(page.locator('#ek9-sahit-0')).toHaveValue('Ercan MOLA');
+  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Rıdvan KAYAHAN');
+  await expect(kutu(0)).toBeChecked(); await expect(kutu(1)).toBeChecked();
+  await expect(page.locator('[data-imza-not]').nth(0)).toContainText('otomatik eklenir');
+  await kutu(1).uncheck();
+  await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
+  await expect.poll(() => page.evaluate(() => window.sonuc?.sahitler)).toEqual([{ ad: 'Ercan MOLA', imza: 'SENTETIK_E' }, { ad: 'Rıdvan KAYAHAN', imza: '' }]);
+  // İmzalar alınamadıysa (imzaHata) kutular kapalı ve neden yazılı; belge imzasız ama adlarla çıkar.
+  await page.evaluate(async () => {
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    window.sonuc = undefined;
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, {}, { imzaHata: true }).then(s => window.sonuc = s);
+  });
+  await expect(kutu(0)).toBeDisabled(); await expect(kutu(0)).not.toBeChecked();
+  await expect(page.locator('[data-imza-not]').nth(0)).toContainText('alınamadı');
+  await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
+  await expect.poll(() => page.evaluate(() => window.sonuc?.sahitler)).toEqual([{ ad: 'Ercan MOLA', imza: '' }, { ad: 'Rıdvan KAYAHAN', imza: '' }]);
+  // Başka cami: yerel imza hiçbir hâlde kullanılmaz.
+  await page.evaluate(async () => {
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    window.sonuc = undefined;
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, { ridvan: 'SENTETIK_R', ercan: 'SENTETIK_E' }).then(s => window.sonuc = s);
+  });
+  await expect(kutu(0)).toBeDisabled(); await expect(kutu(1)).toBeDisabled();
+  await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
+  await expect.poll(() => page.evaluate(() => window.sonuc?.sahitler)).toEqual([{ ad: 'Rıdvan KAYAHAN', imza: '' }, { ad: 'Ercan MOLA', imza: '' }]);
+});
+
+test('Tek PDF paketinde imza tarayıcıya gelmez; kayıtlı şahit işaretli gelir, yalnız «imzaKullan» sunucuya gider', async ({ page }) => {
+  await formSayfasiniAc(page, '/tr/');
+  await page.addStyleTag({ url: '/admin/panel.css' });
+  await page.evaluate(async () => {
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    window.paketSonucu = undefined;
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', 'Kimlik belgesi türü': 'kimlik', 'Belge teslim yeri': 'cami' }, {}, { paket: true, gonder: true, imzali: true, beyanTarihi: '2026-09-09' }).then(v => window.paketSonucu = v);
+  });
+  const kutu = i => page.locator('.ek9-hazirlik input[type=checkbox]').nth(i);
+  await expect(kutu(0)).toBeEnabled(); await expect(kutu(0)).toBeChecked();
+  await expect(kutu(1)).toBeEnabled(); await expect(kutu(1)).toBeChecked();
+  await page.locator('#ek9-gercek-tarih').fill('2026-09-08');
+  await kutu(0).uncheck();
+  await page.getByRole('button', { name: 'Son nüshayı onayla ve gönder' }).click();
+  await expect.poll(() => page.evaluate(() => window.paketSonucu?.sahitler)).toEqual([
+    { ad: 'Ercan MOLA', imza: '', imzaKullan: false }, { ad: 'Rıdvan KAYAHAN', imza: '', imzaKullan: true },
+  ]);
 });
 
 test('Yerel şahit sırası Ercan Mola ve Rıdvan Kayahan olur; Yeliz imzası aktarılmaz', async ({ page, context }) => {

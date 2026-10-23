@@ -62,7 +62,7 @@ function paketOnayAnahtari(ref, veri) {
 async function paketDurumAc(ref) {
   const pencere = document.createElement('dialog');
   pencere.className = 'ek9-hazirlik'; pencere.setAttribute('aria-labelledby', 'paket-durum-baslik');
-  pencere.innerHTML = `<h2 id="paket-durum-baslik">PDF ve e-posta durumu</h2><p data-paket-ozet role="status">Kontrol ediliyor…</p><div data-paket-alicilar></div><div data-paket-pdf></div><p>“Teslim edildi”, alıcının e-posta sunucusunun kabulünü belirtir; kişinin okuduğu anlamına gelmez.</p><div class="ek9-eylemler"><button type="button" class="dugme" data-paket-yenile>Durumu yenile</button><button type="button" class="dugme" data-paket-tekrar>Başarısız işlemleri yeniden dene</button><button type="button" class="dugme" data-paket-kapat>Kapat</button></div>`;
+  pencere.innerHTML = `<h2 id="paket-durum-baslik">PDF ve e-posta durumu</h2><p data-paket-ozet role="status">Kontrol ediliyor…</p><div data-paket-alicilar></div><p data-paket-sahit></p><div data-paket-pdf></div><p>“Teslim edildi”, alıcının e-posta sunucusunun kabulünü belirtir; kişinin okuduğu anlamına gelmez.</p><div class="ek9-eylemler"><button type="button" class="dugme" data-paket-yenile>Durumu yenile</button><button type="button" class="dugme" data-paket-tekrar>Başarısız işlemleri yeniden dene</button><button type="button" class="dugme" data-paket-kapat>Kapat</button></div>`;
   const eskiOdak = document.activeElement;
   document.body.append(pencere); pencere.showModal();
   pencere.addEventListener('close', () => { pencere.remove(); eskiOdak?.focus(); }, { once: true });
@@ -77,9 +77,15 @@ async function paketDurumAc(ref) {
       const durumlar = { sirada: 'Hazırlanmayı bekliyor', hazirlaniyor: 'PDF hazırlanıyor', hazir: 'PDF hazır', 'teslim-takibi': 'PDF hazır · e-postalar izleniyor', tamam: 'PDF hazır · bütün alıcı sunucularına teslim edildi', hata: 'İşlem tamamlanamadı' };
       const teslim = { sirada: 'Sırada', gonderiliyor: 'Gönderiliyor', 'saglayici-kabul': 'Gönderildi · teslim teyidi bekleniyor', 'teslim-edildi': 'Alıcı sunucusuna teslim edildi', 'teslim-edilemedi': 'Teslim edilemedi', 'gonderim-hatasi': 'Gönderim başarısız', belirsiz: 'Sonuç belirsiz · tekrar göndermeden önce kontrol gerekli' };
       ozet.textContent = `${ref} · ${durumlar[p.durum] || p.durum}${p.sayfa ? ` · ${p.sayfa} sayfa` : ''}${p.hata ? ' · ' + p.hata : ''}`;
-      pencere.querySelector('[data-paket-alicilar]').innerHTML = (p.alicilar || []).map(a => `<p><strong>${kacir(a.eposta)}</strong><br>${kacir(teslim[a.durum] || a.durum)}</p>`).join('');
-      pencere.querySelector('[data-paket-pdf]').innerHTML = p.pdfId ? `<button type="button" class="dugme birincil" data-pdf="${kacir(p.pdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)}.pdf">Arşivdeki tam PDF’yi aç</button>` : '';
-      pencere.querySelector('[data-pdf]')?.addEventListener('click', e => formPdfAc(e.currentTarget));
+      pencere.querySelector('[data-paket-alicilar]').innerHTML = (p.alicilar || []).map(a => `<p><strong>${kacir(a.eposta)}</strong>${a.basvuran && p.basvuranKopya ? ' · başvuran nüshası (şahit imzasız)' : ''}<br>${kacir(teslim[a.durum] || a.durum)}</p>`).join('');
+      // 23 Eki 2026: kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) pakete otomatik basılır; ön başvuruda başvurana şahit imzasız ikinci nüsha gider.
+      const sahitAdlari = { ercan: 'Ercan MOLA', ridvan: 'Rıdvan KAYAHAN' };
+      pencere.querySelector('[data-paket-sahit]').textContent = (p.sahitImzasi || []).length
+        ? `Basılan kayıtlı şahit imzaları: ${p.sahitImzasi.map(a => sahitAdlari[a] || a).join(', ')}.${p.basvuranKopya === 'hazir' ? ' Başvurana şahit imzasız ayrı nüsha gönderildi.' : p.basvuranKopya === 'sirada' ? ' Başvuranın şahit imzasız nüshası hazırlanıyor.' : ''}`
+        : 'Bu pakete kayıtlı şahit imzası basılmadı (şahit adı eşleşmedi, işaret kaldırıldı ya da imza kaydı yok).';
+      pencere.querySelector('[data-paket-pdf]').innerHTML = (p.pdfId ? `<button type="button" class="dugme birincil" data-pdf="${kacir(p.pdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)}.pdf">Arşivdeki tam PDF’yi aç</button>` : '')
+        + (p.basvuranPdfId ? ` <button type="button" class="dugme" data-pdf="${kacir(p.basvuranPdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)} basvuran nushasi.pdf">Başvuran nüshasını aç (şahit imzasız)</button>` : '');
+      pencere.querySelectorAll('[data-pdf]').forEach(b => b.addEventListener('click', e => formPdfAc(e.currentTarget)));
     } catch (h) { ozet.textContent = 'Kontrol edilemedi: ' + h.message; }
   };
   pencere.querySelector('[data-paket-yenile]').onclick = yenile;
@@ -1049,6 +1055,15 @@ async function ek9Hazirla() {
   }
 }
 
+let sahitImzaBellegi = null;   // yalnız bellekte; sayfa yenilenince gider
+async function sahitImzalariGetir() {
+  if (sahitImzaBellegi) return sahitImzaBellegi;
+  const j = await gasIstek('sahit-imzalari');
+  if (!j.ok) throw new Error(j.hata || 'Kayıtlı şahit imzaları alınamadı.');
+  sahitImzaBellegi = j.imzalar && typeof j.imzalar === 'object' ? j.imzalar : {};
+  return sahitImzaBellegi;
+}
+
 async function ek9Uretimi(dugme) {
   const paketMi = Boolean(dugme.dataset.ihtidaPaket);
   const ref = dugme.dataset.ihtidaPaket || dugme.dataset.ek9;
@@ -1068,10 +1083,14 @@ async function ek9Uretimi(dugme) {
     const basvuranImza = j.basvuranImza || j.gorseller?.imza || '';
     const beyan = basvuranImza ? ek9Tarih(k['Zaman damgası']) : bugunTR();
     const isoTarih = beyan.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-    const hazirlik = await ek9HazirlikAc(k, (SIRLAR && SIRLAR.imzalar) || {}, paketMi ? {
+    // 23 Eki 2026: yerel tek EK-9'a kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) otomatik gelir. İmzalar herkese açık depoda değil,
+    // dernek Google hesabındaki özel depodadır; yetkili istekle yalnız belleğe alınır (saklanmaz). Tek PDF paketi sunucuda hazırlanır, imzayı sunucu bağlar.
+    let imzalar = (SIRLAR && SIRLAR.imzalar) || {}, imzaHata = false;
+    if (!paketMi) { try { imzalar = { ...imzalar, ...(await sahitImzalariGetir()) }; } catch (h) { console.error(h); imzaHata = true; } }
+    const hazirlik = await ek9HazirlikAc(k, imzalar, paketMi ? {
       paket: true, gonder: true, imzali: Boolean(basvuranImza), beyanTarihi: isoTarih ? `${isoTarih[3]}-${isoTarih[2]}-${isoTarih[1]}` : '',
       belgeTuru: j.gorseller?.kimlikArka ? 'kimlik' : '',
-    } : {});
+    } : { imzaHata });
     if (!hazirlik) { durumYaz(eskiMetin); dugme.disabled = false; return; }
     if (paketMi) {
       durumYaz('Paket arşive ve gönderim sırasına alınıyor…');

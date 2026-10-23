@@ -212,8 +212,14 @@ export async function ek9Uret(girdi) {
     const s = sahitler[i];
     if (!s) continue;
     const alan = alanlar[i];
-    const im = await gorselGom(s.imza);
-    if (s.imza && !im) throw new Error(`${i + 1}. şahidin imzası okunamadı; belge hazırlanamadı.`);
+    if (vektorMu(s.imza)) {
+      // Sade siyah yazı kipinde de kayıtlı şahit imzası (vektör) yol olarak, aynı kutuya çizilir.
+      const iv = await imzaHazirla(girdi.pdfLib, belge, { vektor: s.imza, sahit: true }).catch(() => null);
+      if (!iv) throw new Error(`${i + 1}. şahidin imzası okunamadı; belge hazırlanamadı.`);
+      iv.ciz(s1, kutuyaSigdir(iv.en, iv.boy, [alan.x0 - 13, alan.etiketTaban + 8, alan.x1 + 13, alan.etiketTaban + 38], true));
+    }
+    const im = vektorMu(s.imza) ? null : await gorselGom(s.imza);
+    if (s.imza && !im && !vektorMu(s.imza)) throw new Error(`${i + 1}. şahidin imzası okunamadı; belge hazırlanamadı.`);
     if (im) {
       await imzayiMaviYap(im);
       // İmza, şahit etiketinin altındaki boş alana yerleşir; büyüyen adla çakışmaz.
@@ -433,7 +439,8 @@ async function ek9KalemUret(girdi) {
     if (!s) continue;
     const [a0, a1] = K.sahit[i];
     if (s.imza) {
-      const im = await imzaHazirla(L, belge, vektorMu(s.imza) ? { vektor: s.imza } : { gorsel: s.imza }).catch(() => null);
+      // Kayıtlı şahit imzası vektör kaydıdır (kalem çizgisi ya da dolgulu kontur; imza-ciz.js sürüm 2) ve yol olarak çizilir.
+      const im = await imzaHazirla(L, belge, vektorMu(s.imza) ? { vektor: s.imza, sahit: true } : { gorsel: s.imza }).catch(() => null);
       if (!im) throw new Error(`${i + 1}. şahidin imzası okunamadı; belge hazırlanamadı.`);
       im.ciz(s1, kutuyaSigdir(im.en, im.boy, [a0 - 13, K.etiket + 8, a1 + 13, K.etiket + 38], true));
     }
