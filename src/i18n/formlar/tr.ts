@@ -244,6 +244,13 @@ export const tr: FormMetinleri = {
       sahitler: 'Şahitler', sahitlerYardim: "İsterseniz bir veya iki şahit adı bildirebilirsiniz. Şahitlik ve imzalar tören sırasında teyit edilir; yalnızca ad yazılması imza yerine geçmez.",
       sahitEkle: "Kendi şahidimi / şahitlerimi bildirmek istiyorum", sahitCami: "Varsayılan şahitler: Ercan MOLA (Dernek Başkanı) ve Rıdvan KAYAHAN (Din Görevlisi). Yalnız bir şahit bildirirseniz ikinci şahidi camimiz tamamlayacak.",
       sahit1: '1. şahit adı soyadı', sahit2: '2. şahit adı soyadı',
+      sahitImzaBaslik: "{no}. şahidin imzası (isteğe bağlı)",
+      sahitImzaYardim: "Bu şahit şu anda yanınızdaysa buraya imza atabilir.",
+      sahitRiza: "Bu ihtidaya şahitlik ediyorum ve imzamın belgede yer almasını kabul ediyorum.",
+      sahitImzaNot: "Şahitleriniz şu anda yanınızda değilse imza alanlarını boş bırakın: başvurunuz aynen devam eder, şahitler imzalarını daha sonra da atabilir.",
+      sahitImzaRizaHata: "Şahit imzası için şahidin onay kutusunu da işaretlemesi gerekir (ya da imzayı temizleyin).",
+      sahitImzaAdHata: "İmza atan şahidin adını ve soyadını yukarıya yazın.",
+      sahitImzali: "imzalı",
       nasilHaberdar: 'Bizi nasıl duydunuz?', ekNot: 'Eklemek istedikleriniz',
       ekNotYardim: 'Size nasıl ve hangi saatlerde ulaşmamızı istediğinizi (telefon, WhatsApp, e-posta) buraya yazabilirsiniz. Ailevî ya da çevresel bir baskı endişeniz varsa bunu da yazın: görüşmeyi ve töreni ona göre, dar bir çevrede ve sessizce planlarız.'
     },

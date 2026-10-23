@@ -1,6 +1,6 @@
 import { ihtidaPaketiUret, TEK_IMZA } from '../../public/admin/ihtida-paket.js';
 import { camiCoz } from '../../public/admin/cami-secimi.js';
-import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli, sahitImzalariniBagla } from '../../public/admin/ek9-hazirlik.js';
+import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli, sahitImzalariniBagla, sahitKendiImzalari } from '../../public/admin/ek9-hazirlik.js';
 import { imzaVektorCoz, sahitImzaCoz } from '../../public/admin/imza-ciz.js';
 import { ek10SurumuCoz } from '../../public/admin/ek10.js';
 
@@ -10,10 +10,10 @@ const tarih = v => String(v || '').replace(/^(\d{4})-(\d{2})-(\d{2}).*$/, '$3/$2
    belgeye kendiliğinden basılır. İmzalar bu pakette YOKTUR: sunucu bunları dernek Google hesabındaki özel depodan okuyup
    secenek.sahitImzalari = {ridvan, ercan} olarak verir. Ön başvuruda varsayılan şahit adları (ya da başvuranın yazdığı
    adlar) eşleşirse imzalar dernek içi nüshaya girer; son nüshada görevlinin işareti (imzaKullan) belirler. */
-export function sahitImzaPlani(k, duzenleme, imzalar) {
+export function sahitImzaPlani(k, duzenleme, imzalar, gorseller) {
   const camiId = k['Cami kimliği'] || 'ulucamii-marche';
   const sahitler = (duzenleme && duzenleme.sahitler) || sahitOnerileri({ ...k, 'Cami kimliği': camiId }).map(ad => ({ ad }));
-  return sahitImzalariniBagla(sahitler, camiId, imzalar);
+  return sahitImzalariniBagla(sahitler, camiId, imzalar, sahitKendiImzalari(gorseller));
 }
 
 /** secenek.sahitImzalari: özel depodan gelen {ridvan, ercan} vektör imza metinleri; verilmezse yerel şahit imzası basılmaz
@@ -37,7 +37,8 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, 
   });
   if (!cami) throw new Error('Başvuru camisi eksik veya geçersiz.');
   const teslimatYontemi = k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami'; // Eski satırlar cami teslimi varsayılır.
-  const sahitler = sahitImzalariniBagla(d.sahitler || sahitOnerileri({ ...k, 'Cami kimliği': cami.id }).map(ad => ({ ad })), cami.id, secenek.sahitImzalari).sahitler;
+  // Şahidin başvuruda kendi attığı imza (rızası kayıtlıysa) her nüshada basılır; kayıtlı (Ercan MOLA / Rıdvan KAYAHAN) imzalar yalnız secenek.sahitImzalari ile.
+  const sahitler = sahitImzalariniBagla(d.sahitler || sahitOnerileri({ ...k, 'Cami kimliği': cami.id }).map(ad => ({ ad })), cami.id, secenek.sahitImzalari, sahitKendiImzalari(gorseller)).sahitler;
   const imza = gorseller.imza || '';
   // Vektör imza yalnız aynı başvurunun PNG imzasıyla birlikte geçerlidir (ikisi aynı çizimden çıkar).
   const imzaVektor = imza && imzaVektorCoz(gorseller.imzaVektor) ? gorseller.imzaVektor : '';
@@ -71,4 +72,5 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, 
 
 export { camiCoz, imzaVektorCoz, sahitImzaCoz, ek9AlanlariGecerli };
 export const tekImza = TEK_IMZA;   // sağlık cevabı: ihtidaTekImza
+export const sahitKendiImzasi = true;   // sağlık cevabı: ihtidaSahitKendiImzasi (mühtedinin kendi şahidinin formda attığı imza EK-9'a basılır)
 export const sahitImzasi = true;   // sağlık cevabı: ihtidaSahitImzasi (kayıtlı şahit imzaları özel depodan otomatik basılır)

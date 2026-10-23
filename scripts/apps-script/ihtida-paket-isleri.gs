@@ -206,7 +206,7 @@ async function ihtidaPaketIsle(ref) {
       if (hatalar.length) throw new Error("gorsel-okunamadi");
       // 23 Eki 2026: kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) özel depodan okunur; yalnız eşleşen şahide basılır.
       var imzalar = ihtidaSahitImzalariOku();
-      var plan = IhtidaPdf.sahitImzaPlani(k, is.duzenleme || null, imzalar);
+      var plan = IhtidaPdf.sahitImzaPlani(k, is.duzenleme || null, imzalar, g);
       var bytes = await IhtidaPdf.uret(k, g, is.duzenleme || null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { sahitImzalari: imzalar });
       var pdf = await PDFLib.PDFDocument.load(bytes, { parseSpeed: Infinity });
       if (pdf.getPageCount() < 6) throw new Error("paket-sayfa-eksik");

@@ -1,4 +1,5 @@
 /** Belgeye imza basmadan önce her başvuru için yeniden alınan, yalnız bellekte kalan teyit. */
+import { imzaVektorCoz } from './imza-ciz.js';
 
 /* 21 Eki 2026: EK-9 arka yüzünün başvuru kaydından gelen değerleri tek yerden kurulur; panel (tek EK-9, son nüsha
    ekranı) ve sunucu paketi (ihtida-pdf-entry.js) aynı tabloyu kullanır. Kodlu seçimler Mühtedi Koordinatörlüğü
@@ -94,16 +95,39 @@ export const sahitImzaAnahtari = ad => imzaAnahtari(String(ad || ''));
    işareti kaldırmadıkça (imzaKullan: false) belgeye kendiliğinden basılır. İmzaların kendisi herkese açık depoda DURMAZ:
    dernek Google hesabındaki özel depodan sunucuda ya da panelin yetkili isteğiyle gelir (imzalar = {ridvan, ercan}).
    Dönüş: {sahitler: imzası bağlanmış liste, uygulanan: ['ercan', 'ridvan']}. Başka camide hiçbir yerel imza bağlanmaz. */
-export function sahitImzalariniBagla(sahitler, camiId, imzalar) {
+export function sahitImzalariniBagla(sahitler, camiId, imzalar, kendi = []) {
   const uygulanan = [];
-  const liste = (Array.isArray(sahitler) ? sahitler : []).map(s => {
+  const liste = (Array.isArray(sahitler) ? sahitler : []).map((s, i) => {
+    if (s?.imzaKullan === false) return s;
+    // 23 Eki 2026: şahit başvuru sırasında formda kendi imzasını attıysa (rızasıyla) o imza basılır; kayıtlı imzanın önüne geçer.
+    const k = Array.isArray(kendi) ? kendi[i] : null;
+    if (k && k.imza && !s?.imza && sahitAdiNormal(k.ad) === sahitAdiNormal(s?.ad)) return { ...s, imza: k.imza, kendiImza: true };
     const anahtar = camiId === 'ulucamii-marche' ? imzaAnahtari(String(s?.ad || '')) : '';
     const imza = anahtar && imzalar && typeof imzalar[anahtar] === 'string' ? imzalar[anahtar] : '';
-    if (!imza || s.imzaKullan === false || uygulanan.includes(anahtar)) return s;
+    if (!imza || uygulanan.includes(anahtar)) return s;
     uygulanan.push(anahtar);
     return { ...s, imza };
   });
   return { sahitler: liste, uygulanan };
+}
+
+/* 23 Eki 2026 (Rıdvan KAYAHAN, kapsam genişletmesi): mühtedi kendi şahitlerini seçtiyse ve şahit formu doldururken yanındaysa,
+   şahit imzasını formdaki kutuya kendisi atabilir (isteğe bağlı; şahidin kendi rızasıyla). İmza başvuru dosyasında
+   «<ref> - sahit1 imza.png» (+ vektör) olarak, rıza kaydı «<ref> - sahit-imza-riza.json» olarak durur. Burada o kayıttan
+   [{ad, imza}|null, {ad, imza}|null] çıkarılır: yalnız rızası kayıtlı ve PNG'siyle birlikte gelen imzalar. Vektör (sürüm 1)
+   geçerliyse o, değilse PNG kullanılır. Ad kayıtta şahidin yazıldığı biçimdir; belgedeki ad farklıysa imza basılmaz. */
+export const sahitAdiNormal = ad => String(ad ?? '').trim().replace(/\s+/g, ' ').toLocaleLowerCase('tr');
+export function sahitKendiImzalari(gorseller) {
+  const g = gorseller || {};
+  let riza = null;
+  try { riza = JSON.parse(g.sahitRiza || 'null'); } catch { riza = null; }
+  return [1, 2].map(n => {
+    const kayit = riza && typeof riza === 'object' ? riza[`sahit${n}`] : null;
+    const png = typeof g[`sahit${n}Imza`] === 'string' ? g[`sahit${n}Imza`] : '';
+    if (!kayit || kayit.riza !== true || !String(kayit.ad || '').trim() || !png) return null;
+    const vektor = imzaVektorCoz(g[`sahit${n}ImzaVektor`]) ? g[`sahit${n}ImzaVektor`] : '';
+    return { ad: String(kayit.ad).trim(), imza: vektor || png };
+  });
 }
 
 export function sahitUnvani(ad, camiId = 'ulucamii-marche') {
@@ -206,10 +230,13 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     // Tek PDF paketinde (sunucuda hazırlanır) imzayı sunucu özel depodan kendisi bağlar: tarayıcıya imza gelmez, yalnız
     // «kullanılsın mı» bilgisi gider. Yerel tek EK-9'da imzalar (yetkili istekle gelen) imzalar parametresindedir.
     const sunucuImzasi = secenekler.sunucuImzasi ?? secenekler.paket === true;
+    // 23 Eki 2026: şahidin başvuru sırasında formda kendi attığı imza (sahitKendiImzalari çıktısı; rızası kayıtlı). Ad eşleşirse kullanılabilir.
+    const kendiImzalar = Array.isArray(secenekler.kendiImzalar) ? secenekler.kendiImzalar : [];
+    const kendiImza = (i, ad) => (kendiImzalar[i] && kendiImzalar[i].imza && sahitAdiNormal(kendiImzalar[i].ad) === sahitAdiNormal(ad) ? kendiImzalar[i] : null);
     const alanlar = sahitOnerileri(kayit).map((ad, i) => {
       const kap = document.createElement('fieldset');
       kap.innerHTML = `<legend>${i + 1}. şahit</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
-        <p class="not" data-sahit-unvan></p><label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişi törende şahitti; kayıtlı imzası belgeye eklensin (şahit değilse işareti kaldırın).</span></label><p class="not" data-imza-not></p>`;
+        <p class="not" data-sahit-unvan></p><label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişi törende şahitti; imzası belgeye eklensin (şahit değilse işareti kaldırın).</span></label><p class="not" data-imza-not></p>`;
       const isim = kap.querySelector('input[type=text]');
       const onay = kap.querySelector('input[type=checkbox]');
       isim.value = ad;
@@ -218,11 +245,13 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         const unvan = kap.querySelector('[data-sahit-unvan]');
         unvan.textContent = sahitUnvani(isim.value, kayit['Cami kimliği']);
         unvan.hidden = !unvan.textContent;
-        // Kayıtlı imza varsa işaretli gelir (varsayılan: eklenir); görevli şahit değilse işareti kaldırır.
+        // Kayıtlı imza ya da şahidin başvuruda attığı kendi imzası varsa işaretli gelir (varsayılan: eklenir); görevli şahit değilse işareti kaldırır.
         const anahtar = imzaAnahtari(isim.value);
-        onay.disabled = digerCami || !anahtar || (!sunucuImzasi && !imzalar[anahtar]);
+        const kendi = kendiImza(i, isim.value);
+        onay.disabled = !(kendi || (!digerCami && anahtar && (sunucuImzasi || imzalar[anahtar])));
         onay.checked = !onay.disabled;
-        kap.querySelector('[data-imza-not]').textContent = !onay.disabled
+        kap.querySelector('[data-imza-not]').textContent = kendi ? 'Şahit imzasını başvuru sırasında kendisi attı (rızasıyla); belgeye otomatik eklenir. Şahit değilse işareti kaldırın.'
+          : !onay.disabled
           ? 'Kayıtlı imza var; belgeye otomatik eklenir. Şahit değilse işareti kaldırın.'
           : digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.'
           : anahtar && secenekler.imzaHata ? 'Kayıtlı imzalar şu anda alınamadı; şahit belgeyi kalemle imzalayacak. Sayfayı yenileyip yeniden deneyin.'
@@ -238,11 +267,12 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       if (!form.reportValidity()) return;
       sonuc = {
         adSoyad: belgeAdi.value.trim(),
-        sahitler: alanlar.map(({ isim, onay }) => {
+        sahitler: alanlar.map(({ isim, onay }, i) => {
           const kullan = onay.checked && !onay.disabled;
+          const kendi = kendiImza(i, isim.value);
           return sunucuImzasi
             ? { ad: isim.value.trim(), imza: '', imzaKullan: kullan }
-            : { ad: isim.value.trim(), imza: kullan ? imzalar[imzaAnahtari(isim.value)] || '' : '' };
+            : { ad: isim.value.trim(), imza: kullan ? (kendi ? kendi.imza : imzalar[imzaAnahtari(isim.value)] || '') : '' };
         }),
         ihtidaTarihi: form.elements.namedItem('tarih').value,
         isimYazisi: form.elements.namedItem('isimYazisi').value,

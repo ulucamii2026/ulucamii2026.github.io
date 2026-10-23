@@ -189,6 +189,9 @@ export interface IhtidaMetinler {
     torenDili: string; dilTr: string; dilFr: string; dilEn: string; dilAr: string;
     torenTarihi: string; torenTarihiYardim: string;
     sahitler: string; sahitlerYardim: string; sahitEkle: string; sahitCami: string; sahit1: string; sahit2: string;
+    /** 23 Ekim 2026: mühtedinin kendi şahidi yanındaysa formda isteğe bağlı imza atabilir ({no} = 1 | 2). */
+    sahitImzaBaslik: string; sahitImzaYardim: string; sahitRiza: string; sahitImzaNot: string;
+    sahitImzaRizaHata: string; sahitImzaAdHata: string; sahitImzali: string;
     nasilHaberdar: string; ekNot: string; ekNotYardim: string;
   };
   /** 8 Eylül 2026'da eklendi: EK-9 ve resmî dosya için istenen görseller. */

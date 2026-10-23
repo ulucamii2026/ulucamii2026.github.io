@@ -387,7 +387,7 @@ async function sahitImzaSayisi(bytes) {
   const doc = await PDFDocument.load(bytes);
   const c = doc.getPage(0).node.get(PDFName.of('Contents'));
   const akis = (c instanceof PDFArray ? c.asArray() : [c]).map(r => Buffer.from(decodePDFRawStream(doc.context.lookup(r)).decode()).toString('latin1')).join('\n');
-  return [...akis.matchAll(/q\s+-?[\d.]+(?:e-?\d+)? 0 0 -[\d.]+(?:e-?\d+)? -?[\d.]+ -?[\d.]+ cm\s+q\s+0\.1 0\.24 0\.62 (?:rg|RG)/g)].length;
+  return [...akis.matchAll(/q\s+-?[\d.]+(?:e-?\d+)? 0 0 -[\d.]+(?:e-?\d+)? -?[\d.]+ -?[\d.]+ cm\s+(?:q\s+0\.1 0\.24 0\.62 (?:rg|RG)|[\d.]+ w\s+1 J\s+1 j\s+0\.1 0\.24 0\.62 RG)/g)].length;
 }
 
 test('Şahit imza deposu: yetki ister, biçimi doğrular, cevapta imzayı geri vermez; okuma ve silme çalışır', () => {
@@ -557,6 +557,7 @@ test('Başka camide kayıtlı yerel imza basılmaz ve başvuran nüshası ayrıl
 test('Sağlık cevabı şahit imzası özelliğini bildirir; derleme ve herkese açık dosyalar imza içermez', () => {
   const { ctx } = ortam();
   assert.equal(ctx.doGet({ parameter: {} }).ihtidaSahitImzasi, true);
+  assert.equal(ctx.doGet({ parameter: {} }).ihtidaSahitKendiImzasi, true);
   assert.equal(ctx.doGet({ parameter: {} }).ihtidaTekImza, true);
   // GAS paketi herkese açık kaynaklardan derlenir: sürüm 2 imza kaydı hiçbir yerde yer almaz (imzalar yalnız özel Drive'dadır).
   assert.ok(!source.includes('"v":2,"w":'), 'derlenmiş paket imza kaydı taşımaz');
@@ -569,4 +570,104 @@ test('Sağlık cevabı şahit imzası özelliğini bildirir; derleme ve herkese 
     return bulunan;
   };
   assert.deepEqual(gez('public'), [], 'public/ altında şahit imza kaydı bulunmamalı');
+});
+
+// ---- 23 Ekim 2026 (Rıdvan KAYAHAN, kapsam genişletmesi): mühtedi kendi şahitlerini seçtiyse şahit imzasını formda kendisi atabilir ----
+// Şahidin imzası ve rızası başvuruyla aynı özel klasörde «<ref> - sahit1-imza.png» (+ vektör) ve «<ref> - sahit-imza-riza.json» olarak durur.
+// Bu imza şahidin kendi çizdiğidir: başvuran nüshasında da basılır (yalnız Ercan MOLA / Rıdvan KAYAHAN'ın kayıtlı imzaları saklanır).
+const V1_SAHIT = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40L180 52L224 58' });
+const imzaPng = 'data:image/png;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="240" height="80"><path d="M12 55L40 30L70 18L100 22L140 40" stroke="#123" stroke-width="4" fill="none"/></svg>')).png().toBuffer()).toString('base64');
+/** Başvuru gövdesinden (doğrulanmış varsayılır) klasöre yazılan şahit imzası dosyaları + taban görseller; kayıt satırı şahit adlarıyla. */
+function sahitliBasvuru(ctx, sahitler, { sahitSecimi = 'kendi' } = {}) {
+  const klasor = ctx.ihtidaKlasorGetir();
+  const ek = ctx.ihtidaSahitImzaGorselleri({ sahitSecimi, sahitler });
+  const hata = ctx.ihtidaGorselleriKaydet(klasor, k.Referans, Object.assign({ vesikalik: image, kimlikOn: image, kimlikArka: image, imza: image }, ek));
+  assert.deepEqual(Array.from(hata), []);
+  ctx.ihtidaGorselleriOku = (kl, ref, h) => ctx.gercekGorselleriOku(kl, ref, h);   // gerçek okuma: yazılan dosyalar
+  ctx.ihtidaPaketKayit = () => ({ kayit: { ...k, 'Şahit 1': sahitler[0].ad, 'Şahit 2': sahitler[1].ad } });
+  return { klasor, ek };
+}
+const adlar = files => [...files.values()].map(f => f.getName());
+
+test('Şahidin kendi imzası: başvuru dosyasına yazılır; ön başvuruda hem arşiv hem başvuran nüshasında basılır, kayıtlı imza yalnız dernek içi nüshada', async () => {
+  const { ctx, sent, files } = ortam();
+  imzalariKaydet(ctx);
+  const { klasor } = sahitliBasvuru(ctx, [{ ad: 'Ali Örnek', imza: imzaPng, imzaVektor: V1_SAHIT, riza: true }, { ad: 'Ercan MOLA' }]);
+  const ref = k.Referans;
+  assert.deepEqual(adlar(files).filter(a => a.startsWith(ref + ' - ') && /sahit/.test(a)).sort(), [ref + ' - sahit-imza-riza.json', ref + ' - sahit1-imza-vektor.json', ref + ' - sahit1-imza.png'].sort(),
+    'imza atmayan ikinci şahit için dosya yazılmaz');
+  const g = ctx.gercekGorselleriOku(klasor, ref, []);
+  assert.equal(g.sahit1Imza, imzaPng); assert.equal(g.sahit1ImzaVektor, V1_SAHIT); assert.equal(g.sahit2Imza, ''); assert.equal(g.sahit2ImzaVektor, '');
+  const riza = JSON.parse(g.sahitRiza);
+  assert.deepEqual({ ad: riza.sahit1.ad, riza: riza.sahit1.riza }, { ad: 'Ali Örnek', riza: true }); assert.equal(riza.sahit2, undefined);
+  ctx.ihtidaPaketKuyrugaAl(ref);
+  await ctx.ihtidaPaketIsle(ref);
+  const is = ctx.ihtidaPaketIsiOku(ref);
+  assert.equal(is.durum, 'tamam', JSON.stringify(is));
+  assert.deepEqual(Array.from(is.sahitImzasi), ['ercan'], 'kayıtlı imza yalnız adı eşleşen Ercan MOLA için');
+  assert.equal(is.basvuranKopya, 'hazir', 'kayıtlı imza var: başvuran nüshası ayrılır');
+  const ana = dosyaBayt(files, is.pdfId), basvuran = dosyaBayt(files, is.basvuranPdfId);
+  assert.equal(await sahitImzaSayisi(ana), 2, 'arşiv: Ali Örnek\'in kendi imzası + Ercan MOLA\'nın kayıtlı imzası');
+  assert.equal(await sahitImzaSayisi(basvuran), 1, 'başvuran nüshası: yalnız şahidin kendi imzası; kayıtlı imza yok');
+  assert.deepEqual(Buffer.from(sent[2].attachment[0].content, 'base64'), basvuran);
+  // İmzalar iş dosyasında ve durum özetinde çoğaltılmaz.
+  assert.ok(!ctx.ihtidaPaketIsDosyasi(ref).getBlob().getDataAsString('UTF-8').includes('M12 55L40 30'));
+  assert.ok(!JSON.stringify(ctx.ihtidaPaketOzet(is)).includes('M12 55L40 30'));
+  // Test temizliği: şahit imzası ve rıza dosyaları da başvuruyla birlikte çöpe gider.
+  assert.ok(ctx.ihtidaRefIzleriniCopeAt(klasor, ref) >= 3);
+  for (const f of files.values()) if (f.getName().startsWith(ref + ' - ')) assert.equal(f.isTrashed(), true, f.getName());
+});
+
+test('Şahidin kendi imzası: kayıtlı imza yoksa ikinci PDF ayrılmaz; iki şahit de imzalarsa ikisi de her nüshada; rıza kaydı yoksa hiçbiri basılmaz', async () => {
+  // Kayıtlı imza hiç yüklenmemiş: başvuran nüshası ayrılmaz, aynı PDF herkese gider ve şahit imzaları içindedir.
+  const a = ortam();
+  sahitliBasvuru(a.ctx, [{ ad: 'Ali Örnek', imza: imzaPng, riza: true }, { ad: 'Veli Örnek', imza: imzaPng, imzaVektor: V1_SAHIT, riza: true }]);
+  a.ctx.ihtidaPaketKuyrugaAl(k.Referans);
+  await a.ctx.ihtidaPaketIsle(k.Referans);
+  const isA = a.ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(isA.durum, 'tamam', JSON.stringify(isA)); assert.ok(!isA.basvuranKopya); assert.equal(isA.basvuranPdfId, undefined);
+  assert.equal(await sahitImzaSayisi(dosyaBayt(a.files, isA.pdfId)), 1, 'yalnız vektör sayılır (PNG görsel olarak gömülür): Veli Örnek');
+  const doc = await PDFDocument.load(dosyaBayt(a.files, isA.pdfId));
+  const x = doc.getPage(0).node.Resources().lookup(PDFName.of('XObject'));
+  const gorsel = x ? x.keys().filter(n => doc.context.lookup(x.get(n))?.dict?.get(PDFName.of('Subtype'))?.toString() === '/Image').length : 0;
+  assert.ok(gorsel >= 1, 'Ali Örnek\'in PNG imzası (vesikalıkla birlikte) gömülü');
+  assert.equal(a.sent.length, 3); for (const p of a.sent) assert.deepEqual(Buffer.from(p.attachment[0].content, 'base64'), dosyaBayt(a.files, isA.pdfId));
+  // Rıza kaydı yoksa (silinmiş) ya da kayıttaki ad değiştiyse şahit imzası basılmaz.
+  const durumlar = [
+    ['rıza kaydı yok', o => { for (const f of o.files.values()) if (f.getName().endsWith(' - sahit-imza-riza.json')) f.setTrashed(true); }],
+    ['ad uyuşmuyor', o => { o.ctx.ihtidaPaketKayit = () => ({ kayit: { ...k, 'Şahit 1': 'Başka Kişi', 'Şahit 2': 'Veli Örnek' } }); }],
+  ];
+  for (const [neden, degis] of durumlar) {
+    const b = ortam();
+    sahitliBasvuru(b.ctx, [{ ad: 'Ali Örnek', imza: imzaPng, imzaVektor: V1_SAHIT, riza: true }, { ad: 'Veli Örnek' }]);
+    degis(b);
+    b.ctx.ihtidaPaketKuyrugaAl(k.Referans);
+    await b.ctx.ihtidaPaketIsle(k.Referans);
+    const is = b.ctx.ihtidaPaketIsiOku(k.Referans);
+    assert.equal(is.durum, 'tamam', JSON.stringify(is));
+    assert.equal(await sahitImzaSayisi(dosyaBayt(b.files, is.pdfId)), 0, neden + ': şahit imzası basılmaz');
+  }
+});
+
+test('Son nüshada şahidin kendi imzası: işaretli gelir ve basılır; görevli işareti kaldırırsa ya da adı değiştirirse basılmaz; tek PDF gider', async () => {
+  const { ctx, sent, files } = ortam();
+  sahitliBasvuru(ctx, [{ ad: 'Ali Örnek', imza: imzaPng, imzaVektor: V1_SAHIT, riza: true }, { ad: 'Veli Örnek' }]);
+  ctx.ihtidaPaketKuyrugaAl(k.Referans);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  assert.equal(ctx.ihtidaPaketIsiOku(k.Referans).durum, 'tamam');
+  const onay = async (sahitler, anahtar) => {
+    const hazirlik = { adSoyad: k['Adı Soyadı'], adres: k.Adres, ihtidaTarihi: '2026-09-08', beyanTarihi: '2026-09-09', belgeTuru: 'kimlik', sahitler };
+    assert.equal(ctx.ihtidaPaketOnayDogrula(hazirlik), true);
+    assert.equal(ctx.ihtidaPaketOnayIsle({ anahtar: PANEL, ref: k.Referans, hazirlik, islemAnahtari: anahtar }).ok, true);
+    await ctx.ihtidaPaketIsle(k.Referans);
+    const is = ctx.ihtidaPaketIsiOku(k.Referans);
+    assert.equal(is.durum, 'tamam', JSON.stringify(is));
+    assert.ok(!is.basvuranKopya, 'son nüshada ikinci PDF yok');
+    return sahitImzaSayisi(dosyaBayt(files, is.pdfId));
+  };
+  assert.equal(await onay([{ ad: 'Ali Örnek', imza: '', imzaKullan: true }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-1-2099'), 1, 'varsayılan: işaretli, kendi imza basılır');
+  assert.equal(await onay([{ ad: 'Ali Örnek', imza: '', imzaKullan: false }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-2-2099'), 0, 'görevli işareti kaldırdı');
+  assert.equal(await onay([{ ad: 'Ali Örnek Jr.', imza: '', imzaKullan: true }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-3-2099'), 0, 'ad değişti: başkasına basılmaz');
+  assert.equal(await onay([{ ad: 'ali  ÖRNEK', imza: '', imzaKullan: true }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-4-2099'), 1, 'yazım farkı (büyük/küçük harf, boşluk) eşleşmeyi bozmaz');
+  assert.equal(sent.length, 3 * 5, 'her nüsha üç alıcıya gitti');
 });

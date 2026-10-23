@@ -246,6 +246,13 @@ export const de: FormMetinleri = {
       sahitler: 'Zeugen', sahitlerYardim: 'Sie können einen oder zwei Zeugen benennen. Ihre Anwesenheit und ihre Unterschriften werden bei der Feier bestätigt; ein Name allein ersetzt keine Unterschrift.',
       sahitEkle: 'Ich möchte meine Zeugen selbst benennen', sahitCami: 'Vorgeschlagene Zeugen: Ercan MOLA (Vorsitzender des Vereins) und Rıdvan KAYAHAN (Imam). Benennen Sie nur einen Zeugen, sorgt unsere Moschee für den zweiten.',
       sahit1: 'Vor- und Nachname des 1. Zeugen', sahit2: 'Vor- und Nachname des 2. Zeugen',
+      sahitImzaBaslik: "Unterschrift von Zeuge {no} (optional)",
+      sahitImzaYardim: "Ist dieser Zeuge anwesend, kann er hier unterschreiben.",
+      sahitRiza: "Ich bin Zeuge dieser Konversion und bin damit einverstanden, dass meine Unterschrift auf der Konversionsbescheinigung erscheint.",
+      sahitImzaNot: "Sind Ihre Zeugen gerade nicht bei Ihnen, lassen Sie diese Felder leer: Ihr Antrag läuft normal weiter, und die Zeugen können auch später unterschreiben.",
+      sahitImzaRizaHata: "Für eine Zeugenunterschrift muss auch das Einverständnisfeld angekreuzt sein (oder löschen Sie die Unterschrift).",
+      sahitImzaAdHata: "Tragen Sie oben Vor- und Nachnamen des unterschreibenden Zeugen ein.",
+      sahitImzali: "unterschrieben",
       nasilHaberdar: 'Wie haben Sie von uns erfahren?', ekNot: 'Was Sie uns noch mitteilen möchten',
       ekNotYardim: 'Hier können Sie schreiben, wie und zu welchen Zeiten wir Sie am besten erreichen (Telefon, WhatsApp, E-Mail). Wenn Sie Druck aus Ihrer Familie oder Ihrem Umfeld befürchten, schreiben Sie das bitte ebenfalls: Wir planen das Gespräch und die Feier dann entsprechend, diskret und in kleinem Kreis.'
     },

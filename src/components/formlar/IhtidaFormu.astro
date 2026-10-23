@@ -12,6 +12,7 @@ import IhtidaCamiSecimi from './IhtidaCamiSecimi.astro';
 import WhatsappBaglanti from '../WhatsappBaglanti.astro';
 import { camiMetinleri } from '../../i18n/cami-secimi';
 import IhtidaAdimlar from './IhtidaAdimlar.astro';
+import IhtidaSahitImza from './IhtidaSahitImza.astro';
 import { ihtidaAdimMetinleri } from '../../i18n/ihtida-adimlari';
 import '../../styles/ihtida-adimlari.css';
 
@@ -42,6 +43,8 @@ const metinJson = JSON.stringify({
 });
 
 const b = h.belgeler;
+// 23 Ekim 2026: şahit imzası alanının betik metinleri (ihtida-sahit-imza.ts); {no} bileşende 1 | 2 olur.
+const sahitImzaJson = JSON.stringify({ hataRiza: h.ihtida.sahitImzaRizaHata, hataAd: h.ihtida.sahitImzaAdHata, imzali: h.ihtida.sahitImzali });
 // Görsel yükleyicinin ihtiyaç duyduğu metinler (ihtida-gorseller.ts → BelgeMetinleri).
 const belgeJson = JSON.stringify({
   isleniyor: b.isleniyor, hazir: b.hazir,
@@ -68,6 +71,7 @@ const gorselKutulari = [
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script is:inline type="application/json" data-metin set:html={metinJson} />
   <script is:inline type="application/json" data-metin-belge set:html={belgeJson} />
+  <script is:inline type="application/json" data-metin-sahit-imza set:html={sahitImzaJson} />
 
   <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
   <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
@@ -249,16 +253,23 @@ const gorselKutulari = [
         <p class="yardim" id="i-sahit-yardim">{h.ihtida.sahitlerYardim}</p>
         <p class="yardim" data-sahit-cami data-kosul="sahitEkle=false">{h.ihtida.sahitCami}</p>
         <div id="i-sahit-alanlari" class="ucf-izgara mt-1" data-kosul="sahitEkle=true" hidden>
-          <div data-alan>
-            <label for="i-sahit-1">{h.ihtida.sahit1} <span class="zorunlu" aria-hidden="true">*</span></label>
-            <input id="i-sahit-1" name="sahit.1" type="text" required disabled maxlength="80" autocomplete="off" autocapitalize="words" />
-            <p class="hata" aria-live="polite" hidden></p>
+          <div class="ucf-sahit-kolon">
+            <div data-alan>
+              <label for="i-sahit-1">{h.ihtida.sahit1} <span class="zorunlu" aria-hidden="true">*</span></label>
+              <input id="i-sahit-1" name="sahit.1" type="text" required disabled maxlength="80" autocomplete="off" autocapitalize="words" />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+            <IhtidaSahitImza no={1} baslik={h.ihtida.sahitImzaBaslik.replace('{no}', '1')} yardim={h.ihtida.sahitImzaYardim} riza={h.ihtida.sahitRiza} temizle={b.imzaTemizle} />
           </div>
-          <div data-alan>
-            <label for="i-sahit-2">{h.ihtida.sahit2} <span class="istege" data-sahit-istege>({o.istegeBagli})</span><span class="zorunlu" data-sahit-2-zorunlu aria-hidden="true" hidden>*</span></label>
-            <input id="i-sahit-2" name="sahit.2" type="text" disabled maxlength="80" autocomplete="off" autocapitalize="words" />
-            <p class="hata" aria-live="polite" hidden></p>
+          <div class="ucf-sahit-kolon">
+            <div data-alan>
+              <label for="i-sahit-2">{h.ihtida.sahit2} <span class="istege" data-sahit-istege>({o.istegeBagli})</span><span class="zorunlu" data-sahit-2-zorunlu aria-hidden="true" hidden>*</span></label>
+              <input id="i-sahit-2" name="sahit.2" type="text" disabled maxlength="80" autocomplete="off" autocapitalize="words" />
+              <p class="hata" aria-live="polite" hidden></p>
+            </div>
+            <IhtidaSahitImza no={2} baslik={h.ihtida.sahitImzaBaslik.replace('{no}', '2')} yardim={h.ihtida.sahitImzaYardim} riza={h.ihtida.sahitRiza} temizle={b.imzaTemizle} />
           </div>
+          <p class="yardim tam" data-sahit-imza-not>{h.ihtida.sahitImzaNot}</p>
         </div>
       </fieldset>
       <div data-alan>

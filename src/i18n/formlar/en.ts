@@ -244,6 +244,13 @@ export const en: FormMetinleri = {
       sahitler: 'Witnesses', sahitlerYardim: "You may name one or two witnesses. Their attendance and signatures will be confirmed at the ceremony; entering a name does not count as a signature.",
       sahitEkle: "I would like to name my own witness or witnesses", sahitCami: "Default witnesses: Ercan MOLA (association president) and Rıdvan KAYAHAN (imam). If you name only one witness, the mosque will arrange the second.",
       sahit1: 'Full name of 1st witness', sahit2: 'Full name of 2nd witness',
+      sahitImzaBaslik: "Signature of witness no. {no} (optional)",
+      sahitImzaYardim: "If this witness is present, they can sign here.",
+      sahitRiza: "I am a witness to this conversion and I agree that my signature appears on the certificate.",
+      sahitImzaNot: "If your witnesses are not with you right now, leave these boxes empty: your application goes ahead as usual and they can also sign later.",
+      sahitImzaRizaHata: "A witness signature also needs the witness’s consent box ticked (or clear the signature).",
+      sahitImzaAdHata: "Enter above the full name of the witness who signs.",
+      sahitImzali: "signed",
       nasilHaberdar: 'How did you hear about us?', ekNot: 'Anything else you would like to add',
       ekNotYardim: 'Tell us here how and when you would prefer to be contacted (phone, WhatsApp, e-mail). If you are worried about pressure from your family or others, say so as well: we will arrange the meeting and the ceremony accordingly, discreetly and in a small circle.'
     },

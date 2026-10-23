@@ -245,6 +245,13 @@ export const fr: FormMetinleri = {
       sahitler: 'Témoins', sahitlerYardim: "Vous pouvez indiquer un ou deux témoins. Leur présence et leurs signatures seront confirmées lors de la cérémonie ; indiquer un nom ne vaut pas signature.",
       sahitEkle: "Je souhaite indiquer mon ou mes témoins", sahitCami: "Témoins proposés : Ercan MOLA (président de l’association) et Rıdvan KAYAHAN (imam). Si vous indiquez un seul témoin, la mosquée se chargera du second.",
       sahit1: 'Nom et prénom du 1er témoin', sahit2: 'Nom et prénom du 2e témoin',
+      sahitImzaBaslik: "Signature du témoin n° {no} (facultatif)",
+      sahitImzaYardim: "Si ce témoin est présent, il peut signer ici.",
+      sahitRiza: "Je suis témoin de cette conversion et j’accepte que ma signature figure sur l’attestation.",
+      sahitImzaNot: "Si vos témoins ne sont pas avec vous en ce moment, laissez ces cases vides : votre demande suit son cours et ils pourront aussi signer plus tard.",
+      sahitImzaRizaHata: "Pour une signature de témoin, la case de consentement doit aussi être cochée (ou effacez la signature).",
+      sahitImzaAdHata: "Indiquez ci-dessus le nom et le prénom du témoin qui signe.",
+      sahitImzali: "signature jointe",
       nasilHaberdar: 'Comment nous avez-vous connus ?', ekNot: 'Remarques complémentaires',
       ekNotYardim: 'Vous pouvez indiquer ici comment et à quels moments vous préférez être contacté(e) (téléphone, WhatsApp, e-mail). Si vous craignez des pressions familiales ou de votre entourage, dites-le également : nous organiserons l’entretien et la cérémonie en conséquence, discrètement et en cercle restreint.'
     },

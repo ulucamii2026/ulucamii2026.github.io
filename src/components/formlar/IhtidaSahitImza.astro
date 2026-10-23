@@ -1,0 +1,25 @@
+---
+/** İhtida formu — şahit adının altındaki İSTEĞE BAĞLI şahit imzası (23 Ekim 2026).
+    Tuval, başvuranın imza bileşeniyle aynıdır (src/scripts/ihtida-gorseller.ts → imzaBlokuKur);
+    davranış src/scripts/ihtida-sahit-imza.ts. Alan boş bırakılırsa başvuru etkilenmez. */
+interface Props { no: 1 | 2; baslik: string; yardim: string; riza: string; temizle: string }
+const { no, baslik, yardim, riza, temizle } = Astro.props;
+const kimlik = `i-sahit-${no}`;
+---
+<div class="ucf-sahit-imza" data-sahit-imza={no} role="group" aria-labelledby={`${kimlik}-imza-et`}>
+  <span class="alan-baslik" id={`${kimlik}-imza-et`}>{baslik}</span>
+  <p class="yardim" id={`${kimlik}-imza-yardim`}>{yardim}</p>
+  <div class="ucf-imza" data-sahit-imza-kutu>
+    <canvas class="imza-tuval" role="img" aria-label={baslik} aria-describedby={`${kimlik}-imza-yardim`}></canvas>
+    <div class="imza-eylem">
+      <button type="button" class="dugme dugme-ikincil" data-imza-temizle>{temizle}</button>
+    </div>
+  </div>
+  <div data-alan>
+    <div class="onay-kutu">
+      <input id={`${kimlik}-riza`} type="checkbox" name={`onay.sahitRiza${no}`} />
+      <label for={`${kimlik}-riza`}>{riza}</label>
+    </div>
+    <p class="hata" aria-live="polite" hidden></p>
+  </div>
+</div>

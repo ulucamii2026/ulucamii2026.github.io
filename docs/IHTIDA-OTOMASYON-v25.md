@@ -8,8 +8,8 @@
 - Başvuru kaydı tamamlanınca özel Drive klasöründe kalıcı bir paket işi oluşturulur. Dakikalık Apps Script tetikleyicisi PDF'yi üretir; form HTTP isteği PDF ve e-posta işlemlerini beklemez.
 - Tek dosya, Müşavirlik paketinin sırasıyla: EK-9 (2 sayfa), dilekçe (2 sayfa), EK-10 (2 sayfa), kimlik/pasaport örneği. Olağan paket 7 sayfadır (17 Ekim 2026'ya dek 6); sığmayan uzun metinler açıklama ekine eklenir. Ayrıntı: aşağıdaki «17 Ekim 2026» bölümü.
 - Başvuranın rızayla verdiği imza, **ön başvuruda da son nüshada da** aynı biçimde EK-9'un arka yüzüne, dilekçenin iki yüzüne ve EK-10'un iki yüzüne taşınır (23 Ekim 2026 kararı, aşağıdaki «Tek imza» bölümü). İmzasız başvuruda bu alanlar boş kalır. İmzasız metin imzalanmış gibi konuşmaz.
-- Ön başvuru nüshasında gerçek tören tarihi uydurulmaz (dilekçenin ihtida tarihi ve yer-tarih satırı boş kalır); şahit adları önerilir, şahit imzaları kullanılmaz. EK-9 ile dilekçenin altında ön başvuru ibaresi bulunur. Başvuranın kendi imzası bu nüshada da üç belgededir.
-- Yönetici, “Son nüshayı onayla ve gönder” ile gerçek ihtida tarihini, adresi ve şahitleri kontrol eder. Kayıtlı şahit imzaları ancak o belgedeki işaretli teyitlerden gelir. Gelecekteki tören tarihi reddedilir.
+- Ön başvuru nüshasında gerçek tören tarihi uydurulmaz (dilekçenin ihtida tarihi ve yer-tarih satırı boş kalır); şahit adları önerilir. Ulu Camii Marche şahitlerinin («Ercan MOLA», «Rıdvan KAYAHAN») kayıtlı vektör imzaları dernek içi nüshaya kendiliğinden basılır; başvurana giden ayrı nüshada bu kayıtlı imzalar yoktur (aşağıdaki «Şahit imzaları» bölümü). Mühtedi kendi şahitlerini bildirdiyse, yanındaki şahit formda isteğe bağlı olarak kendi onayıyla imza atabilir; bu imza her iki nüshada da basılır, atılmazsa şahit yuvası boş kalır ve başvuru değişmeden ilerler («Şahidin kendi imzası» bölümü). EK-9 ile dilekçenin altında ön başvuru ibaresi bulunur. Başvuranın kendi imzası her iki nüshada da üç belgededir.
+- Yönetici, “Son nüshayı onayla ve gönder” ile gerçek ihtida tarihini, adresi ve şahitleri kontrol eder. Kayıtlı şahit imzaları o belgedeki şahit işaretiyle gelir ve varsayılan olarak işaretlidir; işaret kaldırılırsa imza basılmaz. Gelecekteki tören tarihi reddedilir.
 - Salih GÖR ve resmî unvanı basılır; Müşavirin ıslak imza alanı boş kalır. Millî kimlik numarası, belge numarası ve resmî düzenleme alanları kullanıcı kararına göre boş kalır.
 
 ## Arşiv, alıcılar ve kesintiler
@@ -134,9 +134,11 @@ imza ve kimlik sayfası aynıydı. Kalan dört fark kapatıldı:
 - **Bilerek farklı kalanlar.**
   - Kimlik sayfasının başlığında kart ve ulusal sicil numarası yoktur. Dernek için bağlayıcı numara yasağı sürer; numara
     yalnız görüntünün kendisinde görünür.
-  - Kayıtlı şahit imzaları panelin şifreli paketinden gelir; paket şu anda imza taşımaz. Şahitler son nüshayı kalemle
-    imzalar. Rıdvan KAYAHAN ve Ercan MOLA imzalarının vektör olarak konması yalnız Koordinatörlüğün yerel hattında
-    (`/ihtida-belgesi`) ve kişi başına talimatla yapılır.
+  - Şahit imzaları (23 Ekim 2026 kararı; Rıdvan KAYAHAN: «benim imzam ve başkan Ercan MOLA imzası otomatik gelmedi,
+    belgeye … otomatik gelecek şekilde düzelt»; önceki «paket imza taşımaz» kuralı kalktı): Ulu Camii Marche'de «Ercan MOLA» ve «Rıdvan KAYAHAN» şahitlerinin vektör imzaları EK-9 ön yüzüne
+    kendiliğinden basılır. İmzalar yine ne panelin paketinde, ne `public/` klasöründe, ne de GAS derleme paketindedir;
+    dernek hesabındaki özel depodan gelir (aşağıdaki «Şahit imzaları» bölümü). Başka camilerde bu özellik yoktur.
+    Şahitler kâğıt nüshada yine kalemle imzalayabilir. Koordinatörlüğün yerel hattı (`/ihtida-belgesi`) bundan etkilenmez.
 - **Testler.** Toplam 29/29 geçti:
   - `tests/ihtida-contract.test.mjs`: değer tablosu, düzeltme, sunucu eşlemesi, dilekçenin beyanı koruması, adres baskısının
     iki yüzü, şablonsuz paketin reddi.
@@ -187,6 +189,95 @@ olduğu ek belgeye otomatik basılsın».
     değil bir sonrakini aldı. Sonraki gerçek başvuru bu yüzden IH-2026-0007 olacaktır; aradaki iki numara deneme içindir.
   - Aynı gün derneğin Google tarafındaki kurgusal kayıtlar kökten temizlendi; ayrıntı [YAYIN-KAYITLARI](YAYIN-KAYITLARI.md)
     «23 Ekim 2026».
+
+## Şahit imzaları — 23 Ekim 2026
+
+Karar (Rıdvan KAYAHAN, 23 Ekim 2026): «benim imzam ve başkan Ercan MOLA imzası otomatik gelmedi, belgeye. Bunu otomatik
+gelecek şekilde düzelt.»
+
+- **Kök neden.** Kayıtlı şahit imzaları kasten hiçbir yere konmamıştı: panelin şifreli paketi imza taşımıyordu, GAS
+  derlemesi imza gömmüyordu ve ön başvuru paketi şahit imzası kullanmıyordu. Üstelik panelin şahit onay kutusu imza
+  yokken kapalı geliyordu. Sonuç: iki şahit yuvası her zaman boştu.
+- **Kural.** Yalnız Ulu Camii Marche'de (`cami.id === 'ulucamii-marche'`) ve yalnız adı tam eşleşen şahitlere basılır:
+  «Rıdvan KAYAHAN» (Din Görevlisi) ve «Ercan MOLA» (Dernek Başkanı). Başka camide, başka adda ve işareti kaldırılmış
+  şahitte imza basılmaz. Bu iki varsayılan şahit zaten önerilen şahitlerdir (`sahitOnerileri`).
+- **İmza biçimi.** Sürüm 2 vektör kaydı: `{v:2, w, h, p:[{d, f:1, e:1} | {d, k}]}`. `d` yalnız mutlak `M L C Z` komutlarını
+  taşır; `f:1` dolgulu kontur (çift-tek kuralı), aksi hâlde `k` kalınlıklı yuvarlak uçlu çizgi (alt sınır 0,55 pt). Çizim
+  EK-9 ön yüzündeki şahit yuvasına sığdırılır (`kutuyaSigdir`), mürekkep kalem rengi #1A3D9E'dir. **Raster yoktur.**
+  Herkese açık formun vektör imzası (sürüm 1) bu çözücüden geçmez; sürüm 2 yalnız özel depodan ve panelden gelir.
+  Çözücü ve çizici: `public/admin/imza-ciz.js` (`sahitImzaCoz`, `imzaHazirla(..., { sahit: true })`); bağlama:
+  `public/admin/ek9-hazirlik.js` (`sahitImzalariniBagla`).
+- **Özel depo.** İmzalar ne depoda, ne `public/` klasöründe, ne GAS derleme paketinde, ne de iş dosyalarında
+  (`<ref> - paket-islem.json`) durur. Tek yer dernek hesabındaki ihtida Drive klasöründe `sahit-imzalari.json`
+  (`{"ridvan": "…", "ercan": "…"}`). Dosya yoksa özellik kurulmamıştır, imza basılmaz; dosya var ama bozuksa paket HATA
+  verir, imzasız belge sessizce çıkmaz.
+  - `GET ?islem=sahit-imzalari&anahtar=…` (yalnız panel anahtarı): panelin yerel tek EK-9'u için imzaları bellekte alır.
+  - `POST {tur:'sahit-imza-yukle', anahtar, ad:'ridvan'|'ercan', imza}`: kaydeder ya da (`imza` boşsa) siler; betik kilidi
+    içinde yazar, cevapta imzayı geri vermez.
+  - Yükleme aracı: `node scripts/sahit-imza-hazirla.mjs --ad ridvan --svg <imza.svg> --yukle` (SVG yolunu vektör kaydına
+    çevirir, yükler, geri okuyup karşılaştırır; imza metnini ve anahtarı yazdırmaz). Kaynaklar: Rıdvan'ın imzası
+    `~/.claude/assets/imza.svg`, Ercan MOLA imzası `~/.codex/skills/imza-ercan-mola/assets/ercan-mola-imza.svg`.
+- **Ön başvuruda iki nüsha.** Başvuru formu herkese açık olduğundan şahit imzaları başvurana gitmez:
+  - Arşivdeki ana PDF ve `info@` / `imam@` alıcıları şahit imzalı nüshayı alır.
+  - Başvuran (`info@`/`imam@` dışındaki alıcı) şahit imzaları OLMADAN üretilen ikinci PDF'yi alır
+    (`<ref> - Ihtida Belge Paketi - r1 - basvuran.pdf`, e-postadaki ek adı her alıcıda aynıdır). Başvuranın kendi imzası
+    bu nüshada da üç belgededir.
+  - İkinci PDF hazır olmadan başvurana ASLA şahit imzalı nüsha gitmez. 6 dakikalık Apps Script sınırı için ikinci PDF aynı
+    çalışmada yetişmezse sonraki dakikalık çalışmaya kalır (`kopyaDeneme`, en çok 3); bu arada dernek içi alıcılara
+    gönderim sürer. Durum cevabında `sahitImzasi`, `basvuranKopya` (`sirada`/`hazir`), `basvuranPdfId`, `basvuranSha256`
+    ve alıcıda `basvuran` vardır. Son nüshada (tören sonrası) ikinci PDF yoktur; herkes aynı, şahit imzalı nüshayı alır.
+  - Test temizliği ve silme, ikinci PDF'yi de (`... - basvuran.pdf`) ve önceki revizyonların dosyalarını (`eskiPdfler`)
+    ad ve ref denetimiyle çöpe alır.
+- **Panel.** Yerel tek EK-9 hazırlama penceresinde şahit kutuları kullanılabilir ve işaretli gelir; işaret kaldırılırsa
+  imza basılmaz. İmzalar alınamazsa kutular kapalı kalır ve «alınamadı» notu görünür. Tek PDF paketinde (sunucuya giden
+  onay) tarayıcıya imza gelmez; yalnız şahit başına `imzaKullan` değeri gider, imzayı sunucu özel depodan basar.
+- **Sağlık.** Apps Script sağlık cevabında `ihtidaSahitImzasi: true`.
+- **Testler.** `tests/ihtida-contract.test.mjs` (17 test; sürüm 2 doğrulama/ret, bağlama, EK-9 ön yüz yuvaları/mürekkep/
+  raster yok/bozuk kayıt/sade kip, sunucu eşlemesi), `tests/ihtida-paket-akis.test.mjs` (27 test; depo uçları, ön
+  başvuruda iki PDF, ikinci PDF hatası, 3 deneme sonrası hata, son nüsha ve eski PDF temizliği, bozuk/dosyasız depo, başka
+  cami, sağlık bayrağı ve hijyen: derlenmiş pakette ve `public/` ağacında gerçek imza yok), `tests/web/ihtida.spec.mjs`
+  (güncellendi + 2 test), `tests/web/panel-sahit-imza.spec.mjs` (yeni; GAS taklitli 3 test).
+
+## Şahidin kendi imzası: mühtedinin kendi şahitleri — 23 Ekim 2026
+
+Karar (Rıdvan KAYAHAN, 23 Ekim 2026): «eğer şahit biz seçiliysek yani Ercan MOLA ve Rıdvan KAYAHAN ise imzalarımız otomatik atılsın,
+yok değil de mühtedi kendi şahitlerini seçtiyse, mühtedi bu işlemi şahitler yanındaysa onlara o an imza attırabilmeli ya da değilse
+işlere şahit imzası olmadan ilerle ve en son belge bize geldikten sonra ben belgenin PDF olarak mühtediye gönderirim … şahit imzası
+işini mühtedi halleder.»
+
+- **Üç durum.**
+  1. Şahitler Ulu Camii'nin varsayılanıysa (Ercan MOLA, Rıdvan KAYAHAN) kayıtlı imzalar otomatik basılır (yukarıdaki bölüm).
+  2. Mühtedi kendi şahitlerini bildirdi ve şahitler yanında: her şahit adının altındaki alana kendi imzasını atar.
+  3. Şahitler yanında değil: alan boş kalır, başvuru bugünkü gibi ilerler, EK-9'daki şahit yuvası boş basılır. Engel ve uyarı yoktur;
+     yalnız «şahitler imzayı daha sonra da atabilir» diyen tek nötr satır vardır. Belge sonradan PDF olarak mühtediye gönderilir.
+- **Form (5 dil).** `src/components/formlar/IhtidaSahitImza.astro` her şahit adının altına isteğe bağlı bir imza kutusu ve şahidin KENDİ
+  onay kutusunu koyar (FR: «Si ce témoin est présent, il peut signer ici» / «Je suis témoin de cette conversion et j'accepte que ma
+  signature figure sur l'attestation»). Tuval başvuranın imza bileşenidir (`imzaBlokuKur`): vektör çizgi (sürüm 1) + saydam PNG,
+  aynı boyut sınırları. Davranış `src/scripts/ihtida-sahit-imza.ts`:
+  - İmza atıldıysa şahidin adı ve onay kutusu zorunludur; yoksa gönderim durur. Çizimsiz onay kutusu «imza yok» demektir (engel yok).
+  - Çizim ve onay taslağa yazılmaz (`onay.sahitRizaN`; tuval alan değildir). Kendi şahit seçimi kapanınca, cami değişince ya da form
+    sıfırlanınca çizimler silinir; başka bir kişinin imzası gönderime taşınmaz.
+  - Gövdede yalnız imzalı şahidin satırına `imza` (PNG), `imzaVektor` (sürüm 1 JSON), `riza: true` eklenir; imzasız şahit `{ad}` kalır.
+  - Çok küçük karalama (Base64 gövdesi < 500 karakter) imza sayılmaz; sunucu 400 karakterin altını zaten reddeder.
+  - Metinler `src/i18n/formlar/{tr,fr,en,nl,de}.ts` (`sahitImza*`, `sahitRiza`, `sahitImzali`); gizlilik sayfalarında (5 dil) yeni madde.
+- **Sunucu.** `ihtidaSahitImzalariDogrula` (yalnız `sahitSecimi: "kendi"`; ad dolu, `riza === true`, `gorselGecerli(imza, 1)`, varsa
+  `imzaVektorGecerli`; kurala uymayan gövde reddedilir). `ihtidaSahitImzaGorselleri` imzayı başvuruyla aynı özel klasöre yazılacak
+  dosyalara çevirir ve rıza kaydını SUNUCUDA üretir:
+  `<ref> - sahit1-imza.png`, `<ref> - sahit1-imza-vektor.json`, `<ref> - sahit2-…`, `<ref> - sahit-imza-riza.json`
+  (`{v:1, zaman, sahit1:{ad, riza:true}, …}`). Hepsi `IHTIDA_GORSEL_ADLARI` tablosunda olduğundan test temizliği, silme ve çöpe alma
+  başvuruyla birlikte çalışır.
+- **EK-9 ön yüzü.** `sahitKendiImzalari(gorseller)` (`public/admin/ek9-hazirlik.js`) dosyalardan şahidin imzasını okur ve yalnız rıza
+  kaydı, dolu ad ve imza varsa kabul eder; `sahitImzalariniBagla(..., kendi)` imzayı şahidin adı eşleşen yuvaya koyar (büyük/küçük
+  harf ve boşluk farkı sayılmaz). Vektör varsa vektör, yoksa PNG basılır (mürekkep #1A3D9E, aynı yuva kutusu). Hem ön başvuruda hem
+  son nüshada; son nüshada panel onay kutusunu işaretli getirir, görevli kaldırırsa ya da adı değiştirirse basılmaz.
+- **Nüsha kuralı (değişmez).** Başvuran nüshası YALNIZ kayıtlı Ercan MOLA / Rıdvan KAYAHAN imzalarını taşımaz; şahidin kendi imzası
+  başvuran nüshasında da basılıdır. Kayıtlı imza hiç yüklenmemişse ya da hiçbiri kullanılmamışsa ikinci PDF ayrılmaz, herkes aynı
+  PDF'yi alır.
+- **Sağlık.** Apps Script sağlık cevabında `ihtidaSahitKendiImzasi: true` (kayıtlı imzaların `ihtidaSahitImzasi` bayrağından ayrıdır); dağıtım kapısı `dagit_v43.py` iki bayrağı ve yeni imza dizgilerini birlikte arar.
+- **Testler.** `tests/ihtida-contract.test.mjs` (toplam 21; +4: yardımcılar, sunucu doğrulaması, EK-9 ön yüz damgası vektör/PNG, nüsha eşlemesi),
+  `tests/ihtida-paket-akis.test.mjs` (toplam 30; +3: dosya turu ve temizlik, karışık durum ön başvuru, iki şahit/rıza yok/ad uyuşmuyor, son
+  nüsha), `tests/web/ihtida.spec.mjs` (+7: isteğe bağlılık, onaysız engel, gövde sözleşmesi, taslak, sıfırlama, cami değişimi, FR metni,
+  dar ekran + axe), `tests/web/paket-onay.spec.mjs` (taklit modül `sahitKendiImzalari` dışa aktarımını da taşır). Şahit kutusu `data-imza` değil `data-sahit-imza-kutu` kullanır: eski testler `[data-imza] canvas` ile yalnız başvuranın tuvalini seçer.
 
 ## Bundan sonraki kullanım
 

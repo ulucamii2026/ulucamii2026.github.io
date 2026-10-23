@@ -4,6 +4,7 @@
 import { formuBaslat, telefonNormalle, type Veriler } from './form-cekirdek';
 import { gorselleriBaslat, type BelgeMetinleri, type GorselYonetici } from './ihtida-gorseller';
 import { camiSeciminiBaslat } from './ihtida-cami';
+import { sahitImzalariniBaslat, type SahitImzaMetinleri } from './ihtida-sahit-imza';
 import { ihtidaAdimlariniBaslat } from './ihtida-adimlari';
 
 export function ihtidaFormuBaslat() {
@@ -13,8 +14,11 @@ export function ihtidaFormuBaslat() {
   const belgeMetin = JSON.parse(form.querySelector('script[data-metin-belge]')?.textContent || '{}') as BelgeMetinleri;
   const gorseller: GorselYonetici | null = gorselleriBaslat(form, belgeMetin);
   const cami = camiSeciminiBaslat(form);
-  // Yerel reset tamamlandıktan sonra imzasız tercihini ve görselleri birlikte sıfırla.
-  form.addEventListener('reset', () => queueMicrotask(() => gorseller?.sifirla()));
+  // 23 Ekim 2026: kendi şahidi yanındaki mühtedi için isteğe bağlı şahit imzası (bkz. ihtida-sahit-imza.ts).
+  const sahitMetin = JSON.parse(form.querySelector('script[data-metin-sahit-imza]')?.textContent || '{}') as SahitImzaMetinleri;
+  const sahitImzalari = sahitImzalariniBaslat(form, sahitMetin);
+  // Yerel reset tamamlandıktan sonra imzasız tercihini, görselleri ve şahit imzalarını birlikte sıfırla.
+  form.addEventListener('reset', () => queueMicrotask(() => { gorseller?.sifirla(); sahitImzalari.sifirla(); }));
 
   const cekirdek = formuBaslat(form, {
     hazir: () => {
@@ -28,10 +32,12 @@ export function ihtidaFormuBaslat() {
     },
     ekDogrula: (_v, _f, _m, bolumler) => [
       ...(!bolumler || bolumler.some(b => b.id === 'b-cami' || b.id === 'b-ihtida') ? cami.dogrula() : []),
+      ...(!bolumler || bolumler.some(b => b.id === 'b-ihtida') ? sahitImzalari.dogrula() : []),
       ...(!bolumler || bolumler.some(b => b.id === 'b-belgeler') ? gorseller?.dogrula() ?? [] : []),
     ],
     govde(v) {
       const b = v.basvuran as Veriler, sahit = (v.sahit ?? {}) as Veriler, onay = v.onay as Veriler;
+      const sahitImza = sahitImzalari.veri();     // imzasız şahit için null: satır yalnız { ad } kalır
       const adres = [b.adres, b.postaKodu, b.sehir, b.ulke].map(x => String(x ?? '').trim()).filter(Boolean).join(', ');
       return {
         cami: cami.veri(),
@@ -46,7 +52,7 @@ export function ihtidaFormuBaslat() {
         },
         teslimat: { yontem: (v.teslimat as Veriler)?.yontem ?? 'cami' },
         sahitSecimi: cami.farkli() || v.sahitEkle === true ? 'kendi' : 'cami',
-        sahitler: cami.farkli() || v.sahitEkle === true ? [{ ad: sahit['1'] ?? '' }, { ad: sahit['2'] ?? '' }] : [],
+        sahitler: cami.farkli() || v.sahitEkle === true ? [{ ad: sahit['1'] ?? '', ...(sahitImza[0] ?? {}) }, { ad: sahit['2'] ?? '', ...(sahitImza[1] ?? {}) }] : [],
         fotografIzni: v.fotografIzni === true,
         belgeTuru: v.belgeTuru ?? 'kimlik',
         imzaYok: v.imzaYok === true,
@@ -79,7 +85,9 @@ export function ihtidaFormuBaslat() {
         sebep: String(b.ihtidaSebebi ?? ''),
         yeniIsim: String(b.yeniIsim ?? ''),
         toren: [secText('basvuran.torenDili'), b.torenTarihi].filter(Boolean).join(' · '),
-        sahitler: v.sahitEkle === true ? [sahit['1'], sahit['2']].filter(Boolean).join(', ') : f.querySelector('[data-sahit-cami]')?.textContent?.trim() ?? '',
+        sahitler: v.sahitEkle === true
+          ? [sahit['1'], sahit['2']].map((ad, i) => ad ? (sahitImzalari.imzaliMi(i + 1) ? `${ad} (${sahitImzalari.etiket})` : String(ad)) : '').filter(Boolean).join(', ')
+          : f.querySelector('[data-sahit-cami]')?.textContent?.trim() ?? '',
         belgeler: gorseller?.ozet() ?? '',
       };
     },

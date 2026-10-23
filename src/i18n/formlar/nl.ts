@@ -246,6 +246,13 @@ export const nl: FormMetinleri = {
       sahitler: 'Getuigen', sahitlerYardim: 'U mag een of twee getuigen opgeven. Hun aanwezigheid en hun handtekeningen worden tijdens de plechtigheid bevestigd; alleen een naam invullen geldt niet als handtekening.',
       sahitEkle: 'Ik wil zelf mijn getuige of getuigen opgeven', sahitCami: 'Voorgestelde getuigen: Ercan MOLA (voorzitter van de vereniging) en Rıdvan KAYAHAN (imam). Geeft u maar één getuige op, dan zorgt onze moskee voor de tweede.',
       sahit1: 'Naam en voornaam van de 1e getuige', sahit2: 'Naam en voornaam van de 2e getuige',
+      sahitImzaBaslik: "Handtekening van getuige {no} (optioneel)",
+      sahitImzaYardim: "Als deze getuige aanwezig is, kan hij of zij hier tekenen.",
+      sahitRiza: "Ik ben getuige van deze bekering en ga ermee akkoord dat mijn handtekening op het bekeringsattest komt.",
+      sahitImzaNot: "Zijn uw getuigen nu niet bij u, laat deze vakken dan leeg: uw aanvraag loopt gewoon door en ze kunnen later ook nog tekenen.",
+      sahitImzaRizaHata: "Voor een getuigenhandtekening moet ook het toestemmingsvakje worden aangevinkt (of wis de handtekening).",
+      sahitImzaAdHata: "Vul hierboven de naam en voornaam in van de getuige die tekent.",
+      sahitImzali: "ondertekend",
       nasilHaberdar: 'Hoe hebt u ons leren kennen?', ekNot: 'Wat u nog wilt toevoegen',
       ekNotYardim: 'Hier kunt u schrijven hoe en op welke momenten u het liefst gecontacteerd wordt (telefoon, WhatsApp, e-mail). Vreest u druk van uw familie of uw omgeving, schrijf dat dan ook: wij plannen het gesprek en de plechtigheid daarop af, discreet en in kleine kring.'
     },

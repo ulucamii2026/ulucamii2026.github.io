@@ -1079,7 +1079,7 @@ async function ek9Uretimi(dugme) {
     if (!j.ok) throw new Error(j.hata === 'bulunamadi' ? 'Başvuru bulunamadı.' : 'Belge verisi alınamadı.');
     const k = j.kayit || {};
 
-    const { ek9HazirlikAc, ek9Degerleri, ek9AlanlariUygula } = await import('/admin/ek9-hazirlik.js');
+    const { ek9HazirlikAc, ek9Degerleri, ek9AlanlariUygula, sahitKendiImzalari } = await import('/admin/ek9-hazirlik.js');
     const basvuranImza = j.basvuranImza || j.gorseller?.imza || '';
     const beyan = basvuranImza ? ek9Tarih(k['Zaman damgası']) : bugunTR();
     const isoTarih = beyan.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
@@ -1087,10 +1087,12 @@ async function ek9Uretimi(dugme) {
     // dernek Google hesabındaki özel depodadır; yetkili istekle yalnız belleğe alınır (saklanmaz). Tek PDF paketi sunucuda hazırlanır, imzayı sunucu bağlar.
     let imzalar = (SIRLAR && SIRLAR.imzalar) || {}, imzaHata = false;
     if (!paketMi) { try { imzalar = { ...imzalar, ...(await sahitImzalariGetir()) }; } catch (h) { console.error(h); imzaHata = true; } }
+    // 23 Eki 2026: şahidin başvuru sırasında formda kendi attığı imza (rızası kayıtlıysa) pencerede işaretli gelir.
+    const kendiImzalar = sahitKendiImzalari(j.gorseller);
     const hazirlik = await ek9HazirlikAc(k, imzalar, paketMi ? {
       paket: true, gonder: true, imzali: Boolean(basvuranImza), beyanTarihi: isoTarih ? `${isoTarih[3]}-${isoTarih[2]}-${isoTarih[1]}` : '',
-      belgeTuru: j.gorseller?.kimlikArka ? 'kimlik' : '',
-    } : { imzaHata });
+      belgeTuru: j.gorseller?.kimlikArka ? 'kimlik' : '', kendiImzalar,
+    } : { imzaHata, kendiImzalar });
     if (!hazirlik) { durumYaz(eskiMetin); dugme.disabled = false; return; }
     if (paketMi) {
       durumYaz('Paket arşive ve gönderim sırasına alınıyor…');

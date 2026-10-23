@@ -459,6 +459,8 @@ export interface ImzaBloku {
   eksikMi(): boolean;
   /** «Ekranda imza atamıyorum» işaretli mi? */
   kapaliMi(): boolean;
+  /** Tuval boş mu (gerçek bir çizgi yok mu)? Kaçış kutusundan bağımsız; isteğe bağlı imzalar (şahit) bununla ölçer. */
+  bosMu(): boolean;
   hataYaz(metin: string | null): void;
   /** Taslak silinince/gönderim sonrası: çizimi ve kilidi sıfırlar. */
   sifirla(): void;
@@ -490,6 +492,7 @@ export function imzaBlokuKur(kap: HTMLElement | null, imzaYok: HTMLInputElement 
     vektor: () => (imzaYok?.checked ? '' : (imza?.vektor() || '')),
     eksikMi: () => !imzaYok?.checked && (!imza || imza.bosMu()),
     kapaliMi: () => !!imzaYok?.checked,
+    bosMu: () => !imza || imza.bosMu(),
     hataYaz,
     // Form sıfırlaması kullanıcı girdisi değildir; silinen taslağı yeniden oluşturmasın.
     sifirla: () => { imza?.temizle(false); durum(); },

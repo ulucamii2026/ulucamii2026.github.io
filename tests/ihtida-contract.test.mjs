@@ -430,7 +430,7 @@ function sayfaAkisi(doc, i) {
 }
 function imzaKutulari(doc, i, boyutlar) {
   const H = doc.getPage(i).getHeight();
-  return [...sayfaAkisi(doc, i).matchAll(/q\s+(-?[\d.]+(?:e-?\d+)?) 0 0 -([\d.]+(?:e-?\d+)?) (-?[\d.]+) (-?[\d.]+) cm\s+q\s+0\.1 0\.24 0\.62 (?:rg|RG)/g)].map((m, j) => {
+  return [...sayfaAkisi(doc, i).matchAll(/q\s+(-?[\d.]+(?:e-?\d+)?) 0 0 -([\d.]+(?:e-?\d+)?) (-?[\d.]+) (-?[\d.]+) cm\s+(?:q\s+0\.1 0\.24 0\.62 (?:rg|RG)|[\d.]+ w\s+1 J\s+1 j\s+0\.1 0\.24 0\.62 RG)/g)].map((m, j) => {
     const s = Number(m[1]), x0 = Number(m[3]), y0 = H - Number(m[4]), [w, h] = boyutlar[j] || [1, 1];
     return { x0, y0, x1: x0 + w * s, y1: y0 + h * s };
   });
@@ -553,4 +553,141 @@ test('Sunucu eşlemesi: ön başvuruda varsayılan şahitler eşleşirse imza ba
   const son = await pdfLib.PDFDocument.load(await uret(kayit, g, duzenleme, kaynaklar, pdfLib, fontkit, { sahitImzalari: imzalar }));
   const kutu = imzaKutulari(son, 0, [[240, 100]]);
   assert.equal(kutu.length, 1); assert.ok(kutu[0].x0 >= 589.9, 'yalnız sağdaki (Rıdvan KAYAHAN) yuvada');
+});
+
+// ---- 23 Ekim 2026 (Rıdvan KAYAHAN, kapsam genişletmesi): mühtedi kendi şahitlerini seçtiyse şahit imzasını formda kendisi atabilir ----
+// «eğer şahit biz seçliysek … imzalarımız otomatik atılsın, yok değil de mühtedi kendi şahitlerini seçtiyse … şahitler yanındaysa onlara
+// o an imza attırabilmeli ya da değilse işlere şahit imzası olmadan ilerle». İmza şahidin kendi rızasıyla alınır ve başvuru
+// dosyasında (özel Drive) durur; ad eşleşmezse ya da rıza kaydı yoksa belgeye basılmaz. Hepsi sentetik şekillerle sınanır.
+const V1_IMZA = JSON.stringify({ v: 1, w: 240, h: 80, k: 2.4, d: 'M12 55L40 30L70 18L100 22L140 40L180 52L224 58' });
+const PNG_BAS = 'data:image/png;base64,';
+const sahitRizaKaydi = (...adlar) => JSON.stringify({ v: 1, zaman: '2026-10-23T10:00:00.000Z', ...Object.fromEntries(adlar.map((ad, i) => ad ? [`sahit${i + 1}`, { ad, riza: true }] : [])) });
+
+test('Şahidin formda attığı imza: rıza kaydı, PNG ve ad şartı; vektör yalnız geçerliyse; kayıtlı imzanın önüne geçer', async () => {
+  const { sahitKendiImzalari, sahitImzalariniBagla, sahitAdiNormal } = await import('../public/admin/ek9-hazirlik.js');
+  const png = PNG_BAS + 'AAAA';
+  const g = { sahit1Imza: png, sahit1ImzaVektor: V1_IMZA, sahit2Imza: png, sahit2ImzaVektor: '', sahitRiza: sahitRizaKaydi(' Ali  Örnek ', 'Veli Örnek') };
+  const [bir, iki] = sahitKendiImzalari(g);
+  assert.deepEqual(bir, { ad: 'Ali  Örnek', imza: V1_IMZA }, 'vektör (sürüm 1) geçerliyse o kullanılır; ad kırpılır');
+  assert.deepEqual(iki, { ad: 'Veli Örnek', imza: png }, 'vektör yoksa PNG kullanılır');
+  assert.deepEqual(sahitKendiImzalari({ ...g, sahit1ImzaVektor: '{"v":1}' })[0].imza, png, 'bozuk vektör PNG\'ye döner');
+  // Rıza kaydı yoksa / riza true değilse / PNG yoksa / ad boşsa / JSON bozuksa imza kullanılmaz.
+  assert.deepEqual(sahitKendiImzalari({ ...g, sahitRiza: '' }), [null, null]);
+  assert.deepEqual(sahitKendiImzalari({ ...g, sahitRiza: '{bozuk' }), [null, null]);
+  assert.deepEqual(sahitKendiImzalari({ ...g, sahitRiza: JSON.stringify({ sahit1: { ad: 'Ali Örnek', riza: false }, sahit2: { ad: '', riza: true } }) }), [null, null]);
+  assert.deepEqual(sahitKendiImzalari({ ...g, sahit1Imza: '' }).map(x => x && x.ad), [null, 'Veli Örnek']);
+  assert.deepEqual(sahitKendiImzalari(undefined), [null, null]);
+  assert.equal(sahitAdiNormal('  ALİ   Örnek '), 'ali örnek', 'Türkçe küçük harf kuralı');
+  const kendi = [bir, iki];
+  // Ad eşleşirse imza şahide bağlanır ve «kendi imza» diye işaretlenir; kayıtlı (Ercan/Rıdvan) imzalar sayılmaz.
+  let r = sahitImzalariniBagla([{ ad: 'ali örnek' }, { ad: 'Veli Örnek' }], 'namur-camii-namur', {}, kendi);
+  assert.equal(r.sahitler[0].imza, V1_IMZA); assert.equal(r.sahitler[0].kendiImza, true); assert.equal(r.sahitler[1].imza, png);
+  assert.deepEqual(r.uygulanan, [], 'kendi imza, kayıtlı imza listesine (başvuran nüshasından ayrılan imzalar) girmez');
+  // Ad değiştiyse (görevli düzeltti ya da başka kişi yazıldı) imza basılmaz; sıra bağlıdır.
+  r = sahitImzalariniBagla([{ ad: 'Başka Kişi' }, { ad: 'Ali Örnek' }], 'namur-camii-namur', {}, kendi);
+  assert.equal(r.sahitler[0].imza, undefined); assert.equal(r.sahitler[1].imza, undefined);
+  // Görevli işareti kaldırdıysa (imzaKullan false) basılmaz.
+  r = sahitImzalariniBagla([{ ad: 'Ali Örnek', imzaKullan: false }, { ad: 'Veli Örnek' }], 'namur-camii-namur', {}, kendi);
+  assert.equal(r.sahitler[0].imza, undefined); assert.equal(r.sahitler[1].imza, png);
+  // Aynı ad hem kayıtlı hem kendi imzaya sahipse şahidin kendi çizdiği önde gelir; ikisinin yarışması iki imza basmaz.
+  const imzalar = { ercan: SAHTE_DOLGU, ridvan: SAHTE_CIZGI };
+  r = sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'ulucamii-marche', imzalar, [{ ad: 'ercan mola', imza: V1_IMZA }, null]);
+  assert.equal(r.sahitler[0].imza, V1_IMZA); assert.equal(r.sahitler[1].imza, SAHTE_CIZGI); assert.deepEqual(r.uygulanan, ['ridvan']);
+  // Eski çağrılar (kendi parametresiz) aynen çalışır.
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', imzalar).uygulanan, ['ercan']);
+});
+
+test('Sunucu doğrulaması: şahit imzası yalnız kendi şahitlerinde, şahidin rızasıyla, geçerli PNG ve vektörle kabul edilir', () => {
+  const c = backend();
+  const png = PNG_BAS + 'A'.repeat(400);
+  const temel = () => ({ ...govde(), sahitSecimi: 'kendi', sahitler: [{ ad: 'Birinci Örnek' }, { ad: 'İkinci Örnek' }] });
+  const imzali = (ek, i = 0) => { const v = temel(); v.sahitler[i] = { ...v.sahitler[i], ...ek }; return v; };
+  assert.equal(c.ihtidaDogrulaV2(temel()).tamam, true, 'imzasız kendi şahit: eskisi gibi');
+  assert.equal(c.ihtidaDogrulaV2(imzali({ imza: png, imzaVektor: V1_IMZA, riza: true })).tamam, true);
+  assert.equal(c.ihtidaDogrulaV2(imzali({ imza: png, riza: true }, 1)).tamam, true, 'yalnız PNG yeterli; ikinci şahit da imzalayabilir');
+  assert.equal(c.ihtidaDogrulaV2(imzali({ imza: '', imzaVektor: '', riza: false })).tamam, true, 'boş imza + rıza yok: imzasız sayılır');
+  const kod = v => c.ihtidaDogrulaV2(v).kod;
+  assert.equal(kod(imzali({ imza: png, riza: false })), 'sahit-imza-riza-eksik');
+  assert.equal(kod(imzali({ imza: png })), 'sahit-imza-riza-eksik', 'rıza gönderilmediyse imza alınmaz');
+  assert.equal(kod(imzali({ imza: png, riza: 'evet' })), 'sahit-riza-gecersiz');
+  assert.equal(kod(imzali({ imza: 'data:image/gif;base64,' + 'A'.repeat(400), riza: true })), 'sahit-imza-gecersiz');
+  assert.equal(kod(imzali({ imza: PNG_BAS + 'AAAA', riza: true })), 'sahit-imza-gecersiz', 'birkaç piksellik boş kare');
+  assert.equal(kod(imzali({ imza: png, imzaVektor: '{"v":2,"w":3}', riza: true })), 'sahit-imza-vektor-gecersiz', 'sürüm 2 vektör bu uçtan gelemez');
+  assert.equal(kod(imzali({ imza: '', imzaVektor: V1_IMZA, riza: true })), 'sahit-imza-gecersiz', 'PNG olmadan vektör tek başına geçmez');
+  assert.equal(kod(imzali({ ad: '  ', imza: png, riza: true }, 1)), 'sahit-imza-ad-eksik', 'adı olmayan şahit imza atamaz');
+  const cami = { ...temel(), sahitSecimi: 'cami', sahitler: [] };
+  assert.equal(c.ihtidaDogrulaV2(cami).tamam, true);
+  assert.equal(kod({ ...cami, sahitler: [{ ad: 'Ercan MOLA', imza: png, riza: true }] }), 'sahit-secimi-tutarsiz', 'cami şahitlerinde istemci imza gönderemez');
+  const eskiBiçim = { ...govde(), sahitler: [{ ad: 'Birinci Örnek', imza: png, riza: true }] };
+  delete eskiBiçim.teslimat; delete eskiBiçim.sahitSecimi;
+  assert.equal(kod(eskiBiçim), 'sahit-imza-fazla', 'şahit seçimi bildirilmemiş eski gövdede imza kabul edilmez');
+  // Diğer cami: iki şahit adı zorunlu; imza orada da isteğe bağlıdır.
+  const diger = { ...temel(), cami: { id: 'diger', ad: 'Başka Cami', sehir: 'Namur', postaKodu: '5000', adres: 'Rue 1' } };
+  assert.equal(c.ihtidaDogrulaV2(diger).tamam, true);
+  assert.equal(c.ihtidaDogrulaV2({ ...diger, sahitler: [{ ad: 'Birinci Örnek', imza: png, imzaVektor: V1_IMZA, riza: true }, { ad: 'İkinci Örnek' }] }).tamam, true);
+  // Klasöre yazılacak düz nesne: imza + rıza kaydı; imzasız şahit için hiçbir anahtar yok.
+  const g = c.ihtidaSahitImzaGorselleri(imzali({ imza: png, imzaVektor: V1_IMZA, riza: true, ad: '  Birinci   Örnek ' }));
+  assert.deepEqual(Object.keys(g).sort(), ['sahit1Imza', 'sahit1ImzaVektor', 'sahitRiza']);
+  const riza = JSON.parse(g.sahitRiza);
+  assert.deepEqual(riza.sahit1, { ad: 'Birinci Örnek', riza: true }); assert.equal(riza.sahit2, undefined); assert.equal(riza.v, 1);
+  assert.match(riza.zaman, /^\d{4}-\d{2}-\d{2}T/);
+  assert.deepEqual(Object.assign({}, c.ihtidaSahitImzaGorselleri(temel())), {}, 'imza yoksa hiçbir şey yazılmaz');
+});
+
+test('EK-9 ön yüzünde şahidin kendi imzası: vektör (sürüm 1) ve PNG, kalem mürekkebiyle, yuvasında; kayıtlı imza gerekmez', async () => {
+  const oku = ad => readFileSync(new URL('../public/' + ad, import.meta.url));
+  const kaynak = { pdfLib, fontkit, sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), fontBytes: oku('fonts/Lora-Regular.ttf'),
+    fontKalinBytes: oku('fonts/Lora-Bold.ttf'), kalemFontBytes: oku('fonts/Allura-Regular.ttf'),
+    veri: { adSoyad: 'Deniz Örnek', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', beyanTarihi: '09/09/2026', dogumTarihi: '20/05/1990', cami: camiCoz({ id: 'namur-camii-namur' }) } };
+  const pngBayt = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="240" height="80"><path d="M12 55L40 30L70 18L100 22L140 40" stroke="#123" stroke-width="4" fill="none"/></svg>')).png().toBuffer();
+  const doc = await pdfLib.PDFDocument.load(await ek9Uret({ ...kaynak, sahitler: [{ ad: 'Birinci Örnek', imza: V1_IMZA }, { ad: 'İkinci Örnek', imza: PNG_BAS + pngBayt.toString('base64') }] }));
+  const kutu = imzaKutulari(doc, 0, [[240, 80]]);
+  assert.equal(kutu.length, 1, 'vektör şahit imzası bir kutu');
+  assert.ok(kutu[0].x0 >= 141.9 && kutu[0].x1 <= 248.1, 'sol yuvada: ' + JSON.stringify(kutu[0]));
+  assert.ok(kutu[0].y0 >= 431.9 && kutu[0].y1 <= 462.1, 'imza alanında: ' + JSON.stringify(kutu[0]));
+  assert.match(sayfaAkisi(doc, 0), /0\.1 0\.24 0\.62 RG/, 'çizgi mürekkebi #1A3D9E');
+  const x = doc.getPage(0).node.Resources().lookup(pdfLib.PDFName.of('XObject'));
+  const gorseller = x ? x.keys().filter(k => doc.context.lookup(x.get(k))?.dict?.get(pdfLib.PDFName.of('Subtype'))?.toString() === '/Image') : [];
+  assert.equal(gorseller.length, 1, 'ikinci şahidin PNG imzası tek görsel olarak, mürekkebe boyanmış gömülür');
+  // Şahit imzası belgeye hiçbir yerde ham veri olarak yazılmaz; PNG yalnız görsel olarak girer.
+  await assert.rejects(() => ek9Uret({ ...kaynak, sahitler: [{ ad: 'Birinci Örnek', imza: PNG_BAS + 'AAAA' }, { ad: 'İkinci Örnek' }] }), /şahidin imzası okunamadı/);
+});
+
+test('Sunucu eşlemesi: şahidin kendi imzası her nüshada (başvuran nüshası dâhil) basılır; kayıtlı imzalar ayrı kalır', async () => {
+  const { uret, sahitImzaPlani } = await import('../scripts/apps-script/ihtida-pdf-entry.js');
+  const oku = ad => new Uint8Array(readFileSync(new URL('../public/' + ad, import.meta.url)));
+  const png = 'data:image/png;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400"><rect width="300" height="400" fill="#ccd"/></svg>')).png().toBuffer()).toString('base64');
+  const kart = 'data:image/jpeg;base64,' + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="638"><rect width="1011" height="638" fill="#eee"/></svg>')).jpeg().toBuffer()).toString('base64');
+  const imzaPng = PNG_BAS + (await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="240" height="80"><path d="M12 55L40 30L70 18L100 22L140 40" stroke="#123" stroke-width="4" fill="none"/></svg>')).png().toBuffer()).toString('base64');
+  const kaynaklar = { sablonBytes: oku('belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'), ek10EkimSablonBytes: oku('belgeler/ihtida/ek10-acik-riza-metni-2026-10.pdf'),
+    dilekceSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10.pdf'), dilekceAdresSablonBytes: oku('belgeler/ihtida/ihtida-talep-dilekcesi-2026-10-adres.pdf'),
+    kalemFontBytes: oku('fonts/Allura-Regular.ttf'), fontBytes: oku('fonts/Lora-Regular.ttf'), fontKalinBytes: oku('fonts/Lora-Bold.ttf'),
+    fontKaligrafiBytes: oku('fonts/GreatVibes-Regular.ttf'), fontElYazisiBytes: oku('fonts/Caveat-Medium.ttf') };
+  const kayit = { 'Referans': 'IH-2099-0004', 'Zaman damgası': '2026-10-01T10:00:00', 'Form dili': 'fr', 'Adı Soyadı': 'Deniz ÖRNEK', 'Cinsiyet': 'kadin', 'Doğum tarihi': '1990-05-20',
+    'E-posta': 'deniz@example.test', 'Telefon': '+32470000000', 'Adres': 'Rue du Test 12, 6900 Marche-en-Famenne, Belgique', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-10',
+    'İmza aktarım izni': 'Hayır', 'Kimlik belgesi türü': 'kimlik', 'Belge teslim yeri': 'cami', 'Şahit 1': 'Ali Örnek', 'Şahit 2': 'Veli Örnek' };
+  const temel = { vesikalik: png, kimlikOn: kart, kimlikArka: kart, imza: '', imzaVektor: '' };
+  const g = { ...temel, sahit1Imza: imzaPng, sahit1ImzaVektor: V1_IMZA, sahit2Imza: imzaPng, sahitRiza: sahitRizaKaydi('Ali Örnek', 'Veli Örnek') };
+  const rasterSayisi = doc => { const x = doc.getPage(0).node.Resources().lookup(pdfLib.PDFName.of('XObject')); return x ? x.keys().filter(k => doc.context.lookup(x.get(k))?.dict?.get(pdfLib.PDFName.of('Subtype'))?.toString() === '/Image').length : 0; };
+  // Marche, kendi şahitler: kayıtlı imza yok → kendi imzalar basılır, «uygulanan» boş (başvuran nüshası ayrılmaz).
+  assert.deepEqual(sahitImzaPlani(kayit, null, { ercan: SAHTE_DOLGU, ridvan: SAHTE_CIZGI }, g).uygulanan, []);
+  const imzali = await pdfLib.PDFDocument.load(await uret(kayit, g, null, kaynaklar, pdfLib, fontkit));
+  assert.equal(imzaKutulari(imzali, 0, [[240, 80]]).length, 1, 'birinci şahit: vektör imza');
+  assert.equal(rasterSayisi(imzali) - rasterSayisi(await pdfLib.PDFDocument.load(await uret(kayit, temel, null, kaynaklar, pdfLib, fontkit))), 1, 'ikinci şahit: PNG imza (+1 görsel)');
+  // Rıza kaydı yok / ad uyuşmuyor: imza basılmaz, her şey eskisi gibi.
+  const rizasiz = await pdfLib.PDFDocument.load(await uret(kayit, { ...g, sahitRiza: '' }, null, kaynaklar, pdfLib, fontkit));
+  assert.equal(imzaKutulari(rizasiz, 0, []).length, 0);
+  const baska = await pdfLib.PDFDocument.load(await uret({ ...kayit, 'Şahit 1': 'Başka Kişi' }, g, null, kaynaklar, pdfLib, fontkit));
+  assert.equal(imzaKutulari(baska, 0, []).length, 0, 'ad kayıttaki ad değilse şahidin imzası başkasına basılmaz');
+  // Son nüsha: görevli adı aynı bıraktı ve işareti kaldırmadı → basılır; işareti kaldırınca ya da adı değiştirince basılmaz.
+  const duz = (ek) => ({ adSoyad: 'Deniz ÖRNEK', sahitler: [{ ad: 'Ali Örnek', imza: '', imzaKullan: true, ...ek }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], ihtidaTarihi: '2026-10-02',
+    adres: kayit['Adres'], ihtidaSebebi: '', beyanTarihi: '2026-10-01', belgeTuru: 'kimlik' });
+  assert.equal(imzaKutulari(await pdfLib.PDFDocument.load(await uret(kayit, g, duz({}), kaynaklar, pdfLib, fontkit)), 0, [[240, 80]]).length, 1);
+  assert.equal(imzaKutulari(await pdfLib.PDFDocument.load(await uret(kayit, g, duz({ imzaKullan: false }), kaynaklar, pdfLib, fontkit)), 0, []).length, 0);
+  assert.equal(imzaKutulari(await pdfLib.PDFDocument.load(await uret(kayit, g, duz({ ad: 'Ali Örnek Jr.' }), kaynaklar, pdfLib, fontkit)), 0, []).length, 0);
+  // Şahit «Ercan MOLA» adını kendisi yazıp kendi imzasını attıysa, kendi imzası kayıtlı imzanın önüne geçer: tek imza, başvuran nüshası ayrılmaz.
+  const ercan = { ...kayit, 'Şahit 1': 'Ercan MOLA', 'Şahit 2': 'Veli Örnek' };
+  const gErcan = { ...g, sahitRiza: sahitRizaKaydi('Ercan MOLA', 'Veli Örnek') };
+  assert.deepEqual(sahitImzaPlani(ercan, null, { ercan: SAHTE_DOLGU }, gErcan).uygulanan, []);
+  assert.deepEqual(sahitImzaPlani(ercan, null, { ercan: SAHTE_DOLGU }, temel).uygulanan, ['ercan'], 'kendi imza yoksa kayıtlı imza basılır');
 });

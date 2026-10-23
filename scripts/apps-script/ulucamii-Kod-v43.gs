@@ -170,6 +170,9 @@ function doGet(e) {
     // 23 Eki 2026: Rıdvan KAYAHAN ve Ercan MOLA şahit imzaları özel depodan (ihtida klasörü, sahit-imzalari.json) paketlere otomatik basılır;
     // ön başvuruda başvurana ayrı, şahit imzasız nüsha gider. İmzalar kodda, public/ klasöründe ve bu paketin içinde YOKTUR.
     ihtidaSahitImzasi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.sahitImzasi === true && typeof ihtidaSahitImzalariOku === "function",
+    // 23 Eki 2026 (kapsam genişletmesi): mühtedi kendi şahitlerini seçtiyse yanındaki şahidin formda attığı isteğe bağlı imza
+    // (şahidin kendi onayıyla; ihtidaSahitImzalariDogrula) başvuru klasörüne yazılır ve EK-9 ön yüzündeki şahit yuvasına basılır.
+    ihtidaSahitKendiImzasi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.sahitKendiImzasi === true && typeof ihtidaSahitImzalariDogrula === "function" && typeof ihtidaSahitImzaGorselleri === "function",
     referansSayaci: typeof referansMaxBul === "function" && typeof REFERANS_SON_EK === "string",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
@@ -1118,6 +1121,9 @@ function ihtidaDogrulaV2(v) {
     if (sahitler.length !== 2 || !metinDolu(sahitler[0] && sahitler[0].ad) || !metinDolu(sahitler[1] && sahitler[1].ad)) return h("diger-cami-sahit-adi-eksik");
   }
 
+  var sahitImzaKodu = ihtidaSahitImzalariDogrula(v);
+  if (sahitImzaKodu) return h(sahitImzaKodu);
+
   if (typeof v.fotografIzni !== "boolean") return h("fotograf-izni-gecersiz");
 
   /* v23: belge görselleri ve imza. Gövde büyüdüğü için sınırlar burada da denetlenir —
@@ -1873,11 +1879,52 @@ var IHTIDA_GORSEL_ADLARI = [
   { anahtar: "kimlikOn", sonEk: " - kimlik-on.jpg" },
   { anahtar: "kimlikArka", sonEk: " - kimlik-arka.jpg" },
   { anahtar: "imza", sonEk: " - imza.png" },
-  { anahtar: "imzaVektor", sonEk: " - imza-vektor.json", metin: true }   // 17 Eki 2026: aynı imzanın çizgileri
+  { anahtar: "imzaVektor", sonEk: " - imza-vektor.json", metin: true },  // 17 Eki 2026: aynı imzanın çizgileri
+  // 23 Eki 2026: şahidin formda kendi attığı imza (isteğe bağlı) + şahidin rızasının kaydı. Hepsi başvuruyla aynı özel klasörde,
+  // aynı temizlik/silme tablosundadır. Rıza kaydı olmadan imza belgeye basılmaz (sahitKendiImzalari).
+  { anahtar: "sahit1Imza", sonEk: " - sahit1-imza.png" },
+  { anahtar: "sahit1ImzaVektor", sonEk: " - sahit1-imza-vektor.json", metin: true },
+  { anahtar: "sahit2Imza", sonEk: " - sahit2-imza.png" },
+  { anahtar: "sahit2ImzaVektor", sonEk: " - sahit2-imza-vektor.json", metin: true },
+  { anahtar: "sahitRiza", sonEk: " - sahit-imza-riza.json", metin: true }
 ];
 
 /* Başvuranın onay verebileceği EK-10 metinleri. «2026-10»: Müşavirliğin Ekim 2026 açık rıza formu (dört dil, iki sayfa). */
 var IHTIDA_EK10_SURUMLERI = ["2026-09-09", "2026-10"];
+
+/** 23 Eki 2026 (Rıdvan KAYAHAN, kapsam genişletmesi): mühtedi kendi şahitlerini seçtiyse her şahit, yanındaysa formdaki kutuya
+ *  imzasını atabilir (isteğe bağlı). Her imzalı şahit için: ad dolu, şahidin KENDİ rızası (riza === true), PNG (≤1 MB) ve varsa
+ *  aynı çizimin vektörü (sürüm 1 çözücüsünden geçer). Cami şahitleri (sahitSecimi «cami») imza taşıyamaz. Hata kodu ya da "" döner. */
+function ihtidaSahitImzalariDogrula(v) {
+  var sahitler = Array.isArray(v.sahitler) ? v.sahitler : [];
+  for (var i = 0; i < sahitler.length; i++) {
+    var s = sahitler[i] || {};
+    if (s.riza !== undefined && typeof s.riza !== "boolean") return "sahit-riza-gecersiz";
+    var vektorVar = s.imzaVektor !== undefined && s.imzaVektor !== "";
+    if (!vektorVar && (s.imza === undefined || s.imza === "")) continue;
+    if (v.sahitSecimi !== "kendi") return "sahit-imza-fazla";
+    if (!metinDolu(s.ad)) return "sahit-imza-ad-eksik";
+    if (s.riza !== true) return "sahit-imza-riza-eksik";
+    if (!gorselGecerli(s.imza, 1)) return "sahit-imza-gecersiz";
+    if (vektorVar && !imzaVektorGecerli(s.imzaVektor)) return "sahit-imza-vektor-gecersiz";
+  }
+  return "";
+}
+/** Doğrulanmış şahit imzalarını klasör tablosunun beklediği düz nesneye çevirir; rıza kaydı sunucu tarafında üretilir. */
+function ihtidaSahitImzaGorselleri(v) {
+  var sahitler = Array.isArray(v.sahitler) ? v.sahitler : [], sonuc = {}, riza = {}, var_ = false;
+  for (var i = 0; i < 2 && i < sahitler.length; i++) {
+    var s = sahitler[i] || {};
+    if (!s.imza) continue;
+    var n = i + 1;
+    sonuc["sahit" + n + "Imza"] = s.imza;
+    if (s.imzaVektor) sonuc["sahit" + n + "ImzaVektor"] = s.imzaVektor;
+    riza["sahit" + n] = { ad: String(s.ad).trim().replace(/\s+/g, " "), riza: true };
+    var_ = true;
+  }
+  if (var_) { riza.v = 1; riza.zaman = new Date().toISOString(); sonuc.sahitRiza = JSON.stringify(riza); }
+  return sonuc;
+}
 
 /** Vektör imza metni: boyut sınırı + paketleyicinin çözücüsü. Paket yoksa kabul edilmez (kapalı başarısızlık). */
 function imzaVektorGecerli(metin) {
@@ -2198,7 +2245,8 @@ function ihtidaPostIsleV2(v) {
       dosya = klasor.createFile(blob);
 
       // v23: EK-9 için gereken görseller ayrı dosyalar olarak saklanır (deftere sütun eklenmez).
-      gorselHatalari = ihtidaGorselleriKaydet(klasor, ref, v.gorseller);
+      // 23 Eki 2026: şahitlerin kendi imzaları (varsa) ve rıza kaydı aynı klasöre, aynı ref önekiyle yazılır.
+      gorselHatalari = ihtidaGorselleriKaydet(klasor, ref, Object.assign({}, v.gorseller, ihtidaSahitImzaGorselleri(v)));
 
       satirEkle(sayfaV2, [
         zamanDate, ref, b.adSoyad || "", b.cinsiyet || "", b.dogumTarihi || "", b.dogumYeri || "", b.uyruk || "",

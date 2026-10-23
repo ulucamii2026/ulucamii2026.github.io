@@ -439,3 +439,161 @@ test('Listede olmayan cami taslakta korunur; taslak silinince Ulu Camii geri gel
   await expect(page.locator('#i-sahit-2')).not.toHaveAttribute('required', '');
   await expect(page.locator('#i-cami-ad')).toBeDisabled();
 });
+
+// ---- 23 Ekim 2026 (Rıdvan KAYAHAN): mühtedi kendi şahitlerini seçtiyse, yanındaki şahit formda isteğe bağlı imza atabilir ----
+async function sahitImzaCiz(page, no) {
+  const tuval = page.locator(`[data-sahit-imza="${no}"] canvas`);
+  await tuval.scrollIntoViewIfNeeded();
+  const b = await tuval.boundingBox();
+  await page.mouse.move(b.x + b.width * 0.15, b.y + b.height * 0.55); await page.mouse.down();
+  await page.mouse.move(b.x + b.width * 0.4, b.y + b.height * 0.25, { steps: 8 });
+  await page.mouse.move(b.x + b.width * 0.85, b.y + b.height * 0.6, { steps: 8 });
+  await page.mouse.up();
+}
+async function sahitliHazirla(page, gonderilen, dil = 'tr', yol = 'ihtida-basvurusu') {
+  await page.route('**/macros/**', route => {
+    if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
+    return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ihtidaSahitImzasi: true, ref: 'IH-2099-9999' } });
+  });
+  await formSayfasiniAc(page, `/${dil}/${yol}/`);
+  await doldur(page);
+  await page.locator('#i-sebep').fill('Kendi araştırmam sonucunda.');
+  await page.locator('#i-sahit-ekle').check();
+  await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
+  await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
+}
+
+test('Şahit imzası: alan isteğe bağlıdır; imza atılmazsa gövde eskisi gibi yalnız ad taşır ve hiçbir şey engellenmez', async ({ page }) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  // Alanlar şahit adlarının altında, nötr not görünür; imza zorunlu değildir (yıldız yok).
+  for (const no of [1, 2]) {
+    await expect(page.locator(`[data-sahit-imza="${no}"] canvas`)).toBeVisible();
+    await expect(page.locator(`#i-sahit-${no}-riza`)).toBeEnabled();
+    await expect(page.locator(`[data-sahit-imza="${no}"] .zorunlu`)).toHaveCount(0);
+  }
+  await expect(page.locator('[data-sahit-imza="1"] .alan-baslik')).toHaveText('1. şahidin imzası (isteğe bağlı)');
+  await expect(page.locator('[data-sahit-imza-not]')).toContainText('boş bırakın');
+  // Yalnız onay kutusu işaretli, çizim yok: imza yok demektir; engel ve uyarı da yoktur.
+  await page.locator('#i-sahit-1-riza').check();
+  await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  expect(gonderilen).toHaveLength(1);
+  expect(gonderilen[0].sahitSecimi).toBe('kendi');
+  expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+});
+
+test('Şahit imzası: çizim onay kutusu olmadan gönderilemez; onaylanınca yalnız imzalı şahidin satırına imza, vektör ve rıza eklenir', async ({ page }, info) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  await sahitImzaCiz(page, 1);
+  const gonder = page.locator('form[data-form="ihtida"] button[type="submit"]');
+  await gonder.click();
+  expect(gonderilen).toHaveLength(0);
+  await expect(page.locator('[data-sahit-imza="1"] [data-alan] .hata')).toBeVisible();
+  await expect(page.locator('[data-sahit-imza="1"] [data-alan] .hata')).toContainText('onay kutusunu');
+  await expect(page.locator('[data-sahit-imza="2"] [data-alan] .hata')).toBeHidden();
+  await page.locator('#i-sahit-alanlari').screenshot({ path: info.outputPath('sahit-imzali.png') });
+  await page.locator('#i-sahit-1-riza').check();
+  await expect(page.locator('[data-ozet-alan="sahitler"]')).toContainText('Birinci Örnek Şahit (imzalı)');
+  await expect(page.locator('[data-ozet-alan="sahitler"]')).not.toContainText('İkinci Örnek Şahit (imzalı)');
+  await gonder.click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  expect(gonderilen).toHaveLength(1);
+  const [s1, s2] = gonderilen[0].sahitler;
+  expect(s1.ad).toBe('Birinci Örnek Şahit');
+  expect(s1.riza).toBe(true);
+  expect(s1.imza).toMatch(/^data:image\/png;base64,/);
+  const vektor = JSON.parse(s1.imzaVektor);
+  expect(vektor).toMatchObject({ v: 1, k: 2.4 });
+  expect(vektor.d).toMatch(/^M[\d. ]+L/);
+  expect(s1.imzaVektor.length).toBeLessThan(100000);
+  expect(s2).toEqual({ ad: 'İkinci Örnek Şahit' });
+  // Başvuranın kendi imzası ayrıdır: bu testte «imza atamıyorum» işaretli olduğundan boştur.
+  expect(gonderilen[0].gorseller.imza).toBe('');
+});
+
+test('Şahit imzası: iki şahit de imzalayabilir; ad boşsa gönderilmez; taslağa onay ya da çizim yazılmaz', async ({ page }) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  await page.locator('#i-sahit-2').fill('');
+  await sahitImzaCiz(page, 2);
+  await page.locator('#i-sahit-2-riza').check();
+  const gonder = page.locator('form[data-form="ihtida"] button[type="submit"]');
+  await gonder.click();
+  expect(gonderilen).toHaveLength(0);
+  await expect(page.locator('#i-sahit-2')).toHaveAttribute('aria-invalid', 'true');
+  await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
+  await sahitImzaCiz(page, 1);
+  await page.locator('#i-sahit-1-riza').check();
+  // Taslak: onay kutuları ve çizimler cihaza yazılmaz.
+  const taslak = await page.evaluate(() => localStorage.getItem('ulucamii:ihtida:v2') || '');
+  expect(taslak).not.toContain('sahitRiza');
+  expect(taslak).not.toContain('data:image');
+  await gonder.click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  const [s1, s2] = gonderilen[0].sahitler;
+  for (const s of [s1, s2]) { expect(s.riza).toBe(true); expect(s.imza).toMatch(/^data:image\/png;base64,/); expect(JSON.parse(s.imzaVektor).v).toBe(1); }
+  expect(s1.imza).not.toBe('');
+});
+
+test('Şahit imzası: şahitleri camiye bırakmak çizimleri siler; eski imza gönderime taşınmaz', async ({ page }) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
+  // Kendi şahitlerinden vazgeçince alan kapanır ve çizim silinir.
+  await page.locator('#i-sahit-ekle').uncheck();
+  await expect(page.locator('#i-sahit-alanlari')).toBeHidden();
+  await page.locator('#i-sahit-ekle').check();
+  await expect(page.locator('#i-sahit-1-riza')).not.toBeChecked();
+  await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit'); await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
+  await page.locator('#i-sahit-1-riza').check();      // onay var, çizim yok: imza yok demektir
+  await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+});
+
+test('Şahit imzası: başka cami seçilince önceki çizim silinir; yeni şahitler yeniden imzalayabilir', async ({ page }) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
+  await page.locator('[data-cami-degistir] summary').click();
+  await page.locator('#i-cami-ara').fill('liege');
+  await page.locator('[data-cami-sec]').click();
+  await expect(page.locator('#i-sahit-1-riza')).not.toBeChecked();
+  await page.locator('#i-sahit-1').fill('Yeni Camiden Birinci'); await page.locator('#i-sahit-2').fill('Yeni Camiden İkinci');
+  await sahitImzaCiz(page, 2); await page.locator('#i-sahit-2-riza').check();
+  await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  const [s1, s2] = gonderilen[0].sahitler;
+  expect(s1).toEqual({ ad: 'Yeni Camiden Birinci' });
+  expect(s2.ad).toBe('Yeni Camiden İkinci'); expect(s2.riza).toBe(true); expect(s2.imza).toMatch(/^data:image\/png;base64,/);
+});
+
+test('fr: şahit imzası metinleri ve gövde sözleşmesi', async ({ page }) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen, 'fr', 'demande-de-conversion');
+  await expect(page.locator('[data-sahit-imza="1"] .yardim')).toHaveText('Si ce témoin est présent, il peut signer ici.');
+  await expect(page.locator('label[for="i-sahit-1-riza"]')).toContainText('Je suis témoin de cette conversion et j’accepte que ma signature figure sur l’attestation');
+  await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
+  await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+  await expect(page.locator('[data-basari]')).toBeVisible();
+  expect(gonderilen[0].sahitler[0].riza).toBe(true);
+  expect(gonderilen[0].sahitler[1]).toEqual({ ad: 'İkinci Örnek Şahit' });
+});
+
+test('Şahit imzası: dar ekranda taşma yok, iki kutu alt alta akar; axe ciddi ihlal bulmaz (açık ve koyu tema)', async ({ page }, info) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  await page.setViewportSize({ width: 360, height: 800 });
+  for (const tema of ['light', 'dark']) {
+    if (tema === 'dark') await page.locator('#tema-dugme').click();
+    await page.evaluate(async () => Promise.all(document.getAnimations().filter(a => a.effect?.getComputedTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))));
+    const axe = await new AxeBuilder({ page }).include('#i-sahit-alanlari').withTags(['wcag2a', 'wcag2aa']).analyze();
+    expect(axe.violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) }))).toEqual([]);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  }
+  const b1 = await page.locator('[data-sahit-imza="1"]').boundingBox(), b2 = await page.locator('[data-sahit-imza="2"]').boundingBox();
+  expect(b2.y).toBeGreaterThan(b1.y + b1.height - 1);
+  await page.locator('#i-sahit-alanlari').screenshot({ path: info.outputPath('sahit-imza-dar.png') });
+});

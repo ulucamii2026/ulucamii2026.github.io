@@ -279,6 +279,16 @@ dialog.kimlik-kirp::backdrop { background: rgb(0 0 0 / 0.55); }
 .ucf-imza.imza-kapali .imza-tuval { opacity: 0.4; cursor: not-allowed; }
 .ucf-imza.imza-kapali .imza-eylem { display: none; }
 .ucf-imza.alan-hatali .imza-tuval { border-color: var(--form-hata-cizgi); }
+/* İhtida · şahit adının altındaki isteğe bağlı şahit imzası (23 Ekim 2026): başvuranın imza bileşeninin küçük kardeşi.
+   Kolon: ad alanı + imza kutusu alt alta; dar ekranda iki şahit alt alta akar. */
+.ucf-sahit-kolon { display: grid; gap: 1rem; align-content: start; min-width: 0; }
+.ucf-sahit-imza { display: grid; gap: 0.6rem; padding: 0.9rem 1rem 1rem; min-width: 0;
+  border: 1px dashed var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6); }
+.ucf-sahit-imza > .alan-baslik { font-weight: 600; font-size: 0.93rem; }
+.ucf-sahit-imza > .yardim { margin: 0; }
+.ucf-sahit-imza .imza-tuval { height: 8.5rem; }
+.ucf-sahit-imza .imza-eylem .dugme { min-height: 2.75rem; }
+.ucf-sahit-imza .onay-kutu { padding: 0.7rem 0.8rem; }
 /* Kayıt formunda blok bir <fieldset>: legend etiketi gibi durur, tuval 44 px'lik düğmelerle aynı ritimde. */
 .ucf[data-form="kayit"] fieldset.ucf-imza { display: block; }
 .ucf[data-form="kayit"] fieldset.ucf-imza > legend { float: left; width: 100%; margin-bottom: .35rem; }

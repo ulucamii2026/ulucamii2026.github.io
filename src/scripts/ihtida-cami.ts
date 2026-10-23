@@ -1,5 +1,6 @@
 import { adNormalle } from './form-cekirdek';
 import type { CamiMetinleri } from '../i18n/cami-secimi';
+import { SAHIT_SIFIRLA_OLAYI } from './ihtida-sahit-imza';
 
 export interface CamiBilgisi { id: string; ad: string; sehir: string; postaKodu: string; adres: string; kurum: string }
 const VARSAYILAN = 'ulucamii-marche';
@@ -59,6 +60,8 @@ export function camiSeciminiBaslat(form: HTMLFormElement) {
     if (kimlik.value !== id) {
       // Başka caminin önceki şahitleri yeni camiye sessizce taşınmaz.
       sahitler.forEach(input => { input.value = ''; input.dispatchEvent(new Event('input', { bubbles: true })); });
+      // Önceki şahitlerin imzaları da yeni camiye taşınmaz (23 Ekim 2026).
+      form.dispatchEvent(new Event(SAHIT_SIFIRLA_OLAYI));
       sahitSecim.checked = id !== VARSAYILAN;
     }
     kimlik.value = id;
