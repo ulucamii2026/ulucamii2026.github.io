@@ -1,7 +1,13 @@
 # Cami ekranı ayarları — İçerik Yönetimi → Site Ayarları → Cami ekranı (27 Eylül 2026).
 # Slayt süresi = tabanSn + karakterSn × karakter sayısı; enAzSn ile enCokSn arasında tutulur.
-# Tur: bir tur turHedefSn saniyeyi aşarsa ayet, hadis, dua ve Esmâ turlara bölünür; duyurular her turda gösterilir.
-# Gece: ekran yatsıdan kapanmaDk sonra kapanır, imsaktan acilmaDk önce açılır (kutudaki uygulama uygular, Faz 2).
+# Tur: duyurular her turda gösterilir; ardından bütün ayet, hadis, dua ve tema kartları tek dizide sırayla gösterilir.
+# Dizi çeşitler arasında dönerek ilerler (ayet, hadis, dua, kart, …); bir tur turHedefSn saniyeyi aşarsa dizinin
+# sıradaki öğeleri gösterilir ve sonraki tur kaldığı yerden sürer.
+# Gece (kutudaki uygulama uygular):
+#   Yeni kural: ekran kapanmaSaati'ne (23:00) kadar açık kalır. O saatte yatsıdan beri yatsiSonrasiEnAzDk (60 dk)
+#   geçmediyse gecKapanmaSaati'ne (24:00 = gece yarısı) kadar açık kalır. İmsaktan acilmaDk önce açılır.
+#   kapanmaDk (yatsıdan sonra kapanma) yalnız yeni alanları tanımayan eski ekran uygulamaları içindir; kapanmaSaati
+#   varsa yeni uygulama onu yok sayar.
 ekran:
   slayt:
     tabanSn: 8
@@ -11,5 +17,8 @@ ekran:
   gece:
     kapanmaDk: 60
     acilmaDk: 30
+    kapanmaSaati: "23:00"
+    gecKapanmaSaati: "24:00"
+    yatsiSonrasiEnAzDk: 60
   duyuruVarsayilanGun: 30
   turHedefSn: 150

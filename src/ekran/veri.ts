@@ -7,10 +7,21 @@ import type { EkranDuyuru } from '../lib/ekran/akis.ts';
 import type { EkranIcerik } from '../lib/ekran/icerik.ts';
 import { EN_ERKEN_GECERLI, EN_GEC_GECERLI, isaretGuncelle, sunucuSaatiCoz, type SlaytAyari } from '../lib/ekran/secim.ts';
 
+/** Gece kapanması (ekran.yaml → gece). Sayfa bunu okumaz, Android kabuğu uygular. kapanmaDk/acilmaDk eski kabuklar
+ *  içindir; üç yeni alan yeni kabuğun kuralıdır ve eski akışta yoktur: kapanmaSaati (SS:DD) saatine kadar açık, o
+ *  saatte yatsıdan beri yatsiSonrasiEnAzDk geçmediyse gecKapanmaSaati'ne (SS:DD ya da 24:00) kadar açık. */
+export interface GeceAyari {
+  kapanmaDk: number;
+  acilmaDk: number;
+  kapanmaSaati?: string;
+  gecKapanmaSaati?: string;
+  yatsiSonrasiEnAzDk?: number;
+}
+
 export interface AkisGovdesi {
   derleme: string;
   /** turHedefSn A'dan önceki akışta yoktur (önbellekteki eski akış): main.ts → TUR_HEDEF_SN. */
-  ayar: { slayt: SlaytAyari; gece: { kapanmaDk: number; acilmaDk: number }; duyuruVarsayilanGun: number; turHedefSn?: number };
+  ayar: { slayt: SlaytAyari; gece: GeceAyari; duyuruVarsayilanGun: number; turHedefSn?: number };
   duyurular: EkranDuyuru[];
 }
 /** Önbellekteki eski icerik.json'da `dualar` (A öncesi) ve `kartlar` (19 Ekim 2026 öncesi) yoktur; ikisi isteğe bağlı

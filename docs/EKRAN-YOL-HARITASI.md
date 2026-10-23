@@ -37,11 +37,11 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
 | Dil | TR + FR aynı slaytta alt alta; ayet/hadiste Arapça aslı üstte |
 | Vakitler | Yalnız Diyanet (ilçe 11890); kamet yok; sıradaki vakit vurgulu + geri sayım |
 | Namaz anı | "Vakit girdi · telefonu sessize al" uyarısı + kısa ses (3 ekranda da), sonra sade/loş mod |
-| Gece | Yatsı + 1 saat kapan, imsak − 30 dk açıl |
+| Gece | Yatsı + 1 saat kapan, imsak − 30 dk açıl. *23 Ekim 2026 yeni kural (kabuk uygular; `ekran.yaml → gece`): 23:00'e kadar açık; 23:00'te yatsıdan beri 60 dakika geçmediyse gece yarısına kadar açık; `kapanmaDk` yalnız eski kabuklar için kalır.* |
 | Sıcaklık | Dış hava, internetten |
 | Görünüm | Gündüz açık (krem + cami kırmızısı), akşamdan sonra koyu; üstte ince logo + ad bandı |
 | Slayt süresi | Metin uzunluğuna göre otomatik |
-| İçerik | Günde 1 ayet + 1 hadis; duyuru, etkinlik afişi, vefat (cenaze namazı + 1 gün), haftalık program, bağış QR, kandil geri sayımı, günün duası/Esmâ, Ramazan modu |
+| İçerik | Günde 1 ayet + 1 hadis (*23 Ekim 2026: artık günlük tek öğe yok — bütün ayet, hadis, dua ve tema kartları tek dizide, çeşitler arasında dönerek sırayla gösterilir; imleç turdan tura ve yeniden yüklemede korunur*); duyuru, etkinlik afişi, vefat (cenaze namazı + 1 gün), haftalık program, bağış QR, kandil geri sayımı, günün duası/Esmâ, Ramazan modu |
 | Ekran hedefleme | Ortak akış + ekrana özel duyuru |
 | Yönetim | İmam: sitenin paneli (Sveltia CMS). Başkan, kadınlar kolu, gençlik/kurs: **telefondan basit form, doğrudan yayın** |
 | Uzaktan | Arıza e-postası, sessiz güncelleme, anlık ekran görüntüsü, uzaktan yeniden başlatma |

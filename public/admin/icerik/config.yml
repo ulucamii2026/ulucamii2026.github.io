@@ -450,10 +450,13 @@ collections:
                 label: "Gece kapanması (kutudaki uygulama uygular)"
                 widget: object
                 fields:
-                  - { name: kapanmaDk, label: "Yatsıdan kaç dakika sonra kapansın", widget: number, value_type: int, min: 0, max: 240 }
+                  - { name: kapanmaSaati, label: "Kapanma saati (SS:DD)", widget: string, required: false, hint: "Ekran her gece bu saate kadar açık kalır, ör. 23:00. Boş bırakılırsa yeni uygulama eski kuralı (yatsıdan sonra kapanma) kullanır.", pattern: ['^$|^([01][0-9]|2[0-3]):[0-5][0-9]$', 'SS:DD biçiminde yazın (00:00–23:59, ör. 23:00)'] }
+                  - { name: gecKapanmaSaati, label: "Geç kapanma saati — yatsıdan sonra yeterli süre geçmemişse (SS:DD, 24:00 = gece yarısı)", widget: string, required: false, hint: "Kapanma saatinde yatsıdan beri aşağıdaki süre geçmediyse ekran bu saate kadar açık kalır, ör. 24:00 (gece yarısı).", pattern: ['^$|^(([01][0-9]|2[0-3]):[0-5][0-9]|24:00)$', 'SS:DD biçiminde yazın (00:00–24:00, ör. 24:00)'] }
+                  - { name: yatsiSonrasiEnAzDk, label: "Yatsıdan sonra en az kaç dakika açık kalsın", widget: number, value_type: int, min: 0, max: 240, required: false, hint: "Kapanma saatinde yatsıdan beri bu kadar dakika geçmediyse ekran geç kapanma saatine kadar açık kalır, ör. 60." }
+                  - { name: kapanmaDk, label: "Yatsıdan kaç dakika sonra kapansın (yalnız eski ekran uygulamaları ve kapanma saati girilmediğinde kullanılır)", widget: number, value_type: int, min: 0, max: 240 }
                   - { name: acilmaDk, label: "İmsaktan kaç dakika önce açılsın", widget: number, value_type: int, min: 0, max: 240 }
               - { name: duyuruVarsayilanGun, label: "Son günü girilmemiş duyuru kaç gün gösterilsin", widget: number, value_type: int, min: 1, max: 365 }
-              - { name: turHedefSn, label: "Bir turun hedef süresi (sn)", widget: number, value_type: int, min: 30, max: 900, default: 150, hint: "Duyurular her turda gösterilir; ayet, hadis, dua ve Esmâ bu süreyi aşarsa turlara bölünür." }
+              - { name: turHedefSn, label: "Bir turun hedef süresi (sn)", widget: number, value_type: int, min: 30, max: 900, default: 150, hint: "Duyurular her turda gösterilir; ardından bütün ayet, hadis, dua ve tema kartları sırayla gösterilir. Bu süre aşılırsa tur dizinin sıradaki öğeleriyle sürer, sonraki tur kaldığı yerden devam eder." }
 
   - name: kurulAyar
     label: Yönetim Kurulu

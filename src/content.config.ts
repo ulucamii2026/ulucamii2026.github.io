@@ -268,7 +268,16 @@ const ekranAyar = defineCollection({
       enAzSn: z.number().int().min(3).max(120),
       enCokSn: z.number().int().min(3).max(300),
     }),
-    gece: z.object({ kapanmaDk: z.number().int().min(0).max(240), acilmaDk: z.number().int().min(0).max(240) }),
+    /* Gece kapanması. kapanmaDk/acilmaDk eski kabuklar (ve yeni alanlar yokken) içindir. Yeni kural (kabuk uygular):
+       ekran kapanmaSaati'ne kadar açık kalır; o saatte yatsıdan beri yatsiSonrasiEnAzDk geçmediyse gecKapanmaSaati'ne
+       (24:00 = gece yarısı) dek açık kalır. Üçü de isteğe bağlıdır; CMS boş bırakılanı "" yazabilir (bosIseYok). */
+    gece: z.object({
+      kapanmaDk: z.number().int().min(0).max(240),
+      acilmaDk: z.number().int().min(0).max(240),
+      kapanmaSaati: z.preprocess(bosIseYok, z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'SS:DD (00:00–23:59)').optional()),
+      gecKapanmaSaati: z.preprocess(bosIseYok, z.string().regex(/^(([01]\d|2[0-3]):[0-5]\d|24:00)$/, 'SS:DD (00:00–24:00)').optional()),
+      yatsiSonrasiEnAzDk: z.preprocess(bosIseYok, z.number().int().min(0).max(240).optional()),
+    }),
     duyuruVarsayilanGun: z.number().int().min(1).max(365).default(30),
     turHedefSn: z.number().int().min(30).max(900).default(TUR_HEDEF_SN),
   }),

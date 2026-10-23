@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { ekranDuyurulari, EKRANLAR } from '../src/lib/ekran/akis.ts';
 import { gorselSurumu, publicDosyasi } from '../src/lib/ekran/gorsel-surumu.ts';
@@ -117,4 +117,64 @@ test('görsel oranı derlemede okunur: dikey afiş, EXIF ile döndürülmüş fo
   assert.equal(await gorselOrani('https://ornek.org/a.png', () => png), undefined);
   assert.equal(await gorselOrani('/media/yok.png', () => null), undefined);
   assert.equal(await gorselOrani('/media/bozuk.png', () => new Uint8Array([1, 2, 3])), undefined);
+});
+
+/* Gece kapanması (23 Ekim 2026): kabuk yeni kuralı uygular — kapanmaSaati'ne kadar açık; o saatte yatsıdan beri
+   yatsiSonrasiEnAzDk geçmediyse gecKapanmaSaati'ne kadar. /ekran/akis.json'a `ayar` olduğu gibi yazıldığı için alanlar
+   ekran.yaml → Astro şeması → akış zincirinde kaybolmamalı; eski kabuklar için kapanmaDk/acilmaDk de kalır. */
+const SA_DK = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
+const SA_DK_24 = /^(?:(?:[01]\d|2[0-3]):[0-5]\d|24:00)$/;
+const dakika = (s) => Number(s.slice(0, 2)) * 60 + Number(s.slice(3));
+const ayarYaml = parse(readFileSync(new URL('../src/content/ayarlar/ekran.yaml', import.meta.url), 'utf8')).ekran;
+
+test('ekran.yaml gece: yeni üç alan geçerli ve tutarlı; eski kapanmaDk/acilmaDk eski kabuklar için aynen kalır', () => {
+  const g = ayarYaml.gece;
+  assert.equal(g.kapanmaDk, 60);
+  assert.equal(g.acilmaDk, 30);
+  assert.equal(typeof g.kapanmaSaati, 'string', 'YAML tırnaklı olmalı ("23:00"); tırnaksız 23:00 sayıya çözülür');
+  assert.equal(typeof g.gecKapanmaSaati, 'string');
+  assert.match(g.kapanmaSaati, SA_DK);
+  assert.match(g.gecKapanmaSaati, SA_DK_24);
+  assert.ok(Number.isInteger(g.yatsiSonrasiEnAzDk) && g.yatsiSonrasiEnAzDk >= 0 && g.yatsiSonrasiEnAzDk <= 240);
+  assert.deepEqual([g.kapanmaSaati, g.gecKapanmaSaati, g.yatsiSonrasiEnAzDk], ['23:00', '24:00', 60]);
+  assert.ok(dakika(g.gecKapanmaSaati) > dakika(g.kapanmaSaati), 'geç kapanma saati kapanma saatinden sonra');
+});
+
+test('gece alanları şemada, CMS’te ve akış tipinde tanımlı; CMS kalıpları SS:DD sınırlarını uygular', () => {
+  const sema = readFileSync(new URL('../src/content.config.ts', import.meta.url), 'utf8');
+  const tip = readFileSync(new URL('../src/ekran/veri.ts', import.meta.url), 'utf8');
+  const cms = parse(readFileSync(new URL('../public/admin/icerik/config.yml', import.meta.url), 'utf8'));
+  const bul = (dugum, ad) => {
+    if (Array.isArray(dugum)) { for (const x of dugum) { const b = bul(x, ad); if (b) return b; } return null; }
+    if (dugum && typeof dugum === 'object') {
+      if (dugum.name === ad && dugum.widget) return dugum;
+      for (const v of Object.values(dugum)) { const b = bul(v, ad); if (b) return b; }
+    }
+    return null;
+  };
+  for (const ad of ['kapanmaSaati', 'gecKapanmaSaati', 'yatsiSonrasiEnAzDk']) {
+    assert.match(sema, new RegExp(`\\b${ad}:`), `${ad} Astro şemasında`);
+    assert.match(tip, new RegExp(`\\b${ad}\\?:`), `${ad} veri.ts tipinde isteğe bağlı`);
+    const alan = bul(cms, ad);
+    assert.ok(alan, `${ad} CMS’te`);
+    assert.equal(alan.required, false, `${ad} CMS’te isteğe bağlı`);
+  }
+  const kalip = (ad) => new RegExp(bul(cms, ad).pattern[0]);
+  const k = kalip('kapanmaSaati'), gk = kalip('gecKapanmaSaati');
+  for (const iyi of ['', '00:00', '23:00', '23:59']) assert.match(iyi, k, `kapanmaSaati ${JSON.stringify(iyi)}`);
+  for (const kotu of ['24:00', '9:00', '23:60', '2300', '23:00:00', ' 23:00']) assert.doesNotMatch(kotu, k, `kapanmaSaati ${JSON.stringify(kotu)}`);
+  for (const iyi of ['', '00:00', '23:59', '24:00']) assert.match(iyi, gk, `gecKapanmaSaati ${JSON.stringify(iyi)}`);
+  for (const kotu of ['24:01', '25:00', '9:00', '23:60', '24:00:00']) assert.doesNotMatch(kotu, gk, `gecKapanmaSaati ${JSON.stringify(kotu)}`);
+  const dk = bul(cms, 'yatsiSonrasiEnAzDk');
+  assert.deepEqual([dk.min, dk.max, dk.value_type], [0, 240, 'int']);
+  // Eski alan CMS’te kalır ama yalnız eski uygulamalar için olduğunu söyler.
+  assert.match(bul(cms, 'kapanmaDk').label, /eski ekran uygulamaları/);
+});
+
+test('derlenmiş dist/ekran/akis.json gece ayarlarını yeni üç alanla birlikte taşır', { skip: !existsSync(new URL('../dist/ekran/akis.json', import.meta.url)) && 'dist yok — önce `npm run build`; tarama atlandı' }, () => {
+  const akis = JSON.parse(readFileSync(new URL('../dist/ekran/akis.json', import.meta.url), 'utf8'));
+  assert.deepEqual(akis.ayar.gece, ayarYaml.gece);
+  assert.equal(akis.ayar.gece.kapanmaSaati, '23:00');
+  assert.equal(akis.ayar.gece.gecKapanmaSaati, '24:00');
+  assert.equal(akis.ayar.gece.yatsiSonrasiEnAzDk, 60);
 });
