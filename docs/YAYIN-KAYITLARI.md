@@ -4,6 +4,46 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 23 Ekim 2026 (akşam) — ihtida paketi: şahit imzaları (Ercan MOLA, Rıdvan KAYAHAN otomatik; mühtedinin kendi şahidi formda isteğe bağlı imza atar)
+
+- Zaman: iki commit (`0fc0202` kayıtlı şahit imzaları, `8e92c88` formdaki şahit imzası) 17:23 Europe/Brussels (CEST) tarihinde `main`e
+  gitti (yalnız bu işin dosyaları); Pages Run `39977888217` başarılı (yaklaşık 2 dk 10 sn), canlı sayfalar şahit imza kutularını ve onay
+  kutularını taşıyor (TR ve FR doğrulandı), gizlilik sayfasında yeni madde var. Apps Script yeni Web App sürümü 17:28 (sağlık cevabı
+  `surum: 43`; Web App sürüm numarası editör ekranında maskeli olduğundan okunamadı). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan
+  KAYAHAN'ın 23 Ekim 2026 kararı («benim imzam ve başkan Ercan MOLA imzası otomatik gelmedi, belgeye … otomatik gelecek şekilde düzelt»)
+  ve aynı günkü kapsam genişletmesi («şahit biz seçiliysek imzalarımız otomatik atılsın; mühtedi kendi şahitlerini seçtiyse şahitler
+  yanındaysa o an imza attırabilmeli, değilse şahit imzası olmadan ilerle … belgeyi sonra PDF olarak mühtediye gönderirim»), «bütün yetki ve
+  karar sende».
+- Kapsam:
+  - Kök neden: kayıtlı şahit imzaları hiçbir yere konmamıştı (panel paketi imza taşımıyor, GAS derlemesi imza gömmüyor, ön başvuru
+    paketi şahit imzası kullanmıyordu). Ulu Camii Marche şahitleri Ercan MOLA ve Rıdvan KAYAHAN için sürüm 2 vektör imzalar yalnız
+    dernek Drive'ındaki özel depodan (`sahit-imzalari.json`) EK-9 ön yüzüne basılır; ön başvuruda başvurana şahit imzasız ayrı PDF gider;
+    sağlıkta `ihtidaSahitImzasi`;
+  - mühtedi kendi şahitlerini bildirdiyse her şahit adının altında isteğe bağlı imza kutusu ve şahidin kendi onay kutusu (5 dil); imza
+    atılırsa ad ve onay zorunlu, atılmazsa başvuru eskisi gibi ilerler ve yalnız nötr bir not görünür; imza ve onay taslağa yazılmaz;
+    sunucu doğrulaması, özel klasörde `<ref> - sahit1-imza.png`, `sahit1-imza-vektor.json`, `sahit-imza-riza.json`; EK-9 ön yüzüne ön
+    başvuruda ve son nüshada basılır, başvuran nüshasında da (yalnız kayıtlı iki imza başvurana gitmez); gizlilik sayfaları (5 dil);
+    sağlıkta `ihtidaSahitKendiImzasi`;
+  - testler: `tests/ihtida-contract.test.mjs` (21), `tests/ihtida-paket-akis.test.mjs` (30), `tests/web/ihtida.spec.mjs`, `tests/web/panel-sahit-imza.spec.mjs`
+    (yeni), `tests/web/paket-onay.spec.mjs` (taklit modül güncellendi). Karar notu: `docs/IHTIDA-OTOMASYON-v25.md`.
+- Doğrulama:
+  - `npm run dogrula:codex` tümü geçti: `test:web` 838 geçti ve 118 atlandı, `test:egitim` 70 geçti ve 2 atlandı; ilk koşuda 10 web hatası çıktı
+    (şahit kutusunun `data-imza` özniteliği başvuranın tuval seçicisini çoğaltıyordu; `paket-onay` taklit modülü yeni dışa aktarımı
+    taşımıyordu), ikisi de düzeltildi, etkilenen spec'ler iki projede yeniden koşuldu;
+  - canlı sağlık cevabı: `surum: 43`, `ihtidaSahitImzasi: true`, `ihtidaSahitKendiImzasi: true`, `ihtidaTekImza: true`, `referansSayaci: true`;
+  - canlı kurgusal başvurular (ad sözcüğü TESTOGLU, doğrudan Apps Script POST):
+    - **IH-2026-0010** (Ulu Camii şahitleri, kayıtlı imzalar): ön başvuru ana PDF sayfa 1'de iki mürekkep renkli vektör imza ve sıfır raster;
+      başvuran nüshasında sıfır imza; info@/imam@ ana PDF'yi, başvuran adresi ayrı nüshayı aldı; son nüsha (r2, 7 sayfa) iki imza taşıyor;
+    - **IH-2026-0011** (mühtedinin kendi şahitleri, 1. şahit formda imzalı, 2. şahit imzasız): ön başvuru 7 sayfa, `sahitImzasi: []` (kayıtlı
+      imza kullanılmadığından ikinci PDF ayrılmadı, üç alıcı aynı PDF'yi aldı), sayfa 1'de 1. şahit yuvasında 1 vektör imza, ikinci yuva
+      boş, raster yok; sunucu 1. şahit için PNG, vektör ve sunucuda üretilen rıza kaydını yazdı, 2. şahit için dosya yazmadı; son nüsha
+      (r2, 7 sayfa) aynı imzayı taşıyor; rıza olmadan, `cami` seçimiyle, bozuk vektörle ve adsız imza canlıda reddedildi
+      (`sahit-imza-riza-eksik`, `sahit-secimi-tutarsiz`, `sahit-imza-vektor-gecersiz`, `sahit-adi-eksik`; numara harcanmadı);
+    - **IH-2026-0012** (gerileme sınaması, Ulu Camii şahitleri): ana PDF'de iki kayıtlı imza, başvuran nüshasında sıfır;
+  - temizlik: `test-temizle` 3 TESTOGLU satırını (0010, 0011, 0012) sildi; Drive izleri ve iş dosyaları gitti; info@ ve imam@ kutularındaki
+    15 paket iletisi referans ve PDF ek metnindeki TESTOGLU doğrulanarak UID ile silindi; gerçek IH-2026-0003, 0004, 0007, 0008 ve 0009
+    satırları değişmedi. Sonraki gerçek başvuru IH-2026-0013 olacaktır.
+
 ## 23 Ekim 2026 — ihtida paketi: tek imza üç belgeye (ön başvuruda da) + azalmayan referans numarası + deneme kayıtlarının kökten temizliği
 
 - Zaman: commit ve push 09:04, Pages 09:07 (Run `39915496399`, build ve deploy başarılı), Apps Script yeni sürümü 08:56,

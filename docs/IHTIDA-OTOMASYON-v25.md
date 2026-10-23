@@ -279,6 +279,11 @@ işini mühtedi halleder.»
   nüsha), `tests/web/ihtida.spec.mjs` (+7: isteğe bağlılık, onaysız engel, gövde sözleşmesi, taslak, sıfırlama, cami değişimi, FR metni,
   dar ekran + axe), `tests/web/paket-onay.spec.mjs` (taklit modül `sahitKendiImzalari` dışa aktarımını da taşır). Şahit kutusu `data-imza` değil `data-sahit-imza-kutu` kullanır: eski testler `[data-imza] canvas` ile yalnız başvuranın tuvalini seçer.
 
+- **Canlı doğrulama (23 Ekim 2026).** IH-2026-0010 (kayıtlı imzalar: ana PDF sayfa 1'de 2 vektör imza, başvuran nüshasında 0, son nüsha 2),
+  IH-2026-0011 (mühtedinin kendi şahitleri: 1. şahit imzalı, sayfa 1'de 1 vektör imza, ikinci PDF ayrılmadı, son nüsha aynı imzayı taşır),
+  IH-2026-0012 (gerileme: 2 / 0). Rıza olmadan, `cami` seçimiyle, bozuk vektörle ve adsız imza canlıda reddedildi. Ayrıntı ve temizlik
+  kaydı: `docs/YAYIN-KAYITLARI.md`.
+
 ## Bundan sonraki kullanım
 
 Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, admin panelinde açılır ve üç alıcıya gönderilir. Tören sonrasında **Başvurular → İhtida → Son nüshayı onayla ve gönder** ile gerçek tarih, adres, şahitler ve EK-9 arka yüzündeki bilgiler kontrol edilir. Bu son onay yeni ortak PDF nüshasını üretip arşivler ve aynı üç adrese gönderir. Müşavirin ıslak imzası basılı belgede tamamlanır.
