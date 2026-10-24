@@ -204,6 +204,28 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Alıcılar yalnız dernek kutularıydı. `test-temizle` 1 satır sildi; defterde 3 ihtida satırı kaldı.
   - Deneme e-postaları kutularda duruyor (önceki teamül).
 
+## 24 Ekim 2026 (3) — Ezber Kilimi: dua metinlerine hoca onayı + Fransızca meâl (Hamidullah)
+
+- Zaman: egitim Hosting yayını ≈10:55 (sürüm 320 dosya), push 10:56:15, Pages 10:56:17–10:58:38, canlı denetim 10:56:41,
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan, 24 Ekim öğleden sonra: dua metinleri ve yapay
+  sesli dua üretimi onayı; FR meâl için «elimde yok, bulabiliyorsan bul, bulamazsan… yetki ve karar sende»; yayın için
+  «ezber kilimi yayını konusunda herşeyi onaylıyorum».
+- Kapsam: 11 dua dosyasına `onay` (kapsam ar, meal, okunus-tr) → Türkçe okunuş sayfada görünür, «hoca incelemesi
+  bekleniyor» notu kalktı; 45 Kur'an maddesine FR meâl (Muhammad Hamidullah, çevirmen adıyla; alquran.cloud ↔ Tanzil
+  birebir, `scripts/ezber-meal-fr.mjs`), FR sayfalarındaki «yakında» notu kalktı; gruplama cümlesi yalnız çok âyetli grupta;
+  `ezber-dua-cek.mjs --onayla` tarih denetimi düzeltildi; 2c belge kayıtları. Gerekçe: `docs/EGITIM-FAZ2-DINLEME.md`.
+- Commit'ler: `8320f953` (dua onayı), `4d07c0d1` (FR meâl), `5d631386` (belgeler). Temiz çalışma ağacından
+  (`D:/tmp/ulucamii-ezber-yayin-20261024`).
+- Dağıtım: Pages [40079976392](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40079976392) **success**;
+  egitim `npm run egitim:yayinla` → Hosting `ulucamii-egitim`, 320 dosya (218 yeni).
+- Kalite: `test:ezber` 96/96, `npm run check` 0 hata / 0 uyarı, `egitim:build` (astro check 0 hata, 292 sayfa),
+  `test:egitim` 102 geçti / 2 bilinçli atlama.
+- Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **36/36** (2026-10-24T08:56:41Z); `fr/calis/s-fatiha`
+  Hamidullah meâli ve künyesi, `tr/calis/d-subhaneke` onaylı okunuş notu görünüyor.
+- Açık sınırlar: cami ekranı FR âyetleri hâlâ yalnız Chiadmi bekliyor (bu karar oraya uygulanmadı); yapay sesli dualar
+  üretilmedi; NL meâl gözden geçirilmedi; duyuru yapılmadı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 24 Ekim 2026 (2) — Ezber Kilimi Faz 2: 2b devamı (dua metinleri, NL meâl taslağı) + 2c (çalışma kipleri)
 
 - Zaman: push ≈09:15 – Pages derleme/dağıtım bitişi ≈09:18 – egitim Hosting yayını ≈09:23 – canlı denetim 09:23:52,
