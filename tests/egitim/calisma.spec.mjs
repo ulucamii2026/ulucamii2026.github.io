@@ -50,7 +50,7 @@ for (const dil of DILLER) {
 
 test('Her parça üç kez; hız, duraklat/devam, bitiş ve yeniden başlatma', async ({ page }) => {
   await page.goto('/tr/calis/d-euzu-besmele/');
-  await page.locator('[data-bekle]').uncheck();
+  await page.locator('[data-sira]').selectOption('0');
   await page.locator('[data-hiz]').selectOption('0.75');
   await page.locator('[data-oynat]').focus();
   await page.keyboard.press('Enter');
@@ -72,7 +72,7 @@ test('Her parça üç kez; hız, duraklat/devam, bitiş ve yeniden başlatma', a
 
 test('Seçili bölüm, tek dinleyiş, durdurma ve eski kaydın geç gelen hatası', async ({ page }) => {
   await page.goto('/tr/calis/d-euzu-besmele/');
-  await page.locator('[data-bekle]').uncheck();
+  await page.locator('[data-sira]').selectOption('0');
   await page.locator('[data-bolum]').selectOption('1');
   await page.locator('[data-tekrar]').selectOption('1');
   await page.locator('[data-oynat]').click();
@@ -103,14 +103,99 @@ test('Tekrar arası duraklatılabilir; durdurma bekleyen zamanlayıcıyı iptal 
   expect(await page.evaluate(() => window.__sesler.length)).toBe(2);
   await bitir(page);
   await page.locator('[data-oynat]').click();
-  await page.locator('[data-bekle]').uncheck();
+  await page.locator('[data-sira]').selectOption('0');
   await page.locator('[data-oynat]').click();
   expect(await page.evaluate(() => window.__sesler.length)).toBe(3);
-  await page.locator('[data-bekle]').check();
+  await page.locator('[data-sira]').selectOption('1');
   await bitir(page);
   await page.locator('[data-durdur]').click();
   await page.clock.fastForward(4000);
   expect(await page.evaluate(() => window.__sesler.length)).toBe(3);
+});
+
+test('Senin sıran arası kaydın süresiyle ölçeklenir: ×1, ×2, 0,75× hızda daha uzun; «Yok» hemen geçer; süre ölçülemezse 3 sn', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/tr/calis/d-euzu-besmele/');
+  const sayi = () => page.evaluate(() => window.__sesler.length);
+  const sureVer = (sn) => page.evaluate((x) => Object.defineProperty(window.__ses, 'duration', { value: x, configurable: true }), sn);
+  const cubuk = page.locator('[data-sira-ilerleme]');
+  const kok = page.locator('[data-calisma]');
+  // Varsayılan «Dinleme süresi kadar» (×1): 10 sn’lik kayıttan sonra 10 sn beklenir; çubuk dolar, ekran okuyucudan gizlidir.
+  await expect(page.locator('[data-sira]')).toHaveValue('1');
+  await expect(cubuk).toHaveAttribute('aria-hidden', 'true');
+  await page.locator('[data-oynat]').click();
+  await sureVer(10);
+  await bitir(page);
+  await expect(page.locator('[data-durum]')).toContainText('Şimdi siz');
+  await expect(kok).toHaveAttribute('data-senin-siran', '');
+  await expect(cubuk).toHaveAttribute('data-aktif', '');
+  await page.clock.runFor(5000);
+  const yari = await cubuk.evaluate((e) => e.value);
+  expect(yari).toBeGreaterThan(0.4);
+  expect(yari).toBeLessThan(0.6);
+  await page.clock.runFor(4000);
+  expect(await sayi()).toBe(1);
+  await page.clock.runFor(1500);
+  expect(await sayi()).toBe(2);
+  await expect(kok).not.toHaveAttribute('data-senin-siran');
+  await expect(cubuk).not.toHaveAttribute('data-aktif');
+
+  // ×2: 5 sn’lik kayıt → 10 sn.
+  await page.locator('[data-sira]').selectOption('2');
+  await sureVer(5);
+  await bitir(page);
+  await page.clock.runFor(9500);
+  expect(await sayi()).toBe(2);
+  await page.clock.runFor(1000);
+  expect(await sayi()).toBe(3);
+
+  // 0,75× hız, ×1: 6 sn’lik kayıt gerçekte 8 sn sürer; çocuk da o kadar bekler.
+  await page.locator('[data-sira]').selectOption('1');
+  await page.locator('[data-hiz]').selectOption('0.75');
+  await sureVer(6);
+  await bitir(page);
+  await page.clock.runFor(7500);
+  expect(await sayi()).toBe(3);
+  await page.clock.runFor(1000);
+  expect(await sayi()).toBe(4);
+
+  // Bekleme sürerken «Yok» seçilirse hemen sıradakine geçilir.
+  await sureVer(10);
+  await bitir(page);
+  await page.clock.runFor(2000);
+  expect(await sayi()).toBe(4);
+  await page.locator('[data-sira]').selectOption('0');
+  expect(await sayi()).toBe(5);
+  await expect(kok).not.toHaveAttribute('data-senin-siran');
+
+  // Süre ölçülemezse (NaN) eski sabit 3 sn kullanılır.
+  await page.locator('[data-sira]').selectOption('1');
+  await page.locator('[data-hiz]').selectOption('1');
+  await bitir(page);
+  await page.clock.runFor(2500);
+  expect(await sayi()).toBe(5);
+  await page.clock.runFor(700);
+  expect(await sayi()).toBe(6);
+});
+
+test('Senin sıran seçenekleri beş dilde aynı dört değerdir; durdurma çubuğu ve bekleyen süreyi sıfırlar', async ({ page }) => {
+  await page.clock.install();
+  for (const dil of DILLER) {
+    await page.goto(`/${dil}/calis/d-euzu-besmele/`);
+    expect(await page.locator('[data-sira] option').evaluateAll((o) => o.map((x) => x.value))).toEqual(['0', '1', '1.5', '2']);
+    await expect(page.locator('[data-sira]')).toHaveValue('1');
+    await expect(page.locator('[data-sira-ilerleme]')).toHaveAttribute('aria-hidden', 'true');
+  }
+  await page.goto('/tr/calis/d-euzu-besmele/');
+  await page.locator('[data-oynat]').click();
+  await page.evaluate(() => Object.defineProperty(window.__ses, 'duration', { value: 10, configurable: true }));
+  await bitir(page);
+  await expect(page.locator('[data-sira-ilerleme]')).toHaveAttribute('data-aktif', '');
+  await page.locator('[data-durdur]').click();
+  await expect(page.locator('[data-sira-ilerleme]')).not.toHaveAttribute('data-aktif');
+  await expect(page.locator('[data-calisma]')).not.toHaveAttribute('data-senin-siran');
+  await page.clock.runFor(15000);
+  expect(await page.evaluate(() => window.__sesler.length)).toBe(1);
 });
 
 test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', async ({ page }) => {
@@ -143,7 +228,7 @@ test('Metinde âyet numarasına dokununca o âyet çalar ve vurgulanır; başka 
   await expect(page.locator('[data-dokun-ipucu]')).toBeVisible();
   const ucuncu = page.locator('button.ayet-no').nth(2);
   await expect(ucuncu).toBeEnabled();
-  await page.locator('[data-bekle]').uncheck();
+  await page.locator('[data-sira]').selectOption('0');
   await ucuncu.click();
   await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
   expect(await page.evaluate(() => window.__sesler.at(-1).src)).toMatch(/\/media\/ses\/ayet\/1-3\.mp3$/);

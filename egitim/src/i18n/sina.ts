@@ -12,6 +12,8 @@ export interface SinaMetinleri {
   siralaYonerge: string; yukari: string; asagi: string; yerinde: string; siraTamam: string; siraDevam: string; cevapGoster: string; dogruYerde: string;
   eksikYonerge: string; soruNo: string; eksikEtiket: string; dogruCevap: string; yanlisCevap: string; dogruSecenek: string; sonrakiSoru: string; bitirOyun: string; dogruSayi: string;
   hangiYonerge: string; sesiCal: string;
+  oyunAnlam: string; anlamYonerge: string; anlamArapca: string; anlamMeal: string; anlamEsti: string; anlamEsmedi: string; anlamHepsi: string;
+  anlamGoster: string; anlamGosterildi: string; anlamEslendi: string; anlamEsleti: string; anlamNot: string;
   kayitBaslik: string; kayitAciklama: string; kayitBasla: string; kayitDur: string; kayitSuruyor: string; kayitHazir: string;
   kayitDinle: string; kayitHafiz: string; kayitSil: string; kayitYok: string; kayitIzin: string; kayitHata: string;
   sinaNasil: string; yanitTam: string; yanitAz: string; yanitTekrar: string; oneri: string; oneriNot: string; tekrarGunu: string; kayitliOneri: string;
@@ -29,6 +31,10 @@ const SINA: Record<Dil, SinaMetinleri> = {
     sonrakiSoru: 'Sonraki soru', bitirOyun: 'Bitir', dogruSayi: 'Doğru: {d} / {n}',
     dogruSecenek: 'Doğru seçenek:',
     hangiYonerge: 'Dinleyin, sonra hangi âyet olduğunu seçin.', sesiCal: 'Dinle',
+    oyunAnlam: 'Anlamla eşleştir', anlamYonerge: 'Bir bölümü seçin, sonra anlamını seçin. Eşleşenler aynı numarayla işaretlenir.',
+    anlamArapca: 'Arapça bölümler', anlamMeal: 'Anlamlar', anlamEsti: 'Eşleşti. Kalan: {n}.', anlamEsmedi: 'Bu ikisi eşleşmedi; başka bir anlam deneyin.',
+    anlamHepsi: 'Hepsi eşleşti.', anlamGoster: 'Eşleşmeleri göster', anlamGosterildi: 'Doğru eşleşmeler gösterildi.', anlamEslendi: 'eşleşti', anlamEsleti: 'Bölüm {n} ile eşleşti',
+    anlamNot: 'Anlamlar bu sayfadaki metinden alınır; kaynağı metnin altındaki künyede yazar.',
     kayitBaslik: 'Kendi sesinizi kaydedin',
     kayitAciklama: 'Ezberden okuyun, kaydınızı dinleyin, sonra hafızın okuyuşuyla karşılaştırın. Kayıt yalnız bu sayfada kalır; hiçbir yere gönderilmez ve sayfayı kapatınca silinir.',
     kayitBasla: 'Kaydı başlat', kayitDur: 'Kaydı durdur', kayitSuruyor: 'Kayıt sürüyor… (en çok 3 dakika)', kayitHazir: 'Kayıt hazır.',
@@ -50,6 +56,10 @@ const SINA: Record<Dil, SinaMetinleri> = {
     sonrakiSoru: 'Question suivante', bitirOyun: 'Terminer', dogruSayi: 'Bonnes réponses : {d} / {n}',
     dogruSecenek: 'Bonne réponse :',
     hangiYonerge: 'Écoutez, puis choisissez de quel verset il s’agit.', sesiCal: 'Écouter',
+    oyunAnlam: 'Associer au sens', anlamYonerge: 'Choisissez un passage, puis son sens. Les paires trouvées portent le même numéro.',
+    anlamArapca: 'Passages en arabe', anlamMeal: 'Sens', anlamEsti: 'Bonne association. Il en reste : {n}.', anlamEsmedi: 'Ces deux éléments ne vont pas ensemble ; essayez un autre sens.',
+    anlamHepsi: 'Toutes les paires sont trouvées.', anlamGoster: 'Montrer les paires', anlamGosterildi: 'Les bonnes paires sont affichées.', anlamEslendi: 'associé', anlamEsleti: 'associé au passage {n}',
+    anlamNot: 'Les sens viennent du texte de cette page ; la source est indiquée sous le texte.',
     kayitBaslik: 'Enregistrez votre voix',
     kayitAciklama: 'Récitez de mémoire, écoutez votre enregistrement, puis comparez-le avec celui du récitant. L’enregistrement reste sur cette page : il n’est envoyé nulle part et disparaît quand vous fermez la page.',
     kayitBasla: 'Commencer l’enregistrement', kayitDur: 'Arrêter l’enregistrement', kayitSuruyor: 'Enregistrement en cours… (3 minutes au maximum)', kayitHazir: 'Enregistrement prêt.',
@@ -71,6 +81,10 @@ const SINA: Record<Dil, SinaMetinleri> = {
     sonrakiSoru: 'Next question', bitirOyun: 'Finish', dogruSayi: 'Correct: {d} / {n}',
     dogruSecenek: 'Correct answer:',
     hangiYonerge: 'Listen, then choose which verse it was.', sesiCal: 'Listen',
+    oyunAnlam: 'Match the meaning', anlamYonerge: 'Choose a passage, then choose its meaning. Matched pairs get the same number.',
+    anlamArapca: 'Arabic passages', anlamMeal: 'Meanings', anlamEsti: 'Matched. Left: {n}.', anlamEsmedi: 'These two do not go together; try another meaning.',
+    anlamHepsi: 'All pairs matched.', anlamGoster: 'Show the pairs', anlamGosterildi: 'The correct pairs are shown.', anlamEslendi: 'matched', anlamEsleti: 'matched with passage {n}',
+    anlamNot: 'The meanings come from the text on this page; the source is given under the text.',
     kayitBaslik: 'Record your voice',
     kayitAciklama: 'Recite from memory, listen to your recording, then compare it with the reciter. The recording stays on this page: it is sent nowhere and disappears when you close the page.',
     kayitBasla: 'Start recording', kayitDur: 'Stop recording', kayitSuruyor: 'Recording… (3 minutes at most)', kayitHazir: 'Recording ready.',
@@ -92,6 +106,10 @@ const SINA: Record<Dil, SinaMetinleri> = {
     sonrakiSoru: 'Volgende vraag', bitirOyun: 'Afronden', dogruSayi: 'Goed: {d} / {n}',
     dogruSecenek: 'Juiste keuze:',
     hangiYonerge: 'Luister en kies welk vers het was.', sesiCal: 'Luisteren',
+    oyunAnlam: 'Betekenis koppelen', anlamYonerge: 'Kies een passage en kies daarna de betekenis ervan. Gekoppelde paren krijgen hetzelfde nummer.',
+    anlamArapca: 'Arabische passages', anlamMeal: 'Betekenissen', anlamEsti: 'Gekoppeld. Nog te gaan: {n}.', anlamEsmedi: 'Deze twee horen niet bij elkaar; probeer een andere betekenis.',
+    anlamHepsi: 'Alle paren zijn gekoppeld.', anlamGoster: 'Paren tonen', anlamGosterildi: 'De juiste paren worden getoond.', anlamEslendi: 'gekoppeld', anlamEsleti: 'gekoppeld aan passage {n}',
+    anlamNot: 'De betekenissen komen uit de tekst op deze pagina; de bron staat onder de tekst.',
     kayitBaslik: 'Neem uw stem op',
     kayitAciklama: 'Reciteer uit het hoofd, luister naar uw opname en vergelijk die met de reciteur. De opname blijft op deze pagina: ze wordt nergens naartoe gestuurd en verdwijnt als u de pagina sluit.',
     kayitBasla: 'Opname starten', kayitDur: 'Opname stoppen', kayitSuruyor: 'Opname loopt… (maximaal 3 minuten)', kayitHazir: 'Opname klaar.',
@@ -113,6 +131,10 @@ const SINA: Record<Dil, SinaMetinleri> = {
     sonrakiSoru: 'Nächste Frage', bitirOyun: 'Beenden', dogruSayi: 'Richtig: {d} / {n}',
     dogruSecenek: 'Richtige Auswahl:',
     hangiYonerge: 'Hören Sie zu und wählen Sie, welcher Vers es war.', sesiCal: 'Anhören',
+    oyunAnlam: 'Bedeutung zuordnen', anlamYonerge: 'Wählen Sie einen Abschnitt und dann seine Bedeutung. Zugeordnete Paare tragen dieselbe Nummer.',
+    anlamArapca: 'Arabische Abschnitte', anlamMeal: 'Bedeutungen', anlamEsti: 'Zugeordnet. Noch offen: {n}.', anlamEsmedi: 'Diese beiden gehören nicht zusammen; versuchen Sie eine andere Bedeutung.',
+    anlamHepsi: 'Alle Paare sind zugeordnet.', anlamGoster: 'Paare zeigen', anlamGosterildi: 'Die richtigen Paare werden angezeigt.', anlamEslendi: 'zugeordnet', anlamEsleti: 'zugeordnet zu Abschnitt {n}',
+    anlamNot: 'Die Bedeutungen stammen aus dem Text dieser Seite; die Quelle steht unter dem Text.',
     kayitBaslik: 'Nehmen Sie Ihre Stimme auf',
     kayitAciklama: 'Rezitieren Sie auswendig, hören Sie Ihre Aufnahme an und vergleichen Sie sie mit dem Rezitator. Die Aufnahme bleibt auf dieser Seite: Sie wird nirgendwohin gesendet und verschwindet, wenn Sie die Seite schließen.',
     kayitBasla: 'Aufnahme starten', kayitDur: 'Aufnahme beenden', kayitSuruyor: 'Aufnahme läuft… (höchstens 3 Minuten)', kayitHazir: 'Aufnahme bereit.',

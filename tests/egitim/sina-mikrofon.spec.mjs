@@ -31,7 +31,7 @@ test('Kayıt başlar, durur, kendi kaydı çalınır (CSP ihlali yok), mikrofon 
   });
   await page.goto('/tr/calis/s-ihlas/');
   await page.locator('#kip-sekme-sina').click();
-  await page.locator('#kip-panel-sina .sina-oyunlar button').nth(3).click();
+  await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
   await page.getByRole('button', { name: 'Kaydı başlat' }).click();
   await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeVisible();
   await expect(page.locator('#kip-panel-sina .sina-alan + .kip-durum')).toContainText('Kayıt sürüyor');
@@ -63,13 +63,13 @@ test('Sekme değişince kayıt durur ve silinir', async ({ page, context }) => {
   await context.routeWebSocket(/.*/, (s) => s.close());
   await page.goto('/tr/calis/s-ihlas/');
   await page.locator('#kip-sekme-sina').click();
-  await page.locator('#kip-panel-sina .sina-oyunlar button').nth(3).click();
+  await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
   await page.getByRole('button', { name: 'Kaydı başlat' }).click();
   await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeVisible();
   await page.locator('#kip-sekme-gizle').click();
   await page.locator('#kip-sekme-sina').click();
   // Panel yeniden açılınca oyun seçimi temizdir; kayıt oyununu yeniden açmak taze bir ekran verir.
-  await page.locator('#kip-panel-sina .sina-oyunlar button').nth(3).click();
+  await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
   await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeHidden();
 });

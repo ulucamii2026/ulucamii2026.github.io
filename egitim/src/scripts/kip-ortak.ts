@@ -4,6 +4,7 @@
  * stil ve betiğe izin vermez; `innerHTML` de kullanılmaz.
  */
 import type { MaddeAyari } from '@ortak/lib/ezber/cihaz';
+import type { AnlamBlogu } from '@ortak/lib/ezber/oyun';
 import type { KipMetinleri } from '../i18n/kip';
 import type { SinaMetinleri } from '../i18n/sina';
 
@@ -15,6 +16,8 @@ export interface KipVeri {
   readonly bolumler: readonly Bolum[];
   /** Maddenin bütün dinleme sırası (hafız kaydı; sûre başındaysa eûzü ve besmele önde): «Kendini sına»da kendi sesini onunla karşılaştırmak içindir. Boş olabilir. */
   readonly hafiz: readonly string[];
+  /** «Anlamla eşleştir» blokları (sayfa dilinin gözden geçirilmiş meâl grupları); boşsa oyun düğmesi çıkmaz. */
+  readonly anlam?: readonly AnlamBlogu[];
   readonly m: KipMetinleri & SinaMetinleri;
 }
 

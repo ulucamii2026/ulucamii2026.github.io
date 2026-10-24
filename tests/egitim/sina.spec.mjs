@@ -30,6 +30,7 @@ test.beforeEach(async ({ context, page }) => {
 });
 
 const oyun = (page, i) => page.locator(`${SINA} .sina-oyunlar button`).nth(i);
+const oyunAdi = (page, kod) => page.locator(`${SINA} .sina-oyunlar [data-oyun="${kod}"]`);
 const durum = (page) => page.locator(`${SINA} .sina-alan + .kip-durum`);
 const sinaAc = async (page, yol = '/tr/calis/s-ihlas/') => {
   await page.goto(yol);
@@ -177,7 +178,7 @@ test('Tekrar günü gelen madde: «tekrar günü geldi» yazar', async ({ page }
 test('Ses kaydı: tarayıcı desteklemiyorsa ve izin verilmediyse açık ileti; sayfa bozulmaz', async ({ page, context }) => {
   await context.addInitScript(() => { delete window.MediaRecorder; });
   await sinaAc(page);
-  await oyun(page, 3).click();
+  await oyunAdi(page, 'kayit').click();
   await expect(durum(page)).toHaveText('Bu tarayıcı ses kaydını desteklemiyor.');
 });
 
@@ -186,7 +187,7 @@ test('Ses kaydı: mikrofon izni reddedilirse ileti çıkar ve kayıt başlamaz',
     navigator.mediaDevices.getUserMedia = () => Promise.reject(Object.assign(new Error('reddedildi'), { name: 'NotAllowedError' }));
   });
   await sinaAc(page);
-  await oyun(page, 3).click();
+  await oyunAdi(page, 'kayit').click();
   await page.getByRole('button', { name: 'Kaydı başlat' }).click();
   await expect(durum(page)).toContainText('Mikrofon izni verilmedi');
   await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeHidden();

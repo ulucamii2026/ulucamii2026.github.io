@@ -3,17 +3,20 @@
  * Madde sayfası (Faz 2b, 19 Ekim 2026; onaylı taslak egitim/docs/taslaklar/madde.html): serlevha, Diyanet tilaveti
  * (dinle–tekrarla çaları), Diyanet metni ve meâli (sayfa dilinin meâli; yoksa «yakında»), hoca onaylı okunuş, namazdaki
  * yeri, çalışma yolu ve aynı şeritteki komşu maddeler. Sesi ya da metni olan her madde sayfa alır.
+ * Faz 2e: sayfa aynı zamanda basılı ezber kartıdır. «Kartı yazdır» düğmesi tarayıcının yazdırma penceresini açar; yazdırma
+ * stili (styles/kart.css) çalışma araçlarını gizler, metni ve meâli A4'e dizer ve sayfaya götüren vektör kare kodu basar.
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
 import { KATALOG, calismaSayfasiVar, dinlemeSirasi, seviyeOgeleri, sinifHedefleri, yapaySesMi, type KatalogOgesi } from '@ortak/lib/ezber/katalog';
 import { SERIT_MOTIFI } from '@ortak/lib/ezber/kilim';
 import { BASAMAK_ADLARI, KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
-import { aralikYaz, arapcaRakam, metinBloklari, onayliOkunus, sayfaMeali, sonKelimeyiAyir } from '@ortak/lib/ezber/madde-metni';
+import { anlamBloklari, aralikYaz, arapcaRakam, metinBloklari, onayliOkunus, sayfaMeali, sonKelimeyiAyir } from '@ortak/lib/ezber/madde-metni';
 import plan from '@ortak/data/yillik-plan-2026-2027.json';
 import Taban from '../../../layouts/Taban.astro';
 import Ikon from '../../../components/Ikon.astro';
-import { ANA_SITE, veliPortali } from '../../../lib/kimlik';
+import { ANA_SITE, kursAdi, veliPortali } from '../../../lib/kimlik';
+import { maddeKareKodu } from '../../../lib/kare-kod';
 import { cizim } from '../../../lib/cizim';
 import { MADDE_METINLERI } from '../../../lib/madde-metinleri';
 import { metin, tarihYaz } from '../../../i18n/metinler';
@@ -21,8 +24,10 @@ import { calismaMetinleri } from '../../../i18n/calisma';
 import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
 import { kipMetinleri } from '../../../i18n/kip';
 import { sinaMetinleri } from '../../../i18n/sina';
+import { kartMetinleri } from '../../../i18n/kart';
 import '../../../styles/calisma.css';
 import '../../../styles/madde.css';
+import '../../../styles/kart.css'; // en sonda: yazdırma stili ekran kurallarını ezer
 
 export function getStaticPaths() {
   return dilListesi.flatMap((dil) => KATALOG.ogeler.filter(calismaSayfasiVar).map((oge) => ({ params: { dil, id: oge.id }, props: { oge } })));
@@ -61,10 +66,16 @@ const arAd = tamSure && mt?.sureAdi ? `سُورَةُ ${mt.sureAdi}` : undefined
 const ayetSayisi = mt?.kuran ? mt.kuran.ayetler[1] - mt.kuran.ayetler[0] + 1 : undefined;
 const yer = namazda(oge.id, oge.tur);
 
+// Basılı kart: kare kod sayfanın kanonik adresine gider (Taban.astro'daki canonical ile aynı). Metni olmayan maddede kart yoktur.
+const k = kartMetinleri(dil);
+const kartAdresi = new URL(`/${dil}/calis/${oge.id}/`, Astro.site).toString();
+const kareKod = mt ? maddeKareKodu(kartAdresi) : '';
+
 // Çalışma kipleri (Faz 2c, 2d): Arapça metni olan her maddede «Bağlayarak ezberle», «Kademeli gizle» ve «Kendini sına». Veri
 // sayfadan istemciye `data-veri` ile gider (satır içi betik yok: CSP). Bölüm sesi yalnız âyet parçaları bölümlerle bire bir
 // olduğunda vardır; `hafiz` maddenin bütün dinleme sırasıdır (kendi sesini hafızınkiyle karşılaştırmak için).
 const kt = { ...kipMetinleri(dil), ...sinaMetinleri(dil) };
+const anlamSayfada = mt ? anlamBloklari(mt, dil) : [];
 const kipVeri = mt && mt.bolumler.length
   ? {
       id: oge.id,
@@ -76,6 +87,8 @@ const kipVeri = mt && mt.bolumler.length
         ses: mt.kuran && oge.ses?.parcalar?.length === mt.bolumler.length ? `${ANA_SITE}${oge.ses.parcalar[i]}` : null,
       })),
       hafiz: dinlemeSirasi(oge).map((s) => `${ANA_SITE}${s}`),
+      // «Anlamla eşleştir» (Faz 2e): yalnız gözden geçirilmiş anlam metni ve en az iki blok varsa; yoksa oyun düğmesi çıkmaz.
+      anlam: anlamSayfada.length >= 2 ? anlamSayfada : undefined,
       m: kt,
     }
   : null;
@@ -90,6 +103,7 @@ const sonraki = serit[sira + 1];
 ---
 <Taban dil={dil} baslik={oge.ad[dil]} aciklama={`${oge.ad[dil]} · ${c.giris}`} yol={`calis/${oge.id}`}>
   <div class="icerik madde">
+    {mt && <p class="kart-ust kart-yalniz">{k.kart} · {kursAdi(dil)}</p>}
     <nav class="yol" aria-label={mm.yol}>
       <ol>
         <li><a href={`/${dil}/`}>{KILIM_METINLERI.baslik[dil]}</a></li>
@@ -108,6 +122,13 @@ const sonraki = serit[sira + 1];
         </p>
       </div>
       {arAd && <p class="ar-ad" lang="ar" dir="rtl">{arAd}</p>}
+      {mt && (
+        <div class="kart-kare kart-yalniz" data-kart-kare>
+          <Fragment set:html={kareKod} />
+          <p class="kart-okut">{k.okut}</p>
+          <p class="kart-adres" set:html={kartAdresi.replace('https://', '').replaceAll('/', '/<wbr>')} />
+        </div>
+      )}
     </header>
 
     <div class="madde-duzen">
@@ -126,11 +147,14 @@ const sonraki = serit[sira + 1];
               </select></label>
               <label>{c.tekrar}<select data-tekrar><option value="1">{c.bir}</option><option value="3" selected>{c.uc}</option></select></label>
               <label>{c.hiz}<select data-hiz><option value="1">{c.normal}</option><option value="0.75">{c.yavas}</option></select></label>
-              <label class="calisma-bekle"><input type="checkbox" data-bekle checked />{c.bekle}</label>
+              <label class="calisma-sira">{c.sira}<select data-sira>
+                <option value="0">{c.siraYok}</option><option value="1" selected>{c.sira1}</option><option value="1.5">{c.sira15}</option><option value="2">{c.sira2}</option>
+              </select></label>
             </fieldset>
             <div class="calisma-dugmeler"><button class="dugme birincil" type="button" data-oynat aria-describedby={yapay ? 'yapay-ses-not' : undefined} disabled>{c.baslat}</button>
               <button class="dugme ikincil" type="button" data-durdur disabled>{c.durdur}</button></div>
             <p class="calisma-durum" role="status" aria-live="polite" aria-atomic="true" data-durum>{c.hazir}</p>
+            <progress class="calisma-ilerleme" data-sira-ilerleme max="1" value="0" aria-hidden="true"></progress>
             <noscript><p>{c.js}</p><a href={`${ANA_SITE}${parcalar[0]}`}>{m.dinleEtiketi(oge.ad[dil])}{yapay && ` (${c.yapayAd})`}</a></noscript>
             <p class="calisma-not">{!yapay && c.kaynakAciklama}{parcalar.length === 1 && ` ${c.parcasiz}`}{oge.id === 'd-ezan' && ` ${c.ezan}`}</p>
           </section>
@@ -150,6 +174,7 @@ const sonraki = serit[sira + 1];
                   </div>
                 )}
                 {okunus && <button class="secim" type="button" aria-pressed="false" data-okunus-dugme hidden><Ikon ad="goz" />{mm.okunusGoster}</button>}
+                <button class="secim" type="button" data-yazdir hidden><Ikon ad="yazici" />{k.yazdir}</button>
               </div>
             </div>
             {!meal && <p class="meal-yok">{dua ? mm.anlamYok : mm.mealYok}</p>}
@@ -249,6 +274,7 @@ const sonraki = serit[sira + 1];
       <a class="calisma-geri" href={`/${dil}/#m-${oge.id}`}><span>{mm.seriteDon}</span><b>{seviye.ad[dil]}</b></a>
       {sonraki && <a class="sonraki" href={`/${dil}/calis/${sonraki.id}/`}><span>{mm.sonraki}<Ikon ad="ok" /></span><b>{sonraki.ad[dil]}</b></a>}
     </nav>
+    {mt && <p class="kart-alt kart-yalniz">{c.ilerleme} · {kursAdi(dil)} · egitim.ulucamii.be</p>}
   </div>
 </Taban>
 <script>
@@ -256,4 +282,5 @@ const sonraki = serit[sira + 1];
   import '../../../scripts/calisma';
   import '../../../scripts/madde';
   import '../../../scripts/kip';
+  import '../../../scripts/yazdir';
 </script>

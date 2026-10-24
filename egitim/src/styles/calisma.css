@@ -7,12 +7,20 @@
 .calisma fieldset { border: 0; padding: 0; margin: 1.8rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; min-width: 0; }
 .calisma label { display: flex; flex-direction: column; gap: .45rem; font-weight: 650; min-width: 0; }
 .calisma select { width: 100%; min-height: 3rem; padding: .5rem; font: inherit; color: var(--kontur); background: var(--astar); border: 1px solid var(--derz-koyu); border-radius: var(--r); }
-.calisma-bolum, .calisma-bekle { grid-column: 1 / -1; }
-.calisma label.calisma-bekle { flex-direction: row; align-items: center; gap: .75rem; font-weight: 400; min-height: 2.75rem; }
+.calisma-bolum, .calisma-sira { grid-column: 1 / -1; }
 .calisma input[type="checkbox"] { flex-shrink: 0; width: 1.3rem; height: 1.3rem; accent-color: var(--yesil); }
 .calisma-dugmeler { display: flex; flex-wrap: wrap; gap: .75rem; }
 .calisma button:disabled { opacity: .55; cursor: default; }
 .calisma-durum { margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--derz); min-height: 4rem; }
+/* «Senin sıran» beklemesi (Faz 2e): çubuk yalnız bekleme sürerken görünür; yeri hep ayrılıdır (görününce sayfa kaymasın). */
+.calisma-calar[data-senin-siran] .calisma-durum { border-top-color: var(--yesil-bag); font-weight: 700; }
+.calisma-ilerleme { display: block; width: 100%; height: .5rem; margin-top: .6rem; border: 0; border-radius: var(--r); overflow: hidden;
+  background: var(--derz); accent-color: var(--yesil-bag); -webkit-appearance: none; appearance: none; visibility: hidden; }
+.calisma-ilerleme[data-aktif] { visibility: visible; }
+.calisma-ilerleme::-webkit-progress-bar { background: var(--derz); }
+.calisma-ilerleme::-webkit-progress-value { background: var(--yesil-bag); }
+.calisma-ilerleme::-moz-progress-bar { background: var(--yesil-bag); }
+@media (forced-colors: active) { .calisma-ilerleme[data-aktif] { forced-color-adjust: none; accent-color: Highlight; } }
 @media (max-width: 52rem) {
   .calisma-calar { padding: 1.4rem 1rem; }
 }

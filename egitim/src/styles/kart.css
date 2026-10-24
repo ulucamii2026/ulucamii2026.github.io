@@ -1,0 +1,68 @@
+/* Basılı ezber kartı (Faz 2e, 24 Ekim 2026). Kart, madde sayfasının kendisidir: «Kartı yazdır» tarayıcının yazdırma penceresini
+   açar (telefonda «PDF olarak kaydet» de aynı yoldan); bu dosyadaki kurallar yalnız yazdırmada işler. Ev yazıcısı kuralı: tam
+   sayfa zemin ve kesim işareti yok, kenar boşlukları 15 mm’den az değil, siyah metin beyaz kâğıtta; koyu tema yazdırmada da
+   açık jetonlara döner. Kartta Arapça metin, (hocanın onayladığı ve açık bıraktığı) okunuş, sayfa dilinin meâli, kaynak
+   künyesi ve sayfaya götüren VEKTÖR kare kod bulunur; çalışma araçları, gezinme ve hoca kutusu basılmaz. Kare kodun matrisi
+   derleme anında yazılır (src/lib/ezber/kare-kod.ts): piksel yoktur. */
+
+/* Yalnız kâğıtta görünen öğeler ekranda gizlidir; ekran okuyucuya da gösterilmez (yinelenen içerik olur). */
+.kart-yalniz { display: none; }
+
+@media print {
+  @page { size: A4 portrait; margin: 16mm 15mm 18mm; }
+
+  /* Açık jetonlar: tema koyu da olsa kâğıt beyazdır. Seçiciler cini.css’teki koyu tema kurallarıyla aynı özgüllükte, sonra gelir. */
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    color-scheme: light;
+    --astar: #fff; --karo: #fff; --derz: #c4cec7; --derz-koyu: #98a99d;
+    --kontur: #000; --kontur-2: #2b382f;
+    --yesil: #134420; --yesil-2: #134420; --yesil-soluk: #fff; --yesil-bag: #134420; --sir-motif: #134420;
+    --altin: #765a0c; --altin-yazi: #765a0c; --firuze: #0d6660; --firuze-yazi: #0d6660;
+  }
+  html { background: #fff; color: #000; font-size: 11.5pt; line-height: 1.5; }
+  body { display: block; min-height: 0; background: #fff; }
+  main { display: block; }
+
+  /* Çalışma araçları, gezinme ve süs basılmaz. `.semboller` (motif sembolleri) gizlenmez: madalyon onları kullanır. */
+  .ust, .alt, .yol, .bordur, .yan-panel, .yollar-bolumu, .komsu, .metin-araclar, .metin-ipucu, .diller, noscript, a.gorunmez { display: none !important; }
+  .kart-yalniz { display: block; }
+
+  .icerik { width: 100%; margin: 0; }
+  .madde { padding: 0; }
+  .madde-duzen, .metin-alani, .metin { display: block; }
+
+  /* Başlık şeridi: küçük kimlik satırı, çizgi, sonra madalyon + ad + bilgi ve sağda kare kod. */
+  .kart-ust { margin: 0 0 4mm; padding-bottom: 2mm; border-bottom: 0.5pt solid var(--derz-koyu); font-size: 8.5pt; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--kontur-2); }
+  .madde-bas { display: grid; grid-template-columns: 17mm minmax(0, 1fr) 38mm; grid-template-areas: "madalyon baslik kare" "madalyon ar kare";
+    gap: 2mm 6mm; align-items: start; padding: 0 0 5mm; border-bottom: 1.2pt solid var(--kontur); break-inside: avoid; }
+  .madde-bas .madalyon { width: 17mm; border-radius: 1.5mm; box-shadow: inset 0 0 0 0.6pt var(--derz-koyu); }
+  .madde-bas h1 { font-size: 24pt; line-height: 1.1; letter-spacing: -0.01em; }
+  .madde-bas .bilgi { margin-top: 2mm; font-size: 9.5pt; gap: 0 4mm; }
+  .madde-bas .ar-ad { grid-area: ar; justify-self: start; font-size: 22pt; line-height: 1.7; }
+  .kart-kare { grid-area: kare; display: grid; justify-items: center; gap: 1.2mm; }
+  .kare-kod { width: 34mm; height: 34mm; }
+  .kart-okut { font-size: 7pt; line-height: 1.3; text-align: center; color: var(--kontur-2); }
+  .kart-adres { font-size: 6.5pt; line-height: 1.25; text-align: center; overflow-wrap: anywhere; color: var(--kontur); }
+
+  /* Metin ve meâl. Her âyet grubu sayfada bölünmez; Arapça boyutu sayfadaki A− / A+ seçimini izler. */
+  .metin-ust { margin: 5mm 0 1mm; }
+  .metin-ust h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--kontur-2); break-after: avoid; }
+  .ayet-grubu { gap: 2mm; padding: 3.2mm 0; border-bottom: 0.5pt solid var(--derz-koyu); break-inside: avoid; }
+  .ayet-grubu:first-child { border-top: 0; }
+  .ayet-grubu .ar { font-size: calc(21pt * var(--ar-olcek)); line-height: 2.05; }
+  .ayet-grubu .ayet[data-calan] { background: none; }
+  .ayet-no, button.ayet-no { min-width: 0; min-height: 0; padding: 0 0.1em; background: none; border: 0; color: var(--yesil-bag); font-size: 0.85em; }
+  .okunus { font-size: 11pt; }
+  .meal { font-size: 11pt; line-height: 1.5; max-width: none; }
+  .meal .no { color: var(--kontur-2); }
+  .meal-yok, .metin-yok, .onay-bekliyor { background: none; border: 0.5pt solid var(--derz-koyu); border-left-width: 2pt; max-width: none; font-size: 10pt; break-inside: avoid; }
+  .zor-yerler { max-width: none; break-inside: avoid; }
+  .zor-yerler li, .zor-yerler h3 { font-size: 10pt; }
+  .kaynak-satiri { font-size: 8.5pt; line-height: 1.4; max-width: none; margin-top: 3mm; color: var(--kontur-2); break-inside: avoid; }
+
+  .kart-alt { margin: 6mm 0 0; padding-top: 2.5mm; border-top: 0.5pt solid var(--derz-koyu); font-size: 8.5pt; line-height: 1.4; color: var(--kontur-2); break-inside: avoid; }
+
+  /* Sayfa numarası (yalnız sayfa kenarı kutularını destekleyen tarayıcılarda; yoksa yok sayılır). */
+  @page { @bottom-right { content: counter(page) " / " counter(pages); font-size: 8pt; color: #444; } }
+}

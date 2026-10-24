@@ -122,7 +122,7 @@ test('Ses: yeni parça ve hepsi çalınır, tek ses sahibi (çalar ile kip birbi
   // Çalar başlayınca kip sesi kesilir; kip başlayınca çalar durur.
   await ses.click();
   await expect(ses).toHaveText('Sesi durdur');
-  await page.locator('[data-bekle]').uncheck();
+  await page.locator('[data-sira]').selectOption('0');
   await page.locator('[data-oynat]').click();
   await expect(ses).toHaveText('Yeni parçayı dinle');
   await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');

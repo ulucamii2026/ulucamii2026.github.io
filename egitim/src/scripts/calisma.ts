@@ -1,10 +1,18 @@
-/** Parça başına tekrar; kullanıcı başlatmadan ağ/ses yok. Her kayıt kendi olay oturumunu taşır. */
+/**
+ * Parça başına tekrar; kullanıcı başlatmadan ağ/ses yok. Her kayıt kendi olay oturumunu taşır.
+ * «Senin sıran» arası (Faz 2e): hâfız bir bölümü bitirince çocuk tekrar eder; bekleme sabit 3 sn değil, kaydın süresinin
+ * katıdır (×1 / ×1,5 / ×2 ya da hiç), hesap src/lib/ezber/sira.ts'te. Bekleme sürerken ince bir çubuk dolar (ekran okuyucudan
+ * gizli; durum yazısı zaten «Şimdi siz tekrarlayın» der). Seçim kutusunu «Yok» yapmak beklemeyi hemen geçer.
+ */
+import { siraKatsayisi, siraSuresiMs } from '@ortak/lib/ezber/sira';
+
 const kok = document.querySelector<HTMLElement>('[data-calisma]');
 if (kok) {
   const bolum = kok.querySelector<HTMLSelectElement>('[data-bolum]')!;
   const tekrar = kok.querySelector<HTMLSelectElement>('[data-tekrar]')!;
   const hiz = kok.querySelector<HTMLSelectElement>('[data-hiz]')!;
-  const bekle = kok.querySelector<HTMLInputElement>('[data-bekle]')!;
+  const siraSec = kok.querySelector<HTMLSelectElement>('[data-sira]')!;
+  const ilerleme = kok.querySelector<HTMLProgressElement>('[data-sira-ilerleme]');
   const oynat = kok.querySelector<HTMLButtonElement>('[data-oynat]')!;
   const durdur = kok.querySelector<HTMLButtonElement>('[data-durdur]')!;
   const durum = kok.querySelector<HTMLElement>('[data-durum]')!;
@@ -13,6 +21,10 @@ if (kok) {
   let oturum = 0;
   let oynatmaKomutu = 0;
   let zamanlayici: ReturnType<typeof setTimeout> | undefined;
+  let cubukSayaci: ReturnType<typeof setInterval> | undefined;
+  /** Son biten kaydın süresi (sn; ölçülemediyse NaN) ve ondan hesaplanan bekleme (ms). */
+  let sonSure = Number.NaN;
+  let araMs = 0;
   let caliyor = false;
   let ara = false;
   let basladi = false;
@@ -20,7 +32,31 @@ if (kok) {
   let tur = 1;
   let kuyruk: number[] = [];
   const metin = (ad: string) => kok.dataset[ad] ?? '';
-  const arayiSil = () => { clearTimeout(zamanlayici); zamanlayici = undefined; };
+  const arayiSil = () => {
+    clearTimeout(zamanlayici);
+    zamanlayici = undefined;
+    clearInterval(cubukSayaci);
+    cubukSayaci = undefined;
+    kok.removeAttribute('data-senin-siran');
+    if (ilerleme) { ilerleme.value = 0; ilerleme.removeAttribute('data-aktif'); }
+  };
+  const bekleSuresi = () => siraSuresiMs(sonSure, siraKatsayisi(siraSec.value), Number(hiz.value));
+  // Bekleme: süre dolunca ilerle(); çubuk her 100 ms'de bir dolar. Süre 0 ise hiç beklenmez.
+  const bekleBaslat = () => {
+    if (araMs <= 0) { ilerle(); return; }
+    arayiSil();
+    ara = true;
+    durum.textContent = `${sayac()} · ${metin('bekliyor')}`;
+    kok.setAttribute('data-senin-siran', '');
+    if (ilerleme) {
+      const bas = Date.now();
+      const sure = araMs;
+      ilerleme.value = 0;
+      ilerleme.setAttribute('data-aktif', '');
+      cubukSayaci = setInterval(() => { ilerleme.value = Math.min(1, (Date.now() - bas) / sure); }, 100);
+    }
+    zamanlayici = setTimeout(ilerle, araMs);
+  };
   // Madde sayfası (madde.ts) çalan bölümü metinde işaretler: -1 = çalma bitti.
   const duyur = (parca: number) => kok.dispatchEvent(new CustomEvent('calisma:parca', { detail: parca }));
   const sayac = () => `${metin('parca')} ${kuyruk[sira] + 1} / ${parcalar.length} · ${tur} / ${tekrar.value}`;
@@ -60,10 +96,9 @@ if (kok) {
     kayit.addEventListener('error', () => hata(o));
     kayit.addEventListener('ended', () => {
       if (o !== oturum || !caliyor) return;
-      if (bekle.checked) {
-        ara = true; durum.textContent = `${sayac()} · ${metin('bekliyor')}`;
-        zamanlayici = setTimeout(ilerle, 3000);
-      } else ilerle();
+      sonSure = kayit.duration;
+      araMs = bekleSuresi();
+      bekleBaslat();
     });
     durum.textContent = sayac(); duyur(kuyruk[sira]); cal();
   };
@@ -87,10 +122,7 @@ if (kok) {
       kuyruk = bolum.value === 'all' ? parcalar.map((_, i) => i) : [Number(bolum.value)];
       basladi = true; kaydiAc();
     } else if (ara) {
-      if (bekle.checked) {
-        durum.textContent = `${sayac()} · ${metin('bekliyor')}`;
-        zamanlayici = setTimeout(ilerle, 3000);
-      } else ilerle();
+      bekleBaslat();
     } else { durum.textContent = sayac(); cal(); }
   });
   durdur.addEventListener('click', () => sifirla());
@@ -98,8 +130,10 @@ if (kok) {
   bolum.addEventListener('change', () => sifirla());
   tekrar.addEventListener('change', () => sifirla());
   hiz.addEventListener('change', () => { if (ses) ses.playbackRate = Number(hiz.value); });
-  bekle.addEventListener('change', () => {
-    if (!bekle.checked && ara && caliyor) ilerle();
+  // Seçim bekleme sürerken değişirse yeni süreyle yeniden başlar; «Yok» beklemeyi hemen geçer. Duraklatılmışsa yalnız süre güncellenir.
+  siraSec.addEventListener('change', () => {
+    araMs = bekleSuresi();
+    if (ara && caliyor) bekleBaslat();
   });
   window.addEventListener('pagehide', () => sifirla());
   // Çalışma kiplerinden biri ses başlatırsa bu çalar durur (calisma zamanlaması değişmez).

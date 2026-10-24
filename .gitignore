@@ -19,6 +19,8 @@ test-results/
 playwright-report/
 .firebase/
 .codex/cikti/
+# Basılı ezber kartları (npm run ezber:kart): sayfa her zaman güncel veriden basılır, PDF depoya girmez.
+output/ezber-kartlari/
 __pycache__/
 *.pyc
 tmp/

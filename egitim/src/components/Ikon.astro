@@ -10,6 +10,7 @@ const IKONLAR = {
   asagi: '<path d="M6 9l6 6 6-6"/>',
   cal: '<path d="M8 5.5v13l10-6.5z" fill="currentColor" stroke="none"/>',
   durdur: '<path d="M8.5 5v14M15.5 5v14"/>',
+  yazici: '<path d="M7 9V4h10v5"/><path d="M7 17H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2"/><path d="M7 14h10v6H7z"/>',
 } as const;
 export type IkonAdi = keyof typeof IKONLAR;
 interface Props { ad: IkonAdi; sinif?: string }

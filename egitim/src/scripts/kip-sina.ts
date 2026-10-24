@@ -1,18 +1,18 @@
 /**
  * Adım 5, «Kendini sına» (Faz 2d, 24 Ekim 2026): üç küçük oyun (Sırala, Eksik kelime, Hangi âyet?), kendi sesini kaydetme ve
- * «Nasıl geçti?» özdeğerlendirmesi. Soru üretimi ve doğru yanıt `src/lib/ezber/oyun.ts`'te (saf, tohumlu, testli); sonraki tekrar
+ * «Nasıl geçti?» özdeğerlendirmesi. Faz 2e'de dördüncü oyun «Anlamla eşleştir» geldi. Soru üretimi ve doğru yanıt `src/lib/ezber/oyun.ts`'te (saf, tohumlu, testli); sonraki tekrar
  * önerisi `src/lib/ezber/tekrar.ts`'te. Burası yalnız çizer. Karar: doğru ya da yanlış sesi, konfeti, puan ve sıralama yok;
  * sonuç çocuğun kendi değerlendirmesine girdidir ve yalnız bu cihazda tutulur. Tıklama ya da klavye yeter (↑ ↓ düğmeleri,
  * Alt + ok); fare sürüklemesi gerekmez. Ses kaydı yalnız bellekte durur (blob adresi), hiçbir yere gönderilmez, kayıt durunca
  * mikrofon hemen bırakılır.
  */
 import { cizgiBoyu, kelimeler } from '@ortak/lib/ezber/gizleme';
-import { eksikKelimeSorulari, farkliSira, hangiAyetSorulari, parcalaKelimeler, rastgele, siraDogru, yerindeSayisi } from '@ortak/lib/ezber/oyun';
+import { anlamAdaylari, eksikKelimeSorulari, eslestirmeTuru, farkliSira, hangiAyetSorulari, parcalaKelimeler, rastgele, siraDogru, yerindeSayisi } from '@ortak/lib/ezber/oyun';
 import { gunFarki, sonrakiTekrar, tarihMi, yerelGun, type TekrarSonucu } from '@ortak/lib/ezber/tekrar';
 import { gruplar } from '@ortak/lib/ezber/zincir';
 import { doldur, dugme, el, kisimSecici, type Baglam } from './kip-ortak';
 
-type Oyun = 'sirala' | 'eksik' | 'hangi' | 'kayit';
+type Oyun = 'sirala' | 'eksik' | 'hangi' | 'anlam' | 'kayit';
 const KAYIT_AZAMI_MS = 180_000;
 const yeniTohum = () => rastgele(Math.floor(Math.random() * 4294967296));
 
@@ -62,8 +62,15 @@ export function kur(panel: HTMLElement, b: Baglam): void {
   oyunGrubu.setAttribute('role', 'group');
   oyunGrubu.setAttribute('aria-label', m.oyunlar);
   const oyunDugmeleri = new Map<Oyun, HTMLButtonElement>();
-  for (const [kod, ad] of [['sirala', m.oyunSirala], ['eksik', m.oyunEksik], ['hangi', m.oyunHangi], ['kayit', m.oyunKayit]] as const) {
+  // «Anlamla eşleştir» yalnız gözden geçirilmiş anlam metni olan sayfa dilinde ve en az iki bloğu olan maddede sunulur
+  // (taslak çeviriler doğru yanıt diye öğretilmez: src/lib/ezber/madde-metni.ts anlamBloklari).
+  const anlamVar = (veri.anlam?.filter((x) => x.meal.trim()).length ?? 0) >= 2;
+  const oyunlar: (readonly [Oyun, string])[] = [['sirala', m.oyunSirala], ['eksik', m.oyunEksik], ['hangi', m.oyunHangi]];
+  if (anlamVar) oyunlar.push(['anlam', m.oyunAnlam]);
+  oyunlar.push(['kayit', m.oyunKayit]);
+  for (const [kod, ad] of oyunlar) {
     const d = dugme(ad, 'secim', () => ac(kod));
+    d.dataset.oyun = kod;
     d.setAttribute('aria-pressed', 'false');
     oyunDugmeleri.set(kod, d);
     oyunGrubu.append(d);
@@ -80,6 +87,7 @@ export function kur(panel: HTMLElement, b: Baglam): void {
     if (kod === 'sirala') siralaKur();
     else if (kod === 'eksik') eksikKur();
     else if (kod === 'hangi') hangiKur();
+    else if (kod === 'anlam') anlamKur();
     else kayitKur();
   }
   // Başka sekmeye geçilince açık kayıt (mikrofon) bırakılır ve kayıt ekranı sıfırlanır: dönüşte eski «Kaydı durdur» düğmesi kalmaz.
@@ -291,6 +299,127 @@ export function kur(panel: HTMLElement, b: Baglam): void {
         dogru: s.dogruSecenek,
       };
     }));
+  }
+
+  // ——— Anlamla eşleştir ———
+  // İki sütun: Arapça bölümler (metin sırasında, numaralı) ve anlamlar (karışık). Biri, sonra öbürü seçilir; doğruysa ikisi de
+  // aynı numarayla işaretlenir ve kilitlenir. Yanlışta puan, kırmızı ya da ses yoktur: yalnız nazik bir yazı ve yeniden deneme.
+  // Düğmeler yerinde değiştirilir (yeniden çizilmez): odak ve ekran okuyucu konumu bozulmaz.
+  function anlamKur() {
+    const g = gr[gi];
+    const bloklar = veri.anlam ?? [];
+    const tur = eslestirmeTuru(anlamAdaylari(bloklar, g.bas, g.son), (i) => bloklar[i].meal, 3, yeniTohum());
+    if (!tur) { alan.append(el('p', 'kip-not', m.sinaKisa)); return; }
+    const dilKodu = document.documentElement.lang || 'tr';
+    const arapca = (i: number) => veri.bolumler.slice(bloklar[i].bas, bloklar[i].son).map((x) => (x.etiket ? `${x.ar} ${x.etiket}` : x.ar)).join(' ');
+    type Taraf = 'ar' | 'meal';
+    const dugmeler = { ar: new Map<number, HTMLButtonElement>(), meal: new Map<number, HTMLButtonElement>() };
+    const eslesen = new Set<number>();
+    let secili: { taraf: Taraf; blok: number } | null = null;
+    const numara = (blok: number) => tur.sol.indexOf(blok) + 1;
+    const kalan = () => tur.sol.length - eslesen.size;
+
+    const secimiBirak = () => {
+      if (secili) dugmeler[secili.taraf].get(secili.blok)?.setAttribute('aria-pressed', 'false');
+      secili = null;
+    };
+    const isaretle = (blok: number) => {
+      eslesen.add(blok);
+      for (const taraf of ['ar', 'meal'] as const) {
+        const d = dugmeler[taraf].get(blok)!;
+        d.classList.add('dogru');
+        d.disabled = true;
+        d.setAttribute('aria-pressed', 'false');
+        const isaret = el('span', 'sina-isaret', '✓');
+        isaret.setAttribute('aria-hidden', 'true');
+        const okunur = el('span', 'gorunmez', taraf === 'ar' ? m.anlamEslendi : doldur(m.anlamEsleti, { n: numara(blok) }));
+        okunur.lang = dilKodu;
+        if (taraf === 'ar') {
+          d.querySelector('.sina-no')?.after(isaret, okunur);
+        } else {
+          // Anlam düğmesine karşılığının numarası da yazılır: eşleşme yalnız renkle değil, numarayla da okunur.
+          const no = el('span', 'sina-no', String(numara(blok)));
+          no.setAttribute('aria-hidden', 'true');
+          d.prepend(no, okunur, isaret);
+        }
+      }
+    };
+    const eylem = el('div', 'kip-eylem');
+    const sonrakiOdak = () => {
+      const siradaki = tur.sol.find((x) => !eslesen.has(x));
+      (siradaki === undefined ? eylem.querySelector<HTMLButtonElement>('button:last-child') : dugmeler.ar.get(siradaki))?.focus({ preventScroll: true });
+    };
+    const tikla = (taraf: Taraf, blok: number) => {
+      if (eslesen.has(blok)) return;
+      if (secili && secili.taraf === taraf) {
+        const ayni = secili.blok === blok;
+        secimiBirak();
+        if (ayni) return;
+      }
+      if (!secili) {
+        secili = { taraf, blok };
+        dugmeler[taraf].get(blok)!.setAttribute('aria-pressed', 'true');
+        mesaj('');
+        return;
+      }
+      // İkinci seçim öbür sütundan: çift tamamlandı.
+      const ar = taraf === 'ar' ? blok : secili.blok;
+      const meal = taraf === 'meal' ? blok : secili.blok;
+      secimiBirak();
+      if (ar !== meal) { mesaj(m.anlamEsmedi); return; }
+      isaretle(ar);
+      if (kalan() === 0) {
+        b.calistim();
+        mesaj(m.anlamHepsi);
+      } else {
+        mesaj(doldur(m.anlamEsti, { n: kalan() }));
+      }
+      sonrakiOdak();
+    };
+
+    const sutun = (taraf: Taraf, kimlikler: readonly number[], baslik: string): HTMLElement => {
+      const kutu = el('div', 'anlam-sutun');
+      const ad = el('h4', 'anlam-etiket', baslik);
+      const liste = el(taraf === 'ar' ? 'ol' : 'ul', 'anlam-liste');
+      liste.setAttribute('role', 'list');
+      liste.setAttribute('aria-label', baslik);
+      for (const blok of kimlikler) {
+        const d = dugme('', `secim anlam-ogesi anlam-${taraf}`, () => tikla(taraf, blok));
+        d.setAttribute('aria-pressed', 'false');
+        const yazi = el('span', 'anlam-metin');
+        if (taraf === 'ar') {
+          const no = el('span', 'sina-no', String(numara(blok)));
+          no.setAttribute('aria-hidden', 'true');
+          yazi.lang = 'ar';
+          yazi.dir = 'rtl';
+          yazi.textContent = arapca(blok);
+          d.append(no, yazi);
+        } else {
+          yazi.lang = dilKodu;
+          yazi.textContent = bloklar[blok].meal;
+          d.append(yazi);
+        }
+        dugmeler[taraf].set(blok, d);
+        const li = el('li', 'anlam-satir');
+        li.append(d);
+        liste.append(li);
+      }
+      kutu.append(ad, liste);
+      return kutu;
+    };
+
+    eylem.append(
+      dugme(m.anlamGoster, 'dugme ikincil', () => {
+        secimiBirak();
+        for (const blok of tur.sol) if (!eslesen.has(blok)) isaretle(blok);
+        mesaj(m.anlamGosterildi);
+        sonrakiOdak();
+      }),
+      yeniTur(),
+    );
+    const izgara = el('div', 'anlam-izgara');
+    izgara.append(sutun('ar', tur.sol, m.anlamArapca), sutun('meal', tur.sag, m.anlamMeal));
+    alan.append(el('p', 'kip-yonerge', m.anlamYonerge), izgara, eylem, el('p', 'kip-not', m.anlamNot));
   }
 
   // ——— Kendi sesini kaydet ———
