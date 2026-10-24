@@ -45,7 +45,7 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
 | Ekran hedefleme | Ortak akış + ekrana özel duyuru |
 | Yönetim | İmam: sitenin paneli (Sveltia CMS). Başkan, kadınlar kolu, gençlik/kurs: **telefondan basit form, doğrudan yayın** |
 | Uzaktan | Arıza e-postası, sessiz güncelleme, anlık ekran görüntüsü, uzaktan yeniden başlatma |
-| FR meal | Diyanet İşleri Başkanlığı'nın Fransızca meali: **Mohammed Chiadmi, «Le Noble Coran»** (DİB, 2022, ISBN 978-625-435-299-7). *İmam kararı: 27 Eylül 2026. Cami Diyanet'e bağlı olduğundan Diyanet yayınlarının kullanımında izin sorunu yok; kaynak her ayetin altında belirtilir. TDV'nin Hamidullah baskısı (ISBN 9789753897334) incelendi, seçilmedi. 24 Ekim 2026: Chiadmi dijitalde bulunamadığı için Ezber Kilimi FR meâli Hamidullah oldu (docs/EGITIM-FAZ2-DINLEME.md); ekran bu kararla değişmedi.* |
+| FR meal | ~~Diyanet İşleri Başkanlığı'nın Fransızca meali: Mohammed Chiadmi, «Le Noble Coran» (DİB, 2022, ISBN 978-625-435-299-7)~~ → **Muhammad Hamidullah, «traduction française du sens»** (24 Ekim 2026). *İmam kararı 27 Eylül 2026: Chiadmi; cami Diyanet'e bağlı olduğundan izin sorunu yok, kaynak her ayetin altında belirtilir. 24 Ekim 2026: Chiadmi dijitalde yok (kuran.diyanet.gov.tr `/meal/kaynaklar` TR/EN/DE/RU/ES sunar; kitap yalnız basılı; internetteki PDF'ler yetkisiz 2008 Tawhid baskısıdır). İmam seçimi Claude'a bıraktı; Ezber Kilimi gibi ekranda da Hamidullah kullanılır (çocuk sınıfta, sitede ve camide aynı metni görür). Çevirmen adı yazılır (kaynak satırında «Hamidullah»), «Diyanet meâli» denmez. Metin `scripts/ekran-meal-fr.mjs` ile gelir; Diyanet'in Fransızca meâli dijital olarak açılınca `fr` + `kaynakFr` birlikte değişir. Ayrıntı: aşağıdaki «Ekran FR âyet meâli».* |
 | Devreye alma | Önce tek ekran pilot (LED'in yanında), sonra 3 ekran; **mümkün olan en kısa sürede** |
 | Kapsam | Şimdilik yalnız Ulu Camii (ad/logo/ilçe kodu tek ayar dosyasında) |
 
@@ -198,7 +198,7 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
 **Paralel içerik hattı (hemen başlar)**
 - **İ0 — Kaynak ve izin.**
   - TR meal kuran.diyanet.gov.tr'deki resmî metinden alınır.
-  - FR meal: DİB'in Chiadmi çevirisi («Le Noble Coran», 2022, ISBN 978-625-435-299-7); imam kararı 27 Eylül 2026. Cami Diyanet'e bağlı; Diyanet yayınları ekranda ve sitede kaynak belirtilerek kullanılır, ayrıca izin yazışması gerekmez.
+  - FR meal: önce DİB'in Chiadmi çevirisi («Le Noble Coran», 2022, ISBN 978-625-435-299-7; imam kararı 27 Eylül 2026); dijitalde bulunmadığı için **24 Ekim 2026'dan beri Muhammad Hamidullah**, çevirmen adıyla («Ekran FR âyet meâli», aşağıda). Diyanet'in Fransızca meâli dijital olarak açılınca ona dönülür. Diyanet'in diğer yayınları ekranda ve sitede kaynak belirtilerek kullanılır, ayrıca izin yazışması gerekmez.
   - FR hadis: DİB'in Fransızca "40 Hadis" kitapçıkları (dijital.diyanet.gov.tr; Arapça + Fransızca + kaynak) kullanılır.
   - Hadis, hadisten alınan dua ve Esmâ çevirilerinin altına «Traduction : …» kaynak satırı yazılmaz (28 Eylül 2026 kararı); kaynak satırı yalnız resmî yayının künyesini taşır.
   - Yerel ihtisas arşivi **yalnız seçim ve doğrulama** için kullanılır; telif kuralı gereği metin oradan kopyalanmaz.
@@ -211,6 +211,14 @@ Görüntünün ve mantığın tamamı burada, tek depoda durur.
   - Hadis: resmî Diyanet yayınından, tahricle.
   - Karşılaştırma için: yerel Kur'an veri dosyaları (Diyanet TR meali ve FR meal metinleri).
 - **İ3 — İmam onayı.** 30'luk partiler hâlinde verilir. Kural: **her an en az 60 günlük onaylı içerik hazırda olmalı.** Pilottan önce ilk 30–60 gün onaylanmış olur.
+
+## Ekran FR âyet meâli (24 Ekim 2026)
+- **Kapsam:** ayet (`ayetler.json`), Kur'an duası (`dualar.json`, `ayet` dolu) ve tema kartındaki âyet (`kartlar.json`, `cesit: ayet`). Hadis, hadis duası, bilgi kartı ve söz bu işin dışındadır (imam onaylı FR çevirileri, kaynak satırı yok).
+- **Kaynak ve denetim:** Hamidullah çevirisi `scripts/ekran-meal-fr.mjs` ile gelir. Her âyet api.alquran.cloud `fr.hamidullah` ile Tanzil'in aynı adlı dosyasında birebir aynı olmalı; değilse hiçbir dosya yazılmaz. Kaydın Arapçası âyet aralığının Tanzil Uthmani metniyle harf iskeletinde aynı olmalı (âyetin yalnız bir parçasını taşıyan kayda bütün âyetin çevirisi konmaz). `--kuru` yazmadan rapor verir, `--denetle` önbelleksiz yeniden çeker.
+- **Fransız yazım kuralı:** yalnız tipografi değişir (düz kesme işareti → ’, «? ! ; :» öncesine boşluk, düz çift tırnak → « », kaynağın bitişik yazdığı «Entrez…» → « Entrez … » gibi tırnak içine boşluk); ince bölünmez boşluğu çalışma anında `src/lib/fransiz-tipografi.ts` koyar.
+- **Kaynak satırı:** `<TR ref> · <FR ref> — Kur’an Yolu Meali · Hamidullah`. Satır sınırı 70 karakterdir; «traduction Hamidullah» ya da «M. Hamidullah» gibi daha uzun etiketler FR'li kayıt sayısını 72'den 54'e (ya da daha aşağı) düşürürdü, bu yüzden tek tip kısa biçim seçildi: çevirmenin soyadı, bütün kayıtlarda aynı. Tam ad (Muhammad Hamidullah) egitim.ulucamii.be'deki künyede ve bu belgede yazılıdır.
+- **Bütçe kuralı değişmedi** (`src/lib/ekran/butce.ts`): FR'li hâli bütçeyi aşan kayıt FR'siz kalır (AR + TR), çünkü derleme sığmayan kaydı tümden düşürürdü. Sonuç 24 Ekim 2026: 97 Kur'an kaydının (40 ayet, 18 Kur'an duası, 39 tema kartı âyeti) **72'sine FR eklendi**; 25'i AR + TR kaldı: **11'inde yalnız kaynak satırı** 70 karakteri aşıyor (FR metni sığıyor; iki dilli sûre adı ve referans uzun: `a-74-6`, `a-26-181`, `d-23-26`, `d-23-94`, `d-23-97`, `d-23-98`, `d-23-118`, `k-a-74-38`, `k-a-70-24`, `k-a-23-61`, `k-a-23-78`), **14'ünde FR metni** A profilinin 104 karakter sınırını aşıyor (B profili Arapçaya dar; 5'inde 1–4 karakter fazla: `d-28-22`, `k-a-2-153`, `k-a-55-1`, `k-a-19-12`, `k-a-19-54`; diğerleri `a-17-37`, `a-3-139`, `a-7-55`, `a-14-41`, `a-17-26`, `a-85-14`, `k-a-70-32`, `k-a-8-61`, `k-a-7-204`). Bu kayıtların FR'si için satır ya da metin sınırı kararı gerekir (kalibrasyon: `EKRAN_KALIBRE=1`); sınırlar imam kararı olmadan gevşetilmedi. Ayrıntı: `node scripts/ekran-meal-fr.mjs --kuru`.
+- **Doğrulama:** `tests/ekran-icerik.test.mjs` (Hamidullah, tipografi, hepsi yayında), `tests/web/ekran.spec.mjs` taban kapısı (961×541 yatay, 1080×1920 Cuma satırlı dikey, ?don=90 döndürülmüş; her gerçek kayıt okunur tabanın altına inmeden sığmalı).
 
 ## Riskler → önlemler
 - Kutu dikey çıkış vermiyor → sayfa `?don=90` ile CSS döndürme yapar.

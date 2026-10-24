@@ -5,10 +5,14 @@
  *
  * Yalnız imamın onayladığı kayıtlar (durum: "imam-onayli") yayına girer. Eksik alanlı, mükerrer kimlikli ya da ekrana
  * sığmayan (src/lib/ekran/butce.ts) kayıt atlanır ve `eksik` listesinde raporlanır. Metinler resmî Diyanet
- * yayınlarından alınır; yerel ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca meal DİB /
- * Mohammed Chiadmi «Le Noble Coran» (2022) çevirisidir; cami Diyanet'e bağlı olduğu için Diyanet yayınları için
- * ayrıca izin istenmez. Ayette ve Kur'an duasında `fr` ile `kaynakFr` birlikte dolu değilse FR yayımlanmaz, ekran
- * AR + TR gösterir. Hadisin, hadis duasının, bilgi kartının ve sözün FR metni imam onaylı çeviridir; altına çeviri
+ * yayınlarından alınır; yerel ihtisas arşivi yalnız seçim/doğrulama içindir (telif kuralı). Fransızca âyet meâli:
+ * 27 Eylül 2026'da seçilen DİB / Mohammed Chiadmi «Le Noble Coran» (2022) çevirisi dijitalde yok (kuran.diyanet.gov.tr
+ * `/meal/kaynaklar` TR/EN/DE/RU/ES sunar, kitap yalnız basılı); 24 Ekim 2026 kararıyla (Ezber Kilimi ile aynı) FR meâl
+ * Muhammad Hamidullah çevirisidir, çevirmen adıyla («Hamidullah») yazılır, «Diyanet meâli» denmez; metin
+ * scripts/ekran-meal-fr.mjs ile gelir (api.alquran.cloud ↔ Tanzil birebir). Diyanet'in Fransızca meâli dijital olarak
+ * açılınca `fr` ve `kaynakFr` birlikte değişir. Ayette ve Kur'an duasında `fr` ile `kaynakFr` birlikte dolu değilse FR
+ * yayımlanmaz, ekran AR + TR gösterir; FR'li hâli bütçeyi aşan kayıt FR'siz kalır (aksi hâlde derleme kaydı tümden
+ * düşürür). Hadisin, hadis duasının, bilgi kartının ve sözün FR metni imam onaylı çeviridir; altına çeviri
  * kaynağı yazılmaz (28 Eylül 2026 kararı). Sitedeki 10 ahlâk hadisi (src/lib/hadis-verisi.ts) zaten yayında olduğu
  * için başlangıç havuzudur. Fransızca metinlere Fransız yazım kuralı uygulanır (src/lib/fransiz-tipografi.ts).
  */

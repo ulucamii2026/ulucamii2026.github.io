@@ -164,3 +164,32 @@ test('onaylı her ekran kaydı ekrana sığar (veri dosyaları ve sitedeki hadis
   const sigmayan = s.eksik.filter((e) => e.indexOf('ekrana sığmaz') >= 0);
   assert.deepEqual(sigmayan, [], 'Bu metin ekrana sığmaz, kısaltın: ' + sigmayan.join('; '));
 });
+
+// 24 Ekim 2026 kararı: Chiadmi (DİB) dijitalde yok; ekrandaki Fransızca âyet meâli Hamidullah (scripts/ekran-meal-fr.mjs).
+test('Kur’an kayıtlarının Fransızca meâli Hamidullah: çevirmen adı yazılı, «Diyanet» denmez, tipografi yerinde, hepsi yayında', () => {
+  const oku = (ad) => JSON.parse(readFileSync(new URL(`../src/data/ekran/${ad}.json`, import.meta.url), 'utf8'));
+  const [ayetler, dualar, kartlar] = [oku('ayetler'), oku('dualar'), oku('kartlar')];
+  const kuranKayitlari = [...ayetler, ...dualar.filter((d) => d.ayet), ...kartlar.filter((k) => k.cesit === 'ayet')];
+  const frli = kuranKayitlari.filter((k) => k.fr !== undefined || k.kaynakFr !== undefined);
+  assert.ok(frli.length >= 70, `FR'li Kur’an kaydı ${frli.length}; betik: node scripts/ekran-meal-fr.mjs`);
+  for (const k of frli) {
+    assert.equal(k.kaynakFr, 'Hamidullah', `${k.id}: FR meâl Hamidullah’tır, «fr» ile «kaynakFr» birlikte yazılır`);
+    assert.ok(typeof k.fr === 'string' && k.fr.length > 0, k.id);
+    assert.ok(!/Diyanet|Chiadmi/i.test(k.fr + k.kaynakFr), `${k.id}: Hamidullah meâline Diyanet denmez`);
+    assert.ok(!/'/.test(k.fr), `${k.id}: düz kesme işareti yerine ’ (Fransız yazım kuralı)`);
+    assert.ok(!/"/.test(k.fr), `${k.id}: düz çift tırnak yerine « » (Fransız yazım kuralı)`);
+    assert.ok(!/\S[?!;:]/.test(k.fr), `${k.id}: «? ! ; :» öncesinde boşluk olmalı (ince bölünmez boşluğu çalışma anında konur)`);
+    assert.ok(!/«\S|\S»/.test(k.fr), `${k.id}: «« »» içinde boşluk olmalı (« metin ») ; bölünmez boşluğu çalışma anında konur`);
+  }
+  // Ekran akışına giren her FR'li kayıt kaynak satırında çevirmeni taşır; kaynak FR'si olmadan FR yayımlanmaz.
+  const s = ekranIcerigi(ayetler, oku('hadisler'), AHLAK_HADISLERI, dualar, kartlar);
+  assert.deepEqual(s.eksik.filter((e) => /FR kaynağı yok/.test(e)), []);
+  const yayinda = [...s.ayetler, ...s.kartlar.filter((k) => k.cesit === 'ayet').map((k) => k.oge)].filter((a) => a.fr);
+  assert.ok(yayinda.length >= 30);
+  for (const a of yayinda) assert.equal(a.kaynakFr, 'Hamidullah', a.id);
+  for (const d of s.dualar.filter((x) => x.kuran && x.fr)) assert.match(d.kaynak, / · Hamidullah$/, d.id);
+  // Bütçeyi aşan kayıt FR'siz kalır, tümden düşmez: FR'siz Kur’an kaydı da yayında.
+  const frsiz = kuranKayitlari.filter((k) => !k.fr);
+  assert.ok(frsiz.length > 0);
+  assert.deepEqual(s.eksik.filter((e) => frsiz.some((k) => e.startsWith(k.id + ' '))), []);
+});
