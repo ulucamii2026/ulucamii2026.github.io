@@ -256,6 +256,67 @@ okuyucudan görüş istenir. Kural: `docs/DIL-NL-DE.md`.
 Görsel inceleme 390/768/1440 px, açık/koyu. Sınır: fiziksel iPhone/Safari ve girişli veli akışı denenmedi; cami ekranı
 testi `tests/web/ekran.spec.mjs:1143` (Open-Meteo) bir kez aralıklı düştü, bu işle ilgisiz.
 
+## Dilim 2d — Adım 5 «Kendini sına», tekrar takvimi ve «Bugün tekrar» (24 Ekim 2026)
+
+**Yayın (24 Ekim 2026):** commit'ler `d3002f22` (kütüphaneler), `eb45192a` (gizlilik politikası), `8a9d6002` (arayüz ve Hosting başlıkları);
+ayrıntılı kanıt ve canlı denetim: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (4)». Dayanak: Rıdvan, 24 Ekim 2026:
+«ezber kilimi yayını konusunda herşeyi onaylıyorum, bütün yetki ve karar sende».
+
+**Karar (kesinleşmiş, değişmedi):** puan, sıralama, konfeti ve doğru/yanlış sesi yok; sonuç çocuğun kendi
+değerlendirmesine girdi olur ve yalnız bir **tekrar önerisi** üretir. Öneri hocanın verdiği basamağı, kilimi ve rozeti
+değiştirmez; yalnız bu cihazda tutulur. Ses kaydı yalnız sayfa belleğindedir. `navigator.storage.persist()` kullanılmadı
+(Firefox izin penceresi açar). Ertelenenler: «Anlamla eşleştir» oyunu ve Adım 1'de «senin sıran» kaydı.
+
+**Kütüphaneler (saf, birim testli — `tests/ezber-tekrar-oyun.test.mjs`, 15 test):**
+- `src/lib/ezber/tekrar.ts`: aralıklı tekrar kutuları 1 · 3 · 7 · 14 · 30 gün (Cepeda vd. 2008; Rawson–Dunlosky 2022).
+  «Tam» bir üst kutuya, «Az takıldım» aynı kutuya, «Bir daha» ilk kutuya (1 gün) götürür. Tarihler yerel gün
+  `YYYY-AA-GG` dizesidir; gün aritmetiği UTC takvimiyle yapılır (yaz saati kaymaz); «2026-02-30» gibi taşan günler reddedilir.
+  `bugunTekrar` (günü gelen maddeler, en eski önce), `haftaGunu` (son yedi gün, bugün dâhil; seri ya da puan değil, yazıyla
+  «bu hafta N gün»).
+- `src/lib/ezber/oyun.ts`: tohumlu karıştırma (mulberry32), `farkliSira` (karışık gelmeyen tur olmaz), `parcalaKelimeler`
+  (kısa metni 2–4 kelimelik parçalara böler), `eksikKelimeSorulari` (seçenekler aynı maddenin başka kelimelerinden,
+  iskeletçe farklı), `hangiAyetSorulari`. Doğru yanıt burada belirlenir; ekran yalnız çizer.
+- `src/lib/ezber/cihaz.ts` (sürüm numarası değişmedi, `v:1`): `kip` artık `sina` da olabilir; maddeye `kutu` (−1…4) ve
+  `sonraki` (gün), üst düzeye `gunler` (son 21 çalışma günü) eklendi. Eski 2c kayıtlarında bu alanlar yoktur; okunurken
+  varsayılanı alırlar ve kayıt bozulmaz (testli).
+
+**Ekran (madde sayfasında üçüncü sekme «Kendini sına»; JavaScript yoksa gizli):**
+- **Sırala:** ↑ ↓ düğmeleri ya da Alt + ok; fare sürüklemesi gerekmez. Kontrol sonrası doğru yerdeki parçada ✓ ve yazı
+  («doğru yerde»); yalnız renk değil. «Doğru sırayı göster».
+- **Eksik kelime:** beş soru, üç seçenek; doğru seçenek ✓ ve gizli «doğru seçenek» etiketiyle işaretlenir, boşluk doğru
+  kelimeyle dolar.
+- **Hangi âyet?:** hafız kaydı çalar, seçenekler âyet metnidir (yalnız âyet âyet kaydı olan Kur'an maddelerinde; dualarda
+  ve kaydı olmayanlarda açık bir not çıkar).
+- **Kendi sesim:** mikrofon yalnız «Kaydı başlat»a basılıp tarayıcı izni verilince açılır; kayıt en çok 3 dakika; durunca
+  mikrofon hemen bırakılır; kayıt blob adresiyle yalnız bellekte çalınır, hiçbir yere gönderilmez; sekme değişince ya da
+  sayfadan çıkınca silinir; çalar başlarsa kayıt durur (hoparlör sesi kayda karışmasın). Hafızın okuyuşu aynı yerde
+  karşılaştırma için çalınabilir.
+- **Nasıl geçti?** Tam · Az takıldım · Bir daha → sonraki tekrar önerisi («yarın (Pazar 25 Ekim)»; göreli ifade ve tarih
+  sayfa dilinde `Intl` ile). Öneri sayfa yenilenince geri gelir; günü gelmişse «tekrar günü geldi» yazar.
+- **Bugün tekrar (giriş sayfası):** bu cihazda tekrar kaydı varsa, günü gelen maddeler bağlantıyla listelenir (en çok 12) ve
+  «bu hafta N gün çalıştınız» yazılır; kayıt yoksa ya da depolama kapalıysa bant gizli kalır.
+- «Çalıştım» sayımı üç kipte de çocuk bir turu bitirince (sonuç seçince ya da soruları bitirince) işlenir (`calistim`).
+- Sekme değişince açık mikrofon ve kayıt ekranı bırakılır (`birak`). Sekme tuş takımında ilk sekmede sol ok artık sona sarar
+  (2c'deki küçük kusur düzeltildi).
+- Adım 5 beş dilde «hazır» işaretlendi; alt bilgideki «Gizlilik politikası» bağlantısı ana sitedeki «Ezber Kilimi»
+  bölümüne gider.
+
+**Hosting başlıkları (`firebase.json`):** CSP `media-src https://ulucamii.be blob:` (blob yalnız çocuğun kendi kaydı için;
+başka köken eklenmedi) ve `Permissions-Policy: microphone=(self)` (kamera, konum, ödeme, USB kapalı). Bu, mikrofonun
+yalnız bu sayfanın kendisine açılması demektir; izin yine kullanıcı dokunuşu ve tarayıcı penceresiyle alınır.
+`tests/egitim/barindirma.test.mjs` ikisini sabitler.
+
+**Gizlilik:** ana sitenin beş dildeki gizlilik sayfasına «Ezber Kilimi (egitim.ulucamii.be)» bölümü eklendi
+(`#ezber-kilimi`): cihaz hafızasında neyin tutulduğu (site dili, kip ve düzey, yazı boyutu, tekrar önerisi, çalışılan günler),
+mikrofonun ne zaman açıldığı, kaydın yalnız bellekte kaldığı ve silindiği, Firebase Hosting günlükleri.
+
+**Doğrulama:** `npm run dogrula:codex` 10/10 GEÇTİ (rebase sonrası, push öncesi): `check` 0 hata / 0 uyarı; `test:ezber` 115/115; ana site derlemesi 1947 sayfa; `test:web` 840 geçti / 120 yapılandırılmış atlama; `egitim:build` astro check 0 hata, 292 sayfa; `test:egitim` 15/15 birim + 158 geçti / 2 bilinçli atlama (yeni: `sina.spec.mjs` ve `sina-mikrofon.spec.mjs`, beş dil × iki cihaz; klavye, CSP, iki temada axe, kapalı depolama, gerçek sahte mikrofonla kayıt–dinle–sil ve «ağa kayıt gitmez» denetimi); `test:kurallar` 54, `test:veli-eposta` 58, `test:oto-kaydet` 14, `test:ogrenme` 13. Görsel inceleme 390 ve 1280 px, açık ve koyu tema, azaltılmış hareket: yatay taşma yok, CSP ihlali 0, konsol hatası 0. Temiz ağaçtan `egitim:yayinla` (derleme + testler yeniden) ve canlı denetim: `egitim:canli` 37/37.
+
+**Sınırlar:** gerçek mikrofon aygıtı yerine Chromium'un sahte ses aygıtı (`--use-fake-device-for-media-stream`) denendi;
+fiziksel iPhone/Safari (Safari `audio/mp4` üretir, `MediaRecorder` desteği sürüme bağlıdır) ve Firefox izin penceresi
+davranışı denenmedi. Tekrar takvimi yalnız o cihazdadır: telefon ve bilgisayar birbirini görmez; velinin portalında
+görünmez (karar). Hoca basamağı değişmez.
+
 ## Canlı durum ve bu çalışmanın sınırı
 
 - **9 Ekim 2026 09:19 (CEST) YAYINDA.** Kullanıcının 9 Ekim «Eğitim Faz 2 yayını» seçimiyle güncel `origin/main`
@@ -317,5 +378,5 @@ testi `tests/web/ekran.spec.mjs:1143` (Open-Meteo) bir kez aralıklı düştü, 
 1. Bu bölümün yayın onayı, temiz çalışma ağacından yayın ve yayın kaydı; mevcut ana site ses adresleri değişmedi.
 2. Diyanet'ten eksik sesler ve metinlerin kaynaklı hazırlanması. Arapça harf karşılaştırması, meâl kaynakları ve hoca
    okunuş kontrolü tamamlanmadan metinleri çalışma sayfalarına ekleme.
-3. Kademeli gizleme, sıralama/eşleştirme/eksik kelime ve cihazda ilerleme.
+3. ~~Kademeli gizleme, sıralama/eşleştirme/eksik kelime ve cihazda ilerleme.~~ 24 Ekim 2026'da yayımlandı (2c, 2d). Kalan: «Anlamla eşleştir», Adım 1'de «senin sıran», baskı kartı (2e).
 4. Faz 2'nin asıl madde içerikleri tamamlanınca duyuru; hesaplar/belgeler Faz 3, diğer bölümlerin taşınması Faz 4.

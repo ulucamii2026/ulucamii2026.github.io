@@ -204,6 +204,39 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Alıcılar yalnız dernek kutularıydı. `test-temizle` 1 satır sildi; defterde 3 ihtida satırı kaldı.
   - Deneme e-postaları kutularda duruyor (önceki teamül).
 
+## 24 Ekim 2026 (4) — Ezber Kilimi Faz 2 dilim 2d: Kendini sına, tekrar takvimi, «Bugün tekrar», mikrofon izni
+
+- Zaman (Europe/Brussels, CEST): push 14:33:29, Pages 14:33:34–14:35:57, egitim Hosting yayını 14:39:57 (sürüm 323 dosya),
+  canlı denetim 14:40:05–14:40:22, elle canlı kontrol ≈14:41. **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan, 24 Ekim:
+  «ezber kilimi yayını konusunda herşeyi onaylıyorum, bütün yetki ve karar sende ne gerekiyorsa yap».
+- Kapsam: madde sayfasında üçüncü sekme «Kendini sına» (Sırala, Eksik kelime, Hangi âyet?, Kendi sesim; «Nasıl geçti?» →
+  sonraki tekrar önerisi), tekrar takvimi (1·3·7·14·30 gün), giriş sayfasında «Bugün tekrar» bandı (yalnız bu cihazdaki kayıttan),
+  Adım 5 beş dilde hazır, alt bilgide gizlilik bağlantısı, kipler arası sekme temizliği (açık mikrofon bırakılır), ilk sekmede sol ok
+  sona sarar. Ana sitenin beş dildeki gizlilik sayfasına «Ezber Kilimi» bölümü (`#ezber-kilimi`; guncelleme 2026-10-24).
+  Hosting: CSP `media-src https://ulucamii.be blob:`, `Permissions-Policy: microphone=(self)`. Gerekçe ve ayrıntı:
+  `docs/EGITIM-FAZ2-DINLEME.md` «Dilim 2d».
+- Commit'ler: `d3002f22` (kütüphaneler), `eb45192a` (gizlilik), `8a9d6002` (arayüz ve Hosting başlıkları). Temiz çalışma
+  ağacından (`D:/tmp/ulucamii-ezber-2d-yayin`, yayın sonrası kaldırıldı); origin/main taban: `82826c9b`.
+- Dağıtım: Pages [40094426343](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40094426343) **success**;
+  egitim `npm run egitim:yayinla` → Hosting `ulucamii-egitim`, 323 dosya (300 yeni yüklendi). Canlı gizlilik sayfalarında
+  `id="ezber-kilimi"` beş dilde var.
+- Kalite: `npm run dogrula:codex` 10/10 GEÇTİ — `check` 0 hata / 0 uyarı; `test:ezber` 115/115; ana site 1947 sayfa;
+  `test:web` 840 geçti / 120 atlama; `egitim:build` astro check 0 hata, 292 sayfa; `test:egitim` 15/15 birim + 158 geçti /
+  2 bilinçli atlama; `test:kurallar` 54, `test:veli-eposta` 58, `test:oto-kaydet` 14, `test:ogrenme` 13. Bilinen aralıklı
+  `tests/web/ekran.spec.mjs:1143` (Open-Meteo) bu koşuda düşmedi. Yayın öncesi bulunup düzeltilenler: 2c klavye testi üç
+  sekmeye uyarlandı; ilk sekmede sol ok sona sarmıyordu (düzeltildi); 2c cihaz testlerinin beklenen biçimi yeni alanlara uyarlandı.
+- Canlı: `npm run egitim:canli` **37/37** (2026-10-24T12:40:22Z). Elle (Playwright, 390 px, tr ve fr, gerçek canlı adres):
+  yanıt başlıkları CSP `media-src https://ulucamii.be blob:` ve `microphone=(self)`; sayfa açılışında ve sekme/oyun
+  açılışında `getUserMedia` çağrısı **0** (izin yalnız «Kaydı başlat»tan sonra istendi, sahte aygıtla 1 çağrı); kayıt–dinle–sil
+  CSP ihlali 0, konsol hatası 0, GET dışı ağ isteği yok; alt bilgi gizlilik bağlantısı `…/#ezber-kilimi`; temiz bağlamda
+  giriş sayfasında «Bugün tekrar» bandı gizli.
+- Açık sınırlar: gerçek mikrofon yerine Chromium sahte ses aygıtı; fiziksel iPhone/Safari ve Firefox izin penceresi denenmedi;
+  tekrar takvimi yalnız cihazda (portalda görünmez); «Anlamla eşleştir» ve Adım 1 «senin sıran» ertelendi; yapay sesli dualar
+  üretilmedi; NL meâl gözden geçirilmedi; cami ekranı FR âyetleri hâlâ Chiadmi bekliyor; ana site derleme boyutu bu yayında
+  ayrıca ölçülmedi (Pages derlemesi başarılı, önceki ölçüm 847 MB / sınır 1 GB); duyuru yapılmadı; 2e (baskı kartı, görsel cila,
+  duyuru onayı) sırada.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 24 Ekim 2026 (3) — Ezber Kilimi: dua metinlerine hoca onayı + Fransızca meâl (Hamidullah)
 
 - Zaman: egitim Hosting yayını ≈10:55 (sürüm 320 dosya), push 10:56:15, Pages 10:56:17–10:58:38, canlı denetim 10:56:41,

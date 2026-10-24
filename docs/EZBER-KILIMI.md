@@ -8,6 +8,7 @@ Rabbi'şrah lî, Alak 1–5, Bakara 285–286, Haşr 22–24) âyet âyet Osman 
 sesli madde 27 → 57. Plan ve Rıdvan'ın 19 Ekim kararları: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md) «Dilim 2a».
 Aynı gün dilim 2b'nin metin katmanı (yerel): 45 Kur'an maddesinin Diyanet metni ve TR/EN/DE meâli `src/data/ezber/metin/`,
 madde sayfası v1 ve veli kilim kartından madde sayfasına bağlantı; ayrıntı aynı belgede «Dilim 2b».
+**24 Ekim 2026 (4) YAYINDA — dilim 2d:** Adım 5 «Kendini sına» (Sırala, Eksik kelime, Hangi âyet?, Kendi sesim), tekrar takvimi ve giriş sayfasında «Bugün tekrar»; her şey yalnız cihazda, mikrofon kaydı yalnız bellekte; ayrıntı aynı belgede «Dilim 2d», kayıt `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (4)».
 Güncel kapsam ve kalan işler: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Ana plan:
 [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md); Faz 1a planı:
 [2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md); Faz 1b planı:
