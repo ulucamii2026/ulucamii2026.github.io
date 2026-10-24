@@ -41,7 +41,7 @@ for (const dil of DILLER) {
       // Diyanet kaydı olduğunu söyleyen cümle bu sayfada yok.
       await expect(page.locator('.calisma-not')).not.toContainText(/Diyanet|Presidency|Presidium|Präsidiums/);
       // Ses dosyası yapay klasöründen ve ulucamii.be'den gelir.
-      await page.locator('[data-bekle]').uncheck();
+      await page.locator('[data-sira]').selectOption('0');
       await page.locator('[data-oynat]').click();
       expect(await page.evaluate(() => window.__sesler)).toEqual([`https://ulucamii.be${oge.ses.tam}`]);
       // Dar ekranda yatay taşma yok.
