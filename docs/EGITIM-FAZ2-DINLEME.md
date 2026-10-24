@@ -200,6 +200,62 @@ noktası, 36,4 KB. Test, metindeki her harfin yazı tipinde olduğunu denetler.
 - NL meâl çevirisi.
 - FR meâl, Rıdvan kitabı sağlarsa.
 
+
+## Dilim 2b devamı ve 2c — dua metinleri, kip kütüphaneleri, çalışma kipleri (24 Ekim 2026)
+
+**Yayın (24 Ekim 2026):** commit'ler `1694a63c` (2b devamı) ve `b5fa54ff` (2c); ana site Pages
+[40073445855](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40073445855) success; egitim Hosting
+yayını ve canlı denetim sonucu: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (2)». Kalite kapısı `npm run dogrula:codex`
+10/10 geçti.
+
+**Dua metinleri (11 madde; 2c yayınında hoca onayı bekliyordu, hoca 24 Ekim 2026 öğleden sonra onayladı — kapsam ar,
+meal, okunus-tr; commit `249d5da3`):** `d-subhaneke`, `d-ruku-tesbihi`, `d-secde-tesbihi`, `d-ettehiyyatu`,
+`d-salli`, `d-barik`, `d-kunut-1`, `d-kunut-2`, `d-ezan-duasi`, `d-kamet`, `d-ezan`.
+- Arapça metin namaz.diyanet.gov.tr «Sureler ve Dualar» kayıtlarından çıkarılır (`node scripts/ezber-dua-cek.mjs`).
+  Türkçe anlam ve okunuş Diyanet yayınlarından aynen alınmış tablodan (`scripts/ezber-dua-tanim.mjs`) gelir. Portal
+  kayıtlarının yazım kusurları tabloda tek tek gerekçesiyle düzeltilir; düzeltme kaynakta bulunmazsa betik durur.
+- İkinci kaynak karşılaştırması: `tests/fixtures/ezber-dua-ikinci-kaynak.json` (harf iskeleti özetleri, metin yok).
+  İskelet denetimi `scripts/ezber-dua-iskelet.mjs`.
+- `onay: null`: sayfa «hoca incelemesi bekleniyor» notunu gösterir; okunuş gizli kalır. Hoca inceleme sayfası
+  `npm run ezber:inceleme` (docs/ezber-metin-inceleme/ezber-metin-inceleme.html ve .pdf; Arapça, anlam, okunuş ve
+  Diyanet kaydını dinleme düğmeleri). Onay: `node scripts/ezber-dua-cek.mjs --onayla hepsi` (yalnız hoca onayladıktan
+  sonra).
+- Kayıt dinlemesinden (Whisper) çıkan bulgular: Sübhâneke kaydı «ve celle senâük» ibaresini okumuyor; ezan duası kaydında
+  metindeki bölümlerin dışında ek cümleler var. Rükû ve secde tesbihi kayıtları kulakla dinlenmedi. Karar hocaya aittir.
+
+**NL meâl taslağı:** 45 Kur'an maddesi. TR meâlden çeviri; her kayıtta `inceleme: true` ve kaynak etiketi «Diyanet İşleri
+Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri…». Sayfa «gözden geçirilecek» notu gösterir. En belirsiz yerler
+(Nebe 31–34, Âyetü'l-Kürsî «kayyûm/kürsî», Alak, İnşikâk, Kureyş): çevirmenin notları 24 Ekim oturum kaydındadır; NL
+okuyucudan görüş istenir. Kural: `docs/DIL-NL-DE.md`.
+
+**Veri düzeltmesi:** Zilzâl 99:7 TR meâlinin başında Diyanet'ten gelen görünmez U+FFA0 vardı.
+`scripts/ezber-metin-cek.mjs` metin uçlarındaki görünmez kod noktalarını (`kenarTemizle`) atar; yalnız `s-zilzal.json` değişti.
+
+**Kip kütüphaneleri (saf, birim testli):** `src/lib/ezber/gizleme.ts`, `zincir.ts`, `cihaz.ts`.
+- `gizleme.ts`: Arapça kelime bölme (durak işareti önceki kelimeye bağlanır), ilk harf (gerçek «ال» tanımlığı ayrımı:
+  elif kesre/damme/tenvin ya da alt elif taşımaz, lâm kısa ünlüsüz ya da şeddelidir; ek harfleri و ف ب ك), beş düzey,
+  kelime başına açılma, düzey ilerlemesi (iki «Tam» bir üst düzey), «Takıldı» ipucu sırası.
+- `zincir.ts`: halkalar, «sondan başla», gruplar (beşli kısımlar; artakalan yarım boydan küçükse öncekine katılır),
+  durum makinesi (yeni → sen → kontrol).
+- `cihaz.ts`: tek sürümlü tek anahtar `ulucamii:ezber:cihaz:v1`; yalnız bu cihaz; depolama kapalı ya da bozuksa sessizce
+  varsayılan.
+
+**Çalışma kipleri (madde sayfasında «Şimdi çalış»; JavaScript yoksa gizli):**
+- **Bağlayarak ezberle:** halkalar (yeni parça, senin sıran, kontrol), «sondan başla», uzun maddede beşli kısımlar;
+  sonuç Tam / Az takıldım / Bir daha. Uygulama doğruluğu ölçmez.
+- **Kademeli gizle:** beş düzey; kelimeye dokununca ilk harf, sonra tam kelime; İpucu / Kelimeyi aç klavye yolu; gizli
+  kelime `aria-hidden` ve odaksız; canlı bölge yalnız sayı ve sonucu söyler.
+- **Dinleyici kipi:** ilk harfler; «Takıldı» önce bölümün Diyanet kaydını (varsa), sonra kelimeleri açar.
+- **A− / A+:** Arapça yazı boyutu beş adım, bu cihazda hatırlanır.
+- Tek ses sahibi: çalar ile kipler `ezber:ses-basladi` olayıyla birbirini keser; çalar zamanlaması değişmedi.
+- Bütün DOM `textContent` ve öznitelikle kurulur (CSP: satır içi betik/stil yok); veri sayfadan `data-veri` ile gelir.
+  Kip ekranları ilk açılışta ayrı parça olarak yüklenir.
+
+**Doğrulama (2c):** `test:ezber` 96/96; `egitim:build` 292 sayfa, astro check 0 hata; `tests/egitim/kip.spec.mjs` 30 senaryo
+(beş dil, klavye, ses, kapalı depolama, kapalı JavaScript, CSP, axe); `test:egitim` 102 geçti / 2 bilinçli atlama.
+Görsel inceleme 390/768/1440 px, açık/koyu. Sınır: fiziksel iPhone/Safari ve girişli veli akışı denenmedi; cami ekranı
+testi `tests/web/ekran.spec.mjs:1143` (Open-Meteo) bir kez aralıklı düştü, bu işle ilgisiz.
+
 ## Canlı durum ve bu çalışmanın sınırı
 
 - **9 Ekim 2026 09:19 (CEST) YAYINDA.** Kullanıcının 9 Ekim «Eğitim Faz 2 yayını» seçimiyle güncel `origin/main`

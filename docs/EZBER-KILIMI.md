@@ -434,3 +434,9 @@ kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026
      teyemmümün ve namazın farzları).
   7. **Yemek duası kenar suyunda kaldı:** şeritler namaz sırasıdır; günlük dua kenar suyunda yerini korur.
 - Faz 1 yayınından önce seviye ve sıra değişikliği serbesttir; sonra kimlik kuralı geçerlidir (yukarıda).
+- **24 Ekim 2026 (öğleden sonra) — Faz 2 metin onayları.** Hoca 11 dua metnini inceleme PDF'inden onayladı
+  (`node scripts/ezber-dua-cek.mjs --onayla hepsi --tarih 2026-10-24`; kapsam `ar`, `meal`, `okunus-tr`), TR okunuş
+  sayfada görünür oldu. FR meâl: Diyanet'in Chiadmi çevirisi dijitalde bulunamadığı için Rıdvan seçimi devretti;
+  Muhammad Hamidullah çevirisi çevirmen adıyla kullanılır (`scripts/ezber-meal-fr.mjs`; gerekçe
+  `docs/EGITIM-FAZ2-DINLEME.md`). Yukarıdaki 1–2. maddelerin (Sübhâneke «ve celle senâük», ezan duası ziyadesi) çözümü
+  dua tablosundaki notlardır (`scripts/ezber-dua-tanim.mjs`); onay bunları da kapsar.

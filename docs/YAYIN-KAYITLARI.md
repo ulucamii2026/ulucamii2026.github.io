@@ -204,6 +204,28 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Alıcılar yalnız dernek kutularıydı. `test-temizle` 1 satır sildi; defterde 3 ihtida satırı kaldı.
   - Deneme e-postaları kutularda duruyor (önceki teamül).
 
+## 24 Ekim 2026 (2) — Ezber Kilimi Faz 2: 2b devamı (dua metinleri, NL meâl taslağı) + 2c (çalışma kipleri)
+
+- Zaman: push ≈09:15 – Pages derleme/dağıtım bitişi ≈09:18 – egitim Hosting yayını ≈09:23 – canlı denetim 09:23:52,
+  Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 24 Ekim «ezber kilimi işini de
+  tamamlayalım… bütün yetki ve karar sende» talimatı. Bu kayıt yayından sonra, aynı gün öğleden sonra yazıldı (yayını
+  yapan oturum kayıt yazamadan kapatılmıştı; olgular onun devir notundan).
+- Kapsam: 11 dua metni (namaz.diyanet.gov.tr + Diyanet yayınlarından anlam/okunuş tablosu; o anda `onay: null`, okunuş
+  gizli), hoca inceleme sayfası (`npm run ezber:inceleme`), 45 Kur'an maddesine NL taslak meâl (`inceleme: true`),
+  Zilzâl 99:7 görünmez U+FFA0 düzeltmesi, kip kütüphaneleri (`gizleme.ts`, `zincir.ts`, `cihaz.ts`) ve madde sayfasında
+  «Şimdi çalış»: bağlayarak ezberle, kademeli gizle, dinleyici kipi, A−/A+. Ayrıntı: `docs/EGITIM-FAZ2-DINLEME.md`
+  «Dilim 2b devamı ve 2c».
+- Commit'ler: `1694a63c` (2b devamı), `b5fa54ff` (2c). Release 0.
+- Dağıtım: ana site Pages
+  [40073445855](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40073445855) **success**; egitim
+  Firebase Hosting `ulucamii-egitim` 320 dosya.
+- Kalite: `npm run dogrula:codex` 10/10, `test:ezber` 96/96, `test:egitim` 102 geçti / 2 bilinçli atlama,
+  `tests/egitim/kip.spec.mjs` 30 senaryo. Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **36/36**; beş
+  sayfada kip ekranı elle doğrulandı (CSP ihlali 0, konsol hatası 0).
+- Açık sınırlar (o anda): dua onayı ve FR meâl yoktu (ikisi aynı gün «(3)» yayınında geldi); fiziksel iPhone/Safari
+  denenmedi; duyuru yapılmadı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 24 Ekim 2026 — Ezber Kilimi Faz 2 dilim 2a + 2b v1: 509 Diyanet âyet sesi, madde metni katmanı, madde sayfası
 
 - Zaman: 24 Ekim 2026 07:42:51 (push) – 07:44:36 (derleme) – 07:45:09 (Pages dağıtımı) – ≈07:46 (canlı ses denetimi) –
