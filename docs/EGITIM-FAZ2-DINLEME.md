@@ -327,6 +327,7 @@ karar sende» talimatı. Üç iş, aynı yayın.
 
 ### 1. Yapay sesli iki dua (Kur'an dışı)
 
+- **Dinleme onayı: VERİLDİ** (Rıdvan, 24 Ekim 2026 akşamı: «sesi onaylıyorum»). İki ses yayındaki hâliyle kalır; geri alma adımı gerekmez.
 - **Kural:** Diyanet kaydı her zaman önceliklidir; Kur'an metninde yapay ses asla kullanılmaz; **yeni TTS üretilmedi.** Yalnız
   kursun kütüphanesinde zaten bulunan, yazıya dökümle doğrulanmış iki ses alındı: `D:/ulu-camii-kuran-kursu/sesler/dua/kelime-i-tevhid-ar.mp3`
   ve `kelime-i-sehadet-ar.mp3` (Gemini TTS `gemini-3.1-flash-tts-preview`, ses Charon, 5 Eylül 2026). Yazıya dökümde okunan metin maddenin

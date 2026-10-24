@@ -21,7 +21,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   çeviri yedeğiyle derlendi.
 - **Not:** 2e kart paketi `D:\tmp\ezber-kartlar-2026-10-24\` → `D:\ulu-camii-kuran-kursu\belgeler\ezber-kartlari\2026-10-24\`
   taşındı (324 PDF; depoya ve Hosting'e girmez).
-- **Açık sınırlar:** iki yapay sesin Rıdvan tarafından dinlenip onaylanması; duyuru Facebook/WhatsApp'ta paylaşılmadı.
+- **Açık sınırlar:** duyuru Facebook/WhatsApp'ta paylaşılmadı. (İki yapay ses: Rıdvan 24.10.2026 akşamı dinleyip onayladı.)
 
 ## 24 Ekim 2026 (5) — Ezber Kilimi 2e: «Anlamla eşleştir», «senin sıran», basılı ezber kartı, görsel cila
 
