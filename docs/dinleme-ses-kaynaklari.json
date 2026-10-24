@@ -3761,5 +3761,2049 @@
   "pcmOrnek": 3424137,
   "baslangic": "euzu-besmele",
   "birlesim": "PCM 44100 Hz mono → MP3 96 kbps"
+ },
+ "/media/ses/ayet/2-285.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/2_285.mp3",
+  "sha256": "62a80ae78f634b6d14b87fa74d0ca9f3c5c8d5910e33b47bff861d95a019fd22"
+ },
+ "/media/ses/ayet/2-286.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/2_286.mp3",
+  "sha256": "f2a74242d68d9a97cf2992cd12d0733f0fdaa144c28baffc4dd18d647507226d"
+ },
+ "/media/ses/ayet/20-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/20_25.mp3",
+  "sha256": "419a226ea86dc1448f77c9f13f9061faa304d6ed91073c05f4696d514c85f508"
+ },
+ "/media/ses/ayet/20-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/20_26.mp3",
+  "sha256": "6bc0bd1e8d71d38564c90c54cc06dcfa016c2d2f4421f8436bc22f5fcebf8a15"
+ },
+ "/media/ses/ayet/20-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/20_27.mp3",
+  "sha256": "3530f3e3957b94a68612206033a91cc894588a1086ec656537a3b09f0299ac57"
+ },
+ "/media/ses/ayet/20-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/20_28.mp3",
+  "sha256": "c268c82bc47079b8827732f9290443ba0e346c15af1a255ff3dc55137bd02f3f"
+ },
+ "/media/ses/ayet/59-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/59_22.mp3",
+  "sha256": "bc8e10ab7639b9e735590b456c3c249d6b5b5f0cb04dc43b354b66e5630bca69"
+ },
+ "/media/ses/ayet/59-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/59_23.mp3",
+  "sha256": "f6f31b18cf9e2f2391c2009a91281a26f3698270b8029b6b64583ff468db21b8"
+ },
+ "/media/ses/ayet/59-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/59_24.mp3",
+  "sha256": "f9cd8ef0a1b96658bf25c56506be13c8e0c67435ce08d4c518b093127c8c1bd0"
+ },
+ "/media/ses/ayet/78-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_1.mp3",
+  "sha256": "ad1833f504c0c2d0028e731559d1896dfea637c148ca70a1c379010c7497f3a8"
+ },
+ "/media/ses/ayet/78-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_2.mp3",
+  "sha256": "281875dece4ac6817c6e9641334ef7834c3faef024a0fdb6b0539dca5a6834b6"
+ },
+ "/media/ses/ayet/78-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_3.mp3",
+  "sha256": "eab346f28b27320a96b63f88028274de75a6e71bc979b0f8c5276c1c73f441be"
+ },
+ "/media/ses/ayet/78-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_4.mp3",
+  "sha256": "60ca440a748da28864fa2225f90bdd43755d9e6875663fa1e9df2e69b21832a9"
+ },
+ "/media/ses/ayet/78-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_5.mp3",
+  "sha256": "f78ad4c22fc28228e05a8c3cea0c5f6f1f49b98eb49f4fd477667a1963fc71ab"
+ },
+ "/media/ses/ayet/78-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_6.mp3",
+  "sha256": "00bf6c5d7cfa1c24cd9e1a1b65f5492892155ee1a6124d0e0e740c48d35d3b13"
+ },
+ "/media/ses/ayet/78-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_7.mp3",
+  "sha256": "7338decf25a1e07238a4552c28048bbffc91de2eb927eebf942d1ab15e5d39d0"
+ },
+ "/media/ses/ayet/78-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_8.mp3",
+  "sha256": "c9c86d83a717421c8f88607d22eb01751a80ea13f80a7a181ce6b644acd4a2e1"
+ },
+ "/media/ses/ayet/78-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_9.mp3",
+  "sha256": "a01ed1da5e7b6982fde0319c02e1a317a6fdd3d8af5d727d1edc85a75c7b55f7"
+ },
+ "/media/ses/ayet/78-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_10.mp3",
+  "sha256": "5e2296f6f4a1d9336c42e378c30a889e0a3f385c4560a4c9ea2277f7c2a5a3b1"
+ },
+ "/media/ses/ayet/78-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_11.mp3",
+  "sha256": "725504ed2456690f3035dc5a0a47f22afb767abd4e984d19fdd0e520e7d79429"
+ },
+ "/media/ses/ayet/78-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_12.mp3",
+  "sha256": "d4df600dd1e70ff02aeb62f0e5fb2b7bec0b0f9e1b237969adf460cf9cb8e5a3"
+ },
+ "/media/ses/ayet/78-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_13.mp3",
+  "sha256": "b73f68c94c9f088b1b94b1659ff362ffcb9c9011c9c258c1abb1150698eff5b8"
+ },
+ "/media/ses/ayet/78-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_14.mp3",
+  "sha256": "cc0ffc8cc80b671df04b76d56845040768465feaf22e566410060f8161bfdfb4"
+ },
+ "/media/ses/ayet/78-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_15.mp3",
+  "sha256": "552b0d7c0356c9fbd9dfd3f737830e8737a01d8d08f771e7cc406226204872c6"
+ },
+ "/media/ses/ayet/78-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_16.mp3",
+  "sha256": "41acd6a9e6b14b97934be21318a026995096f8e55c51de417354fba32d1599f4"
+ },
+ "/media/ses/ayet/78-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_17.mp3",
+  "sha256": "c443ec9ab80f0850b66e9f3e09f49a77374f21bf45eacc4bbe5fc47a0db574a3"
+ },
+ "/media/ses/ayet/78-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_18.mp3",
+  "sha256": "d4b2a464319b5fc734f3553c2171ae0dbb0ac2b3664b8b48db908f0ae7bcb89b"
+ },
+ "/media/ses/ayet/78-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_19.mp3",
+  "sha256": "293c058d188bf3fbc65624d9ca32b31b72b12e5177a78255adbe67abfe3b232f"
+ },
+ "/media/ses/ayet/78-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_20.mp3",
+  "sha256": "9b8291699bb7ccb5502a6319b016401abf92f08fdc7d8b971692aeb07457bdf4"
+ },
+ "/media/ses/ayet/78-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_21.mp3",
+  "sha256": "ddfe2bac5ecf092f34b1bd68b79df0a0adb1b4c59d8dcc0b44842a1e99b62a9d"
+ },
+ "/media/ses/ayet/78-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_22.mp3",
+  "sha256": "7cbd2eecd6f8dc882b79a95c9dd01479dee75351288a9935dc01038cbc409aca"
+ },
+ "/media/ses/ayet/78-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_23.mp3",
+  "sha256": "45dcb59b8a562cdca91074d1458a1171eba9c6d71f8c37533105c941ca873647"
+ },
+ "/media/ses/ayet/78-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_24.mp3",
+  "sha256": "813bca966d584d1b90a8f5b7a4044e2dd54687943b55f8a6185bfbe0e1315bb0"
+ },
+ "/media/ses/ayet/78-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_25.mp3",
+  "sha256": "fb69b562b9df07760db24074a9085e6cde7b38bbeacb3dab92df919f7844c6d4"
+ },
+ "/media/ses/ayet/78-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_26.mp3",
+  "sha256": "54a25f4712b42ccd94b8bb821775dae5b5791521a08f5a4058350d667fd80964"
+ },
+ "/media/ses/ayet/78-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_27.mp3",
+  "sha256": "ff8160a9bf2886dc4891099426e52550f25ee0199ec53155f9807193cc14a248"
+ },
+ "/media/ses/ayet/78-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_28.mp3",
+  "sha256": "75bd127759c3ddc55e37c3975f9e7420195f250daf1ecf94c130f30f861b1163"
+ },
+ "/media/ses/ayet/78-29.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_29.mp3",
+  "sha256": "2b2ebe6c19564e1db6439bff7c84ce6d31c72530194574a49793c211c20ec580"
+ },
+ "/media/ses/ayet/78-30.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_30.mp3",
+  "sha256": "721d7478241551c254f8b194c90d5807bc011d623b65acbb9c575168a6406b64"
+ },
+ "/media/ses/ayet/78-31.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_31.mp3",
+  "sha256": "54c9764756742d4cf8b044f607c42ea7ebd844ab72d25dbf1e1a5e9f60aa3f93"
+ },
+ "/media/ses/ayet/78-32.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_32.mp3",
+  "sha256": "875e1e28e4a99ada5bc4c6fa14af51edd1b7484a08b6ee67ec8784a9936c904f"
+ },
+ "/media/ses/ayet/78-33.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_33.mp3",
+  "sha256": "cfc257ee6ea3dadc28c092fd7a2909e80a0185ed686d7f444abf5a253749e76e"
+ },
+ "/media/ses/ayet/78-34.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_34.mp3",
+  "sha256": "34b1261e6f54e6fbe3004ed406981f06a4994744a6fd601cbf686a010dedeb62"
+ },
+ "/media/ses/ayet/78-35.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_35.mp3",
+  "sha256": "1ce4f2d080b49024d1f8a6936671a18bae0c72ebbce84b4df1e0c0f699c33367"
+ },
+ "/media/ses/ayet/78-36.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_36.mp3",
+  "sha256": "da105e079cb37337a6764a6aef32765513a480df464e78a4f74ab0db70f4d23b"
+ },
+ "/media/ses/ayet/78-37.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_37.mp3",
+  "sha256": "b49625dbdcd7d996f8daea78a06dbe74965a21d5cd75c446d07c40be78457105"
+ },
+ "/media/ses/ayet/78-38.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_38.mp3",
+  "sha256": "6b4e1baf9e2459c0f64dedd5ae3bfa8cf61a55d6a0ea301f5a25b753951dcd00"
+ },
+ "/media/ses/ayet/78-39.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_39.mp3",
+  "sha256": "2ac207e4185b8157117b5c04bee635e444d3c19e797c98e51671315ed67d5934"
+ },
+ "/media/ses/ayet/78-40.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/78_40.mp3",
+  "sha256": "e25a576069a1de2d14776fc7454a9faac0458c729938c3f270f6cb7114969943"
+ },
+ "/media/ses/ayet/79-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_1.mp3",
+  "sha256": "2f3c1e0793858f3355d3a3855c55cf8f568ee5dbe2811886ae7a2a0aa63ceb32"
+ },
+ "/media/ses/ayet/79-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_2.mp3",
+  "sha256": "837ae5424b1be03ec0e7ce3f27345945cb9174a0c77650b3bea7f1f56e5f7051"
+ },
+ "/media/ses/ayet/79-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_3.mp3",
+  "sha256": "a2e6ef6b96f76a34f7ec33fc3baea2d3ed9c7cc1dec2d439c5135be1ff0e1c49"
+ },
+ "/media/ses/ayet/79-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_4.mp3",
+  "sha256": "595d64fe7d6160f8c4175c5f669635e442d75615339df35adff2098787e54b77"
+ },
+ "/media/ses/ayet/79-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_5.mp3",
+  "sha256": "ab0d57d39f09d0e54991953738d85d49f7c2e0ae1f00df1ca1164683edae185d"
+ },
+ "/media/ses/ayet/79-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_6.mp3",
+  "sha256": "68811001240385834091501f5e134545cd6257bad703c4b1a1356321d2b9d57d"
+ },
+ "/media/ses/ayet/79-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_7.mp3",
+  "sha256": "f9f2096f90109c3edc0317387dc8c0d0638696ba59b4a53d0b705958362af8c5"
+ },
+ "/media/ses/ayet/79-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_8.mp3",
+  "sha256": "8c758cb89cf9086a0eb67e388a8bdd52da937997c2d6407459f37c18eae10eb0"
+ },
+ "/media/ses/ayet/79-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_9.mp3",
+  "sha256": "89d80f04ede4e7cf48c94cddbce50bd84411ef9056464431be922d4a906ade1e"
+ },
+ "/media/ses/ayet/79-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_10.mp3",
+  "sha256": "d0a83cb924b78d323b310256700372824bbbee6c4aefb2a83ff7af1f4f1d3c07"
+ },
+ "/media/ses/ayet/79-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_11.mp3",
+  "sha256": "93b7d632c19ddb0e332f337db4b71b9aaba67c09d87d158b09f345c94d376271"
+ },
+ "/media/ses/ayet/79-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_12.mp3",
+  "sha256": "f9e4d6b7e27c3094df1864fd40d14fdad1b57d00b692f5e6f0135e35dfe11b00"
+ },
+ "/media/ses/ayet/79-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_13.mp3",
+  "sha256": "2db4966e3a34ade71bbacf9748d3cb1a30b23a41143eb1910ede346df1518886"
+ },
+ "/media/ses/ayet/79-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_14.mp3",
+  "sha256": "caf588136ce864bb282d76c45956a3572557a98d58034a8646ebf3c5585a45ba"
+ },
+ "/media/ses/ayet/79-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_15.mp3",
+  "sha256": "b0dbd0ec6f8a1f771832772006927bc0000bc0e49e0bf48094e718eca75d86c4"
+ },
+ "/media/ses/ayet/79-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_16.mp3",
+  "sha256": "aa9fa3d03fe9810715ea9749c94875972ad3afcb84b8fd043c52f56adb2ff4e5"
+ },
+ "/media/ses/ayet/79-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_17.mp3",
+  "sha256": "83b4dd0b9caf577629e47b2d3353661010988b7181fb66af4e2762a469b0bb40"
+ },
+ "/media/ses/ayet/79-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_18.mp3",
+  "sha256": "93443b06377edf8bb3ad391e0b9c0359299bc407adba55e08a5b1c915feac137"
+ },
+ "/media/ses/ayet/79-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_19.mp3",
+  "sha256": "e72d0c4966f78d4376562eadd271a0b59da66605237c767803aa5b124449b1cf"
+ },
+ "/media/ses/ayet/79-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_20.mp3",
+  "sha256": "e035efbdffa4b17aecdfa721cc7818bdc7b4bdeb286750ac84fc868d96ff8a2c"
+ },
+ "/media/ses/ayet/79-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_21.mp3",
+  "sha256": "77e5475406f0541ceb0bedea79d486ee8cf325b7712320c164e80dd2e922eb9b"
+ },
+ "/media/ses/ayet/79-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_22.mp3",
+  "sha256": "3a50c80289728cd1d920f5cb8ca6a72376dd4cb69cac68606452fe599e4208dc"
+ },
+ "/media/ses/ayet/79-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_23.mp3",
+  "sha256": "769e90050964428a6b141ca3ed958f592d3c22bca14207a4890a25b8931b030e"
+ },
+ "/media/ses/ayet/79-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_24.mp3",
+  "sha256": "1d9395118176fe07f177d2392b7591e92b369eecc91b41bb8081bf60c0b8c8ba"
+ },
+ "/media/ses/ayet/79-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_25.mp3",
+  "sha256": "5011e690c8e754d68251f893daf5b677705f932bddf9ecc85e7ec6234d3575cf"
+ },
+ "/media/ses/ayet/79-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_26.mp3",
+  "sha256": "a5dd8fd19049f3d19bddae7e4a7cd1e2942f70fa6b8fe3421965cda741ffa889"
+ },
+ "/media/ses/ayet/79-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_27.mp3",
+  "sha256": "f9ee5b54c337a2b2fca4cabce133b4b3fff3e1c466dae8fd5df876e5780bb80e"
+ },
+ "/media/ses/ayet/79-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_28.mp3",
+  "sha256": "7e77a43cb6e947b03354138f9b43d090880837b94e8b634e340f370da0c5be30"
+ },
+ "/media/ses/ayet/79-29.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_29.mp3",
+  "sha256": "003484745e396124baf512cd84e53923676adf06af141ae769e66bd3477ed3fe"
+ },
+ "/media/ses/ayet/79-30.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_30.mp3",
+  "sha256": "32d11a513d15c02f3d051b079b230de4961ac07aa433acf4567254afff00786d"
+ },
+ "/media/ses/ayet/79-31.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_31.mp3",
+  "sha256": "425d55dc9c08855d26681b5b9c9db1db8c7b34874df8d57fe2eda61442fd308c"
+ },
+ "/media/ses/ayet/79-32.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_32.mp3",
+  "sha256": "d53ff07d8a6030a12513865cf9e0acef4e60afc427982a58c25b43d14adca5bc"
+ },
+ "/media/ses/ayet/79-33.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_33.mp3",
+  "sha256": "9a4c93d8d35e1e715faf5e244b56e45171973268d63ea9e0d722a3a250a553ac"
+ },
+ "/media/ses/ayet/79-34.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_34.mp3",
+  "sha256": "5d702fec1868625d933c450c702dde4e2be0e60b0a128fd753d864ac86c0aabf"
+ },
+ "/media/ses/ayet/79-35.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_35.mp3",
+  "sha256": "c71fcebeb3b3f9f74e06e7cf1de2ebd957a2e2cd8b764c2ad377c77787f07418"
+ },
+ "/media/ses/ayet/79-36.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_36.mp3",
+  "sha256": "70fbc5770d810be97bc42ddd7a81b507565d52dcec14370be6183a445337be1e"
+ },
+ "/media/ses/ayet/79-37.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_37.mp3",
+  "sha256": "ef8427b6d7110411373db8675a0277b0fcca0afa3ecb85f7bd677ca26c1b8738"
+ },
+ "/media/ses/ayet/79-38.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_38.mp3",
+  "sha256": "7fdd2565d8bdb8faf9b7747e1a3ad83a5b1278e009165fff9dd88eebfc8365c6"
+ },
+ "/media/ses/ayet/79-39.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_39.mp3",
+  "sha256": "2971f5fac8b94d9974f0d3a33dd3b92de4e9f6ed638001200d171d4da2e82840"
+ },
+ "/media/ses/ayet/79-40.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_40.mp3",
+  "sha256": "596bd7578e1514daafcf20f7d3e8d46c857ee59e2397ec516566bfb593f65a6c"
+ },
+ "/media/ses/ayet/79-41.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_41.mp3",
+  "sha256": "c0498e483d86d8c28f44fb1cdd4a4d45b960b97cc754a3e176f14367907b7079"
+ },
+ "/media/ses/ayet/79-42.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_42.mp3",
+  "sha256": "74f3b96d60e896b95c28ee2f3074433b3893f442dfcb1d467cb26ba71a503b2d"
+ },
+ "/media/ses/ayet/79-43.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_43.mp3",
+  "sha256": "eacf4440c211891681343d5a4f4d75333e974d669066662d9a4a6ceb938c7dc2"
+ },
+ "/media/ses/ayet/79-44.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_44.mp3",
+  "sha256": "f0058c72a88b22c5dd735bb67bd1c83497fc7a8b2e9b44744ab6a4e1bf80a928"
+ },
+ "/media/ses/ayet/79-45.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_45.mp3",
+  "sha256": "c4aef34579a271554bdbc471799261457293ba38116bf506e8cbc50678bdcbbc"
+ },
+ "/media/ses/ayet/79-46.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/79_46.mp3",
+  "sha256": "c7502379e20f6fc644d95226fcfc29becce32ac4293097622bde800b3f79a2eb"
+ },
+ "/media/ses/ayet/80-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_1.mp3",
+  "sha256": "422c7060de363a168941b3fd63a8e4b83ab8e9b924a883a7bbf1c19c0e32754d"
+ },
+ "/media/ses/ayet/80-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_2.mp3",
+  "sha256": "817e5e00ddcb0d5bcffe25e2a8f97bfd9700f0f35978b83e5e500b2e07885c43"
+ },
+ "/media/ses/ayet/80-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_3.mp3",
+  "sha256": "c7141d03e2cc785ad81ba2da12964c17874d06be38a479b7384f901ce526096e"
+ },
+ "/media/ses/ayet/80-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_4.mp3",
+  "sha256": "ac13f2bfbbd99b70f0737cf2f97477b441a6f81b07a039699372c303ca892aff"
+ },
+ "/media/ses/ayet/80-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_5.mp3",
+  "sha256": "46f98563f6246876835fe0d779ef54a27241b065c1798a81c947408990f615d6"
+ },
+ "/media/ses/ayet/80-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_6.mp3",
+  "sha256": "3846fca2e640e33dd687fb81188e24eeece4991313fb7eafc18c7485ff703389"
+ },
+ "/media/ses/ayet/80-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_7.mp3",
+  "sha256": "dd37deea072bc81a7b4e97bc5a98aa7e167db68ce97c866616b7774040e4a0dd"
+ },
+ "/media/ses/ayet/80-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_8.mp3",
+  "sha256": "14cca0678c4015784e775e96f8bfdbda0bd831b5e4d0b6eda0b906e34ae1d91f"
+ },
+ "/media/ses/ayet/80-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_9.mp3",
+  "sha256": "291cfbb7795fb18a93c5c08c173e00c3e5716747419aac1ac14caef278db216e"
+ },
+ "/media/ses/ayet/80-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_10.mp3",
+  "sha256": "99645f9731e22fdc37d718a143edc47ae3c87b30d348a55a6e5869485d856d2b"
+ },
+ "/media/ses/ayet/80-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_11.mp3",
+  "sha256": "196baa1bb45c6a6337c7d7582f082dfce9ed8e7afea7430d02237cbb689d2eb2"
+ },
+ "/media/ses/ayet/80-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_12.mp3",
+  "sha256": "9cb469097d8ef52e636c1d34cfe40e3d28e37fd43735a46a2bb52af5b786b1b4"
+ },
+ "/media/ses/ayet/80-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_13.mp3",
+  "sha256": "bd72282be7ce6b30270b2a2d9f6422072a62ebed8a0d3f9a891a3ec1d3372bf2"
+ },
+ "/media/ses/ayet/80-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_14.mp3",
+  "sha256": "7ba7cdc3e6f0e525c9a39bfc59b3f6783477f2893771f1d84b1ef01135d66fc9"
+ },
+ "/media/ses/ayet/80-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_15.mp3",
+  "sha256": "e060feb6abb4c643746e640bbda989536fa4ad0bcf5ddca11a7456b30afdba01"
+ },
+ "/media/ses/ayet/80-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_16.mp3",
+  "sha256": "73d7941db1d46c837f06c89bfeb453cb1de5dcb018d1d0fe9e1cf644e6f6b8ab"
+ },
+ "/media/ses/ayet/80-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_17.mp3",
+  "sha256": "25fcc8533e6f147630a433ff28109711e5aa60f8dbf811d62f1e9f37c6a4f80f"
+ },
+ "/media/ses/ayet/80-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_18.mp3",
+  "sha256": "a3645b02d6e8273abcf4f0013844c03d3d9723710a461fb78f023f287b414a20"
+ },
+ "/media/ses/ayet/80-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_19.mp3",
+  "sha256": "58960feb99a89ba5851ff83e8d95d502bcd9a345a0e1dad6d785b2733602fb69"
+ },
+ "/media/ses/ayet/80-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_20.mp3",
+  "sha256": "88bbb79a06781c499a88aed0f2d992e080b1bd0acd4291b77984904993086f63"
+ },
+ "/media/ses/ayet/80-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_21.mp3",
+  "sha256": "7d0ef22dcafaf3343216b736c9052635fb6f82f873207c98f16c161514de55b7"
+ },
+ "/media/ses/ayet/80-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_22.mp3",
+  "sha256": "c348e1f91454381dc2de5641480b36d7abca6fa3707225762e6f744e805cc00c"
+ },
+ "/media/ses/ayet/80-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_23.mp3",
+  "sha256": "3180f504aa27c14e4963a9f141c8f30ff2c3bc7b27683d1109dd5e1b81c9991a"
+ },
+ "/media/ses/ayet/80-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_24.mp3",
+  "sha256": "5ebf89a7fd6f4803d25921f9fcb4bf036dff4199c4f508684102fd6c805b0c1a"
+ },
+ "/media/ses/ayet/80-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_25.mp3",
+  "sha256": "63f1756d287d5e02691a2b1afb6f18613198302ec1e2131599ba7d73336e4c94"
+ },
+ "/media/ses/ayet/80-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_26.mp3",
+  "sha256": "340e14a132c2ad8edee1a704a1565770bb2bcbd456434c5ed387d3c59805fa29"
+ },
+ "/media/ses/ayet/80-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_27.mp3",
+  "sha256": "6d8ed3bdbae9fd5e0bf92fda9dbbba8958b27d1afff4ce4dfad818a9d8027efe"
+ },
+ "/media/ses/ayet/80-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_28.mp3",
+  "sha256": "4c1c8969069e52199b31762e7e06482f7099de773fac4b20e39c7ea8090b45a6"
+ },
+ "/media/ses/ayet/80-29.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_29.mp3",
+  "sha256": "974d44f80afa738413e6241f16caa45e15e16939c068cb76b2232e3f09665a7a"
+ },
+ "/media/ses/ayet/80-30.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_30.mp3",
+  "sha256": "ea3342e16bc928bb509c703c5f1defd319fed9a2d533e4e3aafc93ffedb32de1"
+ },
+ "/media/ses/ayet/80-31.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_31.mp3",
+  "sha256": "554c33b219c40bd1e7d3798cd0dc83c56616137fc3c2788ebfda578f57cb743c"
+ },
+ "/media/ses/ayet/80-32.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_32.mp3",
+  "sha256": "2936880f1c11d06a7a8e835a780208825dc6038fc8415d5d310167a5d86a5f3b"
+ },
+ "/media/ses/ayet/80-33.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_33.mp3",
+  "sha256": "7054502c27024365efd28c17a97986d9ec991a00e9d99d4db03a4225c1ae34ea"
+ },
+ "/media/ses/ayet/80-34.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_34.mp3",
+  "sha256": "fea8781b33335d8b66cb357f49c2c6d6acda019257e5bdb10ca99f3c4664df66"
+ },
+ "/media/ses/ayet/80-35.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_35.mp3",
+  "sha256": "c299fccee23103bdc212cc07d82954939f3d099a4d7e38ceebed6a27e6d06088"
+ },
+ "/media/ses/ayet/80-36.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_36.mp3",
+  "sha256": "7c741c998b801cfc681e537b6860adfb2f1c374ce64d572fd6fd1f34a7bb20ec"
+ },
+ "/media/ses/ayet/80-37.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_37.mp3",
+  "sha256": "04ebb95193b3ce954ad0a0dc15a03155d9971982fb4d3aed96f17d7463c26762"
+ },
+ "/media/ses/ayet/80-38.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_38.mp3",
+  "sha256": "c4f7e3d2fec67ce329d4f9d30dbd66746e93c18ef767de281778f7cf6eb9650e"
+ },
+ "/media/ses/ayet/80-39.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_39.mp3",
+  "sha256": "2bdf25c48d353384abf7d2b03859f193747e1bb60a749e20e336bce561ff0768"
+ },
+ "/media/ses/ayet/80-40.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_40.mp3",
+  "sha256": "4a56ac2d8584d6283ed9fc5b0d22e9476df71db1efe6d5447c9ca55ca4ed22e7"
+ },
+ "/media/ses/ayet/80-41.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_41.mp3",
+  "sha256": "492c1d4c63acebdde87d31f45b5e6bde453602343a970514bc59757de13bb487"
+ },
+ "/media/ses/ayet/80-42.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/80_42.mp3",
+  "sha256": "591c794df6cd29845166cde8296ebec72f6802bf58b76df425993297f6dc135d"
+ },
+ "/media/ses/ayet/81-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_1.mp3",
+  "sha256": "9c2898d6880621e7c6bde6c16c5f2d964b4431fc3398546a9e6b00592fc9659d"
+ },
+ "/media/ses/ayet/81-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_2.mp3",
+  "sha256": "3fa71f8993dd5da9709c9829083f5759647867708093207cdbb45c94b47016a5"
+ },
+ "/media/ses/ayet/81-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_3.mp3",
+  "sha256": "8e183e3640b3af0013534a54872ab631d27c755eab5251c6da796d85ea19726d"
+ },
+ "/media/ses/ayet/81-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_4.mp3",
+  "sha256": "76d57390e21685cc194ebbe42bc8a1032b196c12c7c6a9adbeb1c9f487840164"
+ },
+ "/media/ses/ayet/81-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_5.mp3",
+  "sha256": "e21f71f753e3c397fcb324f3b36858c4b9f194e89685cd5aef3b58b193b6fd93"
+ },
+ "/media/ses/ayet/81-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_6.mp3",
+  "sha256": "59a934b353426ebd04c648896f4ff1ff46b6f79655025032bb181ededf77223d"
+ },
+ "/media/ses/ayet/81-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_7.mp3",
+  "sha256": "7edf5f0afb2e908d54d8de0e9833ca83b4e6b32cbfb9e307b1c17460d036316a"
+ },
+ "/media/ses/ayet/81-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_8.mp3",
+  "sha256": "f30cb762cfae3b7dacfb19039f8845555a33da158aa6a32dc96f2b9868532209"
+ },
+ "/media/ses/ayet/81-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_9.mp3",
+  "sha256": "2623e30de1ffba24a9f2425252ddff1eed1a6395586625251ded4ad98f188868"
+ },
+ "/media/ses/ayet/81-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_10.mp3",
+  "sha256": "3c928aa8e54041ba96d69ce0f1ac0cffbc298ac3cbc0729a506084f73846bc95"
+ },
+ "/media/ses/ayet/81-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_11.mp3",
+  "sha256": "990e49fa4dd2eb93cc023ba19749fbef3aadd1c731346ddd856ddc87fc37b62c"
+ },
+ "/media/ses/ayet/81-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_12.mp3",
+  "sha256": "dd77c450c6304a2a7925f1582d1bd444fb5c0dba59b6a4e7eecc844685a6a0c2"
+ },
+ "/media/ses/ayet/81-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_13.mp3",
+  "sha256": "f2209551a71733e84b3b4fdfc99264adf179f08b081c41973d851c332001cda7"
+ },
+ "/media/ses/ayet/81-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_14.mp3",
+  "sha256": "acacfc3e182b77ceffd6bac4c5484c9ad1b038ffff3aad7efa8b138fe04d81ba"
+ },
+ "/media/ses/ayet/81-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_15.mp3",
+  "sha256": "3d31f2309b4eea99b846e01dfc435748740d44ef7384822687fe4c8971f7ae20"
+ },
+ "/media/ses/ayet/81-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_16.mp3",
+  "sha256": "c3b9f2732ff000ccde652bb52c385abb158df67dd4bfaffeb03fcc1c4a35751e"
+ },
+ "/media/ses/ayet/81-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_17.mp3",
+  "sha256": "b6e937bc88636765f3d080fdfcd4aff9b4c9ec671a1ac5ce073f808f09685ee9"
+ },
+ "/media/ses/ayet/81-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_18.mp3",
+  "sha256": "6e728063f89858a64960d1f4c5a3fa9593715f17a4bac73ab1d0c545eef16191"
+ },
+ "/media/ses/ayet/81-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_19.mp3",
+  "sha256": "161df577b164c32a8e4a038484d0a7d46f8928c4efe929b372d747d224e7cd7a"
+ },
+ "/media/ses/ayet/81-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_20.mp3",
+  "sha256": "8c476b5ed62b84de8d4603083c1b81f7d4c22e3e7cf7570082da44417234b3ad"
+ },
+ "/media/ses/ayet/81-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_21.mp3",
+  "sha256": "d7aae9ca85eab541116689b48b39de7443538d11b45c6423c6bcaaabfc0dff7d"
+ },
+ "/media/ses/ayet/81-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_22.mp3",
+  "sha256": "e47ae04c3e45d9d6eac78fc61f97882843c1556c0de534d1af32e0bf48af690f"
+ },
+ "/media/ses/ayet/81-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_23.mp3",
+  "sha256": "ac2f4da93a62a5f57b7e6d6f8aced7ce9653c8193fe956e96be8b5b1f553c8d1"
+ },
+ "/media/ses/ayet/81-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_24.mp3",
+  "sha256": "1dc9f89a5f28d194a95f61da65c6bb4de51d3ff52a62d51480dc5e65280c84c3"
+ },
+ "/media/ses/ayet/81-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_25.mp3",
+  "sha256": "f93e146694a1456911794797c8353947db7d1c8623a3e173fdede607aa4e65f0"
+ },
+ "/media/ses/ayet/81-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_26.mp3",
+  "sha256": "efc2cbed6ffcf84371df7e7c00beaab85cd26916b15ee5fee0977aba30670ea2"
+ },
+ "/media/ses/ayet/81-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_27.mp3",
+  "sha256": "25bcd7c560291f5db37105e6806d5d9edf8c577461ae3476130e280ea7cf2173"
+ },
+ "/media/ses/ayet/81-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_28.mp3",
+  "sha256": "f125e06d36f3517459e589caa43dafc4f1d16af31ad823231f49d702bf8c306b"
+ },
+ "/media/ses/ayet/81-29.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/81_29.mp3",
+  "sha256": "be15359bcfe7c65885a391d32cb750dd80dcf903a2f3d3e90ddd30502c21df65"
+ },
+ "/media/ses/ayet/82-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_1.mp3",
+  "sha256": "b0089c1b73f445c9c35dade4ff5c39f24ad76c1f3bcfcb6a219c70beb34489eb"
+ },
+ "/media/ses/ayet/82-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_2.mp3",
+  "sha256": "856d5f3056aae897c9ed587e0f290375d4504f23883f8a22cb93815f6db67aa0"
+ },
+ "/media/ses/ayet/82-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_3.mp3",
+  "sha256": "2b0244ec04c52b8ffa13979504ed1d2224b55a1e70f4499f01498183cb63d624"
+ },
+ "/media/ses/ayet/82-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_4.mp3",
+  "sha256": "360657024de8c673954b90fac6920c91dc2d98ccbd91aa1681e9662ec05bb890"
+ },
+ "/media/ses/ayet/82-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_5.mp3",
+  "sha256": "42f0a6d074c268e681d8ee5bb2eaef9f2008c5ec9ace8534ca08f503ce4055e0"
+ },
+ "/media/ses/ayet/82-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_6.mp3",
+  "sha256": "1a005bacd22035fb433f2427a1ac42a18bf743eb69114af99bc13e00d3870032"
+ },
+ "/media/ses/ayet/82-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_7.mp3",
+  "sha256": "9073add2b1b9e0c7747763b161e55862c36e25b5b9b7382d6c3cc1a387565a36"
+ },
+ "/media/ses/ayet/82-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_8.mp3",
+  "sha256": "a72e02d9f722e271151b6a7326bd400585d018d8f18639d91abbc89c040e88ca"
+ },
+ "/media/ses/ayet/82-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_9.mp3",
+  "sha256": "d1519e909fb0f82218947cdb47e976c831adac80382cf5aebebd8e7dd8f1b517"
+ },
+ "/media/ses/ayet/82-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_10.mp3",
+  "sha256": "4ae56bac1a45085fedd8d4a7692fb1fcb71b52fc0069bda8841de7f17da77173"
+ },
+ "/media/ses/ayet/82-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_11.mp3",
+  "sha256": "f932a52583bc646e9c9fcef58e921554d42343904cb6f0134c59d338dcd2acad"
+ },
+ "/media/ses/ayet/82-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_12.mp3",
+  "sha256": "5c5e824f13bcd2bf80643ed56ee7ec026b3fc42b5f1cab94a0e2ad8735de5371"
+ },
+ "/media/ses/ayet/82-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_13.mp3",
+  "sha256": "4933d8d4a46320861206fce00a48edb6be387a4f1e7c27afeef51eed8687a886"
+ },
+ "/media/ses/ayet/82-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_14.mp3",
+  "sha256": "6b789b8f93ca8cebda3772b8283c27454b55c87d887e4d947e40d9dd1caedecd"
+ },
+ "/media/ses/ayet/82-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_15.mp3",
+  "sha256": "216ab6d8c682a04f68e6a42cd240e215ff4b58a81deeb53a817dfe924c070b3f"
+ },
+ "/media/ses/ayet/82-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_16.mp3",
+  "sha256": "ab424d24ec9d966e4bf696a11194c036204c8df1c57a02f40f502310956128e6"
+ },
+ "/media/ses/ayet/82-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_17.mp3",
+  "sha256": "ad7830729c16e440edc8faf6dc6e97cdf580068b4714b9a7b6008fe0a7bfcb88"
+ },
+ "/media/ses/ayet/82-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_18.mp3",
+  "sha256": "d7c78b4e2e29d2765c8ec1e51b5b2196dd37eb8a41c5479be562d1f9d326a94e"
+ },
+ "/media/ses/ayet/82-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/82_19.mp3",
+  "sha256": "f967f3b57482372bc482b3ef33243e7a97bf7c5c6df0a6dad52de93d8216b8d6"
+ },
+ "/media/ses/ayet/83-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_1.mp3",
+  "sha256": "d334491726eeb6b21fc10f0f4e98ad49b72d85b0494dd65d3ef3675eec203753"
+ },
+ "/media/ses/ayet/83-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_2.mp3",
+  "sha256": "7d4a070de7dc32e67bf6213b9259cf1a39757c9b6fad8a88a1e7729d814802dc"
+ },
+ "/media/ses/ayet/83-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_3.mp3",
+  "sha256": "d532f83d86dc9f04a2ba01caab37aaaf5743a5500e39ef5214ec475346136682"
+ },
+ "/media/ses/ayet/83-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_4.mp3",
+  "sha256": "86f88f0e67d5e4a03c0660d737edd00e2acb9e6666f83a98ad04266033849732"
+ },
+ "/media/ses/ayet/83-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_5.mp3",
+  "sha256": "916f8618e97d21612202117310cb3f49c21087f3bec0915ac53620c1a57e8d4e"
+ },
+ "/media/ses/ayet/83-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_6.mp3",
+  "sha256": "62fe33a7961b89fe3f8e2b1573a32f829c46f8cdf3122dbffbc731e10c53e690"
+ },
+ "/media/ses/ayet/83-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_7.mp3",
+  "sha256": "c1e1b4f6c0cc4b26ee0884257d5d25ec654c428ec378cc407edc34983bb84aac"
+ },
+ "/media/ses/ayet/83-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_8.mp3",
+  "sha256": "8316dda191ac2d1accce67031b4d005d60f299e437db8820e3912bb71717d425"
+ },
+ "/media/ses/ayet/83-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_9.mp3",
+  "sha256": "c847faf7defa369146bff1789eca83f46694be49959aa704cd6383aa4866f425"
+ },
+ "/media/ses/ayet/83-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_10.mp3",
+  "sha256": "19100a729dd8c3022c817db31844b7eef5b640c5204905117ac374cb7aaf5ecd"
+ },
+ "/media/ses/ayet/83-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_11.mp3",
+  "sha256": "88d835a83a5c86601c976bee093e0bc3a390b0a67ef0f5f97b1d9cd6728178e5"
+ },
+ "/media/ses/ayet/83-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_12.mp3",
+  "sha256": "8b98e324643a1e7b06ae3a40fee7cc5580c8ceaf4e28e2231257d02de3538e60"
+ },
+ "/media/ses/ayet/83-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_13.mp3",
+  "sha256": "c467b85a2537537034acdd7b425f306d9120cf35b116db0f17293c8b415c2453"
+ },
+ "/media/ses/ayet/83-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_14.mp3",
+  "sha256": "2bbb80cb1ae5a37e0f0845aa39de7637819ca0af2d3900e54466d959a045508c"
+ },
+ "/media/ses/ayet/83-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_15.mp3",
+  "sha256": "e8456e4731827b96978c29d1471b3b1a81dfe212e1ab63ea993299458eaf4c77"
+ },
+ "/media/ses/ayet/83-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_16.mp3",
+  "sha256": "db3c10fb881ab73c45ccf02fe367e47581dabbe08e74b6c4707625dbc4853d9a"
+ },
+ "/media/ses/ayet/83-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_17.mp3",
+  "sha256": "2df64fe67a9bfdeae6e19576619eac454771e9d4f2935e8ebdefb5c930ace170"
+ },
+ "/media/ses/ayet/83-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_18.mp3",
+  "sha256": "665ddcd601c629a5059ee60d3e5c03edf0aaf39dd8727b2ce947c54cc2ee6f9d"
+ },
+ "/media/ses/ayet/83-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_19.mp3",
+  "sha256": "c097b8f430f45c7181e91c70c6a8bcd639297e9173e29af592b836ebc4f6a77b"
+ },
+ "/media/ses/ayet/83-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_20.mp3",
+  "sha256": "37fd00c4e97ad8f0e4d8b3b31a234c9c3ff30dd550bfc43363f392301151665c"
+ },
+ "/media/ses/ayet/83-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_21.mp3",
+  "sha256": "7cc9b5e1294dca2bb330d6e1e11252d59d00e3ca88030d486f8da23c4e18fa27"
+ },
+ "/media/ses/ayet/83-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_22.mp3",
+  "sha256": "c75d0989a9061ca32df1fff463bc20e74bd411756edb8e87d8ad446d9bf43b0a"
+ },
+ "/media/ses/ayet/83-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_23.mp3",
+  "sha256": "e353c6d78183251aaab2da32c29114bce8f702ad4a3d98d62cf6ae6aa442260a"
+ },
+ "/media/ses/ayet/83-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_24.mp3",
+  "sha256": "d1259b05199cff51c4b771aa01bb233c40d62e17d5691a799671a96eefbf41aa"
+ },
+ "/media/ses/ayet/83-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_25.mp3",
+  "sha256": "2e43a0a2f9475ad018f06c7262c3851902ee4a22926f6648c1f360a96b971c06"
+ },
+ "/media/ses/ayet/83-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_26.mp3",
+  "sha256": "ced50de098549a2acc5b9e61a098b2c6172f4f9102de44fcb608c50407bc385c"
+ },
+ "/media/ses/ayet/83-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_27.mp3",
+  "sha256": "e479692e5af3d26a32006e7ab41d6b9c1920cdd8039ea5c36ad3fe60da2de045"
+ },
+ "/media/ses/ayet/83-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_28.mp3",
+  "sha256": "5e54c387ef89cbdbbf58eb265491e6f7ab39b15b410884b976875b170059f1a8"
+ },
+ "/media/ses/ayet/83-29.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_29.mp3",
+  "sha256": "ebdd647f6cf0f4fe215559af7d9e03d71fed57558bef9467071cf80c805b9532"
+ },
+ "/media/ses/ayet/83-30.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_30.mp3",
+  "sha256": "0fb8c5da59a9112163c137e887f5e6603a5c4132445d525deb28fc8ece9e2027"
+ },
+ "/media/ses/ayet/83-31.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_31.mp3",
+  "sha256": "7569df93c325338453e496b16089c824b35056d5f86e4e0f277756a127575034"
+ },
+ "/media/ses/ayet/83-32.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_32.mp3",
+  "sha256": "a051237c3c336958d18ac9139cdd3ac4060aaa1245db55f2a873e0eaac75eda7"
+ },
+ "/media/ses/ayet/83-33.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_33.mp3",
+  "sha256": "dcbb038c8d887a55b9d969fd1275b2f4461672bcfb39c0e91cc6219307db52d3"
+ },
+ "/media/ses/ayet/83-34.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_34.mp3",
+  "sha256": "d8c29d833d41c73bf457f31a9535059841c544ae4e1d3207f9e134ed88b23e78"
+ },
+ "/media/ses/ayet/83-35.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_35.mp3",
+  "sha256": "0fc3061784f091e81a75018189b0c0b5079f323a3cf4b6cba79841206b2b83f0"
+ },
+ "/media/ses/ayet/83-36.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/83_36.mp3",
+  "sha256": "ff9cc40fd1ad3cb9d6cb86219efd91694a35e549dd5f7e147dc720f2b8650133"
+ },
+ "/media/ses/ayet/84-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_1.mp3",
+  "sha256": "e78eb3c82205afecbb041cf07f7e22d3792bf45494c98f3e5deffb6849a356df"
+ },
+ "/media/ses/ayet/84-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_2.mp3",
+  "sha256": "53251c682ea3f9ae556d1adc3d2fe649009037ac59c340ce396fc3fa9d05de20"
+ },
+ "/media/ses/ayet/84-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_3.mp3",
+  "sha256": "528c887b6ca14464f374492ffc936067e189723a627261ab2ff6795dd76a92a1"
+ },
+ "/media/ses/ayet/84-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_4.mp3",
+  "sha256": "e7d6b16b725a58c5ece819c6cd633d5dc517ca5dd546a990bed7e49cbf66345e"
+ },
+ "/media/ses/ayet/84-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_5.mp3",
+  "sha256": "37d833c506bcf8f31b0ef07d952c4c669103dc3854760fa599900477c033d749"
+ },
+ "/media/ses/ayet/84-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_6.mp3",
+  "sha256": "6b0bfdac302a2202f0c5e554be5e68e84a04d1b1a64ec562d370c8b9651f8a2a"
+ },
+ "/media/ses/ayet/84-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_7.mp3",
+  "sha256": "66daff642015f71075fa55274c2f0200899f2b6daa5e99e905f57e88ce2f5d7a"
+ },
+ "/media/ses/ayet/84-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_8.mp3",
+  "sha256": "784521225ad66194fa1e8383fe44796b36c504b14b44efb2a9b82b204169bcf8"
+ },
+ "/media/ses/ayet/84-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_9.mp3",
+  "sha256": "c5b30cfac43c38cb9b3a6e79456d4aa056064768206c07ecbfdd65ef08eaaa44"
+ },
+ "/media/ses/ayet/84-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_10.mp3",
+  "sha256": "455bce10a7c47d99e27e7d63d119c4454ace5c237c9f78bfcac721024e4ddad5"
+ },
+ "/media/ses/ayet/84-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_11.mp3",
+  "sha256": "738e7b70abba77a2a36b5545897f30584e14dd2227ee057f441a122c1d4ebfea"
+ },
+ "/media/ses/ayet/84-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_12.mp3",
+  "sha256": "4b340a54ce442ed4d33d6334ee6b3ed54a4aca1f68b6beac52449492436e661e"
+ },
+ "/media/ses/ayet/84-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_13.mp3",
+  "sha256": "7b48854222073be8a5205502a3f5e0fbf348baed85dc3a905c0a59ed02ed316b"
+ },
+ "/media/ses/ayet/84-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_14.mp3",
+  "sha256": "69414de565f5a829a13897cf575f05654fd07701e438ab7d8bbba6d7c6d8b604"
+ },
+ "/media/ses/ayet/84-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_15.mp3",
+  "sha256": "440aa31231feb00859ec6bed359e73f690c711f39c62180c7643b83ffd73aa59"
+ },
+ "/media/ses/ayet/84-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_16.mp3",
+  "sha256": "a3aeeeba315aca30938dbafdc27a5f4ce63426e475fcf5c698fc531d2a0ff8ff"
+ },
+ "/media/ses/ayet/84-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_17.mp3",
+  "sha256": "b583df8e7454caf97a28e280704cd40dca7c4b94f4919593e34a9e185c6a29ee"
+ },
+ "/media/ses/ayet/84-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_18.mp3",
+  "sha256": "bafc4c4ac5bd9043bcf62610cbd574d74a10a4360608428e12723c39e5f1dfd4"
+ },
+ "/media/ses/ayet/84-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_19.mp3",
+  "sha256": "12038aab39878bf3e18cafd18b1a8e15ea37c161ca483d0328174782dc9b102a"
+ },
+ "/media/ses/ayet/84-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_20.mp3",
+  "sha256": "4aa772f55b7e09e3dee88b2e340916ec8c2500a1256576d834494dd98dba56af"
+ },
+ "/media/ses/ayet/84-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_21.mp3",
+  "sha256": "244810536f4ebaff7d86ba0b8db3596b01a2aa4e05ee05a3d10d5166eed0000c"
+ },
+ "/media/ses/ayet/84-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_22.mp3",
+  "sha256": "4b575ef33a629330541ccb8665a6b942894854f3574588b63b530d2a9ab0079e"
+ },
+ "/media/ses/ayet/84-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_23.mp3",
+  "sha256": "d638f77f7aa2017a948610f3b883107e1021b8628976bd412d48b83a018f3d99"
+ },
+ "/media/ses/ayet/84-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_24.mp3",
+  "sha256": "fdf32505179f71e1a38fd6634d0a2b399acabb75f5fe6d4a954f22b483267deb"
+ },
+ "/media/ses/ayet/84-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/84_25.mp3",
+  "sha256": "469d6460e5c9c65314b592cfc74230dc465f1e2dca7976d70f7ad718dd249fef"
+ },
+ "/media/ses/ayet/85-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_1.mp3",
+  "sha256": "0da261a651e869ed0007388303a36cca056c4e45fdda51e27d83f460c55e1812"
+ },
+ "/media/ses/ayet/85-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_2.mp3",
+  "sha256": "a33559248a337388d7e18c1cb5626a0ad63f46e8c4c231c28b8164f3f6c6644c"
+ },
+ "/media/ses/ayet/85-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_3.mp3",
+  "sha256": "14d9444f0d4b3eb0d3e084541512b1d0e9f9dae8475545369a419047d80c0479"
+ },
+ "/media/ses/ayet/85-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_4.mp3",
+  "sha256": "3d4d435cb56ec670b6b7669fbfdd37a04387ae6c2c55e95b631ca4b3ca3872cd"
+ },
+ "/media/ses/ayet/85-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_5.mp3",
+  "sha256": "6929c9b336439bc5f667c46a24ecfbdd0c94aec89e361e407ae9063cf611eada"
+ },
+ "/media/ses/ayet/85-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_6.mp3",
+  "sha256": "aee152487627f05c044cdf1ca82ac382c82a8eb465b2f0c18eb8aa34790185ef"
+ },
+ "/media/ses/ayet/85-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_7.mp3",
+  "sha256": "e6188ccf86301a54e135c130e4ce41b1d29cd8d7f1615f6acc556f6eba75303f"
+ },
+ "/media/ses/ayet/85-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_8.mp3",
+  "sha256": "e5f2cad1a8024fbe92106f97ef1f29b5b83debe1aac0368cf9fb71bfbfbc88b4"
+ },
+ "/media/ses/ayet/85-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_9.mp3",
+  "sha256": "b023969da154ca6631649adfdeb4f69bd728fdf830556a2489714312d3319c42"
+ },
+ "/media/ses/ayet/85-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_10.mp3",
+  "sha256": "40b60165533bbfe4edb12be4e88ee56532ca1c6ddf213b22ef14a02b252a55b3"
+ },
+ "/media/ses/ayet/85-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_11.mp3",
+  "sha256": "a505a7d196c62de80e5e8169c0b923a9a6ddb1862d97f93e215a6f87b3ebfb08"
+ },
+ "/media/ses/ayet/85-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_12.mp3",
+  "sha256": "bb6217d3ab3b0e1a1a5c871b4ccf0957200d76479e8442314c1036c0a8a31297"
+ },
+ "/media/ses/ayet/85-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_13.mp3",
+  "sha256": "2ef9ed3be73b57315ca80f119477507a44bb8fe246a6db04b8951580e714c49b"
+ },
+ "/media/ses/ayet/85-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_14.mp3",
+  "sha256": "99e947eaa84a47bfcae9cc739d46a409d114da7e3389dc36eb66b84951325602"
+ },
+ "/media/ses/ayet/85-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_15.mp3",
+  "sha256": "b9a90eb09cad44fd828b5e6929d8b3d7217f311a40c29e77d275844c8a80ca55"
+ },
+ "/media/ses/ayet/85-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_16.mp3",
+  "sha256": "e71d9a1045f0f932112fa8f4607ccc2c53586722076d823f7c7496309dd0ea94"
+ },
+ "/media/ses/ayet/85-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_17.mp3",
+  "sha256": "865dead6e54eb7b702512304700229589bd84bded4e0c84dad4b8bb144cb9aa0"
+ },
+ "/media/ses/ayet/85-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_18.mp3",
+  "sha256": "4c132b1ecb74a4900d3645529f5c3757b65f5947dd4e67f90507e9372bf6fbb9"
+ },
+ "/media/ses/ayet/85-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_19.mp3",
+  "sha256": "de6f2d8ed7aa7fcc82fb99cf100069ac129bf59d0c84a4ea7dea24e29358e6bb"
+ },
+ "/media/ses/ayet/85-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_20.mp3",
+  "sha256": "6560b1155992eb38930c2a220b67fbfba6b14646116094778b49922f8de22ebd"
+ },
+ "/media/ses/ayet/85-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_21.mp3",
+  "sha256": "9347d976513b4837e396903070a8e99905680a8b01354d458ecde26e4ac0d2fd"
+ },
+ "/media/ses/ayet/85-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/85_22.mp3",
+  "sha256": "2d1482002f074d9ae4a8552aa5975cc59c150e491be0ca00380ef6b1443b0326"
+ },
+ "/media/ses/ayet/86-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_1.mp3",
+  "sha256": "3c438de4e0ce26e2ec8d6034c8e665e472c78db0c2197f80e1985a5f17a101f7"
+ },
+ "/media/ses/ayet/86-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_2.mp3",
+  "sha256": "45b5aaac472436f9003891eb2cf7f5bf0f50316c41afbdac1680a51cc05da76c"
+ },
+ "/media/ses/ayet/86-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_3.mp3",
+  "sha256": "e96c82cbea0767c290ca9de8fb0f3b492c1034ee50430df7deb940452a9286ec"
+ },
+ "/media/ses/ayet/86-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_4.mp3",
+  "sha256": "aba037b177bc84deee711998a9bdd0748d02d95ecf3d62a2df33015bf16b1d39"
+ },
+ "/media/ses/ayet/86-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_5.mp3",
+  "sha256": "98943e684f14b5a738211e97ffc4ecfdb98aef43d0abafb90f1d92712c12c74c"
+ },
+ "/media/ses/ayet/86-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_6.mp3",
+  "sha256": "93a6cbb6d0961e78beb143a45a1365cdff6e477efc48ebdf29c1f43d333830ff"
+ },
+ "/media/ses/ayet/86-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_7.mp3",
+  "sha256": "6c83f6d0430b8d78bb6f41b5f5ecd266767945b560309ac9db73773cf0a7d089"
+ },
+ "/media/ses/ayet/86-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_8.mp3",
+  "sha256": "81bc7bfc554f7cb67e1aea09464b22b992ef0e3aef083826048ad56caae08bf2"
+ },
+ "/media/ses/ayet/86-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_9.mp3",
+  "sha256": "db1d2e1e97f1ad4a05c2ca07d64e8b681133f02c5ebae41aa55269a3442480d6"
+ },
+ "/media/ses/ayet/86-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_10.mp3",
+  "sha256": "2ee13249a09aa94c0f9bae70c8b4af04a4d2b69fb91e9202cb57baf8ad5817e1"
+ },
+ "/media/ses/ayet/86-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_11.mp3",
+  "sha256": "2d478bb6d116c09792e183e1f640ee3b7457546ba24fbb545110c0201fcec686"
+ },
+ "/media/ses/ayet/86-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_12.mp3",
+  "sha256": "39e9cbd23d7d75865a35129f1d3a6d147cb01c15310bb653f565b249492b8a9c"
+ },
+ "/media/ses/ayet/86-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_13.mp3",
+  "sha256": "4ca6fce9bca68ee3c1bc70dfb1b2ba5e2386e5f50a8dcd4dd85422e4f67b2799"
+ },
+ "/media/ses/ayet/86-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_14.mp3",
+  "sha256": "decffc75d29bf9c5d45abba9814c09e6deecf4392364b102b771105dafd29695"
+ },
+ "/media/ses/ayet/86-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_15.mp3",
+  "sha256": "ec39d06d5adca373f5d848ea55f2ac4d89252d062e43d0dd2885c443d79ff20d"
+ },
+ "/media/ses/ayet/86-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_16.mp3",
+  "sha256": "cf32259e77cbe2ce4b7d525ba12107eb8cf89b937a744f91fc4b6f807eef55a0"
+ },
+ "/media/ses/ayet/86-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/86_17.mp3",
+  "sha256": "9252f2ab413e1c29148d5f5317b3bed0bcb8f469b1cfcd81ffd724f0dc67ab92"
+ },
+ "/media/ses/ayet/87-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_1.mp3",
+  "sha256": "08ea4fa57643d32cea31076d432f03414eb44d8338b75edde02d77e1d291a97b"
+ },
+ "/media/ses/ayet/87-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_2.mp3",
+  "sha256": "57d03dacfb97541415a79b96b39fca4ce5466e9cb5dd1f5a77045b562e1e48bd"
+ },
+ "/media/ses/ayet/87-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_3.mp3",
+  "sha256": "4402e60383c00f3d0196f1eebe9a56b05fa8d50a6a4140f80c14883f48ab6073"
+ },
+ "/media/ses/ayet/87-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_4.mp3",
+  "sha256": "51879e544371b5b3f9a01564b37c72333af87dbe23297b119d724b13bd7f4446"
+ },
+ "/media/ses/ayet/87-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_5.mp3",
+  "sha256": "192264047427f8d103f917966f3f07df6bc32b76b5a4d55cf02f4a17aa8400e7"
+ },
+ "/media/ses/ayet/87-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_6.mp3",
+  "sha256": "09af2a0d62febeb898919d610a3646b237d71a3ce174734966faf3e09c6186e1"
+ },
+ "/media/ses/ayet/87-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_7.mp3",
+  "sha256": "a9d8c10b6f70e379c6107636437f1940a89008654edec1b2b1df49e28dd66116"
+ },
+ "/media/ses/ayet/87-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_8.mp3",
+  "sha256": "da870c9a3036dd15702a044e356b67f59447c28361fd6bded96ea7f4f5c3e0ec"
+ },
+ "/media/ses/ayet/87-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_9.mp3",
+  "sha256": "8b730032afed9024657f663d2a580640ac5fa993ff514ed426d7d2873a3ec5a0"
+ },
+ "/media/ses/ayet/87-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_10.mp3",
+  "sha256": "93367ec96690730f3f42c1e8d56c708eb240054e7a4f161862149ea8270a4e10"
+ },
+ "/media/ses/ayet/87-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_11.mp3",
+  "sha256": "079493a25b509fe54632ba155e4b62cb21b8656d67dfacaa1c3ba9515f07e2c0"
+ },
+ "/media/ses/ayet/87-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_12.mp3",
+  "sha256": "ba89ba77d5664894bf2c5b9b5f7fa4bb16ea841d01ac6db7b2091be93c629093"
+ },
+ "/media/ses/ayet/87-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_13.mp3",
+  "sha256": "70ec6f53e719d279aa4bdae6b9b15cc8760360eed725132f01511ce7ff983b51"
+ },
+ "/media/ses/ayet/87-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_14.mp3",
+  "sha256": "097313b27fb2a65f7c44a0fd82143988926cc8c8fc72eefc1aa1652c28be8dbb"
+ },
+ "/media/ses/ayet/87-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_15.mp3",
+  "sha256": "30216830fc8b4631c10e3009dea1c721e28524530bd0c4d728b6f73e2e0c4e11"
+ },
+ "/media/ses/ayet/87-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_16.mp3",
+  "sha256": "2a344e973bfb4f4edd880f7c9645cf2ab93e30338f9ab38edc431838dc6673d0"
+ },
+ "/media/ses/ayet/87-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_17.mp3",
+  "sha256": "c040a9d10fafd6e7608ff9049ba2ddcfb089c301e78f5f377c0cdfa137849e6f"
+ },
+ "/media/ses/ayet/87-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_18.mp3",
+  "sha256": "ca3e888984af83f26b519738133101bbd9181c7861afc1feea4239abd6cd7759"
+ },
+ "/media/ses/ayet/87-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/87_19.mp3",
+  "sha256": "047d88484ecac56b10cdbe56b78464ec5c9e29a1b201e566a3518a4233e08821"
+ },
+ "/media/ses/ayet/88-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_1.mp3",
+  "sha256": "64d01d9b93b139e431a29ec3008a02fbc28f8c366a6b54c0105df2d5c25a7b83"
+ },
+ "/media/ses/ayet/88-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_2.mp3",
+  "sha256": "fbf8ab0778556a1454260cbb5952ddd4ed345633a710271ff590a70890b1907b"
+ },
+ "/media/ses/ayet/88-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_3.mp3",
+  "sha256": "38b0df3c96d8f57f7c0a41b66b3def0ade53acd5030164a7dfa2083b09ef26cf"
+ },
+ "/media/ses/ayet/88-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_4.mp3",
+  "sha256": "dca500e9998264b07c76ffe0c0b858732ce382afb788e7f1ea106126765ed1d3"
+ },
+ "/media/ses/ayet/88-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_5.mp3",
+  "sha256": "a44413baefc137e6878242940bb2d267f71b95f009550310fbb9b3500e90d72f"
+ },
+ "/media/ses/ayet/88-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_6.mp3",
+  "sha256": "d1754333f780942910f5271a48d79babca428aea5d15509a77525804f3f436f9"
+ },
+ "/media/ses/ayet/88-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_7.mp3",
+  "sha256": "501bbb82143d559a52ff993148e7c16cb525de75e9893e6b12d073734ab3a2c7"
+ },
+ "/media/ses/ayet/88-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_8.mp3",
+  "sha256": "089ada137295ffdb8addec7b77a914609153bbbe2c4cfb637a8d2f48d7628c76"
+ },
+ "/media/ses/ayet/88-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_9.mp3",
+  "sha256": "2d366174ec3205dffc0b23d21313f803d48e119f8274f20343898a096596db1e"
+ },
+ "/media/ses/ayet/88-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_10.mp3",
+  "sha256": "e158917bfdac8e4e57b5fb63c3429f1a617366513328ef7b8d0b64d35b86070e"
+ },
+ "/media/ses/ayet/88-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_11.mp3",
+  "sha256": "6c812b652ce70a74d77131c0ecb30a4b3492487f5004eb4ed68d61c68a2c1acd"
+ },
+ "/media/ses/ayet/88-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_12.mp3",
+  "sha256": "f98510ae174c234b657446b615b6b942554750f6bf3c57fe8a3be4d76b2b70a1"
+ },
+ "/media/ses/ayet/88-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_13.mp3",
+  "sha256": "cdd17d55c8df0b8722f5bf7eef3bc9ec139b6a79d5ded34e7d829ce242d1f237"
+ },
+ "/media/ses/ayet/88-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_14.mp3",
+  "sha256": "e4bcc308d387946be4640f164e9affa3b09c4e17834bfd41a7deec2253a48599"
+ },
+ "/media/ses/ayet/88-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_15.mp3",
+  "sha256": "81f65de08849d62f746a5a819581126d3c32d529115803fb836f53ab9125c306"
+ },
+ "/media/ses/ayet/88-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_16.mp3",
+  "sha256": "0cd2a8fb2defd3eb970f327e44c80e1f161c246febff6bdbea64000920574ef9"
+ },
+ "/media/ses/ayet/88-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_17.mp3",
+  "sha256": "d97ac7ff5957717f9998221073790934885d91f3773c16effa086f1eeb3523c5"
+ },
+ "/media/ses/ayet/88-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_18.mp3",
+  "sha256": "541cba44c4921b8178f72078a80a85778ed042eae8ee2a4eed5f49c71b8a43b3"
+ },
+ "/media/ses/ayet/88-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_19.mp3",
+  "sha256": "f97c897443c14478b757033cf7e0b38506c34478a74777520e6a9fbb24def6e1"
+ },
+ "/media/ses/ayet/88-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_20.mp3",
+  "sha256": "6cbc04a5dace486c5e652ccce8ac947ccd9219ffa0b68078d87724d4e8d2bfe7"
+ },
+ "/media/ses/ayet/88-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_21.mp3",
+  "sha256": "faa162163b422a883190fb7e4edff8cce29366eddd4f6b61d2eca5c4a4f45f38"
+ },
+ "/media/ses/ayet/88-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_22.mp3",
+  "sha256": "aa85985cb0f6f63e54f224cf3254da3a201665e4ff19a6119505d2f5c6d794c6"
+ },
+ "/media/ses/ayet/88-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_23.mp3",
+  "sha256": "4221392558738f2b39b316a4fc6be31f3314cd53322c9f1823cde8419fb928dc"
+ },
+ "/media/ses/ayet/88-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_24.mp3",
+  "sha256": "9ddf9fc65593d282ee58618966faee066cf3e6d8017c215800d6b111b8c9831c"
+ },
+ "/media/ses/ayet/88-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_25.mp3",
+  "sha256": "929358f971aa282dec7071634dc2d440b66873ed61482fdf70834439858f0761"
+ },
+ "/media/ses/ayet/88-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/88_26.mp3",
+  "sha256": "0a82d673d00776ed89acc9bbed2af57c7fa83b4785935a31182e1f68379298d4"
+ },
+ "/media/ses/ayet/89-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_1.mp3",
+  "sha256": "51fa469e9b46ceac09a62bf8024803528d528a462cb6550d0f55d33228a8e07e"
+ },
+ "/media/ses/ayet/89-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_2.mp3",
+  "sha256": "8babd845efb4cb3ce2f99b9c0167cb50f511d9f5916cdc3892e30c0e2bb739a6"
+ },
+ "/media/ses/ayet/89-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_3.mp3",
+  "sha256": "40483223c449949c8b078c726b856d4b5a1d04d6a15d9f6ae6f7edc7c7dc62f3"
+ },
+ "/media/ses/ayet/89-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_4.mp3",
+  "sha256": "fce1c6734d92d3d099ac4f6bfa4955baaf4b1c059b15c56744032c563466fe63"
+ },
+ "/media/ses/ayet/89-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_5.mp3",
+  "sha256": "78b19c731132fd96035e5b233b6708d7de0de7f52a968fcbea23d49dd904ece7"
+ },
+ "/media/ses/ayet/89-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_6.mp3",
+  "sha256": "8c8710903357a498e95e16ab9581d4a4a8277b8c0d9a603f560b5416a493ac28"
+ },
+ "/media/ses/ayet/89-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_7.mp3",
+  "sha256": "c35b3d9a3d80c560b821b17e8b07e19928686fbd4b8a2f94d409293863e80525"
+ },
+ "/media/ses/ayet/89-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_8.mp3",
+  "sha256": "dc4b4f391b609d99aa99b212a1673efe4ade15545b5e038534e7497644740e8d"
+ },
+ "/media/ses/ayet/89-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_9.mp3",
+  "sha256": "68d46155a2ecde007991068b05369b8f7dc426d0b12e1f469fa02ec25c68eae4"
+ },
+ "/media/ses/ayet/89-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_10.mp3",
+  "sha256": "258a1db9e492143fffda5865460cf9fe478248561daf366794fe2ed3e121cad3"
+ },
+ "/media/ses/ayet/89-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_11.mp3",
+  "sha256": "f60ae62d2e01ceeea89970e2cb5c1e1a6f37dc49b4bc23309fed5cc5a1caea7a"
+ },
+ "/media/ses/ayet/89-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_12.mp3",
+  "sha256": "281811c1fbcd31fdb03a38b88d11903a429c9f1ac755b6057a1f992b9bd1dbfa"
+ },
+ "/media/ses/ayet/89-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_13.mp3",
+  "sha256": "ee645086500219e322f069f500d8ebc85eba869c1359548fd09873267db961bb"
+ },
+ "/media/ses/ayet/89-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_14.mp3",
+  "sha256": "c815b9b80231064cfd1430de41e53e8320f09c462230ed922282691e1cfeae91"
+ },
+ "/media/ses/ayet/89-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_15.mp3",
+  "sha256": "e5a2ac2297e24da3a0dd899d05c967ed09d93ad5c061a16fed23145e715e0394"
+ },
+ "/media/ses/ayet/89-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_16.mp3",
+  "sha256": "26137aabb6b56454453178b25f65891955595f0db3ce741b76da4b7796fd41da"
+ },
+ "/media/ses/ayet/89-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_17.mp3",
+  "sha256": "63fc5e9dbc108602ab0eb7220482261c84c65213a4d96d5614d38daa8cec557c"
+ },
+ "/media/ses/ayet/89-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_18.mp3",
+  "sha256": "67f88e8d51cff0f92ed4f125464cb8651e1921271a39a7b87aea79f82f48d6d8"
+ },
+ "/media/ses/ayet/89-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_19.mp3",
+  "sha256": "8429e78dead02e78a89fb03431af88bca69a8d0cfa1735d7b3d844a224104f5e"
+ },
+ "/media/ses/ayet/89-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_20.mp3",
+  "sha256": "37f2e427f36eff5f8c873b602da08fa85e494a9889ee6ea8b7d0381dac4df09a"
+ },
+ "/media/ses/ayet/89-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_21.mp3",
+  "sha256": "d231ce74e4449cab0ed4e3a65c6bb6b4a33225c97ddedf68c42d33b04a81f0cf"
+ },
+ "/media/ses/ayet/89-22.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_22.mp3",
+  "sha256": "fc814d6ecb589d343dd2e709d414be43ef38f16a41d330675db3e7dc1facb4db"
+ },
+ "/media/ses/ayet/89-23.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_23.mp3",
+  "sha256": "00ae32372d7e4b87e0eb9d89380d77767a5e97b679765edd808471c6e1885ad9"
+ },
+ "/media/ses/ayet/89-24.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_24.mp3",
+  "sha256": "649db3abc5dfc2473712bc00fde32bb53978dd5d6f8e355ff5c9e908d3d8f1e0"
+ },
+ "/media/ses/ayet/89-25.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_25.mp3",
+  "sha256": "45b39365599e3aa2fca697dc6ae62044cd29761fec0b622a240371073475110e"
+ },
+ "/media/ses/ayet/89-26.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_26.mp3",
+  "sha256": "8b36c3a495234ba597f35f285888f2e613344d9e4635b01a49cdb20b8f06b3e7"
+ },
+ "/media/ses/ayet/89-27.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_27.mp3",
+  "sha256": "317c2f8bbccf949ae723153057a1b58e57d16af4c524079ddf5e6cc9680d11e4"
+ },
+ "/media/ses/ayet/89-28.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_28.mp3",
+  "sha256": "79080abad434d7c5a58482d52def8df2343c4f52ac78196fb6e3fc6cd130bafc"
+ },
+ "/media/ses/ayet/89-29.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_29.mp3",
+  "sha256": "793496988382d00deab93d2bab6a291127426d23135df75b23af630beaf40dcb"
+ },
+ "/media/ses/ayet/89-30.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/89_30.mp3",
+  "sha256": "acd94d1779ffdf6d1ac9feedabeae359779b35d74ac32dede2a126aa4a12b86c"
+ },
+ "/media/ses/ayet/90-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_1.mp3",
+  "sha256": "d771e430b8777e8b3264f1a14f9d3e33b991f30c821abcd9545e5a053583975e"
+ },
+ "/media/ses/ayet/90-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_2.mp3",
+  "sha256": "43433e9512f6725f1f55ca6c5fe83ebf7ee877ba712e999ec55cd7b84e2427e9"
+ },
+ "/media/ses/ayet/90-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_3.mp3",
+  "sha256": "ebc5fbf7bad0899b7d84ed2d8b5359e4aa6889328097ffa5df519d2c343ea91f"
+ },
+ "/media/ses/ayet/90-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_4.mp3",
+  "sha256": "6d345ce58252106f55e47f65e8d43360aea0610f697328fb3e1e2823f92d0d22"
+ },
+ "/media/ses/ayet/90-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_5.mp3",
+  "sha256": "46b256be70fea0ae652c4b3ab973d86d82a0481ace0b59c1e4f40c3a674457eb"
+ },
+ "/media/ses/ayet/90-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_6.mp3",
+  "sha256": "d5804be9c720aa763ff248b6e2ab462eb30fa0a0827e4e1d8895e05cfb400052"
+ },
+ "/media/ses/ayet/90-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_7.mp3",
+  "sha256": "4ab7c0583ad94ed448c737b5bdb8903958d8b17f88057e814e2b3cb8d7ff26f6"
+ },
+ "/media/ses/ayet/90-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_8.mp3",
+  "sha256": "0d0cf4cba7fc641bac00f3c0f87fc96eae9c2febf329699b037ff5981437fb66"
+ },
+ "/media/ses/ayet/90-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_9.mp3",
+  "sha256": "2e944f92451421adfd0d6c248cdddb1e094ea0d07d1d2e80723e71167bb0365a"
+ },
+ "/media/ses/ayet/90-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_10.mp3",
+  "sha256": "852a4c78d41768dfba740de44d5fb77e3f7c56a009f4a080f39faf44acaf16d9"
+ },
+ "/media/ses/ayet/90-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_11.mp3",
+  "sha256": "73806daab7feaa5c7e4b91d1e44be8399c3daacbcdd299d7cbabc878a55d65bc"
+ },
+ "/media/ses/ayet/90-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_12.mp3",
+  "sha256": "bc2057eb2a715d860ec6389b2940f174c2283392ae97476be9f2a841dc10496e"
+ },
+ "/media/ses/ayet/90-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_13.mp3",
+  "sha256": "12a41d69f78ca2ea823bb1e4331397be3a6d32d485172100b25dcfd1e885a3bc"
+ },
+ "/media/ses/ayet/90-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_14.mp3",
+  "sha256": "5c29ae967acb04cccb1294b2ae411166247e9dcebabde81a4db2d8633fd19c08"
+ },
+ "/media/ses/ayet/90-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_15.mp3",
+  "sha256": "e8e71fa443ca1ec061ddef26be8ae32342692c929f794f166fe4bf516262d079"
+ },
+ "/media/ses/ayet/90-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_16.mp3",
+  "sha256": "08567b30c0c6e2b07782f295ef687000f71615511e0adf325daa0b7f64a62e84"
+ },
+ "/media/ses/ayet/90-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_17.mp3",
+  "sha256": "499bfb24015be488dcbede6ddc99c3849ea32a1901def57c6e4d6007d7a15653"
+ },
+ "/media/ses/ayet/90-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_18.mp3",
+  "sha256": "ab2a6920825f12b821b6adcb74eb1a1d8083804cd30146f8f98de93d7063db50"
+ },
+ "/media/ses/ayet/90-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_19.mp3",
+  "sha256": "4c281afa9e73478b9a3dfdf26462ad533abd12911014b4e08d3812ac46c717fb"
+ },
+ "/media/ses/ayet/90-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/90_20.mp3",
+  "sha256": "e6dbc4431a82d10eef3789f71a894af64ec29f5bdf9d8d6243b98c2cb2d4c6cc"
+ },
+ "/media/ses/ayet/91-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_1.mp3",
+  "sha256": "38c000c54eda98413eb21bd051f2851d211cc77e607272628baa34a78e56c9d8"
+ },
+ "/media/ses/ayet/91-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_2.mp3",
+  "sha256": "98bec550c305d7fc1ac0bdefe8a1241bf82e43d87d75dfdf9d452c242b4c2668"
+ },
+ "/media/ses/ayet/91-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_3.mp3",
+  "sha256": "b0580c3a591184014fd49bddd1e1b3437eb94f528b99b0ee32ae94d03096f92e"
+ },
+ "/media/ses/ayet/91-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_4.mp3",
+  "sha256": "d9c29ebae96995627e6bf414c1b67b5027659557957b322391d02ec415ee94fe"
+ },
+ "/media/ses/ayet/91-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_5.mp3",
+  "sha256": "ab60f5b13c94f37b30408e094f1dc6c7006f6ab9c8d620bda5f30792495db369"
+ },
+ "/media/ses/ayet/91-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_6.mp3",
+  "sha256": "bbf02daf9d33e8eb7f83ada74ebeee4d9777d8c2d87d6530d367e0b89379cd78"
+ },
+ "/media/ses/ayet/91-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_7.mp3",
+  "sha256": "868293ca083fded4795ccab38bd9a5af74d1925cbdad05b554d007cc38a9fb06"
+ },
+ "/media/ses/ayet/91-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_8.mp3",
+  "sha256": "65bc16b90181cb1ea4ff405b0ee6da0687814738ac38e94c48ddd3834746c474"
+ },
+ "/media/ses/ayet/91-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_9.mp3",
+  "sha256": "80b882abce9803ae295cf84bddf54f683fb3560d5ac51a972835cfcebef0c16f"
+ },
+ "/media/ses/ayet/91-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_10.mp3",
+  "sha256": "ee920f022f6f5ab284ab8cd6e05a3773b62011cc04f7c3c94088985a0a08d749"
+ },
+ "/media/ses/ayet/91-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_11.mp3",
+  "sha256": "c2bc61d0f3bba1f5b344095f9ac8eb9d6832a43fcd376ae0bf2fd0009a465ef0"
+ },
+ "/media/ses/ayet/91-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_12.mp3",
+  "sha256": "2f9e97d6cfd10c60563130fd9b4ff95a2e2712ece6e7f377262668341227f928"
+ },
+ "/media/ses/ayet/91-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_13.mp3",
+  "sha256": "dde70ee0345040db31ac550bf9023830bd77de3220feab023569cfd6c5827c21"
+ },
+ "/media/ses/ayet/91-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_14.mp3",
+  "sha256": "0ebca9473205530c3ba838da0900c451eec52f2eb31bc1e2ac3e8180f213b00d"
+ },
+ "/media/ses/ayet/91-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/91_15.mp3",
+  "sha256": "1dd2f9216a506116a6be9ff0f8526b2f6ac0d78d320589e03536f326a83e8037"
+ },
+ "/media/ses/ayet/92-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_1.mp3",
+  "sha256": "0845a9e1f6505f83afe555e4c8b0ca23ae9fda88d9b028755648e83394decb31"
+ },
+ "/media/ses/ayet/92-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_2.mp3",
+  "sha256": "8f9ddf695f5c13c1c2fce32db867061b96b06ac32903bc3d0130243a1c7e2d29"
+ },
+ "/media/ses/ayet/92-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_3.mp3",
+  "sha256": "cf1fd50d54e09096dfe25b2cf6c489e9dde8736a2d1418d543d11d7a7d129d54"
+ },
+ "/media/ses/ayet/92-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_4.mp3",
+  "sha256": "1b710bd7e8e9cab24b21e3da43915208e8d0775c226c7ca1a0c7a40bc9b8fbaa"
+ },
+ "/media/ses/ayet/92-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_5.mp3",
+  "sha256": "c7500e30ce9bdd86a173e59c0b97f4309b71413b5eea06289d99c5aa5a8b9c12"
+ },
+ "/media/ses/ayet/92-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_6.mp3",
+  "sha256": "b5a1dfeb854a5489bf328eb97d750c51d8e7336f1b99763204c8ac84394ccf50"
+ },
+ "/media/ses/ayet/92-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_7.mp3",
+  "sha256": "a4b185240e99200c1c884b4703df092545a9de121446bc8e2c031504e84d45a1"
+ },
+ "/media/ses/ayet/92-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_8.mp3",
+  "sha256": "0e809a85073df9c6087d1cf4c162534978461131e128ed80ee76c1e51b210e92"
+ },
+ "/media/ses/ayet/92-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_9.mp3",
+  "sha256": "85a1c4685220aef29abda3d34f6cbf054444be34f8441c9167a352714bf79e9c"
+ },
+ "/media/ses/ayet/92-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_10.mp3",
+  "sha256": "4cd9f1ccc6fc1d4daee7342f1cbf5b558929ead51d5ecc679cbb2f1a9146f8cd"
+ },
+ "/media/ses/ayet/92-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_11.mp3",
+  "sha256": "f99eb39cb419eb63582520c394d80cd999e9619277d787608696cbdb36231b4e"
+ },
+ "/media/ses/ayet/92-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_12.mp3",
+  "sha256": "94da9da040354c2c961d721d443804a9b36cdcd10a87f7c266fbd15b75967639"
+ },
+ "/media/ses/ayet/92-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_13.mp3",
+  "sha256": "b60611ac455f1e3bb2134f4dabbeefcc9c5fafb52a3621c0e22777ddf193e8fd"
+ },
+ "/media/ses/ayet/92-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_14.mp3",
+  "sha256": "61ba66248efdca0f2d4b63ef0ed27d9bc0662a912b94777f6706d790da2b1f37"
+ },
+ "/media/ses/ayet/92-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_15.mp3",
+  "sha256": "b36221a34b1306462177c4c5f7dd0fe9273da5a4fb8f6f5219664cec4f8a5105"
+ },
+ "/media/ses/ayet/92-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_16.mp3",
+  "sha256": "6de2de18096b649a9b614565b4a4659468bff12ed1ce8b0247e3345276013c83"
+ },
+ "/media/ses/ayet/92-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_17.mp3",
+  "sha256": "8044580152cff1aee79ee52e8d71006bb861c4204734be1096617b29d144fe7e"
+ },
+ "/media/ses/ayet/92-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_18.mp3",
+  "sha256": "a8f80f6afcffeccf91c5477ec33d9d8dc00d8f5f009eca20673a1cff08ee60de"
+ },
+ "/media/ses/ayet/92-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_19.mp3",
+  "sha256": "ec8cc89b8539ba4d425f375ebd66583577fce05a559432db2e3a6fd251b196f3"
+ },
+ "/media/ses/ayet/92-20.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_20.mp3",
+  "sha256": "44c44768129cd7d0b1677a29460aa732e8c2f1178021da55f0da2ebb0a42a0ec"
+ },
+ "/media/ses/ayet/92-21.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/92_21.mp3",
+  "sha256": "8d310b24d03c34ef5fa2fe632656bdd1203a74033d055b82a60cb5b129a3a3c6"
+ },
+ "/media/ses/ayet/93-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_1.mp3",
+  "sha256": "d737b4affa095dfa8e8295380241f6c13d905d31c70826d34248a765a3d10e93"
+ },
+ "/media/ses/ayet/93-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_2.mp3",
+  "sha256": "80dab3ec7dc084d90aca60bb977098a582c10b1341a36ddd07c35d0e3a733481"
+ },
+ "/media/ses/ayet/93-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_3.mp3",
+  "sha256": "484d73f70a1dd70666b662838adf996f8a70e79c5b38f0cc6dfa73884c5cce4b"
+ },
+ "/media/ses/ayet/93-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_4.mp3",
+  "sha256": "b0c57b557e0ad4bd60fbf55512b756c442a80f52f8d2b492f7d8a03310664797"
+ },
+ "/media/ses/ayet/93-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_5.mp3",
+  "sha256": "9af3dea071c528ea184c9f0f6209d4fef548c83104abad362726c7931deec2ba"
+ },
+ "/media/ses/ayet/93-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_6.mp3",
+  "sha256": "24982d129f835759e5df89d2c951b85a3bd0a88a1341ba05d565042e04af826a"
+ },
+ "/media/ses/ayet/93-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_7.mp3",
+  "sha256": "655344f96d926b5b85af3ce8043fcb90355031f8ae4de9840a08801e8c142fa3"
+ },
+ "/media/ses/ayet/93-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_8.mp3",
+  "sha256": "5f2637d25d4cb95e145ff1a29ccbfe254ced430821c3a5db69a871ed48964549"
+ },
+ "/media/ses/ayet/93-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_9.mp3",
+  "sha256": "22dd0ec0c76b89206b51c1bdafecb359c7dfbc21350a707c063575eda16db5ee"
+ },
+ "/media/ses/ayet/93-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_10.mp3",
+  "sha256": "c535f606de51aef60904d68a900e2768209ad8028e3f091bc2f53274135f1b19"
+ },
+ "/media/ses/ayet/93-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/93_11.mp3",
+  "sha256": "0c89c63a7bb90cb883dc62dd30daec8fa7d942b7de1584c85c9fbd15598c61a9"
+ },
+ "/media/ses/ayet/95-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_1.mp3",
+  "sha256": "91601fd59ef7f3d91f922339df30fdd0825179b3bd727dc99facf96c462dfed2"
+ },
+ "/media/ses/ayet/95-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_2.mp3",
+  "sha256": "3484523c5110c525044df2e47406ab2670fe9e416110d64c0a4341556fabd21c"
+ },
+ "/media/ses/ayet/95-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_3.mp3",
+  "sha256": "0962fef43601f91efe62d12f991902bf46e6261e195454be30061f57797f3ecd"
+ },
+ "/media/ses/ayet/95-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_4.mp3",
+  "sha256": "c8db5cd1459a2bdcfeb13b4d1c061d2e7f63e9430cc7115f61e1dc6ae5b00eb9"
+ },
+ "/media/ses/ayet/95-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_5.mp3",
+  "sha256": "e15f001b60fbba8af79369f988177f4f32c12a6428af792397aa966eba4290b8"
+ },
+ "/media/ses/ayet/95-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_6.mp3",
+  "sha256": "abfee3d61a1558f10240485cf45a6df511be6c8b1844417f9e373190df92b869"
+ },
+ "/media/ses/ayet/95-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_7.mp3",
+  "sha256": "d62389690512c766727e1c84278c13a458b51b3fc38a72f89d2647815347b559"
+ },
+ "/media/ses/ayet/95-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/95_8.mp3",
+  "sha256": "74aa0df4f86ac65cad34a5865fd7f80eae6515657c3bc7f7154c5528334e3690"
+ },
+ "/media/ses/ayet/96-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_1.mp3",
+  "sha256": "524e771d06f4407fc954041540d8d255f05994dc63c1b40f2689f5e46ce86cd3"
+ },
+ "/media/ses/ayet/96-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_2.mp3",
+  "sha256": "0c77d39abe3bfb6e42be8e078a3c2799ac327dbd026191e7616690dc184352ff"
+ },
+ "/media/ses/ayet/96-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_3.mp3",
+  "sha256": "10e82c3bf0bc5700ee2dcb99804d6e03d236656c4daed703d11949aca64b5f64"
+ },
+ "/media/ses/ayet/96-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_4.mp3",
+  "sha256": "6b98e40c90ad7100abceb989cc233ef44f19be29e9ac1db60e5a9e982d82a140"
+ },
+ "/media/ses/ayet/96-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_5.mp3",
+  "sha256": "e3ab2ba62a2f5fc965b23cd3ea9ea103c2cdf8c7b7be9fb14a48f9aec55f0013"
+ },
+ "/media/ses/ayet/96-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_6.mp3",
+  "sha256": "dc99de1ac39877eff61c7597b50fad2ce68c0dc04618084232d9995a417625f3"
+ },
+ "/media/ses/ayet/96-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_7.mp3",
+  "sha256": "d8832906738eef0ccc6a33ac699d8aac463212ae9657d0b26b6ea7e63fed5116"
+ },
+ "/media/ses/ayet/96-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_8.mp3",
+  "sha256": "1f3ceec280a922507db3a1c041f8a03438cc9fa3b75a4e5c31eb764dd7e9258d"
+ },
+ "/media/ses/ayet/96-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_9.mp3",
+  "sha256": "18d6c171a7594ddc4bba65d0804ba139c27f32c842f893ce2051c97aac2e77dc"
+ },
+ "/media/ses/ayet/96-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_10.mp3",
+  "sha256": "2ddf277aa083f346a04ca6fa40098e88492cdc09d7d839b12bed0c0c330190b8"
+ },
+ "/media/ses/ayet/96-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_11.mp3",
+  "sha256": "757ebb243b66142c4b1eb2ec78fded7de6c5e528667c4b44531a4e19af00be30"
+ },
+ "/media/ses/ayet/96-12.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_12.mp3",
+  "sha256": "77508abd7ae892e621ed4050864efe86ca9feccdf998ad56ca3562f8152c2e7e"
+ },
+ "/media/ses/ayet/96-13.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_13.mp3",
+  "sha256": "cbb99ebd71518add401864680bd0f16a2e2fca103476687cb5166db3afbdd9b6"
+ },
+ "/media/ses/ayet/96-14.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_14.mp3",
+  "sha256": "fe79624f9cf3d6cd669d097015fb4650384a957739815999055b2e4c6d929922"
+ },
+ "/media/ses/ayet/96-15.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_15.mp3",
+  "sha256": "f729f2d3b854a64c4001fbc57cb6d9f66830c8a2af55a2c4e23a2da18b95ac9e"
+ },
+ "/media/ses/ayet/96-16.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_16.mp3",
+  "sha256": "0231ffdfade504bba350580b53ba8bd8dd0475cfb817221a8ef04ead935ae6ed"
+ },
+ "/media/ses/ayet/96-17.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_17.mp3",
+  "sha256": "3d30a3aecf7e277fe50678a42ba2d543cfbfad589ae944f61a1c84dc294d9172"
+ },
+ "/media/ses/ayet/96-18.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_18.mp3",
+  "sha256": "9def114bb641cff0ee03fd09a2c555535c639b720062125308b5a611531a5ea7"
+ },
+ "/media/ses/ayet/96-19.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/96_19.mp3",
+  "sha256": "08e694569a9ebff85151cec0aa7d17591b0b036640507820df432890a2c07ee0"
+ },
+ "/media/ses/ayet/98-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_1.mp3",
+  "sha256": "8279b7594cadc1e9a7b6f44ab375dca4e948cc20fb84afc79ee33091183f2eaa"
+ },
+ "/media/ses/ayet/98-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_2.mp3",
+  "sha256": "443f18b4dd3b916799c945e8502292a9a98c2bcbe6fd99b063b8ed045795ffaf"
+ },
+ "/media/ses/ayet/98-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_3.mp3",
+  "sha256": "0187885f3dd4bfd3abd9e11f0c708691ac70d6b76944aa8d1d0074a86a46fb03"
+ },
+ "/media/ses/ayet/98-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_4.mp3",
+  "sha256": "95a2c88d9f120351f285e5ac13a093af1712933c7a16a73a7acac10f24e98730"
+ },
+ "/media/ses/ayet/98-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_5.mp3",
+  "sha256": "84e0c35afa51db2ea0d14ec1766b2d26fca89a5040f9ddfc7c23ac5eff939be9"
+ },
+ "/media/ses/ayet/98-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_6.mp3",
+  "sha256": "66c38ebfa64b17248c3c606f6ccf6a7a51a153aacf5566b41c92eef755022f40"
+ },
+ "/media/ses/ayet/98-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_7.mp3",
+  "sha256": "d55020ccd7b539564ff1d16a2bc564c3bb8a18f029b532948d12796fcf77d43f"
+ },
+ "/media/ses/ayet/98-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/98_8.mp3",
+  "sha256": "a4f41b5f46d1fb0d9bdc3d942d4156d8ce4667f2605d99aaadfd4081e7856412"
+ },
+ "/media/ses/ayet/99-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_1.mp3",
+  "sha256": "abed47440d7d9d846adcf5099b5bb2bb28ee2520f32d902fda477877dd7f75fa"
+ },
+ "/media/ses/ayet/99-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_2.mp3",
+  "sha256": "07cc45255df69c9c23998b04b23adc5ce4b6584ca53dae96f45d8816613512ae"
+ },
+ "/media/ses/ayet/99-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_3.mp3",
+  "sha256": "bf42f7f143eacf78fff835a8382a4bbaf6571992e54f0338cd9c8ec7fb22bb9b"
+ },
+ "/media/ses/ayet/99-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_4.mp3",
+  "sha256": "5d2879a86e72f4b0f2ec7b95bbea20e88f1fc2e996f489bb679fa8985863ccf3"
+ },
+ "/media/ses/ayet/99-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_5.mp3",
+  "sha256": "6402c79b0d287198d77aa7fe65fa7ff835ff57b290d38b2b8c41cc8809783aa5"
+ },
+ "/media/ses/ayet/99-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_6.mp3",
+  "sha256": "33ef6dc249f050d531ae4203c1468b304bcdf0260f180754ff842ce75e668fbb"
+ },
+ "/media/ses/ayet/99-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_7.mp3",
+  "sha256": "022ddb7208f6b59d6b055d22f9dde9d2c9adfff97b6585587f5fc65ccc82e754"
+ },
+ "/media/ses/ayet/99-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/99_8.mp3",
+  "sha256": "2278c66e0365bf05ed35a8febb1da2774521d8341553effedf3a185904d00970"
+ },
+ "/media/ses/ayet/100-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_1.mp3",
+  "sha256": "5523db480ed9134c9554ab83d133126714272d7a6cf1518adab29c91a927ba5c"
+ },
+ "/media/ses/ayet/100-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_2.mp3",
+  "sha256": "79557e4c2a29bd3716c7152d686da2f33b69d27699780b224045477399c138f8"
+ },
+ "/media/ses/ayet/100-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_3.mp3",
+  "sha256": "ddadd9faee3196e97bbcfd3db564c53767dc73e140b3452a407ea9d3fc970b87"
+ },
+ "/media/ses/ayet/100-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_4.mp3",
+  "sha256": "121c6bbfdcf4c1580ddd3aff05b20aa83d22606d016da76bce644d3f77e6f292"
+ },
+ "/media/ses/ayet/100-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_5.mp3",
+  "sha256": "dfb84f81e3c4cc2fcfc44bed82c869b4c1d340ed86dee8f4d5f19c12809dc778"
+ },
+ "/media/ses/ayet/100-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_6.mp3",
+  "sha256": "a4d7985de5c2014ec42a6a580e64b5cea3fa7aa4e19139564e6fcffa6a772dd5"
+ },
+ "/media/ses/ayet/100-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_7.mp3",
+  "sha256": "540bd4e9487ebf182b5631fe5f7da63349a48e14a26d49c73f77a7e8edde4216"
+ },
+ "/media/ses/ayet/100-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_8.mp3",
+  "sha256": "08ce0793cd83aac2c54f45e6cbfaaf2c980a197d617d0c55711d038bc853a86f"
+ },
+ "/media/ses/ayet/100-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_9.mp3",
+  "sha256": "c49824496e529161eafcb82ff8c881d7ec20a3eac330b4fcb883c53b2b6b55c2"
+ },
+ "/media/ses/ayet/100-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_10.mp3",
+  "sha256": "eeb4c8fdb98b03482b7407802a747169be96c4e6c43ea314a67cc097805f19d3"
+ },
+ "/media/ses/ayet/100-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/100_11.mp3",
+  "sha256": "f59bff5fa2251994a27fa48f703ea9b2aab3f37ed218374d5f39f7f14cd61203"
+ },
+ "/media/ses/ayet/101-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_1.mp3",
+  "sha256": "d385067c9c55865c32102134027d3a09bbb794746043eb434d5b42a2f3d42069"
+ },
+ "/media/ses/ayet/101-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_2.mp3",
+  "sha256": "c61493e51da23082c4fadf9a1277fe01f173e2e1b7befe258d424c46c21f7564"
+ },
+ "/media/ses/ayet/101-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_3.mp3",
+  "sha256": "f368158bebe6e287917e24fec3ff82b4a251f0dd5631b32ed4b6f201598f882a"
+ },
+ "/media/ses/ayet/101-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_4.mp3",
+  "sha256": "23723bb55b2f71de15c0f8e2fbe48094c4f1e30142d43f51af689ed7e405fd96"
+ },
+ "/media/ses/ayet/101-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_5.mp3",
+  "sha256": "6438f8850565e314bff45363d1464e59c5924a83fadab2dd5efc4a76445792c6"
+ },
+ "/media/ses/ayet/101-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_6.mp3",
+  "sha256": "bf56484b4b8460ce3df6e9c126e472bb91b37e46924fd9523d4f12db2ee471ca"
+ },
+ "/media/ses/ayet/101-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_7.mp3",
+  "sha256": "af0f63035d7ab22a6c379577c83eff3df64109b5f9420f25c4160980fe77bc04"
+ },
+ "/media/ses/ayet/101-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_8.mp3",
+  "sha256": "c9083d399a81b358da2ce1295407c7e2a6ea239c38f2de781ffc2e260599b0d9"
+ },
+ "/media/ses/ayet/101-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_9.mp3",
+  "sha256": "208fdb26b685c7987084f0565715545ca2a38e27fa4dce6be4ae5872e721833b"
+ },
+ "/media/ses/ayet/101-10.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_10.mp3",
+  "sha256": "cfde70169f5967cff96425fc7caf7dcd5d1b543870184f5697670f77f17415e3"
+ },
+ "/media/ses/ayet/101-11.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/101_11.mp3",
+  "sha256": "c45929a2b089d1c5304e4bb9cc8a84eafd78d430443df58102e957642f6bf3d2"
+ },
+ "/media/ses/ayet/102-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_1.mp3",
+  "sha256": "d9198ae802cdbf9667c0231856ceb0b5075913d5e2275db1ae4db1f4e62ba2a4"
+ },
+ "/media/ses/ayet/102-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_2.mp3",
+  "sha256": "81a9de0706a8b74bde86e915ddf56c4b31150308295d778e45e18bda7e92705b"
+ },
+ "/media/ses/ayet/102-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_3.mp3",
+  "sha256": "7f82b86a56ed34485180af7caf970949f3e9f361326c5d09c9078bfd61ba763d"
+ },
+ "/media/ses/ayet/102-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_4.mp3",
+  "sha256": "d7de2f303d3598b54e0d5055cc5176a0012d58b4b9eb6f2d7fcc3679881fa546"
+ },
+ "/media/ses/ayet/102-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_5.mp3",
+  "sha256": "f54c6da20788b2adbb9e9955cf647d5b4e7052207419ae62b1cf9d338e0f1ffd"
+ },
+ "/media/ses/ayet/102-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_6.mp3",
+  "sha256": "52571da673ac05ff544e19de6dbf29dfa17afd245d1bc89678b87c7108fc5d57"
+ },
+ "/media/ses/ayet/102-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_7.mp3",
+  "sha256": "8de8c740fdaa53c29f546dbb4ae4627ca87f0c7302e2511113e49d1a252f4d8d"
+ },
+ "/media/ses/ayet/102-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/102_8.mp3",
+  "sha256": "880aa90e6b745b251a891665cd2db6ff2444b0592808db441581e4f23c4ed212"
+ },
+ "/media/ses/ayet/104-1.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_1.mp3",
+  "sha256": "f54e595dbad00c03b5b2b89b40dbabd97e88ce1a165a6ca685a17e780c077ae3"
+ },
+ "/media/ses/ayet/104-2.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_2.mp3",
+  "sha256": "899087db25ff915e017e74c06eb70a34ce10f3b7805c4385fae72ec2b84b7c12"
+ },
+ "/media/ses/ayet/104-3.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_3.mp3",
+  "sha256": "3e9f451f08ce2ed11eaf7c27ae50b209a72e8aaf7fd8c69bbcc6f4e6d9c753d6"
+ },
+ "/media/ses/ayet/104-4.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_4.mp3",
+  "sha256": "5ccefe9dd003168bd622db1c1d70698929c56c15f1ac415ae2ba0cf6e32d1cd4"
+ },
+ "/media/ses/ayet/104-5.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_5.mp3",
+  "sha256": "245e592ed3faca402806971c86778e97e387930bc65a33ce1b6f097dad85e7b5"
+ },
+ "/media/ses/ayet/104-6.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_6.mp3",
+  "sha256": "3e13218e72f58a4ed2aa8f8100bc29038f104adffef1ded76cc26bd6ecf0a8c3"
+ },
+ "/media/ses/ayet/104-7.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_7.mp3",
+  "sha256": "89171cd9ecc26fa2ee5be6ee7d57d13f0ebbcdb9652cfcdb9ce318909fa18f13"
+ },
+ "/media/ses/ayet/104-8.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_8.mp3",
+  "sha256": "ef9b53771db406df0a8f1125da32cfefe6ec9620dc11715c3d88b5f66dd15b86"
+ },
+ "/media/ses/ayet/104-9.mp3": {
+  "kaynak": "https://webdosya.diyanet.gov.tr/kuran/kuranikerim/Sound/ar_OsmanSahin/104_9.mp3",
+  "sha256": "679b8c6e814680ffc5cc2d8c8ea40bad530d31ad441b3b660d0e27bfd545a2ca"
+ },
+ "/media/ses/dualar/ruku-tesbihi.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/4_RUKU.mp3",
+  "sha256": "1eb15c87e63a1ff710f248b231c006b5b4eb031061f529d08c5ddba047ff2848"
+ },
+ "/media/ses/dualar/secde-tesbihi.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/5_SECDE.mp3",
+  "sha256": "4660b815b92a3c84c39cb33b75d15d90aa5c2315c9fdd4ebeb5b8763c8fbc559"
  }
 }
