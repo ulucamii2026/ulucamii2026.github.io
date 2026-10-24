@@ -5805,5 +5805,23 @@
  "/media/ses/dualar/secde-tesbihi.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/5_SECDE.mp3",
   "sha256": "4660b815b92a3c84c39cb33b75d15d90aa5c2315c9fdd4ebeb5b8763c8fbc559"
+ },
+ "/media/ses/yapay/kelime-i-tevhid.mp3": {
+  "yapay": true,
+  "kaynak": "Yapay ses (Gemini TTS, gemini-3.1-flash-tts-preview, ses Charon); Diyanet kaydı yoktur. Kurs kütüphanesi: sesler/dua/kelime-i-tevhid-ar.mp3, 5 Eylül 2026",
+  "sha256": "8252fa702abd767b93743e77f57780162e1f6e6430113979fa31c67779f58437",
+  "kursKaynakSha256": "c6795b9599fbdbe0e5cf5e577da3be8251f90b0a17d448079cc52a1ff92bb09a",
+  "dogrulama": "Yazıya dökümle metne uygunluğu doğrulandı (kurs kütüphanesi sesler/dua/dogrulama.log, benzerlik 1,00); okunan metin Diyanet’in Temel Dinî Bilgiler kitabındaki (DİB Yay. 301, s. 25–26) Kelime-i Tevhid ile aynıdır",
+  "seviye": "−16 LUFS çalma yüksekliği (mono dosya çift mono ölçülür: −16,45), gerçek tepe −4,26 dBTP (kurs ses_seviye.py, ayar v1, 7 Ekim 2026)",
+  "sure": 10.08
+ },
+ "/media/ses/yapay/kelime-i-sehadet.mp3": {
+  "yapay": true,
+  "kaynak": "Yapay ses (Gemini TTS, gemini-3.1-flash-tts-preview, ses Charon); Diyanet kaydı yoktur. Kurs kütüphanesi: sesler/dua/kelime-i-sehadet-ar.mp3, 5 Eylül 2026",
+  "sha256": "9481775f591a03b26516f2f0154913a011305e3b475204604578ad419a5cd3e7",
+  "kursKaynakSha256": "42ff81a3ec75b0de577c5c20a65c21879b2650a7fad22acfca1d98a351a49258",
+  "dogrulama": "Yazıya dökümle metne uygunluğu doğrulandı (kurs kütüphanesi sesler/dua/dogrulama.log, benzerlik 0,99); okunan metin Diyanet’in Temel Dinî Bilgiler kitabındaki (DİB Yay. 301, s. 25–26) Kelime-i Şehâdet ile aynıdır",
+  "seviye": "−16 LUFS çalma yüksekliği (mono dosya çift mono ölçülür: −16,44), gerçek tepe −2,27 dBTP (kurs ses_seviye.py, ayar v1, 7 Ekim 2026)",
+  "sure": 13.92
  }
 }

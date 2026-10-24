@@ -5,7 +5,7 @@
  * parça sesleri olan madde parçaları sırayla çalar; sûrenin başından başlıyorsa önce eûzü ve besmele (`dinlemeSirasi`).
  */
 import type { Dil } from '@ortak/i18n/ui';
-import { calismaSayfasiVar, dinlemeSirasi, type KatalogOgesi } from '@ortak/lib/ezber/katalog';
+import { calismaSayfasiVar, dinlemeSirasi, yapaySesMi, type KatalogOgesi } from '@ortak/lib/ezber/katalog';
 import type { MotifAdi } from '@ortak/lib/ezber/motifler';
 import { metin, tarihYaz } from '../i18n/metinler';
 import { ANA_SITE } from '../lib/kimlik';
@@ -17,18 +17,22 @@ const { oge, motif, dil, hedef } = Astro.props;
 const m = metin(dil);
 const ad = oge.ad[dil];
 const sesler = dinlemeSirasi(oge).map((s) => `${ANA_SITE}${s}`);
+// Yapay ses (Diyanet kaydı yok): rozet satırda, çal düğmesinin erişilebilir adında da (katalog `ses.yapay`).
+const yapayAd = yapaySesMi(oge) ? calismaMetinleri(dil).yapayAd : '';
+const dinleAdi = yapayAd ? `${m.dinleEtiketi(ad)} (${yapayAd})` : m.dinleEtiketi(ad);
+const durdurAdi = yapayAd ? `${m.durdurEtiketi(ad)} (${yapayAd})` : m.durdurEtiketi(ad);
 ---
 <li id={`m-${oge.id}`}>
   <div class="madde-ic">
     <span class="rozet-karo" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><use href={`#mt-${motif}`} /></svg></span>
     <span>
       {calismaSayfasiVar(oge) ? <a class="ad" href={`/${dil}/calis/${oge.id}/`} aria-label={`${calismaMetinleri(dil).ac}: ${ad}`}>{ad}</a> : <span class="ad">{ad}</span>}
-      <span class="ust-bilgi"><span>{m.tur[oge.tur]}</span>{hedef && <span>{m.sinifHedefi(tarihYaz(hedef, dil))}</span>}</span>
+      <span class="ust-bilgi"><span>{m.tur[oge.tur]}</span>{yapayAd && <span class="yapay-rozet">{yapayAd}</span>}{hedef && <span>{m.sinifHedefi(tarihYaz(hedef, dil))}</span>}</span>
     </span>
   </div>
   {sesler.length > 0 && (
-    <button class="dinle" type="button" data-ses={sesler.join(' ')} data-etiket-dinle={m.dinleEtiketi(ad)}
-      data-etiket-durdur={m.durdurEtiketi(ad)} aria-label={m.dinleEtiketi(ad)}>
+    <button class="dinle" type="button" data-ses={sesler.join(' ')} data-etiket-dinle={dinleAdi}
+      data-etiket-durdur={durdurAdi} aria-label={dinleAdi}>
       <Ikon ad="cal" sinif="ikon-cal" /><Ikon ad="durdur" sinif="ikon-dur" />
     </button>
   )}

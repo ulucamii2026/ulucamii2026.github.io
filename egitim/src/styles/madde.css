@@ -42,6 +42,8 @@
 .madde .calisma-calar h2 { font-size: 1.35rem; margin-bottom: 0.5rem; }
 .madde .calisma-calar fieldset { margin: 1.2rem 0; grid-template-columns: 1fr; gap: 0.9rem; }
 .madde .calisma-calar .calisma-durum { min-height: 3rem; }
+.madde .yapay-ses { margin: 0.6rem 0 0; color: var(--kontur-2); font-size: 0.92rem; line-height: 1.5; }
+.madde .yapay-ses .yapay-rozet { margin-inline-end: 0.35rem; }
 .madde .calisma-not { margin-top: 0.75rem; color: var(--kontur-2); font-size: 0.9rem; }
 
 /* Hazır olunca hocana oku: dört basamak işaretiyle (renkler yalnız basamağın kendisi). */

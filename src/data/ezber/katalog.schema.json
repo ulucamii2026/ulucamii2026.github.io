@@ -69,7 +69,8 @@
           "minProperties": 1,
           "properties": {
             "tam": { "$ref": "#/definitions/sesYolu" },
-            "parcalar": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/sesYolu" } }
+            "parcalar": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/sesYolu" } },
+            "yapay": { "const": true, "description": "Diyanet kaydı olmayan Kur'an DIŞI metin için yapay ses (24 Ekim 2026). Sayfa «Yapay ses» etiketini bu bayraktan çizer; yalnız kuranMetni false olan maddede ve tek parça (tam) olarak; kaydı docs/dinleme-ses-kaynaklari.json'da yapay:true taşır (tests/ezber-katalog.test.mjs)." }
           }
         },
         "not": { "type": "string", "maxLength": 300 }

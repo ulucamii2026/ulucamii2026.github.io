@@ -7,6 +7,8 @@ interface CalismaMetinleri {
   duraklat: string; surdur: string; durdur: string; hazir: string; bitti: string;
   bekliyor: string; hata: string; kaynak: string; kaynakAciklama: string;
   parcasiz: string; ilerleme: string; js: string; ezan: string;
+  /** Yapay ses (katalogda `ses.yapay`, 24 Ekim 2026): görünür etiket ve açıklama. Diyanet kaydı olmayan Kur'an dışı metinlerde çalarken zorunlu. */
+  yapayAd: string; yapayNot: string;
 }
 
 const METINLER: Record<Dil, CalismaMetinleri> = {
@@ -20,6 +22,8 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     kaynak: 'Diyanet ses kaynağı', kaynakAciklama: 'Bu çalışmada Diyanet İşleri Başkanlığı’nın kayıtlarını dinlersiniz.',
     parcasiz: 'Bu madde tek kayıt olarak dinlenir.', ilerleme: 'Evdeki bu çalışma, hocanın verdiği ezber basamağını değiştirmez.',
     js: 'Çalışma düğmeleri için JavaScript’i etkinleştirin. Kaydı doğrudan da açabilirsiniz.', ezan: 'Bu kayıt sabah ezanıdır.',
+    yapayAd: 'Yapay ses',
+    yapayNot: 'Bu madde için Diyanet’in ses kaydı yoktur. Dinlediğiniz ses bilgisayarla üretilmiştir; okunuşu hocanızdan da dinleyin.',
   },
   fr: {
     baslik: 'Écouter et répéter', giris: 'Écoutez un passage, puis répétez-le à voix haute. Passez au suivant à votre rythme.',
@@ -31,6 +35,8 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     kaynak: 'Source audio de la Diyanet', kaynakAciklama: 'Vous écoutez des enregistrements de la Présidence des Affaires religieuses (Diyanet).',
     parcasiz: 'Ce texte est proposé en un seul enregistrement.', ilerleme: 'Ce travail à la maison ne change pas l’étape validée par l’enseignant.',
     js: 'Activez JavaScript pour les commandes. Vous pouvez aussi ouvrir directement l’enregistrement.', ezan: 'Cet enregistrement est l’appel à la prière de l’aube.',
+    yapayAd: 'Voix de synthèse',
+    yapayNot: 'La Diyanet ne propose pas d’enregistrement pour ce texte. La voix que vous entendez est générée par ordinateur ; écoutez aussi la récitation de votre enseignant.',
   },
   en: {
     baslik: 'Listen and repeat', giris: 'Listen to a passage, then repeat it aloud. Move to the next passage at your own pace.',
@@ -42,6 +48,8 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     kaynak: 'Diyanet audio source', kaynakAciklama: 'These recordings come from the Presidency of Religious Affairs (Diyanet).',
     parcasiz: 'This item is available as one recording.', ilerleme: 'This practice at home does not change the stage confirmed by your teacher.',
     js: 'Enable JavaScript to use the controls. You can also open the recording directly.', ezan: 'This recording is the dawn call to prayer.',
+    yapayAd: 'Synthetic voice',
+    yapayNot: 'The Diyanet has no recording of this text. The voice you hear is computer-generated; listen to your teacher’s recitation as well.',
   },
   nl: {
     baslik: 'Luisteren en herhalen', giris: 'Luister naar een passage en herhaal die hardop. Ga op uw eigen tempo naar de volgende passage.',
@@ -53,6 +61,8 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     kaynak: 'Audiobron van Diyanet', kaynakAciklama: 'U luistert naar opnamen van het Presidium voor Religieuze Zaken (Diyanet).',
     parcasiz: 'Dit onderdeel is beschikbaar als één opname.', ilerleme: 'Thuis oefenen verandert de door de leerkracht bevestigde stap niet.',
     js: 'Schakel JavaScript in voor de bediening. U kunt de opname ook rechtstreeks openen.', ezan: 'Dit is de oproep tot het ochtendgebed.',
+    yapayAd: 'Synthetische stem',
+    yapayNot: 'Van Diyanet bestaat geen opname van deze tekst. De stem die u hoort is door een computer gegenereerd; luister ook naar de voordracht van uw leerkracht.',
   },
   de: {
     baslik: 'Hören und wiederholen', giris: 'Hören Sie einen Abschnitt und wiederholen Sie ihn laut. Gehen Sie in Ihrem eigenen Tempo zum nächsten Abschnitt.',
@@ -64,6 +74,8 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     kaynak: 'Diyanet-Audioquelle', kaynakAciklama: 'Sie hören Aufnahmen des Präsidiums für Religionsangelegenheiten (Diyanet).',
     parcasiz: 'Dieser Inhalt ist als eine Aufnahme verfügbar.', ilerleme: 'Das Üben zu Hause ändert die von der Lehrkraft bestätigte Stufe nicht.',
     js: 'Aktivieren Sie JavaScript für die Steuerung. Sie können die Aufnahme auch direkt öffnen.', ezan: 'Diese Aufnahme ist der Gebetsruf zum Morgengebet.',
+    yapayAd: 'Synthetische Stimme',
+    yapayNot: 'Von der Diyanet gibt es keine Aufnahme dieses Textes. Die Stimme, die Sie hören, wurde vom Computer erzeugt; hören Sie auch den Vortrag Ihrer Lehrkraft.',
   },
 };
 

@@ -97,11 +97,43 @@ test('ses: dosya var, kaynak kaydı ve sha256 tutuyor; kaynak Diyanet; Kur\'an s
       const kayit = sesKaynaklari[yol];
       assert.ok(kayit, `${o.id}: kaynak kaydı yok ${yol}`);
       assert.equal(ozet(yol), kayit.sha256, `${o.id}: sha256 ${yol}`);
+      // Yapay ses (24 Ekim 2026): Diyanet kaydı olmayan Kur'an DIŞI metin; kaydı ayrı denetlenir (aşağıdaki test).
+      if (o.ses.yapay) continue;
+      assert.ok(!kayit.yapay, `${o.id}: kayıt yapay ama katalogda ses.yapay yok`);
       const kaynaklar = String(kayit.kaynak).split(' + ');
       assert.ok(kaynaklar.every((k) => DIYANET.test(k)), `${o.id}: Diyanet dışı kaynak ${yol}`);
       if (o.tur === 'sure') assert.ok(kaynaklar.every((k) => KURAN_SESI.test(k)), `${o.id}: sûre sesi Kur'an sunucusundan değil`);
     }
   }
+});
+
+test('yapay ses: yalnız Kur’an dışı tek dosya; kayıtla birebir; Diyanet kaydı bulunan dua yapay sese bırakılmaz', () => {
+  const yapaylar = katalog.ogeler.filter((o) => o.ses?.yapay);
+  assert.deepEqual(yapaylar.map((o) => o.id).sort(), ['d-kelime-i-sehadet', 'd-kelime-i-tevhid'], 'yapay sesli maddeler (yeni madde eklenirse sesi önce dinletilip onaylanmalı)');
+  for (const o of yapaylar) {
+    assert.equal(o.ses.yapay, true, o.id);
+    assert.equal(o.kuranMetni, false, `${o.id}: Kur'an metni asla yapay sesle okunmaz`);
+    assert.equal(o.tur, 'dua', o.id);
+    assert.ok(!o.kuran && !o.ses.parcalar && /^\/media\/ses\/yapay\/[a-z0-9-]+\.mp3$/.test(o.ses.tam), `${o.id}: yapay ses tek dosya olmalı ve /media/ses/yapay/ altında durmalı`);
+    const kayit = sesKaynaklari[o.ses.tam];
+    assert.equal(kayit.yapay, true, o.id);
+    assert.match(kayit.kaynak, /^Yapay ses \(Gemini TTS/, o.id);
+    assert.match(kayit.kaynak, /Diyanet kaydı yoktur/, o.id);
+    assert.match(kayit.kursKaynakSha256, /^[0-9a-f]{64}$/, `${o.id}: kurs kütüphanesindeki özgün dosyanın özeti`);
+    assert.match(kayit.dogrulama, /Yazıya dökümle/, o.id);
+  }
+  // Tersi: kayıtta yapay:true olan her dosya bir maddenin yapay sesidir (sahipsiz yapay ses yayımlanmaz).
+  const yollar = new Set(yapaylar.map((o) => o.ses.tam));
+  for (const [yol, kayit] of Object.entries(sesKaynaklari)) if (kayit.yapay) assert.ok(yollar.has(yol), `${yol}: katalogda yok`);
+  // Hiçbir Kur'an maddesinin (kuranMetni) sesi yapay değildir; /media/ses/yapay/ yalnız yapay sese ayrılmıştır.
+  for (const o of katalog.ogeler) {
+    const kendi = [o.ses?.tam, ...(o.ses?.parcalar ?? [])].filter(Boolean);
+    if (o.kuranMetni) assert.ok(!o.ses?.yapay && kendi.every((y) => !y.startsWith('/media/ses/yapay/')), o.id);
+    else if (!o.ses?.yapay) assert.ok(kendi.every((y) => !y.startsWith('/media/ses/yapay/')), o.id);
+  }
+  assert.equal(m.yapaySesMi(m.ezberBul('d-kelime-i-tevhid')), true);
+  assert.equal(m.yapaySesMi(m.ezberBul('d-subhaneke')), false);
+  assert.equal(m.yapaySesMi({}), false);
 });
 
 test('plan eşlemesi: plandaki her ezber dizesi eşli, fazlalık yok, kimlikler katalogda', () => {

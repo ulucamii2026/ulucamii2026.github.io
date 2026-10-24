@@ -25,7 +25,9 @@ export interface KatalogOgesi {
   /** Kur'an metni mi (Kur'an'dan olan dualar dahil): yapay ses yasağının ve «yalnız Diyanet» kuralının dayanağı. */
   readonly kuranMetni: boolean;
   readonly kuran?: { readonly sure: number; readonly ayetler: readonly [number, number] };
-  readonly ses?: { readonly tam?: string; readonly parcalar?: readonly string[] };
+  /** `yapay`: Diyanet kaydı olmayan Kur'an dışı metin için yapay ses (24 Ekim 2026). Sayfalar sesin yanına görünür
+   *  «Yapay ses» etiketini bu bayraktan çizer; Kur'an maddesinde asla true olamaz (tests/ezber-katalog.test.mjs). */
+  readonly ses?: { readonly tam?: string; readonly parcalar?: readonly string[]; readonly yapay?: true };
   readonly not?: string;
 }
 export interface SeviyeTanimi { readonly kimlik: Seviye; readonly ad: BesDil; readonly amac: BesDil }
@@ -112,6 +114,11 @@ export function eskiEzberGecisi(eski: Record<string, unknown>): EskiEzberGecisi 
  */
 export function calismaSayfasiVar(oge: KatalogOgesi): boolean {
   return Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || oge.kuran);
+}
+
+/** Maddenin sesi yapay mı (Diyanet kaydı yok): çalarken etiket zorunludur. Tek yer: etiketin çizildiği her sayfa bunu sorar. */
+export function yapaySesMi(oge: Pick<KatalogOgesi, 'ses'>): boolean {
+  return oge.ses?.yapay === true;
 }
 
 /**
