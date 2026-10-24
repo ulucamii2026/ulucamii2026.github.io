@@ -151,7 +151,12 @@ a.gorunmez:focus-visible { position: fixed !important; top: 0.75rem; left: 0.75r
   .giris .guven { align-self: start; }
 }
 .giris .giris-metin { grid-area: metin; }
-.giris h1 { font-size: clamp(3rem, 1.6rem + 4.6vw, 4.25rem); line-height: 0.96; letter-spacing: -0.028em; font-weight: 800; }
+.giris h1 { line-height: 0.96; letter-spacing: -0.028em; font-weight: 800; }
+/* En uzun sözcük bölünemez: Fransızca/İngilizce «mémorisation» (≈ 6,8 em) 320 px'te (WCAG yeniden akış ölçüsü), Hollandaca tek sözcük
+   «Memorisatiekelim» (≈ 8,8 em) 390 px'e kadar 3 rem tabanında sayfayı yatay taşırıyordu (320 px'te 20 px, nl 360/390 px'te 80/50 px).
+   Boyut içerik genişliğine de bağlanır; genişte özgün ölçü geçerli kalır. */
+.giris h1 { font-size: min(clamp(3rem, 1.6rem + 4.6vw, 4.25rem), calc((100vw - 2.4rem) / 7.2)); }
+.giris h1:lang(nl) { font-size: min(clamp(3rem, 1.6rem + 4.6vw, 4.25rem), calc((100vw - 2.4rem) / 9.1)); }
 .giris .vaat { margin-top: 1.4rem; font-size: clamp(1.12rem, 1rem + 0.45vw, 1.3rem); line-height: 1.5; max-width: 22em; }
 .giris .eylem { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 @media (max-width: 29.99rem) { .giris .eylem .dugme { flex: 1 1 100%; } }
