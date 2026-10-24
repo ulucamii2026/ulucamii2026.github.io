@@ -6,6 +6,7 @@
  */
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { readFileSync, readdirSync } from 'node:fs';
 
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const KOK = 'http://127.0.0.1:4402';
@@ -253,10 +254,22 @@ test('Tek parçalı dua: zincir kurulamaz, kademeli gizle açılır; notla birli
   await expect(page.locator(GIZLE)).toBeVisible();
 });
 
-test('Metni olmayan maddede kip bölümü ve A−/A+ yoktur', async ({ page }) => {
-  await page.goto('/tr/calis/d-euzu-besmele/');
-  await expect(page.locator('[data-kip]')).toHaveCount(0);
-  await expect(page.locator('[data-ar-boyut]')).toHaveCount(0);
+// Sayfası olan ama metin dosyası olmayan maddeler (24 Ekim 2026'dan beri yok; sesli ya da Kur'anlı bir madde metinsiz eklenirse kapsanır).
+const katalog = JSON.parse(readFileSync(new URL('../../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
+const metinDosyalari = new Set(readdirSync(new URL('../../src/data/ezber/metin/', import.meta.url)).filter((d) => d.endsWith('.json') && d !== 'metin.schema.json').map((d) => d.slice(0, -5)));
+const METINSIZ = katalog.ogeler.filter((o) => (o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.metinli) && !metinDosyalari.has(o.id)).map((o) => o.id);
+
+test('Metni olmayan sayfada (varsa) kip bölümü ve A−/A+ yoktur; metni olan Eûzü–Besmele ve sessiz Tekbir sayfasında vardır', async ({ page }) => {
+  for (const id of METINSIZ) {
+    await page.goto(`/tr/calis/${id}/`);
+    await expect(page.locator('[data-kip]'), id).toHaveCount(0);
+    await expect(page.locator('[data-ar-boyut]'), id).toHaveCount(0);
+  }
+  for (const id of ['d-euzu-besmele', 'd-tekbir']) {
+    await page.goto(`/tr/calis/${id}/`);
+    await expect(page.locator('[data-kip]'), id).toHaveCount(1);
+    await expect(page.locator('[data-ar-boyut]'), id).toHaveCount(1);
+  }
 });
 
 test.describe('JavaScript kapalı', () => {

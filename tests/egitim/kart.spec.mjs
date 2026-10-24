@@ -5,17 +5,24 @@
  *  - kare kod sayfanın kanonik adresini (https://egitim.ulucamii.be/<dil>/calis/<id>/, yerel adres değil) kodlar ve saf vektördür;
  *  - yazdırma ortamında gezinme/araçlar gizlenir, koyu tema bile açık jetonlara döner (siyah yazı, beyaz kâğıt);
  *  - Chromium'un PDF çıktısı: A4, piksel görsel yok, yazı tipleri gömülü, uzun sûre birden çok sayfa;
- *  - Arapça metni olmayan maddede (onay bekleyen dua) kart hiç sunulmaz.
+ *  - Arapça metni olmayan sayfada kart hiç sunulmaz (24 Ekim 2026'dan beri sayfası olan her maddenin metni var; bugün kümede madde yok,
+ *    ama bir gün sesi olup metni olmayan madde eklenirse sınama onu kendiliğinden kapsar); metni hazır ama hoca onayı bekleyen duada
+ *    (Eûzü–Besmele) ve Diyanet kaydı olmayan dualarda (Tekbir) kart sunulur.
  * PDF üretimi yalnız masaüstü projesinde sınanır (page.pdf masaüstü Chromium'da yazdırma ortamını kurar). Dış ağ kapalıdır.
  * Kare kodun telefonla okunduğunda doğru adrese gittiği ayrıca PDF'ten çözülerek denetlenir (scripts/ezber-kart-dogrula.py).
  */
 import { test, expect } from '@playwright/test';
 import QRCode from 'qrcode';
+import { readFileSync, readdirSync } from 'node:fs';
 
 const KOK = 'http://127.0.0.1:4402';
 const SITE = 'https://egitim.ulucamii.be';
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const KARTLI = ['s-ihlas', 'd-subhaneke'];
+// Sayfası olan (ses, Kur'an ya da metinli işareti) ama metin dosyası olmayan maddeler: kart sunulmamalı.
+const katalog = JSON.parse(readFileSync(new URL('../../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
+const metinli = new Set(readdirSync(new URL('../../src/data/ezber/metin/', import.meta.url)).filter((d) => d.endsWith('.json') && d !== 'metin.schema.json').map((d) => d.slice(0, -5)));
+const METINSIZ = katalog.ogeler.filter((o) => (o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.metinli) && !metinli.has(o.id)).map((o) => o.id);
 
 test.beforeEach(async ({ context }) => {
   await context.route('**/*', (r) => (new URL(r.request().url()).origin === KOK ? r.continue() : r.abort()));
@@ -66,10 +73,30 @@ test.describe('ekranda', () => {
     await baglam.close();
   });
 
-  test('Arapça metni olmayan madde (onay bekleyen dua): düğme de kare kod da yok', async ({ page }) => {
+  test('Arapça metni olmayan sayfa (varsa): düğme de kare kod da yok', async ({ page }) => {
+    for (const id of METINSIZ) {
+      await page.goto(`/tr/calis/${id}/`);
+      await expect(page.locator('[data-yazdir]'), id).toHaveCount(0);
+      await expect(page.locator('.kare-kod'), id).toHaveCount(0);
+    }
+  });
+
+  test('Metni hazır, hoca onayı bekleyen dua kart sunar; Diyanet kaydı olmayan duada kare kod yönergesi dinleme sözü vermez', async ({ page }) => {
+    await page.addInitScript(() => { window.__yazdirildi = 0; window.print = () => { window.__yazdirildi++; }; });
     await page.goto('/tr/calis/d-euzu-besmele/');
-    await expect(page.locator('[data-yazdir]')).toHaveCount(0);
-    await expect(page.locator('.kare-kod')).toHaveCount(0);
+    await expect(page.locator('[data-yazdir]')).toBeVisible();
+    await expect(page.locator('[data-kart-kare] svg.kare-kod')).toHaveCount(1);
+    await expect(page.locator('.kart-okut')).toHaveText(/Dinlemek ve çalışmak/);
+    for (const [dil, sesli, sessiz] of [['tr', 'Dinlemek ve çalışmak', 'Çalışmak için'], ['fr', 'écouter et travailler', 'pour travailler'], ['en', 'listen and practise', 'to practise'], ['nl', 'luisteren en te oefenen', 'om te oefenen'], ['de', 'zuzuhören und zu üben', 'um zu üben']]) {
+      await page.goto(`/${dil}/calis/d-tekbir/`);
+      await expect(page.locator('[data-yazdir]'), dil).toBeVisible();
+      await expect(page.locator('[data-kart-kare] svg.kare-kod'), dil).toHaveCount(1);
+      await expect(page.locator('.kart-okut'), dil).toContainText(sessiz);
+      await expect(page.locator('.kart-okut'), dil).not.toContainText(sesli);
+    }
+    await page.locator('[data-yazdir]').click();
+    expect(await page.evaluate(() => window.__yazdirildi)).toBe(1);
+    expect(await page.evaluate(() => window.__csp)).toEqual([]);
   });
 });
 

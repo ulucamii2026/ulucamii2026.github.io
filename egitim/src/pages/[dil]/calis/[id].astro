@@ -99,8 +99,9 @@ const kipVeri = mt && mt.bolumler.length
     }
   : null;
 // Adım 1 (Dinle) sesi olan her maddede hazırdır; 2 (Yüzünden oku) metni olan maddede; 3, 4 ve 5 yalnız metni olan maddede.
-// (Yapay sesli, metni henüz olmayan dualarda «Yüzünden oku» da «Yakında» kalır: ortada okunacak metin yok.)
-const adimHazir = (a: { hazir: boolean }, i: number) => a.hazir && (i === 0 || Boolean(mt) && (i === 1 || Boolean(kipVeri)));
+// (Yapay sesli, metni henüz olmayan dualarda «Yüzünden oku» da «Yakında» kalır: ortada okunacak metin yok. Tersi de geçerli:
+// kitaptan alınan, Diyanet kaydı olmayan dualarda metin vardır, «Dinle» «Yakında» kalır.)
+const adimHazir = (a: { hazir: boolean }, i: number) => a.hazir && (i === 0 ? sesVar : Boolean(mt) && (i === 1 || Boolean(kipVeri)));
 
 const serit = seviyeOgeleri(oge.seviye).filter(calismaSayfasiVar);
 const sira = serit.findIndex((o) => o.id === oge.id);
@@ -131,7 +132,7 @@ const sonraki = serit[sira + 1];
       {mt && (
         <div class="kart-kare kart-yalniz" data-kart-kare>
           <Fragment set:html={kareKod} />
-          <p class="kart-okut">{k.okut}</p>
+          <p class="kart-okut">{sesVar ? k.okut : k.okutSessiz}</p>
           <p class="kart-adres" set:html={kartAdresi.replace('https://', '').replaceAll('/', '/<wbr>')} />
         </div>
       )}
@@ -139,6 +140,11 @@ const sonraki = serit[sira + 1];
 
     <div class="madde-duzen">
       <div class="yan-panel yan-ust">
+        {!sesVar && mt && (
+          <section class="calisma calisma-sessiz" aria-labelledby="sessiz-baslik">
+            <h2 id="sessiz-baslik">{mm.sesYokBaslik}</h2><p>{mm.sesYokNot}</p>
+          </section>
+        )}
         {sesVar && (
           <section class="calisma calisma-calar" aria-labelledby="calisma-baslik" data-calisma data-baslat={c.baslat}
             data-duraklat={c.duraklat} data-surdur={c.surdur} data-hazir={c.hazir} data-bitti={c.bitti} data-bekliyor={c.bekliyor}
@@ -213,7 +219,7 @@ const sonraki = serit[sira + 1];
             )}
             <p class="kaynak-satiri">
               {dua
-                ? mm.kunyeKaynak(mt.kaynak.ar, meal?.kaynak)
+                ? (dil !== 'tr' && meal ? mm.kunyeKaynakDil(mt.kaynak.ar, meal.kaynak) : mm.kunyeKaynak(mt.kaynak.ar, meal?.kaynak))
                 : <>{mm.kunyeAr}{meal && ` ${mm.kunyeMeal}${gruplu ? ` ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}` : ''}`}</>}
               {meal?.inceleme && ` ${mm.mealInceleme}`}{okunus && ` ${mm.okunusUsulu}`}
             </p>

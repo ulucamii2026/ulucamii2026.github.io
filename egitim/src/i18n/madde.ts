@@ -19,6 +19,8 @@ interface MaddeMetinleri {
   onceki: string; sonraki: string; seriteDon: string;
   /** Kur'an dışı maddeler (dualar): başlık, künye, anlamsız dil, hoca onayı bekleniyor, dikkat edilecek yerler. */
   metinBaslikDua: string; kunyeKaynak: (ar: string, anlam?: string) => string; anlamYok: string; onayBekliyor: string; zorBaslik: string;
+  /** Kitap kaynaklı duaların sayfa diliyle anlamı (FR: Camiye Gidiyorum) ve Diyanet kaydı olmayan maddede dinleme notu (24 Ekim 2026). */
+  sesYokBaslik: string; sesYokNot: string; kunyeKaynakDil: (ar: string, anlam?: string) => string;
 }
 
 const METINLER: Record<Dil, MaddeMetinleri> = {
@@ -47,6 +49,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     onceki: 'Önceki madde', sonraki: 'Sonraki madde', seriteDon: 'Şeride dön',
     metinBaslikDua: 'Metin ve anlam', kunyeKaynak: (ar, an) => `Arapça metin: ${ar}.${an ? ` Türkçe anlam: ${an}.` : ""}`,
     anlamYok: 'Bu dilde anlam yakında eklenecek.', onayBekliyor: 'Metin Diyanet kaynaklarından alınmıştır. Hoca incelemesi bekleniyor.', zorBaslik: 'Dikkat edilecek yerler',
+    sesYokBaslik: 'Henüz dinleme kaydı yok', sesYokNot: 'Bu madde için Diyanet kaydı henüz yok. Metni hocanızdan dinleyin, sonra yüksek sesle okuyup tekrar edin.',
+    kunyeKaynakDil: (ar, an) => `Arapça metin: ${ar}.${an ? ` Anlam: ${an}.` : ''}`,
   },
   fr: {
     yol: 'Vous êtes ici', ayet: (n) => `${n} versets`, metinBaslik: 'Texte et traduction du sens', metinBaslikYalniz: 'Texte', okunusGoster: 'Afficher la translittération',
@@ -76,6 +80,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     onceki: 'Contenu précédent', sonraki: 'Contenu suivant', seriteDon: 'Revenir à la bande',
     metinBaslikDua: 'Texte et sens', kunyeKaynak: (ar, an) => `Texte arabe : ${ar}.${an ? ` Sens en turc : ${an}.` : ""}`,
     anlamYok: 'Le sens dans cette langue sera bientôt ajouté.', onayBekliyor: 'Texte repris des sources de la Diyanet ; relecture par l’enseignant en attente.', zorBaslik: 'Points d’attention',
+    sesYokBaslik: 'Pas encore d’enregistrement', sesYokNot: 'Il n’y a pas encore d’enregistrement de la Diyanet pour ce contenu. Écoutez votre enseignant, puis lisez le texte à voix haute et répétez.',
+    kunyeKaynakDil: (ar, an) => `Texte arabe : ${ar}.${an ? ` Sens en français : ${an}.` : ''}`,
   },
   en: {
     yol: 'You are here', ayet: (n) => `${n} verses`, metinBaslik: 'Text and translation', metinBaslikYalniz: 'Text', okunusGoster: 'Show transliteration',
@@ -102,6 +108,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     onceki: 'Previous item', sonraki: 'Next item', seriteDon: 'Back to the band',
     metinBaslikDua: 'Text and meaning', kunyeKaynak: (ar, an) => `Arabic text: ${ar}.${an ? ` Turkish meaning: ${an}.` : ""}`,
     anlamYok: 'The meaning in this language will be added soon.', onayBekliyor: 'Text taken from Diyanet sources; teacher review pending.', zorBaslik: 'Things to watch for',
+    sesYokBaslik: 'No recording yet', sesYokNot: 'There is no Diyanet recording for this item yet. Listen to your teacher, then read the text aloud and repeat it.',
+    kunyeKaynakDil: (ar, an) => `Arabic text: ${ar}.${an ? ` Meaning in English: ${an}.` : ''}`,
   },
   nl: {
     yol: 'U bent hier', ayet: (n) => `${n} verzen`, metinBaslik: 'Tekst en vertaling', metinBaslikYalniz: 'Tekst', okunusGoster: 'Transliteratie tonen',
@@ -128,6 +136,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     onceki: 'Vorig onderdeel', sonraki: 'Volgend onderdeel', seriteDon: 'Terug naar de band',
     metinBaslikDua: 'Tekst en betekenis', kunyeKaynak: (ar, an) => `Arabische tekst: ${ar}.${an ? ` Betekenis in het Turks: ${an}.` : ""}`,
     anlamYok: 'De betekenis in deze taal volgt binnenkort.', onayBekliyor: 'Tekst overgenomen uit Diyanet-bronnen; nalezing door de leerkracht volgt.', zorBaslik: 'Let hierop',
+    sesYokBaslik: 'Nog geen opname', sesYokNot: 'Voor dit onderdeel is er nog geen opname van de Diyanet. Luister naar uw leerkracht, lees de tekst daarna hardop en herhaal.',
+    kunyeKaynakDil: (ar, an) => `Arabische tekst: ${ar}.${an ? ` Betekenis in het Nederlands: ${an}.` : ''}`,
   },
   de: {
     yol: 'Sie sind hier', ayet: (n) => `${n} Verse`, metinBaslik: 'Text und Übersetzung', metinBaslikYalniz: 'Text', okunusGoster: 'Umschrift zeigen',
@@ -154,6 +164,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     onceki: 'Vorheriger Inhalt', sonraki: 'Nächster Inhalt', seriteDon: 'Zurück zum Band',
     metinBaslikDua: 'Text und Bedeutung', kunyeKaynak: (ar, an) => `Arabischer Text: ${ar}.${an ? ` Bedeutung auf Türkisch: ${an}.` : ""}`,
     anlamYok: 'Die Bedeutung in dieser Sprache folgt bald.', onayBekliyor: 'Text aus Diyanet-Quellen übernommen; Durchsicht durch die Lehrkraft steht aus.', zorBaslik: 'Worauf zu achten ist',
+    sesYokBaslik: 'Noch keine Aufnahme', sesYokNot: 'Für diesen Inhalt gibt es noch keine Aufnahme der Diyanet. Hören Sie Ihrer Lehrkraft zu, lesen Sie den Text dann laut und wiederholen Sie ihn.',
+    kunyeKaynakDil: (ar, an) => `Arabischer Text: ${ar}.${an ? ` Bedeutung auf Deutsch: ${an}.` : ''}`,
   },
 };
 

@@ -24,6 +24,8 @@ export interface KatalogOgesi {
   readonly ad: BesDil;
   /** Kur'an metni mi (Kur'an'dan olan dualar dahil): yapay ses yasağının ve «yalnız Diyanet» kuralının dayanağı. */
   readonly kuranMetni: boolean;
+  /** Sesi olmayan Kur'an dışı madde: kaynaklı metin sayfası var (metin dosyası). Bkz. calismaSayfasiVar. */
+  readonly metinli?: true;
   readonly kuran?: { readonly sure: number; readonly ayetler: readonly [number, number] };
   /** `yapay`: Diyanet kaydı olmayan Kur'an dışı metin için yapay ses (24 Ekim 2026). Sayfalar sesin yanına görünür
    *  «Yapay ses» etiketini bu bayraktan çizer; Kur'an maddesinde asla true olamaz (tests/ezber-katalog.test.mjs). */
@@ -111,13 +113,14 @@ export function eskiEzberGecisi(eski: Record<string, unknown>): EskiEzberGecisi 
 
 /**
  * egitim.ulucamii.be'de çalışma sayfası olan madde: Diyanet sesi ya da kaynaklı metni var. Kur'an maddelerinin metni
- * scripts/ezber-metin-cek.mjs ile hepsine yazılır (tests/ezber-madde-metni.test.mjs denetler). Kur'an dışı bir maddeye
- * sessiz metin eklenirse bu koşul genişletilir; aynı test onu yakalar. Ana site (veli kilimi) de bu koşulla bağlar.
+ * scripts/ezber-metin-cek.mjs ile hepsine yazılır (tests/ezber-madde-metni.test.mjs denetler). Sesi olmayan Kur'an dışı madde
+ * (kitaptan alınan dua) katalogda `metinli: true` taşır; bayrak ile metin dosyasının birbirini gerektirdiğini
+ * tests/ezber-katalog.test.mjs denetler. Ana site (veli kilimi) de bu koşulla bağlar.
  * Bilgi maddesi (iman şartları, farzlar, hadis seçkileri…) ses taşımaz: liste dosyası varsa `bilgiMetni` bayrağı sayfayı açar
  * (tests/ezber-bilgi.test.mjs bayrak ile dosyanın birbirini tuttuğunu denetler).
  */
 export function calismaSayfasiVar(oge: KatalogOgesi): boolean {
-  return Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || oge.kuran || oge.bilgiMetni);
+  return Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || oge.kuran || oge.metinli || oge.bilgiMetni);
 }
 
 /** Maddenin sesi yapay mı (Diyanet kaydı yok): çalarken etiket zorunludur. Tek yer: etiketin çizildiği her sayfa bunu sorar. */

@@ -1,0 +1,32 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-selam",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah’ın selamı ve rahmeti üzerinize olsun"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat» ↔ Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân",
+  "url": "https://diniyayinlar.diyanet.gov.tr/",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "0d3252aaaee14b44b884cc2c52a7c3ae196c7d1ca946b2b1e5235d094cd309ad",
+ "zor": [],
+ "onay": null
+}

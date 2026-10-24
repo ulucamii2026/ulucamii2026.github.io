@@ -14,6 +14,8 @@
  *   anlam     Türkçe anlam: bölüm sayısı kadar dizi ya da { metin, kesim } (tam paragraf + bölüm başı çapaları)
  *   okunus    Türkçe usulü okunuş: aynı biçim; `**` işaretleri (Diyanet’in vurgu harfleri) atılır
  *   zor       dikkat edilecek kelimeler (hoca alanı)
+ *   url       kaynak.url (yoksa PORTAL)
+ *   kitap     Portalda olmayan dua: Diyanet'in basılı kitaplarından, iki bağımsız kaynakla (aşağıda KITAP_DUALARI ve scripts/ezber-dua-kitap.mjs)
  */
 
 import { createHash } from 'node:crypto';
@@ -23,6 +25,214 @@ export const PORTAL = 'https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.ht
 const NI = 'Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)';
 const KAYNAK_AR = 'Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)';
 const EZAN_ANLAM = 'Diyanet İşleri Başkanlığı, Dînî Kavramlar Sözlüğü, «Ezan» maddesi';
+
+// --- Kitap kaynaklı dualar (scripts/ezber-dua-kitap.mjs) -----------------------------------------------------------------
+// Portalda olmayan dualar, Diyanet'in basılı kitaplarından alınır. Kural: iki bağımsız Diyanet kaynağında harf iskeleti
+// aynı olmalı; anlam ve okunuş kitaptan sözcüğü sözcüğüne alınır (kitapDuasi doğrular). Arapça çapalar (`bas`, `son`,
+// `kesim`) yalnız metnin kaynakta nerede başlayıp bittiğini gösterir; metin kitaptan gelir.
+//   kitap.ana       birincil Arapça: { kok, dosya, kesit?, kunye, parcalar: [{ bas, son?, nth? }] } ya da { mushaf: [...] }
+//   kitap.ikinci    iskeleti karşılaştırılan başka Diyanet kaynakları (+ bolumler, fark)
+//   kitap.kesim     bölümlerin başladığı Arapça çapalar; kitap.anlam / .fr / .okunus: kitapDuasi'deki anlamCoz biçimi
+const kurs = (dosya, kunye, kesit) => ({ kok: 'kurs', dosya, kunye, ...(kesit && { kesit }) });
+const ihtisas = (dosya, kunye, kesit) => ({ kok: 'ihtisas', dosya, kunye, ...(kesit && { kesit }) });
+const dia = (dosya, kunye, kesit) => ({ kok: 'dia', dosya, kunye, ...(kesit && { kesit }) });
+const YAYIN = 'https://diniyayinlar.diyanet.gov.tr/';
+const DIJITAL = 'https://dijital.diyanet.gov.tr/Kitaplik';
+const ELIFBA = 'elifba/30-namaz-dualari.md';
+const ELIFBA_K = 'Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. {s}';
+const TDB_IMAN = 'temel-dini-bilgiler/tr/02-itikat-unite-ii-iman.md';
+const TDB_NAMAZ = 'temel-dini-bilgiler/tr/12-ibadet-unite-iv-namaz-i.md';
+const TDB_EKLER = 'temel-dini-bilgiler/tr/34-ekler-namazlarda-okunan-dualar.md';
+const TDB_K = 'Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. {s}';
+const CG1_TR_U2 = 'camiye-gidiyorum/cg1/tr/02-unite-02-islam-in-sartlari.md';
+const CG1_FR_U1 = 'camiye-gidiyorum/cg1/fr/01-unite-01-ma-religion-est-l-islam.md';
+const CG1_FR_U2 = 'camiye-gidiyorum/cg1/fr/02-unite-02-les-cinq-piliers-de-l-islam.md';
+const CG1_FR_U19 = 'camiye-gidiyorum/cg1/fr/19-unite-19-je-crois-en-allah.md';
+const CG2_TR_U1 = 'camiye-gidiyorum/cg2/tr/01-unite-01-allah-a-iman-ile-ilgili-bilmem-gerekenleri-ogreniyorum.md';
+const CG1_K = 'Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1, s. {s}';
+const CG2_K = 'Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 2, s. {s}';
+const CG1_FR_K = 'Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1 – Je vais à la mosquée 1 (resmî Fransızca yayın), s. {s}';
+const IIL = 'diyanet-kitaplik/ilmihal-fikih/islam-ilmihali';
+const HAC = 'diyanet-ilmihal-ek/hac-ilmihali.md';
+const TS = 'diyanet-kitaplik/hadis-ve-siyer';
+const ELIFBA_TESBIHAT = ['Tekbir (Namaza başlarken)', 'Rükuda üç kere'];
+const TDB_TESBIHAT = [['“Elhamdü lillâh”', 1], 'denilir.'];
+const TDB_TEVHID = ['### KELİME-İ TEVHİD', '### KELİME-İ ŞEHADET'];
+const TDB_SEHADET = ['### KELİME-İ ŞEHADET', '## İMAN ESASLARI'];
+const ELIFBA_AMENTU = ['## ÂMENTÜ DUÂSI', '# ŞAFİİ MEZHEBİNE'];
+const TESRIK_IIL = ['#### 2. Teşrik Tekbirleri', 'Bu tekbir, hem cemaatle'];
+const TELBIYE_HAC = [['### b) Telbiye', 1], 'Peygamberimiz (a.s.) böyle telbiye'];
+
+const KITAP_DUALARI = {
+  'd-euzu-besmele': {
+    url: 'https://kuran.diyanet.gov.tr/mushaf',
+    kitap: {
+      ana: {
+        kunye: 'Diyanet İşleri Başkanlığı Kur’an-ı Kerim mushafı (kuran.diyanet.gov.tr/mushaf): Bakara 2/67 (15–16), Nahl 16/98 (6–8), Fâtiha 1/1',
+        mushaf: [{ sure: 2, ayet: 67, kelimeler: [15, 16] }, { sure: 16, ayet: 98, kelimeler: [6, 8] }, { sure: 1, ayet: 1, kelimeler: [1, 4] }],
+      },
+      kesim: ['بسم'],
+      ikinci: [
+        { ...ihtisas(`${TS}/tecrid-i-sarih-8/052-kitabul-edeb.md`, 'Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Edeb'), bolumler: [1], parcalar: [{ bas: 'اعوذ بالله من الشيطان الرجيم' }] },
+        { ...kurs(TDB_EKLER, `${TDB_K}, «Fatiha Suresi»`, [['## Fatiha Suresi:', 1], 'Namazda ayakta iken okunur.']), bolumler: [2], parcalar: [{ bas: 'بسم الله الرحمن الرحيم' }] },
+        { ...kurs(CG1_TR_U2, CG1_K, ['**Besmele**', '## Her işin başı bismillah']), bolumler: [2], parcalar: [{ bas: 'بسم الله الرحمن الرحيم' }] },
+      ],
+      anlam: {
+        dizi: [
+          { metin: 'Kovulmuş şeytandan Allah’a sığınırım.', kaynak: ihtisas(`${TS}/riyazus-salihin-metin-ve-ceviri-1/007-sabir.md`, 'Eûzü: Diyanet İşleri Başkanlığı, Riyâzü’s-Sâlihîn (Metin ve Çeviri), 1. cilt, «Sabır», 46. hadis (Buhârî, Bed’ü’l-halk 11; Müslim, Birr 109)') },
+          { metin: 'Rahmân (Bağışlayıcı) ve Rahîm (Esirgeyici) olan Allah’ın adıyla', kaynak: kurs(CG1_TR_U2, `Besmele: ${CG1_K}`, ['**Besmele**', '## Her işin başı bismillah']) },
+        ],
+      },
+      okunus: {
+        dizi: [
+          { metin: 'Eûzü billâhi mine’ş-şeytâni’r-racîm', kaynak: dia('i/istiaze.md', 'TDV İslâm Ansiklopedisi, «İstiâze» (c. 23, s. 318–319)') },
+          { metin: 'Bismillâhirrahmânirrahîm', kaynak: dia('b/besmele.md', 'TDV İslâm Ansiklopedisi, «Besmele» (c. 5, s. 529–540)') },
+        ],
+      },
+    },
+  },
+
+  'd-kelime-i-tevhid': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...kurs(TDB_IMAN, `${TDB_K}, «Kelime-i Tevhid»`, TDB_TEVHID), parcalar: [{ bas: 'لا اله الا الله محمد رسول الله' }] },
+      kesim: ['محمد'],
+      ikinci: [
+        { ...kurs(CG2_TR_U1, CG2_K), parcalar: [{ bas: 'لا اله الا الله محمد رسول الله' }] },
+        { ...ihtisas(`${IIL}/010-iv-iman.md`, 'Diyanet İşleri Başkanlığı, İslam İlmihali, IV. İman, «Kelime-i Tevhid»'), parcalar: [{ bas: 'لا اله الا الله محمد رسول الله' }] },
+      ],
+      anlam: { kaynak: kurs(TDB_IMAN, `${TDB_K}, «Kelime-i Tevhid»`, TDB_TEVHID), dizi: ['Allah’tan başka tanrı yoktur.', 'Hazreti Muhammed (s.a.s.) Allah’ın Peygamberidir.'] },
+      fr: { kaynak: kurs(CG1_FR_U1, CG1_FR_K, [["La profession d'unicité", 1], "Écoutons la profession d'unicité"]), dizi: ['Il n’y a de divinité qu’Allah.', 'Muhammed est le Messager d’Allah.'] },
+      okunus: { kaynak: kurs(TDB_IMAN, TDB_K, TDB_TEVHID), metin: 'Lâ ilâhe İllallâh, Muhammedün Resûlüllah.', kesim: ['Muhammedün'] },
+    },
+  },
+
+  'd-kelime-i-sehadet': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...kurs(TDB_IMAN, `${TDB_K}, «Kelime-i Şehadet»`, TDB_SEHADET), parcalar: [{ bas: 'اشهد ان لا اله الا الله', son: 'عبده ورسوله' }] },
+      kesim: ['واشهد'],
+      ikinci: [
+        { ...kurs(CG2_TR_U1, CG2_K), parcalar: [{ bas: 'اشهد ان لا اله الا الله', son: 'عبده ورسوله' }] },
+        { ...kurs(ELIFBA, `${ELIFBA_K}, «Âmentü Duâsı»`, ELIFBA_AMENTU), parcalar: [{ bas: 'اشهد ان لا اله الا الله', son: 'عبده ورسوله' }] },
+      ],
+      anlam: { kaynak: kurs(TDB_IMAN, `${TDB_K}, «Kelime-i Şehadet»`, TDB_SEHADET), dizi: ['Ben şahitlik ederim ki Allah’tan başka Tanrı yoktur.', 'Yine şahitlik ederim ki Hazreti Muhammed (s.a.s.) Allah’ın kulu ve Peygamberidir.'] },
+      fr: { kaynak: kurs(CG1_FR_U2, CG1_FR_K, ['**La profession de foi**', '## Lexique']), dizi: ["J'atteste qu'il n'est point de divinité hormis Allah", 'et je témoigne que Muhammed est Son serviteur et Son Messager.'] },
+      okunus: { kaynak: kurs(TDB_IMAN, TDB_K, TDB_SEHADET), metin: 'Eşhedu en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühü ve Resûlüh.', kesim: ['ve eşhedü'] },
+    },
+  },
+
+  'd-tekbir': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...kurs(ELIFBA, `${ELIFBA_K}, «Namaz içindeki tesbihat»`, ELIFBA_TESBIHAT), parcalar: [{ bas: 'الله اكبر' }] },
+      ikinci: [{ ...kurs(TDB_NAMAZ, `${TDB_K}, «Namaz sonrası tesbihat»`, TDB_TESBIHAT), parcalar: [{ bas: 'الله اكبر' }] }],
+      anlam: { kaynak: kurs(ELIFBA, `${ELIFBA_K}, «Namaz içindeki tesbihat»`, ELIFBA_TESBIHAT), dizi: ['Allah en büyüktür'] },
+      okunus: { kaynak: kurs(TDB_NAMAZ, `${TDB_K}, «Namaz sonrası tesbihat»`, TDB_TESBIHAT), dizi: ['Allâhu Ekber'] },
+    },
+  },
+
+  'd-tesmi-tahmid': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...kurs(ELIFBA, `${ELIFBA_K}, «Namaz içindeki tesbihat»`, ['Rükudan kalkarken', 'Secdede üç kere']), parcalar: [{ bas: 'سمع الله لمن حمده' }, { bas: 'ربنا لك الحمد' }] },
+      kesim: ['ربنا'],
+      ikinci: [{ ...ihtisas(`${TS}/hadislerle-islam-2/017-imamlik-cemaate-kilavuz-olmak.md`, 'Diyanet İşleri Başkanlığı, Hadislerle İslam, 2. cilt, «İmamlık: Cemaate Kılavuz Olmak»'), parcalar: [{ bas: 'سمع الله لمن حمده' }, { bas: 'ربنا لك الحمد' }] }],
+      anlam: { kaynak: kurs(ELIFBA, `${ELIFBA_K}, «Namaz içindeki tesbihat»`, ['Rükudan kalkarken', 'Secdede üç kere']), dizi: ['Allah, kendisine hamdedeni işitir.', 'Rabbimiz, hamd senin içindir'] },
+    },
+  },
+
+  'd-selam': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...kurs(ELIFBA, `${ELIFBA_K}, «Namaz içindeki tesbihat»`, ['Sağa sola selam verirken', '## NAMAZ SONRASI TESBİHAT']), parcalar: [{ bas: 'السلام عليكم ورحمة الله' }] },
+      ikinci: [{ ...ihtisas(`${TS}/tecrid-i-sarih-2/011-kitabul-ezan.md`, 'Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân'), parcalar: [{ bas: 'السلام عليكم ورحمة الله' }] }],
+      anlam: { kaynak: kurs(ELIFBA, `${ELIFBA_K}, «Namaz içindeki tesbihat»`, ['Sağa sola selam verirken', '## NAMAZ SONRASI TESBİHAT']), dizi: ['Allah’ın selamı ve rahmeti üzerinize olsun'] },
+    },
+  },
+
+  'd-amentu': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...kurs(ELIFBA, `${ELIFBA_K}, «Âmentü Duâsı»`, ELIFBA_AMENTU), parcalar: [{ bas: 'امنت بالله', son: 'عبده ورسوله' }] },
+      kesim: ['وبالقدر', 'والبعث', 'اشهد', 'واشهد'],
+      ikinci: [
+        { ...kurs(TDB_IMAN, `${TDB_K}, «Âmentü»`), parcalar: [{ bas: 'امنت بالله', son: 'عبده ورسوله' }] },
+        { ...kurs(CG1_FR_U19, CG1_FR_K), parcalar: [{ bas: 'امنت بالله', son: 'رسوله' }] },
+      ],
+      anlam: {
+        kaynak: kurs(ELIFBA, `${ELIFBA_K}, «Âmentü Duâsı»`, ELIFBA_AMENTU),
+        metin: 'Ben, Allah’a, meleklerine, kitaplarına, peygamberlerine, Ahiret gününe, kadere yani hayır ve şerrin Yüce Allah’ın takdiriyle olduğuna, ölümden sonra tekrar dirilmenin hak ve gerçek olduğuna iman ettim. Ben şehâdet ederim ki Allah’tan başka ilah yoktur ve Muhammed (s.a.s.) O’nun kulu ve elçisidir.',
+        kesim: ['kadere yani', 'ölümden sonra', 'Ben şehâdet ederim'],
+        gruplar: [[1, 1], [2, 2], [3, 3], [4, 5]],
+      },
+      fr: {
+        kaynak: kurs(CG1_FR_U19, CG1_FR_K, [['# Le résumé de ma croyance', 1], '# Mes amis aussi croient']),
+        metin: "Je crois en Allah, en Ses anges, en Ses Livres révélés, en Ses messagers, au Jour dernier, à la prédestination, et au fait que le bien comme le mal viennent d'Allah, le Très-Haut, et que la résurrection après la mort est vraie. Je témoigne qu'il n'y a de divinité qu'Allah. Et je témoigne que Muhammed est Son serviteur et Son messager.",
+        kesim: ['à la prédestination', 'et que la résurrection', 'Je témoigne'],
+        gruplar: [[1, 1], [2, 2], [3, 3], [4, 5]],
+      },
+    },
+  },
+
+  'd-tesrik-tekbiri': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...ihtisas(`${IIL}/018-viii-namaz.md`, 'Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz, «Teşrik Tekbirleri»', TESRIK_IIL), parcalar: [{ bas: 'الله اكبر', son: 'ولله الحمد' }] },
+      kesim: ['لا اله', 'والله اكبر'],
+      ikinci: [
+        { ...ihtisas(HAC, 'Diyanet İşleri Başkanlığı, Hac İlmihali, s. {s}, «Teşrik Tekbiri» (sözlük)', [['### TEŞRÎK TEKBİRİ', 1], '### TEMETTU']), parcalar: [{ bas: 'الله اكبر', son: 'ولله الحمد' }] },
+        { ...ihtisas(`${IIL}/022-xii-kurban.md`, 'Diyanet İşleri Başkanlığı, İslam İlmihali, XII. Kurban'), parcalar: [{ bas: 'الله اكبر الله اكبر لا اله', son: 'ولله الحمد' }] },
+      ],
+      anlam: {
+        kaynak: ihtisas('dini-kavramlar-sozlugu/t.md', 'Diyanet İşleri Başkanlığı, Dinî Kavramlar Sözlüğü, «Tekbir» maddesi, s. {s}', [['Selamdan sonra, hutbe içinde', 1], 'Kurban bayramının bir gün öncesi']),
+        metin: "Allah, en büyüktür, Allah en büyüktür, O'ndan başka ilah yoktur, sadece O vardır. Allah en büyüktür ve her türlü övgü Allah' içindir",
+        kesim: ['O’ndan başka', 'Allah en büyüktür ve'],
+      },
+      okunus: {
+        kaynak: ihtisas(`${IIL}/018-viii-namaz.md`, 'Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz, «Teşrik Tekbirleri»', TESRIK_IIL),
+        metin: 'Allâhu Ekber, Allâhu Ekber, Lâ ilâhe illallâhu vallâhu Ekber. Allâhu Ekber ve lillâhi’l-hamd',
+        kesim: ['Lâ ilâhe', 'vallâhu Ekber'],
+      },
+    },
+  },
+
+  'd-telbiye': {
+    url: YAYIN,
+    kitap: {
+      ana: { ...ihtisas(HAC, 'Diyanet İşleri Başkanlığı, Hac İlmihali, s. {s}, «Telbiye»', TELBIYE_HAC), parcalar: [{ bas: 'لبيك اللهم لبيك', son: 'والملك لا شريك لك' }] },
+      kesim: ['لبيك لا شريك', 'ان الحمد', 'لا شريك لك'],
+      ikinci: [{ ...ihtisas(`${IIL}/021-xi-hac.md`, 'Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye»', [['2. Telbiye, yani,', 1], 'Hac veya umreye yahut']), parcalar: [{ bas: 'لبيك اللهم لبيك', son: 'والملك لا شريك لك' }] }],
+      anlam: {
+        kaynak: ihtisas(HAC, 'Diyanet İşleri Başkanlığı, Hac İlmihali, s. {s}, «Telbiye»', TELBIYE_HAC),
+        metin: 'Buyur Allah’ım buyur! Buyur, senin hiçbir ortağın yoktur. Buyur, şüphesiz, her türlü övgü, nimet, mülk ve hükümranlık sana mahsustur. Senin ortağın yoktur.',
+        kesim: ['Buyur, senin', 'Senin ortağın'],
+        gruplar: [[1, 1], [2, 3], [4, 4]],
+      },
+      okunus: {
+        kaynak: ihtisas(`${IIL}/021-xi-hac.md`, 'Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye»', [['2. Telbiye, yani,', 1], 'Hac veya umreye yahut']),
+        metin: 'Lebbeyk, Allâhümme lebbeyk, Lebbeyke lâ şerike leke lebbeyk. İnne’l-hamde ve’n-ni’mete leke ve’l-mülk lâ şerîke lek.',
+        kesim: ['Lebbeyke lâ', 'İnne’l-hamde', 'lâ şerîke lek'],
+      },
+    },
+  },
+
+  'd-yemek-duasi': {
+    url: `${DIJITAL}/hadis-ve-siyer/hadislerle-islam-6`,
+    kitap: {
+      ana: { ...ihtisas(`${TS}/hadislerle-islam-6/025-hz-peygamberin-yemek-adabi-acikmadan-yemezdi-doyma.md`, 'Diyanet İşleri Başkanlığı, Hadislerle İslam, 6. cilt, «Hz. Peygamber’in Yemek Âdâbı: Acıkmadan Yemezdi, Doymadan Kalkardı» (Ebû Saîd el-Hudrî’den; D3850 Ebû Dâvûd, Et’ıme, 52; T3457 Tirmizî, Deavât, 55)'), parcalar: [{ bas: 'الحمد لله الذي اطعمنا', son: 'وجعلنا مسلمين' }] },
+      kesim: ['الذي', 'وجعلنا'],
+      ikinci: [
+        { ...ihtisas(`${TS}/tecrid-i-sarih-8/042-kitabul-etime.md`, 'Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Et‘ime'), parcalar: [{ bas: 'الحمد لله الذي اطعمنا', son: 'وجعلنا مسلمين' }] },
+      ],
+      anlam: {
+        kaynak: ihtisas(`${TS}/hadislerle-islam-6/025-hz-peygamberin-yemek-adabi-acikmadan-yemezdi-doyma.md`, 'Diyanet İşleri Başkanlığı, Hadislerle İslam, 6. cilt, «Hz. Peygamber’in Yemek Âdâbı: Acıkmadan Yemezdi, Doymadan Kalkardı»'),
+        dizi: ['Bizi yediren, bizi içiren ve bizi Müslüman yapan Allah’a hamdolsun.'],
+        gruplar: [[1, 3]],
+      },
+    },
+  },
+};
 
 export const DUALAR = {
   'd-subhaneke': {
@@ -210,6 +420,7 @@ export const DUALAR = {
     anlamKaynak: `${EZAN_ANLAM}; sabah bölümünün anlamı: Diyanet İşleri Başkanlığı, Diyanet İlmihali, I. cilt, «Ezan ve Kamet» (s. 267–268)`,
     zor: [{ bolum: 6, kelime: 'اَلصَّلاَةُ خَيْرٌ مِنَ النَّوْمِ', not: 'Yalnız sabah ezanında, «Hayye ale’l-felâh»tan sonra iki defa okunur. Diyanet’in ezan kaydı sabah ezanıdır.' }],
   },
+  ...KITAP_DUALARI,
 };
 
 /**
@@ -218,5 +429,6 @@ export const DUALAR = {
  */
 export function duaOzeti(m) {
   const { bolumler, meal, okunus, zor, duzeltmeler } = m;
-  return createHash('sha256').update(JSON.stringify({ bolumler, meal: { tr: meal.tr }, okunus, zor, duzeltmeler })).digest('hex');
+  // Fransızca anlam yalnız Diyanet-hattı kitaptan gelen dualarda (Camiye Gidiyorum) vardır; yoksa özet eskisiyle aynı kalır.
+  return createHash('sha256').update(JSON.stringify({ bolumler, meal: { tr: meal.tr, ...(meal.fr && { fr: meal.fr }) }, okunus, zor, duzeltmeler })).digest('hex');
 }

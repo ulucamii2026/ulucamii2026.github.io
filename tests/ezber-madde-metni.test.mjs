@@ -12,7 +12,7 @@ import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
 import { Validator } from '@cfworker/json-schema';
 import { iskelet, katalogAyetleri, ozet } from '../scripts/ezber-iskelet.mjs';
-import { duaOzeti } from '../scripts/ezber-dua-tanim.mjs';
+import { DUALAR, duaOzeti } from '../scripts/ezber-dua-tanim.mjs';
 import { bolumIskeleti } from '../scripts/ezber-dua-iskelet.mjs';
 
 const json = (yol) => JSON.parse(readFileSync(yol, 'utf8'));
@@ -88,10 +88,17 @@ test('Dua metinlerinin harf iskeleti ikinci Diyanet kaynağıyla aynı; bilinen 
   assert.ok(duaIdleri.length >= 11, 'dua metinleri üretilmemiş (scripts/ezber-dua-cek.mjs)');
   for (const id of duaIdleri) {
     const m = metinler.get(id);
-    assert.ok(m.kaynak.url.startsWith('https://namaz.diyanet.gov.tr/'), id);
+    // Portal kayıtları namaz.diyanet.gov.tr'den; kitaptan alınan dualar (ezber-dua-tanim.mjs, `kitap`) kendi Diyanet adresiyle.
+    if (DUALAR[id]?.kitap) assert.ok(m.kaynak.url === DUALAR[id].url && /^https:\/\/(kuran|diniyayinlar|dijital)\.diyanet\.gov\.tr\//.test(m.kaynak.url), `${id}: kitap kaynaklı dua kendi Diyanet adresini taşımalı`);
+    else assert.ok(m.kaynak.url.startsWith('https://namaz.diyanet.gov.tr/'), id);
     assert.deepEqual(m.bolumler.map((b) => b.no), m.bolumler.map((_, i) => i + 1), `${id}: bölüm numaraları 1'den ardışık olmalı`);
-    const kapsanan = duaKaynagi.kayitlar.filter((k) => k.id === id).flatMap((k) => k.bolumler).sort((a, b) => a - b);
+    // Bir bölümü birden çok ikinci kaynak doğrulayabilir; her bölüm en az bir kayıtta bulunmalı.
+    const kapsanan = [...new Set(duaKaynagi.kayitlar.filter((k) => k.id === id).flatMap((k) => k.bolumler))].sort((a, b) => a - b);
     assert.deepEqual(kapsanan, m.bolumler.map((b) => b.no), `${id}: ikinci kaynak karşılaştırması her bölümü kapsamalı`);
+    // Kitaptan alınan dua yalnız iki bağımsız Diyanet kaynağında iskelet eşitse yazılır: her bölümü iskeleti AYNI çıkan bir ikinci kaynak doğrulamalı.
+    if (DUALAR[id]?.kitap) for (const b of m.bolumler) {
+      assert.ok(duaKaynagi.kayitlar.some((k) => k.id === id && k.bolumler.includes(b.no) && !k.fark), `${id}/${b.no}: iskeleti eşit ikinci kaynak yok`);
+    }
   }
   for (const k of duaKaynagi.kayitlar) {
     const bizim = ozet(bolumIskeleti(metinler.get(k.id), k.bolumler));
@@ -130,7 +137,8 @@ test('Fransızca meâl: Chiadmi (Diyanet) ya da Hamidullah, künyeyle aynı çev
   const cevirmen = /Chiadmi/.test(kunye) ? /Chiadmi/ : /Hamidullah/;
   for (const [id, m] of metinler) {
     if (m.kuran) assert.ok(m.meal.fr, `${id}: FR meâl yok (node scripts/ezber-meal-fr.mjs)`);
-    if (m.meal.fr) assert.match(m.meal.fr.kaynak, cevirmen, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
+    // Kur'an dışı kitap duasında FR anlam DİTİB'in resmî Fransızca yayınından gelir (Camiye Gidiyorum – Je vais à la mosquée).
+    if (m.meal.fr) assert.match(m.meal.fr.kaynak, m.kuran ? cevirmen : /Je vais à la mosquée/, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
     for (const [dil, satirlar] of Object.entries(m.okunus ?? {})) {
       assert.deepEqual(satirlar.map((x) => x.no), m.bolumler.map((b) => b.no), `${id}/okunus-${dil}`);
     }
@@ -152,7 +160,7 @@ test('Âyet sesleri bölümlerle bire bir; Arapça metnin her harfi Ulu Nesih ya
   assert.deepEqual([...eksik], [], 'egitim/scripts/ulu-nesih-uret.py KUME listesine ekleyip yazı tipini yeniden üretin');
 });
 
-test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiadmi ya da Hamidullah; okunuş yalnız onaylı usulde', () => {
+test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiadmi, Hamidullah ya da DİTİB’in resmî Fransızcası; okunuş yalnız onaylı usulde', () => {
   const fatiha = metinler.get('s-fatiha');
   assert.deepEqual(mm.metinBloklari(fatiha, 'tr').map((b) => b.ayetler), [[1, 1], [2, 4], [5, 5], [6, 7]]);
   assert.equal(mm.metinBloklari(fatiha, 'tr')[1].bolumler.length, 3);
@@ -163,6 +171,11 @@ test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiad
   assert.deepEqual(mm.metinBloklari(meâlsiz, 'fr').map((b) => [b.ayetler, b.bolumler.length, 'meal' in b]), [[[1, 7], 7, false]]);
   const sahteFr = { ...fatiha, meal: { ...fatiha.meal, fr: { kaynak: 'Başka bir çeviri', gruplar: fatiha.meal.tr.gruplar } } };
   assert.equal(mm.sayfaMeali(sahteFr, 'fr'), undefined, 'Chiadmi ya da Hamidullah dışı FR meâl gösterilmez');
+  // DİTİB'in resmî Fransızca yayını (Camiye Gidiyorum – Je vais à la mosquée) kabul edilir; çeviri adı künyede kalır.
+  const tevhid = metinler.get('d-kelime-i-tevhid');
+  assert.match(tevhid.meal.fr.kaynak, /Je vais à la mosquée/);
+  assert.equal(mm.sayfaMeali(tevhid, 'fr'), tevhid.meal.fr);
+  assert.equal(mm.sayfaMeali({ ...tevhid, meal: { ...tevhid.meal, fr: { ...tevhid.meal.fr, kaynak: 'Çalışma çevirisi' } } }, 'fr'), undefined, 'resmî olmayan FR çeviri gösterilmez');
   const okunus = { tr: fatiha.bolumler.map((b) => ({ no: b.no, metin: `okunuş ${b.no}` })) };
   assert.equal(mm.onayliOkunus({ ...fatiha, okunus, onay: null }, 'tr'), undefined);
   assert.equal(mm.onayliOkunus({ ...fatiha, okunus, onay: { tarih: '2026-10-19', kapsam: ['okunus-fr'] } }, 'tr'), undefined);

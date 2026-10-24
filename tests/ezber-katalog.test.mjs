@@ -324,9 +324,25 @@ test('calismaSayfasiVar: sesi ya da metni olan her maddenin çalışma sayfası 
   assert.equal(m.calismaSayfasiVar({ tur: 'bilgi' }), false);
   assert.equal(m.calismaSayfasiVar({ tur: 'dua', ses: { parcalar: [] } }), false);
   assert.equal(m.calismaSayfasiVar({ tur: 'sure', kuran: { sure: 99, ayetler: [1, 8] } }), true);
+  // Sessiz (Diyanet kaydı olmayan) Kur'an dışı dua: yalnız `metinli` işareti sayfayı açar.
+  assert.equal(m.calismaSayfasiVar({ tur: 'dua', metinli: true }), true);
+  assert.equal(m.calismaSayfasiVar({ tur: 'dua' }), false);
   // Metin dosyası olup sayfa koşulunu karşılamayan madde, metni yayımlanmadan kalırdı (koşul genişletilmeli).
   for (const d of readdirSync('src/data/ezber/metin').filter((x) => /^[sdb]-.*\.json$/.test(x))) {
     assert.ok(m.calismaSayfasiVar(m.ezberBul(d.slice(0, -5))), `${d}: metni var ama çalışma sayfası çıkmıyor`);
+  }
+});
+
+test('metinli: yalnız sesi ve Kur\'an bilgisi olmayan dua için; işaret ⇔ yerel kitap kaynaklı metin dosyası', () => {
+  const metinDosyalari = new Set(readdirSync('src/data/ezber/metin').filter((x) => /\.json$/.test(x)).map((x) => x.slice(0, -5)));
+  for (const o of m.KATALOG.ogeler) {
+    if (o.metinli) {
+      assert.equal(o.tur, 'dua', `${o.id}: metinli yalnız dua maddesinde olur`);
+      assert.ok(!o.ses && !o.kuran && o.kuranMetni === false, `${o.id}: metinli madde sesli ya da Kur'an metni olamaz (zaten sayfası var)`);
+      assert.ok(metinDosyalari.has(o.id), `${o.id}: metinli işaretli ama metin dosyası yok`);
+    } else if (!o.ses && !o.kuran) {
+      assert.ok(!metinDosyalari.has(o.id), `${o.id}: metin dosyası var ama katalogda metinli işareti yok (sayfa çıkmaz)`);
+    }
   }
 });
 

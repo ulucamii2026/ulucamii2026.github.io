@@ -14,9 +14,11 @@ table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
 th, td { border-top: 1px solid #dde4da; padding: .45rem .5rem; vertical-align: top; text-align: left; }
 th { font-size: .8rem; color: var(--gri); border-top: 0; }
 td.no { width: 2rem; color: var(--gri); }
+.ses-yok { background: #fff7e6; border-left: 3px solid #b8860b; padding: .35rem .6rem; margin: .3rem 0; font-size: .85rem; }
+td.fr { width: 20%; }
 .ar { font-family: "Ulu Nesih", serif; font-size: 1.7rem; line-height: 1.9; }
-td.ar { text-align: right; width: 38%; }
-td.ok { font-style: italic; width: 24%; }
+td.ar { text-align: right; width: 32%; }
+td.ok { font-style: italic; width: 20%; }
 ul { margin: .2rem 0 0 1.1rem; padding: 0; } li { margin-bottom: .35rem; } li .ar { font-size: 1.2rem; line-height: 1.6; }
 audio { width: 100%; max-width: 420px; height: 34px; }
 .kaynak { color: var(--gri); font-size: .8rem; margin: .7rem 0 .2rem; }
@@ -24,32 +26,121 @@ audio { width: 100%; max-width: 420px; height: 34px; }
 @media print { body { margin: 0; max-width: none; font-size: 11.5px; } audio { display: none; } .ar { font-size: 1.45rem; } .kart { page-break-inside: avoid; } }
 </style></head><body>
 <h1>Ezber Kilimi — dua metinleri incelemesi</h1>
-<div class="giris"><p><b>Ne yapılacak?</b> Her dua için Diyanet kaydını dinleyin ve Arapçayı, Türkçe anlamı ve okunuşu denetleyin. Arapça Diyanet’in namaz sitesinden alındı;
-portal kaydındaki yazım kusurları ve yapılan düzeltmeler kartın altında yazılıdır. Okunuş ve anlam Diyanet İlmihali / Namaz İlmihali / Dînî Kavramlar Sözlüğü’nden aynen alındı.
+<div class="giris"><p><b>Ne yapılacak?</b> Her dua için Diyanet kaydı varsa dinleyin; yoksa metni kartın altındaki kaynak satırındaki Diyanet kitabıyla karşılaştırın. Arapçayı, anlamı ve okunuşu denetleyin.
+Namaz dualarının Arapçası Diyanet’in namaz sitesinden alındı; portal kaydındaki yazım kusurları ve yapılan düzeltmeler kartın altında yazılıdır. Portalda bulunmayan dualar (tekbir, tesmî–tahmîd, selâm, âmentü, teşrik tekbiri, telbiye, yemek duası, kelime-i tevhid/şehâdet, Eûzü–Besmele)
+Diyanet’in basılı kitaplarından alındı ve harf iskeleti ikinci bir Diyanet kaynağıyla karşılaştırıldı; kaynak satırında ikisi de adıyla ve sayfasıyla yazılıdır.
+Anlam ve okunuş Diyanet kaynaklarından aynen alındı. Fransızca anlam yalnız DİTİB’in resmî Fransızca yayınında (<i>Je vais à la mosquée</i>) karşılığı olan dualarda görünür; yoksa Fransızca sayfa Türkçe anlamla yetinir.
 Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; okunuş onaylanana kadar hiç gösterilmez.</p>
-<p>Hazırlanma: 24 Ekim 2026 · 11 dua · Onay komutu (hoca onayladıktan sonra): <code>node scripts/ezber-dua-cek.mjs --onayla hepsi</code> ya da <code>--onayla d-subhaneke,d-salli</code>.</p></div>
+<p>Hazırlanma: 24 Ekim 2026 · 21 dua · Onay komutu (hoca onayladıktan sonra): <code>node scripts/ezber-dua-cek.mjs --onayla hepsi</code> ya da <code>--onayla d-subhaneke,d-salli</code>.</p></div>
+
+  <section class="kart">
+    <h2>Eûzü-Besmele <small>d-euzu-besmele</small></h2>
+    <audio controls preload="none" src="https://ulucamii.be/media/ses/ayet/1-0.mp3"></audio> <audio controls preload="none" src="https://ulucamii.be/media/ses/ayet/1-1.mp3"></audio>
+    <p class="ses-yok"><b>Hoca için not.</b> Eûzü ve Besmele, Diyanet mushafındaki üç âyetten sözcük sözcük birleştirildi (kaynak satırında âyet ve kelime numaraları var); bu birleşik yazım tek bir yerde bu sırayla geçmez. Türkçe anlam ve okunuş Diyanet kitaplarından aynen alındı.</p>
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">اَعُوذُ بِاللّٰهِ مِنَ الشَّیْطَانِ الرَّجٖیمِ</td>
+      <td class="ok">Eûzü billâhi mine’ş-şeytâni’r-racîm</td>
+      <td class="an" rowspan="1">Kovulmuş şeytandan Allah’a sığınırım.</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖیمِ</td>
+      <td class="ok">Bismillâhirrahmânirrahîm</td>
+      <td class="an" rowspan="1">Rahmân (Bağışlayıcı) ve Rahîm (Esirgeyici) olan Allah’ın adıyla</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı Kur’an-ı Kerim mushafı (kuran.diyanet.gov.tr/mushaf): Eûzü, Bakara 2/67 (15–16. kelimeler) ile Nahl 16/98 (6–8. kelimeler) sözcüklerinden birleştirilmiştir; Besmele Fâtiha 1/1’dir; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Edeb; Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 325, «Fatiha Suresi»; Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1, s. 20 (2026-10-24). Anlam: Eûzü: Diyanet İşleri Başkanlığı, Riyâzü’s-Sâlihîn (Metin ve Çeviri), 1. cilt, «Sabır», 46. hadis (Buhârî, Bed’ü’l-halk 11; Müslim, Birr 109); Besmele: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1, s. 20; okunuş: TDV İslâm Ansiklopedisi, «İstiâze» (c. 23, s. 318–319); TDV İslâm Ansiklopedisi, «Besmele» (c. 5, s. 529–540).</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Kelime-i Tevhid <small>d-kelime-i-tevhid</small></h2>
+    <p class="ses-yok"><b>Yapay ses</b> (Diyanet kaydı yok; sayfada «Yapay ses» etiketiyle görünür).</p><audio controls preload="none" src="https://ulucamii.be/media/ses/yapay/kelime-i-tevhid.mp3"></audio>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th><th>Anlam (Fransızca)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">لَآ اِلٰهَ اِلَّا اللّٰهُ</td>
+      <td class="ok">Lâ ilâhe İllallâh,</td>
+      <td class="an" rowspan="1">Allah’tan başka tanrı yoktur.</td><td class="fr" rowspan="1">Il n'y a de divinité qu'Allah.</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">مُحَمَّدٌ رَسُولُ اللّٰهِ</td>
+      <td class="ok">Muhammedün Resûlüllah.</td>
+      <td class="an" rowspan="1">Hazreti Muhammed (s.a.s.) Allah’ın Peygamberidir.</td><td class="fr" rowspan="1">Muhammed est le Messager d'Allah.</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 25, «Kelime-i Tevhid»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 2, s. 6; Diyanet İşleri Başkanlığı, İslam İlmihali, IV. İman, «Kelime-i Tevhid» (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 25, «Kelime-i Tevhid»; okunuş: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 25. Fransızca: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1 – Je vais à la mosquée 1 (resmî Fransızca yayın), s. 15.</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Kelime-i Şehâdet <small>d-kelime-i-sehadet</small></h2>
+    <p class="ses-yok"><b>Yapay ses</b> (Diyanet kaydı yok; sayfada «Yapay ses» etiketiyle görünür).</p><audio controls preload="none" src="https://ulucamii.be/media/ses/yapay/kelime-i-sehadet.mp3"></audio>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th><th>Anlam (Fransızca)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنْ لَآ اِلٰهَ اِلَّا اللّٰهُ</td>
+      <td class="ok">Eşhedu en lâ ilâhe illallâh</td>
+      <td class="an" rowspan="1">Ben şahitlik ederim ki Allah’tan başka Tanrı yoktur.</td><td class="fr" rowspan="1">J'atteste qu'il n'est point de divinité hormis Allah</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</td>
+      <td class="ok">ve eşhedü enne Muhammeden abdühü ve Resûlüh.</td>
+      <td class="an" rowspan="1">Yine şahitlik ederim ki Hazreti Muhammed (s.a.s.) Allah’ın kulu ve Peygamberidir.</td><td class="fr" rowspan="1">et je témoigne que Muhammed est Son serviteur et Son Messager.</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 25, «Kelime-i Şehadet»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 2, s. 6; Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 39, «Âmentü Duâsı» (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 26, «Kelime-i Şehadet»; okunuş: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 25. Fransızca: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1 – Je vais à la mosquée 1 (resmî Fransızca yayın), s. 18.</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Tekbir (Allâhü ekber) <small>d-tekbir</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">اَللّٰهُ اَكْبَرُ</td>
+      <td class="ok">Allâhu Ekber</td>
+      <td class="an" rowspan="1">Allah en büyüktür</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 127, «Namaz sonrası tesbihat» (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»; okunuş: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 127, «Namaz sonrası tesbihat».</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
 
   <section class="kart">
     <h2>Sübhâneke Duası <small>d-subhaneke</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/subhaneke.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">سُبْحَانَكَ اَللّٰهُمَّ وَبِحَمْدِكَ</td>
       <td class="ok">Sübhâneke’l-lâhümme ve bi-hamdik</td>
-      <td class="an">Allah’ım! Sen eksik sıfatlardan pak ve uzaksın. Seni daima böyle tenzih eder ve överim.</td>
+      <td class="an" rowspan="1">Allah’ım! Sen eksik sıfatlardan pak ve uzaksın. Seni daima böyle tenzih eder ve överim.</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">وَتَبَارَكَ اسْمُكَ وَتَعَالٰى جَدُّكَ</td>
       <td class="ok">ve tebâra kesmük. Ve te’âlâ ceddük</td>
-      <td class="an">Senin adın mübarektir. Varlığın her şeyden üstündür, şanın yücedir.</td>
+      <td class="an" rowspan="1">Senin adın mübarektir. Varlığın her şeyden üstündür, şanın yücedir.</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">وَلاَ اِلٰهَ غَيْرُكَ</td>
       <td class="ok">Velâ ilâhe ğayruk.</td>
-      <td class="an">Senden başka ilâh yoktur.</td>
+      <td class="an" rowspan="1">Senden başka ilâh yoktur.</td>
     </tr></tbody></table>
     
     <h3>Dikkat notları</h3><ul><li><b><span class="ar" lang="ar" dir="rtl">وَجَلَّ ثَنَآئُكَ</span></b> — «Ve celle senâüke» cümlesi yalnız cenaze namazında okunur; diğer namazlarda okunmaz, Diyanet kaydında da yoktur.</li></ul>
@@ -60,12 +151,13 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Rükû tesbihi (Sübhâne rabbiye’l-azîm) <small>d-ruku-tesbihi</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/ruku-tesbihi.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">سُبْحَانَ رَبِّيَ الْعَظِيمِ</td>
       <td class="ok">Sübhâne rabbiye’l-‘azîm</td>
-      <td class="an">Ulu Rabbim, her türlü kusurdan münezzehtir.</td>
+      <td class="an" rowspan="1">Ulu Rabbim, her türlü kusurdan münezzehtir.</td>
     </tr></tbody></table>
     
     
@@ -74,14 +166,38 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   </section>
 
   <section class="kart">
+    <h2>Tesmî ve tahmîd (Semiallâhü limen hamideh · Rabbenâ leke’l-hamd) <small>d-tesmi-tahmid</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">سَمِعَ اللّٰهُ لِمَنْ حَمِدَهُ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="1">Allah, kendisine hamdedeni işitir.</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">رَبَّنَا لَكَ الْحَمْدُ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="1">Rabbimiz, hamd senin içindir</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Hadislerle İslam, 2. cilt, «İmamlık: Cemaate Kılavuz Olmak» (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat».</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
     <h2>Secde tesbihi (Sübhâne rabbiye’l-a‘lâ) <small>d-secde-tesbihi</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/secde-tesbihi.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">سُبْحَانَ رَبِّيَ الْأَعْلٰى</td>
       <td class="ok">Sübhâne Rabbiye’l-a’lâ</td>
-      <td class="an">Ulu Rabbim, (her çeşit kusurdan) münezzehtir.</td>
+      <td class="an" rowspan="1">Ulu Rabbim, (her çeşit kusurdan) münezzehtir.</td>
     </tr></tbody></table>
     
     
@@ -92,36 +208,37 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Ettehiyyâtü (Tahiyyât) <small>d-ettehiyyatu</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/tahiyyat.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَلتَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ</td>
       <td class="ok">Ettehıyyâtü lillâhi ve’s-salevâtü ve’t-tayyibâtü</td>
-      <td class="an">Selam, rahmet ve bütün güzellikler, her türlü dil, beden ve mal ile yapılan ibadet Allah’a mahsustur.</td>
+      <td class="an" rowspan="1">Selam, rahmet ve bütün güzellikler, her türlü dil, beden ve mal ile yapılan ibadet Allah’a mahsustur.</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">اَلسَّلاَمُ عَلَيْكَ اَيُّهَا النَّبِىُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</td>
       <td class="ok">esselâmü ‘aleyke eyyühe’n-nebiyyü ve rahmetüllâhi ve berakâtühû</td>
-      <td class="an">Ey Peygamber! Allah’ın rahmeti ve bereketleri senin üzerine olsun.</td>
+      <td class="an" rowspan="1">Ey Peygamber! Allah’ın rahmeti ve bereketleri senin üzerine olsun.</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">اَلسَّلاَمُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِينَ</td>
       <td class="ok">esselâmü ‘aleynâ ve ‘alâ ‘ıbâdillâhi’s-salihîn.</td>
-      <td class="an">Selâm bizlere ve Allah’ın sâlih kullarına olsun.</td>
+      <td class="an" rowspan="1">Selâm bizlere ve Allah’ın sâlih kullarına olsun.</td>
     </tr>
     <tr>
       <td class="no">4</td>
       <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ</td>
       <td class="ok">Eşhedü en lâ ilâhe illallâh</td>
-      <td class="an">Ben şahadet ederim (kesinlikle bilirim) ki, Allah’tan başka hiçbir ilâh yoktur.</td>
+      <td class="an" rowspan="1">Ben şahadet ederim (kesinlikle bilirim) ki, Allah’tan başka hiçbir ilâh yoktur.</td>
     </tr>
     <tr>
       <td class="no">5</td>
       <td class="ar" lang="ar" dir="rtl">وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</td>
       <td class="ok">ve eşhedü enne Muhammeden ‘abdühû ve rasûlüh.</td>
-      <td class="an">Ve şahadet ederim ki Hazret-i Muhammed Allah’ın kulu ve Resûlüdür.</td>
+      <td class="an" rowspan="1">Ve şahadet ederim ki Hazret-i Muhammed Allah’ın kulu ve Resûlüdür.</td>
     </tr></tbody></table>
     
     
@@ -132,24 +249,25 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Allâhümme Salli <small>d-salli</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/salli.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَعَلٰى اٰلِ مُحَمَّدٍ</td>
       <td class="ok">Allâhümme salli ‘alâ Muhammedin ve ‘alâ âli Muhammed.</td>
-      <td class="an">Allah’ım! Muhammed’e ve Muhammed’in ümmetine rahmet eyle; şerefini yücelt.</td>
+      <td class="an" rowspan="1">Allah’ım! Muhammed’e ve Muhammed’in ümmetine rahmet eyle; şerefini yücelt.</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">كَمَا صَلَّيْتَ عَلٰى اِبْرَاهِيمَ وَعَلٰى اٰلِ اِبْرَاهِيمَ</td>
       <td class="ok">Kemâ salleyte ‘alâ İbrahîme ve ‘alâ âli İbrahîm.</td>
-      <td class="an">İbrahim’e ve İbrahim’in ümmetine rahmet ettiğin gibi.</td>
+      <td class="an" rowspan="1">İbrahim’e ve İbrahim’in ümmetine rahmet ettiğin gibi.</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">اِنَّكَ حَمِيدٌ مَجِيدٌ</td>
       <td class="ok">İnneke hamîdün mecîd.</td>
-      <td class="an">Şüphesiz övülmeye lâyık yalnız sensin, şan ve şeref sahibi de sensin.</td>
+      <td class="an" rowspan="1">Şüphesiz övülmeye lâyık yalnız sensin, şan ve şeref sahibi de sensin.</td>
     </tr></tbody></table>
     
     
@@ -160,24 +278,25 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Allâhümme Bârik <small>d-barik</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/barik.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَعَلٰى اٰلِ مُحَمَّدٍ</td>
       <td class="ok">Allâhümme bârik ‘alâ Muhammedin ve ‘alâ âli Muhammed.</td>
-      <td class="an">Allah’ım! Muhammed’e ve Muhammed’in ümmetine hayır ve bereket ver.</td>
+      <td class="an" rowspan="1">Allah’ım! Muhammed’e ve Muhammed’in ümmetine hayır ve bereket ver.</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيمَ وَعَلٰى اٰلِ اِبْرَاهِيمَ</td>
       <td class="ok">Kemâ bârakte ‘alâ İbrahîme ve ‘alâ âli İbrahim.</td>
-      <td class="an">İbrahim’e ve İbrahim’in ümmetine verdiğin gibi.</td>
+      <td class="an" rowspan="1">İbrahim’e ve İbrahim’in ümmetine verdiğin gibi.</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">اِنَّكَ حَمِيدٌ مَجِيدٌ</td>
       <td class="ok">İnneke hamidün mecîd.</td>
-      <td class="an">Şüphesiz övülmeye lâyık yalnız sensin, şan ve şeref sahibi de sensin.</td>
+      <td class="an" rowspan="1">Şüphesiz övülmeye lâyık yalnız sensin, şan ve şeref sahibi de sensin.</td>
     </tr></tbody></table>
     
     
@@ -186,32 +305,50 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   </section>
 
   <section class="kart">
+    <h2>Selâm (Es-selâmü aleyküm ve rahmetullah) <small>d-selam</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="1">Allah’ın selamı ve rahmeti üzerinize olsun</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat».</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
     <h2>Kunut duası I <small>d-kunut-1</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/kunut-1.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ</td>
       <td class="ok">Allâhümme innâ neste’înüke ve nesteğfiruke ve nestehdîke</td>
-      <td class="an">Allah’ım! Senden yardım isteriz, günahlarımızı bağışlamanı isteriz, razı olduğun şeylere hidayet etmeni isteriz.</td>
+      <td class="an" rowspan="1">Allah’ım! Senden yardım isteriz, günahlarımızı bağışlamanı isteriz, razı olduğun şeylere hidayet etmeni isteriz.</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">وَنُؤْمِنُ بِكَ وَنَتُوبُ اِلَيْكَ</td>
       <td class="ok">ve nü’minü bike ve netûbü ileyke</td>
-      <td class="an">Sana inanırız, sana tövbe ederiz.</td>
+      <td class="an" rowspan="1">Sana inanırız, sana tövbe ederiz.</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِى عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلاَ نَكْفُرُكَ</td>
       <td class="ok">ve netevekkelü aleyke ve nüsnî ‘aleyke’l-hayra küllehû neşküruke velâ nekfürüke</td>
-      <td class="an">Sana güveniriz. Bize verdiğin bütün nimetleri bilerek seni hayır ile överiz. Sana şükrederiz. Hiçbir nimetini inkâr etmeyiz ve onları başkasından bilmeyiz.</td>
+      <td class="an" rowspan="1">Sana güveniriz. Bize verdiğin bütün nimetleri bilerek seni hayır ile överiz. Sana şükrederiz. Hiçbir nimetini inkâr etmeyiz ve onları başkasından bilmeyiz.</td>
     </tr>
     <tr>
       <td class="no">4</td>
       <td class="ar" lang="ar" dir="rtl">وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ</td>
       <td class="ok">ve nahle’u ve netrukü men yefcürük.</td>
-      <td class="an">Nimetlerini inkâr eden ve sana karşı geleni bırakırız.</td>
+      <td class="an" rowspan="1">Nimetlerini inkâr eden ve sana karşı geleni bırakırız.</td>
     </tr></tbody></table>
     <h3>Portal kaydında yapılan düzeltmeler</h3><ul><li><span class="ar" lang="ar" dir="rtl">وَنُثْنِى عَلَيْك </span> → <span class="ar" lang="ar" dir="rtl">وَنُثْنِى عَلَيْكَ </span><br>Portalda kâf harfinin fethası düşmüş; aynı kelime bir önceki cümlede ve ikinci kaynakta (Tecrid-i Sarih) fethalıdır.</li><li><span class="ar" lang="ar" dir="rtl">اْلخَيْرَ</span> → <span class="ar" lang="ar" dir="rtl">الْخَيْرَ</span><br>Portalda elif üzerine sükûn, lâm üzerine harekesizlik yazılmış (basım hatası); ال takısı lâm sükûnuyla yazılır.</li></ul>
     
@@ -222,30 +359,31 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Kunut duası II <small>d-kunut-2</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/kunut-2.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللَّهُمَّ اِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّى وَنَسْجُدُ</td>
       <td class="ok">Allâhümme iyyâke na’büdü ve leke nüsalli ve nescüdü</td>
-      <td class="an">Allah’ım! Biz yalnız sana kulluk ederiz. Namazı yalnız senin için kılarız, ancak sana secde ederiz.</td>
+      <td class="an" rowspan="1">Allah’ım! Biz yalnız sana kulluk ederiz. Namazı yalnız senin için kılarız, ancak sana secde ederiz.</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">وَاِلَيْكَ نَسْعَى وَنَحْفِدُ</td>
       <td class="ok">ve ileyke nes’â ve nahfidü</td>
-      <td class="an">Yalnız sana koşar ve sana yaklaştıracak şeyleri kazanmaya çalışırız. İbadetlerini sevinçle yaparız.</td>
+      <td class="an" rowspan="1">Yalnız sana koşar ve sana yaklaştıracak şeyleri kazanmaya çalışırız. İbadetlerini sevinçle yaparız.</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ</td>
       <td class="ok">nercû rahmeteke ve nahşâ ‘azâbek.</td>
-      <td class="an">Rahmetinin devamını ve çoğalmasını dileriz. Azabından korkarız,</td>
+      <td class="an" rowspan="1">Rahmetinin devamını ve çoğalmasını dileriz. Azabından korkarız,</td>
     </tr>
     <tr>
       <td class="no">4</td>
       <td class="ar" lang="ar" dir="rtl">اِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ</td>
       <td class="ok">İnne ‘azâbeke bi’l-küffâri mülhık.</td>
-      <td class="an">şüphesiz senin azabın kâfirlere ve inançsızlara ulaşır.</td>
+      <td class="an" rowspan="1">şüphesiz senin azabın kâfirlere ve inançsızlara ulaşır.</td>
     </tr></tbody></table>
     <h3>Portal kaydında yapılan düzeltmeler</h3><ul><li><span class="ar" lang="ar" dir="rtl">نَسعْىَ</span> → <span class="ar" lang="ar" dir="rtl">نَسْعَى</span><br>Portalda sin harfinin sükûnu eksik, ayn harfine sükûn konmuş; kelime نَسْعَى (nes‘â) olarak yazılır. İkinci kaynak (Tecrid-i Sarih) نَسْعَى yazar.</li><li><span class="ar" lang="ar" dir="rtl">بِاْلكُفَّارِ</span> → <span class="ar" lang="ar" dir="rtl">بِالْكُفَّارِ</span><br>Portalda elif üzerine sükûn, lâm üzerine harekesizlik yazılmış (basım hatası); ال takısı lâm sükûnuyla yazılır.</li><li><span class="ar" lang="ar" dir="rtl">عَذَابَك </span> → <span class="ar" lang="ar" dir="rtl">عَذَابَكَ </span><br>Portalda kâf harfinin fethası düşmüş; aynı kelime ikinci kaynakta (Tecrid-i Sarih) fethalıdır.</li></ul>
     
@@ -256,54 +394,55 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Ezan <small>d-ezan</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/ezan.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ</td>
       <td class="ok">Allâhu Ekber, Allâhu Ekber, Allâhu Ekber, Allâhu Ekber</td>
-      <td class="an">Allah uludur. (4 kere)</td>
+      <td class="an" rowspan="1">Allah uludur. (4 kere)</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ</td>
       <td class="ok">Eşhedü en lâ ilâhe illellah, Eşhedü en lâ ilâhe illellah</td>
-      <td class="an">Şüphesiz bilirim ve bildiririm ki Allâh’tan başka ilah yoktur. (2 kere)</td>
+      <td class="an" rowspan="1">Şüphesiz bilirim ve bildiririm ki Allâh’tan başka ilah yoktur. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</td>
       <td class="ok">Eşhedü enne Muhammeden Resulüllah, Eşhedü enne Muhammeden Resulüllah</td>
-      <td class="an">Şüphesiz bilirim ve bildiririm ki Muhammed Allâh’ın elçisidir. (2 kere)</td>
+      <td class="an" rowspan="1">Şüphesiz bilirim ve bildiririm ki Muhammed Allâh’ın elçisidir. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">4</td>
       <td class="ar" lang="ar" dir="rtl">حَىَّ عَلَى الصَّلاَةِ حَىَّ عَلَى الصَّلاَةِ</td>
       <td class="ok">Hayye ale’s-salâh, Hayye ale’s-salâh</td>
-      <td class="an">Haydin namaza. (2 kere)</td>
+      <td class="an" rowspan="1">Haydin namaza. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">5</td>
       <td class="ar" lang="ar" dir="rtl">حَىَّ عَلَى الْفَلاَحِ حَىَّ عَلَى الْفَلاَحِ</td>
       <td class="ok">Hayye ale’l-felâh, Hayye ale’l-felâh</td>
-      <td class="an">Haydin kurtuluşa. (2 kere)</td>
+      <td class="an" rowspan="1">Haydin kurtuluşa. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">6</td>
       <td class="ar" lang="ar" dir="rtl">اَلصَّلاَةُ خَيْرٌ مِنَ النَّوْمِ اَلصَّلاَةُ خَيْرٌ مِنَ النَّوْمِ</td>
       <td class="ok">es-Salâtü hayrun mine’n-nevm, es-Salâtü hayrun mine’n-nevm</td>
-      <td class="an">Namaz uykudan hayırlıdır. (2 kere)</td>
+      <td class="an" rowspan="1">Namaz uykudan hayırlıdır. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">7</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ</td>
       <td class="ok">Allâhu Ekber, Allâhu Ekber</td>
-      <td class="an">Allah uludur. (2 kere)</td>
+      <td class="an" rowspan="1">Allah uludur. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">8</td>
       <td class="ar" lang="ar" dir="rtl">لاَ اِلٰهَ اِلاَّ اللّٰهُ</td>
       <td class="ok">Lâ ilâhe illellah</td>
-      <td class="an">Allâh’tan başka tanrı yoktur. (1 kere)</td>
+      <td class="an" rowspan="1">Allâh’tan başka tanrı yoktur. (1 kere)</td>
     </tr></tbody></table>
     
     <h3>Dikkat notları</h3><ul><li><b><span class="ar" lang="ar" dir="rtl">اَلصَّلاَةُ خَيْرٌ مِنَ النَّوْمِ</span></b> — Yalnız sabah ezanında, «Hayye ale’l-felâh»tan sonra iki defa okunur. Diyanet’in ezan kaydı sabah ezanıdır.</li></ul>
@@ -314,54 +453,55 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Kāmet <small>d-kamet</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/kamet.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ</td>
       <td class="ok">Allâhu Ekber, Allâhu Ekber, Allâhu Ekber, Allâhu Ekber</td>
-      <td class="an">Allah uludur. (4 kere)</td>
+      <td class="an" rowspan="1">Allah uludur. (4 kere)</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ</td>
       <td class="ok">Eşhedü en lâ ilâhe illellah, Eşhedü en lâ ilâhe illellah</td>
-      <td class="an">Şüphesiz bilirim ve bildiririm ki Allâh’tan başka ilah yoktur. (2 kere)</td>
+      <td class="an" rowspan="1">Şüphesiz bilirim ve bildiririm ki Allâh’tan başka ilah yoktur. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</td>
       <td class="ok">Eşhedü enne Muhammeden Resulüllah, Eşhedü enne Muhammeden Resulüllah</td>
-      <td class="an">Şüphesiz bilirim ve bildiririm ki Muhammed Allâh’ın elçisidir. (2 kere)</td>
+      <td class="an" rowspan="1">Şüphesiz bilirim ve bildiririm ki Muhammed Allâh’ın elçisidir. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">4</td>
       <td class="ar" lang="ar" dir="rtl">حَىَّ عَلَى الصَّلاَةِ حَىَّ عَلَى الصَّلاَةِ</td>
       <td class="ok">Hayye ale’s-salâh, Hayye ale’s-salâh</td>
-      <td class="an">Haydin namaza. (2 kere)</td>
+      <td class="an" rowspan="1">Haydin namaza. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">5</td>
       <td class="ar" lang="ar" dir="rtl">حَىَّ عَلَى الْفَلاَحِ حَىَّ عَلَى الْفَلاَحِ</td>
       <td class="ok">Hayye ale’l-felâh, Hayye ale’l-felâh</td>
-      <td class="an">Haydin kurtuluşa. (2 kere)</td>
+      <td class="an" rowspan="1">Haydin kurtuluşa. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">6</td>
       <td class="ar" lang="ar" dir="rtl">قَدْ قَامَتِ الصَّلاَةُ قَدْ قَامَتِ الصَّلاَةُ</td>
       <td class="ok">Kad kâmeti’s-salâh, Kad kâmeti’s-salâh</td>
-      <td class="an">Namaz başladı. (2 kere)</td>
+      <td class="an" rowspan="1">Namaz başladı. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">7</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ</td>
       <td class="ok">Allâhu Ekber, Allâhu Ekber</td>
-      <td class="an">Allah uludur. (2 kere)</td>
+      <td class="an" rowspan="1">Allah uludur. (2 kere)</td>
     </tr>
     <tr>
       <td class="no">8</td>
       <td class="ar" lang="ar" dir="rtl">لاَ اِلٰهَ اِلاَّ اللّٰهُ</td>
       <td class="ok">Lâ ilâhe illellah</td>
-      <td class="an">Allâh’tan başka tanrı yoktur. (1 kere)</td>
+      <td class="an" rowspan="1">Allâh’tan başka tanrı yoktur. (1 kere)</td>
     </tr></tbody></table>
     
     
@@ -372,34 +512,169 @@ Onaydan önce metin sayfada «hoca incelemesi bekleniyor» notuyla görünür; o
   <section class="kart">
     <h2>Ezan duası <small>d-ezan-duasi</small></h2>
     <audio controls preload="none" src="https://ulucamii.be/media/ses/dualar/ezan-duasi.mp3"></audio>
-    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam</th></tr></thead><tbody>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
     <tr>
       <td class="no">1</td>
       <td class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ رَبَّ هٰذِهِ الدَّعْوَةِ التَّآمَّةِ وَالصَّلاَةِ الْقَآئِمَةِ</td>
       <td class="ok">Allâhümme rabbe hâzihi’d-da‘veti’t-tâmme ve’s-salâti’l-kaime</td>
-      <td class="an">Ey şu eksiksiz mesajın ve kılınacak namazın Rabbi olan Allahım!</td>
+      <td class="an" rowspan="1">Ey şu eksiksiz mesajın ve kılınacak namazın Rabbi olan Allahım!</td>
     </tr>
     <tr>
       <td class="no">2</td>
       <td class="ar" lang="ar" dir="rtl">اٰتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ</td>
       <td class="ok">âti Muhammeden el-vesîlete ve’l-fazîleh</td>
-      <td class="an">Muhammed’e vesileyi ve fazileti (ve yüksek dereceyi) ver!</td>
+      <td class="an" rowspan="1">Muhammed’e vesileyi ve fazileti (ve yüksek dereceyi) ver!</td>
     </tr>
     <tr>
       <td class="no">3</td>
       <td class="ar" lang="ar" dir="rtl">وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِى وَعَدْتَهُ</td>
       <td class="ok">Veb‘ashü makamen mahmûdeni’llezî va‘adteh</td>
-      <td class="an">Vaad ettiğin övülmüş makama yükselt</td>
+      <td class="an" rowspan="1">Vaad ettiğin övülmüş makama yükselt</td>
     </tr>
     <tr>
       <td class="no">4</td>
       <td class="ar" lang="ar" dir="rtl">اِنَّكَ لاَ تُخْلِفُ الْمِيعَادَ</td>
       <td class="ok">İnneke lâ tuhlifü’l-mîâd</td>
-      <td class="an">(Sen vaadine muhalefet etmezsin)</td>
+      <td class="an" rowspan="1">(Sen vaadine muhalefet etmezsin)</td>
     </tr></tbody></table>
     <h3>Portal kaydında yapılan düzeltmeler</h3><ul><li><span class="ar" lang="ar" dir="rtl">مَحْمُودًانِ الَّذ۪ى</span> → <span class="ar" lang="ar" dir="rtl">مَحْمُودًا الَّذِى</span><br>Portalda «mahmûden» kelimesine fazladan نِ eklenmiş (basım hatası; ikinci kaynaklar Tecrid-i Sarih ve İslam İlmihali مَحْمُودًا الَّذِى yazar); ayrıca ذ۪ى içindeki U+06EA işareti kesreye (U+0650) çevrilmiştir.</li></ul>
     <h3>Dikkat notları</h3><ul><li><b>ve’d-derecete’r-refîah</b> — Diyanet İlmihali’ne göre bu kısa ek isteğe bağlıdır («ve yüksek dereceyi»). Diyanet kaydında okunur, Diyanet’in yazılı Arapça metninde yer almaz.</li></ul>
     <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr); son bölüm: Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Diyanet İlmihali, I. cilt, «Ezan ve Kamet» (s. 269–270).</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Âmentü <small>d-amentu</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th><th>Anlam (Fransızca)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">اٰمَنْتُ بِاللّٰهِ وَمَلٰٓئِكَتِهٖ وَكُتُبِهٖ وَرُسُلِهٖ وَالْيَوْمِ الْاٰخِرِ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="1">Ben, Allah’a, meleklerine, kitaplarına, peygamberlerine, Ahiret gününe,</td><td class="fr" rowspan="1">Je crois en Allah, en Ses anges, en Ses Livres révélés, en Ses messagers, au Jour dernier,</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">وَبِالْقَدَرِ خَيْرِهٖ وَشَرِّهٖ مِنَ اللّٰهِ تَعَالٰى</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="1">kadere yani hayır ve şerrin Yüce Allah’ın takdiriyle olduğuna,</td><td class="fr" rowspan="1">à la prédestination, et au fait que le bien comme le mal viennent d'Allah, le Très-Haut,</td>
+    </tr>
+    <tr>
+      <td class="no">3</td>
+      <td class="ar" lang="ar" dir="rtl">وَالْبَعْثُ بَعْدَ الْمَوْتِ حَقٌّ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="1">ölümden sonra tekrar dirilmenin hak ve gerçek olduğuna iman ettim.</td><td class="fr" rowspan="1">et que la résurrection après la mort est vraie.</td>
+    </tr>
+    <tr>
+      <td class="no">4</td>
+      <td class="ar" lang="ar" dir="rtl">اَشْهَدُ اَنْ لَٓا اِلٰهَ اِلَّا اللّٰهُ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="2">Ben şehâdet ederim ki Allah’tan başka ilah yoktur ve Muhammed (s.a.s.) O’nun kulu ve elçisidir.</td><td class="fr" rowspan="2">Je témoigne qu'il n'y a de divinité qu'Allah. Et je témoigne que Muhammed est Son serviteur et Son messager.</td>
+    </tr>
+    <tr>
+      <td class="no">5</td>
+      <td class="ar" lang="ar" dir="rtl">وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</td>
+      <td class="ok">—</td>
+      
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 39, «Âmentü Duâsı»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 27, «Âmentü»; Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1 – Je vais à la mosquée 1 (resmî Fransızca yayın), s. 124 (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 39, «Âmentü Duâsı». Fransızca: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1 – Je vais à la mosquée 1 (resmî Fransızca yayın), s. 124.</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Teşrik tekbiri <small>d-tesrik-tekbiri</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    <p class="ses-yok"><b>Hoca için not.</b> Türkçe anlamın sonunda «Allah’ içindir» yazıyor: Dinî Kavramlar Sözlüğü’nde böyle basılmış (olası yazım kusuru). Kaynağa sadık kalmak için aynen bırakıldı; onay öncesi karar sizin.</p>
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ</td>
+      <td class="ok">Allâhu Ekber, Allâhu Ekber,</td>
+      <td class="an" rowspan="1">Allah, en büyüktür, Allah en büyüktür,</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">لَا اِلٰهَ اِلَّا اللّٰهُ</td>
+      <td class="ok">Lâ ilâhe illallâhu</td>
+      <td class="an" rowspan="1">O’ndan başka ilah yoktur, sadece O vardır.</td>
+    </tr>
+    <tr>
+      <td class="no">3</td>
+      <td class="ar" lang="ar" dir="rtl">وَاللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ وَلِلّٰهِ الْحَمْدُ</td>
+      <td class="ok">vallâhu Ekber. Allâhu Ekber ve lillâhi’l-hamd</td>
+      <td class="an" rowspan="1">Allah en büyüktür ve her türlü övgü Allah’ içindir</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz, «Teşrik Tekbirleri»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Hac İlmihali, s. 238, «Teşrik Tekbiri» (sözlük); Diyanet İşleri Başkanlığı, İslam İlmihali, XII. Kurban (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Dinî Kavramlar Sözlüğü, «Tekbir» maddesi, s. 643; okunuş: Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz, «Teşrik Tekbirleri».</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Telbiye <small>d-telbiye</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ</td>
+      <td class="ok">Lebbeyk, Allâhümme lebbeyk,</td>
+      <td class="an" rowspan="1">Buyur Allah’ım buyur!</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ</td>
+      <td class="ok">Lebbeyke lâ şerike leke lebbeyk.</td>
+      <td class="an" rowspan="2">Buyur, senin hiçbir ortağın yoktur. Buyur, şüphesiz, her türlü övgü, nimet, mülk ve hükümranlık sana mahsustur.</td>
+    </tr>
+    <tr>
+      <td class="no">3</td>
+      <td class="ar" lang="ar" dir="rtl">إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ</td>
+      <td class="ok">İnne’l-hamde ve’n-ni’mete leke ve’l-mülk</td>
+      
+    </tr>
+    <tr>
+      <td class="no">4</td>
+      <td class="ar" lang="ar" dir="rtl">لَا شَرِيكَ لَكَ</td>
+      <td class="ok">lâ şerîke lek.</td>
+      <td class="an" rowspan="1">Senin ortağın yoktur.</td>
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Hac İlmihali, s. 51, «Telbiye»; harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye» (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Hac İlmihali, s. 51, «Telbiye»; okunuş: Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye».</p>
+    <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
+  </section>
+
+  <section class="kart">
+    <h2>Yemek duası <small>d-yemek-duasi</small></h2>
+    <p class="ses-yok"><b>Ses kaydı yok.</b> Bu duanın Diyanet ses kaydı bulunmuyor; sayfada ses de çalınmaz. Metni, anlamı ve okunuşu aşağıdaki kaynak satırındaki Diyanet kitaplarıyla karşılaştırın.</p>
+    <p class="ses-yok"><b>Hoca için not.</b> Arapça ve Türkçe anlam, Hadislerle İslam’daki Ebû Dâvûd/Tirmizî rivayetinden (kaynak satırı) alındı; harf iskeleti Tecrid-i Sarih’teki rivayetle karşılaştırıldı. Okunuş ve Fransızca anlam Diyanet kaynaklarında bulunmadığı için yoktur.</p>
+    <table><thead><tr><th>No</th><th>Arapça</th><th>Okunuş (Türkçe usulü)</th><th>Anlam (Türkçe)</th></tr></thead><tbody>
+    <tr>
+      <td class="no">1</td>
+      <td class="ar" lang="ar" dir="rtl">الْحَمْدُ لِلَّهِ</td>
+      <td class="ok">—</td>
+      <td class="an" rowspan="3">Bizi yediren, bizi içiren ve bizi Müslüman yapan Allah’a hamdolsun.</td>
+    </tr>
+    <tr>
+      <td class="no">2</td>
+      <td class="ar" lang="ar" dir="rtl">الَّذِى أَطْعَمَنَا وَسَقَانَا</td>
+      <td class="ok">—</td>
+      
+    </tr>
+    <tr>
+      <td class="no">3</td>
+      <td class="ar" lang="ar" dir="rtl">وَجَعَلَنَا مُسْلِمِينَ</td>
+      <td class="ok">—</td>
+      
+    </tr></tbody></table>
+    
+    
+    <p class="kaynak">Arapça: Diyanet İşleri Başkanlığı, Hadislerle İslam, 6. cilt, «Hz. Peygamber’in Yemek Âdâbı: Acıkmadan Yemezdi, Doymadan Kalkardı» (Ebû Saîd el-Hudrî’den; D3850 Ebû Dâvûd, Et’ıme, 52; T3457 Tirmizî, Deavât, 55); harf iskeleti şu kaynaklarla karşılaştırıldı: Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Et‘ime (2026-10-24). Anlam: Diyanet İşleri Başkanlığı, Hadislerle İslam, 6. cilt, «Hz. Peygamber’in Yemek Âdâbı: Acıkmadan Yemezdi, Doymadan Kalkardı».</p>
     <p class="onay">Hoca onayı: ☐ Arapça &nbsp; ☐ Anlam &nbsp; ☐ Okunuş &nbsp;·&nbsp; Tarih: ____________ &nbsp; Not: ____________________________</p>
   </section>
 </body></html>

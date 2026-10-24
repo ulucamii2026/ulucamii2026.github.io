@@ -1,0 +1,70 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-tesrik-tekbiri",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ"
+  },
+  {
+   "no": 2,
+   "ar": "لَا اِلٰهَ اِلَّا اللّٰهُ"
+  },
+  {
+   "no": 3,
+   "ar": "وَاللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ وَلِلّٰهِ الْحَمْدُ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Dinî Kavramlar Sözlüğü, «Tekbir» maddesi, s. 643; okunuş: Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz, «Teşrik Tekbirleri»",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah, en büyüktür, Allah en büyüktür,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "O’ndan başka ilah yoktur, sadece O vardır."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Allah en büyüktür ve her türlü övgü Allah’ içindir"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz, «Teşrik Tekbirleri» ↔ Diyanet İşleri Başkanlığı, Hac İlmihali, s. 238, «Teşrik Tekbiri» (sözlük) ↔ Diyanet İşleri Başkanlığı, İslam İlmihali, XII. Kurban",
+  "url": "https://diniyayinlar.diyanet.gov.tr/",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "640e1399f18f69a3899a02d0104aeeb152781755e00973aadf858ff06d0ba0c7",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhu Ekber, Allâhu Ekber,"
+   },
+   {
+    "no": 2,
+    "metin": "Lâ ilâhe illallâhu"
+   },
+   {
+    "no": 3,
+    "metin": "vallâhu Ekber. Allâhu Ekber ve lillâhi’l-hamd"
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

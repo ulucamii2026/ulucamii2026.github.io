@@ -49,6 +49,7 @@
         "durak": { "type": "integer", "minimum": 1, "maximum": 9, "description": "Yalnız 8. şerit (Amme): ara durak; sırayla artar" },
         "ad": { "$ref": "#/definitions/besDil" },
         "kuranMetni": { "type": "boolean" },
+        "metinli": { "const": true, "description": "Sesi olmayan Kur'an dışı madde de çalışma sayfası alır (24 Ekim 2026): src/data/ezber/metin/<id>.json kaynaklı metni vardır. calismaSayfasiVar bu bayrağı sayar; tests/ezber-katalog.test.mjs bayrakla dosyanın birbirini gerektirdiğini denetler. Sesi ya da Kur'an bilgisi olan maddede gerekmez." },
         "kuran": {
           "type": "object",
           "additionalProperties": false,

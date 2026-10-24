@@ -1,0 +1,43 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-tesmi-tahmid",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "سَمِعَ اللّٰهُ لِمَنْ حَمِدَهُ"
+  },
+  {
+   "no": 2,
+   "ar": "رَبَّنَا لَكَ الْحَمْدُ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah, kendisine hamdedeni işitir."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Rabbimiz, hamd senin içindir"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat» ↔ Diyanet İşleri Başkanlığı, Hadislerle İslam, 2. cilt, «İmamlık: Cemaate Kılavuz Olmak»",
+  "url": "https://diniyayinlar.diyanet.gov.tr/",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "332369d6fd4518ec8dd89c1e2901e012c7bd2ee79d43a78c8c8c793769eb896f",
+ "zor": [],
+ "onay": null
+}

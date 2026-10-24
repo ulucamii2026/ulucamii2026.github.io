@@ -173,6 +173,17 @@ a.gorunmez:focus-visible { position: fixed !important; top: 0.75rem; left: 0.75r
   border-radius: calc(var(--r) + 2px); display: grid; gap: 2px; margin: 0; }
 @media (min-width: 64rem) { .pano-cerceve { justify-self: end; } }
 @media (max-width: 63.99rem) { .pano-cerceve { --karo-boy: clamp(1.1rem, (100vw - 2rem - 28px) / 13, 2.8rem); } }
+/* Telefonda 13 karo, sayfa kenar boşluğu (1 rem) ile 360 px'te 23 px kalıyordu (WCAG 2.5.8 asgari hedef 24 px). Dar ekranda pano kenar
+   boşluğunun yarısına (0,5 rem) kadar yayılır: karo = (içerik genişliği + 1 rem − 28 px) / 13 → 360 px'te 24,3 · 375 px'te 25,5 ·
+   390 px'te 26,6 px; yatay taşma olmaz (çerçeve en çok kenar boşluğu kadar dışarı çıkar). İçerik genişliği 100vw yerine kapsayıcı
+   birimiyle (cqw) alınır: kaydırma çubuğu olan dar masaüstü penceresinde 100vw sayfayı taşırırdı. 356 px'in altında 13 sütun 24 px'e
+   sığmaz (320 px'te 21 px); aynı maddelere alttaki liste de bağlanır (2.5.8 «eşdeğer bağlantı» istisnası). cqw yoksa önceki ölçü geçerli kalır. */
+@media (max-width: 29.99rem) {
+  @supports (width: 1cqw) {
+    .giris .icerik { container-type: inline-size; }
+    .pano-cerceve { --karo-boy: clamp(1.1rem, (100cqw + 1rem - 28px) / 13, 2.8rem); max-width: none; }
+  }
+}
 .kusak-yazi { background: var(--kusak); color: var(--kusak-yazi); border-radius: var(--r) var(--r) 1px 1px;
   min-height: 3.65rem; padding: 0.55rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.98rem;
   line-height: 1.3; }

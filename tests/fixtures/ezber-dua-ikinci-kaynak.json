@@ -1,5 +1,5 @@
 {
- "kunye": "Diyanet İşleri Başkanlığı yayınları (Tecrid-i Sarih, İslam İlmihali) — yalnız gevşek iskeletlerin SHA-256 özetinin ilk 16 hanesi; metnin kendisi yok.",
+ "kunye": "Diyanet İşleri Başkanlığı yayınları (Tecrid-i Sarih, İslam İlmihali, Hac İlmihali, Elif-Bâ, Temel Dinî Bilgiler, Camiye Gidiyorum, Hadislerle İslam) — yalnız gevşek iskeletlerin SHA-256 özetinin ilk 16 hanesi; metnin kendisi yok.",
  "uretim": "node scripts/ezber-dua-iskelet.mjs --uret [arşiv-kökü]",
  "kayitlar": [
   {
@@ -134,6 +134,156 @@
    "kaynak": "İslam İlmihali, VIII. Namaz (DİB)",
    "not": "sabah ezanı bölümü: kaynakta bir kez yazılır, «iki defa» denir",
    "iskelet": "c7a1ff518212dd83"
+  },
+  {
+   "id": "d-euzu-besmele",
+   "bolumler": [
+    1
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Edeb",
+   "iskelet": "c1455c8584e6d11b"
+  },
+  {
+   "id": "d-euzu-besmele",
+   "bolumler": [
+    2
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 325, «Fatiha Suresi»",
+   "iskelet": "551a788ebbe57ff3"
+  },
+  {
+   "id": "d-euzu-besmele",
+   "bolumler": [
+    2
+   ],
+   "kaynak": "Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1, s. 20",
+   "iskelet": "551a788ebbe57ff3"
+  },
+  {
+   "id": "d-kelime-i-tevhid",
+   "bolumler": [
+    1,
+    2
+   ],
+   "kaynak": "Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 2, s. 6",
+   "iskelet": "4adafe988adc808d"
+  },
+  {
+   "id": "d-kelime-i-tevhid",
+   "bolumler": [
+    1,
+    2
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, İslam İlmihali, IV. İman, «Kelime-i Tevhid»",
+   "iskelet": "4adafe988adc808d"
+  },
+  {
+   "id": "d-kelime-i-sehadet",
+   "bolumler": [
+    1,
+    2
+   ],
+   "kaynak": "Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 2, s. 6",
+   "iskelet": "a41fd187f9369e62"
+  },
+  {
+   "id": "d-kelime-i-sehadet",
+   "bolumler": [
+    1,
+    2
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 39, «Âmentü Duâsı»",
+   "iskelet": "a41fd187f9369e62"
+  },
+  {
+   "id": "d-tekbir",
+   "bolumler": [
+    1
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 127, «Namaz sonrası tesbihat»",
+   "iskelet": "ca751549ebcc576c"
+  },
+  {
+   "id": "d-tesmi-tahmid",
+   "bolumler": [
+    1,
+    2
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Hadislerle İslam, 2. cilt, «İmamlık: Cemaate Kılavuz Olmak»",
+   "iskelet": "5c87e793cf35a99b"
+  },
+  {
+   "id": "d-selam",
+   "bolumler": [
+    1
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân",
+   "iskelet": "9a48be58e74e045d"
+  },
+  {
+   "id": "d-amentu",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 27, «Âmentü»",
+   "iskelet": "1c55fbbc2db63558"
+  },
+  {
+   "id": "d-amentu",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "kaynak": "Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1 – Je vais à la mosquée 1 (resmî Fransızca yayın), s. 124",
+   "iskelet": "1c55fbbc2db63558"
+  },
+  {
+   "id": "d-tesrik-tekbiri",
+   "bolumler": [
+    1,
+    2,
+    3
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Hac İlmihali, s. 238, «Teşrik Tekbiri» (sözlük)",
+   "iskelet": "8ec862a6f1347833"
+  },
+  {
+   "id": "d-tesrik-tekbiri",
+   "bolumler": [
+    1,
+    2,
+    3
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, İslam İlmihali, XII. Kurban",
+   "iskelet": "8ec862a6f1347833"
+  },
+  {
+   "id": "d-telbiye",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye»",
+   "iskelet": "3e3336c22c06d9b4"
+  },
+  {
+   "id": "d-yemek-duasi",
+   "bolumler": [
+    1,
+    2,
+    3
+   ],
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Et‘ime",
+   "iskelet": "67cf61c8828db128"
   }
  ]
 }

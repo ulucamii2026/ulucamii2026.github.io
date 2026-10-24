@@ -1,0 +1,78 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-telbiye",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ"
+  },
+  {
+   "no": 2,
+   "ar": "لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ"
+  },
+  {
+   "no": 3,
+   "ar": "إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ"
+  },
+  {
+   "no": 4,
+   "ar": "لَا شَرِيكَ لَكَ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Hac İlmihali, s. 51, «Telbiye»; okunuş: Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye»",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Buyur Allah’ım buyur!"
+    },
+    {
+     "ayetler": [
+      2,
+      3
+     ],
+     "metin": "Buyur, senin hiçbir ortağın yoktur. Buyur, şüphesiz, her türlü övgü, nimet, mülk ve hükümranlık sana mahsustur."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Senin ortağın yoktur."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Hac İlmihali, s. 51, «Telbiye» ↔ Diyanet İşleri Başkanlığı, İslam İlmihali, XI. Hac, «Telbiye»",
+  "url": "https://diniyayinlar.diyanet.gov.tr/",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "1bfc0d66a3c1f3cb2932d9ca1cf4437148940a05e0f9f4bc158f8079968e077e",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Lebbeyk, Allâhümme lebbeyk,"
+   },
+   {
+    "no": 2,
+    "metin": "Lebbeyke lâ şerike leke lebbeyk."
+   },
+   {
+    "no": 3,
+    "metin": "İnne’l-hamde ve’n-ni’mete leke ve’l-mülk"
+   },
+   {
+    "no": 4,
+    "metin": "lâ şerîke lek."
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

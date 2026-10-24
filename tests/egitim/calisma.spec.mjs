@@ -62,7 +62,7 @@ test('Her parça üç kez; hız, duraklat/devam, bitiş ve yeniden başlatma', a
   await bitir(page); await bitir(page); await bitir(page);
   expect(await page.evaluate(() => window.__ses.src)).toMatch(/\/media\/ses\/ayet\/1-1\.mp3$/);
   await bitir(page); await bitir(page); await bitir(page);
-  await expect(page.locator('[data-durum]')).toContainText('tamamlandı');
+  await expect(page.locator('.calisma-durum')).toContainText('tamamlandı');
   await expect(page.locator('[data-durdur]')).toBeDisabled();
   const sesler = await page.evaluate(() => window.__sesler.map((s) => new URL(s.src).pathname));
   expect(sesler).toEqual([...Array(4).fill('/media/ses/ayet/1-0.mp3'), ...Array(3).fill('/media/ses/ayet/1-1.mp3')]);
@@ -78,7 +78,7 @@ test('Seçili bölüm, tek dinleyiş, durdurma ve eski kaydın geç gelen hatas�
   await page.locator('[data-oynat]').click();
   expect(await page.evaluate(() => window.__ses.src)).toMatch(/\/media\/ses\/ayet\/1-1\.mp3$/);
   await bitir(page);
-  await expect(page.locator('[data-durum]')).toContainText('tamamlandı');
+  await expect(page.locator('.calisma-durum')).toContainText('tamamlandı');
   await page.locator('[data-oynat]').click();
   await page.locator('[data-bolum]').selectOption('0');
   await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başla');
@@ -86,7 +86,7 @@ test('Seçili bölüm, tek dinleyiş, durdurma ve eski kaydın geç gelen hatas�
   await page.evaluate(() => window.__kayitlar[0].dispatchEvent(new Event('error')));
   await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
   await page.locator('[data-durdur]').click();
-  await expect(page.locator('[data-durum]')).toContainText('Hazır');
+  await expect(page.locator('.calisma-durum')).toContainText('Hazır');
 });
 
 test('Tekrar arası duraklatılabilir; durdurma bekleyen zamanlayıcıyı iptal eder', async ({ page }) => {
@@ -94,7 +94,7 @@ test('Tekrar arası duraklatılabilir; durdurma bekleyen zamanlayıcıyı iptal 
   await page.goto('/tr/calis/d-euzu-besmele/');
   await page.locator('[data-oynat]').click();
   await bitir(page);
-  await expect(page.locator('[data-durum]')).toContainText('Şimdi siz');
+  await expect(page.locator('.calisma-durum')).toContainText('Şimdi siz');
   await page.locator('[data-oynat]').click();
   await page.clock.fastForward(4000);
   expect(await page.evaluate(() => window.__sesler.length)).toBe(1);
@@ -126,7 +126,7 @@ test('Senin sıran arası kaydın süresiyle ölçeklenir: ×1, ×2, 0,75× hız
   await page.locator('[data-oynat]').click();
   await sureVer(10);
   await bitir(page);
-  await expect(page.locator('[data-durum]')).toContainText('Şimdi siz');
+  await expect(page.locator('.calisma-durum')).toContainText('Şimdi siz');
   await expect(kok).toHaveAttribute('data-senin-siran', '');
   await expect(cubuk).toHaveAttribute('data-aktif', '');
   await page.clock.runFor(5000);
@@ -202,7 +202,7 @@ test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', a
   await page.goto('/tr/calis/d-euzu-besmele/');
   await page.evaluate(() => { window.__hata = true; });
   await page.locator('[data-oynat]').click();
-  await expect(page.locator('[data-durum]')).toContainText('Ses çalınamadı');
+  await expect(page.locator('.calisma-durum')).toContainText('Ses çalınamadı');
   await page.evaluate(() => { window.__hata = false; window.__gecik = true; });
   await page.locator('[data-oynat]').click();
   await page.locator('[data-bolum]').selectOption('1');
@@ -210,14 +210,14 @@ test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', a
   await page.locator('[data-oynat]').click();
   await page.evaluate(() => window.__reddet(new Error('Eski istek')));
   await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
-  await expect(page.locator('[data-durum]')).toContainText('Bölüm 2');
+  await expect(page.locator('.calisma-durum')).toContainText('Bölüm 2');
 });
 
 test('Katalogda sesi ya da metni olan maddeler çalışmaya bağlanır; tek kayıt ve ezan notu', async ({ page }) => {
   await page.goto('/tr/');
   const baglar = await page.locator('.maddeler a[href*="/calis/"]').evaluateAll((a) => a.map((x) => x.pathname).sort());
-  // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi, Kur'an metni ya da bilgi metni.
-  expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran || o.bilgiMetni).map((o) => `/tr/calis/${o.id}/`).sort());
+  // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi, Kur'an metni, bilgi metni ya da (sessiz dualarda) metinli işareti.
+  expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran || o.bilgiMetni || o.metinli).map((o) => `/tr/calis/${o.id}/`).sort());
   await page.goto('/tr/calis/d-ezan/');
   await expect(page.locator('.calisma-not')).toContainText('sabah ezanıdır');
   await expect(page.locator('[data-bolum] option')).toHaveCount(1);
@@ -253,7 +253,7 @@ test('Duraklatılan play isteğinin gecikmiş reddi devam eden aynı kaydı kesm
   await page.locator('[data-oynat]').click();
   await page.evaluate(() => window.__reddet(Object.assign(new Error('İptal edildi'), { name: 'AbortError' })));
   await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
-  await expect(page.locator('[data-durum]')).toContainText('Bölüm 1');
+  await expect(page.locator('.calisma-durum')).toContainText('Bölüm 1');
 });
 
 test('Depolama kapalıyken ve 320 px ekranda çalışma açılır', async ({ page }) => {

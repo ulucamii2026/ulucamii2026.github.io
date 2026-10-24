@@ -34,12 +34,14 @@ export interface MetinBlogu {
 /**
  * Sayfa dilinin meâli. Yalnız kaynaklı meâl döner. FR: Diyanet'in Chiadmi çevirisi («Le Noble Coran», DİB 2022; imam
  * kararı 27 Eyl 2026) dijital olarak yayımlanana kadar Hamidullah çevirisi, çevirmen adıyla (24 Eki 2026 kararı,
- * scripts/ezber-meal-fr.mjs); başka FR çeviri gösterilmez. Diyanet'in meâli olmayan dilde (NL) çeviri `inceleme: true`
+ * scripts/ezber-meal-fr.mjs); başka FR çeviri gösterilmez. Tek istisna: kitaptan alınan dualarda DİTİB'in resmî Fransızca
+ * yayını «Camiye Gidiyorum – Je vais à la mosquée» (scripts/ezber-dua-kitap.mjs; künyesi kitabın Fransızca adını taşır).
+ * Diyanet'in meâli olmayan dilde (NL) çeviri `inceleme: true`
  * ile gelir ve sayfa bunu yazar (docs/DIL-NL-DE.md). Meâl yoksa sayfa «yakında» der.
  */
 export function sayfaMeali(m: MaddeMetni, dil: Dil): Meal | undefined {
   const meal = m.meal[dil];
-  if (dil === 'fr' && meal && !/Chiadmi|Hamidullah/.test(meal.kaynak)) return undefined;
+  if (dil === 'fr' && meal && !/Chiadmi|Hamidullah|Je vais à la mosquée/.test(meal.kaynak)) return undefined;
   return meal;
 }
 

@@ -23,8 +23,8 @@ if (!girdi) {
 const KOK = new URL(girdi).origin;
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const katalog = JSON.parse(readFileSync(new URL('../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
-// Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni ya da bilgi metni (24 Ekim 2026).
-const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni);
+// Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni, bilgi metni ya da sessiz kitap duasının metni (24 Ekim 2026).
+const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 const bilgiOgeleri = katalog.ogeler.filter((o) => o.bilgiMetni);
 const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf8'));
 const egitim = [firebase.hosting].flat().find((h) => h?.public === 'egitim/dist');

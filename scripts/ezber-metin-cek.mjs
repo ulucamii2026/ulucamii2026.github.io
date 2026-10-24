@@ -89,6 +89,18 @@ async function al(yol) {
   }
 }
 
+// --yalniz-ayet 2:67,16:98: yalnız bu âyetleri /ayet ucundan önbelleğe alır ve çıkar (dosya yazılmaz). Eûzü metni
+// (scripts/ezber-dua-kitap.mjs) Diyanet mushafının sözcüklerinden birleştirilir; o âyetler katalogda yoktur.
+const yalnizAyet = process.argv.indexOf('--yalniz-ayet');
+if (yalnizAyet >= 0) {
+  for (const k of (process.argv[yalnizAyet + 1] ?? '').split(',').filter(Boolean)) {
+    const [s, a] = k.split(':').map(Number);
+    if (!Number.isInteger(s) || !Number.isInteger(a)) throw new Error(`--yalniz-ayet: «${k}» geçersiz (sûre:âyet)`);
+    await al(`/ayet/${s}/${a}`);
+  }
+  process.exit(0);
+}
+
 const katalog = JSON.parse(readFileSync('src/data/ezber/katalog.json', 'utf8'));
 const duzeltmeYolu = resolve(HEDEF, 'duzeltmeler.json');
 const duzeltmeler = existsSync(duzeltmeYolu) ? JSON.parse(readFileSync(duzeltmeYolu, 'utf8')).duzeltmeler : [];

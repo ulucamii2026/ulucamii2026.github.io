@@ -1,0 +1,40 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-tekbir",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللّٰهُ اَكْبَرُ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat»; okunuş: Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 127, «Namaz sonrası tesbihat»",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah en büyüktür"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Tecvidli Kur’an-ı Kerim Elif-Bâ (2020), s. 38, «Namaz içindeki tesbihat» ↔ Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 127, «Namaz sonrası tesbihat»",
+  "url": "https://diniyayinlar.diyanet.gov.tr/",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "6c29e8607302c45c8a84bcdcc31a8f39a8b3730e84325807c9c173d54d2540bb",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhu Ekber"
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

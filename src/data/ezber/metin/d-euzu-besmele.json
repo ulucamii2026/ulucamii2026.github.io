@@ -1,0 +1,55 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-euzu-besmele",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَعُوذُ بِاللّٰهِ مِنَ الشَّیْطَانِ الرَّجٖیمِ"
+  },
+  {
+   "no": 2,
+   "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖیمِ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Eûzü: Diyanet İşleri Başkanlığı, Riyâzü’s-Sâlihîn (Metin ve Çeviri), 1. cilt, «Sabır», 46. hadis (Buhârî, Bed’ü’l-halk 11; Müslim, Birr 109); Besmele: Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1, s. 20; okunuş: TDV İslâm Ansiklopedisi, «İstiâze» (c. 23, s. 318–319); TDV İslâm Ansiklopedisi, «Besmele» (c. 5, s. 529–540)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Kovulmuş şeytandan Allah’a sığınırım."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Rahmân (Bağışlayıcı) ve Rahîm (Esirgeyici) olan Allah’ın adıyla"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı Kur’an-ı Kerim mushafı (kuran.diyanet.gov.tr/mushaf): Bakara 2/67 (15–16), Nahl 16/98 (6–8), Fâtiha 1/1 ↔ Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Edeb ↔ Diyanet İşleri Başkanlığı, Temel Dinî Bilgiler (S. Yazıcı, DİB Yay. 301), s. 325, «Fatiha Suresi» ↔ Diyanet İşleri Türk İslam Birliği (DİTİB), Camiye Gidiyorum 1, s. 20",
+  "url": "https://kuran.diyanet.gov.tr/mushaf",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "5a188428fa0f0efab7bc372414ea985f57be2aee2eac5d09cdbb761ab6f59678",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Eûzü billâhi mine’ş-şeytâni’r-racîm"
+   },
+   {
+    "no": 2,
+    "metin": "Bismillâhirrahmânirrahîm"
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

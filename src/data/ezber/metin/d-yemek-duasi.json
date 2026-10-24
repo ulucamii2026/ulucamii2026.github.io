@@ -1,0 +1,40 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-yemek-duasi",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "الْحَمْدُ لِلَّهِ"
+  },
+  {
+   "no": 2,
+   "ar": "الَّذِى أَطْعَمَنَا وَسَقَانَا"
+  },
+  {
+   "no": 3,
+   "ar": "وَجَعَلَنَا مُسْلِمِينَ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Hadislerle İslam, 6. cilt, «Hz. Peygamber’in Yemek Âdâbı: Acıkmadan Yemezdi, Doymadan Kalkardı»",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "Bizi yediren, bizi içiren ve bizi Müslüman yapan Allah’a hamdolsun."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Hadislerle İslam, 6. cilt, «Hz. Peygamber’in Yemek Âdâbı: Acıkmadan Yemezdi, Doymadan Kalkardı» (Ebû Saîd el-Hudrî’den; D3850 Ebû Dâvûd, Et’ıme, 52; T3457 Tirmizî, Deavât, 55) ↔ Diyanet İşleri Başkanlığı, Tecrid-i Sarih Tercemesi ve Şerhi, 8. cilt, Kitâbü’l-Et‘ime",
+  "url": "https://dijital.diyanet.gov.tr/Kitaplik/hadis-ve-siyer/hadislerle-islam-6",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "6b129e3e204c9263eeb961103f9456318e614236958332be0af311f404d6c84e",
+ "zor": [],
+ "onay": null
+}

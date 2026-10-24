@@ -9,12 +9,18 @@
  *   node scripts/ezber-dua-cek.mjs             önbellekle çıkarır, src/data/ezber/metin/<id>.json yazar
  *   node scripts/ezber-dua-cek.mjs --denetle   portalı yeniden indirir; dosyalarla fark varsa çıkış 1
  *
+ * Portalda olmayan dualar (`kitap` tanımlı olanlar: tekbir, tevhid, şehâdet, tesmî–tahmîd, selâm, âmentü, teşrik tekbiri,
+ * telbiye, yemek duası, Eûzü-Besmele) Diyanet'in basılı kitaplarından alınır; iki bağımsız Diyanet kaynağında harf iskeleti
+ * aynı olmayan dua yazılmaz (scripts/ezber-dua-kitap.mjs). Bu dualar yerel kitap arşivini ister (D:\ulu-camii-kuran-kursu\veri\kitaplar,
+ * D:\ihtisas); Eûzü için ayrıca `node scripts/ezber-metin-cek.mjs --yalniz-ayet 2:67,16:98`.
+ *
  * Hoca alanı `onay` yeniden çekimde korunur. Çıktıyı değiştiren her şey tablodan geçer: dosyaları elle düzenlemeyin
  * (`ozet` bunu yakalar, tests/ezber-madde-metni.test.mjs).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { DUALAR, PORTAL, duaOzeti } from './ezber-dua-tanim.mjs';
+import { kitapDuasi } from './ezber-dua-kitap.mjs';
 
 const HEDEF = resolve('src/data/ezber/metin');
 const ONBELLEK = resolve('node_modules/.cache/ezber-dua-cek');
@@ -138,6 +144,11 @@ function bolumleriKur(id, d) {
 
 for (const [id, d] of Object.entries(DUALAR)) {
   if (d.turet) continue;
+  if (d.kitap) {
+    const kitap = kitapDuasi(id, d);
+    sonuc.set(id, { ar: kitap.ar, tr: kitap.tr.parcalar, okunus: kitap.okunus?.parcalar, duzeltmeler: kitap.duzeltmeler, d, kitap });
+    continue;
+  }
   const { ar, duzeltmeler } = bolumleriKur(id, d);
   const tr = turkceParca(d.anlam, ar.length, `${id}/anlam`);
   const okunus = d.okunus ? turkceParca(d.okunus, ar.length, `${id}/okunuş`) : undefined;
@@ -158,15 +169,21 @@ for (const [id, d] of Object.entries(DUALAR)) {
 
 // --- yazım / denetim --------------------------------------------------------------------------------------------------
 const hatalar = [];
-for (const [id, { ar, tr, okunus, duzeltmeler, d }] of sonuc) {
+/** Kitap kaynaklı anlam: parça başına bir meâl grubu (bir grup birden çok bölümü kapsayabilir). */
+const kitapMeali = (a) => ({ kaynak: a.kunye, gruplar: a.parcalar.map((metin, i) => ({ ayetler: a.gruplar[i], metin })) });
+for (const [id, { ar, tr, okunus, duzeltmeler, d, kitap }] of sonuc) {
   const yol = resolve(HEDEF, `${id}.json`);
   const onceki = existsSync(yol) ? JSON.parse(readFileSync(yol, 'utf8')) : undefined;
+  // Okunuşun kaynağı Türkçe anlamdan farklıysa, sayfadaki künyede ikisi de görünsün.
+  const trMeali = kitap
+    ? { ...kitapMeali(kitap.tr), kaynak: kitap.tr.kunye + (kitap.okunus && kitap.okunus.kunye !== kitap.tr.kunye ? `; okunuş: ${kitap.okunus.kunye}` : '') }
+    : { kaynak: d.anlamKaynak, gruplar: tr.map((metin, i) => ({ ayetler: [i + 1, i + 1], metin })) };
   const m = {
     $schema: './metin.schema.json',
     id,
     bolumler: ar.map((a, i) => ({ no: i + 1, ar: a })),
-    meal: { tr: { kaynak: d.anlamKaynak, gruplar: tr.map((metin, i) => ({ ayetler: [i + 1, i + 1], metin })) } },
-    kaynak: { ar: d.kaynakAr, url: PORTAL, alindi: bugun },
+    meal: { tr: trMeali, ...(kitap?.fr && { fr: kitapMeali(kitap.fr) }) },
+    kaynak: { ar: kitap ? kitap.kaynakAr : d.kaynakAr, url: d.url ?? PORTAL, alindi: bugun },
     ...(duzeltmeler.length && { duzeltmeler }),
     ozet: '',
     ...(okunus && { okunus: { tr: okunus.map((metin, i) => ({ no: i + 1, metin })) } }),

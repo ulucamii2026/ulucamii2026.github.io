@@ -75,8 +75,8 @@ test('Hosting: önbellek — HTML her açılışta doğrulanır, özetli dosyala
 
 const dist = (yol) => new URL(`egitim/dist/${yol}`, KOK);
 const derlendi = existsSync(dist('index.html'));
-// Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni ya da bilgi metni.
-const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni);
+// Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni, bilgi metni ya da sessiz kitap duasının metni.
+const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 const dilYollari = DILLER.flatMap((d) => [`${d}/`, ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
 const SAYFALAR = ['index.html', '404.html', ...dilYollari.map((y) => `${y}index.html`)];
 

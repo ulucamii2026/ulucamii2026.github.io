@@ -41,7 +41,7 @@ const kuranHucresi = (o) => {
   const [a, b] = o.kuran.ayetler;
   return `${o.kuran.sure}:${a}${a === b ? '' : `–${b}`}`;
 };
-const sesHucresi = (o) => (o.ses?.tam ? (o.ses.parcalar ? 'tam + âyet âyet' : 'tam') : o.ses?.parcalar ? 'âyet âyet' : 'yok');
+const sesHucresi = (o) => (o.ses?.tam ? (o.ses.parcalar ? 'tam + âyet âyet' : 'tam') : o.ses?.parcalar ? 'âyet âyet' : o.metinli ? 'yok (yalnız metin)' : 'yok');
 
 const cikti = [];
 const toplam = m.KATALOG.ogeler.length;

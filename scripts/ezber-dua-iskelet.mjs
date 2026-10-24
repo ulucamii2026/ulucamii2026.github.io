@@ -11,11 +11,16 @@
  * SHA-256 özetinin ilk 16 hanesini taşır (yayın telifi: kitap metni depoya girmez).
  *
  *   node scripts/ezber-dua-iskelet.mjs --uret [arşiv-kökü]   fikstürü yeniden üretir (arşiv: D:/ihtisas/kaynaklar/diyanet-kitaplik)
+ *
+ * Portalda olmayan, kitaptan alınan dualar (ezber-dua-tanim.mjs, `kitap`) kendi ikinci kaynaklarını scripts/ezber-dua-kitap.mjs
+ * ile karşılaştırır; sonuçları aynı fikstüre yazılır (her bölüm en az bir ikinci kaynakla kapsanır).
  *   node scripts/ezber-dua-iskelet.mjs --goster [arşiv-kökü] ikinci kaynaktan çıkan harekeli aralıkları yazar (gözle denetim)
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { iskelet, ozet } from './ezber-iskelet.mjs';
+import { DUALAR } from './ezber-dua-tanim.mjs';
+import { kitapDuasi } from './ezber-dua-kitap.mjs';
 
 const KOK = 'D:/ihtisas/kaynaklar/diyanet-kitaplik';
 const TS2 = 'hadis-ve-siyer/tecrid-i-sarih-2/011-kitabul-ezan.md';
@@ -108,6 +113,17 @@ function calis(kok, goster) {
       ...(ayri && k.fark && { bizim: ozet(bizim), fark: k.fark }),
     });
   }
+  // Kitap kaynaklı dualar: ikinci kaynak karşılaştırması kitapDuasi içinde yapılır; dosyadaki bölümler de aynı olmalı.
+  for (const [id, d] of Object.entries(DUALAR)) {
+    if (!d.kitap) continue;
+    const r = kitapDuasi(id, d);
+    const metin = JSON.parse(readFileSync(`src/data/ezber/metin/${id}.json`, 'utf8'));
+    if (JSON.stringify(metin.bolumler.map((b) => b.ar)) !== JSON.stringify(r.ar)) { sorun++; console.log(`FARK ${id}: metin dosyası kitaptan farklı (node scripts/ezber-dua-cek.mjs)`); }
+    for (const k of r.ikinci) {
+      if (goster) console.log(`## ${id} [${k.bolumler}] ← ${k.kaynak}`);
+      kayitlar.push(k);
+    }
+  }
   return { kayitlar, sorun };
 }
 
@@ -119,7 +135,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   if (mod === '--uret') {
     if (sorun) { console.error(`${sorun} fark var; fikstür yazılmadı.`); process.exit(1); }
     writeFileSync('tests/fixtures/ezber-dua-ikinci-kaynak.json', JSON.stringify({
-      kunye: 'Diyanet İşleri Başkanlığı yayınları (Tecrid-i Sarih, İslam İlmihali) — yalnız gevşek iskeletlerin SHA-256 özetinin ilk 16 hanesi; metnin kendisi yok.',
+      kunye: 'Diyanet İşleri Başkanlığı yayınları (Tecrid-i Sarih, İslam İlmihali, Hac İlmihali, Elif-Bâ, Temel Dinî Bilgiler, Camiye Gidiyorum, Hadislerle İslam) — yalnız gevşek iskeletlerin SHA-256 özetinin ilk 16 hanesi; metnin kendisi yok.',
       uretim: 'node scripts/ezber-dua-iskelet.mjs --uret [arşiv-kökü]',
       kayitlar,
     }, null, 1) + '\n');
