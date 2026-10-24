@@ -71,6 +71,9 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
 - **`kuranMetni`:** Kur'an metni olan her madde (Kur'an'dan olan dualar dahil; ör. Rabbenâ âtinâ = Bakara 201) `true`
   taşır. Bu bayrak yapay ses yasağının ve «yalnız Diyanet» kuralının dayanağıdır. Sûrelerde `kuran` (sûre + âyet
   aralığı, Diyanet mushafı sayımı) zorunludur.
+- **`bilgiMetni`:** `tur: "bilgi"` olan ve egitim sitesinde kaynaklı sayılı liste sayfası bulunan madde `true` taşır (24 Ekim 2026). Veri
+  `src/data/ezber/bilgi/<id>.json` (şema `bilgi.schema.json`); bayrak ile dosya bire bir eşleşir (test). Bayraklı madde ses ya da Kur'an metni
+  gerektirmeden çalışma sayfası alır (`calismaSayfasiVar`). Tasarım, kaynaklar ve hoca onayı: `docs/EGITIM-FAZ2-DINLEME.md` «Bilgi maddeleri».
 - **Ses:** yalnız `docs/dinleme-ses-kaynaklari.json`'da kaydı olan ve sha256'sı tutan dosya bağlanır; kaynak Diyanet
   alan adıdır, sûre sesi Kur'an sunucusundandır. Tek resmî dosyadan kesilen seste `kesim` (saniye) ve `ozgunSha256`
   zorunludur (test: Kunut 1–2, Rabbenâ âtinâ / Rabbenağfirlî). Âyet parçaları sırayla `parcalar`'dadır ve `kuran`

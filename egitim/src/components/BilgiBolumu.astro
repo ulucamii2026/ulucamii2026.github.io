@@ -1,0 +1,109 @@
+---
+/**
+ * Bilgi maddesinin sayfa gövdesi (24 Ekim 2026): kaynaklı, numaralı liste (büyük punto, 360 px'te tek sütun), durum notları
+ * (hoca incelemesi bekleniyor / taslak çeviri), kaynak satırı ve JavaScript açıksa iki çalışma kipi: «Gizle ve söyle» ile
+ * «Sırala» (sıra anlamlıysa) ve «Nasıl geçti?» (tekrar önerisi). JavaScript olmadan liste ve kaynaklar okunur. Ses yoktur.
+ * Veri: src/data/ezber/bilgi/<id>.json; kurallar: src/lib/ezber/bilgi-metni.ts. Çalışma kipleri scripts/bilgi.ts'te çizilir
+ * (satır içi betik yok: CSP); veri `data-veri` ile gider.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilDurumu, gosterimGruplari, kaynakSirasi, siralamaVar, type BilgiMetni, type KaynakRolu } from '@ortak/lib/ezber/bilgi-metni';
+import type { KatalogOgesi } from '@ortak/lib/ezber/katalog';
+import { bilgiYazilari } from '../i18n/bilgi';
+import { kipMetinleri } from '../i18n/kip';
+import { sinaMetinleri } from '../i18n/sina';
+
+interface Props { oge: KatalogOgesi; bilgi: BilgiMetni; dil: Dil }
+const { oge, bilgi, dil } = Astro.props;
+
+const t = bilgiYazilari(dil);
+const k = kipMetinleri(dil);
+const s = sinaMetinleri(dil);
+const durum = dilDurumu(bilgi, dil);
+const gruplar = gosterimGruplari(bilgi, dil);
+const adet = gruplar.reduce((a, g) => a + g.maddeler.length, 0);
+const arVar = gruplar.some((g) => g.maddeler.some((m) => m.ar));
+const sirala = siralamaVar(bilgi);
+const not = bilgi.not?.[dil];
+
+// Kaynak satırı: rol sırasıyla (metin, Fransızca, Arapça, karşılaştırılan); aynı roldeki kaynaklar «;» ile.
+const kaynakSatirlari = (['metin', 'fr', 'ar', 'dogrulama'] as KaynakRolu[]).flatMap((rol) => {
+  const l = kaynakSirasi(bilgi).filter((x) => x.rol === rol);
+  return l.length ? [{ rol, yazi: l.map((x) => `${x.ad}, ${x.sayfa ? `${t.sayfa} ${x.sayfa}` : x.bolum}`).join('; ') }] : [];
+});
+
+// İstemciye giden veri: yalnız sayfa dilinin metni ve kipin ihtiyacı olan arayüz dizeleri (işlev taşınamaz).
+const m = {
+  baslik: k.baslik, sekmeler: k.sekmeler, kontrolEt: k.kontrolEt, tam: k.tam, az: k.az, tekrar: k.tekrar, yuklenemedi: k.yuklenemedi,
+  siralaYonerge: s.siralaYonerge, yukari: s.yukari, asagi: s.asagi, yerinde: s.yerinde, siraTamam: s.siraTamam, siraDevam: s.siraDevam,
+  cevapGoster: s.cevapGoster, dogruYerde: s.dogruYerde, yeniTur: s.yeniTur, sinaNasil: s.sinaNasil,
+  yanitTam: s.yanitTam, yanitAz: s.yanitAz, yanitTekrar: s.yanitTekrar, oneri: s.oneri, oneriNot: s.oneriNot, tekrarGunu: s.tekrarGunu, kayitliOneri: s.kayitliOneri,
+  sekmeGizle: t.sekmeGizle, sekmeSirala: t.sekmeSirala, gizleYonerge: t.gizleYonerge, goster: t.goster, gizle: t.gizle,
+  maddeGoster: t.maddeGoster, maddeGizle: t.maddeGizle, hepsiniGoster: t.hepsiniGoster, hepsiniGizle: t.hepsiniGizle,
+  gizliKalan: t.gizliKalan, hepsiAcik: t.hepsiAcik, bolum: t.bolum,
+};
+const kipVeri = {
+  id: oge.id,
+  sirali: sirala,
+  gruplar: gruplar.map((g) => ({ kimlik: g.kimlik, ad: g.ad ?? '', maddeler: g.maddeler.map((x) => ({ no: x.no, metin: x.metin })) })),
+  m,
+};
+---
+<section class="bilgi" aria-labelledby="bilgi-baslik" data-bilgi>
+  <div class="metin-ust">
+    <h2 id="bilgi-baslik">{t.baslik}</h2>
+    <div class="metin-araclar">
+      <span class="bilgi-sayi">{t.sayi.replace('{n}', String(adet))}</span>
+      {arVar && (
+        <div class="ar-boyut" role="group" aria-label={k.arBoyutu} data-bilgi-ar-boyut hidden>
+          <button class="secim" type="button" data-bilgi-azalt aria-label={k.arKucult}><span aria-hidden="true">A−</span></button>
+          <button class="secim" type="button" data-bilgi-arttir aria-label={k.arBuyut}><span aria-hidden="true">A+</span></button>
+        </div>
+      )}
+    </div>
+  </div>
+
+  {durum === 'bekliyor' && <p class="onay-bekliyor">{t.onayBekliyor}</p>}
+  {durum === 'taslak' && <p class="onay-bekliyor">{t.taslakNotu}</p>}
+
+  {gruplar.map((g) => (
+    <div class="bilgi-grup">
+      {g.ad && <h3>{g.ad}</h3>}
+      <ol class="bilgi-liste" role="list">
+        {g.maddeler.map((x) => (
+          <li class="bilgi-madde">
+            <span class="bilgi-no">{x.no}</span>
+            <div class="bilgi-icerik">
+              <p class="bilgi-ad">{x.metin}{x.taslak && durum !== 'taslak' && <Fragment>{' '}<span class="bilgi-rozet">{t.taslakRozet}</span></Fragment>}</p>
+              {x.ar && <p class="bilgi-ar" lang="ar" dir="rtl">{x.ar}</p>}
+              {x.kunye && <p class="bilgi-kunye">{t.kunye}{t.ik} {x.kunye}</p>}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  ))}
+
+  {not && <p class="bilgi-not">{not}</p>}
+
+  <div class="kaynak-satiri bilgi-kaynak">
+    <b>{t.kaynak}</b>
+    <ul>
+      {kaynakSatirlari.map((r) => <li><span class="bilgi-rol">{t.roller[r.rol]}{t.ik}</span> {r.yazi}</li>)}
+    </ul>
+  </div>
+
+  <section class="kip bilgi-kip" data-bilgi-kip data-veri={JSON.stringify(kipVeri)} aria-labelledby="bilgi-kip-baslik" hidden>
+    <h3 id="bilgi-kip-baslik">{k.baslik}</h3>
+    {sirala && (
+      <div class="kip-sekmeler" role="tablist" aria-label={k.sekmeler}>
+        <button type="button" role="tab" id="bilgi-sekme-gizle" data-bilgi-sekme="gizle" aria-selected="true" aria-controls="bilgi-panel-gizle" tabindex="0"><span class="sira" aria-hidden="true">1</span>{t.sekmeGizle}</button>
+        <button type="button" role="tab" id="bilgi-sekme-sirala" data-bilgi-sekme="sirala" aria-selected="false" aria-controls="bilgi-panel-sirala" tabindex="-1"><span class="sira" aria-hidden="true">2</span>{t.sekmeSirala}</button>
+      </div>
+    )}
+    <div role={sirala ? 'tabpanel' : undefined} id="bilgi-panel-gizle" class={sirala ? 'kip-panel' : 'kip-panel tek'} data-bilgi-panel="gizle" aria-labelledby={sirala ? 'bilgi-sekme-gizle' : 'bilgi-kip-baslik'} tabindex={sirala ? 0 : undefined}></div>
+    {sirala && <div role="tabpanel" id="bilgi-panel-sirala" class="kip-panel" data-bilgi-panel="sirala" aria-labelledby="bilgi-sekme-sirala" tabindex="0" hidden></div>}
+    <div class="bilgi-nasil" data-bilgi-nasil></div>
+    <p class="kip-hata" role="alert" data-bilgi-hata hidden></p>
+  </section>
+</section>

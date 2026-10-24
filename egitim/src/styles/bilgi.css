@@ -1,0 +1,48 @@
+/* Bilgi maddesi (24 Ekim 2026): kaynaklı sayılı liste, büyük punto, 360 px'te tek sütun. Derz ayırır, gölge yok; rakam kutusu kurs yeşili.
+   Çalışma kipleri madde.css'teki ortak parçaları (.kip, .kip-sekmeler, .kip-panel, .sina-oge) kullanır; yalnız listeye özgü olanlar burada. */
+.bilgi { display: grid; gap: 0.5rem; }
+.bilgi-sayi { color: var(--kontur-2); font-weight: 650; font-size: 0.95rem; }
+.bilgi-grup { margin-top: 0.75rem; }
+.bilgi-grup > h3, .bilgi-grup-ad { font-size: 1.15rem; margin: 1rem 0 0.5rem; color: var(--kontur); }
+
+.bilgi-liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--derz); }
+.bilgi-madde { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--derz); }
+.bilgi-no { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--r); background: var(--yesil); color: #fff;
+  font-weight: 800; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.bilgi-icerik { min-width: 0; display: grid; gap: 0.35rem; align-content: start; }
+.bilgi-ad { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.75rem); font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; hyphens: auto; max-width: 40em; }
+.bilgi-ar { font-size: calc(clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem) * var(--ar-olcek, 1)); line-height: 2; text-align: right; color: var(--yesil-bag); }
+.bilgi-kunye { color: var(--kontur-2); font-size: 0.92rem; line-height: 1.45; overflow-wrap: anywhere; }
+.bilgi-rozet { display: inline-block; vertical-align: middle; padding: 0.05rem 0.5rem; border-radius: var(--r); background: var(--yesil-soluk); color: var(--kontur-2);
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.01em; }
+.bilgi-not { margin-top: 1rem; max-width: 42em; color: var(--kontur-2); font-size: 0.98rem; line-height: 1.55; }
+.bilgi-kaynak { margin-top: 1rem; }
+.bilgi-kaynak ul { list-style: none; margin: 0.25rem 0 0; padding: 0; display: grid; gap: 0.2rem; }
+.bilgi-rol { font-weight: 700; }
+
+/* Gizle ve söyle: madde noktalı çizgiyle gizlenir; düğme dar ekranda metnin altına iner. */
+.bilgi-oyun .bilgi-madde { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "no icerik" ". dugme"; }
+.bilgi-oyun .bilgi-no { grid-area: no; }
+.bilgi-oyun .bilgi-icerik { grid-area: icerik; }
+.bilgi-oyun .bilgi-ac { grid-area: dugme; justify-self: start; min-width: 6rem; justify-content: center; }
+@media (min-width: 40rem) {
+  .bilgi-oyun .bilgi-madde { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "no icerik dugme"; align-items: center; }
+  .bilgi-oyun .bilgi-ac { justify-self: end; }
+}
+.bilgi-oyun [hidden] { display: none !important; }
+.bilgi-icerik .cizgi { display: block; height: 0; width: 40%; border-bottom: 0.22rem dotted var(--kontur-2); margin-top: 1.4rem; }
+.bilgi-icerik .cizgi.c3 { width: 35%; }
+.bilgi-icerik .cizgi.c4 { width: 55%; }
+.bilgi-icerik .cizgi.c5 { width: 75%; }
+.bilgi-icerik .cizgi.c6 { width: 92%; }
+
+/* Sırala: .sina-oge satırı (madde.css) yazı için genişletilir; Arapça boyutu bu satırda uygulanmaz. */
+.bilgi-parca { flex: 1 1 12rem; min-width: 0; font-size: 1.15rem; line-height: 1.45; font-weight: 600; overflow-wrap: anywhere; }
+.bilgi-kip .kip-panel.tek { border-radius: calc(var(--r) + 2px); }
+.bilgi-nasil { margin-top: 1.25rem; display: grid; gap: 0.75rem; }
+.bilgi-nasil:empty { display: none; }
+
+@media (forced-colors: active) {
+  .bilgi-no { forced-color-adjust: none; background: Canvas; color: CanvasText; border: 2px solid CanvasText; }
+  .bilgi-icerik .cizgi { border-bottom-color: CanvasText; }
+}

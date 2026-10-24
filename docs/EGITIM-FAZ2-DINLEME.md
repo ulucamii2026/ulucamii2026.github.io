@@ -479,6 +479,102 @@ doğrulandı, fiziksel yazıcı ya da Safari/Firefox yazdırma önizlemesi denen
 okunması denenmedi (OpenCV çözücüsüyle PDF'ten okundu); «senin sıran» sesli tekrarı dinlemez (çocuğun tekrarı doğrulanmaz);
 fiziksel iPhone/Safari ve gerçek mikrofon yine denenmedi; duyuru yapılmadı.
 
+## Bilgi maddeleri — kaynaklı sayılı listeler (24 Ekim 2026)
+
+Katalogdaki on `bilgi` maddesi (imanın şartları, İslâm'ın şartları, abdestin, gusül ve teyemmümün farzları, namazın farzları, Ülü'l-azm
+peygamberler, dört halife, seçme hadisler, Kur'an okumanın fazileti hadisleri) artık egitim sitesinde beş dilde (tr, fr, en, nl, de)
+kendi sayfasına sahiptir: **50 yeni sayfa**. Ses ve Arapça âyet metni yoktur; sayfa kaynaklı, numaralı bir listedir.
+
+### Tasarım
+
+- **Veri:** madde başına tek dosya `src/data/ezber/bilgi/<id>.json`, şema `bilgi.schema.json` (`additionalProperties: false`).
+  Madde: sıralı satırlar (`ad` beş dilde, isteğe bağlı kısa Arapça `ar`, hadiste `kunye` ve `dogrulama`), isteğe bağlı gruplar (namazın
+  şartları / rükünleri), `sirali` (sıra anlamlı mı), sayfa notu `not`, kaynaklar (`metin`, `fr`, `ar`, `dogrulama` rolleriyle,
+  sayfa ya da bölüm göstermek zorunda), `alinmayan` (kitapta olup doğrulanamadığı için sayfaya alınmayanlar ve nedenleri) ve `onay`.
+- **Katalog bayrağı:** `bilgiMetni: true` (`katalog.schema.json`, `KatalogOgesi`, `calismaSayfasiVar`). `calismaSayfasiVar` ortak koddur:
+  ana sitedeki veli kilim kartı bu on maddeyi de egitim sayfasına bağlar (daha önce düz addı). `tur: "bilgi"` olup bayrağı olmayan madde
+  sayfa almaz; bayrak ile dosya bire bir eşleşmek zorundadır (test).
+- **Sayfa:** `egitim/src/components/BilgiBolumu.astro` (liste sunucuda yazılır: JavaScript olmadan da okunur), `egitim/src/scripts/bilgi.ts`
+  (çalışma kipleri; yalnız `textContent`, sınıf ve öznitelik: CSP satır içi betiğe izin vermez), `egitim/src/styles/bilgi.css`,
+  `egitim/src/i18n/bilgi.ts`, saf işlevler `src/lib/ezber/bilgi-metni.ts`. `[id].astro` yalnız bilgi dalı ekler: Kur'an metni
+  yerine liste, «çalışma yolu» basamakları (dinle/okuyarak ezberle…) bu sayfada yoktur.
+- **Okunaklılık:** satır başına tek madde, 1,3–1,75 rem punto, numara yeşil kutuda, 360 px'te tek sütun; Arapça terim sağdan sola
+  (`lang="ar" dir="rtl"`), A− / A+ yalnız sayfada Arapça terim varsa çıkar ve cihazda kalır. Fransızca iki nokta öncesi bölünmez
+  boşluk tarayıcıda çizilen dizelerde de vardır.
+- **Çalışma kipleri** (hesapsız, yalnız bu cihazda): «Gizle ve söyle» (madde noktalı çizgiyle gizli, çocuk önce söyler, «Göster» ile
+  kontrol eder; hepsini göster/gizle; gizli sayısı okunur), «Sırala» (yalnız `sirali` ve en az üç maddeli grupta; ↑ ↓ düğmeleri ya da
+  Alt + ok; iki gruplu listede bölüm seçilir; «Kontrol et», «Doğru sırayı göster», «Yeni tur»; puan ve ses yok) ve «Nasıl geçti?»
+  (Tam / Az takıldım / Bir daha → sonraki tekrar günü önerilir, `tekrar.ts` kutuları 1·3·7·14·30). Kip kütüphaneleri (`oyun.ts`,
+  `tekrar.ts`, `cihaz.ts`, `kip-ortak.ts`) yeniden kullanıldı; yeni oyun motoru yazılmadı.
+- **Dil durumu:** `tr` kaynağın kendisi; `fr` Camiye Gidiyorum'un resmî Fransızca baskısı (baskıda tam karşılığı olmayan satırda
+  `taslak: ["fr"]`, sayfada «à relire» rozeti); `en`, `nl`, `de` her zaman Türkçeden çevrilmiş **taslaktır** ve sayfada «resmî değil,
+  hoca inceleyecek» der (`docs/DIL-NL-DE.md`). `onay: null` olduğu sürece her dil «hoca incelemesi bekleniyor» der.
+
+### Kaynak kuralı ve doğrulama
+
+Dinî metin ezberden yazılmadı. Her satır, aşağıdaki kitaptan **birebir** alındı ve ikinci bir Diyanet çizgili kaynakla
+karşılaştırıldı; ikisi uyuşmayan satır sayfaya alınmadı. Fransızca yalnız resmî baskıdan geldi. Hadis metni ve künyesi Diyanet'in
+*Hadislerle İslam* ya da *Riyâzü's-Sâlihîn* yayınında bulunmadan alınmadı (sunnah.com yalnız numara doğrulaması için öngörülmüştü; betikle erişilemediği için künye Diyanet yayınındaki numarayla, ör. T1954, B69, doğrulandı). Yerel arşivde
+(`D:\ihtisas`) arandı; kitap sayfası numarası dosyadaki `<!-- s. N -->` işaretinden okundu (işaretler sayfa başını gösterir).
+
+| Madde | Satır | Metin ve Fransızca | Karşılaştırıldığı |
+|---|---|---|---|
+| `b-imanin-sartlari` | 6 (+ Âmentü'den kısa Arapça terimler) | Camiye Gidiyorum 1 s. 87–89 | Temel Dinî Bilgiler s. 26–27, Diyanet İslam İlmihali (İman Esasları) |
+| `b-islamin-sartlari` | 5 | Camiye Gidiyorum 1 s. 22–23 | Temel Dinî Bilgiler s. 79–80, İslam İlmihali (İslâm'ın Şartları) |
+| `b-abdestin-farzlari` | 4 | Camiye Gidiyorum 2 s. 252 | Temel Dinî Bilgiler s. 87–88, İlmihal c. 1 s. 197 |
+| `b-guslun-farzlari` | 3 | Camiye Gidiyorum 2 s. 252 | Temel Dinî Bilgiler s. 92–93, İlmihal c. 1 s. 206 |
+| `b-teyemmumun-farzlari` | 2 | Camiye Gidiyorum 2 s. 252 | Temel Dinî Bilgiler s. 96, Dînî Kavramlar Sözlüğü s. 660, İlmihal c. 1 s. 209 |
+| `b-namazin-farzlari` | 12 (6 şart + 6 rükün) | Camiye Gidiyorum 2 s. 253 | Temel Dinî Bilgiler s. 106–107, İlmihal c. 1 s. 227 |
+| `b-ulul-azm` | 5 | Camiye Gidiyorum 1 s. 151 | Dînî Kavramlar Sözlüğü s. 668 |
+| `b-dort-halife` | 4 | Dînî Kavramlar Sözlüğü s. 269 (Fransızca yazım: Camiye Gidiyorum 2 Fr. s. 123) | İlmihal c. 2 s. 278 |
+| `b-secme-hadisler` | 5 / 9 | Camiye Gidiyorum 2 s. 238 | Hadislerle İslam c. 2, 3, 6; Serlevha Hadisler; Riyâzü's-Sâlihîn c. 1 |
+| `b-kuran-fazileti-hadisleri` | 3 / 7 | Temel Dinî Bilgiler s. 47 (Fransızca: Camiye Gidiyorum 1 s. 67) | Hadislerle İslam c. 1 ve 7; Serlevha Hadisler; Riyâzü's-Sâlihîn c. 2 |
+
+Notlar: (a) Teyemmümün farzı Camiye Gidiyorum'da iki, İlmihalde üç sayılabilir; sayfa notu bunu söyler. (b) İslâm'ın şartlarında kitap
+sırası (kelime-i şehâdet, namaz, oruç, zekât, hac) korundu; İlmihal Müslim hadisinin sırasını izler, sayfa notu bunu belirtir.
+(c) Hadiste kitabın cümlesi ile Diyanet yayınındaki cümle arasındaki ifade farkı (anlam aynı) `dogrulama.fark` alanında ve hoca inceleme
+sayfasında yazılıdır; çocuğun sayfasında kitabın cümlesi durur. (d) Hadis #6 («kolaylaştırın…») sayfada «Buhârî, İlim, 11» künyesiyle
+yazılır: Diyanet bu Enes rivayetini Buhârî'ye bağlar; kitap Müslim'i de anar, inceleme sayfası bunu işaretler.
+
+### Sayfaya alınmayanlar (doğrulanamadı) ve gerekçeleri
+
+Kitaptaki hadislerden **sekizi sayfada yok**; ikisinde de plan öğrencinin seçip ezberlemesini ister (seçme hadisler: dokuzdan üçü;
+Kur'an fazileti: yediden beşi), bu yüzden katalog adındaki sayı plan hedefidir, sayfadaki liste doğrulanan hadislerdir ve her sayfa
+bunu notla söyler (ör. «Kitapta dokuz hadis vardır; öğrenci üçünü seçip ezberler. Bu sayfada kaynağı doğrulanan beşi yer alır.»).
+
+- **Seçme hadisler** (Camiye Gidiyorum 2 s. 238; 4 alınmadı): «İslâm güzel ahlâktır» (yalnız İlmihal dipnotunda, Kenzü'l-Ummâl;
+  izin verilen hadis yayınlarında yok); «öfkelenme» hadisi (kitap «üç defa» der, Diyanet metni «birkaç kere»); «Güzel bir şeye aracılık
+  eden…» (Diyanet'te tek cümlelik farklı bir alıntı); «Allah, sizden biriniz iş yaptığında…» (Taberânî; Diyanet hadis yayınlarında yok,
+  yalnız farklı ifadeyle bir kitapta alıntı).
+- **Kur'an okumanın fazileti** (Temel Dinî Bilgiler s. 47; 4 alınmadı): «Bir âyet dinlerse…» (Diyanet hadis yayınlarında bulunamadı);
+  «…onunla amel ederse (taç)» (Ebû Dâvûd, Vitr 14: Diyanet'te çok farklı ifadeyle, birebir doğrulanamadı); «Sabahleyin evden çıkıp…
+  (yüz rekât)» (bulunamadı; benzeri başka bir hadis); «…ezberlerse (on kişiye şefaat)» (İbn Mâce, Sünne 16: Diyanet'te kısaltılmış çeviri,
+  kitabın şartı yok). Ayrıntılı gerekçe her dosyada `alinmayan` alanında ve inceleme sayfasında.
+- Bunlar doğrulanınca (ör. Hadislerle İslam'da karşılığı bulunursa) ilgili `maddeler` dizisine eklenir; sayfa notundaki sayı güncellenir.
+- Hadislerin Arapça metni bu dilimde yoktur (sonraki dilimin işi); Arapça yalnız
+  Âmentü'den alınan altı kısa terimdedir ve `ar` rolüyle kaynağı gösterilir.
+
+### Hoca incelemesi (onay bekliyor)
+
+- **İnceleme sayfası:** `docs/ezber-bilgi-inceleme/ezber-bilgi-inceleme.html` ve `.pdf` (`npm run ezber:bilgi`; dua incelemesiyle
+  `docs/ezber-metin-inceleme/` aynı düzen). Her madde beş dilde, kaynak künyesiyle, hadislerde Diyanet karşılığı ve ifade farkıyla,
+  «ALINMAYANLAR» tablosuyla ve onay kutularıyla yazdırılabilir.
+- **Onay:** `node scripts/ezber-bilgi.mjs --onayla hepsi` (yalnız Türkçe) ya da `--onayla b-ulul-azm,b-dort-halife --kapsam tr,fr`;
+  dosyaya `onay: {tarih, kapsam}` yazar, ardından `npm run egitim:yayinla`. En, nl, de, ana dili konuşan biri okuyup onaylamadıkça
+  kapsama yazılmaz. **Şu an hiçbir madde onaylı değildir; sayfalar «hoca incelemesi bekleniyor» der.**
+
+### Testler
+
+- `tests/ezber-bilgi.test.mjs` (14 test): şema, bayrak ⇔ dosya eşleşmesi, kaynak kuralları (≥ 2 kaynak, metin + karşılaştırma, sayfa/bölüm),
+  beş dilin doluluğu, en/nl/de taslak sayılması, grup bütünlüğü, Arapça terimlerin Ulu Nesih kümesinde olması, hadiste künye ve Diyanet
+  karşılığı, `dilDurumu`, `gosterimGruplari` numaralaması, `siralamaVar`, kitaptaki sayılar, kişisel veri/telefon/yasak simge taraması,
+  `--onayla` reddi.
+- `tests/egitim/bilgi.spec.mjs` (29 senaryo × masaüstü + telefon): beş dilde liste, kaynak ve notlar; 360 px'te yatay kaydırma yok;
+  açık ve koyu temada axe 0; CSP ihlali 0; Arapça sağdan sola ve A− / A+; JavaScript kapalıyken liste okunur; kapalı depolama; «Gizle ve söyle»
+  (düğme boyutu ≥ 44 px), «Sırala» (↑ ↓, Alt + ok, kontrol, iki gruplu bölüm seçimi), «Nasıl geçti?» kaydı, klavye ile sekmeler.
+- `scripts/egitim-canli-denetim.mjs` bilgi maddelerini de site haritasında bekler ve bir bilgi sayfasını (liste, kaynak, çalışma
+  bölümü, «Göster», CSP ve konsol temiz) ile Fransızca künyede bölünmez boşluğu denetler.
+
 ## Canlı durum ve bu çalışmanın sınırı
 
 - **9 Ekim 2026 09:19 (CEST) YAYINDA.** Kullanıcının 9 Ekim «Eğitim Faz 2 yayını» seçimiyle güncel `origin/main`

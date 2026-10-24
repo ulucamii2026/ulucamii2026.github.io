@@ -23,7 +23,9 @@ if (!girdi) {
 const KOK = new URL(girdi).origin;
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const katalog = JSON.parse(readFileSync(new URL('../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
-const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length);
+// Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni ya da bilgi metni (24 Ekim 2026).
+const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni);
+const bilgiOgeleri = katalog.ogeler.filter((o) => o.bilgiMetni);
 const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf8'));
 const egitim = [firebase.hosting].flat().find((h) => h?.public === 'egitim/dist');
 const GUVENLIK = egitim.headers.find((k) => k.source === '**').headers;
@@ -118,6 +120,27 @@ try {
     await s.locator('[data-durdur]').click();
     kontrol('çalışma: CSP ihlali 0', (await s.evaluate(() => window.__ihlaller)).length === 0);
   } else kontrol('çalışma sayfası HTTP 200', false, calismaYaniti?.status() ?? 'yanıt yok');
+  // Bilgi maddesi (24 Ekim 2026): kaynaklı liste sunucuda yazılı, çalışma bölümü açılır, «Göster» maddeyi açar, CSP/konsol temiz.
+  if (bilgiOgeleri.length) {
+    hatalar.length = 0;
+    const bilgiYaniti = await s.goto(`${KOK}/tr/calis/${bilgiOgeleri[0].id}/`);
+    const satirlar = await s.locator('section.bilgi > .bilgi-grup .bilgi-madde').count();
+    const kaynak = await s.locator('.bilgi-kaynak li').count();
+    await s.locator('[data-bilgi-kip]').waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
+    const ilk = s.locator('#bilgi-panel-gizle .bilgi-madde').first();
+    const gizliMi = await ilk.locator('.bilgi-ad').isHidden().catch(() => false);
+    await ilk.locator('.bilgi-ac').click().catch(() => {});
+    const acildi = await ilk.locator('.bilgi-ad').isVisible().catch(() => false);
+    kontrol(`bilgi: /tr/calis/${bilgiOgeleri[0].id}/ liste, kaynak, çalışma bölümü`, bilgiYaniti?.status() === 200 && satirlar > 0 && kaynak >= 2 && gizliMi && acildi && hatalar.length === 0 &&
+      (await s.evaluate(() => window.__ihlaller)).length === 0, `${bilgiYaniti?.status()} · ${satirlar} satır · ${kaynak} kaynak · gizli ${gizliMi} · açıldı ${acildi} · ${hatalar.join(' | ')}`);
+    for (const dil of ['tr', 'fr']) {
+      const y = await getir(`/${dil}/calis/${bilgiOgeleri[0].id}/`);
+      const h = await y.text();
+      kontrol(`bilgi: /${dil}/ sayfa 200, kaynak satırı`, y.status === 200 && h.includes('bilgi-kaynak'), y.status);
+    }
+    const frHadis = await (await getir('/fr/calis/b-secme-hadisler/')).text();
+    kontrol('bilgi: Fransızca künye iki noktadan önce bölünmez boşluk', frHadis.includes('Référence :'));
+  }
   await baglam.close();
   // Kök yönlendirme: kayıtlı dil yok, tarayıcı fr-BE → /fr/.
   const fr = await tarayici.newContext({ locale: 'fr-BE' });

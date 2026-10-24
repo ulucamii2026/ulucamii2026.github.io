@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ezber kilimi bilgi maddesinin listesi",
+  "description": "Bilgi maddesi başına bir dosya (24 Ekim 2026): imanın şartları, farzlar, Ülü'l-azm, dört halife, hadis seçkileri. Metin Camiye Gidiyorum 1-2'den (Türkçe + resmî Fransızca) alınır, Temel Dinî Bilgiler / Diyanet İlmihali / Dînî Kavramlar Sözlüğü / Hadislerle İslam / Riyâzü's-Sâlihîn ile karşılaştırılır; doğrulanamayan madde dosyaya girmez. Ses yoktur. Çapraz kurallar: tests/ezber-bilgi.test.mjs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "sirali", "maddeler", "taslak", "kaynaklar", "onay"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^b-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "sirali": { "type": "boolean", "description": "Sıra anlamlıysa «Sırala» oyunu açılır; hadis seçkisinde sıra yoktur." },
+    "gruplar": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kimlik", "ad"],
+        "properties": {
+          "kimlik": { "type": "string", "pattern": "^[a-z]+$" },
+          "ad": { "$ref": "#/definitions/besMetin" }
+        }
+      }
+    },
+    "maddeler": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ad"],
+        "properties": {
+          "ad": { "$ref": "#/definitions/besMetin" },
+          "ar": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "grup": { "type": "string", "pattern": "^[a-z]+$" },
+          "kunye": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "taslak": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["tr", "fr", "en", "nl", "de"] } },
+          "dogrulama": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kaynak"],
+            "properties": {
+              "kaynak": { "type": "string", "minLength": 1, "maxLength": 300 },
+              "metin": { "type": "string", "minLength": 1, "maxLength": 600 },
+              "fark": { "type": "string", "minLength": 1, "maxLength": 600 }
+            }
+          }
+        }
+      }
+    },
+    "not": { "$ref": "#/definitions/besMetin" },
+    "taslak": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["tr", "fr", "en", "nl", "de"] },
+      "description": "Türkçe metinden çevrilmiş çalışma metni olan diller; sayfa «taslak» der. en, nl ve de her zaman burada olmak zorundadır (tests/ezber-bilgi.test.mjs)."
+    },
+    "kaynaklar": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rol", "ad"],
+        "minProperties": 3,
+        "properties": {
+          "rol": { "enum": ["metin", "fr", "ar", "dogrulama"] },
+          "ad": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "sayfa": { "type": "string", "pattern": "^\\d+(–\\d+)?$" },
+          "bolum": { "type": "string", "minLength": 1, "maxLength": 200 }
+        }
+      }
+    },
+    "alinmayan": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Kitapta olup doğrulanamadığı için bu sayfaya ALINMAYAN maddeler; yalnız hoca inceleme sayfasında görünür. `metin` madde için kısa bir ayırt edici başlangıçtır, kitabın cümlesi değildir.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["metin", "neden"],
+        "properties": {
+          "metin": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "neden": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "kaynak": { "type": "string", "minLength": 1, "maxLength": 200 }
+        }
+      }
+    },
+    "onay": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tarih", "kapsam"],
+          "properties": {
+            "tarih": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+            "kapsam": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["tr", "fr", "en", "nl", "de"] } }
+          }
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "besMetin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tr", "fr", "en", "nl", "de"],
+      "properties": {
+        "tr": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "fr": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "en": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "nl": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "de": { "type": "string", "minLength": 1, "maxLength": 400 }
+      }
+    }
+  }
+}

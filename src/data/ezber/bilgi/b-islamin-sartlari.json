@@ -1,0 +1,87 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-islamin-sartlari",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Kelime-i Şehadet getirmek",
+        "fr": "Prononcer la profession de foi",
+        "en": "Declaring the testimony of faith (shahada)",
+        "nl": "De geloofsgetuigenis (shahada) uitspreken",
+        "de": "Das Glaubensbekenntnis (Schahada) sprechen"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Namaz kılmak",
+        "fr": "Accomplir la prière",
+        "en": "Performing the prayer",
+        "nl": "Het gebed verrichten",
+        "de": "Das Gebet verrichten"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Oruç tutmak",
+        "fr": "Pratiquer le jeûne",
+        "en": "Fasting",
+        "nl": "Vasten",
+        "de": "Fasten"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Zekât vermek",
+        "fr": "Donner l’aumône légale (la zakat)",
+        "en": "Giving zakat (the obligatory alms)",
+        "nl": "Zakat geven (de verplichte aalmoes)",
+        "de": "Zakat entrichten (die Pflichtabgabe)"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hacca gitmek",
+        "fr": "Faire le pèlerinage",
+        "en": "Going on pilgrimage (hajj)",
+        "nl": "Op bedevaart gaan (hadj)",
+        "de": "Die Pilgerfahrt (Hadsch) unternehmen"
+      }
+    }
+  ],
+  "not": {
+    "tr": "Sıra Camiye Gidiyorum 1 ve Temel Dinî Bilgiler’deki gibidir. Diyanet İlmihali, Müslim’deki hadisin sırasını izler: şehadet, namaz, zekât, hac, oruç.",
+    "fr": "L’ordre est celui de « Je vais à la mosquée 1 » et de « Temel Dinî Bilgiler ». Le Diyanet İlmihali suit l’ordre du hadith rapporté par Muslim : profession de foi, prière, zakat, pèlerinage, jeûne.",
+    "en": "The order is the one in “Camiye Gidiyorum 1” and “Temel Dinî Bilgiler”. The Diyanet İlmihali follows the order of the hadith in Muslim: testimony of faith, prayer, zakat, pilgrimage, fasting.",
+    "nl": "De volgorde is die van “Camiye Gidiyorum 1” en “Temel Dinî Bilgiler”. De Diyanet İlmihali volgt de volgorde van de hadieth bij Moslim: geloofsgetuigenis, gebed, zakat, bedevaart, vasten.",
+    "de": "Die Reihenfolge ist die von „Camiye Gidiyorum 1“ und „Temel Dinî Bilgiler“. Das Diyanet İlmihali folgt der Reihenfolge des Hadithes bei Muslim: Glaubensbekenntnis, Gebet, Zakat, Pilgerfahrt, Fasten."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 1",
+      "sayfa": "22–23"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 1",
+      "sayfa": "22–23"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "79–80"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İslam İlmihali",
+      "bolum": "İslam › İslam’ın Şartları"
+    }
+  ],
+  "onay": null
+}

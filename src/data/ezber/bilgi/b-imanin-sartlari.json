@@ -1,0 +1,100 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-imanin-sartlari",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Allah’a iman",
+        "fr": "La foi en Allah",
+        "en": "Belief in Allah",
+        "nl": "Geloof in Allah",
+        "de": "Der Glaube an Allah"
+      },
+      "ar": "بِاللّٰهِ"
+    },
+    {
+      "ad": {
+        "tr": "Meleklere iman",
+        "fr": "La foi aux anges",
+        "en": "Belief in the angels",
+        "nl": "Geloof in de engelen",
+        "de": "Der Glaube an die Engel"
+      },
+      "ar": "وَمَلٰٓئِكَتِه۪"
+    },
+    {
+      "ad": {
+        "tr": "Kitaplara iman",
+        "fr": "La foi aux livres",
+        "en": "Belief in the books",
+        "nl": "Geloof in de boeken",
+        "de": "Der Glaube an die Bücher"
+      },
+      "ar": "وَكُتُبِه۪"
+    },
+    {
+      "ad": {
+        "tr": "Peygamberlere iman",
+        "fr": "La foi aux prophètes",
+        "en": "Belief in the prophets",
+        "nl": "Geloof in de profeten",
+        "de": "Der Glaube an die Propheten"
+      },
+      "ar": "وَرُسُلِه۪"
+    },
+    {
+      "ad": {
+        "tr": "Ahirete iman",
+        "fr": "La foi en l’au-delà",
+        "en": "Belief in the Hereafter",
+        "nl": "Geloof in het hiernamaals",
+        "de": "Der Glaube an das Jenseits"
+      },
+      "ar": "وَالْيَوْمِ الْاٰخِرِ"
+    },
+    {
+      "ad": {
+        "tr": "Kadere iman",
+        "fr": "La foi au destin",
+        "en": "Belief in destiny (qadar)",
+        "nl": "Geloof in het lot (qadar)",
+        "de": "Der Glaube an die Vorherbestimmung (Qadar)"
+      },
+      "ar": "وَبِالْقَدَرِ"
+    }
+  ],
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 1",
+      "sayfa": "87–89"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 1",
+      "sayfa": "87–89"
+    },
+    {
+      "rol": "ar",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "27"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "26"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İslam İlmihali",
+      "bolum": "İman › İman Esasları"
+    }
+  ],
+  "onay": null
+}

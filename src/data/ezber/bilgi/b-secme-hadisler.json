@@ -1,0 +1,139 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-secme-hadisler",
+  "sirali": false,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "İnsanlara teşekkür etmesini bilmeyen, Allah’a şükretmesini bilmez.",
+        "fr": "Celui qui ne sait pas remercier les gens ne sait pas être reconnaissant envers Allah.",
+        "en": "Whoever does not know how to thank people does not know how to be thankful to Allah.",
+        "nl": "Wie niet weet hoe hij mensen moet bedanken, weet ook niet hoe hij Allah dankbaar moet zijn.",
+        "de": "Wer Menschen nicht zu danken versteht, versteht auch nicht, Allah dankbar zu sein."
+      },
+      "kunye": "Tirmizî, Birr, 35",
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 2, «ŞÜKÜR: NİMETLERİN KADRİNİ BİLMEK!» (T1954 Tirmizî, Birr, 35); Serlevha Hadisler 481",
+        "metin": "İnsanlara teşekkür etmeyen, Allah’a da şükretmez.",
+        "fark": "Kitap «etmesini bilmeyen / şükretmesini bilmez» der, Diyanet «etmeyen / şükretmez». Anlam aynı."
+      }
+    },
+    {
+      "ad": {
+        "tr": "Kıskançlıktan uzak durun. Çünkü kıskançlık, ateşin odunu yakıp bitirdiği gibi iyilik ve sevapları yakıp, bitirir.",
+        "fr": "Éloignez-vous de la jalousie. Car la jalousie consume et détruit les bonnes actions et les récompenses, tout comme le feu consume et détruit le bois.",
+        "en": "Stay away from jealousy. For jealousy burns up good deeds and rewards, just as fire burns up wood.",
+        "nl": "Blijf weg van jaloezie. Want jaloezie verbrandt goede daden en beloningen, zoals vuur hout verbrandt.",
+        "de": "Haltet euch von der Eifersucht fern. Denn die Eifersucht verbrennt gute Taten und Belohnungen, so wie das Feuer Holz verbrennt."
+      },
+      "kunye": "Ebû Dâvûd, Edeb, 44; İbn Mâce, Zühd, 22",
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 3, «HASET: İYİLİĞİ TÜKETEN ATEŞ» (D4903 Ebû Dâvûd, Edeb, 44; İM4210 İbn Mâce, Zühd, 22); Serlevha Hadisler 1348",
+        "metin": "Hasetten sakının. Çünkü ateşin odunu yakıp tükettiği gibi haset de iyi amelleri yakar, bitirir.",
+        "fark": "Kitap «kıskançlık … iyilik ve sevapları», Diyanet «haset … iyi amelleri» der. Kitap yalnız Ebû Dâvûd’u yazar; Diyanet İbn Mâce’yi de künyeler. Anlam aynı."
+      }
+    },
+    {
+      "ad": {
+        "tr": "İnsanlara merhamet etmeyene, Allah da merhamet etmez.",
+        "fr": "Allah ne fait pas miséricorde à celui qui ne fait pas miséricorde aux gens.",
+        "en": "Allah does not show mercy to the one who does not show mercy to people.",
+        "nl": "Allah is niet barmhartig voor wie geen barmhartigheid toont aan mensen.",
+        "de": "Allah erbarmt sich dessen nicht, der sich der Menschen nicht erbarmt."
+      },
+      "kunye": "Buhârî, Tevhîd, 2; Müslim, Fedâil, 66",
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 3, «MERHAMET: VARLIĞIN İLÂHÎ MAYASI» (B7376 Buhârî, Tevhîd, 2; M6030 Müslim, Fedâil, 66); Serlevha Hadisler 956; Riyâzü’s-Sâlihîn c. 1, no. 225",
+        "metin": "İnsanlara merhamet etmeyene Allah da merhamet etmez.",
+        "fark": "Yalnız virgül farkı. Kitap yalnız Buhârî’yi yazar; Diyanet Müslim’i de künyeler."
+      }
+    },
+    {
+      "ad": {
+        "tr": "Kolaylaştırınız, zorlaştırmayınız, müjdeleyiniz, nefret ettirmeyiniz.",
+        "fr": "Rendez les choses faciles et ne les rendez pas difficiles, annoncez de bonnes nouvelles et ne faites pas fuir.",
+        "en": "Make things easy and do not make them difficult; give good news and do not drive people away.",
+        "nl": "Maak de dingen gemakkelijk en niet moeilijk; breng goed nieuws en jaag mensen niet weg.",
+        "de": "Erleichtert und erschwert nicht; verkündet frohe Botschaft und schreckt nicht ab."
+      },
+      "kunye": "Buhârî, İlim, 11",
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 6, «HZ. PEYGAMBER: EN GÜZEL MÜREBBİ» (Enes rivayeti, B69 Buhârî, İlim, 11); Serlevha Hadisler 2657",
+        "metin": "Kolaylaştırın zorlaştırmayın; müjdeleyin, nefret ettirmeyin!",
+        "fark": "KÜNYE FARKI: Kitap «Müslim» yazar; Diyanet bu Enes lafzını yalnız Buhârî (B69) olarak künyeler. Müslim künyesi Ebû Mûsâ rivayetindedir (M4525 Müslim, Cihâd ve siyer, 6) ve sıra ters verilir (önce «müjdeleyin»). Sayfada Diyanet künyesi yazıldı; hoca karar versin."
+      }
+    },
+    {
+      "ad": {
+        "tr": "Bir kötülük yaptıktan sonra bir iyilik yap ki, o kötülüğü yok etsin.",
+        "fr": "Fais suivre une mauvaise action d’une bonne action afin qu’elle l’efface.",
+        "en": "After doing a wrong, follow it with a good deed so that it wipes the wrong out.",
+        "nl": "Laat op een slechte daad een goede daad volgen, zodat die de slechte uitwist.",
+        "de": "Lass auf eine schlechte Tat eine gute folgen, damit sie die schlechte auslöscht."
+      },
+      "kunye": "Tirmizî, Birr, 55",
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 3, «SEVAP ve GÜNAH: AMELLERİN KARŞILIĞI» (T1987 Tirmizî, Birr, 55); Serlevha Hadisler 927; Riyâzü’s-Sâlihîn c. 1, no. 61",
+        "metin": "Nerede olursan ol, Allah’a karşı gelmekten sakın. Bir kötülüğün arkasından hemen iyilik yap ki onu yok etsin. Bir de insanlara güzel ahlâkla davran!",
+        "fark": "Kitap, üç cümlelik hadisin yalnız orta cümlesini alır. Anlam aynı."
+      }
+    }
+  ],
+  "not": {
+    "tr": "Kitapta (s. 238) dokuz hadis vardır; öğrenci üçünü seçip ezberler. Bu sayfada, kaynağı Diyanet hadis yayınlarında doğrulanan beşi yer alır; diğerleri doğrulanınca eklenecek.",
+    "fr": "Le livre (p. 238) contient neuf hadiths ; l’élève en choisit trois à apprendre par cœur. Cette page présente les cinq dont la source a été vérifiée dans les publications de hadiths de la Diyanet ; les autres seront ajoutés après vérification.",
+    "en": "The book (p. 238) contains nine hadiths; the pupil chooses three to learn by heart. This page shows the five whose source has been verified in the Diyanet’s hadith publications; the others will be added once verified.",
+    "nl": "Het boek (p. 238) bevat negen hadieth; de leerling kiest er drie om uit het hoofd te leren. Op deze pagina staan de vijf waarvan de bron is gecontroleerd in de hadieth-uitgaven van de Diyanet; de andere volgen na controle.",
+    "de": "Das Buch (S. 238) enthält neun Hadithe; die Lernenden wählen drei zum Auswendiglernen aus. Diese Seite zeigt die fünf, deren Quelle in den Hadith-Veröffentlichungen der Diyanet überprüft wurde; die übrigen folgen nach der Prüfung."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 2",
+      "sayfa": "238"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 2",
+      "sayfa": "238"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Hadislerle İslam (Diyanet)",
+      "bolum": "c. 2, 3 ve 6; Serlevha Hadisler"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Riyâzü’s-Sâlihîn (Diyanet)",
+      "bolum": "c. 1"
+    }
+  ],
+  "alinmayan": [
+    {
+      "metin": "İslam güzel ahlaktır. (Kenzü’l-Ummâl)",
+      "neden": "Hadislerle İslam, Serlevha Hadisler ve Riyâzü’s-Sâlihîn’de bulunamadı. Yalnız Diyanet İslam İlmihali’nde geçiyor (dipnot: Kenzü’l-Ummâl III, 17, no. 5225); izin verilen hadis kaynaklarında olmadığı için alınmadı.",
+      "kaynak": "Camiye Gidiyorum 2, s. 238"
+    },
+    {
+      "metin": "Öğüt isteyene «öfkelenme» (Buhârî)",
+      "neden": "Kitap «üç defa» der; Diyanet metni (Riyâzü’s-Sâlihîn c. 2, no. 642; B6116 Buhârî, Edeb, 76) «birkaç kere» der. «Üç» sayısı Diyanet metninde yok, doğrulanamadı.",
+      "kaynak": "Camiye Gidiyorum 2, s. 238"
+    },
+    {
+      "metin": "Güzel bir şeye aracılık eden… (Tirmizî)",
+      "neden": "Diyanet yayınında yalnız tek cümlelik bir alıntı (Hadislerle İslam c. 4, T2670 Tirmizî, İlim, 14): «Hayra vesile olan kişi onu yapmış gibidir.» Kitaptaki «sevap alır» ifadesi bu çeviride yok; ayrı hadis bloğu, Arapça ve râvi adı da yok.",
+      "kaynak": "Camiye Gidiyorum 2, s. 238"
+    },
+    {
+      "metin": "Allah, sizden birinizin iş yaptığında… (Taberânî)",
+      "neden": "Hadislerle İslam ve Riyâzü’s-Sâlihîn’de yok. Yalnız Diyanet’in «İslam Hukukunda Temel Hak ve Hürriyetler» kitabında alıntı olarak geçiyor (Taberânî, el-Mu‘cemü’l-Evsat 1/275) ve ifadesi farklı («hoşnut olur»).",
+      "kaynak": "Camiye Gidiyorum 2, s. 238"
+    }
+  ],
+  "onay": null
+}

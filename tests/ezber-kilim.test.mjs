@@ -176,10 +176,11 @@ test('Veli kartı: kilim, özet, yumuşak dilli dinlemeler, açıklama ve 81 mad
   const kimlik = new Set(kimlikler(tr));
   for (const [, h] of tr.matchAll(/href="#([^"]+)"/g)) assert.ok(kimlik.has(h), `çözülmeyen bağ: ${h}`);
   assert.doesNotMatch(tr, /Tekrar gelsin|Az hatalı|<script|javascript:/);
-  // Sesi ya da metni olan madde egitim'deki çalışma sayfasına bağlanır (Faz 2b); bilgi maddesi düz ad kalır.
+  // Sesi ya da metni (Kur'an, dua, bilgi listesi) olan madde egitim'deki çalışma sayfasına bağlanır (Faz 2b); metni olmayan düz ad kalır.
   assert.match(tr, /<li data-id="s-fatiha"[^>]*>.*?<a class="kl-madde-ad" href="https:\/\/egitim\.ulucamii\.be\/tr\/calis\/s-fatiha\/">/);
+  // Metni olmayan madde (sesi, Kur'an metni ve bilgi metni yok) düz ad kalır; hepsine sayfa yapıldıysa denetlenecek madde kalmaz.
   const bilgi = m.KATALOG.ogeler.find((o) => !m.calismaSayfasiVar(o));
-  assert.match(tr, new RegExp(`<li data-id="${bilgi.id}"[^>]*>.*?<span class="kl-madde-ad">`));
+  if (bilgi) assert.match(tr, new RegExp(`<li data-id="${bilgi.id}"[^>]*>.*?<span class="kl-madde-ad">`));
   assert.equal([...tr.matchAll(/<a class="kl-madde-ad"/g)].length, m.KATALOG.ogeler.filter(m.calismaSayfasiVar).length);
   const fr = kart.veliKilimKarti(ez, 'kl-v0', yardim('fr'));
   assert.ok(fr.includes('Kilim de mémorisation') && fr.includes('Dernières récitations') && fr.includes('très bien récité') && fr.includes('Faisons attention aux allongements (madd).'));

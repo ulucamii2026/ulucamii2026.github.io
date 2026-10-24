@@ -1,0 +1,184 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-namazin-farzlari",
+  "sirali": true,
+  "gruplar": [
+    {
+      "kimlik": "sart",
+      "ad": {
+        "tr": "Namazın şartları",
+        "fr": "Conditions de la prière (chourout)",
+        "en": "The conditions of prayer (shurut)",
+        "nl": "De voorwaarden van het gebed (shoeroet)",
+        "de": "Die Bedingungen des Gebets (Schurut)"
+      }
+    },
+    {
+      "kimlik": "rukun",
+      "ad": {
+        "tr": "Namazın rükünleri",
+        "fr": "Les piliers de la prière (arkân)",
+        "en": "The pillars of prayer (arkan)",
+        "nl": "De pijlers van het gebed (arkan)",
+        "de": "Die Säulen des Gebets (Arkan)"
+      }
+    }
+  ],
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Hadesten taharet",
+        "fr": "Purification du Hadath",
+        "en": "Purity from ritual impurity (hadath)",
+        "nl": "Reinheid van rituele onreinheid (hadath)",
+        "de": "Reinheit von ritueller Unreinheit (Hadath)"
+      },
+      "grup": "sart"
+    },
+    {
+      "ad": {
+        "tr": "Necasetten taharet",
+        "fr": "Purification de la Najasah",
+        "en": "Purity from physical impurity (najasa)",
+        "nl": "Reinheid van fysieke onreinheid (nadjasa)",
+        "de": "Reinheit von körperlicher Unreinheit (Nadschasa)"
+      },
+      "grup": "sart"
+    },
+    {
+      "ad": {
+        "tr": "Setr-i avret",
+        "fr": "Couvrir sa nudité",
+        "en": "Covering the parts of the body that must be covered (setr-i awrah)",
+        "nl": "De lichaamsdelen bedekken die bedekt moeten zijn (setr-i awra)",
+        "de": "Die zu bedeckenden Körperteile bedecken (Setr-i Awra)"
+      },
+      "grup": "sart"
+    },
+    {
+      "ad": {
+        "tr": "İstikbal-i kıble",
+        "fr": "L’orientation vers la qibla",
+        "en": "Facing the qibla",
+        "nl": "Zich naar de qibla richten",
+        "de": "Sich zur Qibla ausrichten"
+      },
+      "grup": "sart"
+    },
+    {
+      "ad": {
+        "tr": "Vakit",
+        "fr": "Le temps",
+        "en": "The prayer time",
+        "nl": "De gebedstijd",
+        "de": "Die Gebetszeit"
+      },
+      "grup": "sart"
+    },
+    {
+      "ad": {
+        "tr": "Niyet",
+        "fr": "L’intention",
+        "en": "The intention",
+        "nl": "De intentie",
+        "de": "Die Absicht"
+      },
+      "grup": "sart"
+    },
+    {
+      "ad": {
+        "tr": "İftitah tekbiri (Allahu ekber diyerek namaza başlamak)",
+        "fr": "Le tekbir d’ouverture (commencer la prière en disant « Allâhu Ekber »)",
+        "en": "The opening takbir (starting the prayer by saying “Allahu akbar”)",
+        "nl": "De openingstakbir (het gebed beginnen met “Allahoe akbar”)",
+        "de": "Das Eröffnungs-Takbir (das Gebet mit „Allahu akbar“ beginnen)"
+      },
+      "grup": "rukun"
+    },
+    {
+      "ad": {
+        "tr": "Kıyam (Namazda ayakta durmak)",
+        "fr": "La station debout (rester debout pendant la prière)",
+        "en": "Standing (qiyam): staying on one’s feet during the prayer",
+        "nl": "Staan (qiyam): tijdens het gebed rechtop blijven staan",
+        "de": "Das Stehen (Qiyam): im Gebet aufrecht stehen"
+      },
+      "grup": "rukun"
+    },
+    {
+      "ad": {
+        "tr": "Kıraat (Namazda Kur’an okumak)",
+        "fr": "La récitation (lire le Coran pendant la prière)",
+        "en": "Recitation (qira’ah): reciting the Qur’an in the prayer",
+        "nl": "Reciteren (qira’a): de Koran lezen tijdens het gebed",
+        "de": "Das Rezitieren (Qira’a): im Gebet den Koran lesen"
+      },
+      "grup": "rukun"
+    },
+    {
+      "ad": {
+        "tr": "Rükû (Namazda eğilmek)",
+        "fr": "L’inclinaison (s’incliner pendant la prière)",
+        "en": "Bowing (ruku‘): bending forward in the prayer",
+        "nl": "Buigen (roekoe‘): zich voorover buigen tijdens het gebed",
+        "de": "Die Verbeugung (Ruku‘): sich im Gebet vorbeugen"
+      },
+      "grup": "rukun"
+    },
+    {
+      "ad": {
+        "tr": "Secde",
+        "fr": "La prosternation",
+        "en": "Prostration (sajdah)",
+        "nl": "De knieval (sadjda)",
+        "de": "Die Niederwerfung (Sadschda)"
+      },
+      "grup": "rukun"
+    },
+    {
+      "ad": {
+        "tr": "Ka’de-i ahîre (Son oturuş)",
+        "fr": "La dernière assise le temps de réciter le Tahiyyat",
+        "en": "The last sitting (qa‘dah akhirah), long enough to recite the Tahiyyat",
+        "nl": "De laatste zit (qa‘da achira), lang genoeg om de Tahiyyat te reciteren",
+        "de": "Das letzte Sitzen (Qa‘da Achira), lange genug, um das Tahiyyat zu rezitieren"
+      },
+      "grup": "rukun"
+    }
+  ],
+  "not": {
+    "tr": "Namazın farzları on ikidir: altısı namazın dışındadır (şartlar), altısı namazın içindedir (rükünler).",
+    "fr": "Les obligations de la prière sont au nombre de douze : six sont en dehors de la prière (les conditions), six à l’intérieur (les piliers).",
+    "en": "The obligations of the prayer are twelve: six lie outside the prayer (the conditions) and six inside it (the pillars).",
+    "nl": "Het gebed kent twaalf verplichtingen: zes liggen buiten het gebed (de voorwaarden) en zes erbinnen (de pijlers).",
+    "de": "Das Gebet hat zwölf Pflichtteile: sechs liegen außerhalb des Gebets (die Bedingungen) und sechs innerhalb (die Säulen)."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 2",
+      "sayfa": "253"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 2",
+      "sayfa": "253"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "106–107"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İlmihali, cilt 1",
+      "sayfa": "227"
+    }
+  ],
+  "onay": null
+}

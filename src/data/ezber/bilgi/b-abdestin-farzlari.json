@@ -1,0 +1,71 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-abdestin-farzlari",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Yüzü yıkamak",
+        "fr": "Laver le visage",
+        "en": "Washing the face",
+        "nl": "Het gezicht wassen",
+        "de": "Das Gesicht waschen"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Elleri, kolları ve dirsekleri birlikte yıkamak",
+        "fr": "Laver les mains, les bras et les coudes ensemble",
+        "en": "Washing the hands and arms together with the elbows",
+        "nl": "De handen en armen samen met de ellebogen wassen",
+        "de": "Die Hände und Arme samt den Ellbogen waschen"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Başın dörtte birine meshetmek",
+        "fr": "Essuyer le quart de la tête",
+        "en": "Wiping a quarter of the head with the wet hand (masah)",
+        "nl": "Een kwart van het hoofd met de natte hand afstrijken (mash)",
+        "de": "Ein Viertel des Kopfes mit der nassen Hand bestreichen (Masah)"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Ayakları topuklarla birlikte yıkamak",
+        "fr": "Laver les pieds avec les chevilles",
+        "en": "Washing the feet together with the ankles",
+        "nl": "De voeten samen met de enkels wassen",
+        "de": "Die Füße samt den Knöcheln waschen"
+      }
+    }
+  ],
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 2",
+      "sayfa": "252"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 2",
+      "sayfa": "252"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "87–88"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İlmihali, cilt 1",
+      "sayfa": "197"
+    }
+  ],
+  "onay": null
+}

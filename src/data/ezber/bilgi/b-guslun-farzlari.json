@@ -1,0 +1,62 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-guslun-farzlari",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Ağza su alıp çalkalamak",
+        "fr": "Prendre de l’eau dans la bouche et la rincer",
+        "en": "Rinsing the mouth with water",
+        "nl": "De mond met water spoelen",
+        "de": "Den Mund mit Wasser ausspülen"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Buruna su çekip yıkamak",
+        "fr": "Aspirer de l’eau dans le nez et le laver",
+        "en": "Drawing water into the nose and rinsing it",
+        "nl": "Water in de neus optrekken en de neus spoelen",
+        "de": "Wasser in die Nase ziehen und sie ausspülen"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Bütün vücudu yıkamak",
+        "fr": "Laver tout le corps",
+        "en": "Washing the whole body",
+        "nl": "Het hele lichaam wassen",
+        "de": "Den ganzen Körper waschen"
+      }
+    }
+  ],
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 2",
+      "sayfa": "252"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 2",
+      "sayfa": "252"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "92–93"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İlmihali, cilt 1",
+      "sayfa": "206"
+    }
+  ],
+  "onay": null
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-kuran-fazileti-hadisleri",
+  "sirali": false,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Sizin en hayırlınız, Kur’an’ı öğrenen ve öğretendir.",
+        "fr": "Les meilleurs d’entre vous sont ceux qui apprennent le Coran et l’enseignent.",
+        "en": "The best among you are those who learn the Qur’an and teach it.",
+        "nl": "De besten onder u zijn zij die de Koran leren en onderwijzen.",
+        "de": "Die Besten unter euch sind diejenigen, die den Koran lernen und lehren."
+      },
+      "kunye": "Buhârî, Fedâilü’l-Kur’ân, 21; Tirmizî, Fedâilü’l-Kur’ân, 15",
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 1, «ALLAH’IN KİTABI: SÖZLERİN EN GÜZELİ» (T2907 Tirmizî, Fedâilü’l-Kur’ân, 15); Serlevha Hadisler 312; Riyâzü’s-Sâlihîn c. 2, no. 997 (B5027 Buhârî, Fedâilü’l-Kur’ân, 21)",
+        "metin": "Sizin en hayırlınız, Kur’an’ı öğrenen ve öğretendir.",
+        "fark": "Kelimesi kelimesine aynı. Fransızca: Camiye Gidiyorum 1 (s. 67) cümlesi sadık."
+      }
+    },
+    {
+      "ad": {
+        "tr": "Kim Allah’ın kitabı Kur’an’dan bir harf okursa onun için bir sevap vardır. Her sevabın karşılığı da on kat verilecektir.",
+        "fr": "Celui qui lit une lettre du Livre d’Allah, le Coran, aura une récompense ; et chaque récompense lui sera rendue au décuple.",
+        "en": "Whoever reads one letter of Allah’s Book, the Qur’an, will have one reward; and every reward will be multiplied tenfold.",
+        "nl": "Wie één letter uit het Boek van Allah, de Koran, leest, heeft daarvoor één beloning; en elke beloning wordt tienvoudig vergoed.",
+        "de": "Wer einen Buchstaben aus dem Buch Allahs, dem Koran, liest, hat dafür eine Belohnung; und jede Belohnung wird zehnfach vergolten."
+      },
+      "kunye": "Tirmizî, Fedâilü’l-Kur’ân, 16",
+      "taslak": [
+        "fr"
+      ],
+      "dogrulama": {
+        "kaynak": "Riyâzü’s-Sâlihîn c. 2, «Kur’an-ı Kerim Okumanın Fazileti», no. 1003 (T2910 Tirmizî, Fedâilü’l-Kur’ân, 16)",
+        "metin": "Bir kimse, Allah’ın Kitabı’ndan bir harf okuduğunda ona bir hasene/iyilik yazılır. Hasene de on misli sevapla karşılanır. Ben size Elif-lâm-mîm bir harftir, demiyorum. Elif bir harf, lâm bir harf, mîm de bir harftir.",
+        "fark": "Kitaptaki cümle kısaltılmıştır ve Diyanet çevirisinden farklı sözcüklerle yazılmıştır; «Elif-lâm-mîm» açıklaması yoktur. Anlam aynı. Camiye Gidiyorum 1 (s. 67) Fransızcası yalnız «bir sevap» kısmını verir («on kat» yok), bu yüzden Fransızca bu sayfada çalışma çevirisidir."
+      }
+    },
+    {
+      "ad": {
+        "tr": "Kur’an okuyunuz. Çünkü o, kıyamet günü okuyanlara şefaat edecektir.",
+        "fr": "Lisez le Coran, car il intercédera, au Jour de la Résurrection, en faveur de ceux qui le lisent.",
+        "en": "Read the Qur’an, for on the Day of Resurrection it will intercede for those who read it.",
+        "nl": "Lees de Koran, want op de Dag der Opstanding zal hij bemiddelen voor wie hem leest.",
+        "de": "Lest den Koran, denn er wird am Tag der Auferstehung für diejenigen Fürsprache einlegen, die ihn lesen."
+      },
+      "kunye": "Müslim, Müsâfirîn, 252",
+      "taslak": [
+        "fr"
+      ],
+      "dogrulama": {
+        "kaynak": "Riyâzü’s-Sâlihîn c. 2, «Kur’an-ı Kerim Okumanın Fazileti», no. 995 (M1874 Müslim, Müsâfirîn, 252); Hadislerle İslam c. 7, «ŞEFAAT: HZ. PEYGAMBER’İN DUASI» ve Serlevha Hadisler 3165 (HM22546 İbn Hanbel, V, 255; M1874)",
+        "metin": "Kur’an okuyun, zira Kur’an, kıyamet gününde kendisini okuyanlara şefaatçi olarak gelir, buyurmuştur.",
+        "fark": "Anlam aynı, ifade farklı: kitap «o … okuyanlara şefaat edecektir», Diyanet «Kur’an … şefaatçi olarak gelir» der. Camiye Gidiyorum’da bu hadis yok, bu yüzden Fransızca bu sayfada çalışma çevirisidir."
+      }
+    }
+  ],
+  "not": {
+    "tr": "Kitapta (s. 47) Kur’an okumanın fazileti hakkında yedi hadis vardır; öğrenci beşini seçip ezberler. Bu sayfada, kaynağı Diyanet hadis yayınlarında doğrulanan üçü yer alır; diğerleri doğrulanınca eklenecek.",
+    "fr": "Le livre (p. 47) contient sept hadiths sur le mérite de la lecture du Coran ; l’élève en choisit cinq à apprendre par cœur. Cette page présente les trois dont la source a été vérifiée dans les publications de hadiths de la Diyanet ; les autres seront ajoutés après vérification.",
+    "en": "The book (p. 47) contains seven hadiths on the virtue of reciting the Qur’an; the pupil chooses five to learn by heart. This page shows the three whose source has been verified in the Diyanet’s hadith publications; the others will be added once verified.",
+    "nl": "Het boek (p. 47) bevat zeven hadieth over de verdienste van het lezen van de Koran; de leerling kiest er vijf om uit het hoofd te leren. Op deze pagina staan de drie waarvan de bron is gecontroleerd in de hadieth-uitgaven van de Diyanet; de andere volgen na controle.",
+    "de": "Das Buch (S. 47) enthält sieben Hadithe über den Vorzug der Koranlesung; die Lernenden wählen fünf zum Auswendiglernen aus. Diese Seite zeigt die drei, deren Quelle in den Hadith-Veröffentlichungen der Diyanet überprüft wurde; die übrigen folgen nach der Prüfung."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "47"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 1",
+      "sayfa": "67"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Hadislerle İslam (Diyanet)",
+      "bolum": "c. 1 ve c. 7; Serlevha Hadisler"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Riyâzü’s-Sâlihîn (Diyanet)",
+      "bolum": "c. 2, «Kur’an-ı Kerim Okumanın Fazileti»"
+    }
+  ],
+  "alinmayan": [
+    {
+      "metin": "Bir âyet dinlerse… (kat kat sevap, nur)",
+      "neden": "Diyanet Dijital Kitaplık’taki hadis kitaplarında (Hadislerle İslam, Riyâzü’s-Sâlihîn, Serlevha) Türkçe ve Arapça birçok kalıpla tarandı; eşleşme bulunamadı.",
+      "kaynak": "Temel Dinî Bilgiler, s. 47"
+    },
+    {
+      "metin": "Kim Kur’an-ı Kerim’i okur ve onunla amel ederse… (taç)",
+      "neden": "Diyanet’te yalnız Hadislerle İslam c. 1 gövde yazısında alıntı olarak (D1453 Ebû Dâvûd, Vitr, 14) ve çok farklı ifadeyle geçiyor («şayet aranızda olmuş olsa…», «ne düşünürsünüz?»). Kitaptaki cümle birebir doğrulanamadı.",
+      "kaynak": "Temel Dinî Bilgiler, s. 47"
+    },
+    {
+      "metin": "Sabahleyin evden çıkıp… (yüz rekât nafile)",
+      "neden": "Diyanet hadis yayınlarında bulunamadı (benzeri başka bir hadistir: Hadislerle İslam c. 6, M1873, «iki âyet … iki deveden hayırlı»).",
+      "kaynak": "Temel Dinî Bilgiler, s. 47"
+    },
+    {
+      "metin": "Kim Kur’an’ı okur ve onu ezberlerse… (on kişiye şefaat)",
+      "neden": "Diyanet’in hadis kitaplarında yok. Yalnız Din Görevlisi Rehberi’nde kısaltılmış bir çeviri (İbn Mâce, Sünne, 16) ve bu çeviride kitaptaki «helalini helal, haramını haram sayarsa» şartı yoktur; kitap Et-Terğîb ve’t-Terhîb’e dayandırır.",
+      "kaynak": "Temel Dinî Bilgiler, s. 47"
+    }
+  ],
+  "onay": null
+}

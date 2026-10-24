@@ -1,0 +1,65 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-teyemmumun-farzlari",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Niyet etmek",
+        "fr": "Faire l’intention",
+        "en": "Making the intention (niyyah)",
+        "nl": "De intentie (niyya) maken",
+        "de": "Die Absicht (Niyya) fassen"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Elleri temiz bir toprağa veya toprak cinsinden bir şeye vurup, birinci vuruşta yüzü, ikinci vuruşta da kolları mesh etmek",
+        "fr": "Frapper les mains sur une terre propre ou de même nature, essuyer le visage au premier coup et les bras au second",
+        "en": "Striking the hands on clean earth or something of the same kind, then wiping the face with the first strike and the arms with the second",
+        "nl": "De handen op schone aarde of iets van dezelfde aard slaan en bij de eerste slag het gezicht, bij de tweede slag de armen afstrijken",
+        "de": "Die Hände auf reine Erde oder etwas Erdartiges schlagen und beim ersten Schlag das Gesicht, beim zweiten Schlag die Arme bestreichen"
+      }
+    }
+  ],
+  "not": {
+    "tr": "Diyanet kaynaklarının çoğu teyemmümün farzlarını ikiye ayırır (Camiye Gidiyorum 2, Temel Dinî Bilgiler, Dînî Kavramlar Sözlüğü). Diyanet İlmihali (cilt 1, s. 209) aynı içeriği üç farz olarak sayar: niyet, yüzü meshetmek, kolları dirseklerle birlikte meshetmek.",
+    "fr": "La plupart des sources de la Diyanet comptent deux obligations pour l’ablution sèche (Camiye Gidiyorum 2, Temel Dinî Bilgiler, Dînî Kavramlar Sözlüğü). Le Diyanet İlmihali (tome 1, p. 209) en compte trois pour le même contenu : l’intention, essuyer le visage, essuyer les bras avec les coudes.",
+    "en": "Most Diyanet sources count two obligations for the dry ablution (Camiye Gidiyorum 2, Temel Dinî Bilgiler, Dînî Kavramlar Sözlüğü). The Diyanet İlmihali (volume 1, p. 209) counts three for the same content: the intention, wiping the face, wiping the arms including the elbows.",
+    "nl": "De meeste Diyanet-bronnen noemen twee verplichte handelingen voor de droge wassing (Camiye Gidiyorum 2, Temel Dinî Bilgiler, Dînî Kavramlar Sözlüğü). De Diyanet İlmihali (deel 1, p. 209) telt voor dezelfde inhoud drie: de intentie, het gezicht afstrijken, de armen met de ellebogen afstrijken.",
+    "de": "Die meisten Diyanet-Quellen nennen zwei Pflichtteile der Trockenwaschung (Camiye Gidiyorum 2, Temel Dinî Bilgiler, Dînî Kavramlar Sözlüğü). Das Diyanet İlmihali (Band 1, S. 209) zählt für denselben Inhalt drei: die Absicht, das Gesicht bestreichen, die Arme samt Ellbogen bestreichen."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 2",
+      "sayfa": "252"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 2",
+      "sayfa": "252"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Temel Dinî Bilgiler",
+      "sayfa": "96"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Dînî Kavramlar Sözlüğü",
+      "sayfa": "660"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İlmihali, cilt 1",
+      "sayfa": "209"
+    }
+  ],
+  "onay": null
+}

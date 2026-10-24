@@ -1,0 +1,73 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-dort-halife",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Hz. Ebû Bekir",
+        "fr": "Hz. Ebu Bekir",
+        "en": "Abu Bakr",
+        "nl": "Aboe Bakr",
+        "de": "Abu Bakr"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. Ömer",
+        "fr": "Hz. Omar",
+        "en": "Umar",
+        "nl": "Oemar",
+        "de": "Umar"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. Osman",
+        "fr": "Hz. Osman",
+        "en": "Uthman",
+        "nl": "Oethman",
+        "de": "Uthman"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. Ali",
+        "fr": "Hz. Ali",
+        "en": "Ali",
+        "nl": "Ali",
+        "de": "Ali"
+      }
+    }
+  ],
+  "not": {
+    "tr": "Hz. Peygamber’in vefatından sonra 632–661 yılları arasında sırasıyla halife olanlar (Hulefâ-yi Râşidîn). Camiye Gidiyorum kitaplarında dört halifenin ayrı bir listesi yoktur.",
+    "fr": "Ceux qui ont successivement dirigé les musulmans de 632 à 661, après la mort du Prophète (Hulefâ-yi Râşidîn). Les livres « Camiye Gidiyorum » ne contiennent pas de liste distincte des quatre califes ; l’orthographe française des noms suit celle de leur édition française.",
+    "en": "Those who became caliph in turn between 632 and 661, after the death of the Prophet (Hulefâ-yi Râşidîn). The “Camiye Gidiyorum” books have no separate list of the four caliphs.",
+    "nl": "Zij die tussen 632 en 661, na het overlijden van de Profeet, achtereenvolgens kalief werden (Hulefâ-yi Râşidîn). De boeken “Camiye Gidiyorum” bevatten geen aparte lijst van de vier kaliefen.",
+    "de": "Die, die zwischen 632 und 661 nach dem Tod des Propheten nacheinander Kalif wurden (Hulefâ-yi Râşidîn). Die Bücher „Camiye Gidiyorum“ enthalten keine eigene Liste der vier Kalifen."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Dînî Kavramlar Sözlüğü",
+      "sayfa": "269"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 2",
+      "sayfa": "123"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Diyanet İlmihali, cilt 2",
+      "sayfa": "278"
+    }
+  ],
+  "onay": null
+}

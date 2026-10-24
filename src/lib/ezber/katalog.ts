@@ -29,6 +29,8 @@ export interface KatalogOgesi {
    *  «Yapay ses» etiketini bu bayraktan çizer; Kur'an maddesinde asla true olamaz (tests/ezber-katalog.test.mjs). */
   readonly ses?: { readonly tam?: string; readonly parcalar?: readonly string[]; readonly yapay?: true };
   readonly not?: string;
+  /** Kaynaklı liste metni var (src/data/ezber/bilgi/<id>.json, 24 Ekim 2026): bilgi maddesinin çalışma sayfası vardır. */
+  readonly bilgiMetni?: true;
 }
 export interface SeviyeTanimi { readonly kimlik: Seviye; readonly ad: BesDil; readonly amac: BesDil }
 export interface Katalog { readonly surum: number; readonly seviyeler: readonly SeviyeTanimi[]; readonly ogeler: readonly KatalogOgesi[] }
@@ -111,9 +113,11 @@ export function eskiEzberGecisi(eski: Record<string, unknown>): EskiEzberGecisi 
  * egitim.ulucamii.be'de çalışma sayfası olan madde: Diyanet sesi ya da kaynaklı metni var. Kur'an maddelerinin metni
  * scripts/ezber-metin-cek.mjs ile hepsine yazılır (tests/ezber-madde-metni.test.mjs denetler). Kur'an dışı bir maddeye
  * sessiz metin eklenirse bu koşul genişletilir; aynı test onu yakalar. Ana site (veli kilimi) de bu koşulla bağlar.
+ * Bilgi maddesi (iman şartları, farzlar, hadis seçkileri…) ses taşımaz: liste dosyası varsa `bilgiMetni` bayrağı sayfayı açar
+ * (tests/ezber-bilgi.test.mjs bayrak ile dosyanın birbirini tuttuğunu denetler).
  */
 export function calismaSayfasiVar(oge: KatalogOgesi): boolean {
-  return Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || oge.kuran);
+  return Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || oge.kuran || oge.bilgiMetni);
 }
 
 /** Maddenin sesi yapay mı (Diyanet kaydı yok): çalarken etiket zorunludur. Tek yer: etiketin çizildiği her sayfa bunu sorar. */

@@ -1,0 +1,82 @@
+{
+  "$schema": "./bilgi.schema.json",
+  "id": "b-ulul-azm",
+  "sirali": true,
+  "maddeler": [
+    {
+      "ad": {
+        "tr": "Hz. Nuh (a.s.)",
+        "fr": "Noé (Nouh)",
+        "en": "Prophet Nuh (Noah)",
+        "nl": "Profeet Noach (Nuh)",
+        "de": "Prophet Noah (Nuh)"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. İbrahim (a.s.)",
+        "fr": "Abraham (Ibrahim)",
+        "en": "Prophet Ibrahim (Abraham)",
+        "nl": "Profeet Abraham (Ibrahim)",
+        "de": "Prophet Abraham (Ibrahim)"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. Musa (a.s.)",
+        "fr": "Moïse (Moussa)",
+        "en": "Prophet Musa (Moses)",
+        "nl": "Profeet Mozes (Moesa)",
+        "de": "Prophet Mose (Musa)"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. İsa (a.s.)",
+        "fr": "Jésus (Issa)",
+        "en": "Prophet Isa (Jesus)",
+        "nl": "Profeet Jezus (Isa)",
+        "de": "Prophet Jesus (Isa)"
+      }
+    },
+    {
+      "ad": {
+        "tr": "Hz. Muhammed (s.a.s.)",
+        "fr": "Muhammed (s.a.s.)",
+        "en": "Prophet Muhammad (peace be upon him)",
+        "nl": "Profeet Mohammed (vrede zij met hem)",
+        "de": "Prophet Muhammad (Friede sei mit ihm)"
+      }
+    }
+  ],
+  "not": {
+    "tr": "Ülü’l-azm, azim ve sabır sahipleri demektir; bu söz Ahkâf sûresinin 35. âyetinde geçer.",
+    "fr": "Oulou al-‘azm signifie « les détenteurs de la résolution et de la patience » ; l’expression figure dans le verset 35 de la sourate Al-Ahqaf.",
+    "en": "Ulu al-‘azm means “those endowed with resolve and patience”; the expression occurs in verse 35 of Surah al-Ahqaf.",
+    "nl": "Oeloe al-‘azm betekent “zij die vastberadenheid en geduld bezitten”; de uitdrukking komt voor in vers 35 van de soera Al-Ahqaf.",
+    "de": "Ulu al-‘azm bedeutet „Träger von Entschlossenheit und Geduld“; der Ausdruck kommt in Vers 35 der Sure al-Ahqaf vor."
+  },
+  "taslak": [
+    "en",
+    "nl",
+    "de"
+  ],
+  "kaynaklar": [
+    {
+      "rol": "metin",
+      "ad": "Camiye Gidiyorum 1",
+      "sayfa": "151"
+    },
+    {
+      "rol": "fr",
+      "ad": "Je vais à la mosquée 1",
+      "sayfa": "151"
+    },
+    {
+      "rol": "dogrulama",
+      "ad": "Dînî Kavramlar Sözlüğü",
+      "sayfa": "668"
+    }
+  ],
+  "onay": null
+}

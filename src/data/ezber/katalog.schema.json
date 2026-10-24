@@ -73,7 +73,8 @@
             "yapay": { "const": true, "description": "Diyanet kaydı olmayan Kur'an DIŞI metin için yapay ses (24 Ekim 2026). Sayfa «Yapay ses» etiketini bu bayraktan çizer; yalnız kuranMetni false olan maddede ve tek parça (tam) olarak; kaydı docs/dinleme-ses-kaynaklari.json'da yapay:true taşır (tests/ezber-katalog.test.mjs)." }
           }
         },
-        "not": { "type": "string", "maxLength": 300 }
+        "not": { "type": "string", "maxLength": 300 },
+        "bilgiMetni": { "const": true, "description": "Yalnız bilgi maddesi: src/data/ezber/bilgi/<id>.json (kaynaklı liste) var, çalışma sayfası açılır. Bayrak ile dosya birbirini tutar (tests/ezber-bilgi.test.mjs)." }
       }
     }
   }

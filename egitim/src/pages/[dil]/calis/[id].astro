@@ -19,14 +19,18 @@ import { ANA_SITE, kursAdi, veliPortali } from '../../../lib/kimlik';
 import { maddeKareKodu } from '../../../lib/kare-kod';
 import { cizim } from '../../../lib/cizim';
 import { MADDE_METINLERI } from '../../../lib/madde-metinleri';
+import { BILGI_METINLERI } from '../../../lib/bilgi-metinleri';
+import BilgiBolumu from '../../../components/BilgiBolumu.astro';
 import { metin, tarihYaz } from '../../../i18n/metinler';
 import { calismaMetinleri } from '../../../i18n/calisma';
 import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
 import { kipMetinleri } from '../../../i18n/kip';
 import { sinaMetinleri } from '../../../i18n/sina';
 import { kartMetinleri } from '../../../i18n/kart';
+import { bilgiYazilari } from '../../../i18n/bilgi';
 import '../../../styles/calisma.css';
 import '../../../styles/madde.css';
+import '../../../styles/bilgi.css';
 import '../../../styles/kart.css'; // en sonda: yazdırma stili ekran kurallarını ezer
 
 export function getStaticPaths() {
@@ -47,6 +51,8 @@ const seviye = KATALOG.seviyeler.find((s) => s.kimlik === oge.seviye)!;
 const seritCapasi = oge.seviye === 'kenar' ? 'kenar-suyu' : `serit-${oge.seviye}`;
 
 const mt = MADDE_METINLERI.get(oge.id);
+// Bilgi maddesi (iman şartları, farzlar…): ses ve Arapça metin değil, kaynaklı liste (24 Ekim 2026; src/data/ezber/bilgi/<id>.json).
+const bilgi = BILGI_METINLERI.get(oge.id);
 const bloklar = mt ? metinBloklari(mt, dil) : [];
 const meal = mt && sayfaMeali(mt, dil);
 // Gruplama cümlesi yalnız birden çok âyeti kapsayan meâl grubu varsa basılır: âyet âyet çeviride (FR Hamidullah) Diyanet
@@ -101,7 +107,7 @@ const sira = serit.findIndex((o) => o.id === oge.id);
 const onceki = serit[sira - 1];
 const sonraki = serit[sira + 1];
 ---
-<Taban dil={dil} baslik={oge.ad[dil]} aciklama={`${oge.ad[dil]} · ${c.giris}`} yol={`calis/${oge.id}`}>
+<Taban dil={dil} baslik={oge.ad[dil]} aciklama={`${oge.ad[dil]} · ${bilgi ? bilgiYazilari(dil).aciklama : c.giris}`} yol={`calis/${oge.id}`}>
   <div class="icerik madde">
     {mt && <p class="kart-ust kart-yalniz">{k.kart} · {kursAdi(dil)}</p>}
     <nav class="yol" aria-label={mm.yol}>
@@ -212,8 +218,9 @@ const sonraki = serit[sira + 1];
               {meal?.inceleme && ` ${mm.mealInceleme}`}{okunus && ` ${mm.okunusUsulu}`}
             </p>
           </section>
-        ) : <p class="metin-yok">{mm.metinYok}</p>}
+        ) : bilgi ? <BilgiBolumu oge={oge} bilgi={bilgi} dil={dil} /> : <p class="metin-yok">{mm.metinYok}</p>}
 
+        {!bilgi && (
         <section class="yollar-bolumu" aria-labelledby="yol-baslik">
           <h2 id="yol-baslik">{mm.yolBaslik}</h2>
           <ol class="yollar">
@@ -239,6 +246,7 @@ const sonraki = serit[sira + 1];
             </section>
           )}
         </section>
+        )}
       </div>
 
       <div class="yan-panel yan-alt">
@@ -282,5 +290,6 @@ const sonraki = serit[sira + 1];
   import '../../../scripts/calisma';
   import '../../../scripts/madde';
   import '../../../scripts/kip';
+  import '../../../scripts/bilgi';
   import '../../../scripts/yazdir';
 </script>

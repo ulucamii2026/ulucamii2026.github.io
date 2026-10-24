@@ -216,8 +216,8 @@ test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', a
 test('Katalogda sesi ya da metni olan maddeler çalışmaya bağlanır; tek kayıt ve ezan notu', async ({ page }) => {
   await page.goto('/tr/');
   const baglar = await page.locator('.maddeler a[href*="/calis/"]').evaluateAll((a) => a.map((x) => x.pathname).sort());
-  // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi ya da Kur'an metni.
-  expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran).map((o) => `/tr/calis/${o.id}/`).sort());
+  // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi, Kur'an metni ya da bilgi metni.
+  expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran || o.bilgiMetni).map((o) => `/tr/calis/${o.id}/`).sort());
   await page.goto('/tr/calis/d-ezan/');
   await expect(page.locator('.calisma-not')).toContainText('sabah ezanıdır');
   await expect(page.locator('[data-bolum] option')).toHaveCount(1);
