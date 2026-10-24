@@ -130,3 +130,47 @@ export function hangiAyetSorulari(sesli: readonly number[], hepsi: readonly numb
     return { bolum, secenekler, dogruSecenek: secenekler.indexOf(bolum) };
   });
 }
+
+/** Sayfanın meâl bloklarından biri: `bas` ilk, `son` son bölümün sırasından bir fazlası (aralık [bas, son)). */
+export interface AnlamBlogu {
+  readonly bas: number;
+  readonly son: number;
+  readonly meal: string;
+}
+
+/**
+ * «Anlamla eşleştir» için aday bloklar: çalışılan kısmın (bölüm aralığı [bas, son)) içine tamamen sığanlar. Meâl grupları kısım
+ * sınırını aşabilir; kısımda ikiden az blok kalırsa oyun boş kalmasın diye maddenin bütün blokları aday olur. Metni boş blok
+ * eşleşme olamaz, elenir.
+ */
+export function anlamAdaylari(bloklar: readonly AnlamBlogu[], bas: number, son: number): number[] {
+  const dolu = bloklar.map((b, i) => (b.meal.trim() ? i : -1)).filter((i) => i >= 0);
+  const kismi = dolu.filter((i) => bloklar[i].bas >= bas && bloklar[i].son <= son);
+  return kismi.length >= 2 ? kismi : dolu;
+}
+
+export interface EslestirmeTuru {
+  /** Arapça sütun: seçilen blokların kimlikleri, metindeki sıraya göre. */
+  readonly sol: readonly number[];
+  /** Anlam sütunu: aynı kimlikler, sol sütunla aynı sırada gelmeyecek biçimde karıştırılmış. */
+  readonly sag: readonly number[];
+}
+
+/**
+ * «Anlamla eşleştir» turu: `adaylar` içinden en çok `adet` blok seçilir (aynı anlam metnini taşıyan iki blok birden seçilmez,
+ * yoksa eşleşme belirsiz kalırdı). En az iki blok yoksa tur kurulamaz. Tohum aynıysa tur aynıdır.
+ */
+export function eslestirmeTuru(adaylar: readonly number[], anahtar: (kimlik: number) => string, adet: number, r: () => number): EslestirmeTuru | null {
+  const gorulen = new Set<string>();
+  const tekil = adaylar.filter((i) => {
+    const a = anahtar(i).trim();
+    if (!a || gorulen.has(a)) return false;
+    gorulen.add(a);
+    return true;
+  });
+  const k = Math.min(adet, tekil.length);
+  if (k < 2) return null;
+  const sol = karistir(tekil, r).slice(0, k).sort((a, b) => a - b);
+  const sag = farkliSira(k, r).map((p) => sol[p]);
+  return { sol, sag };
+}

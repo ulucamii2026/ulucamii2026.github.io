@@ -43,6 +43,21 @@ export function sayfaMeali(m: MaddeMetni, dil: Dil): Meal | undefined {
   return meal;
 }
 
+/**
+ * «Anlamla eşleştir» oyununun blokları (Faz 2e): sayfa dilinin meâl grupları, her biri maddenin bölümlerinden bir aralığa
+ * ([bas, son) bölüm sırası) bağlı. Oyun yalnız gözden geçirilmiş anlam metniyle kurulur: `inceleme: true` taslak çeviriler
+ * (bugün NL) doğru yanıt diye öğretilmez; o dilde ya da meâli olmayan dilde boş döner ve oyun düğmesi hiç çıkmaz.
+ * Meâl grubunun bölümleri bulunmuyorsa (veri tutarsızlığı) o grup atlanır.
+ */
+export function anlamBloklari(m: MaddeMetni, dil: Dil): { bas: number; son: number; meal: string }[] {
+  const meal = sayfaMeali(m, dil);
+  if (!meal || meal.inceleme) return [];
+  return meal.gruplar.flatMap((g) => {
+    const sirasi = m.bolumler.flatMap((b, i) => (b.no >= g.ayetler[0] && b.no <= g.ayetler[1] ? [i] : []));
+    return sirasi.length && g.metin.trim() ? [{ bas: sirasi[0], son: sirasi[sirasi.length - 1] + 1, meal: g.metin }] : [];
+  });
+}
+
 /** Okunuşun usulü: Fransızca sayfa Fransızca usulü, öbürleri Türkçe usulü (karar: docs/EKRAN-YOL-HARITASI.md). */
 export const okunusUsulu = (dil: Dil): OkunusUsulu => (dil === 'fr' ? 'fr' : 'tr');
 
