@@ -1,7 +1,8 @@
 /**
  * Ezber çalışma kipleri (Faz 2c, 24 Ekim 2026): kademeli gizleme, bağlayarak ezberleme ve cihaz ayarları. Üçü de saf
  * kütüphanedir (src/lib/ezber/{gizleme,zincir,cihaz}.ts); ekran bunların kararını çizer. Gerçek Kur'an ve dua metinleri
- * veri dosyalarından okunur: testte metin yazılmaz, yalnız genel Arapça kelimeler kullanılır.
+ * veri dosyalarından okunur: testte metin yazılmaz, yalnız genel Arapça kelimeler kullanılır. 2d: cihaz kaydındaki tekrar
+ * takvimi alanları (kutu, sonraki gün, çalışılan günler) da burada sınanır; takvimin kendisi ezber-tekrar-oyun.test.mjs'tedir.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -19,6 +20,7 @@ async function yukle(ad) {
 const g = await yukle('gizleme');
 const z = await yukle('zincir');
 const c = await yukle('cihaz');
+const t = await yukle('tekrar');
 
 const KLASOR = 'src/data/ezber/metin';
 const metinler = readdirSync(KLASOR).filter((d) => /^[sdb]-.*\.json$/.test(d)).map((d) => JSON.parse(readFileSync(`${KLASOR}/${d}`, 'utf8')));
@@ -239,7 +241,7 @@ test('cihaz: boş depoda varsayılan, yazılanı geri okur', () => {
   assert.equal(c.yaz(depo, d), true);
   const geri = c.oku(depo);
   assert.equal(geri.ar, 3);
-  assert.deepEqual(c.maddeAyari(geri, 's-ihlas'), { kip: 'gizle', seviye: 2, seri: 1, boy: 5, grup: 0, sondan: false, dinleyici: true, son: 1000 });
+  assert.deepEqual(c.maddeAyari(geri, 's-ihlas'), { kip: 'gizle', seviye: 2, seri: 1, boy: 5, grup: 0, sondan: false, dinleyici: true, kutu: -1, sonraki: '', son: 1000 });
   assert.deepEqual(c.maddeAyari(geri, 'baska'), c.varsayilanAyar());
 });
 
@@ -260,7 +262,7 @@ test('cihaz: aralık dışı değerler sınıra çekilir, geçersiz kimlikler ve
   } });
   assert.equal(d.ar, c.AR_ENCOK);
   assert.deepEqual(Object.keys(d.maddeler), ['iyi']);
-  assert.deepEqual(d.maddeler.iyi, { kip: 'gizle', seviye: 4, seri: 0, boy: c.BOY_ENCOK, grup: 0, sondan: false, dinleyici: false, son: 0 });
+  assert.deepEqual(d.maddeler.iyi, { kip: 'gizle', seviye: 4, seri: 0, boy: c.BOY_ENCOK, grup: 0, sondan: false, dinleyici: false, kutu: -1, sonraki: '', son: 0 });
 });
 
 test('cihaz: depo kapalı ya da dolu olsa da hata fırlatmaz', () => {
@@ -282,6 +284,63 @@ test('cihaz: en çok AZAMI_MADDE madde tutulur, en eski çalışılan atılır',
 test('cihaz: kısmi güncelleme öbür alanları korur, geçersiz kimlik durumu değiştirmez', () => {
   let d = c.maddeyiGuncelle(c.bos(), 'd-subhaneke', { kip: 'zincir', boy: 3, sondan: true }, 5);
   d = c.maddeyiGuncelle(d, 'd-subhaneke', { grup: 2 }, 6);
-  assert.deepEqual(c.maddeAyari(d, 'd-subhaneke'), { kip: 'zincir', seviye: 0, seri: 0, boy: 3, grup: 2, sondan: true, dinleyici: false, son: 6 });
+  assert.deepEqual(c.maddeAyari(d, 'd-subhaneke'), { kip: 'zincir', seviye: 0, seri: 0, boy: 3, grup: 2, sondan: true, dinleyici: false, kutu: -1, sonraki: '', son: 6 });
   assert.equal(c.maddeyiGuncelle(d, '../x', { seviye: 1 }, 7), d);
+});
+
+
+// ——— cihaz: tekrar takvimi alanları (Faz 2d) ———
+test('cihaz: tekrar alanları — kutu −1…4 ve gerçek takvim günü; kip «sina» kabul edilir', () => {
+  const d = c.temizle({ v: 1, ar: 1, maddeler: {
+    a: { kip: 'sina', kutu: 99, sonraki: '2026-10-25' },
+    b: { kip: 'sina', kutu: -7, sonraki: '2026-02-30' },
+    c: { kutu: 2.9, sonraki: 20261025 },
+    d: { kip: 'baska', kutu: 'x', sonraki: '25.10.2026' },
+  } });
+  assert.deepEqual(
+    [d.maddeler.a.kip, d.maddeler.a.kutu, d.maddeler.a.sonraki],
+    ['sina', c.KUTU_ENCOK, '2026-10-25'],
+  );
+  assert.deepEqual([d.maddeler.b.kutu, d.maddeler.b.sonraki], [c.KUTU_ENAZ, ''], 'olmayan gün (30 Şubat) atılır');
+  assert.deepEqual([d.maddeler.c.kutu, d.maddeler.c.sonraki], [2, ''], 'ondalık kesilir, sayı olan tarih atılır');
+  assert.deepEqual([d.maddeler.d.kip, d.maddeler.d.kutu, d.maddeler.d.sonraki], ['zincir', c.KUTU_ENAZ, '']);
+});
+
+test('cihaz: 2c kaydında tekrar alanları yoktur; okunurken varsayılan alırlar ve kayıt bozulmaz', () => {
+  const eski = JSON.stringify({ v: 1, ar: 3, maddeler: { 's-ihlas': { kip: 'gizle', seviye: 2, seri: 1, boy: 5, grup: 0, sondan: false, dinleyici: true, son: 77 } } });
+  const d = c.oku(depoYap({ [c.ANAHTAR]: eski }));
+  assert.equal(d.ar, 3);
+  assert.deepEqual(c.maddeAyari(d, 's-ihlas'), { kip: 'gizle', seviye: 2, seri: 1, boy: 5, grup: 0, sondan: false, dinleyici: true, kutu: -1, sonraki: '', son: 77 });
+  assert.deepEqual(d.gunler, []);
+});
+
+test('cihaz: tekrar alanları kısmi güncellemeyle yazılır, öbür alanlar ve öteki maddeler korunur', () => {
+  let d = c.maddeyiGuncelle(c.bos(), 's-ihlas', { kip: 'gizle', seviye: 3 }, 10);
+  d = c.maddeyiGuncelle(d, 's-ihlas', { kutu: 1, sonraki: '2026-10-27' }, 20);
+  d = c.maddeyiGuncelle(d, 's-felak', { kutu: 0, sonraki: '2026-10-25' }, 30);
+  assert.deepEqual(c.maddeAyari(d, 's-ihlas'), { kip: 'gizle', seviye: 3, seri: 0, boy: 5, grup: 0, sondan: false, dinleyici: false, kutu: 1, sonraki: '2026-10-27', son: 20 });
+  assert.equal(c.maddeAyari(d, 's-felak').sonraki, '2026-10-25');
+  // Geçersiz tarih yazılmaz: boşa döner (öneri silinir), kutu sınırlanır.
+  d = c.maddeyiGuncelle(d, 's-ihlas', { sonraki: '2026-02-30', kutu: 40 }, 40);
+  assert.deepEqual([c.maddeAyari(d, 's-ihlas').sonraki, c.maddeAyari(d, 's-ihlas').kutu], ['', c.KUTU_ENCOK]);
+  // Depodan geri okununca aynıdır.
+  const depo = depoYap();
+  assert.equal(c.yaz(depo, d), true);
+  assert.deepEqual(c.oku(depo), d);
+});
+
+test('cihaz: çalışılan günler — gerçek günler, tekil, sıralı, son üç hafta; bozuk girdi atılır', () => {
+  const d = c.temizle({ v: 1, ar: 1, maddeler: {}, gunler: ['2026-10-24', '2026-10-23', '2026-10-24', '2026-02-30', 'x', 5, null] });
+  assert.deepEqual(d.gunler, ['2026-10-23', '2026-10-24']);
+  assert.deepEqual(c.temizle({ v: 1, ar: 1, maddeler: {}, gunler: 'dün' }).gunler, []);
+  let uzun = c.bos();
+  for (let i = 0; i < 30; i++) uzun = c.calismaGunuIsle(uzun, t.gunEkle('2026-09-01', i));
+  assert.equal(uzun.gunler.length, t.GUN_AZAMI);
+  assert.equal(uzun.gunler.at(-1), '2026-09-30');
+  assert.equal(uzun.gunler[0], t.gunEkle('2026-09-30', -(t.GUN_AZAMI - 1)));
+  // Aynı gün iki kez işlenince çoğalmaz; geçersiz tarih durumu değiştirmez.
+  assert.deepEqual(c.calismaGunuIsle(c.calismaGunuIsle(c.bos(), '2026-10-24'), '2026-10-24').gunler, ['2026-10-24']);
+  const bosD = c.bos();
+  assert.equal(c.calismaGunuIsle(bosD, '2026-13-01'), bosD);
+  assert.equal(c.calismaGunuIsle(bosD, 'bugün'), bosD);
 });
