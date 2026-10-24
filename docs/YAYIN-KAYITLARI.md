@@ -184,6 +184,52 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Alıcılar yalnız dernek kutularıydı. `test-temizle` 1 satır sildi; defterde 3 ihtida satırı kaldı.
   - Deneme e-postaları kutularda duruyor (önceki teamül).
 
+## 24 Ekim 2026 — Ezber Kilimi Faz 2 dilim 2a + 2b v1: 509 Diyanet âyet sesi, madde metni katmanı, madde sayfası
+
+- Zaman: 24 Ekim 2026 07:42:51 (push) – 07:44:36 (derleme) – 07:45:09 (Pages dağıtımı) – ≈07:46 (canlı ses denetimi) –
+  07:48:10 (egitim Hosting sürümü) – 07:48:39 (egitim canlı denetimi), Europe/Brussels (CEST). **Yayımlandı ve canlı
+  doğrulandı.** Dayanak: Rıdvan'ın 24 Ekim «ezber kilimi işini de tamamlayalım… bütün yetki ve karar sende, full otonom»
+  talimatı (19 Ekim'de onayladığı Faz 2 planının yayın adımları).
+- Kapsam:
+  - **2a, sesler:** 509 yeni Diyanet âyet dosyası (Hafız Osman Şahin; Amme'nin 24 sûresi, Rabbi'şrah lî, Alak 1–5, Bakara
+    285–286, Haşr 22–24; 25 MB) ve rükû/secde tesbihi kayıtları (`namaz.diyanet.gov.tr`). Her dosyanın kaynak adresi ve
+    sha256'sı `docs/dinleme-ses-kaynaklari.json` içinde. Sesli madde 27 → 57. Birleşik `sureler/*.mp3` üretilmedi (Pages
+    sınırı); çalar âyet parçalarını sırayla çalar.
+  - **2b v1, metin ve sayfa:** 45 Kur'an maddesinin Diyanet metni ve TR/EN/DE meâli `src/data/ezber/metin/`
+    (`scripts/ezber-metin-cek.mjs`, sayfa başına bir istek, 15 sn arayla; `/sync/*` tam döküm uçları kullanılmadı; şifre
+    anahtarı hiçbir yere yazılmadı); beş Diyanet kayıt hatası `duzeltmeler.json` ile gerekçeli düzeltildi; Tanzil iskelet
+    denetimi (580/583 aynı, 3 gerekçeli imlâ farkı); Ulu Nesih kümesine 4 kod noktası. egitim'de `/[dil]/calis/<id>/`
+    madde sayfası (serlevha, metin ve meâl, künye, «Nasıl çalışılır», hoca kutusu, «Namazda nerede okunur», komşu maddeler);
+    âyet numarasına dokununca o âyet çalar. Ana sitede veli kilim kartındaki madde adı egitim sayfasına bağlanır.
+  - Çalışma sayfası sayısı 135 → 285 (57 madde × 5 dil); egitim site haritası 290 adres.
+- Commit'ler (dernek kimliği, `997f5545..38dae018`): `9aff50dc` ses (513 dosya), `c0139420` metin katmanı ve sayfa
+  (74 dosya), `38dae018` belge. Release 0.
+- Dağıtım: ana site Pages
+  [40067329329](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40067329329) **success**
+  (build 07:42:54–07:44:36, deploy 07:44:39–07:45:09). Derlenmiş ana site **847 MB, 5476 dosya** (GitHub Pages sınırı
+  1 GB; `dist/media/ses/ayet/` 582 dosya). egitim: `npm run egitim:yayinla` → Firebase Hosting `ulucamii-egitim`
+  (proje ulucamii-portal, ulucamii2026@gmail.com), sürüm `1792820890023000`, 07:48:10, 319 dosya.
+- Kalite (temiz çalışma ağacında, `origin/main` `997f5545` üzerine yeniden temellendirilmiş commit'lerle): `npm run
+  test:ezber` 68/68; `npm run dogrula:codex` 9/10 aşama geçti, `test:web` 839 geçti / 120 atlandı / **1 başarısız**:
+  `tests/web/ekran.spec.mjs:1143` «Open-Meteo ilk denemede yanıt vermezse…» (`route.fulfill: Fetch response has been
+  disposed`). Test bu değişikliklerle ilgisiz (cami ekranı, `route.fetch` yarışı): tek başına geçti, 5 tekrarda 5/5 geçti,
+  `--workers=1` ile dosyanın tamamı geçti (114), iki işçiyle aralıklı düşüyor. Cami ekranı çalışmasının sahibine bu kayıtla bildirilir; düzeltme bu işin kapsamı dışında.
+  Diğer aşamalar geçti: `check`, `dogrula` (site derlemesi + denetimler), `egitim:build` (292 HTML, `astro check` 0
+  hata), `test:egitim` 72 geçti / 2 bilinçli atlama, kurallar, veli e-postası, oto-kaydet, öğrenme.
+- Canlı: ses dosyaları `ulucamii.be/media/ses/ayet/78-1.mp3`, `104-9.mp3`, `2-286.mp3`, `dualar/ruku-tesbihi.mp3`,
+  `secde-tesbihi.mp3` HTTP **206** (`audio/mp3`); `78-1.mp3` indirilen kopyanın sha256'sı depodakiyle aynı.
+  `npm run egitim:canli -- https://egitim.ulucamii.be` **36/36** (2026-10-24T05:48:39Z): beş dil CSP ihlali 0 / konsol
+  hatası 0, site haritası 290 adres, çalışma çaları gerçek ses 206. Elle: `tr/calis/s-nebe`, `fr/calis/s-nebe`,
+  `de/calis/d-ruku-tesbihi`, `en/calis/s-hasr-22-24`, `nl/calis/s-alak` HTTP 200, âyet düğmeleri ve (TR/EN) meâl bloğu var.
+- Açık sınırlar:
+  - Rükû ve secde kayıtlarını henüz bir insan kulağı dinlemedi.
+  - Dua metinleri, bilgi maddeleri, hoca inceleme sayfası ve NL meâl sonraki dilimlerde; FR Chiadmi meâli Diyanet
+    dijital kitaplığında yok, FR sayfalarında «yakında» yazıyor.
+  - Okunuş henüz hiçbir maddede hoca onayı almadı, bu yüzden görünmüyor.
+  - Fiziksel iPhone/Safari ve girişli veli akışı denenmedi.
+  - Duyuru yapılmadı (Faz 2'nin tamamlanması sonrası ayrıca onaylanır).
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 19 Ekim 2026 (gece) — duyuru: vakitmatik saatler için teşekkür (TR/FR) + Facebook
 
 - Zaman: 19 Ekim 2026 01:01:46 (commit/push) – 01:04:11 (deploy) – 01:05 (canlı doğrulama) – 01:07 (Facebook),

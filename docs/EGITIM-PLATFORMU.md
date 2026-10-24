@@ -17,7 +17,7 @@ dinle–tekrarla sayfaları yerelde hazırlandı ve **9 Ekim 2026 09:19'da yayı
 140 adres; kayıt `docs/YAYIN-KAYITLARI.md` «9 Ekim 2026 (5)»; duyuru yok). Güncel uygulama ve doğrulama:
 [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Aşağıdaki 27 Eylül tarihli sayfa/test sayıları o yayının kanıtıdır.
 
-**19 Ekim 2026 (yerel, yayın bekliyor):** dilim 2a ile sesli madde 57'ye çıktı (285 çalışma sayfası). Yayın sırası: önce ana
+**24 Ekim 2026 YAYINDA (kayıt `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026»; önce ana site, sonra egitim; 290 adres):** dilim 2a ile sesli madde 57'ye çıktı (285 çalışma sayfası). Yayın sırası: önce ana
 site (sesler ulucamii.be'den sunulur), sonra egitim. Ayrıntı: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md) «Dilim 2a».
 Dilim 2b (yerel): madde sayfası v1 (Diyanet metni, TR/EN/DE meâl, «Namazda», hoca kutusu); veri hattı ve denetimler aynı
 belgede «Dilim 2b».

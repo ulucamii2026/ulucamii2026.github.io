@@ -3,7 +3,7 @@
 Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a–1f tamam ve 27 Eylül 2026'da yayımlandı**
 (yayın sırası ve kanıtları aşağıda). 2 Ekim 2026: canlı eğitim sitesi 33/33 denetimden geçti;
 **Faz 2'nin dinle–tekrarla bölümü 9 Ekim 2026'da yayımlandı** (135 çalışma sayfası; duyuru yok).
-**19 Ekim 2026 (yerel, yayın bekliyor):** Faz 2 dilim 2a, eksik Diyanet sesleri: 28 Kur'an maddesi (Amme'nin 24 sûresi,
+**24 Ekim 2026 YAYINDA (dilim 2a + 2b v1; kayıt `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026»):** Faz 2 dilim 2a, eksik Diyanet sesleri: 28 Kur'an maddesi (Amme'nin 24 sûresi,
 Rabbi'şrah lî, Alak 1–5, Bakara 285–286, Haşr 22–24) âyet âyet Osman Şahin kaydından, rükû ve secde tesbihi namaz.diyanet.gov.tr'den;
 sesli madde 27 → 57. Plan ve Rıdvan'ın 19 Ekim kararları: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md) «Dilim 2a».
 Aynı gün dilim 2b'nin metin katmanı (yerel): 45 Kur'an maddesinin Diyanet metni ve TR/EN/DE meâli `src/data/ezber/metin/`,

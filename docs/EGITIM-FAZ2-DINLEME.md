@@ -2,7 +2,7 @@
 
 Tarih: 2 Ekim 2026, Europe/Brussels. Kullanıcı isteği: eğitim sitesinin durumunu kontrol etmek ve kaldığı yerden devam etmek.
 
-## Dilim 2a — eksik Diyanet sesleri (19 Ekim 2026, yerel; yayın onay bekliyor)
+## Dilim 2a — eksik Diyanet sesleri (19 Ekim 2026 yerel; 24 Ekim 2026 07:42'de yayımlandı)
 
 Faz 2 «Bir ezber, bir sayfa» planı Rıdvan'ın onayıyla beş dilime ayrıldı. Plan dosyası:
 `C:\Users\ridva\.claude-ana\plans\reactive-cooking-yeti.md`. Dilimler: 2a ses, 2b metin ve madde sayfası, 2c bağlayarak
@@ -73,7 +73,11 @@ ezber ve gizleme, 2d oyunlar ve tekrar takvimi, 2e baskı kartı ve duyuru.
 - Derlenmiş ana site 827 MB, 5370 dosya; GitHub Pages sınırı 1 GB.
 - Sınır: rükû ve secde kayıtlarını henüz bir insan kulağı dinlemedi. Bu iki kaydın Diyanet adresi ve sha256 değeri kayıtlı.
 
-## Dilim 2b — metin katmanı ve madde sayfası (19 Ekim 2026, yerel; yayın onay bekliyor)
+## Dilim 2b — metin katmanı ve madde sayfası (19 Ekim 2026 yerel; v1 24 Ekim 2026 07:48'de yayımlandı)
+
+**Yayın (24 Ekim 2026):** commit'ler `9aff50dc` (2a), `c0139420` (2b), `38dae018` (belge); ana site Pages
+[40067329329](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40067329329) success; egitim Hosting
+sürümü 07:48:10 (319 dosya); canlı denetim 36/36 (290 adres). Ayrıntı: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026».
 
 **Metin hattı:** `node scripts/ezber-metin-cek.mjs`
 - Kaynak, kuran.diyanet.gov.tr'nin `/api/v2` uçlarıdır.
