@@ -94,5 +94,12 @@
    "not": "Diyanet İlmihali’ne göre bu kısa ek isteğe bağlıdır («ve yüksek dereceyi»). Diyanet kaydında okunur, Diyanet’in yazılı Arapça metninde yer almaz."
   }
  ],
- "onay": null
+ "onay": {
+  "tarih": "2026-10-24",
+  "kapsam": [
+   "ar",
+   "meal",
+   "okunus-tr"
+  ]
+ }
 }

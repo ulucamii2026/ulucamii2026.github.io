@@ -24,7 +24,7 @@ const arg = (ad) => { const i = process.argv.indexOf(ad); return i < 0 ? undefin
 const onaylanacak = arg('--onayla');
 const onayKapsami = (arg('--kapsam') ?? 'ar,meal,okunus-tr').split(',');
 const onayTarihi = arg('--tarih') ?? new Date().toISOString().slice(0, 10);
-if (onaylanacak !== undefined && (!/^d{4}-d{2}-d{2}$/.test(onayTarihi) || onayKapsami.some((k) => !['ar', 'meal', 'okunus-tr', 'okunus-fr'].includes(k)))) throw new Error('--onayla: tarih ya da kapsam geçersiz');
+if (onaylanacak !== undefined && (!/^\d{4}-\d{2}-\d{2}$/.test(onayTarihi) || onayKapsami.some((k) => !['ar', 'meal', 'okunus-tr', 'okunus-fr'].includes(k)))) throw new Error('--onayla: tarih ya da kapsam geçersiz');
 const bugun = new Date().toISOString().slice(0, 10);
 const UA = { 'User-Agent': 'Mozilla/5.0 (ulucamii.be ezber; info@ulucamii.be)' };
 

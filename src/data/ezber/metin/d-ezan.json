@@ -147,5 +147,12 @@
    "not": "Yalnız sabah ezanında, «Hayye ale’l-felâh»tan sonra iki defa okunur. Diyanet’in ezan kaydı sabah ezanıdır."
   }
  ],
- "onay": null
+ "onay": {
+  "tarih": "2026-10-24",
+  "kapsam": [
+   "ar",
+   "meal",
+   "okunus-tr"
+  ]
+ }
 }

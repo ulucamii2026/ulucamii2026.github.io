@@ -72,5 +72,12 @@
    "not": "«Ve celle senâüke» cümlesi yalnız cenaze namazında okunur; diğer namazlarda okunmaz, Diyanet kaydında da yoktur."
   }
  ],
- "onay": null
+ "onay": {
+  "tarih": "2026-10-24",
+  "kapsam": [
+   "ar",
+   "meal",
+   "okunus-tr"
+  ]
+ }
 }
